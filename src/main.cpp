@@ -20,7 +20,7 @@ BEGIN_EVENT_TABLE( MainWindow, wxFrame )
 END_EVENT_TABLE()
 
 MainWindow::MainWindow()
-	: wxFrame( 0, wxID_ANY, wxT("SAM") + wxString(" ") + SamApp::VersionStr(), wxDefaultPosition, wxSize( 800, 600 ) )
+	: wxFrame( 0, wxID_ANY, wxT("SAM") + wxString(" ") + SamApp::VersionStr(), wxDefaultPosition, wxSize( 1100, 800 ) )
 {
 #ifdef __WXMSW__
 	SetIcon( wxICON( appicon ) );

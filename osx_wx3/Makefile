@@ -14,6 +14,13 @@ CFLAGS = -g -I. -I$(SRCDIR) `wx-config-3 --cflags`
 CXXFLAGS = $(CFLAGS)
 LDFLAGS = `wx-config-3 --libs` `wx-config-3 --libs aui` `wx-config-3 --libs stc` -lm $(LKLIB) $(WEXLIB)
 OBJECTS = main.o \
+	simplecurl.o \
+	welcome.o \
+	wxcurlbase.o \
+	wxcurlftp.o \
+	wxcurlhttp.o \
+	wxcurlthread.o
+
 TARGET = SAM
 
 
