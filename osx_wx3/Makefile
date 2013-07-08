@@ -14,6 +14,8 @@ CFLAGS = -g -I. -I$(SRCDIR) -I$(WEXDIR)/include -I$(LKDIR) -I$(SSCDIR) `wx-confi
 CXXFLAGS = $(CFLAGS)
 LDFLAGS = `wx-config-3 --libs` `wx-config-3 --libs aui` `wx-config-3 --libs stc` -lm $(LKLIB) $(WEXLIB) -lstdc++ -lcurl
 OBJECTS = main.o \
+	project.o \
+	object.o \
 	simplecurl.o \
 	welcome.o \
 	wxcurlbase.o \
