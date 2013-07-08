@@ -13,7 +13,8 @@ class SamException : public std::exception
 	wxString m_err;
 public:
 	SamException( const wxString &err ) : m_err(err) { }
-	const char *what() const { return (const char*)m_err.c_str(); };
+	virtual ~SamException() throw() { } 
+	const char *what() const throw() { return (const char*)m_err.c_str(); };
 };
 
 class WelcomeScreen;
