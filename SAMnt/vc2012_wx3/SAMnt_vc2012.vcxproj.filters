@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Resource">
+      <UniqueIdentifier>{a6b8f0e6-ef50-4be8-9b46-d82bf60655aa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source">
+      <UniqueIdentifier>{92d77524-38d0-4549-ad6d-93891947e5fa}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="SAM.rc">
+      <Filter>Resource</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\src\welcome.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\wxcurlbase.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\wxcurlftp.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\wxcurlhttp.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\wxcurlthread.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\main.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\simplecurl.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\welcome.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\wxcurlbase.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\wxcurlftp.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\wxcurlhttp.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\wxcurlthread.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\main.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\simplecurl.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
