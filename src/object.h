@@ -20,7 +20,7 @@ using std::tr1::unordered_map;
 class Object
 {
 public:
-	virtual ~Object();
+	virtual ~Object() { }
 
 	virtual Object *Duplicate() = 0;
 	virtual bool Copy( Object *obj ) = 0;

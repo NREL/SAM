@@ -9,10 +9,10 @@
 class Case : public Object
 {
 public:
-	Case();
-	virtual ~Case();
+	Case() { }
+	virtual ~Case() { }
 
-	wxString GetName();
+	wxString GetName() { return "no name"; }
 	
 	virtual Object *Duplicate() = 0;
 	virtual bool Copy( Object *obj ) = 0;
@@ -25,7 +25,7 @@ private:
 
 class ProjectFile
 {
-	typedef std::unordered_map<wxString, wxString, wxStringHash, wxStringEqual> pfStringHash;
+	typedef unordered_map<wxString, wxString, wxStringHash, wxStringEqual> pfStringHash;
 
 public:
 	ProjectFile();
