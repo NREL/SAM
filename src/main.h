@@ -18,6 +18,7 @@ public:
 };
 
 class WelcomeScreen;
+
 class MainWindow : public wxFrame
 {
 public:
@@ -28,6 +29,8 @@ public:
 	DECLARE_EVENT_TABLE();
 
 private:
+	wxMenuBar *m_menuBar;
+	wxMenu *m_fileMenu, *m_caseMenu, *m_toolsMenu, *m_helpMenu;
 	WelcomeScreen *m_welcomeScreen;
 };
 
