@@ -24,7 +24,34 @@ MainWindow::MainWindow()
 {
 #ifdef __WXMSW__
 	SetIcon( wxICON( appicon ) );
-#endif
+#endif	
+
+	m_fileMenu = new wxMenu;
+	m_fileMenu->Append( wxID_NEW );
+	m_fileMenu->AppendSeparator();
+	m_fileMenu->Append( wxID_OPEN );
+	m_fileMenu->Append( wxID_SAVE );
+	m_fileMenu->Append( wxID_SAVEAS );
+	m_fileMenu->AppendSeparator();
+	m_fileMenu->Append( wxID_CLOSE );
+	m_fileMenu->AppendSeparator();
+	m_fileMenu->Append( wxID_EXIT );
+
+	m_caseMenu = new wxMenu;
+
+	m_toolsMenu = new wxMenu;
+
+	m_helpMenu = new wxMenu;
+	m_helpMenu->Append( wxID_HELP );
+	m_helpMenu->AppendSeparator();
+	m_helpMenu->Append( wxID_ABOUT );
+		
+	m_menuBar = new wxMenuBar;
+	m_menuBar->Append( m_fileMenu, wxT("&File") );
+	m_menuBar->Append( m_caseMenu, wxT("&Case")  );
+	m_menuBar->Append( m_toolsMenu, wxT("&Tools")  );
+	m_menuBar->Append( m_helpMenu, wxT("&Help")  );
+	SetMenuBar( m_menuBar );
 
 	m_welcomeScreen = new WelcomeScreen( this );
 }
