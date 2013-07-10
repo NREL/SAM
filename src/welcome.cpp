@@ -76,7 +76,8 @@ WelcomeScreen::WelcomeScreen(MainWindow *parent)
 	m_caseName->SetForegroundColour( wxMetroTheme::Foreground() );
 	m_caseName->SetValue("Project name...");
 
-	m_createCase = new wxMetroButton(this, ID_m_createCase, "Start >>", wxPoint(585,51), wxSize(80,21));
+	m_createCase = new wxMetroButton(this, ID_m_createCase, "Start", wxNullBitmap, 
+		wxPoint(585,51), wxSize(80,21), wxMB_RIGHTARROW);
 	m_createCase->SetFont( wxMetroTheme::NormalFont(14) );
 	
 	
