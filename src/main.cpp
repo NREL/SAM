@@ -20,12 +20,14 @@ BEGIN_EVENT_TABLE( MainWindow, wxFrame )
 END_EVENT_TABLE()
 
 MainWindow::MainWindow()
-	: wxFrame( 0, wxID_ANY, wxT("SAM") + wxString(" ") + SamApp::VersionStr(), wxDefaultPosition, wxSize( 1100, 800 ) )
+	: wxFrame( 0, wxID_ANY, wxT("SAM") + wxString(" ") + SamApp::VersionStr(), 
+		wxDefaultPosition, wxSize( 1100, 700 ) )
 {
 #ifdef __WXMSW__
 	SetIcon( wxICON( appicon ) );
 #endif	
 
+#ifdef __WXOSX__
 	m_fileMenu = new wxMenu;
 	m_fileMenu->Append( wxID_NEW );
 	m_fileMenu->AppendSeparator();
@@ -52,6 +54,7 @@ MainWindow::MainWindow()
 	m_menuBar->Append( m_toolsMenu, wxT("&Tools")  );
 	m_menuBar->Append( m_helpMenu, wxT("&Help")  );
 	SetMenuBar( m_menuBar );
+#endif
 
 	m_welcomeScreen = new WelcomeScreen( this );
 }

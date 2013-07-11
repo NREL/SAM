@@ -72,17 +72,17 @@ WelcomeScreen::WelcomeScreen(MainWindow *parent)
 	m_caseName = new wxTextCtrl(this, ID_m_caseName, wxEmptyString, 
 		wxPoint(459,27), wxSize(208,21), 
 		wxTE_PROCESS_ENTER|wxBORDER_NONE);
-	m_caseName->SetFont( wxMetroTheme::LightFont(14) );
-	m_caseName->SetForegroundColour( wxMetroTheme::Foreground() );
+	m_caseName->SetFont( wxMetroTheme::Font( wxMT_NORMAL, 14) );
+	m_caseName->SetForegroundColour( wxMetroTheme::Colour( wxMT_FOREGROUND ) );
 	m_caseName->SetValue("Project name...");
 
 	m_createCase = new wxMetroButton(this, ID_m_createCase, "Start", wxNullBitmap, 
 		wxPoint(585,51), wxSize(80,21), wxMB_RIGHTARROW);
-	m_createCase->SetFont( wxMetroTheme::NormalFont(14) );
+	m_createCase->SetFont( wxMetroTheme::Font( wxMT_NORMAL, 14) );
 	
 	
 	m_recent = new wxListBox(this, ID_m_recent, wxPoint(15,327), wxSize(650,150), 0, 0, wxLB_SINGLE);
-	m_recent->SetFont( wxMetroTheme::NormalFont() );
+	m_recent->SetFont( wxMetroTheme::Font( wxMT_NORMAL ) );
 
 	//m_onlineForum = new wxMetroButton(this, ID_m_onlineForum, "Support forum");
 	//m_onlineForum->SetFont( wxMetroTheme::NormalFont(14) );
@@ -277,7 +277,7 @@ void WelcomeScreen::OnPaint(wxPaintEvent &)
 	dc.SetBackground( wxBrush( *wxWHITE ) );
 	dc.Clear();
 	
-	dc.SetFont( wxMetroTheme::LightFont( 28 ) );	
+	dc.SetFont( wxMetroTheme::Font( wxMT_LIGHT, 28 ) );	
 	dc.SetTextForeground( wxColour(180, 180, 180) );
 	dc.DrawText("Solar Advisor " + SamApp::VersionStr(), BORDER, 30 );
 
@@ -285,20 +285,20 @@ void WelcomeScreen::OnPaint(wxPaintEvent &)
 
 	int y = 100;
 	
-	dc.SetPen( wxPen( wxMetroTheme::TextColour(), 1 ) );
+	dc.SetPen( wxPen( wxMetroTheme::Colour( wxMT_TEXT ), 1 ) );
 	dc.DrawLine( BORDER, y, sz.GetWidth()-BORDER, y );
 	
 	dc.SetPen( *wxTRANSPARENT_PEN );
-	dc.SetBrush( wxBrush( wxMetroTheme::AccentColour() ) );
+	dc.SetBrush( wxBrush( wxMetroTheme::Colour( wxMT_ACCENT ) ) );
 	dc.DrawRectangle( BORDER, y+1, 350, sz.GetHeight() - y );
 	
 	y += 20;
 	
-	dc.SetFont( wxMetroTheme::NormalFont() );	
+	dc.SetFont( wxMetroTheme::Font() );	
 	dc.SetTextForeground( *wxWHITE );
 	dc.DrawText( "Enter a new project name to begin", BORDER+20, y);
 
-	dc.SetTextForeground( wxMetroTheme::TextColour() );
+	dc.SetTextForeground( wxMetroTheme::Colour( wxMT_TEXT ) );
 	dc.DrawText( "News from the SAM team @ NREL", BORDER+350+BORDER, y);
 		
 	if (m_messageStatus == FAILED)
@@ -307,7 +307,7 @@ void WelcomeScreen::OnPaint(wxPaintEvent &)
 		wxString stat_text = "Could not connect.";
 		int tw = dc.GetTextExtent( stat_text ).GetWidth();
 		dc.DrawText( stat_text, sz.GetWidth()-BORDER-tw-2, y );		
-		dc.SetTextForeground( wxMetroTheme::TextColour() ); // restore text colour
+		dc.SetTextForeground( wxMetroTheme::Colour( wxMT_TEXT ) ); // restore text colour
 	}
 
 	y += 20;
