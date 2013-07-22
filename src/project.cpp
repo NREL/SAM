@@ -12,11 +12,6 @@ Case::~Case()
 {
 	// nothing to do
 }
-
-wxString Case::GetName()
-{
-	return m_name;
-}
 	
 Object *Case::Duplicate()
 {

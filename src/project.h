@@ -3,6 +3,8 @@
 
 #include <vector>
 
+
+#include <lk_env.h>
 #include "object.h"
 
 
@@ -12,7 +14,7 @@ public:
 	Case();
 	virtual ~Case();
 
-	wxString GetName();
+	wxString GetName() { return m_name; }
 	void SetName( const wxString &s ) { m_name = s; }
 	
 	virtual Object *Duplicate();
@@ -21,9 +23,11 @@ public:
 	virtual void Write( wxOutputStream & );
 	virtual bool Read( wxInputStream & );
 
+	lk::env_t &Variables() { return m_vars; }
+
 private:
 	wxString m_name;
-
+	lk::env_t m_vars;
 };
 
 class ProjectFile

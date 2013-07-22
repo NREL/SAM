@@ -14,10 +14,14 @@
     <ResourceCompile Include="SAM.rc" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\src\equation.cpp" />
     <ClCompile Include="..\src\main.cpp" />
     <ClCompile Include="..\src\object.cpp" />
     <ClCompile Include="..\src\project.cpp" />
     <ClCompile Include="..\src\simplecurl.cpp" />
+    <ClCompile Include="..\src\uiview.cpp" />
+    <ClCompile Include="..\src\uiwidgets.cpp" />
+    <ClCompile Include="..\src\variable.cpp" />
     <ClCompile Include="..\src\welcome.cpp" />
     <ClCompile Include="..\src\wxcurlbase.cpp" />
     <ClCompile Include="..\src\wxcurlftp.cpp" />
@@ -25,10 +29,14 @@
     <ClCompile Include="..\src\wxcurlthread.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\src\equation.h" />
     <ClInclude Include="..\src\main.h" />
     <ClInclude Include="..\src\object.h" />
     <ClInclude Include="..\src\project.h" />
     <ClInclude Include="..\src\simplecurl.h" />
+    <ClInclude Include="..\src\uiview.h" />
+    <ClInclude Include="..\src\uiwidgets.h" />
+    <ClInclude Include="..\src\variable.h" />
     <ClInclude Include="..\src\welcome.h" />
     <ClInclude Include="..\src\wxcurlbase.h" />
     <ClInclude Include="..\src\wxcurlftp.h" />
@@ -66,18 +74,18 @@
     <_ProjectFileVersion>11.0.50727.1</_ProjectFileVersion>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <OutDir>$(ProjectDir)\..\deploy\</OutDir>
-    <IntDir>$(ProjectDir)\build\$(Configuration)\</IntDir>
+    <OutDir>$(ProjectDir)\..\deploy\$(Platform)\</OutDir>
+    <IntDir>$(ProjectDir)\build\$(Configuration)\$(Platform)\</IntDir>
     <LinkIncremental>true</LinkIncremental>
     <GenerateManifest>true</GenerateManifest>
-    <TargetName>sam32d</TargetName>
+    <TargetName>$(ProjectName)d</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <OutDir>$(ProjectDir)\..\deploy\</OutDir>
-    <IntDir>$(ProjectDir)\build\$(Configuration)\</IntDir>
+    <OutDir>$(ProjectDir)\..\deploy\$(Platform)\</OutDir>
+    <IntDir>$(ProjectDir)\build\$(Configuration)\$(Platform)\</IntDir>
     <LinkIncremental>false</LinkIncremental>
     <GenerateManifest>true</GenerateManifest>
-    <TargetName>sam32</TargetName>
+    <TargetName>$(ProjectName)</TargetName>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <Midl>
@@ -87,7 +95,7 @@
     <ClCompile>
       <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>$(ProjectDir)\libcurl\include;$(WXMSW3)\lib\vc_lib\mswud;$(WXMSW3)\include;$(WEXDIR)\include;$(LKDIR);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)\libcurl\include;$(WXMSW3)\lib\vc_lib\mswud;$(WXMSW3)\include;$(WEXDIR)\include;$(LKDIR);$(SSCDIR);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>LK_USE_WXWIDGETS;WIN32;_DEBUG;_CRT_SECURE_NO_DEPRECATE=1;_CRT_NON_CONFORMING_SWPRINTFS=1;_SCL_SECURE_NO_WARNINGS=1;__WXMSW__;_UNICODE;_WINDOWS;NOPCH;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ExceptionHandling>Sync</ExceptionHandling>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -107,10 +115,10 @@
       <AdditionalIncludeDirectories>$(WXMSW3)\lib\vc_lib\mswud;$(WXMSW3)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>wxbase29ud_net.lib;wxbase29ud_xml.lib;wxmsw29ud_webview.lib;wxmsw29ud_adv.lib;wxmsw29ud_html.lib;wxmsw29ud_aui.lib;wxmsw29ud_stc.lib;wxmsw29ud_core.lib;wxbase29ud.lib;wxscintillad.lib;wxtiffd.lib;wxjpegd.lib;wxpngd.lib;wxzlibd.lib;wxregexud.lib;wxexpatd.lib;kernel32.lib;user32.lib;gdi32.lib;comdlg32.lib;winspool.lib;winmm.lib;shell32.lib;comctl32.lib;ole32.lib;oleaut32.lib;uuid.lib;rpcrt4.lib;advapi32.lib;wsock32.lib;wininet.lib;wexvc12wx3d.lib;lkvc12wx3d.lib;libcurl.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>wxbase29ud_net.lib;wxbase29ud_xml.lib;wxmsw29ud_webview.lib;wxmsw29ud_adv.lib;wxmsw29ud_html.lib;wxmsw29ud_aui.lib;wxmsw29ud_stc.lib;wxmsw29ud_core.lib;wxbase29ud.lib;wxscintillad.lib;wxtiffd.lib;wxjpegd.lib;wxpngd.lib;wxzlibd.lib;wxregexud.lib;wxexpatd.lib;kernel32.lib;user32.lib;gdi32.lib;comdlg32.lib;winspool.lib;winmm.lib;shell32.lib;comctl32.lib;ole32.lib;oleaut32.lib;uuid.lib;rpcrt4.lib;advapi32.lib;wsock32.lib;wininet.lib;wexvc12wx3d.lib;lkvc12wx3d.lib;libcurl.lib;ssc.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(TargetPath)</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <AdditionalLibraryDirectories>$(ProjectDir)\libcurl\lib;$(LKDIR);$(WEXDIR);$(WXMSW3)\lib\vc_lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(ProjectDir)\libcurl\lib;$(LKDIR);$(WEXDIR);$(WXMSW3)\lib\vc_lib;$(SSCDIR)\$(Platform)\$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ProgramDatabaseFile>$(ProjectDir)\$(TargetName).pdb</ProgramDatabaseFile>
       <SubSystem>Windows</SubSystem>
@@ -129,7 +137,7 @@
     <ClCompile>
       <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
       <Optimization>MaxSpeed</Optimization>
-      <AdditionalIncludeDirectories>$(ProjectDir)\libcurl\include;$(WXMSW3)\lib\vc_lib\mswu;$(WXMSW3)\include;$(WEXDIR)\include;$(LKDIR);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)\libcurl\include;$(WXMSW3)\lib\vc_lib\mswu;$(WXMSW3)\include;$(WEXDIR)\include;$(LKDIR);$(SSCDIR);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>LK_USE_WXWIDGETS;WIN32;_CRT_SECURE_NO_DEPRECATE=1;_CRT_NON_CONFORMING_SWPRINTFS=1;_SCL_SECURE_NO_WARNINGS=1;__WXMSW__;NDEBUG;_UNICODE;_WINDOWS;NOPCH;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ExceptionHandling>Sync</ExceptionHandling>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
@@ -147,10 +155,10 @@
       <AdditionalIncludeDirectories>$(WXMSW3)\lib\vc_lib\mswu;$(WXMSW3)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>wxbase29u_net.lib;wxbase29u_xml.lib;wxmsw29u_webview.lib;wxmsw29u_adv.lib;wxmsw29u_html.lib;wxmsw29u_aui.lib;wxmsw29u_stc.lib;wxmsw29u_core.lib;wxbase29u.lib;wxscintilla.lib;wxtiff.lib;wxjpeg.lib;wxpng.lib;wxzlib.lib;wxregexu.lib;wxexpat.lib;kernel32.lib;user32.lib;gdi32.lib;comdlg32.lib;winspool.lib;winmm.lib;shell32.lib;comctl32.lib;ole32.lib;oleaut32.lib;uuid.lib;rpcrt4.lib;advapi32.lib;wsock32.lib;wininet.lib;wexvc12wx3.lib;lkvc12wx3.lib;libcurl.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>wxbase29u_net.lib;wxbase29u_xml.lib;wxmsw29u_webview.lib;wxmsw29u_adv.lib;wxmsw29u_html.lib;wxmsw29u_aui.lib;wxmsw29u_stc.lib;wxmsw29u_core.lib;wxbase29u.lib;wxscintilla.lib;wxtiff.lib;wxjpeg.lib;wxpng.lib;wxzlib.lib;wxregexu.lib;wxexpat.lib;kernel32.lib;user32.lib;gdi32.lib;comdlg32.lib;winspool.lib;winmm.lib;shell32.lib;comctl32.lib;ole32.lib;oleaut32.lib;uuid.lib;rpcrt4.lib;advapi32.lib;wsock32.lib;wininet.lib;wexvc12wx3.lib;lkvc12wx3.lib;libcurl.lib;ssc.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(TargetPath)</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <AdditionalLibraryDirectories>$(ProjectDir)\libcurl\lib;$(LKDIR);$(WEXDIR);$(WXMSW3)\lib\vc_lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(ProjectDir)\libcurl\lib;$(LKDIR);$(WEXDIR);$(WXMSW3)\lib\vc_lib;$(SSCDIR)\$(Platform)\$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ProgramDatabaseFile>$(ProjectDir)\$(TargetName).pdb</ProgramDatabaseFile>
       <SubSystem>Windows</SubSystem>
