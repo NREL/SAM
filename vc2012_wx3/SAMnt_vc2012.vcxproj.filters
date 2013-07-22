@@ -41,6 +41,18 @@
     <ClInclude Include="..\src\object.h">
       <Filter>Source</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\equation.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\uiview.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\uiwidgets.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\variable.h">
+      <Filter>Source</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\welcome.cpp">
@@ -68,6 +80,18 @@
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="..\src\object.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\equation.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\uiview.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\uiwidgets.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\variable.cpp">
       <Filter>Source</Filter>
     </ClCompile>
   </ItemGroup>
