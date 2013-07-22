@@ -19,6 +19,28 @@ Variables::~Variables()
 	if ( m_owned ) ::ssc_data_free( m_data );
 }
 
+Object *Variables::Duplicate()
+{
+	Variables *v = new Variables;
+	v->Copy( this );
+	return v;
+}
+
+bool Variables::Copy( Object *obj )
+{
+	if ( Variables *v = dynamic_cast<Variables*>(obj) )
+	{
+		Copy( *v, true );
+		return true;
+	}
+	else return false;
+}
+
+wxString Variables::GetTypeName()
+{
+	return "sam.variables";
+}
+
 Variables &Variables::operator=( const Variables &rhs )
 {
 	if ( m_owned ) ::ssc_data_free( m_data );
@@ -252,7 +274,7 @@ std::vector< std::vector<float> > Variables::Matrix( const wxString &name )
 		for ( int r=0;r<rows; r++ )
 		{
 			mat[r].resize( cols );
-			for ( size_t c=0;c<cols; c++ )
+			for ( int c=0;c<cols; c++ )
 				mat[r][c] = (float) p[ r*cols+c ];
 		}
 	}

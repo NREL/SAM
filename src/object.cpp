@@ -145,3 +145,58 @@ bool ObjectCollection::Read( wxInputStream &input )
 }
 
 
+StringHash::StringHash()
+{
+	// nothing to do
+}
+
+Object *StringHash::Duplicate()
+{
+	StringHash *s = new StringHash;
+	s->Copy( this );
+	return s;
+}
+
+bool StringHash::Copy( Object *obj )
+{
+	if ( StringHash *sh = dynamic_cast<StringHash*>(obj) )
+	{
+		*this = *sh;
+		return true;
+	}
+	else return false;
+}
+
+wxString StringHash::GetTypeName()
+{
+	return "sam.stringhash";
+}
+
+void StringHash::Write( wxOutputStream &output )
+{
+	wxDataOutputStream out(output);
+	out.Write8(0xb7);
+	out.Write32( size() );
+	for ( StringHash::iterator it = begin();
+		it != end();
+		++it )
+	{
+		out.WriteString( it->first );
+		out.WriteString( it->second );
+	}
+	out.Write8(0xb7);
+}
+
+bool StringHash::Read( wxInputStream &input )
+{
+	wxDataInputStream in(input);
+	wxUint8 code = in.Read8();
+	size_t n = in.Read32();
+	for (size_t i=0;i<n;i++)
+	{
+		wxString name = in.ReadString();
+		wxString value = in.ReadString();
+		(*this)[name] = value;
+	}
+	return code == in.Read8();
+}
