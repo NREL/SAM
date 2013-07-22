@@ -24,6 +24,13 @@ bool Case::Copy( Object *obj )
 {
 	if ( Case *rhs = dynamic_cast<Case*>( obj ) )
 	{
+		m_name = rhs->m_name;
+		m_technology = rhs->m_technology;
+		m_financing = rhs->m_financing;
+		m_vars.Copy( rhs->m_vars, true );
+		m_baseCase.Copy( rhs->m_vars, true );
+		m_properties = rhs->m_properties;
+		m_notes = rhs->m_notes;
 		return true;
 	}
 	else
@@ -43,6 +50,13 @@ void Case::Write( wxOutputStream &_o )
 	out.Write8( 1 );
 
 	// write data
+	out.WriteString( m_name );
+	out.WriteString( m_technology );
+	out.WriteString( m_financing );
+	m_vars.Write( _o );
+	m_baseCase.Write( _o );
+	m_properties.Write( _o );
+	m_notes.Write( _o );
 
 	out.Write8( 0x9b );
 }
@@ -55,10 +69,44 @@ bool Case::Read( wxInputStream &_i )
 	in.Read8(); // version
 
 	// read data
+	m_name = in.ReadString();
+	m_technology = in.ReadString();
+	m_financing = in.ReadString();
+	m_vars.Read( _i );
+	m_baseCase.Read( _i );
+	m_properties.Read( _i );
+	m_notes.Read( _i );
 
 	return (in.Read8() == code);
 }
 
+
+void Case::SetConfiguration( const wxString &tech, const wxString &fin )
+{
+	if ( m_technology == tech && m_financing == fin )
+		return;
+
+	m_technology = tech;
+	m_financing = fin;
+
+	// erase all input variables
+	m_vars.Clear();
+
+	// erase results
+	m_baseCase.Clear();
+
+	// look up configuration
+
+	// set up all default variables and values
+
+	// reevalute all equations
+}
+
+void Case::GetConfiguration( wxString *tech, wxString *fin )
+{
+	if ( tech ) *tech = m_technology;
+	if ( fin ) *fin = m_financing;
+}
 
 ProjectFile::ProjectFile()
 {
@@ -115,7 +163,7 @@ void ProjectFile::SetProperty( const wxString &name, const wxString &value )
 wxArrayString ProjectFile::GetProperties()
 {
 	wxArrayString list;
-	for ( pfStringHash::iterator it = m_properties.begin();
+	for ( StringHash::iterator it = m_properties.begin();
 		it != m_properties.end();
 		++it )
 		list.Add( it->first );
@@ -153,15 +201,7 @@ void ProjectFile::Write( wxOutputStream &output )
 	out.Write16( SamApp::VersionMajor() );
 	out.Write16( SamApp::VersionMinor() );
 	
-	out.Write32( m_properties.size() );
-	for ( pfStringHash::iterator it = m_properties.begin();
-		it != m_properties.end();
-		++it )
-	{
-		out.WriteString( it->first );
-		out.WriteString( it->second );
-	}
-
+	m_properties.Write( output );
 	m_cases.Write( output );
 	m_objects.Write( output );
 	
@@ -182,14 +222,7 @@ bool ProjectFile::Read( wxInputStream &input )
 
 	// todo: check version numbers of file
 
-	size_t n = in.Read32();
-	for (size_t i=0;i<n;i++)
-	{
-		wxString name = in.ReadString();
-		wxString value = in.ReadString();
-		m_properties[name] = value;
-	}
-
+	m_properties.Read( input );
 	m_cases.Read( input );
 	m_objects.Read( input );
 

@@ -8,6 +8,8 @@
 
 #include <exception>
 
+#include "variable.h"
+
 class SamException : public std::exception
 {
 	wxString m_err;
@@ -53,6 +55,7 @@ public:
 	static wxString VersionStr();
 	static int VersionMajor();
 	static int VersionMinor();
+	static VariableInfo &Info();
 
 };
 
