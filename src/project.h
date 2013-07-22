@@ -9,18 +9,21 @@
 class Case : public Object
 {
 public:
-	Case() { }
-	virtual ~Case() { }
+	Case();
+	virtual ~Case();
 
-	wxString GetName() { return "no name"; }
+	wxString GetName();
+	void SetName( const wxString &s ) { m_name = s; }
 	
-	virtual Object *Duplicate() = 0;
-	virtual bool Copy( Object *obj ) = 0;
-	virtual wxString GetTypeName() = 0;
-	virtual void Write( wxOutputStream & ) = 0;
-	virtual bool Read( wxInputStream & ) = 0;
+	virtual Object *Duplicate();
+	virtual bool Copy( Object *obj );
+	virtual wxString GetTypeName();
+	virtual void Write( wxOutputStream & );
+	virtual bool Read( wxInputStream & );
 
 private:
+	wxString m_name;
+
 };
 
 class ProjectFile
