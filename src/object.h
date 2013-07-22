@@ -56,6 +56,288 @@ public:
 
 
 
+class StringHash : public unordered_map<wxString, wxString, wxStringHash, wxStringEqual>,
+	public Object
+{
+public:
+	StringHash();
+
+	virtual Object *Duplicate();
+	virtual bool Copy( Object *obj );
+	virtual wxString GetTypeName();
+	virtual void Write( wxOutputStream & );
+	virtual bool Read( wxInputStream & );
+};
+
+
+
+#if defined(_DEBUG) && defined(_MSC_VER) && defined(_WIN32) && !defined(_WIN64)
+#define VEC_ASSERT(x) {if(!(x)) _asm{int 0x03}}
+#else
+#define VEC_ASSERT(X) assert(X)
+#endif
+
+template< typename T >
+class Matrix
+{
+protected:
+	T *t_array;
+	size_t n_rows, n_cols;
+public:
+
+	Matrix()
+	{
+		t_array = new T[1];
+		n_rows = n_cols = 1;
+	}
+		
+	Matrix(size_t len)
+	{
+		t_array = NULL;
+		if (len < 1) len = 1;
+		resize( 1, len );
+	}
+
+	Matrix(size_t nr, size_t nc)
+	{
+		t_array = NULL;
+		if (nr < 1) nr = 1;
+		if (nc < 1) nc = 1;
+		resize(nr,nc);
+	}
+		
+	Matrix(size_t nr, size_t nc, const T &val)
+	{
+		t_array = NULL;
+		if (nr < 1) nr = 1;
+		if (nc < 1) nc = 1;
+		resize(nr,nc);
+		fill(val);
+	}
+
+
+	virtual ~Matrix()
+	{
+		if (t_array) delete [] t_array;
+	}
+		
+	void clear()
+	{
+		if (t_array) delete [] t_array;
+		n_rows = n_cols = 1;
+		t_array = new T[1];
+	}
+		
+	void copy( const Matrix &rhs )
+	{
+		if (this != &rhs)
+		{
+			resize( rhs.nrows(), rhs.ncols() );
+			size_t nn = n_rows*n_cols;
+			for (size_t i=0;i<nn;i++)
+				t_array[i] = rhs.t_array[i];
+		}
+	}
+
+	void assign( const T *pvalues, size_t len )
+	{
+		resize( len );
+		if ( n_cols == len && n_rows == 1 )
+			for (size_t i=0;i<len;i++)
+				t_array[i] = pvalues[i];
+	}
+		
+	void assign( const T *pvalues, size_t nr, size_t nc )
+	{
+		resize( nr, nc );
+		if ( n_rows == nr && n_cols == nc )
+		{
+			size_t len = nr*nc;
+			for (size_t i=0;i<len;i++)
+				t_array[i] = pvalues[i];
+		}
+	}
+
+	Matrix &operator=(const Matrix &rhs)
+	{
+		copy( rhs );
+		return *this;
+	}
+		
+	Matrix &operator=(const T &val)
+	{
+		resize(1,1);
+		t_array[0] = val;
+		return *this;
+	}
+		
+	inline operator T()
+	{
+		return t_array[0];
+	}
+		
+	bool equals( const Matrix & rhs )
+	{
+		if (n_rows != rhs.n_rows || n_cols != rhs.n_cols)
+			return false;
+			
+		size_t nn = n_rows*n_cols;
+		for (size_t i=0;i<nn;i++)
+			if (t_array[i] != rhs.t_array[i])
+				return false;
+			
+		return true;
+	}
+		
+	inline bool is_single()
+	{
+		return (n_rows == 1 && n_cols == 1);
+	}
+			
+	inline bool is_array()
+	{
+		return (n_rows == 1);
+	}
+		
+	void fill( const T &val )
+	{
+		size_t ncells = n_rows*n_cols;
+		for (size_t i=0;i<ncells;i++)
+			t_array[i] = val;
+	}
+
+	void resize(size_t nr, size_t nc)
+	{
+		if (nr < 1 || nc < 1) return;
+		if (nr == n_rows && nc == n_cols) return;
+			
+		if (t_array) delete [] t_array;
+		t_array = new T[ nr * nc ];
+		n_rows = nr;
+		n_cols = nc;
+	}
+
+	void resize_fill(size_t nr, size_t nc, const T &val)
+	{
+		resize( nr, nc );
+		fill( val );
+	}
+		
+	void resize(size_t len)
+	{
+		resize( 1, len );
+	}
+		
+	void resize_fill(size_t len, const T &val)
+	{
+		resize_fill( 1, len, val );
+	}
+		
+	inline T &at(size_t i)
+	{
+#ifdef _DEBUG
+		VEC_ASSERT( i >= 0 && i < n_cols );
+#endif
+		return t_array[i];
+	}
+
+	inline const T&at(size_t i) const
+	{
+#ifdef _DEBUG
+		VEC_ASSERT( i >= 0 && i < n_cols );
+#endif
+		return t_array[i];
+	}
+		
+	inline T &at(size_t r, size_t c)
+	{
+#ifdef _DEBUG
+		VEC_ASSERT( r >= 0 && r < n_rows && c >= 0 && c < n_cols );
+#endif
+		return t_array[n_cols*r+c];
+	}
+
+	inline const T &at(size_t r, size_t c) const
+	{
+#ifdef _DEBUG
+		VEC_ASSERT( r >= 0 && r < n_rows && c >= 0 && c < n_cols );
+#endif
+		return t_array[n_cols*r+c];
+	}
+		
+	inline T &operator()(size_t r, size_t c)
+	{
+#ifdef _DEBUG
+		VEC_ASSERT( r >= 0 && r < n_rows && c >= 0 && c < n_cols );
+#endif
+		return t_array[n_cols*r+c];
+	}
+
+	inline const T &operator()(size_t r, size_t c) const
+	{
+#ifdef _DEBUG
+		VEC_ASSERT( r >= 0 && r < n_rows && c >= 0 && c < n_cols );
+#endif
+		return t_array[n_cols*r+c];
+	}
+		
+	T operator[] (size_t i) const
+	{
+#ifdef _DEBUG
+		VEC_ASSERT( i >= 0 && i < n_cols );
+#endif
+		return t_array[i];
+	}
+		
+	T &operator[] (size_t i)
+	{
+#ifdef _DEBUG
+		VEC_ASSERT( i >= 0 && i < n_cols );
+#endif
+		return t_array[i];
+	}
+				
+	inline size_t nrows() const
+	{
+		return n_rows;
+	}
+		
+	inline size_t ncols() const
+	{
+		return n_cols;
+	}
+		
+	inline size_t ncells() const
+	{
+		return n_rows*n_cols;
+	}
+		
+	inline size_t membytes() const
+	{
+		return n_rows*n_cols*sizeof(T);
+	}
+		
+	void size(size_t &nr, size_t &nc) const
+	{
+		nr = n_rows;
+		nc = n_cols;
+	}
+		
+	size_t length() const
+	{
+		return n_cols;
+	}
+		
+	inline T *data()
+	{
+		return t_array;
+	}
+
+	inline T value() const
+	{
+		return t_array[0];
+	}
+};
 
 #endif
 

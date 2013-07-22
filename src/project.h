@@ -3,9 +3,8 @@
 
 #include <vector>
 
-
-#include <lk_env.h>
 #include "object.h"
+#include "variable.h"
 
 
 class Case : public Object
@@ -14,26 +13,39 @@ public:
 	Case();
 	virtual ~Case();
 
-	wxString GetName() { return m_name; }
-	void SetName( const wxString &s ) { m_name = s; }
-	
 	virtual Object *Duplicate();
 	virtual bool Copy( Object *obj );
 	virtual wxString GetTypeName();
 	virtual void Write( wxOutputStream & );
 	virtual bool Read( wxInputStream & );
 
-	lk::env_t &Variables() { return m_vars; }
+
+	wxString GetName() { return m_name; }
+	void SetName( const wxString &s ) { m_name = s; }
+	void SetConfiguration( const wxString &tech, const wxString &fin );
+	void GetConfiguration( wxString *tech, wxString *fin );	
+	Variables &Vars() { return m_vars; }
+
+	int Changed( const wxString &name );
+
+	Variables &BaseCase();
+
+	StringHash &Properties() { return m_properties; }
+	StringHash &Notes() { return m_notes; }
 
 private:
 	wxString m_name;
-	lk::env_t m_vars;
+	wxString m_technology;
+	wxString m_financing;
+	Variables m_vars;
+	Variables m_baseCase;
+	StringHash m_properties;
+	StringHash m_notes;
+
 };
 
 class ProjectFile
 {
-	typedef unordered_map<wxString, wxString, wxStringHash, wxStringEqual> pfStringHash;
-
 public:
 	ProjectFile();
 	virtual ~ProjectFile();
@@ -65,7 +77,7 @@ public:
 private:
 	ObjectCollection m_cases;
 	ObjectCollection m_objects;
-	pfStringHash m_properties;
+	StringHash m_properties;
 	wxString m_lastError;
 };
 

@@ -9,7 +9,9 @@
 
 #include <ssc/sscapi.h>
 
-class Variables
+#include "object.h"
+
+class Variables : public Object
 {
 public:
 	Variables();
@@ -21,6 +23,12 @@ public:
 	static const int MATRIX = SSC_MATRIX;
 	static const int STRING = SSC_STRING;
 	static const int TABLE = SSC_TABLE;
+		
+	virtual Object *Duplicate();
+	virtual bool Copy( Object *obj );
+	virtual wxString GetTypeName();
+	virtual void Write( wxOutputStream & );
+	virtual bool Read( wxInputStream & );
 
 	Variables &operator=( const Variables &rhs );
 
@@ -33,7 +41,7 @@ public:
 
 	void Copy( const Variables &rhs, bool erase_first = true );
 	wxArrayString List() const;
-
+	
 	void Set( const wxString &name, int val );
 	void Set( const wxString &name, float val );
 	
@@ -53,10 +61,7 @@ public:
 	std::vector< std::vector<float> > Matrix( const wxString &name );
 	wxString String( const wxString &name );
 	Variables Table( const wxString &name );
-
-	void Write( wxOutputStream & );
-	bool Read( wxInputStream & );
-
+	
 	ssc_data_t Data() const { return m_data; }
 
 
@@ -69,5 +74,31 @@ private:
 	ssc_data_t m_data;
 	bool m_owned;
 };
+
+class VariableInfo
+{
+public:
+	VariableInfo();
+	~VariableInfo();
+
+	bool Load( const wxString &script );
+	void Clear();
+
+	wxArrayString ListAll();
+	wxArrayString ListAll( const wxString &tech, const wxString &fin );
+	int Type( const wxString &name );
+	wxString Label( const wxString &name );
+	wxString Group( const wxString &name );
+	wxString Units( const wxString &name );
+	wxArrayString IndexLabels( const wxString &name );
+	bool IsCalculated( const wxString &name );
+	bool LoadDefaultValue( Variables &v, const wxString &name, 
+		const wxString &tech, const wxString &fin );
+	bool LoadDefaultValues( Variables &v,
+		const wxString &tech, const wxString &fin );
+
+private:
+};
+
 
 #endif
