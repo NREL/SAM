@@ -2,6 +2,69 @@
 #include "project.h"
 #include "main.h"
 
+
+Case::Case()
+{
+	m_name = wxT( "untitled" );
+}
+
+Case::~Case()
+{
+	// nothing to do
+}
+
+wxString Case::GetName()
+{
+	return m_name;
+}
+	
+Object *Case::Duplicate()
+{
+	Case *c = new Case();
+	c->Copy(this);
+	return c;
+}
+
+bool Case::Copy( Object *obj )
+{
+	if ( Case *rhs = dynamic_cast<Case*>( obj ) )
+	{
+		return true;
+	}
+	else
+		return false;
+}
+
+wxString Case::GetTypeName()
+{
+	return "sam.case";
+}
+
+void Case::Write( wxOutputStream &_o )
+{
+	wxDataOutputStream out(_o);
+
+	out.Write8( 0x9b );
+	out.Write8( 1 );
+
+	// write data
+
+	out.Write8( 0x9b );
+}
+
+bool Case::Read( wxInputStream &_i )
+{
+	wxDataInputStream in(_i);
+
+	wxUint8 code = in.Read8();
+	in.Read8(); // version
+
+	// read data
+
+	return (in.Read8() == code);
+}
+
+
 ProjectFile::ProjectFile()
 {
 }
