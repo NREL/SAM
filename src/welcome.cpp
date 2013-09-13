@@ -220,8 +220,7 @@ void WelcomeScreen::OnUpdateDownloadThread( wxSimpleCurlEvent &evt )
 
 wxString WelcomeScreen::GetLocalMessagesFile()
 {	
-	wxStandardPaths paths;
-	wxString path = paths.GetUserLocalDataDir(); 
+	wxString path = wxStandardPaths::Get().GetUserLocalDataDir(); 
 	
 	if (!wxDirExists( path ))
 		wxFileName::Mkdir( path, 511, wxPATH_MKDIR_FULL );
