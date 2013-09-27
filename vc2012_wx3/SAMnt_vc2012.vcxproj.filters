@@ -41,6 +41,9 @@
     <ClInclude Include="..\src\variables.h">
       <Filter>Source</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\case.h">
+      <Filter>Source</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\welcome.cpp">
@@ -68,6 +71,9 @@
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="..\src\variables.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\case.cpp">
       <Filter>Source</Filter>
     </ClCompile>
   </ItemGroup>

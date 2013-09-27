@@ -9,6 +9,11 @@
 #include <exception>
 
 #include "variables.h"
+#include "project.h"
+
+class wxSimplebook;
+class wxPanel;
+class wxMetroTabList;
 
 class SamException : public std::exception
 {
@@ -26,18 +31,32 @@ class MainWindow : public wxFrame
 public:
 	MainWindow( );
 
+	ProjectFile &Project() { return m_project; }
+
+	void CreateProject();
+	void CloseProject();
+
+
+protected:
 	void OnClose( wxCloseEvent & );
-
-	DECLARE_EVENT_TABLE();
-
+	void OnCommand( wxCommandEvent & );
+	void OnCaseTabChange( wxCommandEvent & );
+	void OnCaseTabButton( wxCommandEvent & );
+	void OnCaseMenu( wxCommandEvent & );
 private:
-
 #ifdef __WXOSX__
 	wxMenuBar *m_menuBar;
 	wxMenu *m_fileMenu, *m_caseMenu, *m_toolsMenu, *m_helpMenu;
 #endif
-
+	wxSimplebook *m_topBook;
 	WelcomeScreen *m_welcomeScreen;
+	wxPanel *m_caseTabPanel;
+	wxMetroTabList *m_caseTabList;
+	wxSimplebook *m_caseNotebook;
+
+	ProjectFile m_project;
+	
+	DECLARE_EVENT_TABLE();
 };
 
 

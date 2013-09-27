@@ -13,7 +13,8 @@ CFLAGS = -g -I. -I$(SRCDIR) -I$(WEXDIR)/include -I$(LKDIR) `wx-config-3 --cflags
 CXXFLAGS = $(CFLAGS)
 LDFLAGS = `wx-config-3 --libs` `wx-config-3 --libs aui` `wx-config-3 --libs stc` -lm $(LKLIB) $(WEXLIB) -lstdc++ -lcurl
 
-OBJECTS = main.o \
+OBJECTS = case.o \
+	main.o \
 	equation.o \
 	uiview.o \
 	uiwidgets.o \

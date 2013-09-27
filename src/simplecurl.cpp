@@ -134,7 +134,7 @@ wxSimpleCurlDownloadThread::wxSimpleCurlDownloadThread( wxEvtHandler *handler, i
 
 wxSimpleCurlDownloadThread::~wxSimpleCurlDownloadThread()
 {
-	if (!Finished())
+	if ( IsStarted() && !Finished())
 		Abort();
 
 	delete m_thread;
@@ -145,6 +145,12 @@ void wxSimpleCurlDownloadThread::Start( const wxString &url )
 	m_thread->SetUrl( url );
 	m_thread->Create();
 	m_thread->Run();
+	m_started = true;
+}
+
+bool wxSimpleCurlDownloadThread::IsStarted()
+{
+	return m_started;
 }
 
 wxString wxSimpleCurlDownloadThread::GetData()
@@ -159,7 +165,7 @@ bool wxSimpleCurlDownloadThread::Finished()
 
 void wxSimpleCurlDownloadThread::Abort()
 {
-	if (!Finished())
+	if (IsStarted() && !Finished())
 	{
 		m_thread->Cancel();
 		m_thread->Wait();
