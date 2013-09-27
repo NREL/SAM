@@ -37,7 +37,8 @@ public:
 	static wxArrayString AllTypes();
 };
 
-class ObjectCollection : public unordered_map< wxString, Object*, wxStringHash, wxStringEqual >
+typedef unordered_map< wxString, Object*, wxStringHash, wxStringEqual > ObjectCollectionBase;
+class ObjectCollection : public ObjectCollectionBase
 {
 public:
 	ObjectCollection();
@@ -54,9 +55,8 @@ public:
 	bool Read( wxInputStream &in ); // does NOT clear first
 };
 
-
-
-class StringHash : public unordered_map<wxString, wxString, wxStringHash, wxStringEqual>,
+typedef unordered_map<wxString, wxString, wxStringHash, wxStringEqual> StringHashBase;
+class StringHash : public StringHashBase,
 	public Object
 {
 public:

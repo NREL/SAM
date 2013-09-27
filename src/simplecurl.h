@@ -72,8 +72,11 @@ public:
 	wxEvtHandler *GetEvtHandler();
 	wxString GetUrl();
 
+	bool IsStarted();
+
 protected:
 	DLThread *m_thread;
+	bool m_started;
 };
 
 // app-wide init and shutdown calls for underlying libcurl initialization

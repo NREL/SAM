@@ -4,45 +4,8 @@
 #include <vector>
 
 #include "object.h"
-#include "variables.h"
 
-
-class Case : public Object
-{
-public:
-	Case();
-	virtual ~Case();
-
-	virtual Object *Duplicate();
-	virtual bool Copy( Object *obj );
-	virtual wxString GetTypeName();
-	virtual void Write( wxOutputStream & );
-	virtual bool Read( wxInputStream & );
-
-
-	wxString GetName() { return m_name; }
-	void SetName( const wxString &s ) { m_name = s; }
-	void SetConfiguration( const wxString &tech, const wxString &fin );
-	void GetConfiguration( wxString *tech, wxString *fin );	
-	VarTable &Vars() { return m_vars; }
-
-	int Changed( const wxString &name );
-
-	VarTable &BaseCase();
-
-	StringHash &Properties() { return m_properties; }
-	StringHash &Notes() { return m_notes; }
-
-private:
-	wxString m_name;
-	wxString m_technology;
-	wxString m_financing;
-	VarTable m_vars;
-	VarTable m_baseCase;
-	StringHash m_properties;
-	StringHash m_notes;
-
-};
+class Case;
 
 class ProjectFile
 {
@@ -74,11 +37,15 @@ public:
 
 	wxString LastError() { return m_lastError; }
 
+	bool IsModified() { return m_modified; }
+	void SetModified( bool b ) { m_modified = b; }
+
 private:
 	ObjectCollection m_cases;
 	ObjectCollection m_objects;
 	StringHash m_properties;
 	wxString m_lastError;
+	bool m_modified;
 };
 
 
