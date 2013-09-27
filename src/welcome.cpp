@@ -27,7 +27,7 @@
 DEFINE_EVENT_TYPE( wxEVT_WELCOME_CLOSE )
 
 enum {ID_m_caseName=8687, ID_m_createCase, ID_m_recent, 
-ID_htmlViewer, ID_messageDownloadThread, ID_updateDownloadThread,
+ID_htmlViewer, ID_messageDownloadThread, ID_updateDownloadThread, ID_usageDownloadThread,
 ID_m_onlineForum, ID_m_helpSystem, ID_downloadTimer
 };
 
@@ -45,6 +45,7 @@ BEGIN_EVENT_TABLE(WelcomeScreen, wxPanel)
 
 	EVT_SIMPLECURL( ID_messageDownloadThread, WelcomeScreen::OnMessageDownloadThread )
 	EVT_SIMPLECURL( ID_updateDownloadThread, WelcomeScreen::OnUpdateDownloadThread )
+	EVT_SIMPLECURL( ID_usageDownloadThread, WelcomeScreen::OnUsageDownloadThread )
 	EVT_TIMER( ID_downloadTimer, WelcomeScreen::OnDownloadTimeout )
 END_EVENT_TABLE();
 
@@ -54,7 +55,8 @@ WelcomeScreen::WelcomeScreen(MainWindow *parent)
 	: wxPanel(parent, wxID_ANY),
 	  m_downloadTimer( this, ID_downloadTimer ),
 	  m_ssCurlMessage( this, ID_messageDownloadThread ),
-	  m_ssCurlUpdate( this, ID_updateDownloadThread )
+	  m_ssCurlUpdate( this, ID_updateDownloadThread ),
+	  m_ssCurlUsage( this, ID_usageDownloadThread )
 {
 	m_pAppFrame = parent;
 
@@ -95,9 +97,12 @@ WelcomeScreen::WelcomeScreen(MainWindow *parent)
 	wxString msg_url = "https://sam.nrel.gov/files/content/updates/messages.html";
 	m_ssCurlMessage.Start( msg_url );
 	
-	wxString update_url = "https://sam.nrel.gov/files/content/updates/notification_samnt.html";
+	wxString update_url = "https://sam.nrel.gov/files/content/updates/notification_2013.1.15.html";
 	m_ssCurlUpdate.Start( update_url );
 	
+	wxString usage_url = "https://nreldev.nrel.gov/analysis/sam/usage/samnt/startup.php?action=increment";
+	m_ssCurlUsage.Start( usage_url );
+
 	m_downloadTimer.Start(15000, true);
 
 	m_caseName->SelectAll();
@@ -114,6 +119,7 @@ void WelcomeScreen::AbortDownloadThreads()
 {
 	m_ssCurlMessage.Abort();
 	m_ssCurlUpdate.Abort();
+	m_ssCurlUsage.Abort();
 }
 
 void WelcomeScreen::OnDownloadTimeout( wxTimerEvent & )
@@ -178,7 +184,7 @@ public:
 		sz_bottom->Add( CreateButtonSizer(wxOK), 0, wxALL|wxEXPAND, 4 );
 
 		wxBoxSizer *sz_main = new wxBoxSizer(wxVERTICAL );
-		sz_main->Add( m_htmlWindow, 1, wxALL|wxEXPAND, 4 );
+		sz_main->Add( m_htmlWindow, 1, wxALL|wxEXPAND, 0 );
 		sz_main->Add( sz_bottom, 0, wxALL|wxEXPAND, 4 );
 
 		SetSizer( sz_main );
@@ -198,13 +204,11 @@ END_EVENT_TABLE()
 
 void WelcomeScreen::OnUpdateDownloadThread( wxSimpleCurlEvent &evt )
 {
-	wxLogStatus("OnUpdateDownloadThread: " + evt.GetMessage());
 	if (evt.GetStatusCode() == wxSimpleCurlEvent::FINISHED )
 	{
 		wxString html = m_ssCurlUpdate.GetData();
 		bool do_not_show = false;
 		wxString cfgkey = "update_notification_" + SamApp::VersionStr();
-		
 		SamApp::Config().Read( cfgkey, &do_not_show );
 		if ( !html.IsEmpty() && !do_not_show )
 		{
@@ -228,6 +232,15 @@ wxString WelcomeScreen::GetLocalMessagesFile()
 	return path + "/messages.html";
 }
 
+void WelcomeScreen::OnUsageDownloadThread( wxSimpleCurlEvent &evt )
+{
+	if (evt.GetStatusCode() == wxSimpleCurlEvent::FINISHED)
+	{
+		wxLogStatus("Logged usage download thread request: " + evt.GetMessage() );
+		// nothing to do here - discard whatever data we get back from this url.
+		wxMessageBox( m_ssCurlUsage.GetData() );
+	}
+}
 
 void WelcomeScreen::UpdateRecentList()
 {
@@ -278,7 +291,7 @@ void WelcomeScreen::OnPaint(wxPaintEvent &)
 	
 	dc.SetFont( wxMetroTheme::Font( wxMT_LIGHT, 28 ) );	
 	dc.SetTextForeground( wxColour(180, 180, 180) );
-	dc.DrawText("Solar Advisor " + SamApp::VersionStr(), BORDER, 30 );
+	dc.DrawText( wxString::Format("System Advisor %d", SamApp::VersionMajor()), BORDER, 30 );
 
 	dc.DrawBitmap( m_nrelLogo, sz.GetWidth()-m_nrelLogo.GetWidth()-BORDER, 33 );
 

@@ -7,7 +7,6 @@
 #include <wx/html/htmlwin.h>
 #include <wx/hyperlink.h>
 
-#include "wxcurlthread.h"
 #include "simplecurl.h"
 
 
@@ -57,6 +56,9 @@ private:
 
 	wxSimpleCurlDownloadThread m_ssCurlUpdate;
 	void OnUpdateDownloadThread( wxSimpleCurlEvent & );
+
+	wxSimpleCurlDownloadThread m_ssCurlUsage;
+	void OnUsageDownloadThread( wxSimpleCurlEvent & );
 
 	wxString GetLocalMessagesFile();
 	DECLARE_EVENT_TABLE()

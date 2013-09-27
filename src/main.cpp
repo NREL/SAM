@@ -4,6 +4,9 @@
 #include <wx/webview.h>
 
 #include <wex/dview/dvplotctrl.h>
+#include <wex/metro.h>
+
+#include "../resource/nrel_small.cpng"
 
 #include "main.h"
 #include "welcome.h"
@@ -12,8 +15,9 @@
 // application globals
 static MainWindow *g_mainWindow = 0;
 static wxConfig *g_config = 0;
-static const int g_verMajor = 5;
+static const int g_verMajor = 2014;
 static const int g_verMinor = 1;
+static const int g_verMicro = 1;
 
 BEGIN_EVENT_TABLE( MainWindow, wxFrame )
 	EVT_CLOSE( MainWindow::OnClose )
@@ -59,18 +63,83 @@ MainWindow::MainWindow()
 	m_welcomeScreen = new WelcomeScreen( this );
 }
 
-void MainWindow::OnClose( wxCloseEvent &evt )
+void MainWindow::OnClose( wxCloseEvent & )
 {
 	Destroy();
 }
 
 
+class SplashScreen : public wxDialog
+{
+	wxBitmap m_nrelLogo;
+public:
+
+	SplashScreen()
+		: wxDialog( 0, wxID_ANY, wxEmptyString, wxDefaultPosition, wxSize(515,385), wxBORDER_NONE )
+	{
+		m_nrelLogo = wxBITMAP_PNG_FROM_DATA( nrel_small );
+	}
+
+	void OnPaint( wxPaintEvent & )
+	{
+		wxPaintDC dc(this);
+
+		int width, height;
+		GetClientSize( &width, &height );
+
+		dc.SetBackground( wxBrush( wxMetroTheme::Colour( wxMT_ACCENT ) ) );
+		dc.Clear();
+
+		dc.SetBrush( *wxWHITE_BRUSH );
+		dc.SetPen( *wxWHITE_PEN );
+		dc.DrawRectangle( 0, height-50, width, 50 );
+
+		dc.SetTextForeground( *wxWHITE );
+		dc.SetFont( wxMetroTheme::Font( wxMT_LIGHT, 30 ) );
+		dc.DrawText( "System Advisor Model", 35, 65 );
+
+		dc.SetFont( wxMetroTheme::Font( wxMT_LIGHT, 18 ) );
+		dc.DrawText( "Version " + SamApp::VersionStr(), 35, 135 );
+		dc.DrawText( "Starting up... please wait", 35, 275 );
+
+		dc.SetTextForeground( wxMetroTheme::Colour( wxMT_TEXT ) );
+		dc.SetFont( wxMetroTheme::Font( wxMT_LIGHT, 10 ) );
+		dc.DrawText( wxString::Format("Copyright %d, National Renewable Energy Laboratory", SamApp::VersionMajor()),
+			35, height-25-dc.GetCharHeight()/2 );
+
+		dc.DrawBitmap( m_nrelLogo, width-m_nrelLogo.GetWidth()-10, height-25-m_nrelLogo.GetHeight()/2 );
+	}
+
+	void OnSize( wxSizeEvent & )
+	{
+		Refresh();
+	}
+
+	DECLARE_EVENT_TABLE();
+};
+
+BEGIN_EVENT_TABLE( SplashScreen, wxDialog )
+	EVT_PAINT( SplashScreen::OnPaint )
+	EVT_SIZE( SplashScreen::OnSize )
+END_EVENT_TABLE()
+
+
 bool SamApp::OnInit()
 {
+	wxInitAllImageHandlers();
+	wxSimpleCurlInit();
+	
+	SplashScreen splash;
+	splash.CenterOnScreen();
+	splash.Show();
+	splash.Update();
+
+	Yield(true);
+	wxMilliSleep( 2000 );
+
 	g_config = new wxConfig( "SAMnt", "NREL" );
 	FileHistory().Load( Config() );
 
-	wxInitAllImageHandlers();
 
 	g_mainWindow = new MainWindow();
 	g_mainWindow->Show();
@@ -84,6 +153,7 @@ int SamApp::OnExit()
 
 	if ( g_config != 0 ) delete g_config;
 
+	wxSimpleCurlShutdown();
 	return 0;
 }
 
@@ -118,9 +188,10 @@ void SamApp::ShowHelp( const wxString &id )
 	wxMessageBox("no help system yet: " + id);
 }
 
-wxString SamApp::VersionStr() { return wxString::Format("%d.%d", VersionMajor(), VersionMinor());};
+wxString SamApp::VersionStr() { return wxString::Format("%d.%d.%d", VersionMajor(), VersionMinor(), VersionMicro());};
 int SamApp::VersionMajor() { return g_verMajor; }
 int SamApp::VersionMinor() { return g_verMinor; }
+int SamApp::VersionMicro() { return g_verMicro; }
 
 
 IMPLEMENT_APP( SamApp );

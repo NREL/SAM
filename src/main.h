@@ -8,7 +8,7 @@
 
 #include <exception>
 
-#include "variable.h"
+#include "variables.h"
 
 class SamException : public std::exception
 {
@@ -55,7 +55,8 @@ public:
 	static wxString VersionStr();
 	static int VersionMajor();
 	static int VersionMinor();
-	static VariableInfo &Info();
+	static int VersionMicro();
+	static VarDatabase &VarDB();
 
 };
 

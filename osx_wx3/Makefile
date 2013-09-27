@@ -18,15 +18,11 @@ OBJECTS = main.o \
 	equation.o \
 	uiview.o \
 	uiwidgets.o \
-	variable.o \
+	variables.o \
 	project.o \
 	object.o \
 	simplecurl.o \
-	welcome.o \
-	wxcurlbase.o \
-	wxcurlftp.o \
-	wxcurlhttp.o \
-	wxcurlthread.o
+	welcome.o
 
 TARGET = SAM
 
