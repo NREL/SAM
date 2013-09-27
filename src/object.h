@@ -78,36 +78,39 @@ public:
 #endif
 
 template< typename T >
-class Matrix
+class matrix_t
 {
 protected:
 	T *t_array;
 	size_t n_rows, n_cols;
 public:
 
-	Matrix()
+	matrix_t()
 	{
 		t_array = new T[1];
 		n_rows = n_cols = 1;
 	}
 		
-	Matrix(size_t len)
+	matrix_t(size_t len)
 	{
+		n_rows = n_cols = 0;
 		t_array = NULL;
 		if (len < 1) len = 1;
 		resize( 1, len );
 	}
 
-	Matrix(size_t nr, size_t nc)
+	matrix_t(size_t nr, size_t nc)
 	{
+		n_rows = n_cols = 0;
 		t_array = NULL;
 		if (nr < 1) nr = 1;
 		if (nc < 1) nc = 1;
 		resize(nr,nc);
 	}
 		
-	Matrix(size_t nr, size_t nc, const T &val)
+	matrix_t(size_t nr, size_t nc, const T &val)
 	{
+		n_rows = n_cols = 0;
 		t_array = NULL;
 		if (nr < 1) nr = 1;
 		if (nc < 1) nc = 1;
@@ -116,7 +119,7 @@ public:
 	}
 
 
-	virtual ~Matrix()
+	virtual ~matrix_t()
 	{
 		if (t_array) delete [] t_array;
 	}
@@ -128,7 +131,7 @@ public:
 		t_array = new T[1];
 	}
 		
-	void copy( const Matrix &rhs )
+	void copy( const matrix_t &rhs )
 	{
 		if (this != &rhs)
 		{
@@ -158,13 +161,13 @@ public:
 		}
 	}
 
-	Matrix &operator=(const Matrix &rhs)
+	matrix_t &operator=(const matrix_t &rhs)
 	{
 		copy( rhs );
 		return *this;
 	}
 		
-	Matrix &operator=(const T &val)
+	matrix_t &operator=(const T &val)
 	{
 		resize(1,1);
 		t_array[0] = val;
@@ -176,7 +179,7 @@ public:
 		return t_array[0];
 	}
 		
-	bool equals( const Matrix & rhs )
+	bool equals( const matrix_t & rhs )
 	{
 		if (n_rows != rhs.n_rows || n_cols != rhs.n_cols)
 			return false;
@@ -338,6 +341,7 @@ public:
 		return t_array[0];
 	}
 };
+
 
 #endif
 

@@ -200,3 +200,13 @@ extern "C" {
     }
 
 }; // extern "C"
+
+
+void wxSimpleCurlInit()
+{
+	::curl_global_init( CURL_GLOBAL_ALL );
+}
+void wxSimpleCurlShutdown()
+{
+	::curl_global_cleanup();
+}

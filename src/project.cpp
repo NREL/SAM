@@ -27,8 +27,8 @@ bool Case::Copy( Object *obj )
 		m_name = rhs->m_name;
 		m_technology = rhs->m_technology;
 		m_financing = rhs->m_financing;
-		m_vars.Copy( rhs->m_vars, true );
-		m_baseCase.Copy( rhs->m_vars, true );
+		m_vars.Copy( rhs->m_vars );
+		m_baseCase.Copy( rhs->m_vars );
 		m_properties = rhs->m_properties;
 		m_notes = rhs->m_notes;
 		return true;
@@ -90,10 +90,10 @@ void Case::SetConfiguration( const wxString &tech, const wxString &fin )
 	m_financing = fin;
 
 	// erase all input variables
-	m_vars.Clear();
+	m_vars.clear();
 
 	// erase results
-	m_baseCase.Clear();
+	m_baseCase.clear();
 
 	// look up configuration
 
@@ -200,6 +200,7 @@ void ProjectFile::Write( wxOutputStream &output )
 	out.Write16( 1 ); // data format version
 	out.Write16( SamApp::VersionMajor() );
 	out.Write16( SamApp::VersionMinor() );
+	out.Write16( SamApp::VersionMicro() );
 	
 	m_properties.Write( output );
 	m_cases.Write( output );
@@ -219,6 +220,7 @@ bool ProjectFile::Read( wxInputStream &input )
 
 	int major = (int)in.Read16();
 	int minor = (int)in.Read16();
+	int micro = (int)in.Read16();
 
 	// todo: check version numbers of file
 
