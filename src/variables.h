@@ -10,7 +10,9 @@
 
 class VarValue;
 
-class VarTable : public unordered_map<wxString, VarValue*, wxStringHash, wxStringEqual>
+typedef unordered_map<wxString, VarValue*, wxStringHash, wxStringEqual> VarTableBase;
+
+class VarTable : public VarTableBase
 {
 public:
 	VarTable();
@@ -98,6 +100,7 @@ public:
 	VarValue DefaultValue;
 };
 
+typedef unordered_map<wxString, VarInfo*, wxStringHash, wxStringEqual> VarInfoHash;	
 
 class VarDatabase
 {
@@ -123,7 +126,7 @@ public:
 	VarValue &InternalDefaultValue( const wxString &name );
 
 private:
-	unordered_map<wxString, VarInfo*, wxStringHash, wxStringEqual> m_hash;	
+	VarInfoHash m_hash;
 	VarValue m_invVal;
 };
 

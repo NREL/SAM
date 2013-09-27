@@ -3,17 +3,16 @@ VPATH = $(SRCDIR)
 
 WEXDIR = ../../wex
 LKDIR = ../../lk
-SSCDIR = ../../ssc
 
 WEXLIB = $(WEXDIR)/wexosxwx3.a
 LKLIB = $(LKDIR)/lkosxwx3.a
-SSCLIB = $(SSCDIR)/mac_dylib/ssc64.dylib
 
 CC = gcc
 CXX = g++
-CFLAGS = -g -I. -I$(SRCDIR) -I$(WEXDIR)/include -I$(LKDIR) -I$(SSCDIR) `wx-config-3 --cflags`
+CFLAGS = -g -I. -I$(SRCDIR) -I$(WEXDIR)/include -I$(LKDIR) `wx-config-3 --cflags`
 CXXFLAGS = $(CFLAGS)
-LDFLAGS = `wx-config-3 --libs` `wx-config-3 --libs aui` `wx-config-3 --libs stc` -lm $(LKLIB) $(WEXLIB) $(SSCLIB) -lstdc++ -lcurl
+LDFLAGS = `wx-config-3 --libs` `wx-config-3 --libs aui` `wx-config-3 --libs stc` -lm $(LKLIB) $(WEXLIB) -lstdc++ -lcurl
+
 OBJECTS = main.o \
 	equation.o \
 	uiview.o \
@@ -27,7 +26,7 @@ OBJECTS = main.o \
 TARGET = SAM
 
 
-$(TARGET): $(OBJECTS) $(WEXLIB) 
+$(TARGET): $(OBJECTS) $(WEXLIB) $(LKLIB)
 	$(CXX) -g -o $@ $^ $(LDFLAGS)
 	SetFile -a t $@
 	mkdir -p $(TARGET).app
@@ -38,10 +37,10 @@ $(TARGET): $(OBJECTS) $(WEXLIB)
 	cp $(TARGET).icns ./$(TARGET).app/Contents/Resources
 	cp Info-$(TARGET).plist ./$(TARGET).app/Contents/Info.plist
 	echo "-n APPL????" >> ./$(TARGET).app/Contents/PkgInfo
-	@mkdir -p $(TARGET).app/Contents/Frameworks
-	cp $(SSCLIB) $(TARGET).app/Contents/Frameworks/ssc64.dylib
-	install_name_tool -id @executable_path/../Frameworks/ssc64.dylib $(TARGET).app/Contents/Frameworks/ssc64.dylib
-	install_name_tool -change ssc64.dylib @executable_path/../Frameworks/ssc64.dylib $(TARGET).app/Contents/MacOS/$(TARGET)
+#	@mkdir -p $(TARGET).app/Contents/Frameworks
+#	cp $(SSCLIB) $(TARGET).app/Contents/Frameworks/ssc64.dylib
+#	install_name_tool -id @executable_path/../Frameworks/ssc64.dylib $(TARGET).app/Contents/Frameworks/ssc64.dylib
+#	install_name_tool -change ssc64.dylib @executable_path/../Frameworks/ssc64.dylib $(TARGET).app/Contents/MacOS/$(TARGET)
 	
 DEPENDS = $(OBJECTS:.o=.d)
 
@@ -55,4 +54,4 @@ DEPENDS = $(OBJECTS:.o=.d)
 	@rm -f $*.d.tmp
 
 clean:
-	rm -rf $(OBJECTS) $(DEPENDS) $(TARGET) $(TARGET).app
+	rm -rf $(OBJECTS) $(TARGET) $(TARGET).app
