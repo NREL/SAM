@@ -76,5 +76,9 @@ protected:
 	DLThread *m_thread;
 };
 
+// app-wide init and shutdown calls for underlying libcurl initialization
+void wxSimpleCurlInit();
+void wxSimpleCurlShutdown();
+
 #endif
 

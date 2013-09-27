@@ -4,7 +4,7 @@
 #include <vector>
 
 #include "object.h"
-#include "variable.h"
+#include "variables.h"
 
 
 class Case : public Object
@@ -24,11 +24,11 @@ public:
 	void SetName( const wxString &s ) { m_name = s; }
 	void SetConfiguration( const wxString &tech, const wxString &fin );
 	void GetConfiguration( wxString *tech, wxString *fin );	
-	Variables &Vars() { return m_vars; }
+	VarTable &Vars() { return m_vars; }
 
 	int Changed( const wxString &name );
 
-	Variables &BaseCase();
+	VarTable &BaseCase();
 
 	StringHash &Properties() { return m_properties; }
 	StringHash &Notes() { return m_notes; }
@@ -37,8 +37,8 @@ private:
 	wxString m_name;
 	wxString m_technology;
 	wxString m_financing;
-	Variables m_vars;
-	Variables m_baseCase;
+	VarTable m_vars;
+	VarTable m_baseCase;
 	StringHash m_properties;
 	StringHash m_notes;
 
