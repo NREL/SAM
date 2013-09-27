@@ -19,7 +19,6 @@
 
 
 #include "../resource/nrel.cpng"
-#include "wxcurlthread.h"
 
 #include "main.h"
 #include "welcome.h"
@@ -51,15 +50,13 @@ END_EVENT_TABLE();
 
 enum { DOWNLOADING, FAILED, RETRIEVED };
 
-WelcomeScreen::WelcomeScreen(MainWindow *parent)
+WelcomeScreen::WelcomeScreen(wxWindow *parent)
 	: wxPanel(parent, wxID_ANY),
 	  m_downloadTimer( this, ID_downloadTimer ),
 	  m_ssCurlMessage( this, ID_messageDownloadThread ),
 	  m_ssCurlUpdate( this, ID_updateDownloadThread ),
 	  m_ssCurlUsage( this, ID_usageDownloadThread )
 {
-	m_pAppFrame = parent;
-
 	SetBackgroundStyle(wxBG_STYLE_CUSTOM);
 	SetBackgroundColour( *wxWHITE );
 
@@ -238,7 +235,6 @@ void WelcomeScreen::OnUsageDownloadThread( wxSimpleCurlEvent &evt )
 	{
 		wxLogStatus("Logged usage download thread request: " + evt.GetMessage() );
 		// nothing to do here - discard whatever data we get back from this url.
-		wxMessageBox( m_ssCurlUsage.GetData() );
 	}
 }
 
@@ -337,7 +333,7 @@ void WelcomeScreen::OnResize(wxSizeEvent &)
 
 void WelcomeScreen::OnCreateProject(wxCommandEvent &)	
 {
-	wxMessageBox("no facility to create a project yet");
+	SamApp::Window()->CreateProject();
 }
 
 

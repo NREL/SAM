@@ -2,14 +2,20 @@
 #include <wx/frame.h>
 #include <wx/stc/stc.h>
 #include <wx/webview.h>
+#include <wx/simplebook.h>
+#include <wx/panel.h>
 
-#include <wex/dview/dvplotctrl.h>
 #include <wex/metro.h>
+#include <wex/icons/cirplus.cpng>
+#include <wex/icons/qmark.cpng>
 
 #include "../resource/nrel_small.cpng"
+#include "../resource/main_menu.cpng"
+
 
 #include "main.h"
 #include "welcome.h"
+#include "project.h"
 
 
 // application globals
@@ -19,8 +25,37 @@ static const int g_verMajor = 2014;
 static const int g_verMinor = 1;
 static const int g_verMicro = 1;
 
+enum { __idFirst = wxID_HIGHEST+592,
+
+	ID_MAIN_MENU, ID_CASE_TABS, ID_CONTEXT_HELP, ID_PAGE_NOTES,
+	__idCaseMenuFirst,
+	ID_CASE_CREATE,
+	ID_CASE_CONFIG,
+	ID_CASE_RENAME,
+	ID_CASE_DUPLICATE,
+	ID_CASE_DELETE,
+	ID_CASE_REPORT,
+	ID_CASE_SIMULATE,
+	ID_CASE_RESET_DEFAULTS,
+	ID_CASE_CLEAR_RESULTS,
+	ID_CASE_COMPARE,
+	ID_CASE_VARIABLE_LIST,
+	ID_CASE_IMPORT,
+	__idCaseMenuLast
+};
+
 BEGIN_EVENT_TABLE( MainWindow, wxFrame )
 	EVT_CLOSE( MainWindow::OnClose )
+	EVT_MENU( wxID_NEW, MainWindow::OnCommand )
+	EVT_MENU( wxID_OPEN, MainWindow::OnCommand )
+	EVT_MENU( wxID_SAVE, MainWindow::OnCommand )
+	EVT_MENU( wxID_SAVEAS, MainWindow::OnCommand )
+	EVT_MENU( wxID_CLOSE, MainWindow::OnCommand )
+	EVT_MENU( wxID_EXIT, MainWindow::OnCommand )
+	EVT_BUTTON( ID_MAIN_MENU, MainWindow::OnCommand )
+	EVT_LISTBOX( ID_CASE_TABS, MainWindow::OnCaseTabChange )
+	EVT_BUTTON( ID_CASE_TABS, MainWindow::OnCaseTabButton )
+	EVT_MENU_RANGE( __idCaseMenuFirst, __idCaseMenuLast, MainWindow::OnCaseMenu )
 END_EVENT_TABLE()
 
 MainWindow::MainWindow()
@@ -60,11 +95,122 @@ MainWindow::MainWindow()
 	SetMenuBar( m_menuBar );
 #endif
 
-	m_welcomeScreen = new WelcomeScreen( this );
+	m_topBook = new wxSimplebook( this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxBORDER_NONE );
+
+	m_welcomeScreen = new WelcomeScreen( m_topBook );
+	m_topBook->AddPage( m_welcomeScreen, "Welcome to SAM" );
+
+
+	m_caseTabPanel = new wxPanel( m_topBook );
+	m_topBook->AddPage( m_caseTabPanel, "Main project window" );
+
+	wxBoxSizer *tools = new wxBoxSizer( wxHORIZONTAL );
+	tools->Add( new wxMetroButton( m_caseTabPanel, ID_MAIN_MENU, wxEmptyString, wxBITMAP_PNG_FROM_DATA( main_menu ), wxDefaultPosition, wxDefaultSize /*, wxMB_DOWNARROW */), 0, wxALL|wxEXPAND, 0 );
+	tools->Add( new wxMetroButton( m_caseTabPanel, ID_CASE_CREATE, "New", wxBITMAP_PNG_FROM_DATA( cirplus ), wxDefaultPosition, wxDefaultSize), 0, wxALL|wxEXPAND, 0 );
+	m_caseTabList = new wxMetroTabList( m_caseTabPanel, ID_CASE_TABS, wxDefaultPosition, wxDefaultSize, wxMT_MENUBUTTONS );
+	m_caseTabList->Append( "photovoltaic #1" );
+	m_caseTabList->Append( "solar water" );
+	m_caseTabList->Append( "power tower steam" );
+	tools->Add( m_caseTabList, 1, wxALL|wxEXPAND, 0 );		
+	tools->Add( new wxMetroButton( m_caseTabPanel, ID_CONTEXT_HELP, wxEmptyString, wxBITMAP_PNG_FROM_DATA(qmark), wxDefaultPosition, wxDefaultSize), 0, wxALL|wxEXPAND, 0 );
+	
+	m_caseNotebook = new wxSimplebook( m_caseTabPanel, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxBORDER_NONE );
+		
+	wxBoxSizer *sizer = new wxBoxSizer( wxVERTICAL );
+	sizer->Add( tools, 0, wxALL|wxEXPAND, 0 );
+	sizer->Add( m_caseNotebook, 1, wxALL|wxEXPAND, 0 );
+	m_caseTabPanel->SetSizer(sizer);
+
+	m_topBook->SetSelection( 0 );
+}
+
+void MainWindow::CreateProject()
+{
+	m_project.Clear();
+	m_project.SetModified( false );
+	m_topBook->SetSelection( 1 );
+}
+
+void MainWindow::CloseProject()
+{
+	m_project.Clear();
+	m_project.SetModified( false );
+	m_topBook->SetSelection( 0 );
+}
+
+
+void MainWindow::OnCommand( wxCommandEvent &evt )
+{
+	switch( evt.GetId() )
+	{
+	case ID_MAIN_MENU:
+		{
+			wxMenu menu;
+			menu.Append( wxID_NEW, "New project" );
+			menu.AppendSeparator();
+			menu.Append( wxID_OPEN, "Open project" );
+			menu.Append( wxID_SAVE, "Save project" );
+			menu.Append( wxID_SAVEAS, "Save project as" );
+			menu.AppendSeparator();
+			menu.Append( wxID_CLOSE, "Close project" );
+			menu.Append( wxID_EXIT );
+			PopupMenu( &menu );
+		}
+		break;
+	case wxID_NEW:
+		CreateProject();
+		break;
+	case wxID_OPEN:
+	case wxID_SAVE:
+	case wxID_SAVEAS:
+		wxMessageBox("not possible yet");
+		break;
+	case wxID_CLOSE:
+		CloseProject();
+		break;
+	case wxID_EXIT:
+		Close();
+		break;
+	}
+}
+
+void MainWindow::OnCaseTabChange( wxCommandEvent &evt )
+{
+	//wxMessageBox( wxString::Format("Case tab changed: %d", evt.GetSelection() ) );
+}
+
+void MainWindow::OnCaseTabButton( wxCommandEvent &evt )
+{
+	wxMenu menu;
+	
+	menu.Append( ID_CASE_CONFIG, "Change configuration..." );
+	menu.AppendSeparator();
+	menu.Append( ID_CASE_RENAME, "Rename" );
+	menu.Append( ID_CASE_DUPLICATE, "Duplicate" );
+	menu.Append( ID_CASE_DELETE, "Delete" );
+	menu.AppendSeparator();
+	menu.Append( ID_CASE_SIMULATE, "Simulate" );
+	menu.Append( ID_CASE_CLEAR_RESULTS, "Clear all results" );
+	menu.Append( ID_CASE_REPORT, "Generate report" );
+	menu.Append( ID_CASE_COMPARE, "Compare to..." );
+	menu.AppendSeparator();
+	menu.Append( ID_CASE_RESET_DEFAULTS, "Reset inputs to default values" );
+	menu.Append( ID_CASE_VARIABLE_LIST, "Input variable list");
+	menu.AppendSeparator();
+	menu.Append( ID_CASE_IMPORT, "Import" );
+
+	PopupMenu( &menu );
+}
+
+void MainWindow::OnCaseMenu( wxCommandEvent &evt )
+{
+	int sel = m_caseTabList->GetSelection();
+	//wxMessageBox( wxString::Format("case id: %d, command %d", sel, evt.GetId() ) );
 }
 
 void MainWindow::OnClose( wxCloseEvent & )
 {
+	CloseProject();
 	Destroy();
 }
 
@@ -135,7 +281,7 @@ bool SamApp::OnInit()
 	splash.Update();
 
 	Yield(true);
-	wxMilliSleep( 2000 );
+	wxMilliSleep( 500 );
 
 	g_config = new wxConfig( "SAMnt", "NREL" );
 	FileHistory().Load( Config() );

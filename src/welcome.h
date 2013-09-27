@@ -16,7 +16,7 @@ class wxMetroButton;
 class WelcomeScreen : public wxPanel
 {
 public:
-	WelcomeScreen( MainWindow *parent);
+	WelcomeScreen( wxWindow *parent);
 	virtual ~WelcomeScreen();
 	void UpdateRecentList();
 		
@@ -37,9 +37,7 @@ private:
 
 	wxBitmap m_nrelLogo;
 
-
 	wxHtmlWindow *m_htmlWin;
-	MainWindow *m_pAppFrame;
 	int m_messageStatus;
 
 	wxTextCtrl *m_caseName;

@@ -49,7 +49,7 @@ void ObjectCollection::Clear()
 		++it )
 		delete it->second;
 
-	clear();
+	ObjectCollectionBase::clear();
 }
 
 void ObjectCollection::Add( const wxString &name, Object *obj )
