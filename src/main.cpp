@@ -41,7 +41,7 @@ MainWindow::MainWindow()
 	m_fileMenu->AppendSeparator();
 	m_fileMenu->Append( wxID_CLOSE );
 	m_fileMenu->AppendSeparator();
-	m_fileMenu->Append( wxID_EXIT );
+	m_fileMenu->Append( wxID_EXIT, "Quit SAM");
 
 	m_caseMenu = new wxMenu;
 

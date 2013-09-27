@@ -19,7 +19,7 @@ void VarTable::clear()
 	for( iterator it = begin(); it != end(); ++it )
 		delete it->second;
 
-	unordered_map::clear();
+	VarTableBase::clear();
 }
 
 wxArrayString VarTable::ListAll( std::vector<VarValue*> *vals )
@@ -311,7 +311,7 @@ void VarDatabase::Add( const wxString &name, int type,
 	unsigned long flags, const VarValue &defval )
 {
 	VarInfo *vv = 0;
-	auto it = m_hash.find( name );
+	VarInfoHash::iterator it = m_hash.find( name );
 	if ( it == m_hash.end() )
 	{
 		vv = new VarInfo;
@@ -332,7 +332,7 @@ void VarDatabase::Add( const wxString &name, int type,
 
 void VarDatabase::Clear()
 {
-	for ( auto it = m_hash.begin();
+	for ( VarInfoHash::iterator it = m_hash.begin();
 		it != m_hash.end();
 		++it )
 		delete it->second;
@@ -343,7 +343,7 @@ void VarDatabase::Clear()
 wxArrayString VarDatabase::ListAll()
 {
 	wxArrayString list;
-	for( auto it = m_hash.begin(); it != m_hash.end(); ++it )
+	for( VarInfoHash::iterator it = m_hash.begin(); it != m_hash.end(); ++it )
 		list.Add( it->first );
 	return list;
 }
@@ -392,7 +392,7 @@ VarValue &VarDatabase::InternalDefaultValue( const wxString &name )
 
 VarInfo *VarDatabase::Lookup( const wxString &name )
 {
-	auto it = m_hash.find(name);
+	VarInfoHash::iterator it = m_hash.find(name);
 	if ( it == m_hash.end() ) return 0;
 	else return it->second;
 }
