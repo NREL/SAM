@@ -75,7 +75,7 @@ public:
 	static int VersionMajor();
 	static int VersionMinor();
 	static int VersionMicro();
-	static VarDatabase &VarDB();
+	static VarDatabase &VariableDatabase();
 
 };
 

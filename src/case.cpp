@@ -1,15 +1,15 @@
 #include <wx/datstrm.h>
 #include "case.h"
+#include "main.h"
 
 Case::Case()
 {
-	m_caseWin = 0;
 	m_name = wxT( "untitled" );
 }
 
 Case::~Case()
 {
-	// nothing to do
+	ClearListeners();
 }
 	
 Object *Case::Duplicate()
@@ -79,6 +79,12 @@ bool Case::Read( wxInputStream &_i )
 	return (in.Read8() == code);
 }
 
+void Case::SetName( const wxString &name )
+{
+	m_name = name;
+	SendEvent( CaseEvent( CaseEvent::NAME_CHANGED, name ) );
+}
+
 void Case::SetConfiguration( const wxString &tech, const wxString &fin )
 {
 	if ( m_technology == tech && m_financing == fin )
@@ -98,10 +104,46 @@ void Case::SetConfiguration( const wxString &tech, const wxString &fin )
 	// set up all default variables and values
 
 	// reevalute all equations
+
+	// update UI
+	SendEvent( CaseEvent( CaseEvent::CONFIG_CHANGED, tech, fin ) );
 }
 
 void Case::GetConfiguration( wxString *tech, wxString *fin )
 {
 	if ( tech ) *tech = m_technology;
 	if ( fin ) *fin = m_financing;
+}
+
+int Case::Changed( const wxString &var )
+{
+	VarEvaluator eval( &m_vars, &SamApp::VariableDatabase() );
+	int n = eval.Changed( var );
+	if ( n > 0 ) SendEvent( CaseEvent( CaseEvent::VARS_CHANGED, eval.GetUpdated() ) );
+	return n;
+
+}
+
+int Case::CalculateAll()
+{
+	VarEvaluator eval( &m_vars, &SamApp::VariableDatabase() );
+	int n = eval.CalculateAll();
+	if ( n > 0 ) SendEvent( CaseEvent( CaseEvent::VARS_CHANGED, eval.GetUpdated() ) );
+	return n;
+}
+
+void Case::AddListener( CaseEventListener *cel )
+{
+	m_listeners.push_back( cel );
+}
+
+void Case::ClearListeners()
+{
+	m_listeners.clear();
+}
+
+void Case::SendEvent( CaseEvent e )
+{
+	for( size_t i=0;i<m_listeners.size();i++ )
+		m_listeners[i]->OnCaseEvent( this, e );
 }

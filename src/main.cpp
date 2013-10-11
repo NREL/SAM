@@ -16,6 +16,7 @@
 #include "main.h"
 #include "welcome.h"
 #include "project.h"
+#include "variables.h"
 
 
 // application globals
@@ -24,6 +25,7 @@ static wxConfig *g_config = 0;
 static const int g_verMajor = 2014;
 static const int g_verMinor = 1;
 static const int g_verMicro = 1;
+static VarDatabase g_varDatabase;
 
 enum { __idFirst = wxID_HIGHEST+592,
 
@@ -363,6 +365,6 @@ wxString SamApp::VersionStr() { return wxString::Format("%d.%d.%d", VersionMajor
 int SamApp::VersionMajor() { return g_verMajor; }
 int SamApp::VersionMinor() { return g_verMinor; }
 int SamApp::VersionMicro() { return g_verMicro; }
-
+VarDatabase &SamApp::VariableDatabase() { return g_varDatabase; }
 
 IMPLEMENT_APP( SamApp );
