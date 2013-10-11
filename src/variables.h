@@ -6,9 +6,14 @@
 #include <wx/string.h>
 #include <wx/arrstr.h>
 #include <wx/stream.h>
+
+#include <lk_absyn.h>
+#include <lk_env.h>
+
 #include "object.h"
 
 class VarValue;
+class VarDatabase;
 
 typedef unordered_map<wxString, VarValue*, wxStringHash, wxStringEqual> VarTableBase;
 
@@ -20,12 +25,13 @@ public:
 
 	virtual void clear();
 	wxArrayString ListAll( std::vector<VarValue*> *vals = 0 );
-	void Set( const wxString &name, const VarValue &val );
+	VarValue *Set( const wxString &name, const VarValue &val );
 	VarValue *Get( const wxString &name );
 
 	void Copy( const VarTable &rhs );
 	void Write( wxOutputStream & );
 	bool Read( wxInputStream & );
+		
 };
 
 #define VV_INVALID 0
@@ -72,6 +78,9 @@ public:
 	wxString String();
 	VarTable &Table();
 
+	bool Read( const lk::vardata_t &val, bool change_type = false );
+	bool Write( lk::vardata_t &val );
+
 private:
 	unsigned char m_type;
 	::matrix_t<float> m_val;
@@ -113,9 +122,9 @@ public:
 		const wxString &group, const wxString &indexlabels,
 		unsigned long flags, const VarValue &defval );
 
+	
 	void Clear();	
 	VarInfo *Lookup( const wxString &name );
-
 	wxArrayString ListAll();
 	int Type( const wxString &name );
 	wxString Label( const wxString &name );
@@ -125,9 +134,61 @@ public:
 	unsigned long Flags( const wxString &name );
 	VarValue &InternalDefaultValue( const wxString &name );
 
+	bool AddEquation( const wxString &inputs, const wxString &outputs, const wxString &script, wxArrayString *errors = 0 );
+	lk::node_t *GetEquation( const wxString &var, wxArrayString *inputs, wxArrayString *outputs );
+	wxArrayString *GetAffectedVariables( const wxString &var );
+	struct eqn_data { lk::node_t *tree; wxArrayString inputs, outputs; };
+	std::vector<eqn_data*> GetEquations() { return m_equations; }
+	eqn_data *GetEquationData( const wxString &var );
+	int GetEquationIndex( const wxString &var );
+
 private:
 	VarInfoHash m_hash;
 	VarValue m_invVal;
+
+	typedef unordered_map< wxString, wxArrayString*, wxStringHash, wxStringEqual > arraystring_hash_t;
+	arraystring_hash_t m_affected;
+	std::vector<eqn_data*> m_equations;
+	typedef unordered_map< wxString, eqn_data*, wxStringHash, wxStringEqual > eqndata_hash_t;
+	eqndata_hash_t m_eqnLookup;
+	typedef unordered_map< wxString, size_t, wxStringHash, wxStringEqual > eqnindex_hash_t;
+	eqnindex_hash_t m_eqnIndices;
+	
+
+};
+
+class VarTableScriptEnvironment : public lk::env_t
+{
+private:
+	VarTable *m_vars;
+public:
+	VarTableScriptEnvironment( VarTable *vt );
+	virtual ~VarTableScriptEnvironment( );	
+	virtual bool special_set( const lk_string &name, lk::vardata_t &val );
+	virtual bool special_get( const lk_string &name, lk::vardata_t &val );
+};
+
+class VarEvaluator
+{
+private:
+	VarTable *m_vars;
+	VarDatabase *m_vdb;
+	std::vector<VarDatabase::eqn_data*> m_eqns;
+	std::vector<char> m_status;
+	wxArrayString m_errors;
+	wxArrayString m_updated;
+	enum { INVALID, OK };
+	int Calculate( );
+	size_t MarkAffectedEquations( const wxString &var );
+
+public:
+	VarEvaluator( VarTable *vars, VarDatabase *db );
+
+	void Reset();
+	int CalculateAll();
+	int Changed( const wxString &var );
+	wxArrayString GetErrors() { return m_errors; }
+	wxArrayString GetUpdated() { return m_updated; }
 };
 
 

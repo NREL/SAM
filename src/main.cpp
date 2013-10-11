@@ -145,7 +145,32 @@ void MainWindow::OnCommand( wxCommandEvent &evt )
 	{
 	case ID_MAIN_MENU:
 		{
+			wxMenu *add_obj_menu = new wxMenu;
+			add_obj_menu->Append( wxID_ANY, "Weather data file" );
+			add_obj_menu->Append( wxID_ANY, "3D Shading scene" );
+			add_obj_menu->Append( wxID_ANY, "Script" );
+			add_obj_menu->Append( wxID_ANY, "User defined variables" );
+			add_obj_menu->Append( wxID_ANY, "Text file" );
+			add_obj_menu->Append( wxID_ANY, "Report template" );
+
+			wxMenu *edit_obj_menu = new wxMenu;
+			edit_obj_menu->Append( wxID_ANY, "site measured (Weather File)" );
+			edit_obj_menu->Append( wxID_ANY, "shading scene 1 (3D Shading)" );
+			edit_obj_menu->Append( wxID_ANY, "shading scene 2 (3D Shading)" );
+			edit_obj_menu->Append( wxID_ANY, "batch processor (Script)" );
+			
+			wxMenu *del_obj_menu = new wxMenu;
+			del_obj_menu->Append( wxID_ANY, "site measured (Weather File)" );
+			del_obj_menu->Append( wxID_ANY, "shading scene 1 (3D Shading)" );
+			del_obj_menu->Append( wxID_ANY, "shading scene 2 (3D Shading)" );
+			del_obj_menu->Append( wxID_ANY, "batch processor (Script)" );
+
+
 			wxMenu menu;
+			menu.Append( wxID_ANY, "Add to project", add_obj_menu );
+			menu.Append( wxID_ANY, "Edit", edit_obj_menu );
+			menu.Append( wxID_ANY, "Delete", del_obj_menu );
+			menu.AppendSeparator();
 			menu.Append( wxID_NEW, "New project" );
 			menu.AppendSeparator();
 			menu.Append( wxID_OPEN, "Open project" );
@@ -183,7 +208,7 @@ void MainWindow::OnCaseTabButton( wxCommandEvent &evt )
 {
 	wxMenu menu;
 	
-	menu.Append( ID_CASE_CONFIG, "Change configuration..." );
+	menu.Append( ID_CASE_CONFIG, "Select technology and market" );
 	menu.AppendSeparator();
 	menu.Append( ID_CASE_RENAME, "Rename" );
 	menu.Append( ID_CASE_DUPLICATE, "Duplicate" );
