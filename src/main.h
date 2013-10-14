@@ -43,6 +43,8 @@ protected:
 	void OnCaseTabChange( wxCommandEvent & );
 	void OnCaseTabButton( wxCommandEvent & );
 	void OnCaseMenu( wxCommandEvent & );
+	void OnInternalCommand( wxCommandEvent & );
+
 private:
 #ifdef __WXOSX__
 	wxMenuBar *m_menuBar;
@@ -60,12 +62,65 @@ private:
 };
 
 
+class ConfigDatabase
+{
+public:
+	ConfigDatabase();
+	~ConfigDatabase();
+
+	void Clear();
+	void Add( const wxString &tech, const wxArrayString &fin );
+	void SetConfig( const wxString &t, const wxString &f );
+	void AddPage( const wxString &name, const wxString &caption, const wxString &hlpcxt, 
+		const wxArrayString &subpages, bool exclusive = false, 
+		const wxString &exclvar = wxEmptyString );
+
+	struct InputPageInfo
+	{
+		wxString Name;
+		wxString Caption;
+		wxString HelpContext;
+		wxArrayString SubPages;
+		bool OrganizeAsExclusivePages;
+		wxString ExclusivePageVar;
+	};
+
+	wxArrayString GetTechnologies();
+	wxArrayString GetFinancingForTech(const wxString &tech);
+	
+	std::vector<InputPageInfo*> GetInputPageList(const wxString &tech,
+			const wxString &financing );
+		
+private:
+	struct TechInfo { wxString Name; wxArrayString FinancingOptions; };
+	std::vector<TechInfo> m_techList;
+
+	struct ConfigInfo { 
+		~ConfigInfo() {
+			for( size_t i=0;i<InputPages.size();i++) delete InputPages[i];
+		}
+		wxString Technology;
+		wxString Financing;
+		std::vector<InputPageInfo*> InputPages;
+	};
+
+	ConfigInfo *Find( const wxString &t, const wxString &f );
+
+	std::vector<ConfigInfo*> m_configList;
+
+	ConfigInfo *m_curConfig;
+};
+
 class SamApp : public wxApp
 {
 public:
 	virtual bool OnInit();
 	virtual int OnExit();
 
+
+	static void Restart();
+	static wxString GetAppPath();
+	static wxString GetRuntimePath();
 	static wxConfig &Config();
 	static MainWindow *Window();
 	static wxFileHistory &FileHistory();	
@@ -75,8 +130,9 @@ public:
 	static int VersionMajor();
 	static int VersionMinor();
 	static int VersionMicro();
-	static VarDatabase &VariableDatabase();
-
+	static VarDatabase &VarDB();
+	static ConfigDatabase &CfgDB();
+	static bool LoadAndRunScriptFile( const wxString &script_file, wxArrayString *errors = 0 );
 };
 
 DECLARE_APP( SamApp );

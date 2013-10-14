@@ -92,13 +92,13 @@ WelcomeScreen::WelcomeScreen(wxWindow *parent)
 	LayoutWidgets();
 
 	wxString msg_url = "https://sam.nrel.gov/files/content/updates/messages.html";
-	m_ssCurlMessage.Start( msg_url );
+	//m_ssCurlMessage.Start( msg_url );
 	
 	wxString update_url = "https://sam.nrel.gov/files/content/updates/notification_2013.1.15.html";
-	m_ssCurlUpdate.Start( update_url );
+	//m_ssCurlUpdate.Start( update_url );
 	
 	wxString usage_url = "https://nreldev.nrel.gov/analysis/sam/usage/samnt/startup.php?action=increment";
-	m_ssCurlUsage.Start( usage_url );
+	//m_ssCurlUsage.Start( usage_url );
 
 	m_downloadTimer.Start(15000, true);
 

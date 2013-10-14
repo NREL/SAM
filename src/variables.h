@@ -61,6 +61,7 @@ public:
 	bool Read( wxInputStream & );
 	
 	int Type();
+	void SetType( int t );
 	void Set( int val );
 	void Set( float val );
 	void Set( double val );
@@ -90,9 +91,8 @@ private:
 
 #define VF_NONE 0x00
 #define VF_HIDE_LABELS 0x01
-#define VF_CALCULATED 0x02
-#define VF_PARAMETRIC 0x04
-#define VF_INDICATOR 0x08
+#define VF_PARAMETRIC 0x02
+#define VF_INDICATOR 0x04
 
 class VarInfo
 {
@@ -109,7 +109,6 @@ public:
 	VarValue DefaultValue;
 };
 
-typedef unordered_map<wxString, VarInfo*, wxStringHash, wxStringEqual> VarInfoHash;	
 
 class VarDatabase
 {
@@ -143,8 +142,10 @@ public:
 	int GetEquationIndex( const wxString &var );
 
 private:
-	VarInfoHash m_hash;
 	VarValue m_invVal;
+
+	typedef unordered_map<wxString, VarInfo*, wxStringHash, wxStringEqual> varinfo_hash_t;	
+	varinfo_hash_t m_hash;
 
 	typedef unordered_map< wxString, wxArrayString*, wxStringHash, wxStringEqual > arraystring_hash_t;
 	arraystring_hash_t m_affected;

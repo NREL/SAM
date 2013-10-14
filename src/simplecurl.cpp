@@ -129,6 +129,7 @@ public:
 
 wxSimpleCurlDownloadThread::wxSimpleCurlDownloadThread( wxEvtHandler *handler, int id )
 {
+	m_started = false;
 	m_thread = new DLThread( handler, id, this, wxEmptyString );
 }
 

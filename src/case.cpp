@@ -117,7 +117,7 @@ void Case::GetConfiguration( wxString *tech, wxString *fin )
 
 int Case::Changed( const wxString &var )
 {
-	VarEvaluator eval( &m_vars, &SamApp::VariableDatabase() );
+	VarEvaluator eval( &m_vars, &SamApp::VarDB() );
 	int n = eval.Changed( var );
 	if ( n > 0 ) SendEvent( CaseEvent( CaseEvent::VARS_CHANGED, eval.GetUpdated() ) );
 	return n;
@@ -126,7 +126,7 @@ int Case::Changed( const wxString &var )
 
 int Case::CalculateAll()
 {
-	VarEvaluator eval( &m_vars, &SamApp::VariableDatabase() );
+	VarEvaluator eval( &m_vars, &SamApp::VarDB() );
 	int n = eval.CalculateAll();
 	if ( n > 0 ) SendEvent( CaseEvent( CaseEvent::VARS_CHANGED, eval.GetUpdated() ) );
 	return n;
