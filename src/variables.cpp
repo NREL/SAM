@@ -249,6 +249,7 @@ bool VarValue::Read( wxInputStream &_I )
 }
 	
 int VarValue::Type() { return m_type; }
+void VarValue::SetType( int ty ) { m_type = ty; }
 void VarValue::Set( int val ) { m_type = VV_NUMBER; m_val = (float)val; }
 void VarValue::Set( float val ) { m_type = VV_NUMBER; m_val = val; }
 void VarValue::Set( double val ) { m_type = VV_NUMBER; m_val = val; }
@@ -460,7 +461,7 @@ void VarDatabase::Add( const wxString &name, int type,
 	unsigned long flags, const VarValue &defval )
 {
 	VarInfo *vv = 0;
-	VarInfoHash::iterator it = m_hash.find( name );
+	varinfo_hash_t::iterator it = m_hash.find( name );
 	if ( it == m_hash.end() )
 	{
 		vv = new VarInfo;
@@ -482,7 +483,7 @@ void VarDatabase::Add( const wxString &name, int type,
 void VarDatabase::Clear()
 {
 	// delete the variable info
-	for ( VarInfoHash::iterator it = m_hash.begin();
+	for ( varinfo_hash_t::iterator it = m_hash.begin();
 		it != m_hash.end();
 		++it )
 		delete it->second;
@@ -517,7 +518,7 @@ void VarDatabase::Clear()
 wxArrayString VarDatabase::ListAll()
 {
 	wxArrayString list;
-	for( VarInfoHash::iterator it = m_hash.begin(); it != m_hash.end(); ++it )
+	for( varinfo_hash_t::iterator it = m_hash.begin(); it != m_hash.end(); ++it )
 		list.Add( it->first );
 	return list;
 }
@@ -566,7 +567,7 @@ VarValue &VarDatabase::InternalDefaultValue( const wxString &name )
 
 VarInfo *VarDatabase::Lookup( const wxString &name )
 {
-	VarInfoHash::iterator it = m_hash.find(name);
+	varinfo_hash_t::iterator it = m_hash.find(name);
 	if ( it == m_hash.end() ) return 0;
 	else return it->second;
 }

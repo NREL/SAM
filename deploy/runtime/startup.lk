@@ -1,0 +1,70 @@
+// SAM startup script.
+// define technologies, financing options, input pages, configurations.
+
+// built-in variable types
+const VV_INVALID = 0;
+const VV_NUMBER = 1;
+const VV_ARRAY = 2;
+const VV_MATRIX = 3;
+const VV_STRING = 4;
+const VV_TABLE = 5;
+
+/*  DEFINE ALL CONFIGURATIONS */
+addconfig( 'Photovoltaics', [ 'Residential','Commercial','Commercial PPA', 'Independent Power Producer', 'None' ] );
+addconfig( 'PVWatts', [ 'Residential','Commercial','Commercial PPA', 'Independent Power Producer', 'None' ] );
+addconfig( 'CSP Physical Trough', [ 'Independent Power Producer', 'None' ] );
+addconfig( 'CSP Empirical Trough', [ 'Independent Power Producer', 'None' ] );
+addconfig( 'CSP Molten Salt Tower', [ 'Independent Power Producer', 'None' ] );
+addconfig( 'CSP Direct Steam Tower', [ 'Independent Power Producer', 'None' ] );
+addconfig( 'Wind', [ 'Residential','Commercial','Commercial PPA', 'Independent Power Producer', 'None' ] );
+addconfig( 'Geothermal', [ 'Independent Power Producer', 'None' ] );
+
+/*  SETUP EACH CONFIGURATION */
+function setup_pv_input_pages()
+{
+	outln(' --> setup pv pages' );
+	// creates all the input pages for PV systems - common across all
+	addpage( 'Weather', '', '', [ 'Climate Page' ] );
+	addpage( 'Module', '', '', 
+		[ 'Simple Efficiency Model', 
+			'CEC Model with Database', 
+			'CEC Model with User Specifications', 
+			'Sandia PV Array Performance Model' ], true, 'pv.mod.type' );
+	addpage( 'Inverter', '', '', 
+		[ 'Inverter Sandia Database',
+			'Inverter Datasheet',
+			'Inverter Part-load curve' ], true, 'pv.inv.type' );
+
+	addpage( 'Array', '', '', [ 'Array' ] );
+	addpage( 'PV Subarrays', '', '', [ 'PV Subarrays' ] );
+	
+	addvar( 'pv.mod.cec.a_c', VV_NUMBER, 'Area', 'm2' );
+	addeqn( 'pv.mod.cec.a_c', 'pv.mod.cec.2a_c', 
+		'${pv.mod.cec.2a_c} = 2*${pv.mod.cec.a_c};' );
+}
+
+
+function setup_residential_input_pages()
+{
+	// TODO
+	outln(' --> setup residential pages' );
+}
+
+function setup_commercial_input_pages()
+{
+	// TODO
+	outln(' --> setup commercial pages' );
+}
+
+outln(' setting up photovoltaics...' );
+setconfig( 'Photovoltaics', 'Residential' );
+setup_pv_input_pages();
+setup_residential_input_pages();
+
+
+outln(' setting up pvwatts...' );
+setconfig( 'PVWatts', 'Commercial' );
+setup_pv_input_pages();
+setup_commercial_input_pages();
+
+
