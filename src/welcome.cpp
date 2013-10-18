@@ -104,6 +104,8 @@ WelcomeScreen::WelcomeScreen(wxWindow *parent)
 
 	m_caseName->SelectAll();
 	m_caseName->SetFocus();
+
+	UpdateRecentList();
 }
 
 WelcomeScreen::~WelcomeScreen()
@@ -340,8 +342,8 @@ void WelcomeScreen::OnCreateProject(wxCommandEvent &)
 void WelcomeScreen::OnOpenRecent(wxCommandEvent &)
 {
 	wxString fn = m_recent->GetStringSelection();
-//	if ( SamApp::Window()->CloseProject())
-//			SamApp::Window()->LoadProject( fn );
+	if ( SamApp::Window()->CloseProject())
+		SamApp::Window()->LoadProject( fn );
 }
 
 void WelcomeScreen::OnHyperlink(wxCommandEvent &evt)

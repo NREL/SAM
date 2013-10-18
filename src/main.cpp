@@ -4,6 +4,7 @@
 #include <wx/webview.h>
 #include <wx/simplebook.h>
 #include <wx/panel.h>
+#include <wx/busyinfo.h>
 
 #include <wex/metro.h>
 #include <wex/icons/cirplus.cpng>
@@ -52,6 +53,8 @@ enum { __idFirst = wxID_HIGHEST+592,
 	ID_CASE_COMPARE,
 	ID_CASE_VARIABLE_LIST,
 	ID_CASE_IMPORT,
+	ID_CASE_MOVE_LEFT,
+	ID_CASE_MOVE_RIGHT,
 	__idCaseMenuLast,
 	__idInternalFirst,
 	ID_INTERNAL_IDE, ID_INTERNAL_RESTART,
@@ -114,11 +117,11 @@ MainWindow::MainWindow()
 	m_topBook = new wxSimplebook( this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxBORDER_NONE );
 
 	m_welcomeScreen = new WelcomeScreen( m_topBook );
-	m_topBook->AddPage( m_welcomeScreen, "Welcome to SAM" );
+	m_topBook->AddPage( m_welcomeScreen, wxT("Welcome to SAM") );
 
 
 	m_caseTabPanel = new wxPanel( m_topBook );
-	m_topBook->AddPage( m_caseTabPanel, "Main project window" );
+	m_topBook->AddPage( m_caseTabPanel, wxT("Main project window") );
 
 	wxBoxSizer *tools = new wxBoxSizer( wxHORIZONTAL );
 	tools->Add( new wxMetroButton( m_caseTabPanel, ID_MAIN_MENU, wxEmptyString, wxBITMAP_PNG_FROM_DATA( main_menu ), wxDefaultPosition, wxDefaultSize /*, wxMB_DOWNARROW */), 0, wxALL|wxEXPAND, 0 );
@@ -139,7 +142,11 @@ MainWindow::MainWindow()
 	wxAcceleratorEntry entries[20];
 	entries[0].Set( wxACCEL_SHIFT, WXK_F7,  ID_INTERNAL_IDE );
 	entries[1].Set( wxACCEL_SHIFT, WXK_F8,  ID_INTERNAL_RESTART );
-	SetAcceleratorTable( wxAcceleratorTable(2,entries) );
+	entries[2].Set( wxACCEL_CMD, 'o', wxID_OPEN );
+	entries[3].Set( wxACCEL_CMD, 's', wxID_SAVE );
+	entries[4].Set( wxACCEL_CMD, 'w', wxID_CLOSE );
+	entries[5].Set( wxACCEL_NORMAL, WXK_F2, ID_CASE_RENAME );
+	SetAcceleratorTable( wxAcceleratorTable(6,entries) );
 }
 
 bool MainWindow::CreateProject()
@@ -154,22 +161,43 @@ bool MainWindow::CreateProject()
 
 bool MainWindow::CloseProject()
 {
-	wxArrayString cases = m_project.GetCases();
+	if ( m_project.IsModified() )
+	{
+		int ret = wxMessageBox("The project '" + GetProjectDisplayName() + "' has been modified.  Save changes?", "Query", wxICON_EXCLAMATION|wxYES_NO|wxCANCEL, this );
+		if (ret == wxYES)
+		{
+			Save( );
+			if ( m_project.IsModified() ) // if failed to save, cancel
+				return false;
+		}
+		else if (ret == wxCANCEL)
+			return false;
+	}
+
+	wxArrayString cases = m_project.GetCaseNames();
 	for( size_t i=0;i<cases.size();i++ )
 		DeleteCaseWindow( m_project.GetCase( cases[i] ) );
 
 	m_project.Clear();
 	m_project.SetModified( false );
-	m_topBook->SetSelection( 0 );
+
+	m_projectFileName.Clear();
+	UpdateFrameTitle();
 	return true;
+}
+
+wxString MainWindow::GetProjectDisplayName()
+{
+	if ( m_projectFileName.IsEmpty() ) return wxT("untitled");
+	else return m_projectFileName;
 }
 
 wxString MainWindow::GetUniqueCaseName( wxString base )
 {	
-	if ( base.IsEmpty() ) base = "untitled";
+	if ( base.IsEmpty() ) base = wxT("untitled");
 	int unique_num = 0;
 	wxString suffix;
-	while ( m_project.GetCases().Index( base + suffix ) >= 0 )
+	while ( m_project.GetCaseNames().Index( base + suffix ) >= 0 )
 		suffix = wxString::Format(" (%d)", ++unique_num);
 
 	return base + suffix;
@@ -205,7 +233,6 @@ void MainWindow::DeleteCaseWindow( Case *c )
 	m_caseTabList->Remove( m_project.GetCaseName( c ) );
 	m_caseTabList->Refresh();
 }
-
 
 void MainWindow::OnInternalCommand( wxCommandEvent &evt )
 {
@@ -258,11 +285,11 @@ void MainWindow::OnCommand( wxCommandEvent &evt )
 			menu.AppendSeparator();
 			menu.Append( wxID_NEW, "New project" );
 			menu.AppendSeparator();
-			menu.Append( wxID_OPEN, "Open project" );
-			menu.Append( wxID_SAVE, "Save project" );
-			menu.Append( wxID_SAVEAS, "Save project as" );
+			menu.Append( wxID_OPEN, "Open\tCtrl-O" );
+			menu.Append( wxID_SAVE, "Save\tCtrl-S" );
+			menu.Append( wxID_SAVEAS, "Save as" );
 			menu.AppendSeparator();
-			menu.Append( wxID_CLOSE, "Close project" );
+			menu.Append( wxID_CLOSE, "Close" );
 			menu.Append( wxID_EXIT );
 			PopupMenu( &menu );
 		}
@@ -271,17 +298,119 @@ void MainWindow::OnCommand( wxCommandEvent &evt )
 		CreateProject();
 		break;
 	case wxID_OPEN:
-	case wxID_SAVE:
+		{
+			if ( !CloseProject() ) return;			
+			wxFileDialog dlg(this, "Open SAM file", wxEmptyString, wxEmptyString, "SAM Project Files (*.sam)|*.sam", wxFD_OPEN );
+			if (dlg.ShowModal() == wxID_OK)
+				if( !LoadProject( dlg.GetPath() ) )
+					wxMessageBox("Error loading project file:\n\n" 
+						+ dlg.GetPath() + "\n\n" + m_project.GetLastError(), "Notice", wxOK, this );
+		}
+		break;
 	case wxID_SAVEAS:
-		wxMessageBox("not possible yet");
+		SaveAs();
+		break;
+	case wxID_SAVE:
+		Save();
 		break;
 	case wxID_CLOSE:
 		CloseProject();
+		m_topBook->SetSelection( 0 );
 		break;
 	case wxID_EXIT:
 		Close();
 		break;
 	}
+}
+
+
+void MainWindow::Save()
+{
+	if ( m_projectFileName.IsEmpty() )
+	{
+		SaveAs();
+		return;
+	}
+
+	if ( !SaveProject( m_projectFileName ) )
+		wxMessageBox("Error writing project to disk:\n\n" + m_projectFileName, "Notice", wxOK, this );
+			
+	UpdateFrameTitle();
+}
+
+void MainWindow::SaveAs()
+{
+
+	wxFileDialog dlg( this, "Save SAM file as", wxEmptyString, wxEmptyString, "SAM Project File (*.sam)|*.sam", wxFD_SAVE|wxFD_OVERWRITE_PROMPT );
+	if ( dlg.ShowModal() == wxID_OK )
+	{
+		m_projectFileName = dlg.GetPath();
+		Save();
+	}
+	else
+		return;
+}
+
+
+bool MainWindow::LoadProject( const wxString &file )
+{
+	m_project.Clear();
+	if ( m_project.ReadArchive( file ) )
+	{
+		m_topBook->SetSelection( 1 );
+		std::vector<Case*> cases = m_project.GetCases();
+		for( size_t i=0;i<cases.size();i++ )
+			CreateCaseWindow( cases[i] );
+
+		// restore UI view properties
+		wxArrayString ordered_tabs = wxSplit( m_project.GetProperty( "ui.case_tab_order" ), '|' );
+		wxArrayString tabs = m_caseTabList->GetLabels();
+		
+		// re-add tabs in order that they were saved
+		m_caseTabList->Clear();
+		for( size_t i=0;i<ordered_tabs.size();i++ )
+		{
+			if ( tabs.Index( ordered_tabs[i] ) >= 0 ) 
+			{ // only add a tab from the ordered list if it actually is a case
+				m_caseTabList->Append( ordered_tabs[i] );
+				tabs.Remove( ordered_tabs[i] );
+			}
+		}
+
+		// add any tabs originally in the case list that the ordered list
+		// did not have for some strange reason
+		for( size_t i=0;i<tabs.size();i++)
+			m_caseTabList->Append( tabs[i] );
+
+		SwitchToCaseWindow( m_project.GetProperty( "ui.selected_case") );
+
+		m_caseTabList->Refresh();
+
+		m_projectFileName = file;
+		UpdateFrameTitle();
+		SamApp::FileHistory().AddFileToHistory( file );
+		m_welcomeScreen->UpdateRecentList();
+		return true;
+	}
+	else return false;
+}
+
+bool MainWindow::SaveProject( const wxString &file )
+{
+	wxBusyInfo busy( "Writing project data... " + wxFileNameFromPath(file), this );
+	wxGetApp().Yield();
+	wxMilliSleep( 100 );
+
+	// save UI view properties before writing to disk
+	wxArrayString tabs = m_caseTabList->GetLabels();
+	m_project.SetProperty( "ui.case_tab_order", wxJoin( tabs, '|' ) );
+	m_project.SetProperty( "ui.selected_case", m_caseTabList->GetStringSelection() );
+
+	bool ok = m_project.WriteArchive( file );
+	if ( ok ) m_project.SetModified( false );
+
+	UpdateFrameTitle();
+	return ok;
 }
 
 CaseWindow *MainWindow::GetCaseWindow( Case *c )
@@ -294,16 +423,30 @@ CaseWindow *MainWindow::GetCaseWindow( Case *c )
 	return 0;
 }
 
+void MainWindow::SwitchToCaseWindow( const wxString &case_name )
+{
+	if ( Case *c = m_project.GetCase( case_name ) )
+	{
+		int sel = m_caseNotebook->FindPage( GetCaseWindow( c ) );
+		if ( sel >= 0 ) m_caseNotebook->SetSelection( sel );
+
+		// update tab list too if needed
+		if ( m_caseTabList->GetStringSelection() != case_name )
+		{
+			int idx = m_caseTabList->Find( case_name );
+			if ( idx >= 0 )
+			{
+				m_caseTabList->SetSelection( idx );
+				m_caseTabList->Refresh();
+			}
+		}
+	}
+}
+
 void MainWindow::OnCaseTabChange( wxCommandEvent &evt )
 {
 	int sel = evt.GetSelection();
-	wxString name = m_caseTabList->GetLabel( sel );
-
-	if ( Case *c = m_project.GetCase( name ) )
-	{
-		sel = m_caseNotebook->FindPage( GetCaseWindow( c ) );
-		if ( sel >= 0 ) m_caseNotebook->SetSelection( sel );
-	}
+	SwitchToCaseWindow( m_caseTabList->GetLabel(sel) );
 	//wxMessageBox( wxString::Format("Case tab changed: %d", evt.GetSelection() ) );
 }
 
@@ -313,9 +456,12 @@ void MainWindow::OnCaseTabButton( wxCommandEvent &evt )
 	
 	menu.Append( ID_CASE_CONFIG, "Select technology and market" );
 	menu.AppendSeparator();
-	menu.Append( ID_CASE_RENAME, "Rename" );
+	menu.Append( ID_CASE_RENAME, "Rename\tF2" );
 	menu.Append( ID_CASE_DUPLICATE, "Duplicate" );
 	menu.Append( ID_CASE_DELETE, "Delete" );
+	menu.AppendSeparator();
+	menu.Append( ID_CASE_MOVE_LEFT, "Move left" );
+	menu.Append( ID_CASE_MOVE_RIGHT, "Move right" );
 	menu.AppendSeparator();
 	menu.Append( ID_CASE_SIMULATE, "Simulate" );
 	menu.Append( ID_CASE_CLEAR_RESULTS, "Clear all results" );
@@ -360,6 +506,7 @@ void MainWindow::OnCaseMenu( wxCommandEvent &evt )
 					break;
 			}
 		}
+		break;
 	case ID_CASE_DELETE:
 		if ( wxYES == wxMessageBox("Really delete case " + case_name + "?  This action cannot be reversed.", "Query", wxYES_NO, this ) )
 		{
@@ -374,15 +521,33 @@ void MainWindow::OnCaseMenu( wxCommandEvent &evt )
 			CreateCaseWindow( dup );
 		}
 		break;
+	case ID_CASE_MOVE_LEFT:
+		m_caseTabList->ReorderLeft( tab_sel );
+		break;
+	case ID_CASE_MOVE_RIGHT:
+		m_caseTabList->ReorderRight( tab_sel );
+		break;
 	};
 
 	//wxMessageBox( wxString::Format("case id: %d, command %d", sel, evt.GetId() ) );
 }
 
-void MainWindow::OnClose( wxCloseEvent & )
+void MainWindow::OnClose( wxCloseEvent &evt )
 {
-	CloseProject();
+	if ( !CloseProject() )
+	{
+		evt.Veto();
+		return;
+	}
+
 	Destroy();
+}
+
+void MainWindow::UpdateFrameTitle()
+{
+	wxString title = wxT("SAM") + wxString(" ") + SamApp::VersionStr();
+	if ( !m_projectFileName.IsEmpty() )	title += ": " + m_projectFileName;
+	SetTitle( title );
 }
 
 
@@ -545,6 +710,11 @@ bool SamApp::OnInit()
 	g_logWindow = new SamLogWindow;
 	wxLog::SetActiveTarget( g_logWindow );
 #endif
+
+	// register all the object types that can
+	// be read or written to streams.
+	ObjectTypes::Register( new StringHash );
+	ObjectTypes::Register( new Case );
 
 	wxInitAllImageHandlers();
 	wxSimpleCurlInit();

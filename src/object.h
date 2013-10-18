@@ -51,7 +51,15 @@ public:
 	bool Delete( const wxString &name );
 	Object *Lookup( const wxString &name );
 	wxArrayString GetNames();
-	
+	template<typename TY> std::vector<TY*> GetObjects( ) {
+		std::vector<TY*> list;
+		list.reserve( size() );
+		for( iterator it = begin(); it!=end();++it )
+			if ( TY *ocast = dynamic_cast<TY*>(it->second) )
+				list.push_back( ocast );
+		return list;
+	}
+
 	void Write( wxOutputStream &out );
 	bool Read( wxInputStream &in ); // does NOT clear first
 };

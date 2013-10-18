@@ -3,13 +3,14 @@
 
 #include <wx/splitter.h>
 
+#include "case.h"
+
 class wxPanel;
-class Case;
 class wxMetroButton;
 class wxMetroNotebook;
 class wxSimpleNotebook;
 
-class CaseWindow : public wxSplitterWindow
+class CaseWindow : public wxSplitterWindow, CaseEventListener
 {
 public:
 	CaseWindow( wxWindow *parent, Case *c );
@@ -27,7 +28,8 @@ private:
 	wxSimplebook *m_pageFlipper;
 	wxMetroNotebook *m_resultsTab;
 
-	void OnCommand( wxCommandEvent & );
+	void OnCommand( wxCommandEvent & );	
+	virtual void OnCaseEvent( Case *, CaseEvent & );
 
 
 	DECLARE_EVENT_TABLE();

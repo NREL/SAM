@@ -14,14 +14,15 @@ public:
 	virtual ~ProjectFile();
 
 	void Clear();
-
+	
 	// managing cases
 	void AddCase( const wxString &name, Case *c );
 	Case *AddCase( const wxString &name );
 	bool DeleteCase( const wxString &name );
-	wxArrayString GetCases();
 	Case *GetCase( const wxString &name );
 	wxString GetCaseName( Case *c );
+	wxArrayString GetCaseNames();
+	std::vector<Case*> GetCases();
 	bool RenameCase( const wxString &old_name, const wxString &new_name );
 
 	// simple project file properties
@@ -39,7 +40,10 @@ public:
 	void Write( wxOutputStream &out );
 	bool Read( wxInputStream &in );
 
-	wxString LastError() { return m_lastError; }
+	bool WriteArchive( const wxString &file );
+	bool ReadArchive( const wxString &file );
+
+	wxString GetLastError() { return m_lastError; }
 
 	bool IsModified() { return m_modified; }
 	void SetModified( bool b ) { m_modified = b; }

@@ -64,6 +64,7 @@ public:
 	StringHash &Notes() { return m_notes; }
 
 	void AddListener( CaseEventListener *cel );
+	void RemoveListener( CaseEventListener *cel );
 	void ClearListeners();
 
 private:
