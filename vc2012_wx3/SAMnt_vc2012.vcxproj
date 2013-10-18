@@ -15,6 +15,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\case.cpp" />
+    <ClCompile Include="..\src\casewin.cpp" />
     <ClCompile Include="..\src\equation.cpp" />
     <ClCompile Include="..\src\ide.cpp" />
     <ClCompile Include="..\src\main.cpp" />
@@ -28,6 +29,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\case.h" />
+    <ClInclude Include="..\src\casewin.h" />
     <ClInclude Include="..\src\equation.h" />
     <ClInclude Include="..\src\ide.h" />
     <ClInclude Include="..\src\main.h" />
