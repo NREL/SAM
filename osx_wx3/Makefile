@@ -9,11 +9,12 @@ LKLIB = $(LKDIR)/lkosxwx3.a
 
 CC = gcc
 CXX = g++
-CFLAGS = -g -I. -I$(SRCDIR) -I$(WEXDIR)/include -I$(LKDIR) `wx-config-3 --cflags`
+CFLAGS = -g -DLK_USE_WXWIDGETS -I. -I$(SRCDIR) -I$(WEXDIR)/include -I$(LKDIR) `wx-config-3 --cflags`
 CXXFLAGS = $(CFLAGS)
 LDFLAGS = `wx-config-3 --libs` `wx-config-3 --libs aui` `wx-config-3 --libs stc` -lm $(LKLIB) $(WEXLIB) -lstdc++ -lcurl
 
 OBJECTS = ide.o \
+	casewin.o \
 	case.o \
 	main.o \
 	equation.o \

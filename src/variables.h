@@ -172,13 +172,15 @@ public:
 class VarEvaluator
 {
 private:
+	static const int INVALID = 0;
+	static const int OK = 1;
+
 	VarTable *m_vars;
 	VarDatabase *m_vdb;
 	std::vector<VarDatabase::eqn_data*> m_eqns;
 	std::vector<char> m_status;
 	wxArrayString m_errors;
 	wxArrayString m_updated;
-	enum { INVALID, OK };
 	int Calculate( );
 	size_t MarkAffectedEquations( const wxString &var );
 
