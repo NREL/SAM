@@ -64,6 +64,18 @@ void ObjectCollection::Add( const wxString &name, Object *obj )
 		(*this)[name] = obj;
 }
 
+bool ObjectCollection::Rename( const wxString &old_name, const wxString &new_name )
+{
+	iterator it = find( old_name );
+	if ( it == end() || Lookup( new_name ) != 0 ) return false;
+
+	(*this)[new_name] = it->second;
+
+	erase( it );
+
+	return true;
+}
+
 bool ObjectCollection::Delete( const wxString &name )
 {
 	iterator it = find( name );

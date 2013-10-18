@@ -17,9 +17,12 @@ public:
 
 	// managing cases
 	void AddCase( const wxString &name, Case *c );
+	Case *AddCase( const wxString &name );
 	bool DeleteCase( const wxString &name );
 	wxArrayString GetCases();
 	Case *GetCase( const wxString &name );
+	wxString GetCaseName( Case *c );
+	bool RenameCase( const wxString &old_name, const wxString &new_name );
 
 	// simple project file properties
 	wxString GetProperty( const wxString &name );
@@ -29,6 +32,7 @@ public:
 	// general purpose data storage objects
 	void AddObject( const wxString &name, Object * );
 	void DeleteObject( const wxString &name );
+	bool RenameObject( const wxString &old_name, const wxString &new_name );
 	Object *GetObject( const wxString &name );
 	wxArrayString GetObjects();
 

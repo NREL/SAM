@@ -47,6 +47,7 @@ public:
 	void Clear();
 	virtual void clear() { this->Clear(); }
 	void Add( const wxString &name, Object * );
+	bool Rename( const wxString &old_name, const wxString &new_name );
 	bool Delete( const wxString &name );
 	Object *Lookup( const wxString &name );
 	wxArrayString GetNames();

@@ -29,6 +29,13 @@ void ProjectFile::AddCase( const wxString &name, Case *c )
 	m_modified = true;
 }
 
+Case *ProjectFile::AddCase( const wxString &name )
+{
+	Case *c = new Case;
+	AddCase( name, c );
+	return c;
+}
+
 bool ProjectFile::DeleteCase( const wxString &name )
 {
 	if ( m_cases.Delete( name ) )
@@ -39,6 +46,11 @@ bool ProjectFile::DeleteCase( const wxString &name )
 	else return false;
 }
 
+bool ProjectFile::RenameCase( const wxString &old_name, const wxString &new_name )
+{
+	return m_cases.Rename( old_name, new_name );
+}
+
 wxArrayString ProjectFile::GetCases()
 {
 	return m_cases.GetNames();
@@ -47,6 +59,17 @@ wxArrayString ProjectFile::GetCases()
 Case *ProjectFile::GetCase( const wxString &name )
 {
 	return dynamic_cast<Case*>( m_cases.Lookup( name ) );
+}
+
+wxString ProjectFile::GetCaseName( Case *c )
+{
+	for( ObjectCollection::iterator it = m_cases.begin();
+		it != m_cases.end();
+		++it )
+		if ( it->second == c )
+			return it->first;
+
+	return wxEmptyString;
 }
 
 // simple project file properties
@@ -85,6 +108,11 @@ void ProjectFile::DeleteObject( const wxString &name )
 {
 	m_objects.Delete( name );
 	m_modified = true;
+}
+
+bool ProjectFile::RenameObject( const wxString &old_name, const wxString &new_name )
+{
+	return m_cases.Rename( old_name, new_name );
 }
 
 Object *ProjectFile::GetObject( const wxString &name )

@@ -25,6 +25,7 @@ public:
 };
 
 class WelcomeScreen;
+class CaseWindow;
 
 class MainWindow : public wxFrame
 {
@@ -33,9 +34,14 @@ public:
 
 	ProjectFile &Project() { return m_project; }
 
-	void CreateProject();
-	void CloseProject();
+	bool CreateProject();
+	bool CloseProject();
 
+	wxString GetUniqueCaseName( wxString base = wxEmptyString );
+	void CreateNewCase( const wxString &name = wxEmptyString );
+	CaseWindow *GetCaseWindow( Case *c );
+	CaseWindow *CreateCaseWindow( Case *c );
+	void DeleteCaseWindow( Case *c );
 
 protected:
 	void OnClose( wxCloseEvent & );

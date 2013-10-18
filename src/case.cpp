@@ -4,7 +4,12 @@
 
 Case::Case()
 {
-	m_name = wxT( "untitled" );
+
+}
+
+Case::Case( const wxString &tech, const wxString &fin )
+{
+	SetConfiguration( tech, fin );
 }
 
 Case::~Case()
@@ -23,7 +28,6 @@ bool Case::Copy( Object *obj )
 {
 	if ( Case *rhs = dynamic_cast<Case*>( obj ) )
 	{
-		m_name = rhs->m_name;
 		m_technology = rhs->m_technology;
 		m_financing = rhs->m_financing;
 		m_vars.Copy( rhs->m_vars );
@@ -49,7 +53,6 @@ void Case::Write( wxOutputStream &_o )
 	out.Write8( 1 );
 
 	// write data
-	out.WriteString( m_name );
 	out.WriteString( m_technology );
 	out.WriteString( m_financing );
 	m_vars.Write( _o );
@@ -68,7 +71,6 @@ bool Case::Read( wxInputStream &_i )
 	in.Read8(); // version
 
 	// read data
-	m_name = in.ReadString();
 	m_technology = in.ReadString();
 	m_financing = in.ReadString();
 	m_vars.Read( _i );
@@ -79,11 +81,6 @@ bool Case::Read( wxInputStream &_i )
 	return (in.Read8() == code);
 }
 
-void Case::SetName( const wxString &name )
-{
-	m_name = name;
-	SendEvent( CaseEvent( CaseEvent::NAME_CHANGED, name ) );
-}
 
 void Case::SetConfiguration( const wxString &tech, const wxString &fin )
 {
@@ -104,7 +101,7 @@ void Case::SetConfiguration( const wxString &tech, const wxString &fin )
 	// set up all default variables and values
 
 	// reevalute all equations
-
+	
 	// update UI
 	SendEvent( CaseEvent( CaseEvent::CONFIG_CHANGED, tech, fin ) );
 }

@@ -19,7 +19,7 @@ private:
 	wxArrayString m_vars;
 	wxString m_str, m_str2;
 public:
-	enum { VARS_CHANGED, NAME_CHANGED, CONFIG_CHANGED };
+	enum { VARS_CHANGED, CONFIG_CHANGED };
 
 	CaseEvent(  int type ) : m_type(type) { }
 	CaseEvent( int type, const wxString &str ) : m_type(type), m_str(str) { }
@@ -42,6 +42,7 @@ class Case : public Object
 {
 public:
 	Case();
+	Case( const wxString &tech, const wxString &fin );
 	virtual ~Case();
 
 	virtual Object *Duplicate();
@@ -50,8 +51,6 @@ public:
 	virtual void Write( wxOutputStream & );
 	virtual bool Read( wxInputStream & );
 	
-	wxString GetName() { return m_name; }
-	void SetName( const wxString &s );
 	void SetConfiguration( const wxString &tech, const wxString &fin );
 	void GetConfiguration( wxString *tech, wxString *fin );	
 	VarTable &Vars() { return m_vars; }
@@ -68,7 +67,6 @@ public:
 	void ClearListeners();
 
 private:
-	wxString m_name;
 	wxString m_technology;
 	wxString m_financing;
 	VarTable m_vars;

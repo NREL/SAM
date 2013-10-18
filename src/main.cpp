@@ -21,6 +21,8 @@
 #include "welcome.h"
 #include "project.h"
 #include "variables.h"
+#include "case.h"
+#include "casewin.h"
 
 
 // application globals
@@ -37,8 +39,8 @@ static wxLogWindow *g_logWindow = 0;
 enum { __idFirst = wxID_HIGHEST+592,
 
 	ID_MAIN_MENU, ID_CASE_TABS, ID_CONTEXT_HELP, ID_PAGE_NOTES,
-	__idCaseMenuFirst,
 	ID_CASE_CREATE,
+	__idCaseMenuFirst,
 	ID_CASE_CONFIG,
 	ID_CASE_RENAME,
 	ID_CASE_DUPLICATE,
@@ -64,6 +66,7 @@ BEGIN_EVENT_TABLE( MainWindow, wxFrame )
 	EVT_MENU( wxID_SAVEAS, MainWindow::OnCommand )
 	EVT_MENU( wxID_CLOSE, MainWindow::OnCommand )
 	EVT_MENU( wxID_EXIT, MainWindow::OnCommand )
+	EVT_BUTTON( ID_CASE_CREATE, MainWindow::OnCommand )
 	EVT_BUTTON( ID_MAIN_MENU, MainWindow::OnCommand )
 	EVT_LISTBOX( ID_CASE_TABS, MainWindow::OnCaseTabChange )
 	EVT_BUTTON( ID_CASE_TABS, MainWindow::OnCaseTabButton )
@@ -121,9 +124,6 @@ MainWindow::MainWindow()
 	tools->Add( new wxMetroButton( m_caseTabPanel, ID_MAIN_MENU, wxEmptyString, wxBITMAP_PNG_FROM_DATA( main_menu ), wxDefaultPosition, wxDefaultSize /*, wxMB_DOWNARROW */), 0, wxALL|wxEXPAND, 0 );
 	tools->Add( new wxMetroButton( m_caseTabPanel, ID_CASE_CREATE, "New", wxBITMAP_PNG_FROM_DATA( cirplus ), wxDefaultPosition, wxDefaultSize), 0, wxALL|wxEXPAND, 0 );
 	m_caseTabList = new wxMetroTabList( m_caseTabPanel, ID_CASE_TABS, wxDefaultPosition, wxDefaultSize, wxMT_MENUBUTTONS );
-	m_caseTabList->Append( "photovoltaic #1" );
-	m_caseTabList->Append( "solar water" );
-	m_caseTabList->Append( "power tower steam" );
 	tools->Add( m_caseTabList, 1, wxALL|wxEXPAND, 0 );		
 	tools->Add( new wxMetroButton( m_caseTabPanel, ID_CONTEXT_HELP, wxEmptyString, wxBITMAP_PNG_FROM_DATA(qmark), wxDefaultPosition, wxDefaultSize), 0, wxALL|wxEXPAND, 0 );
 	
@@ -142,18 +142,68 @@ MainWindow::MainWindow()
 	SetAcceleratorTable( wxAcceleratorTable(2,entries) );
 }
 
-void MainWindow::CreateProject()
+bool MainWindow::CreateProject()
 {
-	m_project.Clear();
-	m_project.SetModified( false );
+	if ( !CloseProject()) return false;
+
 	m_topBook->SetSelection( 1 );
+
+	CreateNewCase();
+	return true;
 }
 
-void MainWindow::CloseProject()
+bool MainWindow::CloseProject()
 {
+	wxArrayString cases = m_project.GetCases();
+	for( size_t i=0;i<cases.size();i++ )
+		DeleteCaseWindow( m_project.GetCase( cases[i] ) );
+
 	m_project.Clear();
 	m_project.SetModified( false );
 	m_topBook->SetSelection( 0 );
+	return true;
+}
+
+wxString MainWindow::GetUniqueCaseName( wxString base )
+{	
+	if ( base.IsEmpty() ) base = "untitled";
+	int unique_num = 0;
+	wxString suffix;
+	while ( m_project.GetCases().Index( base + suffix ) >= 0 )
+		suffix = wxString::Format(" (%d)", ++unique_num);
+
+	return base + suffix;
+}
+
+void MainWindow::CreateNewCase( const wxString &_name )
+{
+	Case *c = m_project.AddCase( GetUniqueCaseName(_name ) );
+	CreateCaseWindow( c );
+}
+
+CaseWindow *MainWindow::CreateCaseWindow( Case *c )
+{
+	if( CaseWindow *cw = GetCaseWindow(c) )
+		return cw;
+
+	wxString name = m_project.GetCaseName( c );	
+	CaseWindow *win = new CaseWindow( m_caseNotebook, c );
+	m_caseNotebook->AddPage( win, name, true );
+	m_caseTabList->Append( name );
+	m_caseTabList->SetSelection( m_caseTabList->Count()-1 );
+	m_caseTabList->Refresh();
+
+	return win;
+}
+
+void MainWindow::DeleteCaseWindow( Case *c )
+{
+	CaseWindow *cw = GetCaseWindow( c );
+	if ( cw == 0 ) return;
+
+	m_caseNotebook->DeletePage( m_caseNotebook->FindPage( cw ) );
+	m_caseTabList->Remove( m_project.GetCaseName( c ) );
+	m_caseTabList->Refresh();
 }
 
 
@@ -175,6 +225,9 @@ void MainWindow::OnCommand( wxCommandEvent &evt )
 {
 	switch( evt.GetId() )
 	{
+	case ID_CASE_CREATE:
+		CreateNewCase();
+		break;
 	case ID_MAIN_MENU:
 		{
 			wxMenu *add_obj_menu = new wxMenu;
@@ -231,8 +284,26 @@ void MainWindow::OnCommand( wxCommandEvent &evt )
 	}
 }
 
+CaseWindow *MainWindow::GetCaseWindow( Case *c )
+{
+	for( size_t i=0;i<m_caseNotebook->GetPageCount();i++ )
+		if ( CaseWindow *cw = dynamic_cast<CaseWindow*>(m_caseNotebook->GetPage( i ) ) )
+			if ( cw->GetCase() == c )
+				return cw;
+
+	return 0;
+}
+
 void MainWindow::OnCaseTabChange( wxCommandEvent &evt )
 {
+	int sel = evt.GetSelection();
+	wxString name = m_caseTabList->GetLabel( sel );
+
+	if ( Case *c = m_project.GetCase( name ) )
+	{
+		sel = m_caseNotebook->FindPage( GetCaseWindow( c ) );
+		if ( sel >= 0 ) m_caseNotebook->SetSelection( sel );
+	}
 	//wxMessageBox( wxString::Format("Case tab changed: %d", evt.GetSelection() ) );
 }
 
@@ -261,7 +332,50 @@ void MainWindow::OnCaseTabButton( wxCommandEvent &evt )
 
 void MainWindow::OnCaseMenu( wxCommandEvent &evt )
 {
-	int sel = m_caseTabList->GetSelection();
+	size_t tab_sel = m_caseTabList->GetSelection();
+	wxString case_name = m_caseTabList->GetLabel( tab_sel );
+	Case *c = m_project.GetCase( case_name );
+	CaseWindow *cw = GetCaseWindow( c );
+
+	if ( c == 0 || cw == 0 ) return; // error
+	
+	switch( evt.GetId() )
+	{
+	case ID_CASE_RENAME:
+		{
+			wxString new_name = case_name;
+			while( 1 )
+			{
+				new_name = wxGetTextFromUser( "Please enter a new name for the case:", "Query", case_name, this );
+				if ( new_name == case_name || new_name.IsEmpty() ) return;
+
+				if ( m_project.RenameCase( case_name, new_name ) )
+				{
+					m_caseTabList->SetLabel( tab_sel, new_name );
+					m_caseTabList->Refresh();
+					break;
+				}
+
+				if ( wxNO == wxMessageBox("A case with that name already exists in the project. Try again?", "Query", wxYES_NO, this ) )
+					break;
+			}
+		}
+	case ID_CASE_DELETE:
+		if ( wxYES == wxMessageBox("Really delete case " + case_name + "?  This action cannot be reversed.", "Query", wxYES_NO, this ) )
+		{
+			DeleteCaseWindow( c );
+			m_project.DeleteCase( case_name );
+		}
+		break;
+	case ID_CASE_DUPLICATE:
+		if ( Case *dup = dynamic_cast<Case*>(c->Duplicate()) )
+		{
+			m_project.AddCase( GetUniqueCaseName( case_name ), dup );
+			CreateCaseWindow( dup );
+		}
+		break;
+	};
+
 	//wxMessageBox( wxString::Format("case id: %d, command %d", sel, evt.GetId() ) );
 }
 

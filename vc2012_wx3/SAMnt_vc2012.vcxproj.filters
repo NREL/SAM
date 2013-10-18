@@ -47,6 +47,9 @@
     <ClInclude Include="..\src\ide.h">
       <Filter>Source</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\casewin.h">
+      <Filter>Source</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\welcome.cpp">
@@ -80,6 +83,9 @@
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="..\src\ide.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\casewin.cpp">
       <Filter>Source</Filter>
     </ClCompile>
   </ItemGroup>
