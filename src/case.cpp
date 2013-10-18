@@ -73,10 +73,10 @@ bool Case::Read( wxInputStream &_i )
 	// read data
 	m_technology = in.ReadString();
 	m_financing = in.ReadString();
-	m_vars.Read( _i );
-	m_baseCase.Read( _i );
-	m_properties.Read( _i );
-	m_notes.Read( _i );
+	if ( !m_vars.Read( _i ) ) wxLogStatus("error reading m_vars in Case::Read");
+	if ( !m_baseCase.Read( _i ) ) wxLogStatus("error reading m_baseCase in Case::Read");
+	if ( !m_properties.Read( _i ) ) wxLogStatus("error reading m_properties in Case::Read");
+	if ( !m_notes.Read( _i ) ) wxLogStatus("error reading m_notes in Case::Read");
 
 	return (in.Read8() == code);
 }
@@ -132,6 +132,13 @@ int Case::CalculateAll()
 void Case::AddListener( CaseEventListener *cel )
 {
 	m_listeners.push_back( cel );
+}
+
+void Case::RemoveListener( CaseEventListener *cel )
+{
+	std::vector<CaseEventListener*>::iterator it = std::find( m_listeners.begin(), m_listeners.end() , cel );
+	if ( it != m_listeners.end() )
+		m_listeners.erase( it );
 }
 
 void Case::ClearListeners()
