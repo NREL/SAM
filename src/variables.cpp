@@ -66,7 +66,7 @@ VarValue *VarTable::Get( const wxString &name )
 
 void VarTable::Copy( const VarTable &rhs )
 {
-	clear();
+	VarTable::clear();
 	for( const_iterator it = rhs.begin();
 		it != rhs.end();
 		++it )
