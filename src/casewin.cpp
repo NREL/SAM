@@ -23,6 +23,8 @@ CaseWindow::CaseWindow( wxWindow *parent, Case *c )
 	: wxSplitterWindow( parent, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxSP_NOBORDER | wxSP_LIVE_UPDATE ),
 	m_case( c )
 {
+	m_case->AddListener( this );
+
 	wxPanel *left_panel = new wxPanel( this );
 	left_panel->SetBackgroundColour( *wxWHITE );
 	m_inputPageList = new wxListBox( left_panel, ID_INPUTPAGELIST, wxDefaultPosition, wxDefaultSize, 0, 0, wxLB_SINGLE|wxBORDER_NONE );
@@ -64,6 +66,7 @@ CaseWindow::CaseWindow( wxWindow *parent, Case *c )
 
 CaseWindow::~CaseWindow()
 {
+	m_case->RemoveListener( this );
 }
 
 void CaseWindow::OnCommand( wxCommandEvent &evt )
@@ -81,5 +84,17 @@ void CaseWindow::OnCommand( wxCommandEvent &evt )
 	else if ( evt.GetId() == ID_INPUTPAGELIST )
 	{
 		m_pageFlipper->SetSelection( 0 );
+	}
+}
+
+void CaseWindow::OnCaseEvent( Case *c, CaseEvent &evt )
+{
+	if ( evt.GetType() == CaseEvent::VARS_CHANGED )
+	{
+		// to do
+	}
+	else if ( evt.GetType() == CaseEvent::CONFIG_CHANGED )
+	{
+		 // to do
 	}
 }

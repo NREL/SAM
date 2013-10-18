@@ -1,4 +1,6 @@
 #include <wx/datstrm.h>
+#include <wx/wfstream.h>
+#include <wx/zstream.h>
 
 #include "project.h"
 #include "case.h"
@@ -51,7 +53,12 @@ bool ProjectFile::RenameCase( const wxString &old_name, const wxString &new_name
 	return m_cases.Rename( old_name, new_name );
 }
 
-wxArrayString ProjectFile::GetCases()
+std::vector<Case*> ProjectFile::GetCases()
+{
+	return m_cases.GetObjects<Case>();
+}
+
+wxArrayString ProjectFile::GetCaseNames()
 {
 	return m_cases.GetNames();
 }
@@ -127,7 +134,6 @@ wxArrayString ProjectFile::GetObjects()
 
 void ProjectFile::Write( wxOutputStream &output )
 {
-	wxArrayString list;
 	wxDataOutputStream out(output);
 
 	out.Write16( 0x3c ); // identifier code
@@ -145,23 +151,40 @@ void ProjectFile::Write( wxOutputStream &output )
 
 bool ProjectFile::Read( wxInputStream &input )
 {
+	m_lastError.Clear();
 	Clear();
 
 	wxDataInputStream in(input);
 
 	wxUint16 code = in.Read16();
 	wxUint16 ver = in.Read16();
-
 	int major = (int)in.Read16();
 	int minor = (int)in.Read16();
 	int micro = (int)in.Read16();
 
 	// todo: check version numbers of file
 
-	m_properties.Read( input );
-	m_cases.Read( input );
-	m_objects.Read( input );
+	if ( !m_properties.Read( input ) ) m_lastError = "could not read project properties";
+	if ( !m_cases.Read( input ) ) m_lastError = "could not read case data" ;
+	if ( !m_objects.Read( input ) ) m_lastError = "could not read objects" ;
 
 	m_modified = false;
 	return (in.Read16() == code );
+}
+
+bool ProjectFile::WriteArchive( const wxString &file )
+{
+	wxFFileOutputStream out( file );
+	if ( ! out.IsOk() ) return false;
+	wxZlibOutputStream zout( out );
+	Write( out );
+	return true;
+}
+
+bool ProjectFile::ReadArchive( const wxString &file )
+{
+	wxFFileInputStream in( file );
+	if ( !in.IsOk() ) return false;
+	wxZlibInputStream zin( in );
+	return Read( in );
 }

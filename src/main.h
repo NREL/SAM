@@ -42,6 +42,16 @@ public:
 	CaseWindow *GetCaseWindow( Case *c );
 	CaseWindow *CreateCaseWindow( Case *c );
 	void DeleteCaseWindow( Case *c );
+	void SwitchToCaseWindow( const wxString &name );
+
+	bool LoadProject( const wxString &file );
+	bool SaveProject( const wxString &file );
+
+	void Save();
+	void SaveAs();
+
+	wxString GetProjectDisplayName();
+
 
 protected:
 	void OnClose( wxCloseEvent & );
@@ -63,6 +73,9 @@ private:
 	wxSimplebook *m_caseNotebook;
 
 	ProjectFile m_project;
+	wxString m_projectFileName;
+
+	void UpdateFrameTitle();
 	
 	DECLARE_EVENT_TABLE();
 };
