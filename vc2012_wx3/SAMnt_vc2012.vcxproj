@@ -14,10 +14,12 @@
     <ResourceCompile Include="SAM.rc" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\src\basecase.cpp" />
     <ClCompile Include="..\src\case.cpp" />
     <ClCompile Include="..\src\casewin.cpp" />
     <ClCompile Include="..\src\equation.cpp" />
     <ClCompile Include="..\src\ide.cpp" />
+    <ClCompile Include="..\src\ipagelist.cpp" />
     <ClCompile Include="..\src\main.cpp" />
     <ClCompile Include="..\src\object.cpp" />
     <ClCompile Include="..\src\project.cpp" />
@@ -28,10 +30,12 @@
     <ClCompile Include="..\src\welcome.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\src\basecase.h" />
     <ClInclude Include="..\src\case.h" />
     <ClInclude Include="..\src\casewin.h" />
     <ClInclude Include="..\src\equation.h" />
     <ClInclude Include="..\src\ide.h" />
+    <ClInclude Include="..\src\ipagelist.h" />
     <ClInclude Include="..\src\main.h" />
     <ClInclude Include="..\src\object.h" />
     <ClInclude Include="..\src\project.h" />

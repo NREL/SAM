@@ -812,7 +812,7 @@ int SamApp::VersionMicro() { return g_verMicro; }
 VarDatabase &SamApp::VarDB() { return g_varDatabase; }
 ConfigDatabase &SamApp::CfgDB() { return g_cfgDatabase; }
 
-void fcall_outln( lk::invoke_t &cxt )
+void fcall_dbgoutln( lk::invoke_t &cxt )
 {
 	LK_DOC("outln", "Output a data line to the console.", "(...):none");	
 	wxString output;
@@ -953,7 +953,7 @@ bool SamApp::LoadAndRunScriptFile( const wxString &script_file, wxArrayString *e
 	else
 	{
 		lk::env_t lkenv;
-		lkenv.register_func( fcall_outln, 0 );
+		lkenv.register_func( fcall_dbgoutln, 0 );
 		lkenv.register_func( fcall_resetdb, 0 );
 		lkenv.register_func( fcall_addconfig, 0 );
 		lkenv.register_func( fcall_setconfig, 0 );

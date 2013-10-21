@@ -50,6 +50,12 @@
     <ClInclude Include="..\src\casewin.h">
       <Filter>Source</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\ipagelist.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\basecase.h">
+      <Filter>Source</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\welcome.cpp">
@@ -86,6 +92,12 @@
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="..\src\casewin.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ipagelist.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\basecase.cpp">
       <Filter>Source</Filter>
     </ClCompile>
   </ItemGroup>
