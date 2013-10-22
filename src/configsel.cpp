@@ -136,10 +136,7 @@ ConfigCtrl::ConfigCtrl(wxWindow *parent, int id,
 		: wxPanel( parent, id, pos, sz, flags )
 {
 	m_pTech = new wxChoiceTree( this, ID_TechTree );
-	m_pTech->SetBackgroundColour(*wxWHITE);
-
 	m_pFin = new wxChoiceTree( this, ID_FinTree );
-	m_pFin->SetBackgroundColour(*wxWHITE);
 
 	wxBoxSizer *sizer = new wxBoxSizer( wxHORIZONTAL );
 	sizer->Add( m_pTech, 1, wxALL|wxEXPAND, 0 );
@@ -157,7 +154,7 @@ void ConfigCtrl::OnDoubleClick(wxCommandEvent &evt)
 
 void ConfigCtrl::PopulateTech()
 {
-	wxArrayString metalist = SamApp::CfgDB().GetTechnologies();
+	wxArrayString metalist = SamApp::Config().GetTechnologies();
 	std::vector<ConfigTree::TreeItem*> tree = ConfigTree::Get().Tech();
 	PopulateTree( m_pTech, tree, &metalist );
 	m_pFin->DeleteAll();
@@ -178,8 +175,8 @@ bool ConfigCtrl::CheckItemForMetaTag(ConfigTree::TreeItem *item, wxArrayString *
 void ConfigCtrl::AppendItem( wxChoiceTree *aftree, wxChoiceTreeItem *parent, ConfigTree::TreeItem *item, wxArrayString *metalist)
 {
 	// check that item or any children are in metalist
-	//if ( !CheckItemForMetaTag( item, metalist ) )
-	//	return;
+	if ( !CheckItemForMetaTag( item, metalist ) )
+		return;
 
 	wxString pngfn = SamApp::GetRuntimePath() + "/png/" + item->BmpName + ".png";
 	wxChoiceTreeItem *afitem = aftree->Add( 
@@ -207,18 +204,16 @@ void ConfigCtrl::PopulateTree( wxChoiceTree *tree, std::vector<ConfigTree::TreeI
 
 void ConfigCtrl::OnTechTree( wxCommandEvent &evt )
 {
-	wxChoiceTreeItem *item = m_pTech->GetSelection();
-
-	if ( !item ) 
+	if ( wxChoiceTreeItem *item = m_pTech->GetSelection() ) 
 	{
-		m_pFin->DeleteAll();
-		m_pFin->Invalidate();
+		wxArrayString metalist = SamApp().Config().GetFinancingForTech( item->MetaTag );
+		std::vector<ConfigTree::TreeItem*> tree = ConfigTree::Get().Fin();
+		PopulateTree( m_pFin, tree, &metalist );
 	}
 	else
 	{	
-		wxArrayString metalist = SamApp().CfgDB().GetFinancingForTech( item->MetaTag );
-		std::vector<ConfigTree::TreeItem*> tree = ConfigTree::Get().Fin();
-		PopulateTree( m_pFin, tree, &metalist );
+		m_pFin->DeleteAll();
+		m_pFin->Invalidate();
 	}
 }
 
@@ -270,10 +265,11 @@ void ConfigCtrl::SetConfiguration(const wxString &t, const wxString &f)
 	m_f = f;
 	
 	std::vector<ConfigTree::TreeItem*> tree = ConfigTree::Get().Tech();
-	PopulateTree( m_pTech, tree );
+	wxArrayString techlist = SamApp::Config().GetTechnologies();
+	PopulateTree( m_pTech, tree, &techlist );
 	SelectExpandByMetaTag( m_pTech, t );
 
-	wxArrayString finlist = SamApp::CfgDB().GetFinancingForTech( t );
+	wxArrayString finlist = SamApp::Config().GetFinancingForTech( t );
 	tree = ConfigTree::Get().Fin();
 	PopulateTree( m_pFin, tree, &finlist );
 	SelectExpandByMetaTag( m_pFin, f );
@@ -301,9 +297,9 @@ bool ConfigCtrl::GetConfiguration(wxString &t, wxString &f)
 }
 
 BEGIN_EVENT_TABLE(ConfigDialog, wxDialog)
-EVT_BUTTON( wxID_OK, ConfigDialog::OnCommand )
-EVT_BUTTON( wxID_CANCEL, ConfigDialog::OnCommand )
-EVT_BUTTON( ID_btnHelp, ConfigDialog::OnCommand )
+	EVT_BUTTON( wxID_OK, ConfigDialog::OnCommand )
+	EVT_BUTTON( wxID_CANCEL, ConfigDialog::OnCommand )
+	EVT_BUTTON( ID_btnHelp, ConfigDialog::OnCommand )
 END_EVENT_TABLE()
 
 ConfigDialog::ConfigDialog( wxWindow *parent, const wxSize &size )

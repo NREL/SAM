@@ -28,6 +28,7 @@
 #include "configsel.h"
 
 // application globals
+static wxArrayString g_appArgs;
 static MainWindow *g_mainWindow = 0;
 static wxConfig *g_config = 0;
 static const int g_verMajor = 2014;
@@ -714,6 +715,18 @@ public:
 
 bool SamApp::OnInit()
 {
+	SetAppName( "SAM" );
+	SetVendorName( "NREL" );
+
+	for( int i=0;i<argc;i++ )
+		g_appArgs.Add( argv[i] );
+
+	if ( g_appArgs.Count() < 1 )
+	{
+		wxMessageBox("Internal error - cannot determine runtime folder from startup argument 0" );
+		return false;
+	}
+
 #ifdef _DEBUG
 	g_logWindow = new SamLogWindow;
 	wxLog::SetActiveTarget( g_logWindow );
@@ -763,8 +776,8 @@ void SamApp::Restart()
 	if ( !ConfigTree::Get().Load( GetRuntimePath() + "/configsel.tree" ) )
 		wxLogStatus("error loading configuration tree structure from configsel.tree" );
 
-	SamApp::VarDB().Clear();
-	SamApp::CfgDB().Clear();
+	SamApp::Vars().Clear();
+	SamApp::Config().Clear();
 
 	// load configuration map
 	wxString startup_script = GetRuntimePath() + "/startup.lk";
@@ -776,8 +789,7 @@ void SamApp::Restart()
 
 wxString SamApp::GetAppPath()
 {
-	if ( wxGetApp().argc > 0 ) return wxPathOnly( wxGetApp().argv[0] );
-	else return wxEmptyString;
+	return wxPathOnly( g_appArgs[0] );
 }
 
 wxString SamApp::GetRuntimePath()
@@ -820,8 +832,8 @@ wxString SamApp::VersionStr() { return wxString::Format("%d.%d.%d", VersionMajor
 int SamApp::VersionMajor() { return g_verMajor; }
 int SamApp::VersionMinor() { return g_verMinor; }
 int SamApp::VersionMicro() { return g_verMicro; }
-VarDatabase &SamApp::VarDB() { return g_varDatabase; }
-ConfigDatabase &SamApp::CfgDB() { return g_cfgDatabase; }
+VarDatabase &SamApp::Vars() { return g_varDatabase; }
+ConfigDatabase &SamApp::Config() { return g_cfgDatabase; }
 
 void fcall_dbgoutln( lk::invoke_t &cxt )
 {
@@ -835,8 +847,8 @@ void fcall_dbgoutln( lk::invoke_t &cxt )
 void fcall_resetdb( lk::invoke_t &cxt )
 {
 	LK_DOC("resetdb", "Resets variable and configuration databases to empty", "(none):none");
-	SamApp::CfgDB().Clear();
-	SamApp::VarDB().Clear();
+	SamApp::Vars().Clear();
+	SamApp::Config().Clear();
 }
 
 void fcall_addconfig( lk::invoke_t &cxt )
@@ -847,7 +859,7 @@ void fcall_addconfig( lk::invoke_t &cxt )
 	lk::vardata_t &fins = cxt.arg(1);
 	for( size_t i=0;i<fins.length();i++ )
 		finlist.Add( fins.index(i)->as_string() );
-	SamApp::CfgDB().Add( cxt.arg(0).as_string(), finlist );
+	SamApp::Config().Add( cxt.arg(0).as_string(), finlist );
 
 	wxLogStatus( "Configuration: " + cxt.arg(0).as_string() + "  -> [ " + wxJoin(finlist,';') + " ]" );
 }
@@ -855,7 +867,7 @@ void fcall_addconfig( lk::invoke_t &cxt )
 void fcall_setconfig( lk::invoke_t &cxt )
 {
 	LK_DOC("setconfig", "Sets the currently active configuration for editing", "(string:Tech, string:Financing):none");
-	SamApp::CfgDB().SetConfig( cxt.arg(0).as_string(), cxt.arg(1).as_string() );
+	SamApp::Config().SetConfig( cxt.arg(0).as_string(), cxt.arg(1).as_string() );
 }
 
 void fcall_addpage( lk::invoke_t &cxt )
@@ -877,7 +889,7 @@ void fcall_addpage( lk::invoke_t &cxt )
 	if ( cxt.arg_count() > 5 )
 		subgrpvar = cxt.arg(5).as_string();
 
-	SamApp::CfgDB().AddPage( name, capt, help, groups, subgrps, subgrpvar );
+	SamApp::Config().AddPage( name, capt, help, groups, subgrps, subgrpvar );
 }
 
 static wxString s_defaultContext;
@@ -921,14 +933,14 @@ void fcall_addvar( lk::invoke_t &cxt )
 	if ( cxt.arg_count() > 7 )
 		defval.Read( cxt.arg(7), false );
 	
-	SamApp::VarDB().Add( name, type, label, units, context, idxlabels, flags, defval );
+	SamApp::Vars().Add( name, type, label, units, context, idxlabels, flags, defval );
 }
 
 void fcall_addeqn( lk::invoke_t &cxt )
 {
 	LK_DOC( "addeqn", "Adds an equation to the variable database", "(string:inputs, string:outputs, string:equation code):none");
 	wxArrayString errors;
-	if (!SamApp::VarDB().AddEquation( cxt.arg(0).as_string(), cxt.arg(1).as_string(), cxt.arg(2).as_string(), &errors ))
+	if (!SamApp::Vars().AddEquation( cxt.arg(0).as_string(), cxt.arg(1).as_string(), cxt.arg(2).as_string(), &errors ))
 	{
 		wxLogStatus("error adding equation via 'addeqn':");
 		for( size_t i=0;i<errors.size();i++ ) wxLogStatus( errors[i] );

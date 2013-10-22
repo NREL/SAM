@@ -149,8 +149,8 @@ public:
 	static int VersionMajor();
 	static int VersionMinor();
 	static int VersionMicro();
-	static VarDatabase &VarDB();
-	static ConfigDatabase &CfgDB();
+	static VarDatabase &Vars();
+	static ConfigDatabase &Config();
 	static bool LoadAndRunScriptFile( const wxString &script_file, wxArrayString *errors = 0 );
 };
 
