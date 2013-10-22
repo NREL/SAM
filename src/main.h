@@ -140,7 +140,7 @@ public:
 	static void Restart();
 	static wxString GetAppPath();
 	static wxString GetRuntimePath();
-	static wxConfig &Config();
+	static wxConfig &Settings();
 	static MainWindow *Window();
 	static wxFileHistory &FileHistory();	
 	static wxArrayString RecentFiles();

@@ -208,7 +208,7 @@ void WelcomeScreen::OnUpdateDownloadThread( wxSimpleCurlEvent &evt )
 		wxString html = m_ssCurlUpdate.GetData();
 		bool do_not_show = false;
 		wxString cfgkey = "update_notification_" + SamApp::VersionStr();
-		SamApp::Config().Read( cfgkey, &do_not_show );
+		SamApp::Settings().Read( cfgkey, &do_not_show );
 		if ( !html.IsEmpty() && !do_not_show )
 		{
 			UpdateDialog dlg( SamApp::Window(), "Update Notification", html );
@@ -216,7 +216,7 @@ void WelcomeScreen::OnUpdateDownloadThread( wxSimpleCurlEvent &evt )
 			dlg.ShowModal();
 
 			if (dlg.DoNotShowAgain())
-				SamApp::Config().Write( cfgkey, true );
+				SamApp::Settings().Write( cfgkey, true );
 		}
 	}
 }

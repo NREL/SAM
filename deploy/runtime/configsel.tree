@@ -1,0 +1,40 @@
+
+.techtree
+Photovoltaics;Direct conversion of sunlight to electricity using solar cells.;photovoltaics_48h;*
+&Flat Plate PV;A detailed PV performance simulator that uses component-based CEC and Sandia models for modules and inverters.  This model can also be used for some low-X CPV systems.;flatplatepv2_48;Flat Plate PV
+&High-X Concentrating PV;A system model specific for high concentration (HCPV) photovoltaic system modeling.;cpv_48;HCPV
+&PVWatts System Model;A simplified system model that assumes typical module and inverter characteristics.;pvwatts_48h;PVWatts
+Concentrating Solar Power;CSP systems use mirrors or lenses to focus sunlight to generate a heat source for conventional type power plant.;csp_48h;*
+&Parabolic Trough (Physical Model);A new parabolic trough model developed by NREL in 2010 that uses physical characteristics of the plant to predict performance.;trough_48h;CSP Trough Physical
+&Parabolic Trough (Empirical Model);Long parabolic mirrors are used to focus sunlight on a heat transfer fluid passing through a pipe at the focal point.;trough_48h;CSP Trough Empirical
+&Molten Salt Power Tower;A field of tracking heliostats focus sunlight on a central tower. SAM utilizes the DELSOL3 code to compute field characteristics.;tower_48h;CSP Molten Salt Power Tower
+&Direct Steam Power Tower;A field of tracking heliostats focus sunlight on a central tower that generates steam in a boiler to run a turbine.  This type of power tower does not include explicit thermal storage.;tower_48h;CSP Direct Steam Power Tower
+&Linear Fresnel;A system that uses long small mirrors to line focus sunlight on fixed receiver tubes mounted above them.;linfres_48h;CSP Linear Fresnel
+&Dish Stirling;A Stirling engine is placed at the focal point of a large dish mirror.;dish_48h;CSP Dish Stirling
+&Generic Solar System;A generic solar system whose optical performance is specified by an optical efficiency table.;gss_48h;CSP Generic Solar System
+Generic System;The simplest plant model that uses a nameplate size and capacity factor or user supplied production profile.;generic_48h;Generic System
+'Solar Water Heating;Conversion of sunlight to thermal energy for producing domestic hot water.;shw_48h;*
+'Solar Water Heating;Represents a simple flat plate closed-loop glycol water heating system with electric auxiliary.;shw_48h;Solar Hot Water
+Solar Water Heating;Represents a flat plate closed-loop glycol water heating system with auxiliary.  Uses a variable node volume tank model.;shw_48h;Solar Water Heating
+Wind Power;An hourly model meant to simulate wind power production from single turbine installations to a full scale wind farm providing power to the electricity grid.;wind_farm_48h;Wind Power
+'&Wind Turbine Design;This model allows users to test different turbine designs.  It uses a distribution for wind speeds and creates only annual outputs.;wind_48h;Wind Turbine
+Geothermal;Geothermal systems extract heat energy from the relatively large heat content of the earth for conventional power cycles.;geotherm_48h;*
+&Geothermal Power;Geothermal power plants generate electricity by extracting heat stored within the earth.;geotherm_48h;Geothermal
+&Geothermal Co-Production;Co-Producing geothermal heat with an oil or gas well;geotherm_48h;Geothermal Co-Production
+Biomass Power;Conversion of biomass feedstocks into electricity.;biopower_48h;Biopower
+'Biomass Combustion;Conversion of biomass feedstocks into electricity via boiler-based systems.;biopower_48h;Biopower
+'&Gasification;Conversion of biomass feedstocks into electricity via Integrated Gasification Combined Cycle (IGCC).;gasification_48h;Gasification
+
+
+.fintree
+Residential;Project cash flow is based on value of avoided retail electricity purchases. SAM calculates project LCOE, NPV, and payback period.;residential_48h;Residential
+Commercial;Project owned by commercial entity that buys and sells electricity at retail rates. Project cash flow is based on value of electricity purchases offset by the renewable energy system and depreciation tax benefit. SAM calculates project LCOE, NPV, and payback period.;commercial_48h;Commercial
+Commercial PPA;Project developed and owned by single entity that sells electricity at price negotiated through power purchase agreement (PPA). SAM calculates project LCOE, NPV, and can either calculate project PPA price based on target IRR that you specify as input, or calculate project IRR based on PPA price you specify.;commercial_48h;Commercial PPA
+'Utility Market;Financial models appropriate for utility scale power projects.;utility_48h;*
+Utility Independent Power Producer (IPP);Project developed and owned by single entity that sells electricity at price negotiated through power purchase agreement (PPA). SAM calculates project LCOE, NPV, and can either calculate project PPA price based on target IRR that you specify as input, or calculate project IRR based on PPA price you specify. You also specify debt fraction as input. This option is a simple version of the Single Owner option.;utility_48h;Independent Power Producer
+Advanced Utility IPP Options;Advanced financial models appropriate for utility scale power generation projects.;utility_48h;*
+&Single Owner;One entity receives all project cash and tax benefits. SAM calculates project LCOE, NPV, and debt fraction, and can either calculate project PPA price based on target IRR that you specify as input, or calculate project IRR based on PPA price you specify.;utility_48h;Single Owner
+&All Equity Partnership Flip;Involves tax investor equity and developer equity with no project-level debt. SAM calculates project LCOE, and can either calculate project PPA price based on target tax investor IRR that you specify as input, or calculate partner IRRs based on the PPA price you specify. You specify as input the year that allocations “flip” from tax investor to developer, and tax and cash allocations before and after the flip.;utility_48h;All Equity Partnership Flip
+&Leveraged Partnership Flip;Similar to all-equity partnership flip option, but includes project-level debt. SAM calculates the all-equity partnership flip metrics and the debt fraction based on debt terms you specify as input.;utility_48h;Leveraged Partnership Flip
+&Sale Leaseback;The tax investor purchases the project from the developer and leases it back to the developer. Tax investor receives lease payments from  developer along with tax benefits and incentives. Developer keeps any excess cash flow after operating costs and lease payments are made. SAM calculates project LCOE, and can either calculate project PPA price based on target tax investor IRR that you specify as input, or calculate the project and partner NPVs IRRs based on the PPA price you specify.;utility_48h;Sale Leaseback
+No Financials;Run performance model with no financial model.;none_48h;None

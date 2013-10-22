@@ -25,6 +25,7 @@
 #include "case.h"
 #include "casewin.h"
 
+#include "configsel.h"
 
 // application globals
 static MainWindow *g_mainWindow = 0;
@@ -487,6 +488,13 @@ void MainWindow::OnCaseMenu( wxCommandEvent &evt )
 	
 	switch( evt.GetId() )
 	{
+	case ID_CASE_CONFIG:
+		{
+			bool reset = true;
+			wxString tech, fin;
+			ShowConfigurationDialog( this, &tech, &fin, &reset );
+		}
+		break;
 	case ID_CASE_RENAME:
 		{
 			wxString new_name = case_name;
@@ -728,7 +736,7 @@ bool SamApp::OnInit()
 	wxMilliSleep( 500 );
 
 	g_config = new wxConfig( "SAMnt", "NREL" );
-	FileHistory().Load( Config() );
+	FileHistory().Load( Settings() );
 
 	Restart(); // loads and runs startup scripts, sets up variable databases
 
@@ -740,7 +748,7 @@ bool SamApp::OnInit()
 
 int SamApp::OnExit()
 {
-	FileHistory().Save( Config() );
+	FileHistory().Save( Settings() );
 
 	if ( g_config != 0 ) delete g_config;
 
@@ -752,6 +760,9 @@ int SamApp::OnExit()
 
 void SamApp::Restart()
 {
+	if ( !ConfigTree::Get().Load( GetRuntimePath() + "/configsel.tree" ) )
+		wxLogStatus("error loading configuration tree structure from configsel.tree" );
+
 	SamApp::VarDB().Clear();
 	SamApp::CfgDB().Clear();
 
@@ -774,7 +785,7 @@ wxString SamApp::GetRuntimePath()
 	return GetAppPath() + "/../runtime/";
 }
 
-wxConfig &SamApp::Config()
+wxConfig &SamApp::Settings()
 {
 	if ( g_config == 0 ) throw SamException( "g_config = NULL: internal error" );
 	return *g_config;

@@ -56,6 +56,9 @@
     <ClInclude Include="..\src\basecase.h">
       <Filter>Source</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\configsel.h">
+      <Filter>Source</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\welcome.cpp">
@@ -98,6 +101,9 @@
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="..\src\basecase.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\configsel.cpp">
       <Filter>Source</Filter>
     </ClCompile>
   </ItemGroup>
