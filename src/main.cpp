@@ -633,6 +633,9 @@ void ConfigDatabase::Clear()
 		delete m_configList[i];
 	m_configList.clear();
 	m_curConfig = 0;
+
+	m_techTreeRoot.Clear();
+	m_finTreeRoot.Clear();
 }
 
 void ConfigDatabase::Add( const wxString &tech, const wxArrayString &fin )
@@ -773,9 +776,6 @@ int SamApp::OnExit()
 
 void SamApp::Restart()
 {
-	if ( !ConfigTree::Get().Load( GetRuntimePath() + "/configsel.tree" ) )
-		wxLogStatus("error loading configuration tree structure from configsel.tree" );
-
 	SamApp::Vars().Clear();
 	SamApp::Config().Clear();
 
@@ -835,7 +835,7 @@ int SamApp::VersionMicro() { return g_verMicro; }
 VarDatabase &SamApp::Vars() { return g_varDatabase; }
 ConfigDatabase &SamApp::Config() { return g_cfgDatabase; }
 
-void fcall_dbgoutln( lk::invoke_t &cxt )
+static void fcall_dbgoutln( lk::invoke_t &cxt )
 {
 	LK_DOC("outln", "Output a data line to the console.", "(...):none");	
 	wxString output;
@@ -844,14 +844,14 @@ void fcall_dbgoutln( lk::invoke_t &cxt )
 	wxLogStatus( output );
 }
 
-void fcall_resetdb( lk::invoke_t &cxt )
+static void fcall_resetdb( lk::invoke_t &cxt )
 {
 	LK_DOC("resetdb", "Resets variable and configuration databases to empty", "(none):none");
 	SamApp::Vars().Clear();
 	SamApp::Config().Clear();
 }
 
-void fcall_addconfig( lk::invoke_t &cxt )
+static void fcall_addconfig( lk::invoke_t &cxt )
 {
 	LK_DOC("addconfig", "Add a technology+financing options", "( string:tech, array:financings ):none" );
 
@@ -864,13 +864,13 @@ void fcall_addconfig( lk::invoke_t &cxt )
 	wxLogStatus( "Configuration: " + cxt.arg(0).as_string() + "  -> [ " + wxJoin(finlist,';') + " ]" );
 }
 
-void fcall_setconfig( lk::invoke_t &cxt )
+static void fcall_setconfig( lk::invoke_t &cxt )
 {
 	LK_DOC("setconfig", "Sets the currently active configuration for editing", "(string:Tech, string:Financing):none");
 	SamApp::Config().SetConfig( cxt.arg(0).as_string(), cxt.arg(1).as_string() );
 }
 
-void fcall_addpage( lk::invoke_t &cxt )
+static void fcall_addpage( lk::invoke_t &cxt )
 {
 	LK_DOC("addpage", "Add an page section to the currently active configuration (may have multiple sub pages).", "(string:name, string:caption, string:helpcxt, array:subpages, [boolean:exclusive, string:exclusive var name]" );
 	
@@ -894,13 +894,13 @@ void fcall_addpage( lk::invoke_t &cxt )
 
 static wxString s_defaultContext;
 
-void fcall_setcontext( lk::invoke_t &cxt )
+static void fcall_setcontext( lk::invoke_t &cxt )
 {
 	LK_DOC( "setcontext", "Changes the current default context when adding variables using 'addvar'", "(string:context):none");
 	s_defaultContext = cxt.arg(0).as_string();
 }
 
-void fcall_addvar( lk::invoke_t &cxt )
+static void fcall_addvar( lk::invoke_t &cxt )
 {
 	LK_DOC( "addvar", "Adds a variable to the common database", "(string:name, integer:type, string:label, string:units, "
 		"[string:context, string:indexlabels, array:flags, variant:default_value] )");
@@ -936,7 +936,7 @@ void fcall_addvar( lk::invoke_t &cxt )
 	SamApp::Vars().Add( name, type, label, units, context, idxlabels, flags, defval );
 }
 
-void fcall_addeqn( lk::invoke_t &cxt )
+static void fcall_addeqn( lk::invoke_t &cxt )
 {
 	LK_DOC( "addeqn", "Adds an equation to the variable database", "(string:inputs, string:outputs, string:equation code):none");
 	wxArrayString errors;
@@ -945,6 +945,39 @@ void fcall_addeqn( lk::invoke_t &cxt )
 		wxLogStatus("error adding equation via 'addeqn':");
 		for( size_t i=0;i<errors.size();i++ ) wxLogStatus( errors[i] );
 	}
+}
+
+static void fcall_cfgtree( lk::invoke_t &cxt )
+{
+	LK_DOC("cfgtree", "Adds an item to a configuration tree", "(string:which tree 'tech' or 'fin', string:label, string:caption, string:bitmap name, [string:cfg type name], [string:parent]");
+	
+	std::vector<ConfigDatabase::TreeItem*> &tree = (cxt.arg(0).as_string() == "tech") ? SamApp::Config().TechTree() : SamApp::Config().FinTree();
+	wxString label = cxt.arg(1).as_string();
+	wxString capt = cxt.arg(2).as_string();
+	wxString bmp = cxt.arg(3).as_string();
+	wxString type;
+	if ( cxt.arg_count() > 4 ) 
+		type = cxt.arg(4).as_string();
+	wxString parent_name;
+	if ( cxt.arg_count() > 5 )
+		parent_name = cxt.arg(5).as_string();
+
+	ConfigDatabase::TreeItem *parent = NULL;
+	if ( !parent_name.IsEmpty() )
+		for( size_t i=0;i<tree.size();i++ )
+			if ( tree[i]->Label == parent_name )
+				parent = tree[i];
+
+	ConfigDatabase::TreeItem *item = new ConfigDatabase::TreeItem;
+	item->Label = label;
+	item->Description = capt;
+	item->BmpName = bmp;
+	item->TypeTag = type;
+
+	if ( parent != 0 )
+		parent->Children.push_back( item );
+	else
+		tree.push_back( item );
 }
 
 bool SamApp::LoadAndRunScriptFile( const wxString &script_file, wxArrayString *errors )
@@ -978,6 +1011,7 @@ bool SamApp::LoadAndRunScriptFile( const wxString &script_file, wxArrayString *e
 		lk::env_t lkenv;
 		lkenv.register_func( fcall_dbgoutln, 0 );
 		lkenv.register_func( fcall_resetdb, 0 );
+		lkenv.register_func( fcall_cfgtree, 0 );
 		lkenv.register_func( fcall_addconfig, 0 );
 		lkenv.register_func( fcall_setconfig, 0 );
 		lkenv.register_func( fcall_addpage, 0 );		

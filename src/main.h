@@ -110,6 +110,26 @@ public:
 	std::vector<InputPageInfo*> GetInputPageList(const wxString &tech,
 			const wxString &financing );
 		
+	struct TreeItem
+	{
+		~TreeItem() { Clear(); }
+		void Clear() { 
+			for( std::vector<TreeItem*>::iterator it = Children.begin();
+				it != Children.end(); ++it ) delete *it;
+			Children.clear();
+		}
+		
+
+		wxString Label;
+		wxString Description;
+		wxString BmpName;
+		wxString TypeTag;
+		std::vector<TreeItem*> Children;
+	};
+
+	std::vector<TreeItem*> &TechTree() { return m_techTreeRoot.Children; }
+	std::vector<TreeItem*> &FinTree() { return m_finTreeRoot.Children; }
+
 private:
 	struct TechInfo { wxString Name; wxArrayString FinancingOptions; };
 	std::vector<TechInfo> m_techList;
@@ -128,6 +148,8 @@ private:
 	std::vector<ConfigInfo*> m_configList;
 
 	ConfigInfo *m_curConfig;
+
+	TreeItem m_techTreeRoot, m_finTreeRoot;
 };
 
 class SamApp : public wxApp
