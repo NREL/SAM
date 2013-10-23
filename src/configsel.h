@@ -10,6 +10,7 @@
 
 class wxChoiceTree;
 class wxChoiceTreeItem;
+class wxMetroListBox;
 
 class ConfigDialog : public wxDialog
 {
@@ -33,8 +34,8 @@ private:
 	void OnTechTree(wxCommandEvent &evt);
 	void OnDoubleClick(wxCommandEvent &evt);
 
-	wxChoiceTree *m_pTech;
-	wxChoiceTree *m_pFin;
+	wxMetroListBox *m_pTech;
+	wxMetroListBox *m_pFin;
 
 	wxString m_t, m_f;
 
