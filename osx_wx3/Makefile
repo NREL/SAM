@@ -14,6 +14,9 @@ CXXFLAGS = $(CFLAGS)
 LDFLAGS = `wx-config-3 --libs` `wx-config-3 --libs aui` `wx-config-3 --libs stc` -lm $(LKLIB) $(WEXLIB) -lstdc++ -lcurl
 
 OBJECTS = ide.o \
+	configsel.o \
+	basecase.o \
+	ipagelist.o \
 	casewin.o \
 	case.o \
 	main.o \
@@ -36,6 +39,9 @@ $(TARGET): $(OBJECTS) $(WEXLIB) $(LKLIB)
 	mkdir -p $(TARGET).app/Contents
 	mkdir -p $(TARGET).app/Contents/MacOS
 	mkdir -p $(TARGET).app/Contents/Resources
+	mkdir -p $(TARGET).app/Contents/runtime
+	#cp -R ../deploy/runtime/* $(TARGET).app/Contents/runtime
+	python copy_runtime.py
 	cp $(TARGET) ./$(TARGET).app/Contents/MacOS
 	cp $(TARGET).icns ./$(TARGET).app/Contents/Resources
 	cp Info-$(TARGET).plist ./$(TARGET).app/Contents/Info.plist
