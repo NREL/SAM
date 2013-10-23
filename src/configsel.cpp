@@ -4,6 +4,7 @@
 #include <wx/tokenzr.h>
 
 #include <wex/choicetree.h>
+#include <wex/metro.h>
 
 #include "configsel.h"
 #include "main.h"
@@ -11,19 +12,22 @@
 enum { ID_TechTree = wxID_HIGHEST+98, ID_FinTree };
 
 BEGIN_EVENT_TABLE(ConfigDialog, wxDialog)
-	EVT_CHOICETREE_SELCHANGE( ID_TechTree, ConfigDialog::OnTechTree)
-	EVT_CHOICETREE_DOUBLECLICK( ID_FinTree, ConfigDialog::OnDoubleClick)
+	EVT_LISTBOX( ID_TechTree, ConfigDialog::OnTechTree)
+	//EVT_CHOICETREE_DOUBLECLICK( ID_FinTree, ConfigDialog::OnDoubleClick)
 	EVT_BUTTON( wxID_HELP, ConfigDialog::OnHelp )
 END_EVENT_TABLE()
 
 ConfigDialog::ConfigDialog( wxWindow *parent, const wxSize &size )
-	: wxDialog( parent, wxID_ANY, wxEmptyString, wxDefaultPosition, size )
+	: wxDialog( parent, wxID_ANY, wxEmptyString, wxDefaultPosition, size, wxBORDER_NONE )
 {
 	CenterOnParent();
 	SetEscapeId(wxID_CANCEL);
 	
-	m_pTech = new wxChoiceTree( this, ID_TechTree );
-	m_pFin = new wxChoiceTree( this, ID_FinTree );
+	//m_pTech = new wxChoiceTree( this, ID_TechTree );
+	//m_pFin = new wxChoiceTree( this, ID_FinTree );
+	
+	m_pTech = new wxMetroListBox( this, ID_TechTree );
+	m_pFin = new wxMetroListBox( this, ID_FinTree );
 
 	wxBoxSizer *choice_sizer = new wxBoxSizer( wxHORIZONTAL );
 	choice_sizer->Add( m_pTech, 1, wxALL|wxEXPAND, 0 );
@@ -67,7 +71,7 @@ void ConfigDialog::SetConfiguration(const wxString &t, const wxString &f)
 {
 	m_t = t;
 	m_f = f;
-	
+	/*
 	wxArrayString techlist = SamApp::Config().GetTechnologies();
 	PopulateTree( m_pTech, SamApp::Config().TechTree(), &techlist );
 	SelectExpandByMetaTag( m_pTech, t );
@@ -75,6 +79,7 @@ void ConfigDialog::SetConfiguration(const wxString &t, const wxString &f)
 	wxArrayString finlist = SamApp::Config().GetFinancingForTech( t );
 	PopulateTree( m_pFin, SamApp::Config().FinTree(), &finlist );
 	SelectExpandByMetaTag( m_pFin, f );
+	*/
 }
 
 void ConfigDialog::ShowResetCheckbox(bool b)
@@ -84,6 +89,9 @@ void ConfigDialog::ShowResetCheckbox(bool b)
 
 bool ConfigDialog::GetConfiguration(wxString &t, wxString &f)
 {
+	t = m_pTech->GetValue();
+	f = m_pFin->GetValue();
+	/*
 	// must read current tree configuration
 	wxChoiceTreeItem *tech_item = m_pTech->GetSelection();
 	wxChoiceTreeItem *fin_item = m_pFin->GetSelection();
@@ -100,6 +108,7 @@ bool ConfigDialog::GetConfiguration(wxString &t, wxString &f)
 		return false;
 	}
 
+	return true;*/
 	return true;
 }
 
@@ -114,11 +123,20 @@ void ConfigDialog::OnDoubleClick(wxCommandEvent &evt)
 
 void ConfigDialog::PopulateTech()
 {
+	m_pTech->Clear();
+	wxArrayString list = SamApp::Config().GetTechnologies();
+	for( size_t i=0;i<list.Count();i++)
+		m_pTech->Add(  list[i] );
+	
+	m_pTech->Invalidate();
+
+	/*
 	wxArrayString metalist = SamApp::Config().GetTechnologies();
 	std::vector<ConfigDatabase::TreeItem*> &tree = SamApp::Config().TechTree();
 	PopulateTree( m_pTech, tree, &metalist );
 	m_pFin->DeleteAll();
 	m_pFin->Invalidate();
+	*/
 }
 
 bool ConfigDialog::CheckItemForMetaTag(ConfigDatabase::TreeItem *item, wxArrayString *metalist)
@@ -165,7 +183,14 @@ void ConfigDialog::PopulateTree( wxChoiceTree *tree, std::vector<ConfigDatabase:
 
 void ConfigDialog::OnTechTree( wxCommandEvent &evt )
 {
-	
+	m_pFin->Clear();
+	wxArrayString list = SamApp::Config().GetFinancingForTech( m_pTech->GetValue() );
+	for( size_t i=0;i<list.Count();i++)
+		m_pFin->Add( list[i] );
+
+	m_pFin->Invalidate();
+
+	/*
 	if ( wxChoiceTreeItem *item = m_pTech->GetSelection() ) 
 	{
 		wxArrayString metalist = SamApp().Config().GetFinancingForTech( item->MetaTag );
@@ -176,6 +201,7 @@ void ConfigDialog::OnTechTree( wxCommandEvent &evt )
 		m_pFin->DeleteAll();
 		m_pFin->Invalidate();
 	}
+	*/
 }
 
 
@@ -218,7 +244,7 @@ void ConfigDialog::OnHelp(wxCommandEvent &evt)
 
 bool ShowConfigurationDialog( wxWindow *parent, wxString *tech, wxString *fin, bool *reset )
 {
-/*	if ( parent == 0 ) return false;
+	if ( parent == 0 ) return false;
 
 	wxPoint pos = parent->ClientToScreen( wxPoint(0,0) );
 	wxSize size = parent->GetClientSize();
@@ -245,10 +271,5 @@ bool ShowConfigurationDialog( wxWindow *parent, wxString *tech, wxString *fin, b
 
 	dlg->Destroy();
 	trans->Destroy();
-	return result;*/
-
-	ConfigDialog dlg( parent );
-	dlg.ShowModal();
-	
-	return false;
+	return result;
 }
