@@ -3,6 +3,9 @@
 #include <wx/simplebook.h>
 #include <wex/metro.h>
 #include <wex/lkscript.h>
+#include <wex/extgrid.h>
+#include <wex/plot/plplotctrl.h>
+#include <wex/plot/plbarplot.h>
 
 #include "basecase.h"
 #include "main.h"
@@ -58,7 +61,47 @@ CaseWindow::CaseWindow( wxWindow *parent, Case *c )
 	m_baseCase = new BaseCase( m_resultsTab, 0 );
 	m_resultsTab->AddPage( m_baseCase, "Base Case", true );
 
-	m_resultsTab->AddPage( new wxPanel( m_resultsTab ), "Parametric", false );
+	wxPanel *param_panel = new wxPanel( m_resultsTab );
+
+	wxBoxSizer *par_sizer = new wxBoxSizer( wxHORIZONTAL );
+	par_sizer->Add( new wxButton( param_panel, wxID_ANY, "Configure..."), 0, wxALL|wxEXPAND, 2 );
+	par_sizer->Add( new wxButton( param_panel, wxID_ANY, "Run parametric simulation"), 0, wxALL|wxEXPAND, 2 );
+	par_sizer->AddStretchSpacer();
+	par_sizer->Add( new wxButton( param_panel, wxID_ANY, "Clear results"), 0, wxALL|wxEXPAND, 2 );
+	
+	wxExtGridCtrl *par_grid = new wxExtGridCtrl( param_panel, wxID_ANY );
+	par_grid->CreateGrid( 10, 6 );
+
+	wxPLPlotCtrl *par_plot = new wxPLPlotCtrl( param_panel, wxID_ANY );
+	std::vector<wxRealPoint> bar_data;
+	bar_data.push_back( wxRealPoint( 1, 3 ) );
+	bar_data.push_back( wxRealPoint( 2, 2.9 ) );
+	bar_data.push_back( wxRealPoint( 3, 3.2 ) );
+	bar_data.push_back( wxRealPoint( 4, 3.7 ) );
+	bar_data.push_back( wxRealPoint( 5, 2.2 ) );
+	bar_data.push_back( wxRealPoint( 6, 1.7 ) );
+	wxPLBarPlot *bar0, *bar1;
+	par_plot->AddPlot( bar0 = new wxPLBarPlot( bar_data, "Var2 run^0", wxMetroTheme::Colour( wxMT_ACCENT ) ) );
+	for( size_t i=0;i<bar_data.size();i++ ) bar_data[i].y *= 0.7 + ((double)i)/5;
+	par_plot->AddPlot( bar1 = new wxPLBarPlot( bar_data, "Var1 run^0", wxMetroTheme::Colour( wxMT_FOREGROUND ) ) );
+	par_plot->GetXAxis1()->SetWorld( 0, 7 );
+	par_plot->GetYAxis1()->SetWorld( 0, 5 );
+	std::vector<wxPLBarPlot*> bar_group;
+	bar_group.push_back( bar0 );
+	bar_group.push_back( bar1 );
+	bar0->SetGroup( bar_group );
+	bar1->SetGroup( bar_group );
+	bar0->SetThickness( 30 );
+	bar1->SetThickness( 30 );
+
+	wxBoxSizer *par_vsizer = new wxBoxSizer( wxVERTICAL );
+	par_vsizer->Add( par_sizer, 0, wxALL|wxEXPAND, 2 );
+	par_vsizer->Add( par_grid, 1, wxALL|wxEXPAND, 0 );
+	par_vsizer->Add( par_plot, 1, wxALL|wxEXPAND, 0 );
+
+	param_panel->SetSizer( par_vsizer );
+
+	m_resultsTab->AddPage( param_panel, "Parametric", false );
 	m_resultsTab->AddPage( new wxPanel( m_resultsTab ), "Sensitivity", false );
 	m_resultsTab->AddPage( new wxPanel( m_resultsTab ), "P50/P90", false );
 
