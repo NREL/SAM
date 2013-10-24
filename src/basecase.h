@@ -26,7 +26,7 @@ public:
 private:
 	void OnCommand( wxCommandEvent & );
 
-	wxPLPlotCtrl *m_plot;
+	std::vector<wxPLPlotCtrl*> m_plot;
 	MetricsTable *m_metrics;
 	wxExtGridCtrl *m_cashFlowGrid;
 	wxDVPlotCtrl *m_dview;
