@@ -70,7 +70,28 @@ CaseWindow::CaseWindow( wxWindow *parent, Case *c )
 	par_sizer->Add( new wxButton( param_panel, wxID_ANY, "Clear results"), 0, wxALL|wxEXPAND, 2 );
 	
 	wxExtGridCtrl *par_grid = new wxExtGridCtrl( param_panel, wxID_ANY );
-	par_grid->CreateGrid( 10, 6 );
+	par_grid->CreateGrid( 7, 4 );
+
+	wxString grid[8][5]= {
+		{ "Tilt", "Input 2", "LCOEreal", "AnnOutput", "NPV" },
+		{ "10", "1", "1",   "1", "-4" },
+		{ "15", "2", "3.1", "2", "-3" },
+		{ "20", "3", "4.1", "3", "-2" },
+		{ "25", "4", "3.1", "4", "-1" },
+		{ "30", "5", "2.1", "5", "-2" },
+		{ "35", "6", "1.1", "6", "-3" },
+		{ "40", "7", "1.1", "7", "-4" } };
+
+	for( size_t r=1;r<8;r++ )
+	{
+		for( size_t c=1;c<5;c++ )
+		{
+			if ( r == 1 ) par_grid->SetColLabelValue( c-1, grid[0][c-1] );
+			par_grid->SetCellValue( grid[r][c], r-1, c-1 );
+			if ( c <= 2 ) par_grid->SetCellBackgroundColour( wxColour(244,244,210), r-1, c-1 );
+		}
+	}
+	par_grid->AutoSizeColumns();
 
 	wxPLPlotCtrl *par_plot = new wxPLPlotCtrl( param_panel, wxID_ANY );
 	std::vector<wxRealPoint> bar_data;
