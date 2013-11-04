@@ -25,8 +25,6 @@
 #include "case.h"
 #include "casewin.h"
 
-#include "configsel.h"
-
 // application globals
 static wxArrayString g_appArgs;
 static MainWindow *g_mainWindow = 0;
@@ -633,9 +631,6 @@ void ConfigDatabase::Clear()
 		delete m_configList[i];
 	m_configList.clear();
 	m_curConfig = 0;
-
-	m_techTreeRoot.Clear();
-	m_finTreeRoot.Clear();
 }
 
 void ConfigDatabase::Add( const wxString &tech, const wxArrayString &fin )
@@ -947,6 +942,7 @@ static void fcall_addeqn( lk::invoke_t &cxt )
 	}
 }
 
+/*
 static void fcall_cfgtree( lk::invoke_t &cxt )
 {
 	LK_DOC("cfgtree", "Adds an item to a configuration tree", "(string:which tree 'tech' or 'fin', string:label, string:caption, string:bitmap name, [string:cfg type name], [string:parent]");
@@ -979,6 +975,7 @@ static void fcall_cfgtree( lk::invoke_t &cxt )
 	else
 		tree.push_back( item );
 }
+*/
 
 bool SamApp::LoadAndRunScriptFile( const wxString &script_file, wxArrayString *errors )
 {
@@ -1011,7 +1008,7 @@ bool SamApp::LoadAndRunScriptFile( const wxString &script_file, wxArrayString *e
 		lk::env_t lkenv;
 		lkenv.register_func( fcall_dbgoutln, 0 );
 		lkenv.register_func( fcall_resetdb, 0 );
-		lkenv.register_func( fcall_cfgtree, 0 );
+		//lkenv.register_func( fcall_cfgtree, 0 );
 		lkenv.register_func( fcall_addconfig, 0 );
 		lkenv.register_func( fcall_setconfig, 0 );
 		lkenv.register_func( fcall_addpage, 0 );		
@@ -1031,5 +1028,144 @@ bool SamApp::LoadAndRunScriptFile( const wxString &script_file, wxArrayString *e
 		return ok;
 	}
 }
+
+
+
+enum { ID_TechTree = wxID_HIGHEST+98, ID_FinTree };
+
+BEGIN_EVENT_TABLE(ConfigDialog, wxDialog)
+	EVT_LISTBOX( ID_TechTree, ConfigDialog::OnTechTree)
+	EVT_BUTTON( wxID_HELP, ConfigDialog::OnHelp )
+END_EVENT_TABLE()
+
+ConfigDialog::ConfigDialog( wxWindow *parent, const wxSize &size )
+	: wxDialog( parent, wxID_ANY, wxEmptyString, wxDefaultPosition, size, wxBORDER_NONE )
+{
+	CenterOnParent();
+	SetEscapeId(wxID_CANCEL);
+	
+	m_pTech = new wxMetroListBox( this, ID_TechTree );
+	m_pFin = new wxMetroListBox( this, ID_FinTree );
+
+	wxBoxSizer *choice_sizer = new wxBoxSizer( wxHORIZONTAL );
+	choice_sizer->Add( m_pTech, 1, wxALL|wxEXPAND, 0 );
+	choice_sizer->Add( m_pFin, 1, wxALL|wxEXPAND, 0 );
+
+	wxStaticText *label = new wxStaticText( this, wxID_ANY,
+		"Project configuration: select a technology and then a financing option." );
+	wxFont font = label->GetFont();
+	font.SetWeight( wxFONTWEIGHT_BOLD );
+	font.SetPointSize( font.GetPointSize() + 1 );
+	label->SetFont( font );
+
+	m_pChkUseDefaults = new wxCheckBox(this, wxID_ANY, "Reset new inputs to Tech/Market-specific default values" );	
+	m_pChkUseDefaults->SetValue(true);
+
+	wxBoxSizer *hbox = new wxBoxSizer (wxHORIZONTAL );
+	hbox->Add( new wxButton(this, wxID_HELP, "Help..." ), 0, wxALL|wxEXPAND, 4 );
+	hbox->Add( m_pChkUseDefaults, 0, wxALL|wxEXPAND|wxALIGN_CENTER_VERTICAL, 4 );
+	hbox->AddStretchSpacer();
+	hbox->Add( CreateButtonSizer( wxOK|wxCANCEL ), 0, wxALL, 4 );
+	
+	wxBoxSizer *vbox = new wxBoxSizer( wxVERTICAL );
+	vbox->Add( label, 0, wxALL|wxEXPAND|wxALIGN_CENTER_VERTICAL, 8 );
+	vbox->Add( choice_sizer, 1, wxALL|wxEXPAND, 0 );
+	vbox->Add( hbox, 0, wxALL|wxEXPAND, 0 );	
+	SetSizer( vbox );
+	
+	wxAcceleratorEntry entries[1];
+	entries[0].Set( ::wxACCEL_NORMAL, WXK_F1, wxID_HELP );
+	SetAcceleratorTable( wxAcceleratorTable(1,entries) );
+
+	PopulateTech();
+
+}
+
+bool ConfigDialog::ResetToDefaults()
+{
+	return m_pChkUseDefaults->GetValue();
+}
+void ConfigDialog::SetConfiguration(const wxString &t, const wxString &f)
+{
+	m_t = t;
+	m_f = f;
+}
+
+void ConfigDialog::ShowResetCheckbox(bool b)
+{
+	m_pChkUseDefaults->Show(b);
+}
+
+bool ConfigDialog::GetConfiguration(wxString &t, wxString &f)
+{
+	t = m_pTech->GetValue();
+	f = m_pFin->GetValue();
+	return true;
+}
+
+
+void ConfigDialog::OnDoubleClick(wxCommandEvent &evt)
+{
+	EndModal( wxID_OK );
+}
+
+void ConfigDialog::PopulateTech()
+{
+	m_pTech->Clear();
+	wxArrayString list = SamApp::Config().GetTechnologies();
+	for( size_t i=0;i<list.Count();i++)
+		m_pTech->Add(  list[i] );
+	
+	m_pTech->Invalidate();
+}
+
+void ConfigDialog::OnTechTree( wxCommandEvent &evt )
+{
+	m_pFin->Clear();
+	wxArrayString list = SamApp::Config().GetFinancingForTech( m_pTech->GetValue() );
+	for( size_t i=0;i<list.Count();i++)
+		m_pFin->Add( list[i] );
+
+	m_pFin->Invalidate();
+}
+
+
+void ConfigDialog::OnHelp(wxCommandEvent &evt)
+{
+	SamApp::ShowHelp("Technology Market");
+}
+
+bool ShowConfigurationDialog( wxWindow *parent, wxString *tech, wxString *fin, bool *reset )
+{
+	if ( parent == 0 ) return false;
+
+	wxPoint pos = parent->ClientToScreen( wxPoint(0,0) );
+	wxSize size = parent->GetClientSize();
+
+	wxFrame *trans = new wxFrame( parent, wxID_ANY, wxEmptyString,  pos, size, 
+		wxBORDER_NONE | wxFRAME_FLOAT_ON_PARENT | wxFRAME_NO_TASKBAR );
+	trans->SetBackgroundColour( *wxLIGHT_GREY );
+	trans->SetTransparent( 200 );
+	trans->Show();
+
+
+	ConfigDialog *dlg = new ConfigDialog( parent );
+	dlg->ShowResetCheckbox( *reset );
+	if ( !tech->IsEmpty() && !fin->IsEmpty() )
+		dlg->SetConfiguration( *tech, *fin );
+
+	bool result = false;
+	if ( dlg->ShowModal() == wxID_OK )
+	{
+		dlg->GetConfiguration( *tech, *fin );
+		*reset = dlg->ResetToDefaults();
+		result = true;
+	}
+
+	dlg->Destroy();
+	trans->Destroy();
+	return result;
+}
+
 
 IMPLEMENT_APP( SamApp );
