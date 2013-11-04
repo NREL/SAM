@@ -22,7 +22,7 @@ addconfig( 'Geothermal', [ 'Independent Power Producer', 'None' ] );
 
 
 
-/* setup configuration tree */
+/* setup configuration tree 
 
 cfgtree( 'tech', 'Photovoltaics', 'Direct conversion of sunlight to electricity using solar cells.', 'photovoltaics_48h' );
 cfgtree( 'tech', 'Flat Plate PV', 'A detailed PV performance simulator that uses component-based CEC and Sandia models for modules and inverters.  This model can also be used for some low-X CPV systems.', 'flatplatepv2_48', 'Flat Plate PV', 'Photovoltaics' );
@@ -58,7 +58,7 @@ cfgtree( 'fin', 'No Financials', 'Run performance model with no financial model.
 
 
 
-
+*/
 
 
 

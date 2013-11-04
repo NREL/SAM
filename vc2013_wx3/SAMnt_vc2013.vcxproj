@@ -25,7 +25,6 @@
     <ClCompile Include="..\src\basecase.cpp" />
     <ClCompile Include="..\src\case.cpp" />
     <ClCompile Include="..\src\casewin.cpp" />
-    <ClCompile Include="..\src\configsel.cpp" />
     <ClCompile Include="..\src\equation.cpp" />
     <ClCompile Include="..\src\ide.cpp" />
     <ClCompile Include="..\src\ipagelist.cpp" />
@@ -42,7 +41,6 @@
     <ClInclude Include="..\src\basecase.h" />
     <ClInclude Include="..\src\case.h" />
     <ClInclude Include="..\src\casewin.h" />
-    <ClInclude Include="..\src\configsel.h" />
     <ClInclude Include="..\src\equation.h" />
     <ClInclude Include="..\src\ide.h" />
     <ClInclude Include="..\src\ipagelist.h" />
