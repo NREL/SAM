@@ -4,6 +4,9 @@
 #include <wx/frame.h>
 #include <wex/uiform.h>
 
+#include "variables.h"
+
+class wxListBox;
 class wxMetroNotebook;
 class wxLKScriptCtrl;
 
@@ -15,10 +18,19 @@ public:
 
 private:
 	void OnClose( wxCloseEvent & );
+	void OnCommand( wxCommandEvent & );
+
+	void LoadFormList( const wxString &sel = wxEmptyString );
+
+	wxString m_formName;
+	wxUIFormData m_formData;
+	VarDatabase m_varData;
+	bool WriteForm( const wxString &name );
+	bool LoadForm( const wxString &name );
 
 	wxLKScriptCtrl *m_scriptCtrl;
 
-	wxUIFormData m_formData;
+	wxListBox *m_formList;
 	wxUIFormDesigner *m_uiFormEditor;
 	wxUIPropertyEditor *m_uiPropEditor;
 
