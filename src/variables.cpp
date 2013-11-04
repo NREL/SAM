@@ -447,12 +447,97 @@ bool VarValue::Write( lk::vardata_t &val )
 	return true;
 }
 
+void VarInfo::Write( wxOutputStream &os )
+{
+	wxDataOutputStream out(os);
+	out.Write8( 0xe1 );
+	out.Write8( 1 );
+
+	out.WriteString( Name );
+	out.Write32( Type );
+	out.WriteString( Label );
+	out.WriteString( Units );
+	out.WriteString( Group );
+	out.WriteString( wxJoin(IndexLabels, '|') );
+	out.Write32( Flags );
+	DefaultValue.Write( os );
+
+	out.Write8( 0xe1 );
+}
+
+bool VarInfo::Read( wxInputStream &is )
+{
+	wxDataInputStream in(is);
+	wxUint8 code = in.Read8();
+	in.Read8(); // ver
+
+	Name = in.ReadString();
+	Type = in.Read32();
+	Label = in.ReadString();
+	Units = in.ReadString();
+	Group = in.ReadString();
+	IndexLabels = wxSplit( in.ReadString(), '|' );
+	Flags = in.Read32();
+	bool valok = DefaultValue.Read( is );
+
+	return in.Read8() == code && valok;
+}
+
 VarDatabase::VarDatabase()
 {
 }
 
 VarDatabase::~VarDatabase()
 {
+	Clear();
+}
+
+void VarDatabase::Write( wxOutputStream &os )
+{
+	wxDataOutputStream out(os);
+	out.Write8( 0xf8 );
+	out.Write8( 1 );
+	out.Write32( m_hash.size() );
+	for( varinfo_hash_t::iterator it = m_hash.begin();
+		it != m_hash.end();
+		++it )
+	{
+		out.WriteString( it->first );
+		it->second->Write( os );
+	}
+	out.Write32( m_equations.size() );
+	for( size_t i=0;i<m_equations.size();i++ )
+	{
+		out.WriteString( wxJoin(m_equations[i]->inputs, ',' ) );
+		out.WriteString( wxJoin(m_equations[i]->outputs, ',' ) );
+		out.WriteString( m_equations[i]->script );
+	}
+	out.Write8( 0xf8 );
+}
+
+bool VarDatabase::Read( wxInputStream &is )
+{
+	wxDataInputStream in(is);
+	Clear();
+	wxUint8 code = in.Read8();
+	in.Read8();
+	size_t n = in.Read32();
+	for( size_t i=0;i<n;i++ )
+	{
+		wxString name = in.ReadString();
+		VarInfo *vv = new VarInfo;
+		vv->Read( is );
+		m_hash[name] = vv;
+	}
+	n = in.Read32();
+	for( size_t i=0;i<n;i++)
+	{
+		wxString inputs = in.ReadString();
+		wxString outputs = in.ReadString();
+		wxString script = in.ReadString();
+		AddEquation( inputs, outputs, script );
+	}
+	return in.Read8() == code;
 }
 
 void VarDatabase::Add( const wxString &name, int type,
@@ -594,6 +679,7 @@ bool VarDatabase::AddEquation( const wxString &inputs, const wxString &outputs, 
 
 	eqn_data *ed = new eqn_data;
 	ed->tree = tree;
+	ed->script = script;
 	ed->inputs = wxStringTokenize( inputs, ", ;" );
 	ed->outputs = wxStringTokenize( outputs, ", ;" );
 	m_equations.push_back( ed );
