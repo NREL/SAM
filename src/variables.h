@@ -99,6 +99,9 @@ class VarInfo
 public:
 	VarInfo() { Type = VV_INVALID; Flags = VF_NONE; }
 
+	void Write( wxOutputStream & );
+	bool Read( wxInputStream & );
+
 	wxString Name;
 	int Type;
 	wxString Label;
@@ -136,10 +139,13 @@ public:
 	bool AddEquation( const wxString &inputs, const wxString &outputs, const wxString &script, wxArrayString *errors = 0 );
 	lk::node_t *GetEquation( const wxString &var, wxArrayString *inputs, wxArrayString *outputs );
 	wxArrayString *GetAffectedVariables( const wxString &var );
-	struct eqn_data { lk::node_t *tree; wxArrayString inputs, outputs; };
+	struct eqn_data { lk::node_t *tree; wxString script; wxArrayString inputs, outputs; };
 	std::vector<eqn_data*> GetEquations() { return m_equations; }
 	eqn_data *GetEquationData( const wxString &var );
 	int GetEquationIndex( const wxString &var );
+
+	void Write( wxOutputStream & );
+	bool Read( wxInputStream & );
 
 private:
 	VarValue m_invVal;
