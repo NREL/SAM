@@ -1,12 +1,13 @@
 #ifndef __sammain_h
 #define __sammain_h
 
+#include <exception>
+
 #include <wx/app.h>
 #include <wx/frame.h>
 #include <wx/config.h>
 #include <wx/filehistory.h>
-
-#include <exception>
+#include <wx/dialog.h>
 
 #include "variables.h"
 #include "project.h"
@@ -80,7 +81,6 @@ private:
 	DECLARE_EVENT_TABLE();
 };
 
-
 class ConfigDatabase
 {
 public:
@@ -110,25 +110,6 @@ public:
 	std::vector<InputPageInfo*> GetInputPageList(const wxString &tech,
 			const wxString &financing );
 		
-	struct TreeItem
-	{
-		~TreeItem() { Clear(); }
-		void Clear() { 
-			for( std::vector<TreeItem*>::iterator it = Children.begin();
-				it != Children.end(); ++it ) delete *it;
-			Children.clear();
-		}
-		
-
-		wxString Label;
-		wxString Description;
-		wxString BmpName;
-		wxString TypeTag;
-		std::vector<TreeItem*> Children;
-	};
-
-	std::vector<TreeItem*> &TechTree() { return m_techTreeRoot.Children; }
-	std::vector<TreeItem*> &FinTree() { return m_finTreeRoot.Children; }
 
 private:
 	struct TechInfo { wxString Name; wxArrayString FinancingOptions; };
@@ -148,8 +129,6 @@ private:
 	std::vector<ConfigInfo*> m_configList;
 
 	ConfigInfo *m_curConfig;
-
-	TreeItem m_techTreeRoot, m_finTreeRoot;
 };
 
 class SamApp : public wxApp
@@ -177,6 +156,41 @@ public:
 };
 
 DECLARE_APP( SamApp );
+
+
+class wxCheckBox;
+class wxMetroListBox;
+
+class ConfigDialog : public wxDialog
+{
+public:
+	ConfigDialog( wxWindow *parent, const wxSize &size = wxSize(700,570) );
+
+	void SetConfiguration(const wxString &t, const wxString &f);
+	bool GetConfiguration(wxString &t, wxString &f);
+
+	void ShowResetCheckbox(bool b);
+	bool ResetToDefaults();
+
+private:
+	void PopulateTech();
+	bool ValidateSelections();
+	void OnTechTree(wxCommandEvent &evt);
+	void OnDoubleClick(wxCommandEvent &evt);
+
+	wxMetroListBox *m_pTech;
+	wxMetroListBox *m_pFin;
+
+	wxString m_t, m_f;
+
+	void OnHelp( wxCommandEvent &evt );
+
+	wxCheckBox *m_pChkUseDefaults;
+	DECLARE_EVENT_TABLE();
+};
+
+bool ShowConfigurationDialog( wxWindow *parent, wxString *tech, wxString *fin, bool *reset );
+
 
 
 #endif
