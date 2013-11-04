@@ -234,12 +234,14 @@ void MainWindow::DeleteCaseWindow( Case *c )
 	m_caseTabList->Refresh();
 }
 
+extern void ShowIDEWindow();
+
 void MainWindow::OnInternalCommand( wxCommandEvent &evt )
 {
 	switch( evt.GetId() )
 	{
 	case ID_INTERNAL_IDE:
-		wxMessageBox("No ide yet - soon though!");
+		ShowIDEWindow();
 		break;
 	case ID_INTERNAL_RESTART:
 		SamApp::Restart();
@@ -942,6 +944,21 @@ static void fcall_addeqn( lk::invoke_t &cxt )
 	}
 }
 
+lk::fcall_t* startup_funcs()
+{
+	static const lk::fcall_t vec[] = {
+		fcall_dbgoutln,
+		fcall_resetdb,
+		fcall_addconfig,
+		fcall_setconfig,
+		fcall_addpage,
+		fcall_setcontext,
+		fcall_addvar,
+		fcall_addeqn,
+		0 };
+	return (lk::fcall_t*)vec;
+}
+
 /*
 static void fcall_cfgtree( lk::invoke_t &cxt )
 {
@@ -1006,15 +1023,7 @@ bool SamApp::LoadAndRunScriptFile( const wxString &script_file, wxArrayString *e
 	else
 	{
 		lk::env_t lkenv;
-		lkenv.register_func( fcall_dbgoutln, 0 );
-		lkenv.register_func( fcall_resetdb, 0 );
-		//lkenv.register_func( fcall_cfgtree, 0 );
-		lkenv.register_func( fcall_addconfig, 0 );
-		lkenv.register_func( fcall_setconfig, 0 );
-		lkenv.register_func( fcall_addpage, 0 );		
-		lkenv.register_func( fcall_setcontext, 0 );
-		lkenv.register_func( fcall_addvar, 0 );
-		lkenv.register_func( fcall_addeqn, 0 );
+		lkenv.register_funcs( startup_funcs(), 0 );
 		lk::vardata_t lkvar;
 		std::vector<lk_string> lkerrs;
 		unsigned int lkctl = lk::CTL_NONE;
