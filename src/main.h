@@ -9,6 +9,7 @@
 #include <wx/filehistory.h>
 #include <wx/dialog.h>
 
+#include "equations.h"
 #include "variables.h"
 #include "project.h"
 
@@ -150,7 +151,8 @@ public:
 	static int VersionMajor();
 	static int VersionMinor();
 	static int VersionMicro();
-	static VarDatabase &Vars();
+	static VarDatabase &GetVariables( const wxString &tech, const wxString &fin );
+	static EqnDatabase &GetEquations( const wxString &tech, const wxString &fin );
 	static ConfigDatabase &Config();
 	static bool LoadAndRunScriptFile( const wxString &script_file, wxArrayString *errors = 0 );
 };

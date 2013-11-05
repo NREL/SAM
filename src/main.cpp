@@ -775,7 +775,6 @@ int SamApp::OnExit()
 
 void SamApp::Restart()
 {
-	SamApp::Vars().Clear();
 	SamApp::Config().Clear();
 
 	// load configuration map
@@ -831,7 +830,19 @@ wxString SamApp::VersionStr() { return wxString::Format("%d.%d.%d", VersionMajor
 int SamApp::VersionMajor() { return g_verMajor; }
 int SamApp::VersionMinor() { return g_verMinor; }
 int SamApp::VersionMicro() { return g_verMicro; }
-VarDatabase &SamApp::Vars() { return g_varDatabase; }
+
+VarDatabase &SamApp::GetVariables( const wxString &tech, const wxString &fin )
+{
+	static VarDatabase s_vdb;
+	return s_vdb;
+}
+
+EqnDatabase &SamApp::GetEquations( const wxString &tech, const wxString &fin )
+{
+	static EqnDatabase s_edb;
+	return s_edb;
+}
+
 ConfigDatabase &SamApp::Config() { return g_cfgDatabase; }
 
 static void fcall_dbgoutln( lk::invoke_t &cxt )
@@ -846,7 +857,6 @@ static void fcall_dbgoutln( lk::invoke_t &cxt )
 static void fcall_resetdb( lk::invoke_t &cxt )
 {
 	LK_DOC("resetdb", "Resets variable and configuration databases to empty", "(none):none");
-	SamApp::Vars().Clear();
 	SamApp::Config().Clear();
 }
 
@@ -899,53 +909,6 @@ static void fcall_setcontext( lk::invoke_t &cxt )
 	s_defaultContext = cxt.arg(0).as_string();
 }
 
-static void fcall_addvar( lk::invoke_t &cxt )
-{
-	LK_DOC( "addvar", "Adds a variable to the common database", "(string:name, integer:type, string:label, string:units, "
-		"[string:context, string:indexlabels, array:flags, variant:default_value] )");
-
-	wxString name = cxt.arg(0).as_string();
-	int type = cxt.arg(1).as_integer();
-	wxString label = cxt.arg(2).as_string();
-	wxString units = cxt.arg(3).as_string();
-	wxString context = s_defaultContext;
-	wxString idxlabels;
-	unsigned long flags = 0;
-
-	VarValue defval;
-	defval.SetType( type );
-
-	if ( cxt.arg_count() > 4 && cxt.arg(4).as_string().Len() > 0 ) context = cxt.arg(4).as_string();
-	if ( cxt.arg_count() > 5 ) idxlabels = cxt.arg(5).as_string();
-	if ( cxt.arg_count() > 6 )
-	{
-		lk::vardata_t &fl = cxt.arg(6);
-		for( size_t i=0;i<fl.length();i++ )
-		{
-			wxString flag = fl.index(i)->as_string().Lower();
-			if ( flag == "hide_labels" ) flags |= VF_HIDE_LABELS;
-			else if ( flag == "parameteric" ) flags |= VF_PARAMETRIC;
-			else if ( flag == "indicator" ) flags |= VF_INDICATOR;
-		}
-	}
-
-	if ( cxt.arg_count() > 7 )
-		defval.Read( cxt.arg(7), false );
-	
-	SamApp::Vars().Add( name, type, label, units, context, idxlabels, flags, defval );
-}
-
-static void fcall_addeqn( lk::invoke_t &cxt )
-{
-	LK_DOC( "addeqn", "Adds an equation to the variable database", "(string:inputs, string:outputs, string:equation code):none");
-	wxArrayString errors;
-	if (!SamApp::Vars().AddEquation( cxt.arg(0).as_string(), cxt.arg(1).as_string(), cxt.arg(2).as_string(), &errors ))
-	{
-		wxLogStatus("error adding equation via 'addeqn':");
-		for( size_t i=0;i<errors.size();i++ ) wxLogStatus( errors[i] );
-	}
-}
-
 lk::fcall_t* startup_funcs()
 {
 	static const lk::fcall_t vec[] = {
@@ -955,8 +918,6 @@ lk::fcall_t* startup_funcs()
 		fcall_setconfig,
 		fcall_addpage,
 		fcall_setcontext,
-		fcall_addvar,
-		fcall_addeqn,
 		0 };
 	return (lk::fcall_t*)vec;
 }
