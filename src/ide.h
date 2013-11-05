@@ -23,6 +23,17 @@ private:
 	DECLARE_EVENT_TABLE();
 };
 
+class ExtendedFormData : public wxUIFormData
+{
+private:
+	VarDatabase *m_vdb;
+public:
+	ExtendedFormData( VarDatabase *vdb );	
+	virtual ~ExtendedFormData();
+	virtual bool GetMetaData( const wxString &name,
+		wxString *label, wxString *units, wxColour *colour );
+};
+
 class UIEditorPanel : public wxPanel
 {
 public:
@@ -30,10 +41,11 @@ public:
 
 private:
 	void OnCommand( wxCommandEvent & );
+	void OnFormSelectObject( wxUIFormEvent & );
 	void LoadFormList( const wxString &sel = wxEmptyString );
 
 	wxString m_formName;
-	wxUIFormData m_formData;
+	ExtendedFormData m_formData;
 	VarDatabase m_varData;
 	bool WriteForm( const wxString &name );
 	bool LoadForm( const wxString &name );
@@ -51,6 +63,8 @@ private:
 
 	void SyncFormUIToDataBeforeWriting();
 
+	wxLKScriptCtrl *m_callbackScript;
+	wxLKScriptCtrl *m_equationScript;
 
 
 	wxListBox *m_formList;
