@@ -209,7 +209,7 @@ void VarValue::Write( wxOutputStream &_O )
 		break;
 	}
 
-	out.Write16( 0xf2 );
+	out.Write8( 0xf2 );
 }
 
 bool VarValue::Read( wxInputStream &_I )
@@ -479,8 +479,8 @@ bool VarInfo::Read( wxInputStream &is )
 	IndexLabels = wxSplit( in.ReadString(), '|' );
 	Flags = in.Read32();
 	bool valok = DefaultValue.Read( is );
-
-	return in.Read8() == code && valok;
+	wxUint8 lastcode = in.Read8();
+	return  lastcode == code && valok;
 }
 
 VarDatabase::VarDatabase()
@@ -522,13 +522,16 @@ bool VarDatabase::Read( wxInputStream &is )
 	wxUint8 code = in.Read8();
 	in.Read8();
 	size_t n = in.Read32();
+	bool ok = true;
 	for( size_t i=0;i<n;i++ )
 	{
 		wxString name = in.ReadString();
 		VarInfo *vv = new VarInfo;
-		vv->Read( is );
+		ok = ok && vv->Read( is );
 		m_hash[name] = vv;
 	}
+	if ( !ok ) return false;
+
 	n = in.Read32();
 	for( size_t i=0;i<n;i++)
 	{
@@ -540,7 +543,7 @@ bool VarDatabase::Read( wxInputStream &is )
 	return in.Read8() == code;
 }
 
-void VarDatabase::Add( const wxString &name, int type,
+VarInfo *VarDatabase::Add( const wxString &name, int type,
 	const wxString &label, const wxString &units,
 	const wxString &group, const wxString &indexlabels, 
 	unsigned long flags, const VarValue &defval )
@@ -563,6 +566,34 @@ void VarDatabase::Add( const wxString &name, int type,
 	vv->IndexLabels = wxStringTokenize( indexlabels, "," );
 	vv->Flags = flags;
 	vv->DefaultValue = defval;
+
+	return vv;
+}
+
+bool VarDatabase::Delete( const wxString &name )
+{
+	varinfo_hash_t::iterator it = m_hash.find( name );
+	if ( it != m_hash.end() )
+	{
+		delete it->second;
+		m_hash.erase( it );
+		return true;
+	}
+	else return false;
+}
+
+bool VarDatabase::Rename( const wxString &old_name, const wxString &new_name )
+{
+	varinfo_hash_t::iterator it = m_hash.find( old_name );
+	if ( it == m_hash.end() ) return false;
+
+	if ( m_hash.find( new_name ) != m_hash.end() ) return false;
+
+	VarInfo *vv = it->second;
+	m_hash.erase( it );
+	
+	m_hash[ new_name ] = vv;
+	return true;
 }
 
 void VarDatabase::Clear()
