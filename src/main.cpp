@@ -756,6 +756,8 @@ bool SamApp::OnInit()
 	g_mainWindow = new MainWindow();
 	g_mainWindow->Show();
 
+	ShowIDEWindow();
+
 	return true;
 }
 

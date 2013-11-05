@@ -119,12 +119,14 @@ public:
 	VarDatabase();
 	~VarDatabase();
 
-	void Add( const wxString &name, int type,
-		const wxString &label, const wxString &units,
-		const wxString &group, const wxString &indexlabels,
-		unsigned long flags, const VarValue &defval );
+	VarInfo *Add( const wxString &name, int type,
+		const wxString &label = wxEmptyString, const wxString &units = wxEmptyString,
+		const wxString &group = wxEmptyString, const wxString &indexlabels = wxEmptyString,
+		unsigned long flags = VF_NONE, const VarValue &defval = VarValue() );
 
 	
+	bool Delete( const wxString &name );
+	bool Rename( const wxString &old_name, const wxString &new_name );
 	void Clear();	
 	VarInfo *Lookup( const wxString &name );
 	wxArrayString ListAll();
