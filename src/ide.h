@@ -11,16 +11,25 @@ class wxMetroNotebook;
 class wxExtTextCtrl;
 class wxLKScriptCtrl;
 
-class IDEWindow : public wxFrame
+class StartupScriptPanel : public wxPanel
 {
 public:
-	IDEWindow( wxWindow *parent );
-	virtual ~IDEWindow();
-
+	StartupScriptPanel( wxWindow *parent );
 private:
-	void OnClose( wxCloseEvent & );
 	void OnCommand( wxCommandEvent & );
 
+	wxLKScriptCtrl *m_scriptCtrl;
+
+	DECLARE_EVENT_TABLE();
+};
+
+class UIEditorPanel : public wxPanel
+{
+public:
+	UIEditorPanel( wxWindow *parent );
+
+private:
+	void OnCommand( wxCommandEvent & );
 	void LoadFormList( const wxString &sel = wxEmptyString );
 
 	wxString m_formName;
@@ -40,15 +49,29 @@ private:
 	void VarInfoToForm( VarInfo * );
 	void LoadVarList( const wxString &sel = wxEmptyString );
 
+	void SyncFormUIToDataBeforeWriting();
 
 
-	wxLKScriptCtrl *m_scriptCtrl;
 
 	wxListBox *m_formList;
 	wxUIFormDesigner *m_uiFormEditor;
 	wxUIPropertyEditor *m_uiPropEditor;
+	
+	DECLARE_EVENT_TABLE();
+};
 
+class IDEWindow : public wxFrame
+{
+public:
+	IDEWindow( wxWindow *parent );
+	virtual ~IDEWindow();
+
+private:
+	void OnClose( wxCloseEvent & );
 	wxMetroNotebook *m_notebook;
+
+	StartupScriptPanel *m_startupPanel;
+	UIEditorPanel *m_uiPanel;
 
 	DECLARE_EVENT_TABLE();
 };
