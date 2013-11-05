@@ -138,13 +138,6 @@ public:
 	unsigned long Flags( const wxString &name );
 	VarValue &InternalDefaultValue( const wxString &name );
 
-	bool AddEquation( const wxString &inputs, const wxString &outputs, const wxString &script, wxArrayString *errors = 0 );
-	lk::node_t *GetEquation( const wxString &var, wxArrayString *inputs, wxArrayString *outputs );
-	wxArrayString *GetAffectedVariables( const wxString &var );
-	struct eqn_data { lk::node_t *tree; wxString script; wxArrayString inputs, outputs; };
-	std::vector<eqn_data*> GetEquations() { return m_equations; }
-	eqn_data *GetEquationData( const wxString &var );
-	int GetEquationIndex( const wxString &var );
 
 	void Write( wxOutputStream & );
 	bool Read( wxInputStream & );
@@ -154,16 +147,6 @@ private:
 
 	typedef unordered_map<wxString, VarInfo*, wxStringHash, wxStringEqual> varinfo_hash_t;	
 	varinfo_hash_t m_hash;
-
-	typedef unordered_map< wxString, wxArrayString*, wxStringHash, wxStringEqual > arraystring_hash_t;
-	arraystring_hash_t m_affected;
-	std::vector<eqn_data*> m_equations;
-	typedef unordered_map< wxString, eqn_data*, wxStringHash, wxStringEqual > eqndata_hash_t;
-	eqndata_hash_t m_eqnLookup;
-	typedef unordered_map< wxString, size_t, wxStringHash, wxStringEqual > eqnindex_hash_t;
-	eqnindex_hash_t m_eqnIndices;
-	
-
 };
 
 class VarTableScriptEnvironment : public lk::env_t
@@ -176,31 +159,5 @@ public:
 	virtual bool special_set( const lk_string &name, lk::vardata_t &val );
 	virtual bool special_get( const lk_string &name, lk::vardata_t &val );
 };
-
-class VarEvaluator
-{
-private:
-	static const int INVALID = 0;
-	static const int OK = 1;
-
-	VarTable *m_vars;
-	VarDatabase *m_vdb;
-	std::vector<VarDatabase::eqn_data*> m_eqns;
-	std::vector<char> m_status;
-	wxArrayString m_errors;
-	wxArrayString m_updated;
-	int Calculate( );
-	size_t MarkAffectedEquations( const wxString &var );
-
-public:
-	VarEvaluator( VarTable *vars, VarDatabase *db );
-
-	void Reset();
-	int CalculateAll();
-	int Changed( const wxString &var );
-	wxArrayString GetErrors() { return m_errors; }
-	wxArrayString GetUpdated() { return m_updated; }
-};
-
 
 #endif
