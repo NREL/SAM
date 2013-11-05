@@ -8,6 +8,7 @@
 
 class wxListBox;
 class wxMetroNotebook;
+class wxExtTextCtrl;
 class wxLKScriptCtrl;
 
 class IDEWindow : public wxFrame
@@ -27,6 +28,19 @@ private:
 	VarDatabase m_varData;
 	bool WriteForm( const wxString &name );
 	bool LoadForm( const wxString &name );
+
+	wxListBox *m_varList;
+	wxExtTextCtrl *m_varName;
+	wxChoice *m_varType;
+	wxExtTextCtrl *m_varLabel, *m_varUnits, *m_varGroup, *m_varIndexLabels, *m_varDefaultValue;
+	wxCheckBox *m_varFlagHideLabels, *m_varFlagParametric, *m_varFlagIndicator;
+
+	VarInfo *m_curVar;
+	void FormToVarInfo( VarInfo * );
+	void VarInfoToForm( VarInfo * );
+	void LoadVarList( const wxString &sel = wxEmptyString );
+
+
 
 	wxLKScriptCtrl *m_scriptCtrl;
 
