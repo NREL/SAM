@@ -93,6 +93,7 @@ private:
 #define VF_HIDE_LABELS 0x01
 #define VF_PARAMETRIC 0x02
 #define VF_INDICATOR 0x04
+#define VF_CALCULATED 0x08
 
 class VarInfo
 {
@@ -139,6 +140,7 @@ public:
 	VarValue &InternalDefaultValue( const wxString &name );
 
 
+	bool LoadFile( const wxString &file );
 	void Write( wxOutputStream & );
 	bool Read( wxInputStream & );
 

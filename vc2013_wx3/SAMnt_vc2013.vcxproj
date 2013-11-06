@@ -27,12 +27,12 @@
     <ClCompile Include="..\src\casewin.cpp" />
     <ClCompile Include="..\src\equations.cpp" />
     <ClCompile Include="..\src\ide.cpp" />
+    <ClCompile Include="..\src\inputpage.cpp" />
     <ClCompile Include="..\src\ipagelist.cpp" />
     <ClCompile Include="..\src\main.cpp" />
     <ClCompile Include="..\src\object.cpp" />
     <ClCompile Include="..\src\project.cpp" />
     <ClCompile Include="..\src\simplecurl.cpp" />
-    <ClCompile Include="..\src\uiview.cpp" />
     <ClCompile Include="..\src\uiwidgets.cpp" />
     <ClCompile Include="..\src\variables.cpp" />
     <ClCompile Include="..\src\welcome.cpp" />
@@ -43,12 +43,12 @@
     <ClInclude Include="..\src\casewin.h" />
     <ClInclude Include="..\src\equations.h" />
     <ClInclude Include="..\src\ide.h" />
+    <ClInclude Include="..\src\inputpage.h" />
     <ClInclude Include="..\src\ipagelist.h" />
     <ClInclude Include="..\src\main.h" />
     <ClInclude Include="..\src\object.h" />
     <ClInclude Include="..\src\project.h" />
     <ClInclude Include="..\src\simplecurl.h" />
-    <ClInclude Include="..\src\uiview.h" />
     <ClInclude Include="..\src\uiwidgets.h" />
     <ClInclude Include="..\src\variables.h" />
     <ClInclude Include="..\src\welcome.h" />
