@@ -1,9 +1,9 @@
 
 on_load{'Test 1'} = define() {
-	msgbox('test');
+	msgbox('script callback for ->on_load - works!');
 };
 
-on_change('chk_hello_1') = define() {
+on_change{'chk_hello_1'}= define() {
 	msgbox('hello checkbox world!');
 };
 

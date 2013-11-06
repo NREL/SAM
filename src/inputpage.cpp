@@ -18,30 +18,6 @@
 #include "uiwidgets.h"
 #include "inputpage.h"
 
-VarTableEnv::VarTableEnv( VarTable *vt )
-	: m_vtb( vt )
-{
-}
-
-VarTableEnv::~VarTableEnv( )
-{
-}
-
-bool VarTableEnv::special_set( const lk_string &name, lk::vardata_t &val )
-{
-	if ( VarValue *vval = m_vtb->Get( name ) )
-		return vval->Read( val, false );
-	else
-		return false;
-}
-
-bool VarTableEnv::special_get( const lk_string &name, lk::vardata_t &val )
-{
-	if ( VarValue *vval = m_vtb->Get( name ) )
-		return vval->Write( val );
-	else
-		return false;
-}
 
 CallbackContext::CallbackContext( InputPageBase *ip, VarTable *vt, lk::node_t *root, const wxString &desc)
 	: m_inputPage(ip), m_varTable(vt), m_root(root), m_desc(desc)
@@ -52,10 +28,9 @@ CallbackContext::CallbackContext( InputPageBase *ip, VarTable *vt, lk::node_t *r
 	
 bool CallbackContext::Invoke( )
 {
-	VarTableEnv local_env( m_varTable );
-	local_env.register_funcs( lk::stdlib_basic(), this );
-	local_env.register_funcs( lk::stdlib_string(), this );
-	local_env.register_funcs( lk::stdlib_math(), this );
+	VarTableScriptEnvironment local_env( m_varTable );
+	// above automatically register stdlib_basic, stdlib_string, stdlib_math
+	// add other callback environment functions
 	local_env.register_funcs( lk::stdlib_wxui(), this );
 
 	std::vector< lk_string > errors;
@@ -94,18 +69,18 @@ bool CallbackDatabase::LoadFile( const wxString &file )
 	FILE *fp = fopen( (const char*)file.c_str(), "r" );
 	if (fp)
 	{
-		wxLogStatus("uicb: processing callback script file %s\n", (const char*)file.c_str());
+		wxLogStatus("uicb: processing callback script file: " + file);
 
 		lk::input_stream data( fp );
 		lk::parser parse( data );
 		lk::node_t *tree = parse.script();
 
-		if (parse.error_count() != 0
+		if (tree == 0 || parse.error_count() != 0
 			|| parse.token() != lk::lexer::END)
 		{
-			wxLogStatus("\tfail: parsing did not reach end of input ('%s')\n", (const char*)file.c_str());				
+			wxLogStatus("fail: parsing did not reach end of input: " + file);				
 			for (int x=0; x < parse.error_count(); x++)
-				wxLogStatus("\t  %s\n", (const char*)parse.error(x).c_str());
+				wxLogStatus( parse.error(x));
 		}
 		else
 		{
@@ -121,13 +96,11 @@ bool CallbackDatabase::LoadFile( const wxString &file )
 
 			if ( !lk::eval( tree, &m_cbenv, errors, result, 0, ctl_id, 0, 0 ) )
 			{
-				wxLogStatus("\tuicb script eval fail\n");
+				wxLogStatus("uicb script eval fail");
 				for (size_t i=0;i<errors.size();i++)
-					wxLogStatus( "\t  %s\n", (const char*)errors[i].c_str() );
-			}
-			else
-			{
-				wxLogStatus("\t loaded %s successfully.\n", (const char*)file.c_str());
+					wxLogStatus( errors[i] );
+
+				return false;
 			}
 		}
 
@@ -228,7 +201,6 @@ bool InputPageBase::Load( const wxString &name )
 		wxUIFormData::SetName( name );
 		Attach( this ); // creates native objects
 		SetClientSize( wxUIFormData::GetSize() ); // resize self to specified form data
-		Initialize();
 		return true;
 	}
 	else
@@ -236,12 +208,56 @@ bool InputPageBase::Load( const wxString &name )
 
 }
 
+static wxColour UIColorIndicatorFore(60,60,60);
+static wxColour UIColorIndicatorBack(230,230,230);
+static wxColour UIColorCalculatedFore(0,0,255);
+static wxColour UIColorCalculatedBack(224,232,246);
+
 void InputPageBase::Initialize()
 {
+	VarDatabase &vdb = GetVariables();
+
+	std::vector<wxUIObject*> objs = GetObjects();
+	for( size_t i=0;i<objs.size();i++ )
+	{
+		wxString type = objs[i]->GetTypeName();
+		wxString name = objs[i]->GetName();
+		if ( VarInfo *vv = vdb.Lookup( name ) )
+		{
+			if ( vv->Type == VV_NUMBER && vv->IndexLabels.size() > 0 
+				&& ( type == "Choice" || type == "ListBox" || type == "CheckListBox" || type == "RadioChoice" ) )
+			{
+				objs[i]->Property( "Items" ).SetNamedOptions( vv->IndexLabels, 0 );
+				if ( wxItemContainer *ic = objs[i]->GetNative<wxItemContainer>() )
+				{
+					ic->Clear();
+					ic->Append( vv->IndexLabels );
+				}
+			}
+
+			wxTextCtrl *tc = objs[i]->GetNative<wxTextCtrl>();
+			if ( tc != 0 && (vv->Flags & VF_CALCULATED || vv->Flags & VF_INDICATOR ) )
+			{
+				tc->SetEditable( false );
+				if ( vv->Flags & VF_CALCULATED )
+				{
+					tc->SetForegroundColour(UIColorCalculatedFore);
+					tc->SetBackgroundColour(UIColorCalculatedBack);
+				}
+				else 
+				{
+					tc->SetForegroundColour(UIColorIndicatorFore);
+					tc->SetBackgroundColour(UIColorIndicatorBack);
+				}
+			}
+		}
+	}
+
+
 	// lookup and run any callback functions.
 	if ( lk::node_t *root = GetCallbacks().Lookup( "on_load", wxUIFormData::GetName() ) )
 	{
-		CallbackContext cbcxt( this, &GetVarTable(), root, wxUIFormData::GetName() + "->on_load" );
+		CallbackContext cbcxt( this, &GetValues(), root, wxUIFormData::GetName() + "->on_load" );
 		if ( cbcxt.Invoke() )
 			wxLogStatus("callback script " + wxUIFormData::GetName() + "->on_load succeeded");
 	}
@@ -332,7 +348,7 @@ void InputPageBase::OnNativeEvent( wxCommandEvent &evt )
 	// lookup and run any callback functions.
 	if ( lk::node_t *root = GetCallbacks().Lookup( "on_change", obj->GetName() ) )
 	{
-		CallbackContext cbcxt( this, &GetVarTable(), root, obj->GetName() + "->on_change" );
+		CallbackContext cbcxt( this, &GetValues(), root, obj->GetName() + "->on_change" );
 		if ( cbcxt.Invoke() )
 			wxLogStatus("callback script " + obj->GetName() + "->on_change succeeded");
 	}

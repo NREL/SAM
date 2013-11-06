@@ -383,13 +383,16 @@ class InputPageTestPanel : public InputPageBase
 
 public:
 	InputPageTestPanel( wxWindow *parent, int id )
-		: InputPageBase( parent, id ) { }
+		: InputPageBase( parent, id )
+	{
+		SetBackgroundColour( wxColour(255,215,215) );
+	}
 	virtual ~InputPageTestPanel() { /* nothing to do */ }
 
 	bool Setup( const wxString &name )
 	{
 		bool ok = Load( name );
-		ok = ok && m_vars.LoadFile( SamApp::GetRuntimePath() + "/ui/" + name + ".vars" );
+		ok = ok && m_vars.LoadFile( SamApp::GetRuntimePath() + "/ui/" + name + ".var" );
 		ok = ok && m_eqns.LoadFile( SamApp::GetRuntimePath() + "/ui/" + name + ".eqn" );
 		ok = ok && m_call.LoadFile( SamApp::GetRuntimePath() + "/ui/" + name + ".cb" );
 
@@ -398,6 +401,8 @@ public:
 		wxArrayString list = m_vars.ListAll();
 		for( size_t i=0;i<list.size();i++ )
 			m_vals.Set( list[i], m_vars.InternalDefaultValue( list[i] ) );
+
+		Initialize();
 		
 		return ok;
 	}
@@ -405,7 +410,7 @@ public:
 	virtual VarDatabase &GetVariables()	{ return m_vars; }
 	virtual EqnDatabase &GetEquations() { return m_eqns; }
 	virtual CallbackDatabase &GetCallbacks() { return m_call; }
-	virtual VarTable &GetVarTable() { return m_vals; }
+	virtual VarTable &GetValues() { return m_vals; }
 
 	virtual void OnInputChanged( wxUIObject *obj )
 	{
@@ -438,7 +443,7 @@ void UIEditorPanel::OnFormTest( wxCommandEvent & )
 	wxFrame *frame = new wxFrame( this, wxID_ANY, "Test: " + m_formName, wxDefaultPosition, wxSize( 500, 400 ) );
 	InputPageTestPanel *ip = new InputPageTestPanel( frame, wxID_ANY );
 
-	if (!ip->Load( m_formName ))
+	if (!ip->Setup( m_formName ))
 		wxMessageBox("test form load not successful", "notice", wxOK, this );
 
 	frame->SetClientSize( ip->GetClientSize() );
@@ -485,12 +490,12 @@ void UIEditorPanel::OnCommand( wxCommandEvent &evt )
 	case ID_FORM_DELETE:
 		{
 			wxString form = m_formList->GetStringSelection();
-			if ( wxYES == wxMessageBox( "really delete .ui/.vars/.cb/.eqn for: " + form + " ?  cannot undo!", "query", wxYES_NO, this ) )
+			if ( wxYES == wxMessageBox( "really delete .ui/.var/.cb/.eqn for: " + form + " ?  cannot undo!", "query", wxYES_NO, this ) )
 			{
 				wxString ff = SamApp::GetRuntimePath() + "/ui/" + form + ".ui";
 				if ( wxFileExists( ff ) ) wxRemoveFile( ff );
 				
-				ff = SamApp::GetRuntimePath() + "/ui/" + form + ".vars";
+				ff = SamApp::GetRuntimePath() + "/ui/" + form + ".var";
 				if ( wxFileExists( ff ) ) wxRemoveFile( ff );
 
 				ff = SamApp::GetRuntimePath() + "/ui/" + form + ".cb";

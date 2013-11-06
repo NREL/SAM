@@ -14,7 +14,7 @@ VarTable::VarTable()
 
 VarTable::~VarTable()
 {
-	clear();
+	VarTable::clear();
 }
 
 void VarTable::clear()
