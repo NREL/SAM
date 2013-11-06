@@ -34,7 +34,7 @@ public:
 private:
 	std::vector<lk::node_t*> m_trees;
 
-	void ScanParseTree( lk::node_t *root, wxArrayString *inputs, wxArrayString *outputs );
+	void ScanParseTree( lk::node_t *root, wxArrayString *inputs, wxArrayString *outputs, bool in_assign_lhs = false );
 	
 	bool AddEquation( const wxArrayString &inputs, const wxArrayString &outputs, lk::node_t *tree );
 

@@ -79,10 +79,6 @@ function setup_pv_input_pages()
 
 	addpage( 'Array', '', '', [ 'Array' ] );
 	addpage( 'PV Subarrays', '', '', [ 'PV Subarrays' ] );
-	
-	addvar( 'pv.mod.cec.a_c', VV_NUMBER, 'Area', 'm2' );
-	addeqn( 'pv.mod.cec.a_c', 'pv.mod.cec.2a_c', 
-		'${pv.mod.cec.2a_c} = 2*${pv.mod.cec.a_c};' );
 }
 
 

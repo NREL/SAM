@@ -19,91 +19,52 @@ EqnDatabase::~EqnDatabase()
 }
 
 
-void EqnDatabase::ScanParseTree( lk::node_t *root, wxArrayString *inputs, wxArrayString *outputs )
+void EqnDatabase::ScanParseTree( lk::node_t *root, wxArrayString *inputs, wxArrayString *outputs, bool in_assign_lhs )
 {
 	/// TODO !!!!!
 	// need to walk the parse tree and determine any assignments whose LHS is
 	// a "special variable" escape, and any other instance a "special variable"
 	// is used in an expression
-
-	wxString str;
 	if (!root) return;
 
 	if ( lk::list_t *n = dynamic_cast<lk::list_t*>( root ) )
 	{
-		str += "{\n";
 		while (n)
 		{
 			ScanParseTree(  n->item, inputs, outputs );
-			str += "\n";
 			n = n->next;
 		}
-		str += "}";
 	}
 	else if ( lk::iter_t *n = dynamic_cast<lk::iter_t*>( root ) )
 	{
-		str += "loop(";
-
 		ScanParseTree( n->init, inputs, outputs);
-		str += "\n";
-
 		ScanParseTree( n->test, inputs, outputs);
-		str += "\n";
-
 		ScanParseTree( n->adv, inputs, outputs);
-		str += "\n";
-
 		ScanParseTree( n->block, inputs, outputs );
-		str += "\n )";
 	}
 	else if ( lk::cond_t *n = dynamic_cast<lk::cond_t*>( root ) )
 	{
-		str += "cond(";
 		ScanParseTree( n->test, inputs, outputs );
-		str += "\n";
 		ScanParseTree( n->on_true, inputs, outputs);
-		if (n->on_false )
-			str += "\n";
 		ScanParseTree( n->on_false, inputs, outputs);
-		str += " )";
 	}
 	else if ( lk::expr_t *n = dynamic_cast<lk::expr_t*>( root ) )
 	{
-		str += "(";
-		str += n->operstr();
-		str += "\n";
-		ScanParseTree( n->left, inputs, outputs );
-		if (n->right)
-			str += "\n";
+		ScanParseTree( n->left, inputs, outputs, n->oper == lk::expr_t::ASSIGN );
+		if ( n->oper == lk::expr_t::ASSIGN )
+			if ( lk::iden_t *id = dynamic_cast<lk::iden_t*>( n->left ) )
+				if ( id->special )
+					outputs->Add( id->name );
+
 		ScanParseTree(  n->right, inputs, outputs );
-		str += ")";
 	}
 	else if ( lk::iden_t *n = dynamic_cast<lk::iden_t*>( root ) )
 	{
-		str += n->name;
-	}
-	else if ( lk::constant_t *n = dynamic_cast<lk::constant_t*>( root ) )
-	{
-		char buf[64];
-		sprintf(buf, "%lg", n->value );
-		str += buf;
-	}
-	else if ( lk::literal_t *n = dynamic_cast<lk::literal_t*>( root ) )
-	{
-		str += "'";
-		str += n->value;
-		str += "'";
-	}
-	else if ( 0 != dynamic_cast<lk::null_t*>( root ) )
-	{
-		str += "#null#";
-	}
-	else
-	{
-		str += "<!unknown node type!>";
+		if ( n->special && !in_assign_lhs )
+			inputs->Add( n->name );
 	}
 
-
+	// note: lk structures for constants, literals, null-types don't need handling here
 }
 
 
@@ -208,10 +169,8 @@ void EqnDatabase::Clear()
 	for ( std::vector<eqn_data*>::iterator it = m_equations.begin();
 		it != m_equations.end();
 		++it )
-	{
-		delete (*it)->tree;
-		delete (*it);
-	}
+		delete (*it); // don't delete the tree here: just a reference and will be deleted below.
+
 	m_equations.clear();
 
 	for( size_t i=0;i<m_trees.size();i++)

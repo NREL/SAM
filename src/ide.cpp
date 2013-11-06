@@ -13,6 +13,9 @@
 
 #include "ide.h"
 #include "main.h"
+#include "equations.h"
+
+
 enum { ID_STARTUP_EDITOR = wxID_HIGHEST+124,
 	ID_STARTUP_SAVE,
 	ID_STARTUP_FIND,
@@ -134,7 +137,9 @@ enum {
 	ID_VAR_DEFAULT_VALUE,
 	ID_VAR_FL_HIDELABELS,
 	ID_VAR_FL_PARAMETRIC,
-	ID_VAR_FL_INDICATOR
+	ID_VAR_FL_INDICATOR,
+
+	ID_EQN_PARSE
 };
 
 BEGIN_EVENT_TABLE( UIEditorPanel, wxPanel )
@@ -153,6 +158,8 @@ BEGIN_EVENT_TABLE( UIEditorPanel, wxPanel )
 	EVT_TEXT_ENTER( ID_VAR_LABEL, UIEditorPanel::OnCommand )
 	EVT_TEXT_ENTER( ID_VAR_UNITS, UIEditorPanel::OnCommand )
 
+	EVT_BUTTON( ID_EQN_PARSE, UIEditorPanel::OnCommand )
+
 	EVT_UIFORM_SELECT( ID_FORM_EDITOR, UIEditorPanel::OnFormSelectObject )
 END_EVENT_TABLE()
 
@@ -170,6 +177,8 @@ UIEditorPanel::UIEditorPanel( wxWindow *parent )
 	sz_form_tools->Add( new wxButton( this, ID_VAR_SYNC, "Sync vars"), 0, wxALL|wxEXPAND, 2 );
 	sz_form_tools->Add( new wxButton( this, ID_VAR_ADD, "Add var..."), 0, wxALL|wxEXPAND, 2 );
 	sz_form_tools->Add( new wxButton( this, ID_VAR_DELETE, "Delete var"), 0, wxALL|wxEXPAND, 2 );
+
+	sz_form_tools->Add( new wxButton( this, ID_EQN_PARSE, "Parse eqns"), 0, wxALL|wxEXPAND, 2 );
 	
 	
 	m_uiPropEditor = new wxUIPropertyEditor( this, wxID_ANY );
@@ -440,6 +449,34 @@ void UIEditorPanel::OnCommand( wxCommandEvent &evt )
 	case ID_VAR_LABEL:
 	case ID_VAR_UNITS:
 		m_uiFormEditor->Refresh();
+		break;
+
+	case ID_EQN_PARSE:
+		{
+			wxArrayString errors;
+			EqnDatabase db;
+			bool ok = db.Parse( m_equationScript->GetText(), &errors );
+
+			if ( ok )
+			{
+				wxMessageBox("equations parsed ok");
+				std::vector<EqnDatabase::eqn_data*> list = db.GetEquations();
+				wxLogStatus( ">> %d equations resolved", (int)list.size() );
+				for( size_t i=0;i<list.size();i++ )
+				{
+					wxLogStatus( "[%d] outputs: %s", (int)i, wxJoin( list[i]->outputs, ';' ));
+					wxLogStatus( "[%d] inputs: %s", (int)i, wxJoin( list[i]->inputs, ';' ));
+					wxString str;
+					lk::pretty_print( str, list[i]->tree, 0 );
+					wxLogStatus( str + "\n\n" );
+				}
+			}
+			else
+			{
+				wxMessageBox( wxString::Format("%d errors when scanning equations", (int)errors.size() ) );
+				wxLogStatus( wxJoin(errors, '\n') );
+			}
+		}
 		break;
 	}
 }

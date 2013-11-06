@@ -1,0 +1,13 @@
+equations{'output_1'} = define() { return ${input_1}*${input_2} + ${in_4}; };
+equations{'output_2'} = define() {
+	return ${output_1}-${input_2};
+};
+
+equations{'$MIMO$ My special mimo'} = define()
+{
+	a = 2.414;
+	c = ${input_2}-${input_1};
+	b = ${output_2};
+	${output_3} = ${output_1} - ${input_1};
+	${output_4} = a * b + c;
+};
