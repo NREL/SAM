@@ -10,11 +10,15 @@
 #include <wex/lkscript.h>
 #include <wex/metro.h>
 #include <wex/uiform.h>
+#include <wex/utils.h>
+
+#include <lk_lex.h>
+#include <lk_parse.h>
 
 #include "ide.h"
 #include "main.h"
 #include "equations.h"
-
+#include "inputpage.h"
 
 enum { ID_STARTUP_EDITOR = wxID_HIGHEST+124,
 	ID_STARTUP_SAVE,
@@ -100,10 +104,9 @@ bool ExtendedFormData::GetMetaData( const wxString &name,
 
 		*label = vv->Label;
 		*units = vv->Units;
-		if ( vv->Flags & VF_INDICATOR )
-			*colour = wxColour(90,90,90);
-		else
-			*colour = *wxBLACK;
+		if ( vv->Flags & VF_INDICATOR ) *colour = wxColour(90,90,90);
+		else if ( vv->Flags & VF_CALCULATED ) *colour = *wxBLUE;
+		else *colour = *wxBLACK;
 
 		return true;
 	}
@@ -122,6 +125,7 @@ enum {
 	ID_FORM_ADD,
 	ID_FORM_SAVE,
 	ID_FORM_DELETE,
+	ID_FORM_TEST,
 
 	ID_VAR_SYNC,
 	ID_VAR_ADD,
@@ -138,8 +142,20 @@ enum {
 	ID_VAR_FL_HIDELABELS,
 	ID_VAR_FL_PARAMETRIC,
 	ID_VAR_FL_INDICATOR,
+	ID_VAR_FL_CALCULATED,
 
-	ID_EQN_PARSE
+	ID_CALLBACK_FIND,
+	ID_CALLBACK_CHECK,
+	ID_CALLBACK_GOTO,
+	ID_CALLBACK_HELP,
+
+	ID_CALLBACK_GOTO_1,
+	ID_CALLBACK_GOTO_100 = ID_CALLBACK_GOTO_1 + 100,
+
+	ID_EQUATION_FIND,
+	ID_EQUATION_SCAN,
+	ID_EQUATION_HELP
+
 };
 
 BEGIN_EVENT_TABLE( UIEditorPanel, wxPanel )
@@ -148,6 +164,7 @@ BEGIN_EVENT_TABLE( UIEditorPanel, wxPanel )
 	EVT_BUTTON( ID_FORM_ADD, UIEditorPanel::OnCommand )
 	EVT_BUTTON( ID_FORM_SAVE, UIEditorPanel::OnCommand )
 	EVT_BUTTON( ID_FORM_DELETE, UIEditorPanel::OnCommand )
+	EVT_BUTTON( ID_FORM_TEST, UIEditorPanel::OnFormTest )
 	
 	EVT_BUTTON( ID_VAR_SYNC, UIEditorPanel::OnCommand )
 	EVT_BUTTON( ID_VAR_ADD, UIEditorPanel::OnCommand )
@@ -158,7 +175,15 @@ BEGIN_EVENT_TABLE( UIEditorPanel, wxPanel )
 	EVT_TEXT_ENTER( ID_VAR_LABEL, UIEditorPanel::OnCommand )
 	EVT_TEXT_ENTER( ID_VAR_UNITS, UIEditorPanel::OnCommand )
 
-	EVT_BUTTON( ID_EQN_PARSE, UIEditorPanel::OnCommand )
+	EVT_BUTTON( ID_CALLBACK_FIND, UIEditorPanel::OnCommand )
+	EVT_BUTTON( ID_CALLBACK_CHECK, UIEditorPanel::OnCommand )
+	EVT_BUTTON( ID_CALLBACK_GOTO, UIEditorPanel::OnCommand )
+	EVT_MENU_RANGE( ID_CALLBACK_GOTO_1, ID_CALLBACK_GOTO_100, UIEditorPanel::OnCallbackGoto )
+	EVT_BUTTON( ID_CALLBACK_HELP, UIEditorPanel::OnCommand )
+
+	EVT_BUTTON( ID_EQUATION_FIND, UIEditorPanel::OnCommand )
+	EVT_BUTTON( ID_EQUATION_SCAN, UIEditorPanel::OnCommand )
+	EVT_BUTTON( ID_EQUATION_HELP, UIEditorPanel::OnCommand )
 
 	EVT_UIFORM_SELECT( ID_FORM_EDITOR, UIEditorPanel::OnFormSelectObject )
 END_EVENT_TABLE()
@@ -166,21 +191,17 @@ END_EVENT_TABLE()
 UIEditorPanel::UIEditorPanel( wxWindow *parent )
 	: wxPanel( parent ), m_formData( &m_varData )
 {
-	wxUIObjectTypeProvider::RegisterBuiltinTypes();
-
 	wxBoxSizer *sz_form_tools = new wxBoxSizer( wxHORIZONTAL );
 	sz_form_tools->Add( new wxButton( this, ID_FORM_LIST_REFRESH, "Refresh list"), 0, wxALL|wxEXPAND, 2 );
 	sz_form_tools->Add( new wxButton( this, ID_FORM_ADD, "Add..."), 0, wxALL|wxEXPAND, 2 );
 	sz_form_tools->Add( new wxButton( this, ID_FORM_SAVE, "Save"), 0, wxALL|wxEXPAND, 2 );
 	sz_form_tools->Add( new wxButton( this, ID_FORM_DELETE, "Delete"), 0, wxALL|wxEXPAND, 2 );
+	sz_form_tools->Add( new wxButton( this, ID_FORM_TEST, "Test"), 0, wxALL|wxEXPAND, 2 );
 	sz_form_tools->AddStretchSpacer();	
 	sz_form_tools->Add( new wxButton( this, ID_VAR_SYNC, "Sync vars"), 0, wxALL|wxEXPAND, 2 );
 	sz_form_tools->Add( new wxButton( this, ID_VAR_ADD, "Add var..."), 0, wxALL|wxEXPAND, 2 );
 	sz_form_tools->Add( new wxButton( this, ID_VAR_DELETE, "Delete var"), 0, wxALL|wxEXPAND, 2 );
-
-	sz_form_tools->Add( new wxButton( this, ID_EQN_PARSE, "Parse eqns"), 0, wxALL|wxEXPAND, 2 );
-	
-	
+		
 	m_uiPropEditor = new wxUIPropertyEditor( this, wxID_ANY );
 	m_formList = new wxListBox( this, ID_FORM_LIST, wxDefaultPosition, wxSize(300, 300), 0, 0, wxLB_SINGLE|wxBORDER_NONE );
 	
@@ -203,6 +224,7 @@ UIEditorPanel::UIEditorPanel( wxWindow *parent )
 	m_varFlagHideLabels = new wxCheckBox( this, ID_VAR_FL_HIDELABELS, "Hide labels?" );
 	m_varFlagParametric = new wxCheckBox( this, ID_VAR_FL_PARAMETRIC, "Parametric?" );
 	m_varFlagIndicator = new wxCheckBox( this, ID_VAR_FL_INDICATOR, "Indicator?" );
+	m_varFlagCalculated = new wxCheckBox( this, ID_VAR_FL_CALCULATED, "Calculated?" );
 
 	wxGridBagSizer *sz_var_fields = new wxGridBagSizer(1,1);
 	sz_var_fields->SetFlexibleDirection( wxHORIZONTAL );
@@ -226,9 +248,10 @@ UIEditorPanel::UIEditorPanel( wxWindow *parent )
 	sz_var_fields->Add( new wxStaticText( this, wxID_ANY, "Default Value:" ), wxGBPosition(5,0), wxDefaultSpan, wxALL|wxALIGN_CENTER_VERTICAL, 3 );
 	sz_var_fields->Add( m_varDefaultValue, wxGBPosition(5, 1), wxGBSpan(1,3), wxALL|wxEXPAND, 2  );
 
-	sz_var_fields->Add( m_varFlagHideLabels, wxGBPosition(6,0), wxGBSpan(1,2), wxALL|wxALIGN_CENTER_VERTICAL, 3  );
-	sz_var_fields->Add( m_varFlagParametric, wxGBPosition(7,0), wxGBSpan(1,2), wxALL|wxALIGN_CENTER_VERTICAL, 3  );
-	sz_var_fields->Add( m_varFlagIndicator, wxGBPosition(8,0), wxGBSpan(1,2), wxALL|wxALIGN_CENTER_VERTICAL, 3  );
+	sz_var_fields->Add( m_varFlagHideLabels, wxGBPosition(6,0), wxGBSpan(1,1), wxALL|wxALIGN_CENTER_VERTICAL, 3  );
+	sz_var_fields->Add( m_varFlagParametric, wxGBPosition(6,1), wxGBSpan(1,1), wxALL|wxALIGN_CENTER_VERTICAL, 3  );
+	sz_var_fields->Add( m_varFlagIndicator, wxGBPosition(7,0), wxGBSpan(1,1), wxALL|wxALIGN_CENTER_VERTICAL, 3  );
+	sz_var_fields->Add( m_varFlagCalculated, wxGBPosition(7,1), wxGBSpan(1,1), wxALL|wxALIGN_CENTER_VERTICAL, 3 );
 
 	sz_var_fields->AddGrowableCol( 1 );
 
@@ -239,13 +262,41 @@ UIEditorPanel::UIEditorPanel( wxWindow *parent )
 
 	wxSplitterWindow *center_split = new wxSplitterWindow( this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxSP_LIVE_UPDATE );
 	m_uiFormEditor = new wxUIFormDesigner( center_split, ID_FORM_EDITOR );
+	m_uiFormEditor->SetBackgroundColour( wxColour(120,120,120) );
 
 	wxPanel *scripts_panel = new wxPanel( center_split );
+
+	wxBoxSizer *sz_callback_tools = new wxBoxSizer( wxHORIZONTAL );
+	sz_callback_tools->Add( new wxStaticText( scripts_panel, wxID_ANY, "Callbacks"), 0, wxALL|wxALIGN_CENTER_VERTICAL, 2 );
+	sz_callback_tools->AddSpacer(5);
+	sz_callback_tools->Add( new wxButton( scripts_panel, ID_CALLBACK_FIND, "Find..." ), 0, wxALL|wxEXPAND, 2 );
+	sz_callback_tools->Add( new wxButton( scripts_panel, ID_CALLBACK_CHECK, "Check code" ), 0, wxALL|wxEXPAND, 2 );
+	sz_callback_tools->Add( new wxButton( scripts_panel, ID_CALLBACK_GOTO, "Goto..." ), 0, wxALL|wxEXPAND, 2 );
+	sz_callback_tools->Add( new wxButton( scripts_panel, ID_CALLBACK_HELP, "Help" ), 0, wxALL|wxEXPAND, 2 );
+	sz_callback_tools->AddStretchSpacer();
+
 	m_callbackScript = new wxLKScriptCtrl( scripts_panel, ID_CALLBACK_EDITOR );
-	m_equationScript = new wxLKScriptCtrl( scripts_panel, ID_EQUATION_EDITOR );
+	wxBoxSizer *sz_scripts_left = new wxBoxSizer( wxVERTICAL );
+	sz_scripts_left->Add( sz_callback_tools, 0, wxALL|wxEXPAND, 2 );
+	sz_scripts_left->Add( m_callbackScript, 1, wxALL|wxEXPAND, 0 );
+
+	wxBoxSizer *sz_equation_tools = new wxBoxSizer( wxHORIZONTAL );
+	sz_equation_tools->Add( new wxStaticText( scripts_panel, wxID_ANY, "Equations"), 0, wxALL|wxALIGN_CENTER_VERTICAL, 2 );
+	sz_equation_tools->AddSpacer(5);
+	sz_equation_tools->Add( new wxButton( scripts_panel, ID_EQUATION_FIND, "Find..." ), 0, wxALL|wxEXPAND, 2 );
+	sz_equation_tools->Add( new wxButton( scripts_panel, ID_EQUATION_SCAN, "Scan" ), 0, wxALL|wxEXPAND, 2 );
+	sz_equation_tools->Add( new wxButton( scripts_panel, ID_EQUATION_HELP, "Help" ), 0, wxALL|wxEXPAND, 2 );
+	sz_equation_tools->AddStretchSpacer();
+
+	m_equationScript = new wxLKScriptCtrl( scripts_panel, ID_EQUATION_EDITOR, wxDefaultPosition, wxDefaultSize,
+		wxLK_STDLIB_BASIC | wxLK_STDLIB_STRING | wxLK_STDLIB_MATH );
+	wxBoxSizer *sz_scripts_right = new wxBoxSizer( wxVERTICAL );
+	sz_scripts_right->Add( sz_equation_tools, 0, wxALL|wxEXPAND, 2 );
+	sz_scripts_right->Add( m_equationScript, 1, wxALL|wxEXPAND, 0 );
+
 	wxBoxSizer *sz_scripts_main = new wxBoxSizer( wxHORIZONTAL );
-	sz_scripts_main->Add( m_callbackScript, 1, wxALL|wxEXPAND, 0 );
-	sz_scripts_main->Add( m_equationScript, 1, wxALL|wxEXPAND, 0 );
+	sz_scripts_main->Add( sz_scripts_left, 1, wxALL|wxEXPAND, 0 );
+	sz_scripts_main->Add( sz_scripts_right, 1, wxALL|wxEXPAND, 0 );
 	scripts_panel->SetSizer( sz_scripts_main );
 
 	center_split->SplitHorizontally( m_uiFormEditor, scripts_panel, -400 );
@@ -298,6 +349,102 @@ void UIEditorPanel::LoadFormList( const wxString &sel )
 		m_formList->SetStringSelection( sel );
 }
 
+void UIEditorPanel::OnCallbackGoto( wxCommandEvent &evt )
+{
+	int idx = evt.GetId() - ID_CALLBACK_GOTO_1;
+	if ( idx >= 0 && idx < m_callbackGotoList.Count() )
+	{
+		int pos = m_callbackScript->FindText( 0, m_callbackScript->GetLength(), m_callbackGotoList[idx], 0 );
+		if ( pos >= 0 )
+		{
+			m_callbackScript->SetSelection( pos, pos+m_callbackGotoList[idx].Len() );
+		}
+		else
+		{
+			wxString text = "\n" + m_callbackGotoList[idx] + "\n\tmsgbox('test');\n};\n";
+			m_callbackScript->AppendText( text );
+			m_callbackScript->SetSelection( m_callbackScript->GetLength()-text.Len()-1, text.Len() );
+		}
+
+		m_callbackScript->EnsureCaretVisible();
+	}
+}
+
+
+
+
+class InputPageTestPanel : public InputPageBase
+{
+	
+	VarDatabase m_vars;
+	EqnDatabase m_eqns;
+	CallbackDatabase m_call;
+	VarTable m_vals;
+
+public:
+	InputPageTestPanel( wxWindow *parent, int id )
+		: InputPageBase( parent, id ) { }
+	virtual ~InputPageTestPanel() { /* nothing to do */ }
+
+	bool Setup( const wxString &name )
+	{
+		bool ok = Load( name );
+		ok = ok && m_vars.LoadFile( SamApp::GetRuntimePath() + "/ui/" + name + ".vars" );
+		ok = ok && m_eqns.LoadFile( SamApp::GetRuntimePath() + "/ui/" + name + ".eqn" );
+		ok = ok && m_call.LoadFile( SamApp::GetRuntimePath() + "/ui/" + name + ".cb" );
+
+		// setup variable value table
+		m_vals.clear();
+		wxArrayString list = m_vars.ListAll();
+		for( size_t i=0;i<list.size();i++ )
+			m_vals.Set( list[i], m_vars.InternalDefaultValue( list[i] ) );
+		
+		return ok;
+	}
+	
+	virtual VarDatabase &GetVariables()	{ return m_vars; }
+	virtual EqnDatabase &GetEquations() { return m_eqns; }
+	virtual CallbackDatabase &GetCallbacks() { return m_call; }
+	virtual VarTable &GetVarTable() { return m_vals; }
+
+	virtual void OnInputChanged( wxUIObject *obj )
+	{
+		if( VarValue *vval = m_vals.Get( obj->GetName() ) )
+		{
+			// store the value
+			DataExchange( obj, *vval, OBJ_TO_VAR );
+			EqnEvaluator eval( &m_vals, &m_eqns );
+			size_t n = eval.Changed( obj->GetName() );
+			if ( n > 0 )
+			{
+				wxArrayString list = eval.GetUpdated();
+				for( size_t i=0;i<list.size();i++ )
+				{
+					VarValue *upd = m_vals.Get( list[i] );
+					wxUIObject *obj = Find( list[i] );
+					if ( upd && obj )
+						DataExchange( obj, *upd, VAR_TO_OBJ );
+				}
+
+			}
+		}
+
+		wxLogStatus( "iptp: variable " + obj->GetName() + " changed and value stored" );
+	}
+};
+
+void UIEditorPanel::OnFormTest( wxCommandEvent & )
+{
+	wxFrame *frame = new wxFrame( this, wxID_ANY, "Test: " + m_formName, wxDefaultPosition, wxSize( 500, 400 ) );
+	InputPageTestPanel *ip = new InputPageTestPanel( frame, wxID_ANY );
+
+	if (!ip->Load( m_formName ))
+		wxMessageBox("test form load not successful", "notice", wxOK, this );
+
+	frame->SetClientSize( ip->GetClientSize() );
+	frame->Show();
+}
+
 void UIEditorPanel::OnCommand( wxCommandEvent &evt )
 {
 	switch( evt.GetId() )
@@ -338,17 +485,28 @@ void UIEditorPanel::OnCommand( wxCommandEvent &evt )
 	case ID_FORM_DELETE:
 		{
 			wxString form = m_formList->GetStringSelection();
-			wxString ff = SamApp::GetRuntimePath() + "/ui/" + form + ".ui";
-			if ( wxFileExists( ff )
-				&& wxYES == wxMessageBox( "really delete form and variables in: " + form + " ?  cannot undo!\n\n" + ff, "query", wxYES_NO, this ) )
+			if ( wxYES == wxMessageBox( "really delete .ui/.vars/.cb/.eqn for: " + form + " ?  cannot undo!", "query", wxYES_NO, this ) )
 			{
-				wxRemoveFile( ff );
+				wxString ff = SamApp::GetRuntimePath() + "/ui/" + form + ".ui";
+				if ( wxFileExists( ff ) ) wxRemoveFile( ff );
+				
+				ff = SamApp::GetRuntimePath() + "/ui/" + form + ".vars";
+				if ( wxFileExists( ff ) ) wxRemoveFile( ff );
+
+				ff = SamApp::GetRuntimePath() + "/ui/" + form + ".cb";
+				if ( wxFileExists( ff ) ) wxRemoveFile( ff );
+
+				ff = SamApp::GetRuntimePath() + "/ui/" + form + ".eqn";
+				if ( wxFileExists( ff ) ) wxRemoveFile( ff );
+
 				m_formName.Clear();
 				m_formData.DeleteAll();
 				m_varData.Clear();
 				m_curVar = 0;
 				m_uiFormEditor->SetFormData( &m_formData );
 				m_uiFormEditor->Refresh();
+				m_callbackScript->Clear();
+				m_equationScript->Clear();
 				LoadFormList();
 				LoadVarList();
 				VarInfoToForm( NULL );
@@ -390,6 +548,8 @@ void UIEditorPanel::OnCommand( wxCommandEvent &evt )
 						m_varData.Add( name, VV_NUMBER );
 					else if ( type == "CheckBox" )
 						m_varData.Add( name, VV_NUMBER );
+
+					// extend this list in the future for additional controls
 				}
 			}
 
@@ -451,31 +611,87 @@ void UIEditorPanel::OnCommand( wxCommandEvent &evt )
 		m_uiFormEditor->Refresh();
 		break;
 
-	case ID_EQN_PARSE:
+	case ID_CALLBACK_FIND:
+		m_callbackScript->ShowFindReplaceDialog();
+		break;
+
+	case ID_CALLBACK_CHECK:
+		{
+			lk::input_string in( m_callbackScript->GetText() );
+			lk::parser parse( in );
+			lk::node_t *root = parse.script();
+			if ( parse.error_count() == 0 )
+				wxMessageBox("callback script parsed ok.", "notice", wxOK, this );
+			else
+			{
+				wxString text;
+				for( size_t i=0;i<parse.error_count();i++ )
+					text += parse.error( i ) + "\n";
+				::wxShowTextMessageDialog( text, "errors", this );
+			}
+
+			if( root != 0 ) delete root;
+		}
+		break;
+
+	case ID_CALLBACK_GOTO:
+		{
+			m_callbackGotoList.Clear();
+			wxMenu menu;
+			int id = ID_CALLBACK_GOTO_1;
+			m_callbackGotoList.Add( "on_load{'" + m_formName + "'} = define() {" );
+			menu.Append( id++, "form->on_load" );
+
+			std::vector<wxUIObject*> objs = m_formData.GetObjects();
+			for( size_t i=0;i<objs.size();i++ )
+			{
+				wxString type = objs[i]->GetTypeName();
+				if ( type == "Button" || type == "CheckBox" || type == "RadioChoice" || type == "Choice" )
+				{
+					m_callbackGotoList.Add( "on_change{'" + objs[i]->GetName() + "'} = define() {" );
+					menu.Append(id++, objs[i]->GetName() + "->on_change" );
+				}
+			}
+			PopupMenu( &menu );
+		}
+		break;
+	case ID_CALLBACK_HELP:
+		m_callbackScript->ShowHelpDialog( this );
+		break;
+	case ID_EQUATION_FIND:
+		m_equationScript->ShowFindReplaceDialog();
+		break;
+	case ID_EQUATION_HELP:
+		m_equationScript->ShowHelpDialog( this );
+		break;
+	case ID_EQUATION_SCAN:
 		{
 			wxArrayString errors;
 			EqnDatabase db;
-			bool ok = db.Parse( m_equationScript->GetText(), &errors );
+			bool ok = db.LoadScript( m_equationScript->GetText(), &errors );
 
+			wxString text;
 			if ( ok )
 			{
-				wxMessageBox("equations parsed ok");
 				std::vector<EqnDatabase::eqn_data*> list = db.GetEquations();
-				wxLogStatus( ">> %d equations resolved", (int)list.size() );
+				text << list.size() <<  " equations resolved ok \n\n";
 				for( size_t i=0;i<list.size();i++ )
 				{
-					wxLogStatus( "[%d] outputs: %s", (int)i, wxJoin( list[i]->outputs, ';' ));
-					wxLogStatus( "[%d] inputs: %s", (int)i, wxJoin( list[i]->inputs, ';' ));
+					text << "-------------------------------------------------------------------------------\n";
+					text << "[" << i << "] outputs: " << wxJoin( list[i]->outputs, ';' ) << "\n";
+					text << "[" << i << "] inputs: " << wxJoin( list[i]->inputs, ';' ) << "\n";
 					wxString str;
 					lk::pretty_print( str, list[i]->tree, 0 );
-					wxLogStatus( str + "\n\n" );
+					text << str << "\n\n";
 				}
 			}
 			else
 			{
-				wxMessageBox( wxString::Format("%d errors when scanning equations", (int)errors.size() ) );
-				wxLogStatus( wxJoin(errors, '\n') );
+				text << errors.size() << " errors when scanning equations\n";
+				text << wxJoin(errors, '\n');
 			}
+			
+			wxShowTextMessageDialog( text, "equation scan", this, wxSize(800,700) );
 		}
 		break;
 	}
@@ -515,6 +731,7 @@ void UIEditorPanel::FormToVarInfo( VarInfo *vv )
 	if( m_varFlagHideLabels->GetValue() ) vv->Flags |= VF_HIDE_LABELS;
 	if( m_varFlagParametric->GetValue() ) vv->Flags |= VF_PARAMETRIC;
 	if( m_varFlagIndicator->GetValue() ) vv->Flags |= VF_INDICATOR;
+	if( m_varFlagCalculated->GetValue() ) vv->Flags |= VF_CALCULATED;
 
 }
 
@@ -533,6 +750,7 @@ void UIEditorPanel::VarInfoToForm( VarInfo *vv )
 		m_varFlagHideLabels->SetValue( vv->Flags & VF_HIDE_LABELS );
 		m_varFlagParametric->SetValue( vv->Flags & VF_PARAMETRIC );
 		m_varFlagIndicator->SetValue( vv->Flags & VF_INDICATOR );
+		m_varFlagCalculated->SetValue( vv->Flags & VF_CALCULATED );
 		
 		// todo: default value
 	}
@@ -547,6 +765,7 @@ void UIEditorPanel::VarInfoToForm( VarInfo *vv )
 		m_varFlagHideLabels->SetValue( false );
 		m_varFlagParametric->SetValue( false );
 		m_varFlagIndicator->SetValue( false );
+		m_varFlagCalculated->SetValue( false );
 
 		// todo: default value
 	}
@@ -561,6 +780,7 @@ void UIEditorPanel::VarInfoToForm( VarInfo *vv )
 	m_varFlagHideLabels->Enable( m_curVar != 0 );
 	m_varFlagParametric->Enable( m_curVar != 0 );
 	m_varFlagIndicator->Enable( m_curVar != 0 );
+	m_varFlagCalculated->Enable( m_curVar != 0 );
 
 }
 

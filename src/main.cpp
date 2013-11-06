@@ -713,6 +713,8 @@ public:
 	}
 };
 
+extern void RegisterInputPageObjects(); // decl of function in "inputpage.h"
+
 bool SamApp::OnInit()
 {
 	SetAppName( "SAM" );
@@ -736,6 +738,9 @@ bool SamApp::OnInit()
 	// be read or written to streams.
 	ObjectTypes::Register( new StringHash );
 	ObjectTypes::Register( new Case );
+
+	// register all input page UI objects 
+	RegisterInputPageObjects();
 
 	wxInitAllImageHandlers();
 	wxSimpleCurlInit();

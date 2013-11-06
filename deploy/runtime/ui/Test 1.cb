@@ -1,7 +1,18 @@
+
 on_load{'Test 1'} = define() {
-	a = 214414.2;
+	msgbox('test');
 };
 
 on_change('chk_hello_1') = define() {
 	msgbox('hello checkbox world!');
 };
+
+
+on_change{'chk_hello_1'} = define() {
+	msgbox('basic callback!');
+};
+
+on_change{'object 1'} = define() {
+	msgbox('basic callback');
+};
+

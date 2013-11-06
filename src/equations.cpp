@@ -21,10 +21,6 @@ EqnDatabase::~EqnDatabase()
 
 void EqnDatabase::ScanParseTree( lk::node_t *root, wxArrayString *inputs, wxArrayString *outputs, bool in_assign_lhs )
 {
-	/// TODO !!!!!
-	// need to walk the parse tree and determine any assignments whose LHS is
-	// a "special variable" escape, and any other instance a "special variable"
-	// is used in an expression
 	if (!root) return;
 
 	if ( lk::list_t *n = dynamic_cast<lk::list_t*>( root ) )
@@ -67,11 +63,24 @@ void EqnDatabase::ScanParseTree( lk::node_t *root, wxArrayString *inputs, wxArra
 	// note: lk structures for constants, literals, null-types don't need handling here
 }
 
-
-bool EqnDatabase::Parse( const wxString &script, wxArrayString *errors )
+bool EqnDatabase::LoadFile( const wxString &file, wxArrayString *errors )
 {
-	lk::input_string p( script );
-	lk::parser parse( p );
+	FILE *fp = fopen( (const char*)file.c_str(), "r" );
+	if (!fp) return false;
+	lk::input_stream in( fp );
+	bool ok = Parse( in, errors );
+	fclose(fp);
+	return ok;
+}
+bool EqnDatabase::LoadScript( const wxString &text, wxArrayString *errors )
+{
+	lk::input_string in( text );
+	return Parse( in, errors );
+}
+
+bool EqnDatabase::Parse( lk::input_base &in, wxArrayString *errors )
+{
+	lk::parser parse( in );
 	lk::node_t *tree = parse.script();
 
 	if ( parse.error_count() != 0 
