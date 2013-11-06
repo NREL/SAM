@@ -8,6 +8,7 @@
 #include <wx/stream.h>
 
 #include <lk_absyn.h>
+#include <lk_lex.h>
 #include <lk_env.h>
 
 #include "object.h"
@@ -20,7 +21,9 @@ public:
 	virtual ~EqnDatabase();
 
 	void Clear();
-	bool Parse( const wxString &script, wxArrayString *errors = 0 );
+	bool LoadFile( const wxString &file, wxArrayString *errors = 0 );
+	bool LoadScript( const wxString &text, wxArrayString *errors = 0 );
+	bool Parse( lk::input_base &in, wxArrayString *errors = 0 );
 
 	lk::node_t *GetEquation( const wxString &var, wxArrayString *inputs, wxArrayString *outputs );
 	wxArrayString *GetAffectedVariables( const wxString &var );

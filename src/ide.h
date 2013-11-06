@@ -40,6 +40,9 @@ public:
 	UIEditorPanel( wxWindow *parent );
 
 private:
+	wxArrayString m_callbackGotoList;
+	void OnCallbackGoto( wxCommandEvent & );
+	void OnFormTest( wxCommandEvent & );
 	void OnCommand( wxCommandEvent & );
 	void OnFormSelectObject( wxUIFormEvent & );
 	void LoadFormList( const wxString &sel = wxEmptyString );
@@ -54,7 +57,7 @@ private:
 	wxExtTextCtrl *m_varName;
 	wxChoice *m_varType;
 	wxExtTextCtrl *m_varLabel, *m_varUnits, *m_varGroup, *m_varIndexLabels, *m_varDefaultValue;
-	wxCheckBox *m_varFlagHideLabels, *m_varFlagParametric, *m_varFlagIndicator;
+	wxCheckBox *m_varFlagHideLabels, *m_varFlagParametric, *m_varFlagIndicator, *m_varFlagCalculated;
 
 	VarInfo *m_curVar;
 	void FormToVarInfo( VarInfo * );

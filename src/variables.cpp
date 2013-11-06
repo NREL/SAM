@@ -1,4 +1,6 @@
 #include <wx/datstrm.h>
+#include <wx/wfstream.h>
+#include <wx/ffile.h>
 #include <wx/tokenzr.h>
 
 #include "variables.h"
@@ -484,6 +486,13 @@ VarDatabase::VarDatabase()
 VarDatabase::~VarDatabase()
 {
 	Clear();
+}
+
+bool VarDatabase::LoadFile( const wxString &file )
+{
+	wxFFileInputStream ff( file );
+	if ( !ff.IsOk() ) return false;
+	return Read( ff );
 }
 
 void VarDatabase::Write( wxOutputStream &os )
