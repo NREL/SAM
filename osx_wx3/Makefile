@@ -19,8 +19,8 @@ OBJECTS = ide.o \
 	casewin.o \
 	case.o \
 	main.o \
-	equation.o \
-	uiview.o \
+	equations.o \
+	inputpage.o \
 	uiwidgets.o \
 	variables.o \
 	project.o \
