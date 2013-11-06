@@ -13,16 +13,6 @@ void RegisterInputPageObjects();
 
 class InputPageBase;
 
-class VarTableEnv : public lk::env_t
-{
-	VarTable *m_vtb;
-public:
-	VarTableEnv( VarTable *vt );
-	virtual ~VarTableEnv( );
-	virtual bool special_set( const lk_string &name, lk::vardata_t &val );
-	virtual bool special_get( const lk_string &name, lk::vardata_t &val );
-};
-
 class CallbackContext
 {
 	InputPageBase *m_inputPage;
@@ -70,7 +60,7 @@ public:
 	virtual VarDatabase &GetVariables() = 0;
 	virtual EqnDatabase &GetEquations() = 0;
 	virtual CallbackDatabase &GetCallbacks() = 0;
-	virtual VarTable &GetVarTable() = 0;
+	virtual VarTable &GetValues() = 0;
 	virtual void OnInputChanged( wxUIObject *obj ) = 0;
 	
 	// data exchange from UI object to data value and vice versa
