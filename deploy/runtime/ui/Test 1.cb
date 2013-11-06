@@ -1,0 +1,7 @@
+on_load{'Test 1'} = define() {
+	a = 214414.2;
+};
+
+on_change('chk_hello_1') = define() {
+	msgbox('hello checkbox world!');
+};
