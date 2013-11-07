@@ -36,6 +36,21 @@ wxArrayString VarTable::ListAll( std::vector<VarValue*> *vals )
 	return list;
 }
 
+VarValue *VarTable::Create( const wxString &name )
+{
+	VarValue *vv = 0;
+	iterator it = find( name );
+	if ( it == end() )
+	{
+		vv = new VarValue;
+		(*this)[ name ] = vv;
+	}
+	else
+		vv = it->second;
+
+	return vv;
+}
+
 VarValue *VarTable::Set( const wxString &name, const VarValue &val )
 {
 	VarValue *vv = 0;
@@ -155,6 +170,11 @@ VarValue::VarValue( const VarTable &t )
 	m_tab.Copy( t );
 }
 
+VarValue::VarValue( const VarValue &vv )
+{
+	Copy( vv );
+}
+
 VarValue::~VarValue()
 {
 	// nothing to do 
@@ -168,10 +188,13 @@ VarValue &VarValue::operator=( const VarValue &rhs )
 
 void VarValue::Copy( const VarValue &rhs )
 {
-	m_type = rhs.m_type;
-	m_str = rhs.m_str;
-	m_val = rhs.m_val;
-	m_tab = rhs.m_tab;
+	if ( this != &rhs )
+	{
+		m_type = rhs.m_type;
+		m_str = rhs.m_str;
+		m_val = rhs.m_val;
+		m_tab = rhs.m_tab;
+	}
 }
 
 

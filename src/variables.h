@@ -25,6 +25,7 @@ public:
 
 	virtual void clear();
 	wxArrayString ListAll( std::vector<VarValue*> *vals = 0 );
+	VarValue *Create( const wxString &name );
 	VarValue *Set( const wxString &name, const VarValue &val );
 	VarValue *Get( const wxString &name );
 
@@ -44,14 +45,15 @@ public:
 class VarValue
 {
 public:
-	VarValue();
-	VarValue( int i );
-	VarValue( float f );
-	VarValue( float *arr, size_t n );
-	VarValue( float *mat, size_t r, size_t c );
-	VarValue( const matrix_t<float> &m );
-	VarValue( const wxString &s );
-	VarValue( const VarTable &t );
+	explicit VarValue();
+	explicit VarValue( int i );
+	explicit VarValue( float f );
+	explicit VarValue( float *arr, size_t n );
+	explicit VarValue( float *mat, size_t r, size_t c );
+	explicit VarValue( const matrix_t<float> &m );
+	explicit VarValue( const wxString &s );
+	explicit VarValue( const VarTable &t );
+	explicit VarValue( const VarValue &vv );
 	virtual ~VarValue();
 
 	VarValue &operator=( const VarValue &rhs );
