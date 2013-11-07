@@ -1,4 +1,5 @@
 #include <wx/tokenzr.h>
+#include <wx/log.h>
 
 #include <lk_parse.h>
 #include <lk_env.h>
@@ -136,13 +137,17 @@ bool EqnDatabase::Parse( lk::input_base &in, wxArrayString *errors )
 					equation = value.func()->right;
 				}
 
-				if ( name.Left(6) != "$MIMO$" )
+				bool result_is_output = false;
+				if ( name.Left(6) != "$MIMO$" && outputs.Index( name ) == wxNOT_FOUND )
+				{
+					result_is_output = true;
 					outputs.Add( name );
+				}
 
 				if ( inputs.size() > 0 && outputs.size() > 0 && equation != 0 )
 				{
 					// now save the equation in the database
-					AddEquation( inputs, outputs, equation );
+					AddEquation( inputs, outputs, equation, result_is_output );
 					neqns_found++;
 				}
 			}
@@ -189,13 +194,14 @@ void EqnDatabase::Clear()
 }
 
 
-bool EqnDatabase::AddEquation( const wxArrayString &inputs, const wxArrayString &outputs, lk::node_t *tree )
+bool EqnDatabase::AddEquation( const wxArrayString &inputs, const wxArrayString &outputs, lk::node_t *tree, bool result_is_output )
 {
 
 	eqn_data *ed = new eqn_data;
 	ed->tree = tree;
 	ed->inputs = inputs;
 	ed->outputs = outputs;
+	ed->result_is_output = result_is_output;
 	m_equations.push_back( ed );
 
 	for( size_t i=0;i<ed->outputs.size();i++ )
@@ -294,23 +300,23 @@ VarTableScriptEnvironment::~VarTableScriptEnvironment( ) { /* nothing to do */ }
 
 bool VarTableScriptEnvironment::special_set( const lk_string &name, lk::vardata_t &val )
 {
+	bool ok = false;
 	if ( VarValue *vv = m_vars->Get( name ) )
-		return vv->Read( val );
-	else return false;
+		ok = vv->Read( val );
+
+	wxLogStatus("VTSE->special_set( " + name + " ) " + wxString( ok?"ok":"fail") );
+	return ok;
 }
 
 bool VarTableScriptEnvironment::special_get( const lk_string &name, lk::vardata_t &val )
 {
+	bool ok = false;
 	if ( VarValue *vv = m_vars->Get( name ) )
-		return vv->Write( val );
-	else return false;
+		ok = vv->Write( val );
+	
+	wxLogStatus("VTSE->special_get( " + name + " ) " + wxString( ok?"ok":"fail") );
+	return ok;
 }
-
-
-
-
-
-
 
 
 EqnEvaluator::EqnEvaluator( VarTable *vars, EqnDatabase *db )
@@ -397,7 +403,7 @@ int EqnEvaluator::Calculate( )
 				{
 					for ( std::vector<lk_string>::iterator it = lkerrors.begin();
 						it != lkerrors.end(); ++it )
-						m_errors.Add( "lk engine: " + *it );
+						m_errors.Add( "equation engine: " + *it );
 
 					eval_ok = false;
 				}
@@ -408,6 +414,13 @@ int EqnEvaluator::Calculate( )
 					// mark this equation as evaluated
 					m_status[i] = OK;
 					nevals++;
+
+					// for equations with a single output (not MIMOs)
+					// the result of expression evaluation is
+					// the value of the single output variable 
+					// (i.e. via the 'return' statement)
+					if ( cur_eqn->result_is_output && cur_eqn->outputs.size() == 1 )
+						lkenv.special_set( cur_eqn->outputs[0], lkresult.deref() );
 
 					// all inputs and outputs have been set
 					// mark all outputs as calculated also (so we don't 
@@ -462,7 +475,7 @@ size_t EqnEvaluator::MarkAffectedEquations( const wxString &var )
 	int naffected = affectlist->Count();
 	for (size_t i=0;i<affectlist->Count();i++)
 	{
-		int index = m_edb->GetEquationIndex( var );
+		int index = m_edb->GetEquationIndex( affectlist->Item(i) );
 		if ( index >= 0 && index < (int)m_status.size() )
 			m_status[ index ] = INVALID;
 

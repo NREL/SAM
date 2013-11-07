@@ -36,7 +36,7 @@ wxArrayString VarTable::ListAll( std::vector<VarValue*> *vals )
 	return list;
 }
 
-VarValue *VarTable::Create( const wxString &name )
+VarValue *VarTable::Create( const wxString &name, int type )
 {
 	VarValue *vv = 0;
 	iterator it = find( name );
@@ -47,6 +47,8 @@ VarValue *VarTable::Create( const wxString &name )
 	}
 	else
 		vv = it->second;
+
+	vv->SetType( type );
 
 	return vv;
 }
@@ -463,7 +465,7 @@ bool VarValue::Write( lk::vardata_t &val )
 		break;
 	}
 
-	return true;
+	return m_type != VV_INVALID;
 }
 
 void VarInfo::Write( wxOutputStream &os )

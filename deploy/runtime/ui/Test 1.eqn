@@ -1,4 +1,4 @@
-equations{'output_1'} = define() { return ${input_1}*${input_2} + ${in_4}; };
+equations{'output_1'} = define() { return ${input_1}*${input_2} + ${input_4}; };
 equations{'output_2'} = define() {
 	return ${output_1}-${input_2};
 };
