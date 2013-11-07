@@ -15,6 +15,13 @@
 class VarValue;
 class VarDatabase;
 
+#define VV_INVALID 0
+#define VV_NUMBER 1
+#define VV_ARRAY 2
+#define VV_MATRIX 3
+#define VV_STRING 4
+#define VV_TABLE 5
+
 typedef unordered_map<wxString, VarValue*, wxStringHash, wxStringEqual> VarTableBase;
 
 class VarTable : public VarTableBase
@@ -25,7 +32,7 @@ public:
 
 	virtual void clear();
 	wxArrayString ListAll( std::vector<VarValue*> *vals = 0 );
-	VarValue *Create( const wxString &name );
+	VarValue *Create( const wxString &name, int type = VV_INVALID );
 	VarValue *Set( const wxString &name, const VarValue &val );
 	VarValue *Get( const wxString &name );
 
@@ -34,13 +41,6 @@ public:
 	bool Read( wxInputStream & );
 		
 };
-
-#define VV_INVALID 0
-#define VV_NUMBER 1
-#define VV_ARRAY 2
-#define VV_MATRIX 3
-#define VV_STRING 4
-#define VV_TABLE 5
 
 class VarValue
 {

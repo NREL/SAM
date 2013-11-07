@@ -129,7 +129,7 @@ lk::node_t *CallbackDatabase::Lookup( const wxString &method_name, const wxStrin
 
 	if (!cbvar || cbvar->type() != lk::vardata_t::HASH )
 	{
-		wxLogStatus("CallbackDatabase::Invoke: could not find " + method_name + " variable or not a hash");
+		//wxLogStatus("CallbackDatabase::Invoke: could not find " + method_name + " variable or not a hash");
 		return 0;
 	}
 
@@ -138,7 +138,7 @@ lk::node_t *CallbackDatabase::Lookup( const wxString &method_name, const wxStrin
 		|| cbref->type() != lk::vardata_t::FUNCTION
 		|| cbref->deref().func() == 0 )
 	{
-		wxLogStatus("CallbackDatabase::Invoke: could not find function entry for '%s'", (const char*)obj_name.c_str() );
+		// wxLogStatus("CallbackDatabase::Invoke: could not find function entry for '%s'", (const char*)obj_name.c_str() );
 		return 0;
 	}
 	
