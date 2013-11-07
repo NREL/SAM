@@ -28,7 +28,7 @@ public:
 	lk::node_t *GetEquation( const wxString &var, wxArrayString *inputs, wxArrayString *outputs );
 	wxArrayString *GetAffectedVariables( const wxString &var );
 
-	struct eqn_data { lk::node_t *tree; wxArrayString inputs, outputs; };
+	struct eqn_data { lk::node_t *tree; wxArrayString inputs, outputs; bool result_is_output; };
 	
 	std::vector<eqn_data*> GetEquations() { return m_equations; }
 	eqn_data *GetEquationData( const wxString &var );
@@ -39,7 +39,7 @@ private:
 
 	void ScanParseTree( lk::node_t *root, wxArrayString *inputs, wxArrayString *outputs, bool in_assign_lhs = false );
 	
-	bool AddEquation( const wxArrayString &inputs, const wxArrayString &outputs, lk::node_t *tree );
+	bool AddEquation( const wxArrayString &inputs, const wxArrayString &outputs, lk::node_t *tree, bool result_is_output );
 
 	typedef unordered_map< wxString, wxArrayString*, wxStringHash, wxStringEqual > arraystring_hash_t;
 	arraystring_hash_t m_affected;

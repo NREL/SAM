@@ -400,7 +400,7 @@ public:
 		m_vals.clear();
 		wxArrayString list = m_vars.ListAll();
 		for( size_t i=0;i<list.size();i++ )
-			m_vals.Set( list[i], m_vars.InternalDefaultValue( list[i] ) );
+			m_vals.Create( list[i], m_vars.Type( list[i] ) );
 
 		Initialize();
 		
@@ -414,23 +414,42 @@ public:
 
 	virtual void OnInputChanged( wxUIObject *obj )
 	{
+		wxLogStatus("Test Form >> input changed: " + obj->GetName() );
 		if( VarValue *vval = m_vals.Get( obj->GetName() ) )
 		{
 			// store the value
-			DataExchange( obj, *vval, OBJ_TO_VAR );
+			if ( DataExchange( obj, *vval, OBJ_TO_VAR ) )
+				wxLogStatus("Test Form >> data exchange success: " + obj->GetName() );
+
 			EqnEvaluator eval( &m_vals, &m_eqns );
-			size_t n = eval.Changed( obj->GetName() );
+			int n = eval.Changed( obj->GetName() );
 			if ( n > 0 )
 			{
+				wxLogStatus("Test Form >> %d values updated by dependent equations ", (int)n );
 				wxArrayString list = eval.GetUpdated();
 				for( size_t i=0;i<list.size();i++ )
 				{
+					wxLogStatus("Test Form >> " + list[i] + " dependent variable has an updated value");
 					VarValue *upd = m_vals.Get( list[i] );
 					wxUIObject *obj = Find( list[i] );
 					if ( upd && obj )
-						DataExchange( obj, *upd, VAR_TO_OBJ );
-				}
+					{
 
+						if ( DataExchange( obj, *upd, VAR_TO_OBJ ) )
+							wxLogStatus("Test Form >> data exchange success to update ui for " + list[i]);
+					}
+				}
+			}
+			else if ( n < 0 )
+			{
+				wxLogStatus("Test Form >> equation evaluation error with code %d", n );
+				wxArrayString errors = eval.GetErrors();
+				for( size_t i=0;i<errors.size();i++ )
+					wxLogStatus( "Test Form >> " + errors[i] );
+			}
+			else
+			{
+				wxLogStatus("Test Form >> no dependent equations detected for input " + obj->GetName() );
 			}
 		}
 
