@@ -1,6 +1,7 @@
 #include <wx/dcbuffer.h>
 #include <wx/wfstream.h>
 #include <wx/ffile.h>
+#include <wx/filename.h>
 
 #include <wex/numeric.h>
 #include <wex/exttext.h>
@@ -158,6 +159,59 @@ lk::node_t *CallbackDatabase::Lookup( const wxString &method_name, const wxStrin
 	return p_define->right;
 }
 
+InputPageData::InputPageData() { }
+InputPageData::~InputPageData() { }
+
+bool InputPageData::LoadFile( const wxString &file )
+{
+	Detach();
+	wxFFileInputStream is( file );
+	if ( is.IsOk() && wxUIFormData::Read( is ) ) return true;
+	else return false;
+}
+
+
+InputPageDatabase::InputPageDatabase()
+{
+}
+
+InputPageDatabase::~InputPageDatabase()
+{
+	Clear();
+}
+
+void InputPageDatabase::Clear()
+{
+	for ( InputPageDataHash::iterator it = m_hash.begin();
+		it != m_hash.end();
+		++it )
+		delete (*it).second;
+
+	m_hash.clear();
+}
+
+bool InputPageDatabase::LoadFile( const wxString &file )
+{
+	wxFileName ff(file);
+	wxString name( ff.GetName() );
+
+	if ( Lookup( name ) != 0 ) return true;
+
+	InputPageData *pd = new InputPageData;
+	bool ok =  pd->LoadFile( SamApp::GetRuntimePath() + "/ui/" + name + ".ui" );
+	
+	if ( ok ) m_hash[ name ] = pd;
+	else delete pd;
+
+	return ok;
+}
+
+InputPageData *InputPageDatabase::Lookup( const wxString &name )
+{
+	InputPageDataHash::iterator it = m_hash.find( name );
+	return ( it != m_hash.end() ) ? it->second : NULL;
+}
+
 
 BEGIN_EVENT_TABLE( InputPageBase, wxPanel )
 	EVT_BUTTON( wxID_ANY, InputPageBase::OnNativeEvent )
@@ -174,11 +228,23 @@ BEGIN_EVENT_TABLE( InputPageBase, wxPanel )
 	EVT_PAINT( InputPageBase::OnPaint )
 END_EVENT_TABLE()
 
-InputPageBase::InputPageBase( wxWindow *parent, int id, const wxPoint &pos,
+InputPageBase::InputPageBase( wxWindow *parent, InputPageData *form, int id, const wxPoint &pos,
 	const wxSize &size )
-	: wxPanel( parent, id, pos, size, wxTAB_TRAVERSAL|wxCLIP_CHILDREN )
+	: wxPanel( parent, id, pos, size, wxTAB_TRAVERSAL|wxCLIP_CHILDREN ),
+	m_formData( form )
 {
 	SetBackgroundStyle( wxBG_STYLE_PAINT );
+
+	m_formDataOwned = false;
+
+	if ( m_formData == 0 )
+	{
+		m_formData = new InputPageData;
+		m_formDataOwned = true;
+	}
+
+	m_formData->Attach( this );
+	SetClientSize( m_formData->GetSize() );
 }
 
 InputPageBase::~InputPageBase()
@@ -187,26 +253,23 @@ InputPageBase::~InputPageBase()
 	// destructors don't get mixed up twice deleting "owned"
 	// native objects.
 
-	Detach();
+	m_formData->Detach();
+
+	if ( m_formDataOwned )
+		delete m_formData;
 }
 
-
-bool InputPageBase::Load( const wxString &name )
+bool InputPageBase::LoadFile( const wxString &file )
 {
-	wxString fui = SamApp::GetRuntimePath() + "/ui/" + name + ".ui";
-	Detach();
-	wxFFileInputStream is( fui );
-	if ( is.IsOk() && wxUIFormData::Read( is ) )
+	if ( m_formData->LoadFile( file ) )
 	{
-		wxUIFormData::SetName( name );
-		Attach( this ); // creates native objects
-		SetClientSize( wxUIFormData::GetSize() ); // resize self to specified form data
+		m_formData->Attach( this );
+		SetClientSize( m_formData->GetSize() ); // resize self to specified form data
 		return true;
 	}
-	else
-		return false;
-
+	return false;
 }
+
 
 static wxColour UIColorIndicatorFore(60,60,60);
 static wxColour UIColorIndicatorBack(230,230,230);
@@ -217,7 +280,7 @@ void InputPageBase::Initialize()
 {
 	VarDatabase &vdb = GetVariables();
 
-	std::vector<wxUIObject*> objs = GetObjects();
+	std::vector<wxUIObject*> objs = m_formData->GetObjects();
 	for( size_t i=0;i<objs.size();i++ )
 	{
 		wxString type = objs[i]->GetTypeName();
@@ -255,11 +318,11 @@ void InputPageBase::Initialize()
 
 
 	// lookup and run any callback functions.
-	if ( lk::node_t *root = GetCallbacks().Lookup( "on_load", wxUIFormData::GetName() ) )
+	if ( lk::node_t *root = GetCallbacks().Lookup( "on_load", m_formData->GetName() ) )
 	{
-		CallbackContext cbcxt( this, &GetValues(), root, wxUIFormData::GetName() + "->on_load" );
+		CallbackContext cbcxt( this, &GetValues(), root, m_formData->GetName() + "->on_load" );
 		if ( cbcxt.Invoke() )
-			wxLogStatus("callback script " + wxUIFormData::GetName() + "->on_load succeeded");
+			wxLogStatus("callback script " + m_formData->GetName() + "->on_load succeeded");
 	}
 }
 
@@ -278,7 +341,7 @@ void InputPageBase::OnPaint( wxPaintEvent & )
 	VarDatabase &vdb = GetVariables();
 
 	wxRect rct;
-	std::vector<wxUIObject*> objs = GetObjects();
+	std::vector<wxUIObject*> objs = m_formData->GetObjects();
 	for ( int i=(int)objs.size()-1;i>=0;i-- )
 	{
 		// draw any non-native objects
@@ -319,7 +382,7 @@ void InputPageBase::OnPaint( wxPaintEvent & )
 void InputPageBase::OnNativeEvent( wxCommandEvent &evt )
 {
 	wxUIObject *obj = 0;
-	std::vector<wxUIObject*> objs = GetObjects();
+	std::vector<wxUIObject*> objs = m_formData->GetObjects();
 	for( size_t i=0;i<objs.size();i++ )
 	{
 		if ( evt.GetEventObject() == objs[i]->GetNative() )

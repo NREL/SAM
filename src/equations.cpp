@@ -148,6 +148,7 @@ bool EqnDatabase::Parse( lk::input_base &in, wxArrayString *errors )
 				{
 					// now save the equation in the database
 					AddEquation( inputs, outputs, equation, result_is_output );
+
 					neqns_found++;
 				}
 			}
@@ -165,11 +166,7 @@ bool EqnDatabase::Parse( lk::input_base &in, wxArrayString *errors )
 
 
 void EqnDatabase::Clear()
-{
-	// clear the equation fast lookup tables
-	m_eqnLookup.clear();
-	m_eqnIndices.clear();
-	
+{	
 	// delete the affected variable table
 	for ( arraystring_hash_t::iterator it = m_affected.begin();
 		it != m_affected.end();
@@ -178,9 +175,8 @@ void EqnDatabase::Clear()
 
 	m_affected.clear();
 
-	
 	// delete the equations
-	for ( std::vector<eqn_data*>::iterator it = m_equations.begin();
+	for ( std::vector<EqnData*>::iterator it = m_equations.begin();
 		it != m_equations.end();
 		++it )
 		delete (*it); // don't delete the tree here: just a reference and will be deleted below.
@@ -197,7 +193,7 @@ void EqnDatabase::Clear()
 bool EqnDatabase::AddEquation( const wxArrayString &inputs, const wxArrayString &outputs, lk::node_t *tree, bool result_is_output )
 {
 
-	eqn_data *ed = new eqn_data;
+	EqnData *ed = new EqnData;
 	ed->tree = tree;
 	ed->inputs = inputs;
 	ed->outputs = outputs;
@@ -207,11 +203,7 @@ bool EqnDatabase::AddEquation( const wxArrayString &inputs, const wxArrayString 
 	for( size_t i=0;i<ed->outputs.size();i++ )
 	{
 		wxString output = ed->outputs[i];
-
-		// update fast lookup
-		m_eqnLookup[ output ] = ed;
-		m_eqnIndices[ output ] = m_equations.size()-1;
-
+		
 		// updated affected variable table
 		// this is hash table that stores a list of
 		// all the variables affected when a variable changes
@@ -250,8 +242,52 @@ bool EqnDatabase::AddEquation( const wxArrayString &inputs, const wxArrayString 
 	return true;
 }
 
+wxArrayString *EqnDatabase::GetAffectedVariables( const wxString &var )
+{
+	arraystring_hash_t::iterator it = m_affected.find( var );
+	if ( it != m_affected.end() ) return (it->second);
+	else return 0;
+}
 
-lk::node_t *EqnDatabase::GetEquation( const wxString &var, wxArrayString *inputs, wxArrayString *outputs )
+EqnFastLookup::EqnFastLookup( EqnDatabase *db )
+	: m_db( db )
+{
+}
+
+void EqnFastLookup::Add( EqnData *e )
+{
+	m_eqnList.push_back( e );
+
+	for( size_t i=0;i<e->outputs.size();i++)
+	{
+		wxString &output = e->outputs[i];
+
+		// update fast lookup
+		m_eqnLookup[ output ] = e;
+		m_eqnIndices[ output ] = m_eqnList.size()-1;
+	}
+}
+
+void EqnFastLookup::Add( std::vector<EqnData*> &list )
+{
+	for( size_t i=0;i<list.size();i++ )
+		Add( list[i] );
+}
+
+void EqnFastLookup::Clear()
+{
+	// clear the equation fast lookup tables
+	m_eqnLookup.clear();
+	m_eqnIndices.clear();
+	
+}
+
+wxArrayString *EqnFastLookup::GetAffectedVariables( const wxString &var )
+{
+	return m_db->GetAffectedVariables( var );
+}
+
+lk::node_t *EqnFastLookup::GetEquation( const wxString &var, wxArrayString *inputs, wxArrayString *outputs )
 {
 	eqndata_hash_t::iterator it = m_eqnLookup.find( var );
 	if ( it == m_eqnLookup.end() ) return 0;
@@ -261,25 +297,18 @@ lk::node_t *EqnDatabase::GetEquation( const wxString &var, wxArrayString *inputs
 	return it->second->tree;
 }
 
-EqnDatabase::eqn_data *EqnDatabase::GetEquationData( const wxString &var )
+EqnData *EqnFastLookup::GetEquationData( const wxString &var )
 {
 	eqndata_hash_t::iterator it = m_eqnLookup.find( var );
 	if ( it == m_eqnLookup.end() ) return 0;
 	return it->second;
 }
 
-int EqnDatabase::GetEquationIndex( const wxString &var )
+int EqnFastLookup::GetEquationIndex( const wxString &var )
 {
 	eqnindex_hash_t::iterator it = m_eqnIndices.find( var );
 	if ( it == m_eqnIndices.end() ) return -1;
 	return (int) it->second;
-}
-
-wxArrayString *EqnDatabase::GetAffectedVariables( const wxString &var )
-{
-	arraystring_hash_t::iterator it = m_affected.find( var );
-	if ( it != m_affected.end() ) return (it->second);
-	else return 0;
 }
 
 
@@ -319,15 +348,15 @@ bool VarTableScriptEnvironment::special_get( const lk_string &name, lk::vardata_
 }
 
 
-EqnEvaluator::EqnEvaluator( VarTable *vars, EqnDatabase *db )
-	: m_vars( vars ), m_edb( db )
+EqnEvaluator::EqnEvaluator( VarTable &vars, EqnFastLookup &fl )
+	: m_vars( vars ), m_efl( fl )
 {
 	Reset();
 }
 
 void EqnEvaluator::Reset()
 {
-	m_eqns = m_edb->GetEquations();
+	m_eqns = m_efl.GetEquations();
 	m_status.resize( m_eqns.size(), INVALID );
 	m_errors.Clear();
 	m_updated.Clear();
@@ -366,7 +395,7 @@ int EqnEvaluator::Calculate( )
 		// pass through all the equations in the list
 		for( size_t i=0;i<m_status.size();i++ )
 		{
-			EqnDatabase::eqn_data *cur_eqn = m_eqns[i];
+			EqnData *cur_eqn = m_eqns[i];
 
 			// skip equations that have already been evaluated
 			if ( m_status[i] == OK )
@@ -378,7 +407,7 @@ int EqnEvaluator::Calculate( )
 			bool can_eval = true;
 			for( size_t j=0;j<inputs.Count();j++ )
 			{
-				int idx = m_edb->GetEquationIndex( inputs[j] );
+				int idx = m_efl.GetEquationIndex( inputs[j] );
 				if ( idx >= 0 && idx < m_status.size() 
 					&& m_status[idx] == INVALID )
 				{
@@ -396,7 +425,7 @@ int EqnEvaluator::Calculate( )
 				std::vector<lk_string> lkerrors;
 				unsigned int lkctl = lk::CTL_NONE;
 				lk::vardata_t lkresult;
-				VarTableScriptEnvironment lkenv( m_vars );
+				VarTableScriptEnvironment lkenv( &m_vars );
 
 				// execute the parse tree, check for errors
 				if ( !lk::eval( cur_eqn->tree, &lkenv, lkerrors, lkresult, 0, lkctl, 0, 0 ) )
@@ -430,7 +459,7 @@ int EqnEvaluator::Calculate( )
 					{
 						m_updated.Add( out[j] );
 						
-						int idx = m_edb->GetEquationIndex( out[j] );
+						int idx = m_efl.GetEquationIndex( out[j] );
 						if ( idx >= 0 && idx < m_status.size() )
 						{
 							// mark equation as evaluated
@@ -456,7 +485,7 @@ int EqnEvaluator::Calculate( )
 			m_errors.Add( "no variables calculated in a single iteration, cannot make progress!" );
 			for (size_t i=0;i<remaining.size();i++)
 			{
-				EqnDatabase::eqn_data *eqn = m_eqns[ remaining[i] ];
+				EqnData *eqn = m_eqns[ remaining[i] ];
 				m_errors.Add("eqn not evaluated: [" + wxJoin(eqn->outputs, ',') + "] = f( " + wxJoin(eqn->inputs,',') + ")");
 			}
 		
@@ -470,12 +499,12 @@ int EqnEvaluator::Calculate( )
 
 size_t EqnEvaluator::MarkAffectedEquations( const wxString &var )
 {
-	wxArrayString *affectlist = m_edb->GetAffectedVariables( var );	
+	wxArrayString *affectlist = m_efl.GetAffectedVariables( var );	
 	if (!affectlist) return 0;
 	int naffected = affectlist->Count();
 	for (size_t i=0;i<affectlist->Count();i++)
 	{
-		int index = m_edb->GetEquationIndex( affectlist->Item(i) );
+		int index = m_efl.GetEquationIndex( affectlist->Item(i) );
 		if ( index >= 0 && index < (int)m_status.size() )
 			m_status[ index ] = INVALID;
 

@@ -25,6 +25,22 @@ void VarTable::clear()
 	VarTableBase::clear();
 }
 
+void VarTable::Delete( const wxString &name )
+{
+	iterator it = find(name);
+	if ( it != end() )
+	{
+		delete it->second;
+		erase( it );
+	}
+}
+
+void VarTable::Delete( const wxArrayString &names )
+{
+	for( size_t i=0;i<names.size();i++ )
+		Delete( names[i] );
+}
+
 wxArrayString VarTable::ListAll( std::vector<VarValue*> *vals )
 {
 	wxArrayString list;
@@ -510,7 +526,7 @@ VarDatabase::VarDatabase()
 
 VarDatabase::~VarDatabase()
 {
-	Clear();
+	clear();
 }
 
 bool VarDatabase::LoadFile( const wxString &file )
@@ -525,9 +541,9 @@ void VarDatabase::Write( wxOutputStream &os )
 	wxDataOutputStream out(os);
 	out.Write8( 0xf8 );
 	out.Write8( 1 );
-	out.Write32( m_hash.size() );
-	for( varinfo_hash_t::iterator it = m_hash.begin();
-		it != m_hash.end();
+	out.Write32( size() );
+	for( VarInfoHash::iterator it = begin();
+		it != end();
 		++it )
 	{
 		out.WriteString( it->first );
@@ -539,7 +555,6 @@ void VarDatabase::Write( wxOutputStream &os )
 bool VarDatabase::Read( wxInputStream &is )
 {
 	wxDataInputStream in(is);
-	Clear();
 	wxUint8 code = in.Read8();
 	in.Read8();
 	size_t n = in.Read32();
@@ -547,9 +562,15 @@ bool VarDatabase::Read( wxInputStream &is )
 	for( size_t i=0;i<n;i++ )
 	{
 		wxString name = in.ReadString();
-		VarInfo *vv = new VarInfo;
+		VarInfo *vv = 0;
+
+		VarInfoHash::iterator it = find( name );
+		if ( it != end() ) vv = it->second;
+		else vv = new VarInfo;
+
 		ok = ok && vv->Read( is );
-		m_hash[name] = vv;
+		
+		(*this)[name] = vv;
 	}
 	if ( !ok ) return false;
 
@@ -562,11 +583,11 @@ VarInfo *VarDatabase::Add( const wxString &name, int type,
 	unsigned long flags, const VarValue &defval )
 {
 	VarInfo *vv = 0;
-	varinfo_hash_t::iterator it = m_hash.find( name );
-	if ( it == m_hash.end() )
+	VarInfoHash::iterator it = find( name );
+	if ( it == end() )
 	{
 		vv = new VarInfo;
-		m_hash[name] = vv;
+		(*this)[name] = vv;
 	}
 	else
 		vv = it->second;
@@ -585,11 +606,11 @@ VarInfo *VarDatabase::Add( const wxString &name, int type,
 
 bool VarDatabase::Delete( const wxString &name )
 {
-	varinfo_hash_t::iterator it = m_hash.find( name );
-	if ( it != m_hash.end() )
+	VarInfoHash::iterator it = find( name );
+	if ( it != end() )
 	{
 		delete it->second;
-		m_hash.erase( it );
+		erase( it );
 		return true;
 	}
 	else return false;
@@ -597,83 +618,117 @@ bool VarDatabase::Delete( const wxString &name )
 
 bool VarDatabase::Rename( const wxString &old_name, const wxString &new_name )
 {
-	varinfo_hash_t::iterator it = m_hash.find( old_name );
-	if ( it == m_hash.end() ) return false;
+	VarInfoHash::iterator it = find( old_name );
+	if ( it == end() ) return false;
 
-	if ( m_hash.find( new_name ) != m_hash.end() ) return false;
+	if ( find( new_name ) != end() ) return false;
 
 	VarInfo *vv = it->second;
-	m_hash.erase( it );
+	erase( it );
 	
-	m_hash[ new_name ] = vv;
+	(*this)[ new_name ] = vv;
 	return true;
 }
 
-void VarDatabase::Clear()
+void VarDatabase::clear()
 {
 	// delete the variable info
-	for ( varinfo_hash_t::iterator it = m_hash.begin();
-		it != m_hash.end();
+	for ( VarInfoHash::iterator it = begin();
+		it != end();
 		++it )
 		delete it->second;
 
-	m_hash.clear();
+	VarInfoHash::clear();
 }
 
-wxArrayString VarDatabase::ListAll()
+
+
+
+VarInfoLookup::VarInfoLookup()
+{
+	/* nothing to do */
+}
+
+VarInfoLookup::~VarInfoLookup()
+{
+	/* nothing to do */
+}
+
+void VarInfoLookup::Add( VarInfo *vv )
+{
+	if ( vv == 0 ) return;
+
+	VarInfoHash::iterator it = find( vv->Name );
+	if ( it == end() )
+		(*this)[vv->Name] = vv;
+	else
+	{
+		delete it->second;
+		it->second = vv;
+	}
+}
+
+void VarInfoLookup::Add( VarInfoLookup *vil )
+{
+	wxArrayString names = vil->ListAll();
+	for( size_t i=0;i<names.size(); i++ )
+		Add( vil->Lookup( names[i] ) );
+}
+
+wxArrayString VarInfoLookup::ListAll()
 {
 	wxArrayString list;
-	for( varinfo_hash_t::iterator it = m_hash.begin(); it != m_hash.end(); ++it )
+	for( VarInfoHash::iterator it = begin(); it != end(); ++it )
 		list.Add( it->first );
 	return list;
 }
 
-int VarDatabase::Type( const wxString &name )
+int VarInfoLookup::Type( const wxString &name )
 {
 	if ( VarInfo *v = Lookup(name) ) return v->Type;
 	else return VV_INVALID;
 }
 
-wxString VarDatabase::Label( const wxString &name )
+wxString VarInfoLookup::Label( const wxString &name )
 {
 	if ( VarInfo *v = Lookup(name) ) return v->Label;
 	else return "<not found>";
 }
 
-wxString VarDatabase::Group( const wxString &name )
+wxString VarInfoLookup::Group( const wxString &name )
 {
 	if ( VarInfo *v = Lookup(name) ) return v->Group;
 	else return wxEmptyString;
 }
 
-wxString VarDatabase::Units( const wxString &name )
+wxString VarInfoLookup::Units( const wxString &name )
 {
 	if ( VarInfo *v = Lookup(name) ) return v->Units;
 	else return wxEmptyString;
 }
 
-wxArrayString VarDatabase::IndexLabels( const wxString &name )
+wxArrayString VarInfoLookup::IndexLabels( const wxString &name )
 {
 	if ( VarInfo *v = Lookup(name) ) return v->IndexLabels;
 	else return wxArrayString();
 }
 
-unsigned long VarDatabase::Flags( const wxString &name )
+unsigned long VarInfoLookup::Flags( const wxString &name )
 {
 	if ( VarInfo *v = Lookup(name) ) return v->Flags;
 	else return 0;
 }
 
-VarValue &VarDatabase::InternalDefaultValue( const wxString &name )
+VarValue &VarInfoLookup::InternalDefaultValue( const wxString &name )
 {
 	if ( VarInfo *v = Lookup(name) ) return v->DefaultValue;
 	else return m_invVal;
 }
 
-VarInfo *VarDatabase::Lookup( const wxString &name )
+VarInfo *VarInfoLookup::Lookup( const wxString &name )
 {
-	varinfo_hash_t::iterator it = m_hash.find(name);
-	if ( it == m_hash.end() ) return 0;
+	VarInfoHash::iterator it = find(name);
+	if ( it == end() ) return 0;
 	else return it->second;
 }
 

@@ -11,20 +11,6 @@
 
 void RegisterInputPageObjects();
 
-class InputPageBase;
-
-class CallbackContext
-{
-	InputPageBase *m_inputPage;
-	VarTable *m_varTable;
-	lk::node_t *m_root;
-	wxString m_desc;
-public:
-	CallbackContext( InputPageBase *ip, VarTable *vt, lk::node_t *root, const wxString &desc = wxEmptyString );	
-	InputPageBase *GetInputPage() { return m_inputPage; }
-	VarTable *GetVarTable() { return m_varTable; }
-	virtual bool Invoke(  );
-};
 
 class CallbackDatabase
 {
@@ -43,17 +29,59 @@ protected:
 	lk::env_t m_cbenv;
 };
 
-class InputPageBase : public wxPanel, public wxUIFormData
+class InputPageBase;
+
+class CallbackContext
+{
+	InputPageBase *m_inputPage;
+	VarTable *m_varTable;
+	lk::node_t *m_root;
+	wxString m_desc;
+public:
+	CallbackContext( InputPageBase *ip, VarTable *vt, lk::node_t *root, const wxString &desc = wxEmptyString );	
+	InputPageBase *GetInputPage() { return m_inputPage; }
+	VarTable *GetVarTable() { return m_varTable; }
+	virtual bool Invoke(  );
+};
+
+class InputPageData : public wxUIFormData
 {
 public:
-	InputPageBase( wxWindow *parent, int id, const wxPoint &pos = wxDefaultPosition,
+	InputPageData();
+	virtual ~InputPageData();
+
+	// read the form from disk
+	bool LoadFile( const wxString &name );
+};
+
+typedef unordered_map<wxString, InputPageData*, wxStringHash, wxStringEqual> InputPageDataHash;
+
+class InputPageDatabase
+{
+public:
+	InputPageDatabase();
+	~InputPageDatabase();
+
+	void Clear();
+	bool LoadFile( const wxString &file );
+	InputPageData *Lookup( const wxString &name );
+
+private:
+	InputPageDataHash m_hash;
+};
+
+class InputPageBase : public wxPanel
+{
+public:
+	InputPageBase( wxWindow *parent, InputPageData *form, int id, const wxPoint &pos = wxDefaultPosition,
 		const wxSize &size = wxDefaultSize );
 	virtual ~InputPageBase();
 	
-	// read the form from disk
-	bool Load( const wxString &name );
 	// initialize by running any existing callbacks for it
 	void Initialize();
+
+	wxUIObject *Find( const wxString &name ) { return m_formData->Find( name ); }
+	std::vector<wxUIObject*> GetObjects() { return m_formData->GetObjects(); }
 
 	// must be overridden to support rendering, equation calculation, callbacks, and
 	// interaction with variable value tables
@@ -75,6 +103,11 @@ protected:
 
 	// handler(s) for child widget changes
 	void OnNativeEvent( wxCommandEvent & );
+	
+
+	bool LoadFile( const wxString &file );
+	InputPageData *m_formData;
+	bool m_formDataOwned;
 	
 	DECLARE_EVENT_TABLE();
 };

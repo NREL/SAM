@@ -9,8 +9,7 @@
 #include <wx/filehistory.h>
 #include <wx/dialog.h>
 
-#include "equations.h"
-#include "variables.h"
+#include "inputpage.h"
 #include "project.h"
 
 class wxSimplebook;
@@ -82,6 +81,9 @@ private:
 	DECLARE_EVENT_TABLE();
 };
 
+
+
+
 class ConfigDatabase
 {
 public:
@@ -91,16 +93,15 @@ public:
 	void Clear();
 	void Add( const wxString &tech, const wxArrayString &fin );
 	void SetConfig( const wxString &t, const wxString &f );
-	void AddPage( const wxString &name, const wxString &caption, const wxString &hlpcxt, 
-		const wxArrayString &subpages, bool exclusive = false, 
-		const wxString &exclvar = wxEmptyString );
+	void AddInputPageGroup( const wxArrayString &pages, const wxString &caption, const wxString &hlpcxt,
+		bool exclusive = false, const wxString &exclvar = wxEmptyString );
 
-	struct InputPageInfo
+
+	struct InputPageGroup
 	{
-		wxString Name;
+		wxArrayString Pages;
 		wxString Caption;
 		wxString HelpContext;
-		wxArrayString SubPages;
 		bool OrganizeAsExclusivePages;
 		wxString ExclusivePageVar;
 	};
@@ -108,28 +109,32 @@ public:
 	wxArrayString GetTechnologies();
 	wxArrayString GetFinancingForTech(const wxString &tech);
 	
-	std::vector<InputPageInfo*> GetInputPageList(const wxString &tech,
-			const wxString &financing );
-		
-
+	std::vector<InputPageGroup*> &GetInputPages(const wxString &tech, const wxString &financing );
+	VarInfoLookup &GetVariables( const wxString &tech, const wxString &financing );
+	EqnFastLookup &GetEquations( const wxString &tech, const wxString &financing );
+	
 private:
 	struct TechInfo { wxString Name; wxArrayString FinancingOptions; };
 	std::vector<TechInfo> m_techList;
 
 	struct ConfigInfo { 
-		~ConfigInfo() {
-			for( size_t i=0;i<InputPages.size();i++) delete InputPages[i];
-		}
+		ConfigInfo();
+		~ConfigInfo();
+
 		wxString Technology;
 		wxString Financing;
-		std::vector<InputPageInfo*> InputPages;
+		std::vector<InputPageGroup*> InputPages;
+		VarInfoLookup Variables;
+		EqnFastLookup Equations;
 	};
 
 	ConfigInfo *Find( const wxString &t, const wxString &f );
 
 	std::vector<ConfigInfo*> m_configList;
 
-	ConfigInfo *m_curConfig;
+	ConfigInfo *m_curConfig;	
+	VarInfoLookup m_emptyVarList;
+	EqnFastLookup m_emptyEqnList;
 };
 
 class SamApp : public wxApp
@@ -137,7 +142,6 @@ class SamApp : public wxApp
 public:
 	virtual bool OnInit();
 	virtual int OnExit();
-
 
 	static void Restart();
 	static wxString GetAppPath();
@@ -151,9 +155,13 @@ public:
 	static int VersionMajor();
 	static int VersionMinor();
 	static int VersionMicro();
-	static VarDatabase &GetVariables( const wxString &tech, const wxString &fin );
-	static EqnDatabase &GetEquations( const wxString &tech, const wxString &fin );
+	
 	static ConfigDatabase &Config();
+	static VarDatabase &Variables();
+	static EqnDatabase &Equations();
+	static CallbackDatabase &Callbacks();
+	static InputPageDatabase &Pages();
+
 	static bool LoadAndRunScriptFile( const wxString &script_file, wxArrayString *errors = 0 );
 };
 

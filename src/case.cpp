@@ -4,13 +4,9 @@
 #include "main.h"
 
 Case::Case()
+	: m_eqns( &SamApp::Equations() ) // initialize fast lookup with global all equations
 {
 
-}
-
-Case::Case( const wxString &tech, const wxString &fin )
-{
-	SetConfiguration( tech, fin );
 }
 
 Case::~Case()
@@ -31,8 +27,8 @@ bool Case::Copy( Object *obj )
 	{
 		m_technology = rhs->m_technology;
 		m_financing = rhs->m_financing;
-		m_vars.Copy( rhs->m_vars );
-		m_baseCase.Copy( rhs->m_vars );
+		m_vals.Copy( rhs->m_vals );
+		m_baseCase.Copy( rhs->m_vals );
 		m_properties = rhs->m_properties;
 		m_notes = rhs->m_notes;
 		return true;
@@ -56,7 +52,7 @@ void Case::Write( wxOutputStream &_o )
 	// write data
 	out.WriteString( m_technology );
 	out.WriteString( m_financing );
-	m_vars.Write( _o );
+	m_vals.Write( _o );
 	m_baseCase.Write( _o );
 	m_properties.Write( _o );
 	m_notes.Write( _o );
@@ -74,7 +70,7 @@ bool Case::Read( wxInputStream &_i )
 	// read data
 	m_technology = in.ReadString();
 	m_financing = in.ReadString();
-	if ( !m_vars.Read( _i ) ) wxLogStatus("error reading m_vars in Case::Read");
+	if ( !m_vals.Read( _i ) ) wxLogStatus("error reading m_vals in Case::Read");
 	if ( !m_baseCase.Read( _i ) ) wxLogStatus("error reading m_baseCase in Case::Read");
 	if ( !m_properties.Read( _i ) ) wxLogStatus("error reading m_properties in Case::Read");
 	if ( !m_notes.Read( _i ) ) wxLogStatus("error reading m_notes in Case::Read");
@@ -91,17 +87,28 @@ void Case::SetConfiguration( const wxString &tech, const wxString &fin )
 	m_technology = tech;
 	m_financing = fin;
 
-	// erase all input variables
-	m_vars.clear();
-
 	// erase results
 	m_baseCase.clear();
+	
+	// update equation lookup and variable info caches
+	m_vars = SamApp::Config().GetVariables( m_technology, m_financing );
+	m_eqns = SamApp::Config().GetEquations( m_technology, m_financing );
+	
+	// erase all input variables that are no longer in the current configuration
+	wxArrayString to_remove;
+	for( VarTable::iterator it = m_vals.begin(); it != m_vals.end(); ++it )
+		if ( m_vars.find( it->first ) == m_vars.end() )
+			to_remove.Add( it->first );
 
-	// look up configuration
+	m_vals.Delete( to_remove );
 
 	// set up all default variables and values
+	for( VarInfoLookup::iterator it = m_vars.begin(); it != m_vars.end(); ++it )
+		m_vals.Set( it->first, it->second->DefaultValue ); // will create new variable if it doesnt exist
 
 	// reevalute all equations
+	EqnEvaluator eval( m_vals, m_eqns );
+	eval.CalculateAll();
 	
 	// update UI
 	SendEvent( CaseEvent( CaseEvent::CONFIG_CHANGED, tech, fin ) );
@@ -115,7 +122,7 @@ void Case::GetConfiguration( wxString *tech, wxString *fin )
 
 int Case::Changed( const wxString &var )
 {
-	EqnEvaluator eval( &m_vars, &SamApp::GetEquations( m_technology, m_financing ) );
+	EqnEvaluator eval( m_vals, m_eqns );
 	int n = eval.Changed( var );
 	if ( n > 0 ) SendEvent( CaseEvent( CaseEvent::VARS_CHANGED, eval.GetUpdated() ) );
 	return n;
@@ -124,7 +131,7 @@ int Case::Changed( const wxString &var )
 
 int Case::CalculateAll()
 {
-	EqnEvaluator eval( &m_vars, &SamApp::GetEquations( m_technology, m_financing ) );
+	EqnEvaluator eval( m_vals, m_eqns );
 	int n = eval.CalculateAll();
 	if ( n > 0 ) SendEvent( CaseEvent( CaseEvent::VARS_CHANGED, eval.GetUpdated() ) );
 	return n;
