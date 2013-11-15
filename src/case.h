@@ -5,6 +5,7 @@
 
 #include "object.h"
 #include "variables.h"
+#include "equations.h"
 
 // case events allow the user interface to be updated
 // when something internal in the case changes that needs to be reflected
@@ -42,7 +43,6 @@ class Case : public Object
 {
 public:
 	Case();
-	Case( const wxString &tech, const wxString &fin );
 	virtual ~Case();
 
 	virtual Object *Duplicate();
@@ -53,7 +53,7 @@ public:
 	
 	void SetConfiguration( const wxString &tech, const wxString &fin );
 	void GetConfiguration( wxString *tech, wxString *fin );	
-	VarTable &Vars() { return m_vars; }
+	VarTable &Vars() { return m_vals; }
 
 	int Changed( const wxString &name );
 	int CalculateAll();
@@ -70,13 +70,15 @@ public:
 private:
 	wxString m_technology;
 	wxString m_financing;
-	VarTable m_vars;
+	VarTable m_vals;
 	VarTable m_baseCase;
 	StringHash m_properties;
 	StringHash m_notes;
 	std::vector<CaseEventListener*> m_listeners;
 	void SendEvent( CaseEvent e );
 
+	VarInfoLookup m_vars;
+	EqnFastLookup m_eqns;
 };
 
 #endif

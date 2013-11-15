@@ -29,7 +29,9 @@ class VarTable : public VarTableBase
 public:
 	VarTable();
 	~VarTable();
-
+	
+	void Delete( const wxString &name );
+	void Delete( const wxArrayString &names );
 	virtual void clear();
 	wxArrayString ListAll( std::vector<VarValue*> *vals = 0 );
 	VarValue *Create( const wxString &name, int type = VV_INVALID );
@@ -115,24 +117,20 @@ public:
 	VarValue DefaultValue;
 };
 
+typedef unordered_map<wxString, VarInfo*, wxStringHash, wxStringEqual> VarInfoHash;	
 
-class VarDatabase
+class VarInfoLookup : public VarInfoHash
 {
 public:
-	VarDatabase();
-	~VarDatabase();
+	VarInfoLookup();
+	virtual ~VarInfoLookup();
 
-	VarInfo *Add( const wxString &name, int type,
-		const wxString &label = wxEmptyString, const wxString &units = wxEmptyString,
-		const wxString &group = wxEmptyString, const wxString &indexlabels = wxEmptyString,
-		unsigned long flags = VF_NONE, const VarValue &defval = VarValue() );
-
+	void Add( VarInfo *vv );
+	void Add( VarInfoLookup *vil );
 	
-	bool Delete( const wxString &name );
-	bool Rename( const wxString &old_name, const wxString &new_name );
-	void Clear();	
 	VarInfo *Lookup( const wxString &name );
 	wxArrayString ListAll();
+
 	int Type( const wxString &name );
 	wxString Label( const wxString &name );
 	wxString Group( const wxString &name );
@@ -141,16 +139,29 @@ public:
 	unsigned long Flags( const wxString &name );
 	VarValue &InternalDefaultValue( const wxString &name );
 
+private:
+	VarValue m_invVal;
+};
 
+class VarDatabase : public VarInfoLookup
+{
+public:
+	VarDatabase();
+	virtual ~VarDatabase();
+
+	VarInfo *Add( const wxString &name, int type,
+		const wxString &label = wxEmptyString, const wxString &units = wxEmptyString,
+		const wxString &group = wxEmptyString, const wxString &indexlabels = wxEmptyString,
+		unsigned long flags = VF_NONE, const VarValue &defval = VarValue() );
+		
+	bool Delete( const wxString &name );
+	bool Rename( const wxString &old_name, const wxString &new_name );
+	virtual void clear();	
+	
 	bool LoadFile( const wxString &file );
 	void Write( wxOutputStream & );
 	bool Read( wxInputStream & );
 
-private:
-	VarValue m_invVal;
-
-	typedef unordered_map<wxString, VarInfo*, wxStringHash, wxStringEqual> varinfo_hash_t;	
-	varinfo_hash_t m_hash;
 };
 
 class VarTableScriptEnvironment : public lk::env_t

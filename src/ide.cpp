@@ -378,12 +378,13 @@ class InputPageTestPanel : public InputPageBase
 	
 	VarDatabase m_vars;
 	EqnDatabase m_eqns;
+	EqnFastLookup m_efl;
 	CallbackDatabase m_call;
 	VarTable m_vals;
 
 public:
-	InputPageTestPanel( wxWindow *parent, int id )
-		: InputPageBase( parent, id )
+	InputPageTestPanel( wxWindow *parent, InputPageData *ipdata, int id )
+		: InputPageBase( parent, ipdata, id ), m_efl( &m_eqns )
 	{
 		SetBackgroundColour( wxColour(255,215,215) );
 	}
@@ -391,10 +392,13 @@ public:
 
 	bool Setup( const wxString &name )
 	{
-		bool ok = Load( name );
+		bool ok = LoadFile( SamApp::GetRuntimePath() + "/ui/" + name + ".ui" );
 		ok = ok && m_vars.LoadFile( SamApp::GetRuntimePath() + "/ui/" + name + ".var" );
 		ok = ok && m_eqns.LoadFile( SamApp::GetRuntimePath() + "/ui/" + name + ".eqn" );
 		ok = ok && m_call.LoadFile( SamApp::GetRuntimePath() + "/ui/" + name + ".cb" );
+
+		std::vector<EqnData*> ed = m_eqns.GetEquations();
+		m_efl.Add( ed );
 
 		// setup variable value table
 		m_vals.clear();
@@ -421,7 +425,7 @@ public:
 			if ( DataExchange( obj, *vval, OBJ_TO_VAR ) )
 				wxLogStatus("Test Form >> data exchange success: " + obj->GetName() );
 
-			EqnEvaluator eval( &m_vals, &m_eqns );
+			EqnEvaluator eval( m_vals, m_efl );
 			int n = eval.Changed( obj->GetName() );
 			if ( n > 0 )
 			{
@@ -460,7 +464,7 @@ public:
 void UIEditorPanel::OnFormTest( wxCommandEvent & )
 {
 	wxFrame *frame = new wxFrame( this, wxID_ANY, "Test: " + m_formName, wxDefaultPosition, wxSize( 500, 400 ) );
-	InputPageTestPanel *ip = new InputPageTestPanel( frame, wxID_ANY );
+	InputPageTestPanel *ip = new InputPageTestPanel( frame, NULL, wxID_ANY );
 
 	if (!ip->Setup( m_formName ))
 		wxMessageBox("test form load not successful", "notice", wxOK, this );
@@ -496,7 +500,7 @@ void UIEditorPanel::OnCommand( wxCommandEvent &evt )
 			}
 			m_uiFormEditor->SetFormData( 0 ) ;
 			m_formData.DeleteAll();
-			m_varData.Clear();
+			m_varData.clear();
 			m_curVar = 0;
 			m_callbackScript->SetText( wxEmptyString );
 			m_equationScript->SetText( wxEmptyString );
@@ -525,7 +529,7 @@ void UIEditorPanel::OnCommand( wxCommandEvent &evt )
 
 				m_formName.Clear();
 				m_formData.DeleteAll();
-				m_varData.Clear();
+				m_varData.clear();
 				m_curVar = 0;
 				m_uiFormEditor->SetFormData( &m_formData );
 				m_uiFormEditor->Refresh();
@@ -697,7 +701,7 @@ void UIEditorPanel::OnCommand( wxCommandEvent &evt )
 			wxString text;
 			if ( ok )
 			{
-				std::vector<EqnDatabase::eqn_data*> list = db.GetEquations();
+				std::vector<EqnData*> list = db.GetEquations();
 				text << list.size() <<  " equations resolved ok \n\n";
 				for( size_t i=0;i<list.size();i++ )
 				{
@@ -865,6 +869,7 @@ bool UIEditorPanel::LoadForm( const wxString &name )
 	file = SamApp::GetRuntimePath() + "/ui/" + name + ".var";
 	if ( wxFileExists( file ) )
 	{
+		m_varData.clear();
 		wxFFileInputStream fvars( file );
 		if ( fvars.IsOk() && m_varData.Read( fvars ) )
 		{

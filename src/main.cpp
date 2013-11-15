@@ -32,8 +32,11 @@ static wxConfig *g_config = 0;
 static const int g_verMajor = 2014;
 static const int g_verMinor = 1;
 static const int g_verMicro = 1;
-static VarDatabase g_varDatabase;
 static ConfigDatabase g_cfgDatabase;
+static VarDatabase g_varDatabase;
+static EqnDatabase g_eqnDatabase;
+static CallbackDatabase g_cbDatabase;
+static InputPageDatabase g_pageDatabase;
 static wxLogWindow *g_logWindow = 0;
 
 
@@ -615,8 +618,19 @@ BEGIN_EVENT_TABLE( SplashScreen, wxDialog )
 END_EVENT_TABLE()
 
 
+ConfigDatabase::ConfigInfo::ConfigInfo()
+	: Equations( &g_eqnDatabase )
+{
+}
+
+ConfigDatabase::ConfigInfo::~ConfigInfo()
+{
+	for( size_t i=0;i<InputPages.size();i++) delete InputPages[i];
+}
+
 
 ConfigDatabase::ConfigDatabase()
+	: m_emptyEqnList( &g_eqnDatabase )
 {
 	m_curConfig = 0;
 }
@@ -648,17 +662,15 @@ void ConfigDatabase::SetConfig( const wxString &t, const wxString &f )
 	m_curConfig = Find( t, f );
 }
 
-void ConfigDatabase::AddPage( const wxString &name, const wxString &caption, const wxString &hlpcxt, 
-		const wxArrayString &subpages, bool exclusive, 
-		const wxString &exclvar )
+void ConfigDatabase::AddInputPageGroup( const wxArrayString &pages, const wxString &caption, const wxString &hlpcxt, 
+		bool exclusive, const wxString &exclvar )
 {
 	if ( m_curConfig == 0 ) return;
 
-	InputPageInfo *ip = new InputPageInfo;
-	ip->Name = name;
+	InputPageGroup *ip = new InputPageGroup;
+	ip->Pages = pages;
 	ip->Caption = caption;
 	ip->HelpContext = hlpcxt;
-	ip->SubPages = subpages;
 	ip->OrganizeAsExclusivePages = exclusive;
 	ip->ExclusivePageVar = exclvar;
 
@@ -683,12 +695,26 @@ wxArrayString ConfigDatabase::GetFinancingForTech(const wxString &tech)
 
 }
 	
-std::vector<ConfigDatabase::InputPageInfo*> ConfigDatabase::GetInputPageList(const wxString &tech,
+std::vector<ConfigDatabase::InputPageGroup*> &ConfigDatabase::GetInputPages(const wxString &tech,
 			const wxString &financing )
 {
 	if ( ConfigInfo *ci = Find( tech, financing ) ) return ci->InputPages;
-	else return std::vector<InputPageInfo*>();
+	else return std::vector<InputPageGroup*>();
 }
+
+VarInfoLookup &ConfigDatabase::GetVariables( const wxString &tech, const wxString &financing )
+{
+	if ( ConfigInfo *ci = Find( tech, financing ) ) return ci->Variables;
+	else return m_emptyVarList;
+}
+
+EqnFastLookup &ConfigDatabase::GetEquations( const wxString &tech, const wxString &financing )
+{
+	if ( ConfigInfo *ci = Find( tech, financing ) ) return ci->Equations;
+	else return m_emptyEqnList;
+}
+
+
 		
 ConfigDatabase::ConfigInfo *ConfigDatabase::Find( const wxString &t, const wxString &f )
 {
@@ -836,19 +862,11 @@ int SamApp::VersionMajor() { return g_verMajor; }
 int SamApp::VersionMinor() { return g_verMinor; }
 int SamApp::VersionMicro() { return g_verMicro; }
 
-VarDatabase &SamApp::GetVariables( const wxString &tech, const wxString &fin )
-{
-	static VarDatabase s_vdb;
-	return s_vdb;
-}
-
-EqnDatabase &SamApp::GetEquations( const wxString &tech, const wxString &fin )
-{
-	static EqnDatabase s_edb;
-	return s_edb;
-}
-
 ConfigDatabase &SamApp::Config() { return g_cfgDatabase; }
+VarDatabase &SamApp::Variables() { return g_varDatabase; }
+EqnDatabase &SamApp::Equations() { return g_eqnDatabase; }
+CallbackDatabase &SamApp::Callbacks() { return g_cbDatabase; }
+InputPageDatabase &SamApp::Pages() { return g_pageDatabase; }
 
 static void fcall_dbgoutln( lk::invoke_t &cxt )
 {
@@ -886,24 +904,32 @@ static void fcall_setconfig( lk::invoke_t &cxt )
 
 static void fcall_addpage( lk::invoke_t &cxt )
 {
-	LK_DOC("addpage", "Add an page section to the currently active configuration (may have multiple sub pages).", "(string:name, string:caption, string:helpcxt, array:subpages, [boolean:exclusive, string:exclusive var name]" );
+	LK_DOC("addpage", "Add an input page group to the currently active configuration (may have multiple pages).", "(array:pages, [string:caption, string:helpcxt, boolean:exclusive, string:exclusive var name]" );
 	
-	wxString name = cxt.arg(0).as_string();
-	wxString capt = cxt.arg(1).as_string();
-	wxString help = cxt.arg(2).as_string();
-	wxArrayString groups;
-	lk::vardata_t &grps = cxt.arg(3);
+	wxArrayString pages;
+	lk::vardata_t &grps = cxt.arg(0);
 	for( size_t i=0;i<grps.length();i++ )
-		groups.Add( grps.index(i)->as_string() );
+		pages.Add( grps.index(i)->as_string() );
+
+	if ( pages.size() == 0 ) return;
+
+	wxString capt = pages[0];
+	if ( cxt.arg_count() > 1 )
+		capt = cxt.arg(1).as_string();
+
+	wxString help = pages[0];
+	if (cxt.arg_count() > 2 )
+		wxString help = cxt.arg(2).as_string();
 
 	bool subgrps = false;
-	if ( cxt.arg_count() > 4 )
-		subgrps = cxt.arg(4).as_boolean();
-	wxString subgrpvar;
-	if ( cxt.arg_count() > 5 )
-		subgrpvar = cxt.arg(5).as_string();
+	if ( cxt.arg_count() > 3 )
+		subgrps = cxt.arg(3).as_boolean();
 
-	SamApp::Config().AddPage( name, capt, help, groups, subgrps, subgrpvar );
+	wxString subgrpvar;
+	if ( cxt.arg_count() > 4 )
+		subgrpvar = cxt.arg(4).as_string();
+
+	SamApp::Config().AddInputPageGroup( pages, capt, help, subgrps, subgrpvar );
 }
 
 static wxString s_defaultContext;
