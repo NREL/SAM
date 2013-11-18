@@ -44,36 +44,26 @@ public:
 	virtual bool Invoke(  );
 };
 
-class InputPageData : public wxUIFormData
+typedef unordered_map<wxString, wxUIFormData*, wxStringHash, wxStringEqual> FormDataHash;
+
+class FormDatabase
 {
 public:
-	InputPageData();
-	virtual ~InputPageData();
-
-	// read the form from disk
-	bool LoadFile( const wxString &name );
-};
-
-typedef unordered_map<wxString, InputPageData*, wxStringHash, wxStringEqual> InputPageDataHash;
-
-class InputPageDatabase
-{
-public:
-	InputPageDatabase();
-	~InputPageDatabase();
+	FormDatabase();
+	~FormDatabase();
 
 	void Clear();
 	bool LoadFile( const wxString &file );
-	InputPageData *Lookup( const wxString &name );
+	wxUIFormData *Lookup( const wxString &name );
 
 private:
-	InputPageDataHash m_hash;
+	FormDataHash m_hash;
 };
 
 class InputPageBase : public wxPanel
 {
 public:
-	InputPageBase( wxWindow *parent, InputPageData *form, int id, const wxPoint &pos = wxDefaultPosition,
+	InputPageBase( wxWindow *parent, wxUIFormData *form, int id, const wxPoint &pos = wxDefaultPosition,
 		const wxSize &size = wxDefaultSize );
 	virtual ~InputPageBase();
 	
@@ -106,7 +96,7 @@ protected:
 	
 
 	bool LoadFile( const wxString &file );
-	InputPageData *m_formData;
+	wxUIFormData *m_formData;
 	bool m_formDataOwned;
 	
 	DECLARE_EVENT_TABLE();
