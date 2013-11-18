@@ -160,7 +160,7 @@ public:
 	static VarDatabase &Variables();
 	static EqnDatabase &Equations();
 	static CallbackDatabase &Callbacks();
-	static InputPageDatabase &Pages();
+	static FormDatabase &Forms();
 
 	static bool LoadAndRunScriptFile( const wxString &script_file, wxArrayString *errors = 0 );
 };
