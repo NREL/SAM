@@ -36,7 +36,7 @@ static ConfigDatabase g_cfgDatabase;
 static VarDatabase g_varDatabase;
 static EqnDatabase g_eqnDatabase;
 static CallbackDatabase g_cbDatabase;
-static InputPageDatabase g_pageDatabase;
+static FormDatabase g_formDatabase;
 static wxLogWindow *g_logWindow = 0;
 
 
@@ -866,7 +866,7 @@ ConfigDatabase &SamApp::Config() { return g_cfgDatabase; }
 VarDatabase &SamApp::Variables() { return g_varDatabase; }
 EqnDatabase &SamApp::Equations() { return g_eqnDatabase; }
 CallbackDatabase &SamApp::Callbacks() { return g_cbDatabase; }
-InputPageDatabase &SamApp::Pages() { return g_pageDatabase; }
+FormDatabase &SamApp::Forms() { return g_formDatabase; }
 
 static void fcall_dbgoutln( lk::invoke_t &cxt )
 {

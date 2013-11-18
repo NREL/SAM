@@ -383,7 +383,7 @@ class InputPageTestPanel : public InputPageBase
 	VarTable m_vals;
 
 public:
-	InputPageTestPanel( wxWindow *parent, InputPageData *ipdata, int id )
+	InputPageTestPanel( wxWindow *parent, wxUIFormData *ipdata, int id )
 		: InputPageBase( parent, ipdata, id ), m_efl( &m_eqns )
 	{
 		SetBackgroundColour( wxColour(255,215,215) );
@@ -392,7 +392,13 @@ public:
 
 	bool Setup( const wxString &name )
 	{
-		bool ok = LoadFile( SamApp::GetRuntimePath() + "/ui/" + name + ".ui" );
+		bool ok = true;
+		
+		m_formData->Detach();
+		wxFFileInputStream is( SamApp::GetRuntimePath() + "/ui/" + name + ".ui" );
+		if ( !is.IsOk() || !m_formData->Read( is ) )
+			ok = false;
+
 		ok = ok && m_vars.LoadFile( SamApp::GetRuntimePath() + "/ui/" + name + ".var" );
 		ok = ok && m_eqns.LoadFile( SamApp::GetRuntimePath() + "/ui/" + name + ".eqn" );
 		ok = ok && m_call.LoadFile( SamApp::GetRuntimePath() + "/ui/" + name + ".cb" );

@@ -159,30 +159,18 @@ lk::node_t *CallbackDatabase::Lookup( const wxString &method_name, const wxStrin
 	return p_define->right;
 }
 
-InputPageData::InputPageData() { }
-InputPageData::~InputPageData() { }
-
-bool InputPageData::LoadFile( const wxString &file )
-{
-	Detach();
-	wxFFileInputStream is( file );
-	if ( is.IsOk() && wxUIFormData::Read( is ) ) return true;
-	else return false;
-}
-
-
-InputPageDatabase::InputPageDatabase()
+FormDatabase::FormDatabase()
 {
 }
 
-InputPageDatabase::~InputPageDatabase()
+FormDatabase::~FormDatabase()
 {
 	Clear();
 }
 
-void InputPageDatabase::Clear()
+void FormDatabase::Clear()
 {
-	for ( InputPageDataHash::iterator it = m_hash.begin();
+	for ( FormDataHash::iterator it = m_hash.begin();
 		it != m_hash.end();
 		++it )
 		delete (*it).second;
@@ -190,15 +178,19 @@ void InputPageDatabase::Clear()
 	m_hash.clear();
 }
 
-bool InputPageDatabase::LoadFile( const wxString &file )
+bool FormDatabase::LoadFile( const wxString &file )
 {
 	wxFileName ff(file);
 	wxString name( ff.GetName() );
 
 	if ( Lookup( name ) != 0 ) return true;
 
-	InputPageData *pd = new InputPageData;
-	bool ok =  pd->LoadFile( SamApp::GetRuntimePath() + "/ui/" + name + ".ui" );
+	wxUIFormData *pd = new wxUIFormData;
+	
+	bool ok = true;
+	wxFFileInputStream is( SamApp::GetRuntimePath() + "/ui/" + name + ".ui" );
+	if ( !is.IsOk() || !pd->Read( is ) )
+		ok = false;
 	
 	if ( ok ) m_hash[ name ] = pd;
 	else delete pd;
@@ -206,9 +198,9 @@ bool InputPageDatabase::LoadFile( const wxString &file )
 	return ok;
 }
 
-InputPageData *InputPageDatabase::Lookup( const wxString &name )
+wxUIFormData *FormDatabase::Lookup( const wxString &name )
 {
-	InputPageDataHash::iterator it = m_hash.find( name );
+	FormDataHash::iterator it = m_hash.find( name );
 	return ( it != m_hash.end() ) ? it->second : NULL;
 }
 
@@ -228,7 +220,7 @@ BEGIN_EVENT_TABLE( InputPageBase, wxPanel )
 	EVT_PAINT( InputPageBase::OnPaint )
 END_EVENT_TABLE()
 
-InputPageBase::InputPageBase( wxWindow *parent, InputPageData *form, int id, const wxPoint &pos,
+InputPageBase::InputPageBase( wxWindow *parent, wxUIFormData *form, int id, const wxPoint &pos,
 	const wxSize &size )
 	: wxPanel( parent, id, pos, size, wxTAB_TRAVERSAL|wxCLIP_CHILDREN ),
 	m_formData( form )
@@ -239,7 +231,7 @@ InputPageBase::InputPageBase( wxWindow *parent, InputPageData *form, int id, con
 
 	if ( m_formData == 0 )
 	{
-		m_formData = new InputPageData;
+		m_formData = new wxUIFormData;
 		m_formDataOwned = true;
 	}
 
@@ -261,7 +253,10 @@ InputPageBase::~InputPageBase()
 
 bool InputPageBase::LoadFile( const wxString &file )
 {
-	if ( m_formData->LoadFile( file ) )
+	m_formData->Detach();
+
+	wxFFileInputStream is( file );
+	if ( is.IsOk() && m_formData->Read( is ) )
 	{
 		m_formData->Attach( this );
 		SetClientSize( m_formData->GetSize() ); // resize self to specified form data
