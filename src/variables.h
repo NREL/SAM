@@ -89,6 +89,7 @@ public:
 	static bool Parse( int type, const wxString &str, VarValue &val );
 	wxString AsString();
 
+	static VarValue Invalid;
 private:
 	unsigned char m_type;
 	::matrix_t<float> m_val;
@@ -141,9 +142,6 @@ public:
 	wxArrayString IndexLabels( const wxString &name );
 	unsigned long Flags( const wxString &name );
 	VarValue &DefaultValue( const wxString &name );
-
-private:
-	VarValue m_invVal;
 };
 
 class VarDatabase : public VarInfoLookup
@@ -155,7 +153,7 @@ public:
 	VarInfo *Add( const wxString &name, int type,
 		const wxString &label = wxEmptyString, const wxString &units = wxEmptyString,
 		const wxString &group = wxEmptyString, const wxString &indexlabels = wxEmptyString,
-		unsigned long flags = VF_NONE, const VarValue &defval = VarValue() );
+		unsigned long flags = VF_NONE, const VarValue &defval = VarValue::Invalid );
 		
 	bool Delete( const wxString &name );
 	bool Rename( const wxString &old_name, const wxString &new_name );
