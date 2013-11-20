@@ -167,6 +167,14 @@ int InputPageList::GetSelection()
 	return m_selectedIdx;
 }
 
+wxString InputPageList::GetStringSelection()
+{
+	if ( m_selectedIdx >= 0 && m_selectedIdx < m_items.size() )
+		return m_items[m_selectedIdx].name;
+	else
+		return wxEmptyString;
+}
+
 
 #define VSPACE 0
 #define FMTHEIGHT 16

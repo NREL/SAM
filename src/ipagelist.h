@@ -24,6 +24,7 @@ public:
 	void ClearItems();
 	void Select(int idx);
 	int GetSelection();
+	wxString GetStringSelection();
 	void RedrawItem(int idx);
 	void SetCaseWindow(CaseWindow *cw);
 	int FindItem(const wxString &name);

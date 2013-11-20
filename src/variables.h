@@ -86,6 +86,9 @@ public:
 	bool Read( const lk::vardata_t &val, bool change_type = false );
 	bool Write( lk::vardata_t &val );
 
+	static bool Parse( int type, const wxString &str, VarValue &val );
+	wxString AsString();
+
 private:
 	unsigned char m_type;
 	::matrix_t<float> m_val;
@@ -137,7 +140,7 @@ public:
 	wxString Units( const wxString &name );
 	wxArrayString IndexLabels( const wxString &name );
 	unsigned long Flags( const wxString &name );
-	VarValue &InternalDefaultValue( const wxString &name );
+	VarValue &DefaultValue( const wxString &name );
 
 private:
 	VarValue m_invVal;
@@ -158,9 +161,16 @@ public:
 	bool Rename( const wxString &old_name, const wxString &new_name );
 	virtual void clear();	
 	
-	bool LoadFile( const wxString &file );
+	bool LoadFile( const wxString &file, const wxString &page = wxEmptyString );
 	void Write( wxOutputStream & );
-	bool Read( wxInputStream & );
+	bool Read( wxInputStream &, const wxString &page = wxEmptyString );
+
+	wxArrayString GetVarsForPage( const wxString &page );
+
+private:
+	
+	typedef unordered_map<wxString, wxArrayString, wxStringHash, wxStringEqual> StringArrayHash;	
+	StringArrayHash m_pageCache;
 
 };
 

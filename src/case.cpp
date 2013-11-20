@@ -25,12 +25,14 @@ bool Case::Copy( Object *obj )
 {
 	if ( Case *rhs = dynamic_cast<Case*>( obj ) )
 	{
-		m_technology = rhs->m_technology;
-		m_financing = rhs->m_financing;
 		m_vals.Copy( rhs->m_vals );
 		m_baseCase.Copy( rhs->m_vals );
 		m_properties = rhs->m_properties;
 		m_notes = rhs->m_notes;
+		
+		m_technology.Clear();
+		m_financing.Clear();
+		SetConfiguration( rhs->m_technology, rhs->m_financing );
 		return true;
 	}
 	else
@@ -68,12 +70,14 @@ bool Case::Read( wxInputStream &_i )
 	in.Read8(); // version
 
 	// read data
-	m_technology = in.ReadString();
-	m_financing = in.ReadString();
+	wxString tech = in.ReadString();
+	wxString fin = in.ReadString();
 	if ( !m_vals.Read( _i ) ) wxLogStatus("error reading m_vals in Case::Read");
 	if ( !m_baseCase.Read( _i ) ) wxLogStatus("error reading m_baseCase in Case::Read");
 	if ( !m_properties.Read( _i ) ) wxLogStatus("error reading m_properties in Case::Read");
 	if ( !m_notes.Read( _i ) ) wxLogStatus("error reading m_notes in Case::Read");
+
+	SetConfiguration( tech, fin );
 
 	return (in.Read8() == code);
 }
@@ -81,9 +85,6 @@ bool Case::Read( wxInputStream &_i )
 
 void Case::SetConfiguration( const wxString &tech, const wxString &fin )
 {
-	if ( m_technology == tech && m_financing == fin )
-		return;
-
 	m_technology = tech;
 	m_financing = fin;
 
@@ -102,10 +103,11 @@ void Case::SetConfiguration( const wxString &tech, const wxString &fin )
 
 	m_vals.Delete( to_remove );
 
-	// set up all default variables and values
+	// set up any new variables with internal default values
 	for( VarInfoLookup::iterator it = m_vars.begin(); it != m_vars.end(); ++it )
-		m_vals.Set( it->first, it->second->DefaultValue ); // will create new variable if it doesnt exist
-
+		if ( !m_vals.Get( it->first ) )
+			m_vals.Set( it->first, it->second->DefaultValue ); // will create new variable if it doesnt exist
+		
 	// reevalute all equations
 	EqnEvaluator eval( m_vals, m_eqns );
 	eval.CalculateAll();

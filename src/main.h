@@ -39,7 +39,10 @@ public:
 	bool CloseProject();
 
 	wxString GetUniqueCaseName( wxString base = wxEmptyString );
-	void CreateNewCase( const wxString &name = wxEmptyString );
+	void CreateNewCase( const wxString &name = wxEmptyString, 
+		wxString tech = wxEmptyString, 
+		wxString fin = wxEmptyString );
+
 	CaseWindow *GetCaseWindow( Case *c );
 	CaseWindow *CreateCaseWindow( Case *c );
 	void DeleteCaseWindow( Case *c );
@@ -113,6 +116,8 @@ public:
 	VarInfoLookup &GetVariables( const wxString &tech, const wxString &financing );
 	EqnFastLookup &GetEquations( const wxString &tech, const wxString &financing );
 	
+	void RebuildCaches();
+
 private:
 	struct TechInfo { wxString Name; wxArrayString FinancingOptions; };
 	std::vector<TechInfo> m_techList;
@@ -132,9 +137,7 @@ private:
 
 	std::vector<ConfigInfo*> m_configList;
 
-	ConfigInfo *m_curConfig;	
-	VarInfoLookup m_emptyVarList;
-	EqnFastLookup m_emptyEqnList;
+	ConfigInfo *m_curConfig;
 };
 
 class SamApp : public wxApp
