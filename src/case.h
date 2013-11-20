@@ -53,7 +53,10 @@ public:
 	
 	void SetConfiguration( const wxString &tech, const wxString &fin );
 	void GetConfiguration( wxString *tech, wxString *fin );	
-	VarTable &Vars() { return m_vals; }
+
+	VarTable &Values() { return m_vals; }
+	VarInfoLookup &Variables() { return m_vars; }
+	EqnFastLookup &Equations() { return m_eqns; }
 
 	int Changed( const wxString &name );
 	int CalculateAll();
@@ -68,6 +71,7 @@ public:
 	void ClearListeners();
 
 private:
+	/* case data */
 	wxString m_technology;
 	wxString m_financing;
 	VarTable m_vals;
@@ -77,6 +81,7 @@ private:
 	std::vector<CaseEventListener*> m_listeners;
 	void SendEvent( CaseEvent e );
 
+	/* caches for lookups - regenerated as needed */
 	VarInfoLookup m_vars;
 	EqnFastLookup m_eqns;
 };

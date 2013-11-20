@@ -16,13 +16,62 @@
 #include "../resource/graph.cpng"
 
 
+
+
+class ActiveInputPage : public InputPageBase
+{
+	CaseWindow *m_cwin;
+	Case *m_case;
+
+public:
+	ActiveInputPage( wxWindow *parent, wxUIFormData *ipdata, CaseWindow *cw )
+		: InputPageBase( parent, ipdata, wxID_ANY )
+	{
+		m_cwin = cw;
+		m_case = cw->GetCase();
+		
+		SetBackgroundColour( *wxWHITE );
+		
+		m_formData->Attach( this );
+		SetClientSize( m_formData->GetSize() ); // resize self to specified form data
+		
+		Initialize();
+	}
+	virtual ~ActiveInputPage() { /* nothing to do */ }
+		
+	virtual VarInfoLookup &GetVariables()	{ return m_case->Variables(); }
+	virtual EqnFastLookup &GetEquations() { return m_case->Equations(); }
+	virtual CallbackDatabase &GetCallbacks() { return SamApp::Callbacks(); }
+	virtual VarTable &GetValues() { return m_case->Values(); }
+
+	virtual void OnInputChanged( wxUIObject *obj )
+	{
+		if( VarValue *vval = GetValues().Get( obj->GetName() ) )
+		{
+			// transfer the data from the UI object to the variable (DDX) 
+			// then notify the case that the variable was changed
+			// within the case, the calculations will be redone as needed
+			// and then the casewindow will be notived by event that
+			// other UI objects (calculated ones) need to be updated
+			if ( DataExchange( obj, *vval, OBJ_TO_VAR ) )
+				m_case->Changed( obj->GetName() );
+			else
+				wxMessageBox("ActveInputPage >> data exchange fail: " + obj->GetName() );
+		}
+	}
+};
+
+
+
 enum { ID_INPUTPAGELIST = wxID_HIGHEST + 142,
-	ID_SIMULATE, ID_RESULTSPAGE };
+	ID_SIMULATE, ID_RESULTSPAGE,
+	ID_EXCL_BUTTON };
 
 BEGIN_EVENT_TABLE( CaseWindow, wxSplitterWindow )
 	EVT_BUTTON( ID_SIMULATE, CaseWindow::OnCommand )
 	EVT_BUTTON( ID_RESULTSPAGE, CaseWindow::OnCommand )
 	EVT_LISTBOX( ID_INPUTPAGELIST, CaseWindow::OnCommand )
+	EVT_BUTTON( ID_EXCL_BUTTON, CaseWindow::OnCommand )
 END_EVENT_TABLE()
 
 CaseWindow::CaseWindow( wxWindow *parent, Case *c )
@@ -30,6 +79,8 @@ CaseWindow::CaseWindow( wxWindow *parent, Case *c )
 	m_case( c )
 {
 	m_case->AddListener( this );
+
+	m_currentGroup = 0;
 
 	wxPanel *left_panel = new wxPanel( this );
 	left_panel->SetBackgroundColour( *wxWHITE );
@@ -53,8 +104,17 @@ CaseWindow::CaseWindow( wxWindow *parent, Case *c )
 
 	m_pageFlipper = new wxSimplebook( this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxBORDER_NONE );
 
-	m_inputPage = new wxPanel( m_pageFlipper );
-	m_inputPage->SetBackgroundColour( *wxWHITE );
+	m_inputPageScrollWin = new wxScrolledWindow( m_pageFlipper );
+	m_inputPageScrollWin->SetBackgroundColour( *wxWHITE );
+	m_exclPageLabel = new wxStaticText( m_inputPageScrollWin, wxID_ANY, wxEmptyString );	
+	wxFont font = m_exclPageLabel->GetFont();
+	font.SetWeight( wxFONTWEIGHT_BOLD );
+	font.SetPointSize( font.GetPointSize()+1 );
+	m_exclPageLabel->SetFont(font);
+	m_exclPageLabel->Show( false );
+	
+	m_exclPageButton = new wxButton( m_inputPageScrollWin, ID_EXCL_BUTTON, "Change..." );
+	m_exclPageButton->Show( false );
 
 	m_resultsTab = new wxMetroNotebook( m_pageFlipper, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxMT_LIGHTTHEME );
 	
@@ -129,16 +189,45 @@ CaseWindow::CaseWindow( wxWindow *parent, Case *c )
 	m_scriptCtrl = new wxLKScriptCtrl( m_resultsTab, wxID_ANY );
 	m_resultsTab->AddPage( m_scriptCtrl, "Scripting", false );
 
-	m_pageFlipper->AddPage( m_inputPage, "Input Pages", true );
+	m_pageFlipper->AddPage( m_inputPageScrollWin, "Input Pages", true );
 	m_pageFlipper->AddPage( m_resultsTab, "Output Pages", false );
 
 	SplitVertically( left_panel, m_pageFlipper, 210 );
+
+	UpdateConfiguration();
 }
 
 CaseWindow::~CaseWindow()
 {
+	// detach forms if any shown on input pages.
+	DetachCurrentInputPage();
+
 	m_case->RemoveListener( this );
 }
+
+class PageOptionDialog : public wxDialog
+{
+	wxRadioBox *m_radio;
+public:
+	PageOptionDialog( wxWindow *parent, const wxString &title,
+		const wxArrayString &items, int sel )
+		: wxDialog( parent, wxID_ANY, title, wxDefaultPosition, wxSize(400,400), wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER)
+	{
+		m_radio = new wxRadioBox( this, wxID_ANY, "Options", 
+			wxDefaultPosition, wxDefaultSize, 
+			items, 1, wxRA_SPECIFY_COLS );
+		m_radio->SetSelection( sel );
+
+		wxBoxSizer *sizer = new wxBoxSizer( wxVERTICAL );
+		sizer->Add( m_radio, 1, wxALL|wxEXPAND, 5 );
+		sizer->Add( CreateButtonSizer( wxOK|wxCANCEL ), 0, wxALL|wxEXPAND, 5);
+		SetSizer(sizer);
+
+		Fit();		
+	}
+
+	int GetSelection() { return m_radio->GetSelection(); }
+};
 
 void CaseWindow::OnCommand( wxCommandEvent &evt )
 {
@@ -157,19 +246,192 @@ void CaseWindow::OnCommand( wxCommandEvent &evt )
 	else if ( evt.GetId() == ID_INPUTPAGELIST )
 	{
 		m_pageFlipper->SetSelection( 0 );
+		SwitchToInputPage( m_inputPageList->GetStringSelection() );
 	}
+	else if ( evt.GetId() == ID_EXCL_BUTTON )
+	{
+		if ( m_currentGroup && m_currentGroup->OrganizeAsExclusivePages )
+		{
+			VarValue *vv = m_case->Values().Get( m_currentGroup->ExclusivePageVar );
+			if ( !vv ) return;
+
+			PageOptionDialog dlg( this, "Select option", m_currentGroup->Pages, vv->Integer() );
+			wxPoint pt = m_exclPageButton->GetScreenPosition();
+			wxSize sz = m_exclPageButton->GetSize();
+			dlg.Move( pt.x - 20, pt.y + sz.y + 10 );
+
+			if ( dlg.ShowModal() != wxID_OK ) return;
+		
+			int sel = dlg.GetSelection();
+			if ( sel != vv->Integer() )
+			{
+				vv->Set( sel );
+				m_case->Changed( m_currentGroup->ExclusivePageVar );
+				OrganizeCurrentPages();
+			}
+		}
+	}
+}
+
+wxUIObject *CaseWindow::FindActiveObject( const wxString &name, InputPageBase **ipage )
+{
+	for( size_t i=0;i<m_currentShownPages.size();i++ )
+	{
+		if ( wxUIObject *obj = m_currentShownPages[i]->Find( name ) )
+		{
+			if ( ipage ) *ipage = m_currentShownPages[i];
+			return obj;
+		}
+	}
+
+	if ( ipage ) *ipage = 0;
+	return 0;
 }
 
 void CaseWindow::OnCaseEvent( Case *c, CaseEvent &evt )
 {
 	if ( evt.GetType() == CaseEvent::VARS_CHANGED )
 	{
-		// to do
+		// update UI objects for the ones that changed
+		wxArrayString &list = evt.GetVars();
+		for( size_t i=0;i<list.size();i++ )
+		{
+			InputPageBase *ipage = 0;
+			wxUIObject *obj = FindActiveObject( list[i], &ipage );
+			VarValue *vv = m_case->Values().Get( list[i] );
+			if ( ipage && obj && vv )
+				ipage->DataExchange( obj, *vv, InputPageBase::VAR_TO_OBJ );
+		}
+
+		// update side bar
+		m_inputPageList->Refresh();
 	}
 	else if ( evt.GetType() == CaseEvent::CONFIG_CHANGED )
 	{
-		 // to do
+		wxString sel = m_inputPageList->GetStringSelection();
+		UpdateConfiguration();
+		SwitchToInputPage( sel );
+
 	}
+}
+
+void CaseWindow::DetachCurrentInputPage()
+{
+	for( size_t i=0;i<m_currentShownPages.size();i++ )
+		m_currentShownPages[i]->Destroy();
+	m_currentShownPages.clear();
+
+	m_currentGroup = 0;
+}
+
+bool CaseWindow::SwitchToInputPage( const wxString &name )
+{
+	DetachCurrentInputPage();
+	
+	for( size_t i=0;i<m_pageGroups.size();i++ )
+		if ( m_pageGroups[i]->Caption == name )
+			m_currentGroup = m_pageGroups[i];
+
+	if ( !m_currentGroup ) return false;
+
+	for( size_t i=0;i<m_currentGroup->Pages.size();i++ )
+		if ( wxUIFormData *form = m_currentForms.Lookup( m_currentGroup->Pages[i] ) )
+			m_currentShownPages.push_back( new ActiveInputPage( m_inputPageScrollWin, form, this ) );
+
+	OrganizeCurrentPages();
+
+	return true;
+}
+
+void CaseWindow::OrganizeCurrentPages()
+{
+	if ( !m_currentGroup ) return;
+	
+	int y = 0;
+	int x = 0;
+
+	if ( m_currentGroup->OrganizeAsExclusivePages )
+	{
+		VarValue *vv = m_case->Values().Get( m_currentGroup->ExclusivePageVar );
+		if ( !vv )
+		{
+			wxMessageBox( "could not locate exclusive page variable " + m_currentGroup->ExclusivePageVar );
+			return;
+		}
+		
+		// switch between pages here using a flipper widget or something?
+		for( size_t i=0;i<m_currentShownPages.size();i++ )
+		{
+			InputPageBase *page = m_currentShownPages[i];
+			wxSize sz = page->GetClientSize();
+			if ( i == vv->Integer() )
+			{
+				page->Show( true );
+				m_exclPageLabel->SetLabel( page->GetName() );
+				y = sz.y;
+			}
+			else
+				page->Show( false );
+
+			page->SetPosition( wxPoint(0,30) );
+			if ( sz.x > x ) x = sz.x;
+		}
+
+		m_exclPageLabel->SetSize( 5, 5, 300, 23 );
+		m_exclPageLabel->Show();
+		m_exclPageLabel->Refresh();
+
+		m_exclPageButton->SetSize( 305, 5, 120, 23 );
+		m_exclPageButton->Show();
+
+		y += 30;
+	}
+	else
+	{
+		// input pages are stacked upon one another
+		for( size_t i=0;i<m_currentShownPages.size();i++ )
+		{
+			InputPageBase *page = m_currentShownPages[i];
+			page->SetPosition( wxPoint(0, y) );
+			wxSize sz = page->GetClientSize();
+			y += sz.y;
+			if ( sz.x > x ) x = sz.x;
+		}
+	}
+
+	m_inputPageScrollWin->SetScrollbars(1,1, x, y, 0, 0);
+	m_inputPageScrollWin->SetScrollRate(50,50);
+	m_inputPageScrollWin->Scroll(0,0);
+}
+
+void CaseWindow::UpdateConfiguration()
+{
+	m_inputPageList->ClearItems();
+
+	wxString tech, fin;
+	m_case->GetConfiguration( &tech, &fin );
+
+	// update current set of input pages
+	m_pageGroups = SamApp::Config().GetInputPages( tech, fin );
+
+	// erase current set of forms, and rebuild the forms for this case
+	m_currentForms.Clear();
+	
+	// update input page list (sidebar)
+	for( size_t i=0;i<m_pageGroups.size();i++ )
+	{
+		wxArrayString &pages = m_pageGroups[i]->Pages;
+		for (size_t j=0;j<pages.size();j++ )
+		{
+			if ( wxUIFormData *ui = SamApp::Forms().Lookup( pages[j] ) )
+				m_currentForms.Add( pages[j], ui->Duplicate() );
+			else
+				wxMessageBox("could not locate form data for " + pages[j] );			
+		}
+
+		m_inputPageList->Add( m_pageGroups[i]->Caption );
+	}
+
 }
 
 /* ********* SAM Page Notes ************** */

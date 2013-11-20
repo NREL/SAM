@@ -399,6 +399,12 @@ public:
 		if ( !is.IsOk() || !m_formData->Read( is ) )
 			ok = false;
 
+		if ( ok )
+		{
+			m_formData->Attach( this );
+			SetClientSize( m_formData->GetSize() ); // resize self to specified form data
+		}
+
 		ok = ok && m_vars.LoadFile( SamApp::GetRuntimePath() + "/ui/" + name + ".var" );
 		ok = ok && m_eqns.LoadFile( SamApp::GetRuntimePath() + "/ui/" + name + ".eqn" );
 		ok = ok && m_call.LoadFile( SamApp::GetRuntimePath() + "/ui/" + name + ".cb" );
@@ -408,17 +414,20 @@ public:
 
 		// setup variable value table
 		m_vals.clear();
-		wxArrayString list = m_vars.ListAll();
-		for( size_t i=0;i<list.size();i++ )
-			m_vals.Create( list[i], m_vars.Type( list[i] ) );
+		for( VarInfoLookup::iterator it = m_vars.begin(); it != m_vars.end(); ++it )
+			m_vals.Set( it->first, it->second->DefaultValue ); // will create new variable if it doesnt exist
+		
+		EqnEvaluator eval( m_vals, m_efl );
+		wxLogStatus( "calculated %d form variables", eval.CalculateAll() );
 
-		Initialize();
+		wxLogStatus("initalizing form UI and setting up values");
+		Initialize();		
 		
 		return ok;
 	}
 	
-	virtual VarDatabase &GetVariables()	{ return m_vars; }
-	virtual EqnDatabase &GetEquations() { return m_eqns; }
+	virtual VarInfoLookup &GetVariables()	{ return m_vars; }
+	virtual EqnFastLookup &GetEquations() { return m_efl; }
 	virtual CallbackDatabase &GetCallbacks() { return m_call; }
 	virtual VarTable &GetValues() { return m_vals; }
 
@@ -766,7 +775,9 @@ void UIEditorPanel::FormToVarInfo( VarInfo *vv )
 	if( m_varFlagParametric->GetValue() ) vv->Flags |= VF_PARAMETRIC;
 	if( m_varFlagIndicator->GetValue() ) vv->Flags |= VF_INDICATOR;
 	if( m_varFlagCalculated->GetValue() ) vv->Flags |= VF_CALCULATED;
-
+	
+	vv->DefaultValue.SetType( vv->Type );
+	VarValue::Parse( vv->Type, m_varDefaultValue->GetValue(), vv->DefaultValue );
 }
 
 void UIEditorPanel::VarInfoToForm( VarInfo *vv )
@@ -786,7 +797,7 @@ void UIEditorPanel::VarInfoToForm( VarInfo *vv )
 		m_varFlagIndicator->SetValue( vv->Flags & VF_INDICATOR );
 		m_varFlagCalculated->SetValue( vv->Flags & VF_CALCULATED );
 		
-		// todo: default value
+		m_varDefaultValue->SetValue( vv->DefaultValue.AsString() );
 	}
 	else
 	{
@@ -800,8 +811,7 @@ void UIEditorPanel::VarInfoToForm( VarInfo *vv )
 		m_varFlagParametric->SetValue( false );
 		m_varFlagIndicator->SetValue( false );
 		m_varFlagCalculated->SetValue( false );
-
-		// todo: default value
+		m_varDefaultValue->SetValue( wxEmptyString );
 	}
 	
 	m_varName->Enable( m_curVar != 0 );

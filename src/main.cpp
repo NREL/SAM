@@ -5,6 +5,7 @@
 #include <wx/simplebook.h>
 #include <wx/panel.h>
 #include <wx/busyinfo.h>
+#include <wx/dir.h>
 
 #include <wex/metro.h>
 #include <wex/icons/cirplus.cpng>
@@ -158,7 +159,7 @@ bool MainWindow::CreateProject()
 
 	m_topBook->SetSelection( 1 );
 
-	CreateNewCase();
+	CreateNewCase( wxEmptyString, "PVWatts", "Residential" );
 	return true;
 }
 
@@ -206,9 +207,18 @@ wxString MainWindow::GetUniqueCaseName( wxString base )
 	return base + suffix;
 }
 
-void MainWindow::CreateNewCase( const wxString &_name )
+void MainWindow::CreateNewCase( const wxString &_name, wxString tech, wxString fin )
 {
+	if ( tech.IsEmpty() || fin.IsEmpty() )
+	{
+		bool reset = false;
+		if (!ShowConfigurationDialog( this, &tech, &fin, &reset ))
+			return;
+	}
+
+
 	Case *c = m_project.AddCase( GetUniqueCaseName(_name ) );
+	c->SetConfiguration( tech, fin );
 	CreateCaseWindow( c );
 }
 
@@ -496,7 +506,13 @@ void MainWindow::OnCaseMenu( wxCommandEvent &evt )
 		{
 			bool reset = true;
 			wxString tech, fin;
-			ShowConfigurationDialog( this, &tech, &fin, &reset );
+			c->GetConfiguration( &tech, &fin );
+			wxString t2(tech), f2(fin);
+			if( ShowConfigurationDialog( this, &t2, &f2, &reset ) 
+				&& t2 != tech && f2 != fin )
+			{
+				c->SetConfiguration( t2, f2 ); // this will cause case window to update accordingly
+			}
 		}
 		break;
 	case ID_CASE_RENAME:
@@ -630,7 +646,6 @@ ConfigDatabase::ConfigInfo::~ConfigInfo()
 
 
 ConfigDatabase::ConfigDatabase()
-	: m_emptyEqnList( &g_eqnDatabase )
 {
 	m_curConfig = 0;
 }
@@ -655,6 +670,17 @@ void ConfigDatabase::Add( const wxString &tech, const wxArrayString &fin )
 	x.Name = tech;
 	x.FinancingOptions = fin;
 	m_techList.push_back( x );
+
+	for( size_t i=0;i<fin.size();i++ )
+	{
+		if ( !Find( tech, fin[i] ) )
+		{
+			ConfigInfo *ci = new ConfigInfo;
+			ci->Technology = tech;
+			ci->Financing = fin[i];
+			m_configList.push_back( ci );
+		}
+	}
 }
 
 void ConfigDatabase::SetConfig( const wxString &t, const wxString &f )
@@ -675,6 +701,40 @@ void ConfigDatabase::AddInputPageGroup( const wxArrayString &pages, const wxStri
 	ip->ExclusivePageVar = exclvar;
 
 	m_curConfig->InputPages.push_back( ip );
+}
+
+void ConfigDatabase::RebuildCaches()
+{
+	EqnFastLookup eqnlookup( &SamApp::Equations() );
+	std::vector<EqnData*> all_eqns = SamApp::Equations().GetEquations();
+	eqnlookup.Add( all_eqns );
+
+	for( size_t i=0;i<m_configList.size();i++ )
+	{
+		ConfigInfo *ci = m_configList[i];
+		ci->Variables.clear();
+		ci->Equations.Clear();
+
+		for( size_t j=0;j<ci->InputPages.size();j++ )
+		{
+			InputPageGroup *igrp = ci->InputPages[j];
+			for( size_t k=0;k<igrp->Pages.size();k++ )
+			{
+				wxString page = igrp->Pages[k];
+
+				wxArrayString list = SamApp::Variables().GetVarsForPage( page );
+				for( size_t n=0;n<list.size();n++ )
+				{
+					if ( VarInfo *vv = SamApp::Variables().Lookup( list[n] ) )
+						ci->Variables.Add( vv );
+
+					if ( EqnData *ed = eqnlookup.GetEquationData( list[n] ))
+						ci->Equations.Add( ed );
+				}
+
+			}
+		}
+	}
 }
 
 wxArrayString ConfigDatabase::GetTechnologies()
@@ -698,20 +758,23 @@ wxArrayString ConfigDatabase::GetFinancingForTech(const wxString &tech)
 std::vector<ConfigDatabase::InputPageGroup*> &ConfigDatabase::GetInputPages(const wxString &tech,
 			const wxString &financing )
 {
+static std::vector<InputPageGroup*> sg_emptyList;
 	if ( ConfigInfo *ci = Find( tech, financing ) ) return ci->InputPages;
-	else return std::vector<InputPageGroup*>();
+	else return sg_emptyList;
 }
 
 VarInfoLookup &ConfigDatabase::GetVariables( const wxString &tech, const wxString &financing )
 {
+static VarInfoLookup sg_emptyList;
 	if ( ConfigInfo *ci = Find( tech, financing ) ) return ci->Variables;
-	else return m_emptyVarList;
+	else return sg_emptyList;
 }
 
 EqnFastLookup &ConfigDatabase::GetEquations( const wxString &tech, const wxString &financing )
 {
+static EqnFastLookup sg_emptyList( &SamApp::Equations() );
 	if ( ConfigInfo *ci = Find( tech, financing ) ) return ci->Equations;
-	else return m_emptyEqnList;
+	else return sg_emptyList;
 }
 
 
@@ -806,14 +869,47 @@ int SamApp::OnExit()
 
 void SamApp::Restart()
 {
-	SamApp::Config().Clear();
+	// reload all forms, variables, callbacks, equations
+	SamApp::Equations().Clear();
+	SamApp::Callbacks().ClearAll();
+	SamApp::Variables().clear();
+	SamApp::Forms().Clear();
+	
+	wxDir dir( SamApp::GetRuntimePath() + "/ui" );
+	if ( dir.IsOpened() )
+	{
+		wxString file;
+		bool has_more = dir.GetFirst( &file, "*.ui", wxDIR_FILES  );
+		while( has_more )
+		{
+			wxFileName fn( file );
 
-	// load configuration map
+			wxLogStatus( "loading .ui/.var/.eqn/.cb for " + fn.GetName() );
+			wxString file_base = SamApp::GetRuntimePath() + "/ui/" + fn.GetName();
+			bool ok = true; 
+			ok = ok && SamApp::Forms().LoadFile( file_base + ".ui" );
+			ok = ok && SamApp::Variables().LoadFile( file_base  + ".var", fn.GetName() );
+			ok = ok && SamApp::Equations().LoadFile( file_base + ".eqn" );
+			ok = ok && SamApp::Callbacks().LoadFile( file_base + ".cb" );
+
+			if ( !ok )
+				wxLogStatus( " --> error loading all data for " + file_base );
+
+			has_more = dir.GetNext( &file );
+		}
+	}
+	
+	// reload configuration map
+	SamApp::Config().Clear();
 	wxString startup_script = GetRuntimePath() + "/startup.lk";
 	wxLogStatus("loading startup script: " + startup_script );
 	wxArrayString errors;
 	if ( !LoadAndRunScriptFile( startup_script, &errors ) )
 		wxLogStatus( wxJoin( errors, '\n' ) );
+
+
+	wxLogStatus("rebuilding caches for each configuration's variables and equations");
+	SamApp::Config().RebuildCaches();
 }
 
 wxString SamApp::GetAppPath()
@@ -1091,7 +1187,12 @@ bool ConfigDialog::ResetToDefaults()
 void ConfigDialog::SetConfiguration(const wxString &t, const wxString &f)
 {
 	m_t = t;
+	m_pTech->SetSelection( m_pTech->Find( t ) );
+	m_pTech->Invalidate();
+	
 	m_f = f;
+	m_pFin->SetSelection( m_pFin->Find( f ) );
+	m_pFin->Invalidate();
 }
 
 void ConfigDialog::ShowResetCheckbox(bool b)
