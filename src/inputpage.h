@@ -52,10 +52,11 @@ public:
 	FormDatabase();
 	~FormDatabase();
 
-	void Clear();
-	bool LoadFile( const wxString &file );
+	void Add( const wxString &name, wxUIFormData *data );
 	wxUIFormData *Lookup( const wxString &name );
+	void Clear();
 
+	bool LoadFile( const wxString &file );
 private:
 	FormDataHash m_hash;
 };
@@ -75,8 +76,8 @@ public:
 
 	// must be overridden to support rendering, equation calculation, callbacks, and
 	// interaction with variable value tables
-	virtual VarDatabase &GetVariables() = 0;
-	virtual EqnDatabase &GetEquations() = 0;
+	virtual VarInfoLookup &GetVariables() = 0;
+	virtual EqnFastLookup &GetEquations() = 0;
 	virtual CallbackDatabase &GetCallbacks() = 0;
 	virtual VarTable &GetValues() = 0;
 	virtual void OnInputChanged( wxUIObject *obj ) = 0;

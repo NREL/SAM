@@ -484,6 +484,97 @@ bool VarValue::Write( lk::vardata_t &val )
 	return m_type != VV_INVALID;
 }
 
+bool VarValue::Parse( int type, const wxString &str, VarValue &value )
+{
+	switch(type)
+	{
+	case VV_STRING:
+		{
+			value.m_type = VV_STRING;
+			value.m_str = str;
+			return true;
+		}
+	case VV_NUMBER:
+		{
+			value.m_type = VV_NUMBER;
+			value.m_val = wxAtof( str );
+			return true;		
+		}
+	case VV_ARRAY:
+		{
+			wxArrayString tokens = wxStringTokenize(str," ,\t[]\n");
+			value.m_type = VV_ARRAY;
+			value.m_val.resize_fill( tokens.size(), 0.0 );
+			for (size_t i=0; i<tokens.size(); i++)
+					value.m_val[i] = wxAtof( tokens[i] );
+
+			return true;
+		}
+	case VV_MATRIX:
+		{
+			wxArrayString rows = wxStringTokenize(str,"[]\n");
+			if (rows.size() < 1) return false;
+			wxArrayString cur_row = wxStringTokenize(rows[0], " ,\t");
+			if (cur_row.size() < 1) return false;
+
+			value.m_type = VV_MATRIX;
+			value.m_val.resize_fill( rows.size(), cur_row.size(), 0.0 );
+
+			for( size_t c=0; c < cur_row.size(); c++)
+				value.m_val.at(0,c) = wxAtof( cur_row[c] );
+
+			for (size_t r=1; r < rows.size(); r++)
+			{
+				cur_row = wxStringTokenize(rows[r], " ,\t");
+				for (size_t c=0; c<cur_row.size() && c<value.m_val.ncols(); c++)
+					value.m_val.at(r,c) = wxAtof( cur_row[c] );
+			}
+			return true;
+		}
+	}
+	
+	return false;
+}
+
+wxString VarValue::AsString()
+{
+	wxString buf;
+
+	switch( m_type )
+	{
+	case VV_INVALID: return "<invalid>";
+	case VV_STRING: return m_str;
+	case VV_NUMBER: return wxString::Format("%g", (float)m_val );
+	case VV_ARRAY:
+	{
+		wxString buf;
+		for( size_t i=0;i<m_val.length();i++ )
+		{
+			buf += wxString::Format("%g", (float)m_val[i]  );
+			if ( i < m_val.length()-1 ) buf += ',';
+		}
+		return buf;
+	}
+	case VV_MATRIX:
+	{
+		wxString buf;
+		for( size_t r=0;r<m_val.nrows();r++ )
+		{
+			buf += '[';
+			for( size_t c=0;c<m_val.ncols();c++ )
+			{
+				buf += wxString::Format("%g", (float)m_val.at(r,c)  );
+				if ( c < m_val.ncols()-1 ) buf += ',';
+			}
+			buf += ']';
+		}
+		return buf;
+	}
+	}
+
+	return buf;
+}
+
 void VarInfo::Write( wxOutputStream &os )
 {
 	wxDataOutputStream out(os);
@@ -529,11 +620,11 @@ VarDatabase::~VarDatabase()
 	clear();
 }
 
-bool VarDatabase::LoadFile( const wxString &file )
+bool VarDatabase::LoadFile( const wxString &file, const wxString &page )
 {
 	wxFFileInputStream ff( file );
 	if ( !ff.IsOk() ) return false;
-	return Read( ff );
+	return Read( ff, page );
 }
 
 void VarDatabase::Write( wxOutputStream &os )
@@ -552,13 +643,14 @@ void VarDatabase::Write( wxOutputStream &os )
 	out.Write8( 0xf8 );
 }
 
-bool VarDatabase::Read( wxInputStream &is )
+bool VarDatabase::Read( wxInputStream &is, const wxString &page )
 {
 	wxDataInputStream in(is);
 	wxUint8 code = in.Read8();
 	in.Read8();
 	size_t n = in.Read32();
 	bool ok = true;
+	wxArrayString list;
 	for( size_t i=0;i<n;i++ )
 	{
 		wxString name = in.ReadString();
@@ -571,11 +663,21 @@ bool VarDatabase::Read( wxInputStream &is )
 		ok = ok && vv->Read( is );
 		
 		(*this)[name] = vv;
+		if ( !page.IsEmpty() ) list.Add( name );
 	}
 	if ( !ok ) return false;
 
+	if ( !page.IsEmpty() )
+		m_pageCache[ page ] = list;
+
 	return in.Read8() == code;
 }
+
+wxArrayString VarDatabase::GetVarsForPage( const wxString &page )
+{
+	return m_pageCache[ page ];
+}
+
 
 VarInfo *VarDatabase::Add( const wxString &name, int type,
 	const wxString &label, const wxString &units,
@@ -639,6 +741,8 @@ void VarDatabase::clear()
 		delete it->second;
 
 	VarInfoHash::clear();
+
+	m_pageCache.clear();
 }
 
 
@@ -719,7 +823,7 @@ unsigned long VarInfoLookup::Flags( const wxString &name )
 	else return 0;
 }
 
-VarValue &VarInfoLookup::InternalDefaultValue( const wxString &name )
+VarValue &VarInfoLookup::DefaultValue( const wxString &name )
 {
 	if ( VarInfo *v = Lookup(name) ) return v->DefaultValue;
 	else return m_invVal;

@@ -70,20 +70,20 @@ bool CallbackDatabase::LoadFile( const wxString &file )
 	FILE *fp = fopen( (const char*)file.c_str(), "r" );
 	if (fp)
 	{
-		wxLogStatus("uicb: processing callback script file: " + file);
+		//wxLogStatus("uicb: processing callback script file: " + file);
 
 		lk::input_stream data( fp );
 		lk::parser parse( data );
 		lk::node_t *tree = parse.script();
 
-		if (tree == 0 || parse.error_count() != 0
+		if ( parse.error_count() != 0
 			|| parse.token() != lk::lexer::END)
 		{
-			wxLogStatus("fail: parsing did not reach end of input: " + file);				
+			wxLogStatus("fail: callback script load: parsing did not reach end of input: " + file);				
 			for (int x=0; x < parse.error_count(); x++)
 				wxLogStatus( parse.error(x));
 		}
-		else
+		else if ( tree != 0 )
 		{
 
 			std::vector<lk_string> errors;
@@ -182,20 +182,30 @@ bool FormDatabase::LoadFile( const wxString &file )
 {
 	wxFileName ff(file);
 	wxString name( ff.GetName() );
-
-	if ( Lookup( name ) != 0 ) return true;
-
+	
 	wxUIFormData *pd = new wxUIFormData;
 	
 	bool ok = true;
-	wxFFileInputStream is( SamApp::GetRuntimePath() + "/ui/" + name + ".ui" );
+	wxFFileInputStream is( file );
 	if ( !is.IsOk() || !pd->Read( is ) )
 		ok = false;
 	
-	if ( ok ) m_hash[ name ] = pd;
+	if ( ok ) Add( name, pd );
 	else delete pd;
 
 	return ok;
+}
+
+void FormDatabase::Add( const wxString &name, wxUIFormData *ui )
+{
+	FormDataHash::iterator it = m_hash.find( name );
+	if ( it != m_hash.end() )
+	{
+		delete it->second;
+		it->second = ui;
+	}
+	else
+		m_hash[ name ] = ui;
 }
 
 wxUIFormData *FormDatabase::Lookup( const wxString &name )
@@ -273,7 +283,8 @@ static wxColour UIColorCalculatedBack(224,232,246);
 
 void InputPageBase::Initialize()
 {
-	VarDatabase &vdb = GetVariables();
+	VarInfoLookup &vdb = GetVariables();
+	VarTable &vals = GetValues();
 
 	std::vector<wxUIObject*> objs = m_formData->GetObjects();
 	for( size_t i=0;i<objs.size();i++ )
@@ -282,7 +293,7 @@ void InputPageBase::Initialize()
 		wxString name = objs[i]->GetName();
 		if ( VarInfo *vv = vdb.Lookup( name ) )
 		{
-			if ( vv->Type == VV_NUMBER && vv->IndexLabels.size() > 0 
+			if ( (vv->Type == VV_NUMBER || vv->Type == VV_STRING) && vv->IndexLabels.size() > 0 
 				&& ( type == "Choice" || type == "ListBox" || type == "CheckListBox" || type == "RadioChoice" ) )
 			{
 				objs[i]->Property( "Items" ).SetNamedOptions( vv->IndexLabels, 0 );
@@ -308,6 +319,9 @@ void InputPageBase::Initialize()
 					tc->SetBackgroundColour(UIColorIndicatorBack);
 				}
 			}
+
+			if ( VarValue *vval = vals.Get( name ) )
+				DataExchange( objs[i], *vval, VAR_TO_OBJ );
 		}
 	}
 
@@ -333,7 +347,7 @@ void InputPageBase::OnPaint( wxPaintEvent & )
 	dc.SetBackground( GetBackgroundColour() );
 	dc.Clear();
 
-	VarDatabase &vdb = GetVariables();
+	VarInfoLookup &vdb = GetVariables();
 
 	wxRect rct;
 	std::vector<wxUIObject*> objs = m_formData->GetObjects();
