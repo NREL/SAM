@@ -141,6 +141,9 @@ bool VarTable::Read( wxInputStream &_I )
 	return in.Read8() == code;
 }
 
+
+VarValue VarValue::Invalid; // declaration
+
 VarValue::VarValue()
 {
 	m_type = VV_INVALID;
@@ -412,13 +415,13 @@ bool VarValue::Read( const lk::vardata_t &val, bool change_type )
 			if ( Type() == VV_TABLE || change_type )
 			{
 				Set( VarTable() ); // switch to an empty table
-				
+				VarValue vv_inval;	
 				lk::varhash_t &hash = *val.hash();
 				for ( lk::varhash_t::iterator it = hash.begin();
 					it != hash.end();
 					++it )
 				{
-					VarValue *item = Table().Set( (*it).first, VarValue() );
+					VarValue *item = Table().Set( (*it).first, vv_inval );
 					item->Read( *(*it).second );
 				}
 			}
@@ -826,7 +829,7 @@ unsigned long VarInfoLookup::Flags( const wxString &name )
 VarValue &VarInfoLookup::DefaultValue( const wxString &name )
 {
 	if ( VarInfo *v = Lookup(name) ) return v->DefaultValue;
-	else return m_invVal;
+	else return VarValue::Invalid;
 }
 
 VarInfo *VarInfoLookup::Lookup( const wxString &name )
