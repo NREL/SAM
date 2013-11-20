@@ -2,6 +2,10 @@
 #include <wx/wfstream.h>
 #include <wx/ffile.h>
 #include <wx/tokenzr.h>
+#include <wx/log.h>
+
+#include <lk_stdlib.h>
+#include <lk_eval.h>
 
 #include "variables.h"
 
@@ -837,5 +841,37 @@ VarInfo *VarInfoLookup::Lookup( const wxString &name )
 	VarInfoHash::iterator it = find(name);
 	if ( it == end() ) return 0;
 	else return it->second;
+}
+
+
+
+VarTableScriptEnvironment::VarTableScriptEnvironment( VarTable *vt, lk::env_t *parent )
+	: lk::env_t( 0 ), m_vars( vt )
+{
+	register_funcs( lk::stdlib_basic() );
+	register_funcs( lk::stdlib_math() );
+	register_funcs( lk::stdlib_string() );
+}
+
+VarTableScriptEnvironment::~VarTableScriptEnvironment( ) { /* nothing to do */ }
+
+bool VarTableScriptEnvironment::special_set( const lk_string &name, lk::vardata_t &val )
+{
+	bool ok = false;
+	if ( VarValue *vv = m_vars->Get( name ) )
+		ok = vv->Read( val );
+
+	wxLogStatus("VTSE->special_set( " + name + " ) " + wxString( ok?"ok":"fail") );
+	return ok;
+}
+
+bool VarTableScriptEnvironment::special_get( const lk_string &name, lk::vardata_t &val )
+{
+	bool ok = false;
+	if ( VarValue *vv = m_vars->Get( name ) )
+		ok = vv->Write( val );
+	
+	wxLogStatus("VTSE->special_get( " + name + " ) " + wxString( ok?"ok":"fail") );
+	return ok;
 }
 
