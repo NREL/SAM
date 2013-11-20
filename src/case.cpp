@@ -1,4 +1,5 @@
 #include <wx/datstrm.h>
+
 #include "case.h"
 #include "equations.h"
 #include "main.h"

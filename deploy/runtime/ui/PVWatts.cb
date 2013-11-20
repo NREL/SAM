@@ -1,0 +1,19 @@
+
+function hello_watts()
+{
+	msgbox('hello, watts!');
+}
+
+on_load{'PVWatts'} = define() {
+	enable( 'pvwatts.tilt', ${pvwatts.track_mode} != 2 );
+	enable( 'pvwatts.azimuth', ${pvwatts.track_mode} != 2 );
+
+};
+
+
+
+on_change{'pvwatts.track_mode'} = define() {
+		enable( 'pvwatts.tilt', ${pvwatts.track_mode} != 2 );
+	enable( 'pvwatts.azimuth', ${pvwatts.track_mode} != 2 );
+	hello_watts();
+};

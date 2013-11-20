@@ -22,6 +22,7 @@ public:
 	void ClearAll();
 
 	lk::node_t *Lookup( const wxString &method_name, const wxString &obj_name );
+	lk::env_t *GetEnv() { return &m_cbenv; }
 	
 protected:
 	struct cb_data{ lk::node_t *tree; wxString source; };
@@ -36,9 +37,11 @@ class CallbackContext
 	InputPageBase *m_inputPage;
 	VarTable *m_varTable;
 	lk::node_t *m_root;
+	lk::env_t *m_parentEnv;
 	wxString m_desc;
+
 public:
-	CallbackContext( InputPageBase *ip, VarTable *vt, lk::node_t *root, const wxString &desc = wxEmptyString );	
+	CallbackContext( InputPageBase *ip, VarTable *vt, lk::node_t *root, lk::env_t *parent = 0, const wxString &desc = wxEmptyString );	
 	InputPageBase *GetInputPage() { return m_inputPage; }
 	VarTable *GetVarTable() { return m_varTable; }
 	virtual bool Invoke(  );

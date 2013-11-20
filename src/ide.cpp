@@ -401,6 +401,7 @@ public:
 
 		if ( ok )
 		{
+			m_formData->SetName( name );
 			m_formData->Attach( this );
 			SetClientSize( m_formData->GetSize() ); // resize self to specified form data
 		}

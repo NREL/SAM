@@ -733,6 +733,12 @@ void ConfigDatabase::RebuildCaches()
 				}
 
 			}
+
+			if ( igrp->OrganizeAsExclusivePages && !igrp->ExclusivePageVar.IsEmpty() )
+			{
+				VarInfo *vv = SamApp::Variables().Add( igrp->ExclusivePageVar, VV_NUMBER, "Current selection for " + igrp->Caption );
+				ci->Variables.Add( vv );
+			}
 		}
 	}
 }
@@ -1028,14 +1034,6 @@ static void fcall_addpage( lk::invoke_t &cxt )
 	SamApp::Config().AddInputPageGroup( pages, capt, help, subgrps, subgrpvar );
 }
 
-static wxString s_defaultContext;
-
-static void fcall_setcontext( lk::invoke_t &cxt )
-{
-	LK_DOC( "setcontext", "Changes the current default context when adding variables using 'addvar'", "(string:context):none");
-	s_defaultContext = cxt.arg(0).as_string();
-}
-
 lk::fcall_t* startup_funcs()
 {
 	static const lk::fcall_t vec[] = {
@@ -1044,7 +1042,6 @@ lk::fcall_t* startup_funcs()
 		fcall_addconfig,
 		fcall_setconfig,
 		fcall_addpage,
-		fcall_setcontext,
 		0 };
 	return (lk::fcall_t*)vec;
 }

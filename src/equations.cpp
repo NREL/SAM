@@ -317,37 +317,6 @@ int EqnFastLookup::GetEquationIndex( const wxString &var )
 
 
 
-VarTableScriptEnvironment::VarTableScriptEnvironment( VarTable *vt )
-	: m_vars( vt )
-{
-	register_funcs( lk::stdlib_basic() );
-	register_funcs( lk::stdlib_math() );
-	register_funcs( lk::stdlib_string() );
-}
-
-VarTableScriptEnvironment::~VarTableScriptEnvironment( ) { /* nothing to do */ }
-
-bool VarTableScriptEnvironment::special_set( const lk_string &name, lk::vardata_t &val )
-{
-	bool ok = false;
-	if ( VarValue *vv = m_vars->Get( name ) )
-		ok = vv->Read( val );
-
-	wxLogStatus("VTSE->special_set( " + name + " ) " + wxString( ok?"ok":"fail") );
-	return ok;
-}
-
-bool VarTableScriptEnvironment::special_get( const lk_string &name, lk::vardata_t &val )
-{
-	bool ok = false;
-	if ( VarValue *vv = m_vars->Get( name ) )
-		ok = vv->Write( val );
-	
-	wxLogStatus("VTSE->special_get( " + name + " ) " + wxString( ok?"ok":"fail") );
-	return ok;
-}
-
-
 EqnEvaluator::EqnEvaluator( VarTable &vars, EqnFastLookup &fl )
 	: m_vars( vars ), m_efl( fl )
 {
