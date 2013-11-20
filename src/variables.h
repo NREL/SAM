@@ -177,7 +177,7 @@ class VarTableScriptEnvironment : public lk::env_t
 private:
 	VarTable *m_vars;
 public:
-	VarTableScriptEnvironment( VarTable *vt );
+	VarTableScriptEnvironment( VarTable *vt, lk::env_t *parent = 0 );
 	virtual ~VarTableScriptEnvironment( );	
 	virtual bool special_set( const lk_string &name, lk::vardata_t &val );
 	virtual bool special_get( const lk_string &name, lk::vardata_t &val );

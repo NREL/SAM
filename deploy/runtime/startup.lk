@@ -2,13 +2,13 @@
 // define technologies, financing options, input pages, configurations.
 
 /*  DEFINE ALL CONFIGURATIONS */
-addconfig( 'PVWatts', [ 'Residential','Commercial','Commercial PPA', 'Independent Power Producer', 'None' ] );
+addconfig( 'PVWatts', [ 'Residential' ] );
 
 
 /* SETUP EACH CONFIGURATION */
 outln(' setting up pvwatts...' );
 setconfig( 'PVWatts', 'Residential' );
 addpage( [ 'Location' ] );
-addpage( [ 'PVWatts', 'Test 1' ] );
+addpage( [ 'PVWatts', 'Test 1' ], 'System Design', 'PVWatts', true, 'pvwatts.subgroup_sel' );
 
 
