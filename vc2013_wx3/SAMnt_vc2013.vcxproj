@@ -28,6 +28,7 @@
     <ClCompile Include="..\src\equations.cpp" />
     <ClCompile Include="..\src\ide.cpp" />
     <ClCompile Include="..\src\inputpage.cpp" />
+    <ClCompile Include="..\src\invoke.cpp" />
     <ClCompile Include="..\src\ipagelist.cpp" />
     <ClCompile Include="..\src\main.cpp" />
     <ClCompile Include="..\src\object.cpp" />
@@ -44,6 +45,7 @@
     <ClInclude Include="..\src\equations.h" />
     <ClInclude Include="..\src\ide.h" />
     <ClInclude Include="..\src\inputpage.h" />
+    <ClInclude Include="..\src\invoke.h" />
     <ClInclude Include="..\src\ipagelist.h" />
     <ClInclude Include="..\src\main.h" />
     <ClInclude Include="..\src\object.h" />

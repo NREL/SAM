@@ -56,6 +56,9 @@
     <ClInclude Include="..\src\inputpage.h">
       <Filter>Source</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\invoke.h">
+      <Filter>Source</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\welcome.cpp">
@@ -98,6 +101,9 @@
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="..\src\inputpage.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\invoke.cpp">
       <Filter>Source</Filter>
     </ClCompile>
   </ItemGroup>

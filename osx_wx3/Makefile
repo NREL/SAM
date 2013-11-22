@@ -17,6 +17,7 @@ OBJECTS = ide.o \
 	basecase.o \
 	ipagelist.o \
 	casewin.o \
+	invoke.o \
 	case.o \
 	main.o \
 	equations.o \

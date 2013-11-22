@@ -1,19 +1,16 @@
 
-function hello_watts()
+function pvwatts_update_ui()
 {
-	msgbox('hello, watts!');
+	enable( 'pvwatts.tilt', ${pvwatts.track_mode} != 2 );
+	enable( 'pvwatts.azimuth', ${pvwatts.track_mode} != 2 );
 }
 
 on_load{'PVWatts'} = define() {
-	enable( 'pvwatts.tilt', ${pvwatts.track_mode} != 2 );
-	enable( 'pvwatts.azimuth', ${pvwatts.track_mode} != 2 );
-
+	pvwatts_update_ui();
 };
 
 
 
 on_change{'pvwatts.track_mode'} = define() {
-		enable( 'pvwatts.tilt', ${pvwatts.track_mode} != 2 );
-	enable( 'pvwatts.azimuth', ${pvwatts.track_mode} != 2 );
-	hello_watts();
+	pvwatts_update_ui();
 };
