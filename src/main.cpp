@@ -18,6 +18,7 @@
 #include <lk_absyn.h>
 #include <lk_parse.h>
 #include <lk_eval.h>
+#include <lk_stdlib.h>
 
 #include "main.h"
 #include "welcome.h"
@@ -25,6 +26,7 @@
 #include "variables.h"
 #include "case.h"
 #include "casewin.h"
+#include "invoke.h"
 
 // application globals
 static wxArrayString g_appArgs;
@@ -970,116 +972,6 @@ EqnDatabase &SamApp::Equations() { return g_eqnDatabase; }
 CallbackDatabase &SamApp::Callbacks() { return g_cbDatabase; }
 FormDatabase &SamApp::Forms() { return g_formDatabase; }
 
-static void fcall_dbgoutln( lk::invoke_t &cxt )
-{
-	LK_DOC("outln", "Output a data line to the console.", "(...):none");	
-	wxString output;
-	for (size_t i=0;i<cxt.arg_count();i++)
-		output += cxt.arg(i).as_string();
-	wxLogStatus( output );
-}
-
-static void fcall_resetdb( lk::invoke_t &cxt )
-{
-	LK_DOC("resetdb", "Resets variable and configuration databases to empty", "(none):none");
-	SamApp::Config().Clear();
-}
-
-static void fcall_addconfig( lk::invoke_t &cxt )
-{
-	LK_DOC("addconfig", "Add a technology+financing options", "( string:tech, array:financings ):none" );
-
-	wxArrayString finlist;
-	lk::vardata_t &fins = cxt.arg(1);
-	for( size_t i=0;i<fins.length();i++ )
-		finlist.Add( fins.index(i)->as_string() );
-	SamApp::Config().Add( cxt.arg(0).as_string(), finlist );
-
-	wxLogStatus( "Configuration: " + cxt.arg(0).as_string() + "  -> [ " + wxJoin(finlist,';') + " ]" );
-}
-
-static void fcall_setconfig( lk::invoke_t &cxt )
-{
-	LK_DOC("setconfig", "Sets the currently active configuration for editing", "(string:Tech, string:Financing):none");
-	SamApp::Config().SetConfig( cxt.arg(0).as_string(), cxt.arg(1).as_string() );
-}
-
-static void fcall_addpage( lk::invoke_t &cxt )
-{
-	LK_DOC("addpage", "Add an input page group to the currently active configuration (may have multiple pages).", "(array:pages, [string:caption, string:helpcxt, boolean:exclusive, string:exclusive var name]" );
-	
-	wxArrayString pages;
-	lk::vardata_t &grps = cxt.arg(0);
-	for( size_t i=0;i<grps.length();i++ )
-		pages.Add( grps.index(i)->as_string() );
-
-	if ( pages.size() == 0 ) return;
-
-	wxString capt = pages[0];
-	if ( cxt.arg_count() > 1 )
-		capt = cxt.arg(1).as_string();
-
-	wxString help = pages[0];
-	if (cxt.arg_count() > 2 )
-		wxString help = cxt.arg(2).as_string();
-
-	bool subgrps = false;
-	if ( cxt.arg_count() > 3 )
-		subgrps = cxt.arg(3).as_boolean();
-
-	wxString subgrpvar;
-	if ( cxt.arg_count() > 4 )
-		subgrpvar = cxt.arg(4).as_string();
-
-	SamApp::Config().AddInputPageGroup( pages, capt, help, subgrps, subgrpvar );
-}
-
-lk::fcall_t* startup_funcs()
-{
-	static const lk::fcall_t vec[] = {
-		fcall_dbgoutln,
-		fcall_resetdb,
-		fcall_addconfig,
-		fcall_setconfig,
-		fcall_addpage,
-		0 };
-	return (lk::fcall_t*)vec;
-}
-
-/*
-static void fcall_cfgtree( lk::invoke_t &cxt )
-{
-	LK_DOC("cfgtree", "Adds an item to a configuration tree", "(string:which tree 'tech' or 'fin', string:label, string:caption, string:bitmap name, [string:cfg type name], [string:parent]");
-	
-	std::vector<ConfigDatabase::TreeItem*> &tree = (cxt.arg(0).as_string() == "tech") ? SamApp::Config().TechTree() : SamApp::Config().FinTree();
-	wxString label = cxt.arg(1).as_string();
-	wxString capt = cxt.arg(2).as_string();
-	wxString bmp = cxt.arg(3).as_string();
-	wxString type;
-	if ( cxt.arg_count() > 4 ) 
-		type = cxt.arg(4).as_string();
-	wxString parent_name;
-	if ( cxt.arg_count() > 5 )
-		parent_name = cxt.arg(5).as_string();
-
-	ConfigDatabase::TreeItem *parent = NULL;
-	if ( !parent_name.IsEmpty() )
-		for( size_t i=0;i<tree.size();i++ )
-			if ( tree[i]->Label == parent_name )
-				parent = tree[i];
-
-	ConfigDatabase::TreeItem *item = new ConfigDatabase::TreeItem;
-	item->Label = label;
-	item->Description = capt;
-	item->BmpName = bmp;
-	item->TypeTag = type;
-
-	if ( parent != 0 )
-		parent->Children.push_back( item );
-	else
-		tree.push_back( item );
-}
-*/
 
 bool SamApp::LoadAndRunScriptFile( const wxString &script_file, wxArrayString *errors )
 {
@@ -1109,17 +1001,21 @@ bool SamApp::LoadAndRunScriptFile( const wxString &script_file, wxArrayString *e
 	}
 	else
 	{
-		lk::env_t lkenv;
-		lkenv.register_funcs( startup_funcs(), 0 );
-		lk::vardata_t lkvar;
-		std::vector<lk_string> lkerrs;
-		unsigned int lkctl = lk::CTL_NONE;
-		bool ok = lk::eval( tree, &lkenv, lkerrs, lkvar, 0, lkctl, 0, 0 );
+		lk::env_t env;
+		env.register_funcs( lk::stdlib_basic() );
+		env.register_funcs( lk::stdlib_math() );
+		env.register_funcs( lk::stdlib_string() );
+		env.register_funcs( lk::stdlib_wxui() );		
+		env.register_funcs( invoke_general_funcs(), 0 );
+		env.register_funcs( invoke_config_funcs(), 0 );
+
+		lk::eval e( tree, &env );
+		bool ok = e.run();
 		if ( tree ) delete tree;
 		
 		if ( !ok && errors )
-			for( size_t i=0;i<lkerrs.size();i++ )
-				errors->Add( lkerrs[i] );
+			for( size_t i=0;i<e.error_count();i++ )
+				errors->Add( e.get_error(i) );
 
 		return ok;
 	}

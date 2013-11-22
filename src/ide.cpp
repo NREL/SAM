@@ -19,6 +19,7 @@
 #include "main.h"
 #include "equations.h"
 #include "inputpage.h"
+#include "invoke.h"
 
 enum { ID_STARTUP_EDITOR = wxID_HIGHEST+124,
 	ID_STARTUP_SAVE,
@@ -34,7 +35,6 @@ BEGIN_EVENT_TABLE( StartupScriptPanel, wxPanel )
 	EVT_BUTTON( ID_STARTUP_RESTART, StartupScriptPanel::OnCommand )
 END_EVENT_TABLE()
 
-extern lk::fcall_t *startup_funcs();
 
 StartupScriptPanel::StartupScriptPanel( wxWindow *parent )	
 	: wxPanel( parent )
@@ -45,7 +45,8 @@ StartupScriptPanel::StartupScriptPanel( wxWindow *parent )
 	sz_startup_tools->Add( new wxButton( this, ID_STARTUP_HELP, "Help"), 0, wxALL|wxEXPAND, 2 );
 	sz_startup_tools->Add( new wxButton( this, ID_STARTUP_RESTART, "Restart SAM"), 0, wxALL|wxEXPAND, 2 );	
 	m_scriptCtrl = new wxLKScriptCtrl( this, ID_STARTUP_EDITOR );
-	m_scriptCtrl->RegisterLibrary( startup_funcs(), "Startup Functions", 0 );
+	m_scriptCtrl->RegisterLibrary( invoke_general_funcs(), "General Functions", 0 );
+	m_scriptCtrl->RegisterLibrary( invoke_config_funcs(), "Config Functions", 0 );
 	wxBoxSizer *sz_startup_main = new wxBoxSizer( wxVERTICAL );
 	sz_startup_main->Add( sz_startup_tools, 0, wxALL|wxEXPAND, 2 );
 	sz_startup_main->Add( m_scriptCtrl, 1, wxALL|wxEXPAND, 0 );
@@ -275,7 +276,9 @@ UIEditorPanel::UIEditorPanel( wxWindow *parent )
 	sz_callback_tools->Add( new wxButton( scripts_panel, ID_CALLBACK_HELP, "Help" ), 0, wxALL|wxEXPAND, 2 );
 	sz_callback_tools->AddStretchSpacer();
 
-	m_callbackScript = new wxLKScriptCtrl( scripts_panel, ID_CALLBACK_EDITOR );
+	m_callbackScript = new wxLKScriptCtrl( scripts_panel, ID_CALLBACK_EDITOR ); // by default registers all LK stdlib functions
+	m_callbackScript->RegisterLibrary( invoke_general_funcs(), "Callback UI Functions" );
+	m_callbackScript->RegisterLibrary( invoke_uicallback_funcs(), "Callback UI Functions" );
 	wxBoxSizer *sz_scripts_left = new wxBoxSizer( wxVERTICAL );
 	sz_scripts_left->Add( sz_callback_tools, 0, wxALL|wxEXPAND, 2 );
 	sz_scripts_left->Add( m_callbackScript, 1, wxALL|wxEXPAND, 0 );

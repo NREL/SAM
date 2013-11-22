@@ -8,7 +8,7 @@
 #include <wx/stream.h>
 
 #include <lk_absyn.h>
-#include <lk_env.h>
+#include <lk_eval.h>
 
 #include "object.h"
 
@@ -172,13 +172,13 @@ private:
 
 };
 
-class VarTableScriptEnvironment : public lk::env_t
+class VarTableScriptInterpreter : public lk::eval
 {
 private:
 	VarTable *m_vars;
 public:
-	VarTableScriptEnvironment( VarTable *vt, lk::env_t *parent = 0 );
-	virtual ~VarTableScriptEnvironment( );	
+	VarTableScriptInterpreter( lk::node_t *tree, lk::env_t *env, VarTable *vt );
+	virtual ~VarTableScriptInterpreter( );	
 	virtual bool special_set( const lk_string &name, lk::vardata_t &val );
 	virtual bool special_get( const lk_string &name, lk::vardata_t &val );
 };
