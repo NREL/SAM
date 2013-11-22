@@ -19,45 +19,11 @@
 #include "uiwidgets.h"
 #include "inputpage.h"
 
-
-void fcall_enable( lk::invoke_t &cxt )
-{
-	LK_DOC("enable", "Enable or disable a user interface widget", "(string:name, boolean:enable):none");
-
-	CallbackContext *cc = (CallbackContext*)cxt.user_data();
-	if ( wxUIObject *obj = cc->GetInputPage()->Find( cxt.arg(0).as_string() ) )
-		if ( wxWindow *native = obj->GetNative() )
-			native->Enable( cxt.arg(1).as_boolean() );
-}
-static void fcall_show( lk::invoke_t &cxt )
-{
-	LK_DOC("show", "Show or hide a user interface widget.", "(string:name, boolean:show):none");
-
-	CallbackContext *cc = (CallbackContext*)cxt.user_data();
-	if ( wxUIObject *obj = cc->GetInputPage()->Find( cxt.arg(0).as_string() ) )
-		obj->Show( cxt.arg(1).as_boolean() );
-}
-
-static void fcall_browse( lk::invoke_t &cxt )
-{
-	LK_DOC("browse", "Open a URL, local file, or folder using the default browser.", "(string:url):none");
-	::wxLaunchDefaultBrowser( cxt.arg(0).as_string() );
-}
+#include "invoke.h"
 
 
-
-lk::fcall_t* ipage_funcs()
-{
-	static const lk::fcall_t vec[] = {
-		fcall_enable,
-		fcall_show,
-		fcall_browse,
-		0 };
-	return (lk::fcall_t*)vec;
-}
-
-CallbackContext::CallbackContext( InputPageBase *ip, VarTable *vt, lk::node_t *root, lk::env_t *parent, const wxString &desc )
-	: m_inputPage(ip), m_varTable(vt), m_root(root), m_parentEnv(parent), m_desc(desc)
+CallbackContext::CallbackContext( InputPageBase *ip, VarTable *vt, lk::node_t *root, const wxString &desc )
+	: m_inputPage(ip), m_varTable(vt), m_root(root), m_desc(desc)
 {
 	// nothing here.
 }
@@ -65,23 +31,26 @@ CallbackContext::CallbackContext( InputPageBase *ip, VarTable *vt, lk::node_t *r
 	
 bool CallbackContext::Invoke( )
 {
-	VarTableScriptEnvironment local_env( m_varTable, m_parentEnv );
-	// above automatically register stdlib_basic, stdlib_string, stdlib_math
-	// add other callback environment functions
-	local_env.register_funcs( lk::stdlib_wxui(), this );
-	local_env.register_funcs( ipage_funcs(), this );
+	lk::env_t local_env( SamApp::Callbacks().GetEnv() );
 
-	std::vector< lk_string > errors;
-	unsigned int ctl_id = lk::CTL_NONE;
-	lk::vardata_t result;
+	// add other callback environment functions
+	local_env.register_funcs( lk::stdlib_basic() );
+	local_env.register_funcs( lk::stdlib_math() );
+	local_env.register_funcs( lk::stdlib_string() );
+	local_env.register_funcs( lk::stdlib_wxui(), this );
+	local_env.register_funcs( invoke_general_funcs(), this );
+	local_env.register_funcs( invoke_uicallback_funcs(), this );
+	
 	
 	try {
 
-		if (!lk::eval( m_root, &local_env, errors, result, 0, ctl_id, 0, 0 ))
+		VarTableScriptInterpreter e( m_root, &local_env, m_varTable );
+		if ( !e.run() )
 		{
 			wxString text = "Could not evaluate callback function:" +  m_desc + "\n";
-			for (size_t i=0;i<errors.size();i++)
-				text += errors[i] + "\n";
+			for (size_t i=0;i<e.error_count();i++)
+				text += e.get_error(i);
+
 			wxShowTextMessageDialog( text );
 		}
 		
@@ -121,22 +90,19 @@ bool CallbackDatabase::LoadFile( const wxString &file )
 				wxLogStatus( parse.error(x));
 		}
 		else if ( tree != 0 )
-		{
-
-			std::vector<lk_string> errors;
-			unsigned int ctl_id = lk::CTL_NONE;
-			lk::vardata_t result;
-							
+		{							
 			cb_data *cbf = new cb_data;
 			cbf->source = file;
 			cbf->tree = tree;
 			m_cblist.push_back(cbf);
 
-			if ( !lk::eval( tree, &m_cbenv, errors, result, 0, ctl_id, 0, 0 ) )
+			lk::eval e( tree, &m_cbenv );
+
+			if ( !e.run() )
 			{
-				wxLogStatus("uicb script eval fail");
-				for (size_t i=0;i<errors.size();i++)
-					wxLogStatus( errors[i] );
+				wxLogStatus("uicb script eval fail: " + file );
+				for (size_t i=0;i<e.error_count();i++)
+					wxLogStatus( e.get_error(i) );
 
 				return false;
 			}
@@ -368,7 +334,7 @@ void InputPageBase::Initialize()
 	// lookup and run any callback functions.
 	if ( lk::node_t *root = GetCallbacks().Lookup( "on_load", m_formData->GetName() ) )
 	{
-		CallbackContext cbcxt( this, &GetValues(), root, GetCallbacks().GetEnv(), m_formData->GetName() + "->on_load" );
+		CallbackContext cbcxt( this, &GetValues(), root, m_formData->GetName() + "->on_load" );
 		if ( cbcxt.Invoke() )
 			wxLogStatus("callback script " + m_formData->GetName() + "->on_load succeeded");
 	}
@@ -459,7 +425,7 @@ void InputPageBase::OnNativeEvent( wxCommandEvent &evt )
 	// lookup and run any callback functions.
 	if ( lk::node_t *root = GetCallbacks().Lookup( "on_change", obj->GetName() ) )
 	{
-		CallbackContext cbcxt( this, &GetValues(), root, GetCallbacks().GetEnv(), obj->GetName() + "->on_change" );
+		CallbackContext cbcxt( this, &GetValues(), root, obj->GetName() + "->on_change" );
 		if ( cbcxt.Invoke() )
 			wxLogStatus("callback script " + obj->GetName() + "->on_change succeeded");
 	}

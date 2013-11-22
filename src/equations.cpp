@@ -102,14 +102,13 @@ bool EqnDatabase::Parse( lk::input_base &in, wxArrayString *errors )
 		local_env.register_funcs( lk::stdlib_basic() );
 		local_env.register_funcs( lk::stdlib_math() );
 		local_env.register_funcs( lk::stdlib_string() );
-		lk::vardata_t lkvar;
-		std::vector<lk_string> lkerrs;
-		unsigned int lkctl = lk::CTL_NONE;
-		bool ok = lk::eval( tree, &local_env, lkerrs, lkvar, 0, lkctl, 0, 0 );
+
+		lk::eval e( tree, &local_env );
 		
+		bool ok = e.run();
 		if ( !ok && errors )
-			for( size_t i=0;i<lkerrs.size();i++ )
-				errors->Add( lkerrs[i] );
+			for( size_t i=0;i<e.error_count();i++ )
+				errors->Add( e.get_error(i) );
 
 		size_t neqns_found = 0;
 		lk::vardata_t *eqnhash_var = 0;
@@ -390,18 +389,19 @@ int EqnEvaluator::Calculate( )
 			{
 				// setup the LK environment
 				bool eval_ok = true;
+				
+				lk::env_t env;
+				env.register_funcs( lk::stdlib_basic() );
+				env.register_funcs( lk::stdlib_math() );
+				env.register_funcs( lk::stdlib_string() );
 
-				std::vector<lk_string> lkerrors;
-				unsigned int lkctl = lk::CTL_NONE;
-				lk::vardata_t lkresult;
-				VarTableScriptEnvironment lkenv( &m_vars );
-
+				VarTableScriptInterpreter e( cur_eqn->tree, &env, &m_vars );
+			
 				// execute the parse tree, check for errors
-				if ( !lk::eval( cur_eqn->tree, &lkenv, lkerrors, lkresult, 0, lkctl, 0, 0 ) )
+				if ( !e.run() )
 				{
-					for ( std::vector<lk_string>::iterator it = lkerrors.begin();
-						it != lkerrors.end(); ++it )
-						m_errors.Add( "equation engine: " + *it );
+					for ( size_t m=0;m<e.error_count();m++ )
+						m_errors.Add( "equation engine: " + e.get_error(m) );
 
 					eval_ok = false;
 				}
@@ -418,7 +418,7 @@ int EqnEvaluator::Calculate( )
 					// the value of the single output variable 
 					// (i.e. via the 'return' statement)
 					if ( cur_eqn->result_is_output && cur_eqn->outputs.size() == 1 )
-						lkenv.special_set( cur_eqn->outputs[0], lkresult.deref() );
+						e.special_set( cur_eqn->outputs[0], e.result().deref() );
 
 					// all inputs and outputs have been set
 					// mark all outputs as calculated also (so we don't 

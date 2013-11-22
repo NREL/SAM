@@ -845,33 +845,30 @@ VarInfo *VarInfoLookup::Lookup( const wxString &name )
 
 
 
-VarTableScriptEnvironment::VarTableScriptEnvironment( VarTable *vt, lk::env_t *parent )
-	: lk::env_t( 0 ), m_vars( vt )
+VarTableScriptInterpreter::VarTableScriptInterpreter( lk::node_t *tree, lk::env_t *env, VarTable *vt )
+	: lk::eval( tree, env ), m_vars( vt )
 {
-	register_funcs( lk::stdlib_basic() );
-	register_funcs( lk::stdlib_math() );
-	register_funcs( lk::stdlib_string() );
 }
 
-VarTableScriptEnvironment::~VarTableScriptEnvironment( ) { /* nothing to do */ }
+VarTableScriptInterpreter::~VarTableScriptInterpreter( ) { /* nothing to do */ }
 
-bool VarTableScriptEnvironment::special_set( const lk_string &name, lk::vardata_t &val )
+bool VarTableScriptInterpreter::special_set( const lk_string &name, lk::vardata_t &val )
 {
 	bool ok = false;
 	if ( VarValue *vv = m_vars->Get( name ) )
 		ok = vv->Read( val );
 
-	wxLogStatus("VTSE->special_set( " + name + " ) " + wxString( ok?"ok":"fail") );
+	wxLogStatus("vtsi->special_set( " + name + " ) " + wxString( ok?"ok":"fail") );
 	return ok;
 }
 
-bool VarTableScriptEnvironment::special_get( const lk_string &name, lk::vardata_t &val )
+bool VarTableScriptInterpreter::special_get( const lk_string &name, lk::vardata_t &val )
 {
 	bool ok = false;
 	if ( VarValue *vv = m_vars->Get( name ) )
 		ok = vv->Write( val );
 	
-	wxLogStatus("VTSE->special_get( " + name + " ) " + wxString( ok?"ok":"fail") );
+	wxLogStatus("vtsi->special_get( " + name + " ) " + wxString( ok?"ok":"fail") );
 	return ok;
 }
 
