@@ -59,6 +59,9 @@
     <ClInclude Include="..\src\invoke.h">
       <Filter>Source</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\ptlayoutctrl.h">
+      <Filter>Source</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\welcome.cpp">
@@ -104,6 +107,9 @@
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="..\src\invoke.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ptlayoutctrl.cpp">
       <Filter>Source</Filter>
     </ClCompile>
   </ItemGroup>

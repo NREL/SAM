@@ -9,8 +9,6 @@
 #include "variables.h"
 #include "equations.h"
 
-void RegisterInputPageObjects();
-
 
 class CallbackDatabase
 {
@@ -73,6 +71,8 @@ public:
 	
 	// initialize by running any existing callbacks for it
 	void Initialize();
+
+	wxString GetName() const { return m_formData->GetName(); }
 
 	wxUIObject *Find( const wxString &name ) { return m_formData->Find( name ); }
 	std::vector<wxUIObject*> GetObjects() { return m_formData->GetObjects(); }

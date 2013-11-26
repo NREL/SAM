@@ -41,14 +41,16 @@ public:
 private:
 	Case *m_case;
 	
+	wxPanel *m_inputPagePanel;
 	InputPageList *m_inputPageList;
 	std::vector<ConfigDatabase::InputPageGroup*> m_pageGroups;
 	ConfigDatabase::InputPageGroup *m_currentGroup;
 	FormDatabase m_currentForms;
 	std::vector<InputPageBase*> m_currentShownPages;
 	wxScrolledWindow *m_inputPageScrollWin;
+	wxPanel *m_exclPanel;
 	wxStaticText *m_exclPageLabel;
-	wxButton *m_exclPageButton;
+	wxMetroButton *m_exclPageButton;
 
 	void DetachCurrentInputPage();
 
