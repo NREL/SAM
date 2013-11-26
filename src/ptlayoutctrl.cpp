@@ -70,7 +70,7 @@ DEFINE_EVENT_TYPE( wxEVT_PTLAYOUT_CHANGE )
 
 
 PTLayoutCtrl::PTLayoutCtrl(wxWindow *parent, int id, const wxPoint &pos, const wxSize &sz)
-	: wxPanel(parent, id, pos, sz, wxWANTS_CHARS|wxCLIP_CHILDREN)
+	: wxPanel(parent, id, pos, sz, wxWANTS_CHARS|wxCLIP_CHILDREN|wxTAB_TRAVERSAL)
 {
 	bSpanAngleEnabled = true;
 	mSpanAngle = 360.0;
@@ -86,14 +86,9 @@ PTLayoutCtrl::PTLayoutCtrl(wxWindow *parent, int id, const wxPoint &pos, const w
 
 	mRenderer = new PTLayoutRenderer(this);
 
-	mLblSpan = new wxLabel(this, -1, "Span Angle:");
-	mLblSpan->AlignRight();
-
-	mLblRows = new wxLabel(this, -1, "Radial Zones:");
-	mLblRows->AlignRight();
-
-	mLblCols = new wxLabel(this, -1, "Azimuthal Zones:");
-	mLblCols->AlignRight();
+	mLblSpan = new wxStaticText(this, -1, "Span Angle:");
+	mLblRows = new wxStaticText(this, -1, "Radial Zones:");
+	mLblCols = new wxStaticText(this, -1, "Azimuthal Zones:");
 
 	mGrid = new wxGrid(this, IDPT_GRID);	
 	mGrid->CreateGrid(6,8);
@@ -110,11 +105,11 @@ PTLayoutCtrl::PTLayoutCtrl(wxWindow *parent, int id, const wxPoint &pos, const w
 	mGrid->SetColLabelAlignment(wxALIGN_LEFT,wxALIGN_CENTRE);
 
 	wxBoxSizer *boxctrls = new wxBoxSizer(wxHORIZONTAL);
-	boxctrls->Add( mLblSpan, 2, wxALL|wxEXPAND, 1);
+	boxctrls->Add( mLblSpan, 2, wxALL|wxALIGN_CENTER_VERTICAL|wxALIGN_RIGHT, 1);
 	boxctrls->Add( mNumSpan, 1, wxALL|wxEXPAND, 1);
-	boxctrls->Add( mLblRows, 2, wxALL|wxEXPAND, 1);
+	boxctrls->Add( mLblRows, 2, wxALL|wxALIGN_CENTER_VERTICAL|wxALIGN_RIGHT, 1);
 	boxctrls->Add( mNumRows, 1, wxALL|wxEXPAND, 1);
-	boxctrls->Add( mLblCols, 2, wxALL|wxEXPAND, 1);
+	boxctrls->Add( mLblCols, 2, wxALL|wxALIGN_CENTER_VERTICAL|wxALIGN_RIGHT, 1);
 	boxctrls->Add( mNumCols, 1, wxALL|wxEXPAND, 1);
 
 
@@ -129,8 +124,8 @@ PTLayoutCtrl::PTLayoutCtrl(wxWindow *parent, int id, const wxPoint &pos, const w
 	boxgrid->Add( boximpexp, 0, wxALL|wxEXPAND, 1);
 
 	wxBoxSizer *boxmain = new wxBoxSizer(wxHORIZONTAL);
-	boxmain->Add( mRenderer, 4, wxALL|wxEXPAND,1);
-	boxmain->Add( boxgrid, 7, wxALL|wxEXPAND, 1);
+	boxmain->Add( mRenderer, 4, wxALL|wxEXPAND,0);
+	boxmain->Add( boxgrid, 7, wxALL|wxEXPAND, 0);
 
 	SetSizer( boxmain );
 
@@ -147,6 +142,7 @@ void PTLayoutCtrl::EnableSpanAngle(bool b)
 	bSpanAngleEnabled = b;
 	mNumSpan->Show( b );
 	mLblSpan->Show( b );
+	Layout();
 
 	if ( !bSpanAngleEnabled  && mSpanAngle != 360.0 )
 	{
@@ -206,7 +202,7 @@ void PTLayoutCtrl::UpdateData()
 		{
 			for (int c=0;c<nc;c++)
 			{
-				mGrid->SetCellValue( r,c, wxString::Format("%lg", mData.at(r,c)));
+				mGrid->SetCellValue( r,c, wxString::Format("%g", mData.at(r,c)));
 				mGrid->SetCellBackgroundColour(r,c,*wxWHITE);
 			}
 		}
@@ -400,7 +396,7 @@ void PTLayoutCtrl::OnExport(wxCommandEvent &evt)
 
 		for (int r=0;r<mData.nrows();r++)
 			for (int c=0;c<mData.ncols();c++)
-				fprintf(fp, "%lg%c", mData.at(r,c), c<mData.ncols()-1?',':'\n');
+				fprintf(fp, "%g%c", mData.at(r,c), c<mData.ncols()-1?',':'\n');
 
 		fclose(fp);
 	}
@@ -491,7 +487,7 @@ void PTLayoutCtrl::OnGridCellChange(wxGridEvent &evt)
 	if ( mData.ncols() > 2 && r == 0 && val == 0 && mData.nrows() > 2 && mSpanAngle==360.0)
 	{
 		wxMessageBox("The ring of radial zones closest to the tower are not allowed to have 0 heliostats.");
-		mGrid->SetCellValue( r, c, wxString::Format("%lg", mData.at(r,c) ));
+		mGrid->SetCellValue( r, c, wxString::Format("%g", mData.at(r,c) ));
 		return;
 	}
 
@@ -499,7 +495,7 @@ void PTLayoutCtrl::OnGridCellChange(wxGridEvent &evt)
 		val = 0;
 
 	mData.at(r,c) = val;
-	mGrid->SetCellValue( r, c, wxString::Format("%lg", val) );
+	mGrid->SetCellValue( r, c, wxString::Format("%g", val) );
 	mRenderer->Refresh();
 
 	DispatchEvent();
@@ -818,7 +814,8 @@ void PTLayoutRenderer::DrawZonal(wxDC &dc, const wxRect &geom)
 
 	dc.SetBrush(*wxBLACK_BRUSH);
 	dc.SetPen(*wxBLACK_PEN);
-
+	
+	dc.SetTextForeground(*wxBLACK);
 	wxDrawArrow(dc, wxARROW_DOWN, geom.x+3, geom.y+4, 10, 10);
 	dc.DrawText("To Equator", geom.x+16, geom.y+3);
 
