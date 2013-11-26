@@ -1,6 +1,8 @@
 #include <wx/wx.h>
 #include <wx/splitter.h>
 #include <wx/simplebook.h>
+#include <wx/statline.h>
+
 #include <wex/metro.h>
 #include <wex/lkscript.h>
 #include <wex/extgrid.h>
@@ -14,9 +16,6 @@
 #include "ipagelist.h"
 
 #include "../resource/graph.cpng"
-
-
-
 
 class ActiveInputPage : public InputPageBase
 {
@@ -105,17 +104,28 @@ CaseWindow::CaseWindow( wxWindow *parent, Case *c )
 
 	m_pageFlipper = new wxSimplebook( this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxBORDER_NONE );
 
-	m_inputPageScrollWin = new wxScrolledWindow( m_pageFlipper );
+	m_inputPagePanel = new wxPanel( m_pageFlipper );
+	m_inputPagePanel->SetBackgroundColour( *wxWHITE );
+
+	m_inputPageScrollWin = new wxScrolledWindow( m_inputPagePanel );
 	m_inputPageScrollWin->SetBackgroundColour( *wxWHITE );
-	m_exclPageLabel = new wxStaticText( m_inputPageScrollWin, wxID_ANY, wxEmptyString );	
-	wxFont font = m_exclPageLabel->GetFont();
-	font.SetWeight( wxFONTWEIGHT_BOLD );
-	font.SetPointSize( font.GetPointSize()+1 );
-	m_exclPageLabel->SetFont(font);
-	m_exclPageLabel->Show( false );
-	
-	m_exclPageButton = new wxButton( m_inputPageScrollWin, ID_EXCL_BUTTON, "Change..." );
-	m_exclPageButton->Show( false );
+
+	m_exclPanel = new wxPanel( m_inputPagePanel );
+	m_exclPageLabel = new wxStaticText( m_exclPanel, wxID_ANY, wxEmptyString );	
+	m_exclPageLabel->SetFont( wxMetroTheme::Font( wxMT_NORMAL, 12 ));	
+	m_exclPageButton = new wxMetroButton( m_exclPanel, ID_EXCL_BUTTON, "Change..." );
+	wxBoxSizer *excl_horiz = new wxBoxSizer( wxHORIZONTAL );
+	excl_horiz->Add( m_exclPageLabel, 1, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
+	excl_horiz->Add( m_exclPageButton, 0, wxALL, 1 );
+	wxBoxSizer *excl_vert = new wxBoxSizer( wxVERTICAL );
+	excl_vert->Add( excl_horiz, 0, wxALL|wxEXPAND, 1 );
+	excl_vert->Add( new wxStaticLine( m_exclPanel ), 1, wxALL|wxEXPAND, 1 );
+	m_exclPanel->SetSizer( excl_vert );
+
+	wxBoxSizer *ip_sizer = new wxBoxSizer( wxVERTICAL );
+	ip_sizer->Add( m_exclPanel, 0, wxALL|wxEXPAND, 0 );
+	ip_sizer->Add( m_inputPageScrollWin, 1, wxALL|wxEXPAND, 0 );
+	m_inputPagePanel->SetSizer( ip_sizer );
 
 	m_resultsTab = new wxMetroNotebook( m_pageFlipper, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxMT_LIGHTTHEME );
 	
@@ -190,13 +200,11 @@ CaseWindow::CaseWindow( wxWindow *parent, Case *c )
 	m_scriptCtrl = new wxLKScriptCtrl( m_resultsTab, wxID_ANY );
 	m_resultsTab->AddPage( m_scriptCtrl, "Scripting", false );
 
-	m_pageFlipper->AddPage( m_inputPageScrollWin, "Input Pages", true );
+	m_pageFlipper->AddPage( m_inputPagePanel, "Input Pages", true );
 	m_pageFlipper->AddPage( m_resultsTab, "Output Pages", false );
 
 	SplitVertically( left_panel, m_pageFlipper, 210 );
-
-	UpdateConfiguration();
-
+	
 	
 	m_pageNote = new PageNote( this );
 
@@ -230,6 +238,9 @@ CaseWindow::CaseWindow( wxWindow *parent, Case *c )
 
 		m_pageNote->SetPosition(wxPoint(notex,notey));
 	}
+
+	
+	UpdateConfiguration();
 }
 
 CaseWindow::~CaseWindow()
@@ -375,6 +386,8 @@ void CaseWindow::OnCaseEvent( Case *c, CaseEvent &evt )
 
 void CaseWindow::DetachCurrentInputPage()
 {
+	m_exclPanel->Show( false );
+	
 	for( size_t i=0;i<m_currentShownPages.size();i++ )
 		m_currentShownPages[i]->Destroy();
 	m_currentShownPages.clear();
@@ -404,11 +417,13 @@ bool CaseWindow::SwitchToInputPage( const wxString &name )
 
 void CaseWindow::OrganizeCurrentPages()
 {
+	m_exclPanel->Show( false );
+
 	if ( !m_currentGroup ) return;
 	
 	int y = 0;
 	int x = 0;
-
+	
 	if ( m_currentGroup->OrganizeAsExclusivePages )
 	{
 		VarValue *vv = m_case->Values().Get( m_currentGroup->ExclusivePageVar );
@@ -422,28 +437,17 @@ void CaseWindow::OrganizeCurrentPages()
 		for( size_t i=0;i<m_currentShownPages.size();i++ )
 		{
 			InputPageBase *page = m_currentShownPages[i];
-			wxSize sz = page->GetClientSize();
-			if ( i == vv->Integer() )
+			page->Show( i == vv->Integer() );
+			if ( page->IsShown() )
 			{
-				page->Show( true );
 				m_exclPageLabel->SetLabel( page->GetName() );
+				wxSize sz = page->GetClientSize();
+				x = sz.x;
 				y = sz.y;
 			}
-			else
-				page->Show( false );
+		}		
 
-			page->SetPosition( wxPoint(0,30) );
-			if ( sz.x > x ) x = sz.x;
-		}
-
-		m_exclPageLabel->SetSize( 5, 5, 300, 23 );
-		m_exclPageLabel->Show();
-		m_exclPageLabel->Refresh();
-
-		m_exclPageButton->SetSize( 305, 5, 120, 23 );
-		m_exclPageButton->Show();
-
-		y += 30;
+		m_exclPanel->Show( true );
 	}
 	else
 	{
@@ -457,14 +461,16 @@ void CaseWindow::OrganizeCurrentPages()
 			if ( sz.x > x ) x = sz.x;
 		}
 	}
-
+	
+	m_inputPagePanel->Layout();
 	m_inputPageScrollWin->SetScrollbars(1,1, x, y, 0, 0);
-	m_inputPageScrollWin->SetScrollRate(50,50);
+	m_inputPageScrollWin->SetScrollRate(15,15);
 	m_inputPageScrollWin->Scroll(0,0);
 }
 
 void CaseWindow::UpdateConfiguration()
 {
+	DetachCurrentInputPage();
 	m_inputPageList->ClearItems();
 
 	wxString tech, fin;
