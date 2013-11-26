@@ -333,7 +333,7 @@ public:
 	virtual wxString GetTypeName() { return "SchedNumeric"; }
 	virtual wxUIObject *Duplicate() { wxUIObject *o = new wxUISchedNumericObject; o->Copy( this ); return o; }
 	virtual bool IsNativeObject() { return true; }
-	virtual bool DrawDottedOutline() { return true; }
+	virtual bool DrawDottedOutline() { return false; }
 	virtual wxWindow *CreateNative( wxWindow *parent ) {
 		AFSchedNumeric *sn = new AFSchedNumeric( parent, wxID_ANY ) ;
 		sn->SetLabel( Property("Label").GetString() );
@@ -383,10 +383,42 @@ public:
 	}
 };
 
+#include "ptlayoutctrl.h"
+
+
+class wxUIPTLayoutObject : public wxUIObject
+{
+public:
+	wxUIPTLayoutObject() {
+		AddProperty("EnableSpan", new wxUIProperty( false ) );
+		Property("Width").Set( 650 );
+		Property("Height").Set( 300 );
+	}
+	virtual wxString GetTypeName() { return "PTLayout"; }
+	virtual wxUIObject *Duplicate() { wxUIObject *o = new wxUIPTLayoutObject; o->Copy( this ); return o; }
+	virtual bool IsNativeObject() { return true; }
+	virtual bool DrawDottedOutline() { return false; }
+	virtual wxWindow *CreateNative( wxWindow *parent ) {		
+		PTLayoutCtrl *pt = new PTLayoutCtrl( parent, wxID_ANY );
+		pt->EnableSpanAngle( Property("EnableSpan").GetBoolean() );
+		return AssignNative( pt );
+	}
+	virtual void OnPropertyChanged( const wxString &id, wxUIProperty *p )
+	{
+		if ( PTLayoutCtrl *pt = GetNative<PTLayoutCtrl>() )
+		{
+			if ( id == "EnableSpan" ) pt->EnableSpanAngle( p->GetBoolean() );
+		}
+	}
+};
+
+
 
 void RegisterUIWidgetsForSAM()
 {
 	wxUIObjectTypeProvider::Register( new wxUISchedNumericObject );
+	wxUIObjectTypeProvider::Register( new wxUIPTLayoutObject );
+
 /* TODO LIST 
 
 { GUI_ADD_CONTROL_ID+20, "PTLayout",         "PTLayoutCtrl",           ptlayctrl_xpm,   CTRL_NATIVE,  10, 15, 800, 300,  props_ptlayout,        NULL,       objinit_ptlayout,       objfree_ptlayout,       nativesetprop_ptlayout,       paint_ptlayout,       iswithin_default,   nativeevt_ptlayout,       vartoctrl_ptlayout,       ctrltovar_ptlayout,       false  },

@@ -17,8 +17,9 @@
 
 #include "main.h"
 #include "uiwidgets.h"
-#include "inputpage.h"
+#include "ptlayoutctrl.h"
 
+#include "inputpage.h"
 #include "invoke.h"
 
 
@@ -231,6 +232,7 @@ BEGIN_EVENT_TABLE( InputPageBase, wxPanel )
 	EVT_NUMERIC( wxID_ANY, InputPageBase::OnNativeEvent )
 	EVT_SLIDER( wxID_ANY, InputPageBase::OnNativeEvent )
 	EVT_SCHEDCTRL( wxID_ANY, InputPageBase::OnNativeEvent )
+	EVT_PTLAYOUT( wxID_ANY, InputPageBase::OnNativeEvent )
 
 	EVT_ERASE_BACKGROUND( InputPageBase::OnErase )
 	EVT_PAINT( InputPageBase::OnPaint )
@@ -507,6 +509,22 @@ bool InputPageBase::DataExchange( wxUIObject *obj, VarValue &val, DdxDir dir )
 	{
 		if ( dir == VAR_TO_OBJ ) sc->Schedule( val.String() );
 		else val.Set( sc->Schedule() );
+	}
+	else if ( PTLayoutCtrl *pt = obj->GetNative<PTLayoutCtrl>() )
+	{
+		if ( dir == VAR_TO_OBJ )
+		{
+			VarTable &tab = val.Table();
+			if ( VarValue *v = tab.Get("grid") ) pt->SetGrid( v->Matrix() );
+			if ( VarValue *v = tab.Get("span") ) pt->SetSpanAngle( v->Value() );
+		}
+		else
+		{
+			VarTable tab;
+			tab.Set( "grid", VarValue( pt->GetGrid() ) );
+			tab.Set( "span", VarValue( (float)pt->GetSpanAngle()) );
+			val.Set( tab );
+		}
 	}
 	else return false; // object data exch not handled for this type
 

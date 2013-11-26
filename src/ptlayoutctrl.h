@@ -75,9 +75,9 @@ private:
 	wxNumericCtrl *mNumRows;
 	wxNumericCtrl *mNumCols;
 	wxNumericCtrl *mNumSpan;
-	wxLabel *mLblRows;
-	wxLabel *mLblCols;
-	wxLabel *mLblSpan;
+	wxStaticText *mLblRows;
+	wxStaticText *mLblCols;
+	wxStaticText *mLblSpan;
 
 	DECLARE_EVENT_TABLE()
 };
