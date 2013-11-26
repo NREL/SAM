@@ -14,6 +14,7 @@
 
 #include "../resource/nrel_small.cpng"
 #include "../resource/main_menu.cpng"
+#include "../resource/notes_white.cpng"
 
 #include <lk_absyn.h>
 #include <lk_parse.h>
@@ -79,6 +80,8 @@ BEGIN_EVENT_TABLE( MainWindow, wxFrame )
 	EVT_BUTTON( ID_MAIN_MENU, MainWindow::OnCommand )
 	EVT_LISTBOX( ID_CASE_TABS, MainWindow::OnCaseTabChange )
 	EVT_BUTTON( ID_CASE_TABS, MainWindow::OnCaseTabButton )
+	EVT_BUTTON( ID_CONTEXT_HELP, MainWindow::OnCommand )
+	EVT_BUTTON( ID_PAGE_NOTES, MainWindow::OnCommand )
 	EVT_MENU_RANGE( __idCaseMenuFirst, __idCaseMenuLast, MainWindow::OnCaseMenu )
 	EVT_MENU_RANGE( __idInternalFirst, __idInternalLast, MainWindow::OnInternalCommand )
 END_EVENT_TABLE()
@@ -129,11 +132,15 @@ MainWindow::MainWindow()
 	m_caseTabPanel = new wxPanel( m_topBook );
 	m_topBook->AddPage( m_caseTabPanel, wxT("Main project window") );
 
+	wxMetroButton *metbut = 0;
+
 	wxBoxSizer *tools = new wxBoxSizer( wxHORIZONTAL );
 	tools->Add( new wxMetroButton( m_caseTabPanel, ID_MAIN_MENU, wxEmptyString, wxBITMAP_PNG_FROM_DATA( main_menu ), wxDefaultPosition, wxDefaultSize /*, wxMB_DOWNARROW */), 0, wxALL|wxEXPAND, 0 );
 	tools->Add( new wxMetroButton( m_caseTabPanel, ID_CASE_CREATE, "New", wxBITMAP_PNG_FROM_DATA( cirplus ), wxDefaultPosition, wxDefaultSize), 0, wxALL|wxEXPAND, 0 );
 	m_caseTabList = new wxMetroTabList( m_caseTabPanel, ID_CASE_TABS, wxDefaultPosition, wxDefaultSize, wxMT_MENUBUTTONS );
 	tools->Add( m_caseTabList, 1, wxALL|wxEXPAND, 0 );		
+	tools->Add( metbut = new wxMetroButton( m_caseTabPanel, ID_PAGE_NOTES, wxEmptyString, wxBITMAP_PNG_FROM_DATA( notes_white ), wxDefaultPosition, wxDefaultSize), 0, wxALL|wxEXPAND, 0 );
+	metbut->SetToolTip( "Add a page note" );
 	tools->Add( new wxMetroButton( m_caseTabPanel, ID_CONTEXT_HELP, wxEmptyString, wxBITMAP_PNG_FROM_DATA(qmark), wxDefaultPosition, wxDefaultSize), 0, wxALL|wxEXPAND, 0 );
 	
 	m_caseNotebook = new wxSimplebook( m_caseTabPanel, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxBORDER_NONE );
@@ -267,8 +274,17 @@ void MainWindow::OnInternalCommand( wxCommandEvent &evt )
 
 void MainWindow::OnCommand( wxCommandEvent &evt )
 {
+	CaseWindow *cwin = GetCurrentCaseWindow();
+
 	switch( evt.GetId() )
 	{
+	case ID_CONTEXT_HELP:
+		wxMessageBox( "the help system is not enabled: " + (cwin?cwin->GetCurrentContext():wxString("n/a")));
+		break;
+	case ID_PAGE_NOTES:
+		if ( cwin != 0 )
+			cwin->ShowPageNote();
+		break;
 	case ID_CASE_CREATE:
 		CreateNewCase();
 		break;
@@ -423,6 +439,10 @@ bool MainWindow::SaveProject( const wxString &file )
 	m_project.SetProperty( "ui.case_tab_order", wxJoin( tabs, '|' ) );
 	m_project.SetProperty( "ui.selected_case", m_caseTabList->GetStringSelection() );
 
+	for( size_t i=0;i<m_caseNotebook->GetPageCount();i++ )
+		if ( CaseWindow *cw = dynamic_cast<CaseWindow*>(m_caseNotebook->GetPage(i)) )
+			cw->SaveCurrentViewProperties();
+
 	bool ok = m_project.WriteArchive( file );
 	if ( ok ) m_project.SetModified( false );
 
@@ -432,6 +452,8 @@ bool MainWindow::SaveProject( const wxString &file )
 
 CaseWindow *MainWindow::GetCaseWindow( Case *c )
 {
+	if ( !c ) return 0;
+
 	for( size_t i=0;i<m_caseNotebook->GetPageCount();i++ )
 		if ( CaseWindow *cw = dynamic_cast<CaseWindow*>(m_caseNotebook->GetPage( i ) ) )
 			if ( cw->GetCase() == c )
@@ -456,7 +478,13 @@ void MainWindow::SwitchToCaseWindow( const wxString &case_name )
 				m_caseTabList->SetSelection( idx );
 				m_caseTabList->Refresh();
 			}
-		}
+		}		
+
+		// update all the page notes so they get
+		// hidden/shown appropriately
+		for( size_t i=0;i<m_caseNotebook->GetPageCount();i++ )
+			if ( CaseWindow *cw = dynamic_cast<CaseWindow*>( m_caseNotebook->GetPage(i) ) )
+				cw->UpdatePageNote();
 	}
 }
 
@@ -493,10 +521,22 @@ void MainWindow::OnCaseTabButton( wxCommandEvent &evt )
 	PopupMenu( &menu );
 }
 
-void MainWindow::OnCaseMenu( wxCommandEvent &evt )
+CaseWindow *MainWindow::GetCurrentCaseWindow()
+{
+	return GetCaseWindow( GetCurrentCase() );
+}
+
+Case *MainWindow::GetCurrentCase()
 {
 	size_t tab_sel = m_caseTabList->GetSelection();
 	wxString case_name = m_caseTabList->GetLabel( tab_sel );
+	return m_project.GetCase( case_name );
+}
+
+void MainWindow::OnCaseMenu( wxCommandEvent &evt )
+{
+	size_t tab_sel = m_caseTabList->GetSelection();
+	wxString case_name = m_caseTabList->GetLabel( tab_sel );	
 	Case *c = m_project.GetCase( case_name );
 	CaseWindow *cw = GetCaseWindow( c );
 
@@ -858,7 +898,7 @@ bool SamApp::OnInit()
 	g_mainWindow = new MainWindow();
 	g_mainWindow->Show();
 
-	ShowIDEWindow();
+	//ShowIDEWindow();
 
 	return true;
 }
