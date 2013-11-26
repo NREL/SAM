@@ -21,6 +21,7 @@ OBJECTS = ide.o \
 	case.o \
 	main.o \
 	equations.o \
+	ptlayoutctrl.o \
 	inputpage.o \
 	uiwidgets.o \
 	variables.o \
