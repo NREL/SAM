@@ -162,3 +162,29 @@ void Case::SendEvent( CaseEvent e )
 	for( size_t i=0;i<m_listeners.size();i++ )
 		m_listeners[i]->OnCaseEvent( this, e );
 }
+
+wxString Case::GetProperty( const wxString &id )
+{
+	StringHash::iterator it = m_properties.find( id );
+	if ( it != m_properties.end() )
+		return it->second;
+	else
+		return wxEmptyString;
+}
+void Case::SetProperty( const wxString &id, const wxString &value )
+{
+	m_properties[id] = value;
+}
+
+wxString Case::RetrieveNote( const wxString &id )
+{
+	StringHash::iterator it = m_notes.find( id );
+	if ( it != m_notes.end() )
+		return it->second;
+	else return wxEmptyString;
+}
+
+void Case::SaveNote( const wxString &id, const wxString &text )
+{
+	m_notes[id] = text;
+}

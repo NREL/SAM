@@ -601,8 +601,8 @@ void InputPageList::DrawItem( wxDC &dc, int i, bool with_separator )
 	dc.DrawText( m_items[i].name, r.x+TXTXOFF, r.y+TXTXOFF );
 	dc.SetBackground( wxBrush( GetBackgroundColour() ) );
 
-	if (g_notesBitmap.IsOk() /*&& m_caseWin 
-		&& m_caseWin->HasPageNote( m_items[i].resource )*/)
+	if (g_notesBitmap.IsOk() && m_caseWin 
+		 && m_caseWin->HasPageNote( m_items[i].resource ) )
 	{
 		int tx_w = dc.GetTextExtent( m_items[i].name ).GetWidth();
 		dc.DrawBitmap(g_notesBitmap, r.x+TXTXOFF+tx_w+4,r.y+TXTXOFF +dc.GetCharHeight()/2-g_notesBitmap.GetHeight()/2);

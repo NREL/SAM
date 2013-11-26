@@ -1,6 +1,6 @@
 
 on_load{'Test 1'} = define() {
-	msgbox('script callback for ->on_load - works!');
+	log('script callback for ->on_load - works!');
 };
 
 on_change{'chk_hello_1'}= define() {

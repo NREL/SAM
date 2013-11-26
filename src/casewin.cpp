@@ -85,6 +85,7 @@ CaseWindow::CaseWindow( wxWindow *parent, Case *c )
 	wxPanel *left_panel = new wxPanel( this );
 	left_panel->SetBackgroundColour( *wxWHITE );
 	m_inputPageList = new InputPageList( left_panel, ID_INPUTPAGELIST );
+	m_inputPageList->SetCaseWindow( this );
 	m_inputPageList->SetBackgroundColour( wxColour(243,243,243) );
 	for ( int i=0;i<10;i++ ) m_inputPageList->Add( wxString::Format("Input page %d", i+1) );
 
@@ -195,6 +196,40 @@ CaseWindow::CaseWindow( wxWindow *parent, Case *c )
 	SplitVertically( left_panel, m_pageFlipper, 210 );
 
 	UpdateConfiguration();
+
+	
+	m_pageNote = new PageNote( this );
+
+	// load page note window geometry
+	int nw_xrel, nw_yrel, nw_w, nw_h;
+	nw_xrel = wxAtoi( m_case->GetProperty("NoteWindowXRel") );
+	nw_yrel = wxAtoi( m_case->GetProperty("NoteWindowYRel") );
+	nw_w = wxAtoi( m_case->GetProperty("NoteWindowWidth") );
+	nw_h = wxAtoi( m_case->GetProperty("NoteWindowHeight") );
+	
+	wxLogStatus("nw_xrel = %d, nw_yrel = %d  (%d x %d)", nw_xrel, nw_yrel, nw_w, nw_h );
+
+	if (nw_w > 50 && nw_w < 1024 && nw_h > 21 && nw_h < 1024)
+		m_pageNote->SetClientSize(nw_w, nw_h);
+
+	if (nw_xrel != 0 && nw_yrel != 0)
+	{
+		int px,py,pw,ph;
+		SamApp::Window()->GetPosition(&px,&py);
+		SamApp::Window()->GetSize(&pw,&ph);
+
+		int notex, notey;
+		notex = px + nw_xrel;
+		notey = py + nw_yrel;
+
+		if (notex < 0) notex = 0;
+		if (notey < 21) notey = 21;
+
+		if (notex > px+pw) notex = px+pw-100;
+		if (notey > py+ph) notey = py+ph-100;
+
+		m_pageNote->SetPosition(wxPoint(notex,notey));
+	}
 }
 
 CaseWindow::~CaseWindow()
@@ -203,6 +238,26 @@ CaseWindow::~CaseWindow()
 	DetachCurrentInputPage();
 
 	m_case->RemoveListener( this );
+}
+
+
+void CaseWindow::SaveCurrentViewProperties()
+{
+	UpdatePageNote(); // save the current note if it has changed
+
+	int px,py;
+	int x,y,w,h;
+	SamApp::Window()->GetPosition(&px,&py);
+	m_pageNote->GetPosition(&x,&y);
+		
+	x = x-px;
+	y = y-py;
+
+	m_pageNote->GetClientSize(&w,&h);
+	m_case->SetProperty("NoteWindowXRel", wxString::Format("%d", x ));
+	m_case->SetProperty("NoteWindowYRel", wxString::Format("%d",  y ));
+	m_case->SetProperty("NoteWindowWidth", wxString::Format("%d", w ));
+	m_case->SetProperty("NoteWindowHeight", wxString::Format("%d", h ));
 }
 
 class PageOptionDialog : public wxDialog
@@ -305,13 +360,16 @@ void CaseWindow::OnCaseEvent( Case *c, CaseEvent &evt )
 
 		// update side bar
 		m_inputPageList->Refresh();
+		
+		SamApp::Window()->Project().SetModified( true );
 	}
 	else if ( evt.GetType() == CaseEvent::CONFIG_CHANGED )
 	{
 		wxString sel = m_inputPageList->GetStringSelection();
 		UpdateConfiguration();
 		SwitchToInputPage( sel );
-
+		
+		SamApp::Window()->Project().SetModified( true );
 	}
 }
 
@@ -339,6 +397,7 @@ bool CaseWindow::SwitchToInputPage( const wxString &name )
 			m_currentShownPages.push_back( new ActiveInputPage( m_inputPageScrollWin, form, this ) );
 
 	OrganizeCurrentPages();
+	UpdatePageNote();
 
 	return true;
 }
@@ -429,10 +488,98 @@ void CaseWindow::UpdateConfiguration()
 				wxMessageBox("could not locate form data for " + pages[j] );			
 		}
 
-		m_inputPageList->Add( m_pageGroups[i]->Caption );
+		m_inputPageList->Add( m_pageGroups[i]->Caption, i < m_pageGroups.size()-1, m_pageGroups[i]->HelpContext );
 	}
 
 }
+
+
+void CaseWindow::UpdatePageNote()
+{
+	// save page note to ID
+	if (m_lastPageNoteId != "")
+	{
+		// check if the note text has changed
+		wxString old_note = m_case->RetrieveNote(m_lastPageNoteId);
+		if (old_note != m_pageNote->GetText())
+			SamApp::Window()->Project().SetModified( true );
+
+		m_case->SaveNote( m_lastPageNoteId, m_pageNote->GetText() );
+		if (m_pageFlipper->GetSelection() == 0)
+			m_inputPageList->Refresh();
+	}
+
+	// update ID
+	m_lastPageNoteId = GetCurrentContext();
+
+	// update text on page note
+	wxString text = m_case->RetrieveNote( m_lastPageNoteId );
+	m_pageNote->SetText(text);
+	m_pageNote->Show( SamApp::Window()->GetCurrentCaseWindow() == this && !text.IsEmpty() );
+}
+
+void CaseWindow::ShowPageNote()
+{
+	m_pageNote->Show();
+	m_pageNote->GetTextCtrl()->SetFocus();
+}
+
+bool CaseWindow::HasPageNote(const wxString &id)
+{
+	return !id.IsEmpty() && !m_case->RetrieveNote(id).IsEmpty();
+}
+
+wxString CaseWindow::GetCurrentContext()
+{
+	wxString id = "about";
+	wxString tech, fin;
+	m_case->GetConfiguration( &tech, &fin );
+	int page = m_pageFlipper->GetSelection();
+
+	if (page == 0)
+	{
+		if ( m_currentGroup ) id = m_currentGroup->HelpContext;
+		else id = "Inputs";
+	}
+	else if (page == 1)
+	{
+		int respage = m_resultsTab->GetSelection();
+		switch(respage)
+		{
+		case 0: id = "Base Case"; break;			
+		case 1: id = "Parametrics"; break;
+		case 2: 
+			{
+				if (fin=="Residential") 
+					id="Cash Flow Residential";
+				else if (fin=="Commercial") 
+					id="Cash Flow Commercial";
+				else if (fin=="Commercial PPA") 
+					id="Cash Flow Commercial PPA";
+				else if (fin=="Independent Power Producer") 
+					id="Cash Flow Utility IPP";
+				else if (fin=="Single Owner") 
+					id="Cash Flow Utility SO";
+				else if (fin=="All Equity Partnership Flip") 
+					id="Cash Flow Utility AEPF";
+				else if (fin=="Leveraged Partnership Flip") 
+					id="Cash Flow Utility LPF";
+				else if (fin=="Sale Leaseback") 
+					id="Cash Flow Utility SL";
+				else
+					id = "Base Case Cashflow"; 
+				break;
+			}
+
+		case 3: id = "Monte Carlo"; break;		
+		case 4: id = "Scripting"; break;
+		default: id = "Results";
+		}
+	}
+
+	return id;
+}
+
 
 /* ********* SAM Page Notes ************** */
 
@@ -444,23 +591,26 @@ PageNote::PageNote(CaseWindow *cwin)
 	: wxMiniFrame(cwin, -1, "Notes", wxDefaultPosition, wxDefaultSize,
 			  wxCLOSE_BOX|wxSYSTEM_MENU|wxCAPTION/*|wxSTAY_ON_TOP*/|wxRESIZE_BORDER)
 {
-	mText = new wxTextCtrl(this,
-		-1, "", wxDefaultPosition ,wxDefaultSize,
-		wxTE_MULTILINE);
-	wxFont f = mText->GetFont();
-	f.SetPointSize( f.GetPointSize() + 2 );
-	mText->SetFont( f );
-	mText->SetBackgroundColour( wxColour(255,255,168) );
+	m_text = new wxTextCtrl(this,
+		wxID_ANY, wxEmptyString, wxDefaultPosition ,wxDefaultSize,
+		wxTE_MULTILINE|wxBORDER_NONE);
+	m_text->SetFont( wxMetroTheme::Font( wxMT_LIGHT, 12 ));
+	m_text->SetBackgroundColour( wxColour(255,255,180) );
 }
 
 void PageNote::SetText(const wxString &t)
 {
-	mText->SetValue(t);
+	m_text->SetValue(t);
 }
 
 wxString PageNote::GetText()
 {
-	return mText->GetValue();
+	return m_text->GetValue();
+}
+
+wxTextCtrl *PageNote::GetTextCtrl()
+{
+	return m_text;
 }
 
 void PageNote::OnHideClose(wxCloseEvent &evt)

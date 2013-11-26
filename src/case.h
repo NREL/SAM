@@ -64,7 +64,11 @@ public:
 	VarTable &BaseCase();
 
 	StringHash &Properties() { return m_properties; }
+	wxString GetProperty( const wxString &id );
+	void SetProperty( const wxString &id, const wxString &value );
 	StringHash &Notes() { return m_notes; }
+	wxString RetrieveNote( const wxString &id );
+	void SaveNote( const wxString &id, const wxString &text );
 
 	void AddListener( CaseEventListener *cel );
 	void RemoveListener( CaseEventListener *cel );
