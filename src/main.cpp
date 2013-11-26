@@ -850,7 +850,8 @@ public:
 	}
 };
 
-extern void RegisterInputPageObjects(); // decl of function in "inputpage.h"
+
+extern void RegisterUIWidgetsForSAM();
 
 bool SamApp::OnInit()
 {
@@ -877,7 +878,8 @@ bool SamApp::OnInit()
 	ObjectTypes::Register( new Case );
 
 	// register all input page UI objects 
-	RegisterInputPageObjects();
+	wxUIObjectTypeProvider::RegisterBuiltinTypes();
+	RegisterUIWidgetsForSAM();
 
 	wxInitAllImageHandlers();
 	wxSimpleCurlInit();
@@ -896,8 +898,10 @@ bool SamApp::OnInit()
 	Restart(); // loads and runs startup scripts, sets up variable databases
 
 	g_mainWindow = new MainWindow();
-	g_mainWindow->Show();
+	SetTopWindow( g_mainWindow );
 
+	g_mainWindow->Show();
+	g_mainWindow->CreateProject();
 	//ShowIDEWindow();
 
 	return true;

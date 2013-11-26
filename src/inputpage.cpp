@@ -230,6 +230,7 @@ BEGIN_EVENT_TABLE( InputPageBase, wxPanel )
 	EVT_TEXT_ENTER( wxID_ANY, InputPageBase::OnNativeEvent )
 	EVT_NUMERIC( wxID_ANY, InputPageBase::OnNativeEvent )
 	EVT_SLIDER( wxID_ANY, InputPageBase::OnNativeEvent )
+	EVT_SCHEDCTRL( wxID_ANY, InputPageBase::OnNativeEvent )
 
 	EVT_ERASE_BACKGROUND( InputPageBase::OnErase )
 	EVT_PAINT( InputPageBase::OnPaint )
@@ -432,33 +433,6 @@ void InputPageBase::OnNativeEvent( wxCommandEvent &evt )
 	
 }
 
-
-void RegisterInputPageObjects()
-{
-/* These objects are pre-registered as "built-in" types
-
-	wxUIObjectTypeProvider::Register( new wxUIButtonObject );
-	wxUIObjectTypeProvider::Register( new wxUICheckBoxObject );
-	wxUIObjectTypeProvider::Register( new wxUIChoiceObject );
-	wxUIObjectTypeProvider::Register( new wxUIGroupBoxObject );
-	wxUIObjectTypeProvider::Register( new wxUIListBoxObject );
-	wxUIObjectTypeProvider::Register( new wxUICheckListBoxObject );
-	wxUIObjectTypeProvider::Register( new wxUILabelObject );
-	wxUIObjectTypeProvider::Register( new wxUIRadioChoiceObject );
-	wxUIObjectTypeProvider::Register( new wxUITextEntryObject );
-	wxUIObjectTypeProvider::Register( new wxUIMultilineTextObject );
-	wxUIObjectTypeProvider::Register( new wxUINumericObject );
-	wxUIObjectTypeProvider::Register( new wxUIImageObject );
-	wxUIObjectTypeProvider::Register( new wxUISliderObject );
-
-*/
-	wxUIObjectTypeProvider::RegisterBuiltinTypes();
-
-	// register other SAM-specific objects here.  Then make sure
-	// that "data containing" objects are handled in the 
-	// DataExchange method below.
-}
-
 bool InputPageBase::DataExchange( wxUIObject *obj, VarValue &val, DdxDir dir )
 {
 	if ( wxNumericCtrl *num = obj->GetNative<wxNumericCtrl>() )
@@ -499,6 +473,40 @@ bool InputPageBase::DataExchange( wxUIObject *obj, VarValue &val, DdxDir dir )
 	{
 		if ( dir == VAR_TO_OBJ ) sli->SetValue( val.Integer() );
 		else val.Set( sli->GetValue() );
+	}
+	else if( AFSchedNumeric *sn = obj->GetNative<AFSchedNumeric>() )
+	{
+		if ( dir == VAR_TO_OBJ )
+		{
+			std::vector<float> vals = val.Array();
+			bool bScheduleOnly = obj->Property("ScheduleOnly").GetBoolean();
+			if (!bScheduleOnly)
+				sn->UseSchedule( vals.size() > 1 );
+			else
+				sn->UseSchedule( true );
+
+			if (vals.size() > 0)
+			{
+				sn->SetValue( vals[0] );
+				if (vals.size() > 1)
+					sn->SetSchedule( vals );
+			}
+		}
+		else
+		{
+			std::vector<float> vals;
+			if ((sn->UseSchedule()) || (sn->ScheduleOnly()))
+				sn->GetSchedule( &vals );
+			else
+				vals.push_back( sn->GetValue());
+
+			val.Set( &vals[0], vals.size() );
+		}
+	}
+	else if( wxSchedCtrl *sc = obj->GetNative<wxSchedCtrl>() )
+	{
+		if ( dir == VAR_TO_OBJ ) sc->Schedule( val.String() );
+		else val.Set( sc->Schedule() );
 	}
 	else return false; // object data exch not handled for this type
 
