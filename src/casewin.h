@@ -15,6 +15,8 @@ class wxLKScriptCtrl;
 class InputPageList;
 class BaseCase;
 
+class PageNote;
+
 class CaseWindow : public wxSplitterWindow, CaseEventListener
 {
 public:
@@ -22,13 +24,19 @@ public:
 	virtual ~CaseWindow();
 
 	Case *GetCase() { return m_case; }
-	bool HasPageNote( const wxString &page ) { return false; }
 
 	void UpdateConfiguration();
 
 	bool SwitchToInputPage( const wxString &name );
 	void OrganizeCurrentPages();
 	wxUIObject *FindActiveObject( const wxString &name, InputPageBase **page = 0 );
+
+	wxString GetCurrentContext();
+	void UpdatePageNote();
+	bool HasPageNote( const wxString &id );
+	void ShowPageNote();
+
+	void SaveCurrentViewProperties();
 
 private:
 	Case *m_case;
@@ -51,6 +59,9 @@ private:
 	BaseCase *m_baseCase;
 	wxLKScriptCtrl *m_scriptCtrl;
 
+	PageNote *m_pageNote;
+	wxString m_lastPageNoteId;
+
 	void OnCommand( wxCommandEvent & );	
 	virtual void OnCaseEvent( Case *, CaseEvent & );
 
@@ -65,8 +76,9 @@ public:
 	PageNote(CaseWindow *cwin);
 	void SetText(const wxString &t);
 	wxString GetText();
+	wxTextCtrl *GetTextCtrl();
 private:
-	wxTextCtrl *mText;
+	wxTextCtrl *m_text;
 	void OnHideClose(wxCloseEvent &evt);
 	DECLARE_EVENT_TABLE();
 };

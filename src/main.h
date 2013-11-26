@@ -56,6 +56,9 @@ public:
 
 	wxString GetProjectDisplayName();
 
+	Case *GetCurrentCase();
+	CaseWindow *GetCurrentCaseWindow();
+
 
 protected:
 	void OnClose( wxCloseEvent & );
