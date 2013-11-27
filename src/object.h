@@ -99,13 +99,12 @@ public:
 		t_array = new T[1];
 		n_rows = n_cols = 1;
 	}
-		
-	matrix_t(size_t len)
+
+	matrix_t( const matrix_t &rhs )
 	{
+		t_array = 0;
 		n_rows = n_cols = 0;
-		t_array = NULL;
-		if (len < 1) len = 1;
-		resize( 1, len );
+		copy( rhs );
 	}
 
 	matrix_t(size_t nr, size_t nc)
