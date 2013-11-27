@@ -2,20 +2,17 @@
 #define __ptlayoutctrl_h
 
 
-#include <vector>
-
 #include <wx/wx.h>
-#include <wx/treectrl.h>
-#include <wx/grid.h>
 #include <wx/listctrl.h>
 #include <wx/splitter.h>
 #include <wx/aui/auibook.h>
 #include <wx/imaglist.h>
 
-#include <wex/numeric.h>
-#include <wex/label.h>
+#include <wex/extgrid.h>
+class wxNumericCtrl;
 
 #include "object.h"
+
 
 BEGIN_DECLARE_EVENT_TYPES()
 DECLARE_EVENT_TYPE( wxEVT_PTLAYOUT_CHANGE, 0)
@@ -37,8 +34,11 @@ public:
 
 	double NumHeliostats();
 
-	void SetGrid(const matrix_t<float> &data);
-	matrix_t<float> GetGrid();
+	void Set( const matrix_t<float> &data );
+	void Get( matrix_t<float> *data );
+
+	void SetGrid(const matrix_t<double> &data);
+	matrix_t<double> GetGrid();
 	int NRows();
 	int NCols();
 
@@ -62,10 +62,7 @@ private:
 	void OnGridCellChange(wxGridEvent &evt);
 	void OnGridCellSelect(wxGridEvent &evt);
 
-	void OnImport(wxCommandEvent &evt);
-	void OnExport(wxCommandEvent &evt);
-
-	matrix_t<float> mData;
+	matrix_t<double> mData;
 	double mSpanAngle;
 
 	bool bSpanAngleEnabled;
