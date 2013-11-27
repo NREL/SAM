@@ -406,9 +406,7 @@ public:
 	virtual void OnPropertyChanged( const wxString &id, wxUIProperty *p )
 	{
 		if ( PTLayoutCtrl *pt = GetNative<PTLayoutCtrl>() )
-		{
 			if ( id == "EnableSpan" ) pt->EnableSpanAngle( p->GetBoolean() );
-		}
 	}
 };
 

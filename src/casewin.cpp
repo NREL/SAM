@@ -24,16 +24,8 @@ class ActiveInputPage : public InputPageBase
 
 public:
 	ActiveInputPage( wxWindow *parent, wxUIFormData *ipdata, CaseWindow *cw )
-		: InputPageBase( parent, ipdata, wxID_ANY )
-	{
-		m_cwin = cw;
-		m_case = cw->GetCase();
-		
-		SetBackgroundColour( *wxWHITE );
-		
-		m_formData->Attach( this );
-		SetClientSize( m_formData->GetSize() ); // resize self to specified form data
-		
+		: m_cwin(cw), m_case(cw->GetCase()), InputPageBase( parent, ipdata, wxID_ANY )
+	{		
 		Initialize();
 	}
 	virtual ~ActiveInputPage() { /* nothing to do */ }

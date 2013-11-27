@@ -243,6 +243,7 @@ InputPageBase::InputPageBase( wxWindow *parent, wxUIFormData *form, int id, cons
 	: wxPanel( parent, id, pos, size, wxTAB_TRAVERSAL|wxCLIP_CHILDREN ),
 	m_formData( form )
 {
+	SetBackgroundColour( *wxWHITE );
 	SetBackgroundStyle( wxBG_STYLE_PAINT );
 
 	m_formDataOwned = false;
@@ -515,13 +516,15 @@ bool InputPageBase::DataExchange( wxUIObject *obj, VarValue &val, DdxDir dir )
 		if ( dir == VAR_TO_OBJ )
 		{
 			VarTable &tab = val.Table();
-			if ( VarValue *v = tab.Get("grid") ) pt->SetGrid( v->Matrix() );
+			if ( VarValue *v = tab.Get("grid") ) pt->Set( v->Matrix() );
 			if ( VarValue *v = tab.Get("span") ) pt->SetSpanAngle( v->Value() );
 		}
 		else
 		{
+			matrix_t<float> grid;
+			pt->Get( &grid );
 			VarTable tab;
-			tab.Set( "grid", VarValue( pt->GetGrid() ) );
+			tab.Set( "grid", VarValue( grid ) );
 			tab.Set( "span", VarValue( (float)pt->GetSpanAngle()) );
 			val.Set( tab );
 		}
