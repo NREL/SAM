@@ -15,7 +15,7 @@ class wxNumericCtrl;
 
 
 BEGIN_DECLARE_EVENT_TYPES()
-DECLARE_EVENT_TYPE( wxEVT_PTLAYOUT_CHANGE, 0)
+	DECLARE_EVENT_TYPE( wxEVT_PTLAYOUT_CHANGE, 0)
 END_DECLARE_EVENT_TYPES()
 
 class PTLayoutRenderer;
@@ -28,53 +28,49 @@ friend class PTLayoutRenderer;
 public:
 	PTLayoutCtrl(wxWindow *parent, int id, const wxPoint &pos = wxDefaultPosition, const wxSize &sz = wxDefaultSize);
 	virtual ~PTLayoutCtrl();
+	
+	float NumHeliostats();
 
-	void LoadFromFile();
-	void SaveToFile();
+	
+	void SetGrid( const matrix_t<float> &data );
+	matrix_t<float> GetGrid() { return m_data; }
 
-	double NumHeliostats();
-
-	void Set( const matrix_t<float> &data );
-	void Get( matrix_t<float> *data );
-
-	void SetGrid(const matrix_t<double> &data);
-	matrix_t<double> GetGrid();
-	int NRows();
-	int NCols();
+	size_t NRows() { return m_data.nrows(); }
+	size_t NCols() { return m_data.ncols(); }
 
 	void EnableSpanAngle(bool b);
-	bool IsSpanAngleEnabled();
-	void SetSpanAngle(double a);
-	double GetSpanAngle(); 
+	bool IsSpanAngleEnabled() { return m_spanAngleEnabled; }
+	void SetSpanAngle(float a);
+	float GetSpanAngle() { return m_spanAngle; }
 
-	bool IsXY();
-	bool IsZonal();
+	bool IsXY() { return m_data.ncols() == 2; }
+	bool IsZonal() { return m_data.ncols() > 2; } 
 
 private:
 	
-	void FixDimensions(int &nr, int &nc);
+	void FixDimensions(size_t &nr, size_t &nc);
 	void DispatchEvent();
 	void UpdateData();
-	void ResizeGrid(int nrows, int ncols);
+	void ResizeGrid(size_t nrows, size_t ncols);
 
 	void OnSpanAngleChange(wxCommandEvent &evt);
 	void OnGridSizeChange(wxCommandEvent &evt);
 	void OnGridCellChange(wxGridEvent &evt);
 	void OnGridCellSelect(wxGridEvent &evt);
 
-	matrix_t<double> mData;
-	double mSpanAngle;
+	matrix_t<float> m_data;
+	float m_spanAngle;
+	bool m_spanAngleEnabled;
 
-	bool bSpanAngleEnabled;
+	PTLayoutRenderer *m_renderer;
 
-	PTLayoutRenderer *mRenderer;
-	wxGrid *mGrid;
-	wxNumericCtrl *mNumRows;
-	wxNumericCtrl *mNumCols;
-	wxNumericCtrl *mNumSpan;
-	wxStaticText *mLblRows;
-	wxStaticText *mLblCols;
-	wxStaticText *mLblSpan;
+	wxGrid *m_grid;
+	wxNumericCtrl *m_numRows;
+	wxNumericCtrl *m_numCols;
+	wxNumericCtrl *m_numSpan;
+	wxStaticText *m_lblRows;
+	wxStaticText *m_lblCols;
+	wxStaticText *m_lblSpan;
 
 	DECLARE_EVENT_TABLE()
 };
@@ -107,7 +103,5 @@ private:
 
 
 };
-
-
 
 #endif
