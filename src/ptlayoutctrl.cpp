@@ -10,76 +10,72 @@
 #include "ptlayoutctrl.h"
 
 
-enum { IDPT_GRID, IDPT_SPAN, IDPT_NUMROWS, IDPT_NUMCOLS };
+enum { ID_GRID = wxID_HIGHEST+134, ID_SPAN, ID_NUMROWS, ID_NUMCOLS };
 
-BEGIN_EVENT_TABLE(PTLayoutCtrl, wxPanel)
-
-EVT_TEXT_ENTER( IDPT_SPAN, PTLayoutCtrl::OnSpanAngleChange )
-EVT_TEXT_ENTER( IDPT_NUMROWS, PTLayoutCtrl::OnGridSizeChange )
-EVT_TEXT_ENTER( IDPT_NUMCOLS, PTLayoutCtrl::OnGridSizeChange )
-EVT_GRID_CMD_CELL_CHANGE( IDPT_GRID, PTLayoutCtrl::OnGridCellChange)
-EVT_GRID_CMD_SELECT_CELL( IDPT_GRID, PTLayoutCtrl::OnGridCellSelect)
-
-
+BEGIN_EVENT_TABLE( PTLayoutCtrl, wxPanel )
+	EVT_NUMERIC( ID_SPAN, PTLayoutCtrl::OnSpanAngleChange )
+	EVT_NUMERIC( ID_NUMROWS, PTLayoutCtrl::OnGridSizeChange )
+	EVT_NUMERIC( ID_NUMCOLS, PTLayoutCtrl::OnGridSizeChange )
+	EVT_GRID_CMD_CELL_CHANGE( ID_GRID, PTLayoutCtrl::OnGridCellChange)
+	EVT_GRID_CMD_SELECT_CELL( ID_GRID, PTLayoutCtrl::OnGridCellSelect)
 END_EVENT_TABLE()
 
 DEFINE_EVENT_TYPE( wxEVT_PTLAYOUT_CHANGE )
 
 
 PTLayoutCtrl::PTLayoutCtrl(wxWindow *parent, int id, const wxPoint &pos, const wxSize &sz)
-	: wxPanel(parent, id, pos, sz, wxWANTS_CHARS|wxCLIP_CHILDREN)
+	: wxPanel(parent, id, pos, sz, wxWANTS_CHARS|wxCLIP_CHILDREN|wxTAB_TRAVERSAL)
 {
-	bSpanAngleEnabled = true;
-	mSpanAngle = 360.0;
+	m_spanAngleEnabled = true;
+	m_spanAngle = 360;
 
-	mNumSpan = new wxNumericCtrl(this, IDPT_SPAN, 360.0);
-	mNumRows = new wxNumericCtrl(this, IDPT_NUMROWS, 6, wxNumericCtrl::INTEGER);
-	mNumCols = new wxNumericCtrl(this, IDPT_NUMCOLS, 8, wxNumericCtrl::INTEGER);
+	m_numSpan = new wxNumericCtrl(this, ID_SPAN, 360.0);
+	m_numRows = new wxNumericCtrl(this, ID_NUMROWS, 6, wxNumericCtrl::INTEGER);
+	m_numCols = new wxNumericCtrl(this, ID_NUMCOLS, 8, wxNumericCtrl::INTEGER);
 
-	mData.resize_fill(12,12, 0.0);
-	for (int r=0;r<mData.nrows();r++)
-		for (int c=0;c<mData.ncols();c++)
-			mData.at(r,c) = 1;
+	m_data.resize_fill(12,12, 0.0);
+	for (int r=0;r<m_data.nrows();r++)
+		for (int c=0;c<m_data.ncols();c++)
+			m_data.at(r,c) = 1;
 
-	mRenderer = new PTLayoutRenderer(this);
+	m_renderer = new PTLayoutRenderer(this);
 
-	mLblSpan = new wxStaticText(this, -1, "Span Angle:");
-	mLblRows = new wxStaticText(this, -1, "Radial Zones:");
-	mLblCols = new wxStaticText(this, -1, "Azimuthal Zones:");
+	m_lblSpan = new wxStaticText(this, wxID_ANY, "Span Angle:");
+	m_lblRows = new wxStaticText(this, wxID_ANY, "Radial Zones:");
+	m_lblCols = new wxStaticText(this, wxID_ANY, "Azimuthal Zones:");
 
-	mGrid = new wxGrid(this, IDPT_GRID);	
-	mGrid->CreateGrid(6,8);
-	mGrid->EnableEditing(true);
-	mGrid->DisableDragCell();
-	mGrid->DisableDragColSize();
-	mGrid->DisableDragRowSize();
-	mGrid->DisableDragColMove();
-	mGrid->DisableDragGridSize();
+	m_grid = new wxGrid(this, ID_GRID);	
+	m_grid->CreateGrid(6,8);
+	m_grid->EnableEditing(true);
+	m_grid->DisableDragCell();
+	m_grid->DisableDragColSize();
+	m_grid->DisableDragRowSize();
+	m_grid->DisableDragColMove();
+	m_grid->DisableDragGridSize();
 
-	mGrid->SetRowLabelSize(wxGRID_AUTOSIZE);
-	mGrid->SetRowLabelAlignment(wxALIGN_LEFT,wxALIGN_CENTRE);
-	mGrid->SetColLabelSize(wxGRID_AUTOSIZE);
-	mGrid->SetColLabelAlignment(wxALIGN_LEFT,wxALIGN_CENTRE);
+	m_grid->SetRowLabelSize(wxGRID_AUTOSIZE);
+	m_grid->SetRowLabelAlignment(wxALIGN_LEFT,wxALIGN_CENTRE);
+	m_grid->SetColLabelSize(wxGRID_AUTOSIZE);
+	m_grid->SetColLabelAlignment(wxALIGN_LEFT,wxALIGN_CENTRE);
 
 	wxBoxSizer *boxctrls = new wxBoxSizer(wxHORIZONTAL);
-	boxctrls->Add( mLblSpan, 2, wxALL|wxEXPAND, 1);
-	boxctrls->Add( mNumSpan, 1, wxALL|wxEXPAND, 1);
-	boxctrls->Add( mLblRows, 2, wxALL|wxEXPAND, 1);
-	boxctrls->Add( mNumRows, 1, wxALL|wxEXPAND, 1);
-	boxctrls->Add( mLblCols, 2, wxALL|wxEXPAND, 1);
-	boxctrls->Add( mNumCols, 1, wxALL|wxEXPAND, 1);
+	boxctrls->Add( m_lblSpan, 0, wxALL|wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL, 4);
+	boxctrls->Add( m_numSpan, 0, wxALL, 2);
+	boxctrls->Add( m_lblRows, 0, wxALL|wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL, 4);
+	boxctrls->Add( m_numRows, 0, wxALL, 2);
+	boxctrls->Add( m_lblCols, 0, wxALL|wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL, 4);
+	boxctrls->Add( m_numCols, 0, wxALL, 2);
 
 
 	wxBoxSizer *boxgrid = new wxBoxSizer(wxVERTICAL);
-	boxgrid->Add( boxctrls, 0, wxALL|wxEXPAND,1);
-	boxgrid->Add( mGrid, 1, wxALL|wxEXPAND, 1);
+	boxgrid->Add( boxctrls, 0, wxALL|wxEXPAND, 0);
+	boxgrid->Add( m_grid, 1, wxALL|wxEXPAND, 0);
 
 	wxBoxSizer *boxmain = new wxBoxSizer(wxHORIZONTAL);
-	boxmain->Add( mRenderer, 4, wxALL|wxEXPAND,1);
+	boxmain->Add( m_renderer, 4, wxALL|wxEXPAND,1);
 	boxmain->Add( boxgrid, 7, wxALL|wxEXPAND, 1);
-
 	SetSizer( boxmain );
-
+	
 	ResizeGrid(12,12);
 }
 
@@ -90,76 +86,59 @@ PTLayoutCtrl::~PTLayoutCtrl()
 
 void PTLayoutCtrl::EnableSpanAngle(bool b)
 {
-	bSpanAngleEnabled = b;
-	mNumSpan->Show( b );
-	mLblSpan->Show( b );
+	m_spanAngleEnabled = b;
+	m_numSpan->Show( b );
+	m_lblSpan->Show( b );
 
-	if ( !bSpanAngleEnabled  && mSpanAngle != 360.0 )
+	Layout();
+
+	if ( !m_spanAngleEnabled  && m_spanAngle != 360 )
 	{
-		mSpanAngle = 360.0;
+		m_spanAngle = 360;
 		UpdateData();
 	}
 }
 
-bool PTLayoutCtrl::IsSpanAngleEnabled()
+void PTLayoutCtrl::SetSpanAngle(float a)
 {
-	return bSpanAngleEnabled;
-}
-
-bool PTLayoutCtrl::IsXY()
-{
-	return mData.ncols() == 2;
-}
-
-bool PTLayoutCtrl::IsZonal()
-{
-	return mData.ncols() > 2;
-}
-
-void PTLayoutCtrl::SetSpanAngle(double a)
-{
-	if (bSpanAngleEnabled  && a > 0 && a <= 360.0)
+	if (m_spanAngleEnabled  && a > 0 && a <= 360)
 	{
-		mSpanAngle = a;
+		m_spanAngle = a;
 		UpdateData();
 	}
-}
-
-double PTLayoutCtrl::GetSpanAngle()
-{
-	return mSpanAngle;
 }
 
 void PTLayoutCtrl::UpdateData()
 {
-	int nr, nc;
-	nr = mData.nrows();
-	nc = mData.ncols();
+	size_t nr = m_data.nrows();
+	size_t nc = m_data.ncols();
 	
-	if (mSpanAngle != 360.0 && nc > 2)
+	if ( m_spanAngle != 360 && nc > 2 )
 	{
-		int n_ecol = nc/2;
-		for (int r=0;r<nr;r++)
-			mData.at(r,n_ecol) = 0;
+		size_t n_ecol = nc/2;
+		for (size_t r=0;r<nr;r++)
+			m_data.at(r,n_ecol) = 0;
 	}
 
-	mGrid->Freeze();
+	m_grid->Freeze();
 
-	if (nr == mGrid->GetNumberRows()
-		&& nc == mGrid->GetNumberCols())
+	if ( nr == (size_t)m_grid->GetNumberRows()
+		&& nc == (size_t)m_grid->GetNumberCols() )
 	{
-		for (int r=0;r<nr;r++)
+		for (size_t r=0;r<nr;r++)
 		{
-			for (int c=0;c<nc;c++)
+			for (size_t c=0;c<nc;c++)
 			{
-				mGrid->SetCellValue( r,c, wxString::Format("%lg", mData.at(r,c)));
-				mGrid->SetCellBackgroundColour(r,c,*wxWHITE);
+				m_grid->SetCellValue( r,c, wxString::Format("%g", m_data.at(r,c)));
+				m_grid->SetCellBackgroundColour(r,c,*wxWHITE);
 			}
 		}
 	}
 	else
 	{
-		mGrid->ClearGrid();
+		m_grid->ClearGrid(); // this is an error - coming into this function grid and data should have same dimensions
+		wxLogStatus("PTLayoutCtrl::UpdateData error: m_data.size != m_grid.size");
+		return;
 	}
 
 	if (nc > 2)
@@ -167,32 +146,32 @@ void PTLayoutCtrl::UpdateData()
 		
 		int n_ecol = -1;
 		double zspan = 360.0/nc;
-		if (mSpanAngle != 360.0)
+		if (m_spanAngle != 360.0)
 		{
 			n_ecol = nc/2;
-			zspan = mSpanAngle/(nc-1);
+			zspan = m_spanAngle/(nc-1);
 		}
 
 		double angle = 0;
 		for (int i=0;i<nc;i++)
 		{
-			mGrid->SetColLabelValue(i, wxString::Format("%.1lf",angle));
+			m_grid->SetColLabelValue(i, wxString::Format("%.1lf",angle));
 			if (i!=n_ecol) angle += zspan;
-			else angle += (360.0-mSpanAngle);
+			else angle += (360.0-m_spanAngle);
 		}
 
 		for (int i=0;i<nr;i++)
-			mGrid->SetRowLabelValue(i, wxString::Format("Rad.%d", i+1));
+			m_grid->SetRowLabelValue(i, wxString::Format("Rad.%d", i+1));
 
-		mLblRows->SetLabel("Radial Zones:");
-		mLblCols->SetLabel("Azimuthal Zones:");
+		m_lblRows->SetLabel("Radial Zones:");
+		m_lblCols->SetLabel("Azimuthal Zones:");
 
 		if (n_ecol > 0)
 		{
 			// grey out empty column
-			mGrid->SetColLabelValue( n_ecol, "(empty)");			
-			for (int r=0;r<mData.nrows();r++)
-				mGrid->SetCellBackgroundColour(r,n_ecol, wxColour(230,230,230));
+			m_grid->SetColLabelValue( n_ecol, "(empty)");			
+			for (int r=0;r<m_data.nrows();r++)
+				m_grid->SetCellBackgroundColour(r,n_ecol, wxColour(230,230,230));
 		}
 
 	}
@@ -200,25 +179,25 @@ void PTLayoutCtrl::UpdateData()
 	{
 		
 		for (int i=0;i<nr;i++)
-			mGrid->SetRowLabelValue(i, wxString::Format("Heliostat %d", i+1));
+			m_grid->SetRowLabelValue(i, wxString::Format("Heliostat %d", i+1));
 
-		mLblRows->SetLabel("# of Heliostats:");
-		mLblCols->SetLabel("(X-Y)");
-		mGrid->SetColLabelValue(0,"X (m)");
-		mGrid->SetColLabelValue(1,"Y (m)");
+		m_lblRows->SetLabel("# of Heliostats:");
+		m_lblCols->SetLabel("(X-Y)");
+		m_grid->SetColLabelValue(0,"X (m)");
+		m_grid->SetColLabelValue(1,"Y (m)");
 	}
 
-	mGrid->SetRowLabelSize(wxGRID_AUTOSIZE);
-	mGrid->SetColLabelSize(wxGRID_AUTOSIZE);
-	mGrid->AutoSize();
-	mGrid->Thaw();
-	mGrid->Layout();
-	mGrid->Refresh();
-	mRenderer->Refresh();
+	m_grid->SetRowLabelSize(wxGRID_AUTOSIZE);
+	m_grid->SetColLabelSize(wxGRID_AUTOSIZE);
+	m_grid->AutoSize();
+	m_grid->Layout();
+	m_grid->Refresh();
+	m_grid->Thaw();
+	m_renderer->Refresh();
 	Layout();
 }
 
-void PTLayoutCtrl::FixDimensions(int &nr, int &nc)
+void PTLayoutCtrl::FixDimensions( size_t &nr, size_t &nc )
 {
 	if (nr < 1) nr = 1;
 	if (nc % 2) nc--;
@@ -228,121 +207,80 @@ void PTLayoutCtrl::FixDimensions(int &nr, int &nc)
 }
 
 
-void PTLayoutCtrl::Set( const matrix_t<float> &data )
+void PTLayoutCtrl::SetGrid( const matrix_t<float> &data )
 {
 	if ( data.nrows() < 1 || data.ncols() < 2 ) return;
-
-	mData.resize_fill( data.nrows(), data.ncols(), 0.0f );
-	for( size_t r=0;r<data.nrows();r++ )
-		for( size_t c=0;c<data.ncols();c++ )
-			mData.at(r,c) = (double) data.at(r,c);
 	
-	int nr = (int)data.nrows();
-	int nc = (int)data.ncols();
+	m_data = data;
+
+	size_t nr = data.nrows();
+	size_t nc = data.ncols();
 	FixDimensions( nr, nc );
 	ResizeGrid( nr, nc );
-}
-
-void PTLayoutCtrl::Get( matrix_t<float> *data )
-{
-	data->resize_fill( mData.nrows(), mData.ncols(), 0.0f );
-	for( size_t r=0;r<mData.nrows();r++ )
-		for( size_t c=0;c<mData.ncols();c++ )
-			data->at(r,c) = (float) mData.at(r,c);
-}
-
-void PTLayoutCtrl::SetGrid(const matrix_t<double> &data)
-{
-	int nr, nc;
-	mData = data;
-
-	nr = mData.nrows();
-	nc = mData.ncols();
-
-	FixDimensions(nr,nc);
-	
-	ResizeGrid(nr,nc);
-}
-
-matrix_t<double> PTLayoutCtrl::GetGrid()
-{
-	return mData;
-}
-
-int PTLayoutCtrl::NRows()
-{
-	return mData.nrows();
-}
-
-int PTLayoutCtrl::NCols()
-{
-	return mData.ncols();
 }
 
 
 void PTLayoutCtrl::OnSpanAngleChange(wxCommandEvent &evt)
 {
-	if (bSpanAngleEnabled)
+	if (m_spanAngleEnabled)
 	{
-		double a = mNumSpan->Value();
+		double a = m_numSpan->Value();
 		if (a <= 0.0) a = 0.0;
 		if (a >= 360.0) a = 360.0;
 	
-		mSpanAngle = a;
+		m_spanAngle = a;
 		UpdateData();
-		mNumSpan->SetValue(mSpanAngle);
+		m_numSpan->SetValue(m_spanAngle);
 		DispatchEvent();
 	}
 }
 
 void PTLayoutCtrl::OnGridSizeChange(wxCommandEvent &evt)
 {
-	int nr, nc;
-
-	nr = mNumRows->AsInteger();
-	nc = mNumCols->AsInteger();
+	size_t nr = (size_t)m_numRows->AsInteger();
+	size_t nc = (size_t)m_numCols->AsInteger();
 	
 	FixDimensions(nr,nc);
 
-	if (nr != mNumRows->AsInteger()) mNumRows->SetValue(nr);
-	if (nc != mNumCols->AsInteger()) mNumCols->SetValue(nc);
+	if (nr != m_numRows->AsInteger()) m_numRows->SetValue(nr);
+	if (nc != m_numCols->AsInteger()) m_numCols->SetValue(nc);
 
 	ResizeGrid(nr,nc);
 	DispatchEvent();
 }
 
-void PTLayoutCtrl::ResizeGrid(int nrows, int ncols)
+void PTLayoutCtrl::ResizeGrid( size_t nrows, size_t ncols )
 {
-	mGrid->Freeze();
+	m_grid->Freeze();
 
-	if (mGrid->GetNumberRows() > nrows)
-		mGrid->DeleteRows( 0, mGrid->GetNumberRows() - nrows );
+	if (m_grid->GetNumberRows() > (int)nrows)
+		m_grid->DeleteRows( 0, m_grid->GetNumberRows() - (int)nrows );
 
-	if (mGrid->GetNumberRows() < nrows)
-		mGrid->AppendRows( nrows - mGrid->GetNumberRows() );
+	if (m_grid->GetNumberRows() < (int)nrows)
+		m_grid->AppendRows( (int)nrows - m_grid->GetNumberRows() );
 
-	if (mGrid->GetNumberCols() > ncols)
-		mGrid->DeleteCols( 0,mGrid->GetNumberCols() - ncols );
+	if (m_grid->GetNumberCols() > (int)ncols)
+		m_grid->DeleteCols( 0,m_grid->GetNumberCols() - (int)ncols );
 
-	if (mGrid->GetNumberCols() < ncols)
-		mGrid->AppendCols( ncols - mGrid->GetNumberCols() );
+	if (m_grid->GetNumberCols() < (int)ncols)
+		m_grid->AppendCols( (int)ncols - m_grid->GetNumberCols() );
 
 
-	mGrid->Thaw();
+	m_grid->Thaw();
 
-	matrix_t<double> old( mData );
+	matrix_t<float> old( m_data ); // create a copy of the old data
 
-	mData.resize_fill(nrows, ncols, 0.0);
+	m_data.resize_fill(nrows, ncols, 0.0f);
 
 	for( size_t r = 0; r<old.nrows() && r < nrows; r++ )
 		for( size_t c=0; c<old.ncols() && c < ncols; c++ )
-			mData.at(r,c) = old.at(r,c);
+			m_data.at(r,c) = old.at(r,c);
 	
-	if (mNumRows->AsInteger() != mData.nrows())
-		mNumRows->SetValue( mData.nrows() );
+	if (m_numRows->AsInteger() != m_data.nrows())
+		m_numRows->SetValue( m_data.nrows() );
 
-	if (mNumCols->AsInteger() != mData.ncols())
-		mNumCols->SetValue( mData.ncols() );
+	if (m_numCols->AsInteger() != m_data.ncols())
+		m_numCols->SetValue( m_data.ncols() );
 
 	UpdateData();
 }
@@ -351,23 +289,23 @@ void PTLayoutCtrl::OnGridCellChange(wxGridEvent &evt)
 {
 	int r = evt.GetRow();
 	int c = evt.GetCol();
-	double val = atof( mGrid->GetCellValue(r,c).c_str() );
+	double val = atof( m_grid->GetCellValue(r,c).c_str() );
 
-	if ( mData.ncols() > 2 && val < 0 ) val = 0;
+	if ( m_data.ncols() > 2 && val < 0 ) val = 0;
 
-	if ( mData.ncols() > 2 && r == 0 && val == 0 && mData.nrows() > 2 && mSpanAngle==360.0)
+	if ( m_data.ncols() > 2 && r == 0 && val == 0 && m_data.nrows() > 2 && m_spanAngle==360.0)
 	{
 		wxMessageBox("The ring of radial zones closest to the tower are not allowed to have 0 heliostats.");
-		mGrid->SetCellValue( r, c, wxString::Format("%lg", mData.at(r,c) ));
+		m_grid->SetCellValue( r, c, wxString::Format("%g", m_data.at(r,c) ));
 		return;
 	}
 
-	if (mSpanAngle != 360.0 && c == mData.ncols()/2 && mData.ncols() > 2)
+	if (m_spanAngle != 360.0 && c == m_data.ncols()/2 && m_data.ncols() > 2)
 		val = 0;
 
-	mData.at(r,c) = val;
-	mGrid->SetCellValue( r, c, wxString::Format("%lg", val) );
-	mRenderer->Refresh();
+	m_data.at(r,c) = val;
+	m_grid->SetCellValue( r, c, wxString::Format("%g", val) );
+	m_renderer->Refresh();
 
 	DispatchEvent();
 }
@@ -377,7 +315,7 @@ void PTLayoutCtrl::OnGridCellSelect(wxGridEvent &evt)
 	int r = evt.GetRow();
 	int c = evt.GetCol();
 
-	mRenderer->Highlight(r,c);
+	m_renderer->Highlight(r,c);
 	evt.Skip();
 }
 
@@ -389,17 +327,17 @@ void PTLayoutCtrl::DispatchEvent()
 }
 
 
-double PTLayoutCtrl::NumHeliostats()
+float PTLayoutCtrl::NumHeliostats()
 {
-	double sum = 0;
+	float sum = 0;
 	if (IsZonal())
 	{
-		for (int r=0;r<mData.nrows();r++)
-			for (int c=0;c<mData.ncols();c++)
-				sum += mData.at(r,c);
+		for (int r=0;r<m_data.nrows();r++)
+			for (int c=0;c<m_data.ncols();c++)
+				sum += m_data.at(r,c);
 	}
 	else
-		sum = mData.nrows();
+		sum = m_data.nrows();
 
 	return sum;
 }
@@ -496,12 +434,12 @@ void PTLayoutRenderer::ComputeColour(wxColour &c, int cntrIndex, int ncv)
 
 void PTLayoutRenderer::DrawZonal(wxDC &dc, const wxRect &geom)
 {
-	matrix_t<double> &mData = mPTCtrl->mData;
+	matrix_t<float> &m_data = mPTCtrl->m_data;
 
-	int nrad = mData.nrows();
-	int nazm = mData.ncols();
+	size_t nrad = m_data.nrows();
+	size_t nazm = m_data.ncols();
 
-	double fspan = mPTCtrl->mSpanAngle;
+	double fspan = mPTCtrl->m_spanAngle;
 	double espan = 360-fspan;
 	double zspan = 0.0;
 	
@@ -549,18 +487,18 @@ void PTLayoutRenderer::DrawZonal(wxDC &dc, const wxRect &geom)
 		for (a=0;a<nazm;a++)
 		{
 			if (r==0)
-				z = 2.0/(rlo+1.5)*mData.at(r,a);
+				z = 2.0/(rlo+1.5)*m_data.at(r,a);
 			else if (r==nrad-1)
-				z = 2.0/(nrad-0.5+rlo)*mData.at(r,a);
+				z = 2.0/(nrad-0.5+rlo)*m_data.at(r,a);
 			else
-				z = mData.at(r,a)/(r+1.0+rlo);
+				z = m_data.at(r,a)/(r+1.0+rlo);
 
 			uf1.at(r,a) = z;
 			if ( z > maxval ) maxval = z;
 		}
 	}
 
-	int ncv = mData.nrows() * mData.ncols();
+	int ncv = m_data.nrows() * m_data.ncols();
 
 	double rdelta = (max_radius-min_radius)/nrad;
 	double radius = max_radius;
@@ -708,9 +646,9 @@ void PTLayoutRenderer::DrawZonal(wxDC &dc, const wxRect &geom)
 
 void PTLayoutRenderer::DrawXY(wxDC &dc, const wxRect &geom)
 {
-	matrix_t<double> &mData = mPTCtrl->mData;
+	matrix_t<float> &m_data = mPTCtrl->m_data;
 
-	int nhel = mData.nrows();
+	int nhel = m_data.nrows();
 	int i,r,c,a;
 
 	int cx = geom.x+geom.width/2;
@@ -724,10 +662,10 @@ void PTLayoutRenderer::DrawXY(wxDC &dc, const wxRect &geom)
 	xmax=ymax=-1e99;
 	for (r=0;r<nhel;r++)
 	{
-		if (mData.at(r,0) < xmin) xmin = mData.at(r,0);
-		if (mData.at(r,0) > xmax) xmax = mData.at(r,0);
-		if (mData.at(r,1) < ymin) ymin = mData.at(r,1);
-		if (mData.at(r,1) > ymax) ymax = mData.at(r,1);
+		if (m_data.at(r,0) < xmin) xmin = m_data.at(r,0);
+		if (m_data.at(r,0) > xmax) xmax = m_data.at(r,0);
+		if (m_data.at(r,1) < ymin) ymin = m_data.at(r,1);
+		if (m_data.at(r,1) > ymax) ymax = m_data.at(r,1);
 	}
 
 	double xdiffmax = std::max( fabs(xmax), fabs(xmin) );
@@ -756,8 +694,8 @@ void PTLayoutRenderer::DrawXY(wxDC &dc, const wxRect &geom)
 	dc.SetPen(wxPen(*wxRED));
 	for (r=0;r<nhel;r++)
 	{
-		double x = mData.at(r,0);
-		double y = mData.at(r,1);
+		double x = m_data.at(r,0);
+		double y = m_data.at(r,1);
 
 		double propx = (x-xmin)/xrange;
 		double propy = (y-ymin)/yrange;
@@ -788,3 +726,4 @@ void PTLayoutRenderer::DrawXY(wxDC &dc, const wxRect &geom)
 	dc.SetTextForeground(*wxBLACK);
 	dc.DrawText("North ^", geom.x+4, geom.y+3);
 }
+
