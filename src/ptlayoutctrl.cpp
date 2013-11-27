@@ -1,68 +1,25 @@
-
 #include <algorithm>
 
 #include <wx/clipbrd.h>
 #include <wx/dcbuffer.h>
 #include <wx/filename.h>
-#include <wx/textfile.h>
-#include <wx/tokenzr.h>
 
+#include <wex/numeric.h>
 #include <wex/utils.h>
 
 #include "ptlayoutctrl.h"
 
-/*
 
-void PTCtrlEncode(const matrix_t<float> &mat, double span, Array<double> &out)
-{
-	out.resize( mat.nrows()*mat.ncols()+3, 0.0 );
-	out[0] = mat.nrows();
-	out[1] = mat.ncols();
-	int i=2;
-	for (int r=0;r<mat.nrows();r++)
-		for (int c=0;c<mat.ncols();c++)
-			out[i++] = mat.at(r,c);
-
-	out[i] = span;
-}
-
-void PTCtrlDecode(const Array<double> &in, matrix_t<float> &data, double &span)
-{
-	if (in.count() < 2)
-		return;
-
-	int nrows = (int) in[0];
-	int ncols = (int) in[1];
-
-	int ndata = nrows*ncols+2;
-	if (in.count() < ndata)
-		return;
-
-	data.resize(nrows,ncols, 0.0);
-	int i=2;
-	for (int r=0;r<nrows;r++)
-		for (int c=0;c<ncols;c++)
-			data.at(r,c) = in[i++];
-
-	if (i < in.count())
-		span = in[i];
-	else
-		span = 360.0;
-}
-*/
-
-enum { IDPT_GRID = wxID_HIGHEST+124, IDPT_SPAN, IDPT_NUMROWS, IDPT_NUMCOLS, IDPT_IMPORT, IDPT_EXPORT };
+enum { IDPT_GRID, IDPT_SPAN, IDPT_NUMROWS, IDPT_NUMCOLS };
 
 BEGIN_EVENT_TABLE(PTLayoutCtrl, wxPanel)
 
-	EVT_TEXT_ENTER( IDPT_SPAN, PTLayoutCtrl::OnSpanAngleChange )
-	EVT_TEXT_ENTER( IDPT_NUMROWS, PTLayoutCtrl::OnGridSizeChange )
-	EVT_TEXT_ENTER( IDPT_NUMCOLS, PTLayoutCtrl::OnGridSizeChange )
-	EVT_GRID_CMD_CELL_CHANGE( IDPT_GRID, PTLayoutCtrl::OnGridCellChange)
-	EVT_GRID_CMD_SELECT_CELL( IDPT_GRID, PTLayoutCtrl::OnGridCellSelect)
+EVT_TEXT_ENTER( IDPT_SPAN, PTLayoutCtrl::OnSpanAngleChange )
+EVT_TEXT_ENTER( IDPT_NUMROWS, PTLayoutCtrl::OnGridSizeChange )
+EVT_TEXT_ENTER( IDPT_NUMCOLS, PTLayoutCtrl::OnGridSizeChange )
+EVT_GRID_CMD_CELL_CHANGE( IDPT_GRID, PTLayoutCtrl::OnGridCellChange)
+EVT_GRID_CMD_SELECT_CELL( IDPT_GRID, PTLayoutCtrl::OnGridCellSelect)
 
-	EVT_BUTTON( IDPT_IMPORT, PTLayoutCtrl::OnImport )
-	EVT_BUTTON( IDPT_EXPORT, PTLayoutCtrl::OnExport )
 
 END_EVENT_TABLE()
 
@@ -70,7 +27,7 @@ DEFINE_EVENT_TYPE( wxEVT_PTLAYOUT_CHANGE )
 
 
 PTLayoutCtrl::PTLayoutCtrl(wxWindow *parent, int id, const wxPoint &pos, const wxSize &sz)
-	: wxPanel(parent, id, pos, sz, wxWANTS_CHARS|wxCLIP_CHILDREN|wxTAB_TRAVERSAL)
+	: wxPanel(parent, id, pos, sz, wxWANTS_CHARS|wxCLIP_CHILDREN)
 {
 	bSpanAngleEnabled = true;
 	mSpanAngle = 360.0;
@@ -79,7 +36,7 @@ PTLayoutCtrl::PTLayoutCtrl(wxWindow *parent, int id, const wxPoint &pos, const w
 	mNumRows = new wxNumericCtrl(this, IDPT_NUMROWS, 6, wxNumericCtrl::INTEGER);
 	mNumCols = new wxNumericCtrl(this, IDPT_NUMCOLS, 8, wxNumericCtrl::INTEGER);
 
-	mData.resize_fill( 12, 12, 0.0 );
+	mData.resize_fill(12,12, 0.0);
 	for (int r=0;r<mData.nrows();r++)
 		for (int c=0;c<mData.ncols();c++)
 			mData.at(r,c) = 1;
@@ -105,27 +62,21 @@ PTLayoutCtrl::PTLayoutCtrl(wxWindow *parent, int id, const wxPoint &pos, const w
 	mGrid->SetColLabelAlignment(wxALIGN_LEFT,wxALIGN_CENTRE);
 
 	wxBoxSizer *boxctrls = new wxBoxSizer(wxHORIZONTAL);
-	boxctrls->Add( mLblSpan, 2, wxALL|wxALIGN_CENTER_VERTICAL|wxALIGN_RIGHT, 1);
+	boxctrls->Add( mLblSpan, 2, wxALL|wxEXPAND, 1);
 	boxctrls->Add( mNumSpan, 1, wxALL|wxEXPAND, 1);
-	boxctrls->Add( mLblRows, 2, wxALL|wxALIGN_CENTER_VERTICAL|wxALIGN_RIGHT, 1);
+	boxctrls->Add( mLblRows, 2, wxALL|wxEXPAND, 1);
 	boxctrls->Add( mNumRows, 1, wxALL|wxEXPAND, 1);
-	boxctrls->Add( mLblCols, 2, wxALL|wxALIGN_CENTER_VERTICAL|wxALIGN_RIGHT, 1);
+	boxctrls->Add( mLblCols, 2, wxALL|wxEXPAND, 1);
 	boxctrls->Add( mNumCols, 1, wxALL|wxEXPAND, 1);
 
-
-	wxBoxSizer *boximpexp = new wxBoxSizer(wxHORIZONTAL);
-	boximpexp->AddStretchSpacer(1);
-	boximpexp->Add( new wxButton(this, IDPT_IMPORT, "Import"),0, wxALL|wxEXPAND, 1);
-	boximpexp->Add( new wxButton(this, IDPT_EXPORT, "Export"),0, wxALL|wxEXPAND, 1);
 
 	wxBoxSizer *boxgrid = new wxBoxSizer(wxVERTICAL);
 	boxgrid->Add( boxctrls, 0, wxALL|wxEXPAND,1);
 	boxgrid->Add( mGrid, 1, wxALL|wxEXPAND, 1);
-	boxgrid->Add( boximpexp, 0, wxALL|wxEXPAND, 1);
 
 	wxBoxSizer *boxmain = new wxBoxSizer(wxHORIZONTAL);
-	boxmain->Add( mRenderer, 4, wxALL|wxEXPAND,0);
-	boxmain->Add( boxgrid, 7, wxALL|wxEXPAND, 0);
+	boxmain->Add( mRenderer, 4, wxALL|wxEXPAND,1);
+	boxmain->Add( boxgrid, 7, wxALL|wxEXPAND, 1);
 
 	SetSizer( boxmain );
 
@@ -142,7 +93,6 @@ void PTLayoutCtrl::EnableSpanAngle(bool b)
 	bSpanAngleEnabled = b;
 	mNumSpan->Show( b );
 	mLblSpan->Show( b );
-	Layout();
 
 	if ( !bSpanAngleEnabled  && mSpanAngle != 360.0 )
 	{
@@ -202,7 +152,7 @@ void PTLayoutCtrl::UpdateData()
 		{
 			for (int c=0;c<nc;c++)
 			{
-				mGrid->SetCellValue( r,c, wxString::Format("%g", mData.at(r,c)));
+				mGrid->SetCellValue( r,c, wxString::Format("%lg", mData.at(r,c)));
 				mGrid->SetCellBackgroundColour(r,c,*wxWHITE);
 			}
 		}
@@ -277,7 +227,31 @@ void PTLayoutCtrl::FixDimensions(int &nr, int &nc)
 	if (nr > 12 && nc > 2) nr = 12;
 }
 
-void PTLayoutCtrl::SetGrid(const matrix_t<float> &data)
+
+void PTLayoutCtrl::Set( const matrix_t<float> &data )
+{
+	if ( data.nrows() < 1 || data.ncols() < 2 ) return;
+
+	mData.resize_fill( data.nrows(), data.ncols(), 0.0f );
+	for( size_t r=0;r<data.nrows();r++ )
+		for( size_t c=0;c<data.ncols();c++ )
+			mData.at(r,c) = (double) data.at(r,c);
+	
+	int nr = (int)data.nrows();
+	int nc = (int)data.ncols();
+	FixDimensions( nr, nc );
+	ResizeGrid( nr, nc );
+}
+
+void PTLayoutCtrl::Get( matrix_t<float> *data )
+{
+	data->resize_fill( mData.nrows(), mData.ncols(), 0.0f );
+	for( size_t r=0;r<mData.nrows();r++ )
+		for( size_t c=0;c<mData.ncols();c++ )
+			data->at(r,c) = (float) mData.at(r,c);
+}
+
+void PTLayoutCtrl::SetGrid(const matrix_t<double> &data)
 {
 	int nr, nc;
 	mData = data;
@@ -290,7 +264,7 @@ void PTLayoutCtrl::SetGrid(const matrix_t<float> &data)
 	ResizeGrid(nr,nc);
 }
 
-matrix_t<float> PTLayoutCtrl::GetGrid()
+matrix_t<double> PTLayoutCtrl::GetGrid()
 {
 	return mData;
 }
@@ -305,102 +279,6 @@ int PTLayoutCtrl::NCols()
 	return mData.ncols();
 }
 
-void PTLayoutCtrl::OnImport(wxCommandEvent &evt)
-{
-	wxFileDialog fdlg(this, "Import Heliostat Field", "", "",
-		"CSV Files (*.csv)|*.csv|All Files (*.*)|*.*", wxFD_OPEN );
-
-	if (fdlg.ShowModal() == wxID_OK)
-	{
-
-		wxTextFile tf;
-		if ( !tf.Open( fdlg.GetPath() ) )
-		{
-			wxMessageBox("Could not open file for reading:\n\n" + fdlg.GetPath(), "Error", wxICON_ERROR|wxOK);
-			return;
-		}
-
-		bool is_csv = (fdlg.GetFilterIndex()==0);
-
-		std::vector< std::vector<float> > grid_data;
-
-		int prev_col_count = -1;
-		int line_count = 0;
-		wxString buf;
-		for ( buf = tf.GetFirstLine(); !tf.Eof(); buf = tf.GetNextLine() )
-		{
-			line_count++;
-			wxArrayString items = wxStringTokenize(buf, is_csv?",":" \t");
-			if (prev_col_count < 0) prev_col_count = items.Count();
-
-			if (items.Count() == 0)
-				continue;
-
-			if (prev_col_count != items.Count())
-			{
-				wxMessageBox("Each row must have the same number of columns.\n\nError at line " + wxString::Format("%d",line_count));
-				return;
-			}
-
-			std::vector<float> vals;
-			for (int i=0;i<items.Count();i++)
-				vals.push_back( (float)wxAtof( items[i].Trim().Trim(false) ) );
-
-			grid_data.push_back( vals );
-		}
-
-		if (grid_data.size() < 1 || grid_data[0].size() < 2)
-		{
-			wxMessageBox("Invalid heliostat field data. Must have at least one row and two columns.");
-			return;
-		}
-
-		matrix_t<float> grid;
-		grid.resize_fill( grid_data.size(), grid_data[0].size(), 0.0 );
-
-		for (int r=0;r<grid.nrows();r++)
-			for (int c=0;c<grid.ncols();c++)
-				grid.at(r,c) = grid_data[r][c];
-
-		SetGrid( grid );
-		DispatchEvent();
-		wxMessageBox("Heliostat field data import succeeded.");
-	}
-
-}
-
-void PTLayoutCtrl::OnExport(wxCommandEvent &evt)
-{
-	wxFileDialog fdlg(this, "Export Heliostat Field", "", "user_field.csv",
-		"CSV Files (*.csv)|*.csv|All Files (*.*)|*.*", wxFD_SAVE | wxFD_OVERWRITE_PROMPT );
-
-	if (fdlg.ShowModal() == wxID_OK)
-	{
-		wxString fn = fdlg.GetPath();
-		wxString ext;
-		wxFileName::SplitPath( fn, NULL, NULL, NULL, &ext);
-
-		int filt = fdlg.GetFilterIndex();
-		if (filt == 0) // CSV
-		{
-			if (ext.Lower() != "csv")
-				fn += ".csv";
-		}
-
-		FILE *fp = fopen(fn.c_str(), "w");
-		if (!fp)
-		{
-			wxMessageBox("Could not open file for writing:\n\n"+fn, "Error", wxICON_ERROR|wxOK);
-			return;
-		}
-
-		for (int r=0;r<mData.nrows();r++)
-			for (int c=0;c<mData.ncols();c++)
-				fprintf(fp, "%g%c", mData.at(r,c), c<mData.ncols()-1?',':'\n');
-
-		fclose(fp);
-	}
-}
 
 void PTLayoutCtrl::OnSpanAngleChange(wxCommandEvent &evt)
 {
@@ -452,21 +330,14 @@ void PTLayoutCtrl::ResizeGrid(int nrows, int ncols)
 
 	mGrid->Thaw();
 
-	int oldrows = mData.nrows();
-	int oldcols = mData.ncols();
+	matrix_t<double> old( mData );
 
 	mData.resize_fill(nrows, ncols, 0.0);
+
+	for( size_t r = 0; r<old.nrows() && r < nrows; r++ )
+		for( size_t c=0; c<old.ncols() && c < ncols; c++ )
+			mData.at(r,c) = old.at(r,c);
 	
-	int r,c;
-
-	for (r=oldrows;r<nrows;r++)
-		for (c=0;c<ncols;c++)
-			mData.at(r,c) = 0;
-
-	for (c=oldcols;c<ncols;c++)
-		for (r=0;r<nrows;r++)
-			mData.at(r,c) = 0;
-
 	if (mNumRows->AsInteger() != mData.nrows())
 		mNumRows->SetValue( mData.nrows() );
 
@@ -487,7 +358,7 @@ void PTLayoutCtrl::OnGridCellChange(wxGridEvent &evt)
 	if ( mData.ncols() > 2 && r == 0 && val == 0 && mData.nrows() > 2 && mSpanAngle==360.0)
 	{
 		wxMessageBox("The ring of radial zones closest to the tower are not allowed to have 0 heliostats.");
-		mGrid->SetCellValue( r, c, wxString::Format("%g", mData.at(r,c) ));
+		mGrid->SetCellValue( r, c, wxString::Format("%lg", mData.at(r,c) ));
 		return;
 	}
 
@@ -495,7 +366,7 @@ void PTLayoutCtrl::OnGridCellChange(wxGridEvent &evt)
 		val = 0;
 
 	mData.at(r,c) = val;
-	mGrid->SetCellValue( r, c, wxString::Format("%g", val) );
+	mGrid->SetCellValue( r, c, wxString::Format("%lg", val) );
 	mRenderer->Refresh();
 
 	DispatchEvent();
@@ -516,6 +387,7 @@ void PTLayoutCtrl::DispatchEvent()
 	change.SetEventObject( this );
 	GetEventHandler()->ProcessEvent(change);
 }
+
 
 double PTLayoutCtrl::NumHeliostats()
 {
@@ -624,7 +496,7 @@ void PTLayoutRenderer::ComputeColour(wxColour &c, int cntrIndex, int ncv)
 
 void PTLayoutRenderer::DrawZonal(wxDC &dc, const wxRect &geom)
 {
-	matrix_t<float> &mData = mPTCtrl->mData;
+	matrix_t<double> &mData = mPTCtrl->mData;
 
 	int nrad = mData.nrows();
 	int nazm = mData.ncols();
@@ -669,7 +541,7 @@ void PTLayoutRenderer::DrawZonal(wxDC &dc, const wxRect &geom)
 
 	double maxval = -1e99;
 	double rlo = 1.0, save, z;
-	matrix_t<float> uf1;
+	matrix_t<double> uf1;
 	uf1.resize_fill(nrad, nazm, 0.0);
 
 	for (r=0;r<nrad;r++)
@@ -814,9 +686,8 @@ void PTLayoutRenderer::DrawZonal(wxDC &dc, const wxRect &geom)
 
 	dc.SetBrush(*wxBLACK_BRUSH);
 	dc.SetPen(*wxBLACK_PEN);
-	
-	dc.SetTextForeground(*wxBLACK);
 	wxDrawArrow(dc, wxARROW_DOWN, geom.x+3, geom.y+4, 10, 10);
+	dc.SetTextForeground( *wxBLACK );
 	dc.DrawText("To Equator", geom.x+16, geom.y+3);
 
 
@@ -829,7 +700,7 @@ void PTLayoutRenderer::DrawZonal(wxDC &dc, const wxRect &geom)
 
 	for ( r=0;r<nrad;r++ )
 	{
-		buf = wxString::Format("%d",r+1);
+		buf = wxString::Format("%d", (int)(r+1));
 		dc.GetTextExtent(buf, &tw, &th);
 		dc.DrawText(buf, cir_x-tw/2, cir_y - (int)min_radius - r*rdelta - rdelta/2 - th/2);
 	}
@@ -837,7 +708,7 @@ void PTLayoutRenderer::DrawZonal(wxDC &dc, const wxRect &geom)
 
 void PTLayoutRenderer::DrawXY(wxDC &dc, const wxRect &geom)
 {
-	matrix_t<float> &mData = mPTCtrl->mData;
+	matrix_t<double> &mData = mPTCtrl->mData;
 
 	int nhel = mData.nrows();
 	int i,r,c,a;
