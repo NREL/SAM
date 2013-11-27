@@ -10,7 +10,7 @@
 #include "ptlayoutctrl.h"
 
 
-enum { ID_GRID = wxID_HIGHEST+134, ID_SPAN, ID_NUMROWS, ID_NUMCOLS };
+enum { ID_GRID = wxID_HIGHEST+134, ID_SPAN, ID_NUMROWS, ID_NUMCOLS, ID_COPY, ID_PASTE, ID_IMPORT, ID_EXPORT };
 
 BEGIN_EVENT_TABLE( PTLayoutCtrl, wxPanel )
 	EVT_NUMERIC( ID_SPAN, PTLayoutCtrl::OnSpanAngleChange )
@@ -18,6 +18,11 @@ BEGIN_EVENT_TABLE( PTLayoutCtrl, wxPanel )
 	EVT_NUMERIC( ID_NUMCOLS, PTLayoutCtrl::OnGridSizeChange )
 	EVT_GRID_CMD_CELL_CHANGE( ID_GRID, PTLayoutCtrl::OnGridCellChange)
 	EVT_GRID_CMD_SELECT_CELL( ID_GRID, PTLayoutCtrl::OnGridCellSelect)
+
+	EVT_BUTTON( ID_COPY, PTLayoutCtrl::OnButton )
+	EVT_BUTTON( ID_PASTE, PTLayoutCtrl::OnButton )
+	EVT_BUTTON( ID_IMPORT, PTLayoutCtrl::OnButton )
+	EVT_BUTTON( ID_EXPORT, PTLayoutCtrl::OnButton )
 END_EVENT_TABLE()
 
 DEFINE_EVENT_TYPE( wxEVT_PTLAYOUT_CHANGE )
@@ -67,9 +72,17 @@ PTLayoutCtrl::PTLayoutCtrl(wxWindow *parent, int id, const wxPoint &pos, const w
 	boxctrls->Add( m_numCols, 0, wxALL, 2);
 
 
+	wxBoxSizer *boxtools = new wxBoxSizer(wxHORIZONTAL );
+	boxtools->AddStretchSpacer();
+	boxtools->Add( new wxButton( this, ID_COPY, "Copy" ), 0, wxALL|wxEXPAND, 2 );
+	boxtools->Add( new wxButton( this, ID_PASTE, "Paste" ), 0, wxALL|wxEXPAND, 2 );
+	boxtools->Add( new wxButton( this, ID_IMPORT, "Import" ), 0, wxALL|wxEXPAND, 2 );
+	boxtools->Add( new wxButton( this, ID_EXPORT, "Export" ), 0, wxALL|wxEXPAND, 2 );
+
 	wxBoxSizer *boxgrid = new wxBoxSizer(wxVERTICAL);
 	boxgrid->Add( boxctrls, 0, wxALL|wxEXPAND, 0);
 	boxgrid->Add( m_grid, 1, wxALL|wxEXPAND, 0);
+	boxgrid->Add( boxtools,0, wxALL|wxEXPAND, 0);
 
 	wxBoxSizer *boxmain = new wxBoxSizer(wxHORIZONTAL);
 	boxmain->Add( m_renderer, 4, wxALL|wxEXPAND,1);
@@ -340,6 +353,79 @@ float PTLayoutCtrl::NumHeliostats()
 		sum = m_data.nrows();
 
 	return sum;
+}
+
+void PTLayoutCtrl::OnButton( wxCommandEvent &evt )
+{
+	if ( evt.GetId() == ID_COPY  || evt.GetId() == ID_EXPORT )
+	{
+		wxCSVData csv;
+		for( size_t r=0;r<m_data.nrows();r++ )
+			for( size_t c=0;c<m_data.ncols();c++ )
+				csv.Set( r, c, wxString::Format("%g", m_data(r,c)) );
+
+		if ( evt.GetId() == ID_COPY )
+		{
+			if (wxTheClipboard->Open())
+			{
+				csv.SetSeparator('\t');
+				wxTheClipboard->SetData(new wxTextDataObject(csv.WriteString()));
+				wxTheClipboard->Close();
+			}
+		}
+		else
+		{
+			wxFileDialog dlg( this, "Export to CSV file", wxEmptyString, 
+				wxEmptyString, wxFileSelectorDefaultWildcardStr, wxFD_SAVE|wxFD_OVERWRITE_PROMPT );
+			if ( dlg.ShowModal() == wxID_OK )
+				if ( !csv.WriteFile( dlg.GetPath() ) )
+					wxMessageBox("Error writing to file\n\n" + dlg.GetPath() );
+		}
+	}
+	else
+	{
+		wxCSVData csv;		
+		if ( evt.GetId() == ID_PASTE )
+		{
+			if (wxTheClipboard->Open())
+			{
+				wxTextDataObject textobj;
+				if (wxTheClipboard->GetData( textobj ))
+				{
+					wxString data = textobj.GetText();
+					if ( data.IsEmpty() ) return;
+					csv.SetSeparator('\t');
+					csv.ReadString( data );
+					wxTheClipboard->Close();
+				}
+			}
+		}
+		else 
+		{
+			wxFileDialog dlg( this, "Import from CSV file", wxEmptyString, 
+				wxEmptyString, wxFileSelectorDefaultWildcardStr, wxFD_OPEN );
+			if ( dlg.ShowModal() == wxID_OK )
+			{
+				if (!csv.ReadFile( dlg.GetPath() ))
+				{
+					wxMessageBox("Could not read from file\n\n" + dlg.GetPath() );
+					return;
+				}
+			}
+		}
+
+		size_t nr = csv.NumRows();
+		size_t nc = csv.NumCols();
+		if ( nr > 0 && nc > 0 )
+		{
+			matrix_t<float> mat( nr, nc, 0 );
+			for( size_t r=0;r<nr;r++ )
+				for( size_t c=0;c<nc;c++ )
+					mat.at(r,c) = (float)wxAtof( csv.Get(r,c) );
+
+			SetGrid( mat );
+		}
+	}
 }
 
 /**************************************/
