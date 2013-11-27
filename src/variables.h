@@ -47,15 +47,18 @@ public:
 class VarValue
 {
 public:
-	explicit VarValue();
+	VarValue();
+	VarValue( const VarValue &vv );
+
 	explicit VarValue( int i );
 	explicit VarValue( float f );
-	explicit VarValue( float *arr, size_t n );
-	explicit VarValue( float *mat, size_t r, size_t c );
 	explicit VarValue( const matrix_t<float> &m );
 	explicit VarValue( const wxString &s );
 	explicit VarValue( const VarTable &t );
-	explicit VarValue( const VarValue &vv );
+
+	VarValue( float *arr, size_t n );
+	VarValue( float *mat, size_t r, size_t c );
+
 	virtual ~VarValue();
 
 	VarValue &operator=( const VarValue &rhs );
