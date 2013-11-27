@@ -58,6 +58,8 @@ private:
 	void OnGridCellChange(wxGridEvent &evt);
 	void OnGridCellSelect(wxGridEvent &evt);
 
+	void OnButton( wxCommandEvent & );
+
 	matrix_t<float> m_data;
 	float m_spanAngle;
 	bool m_spanAngleEnabled;
