@@ -16,11 +16,15 @@
 #include <lk_stdlib.h>
 
 #include "main.h"
-#include "uiwidgets.h"
-#include "ptlayoutctrl.h"
-
 #include "inputpage.h"
 #include "invoke.h"
+
+// UI widgets
+#include "uiwidgets.h"
+#include "ptlayoutctrl.h"
+#include "troughloop.h"
+#include "materials.h"
+
 
 
 CallbackContext::CallbackContext( InputPageBase *ip, VarTable *vt, lk::node_t *root, const wxString &desc )
@@ -233,6 +237,8 @@ BEGIN_EVENT_TABLE( InputPageBase, wxPanel )
 	EVT_SLIDER( wxID_ANY, InputPageBase::OnNativeEvent )
 	EVT_SCHEDCTRL( wxID_ANY, InputPageBase::OnNativeEvent )
 	EVT_PTLAYOUT( wxID_ANY, InputPageBase::OnNativeEvent )
+	EVT_MATPROPCTRL( wxID_ANY, InputPageBase::OnNativeEvent )
+	EVT_TRLOOP( wxID_ANY, InputPageBase::OnNativeEvent )
 
 	EVT_ERASE_BACKGROUND( InputPageBase::OnErase )
 	EVT_PAINT( InputPageBase::OnPaint )
@@ -526,6 +532,16 @@ bool InputPageBase::DataExchange( wxUIObject *obj, VarValue &val, DdxDir dir )
 			tab.Set( "span", VarValue( (float)pt->GetSpanAngle()) );
 			val.Set( tab );
 		}
+	}
+	else if ( MatPropCtrl *mp = obj->GetNative<MatPropCtrl>() )
+	{
+		if ( dir == VAR_TO_OBJ ) mp->SetData( val.Matrix() );
+		else val.Set( mp->GetData() ); 
+	}
+	else if ( TRLoopCtrl *tr = obj->GetNative<TRLoopCtrl>() )
+	{
+		if ( dir == VAR_TO_OBJ ) tr->LoopData( val.IntegerArray() );
+		else val.Set( tr->LoopData() );
 	}
 	else return false; // object data exch not handled for this type
 

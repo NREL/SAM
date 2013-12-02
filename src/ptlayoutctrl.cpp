@@ -6,6 +6,7 @@
 
 #include <wex/numeric.h>
 #include <wex/utils.h>
+#include <wex/csv.h>
 
 #include "ptlayoutctrl.h"
 

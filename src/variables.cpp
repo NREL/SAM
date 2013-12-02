@@ -297,6 +297,27 @@ void VarValue::SetType( int ty ) { m_type = ty; }
 void VarValue::Set( int val ) { m_type = VV_NUMBER; m_val = (float)val; }
 void VarValue::Set( float val ) { m_type = VV_NUMBER; m_val = val; }
 void VarValue::Set( double val ) { m_type = VV_NUMBER; m_val = val; }
+
+void VarValue::Set( const std::vector<int> &ivec )
+{
+	m_type = VV_ARRAY;
+	if ( ivec.size() > 0 ) 
+	{
+		m_val.resize_fill( ivec.size(), 0 );
+		for( size_t i=0;i<ivec.size();i++ )
+			m_val.at(i) = (float)ivec[i];
+	}
+	else
+		m_val.clear();
+}
+
+void VarValue::Set( const std::vector<float> &fvec )
+{
+	m_type = VV_ARRAY;
+	if( fvec.size() > 0 ) m_val.assign( &fvec[0], fvec.size() );
+	else m_val.clear();
+}
+
 void VarValue::Set( float *val, size_t n ) { m_type = VV_ARRAY; m_val.assign( val, n ); }
 void VarValue::Set( float *mat, size_t r, size_t c ) { m_type = VV_MATRIX; m_val.assign( mat, r, c ); }
 void VarValue::Set( const ::matrix_t<float> &mat ) { m_type = VV_MATRIX; m_val = mat; }
@@ -340,6 +361,19 @@ std::vector<float> VarValue::Array()
 	}
 	else
 		return std::vector<float>();
+}
+
+std::vector<int> VarValue::IntegerArray()
+{
+	if ( m_type == VV_ARRAY )
+	{
+		std::vector<int> vec( m_val.length(), 0 );
+		for( size_t i=0;i<m_val.length();i++)
+			vec[i] = (int)m_val[i];
+		return vec;
+	}
+	else
+		return std::vector<int>();
 }
 
 matrix_t<float> &VarValue::Matrix()
