@@ -239,6 +239,7 @@ BEGIN_EVENT_TABLE( InputPageBase, wxPanel )
 	EVT_PTLAYOUT( wxID_ANY, InputPageBase::OnNativeEvent )
 	EVT_MATPROPCTRL( wxID_ANY, InputPageBase::OnNativeEvent )
 	EVT_TRLOOP( wxID_ANY, InputPageBase::OnNativeEvent )
+	EVT_MONTHLYFACTOR( wxID_ANY, InputPageBase::OnNativeEvent )
 
 	EVT_ERASE_BACKGROUND( InputPageBase::OnErase )
 	EVT_PAINT( InputPageBase::OnPaint )
@@ -542,6 +543,11 @@ bool InputPageBase::DataExchange( wxUIObject *obj, VarValue &val, DdxDir dir )
 	{
 		if ( dir == VAR_TO_OBJ ) tr->LoopData( val.IntegerArray() );
 		else val.Set( tr->LoopData() );
+	}
+	else if ( AFMonthlyFactorCtrl *mf = obj->GetNative<AFMonthlyFactorCtrl>() )
+	{
+		if ( dir == VAR_TO_OBJ ) mf->Set( val.Array() );
+		else val.Set( mf->Get() );
 	}
 	else return false; // object data exch not handled for this type
 

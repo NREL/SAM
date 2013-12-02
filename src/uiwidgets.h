@@ -52,5 +52,25 @@ private:
 	DECLARE_EVENT_TABLE();
 };
 
+
+#define EVT_MONTHLYFACTOR(i,f) EVT_BUTTON(i,f)
+class AFMonthlyFactorCtrl : public wxButton
+{
+public:
+	AFMonthlyFactorCtrl( wxWindow *parent, int id, 
+		const wxPoint &pos=wxDefaultPosition, const wxSize &size=wxDefaultSize);
+
+	std::vector<float> Get( );
+	void Set( const std::vector<float> &data );
+	void SetDescription(const wxString &s);
+	wxString GetDescription();
+private:
+	void OnPressed(wxCommandEvent &evt);
+	wxString mDescription;
+	float mData[12];
+	DECLARE_EVENT_TABLE();
+};
+
+
 #endif
 
