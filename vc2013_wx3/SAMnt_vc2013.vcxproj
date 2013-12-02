@@ -31,10 +31,12 @@
     <ClCompile Include="..\src\invoke.cpp" />
     <ClCompile Include="..\src\ipagelist.cpp" />
     <ClCompile Include="..\src\main.cpp" />
+    <ClCompile Include="..\src\materials.cpp" />
     <ClCompile Include="..\src\object.cpp" />
     <ClCompile Include="..\src\project.cpp" />
     <ClCompile Include="..\src\ptlayoutctrl.cpp" />
     <ClCompile Include="..\src\simplecurl.cpp" />
+    <ClCompile Include="..\src\troughloop.cpp" />
     <ClCompile Include="..\src\uiwidgets.cpp" />
     <ClCompile Include="..\src\variables.cpp" />
     <ClCompile Include="..\src\welcome.cpp" />
@@ -49,10 +51,12 @@
     <ClInclude Include="..\src\invoke.h" />
     <ClInclude Include="..\src\ipagelist.h" />
     <ClInclude Include="..\src\main.h" />
+    <ClInclude Include="..\src\materials.h" />
     <ClInclude Include="..\src\object.h" />
     <ClInclude Include="..\src\project.h" />
     <ClInclude Include="..\src\ptlayoutctrl.h" />
     <ClInclude Include="..\src\simplecurl.h" />
+    <ClInclude Include="..\src\troughloop.h" />
     <ClInclude Include="..\src\uiwidgets.h" />
     <ClInclude Include="..\src\variables.h" />
     <ClInclude Include="..\src\welcome.h" />

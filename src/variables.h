@@ -72,6 +72,8 @@ public:
 	void Set( int val );
 	void Set( float val );
 	void Set( double val );
+	void Set( const std::vector<int> &ivec );
+	void Set( const std::vector<float> &fvec );
 	void Set( float *val, size_t n );
 	void Set( float *mat, size_t r, size_t c );
 	void Set( const ::matrix_t<float> &mat );
@@ -82,6 +84,7 @@ public:
 	float Value();
 	float *Array( size_t *n );
 	std::vector<float> Array();
+	std::vector<int> IntegerArray();
 	::matrix_t<float> &Matrix();
 	wxString String();
 	VarTable &Table();
