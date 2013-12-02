@@ -9,8 +9,8 @@
 
 #include "object.h"
 
-
 void RegisterUIWidgetsForSAM();
+
 
 class AFSchedNumeric : public wxWindow
 {

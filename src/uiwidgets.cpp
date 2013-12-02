@@ -6,6 +6,11 @@
 #include <wex/uiform.h>
 #include <wex/extgrid.h>
 
+
+#include "ptlayoutctrl.h"
+#include "materials.h"
+#include "troughloop.h"
+
 #include "uiwidgets.h"
 
 /******************************* AFSchedNumeric **********************************/
@@ -383,7 +388,6 @@ public:
 	}
 };
 
-#include "ptlayoutctrl.h"
 
 
 class wxUIPTLayoutObject : public wxUIObject
@@ -410,20 +414,58 @@ public:
 	}
 };
 
+class wxUIMatPropObject : public wxUIObject 
+{
+public:
+	wxUIMatPropObject() {
+		AddProperty("TabOrder", new wxUIProperty( (int)-1 ) );
+	}
+	virtual wxString GetTypeName() { return "MaterialProperties"; }
+	virtual wxUIObject *Duplicate() { wxUIObject *o = new wxUIMatPropObject; o->Copy( this ); return o; }
+	virtual bool IsNativeObject() { return true; }
+	virtual bool DrawDottedOutline() { return false; }
+	virtual wxWindow *CreateNative( wxWindow *parent ) {
+		return AssignNative( new MatPropCtrl( parent, wxID_ANY ) );
+	}
+	virtual void Draw( wxWindow *win, wxDC &dc, const wxRect &geom )
+	{
+		wxRendererNative::Get().DrawPushButton( win, dc, geom );
+		dc.SetFont( *wxNORMAL_FONT );
+		dc.SetTextForeground( *wxBLACK );
+		wxString label("Edit...");
+		int x, y;
+		dc.GetTextExtent( label, &x, &y );
+		dc.DrawText( label, geom.x + geom.width/2-x/2, geom.y+geom.height/2-y/2 );
+	}
+};
 
+class wxUITroughLoopObject : public wxUIObject
+{
+public:
+	wxUITroughLoopObject() {
+		Property("Width").Set( 650 );
+		Property("Height").Set( 300 );
+	}
+	virtual wxString GetTypeName() { return "TroughLoop"; }
+	virtual wxUIObject *Duplicate() { wxUIObject *o = new wxUITroughLoopObject; o->Copy( this ); return o; }
+	virtual bool IsNativeObject() { return true; }
+	virtual bool DrawDottedOutline() { return false; }
+	virtual wxWindow *CreateNative( wxWindow *parent ) {		
+		return AssignNative( new TRLoopCtrl( parent, wxID_ANY ) );
+	}
+};
 
 void RegisterUIWidgetsForSAM()
 {
 	wxUIObjectTypeProvider::Register( new wxUISchedNumericObject );
 	wxUIObjectTypeProvider::Register( new wxUIPTLayoutObject );
+	wxUIObjectTypeProvider::Register( new wxUIMatPropObject );
+	wxUIObjectTypeProvider::Register( new wxUITroughLoopObject );
 
 /* TODO LIST 
 
-{ GUI_ADD_CONTROL_ID+20, "PTLayout",         "PTLayoutCtrl",           ptlayctrl_xpm,   CTRL_NATIVE,  10, 15, 800, 300,  props_ptlayout,        NULL,       objinit_ptlayout,       objfree_ptlayout,       nativesetprop_ptlayout,       paint_ptlayout,       iswithin_default,   nativeevt_ptlayout,       vartoctrl_ptlayout,       ctrltovar_ptlayout,       false  },
 { GUI_ADD_CONTROL_ID+21, "ShadingCtrl",      "ShadingCtrl",            shadingctrl_xpm, CTRL_NATIVE,  10, 15, 550, 300,  props_shadingctrl,     NULL,       objinit_shadingctrl,    objfree_shadingctrl,    nativesetprop_shadingctrl,    paint_shadingctrl,    iswithin_default,   nativeevt_shadingctrl,    vartoctrl_shadingctrl,    ctrltovar_shadingctrl,    false  },
 { GUI_ADD_CONTROL_ID+22, "PlotSurface",      "WPPlotSurface2D",        plotsurface_xpm, CTRL_NATIVE,  10, 13, 300, 300,  props_plotsurface,     NULL,       objinit_plotsurface,    objfree_plotsurface,    nativesetprop_plotsurface,    paint_plotsurface,    iswithin_default,   NULL,                     NULL,                     NULL,                     false  },
-{ GUI_ADD_CONTROL_ID+23, "MatPropCtrl",      "MatPropCtrl",            matpropctrl_xpm, CTRL_NATIVE,  10, 15, 77, 27,    props_matpropctrl,     NULL,       objinit_matpropctrl,    objfree_matpropctrl,    nativesetprop_matpropctrl,    paint_matpropctrl,    iswithin_default,   nativeevt_matpropctrl,    vartoctrl_matpropctrl,    ctrltovar_matpropctrl,    false  },
-{ GUI_ADD_CONTROL_ID+24, "Hyperlink",        "wxHyperlinkCtrl",        hyperlink_xpm,   CTRL_NATIVE,  10, 15, 110, 21,   props_hyperlink,       NULL,       objinit_hyperlink,      objfree_hyperlink,      nativesetprop_hyperlink,      paint_hyperlink,      iswithin_default,   NULL,                     NULL,                     NULL,                     true   },
 { GUI_ADD_CONTROL_ID+25, "TRLoop",           "TRLoopCtrl",             trloopctrl_xpm,  CTRL_NATIVE,  10, 15, 800, 400,  props_trloop,          NULL,       objinit_trloop,         objfree_trloop,         nativesetprop_trloop,         paint_trloop,         iswithin_default,   nativeevt_trloop,         vartoctrl_trloop,         ctrltovar_trloop,         false  },
 { GUI_ADD_CONTROL_ID+26, "DataGridBtn",      "DataGridButton",         datagridbtn_xpm, CTRL_NATIVE,  10, 15, 100, 21,   props_datagridbutton,  NULL,       objinit_datagridbutton, objfree_datagridbutton, nativesetprop_datagridbutton, paint_datagridbutton, iswithin_default,   nativeevt_datagridbutton, vartoctrl_datagridbutton, ctrltovar_datagridbutton, false },
 { GUI_ADD_CONTROL_ID+27, "MonthlySchedule",  "AFMonthlyScheduleCtrl",  monsched_xpm,    CTRL_NATIVE,  10, 15, 110, 21,   props_monthlyschedule, NULL,       objinit_monthlyschedule,objfree_monthlyschedule,nativesetprop_monthlyschedule,paint_monthlyschedule,iswithin_default,   nativeevt_monthlyschedule,vartoctrl_monthlyschedule,ctrltovar_monthlyschedule,false },

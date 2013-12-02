@@ -21,14 +21,16 @@ OBJECTS = ide.o \
 	case.o \
 	main.o \
 	equations.o \
-	ptlayoutctrl.o \
 	inputpage.o \
 	uiwidgets.o \
 	variables.o \
 	project.o \
 	object.o \
 	simplecurl.o \
-	welcome.o
+	welcome.o \
+	ptlayoutctrl.o \
+	troughloop.o \
+	materials.o
 
 TARGET = SAM
 

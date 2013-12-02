@@ -62,6 +62,12 @@
     <ClInclude Include="..\src\ptlayoutctrl.h">
       <Filter>Source</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\materials.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\troughloop.h">
+      <Filter>Source</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\welcome.cpp">
@@ -110,6 +116,12 @@
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="..\src\ptlayoutctrl.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\materials.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\troughloop.cpp">
       <Filter>Source</Filter>
     </ClCompile>
   </ItemGroup>
