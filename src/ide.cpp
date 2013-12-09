@@ -619,6 +619,8 @@ void UIEditorPanel::OnCommand( wxCommandEvent &evt )
 						m_varData.Add( name, VV_MATRIX );
 					else if ( type == "ShadingFactors" )
 						m_varData.Add( name, VV_TABLE );
+					else if ( type == "ValueMatrix" )
+						m_varData.Add( name, VV_MATRIX );
 
 					// extend this list in the future for additional controls
 				}

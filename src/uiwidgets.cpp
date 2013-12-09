@@ -857,8 +857,8 @@ private:
 
 public:
 	AFDataArrayDialog(wxWindow *parent, const wxString &title)
-		: wxDialog(parent, -1, title, wxDefaultPosition, wxSize(330,410), 
-			wxCAPTION|wxRESIZE_BORDER|wxMAXIMIZE_BOX|wxCLOSE_BOX|wxSYSTEM_MENU )
+		: wxDialog(parent, wxID_ANY, title, wxDefaultPosition, wxSize(430,510), 
+			wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER )
 	{
 
 		GridTable = NULL;
@@ -897,11 +897,10 @@ public:
 		szv_main->Add(szh_top2, 0, wxALL|wxEXPAND, 1);	
 		szv_main->Add(Grid, 1, wxALL|wxEXPAND, 1);
 		szv_main->Add( CreateButtonSizer( wxOK|wxCANCEL ), 0, wxALL|wxEXPAND, 1);
-
-		SetSizer(szv_main);
-	
+			
 		SetMode(DATA_ARRAY_8760_MULTIPLES);
-
+		
+		SetSizer(szv_main);
 	}
 
 	void SetMode(int m)
@@ -1145,8 +1144,8 @@ int AFDataArrayButton::GetMode()
 
 void AFDataArrayButton::OnPressed(wxCommandEvent &evt)
 {
-	AFDataArrayDialog dlg(this, "Edit Data");
-
+	AFDataArrayDialog dlg( this, "Edit Data" );
+	
 	dlg.SetDataLabel( mDataLabel );
 	dlg.SetMode(mMode);
 	dlg.SetData( mData );
@@ -1182,7 +1181,7 @@ AFDataMatrixCtrl::AFDataMatrixCtrl( wxWindow *parent, int id,
 	m_pasteappendrows = false;
 	m_colLabels="";
 	m_showColLabels = false;
-	m_showLabels = true;
+	m_showLabels = false;
 	m_shadeR0C0 = true;
 	m_showcols = true;
 	m_rowY2 = m_rowY1 = m_rowY0 = 0.0;
@@ -1563,7 +1562,7 @@ void AFDataMatrixCtrl::MatrixToGrid()
 	{
 		m_grid->SetColLabelSize( 20 );
 		wxArrayString as = wxStringTokenize(m_colLabels, ",");
-		for (c=0; c<as.Count(); c++)
+		for (c=0; c<as.Count() && c < m_grid->GetNumberCols(); c++)
 		{
 			m_grid->SetColLabelValue(c, as[c]);
 			m_grid->AutoSizeColLabelSize( c ); 
@@ -1614,8 +1613,304 @@ bool AFDataMatrixCtrl::ShowLabels()
 	return m_showLabels;
 }
 
+/* data grid dialog */
+
+class DataGridDialog : public wxDialog
+{
+	wxExtGridCtrl *Grid;
+public:
+
+	DataGridDialog(wxWindow *parent, const wxString &title)
+		: wxDialog(parent, -1, title, wxDefaultPosition, wxSize(330,410), 
+			wxCAPTION|wxRESIZE_BORDER|wxMAXIMIZE_BOX|wxCLOSE_BOX|wxSYSTEM_MENU )
+	{
+		wxButton *btn = NULL;
+		Grid = new wxExtGridCtrl(this, IDDD_GRID);
+		Grid->CreateGrid(10,2);
+		Grid->DisableDragCell();
+		//Grid->DisableDragColSize();
+		Grid->DisableDragRowSize();
+		Grid->DisableDragColMove();
+		Grid->DisableDragGridSize();
+
+		wxBoxSizer *szh_top = new wxBoxSizer(wxHORIZONTAL);
+		btn = new wxButton(this, IDDD_CHANGENUMROWS, "Rows...");
+		szh_top->Add(btn, 0, wxALL|wxEXPAND, 1);
+		btn = new wxButton(this, IDDD_COPY, "Copy");
+		szh_top->Add(btn, 0, wxALL|wxEXPAND, 1);
+		btn = new wxButton(this, IDDD_PASTE, "Paste");
+		szh_top->Add(btn, 0, wxALL|wxEXPAND, 1);
+		szh_top->AddStretchSpacer();
+	
+		wxBoxSizer *szv_main = new wxBoxSizer(wxVERTICAL);
+		szv_main->Add(szh_top, 0, wxALL|wxEXPAND, 1);
+		szv_main->Add(Grid, 1, wxALL|wxEXPAND, 1);
+		szv_main->Add(CreateButtonSizer( wxOK|wxCANCEL), 0, wxALL|wxEXPAND, 5);
+
+		SetSizer(szv_main);
+	}
+
+	void SetData(const matrix_t<float> &data, wxArrayString *collabels)
+	{
+		if (data.nrows() < 1 || data.ncols() < 1)
+			return;
+
+		Grid->ResizeGrid( data.nrows(), data.ncols() );
+
+		for (int r=0;r<data.nrows();r++)
+			for (int c=0;c<data.ncols();c++)
+				Grid->SetCellValue( r, c, wxString::Format("%g", data.at(r,c)) );
+
+		if (collabels != NULL)
+		{
+			for (int i=0;i<data.ncols() && i < collabels->Count();i++)
+				Grid->SetColLabelValue( i, collabels->Item(i) );
+		}
+
+		Grid->Freeze();
+		Grid->SetRowLabelSize(wxGRID_AUTOSIZE);
+		Grid->SetRowLabelAlignment(wxALIGN_LEFT,wxALIGN_CENTRE);
+		//Grid->SetColLabelSize(wxGRID_AUTOSIZE);
+		Grid->SetColLabelAlignment(wxALIGN_LEFT,wxALIGN_CENTRE);
+		//Grid->AutoSize();
+		Grid->Thaw();
+
+		Grid->Layout();
+		Grid->GetParent()->Layout();
+		Grid->Refresh();
+
+	}
+
+	void GetData(matrix_t<float> &data)
+	{
+		int nr = Grid->GetNumberRows();
+		int nc = Grid->GetNumberCols();
+		data.resize_fill( nr, nc, 0.0f );
+		for (int r=0;r<nr;r++)
+			for (int c=0;c<nc;c++)
+				data.at(r,c) = wxAtof( Grid->GetCellValue(r,c) );
+	}
+	
+	void OnCellChange(wxGridEvent &evt)
+	{
+		int r = evt.GetRow();
+		int c = evt.GetCol();
+
+		if (r >= 0 && c >= 0)
+		{
+			float val = (float)wxAtof( Grid->GetCellValue(r,c) );
+			Grid->SetCellValue( r, c, wxString::Format("%g", val) );
+		}
+	}
+
+	void OnCommand(wxCommandEvent &evt)
+	{
+		if (evt.GetId() == IDDD_CHANGENUMROWS)
+		{
+			wxString result = wxGetTextFromUser("Enter number of data rows", "Edit Table",
+				wxString::Format("%d", Grid->GetNumberRows()), this );
+			if (result.IsEmpty()) return;
+
+			long l=0;
+			if ( result.ToLong(&l)  && l > 0 )
+			{
+				Grid->ResizeGrid( l, Grid->GetNumberCols() );
+			}
+			else
+				wxMessageBox("Invalid number of rows or non-numeric entry.");
+		}
+		else if (evt.GetId() == IDDD_COPY)
+			Grid->Copy(true);
+		else if (evt.GetId() == IDDD_PASTE)
+			Grid->Paste(true);
+	}
+
+	DECLARE_EVENT_TABLE();
+};
+
+BEGIN_EVENT_TABLE(DataGridDialog, wxDialog)
+	EVT_BUTTON( IDDD_COPY, DataGridDialog::OnCommand )
+	EVT_BUTTON( IDDD_PASTE, DataGridDialog::OnCommand )
+	EVT_BUTTON( IDDD_CHANGENUMROWS, DataGridDialog::OnCommand )
+	EVT_GRID_CMD_CELL_CHANGE( IDDD_GRID, DataGridDialog::OnCellChange )
+END_EVENT_TABLE()
 
 
+
+
+enum {IDDGB_NUMERIC=wxID_HIGHEST+239, IDDGB_BUTTON};
+
+DEFINE_EVENT_TYPE( wxEVT_VALUEMATRIXBUTTON_CHANGE )
+
+
+BEGIN_EVENT_TABLE(AFValueMatrixButton, wxWindow)
+	EVT_PAINT( AFValueMatrixButton::OnPaint )
+	EVT_SIZE( AFValueMatrixButton::OnResize )
+	EVT_LEFT_DOWN( AFValueMatrixButton::OnClick )
+	EVT_BUTTON( IDDGB_BUTTON, AFValueMatrixButton::OnEditTable)
+	EVT_NUMERIC( IDDGB_NUMERIC, AFValueMatrixButton::OnValChanged)
+END_EVENT_TABLE()
+
+AFValueMatrixButton::AFValueMatrixButton(wxWindow *parent, int id, const wxPoint &pos, const wxSize &sz)
+	: wxWindow(parent, id, pos, sz, wxCLIP_CHILDREN)
+{
+	SetBackgroundStyle(wxBG_STYLE_CUSTOM);
+
+	bUseTable = false;
+
+	mSingleValue = new wxNumericCtrl(this, IDDGB_NUMERIC, 0.0, wxNumericCtrl::REAL, wxPoint(25,0), wxSize( sz.GetWidth()-25, sz.GetHeight()) );
+	mBtnEditTable = new wxButton(this, IDDGB_BUTTON, "Table...", wxPoint(25,0), wxSize( sz.GetWidth()-25, sz.GetHeight()) );
+	mBtnEditTable->Show(false);
+
+	mTable.resize_fill(10,2, 0.0f);
+}
+
+bool AFValueMatrixButton::UseTable()
+{
+	return bUseTable;
+}
+
+void AFValueMatrixButton::UseTable(bool b)
+{
+	mSingleValue->Show( !b );
+	mBtnEditTable->Show( b );
+	bUseTable = b;
+	Refresh();
+}
+
+float AFValueMatrixButton::GetSingleValue()
+{
+	return (float)mSingleValue->Value();
+}
+
+void AFValueMatrixButton::SetSingleValue(float val)
+{
+	mSingleValue->SetValue((double)val);
+}
+
+void AFValueMatrixButton::GetTableData(matrix_t<float> *mat)
+{
+	if (mat) *mat = mTable;
+}
+
+void AFValueMatrixButton::SetTableData(const matrix_t<float> &mat)
+{
+	mTable = mat;
+}
+
+void AFValueMatrixButton::SetTableSize(int nr, int nc)
+{
+	mTable.resize_preserve(nr,nc, 0.0f);
+}
+
+void AFValueMatrixButton::GetTableSize(int *nr, int *nc)
+{
+	if (nr) *nr = mTable.nrows();
+	if (nc) *nc = mTable.ncols();
+}
+
+
+void AFValueMatrixButton::SetColLabels(const wxString &delimlist)
+{
+	mColLabels = wxStringTokenize(delimlist, ",");
+}
+
+void AFValueMatrixButton::SetColLabels(const wxArrayString &labels)
+{
+	mColLabels = labels;
+}
+
+void AFValueMatrixButton::OnResize(wxSizeEvent &evt)
+{
+	int cw, ch;
+	GetClientSize(&cw,&ch);
+	mSingleValue->SetSize(25,0,cw-25,ch);
+	mBtnEditTable->SetSize(25,0,cw-25,ch);
+}
+
+void AFValueMatrixButton::OnPaint(wxPaintEvent &evt)
+{
+	wxAutoBufferedPaintDC pdc(this);
+
+	int cwidth, cheight;
+	GetClientSize(&cwidth,&cheight);
+
+	wxFont f = wxFont(4, wxFONTFAMILY_SWISS, wxFONTSTYLE_NORMAL, 
+	wxFONTWEIGHT_BOLD, false, "arial"); 
+	f.SetPointSize(5);
+
+	pdc.SetBrush(wxBrush(*wxLIGHT_GREY));
+	pdc.SetPen(wxPen(*wxLIGHT_GREY));
+	pdc.DrawRectangle(0, 0, 25, cheight);
+
+	pdc.SetBrush(wxBrush(wxTheColourDatabase->Find("FOREST GREEN")));
+	pdc.SetPen(wxPen(wxTheColourDatabase->Find("FOREST GREEN")));
+	pdc.DrawRectangle(0, bUseTable?cheight/2:0, 25, cheight/2);
+
+	pdc.SetFont(f);
+	pdc.SetTextForeground(*wxWHITE);
+	pdc.DrawText(wxT("Value"), 1, 1);
+	pdc.DrawText(wxT("Table"), 1, cheight/2+1); 
+}
+
+void AFValueMatrixButton::OnClick(wxMouseEvent &evt)
+{
+	SetFocus();
+	
+	if (evt.GetX() >= 25)
+		return;
+
+	UseTable( !bUseTable );
+	DispatchEvent();
+}
+
+void AFValueMatrixButton::OnEditTable(wxCommandEvent &evt)
+{
+	DataGridDialog dlg(this, "Edit Tabular Data");
+	dlg.SetData( mTable, &mColLabels );
+	if (dlg.ShowModal() == wxID_OK)
+	{
+		dlg.GetData( mTable );
+		DispatchEvent();
+	}
+}
+
+void AFValueMatrixButton::OnValChanged(wxCommandEvent &evt)
+{
+	DispatchEvent();
+}
+
+void AFValueMatrixButton::DispatchEvent()
+{
+	wxCommandEvent evt(wxEVT_VALUEMATRIXBUTTON_CHANGE, this->GetId() );
+	evt.SetEventObject(this);
+	GetEventHandler()->ProcessEvent(evt);
+}
+
+void AFValueMatrixButton::Set( const matrix_t<float> &mat )
+{
+	if ( mat.nrows() == 1 && mat.ncols() == 1 )
+	{
+		UseTable( false );
+		mSingleValue->SetValue( mat(0,0) );
+	}
+	else
+	{
+		UseTable( true );
+		mTable = mat;
+	}
+}
+
+matrix_t<float> AFValueMatrixButton::Get()
+{
+	if ( bUseTable ) return mTable;
+	else 
+	{
+		matrix_t<float> mat;
+		mat.resize_fill( 1, 1, (float)mSingleValue->Value() );
+		return mat;
+	}
+}
 
 class wxUISchedNumericObject : public wxUIObject
 {
@@ -1950,6 +2245,14 @@ class wxUIDataMatrixObject : public wxUIObject
 {
 public:
 	wxUIDataMatrixObject() {
+		AddProperty( "PasteAppendRows", new wxUIProperty( false ) );
+		AddProperty( "ShowLabels", new wxUIProperty( false ) );
+		AddProperty( "ShadeR0C0", new wxUIProperty( false ) );
+		AddProperty( "ShowCols", new wxUIProperty( true ) );
+		AddProperty( "ShowColLabels", new wxUIProperty( true ) );
+		AddProperty( "ColLabels", new wxUIProperty( wxString("") ) );
+		AddProperty( "Layout", new wxUIProperty( 0, "Buttons on top,Buttons on side" ) );
+
 		Property("Width").Set(400);
 		Property("Height").Set(300);
 	}
@@ -1957,7 +2260,26 @@ public:
 	virtual wxUIObject *Duplicate() { wxUIObject *o = new wxUIDataMatrixObject; o->Copy( this ); return o; }
 	virtual bool IsNativeObject() { return true; }
 	virtual wxWindow *CreateNative( wxWindow *parent ) {
-		return AssignNative( new AFDataMatrixCtrl( parent, wxID_ANY ) );
+		AFDataMatrixCtrl *dm = new AFDataMatrixCtrl( parent, wxID_ANY, wxDefaultPosition, wxDefaultSize, Property("Layout").GetInteger() == 1 );
+		dm->PasteAppendRows( Property("PasteAppendRows").GetBoolean() );
+		dm->ShowLabels( Property("ShowLabels").GetBoolean() );
+		dm->ShadeR0C0( Property("ShadeR0C0").GetBoolean() );
+		dm->ShowCols( Property( "ShowCols" ).GetBoolean() );
+		dm->ShowColLabels( Property("ShowColLabels").GetBoolean() );
+		dm->SetColLabels( Property("ColLabels").GetString() );
+		return AssignNative( dm );
+	}
+	virtual void OnPropertyChanged( const wxString &id, wxUIProperty *p )
+	{
+		if ( AFDataMatrixCtrl *dm = GetNative<AFDataMatrixCtrl>() )
+		{
+			if ( id == "PasteAppendRows" ) dm->PasteAppendRows( p->GetBoolean() );
+			if ( id == "ShadeR0C0" ) dm->ShadeR0C0( p->GetBoolean() );
+			if ( id == "ShowCols" ) dm->ShowCols( p->GetBoolean() );
+			if ( id == "ShowLabels" ) dm->ShowLabels( p->GetBoolean() );
+			if ( id == "ShowColLabels" ) dm->ShowColLabels( p->GetBoolean() );
+			if ( id == "ColLabels" ) dm->SetColLabels( p->GetString() );
+		}
 	}
 };
 
@@ -1986,6 +2308,54 @@ public:
 	}
 };
 
+class wxUIValueMatrixObject : public wxUIObject
+{
+public:
+	wxUIValueMatrixObject() {
+		AddProperty( "NumRows", new wxUIProperty( (int) 10 ) );
+		AddProperty( "NumCols", new wxUIProperty( (int) 2 ) );
+		AddProperty( "ColLabels", new wxUIProperty( wxString("") ) );
+		AddProperty("TabOrder", new wxUIProperty( (int)-1 ) );
+	}
+	virtual wxString GetTypeName() { return "ValueMatrix"; }
+	virtual wxUIObject *Duplicate() { wxUIObject *o = new wxUIValueMatrixObject; o->Copy( this ); return o; }
+	virtual bool IsNativeObject() { return true; }
+	virtual bool DrawDottedOutline() { return false; }
+	virtual wxWindow *CreateNative( wxWindow *parent ) {
+		AFValueMatrixButton *vm = new AFValueMatrixButton( parent, wxID_ANY );
+		vm->SetTableSize( Property("NumRows").GetInteger(), Property("NumCols").GetInteger() );
+		vm->SetColLabels( Property("ColLabels").GetString() );
+		return AssignNative( vm );
+	}
+	virtual void Draw( wxWindow *win, wxDC &dc, const wxRect &geom )
+	{
+		dc.SetBrush( wxBrush( "Forest Green" ) );
+		dc.DrawRectangle( geom.x, geom.y+geom.height/2, 25, geom.height/2 );
+		dc.SetPen( *wxLIGHT_GREY_PEN );
+		dc.SetBrush( wxBrush( *wxWHITE ) );
+		dc.DrawRectangle( geom.x+25, geom.y, geom.width-25, geom.height );
+		dc.SetFont( *wxNORMAL_FONT );
+		dc.SetTextForeground( *wxBLACK );
+		wxString text = Property("Text").GetString();
+		int x, y;
+		dc.GetTextExtent( text, &x, &y );
+		dc.DrawText( text, geom.x+27, geom.y+geom.height/2-y/2 );
+	}
+
+	virtual void OnPropertyChanged( const wxString &id, wxUIProperty *p )
+	{
+		if ( AFValueMatrixButton *vm = GetNative<AFValueMatrixButton>() )
+		{
+			int nr, nc;
+			vm->GetTableSize( &nr, &nc );
+			if ( id == "NumRows") vm->SetTableSize( p->GetInteger(), nc );
+			if ( id == "NumCols") vm->SetTableSize( nr, p->GetInteger() );
+			if ( id == "ColLabels" ) vm->SetColLabels( p->GetString() );
+		}
+	}
+};
+
+
 void RegisterUIWidgetsForSAM()
 {
 	wxUIObjectTypeProvider::Register( new wxUISchedNumericObject );
@@ -1999,9 +2369,10 @@ void RegisterUIWidgetsForSAM()
 	wxUIObjectTypeProvider::Register( new wxUIDataArrayObject );
 	wxUIObjectTypeProvider::Register( new wxUIDataMatrixObject );
 	wxUIObjectTypeProvider::Register( new wxUIShadingFactorsObject );
+	wxUIObjectTypeProvider::Register( new wxUIValueMatrixObject );
 
 /* TODO LIST 
-{ GUI_ADD_CONTROL_ID+26, "DataGridBtn",      "DataGridButton",         datagridbtn_xpm, CTRL_NATIVE,  10, 15, 100, 21,   props_datagridbutton,  NULL,       objinit_datagridbutton, objfree_datagridbutton, nativesetprop_datagridbutton, paint_datagridbutton, iswithin_default,   nativeevt_datagridbutton, vartoctrl_datagridbutton, ctrltovar_datagridbutton, false },
+{ GUI_ADD_CONTROL_ID+26, "DataGridBtn",      "AFValueMatrixButton",         datagridbtn_xpm, CTRL_NATIVE,  10, 15, 100, 21,   props_AFValueMatrixButton,  NULL,       objinit_AFValueMatrixButton, objfree_AFValueMatrixButton, nativesetprop_AFValueMatrixButton, paint_AFValueMatrixButton, iswithin_default,   nativeevt_AFValueMatrixButton, vartoctrl_AFValueMatrixButton, ctrltovar_AFValueMatrixButton, false },
 { GUI_ADD_CONTROL_ID+28, "AFDataArrayButton",  "AFDataArrayButton",        dataarraybtn_xpm,CTRL_NATIVE,  10, 15, 110, 21,   props_AFDataArrayButton, NULL,       objinit_AFDataArrayButton,objfree_AFDataArrayButton,nativesetprop_AFDataArrayButton,paint_AFDataArrayButton,iswithin_default,   nativeevt_AFDataArrayButton,vartoctrl_AFDataArrayButton,ctrltovar_AFDataArrayButton,false },
 { GUI_ADD_CONTROL_ID+29, "AFDataMatrixCtrl", "AFDataMatrixCtrl",       dblmatctrl_xpm,  CTRL_NATIVE,  10, 15, 800, 400,  props_dblmatctrl,      NULL,       objinit_dblmatctrl,     objfree_dblmatctrl,     nativesetprop_dblmatctrl,     paint_dblmatctrl,     iswithin_default,   nativeevt_dblmatctrl,     vartoctrl_dblmatctrl,     ctrltovar_dblmatctrl,     false },
 { GUI_ADD_CONTROL_ID+34, "ShadingButton",    "ShadingButtonCtrl",      shadingctrl_xpm, CTRL_NATIVE,  10, 15, 110, 21,   props_shadbtn,        NULL,        objinit_shadbtn,        objfree_shadbtn,        nativesetprop_shadbtn,        paint_shadbtn,        iswithin_default,   nativeevt_shadbtn,        vartoctrl_shadbtn,        ctrltovar_shadbtn,       false },

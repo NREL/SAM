@@ -233,5 +233,54 @@ private:
 
 
 
+BEGIN_DECLARE_EVENT_TYPES()
+DECLARE_EVENT_TYPE( wxEVT_VALUEMATRIXBUTTON_CHANGE, 0 )
+END_DECLARE_EVENT_TYPES()
+
+#define EVT_VALUEMATRIXBUTTON(id, func)  EVT_COMMAND(id, wxEVT_VALUEMATRIXBUTTON_CHANGE, func)
+
+class AFValueMatrixButton : public wxWindow
+{
+public:
+	AFValueMatrixButton(wxWindow *parent, int id, const wxPoint &pos = wxDefaultPosition, const wxSize &sz = wxDefaultSize);
+
+	bool UseTable();
+	void UseTable(bool b);
+
+	void Set( const matrix_t<float> &mat );
+	matrix_t<float> Get();
+
+	float GetSingleValue();
+	void SetSingleValue(float val);
+
+	void GetTableData(matrix_t<float> *mat);
+	void SetTableData(const matrix_t<float> &mat);
+
+	void SetTableSize(int nr, int nc);
+	void GetTableSize(int *nr, int *nc);
+	void SetColLabels(const wxString &delimlist);
+	void SetColLabels(const wxArrayString &labels);
+	
+	void DispatchEvent();
+private:
+	void OnResize(wxSizeEvent &evt);
+	void OnPaint(wxPaintEvent &evt);
+	void OnClick(wxMouseEvent &evt);
+	void OnEditTable(wxCommandEvent &evt);
+	void OnValChanged(wxCommandEvent &evt);
+
+	bool bUseTable;
+
+	wxButton *mBtnEditTable;
+	wxNumericCtrl *mSingleValue;
+
+	matrix_t<float> mTable;
+	wxArrayString mColLabels;
+
+	DECLARE_EVENT_TABLE();
+};
+
+
+
 #endif
 
