@@ -1015,14 +1015,14 @@ bool ImportSunEyeHourly( ShadingInputData &dat, wxWindow *parent )
 					icolon = lnp.Item(1).find(":");
 					if (icolon>0) 
 					{
-						start_minute = atoi(lnp.Item(1).substr(icolon+1,2));
-						start_hour = atoi(lnp.Item(1).substr(0,icolon));
+						start_minute = wxAtoi(lnp.Item(1).substr(icolon+1,2));
+						start_hour = wxAtoi(lnp.Item(1).substr(0,icolon));
 					}
 					icolon = lnp.Item(iend).find(":");
 					if (icolon>0) 
 					{
-						end_minute = atoi(lnp.Item(iend).substr(icolon+1,2));
-						end_hour = atoi(lnp.Item(iend).substr(0,icolon));
+						end_minute = wxAtoi(lnp.Item(iend).substr(icolon+1,2));
+						end_hour = wxAtoi(lnp.Item(iend).substr(0,icolon));
 					}
 					// check for valid duration
 					if ((start_hour==0) || (end_hour==0))
