@@ -244,6 +244,7 @@ BEGIN_EVENT_TABLE( InputPageBase, wxPanel )
 	EVT_DATAARRAYBUTTON( wxID_ANY, InputPageBase::OnNativeEvent )
 	EVT_DATAMATRIX( wxID_ANY, InputPageBase::OnNativeEvent )
 	EVT_SHADINGBUTTON( wxID_ANY, InputPageBase::OnNativeEvent )
+	EVT_VALUEMATRIXBUTTON( wxID_ANY, InputPageBase::OnNativeEvent )
 
 	EVT_ERASE_BACKGROUND( InputPageBase::OnErase )
 	EVT_PAINT( InputPageBase::OnPaint )
@@ -567,6 +568,11 @@ bool InputPageBase::DataExchange( wxUIObject *obj, VarValue &val, DdxDir dir )
 	{
 		if ( dir == VAR_TO_OBJ ) sb->Read( &val );
 		else sb->Write( &val );
+	}
+	else if ( AFValueMatrixButton *vm = obj->GetNative<AFValueMatrixButton>() )
+	{
+		if ( dir == VAR_TO_OBJ ) vm->Set( val.Matrix() );
+		else val.Set( vm->Get() );
 	}
 	else return false; // object data exch not handled for this type
 
