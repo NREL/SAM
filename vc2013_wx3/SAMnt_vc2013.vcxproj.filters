@@ -68,6 +68,9 @@
     <ClInclude Include="..\src\troughloop.h">
       <Filter>Source</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\shadingfactors.h">
+      <Filter>Source</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\welcome.cpp">
@@ -122,6 +125,9 @@
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="..\src\troughloop.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\shadingfactors.cpp">
       <Filter>Source</Filter>
     </ClCompile>
   </ItemGroup>

@@ -165,6 +165,18 @@ VarValue::VarValue( float f )
 	m_val = f;
 }
 
+VarValue::VarValue( bool b )
+{
+	m_type = VV_NUMBER;
+	m_val = b ? 1 : 0;
+}
+
+VarValue::VarValue( const std::vector<float> &f )
+{
+	m_type = VV_ARRAY;
+	if ( f.size() > 0 ) m_val.assign( &f[0], f.size() );
+}
+
 VarValue::VarValue( float *arr, size_t n )
 {
 	m_type = VV_ARRAY;
@@ -327,6 +339,12 @@ void VarValue::Set( const VarTable &tab ) { m_type = VV_TABLE; m_tab.Copy( tab )
 int VarValue::Integer()
 {
 	if ( m_type == VV_NUMBER ) return (int)(float)m_val;
+	else return 0;
+}
+
+bool VarValue::Boolean()
+{
+	if ( m_type == VV_NUMBER ) return Integer() != 0;
 	else return 0;
 }
 
