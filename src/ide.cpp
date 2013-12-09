@@ -595,6 +595,30 @@ void UIEditorPanel::OnCommand( wxCommandEvent &evt )
 						m_varData.Add( name, VV_NUMBER );
 					else if ( type == "CheckBox" )
 						m_varData.Add( name, VV_NUMBER );
+					else if ( type == "RadioChoice" )
+						m_varData.Add( name, VV_NUMBER );
+					else if ( type == "Slider" )
+						m_varData.Add( name, VV_NUMBER );
+					else if ( type == "SchedNumeric" )
+						m_varData.Add( name, VV_ARRAY );
+					else if ( type == "TOUSchedule" )
+						m_varData.Add( name, VV_STRING );
+					else if ( type == "PTLayout" )
+						m_varData.Add( name, VV_TABLE );
+					else if ( type == "MaterialProperties" )
+						m_varData.Add( name, VV_MATRIX );
+					else if ( type == "TroughLoop" )
+						m_varData.Add( name, VV_ARRAY );
+					else if ( type == "MonthlyFactor" )
+						m_varData.Add( name, VV_ARRAY );
+					else if ( type == "SearchListBox" )
+						m_varData.Add( name, VV_STRING );
+					else if ( type == "DataArray" )
+						m_varData.Add( name, VV_ARRAY );
+					else if ( type == "DataMatrix" )
+						m_varData.Add( name, VV_MATRIX );
+					else if ( type == "ShadingFactors" )
+						m_varData.Add( name, VV_TABLE );
 
 					// extend this list in the future for additional controls
 				}

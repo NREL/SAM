@@ -15,6 +15,7 @@ END_DECLARE_EVENT_TYPES()
 
 class wxNumericCtrl;
 class TRLoopRenderer;
+class VarValue;
 
 #define EVT_TRLOOP(id,func) EVT_COMMAND(id, wxEVT_TRLOOP_CHANGE, func)
 
@@ -27,7 +28,7 @@ public:
 
 	void LoopData(const std::vector<int> &dat);
 	std::vector<int> LoopData();
-
+	
 	int NumSCAs();
 	
 	void ResetDefocus();

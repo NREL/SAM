@@ -233,6 +233,16 @@ public:
 		resize( nr, nc );
 		fill( val );
 	}
+
+	void resize_preserve( size_t nr, size_t nc, const T &val )
+	{
+		matrix_t<T> old( *this );
+		resize( nr, nc );
+		fill( val );
+		for( size_t r=0;r<nr && r<old.nrows();r++)
+			for( size_t c=0;c<nc && c<old.ncols();c++)
+				at(r,c) = old(r,c);
+	}
 		
 	void resize(size_t len)
 	{

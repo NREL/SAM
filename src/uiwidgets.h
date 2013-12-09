@@ -4,12 +4,19 @@
 #include <vector>
 
 #include <wx/window.h>
+#include <wx/panel.h>
 #include <wx/button.h>
+#include <wx/grid.h>
+
 #include <wex/numeric.h>
 
 #include "object.h"
 
 void RegisterUIWidgetsForSAM();
+
+class wxTextCtrl;
+class wxStaticText;
+class wxListBox;
 
 
 class AFSchedNumeric : public wxWindow
@@ -70,6 +77,160 @@ private:
 	float mData[12];
 	DECLARE_EVENT_TABLE();
 };
+
+class AFSearchListBox : public wxPanel
+{
+public:
+	AFSearchListBox( wxWindow *parent, int id, const wxPoint &pos = wxDefaultPosition, const wxSize &size = wxDefaultSize );
+	void Append( const wxString &s );
+	void Append( const wxArrayString &s );
+	int GetSelection();
+	size_t Count();
+	wxString GetItem( size_t i );
+	void Clear();
+	wxString GetStringSelection();
+	void SetSelection( size_t i );
+	void SetStringSelection(const wxString &s);
+
+	void SetPromptText( const wxString & );
+
+private:
+	wxTextCtrl *m_txtFilter;
+	wxStaticText *m_label;
+	wxStaticText *m_notifyLabel;
+	wxListBox *m_list;
+
+	struct item {
+		item() : str(wxEmptyString), shown(false) {  }
+		item( const wxString &s, bool sh ) : str(s), shown(sh) {  }
+		wxString str;
+		bool shown;
+	};
+	std::vector<item> m_items;
+
+	void UpdateView();
+	void SendEvent();
+	void OnFilter( wxCommandEvent & );
+	void OnSelect( wxCommandEvent & );
+
+	DECLARE_EVENT_TABLE();
+};
+
+
+#define EVT_DATAARRAYBUTTON(id, func)  EVT_BUTTON(id, func)
+
+enum {
+	DATA_ARRAY_8760_ONLY,
+	DATA_ARRAY_8760_MULTIPLES,
+	DATA_ARRAY_ANY };
+
+class AFDataArrayButton : public wxButton
+{
+public:
+	AFDataArrayButton(wxWindow *parent, int id, const wxPoint &pos=wxDefaultPosition, const wxSize &size=wxDefaultSize);
+
+	void Set(const std::vector<float> &data);
+	void Get(std::vector<float> &data);
+	std::vector<float> Get() const { return mData; }
+
+	void SetDataLabel(const wxString &s);
+	wxString GetDataLabel();
+
+	void SetMode(int mode);
+	int GetMode();
+
+private:
+	void OnPressed(wxCommandEvent &evt);
+	wxString mDataLabel;
+	int mMode;
+	std::vector<float> mData;
+
+	DECLARE_EVENT_TABLE();
+};
+
+class wxExtGridCtrl;
+
+BEGIN_DECLARE_EVENT_TYPES()
+DECLARE_EVENT_TYPE( wxEVT_AFDataMatrixCtrl_CHANGE, 0 )
+END_DECLARE_EVENT_TYPES()
+
+#define EVT_DATAMATRIX(id, func)  EVT_COMMAND(id, wxEVT_AFDataMatrixCtrl_CHANGE, func)
+
+class AFDataMatrixCtrl : public wxPanel
+{
+public:
+	AFDataMatrixCtrl( wxWindow *parent, int id, 
+		const wxPoint &pos=wxDefaultPosition,
+		const wxSize &sz=wxDefaultSize, 
+		bool sidebuttons = false);
+
+	void SetData( const matrix_t<float> &mat);
+	void GetData( matrix_t<float> &mat );
+	matrix_t<float> GetData() const { return m_data; }
+
+	void SetValueLimits( float min=0.0, float max=0.0 );
+	void GetValueLimits( float *min, float *max );
+
+	bool Export(const wxString &file);
+	bool Import(const wxString &file);
+
+	// '#' = y2*(i/n) + y1*i + y0
+	void SetRowLabelFormat( const wxString &val_fmt, double y2, double y1, double y0 );
+	void SetColLabelFormat( const wxString &val_fmt, double y2, double y1, double y0 );
+
+	void SetCaption(const wxString &cap);
+	wxString GetCaption();
+
+	void ShowLabels(bool b);
+	bool ShowLabels();
+
+	void ShadeR0C0(bool b);
+	bool ShadeR0C0();
+
+	void ShowCols(bool b);
+	bool ShowCols();
+
+	void ShowColLabels(bool b);
+	bool ShowColLabels();
+
+	void SetColLabels(const wxString &colLabels);
+	wxString GetColLabels();
+
+	void PasteAppendRows(bool b);
+	bool PasteAppendRows();
+
+private:
+
+	wxString m_rowFormat;
+	double m_rowY2, m_rowY1, m_rowY0;
+	wxString m_colFormat;
+	double m_colY2, m_colY1, m_colY0;
+
+	matrix_t<float> m_data;
+	float m_minVal, m_maxVal;
+	wxNumericCtrl *m_numRows, *m_numCols;
+	wxExtGridCtrl *m_grid;
+	wxStaticText *m_caption, *m_labelCols, *m_labelRows;
+	wxButton *m_btnImport, *m_btnExport, *m_btnCopy, *m_btnPaste;
+	bool m_showLabels;
+	bool m_shadeR0C0;
+	bool m_showcols;
+	bool m_showColLabels;
+	wxString m_colLabels;
+	bool m_pasteappendrows;
+
+	void NormalizeToLimits();
+
+	void OnCellChange(wxGridEvent &evt);
+	void OnRowsColsChange(wxCommandEvent &evt);
+	void OnCommand(wxCommandEvent &evt);
+
+
+	void MatrixToGrid();
+
+	DECLARE_EVENT_TABLE();
+};
+
 
 
 #endif
