@@ -30,6 +30,7 @@ OBJECTS = ide.o \
 	welcome.o \
 	ptlayoutctrl.o \
 	troughloop.o \
+	shadingfactors.o \
 	materials.o
 
 TARGET = SAM

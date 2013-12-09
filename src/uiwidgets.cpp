@@ -6,11 +6,13 @@
 
 #include <wex/uiform.h>
 #include <wex/extgrid.h>
-
+#include <wex/plot/plplotctrl.h>
+#include <wex/csv.h>
 
 #include "ptlayoutctrl.h"
 #include "materials.h"
 #include "troughloop.h"
+#include "shadingfactors.h"
 
 #include "uiwidgets.h"
 
@@ -251,7 +253,7 @@ public:
 			if (wxTheClipboard->GetData( textobj ))
 			{
 				wxArrayString items = wxStringTokenize(textobj.GetText(), ",\t\n");
-				for (int i=0;i<m_grid->GetNumberRows() && i<(int)items.Count();i++)
+				for (int i=0;i<m_grid->GetNumberRows() && i<(int)items.size();i++)
 					m_grid->SetCellValue(i,0,items[i].Trim().Trim(false));
 			}
 
@@ -451,7 +453,7 @@ public:
 	void GetData(float d[12])
 	{
 		for (int i=0;i<12;i++)
-			d[i] = (float) wxAtof( grdData->GetCellValue(i,0).c_str() );
+			d[i] = (float) wxAtof( grdData->GetCellValue(i,0) );
 	}
 
 	void SetDescription(const wxString &data)
@@ -490,6 +492,1130 @@ void AFMonthlyFactorCtrl::OnPressed(wxCommandEvent &evt)
 		evt.Skip(); // allow event to propagate indicating underlying value changed
 	}
 }
+
+enum{ IDSLB_LIST = wxID_HIGHEST+598, IDSLB_FILTER };
+
+BEGIN_EVENT_TABLE( AFSearchListBox, wxPanel )
+	EVT_LISTBOX( IDSLB_LIST, AFSearchListBox::OnSelect )
+	EVT_TEXT( IDSLB_FILTER, AFSearchListBox::OnFilter )
+END_EVENT_TABLE()
+
+AFSearchListBox::AFSearchListBox(wxWindow *parent, int id, const wxPoint &pos, const wxSize &size )
+	: wxPanel( parent, id, pos, size, wxCLIP_CHILDREN )
+{
+	m_label = new wxStaticText( this, -1, " Filter:  ");
+
+	m_notifyLabel = new wxStaticText( this, -1, wxEmptyString );
+	m_notifyLabel->SetForegroundColour( *wxRED );
+
+	m_txtFilter = new wxTextCtrl( this, IDSLB_FILTER );
+	wxSize szbest = m_txtFilter->GetBestSize();
+	szbest.SetWidth( 2*szbest.GetWidth() );
+	m_txtFilter->SetBestFittingSize( szbest );
+
+	m_list = new wxListBox( this, IDSLB_LIST, wxDefaultPosition, wxDefaultSize,
+			0, 0,
+			wxLB_SINGLE|wxLB_HSCROLL|wxLB_ALWAYS_SB );
+	
+	wxBoxSizer *szh = new wxBoxSizer(wxHORIZONTAL);
+	szh->Add( m_label, 0, wxALL|wxEXPAND|wxALIGN_CENTER_VERTICAL, 5  );
+	szh->Add( m_txtFilter, 0, wxALL|wxEXPAND, 2 );
+	szh->Add( m_notifyLabel, 0, wxALL|wxEXPAND|wxALIGN_CENTER_VERTICAL, 5 );
+
+	wxBoxSizer *szmain = new wxBoxSizer(wxVERTICAL);
+	szmain->Add( szh, 0, wxALL|wxEXPAND, 2 );
+	szmain->Add( m_list, 1, wxALL|wxEXPAND, 2);
+	SetSizer(szmain);
+}
+
+void AFSearchListBox::SetPromptText( const wxString &s )
+{
+	m_label->SetLabel( s );
+	Layout();
+}
+
+void AFSearchListBox::Append( const wxString &s )
+{
+	m_items.push_back( item(s,true) );
+	
+	UpdateView();
+}
+
+void AFSearchListBox::Append( const wxArrayString &s )
+{
+	for (size_t i=0;i<s.size();i++)
+		m_items.push_back( item(s[i],true) );
+
+	UpdateView();
+}
+
+int AFSearchListBox::GetSelection()
+{
+	wxString sel = m_list->GetStringSelection();
+	if (!sel.IsEmpty())
+	{
+		for (size_t i=0;i<m_items.size();i++)
+			if (m_items[i].str == sel)
+				return i;
+	}
+	return -1;
+}
+
+size_t AFSearchListBox::Count()
+{
+	return m_items.size();
+}
+
+wxString AFSearchListBox::GetItem( size_t i )
+{
+	if ( m_items.size() ) return m_items[i].str;
+	else return wxEmptyString;
+}
+
+void AFSearchListBox::Clear()
+{
+	m_list->Clear();
+	m_items.clear();
+}
+
+wxString AFSearchListBox::GetStringSelection()
+{
+	return m_list->GetStringSelection();
+}
+
+void AFSearchListBox::SetSelection( size_t i )
+{
+	if ( i < m_items.size() )
+	{
+		if ( !m_items[i].shown )
+		{
+			m_items[i].shown = true;
+			UpdateView();
+		}
+	
+		m_list->SetStringSelection( m_items[i].str );
+	}
+}
+
+void AFSearchListBox::SetStringSelection(const wxString &s)
+{
+	for (size_t i=0;i<m_items.size();i++)
+	{
+		if (m_items[i].str == s)
+		{
+			SetSelection(i);
+			return;
+		}
+	}
+}
+
+void AFSearchListBox::OnFilter( wxCommandEvent & )
+{
+	wxString filter = m_txtFilter->GetValue().Lower();
+	wxString sel = m_list->GetStringSelection();
+	
+	m_notifyLabel->SetLabel( wxEmptyString );
+
+	if (filter.IsEmpty())
+	{
+		for (size_t i=0;i<m_items.size();i++)
+			m_items[i].shown = true;
+	}
+	else
+	{
+		int count = 0;
+		for (size_t i=0;i<m_items.size();i++)
+		{
+			if (filter.Len() <= 2 && m_items[i].str.Left( filter.Len() ).Lower() == filter)
+			{
+				m_items[i].shown = true;
+				count++;
+			}
+			else if (m_items[i].str.Lower().Find( filter ) >= 0)
+			{
+				m_items[i].shown = true;
+				count++;
+			}
+			else if (m_items[i].str.Lower().Find( filter ) == 0)
+			{
+				m_items[i].shown = true;
+				count++;
+			}
+			else if (m_items[i].str == sel)
+				m_items[i].shown = true;
+			else
+				m_items[i].shown = false;
+		}
+
+		if (count == 0)
+			m_notifyLabel->SetLabel( "No matches. (selected item shown)" );
+	}
+
+	UpdateView();
+	m_list->SetStringSelection( sel );
+}
+
+void AFSearchListBox::OnSelect( wxCommandEvent &e )
+{
+	wxCommandEvent edup( wxEVT_COMMAND_LISTBOX_SELECTED, this->GetId() );
+	edup.SetEventObject( this );
+	edup.SetString( m_list->GetStringSelection() );
+	edup.SetInt( GetSelection() );
+
+	ProcessEvent( edup );
+}
+
+void AFSearchListBox::UpdateView()
+{
+	m_list->Freeze();
+	m_list->Clear();
+	for (size_t i=0;i<m_items.size();i++)
+		if (m_items[i].shown)
+			m_list->Append( m_items[i].str );
+
+	m_list->Thaw();
+}
+
+
+class AFFloatArrayTable : public wxGridTableBase
+{
+	std::vector<float> *d_arr;
+	int mode;
+	wxString label;
+
+public:
+	AFFloatArrayTable(std::vector<float> *da, int _mode, const wxString &_label)
+	{
+		label = _label;
+		mode = _mode;
+		d_arr = da;
+	}
+
+	void SetArray(std::vector<float> *da)
+	{
+		d_arr = da;
+	}
+
+	virtual int GetNumberRows()
+	{
+		if (!d_arr) return 0;
+
+		return (int)d_arr->size();
+	}
+
+	virtual int GetNumberCols()
+	{
+		return 1;
+	}
+
+	virtual bool IsEmptyCell( int row, int col )
+	{
+		return false;
+	}
+
+	virtual wxString GetValue( int row, int col )
+	{
+		if (d_arr && row >= 0 && row < d_arr->size())
+			return wxString::Format("%g", d_arr->at(row));
+		else
+			return "-0.0";
+	}
+
+	virtual void SetValue( int row, int col, const wxString& value )
+	{
+		if (d_arr && row >= 0 && row < d_arr->size())
+			d_arr->at(row) = wxAtof( value );
+	}
+
+	virtual wxString GetRowLabelValue( int row )
+	{
+		if (d_arr && mode == DATA_ARRAY_8760_MULTIPLES)
+		{
+			int nmult = d_arr->size()/8760;
+			if (nmult != 0)
+			{
+				double step = 1.0/((double)nmult);
+				double tm = step*(row+1);
+				double frac = tm - ((double)(int)tm);
+				if (frac == 0.0)
+					return wxString::Format("%lg",tm);
+				else
+					return wxString::Format("   .%lg",frac*60);
+			}
+		}
+
+		return wxString::Format("%d",row+1);
+	}
+
+	virtual wxString GetColLabelValue( int col )
+	{
+		return label.IsEmpty()?"Value":label;
+	}
+
+	virtual wxString GetTypeName( int row, int col )
+	{
+		return wxGRID_VALUE_STRING;
+	}
+
+	virtual bool CanGetValueAs( int row, int col, const wxString& typeName )
+	{
+		return typeName==wxGRID_VALUE_STRING;
+	}
+
+	virtual bool CanSetValueAs( int row, int col, const wxString& typeName )
+	{
+		return typeName==wxGRID_VALUE_STRING;
+	}
+
+	virtual bool AppendRows(size_t nrows)
+	{
+		if (d_arr && nrows > 0)
+		{
+			if (d_arr->size()+nrows > d_arr->capacity())
+				d_arr->reserve( d_arr->size()+nrows );
+		
+			for (int i=0;i<nrows;i++)
+				d_arr->push_back(0.0);
+
+			
+			if ( GetView() )
+			{
+				wxGridTableMessage msg( this,
+										wxGRIDTABLE_NOTIFY_ROWS_APPENDED,
+										nrows );
+
+				GetView()->ProcessTableMessage( msg );
+			}
+		}
+
+		return true;
+	}
+
+	virtual bool InsertRows(size_t pos, size_t nrows)
+	{
+
+		if (!d_arr) return true;
+
+		if (pos < 0) pos = 0;
+		if (pos > d_arr->size()) pos = d_arr->size();
+
+		for (int i=0;i<(int)nrows;i++)
+		{
+			d_arr->insert( d_arr->begin(), 0.0 );
+		}
+	
+		if ( GetView() )
+		{
+			wxGridTableMessage msg( this,
+									wxGRIDTABLE_NOTIFY_ROWS_INSERTED,
+									pos,
+									nrows );
+
+			GetView()->ProcessTableMessage( msg );
+		}
+
+		return true;
+	}
+
+	virtual bool DeleteRows(size_t pos, size_t nrows)
+	{
+		if (!d_arr) return true;
+
+		if (nrows > d_arr->size() - pos)
+			nrows = d_arr->size() - pos;
+
+		//applog("2 Delete Rows[ %d %d ] RowCount %d\n", pos, nrows, Stage->ElementList.size());
+		d_arr->erase(d_arr->begin()+pos, d_arr->begin()+pos+nrows);
+
+		if ( GetView() )
+		{
+		//	applog("RowCount Post Delete %d :: %d\n", Stage->ElementList.size(), this->GetNumberRows());
+			wxGridTableMessage msg( this,
+									wxGRIDTABLE_NOTIFY_ROWS_DELETED,
+									pos,
+									nrows );
+
+			GetView()->ProcessTableMessage( msg );
+		}
+
+		return true;
+	}
+};
+
+enum { IDDD_GRID=wxID_HIGHEST+945, IDDD_CHANGENUMROWS, IDDD_COPY, IDDD_PASTE, IDDD_IMPORT, IDDD_EXPORT };
+
+class AFDataArrayDialog : public wxDialog
+{
+private:
+	wxString mLabel;
+	int mMode;
+	std::vector<float> mData;
+	wxExtGridCtrl *Grid;
+	AFFloatArrayTable *GridTable;
+	wxStaticText *ModeLabel;
+	wxButton *ButtonChangeRows;
+
+public:
+	AFDataArrayDialog(wxWindow *parent, const wxString &title)
+		: wxDialog(parent, -1, title, wxDefaultPosition, wxSize(330,410), 
+			wxCAPTION|wxRESIZE_BORDER|wxMAXIMIZE_BOX|wxCLOSE_BOX|wxSYSTEM_MENU )
+	{
+
+		GridTable = NULL;
+		mMode = DATA_ARRAY_8760_MULTIPLES;
+
+		wxButton *btn = NULL;
+		Grid = new wxExtGridCtrl(this, IDDD_GRID);
+		Grid->DisableDragCell();
+		//Grid->DisableDragColSize();
+		Grid->DisableDragRowSize();
+		Grid->DisableDragColMove();
+		Grid->DisableDragGridSize();
+		Grid->SetRowLabelAlignment(wxALIGN_LEFT, wxALIGN_CENTER);
+
+		wxBoxSizer *szh_top1 = new wxBoxSizer(wxHORIZONTAL);
+		btn = new wxButton(this, IDDD_COPY, "Copy");
+		szh_top1->Add(btn, 0, wxALL|wxEXPAND, 1);
+		btn = new wxButton(this, IDDD_PASTE, "Paste");
+		szh_top1->Add(btn, 0, wxALL|wxEXPAND, 1);
+		btn = new wxButton(this, IDDD_IMPORT, "Import");
+		szh_top1->Add(btn, 0, wxALL|wxEXPAND, 1);
+		btn = new wxButton(this, IDDD_EXPORT, "Export");
+		szh_top1->Add(btn, 0, wxALL|wxEXPAND, 1);
+		szh_top1->AddStretchSpacer();
+
+		wxBoxSizer *szh_top2 = new wxBoxSizer(wxHORIZONTAL);
+		ButtonChangeRows = new wxButton(this, IDDD_CHANGENUMROWS, "Number of Values...");
+		szh_top2->Add(ButtonChangeRows, 0, wxALL|wxEXPAND, 1);
+		ModeLabel = new wxStaticText(this,-1,"");
+		szh_top2->AddSpacer(3);
+		szh_top2->Add(ModeLabel,0,wxALL|wxALIGN_CENTER_VERTICAL,3);
+		szh_top2->AddStretchSpacer();
+	
+		wxBoxSizer *szv_main = new wxBoxSizer(wxVERTICAL);
+		szv_main->Add(szh_top1, 0, wxALL|wxEXPAND, 1);
+		szv_main->Add(szh_top2, 0, wxALL|wxEXPAND, 1);	
+		szv_main->Add(Grid, 1, wxALL|wxEXPAND, 1);
+		szv_main->Add( CreateButtonSizer( wxOK|wxCANCEL ), 0, wxALL|wxEXPAND, 1);
+
+		SetSizer(szv_main);
+	
+		SetMode(DATA_ARRAY_8760_MULTIPLES);
+
+	}
+
+	void SetMode(int m)
+	{
+		mMode = m;
+		wxString l;
+		if (mMode == DATA_ARRAY_8760_ONLY)
+		{
+			ModeLabel->SetLabel("Hourly Values (8760)");
+			ButtonChangeRows->Hide();
+		}
+		else if (mMode == DATA_ARRAY_8760_MULTIPLES)
+		{
+			ModeLabel->SetLabel("Subhourly Values (8760x1/TS)");
+			ButtonChangeRows->SetLabel( "Change time step..." );
+			ButtonChangeRows->Show();
+		}
+		else
+		{
+			ModeLabel->SetLabel("");
+			ButtonChangeRows->SetLabel( "Number of values..." );
+			ButtonChangeRows->Show();
+		}
+	}
+
+	int GetMode()
+	{
+		return mMode;
+	}
+
+	void SetData(const std::vector<float> &data)
+	{
+		mData = data;
+
+		if (GridTable) GridTable->SetArray(NULL);
+		Grid->SetTable( NULL );
+
+		GridTable = new AFFloatArrayTable(&mData, mMode, mLabel);
+		GridTable->SetAttrProvider( new wxExtGridCellAttrProvider );
+
+		Grid->SetTable( GridTable, true );
+		Grid->SetColumnWidth(0,130);
+
+		Grid->Layout();
+		Grid->Refresh();
+	}
+
+	void GetData(std::vector<float> &data)
+	{
+		data = mData;
+	}
+
+	void SetDataLabel(const wxString &s)
+	{
+		mLabel = s;
+	}
+
+	wxString GetDataLabel()
+	{
+		return mLabel;
+	}
+
+	void OnCommand(wxCommandEvent &evt)
+	{
+		if (evt.GetId() == IDDD_CHANGENUMROWS)
+		{
+			long l=0;
+			if (mMode == DATA_ARRAY_8760_MULTIPLES)
+			{
+				int nmult = mData.size()/8760;
+				double tmstp = nmult != 0 ? 1.0/((double)nmult) : 1.0;
+
+				wxString result = wxGetTextFromUser("Enter time step (minutes):", "Edit Table",
+					wxString::Format("%lg", tmstp*60), this );
+
+				if (result.IsEmpty())
+					return;
+
+				tmstp = wxAtof(result)/60.0;
+				if (tmstp > 0 && (int)(1.0/tmstp) > 0)
+				{
+					l = 8760*(int)(1.0/tmstp);
+				}
+				else
+				{
+					wxMessageBox("Invalid time step.");
+					return;
+				}
+			}
+			else
+			{
+				wxString result = wxGetTextFromUser("Enter number of data rows", "Edit Table",
+					wxString::Format("%d", Grid->GetNumberRows()), this );
+				if (result.IsEmpty()) return;
+
+				if (!result.ToLong(&l))
+					return;
+			}
+
+			if ( l > 0 )
+			{
+				if (mMode == DATA_ARRAY_8760_ONLY)
+				{
+					l = 8760;
+				}
+				else if (mMode == DATA_ARRAY_8760_MULTIPLES)
+				{
+					int nmult = l/8760;
+					l=nmult*8760;
+					if (l < 8760) l = 8760;
+				}
+
+				Grid->ResizeGrid( l, 1 );
+			}
+			else
+				wxMessageBox("Invalid number of rows or non-numeric entry.");
+		}
+		else if (evt.GetId() == IDDD_COPY)
+			Grid->Copy(true);
+		else if (evt.GetId() == IDDD_PASTE)
+			Grid->Paste(true);
+		else if (evt.GetId() == IDDD_IMPORT)
+		{
+			wxFileDialog dlg(this, "Select data file to import");
+			if (dlg.ShowModal() != wxID_OK) return;
+			FILE *fp = fopen(dlg.GetPath().c_str(), "r");
+			if (!fp)
+			{
+				wxMessageBox("Could not open file for reading:\n\n" + dlg.GetPath());
+				return;
+			}
+
+			std::vector<float> arr;
+			arr.reserve( mData.size() );
+
+			char buf[128];
+			fgets(buf,127,fp); // skip header line
+
+			bool error = false;
+			for (int i=0;i<mData.size();i++)
+			{
+				if (fgets(buf, 127, fp) == NULL)
+				{
+					wxMessageBox(wxString::Format("Data file does not contain %d data value lines, only %d found.\n\nNote that the first line in the file is considered a header label and is ignored.", mData.size(), i));
+					error = true;
+					break;
+				}
+
+				arr.push_back( (float) atof(buf) );
+			}
+
+			if (!error) SetData(arr);
+
+			fclose(fp);
+		}
+		else if (evt.GetId() == IDDD_EXPORT)
+		{
+			wxFileDialog dlg(this, "Select data file to export to",wxEmptyString, wxEmptyString, "*.*", wxFD_SAVE|wxFD_OVERWRITE_PROMPT);
+			if (dlg.ShowModal() != wxID_OK) return;
+
+			FILE *fp = fopen(dlg.GetPath().c_str(), "w");
+			if (!fp)
+			{
+				wxMessageBox("Could not open file for writing.");
+				return;
+			}
+
+			fprintf(fp, "Exported Data (%d)\n", mData.size());
+			for (int i=0;i<mData.size();i++)
+				fprintf(fp, "%g\n", mData[i]);
+			fclose(fp);
+		}
+	}
+	
+	DECLARE_EVENT_TABLE();
+};
+
+BEGIN_EVENT_TABLE(AFDataArrayDialog, wxDialog)
+	EVT_BUTTON( IDDD_COPY, AFDataArrayDialog::OnCommand )
+	EVT_BUTTON( IDDD_PASTE, AFDataArrayDialog::OnCommand )
+	EVT_BUTTON( IDDD_IMPORT, AFDataArrayDialog::OnCommand )
+	EVT_BUTTON( IDDD_EXPORT, AFDataArrayDialog::OnCommand )
+	EVT_BUTTON( IDDD_CHANGENUMROWS, AFDataArrayDialog::OnCommand )
+END_EVENT_TABLE()
+
+BEGIN_EVENT_TABLE(AFDataArrayButton, wxButton)
+EVT_BUTTON(wxID_ANY, AFDataArrayButton::OnPressed)
+END_EVENT_TABLE()
+
+AFDataArrayButton::AFDataArrayButton( wxWindow *parent, int id, const wxPoint &pos, const wxSize &size)
+	: wxButton(parent, id, "Edit data...", pos, size)
+{
+	mData.resize(8670, 0.0);
+	mMode = DATA_ARRAY_8760_MULTIPLES;
+}
+
+void AFDataArrayButton::Get(std::vector<float> &data)
+{
+	data=mData;
+}
+void AFDataArrayButton::Set(const std::vector<float> &data)
+{
+	if (mMode == DATA_ARRAY_8760_ONLY)
+	{
+		if (data.size() != 8760)
+		{
+			mData.resize(8760, -999.0);
+			return;
+		}
+	}
+	else if (mMode == DATA_ARRAY_8760_MULTIPLES)
+	{
+		int nmult = data.size()/8760;
+		if ( nmult*8760 != data.size())
+		{
+			mData.resize(8760, -998.0);
+			return;
+		}
+	}
+	
+	mData=data;
+}
+void AFDataArrayButton::SetDataLabel(const wxString &s)
+{
+	mDataLabel = s;
+}
+wxString AFDataArrayButton::GetDataLabel()
+{
+	return mDataLabel;
+}
+
+void AFDataArrayButton::SetMode(int mode)
+{
+	mMode = mode;
+}
+
+int AFDataArrayButton::GetMode()
+{
+	return mMode;
+}
+
+void AFDataArrayButton::OnPressed(wxCommandEvent &evt)
+{
+	AFDataArrayDialog dlg(this, "Edit Data");
+
+	dlg.SetDataLabel( mDataLabel );
+	dlg.SetMode(mMode);
+	dlg.SetData( mData );
+
+	if (dlg.ShowModal()==wxID_OK)
+	{
+		dlg.GetData(mData);
+		evt.Skip(); // allow event to propagate indicating underlying value changed
+	}
+}
+
+
+DEFINE_EVENT_TYPE( wxEVT_AFDataMatrixCtrl_CHANGE )
+
+enum { IDDMC_NUMROWS=wxID_HIGHEST+857, IDDMC_NUMCOLS, IDDMC_GRID, IDDMC_IMPORT, IDDMC_EXPORT, IDDMC_COPY, IDDMC_PASTE };
+
+BEGIN_EVENT_TABLE( AFDataMatrixCtrl, wxPanel)
+	EVT_NUMERIC( IDDMC_NUMROWS, AFDataMatrixCtrl::OnRowsColsChange )
+	EVT_NUMERIC( IDDMC_NUMCOLS, AFDataMatrixCtrl::OnRowsColsChange )
+	EVT_BUTTON( IDDMC_IMPORT, AFDataMatrixCtrl::OnCommand )
+	EVT_BUTTON( IDDMC_EXPORT, AFDataMatrixCtrl::OnCommand )
+	EVT_BUTTON( IDDMC_COPY, AFDataMatrixCtrl::OnCommand )
+	EVT_BUTTON( IDDMC_PASTE, AFDataMatrixCtrl::OnCommand )
+	EVT_GRID_CMD_CELL_CHANGE( IDDMC_GRID, AFDataMatrixCtrl::OnCellChange )
+END_EVENT_TABLE()
+
+AFDataMatrixCtrl::AFDataMatrixCtrl( wxWindow *parent, int id, 
+	const wxPoint &pos,
+	const wxSize &sz,
+	bool sidebuttons)
+	: wxPanel( parent, id, pos, sz )
+{
+	m_pasteappendrows = false;
+	m_colLabels="";
+	m_showColLabels = false;
+	m_showLabels = true;
+	m_shadeR0C0 = true;
+	m_showcols = true;
+	m_rowY2 = m_rowY1 = m_rowY0 = 0.0;
+	m_colY2 = m_colY1 = m_colY0 = 0.0;
+
+	m_rowFormat = "r#";
+	m_rowY1 = 1.0;
+	m_colFormat = "c#";
+	m_colY1 = 1.0;
+
+	m_minVal = m_maxVal = 0.0f;
+
+	m_data.resize_fill( 8, 6, 0.0f );
+
+	m_numRows = new wxNumericCtrl( this, IDDMC_NUMROWS, m_data.nrows(), wxNumericCtrl::INTEGER );
+	m_numCols = new wxNumericCtrl( this, IDDMC_NUMCOLS, m_data.ncols(), wxNumericCtrl::INTEGER );
+	m_labelRows = new wxStaticText(this, wxID_ANY, "Rows:");
+	m_labelCols = new wxStaticText(this, wxID_ANY, "Cols:");
+
+	m_btnImport = new wxButton( this, IDDMC_IMPORT, "Import...");
+	m_btnExport = new wxButton( this, IDDMC_EXPORT, "Export...");
+	m_btnCopy = new wxButton( this, IDDMC_COPY, "Copy");
+	m_btnPaste = new wxButton( this, IDDMC_PASTE, "Paste");
+
+
+	m_grid = new wxExtGridCtrl( this, IDDMC_GRID );
+	m_grid->CreateGrid( 8, 12 );
+	m_grid->EnableCopyPaste( true );
+	m_grid->EnablePasteEvent( false );
+	m_grid->DisableDragCell();
+	m_grid->DisableDragRowSize();
+	m_grid->DisableDragColMove();
+	m_grid->DisableDragGridSize();
+	m_grid->SetRowLabelAlignment(wxALIGN_LEFT, wxALIGN_CENTER);
+	m_grid->GetTable()->SetAttrProvider( new wxExtGridCellAttrProvider(m_shadeR0C0,true) );
+
+	m_caption = new wxStaticText(this,wxID_ANY,"");
+	m_caption->SetFont(*wxNORMAL_FONT);
+
+	if (sidebuttons)
+	{
+// for side buttons layout
+		wxBoxSizer *v_tb_sizer = new wxBoxSizer( wxVERTICAL );
+		v_tb_sizer->Add(m_caption,0, wxALL|wxEXPAND, 3);
+		v_tb_sizer->Add( m_btnImport, 0, wxALL|wxEXPAND, 2);
+		v_tb_sizer->Add( m_btnExport, 0, wxALL|wxEXPAND, 2);
+		v_tb_sizer->Add( m_btnCopy, 0, wxALL|wxEXPAND, 2);
+		v_tb_sizer->Add( m_btnPaste, 0, wxALL|wxEXPAND, 2);
+		v_tb_sizer->Add( m_labelRows, 0, wxALL|wxEXPAND, 2 );
+		v_tb_sizer->Add( m_numRows, 0, wxALL|wxEXPAND, 2 );
+		v_tb_sizer->Add( m_labelCols, 0, wxALL|wxEXPAND, 2 );
+		v_tb_sizer->Add( m_numCols, 0, wxALL|wxEXPAND, 2 );
+		v_tb_sizer->AddStretchSpacer();
+		
+		wxBoxSizer *h_sizer = new wxBoxSizer(wxHORIZONTAL);
+		h_sizer->Add( v_tb_sizer, 0, wxALL|wxEXPAND, 1 );
+		h_sizer->Add( m_grid, 1, wxALL|wxEXPAND, 1 );
+
+		SetSizer( h_sizer );
+	}
+	else
+	{
+// for top buttons layout (default)
+		wxBoxSizer *h_tb_sizer = new wxBoxSizer( wxHORIZONTAL );
+		h_tb_sizer->Add(m_caption,0, wxALL|wxEXPAND|wxALIGN_CENTER_VERTICAL, 3);
+		h_tb_sizer->AddStretchSpacer();
+		h_tb_sizer->Add( m_btnImport, 0, wxALL|wxEXPAND, 2);
+		h_tb_sizer->Add( m_btnExport, 0, wxALL|wxEXPAND, 2);
+		h_tb_sizer->Add( new wxStaticLine(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxVERTICAL ), 0, wxALL|wxEXPAND, 1);
+		h_tb_sizer->Add( m_btnCopy, 0, wxALL|wxEXPAND, 2);
+		h_tb_sizer->Add( m_btnPaste, 0, wxALL|wxEXPAND, 2);
+		h_tb_sizer->Add( new wxStaticLine(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxVERTICAL ), 0, wxALL|wxEXPAND, 1);
+		h_tb_sizer->Add( m_labelRows, 0, wxALL|wxEXPAND|wxALIGN_CENTER_VERTICAL, 2 );
+		h_tb_sizer->Add( m_numRows, 0, wxALL|wxEXPAND, 2 );
+		h_tb_sizer->Add( m_labelCols, 0, wxALL|wxEXPAND|wxALIGN_CENTER_VERTICAL, 2 );
+		h_tb_sizer->Add( m_numCols, 0, wxALL|wxEXPAND, 2 );
+
+		wxBoxSizer *v_sizer = new wxBoxSizer(wxVERTICAL);
+		v_sizer->Add( h_tb_sizer, 0, wxALL|wxEXPAND, 1 );
+		v_sizer->Add( m_grid, 1, wxALL|wxEXPAND, 1 );
+
+		SetSizer( v_sizer, false);
+	}
+
+
+	if (m_caption->GetLabel().Length() == 0) 
+		m_caption->Show(false);
+	else
+		m_caption->Show(true);
+
+	MatrixToGrid();
+}
+
+
+void AFDataMatrixCtrl::SetColLabels(const wxString &colLabels)
+{
+	m_colLabels = colLabels;
+	MatrixToGrid();
+}
+
+wxString AFDataMatrixCtrl::GetColLabels()
+{
+	return m_colLabels;
+}
+
+bool AFDataMatrixCtrl::PasteAppendRows()
+{
+	return m_pasteappendrows;
+}
+void AFDataMatrixCtrl::PasteAppendRows(bool b)
+{
+	m_pasteappendrows = b;
+}
+
+
+void AFDataMatrixCtrl::ShowColLabels(bool b)
+{
+	m_showColLabels = b;
+	MatrixToGrid();
+}
+
+bool AFDataMatrixCtrl::ShowColLabels()
+{
+	return m_showColLabels;
+}
+
+
+void AFDataMatrixCtrl::ShowCols(bool b)
+{
+	m_showcols = b;
+	m_numCols->Show(m_showcols);
+	m_labelCols->Show(m_showcols);
+	this->Layout();
+}
+
+bool AFDataMatrixCtrl::ShowCols()
+{
+	return m_showcols;
+}
+
+void AFDataMatrixCtrl::ShadeR0C0(bool b)
+{
+	m_shadeR0C0 = b;
+	m_grid->GetTable()->SetAttrProvider( new wxExtGridCellAttrProvider(b,m_shadeR0C0) );
+	MatrixToGrid();
+}
+
+bool AFDataMatrixCtrl::ShadeR0C0()
+{
+	return m_shadeR0C0;
+}
+
+
+void AFDataMatrixCtrl::SetData( const matrix_t<float> &mat )
+{
+	m_data = mat;
+	NormalizeToLimits();
+	MatrixToGrid();
+}
+
+void AFDataMatrixCtrl::NormalizeToLimits()
+{
+	if (m_minVal != m_maxVal)
+	{
+		for (int r=0;r<m_data.nrows();r++)
+		{
+			for (int c=0;c<m_data.ncols();c++)
+			{
+				if (m_data.at(r,c) < m_minVal) m_data.at(r,c) = m_minVal;
+				if (m_data.at(r,c) > m_maxVal) m_data.at(r,c) = m_maxVal;
+			}
+		}
+	}
+}
+
+void AFDataMatrixCtrl::GetData( matrix_t<float> &mat )
+{
+	mat = m_data;
+}
+
+void AFDataMatrixCtrl::SetValueLimits( float min, float max )
+{
+	m_minVal = min;
+	m_maxVal = max;
+}
+
+void AFDataMatrixCtrl::GetValueLimits( float *min, float *max )
+{
+	if (min) *min = m_minVal;
+	if (max) *max = m_maxVal;
+}
+
+bool AFDataMatrixCtrl::Export(const wxString &file)
+{
+	wxCSVData csv;
+	for (int r=0;r<m_data.nrows();r++)
+		for (int c=0;c<m_data.ncols();c++)
+			csv(r,c) = wxString::Format( "%g", m_data(r,c) );
+
+	return csv.WriteFile( file );
+}
+
+bool AFDataMatrixCtrl::Import(const wxString &file)
+{
+	wxCSVData csv;
+	if ( !csv.ReadFile( file ) ) return false;
+
+	m_data.resize_fill( csv.NumRows(), csv.NumCols(), 0.0f );
+	
+	for (size_t r=0;r<m_data.nrows();r++)
+		for (size_t c=0;c<m_data.ncols();c++)
+			m_data.at(r,c) = (float)wxAtof( csv(r,c) );
+
+	NormalizeToLimits();
+	MatrixToGrid();
+
+	wxCommandEvent evt(wxEVT_AFDataMatrixCtrl_CHANGE, this->GetId() );
+	evt.SetEventObject(this);
+	GetEventHandler()->ProcessEvent(evt);
+
+	return true;
+}
+
+void AFDataMatrixCtrl::OnCellChange(wxGridEvent &evt)
+{
+	int irow = evt.GetRow();
+	int icol = evt.GetCol();
+
+	float val = (float)wxAtof(m_grid->GetCellValue(irow, icol).c_str());
+
+	if (m_minVal != m_maxVal)
+	{
+		if (val < m_minVal) val = m_minVal;
+		if (val > m_maxVal) val = m_maxVal;
+	}
+
+	if (irow < m_data.nrows() && icol < m_data.ncols()
+		&& irow >= 0 && icol >= 0)
+		m_data.at(irow,icol) = val;
+
+	m_grid->SetCellValue( irow, icol, wxString::Format("%g", val) );
+	
+	wxCommandEvent dmcevt(wxEVT_AFDataMatrixCtrl_CHANGE, this->GetId() );
+	dmcevt.SetEventObject(this);
+	GetEventHandler()->ProcessEvent(dmcevt);
+}
+
+void AFDataMatrixCtrl::OnRowsColsChange(wxCommandEvent &evt)
+{
+	size_t rows = (size_t)m_numRows->AsInteger();
+	size_t cols = (size_t)m_numCols->AsInteger();
+
+	if (rows < 1) rows = 1;
+	if (cols < 1) cols = 1;
+
+	m_data.resize_preserve( rows, cols, 0.0f );
+
+	MatrixToGrid();
+	
+	wxCommandEvent dmcevt(wxEVT_AFDataMatrixCtrl_CHANGE, this->GetId() );
+	dmcevt.SetEventObject(this);
+	GetEventHandler()->ProcessEvent(dmcevt);
+}
+
+void AFDataMatrixCtrl::OnCommand(wxCommandEvent &evt)
+{
+	switch(evt.GetId())
+	{
+	case IDDMC_COPY:
+		m_grid->Copy(true);
+		break;
+	case IDDMC_PASTE:
+		{
+			if (m_pasteappendrows)
+			{
+				if (wxTheClipboard->Open())
+				{
+					wxString data;
+					wxTextDataObject textobj;
+					if (wxTheClipboard->GetData( textobj ))
+					{
+						data = textobj.GetText();
+						wxTheClipboard->Close();
+					}
+					if (data.IsEmpty()) return;
+
+			#ifdef __WXMAC__
+					wxArrayString lines = wxStringTokenize(data, "\r", ::wxTOKEN_RET_EMPTY_ALL);
+			#else
+					wxArrayString lines = wxStringTokenize(data, "\n", ::wxTOKEN_RET_EMPTY_ALL);
+			#endif
+					int ncols = m_grid->GetNumberCols();
+					int nrows = lines.Count()-1;
+					m_grid->ResizeGrid(nrows, ncols);
+					m_data.resize_preserve(nrows, ncols, 0.0); 
+				}
+			}
+
+			m_grid->Paste(true);
+
+			for (int r=0;r<m_data.nrows();r++)
+				for (int c=0;c<m_data.ncols();c++)
+					m_data.at(r,c) = atof( m_grid->GetCellValue(r,c).c_str() );
+
+			MatrixToGrid();
+			
+			wxCommandEvent dmcevt(wxEVT_AFDataMatrixCtrl_CHANGE, this->GetId() );
+			dmcevt.SetEventObject(this);
+			GetEventHandler()->ProcessEvent(dmcevt);
+		}
+		break;
+	case IDDMC_IMPORT:
+		{
+			wxFileDialog dlg( this, "Select data matrix file to import");
+			if (dlg.ShowModal() == wxID_OK)
+				if (!Import( dlg.GetPath() ))
+					wxMessageBox("Error import data file:\n\n" + dlg.GetPath());
+		}
+		break;
+	case IDDMC_EXPORT:
+		{
+			wxFileDialog dlg( this, "Select file for data export", wxEmptyString, wxEmptyString, wxFileSelectorDefaultWildcardStr, wxFD_SAVE|wxFD_OVERWRITE_PROMPT);
+			if (dlg.ShowModal() == wxID_OK)
+				if (!Export(dlg.GetPath()))
+					wxMessageBox("Error exporting data to file:\n\n" + dlg.GetPath());
+		}
+		break;
+	}
+}
+
+
+void AFDataMatrixCtrl::MatrixToGrid()
+{
+	int r, nr = m_data.nrows();
+	int c, nc = m_data.ncols();
+
+	m_numRows->SetValue( nr );
+	m_numCols->SetValue( nc );
+
+	m_grid->ResizeGrid( nr, nc );
+	m_grid->Freeze();
+	for (r=0;r<nr;r++)
+		for (c=0;c<nc;c++)
+			m_grid->SetCellValue(r,c, wxString::Format("%g", m_data.at(r,c)));
+
+	if (!m_rowFormat.IsEmpty())
+	{
+		for (r=0;r<nr;r++)
+		{
+			wxString label = m_rowFormat;
+			label.Replace("#", wxString::Format("%lg", m_rowY2*((double)r)/((double)nr)+r*m_rowY1+m_rowY0));
+			m_grid->SetRowLabelValue( r, label );
+		}
+	}
+
+	if (!m_colFormat.IsEmpty())
+	{
+		for (c=0;c<nc;c++)
+		{
+			wxString label = m_colFormat;
+			label.Replace("#", wxString::Format("%lg", m_colY2*((double)c)/((double)nc)+c*m_colY1+m_colY0));
+			m_grid->SetColLabelValue( c, label );
+		}
+	}
+
+	if (m_showLabels)
+	{
+		m_grid->SetRowLabelSize( 60 );
+		m_grid->SetColLabelSize( 20 );
+	}
+	else
+	{
+		m_grid->SetRowLabelSize( 0 );
+		m_grid->SetColLabelSize( 0 );
+	}
+
+	if ( m_showColLabels )
+	{
+		m_grid->SetColLabelSize( 20 );
+		wxArrayString as = wxStringTokenize(m_colLabels, ",");
+		for (c=0; c<as.Count(); c++)
+		{
+			m_grid->SetColLabelValue(c, as[c]);
+			m_grid->AutoSizeColLabelSize( c ); 
+		}
+//		m_grid->SetRowLabelSize( 1 );
+	}
+
+	m_grid->Thaw();
+}
+
+void AFDataMatrixCtrl::SetRowLabelFormat( const wxString &val_fmt, double y2, double y1, double y0 )
+{
+	m_rowFormat = val_fmt;
+	m_rowY2 = y2;
+	m_rowY1 = y1;
+	m_rowY0 = y0;
+	MatrixToGrid();
+}
+
+void AFDataMatrixCtrl::SetColLabelFormat( const wxString &val_fmt, double y2, double y1, double y0 )
+{
+	m_colFormat = val_fmt;
+	m_colY2 = y2;
+	m_colY1 = y1;
+	m_colY0 = y0;
+	MatrixToGrid();
+}
+
+void AFDataMatrixCtrl::SetCaption(const wxString &cap)
+{
+	m_caption->SetLabel(cap);
+	this->Layout();
+}
+
+wxString AFDataMatrixCtrl::GetCaption()
+{
+	return m_caption->GetLabel();
+}
+
+void AFDataMatrixCtrl::ShowLabels(bool b)
+{
+	m_showLabels = b;
+	MatrixToGrid();
+}
+
+bool AFDataMatrixCtrl::ShowLabels()
+{
+	return m_showLabels;
+}
+
+
+
 
 class wxUISchedNumericObject : public wxUIObject
 {
@@ -694,6 +1820,172 @@ public:
 	}
 };
 
+class wxUIPlotObject : public wxUIObject
+{
+public:
+	wxUIPlotObject() {
+		Property("Width").Set(400);
+		Property("Height").Set(300);
+	}
+	virtual wxString GetTypeName() { return "Plot"; }
+	virtual wxUIObject *Duplicate() { wxUIObject *o = new wxUIPlotObject; o->Copy( this ); return o; }
+	virtual bool IsNativeObject() { return true; }
+	virtual wxWindow *CreateNative( wxWindow *parent ) {		
+		wxPLPlotCtrl *plot = new wxPLPlotCtrl( parent, wxID_ANY );
+		plot->SetBackgroundColour( *wxWHITE );
+		return AssignNative( plot );
+	}
+};
+
+class wxUISearchListBoxObject : public wxUIObject
+{
+public:
+	wxUISearchListBoxObject() {
+		AddProperty( "Prompt", new wxUIProperty( wxString("Search for:") ) );
+		AddProperty( "Items", new wxUIProperty( wxArrayString() ) );
+		AddProperty( "Selection", new wxUIProperty(-1) );
+		AddProperty( "TabOrder", new wxUIProperty( -1 ) );
+		Property("Width").Set( 180 );
+		Property("Height").Set( 90 );
+	}
+	virtual wxString GetTypeName() { return "SearchListBox"; }
+	virtual wxUIObject *Duplicate() { wxUIObject *o = new wxUISearchListBoxObject; o->Copy( this ); return o; }
+	virtual bool IsNativeObject() { return true; }
+	virtual wxWindow *CreateNative( wxWindow *parent ) {
+		wxArrayString items = Property("Items").GetStringList();
+		AFSearchListBox *list = new AFSearchListBox( parent, wxID_ANY, GetPosition(), GetSize() );
+		list->Append( Property("Items").GetStringList() );
+		int sel = Property("Selection").GetInteger();
+		if ( sel >= 0 && sel < items.size() ) list->SetSelection( sel );
+		return AssignNative( list );
+	}
+	virtual void OnPropertyChanged( const wxString &id, wxUIProperty *p )
+	{
+		if ( AFSearchListBox *list = GetNative<AFSearchListBox>() )
+		{
+			if ( id == "Selection" && p->GetInteger() >= 0 && p->GetInteger() < list->Count() )
+				list->SetSelection( p->GetInteger() );
+			else if ( id == "Items" )
+			{
+				int sel = list->GetSelection();
+				list->Clear();
+				list->Append( p->GetStringList() );
+				if( sel >= 0 && sel < list->Count() ) list->SetSelection( sel );
+			}
+			else if ( id == "Prompt" )
+				list->SetPromptText( p->GetString() );
+		}
+	}
+	virtual void Draw( wxWindow *win, wxDC &dc, const wxRect &geom )
+	{
+		dc.SetBrush( *wxWHITE_BRUSH );
+		dc.SetPen( wxPen( wxColour(135,135,135) ) );
+		dc.SetFont( *wxNORMAL_FONT );
+		dc.SetTextForeground( *wxBLACK );
+		wxString prompt = Property("Prompt").GetString();
+		int tw = dc.GetTextExtent( prompt ).GetWidth();
+		dc.DrawText( prompt, geom.x+2, geom.y+2 );
+		dc.DrawRectangle( geom.x + tw + 4, geom.y, geom.width-tw-4, 19 );
+		dc.DrawRectangle( geom.x, geom.y+21, geom.width, geom.height-21 );
+		int sel = Property("Selection").GetInteger();
+		wxArrayString items = Property("Items").GetStringList();
+		int y=geom.y+23;
+		
+		dc.SetBrush( *wxLIGHT_GREY_BRUSH );
+		dc.SetPen( *wxTRANSPARENT_PEN );
+		for (size_t i=0;i<items.size() && y < geom.y+geom.height;i++)
+		{
+			if ( i==sel ) dc.DrawRectangle( geom.x+1, y-1, geom.width-2, dc.GetCharHeight()+2 );
+
+			dc.DrawText( items[i], geom.x+3, y );
+			y += dc.GetCharHeight() + 2;
+		}
+		dc.SetBrush( wxBrush(wxColour(235,235,235) ) );
+		dc.DrawRectangle( geom.x+geom.width-10, geom.y+22, 9, geom.height-23 );
+	}
+	virtual void OnNativeEvent()
+	{
+		if ( wxListBox *cbo = GetNative<wxListBox>() )
+			Property("Selection").Set( cbo->GetSelection() );
+	}
+};
+
+
+
+class wxUIDataArrayObject : public wxUIObject 
+{
+public:
+	wxUIDataArrayObject() {
+		AddProperty("Mode", new wxUIProperty( 0, "Fixed 8760 Values,Multiples of 8760 Values,Variable Length"));
+		AddProperty("TabOrder", new wxUIProperty( (int)-1 ) );
+	}
+	virtual wxString GetTypeName() { return "DataArray"; }
+	virtual wxUIObject *Duplicate() { wxUIObject *o = new wxUIDataArrayObject; o->Copy( this ); return o; }
+	virtual bool IsNativeObject() { return true; }
+	virtual bool DrawDottedOutline() { return false; }
+	virtual wxWindow *CreateNative( wxWindow *parent ) {
+		AFDataArrayButton *da = new AFDataArrayButton( parent, wxID_ANY );
+		da->SetMode( Property("Mode").GetInteger() );
+		return AssignNative( da );
+	}
+	virtual void Draw( wxWindow *win, wxDC &dc, const wxRect &geom )
+	{
+		wxRendererNative::Get().DrawPushButton( win, dc, geom );
+		dc.SetFont( *wxNORMAL_FONT );
+		dc.SetTextForeground( *wxBLACK );
+		wxString label("Data array...");
+		int x, y;
+		dc.GetTextExtent( label, &x, &y );
+		dc.DrawText( label, geom.x + geom.width/2-x/2, geom.y+geom.height/2-y/2 );
+	}
+	virtual void OnPropertyChanged( const wxString &id, wxUIProperty *p )
+	{
+		if ( AFDataArrayButton *da = GetNative<AFDataArrayButton>() )
+			if ( id == "Mode" ) da->SetMode( p->GetInteger() );
+	}
+
+};
+
+class wxUIDataMatrixObject : public wxUIObject
+{
+public:
+	wxUIDataMatrixObject() {
+		Property("Width").Set(400);
+		Property("Height").Set(300);
+	}
+	virtual wxString GetTypeName() { return "DataMatrix"; }
+	virtual wxUIObject *Duplicate() { wxUIObject *o = new wxUIDataMatrixObject; o->Copy( this ); return o; }
+	virtual bool IsNativeObject() { return true; }
+	virtual wxWindow *CreateNative( wxWindow *parent ) {
+		return AssignNative( new AFDataMatrixCtrl( parent, wxID_ANY ) );
+	}
+};
+
+class wxUIShadingFactorsObject : public wxUIObject 
+{
+public:
+	wxUIShadingFactorsObject() {
+		AddProperty("TabOrder", new wxUIProperty( (int)-1 ) );
+	}
+	virtual wxString GetTypeName() { return "ShadingFactors"; }
+	virtual wxUIObject *Duplicate() { wxUIObject *o = new wxUIShadingFactorsObject; o->Copy( this ); return o; }
+	virtual bool IsNativeObject() { return true; }
+	virtual bool DrawDottedOutline() { return false; }
+	virtual wxWindow *CreateNative( wxWindow *parent ) {
+		return AssignNative( new ShadingButtonCtrl( parent, wxID_ANY ) );
+	}
+	virtual void Draw( wxWindow *win, wxDC &dc, const wxRect &geom )
+	{
+		wxRendererNative::Get().DrawPushButton( win, dc, geom );
+		dc.SetFont( *wxNORMAL_FONT );
+		dc.SetTextForeground( *wxBLACK );
+		wxString label("Edit shading...");
+		int x, y;
+		dc.GetTextExtent( label, &x, &y );
+		dc.DrawText( label, geom.x + geom.width/2-x/2, geom.y+geom.height/2-y/2 );
+	}
+};
+
 void RegisterUIWidgetsForSAM()
 {
 	wxUIObjectTypeProvider::Register( new wxUISchedNumericObject );
@@ -702,14 +1994,16 @@ void RegisterUIWidgetsForSAM()
 	wxUIObjectTypeProvider::Register( new wxUITroughLoopObject );
 	wxUIObjectTypeProvider::Register( new wxUIMonthlyFactorObject );
 	wxUIObjectTypeProvider::Register( new wxUIDividerObject );
+	wxUIObjectTypeProvider::Register( new wxUIPlotObject );
+	wxUIObjectTypeProvider::Register( new wxUISearchListBoxObject );
+	wxUIObjectTypeProvider::Register( new wxUIDataArrayObject );
+	wxUIObjectTypeProvider::Register( new wxUIDataMatrixObject );
+	wxUIObjectTypeProvider::Register( new wxUIShadingFactorsObject );
 
 /* TODO LIST 
-{ GUI_ADD_CONTROL_ID+22, "PlotSurface",      "WPPlotSurface2D",        plotsurface_xpm, CTRL_NATIVE,  10, 13, 300, 300,  props_plotsurface,     NULL,       objinit_plotsurface,    objfree_plotsurface,    nativesetprop_plotsurface,    paint_plotsurface,    iswithin_default,   NULL,                     NULL,                     NULL,                     false  },
 { GUI_ADD_CONTROL_ID+26, "DataGridBtn",      "DataGridButton",         datagridbtn_xpm, CTRL_NATIVE,  10, 15, 100, 21,   props_datagridbutton,  NULL,       objinit_datagridbutton, objfree_datagridbutton, nativesetprop_datagridbutton, paint_datagridbutton, iswithin_default,   nativeevt_datagridbutton, vartoctrl_datagridbutton, ctrltovar_datagridbutton, false },
-{ GUI_ADD_CONTROL_ID+28, "DataArrayButton",  "DataArrayButton",        dataarraybtn_xpm,CTRL_NATIVE,  10, 15, 110, 21,   props_dataarraybutton, NULL,       objinit_dataarraybutton,objfree_dataarraybutton,nativesetprop_dataarraybutton,paint_dataarraybutton,iswithin_default,   nativeevt_dataarraybutton,vartoctrl_dataarraybutton,ctrltovar_dataarraybutton,false },
-{ GUI_ADD_CONTROL_ID+29, "DoubleMatrixCtrl", "DoubleMatrixCtrl",       dblmatctrl_xpm,  CTRL_NATIVE,  10, 15, 800, 400,  props_dblmatctrl,      NULL,       objinit_dblmatctrl,     objfree_dblmatctrl,     nativesetprop_dblmatctrl,     paint_dblmatctrl,     iswithin_default,   nativeevt_dblmatctrl,     vartoctrl_dblmatctrl,     ctrltovar_dblmatctrl,     false },
-{ GUI_ADD_CONTROL_ID+30, "HLine",            "HLine",                  hline_xpm,       CTRL_CUSTOM,  10, 15, 250, 21,   props_hline,           NULL,       objinit_hline,          NULL,                   NULL,                         paint_hline,          iswithin_default,   NULL,                     NULL,                     NULL,                     false },
-{ GUI_ADD_CONTROL_ID+32, "SearchListBox",    "AFSearchListBox",        searchlb_xpm,    CTRL_NATIVE,  10, 15, 110, 120,  props_searchlb,        NULL,       objinit_searchlb,       objfree_searchlb,       nativesetprop_searchlb,       paint_searchlb,       iswithin_default,   nativeevt_searchlb,       vartoctrl_searchlb,       ctrltovar_searchlb,       false },
+{ GUI_ADD_CONTROL_ID+28, "AFDataArrayButton",  "AFDataArrayButton",        dataarraybtn_xpm,CTRL_NATIVE,  10, 15, 110, 21,   props_AFDataArrayButton, NULL,       objinit_AFDataArrayButton,objfree_AFDataArrayButton,nativesetprop_AFDataArrayButton,paint_AFDataArrayButton,iswithin_default,   nativeevt_AFDataArrayButton,vartoctrl_AFDataArrayButton,ctrltovar_AFDataArrayButton,false },
+{ GUI_ADD_CONTROL_ID+29, "AFDataMatrixCtrl", "AFDataMatrixCtrl",       dblmatctrl_xpm,  CTRL_NATIVE,  10, 15, 800, 400,  props_dblmatctrl,      NULL,       objinit_dblmatctrl,     objfree_dblmatctrl,     nativesetprop_dblmatctrl,     paint_dblmatctrl,     iswithin_default,   nativeevt_dblmatctrl,     vartoctrl_dblmatctrl,     ctrltovar_dblmatctrl,     false },
 { GUI_ADD_CONTROL_ID+34, "ShadingButton",    "ShadingButtonCtrl",      shadingctrl_xpm, CTRL_NATIVE,  10, 15, 110, 21,   props_shadbtn,        NULL,        objinit_shadbtn,        objfree_shadbtn,        nativesetprop_shadbtn,        paint_shadbtn,        iswithin_default,   nativeevt_shadbtn,        vartoctrl_shadbtn,        ctrltovar_shadbtn,       false },
 { GUI_ADD_CONTROL_ID+35, "DoubleMatrixSideButtonsCtrl", "DoubleMatrixSideButtonsCtrl",       dblmatctrl_xpm,  CTRL_NATIVE,  10, 15, 800, 400,  props_dblmatsbctrl,      NULL,       objinit_dblmatsbctrl,     objfree_dblmatsbctrl,     nativesetprop_dblmatsbctrl,     paint_dblmatsbctrl,     iswithin_default,   nativeevt_dblmatsbctrl,     vartoctrl_dblmatsbctrl,     ctrltovar_dblmatsbctrl,     false },
 

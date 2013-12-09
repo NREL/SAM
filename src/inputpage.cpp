@@ -24,6 +24,7 @@
 #include "ptlayoutctrl.h"
 #include "troughloop.h"
 #include "materials.h"
+#include "shadingfactors.h"
 
 
 
@@ -240,6 +241,9 @@ BEGIN_EVENT_TABLE( InputPageBase, wxPanel )
 	EVT_MATPROPCTRL( wxID_ANY, InputPageBase::OnNativeEvent )
 	EVT_TRLOOP( wxID_ANY, InputPageBase::OnNativeEvent )
 	EVT_MONTHLYFACTOR( wxID_ANY, InputPageBase::OnNativeEvent )
+	EVT_DATAARRAYBUTTON( wxID_ANY, InputPageBase::OnNativeEvent )
+	EVT_DATAMATRIX( wxID_ANY, InputPageBase::OnNativeEvent )
+	EVT_SHADINGBUTTON( wxID_ANY, InputPageBase::OnNativeEvent )
 
 	EVT_ERASE_BACKGROUND( InputPageBase::OnErase )
 	EVT_PAINT( InputPageBase::OnPaint )
@@ -548,6 +552,21 @@ bool InputPageBase::DataExchange( wxUIObject *obj, VarValue &val, DdxDir dir )
 	{
 		if ( dir == VAR_TO_OBJ ) mf->Set( val.Array() );
 		else val.Set( mf->Get() );
+	}
+	else if ( AFDataArrayButton *da = obj->GetNative<AFDataArrayButton>() )
+	{
+		if ( dir == VAR_TO_OBJ ) da->Set( val.Array() );
+		else val.Set( da->Get() );
+	}
+	else if ( AFDataMatrixCtrl *dm = obj->GetNative<AFDataMatrixCtrl>() )
+	{
+		if ( dir == VAR_TO_OBJ ) dm->SetData( val.Matrix() );
+		else val.Set( dm->GetData() );
+	}
+	else if ( ShadingButtonCtrl *sb = obj->GetNative<ShadingButtonCtrl>() )
+	{
+		if ( dir == VAR_TO_OBJ ) sb->Read( &val );
+		else sb->Write( &val );
 	}
 	else return false; // object data exch not handled for this type
 

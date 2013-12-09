@@ -51,7 +51,9 @@ public:
 	VarValue( const VarValue &vv );
 
 	explicit VarValue( int i );
+	explicit VarValue( bool b );
 	explicit VarValue( float f );
+	explicit VarValue( const std::vector<float> &f );
 	explicit VarValue( const matrix_t<float> &m );
 	explicit VarValue( const wxString &s );
 	explicit VarValue( const VarTable &t );
@@ -81,6 +83,7 @@ public:
 	void Set( const VarTable &tab );
 
 	int Integer();
+	bool Boolean();
 	float Value();
 	float *Array( size_t *n );
 	std::vector<float> Array();
