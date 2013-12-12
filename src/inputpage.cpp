@@ -2,6 +2,7 @@
 #include <wx/wfstream.h>
 #include <wx/ffile.h>
 #include <wx/filename.h>
+#include <wx/txtstrm.h>
 
 #include <wex/numeric.h>
 #include <wex/exttext.h>
@@ -79,12 +80,13 @@ CallbackDatabase::~CallbackDatabase()
 
 bool CallbackDatabase::LoadFile( const wxString &file )
 {
-	FILE *fp = fopen( (const char*)file.c_str(), "r" );
-	if (fp)
+	wxFile fp( file );
+	if ( fp.IsOpened() )
 	{
 		//wxLogStatus("uicb: processing callback script file: " + file);
-
-		lk::input_stream data( fp );
+		wxString buf;
+		fp.ReadAll( &buf );
+		lk::input_string data( buf );
 		lk::parser parse( data );
 		lk::node_t *tree = parse.script();
 
@@ -113,8 +115,6 @@ bool CallbackDatabase::LoadFile( const wxString &file )
 				return false;
 			}
 		}
-
-		fclose( fp );
 	}
 
 	return true;
