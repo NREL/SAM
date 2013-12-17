@@ -1,5 +1,8 @@
 #include <wx/log.h>
 
+#include <wex/plot/plplotctrl.h>
+#include <wex/lkscript.h>
+
 #include "main.h"
 
 #include "invoke.h"
@@ -70,7 +73,54 @@ static void fcall_addpage( lk::invoke_t &cxt )
 }
 
 
+static void plottarget( CallbackContext *cc, const wxString &name )
+{
+	wxLKSetPlotTarget( 0 );
+	if ( wxUIObject *obj = cc->GetInputPage()->Find(name) )
+		if ( wxPLPlotCtrl *plot = obj->GetNative<wxPLPlotCtrl>() )
+			wxLKSetPlotTarget( plot );
+}
 
+void fcall_setplot( lk::invoke_t &cxt )
+{
+	LK_DOC("setplot", "Sets the current plot target by name", "(string:name):boolean");
+	
+	plottarget( (CallbackContext*)cxt.user_data(), cxt.arg(0).as_string() );
+}
+
+void fcall_clearplot( lk::invoke_t &cxt )
+{
+	LK_DOC("clearplot", "Clears the current plot, and optionally switches the plot target.", "([string:plot name]):none");
+	
+	if (cxt.arg_count() > 0)
+		plottarget( (CallbackContext*)cxt.user_data(), cxt.arg(0).as_string() );
+
+	if ( wxPLPlotCtrl *plot = wxLKGetPlotTarget() )
+	{
+		plot->DeleteAllPlots();
+		plot->Refresh();
+	}
+}
+
+void fcall_value( lk::invoke_t &cxt )
+{
+	LK_DOC("value", "Gets or sets the value of a variable by name", "(string:name [,variant:value]):[variant]");
+	
+	CallbackContext *cc = (CallbackContext*)cxt.user_data();
+	wxString name = cxt.arg(0).as_string();
+	if ( VarValue *vv = cc->GetVarTable()->Get( name ) )
+	{
+		if ( cxt.arg_count() == 2 )
+		{
+			vv->Read( cxt.arg(1) );
+			cc->GetInputPage()->OnVariableChanged( name );		
+		}
+		else
+		{
+			vv->Write( cxt.result() );
+		}
+	}
+}
 
 void fcall_enable( lk::invoke_t &cxt )
 {
@@ -113,6 +163,9 @@ lk::fcall_t* invoke_config_funcs()
 lk::fcall_t* invoke_uicallback_funcs()
 {
 	static const lk::fcall_t vec[] = {
+		fcall_setplot,
+		fcall_clearplot,
+		fcall_value,
 		fcall_enable,
 		fcall_show,
 		0 };

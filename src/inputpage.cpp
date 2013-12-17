@@ -4,6 +4,7 @@
 #include <wx/filename.h>
 #include <wx/txtstrm.h>
 
+#include <wex/lkscript.h>
 #include <wex/numeric.h>
 #include <wex/exttext.h>
 #include <wex/extgrid.h>
@@ -47,6 +48,9 @@ bool CallbackContext::Invoke( )
 	local_env.register_funcs( lk::stdlib_wxui(), this );
 	local_env.register_funcs( invoke_general_funcs(), this );
 	local_env.register_funcs( invoke_uicallback_funcs(), this );
+	local_env.register_funcs( wxLKPlotFunctions() );
+	local_env.register_funcs( wxLKHttpFunctions() );
+	local_env.register_funcs( wxLKMiscFunctions() );
 	
 	
 	try {
@@ -383,26 +387,28 @@ void InputPageBase::OnPaint( wxPaintEvent & )
 		}
 
 		if ( VarInfo *vv = vdb.Lookup( objs[i]->GetName() ) )
-		{
-			int sw, sh;
-			dc.SetFont(*wxNORMAL_FONT);
-			rct = objs[i]->GetGeometry();
-
-			if ( vv->Label.Len() > 0 )
+		{	
+			if ( !(vv->Flags & VF_HIDE_LABELS) )
 			{
+				int sw, sh;
+				dc.SetFont(*wxNORMAL_FONT);
 				wxColour colour( *wxBLACK );
 				if ( vv->Flags & VF_INDICATOR ) colour = *wxLIGHT_GREY;
 				else if ( vv->Flags & VF_CALCULATED ) colour = *wxBLUE;
 				dc.SetTextForeground( colour );
+				rct = objs[i]->GetGeometry();
 
-				dc.GetTextExtent( vv->Label, &sw, &sh);
-				dc.DrawText( vv->Label, rct.x - sw - 3, rct.y+ rct.height/2-sh/2);
-			}
+				if ( vv->Label.Len() > 0 )
+				{
+					dc.GetTextExtent( vv->Label, &sw, &sh);
+					dc.DrawText( vv->Label, rct.x - sw - 3, rct.y+ rct.height/2-sh/2);
+				}
 
-			if ( vv->Units.Len() > 0 )
-			{
-				dc.GetTextExtent( vv->Units, &sw, &sh);
-				dc.DrawText( vv->Units, rct.x + rct.width + 2, rct.y+ rct.height/2-sh/2);
+				if ( vv->Units.Len() > 0 )
+				{
+					dc.GetTextExtent( vv->Units, &sw, &sh);
+					dc.DrawText( vv->Units, rct.x + rct.width + 2, rct.y+ rct.height/2-sh/2);
+				}
 			}
 		}
 	}
@@ -436,7 +442,7 @@ void InputPageBase::OnNativeEvent( wxCommandEvent &evt )
 
 	// allow subclasses to handle interaction with variables
 	// with the provided Get/Set value methods
-	OnInputChanged( obj );
+	OnUserInputChanged( obj );
 
 	// lookup and run any callback functions.
 	if ( lk::node_t *root = GetCallbacks().Lookup( "on_change", obj->GetName() ) )

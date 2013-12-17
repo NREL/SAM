@@ -168,6 +168,7 @@ bool MainWindow::CreateProject()
 
 	m_topBook->SetSelection( 1 );
 
+	CreateNewCase( wxEmptyString, "Flat Plate PV", "Residential" );
 	CreateNewCase( wxEmptyString, "PVWatts", "Residential" );
 	return true;
 }
@@ -747,19 +748,23 @@ void ConfigDatabase::AddInputPageGroup( const wxArrayString &pages, const wxStri
 
 void ConfigDatabase::RebuildCaches()
 {
-	EqnFastLookup eqnlookup( &SamApp::Equations() );
 	std::vector<EqnData*> all_eqns = SamApp::Equations().GetEquations();
+
+	EqnFastLookup eqnlookup( &SamApp::Equations() );
 	eqnlookup.Add( all_eqns );
 
-	for( size_t i=0;i<m_configList.size();i++ )
+	for( std::vector<ConfigInfo*>::iterator it0 = m_configList.begin();
+		it0 != m_configList.end(); ++it0 )
 	{
-		ConfigInfo *ci = m_configList[i];
+		ConfigInfo *ci = *it0;
+
 		ci->Variables.clear();
 		ci->Equations.Clear();
-
-		for( size_t j=0;j<ci->InputPages.size();j++ )
+		
+		for( std::vector<InputPageGroup*>::iterator it1 = ci->InputPages.begin();
+			it1 != ci->InputPages.end(); ++it1 )
 		{
-			InputPageGroup *igrp = ci->InputPages[j];
+			InputPageGroup *igrp = *it1;
 			for( size_t k=0;k<igrp->Pages.size();k++ )
 			{
 				wxString page = igrp->Pages[k];
@@ -767,10 +772,12 @@ void ConfigDatabase::RebuildCaches()
 				wxArrayString list = SamApp::Variables().GetVarsForPage( page );
 				for( size_t n=0;n<list.size();n++ )
 				{
-					if ( VarInfo *vv = SamApp::Variables().Lookup( list[n] ) )
+					wxString name = list[n];
+
+					if ( VarInfo *vv = SamApp::Variables().Lookup( name ) )
 						ci->Variables.Add( vv );
 
-					if ( EqnData *ed = eqnlookup.GetEquationData( list[n] ))
+					if ( EqnData *ed = eqnlookup.GetEquationData( name ))
 						ci->Equations.Add( ed );
 				}
 
@@ -778,7 +785,13 @@ void ConfigDatabase::RebuildCaches()
 
 			if ( igrp->OrganizeAsExclusivePages && !igrp->ExclusivePageVar.IsEmpty() )
 			{
-				VarInfo *vv = SamApp::Variables().Add( igrp->ExclusivePageVar, VV_NUMBER, "Current selection for " + igrp->Caption );
+				VarInfo *vv = SamApp::Variables().Lookup( igrp->ExclusivePageVar );
+				if ( vv == 0 )
+				{
+					vv = SamApp::Variables().Add( igrp->ExclusivePageVar, VV_NUMBER, 
+						"Current selection for " + igrp->Caption );
+				}
+
 				ci->Variables.Add( vv );
 			}
 		}
@@ -867,10 +880,11 @@ bool SamApp::OnInit()
 		return false;
 	}
 
-#ifdef _DEBUG
+//#ifdef _DEBUG
 	g_logWindow = new SamLogWindow;
 	wxLog::SetActiveTarget( g_logWindow );
-#endif
+	g_logWindow->Show();
+//#endif
 
 	// register all the object types that can
 	// be read or written to streams.
@@ -938,14 +952,23 @@ void SamApp::Restart()
 
 			wxLogStatus( "loading .ui/.var/.eqn/.cb for " + fn.GetName() );
 			wxString file_base = SamApp::GetRuntimePath() + "/ui/" + fn.GetName();
-			bool ok = true; 
-			ok = ok && SamApp::Forms().LoadFile( file_base + ".ui" );
-			ok = ok && SamApp::Variables().LoadFile( file_base  + ".var", fn.GetName() );
-			ok = ok && SamApp::Equations().LoadFile( file_base + ".eqn" );
-			ok = ok && SamApp::Callbacks().LoadFile( file_base + ".cb" );
+			
+			if ( !SamApp::Forms().LoadFile( file_base + ".ui" ))
+				wxLogStatus( " --> error loading .ui for " + file_base );
+			
+			if ( !SamApp::Variables().LoadFile( file_base  + ".var", fn.GetName() ) )
+				wxLogStatus( " --> error loading .var for " + file_base );
+			
+			wxArrayString eqn_errors;
+			if ( !SamApp::Equations().LoadFile( file_base + ".eqn", &eqn_errors ) )
+			{
+				wxLogStatus( " --> error loading .eqn for " + file_base );
+				for( size_t k=0;k<eqn_errors.size();k++ )
+					wxLogStatus( "     " + eqn_errors[k] );
+			}
 
-			if ( !ok )
-				wxLogStatus( " --> error loading all data for " + file_base );
+			if ( !SamApp::Callbacks().LoadFile( file_base + ".cb" ) )
+				wxLogStatus( " --> error loading .cb for " + file_base );
 
 			has_more = dir.GetNext( &file );
 		}
@@ -1019,19 +1042,19 @@ FormDatabase &SamApp::Forms() { return g_formDatabase; }
 
 bool SamApp::LoadAndRunScriptFile( const wxString &script_file, wxArrayString *errors )
 {
-	FILE *fp = fopen( script_file.c_str(), "r" );
-	if ( !fp )
+	wxFile fp( script_file );
+	if ( !fp.IsOpened() )
 	{
 		if (errors) errors->Add( "could not read: " + script_file );
 		return false;
 	}
 
-	lk::input_stream p( fp );
+	wxString buf;
+	fp.ReadAll( &buf );
+	lk::input_string p( buf );
 	lk::parser parse( p );
 	lk::node_t *tree = parse.script();
-
-	fclose( fp );
-		
+			
 	if ( parse.error_count() != 0 
 		|| parse.token() != lk::lexer::END)
 	{

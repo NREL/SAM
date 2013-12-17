@@ -92,29 +92,6 @@ void StartupScriptPanel::OnCommand( wxCommandEvent &evt )
 }
 
 
-ExtendedFormData::ExtendedFormData( VarDatabase *vdb ) : m_vdb(vdb) { }
-ExtendedFormData::~ExtendedFormData() { m_vdb = 0; }
-bool ExtendedFormData::GetMetaData( const wxString &name,
-		wxString *label, wxString *units, wxColour *colour )
-{
-	if ( !m_vdb ) return false;
-
-	if ( VarInfo *vv = m_vdb->Lookup( name ) )
-	{
-		if (vv->Flags & VF_HIDE_LABELS) return false;
-
-		*label = vv->Label;
-		*units = vv->Units;
-		if ( vv->Flags & VF_INDICATOR ) *colour = wxColour(90,90,90);
-		else if ( vv->Flags & VF_CALCULATED ) *colour = *wxBLUE;
-		else *colour = *wxBLACK;
-
-		return true;
-	}
-	
-	return false;
-}
-
 
 enum { 
 	ID_FORM_EDITOR = wxID_HIGHEST + 231,
@@ -375,6 +352,36 @@ void UIEditorPanel::OnCallbackGoto( wxCommandEvent &evt )
 
 
 
+ExFormData::ExFormData( VarDatabase *vdb ) 
+	: m_vdb(vdb) { }
+
+ExFormData::~ExFormData()
+{
+	m_vdb = 0;
+}
+
+bool ExFormData::GetMetaData( const wxString &name,
+		wxString *label, wxString *units, wxColour *colour )
+{
+	if ( !m_vdb ) return false;
+
+	if ( VarInfo *vv = m_vdb->Lookup( name ) )
+	{
+		if (vv->Flags & VF_HIDE_LABELS) return false;
+
+		*label = vv->Label;
+		*units = vv->Units;
+		if ( vv->Flags & VF_INDICATOR ) *colour = wxColour(90,90,90);
+		else if ( vv->Flags & VF_CALCULATED ) *colour = *wxBLUE;
+		else *colour = *wxBLACK;
+
+		return true;
+	}
+	
+	return false;
+}
+
+
 
 class InputPageTestPanel : public InputPageBase
 {
@@ -435,48 +442,59 @@ public:
 	virtual CallbackDatabase &GetCallbacks() { return m_call; }
 	virtual VarTable &GetValues() { return m_vals; }
 
-	virtual void OnInputChanged( wxUIObject *obj )
+	virtual void OnUserInputChanged( wxUIObject *obj )
 	{
 		wxLogStatus("Test Form >> input changed: " + obj->GetName() );
 		if( VarValue *vval = m_vals.Get( obj->GetName() ) )
 		{
 			// store the value
 			if ( DataExchange( obj, *vval, OBJ_TO_VAR ) )
+			{
 				wxLogStatus("Test Form >> data exchange success: " + obj->GetName() );
-
-			EqnEvaluator eval( m_vals, m_efl );
-			int n = eval.Changed( obj->GetName() );
-			if ( n > 0 )
-			{
-				wxLogStatus("Test Form >> %d values updated by dependent equations ", (int)n );
-				wxArrayString list = eval.GetUpdated();
-				for( size_t i=0;i<list.size();i++ )
-				{
-					wxLogStatus("Test Form >> " + list[i] + " dependent variable has an updated value");
-					VarValue *upd = m_vals.Get( list[i] );
-					wxUIObject *obj = Find( list[i] );
-					if ( upd && obj )
-					{
-
-						if ( DataExchange( obj, *upd, VAR_TO_OBJ ) )
-							wxLogStatus("Test Form >> data exchange success to update ui for " + list[i]);
-					}
-				}
-			}
-			else if ( n < 0 )
-			{
-				wxLogStatus("Test Form >> equation evaluation error with code %d", n );
-				wxArrayString errors = eval.GetErrors();
-				for( size_t i=0;i<errors.size();i++ )
-					wxLogStatus( "Test Form >> " + errors[i] );
-			}
-			else
-			{
-				wxLogStatus("Test Form >> no dependent equations detected for input " + obj->GetName() );
+				ValueChanged( obj->GetName() );
 			}
 		}
+	}
 
-		wxLogStatus( "iptp: variable " + obj->GetName() + " changed and value stored" );
+
+	virtual void OnVariableChanged( const wxString &name )
+	{
+		UpdateUI( name );
+		ValueChanged( name );
+	}
+
+	void ValueChanged( const wxString &name )
+	{
+		EqnEvaluator eval( m_vals, m_efl );
+		int n = eval.Changed( name );
+		if ( n > 0 )
+		{
+			wxLogStatus("Test Form >> %d values updated by dependent equations ", (int)n );
+			wxArrayString list = eval.GetUpdated();
+			for( size_t i=0;i<list.size();i++ )
+				UpdateUI( list[i] );
+		}
+		else if ( n < 0 )
+		{
+			wxLogStatus("Test Form >> equation evaluation error with code %d", n );
+			wxArrayString errors = eval.GetErrors();
+			for( size_t i=0;i<errors.size();i++ )
+				wxLogStatus( "Test Form >> " + errors[i] );
+		}
+		else
+		{
+			wxLogStatus("Test Form >> no dependent equations detected for input " + name );
+		}
+	}
+	
+	void UpdateUI( const wxString & name )
+	{		
+		wxUIObject *obj = Find( name );
+		VarValue *upd = m_vals.Get( name );
+		if ( upd && obj && DataExchange( obj, *upd, VAR_TO_OBJ ) )
+			wxLogStatus("Test Form >> data exchange success to update ui for " + name);
+		else
+			wxLogStatus("Test Form >> failure to update changed variable " + name );
 	}
 };
 
