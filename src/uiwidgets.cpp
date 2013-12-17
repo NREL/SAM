@@ -2079,7 +2079,7 @@ public:
 	wxUIDividerObject() {
 		AddProperty( "Orientation", new wxUIProperty( 0, "Horizontal,Vertical" ) );
 		AddProperty( "Colour", new wxUIProperty( wxColour(120,120,120) ) );
-		AddProperty( "Label", new wxUIProperty( wxString("") ) );
+		AddProperty( "Caption", new wxUIProperty( wxString("") ) );
 		AddProperty( "Bold", new wxUIProperty( true ) );
 		Property("Width").Set( 300 );
 		Property("Height").Set( 16 );
@@ -2095,8 +2095,8 @@ public:
 		if ( horiz ) dc.DrawLine( geom.x, geom.y+7, geom.x+geom.width, geom.y+7 );
 		else dc.DrawLine( geom.x+4, geom.y, geom.x+4, geom.y+geom.height );
 			
-		wxString label = Property("Label").GetString();
-		if ( !label.IsEmpty() )
+		wxString capt = Property("Caption").GetString();
+		if ( !capt.IsEmpty() )
 		{
 			wxFont font( *wxNORMAL_FONT );
 			if ( Property("Bold").GetBoolean() ) font.SetWeight( wxFONTWEIGHT_BOLD );
@@ -2104,13 +2104,13 @@ public:
 			if ( horiz )
 			{
 				int x,y;
-				dc.GetTextExtent( label, &x, &y );
+				dc.GetTextExtent( capt, &x, &y );
 				dc.SetBrush( wxBrush( win->GetBackgroundColour() ) );
 				dc.SetPen( *wxTRANSPARENT_PEN );
 				dc.DrawRectangle(geom.x+5, geom.y, x+2, y+1);
 			}
 			dc.SetTextForeground(wxSystemSettings::GetColour(wxSYS_COLOUR_BTNTEXT));
-			dc.DrawText( label, geom.x+6, geom.y );
+			dc.DrawText( capt, geom.x+6, geom.y );
 		}
 	}
 };
@@ -2140,15 +2140,15 @@ public:
 		AddProperty( "Items", new wxUIProperty( wxArrayString() ) );
 		AddProperty( "Selection", new wxUIProperty(-1) );
 		AddProperty( "TabOrder", new wxUIProperty( -1 ) );
-		Property("Width").Set( 180 );
-		Property("Height").Set( 90 );
+		Property("Width").Set( 500 );
+		Property("Height").Set( 100 );
 	}
 	virtual wxString GetTypeName() { return "SearchListBox"; }
 	virtual wxUIObject *Duplicate() { wxUIObject *o = new wxUISearchListBoxObject; o->Copy( this ); return o; }
 	virtual bool IsNativeObject() { return true; }
 	virtual wxWindow *CreateNative( wxWindow *parent ) {
 		wxArrayString items = Property("Items").GetStringList();
-		AFSearchListBox *list = new AFSearchListBox( parent, wxID_ANY, GetPosition(), GetSize() );
+		AFSearchListBox *list = new AFSearchListBox( parent, wxID_ANY );
 		list->Append( Property("Items").GetStringList() );
 		int sel = Property("Selection").GetInteger();
 		if ( sel >= 0 && sel < items.size() ) list->SetSelection( sel );
