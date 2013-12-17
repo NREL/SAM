@@ -716,8 +716,10 @@ bool VarDatabase::Read( wxInputStream &is, const wxString &page )
 		VarInfo *vv = 0;
 
 		VarInfoHash::iterator it = find( name );
-		if ( it != end() ) vv = it->second;
-		else vv = new VarInfo;
+		if ( it != end() ) 
+			vv = it->second;
+		else 
+			vv = new VarInfo;
 
 		ok = ok && vv->Read( is );
 		

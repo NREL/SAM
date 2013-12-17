@@ -35,20 +35,38 @@ public:
 	virtual CallbackDatabase &GetCallbacks() { return SamApp::Callbacks(); }
 	virtual VarTable &GetValues() { return m_case->Values(); }
 
-	virtual void OnInputChanged( wxUIObject *obj )
+	virtual void OnUserInputChanged( wxUIObject *obj )
 	{
+		// transfer the data from the UI object to the variable (DDX) 
+		// then notify the case that the variable was changed
+		// within the case, the calculations will be redone as needed
+		// and then the casewindow will be notified by event that
+		// other UI objects (calculated ones) need to be updated
 		if( VarValue *vval = GetValues().Get( obj->GetName() ) )
 		{
-			// transfer the data from the UI object to the variable (DDX) 
-			// then notify the case that the variable was changed
-			// within the case, the calculations will be redone as needed
-			// and then the casewindow will be notived by event that
-			// other UI objects (calculated ones) need to be updated
 			if ( DataExchange( obj, *vval, OBJ_TO_VAR ) )
+			{
+				wxLogStatus( "Variable " + obj->GetName() + " changed by user interaction, case notified." );
 				m_case->Changed( obj->GetName() );
+			}
 			else
-				wxMessageBox("ActveInputPage >> data exchange fail: " + obj->GetName() );
+				wxMessageBox("ActiveInputPage >> data exchange fail: " + obj->GetName() );
 		}
+	}
+
+	virtual void OnVariableChanged( const wxString &varname )
+	{
+		wxLogStatus( "Variable " + varname + " changed programmatically, case notified." );
+		
+		// Send the additional case event that this variable
+		// was programmatically changed and needs to be updated
+		CaseEvent ce( CaseEvent::VARS_CHANGED );
+		ce.GetVars().Add( varname );
+		m_case->SendEvent( ce );
+
+		// issue the request for any calculations to be updated as needed
+		m_case->Changed( varname );
+			
 	}
 };
 
@@ -389,6 +407,8 @@ void CaseWindow::DetachCurrentInputPage()
 
 bool CaseWindow::SwitchToInputPage( const wxString &name )
 {
+	m_inputPagePanel->Show( false );
+
 	DetachCurrentInputPage();
 	
 	for( size_t i=0;i<m_pageGroups.size();i++ )
@@ -403,6 +423,8 @@ bool CaseWindow::SwitchToInputPage( const wxString &name )
 
 	OrganizeCurrentPages();
 	UpdatePageNote();
+
+	m_inputPagePanel->Show( true );
 
 	return true;
 }

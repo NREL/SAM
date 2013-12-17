@@ -83,7 +83,25 @@ public:
 	virtual EqnFastLookup &GetEquations() = 0;
 	virtual CallbackDatabase &GetCallbacks() = 0;
 	virtual VarTable &GetValues() = 0;
-	virtual void OnInputChanged( wxUIObject *obj ) = 0;
+
+	// This one is called when a UI event occurs, 
+	// as when a user changes the value in an input control.
+	// The implementation of this virtual method
+	// in descendent classes is responsible
+	// for handling the data exchange between the object
+	// and any associated variable.
+	// if any variable values are changed in the table
+	// this function must also call any methods to (i.e. Case->Changed(...) )
+	// propagate the changes (i.e. equations) to affected variables
+	virtual void OnUserInputChanged( wxUIObject *obj ) = 0;
+
+	// This method should be called when the value
+	// of a variable is changed programmatically (i.e. UI callback, or otherwise)
+	// and the UI subsystem needs to be notified to update the
+	// widget corresponding to a variable accordingly.
+	// This should not be called for each 'updated' value
+	// after an equation set has been solved
+	virtual void OnVariableChanged( const wxString &name ) = 0; 
 	
 	// data exchange from UI object to data value and vice versa
 	enum DdxDir { OBJ_TO_VAR, VAR_TO_OBJ };

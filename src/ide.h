@@ -23,13 +23,14 @@ private:
 	DECLARE_EVENT_TABLE();
 };
 
-class ExtendedFormData : public wxUIFormData
+
+class ExFormData : public wxUIFormData
 {
 private:
 	VarDatabase *m_vdb;
 public:
-	ExtendedFormData( VarDatabase *vdb );	
-	virtual ~ExtendedFormData();
+	ExFormData( VarDatabase *vdb );	
+	virtual ~ExFormData();
 	virtual bool GetMetaData( const wxString &name,
 		wxString *label, wxString *units, wxColour *colour );
 };
@@ -48,7 +49,7 @@ private:
 	void LoadFormList( const wxString &sel = wxEmptyString );
 
 	wxString m_formName;
-	ExtendedFormData m_formData;
+	ExFormData m_formData;
 	VarDatabase m_varData;
 	bool WriteForm( const wxString &name );
 	bool LoadForm( const wxString &name );

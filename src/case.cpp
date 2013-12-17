@@ -126,8 +126,9 @@ void Case::GetConfiguration( wxString *tech, wxString *fin )
 int Case::Changed( const wxString &var )
 {
 	EqnEvaluator eval( m_vals, m_eqns );
-	int n = eval.Changed( var );
+	int n = eval.Changed( var );	
 	if ( n > 0 ) SendEvent( CaseEvent( CaseEvent::VARS_CHANGED, eval.GetUpdated() ) );
+	else if ( n < 0 ) wxLogStatus( wxJoin( eval.GetErrors(), '\n' )  );
 	return n;
 
 }

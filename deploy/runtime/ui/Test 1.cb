@@ -13,6 +13,7 @@ on_change{'chk_hello_1'} = define() {
 };
 
 on_change{'object 1'} = define() {
-	msgbox('basic callback');
+	msgbox('basic callback, ready to change input_1');
+	value( 'input_1', 3.45 );
 };
 

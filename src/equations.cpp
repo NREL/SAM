@@ -1,5 +1,6 @@
 #include <wx/tokenzr.h>
 #include <wx/log.h>
+#include <wx/file.h>
 
 #include <lk_parse.h>
 #include <lk_env.h>
@@ -66,12 +67,15 @@ void EqnDatabase::ScanParseTree( lk::node_t *root, wxArrayString *inputs, wxArra
 
 bool EqnDatabase::LoadFile( const wxString &file, wxArrayString *errors )
 {
-	FILE *fp = fopen( (const char*)file.c_str(), "r" );
-	if (!fp) return false;
-	lk::input_stream in( fp );
-	bool ok = Parse( in, errors );
-	fclose(fp);
-	return ok;
+	wxFile fp( file );
+	if ( fp.IsOpened() )
+	{
+		wxString buf;
+		fp.ReadAll( &buf );
+		lk::input_string data( buf );
+		return Parse( data, errors );
+	}
+	else return false;
 }
 bool EqnDatabase::LoadScript( const wxString &text, wxArrayString *errors )
 {
@@ -397,6 +401,9 @@ int EqnEvaluator::Calculate( )
 
 				VarTableScriptInterpreter e( cur_eqn->tree, &env, &m_vars );
 			
+				wxLogStatus( "solving... [" + wxJoin(cur_eqn->outputs, ',') 
+					+ "] = f( " + wxJoin(cur_eqn->inputs, ',') + " )" );
+
 				// execute the parse tree, check for errors
 				if ( !e.run() )
 				{

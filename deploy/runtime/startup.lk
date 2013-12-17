@@ -1,14 +1,60 @@
 // SAM startup script.
-// define technologies, financing options, input pages, configurations.
 
-/*  DEFINE ALL CONFIGURATIONS */
-addconfig( 'PVWatts', [ 'Residential' ] );
+// define all the configurations
+addconfig( 'PVWatts', [ 'Residential', 'None' ] );
+addconfig( 'Flat Plate PV', [ 'Residential', 'None' ] );
+addconfig( 'Test Only', [ 'None' ] );
 
 
-/* SETUP EACH CONFIGURATION */
-log(' setting up pvwatts...' );
-setconfig( 'PVWatts', 'Residential' );
+function setup_pvwatts_pages()
+{
+	addpage( [ 'Climate' ], 'Location and Resource' );
+	addpage( [ 'PVWatts' ], 'System Design', 'PVWatts' );
+}
+
+function setup_flat_plate_pv_pages()
+{
+	addpage( [ 'Climate', 'PV Albedo and Radiation' ], 'Location and Resource' );
+	addpage( [ 'Simple Efficiency Module Model', 
+				'CEC Performance Model with Module Database', 
+				'CEC Performance Model with User Entered Specifications', 
+				'Sandia PV Array Performance Model with Module Database' ], 
+			'Module', 'Module', true, 'pv.mod.model_type' );
+			
+	addpage( [ 'Inverter CEC Database', 'Inverter Datasheet', 'Inverter Part Load Curve' ], 'Inverter', 'Inverter', true, 'pv.inv.model_type' );
+	addpage( [ 'PV System Design' ], 'System Design' );
+	addpage( [ 'PV Shading' ], 'Shading' );
+	addpage( [ 'PV Losses' ], 'Losses' );
+}
+
+function setup_residential_pages()
+{
+	addpage( [ 'PV Capital Costs','O and M Costs' ], 'PV System Costs' );
+	addpage( [ 'Residential Loan','Financing' ], 'Financing', 'Financing Residential' );
+	addpage( [ 'Tax Credits','Incentives' ], 'Incentives' );
+	addpage( [ 'Utility Rate' ] );
+	//addpage( [ 'Electric Load' ] );
+}
+
+
+// now setup all the pages
+
+setconfig( 'Test Only', 'None' );
+addpage( [ 'Test 1' ] );
 addpage( [ 'Location' ] );
-addpage( [ 'PVWatts', 'Test 1' ], 'System Design', 'PVWatts', true, 'pvwatts.subgroup_sel' );
 
 
+setconfig( 'Flat Plate PV', 'Residential' );
+setup_flat_plate_pv_pages();
+setup_residential_pages();
+
+setconfig( 'PVWatts', 'Residential' );	
+setup_pvwatts_pages();
+setup_residential_pages();
+
+setconfig( 'PVWatts', 'None' );
+setup_pvwatts_pages();
+
+
+setconfig( 'Flat Plate PV', 'None' );
+setup_flat_plate_pv_pages();

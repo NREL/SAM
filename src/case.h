@@ -22,7 +22,7 @@ private:
 public:
 	enum { VARS_CHANGED, CONFIG_CHANGED };
 
-	CaseEvent(  int type ) : m_type(type) { }
+	CaseEvent( int type ) : m_type(type) { }
 	CaseEvent( int type, const wxString &str ) : m_type(type), m_str(str) { }
 	CaseEvent( int type, const wxString &str1, const wxString &str2 ) : m_type(type), m_str(str1), m_str2(str2) { }
 	CaseEvent( int type, const wxArrayString &vars ) : m_type(type), m_vars(vars) { }
@@ -73,6 +73,7 @@ public:
 	void AddListener( CaseEventListener *cel );
 	void RemoveListener( CaseEventListener *cel );
 	void ClearListeners();
+	void SendEvent( CaseEvent e );
 
 private:
 	/* case data */
@@ -83,7 +84,6 @@ private:
 	StringHash m_properties;
 	StringHash m_notes;
 	std::vector<CaseEventListener*> m_listeners;
-	void SendEvent( CaseEvent e );
 
 	/* caches for lookups - regenerated as needed */
 	VarInfoLookup m_vars;
