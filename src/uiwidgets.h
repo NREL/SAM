@@ -282,5 +282,63 @@ private:
 
 
 
+BEGIN_DECLARE_EVENT_TYPES()
+DECLARE_EVENT_TYPE( wxEVT_AFMonthByHourFactorCtrl_CHANGE, 0)
+END_DECLARE_EVENT_TYPES()
+
+
+#define EVT_MONTHBYHOURFACTOR(id, func) EVT_COMMAND(id, wxEVT_AFMonthByHourFactorCtrl_CHANGE, func)
+
+class AFMonthByHourFactorCtrl : public wxPanel
+{
+public:
+	AFMonthByHourFactorCtrl(wxWindow *parent, int id, const wxPoint &pos = wxDefaultPosition, const wxSize &sz = wxDefaultSize);
+	virtual ~AFMonthByHourFactorCtrl();
+
+	void SetData(const matrix_t<float> &data);
+	matrix_t<float> GetData();
+	
+	void SetTitle(  wxString &title);
+	wxString GetTitle( );
+	void SetLegend(  wxString &legend);
+	wxString GetLegend( );
+
+	wxColour Colour1;
+	wxColour Colour2;
+
+private:
+	void UpdateCell(int r, int c);
+	void UpdateGrid();
+
+	void OnGridCellChange(wxGridEvent &evt);
+	void OnGridCellSelect(wxGridEvent &evt);
+	void OnGridEditorHidden(wxGridEvent &evt);
+	void OnGridEditorShown(wxGridEvent &evt);
+	void OnGridRangeSelect(wxGridRangeSelectEvent &evt);
+
+	void OnImport(wxCommandEvent &evt);
+	void OnExport(wxCommandEvent &evt);
+	void OnApply(wxCommandEvent &evt);
+
+	void ApplyVal(int r, int c, double sf);
+	void DispatchEvent();
+
+	matrix_t<float> mData;
+	wxNumericCtrl *mShadingVal;
+	wxButton *mBtnApply;
+	wxGrid *mGrid;
+	int mSelTopRow, mSelBottomRow;
+	int mSelLeftCol, mSelRightCol;
+	bool bSkipSelect;
+
+	wxStaticText *m_title;
+	wxStaticText *m_legend;
+
+	DECLARE_EVENT_TABLE();
+};
+
+
+
+
 #endif
 

@@ -1,5 +1,5 @@
-#ifndef __shadingctrl_h
-#define __shadingctrl_h
+#ifndef __MonthByHourFactorCtrl_h
+#define __MonthByHourFactorCtrl_h
 
 #include <wx/wx.h>
 #include <wx/treectrl.h>
@@ -13,64 +13,8 @@
 
 #include "object.h"
 
-BEGIN_DECLARE_EVENT_TYPES()
-DECLARE_EVENT_TYPE( wxEVT_SHADINGCTRL_CHANGE, 0)
-END_DECLARE_EVENT_TYPES()
-
-
 class VarValue;
-
-#define EVT_SHADINGCTRL(id, func) EVT_COMMAND(id, wxEVT_SHADINGCTRL_CHANGE, func)
-
-class ShadingCtrl : public wxPanel
-{
-public:
-	ShadingCtrl(wxWindow *parent, int id, const wxPoint &pos = wxDefaultPosition, const wxSize &sz = wxDefaultSize);
-	virtual ~ShadingCtrl();
-
-	void SetData(const matrix_t<float> &data);
-	matrix_t<float> GetData();
-	
-	void SetTitle(  wxString &title);
-	wxString GetTitle( );
-	void SetLegend(  wxString &legend);
-	wxString GetLegend( );
-
-	wxColour Colour1;
-	wxColour Colour2;
-
-private:
-	void UpdateCell(int r, int c);
-	void UpdateGrid();
-
-	void OnGridCellChange(wxGridEvent &evt);
-	void OnGridCellSelect(wxGridEvent &evt);
-	void OnGridEditorHidden(wxGridEvent &evt);
-	void OnGridEditorShown(wxGridEvent &evt);
-	void OnGridRangeSelect(wxGridRangeSelectEvent &evt);
-
-	void OnImport(wxCommandEvent &evt);
-	void OnExport(wxCommandEvent &evt);
-	void OnApply(wxCommandEvent &evt);
-
-	void ApplyVal(int r, int c, double sf);
-	void DispatchEvent();
-
-	matrix_t<float> mData;
-	wxNumericCtrl *mShadingVal;
-	wxButton *mBtnApply;
-	wxGrid *mGrid;
-	int mSelTopRow, mSelBottomRow;
-	int mSelLeftCol, mSelRightCol;
-	bool bSkipSelect;
-
-	wxStaticText *m_title;
-	wxStaticText *m_legend;
-
-	DECLARE_EVENT_TABLE();
-};
-
-
+class AFMonthByHourFactorCtrl;
 
 /* utility class to save/load shading data */
 struct ShadingInputData
