@@ -29,11 +29,12 @@ function setup_flat_plate_pv_pages()
 
 function setup_residential_pages()
 {
+	addpage( [ 'Annual Performance' ] );
 	addpage( [ 'PV Capital Costs','O and M Costs' ], 'PV System Costs' );
 	addpage( [ 'Residential Loan','Financing' ], 'Financing', 'Financing Residential' );
 	addpage( [ 'Tax Credits','Incentives' ], 'Incentives' );
 	addpage( [ 'Utility Rate' ] );
-	//addpage( [ 'Electric Load' ] );
+	addpage( [ 'Electric Load' ] );
 }
 
 
