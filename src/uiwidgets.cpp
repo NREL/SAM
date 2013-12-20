@@ -1912,6 +1912,375 @@ matrix_t<float> AFValueMatrixButton::Get()
 	}
 }
 
+
+
+
+enum { IDSF_GRID = wxID_HIGHEST+495, IDSF_SHADINGVAL, IDSF_APPLY, IDSF_IMPORT, IDSF_EXPORT };
+
+BEGIN_EVENT_TABLE(AFMonthByHourFactorCtrl, wxPanel)
+
+	EVT_GRID_CMD_CELL_CHANGE( IDSF_GRID, AFMonthByHourFactorCtrl::OnGridCellChange)
+	EVT_GRID_CMD_SELECT_CELL( IDSF_GRID, AFMonthByHourFactorCtrl::OnGridCellSelect)
+	EVT_GRID_CMD_RANGE_SELECT( IDSF_GRID, AFMonthByHourFactorCtrl::OnGridRangeSelect)
+	EVT_GRID_CMD_EDITOR_HIDDEN( IDSF_GRID, AFMonthByHourFactorCtrl::OnGridEditorHidden)
+	EVT_GRID_CMD_EDITOR_SHOWN( IDSF_GRID, AFMonthByHourFactorCtrl::OnGridEditorShown)
+
+	EVT_BUTTON( IDSF_IMPORT, AFMonthByHourFactorCtrl::OnImport)
+	EVT_BUTTON( IDSF_EXPORT, AFMonthByHourFactorCtrl::OnExport)
+
+	EVT_BUTTON( IDSF_APPLY, AFMonthByHourFactorCtrl::OnApply )
+	EVT_NUMERIC( IDSF_SHADINGVAL, AFMonthByHourFactorCtrl::OnApply )
+
+END_EVENT_TABLE()
+
+DEFINE_EVENT_TYPE( wxEVT_AFMonthByHourFactorCtrl_CHANGE )
+
+#define SFROWS 12
+#define SFCOLS 24
+
+static const char *row_labels[SFROWS] = 
+{ "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" };
+
+static const char *col_labels[SFCOLS] =
+{ "12am", "1am", "2am", "3am", "4am", "5am", "6am", "7am", "8am", "9am", "10am", "11am", 
+  "12pm", "1pm", "2pm", "3pm", "4pm", "5pm", "6pm", "7pm", "8pm", "9pm", "10pm", "11pm" };
+
+AFMonthByHourFactorCtrl::AFMonthByHourFactorCtrl(wxWindow *parent, int id, const wxPoint &pos, const wxSize &sz)
+	: wxPanel(parent, id, pos, sz, wxCLIP_CHILDREN|wxSIMPLE_BORDER)
+{
+	Colour1 = *wxRED;
+	Colour2 = *wxWHITE;
+
+	bSkipSelect = false;
+
+	mSelTopRow = mSelBottomRow = -1;
+	mSelLeftCol = mSelRightCol = -1;
+
+	mShadingVal = new wxNumericCtrl(this, IDSF_SHADINGVAL);
+	mData.resize_fill(SFROWS, SFCOLS, 0.0f);
+
+	int r,c;
+
+	for (r=0;r<SFROWS;r++)
+		for (c=0;c<SFCOLS;c++)
+			mData.at(r,c) = 1.0;
+
+//	AFLabel *label = new AFLabel(this, -1, "0=Full Shading, 1=No Shading");
+//	label->AlignRight();
+	m_title = new wxStaticText(this, -1, "Beam Shading Factor");
+	m_legend = new wxStaticText(this, -1, "0=Full Shading, 1=No Shading");
+	mBtnApply = new wxButton(this, IDSF_APPLY, "Apply to selected cells");
+
+	mGrid = new wxGrid(this, IDSF_GRID);
+	mGrid->CreateGrid(SFROWS, SFCOLS);
+	mGrid->EnableEditing(true);
+	mGrid->DisableDragCell();
+	mGrid->DisableDragColSize();
+	mGrid->DisableDragRowSize();
+	mGrid->DisableDragColMove();
+	mGrid->DisableDragGridSize();
+
+
+	for (r=0;r<SFROWS;r++)
+		mGrid->SetRowLabelValue(r, row_labels[r]);
+
+	for (c=0;c<SFCOLS;c++)
+		mGrid->SetColLabelValue(c, col_labels[c]);
+
+	mGrid->SetRowLabelSize(wxGRID_AUTOSIZE);
+	mGrid->SetRowLabelAlignment(wxALIGN_LEFT,wxALIGN_CENTRE);
+	mGrid->SetColLabelSize(wxGRID_AUTOSIZE);
+	mGrid->SetColLabelAlignment(wxALIGN_LEFT,wxALIGN_CENTRE);
+
+	wxBoxSizer *topctrls = new wxBoxSizer(wxHORIZONTAL);
+//	topctrls->Add(new wxStaticText(this,-1,"Beam Shading Factor"), 1, wxALL|wxEXPAND, 1);
+//	topctrls->Add(label, 1, wxALL|wxEXPAND, 1);
+	topctrls->Add(m_title, 1, wxALL|wxEXPAND, 1);
+	topctrls->Add(m_legend, 1, wxALL|wxEXPAND, 1);
+	topctrls->Add(mShadingVal, 0, wxALL|wxEXPAND, 1);
+	topctrls->Add(mBtnApply, 0, wxALL|wxEXPAND, 1);
+
+
+	wxBoxSizer *bottomctrls = new wxBoxSizer(wxHORIZONTAL);
+	bottomctrls->Add(new wxButton(this, IDSF_IMPORT, "Import..."), 0, wxALL|wxEXPAND, 1);
+	bottomctrls->Add(new wxButton(this, IDSF_EXPORT, "Export..."), 0, wxALL|wxEXPAND, 1);
+	bottomctrls->AddStretchSpacer();
+
+
+	wxBoxSizer *mainsz = new wxBoxSizer(wxVERTICAL);
+	mainsz->Add( topctrls, 0, wxALL|wxEXPAND, 1);
+	mainsz->Add( mGrid, 1, wxALL|wxEXPAND, 1);
+	mainsz->Add( bottomctrls, 0, wxALL|wxEXPAND, 1);
+
+	SetSizer(mainsz);
+
+	UpdateGrid();
+}
+
+AFMonthByHourFactorCtrl::~AFMonthByHourFactorCtrl()
+{
+	/* nothing to do */
+}
+
+void AFMonthByHourFactorCtrl::SetTitle(  wxString &title)
+{
+	m_title->SetLabel( title );
+}
+
+wxString AFMonthByHourFactorCtrl::GetTitle()
+{
+	return m_title->GetLabel();
+}
+
+void AFMonthByHourFactorCtrl::SetLegend(  wxString &legend)
+{
+	m_legend->SetLabel( legend );
+}
+
+wxString AFMonthByHourFactorCtrl::GetLegend()
+{
+	return m_legend->GetLabel();
+}
+
+
+void AFMonthByHourFactorCtrl::SetData(const matrix_t<float> &data)
+{
+	for (int r=0;r<SFROWS;r++)
+	{
+		for (int c=0;c<SFCOLS;c++)
+		{
+			double val = 1;
+			if (r < data.nrows() && c < data.ncols())
+				val = data.at(r,c);
+
+			mData.at(r,c) = val;
+		}
+	}
+	UpdateGrid();
+}
+
+matrix_t<float> AFMonthByHourFactorCtrl::GetData()
+{
+	return mData;
+}
+
+void AFMonthByHourFactorCtrl::UpdateGrid()
+{
+
+	mGrid->Freeze();
+	int r,c;
+	for (r=0;r<SFROWS;r++)
+		for (c=0;c<SFCOLS;c++)
+			UpdateCell(r,c);
+
+	mGrid->SetRowLabelSize(wxGRID_AUTOSIZE);
+	mGrid->SetColLabelSize(wxGRID_AUTOSIZE);
+	mGrid->AutoSize();
+	mGrid->Thaw();
+	mGrid->Layout();
+	mGrid->ForceRefresh();
+	Layout();
+}
+
+void AFMonthByHourFactorCtrl::UpdateCell(int r, int c)
+{
+	double sf = mData.at(r,c);
+	if (sf<0.0) sf = 0.0;
+	if (sf>1.0) sf = 1.0;
+
+	mGrid->SetCellValue( r, c, wxString::Format("%lg", sf ) );
+	int cntrIndex = (int)(sf * 100.0);
+	int ncv = 100;
+
+	wxColour shadc;								
+	shadc.Set(
+		((ncv-cntrIndex) * Colour1.Red()   +
+			cntrIndex * Colour2.Red())/ncv,
+
+		((ncv-cntrIndex) * Colour1.Green() +
+			cntrIndex * Colour2.Green())/ncv,
+
+		((ncv-cntrIndex) * Colour1.Blue()  +
+			cntrIndex * Colour2.Blue())/ncv );
+
+	mGrid->SetCellBackgroundColour(r,c, shadc);
+
+}
+
+void AFMonthByHourFactorCtrl::OnGridCellChange(wxGridEvent &evt)
+{
+	int r = evt.GetRow();
+	int c = evt.GetCol();
+	double sf = wxAtof( mGrid->GetCellValue(r,c) );
+
+	ApplyVal(r,c,sf);
+
+	mSelTopRow = -1;
+	mSelBottomRow = -1;
+	mSelLeftCol = -1;
+	mSelRightCol = -1;
+}
+
+void AFMonthByHourFactorCtrl::ApplyVal(int r, int c, double sf)
+{
+	if (sf<0.0) sf = 0.0;
+	if (sf>1.0) sf = 1.0;
+
+	mGrid->Freeze();
+	if (mSelTopRow >= 0 && mSelLeftCol >= 0)
+	{
+		for (r=mSelTopRow; r <= mSelBottomRow; r++)
+		{
+			for (c=mSelLeftCol; c <= mSelRightCol; c++)
+			{
+				mData.at(r,c) = sf;
+				UpdateCell(r,c);
+			}
+		}
+		DispatchEvent();
+	}
+	else if (r>=0 && c>=0)
+	{	
+		mData.at(r,c) = sf;
+		UpdateCell(r,c);
+		DispatchEvent();
+	}
+
+	mGrid->Thaw();
+	mGrid->ForceRefresh();
+}
+
+void AFMonthByHourFactorCtrl::OnGridRangeSelect(wxGridRangeSelectEvent &evt)
+{
+	if (evt.CmdDown())
+	{
+		evt.Veto();
+		return;
+	}
+
+	if (evt.Selecting() && !bSkipSelect)
+	{
+		
+		mSelTopRow = evt.GetTopRow();
+		mSelBottomRow = evt.GetBottomRow();
+		mSelLeftCol = evt.GetLeftCol();
+		mSelRightCol = evt.GetRightCol();
+	}
+	evt.Skip();
+}
+
+void AFMonthByHourFactorCtrl::OnGridEditorShown(wxGridEvent &evt)
+{
+	bSkipSelect = true;
+}
+
+void AFMonthByHourFactorCtrl::OnGridEditorHidden(wxGridEvent &evt)
+{
+	bSkipSelect = false;
+}
+
+void AFMonthByHourFactorCtrl::OnGridCellSelect(wxGridEvent &evt)
+{
+	if (evt.CmdDown())
+	{
+		evt.Veto();
+		return;
+	}
+
+	if (!bSkipSelect)
+	{
+		mSelTopRow = evt.GetRow();
+		mSelBottomRow = mSelTopRow;
+		mSelLeftCol = evt.GetCol();
+		mSelRightCol = mSelLeftCol;
+	}
+	evt.Skip();
+}
+
+void AFMonthByHourFactorCtrl::OnApply(wxCommandEvent &evt)
+{
+	double sf = mShadingVal->Value();
+	if (sf <= -1)
+	{
+		if (wxTheClipboard->Open())
+		{
+			wxCSVData csv;
+			csv.SetSeparator( '\t' );
+			for( size_t i=0;i<mData.nrows();i++ )
+				for( size_t j=0;j<j<mData.ncols();j++)
+					csv.Set(i,j, wxString::Format("%g", mData(i,j) ) );
+		// This data objects are held by the clipboard, 
+		// so do not delete them in the app.
+			wxTheClipboard->SetData( new wxTextDataObject( csv.WriteString() ) );
+			wxTheClipboard->Close();
+		}
+	}
+
+	ApplyVal(-1,-1,sf);
+}
+
+void AFMonthByHourFactorCtrl::OnImport(wxCommandEvent &evt)
+{
+	wxFileDialog fdlg(this, "Import Shading Factors", "", "",
+		"CSV Files (*.csv)|*.csv|All Files (*.*)|*.*", wxFD_OPEN );
+
+	if (fdlg.ShowModal() == wxID_OK)
+	{
+		wxCSVData csv;
+		if ( !csv.ReadFile( fdlg.GetPath() ))
+		{
+			wxMessageBox("Could not open file for reading:\n\n" + fdlg.GetPath(), "Error", wxICON_ERROR|wxOK);
+			return;
+		}
+
+		if (csv.NumRows() != 12 || csv.NumCols() != 24)
+		{
+			wxMessageBox("Invalid shading factor data. Must have 12 rows and 24 columns.");
+			return;
+		}
+
+		matrix_t<float> grid;
+		grid.resize_fill( csv.NumRows(), csv.NumCols(), 0.0f );
+
+		for (int r=0;r<grid.nrows();r++)
+			for (int c=0;c<grid.ncols();c++)
+				grid.at(r,c) = (float)wxAtof( csv(r,c) );
+
+		SetData( grid );
+		DispatchEvent();
+	}
+}
+
+void AFMonthByHourFactorCtrl::OnExport(wxCommandEvent &evt)
+{
+	wxFileDialog fdlg(this, "Export Shading Factors", "", "shading_factors.csv",
+		"CSV Files (*.csv)|*.csv|All Files (*.*)|*.*", wxFD_SAVE | wxFD_OVERWRITE_PROMPT );
+
+	if (fdlg.ShowModal() == wxID_OK)
+	{
+		wxCSVData csv;
+		for (int r=0;r<mData.nrows();r++)
+			for (int c=0;c<mData.ncols();c++)
+				csv.Set( r,c, wxString::Format("%g", mData(r,c) ) );
+
+		if ( !csv.WriteFile( fdlg.GetPath() ) )
+			wxMessageBox("Could not write file:\n\n"+fdlg.GetPath(), "Error", wxICON_ERROR|wxOK);
+	}
+}
+
+
+void AFMonthByHourFactorCtrl::DispatchEvent()
+{	
+	wxCommandEvent change(wxEVT_AFMonthByHourFactorCtrl_CHANGE, this->GetId() );
+	change.SetEventObject( this );
+	GetEventHandler()->ProcessEvent(change);
+}
+
+
+
+
+
+
 class wxUISchedNumericObject : public wxUIObject
 {
 public:
@@ -2356,6 +2725,34 @@ public:
 };
 
 
+class wxUIMonthByHourFactorCtrl : public wxUIObject
+{
+public:
+	wxUIMonthByHourFactorCtrl() {
+		AddProperty( "Title", new wxUIProperty( wxString("Factors") ) );
+		AddProperty( "Legend", new wxUIProperty( wxString( "0=off, 1=on" ) ) );
+		Property("Width").Set(400);
+		Property("Height").Set(300);
+	}
+	virtual wxString GetTypeName() { return "MonthByHourFactors"; }
+	virtual wxUIObject *Duplicate() { wxUIObject *o = new wxUIMonthByHourFactorCtrl; o->Copy( this ); return o; }
+	virtual bool IsNativeObject() { return true; }
+	virtual wxWindow *CreateNative( wxWindow *parent ) {
+		AFMonthByHourFactorCtrl *mxh = new AFMonthByHourFactorCtrl( parent, wxID_ANY );
+		mxh->SetTitle( Property("Title").GetString() );
+		mxh->SetLegend( Property("Legend").GetString() );
+		return AssignNative( mxh );
+	}
+	virtual void OnPropertyChanged( const wxString &id, wxUIProperty *p )
+	{
+		if ( AFMonthByHourFactorCtrl *mxh = GetNative<AFMonthByHourFactorCtrl>() )
+		{
+			if ( id == "Title" ) mxh->SetTitle( p->GetString() );
+			if ( id == "Legend" ) mxh->SetLegend( p->GetString() );
+		}
+	}
+};
+
 void RegisterUIWidgetsForSAM()
 {
 	wxUIObjectTypeProvider::Register( new wxUISchedNumericObject );
@@ -2370,6 +2767,7 @@ void RegisterUIWidgetsForSAM()
 	wxUIObjectTypeProvider::Register( new wxUIDataMatrixObject );
 	wxUIObjectTypeProvider::Register( new wxUIShadingFactorsObject );
 	wxUIObjectTypeProvider::Register( new wxUIValueMatrixObject );
+	wxUIObjectTypeProvider::Register( new wxUIMonthByHourFactorCtrl );
 
 /* TODO LIST 
 { GUI_ADD_CONTROL_ID+26, "DataGridBtn",      "AFValueMatrixButton",         datagridbtn_xpm, CTRL_NATIVE,  10, 15, 100, 21,   props_AFValueMatrixButton,  NULL,       objinit_AFValueMatrixButton, objfree_AFValueMatrixButton, nativesetprop_AFValueMatrixButton, paint_AFValueMatrixButton, iswithin_default,   nativeevt_AFValueMatrixButton, vartoctrl_AFValueMatrixButton, ctrltovar_AFValueMatrixButton, false },
