@@ -355,7 +355,7 @@ public:
 	}
 	
 	
-	void OnClose(wxCloseEvent &evt)
+	void OnClose( wxCloseEvent & )
 	{
 		EndModal( wxID_CANCEL );
 	}
@@ -939,9 +939,6 @@ bool ImportSolPathMonthByHour( ShadingInputData &dat, wxWindow *parent )
 	bool readdata = false;
 	bool readok = true;
 	bool headingok = true;
-	bool colok = true;
-	int linesok = 0;
-	int day = 0;
 	int month=0; // 
 	double beam[290];
 	for (i=0;i<290;i++) beam[i]=1.0;
