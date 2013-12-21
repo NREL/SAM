@@ -298,9 +298,9 @@ public:
 	void SetData(const matrix_t<float> &data);
 	matrix_t<float> GetData();
 	
-	void SetTitle(  wxString &title);
+	void SetTitle( const wxString &title);
 	wxString GetTitle( );
-	void SetLegend(  wxString &legend);
+	void SetLegend( const wxString &legend);
 	wxString GetLegend( );
 
 	wxColour Colour1;

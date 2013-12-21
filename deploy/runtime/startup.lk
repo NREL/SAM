@@ -35,6 +35,15 @@ function setup_residential_pages()
 	addpage( [ 'Tax Credits','Incentives' ], 'Incentives' );
 	addpage( [ 'Utility Rate' ] );
 	addpage( [ 'Electric Load' ] );
+	/*
+	addpage( [ 'CEC Module Main', 
+		{ 'name'='CEC Module Advanced', 
+			'label'='Advanced Module Parameters', 
+			'collapsible'=true, 
+			'collapsible_var'='pv.cec.mod.is_advanced_shown',
+			'collapsed_by_default'=true } ],
+			{'help'='? CEC Module', 'label'='CEC Module', 'exclusive'=true, 'exclusive_var'='pv.inv.model_type' } );
+			*/
 }
 
 
