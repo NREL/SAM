@@ -511,7 +511,7 @@ AFSearchListBox::AFSearchListBox(wxWindow *parent, int id, const wxPoint &pos, c
 	m_txtFilter = new wxTextCtrl( this, IDSLB_FILTER );
 	wxSize szbest = m_txtFilter->GetBestSize();
 	szbest.SetWidth( 2*szbest.GetWidth() );
-	m_txtFilter->SetBestFittingSize( szbest );
+	m_txtFilter->SetInitialSize( szbest );
 
 	m_list = new wxListBox( this, IDSLB_LIST, wxDefaultPosition, wxDefaultSize,
 			0, 0,
@@ -1946,7 +1946,7 @@ static const char *col_labels[SFCOLS] =
   "12pm", "1pm", "2pm", "3pm", "4pm", "5pm", "6pm", "7pm", "8pm", "9pm", "10pm", "11pm" };
 
 AFMonthByHourFactorCtrl::AFMonthByHourFactorCtrl(wxWindow *parent, int id, const wxPoint &pos, const wxSize &sz)
-	: wxPanel(parent, id, pos, sz, wxCLIP_CHILDREN|wxSIMPLE_BORDER)
+	: wxPanel(parent, id, pos, sz, wxCLIP_CHILDREN|wxTAB_TRAVERSAL)
 {
 	Colour1 = *wxRED;
 	Colour2 = *wxWHITE;
@@ -1965,8 +1965,6 @@ AFMonthByHourFactorCtrl::AFMonthByHourFactorCtrl(wxWindow *parent, int id, const
 		for (c=0;c<SFCOLS;c++)
 			mData.at(r,c) = 1.0;
 
-//	AFLabel *label = new AFLabel(this, -1, "0=Full Shading, 1=No Shading");
-//	label->AlignRight();
 	m_title = new wxStaticText(this, -1, "Beam Shading Factor");
 	m_legend = new wxStaticText(this, -1, "0=Full Shading, 1=No Shading");
 	mBtnApply = new wxButton(this, IDSF_APPLY, "Apply to selected cells");
@@ -1993,20 +1991,16 @@ AFMonthByHourFactorCtrl::AFMonthByHourFactorCtrl(wxWindow *parent, int id, const
 	mGrid->SetColLabelAlignment(wxALIGN_LEFT,wxALIGN_CENTRE);
 
 	wxBoxSizer *topctrls = new wxBoxSizer(wxHORIZONTAL);
-//	topctrls->Add(new wxStaticText(this,-1,"Beam Shading Factor"), 1, wxALL|wxEXPAND, 1);
-//	topctrls->Add(label, 1, wxALL|wxEXPAND, 1);
 	topctrls->Add(m_title, 1, wxALL|wxEXPAND, 1);
 	topctrls->Add(m_legend, 1, wxALL|wxEXPAND, 1);
 	topctrls->Add(mShadingVal, 0, wxALL|wxEXPAND, 1);
 	topctrls->Add(mBtnApply, 0, wxALL|wxEXPAND, 1);
-
-
+	
 	wxBoxSizer *bottomctrls = new wxBoxSizer(wxHORIZONTAL);
 	bottomctrls->Add(new wxButton(this, IDSF_IMPORT, "Import..."), 0, wxALL|wxEXPAND, 1);
 	bottomctrls->Add(new wxButton(this, IDSF_EXPORT, "Export..."), 0, wxALL|wxEXPAND, 1);
 	bottomctrls->AddStretchSpacer();
-
-
+	
 	wxBoxSizer *mainsz = new wxBoxSizer(wxVERTICAL);
 	mainsz->Add( topctrls, 0, wxALL|wxEXPAND, 1);
 	mainsz->Add( mGrid, 1, wxALL|wxEXPAND, 1);
@@ -2022,7 +2016,7 @@ AFMonthByHourFactorCtrl::~AFMonthByHourFactorCtrl()
 	/* nothing to do */
 }
 
-void AFMonthByHourFactorCtrl::SetTitle(  wxString &title)
+void AFMonthByHourFactorCtrl::SetTitle( const wxString &title )
 {
 	m_title->SetLabel( title );
 }
@@ -2032,7 +2026,7 @@ wxString AFMonthByHourFactorCtrl::GetTitle()
 	return m_title->GetLabel();
 }
 
-void AFMonthByHourFactorCtrl::SetLegend(  wxString &legend)
+void AFMonthByHourFactorCtrl::SetLegend( const wxString &legend )
 {
 	m_legend->SetLabel( legend );
 }
@@ -2207,7 +2201,7 @@ void AFMonthByHourFactorCtrl::OnApply(wxCommandEvent &evt)
 			wxCSVData csv;
 			csv.SetSeparator( '\t' );
 			for( size_t i=0;i<mData.nrows();i++ )
-				for( size_t j=0;j<j<mData.ncols();j++)
+				for( size_t j=0;j<mData.ncols();j++)
 					csv.Set(i,j, wxString::Format("%g", mData(i,j) ) );
 		// This data objects are held by the clipboard, 
 		// so do not delete them in the app.
