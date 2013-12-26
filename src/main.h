@@ -99,14 +99,32 @@ public:
 	void Clear();
 	void Add( const wxString &tech, const wxArrayString &fin );
 	void SetConfig( const wxString &t, const wxString &f );
-	void AddInputPageGroup( const wxArrayString &pages, const wxString &caption, const wxString &hlpcxt,
-		bool exclusive = false, const wxString &exclvar = wxEmptyString );
 
+
+	struct PageInfo
+	{
+		PageInfo() {
+			Collapsible = CollapsedByDefault = false;
+		}
+		PageInfo( const wxString &_name ) {
+			Name = _name;
+			Collapsible = CollapsedByDefault = false;
+		}
+		wxString Name;
+		wxString Caption;
+		bool Collapsible;
+		wxString CollapsiblePageVar;
+		bool CollapsedByDefault;
+		wxString ShowHideLabel;
+	};
+	
+	void AddInputPageGroup( const std::vector< std::vector<PageInfo> > &pages, const wxString &sidebar = wxEmptyString,
+		const wxString &hlpcxt = wxEmptyString, const wxString &exclvar = wxEmptyString );
 
 	struct InputPageGroup
 	{
-		wxArrayString Pages;
-		wxString Caption;
+		std::vector< std::vector<PageInfo> > Pages;
+		wxString SideBarLabel;
 		wxString HelpContext;
 		bool OrganizeAsExclusivePages;
 		wxString ExclusivePageVar;

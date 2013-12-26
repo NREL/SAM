@@ -1,0 +1,28 @@
+
+function cec_module_update_ui()
+{
+	state = value("pv.mod.cec.temp_corr_mode");
+	ht = value("pv.mod.cec.heat_transfer");	
+	mc = value("pv.mod.cec.mounting_config");
+		
+	enable( "pv.mod.cec.standoff", state == 0 );
+	enable( "pv.mod.cec.height", state == 0 );
+	
+	enable( "pv.mod.cec.mounting_config", state == 1 );
+	enable( "pv.mod.cec.heat_transfer", state == 1 );
+	enable( "pv.mod.cec.mounting_orientation", state == 1 && mc == 3 );
+	enable( "pv.mod.cec.module_width", state == 1 );
+	enable( "pv.mod.cec.array_rows", state == 1 && ht == 1 );
+	enable( "pv.mod.cec.array_cols", state == 1 && ht == 1 );
+	enable( "pv.mod.cec.backside_temp", state == 1 && mc == 2 );
+	enable( "pv.mod.cec.gap_spacing", state == 1 && mc == 3);
+}
+
+on_change{"pv.mod.cec.temp_corr_mode"} = cec_module_update_ui;
+on_change{"pv.mod.cec.mounting_config"} = cec_module_update_ui;
+on_change{"pv.mod.cec.heat_transfer"} = cec_module_update_ui;
+
+on_load{"CEC Performance Model with Module Database"} = define()
+{
+	cec_module_update_ui();
+};

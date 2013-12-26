@@ -1,0 +1,67 @@
+equations{ 'pv.shading.utility.modules_per_string' } = define() {
+	return ${pv.array.modules_per_string}; };
+
+equations{ 'pv.shading.utility.ncelly' } = define() {
+	return ?${pv.mod.model_type}
+[
+	${pv.shading.utility.ncells},
+	${pv.mod.cec.n_s},
+	${pv.mod.6par.nser},
+	${pv.mod.sandia.n_cells}
+]
+/ ${pv.shading.utility.ncellx}; };
+
+equations{ 'pv.shading.utility.nmodx' } = define() {
+	return ?${pv.shading.utility.str_orient}
+[
+	${pv.array.strings_in_parallel},
+	${pv.array.modules_per_string} * ${pv.shading.utility.nstrx}
+]; };
+
+equations{ 'pv.shading.utility.sidelength' } = define() {
+	return ?${pv.shading.utility.mod_orient}
+[
+	${pv.shading.utility.length},
+	${pv.shading.utility.width}
+]
+* ${pv.shading.utility.nmody}; };
+
+equations{ 'pv.shading.utility.length' } = define() {
+	return ?${pv.mod.model_type}
+[
+	${pv.mod.spe.area},
+	${pv.mod.cec.a_c},
+	${pv.mod.6par.area},
+	${pv.mod.sandia.area}
+]
+/ ${pv.shading.utility.width}; };
+
+equations{ 'pv.shading.utility.strings_in_parallel' } = define() {
+	return ${pv.array.strings_in_parallel}; };
+
+equations{ 'pv.shading.utility.ncells' } = define() {
+	return ?${pv.mod.model_type}
+[
+	60,
+	${pv.mod.cec.n_s},
+	${pv.mod.6par.nser},
+	${pv.mod.sandia.n_cells}
+]; };
+
+equations{ 'pv.shading.utility.nrows' } = define() {
+	return ?${pv.shading.utility.str_orient}
+[
+	${pv.array.modules_per_string},
+	${pv.array.strings_in_parallel} / ${pv.shading.utility.nstrx}
+]
+/ ${pv.shading.utility.nmody}; };
+
+equations{ 'pv.shading.utility.area' } = define() {
+	return ?${pv.mod.model_type}
+[
+	${pv.mod.spe.area},
+	${pv.mod.cec.a_c},
+	${pv.mod.6par.area},
+	${pv.mod.sandia.area}
+]; };
+
