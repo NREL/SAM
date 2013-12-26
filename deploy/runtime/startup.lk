@@ -8,13 +8,13 @@ addconfig( 'Test Only', [ 'None' ] );
 
 function setup_pvwatts_pages()
 {
-	addpage( [[ 'Climate' ]], { 'sidebar'='Location and Resource' } );
+	addpage( [[ 'Weather Data' ]], { 'sidebar'='Location and Resource' } );
 	addpage( [[ 'PVWatts' ]], { 'sidebar'='System Design', 'help'='PVWatts' } );
 }
 
 function setup_flat_plate_pv_pages()
 {
-	addpage( [[ 'Climate', {'name'='PV Albedo and Radiation', 'collapsible'=true, 'collapsible_var'='pv.radmode.is_shown'} ]], { 'sidebar'='Location and Resource' } );
+	addpage( [[ 'Weather Data', {'name'='PV Albedo and Radiation', 'collapsible'=true, 'collapsible_var'='pv.radmode.is_shown'} ]], { 'sidebar'='Location and Resource' } );
 	
 	
 	addpage( [ ['Simple Efficiency Module Model'],
