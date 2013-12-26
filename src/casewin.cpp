@@ -9,6 +9,9 @@
 #include <wex/plot/plplotctrl.h>
 #include <wex/plot/plbarplot.h>
 
+#include <wex/icons/cirplus.cpng>
+#include <wex/icons/cirminus.cpng>
+
 #include "basecase.h"
 #include "main.h"
 #include "case.h"
@@ -70,6 +73,63 @@ public:
 	}
 };
 
+
+
+
+class CollapsePaneCtrl : public wxPanel
+{
+	bool m_state;
+	wxMetroButton *m_button;
+	wxStaticText *m_label;
+	static wxBitmap m_bitMinus, m_bitPlus;
+public:
+	CollapsePaneCtrl( wxWindow *parent, int id, const wxString &label )
+		: wxPanel( parent, id )
+	{
+		if (!m_bitMinus.IsOk() )
+		{
+			m_bitMinus = wxBITMAP_PNG_FROM_DATA( cirminus );
+			m_bitPlus = wxBITMAP_PNG_FROM_DATA( cirplus );
+		}
+
+		SetBackgroundColour( wxColour(243,243,243) );
+		m_state = false;
+		m_button = new wxMetroButton( this, wxID_ANY, wxEmptyString, m_bitMinus );
+		m_label = new wxStaticText( this, wxID_ANY, label );
+		m_label->SetFont( wxMetroTheme::Font( wxMT_LIGHT, 12 ) );
+		
+		wxBoxSizer *sizer = new wxBoxSizer( wxHORIZONTAL );
+		sizer->Add( m_button, 0, wxALL|wxEXPAND, 0 );
+		sizer->Add( m_label, 1, wxALL|wxALIGN_CENTER_VERTICAL, 4 );
+		SetSizer(sizer);
+	}
+	
+	void OnButton( wxCommandEvent & )
+	{
+		SetValue( !m_state );
+		wxCommandEvent evt( wxEVT_CHECKBOX, GetId() );
+		evt.SetEventObject( this );
+		ProcessEvent( evt );
+	}
+
+	void SetValue( bool b )
+	{
+		m_state = b;
+		m_button->SetBitmap( m_state ? m_bitMinus : m_bitPlus );
+		Layout();
+	}
+
+	bool GetValue() const { return m_state; }
+
+	DECLARE_EVENT_TABLE();
+};
+
+wxBitmap CollapsePaneCtrl::m_bitMinus;
+wxBitmap CollapsePaneCtrl::m_bitPlus;
+
+BEGIN_EVENT_TABLE( CollapsePaneCtrl, wxPanel )
+	EVT_BUTTON( wxID_ANY, CollapsePaneCtrl::OnButton )
+END_EVENT_TABLE()
 
 
 enum { ID_INPUTPAGELIST = wxID_HIGHEST + 142,
@@ -539,9 +599,9 @@ void CaseWindow::SetupActivePage()
 		if( pds->Collapsible )
 		{
 			pds->CollapsibleVar = pi.CollapsiblePageVar;
-			wxString label = "Show/enable " + pi.Caption;
+			wxString label = pi.Caption;
 			if( !pi.ShowHideLabel.IsEmpty() ) label = pi.ShowHideLabel;
-			pds->CollapseCheck = new wxCheckBox( m_inputPageScrollWin, ID_COLLAPSE, label );
+			pds->CollapseCheck = new CollapsePaneCtrl( m_inputPageScrollWin, ID_COLLAPSE, label );
 
 			if ( VarValue *vv = m_case->Values().Get( pds->CollapsibleVar ) )
 			{
@@ -577,7 +637,7 @@ void CaseWindow::LayoutPage()
 		if( pds.CollapseCheck != 0 )
 		{
 			wxSize szbest = pds.CollapseCheck->GetBestSize();
-			pds.CollapseCheck->SetSize( 5, y, szbest.x, szbest.y );
+			pds.CollapseCheck->SetSize( 0, y, available_size.x, szbest.y );
 			y += szbest.y;
 			if( x < szbest.x ) x = szbest.x;
 		}
