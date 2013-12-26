@@ -1,0 +1,44 @@
+on_change{"pv.shading.utility.enabled"} = define()
+{
+	en = value("pv.shading.utility.enabled");
+	
+	varlist = [ 
+		"pv.shading.utility.area",
+		"pv.shading.utility.azimuth",
+		"pv.shading.utility.length",
+		"pv.shading.utility.mod_orient",
+		"pv.shading.utility.modules_per_string",
+		"pv.shading.utility.ncells",
+		"pv.shading.utility.ncellx",
+		"pv.shading.utility.ncelly",
+		"pv.shading.utility.ndiode",
+		"pv.shading.utility.nmodx",
+		"pv.shading.utility.nmody",
+		"pv.shading.utility.nrows",
+		"pv.shading.utility.nstrx",
+		"pv.shading.utility.rowspace",
+		"pv.shading.utility.sidelength",
+		"pv.shading.utility.slopeew",
+		"pv.shading.utility.slopens",
+		"pv.shading.utility.str_orient",
+		"pv.shading.utility.strings_in_parallel",
+		"pv.shading.utility.tilt",
+		"pv.shading.utility.width" ];
+	
+	for (i=0;i<#varlist;i++) enable( varlist[i], en );
+};
+
+
+on_change{"pv.shading.utility.str_orient"} = define()
+{
+	en = value("pv.shading.utility.enabled");
+	state = value("pv.shading.utility.str_orient");
+	enable( "pv.shading.utility.nstrx", state == 1 && en );
+};
+
+
+on_load{"PV Array Self-Shading"} = define()
+{
+	on_change{"pv.shading.utility.str_orient"}();
+	on_change{"pv.shading.utility.enabled"}();
+};

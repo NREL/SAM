@@ -1,0 +1,20 @@
+function pv_losses_enable_subarray_items( isub, en )
+{
+	prefix = "pv.subarray" + to_string(isub) + ".";
+	vars = [ "dcwiring_derate",
+		"diodeconn_derate",
+		"mismatch_derate",
+		"monthly_soiling",
+		"nameplate_derate",
+		"soiling_annual_average",
+		"total_dc_derate",
+		"tracking_derate" ];	
+	for (i=0;i<#vars;i++)
+		enable( prefix + vars[i], en );
+}
+
+on_show{'PV Losses'} = define() {
+	pv_losses_enable_subarray_items( 2, value('pv.subarray2.enable') != false );
+	pv_losses_enable_subarray_items( 3, value('pv.subarray3.enable') != false );
+	pv_losses_enable_subarray_items( 4, value('pv.subarray4.enable') != false );
+};

@@ -1,0 +1,43 @@
+function inverter_datasheet_value_change()
+{
+	efficiency_type = value("pv.inv.ds.eff_type");
+
+	weighted_efficiency = (efficiency_type == 0);
+	
+	enable("pv.inv.ds.eff_weighted",weighted_efficiency);
+	enable("pv.inv.ds.eff_peak_or_nom",!weighted_efficiency);
+	enable("pv.inv.ds.pso",!weighted_efficiency);
+
+}
+	
+	
+on_change{"pv.inv.ds.eff_type"} = define()
+{
+	efficiency_type = value("pv.inv.ds.eff_type");
+
+	weighted_efficiency = (efficiency_type == 0);
+	
+	if (weighted_efficiency)
+	{
+		value("pv.inv.ds.pso",0);
+	}
+
+	enable("pv.inv.ds.pso",!weighted_efficiency);
+	inverter_datasheet_value_change();
+};
+
+	
+on_load{"Inverter Datasheet"}=define(){
+	inverter_datasheet_value_change();	
+};	
+
+
+on_change{"pv.inv.ds.eff_weighted"} = define() { inverter_datasheet_value_change(); };
+on_change{"pv.inv.ds.eff_peak_or_nom"} = define() { inverter_datasheet_value_change(); };
+on_change{"pv.inv.ds.pso"} = define() { inverter_datasheet_value_change(); };
+on_change{"pv.inv.ds.pnt"} = define() { inverter_datasheet_value_change(); };
+on_change{"pv.inv.ds.vdcmax"} = define() { inverter_datasheet_value_change(); };
+on_change{"pv.inv.ds.idcmax"} = define() { inverter_datasheet_value_change(); };
+on_change{"pv.inv.ds.mppt_hi"} = define() { inverter_datasheet_value_change(); };
+on_change{"pv.inv.ds.mppt_low"} = define() { inverter_datasheet_value_change(); };
+on_change{"pv.inv.ds.vdco"} = define() { inverter_datasheet_value_change(); };

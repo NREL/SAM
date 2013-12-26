@@ -1,0 +1,5 @@
+on_load{'Annual Performance'} = define() {
+	tech = value('case.technology_name');
+	show( 'system.degradation', tech != 'Geothermal' );
+	show( 'Label2', tech != 'Geothermal' );
+};

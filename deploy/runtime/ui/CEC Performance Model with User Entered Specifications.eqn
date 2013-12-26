@@ -1,0 +1,6 @@
+equations{ 'pv.mod.6par.mpeff' } = define() {
+	return 100.0*${pv.mod.6par.vmp}*${pv.mod.6par.imp}/${pv.mod.6par.area}/1000.0; };
+
+equations{ 'pv.mod.6par.pmp' } = define() {
+	return ${pv.mod.6par.vmp}*${pv.mod.6par.imp}; };
+

@@ -8,40 +8,49 @@ addconfig( 'Test Only', [ 'None' ] );
 
 function setup_pvwatts_pages()
 {
-	addpage( [ 'Climate' ], 'Location and Resource' );
-	addpage( [ 'PVWatts' ], 'System Design', 'PVWatts' );
+	addpage( [[ 'Climate' ]], { 'sidebar'='Location and Resource' } );
+	addpage( [[ 'PVWatts' ]], { 'sidebar'='System Design', 'help'='PVWatts' } );
 }
 
 function setup_flat_plate_pv_pages()
 {
-	addpage( [ 'Climate', 'PV Albedo and Radiation' ], 'Location and Resource' );
-	addpage( [ 'Simple Efficiency Module Model', 
-				'CEC Performance Model with Module Database', 
-				'CEC Performance Model with User Entered Specifications', 
-				'Sandia PV Array Performance Model with Module Database' ], 
-			'Module', 'Module', true, 'pv.mod.model_type' );
+	addpage( [[ 'Climate', {'name'='PV Albedo and Radiation', 'collapsible'=true, 'collapsible_var'='pv.radmode.is_shown'} ]], { 'sidebar'='Location and Resource' } );
+	
+	
+	addpage( [ ['Simple Efficiency Module Model'],
+				[{ 'name'='CEC Performance Model with Module Database', 'caption'='CEC Module' }, { 'name'='Test 1', 'collapsible'=true, 'collapsible_var'='pv.module.test_1.is_shown' }],
+				['CEC Performance Model with User Entered Specifications'], 
+				['Sandia PV Array Performance Model with Module Database'] ], 				
+			{ 'sidebar'='Module', 'help'='Module', 'exclusive_var'='pv.mod.model_type' } );
 			
-	addpage( [ 'Inverter CEC Database', 'Inverter Datasheet', 'Inverter Part Load Curve' ], 'Inverter', 'Inverter', true, 'pv.inv.model_type' );
-	addpage( [ 'PV System Design' ], 'System Design' );
-	addpage( [ 'PV Shading' ], 'Shading' );
-	addpage( [ 'PV Losses' ], 'Losses' );
+	addpage( [ ['Inverter CEC Database'], ['Inverter Datasheet'], ['Inverter Part Load Curve'] ], 
+			{ 'sidebar'='Inverter', 'help'='Inverter', 'exclusive_var'='pv.inv.model_type' } );
+	addpage( [ ['PV System Design'] ], { 'sidebar'='System Design' } );
+	addpage( [ ['PV Shading'] ], { 'sidebar'='Shading' } );
+	addpage( [ ['PV Losses'] ], { 'sidebar'='Losses' } );
 }
 
 function setup_residential_pages()
 {
-	addpage( [ 'Annual Performance' ] );
-	addpage( [ 'PV Capital Costs','O and M Costs' ], 'PV System Costs' );
-	addpage( [ 'Residential Loan','Financing' ], 'Financing', 'Financing Residential' );
-	addpage( [ 'Tax Credits','Incentives' ], 'Incentives' );
-	addpage( [ 'Utility Rate' ] );
-	addpage( [ 'Electric Load' ] );
+	addpage( [[ 'Annual Performance' ]] );
+	addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='PV System Costs' } );
+	//addpage( [[ 'Residential Loan','Financing' ]], { 'caption'='Financing', 'help'='Financing Residential' } );
+	//addpage( [[ 'Tax Credits','Incentives' ]], { 'caption'='Incentives' } );
+	
+	addpage( [[ 'Residential Loan',
+				{'name'='Financing', 'collapsible'=true,'collapsible_var'='res.fin.show_financing'},
+				{'name'='Tax Credits', 'collapsible'=true, 'collapsible_var'='res.fin.show_tax_credits', 'collapsed_by_default'=false},
+				{'name'='Incentives', 'collapsible'=true, 'collapsible_var'='res.fin.show_incentives'} ]], { 'sidebar'='Financing', 'help'='Financing Residential' } );
+	
+	addpage( [[ 'Utility Rate' ]] );
+	addpage( [[ 'Electric Load' ]] );
 	/*
-	addpage( [ 'CEC Module Main', 
-		{ 'name'='CEC Module Advanced', 
-			'label'='Advanced Module Parameters', 
-			'collapsible'=true, 
-			'collapsible_var'='pv.cec.mod.is_advanced_shown',
-			'collapsed_by_default'=true } ],
+	addpage( [ [ 'CEC Module Main', 
+			{ 'name'='CEC Module Advanced', 
+				'caption'='Advanced Module Parameters', 
+				'collapsible'=true, 
+				'collapsible_var'='pv.cec.mod.is_advanced_shown',
+				'collapsed_by_default'=true } ],
 			{'help'='? CEC Module', 'label'='CEC Module', 'exclusive'=true, 'exclusive_var'='pv.inv.model_type' } );
 			*/
 }
@@ -50,8 +59,8 @@ function setup_residential_pages()
 // now setup all the pages
 
 setconfig( 'Test Only', 'None' );
-addpage( [ 'Test 1' ] );
-addpage( [ 'Location' ] );
+addpage( [[ 'Test 1' ]] );
+addpage( [[ 'Location' ]] );
 
 
 setconfig( 'Flat Plate PV', 'Residential' );

@@ -28,7 +28,6 @@ public:
 	void UpdateConfiguration();
 
 	bool SwitchToInputPage( const wxString &name );
-	void OrganizeCurrentPages();
 	wxUIObject *FindActiveObject( const wxString &name, InputPageBase **page = 0 );
 
 	wxString GetCurrentContext();
@@ -44,14 +43,33 @@ private:
 	wxPanel *m_inputPagePanel;
 	InputPageList *m_inputPageList;
 	std::vector<ConfigDatabase::InputPageGroup*> m_pageGroups;
+	FormDatabase m_forms;
 	ConfigDatabase::InputPageGroup *m_currentGroup;
-	FormDatabase m_currentForms;
-	std::vector<InputPageBase*> m_currentShownPages;
+	std::vector<wxUIFormData*> m_currentForms;
+
+	struct PageDisplayState {
+		PageDisplayState() {
+			Form = 0;
+			ActivePage = 0;
+			CollapseCheck = 0;
+			Collapsible = false;
+		}
+
+		wxUIFormData *Form;
+		InputPageBase *ActivePage;
+		bool Collapsible;
+		wxString CollapsibleVar;
+		wxCheckBox *CollapseCheck;
+	};
+
+	std::vector<PageDisplayState*> m_currentActivePages;
 	wxScrolledWindow *m_inputPageScrollWin;
 	wxPanel *m_exclPanel;
 	wxStaticText *m_exclPageLabel;
 	wxMetroButton *m_exclPageButton;
 
+	void SetupActivePage();
+	void LayoutPage();
 	void DetachCurrentInputPage();
 
 	wxMetroButton *m_simButton, *m_resultsButton;

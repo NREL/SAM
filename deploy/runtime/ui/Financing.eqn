@@ -1,0 +1,9 @@
+equations{ 'fin.nominal_discount_rate' } = define() {
+	return ( (1.0 + ${fin.real_discount_rate}/100.0) * (1.0 + ${fin.inflation_rate}/100.0) - 1.0 ) * 100.0; };
+
+equations{ 'fin.salvage_value' } = define() {
+	return ${fin.salvage_percent} / 100.0 * ${system.installed_cost}; };
+
+equations{ 'fin.property_assessed_value' } = define() {
+	return ${fin.property_assessed_percent} / 100.0 * ${system.installed_cost}; };
+

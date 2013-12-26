@@ -1,0 +1,37 @@
+on_load{"Incentives"}=define()
+{
+	fin = value("case.financing");
+	
+	show( "incen.ibi.fed.amount.deprbasis.fed.enabled", ((fin!=0)&&(fin!=1)) );
+	show( "incen.ibi.fed.amount.deprbasis.state.enabled", ((fin!=0)&&(fin!=1)));
+	show( "incen.ibi.state.amount.deprbasis.fed.enabled", ((fin!=0)&&(fin!=1)) );
+	show( "incen.ibi.state.amount.deprbasis.state.enabled", ((fin!=0)&&(fin!=1)));
+	show( "incen.ibi.utility.amount.deprbasis.fed.enabled", ((fin!=0)&&(fin!=1)) );
+	show( "incen.ibi.utility.amount.deprbasis.state.enabled", ((fin!=0)&&(fin!=1)));
+	show( "incen.ibi.other.amount.deprbasis.fed.enabled", ((fin!=0)&&(fin!=1)) );
+	show( "incen.ibi.other.amount.deprbasis.state.enabled", ((fin!=0)&&(fin!=1)));
+	show( "incen.ibi.fed.percentage.deprbasis.fed.enabled", ((fin!=0)&&(fin!=1)) );
+	show( "incen.ibi.fed.percentage.deprbasis.state.enabled", ((fin!=0)&&(fin!=1)));
+	show( "incen.ibi.state.percentage.deprbasis.fed.enabled", ((fin!=0)&&(fin!=1)) );
+	show( "incen.ibi.state.percentage.deprbasis.state.enabled", ((fin!=0)&&(fin!=1)));
+	show( "incen.ibi.utility.percentage.deprbasis.fed.enabled", ((fin!=0)&&(fin!=1)) );
+	show( "incen.ibi.utility.percentage.deprbasis.state.enabled", ((fin!=0)&&(fin!=1)));
+	show( "incen.ibi.other.percentage.deprbasis.fed.enabled", ((fin!=0)&&(fin!=1)) );
+	show( "incen.ibi.other.percentage.deprbasis.state.enabled", ((fin!=0)&&(fin!=1)));
+	
+	show( "incen.cbi.fed.deprbasis.fed.enabled", ((fin!=0)&&(fin!=1)) );
+	show( "incen.cbi.fed.deprbasis.state.enabled", ((fin!=0)&&(fin!=1)));
+	show( "incen.cbi.state.deprbasis.fed.enabled", ((fin!=0)&&(fin!=1)) );
+	show( "incen.cbi.state.deprbasis.state.enabled", ((fin!=0)&&(fin!=1)));
+	show( "incen.cbi.utility.deprbasis.fed.enabled", ((fin!=0)&&(fin!=1)) );
+	show( "incen.cbi.utility.deprbasis.state.enabled", ((fin!=0)&&(fin!=1)));
+	show( "incen.cbi.other.deprbasis.fed.enabled", ((fin!=0)&&(fin!=1)) );
+	show( "incen.cbi.other.deprbasis.state.enabled", ((fin!=0)&&(fin!=1)));
+
+	show( "lblIBIRedDepr", ((fin!=0)&&(fin!=1)));
+	show( "lblIBIRedDeprFed", ((fin!=0)&&(fin!=1)));
+	show( "lblIBIRedDeprState", ((fin!=0)&&(fin!=1)));
+	show( "lblCBIRedDepr", ((fin!=0)&&(fin!=1)));
+	show( "lblCBIRedDeprFed", ((fin!=0)&&(fin!=1)));
+	show( "lblCBIRedDeprState", ((fin!=0)&&(fin!=1)));
+};
