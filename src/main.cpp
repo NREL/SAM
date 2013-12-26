@@ -731,16 +731,16 @@ void ConfigDatabase::SetConfig( const wxString &t, const wxString &f )
 	m_curConfig = Find( t, f );
 }
 
-void ConfigDatabase::AddInputPageGroup( const wxArrayString &pages, const wxString &caption, const wxString &hlpcxt, 
-		bool exclusive, const wxString &exclvar )
+void ConfigDatabase::AddInputPageGroup( const std::vector< std::vector<PageInfo> > &pages, const wxString &sidebar, 
+	const wxString &hlpcxt, const wxString &exclvar )
 {
 	if ( m_curConfig == 0 ) return;
 
 	InputPageGroup *ip = new InputPageGroup;
 	ip->Pages = pages;
-	ip->Caption = caption;
+	ip->SideBarLabel = sidebar;
 	ip->HelpContext = hlpcxt;
-	ip->OrganizeAsExclusivePages = exclusive;
+	ip->OrganizeAsExclusivePages = !exclvar.IsEmpty();
 	ip->ExclusivePageVar = exclvar;
 
 	m_curConfig->InputPages.push_back( ip );
@@ -767,20 +767,37 @@ void ConfigDatabase::RebuildCaches()
 			InputPageGroup *igrp = *it1;
 			for( size_t k=0;k<igrp->Pages.size();k++ )
 			{
-				wxString page = igrp->Pages[k];
-
-				wxArrayString list = SamApp::Variables().GetVarsForPage( page );
-				for( size_t n=0;n<list.size();n++ )
+				size_t nstack = igrp->Pages[k].size();
+				for( size_t l=0;l<nstack;l++ )
 				{
-					wxString name = list[n];
+					PageInfo &pi = igrp->Pages[k][l];
+					
+					wxArrayString list = SamApp::Variables().GetVarsForPage( pi.Name );
+					for( size_t n=0;n<list.size();n++ )
+					{
+						wxString name = list[n];
 
-					if ( VarInfo *vv = SamApp::Variables().Lookup( name ) )
+						if ( VarInfo *vv = SamApp::Variables().Lookup( name ) )
+							ci->Variables.Add( vv );
+
+						if ( EqnData *ed = eqnlookup.GetEquationData( name ))
+							ci->Equations.Add( ed );
+					}
+
+					if ( pi.Collapsible && !pi.CollapsiblePageVar.IsEmpty() )
+					{
+						VarInfo *vv = SamApp::Variables().Lookup( pi.CollapsiblePageVar );
+						if( vv == 0 )
+						{
+							vv = SamApp::Variables().Add( pi.CollapsiblePageVar, VV_NUMBER,
+								"Current selection for " + pi.Caption );
+
+							vv->DefaultValue.Set( pi.CollapsedByDefault ? 0 : 1 );
+						}
+
 						ci->Variables.Add( vv );
-
-					if ( EqnData *ed = eqnlookup.GetEquationData( name ))
-						ci->Equations.Add( ed );
+					}
 				}
-
 			}
 
 			if ( igrp->OrganizeAsExclusivePages && !igrp->ExclusivePageVar.IsEmpty() )
@@ -789,7 +806,7 @@ void ConfigDatabase::RebuildCaches()
 				if ( vv == 0 )
 				{
 					vv = SamApp::Variables().Add( igrp->ExclusivePageVar, VV_NUMBER, 
-						"Current selection for " + igrp->Caption );
+						"Current selection for " + igrp->SideBarLabel );
 				}
 
 				ci->Variables.Add( vv );

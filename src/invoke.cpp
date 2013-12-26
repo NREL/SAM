@@ -44,32 +44,75 @@ static void fcall_setconfig( lk::invoke_t &cxt )
 
 static void fcall_addpage( lk::invoke_t &cxt )
 {
-	LK_DOC("addpage", "Add an input page group to the currently active configuration (may have multiple pages).", "(array:pages, [string:caption, string:helpcxt, boolean:exclusive, string:exclusive var name]" );
+	LK_DOC("addpage", "Add an input page group to the currently active configuration (may have multiple pages).", "(array:pages, table:caption,help,exclusive,exclusive_var):none" );
 	
-	wxArrayString pages;
+	std::vector< std::vector<ConfigDatabase::PageInfo> > pages;
 	lk::vardata_t &grps = cxt.arg(0);
 	for( size_t i=0;i<grps.length();i++ )
-		pages.Add( grps.index(i)->as_string() );
+	{
+		pages.push_back( std::vector<ConfigDatabase::PageInfo>() );
 
-	if ( pages.size() == 0 ) return;
+		for( size_t j=0;j<grps.index(i)->deref().length();j++ )
+		{
+			ConfigDatabase::PageInfo x;
 
-	wxString capt = pages[0];
+			lk::vardata_t &item = grps.index(i)->deref().index(j)->deref();
+
+			if ( item.type() == lk::vardata_t::HASH )
+			{
+				if ( lk::vardata_t *name = item.lookup( "name" ) )
+					x.Name = name->as_string();
+
+				x.Caption = x.Name; // by default, caption=name
+				x.CollapsedByDefault = true;
+			
+				if ( lk::vardata_t *capt = item.lookup( "caption" ) )
+					x.Caption = capt->as_string();
+
+				if ( lk::vardata_t *is_collap = item.lookup( "collapsible" ) )
+					x.Collapsible = is_collap->as_boolean();
+
+				if ( lk::vardata_t *var = item.lookup( "collapsible_var" ) )
+					x.CollapsiblePageVar = var->as_string();
+
+				if ( lk::vardata_t *initial = item.lookup( "collapsed_by_default" ) )
+					x.CollapsedByDefault = initial->as_boolean();
+
+				if ( lk::vardata_t *shlabel = item.lookup( "label" ) )
+					x.ShowHideLabel = shlabel->as_string();
+			}
+			else
+			{
+				x.Name = item.as_string();
+				x.Caption = x.Name;
+			}
+
+			if ( !x.Name.IsEmpty() )
+				pages[i].push_back( x );
+		}
+	}
+
+	if ( pages.size() == 0 || pages[0].size() == 0 ) return;
+	
+	wxString sidebar = pages[0][0].Name;
+	wxString help = sidebar;
+	wxString exclusive_var;
+	
 	if ( cxt.arg_count() > 1 )
-		capt = cxt.arg(1).as_string();
+	{
+		lk::vardata_t &props = cxt.arg(1).deref();
 
-	wxString help = pages[0];
-	if (cxt.arg_count() > 2 )
-		wxString help = cxt.arg(2).as_string();
+		if( lk::vardata_t *x = props.lookup("sidebar") )
+			sidebar = x->as_string();
 
-	bool subgrps = false;
-	if ( cxt.arg_count() > 3 )
-		subgrps = cxt.arg(3).as_boolean();
+		if ( lk::vardata_t *x = props.lookup("help") )
+			help = x->as_string();
+		
+		if ( lk::vardata_t *x = props.lookup("exclusive_var") )
+			exclusive_var = x->as_string();
+	}
 
-	wxString subgrpvar;
-	if ( cxt.arg_count() > 4 )
-		subgrpvar = cxt.arg(4).as_string();
-
-	SamApp::Config().AddInputPageGroup( pages, capt, help, subgrps, subgrpvar );
+	SamApp::Config().AddInputPageGroup( pages, sidebar, help, exclusive_var );
 }
 
 

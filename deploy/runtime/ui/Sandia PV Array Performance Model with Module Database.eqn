@@ -1,0 +1,79 @@
+equations{ '$MIMO$ sandiamod' } = define() {
+	/* need to implement */
+	return 0; };
+
+equations{ '$MIMO$ sandiamod' } = define() {
+	/* need to implement */
+	return 0; };
+
+equations{ '$MIMO$ sandiamod' } = define() {
+	/* need to implement */
+	return 0; };
+
+equations{ '$MIMO$ sandiamod' } = define() {
+	/* need to implement */
+	return 0; };
+
+equations{ '$MIMO$ sandiamod' } = define() {
+	/* need to implement */
+	return 0; };
+
+equations{ 'pv.mod.sandia.n_cells' } = define() {
+	return ${pv.mod.sandia.parallel_cells}*${pv.mod.sandia.series_cells}; };
+
+equations{ '$MIMO$ sandiamod' } = define() {
+	/* need to implement */
+	return 0; };
+
+equations{ '$MIMO$ sandiamod' } = define() {
+	/* need to implement */
+	return 0; };
+
+equations{ '$MIMO$ sandiamod' } = define() {
+	/* need to implement */
+	return 0; };
+
+equations{ '$MIMO$ sandiamod' } = define() {
+	/* need to implement */
+	return 0; };
+
+equations{ '$MIMO$ sandiamod' } = define() {
+	/* need to implement */
+	return 0; };
+
+equations{ '$MIMO$ sandiamod' } = define() {
+	/* need to implement */
+	return 0; };
+
+equations{ '$MIMO$ sandiamod' } = define() {
+	/* need to implement */
+	return 0; };
+
+equations{ '$MIMO$ sandiamod' } = define() {
+	/* need to implement */
+	return 0; };
+
+equations{ '$MIMO$ sandiamod' } = define() {
+	/* need to implement */
+	return 0; };
+
+equations{ '$MIMO$ sandiamod' } = define() {
+	/* need to implement */
+	return 0; };
+
+equations{ '$MIMO$ sandiamod' } = define() {
+	/* need to implement */
+	return 0; };
+
+equations{ '$MIMO$ sandiamod' } = define() {
+	/* need to implement */
+	return 0; };
+
+equations{ '$MIMO$ sandiamod' } = define() {
+	/* need to implement */
+	return 0; };
+
+equations{ '$MIMO$ sandiamod' } = define() {
+	/* need to implement */
+	return 0; };
+

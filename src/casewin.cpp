@@ -74,13 +74,14 @@ public:
 
 enum { ID_INPUTPAGELIST = wxID_HIGHEST + 142,
 	ID_SIMULATE, ID_RESULTSPAGE,
-	ID_EXCL_BUTTON };
+	ID_EXCL_BUTTON, ID_COLLAPSE };
 
 BEGIN_EVENT_TABLE( CaseWindow, wxSplitterWindow )
 	EVT_BUTTON( ID_SIMULATE, CaseWindow::OnCommand )
 	EVT_BUTTON( ID_RESULTSPAGE, CaseWindow::OnCommand )
 	EVT_LISTBOX( ID_INPUTPAGELIST, CaseWindow::OnCommand )
 	EVT_BUTTON( ID_EXCL_BUTTON, CaseWindow::OnCommand )
+	EVT_CHECKBOX( ID_COLLAPSE, CaseWindow::OnCommand )
 END_EVENT_TABLE()
 
 CaseWindow::CaseWindow( wxWindow *parent, Case *c )
@@ -257,6 +258,7 @@ CaseWindow::~CaseWindow()
 {
 	// detach forms if any shown on input pages.
 	DetachCurrentInputPage();
+	m_currentGroup = 0;
 
 	m_case->RemoveListener( this );
 }
@@ -330,33 +332,70 @@ void CaseWindow::OnCommand( wxCommandEvent &evt )
 		{
 			VarValue *vv = m_case->Values().Get( m_currentGroup->ExclusivePageVar );
 			if ( !vv ) return;
+			int sel = vv->Integer();
 
-			PageOptionDialog dlg( this, "Select option", m_currentGroup->Pages, vv->Integer() );
+			wxArrayString pages;
+			for( size_t i=0;i<m_currentGroup->Pages.size();i++)
+				if ( m_currentGroup->Pages[i].size() > 0 )
+					pages.Add( m_currentGroup->Pages[i][0].Caption );
+
+			PageOptionDialog dlg( this, "Select option", pages, sel );
 			wxPoint pt = m_exclPageButton->GetScreenPosition();
 			wxSize sz = m_exclPageButton->GetSize();
 			dlg.Move( pt.x - 20, pt.y + sz.y + 10 );
 
 			if ( dlg.ShowModal() != wxID_OK ) return;
 		
-			int sel = dlg.GetSelection();
+			sel = dlg.GetSelection();
 			if ( sel != vv->Integer() )
 			{
 				vv->Set( sel );
 				m_case->Changed( m_currentGroup->ExclusivePageVar );
-				OrganizeCurrentPages();
+				DetachCurrentInputPage();
+				SetupActivePage();
 			}
+		}
+	}
+	else if ( evt.GetId() == ID_COLLAPSE )
+	{
+		PageDisplayState *pds = 0;
+		for( size_t i=0;i<m_currentActivePages.size();i++ )
+			if ( m_currentActivePages[i]->CollapseCheck == evt.GetEventObject() )
+				pds = m_currentActivePages[i];
+
+		if( pds != 0 )
+		{
+			bool en = pds->CollapseCheck->GetValue();
+
+			if( en )
+			{
+				if( pds->ActivePage == 0 ) 
+					pds->ActivePage = new ActiveInputPage( m_inputPageScrollWin, pds->Form, this );
+			}
+			else
+			{
+				if( pds->ActivePage != 0 ) pds->ActivePage->Destroy();
+				pds->ActivePage = 0;
+			}
+
+			m_case->Values().Set( pds->CollapsibleVar, VarValue( en ) );
+
+			LayoutPage();
 		}
 	}
 }
 
 wxUIObject *CaseWindow::FindActiveObject( const wxString &name, InputPageBase **ipage )
 {
-	for( size_t i=0;i<m_currentShownPages.size();i++ )
+	for( size_t i=0;i<m_currentActivePages.size();i++ )
 	{
-		if ( wxUIObject *obj = m_currentShownPages[i]->Find( name ) )
+		if ( m_currentActivePages[i]->ActivePage != 0 )
 		{
-			if ( ipage ) *ipage = m_currentShownPages[i];
-			return obj;
+			if ( wxUIObject *obj = m_currentActivePages[i]->ActivePage->Find( name ) )
+			{
+				if ( ipage ) *ipage = m_currentActivePages[i]->ActivePage;
+				return obj;
+			}
 		}
 	}
 
@@ -397,12 +436,23 @@ void CaseWindow::OnCaseEvent( Case *c, CaseEvent &evt )
 void CaseWindow::DetachCurrentInputPage()
 {
 	m_exclPanel->Show( false );
-	
-	for( size_t i=0;i<m_currentShownPages.size();i++ )
-		m_currentShownPages[i]->Destroy();
-	m_currentShownPages.clear();
 
-	m_currentGroup = 0;
+	m_currentForms.clear();
+	
+	for( size_t i=0;i<m_currentActivePages.size();i++ )
+	{
+		PageDisplayState *pds = m_currentActivePages[i];
+
+		if ( pds->ActivePage != 0 )
+			pds->ActivePage->Destroy();
+
+		if ( pds->CollapseCheck != 0 )
+			pds->CollapseCheck->Destroy();
+
+		delete pds;
+	}
+
+	m_currentActivePages.clear();
 }
 
 bool CaseWindow::SwitchToInputPage( const wxString &name )
@@ -410,18 +460,20 @@ bool CaseWindow::SwitchToInputPage( const wxString &name )
 	m_inputPagePanel->Show( false );
 
 	DetachCurrentInputPage();
-	
+
+	m_currentGroup = 0;
 	for( size_t i=0;i<m_pageGroups.size();i++ )
-		if ( m_pageGroups[i]->Caption == name )
+		if ( m_pageGroups[i]->SideBarLabel == name )
 			m_currentGroup = m_pageGroups[i];
 
 	if ( !m_currentGroup ) return false;
 
 	for( size_t i=0;i<m_currentGroup->Pages.size();i++ )
-		if ( wxUIFormData *form = m_currentForms.Lookup( m_currentGroup->Pages[i] ) )
-			m_currentShownPages.push_back( new ActiveInputPage( m_inputPageScrollWin, form, this ) );
-
-	OrganizeCurrentPages();
+		for( size_t j=0;j<m_currentGroup->Pages[i].size();j++ )
+			if ( wxUIFormData *form = m_forms.Lookup( m_currentGroup->Pages[i][j].Name ) )
+				m_currentForms.push_back( form );
+			
+	SetupActivePage();
 	UpdatePageNote();
 
 	m_inputPagePanel->Show( true );
@@ -429,48 +481,111 @@ bool CaseWindow::SwitchToInputPage( const wxString &name )
 	return true;
 }
 
-void CaseWindow::OrganizeCurrentPages()
+void CaseWindow::SetupActivePage()
 {
 	m_exclPanel->Show( false );
 
 	if ( !m_currentGroup ) return;
 	
-	int y = 0;
-	int x = 0;
+	std::vector<ConfigDatabase::PageInfo> *active_pages = 0;
 	
-	if ( m_currentGroup->OrganizeAsExclusivePages )
+	if ( m_currentGroup->Pages.size() > 1 && !m_currentGroup->ExclusivePageVar.IsEmpty() )
 	{
+		size_t excl_idx = 9999;
 		VarValue *vv = m_case->Values().Get( m_currentGroup->ExclusivePageVar );
 		if ( !vv )
 		{
 			wxMessageBox( "could not locate exclusive page variable " + m_currentGroup->ExclusivePageVar );
 			return;
 		}
-		
-		// switch between pages here using a flipper widget or something?
-		for( size_t i=0;i<m_currentShownPages.size();i++ )
-		{
-			InputPageBase *page = m_currentShownPages[i];
-			page->Show( i == vv->Integer() );
-			if ( page->IsShown() )
-			{
-				m_exclPageLabel->SetLabel( page->GetName() );
-				wxSize sz = page->GetClientSize();
-				x = sz.x;
-				y = sz.y;
-			}
-		}		
+		else
+			excl_idx = vv->Integer();
 
-		m_exclPanel->Show( true );
+		if ( excl_idx < m_currentGroup->Pages.size() 
+			&& m_currentGroup->Pages[excl_idx].size() > 0 )
+		{
+			m_exclPageLabel->SetLabel( m_currentGroup->Pages[excl_idx][0].Caption );
+			m_exclPanel->Show( true );
+			active_pages = &( m_currentGroup->Pages[excl_idx] );
+		}
+	}
+	else if ( m_currentGroup->Pages.size() == 1 )
+	{
+		active_pages = &( m_currentGroup->Pages[0] );
 	}
 	else
 	{
-		// input pages are stacked upon one another
-		for( size_t i=0;i<m_currentShownPages.size();i++ )
+		wxMessageBox( "ui engine error: invalid page configuration on " + m_currentGroup->SideBarLabel );
+		return;
+	}
+	
+	// setup active display states
+
+	if ( !active_pages ) return;
+
+	for( size_t ii=0;ii<active_pages->size();ii++ )
+	{
+		ConfigDatabase::PageInfo &pi = (*active_pages)[ii];
+
+		PageDisplayState *pds = new PageDisplayState;
+		pds->Form = m_forms.Lookup( pi.Name );
+		if ( !pds->Form )
+			wxMessageBox( "error locating form data " + pi.Name );
+
+		pds->Collapsible = pi.Collapsible;
+
+		bool load_page = true;
+
+		if( pds->Collapsible )
 		{
-			InputPageBase *page = m_currentShownPages[i];
-			page->SetPosition( wxPoint(0, y) );
-			wxSize sz = page->GetClientSize();
+			pds->CollapsibleVar = pi.CollapsiblePageVar;
+			wxString label = "Show/enable " + pi.Caption;
+			if( !pi.ShowHideLabel.IsEmpty() ) label = pi.ShowHideLabel;
+			pds->CollapseCheck = new wxCheckBox( m_inputPageScrollWin, ID_COLLAPSE, label );
+
+			if ( VarValue *vv = m_case->Values().Get( pds->CollapsibleVar ) )
+			{
+				load_page = vv->Boolean();
+				pds->CollapseCheck->SetValue( load_page );
+			}
+		}
+		
+		if( load_page && pds->Form != 0 )
+			pds->ActivePage = new ActiveInputPage( m_inputPageScrollWin, pds->Form, this );
+
+		m_currentActivePages.push_back( pds );
+	}
+
+	LayoutPage();
+}
+
+void CaseWindow::LayoutPage()
+{
+	int vsx, vsy;
+	m_inputPageScrollWin->GetViewStart( &vsx, &vsy );
+	
+	int y = 0;
+	int x = 0;
+
+	wxSize available_size = m_inputPageScrollWin->GetClientSize();
+
+	// input pages are stacked upon one another
+	for( size_t i=0;i<m_currentActivePages.size();i++ )
+	{
+		PageDisplayState &pds = *m_currentActivePages[i];
+
+		if( pds.CollapseCheck != 0 )
+		{
+			wxSize szbest = pds.CollapseCheck->GetBestSize();
+			pds.CollapseCheck->SetSize( 5, y, szbest.x, szbest.y );
+			y += szbest.y;
+			if( x < szbest.x ) x = szbest.x;
+		}
+
+		if( pds.ActivePage != 0 )
+		{
+			pds.ActivePage->SetPosition( wxPoint(0, y) );
+			wxSize sz = pds.ActivePage->GetClientSize();
 			y += sz.y;
 			if ( sz.x > x ) x = sz.x;
 		}
@@ -479,12 +594,13 @@ void CaseWindow::OrganizeCurrentPages()
 	m_inputPagePanel->Layout();
 	m_inputPageScrollWin->SetScrollbars(1,1, x, y, 0, 0);
 	m_inputPageScrollWin->SetScrollRate(15,15);
-	m_inputPageScrollWin->Scroll(0,0);
+	m_inputPageScrollWin->Scroll( vsx, vsy );
 }
 
 void CaseWindow::UpdateConfiguration()
 {
 	DetachCurrentInputPage();
+	m_currentGroup = 0;
 	m_inputPageList->ClearItems();
 
 	wxString tech, fin;
@@ -494,21 +610,26 @@ void CaseWindow::UpdateConfiguration()
 	m_pageGroups = SamApp::Config().GetInputPages( tech, fin );
 
 	// erase current set of forms, and rebuild the forms for this case
-	m_currentForms.Clear();
+	m_forms.Clear();
 	
 	// update input page list (sidebar)
 	for( size_t i=0;i<m_pageGroups.size();i++ )
 	{
-		wxArrayString &pages = m_pageGroups[i]->Pages;
-		for (size_t j=0;j<pages.size();j++ )
+		ConfigDatabase::InputPageGroup *group = m_pageGroups[i];
+
+		for( size_t kk=0;kk<group->Pages.size();kk++ )
 		{
-			if ( wxUIFormData *ui = SamApp::Forms().Lookup( pages[j] ) )
-				m_currentForms.Add( pages[j], ui->Duplicate() );
-			else
-				wxMessageBox("could not locate form data for " + pages[j] );			
+			std::vector<ConfigDatabase::PageInfo> &pages = group->Pages[kk];
+			for (size_t j=0;j<pages.size();j++ )
+			{
+				if ( wxUIFormData *ui = SamApp::Forms().Lookup( pages[j].Name ) )
+					m_forms.Add( pages[j].Name, ui->Duplicate() );
+				else
+					wxMessageBox("Could not locate form data for " + pages[j].Name );			
+			}
 		}
 
-		m_inputPageList->Add( m_pageGroups[i]->Caption, i < m_pageGroups.size()-1, m_pageGroups[i]->HelpContext );
+		m_inputPageList->Add( m_pageGroups[i]->SideBarLabel, i == m_pageGroups.size()-1, m_pageGroups[i]->HelpContext );
 	}
 
 }

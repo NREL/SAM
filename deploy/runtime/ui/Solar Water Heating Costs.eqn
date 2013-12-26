@@ -1,0 +1,54 @@
+equations{ 'swh.cost.plm.total' } = define() {
+	return ${swh.cost.plm.nonfixed}+${swh.cost.plm.fixed}; };
+
+equations{ 'swh.cost.contingency' } = define() {
+	return ${swh.cost.contingency_percent}/100*
+(${swh.cost.collector}
++${swh.cost.storage}
++${swh.cost.bos}
++${swh.cost.installation}); };
+
+equations{ 'swh.cost.epc.nonfixed' } = define() {
+	return ${swh.cost.epc.percent}/100*${swh.cost.total_direct}; };
+
+equations{ 'swh.cost.collector' } = define() {
+	return ?${swh.cost.collector_cost_units} 
+[ ${swh.total_area}, 
+${swh.rated_size}*1000, 
+${swh.cost.num_collectors} ] 
+* ${swh.cost.per_collector}; };
+
+equations{ 'swh.cost.num_collectors' } = define() {
+	return ${swh.ncoll}; };
+
+equations{ 'swh.cost.epc.total' } = define() {
+	return ${swh.cost.epc.nonfixed}+${swh.cost.epc.fixed}; };
+
+equations{ 'swh.cost.sales_tax.total' } = define() {
+	return ${swh.cost.sales_tax.value}/100*${swh.cost.total_direct}*${swh.cost.sales_tax.percent}/100; };
+
+equations{ 'swh.cost.installed_per_capacity' } = define() {
+	return 0.001*${swh.cost.total_installed}/${swh.rated_size}; };
+
+equations{ 'swh.cost.plm.nonfixed' } = define() {
+	return ${swh.cost.plm.percent}/100*${swh.cost.total_direct}; };
+
+equations{ 'swh.cost.sales_tax.value' } = define() {
+	return ${fin.sales_tax}; };
+
+equations{ 'swh.cost.storage' } = define() {
+	return ?${swh.cost.storage_cost_units}[ ${swh.V_tank}, 1.0 ] * ${swh.cost.per_storage}; };
+
+equations{ 'swh.cost.total_direct' } = define() {
+	return ${swh.cost.contingency}
++${swh.cost.bos}
++${swh.cost.installation}
++${swh.cost.storage}
++${swh.cost.collector}; };
+
+equations{ 'swh.cost.total_indirect' } = define() {
+	return ${swh.cost.epc.total}+${swh.cost.plm.total}+${swh.cost.sales_tax.total}; };
+
+equations{ 'swh.cost.total_installed' } = define() {
+	return ${swh.cost.total_direct}+${swh.cost.total_indirect}; };
+
