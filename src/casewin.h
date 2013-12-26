@@ -16,6 +16,7 @@ class InputPageList;
 class BaseCase;
 
 class PageNote;
+class CollapsePaneCtrl;
 
 class CaseWindow : public wxSplitterWindow, CaseEventListener
 {
@@ -59,7 +60,7 @@ private:
 		InputPageBase *ActivePage;
 		bool Collapsible;
 		wxString CollapsibleVar;
-		wxCheckBox *CollapseCheck;
+		CollapsePaneCtrl *CollapseCheck;
 	};
 
 	std::vector<PageDisplayState*> m_currentActivePages;
