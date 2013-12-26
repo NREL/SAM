@@ -792,6 +792,7 @@ void ConfigDatabase::RebuildCaches()
 							vv = SamApp::Variables().Add( pi.CollapsiblePageVar, VV_NUMBER,
 								"Current selection for " + pi.Caption );
 
+							vv->Flags |= VF_COLLAPSIBLE_PANE;
 							vv->DefaultValue.Set( pi.CollapsedByDefault ? 0 : 1 );
 						}
 
@@ -807,6 +808,8 @@ void ConfigDatabase::RebuildCaches()
 				{
 					vv = SamApp::Variables().Add( igrp->ExclusivePageVar, VV_NUMBER, 
 						"Current selection for " + igrp->SideBarLabel );
+
+					vv->Flags |= VF_EXCLUSIVE_PAGES;
 				}
 
 				ci->Variables.Add( vv );

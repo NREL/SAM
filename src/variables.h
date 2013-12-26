@@ -111,6 +111,8 @@ private:
 #define VF_PARAMETRIC 0x02
 #define VF_INDICATOR 0x04
 #define VF_CALCULATED 0x08
+#define VF_EXCLUSIVE_PAGES 0x10
+#define VF_COLLAPSIBLE_PANE 0x20
 
 class VarInfo
 {
