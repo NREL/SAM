@@ -58,8 +58,20 @@ public:
 	VarInfoLookup &Variables() { return m_vars; }
 	EqnFastLookup &Equations() { return m_eqns; }
 
-	int Changed( const wxString &name );
-	int CalculateAll();
+	// call this method when a variable is programmatically changed,
+	// i.e. through a script callback, SamUL script, or other
+	// indirect way of changing a variable.  causes any affected
+	// variables to be recalculated, and updates any views
+	void VariableChanged( const wxString &name );
+
+	// recalculate any variables that are impacted by a changed value of 'trigger'
+	// any views are updated with the variables that are consequently updated with 
+	// new values as a result of the calculations
+	int Recalculate( const wxString &trigger ); 
+
+	// recalculate all equations in this case
+	// CaseEvent is issued for all updated variables
+	int RecalculateAll();
 
 	VarTable &BaseCase();
 

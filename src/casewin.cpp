@@ -50,7 +50,7 @@ public:
 			if ( DataExchange( obj, *vval, OBJ_TO_VAR ) )
 			{
 				wxLogStatus( "Variable " + obj->GetName() + " changed by user interaction, case notified." );
-				m_case->Changed( obj->GetName() );
+				m_case->Recalculate( obj->GetName() );
 			}
 			else
 				wxMessageBox("ActiveInputPage >> data exchange fail: " + obj->GetName() );
@@ -59,16 +59,8 @@ public:
 
 	virtual void OnVariableChanged( const wxString &varname )
 	{
-		wxLogStatus( "Variable " + varname + " changed programmatically, case notified." );
-		
-		// Send the additional case event that this variable
-		// was programmatically changed and needs to be updated
-		CaseEvent ce( CaseEvent::VARS_CHANGED );
-		ce.GetVars().Add( varname );
-		m_case->SendEvent( ce );
-
-		// issue the request for any calculations to be updated as needed
-		m_case->Changed( varname );
+		wxLogStatus( "Variable " + varname + " changed programmatically, case notified." );		
+		m_case->VariableChanged( varname );
 			
 	}
 };
@@ -95,6 +87,7 @@ public:
 		SetBackgroundColour( wxColour(243,243,243) );
 		m_state = false;
 		m_button = new wxMetroButton( this, wxID_ANY, wxEmptyString, m_bitMinus );
+
 		m_label = new wxStaticText( this, wxID_ANY, label );
 		m_label->SetFont( wxMetroTheme::Font( wxMT_LIGHT, 12 ) );
 		
@@ -133,8 +126,8 @@ END_EVENT_TABLE()
 
 
 enum { ID_INPUTPAGELIST = wxID_HIGHEST + 142,
-	ID_SIMULATE, ID_RESULTSPAGE,
-	ID_EXCL_BUTTON, ID_COLLAPSE };
+	ID_SIMULATE, ID_RESULTSPAGE, ID_COLLAPSE,
+	ID_EXCL_BUTTON, ID_EXCL_OPTION, ID_EXCL_OPTION_MAX=ID_EXCL_OPTION+25 };
 
 BEGIN_EVENT_TABLE( CaseWindow, wxSplitterWindow )
 	EVT_BUTTON( ID_SIMULATE, CaseWindow::OnCommand )
@@ -142,6 +135,7 @@ BEGIN_EVENT_TABLE( CaseWindow, wxSplitterWindow )
 	EVT_LISTBOX( ID_INPUTPAGELIST, CaseWindow::OnCommand )
 	EVT_BUTTON( ID_EXCL_BUTTON, CaseWindow::OnCommand )
 	EVT_CHECKBOX( ID_COLLAPSE, CaseWindow::OnCommand )
+	EVT_MENU_RANGE( ID_EXCL_OPTION, ID_EXCL_OPTION_MAX, CaseWindow::OnCommand )
 END_EVENT_TABLE()
 
 CaseWindow::CaseWindow( wxWindow *parent, Case *c )
@@ -343,30 +337,6 @@ void CaseWindow::SaveCurrentViewProperties()
 	m_case->SetProperty("NoteWindowHeight", wxString::Format("%d", h ));
 }
 
-class PageOptionDialog : public wxDialog
-{
-	wxRadioBox *m_radio;
-public:
-	PageOptionDialog( wxWindow *parent, const wxString &title,
-		const wxArrayString &items, int sel )
-		: wxDialog( parent, wxID_ANY, title, wxDefaultPosition, wxSize(400,400), wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER)
-	{
-		m_radio = new wxRadioBox( this, wxID_ANY, "Options", 
-			wxDefaultPosition, wxDefaultSize, 
-			items, 1, wxRA_SPECIFY_COLS );
-		m_radio->SetSelection( sel );
-
-		wxBoxSizer *sizer = new wxBoxSizer( wxVERTICAL );
-		sizer->Add( m_radio, 1, wxALL|wxEXPAND, 5 );
-		sizer->Add( CreateButtonSizer( wxOK|wxCANCEL ), 0, wxALL|wxEXPAND, 5);
-		SetSizer(sizer);
-
-		Fit();		
-	}
-
-	int GetSelection() { return m_radio->GetSelection(); }
-};
-
 void CaseWindow::OnCommand( wxCommandEvent &evt )
 {
 	if ( evt.GetId() == ID_SIMULATE )
@@ -393,27 +363,15 @@ void CaseWindow::OnCommand( wxCommandEvent &evt )
 			VarValue *vv = m_case->Values().Get( m_currentGroup->ExclusivePageVar );
 			if ( !vv ) return;
 			int sel = vv->Integer();
-
-			wxArrayString pages;
+			
+			wxMenu menu;
 			for( size_t i=0;i<m_currentGroup->Pages.size();i++)
 				if ( m_currentGroup->Pages[i].size() > 0 )
-					pages.Add( m_currentGroup->Pages[i][0].Caption );
+					menu.AppendCheckItem( ID_EXCL_OPTION+i, m_currentGroup->Pages[i][0].Caption );
 
-			PageOptionDialog dlg( this, "Select option", pages, sel );
-			wxPoint pt = m_exclPageButton->GetScreenPosition();
-			wxSize sz = m_exclPageButton->GetSize();
-			dlg.Move( pt.x - 20, pt.y + sz.y + 10 );
+			menu.Check( ID_EXCL_OPTION+sel, true );
 
-			if ( dlg.ShowModal() != wxID_OK ) return;
-		
-			sel = dlg.GetSelection();
-			if ( sel != vv->Integer() )
-			{
-				vv->Set( sel );
-				m_case->Changed( m_currentGroup->ExclusivePageVar );
-				DetachCurrentInputPage();
-				SetupActivePage();
-			}
+			PopupMenu( &menu );
 		}
 	}
 	else if ( evt.GetId() == ID_COLLAPSE )
@@ -439,8 +397,19 @@ void CaseWindow::OnCommand( wxCommandEvent &evt )
 			}
 
 			m_case->Values().Set( pds->CollapsibleVar, VarValue( en ) );
+			m_case->VariableChanged( pds->CollapsibleVar ); // this will re-layout the page
+		}
+	}
+	else if ( evt.GetId() >= ID_EXCL_OPTION && evt.GetId() < ID_EXCL_OPTION_MAX )
+	{
+		if ( 0 == m_currentGroup ) return;
 
-			LayoutPage();
+		VarValue *vv = m_case->Values().Get( m_currentGroup->ExclusivePageVar );
+		int sel = evt.GetId() - ID_EXCL_OPTION;
+		if ( sel != vv->Integer() )
+		{
+			vv->Set( sel );
+			m_case->VariableChanged( m_currentGroup->ExclusivePageVar ); // this will redo the view
 		}
 	}
 }
@@ -476,11 +445,32 @@ void CaseWindow::OnCaseEvent( Case *c, CaseEvent &evt )
 			VarValue *vv = m_case->Values().Get( list[i] );
 			if ( ipage && obj && vv )
 				ipage->DataExchange( obj, *vv, InputPageBase::VAR_TO_OBJ );
+
+
+			// update views if the variable controls an
+			// exclusive set of input pages or a collapsible pane
+			if( VarInfo *info = SamApp::Variables().Lookup( list[i] ) )
+			{
+				if ( info->Flags & VF_COLLAPSIBLE_PANE )
+				{
+					// determine if this variable is in the current view
+					for( size_t j=0;j<m_currentActivePages.size();j++ )
+						if ( m_currentActivePages[j]->CollapsibleVar == list[i] )
+							LayoutPage();
+				}
+				else if ( info->Flags & VF_EXCLUSIVE_PAGES 
+					&& m_currentGroup != 0
+					&& m_currentGroup->ExclusivePageVar == list[i] )
+				{
+					DetachCurrentInputPage();
+					SetupActivePage();
+				}
+			}
 		}
 
 		// update side bar
 		m_inputPageList->Refresh();
-		
+
 		SamApp::Window()->Project().SetModified( true );
 	}
 	else if ( evt.GetType() == CaseEvent::CONFIG_CHANGED )
@@ -627,7 +617,13 @@ void CaseWindow::LayoutPage()
 	int y = 0;
 	int x = 0;
 
-	wxSize available_size = m_inputPageScrollWin->GetClientSize();
+	wxSize available_size(0,0);
+	for( size_t i=0;i<m_currentActivePages.size();i++ )
+	{
+		wxSize sz = m_currentActivePages[i]->Form->GetSize();
+		if( available_size.x < sz.x ) available_size.x = sz.x;
+		available_size.y += sz.y;
+	}
 
 	// input pages are stacked upon one another
 	for( size_t i=0;i<m_currentActivePages.size();i++ )
@@ -637,7 +633,7 @@ void CaseWindow::LayoutPage()
 		if( pds.CollapseCheck != 0 )
 		{
 			wxSize szbest = pds.CollapseCheck->GetBestSize();
-			pds.CollapseCheck->SetSize( 0, y, available_size.x, szbest.y );
+			pds.CollapseCheck->SetSize( 0, y, available_size.x+10, szbest.y );
 			y += szbest.y;
 			if( x < szbest.x ) x = szbest.x;
 		}

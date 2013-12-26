@@ -123,17 +123,29 @@ void Case::GetConfiguration( wxString *tech, wxString *fin )
 	if ( fin ) *fin = m_financing;
 }
 
-int Case::Changed( const wxString &var )
+void Case::VariableChanged( const wxString &var )
+{
+	// Send the additional case event that this variable
+	// was programmatically changed and needs to be updated
+	CaseEvent ce( CaseEvent::VARS_CHANGED );
+	ce.GetVars().Add( var );
+	SendEvent( ce );
+
+	// issue the request for any calculations to be updated as needed
+	Recalculate( var );
+}
+
+int Case::Recalculate( const wxString &trigger )
 {
 	EqnEvaluator eval( m_vals, m_eqns );
-	int n = eval.Changed( var );	
+	int n = eval.Changed( trigger );	
 	if ( n > 0 ) SendEvent( CaseEvent( CaseEvent::VARS_CHANGED, eval.GetUpdated() ) );
 	else if ( n < 0 ) wxLogStatus( wxJoin( eval.GetErrors(), '\n' )  );
 	return n;
 
 }
 
-int Case::CalculateAll()
+int Case::RecalculateAll()
 {
 	EqnEvaluator eval( m_vals, m_eqns );
 	int n = eval.CalculateAll();
