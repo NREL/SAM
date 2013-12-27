@@ -117,7 +117,8 @@ private:
 class VarInfo
 {
 public:
-	VarInfo() { Type = VV_INVALID; Flags = VF_NONE; }
+	VarInfo();
+	VarInfo( const VarInfo &copy );
 
 	void Write( wxOutputStream & );
 	bool Read( wxInputStream & );
@@ -165,7 +166,8 @@ public:
 		const wxString &label = wxEmptyString, const wxString &units = wxEmptyString,
 		const wxString &group = wxEmptyString, const wxString &indexlabels = wxEmptyString,
 		unsigned long flags = VF_NONE, const VarValue &defval = VarValue::Invalid );
-		
+	void Add( const wxString &name, VarInfo *vi );
+
 	bool Delete( const wxString &name );
 	bool Rename( const wxString &old_name, const wxString &new_name );
 	virtual void clear();	

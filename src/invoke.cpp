@@ -170,7 +170,7 @@ void fcall_enable( lk::invoke_t &cxt )
 	LK_DOC("enable", "Enable or disable a user interface widget", "(string:name, boolean:enable):none");
 
 	CallbackContext *cc = (CallbackContext*)cxt.user_data();
-	if ( wxUIObject *obj = cc->GetInputPage()->Find( cxt.arg(0).as_string() ) )
+	if ( wxUIObject *obj = cc->GetInputPage()->FindActiveObject( cxt.arg(0).as_string(), 0 ) )
 		if ( wxWindow *native = obj->GetNative() )
 			native->Enable( cxt.arg(1).as_boolean() );
 }
@@ -179,7 +179,7 @@ static void fcall_show( lk::invoke_t &cxt )
 	LK_DOC("show", "Show or hide a user interface widget.", "(string:name, boolean:show):none");
 
 	CallbackContext *cc = (CallbackContext*)cxt.user_data();
-	if ( wxUIObject *obj = cc->GetInputPage()->Find( cxt.arg(0).as_string() ) )
+	if ( wxUIObject *obj = cc->GetInputPage()->FindActiveObject( cxt.arg(0).as_string(), 0 ) )
 		obj->Show( cxt.arg(1).as_boolean() );
 }
 

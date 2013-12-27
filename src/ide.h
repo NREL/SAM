@@ -54,7 +54,9 @@ private:
 	bool WriteForm( const wxString &name );
 	bool LoadForm( const wxString &name );
 
-	wxListBox *m_varList;
+	VarDatabase m_varCopyBuffer;
+
+	wxCheckListBox *m_varList;
 	wxExtTextCtrl *m_varName;
 	wxChoice *m_varType;
 	wxExtTextCtrl *m_varLabel, *m_varUnits, *m_varGroup, *m_varIndexLabels, *m_varDefaultValue;
@@ -74,6 +76,7 @@ private:
 	wxListBox *m_formList;
 	wxUIFormDesigner *m_uiFormEditor;
 	wxUIPropertyEditor *m_uiPropEditor;
+	wxUIObjectCopyBuffer m_uiCopyBuffer;
 	
 	DECLARE_EVENT_TABLE();
 };

@@ -132,7 +132,14 @@ enum {
 
 	ID_EQUATION_FIND,
 	ID_EQUATION_SCAN,
-	ID_EQUATION_HELP
+	ID_EQUATION_HELP,
+
+	ID_CHECKVAR_ALL,
+	ID_CHECKVAR_NONE,
+	ID_CHECKVAR_SEL,
+
+	ID_CHECKVAR_STORE,
+	ID_CHECKVAR_LOAD
 
 };
 
@@ -147,6 +154,12 @@ BEGIN_EVENT_TABLE( UIEditorPanel, wxPanel )
 	EVT_BUTTON( ID_VAR_SYNC, UIEditorPanel::OnCommand )
 	EVT_BUTTON( ID_VAR_ADD, UIEditorPanel::OnCommand )
 	EVT_BUTTON( ID_VAR_DELETE, UIEditorPanel::OnCommand )
+
+	EVT_BUTTON( ID_CHECKVAR_ALL, UIEditorPanel::OnCommand )
+	EVT_BUTTON( ID_CHECKVAR_NONE, UIEditorPanel::OnCommand )
+	EVT_BUTTON( ID_CHECKVAR_SEL, UIEditorPanel::OnCommand )
+	EVT_BUTTON( ID_CHECKVAR_STORE, UIEditorPanel::OnCommand )
+	EVT_BUTTON( ID_CHECKVAR_LOAD, UIEditorPanel::OnCommand )
 
 	EVT_LISTBOX( ID_VAR_LIST, UIEditorPanel::OnCommand )
 	EVT_TEXT_ENTER( ID_VAR_NAME, UIEditorPanel::OnCommand )
@@ -178,7 +191,12 @@ UIEditorPanel::UIEditorPanel( wxWindow *parent )
 	sz_form_tools->AddStretchSpacer();	
 	sz_form_tools->Add( new wxButton( this, ID_VAR_SYNC, "Sync vars"), 0, wxALL|wxEXPAND, 2 );
 	sz_form_tools->Add( new wxButton( this, ID_VAR_ADD, "Add var..."), 0, wxALL|wxEXPAND, 2 );
-	sz_form_tools->Add( new wxButton( this, ID_VAR_DELETE, "Delete var"), 0, wxALL|wxEXPAND, 2 );
+	sz_form_tools->Add( new wxButton( this, ID_VAR_DELETE, "Delete var(s)"), 0, wxALL|wxEXPAND, 2 );
+	sz_form_tools->Add( new wxButton( this, ID_CHECKVAR_ALL, "Chk all"), 0, wxALL|wxEXPAND, 2 );
+	sz_form_tools->Add( new wxButton( this, ID_CHECKVAR_NONE, "Chk none"), 0, wxALL|wxEXPAND, 2 );
+	sz_form_tools->Add( new wxButton( this, ID_CHECKVAR_SEL, "Chk sel"), 0, wxALL|wxEXPAND, 2 );
+	sz_form_tools->Add( new wxButton( this, ID_CHECKVAR_STORE, "Chk store"), 0, wxALL|wxEXPAND, 2 );
+	sz_form_tools->Add( new wxButton( this, ID_CHECKVAR_LOAD, "Chk load"), 0, wxALL|wxEXPAND, 2 );
 		
 	m_uiPropEditor = new wxUIPropertyEditor( this, wxID_ANY );
 	m_formList = new wxListBox( this, ID_FORM_LIST, wxDefaultPosition, wxSize(300, 300), 0, 0, wxLB_SINGLE|wxBORDER_NONE );
@@ -190,7 +208,7 @@ UIEditorPanel::UIEditorPanel( wxWindow *parent )
 	sz_form_left->Add( m_uiPropEditor, 1, wxALL|wxEXPAND, 2 );
 
 	
-	m_varList = new wxListBox( this, ID_VAR_LIST, wxDefaultPosition, wxDefaultSize, 0, 0, wxLB_SINGLE|wxBORDER_NONE );
+	m_varList = new wxCheckListBox( this, ID_VAR_LIST, wxDefaultPosition, wxDefaultSize, 0, 0, wxLB_SINGLE|wxBORDER_NONE );
 	m_varName = new wxExtTextCtrl( this, ID_VAR_NAME, wxEmptyString );
 	wxString strtypes[] = { "Invalid", "Number", "Array", "Matrix", "String", "Table" };
 	m_varType = new wxChoice( this, ID_VAR_TYPE, wxDefaultPosition, wxDefaultSize, 6, strtypes );
@@ -241,6 +259,7 @@ UIEditorPanel::UIEditorPanel( wxWindow *parent )
 	wxSplitterWindow *center_split = new wxSplitterWindow( this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxSP_LIVE_UPDATE );
 	m_uiFormEditor = new wxUIFormDesigner( center_split, ID_FORM_EDITOR );
 	m_uiFormEditor->SetBackgroundColour( wxColour(120,120,120) );
+	m_uiFormEditor->SetCopyBuffer( &m_uiCopyBuffer );
 
 	wxPanel *scripts_panel = new wxPanel( center_split );
 
@@ -669,9 +688,25 @@ void UIEditorPanel::OnCommand( wxCommandEvent &evt )
 		}
 		break;
 	case ID_VAR_DELETE:
-		m_varData.Delete( m_varList->GetStringSelection() );
-		m_varList->Delete( m_varList->GetSelection() );
-		VarInfoToForm( NULL );
+		{
+		// delete selected item
+			m_varData.Delete( m_varList->GetStringSelection() );
+			m_varList->Delete( m_varList->GetSelection() );
+
+		// delete any checked items
+			wxArrayString checked;
+			for( size_t i=0;i<m_varList->GetCount();i++ )
+				if ( m_varList->IsChecked( i ) )
+					checked.Add( m_varList->GetString( i ) );
+
+			for( size_t i=0;i<checked.size();i++ )
+			{
+				m_varList->Delete( m_varList->FindString( checked[i] ) );
+				m_varData.Delete( checked[i] );
+			}
+			
+			VarInfoToForm( NULL );
+		}
 		break;
 	case ID_VAR_LIST:
 		FormToVarInfo( m_curVar ); // save the current var
@@ -786,7 +821,47 @@ void UIEditorPanel::OnCommand( wxCommandEvent &evt )
 			wxShowTextMessageDialog( text, "equation scan", this, wxSize(800,700) );
 		}
 		break;
+	case ID_CHECKVAR_ALL:
+	case ID_CHECKVAR_NONE:
+		for( size_t i=0;i<m_varList->GetCount();i++)
+			m_varList->Check( i, evt.GetId() == ID_CHECKVAR_ALL );
+		break;
+	case ID_CHECKVAR_SEL:
+		for( size_t i=0;i<m_varList->GetCount();i++)
+			m_varList->Check( i, m_uiFormEditor->GetEditor()->IsSelected( m_varList->GetString( i ) ) );
+		break;
+	case ID_CHECKVAR_STORE:
+		m_varCopyBuffer.clear();
+		for( size_t i=0;i<m_varList->GetCount();i++ )
+		{
+			if ( !m_varList->IsChecked( i ) ) continue;
+
+			if ( VarInfo *vi = m_varData.Lookup( m_varList->GetString(i) ) )
+				m_varCopyBuffer.Add( m_varList->GetString(i), new VarInfo( *vi ) );
+		}
+		break;
+	case ID_CHECKVAR_LOAD:
+		{
+			wxArrayString err;
+
+			for( VarInfoHash::iterator it = m_varCopyBuffer.begin();
+				it != m_varCopyBuffer.end();
+				++it )
+			{
+				if( m_varData.Lookup( it->first ) == 0 )
+					m_varData.Add( it->first, new VarInfo( *(it->second)  ) );
+				else
+					err.Add( it->first );
+			}
+
+			VarInfoToForm( 0 );
+			LoadVarList( m_varList->GetStringSelection() );
+
+			wxShowTextMessageDialog( "Conflicts?\n" + wxJoin(err, '\n') + "\nLoaded:\n" + wxJoin( m_varCopyBuffer.ListAll(), '\n' ) );
+		}
+		break;
 	}
+
 }
 
 void UIEditorPanel::SyncFormUIToDataBeforeWriting()
