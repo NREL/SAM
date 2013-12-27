@@ -810,6 +810,7 @@ void ConfigDatabase::RebuildCaches()
 						"Current selection for " + igrp->SideBarLabel );
 
 					vv->Flags |= VF_EXCLUSIVE_PAGES;
+					vv->DefaultValue.Set( 0 );
 				}
 
 				ci->Variables.Add( vv );
