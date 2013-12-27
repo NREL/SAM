@@ -259,6 +259,8 @@ InputPageBase::InputPageBase( wxWindow *parent, wxUIFormData *form, int id, cons
 	: wxPanel( parent, id, pos, size, wxTAB_TRAVERSAL|wxCLIP_CHILDREN ),
 	m_formData( form )
 {
+	Show( false ); // by default form is not visible to hide the attach process
+
 	SetBackgroundColour( *wxWHITE );
 	SetBackgroundStyle( wxBG_STYLE_PAINT );
 
