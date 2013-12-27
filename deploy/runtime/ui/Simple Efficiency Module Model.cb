@@ -1,0 +1,31 @@
+on_load{'Simple Efficiency Module Model'} = define() {
+	on_change{'pv.mod.spe.module_structure'} ();
+};
+
+on_change{'pv.mod.spe.module_structure'} = define() {
+
+// 0=glass/cell/polymer sheet - open rack
+// 1=glass/cell/glass - open rack
+// 2=polymer/thin film/steel - open rack
+// 3=Insulated back (building-integrated PV)
+// 4=close roof mount
+// 5=user-defined
+
+	a =  [ -3.56,  -3.47,   -3.58,  -2.81,   -2.98   ];
+	b =  [ -0.075, -0.0594, -0.113, -0.0455, -0.0471 ];
+	dT = [ 3,       3,       3,      0,       1      ];
+
+	ms = value("pv.mod.spe.module_structure");	
+	if ( ms < 5 )
+	{
+		value( 'pv.mod.spe.a', a[ms] );
+		value( 'pv.mod.spe.b', b[ms] );
+		value( 'pv.mod.spe.dT', dT[ms] );
+	}
+	
+	editable = (ms == 5);
+
+	enable( 'pv.mod.spe.a', editable);
+	enable( 'pv.mod.spe.b', editable);
+	enable( 'pv.mod.spe.dT', editable);
+};
