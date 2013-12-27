@@ -72,9 +72,14 @@ public:
 	// initialize by running any existing callbacks for it
 	void Initialize();
 
+	// Find() will look for an object on this specific input page
+	wxUIObject *Find( const wxString &name );
+
+	// FindActiveObject() can be overridden ( eg ActiveInputPage, casewin.cpp )
+	// to locate an object that may reside on a different page
+	virtual wxUIObject *FindActiveObject( const wxString &name, InputPageBase **page );
 	wxString GetName() const { return m_formData->GetName(); }
 
-	wxUIObject *Find( const wxString &name ) { return m_formData->Find( name ); }
 	std::vector<wxUIObject*> GetObjects() { return m_formData->GetObjects(); }
 
 	// must be overridden to support rendering, equation calculation, callbacks, and
@@ -83,6 +88,7 @@ public:
 	virtual EqnFastLookup &GetEquations() = 0;
 	virtual CallbackDatabase &GetCallbacks() = 0;
 	virtual VarTable &GetValues() = 0;
+
 
 	// This one is called when a UI event occurs, 
 	// as when a user changes the value in an input control.

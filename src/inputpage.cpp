@@ -362,6 +362,17 @@ void InputPageBase::Initialize()
 	}
 }
 
+wxUIObject *InputPageBase::Find( const wxString &name )
+{
+	return m_formData->Find( name );
+}
+
+wxUIObject *InputPageBase::FindActiveObject( const wxString &name, InputPageBase **page )
+{
+	if ( page != 0 ) *page = this;
+	return m_formData->Find( name ); 
+}
+
 void InputPageBase::OnErase( wxEraseEvent & )
 {
 	/* nothing to do */
