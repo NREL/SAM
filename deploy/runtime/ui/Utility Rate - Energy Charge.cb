@@ -1,0 +1,3 @@
+on_load{"Utility Rate - Energy Charge"}=define(){
+	on_change{"ur.buy_eq_sell"}();
+};

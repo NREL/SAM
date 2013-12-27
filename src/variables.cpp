@@ -634,6 +634,24 @@ wxString VarValue::AsString()
 	return buf;
 }
 
+VarInfo::VarInfo() 
+{
+	Type = VV_INVALID;
+	Flags = VF_NONE;
+}
+
+VarInfo::VarInfo( const VarInfo &copy )
+{
+	Name = copy.Name;
+	Type = copy.Type;
+	Label = copy.Label;
+	Units = copy.Units;
+	Group = copy.Group;
+	IndexLabels = copy.IndexLabels;
+	Flags = copy.Flags;
+	DefaultValue.Copy( copy.DefaultValue );
+}
+
 void VarInfo::Write( wxOutputStream &os )
 {
 	wxDataOutputStream out(os);
@@ -765,6 +783,18 @@ VarInfo *VarDatabase::Add( const wxString &name, int type,
 	vv->DefaultValue = defval;
 
 	return vv;
+}
+
+void VarDatabase::Add( const wxString &name, VarInfo *vi )
+{
+	VarInfoHash::iterator it = find( name );
+	if ( it != end() )
+	{
+		delete it->second;
+		it->second = vi;
+	}
+	else
+		(*this)[name] = vi;
 }
 
 bool VarDatabase::Delete( const wxString &name )

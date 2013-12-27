@@ -29,7 +29,7 @@ public:
 	ActiveInputPage( wxWindow *parent, wxUIFormData *ipdata, CaseWindow *cw )
 		: m_cwin(cw), m_case(cw->GetCase()), InputPageBase( parent, ipdata, wxID_ANY )
 	{
-		Initialize();
+		// by default, not initialized.  Initialize only when the form is set up in the case view
 	}
 	virtual ~ActiveInputPage() { /* nothing to do */ }
 		
@@ -37,6 +37,11 @@ public:
 	virtual EqnFastLookup &GetEquations() { return m_case->Equations(); }
 	virtual CallbackDatabase &GetCallbacks() { return SamApp::Callbacks(); }
 	virtual VarTable &GetValues() { return m_case->Values(); }
+
+	virtual wxUIObject *FindActiveObject( const wxString &name, InputPageBase **page )
+	{
+		return m_cwin->FindActiveObject( name, page );
+	}
 
 	virtual void OnUserInputChanged( wxUIObject *obj )
 	{
@@ -456,7 +461,10 @@ void CaseWindow::OnCaseEvent( Case *c, CaseEvent &evt )
 							if( vv && vv->Boolean() )
 							{
 								if( pds->ActivePage == 0 ) 
+								{
 									pds->ActivePage = new ActiveInputPage( m_inputPageScrollWin, pds->Form, this );
+									pds->ActivePage->Initialize();
+								}
 							}
 							else
 							{
@@ -592,6 +600,13 @@ void CaseWindow::SetupActivePage()
 		ConfigDatabase::PageInfo &pi = (*active_pages)[ii];
 
 		PageDisplayState *pds = new PageDisplayState;
+
+		// must register the PDS here so that the case knows 
+		// about it when the ActiveInputPages are initialized.
+		// this allows the 'on_load' callbacks to find objects via FindActiveObject
+		m_currentActivePages.push_back( pds ); 
+
+
 		pds->Form = m_forms.Lookup( pi.Name );
 		if ( !pds->Form )
 			wxMessageBox( "error locating form data " + pi.Name );
@@ -615,9 +630,11 @@ void CaseWindow::SetupActivePage()
 		}
 		
 		if( load_page && pds->Form != 0 )
+		{
 			pds->ActivePage = new ActiveInputPage( m_inputPageScrollWin, pds->Form, this );
+			pds->ActivePage->Initialize();
+		}
 
-		m_currentActivePages.push_back( pds );
 	}
 
 	LayoutPage();
@@ -636,9 +653,12 @@ void CaseWindow::LayoutPage()
 	wxSize available_size(0,0);
 	for( size_t i=0;i<m_currentActivePages.size();i++ )
 	{
-		wxSize sz = m_currentActivePages[i]->Form->GetSize();
-		if( available_size.x < sz.x ) available_size.x = sz.x;
-		available_size.y += sz.y;
+		if ( m_currentActivePages[i]->Form != 0 )
+		{
+			wxSize sz = m_currentActivePages[i]->Form->GetSize();
+			if( available_size.x < sz.x ) available_size.x = sz.x;
+			available_size.y += sz.y;
+		}
 	}
 
 	// input pages are stacked upon one another

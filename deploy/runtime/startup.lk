@@ -30,6 +30,14 @@ function setup_flat_plate_pv_pages()
 	addpage( [ ['PV Losses'] ], { 'sidebar'='Losses' } );
 }
 
+function setup_utility_rate()
+{
+	addpage( [[ 'Utility Rate - Flat',
+			{ 'name'='Utility Rate - Energy Charge', 'caption'='Energy Charges', 'collapsible'=true, 'collapsible_var'='ur.ec.is_shown' },
+			{ 'name'='Utility Rate - Demand Charge', 'caption'='Demand Charges', 'collapsible'=true, 'collapsible_var'='ur.dc.is_shown' } ]],
+		{ 'sidebar'='Utility Rate', 'help'='Utility Rate' } );
+}
+
 function setup_residential_pages()
 {
 	addpage( [[ 'Annual Performance' ]] );
@@ -42,17 +50,9 @@ function setup_residential_pages()
 				{'name'='Tax Credits', 'collapsible'=true, 'collapsible_var'='res.fin.show_tax_credits', 'collapsed_by_default'=false},
 				{'name'='Incentives', 'collapsible'=true, 'collapsible_var'='res.fin.show_incentives'} ]], { 'sidebar'='Financing', 'help'='Financing Residential' } );
 	
-	addpage( [[ 'Utility Rate' ]] );
+	setup_utility_rate();
+	
 	addpage( [[ 'Electric Load' ]] );
-	/*
-	addpage( [ [ 'CEC Module Main', 
-			{ 'name'='CEC Module Advanced', 
-				'caption'='Advanced Module Parameters', 
-				'collapsible'=true, 
-				'collapsible_var'='pv.cec.mod.is_advanced_shown',
-				'collapsed_by_default'=true } ],
-			{'help'='? CEC Module', 'label'='CEC Module', 'exclusive'=true, 'exclusive_var'='pv.inv.model_type' } );
-			*/
 }
 
 
