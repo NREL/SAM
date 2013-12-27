@@ -900,11 +900,11 @@ bool SamApp::OnInit()
 		return false;
 	}
 
-//#ifdef _DEBUG
+#ifdef _DEBUG
 	g_logWindow = new SamLogWindow;
 	wxLog::SetActiveTarget( g_logWindow );
 	g_logWindow->Show();
-//#endif
+#endif
 
 	// register all the object types that can
 	// be read or written to streams.

@@ -397,6 +397,7 @@ public:
 		: InputPageBase( parent, ipdata, id ), m_efl( &m_eqns )
 	{
 		SetBackgroundColour( wxColour(255,215,215) );
+		Show( true );
 	}
 	virtual ~InputPageTestPanel() { /* nothing to do */ }
 

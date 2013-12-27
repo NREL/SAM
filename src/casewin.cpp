@@ -28,7 +28,7 @@ class ActiveInputPage : public InputPageBase
 public:
 	ActiveInputPage( wxWindow *parent, wxUIFormData *ipdata, CaseWindow *cw )
 		: m_cwin(cw), m_case(cw->GetCase()), InputPageBase( parent, ipdata, wxID_ANY )
-	{		
+	{
 		Initialize();
 	}
 	virtual ~ActiveInputPage() { /* nothing to do */ }
@@ -381,23 +381,15 @@ void CaseWindow::OnCommand( wxCommandEvent &evt )
 			if ( m_currentActivePages[i]->CollapseCheck == evt.GetEventObject() )
 				pds = m_currentActivePages[i];
 
-		if( pds != 0 )
+		if ( pds != 0 )
 		{
-			bool en = pds->CollapseCheck->GetValue();
-
-			if( en )
-			{
-				if( pds->ActivePage == 0 ) 
-					pds->ActivePage = new ActiveInputPage( m_inputPageScrollWin, pds->Form, this );
-			}
-			else
-			{
-				if( pds->ActivePage != 0 ) pds->ActivePage->Destroy();
-				pds->ActivePage = 0;
-			}
-
-			m_case->Values().Set( pds->CollapsibleVar, VarValue( en ) );
+			wxBusyCursor wait;
+			m_inputPageScrollWin->Freeze();
+			
+			m_case->Values().Set( pds->CollapsibleVar, VarValue( pds->CollapseCheck->GetValue() ) );
 			m_case->VariableChanged( pds->CollapsibleVar ); // this will re-layout the page
+			
+			m_inputPageScrollWin->Thaw();
 		}
 	}
 	else if ( evt.GetId() >= ID_EXCL_OPTION && evt.GetId() < ID_EXCL_OPTION_MAX )
@@ -408,6 +400,7 @@ void CaseWindow::OnCommand( wxCommandEvent &evt )
 		int sel = evt.GetId() - ID_EXCL_OPTION;
 		if ( sel != vv->Integer() )
 		{
+			wxBusyCursor wait;			
 			vv->Set( sel );
 			m_case->VariableChanged( m_currentGroup->ExclusivePageVar ); // this will redo the view
 		}
@@ -455,8 +448,28 @@ void CaseWindow::OnCaseEvent( Case *c, CaseEvent &evt )
 				{
 					// determine if this variable is in the current view
 					for( size_t j=0;j<m_currentActivePages.size();j++ )
-						if ( m_currentActivePages[j]->CollapsibleVar == list[i] )
+					{
+						PageDisplayState *pds = m_currentActivePages[j];
+						if ( pds->CollapsibleVar == list[i] )
+						{
+							VarValue *vv = m_case->Values().Get( pds->CollapsibleVar );
+							if( vv && vv->Boolean() )
+							{
+								if( pds->ActivePage == 0 ) 
+									pds->ActivePage = new ActiveInputPage( m_inputPageScrollWin, pds->Form, this );
+							}
+							else
+							{
+								if( pds->ActivePage != 0 )
+									pds->ActivePage->Destroy();
+
+								pds->ActivePage = 0;
+							}
+
 							LayoutPage();
+							break;
+						}
+					}
 				}
 				else if ( info->Flags & VF_EXCLUSIVE_PAGES 
 					&& m_currentGroup != 0
@@ -507,7 +520,8 @@ void CaseWindow::DetachCurrentInputPage()
 
 bool CaseWindow::SwitchToInputPage( const wxString &name )
 {
-	m_inputPagePanel->Show( false );
+	wxBusyCursor wait;
+	m_inputPagePanel->Freeze();
 
 	DetachCurrentInputPage();
 
@@ -526,7 +540,7 @@ bool CaseWindow::SwitchToInputPage( const wxString &name )
 	SetupActivePage();
 	UpdatePageNote();
 
-	m_inputPagePanel->Show( true );
+	m_inputPagePanel->Thaw();
 
 	return true;
 }
@@ -607,6 +621,8 @@ void CaseWindow::SetupActivePage()
 	}
 
 	LayoutPage();
+
+	m_inputPagePanel->Layout();
 }
 
 void CaseWindow::LayoutPage()
@@ -633,24 +649,36 @@ void CaseWindow::LayoutPage()
 		if( pds.CollapseCheck != 0 )
 		{
 			wxSize szbest = pds.CollapseCheck->GetBestSize();
-			pds.CollapseCheck->SetSize( 0, y, available_size.x+10, szbest.y );
+
+			wxPoint curpos = pds.CollapseCheck->GetPosition();
+			wxSize cursz = pds.CollapseCheck->GetClientSize();
+
+			if( curpos.x != 0 || curpos.y != y )
+				pds.CollapseCheck->SetPosition( wxPoint(0, y) );
+
+			if( cursz.x != available_size.x+10 || cursz.y != szbest.y )
+				pds.CollapseCheck->SetClientSize( available_size.x+10, szbest.y );
+
 			y += szbest.y;
 			if( x < szbest.x ) x = szbest.x;
 		}
 
 		if( pds.ActivePage != 0 )
 		{
-			pds.ActivePage->SetPosition( wxPoint(0, y) );
+			wxPoint curpos = pds.ActivePage->GetPosition();
+			if( curpos.x != 0 || curpos.y != y )
+				pds.ActivePage->SetPosition( wxPoint(0, y) );
+
+			pds.ActivePage->Show( true );
+
 			wxSize sz = pds.ActivePage->GetClientSize();
 			y += sz.y;
 			if ( sz.x > x ) x = sz.x;
 		}
 	}
 	
-	m_inputPagePanel->Layout();
-	m_inputPageScrollWin->SetScrollbars(1,1, x, y, 0, 0);
+	m_inputPageScrollWin->SetScrollbars(1,1, x, y, vsx, vsy);
 	m_inputPageScrollWin->SetScrollRate(15,15);
-	m_inputPageScrollWin->Scroll( vsx, vsy );
 }
 
 void CaseWindow::UpdateConfiguration()
