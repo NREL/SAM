@@ -20,61 +20,6 @@
 
 #include "../resource/graph.cpng"
 
-class ActiveInputPage : public InputPageBase
-{
-	CaseWindow *m_cwin;
-	Case *m_case;
-
-public:
-	ActiveInputPage( wxWindow *parent, wxUIFormData *ipdata, CaseWindow *cw )
-		: m_cwin(cw), m_case(cw->GetCase()), InputPageBase( parent, ipdata, wxID_ANY )
-	{
-		// by default, not initialized.  Initialize only when the form is set up in the case view
-	}
-	virtual ~ActiveInputPage() { /* nothing to do */ }
-		
-	virtual VarInfoLookup &GetVariables()	{ return m_case->Variables(); }
-	virtual EqnFastLookup &GetEquations() { return m_case->Equations(); }
-	virtual CallbackDatabase &GetCallbacks() { return SamApp::Callbacks(); }
-	virtual VarTable &GetValues() { return m_case->Values(); }
-	virtual Case *GetCase() { return m_case; }
-	virtual CaseWindow *GetCaseWindow() { return m_cwin; }
-
-	virtual wxUIObject *FindActiveObject( const wxString &name, InputPageBase **page )
-	{
-		return m_cwin->FindActiveObject( name, page );
-	}
-
-	virtual void OnUserInputChanged( wxUIObject *obj )
-	{
-		// transfer the data from the UI object to the variable (DDX) 
-		// then notify the case that the variable was changed
-		// within the case, the calculations will be redone as needed
-		// and then the casewindow will be notified by event that
-		// other UI objects (calculated ones) need to be updated
-		if( VarValue *vval = GetValues().Get( obj->GetName() ) )
-		{
-			if ( DataExchange( obj, *vval, OBJ_TO_VAR ) )
-			{
-				wxLogStatus( "Variable " + obj->GetName() + " changed by user interaction, case notified." );
-				m_case->Recalculate( obj->GetName() );
-			}
-			else
-				wxMessageBox("ActiveInputPage >> data exchange fail: " + obj->GetName() );
-		}
-	}
-
-	virtual void OnVariableChanged( const wxString &varname )
-	{
-		wxLogStatus( "Variable " + varname + " changed programmatically, case notified." );		
-		m_case->VariableChanged( varname );
-			
-	}
-};
-
-
-
-
 class CollapsePaneCtrl : public wxPanel
 {
 	bool m_state;
@@ -414,7 +359,7 @@ void CaseWindow::OnCommand( wxCommandEvent &evt )
 	}
 }
 
-wxUIObject *CaseWindow::FindActiveObject( const wxString &name, InputPageBase **ipage )
+wxUIObject *CaseWindow::FindActiveObject( const wxString &name, ActiveInputPage **ipage )
 {
 	for( size_t i=0;i<m_currentActivePages.size();i++ )
 	{
@@ -440,11 +385,11 @@ void CaseWindow::OnCaseEvent( Case *c, CaseEvent &evt )
 		wxArrayString &list = evt.GetVars();
 		for( size_t i=0;i<list.size();i++ )
 		{
-			InputPageBase *ipage = 0;
+			ActiveInputPage *ipage = 0;
 			wxUIObject *obj = FindActiveObject( list[i], &ipage );
 			VarValue *vv = m_case->Values().Get( list[i] );
 			if ( ipage && obj && vv )
-				ipage->DataExchange( obj, *vv, InputPageBase::VAR_TO_OBJ );
+				ipage->DataExchange( obj, *vv, ActiveInputPage::VAR_TO_OBJ );
 
 
 			// update views if the variable controls an
