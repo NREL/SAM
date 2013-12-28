@@ -395,9 +395,9 @@ int EqnEvaluator::Calculate( )
 				bool eval_ok = true;
 				
 				lk::env_t env;
-				env.register_funcs( lk::stdlib_basic() );
-				env.register_funcs( lk::stdlib_math() );
-				env.register_funcs( lk::stdlib_string() );
+
+				// setup any functions here
+				SetupEnvironment( env );
 
 				VarTableScriptInterpreter e( cur_eqn->tree, &env, &m_vars );
 			
@@ -505,3 +505,9 @@ int EqnEvaluator::Changed( const wxString &var )
 	return Calculate( );
 }
 
+void EqnEvaluator::SetupEnvironment( lk::env_t &env )
+{
+	env.register_funcs( lk::stdlib_basic() );
+	env.register_funcs( lk::stdlib_math() );
+	env.register_funcs( lk::stdlib_string() );
+}

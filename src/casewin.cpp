@@ -37,6 +37,8 @@ public:
 	virtual EqnFastLookup &GetEquations() { return m_case->Equations(); }
 	virtual CallbackDatabase &GetCallbacks() { return SamApp::Callbacks(); }
 	virtual VarTable &GetValues() { return m_case->Values(); }
+	virtual Case *GetCase() { return m_case; }
+	virtual CaseWindow *GetCaseWindow() { return m_cwin; }
 
 	virtual wxUIObject *FindActiveObject( const wxString &name, InputPageBase **page )
 	{
