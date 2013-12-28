@@ -87,8 +87,40 @@ private:
 	DECLARE_EVENT_TABLE();
 };
 
+class CallbackDatabase
+{
+public:
+	CallbackDatabase();
+	virtual ~CallbackDatabase();
 
+	bool LoadFile( const wxString &file );
+	void ClearAll();
 
+	lk::node_t *Lookup( const wxString &method_name, const wxString &obj_name );
+	lk::env_t *GetEnv() { return &m_cbenv; }
+	
+protected:
+	struct cb_data{ lk::node_t *tree; wxString source; };
+	std::vector<cb_data*> m_cblist;
+	lk::env_t m_cbenv;
+};
+
+typedef unordered_map<wxString, wxUIFormData*, wxStringHash, wxStringEqual> FormDataHash;
+
+class FormDatabase
+{
+public:
+	FormDatabase();
+	~FormDatabase();
+
+	void Add( const wxString &name, wxUIFormData *data );
+	wxUIFormData *Lookup( const wxString &name );
+	void Clear();
+
+	bool LoadFile( const wxString &file );
+private:
+	FormDataHash m_hash;
+};
 
 class ConfigDatabase
 {

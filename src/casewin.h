@@ -29,7 +29,7 @@ public:
 	void UpdateConfiguration();
 
 	bool SwitchToInputPage( const wxString &name );
-	wxUIObject *FindActiveObject( const wxString &name, InputPageBase **page = 0 );
+	wxUIObject *FindActiveObject( const wxString &name, ActiveInputPage **page = 0 );
 
 	wxString GetCurrentContext();
 	void UpdatePageNote();
@@ -57,7 +57,7 @@ private:
 		}
 
 		wxUIFormData *Form;
-		InputPageBase *ActivePage;
+		ActiveInputPage *ActivePage;
 		bool Collapsible;
 		wxString CollapsibleVar;
 		CollapsePaneCtrl *CollapseCheck;

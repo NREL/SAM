@@ -117,10 +117,10 @@ static void fcall_addpage( lk::invoke_t &cxt )
 }
 
 
-static void plottarget( CallbackContext *cc, const wxString &name )
+static void plottarget( CallbackContext &cc, const wxString &name )
 {
 	wxLKSetPlotTarget( 0 );
-	if ( wxUIObject *obj = cc->GetInputPage()->Find(name) )
+	if ( wxUIObject *obj = cc.InputPage()->Find(name) )
 		if ( wxPLPlotCtrl *plot = obj->GetNative<wxPLPlotCtrl>() )
 			wxLKSetPlotTarget( plot );
 }
@@ -129,7 +129,7 @@ void fcall_setplot( lk::invoke_t &cxt )
 {
 	LK_DOC("setplot", "Sets the current plot target by name", "(string:name):boolean");
 	
-	plottarget( (CallbackContext*)cxt.user_data(), cxt.arg(0).as_string() );
+	plottarget( *(CallbackContext*)cxt.user_data(), cxt.arg(0).as_string() );
 }
 
 void fcall_clearplot( lk::invoke_t &cxt )
@@ -137,7 +137,7 @@ void fcall_clearplot( lk::invoke_t &cxt )
 	LK_DOC("clearplot", "Clears the current plot, and optionally switches the plot target.", "([string:plot name]):none");
 	
 	if (cxt.arg_count() > 0)
-		plottarget( (CallbackContext*)cxt.user_data(), cxt.arg(0).as_string() );
+		plottarget( *(CallbackContext*)cxt.user_data(), cxt.arg(0).as_string() );
 
 	if ( wxPLPlotCtrl *plot = wxLKGetPlotTarget() )
 	{
@@ -150,14 +150,14 @@ void fcall_value( lk::invoke_t &cxt )
 {
 	LK_DOC("value", "Gets or sets the value of a variable by name", "(string:name [,variant:value]):[variant]");
 	
-	CallbackContext *cc = (CallbackContext*)cxt.user_data();
+	CallbackContext &cc = *(CallbackContext*)cxt.user_data();
 	wxString name = cxt.arg(0).as_string();
-	if ( VarValue *vv = cc->GetVarTable()->Get( name ) )
+	if ( VarValue *vv = cc.Values().Get( name ) )
 	{
 		if ( cxt.arg_count() == 2 )
 		{
 			vv->Read( cxt.arg(1) );
-			cc->GetInputPage()->OnVariableChanged( name );		
+			cc.Case().VariableChanged( name );		
 		}
 		else
 		{
@@ -170,8 +170,8 @@ void fcall_enable( lk::invoke_t &cxt )
 {
 	LK_DOC("enable", "Enable or disable a user interface widget", "(string:name, boolean:enable):none");
 
-	CallbackContext *cc = (CallbackContext*)cxt.user_data();
-	if ( wxUIObject *obj = cc->GetInputPage()->FindActiveObject( cxt.arg(0).as_string(), 0 ) )
+	CallbackContext &cc = *(CallbackContext*)cxt.user_data();
+	if ( wxUIObject *obj = cc.InputPage()->FindActiveObject( cxt.arg(0).as_string(), 0 ) )
 		if ( wxWindow *native = obj->GetNative() )
 			native->Enable( cxt.arg(1).as_boolean() );
 }
@@ -179,25 +179,23 @@ static void fcall_show( lk::invoke_t &cxt )
 {
 	LK_DOC("show", "Show or hide a user interface widget.", "(string:name, boolean:show):none");
 
-	CallbackContext *cc = (CallbackContext*)cxt.user_data();
-	if ( wxUIObject *obj = cc->GetInputPage()->FindActiveObject( cxt.arg(0).as_string(), 0 ) )
+	CallbackContext &cc = *(CallbackContext*)cxt.user_data();
+	if ( wxUIObject *obj = cc.InputPage()->FindActiveObject( cxt.arg(0).as_string(), 0 ) )
 		obj->Show( cxt.arg(1).as_boolean() );
 }
 
 static void fcall_technology( lk::invoke_t &cxt )
 {
 	LK_DOC( "technology", "Return the current technology option name", "(void):string" );
-	if ( CallbackContext *cc = static_cast<CallbackContext*>( cxt.user_data() ) ) 
-		if ( Case *c = cc->GetInputPage()->GetCase() )
-			cxt.result().assign( c->GetTechnology() );
+	CallbackContext &cc = *static_cast<CallbackContext*>( cxt.user_data() ); 
+	cxt.result().assign( cc.Case().GetTechnology() );
 }
 
 static void fcall_financing( lk::invoke_t &cxt )
 {
 	LK_DOC( "financing", "Return the current financing option name", "(void):string" );
-	if ( CallbackContext *cc = static_cast<CallbackContext*>( cxt.user_data() ) )
-		if ( Case *c = cc->GetInputPage()->GetCase() )
-			cxt.result().assign( c->GetFinancing() );
+	CallbackContext &cc = *static_cast<CallbackContext*>( cxt.user_data() ); 
+	cxt.result().assign( cc.Case().GetFinancing() );
 }
 
 lk::fcall_t* invoke_general_funcs()

@@ -103,7 +103,6 @@ enum {
 	ID_FORM_ADD,
 	ID_FORM_SAVE,
 	ID_FORM_DELETE,
-	ID_FORM_TEST,
 
 	ID_VAR_SYNC,
 	ID_VAR_ADD,
@@ -149,7 +148,6 @@ BEGIN_EVENT_TABLE( UIEditorPanel, wxPanel )
 	EVT_BUTTON( ID_FORM_ADD, UIEditorPanel::OnCommand )
 	EVT_BUTTON( ID_FORM_SAVE, UIEditorPanel::OnCommand )
 	EVT_BUTTON( ID_FORM_DELETE, UIEditorPanel::OnCommand )
-	EVT_BUTTON( ID_FORM_TEST, UIEditorPanel::OnFormTest )
 	
 	EVT_BUTTON( ID_VAR_SYNC, UIEditorPanel::OnCommand )
 	EVT_BUTTON( ID_VAR_ADD, UIEditorPanel::OnCommand )
@@ -207,7 +205,6 @@ UIEditorPanel::UIEditorPanel( wxWindow *parent )
 	sz_form_tools->Add( new wxButton( this, ID_FORM_ADD, "Add..."), 0, wxALL|wxEXPAND, 2 );
 	sz_form_tools->Add( new wxButton( this, ID_FORM_SAVE, "Save"), 0, wxALL|wxEXPAND, 2 );
 	sz_form_tools->Add( new wxButton( this, ID_FORM_DELETE, "Delete"), 0, wxALL|wxEXPAND, 2 );
-	sz_form_tools->Add( new wxButton( this, ID_FORM_TEST, "Test"), 0, wxALL|wxEXPAND, 2 );
 	sz_form_tools->AddStretchSpacer();	
 	sz_form_tools->Add( new wxButton( this, ID_VAR_SYNC, "Sync"), 0, wxALL|wxEXPAND, 2 );
 	sz_form_tools->Add( new wxButton( this, ID_VAR_ADD, "Add"), 0, wxALL|wxEXPAND, 2 );
@@ -419,136 +416,6 @@ bool ExFormData::GetMetaData( const wxString &name,
 	}
 	
 	return false;
-}
-
-
-
-class InputPageTestPanel : public InputPageBase
-{
-	
-	VarDatabase m_vars;
-	EqnDatabase m_eqns;
-	EqnFastLookup m_efl;
-	CallbackDatabase m_call;
-	VarTable m_vals;
-
-public:
-	InputPageTestPanel( wxWindow *parent, wxUIFormData *ipdata, int id )
-		: InputPageBase( parent, ipdata, id ), m_efl( &m_eqns )
-	{
-		SetBackgroundColour( wxColour(255,215,215) );
-		Show( true );
-	}
-	virtual ~InputPageTestPanel() { /* nothing to do */ }
-
-	bool Setup( const wxString &name )
-	{
-		bool ok = true;
-		
-		m_formData->Detach();
-		wxFFileInputStream is( SamApp::GetRuntimePath() + "/ui/" + name + ".ui" );
-		if ( !is.IsOk() || !m_formData->Read( is ) )
-			ok = false;
-
-		if ( ok )
-		{
-			m_formData->SetName( name );
-			m_formData->Attach( this );
-			SetClientSize( m_formData->GetSize() ); // resize self to specified form data
-		}
-
-		ok = ok && m_vars.LoadFile( SamApp::GetRuntimePath() + "/ui/" + name + ".var" );
-		ok = ok && m_eqns.LoadFile( SamApp::GetRuntimePath() + "/ui/" + name + ".eqn" );
-		ok = ok && m_call.LoadFile( SamApp::GetRuntimePath() + "/ui/" + name + ".cb" );
-
-		std::vector<EqnData*> ed = m_eqns.GetEquations();
-		m_efl.Add( ed );
-
-		// setup variable value table
-		m_vals.clear();
-		for( VarInfoLookup::iterator it = m_vars.begin(); it != m_vars.end(); ++it )
-			m_vals.Set( it->first, it->second->DefaultValue ); // will create new variable if it doesnt exist
-		
-		EqnEvaluator eval( m_vals, m_efl );
-		wxLogStatus( "calculated %d form variables", eval.CalculateAll() );
-
-		wxLogStatus("initalizing form UI and setting up values");
-		Initialize();		
-		
-		return ok;
-	}
-	
-	virtual VarInfoLookup &GetVariables()	{ return m_vars; }
-	virtual EqnFastLookup &GetEquations() { return m_efl; }
-	virtual CallbackDatabase &GetCallbacks() { return m_call; }
-	virtual VarTable &GetValues() { return m_vals; }
-
-	virtual void OnUserInputChanged( wxUIObject *obj )
-	{
-		wxLogStatus("Test Form >> input changed: " + obj->GetName() );
-		if( VarValue *vval = m_vals.Get( obj->GetName() ) )
-		{
-			// store the value
-			if ( DataExchange( obj, *vval, OBJ_TO_VAR ) )
-			{
-				wxLogStatus("Test Form >> data exchange success: " + obj->GetName() );
-				ValueChanged( obj->GetName() );
-			}
-		}
-	}
-
-
-	virtual void OnVariableChanged( const wxString &name )
-	{
-		UpdateUI( name );
-		ValueChanged( name );
-	}
-
-	void ValueChanged( const wxString &name )
-	{
-		EqnEvaluator eval( m_vals, m_efl );
-		int n = eval.Changed( name );
-		if ( n > 0 )
-		{
-			wxLogStatus("Test Form >> %d values updated by dependent equations ", (int)n );
-			wxArrayString list = eval.GetUpdated();
-			for( size_t i=0;i<list.size();i++ )
-				UpdateUI( list[i] );
-		}
-		else if ( n < 0 )
-		{
-			wxLogStatus("Test Form >> equation evaluation error with code %d", n );
-			wxArrayString errors = eval.GetErrors();
-			for( size_t i=0;i<errors.size();i++ )
-				wxLogStatus( "Test Form >> " + errors[i] );
-		}
-		else
-		{
-			wxLogStatus("Test Form >> no dependent equations detected for input " + name );
-		}
-	}
-	
-	void UpdateUI( const wxString & name )
-	{		
-		wxUIObject *obj = Find( name );
-		VarValue *upd = m_vals.Get( name );
-		if ( upd && obj && DataExchange( obj, *upd, VAR_TO_OBJ ) )
-			wxLogStatus("Test Form >> data exchange success to update ui for " + name);
-		else
-			wxLogStatus("Test Form >> failure to update changed variable " + name );
-	}
-};
-
-void UIEditorPanel::OnFormTest( wxCommandEvent & )
-{
-	wxFrame *frame = new wxFrame( this, wxID_ANY, "Test: " + m_formName, wxDefaultPosition, wxSize( 500, 400 ) );
-	InputPageTestPanel *ip = new InputPageTestPanel( frame, NULL, wxID_ANY );
-
-	if (!ip->Setup( m_formName ))
-		wxMessageBox("test form load not successful", "notice", wxOK, this );
-
-	frame->SetClientSize( ip->GetClientSize() );
-	frame->Show();
 }
 
 void UIEditorPanel::OnCommand( wxCommandEvent &evt )

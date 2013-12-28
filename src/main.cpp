@@ -6,6 +6,7 @@
 #include <wx/panel.h>
 #include <wx/busyinfo.h>
 #include <wx/dir.h>
+#include <wx/wfstream.h>
 
 #include <wex/metro.h>
 #include <wex/icons/cirplus.cpng>
@@ -675,6 +676,163 @@ BEGIN_EVENT_TABLE( SplashScreen, wxDialog )
 	EVT_PAINT( SplashScreen::OnPaint )
 	EVT_SIZE( SplashScreen::OnSize )
 END_EVENT_TABLE()
+
+CallbackDatabase::CallbackDatabase()
+{
+}
+
+CallbackDatabase::~CallbackDatabase()
+{
+	ClearAll();
+}
+
+bool CallbackDatabase::LoadFile( const wxString &file )
+{
+	wxFile fp( file );
+	if ( fp.IsOpened() )
+	{
+		//wxLogStatus("uicb: processing callback script file: " + file);
+		wxString buf;
+		fp.ReadAll( &buf );
+		lk::input_string data( buf );
+		lk::parser parse( data );
+		lk::node_t *tree = parse.script();
+
+		if ( parse.error_count() != 0
+			|| parse.token() != lk::lexer::END)
+		{
+			wxLogStatus("fail: callback script load: parsing did not reach end of input: " + file);				
+			for (int x=0; x < parse.error_count(); x++)
+				wxLogStatus( parse.error(x));
+		}
+		else if ( tree != 0 )
+		{							
+			cb_data *cbf = new cb_data;
+			cbf->source = file;
+			cbf->tree = tree;
+			m_cblist.push_back(cbf);
+
+			lk::eval e( tree, &m_cbenv );
+
+			if ( !e.run() )
+			{
+				wxLogStatus("uicb script eval fail: " + file );
+				for (size_t i=0;i<e.error_count();i++)
+					wxLogStatus( e.get_error(i) );
+
+				return false;
+			}
+		}
+	}
+
+	return true;
+}
+
+void CallbackDatabase::ClearAll()
+{
+	for( size_t i=0;i<m_cblist.size();i++) 
+	{
+		delete m_cblist[i]->tree;
+		delete m_cblist[i];
+	}
+	
+	m_cblist.clear();
+	m_cbenv.clear_objs();
+	m_cbenv.clear_vars();
+}
+
+lk::node_t *CallbackDatabase::Lookup( const wxString &method_name, const wxString &obj_name )
+{	
+	lk::vardata_t *cbvar = m_cbenv.lookup( method_name, true);
+
+	if (!cbvar || cbvar->type() != lk::vardata_t::HASH )
+	{
+		//wxLogStatus("CallbackDatabase::Invoke: could not find " + method_name + " variable or not a hash");
+		return 0;
+	}
+
+	lk::vardata_t *cbref = cbvar->lookup( obj_name );
+	if ( cbref == 0 
+		|| cbref->type() != lk::vardata_t::FUNCTION
+		|| cbref->deref().func() == 0 )
+	{
+		// wxLogStatus("CallbackDatabase::Invoke: could not find function entry for '%s'", (const char*)obj_name.c_str() );
+		return 0;
+	}
+	
+	lk::expr_t *p_define = cbref->deref().func();
+	if ( p_define->oper != lk::expr_t::DEFINE )
+	{
+		wxLogStatus("CallbackDatabase::Invoke: improper function structure, must be a 'define' for %s, instead: %s", (const char*)obj_name.c_str(), cbref->func()->operstr() );
+		return 0;
+	}
+	
+	if ( p_define->right == 0 )
+	{
+		wxLogStatus("CallbackDatabase::Invoke: function block nonexistent for '%s'\n", (const char*)obj_name.c_str());
+		return 0;
+	}
+
+	return p_define->right;
+}
+
+FormDatabase::FormDatabase()
+{
+}
+
+FormDatabase::~FormDatabase()
+{
+	Clear();
+}
+
+void FormDatabase::Clear()
+{
+	for ( FormDataHash::iterator it = m_hash.begin();
+		it != m_hash.end();
+		++it )
+		delete (*it).second;
+
+	m_hash.clear();
+}
+
+bool FormDatabase::LoadFile( const wxString &file )
+{
+	wxFileName ff(file);
+	wxString name( ff.GetName() );
+	
+	wxUIFormData *pd = new wxUIFormData;
+	
+	bool ok = true;
+	wxFFileInputStream is( file );
+	if ( !is.IsOk() || !pd->Read( is ) )
+		ok = false;
+	
+	pd->SetName( name );
+
+	if ( ok ) Add( name, pd );
+	else delete pd;
+
+	return ok;
+}
+
+void FormDatabase::Add( const wxString &name, wxUIFormData *ui )
+{
+	FormDataHash::iterator it = m_hash.find( name );
+	if ( it != m_hash.end() )
+	{
+		delete it->second;
+		it->second = ui;
+	}
+	else
+		m_hash[ name ] = ui;
+}
+
+wxUIFormData *FormDatabase::Lookup( const wxString &name )
+{
+	FormDataHash::iterator it = m_hash.find( name );
+	return ( it != m_hash.end() ) ? it->second : NULL;
+}
+
 
 
 ConfigDatabase::ConfigInfo::ConfigInfo()
