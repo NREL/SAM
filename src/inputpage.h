@@ -9,6 +9,8 @@
 #include "variables.h"
 #include "equations.h"
 
+class Case;
+class CaseWindow;
 
 class CallbackDatabase
 {
@@ -88,6 +90,9 @@ public:
 	virtual EqnFastLookup &GetEquations() = 0;
 	virtual CallbackDatabase &GetCallbacks() = 0;
 	virtual VarTable &GetValues() = 0;
+
+	virtual Case *GetCase();
+	virtual CaseWindow *GetCaseWindow();
 
 
 	// This one is called when a UI event occurs, 

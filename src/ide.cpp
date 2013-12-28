@@ -134,12 +134,12 @@ enum {
 	ID_EQUATION_SCAN,
 	ID_EQUATION_HELP,
 
-	ID_CHECKVAR_ALL,
-	ID_CHECKVAR_NONE,
-	ID_CHECKVAR_SEL,
+	ID_VAR_CHECK_ALL,
+	ID_VAR_CHECK_NONE,
+	ID_VAR_CHECK_SEL,
 
-	ID_CHECKVAR_STORE,
-	ID_CHECKVAR_LOAD
+	ID_VAR_STORE,
+	ID_VAR_LOAD
 
 };
 
@@ -155,11 +155,11 @@ BEGIN_EVENT_TABLE( UIEditorPanel, wxPanel )
 	EVT_BUTTON( ID_VAR_ADD, UIEditorPanel::OnCommand )
 	EVT_BUTTON( ID_VAR_DELETE, UIEditorPanel::OnCommand )
 
-	EVT_BUTTON( ID_CHECKVAR_ALL, UIEditorPanel::OnCommand )
-	EVT_BUTTON( ID_CHECKVAR_NONE, UIEditorPanel::OnCommand )
-	EVT_BUTTON( ID_CHECKVAR_SEL, UIEditorPanel::OnCommand )
-	EVT_BUTTON( ID_CHECKVAR_STORE, UIEditorPanel::OnCommand )
-	EVT_BUTTON( ID_CHECKVAR_LOAD, UIEditorPanel::OnCommand )
+	EVT_BUTTON( ID_VAR_CHECK_ALL, UIEditorPanel::OnCommand )
+	EVT_BUTTON( ID_VAR_CHECK_NONE, UIEditorPanel::OnCommand )
+	EVT_BUTTON( ID_VAR_CHECK_SEL, UIEditorPanel::OnCommand )
+	EVT_BUTTON( ID_VAR_STORE, UIEditorPanel::OnCommand )
+	EVT_BUTTON( ID_VAR_LOAD, UIEditorPanel::OnCommand )
 
 	EVT_LISTBOX( ID_VAR_LIST, UIEditorPanel::OnCommand )
 	EVT_TEXT_ENTER( ID_VAR_NAME, UIEditorPanel::OnCommand )
@@ -179,6 +179,26 @@ BEGIN_EVENT_TABLE( UIEditorPanel, wxPanel )
 	EVT_UIFORM_SELECT( ID_FORM_EDITOR, UIEditorPanel::OnFormSelectObject )
 END_EVENT_TABLE()
 
+static void fcall_technology_stub( lk::invoke_t &cxt )
+{
+	LK_DOC( "technology", "Return the current technology option name", "(void):string" );
+}
+
+static void fcall_financing_stub( lk::invoke_t &cxt )
+{
+	LK_DOC( "financing", "Return the current financing option name", "(void):string" );
+}
+
+
+static lk::fcall_t* invoke_equation_stubs()
+{
+	static const lk::fcall_t vec[] = {
+		fcall_technology_stub,
+		fcall_financing_stub,
+		0 };
+	return (lk::fcall_t*)vec;
+}
+
 UIEditorPanel::UIEditorPanel( wxWindow *parent )
 	: wxPanel( parent ), m_formData( &m_varData )
 {
@@ -189,14 +209,14 @@ UIEditorPanel::UIEditorPanel( wxWindow *parent )
 	sz_form_tools->Add( new wxButton( this, ID_FORM_DELETE, "Delete"), 0, wxALL|wxEXPAND, 2 );
 	sz_form_tools->Add( new wxButton( this, ID_FORM_TEST, "Test"), 0, wxALL|wxEXPAND, 2 );
 	sz_form_tools->AddStretchSpacer();	
-	sz_form_tools->Add( new wxButton( this, ID_VAR_SYNC, "Sync vars"), 0, wxALL|wxEXPAND, 2 );
-	sz_form_tools->Add( new wxButton( this, ID_VAR_ADD, "Add var..."), 0, wxALL|wxEXPAND, 2 );
-	sz_form_tools->Add( new wxButton( this, ID_VAR_DELETE, "Delete var(s)"), 0, wxALL|wxEXPAND, 2 );
-	sz_form_tools->Add( new wxButton( this, ID_CHECKVAR_ALL, "Chk all"), 0, wxALL|wxEXPAND, 2 );
-	sz_form_tools->Add( new wxButton( this, ID_CHECKVAR_NONE, "Chk none"), 0, wxALL|wxEXPAND, 2 );
-	sz_form_tools->Add( new wxButton( this, ID_CHECKVAR_SEL, "Chk sel"), 0, wxALL|wxEXPAND, 2 );
-	sz_form_tools->Add( new wxButton( this, ID_CHECKVAR_STORE, "Chk store"), 0, wxALL|wxEXPAND, 2 );
-	sz_form_tools->Add( new wxButton( this, ID_CHECKVAR_LOAD, "Chk load"), 0, wxALL|wxEXPAND, 2 );
+	sz_form_tools->Add( new wxButton( this, ID_VAR_SYNC, "Sync"), 0, wxALL|wxEXPAND, 2 );
+	sz_form_tools->Add( new wxButton( this, ID_VAR_ADD, "Add"), 0, wxALL|wxEXPAND, 2 );
+	sz_form_tools->Add( new wxButton( this, ID_VAR_DELETE, "Delete"), 0, wxALL|wxEXPAND, 2 );
+	sz_form_tools->Add( new wxButton( this, ID_VAR_CHECK_ALL, "Chk all"), 0, wxALL|wxEXPAND, 2 );
+	sz_form_tools->Add( new wxButton( this, ID_VAR_CHECK_NONE, "Chk none"), 0, wxALL|wxEXPAND, 2 );
+	sz_form_tools->Add( new wxButton( this, ID_VAR_CHECK_SEL, "Chk sel"), 0, wxALL|wxEXPAND, 2 );
+	sz_form_tools->Add( new wxButton( this, ID_VAR_STORE, "Store"), 0, wxALL|wxEXPAND, 2 );
+	sz_form_tools->Add( new wxButton( this, ID_VAR_LOAD, "Load"), 0, wxALL|wxEXPAND, 2 );
 		
 	m_uiPropEditor = new wxUIPropertyEditor( this, wxID_ANY );
 	m_formList = new wxListBox( this, ID_FORM_LIST, wxDefaultPosition, wxSize(300, 300), 0, 0, wxLB_SINGLE|wxBORDER_NONE );
@@ -289,6 +309,7 @@ UIEditorPanel::UIEditorPanel( wxWindow *parent )
 
 	m_equationScript = new wxLKScriptCtrl( scripts_panel, ID_EQUATION_EDITOR, wxDefaultPosition, wxDefaultSize,
 		wxLK_STDLIB_BASIC | wxLK_STDLIB_STRING | wxLK_STDLIB_MATH );
+	m_equationScript->RegisterLibrary( invoke_equation_stubs(), "Case Information", 0 );
 	wxBoxSizer *sz_scripts_right = new wxBoxSizer( wxVERTICAL );
 	sz_scripts_right->Add( sz_equation_tools, 0, wxALL|wxEXPAND, 2 );
 	sz_scripts_right->Add( m_equationScript, 1, wxALL|wxEXPAND, 0 );
@@ -821,16 +842,16 @@ void UIEditorPanel::OnCommand( wxCommandEvent &evt )
 			wxShowTextMessageDialog( text, "equation scan", this, wxSize(800,700) );
 		}
 		break;
-	case ID_CHECKVAR_ALL:
-	case ID_CHECKVAR_NONE:
+	case ID_VAR_CHECK_ALL:
+	case ID_VAR_CHECK_NONE:
 		for( size_t i=0;i<m_varList->GetCount();i++)
-			m_varList->Check( i, evt.GetId() == ID_CHECKVAR_ALL );
+			m_varList->Check( i, evt.GetId() == ID_VAR_CHECK_ALL );
 		break;
-	case ID_CHECKVAR_SEL:
+	case ID_VAR_CHECK_SEL:
 		for( size_t i=0;i<m_varList->GetCount();i++)
 			m_varList->Check( i, m_uiFormEditor->GetEditor()->IsSelected( m_varList->GetString( i ) ) );
 		break;
-	case ID_CHECKVAR_STORE:
+	case ID_VAR_STORE:
 		m_varCopyBuffer.clear();
 		for( size_t i=0;i<m_varList->GetCount();i++ )
 		{
@@ -840,7 +861,7 @@ void UIEditorPanel::OnCommand( wxCommandEvent &evt )
 				m_varCopyBuffer.Add( m_varList->GetString(i), new VarInfo( *vi ) );
 		}
 		break;
-	case ID_CHECKVAR_LOAD:
+	case ID_VAR_LOAD:
 		{
 			wxArrayString err;
 

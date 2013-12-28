@@ -4,6 +4,7 @@
 #include <wex/lkscript.h>
 
 #include "main.h"
+#include "case.h"
 
 #include "invoke.h"
 
@@ -183,6 +184,21 @@ static void fcall_show( lk::invoke_t &cxt )
 		obj->Show( cxt.arg(1).as_boolean() );
 }
 
+static void fcall_technology( lk::invoke_t &cxt )
+{
+	LK_DOC( "technology", "Return the current technology option name", "(void):string" );
+	if ( CallbackContext *cc = static_cast<CallbackContext*>( cxt.user_data() ) ) 
+		if ( Case *c = cc->GetInputPage()->GetCase() )
+			cxt.result().assign( c->GetTechnology() );
+}
+
+static void fcall_financing( lk::invoke_t &cxt )
+{
+	LK_DOC( "financing", "Return the current financing option name", "(void):string" );
+	if ( CallbackContext *cc = static_cast<CallbackContext*>( cxt.user_data() ) )
+		if ( Case *c = cc->GetInputPage()->GetCase() )
+			cxt.result().assign( c->GetFinancing() );
+}
 
 lk::fcall_t* invoke_general_funcs()
 {
@@ -211,6 +227,8 @@ lk::fcall_t* invoke_uicallback_funcs()
 		fcall_value,
 		fcall_enable,
 		fcall_show,
+		fcall_technology,
+		fcall_financing,
 		0 };
 	return (lk::fcall_t*)vec;
 }
