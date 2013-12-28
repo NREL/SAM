@@ -53,6 +53,8 @@ public:
 	
 	void SetConfiguration( const wxString &tech, const wxString &fin );
 	void GetConfiguration( wxString *tech, wxString *fin );	
+	wxString GetTechnology() const { return m_technology; }
+	wxString GetFinancing() const { return m_financing; }
 
 	VarTable &Values() { return m_vals; }
 	VarInfoLookup &Variables() { return m_vars; }

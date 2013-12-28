@@ -373,6 +373,9 @@ wxUIObject *InputPageBase::FindActiveObject( const wxString &name, InputPageBase
 	return m_formData->Find( name ); 
 }
 
+Case *InputPageBase::GetCase() { return 0; }
+CaseWindow *InputPageBase::GetCaseWindow() { return 0; }
+
 void InputPageBase::OnErase( wxEraseEvent & )
 {
 	/* nothing to do */

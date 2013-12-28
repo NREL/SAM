@@ -1,6 +1,6 @@
 on_load{"PV Capital Costs"}=define()
 {
-	fin = value("case.financing");
-	
-	show( "lblFinancingCost", ((fin!=0)&&(fin!=1)&&(fin!=2)));
+	f = financing();
+	show( "lblFinancingCost", 
+		(f!='None')&&(f!='Residential')&&(f!='Commercial') );
 };
