@@ -20,6 +20,7 @@
 #include "main.h"
 #include "inputpage.h"
 #include "invoke.h"
+#include "casewin.h"
 
 // UI widgets
 #include "uiwidgets.h"
@@ -28,14 +29,16 @@
 #include "materials.h"
 #include "shadingfactors.h"
 
-
-
-CallbackContext::CallbackContext( InputPageBase *ip, VarTable *vt, lk::node_t *root, const wxString &desc )
-	: m_inputPage(ip), m_varTable(vt), m_root(root), m_desc(desc)
+CallbackContext::CallbackContext( ActiveInputPage *ip, lk::node_t *root, const wxString &desc )
+	: m_inputPage(ip), m_root(root), m_desc(desc)
 {
-	// nothing here.
+	// nothing to do
 }
 
+ActiveInputPage *CallbackContext::InputPage() { return m_inputPage; }
+VarTable &CallbackContext::Values() { return m_inputPage->GetCase()->Values(); }
+Case &CallbackContext::Case() { return *m_inputPage->GetCase(); }
+CaseWindow *CallbackContext::CaseWindow() { return m_inputPage->GetCaseWindow(); }
 	
 bool CallbackContext::Invoke( )
 {
@@ -52,10 +55,9 @@ bool CallbackContext::Invoke( )
 	local_env.register_funcs( wxLKHttpFunctions() );
 	local_env.register_funcs( wxLKMiscFunctions() );
 	
-	
 	try {
 
-		VarTableScriptInterpreter e( m_root, &local_env, m_varTable );
+		VarTableScriptInterpreter e( m_root, &local_env, m_values );
 		if ( !e.run() )
 		{
 			wxString text = "Could not evaluate callback function:" +  m_desc + "\n";
@@ -73,191 +75,35 @@ bool CallbackContext::Invoke( )
 	return true;
 }
 
-CallbackDatabase::CallbackDatabase()
-{
-}
 
-CallbackDatabase::~CallbackDatabase()
-{
-	ClearAll();
-}
+BEGIN_EVENT_TABLE( ActiveInputPage, wxPanel )
+	EVT_BUTTON( wxID_ANY, ActiveInputPage::OnNativeEvent )
+	EVT_CHECKBOX( wxID_ANY, ActiveInputPage::OnNativeEvent )
+	EVT_CHOICE( wxID_ANY, ActiveInputPage::OnNativeEvent )
+	EVT_LISTBOX( wxID_ANY, ActiveInputPage::OnNativeEvent )
+	EVT_CHECKLISTBOX( wxID_ANY, ActiveInputPage::OnNativeEvent )
+	EVT_RADIOBUTTON( wxID_ANY, ActiveInputPage::OnNativeEvent )
+	EVT_TEXT_ENTER( wxID_ANY, ActiveInputPage::OnNativeEvent )
+	EVT_NUMERIC( wxID_ANY, ActiveInputPage::OnNativeEvent )
+	EVT_SLIDER( wxID_ANY, ActiveInputPage::OnNativeEvent )
+	EVT_SCHEDCTRL( wxID_ANY, ActiveInputPage::OnNativeEvent )
+	EVT_PTLAYOUT( wxID_ANY, ActiveInputPage::OnNativeEvent )
+	EVT_MATPROPCTRL( wxID_ANY, ActiveInputPage::OnNativeEvent )
+	EVT_TRLOOP( wxID_ANY, ActiveInputPage::OnNativeEvent )
+	EVT_MONTHLYFACTOR( wxID_ANY, ActiveInputPage::OnNativeEvent )
+	EVT_DATAARRAYBUTTON( wxID_ANY, ActiveInputPage::OnNativeEvent )
+	EVT_DATAMATRIX( wxID_ANY, ActiveInputPage::OnNativeEvent )
+	EVT_SHADINGBUTTON( wxID_ANY, ActiveInputPage::OnNativeEvent )
+	EVT_VALUEMATRIXBUTTON( wxID_ANY, ActiveInputPage::OnNativeEvent )
 
-bool CallbackDatabase::LoadFile( const wxString &file )
-{
-	wxFile fp( file );
-	if ( fp.IsOpened() )
-	{
-		//wxLogStatus("uicb: processing callback script file: " + file);
-		wxString buf;
-		fp.ReadAll( &buf );
-		lk::input_string data( buf );
-		lk::parser parse( data );
-		lk::node_t *tree = parse.script();
-
-		if ( parse.error_count() != 0
-			|| parse.token() != lk::lexer::END)
-		{
-			wxLogStatus("fail: callback script load: parsing did not reach end of input: " + file);				
-			for (int x=0; x < parse.error_count(); x++)
-				wxLogStatus( parse.error(x));
-		}
-		else if ( tree != 0 )
-		{							
-			cb_data *cbf = new cb_data;
-			cbf->source = file;
-			cbf->tree = tree;
-			m_cblist.push_back(cbf);
-
-			lk::eval e( tree, &m_cbenv );
-
-			if ( !e.run() )
-			{
-				wxLogStatus("uicb script eval fail: " + file );
-				for (size_t i=0;i<e.error_count();i++)
-					wxLogStatus( e.get_error(i) );
-
-				return false;
-			}
-		}
-	}
-
-	return true;
-}
-
-void CallbackDatabase::ClearAll()
-{
-	for( size_t i=0;i<m_cblist.size();i++) 
-	{
-		delete m_cblist[i]->tree;
-		delete m_cblist[i];
-	}
-	
-	m_cblist.clear();
-	m_cbenv.clear_objs();
-	m_cbenv.clear_vars();
-}
-
-lk::node_t *CallbackDatabase::Lookup( const wxString &method_name, const wxString &obj_name )
-{	
-	lk::vardata_t *cbvar = m_cbenv.lookup( method_name, true);
-
-	if (!cbvar || cbvar->type() != lk::vardata_t::HASH )
-	{
-		//wxLogStatus("CallbackDatabase::Invoke: could not find " + method_name + " variable or not a hash");
-		return 0;
-	}
-
-	lk::vardata_t *cbref = cbvar->lookup( obj_name );
-	if ( cbref == 0 
-		|| cbref->type() != lk::vardata_t::FUNCTION
-		|| cbref->deref().func() == 0 )
-	{
-		// wxLogStatus("CallbackDatabase::Invoke: could not find function entry for '%s'", (const char*)obj_name.c_str() );
-		return 0;
-	}
-	
-	lk::expr_t *p_define = cbref->deref().func();
-	if ( p_define->oper != lk::expr_t::DEFINE )
-	{
-		wxLogStatus("CallbackDatabase::Invoke: improper function structure, must be a 'define' for %s, instead: %s", (const char*)obj_name.c_str(), cbref->func()->operstr() );
-		return 0;
-	}
-	
-	if ( p_define->right == 0 )
-	{
-		wxLogStatus("CallbackDatabase::Invoke: function block nonexistent for '%s'\n", (const char*)obj_name.c_str());
-		return 0;
-	}
-
-	return p_define->right;
-}
-
-FormDatabase::FormDatabase()
-{
-}
-
-FormDatabase::~FormDatabase()
-{
-	Clear();
-}
-
-void FormDatabase::Clear()
-{
-	for ( FormDataHash::iterator it = m_hash.begin();
-		it != m_hash.end();
-		++it )
-		delete (*it).second;
-
-	m_hash.clear();
-}
-
-bool FormDatabase::LoadFile( const wxString &file )
-{
-	wxFileName ff(file);
-	wxString name( ff.GetName() );
-	
-	wxUIFormData *pd = new wxUIFormData;
-	
-	bool ok = true;
-	wxFFileInputStream is( file );
-	if ( !is.IsOk() || !pd->Read( is ) )
-		ok = false;
-	
-	pd->SetName( name );
-
-	if ( ok ) Add( name, pd );
-	else delete pd;
-
-	return ok;
-}
-
-void FormDatabase::Add( const wxString &name, wxUIFormData *ui )
-{
-	FormDataHash::iterator it = m_hash.find( name );
-	if ( it != m_hash.end() )
-	{
-		delete it->second;
-		it->second = ui;
-	}
-	else
-		m_hash[ name ] = ui;
-}
-
-wxUIFormData *FormDatabase::Lookup( const wxString &name )
-{
-	FormDataHash::iterator it = m_hash.find( name );
-	return ( it != m_hash.end() ) ? it->second : NULL;
-}
-
-
-BEGIN_EVENT_TABLE( InputPageBase, wxPanel )
-	EVT_BUTTON( wxID_ANY, InputPageBase::OnNativeEvent )
-	EVT_CHECKBOX( wxID_ANY, InputPageBase::OnNativeEvent )
-	EVT_CHOICE( wxID_ANY, InputPageBase::OnNativeEvent )
-	EVT_LISTBOX( wxID_ANY, InputPageBase::OnNativeEvent )
-	EVT_CHECKLISTBOX( wxID_ANY, InputPageBase::OnNativeEvent )
-	EVT_RADIOBUTTON( wxID_ANY, InputPageBase::OnNativeEvent )
-	EVT_TEXT_ENTER( wxID_ANY, InputPageBase::OnNativeEvent )
-	EVT_NUMERIC( wxID_ANY, InputPageBase::OnNativeEvent )
-	EVT_SLIDER( wxID_ANY, InputPageBase::OnNativeEvent )
-	EVT_SCHEDCTRL( wxID_ANY, InputPageBase::OnNativeEvent )
-	EVT_PTLAYOUT( wxID_ANY, InputPageBase::OnNativeEvent )
-	EVT_MATPROPCTRL( wxID_ANY, InputPageBase::OnNativeEvent )
-	EVT_TRLOOP( wxID_ANY, InputPageBase::OnNativeEvent )
-	EVT_MONTHLYFACTOR( wxID_ANY, InputPageBase::OnNativeEvent )
-	EVT_DATAARRAYBUTTON( wxID_ANY, InputPageBase::OnNativeEvent )
-	EVT_DATAMATRIX( wxID_ANY, InputPageBase::OnNativeEvent )
-	EVT_SHADINGBUTTON( wxID_ANY, InputPageBase::OnNativeEvent )
-	EVT_VALUEMATRIXBUTTON( wxID_ANY, InputPageBase::OnNativeEvent )
-
-	EVT_ERASE_BACKGROUND( InputPageBase::OnErase )
-	EVT_PAINT( InputPageBase::OnPaint )
+	EVT_ERASE_BACKGROUND( ActiveInputPage::OnErase )
+	EVT_PAINT( ActiveInputPage::OnPaint )
 END_EVENT_TABLE()
 
-InputPageBase::InputPageBase( wxWindow *parent, wxUIFormData *form, int id, const wxPoint &pos,
-	const wxSize &size )
+ActiveInputPage::ActiveInputPage( wxWindow *parent, wxUIFormData *form, CaseWindow *cw,
+	int id, const wxPoint &pos, const wxSize &size )
 	: wxPanel( parent, id, pos, size, wxTAB_TRAVERSAL|wxCLIP_CHILDREN ),
-	m_formData( form )
+	 m_cwin(cw), m_case(cw->GetCase()), m_formData( form )
 {
 	Show( false ); // by default form is not visible to hide the attach process
 
@@ -276,7 +122,7 @@ InputPageBase::InputPageBase( wxWindow *parent, wxUIFormData *form, int id, cons
 	SetClientSize( m_formData->GetSize() );
 }
 
-InputPageBase::~InputPageBase()
+ActiveInputPage::~ActiveInputPage()
 {
 	// explicitly detach so that
 	// destructors don't get mixed up twice deleting "owned"
@@ -288,7 +134,7 @@ InputPageBase::~InputPageBase()
 		delete m_formData;
 }
 
-bool InputPageBase::LoadFile( const wxString &file )
+bool ActiveInputPage::LoadFile( const wxString &file )
 {
 	m_formData->Detach();
 
@@ -308,7 +154,7 @@ static wxColour UIColorIndicatorBack(230,230,230);
 static wxColour UIColorCalculatedFore(0,0,255);
 static wxColour UIColorCalculatedBack(224,232,246);
 
-void InputPageBase::Initialize()
+void ActiveInputPage::Initialize()
 {
 	VarInfoLookup &vdb = GetVariables();
 	VarTable &vals = GetValues();
@@ -354,34 +200,56 @@ void InputPageBase::Initialize()
 
 
 	// lookup and run any callback functions.
-	if ( lk::node_t *root = GetCallbacks().Lookup( "on_load", m_formData->GetName() ) )
+	if ( lk::node_t *root = SamApp::Callbacks().Lookup( "on_load", m_formData->GetName() ) )
 	{
-		CallbackContext cbcxt( this, &GetValues(), root, m_formData->GetName() + "->on_load" );
+		CallbackContext cbcxt( this, root, m_formData->GetName() + "->on_load" );
 		if ( cbcxt.Invoke() )
 			wxLogStatus("callback script " + m_formData->GetName() + "->on_load succeeded");
 	}
 }
 
-wxUIObject *InputPageBase::Find( const wxString &name )
+wxUIObject *ActiveInputPage::Find( const wxString &name )
 {
 	return m_formData->Find( name );
 }
 
-wxUIObject *InputPageBase::FindActiveObject( const wxString &name, InputPageBase **page )
+wxUIObject *ActiveInputPage::FindActiveObject( const wxString &name, ActiveInputPage **page )
 {
-	if ( page != 0 ) *page = this;
-	return m_formData->Find( name ); 
+	return m_cwin->FindActiveObject( name, page );
 }
 
-Case *InputPageBase::GetCase() { return 0; }
-CaseWindow *InputPageBase::GetCaseWindow() { return 0; }
+std::vector<wxUIObject*> ActiveInputPage::GetObjects() { return m_formData->GetObjects(); }
+VarInfoLookup &ActiveInputPage::GetVariables()	{ return m_case->Variables(); }
+EqnFastLookup &ActiveInputPage::GetEquations() { return m_case->Equations(); }
+VarTable &ActiveInputPage::GetValues() { return m_case->Values(); }
+Case *ActiveInputPage::GetCase() { return m_case; }
+CaseWindow *ActiveInputPage::GetCaseWindow() { return m_cwin; }
 
-void InputPageBase::OnErase( wxEraseEvent & )
+void ActiveInputPage::OnUserInputChanged( wxUIObject *obj )
+{
+	// transfer the data from the UI object to the variable (DDX) 
+	// then notify the case that the variable was changed
+	// within the case, the calculations will be redone as needed
+	// and then the casewindow will be notified by event that
+	// other UI objects (calculated ones) need to be updated
+	if( VarValue *vval = GetValues().Get( obj->GetName() ) )
+	{
+		if ( DataExchange( obj, *vval, OBJ_TO_VAR ) )
+		{
+			wxLogStatus( "Variable " + obj->GetName() + " changed by user interaction, case notified." );
+			m_case->Recalculate( obj->GetName() );
+		}
+		else
+			wxMessageBox("ActiveInputPage >> data exchange fail: " + obj->GetName() );
+	}
+}
+
+void ActiveInputPage::OnErase( wxEraseEvent & )
 {
 	/* nothing to do */
 }
 
-void InputPageBase::OnPaint( wxPaintEvent & )
+void ActiveInputPage::OnPaint( wxPaintEvent & )
 {
 	wxAutoBufferedPaintDC dc( this );
 
@@ -431,7 +299,7 @@ void InputPageBase::OnPaint( wxPaintEvent & )
 }
 
 // handler(s) for child widget changes
-void InputPageBase::OnNativeEvent( wxCommandEvent &evt )
+void ActiveInputPage::OnNativeEvent( wxCommandEvent &evt )
 {
 	wxUIObject *obj = 0;
 	std::vector<wxUIObject*> objs = m_formData->GetObjects();
@@ -461,16 +329,16 @@ void InputPageBase::OnNativeEvent( wxCommandEvent &evt )
 	OnUserInputChanged( obj );
 
 	// lookup and run any callback functions.
-	if ( lk::node_t *root = GetCallbacks().Lookup( "on_change", obj->GetName() ) )
+	if ( lk::node_t *root = SamApp::Callbacks().Lookup( "on_change", obj->GetName() ) )
 	{
-		CallbackContext cbcxt( this, &GetValues(), root, obj->GetName() + "->on_change" );
+		CallbackContext cbcxt( this, root, obj->GetName() + "->on_change" );
 		if ( cbcxt.Invoke() )
 			wxLogStatus("callback script " + obj->GetName() + "->on_change succeeded");
 	}
 	
 }
 
-bool InputPageBase::DataExchange( wxUIObject *obj, VarValue &val, DdxDir dir )
+bool ActiveInputPage::DataExchange( wxUIObject *obj, VarValue &val, DdxDir dir )
 {
 	if ( wxNumericCtrl *num = obj->GetNative<wxNumericCtrl>() )
 	{
