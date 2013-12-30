@@ -489,7 +489,7 @@ size_t EqnEvaluator::MarkAffectedEquations( const wxString &var )
 	return naffected;
 }
 
-int EqnEvaluator::Changed( const wxString &var )
+int EqnEvaluator::Changed( const wxArrayString &vars )
 {	
 	m_errors.Clear();
 	m_updated.Clear();
@@ -497,12 +497,22 @@ int EqnEvaluator::Changed( const wxString &var )
 	// mark all equations as OK
 	for (size_t i=0;i<m_status.size();i++)
 		m_status[i] = OK;
-
+	
 	// recursively mark all affected equations by this variable as INVALID
-	size_t naffected = MarkAffectedEquations( var );
+	size_t naffected = 0;
+	for( size_t i=0;i<vars.size();i++ )
+		naffected += MarkAffectedEquations( vars[i] );
+
 	if (naffected == 0) return 0;
 	
 	return Calculate( );
+}
+
+int EqnEvaluator::Changed( const wxString &var )
+{
+	wxArrayString list;
+	list.Add( var );
+	return Changed( list );
 }
 
 void EqnEvaluator::SetupEnvironment( lk::env_t &env )

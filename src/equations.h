@@ -94,6 +94,7 @@ public:
 	void Reset();
 	int CalculateAll();
 	int Changed( const wxString &var );
+	int Changed( const wxArrayString &vars );
 	wxArrayString GetErrors() { return m_errors; }
 	wxArrayString GetUpdated() { return m_updated; }
 

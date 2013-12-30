@@ -30,6 +30,7 @@
     <ClCompile Include="..\src\inputpage.cpp" />
     <ClCompile Include="..\src\invoke.cpp" />
     <ClCompile Include="..\src\ipagelist.cpp" />
+    <ClCompile Include="..\src\library.cpp" />
     <ClCompile Include="..\src\main.cpp" />
     <ClCompile Include="..\src\materials.cpp" />
     <ClCompile Include="..\src\object.cpp" />
@@ -51,6 +52,7 @@
     <ClInclude Include="..\src\inputpage.h" />
     <ClInclude Include="..\src\invoke.h" />
     <ClInclude Include="..\src\ipagelist.h" />
+    <ClInclude Include="..\src\library.h" />
     <ClInclude Include="..\src\main.h" />
     <ClInclude Include="..\src\materials.h" />
     <ClInclude Include="..\src\object.h" />
