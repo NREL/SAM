@@ -28,6 +28,7 @@
 #include "troughloop.h"
 #include "materials.h"
 #include "shadingfactors.h"
+#include "library.h"
 
 CallbackContext::CallbackContext( ActiveInputPage *ip, lk::node_t *root, const wxString &desc )
 	: m_inputPage(ip), m_root(root), m_desc(desc)
@@ -166,7 +167,7 @@ void ActiveInputPage::Initialize()
 		wxString name = objs[i]->GetName();
 		if ( VarInfo *vv = vdb.Lookup( name ) )
 		{
-			if ( (vv->Type == VV_NUMBER || vv->Type == VV_STRING) && vv->IndexLabels.size() > 0 
+			if ( vv->Type == VV_NUMBER && vv->IndexLabels.size() > 0 
 				&& ( type == "Choice" || type == "ListBox" || type == "CheckListBox" || type == "RadioChoice" ) )
 			{
 				objs[i]->Property( "Items" ).SetNamedOptions( vv->IndexLabels, 0 );
@@ -190,6 +191,19 @@ void ActiveInputPage::Initialize()
 				{
 					tc->SetForegroundColour(UIColorIndicatorFore);
 					tc->SetBackgroundColour(UIColorIndicatorBack);
+				}
+			}
+
+			if ( vv->Type == VV_STRING && vv->Flags & VF_LIBRARY 
+				&& type == "SearchListBox" && vv->IndexLabels.size() == 2 )
+			{
+				if ( Library *lib = Library::Find(vv->IndexLabels[0]) )
+				{
+					if ( AFSearchListBox *slb = objs[i]->GetNative<AFSearchListBox>() )
+					{
+						slb->Clear();
+						slb->Append( lib->ListEntries() );
+					}
 				}
 			}
 
@@ -463,6 +477,11 @@ bool ActiveInputPage::DataExchange( wxUIObject *obj, VarValue &val, DdxDir dir )
 	{
 		if ( dir == VAR_TO_OBJ ) vm->Set( val.Matrix() );
 		else val.Set( vm->Get() );
+	}
+	else if ( AFSearchListBox *slb = obj->GetNative<AFSearchListBox>() )
+	{
+		if ( dir == VAR_TO_OBJ ) slb->SetStringSelection( val.String() );
+		else val.Set( slb->GetStringSelection() );
 	}
 	else return false; // object data exch not handled for this type
 

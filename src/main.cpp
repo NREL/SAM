@@ -29,6 +29,7 @@
 #include "case.h"
 #include "casewin.h"
 #include "invoke.h"
+#include "library.h"
 
 // application globals
 static wxArrayString g_appArgs;
@@ -1152,6 +1153,7 @@ void SamApp::Restart()
 			has_more = dir.GetNext( &file );
 		}
 	}
+	dir.Close();
 	
 	// reload configuration map
 	SamApp::Config().Clear();
@@ -1164,6 +1166,25 @@ void SamApp::Restart()
 
 	wxLogStatus("rebuilding caches for each configuration's variables and equations");
 	SamApp::Config().RebuildCaches();
+
+	wxLogStatus("loading libraries...");
+	Library::UnloadAll();
+	if ( dir.Open( SamApp::GetRuntimePath() + "../libraries" ) )
+	{
+		wxString file;
+		bool has_more = dir.GetFirst( &file, "*.csv", wxDIR_FILES  );
+		while( has_more )
+		{
+			if ( Library *ll = Library::Load( SamApp::GetRuntimePath() + "../libraries/" + file ) )
+			{
+				wxLogStatus( "loaded '" + ll->GetName() + "' from " + file );
+				wxLogStatus( "\t %d entries, %d fields", (int)ll->NumEntries(), (int)ll->GetFields().size() );
+			}
+			else
+				wxLogStatus( "error loading library " + file );
+			has_more = dir.GetNext( &file );
+		}
+	}
 }
 
 wxString SamApp::GetAppPath()

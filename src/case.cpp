@@ -3,6 +3,7 @@
 #include "case.h"
 #include "equations.h"
 #include "main.h"
+#include "library.h"
 #include "invoke.h"
 
 
@@ -174,26 +175,44 @@ void Case::VariableChanged( const wxString &var )
 
 int Case::Recalculate( const wxString &trigger )
 {
-	wxArrayString list;
-	list.Add( trigger );
+	wxArrayString trigger_list;
+	trigger_list.Add( trigger );
 
 	VarInfo *vi = SamApp::Variables().Lookup( trigger );
 	VarValue *vv = Values().Get( trigger );
-	if( vv && vv->Type() == VV_STRING && vi && vi->Flags & VF_LIBRARY && vi->IndexLabels.size() > 0 )
+	if( vv && vv->Type() == VV_STRING && vi && vi->Flags & VF_LIBRARY )
 	{
-		// lookup the library name in vi->IndexLabels
-		wxString library = vi->IndexLabels[0];
+		if ( vi->IndexLabels.size() == 2 )
+		{
+			// lookup the library name in vi->IndexLabels
+			wxString name = vi->IndexLabels[0];
+			int varindex = wxAtoi( vi->IndexLabels[1] );
 		
-		// find the entry
-		wxString entry = vv->String();
+			if ( Library *lib = Library::Find( name ) )
+			{
+				// find the entry
+				wxArrayString changed;
+				int entry = lib->FindEntry( vv->String() );
+				if ( entry >= 0 && lib->ApplyEntry( entry, varindex, Values(), changed ) )
+				{
+					wxLogStatus( "applied " + name + ":" + vv->String() + " = " + wxJoin(changed,',') );
+					SendEvent( CaseEvent( CaseEvent::VARS_CHANGED, changed ) );
 
-		// apply all the values to the specified variables
-
-		// add each modified variable to 'list'
+					for( size_t i=0;i<changed.size();i++ )
+						trigger_list.Add( changed[i] );
+				}
+				else
+					wxMessageBox("error applying library entry " + vv->String() + "\n\n" + wxJoin( lib->GetErrors(), '\n') );
+			}
+			else
+				wxMessageBox( "Could not locate referenced library: " + name);
+		}
+		else
+			wxMessageBox( "invalid library specification: " + wxJoin(vi->IndexLabels, ',') );
 	}
 	
 	CaseEqnEval eval( this, m_vals, m_eqns );
-	int n = eval.Changed( trigger );	
+	int n = eval.Changed( trigger_list );	
 	if ( n > 0 ) SendEvent( CaseEvent( CaseEvent::VARS_CHANGED, eval.GetUpdated() ) );
 	else if ( n < 0 ) wxLogStatus( wxJoin( eval.GetErrors(), '\n' )  );
 	return n;

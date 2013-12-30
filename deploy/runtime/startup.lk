@@ -18,7 +18,7 @@ function setup_flat_plate_pv_pages()
 	
 	
 	addpage( [ ['Simple Efficiency Module Model'],
-				[{ 'name'='CEC Performance Model with Module Database', 'caption'='CEC Module' }, { 'name'='Test 1', 'collapsible'=true, 'collapsible_var'='pv.module.test_1.is_shown' }],
+				[{ 'name'='CEC Performance Model with Module Database', 'caption'='CEC Module Database' }, { 'name'='Test 1', 'collapsible'=true, 'collapsible_var'='pv.module.test_1.is_shown' }],
 				['CEC Performance Model with User Entered Specifications'], 
 				['Sandia PV Array Performance Model with Module Database'] ], 				
 			{ 'sidebar'='Module', 'help'='Module', 'exclusive_var'='pv.mod.model_type' } );
