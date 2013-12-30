@@ -69,6 +69,9 @@ public:
 	// recalculate any variables that are impacted by a changed value of 'trigger'
 	// any views are updated with the variables that are consequently updated with 
 	// new values as a result of the calculations
+	// Note: if the 'trigger' variable is a library item (has the VF_LIBRARY flag)
+	// this will also apply all the library values and cause any affected variables
+	// to be subsequently updated
 	int Recalculate( const wxString &trigger ); 
 
 	// recalculate all equations in this case

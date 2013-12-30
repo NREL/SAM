@@ -120,6 +120,7 @@ enum {
 	ID_VAR_FL_PARAMETRIC,
 	ID_VAR_FL_INDICATOR,
 	ID_VAR_FL_CALCULATED,
+	ID_VAR_FL_LIBRARY,
 
 	ID_CALLBACK_FIND,
 	ID_CALLBACK_CHECK,
@@ -238,6 +239,8 @@ UIEditorPanel::UIEditorPanel( wxWindow *parent )
 	m_varFlagParametric = new wxCheckBox( this, ID_VAR_FL_PARAMETRIC, "Parametric?" );
 	m_varFlagIndicator = new wxCheckBox( this, ID_VAR_FL_INDICATOR, "Indicator?" );
 	m_varFlagCalculated = new wxCheckBox( this, ID_VAR_FL_CALCULATED, "Calculated?" );
+	m_varFlagLibrary = new wxCheckBox( this, ID_VAR_FL_LIBRARY, "Library?" );
+
 
 	wxGridBagSizer *sz_var_fields = new wxGridBagSizer(1,1);
 	sz_var_fields->SetFlexibleDirection( wxHORIZONTAL );
@@ -265,6 +268,7 @@ UIEditorPanel::UIEditorPanel( wxWindow *parent )
 	sz_var_fields->Add( m_varFlagParametric, wxGBPosition(6,1), wxGBSpan(1,1), wxALL|wxALIGN_CENTER_VERTICAL, 3  );
 	sz_var_fields->Add( m_varFlagIndicator, wxGBPosition(7,0), wxGBSpan(1,1), wxALL|wxALIGN_CENTER_VERTICAL, 3  );
 	sz_var_fields->Add( m_varFlagCalculated, wxGBPosition(7,1), wxGBSpan(1,1), wxALL|wxALIGN_CENTER_VERTICAL, 3 );
+	sz_var_fields->Add( m_varFlagLibrary,  wxGBPosition(8,1), wxGBSpan(1,1), wxALL|wxALIGN_CENTER_VERTICAL, 3 );
 
 	sz_var_fields->AddGrowableCol( 1 );
 
@@ -787,7 +791,8 @@ void UIEditorPanel::FormToVarInfo( VarInfo *vv )
 	if( m_varFlagParametric->GetValue() ) vv->Flags |= VF_PARAMETRIC;
 	if( m_varFlagIndicator->GetValue() ) vv->Flags |= VF_INDICATOR;
 	if( m_varFlagCalculated->GetValue() ) vv->Flags |= VF_CALCULATED;
-	
+	if( m_varFlagLibrary->GetValue() ) vv->Flags |= VF_LIBRARY;
+
 	vv->DefaultValue.SetType( vv->Type );
 	VarValue::Parse( vv->Type, m_varDefaultValue->GetValue(), vv->DefaultValue );
 }
@@ -808,6 +813,7 @@ void UIEditorPanel::VarInfoToForm( VarInfo *vv )
 		m_varFlagParametric->SetValue( vv->Flags & VF_PARAMETRIC );
 		m_varFlagIndicator->SetValue( vv->Flags & VF_INDICATOR );
 		m_varFlagCalculated->SetValue( vv->Flags & VF_CALCULATED );
+		m_varFlagLibrary->SetValue( vv->Flags & VF_LIBRARY );
 		
 		m_varDefaultValue->SetValue( vv->DefaultValue.AsString() );
 	}
@@ -823,6 +829,7 @@ void UIEditorPanel::VarInfoToForm( VarInfo *vv )
 		m_varFlagParametric->SetValue( false );
 		m_varFlagIndicator->SetValue( false );
 		m_varFlagCalculated->SetValue( false );
+		m_varFlagLibrary->SetValue( false );
 		m_varDefaultValue->SetValue( wxEmptyString );
 	}
 	
@@ -837,6 +844,7 @@ void UIEditorPanel::VarInfoToForm( VarInfo *vv )
 	m_varFlagParametric->Enable( m_curVar != 0 );
 	m_varFlagIndicator->Enable( m_curVar != 0 );
 	m_varFlagCalculated->Enable( m_curVar != 0 );
+	m_varFlagLibrary->Enable( m_curVar != 0 );
 
 }
 

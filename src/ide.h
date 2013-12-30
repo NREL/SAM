@@ -60,7 +60,8 @@ private:
 	wxExtTextCtrl *m_varName;
 	wxChoice *m_varType;
 	wxExtTextCtrl *m_varLabel, *m_varUnits, *m_varGroup, *m_varIndexLabels, *m_varDefaultValue;
-	wxCheckBox *m_varFlagHideLabels, *m_varFlagParametric, *m_varFlagIndicator, *m_varFlagCalculated;
+	wxCheckBox *m_varFlagHideLabels, *m_varFlagParametric, *m_varFlagIndicator, 
+		*m_varFlagCalculated, *m_varFlagLibrary;
 
 	VarInfo *m_curVar;
 	void FormToVarInfo( VarInfo * );
