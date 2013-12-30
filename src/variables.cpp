@@ -561,7 +561,7 @@ bool VarValue::Parse( int type, const wxString &str, VarValue &value )
 		}
 	case VV_ARRAY:
 		{
-			wxArrayString tokens = wxStringTokenize(str," ,\t[]\n");
+			wxArrayString tokens = wxStringTokenize(str," ,;|\t[]\n");
 			value.m_type = VV_ARRAY;
 			value.m_val.resize_fill( tokens.size(), 0.0 );
 			for (size_t i=0; i<tokens.size(); i++)
@@ -573,7 +573,7 @@ bool VarValue::Parse( int type, const wxString &str, VarValue &value )
 		{
 			wxArrayString rows = wxStringTokenize(str,"[]\n");
 			if (rows.size() < 1) return false;
-			wxArrayString cur_row = wxStringTokenize(rows[0], " ,\t");
+			wxArrayString cur_row = wxStringTokenize(rows[0], " ,;|\t");
 			if (cur_row.size() < 1) return false;
 
 			value.m_type = VV_MATRIX;
@@ -595,7 +595,7 @@ bool VarValue::Parse( int type, const wxString &str, VarValue &value )
 	return false;
 }
 
-wxString VarValue::AsString()
+wxString VarValue::AsString( wxChar arrsep )
 {
 	wxString buf;
 
@@ -610,7 +610,7 @@ wxString VarValue::AsString()
 		for( size_t i=0;i<m_val.length();i++ )
 		{
 			buf += wxString::Format("%g", (float)m_val[i]  );
-			if ( i < m_val.length()-1 ) buf += ',';
+			if ( i < m_val.length()-1 ) buf += arrsep;
 		}
 		return buf;
 	}
@@ -623,7 +623,7 @@ wxString VarValue::AsString()
 			for( size_t c=0;c<m_val.ncols();c++ )
 			{
 				buf += wxString::Format("%g", (float)m_val.at(r,c)  );
-				if ( c < m_val.ncols()-1 ) buf += ',';
+				if ( c < m_val.ncols()-1 ) buf += arrsep;
 			}
 			buf += ']';
 		}
