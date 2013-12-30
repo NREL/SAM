@@ -106,13 +106,14 @@ private:
 	VarTable m_tab;
 };
 
-#define VF_NONE 0x00
-#define VF_HIDE_LABELS 0x01
-#define VF_PARAMETRIC 0x02
-#define VF_INDICATOR 0x04
-#define VF_CALCULATED 0x08
-#define VF_EXCLUSIVE_PAGES 0x10
-#define VF_COLLAPSIBLE_PANE 0x20
+#define VF_NONE                0x00
+#define VF_HIDE_LABELS         0x01
+#define VF_PARAMETRIC          0x02
+#define VF_INDICATOR           0x04
+#define VF_CALCULATED          0x08
+#define VF_LIBRARY             0x10
+#define VF_EXCLUSIVE_PAGES     0x20
+#define VF_COLLAPSIBLE_PANE    0x40
 
 class VarInfo
 {

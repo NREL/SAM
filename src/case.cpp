@@ -174,6 +174,24 @@ void Case::VariableChanged( const wxString &var )
 
 int Case::Recalculate( const wxString &trigger )
 {
+	wxArrayString list;
+	list.Add( trigger );
+
+	VarInfo *vi = SamApp::Variables().Lookup( trigger );
+	VarValue *vv = Values().Get( trigger );
+	if( vv && vv->Type() == VV_STRING && vi && vi->Flags & VF_LIBRARY && vi->IndexLabels.size() > 0 )
+	{
+		// lookup the library name in vi->IndexLabels
+		wxString library = vi->IndexLabels[0];
+		
+		// find the entry
+		wxString entry = vv->String();
+
+		// apply all the values to the specified variables
+
+		// add each modified variable to 'list'
+	}
+	
 	CaseEqnEval eval( this, m_vals, m_eqns );
 	int n = eval.Changed( trigger );	
 	if ( n > 0 ) SendEvent( CaseEvent( CaseEvent::VARS_CHANGED, eval.GetUpdated() ) );
