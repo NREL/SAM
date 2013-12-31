@@ -37,9 +37,9 @@ CallbackContext::CallbackContext( ActiveInputPage *ip, lk::node_t *root, const w
 }
 
 ActiveInputPage *CallbackContext::InputPage() { return m_inputPage; }
-VarTable &CallbackContext::Values() { return m_inputPage->GetCase()->Values(); }
-Case &CallbackContext::Case() { return *m_inputPage->GetCase(); }
-CaseWindow *CallbackContext::CaseWindow() { return m_inputPage->GetCaseWindow(); }
+VarTable &CallbackContext::GetValues() { return m_inputPage->GetCase()->Values(); }
+Case &CallbackContext::GetCase() { return *m_inputPage->GetCase(); }
+CaseWindow *CallbackContext::GetCaseWindow() { return m_inputPage->GetCaseWindow(); }
 	
 bool CallbackContext::Invoke( )
 {
