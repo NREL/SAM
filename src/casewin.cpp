@@ -336,12 +336,12 @@ void CaseWindow::OnCommand( wxCommandEvent &evt )
 		if ( pds != 0 )
 		{
 			wxBusyCursor wait;
-			m_inputPageScrollWin->Freeze();
+//			m_inputPageScrollWin->Freeze();
 			
 			m_case->Values().Set( pds->CollapsibleVar, VarValue( pds->CollapseCheck->GetValue() ) );
 			m_case->VariableChanged( pds->CollapsibleVar ); // this will re-layout the page
 			
-			m_inputPageScrollWin->Thaw();
+//			m_inputPageScrollWin->Thaw();
 		}
 	}
 	else if ( evt.GetId() >= ID_EXCL_OPTION && evt.GetId() < ID_EXCL_OPTION_MAX )
@@ -476,7 +476,7 @@ void CaseWindow::DetachCurrentInputPage()
 bool CaseWindow::SwitchToInputPage( const wxString &name )
 {
 	wxBusyCursor wait;
-	m_inputPagePanel->Freeze();
+//	m_inputPagePanel->Freeze();
 
 	DetachCurrentInputPage();
 
@@ -495,7 +495,7 @@ bool CaseWindow::SwitchToInputPage( const wxString &name )
 	SetupActivePage();
 	UpdatePageNote();
 
-	m_inputPagePanel->Thaw();
+//	m_inputPagePanel->Thaw();
 
 	return true;
 }

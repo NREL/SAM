@@ -173,7 +173,7 @@ bool MainWindow::CreateProject()
 	m_topBook->SetSelection( 1 );
 
 	CreateNewCase( wxEmptyString, "Flat Plate PV", "Residential" );
-	CreateNewCase( wxEmptyString, "PVWatts", "Residential" );
+//	CreateNewCase( wxEmptyString, "PVWatts", "Residential" );
 	return true;
 }
 
@@ -1063,9 +1063,11 @@ bool SamApp::OnInit()
 	}
 
 //#ifdef _DEBUG
+#ifndef __WXOSX__
 	g_logWindow = new SamLogWindow;
 	wxLog::SetActiveTarget( g_logWindow );
 	g_logWindow->Show();
+#endif
 //#endif
 	
 	// register all the object types that can
@@ -1099,7 +1101,7 @@ bool SamApp::OnInit()
 	SetTopWindow( g_mainWindow );
 
 	g_mainWindow->Show();
-	g_mainWindow->CreateProject();
+//	g_mainWindow->CreateProject();
 	//ShowIDEWindow();
 
 	return true;

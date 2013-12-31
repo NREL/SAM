@@ -152,12 +152,12 @@ void fcall_value( lk::invoke_t &cxt )
 	
 	CallbackContext &cc = *(CallbackContext*)cxt.user_data();
 	wxString name = cxt.arg(0).as_string();
-	if ( VarValue *vv = cc.Values().Get( name ) )
+	if ( VarValue *vv = cc.GetValues().Get( name ) )
 	{
 		if ( cxt.arg_count() == 2 )
 		{
 			vv->Read( cxt.arg(1) );
-			cc.Case().VariableChanged( name );		
+			cc.GetCase().VariableChanged( name );		
 		}
 		else
 		{
@@ -188,14 +188,14 @@ static void fcall_technology( lk::invoke_t &cxt )
 {
 	LK_DOC( "technology", "Return the current technology option name", "(void):string" );
 	CallbackContext &cc = *static_cast<CallbackContext*>( cxt.user_data() ); 
-	cxt.result().assign( cc.Case().GetTechnology() );
+	cxt.result().assign( cc.GetCase().GetTechnology() );
 }
 
 static void fcall_financing( lk::invoke_t &cxt )
 {
 	LK_DOC( "financing", "Return the current financing option name", "(void):string" );
 	CallbackContext &cc = *static_cast<CallbackContext*>( cxt.user_data() ); 
-	cxt.result().assign( cc.Case().GetFinancing() );
+	cxt.result().assign( cc.GetCase().GetFinancing() );
 }
 
 lk::fcall_t* invoke_general_funcs()
