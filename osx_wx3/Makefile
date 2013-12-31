@@ -3,13 +3,15 @@ VPATH = $(SRCDIR)
 
 WEXDIR = ../../wex
 LKDIR = ../../lk
+SSCDIR = ../../ssc
 
 WEXLIB = $(WEXDIR)/wexosxwx3.a
 LKLIB = $(LKDIR)/lkosxwx3.a
+SSCLIB = $(SSCDIR)/build_osx/ssc.dylib
 
 CC = gcc
 CXX = g++
-CFLAGS = -g -DLK_USE_WXWIDGETS -I. -I$(SRCDIR) -I$(WEXDIR)/include -I$(LKDIR) `wx-config-3 --cflags`
+CFLAGS = -g -DLK_USE_WXWIDGETS -I. -I$(SRCDIR) -I$(WEXDIR)/include -I$(LKDIR) -I$(SSCDIR) `wx-config-3 --cflags`
 CXXFLAGS = $(CFLAGS)
 LDFLAGS = `wx-config-3 --libs` `wx-config-3 --libs aui` `wx-config-3 --libs stc` -lm $(LKLIB) $(WEXLIB) -lstdc++ -lcurl
 
@@ -37,7 +39,7 @@ OBJECTS = ide.o \
 TARGET = SAM
 
 
-$(TARGET): $(OBJECTS) $(WEXLIB) $(LKLIB)
+$(TARGET): $(OBJECTS) $(WEXLIB) $(LKLIB) $(SSCLIB)
 	$(CXX) -g -o $@ $^ $(LDFLAGS)
 	SetFile -a t $@
 	mkdir -p $(TARGET).app
@@ -51,10 +53,10 @@ $(TARGET): $(OBJECTS) $(WEXLIB) $(LKLIB)
 	cp $(TARGET).icns ./$(TARGET).app/Contents/Resources
 	cp Info-$(TARGET).plist ./$(TARGET).app/Contents/Info.plist
 	echo "-n APPL????" >> ./$(TARGET).app/Contents/PkgInfo
-#	@mkdir -p $(TARGET).app/Contents/Frameworks
-#	cp $(SSCLIB) $(TARGET).app/Contents/Frameworks/ssc64.dylib
-#	install_name_tool -id @executable_path/../Frameworks/ssc64.dylib $(TARGET).app/Contents/Frameworks/ssc64.dylib
-#	install_name_tool -change ssc64.dylib @executable_path/../Frameworks/ssc64.dylib $(TARGET).app/Contents/MacOS/$(TARGET)
+	@mkdir -p $(TARGET).app/Contents/Frameworks
+	cp $(SSCLIB) $(TARGET).app/Contents/Frameworks/ssc.dylib
+	install_name_tool -id @executable_path/../Frameworks/ssc.dylib $(TARGET).app/Contents/Frameworks/ssc.dylib
+	install_name_tool -change ssc.dylib @executable_path/../Frameworks/ssc.dylib $(TARGET).app/Contents/MacOS/$(TARGET)
 	
 DEPENDS = $(OBJECTS:.o=.d)
 

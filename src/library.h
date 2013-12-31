@@ -19,7 +19,6 @@ Sunpower-330,4,4,1,5,3,2,5,3,2,1
 
 */
 
-
 class Library
 {
 public:
@@ -38,6 +37,7 @@ public:
 	};
 
 	bool Read( const wxString &file );
+	bool Read( const wxCSVData &data, const wxString &name );
 	wxString GetName() const;	
 	wxArrayString &GetErrors() { return m_errors; }
 
@@ -51,13 +51,15 @@ public:
 private:
 	wxCSVData m_csv;
 
-	wxString m_dataFile;
+	bool ScanData();
+
 	wxString m_name;
 	std::vector<Field> m_fields;
 	size_t m_startRow;
 	wxArrayString m_errors;
 };
 
+bool ScanSolarResourceData();
 
 
 

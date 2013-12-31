@@ -90,7 +90,7 @@ public:
 	void Clear();
 	wxString GetStringSelection();
 	void SetSelection( size_t i );
-	void SetStringSelection(const wxString &s);
+	bool SetStringSelection(const wxString &s);
 
 	void SetPromptText( const wxString & );
 

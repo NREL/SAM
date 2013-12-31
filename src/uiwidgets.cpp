@@ -597,16 +597,18 @@ void AFSearchListBox::SetSelection( size_t i )
 	}
 }
 
-void AFSearchListBox::SetStringSelection(const wxString &s)
+bool AFSearchListBox::SetStringSelection(const wxString &s)
 {
 	for (size_t i=0;i<m_items.size();i++)
 	{
 		if (m_items[i].str == s)
 		{
 			SetSelection(i);
-			return;
+			return true;
 		}
 	}
+
+	return false;
 }
 
 void AFSearchListBox::OnFilter( wxCommandEvent & )
