@@ -13,6 +13,7 @@
 #include "materials.h"
 #include "troughloop.h"
 #include "shadingfactors.h"
+#include "library.h"
 
 #include "uiwidgets.h"
 
@@ -2735,6 +2736,29 @@ public:
 	}
 };
 
+class wxUILibraryCtrl : public wxUIObject
+{
+public:
+	wxUILibraryCtrl() {
+		AddProperty( "Library", new wxUIProperty( wxString("Library Name") ) );
+		AddProperty( "Fields", new wxUIProperty( wxString("all") ) );
+	}
+	virtual wxString GetTypeName() { return "Library"; }
+	virtual wxUIObject *Duplicate() { wxUIObject *o = new wxUILibraryCtrl; o->Copy( this ); return o; }
+	virtual bool IsNativeObject() { return true; }
+	virtual wxWindow *CreateNative( wxWindow *parent ) {
+		LibraryCtrl *ll = new LibraryCtrl( parent, wxID_ANY );
+		ll->SetLibrary( Property("Library").GetString(), Property("Fields").GetString() );
+		return AssignNative( ll );
+	}
+	virtual void OnPropertyChanged( const wxString &id, wxUIProperty *p )
+	{
+		if ( LibraryCtrl *ll = GetNative<LibraryCtrl>() )
+			ll->SetLibrary( Property("Library").GetString(), Property("Fields").GetString() );
+	}
+
+};
+
 void RegisterUIWidgetsForSAM()
 {
 	wxUIObjectTypeProvider::Register( new wxUISchedNumericObject );
@@ -2750,6 +2774,7 @@ void RegisterUIWidgetsForSAM()
 	wxUIObjectTypeProvider::Register( new wxUIShadingFactorsObject );
 	wxUIObjectTypeProvider::Register( new wxUIValueMatrixObject );
 	wxUIObjectTypeProvider::Register( new wxUIMonthByHourFactorCtrl );
+	wxUIObjectTypeProvider::Register( new wxUILibraryCtrl );
 
 /* TODO LIST 
 { GUI_ADD_CONTROL_ID+26, "DataGridBtn",      "AFValueMatrixButton",         datagridbtn_xpm, CTRL_NATIVE,  10, 15, 100, 21,   props_AFValueMatrixButton,  NULL,       objinit_AFValueMatrixButton, objfree_AFValueMatrixButton, nativesetprop_AFValueMatrixButton, paint_AFValueMatrixButton, iswithin_default,   nativeevt_AFValueMatrixButton, vartoctrl_AFValueMatrixButton, ctrltovar_AFValueMatrixButton, false },

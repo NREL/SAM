@@ -96,6 +96,7 @@ BEGIN_EVENT_TABLE( ActiveInputPage, wxPanel )
 	EVT_DATAMATRIX( wxID_ANY, ActiveInputPage::OnNativeEvent )
 	EVT_SHADINGBUTTON( wxID_ANY, ActiveInputPage::OnNativeEvent )
 	EVT_VALUEMATRIXBUTTON( wxID_ANY, ActiveInputPage::OnNativeEvent )
+	EVT_LIBRARYCTRL( wxID_ANY, ActiveInputPage::OnNativeEvent )
 
 	EVT_ERASE_BACKGROUND( ActiveInputPage::OnErase )
 	EVT_PAINT( ActiveInputPage::OnPaint )
@@ -486,6 +487,15 @@ bool ActiveInputPage::DataExchange( wxUIObject *obj, VarValue &val, DdxDir dir )
 				wxMessageBox( "Error: the selection '" + val.String() + "' was not found in the available choices." );
 		}
 		else val.Set( slb->GetStringSelection() );
+	}
+	else if ( LibraryCtrl *ll = obj->GetNative<LibraryCtrl>() )
+	{
+		if ( dir == VAR_TO_OBJ )
+		{
+			if (!ll->SetEntrySelection( val.String() ))
+				wxMessageBox(  "Error: the selection '" + val.String() + "' was not found in the available choices." );
+		}
+		else val.Set( ll->GetEntrySelection() );
 	}
 	else return false; // object data exch not handled for this type
 

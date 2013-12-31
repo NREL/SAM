@@ -2,6 +2,8 @@
 #define __library_h
 
 #include <wx/string.h>
+#include <wx/listctrl.h>
+#include <wx/panel.h>
 
 #include <wex/csv.h>
 
@@ -44,8 +46,10 @@ public:
 	wxArrayString ListEntries();
 	size_t NumEntries();
 	std::vector<Field> &GetFields();
+	int GetFieldIndex( const wxString &name );
 	int FindEntry( const wxString &name );
 	wxString GetEntryValue( int entry, int field );
+	wxString GetEntryName( int entry );
 	bool ApplyEntry( int entry, int varindex, VarTable &tab, wxArrayString &changed );
 
 private:
@@ -60,6 +64,68 @@ private:
 };
 
 bool ScanSolarResourceData();
+
+
+class LibraryCtrl;
+class wxTextCtrl;
+class wxStaticText;
+class wxChoice;
+
+class LibraryListView : public wxListView
+{
+	LibraryCtrl *m_libctrl;
+public:
+	LibraryListView( LibraryCtrl *parent, int id, const wxPoint &pos = wxDefaultPosition,
+		const wxSize &size = wxDefaultSize );
+	
+	virtual wxString OnGetItemText( long item, long col ) const;
+	virtual wxListItemAttr *OnGetItemAttr( long item ) const;
+};
+
+#define EVT_LIBRARYCTRL(id, func) EVT_LISTBOX(id,func)
+
+class LibraryCtrl : public wxPanel
+{
+public:
+	LibraryCtrl( wxWindow *parent, int id, const wxPoint &pos = wxDefaultPosition,
+		const wxSize &size = wxDefaultSize );
+	virtual ~LibraryCtrl();
+
+	void SetLabel( const wxString &label );
+
+	void SetLibrary( const wxString &name, const wxString &fields );
+	void ReloadLibrary();
+
+	bool SetEntrySelection( const wxString &entry );
+	wxString GetEntrySelection();
+
+
+	wxString GetCellValue( long item, long col );
+	void UpdateList();
+
+protected:
+	void OnSelected( wxListEvent & );
+	void OnColClick( wxListEvent & );
+	void OnCommand( wxCommandEvent & );
+
+private:
+	wxString m_library;
+
+	wxArrayString m_fields;
+	std::vector<size_t> m_fieldMap;
+
+	wxArrayString m_entries;
+	std::vector<size_t> m_indexMap;
+
+	wxStaticText *m_label;
+	wxTextCtrl *m_filter;
+	wxStaticText *m_notify;
+	wxChoice *m_target;
+	LibraryListView *m_list;
+	
+	
+	DECLARE_EVENT_TABLE();
+};
 
 
 
