@@ -480,7 +480,11 @@ bool ActiveInputPage::DataExchange( wxUIObject *obj, VarValue &val, DdxDir dir )
 	}
 	else if ( AFSearchListBox *slb = obj->GetNative<AFSearchListBox>() )
 	{
-		if ( dir == VAR_TO_OBJ ) slb->SetStringSelection( val.String() );
+		if ( dir == VAR_TO_OBJ )
+		{
+			if ( !slb->SetStringSelection( val.String() ) )
+				wxMessageBox( "Error: the selection '" + val.String() + "' was not found in the available choices." );
+		}
 		else val.Set( slb->GetStringSelection() );
 	}
 	else return false; // object data exch not handled for this type
