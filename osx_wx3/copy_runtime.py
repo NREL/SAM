@@ -9,18 +9,18 @@ if os.path.exists(TARGET_DIR):
 
 shutil.copytree(SOURCE_DIR, TARGET_DIR, ignore=shutil.ignore_patterns('.svn'))
 
-#SOURCE_DIR = '../../deploy/samples'
-#TARGET_DIR = 'SAM.app/Contents/MacOS/samples'
+SOURCE_DIR = '../deploy/solar'
+TARGET_DIR = 'SAM.app/Contents/solar'
 
-#if os.path.exists(TARGET_DIR):
-#    shutil.rmtree(TARGET_DIR)
+if os.path.exists(TARGET_DIR):
+    shutil.rmtree(TARGET_DIR)
 
-#shutil.copytree(SOURCE_DIR, TARGET_DIR, ignore=shutil.ignore_patterns('.svn'))
+shutil.copytree(SOURCE_DIR, TARGET_DIR, ignore=shutil.ignore_patterns('.svn'))
 
-#SOURCE_DIR = '../../deploy/weather'
-#TARGET_DIR = 'SAM.app/Contents/MacOS/weather'
+SOURCE_DIR = '../deploy/libraries'
+TARGET_DIR = 'SAM.app/Contents/libraries'
 
-#if os.path.exists(TARGET_DIR):
-#    shutil.rmtree(TARGET_DIR)
+if os.path.exists(TARGET_DIR):
+    shutil.rmtree(TARGET_DIR)
 
-#shutil.copytree(SOURCE_DIR, TARGET_DIR, ignore=shutil.ignore_patterns('.svn'))
+shutil.copytree(SOURCE_DIR, TARGET_DIR, ignore=shutil.ignore_patterns('.svn'))

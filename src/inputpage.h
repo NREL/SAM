@@ -24,9 +24,9 @@ class CallbackContext
 public:
 	CallbackContext( ActiveInputPage *ip, lk::node_t *root, const wxString &desc = wxEmptyString );	
 	ActiveInputPage *InputPage();
-	VarTable &Values();
-	Case &Case();
-	CaseWindow *CaseWindow();
+	VarTable &GetValues();
+	Case &GetCase();
+	CaseWindow *GetCaseWindow();
 	virtual bool Invoke(  );
 };
 

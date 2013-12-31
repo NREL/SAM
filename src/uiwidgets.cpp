@@ -384,7 +384,6 @@ public:
 		grdData->DisableDragColMove();
 		grdData->DisableDragGridSize();
 
-		grdData->Freeze();
 		grdData->SetRowLabelValue(0, "Jan");
 		grdData->SetRowLabelValue(1, "Feb");
 		grdData->SetRowLabelValue(2, "Mar");
@@ -405,8 +404,6 @@ public:
 		grdData->SetRowLabelSize( wxGRID_AUTOSIZE );
 		grdData->SetColLabelSize( wxGRID_AUTOSIZE );
 	
-		grdData->Thaw();
-
 		float d[12];
 		for (int i=0;i<12;i++) d[i] = 1;
 
@@ -444,10 +441,8 @@ public:
 	}
 	void SetData(float d[12])
 	{
-		grdData->Freeze();
 		for (int i=0;i<12;i++)
 			grdData->SetCellValue( i, 0, wxString::Format("%g", d[i]) );
-		grdData->Thaw();
 	}
 
 	void GetData(float d[12])
@@ -463,10 +458,8 @@ public:
 
 	void OnApplySingleValue(wxCommandEvent &)
 	{
-		grdData->Freeze();
 		for (int i=0;i<12;i++)
 			grdData->SetCellValue( i, 0, wxString::Format("%lg", numSV->Value()) );
-		grdData->Thaw();
 	}
 
 	DECLARE_EVENT_TABLE()
@@ -669,13 +662,14 @@ void AFSearchListBox::OnSelect( wxCommandEvent &e )
 
 void AFSearchListBox::UpdateView()
 {
-	m_list->Freeze();
-	m_list->Clear();
+	wxArrayString list;
 	for (size_t i=0;i<m_items.size();i++)
 		if (m_items[i].shown)
-			m_list->Append( m_items[i].str );
+			list.Add( m_items[i].str );
 
-	m_list->Thaw();
+	m_list->Clear();
+	m_list->Append(list);
+
 }
 
 
@@ -1070,7 +1064,7 @@ public:
 				return;
 			}
 
-			fprintf(fp, "Exported Data (%d)\n", mData.size());
+			fprintf(fp, "Exported Data (%d)\n", (int)mData.size());
 			for (int i=0;i<mData.size();i++)
 				fprintf(fp, "%g\n", mData[i]);
 			fclose(fp);
@@ -1524,7 +1518,6 @@ void AFDataMatrixCtrl::MatrixToGrid()
 	m_numCols->SetValue( nc );
 
 	m_grid->ResizeGrid( nr, nc );
-	m_grid->Freeze();
 	for (r=0;r<nr;r++)
 		for (c=0;c<nc;c++)
 			m_grid->SetCellValue(r,c, wxString::Format("%g", m_data.at(r,c)));
@@ -1572,7 +1565,6 @@ void AFDataMatrixCtrl::MatrixToGrid()
 //		m_grid->SetRowLabelSize( 1 );
 	}
 
-	m_grid->Thaw();
 }
 
 void AFDataMatrixCtrl::SetRowLabelFormat( const wxString &val_fmt, double y2, double y1, double y0 )
@@ -1669,13 +1661,11 @@ public:
 				Grid->SetColLabelValue( i, collabels->Item(i) );
 		}
 
-		Grid->Freeze();
 		Grid->SetRowLabelSize(wxGRID_AUTOSIZE);
 		Grid->SetRowLabelAlignment(wxALIGN_LEFT,wxALIGN_CENTRE);
 		//Grid->SetColLabelSize(wxGRID_AUTOSIZE);
 		Grid->SetColLabelAlignment(wxALIGN_LEFT,wxALIGN_CENTRE);
 		//Grid->AutoSize();
-		Grid->Thaw();
 
 		Grid->Layout();
 		Grid->GetParent()->Layout();
@@ -2063,7 +2053,6 @@ matrix_t<float> AFMonthByHourFactorCtrl::GetData()
 void AFMonthByHourFactorCtrl::UpdateGrid()
 {
 
-	mGrid->Freeze();
 	int r,c;
 	for (r=0;r<SFROWS;r++)
 		for (c=0;c<SFCOLS;c++)
@@ -2072,7 +2061,6 @@ void AFMonthByHourFactorCtrl::UpdateGrid()
 	mGrid->SetRowLabelSize(wxGRID_AUTOSIZE);
 	mGrid->SetColLabelSize(wxGRID_AUTOSIZE);
 	mGrid->AutoSize();
-	mGrid->Thaw();
 	mGrid->Layout();
 	mGrid->ForceRefresh();
 	Layout();
@@ -2122,7 +2110,6 @@ void AFMonthByHourFactorCtrl::ApplyVal(int r, int c, double sf)
 	if (sf<0.0) sf = 0.0;
 	if (sf>1.0) sf = 1.0;
 
-	mGrid->Freeze();
 	if (mSelTopRow >= 0 && mSelLeftCol >= 0)
 	{
 		for (r=mSelTopRow; r <= mSelBottomRow; r++)
@@ -2142,7 +2129,6 @@ void AFMonthByHourFactorCtrl::ApplyVal(int r, int c, double sf)
 		DispatchEvent();
 	}
 
-	mGrid->Thaw();
 	mGrid->ForceRefresh();
 }
 
