@@ -13,6 +13,8 @@
 #include <wex/icons/qmark.cpng>
 #include <wex/utils.h>
 
+#include <ssc/sscapi.h>
+
 #include "../resource/nrel_small.cpng"
 #include "../resource/main_menu.cpng"
 #include "../resource/notes_white.cpng"
@@ -1065,7 +1067,7 @@ bool SamApp::OnInit()
 	wxLog::SetActiveTarget( g_logWindow );
 	g_logWindow->Show();
 //#endif
-
+	
 	// register all the object types that can
 	// be read or written to streams.
 	ObjectTypes::Register( new StringHash );
@@ -1078,6 +1080,8 @@ bool SamApp::OnInit()
 	wxInitAllImageHandlers();
 	wxSimpleCurlInit();
 	
+	wxLogStatus( "startup with SSC version %d, %s", ssc_version(), ssc_build_info() );
+
 	SplashScreen splash;
 	splash.CenterOnScreen();
 	splash.Show();
@@ -1185,6 +1189,8 @@ void SamApp::Restart()
 			has_more = dir.GetNext( &file );
 		}
 	}
+
+	ScanSolarResourceData();
 }
 
 wxString SamApp::GetAppPath()

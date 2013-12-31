@@ -1,7 +1,11 @@
 #include <wx/filename.h>
+#include <wx/dir.h>
+
+#include <ssc/sscapi.h>
 
 #include "library.h"
 #include "object.h"
+#include "main.h"
 
 class LibManager {
 public:
@@ -61,7 +65,21 @@ bool Library::Read( const wxString &file )
 		return false;
 
 	m_name = wxFileName(file).GetName();
-	m_dataFile = file;
+
+	return ScanData();
+
+}
+
+bool Library::Read( const wxCSVData &data, const wxString &name )
+{
+	m_csv = data;
+	m_name = name;
+	return ScanData();
+}
+
+bool Library::ScanData()
+{
+	m_errors.clear();
 
 	m_startRow = 2;
 	while( m_startRow < m_csv.NumRows()
@@ -91,6 +109,8 @@ bool Library::Read( const wxString &file )
 
 		m_fields.push_back( f );
 	}
+
+	return true;
 }
 
 wxString Library::GetName() const
@@ -169,4 +189,122 @@ bool Library::ApplyEntry( int entry, int varindex, VarTable &tab, wxArrayString 
 	}
 
 	return m_errors.Count() == 0;
+}
+
+
+bool ScanSolarResourceData()
+{
+	wxString path = SamApp::GetRuntimePath() + "../solar/";
+	wxDir dir( path );
+	if( !dir.IsOpened() ) return false;
+
+	wxCSVData csv;
+	csv(0,0) = "Name";
+	csv(2,0) = "[0]";
+
+	csv(0,1) = "City";
+	csv(2,1) = "loc.city";
+
+	csv(0,2) = "State";
+	csv(2,2) = "loc.state";
+
+	csv(0,3) = "Country";
+	csv(2,3) = "loc.country";
+
+	csv(0,4) = "Latitude";
+	csv(1,4) = "deg";
+	csv(2,4) = "loc.lat";
+
+	csv(0,5) = "Longitude";
+	csv(1,5) = "deg";
+	csv(2,5) = "loc.lon";
+
+	csv(0,6) = "Time zone";
+	csv(1,6) = "hour";
+	csv(2,6) = "loc.tz";
+
+	csv(0,7) = "Elevation";
+	csv(1,7) = "m";
+	csv(2,7) = "loc.elev";
+
+	csv(0,8) = "Station ID";
+	csv(2,8) = "loc.id";
+
+	csv(0,9) = "File name";
+	csv(2,9) = "loc.file";
+
+	int row = 3;
+	wxString file;
+	bool has_more = dir.GetFirst( &file, "*.csv", wxDIR_FILES );
+	while( has_more )
+	{
+		// process file
+		wxString wf = path + "/" + file;
+		
+		ssc_data_t pdata = ssc_data_create();
+		ssc_data_set_string( pdata, "file_name", (const char*)wf.c_str() );
+		ssc_data_set_number( pdata, "scan_header_only", 1 );
+
+		if ( const char *err = ssc_module_exec_simple_nothread( "wfcsvread", pdata ) )
+		{
+			wxLogStatus("error scanning '" + wf + "'");
+			wxLogStatus("\t%s", err );
+		}
+		else
+		{
+			ssc_number_t val;
+			const char *str;
+
+			wxFileName ff(wf);
+			ff.Normalize();
+
+			csv(row,0) = ff.GetName();
+
+			if ( str = ssc_data_get_string( pdata, "city" ) )
+				csv(row,1) = wxString(str);
+
+			if ( str = ssc_data_get_string( pdata, "state" ) )
+				csv(row,2) = wxString(str);
+
+			if ( str = ssc_data_get_string( pdata, "country" ) )
+				csv(row,3) = wxString(str);
+			
+			if ( ssc_data_get_number( pdata, "lat", &val ) )
+				csv(row,4) = wxString::Format("%g", val);
+			
+			if ( ssc_data_get_number( pdata, "lon", &val ) )
+				csv(row,5) = wxString::Format("%g", val);
+			
+			if ( ssc_data_get_number( pdata, "tz", &val ) )
+				csv(row,6) = wxString::Format("%g", val);
+			
+			if ( ssc_data_get_number( pdata, "elev", &val ) )
+				csv(row,7) = wxString::Format("%g", val);
+
+			if ( str = ssc_data_get_string( pdata, "location" ) )
+				csv(row,8) = wxString(str);
+			
+			csv(row,9) = ff.GetFullPath();
+
+			row++;
+		}
+
+		ssc_data_free( pdata );
+
+		has_more = dir.GetNext( &file );
+	}
+	
+	csv.WriteFile( wxGetUserHome() + "/SolarResourceData.csv" );
+
+	Library *lib = new Library;	
+	if ( lib->Read( csv, "SolarResourceData" ) )
+	{
+		gs_libs.m_libs.push_back( lib );
+		return true;
+	}
+	else
+	{
+		delete lib;
+		return false;
+	}
 }
