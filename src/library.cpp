@@ -1,3 +1,4 @@
+#include <wx/wx.h>
 #include <wx/filename.h>
 #include <wx/dir.h>
 
@@ -136,6 +137,15 @@ std::vector<Library::Field> &Library::GetFields()
 	return m_fields;
 }
 
+int Library::GetFieldIndex( const wxString &name )
+{
+	for( size_t i=0;i<m_fields.size();i++ )
+		if ( m_fields[i].Name.Lower() == name.Lower() )
+			return i;
+		
+	return -1;
+}
+
 int Library::FindEntry( const wxString &name )
 {
 	for( size_t i=m_startRow;i<m_csv.NumRows();i++ )
@@ -148,6 +158,11 @@ int Library::FindEntry( const wxString &name )
 wxString Library::GetEntryValue( int entry, int field )
 {
 	return m_csv( entry+m_startRow, field+1 );
+}
+
+wxString Library::GetEntryName( int entry )
+{
+	return m_csv(entry+m_startRow,0);
 }
 
 bool Library::ApplyEntry( int entry, int varindex, VarTable &tab, wxArrayString &changed )
@@ -307,4 +322,203 @@ bool ScanSolarResourceData()
 		delete lib;
 		return false;
 	}
+}
+
+LibraryListView::LibraryListView( LibraryCtrl *parent, int id, const wxPoint &pos,
+	const wxSize &size )
+	: wxListView( parent, id, pos, size, wxLC_REPORT|wxLC_VIRTUAL|wxLC_SINGLE_SEL )
+{
+	m_libctrl = parent;
+}
+
+wxString LibraryListView::OnGetItemText( long item, long col ) const
+{
+	return m_libctrl->GetCellValue( item, col );
+}
+
+wxListItemAttr *LibraryListView::OnGetItemAttr( long item ) const
+{
+	static wxListItemAttr even( *wxBLACK, *wxWHITE, *wxNORMAL_FONT ),
+		odd( *wxBLACK, wxColour(245,245,245), *wxNORMAL_FONT );
+
+	return (item%2==0) ? &even : &odd;
+}
+
+enum { ID_LIST = wxID_HIGHEST+495, ID_FILTER, ID_TARGET, ID_REFRESH };
+
+BEGIN_EVENT_TABLE( LibraryCtrl, wxPanel )
+	EVT_LIST_ITEM_SELECTED( ID_LIST, LibraryCtrl::OnSelected )
+	EVT_LIST_COL_CLICK( ID_LIST, LibraryCtrl::OnColClick )
+	EVT_TEXT( ID_FILTER, LibraryCtrl::OnCommand )
+	EVT_BUTTON( ID_REFRESH, LibraryCtrl::OnCommand )
+END_EVENT_TABLE()
+
+LibraryCtrl::LibraryCtrl( wxWindow *parent, int id, const wxPoint &pos, const wxSize &size )
+	: wxPanel( parent, id, pos, size, wxTAB_TRAVERSAL )
+{
+	m_label = new wxStaticText( this, wxID_ANY, wxT("Search for:") );
+	m_filter = new wxTextCtrl( this, ID_FILTER );
+	m_target = new wxChoice( this, ID_TARGET );
+	m_notify = new wxStaticText( this, wxID_ANY, wxEmptyString );
+	m_notify->SetForegroundColour( *wxRED );
+	m_list = new LibraryListView( this, ID_LIST );
+
+	wxBoxSizer *sz_horiz = new wxBoxSizer( wxHORIZONTAL );
+	sz_horiz->Add( m_label, 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
+	sz_horiz->Add( m_filter, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3 );
+	sz_horiz->Add( m_target, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3 );
+	sz_horiz->AddStretchSpacer();
+	sz_horiz->Add( m_notify, 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
+	sz_horiz->Add( new wxButton( this, ID_REFRESH, wxT("Refresh list") ), 0, wxALL|wxALIGN_CENTER_VERTICAL, 3 );
+
+	wxBoxSizer *sz_vert = new wxBoxSizer( wxVERTICAL );
+	sz_vert->Add( sz_horiz, 0, wxALL|wxEXPAND, 0 );
+	sz_vert->Add( m_list, 1, wxALL|wxEXPAND, 0 );
+	SetSizer( sz_vert );
+}
+
+LibraryCtrl::~LibraryCtrl()
+{
+	// nothing to do
+}
+
+bool LibraryCtrl::SetEntrySelection( const wxString &entry )
+{
+	if ( Library *lib = Library::Find( m_library ) )
+	{
+		int idx = lib->FindEntry( entry );
+		if ( idx >= 0 )
+		{
+			m_list->Select( idx, true );
+			return true;
+		}
+	}
+
+	return false;
+}
+
+wxString LibraryCtrl::GetEntrySelection()
+{
+	if ( Library *lib = Library::Find( m_library ) )
+		return lib->GetEntryName( m_list->GetFirstSelected() );
+	else
+		return wxEmptyString;	
+}
+
+wxString LibraryCtrl::GetCellValue( long item, long col )
+{
+	if ( Library *lib = Library::Find( m_library ) )
+		if ( item < m_indexMap.size() && col < m_fieldMap.size() )
+			return lib->GetEntryValue( m_indexMap[item], m_fieldMap[col] );
+
+	return wxT("<inval>");
+}
+
+void LibraryCtrl::SetLibrary( const wxString &name, const wxString &fields )
+{
+	m_library = name;
+	
+	if( Library *lib = Library::Find( m_library ) )
+	{
+		m_fields.Clear();
+		m_fieldMap.clear();	
+
+		if ( fields == "*" )
+		{
+			std::vector<Library::Field> &ff = lib->GetFields();
+			for( size_t i=0;i<ff.size();i++ )
+			{
+				m_fields.Add( ff[i].Name );
+				m_fieldMap.push_back( i );
+			}
+		}
+		else
+		{
+			wxArrayString fnames = wxSplit( fields, ',' );	
+			for( size_t i=0;i<fnames.size();i++ )
+			{
+				int idx = lib->GetFieldIndex( fnames[i] );
+				if ( idx >= 0 )
+				{
+					m_fields.Add( fnames[i] );
+					m_fieldMap.push_back( lib->GetFieldIndex( fnames[i] ) );
+				}
+			}
+		}
+	}
+
+	ReloadLibrary();
+
+}
+
+void LibraryCtrl::ReloadLibrary()
+{
+	if( Library *lib = Library::Find( m_library ) )
+	{
+		m_list->ClearAll();
+		for( size_t i=0;i<m_fields.size();i++ )
+			m_list->AppendColumn( m_fields[i] );
+		
+		m_entries = lib->ListEntries();
+
+		UpdateList();
+		
+	}
+	else
+		wxLogStatus( "LibraryCtrl: could not find library " + m_library );
+}
+
+void LibraryCtrl::UpdateList()
+{
+	wxString filter = m_filter->GetValue().Lower();
+	wxString sel = GetEntrySelection();
+	
+	m_notify->SetLabel( wxEmptyString );
+	m_indexMap.clear();
+	if ( m_entries.size() > 0 )
+		m_indexMap.reserve( m_entries.size() );
+
+	for (size_t i=0;i<m_entries.size();i++)
+	{
+		if ( filter.IsEmpty()			
+			|| (filter.Len() <= 2 && m_entries[i].Left( filter.Len() ).Lower() == filter)
+			|| (m_entries[i].Lower().Find( filter ) >= 0)
+			|| (m_entries[i] == sel)
+			)
+			m_indexMap.push_back( i );
+	}
+
+	if (m_entries.size() == 1 && !sel.IsEmpty())
+		m_notify->SetLabel( "No matches. (selected item shown)" );
+	
+	m_list->SetItemCount( m_indexMap.size() );
+	m_list->Refresh();
+	SetEntrySelection( sel );
+
+
+}
+
+void LibraryCtrl::OnSelected( wxListEvent &evt )
+{
+	wxCommandEvent issue( wxEVT_LISTBOX, GetId() );
+	issue.SetEventObject( this );
+	issue.SetInt( evt.GetSelection() );
+	ProcessEvent( issue );
+}
+
+void LibraryCtrl::OnColClick( wxListEvent &evt )
+{
+	wxMessageBox( wxString::Format("column click %d",evt.GetColumn() ) );
+}
+
+void LibraryCtrl::OnCommand( wxCommandEvent &evt )
+{
+	if (evt.GetId() == ID_FILTER )
+		UpdateList();
+}
+
+void LibraryCtrl::SetLabel( const wxString &text )
+{
+	m_label->SetLabel( text );
+	Layout();
 }
