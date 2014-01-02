@@ -335,7 +335,7 @@ wxString LibraryListView::OnGetItemText( long item, long col ) const
 {
 	return m_libctrl->GetCellValue( item, col );
 }
-
+/*
 wxListItemAttr *LibraryListView::OnGetItemAttr( long item ) const
 {
 	static wxListItemAttr even( *wxBLACK, *wxWHITE, *wxNORMAL_FONT ),
@@ -343,6 +343,7 @@ wxListItemAttr *LibraryListView::OnGetItemAttr( long item ) const
 
 	return (item%2==0) ? &even : &odd;
 }
+*/
 
 enum { ID_LIST = wxID_HIGHEST+495, ID_FILTER, ID_TARGET, ID_REFRESH };
 
@@ -351,11 +352,16 @@ BEGIN_EVENT_TABLE( LibraryCtrl, wxPanel )
 	EVT_LIST_COL_CLICK( ID_LIST, LibraryCtrl::OnColClick )
 	EVT_TEXT( ID_FILTER, LibraryCtrl::OnCommand )
 	EVT_BUTTON( ID_REFRESH, LibraryCtrl::OnCommand )
+	EVT_CHOICE( ID_TARGET, LibraryCtrl::OnCommand )
 END_EVENT_TABLE()
+
+#define ENTRY_NAME_IDX 9999
 
 LibraryCtrl::LibraryCtrl( wxWindow *parent, int id, const wxPoint &pos, const wxSize &size )
 	: wxPanel( parent, id, pos, size, wxTAB_TRAVERSAL )
 {
+	m_inclEntryName = true;
+
 	m_label = new wxStaticText( this, wxID_ANY, wxT("Search for:") );
 	m_filter = new wxTextCtrl( this, ID_FILTER );
 	m_target = new wxChoice( this, ID_TARGET );
@@ -389,7 +395,21 @@ bool LibraryCtrl::SetEntrySelection( const wxString &entry )
 		int idx = lib->FindEntry( entry );
 		if ( idx >= 0 )
 		{
-			m_list->Select( idx, true );
+			/*
+			
+        SetItemState(n, on ? wxLIST_STATE_SELECTED : 0, wxLIST_STATE_SELECTED);
+    }
+
+    // focus and show the given item
+    void Focus(long index)
+    {
+        SetItemState(index, wxLIST_STATE_FOCUSED, wxLIST_STATE_FOCUSED);
+        EnsureVisible(index);*/
+
+			m_list->SetItemState( idx, wxLIST_STATE_SELECTED|wxLIST_STATE_FOCUSED,
+				wxLIST_STATE_SELECTED|wxLIST_STATE_FOCUSED );
+			m_list->EnsureVisible( idx );
+
 			return true;
 		}
 	}
@@ -408,8 +428,15 @@ wxString LibraryCtrl::GetEntrySelection()
 wxString LibraryCtrl::GetCellValue( long item, long col )
 {
 	if ( Library *lib = Library::Find( m_library ) )
+	{
 		if ( item < m_indexMap.size() && col < m_fieldMap.size() )
-			return lib->GetEntryValue( m_indexMap[item], m_fieldMap[col] );
+		{
+			if ( m_fieldMap[col] == ENTRY_NAME_IDX )
+				return lib->GetEntryName( m_indexMap[item] );
+			else
+				return lib->GetEntryValue( m_indexMap[item], m_fieldMap[col] );
+		}
+	}
 
 	return wxT("<inval>");
 }
@@ -422,6 +449,12 @@ void LibraryCtrl::SetLibrary( const wxString &name, const wxString &fields )
 	{
 		m_fields.Clear();
 		m_fieldMap.clear();	
+
+		if ( m_inclEntryName )
+		{
+			m_fields.Add( "Name" );
+			m_fieldMap.push_back( ENTRY_NAME_IDX );
+		}
 
 		if ( fields == "*" )
 		{
@@ -455,13 +488,26 @@ void LibraryCtrl::ReloadLibrary()
 {
 	if( Library *lib = Library::Find( m_library ) )
 	{
+		wxString tarsel = m_target->GetStringSelection();
+		m_target->Clear();
+		
 		m_list->ClearAll();
 		for( size_t i=0;i<m_fields.size();i++ )
+		{
 			m_list->AppendColumn( m_fields[i] );
+			m_target->Append( m_fields[i] );
+		}
+
+		if ( tarsel.IsEmpty()  && m_target->GetCount() > 0 )
+			m_target->SetSelection( 0 );
+		else
+			m_target->SetStringSelection( tarsel );
 		
 		m_entries = lib->ListEntries();
 
 		UpdateList();
+
+		m_list->SetColumnWidth( 0, 350 );
 		
 	}
 	else
@@ -478,14 +524,28 @@ void LibraryCtrl::UpdateList()
 	if ( m_entries.size() > 0 )
 		m_indexMap.reserve( m_entries.size() );
 
-	for (size_t i=0;i<m_entries.size();i++)
+	if( Library *lib = Library::Find( m_library ) )
 	{
-		if ( filter.IsEmpty()			
-			|| (filter.Len() <= 2 && m_entries[i].Left( filter.Len() ).Lower() == filter)
-			|| (m_entries[i].Lower().Find( filter ) >= 0)
-			|| (m_entries[i] == sel)
-			)
-			m_indexMap.push_back( i );
+		size_t num_entries = lib->NumEntries();
+
+		int t_sel = m_target->GetSelection();
+		size_t target_field_idx = ENTRY_NAME_IDX;
+		if ( t_sel >= 0 && t_sel < m_fieldMap.size() )
+			target_field_idx = m_fieldMap[t_sel];
+
+		for (size_t i=0;i<num_entries;i++)
+		{
+			wxString target = lib->GetEntryName( i );			
+			if ( target_field_idx != ENTRY_NAME_IDX )
+				target = lib->GetEntryValue( i, target_field_idx );
+
+			if ( filter.IsEmpty()			
+				|| (filter.Len() <= 2 && target.Left( filter.Len() ).Lower() == filter)
+				|| (target.Lower().Find( filter ) >= 0)
+				|| (target == sel)
+				)
+				m_indexMap.push_back( i );
+		}
 	}
 
 	if (m_entries.size() == 1 && !sel.IsEmpty())
@@ -513,7 +573,7 @@ void LibraryCtrl::OnColClick( wxListEvent &evt )
 
 void LibraryCtrl::OnCommand( wxCommandEvent &evt )
 {
-	if (evt.GetId() == ID_FILTER )
+	if( evt.GetId() == ID_FILTER || evt.GetId() == ID_TARGET )
 		UpdateList();
 }
 
@@ -521,4 +581,9 @@ void LibraryCtrl::SetLabel( const wxString &text )
 {
 	m_label->SetLabel( text );
 	Layout();
+}
+
+void LibraryCtrl::IncludeEntryName( bool b )
+{
+	m_inclEntryName = b;
 }

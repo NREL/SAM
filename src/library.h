@@ -79,7 +79,7 @@ public:
 		const wxSize &size = wxDefaultSize );
 	
 	virtual wxString OnGetItemText( long item, long col ) const;
-	virtual wxListItemAttr *OnGetItemAttr( long item ) const;
+//	virtual wxListItemAttr *OnGetItemAttr( long item ) const;
 };
 
 #define EVT_LIBRARYCTRL(id, func) EVT_LISTBOX(id,func)
@@ -92,6 +92,7 @@ public:
 	virtual ~LibraryCtrl();
 
 	void SetLabel( const wxString &label );
+	void IncludeEntryName( bool b );
 
 	void SetLibrary( const wxString &name, const wxString &fields );
 	void ReloadLibrary();
@@ -110,6 +111,7 @@ protected:
 
 private:
 	wxString m_library;
+	bool m_inclEntryName;
 
 	wxArrayString m_fields;
 	std::vector<size_t> m_fieldMap;
