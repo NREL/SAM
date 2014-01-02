@@ -2741,20 +2741,30 @@ class wxUILibraryCtrl : public wxUIObject
 public:
 	wxUILibraryCtrl() {
 		AddProperty( "Library", new wxUIProperty( wxString("Library Name") ) );
-		AddProperty( "Fields", new wxUIProperty( wxString("all") ) );
+		AddProperty( "Fields", new wxUIProperty( wxString("*") ) );
+		AddProperty( "IncludeEntryName", new wxUIProperty( true ) );
 	}
 	virtual wxString GetTypeName() { return "Library"; }
 	virtual wxUIObject *Duplicate() { wxUIObject *o = new wxUILibraryCtrl; o->Copy( this ); return o; }
 	virtual bool IsNativeObject() { return true; }
 	virtual wxWindow *CreateNative( wxWindow *parent ) {
 		LibraryCtrl *ll = new LibraryCtrl( parent, wxID_ANY );
+		ll->IncludeEntryName( Property("IncludeEntryName").GetBoolean() );
 		ll->SetLibrary( Property("Library").GetString(), Property("Fields").GetString() );
 		return AssignNative( ll );
 	}
 	virtual void OnPropertyChanged( const wxString &id, wxUIProperty *p )
 	{
 		if ( LibraryCtrl *ll = GetNative<LibraryCtrl>() )
-			ll->SetLibrary( Property("Library").GetString(), Property("Fields").GetString() );
+		{
+			if ( id == "Library" || id == "Fields" )
+				ll->SetLibrary( Property("Library").GetString(), Property("Fields").GetString() );
+			else if ( id == "IncludeEntryName" )
+			{
+				ll->IncludeEntryName( p->GetBoolean() );
+				ll->ReloadLibrary();
+			}
+		}
 	}
 
 };
