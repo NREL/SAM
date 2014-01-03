@@ -1,3 +1,6 @@
+#include <vector>
+#include <algorithm>
+
 #include <wx/wx.h>
 #include <wx/filename.h>
 #include <wx/dir.h>
@@ -98,11 +101,16 @@ bool Library::ScanData()
 	
 	m_fields.clear();
 	size_t ncol = m_csv.NumCols();
-	for( size_t i=1;i<ncol;i++)
+	for( size_t i=0;i<ncol;i++)
 	{
 		Field f;
-		f.Name = m_csv( 0, i );
-		f.Units = m_csv( 1, i );
+		if ( i == 0 ) f.Name = wxT("Name");
+		else
+		{
+			f.Name = m_csv( 0, i );
+			f.Units = m_csv( 1, i );
+		}
+
 		for( size_t j=0;j<nvarlists;j++ )
 			f.Variables.Add( m_csv( 2+j, i ) );
 
@@ -157,12 +165,12 @@ int Library::FindEntry( const wxString &name )
 
 wxString Library::GetEntryValue( int entry, int field )
 {
-	return m_csv( entry+m_startRow, field+1 );
+	return m_csv( entry+m_startRow, field );
 }
 
 wxString Library::GetEntryName( int entry )
 {
-	return m_csv(entry+m_startRow,0);
+	return GetEntryValue( entry, 0 );
 }
 
 bool Library::ApplyEntry( int entry, int varindex, VarTable &tab, wxArrayString &changed )
@@ -182,7 +190,7 @@ bool Library::ApplyEntry( int entry, int varindex, VarTable &tab, wxArrayString 
 		return false;
 	}
 
-	for( size_t i=0;i<m_fields.size();i++ )
+	for( size_t i=1;i<m_fields.size();i++ )
 	{
 		Field &f = m_fields[i];
 
@@ -355,13 +363,10 @@ BEGIN_EVENT_TABLE( LibraryCtrl, wxPanel )
 	EVT_CHOICE( ID_TARGET, LibraryCtrl::OnCommand )
 END_EVENT_TABLE()
 
-#define ENTRY_NAME_IDX 9999
 
 LibraryCtrl::LibraryCtrl( wxWindow *parent, int id, const wxPoint &pos, const wxSize &size )
 	: wxPanel( parent, id, pos, size, wxTAB_TRAVERSAL )
 {
-	m_inclEntryName = true;
-
 	m_label = new wxStaticText( this, wxID_ANY, wxT("Search for:") );
 	m_filter = new wxTextCtrl( this, ID_FILTER );
 	m_target = new wxChoice( this, ID_TARGET );
@@ -392,23 +397,35 @@ bool LibraryCtrl::SetEntrySelection( const wxString &entry )
 {
 	if ( Library *lib = Library::Find( m_library ) )
 	{
-		int idx = lib->FindEntry( entry );
-		if ( idx >= 0 )
+		int entry_idx = lib->FindEntry( entry );
+		if ( entry_idx >= 0 )
 		{
-			/*
-			
-        SetItemState(n, on ? wxLIST_STATE_SELECTED : 0, wxLIST_STATE_SELECTED);
-    }
+			int to_sel = -1;
+			// find in current view
 
-    // focus and show the given item
-    void Focus(long index)
-    {
-        SetItemState(index, wxLIST_STATE_FOCUSED, wxLIST_STATE_FOCUSED);
-        EnsureVisible(index);*/
+			for( size_t i=0;i<m_view.size();i++ )
+			{
+				if ( m_view[i].index == entry_idx )
+				{
+					to_sel = i;
+					break;
+				}
+			}
 
-			m_list->SetItemState( idx, wxLIST_STATE_SELECTED|wxLIST_STATE_FOCUSED,
+			if ( to_sel < 0 )
+			{
+				// selecting item that is not in the currently filtered view,
+				// so we must add it to the view
+				m_view.push_back( viewable(entry, entry_idx) );
+				m_list->SetItemCount( m_view.size() );
+				m_list->Refresh();
+
+				to_sel = m_view.size()-1;
+			}
+
+			m_list->SetItemState( to_sel, wxLIST_STATE_SELECTED|wxLIST_STATE_FOCUSED,
 				wxLIST_STATE_SELECTED|wxLIST_STATE_FOCUSED );
-			m_list->EnsureVisible( idx );
+			m_list->EnsureVisible( to_sel );
 
 			return true;
 		}
@@ -419,24 +436,16 @@ bool LibraryCtrl::SetEntrySelection( const wxString &entry )
 
 wxString LibraryCtrl::GetEntrySelection()
 {
-	if ( Library *lib = Library::Find( m_library ) )
-		return lib->GetEntryName( m_list->GetFirstSelected() );
-	else
-		return wxEmptyString;	
+	long sel = m_list->GetFirstSelected();
+	if ( sel >= 0 && sel < m_view.size() ) return m_view[ sel ].name;
+	return wxEmptyString;
 }
 
 wxString LibraryCtrl::GetCellValue( long item, long col )
 {
 	if ( Library *lib = Library::Find( m_library ) )
-	{
-		if ( item < m_indexMap.size() && col < m_fieldMap.size() )
-		{
-			if ( m_fieldMap[col] == ENTRY_NAME_IDX )
-				return lib->GetEntryName( m_indexMap[item] );
-			else
-				return lib->GetEntryValue( m_indexMap[item], m_fieldMap[col] );
-		}
-	}
+		if ( item < m_view.size() && col < m_fieldMap.size() )
+			return lib->GetEntryValue( m_view[item].index, m_fieldMap[col] );
 
 	return wxT("<inval>");
 }
@@ -449,13 +458,7 @@ void LibraryCtrl::SetLibrary( const wxString &name, const wxString &fields )
 	{
 		m_fields.Clear();
 		m_fieldMap.clear();	
-
-		if ( m_inclEntryName )
-		{
-			m_fields.Add( "Name" );
-			m_fieldMap.push_back( ENTRY_NAME_IDX );
-		}
-
+		
 		if ( fields == "*" )
 		{
 			std::vector<Library::Field> &ff = lib->GetFields();
@@ -478,6 +481,8 @@ void LibraryCtrl::SetLibrary( const wxString &name, const wxString &fields )
 				}
 			}
 		}
+
+		m_sortDir.resize( m_fieldMap.size(), true );
 	}
 
 	ReloadLibrary();
@@ -520,38 +525,39 @@ void LibraryCtrl::UpdateList()
 	wxString sel = GetEntrySelection();
 	
 	m_notify->SetLabel( wxEmptyString );
-	m_indexMap.clear();
+	m_view.clear();
 	if ( m_entries.size() > 0 )
-		m_indexMap.reserve( m_entries.size() );
+		m_view.reserve( m_entries.size() );
 
 	if( Library *lib = Library::Find( m_library ) )
 	{
 		size_t num_entries = lib->NumEntries();
-
+		
+		size_t target_field_idx = 0;
 		int t_sel = m_target->GetSelection();
-		size_t target_field_idx = ENTRY_NAME_IDX;
 		if ( t_sel >= 0 && t_sel < m_fieldMap.size() )
 			target_field_idx = m_fieldMap[t_sel];
 
 		for (size_t i=0;i<num_entries;i++)
 		{
-			wxString target = lib->GetEntryName( i );			
-			if ( target_field_idx != ENTRY_NAME_IDX )
-				target = lib->GetEntryValue( i, target_field_idx );
+			wxString target = lib->GetEntryValue( i, target_field_idx );
 
 			if ( filter.IsEmpty()			
 				|| (filter.Len() <= 2 && target.Left( filter.Len() ).Lower() == filter)
 				|| (target.Lower().Find( filter ) >= 0)
 				|| (target == sel)
 				)
-				m_indexMap.push_back( i );
+				m_view.push_back( viewable(m_entries[i], i) );
 		}
 	}
 
-	if (m_entries.size() == 1 && !sel.IsEmpty())
+	if (m_view.size() == 1 && !sel.IsEmpty())
+	{
 		m_notify->SetLabel( "No matches. (selected item shown)" );
+		Layout();
+	}
 	
-	m_list->SetItemCount( m_indexMap.size() );
+	m_list->SetItemCount( m_view.size() );
 	m_list->Refresh();
 	SetEntrySelection( sel );
 
@@ -566,9 +572,36 @@ void LibraryCtrl::OnSelected( wxListEvent &evt )
 	ProcessEvent( issue );
 }
 
+bool LibraryCtrl::viewable_compare::operator() ( const viewable &lhs, const viewable &rhs )
+{
+	if ( dir && col[lhs.index] < col[rhs.index] ) return true;
+	else if ( !dir && col[lhs.index] > col[rhs.index] ) return true;
+	else return false;
+}
+
 void LibraryCtrl::OnColClick( wxListEvent &evt )
 {
-	wxMessageBox( wxString::Format("column click %d",evt.GetColumn() ) );
+	wxBusyCursor wait;
+
+	if( Library *lib = Library::Find( m_library ) )
+	{
+		wxString sel = GetEntrySelection();
+
+		size_t field_idx = m_fieldMap[evt.GetColumn()];
+		
+		wxArrayString column;
+		column.reserve( m_entries.size() );
+		for( size_t i=0;i<m_entries.size();i++ )
+			column.push_back( lib->GetEntryValue( i, field_idx ) );
+
+		viewable_compare cc( column, ! m_sortDir[evt.GetColumn()] );
+		std::stable_sort( m_view.begin(), m_view.end(), cc );
+
+		m_sortDir[ evt.GetColumn() ] = ! m_sortDir[evt.GetColumn()];
+
+		m_list->Refresh();
+		SetEntrySelection( sel );
+	}
 }
 
 void LibraryCtrl::OnCommand( wxCommandEvent &evt )
@@ -581,9 +614,4 @@ void LibraryCtrl::SetLabel( const wxString &text )
 {
 	m_label->SetLabel( text );
 	Layout();
-}
-
-void LibraryCtrl::IncludeEntryName( bool b )
-{
-	m_inclEntryName = b;
 }

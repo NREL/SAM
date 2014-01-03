@@ -126,18 +126,13 @@ CaseWindow::CaseWindow( wxWindow *parent, Case *c )
 
 	m_inputPageScrollWin = new wxScrolledWindow( m_inputPagePanel );
 	m_inputPageScrollWin->SetBackgroundColour( *wxWHITE );
-
+	
 	m_exclPanel = new wxPanel( m_inputPagePanel );
-	m_exclPageLabel = new wxStaticText( m_exclPanel, wxID_ANY, wxEmptyString );	
-	m_exclPageLabel->SetFont( wxMetroTheme::Font( wxMT_NORMAL, 12 ));	
-	m_exclPageButton = new wxMetroButton( m_exclPanel, ID_EXCL_BUTTON, "Change..." );
+	m_exclPageButton = new wxMetroButton( m_exclPanel, ID_EXCL_BUTTON, "Change...", wxNullBitmap, wxDefaultPosition, wxDefaultSize, wxMB_DOWNARROW );
 	wxBoxSizer *excl_horiz = new wxBoxSizer( wxHORIZONTAL );
-	excl_horiz->Add( m_exclPageLabel, 1, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
-	excl_horiz->Add( m_exclPageButton, 0, wxALL, 1 );
-	wxBoxSizer *excl_vert = new wxBoxSizer( wxVERTICAL );
-	excl_vert->Add( excl_horiz, 0, wxALL|wxEXPAND, 1 );
-	excl_vert->Add( new wxStaticLine( m_exclPanel ), 1, wxALL|wxEXPAND, 1 );
-	m_exclPanel->SetSizer( excl_vert );
+	excl_horiz->Add( m_exclPageButton, 0, wxALL|wxALIGN_CENTER_VERTICAL, 2 );
+	excl_horiz->AddStretchSpacer();
+	m_exclPanel->SetSizer( excl_horiz );
 
 	wxBoxSizer *ip_sizer = new wxBoxSizer( wxVERTICAL );
 	ip_sizer->Add( m_exclPanel, 0, wxALL|wxEXPAND, 0 );
@@ -523,7 +518,9 @@ void CaseWindow::SetupActivePage()
 		if ( excl_idx < m_currentGroup->Pages.size() 
 			&& m_currentGroup->Pages[excl_idx].size() > 0 )
 		{
-			m_exclPageLabel->SetLabel( m_currentGroup->Pages[excl_idx][0].Caption );
+			//m_exclPageLabel->SetLabel( m_currentGroup->Pages[excl_idx][0].Caption );
+			m_exclPageButton->SetLabel( m_currentGroup->Pages[excl_idx][0].Caption );
+			m_exclPanel->Layout();
 			m_exclPanel->Show( true );
 			active_pages = &( m_currentGroup->Pages[excl_idx] );
 		}
