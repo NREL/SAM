@@ -1,5 +1,5 @@
 Source,Location ID,City,State,Latitude,Longitude,Time Zone,Elevation
-TMY3,726458,"STURGEON BAY",WI,44.850000,-87.417000,-5,221
+TMY3,726458,Sturgeon Bay,WI,44.850000,-87.417000,-5,221
 Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
 2000,1,1,0,0,0,0,1,-6,56,987,7.7,200,0.15
 2000,1,1,1,0,0,0,2,-4,62,987,9.3,220,0.15
