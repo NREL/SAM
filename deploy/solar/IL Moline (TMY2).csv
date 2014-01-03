@@ -1,5 +1,5 @@
 Source,Location ID,City,State,Latitude,Longitude,Time Zone,Elevation
-TMY2,14923,MOLINE,IL,41.450000,-90.516667,-6,181
+TMY2,14923,Moline,IL,41.450000,-90.516667,-6,181
 Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Snow Depth
 1968,1,1,0,0,0,0,-25.4,-31.1,56,1008,3.3,140,5
 1968,1,1,1,0,0,0,-23.5,-29.8,53,1008,3.4,140,5

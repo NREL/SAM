@@ -1,5 +1,5 @@
 Source,Location ID,City,State,Latitude,Longitude,Time Zone,Elevation
-TMY3,722780,"PHOENIX SKY HARBOR INTL AP",AZ,33.450000,-111.983000,-7,337
+TMY3,722780,Phoenix Sky Harbor Intl Ap,AZ,33.450000,-111.983000,-7,337
 Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
 2002,1,1,0,0,0,0,10,5.6,74,977,1.5,110,0.2
 2002,1,1,1,0,0,0,8.9,5.6,80,977,2.1,200,0.2
