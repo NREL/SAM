@@ -1,4 +1,4 @@
-Location,City,Region,Country,Latitude,Longitude,Time Zone,Elevation,Description
+Location,City,Region,Country,Latitude,Longitude,Time Zone,Elevation,Source
 15507,Battle_Harbour,NF,Newfoundland,52.250000,-55.600000,-4.0,9,CWEC
 Year,Month,Day,Hour,Beam,Diffuse,Tdry,Tdew,Pres,Wdir,Wspd,Aod,Pwp,Alb
 1978,1,1,0,0,0,-8.6,-11.1,1018,320,10.3,9.999,99.9,0.37

@@ -1,4 +1,4 @@
-Location,City,Region,Country,Latitude,Longitude,Time Zone,Elevation,Description
+Location,City,Region,Country,Latitude,Longitude,Time Zone,Elevation,Source
 946720,Adelaide,AUS,Australia,-34.930000,138.520000,9.5,4,IWEC
 Year,Month,Day,Hour,Beam,Diffuse,Tdry,Tdew,Pres,Wdir,Wspd,Aod,Pwp,Alb
 1985,1,1,0,0,0,19.8,12.8,1008,999,4.3,0.148,99.9,0.19

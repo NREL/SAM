@@ -1,5 +1,5 @@
 Source,Location ID,City,State,Latitude,Longitude,Time Zone,Elevation
-TMY3,723434,"SPRINGDALE MUNI",AR,36.183000,-94.117000,-6,412
+TMY3,723434,Springdale Muni,AR,36.183000,-94.117000,-6,412
 Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
 1994,1,1,0,0,0,0,-5.2,-11.4,58,965,5.6,100,0.17
 1994,1,1,1,0,0,0,-5.5,-11.5,59,965,5.4,110,0.17

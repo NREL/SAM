@@ -1,5 +1,5 @@
 Source,Location ID,City,State,Latitude,Longitude,Time Zone,Elevation
-TMY2,13877,BRISTOL,TN,36.483333,-82.400000,-5,459
+TMY2,13877,Bristol,TN,36.483333,-82.400000,-5,459
 Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Snow Depth
 1971,1,1,0,0,0,0,-1.1,-4.4,78,955,3.1,260,8
 1971,1,1,1,0,0,0,-1.1,-4.4,78,956,5.2,270,8

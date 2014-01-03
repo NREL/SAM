@@ -1,5 +1,5 @@
 Source,Location ID,City,State,Latitude,Longitude,Time Zone,Elevation
-TMY3,727440,"HANCOCK HOUGHTON CO AP",MI,47.167000,-88.500000,-5,327
+TMY3,727440,Hancock Houghton Co Ap,MI,47.167000,-88.500000,-5,327
 Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
 2004,1,1,0,0,0,0,-6.1,-8.9,78,983,1.5,260,0.16
 2004,1,1,1,0,0,0,-6.1,-8.9,78,984,2.1,250,0.16
