@@ -92,7 +92,6 @@ public:
 	virtual ~LibraryCtrl();
 
 	void SetLabel( const wxString &label );
-	void IncludeEntryName( bool b );
 
 	void SetLibrary( const wxString &name, const wxString &fields );
 	void ReloadLibrary();
@@ -108,16 +107,35 @@ protected:
 	void OnSelected( wxListEvent & );
 	void OnColClick( wxListEvent & );
 	void OnCommand( wxCommandEvent & );
-
+	
 private:
 	wxString m_library;
 	bool m_inclEntryName;
+
+	std::vector<bool> m_sortDir;
 
 	wxArrayString m_fields;
 	std::vector<size_t> m_fieldMap;
 
 	wxArrayString m_entries;
-	std::vector<size_t> m_indexMap;
+
+	struct viewable
+	{
+		viewable( const wxString &n, size_t i ) : name(n), index(i) { }
+		wxString name;
+		size_t index;
+	};
+	
+	class viewable_compare
+	{
+		wxArrayString &col;
+		bool dir;
+	public:
+		viewable_compare( wxArrayString &c,  bool d ) : col(c), dir(d) { }
+		bool operator() ( const viewable &lhs, const viewable &rhs );
+	};
+
+	std::vector<viewable> m_view;
 
 	wxStaticText *m_label;
 	wxTextCtrl *m_filter;

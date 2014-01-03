@@ -66,7 +66,6 @@ private:
 	std::vector<PageDisplayState*> m_currentActivePages;
 	wxScrolledWindow *m_inputPageScrollWin;
 	wxPanel *m_exclPanel;
-	wxStaticText *m_exclPageLabel;
 	wxMetroButton *m_exclPageButton;
 
 	void SetupActivePage();
