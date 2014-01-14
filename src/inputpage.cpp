@@ -153,8 +153,8 @@ bool ActiveInputPage::LoadFile( const wxString &file )
 
 static wxColour UIColorIndicatorFore(60,60,60);
 static wxColour UIColorIndicatorBack(230,230,230);
-static wxColour UIColorCalculatedFore(0,0,255);
-static wxColour UIColorCalculatedBack(224,232,246);
+static wxColour UIColorCalculatedFore(29,80,173);
+static wxColour UIColorCalculatedBack(222,233,244);
 
 void ActiveInputPage::Initialize()
 {
@@ -293,7 +293,7 @@ void ActiveInputPage::OnPaint( wxPaintEvent & )
 				dc.SetFont(*wxNORMAL_FONT);
 				wxColour colour( *wxBLACK );
 				if ( vv->Flags & VF_INDICATOR ) colour = *wxLIGHT_GREY;
-				else if ( vv->Flags & VF_CALCULATED ) colour = *wxBLUE;
+				//else if ( vv->Flags & VF_CALCULATED ) colour = *wxBLUE;
 				dc.SetTextForeground( colour );
 				rct = objs[i]->GetGeometry();
 

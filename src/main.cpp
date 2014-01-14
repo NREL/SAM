@@ -48,6 +48,30 @@ static FormDatabase g_formDatabase;
 static wxLogWindow *g_logWindow = 0;
 
 
+class SamLogWindow : public wxLogWindow
+{
+public:
+	SamLogWindow( )	: wxLogWindow( 0, "sam-log" ) { 
+		GetFrame()->SetPosition( wxPoint( 5, 5 ) );
+		GetFrame()->SetClientSize( wxSize(1100,200) );
+	}
+	virtual bool OnFrameClose( wxFrame *frame ) {
+		g_logWindow = 0; // clear the global pointer, then delete the frame
+		return true;
+	}
+	
+	static void Setup()
+	{
+		if ( g_logWindow != 0 )
+			delete g_logWindow;
+
+		g_logWindow = new SamLogWindow;
+		wxLog::SetActiveTarget( g_logWindow );
+		g_logWindow->Show();
+	}
+};
+
+
 enum { __idFirst = wxID_HIGHEST+592,
 
 	ID_MAIN_MENU, ID_CASE_TABS, ID_CONTEXT_HELP, ID_PAGE_NOTES,
@@ -68,7 +92,7 @@ enum { __idFirst = wxID_HIGHEST+592,
 	ID_CASE_MOVE_RIGHT,
 	__idCaseMenuLast,
 	__idInternalFirst,
-	ID_INTERNAL_IDE, ID_INTERNAL_RESTART,
+	ID_INTERNAL_IDE, ID_INTERNAL_RESTART, ID_INTERNAL_SHOWLOG,
 	__idInternalLast
 };
 
@@ -156,14 +180,15 @@ MainWindow::MainWindow()
 
 	m_topBook->SetSelection( 0 );
 	
-	wxAcceleratorEntry entries[20];
-	entries[0].Set( wxACCEL_SHIFT, WXK_F7,  ID_INTERNAL_IDE );
-	entries[1].Set( wxACCEL_SHIFT, WXK_F8,  ID_INTERNAL_RESTART );
-	entries[2].Set( wxACCEL_CMD, 'o', wxID_OPEN );
-	entries[3].Set( wxACCEL_CMD, 's', wxID_SAVE );
-	entries[4].Set( wxACCEL_CMD, 'w', wxID_CLOSE );
-	entries[5].Set( wxACCEL_NORMAL, WXK_F2, ID_CASE_RENAME );
-	SetAcceleratorTable( wxAcceleratorTable(6,entries) );
+	std::vector<wxAcceleratorEntry> entries;
+	entries.push_back( wxAcceleratorEntry( wxACCEL_SHIFT, WXK_F7,  ID_INTERNAL_IDE ) ) ;
+	entries.push_back( wxAcceleratorEntry( wxACCEL_SHIFT, WXK_F8,  ID_INTERNAL_RESTART ) );
+	entries.push_back( wxAcceleratorEntry( wxACCEL_SHIFT, WXK_F4,  ID_INTERNAL_SHOWLOG ) );
+	entries.push_back( wxAcceleratorEntry( wxACCEL_CMD, 'o', wxID_OPEN ) );
+	entries.push_back( wxAcceleratorEntry( wxACCEL_CMD, 's', wxID_SAVE ) );
+	entries.push_back( wxAcceleratorEntry( wxACCEL_CMD, 'w', wxID_CLOSE ) );
+	entries.push_back( wxAcceleratorEntry( wxACCEL_NORMAL, WXK_F2, ID_CASE_RENAME ) );
+	SetAcceleratorTable( wxAcceleratorTable( entries.size(), &entries[0] ) );
 }
 
 bool MainWindow::CreateProject()
@@ -273,6 +298,9 @@ void MainWindow::OnInternalCommand( wxCommandEvent &evt )
 	case ID_INTERNAL_RESTART:
 		SamApp::Restart();
 		wxMessageBox("Configuration and variable databases reloaded from startup.lk");
+		break;
+	case ID_INTERNAL_SHOWLOG:
+		SamLogWindow::Setup();
 		break;
 	}
 }
@@ -556,7 +584,7 @@ void MainWindow::OnCaseMenu( wxCommandEvent &evt )
 			c->GetConfiguration( &tech, &fin );
 			wxString t2(tech), f2(fin);
 			if( ShowConfigurationDialog( this, &t2, &f2, &reset ) 
-				&& t2 != tech && f2 != fin )
+				&& (t2 != tech || f2 != fin) )
 			{
 				c->SetConfiguration( t2, f2 ); // this will cause case window to update accordingly
 			}
@@ -1033,20 +1061,8 @@ ConfigDatabase::ConfigInfo *ConfigDatabase::Find( const wxString &t, const wxStr
 }
 
 
-class SamLogWindow : public wxLogWindow
-{
-public:
-	SamLogWindow( )	: wxLogWindow( 0, "sam-log" ) { 
-		GetFrame()->SetPosition( wxPoint( 5, 5 ) );
-		GetFrame()->SetClientSize( wxSize(1100,200) );
-	}
-	virtual bool OnFrameClose( wxFrame *frame ) {
-		return false; // don't delete frame when closed by the user
-	}
-};
-
-
 extern void RegisterUIWidgetsForSAM();
+
 
 bool SamApp::OnInit()
 {
@@ -1062,13 +1078,10 @@ bool SamApp::OnInit()
 		return false;
 	}
 
-//#ifdef _DEBUG
-#ifndef __WXOSX__
-	g_logWindow = new SamLogWindow;
-	wxLog::SetActiveTarget( g_logWindow );
-	g_logWindow->Show();
+#ifdef _DEBUG
+	SamLogWindow::Setup();
 #endif
-//#endif
+
 	
 	// register all the object types that can
 	// be read or written to streams.
