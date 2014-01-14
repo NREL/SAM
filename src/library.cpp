@@ -226,35 +226,35 @@ bool ScanSolarResourceData()
 	csv(2,0) = "[0]";
 
 	csv(0,1) = "City";
-	csv(2,1) = "loc.city";
+	csv(2,1) = "solar_resource.city";
 
 	csv(0,2) = "State";
-	csv(2,2) = "loc.state";
+	csv(2,2) = "solar_resource.state";
 
 	csv(0,3) = "Country";
-	csv(2,3) = "loc.country";
+	csv(2,3) = "solar_resource.country";
 
 	csv(0,4) = "Latitude";
 	csv(1,4) = "deg";
-	csv(2,4) = "loc.lat";
+	csv(2,4) = "solar_resource.lat";
 
 	csv(0,5) = "Longitude";
 	csv(1,5) = "deg";
-	csv(2,5) = "loc.lon";
+	csv(2,5) = "solar_resource.lon";
 
 	csv(0,6) = "Time zone";
 	csv(1,6) = "hour";
-	csv(2,6) = "loc.tz";
+	csv(2,6) = "solar_resource.tz";
 
 	csv(0,7) = "Elevation";
 	csv(1,7) = "m";
-	csv(2,7) = "loc.elev";
+	csv(2,7) = "solar_resource.elev";
 
 	csv(0,8) = "Station ID";
-	csv(2,8) = "loc.id";
+	csv(2,8) = "solar_resource.id";
 
 	csv(0,9) = "File name";
-	csv(2,9) = "loc.file";
+	csv(2,9) = "solar_resource.file";
 
 	int row = 3;
 	wxString file;
@@ -317,7 +317,7 @@ bool ScanSolarResourceData()
 		has_more = dir.GetNext( &file );
 	}
 	
-	csv.WriteFile( wxGetUserHome() + "/SolarResourceData.csv" );
+	//csv.WriteFile( wxGetUserHome() + "/SolarResourceData.csv" );
 
 	Library *lib = new Library;	
 	if ( lib->Read( csv, "SolarResourceData" ) )
@@ -380,7 +380,7 @@ LibraryCtrl::LibraryCtrl( wxWindow *parent, int id, const wxPoint &pos, const wx
 	sz_horiz->Add( m_target, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3 );
 	sz_horiz->AddStretchSpacer();
 	sz_horiz->Add( m_notify, 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
-	sz_horiz->Add( new wxButton( this, ID_REFRESH, wxT("Refresh list") ), 0, wxALL|wxALIGN_CENTER_VERTICAL, 3 );
+	//sz_horiz->Add( new wxButton( this, ID_REFRESH, wxT("Refresh list") ), 0, wxALL|wxALIGN_CENTER_VERTICAL, 3 );
 
 	wxBoxSizer *sz_vert = new wxBoxSizer( wxVERTICAL );
 	sz_vert->Add( sz_horiz, 0, wxALL|wxEXPAND, 0 );
@@ -529,6 +529,8 @@ void LibraryCtrl::UpdateList()
 	if ( m_entries.size() > 0 )
 		m_view.reserve( m_entries.size() );
 
+	size_t nmatches = 0;
+
 	if( Library *lib = Library::Find( m_library ) )
 	{
 		size_t num_entries = lib->NumEntries();
@@ -545,13 +547,17 @@ void LibraryCtrl::UpdateList()
 			if ( filter.IsEmpty()			
 				|| (filter.Len() <= 2 && target.Left( filter.Len() ).Lower() == filter)
 				|| (target.Lower().Find( filter ) >= 0)
-				|| (target == sel)
 				)
+			{
+				m_view.push_back( viewable(m_entries[i], i) );
+				nmatches++;
+			}
+			else if ( target == sel )
 				m_view.push_back( viewable(m_entries[i], i) );
 		}
 	}
 
-	if (m_view.size() == 1 && !sel.IsEmpty())
+	if ( nmatches == 0 )
 	{
 		m_notify->SetLabel( "No matches. (selected item shown)" );
 		Layout();
