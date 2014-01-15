@@ -317,7 +317,7 @@ bool ScanSolarResourceData()
 		has_more = dir.GetNext( &file );
 	}
 	
-	//csv.WriteFile( wxGetUserHome() + "/SolarResourceData.csv" );
+	csv.WriteFile( wxGetUserHome() + "/SolarResourceData.csv" );
 
 	Library *lib = new Library;	
 	if ( lib->Read( csv, "SolarResourceData" ) )
