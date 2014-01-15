@@ -1,5 +1,5 @@
-Source,Location ID,City,State,Latitude,Longitude,Time Zone,Elevation
-TMY3,726455,Manitowac Muni Awos,WI,44.133000,-87.683000,-6,198
+Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
+TMY3,726455,Manitowac Muni Awos,WI,USA,44.133000,-87.683000,-6,198
 Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
 1996,1,1,0,0,0,0,0,-0.6,95,990,1.5,40,0.15
 1996,1,1,1,0,0,0,0.5,-1.2,87,990,1.5,60,0.15

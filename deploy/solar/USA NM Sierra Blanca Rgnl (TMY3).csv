@@ -1,5 +1,5 @@
-Source,Location ID,City,State,Latitude,Longitude,Time Zone,Elevation
-TMY3,722683,Sierra Blanca Rgnl,NM,33.467000,-105.533000,-7,2078
+Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
+TMY3,722683,Sierra Blanca Rgnl,NM,USA,33.467000,-105.533000,-7,2078
 Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
 2005,1,1,0,0,0,0,7,-4,44,792,4.6,190,0.21
 2005,1,1,1,0,0,0,8,-5,37,792,6.2,220,0.21
