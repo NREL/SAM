@@ -1,5 +1,5 @@
-Source,Location ID,City,State,Latitude,Longitude,Time Zone,Elevation
-TMY2,13962,Abilene,TX,32.433333,-99.683333,-6,534
+Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
+TMY2,13962,Abilene,TX,USA,32.433333,-99.683333,-6,534
 Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Snow Depth
 1974,1,1,0,0,0,0,-8.3,-11.7,74,962,3.4,60,0
 1974,1,1,1,0,0,0,-8.9,-11.8,77,962,3.7,60,0

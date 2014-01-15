@@ -1,5 +1,5 @@
-Source,Location ID,City,State,Latitude,Longitude,Time Zone,Elevation
-TMY2,26425,Gulkana,AK,62.150000,-145.450000,-9,481
+Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
+TMY2,26425,Gulkana,AK,USA,62.150000,-145.450000,-9,481
 Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Snow Depth
 1961,1,1,0,0,0,0,-15.6,-17.2,87,947,2.1,23,15
 1961,1,1,1,0,0,0,-15.6,-18.3,79,947,0,0,15

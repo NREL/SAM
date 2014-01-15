@@ -1,5 +1,5 @@
-Source,Location ID,City,State,Latitude,Longitude,Time Zone,Elevation
-TMY3,725645,Laramie General Brees Field,WY,41.317000,-105.683000,-7,2215
+Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
+TMY3,725645,Laramie General Brees Field,WY,USA,41.317000,-105.683000,-7,2215
 Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
 2000,1,1,0,0,0,0,-6,-15,45,766,3.1,190,0.38
 2000,1,1,1,0,0,0,-4,-15,38,766,0,0,0.38
