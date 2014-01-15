@@ -38,6 +38,7 @@
     <ClCompile Include="..\src\ptlayoutctrl.cpp" />
     <ClCompile Include="..\src\shadingfactors.cpp" />
     <ClCompile Include="..\src\simplecurl.cpp" />
+    <ClCompile Include="..\src\simulation.cpp" />
     <ClCompile Include="..\src\troughloop.cpp" />
     <ClCompile Include="..\src\uiwidgets.cpp" />
     <ClCompile Include="..\src\variables.cpp" />
@@ -60,6 +61,7 @@
     <ClInclude Include="..\src\ptlayoutctrl.h" />
     <ClInclude Include="..\src\shadingfactors.h" />
     <ClInclude Include="..\src\simplecurl.h" />
+    <ClInclude Include="..\src\simulation.h" />
     <ClInclude Include="..\src\troughloop.h" />
     <ClInclude Include="..\src\uiwidgets.h" />
     <ClInclude Include="..\src\variables.h" />

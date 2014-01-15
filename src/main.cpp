@@ -43,7 +43,8 @@ static const int g_verMicro = 1;
 static ConfigDatabase g_cfgDatabase;
 static VarDatabase g_varDatabase;
 static EqnDatabase g_eqnDatabase;
-static CallbackDatabase g_cbDatabase;
+static ScriptDatabase g_cbDatabase;
+static ScriptDatabase g_simDatabase;
 static FormDatabase g_formDatabase;
 static wxLogWindow *g_logWindow = 0;
 
@@ -708,16 +709,16 @@ BEGIN_EVENT_TABLE( SplashScreen, wxDialog )
 	EVT_SIZE( SplashScreen::OnSize )
 END_EVENT_TABLE()
 
-CallbackDatabase::CallbackDatabase()
+ScriptDatabase::ScriptDatabase()
 {
 }
 
-CallbackDatabase::~CallbackDatabase()
+ScriptDatabase::~ScriptDatabase()
 {
 	ClearAll();
 }
 
-bool CallbackDatabase::LoadFile( const wxString &file )
+bool ScriptDatabase::LoadFile( const wxString &file )
 {
 	wxFile fp( file );
 	if ( fp.IsOpened() )
@@ -759,7 +760,7 @@ bool CallbackDatabase::LoadFile( const wxString &file )
 	return true;
 }
 
-void CallbackDatabase::ClearAll()
+void ScriptDatabase::ClearAll()
 {
 	for( size_t i=0;i<m_cblist.size();i++) 
 	{
@@ -772,13 +773,13 @@ void CallbackDatabase::ClearAll()
 	m_cbenv.clear_vars();
 }
 
-lk::node_t *CallbackDatabase::Lookup( const wxString &method_name, const wxString &obj_name )
+lk::node_t *ScriptDatabase::Lookup( const wxString &method_name, const wxString &obj_name )
 {	
 	lk::vardata_t *cbvar = m_cbenv.lookup( method_name, true);
 
 	if (!cbvar || cbvar->type() != lk::vardata_t::HASH )
 	{
-		//wxLogStatus("CallbackDatabase::Invoke: could not find " + method_name + " variable or not a hash");
+		//wxLogStatus("ScriptDatabase::Invoke: could not find " + method_name + " variable or not a hash");
 		return 0;
 	}
 
@@ -787,20 +788,20 @@ lk::node_t *CallbackDatabase::Lookup( const wxString &method_name, const wxStrin
 		|| cbref->type() != lk::vardata_t::FUNCTION
 		|| cbref->deref().func() == 0 )
 	{
-		// wxLogStatus("CallbackDatabase::Invoke: could not find function entry for '%s'", (const char*)obj_name.c_str() );
+		// wxLogStatus("ScriptDatabase::Invoke: could not find function entry for '%s'", (const char*)obj_name.c_str() );
 		return 0;
 	}
 	
 	lk::expr_t *p_define = cbref->deref().func();
 	if ( p_define->oper != lk::expr_t::DEFINE )
 	{
-		wxLogStatus("CallbackDatabase::Invoke: improper function structure, must be a 'define' for %s, instead: %s", (const char*)obj_name.c_str(), cbref->func()->operstr() );
+		wxLogStatus("ScriptDatabase::Invoke: improper function structure, must be a 'define' for %s, instead: %s", (const char*)obj_name.c_str(), cbref->func()->operstr() );
 		return 0;
 	}
 	
 	if ( p_define->right == 0 )
 	{
-		wxLogStatus("CallbackDatabase::Invoke: function block nonexistent for '%s'\n", (const char*)obj_name.c_str());
+		wxLogStatus("ScriptDatabase::Invoke: function block nonexistent for '%s'\n", (const char*)obj_name.c_str());
 		return 0;
 	}
 
@@ -1206,6 +1207,26 @@ void SamApp::Restart()
 	}
 
 	ScanSolarResourceData();
+
+	// reload all simulation scripts
+	SamApp::Simulations().ClearAll();
+	
+	wxString path = SamApp::GetRuntimePath() + "/simulations";
+	if ( dir.Open( path ) )
+	{
+		wxString file;
+		bool has_more = dir.GetFirst( &file, "*.sim", wxDIR_FILES  );
+		while( has_more )
+		{
+			wxLogStatus( " --> loading simulation script " + file );
+			
+			if ( !SamApp::Callbacks().LoadFile( path + "/" + file ) )
+				wxLogStatus( " --> error in .sim for " + file );
+
+			has_more = dir.GetNext( &file );
+		}
+	}
+	dir.Close();
 }
 
 wxString SamApp::GetAppPath()
@@ -1257,7 +1278,8 @@ int SamApp::VersionMicro() { return g_verMicro; }
 ConfigDatabase &SamApp::Config() { return g_cfgDatabase; }
 VarDatabase &SamApp::Variables() { return g_varDatabase; }
 EqnDatabase &SamApp::Equations() { return g_eqnDatabase; }
-CallbackDatabase &SamApp::Callbacks() { return g_cbDatabase; }
+ScriptDatabase &SamApp::Callbacks() { return g_cbDatabase; }
+ScriptDatabase &SamApp::Simulations() { return g_simDatabase; }
 FormDatabase &SamApp::Forms() { return g_formDatabase; }
 
 

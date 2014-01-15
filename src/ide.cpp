@@ -91,7 +91,126 @@ void StartupScriptPanel::OnCommand( wxCommandEvent &evt )
 	}
 }
 
+enum { ID_SIMULATIONS_EDITOR = wxID_HIGHEST+495, ID_SIMULATIONS_LIST, 
+	ID_SIMULATIONS_SAVE, ID_SIMULATIONS_NEW, ID_SIMULATIONS_FIND, ID_SIMULATIONS_HELP };
 
+BEGIN_EVENT_TABLE( SimulationScriptPanel, wxPanel )
+	EVT_CHOICE( ID_SIMULATIONS_LIST, SimulationScriptPanel::OnCommand )
+	EVT_BUTTON( ID_SIMULATIONS_SAVE, SimulationScriptPanel::OnCommand )
+	EVT_BUTTON( ID_SIMULATIONS_NEW, SimulationScriptPanel::OnCommand )
+	EVT_BUTTON( ID_SIMULATIONS_FIND, SimulationScriptPanel::OnCommand )
+	EVT_BUTTON( ID_SIMULATIONS_HELP, SimulationScriptPanel::OnCommand )
+END_EVENT_TABLE()
+
+
+extern lk::fcall_t *invoke_simulation_stubs();
+
+SimulationScriptPanel::SimulationScriptPanel( wxWindow *parent )
+	: wxPanel( parent )
+{
+	m_scriptCtrl = new wxLKScriptCtrl( this, ID_SIMULATIONS_EDITOR );
+	m_scriptCtrl->RegisterLibrary( invoke_simulation_stubs(), "Simulation Functions", 0 );
+
+	m_simList = new wxChoice( this, ID_SIMULATIONS_LIST );
+	
+	RefreshList();
+
+	if ( m_simList->GetCount() > 0 ) 
+	{
+		m_simList->SetSelection( 0 );
+		m_currentFile = SamApp::GetRuntimePath() + "/simulations/" + m_simList->GetStringSelection();
+		m_scriptCtrl->ReadAscii( m_currentFile );
+	}
+		
+	wxBoxSizer *sz_startup_tools = new wxBoxSizer( wxHORIZONTAL );
+	sz_startup_tools->Add( m_simList, 0, wxALL|wxEXPAND, 2 );	
+	sz_startup_tools->Add( new wxButton( this, ID_SIMULATIONS_NEW, "New"), 0, wxALL|wxEXPAND, 2 );
+	sz_startup_tools->Add( new wxButton( this, ID_SIMULATIONS_SAVE, "Save"), 0, wxALL|wxEXPAND, 2 );
+	sz_startup_tools->Add( new wxButton( this, ID_SIMULATIONS_FIND, "Find..."), 0, wxALL|wxEXPAND, 2 );
+	sz_startup_tools->Add( new wxButton( this, ID_SIMULATIONS_HELP, "Help"), 0, wxALL|wxEXPAND, 2 );
+	wxBoxSizer *sz_startup_main = new wxBoxSizer( wxVERTICAL );
+	sz_startup_main->Add( sz_startup_tools, 0, wxALL|wxEXPAND, 2 );
+	sz_startup_main->Add( m_scriptCtrl, 1, wxALL|wxEXPAND, 0 );
+	
+	SetSizer( sz_startup_main );
+}
+
+void SimulationScriptPanel::RefreshList()
+{
+	wxString sel = m_simList->GetStringSelection();
+	m_simList->Clear();
+	wxDir dir( SamApp::GetRuntimePath() + "/simulations" );
+	if ( dir.IsOpened() )
+	{
+		wxString file;
+		bool has_more = dir.GetFirst( &file, "*.sim", wxDIR_FILES  );
+		while( has_more )
+		{
+			m_simList->Append( file );
+			has_more = dir.GetNext( &file );
+		}
+	}
+
+	m_simList->SetStringSelection( sel );
+}
+
+void SimulationScriptPanel::SaveCurrent()
+{
+	wxBusyInfo savemsg( "Writing to disk: " + wxFileName(m_currentFile).GetName() );
+	wxYield();
+	wxMilliSleep(100);
+	if ( !m_scriptCtrl->WriteAscii( m_currentFile ))
+		wxMessageBox("Error writing to disk:\n\n" + m_currentFile, "notice", wxOK, this);
+}
+
+void SimulationScriptPanel::OnCommand( wxCommandEvent &evt )
+{
+	switch( evt.GetId() )
+	{
+	case ID_SIMULATIONS_LIST:
+		SaveCurrent();
+		m_currentFile = SamApp::GetRuntimePath() + "/simulations/" + m_simList->GetStringSelection();
+		m_scriptCtrl->ReadAscii( m_currentFile );		
+		break;
+	case ID_SIMULATIONS_SAVE:
+		SaveCurrent();
+		break;
+	case ID_SIMULATIONS_FIND:
+		m_scriptCtrl->ShowFindReplaceDialog();
+		break;
+	case ID_SIMULATIONS_HELP:
+		m_scriptCtrl->ShowHelpDialog( this );
+		break;
+	case ID_SIMULATIONS_NEW:
+	{
+		wxString name = wxGetTextFromUser("Enter name of simulation file:", "query", wxEmptyString, this );
+		if ( name.IsEmpty() ) return;
+
+		wxString path = SamApp::GetRuntimePath() + "/simulations/" + name + ".sim";
+		if ( wxFileExists( path ) )
+		{
+			wxMessageBox("that one already exists", "notice", wxOK, this);
+			return;
+		}
+
+		wxFile ff( path, wxFile::write );
+		if (ff.IsOpened() )
+		{
+			ff.Write( "on_simulate{'<<tech-or-financing-name>>'} = define() {\n\tlog('simulation info');\n\treturn true;\n};\n");
+			ff.Close();
+
+			SaveCurrent();
+			RefreshList();
+			m_simList->SetStringSelection( name + ".sim" );
+			m_currentFile = path;
+			m_scriptCtrl->ReadAscii( path );
+		}
+		else
+			wxMessageBox("error creating new simulation file");
+	}
+		break;
+	}
+}
 
 enum { 
 	ID_FORM_EDITOR = wxID_HIGHEST + 231,
@@ -959,7 +1078,9 @@ IDEWindow::IDEWindow( wxWindow *parent )
 	m_uiPanel = new UIEditorPanel( m_notebook );
 	m_notebook->AddPage( m_uiPanel, "User Interface" );
 
-	m_notebook->AddPage( new wxPanel( m_notebook ), "Simulations" );
+	m_simPanel = new SimulationScriptPanel( this );
+	m_notebook->AddPage( m_simPanel, "Simulations" );
+	
 	m_notebook->AddPage( new wxPanel( m_notebook ), "Default Values" );
 	m_notebook->AddPage( new wxPanel( m_notebook ), "Default Graphs" );
 	m_notebook->AddPage( new wxPanel( m_notebook ), "Cash Flows" );

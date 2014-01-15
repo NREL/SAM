@@ -215,123 +215,6 @@ bool Library::ApplyEntry( int entry, int varindex, VarTable &tab, wxArrayString 
 }
 
 
-bool ScanSolarResourceData()
-{
-	wxString path = SamApp::GetRuntimePath() + "../solar/";
-	wxDir dir( path );
-	if( !dir.IsOpened() ) return false;
-
-	wxCSVData csv;
-	csv(0,0) = "Name";
-	csv(2,0) = "[0]";
-
-	csv(0,1) = "City";
-	csv(2,1) = "solar_resource.city";
-
-	csv(0,2) = "State";
-	csv(2,2) = "solar_resource.state";
-
-	csv(0,3) = "Country";
-	csv(2,3) = "solar_resource.country";
-
-	csv(0,4) = "Latitude";
-	csv(1,4) = "deg";
-	csv(2,4) = "solar_resource.lat";
-
-	csv(0,5) = "Longitude";
-	csv(1,5) = "deg";
-	csv(2,5) = "solar_resource.lon";
-
-	csv(0,6) = "Time zone";
-	csv(1,6) = "hour";
-	csv(2,6) = "solar_resource.tz";
-
-	csv(0,7) = "Elevation";
-	csv(1,7) = "m";
-	csv(2,7) = "solar_resource.elev";
-
-	csv(0,8) = "Station ID";
-	csv(2,8) = "solar_resource.id";
-
-	csv(0,9) = "File name";
-	csv(2,9) = "solar_resource.file";
-
-	int row = 3;
-	wxString file;
-	bool has_more = dir.GetFirst( &file, "*.csv", wxDIR_FILES );
-	while( has_more )
-	{
-		// process file
-		wxString wf = path + "/" + file;
-		
-		ssc_data_t pdata = ssc_data_create();
-		ssc_data_set_string( pdata, "file_name", (const char*)wf.c_str() );
-		ssc_data_set_number( pdata, "scan_header_only", 1 );
-
-		if ( const char *err = ssc_module_exec_simple_nothread( "wfcsvread", pdata ) )
-		{
-			wxLogStatus("error scanning '" + wf + "'");
-			wxLogStatus("\t%s", err );
-		}
-		else
-		{
-			ssc_number_t val;
-			const char *str;
-
-			wxFileName ff(wf);
-			ff.Normalize();
-
-			csv(row,0) = ff.GetName();
-
-			if ( str = ssc_data_get_string( pdata, "city" ) )
-				csv(row,1) = wxString(str);
-
-			if ( str = ssc_data_get_string( pdata, "state" ) )
-				csv(row,2) = wxString(str);
-
-			if ( str = ssc_data_get_string( pdata, "country" ) )
-				csv(row,3) = wxString(str);
-			
-			if ( ssc_data_get_number( pdata, "lat", &val ) )
-				csv(row,4) = wxString::Format("%g", val);
-			
-			if ( ssc_data_get_number( pdata, "lon", &val ) )
-				csv(row,5) = wxString::Format("%g", val);
-			
-			if ( ssc_data_get_number( pdata, "tz", &val ) )
-				csv(row,6) = wxString::Format("%g", val);
-			
-			if ( ssc_data_get_number( pdata, "elev", &val ) )
-				csv(row,7) = wxString::Format("%g", val);
-
-			if ( str = ssc_data_get_string( pdata, "location" ) )
-				csv(row,8) = wxString(str);
-			
-			csv(row,9) = ff.GetFullPath();
-
-			row++;
-		}
-
-		ssc_data_free( pdata );
-
-		has_more = dir.GetNext( &file );
-	}
-	
-	csv.WriteFile( wxGetUserHome() + "/SolarResourceData.csv" );
-
-	Library *lib = new Library;	
-	if ( lib->Read( csv, "SolarResourceData" ) )
-	{
-		gs_libs.m_libs.push_back( lib );
-		return true;
-	}
-	else
-	{
-		delete lib;
-		return false;
-	}
-}
-
 LibraryListView::LibraryListView( LibraryCtrl *parent, int id, const wxPoint &pos,
 	const wxSize &size )
 	: wxListView( parent, id, pos, size, wxLC_REPORT|wxLC_VIRTUAL|wxLC_SINGLE_SEL )
@@ -367,6 +250,8 @@ END_EVENT_TABLE()
 LibraryCtrl::LibraryCtrl( wxWindow *parent, int id, const wxPoint &pos, const wxSize &size )
 	: wxPanel( parent, id, pos, size, wxTAB_TRAVERSAL )
 {
+	m_sendEvents = true;
+
 	m_label = new wxStaticText( this, wxID_ANY, wxT("Search for:") );
 	m_filter = new wxTextCtrl( this, ID_FILTER );
 	m_target = new wxChoice( this, ID_TARGET );
@@ -521,6 +406,8 @@ void LibraryCtrl::ReloadLibrary()
 
 void LibraryCtrl::UpdateList()
 {
+	m_sendEvents = false;
+
 	wxString filter = m_filter->GetValue().Lower();
 	wxString sel = GetEntrySelection();
 	
@@ -567,15 +454,18 @@ void LibraryCtrl::UpdateList()
 	m_list->Refresh();
 	SetEntrySelection( sel );
 
-
+	m_sendEvents = true;
 }
 
 void LibraryCtrl::OnSelected( wxListEvent &evt )
 {
+	if ( !m_sendEvents ) return;
+
 	wxCommandEvent issue( wxEVT_LISTBOX, GetId() );
 	issue.SetEventObject( this );
 	issue.SetInt( evt.GetSelection() );
 	ProcessEvent( issue );
+	
 }
 
 bool LibraryCtrl::viewable_compare::operator() ( const viewable &lhs, const viewable &rhs )
@@ -591,6 +481,8 @@ void LibraryCtrl::OnColClick( wxListEvent &evt )
 
 	if( Library *lib = Library::Find( m_library ) )
 	{
+		m_sendEvents = false;
+
 		wxString sel = GetEntrySelection();
 
 		size_t field_idx = m_fieldMap[evt.GetColumn()];
@@ -607,7 +499,10 @@ void LibraryCtrl::OnColClick( wxListEvent &evt )
 
 		m_list->Refresh();
 		SetEntrySelection( sel );
+		
+		m_sendEvents = true;
 	}
+
 }
 
 void LibraryCtrl::OnCommand( wxCommandEvent &evt )
@@ -621,3 +516,128 @@ void LibraryCtrl::SetLabel( const wxString &text )
 	m_label->SetLabel( text );
 	Layout();
 }
+
+
+bool ScanSolarResourceData()
+{
+	wxString path = SamApp::GetRuntimePath() + "../solar/";
+	wxDir dir( path );
+	if( !dir.IsOpened() ) return false;
+
+	wxCSVData csv;
+	csv(0,0) = "Name";
+	csv(2,0) = "[0]";
+
+	csv(0,1) = "City";
+	csv(2,1) = "solar_resource.city";
+
+	csv(0,2) = "State";
+	csv(2,2) = "solar_resource.state";
+
+	csv(0,3) = "Country";
+	csv(2,3) = "solar_resource.country";
+
+	csv(0,4) = "Latitude";
+	csv(1,4) = "deg";
+	csv(2,4) = "solar_resource.lat";
+
+	csv(0,5) = "Longitude";
+	csv(1,5) = "deg";
+	csv(2,5) = "solar_resource.lon";
+
+	csv(0,6) = "Time zone";
+	csv(1,6) = "hour";
+	csv(2,6) = "solar_resource.tz";
+
+	csv(0,7) = "Elevation";
+	csv(1,7) = "m";
+	csv(2,7) = "solar_resource.elev";
+
+	csv(0,8) = "Station ID";
+	csv(2,8) = "solar_resource.id";
+
+	csv(0,9) = "Source";
+	csv(2,9) = "solar_resource.data_source";
+
+	csv(0,10) = "File name";
+	csv(2,10) = "solar_resource.file";
+
+	int row = 3;
+	wxString file;
+	bool has_more = dir.GetFirst( &file, "*.csv", wxDIR_FILES );
+	while( has_more )
+	{
+		// process file
+		wxString wf = path + "/" + file;
+		
+		ssc_data_t pdata = ssc_data_create();
+		ssc_data_set_string( pdata, "file_name", (const char*)wf.c_str() );
+		ssc_data_set_number( pdata, "scan_header_only", 1 );
+
+		if ( const char *err = ssc_module_exec_simple_nothread( "wfcsvread", pdata ) )
+		{
+			wxLogStatus("error scanning '" + wf + "'");
+			wxLogStatus("\t%s", err );
+		}
+		else
+		{
+			ssc_number_t val;
+			const char *str;
+
+			wxFileName ff(wf);
+			ff.Normalize();
+
+			csv(row,0) = ff.GetName();
+
+			if ( str = ssc_data_get_string( pdata, "city" ) )
+				csv(row,1) = wxString(str);
+
+			if ( str = ssc_data_get_string( pdata, "state" ) )
+				csv(row,2) = wxString(str);
+
+			if ( str = ssc_data_get_string( pdata, "country" ) )
+				csv(row,3) = wxString(str);
+			
+			if ( ssc_data_get_number( pdata, "lat", &val ) )
+				csv(row,4) = wxString::Format("%g", val);
+			
+			if ( ssc_data_get_number( pdata, "lon", &val ) )
+				csv(row,5) = wxString::Format("%g", val);
+			
+			if ( ssc_data_get_number( pdata, "tz", &val ) )
+				csv(row,6) = wxString::Format("%g", val);
+			
+			if ( ssc_data_get_number( pdata, "elev", &val ) )
+				csv(row,7) = wxString::Format("%g", val);
+
+			if ( str = ssc_data_get_string( pdata, "location" ) )
+				csv(row,8) = wxString(str);
+			
+			if ( str = ssc_data_get_string( pdata, "source" ) )
+				csv(row,9) = wxString(str);
+					
+			csv(row,10) = ff.GetFullPath();
+
+			row++;
+		}
+
+		ssc_data_free( pdata );
+
+		has_more = dir.GetNext( &file );
+	}
+	
+	csv.WriteFile( wxGetUserHome() + "/SolarResourceData.csv" );
+
+	Library *lib = new Library;	
+	if ( lib->Read( csv, "SolarResourceData" ) )
+	{
+		gs_libs.m_libs.push_back( lib );
+		return true;
+	}
+	else
+	{
+		delete lib;
+		return false;
+	}
+}
+

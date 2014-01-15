@@ -74,6 +74,9 @@
     <ClInclude Include="..\src\library.h">
       <Filter>Source</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\simulation.h">
+      <Filter>Source</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\welcome.cpp">
@@ -134,6 +137,9 @@
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="..\src\library.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\simulation.cpp">
       <Filter>Source</Filter>
     </ClCompile>
   </ItemGroup>
