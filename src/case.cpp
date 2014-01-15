@@ -21,26 +21,20 @@ static void fcall_financing_pCase( lk::invoke_t &cxt )
 		cxt.result().assign( cc->GetFinancing() );
 }
 
-class CaseEqnEval : public EqnEvaluator
+CaseEqnEvaluator::CaseEqnEvaluator( Case *cc, VarTable &vars, EqnFastLookup &efl )
+	: EqnEvaluator( vars, efl )
 {
-	Case *m_case;
-public:
-	
-	CaseEqnEval( Case *cc, VarTable &vars, EqnFastLookup &efl )
-		: EqnEvaluator( vars, efl )
-	{
-		m_case = cc;
-	}
+	m_case = cc;
+}
 
-	virtual void SetupEnvironment( lk::env_t &env )
-	{
-		// call base version first to register standard functions
-		EqnEvaluator::SetupEnvironment( env );
+void CaseEqnEvaluator::SetupEnvironment( lk::env_t &env )
+{
+	// call base version first to register standard functions
+	EqnEvaluator::SetupEnvironment( env );
 
-		env.register_func( fcall_technology_pCase, m_case );
-		env.register_func( fcall_financing_pCase, m_case );
-	}
-};
+	env.register_func( fcall_technology_pCase, m_case );
+	env.register_func( fcall_financing_pCase, m_case );
+}
 
 Case::Case()
 	: m_eqns( &SamApp::Equations() ) // initialize fast lookup with global all equations
@@ -148,7 +142,7 @@ void Case::SetConfiguration( const wxString &tech, const wxString &fin )
 			m_vals.Set( it->first, it->second->DefaultValue ); // will create new variable if it doesnt exist
 		
 	// reevalute all equations
-	CaseEqnEval eval( this, m_vals, m_eqns );
+	CaseEqnEvaluator eval( this, m_vals, m_eqns );
 	eval.CalculateAll();
 	
 	// update UI
@@ -211,7 +205,7 @@ int Case::Recalculate( const wxString &trigger )
 			wxMessageBox( "invalid library specification: " + wxJoin(vi->IndexLabels, ',') );
 	}
 	
-	CaseEqnEval eval( this, m_vals, m_eqns );
+	CaseEqnEvaluator eval( this, m_vals, m_eqns );
 	int n = eval.Changed( trigger_list );	
 	if ( n > 0 ) SendEvent( CaseEvent( CaseEvent::VARS_CHANGED, eval.GetUpdated() ) );
 	else if ( n < 0 ) wxLogStatus( wxJoin( eval.GetErrors(), '\n' )  );
@@ -221,9 +215,10 @@ int Case::Recalculate( const wxString &trigger )
 
 int Case::RecalculateAll()
 {
-	CaseEqnEval eval( this, m_vals, m_eqns );
+	CaseEqnEvaluator eval( this, m_vals, m_eqns );
 	int n = eval.CalculateAll();
 	if ( n > 0 ) SendEvent( CaseEvent( CaseEvent::VARS_CHANGED, eval.GetUpdated() ) );
+	else if ( n < 0 ) wxLogStatus( wxJoin( eval.GetErrors(), '\n' )  );
 	return n;
 }
 

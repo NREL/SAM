@@ -304,7 +304,7 @@ bool VarValue::Read( wxInputStream &_I )
 	return in.Read8() == code;
 }
 	
-int VarValue::Type() { return m_type; }
+int VarValue::Type() const { return m_type; }
 void VarValue::SetType( int ty ) { m_type = ty; }
 void VarValue::Set( int val ) { m_type = VV_NUMBER; m_val = (float)val; }
 void VarValue::Set( float val ) { m_type = VV_NUMBER; m_val = val; }
@@ -942,7 +942,7 @@ bool VarTableScriptInterpreter::special_set( const lk_string &name, lk::vardata_
 	if ( VarValue *vv = m_vars->Get( name ) )
 		ok = vv->Read( val );
 
-	wxLogStatus("vtsi->special_set( " + name + " ) " + wxString( ok?"ok":"fail") );
+//	wxLogStatus("vtsi->special_set( " + name + " ) " + wxString( ok?"ok":"fail") );
 	return ok;
 }
 
@@ -952,7 +952,7 @@ bool VarTableScriptInterpreter::special_get( const lk_string &name, lk::vardata_
 	if ( VarValue *vv = m_vars->Get( name ) )
 		ok = vv->Write( val );
 	
-	wxLogStatus("vtsi->special_get( " + name + " ) " + wxString( ok?"ok":"fail") );
+//	wxLogStatus("vtsi->special_get( " + name + " ) " + wxString( ok?"ok":"fail") );
 	return ok;
 }
 

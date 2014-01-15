@@ -107,4 +107,12 @@ private:
 	EqnFastLookup m_eqns;
 };
 
+class CaseEqnEvaluator : public EqnEvaluator
+{
+	Case *m_case;
+public:	
+	CaseEqnEvaluator( Case *cc, VarTable &vars, EqnFastLookup &efl );
+	virtual void SetupEnvironment( lk::env_t &env );
+};
+
 #endif
