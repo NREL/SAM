@@ -23,6 +23,22 @@ private:
 	DECLARE_EVENT_TABLE();
 };
 
+class SimulationScriptPanel : public wxPanel
+{
+public:
+	SimulationScriptPanel( wxWindow *parent );
+private:
+	void OnCommand( wxCommandEvent & );
+	void SaveCurrent();
+	void RefreshList();
+
+	wxString m_currentFile;
+	wxChoice *m_simList;
+	wxLKScriptCtrl *m_scriptCtrl;
+
+	DECLARE_EVENT_TABLE();
+};
+
 
 class ExFormData : public wxUIFormData
 {
@@ -94,6 +110,7 @@ private:
 
 	StartupScriptPanel *m_startupPanel;
 	UIEditorPanel *m_uiPanel;
+	SimulationScriptPanel *m_simPanel;
 
 	DECLARE_EVENT_TABLE();
 };

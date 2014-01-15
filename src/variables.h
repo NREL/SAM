@@ -69,7 +69,7 @@ public:
 	void Write( wxOutputStream & );
 	bool Read( wxInputStream & );
 	
-	int Type();
+	int Type() const;
 	void SetType( int t );
 	void Set( int val );
 	void Set( float val );

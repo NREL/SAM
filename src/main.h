@@ -87,11 +87,11 @@ private:
 	DECLARE_EVENT_TABLE();
 };
 
-class CallbackDatabase
+class ScriptDatabase
 {
 public:
-	CallbackDatabase();
-	virtual ~CallbackDatabase();
+	ScriptDatabase();
+	virtual ~ScriptDatabase();
 
 	bool LoadFile( const wxString &file );
 	void ClearAll();
@@ -215,7 +215,8 @@ public:
 	static ConfigDatabase &Config();
 	static VarDatabase &Variables();
 	static EqnDatabase &Equations();
-	static CallbackDatabase &Callbacks();
+	static ScriptDatabase &Callbacks();
+	static ScriptDatabase &Simulations();
 	static FormDatabase &Forms();
 
 	static bool LoadAndRunScriptFile( const wxString &script_file, wxArrayString *errors = 0 );

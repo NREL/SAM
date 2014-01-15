@@ -142,6 +142,8 @@ private:
 	wxStaticText *m_notify;
 	wxChoice *m_target;
 	LibraryListView *m_list;
+
+	bool m_sendEvents;
 	
 	
 	DECLARE_EVENT_TABLE();
