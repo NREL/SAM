@@ -47,15 +47,15 @@ static void fcall_addpage( lk::invoke_t &cxt )
 {
 	LK_DOC("addpage", "Add an input page group to the currently active configuration (may have multiple pages).", "(array:pages, table:caption,help,exclusive,exclusive_var):none" );
 	
-	std::vector< std::vector<ConfigDatabase::PageInfo> > pages;
+	std::vector< std::vector<PageInfo> > pages;
 	lk::vardata_t &grps = cxt.arg(0);
 	for( size_t i=0;i<grps.length();i++ )
 	{
-		pages.push_back( std::vector<ConfigDatabase::PageInfo>() );
+		pages.push_back( std::vector<PageInfo>() );
 
 		for( size_t j=0;j<grps.index(i)->deref().length();j++ )
 		{
-			ConfigDatabase::PageInfo x;
+			PageInfo x;
 
 			lk::vardata_t &item = grps.index(i)->deref().index(j)->deref();
 

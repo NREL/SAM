@@ -372,7 +372,7 @@ wxUIObject *CaseWindow::FindActiveObject( const wxString &name, ActiveInputPage 
 	return 0;
 }
 
-void CaseWindow::OnCaseEvent( Case *c, CaseEvent &evt )
+void CaseWindow::OnCaseEvent( Case *, CaseEvent &evt )
 {
 	if ( evt.GetType() == CaseEvent::VARS_CHANGED )
 	{
@@ -389,7 +389,7 @@ void CaseWindow::OnCaseEvent( Case *c, CaseEvent &evt )
 
 			// update views if the variable controls an
 			// exclusive set of input pages or a collapsible pane
-			if( VarInfo *info = SamApp::Variables().Lookup( list[i] ) )
+			if( VarInfo *info = m_case->Variables().Lookup( list[i] ) )
 			{
 				if ( info->Flags & VF_COLLAPSIBLE_PANE )
 				{
@@ -501,7 +501,7 @@ void CaseWindow::SetupActivePage()
 
 	if ( !m_currentGroup ) return;
 	
-	std::vector<ConfigDatabase::PageInfo> *active_pages = 0;
+	std::vector<PageInfo> *active_pages = 0;
 	
 	if ( m_currentGroup->Pages.size() > 1 && !m_currentGroup->ExclusivePageVar.IsEmpty() )
 	{
@@ -541,7 +541,7 @@ void CaseWindow::SetupActivePage()
 
 	for( size_t ii=0;ii<active_pages->size();ii++ )
 	{
-		ConfigDatabase::PageInfo &pi = (*active_pages)[ii];
+		PageInfo &pi = (*active_pages)[ii];
 
 		PageDisplayState *pds = new PageDisplayState;
 
@@ -651,11 +651,11 @@ void CaseWindow::UpdateConfiguration()
 	m_currentGroup = 0;
 	m_inputPageList->ClearItems();
 
-	wxString tech, fin;
-	m_case->GetConfiguration( &tech, &fin );
+	ConfigInfo *cfg = m_case->GetConfiguration();
+	if ( !cfg ) return;
 
 	// update current set of input pages
-	m_pageGroups = SamApp::Config().GetInputPages( tech, fin );
+	m_pageGroups = cfg->InputPageGroups;
 
 	// erase current set of forms, and rebuild the forms for this case
 	m_forms.Clear();
@@ -663,15 +663,16 @@ void CaseWindow::UpdateConfiguration()
 	// update input page list (sidebar)
 	for( size_t i=0;i<m_pageGroups.size();i++ )
 	{
-		ConfigDatabase::InputPageGroup *group = m_pageGroups[i];
+		InputPageGroup *group = m_pageGroups[i];
 
 		for( size_t kk=0;kk<group->Pages.size();kk++ )
 		{
-			std::vector<ConfigDatabase::PageInfo> &pages = group->Pages[kk];
+			std::vector<PageInfo> &pages = group->Pages[kk];
 			for (size_t j=0;j<pages.size();j++ )
 			{
-				if ( wxUIFormData *ui = SamApp::Forms().Lookup( pages[j].Name ) )
-					m_forms.Add( pages[j].Name, ui->Duplicate() );
+				InputPageDataHash::iterator it = cfg->InputPages.find( pages[j].Name );
+				if ( it != cfg->InputPages.end() )
+					m_forms.Add( pages[j].Name, it->second->Form().Duplicate() );
 				else
 					wxMessageBox("Could not locate form data for " + pages[j].Name );			
 			}

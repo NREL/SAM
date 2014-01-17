@@ -43,9 +43,9 @@ private:
 	
 	wxPanel *m_inputPagePanel;
 	InputPageList *m_inputPageList;
-	std::vector<ConfigDatabase::InputPageGroup*> m_pageGroups;
-	FormDatabase m_forms;
-	ConfigDatabase::InputPageGroup *m_currentGroup;
+	std::vector<InputPageGroup*> m_pageGroups;
+	UIFormDatabase m_forms;
+	InputPageGroup *m_currentGroup;
 	std::vector<wxUIFormData*> m_currentForms;
 
 	struct PageDisplayState {

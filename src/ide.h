@@ -5,6 +5,7 @@
 #include <wex/uiform.h>
 
 #include "variables.h"
+#include "main.h"
 
 class wxListBox;
 class wxMetroNotebook;
@@ -23,6 +24,7 @@ private:
 	DECLARE_EVENT_TABLE();
 };
 
+/*
 class SimulationScriptPanel : public wxPanel
 {
 public:
@@ -37,7 +39,7 @@ private:
 	wxLKScriptCtrl *m_scriptCtrl;
 
 	DECLARE_EVENT_TABLE();
-};
+};*/
 
 
 class ExFormData : public wxUIFormData
@@ -65,8 +67,9 @@ private:
 	void LoadFormList( const wxString &sel = wxEmptyString );
 
 	wxString m_formName;
-	ExFormData m_formData;
-	VarDatabase m_varData;
+	ExFormData m_exForm;
+	InputPageData m_ipd;
+
 	bool WriteForm( const wxString &name );
 	bool LoadForm( const wxString &name );
 
@@ -110,7 +113,7 @@ private:
 
 	StartupScriptPanel *m_startupPanel;
 	UIEditorPanel *m_uiPanel;
-	SimulationScriptPanel *m_simPanel;
+	//SimulationScriptPanel *m_simPanel;
 
 	DECLARE_EVENT_TABLE();
 };

@@ -91,6 +91,8 @@ void StartupScriptPanel::OnCommand( wxCommandEvent &evt )
 	}
 }
 
+/*
+
 enum { ID_SIMULATIONS_EDITOR = wxID_HIGHEST+495, ID_SIMULATIONS_LIST, 
 	ID_SIMULATIONS_SAVE, ID_SIMULATIONS_NEW, ID_SIMULATIONS_FIND, ID_SIMULATIONS_HELP };
 
@@ -211,6 +213,7 @@ void SimulationScriptPanel::OnCommand( wxCommandEvent &evt )
 		break;
 	}
 }
+*/
 
 enum { 
 	ID_FORM_EDITOR = wxID_HIGHEST + 231,
@@ -222,6 +225,7 @@ enum {
 	ID_FORM_ADD,
 	ID_FORM_SAVE,
 	ID_FORM_DELETE,
+	ID_FORM_IMPORT,
 
 	ID_VAR_SYNC,
 	ID_VAR_ADD,
@@ -268,6 +272,7 @@ BEGIN_EVENT_TABLE( UIEditorPanel, wxPanel )
 	EVT_BUTTON( ID_FORM_ADD, UIEditorPanel::OnCommand )
 	EVT_BUTTON( ID_FORM_SAVE, UIEditorPanel::OnCommand )
 	EVT_BUTTON( ID_FORM_DELETE, UIEditorPanel::OnCommand )
+	EVT_BUTTON( ID_FORM_IMPORT, UIEditorPanel::OnCommand )
 	
 	EVT_BUTTON( ID_VAR_SYNC, UIEditorPanel::OnCommand )
 	EVT_BUTTON( ID_VAR_ADD, UIEditorPanel::OnCommand )
@@ -318,13 +323,14 @@ static lk::fcall_t* invoke_equation_stubs()
 }
 
 UIEditorPanel::UIEditorPanel( wxWindow *parent )
-	: wxPanel( parent ), m_formData( &m_varData )
+	: wxPanel( parent ), m_exForm( &m_ipd.Variables() )
 {
 	wxBoxSizer *sz_form_tools = new wxBoxSizer( wxHORIZONTAL );
 	sz_form_tools->Add( new wxButton( this, ID_FORM_LIST_REFRESH, "Refresh list"), 0, wxALL|wxEXPAND, 2 );
 	sz_form_tools->Add( new wxButton( this, ID_FORM_ADD, "Add..."), 0, wxALL|wxEXPAND, 2 );
 	sz_form_tools->Add( new wxButton( this, ID_FORM_SAVE, "Save"), 0, wxALL|wxEXPAND, 2 );
 	sz_form_tools->Add( new wxButton( this, ID_FORM_DELETE, "Delete"), 0, wxALL|wxEXPAND, 2 );
+	sz_form_tools->Add( new wxButton( this, ID_FORM_IMPORT, "Import"), 0, wxALL|wxEXPAND, 2 );
 	sz_form_tools->AddStretchSpacer();	
 	sz_form_tools->Add( new wxButton( this, ID_VAR_SYNC, "Sync"), 0, wxALL|wxEXPAND, 2 );
 	sz_form_tools->Add( new wxButton( this, ID_VAR_ADD, "Add"), 0, wxALL|wxEXPAND, 2 );
@@ -449,7 +455,7 @@ UIEditorPanel::UIEditorPanel( wxWindow *parent )
 	sz_form_main->Add( sz_var_main, 0, wxALL|wxEXPAND, 0 );
 
 	m_uiFormEditor->SetPropertyEditor( m_uiPropEditor );
-	m_uiFormEditor->SetFormData( &m_formData );
+	m_uiFormEditor->SetFormData( &m_exForm );
 
 	m_curVar = 0;
 
@@ -561,45 +567,38 @@ void UIEditorPanel::OnCommand( wxCommandEvent &evt )
 	case ID_FORM_ADD:
 		{
 			wxString name = wxGetTextFromUser( "Enter new form name:", "query", wxEmptyString, this );
+			if ( name.IsEmpty() ) return;
+
 			if ( wxFileExists(SamApp::GetRuntimePath()  + "/ui/" + name + ".ui" ) )
 			{
 				wxMessageBox("that form already exists.", "notice", wxOK, this);
 				return;
 			}
 			m_uiFormEditor->SetFormData( 0 ) ;
-			m_formData.DeleteAll();
-			m_varData.clear();
+			m_exForm.DeleteAll();
+			m_ipd.Clear();
 			m_curVar = 0;
 			m_callbackScript->SetText( wxEmptyString );
 			m_equationScript->SetText( wxEmptyString );
 			WriteForm( name );
 			if ( !LoadForm( name ) )
-				wxMessageBox("error loading form: " + name, "notice", wxOK, this );
+				wxMessageBox("error loading newly created form: " + name, "notice", wxOK, this );
 			LoadFormList( name );
 		}
 		break;
 	case ID_FORM_DELETE:
 		{
 			wxString form = m_formList->GetStringSelection();
-			if ( wxYES == wxMessageBox( "really delete .ui/.var/.cb/.eqn for: " + form + " ?  cannot undo!", "query", wxYES_NO, this ) )
+			if ( wxYES == wxMessageBox( "really delete .ui for: " + form + " ?  cannot undo!", "query", wxYES_NO, this ) )
 			{
 				wxString ff = SamApp::GetRuntimePath() + "/ui/" + form + ".ui";
 				if ( wxFileExists( ff ) ) wxRemoveFile( ff );
 				
-				ff = SamApp::GetRuntimePath() + "/ui/" + form + ".var";
-				if ( wxFileExists( ff ) ) wxRemoveFile( ff );
-
-				ff = SamApp::GetRuntimePath() + "/ui/" + form + ".cb";
-				if ( wxFileExists( ff ) ) wxRemoveFile( ff );
-
-				ff = SamApp::GetRuntimePath() + "/ui/" + form + ".eqn";
-				if ( wxFileExists( ff ) ) wxRemoveFile( ff );
-
 				m_formName.Clear();
-				m_formData.DeleteAll();
-				m_varData.clear();
+				m_exForm.DeleteAll();
+				m_ipd.Clear();
 				m_curVar = 0;
-				m_uiFormEditor->SetFormData( &m_formData );
+				m_uiFormEditor->SetFormData( &m_exForm );
 				m_uiFormEditor->Refresh();
 				m_callbackScript->Clear();
 				m_equationScript->Clear();
@@ -607,6 +606,85 @@ void UIEditorPanel::OnCommand( wxCommandEvent &evt )
 				LoadVarList();
 				VarInfoToForm( NULL );
 			}
+		}
+		break;
+	case ID_FORM_IMPORT:
+		{
+			wxFileDialog dlg( this, "Select .ui form to import (.ui/.cb/.eqn/.var) shall be imported)" );
+			if ( dlg.ShowModal() != wxID_OK ) return;
+			
+			wxString folder = wxPathOnly( dlg.GetPath() );
+			wxString name = wxFileName(dlg.GetPath()).GetName();
+
+			bool import_all = false;
+			wxArrayString list;
+			wxDir::GetAllFiles( folder, &list, "*.ui", wxDIR_FILES );
+			if ( list.size() > 1 && wxYES==wxMessageBox("Multiple .ui files were detected.  Import all?", "Query", wxYES_NO) )
+					import_all = true;
+			
+			if ( !import_all )
+			{
+				list.Clear();
+				list.Add( name );
+			}
+			
+			size_t nok = 0;
+			wxArrayString err;
+
+			for( size_t i=0;i<list.size();i++)
+			{
+				name = wxFileName( folder + "/" + list[i]).GetName();
+
+				m_uiFormEditor->SetFormData( 0 );
+				m_uiFormEditor->Refresh();
+				m_formName = name;
+	
+				bool ok = true;
+
+				wxString file = folder + "/" + name + ".ui" ;
+				if ( wxFileExists( file ) )
+				{
+					wxFFileInputStream fform( file );
+					if ( fform.IsOk() && m_exForm.Read( fform ) )
+					{
+						m_uiFormEditor->SetFormData( &m_exForm );
+						m_uiFormEditor->Refresh();
+						m_formName = name;
+					}
+					else ok = false;
+				}
+
+				file = folder + "/" + name + ".var" ;
+				if ( wxFileExists( file ) )
+				{
+					m_ipd.Variables().clear();
+					wxFFileInputStream fvars( file );
+					if ( fvars.IsOk() && m_ipd.Variables().Read( fvars ) )
+					{
+						m_curVar = 0;
+						LoadVarList();
+						VarInfoToForm( NULL );
+					}
+					else ok = false;
+				}
+			
+				file = folder + "/" + name + ".cb" ;
+				if ( wxFileExists( file ) )
+					ok = ok && m_callbackScript->ReadAscii( file );
+			
+				file = folder + "/" + name + ".eqn" ;
+				if ( wxFileExists( file ) )
+					ok = ok && m_equationScript->ReadAscii( file );
+
+				ok = ok && WriteForm( m_formName );
+				if ( ok ) nok++;
+				else err.Add( m_formName );
+			}
+
+			wxMessageBox( wxString::Format("%d form(s) imported ok, %d fail", (int)nok, (int)(list.size()-nok) ) );
+			if ( err.size() > 0 ) wxMessageBox( "errors:\n\n" + wxJoin(err,'\n'));
+
+			LoadFormList();
 		}
 		break;
 	case ID_FORM_SAVE:
@@ -623,53 +701,53 @@ void UIEditorPanel::OnCommand( wxCommandEvent &evt )
 		break;
 	case ID_VAR_SYNC:
 		{
-			std::vector<wxUIObject*> objects = m_formData.GetObjects();
+			std::vector<wxUIObject*> objects = m_exForm.GetObjects();
 			for( size_t i=0;i<objects.size();i++ )
 			{
 				wxString type = objects[i]->GetTypeName();
 				wxString name = objects[i]->GetName();
-				if ( m_varData.Lookup( name ) == 0 )
+				if ( m_ipd.Variables().Lookup( name ) == 0 )
 				{
 					if ( type == "Numeric" )
-						m_varData.Add( name, VV_NUMBER );
+						m_ipd.Variables().Add( name, VV_NUMBER );
 					else if ( type == "Choice" )
-						m_varData.Add( name, VV_NUMBER );
+						m_ipd.Variables().Add( name, VV_NUMBER );
 					else if ( type == "ListBox" )
-						m_varData.Add( name, VV_STRING );
+						m_ipd.Variables().Add( name, VV_STRING );
 					else if ( type == "RadioChoice" )
-						m_varData.Add( name, VV_NUMBER );
+						m_ipd.Variables().Add( name, VV_NUMBER );
 					else if ( type == "TextEntry" )
-						m_varData.Add( name, VV_STRING );
+						m_ipd.Variables().Add( name, VV_STRING );
 					else if ( type == "Slider" )
-						m_varData.Add( name, VV_NUMBER );
+						m_ipd.Variables().Add( name, VV_NUMBER );
 					else if ( type == "CheckBox" )
-						m_varData.Add( name, VV_NUMBER );
+						m_ipd.Variables().Add( name, VV_NUMBER );
 					else if ( type == "RadioChoice" )
-						m_varData.Add( name, VV_NUMBER );
+						m_ipd.Variables().Add( name, VV_NUMBER );
 					else if ( type == "Slider" )
-						m_varData.Add( name, VV_NUMBER );
+						m_ipd.Variables().Add( name, VV_NUMBER );
 					else if ( type == "SchedNumeric" )
-						m_varData.Add( name, VV_ARRAY );
+						m_ipd.Variables().Add( name, VV_ARRAY );
 					else if ( type == "TOUSchedule" )
-						m_varData.Add( name, VV_STRING );
+						m_ipd.Variables().Add( name, VV_STRING );
 					else if ( type == "PTLayout" )
-						m_varData.Add( name, VV_TABLE );
+						m_ipd.Variables().Add( name, VV_TABLE );
 					else if ( type == "MaterialProperties" )
-						m_varData.Add( name, VV_MATRIX );
+						m_ipd.Variables().Add( name, VV_MATRIX );
 					else if ( type == "TroughLoop" )
-						m_varData.Add( name, VV_ARRAY );
+						m_ipd.Variables().Add( name, VV_ARRAY );
 					else if ( type == "MonthlyFactor" )
-						m_varData.Add( name, VV_ARRAY );
+						m_ipd.Variables().Add( name, VV_ARRAY );
 					else if ( type == "SearchListBox" )
-						m_varData.Add( name, VV_STRING );
+						m_ipd.Variables().Add( name, VV_STRING );
 					else if ( type == "DataArray" )
-						m_varData.Add( name, VV_ARRAY );
+						m_ipd.Variables().Add( name, VV_ARRAY );
 					else if ( type == "DataMatrix" )
-						m_varData.Add( name, VV_MATRIX );
+						m_ipd.Variables().Add( name, VV_MATRIX );
 					else if ( type == "ShadingFactors" )
-						m_varData.Add( name, VV_TABLE );
+						m_ipd.Variables().Add( name, VV_TABLE );
 					else if ( type == "ValueMatrix" )
-						m_varData.Add( name, VV_MATRIX );
+						m_ipd.Variables().Add( name, VV_MATRIX );
 
 					// extend this list in the future for additional controls
 				}
@@ -683,7 +761,7 @@ void UIEditorPanel::OnCommand( wxCommandEvent &evt )
 			wxString name = wxGetTextFromUser( "Enter new variable name", "query", wxEmptyString, this);
 			if ( !name.IsEmpty() )
 			{
-				VarInfo *vv = m_varData.Lookup( name );
+				VarInfo *vv = m_ipd.Variables().Lookup( name );
 				if ( vv )
 				{
 					FormToVarInfo( m_curVar );
@@ -691,7 +769,7 @@ void UIEditorPanel::OnCommand( wxCommandEvent &evt )
 				}
 				else
 				{
-					VarInfoToForm( m_varData.Add( name, VV_INVALID ) );
+					VarInfoToForm( m_ipd.Variables().Add( name, VV_INVALID ) );
 					LoadVarList( name );
 				}
 			}
@@ -701,7 +779,7 @@ void UIEditorPanel::OnCommand( wxCommandEvent &evt )
 	case ID_VAR_DELETE:
 		{
 		// delete selected item
-			m_varData.Delete( m_varList->GetStringSelection() );
+			m_ipd.Variables().Delete( m_varList->GetStringSelection() );
 			m_varList->Delete( m_varList->GetSelection() );
 
 		// delete any checked items
@@ -713,7 +791,7 @@ void UIEditorPanel::OnCommand( wxCommandEvent &evt )
 			for( size_t i=0;i<checked.size();i++ )
 			{
 				m_varList->Delete( m_varList->FindString( checked[i] ) );
-				m_varData.Delete( checked[i] );
+				m_ipd.Variables().Delete( checked[i] );
 			}
 			
 			VarInfoToForm( NULL );
@@ -721,7 +799,7 @@ void UIEditorPanel::OnCommand( wxCommandEvent &evt )
 		break;
 	case ID_VAR_LIST:
 		FormToVarInfo( m_curVar ); // save the current var
-		VarInfoToForm( m_varData.Lookup( m_varList->GetStringSelection() ) ); // switch to the new var
+		VarInfoToForm( m_ipd.Variables().Lookup( m_varList->GetStringSelection() ) ); // switch to the new var
 		break;
 	case ID_VAR_NAME:
 		if ( m_curVar )
@@ -729,7 +807,7 @@ void UIEditorPanel::OnCommand( wxCommandEvent &evt )
 			if ( m_curVar->Name == m_varName->GetValue() )
 				return;
 
-			if ( m_varData.Lookup( m_varName->GetValue() ) )
+			if ( m_ipd.Variables().Lookup( m_varName->GetValue() ) )
 			{
 				wxMessageBox("that variable already exists: " + m_varName->GetValue(), "notice", wxOK, this );
 				m_varName->ChangeValue( m_curVar->Name );
@@ -737,7 +815,7 @@ void UIEditorPanel::OnCommand( wxCommandEvent &evt )
 				return;
 			}
 
-			if ( m_varData.Rename( m_curVar->Name, m_varName->GetValue() ) )
+			if ( m_ipd.Variables().Rename( m_curVar->Name, m_varName->GetValue() ) )
 			{
 				m_curVar->Name = m_varName->GetValue();
 				LoadVarList( m_curVar->Name );
@@ -780,7 +858,7 @@ void UIEditorPanel::OnCommand( wxCommandEvent &evt )
 			m_callbackGotoList.Add( "on_load{'" + m_formName + "'} = define() {" );
 			menu.Append( id++, "form->on_load" );
 
-			std::vector<wxUIObject*> objs = m_formData.GetObjects();
+			std::vector<wxUIObject*> objs = m_exForm.GetObjects();
 			for( size_t i=0;i<objs.size();i++ )
 			{
 				wxString type = objs[i]->GetTypeName();
@@ -847,7 +925,7 @@ void UIEditorPanel::OnCommand( wxCommandEvent &evt )
 		{
 			if ( !m_varList->IsChecked( i ) ) continue;
 
-			if ( VarInfo *vi = m_varData.Lookup( m_varList->GetString(i) ) )
+			if ( VarInfo *vi = m_ipd.Variables().Lookup( m_varList->GetString(i) ) )
 				m_varCopyBuffer.Add( m_varList->GetString(i), new VarInfo( *vi ) );
 		}
 		break;
@@ -859,8 +937,8 @@ void UIEditorPanel::OnCommand( wxCommandEvent &evt )
 				it != m_varCopyBuffer.end();
 				++it )
 			{
-				if( m_varData.Lookup( it->first ) == 0 )
-					m_varData.Add( it->first, new VarInfo( *(it->second)  ) );
+				if( m_ipd.Variables().Lookup( it->first ) == 0 )
+					m_ipd.Variables().Add( it->first, new VarInfo( *(it->second)  ) );
 				else
 					err.Add( it->first );
 			}
@@ -884,7 +962,7 @@ void UIEditorPanel::OnFormSelectObject( wxUIFormEvent &evt )
 {
 	if ( wxUIObject *obj = evt.GetUIObject() )
 	{
-		if ( VarInfo *vv = m_varData.Lookup( obj->GetName() ) )
+		if ( VarInfo *vv = m_ipd.Variables().Lookup( obj->GetName() ) )
 		{
 			FormToVarInfo( m_curVar ); // save the current var
 			m_varList->SetStringSelection( vv->Name );
@@ -971,7 +1049,7 @@ void UIEditorPanel::LoadVarList( const wxString &sel )
 {
 	m_varList->Freeze();
 	m_varList->Clear();
-	wxArrayString list = m_varData.ListAll();
+	wxArrayString list = m_ipd.Variables().ListAll();
 	list.Sort();
 	m_varList->Append( list );
 	m_varList->Thaw();
@@ -981,20 +1059,16 @@ void UIEditorPanel::LoadVarList( const wxString &sel )
 bool UIEditorPanel::WriteForm( const wxString &name )
 {
 	bool ok = true;
+	m_ipd.Form().Copy( m_exForm );
+	m_ipd.Form().SetName( name );
+	// note: ipd.Variables() already up-to-date
+	m_ipd.CbScript() = m_callbackScript->GetText();
+	m_ipd.EqnScript() = m_equationScript->GetText();
 
-	wxFFileOutputStream fform( SamApp::GetRuntimePath() + "/ui/" + name + ".ui" );
-	if ( fform.IsOk() )
-		m_formData.Write( fform );
+	wxFFileOutputStream ff(  SamApp::GetRuntimePath() + "/ui/" + name + ".ui" );
+	if ( ff.IsOk() )
+		m_ipd.Write( ff );
 	else ok = false;
-
-	wxFFileOutputStream fvars( SamApp::GetRuntimePath() + "/ui/" + name + ".var" );
-	if ( fvars.IsOk() )
-		m_varData.Write( fvars );
-	else ok = false;
-
-	ok = ok && m_callbackScript->WriteAscii( SamApp::GetRuntimePath() + "/ui/" + name + ".cb" );
-	
-	ok = ok && m_equationScript->WriteAscii( SamApp::GetRuntimePath() + "/ui/" + name + ".eqn" );
 
 	return ok;
 }
@@ -1004,6 +1078,8 @@ bool UIEditorPanel::LoadForm( const wxString &name )
 	m_uiFormEditor->SetFormData( 0 );
 	m_uiFormEditor->Refresh();
 	m_formName.Clear();
+
+	m_ipd.Clear();
 	
 	bool ok = true;
 
@@ -1011,37 +1087,25 @@ bool UIEditorPanel::LoadForm( const wxString &name )
 
 	if ( wxFileExists( file ) )
 	{
-		wxFFileInputStream fform( file );
-		if ( fform.IsOk() && m_formData.Read( fform ) )
+		wxFFileInputStream ff( file );
+		if ( ff.IsOk() && m_ipd.Read( ff ) )
 		{
-			m_uiFormEditor->SetFormData( &m_formData );
+			m_ipd.Form().SetName( name );
+			m_exForm.Copy( m_ipd.Form() );
+
+			m_uiFormEditor->SetFormData( &m_exForm );
 			m_uiFormEditor->Refresh();
 			m_formName = name;
-		}
-		else ok = false;
-	}
-
-	file = SamApp::GetRuntimePath() + "/ui/" + name + ".var";
-	if ( wxFileExists( file ) )
-	{
-		m_varData.clear();
-		wxFFileInputStream fvars( file );
-		if ( fvars.IsOk() && m_varData.Read( fvars ) )
-		{
+			
 			m_curVar = 0;
 			LoadVarList();
 			VarInfoToForm( NULL );
+
+			m_callbackScript->SetText( m_ipd.CbScript() );
+			m_equationScript->SetText( m_ipd.EqnScript() );
 		}
 		else ok = false;
 	}
-
-	file = SamApp::GetRuntimePath() + "/ui/" + name + ".cb";
-	if ( wxFileExists( file ) )
-		ok = ok && m_callbackScript->ReadAscii( file );
-
-	file = SamApp::GetRuntimePath() + "/ui/" + name + ".eqn";
-	if ( wxFileExists( file ) )
-		ok = ok && m_equationScript->ReadAscii( file );
 
 	return ok;
 }
@@ -1078,8 +1142,8 @@ IDEWindow::IDEWindow( wxWindow *parent )
 	m_uiPanel = new UIEditorPanel( m_notebook );
 	m_notebook->AddPage( m_uiPanel, "User Interface" );
 
-	m_simPanel = new SimulationScriptPanel( this );
-	m_notebook->AddPage( m_simPanel, "Simulations" );
+	//m_simPanel = new SimulationScriptPanel( this );
+	//m_notebook->AddPage( m_simPanel, "Simulations" );
 	
 	m_notebook->AddPage( new wxPanel( m_notebook ), "Default Values" );
 	m_notebook->AddPage( new wxPanel( m_notebook ), "Default Graphs" );

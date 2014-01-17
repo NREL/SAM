@@ -37,7 +37,7 @@ Individual thread-safe simulation process (Invoke):
    terminate calculations and return.
   
 
-*/
+
 
 class SimulationEngine;
 class Case;
@@ -88,6 +88,6 @@ public:
 	bool RunAll( int ncpus = 0 );
 };
 
-
+*/
 
 #endif

@@ -176,13 +176,10 @@ public:
 	bool LoadFile( const wxString &file, const wxString &page = wxEmptyString );
 	void Write( wxOutputStream & );
 	bool Read( wxInputStream &, const wxString &page = wxEmptyString );
-
-	wxArrayString GetVarsForPage( const wxString &page );
-
+	
 private:
 	
-	typedef unordered_map<wxString, wxArrayString, wxStringHash, wxStringEqual> StringArrayHash;	
-	StringArrayHash m_pageCache;
+	typedef unordered_map<wxString, wxArrayString, wxStringHash, wxStringEqual> StringArrayHash;
 
 };
 

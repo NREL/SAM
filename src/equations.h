@@ -33,7 +33,7 @@ public:
 
 	wxArrayString *GetAffectedVariables( const wxString &var );
 	std::vector<EqnData*> GetEquations() { return m_equations; }
-
+	
 private:
 	std::vector<lk::node_t*> m_trees;
 
@@ -49,9 +49,12 @@ private:
 
 class EqnFastLookup 
 {	
-	EqnDatabase *m_db;
+	std::vector<EqnDatabase*> m_dbs;
 public:
+	EqnFastLookup();
 	EqnFastLookup( EqnDatabase *db );
+
+	void AddDatabase( EqnDatabase *db );
 
 	void Add( EqnData *ed );
 	void Add( std::vector<EqnData*> &list );

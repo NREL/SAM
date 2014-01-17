@@ -7,6 +7,7 @@
 #include <wx/busyinfo.h>
 #include <wx/dir.h>
 #include <wx/wfstream.h>
+#include <wx/datstrm.h>
 
 #include <wex/metro.h>
 #include <wex/icons/cirplus.cpng>
@@ -41,11 +42,7 @@ static const int g_verMajor = 2014;
 static const int g_verMinor = 1;
 static const int g_verMicro = 1;
 static ConfigDatabase g_cfgDatabase;
-static VarDatabase g_varDatabase;
-static EqnDatabase g_eqnDatabase;
-static ScriptDatabase g_cbDatabase;
-static ScriptDatabase g_simDatabase;
-static FormDatabase g_formDatabase;
+static InputPageDatabase g_uiDatabase;
 static wxLogWindow *g_logWindow = 0;
 
 
@@ -726,34 +723,43 @@ bool ScriptDatabase::LoadFile( const wxString &file )
 		//wxLogStatus("uicb: processing callback script file: " + file);
 		wxString buf;
 		fp.ReadAll( &buf );
-		lk::input_string data( buf );
-		lk::parser parse( data );
-		lk::node_t *tree = parse.script();
+		return LoadScript( buf );
+	}
 
-		if ( parse.error_count() != 0
-			|| parse.token() != lk::lexer::END)
+	return true;
+}
+
+bool ScriptDatabase::LoadScript( const wxString &source )
+{
+	lk::input_string data( source );
+	lk::parser parse( data );
+	lk::node_t *tree = parse.script();
+
+	if ( parse.error_count() != 0
+		|| parse.token() != lk::lexer::END)
+	{
+		wxLogStatus("fail: callback script load: parsing did not reach end of input ");				
+		for (int x=0; x < parse.error_count(); x++)
+			wxLogStatus( parse.error(x));
+
+		return false;
+	}
+	else if ( tree != 0 )
+	{							
+		cb_data *cbf = new cb_data;
+		cbf->source = source;
+		cbf->tree = tree;
+		m_cblist.push_back(cbf);
+
+		lk::eval e( tree, &m_cbenv );
+
+		if ( !e.run() )
 		{
-			wxLogStatus("fail: callback script load: parsing did not reach end of input: " + file);				
-			for (int x=0; x < parse.error_count(); x++)
-				wxLogStatus( parse.error(x));
-		}
-		else if ( tree != 0 )
-		{							
-			cb_data *cbf = new cb_data;
-			cbf->source = file;
-			cbf->tree = tree;
-			m_cblist.push_back(cbf);
+			wxLogStatus("uicb script eval fail" );
+			for (size_t i=0;i<e.error_count();i++)
+				wxLogStatus( e.get_error(i) );
 
-			lk::eval e( tree, &m_cbenv );
-
-			if ( !e.run() )
-			{
-				wxLogStatus("uicb script eval fail: " + file );
-				for (size_t i=0;i<e.error_count();i++)
-					wxLogStatus( e.get_error(i) );
-
-				return false;
-			}
+			return false;
 		}
 	}
 
@@ -808,18 +814,74 @@ lk::node_t *ScriptDatabase::Lookup( const wxString &method_name, const wxString 
 	return p_define->right;
 }
 
-FormDatabase::FormDatabase()
+
+InputPageData::InputPageData() {
+	// nothing to do
+}
+
+void InputPageData::Clear()
+{ 
+	m_form.DeleteAll();
+	m_vars.clear();
+	m_eqns.Clear();
+	m_cbs.ClearAll();
+}
+
+void InputPageData::Write( wxOutputStream &os )
+{
+	wxDataOutputStream out( os );
+	out.Write8( 0x48 );
+	out.Write8( 1 );
+
+	m_form.Write( os );
+	m_vars.Write( os );
+	out.WriteString( m_eqnScript );
+	out.WriteString( m_cbScript );
+
+	out.Write8( 0x48 );
+}
+
+bool InputPageData::Read( wxInputStream &is )
+{
+	wxDataInputStream in(is);
+	wxUint8 code = in.Read8();
+	wxUint8 ver = in.Read8();
+
+	bool ok = true; 
+	ok = ok && m_form.Read( is );
+	ok = ok && m_vars.Read( is );
+	m_eqnScript = in.ReadString();
+	m_cbScript = in.ReadString();
+
+	return in.Read8() == code && ok;
+}
+
+bool InputPageData::BuildDatabases()
+{
+	m_eqns.Clear();
+	m_cbs.ClearAll();
+
+	if ( !m_eqns.LoadScript( m_eqnScript ) )
+		return false;
+
+	if ( !m_cbs.LoadScript( m_cbScript ) )
+		return false;
+
+	return true;
+}
+
+InputPageDatabase::InputPageDatabase()
 {
 }
 
-FormDatabase::~FormDatabase()
+InputPageDatabase::~InputPageDatabase()
 {
 	Clear();
 }
 
-void FormDatabase::Clear()
+void InputPageDatabase::Clear()
 {
-	for ( FormDataHash::iterator it = m_hash.begin();
+	for ( InputPageDataHash::iterator it = m_hash.begin();
 		it != m_hash.end();
 		++it )
 		delete (*it).second;
@@ -827,29 +889,35 @@ void FormDatabase::Clear()
 	m_hash.clear();
 }
 
-bool FormDatabase::LoadFile( const wxString &file )
+bool InputPageDatabase::LoadFile( const wxString &file )
 {
 	wxFileName ff(file);
 	wxString name( ff.GetName() );
 	
-	wxUIFormData *pd = new wxUIFormData;
+	InputPageData *pd = new InputPageData;
 	
 	bool ok = true;
 	wxFFileInputStream is( file );
 	if ( !is.IsOk() || !pd->Read( is ) )
 		ok = false;
 	
-	pd->SetName( name );
+	pd->Form().SetName( name );
 
 	if ( ok ) Add( name, pd );
 	else delete pd;
 
+	if ( !pd->BuildDatabases() )
+	{
+		wxLogStatus( "failed to build equation and script databases for: " + name );
+		ok = false;
+	}
+
 	return ok;
 }
 
-void FormDatabase::Add( const wxString &name, wxUIFormData *ui )
+void InputPageDatabase::Add( const wxString &name, InputPageData *ui )
 {
-	FormDataHash::iterator it = m_hash.find( name );
+	InputPageDataHash::iterator it = m_hash.find( name );
 	if ( it != m_hash.end() )
 	{
 		delete it->second;
@@ -859,22 +927,21 @@ void FormDatabase::Add( const wxString &name, wxUIFormData *ui )
 		m_hash[ name ] = ui;
 }
 
-wxUIFormData *FormDatabase::Lookup( const wxString &name )
+InputPageData *InputPageDatabase::Lookup( const wxString &name )
 {
-	FormDataHash::iterator it = m_hash.find( name );
+	InputPageDataHash::iterator it = m_hash.find( name );
 	return ( it != m_hash.end() ) ? it->second : NULL;
 }
 
 
 
-ConfigDatabase::ConfigInfo::ConfigInfo()
-	: Equations( &g_eqnDatabase )
+ConfigInfo::ConfigInfo()
 {
 }
 
-ConfigDatabase::ConfigInfo::~ConfigInfo()
+ConfigInfo::~ConfigInfo()
 {
-	for( size_t i=0;i<InputPages.size();i++) delete InputPages[i];
+	for( size_t i=0;i<InputPageGroups.size();i++) delete InputPageGroups[i];
 }
 
 
@@ -933,16 +1000,11 @@ void ConfigDatabase::AddInputPageGroup( const std::vector< std::vector<PageInfo>
 	ip->OrganizeAsExclusivePages = !exclvar.IsEmpty();
 	ip->ExclusivePageVar = exclvar;
 
-	m_curConfig->InputPages.push_back( ip );
+	m_curConfig->InputPageGroups.push_back( ip );
 }
 
 void ConfigDatabase::RebuildCaches()
 {
-	std::vector<EqnData*> all_eqns = SamApp::Equations().GetEquations();
-
-	EqnFastLookup eqnlookup( &SamApp::Equations() );
-	eqnlookup.Add( all_eqns );
-
 	for( std::vector<ConfigInfo*>::iterator it0 = m_configList.begin();
 		it0 != m_configList.end(); ++it0 )
 	{
@@ -950,9 +1012,11 @@ void ConfigDatabase::RebuildCaches()
 
 		ci->Variables.clear();
 		ci->Equations.Clear();
+		ci->AutoVariables.clear();
+		ci->InputPages.clear();
 		
-		for( std::vector<InputPageGroup*>::iterator it1 = ci->InputPages.begin();
-			it1 != ci->InputPages.end(); ++it1 )
+		for( std::vector<InputPageGroup*>::iterator it1 = ci->InputPageGroups.begin();
+			it1 != ci->InputPageGroups.end(); ++it1 )
 		{
 			InputPageGroup *igrp = *it1;
 			for( size_t k=0;k<igrp->Pages.size();k++ )
@@ -961,42 +1025,50 @@ void ConfigDatabase::RebuildCaches()
 				for( size_t l=0;l<nstack;l++ )
 				{
 					PageInfo &pi = igrp->Pages[k][l];
+					if ( InputPageData *ipd = SamApp::InputPages().Lookup( pi.Name ) )
+					{
+						ci->InputPages[ pi.Name ] = ipd;
+						
+						ci->Equations.AddDatabase( &ipd->Equations() );
+						ci->Equations.Add( ipd->Equations().GetEquations() );
 					
-					wxArrayString list = SamApp::Variables().GetVarsForPage( pi.Name );
-					for( size_t n=0;n<list.size();n++ )
-					{
-						wxString name = list[n];
-
-						if ( VarInfo *vv = SamApp::Variables().Lookup( name ) )
-							ci->Variables.Add( vv );
-
-						if ( EqnData *ed = eqnlookup.GetEquationData( name ))
-							ci->Equations.Add( ed );
-					}
-
-					if ( pi.Collapsible && !pi.CollapsiblePageVar.IsEmpty() )
-					{
-						VarInfo *vv = SamApp::Variables().Lookup( pi.CollapsiblePageVar );
-						if( vv == 0 )
+						VarDatabase &vars = ipd->Variables();
+						for( VarDatabase::iterator it = vars.begin();
+							it != vars.end();
+							++it )
 						{
-							vv = SamApp::Variables().Add( pi.CollapsiblePageVar, VV_NUMBER,
-								"Current selection for " + pi.Caption );
+							ci->Variables.Add( it->second );
 
-							vv->Flags |= VF_COLLAPSIBLE_PANE;
-							vv->DefaultValue.Set( pi.CollapsedByDefault ? 0 : 1 );
+						//	if ( EqnData *ed = ipd->Equations()..GetEquationData( it->first ))
+//								ci->Equations.Add( ed );
 						}
 
-						ci->Variables.Add( vv );
+						if ( pi.Collapsible && !pi.CollapsiblePageVar.IsEmpty() )
+						{
+							VarInfo *vv = ci->AutoVariables.Lookup( pi.CollapsiblePageVar );
+							if( vv == 0 )
+							{
+								vv = ci->AutoVariables.Add( pi.CollapsiblePageVar, VV_NUMBER,
+									"Current selection for " + pi.Caption );
+
+								vv->Flags |= VF_COLLAPSIBLE_PANE;
+								vv->DefaultValue.Set( pi.CollapsedByDefault ? 0 : 1 );
+							}
+
+							ci->Variables.Add( vv );
+						}
 					}
+					else
+						wxLogStatus("could not find data for referenced input page: " + pi.Name );
 				}
 			}
 
 			if ( igrp->OrganizeAsExclusivePages && !igrp->ExclusivePageVar.IsEmpty() )
 			{
-				VarInfo *vv = SamApp::Variables().Lookup( igrp->ExclusivePageVar );
+				VarInfo *vv = ci->AutoVariables.Lookup( igrp->ExclusivePageVar );
 				if ( vv == 0 )
 				{
-					vv = SamApp::Variables().Add( igrp->ExclusivePageVar, VV_NUMBER, 
+					vv = ci->AutoVariables.Add( igrp->ExclusivePageVar, VV_NUMBER, 
 						"Current selection for " + igrp->SideBarLabel );
 
 					vv->Flags |= VF_EXCLUSIVE_PAGES;
@@ -1026,32 +1098,8 @@ wxArrayString ConfigDatabase::GetFinancingForTech(const wxString &tech)
 	return wxArrayString();
 
 }
-	
-std::vector<ConfigDatabase::InputPageGroup*> &ConfigDatabase::GetInputPages(const wxString &tech,
-			const wxString &financing )
-{
-static std::vector<InputPageGroup*> sg_emptyList;
-	if ( ConfigInfo *ci = Find( tech, financing ) ) return ci->InputPages;
-	else return sg_emptyList;
-}
-
-VarInfoLookup &ConfigDatabase::GetVariables( const wxString &tech, const wxString &financing )
-{
-static VarInfoLookup sg_emptyList;
-	if ( ConfigInfo *ci = Find( tech, financing ) ) return ci->Variables;
-	else return sg_emptyList;
-}
-
-EqnFastLookup &ConfigDatabase::GetEquations( const wxString &tech, const wxString &financing )
-{
-static EqnFastLookup sg_emptyList( &SamApp::Equations() );
-	if ( ConfigInfo *ci = Find( tech, financing ) ) return ci->Equations;
-	else return sg_emptyList;
-}
-
-
 		
-ConfigDatabase::ConfigInfo *ConfigDatabase::Find( const wxString &t, const wxString &f )
+ConfigInfo *ConfigDatabase::Find( const wxString &t, const wxString &f )
 {
 	for( size_t i=0;i<m_configList.size();i++ )
 		if ( m_configList[i]->Technology == t
@@ -1136,10 +1184,7 @@ int SamApp::OnExit()
 void SamApp::Restart()
 {
 	// reload all forms, variables, callbacks, equations
-	SamApp::Equations().Clear();
-	SamApp::Callbacks().ClearAll();
-	SamApp::Variables().clear();
-	SamApp::Forms().Clear();
+	SamApp::InputPages().Clear();
 	
 	wxDir dir( SamApp::GetRuntimePath() + "/ui" );
 	if ( dir.IsOpened() )
@@ -1148,28 +1193,10 @@ void SamApp::Restart()
 		bool has_more = dir.GetFirst( &file, "*.ui", wxDIR_FILES  );
 		while( has_more )
 		{
-			wxFileName fn( file );
-
-			wxLogStatus( "loading .ui/.var/.eqn/.cb for " + fn.GetName() );
-			wxString file_base = SamApp::GetRuntimePath() + "/ui/" + fn.GetName();
+			wxLogStatus( "loading .ui: " + wxFileName(file).GetName() );
+			if (!SamApp::InputPages().LoadFile( SamApp::GetRuntimePath() + "/ui/" + file ))
+				wxLogStatus( " --> error loading .ui for " + wxFileName(file).GetName() );
 			
-			if ( !SamApp::Forms().LoadFile( file_base + ".ui" ))
-				wxLogStatus( " --> error loading .ui for " + file_base );
-			
-			if ( !SamApp::Variables().LoadFile( file_base  + ".var", fn.GetName() ) )
-				wxLogStatus( " --> error loading .var for " + file_base );
-			
-			wxArrayString eqn_errors;
-			if ( !SamApp::Equations().LoadFile( file_base + ".eqn", &eqn_errors ) )
-			{
-				wxLogStatus( " --> error loading .eqn for " + file_base );
-				for( size_t k=0;k<eqn_errors.size();k++ )
-					wxLogStatus( "     " + eqn_errors[k] );
-			}
-
-			if ( !SamApp::Callbacks().LoadFile( file_base + ".cb" ) )
-				wxLogStatus( " --> error loading .cb for " + file_base );
-
 			has_more = dir.GetNext( &file );
 		}
 	}
@@ -1207,26 +1234,6 @@ void SamApp::Restart()
 	}
 
 	ScanSolarResourceData();
-
-	// reload all simulation scripts
-	SamApp::Simulations().ClearAll();
-	
-	wxString path = SamApp::GetRuntimePath() + "/simulations";
-	if ( dir.Open( path ) )
-	{
-		wxString file;
-		bool has_more = dir.GetFirst( &file, "*.sim", wxDIR_FILES  );
-		while( has_more )
-		{
-			wxLogStatus( " --> loading simulation script " + file );
-			
-			if ( !SamApp::Callbacks().LoadFile( path + "/" + file ) )
-				wxLogStatus( " --> error in .sim for " + file );
-
-			has_more = dir.GetNext( &file );
-		}
-	}
-	dir.Close();
 }
 
 wxString SamApp::GetAppPath()
@@ -1274,13 +1281,8 @@ wxString SamApp::VersionStr() { return wxString::Format("%d.%d.%d", VersionMajor
 int SamApp::VersionMajor() { return g_verMajor; }
 int SamApp::VersionMinor() { return g_verMinor; }
 int SamApp::VersionMicro() { return g_verMicro; }
-
 ConfigDatabase &SamApp::Config() { return g_cfgDatabase; }
-VarDatabase &SamApp::Variables() { return g_varDatabase; }
-EqnDatabase &SamApp::Equations() { return g_eqnDatabase; }
-ScriptDatabase &SamApp::Callbacks() { return g_cbDatabase; }
-ScriptDatabase &SamApp::Simulations() { return g_simDatabase; }
-FormDatabase &SamApp::Forms() { return g_formDatabase; }
+InputPageDatabase &SamApp::InputPages() { return g_uiDatabase; }
 
 
 bool SamApp::LoadAndRunScriptFile( const wxString &script_file, wxArrayString *errors )

@@ -12,6 +12,7 @@
 #include "case.h"
 
 
+/*
 
 
 class SimulationContext
@@ -277,6 +278,7 @@ void Simulation::Override( const wxString &name, const VarValue &val )
 	}
 }
 
+
 wxString Simulation::GetOverridesLabel( bool with_labels )
 {
 	wxString tag;
@@ -299,7 +301,6 @@ wxString Simulation::GetOverridesLabel( bool with_labels )
 
 	return tag;
 }
-
 
 VarValue *Simulation::GetInput( const wxString &name )
 {
@@ -365,7 +366,6 @@ bool Simulation::Invoke( SimulationContext *context )
 	return false;
 }
 
-
 bool Simulation::Invoke( const wxString &name, SimulationContext *context )
 {	
 	// lookup and run any callback functions.
@@ -413,3 +413,4 @@ bool Simulation::Invoke( const wxString &name, SimulationContext *context )
 
 
 
+*/

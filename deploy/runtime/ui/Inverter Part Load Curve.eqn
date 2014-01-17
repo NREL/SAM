@@ -1,8 +1,0 @@
-equations{ 'pv.inv.pd.eff' } = define() {
-	return ?${pv.inv.pd.eff_type}[
-${pv.inv.pd.eff_cec},
-${pv.inv.pd.eff_euro}]; };
-
-equations{ 'pv.inv.pd.pdco' } = define() {
-	return ${pv.inv.pd.paco}/(${pv.inv.pd.eff}/100.0); };
-
