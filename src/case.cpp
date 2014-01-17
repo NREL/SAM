@@ -37,7 +37,7 @@ void CaseEqnEvaluator::SetupEnvironment( lk::env_t &env )
 }
 
 Case::Case()
-	: m_eqns( &SamApp::Equations() ) // initialize fast lookup with global all equations
+	: m_config(0)
 {
 
 }
@@ -63,9 +63,10 @@ bool Case::Copy( Object *obj )
 		m_properties = rhs->m_properties;
 		m_notes = rhs->m_notes;
 		
-		m_technology.Clear();
-		m_financing.Clear();
-		SetConfiguration( rhs->m_technology, rhs->m_financing );
+		m_config = 0;
+		if ( rhs->m_config );
+			SetConfiguration( rhs->m_config->Technology, rhs->m_config->Financing );
+
 		return true;
 	}
 	else
@@ -84,9 +85,16 @@ void Case::Write( wxOutputStream &_o )
 	out.Write8( 0x9b );
 	out.Write8( 1 );
 
+	wxString tech, fin;
+	if ( m_config != 0 )
+	{
+		tech = m_config->Technology;
+		fin = m_config->Financing;
+	}
+
 	// write data
-	out.WriteString( m_technology );
-	out.WriteString( m_financing );
+	out.WriteString( tech );
+	out.WriteString( fin );
 	m_vals.Write( _o );
 	m_baseCase.Write( _o );
 	m_properties.Write( _o );
@@ -118,41 +126,155 @@ bool Case::Read( wxInputStream &_i )
 
 void Case::SetConfiguration( const wxString &tech, const wxString &fin )
 {
-	m_technology = tech;
-	m_financing = fin;
-
 	// erase results
 	m_baseCase.clear();
-	
-	// update equation lookup and variable info caches
-	m_vars = SamApp::Config().GetVariables( m_technology, m_financing );
-	m_eqns = SamApp::Config().GetEquations( m_technology, m_financing );
-	
+
+	m_config = SamApp::Config().Find( tech, fin );
+		
+	if ( !m_config )
+	{
+		wxMessageBox("Case error: could not find configuration information for " + tech + ", " + fin );
+		return;
+	}
+
 	// erase all input variables that are no longer in the current configuration
 	wxArrayString to_remove;
+	VarInfoLookup &vars = m_config->Variables;
+
 	for( VarTable::iterator it = m_vals.begin(); it != m_vals.end(); ++it )
-		if ( m_vars.find( it->first ) == m_vars.end() )
+		if ( vars.find( it->first ) == vars.end() )
 			to_remove.Add( it->first );
 
 	m_vals.Delete( to_remove );
 
 	// set up any new variables with internal default values
-	for( VarInfoLookup::iterator it = m_vars.begin(); it != m_vars.end(); ++it )
+	for( VarInfoLookup::iterator it = vars.begin(); it != vars.end(); ++it )
 		if ( !m_vals.Get( it->first ) )
 			m_vals.Set( it->first, it->second->DefaultValue ); // will create new variable if it doesnt exist
 		
 	// reevalute all equations
-	CaseEqnEvaluator eval( this, m_vals, m_eqns );
+	CaseEqnEvaluator eval( this, m_vals, m_config->Equations );
 	eval.CalculateAll();
+
+	// setup the local callback environment
+	// by merging all the functions defined
+	// in the various input page callback scripts
+	// into one runtime environment
+	// the parse trees of the actual function implementations
+	// are not copied - they just reference those stored in the
+	// scriptdatabase(s) that are members of inputpagedata
+	m_cbEnv.clear_objs();
+	m_cbEnv.clear_vars();
+
+	lk::vardata_t *vdt_on_load = new lk::vardata_t;
+	vdt_on_load->empty_hash();
+	m_cbEnv.assign( "on_load", vdt_on_load );
+
+	lk::vardata_t *vdt_on_change = new lk::vardata_t;
+	vdt_on_change->empty_hash();
+	m_cbEnv.assign( "on_change", vdt_on_change );
+	
+	for( InputPageDataHash::iterator it = m_config->InputPages.begin();
+		it != m_config->InputPages.end();
+		++it )
+	{
+		lk::env_t *env = it->second->Callbacks().GetEnv();
+		lk_string key;
+		lk::vardata_t *val;
+		bool has_more = env->first( key, val );
+		while( has_more )
+		{
+			if ( val->type() == lk::vardata_t::FUNCTION )
+				m_cbEnv.assign( key, new lk::vardata_t( *val ) );
+			else if ( val->type() == lk::vardata_t::HASH
+				&& (key == "on_load" || key == "on_change") )
+			{
+				lk::vardata_t *target = (key=="on_load") ? vdt_on_load : vdt_on_change;
+				lk::varhash_t *hh = val->hash();
+				for( lk::varhash_t::iterator ihh = hh->begin();
+					ihh != hh->end();
+					++ihh )
+					target->hash_item( ihh->first, *ihh->second );
+			}
+
+			has_more = env->next( key, val );
+		}
+	}
 	
 	// update UI
 	SendEvent( CaseEvent( CaseEvent::CONFIG_CHANGED, tech, fin ) );
 }
 
+lk::env_t &Case::CallbackEnvironment()
+{
+	return m_cbEnv;
+}
+
+lk::node_t *Case::QueryCallback( const wxString &method, const wxString &object )
+{
+	
+	lk::vardata_t *cbvar = m_cbEnv.lookup( method, true);
+
+	if (!cbvar || cbvar->type() != lk::vardata_t::HASH )
+	{
+		//wxLogStatus("ScriptDatabase::Invoke: could not find " + method_name + " variable or not a hash");
+		return 0;
+	}
+
+	lk::vardata_t *cbref = cbvar->lookup( object );
+	if ( cbref == 0 
+		|| cbref->type() != lk::vardata_t::FUNCTION
+		|| cbref->deref().func() == 0 )
+	{
+		// wxLogStatus("ScriptDatabase::Invoke: could not find function entry for '%s'", (const char*)obj_name.c_str() );
+		return 0;
+	}
+	
+	lk::expr_t *p_define = cbref->deref().func();
+	if ( p_define->oper != lk::expr_t::DEFINE )
+	{
+		wxLogStatus("Case::QueryCallback: improper function structure, must be a 'define' for %s, instead: %s", (const char*)object.c_str(), cbref->func()->operstr() );
+		return 0;
+	}
+	
+	if ( p_define->right == 0 )
+	{
+		wxLogStatus("Case::QueryCallback: function block nonexistent for '%s'\n", (const char*)object.c_str());
+		return 0;
+	}
+
+	return p_define->right;
+}
+
 void Case::GetConfiguration( wxString *tech, wxString *fin )
 {
-	if ( tech ) *tech = m_technology;
-	if ( fin ) *fin = m_financing;
+	if ( m_config )
+	{
+		if ( tech ) *tech = m_config->Technology;
+		if ( fin ) *fin = m_config->Financing;
+	}
+}
+
+VarInfoLookup &Case::Variables()
+{
+static VarInfoLookup sg_emptyVars;
+	return m_config ? m_config->Variables : sg_emptyVars;
+}
+
+EqnFastLookup &Case::Equations()
+{
+static EqnFastLookup sg_emptyEqns;
+	return m_config ? m_config->Equations : sg_emptyEqns;
+}
+
+wxString Case::GetTechnology() const
+{
+	return m_config ? m_config->Technology : wxEmptyString;
+}
+
+wxString Case::GetFinancing() const
+{
+	return m_config ? m_config->Financing : wxEmptyString;
 }
 
 void Case::VariableChanged( const wxString &var )
@@ -169,10 +291,16 @@ void Case::VariableChanged( const wxString &var )
 
 int Case::Recalculate( const wxString &trigger )
 {
+	if ( !m_config )
+	{
+		wxLogStatus( "cannot recalculate: no active configuration" );
+		return -1;
+	}
+
 	wxArrayString trigger_list;
 	trigger_list.Add( trigger );
 
-	VarInfo *vi = SamApp::Variables().Lookup( trigger );
+	VarInfo *vi = m_config->Variables.Lookup( trigger );
 	VarValue *vv = Values().Get( trigger );
 	if( vv && vv->Type() == VV_STRING && vi && vi->Flags & VF_LIBRARY )
 	{
@@ -205,7 +333,7 @@ int Case::Recalculate( const wxString &trigger )
 			wxMessageBox( "invalid library specification: " + wxJoin(vi->IndexLabels, ',') );
 	}
 	
-	CaseEqnEvaluator eval( this, m_vals, m_eqns );
+	CaseEqnEvaluator eval( this, m_vals, m_config->Equations );
 	int n = eval.Changed( trigger_list );	
 	if ( n > 0 ) SendEvent( CaseEvent( CaseEvent::VARS_CHANGED, eval.GetUpdated() ) );
 	else if ( n < 0 ) wxLogStatus( wxJoin( eval.GetErrors(), '\n' )  );
@@ -215,7 +343,13 @@ int Case::Recalculate( const wxString &trigger )
 
 int Case::RecalculateAll()
 {
-	CaseEqnEvaluator eval( this, m_vals, m_eqns );
+	if ( !m_config )
+	{
+		wxLogStatus( "cannot recalculate all, no valid configuration information" );
+		return -1;
+	}
+
+	CaseEqnEvaluator eval( this, m_vals, m_config->Equations );
 	int n = eval.CalculateAll();
 	if ( n > 0 ) SendEvent( CaseEvent( CaseEvent::VARS_CHANGED, eval.GetUpdated() ) );
 	else if ( n < 0 ) wxLogStatus( wxJoin( eval.GetErrors(), '\n' )  );

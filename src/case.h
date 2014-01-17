@@ -12,6 +12,7 @@
 // to the user, i.e. variables are recalculated...
 
 class Case;
+class ConfigInfo;
 
 class CaseEvent
 {
@@ -53,13 +54,15 @@ public:
 	
 	void SetConfiguration( const wxString &tech, const wxString &fin );
 	void GetConfiguration( wxString *tech, wxString *fin );	
-	wxString GetTechnology() const { return m_technology; }
-	wxString GetFinancing() const { return m_financing; }
-
+	ConfigInfo *GetConfiguration() { return m_config; }
 	VarTable &Values() { return m_vals; }
-	VarInfoLookup &Variables() { return m_vars; }
-	EqnFastLookup &Equations() { return m_eqns; }
-
+	VarInfoLookup &Variables();
+	EqnFastLookup &Equations();
+	wxString GetTechnology() const;
+	wxString GetFinancing() const;
+	lk::env_t &CallbackEnvironment();
+	lk::node_t *QueryCallback( const wxString &method, const wxString &object );
+	
 	// call this method when a variable is programmatically changed,
 	// i.e. through a script callback, SamUL script, or other
 	// indirect way of changing a variable.  causes any affected
@@ -94,17 +97,13 @@ public:
 
 private:
 	/* case data */
-	wxString m_technology;
-	wxString m_financing;
+	ConfigInfo *m_config;
 	VarTable m_vals;
+	lk::env_t m_cbEnv;
 	VarTable m_baseCase;
 	StringHash m_properties;
 	StringHash m_notes;
 	std::vector<CaseEventListener*> m_listeners;
-
-	/* caches for lookups - regenerated as needed */
-	VarInfoLookup m_vars;
-	EqnFastLookup m_eqns;
 };
 
 class CaseEqnEvaluator : public EqnEvaluator

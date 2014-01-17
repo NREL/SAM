@@ -43,7 +43,7 @@ CaseWindow *CallbackContext::GetCaseWindow() { return m_inputPage->GetCaseWindow
 	
 bool CallbackContext::Invoke( )
 {
-	lk::env_t local_env( SamApp::Callbacks().GetEnv() );
+	lk::env_t local_env( &GetCase().CallbackEnvironment() );
 
 	// add other callback environment functions
 	local_env.register_funcs( lk::stdlib_basic() );
@@ -213,9 +213,8 @@ void ActiveInputPage::Initialize()
 		}
 	}
 
-
 	// lookup and run any callback functions.
-	if ( lk::node_t *root = SamApp::Callbacks().Lookup( "on_load", m_formData->GetName() ) )
+	if ( lk::node_t *root = m_case->QueryCallback( "on_load", m_formData->GetName() ) )
 	{
 		CallbackContext cbcxt( this, root, m_formData->GetName() + "->on_load" );
 		if ( cbcxt.Invoke() )
@@ -344,7 +343,7 @@ void ActiveInputPage::OnNativeEvent( wxCommandEvent &evt )
 	OnUserInputChanged( obj );
 
 	// lookup and run any callback functions.
-	if ( lk::node_t *root = SamApp::Callbacks().Lookup( "on_change", obj->GetName() ) )
+	if ( lk::node_t *root = m_case->QueryCallback( "on_change", obj->GetName() ) )
 	{
 		CallbackContext cbcxt( this, root, obj->GetName() + "->on_change" );
 		if ( cbcxt.Invoke() )
@@ -501,3 +500,41 @@ bool ActiveInputPage::DataExchange( wxUIObject *obj, VarValue &val, DdxDir dir )
 
 	return true;  // all ok!
 }
+
+UIFormDatabase::UIFormDatabase()
+{
+}
+
+UIFormDatabase::~UIFormDatabase()
+{
+	Clear();
+}
+
+void UIFormDatabase::Clear()
+{
+	for ( FormDataHash::iterator it = m_hash.begin();
+		it != m_hash.end();
+		++it )
+		delete (*it).second;
+
+	m_hash.clear();
+}
+
+void UIFormDatabase::Add( const wxString &name, wxUIFormData *ui )
+{
+	FormDataHash::iterator it = m_hash.find( name );
+	if ( it != m_hash.end() )
+	{
+		delete it->second;
+		it->second = ui;
+	}
+	else
+		m_hash[ name ] = ui;
+}
+
+wxUIFormData *UIFormDatabase::Lookup( const wxString &name )
+{
+	FormDataHash::iterator it = m_hash.find( name );
+	return ( it != m_hash.end() ) ? it->second : NULL;
+}
+

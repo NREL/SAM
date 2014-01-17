@@ -94,32 +94,113 @@ public:
 	virtual ~ScriptDatabase();
 
 	bool LoadFile( const wxString &file );
+	bool LoadScript( const wxString &source );
 	void ClearAll();
 
-	lk::node_t *Lookup( const wxString &method_name, const wxString &obj_name );
+	lk::node_t *Lookup( const wxString &method_name, const wxString &obj_name );	
 	lk::env_t *GetEnv() { return &m_cbenv; }
-	
+
 protected:
 	struct cb_data{ lk::node_t *tree; wxString source; };
 	std::vector<cb_data*> m_cblist;
 	lk::env_t m_cbenv;
 };
 
-typedef unordered_map<wxString, wxUIFormData*, wxStringHash, wxStringEqual> FormDataHash;
 
-class FormDatabase
+class InputPageData
+{
+	wxUIFormData m_form;
+	VarDatabase m_vars;
+	
+	wxString m_eqnScript;
+	wxString m_cbScript;
+
+	EqnDatabase m_eqns;
+	ScriptDatabase m_cbs;
+
+public:
+	InputPageData();
+
+	void Clear();
+	void Write( wxOutputStream &os );
+	bool Read( wxInputStream &is );
+
+	wxUIFormData &Form() { return m_form; }
+	VarDatabase &Variables() { return m_vars; }
+	wxString &EqnScript() { return m_eqnScript; }
+	wxString &CbScript() { return m_cbScript; }
+	
+	bool BuildDatabases();
+
+	EqnDatabase &Equations() { return m_eqns; }
+	ScriptDatabase &Callbacks() { return m_cbs; }
+
+	
+};
+
+typedef unordered_map<wxString, InputPageData*, wxStringHash, wxStringEqual> InputPageDataHash;
+
+class InputPageDatabase
 {
 public:
-	FormDatabase();
-	~FormDatabase();
+	InputPageDatabase();
+	~InputPageDatabase();
 
-	void Add( const wxString &name, wxUIFormData *data );
-	wxUIFormData *Lookup( const wxString &name );
+	void Add( const wxString &name, InputPageData *data );
+	InputPageData *Lookup( const wxString &name );
 	void Clear();
 
 	bool LoadFile( const wxString &file );
 private:
-	FormDataHash m_hash;
+	InputPageDataHash m_hash;
+};
+
+class PageInfo
+{
+public:
+	PageInfo() {
+		Collapsible = CollapsedByDefault = false;
+	}
+	PageInfo( const wxString &_name ) {
+		Name = _name;
+		Collapsible = CollapsedByDefault = false;
+	}
+	wxString Name;
+	wxString Caption;
+	bool Collapsible;
+	wxString CollapsiblePageVar;
+	bool CollapsedByDefault;
+	wxString ShowHideLabel;
+};
+
+struct InputPageGroup
+{
+	std::vector< std::vector<PageInfo> > Pages;
+	wxString SideBarLabel;
+	wxString HelpContext;
+	bool OrganizeAsExclusivePages;
+	wxString ExclusivePageVar;
+};
+
+	
+class ConfigInfo
+{ 
+public:
+	ConfigInfo();
+	~ConfigInfo();
+
+	wxString Technology;
+	wxString Financing;
+	std::vector<InputPageGroup*> InputPageGroups;
+	InputPageDataHash InputPages;
+	VarInfoLookup Variables;		
+	EqnFastLookup Equations;
+
+	// storage for variables specific to this configuration
+	// this variables are automatically added when the configuration
+	// cache is generated, and serve purposes like exclusive pages
+	// and collapsible panes
+	VarDatabase AutoVariables;
 };
 
 class ConfigDatabase
@@ -131,65 +212,28 @@ public:
 	void Clear();
 	void Add( const wxString &tech, const wxArrayString &fin );
 	void SetConfig( const wxString &t, const wxString &f );
-
-
-	struct PageInfo
-	{
-		PageInfo() {
-			Collapsible = CollapsedByDefault = false;
-		}
-		PageInfo( const wxString &_name ) {
-			Name = _name;
-			Collapsible = CollapsedByDefault = false;
-		}
-		wxString Name;
-		wxString Caption;
-		bool Collapsible;
-		wxString CollapsiblePageVar;
-		bool CollapsedByDefault;
-		wxString ShowHideLabel;
-	};
 	
 	void AddInputPageGroup( const std::vector< std::vector<PageInfo> > &pages, const wxString &sidebar = wxEmptyString,
 		const wxString &hlpcxt = wxEmptyString, const wxString &exclvar = wxEmptyString );
 
-	struct InputPageGroup
-	{
-		std::vector< std::vector<PageInfo> > Pages;
-		wxString SideBarLabel;
-		wxString HelpContext;
-		bool OrganizeAsExclusivePages;
-		wxString ExclusivePageVar;
-	};
-
 	wxArrayString GetTechnologies();
 	wxArrayString GetFinancingForTech(const wxString &tech);
 	
-	std::vector<InputPageGroup*> &GetInputPages(const wxString &tech, const wxString &financing );
+/*
+	std::vector<InputPageGroup*> &GetInputPageGroups(const wxString &tech, const wxString &financing );
 	VarInfoLookup &GetVariables( const wxString &tech, const wxString &financing );
 	EqnFastLookup &GetEquations( const wxString &tech, const wxString &financing );
+	InputPageDataHash &GetInputPages( const wxString &tech, const wxString &financing );
+*/
 	
 	void RebuildCaches();
+
+	ConfigInfo *Find( const wxString &t, const wxString &f );
 
 private:
 	struct TechInfo { wxString Name; wxArrayString FinancingOptions; };
 	std::vector<TechInfo> m_techList;
-
-	struct ConfigInfo { 
-		ConfigInfo();
-		~ConfigInfo();
-
-		wxString Technology;
-		wxString Financing;
-		std::vector<InputPageGroup*> InputPages;
-		VarInfoLookup Variables;
-		EqnFastLookup Equations;
-	};
-
-	ConfigInfo *Find( const wxString &t, const wxString &f );
-
 	std::vector<ConfigInfo*> m_configList;
-
 	ConfigInfo *m_curConfig;
 };
 
@@ -213,11 +257,7 @@ public:
 	static int VersionMicro();
 	
 	static ConfigDatabase &Config();
-	static VarDatabase &Variables();
-	static EqnDatabase &Equations();
-	static ScriptDatabase &Callbacks();
-	static ScriptDatabase &Simulations();
-	static FormDatabase &Forms();
+	static InputPageDatabase &InputPages();
 
 	static bool LoadAndRunScriptFile( const wxString &script_file, wxArrayString *errors = 0 );
 };

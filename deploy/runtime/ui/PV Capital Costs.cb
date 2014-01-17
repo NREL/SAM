@@ -1,6 +1,0 @@
-on_load{"PV Capital Costs"}=define()
-{
-	f = financing();
-	show( "lblFinancingCost", 
-		(f!='None')&&(f!='Residential')&&(f!='Commercial') );
-};
