@@ -1,9 +1,0 @@
-on_load{"O and M Costs"}=define(){
-tech=value("case.technology");
-// show for all techs that have non-zero system.annual_fuel(except biopower tech number 12 and gassification tech number 16 - fuel o and m on feedstock page)
-//	show("oandm.fuel_cost", (tech==3)||(tech==4)||(tech==5)||(tech==6)||(tech==11)||(tech==17)||(tech==18) );
-    show("oandm.fuel_cost", (tech==3)||(tech==4)||(tech==5)||(tech==6)||(tech==9)||(tech==14)||(tech==15) );// technology models 9 & 10 removed, Dec 11, 2012
-//	show("oandm.fuel_cost.escalation", (tech==3)||(tech==4)||(tech==5)||(tech==6)||(tech==11)||(tech==17)||(tech==18) );
-    show("oandm.fuel_cost.escalation", (tech==3)||(tech==4)||(tech==5)||(tech==6)||(tech==9)||(tech==14)||(tech==15) );
-	};
-	

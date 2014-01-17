@@ -96,4 +96,16 @@ protected:
 	DECLARE_EVENT_TABLE();
 };
 
+typedef unordered_map<wxString, wxUIFormData*, wxStringHash, wxStringEqual> FormDataHash;
+class UIFormDatabase
+{
+public:
+	UIFormDatabase();
+	~UIFormDatabase();
+	void Add( const wxString &name, wxUIFormData *data );
+	wxUIFormData *Lookup( const wxString &name );
+	void Clear();
+private:
+	FormDataHash m_hash;
+};
 #endif

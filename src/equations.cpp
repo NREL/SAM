@@ -1,6 +1,7 @@
 #include <wx/tokenzr.h>
 #include <wx/log.h>
 #include <wx/file.h>
+#include <wx/datstrm.h>
 
 #include <lk_parse.h>
 #include <lk_env.h>
@@ -8,7 +9,6 @@
 #include <lk_eval.h>
 
 #include "equations.h"
-
 
 
 EqnDatabase::EqnDatabase()
@@ -73,14 +73,17 @@ bool EqnDatabase::LoadFile( const wxString &file, wxArrayString *errors )
 		wxString buf;
 		fp.ReadAll( &buf );
 		lk::input_string data( buf );
-		return Parse( data, errors );
+		if ( Parse( data, errors ) ) return true;
+		else return false;
+
 	}
 	else return false;
 }
 bool EqnDatabase::LoadScript( const wxString &text, wxArrayString *errors )
 {
 	lk::input_string in( text );
-	return Parse( in, errors );
+	if ( Parse( in, errors ) ) return true;
+	else return false;
 }
 
 bool EqnDatabase::Parse( lk::input_base &in, wxArrayString *errors )
@@ -147,7 +150,7 @@ bool EqnDatabase::Parse( lk::input_base &in, wxArrayString *errors )
 					outputs.Add( name );
 				}
 
-				if ( inputs.size() > 0 && outputs.size() > 0 && equation != 0 )
+				if ( outputs.size() > 0 && equation != 0 )
 				{
 					// now save the equation in the database
 					AddEquation( inputs, outputs, equation, result_is_output );
@@ -252,9 +255,19 @@ wxArrayString *EqnDatabase::GetAffectedVariables( const wxString &var )
 	else return 0;
 }
 
-EqnFastLookup::EqnFastLookup( EqnDatabase *db )
-	: m_db( db )
+EqnFastLookup::EqnFastLookup()
 {
+	// nothing to do
+}
+
+EqnFastLookup::EqnFastLookup( EqnDatabase *db )
+{
+	m_dbs.push_back( db );
+}
+
+void EqnFastLookup::AddDatabase( EqnDatabase *db )
+{
+	m_dbs.push_back( db );
 }
 
 void EqnFastLookup::Add( EqnData *e )
@@ -287,7 +300,11 @@ void EqnFastLookup::Clear()
 
 wxArrayString *EqnFastLookup::GetAffectedVariables( const wxString &var )
 {
-	return m_db->GetAffectedVariables( var );
+	for( size_t i=0;i<m_dbs.size();i++ )
+		if( wxArrayString *list = m_dbs[i]->GetAffectedVariables( var ) )
+			return list;
+
+	return 0;
 }
 
 lk::node_t *EqnFastLookup::GetEquation( const wxString &var, wxArrayString *inputs, wxArrayString *outputs )
@@ -313,10 +330,6 @@ int EqnFastLookup::GetEquationIndex( const wxString &var )
 	if ( it == m_eqnIndices.end() ) return -1;
 	return (int) it->second;
 }
-
-
-
-
 
 
 

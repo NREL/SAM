@@ -746,17 +746,8 @@ bool VarDatabase::Read( wxInputStream &is, const wxString &page )
 	}
 	if ( !ok ) return false;
 
-	if ( !page.IsEmpty() )
-		m_pageCache[ page ] = list;
-
 	return in.Read8() == code;
 }
-
-wxArrayString VarDatabase::GetVarsForPage( const wxString &page )
-{
-	return m_pageCache[ page ];
-}
-
 
 VarInfo *VarDatabase::Add( const wxString &name, int type,
 	const wxString &label, const wxString &units,
@@ -832,8 +823,6 @@ void VarDatabase::clear()
 		delete it->second;
 
 	VarInfoHash::clear();
-
-	m_pageCache.clear();
 }
 
 
