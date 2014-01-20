@@ -106,6 +106,20 @@ void VarTable::Copy( const VarTable &rhs )
 		Set( it->first, *(it->second) );
 }
 
+bool VarTable::Rename( const wxString &old_name, const wxString &new_name )
+{
+	iterator it = find( old_name );
+	if ( it == end() ) return false;
+
+	if ( find( new_name ) != end() ) return false;
+
+	VarValue *vv = it->second;
+	erase( it );
+	
+	(*this)[ new_name ] = vv;
+	return true;
+}
+
 void VarTable::Write( wxOutputStream &_O )
 {
 	wxDataOutputStream out(_O);
