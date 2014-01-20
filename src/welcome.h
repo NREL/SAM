@@ -26,6 +26,7 @@ private:
 	
 	void OnCreateProject(wxCommandEvent &evt);
 	void OnOpenRecent(wxCommandEvent &evt);
+	void OnOpenExisting( wxCommandEvent &evt );
 
 	void OnHyperlink(wxCommandEvent &);
 	void OnPaint(wxPaintEvent &evt);
@@ -40,8 +41,8 @@ private:
 	wxHtmlWindow *m_htmlWin;
 	int m_messageStatus;
 
-	wxTextCtrl *m_caseName;
 	wxMetroButton *m_createCase;
+	wxMetroButton *m_openExisting;
 	wxMetroButton *m_onlineForum;
 	wxMetroButton *m_helpSystem;
 	wxListBox *m_recent;

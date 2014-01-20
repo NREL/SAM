@@ -25,7 +25,7 @@
 
 DEFINE_EVENT_TYPE( wxEVT_WELCOME_CLOSE )
 
-enum {ID_m_caseName=8687, ID_m_createCase, ID_m_recent, 
+enum { ID_m_openExisting=wxID_HIGHEST+556, ID_m_createCase, ID_m_recent, 
 ID_htmlViewer, ID_messageDownloadThread, ID_updateDownloadThread, ID_usageDownloadThread,
 ID_m_onlineForum, ID_m_helpSystem, ID_downloadTimer
 };
@@ -33,8 +33,8 @@ ID_m_onlineForum, ID_m_helpSystem, ID_downloadTimer
 BEGIN_EVENT_TABLE(WelcomeScreen, wxPanel)
 	EVT_PAINT(WelcomeScreen::OnPaint)
 	EVT_SIZE(WelcomeScreen::OnResize)
-	EVT_TEXT_ENTER( ID_m_caseName, WelcomeScreen::OnCreateProject)
 	EVT_BUTTON( ID_m_createCase, WelcomeScreen::OnCreateProject)
+	EVT_BUTTON( ID_m_openExisting, WelcomeScreen::OnOpenExisting)
 	EVT_LISTBOX_DCLICK( ID_m_recent, WelcomeScreen::OnOpenRecent)
 
 	EVT_BUTTON( ID_m_onlineForum, WelcomeScreen::OnHyperlink )
@@ -68,16 +68,13 @@ WelcomeScreen::WelcomeScreen(wxWindow *parent)
 	m_htmlWin->SetFont( *wxNORMAL_FONT );
 	m_htmlWin->SetFonts( wxNORMAL_FONT->GetFaceName(), "courier" );
 
-	m_caseName = new wxTextCtrl(this, ID_m_caseName, wxEmptyString, 
-		wxPoint(459,27), wxSize(208,21), 
-		wxTE_PROCESS_ENTER|wxBORDER_NONE);
-	m_caseName->SetFont( wxMetroTheme::Font( wxMT_NORMAL, 14) );
-	m_caseName->SetForegroundColour( wxMetroTheme::Colour( wxMT_FOREGROUND ) );
-	m_caseName->SetValue("Project name...");
 
-	m_createCase = new wxMetroButton(this, ID_m_createCase, "Start", wxNullBitmap, 
-		wxPoint(585,51), wxSize(80,21), wxMB_RIGHTARROW);
-	m_createCase->SetFont( wxMetroTheme::Font( wxMT_NORMAL, 14) );
+	m_createCase = new wxMetroButton(this, ID_m_createCase, "Start a new project", wxNullBitmap, 
+		wxPoint(459,51), wxSize(208,21), wxMB_RIGHTARROW);
+	m_createCase->SetFont( wxMetroTheme::Font( wxMT_NORMAL, 12) );
+
+	m_openExisting = new wxMetroButton( this, ID_m_openExisting, "Open an existing file", wxNullBitmap );
+	m_openExisting->SetFont( wxMetroTheme::Font( wxMT_NORMAL, 12) );
 	
 	
 	m_recent = new wxListBox(this, ID_m_recent, wxPoint(15,327), wxSize(650,150), 0, 0, wxLB_SINGLE);
@@ -101,9 +98,6 @@ WelcomeScreen::WelcomeScreen(wxWindow *parent)
 	m_ssCurlUsage.Start( usage_url );
 
 	m_downloadTimer.Start(15000, true);
-
-	m_caseName->SelectAll();
-	m_caseName->SetFocus();
 
 	UpdateRecentList();
 }
@@ -246,7 +240,7 @@ void WelcomeScreen::UpdateRecentList()
 	m_recent->Append( SamApp::RecentFiles() );
 }
 
-
+#define SPACER 30
 #define BORDER 40
 #define CCB_WIDTH 155
 #define REMINDER_HEIGHT 121
@@ -254,7 +248,7 @@ void WelcomeScreen::UpdateRecentList()
 void WelcomeScreen::LayoutWidgets()
 {
 
-	int cw,ch,top = 140;
+	int cw,ch,top = 100 + SPACER;
 	GetClientSize(&cw,&ch);
 	ch -= top;
 
@@ -263,20 +257,19 @@ void WelcomeScreen::LayoutWidgets()
 
 	m_recent->SetSize( BORDER+350+BORDER, top+ht, cw-BORDER-BORDER-BORDER-350, hb-BORDER);
 
-	m_htmlWin->SetSize( BORDER+350+BORDER, top, cw-BORDER-BORDER-BORDER-350, ht-BORDER );
-
-	wxSize size1 = m_caseName->GetBestSize();
-	m_caseName->SetSize( BORDER+20, top+20, 350-20-20, size1.GetHeight());
+	m_htmlWin->SetSize( BORDER+350+BORDER, top+BORDER+BORDER+BORDER, cw-BORDER-BORDER-BORDER-350, ht-BORDER );
 
 	wxSize size2 = m_createCase->GetBestSize();
-	m_createCase->SetSize( BORDER+350-size2.GetWidth()-20, top+20+size1.GetHeight()+10, size2.GetWidth(), size2.GetHeight()  );
+	m_createCase->SetSize( BORDER+SPACER, top, 350-SPACER-SPACER, size2.GetHeight()  );
+
+	m_openExisting->SetSize( BORDER+SPACER, top+size2.GetHeight()+10, 350-SPACER-SPACER, size2.GetHeight() );
 
 //	int y = ch*2/3;
 //	wxSize size3 = m_onlineForum->GetBestSize();
-//	m_onlineForum->SetSize( BORDER+20, y, 350-20-20, size3.GetHeight() );
+//	m_onlineForum->SetSize( BORDER+SPACER, y, 350-SPACER-SPACER, size3.GetHeight() );
 
 //	wxSize size4 = m_helpSystem->GetBestSize();
-//	m_helpSystem->SetSize( BORDER+20, y + size3.GetHeight()+20, 350-20-20, size4.GetHeight() );
+//	m_helpSystem->SetSize( BORDER+SPACER, y + size3.GetHeight()+SPACER, 350-SPACER-SPACER, size4.GetHeight() );
 }
 
 void WelcomeScreen::OnPaint(wxPaintEvent &)
@@ -294,36 +287,22 @@ void WelcomeScreen::OnPaint(wxPaintEvent &)
 	dc.DrawBitmap( m_nrelLogo, sz.GetWidth()-m_nrelLogo.GetWidth()-BORDER, 33 );
 
 	int y = 100;
-	
-	dc.SetPen( wxPen( wxMetroTheme::Colour( wxMT_TEXT ), 1 ) );
-	dc.DrawLine( BORDER, y, sz.GetWidth()-BORDER, y );
-	
+		
 	dc.SetPen( *wxTRANSPARENT_PEN );
 	dc.SetBrush( wxBrush( wxMetroTheme::Colour( wxMT_ACCENT ) ) );
-	dc.DrawRectangle( BORDER, y+1, 350, sz.GetHeight() - y );
-	
-	y += 20;
-	
-	dc.SetFont( wxMetroTheme::Font() );	
-	dc.SetTextForeground( *wxWHITE );
-	dc.DrawText( "Enter a new project name to begin", BORDER+20, y);
+	dc.DrawRectangle( BORDER, y, 350, sz.GetHeight() - y+1 );
+	dc.DrawRectangle( BORDER, y, sz.GetWidth() - BORDER-BORDER, SPACER+SPACER );
 
-	dc.SetTextForeground( wxMetroTheme::Colour( wxMT_TEXT ) );
-	dc.DrawText( "News from the SAM team @ NREL", BORDER+350+BORDER, y);
-		
+	y += 20;	
+	dc.SetFont( wxMetroTheme::Font() );	
+	
 	if (m_messageStatus == FAILED)
 	{
 		dc.SetTextForeground( *wxRED );
 		wxString stat_text = "Could not connect.";
 		int tw = dc.GetTextExtent( stat_text ).GetWidth();
 		dc.DrawText( stat_text, sz.GetWidth()-BORDER-tw-2, y );		
-		dc.SetTextForeground( wxMetroTheme::Colour( wxMT_TEXT ) ); // restore text colour
 	}
-
-	y += 20;
-
-	int ht = 2*(sz.GetHeight()-y)/3;
-	dc.DrawText( "Open a recent file", BORDER+350+BORDER, y+ht - dc.GetCharHeight()-4);
 
 }
 
@@ -336,6 +315,13 @@ void WelcomeScreen::OnResize(wxSizeEvent &)
 void WelcomeScreen::OnCreateProject(wxCommandEvent &)	
 {
 	SamApp::Window()->CreateProject();
+}
+
+void WelcomeScreen::OnOpenExisting( wxCommandEvent &)
+{
+	wxFileDialog dlg( this, "Open a SAM file", wxEmptyString, wxEmptyString, "SAM Project Files (*.sam)|*.sam" );
+	if ( dlg.ShowModal() && SamApp::Window()->CloseProject())
+		SamApp::Window()->LoadProject( dlg.GetPath() );
 }
 
 

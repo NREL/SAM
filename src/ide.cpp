@@ -1,9 +1,12 @@
 #include <wx/splitter.h>
+#include <wx/notebook.h>
 #include <wx/busyinfo.h>
 #include <wx/wfstream.h>
 #include <wx/datstrm.h>
 #include <wx/dir.h>
 #include <wx/filename.h>
+#include <wx/txtstrm.h>
+#include <wx/wfstream.h>
 #include <wx/gbsizer.h>
 
 #include <wex/exttext.h>
@@ -11,15 +14,20 @@
 #include <wex/metro.h>
 #include <wex/uiform.h>
 #include <wex/utils.h>
+#include <wex/extgrid.h>
+#include <wex/csv.h>
 
 #include <lk_lex.h>
 #include <lk_parse.h>
+
+#include <ssc/sscapi.h>
 
 #include "ide.h"
 #include "main.h"
 #include "equations.h"
 #include "inputpage.h"
 #include "invoke.h"
+#include "uiwidgets.h"
 
 enum { ID_STARTUP_EDITOR = wxID_HIGHEST+124,
 	ID_STARTUP_SAVE,
@@ -215,6 +223,312 @@ void SimulationScriptPanel::OnCommand( wxCommandEvent &evt )
 }
 */
 
+enum { ID_SSC_MOD = wxID_HIGHEST, ID_APPLY_VTL };
+
+class RemapDialog : public wxDialog
+{
+	UIEditorPanel *m_ui;
+	wxExtGridCtrl *m_grid;
+	wxChoice *m_sscMod;
+	wxExtGridCtrl *m_sscVars;
+	AFSearchListBox *m_vtlList;
+	StringHash m_vtlMap;
+public:
+	RemapDialog( wxWindow *parent, const wxString &title, UIEditorPanel *ui )
+		: wxDialog( parent, wxID_ANY, title, wxDefaultPosition, wxSize(610, 550), wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER ),
+		m_ui( ui )
+	{
+		wxNotebook *notebook = new wxNotebook( this, wxID_ANY );
+
+		m_grid = new wxExtGridCtrl( notebook, wxID_ANY );
+		m_grid->CreateGrid( 10, 2 );
+		m_grid->SetColLabelValue( 0, "Old name" );
+		m_grid->SetColLabelValue( 1, "New name" );
+		m_grid->SetColumnWidth( 0, 250 );
+		m_grid->SetColumnWidth( 1, 250 );
+		notebook->AddPage( m_grid, "Name Mapping" );
+
+		wxPanel *panel_ssc = new wxPanel( notebook, wxID_ANY );
+		m_sscMod = new wxChoice( panel_ssc, ID_SSC_MOD );
+		
+		int idx=0;
+		while (const ssc_entry_t p_entry = ::ssc_module_entry(idx++))
+			m_sscMod->Append( ::ssc_entry_name(p_entry) );
+		
+		m_sscVars = new wxExtGridCtrl( panel_ssc, wxID_ANY );
+		m_sscVars->CreateGrid( 1, 1);
+
+		wxBoxSizer *sizer_ssc = new wxBoxSizer( wxVERTICAL );
+		sizer_ssc->Add( m_sscMod, 0, wxALL|wxEXPAND, 3 );
+		sizer_ssc->Add( m_sscVars, 1, wxALL|wxEXPAND, 0 );
+		panel_ssc->SetSizer( sizer_ssc );
+
+		notebook->AddPage( panel_ssc, "SSC Modules" );
+		
+		wxBusyInfo info("loading vtl maps...");
+		m_vtlList = new AFSearchListBox( notebook, wxID_ANY );
+		wxArrayString files;
+		wxDir::GetAllFiles( SamApp::GetRuntimePath() + "/vtl", &files, "*.csv" );
+		for( size_t i=0;i<files.size();i++)
+		{
+			wxCSVData csv;
+			csv.ReadFile( files[i] );
+			for( size_t j=0;j<csv.NumRows();j++ )
+				m_vtlMap[ csv(j,0) ] = csv(j,1);
+		}
+
+		files.Clear();
+		for( StringHash::iterator it = m_vtlMap.begin();
+			it != m_vtlMap.end();
+			++it )
+		{
+			files.Add( it->first + " --> " + it->second );
+		}
+		m_vtlList->Append( files );
+		
+		notebook->AddPage( m_vtlList, "VTL" );
+
+		wxBoxSizer *sizer_buttons = new wxBoxSizer( wxHORIZONTAL );
+		sizer_buttons->Add( new wxButton( this, wxID_OPEN, "Read" ), 0, wxALL|wxEXPAND, 2 );
+		sizer_buttons->Add( new wxButton( this, wxID_SAVE, "Write" ), 0, wxALL|wxEXPAND, 2 );
+		sizer_buttons->Add( new wxButton( this, wxID_REFRESH, "Reload" ), 0, wxALL|wxEXPAND, 2 );
+		sizer_buttons->Add( new wxButton( this, ID_APPLY_VTL, "Apply VTL"), 0, wxALL|wxEXPAND, 2 );
+		sizer_buttons->AddStretchSpacer();
+		sizer_buttons->Add( new wxButton( this, wxID_APPLY, "Apply changes" ), 0, wxALL|wxEXPAND, 2 );
+		sizer_buttons->Add( new wxButton( this, wxID_CLOSE, "Close" ), 0, wxALL|wxEXPAND, 2 );
+
+		wxBoxSizer *sizer_main = new wxBoxSizer( wxVERTICAL );
+		sizer_main->Add( notebook, 1, wxALL|wxEXPAND, 0 );
+		sizer_main->Add( sizer_buttons, 0, wxALL|wxEXPAND, 2 );
+
+		SetSizer( sizer_main );
+
+		LoadVariables();
+	}
+
+	void LoadVariables( )
+	{
+		wxArrayString list = m_ui->GetVars()->ListAll();
+		
+		m_grid->ClearGrid();
+		m_grid->ResizeGrid( list.size(), 2 );
+		for( size_t i=0;i<list.size();i++ )
+		{
+			m_grid->SetCellValue( list[i], i, 0 );
+			m_grid->SetCellBackgroundColour( *wxWHITE, i, 1 );
+		}
+	}
+
+	void LoadSSCTable()
+	{
+		wxString cm_name = m_sscMod->GetStringSelection();
+	
+		ssc_module_t p_mod = ::ssc_module_create( (const char*)cm_name.c_str() );
+		if ( p_mod == 0 )
+		{
+			wxMessageBox("Could not create a module of type: " + cm_name );
+			return;
+		}
+
+		std::vector<wxArrayString> vartab;
+
+		int idx=0;
+		while( const ssc_info_t p_inf = ssc_module_var_info( p_mod, idx++ ) )
+		{
+			int var_type = ssc_info_var_type( p_inf );   // SSC_INPUT, SSC_OUTPUT, SSC_INOUT
+			int data_type = ssc_info_data_type( p_inf ); // SSC_STRING, SSC_NUMBER, SSC_ARRAY, SSC_MATRIX
+		
+
+			wxArrayString row;
+
+			switch( var_type )
+			{
+			case SSC_INPUT: row.Add("SSC_INPUT"); break;
+			case SSC_OUTPUT: row.Add("SSC_OUTPUT"); break;
+			case SSC_INOUT: row.Add("SSC_INOUT"); break;
+			default: row.Add("<!unknown>"); break;
+			}
+
+			switch( data_type )
+			{
+			case SSC_STRING: row.Add("SSC_STRING"); break;
+			case SSC_NUMBER: row.Add("SSC_NUMBER"); break;
+			case SSC_ARRAY: row.Add("SSC_ARRAY"); break;
+			case SSC_MATRIX: row.Add("SSC_MATRIX"); break;
+			default: row.Add("<!unknown>"); break;
+			}
+			
+			row.Add( ssc_info_name( p_inf ) );
+			row.Add( ssc_info_label( p_inf ) );
+			row.Add( ssc_info_units( p_inf ) );
+			row.Add( ssc_info_meta( p_inf ) );
+			row.Add( ssc_info_group( p_inf ) );
+			row.Add( ssc_info_required( p_inf ) );
+			row.Add( ssc_info_constraints( p_inf ) );
+
+			vartab.push_back(row);
+		}
+
+		int nrows = (int)vartab.size();
+		int ncols = 9;
+		
+		m_sscVars->Freeze();
+		m_sscVars->ResizeGrid( nrows, ncols);
+		m_sscVars->SetColLabelValue( 0, "TYPE" );
+		m_sscVars->SetColLabelValue( 1, "DATA" );
+		m_sscVars->SetColLabelValue( 2, "NAME" );
+		m_sscVars->SetColLabelValue( 3, "LABEL" );
+		m_sscVars->SetColLabelValue( 4, "UNITS" );
+		m_sscVars->SetColLabelValue( 5, "META" );
+		m_sscVars->SetColLabelValue( 6, "GROUP" );
+		m_sscVars->SetColLabelValue( 7, "REQUIRE" );
+		m_sscVars->SetColLabelValue( 8, "CONSTRAINT" );
+
+		for (int r=0;r<nrows;r++)
+			for (int c=0;c<ncols;c++)
+				m_sscVars->SetCellValue( vartab[r][c], r, c );
+
+		m_sscVars->AutoSizeColumns(false);
+		m_sscVars->Thaw();
+
+		::ssc_module_free( p_mod );
+	}
+
+	void OnCommand( wxCommandEvent &evt )
+	{
+		switch( evt.GetId() )
+		{
+		case ID_SSC_MOD:
+			LoadSSCTable();
+			break;
+		case wxID_OPEN:
+		{
+			wxFileDialog dlg( this, "Read csv file", wxEmptyString, wxEmptyString, "CSV Files (*.csv)|*.csv", wxFD_OPEN );
+			if ( dlg.ShowModal() != wxID_OK ) return;
+
+			wxCSVData csv;
+			if ( !csv.ReadFile( dlg.GetPath() ) )
+			{
+				wxMessageBox("failed to read csv file");
+				return;
+			}
+
+			size_t nr = csv.NumRows();
+			size_t nc = csv.NumCols();
+			if ( nr == 0 ) nr = 1;
+			if ( nc != 2 ) nc = 2;
+
+			m_grid->ResizeGrid( nr,2 );
+			for( size_t i=0;i<nr;i++)
+			{
+				m_grid->SetCellValue( i, 0, csv(i,0) );
+				m_grid->SetCellValue( i, 1, csv(i,1) );
+			}
+
+		}
+			break;
+		case wxID_REFRESH:
+			LoadVariables();
+			break;
+		case wxID_SAVE:
+		{
+			wxFileDialog dlg( this, "Write csv file", wxEmptyString, wxEmptyString, "CSV Files (*.csv)|*.csv", wxFD_SAVE|wxFD_OVERWRITE_PROMPT );
+			if ( dlg.ShowModal() != wxID_OK ) return;
+
+			wxCSVData csv;
+			for( size_t i=0;i<m_grid->GetNumberRows();i++ )
+			{
+				csv(i,0) = m_grid->GetCellValue( i, 0 );
+				csv(i,1) = m_grid->GetCellValue( i, 1 );
+			}
+
+			if ( !csv.WriteFile( dlg.GetPath() ))
+				wxMessageBox("failed to write csv file");
+		}
+			break;
+		case ID_APPLY_VTL:
+			for( size_t i=0;i<(size_t)m_grid->GetNumberRows();i++)
+			{
+				wxString ssc = m_vtlMap[ m_grid->GetCellValue(i,0) ];
+				if ( !ssc.IsEmpty() )
+				{
+					m_grid->SetCellValue(ssc,i,1);
+					m_grid->SetCellBackgroundColour( wxColour(255,213,226), i,1 );
+				}
+			}
+			break;
+		case wxID_APPLY:
+		{
+			wxUIFormData *form = m_ui->GetFormData();
+			VarDatabase *vars = m_ui->GetVars();
+
+			wxString result;
+			wxString cb = m_ui->GetCallbacks();
+			wxString eqn = m_ui->GetEquations();
+			int n_cbreps = 0, n_eqnreps = 0;
+
+			for( int i=0;i<m_grid->GetNumberRows();i++ )
+			{
+				wxString sold = m_grid->GetCellValue(i,0);
+				wxString snew = m_grid->GetCellValue(i,1);
+				
+				if ( sold.IsEmpty() || snew.IsEmpty() ) continue;
+
+				result += sold + " -> " + snew;
+
+				// change name of object in form and variable table
+				if ( wxUIObject *obj = form->Find( sold ) )
+				{
+					obj->SetName( snew );
+					result += "   (form ok)";
+				}
+
+				if ( vars->Rename( sold, snew ) )
+					result += "   (var ok)";
+
+				n_cbreps += cb.Replace( "'" + sold + "'", "'" + snew + "'" );
+				n_cbreps += cb.Replace( "\"" + sold + "\"", "'" + snew + "'" );
+				n_cbreps += cb.Replace( "${" + sold + "}", "${" + snew + "}" );
+				
+				n_eqnreps += eqn.Replace( "'" + sold + "'", "'" + snew + "'" );
+				n_eqnreps += eqn.Replace( "\"" + sold + "\"", "'" + snew + "'" );
+				n_eqnreps += eqn.Replace( "${" + sold + "}", "${" + snew + "}" );
+
+				result += "\n";
+			}
+			
+			m_ui->SetCallbacks( cb );
+
+			wxShowTextMessageDialog( wxString::Format("textual replacements\n\tcallbacks: %d equations: %d\n\n", n_cbreps, n_eqnreps )
+				+ result, "Remapping result", this );
+			LoadVariables();
+
+			m_ui->GetPropertyEditor()->SetObject( 0 );
+			m_ui->LoadVarList();
+			m_ui->GetDesigner()->Refresh();
+
+			break;
+		}
+		case wxID_CLOSE:
+			if ( IsModal() ) EndModal( wxID_CANCEL );
+			else Close();
+			break;
+		}
+	}
+
+	DECLARE_EVENT_TABLE();
+};
+
+BEGIN_EVENT_TABLE( RemapDialog, wxDialog )
+	EVT_BUTTON( wxID_APPLY, RemapDialog::OnCommand )
+	EVT_BUTTON( wxID_CLOSE, RemapDialog::OnCommand )
+	EVT_BUTTON( wxID_SAVE, RemapDialog::OnCommand )
+	EVT_BUTTON( wxID_OPEN, RemapDialog::OnCommand )
+	EVT_CHOICE( ID_SSC_MOD, RemapDialog::OnCommand )
+	EVT_BUTTON( ID_APPLY_VTL, RemapDialog::OnCommand )
+	EVT_BUTTON( wxID_REFRESH, RemapDialog::OnCommand )
+END_EVENT_TABLE()
+
 enum { 
 	ID_FORM_EDITOR = wxID_HIGHEST + 231,
 	ID_CALLBACK_EDITOR,
@@ -225,8 +539,9 @@ enum {
 	ID_FORM_ADD,
 	ID_FORM_SAVE,
 	ID_FORM_DELETE,
-	ID_FORM_IMPORT,
+	
 
+	ID_VAR_REMAP,
 	ID_VAR_SYNC,
 	ID_VAR_ADD,
 	ID_VAR_DELETE,
@@ -272,9 +587,9 @@ BEGIN_EVENT_TABLE( UIEditorPanel, wxPanel )
 	EVT_BUTTON( ID_FORM_ADD, UIEditorPanel::OnCommand )
 	EVT_BUTTON( ID_FORM_SAVE, UIEditorPanel::OnCommand )
 	EVT_BUTTON( ID_FORM_DELETE, UIEditorPanel::OnCommand )
-	EVT_BUTTON( ID_FORM_IMPORT, UIEditorPanel::OnCommand )
 	
 	EVT_BUTTON( ID_VAR_SYNC, UIEditorPanel::OnCommand )
+	EVT_BUTTON( ID_VAR_REMAP, UIEditorPanel::OnCommand )
 	EVT_BUTTON( ID_VAR_ADD, UIEditorPanel::OnCommand )
 	EVT_BUTTON( ID_VAR_DELETE, UIEditorPanel::OnCommand )
 
@@ -330,8 +645,8 @@ UIEditorPanel::UIEditorPanel( wxWindow *parent )
 	sz_form_tools->Add( new wxButton( this, ID_FORM_ADD, "Add..."), 0, wxALL|wxEXPAND, 2 );
 	sz_form_tools->Add( new wxButton( this, ID_FORM_SAVE, "Save"), 0, wxALL|wxEXPAND, 2 );
 	sz_form_tools->Add( new wxButton( this, ID_FORM_DELETE, "Delete"), 0, wxALL|wxEXPAND, 2 );
-	sz_form_tools->Add( new wxButton( this, ID_FORM_IMPORT, "Import"), 0, wxALL|wxEXPAND, 2 );
 	sz_form_tools->AddStretchSpacer();	
+	sz_form_tools->Add( new wxButton( this, ID_VAR_REMAP, "Remap"), 0, wxALL|wxEXPAND, 2 );
 	sz_form_tools->Add( new wxButton( this, ID_VAR_SYNC, "Sync"), 0, wxALL|wxEXPAND, 2 );
 	sz_form_tools->Add( new wxButton( this, ID_VAR_ADD, "Add"), 0, wxALL|wxEXPAND, 2 );
 	sz_form_tools->Add( new wxButton( this, ID_VAR_DELETE, "Delete"), 0, wxALL|wxEXPAND, 2 );
@@ -555,10 +870,10 @@ void UIEditorPanel::OnCommand( wxCommandEvent &evt )
 		if ( !m_formName.IsEmpty() )
 		{
 			SyncFormUIToDataBeforeWriting();
-			WriteForm( m_formName );
+			Write( m_formName );
 		}
 
-		if (!LoadForm( m_formList->GetStringSelection() ))
+		if (!Load( m_formList->GetStringSelection() ))
 			wxMessageBox("error loading form: " + m_formList->GetStringSelection(), "notice", wxOK, this );
 		break;
 	case ID_FORM_LIST_REFRESH:
@@ -580,8 +895,8 @@ void UIEditorPanel::OnCommand( wxCommandEvent &evt )
 			m_curVar = 0;
 			m_callbackScript->SetText( wxEmptyString );
 			m_equationScript->SetText( wxEmptyString );
-			WriteForm( name );
-			if ( !LoadForm( name ) )
+			Write( name );
+			if ( !Load( name ) )
 				wxMessageBox("error loading newly created form: " + name, "notice", wxOK, this );
 			LoadFormList( name );
 		}
@@ -608,85 +923,6 @@ void UIEditorPanel::OnCommand( wxCommandEvent &evt )
 			}
 		}
 		break;
-	case ID_FORM_IMPORT:
-		{
-			wxFileDialog dlg( this, "Select .ui form to import (.ui/.cb/.eqn/.var) shall be imported)" );
-			if ( dlg.ShowModal() != wxID_OK ) return;
-			
-			wxString folder = wxPathOnly( dlg.GetPath() );
-			wxString name = wxFileName(dlg.GetPath()).GetName();
-
-			bool import_all = false;
-			wxArrayString list;
-			wxDir::GetAllFiles( folder, &list, "*.ui", wxDIR_FILES );
-			if ( list.size() > 1 && wxYES==wxMessageBox("Multiple .ui files were detected.  Import all?", "Query", wxYES_NO) )
-					import_all = true;
-			
-			if ( !import_all )
-			{
-				list.Clear();
-				list.Add( name );
-			}
-			
-			size_t nok = 0;
-			wxArrayString err;
-
-			for( size_t i=0;i<list.size();i++)
-			{
-				name = wxFileName( folder + "/" + list[i]).GetName();
-
-				m_uiFormEditor->SetFormData( 0 );
-				m_uiFormEditor->Refresh();
-				m_formName = name;
-	
-				bool ok = true;
-
-				wxString file = folder + "/" + name + ".ui" ;
-				if ( wxFileExists( file ) )
-				{
-					wxFFileInputStream fform( file );
-					if ( fform.IsOk() && m_exForm.Read( fform ) )
-					{
-						m_uiFormEditor->SetFormData( &m_exForm );
-						m_uiFormEditor->Refresh();
-						m_formName = name;
-					}
-					else ok = false;
-				}
-
-				file = folder + "/" + name + ".var" ;
-				if ( wxFileExists( file ) )
-				{
-					m_ipd.Variables().clear();
-					wxFFileInputStream fvars( file );
-					if ( fvars.IsOk() && m_ipd.Variables().Read( fvars ) )
-					{
-						m_curVar = 0;
-						LoadVarList();
-						VarInfoToForm( NULL );
-					}
-					else ok = false;
-				}
-			
-				file = folder + "/" + name + ".cb" ;
-				if ( wxFileExists( file ) )
-					ok = ok && m_callbackScript->ReadAscii( file );
-			
-				file = folder + "/" + name + ".eqn" ;
-				if ( wxFileExists( file ) )
-					ok = ok && m_equationScript->ReadAscii( file );
-
-				ok = ok && WriteForm( m_formName );
-				if ( ok ) nok++;
-				else err.Add( m_formName );
-			}
-
-			wxMessageBox( wxString::Format("%d form(s) imported ok, %d fail", (int)nok, (int)(list.size()-nok) ) );
-			if ( err.size() > 0 ) wxMessageBox( "errors:\n\n" + wxJoin(err,'\n'));
-
-			LoadFormList();
-		}
-		break;
 	case ID_FORM_SAVE:
 		{
 			wxBusyInfo info( "Saving form and variable data: " + m_formName );
@@ -695,9 +931,15 @@ void UIEditorPanel::OnCommand( wxCommandEvent &evt )
 			
 			SyncFormUIToDataBeforeWriting();
 
-			if (!WriteForm( m_formName ))
+			if (!Write( m_formName ))
 				wxMessageBox("error writing form: " + m_formName, "notice", wxOK, this );
 		}
+		break;
+	case ID_VAR_REMAP:
+	{
+		RemapDialog *rdlg = new RemapDialog( this, "Remap variable names", this );
+		rdlg->Show();
+	}
 		break;
 	case ID_VAR_SYNC:
 		{
@@ -1056,7 +1298,7 @@ void UIEditorPanel::LoadVarList( const wxString &sel )
 	if ( !sel.IsEmpty() ) m_varList->SetStringSelection( sel );
 }
 
-bool UIEditorPanel::WriteForm( const wxString &name )
+bool UIEditorPanel::Write( const wxString &name )
 {
 	bool ok = true;
 	m_ipd.Form().Copy( m_exForm );
@@ -1073,7 +1315,7 @@ bool UIEditorPanel::WriteForm( const wxString &name )
 	return ok;
 }
 
-bool UIEditorPanel::LoadForm( const wxString &name )
+bool UIEditorPanel::Load( const wxString &name )
 {
 	m_uiFormEditor->SetFormData( 0 );
 	m_uiFormEditor->Refresh();
