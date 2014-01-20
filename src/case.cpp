@@ -64,7 +64,7 @@ bool Case::Copy( Object *obj )
 		m_notes = rhs->m_notes;
 		
 		m_config = 0;
-		if ( rhs->m_config );
+		if ( rhs->m_config )
 			SetConfiguration( rhs->m_config->Technology, rhs->m_config->Financing );
 
 		return true;

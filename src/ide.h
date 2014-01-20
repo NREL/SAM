@@ -57,6 +57,20 @@ class UIEditorPanel : public wxPanel
 {
 public:
 	UIEditorPanel( wxWindow *parent );
+	
+	wxUIFormData *GetFormData() { return &m_exForm; }
+	VarDatabase *GetVars() { return &m_ipd.Variables(); }
+	wxString GetCallbacks() { return m_callbackScript->GetText(); }
+	void SetCallbacks( const wxString &t ) { m_callbackScript->SetText( t ); }
+	wxString GetEquations() { return m_equationScript->GetText(); }
+	void SetEquations( const wxString &e ) { m_equationScript->SetText( e ); }
+	
+	bool Write( const wxString &name );
+	bool Load( const wxString &name );
+	void LoadFormList( const wxString &sel = wxEmptyString );
+	void LoadVarList( const wxString &sel = wxEmptyString );
+	wxUIFormDesigner *GetDesigner() { return m_uiFormEditor; }
+	wxUIPropertyEditor *GetPropertyEditor() { return m_uiPropEditor; }
 
 private:
 	wxArrayString m_callbackGotoList;
@@ -64,14 +78,11 @@ private:
 	void OnFormTest( wxCommandEvent & );
 	void OnCommand( wxCommandEvent & );
 	void OnFormSelectObject( wxUIFormEvent & );
-	void LoadFormList( const wxString &sel = wxEmptyString );
 
 	wxString m_formName;
 	ExFormData m_exForm;
 	InputPageData m_ipd;
-
-	bool WriteForm( const wxString &name );
-	bool LoadForm( const wxString &name );
+	
 
 	VarDatabase m_varCopyBuffer;
 
@@ -85,7 +96,6 @@ private:
 	VarInfo *m_curVar;
 	void FormToVarInfo( VarInfo * );
 	void VarInfoToForm( VarInfo * );
-	void LoadVarList( const wxString &sel = wxEmptyString );
 
 	void SyncFormUIToDataBeforeWriting();
 

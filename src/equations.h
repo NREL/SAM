@@ -32,7 +32,7 @@ public:
 	bool Parse( lk::input_base &in, wxArrayString *errors = 0 );
 
 	wxArrayString *GetAffectedVariables( const wxString &var );
-	std::vector<EqnData*> GetEquations() { return m_equations; }
+	const std::vector<EqnData*> &GetEquations() { return m_equations; }
 	
 private:
 	std::vector<lk::node_t*> m_trees;
@@ -57,7 +57,7 @@ public:
 	void AddDatabase( EqnDatabase *db );
 
 	void Add( EqnData *ed );
-	void Add( std::vector<EqnData*> &list );
+	void Add( const std::vector<EqnData*> &list );
 	void Clear();
 	
 	wxArrayString *GetAffectedVariables( const wxString &var );

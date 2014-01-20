@@ -37,6 +37,7 @@ public:
 	VarValue *Create( const wxString &name, int type = VV_INVALID );
 	VarValue *Set( const wxString &name, const VarValue &val );
 	VarValue *Get( const wxString &name );
+	bool Rename( const wxString &old_name, const wxString &new_name );
 
 	void Copy( const VarTable &rhs );
 	void Write( wxOutputStream & );

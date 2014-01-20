@@ -284,7 +284,7 @@ void EqnFastLookup::Add( EqnData *e )
 	}
 }
 
-void EqnFastLookup::Add( std::vector<EqnData*> &list )
+void EqnFastLookup::Add( const std::vector<EqnData*> &list )
 {
 	for( size_t i=0;i<list.size();i++ )
 		Add( list[i] );
