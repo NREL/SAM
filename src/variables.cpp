@@ -824,6 +824,8 @@ bool VarDatabase::Rename( const wxString &old_name, const wxString &new_name )
 	VarInfo *vv = it->second;
 	erase( it );
 	
+	vv->Name = new_name;
+
 	(*this)[ new_name ] = vv;
 	return true;
 }

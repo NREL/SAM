@@ -64,14 +64,17 @@ addpage( [[ 'Location' ]] );
 
 
 setconfig( 'Flat Plate PV', 'Residential' );
+setmodules( ['pvsamv1']);
 setup_flat_plate_pv_pages();
 setup_residential_pages();
 
 setconfig( 'PVWatts', 'Residential' );	
+setmodules( ['pvwattsv1']);
 setup_pvwatts_pages();
 setup_residential_pages();
 
 setconfig( 'PVWatts', 'None' );
+setmodules( ['pvwattsv1']);
 setup_pvwatts_pages();
 
 

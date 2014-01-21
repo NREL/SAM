@@ -191,6 +191,7 @@ public:
 
 	wxString Technology;
 	wxString Financing;
+	wxArrayString Simulations;
 	std::vector<InputPageGroup*> InputPageGroups;
 	InputPageDataHash InputPages;
 	VarInfoLookup Variables;		
@@ -213,6 +214,7 @@ public:
 	void Add( const wxString &tech, const wxArrayString &fin );
 	void SetConfig( const wxString &t, const wxString &f );
 	
+	void SetModules( const wxArrayString &list );
 	void AddInputPageGroup( const std::vector< std::vector<PageInfo> > &pages, const wxString &sidebar = wxEmptyString,
 		const wxString &hlpcxt = wxEmptyString, const wxString &exclvar = wxEmptyString );
 
