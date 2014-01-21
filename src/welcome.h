@@ -12,6 +12,7 @@
 
 class MainWindow;
 class wxMetroButton;
+class wxMetroListBox;
 
 class WelcomeScreen : public wxPanel
 {
@@ -24,16 +25,10 @@ public:
 private:
 	void LayoutWidgets();
 	
-	void OnCreateProject(wxCommandEvent &evt);
-	void OnOpenRecent(wxCommandEvent &evt);
-	void OnOpenExisting( wxCommandEvent &evt );
-
-	void OnHyperlink(wxCommandEvent &);
+	void OnCommand( wxCommandEvent & );
 	void OnPaint(wxPaintEvent &evt);
 	void OnResize(wxSizeEvent &evt);
-
-	void OnLinkClicked(wxHtmlLinkEvent &);
-
+	void OnMessagesLinkClicked(wxHtmlLinkEvent &);
 	void OnDownloadTimeout( wxTimerEvent & );
 
 	wxBitmap m_nrelLogo;
@@ -45,17 +40,14 @@ private:
 	wxMetroButton *m_openExisting;
 	wxMetroButton *m_onlineForum;
 	wxMetroButton *m_helpSystem;
-	wxListBox *m_recent;
+	wxMetroListBox *m_recent;
 		
 	wxTimer m_downloadTimer;
 	
 	wxSimpleCurlDownloadThread m_ssCurlMessage;
 	void OnMessageDownloadThread( wxSimpleCurlEvent & );
 	void UpdateMessagesHtml(const wxString &html);
-
-	wxSimpleCurlDownloadThread m_ssCurlUpdate;
-	void OnUpdateDownloadThread( wxSimpleCurlEvent & );
-
+	
 	wxSimpleCurlDownloadThread m_ssCurlUsage;
 	void OnUsageDownloadThread( wxSimpleCurlEvent & );
 

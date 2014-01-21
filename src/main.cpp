@@ -196,7 +196,7 @@ bool MainWindow::CreateProject()
 	m_topBook->SetSelection( 1 );
 
 	CreateNewCase( wxEmptyString, "Flat Plate PV", "Residential" );
-//	CreateNewCase( wxEmptyString, "PVWatts", "Residential" );
+	CreateNewCase( wxEmptyString, "PVWatts", "None" );
 	return true;
 }
 
@@ -986,6 +986,11 @@ void ConfigDatabase::Add( const wxString &tech, const wxArrayString &fin )
 void ConfigDatabase::SetConfig( const wxString &t, const wxString &f )
 {
 	m_curConfig = Find( t, f );
+}
+
+void ConfigDatabase::SetModules( const wxArrayString &list )
+{
+	if ( m_curConfig != 0 ) m_curConfig->Simulations = list;
 }
 
 void ConfigDatabase::AddInputPageGroup( const std::vector< std::vector<PageInfo> > &pages, const wxString &sidebar, 

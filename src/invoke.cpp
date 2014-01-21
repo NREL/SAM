@@ -32,6 +32,7 @@ static void fcall_addconfig( lk::invoke_t &cxt )
 	lk::vardata_t &fins = cxt.arg(1);
 	for( size_t i=0;i<fins.length();i++ )
 		finlist.Add( fins.index(i)->as_string() );
+	
 	SamApp::Config().Add( cxt.arg(0).as_string(), finlist );
 
 	wxLogStatus( "Configuration: " + cxt.arg(0).as_string() + "  -> [ " + wxJoin(finlist,';') + " ]" );
@@ -41,6 +42,18 @@ static void fcall_setconfig( lk::invoke_t &cxt )
 {
 	LK_DOC("setconfig", "Sets the currently active configuration for editing", "(string:Tech, string:Financing):none");
 	SamApp::Config().SetConfig( cxt.arg(0).as_string(), cxt.arg(1).as_string() );
+}
+
+static void fcall_setmodules( lk::invoke_t &cxt )
+{
+	LK_DOC("setmodules", "Sets the simulation models for the currently active configuration", "(array:module names):none");
+	
+	wxArrayString list;
+	lk::vardata_t &m = cxt.arg(0);
+	for( size_t i=0;i<m.length();i++ )
+		list.Add( m.index(i)->as_string() );
+
+	SamApp::Config().SetModules( list );
 }
 
 static void fcall_addpage( lk::invoke_t &cxt )
@@ -213,6 +226,7 @@ lk::fcall_t* invoke_config_funcs()
 		fcall_addconfig,
 		fcall_setconfig,
 		fcall_addpage,
+		fcall_setmodules,
 		0 };
 	return (lk::fcall_t*)vec;
 }

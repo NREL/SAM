@@ -23,39 +23,31 @@
 #include "main.h"
 #include "welcome.h"
 
-DEFINE_EVENT_TYPE( wxEVT_WELCOME_CLOSE )
-
-enum { ID_m_openExisting=wxID_HIGHEST+556, ID_m_createCase, ID_m_recent, 
-ID_htmlViewer, ID_messageDownloadThread, ID_updateDownloadThread, ID_usageDownloadThread,
-ID_m_onlineForum, ID_m_helpSystem, ID_downloadTimer
-};
+enum { ID_CREATE_PROJECT=wxID_HIGHEST+556, ID_OPEN_EXISTING, ID_RECENT_FILES,
+	ID_MESSAGES_HTML, ID_MESSAGE_THREAD, ID_USAGE_THREAD, ID_DOWNLOAD_TIMER };
 
 BEGIN_EVENT_TABLE(WelcomeScreen, wxPanel)
 	EVT_PAINT(WelcomeScreen::OnPaint)
 	EVT_SIZE(WelcomeScreen::OnResize)
-	EVT_BUTTON( ID_m_createCase, WelcomeScreen::OnCreateProject)
-	EVT_BUTTON( ID_m_openExisting, WelcomeScreen::OnOpenExisting)
-	EVT_LISTBOX_DCLICK( ID_m_recent, WelcomeScreen::OnOpenRecent)
+	
+	EVT_BUTTON( ID_CREATE_PROJECT, WelcomeScreen::OnCommand )
+	EVT_BUTTON( ID_OPEN_EXISTING, WelcomeScreen::OnCommand )
+	EVT_LISTBOX_DCLICK( ID_RECENT_FILES, WelcomeScreen::OnCommand )
+	
+	EVT_HTML_LINK_CLICKED( ID_MESSAGES_HTML, WelcomeScreen::OnMessagesLinkClicked )
 
-	EVT_BUTTON( ID_m_onlineForum, WelcomeScreen::OnHyperlink )
-	EVT_BUTTON( ID_m_helpSystem, WelcomeScreen::OnHyperlink )
-
-	EVT_HTML_LINK_CLICKED( ID_htmlViewer, WelcomeScreen::OnLinkClicked )
-
-	EVT_SIMPLECURL( ID_messageDownloadThread, WelcomeScreen::OnMessageDownloadThread )
-	EVT_SIMPLECURL( ID_updateDownloadThread, WelcomeScreen::OnUpdateDownloadThread )
-	EVT_SIMPLECURL( ID_usageDownloadThread, WelcomeScreen::OnUsageDownloadThread )
-	EVT_TIMER( ID_downloadTimer, WelcomeScreen::OnDownloadTimeout )
+	EVT_SIMPLECURL( ID_MESSAGE_THREAD, WelcomeScreen::OnMessageDownloadThread )
+	EVT_SIMPLECURL( ID_USAGE_THREAD, WelcomeScreen::OnUsageDownloadThread )
+	EVT_TIMER( ID_DOWNLOAD_TIMER, WelcomeScreen::OnDownloadTimeout )
 END_EVENT_TABLE();
 
 enum { DOWNLOADING, FAILED, RETRIEVED };
 
 WelcomeScreen::WelcomeScreen(wxWindow *parent)
 	: wxPanel(parent, wxID_ANY),
-	  m_downloadTimer( this, ID_downloadTimer ),
-	  m_ssCurlMessage( this, ID_messageDownloadThread ),
-	  m_ssCurlUpdate( this, ID_updateDownloadThread ),
-	  m_ssCurlUsage( this, ID_usageDownloadThread )
+	  m_downloadTimer( this, ID_DOWNLOAD_TIMER ),
+	  m_ssCurlMessage( this, ID_MESSAGE_THREAD ),
+	  m_ssCurlUsage( this, ID_USAGE_THREAD )
 {
 	SetBackgroundStyle(wxBG_STYLE_CUSTOM);
 	SetBackgroundColour( *wxWHITE );
@@ -64,35 +56,26 @@ WelcomeScreen::WelcomeScreen(wxWindow *parent)
 
 	m_nrelLogo = wxBITMAP_PNG_FROM_DATA( nrel );
 	
-	m_htmlWin = new wxHtmlWindow(this, ID_htmlViewer, wxDefaultPosition, wxDefaultSize, wxBORDER_NONE);
+	m_htmlWin = new wxHtmlWindow(this, ID_MESSAGES_HTML, wxDefaultPosition, wxDefaultSize, wxBORDER_NONE);
 	m_htmlWin->SetFont( *wxNORMAL_FONT );
 	m_htmlWin->SetFonts( wxNORMAL_FONT->GetFaceName(), "courier" );
 
 
-	m_createCase = new wxMetroButton(this, ID_m_createCase, "Start a new project", wxNullBitmap, 
+	m_createCase = new wxMetroButton(this, ID_CREATE_PROJECT, "Start a new project", wxNullBitmap, 
 		wxPoint(459,51), wxSize(208,21), wxMB_RIGHTARROW);
-	m_createCase->SetFont( wxMetroTheme::Font( wxMT_NORMAL, 12) );
+	m_createCase->SetFont( wxMetroTheme::Font( wxMT_NORMAL, 14) );
 
-	m_openExisting = new wxMetroButton( this, ID_m_openExisting, "Open an existing file", wxNullBitmap );
-	m_openExisting->SetFont( wxMetroTheme::Font( wxMT_NORMAL, 12) );
+	m_openExisting = new wxMetroButton( this, ID_OPEN_EXISTING, "Open an existing file", wxNullBitmap );
+	m_openExisting->SetFont( wxMetroTheme::Font( wxMT_NORMAL, 14) );
 	
 	
-	m_recent = new wxListBox(this, ID_m_recent, wxPoint(15,327), wxSize(650,150), 0, 0, wxLB_SINGLE);
-	m_recent->SetFont( wxMetroTheme::Font( wxMT_NORMAL ) );
-
-	//m_onlineForum = new wxMetroButton(this, ID_m_onlineForum, "Support forum");
-	//m_onlineForum->SetFont( wxMetroTheme::NormalFont(14) );
-
-	//m_helpSystem = new wxMetroButton(this, ID_m_helpSystem, "Help system" );
-	//m_helpSystem->SetFont( wxMetroTheme::NormalFont(14) );
+	m_recent = new wxMetroListBox(this, ID_RECENT_FILES, wxPoint(15,327), wxSize(650,150) );
+	
 
 	LayoutWidgets();
 
 	wxString msg_url = "https://sam.nrel.gov/files/content/updates/messages.html";
 	m_ssCurlMessage.Start( msg_url );
-	
-	wxString update_url = "https://sam.nrel.gov/files/content/updates/notification_2013.1.15.html";
-	//m_ssCurlUpdate.Start( update_url );
 	
 	wxString usage_url = "https://nreldev.nrel.gov/analysis/sam/usage/samnt/startup.php?action=increment";
 	m_ssCurlUsage.Start( usage_url );
@@ -111,7 +94,6 @@ WelcomeScreen::~WelcomeScreen()
 void WelcomeScreen::AbortDownloadThreads()
 {
 	m_ssCurlMessage.Abort();
-	m_ssCurlUpdate.Abort();
 	m_ssCurlUsage.Abort();
 }
 
@@ -121,7 +103,7 @@ void WelcomeScreen::OnDownloadTimeout( wxTimerEvent & )
 	AbortDownloadThreads();
 }
 
-void WelcomeScreen::OnLinkClicked(wxHtmlLinkEvent &e)
+void WelcomeScreen::OnMessagesLinkClicked(wxHtmlLinkEvent &e)
 {
 	wxLaunchDefaultBrowser( e.GetLinkInfo().GetHref(), wxBROWSER_NEW_WINDOW );
 }
@@ -154,67 +136,6 @@ void WelcomeScreen::UpdateMessagesHtml(const wxString &html)
 	Refresh();
 }
 
-
-
-enum { ID_UpdateDialogHtml = wxID_HIGHEST+142 };
-
-class UpdateDialog : public wxDialog
-{
-private:
-	wxHtmlWindow *m_htmlWindow;
-	wxCheckBox *m_chkDoNotShowAgain;
-public:
-	UpdateDialog( wxWindow *parent, const wxString &title, const wxString &html )
-		: wxDialog (parent, wxID_ANY, title, wxDefaultPosition, wxSize(500,400), wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER)
-	{
-		m_htmlWindow = new wxHtmlWindow(this, ID_UpdateDialogHtml );
-		m_htmlWindow->SetPage( html );
-
-		m_chkDoNotShowAgain = new wxCheckBox( this, wxID_ANY, "Do not show this notification again" );
-
-		wxBoxSizer *sz_bottom = new wxBoxSizer(wxHORIZONTAL);
-		sz_bottom->Add( m_chkDoNotShowAgain, 1, wxALL|wxEXPAND, 4 );
-		sz_bottom->Add( CreateButtonSizer(wxOK), 0, wxALL|wxEXPAND, 4 );
-
-		wxBoxSizer *sz_main = new wxBoxSizer(wxVERTICAL );
-		sz_main->Add( m_htmlWindow, 1, wxALL|wxEXPAND, 0 );
-		sz_main->Add( sz_bottom, 0, wxALL|wxEXPAND, 4 );
-
-		SetSizer( sz_main );
-	}
-
-	bool DoNotShowAgain() { return m_chkDoNotShowAgain->GetValue(); }
-	void OnLink( wxHtmlLinkEvent &evt )
-	{
-		wxLaunchDefaultBrowser( evt.GetLinkInfo().GetHref(), wxBROWSER_NEW_WINDOW );
-	}
-	DECLARE_EVENT_TABLE();
-};
-
-BEGIN_EVENT_TABLE( UpdateDialog, wxDialog )
-	EVT_HTML_LINK_CLICKED( ID_UpdateDialogHtml, UpdateDialog::OnLink )
-END_EVENT_TABLE()
-
-void WelcomeScreen::OnUpdateDownloadThread( wxSimpleCurlEvent &evt )
-{
-	if (evt.GetStatusCode() == wxSimpleCurlEvent::FINISHED )
-	{
-		wxString html = m_ssCurlUpdate.GetData();
-		bool do_not_show = false;
-		wxString cfgkey = "update_notification_" + SamApp::VersionStr();
-		SamApp::Settings().Read( cfgkey, &do_not_show );
-		if ( !html.IsEmpty() && !do_not_show )
-		{
-			UpdateDialog dlg( SamApp::Window(), "Update Notification", html );
-			dlg.CenterOnParent();
-			dlg.ShowModal();
-
-			if (dlg.DoNotShowAgain())
-				SamApp::Settings().Write( cfgkey, true );
-		}
-	}
-}
-
 wxString WelcomeScreen::GetLocalMessagesFile()
 {	
 	wxString path = wxStandardPaths::Get().GetUserLocalDataDir(); 
@@ -237,39 +158,34 @@ void WelcomeScreen::OnUsageDownloadThread( wxSimpleCurlEvent &evt )
 void WelcomeScreen::UpdateRecentList()
 {
 	m_recent->Clear();
-	m_recent->Append( SamApp::RecentFiles() );
+	wxArrayString list = SamApp::RecentFiles();
+	for( size_t i=0;i<list.size();i++ )
+		m_recent->Add( list[i] );
+
+	m_recent->Refresh();
 }
 
+#define YSTART 100
 #define SPACER 30
 #define BORDER 40
-#define CCB_WIDTH 155
-#define REMINDER_HEIGHT 121
 
 void WelcomeScreen::LayoutWidgets()
 {
-
-	int cw,ch,top = 100 + SPACER;
+	int cw,ch,top = YSTART;
 	GetClientSize(&cw,&ch);
 	ch -= top;
 
 	int ht = 2*ch/3; // top section height
 	int hb = ch-ht; // bottom section height
 
-	m_recent->SetSize( BORDER+350+BORDER, top+ht, cw-BORDER-BORDER-BORDER-350, hb-BORDER);
+	m_htmlWin->SetSize( BORDER+350, top, cw-BORDER-BORDER-350, ht );
 
-	m_htmlWin->SetSize( BORDER+350+BORDER, top+BORDER+BORDER+BORDER, cw-BORDER-BORDER-BORDER-350, ht-BORDER );
+	m_recent->SetSize( BORDER+350, top+ht, cw-BORDER-BORDER-350, hb);
+
 
 	wxSize size2 = m_createCase->GetBestSize();
-	m_createCase->SetSize( BORDER+SPACER, top, 350-SPACER-SPACER, size2.GetHeight()  );
-
-	m_openExisting->SetSize( BORDER+SPACER, top+size2.GetHeight()+10, 350-SPACER-SPACER, size2.GetHeight() );
-
-//	int y = ch*2/3;
-//	wxSize size3 = m_onlineForum->GetBestSize();
-//	m_onlineForum->SetSize( BORDER+SPACER, y, 350-SPACER-SPACER, size3.GetHeight() );
-
-//	wxSize size4 = m_helpSystem->GetBestSize();
-//	m_helpSystem->SetSize( BORDER+SPACER, y + size3.GetHeight()+SPACER, 350-SPACER-SPACER, size4.GetHeight() );
+	m_createCase->SetSize( BORDER+SPACER, top+SPACER, 350-SPACER-SPACER, size2.GetHeight()  );
+	m_openExisting->SetSize( BORDER+SPACER, top+SPACER+size2.GetHeight()+10, 350-SPACER-SPACER, size2.GetHeight() );
 }
 
 void WelcomeScreen::OnPaint(wxPaintEvent &)
@@ -291,7 +207,9 @@ void WelcomeScreen::OnPaint(wxPaintEvent &)
 	dc.SetPen( *wxTRANSPARENT_PEN );
 	dc.SetBrush( wxBrush( wxMetroTheme::Colour( wxMT_ACCENT ) ) );
 	dc.DrawRectangle( BORDER, y, 350, sz.GetHeight() - y+1 );
-	dc.DrawRectangle( BORDER, y, sz.GetWidth() - BORDER-BORDER, SPACER+SPACER );
+
+	//dc.SetPen( wxPen(wxMetroTheme::Colour( wxMT_ACCENT ), 1) );
+	//dc.DrawLine( BORDER, y, sz.GetWidth()-BORDER, y );
 
 	y += 20;	
 	dc.SetFont( wxMetroTheme::Font() );	
@@ -312,35 +230,26 @@ void WelcomeScreen::OnResize(wxSizeEvent &)
 	Refresh();
 }
 
-void WelcomeScreen::OnCreateProject(wxCommandEvent &)	
+void WelcomeScreen::OnCommand( wxCommandEvent &evt )	
 {
-	SamApp::Window()->CreateProject();
-}
-
-void WelcomeScreen::OnOpenExisting( wxCommandEvent &)
-{
-	wxFileDialog dlg( this, "Open a SAM file", wxEmptyString, wxEmptyString, "SAM Project Files (*.sam)|*.sam" );
-	if ( dlg.ShowModal() && SamApp::Window()->CloseProject())
-		SamApp::Window()->LoadProject( dlg.GetPath() );
-}
-
-
-void WelcomeScreen::OnOpenRecent(wxCommandEvent &)
-{
-	wxString fn = m_recent->GetStringSelection();
-	if ( SamApp::Window()->CloseProject())
-		SamApp::Window()->LoadProject( fn );
-}
-
-void WelcomeScreen::OnHyperlink(wxCommandEvent &evt)
-{
-	switch(evt.GetId())
+	switch( evt.GetId() )
 	{
-	case ID_m_onlineForum:
-		wxLaunchDefaultBrowser( "https://sam.nrel.gov/forums/support-forum", wxBROWSER_NEW_WINDOW);
+	case ID_CREATE_PROJECT:
+		SamApp::Window()->CreateProject();
 		break;
-	case ID_m_helpSystem:
-		SamApp::ShowHelp("main");
+	case ID_OPEN_EXISTING:
+	{
+		wxFileDialog dlg( this, "Open a SAM file", wxEmptyString, wxEmptyString, "SAM Project Files (*.sam)|*.sam" );
+		if ( dlg.ShowModal() && SamApp::Window()->CloseProject())
+			SamApp::Window()->LoadProject( dlg.GetPath() );
+	}
+		break;
+	case ID_RECENT_FILES:
+	{
+		wxString fn = m_recent->GetSelectionString();
+		if ( SamApp::Window()->CloseProject())
+			SamApp::Window()->LoadProject( fn );
+	}
 		break;
 	}
 }

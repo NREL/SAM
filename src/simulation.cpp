@@ -1,4 +1,5 @@
 #include <wx/gauge.h>
+#include <wx/progdlg.h>
 
 #include <lk_absyn.h>
 #include <lk_stdlib.h>
@@ -11,71 +12,6 @@
 #include "equations.h"
 #include "case.h"
 
-
-/*
-
-
-class SimulationContext
-{
-	Simulation *m_sim;
-	ssc_data_t m_sscData;
-	bool m_canceled;
-public:
-	SimulationContext( Simulation *sim )
-		: m_sim(sim), m_canceled(false)
-	{
-		m_sscData = ssc_data_create();
-	}
-	
-	virtual ~SimulationContext()
-	{
-		ssc_data_free( m_sscData );
-		m_sscData = 0;
-	}
-	
-	ssc_data_t GetSSCData() { return m_sscData; }
-	Simulation *GetSimulation() { return m_sim; }
-	VarValue *GetInput( const wxString &name ) { return m_sim->GetInput( name ); }
-	void Cancel() { m_canceled = true; }
-	bool IsCanceled() { return m_canceled; }
-
-	virtual bool OnProgressUpdate( float percent_done, const wxString &message )
-	{
-		// push the update to the UI
-		return !m_canceled;
-	}
-};
-
-
-static ssc_bool_t ssc_invoke_handler( ssc_module_t p_mod, ssc_handler_t p_handler,
-	int action_type, float f0, float f1, 
-	const char *s0, const char *s1,
-	void *user_data )
-{
-	SimulationContext *sc = (SimulationContext*) user_data;
-	if (!sc) return 0;
-
-	if (action_type == SSC_LOG)
-	{		
-		switch( (int)f0 )
-		{
-		case SSC_NOTICE:
-		case SSC_WARNING:
-			sc->GetSimulation()->GetWarnings().Add( s0 );
-			break;
-		case SSC_ERROR:
-			sc->GetSimulation()->GetErrors().Add( s0 );
-			break;
-		}
-		return sc->IsCanceled() ? 0 : 1;
-	}
-	else if (action_type == SSC_UPDATE)
-	{
-		return sc->OnProgressUpdate( f0, s0 ) ? 1 : 0;
-	}
-	else
-		return 0;
-}
 
 static bool VarValueToSSC( VarValue *vv, ssc_data_t pdata, const wxString &sscname )
 {
@@ -151,121 +87,10 @@ static bool VarValueToSSC( VarValue *vv, ssc_data_t pdata, const wxString &sscna
 	return true;
 }
 
-static void fcall_ssc_invoke( lk::invoke_t &cxt )
-{
-	LK_DOC( "ssc_invoke", "Run an ssc compute module", "(string:name):boolean" );
-	
-	cxt.result().assign( 0.0 );
-
-	SimulationContext *simcxt = (SimulationContext*)cxt.user_data();
-	wxString module_name = cxt.arg(0).as_string();
-	wxArrayString &errors = simcxt->GetSimulation()->GetErrors();
-
-	ssc_module_t pmod = ssc_module_create( module_name.c_str() );
-	if ( !pmod )
-	{
-		errors.Add( "could not create ssc module instance: " + module_name );
-		return;
-	}
-
-	if ( ssc_module_exec_with_handler( pmod, simcxt->GetSSCData(), ssc_invoke_handler, simcxt ) )
-		cxt.result().assign( 1.0 );
-	
-	ssc_module_free( pmod );
-}
-
-static void fcall_ssc_copy( lk::invoke_t &cxt )
-{
-	LK_DOC( "ssc_copy", "Copy a SAM variable to SSC", "(string:ssc var, string:sam var):boolean" );
-
-	cxt.result().assign( 0.0 );
-	SimulationContext *simcxt = (SimulationContext*)cxt.user_data();
-	wxString sscvar = cxt.arg(0).as_string();
-	wxString samvar = cxt.arg(1).as_string();
-
-	if ( VarValue *vv = simcxt->GetInput( samvar ) )
-		if ( VarValueToSSC( vv, simcxt->GetSSCData(), sscvar ) )
-			cxt.result().assign( 1.0 );
-}
-
-static void fcall_ssc_assign( lk::invoke_t &cxt )
-{
-	LK_DOC( "ssc_assign", "Assign an ssc variable with the given value", "(string:name, variant:value):void" );
-	
-	SimulationContext *simcxt = (SimulationContext*)cxt.user_data();
-	VarValue vv;
-	if ( vv.Read( cxt.arg(1), true ) )
-		VarValueToSSC( &vv, simcxt->GetSSCData(), cxt.arg(0).as_string() );
-}
-
-static void fcall_sam_copy( lk::invoke_t &cxt )
-{
-	LK_DOC( "sam_copy", "Assign an SSC number or array to the SAM results table with optional scaling", "(string:resultvar, string:sscvar[, number:scale]):void");
-	
-	SimulationContext *simcxt = (SimulationContext*)cxt.user_data();
-	wxString samvar = cxt.arg(0).as_string();
-	wxString sscvar = cxt.arg(1).as_string();
-	
-	float scale = 1.0f;
-	if ( cxt.arg_count() > 2 )
-		scale = (float) cxt.arg(2).as_number();
-
-	int type = ssc_data_query( simcxt->GetSSCData(), sscvar.c_str() );
-
-	if ( type == SSC_NUMBER )
-	{
-		ssc_number_t vval;
-		ssc_data_get_number( simcxt->GetSSCData(), sscvar.c_str(), &vval );
-		VarValue *vv = simcxt->GetSimulation()->Results().Create( samvar, VV_NUMBER );
-		vv->Set( (float) (vval*scale) );
-	}
-	else if ( type == SSC_ARRAY )
-	{
-		int len;
-		if ( ssc_number_t *varr = ssc_data_get_array( simcxt->GetSSCData(), sscvar.c_str(), &len ) )
-		{
-			VarValue *vv = simcxt->GetSimulation()->Results().Create( samvar, VV_ARRAY );
-			float *ff = new float[len];
-			for( int i=0;i<len;i++ )
-				ff[i] = (float)(scale*varr[i]);
-
-			vv->Set( ff, (size_t)len );
-			delete [] ff;
-		}		
-	}
-}
-
-static void fcall_sam_assign( lk::invoke_t &cxt )
-{
-	LK_DOC( "sam_assign", "Assign a value to a SAM result variable", "(string:name, variant:value):void");
-	
-	SimulationContext *simcxt = (SimulationContext*)cxt.user_data();
-	wxString samvar = cxt.arg(0).as_string();
-	
-	if ( VarValue *vv = simcxt->GetSimulation()->Results().Create( samvar ) )
-		vv->Read( cxt.arg(1), true );
-}
-
-
-
-lk::fcall_t* invoke_simulation_stubs()
-{
-	static const lk::fcall_t vec[] = {
-		fcall_ssc_invoke,
-		fcall_ssc_copy,
-		fcall_ssc_assign,
-		fcall_sam_copy,
-		fcall_sam_assign,
-		0 };
-	return (lk::fcall_t*)vec;
-}
-
-
 
 Simulation::Simulation( Case *cc, const wxString &name )
 	: m_case( cc ), m_name( name )
 {
-	m_case->GetConfiguration( &m_tech, &m_fin );
 }
 
 
@@ -289,7 +114,7 @@ wxString Simulation::GetOverridesLabel( bool with_labels )
 			wxString label = m_overrides[i];
 			
 			if ( with_labels )
-				if ( VarInfo *vi = SamApp::Variables().Lookup( m_overrides[i] ) )
+				if ( VarInfo *vi = m_case->Variables().Lookup( m_overrides[i] ) )
 					if ( !vi->Label.IsEmpty() )
 						label = vi->Label;
 			
@@ -329,8 +154,56 @@ VarTable &Simulation::Results()
 	return m_results;
 }
 
-bool Simulation::PrepareInputs()
+
+struct SimulationContext
 {
+	wxProgressDialog *progdlg;
+	wxArrayString *errors;
+	wxArrayString *warnings;
+};
+
+static ssc_bool_t ssc_invoke_handler( ssc_module_t p_mod, ssc_handler_t p_handler,
+	int action_type, float f0, float f1, 
+	const char *s0, const char *s1,
+	void *user_data )
+{
+	SimulationContext *sc = (SimulationContext*) user_data;
+	if (!sc) return 0;
+
+	if (action_type == SSC_LOG)
+	{		
+		switch( (int)f0 )
+		{
+		case SSC_NOTICE:
+		case SSC_WARNING:
+			sc->warnings->Add( s0 );
+			break;
+		case SSC_ERROR:
+			sc->errors->Add( s0 );
+			break;
+		}
+		return sc->progdlg->WasCancelled() ? 0 : 1;
+	}
+	else if (action_type == SSC_UPDATE)
+	{
+		sc->progdlg->Update( (int)f0, s0 );
+		return !sc->progdlg->WasCancelled();
+	}
+	else
+		return 0;
+}
+
+
+bool Simulation::Invoke()
+{
+	
+	ConfigInfo *cfg = m_case->GetConfiguration();
+	if ( !cfg )
+	{
+		m_errors.Add("no valid configuration");
+		return false;
+	}
+
 	// transfer all the values except for ones that have been 'overriden'
 
 	for( VarTableBase::const_iterator it = m_case->Values().begin();
@@ -353,64 +226,93 @@ bool Simulation::PrepareInputs()
 		return false;
 	}
 
-	return true;
+	SimulationContext sc;
+	sc.progdlg = new wxProgressDialog( "Simulation", "in progress", 100, 0, wxPD_APP_MODAL|wxPD_SMOOTH|wxPD_CAN_ABORT );
+	sc.progdlg->Show();
+	sc.errors = &m_errors;
+	sc.warnings = &m_warnings;
 
-}
+	ssc_data_t p_data = ssc_data_create();
 
-bool Simulation::Invoke( SimulationContext *context )
-{
-	if ( Invoke( m_tech, context ) )
-		if ( Invoke( m_fin, context ) )
-			return true;
 
-	return false;
-}
-
-bool Simulation::Invoke( const wxString &name, SimulationContext *context )
-{	
-	// lookup and run any callback functions.
-	if ( lk::node_t *root = SamApp::Callbacks().Lookup( "on_simulate", name ) )
+	for( size_t kk=0;kk<cfg->Simulations.size();kk++ )
 	{
-		lk::env_t local_env( SamApp::Callbacks().GetEnv() );
-
-		// add other callback environment functions
-		local_env.register_funcs( lk::stdlib_basic() );
-		local_env.register_funcs( lk::stdlib_math() );
-		local_env.register_funcs( lk::stdlib_string() );
-			
-		local_env.register_func( fcall_ssc_invoke, context );
-		local_env.register_func( fcall_ssc_copy, context );
-		local_env.register_func( fcall_ssc_assign, context );
-		local_env.register_func( fcall_sam_copy, context );
-		local_env.register_func( fcall_sam_assign, context );
-	
-		try {
-			VarTableScriptInterpreter e( root, &local_env, &m_inputs );
-			if ( !e.run() )
-			{
-				m_errors.Add( "could not evaluate simulation script: " + name );
-				for (size_t i=0;i<e.error_count();i++)
-					m_errors.Add( e.get_error(i) );
-
-				return false;
-			}
-		
-		} catch(std::exception &e ){
-
-			m_errors.Add( "exception in simulation script: " + name );
-			m_errors.Add( wxString(e.what()) );
-			return false;
+		ssc_module_t p_mod = ssc_module_create( cfg->Simulations[kk].c_str() );
+		if ( !p_mod )
+		{
+			m_errors.Add( "could not create ssc module: " + cfg->Simulations[kk] );
+			continue;
 		}
 
-		return true;
+		int pidx=0;
+		while( const ssc_info_t p_inf = ssc_module_var_info( p_mod, pidx++ ) )
+		{
+			int var_type = ssc_info_var_type( p_inf );   // SSC_INPUT, SSC_OUTPUT, SSC_INOUT
+			int data_type = ssc_info_data_type( p_inf ); // SSC_STRING, SSC_NUMBER, SSC_ARRAY, SSC_MATRIX		
+			wxString name( ssc_info_name( p_inf ) ); // assumed to be non-null
+			wxString reqd( ssc_info_required( p_inf ) );
+
+			if ( var_type == SSC_INPUT )
+			{
+				VarValue *vv = GetInput(name);
+				if ( !vv && strcmp(reqd,"*")==0)
+				{
+					m_errors.Add( "SSC requires input '" + name + "', but was not found in the SAM UI" );
+				}
+				else if ( vv != 0 )
+				{
+					if (!VarValueToSSC( vv, p_data, name ))
+						m_errors.Add( "Error translating data from SAM UI to SSC for " + name );
+				}
+			}
+		}
+
+		if ( !ssc_module_exec_with_handler( p_mod, p_data, ssc_invoke_handler, &sc ))
+		{
+			m_errors.Add("simulation did not succeed.");
+		}
+		else
+		{
+			pidx = 0;
+			while( const ssc_info_t p_inf = ssc_module_var_info( p_mod, pidx++ ) )
+			{
+				int var_type = ssc_info_var_type( p_inf );   // SSC_INPUT, SSC_OUTPUT, SSC_INOUT
+				int data_type = ssc_info_data_type( p_inf ); // SSC_STRING, SSC_NUMBER, SSC_ARRAY, SSC_MATRIX		
+				const char *name( ssc_info_name( p_inf ) ); // assumed to be non-null
+				
+				if ( var_type == SSC_OUTPUT && data_type == SSC_NUMBER )
+				{
+					ssc_number_t vval;
+					if ( ssc_data_get_number( p_data, name, &vval ) )
+					{
+						VarValue *vv = m_results.Create( name, VV_NUMBER );
+						vv->Set( (float) vval );
+					}
+				}
+				else if ( var_type == SSC_OUTPUT && data_type == SSC_ARRAY )
+				{
+					int len;
+					if ( ssc_number_t *varr = ssc_data_get_array( p_data, name, &len ) )
+					{
+						VarValue *vv = m_results.Create( name, VV_ARRAY );
+						float *ff = new float[len];
+						for( int i=0;i<len;i++ )
+							ff[i] = (float)(varr[i]);
+
+						vv->Set( ff, (size_t)len );
+						delete [] ff;
+					}		
+				}
+			}
+		}
+
+		ssc_module_free( p_mod );
 	}
-	else
-	{
-		m_errors.Add("on_simulate->" + name + " function not found");
-		return false;
-	}
+
+	ssc_data_free( p_data );
+
+	delete sc.progdlg;
+
+	return m_errors.size() == 0;
+
 }
-
-
-
-*/
