@@ -214,12 +214,12 @@ bool Simulation::Invoke()
 
 	// recalculate all the equations
 
-	CaseEqnEvaluator eval( m_case, m_inputs, m_case->Equations() );
+	CaseEvaluator eval( m_case, m_inputs, m_case->Equations() );
 	int n = eval.CalculateAll();
 
 	if ( n < 0 )
 	{
-		wxArrayString errs = eval.GetErrors();
+		wxArrayString &errs = eval.GetErrors();
 		for( size_t i=0;i<errs.size();i++ )
 			m_errors.Add( errs[i] );
 
