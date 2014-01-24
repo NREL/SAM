@@ -106,12 +106,17 @@ private:
 	std::vector<CaseEventListener*> m_listeners;
 };
 
-class CaseEqnEvaluator : public EqnEvaluator
+class CaseEvaluator : public EqnEvaluator
 {
 	Case *m_case;
 public:	
-	CaseEqnEvaluator( Case *cc, VarTable &vars, EqnFastLookup &efl );
-	virtual void SetupEnvironment( lk::env_t &env );
+	CaseEvaluator( Case *cc, VarTable &vars, EqnFastLookup &efl );
+	virtual void SetupEnvironment( lk::env_t &env );	
+	virtual int CalculateAll();
+	virtual int Changed( const wxArrayString &vars );
+	virtual int Changed( const wxString &trigger );
+
+	bool UpdateLibrary( const wxString &trigger, wxArrayString &changed );
 };
 
 #endif

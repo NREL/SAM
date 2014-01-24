@@ -78,7 +78,7 @@ private:
 
 class EqnEvaluator
 {
-private:
+protected:
 	static const int INVALID = 0;
 	static const int OK = 1;
 
@@ -95,11 +95,10 @@ public:
 	EqnEvaluator( VarTable &vars, EqnFastLookup &efl );
 
 	void Reset();
-	int CalculateAll();
-	int Changed( const wxString &var );
-	int Changed( const wxArrayString &vars );
-	wxArrayString GetErrors() { return m_errors; }
-	wxArrayString GetUpdated() { return m_updated; }
+	virtual int CalculateAll();
+	virtual int Changed( const wxArrayString &vars );
+	wxArrayString &GetErrors() { return m_errors; }
+	wxArrayString &GetUpdated() { return m_updated; }
 
 	// setup any context-specific function calls here
 	virtual void SetupEnvironment( lk::env_t &env );
