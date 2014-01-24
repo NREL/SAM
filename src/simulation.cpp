@@ -255,7 +255,7 @@ bool Simulation::Invoke()
 			if ( var_type == SSC_INPUT )
 			{
 				VarValue *vv = GetInput(name);
-				if ( !vv && strcmp(reqd,"*")==0)
+				if ( !vv && reqd == "*" )
 				{
 					m_errors.Add( "SSC requires input '" + name + "', but was not found in the SAM UI" );
 				}
