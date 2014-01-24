@@ -8,6 +8,7 @@
 #include <wx/dir.h>
 #include <wx/wfstream.h>
 #include <wx/datstrm.h>
+#include <wx/grid.h>
 
 #include <wex/metro.h>
 #include <wex/icons/cirplus.cpng>
@@ -90,7 +91,7 @@ enum { __idFirst = wxID_HIGHEST+592,
 	ID_CASE_MOVE_RIGHT,
 	__idCaseMenuLast,
 	__idInternalFirst,
-	ID_INTERNAL_IDE, ID_INTERNAL_RESTART, ID_INTERNAL_SHOWLOG,
+	ID_INTERNAL_IDE, ID_INTERNAL_RESTART, ID_INTERNAL_SHOWLOG, ID_INTERNAL_CASE_VALUES,
 	__idInternalLast
 };
 
@@ -182,6 +183,7 @@ MainWindow::MainWindow()
 	entries.push_back( wxAcceleratorEntry( wxACCEL_SHIFT, WXK_F7,  ID_INTERNAL_IDE ) ) ;
 	entries.push_back( wxAcceleratorEntry( wxACCEL_SHIFT, WXK_F8,  ID_INTERNAL_RESTART ) );
 	entries.push_back( wxAcceleratorEntry( wxACCEL_SHIFT, WXK_F4,  ID_INTERNAL_SHOWLOG ) );
+	entries.push_back( wxAcceleratorEntry( wxACCEL_SHIFT, WXK_F12, ID_INTERNAL_CASE_VALUES ) );
 	entries.push_back( wxAcceleratorEntry( wxACCEL_CMD, 'o', wxID_OPEN ) );
 	entries.push_back( wxAcceleratorEntry( wxACCEL_CMD, 's', wxID_SAVE ) );
 	entries.push_back( wxAcceleratorEntry( wxACCEL_CMD, 'w', wxID_CLOSE ) );
@@ -299,6 +301,28 @@ void MainWindow::OnInternalCommand( wxCommandEvent &evt )
 		break;
 	case ID_INTERNAL_SHOWLOG:
 		SamLogWindow::Setup();
+		break;
+	case ID_INTERNAL_CASE_VALUES:
+		if ( Case *cc = GetCurrentCase() )
+		{
+			wxFrame *frame = new wxFrame( this, wxID_ANY, "Current Case Values: " + m_project.GetCaseName( cc ), wxDefaultPosition, wxSize(400,700) );
+			wxGrid *grid = new wxGrid( frame, wxID_ANY );
+			VarTable &vals = cc->Values();
+			grid->CreateGrid( vals.size(), 2 );
+			size_t idx = 0;
+			grid->Freeze();
+			for( VarTable::iterator it = vals.begin();
+				it != vals.end();
+				++it )
+			{
+				grid->SetCellValue( idx, 0, it->first );
+				grid->SetCellValue( idx, 1, it->second->AsString() );
+				idx++;
+			}
+			grid->Thaw();
+
+			frame->Show();
+		}
 		break;
 	}
 }

@@ -521,13 +521,6 @@ int EqnEvaluator::Changed( const wxArrayString &vars )
 	return Calculate( );
 }
 
-int EqnEvaluator::Changed( const wxString &var )
-{
-	wxArrayString list;
-	list.Add( var );
-	return Changed( list );
-}
-
 void EqnEvaluator::SetupEnvironment( lk::env_t &env )
 {
 	env.register_funcs( lk::stdlib_basic() );

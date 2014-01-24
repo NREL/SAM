@@ -21,13 +21,13 @@ static void fcall_financing_pCase( lk::invoke_t &cxt )
 		cxt.result().assign( cc->GetFinancing() );
 }
 
-CaseEqnEvaluator::CaseEqnEvaluator( Case *cc, VarTable &vars, EqnFastLookup &efl )
+CaseEvaluator::CaseEvaluator( Case *cc, VarTable &vars, EqnFastLookup &efl )
 	: EqnEvaluator( vars, efl )
 {
 	m_case = cc;
 }
 
-void CaseEqnEvaluator::SetupEnvironment( lk::env_t &env )
+void CaseEvaluator::SetupEnvironment( lk::env_t &env )
 {
 	// call base version first to register standard functions
 	EqnEvaluator::SetupEnvironment( env );
@@ -35,6 +35,101 @@ void CaseEqnEvaluator::SetupEnvironment( lk::env_t &env )
 	env.register_func( fcall_technology_pCase, m_case );
 	env.register_func( fcall_financing_pCase, m_case );
 }
+	
+int CaseEvaluator::CalculateAll()
+{
+	for ( VarInfoLookup::iterator it = m_case->Variables().begin();
+		it != m_case->Variables().end();
+		++it )
+	{
+		if ( it->second->Flags & VF_LIBRARY
+			&& it->second->Type == VV_STRING )
+		{
+			wxArrayString changed;
+			if ( !UpdateLibrary( it->first, changed ) )
+				return -1;
+		}
+	}
+	
+	return EqnEvaluator::CalculateAll();
+}
+
+int CaseEvaluator::Changed( const wxArrayString &vars )
+{
+	wxArrayString trigger_list;
+	for( size_t i=0;i<vars.size();i++ )
+	{
+		trigger_list.Add( vars[i] );
+
+		wxArrayString changed;
+		bool ok = UpdateLibrary( vars[i], changed );
+		if ( ok && changed.size() > 0 )
+		{
+			for( size_t j=0;j<changed.size();j++ )
+			{
+				m_updated.Add( changed[j] );
+				trigger_list.Add( changed[j] );
+			}
+		}
+		else if ( !ok )
+			return -1;
+	}
+	
+	return EqnEvaluator::Changed( trigger_list );
+}
+
+int CaseEvaluator::Changed( const wxString &trigger )
+{
+	wxArrayString list;
+	list.Add(trigger);
+	return Changed( list );
+}
+
+bool CaseEvaluator::UpdateLibrary( const wxString &trigger, wxArrayString &changed )
+{
+	size_t nerrors = 0;
+	VarInfo *vi = m_case->Variables().Lookup( trigger );
+	VarValue *vv = m_case->Values().Get( trigger );
+	if( vv && vv->Type() == VV_STRING && vi && vi->Flags & VF_LIBRARY )
+	{
+		if ( vi->IndexLabels.size() == 2 )
+		{
+			// lookup the library name in vi->IndexLabels
+			wxString name = vi->IndexLabels[0];
+			int varindex = wxAtoi( vi->IndexLabels[1] );
+		
+			if ( Library *lib = Library::Find( name ) )
+			{
+				// find the entry
+				wxArrayString changed;
+				int entry = lib->FindEntry( vv->String() );
+				if ( entry >= 0 && lib->ApplyEntry( entry, varindex, m_case->Values(), changed ) )
+				{
+					wxLogStatus( "applied " + name + ":" + vv->String() + " = " + wxJoin(changed,',') );
+//					SendEvent( CaseEvent( CaseEvent::VARS_CHANGED, changed ) );
+				}
+				else
+				{
+					nerrors++;
+					m_errors.Add("error applying library entry " + vv->String() + "\n\n" + wxJoin( lib->GetErrors(), '\n') );
+				}
+			}
+			else
+			{
+				nerrors++;
+				m_errors.Add( "Could not locate referenced library: " + name);
+			}
+		}
+		else
+		{
+			nerrors++;
+			m_errors.Add( "invalid library specification: " + wxJoin(vi->IndexLabels, ',') );
+		}
+	}
+
+	return nerrors == 0;
+}
+
 
 Case::Case()
 	: m_config(0)
@@ -153,7 +248,7 @@ void Case::SetConfiguration( const wxString &tech, const wxString &fin )
 			m_vals.Set( it->first, it->second->DefaultValue ); // will create new variable if it doesnt exist
 		
 	// reevalute all equations
-	CaseEqnEvaluator eval( this, m_vals, m_config->Equations );
+	CaseEvaluator eval( this, m_vals, m_config->Equations );
 	eval.CalculateAll();
 
 	// setup the local callback environment
@@ -297,44 +392,9 @@ int Case::Recalculate( const wxString &trigger )
 		return -1;
 	}
 
-	wxArrayString trigger_list;
-	trigger_list.Add( trigger );
-
-	VarInfo *vi = m_config->Variables.Lookup( trigger );
-	VarValue *vv = Values().Get( trigger );
-	if( vv && vv->Type() == VV_STRING && vi && vi->Flags & VF_LIBRARY )
-	{
-		if ( vi->IndexLabels.size() == 2 )
-		{
-			// lookup the library name in vi->IndexLabels
-			wxString name = vi->IndexLabels[0];
-			int varindex = wxAtoi( vi->IndexLabels[1] );
-		
-			if ( Library *lib = Library::Find( name ) )
-			{
-				// find the entry
-				wxArrayString changed;
-				int entry = lib->FindEntry( vv->String() );
-				if ( entry >= 0 && lib->ApplyEntry( entry, varindex, Values(), changed ) )
-				{
-					wxLogStatus( "applied " + name + ":" + vv->String() + " = " + wxJoin(changed,',') );
-					SendEvent( CaseEvent( CaseEvent::VARS_CHANGED, changed ) );
-
-					for( size_t i=0;i<changed.size();i++ )
-						trigger_list.Add( changed[i] );
-				}
-				else
-					wxMessageBox("error applying library entry " + vv->String() + "\n\n" + wxJoin( lib->GetErrors(), '\n') );
-			}
-			else
-				wxMessageBox( "Could not locate referenced library: " + name);
-		}
-		else
-			wxMessageBox( "invalid library specification: " + wxJoin(vi->IndexLabels, ',') );
-	}
 	
-	CaseEqnEvaluator eval( this, m_vals, m_config->Equations );
-	int n = eval.Changed( trigger_list );	
+	CaseEvaluator eval( this, m_vals, m_config->Equations );
+	int n = eval.Changed( trigger );	
 	if ( n > 0 ) SendEvent( CaseEvent( CaseEvent::VARS_CHANGED, eval.GetUpdated() ) );
 	else if ( n < 0 ) wxLogStatus( wxJoin( eval.GetErrors(), '\n' )  );
 	return n;
@@ -349,7 +409,7 @@ int Case::RecalculateAll()
 		return -1;
 	}
 
-	CaseEqnEvaluator eval( this, m_vals, m_config->Equations );
+	CaseEvaluator eval( this, m_vals, m_config->Equations );
 	int n = eval.CalculateAll();
 	if ( n > 0 ) SendEvent( CaseEvent( CaseEvent::VARS_CHANGED, eval.GetUpdated() ) );
 	else if ( n < 0 ) wxLogStatus( wxJoin( eval.GetErrors(), '\n' )  );
