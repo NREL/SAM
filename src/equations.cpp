@@ -349,9 +349,6 @@ void EqnEvaluator::Reset()
 
 int EqnEvaluator::CalculateAll()
 {
-	m_errors.Clear();
-	m_updated.Clear();
-
 	// invalidate all equations
 	for( size_t i=0;i<m_status.size();i++ ) m_status[i] = INVALID;
 
@@ -503,10 +500,7 @@ size_t EqnEvaluator::MarkAffectedEquations( const wxString &var )
 }
 
 int EqnEvaluator::Changed( const wxArrayString &vars )
-{	
-	m_errors.Clear();
-	m_updated.Clear();
-
+{
 	// mark all equations as OK
 	for (size_t i=0;i<m_status.size();i++)
 		m_status[i] = OK;

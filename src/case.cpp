@@ -38,6 +38,7 @@ void CaseEvaluator::SetupEnvironment( lk::env_t &env )
 	
 int CaseEvaluator::CalculateAll()
 {
+	int nlibchanges = 0;
 	for ( VarInfoLookup::iterator it = m_case->Variables().begin();
 		it != m_case->Variables().end();
 		++it )
@@ -48,14 +49,20 @@ int CaseEvaluator::CalculateAll()
 			wxArrayString changed;
 			if ( !UpdateLibrary( it->first, changed ) )
 				return -1;
+			else
+				nlibchanges += changed.size();
 		}
 	}
 	
-	return EqnEvaluator::CalculateAll();
+	int nevals = EqnEvaluator::CalculateAll();
+	if ( nevals >= 0 ) nevals += nlibchanges;
+
+	return nevals;	
 }
 
 int CaseEvaluator::Changed( const wxArrayString &vars )
 {
+	int nlibchanges=0;
 	wxArrayString trigger_list;
 	for( size_t i=0;i<vars.size();i++ )
 	{
@@ -69,13 +76,17 @@ int CaseEvaluator::Changed( const wxArrayString &vars )
 			{
 				m_updated.Add( changed[j] );
 				trigger_list.Add( changed[j] );
+				nlibchanges++;
 			}
 		}
 		else if ( !ok )
 			return -1;
 	}
 	
-	return EqnEvaluator::Changed( trigger_list );
+	int nevals = EqnEvaluator::Changed( trigger_list );
+	if ( nevals >= 0 ) nevals += nlibchanges;
+
+	return nevals;
 }
 
 int CaseEvaluator::Changed( const wxString &trigger )
@@ -101,7 +112,6 @@ bool CaseEvaluator::UpdateLibrary( const wxString &trigger, wxArrayString &chang
 			if ( Library *lib = Library::Find( name ) )
 			{
 				// find the entry
-				wxArrayString changed;
 				int entry = lib->FindEntry( vv->String() );
 				if ( entry >= 0 && lib->ApplyEntry( entry, varindex, m_case->Values(), changed ) )
 				{
