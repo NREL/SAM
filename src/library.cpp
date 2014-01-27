@@ -572,9 +572,9 @@ bool ScanSolarResourceData()
 		
 		ssc_data_t pdata = ssc_data_create();
 		ssc_data_set_string( pdata, "file_name", (const char*)wf.c_str() );
-		ssc_data_set_number( pdata, "scan_header_only", 1 );
+		ssc_data_set_number( pdata, "header_only", 1 );
 
-		if ( const char *err = ssc_module_exec_simple_nothread( "wfcsvread", pdata ) )
+		if ( const char *err = ssc_module_exec_simple_nothread( "wfreader", pdata ) )
 		{
 			wxLogStatus("error scanning '" + wf + "'");
 			wxLogStatus("\t%s", err );
