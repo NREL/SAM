@@ -4,7 +4,9 @@
 addconfig( 'PVWatts', [ 'Residential', 'None' ] );
 addconfig( 'Flat Plate PV', [ 'Residential', 'None' ] );
 addconfig( 'Test Only', [ 'None' ] );
+addconfig( 'Wind Power', [ 'None' ] );
 addconfig( 'Solar Water Heating', ['None']);
+
 
 
 function setup_pvwatts_pages()
@@ -56,6 +58,15 @@ function setup_residential_pages()
 	addpage( [[ 'Electric Load' ]] );
 }
 
+function setup_windpower_pages()
+{
+	addpage( [ ['Wind Resource by Location'], ['Wind Resource Characteristics'] ], { 'sidebar'='Wind Resource', 'exclusive_var'='wind_resource_model_choice' } );
+	addpage( [[ 'Wind Siting Considerations' ]], { 'sidebar'='Wind Siting Considerations' } );
+	addpage( [[ 'Wind Turbine Design' ]], { 'sidebar'='Wind Turbine Design' } );
+	addpage( [[ 'Wind Farm Specifications' ]], { 'sidebar'='Wind Farm Specifications' } );
+	//addpage( [[ 'Wind Farm Capital Costs' ]], { 'sidebar'='Wind Farm Capital Costs' } );
+
+}
 
 function setup_solar_water_heating_pages()
 {
@@ -87,6 +98,10 @@ setup_pvwatts_pages();
 
 setconfig( 'Flat Plate PV', 'None' );
 setup_flat_plate_pv_pages();
+
+setconfig( 'Wind Power', 'None' );
+setmodules( ['windpower']);
+setup_windpower_pages();
 
 setconfig( 'Solar Water Heating', 'None');
 setmodules( ['swh'] );
