@@ -641,3 +641,137 @@ bool ScanSolarResourceData()
 	}
 }
 
+bool ScanWindResourceData()
+{
+	wxString path = SamApp::GetRuntimePath() + "../wind_resource/";
+	wxDir dir(path);
+	if (!dir.IsOpened()) return false;
+
+	wxCSVData csv;
+	csv(0, 0) = "Name";
+	csv(2, 0) = "[0]";
+
+	csv(0, 1) = "City";
+	csv(2, 1) = "wind_resource.city";
+
+	csv(0, 2) = "State";
+	csv(2, 2) = "wind_resource.state";
+
+	csv(0, 3) = "Country";
+	csv(2, 3) = "wind_resource.country";
+
+	csv(0, 4) = "Latitude";
+	csv(1, 4) = "deg";
+	csv(2, 4) = "wind_resource.lat";
+
+	csv(0, 5) = "Longitude";
+	csv(1, 5) = "deg";
+	csv(2, 5) = "wind_resource.lon";
+
+	csv(0, 6) = "Location ID";
+	csv(2, 6) = "wind_resource.location_id";
+
+	csv(0, 7) = "Elevation";
+	csv(1, 7) = "m";
+	csv(2, 7) = "wind_resource.elev";
+
+	csv(0, 8) = "Year";
+	csv(2, 8) = "wind_resource.year";
+
+	csv(0, 9) = "Description";
+	csv(2, 9) = "wind_resource.description";
+
+	csv(0, 10) = "File name";
+	csv(2, 10) = "wind_resource.file";
+
+	csv(0, 11) = "Closest Speed Measurement Ht";
+	csv(2, 11) = "wind_resource.closest_speed_meas_ht";
+
+	csv(0, 12) = "Closest Direction Measurement Ht";
+	csv(2, 12) = "wind_resource.closest_dir_meas_ht";
+
+	int row = 3;
+	wxString file;
+	bool has_more = dir.GetFirst(&file, "*.srw", wxDIR_FILES);
+	while (has_more)
+	{
+		// process file
+		wxString wf = path + "/" + file;
+
+		ssc_data_t pdata = ssc_data_create();
+		ssc_data_set_string(pdata, "file_name", (const char*)wf.c_str());
+		ssc_data_set_number(pdata, "scan_header_only", 1);
+		ssc_data_set_number(pdata, "requested_ht", 80.0);
+
+		if (const char *err = ssc_module_exec_simple_nothread("wind_file_reader", pdata))
+		{
+			wxLogStatus("error scanning '" + wf + "'");
+			wxLogStatus("\t%s", err);
+		}
+		else
+		{
+			ssc_number_t val;
+			const char *str;
+
+			wxFileName ff(wf);
+			ff.Normalize();
+
+			csv(row, 0) = ff.GetName();
+
+			if (str = ssc_data_get_string(pdata, "city"))
+				csv(row, 1) = wxString(str);
+
+			if (str = ssc_data_get_string(pdata, "state"))
+				csv(row, 2) = wxString(str);
+
+			if (str = ssc_data_get_string(pdata, "country"))
+				csv(row, 3) = wxString(str);
+
+			if (ssc_data_get_number(pdata, "lat", &val))
+				csv(row, 4) = wxString::Format("%g", val);
+
+			if (ssc_data_get_number(pdata, "lon", &val))
+				csv(row, 5) = wxString::Format("%g", val);
+
+			if (str = ssc_data_get_string(pdata, "location_id"))
+				csv(row, 6) = wxString(str);
+
+			if (ssc_data_get_number(pdata, "elev", &val))
+				csv(row, 7) = wxString::Format("%g", val);
+
+			if (ssc_data_get_number(pdata, "year", &val))
+				csv(row, 8) = wxString::Format("%g", val);
+
+			if (str = ssc_data_get_string(pdata, "description"))
+				csv(row, 9) = wxString(str);
+
+			csv(row, 10) = ff.GetFullPath();
+
+			if (ssc_data_get_number(pdata, "closest_speed_meas_ht", &val))
+				csv(row, 11) = wxString::Format("%g", val);
+
+			if (ssc_data_get_number(pdata, "closest_dir_meas_ht", &val))
+				csv(row, 12) = wxString::Format("%g", val);
+
+			row++;
+		}
+
+		ssc_data_free(pdata);
+
+		has_more = dir.GetNext(&file);
+	}
+
+	csv.WriteFile(wxGetUserHome() + "/WindResourceData.csv");
+
+	Library *lib = new Library;
+	if (lib->Read(csv, "WindResourceData"))
+	{
+		gs_libs.m_libs.push_back(lib);
+		return true;
+	}
+	else
+	{
+		delete lib;
+		return false;
+	}
+}

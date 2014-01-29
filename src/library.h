@@ -64,7 +64,7 @@ private:
 };
 
 bool ScanSolarResourceData();
-
+bool ScanWindResourceData();
 
 class LibraryCtrl;
 class wxTextCtrl;
