@@ -4,6 +4,7 @@
 addconfig( 'PVWatts', [ 'Residential', 'None' ] );
 addconfig( 'Flat Plate PV', [ 'Residential', 'None' ] );
 addconfig( 'Test Only', [ 'None' ] );
+addconfig( 'Solar Water Heating', ['None']);
 
 
 function setup_pvwatts_pages()
@@ -56,6 +57,12 @@ function setup_residential_pages()
 }
 
 
+function setup_solar_water_heating_pages()
+{
+	addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource' } );
+	addpage( [[ 'Solar Water Heating' ]], { 'sidebar'='Solar Water Heating', 'help'='Solar Water Heating' } );
+}
+
 // now setup all the pages
 
 setconfig( 'Test Only', 'None' );
@@ -80,3 +87,7 @@ setup_pvwatts_pages();
 
 setconfig( 'Flat Plate PV', 'None' );
 setup_flat_plate_pv_pages();
+
+setconfig( 'Solar Water Heating', 'None');
+setmodules( ['swh'] );
+setup_solar_water_heating_pages();
