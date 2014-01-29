@@ -1263,6 +1263,7 @@ void SamApp::Restart()
 	}
 
 	ScanSolarResourceData();
+	ScanWindResourceData();
 }
 
 wxString SamApp::GetAppPath()
