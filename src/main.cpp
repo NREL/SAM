@@ -694,7 +694,8 @@ public:
 		int width, height;
 		GetClientSize( &width, &height );
 
-		dc.SetBackground( wxBrush( wxMetroTheme::Colour( wxMT_ACCENT ) ) );
+		//dc.SetBackground( wxBrush( wxMetroTheme::Colour( wxMT_ACCENT ) ) );
+		dc.SetBackground( wxBrush( wxColour(220,14,158) ) );
 		dc.Clear();
 
 		dc.SetBrush( *wxWHITE_BRUSH );
@@ -711,7 +712,7 @@ public:
 
 		dc.SetTextForeground( wxMetroTheme::Colour( wxMT_TEXT ) );
 		dc.SetFont( wxMetroTheme::Font( wxMT_LIGHT, 10 ) );
-		dc.DrawText( wxString::Format("Copyright %d, National Renewable Energy Laboratory", SamApp::VersionMajor()),
+		dc.DrawText( wxString::Format("Copyright %d National Renewable Energy Laboratory", SamApp::VersionMajor()),
 			35, height-25-dc.GetCharHeight()/2 );
 
 		dc.DrawBitmap( m_nrelLogo, width-m_nrelLogo.GetWidth()-10, height-25-m_nrelLogo.GetHeight()/2 );
