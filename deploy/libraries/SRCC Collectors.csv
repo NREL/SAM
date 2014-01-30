@@ -1,6 +1,6 @@
 Name,SRCC Number,Type,Test Fluid,Test Flow Rate,Area,FRta,FRUL,IAM
 Units,,,,kg/s,m2,,W/m2-C,
-[0],,,srcc_test_fluid,srcc_test_flow,srcc_area,srcc_FRta,srcc_FRUL,srcc_iam
+[0],srcc_num,srcc_type,srcc_test_fluid,srcc_test_flow,srcc_area,srcc_FRta,srcc_FRUL,srcc_iam
 ACR Solar International Skyline 20-01,2001002A ,Glazed Flat-Plate,0,0.0316,1.87,0.605,3.84,0.19
 ACR Solar International Skyline 10-01,2001002B ,Glazed Flat-Plate,0,0.0316,0.93,0.603,3.87,0.19
 Advanced Thermal Solar  LLC Advanced Thermal Solar  LLC SP-S58 1800A-10,2009106Ai ,Tubular,0,0,1.61,0.3,2,-1.8
