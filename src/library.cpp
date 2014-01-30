@@ -529,38 +529,38 @@ bool ScanSolarResourceData()
 	csv(2,0) = "[0]";
 
 	csv(0,1) = "City";
-	csv(2,1) = "solar_resource.city";
+	csv(2,1) = "city";
 
 	csv(0,2) = "State";
-	csv(2,2) = "solar_resource.state";
+	csv(2,2) = "state";
 
 	csv(0,3) = "Country";
-	csv(2,3) = "solar_resource.country";
+	csv(2,3) = "country";
 
 	csv(0,4) = "Latitude";
 	csv(1,4) = "deg";
-	csv(2,4) = "solar_resource.lat";
+	csv(2,4) = "lat";
 
 	csv(0,5) = "Longitude";
 	csv(1,5) = "deg";
-	csv(2,5) = "solar_resource.lon";
+	csv(2,5) = "lon";
 
 	csv(0,6) = "Time zone";
 	csv(1,6) = "hour";
-	csv(2,6) = "solar_resource.tz";
+	csv(2,6) = "tz";
 
 	csv(0,7) = "Elevation";
 	csv(1,7) = "m";
-	csv(2,7) = "solar_resource.elev";
+	csv(2,7) = "elev";
 
 	csv(0,8) = "Station ID";
-	csv(2,8) = "solar_resource.id";
+	csv(2,8) = "station_id";
 
 	csv(0,9) = "Source";
-	csv(2,9) = "solar_resource.data_source";
+	csv(2,9) = "solar_data_source";
 
 	csv(0,10) = "File name";
-	csv(2,10) = "solar_resource.file";
+	csv(2,10) = "solar_data_file_name";
 
 	int row = 3;
 	wxString file;

@@ -16,7 +16,6 @@ class ActiveInputPage;
 class CallbackContext
 {
 	ActiveInputPage *m_inputPage;
-	VarTable *m_values;
 	lk::node_t *m_root;
 	lk::env_t *m_parentEnv;
 	wxString m_desc;

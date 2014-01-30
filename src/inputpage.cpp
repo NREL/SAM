@@ -58,7 +58,7 @@ bool CallbackContext::Invoke( )
 	
 	try {
 
-		VarTableScriptInterpreter e( m_root, &local_env, m_values );
+		VarTableScriptInterpreter e( m_root, &local_env, &GetValues() );
 		if ( !e.run() )
 		{
 			wxString text = "Could not evaluate callback function:" +  m_desc + "\n";
