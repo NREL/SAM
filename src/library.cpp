@@ -520,7 +520,7 @@ void LibraryCtrl::SetLabel( const wxString &text )
 
 bool ScanSolarResourceData()
 {
-	wxString path = SamApp::GetRuntimePath() + "../solar/";
+	wxString path = SamApp::GetRuntimePath() + "../solar_resource/";
 	wxDir dir( path );
 	if( !dir.IsOpened() ) return false;
 
