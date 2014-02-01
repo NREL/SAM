@@ -106,3 +106,8 @@ setup_windpower_pages();
 setconfig( 'Solar Water Heating', 'None');
 setmodules( ['swh'] );
 setup_solar_water_heating_pages();
+
+setconfig( 'Solar Water Heating', 'Residential');
+setmodules( ['swh'] );
+setup_solar_water_heating_pages();
+setup_residential_pages();
