@@ -179,6 +179,99 @@ void fcall_value( lk::invoke_t &cxt )
 	}
 }
 
+void fcall_property( lk::invoke_t &cxt )
+{
+	LK_DOC("property", "Set or get a user interface widget property", "(string:name, string:property[, variant:value]):variant");
+
+	CallbackContext &cc = *(CallbackContext*)cxt.user_data();
+	ActiveInputPage *aip = 0;
+	wxUIObject *obj = cc.InputPage()->FindActiveObject( cxt.arg(0).as_string(), &aip );
+	if ( !obj ) return;
+	if ( !obj->HasProperty( cxt.arg(1).as_string() ) ) return;
+
+	wxUIProperty &p = obj->Property( cxt.arg(1).as_string() );
+
+	if ( cxt.arg_count() == 2 )
+	{
+		switch( p.GetType() )
+		{
+		case wxUIProperty::BOOLEAN:
+			cxt.result().assign( (double) p.GetBoolean() ? 1.0 : 0.0 );
+			break;
+		case wxUIProperty::DOUBLE:
+			cxt.result().assign( p.GetDouble() );
+			break;
+		case wxUIProperty::INTEGER:
+			cxt.result().assign( (double)p.GetInteger() );
+			break;
+		case wxUIProperty::COLOUR:
+			cxt.result().empty_vector();
+			cxt.result().vec_append( p.GetColour().Red() );
+			cxt.result().vec_append( p.GetColour().Green() );
+			cxt.result().vec_append( p.GetColour().Blue() );
+			break;
+		case wxUIProperty::STRING:
+			cxt.result().assign( p.GetString() );
+			break;
+		case wxUIProperty::STRINGLIST:
+		{
+			cxt.result().empty_vector();
+			wxArrayString list = p.GetStringList();
+			for( size_t i=0;i<list.size();i++ )
+				cxt.result().vec_append( list[i] );
+		}
+			break;
+		default:
+			break;
+		}
+	}
+	else if ( cxt.arg_count() == 3 )
+	{
+		lk::vardata_t &val = cxt.arg(2).deref();
+		switch( p.GetType() )
+		{
+		case wxUIProperty::BOOLEAN:
+			p.Set( (bool) val.as_boolean() );
+			break;
+		case wxUIProperty::DOUBLE:
+			p.Set( (double) val.as_number() );
+			break;
+		case wxUIProperty::INTEGER:
+			p.Set( (int) val.as_integer() );
+			break;
+		case wxUIProperty::COLOUR:
+			if ( val.type() == lk::vardata_t::VECTOR
+				&& val.length() == 3 )
+			{
+				p.Set( wxColour(
+					val.index(0)->as_integer(),
+					val.index(1)->as_integer(),
+					val.index(2)->as_integer() ) );
+			}
+			else
+			{
+				p.Set( wxColour( val.as_string() ) );
+			}
+			break;
+		case wxUIProperty::STRING:
+			p.Set( val.as_string() );
+			break;
+		case wxUIProperty::STRINGLIST:
+			if ( val.type() == lk::vardata_t::VECTOR )
+			{
+				wxArrayString list;
+				for( size_t i=0;i<val.length();i++ )
+					list.Add( val.index(i)->as_string() );
+				p.Set( list );
+			}
+			break;
+		}
+
+		if ( !obj->IsNativeObject() && aip != 0 )
+			aip->Refresh(); // repaint the active input page if the object is non-nnative.
+	}
+}
+
 void fcall_enable( lk::invoke_t &cxt )
 {
 	LK_DOC("enable", "Enable or disable a user interface widget", "(string:name, boolean:enable):none");
@@ -239,6 +332,7 @@ lk::fcall_t* invoke_uicallback_funcs()
 		fcall_value,
 		fcall_enable,
 		fcall_show,
+		fcall_property,
 		fcall_technology,
 		fcall_financing,
 		0 };
