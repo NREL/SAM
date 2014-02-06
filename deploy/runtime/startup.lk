@@ -5,7 +5,7 @@ addconfig( 'PVWatts', [ 'Residential', 'None' ] );
 addconfig( 'Flat Plate PV', [ 'Residential', 'None' ] );
 addconfig( 'Test Only', [ 'None' ] );
 addconfig( 'Wind Power', [ 'None' ] );
-addconfig( 'Solar Water Heating', ['None']);
+addconfig( 'Solar Water Heating', ['Residential', 'None']);
 
 
 
@@ -44,7 +44,6 @@ function setup_utility_rate()
 function setup_residential_pages()
 {
 	addpage( [[ 'Annual Performance' ]] );
-	addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='PV System Costs' } );
 	//addpage( [[ 'Residential Loan','Financing' ]], { 'caption'='Financing', 'help'='Financing Residential' } );
 	//addpage( [[ 'Tax Credits','Incentives' ]], { 'caption'='Incentives' } );
 	
@@ -84,6 +83,7 @@ addpage( [[ 'Location' ]] );
 setconfig( 'Flat Plate PV', 'Residential' );
 setmodules( ['pvsamv1']);
 setup_flat_plate_pv_pages();
+addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='PV System Costs' } );
 setup_residential_pages();
 
 setconfig( 'PVWatts', 'Residential' );	
@@ -108,6 +108,7 @@ setmodules( ['swh'] );
 setup_solar_water_heating_pages();
 
 setconfig( 'Solar Water Heating', 'Residential');
-setmodules( ['swh'] );
+setmodules( ['swh', 'cashloan'] );
 setup_solar_water_heating_pages();
+addpage( [[ 'Solar Water Heating Costs','O and M Costs' ]], { 'sidebar'='SWH System Costs' } );
 setup_residential_pages();
