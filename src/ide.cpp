@@ -223,7 +223,7 @@ void SimulationScriptPanel::OnCommand( wxCommandEvent &evt )
 }
 */
 
-enum { ID_SSC_MOD = wxID_HIGHEST, ID_APPLY_VTL };
+enum { ID_SSC_MOD = wxID_HIGHEST, ID_APPLY_VTL, ID_APPLY_LAST_DOT };
 
 class RemapDialog : public wxDialog
 {
@@ -293,6 +293,7 @@ public:
 		sizer_buttons->Add( new wxButton( this, wxID_SAVE, "Write" ), 0, wxALL|wxEXPAND, 2 );
 		sizer_buttons->Add( new wxButton( this, wxID_REFRESH, "Reload" ), 0, wxALL|wxEXPAND, 2 );
 		sizer_buttons->Add( new wxButton( this, ID_APPLY_VTL, "Apply VTL"), 0, wxALL|wxEXPAND, 2 );
+		sizer_buttons->Add( new wxButton( this, ID_APPLY_LAST_DOT, "Apply last dot"), 0, wxALL|wxEXPAND, 2 );
 		sizer_buttons->AddStretchSpacer();
 		sizer_buttons->Add( new wxButton( this, wxID_APPLY, "Apply changes" ), 0, wxALL|wxEXPAND, 2 );
 		sizer_buttons->Add( new wxButton( this, wxID_CLOSE, "Close" ), 0, wxALL|wxEXPAND, 2 );
@@ -457,6 +458,25 @@ public:
 				}
 			}
 			break;
+		case ID_APPLY_LAST_DOT:
+			for( size_t i=0;i<(size_t)m_grid->GetNumberRows();i++)
+			{
+				if (m_grid->GetCellValue(i,1).IsEmpty())
+				{
+					wxString ssc = m_grid->GetCellValue(i,0);
+					if ( !ssc.IsEmpty() )
+					{
+						size_t pos = ssc.find_last_of(".");
+						if ( pos > 0 )
+						{
+							ssc = ssc.Mid( pos+1);
+							m_grid->SetCellValue(ssc,i,1);
+							m_grid->SetCellBackgroundColour( wxColour(255,213,226), i,1 );
+						}
+					}
+				}
+			}
+			break;
 		case wxID_APPLY:
 		{
 			wxUIFormData *form = m_ui->GetFormData();
@@ -526,6 +546,7 @@ BEGIN_EVENT_TABLE( RemapDialog, wxDialog )
 	EVT_BUTTON( wxID_OPEN, RemapDialog::OnCommand )
 	EVT_CHOICE( ID_SSC_MOD, RemapDialog::OnCommand )
 	EVT_BUTTON( ID_APPLY_VTL, RemapDialog::OnCommand )
+	EVT_BUTTON( ID_APPLY_LAST_DOT, RemapDialog::OnCommand )
 	EVT_BUTTON( wxID_REFRESH, RemapDialog::OnCommand )
 END_EVENT_TABLE()
 
