@@ -285,7 +285,7 @@ void ActiveInputPage::OnPaint( wxPaintEvent & )
 		}
 
 		if ( VarInfo *vv = vdb.Lookup( objs[i]->GetName() ) )
-		{	
+		{	// fix this
 			if ( !(vv->Flags & VF_HIDE_LABELS) )
 			{
 				int sw, sh;
