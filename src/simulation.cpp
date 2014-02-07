@@ -257,7 +257,11 @@ bool Simulation::Invoke()
 				VarValue *vv = GetInput(name);
 				if ( !vv && reqd == "*" )
 				{
-					m_errors.Add( "SSC requires input '" + name + "', but was not found in the SAM UI" );
+					int existing_type = ssc_data_query( p_data, ssc_info_name( p_inf ) );
+					if ( existing_type == SSC_INVALID )
+						m_errors.Add( "SSC requires input '" + name + "', but was not found in the SAM UI or from previous simulations" );
+					else if ( existing_type != data_type )
+						m_errors.Add( "SSC requires input '" + name + "', but variable from a previous simulation had an incompatible data type");
 				}
 				else if ( vv != 0 )
 				{
