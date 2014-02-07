@@ -179,6 +179,21 @@ void fcall_value( lk::invoke_t &cxt )
 	}
 }
 
+void fcall_refresh( lk::invoke_t &cxt )
+{
+	LK_DOC("refresh", "Refresh the current form or a specific widget", "([string:name]):none" );
+	
+	CallbackContext &cc = *(CallbackContext*)cxt.user_data();
+	if ( cxt.arg_count() == 0 )
+		cc.InputPage()->Refresh();
+	else
+	{
+		if ( wxUIObject *obj = cc.InputPage()->FindActiveObject( cxt.arg(0).as_string(), 0 ) )
+			if ( wxWindow *win = obj->GetNative() )
+				win->Refresh();
+	}
+}
+
 void fcall_property( lk::invoke_t &cxt )
 {
 	LK_DOC("property", "Set or get a user interface widget property", "(string:name, string:property[, variant:value]):variant");
@@ -333,6 +348,7 @@ lk::fcall_t* invoke_uicallback_funcs()
 		fcall_enable,
 		fcall_show,
 		fcall_property,
+		fcall_refresh,
 		fcall_technology,
 		fcall_financing,
 		0 };

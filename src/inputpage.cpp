@@ -286,7 +286,7 @@ void ActiveInputPage::OnPaint( wxPaintEvent & )
 
 		if ( VarInfo *vv = vdb.Lookup( objs[i]->GetName() ) )
 		{	// fix this
-			if ( !(vv->Flags & VF_HIDE_LABELS) )
+			if ( !(vv->Flags & VF_HIDE_LABELS) && objs[i]->IsVisible() )
 			{
 				int sw, sh;
 				dc.SetFont(*wxNORMAL_FONT);
