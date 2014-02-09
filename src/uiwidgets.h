@@ -296,7 +296,8 @@ public:
 	virtual ~AFMonthByHourFactorCtrl();
 
 	void SetData(const matrix_t<float> &data);
-	matrix_t<float> GetData();
+	void GetData( matrix_t<float> &mat );
+	matrix_t<float> GetData() const { return mData; }
 	
 	void SetTitle( const wxString &title);
 	wxString GetTitle( );

@@ -1011,6 +1011,8 @@ void UIEditorPanel::OnCommand( wxCommandEvent &evt )
 						m_ipd.Variables().Add( name, VV_TABLE );
 					else if ( type == "ValueMatrix" )
 						m_ipd.Variables().Add( name, VV_MATRIX );
+					else if ( type == "MonthByHourFactors" )
+						m_ipd.Variables().Add( name, VV_MATRIX );
 
 					// extend this list in the future for additional controls
 				}

@@ -273,7 +273,10 @@ bool Simulation::Invoke()
 
 		if ( !ssc_module_exec_with_handler( p_mod, p_data, ssc_invoke_handler, &sc ))
 		{
-			m_errors.Add("simulation did not succeed.");
+			m_errors.Add(wxString::Format("simulation did not succeed - compute module %s failed", cfg->Simulations[kk].c_str() ));
+			if (sc.warnings->Count() > 0)
+				for (size_t i=0; i<sc.warnings->Count();i++)
+					m_errors.Add(wxString::Format("compute module %s warning[%d] = %s", cfg->Simulations[kk].c_str(), i, sc.warnings->Item(i).c_str() ));
 		}
 		else
 		{
