@@ -2046,9 +2046,9 @@ void AFMonthByHourFactorCtrl::SetData(const matrix_t<float> &data)
 	UpdateGrid();
 }
 
-matrix_t<float> AFMonthByHourFactorCtrl::GetData()
+void  AFMonthByHourFactorCtrl::GetData( matrix_t<float> &mat )
 {
-	return mData;
+	mat = mData;
 }
 
 void AFMonthByHourFactorCtrl::UpdateGrid()
