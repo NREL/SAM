@@ -190,6 +190,8 @@ void WelcomeScreen::LayoutWidgets()
 
 void WelcomeScreen::OnPaint(wxPaintEvent &)
 {
+	m_recent->Invalidate();  // TFF, Feb 10 2014: added this line to force m_recent control to redraw after user closes a file. Glitch in wxMetroListBox?
+
 	wxAutoBufferedPaintDC dc(this);
 	wxSize sz = GetClientSize();
 
