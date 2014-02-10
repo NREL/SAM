@@ -468,6 +468,11 @@ bool ActiveInputPage::DataExchange( wxUIObject *obj, VarValue &val, DdxDir dir )
 		if ( dir == VAR_TO_OBJ ) dm->SetData( val.Matrix() );
 		else val.Set( dm->GetData() );
 	}
+	else if ( AFMonthByHourFactorCtrl *dm = obj->GetNative<AFMonthByHourFactorCtrl>() )
+	{
+		if ( dir == VAR_TO_OBJ ) dm->SetData( val.Matrix() );
+		else val.Set( dm->GetData() );
+	}
 	else if ( ShadingButtonCtrl *sb = obj->GetNative<ShadingButtonCtrl>() )
 	{
 		if ( dir == VAR_TO_OBJ ) sb->Read( &val );
