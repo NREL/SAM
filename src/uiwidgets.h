@@ -297,7 +297,7 @@ public:
 
 	void SetData(const matrix_t<float> &data);
 	void GetData( matrix_t<float> &mat );
-	matrix_t<float> GetData() const { return mData; }
+	matrix_t<float> GetData();
 	
 	void SetTitle( const wxString &title);
 	wxString GetTitle( );
