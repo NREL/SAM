@@ -2051,6 +2051,11 @@ void  AFMonthByHourFactorCtrl::GetData( matrix_t<float> &mat )
 	mat = mData;
 }
 
+matrix_t<float> AFMonthByHourFactorCtrl::GetData()
+{
+	 return mData; 
+}
+
 void AFMonthByHourFactorCtrl::UpdateGrid()
 {
 
