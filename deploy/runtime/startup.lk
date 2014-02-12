@@ -108,7 +108,7 @@ setmodules( ['swh'] );
 setup_solar_water_heating_pages();
 
 setconfig( 'Solar Water Heating', 'Residential');
-setmodules( ['swh', 'annualoutput']);//, 'utilityrate2', 'cashloan'] );
+setmodules( ['swh', 'annualoutput', 'utilityrate2', 'cashloan'] );
 setup_solar_water_heating_pages();
 addpage( [[ 'Solar Water Heating Costs','O and M Costs' ]], { 'sidebar'='SWH System Costs' } );
 setup_residential_pages();
