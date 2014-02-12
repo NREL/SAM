@@ -36,8 +36,8 @@ function setup_flat_plate_pv_pages()
 function setup_utility_rate()
 {
 	addpage( [[ 'Utility Rate - Flat',
-			{ 'name'='Utility Rate - Energy Charge', 'caption'='Energy Charges', 'collapsible'=true, 'collapsible_var'='ur.ec.is_shown' },
-			{ 'name'='Utility Rate - Demand Charge', 'caption'='Demand Charges', 'collapsible'=true, 'collapsible_var'='ur.dc.is_shown' } ]],
+			{ 'name'='Utility Rate - Energy Charge', 'caption'='Energy Charges', 'collapsible'=true, 'collapsible_var'='ur_ec_is_shown' },
+			{ 'name'='Utility Rate - Demand Charge', 'caption'='Demand Charges', 'collapsible'=true, 'collapsible_var'='ur_dc_is_shown' } ]],
 		{ 'sidebar'='Utility Rate', 'help'='Utility Rate' } );
 }
 
