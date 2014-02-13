@@ -6,6 +6,7 @@
 
 #include "variables.h"
 #include "main.h"
+#include "defaultsmanager.h"
 
 class wxListBox;
 class wxMetroNotebook;
@@ -120,6 +121,8 @@ public:
 private:
 	void OnClose( wxCloseEvent & );
 	wxMetroNotebook *m_notebook;
+
+	DefaultsManager *m_defaultsmanager;
 
 	StartupScriptPanel *m_startupPanel;
 	UIEditorPanel *m_uiPanel;

@@ -1410,7 +1410,11 @@ IDEWindow::IDEWindow( wxWindow *parent )
 	//m_simPanel = new SimulationScriptPanel( this );
 	//m_notebook->AddPage( m_simPanel, "Simulations" );
 	
-	m_notebook->AddPage( new wxPanel( m_notebook ), "Default Values" );
+	//m_notebook->AddPage( new wxPanel( m_notebook ), "Default Values" );
+
+	m_defaultsmanager = new DefaultsManager( m_notebook );
+	m_notebook->AddPage( m_defaultsmanager, "Default Values" );
+
 	m_notebook->AddPage( new wxPanel( m_notebook ), "Default Graphs" );
 	m_notebook->AddPage( new wxPanel( m_notebook ), "Cash Flows" );
 	m_notebook->AddPage( new wxPanel( m_notebook ), "Report Templates" );
