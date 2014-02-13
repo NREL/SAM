@@ -77,6 +77,9 @@
     <ClInclude Include="..\src\simulation.h">
       <Filter>Source</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\defaultsmanager.h">
+      <Filter>Source</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\welcome.cpp">
@@ -140,6 +143,9 @@
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="..\src\simulation.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\defaultsmanager.cpp">
       <Filter>Source</Filter>
     </ClCompile>
   </ItemGroup>
