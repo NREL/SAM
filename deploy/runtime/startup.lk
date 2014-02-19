@@ -21,13 +21,14 @@ function setup_flat_plate_pv_pages()
 	
 	
 	addpage( [ ['Simple Efficiency Module Model'],
-				['CEC Performance Model with Module Database', { 'name'='Test 1', 'collapsible'=true, 'collapsible_var'='pv.module.test_1.is_shown' }],
+//				['CEC Performance Model with Module Database', { 'name'='Test 1', 'collapsible'=true, 'collapsible_var'='pv.module.test_1.is_shown' }],
+				['CEC Performance Model with Module Database'],
 				['CEC Performance Model with User Entered Specifications'], 
 				['Sandia PV Array Performance Model with Module Database'] ], 				
-			{ 'sidebar'='Module', 'help'='Module', 'exclusive_var'='pv.mod.model_type' } );
+			{ 'sidebar'='Module', 'help'='Module', 'exclusive_var'='module_model' } );
 			
 	addpage( [ ['Inverter CEC Database'], ['Inverter Datasheet'], ['Inverter Part Load Curve'] ], 
-			{ 'sidebar'='Inverter', 'help'='Inverter', 'exclusive_var'='pv.inv.model_type' } );
+			{ 'sidebar'='Inverter', 'help'='Inverter', 'exclusive_var'='inverter_model' } );
 	addpage( [ ['PV System Design'] ], { 'sidebar'='System Design' } );
 	addpage( [ ['PV Shading'] ], { 'sidebar'='Shading' } );
 	addpage( [ ['PV Losses'] ], { 'sidebar'='Losses' } );
