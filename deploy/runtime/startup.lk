@@ -43,7 +43,6 @@ function setup_utility_rate()
 
 function setup_residential_pages()
 {
-	addpage( [[ 'Annual Performance' ]] );
 	//addpage( [[ 'Residential Loan','Financing' ]], { 'caption'='Financing', 'help'='Financing Residential' } );
 	//addpage( [[ 'Tax Credits','Incentives' ]], { 'caption'='Incentives' } );
 	
@@ -60,7 +59,6 @@ function setup_residential_pages()
 
 function setup_commercial_pages()
 {
-	addpage( [[ 'Annual Performance' ]] );
 	
 	addpage( [[ 'Commercial Loan',
 				{'name'='Financing', 'collapsible'=true,'collapsible_var'='show_financing'},
@@ -88,6 +86,7 @@ function setup_solar_water_heating_pages()
 {
 	addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource' } );
 	addpage( [[ 'Solar Water Heating' ]], { 'sidebar'='Solar Water Heating', 'help'='Solar Water Heating' } );
+	addpage( [[ 'Annual Performance' ]] );
 }
 
 // now setup all the pages
@@ -125,13 +124,13 @@ setmodules( ['swh'] );
 setup_solar_water_heating_pages();
 
 setconfig( 'Solar Water Heating', 'Residential');
-setmodules( ['swh', 'annualoutput', 'utilityrate2', 'cashloan'] );
+setmodules( ['swh',  'utilityrate2', 'cashloan'] );
 setup_solar_water_heating_pages();
 addpage( [[ 'Solar Water Heating Costs','O and M Costs' ]], { 'sidebar'='SWH System Costs' } );
 setup_residential_pages();
 
 setconfig( 'Solar Water Heating', 'Commercial');
-setmodules( ['swh', 'annualoutput', 'utilityrate2', 'cashloan'] );
+setmodules( ['swh',  'utilityrate2', 'cashloan'] );
 setup_solar_water_heating_pages();
 addpage( [[ 'Solar Water Heating Costs','O and M Costs' ]], { 'sidebar'='SWH System Costs' } );
 setup_commercial_pages();
