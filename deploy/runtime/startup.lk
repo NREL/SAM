@@ -6,6 +6,7 @@ addconfig( 'Flat Plate PV', [ 'Residential', 'None' ] );
 addconfig( 'Test Only', [ 'None' ] );
 addconfig( 'Wind Power', [ 'None' ] );
 addconfig( 'Solar Water Heating', ['Residential', 'Commercial', 'None']);
+addconfig( 'Concentrating Solar Power - Physical Trough', ['None']);
 
 
 
@@ -90,7 +91,19 @@ function setup_solar_water_heating_pages()
 	addpage( [[ 'Annual Performance' ]] );
 }
 
+function setup_csp_physical_trough_pages()
+{
+	addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource' } );
+	addpage( [[ 'DTR Solar Field' ]], { 'sidebar'='Solar Field' } );
+	addpage( [[ 'Annual Performance' ]] );
+}
+
+
 // now setup all the pages
+
+setconfig( 'Concentrating Solar Power - Physical Trough', 'None' );
+setmodules( ['tcstrough_physical']);
+setup_csp_physical_trough_pages();
 
 setconfig( 'Test Only', 'None' );
 addpage( [[ 'Test 1' ]] );
