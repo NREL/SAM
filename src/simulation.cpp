@@ -155,8 +155,9 @@ VarTable &Simulation::Results()
 }
 
 
-struct SimulationContext
+class SimulationContext
 {
+public:
 	wxProgressDialog *progdlg;
 	wxArrayString *errors;
 	wxArrayString *warnings;
@@ -254,6 +255,16 @@ bool Simulation::Invoke()
 
 			if ( var_type == SSC_INPUT )
 			{
+				// handle ssc variable names
+				// that are explicit field accesses"shading:mxh"
+				wxString field;
+				int pos = name.Find( ':' );
+				if ( pos != wxNOT_FOUND )
+				{
+					field = name.Mid(pos+1);
+					name = name.Left(pos);
+				}
+
 				VarValue *vv = GetInput(name);
 				if ( !vv && reqd == "*" )
 				{
@@ -265,8 +276,36 @@ bool Simulation::Invoke()
 				}
 				else if ( vv != 0 )
 				{
-					if (!VarValueToSSC( vv, p_data, name ))
+
+					if ( !field.IsEmpty() )
+					{
+						if ( vv->Type() != VV_TABLE )
+							m_errors.Add( "SSC variable has table:field specification, but '" + name + "' is not a table in SAM" );
+
+						bool do_copy_var = false;
+						if ( reqd.Left(1) == "?" )
+						{
+							// if the SSC variable is optional, check for the 'en_<field>' element in the table
+							if ( VarValue *en_flag = vv->Table().Get( "en_" + field ) )
+								if ( en_flag->Boolean() )
+									do_copy_var = true;
+						}
+						else do_copy_var = true;
+						
+						if ( do_copy_var )
+						{
+							if ( VarValue *vv_field = vv->Table().Get( field ) )
+							{
+								if ( !VarValueToSSC( vv_field, p_data, name + ":" + field ) )
+									m_errors.Add( "Error translating table:field variable from SAM UI to SSC for '" + name + "':" + field );
+							}
+						}
+						
+					}
+
+					if ( !VarValueToSSC( vv, p_data, name ))
 						m_errors.Add( "Error translating data from SAM UI to SSC for " + name );
+					
 				}
 			}
 		}

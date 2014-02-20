@@ -190,7 +190,7 @@ DefaultsManager::DefaultsManager(wxWindow *parent, int id)
 		}
 	}
 */
-	lblAllConfigurations->SetLabel( wxString::Format("%d total cfgs, %d def. files missing", configs.Count(), configs.Count()-num_defaults) ); 
+	lblAllConfigurations->SetLabel( wxString::Format("%d total cfgs, %d def. files missing", (int)configs.Count(), (int)(configs.Count()-num_defaults)) ); 
 
 	cklConfigurations->Append( configs );
 
