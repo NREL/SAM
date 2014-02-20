@@ -117,12 +117,12 @@ addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='PV System Costs'
 setup_residential_pages();
 
 setconfig( 'PVWatts', 'Residential' );	
-setmodules( ['pvwattsv1']);
+setmodules( ['pvwatts2014']);
 setup_pvwatts_pages();
 setup_residential_pages();
 
 setconfig( 'PVWatts', 'None' );
-setmodules( ['pvwattsv1']);
+setmodules( ['pvwatts2014']);
 setup_pvwatts_pages();
 
 

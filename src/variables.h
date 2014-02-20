@@ -28,7 +28,11 @@ class VarTable : public VarTableBase
 {
 public:
 	VarTable();
+	VarTable( const VarTable &rhs );
 	~VarTable();
+
+	VarTable &operator=( const VarTable &rhs );
+	void Copy( const VarTable &rhs );
 	
 	void Delete( const wxString &name );
 	void Delete( const wxArrayString &names );
@@ -39,7 +43,6 @@ public:
 	VarValue *Get( const wxString &name );
 	bool Rename( const wxString &old_name, const wxString &new_name );
 
-	void Copy( const VarTable &rhs );
 	void Write( wxOutputStream & );
 	bool Read( wxInputStream & );
 		

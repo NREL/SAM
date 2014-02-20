@@ -123,29 +123,34 @@ void ShadingInputData::write( VarValue *vv )
 {
 	vv->SetType( VV_TABLE );
 	VarTable &tab = vv->Table();
-	tab.Set( "en_hourly", VarValue( en_hourly ) );
+	tab.Set( "en_hourly", VarValue( (bool)en_hourly ) );
 	tab.Set( "hourly", VarValue( hourly ) );
-	tab.Set( "en_mxh", VarValue( en_mxh ) );
+	tab.Set( "en_mxh", VarValue( (bool)en_mxh ) );
 	tab.Set( "mxh", VarValue( mxh ) );
-	tab.Set( "en_azal", VarValue( en_azal ) );
+	tab.Set( "en_azal", VarValue( (bool)en_azal ) );
 	tab.Set( "azal", VarValue( azal ) );
-	tab.Set( "en_diff", VarValue( en_diff ) );
+	tab.Set( "en_diff", VarValue( (bool)en_diff ) );
 	tab.Set( "diff", VarValue( (float)diff ) );
 }
 
 bool ShadingInputData::read( VarValue *root )
 {
 	clear();
-	VarTable &tab = root->Table();
-	if ( VarValue *vv = tab.Get( "en_hourly" ) ) en_hourly = vv->Boolean();
-	if ( VarValue *vv = tab.Get("hourly") ) hourly = vv->Array();
-	if ( VarValue *vv = tab.Get("en_mxh") ) en_mxh = vv->Boolean();
-	if ( VarValue *vv = tab.Get("mxh") ) mxh = vv->Matrix();
-	if ( VarValue *vv = tab.Get("en_azal") ) en_azal = vv->Boolean();
-	if ( VarValue *vv = tab.Get("azal") ) azal = vv->Matrix();
-	if ( VarValue *vv = tab.Get("en_diff") ) en_diff = vv->Boolean();
-	if ( VarValue *vv = tab.Get("diff") ) diff = vv->Value();
-	return true;
+	if ( root->Type() == VV_TABLE )
+	{
+		VarTable &tab = root->Table();
+		if ( VarValue *vv = tab.Get( "en_hourly" ) ) en_hourly = vv->Boolean();
+		if ( VarValue *vv = tab.Get("hourly") ) hourly = vv->Array();
+		if ( VarValue *vv = tab.Get("en_mxh") ) en_mxh = vv->Boolean();
+		if ( VarValue *vv = tab.Get("mxh") ) mxh = vv->Matrix();
+		if ( VarValue *vv = tab.Get("en_azal") ) en_azal = vv->Boolean();
+		if ( VarValue *vv = tab.Get("azal") ) azal = vv->Matrix();
+		if ( VarValue *vv = tab.Get("en_diff") ) en_diff = vv->Boolean();
+		if ( VarValue *vv = tab.Get("diff") ) diff = vv->Value();
+		return true;
+	}
+	else
+		return false;
 }
 
 

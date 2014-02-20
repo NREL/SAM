@@ -16,9 +16,32 @@ VarTable::VarTable()
 	/* nothing to do */
 }
 
+VarTable::VarTable( const VarTable &rhs )
+{
+	Copy( rhs );
+}
+
 VarTable::~VarTable()
 {
 	VarTable::clear();
+}
+
+VarTable &VarTable::operator=( const VarTable &rhs )
+{
+	Copy( rhs );
+	return *this;
+}
+
+void VarTable::Copy( const VarTable &rhs )
+{
+	if ( this != &rhs )
+	{
+		VarTable::clear();
+		for( const_iterator it = rhs.begin();
+			it != rhs.end();
+			++it )
+			Set( it->first, *(it->second) );
+	}
 }
 
 void VarTable::clear()
@@ -97,15 +120,6 @@ VarValue *VarTable::Get( const wxString &name )
 	else return it->second;
 }
 
-void VarTable::Copy( const VarTable &rhs )
-{
-	VarTable::clear();
-	for( const_iterator it = rhs.begin();
-		it != rhs.end();
-		++it )
-		Set( it->first, *(it->second) );
-}
-
 bool VarTable::Rename( const wxString &old_name, const wxString &new_name )
 {
 	iterator it = find( old_name );
@@ -167,6 +181,12 @@ VarValue::VarValue()
 	m_type = VV_INVALID;
 }
 
+
+VarValue::VarValue( const VarValue &vv )
+{
+	Copy( vv );
+}
+
 VarValue::VarValue( int i )
 {
 	m_type = VV_NUMBER;
@@ -219,11 +239,6 @@ VarValue::VarValue( const VarTable &t )
 {
 	m_type = VV_TABLE;
 	m_tab.Copy( t );
-}
-
-VarValue::VarValue( const VarValue &vv )
-{
-	Copy( vv );
 }
 
 VarValue::~VarValue()
