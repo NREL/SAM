@@ -2,11 +2,60 @@
 
 #include <wex/plot/plplotctrl.h>
 #include <wex/lkscript.h>
+#include <wex/dview/dvplotctrl.h>
 
 #include "main.h"
 #include "case.h"
 
 #include "invoke.h"
+
+
+enum{ID_DVIEWWIN = wxID_HIGHEST + 256, ID_DVIEWCTRL};
+
+static void fcall_dview(lk::invoke_t &cxt)
+{
+	LK_DOC("dview", "Creates a separate dview viewer for viewing specified data.", "(string:name ,variant:data]):none");
+
+	wxString win_name = cxt.arg(0).as_string();
+	wxString var_name1 = cxt.arg(1).as_string();
+	wxString var_units1 = cxt.arg(2).as_string();
+	wxString var_name2 = cxt.arg(3).as_string();
+	wxString var_units2 = cxt.arg(4).as_string();
+
+	lk::vardata_t &plot_data1 = cxt.arg(5);
+	if (plot_data1.length() != 8760) return;
+	lk::vardata_t &plot_data2 = cxt.arg(6);
+	if (plot_data2.length() != 8760) return;
+
+	std::vector<double> data1(8760);
+	std::vector<double> data2(8760);
+
+	for (size_t i = 0; i < 8760; i++)
+	{
+		data1[i] = plot_data1.index(i)->as_number();
+		data2[i] = plot_data2.index(i)->as_number();
+	}
+	
+	wxDialog *frame;
+	wxDVPlotCtrl *dview;
+	if (wxWindow::FindWindowById(ID_DVIEWWIN))
+	{
+		frame = (wxDialog*)wxWindow::FindWindowById(ID_DVIEWWIN);
+		dview = (wxDVPlotCtrl *)wxWindow::FindWindowById(ID_DVIEWCTRL);
+	}
+	else
+	{
+		frame = new wxDialog(wxTheApp->GetTopWindow(), ID_DVIEWWIN, win_name, wxDefaultPosition, wxSize(900, 700));
+		dview = new wxDVPlotCtrl(frame, ID_DVIEWCTRL);
+	}
+
+	double timestep = 1;
+	dview->RemoveAllDataSets();
+	dview->AddDataSet(new wxDVArrayDataSet(var_name1, var_units1, timestep, data1));
+	dview->AddDataSet(new wxDVArrayDataSet(var_name2, var_units2, timestep, data2));
+
+	frame->Show();
+}
 
 static void fcall_log( lk::invoke_t &cxt )
 {
@@ -351,6 +400,7 @@ lk::fcall_t* invoke_uicallback_funcs()
 		fcall_refresh,
 		fcall_technology,
 		fcall_financing,
+		fcall_dview,
 		0 };
 	return (lk::fcall_t*)vec;
 }
