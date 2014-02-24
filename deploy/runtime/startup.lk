@@ -95,12 +95,15 @@ function setup_csp_physical_trough_pages()
 {
 	addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource' } );
 	addpage( [[ 'DTR Solar Field' ]], { 'sidebar'='Solar Field' } );
-	addpage( [[ 
+//	addpage( [[ 'Collector (SCA) Type 1' ]], { 'sidebar'='Collector (SCAs)' } );
+
+	addpage( [[ 'Collector (SCA) Header',
 	 {'name'='Collector (SCA) Type 1', 'caption'='SCA 1', 'collapsible'=true, 'collapsible_var'='sca_1_is_shown'},
 	 {'name'='Collector (SCA) Type 2', 'caption'='SCA 2', 'collapsible'=true, 'collapsible_var'='sca_2_is_shown'},
 	 {'name'='Collector (SCA) Type 3', 'caption'='SCA 3', 'collapsible'=true, 'collapsible_var'='sca_3_is_shown'},
 	 {'name'='Collector (SCA) Type 4', 'caption'='SCA 4', 'collapsible'=true, 'collapsible_var'='sca_4_is_shown'} ]],
 	 { 'sidebar'='Collector (SCAs)' } );
+	
 	addpage( [[ 
 	 {'name'='Receiver (HCE) Type 1', 'caption'='HCE 1', 'collapsible'=true, 'collapsible_var'='hce_1_is_shown'},
 	 {'name'='Receiver (HCE) Type 2', 'caption'='HCE 2', 'collapsible'=true, 'collapsible_var'='hce_2_is_shown'},
