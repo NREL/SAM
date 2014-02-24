@@ -14,7 +14,7 @@ enum{ID_DVIEWWIN = wxID_HIGHEST + 256, ID_DVIEWCTRL};
 
 static void fcall_dview(lk::invoke_t &cxt)
 {
-	LK_DOC("dview", "Creates a separate dview viewer for viewing specified data.", "(string:name ,variant:data]):none");
+	LK_DOC("dview", "Creates a separate dview viewer for viewing specified data.", "( variant:num_datasets, string:window name, string:data_name1, string:data_units1, variant:multiplier1, variant:data1, [ string:data_name2, string:data_units2, variant:multiplier2, variant:data2], ...):none");
 
 	wxString win_name = cxt.arg(0).as_string();
 	wxString var_name1 = cxt.arg(1).as_string();
@@ -38,21 +38,26 @@ static void fcall_dview(lk::invoke_t &cxt)
 	
 	wxDialog *frame;
 	wxDVPlotCtrl *dview;
-	if (wxWindow::FindWindowById(ID_DVIEWWIN))
-	{
-		frame = (wxDialog*)wxWindow::FindWindowById(ID_DVIEWWIN);
+//	if (wxWindow::FindWindowById(ID_DVIEWWIN))
+	if (wxWindow::FindWindowByLabel(win_name))
+		{
+		frame = (wxDialog*)wxWindow::FindWindowByLabel(win_name);
 		dview = (wxDVPlotCtrl *)wxWindow::FindWindowById(ID_DVIEWCTRL);
+//		frame = (wxDialog*)wxWindow::FindWindowById(ID_DVIEWWIN);
+//		dview = (wxDVPlotCtrl *)wxWindow::FindWindowById(ID_DVIEWCTRL);
 	}
 	else
 	{
 		frame = new wxDialog(wxTheApp->GetTopWindow(), ID_DVIEWWIN, win_name, wxDefaultPosition, wxSize(900, 700));
 		dview = new wxDVPlotCtrl(frame, ID_DVIEWCTRL);
+		double timestep = 1;
+		dview->RemoveAllDataSets();
+		dview->AddDataSet(new wxDVArrayDataSet(var_name1, var_units1, timestep, data1));
+		dview->AddDataSet(new wxDVArrayDataSet(var_name2, var_units2, timestep, data2));
+
+		dview->SelectDataIndex(0);
 	}
 
-	double timestep = 1;
-	dview->RemoveAllDataSets();
-	dview->AddDataSet(new wxDVArrayDataSet(var_name1, var_units1, timestep, data1));
-	dview->AddDataSet(new wxDVArrayDataSet(var_name2, var_units2, timestep, data2));
 
 	frame->Show();
 }
