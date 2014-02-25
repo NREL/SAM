@@ -298,13 +298,20 @@ void EqnFastLookup::Clear()
 	
 }
 
-wxArrayString *EqnFastLookup::GetAffectedVariables( const wxString &var )
+size_t EqnFastLookup::GetAffectedVariables( const wxString &var, wxArrayString &list )
 {
+	size_t n = 0;
 	for( size_t i=0;i<m_dbs.size();i++ )
-		if( wxArrayString *list = m_dbs[i]->GetAffectedVariables( var ) )
-			return list;
+	{
+		if( wxArrayString *ll = m_dbs[i]->GetAffectedVariables( var ) )
+		{
+			n += ll->Count();
+			for( size_t k=0;k<ll->Count();k++ )
+				list.Add( ll->Item(k) );
+		}
+	}
 
-	return 0;
+	return n;
 }
 
 lk::node_t *EqnFastLookup::GetEquation( const wxString &var, wxArrayString *inputs, wxArrayString *outputs )
@@ -485,16 +492,17 @@ int EqnEvaluator::Calculate( )
 
 size_t EqnEvaluator::MarkAffectedEquations( const wxString &var )
 {
-	wxArrayString *affectlist = m_efl.GetAffectedVariables( var );	
-	if (!affectlist) return 0;
-	int naffected = affectlist->Count();
-	for (size_t i=0;i<affectlist->Count();i++)
+	wxArrayString affectlist;
+	int naffected = m_efl.GetAffectedVariables( var, affectlist );	
+	if ( naffected == 0 ) return 0;
+
+	for (size_t i=0;i<affectlist.size();i++)
 	{
-		int index = m_efl.GetEquationIndex( affectlist->Item(i) );
+		int index = m_efl.GetEquationIndex( affectlist[i] );
 		if ( index >= 0 && index < (int)m_status.size() )
 			m_status[ index ] = INVALID;
 
-		naffected += MarkAffectedEquations( affectlist->Item(i) );
+		naffected += MarkAffectedEquations( affectlist[i] );
 	}
 	return naffected;
 }
