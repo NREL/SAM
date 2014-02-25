@@ -1,5 +1,7 @@
 #include <wx/datstrm.h>
 
+#include <wex/utils.h>
+
 #include "case.h"
 #include "equations.h"
 #include "main.h"
@@ -121,7 +123,7 @@ bool CaseEvaluator::UpdateLibrary( const wxString &trigger, wxArrayString &chang
 				else
 				{
 					nerrors++;
-					m_errors.Add("error applying library entry " + vv->String() + "\n\n" + wxJoin( lib->GetErrors(), '\n') );
+					m_errors.Add("error applying library entry " + vv->String() + "\n\n" + wxJoin( lib->GetErrors(), wxChar('\n')) );
 				}
 			}
 			else
@@ -259,7 +261,9 @@ void Case::SetConfiguration( const wxString &tech, const wxString &fin )
 		
 	// reevalute all equations
 	CaseEvaluator eval( this, m_vals, m_config->Equations );
-	eval.CalculateAll();
+	int n = eval.CalculateAll();
+	if ( n < 0 )
+		::wxShowTextMessageDialog( wxJoin( eval.GetErrors(), wxChar('\n') ) );
 
 	// setup the local callback environment
 	// by merging all the functions defined
@@ -406,7 +410,7 @@ int Case::Recalculate( const wxString &trigger )
 	CaseEvaluator eval( this, m_vals, m_config->Equations );
 	int n = eval.Changed( trigger );	
 	if ( n > 0 ) SendEvent( CaseEvent( CaseEvent::VARS_CHANGED, eval.GetUpdated() ) );
-	else if ( n < 0 ) wxLogStatus( wxJoin( eval.GetErrors(), '\n' )  );
+	else if ( n < 0 ) wxShowTextMessageDialog( wxJoin( eval.GetErrors(), wxChar('\n') )  );
 	return n;
 
 }
@@ -422,7 +426,7 @@ int Case::RecalculateAll()
 	CaseEvaluator eval( this, m_vals, m_config->Equations );
 	int n = eval.CalculateAll();
 	if ( n > 0 ) SendEvent( CaseEvent( CaseEvent::VARS_CHANGED, eval.GetUpdated() ) );
-	else if ( n < 0 ) wxLogStatus( wxJoin( eval.GetErrors(), '\n' )  );
+	else if ( n < 0 ) wxShowTextMessageDialog( wxJoin( eval.GetErrors(), wxChar('\n') )  );
 	return n;
 }
 
