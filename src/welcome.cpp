@@ -112,7 +112,7 @@ void WelcomeScreen::OnMessageDownloadThread(wxSimpleCurlEvent &e)
 {
 	wxLogStatus("OnMessageDownloadThread: " + e.GetMessage());
 	if (e.GetStatusCode() == wxSimpleCurlEvent::FINISHED)
-		UpdateMessagesHtml( m_ssCurlMessage.GetData() );
+		UpdateMessagesHtml( m_ssCurlMessage.GetDataAsString() );
 }
 
 void WelcomeScreen::UpdateMessagesHtml(const wxString &html)

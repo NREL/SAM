@@ -9,6 +9,7 @@
 #include <wx/wfstream.h>
 #include <wx/datstrm.h>
 #include <wx/grid.h>
+#include <wx/stdpaths.h>
 
 #include <wex/metro.h>
 #include <wex/icons/cirplus.cpng>
@@ -91,7 +92,8 @@ enum { __idFirst = wxID_HIGHEST+592,
 	ID_CASE_MOVE_RIGHT,
 	__idCaseMenuLast,
 	__idInternalFirst,
-	ID_INTERNAL_IDE, ID_INTERNAL_RESTART, ID_INTERNAL_SHOWLOG, ID_INTERNAL_CASE_VALUES,
+		ID_INTERNAL_IDE, ID_INTERNAL_RESTART, ID_INTERNAL_SHOWLOG, 
+		ID_INTERNAL_DATAFOLDER, ID_INTERNAL_CASE_VALUES,
 	__idInternalLast
 };
 
@@ -184,6 +186,7 @@ MainWindow::MainWindow()
 	entries.push_back( wxAcceleratorEntry( wxACCEL_SHIFT, WXK_F8,  ID_INTERNAL_RESTART ) );
 	entries.push_back( wxAcceleratorEntry( wxACCEL_SHIFT, WXK_F4,  ID_INTERNAL_SHOWLOG ) );
 	entries.push_back( wxAcceleratorEntry( wxACCEL_SHIFT, WXK_F12, ID_INTERNAL_CASE_VALUES ) );
+	entries.push_back( wxAcceleratorEntry( wxACCEL_SHIFT, WXK_F9,  ID_INTERNAL_DATAFOLDER ) );
 	entries.push_back( wxAcceleratorEntry( wxACCEL_CMD, 'o', wxID_OPEN ) );
 	entries.push_back( wxAcceleratorEntry( wxACCEL_CMD, 's', wxID_SAVE ) );
 	entries.push_back( wxAcceleratorEntry( wxACCEL_CMD, 'w', wxID_CLOSE ) );
@@ -301,6 +304,9 @@ void MainWindow::OnInternalCommand( wxCommandEvent &evt )
 		break;
 	case ID_INTERNAL_SHOWLOG:
 		SamLogWindow::Setup();
+		break;
+	case ID_INTERNAL_DATAFOLDER:
+		wxLaunchDefaultBrowser( SamApp::GetUserLocalDataDir() );
 		break;
 	case ID_INTERNAL_CASE_VALUES:
 		if ( Case *cc = GetCurrentCase() )
@@ -1263,8 +1269,13 @@ void SamApp::Restart()
 		}
 	}
 
-	ScanSolarResourceData();
-	ScanWindResourceData();
+	wxString solar_resource_db = SamApp::GetUserLocalDataDir() + "/SolarResourceData.csv";
+	if ( !wxFileExists( solar_resource_db ) ) ScanSolarResourceData( solar_resource_db );
+	Library::Load( solar_resource_db );
+
+	wxString wind_resource_db  = SamApp::GetUserLocalDataDir() + "/WindResourceData.csv";
+	if ( !wxFileExists( wind_resource_db ) ) ScanWindResourceData( wind_resource_db );
+	Library::Load( wind_resource_db );
 }
 
 wxString SamApp::GetAppPath()
@@ -1275,6 +1286,17 @@ wxString SamApp::GetAppPath()
 wxString SamApp::GetRuntimePath()
 {
 	return GetAppPath() + "/../runtime/";
+}
+
+wxString SamApp::GetUserLocalDataDir()
+{	
+	wxString path = wxStandardPaths::Get().GetUserLocalDataDir() + "/sam-" + SamApp::VersionStr();
+	path.Replace("\\","/");
+	
+	if (!wxDirExists( path ))
+		wxFileName::Mkdir( path, 511, wxPATH_MKDIR_FULL );
+
+	return path;
 }
 
 wxConfig &SamApp::Settings()
