@@ -770,7 +770,7 @@ UIEditorPanel::UIEditorPanel( wxWindow *parent )
 	sz_equation_tools->AddStretchSpacer();
 
 	m_equationScript = new wxLKScriptCtrl( scripts_panel, ID_EQUATION_EDITOR, wxDefaultPosition, wxDefaultSize,
-		wxLK_STDLIB_BASIC | wxLK_STDLIB_STRING | wxLK_STDLIB_MATH );
+		wxLK_STDLIB_BASIC | wxLK_STDLIB_STRING | wxLK_STDLIB_MATH | wxLK_STDLIB_WXUI  );
 	m_equationScript->RegisterLibrary( invoke_equation_stubs(), "Case Information", 0 );
 	wxBoxSizer *sz_scripts_right = new wxBoxSizer( wxVERTICAL );
 	sz_scripts_right->Add( sz_equation_tools, 0, wxALL|wxEXPAND, 2 );

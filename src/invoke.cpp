@@ -4,6 +4,8 @@
 #include <wex/lkscript.h>
 #include <wex/dview/dvplotctrl.h>
 
+#include <ssc/sscapi.h>
+
 #include "main.h"
 #include "case.h"
 
@@ -62,9 +64,9 @@ static void fcall_dview(lk::invoke_t &cxt)
 	frame->Show();
 }
 
-static void fcall_log( lk::invoke_t &cxt )
+static void fcall_logmsg( lk::invoke_t &cxt )
 {
-	LK_DOC("log", "Output a data line to the SAM log.", "(...):none");	
+	LK_DOC("logmsg", "Output a data line to the SAM log.", "(...):none");	
 	wxString output;
 	for (size_t i=0;i<cxt.arg_count();i++)
 		output += cxt.arg(i).as_string();
@@ -373,11 +375,284 @@ static void fcall_financing( lk::invoke_t &cxt )
 	cxt.result().assign( cc.GetCase().GetFinancing() );
 }
 
+/*
+static bool sscvar_to_lkvar( lk::vardata_t &out, var_data *vv)
+{
+	if (!vv) return false;
+
+	switch( vv->type )
+	{
+	case SSC_NUMBER:
+		out.assign( (double) vv->num );
+		break;
+	case SSC_STRING:
+		out.assign( vv->str.c_str() );
+		break;
+	case SSC_ARRAY:
+		out.empty_vector();
+		out.vec()->reserve( (size_t) vv->num.length() );
+		for (int i=0;i<vv->num.length();i++)
+			out.vec_append( vv->num[i] );
+		break;
+	case SSC_MATRIX:
+		out.empty_vector();
+		out.vec()->reserve( vv->num.nrows() );
+		for (int i=0;i<vv->num.nrows();i++)
+		{
+			out.vec()->push_back( lk::vardata_t() );
+			out.vec()->at(i).empty_vector();
+			out.vec()->at(i).vec()->reserve( vv->num.ncols() );
+			for (int j=0;j<vv->num.ncols();j++)
+				out.vec()->at(i).vec_append( vv->num.at(i,j) );
+		}
+		break;
+	case SSC_TABLE:
+		{
+			out.empty_hash();
+			const char *key = vv->table.first();
+			while (key != 0)
+			{
+				var_data *x = vv->table.lookup( key );
+				lk::vardata_t &xvd = out.hash_item( lk_string(key) );
+				sscvar_to_lkvar( xvd, x );
+				key = vv->table.next();
+			}
+		}
+		break;
+	}
+
+	return true;
+}
+*/
+
+static bool lkvar_to_sscvar( ssc_data_t p_dat, const char *name, lk::vardata_t &val )
+{	
+	switch (val.type())
+	{
+	case lk::vardata_t::NUMBER:
+		ssc_data_set_number( p_dat, name, (ssc_number_t)val.as_number() );
+		break;
+	case lk::vardata_t::STRING:
+		ssc_data_set_string( p_dat, name, (const char*)val.as_string().c_str() );
+		break;
+	case lk::vardata_t::VECTOR:
+		{
+			size_t dim1 = val.length(), dim2 = 0;
+			for (size_t i=0;i<val.length();i++)
+			{
+				lk::vardata_t *row = val.index(i);
+				if (row->type() == lk::vardata_t::VECTOR && row->length() > dim2 )
+					dim2 = row->length();
+			}
+
+			if (dim2 == 0 && dim1 > 0)
+			{
+				ssc_number_t *vec = new ssc_number_t[ dim1 ];
+				for ( size_t i=0;i<dim1;i++)
+					vec[i] = (ssc_number_t)val.index(i)->as_number();
+
+				ssc_data_set_array( p_dat, name, vec, dim1 );
+				delete [] vec;
+			}
+			else if ( dim1 > 0 && dim2 > 0 )
+			{
+				
+				ssc_number_t *mat = new ssc_number_t[ dim1*dim2 ];
+				for ( size_t i=0;i<dim1;i++)
+				{
+					for ( size_t j=0;j<dim2;j++ )
+					{
+						ssc_number_t x = 0;
+						if ( val.index(i)->type() == lk::vardata_t::VECTOR
+							&& j < val.index(i)->length() )
+							x = (ssc_number_t)val.index(i)->index(j)->as_number();
+
+						mat[ i*dim2 + j ] = x;
+					}
+				}
+
+				ssc_data_set_matrix( p_dat, name, mat, dim1, dim2 );
+				delete [] mat;
+			}
+		}
+		break;
+	case lk::vardata_t::HASH:		
+		{
+			ssc_data_t table = ssc_data_create();
+
+			lk::varhash_t &hash = *val.hash();
+			for ( lk::varhash_t::iterator it = hash.begin();
+				it != hash.end();
+				++it )
+				lkvar_to_sscvar( table, (const char*)(*it).first.c_str(), *(*it).second );
+
+			ssc_data_set_table( p_dat, name, table );
+			ssc_data_free( table );
+		}
+		break;
+	}
+
+	return true;
+}
+
+void sscvar_to_lkvar( lk::vardata_t &out, const char *name, ssc_data_t p_dat )
+{
+	int ty = ssc_data_query( p_dat, name );
+	switch( ty )
+	{
+	case SSC_NUMBER:
+		{
+			ssc_number_t num;
+			if ( ssc_data_get_number( p_dat, name, &num ) )
+			out.assign( (double) num );
+		}
+		break;
+	case SSC_STRING:
+		if ( const char *ss = ssc_data_get_string( p_dat, name ) )
+			out.assign( lk_string(ss) );
+		break;
+	case SSC_ARRAY:
+	{
+		ssc_number_t *vv;
+		int n = 0;
+		vv = ssc_data_get_array( p_dat, name, &n );
+		if ( vv && n > 0 )
+		{
+			out.empty_vector();
+			out.vec()->reserve( (size_t) n );
+			for (int i=0;i<n;i++)
+				out.vec_append( vv[i] );
+		}
+	}
+		break;
+	case SSC_MATRIX:
+	{
+		ssc_number_t *mat;
+		int nr, nc;
+		mat = ssc_data_get_matrix( p_dat, name, &nr, &nc );
+		if ( mat && nr > 0 && nc > 0 )
+		{
+			out.empty_vector();
+			out.vec()->reserve( nr );
+			for (int i=0;i<nr;i++)
+			{
+				out.vec()->push_back( lk::vardata_t() );
+				out.vec()->at(i).empty_vector();
+				out.vec()->at(i).vec()->reserve( nc );
+				for (int j=0;j<nc;j++)
+					out.vec()->at(i).vec_append( mat[ i*nc +j ] );
+			}
+		}
+	}
+		break;
+	case SSC_TABLE:
+		if ( ssc_data_t table = ssc_data_get_table( p_dat, name ) )
+		{
+			out.empty_hash();
+			const char *key = ::ssc_data_first( table );
+			while ( key != 0 )
+			{
+				lk::vardata_t &xvd = out.hash_item( lk_string(key) );
+				sscvar_to_lkvar( xvd, key, table );
+				key = ssc_data_next( p_dat );
+			}
+		}
+		break;
+	}
+}
+
+
+class lkSSCdataObj : public lk::objref_t
+{
+	ssc_data_t m_data;
+public:
+
+	lkSSCdataObj() {
+		m_data = ssc_data_create();
+	}
+	virtual ~lkSSCdataObj() {
+		ssc_data_free( m_data );
+	}
+
+	virtual lk_string type_name() {
+		return lk_string("lkSSCdataObj");
+	}
+
+	operator ssc_data_t() { 
+		return m_data;
+	}
+};
+
+static void fcall_ssc_data_create( lk::invoke_t &cxt )
+{
+	LK_DOC( "ssc_data_create", "Creates a new SSC data context", "(void):reference");
+	cxt.result().assign( (double)cxt.env()->insert_object( new lkSSCdataObj ) );
+}
+
+static void fcall_ssc_data_free( lk::invoke_t &cxt )
+{
+	LK_DOC( "ssc_data_free", "Frees an exist SSC data context", "(reference):none");
+	if ( lkSSCdataObj *p = dynamic_cast<lkSSCdataObj*>(cxt.env()->query_object( cxt.arg(0).as_integer() ) ) )
+		cxt.env()->destroy_object( p );
+}
+
+void fcall_ssc_var( lk::invoke_t &cxt )
+{
+	LK_DOC2( "ssc_var", "Sets or gets a variable value in the SSC data set.", 
+		"Set a variable value.", "(reference:data, string:name, variant:value):none", 
+		"Get a variable value", "(reference:data, string:name):variant" );
+	
+	if ( lkSSCdataObj *p = dynamic_cast<lkSSCdataObj*>(cxt.env()->query_object( cxt.arg(0).as_integer() ) ) )
+	{
+		wxString name = cxt.arg(1).as_string();
+		if (cxt.arg_count() == 1)
+			sscvar_to_lkvar( cxt.result(), name, *p );
+		else if (cxt.arg_count() == 2)
+			lkvar_to_sscvar( *p, name, cxt.arg(2).deref() );
+	}
+}
+
+void fcall_ssc_exec( lk::invoke_t &cxt )
+{
+	LK_DOC( "ssc_exec", "Run a compute module with the provided data context. returns zero if successful", "( string:modules, reference:data ):variant" );
+
+	cxt.result().assign( -999.0 );
+	if ( lkSSCdataObj *data = dynamic_cast<lkSSCdataObj*>(cxt.env()->query_object( cxt.arg(0).as_integer() ) ) )
+	{
+		if ( ssc_module_t mod = ssc_module_create( cxt.arg(0).as_string().c_str() ) )
+		{
+			if( ssc_module_exec( mod, *data ) )
+			{
+				cxt.result().assign( 0.0 );
+			}
+			else
+			{
+				lk_string errors;
+				int idx=0;
+				int ty = 0;
+				float tm = 0;
+				while ( const char *msg = ssc_module_log( mod, idx++, &ty, &tm ) )
+				{
+					errors += lk_string(msg);
+				}
+
+				cxt.result().assign( errors );
+			}
+
+			ssc_module_free( mod );
+		}
+	}	
+}
+
 lk::fcall_t* invoke_general_funcs()
 {
 	static const lk::fcall_t vec[] = {
-		fcall_log,
+		fcall_logmsg,
 		fcall_browse,
+		fcall_ssc_data_create,
+		fcall_ssc_data_free,
+		fcall_ssc_var,
+		fcall_ssc_exec,
 		0 };
 	return (lk::fcall_t*)vec;
 }

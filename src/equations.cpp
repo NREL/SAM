@@ -51,14 +51,14 @@ void EqnDatabase::ScanParseTree( lk::node_t *root, wxArrayString *inputs, wxArra
 		ScanParseTree( n->left, inputs, outputs, n->oper == lk::expr_t::ASSIGN );
 		if ( n->oper == lk::expr_t::ASSIGN )
 			if ( lk::iden_t *id = dynamic_cast<lk::iden_t*>( n->left ) )
-				if ( id->special )
+				if ( id->special && outputs->Index( id->name ) == wxNOT_FOUND )
 					outputs->Add( id->name );
 
 		ScanParseTree(  n->right, inputs, outputs );
 	}
 	else if ( lk::iden_t *n = dynamic_cast<lk::iden_t*>( root ) )
 	{
-		if ( n->special && !in_assign_lhs )
+		if ( n->special && !in_assign_lhs && inputs->Index( n->name ) == wxNOT_FOUND )
 			inputs->Add( n->name );
 	}
 
@@ -528,4 +528,5 @@ void EqnEvaluator::SetupEnvironment( lk::env_t &env )
 	env.register_funcs( lk::stdlib_basic() );
 	env.register_funcs( lk::stdlib_math() );
 	env.register_funcs( lk::stdlib_string() );
+	env.register_funcs( lk::stdlib_wxui() );
 }
