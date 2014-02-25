@@ -60,7 +60,7 @@ public:
 	void Add( const std::vector<EqnData*> &list );
 	void Clear();
 	
-	wxArrayString *GetAffectedVariables( const wxString &var );
+	size_t GetAffectedVariables( const wxString &var, wxArrayString &list );
 	lk::node_t *GetEquation( const wxString &var, wxArrayString *inputs, wxArrayString *outputs );
 	std::vector<EqnData*> GetEquations() { return m_eqnList; }
 	EqnData *GetEquationData( const wxString &var );
