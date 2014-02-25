@@ -248,6 +248,7 @@ public:
 	static void Restart();
 	static wxString GetAppPath();
 	static wxString GetRuntimePath();
+	static wxString GetUserLocalDataDir();
 	static wxConfig &Settings();
 	static MainWindow *Window();
 	static wxFileHistory &FileHistory();	
