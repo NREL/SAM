@@ -63,8 +63,8 @@ private:
 	wxArrayString m_errors;
 };
 
-bool ScanSolarResourceData();
-bool ScanWindResourceData();
+bool ScanSolarResourceData( const wxString &db_file );
+bool ScanWindResourceData( const wxString &db_file );
 
 class LibraryCtrl;
 class wxTextCtrl;

@@ -518,7 +518,7 @@ void LibraryCtrl::SetLabel( const wxString &text )
 }
 
 
-bool ScanSolarResourceData()
+bool ScanSolarResourceData( const wxString &db_file )
 {
 	wxString path = SamApp::GetRuntimePath() + "../solar_resource/";
 	wxDir dir( path );
@@ -625,23 +625,11 @@ bool ScanSolarResourceData()
 
 		has_more = dir.GetNext( &file );
 	}
-	
-	csv.WriteFile( wxGetUserHome() + "/SolarResourceData.csv" );
 
-	Library *lib = new Library;	
-	if ( lib->Read( csv, "SolarResourceData" ) )
-	{
-		gs_libs.m_libs.push_back( lib );
-		return true;
-	}
-	else
-	{
-		delete lib;
-		return false;
-	}
+	return csv.WriteFile( db_file );
 }
 
-bool ScanWindResourceData()
+bool ScanWindResourceData( const wxString &db_file )
 {
 	wxString path = SamApp::GetRuntimePath() + "../wind_resource/";
 	wxDir dir(path);
@@ -761,17 +749,5 @@ bool ScanWindResourceData()
 		has_more = dir.GetNext(&file);
 	}
 
-	csv.WriteFile(wxGetUserHome() + "/WindResourceData.csv");
-
-	Library *lib = new Library;
-	if (lib->Read(csv, "WindResourceData"))
-	{
-		gs_libs.m_libs.push_back(lib);
-		return true;
-	}
-	else
-	{
-		delete lib;
-		return false;
-	}
+	return csv.WriteFile( db_file );
 }

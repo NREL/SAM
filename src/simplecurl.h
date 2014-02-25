@@ -62,7 +62,9 @@ public:
 	virtual ~wxSimpleCurlDownloadThread();
 
 	void Start( const wxString &url );
-	wxString GetData();
+	wxString GetDataAsString();
+	wxImage GetDataAsImage( int bittype = wxBITMAP_TYPE_JPEG );
+	bool WriteDataToFile( const wxString &file );
 
 	bool Finished();
 	void Abort();
@@ -76,7 +78,8 @@ public:
 
 protected:
 	DLThread *m_thread;
-	bool m_started;
+	wxEvtHandler *m_handler;
+	int m_id;
 };
 
 // app-wide init and shutdown calls for underlying libcurl initialization

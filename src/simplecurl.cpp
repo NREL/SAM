@@ -1,5 +1,9 @@
 
 #include <curl/curl.h>
+#include <wx/ffile.h>
+#include <wx/wfstream.h>
+#include <wx/mstream.h>
+#include <wx/buffer.h>
 
 #include "simplecurl.h"
 #include <wx/wx.h>
@@ -21,9 +25,8 @@ private:
 	wxString m_url;
 	CURLcode m_resultCode;
 
-	wxString m_data;
+	wxMemoryBuffer m_data;
 	wxMutex m_dataLock;
-	wxStringOutputStream m_stream;
 
 	bool m_threadDone;
 	wxMutex m_threadDoneLock;
@@ -33,18 +36,19 @@ private:
 
 public:
 	DLThread( wxEvtHandler *handler, int id, 
-		wxSimpleCurlDownloadThread *cobj, const wxString &url )
+		wxSimpleCurlDownloadThread *cobj )
 		: wxThread( wxTHREAD_JOINABLE ),
 			m_handler(handler),
 			m_id(id),
 			m_simpleCurl(cobj),
-			m_url(url),
 			m_resultCode( CURLE_OK ),
-			m_stream(&m_data),
 			m_threadDone(false),
 			m_canceled(false)
 	{
+		
+
 	}
+	
 
 	void SetUrl( const wxString &url ) { m_url = url; }
 	int GetHandlerId() { return m_id; }
@@ -54,21 +58,43 @@ public:
 
 	size_t Write( void *p, size_t len )
 	{
-		size_t last = 0;
 		m_dataLock.Lock();
-		m_stream.Write(p, len);
-		last = m_stream.LastWrite();
+		m_data.AppendData( p, len );
 		m_dataLock.Unlock();
-		return last;
+		return len;
 	}
 
-	wxString GetData() {
+	wxString GetDataAsString()
+	{
 		wxString d;
 		m_dataLock.Lock();
-		d = m_data;
+		
+		wxStringOutputStream sstream(&d);
+		sstream.Write( m_data.GetData(), m_data.GetDataLen() );
+
 		m_dataLock.Unlock();
 		return d;
 	}
+
+	wxImage GetDataAsImage( int bittype )
+	{
+		m_dataLock.Lock();
+		wxMemoryInputStream stream( m_data.GetData(), m_data.GetDataLen() );
+		wxImage img;
+		img.LoadFile(stream, bittype);
+		m_dataLock.Unlock();
+		return img;
+	}
+
+	bool WriteDataToFile( const wxString &file )
+	{
+		m_dataLock.Lock();
+		wxFFileOutputStream ff( file, "wb" );
+		if ( ff.IsOk() )
+			ff.Write( m_data.GetData(), m_data.GetDataLen() );
+		m_dataLock.Unlock();
+		return ff.IsOk();
+	}	
 
 	virtual void *Entry()
 	{
@@ -91,14 +117,15 @@ public:
 			m_resultCode = curl_easy_perform(curl);
 			curl_easy_cleanup(curl);
 
-			// issue finished event
-			wxSimpleCurlEvent evt( GetHandlerId(), wxSIMPLECURL_EVENT, 
-				wxSimpleCurlEvent::FINISHED, "finished", m_url );
-			wxPostEvent( GetEvtHandler(), evt );
 
 			m_threadDoneLock.Lock();
 			m_threadDone = true;
 			m_threadDoneLock.Unlock();
+
+			// issue finished event
+			wxSimpleCurlEvent evt( GetHandlerId(), wxSIMPLECURL_EVENT, 
+				wxSimpleCurlEvent::FINISHED, "finished", m_url );
+			wxPostEvent( GetEvtHandler(), evt );
 		}
 		
 		return 0;
@@ -128,45 +155,57 @@ public:
 
 
 wxSimpleCurlDownloadThread::wxSimpleCurlDownloadThread( wxEvtHandler *handler, int id )
+	: m_handler( handler ), m_id( id ), m_thread( 0 )
 {
-	m_started = false;
-	m_thread = new DLThread( handler, id, this, wxEmptyString );
+	m_thread = 0;
 }
 
 wxSimpleCurlDownloadThread::~wxSimpleCurlDownloadThread()
 {
-	if ( IsStarted() && !Finished())
+	if ( m_thread && !m_thread->IsDone() )
 		Abort();
 
-	delete m_thread;
+	if ( m_thread ) delete m_thread;
 }
 
 void wxSimpleCurlDownloadThread::Start( const wxString &url )
 {
+	if ( m_thread != 0 ) delete m_thread;
+
+	m_thread = new DLThread( m_handler, m_id, this );
 	m_thread->SetUrl( url );
 	m_thread->Create();
 	m_thread->Run();
-	m_started = true;
 }
 
 bool wxSimpleCurlDownloadThread::IsStarted()
 {
-	return m_started;
+	return (m_thread!=0 && !m_thread->IsDone());
 }
 
-wxString wxSimpleCurlDownloadThread::GetData()
+wxString wxSimpleCurlDownloadThread::GetDataAsString()
 {
-	return m_thread->GetData();
+	return m_thread->GetDataAsString();
+}
+
+wxImage wxSimpleCurlDownloadThread::GetDataAsImage( int bittype )
+{
+	return m_thread->GetDataAsImage( bittype );
+}
+
+bool wxSimpleCurlDownloadThread::WriteDataToFile( const wxString &file )
+{
+	return m_thread->WriteDataToFile( file );
 }
 
 bool wxSimpleCurlDownloadThread::Finished()
 {
-	return m_thread->IsDone() && !m_thread->IsRunning();
+	return (m_thread != 0 && m_thread->IsDone() && !m_thread->IsRunning() );
 }
 
 void wxSimpleCurlDownloadThread::Abort()
 {
-	if (IsStarted() && !Finished())
+	if (m_thread != 0 && IsStarted() && !Finished())
 	{
 		m_thread->Cancel();
 		m_thread->Wait();
