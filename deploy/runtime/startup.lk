@@ -107,6 +107,9 @@ function setup_csp_physical_trough_pages()
 	 {'name'='Receiver (HCE) Type 3', 'caption'='Receiver Type 3', 'collapsible'=true, 'collapsible_var'='hce_3_is_shown'},
 	 {'name'='Receiver (HCE) Type 4', 'caption'='Receiver Type 4', 'collapsible'=true, 'collapsible_var'='hce_4_is_shown'} ]],
 	 { 'sidebar'='Receiver (HCEs)' } );
+	addpage( [[ 'DTR Power Block' ]], { 'sidebar'='Power Cycle' } );
+	addpage( [[ 'DTR Thermal Storage' ]], { 'sidebar'='Thermal Storage' } );
+	addpage( [[ 'DTR Parasitics' ]], { 'sidebar'='Parasitics' } );
 	addpage( [[ 'Annual Performance' ]] );
 }
 
