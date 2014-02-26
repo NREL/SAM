@@ -8,6 +8,9 @@
 #include "library.h"
 #include "invoke.h"
 
+#ifndef MAX
+#define MAX(a, b) ((a) > (b) ? a : b)
+#endif
 
 static void fcall_technology_pCase( lk::invoke_t &cxt )
 {
@@ -23,6 +26,16 @@ static void fcall_financing_pCase( lk::invoke_t &cxt )
 		cxt.result().assign( cc->GetFinancing() );
 }
 
+static void fcall_substance_density_pCase(lk::invoke_t &cxt)
+{
+	LK_DOC("substance_density", "Return the density given a substance ID and temperature in C", "(variant:substanceID, variant:tempC):variant");
+	if (Case *cc = static_cast<Case*>(cxt.user_data()))
+		cxt.result().assign(cc->GetSubstanceDensity(cxt.arg(0).as_unsigned(), cxt.arg(1).as_number()));
+	else
+		cxt.result().assign(0.0);
+}
+
+
 CaseEvaluator::CaseEvaluator( Case *cc, VarTable &vars, EqnFastLookup &efl )
 	: EqnEvaluator( vars, efl )
 {
@@ -37,6 +50,7 @@ void CaseEvaluator::SetupEnvironment( lk::env_t &env )
 	env.register_func( fcall_technology_pCase, m_case );
 	env.register_func( fcall_financing_pCase, m_case );
 	env.register_funcs( invoke_ssc_funcs() );
+	env.register_func( fcall_substance_density_pCase, m_case);
 }
 	
 int CaseEvaluator::CalculateAll()
@@ -478,4 +492,144 @@ wxString Case::RetrieveNote( const wxString &id )
 void Case::SaveNote( const wxString &id, const wxString &text )
 {
 	m_notes[id] = text;
+}
+
+double Case::GetSubstanceDensity(size_t substanceID, double tempC) const
+{
+	/*
+	This function accepts as inputs temperature [K] and pressure [Pa]
+	This function outputs density in units of [kg/m^3]
+	*/
+	double T = tempC + 273.15; // C to K
+	double v, R_air;
+	double P = 1.0; // default pressure used 1Pa
+	double density = 1.0; // default - Type 229=0, Type 805=1
+
+	switch (substanceID)
+	{
+	case 1: //   1.) Air
+		R_air = 287; // Gas constant [J/kg-K]
+		v = R_air*T / P;
+		density = 1.0 / v;
+		break;
+	case 2: //   2.) Stainless_AISI316
+		density = 8349.38 - 0.341708*T - 0.0000865128*T*T; // !EES
+		break;
+	case 3: //   3.) Water (liquid)
+		break;
+	case 4: //   4.) Steam
+		break;
+	case 5: //   5.) CO2
+		break;
+	case 6: //   6.) Salt (68% KCl, 32% MgCl2)
+		density = 1E-10*T*T*T - 3E-07*T*T - 0.4739*T + 2384.2;
+		break;
+	case 7: //   7.) Salt (8% NaF, 92% NaBF4)
+		density = 8E-09*T*T*T - 2E-05*T*T - 0.6867*T + 2438.5;
+		break;
+	case 8: //   8.) Salt (25% KF, 75% KBF4)
+		density = 2E-08*T*T*T - 6E-05*T*T - 0.7701*T + 2466.1;
+		break;
+	case 9: //   9.) Salt (31% RbF, 69% RbBF4)
+		density = -1E-08*T*T*T + 4E-05*T*T - 1.0836*T + 3242.6;
+		break;
+	case 10: //   10.) Salt (46.5% LiF, 11.5%NaF, 42%KF)
+		density = -2E-09*T*T*T + 1E-05*T*T - 0.7427*T + 2734.7;
+		break;
+	case 11: //   11.) Salt (49% LiF, 29% NaF, 29% ZrF4)
+		density = -2E-11*T*T*T + 1E-07*T*T - 0.5172*T + 3674.3;
+		break;
+	case 12: //   12.) Salt (58% KF, 42% ZrF4)
+		density = -6E-10*T*T*T + 4E-06*T*T - 0.8931*T + 3661.3;
+		break;
+	case 13: //   13.) Salt (58% LiCl, 42% RbCl)
+		density = -8E-10*T*T*T + 1E-06*T*T - 0.689*T + 2929.5;
+		break;
+	case 14: //   14.) Salt (58% NaCl, 42% MgCl2)
+		density = -5E-09*T*T*T + 2E-05*T*T - 0.5298*T + 2444.1;
+		break;
+	case 15: //   15.) Salt (59.5% LiCl, 40.5% KCl)
+		density = 1E-09*T*T*T - 5E-06*T*T - 0.864*T + 2112.6;
+		break;
+	case 16: //   16.) Salt (59.5% NaF, 40.5% ZrF4)
+		density = -5E-09*T*T*T + 2E-05*T*T - 0.9144*T + 3837.0;
+		break;
+	case 17: //   17.) Salt (60% NaNO3, 40% KNO3)
+		density = -1E-07*T*T*T + 0.0002*T*T - 0.7875*T + 2299.4;
+		density = MAX(density, 1000.0);
+		break;
+		/*
+		case(18:25) !  18-25.) Call trough properties
+		density = Dens_fluid((T-273.15),int(Fnumd)) !Trough calcs take fluid properties in degC, not K
+		*/
+	case 18: //   18.) Nitrate Salt** type 805 dens_salt(Tc)
+		density = 2090 - 0.636 * tempC;
+		density = MAX(density, 1000.0);
+		break;
+	case 19: //   19.) Caloria HT 43** type 805 dens_caloria(tempC)
+		density = 885 - 0.6617 * tempC - 0.0001265 * tempC*tempC;
+		density = MAX(density, 100.0);
+		break;
+	case 20: //   20.) Hitec XL** type 805 dens_salt_xl(tempC)
+		density = 2240 - 0.8266 * tempC;
+		density = MAX(density, 800.0);
+		break;
+	case 21: //   21.) Therminol VP-1** type 805 dens_therminol(tempC)
+		density = 1074.0 - 0.6367 * tempC - 0.0007762 * tempC*tempC;
+		density = MAX(density, 400.0);
+		break;
+	case 22: //   22.) Hitec** type 805 dens_salt_hitec(tempC)
+		density = 2080 - 0.733 * tempC;
+		density = MAX(density, 1000.0);
+		break;
+	case 23: //   23.) Dowtherm Q** type 805 dens_Dowtherm_Q(tempC)
+		density = -0.757332 * tempC + 980.787;
+		density = MAX(density, 100.0);
+		break;
+	case 24: //   24.) Dowtherm RP** type 805 dens_Dowtherm_RP(tempC)
+		//density = -0.000186495 * tempC*tempC - 0.668337 * T + 1042.11;
+		density = -0.000186495 * tempC*tempC - 0.668337 * tempC + 1042.11; // changed from above when the function was added to SAMnt (as per email from Ty, Feb 23, 2014)
+		density = MAX(density, 200.0);
+		break;
+	case 25: //   25.) Salt XL** type 805 dens_salt_xl(tempC)
+		density = 2240 - 0.8266 * tempC;
+		density = MAX(density, 800.0);
+		break;
+	case 26: //   26.) Argon (ideal gas properties)
+		density = P / (208.13*T);
+		density = MAX(density, 1e-10);
+		break;
+	case 27: //   27.) Hydrogen (ideal gas properties)
+		density = P / (4124.*T);
+		density = MAX(density, 1e-10);
+		break;
+	case 28: //   28.) T-91 Steel: "Thermo hydraulic optimisation of the EURISOL DS target" - Paul Scherrer Institut
+		density = -0.3289*tempC + 7742.5;
+		break;
+	case 29: //   29.) Therminol 66: Reference: Therminol Reference Disk by Solutia: www.therminol.com/pages/tools/toolscd.asp
+		density = -0.7146*tempC + 1024.8;
+		break;
+	case 30: //   30.) Therminol 59: Reference: Therminol Reference Disk by Solutia: www.therminol.com/pages/tools/toolscd.asp
+		density = -0.0003*tempC*tempC - 0.6963*tempC + 988.44;
+		break;
+	case 31: //   31.) -blank-
+	case 32: //   32.) -blank-
+	case 33: //   33.) -blank-
+	case 34: //   34.) -blank-
+	case 35: //   35.) -blank-
+		break;
+	case 36: //   36+) User specified (lookup tables)
+		/*
+		!Call the user-defined property table
+		lb=fl_bounds(fnum-35)
+		ub=fl_bounds(fnum-35+1)-1
+		if(ub.lt.lb) ub=size(fprop(1,:))
+		dxx(:)=fprop(1,lb:ub)
+		dyy(:)=fprop(3,lb:ub)
+		call interp(T,size(dxx),dxx,dyy,Gjsav,Density)
+		if((Gjsav.eq.ub).or.(Gjsav.eq.lb)) dum=t_warn(T,dxx(lb),dxx(ub),"User-specified fluid")
+		*/
+		break;
+	}
+	return density;
 }
