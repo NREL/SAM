@@ -562,7 +562,7 @@ void sscvar_to_lkvar( lk::vardata_t &out, const char *name, ssc_data_t p_dat )
 }
 
 
-class lkSSCdataObj : public lk::objref_t
+class lkSSCdataObj
 {
 	ssc_data_t m_data;
 public:
@@ -570,78 +570,66 @@ public:
 	lkSSCdataObj() {
 		m_data = ssc_data_create();
 	}
-	virtual ~lkSSCdataObj() {
+	
+	~lkSSCdataObj() {
 		ssc_data_free( m_data );
 	}
-
-	virtual lk_string type_name() {
-		return lk_string("lkSSCdataObj");
-	}
-
+	
 	operator ssc_data_t() { 
 		return m_data;
 	}
 };
 
-static void fcall_ssc_data_create( lk::invoke_t &cxt )
-{
-	LK_DOC( "ssc_data_create", "Creates a new SSC data context", "(void):reference");
-	cxt.result().assign( (double)cxt.env()->insert_object( new lkSSCdataObj ) );
-}
+static lkSSCdataObj sg_sscData;
 
-static void fcall_ssc_data_free( lk::invoke_t &cxt )
-{
-	LK_DOC( "ssc_data_free", "Frees an exist SSC data context", "(reference):none");
-	if ( lkSSCdataObj *p = dynamic_cast<lkSSCdataObj*>(cxt.env()->query_object( cxt.arg(0).as_integer() ) ) )
-		cxt.env()->destroy_object( p );
-}
 
 void fcall_ssc_var( lk::invoke_t &cxt )
 {
 	LK_DOC2( "ssc_var", "Sets or gets a variable value in the SSC data set.", 
-		"Set a variable value.", "(reference:data, string:name, variant:value):none", 
-		"Get a variable value", "(reference:data, string:name):variant" );
-	
-	if ( lkSSCdataObj *p = dynamic_cast<lkSSCdataObj*>(cxt.env()->query_object( cxt.arg(0).as_integer() ) ) )
-	{
-		wxString name = cxt.arg(1).as_string();
-		if (cxt.arg_count() == 1)
-			sscvar_to_lkvar( cxt.result(), name, *p );
-		else if (cxt.arg_count() == 2)
-			lkvar_to_sscvar( *p, name, cxt.arg(2).deref() );
-	}
+		"Set a variable value.", "(string:name, variant:value):none", 
+		"Get a variable value", "(string:name):variant" );
+
+	wxString name = cxt.arg(0).as_string();
+	if (cxt.arg_count() == 1)
+		sscvar_to_lkvar( cxt.result(), name, sg_sscData );
+	else if (cxt.arg_count() == 2)
+		lkvar_to_sscvar( sg_sscData, name, cxt.arg(1).deref() );
+}
+void fcall_ssc_reset( lk::invoke_t &cxt )
+{
+	LK_DOC( "ssc_reset", "Reset the SSC variables", "( none ):none" );
+
+	ssc_data_clear( sg_sscData );
 }
 
 void fcall_ssc_exec( lk::invoke_t &cxt )
 {
-	LK_DOC( "ssc_exec", "Run a compute module with the provided data context. returns zero if successful", "( string:modules, reference:data ):variant" );
+	LK_DOC( "ssc_exec", "Run a compute module with the provided data context. returns zero if successful", "( string:module ):variant" );
 
 	cxt.result().assign( -999.0 );
-	if ( lkSSCdataObj *data = dynamic_cast<lkSSCdataObj*>(cxt.env()->query_object( cxt.arg(0).as_integer() ) ) )
+
+	if ( ssc_module_t mod = ssc_module_create( cxt.arg(0).as_string().c_str() ) )
 	{
-		if ( ssc_module_t mod = ssc_module_create( cxt.arg(0).as_string().c_str() ) )
+		if( ssc_module_exec( mod, sg_sscData ) )
 		{
-			if( ssc_module_exec( mod, *data ) )
-			{
-				cxt.result().assign( 0.0 );
-			}
-			else
-			{
-				lk_string errors;
-				int idx=0;
-				int ty = 0;
-				float tm = 0;
-				while ( const char *msg = ssc_module_log( mod, idx++, &ty, &tm ) )
-				{
-					errors += lk_string(msg);
-				}
-
-				cxt.result().assign( errors );
-			}
-
-			ssc_module_free( mod );
+			cxt.result().assign( 0.0 );
 		}
-	}	
+		else
+		{
+			lk_string errors;
+			int idx=0;
+			int ty = 0;
+			float tm = 0;
+			while ( const char *msg = ssc_module_log( mod, idx++, &ty, &tm ) )
+			{
+				errors += lk_string(msg);
+			}
+
+			cxt.result().assign( errors );
+		}
+
+		ssc_module_free( mod );
+	}
 }
 
 lk::fcall_t* invoke_general_funcs()
@@ -649,8 +637,14 @@ lk::fcall_t* invoke_general_funcs()
 	static const lk::fcall_t vec[] = {
 		fcall_logmsg,
 		fcall_browse,
-		fcall_ssc_data_create,
-		fcall_ssc_data_free,
+		0 };
+	return (lk::fcall_t*)vec;
+}
+
+lk::fcall_t* invoke_ssc_funcs()
+{
+	static const lk::fcall_t vec[] = {
+		fcall_ssc_reset,
 		fcall_ssc_var,
 		fcall_ssc_exec,
 		0 };

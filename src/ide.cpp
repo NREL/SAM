@@ -757,6 +757,7 @@ UIEditorPanel::UIEditorPanel( wxWindow *parent )
 	m_callbackScript = new wxLKScriptCtrl( scripts_panel, ID_CALLBACK_EDITOR ); // by default registers all LK stdlib functions
 	m_callbackScript->RegisterLibrary( invoke_general_funcs(), "Callback UI Functions" );
 	m_callbackScript->RegisterLibrary( invoke_uicallback_funcs(), "Callback UI Functions" );
+	m_callbackScript->RegisterLibrary( invoke_ssc_funcs(), "SSC Functions" );
 	wxBoxSizer *sz_scripts_left = new wxBoxSizer( wxVERTICAL );
 	sz_scripts_left->Add( sz_callback_tools, 0, wxALL|wxEXPAND, 2 );
 	sz_scripts_left->Add( m_callbackScript, 1, wxALL|wxEXPAND, 0 );
@@ -772,6 +773,8 @@ UIEditorPanel::UIEditorPanel( wxWindow *parent )
 	m_equationScript = new wxLKScriptCtrl( scripts_panel, ID_EQUATION_EDITOR, wxDefaultPosition, wxDefaultSize,
 		wxLK_STDLIB_BASIC | wxLK_STDLIB_STRING | wxLK_STDLIB_MATH | wxLK_STDLIB_WXUI  );
 	m_equationScript->RegisterLibrary( invoke_equation_stubs(), "Case Information", 0 );
+	m_equationScript->RegisterLibrary( invoke_ssc_funcs(), "SSC Functions", 0 );
+
 	wxBoxSizer *sz_scripts_right = new wxBoxSizer( wxVERTICAL );
 	sz_scripts_right->Add( sz_equation_tools, 0, wxALL|wxEXPAND, 2 );
 	sz_scripts_right->Add( m_equationScript, 1, wxALL|wxEXPAND, 0 );
