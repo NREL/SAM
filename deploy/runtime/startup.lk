@@ -119,7 +119,7 @@ setup_csp_physical_trough_pages();
 
 setconfig( 'Test Only', 'None' );
 addpage( [[ 'Test 1' ]] );
-addpage( [[ 'Location' ]] );
+//addpage( [[ 'Location' ]] );
 
 
 setconfig( 'Flat Plate PV', 'Residential' );

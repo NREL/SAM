@@ -503,6 +503,11 @@ bool ActiveInputPage::DataExchange( wxUIObject *obj, VarValue &val, DdxDir dir )
 		}
 		else val.Set( ll->GetEntrySelection() );
 	}
+	else if ( AFHourlyFactorCtrl *hf = obj->GetNative<AFHourlyFactorCtrl>() )
+	{
+		if ( dir == VAR_TO_OBJ ) hf->Read( &val );
+		else hf->Write( &val );
+	}
 	else return false; // object data exch not handled for this type
 
 	return true;  // all ok!
