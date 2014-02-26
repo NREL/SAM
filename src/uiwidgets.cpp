@@ -2264,8 +2264,152 @@ void AFMonthByHourFactorCtrl::DispatchEvent()
 	GetEventHandler()->ProcessEvent(change);
 }
 
+enum { ID_ENABLE_HOURLY = ::wxID_HIGHEST+999  };
+
+class HourlyFactorDialog : public wxDialog
+{
+	wxScrolledWindow *m_scrollWin;
+	wxNumericCtrl *m_factor;
+
+	wxCheckBox *m_enableHourly;
+	AFDataArrayButton *m_hourly;
+public:
+	HourlyFactorDialog( wxWindow *parent )
+		: wxDialog( parent, wxID_ANY, "Edit Hourly Factors", wxDefaultPosition, wxSize(400,450), wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER )
+	{
+		SetEscapeId( wxID_CANCEL );
+
+		m_scrollWin = new wxScrolledWindow( this, wxID_ANY );
+		m_scrollWin->SetScrollRate( 50, 50 );
+		
+		m_factor = new wxNumericCtrl( m_scrollWin, wxID_ANY );
+		
+		m_enableHourly = new wxCheckBox( m_scrollWin, ID_ENABLE_HOURLY, "Enable hourly beam irradiance shading factors" );
+		m_hourly = new AFDataArrayButton( m_scrollWin, wxID_ANY );
+		m_hourly->SetMode( DATA_ARRAY_8760_ONLY );
+
+		wxSizer *scroll = new wxBoxSizer( wxVERTICAL );
+		
+		scroll->Add( new wxStaticText( m_scrollWin, wxID_ANY, "Constant adjustment factor (0..1)"), 0, wxALL|wxEXPAND, 5 );
+		scroll->Add( m_factor, 0, wxALL, 5 );
+		scroll->Add( new wxStaticLine( m_scrollWin ), 0, wxALL|wxEXPAND );
+		
+		scroll->Add( m_enableHourly, 0, wxALL|wxEXPAND, 5 );
+		scroll->Add( m_hourly, 0, wxALL, 5 );
+		
+		m_scrollWin->SetSizer( scroll );
+
+		wxSizer *box = new wxBoxSizer(wxVERTICAL);
+		box->Add( m_scrollWin, 1, wxALL|wxEXPAND );
+		box->Add( CreateButtonSizer( wxOK|wxCANCEL ), 0, wxALL|wxEXPAND, 5 );
+		SetSizer( box );
+
+		UpdateVisibility();
+	}
+
+	
+	void UpdateVisibility()
+	{
+		m_hourly->Show( m_enableHourly->IsChecked() );
+
+		m_scrollWin->FitInside();
+		m_scrollWin->Refresh();
+	}
+
+	void Set( const AFHourlyFactorCtrl::FactorData &data )
+	{
+		m_factor->SetValue( data.factor );
+		m_enableHourly->SetValue( data.en_hourly );
+		m_hourly->Set( data.hourly );
+		UpdateVisibility();
+	}
+
+	void Get( AFHourlyFactorCtrl::FactorData &data )
+	{
+		data.factor = (float)m_factor->Value();
+		data.en_hourly = m_enableHourly->GetValue();
+		data.hourly = m_hourly->Get();
+	}
+	
+	void OnCommand( wxCommandEvent &e )
+	{
+		switch( e.GetId() )
+		{
+		case ID_ENABLE_HOURLY:
+			UpdateVisibility();
+			break;
+		}
+	}
+	
+	
+	void OnClose( wxCloseEvent & )
+	{
+		EndModal( wxID_CANCEL );
+	}
+
+	DECLARE_EVENT_TABLE();
+};
+
+BEGIN_EVENT_TABLE( HourlyFactorDialog, wxDialog )
+	EVT_CLOSE( HourlyFactorDialog::OnClose )
+	EVT_CHECKBOX( ID_ENABLE_HOURLY, HourlyFactorDialog::OnCommand )
+END_EVENT_TABLE()
 
 
+
+AFHourlyFactorCtrl::AFHourlyFactorCtrl( wxWindow *parent, int id,
+	const wxPoint &pos, const wxSize &size)
+	: wxButton( parent, id, "Edit", pos, size )
+{
+	m_data.factor = 1.0f;
+	m_data.en_hourly = false;
+	m_data.hourly.resize( 8760, 1.0f );
+	m_data.en_periods = false;
+	m_data.periods.resize_fill( 1, 3, 1.0f );
+}
+
+void AFHourlyFactorCtrl::Write( VarValue *vv )
+{
+	vv->SetType( VV_TABLE );
+	VarTable &tab = vv->Table();
+
+	tab.Set( "factor", VarValue( m_data.factor ) );
+	tab.Set( "en_hourly", VarValue( (bool)m_data.en_hourly ) );
+	tab.Set( "hourly", VarValue( m_data.hourly ) );
+	tab.Set( "en_periods", VarValue( (bool)m_data.en_periods ) );
+	tab.Set( "periods", VarValue( m_data.periods ) );
+}
+
+bool AFHourlyFactorCtrl::Read( VarValue *root )
+{
+	if ( root->Type() == VV_TABLE )
+	{
+		VarTable &tab = root->Table();
+		if ( VarValue *vv = tab.Get("factor") ) m_data.factor = vv->Value();
+		if ( VarValue *vv = tab.Get("en_hourly") ) m_data.en_hourly = vv->Boolean();
+		if ( VarValue *vv = tab.Get("hourly") ) m_data.hourly = vv->Array();
+		if ( VarValue *vv = tab.Get("en_periods") ) m_data.en_periods = vv->Boolean();
+		if ( VarValue *vv = tab.Get("periods") ) m_data.periods = vv->Matrix();
+		return true;
+	}
+	else
+		return false;
+}
+
+void AFHourlyFactorCtrl::OnPressed( wxCommandEvent &evt )
+{
+	HourlyFactorDialog dlg( this );
+	dlg.Set( m_data );
+	if ( dlg.ShowModal() == wxID_OK )
+	{
+		dlg.Get( m_data );
+		evt.Skip(); // allow event to propagate indicating underlying value changed
+	}
+}
+
+BEGIN_EVENT_TABLE( AFHourlyFactorCtrl, wxButton )
+	EVT_BUTTON( wxID_ANY, AFHourlyFactorCtrl::OnPressed )
+END_EVENT_TABLE()
 
 
 
@@ -2765,6 +2909,32 @@ public:
 
 };
 
+
+class wxUIHourlyFactorCtrl : public wxUIObject 
+{
+public:
+	wxUIHourlyFactorCtrl() {
+		AddProperty("TabOrder", new wxUIProperty( (int)-1 ) );
+	}
+	virtual wxString GetTypeName() { return "HourlyFactor"; }
+	virtual wxUIObject *Duplicate() { wxUIObject *o = new wxUIHourlyFactorCtrl; o->Copy( this ); return o; }
+	virtual bool IsNativeObject() { return true; }
+	virtual bool DrawDottedOutline() { return false; }
+	virtual wxWindow *CreateNative( wxWindow *parent ) {
+		return AssignNative( new AFHourlyFactorCtrl( parent, wxID_ANY ) );
+	}
+	virtual void Draw( wxWindow *win, wxDC &dc, const wxRect &geom )
+	{
+		wxRendererNative::Get().DrawPushButton( win, dc, geom );
+		dc.SetFont( *wxNORMAL_FONT );
+		dc.SetTextForeground( *wxBLACK );
+		wxString label("Edit...");
+		int x, y;
+		dc.GetTextExtent( label, &x, &y );
+		dc.DrawText( label, geom.x + geom.width/2-x/2, geom.y+geom.height/2-y/2 );
+	}
+};
+
 void RegisterUIWidgetsForSAM()
 {
 	wxUIObjectTypeProvider::Register( new wxUISchedNumericObject );
@@ -2781,7 +2951,7 @@ void RegisterUIWidgetsForSAM()
 	wxUIObjectTypeProvider::Register( new wxUIValueMatrixObject );
 	wxUIObjectTypeProvider::Register( new wxUIMonthByHourFactorCtrl );
 	wxUIObjectTypeProvider::Register( new wxUILibraryCtrl );
-
+	wxUIObjectTypeProvider::Register( new wxUIHourlyFactorCtrl );
 /* TODO LIST 
 { GUI_ADD_CONTROL_ID+26, "DataGridBtn",      "AFValueMatrixButton",         datagridbtn_xpm, CTRL_NATIVE,  10, 15, 100, 21,   props_AFValueMatrixButton,  NULL,       objinit_AFValueMatrixButton, objfree_AFValueMatrixButton, nativesetprop_AFValueMatrixButton, paint_AFValueMatrixButton, iswithin_default,   nativeevt_AFValueMatrixButton, vartoctrl_AFValueMatrixButton, ctrltovar_AFValueMatrixButton, false },
 { GUI_ADD_CONTROL_ID+28, "AFDataArrayButton",  "AFDataArrayButton",        dataarraybtn_xpm,CTRL_NATIVE,  10, 15, 110, 21,   props_AFDataArrayButton, NULL,       objinit_AFDataArrayButton,objfree_AFDataArrayButton,nativesetprop_AFDataArrayButton,paint_AFDataArrayButton,iswithin_default,   nativeevt_AFDataArrayButton,vartoctrl_AFDataArrayButton,ctrltovar_AFDataArrayButton,false },

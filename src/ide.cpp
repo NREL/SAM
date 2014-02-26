@@ -688,7 +688,7 @@ UIEditorPanel::UIEditorPanel( wxWindow *parent )
 
 	
 	m_varList = new wxCheckListBox( this, ID_VAR_LIST, wxDefaultPosition, wxDefaultSize, 0, 0, wxLB_SINGLE|wxBORDER_NONE );
-	m_varName = new wxExtTextCtrl( this, ID_VAR_NAME, wxEmptyString );
+	m_varName = new wxExtTextCtrl( this, ID_VAR_NAME, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxTE_PROCESS_ENTER );
 	wxString strtypes[] = { "Invalid", "Number", "Array", "Matrix", "String", "Table" };
 	m_varType = new wxChoice( this, ID_VAR_TYPE, wxDefaultPosition, wxDefaultSize, 6, strtypes );
 	m_varLabel = new wxExtTextCtrl( this, ID_VAR_LABEL, wxEmptyString );
@@ -1016,7 +1016,9 @@ void UIEditorPanel::OnCommand( wxCommandEvent &evt )
 						m_ipd.Variables().Add( name, VV_MATRIX );
 					else if ( type == "MonthByHourFactors" )
 						m_ipd.Variables().Add( name, VV_MATRIX );
-
+					else if ( type == "HourlyFactor" )
+						m_ipd.Variables().Add( name, VV_TABLE );
+					
 					// extend this list in the future for additional controls
 				}
 			}
@@ -1072,10 +1074,9 @@ void UIEditorPanel::OnCommand( wxCommandEvent &evt )
 	case ID_VAR_NAME:
 		if ( m_curVar )
 		{
-			if ( m_curVar->Name == m_varName->GetValue() )
-				return;
+			wxString new_name = m_varName->GetValue();
 
-			if ( m_ipd.Variables().Lookup( m_varName->GetValue() ) )
+			if ( m_ipd.Variables().Lookup( new_name ) )
 			{
 				wxMessageBox("that variable already exists: " + m_varName->GetValue(), "notice", wxOK, this );
 				m_varName->ChangeValue( m_curVar->Name );
@@ -1083,11 +1084,13 @@ void UIEditorPanel::OnCommand( wxCommandEvent &evt )
 				return;
 			}
 
-			if ( m_ipd.Variables().Rename( m_curVar->Name, m_varName->GetValue() ) )
+			if ( m_ipd.Variables().Rename( m_curVar->Name, new_name ) )
 			{
-				m_curVar->Name = m_varName->GetValue();
-				LoadVarList( m_curVar->Name );
+				m_curVar->Name = new_name;
+				LoadVarList( new_name );
 			}
+			else
+				wxMessageBox("failed to rename: " + m_curVar->Name + " --> " + new_name );
 		}
 		break;
 	case ID_VAR_LABEL:
@@ -1268,7 +1271,14 @@ void UIEditorPanel::VarInfoToForm( VarInfo *vv )
 
 	if ( vv )
 	{
+		if ( vv->Name != m_varList->GetStringSelection() )
+		{
+			wxMessageBox("will resolve discrepancy in variable name: " + vv->Name + " != " + m_varList->GetStringSelection() );
+			vv->Name = m_varList->GetStringSelection();
+		}
+		
 		m_varName->ChangeValue( vv->Name );
+
 		m_varType->SetSelection( vv->Type );
 		m_varLabel->ChangeValue( vv->Label );
 		m_varUnits->ChangeValue( vv->Units );
