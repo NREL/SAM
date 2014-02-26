@@ -632,6 +632,15 @@ void fcall_ssc_exec( lk::invoke_t &cxt )
 	}
 }
 
+static void fcall_substance_density(lk::invoke_t &cxt)
+{
+	LK_DOC("substance_density", "Return the density given a substance ID and temperature in C", "(variant:substanceID, variant:tempC):variant");
+	if (Case *cc = static_cast<Case*>(cxt.user_data()))
+		cxt.result().assign(cc->GetSubstanceDensity(cxt.arg(0).as_unsigned(), cxt.arg(1).as_number()));
+	else
+		cxt.result().assign(0.0);
+}
+
 lk::fcall_t* invoke_general_funcs()
 {
 	static const lk::fcall_t vec[] = {
@@ -675,6 +684,7 @@ lk::fcall_t* invoke_uicallback_funcs()
 		fcall_technology,
 		fcall_financing,
 		fcall_dview,
+		fcall_substance_density,
 		0 };
 	return (lk::fcall_t*)vec;
 }
