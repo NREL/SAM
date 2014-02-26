@@ -52,6 +52,7 @@ bool CallbackContext::Invoke( )
 	local_env.register_funcs( lk::stdlib_wxui(), this );
 	local_env.register_funcs( invoke_general_funcs(), this );
 	local_env.register_funcs( invoke_uicallback_funcs(), this );
+	local_env.register_funcs( invoke_ssc_funcs(), this );
 	local_env.register_funcs( wxLKPlotFunctions() );
 	local_env.register_funcs( wxLKHttpFunctions() );
 	local_env.register_funcs( wxLKMiscFunctions() );

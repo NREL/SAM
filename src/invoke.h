@@ -4,6 +4,7 @@
 #include <lk_env.h>
 
 lk::fcall_t* invoke_general_funcs();
+lk::fcall_t* invoke_ssc_funcs();
 lk::fcall_t* invoke_config_funcs();
 
 // these functions expect a CallbackContext* as user_data
