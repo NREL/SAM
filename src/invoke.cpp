@@ -12,54 +12,54 @@
 #include "invoke.h"
 
 
-enum{ID_DVIEWWIN = wxID_HIGHEST + 256, ID_DVIEWCTRL};
-
 static void fcall_dview(lk::invoke_t &cxt)
 {
-	LK_DOC("dview", "Creates a separate dview viewer for viewing specified data.", "( variant:num_datasets, string:window name, string:data_name1, string:data_units1, variant:multiplier1, variant:data1, [ string:data_name2, string:data_units2, variant:multiplier2, variant:data2], ...):none");
+	LK_DOC("dview", "Creates a separate dview viewer for viewing specified data.", "( number:num_datasets, , number:timestep, string:window name, string:data_name1, string:data_units1, number:multiplier1, variant:data1, [ string:data_name2, string:data_units2, number:multiplier2, variant:data2], ...):none");
 
-	wxString win_name = cxt.arg(0).as_string();
-	wxString var_name1 = cxt.arg(1).as_string();
-	wxString var_units1 = cxt.arg(2).as_string();
-	wxString var_name2 = cxt.arg(3).as_string();
-	wxString var_units2 = cxt.arg(4).as_string();
 
-	lk::vardata_t &plot_data1 = cxt.arg(5);
-	if (plot_data1.length() != 8760) return;
-	lk::vardata_t &plot_data2 = cxt.arg(6);
-	if (plot_data2.length() != 8760) return;
+	int num_datasets = (int)cxt.arg(0).as_number();
+	double timestep = cxt.arg(1).as_number(); // fraction of hour
+	wxString win_name = cxt.arg(2).as_string();
 
-	std::vector<double> data1(8760);
-	std::vector<double> data2(8760);
+	size_t data_length = 8760;
+	if (timestep > 0)
+		data_length /= timestep;
 
-	for (size_t i = 0; i < 8760; i++)
-	{
-		data1[i] = plot_data1.index(i)->as_number();
-		data2[i] = plot_data2.index(i)->as_number();
-	}
-	
+	size_t ndx = 3;
+	if ((4 * num_datasets + ndx) != cxt.arg_count()) return;
+
 	wxDialog *frame;
 	wxDVPlotCtrl *dview;
-//	if (wxWindow::FindWindowById(ID_DVIEWWIN))
 	if (wxWindow::FindWindowByLabel(win_name))
-		{
+	{
 		frame = (wxDialog*)wxWindow::FindWindowByLabel(win_name);
-		dview = (wxDVPlotCtrl *)wxWindow::FindWindowById(ID_DVIEWCTRL);
-//		frame = (wxDialog*)wxWindow::FindWindowById(ID_DVIEWWIN);
-//		dview = (wxDVPlotCtrl *)wxWindow::FindWindowById(ID_DVIEWCTRL);
+		dview = (wxDVPlotCtrl *)frame->FindWindowByName("DVIEW_" + win_name);
 	}
 	else
 	{
-		frame = new wxDialog(wxTheApp->GetTopWindow(), ID_DVIEWWIN, win_name, wxDefaultPosition, wxSize(900, 700));
-		dview = new wxDVPlotCtrl(frame, ID_DVIEWCTRL);
-		double timestep = 1;
-		dview->RemoveAllDataSets();
-		dview->AddDataSet(new wxDVArrayDataSet(var_name1, var_units1, timestep, data1));
-		dview->AddDataSet(new wxDVArrayDataSet(var_name2, var_units2, timestep, data2));
+		frame = new wxDialog(wxTheApp->GetTopWindow(), wxID_ANY, win_name, wxDefaultPosition, wxSize(900, 700));
+		dview = new wxDVPlotCtrl(frame, wxID_ANY);
+		dview->SetName("DVIEW_" + win_name);
+	}
+	// reset data - an compare each dataset if changed instead
+	dview->RemoveAllDataSets();
 
-		dview->SelectDataIndex(0);
+	while (ndx < cxt.arg_count())
+	{ 
+		wxString data_name = cxt.arg(ndx++).as_string();
+		wxString data_units = cxt.arg(ndx++).as_string();
+		double mult = cxt.arg(ndx++).as_number();
+		lk::vardata_t &data = cxt.arg(ndx++);
+		if (data.length() != data_length) return;
+
+		std::vector<double> plot_data(8760);
+		for (size_t i = 0; i < 8760; i++)
+			plot_data[i] = mult * data.index(i)->as_number();
+
+		dview->AddDataSet(new wxDVArrayDataSet(data_name, data_units, timestep, plot_data));
 	}
 
+	dview->SelectDataIndex(0);
 
 	frame->Show();
 }
