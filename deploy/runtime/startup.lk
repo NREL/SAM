@@ -1,10 +1,10 @@
 // SAM startup script.
 
 // define all the configurations
-addconfig( 'PVWatts', [ 'Residential', 'None' ] );
-addconfig( 'Flat Plate PV', [ 'Residential', 'None' ] );
+addconfig( 'PVWatts', [ 'Residential', 'Commercial', 'None' ] );
+addconfig( 'Flat Plate PV', ['Residential', 'Commercial', 'None'] );
 addconfig( 'Test Only', [ 'None' ] );
-addconfig( 'Wind Power', [ 'None' ] );
+addconfig( 'Wind Power', ['Residential', 'Commercial', 'None' ] );
 addconfig( 'Solar Water Heating', ['Residential', 'Commercial', 'None']);
 addconfig( 'Concentrating Solar Power - Physical Trough', ['None']);
 
@@ -14,6 +14,7 @@ function setup_pvwatts_pages()
 {
 	addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource' } );
 	addpage( [[ 'PVWatts' ]], { 'sidebar'='System Design', 'help'='PVWatts' } );
+	addpage( [[ 'Annual Performance' ]] );
 }
 
 function setup_flat_plate_pv_pages()
@@ -95,21 +96,6 @@ function setup_csp_physical_trough_pages()
 {
 	addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource' } );
 	addpage( [[ 'DTR Solar Field' ]], { 'sidebar'='Solar Field' } );
-	addpage( [[ 'Collector (SCA) Header',
-	 {'name'='Collector (SCA) Type 1', 'caption'='Collector Type 1', 'collapsible'=true, 'collapsible_var'='sca_1_is_shown'},
-	 {'name'='Collector (SCA) Type 2', 'caption'='Collector Type 2', 'collapsible'=true, 'collapsible_var'='sca_2_is_shown'},
-	 {'name'='Collector (SCA) Type 3', 'caption'='Collector Type 3', 'collapsible'=true, 'collapsible_var'='sca_3_is_shown'},
-	 {'name'='Collector (SCA) Type 4', 'caption'='Collector Type 4', 'collapsible'=true, 'collapsible_var'='sca_4_is_shown'} ]],
-	 { 'sidebar'='Collector (SCAs)' } );
-	addpage( [[ 'Receiver (HCE) Header',
-	 {'name'='Receiver (HCE) Type 1', 'caption'='Receiver Type 1', 'collapsible'=true, 'collapsible_var'='hce_1_is_shown'},
-	 {'name'='Receiver (HCE) Type 2', 'caption'='Receiver Type 2', 'collapsible'=true, 'collapsible_var'='hce_2_is_shown'},
-	 {'name'='Receiver (HCE) Type 3', 'caption'='Receiver Type 3', 'collapsible'=true, 'collapsible_var'='hce_3_is_shown'},
-	 {'name'='Receiver (HCE) Type 4', 'caption'='Receiver Type 4', 'collapsible'=true, 'collapsible_var'='hce_4_is_shown'} ]],
-	 { 'sidebar'='Receiver (HCEs)' } );
-	addpage( [[ 'DTR Power Block' ]], { 'sidebar'='Power Cycle' } );
-	addpage( [[ 'DTR Thermal Storage' ]], { 'sidebar'='Thermal Storage' } );
-	addpage( [[ 'DTR Parasitics' ]], { 'sidebar'='Parasitics' } );
 	addpage( [[ 'Annual Performance' ]] );
 }
 
@@ -122,27 +108,41 @@ setup_csp_physical_trough_pages();
 
 setconfig( 'Test Only', 'None' );
 addpage( [[ 'Test 1' ]] );
-//addpage( [[ 'Location' ]] );
+addpage( [[ 'Location' ]] );
 
+
+setconfig( 'Flat Plate PV', 'None' );
+setup_flat_plate_pv_pages();
 
 setconfig( 'Flat Plate PV', 'Residential' );
-setmodules( ['pvsamv1']);
+setmodules( ['pvsamv1', 'utilityrate2', 'cashloan']);
 setup_flat_plate_pv_pages();
 addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='PV System Costs' } );
 setup_residential_pages();
 
-setconfig( 'PVWatts', 'Residential' );	
-setmodules( ['pvwattsv1']);
-setup_pvwatts_pages();
-setup_residential_pages();
+setconfig( 'Flat Plate PV', 'Commercial' );
+setmodules( ['pvsamv1', 'utilityrate2', 'cashloan']);
+setup_flat_plate_pv_pages();
+addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='PV System Costs' } );
+setup_commercial_pages();
 
 setconfig( 'PVWatts', 'None' );
 setmodules( ['pvwattsv1']);
 setup_pvwatts_pages();
 
+setconfig( 'PVWatts', 'Residential' );	
+setmodules( ['pvwattsv5',  'utilityrate2', 'cashloan']);
+setup_pvwatts_pages();
+addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='PV System Costs' } );
+setup_residential_pages();
 
-setconfig( 'Flat Plate PV', 'None' );
-setup_flat_plate_pv_pages();
+setconfig( 'PVWatts', 'Commercial' );	
+setmodules( ['pvwattsv5',  'utilityrate2', 'cashloan']);
+setup_pvwatts_pages();
+addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='PV System Costs' } );
+setup_commercial_pages();
+
+
 
 setconfig( 'Wind Power', 'None' );
 setmodules( ['windpower']);
