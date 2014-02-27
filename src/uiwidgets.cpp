@@ -2442,6 +2442,8 @@ public:
 
 		m_sizer->Add( pp.panel, 0, wxALL|wxEXPAND, 2 );
 		Fit();
+		
+		UpdateParentLayout();
 
 		return m_periods[m_periods.size()-1];
 	}
@@ -2452,6 +2454,18 @@ public:
 			m_periods[i].panel->Destroy();
 
 		Fit();
+		UpdateParentLayout();
+	}
+
+	void UpdateParentLayout()
+	{
+		if ( !IsShown() ) return;
+
+		if ( wxScrolledWindow *sw = dynamic_cast<wxScrolledWindow*>( GetParent() ) )
+		{
+			sw->FitInside();
+			sw->Layout();
+		}
 	}
 
 	void OnCommand( wxCommandEvent &evt )
@@ -2466,6 +2480,7 @@ public:
 				{
 					m_periods[i].panel->Destroy();
 					m_periods.erase( m_periods.begin() + i );
+					UpdateParentLayout();
 					break;
 				}
 			}
@@ -2532,6 +2547,7 @@ public:
 		SetEscapeId( wxID_CANCEL );
 
 		m_scrollWin = new wxScrolledWindow( this, wxID_ANY );
+		m_scrollWin->SetBackgroundColour( *wxWHITE );
 		m_scrollWin->SetScrollRate( 50, 50 );
 		
 		m_factor = new wxNumericCtrl( m_scrollWin, wxID_ANY );
