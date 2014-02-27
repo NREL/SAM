@@ -108,7 +108,7 @@ setup_csp_physical_trough_pages();
 
 setconfig( 'Test Only', 'None' );
 addpage( [[ 'Test 1' ]] );
-addpage( [[ 'Location' ]] );
+//addpage( [[ 'Location' ]] );
 
 
 setconfig( 'Flat Plate PV', 'None' );
@@ -127,7 +127,7 @@ addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='PV System Costs'
 setup_commercial_pages();
 
 setconfig( 'PVWatts', 'None' );
-setmodules( ['pvwattsv1']);
+setmodules( ['pvwattsv5']);
 setup_pvwatts_pages();
 
 setconfig( 'PVWatts', 'Residential' );	
