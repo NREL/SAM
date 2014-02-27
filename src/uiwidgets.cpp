@@ -2264,7 +2264,256 @@ void AFMonthByHourFactorCtrl::DispatchEvent()
 	GetEventHandler()->ProcessEvent(change);
 }
 
-enum { ID_ENABLE_HOURLY = ::wxID_HIGHEST+999  };
+static int nday[12] = {31,28,31,30,31,30,31,31,30,31,30,31};
+ /* hour: 0 = jan 1st 12am-1am, returns 1-12 */
+static int month_of(double time)
+{
+	/* returns month number 1..12 given 
+	   time: hour index in year 0..8759 */
+	if (time < 0) return 0;
+	if (time < 744) return 1;
+	if (time < 1416) return 2;
+	if (time < 2160) return 3;
+	if (time < 2880) return 4;
+	if (time < 3624) return 5;
+	if (time < 4344) return 6;
+	if (time < 5088) return 7;
+	if (time < 5832) return 8;
+	if (time < 6552) return 9;
+	if (time < 7296) return 10;
+	if (time < 8016) return 11;
+	if (time < 8760) return 12;
+	return 0;
+}
+ /* month: 1-12 time: hours, starting 0=jan 1st 12am, returns 1-nday*/
+static int day_of_month(int month, double time)
+{
+	int daynum = ( ((int)(time/24.0)) + 1 );   // day goes 1-365
+	switch(month)
+	{
+	case 1: return  daynum;
+	case 2: return  daynum-31;
+	case 3: return  daynum-31-28;
+	case 4: return  daynum-31-28-31;
+	case 5: return  daynum-31-28-31-30;
+	case 6: return  daynum-31-28-31-30-31;
+	case 7: return  daynum-31-28-31-30-31-30;
+	case 8: return  daynum-31-28-31-30-31-30-31;
+	case 9: return  daynum-31-28-31-30-31-30-31-31;
+	case 10: return daynum-31-28-31-30-31-30-31-31-30;
+	case 11: return daynum-31-28-31-30-31-30-31-31-30-31;
+	case 12: return daynum-31-28-31-30-31-30-31-31-30-31-30; 
+	default: break;
+	}
+	return daynum;
+}
+
+static int hours_in_month(int month)
+{	// month=1 for January, 12 for December
+	return ( (month<1) || (month>12) ) ? 0 : nday[month-1]*24;
+}
+
+enum { ID_MONTH_SEL = wxID_HIGHEST+495 };
+
+class HourOfYearPickerCtrl : public wxPanel
+{
+	wxChoice *m_month;
+	wxChoice *m_day;
+	wxChoice *m_hour;
+public:
+	HourOfYearPickerCtrl( wxWindow *win, int id, const wxPoint &pos = wxDefaultPosition, const wxSize &size = wxDefaultSize )
+		: wxPanel( win, id )
+	{
+		wxString months[] = { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" };
+		m_month = new wxChoice( this, ID_MONTH_SEL, wxDefaultPosition, wxDefaultSize, 12, months );
+		m_month->SetSelection( 0 );
+		m_day = new wxChoice( this, wxID_ANY );
+		UpdateDay();
+		m_hour = new wxChoice( this, wxID_ANY );
+		m_hour->Append( "12 am" );
+		for( int i=1;i<=11;i++ ) m_hour->Append( wxString::Format("%d am", i) );
+		m_hour->Append( "12 pm" );
+		for( int i=1;i<=11;i++ ) m_hour->Append( wxString::Format("%d pm", i) );
+		m_hour->SetSelection(12);
+
+		wxSizer *sizer = new wxBoxSizer( wxHORIZONTAL );
+		sizer->Add( m_month, 1, wxALL|wxEXPAND, 2 );
+		sizer->Add( m_day, 0, wxALL|wxEXPAND, 2 );
+		sizer->Add( m_hour, 0, wxALL|wxEXPAND, 2 );
+		SetSizer( sizer );
+	}
+
+	void UpdateDay()
+	{
+		int mo = m_month->GetSelection();
+		int dy = m_day->GetSelection();
+		m_day->Clear();
+		for( int i=1;i<=nday[mo];i++ ) m_day->Append( wxString::Format("%d", i ) );
+		if ( dy < 0 ) dy = 0;
+		if ( dy >= (int)m_day->GetCount() ) dy = m_day->GetCount()-1;
+		m_day->SetSelection( dy );
+	}
+	
+	void OnCommand( wxCommandEvent &evt )
+	{
+		if ( evt.GetId() == ID_MONTH_SEL )
+			UpdateDay();
+	}
+
+	void SetTime( int time )
+	{
+		int mo = month_of( time );
+		int dy = day_of_month( mo, time );
+		int hr = (int)(time%24);
+
+		m_month->SetSelection( mo-1 );
+		UpdateDay();
+		m_day->SetSelection( dy-1 );
+		m_hour->SetSelection( hr );
+	}
+
+	int GetTime( )
+	{
+		int mo = m_month->GetSelection()+1;
+		int dy = m_day->GetSelection();
+		int hr = m_hour->GetSelection();
+
+		int time = hr + dy*24;
+
+		for( int m=1;m<mo;m++ )
+			time += nday[m]*24;
+		
+		return time;
+	}
+
+	DECLARE_EVENT_TABLE();
+};
+
+BEGIN_EVENT_TABLE( HourOfYearPickerCtrl, wxPanel )
+	EVT_CHOICE( ID_MONTH_SEL, HourOfYearPickerCtrl::OnCommand )
+END_EVENT_TABLE()
+
+enum{ ID_ADD_PERIOD = wxID_HIGHEST+452, 
+	ID_DELETE_PERIOD };
+
+class PeriodFactorCtrl : public wxPanel
+{
+	struct period { 
+		wxPanel *panel;
+		HourOfYearPickerCtrl *start, *end;
+		wxNumericCtrl *factor;
+		wxButton *delbtn;
+	};
+
+	std::vector<period> m_periods;
+
+	wxBoxSizer *m_sizer;
+public:
+	PeriodFactorCtrl( wxWindow *parent ) : wxPanel( parent, wxID_ANY )
+	{
+		m_sizer = new wxBoxSizer( wxVERTICAL );
+		m_sizer->Add( new wxButton( this, ID_ADD_PERIOD, "Add period..."), 0, wxALL, 3 );
+
+		SetSizer( m_sizer );
+	}
+
+	period &CreatePeriod()
+	{
+		period pp;
+		
+		pp.panel = new wxPanel( this );
+		pp.start = new HourOfYearPickerCtrl( pp.panel , wxID_ANY );
+		pp.end = new HourOfYearPickerCtrl( pp.panel, wxID_ANY );
+		pp.factor = new wxNumericCtrl( pp.panel, wxID_ANY );
+		pp.delbtn = new wxButton( pp.panel, ID_DELETE_PERIOD, "Delete" );
+
+		wxBoxSizer *sizer = new wxBoxSizer( wxHORIZONTAL );
+		sizer->Add( new wxStaticText( pp.panel, wxID_ANY, "  Start time:"), 0, wxALL|wxALIGN_CENTER_VERTICAL, 4 );
+		sizer->Add( pp.start, 0, wxALL|wxALIGN_CENTER_VERTICAL, 0 );
+		sizer->Add( new wxStaticText( pp.panel, wxID_ANY, "  End time:"), 0, wxALL|wxALIGN_CENTER_VERTICAL, 4 );
+		sizer->Add( pp.end, 0, wxALL|wxALIGN_CENTER_VERTICAL, 0 );
+		sizer->Add( new wxStaticText( pp.panel, wxID_ANY, "  Adjustment factor:"), 0, wxALL|wxALIGN_CENTER_VERTICAL, 4 );
+		sizer->Add( pp.factor, 0, wxALL|wxALIGN_CENTER_VERTICAL, 0 );
+		sizer->AddStretchSpacer();
+		sizer->Add( pp.delbtn, 0, wxALL|wxALIGN_CENTER_VERTICAL, 4 );
+		pp.panel->SetSizer( sizer );
+
+		m_periods.push_back( pp );
+
+		m_sizer->Add( pp.panel, 0, wxALL|wxEXPAND, 2 );
+		Fit();
+
+		return m_periods[m_periods.size()-1];
+	}
+
+	void Clear()
+	{
+		for( size_t i=0;i<m_periods.size();i++ )
+			m_periods[i].panel->Destroy();
+
+		Fit();
+	}
+
+	void OnCommand( wxCommandEvent &evt )
+	{
+		if ( evt.GetId() == ID_ADD_PERIOD )
+			CreatePeriod();
+		else if ( evt.GetId() == ID_DELETE_PERIOD )
+		{
+			for( size_t i=0;i<m_periods.size();i++ )
+			{
+				if ( m_periods[i].delbtn == evt.GetEventObject() )
+				{
+					m_periods[i].panel->Destroy();
+					m_periods.erase( m_periods.begin() + i );
+					break;
+				}
+			}
+		}
+	}
+
+	void Set( const matrix_t<float> &data )
+	{
+		Clear();
+		if ( data.ncols() != 3 ) return;
+		for( size_t r=0;r<data.nrows();r++ )
+		{
+			period &x = CreatePeriod();
+			x.start->SetTime( data(r,0) );
+			x.end->SetTime( data(r,1) );
+			x.factor->SetValue( data(r,2) );
+		}
+	}
+
+	void Get( matrix_t<float> &data )
+	{
+		if ( m_periods.size() == 0 )
+		{
+			data.clear();
+			return;
+		}
+
+		data.resize_fill( m_periods.size(), 3, 1.0f );
+		for( size_t i=0;i<m_periods.size();i++ )
+		{
+			data(i,0) = m_periods[i].start->GetTime();
+			data(i,1) = m_periods[i].end->GetTime();
+			data(i,2) = (float)m_periods[i].factor->Value();
+		}
+
+
+	}
+
+	DECLARE_EVENT_TABLE();
+};
+
+BEGIN_EVENT_TABLE( PeriodFactorCtrl, wxPanel )
+	EVT_BUTTON( ID_ADD_PERIOD, PeriodFactorCtrl::OnCommand )
+	EVT_BUTTON( ID_DELETE_PERIOD, PeriodFactorCtrl::OnCommand )
+END_EVENT_TABLE( )
+
+
+enum { ID_ENABLE_HOURLY = ::wxID_HIGHEST+999 , ID_ENABLE_PERIODS };
 
 class HourlyFactorDialog : public wxDialog
 {
@@ -2273,9 +2522,12 @@ class HourlyFactorDialog : public wxDialog
 
 	wxCheckBox *m_enableHourly;
 	AFDataArrayButton *m_hourly;
+
+	wxCheckBox *m_enablePeriods;
+	PeriodFactorCtrl *m_periods; 
 public:
 	HourlyFactorDialog( wxWindow *parent )
-		: wxDialog( parent, wxID_ANY, "Edit Hourly Factors", wxDefaultPosition, wxSize(400,450), wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER )
+		: wxDialog( parent, wxID_ANY, "Edit Hourly Factors", wxDefaultPosition, wxSize(850,450), wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER )
 	{
 		SetEscapeId( wxID_CANCEL );
 
@@ -2288,6 +2540,9 @@ public:
 		m_hourly = new AFDataArrayButton( m_scrollWin, wxID_ANY );
 		m_hourly->SetMode( DATA_ARRAY_8760_ONLY );
 
+		m_enablePeriods = new wxCheckBox( m_scrollWin, ID_ENABLE_PERIODS, "Enable custom factor periods" );
+		m_periods = new PeriodFactorCtrl( m_scrollWin );
+
 		wxSizer *scroll = new wxBoxSizer( wxVERTICAL );
 		
 		scroll->Add( new wxStaticText( m_scrollWin, wxID_ANY, "Constant adjustment factor (0..1)"), 0, wxALL|wxEXPAND, 5 );
@@ -2296,6 +2551,11 @@ public:
 		
 		scroll->Add( m_enableHourly, 0, wxALL|wxEXPAND, 5 );
 		scroll->Add( m_hourly, 0, wxALL, 5 );
+		scroll->Add( new wxStaticLine( m_scrollWin ), 0, wxALL|wxEXPAND );
+				
+		scroll->Add( m_enablePeriods, 0, wxALL|wxEXPAND, 5 );
+		scroll->Add( m_periods, 0, wxALL, 5 );
+		scroll->Add( new wxStaticLine( m_scrollWin ), 0, wxALL|wxEXPAND );
 		
 		m_scrollWin->SetSizer( scroll );
 
@@ -2311,7 +2571,9 @@ public:
 	void UpdateVisibility()
 	{
 		m_hourly->Show( m_enableHourly->IsChecked() );
+		m_periods->Show( m_enablePeriods->IsChecked() );
 
+		m_scrollWin->Layout();
 		m_scrollWin->FitInside();
 		m_scrollWin->Refresh();
 	}
@@ -2321,6 +2583,8 @@ public:
 		m_factor->SetValue( data.factor );
 		m_enableHourly->SetValue( data.en_hourly );
 		m_hourly->Set( data.hourly );
+		m_enablePeriods->SetValue( data.en_periods );
+		m_periods->Set( data.periods );
 		UpdateVisibility();
 	}
 
@@ -2329,6 +2593,8 @@ public:
 		data.factor = (float)m_factor->Value();
 		data.en_hourly = m_enableHourly->GetValue();
 		data.hourly = m_hourly->Get();
+		data.en_periods = m_enablePeriods->GetValue();
+		m_periods->Get( data.periods );
 	}
 	
 	void OnCommand( wxCommandEvent &e )
@@ -2336,6 +2602,7 @@ public:
 		switch( e.GetId() )
 		{
 		case ID_ENABLE_HOURLY:
+		case ID_ENABLE_PERIODS:
 			UpdateVisibility();
 			break;
 		}
@@ -2353,6 +2620,7 @@ public:
 BEGIN_EVENT_TABLE( HourlyFactorDialog, wxDialog )
 	EVT_CLOSE( HourlyFactorDialog::OnClose )
 	EVT_CHECKBOX( ID_ENABLE_HOURLY, HourlyFactorDialog::OnCommand )
+	EVT_CHECKBOX( ID_ENABLE_PERIODS, HourlyFactorDialog::OnCommand )
 END_EVENT_TABLE()
 
 
