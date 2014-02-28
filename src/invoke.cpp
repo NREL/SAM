@@ -591,9 +591,9 @@ void fcall_ssc_var( lk::invoke_t &cxt )
 
 	wxString name = cxt.arg(0).as_string();
 	if (cxt.arg_count() == 1)
-		sscvar_to_lkvar( cxt.result(), name, sg_sscData );
+		sscvar_to_lkvar( cxt.result(), (const char*)name.ToUTF8(), sg_sscData );
 	else if (cxt.arg_count() == 2)
-		lkvar_to_sscvar( sg_sscData, name, cxt.arg(1).deref() );
+		lkvar_to_sscvar( sg_sscData, (const char*)name.ToUTF8(), cxt.arg(1).deref() );
 }
 void fcall_ssc_reset( lk::invoke_t &cxt )
 {
