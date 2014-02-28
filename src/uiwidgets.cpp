@@ -2266,60 +2266,21 @@ void AFMonthByHourFactorCtrl::DispatchEvent()
 
 static int nday[12] = {31,28,31,30,31,30,31,31,30,31,30,31};
  /* hour: 0 = jan 1st 12am-1am, returns 1-12 */
-static int month_of(double time)
-{
-	/* returns month number 1..12 given 
-	   time: hour index in year 0..8759 */
-	if (time < 0) return 0;
-	if (time < 744) return 1;
-	if (time < 1416) return 2;
-	if (time < 2160) return 3;
-	if (time < 2880) return 4;
-	if (time < 3624) return 5;
-	if (time < 4344) return 6;
-	if (time < 5088) return 7;
-	if (time < 5832) return 8;
-	if (time < 6552) return 9;
-	if (time < 7296) return 10;
-	if (time < 8016) return 11;
-	if (time < 8760) return 12;
-	return 0;
-}
- /* month: 1-12 time: hours, starting 0=jan 1st 12am, returns 1-nday*/
-static int day_of_month(int month, double time)
-{
-	int daynum = ( ((int)(time/24.0)) + 1 );   // day goes 1-365
-	switch(month)
-	{
-	case 1: return  daynum;
-	case 2: return  daynum-31;
-	case 3: return  daynum-31-28;
-	case 4: return  daynum-31-28-31;
-	case 5: return  daynum-31-28-31-30;
-	case 6: return  daynum-31-28-31-30-31;
-	case 7: return  daynum-31-28-31-30-31-30;
-	case 8: return  daynum-31-28-31-30-31-30-31;
-	case 9: return  daynum-31-28-31-30-31-30-31-31;
-	case 10: return daynum-31-28-31-30-31-30-31-31-30;
-	case 11: return daynum-31-28-31-30-31-30-31-31-30-31;
-	case 12: return daynum-31-28-31-30-31-30-31-31-30-31-30; 
-	default: break;
-	}
-	return daynum;
-}
+
 
 static int hours_in_month(int month)
 {	// month=1 for January, 12 for December
 	return ( (month<1) || (month>12) ) ? 0 : nday[month-1]*24;
 }
 
-enum { ID_MONTH_SEL = wxID_HIGHEST+495 };
+enum { ID_MONTH_SEL = wxID_HIGHEST+495, ID_DAY_SEL, ID_HOUR_SEL, ID_TIME };
 
 class HourOfYearPickerCtrl : public wxPanel
 {
 	wxChoice *m_month;
 	wxChoice *m_day;
 	wxChoice *m_hour;
+	wxTextCtrl *m_text;
 public:
 	HourOfYearPickerCtrl( wxWindow *win, int id, const wxPoint &pos = wxDefaultPosition, const wxSize &size = wxDefaultSize )
 		: wxPanel( win, id )
@@ -2327,19 +2288,22 @@ public:
 		wxString months[] = { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" };
 		m_month = new wxChoice( this, ID_MONTH_SEL, wxDefaultPosition, wxDefaultSize, 12, months );
 		m_month->SetSelection( 0 );
-		m_day = new wxChoice( this, wxID_ANY );
+		m_day = new wxChoice( this, ID_DAY_SEL );
 		UpdateDay();
-		m_hour = new wxChoice( this, wxID_ANY );
+		m_hour = new wxChoice( this, ID_HOUR_SEL );
 		m_hour->Append( "12 am" );
 		for( int i=1;i<=11;i++ ) m_hour->Append( wxString::Format("%d am", i) );
 		m_hour->Append( "12 pm" );
 		for( int i=1;i<=11;i++ ) m_hour->Append( wxString::Format("%d pm", i) );
 		m_hour->SetSelection(12);
 
+		m_text = new wxTextCtrl( this, ID_TIME, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxTE_PROCESS_ENTER );
+
 		wxSizer *sizer = new wxBoxSizer( wxHORIZONTAL );
 		sizer->Add( m_month, 1, wxALL|wxEXPAND, 2 );
 		sizer->Add( m_day, 0, wxALL|wxEXPAND, 2 );
 		sizer->Add( m_hour, 0, wxALL|wxEXPAND, 2 );
+		sizer->Add( m_text, 0, wxALL|wxEXPAND, 2 );
 		SetSizer( sizer );
 	}
 
@@ -2358,12 +2322,61 @@ public:
 	{
 		if ( evt.GetId() == ID_MONTH_SEL )
 			UpdateDay();
+
+		if ( evt.GetId() == ID_TIME ) 
+		{
+			SetTime( wxAtoi( m_text->GetValue() ) );
+			m_text->SelectAll();
+		}
+		else m_text->ChangeValue( wxString::Format("%d", GetTime()) );
+	}
+	
+	int MonthOf(double time)
+	{
+		/* returns month number 1..12 given 
+		   time: hour index in year 0..8759 */
+		if (time < 0) return 0;
+		if (time < 744) return 1;
+		if (time < 1416) return 2;
+		if (time < 2160) return 3;
+		if (time < 2880) return 4;
+		if (time < 3624) return 5;
+		if (time < 4344) return 6;
+		if (time < 5088) return 7;
+		if (time < 5832) return 8;
+		if (time < 6552) return 9;
+		if (time < 7296) return 10;
+		if (time < 8016) return 11;
+		if (time < 8760) return 12;
+		return 0;
+	}
+	 /* month: 1-12 time: hours, starting 0=jan 1st 12am, returns 1-nday*/
+	int DayOfMonth(int month, double time)
+	{
+		int daynum = ( ((int)(time/24.0)) + 1 );   // day goes 1-365
+		switch(month)
+		{
+		case 1: return  daynum;
+		case 2: return  daynum-31;
+		case 3: return  daynum-31-28;
+		case 4: return  daynum-31-28-31;
+		case 5: return  daynum-31-28-31-30;
+		case 6: return  daynum-31-28-31-30-31;
+		case 7: return  daynum-31-28-31-30-31-30;
+		case 8: return  daynum-31-28-31-30-31-30-31;
+		case 9: return  daynum-31-28-31-30-31-30-31-31;
+		case 10: return daynum-31-28-31-30-31-30-31-31-30;
+		case 11: return daynum-31-28-31-30-31-30-31-31-30-31;
+		case 12: return daynum-31-28-31-30-31-30-31-31-30-31-30; 
+		default: break;
+		}
+		return daynum;
 	}
 
 	void SetTime( int time )
 	{
-		int mo = month_of( time );
-		int dy = day_of_month( mo, time );
+		int mo = MonthOf( time );
+		int dy = DayOfMonth( mo, time );
 		int hr = (int)(time%24);
 
 		m_month->SetSelection( mo-1 );
@@ -2374,13 +2387,13 @@ public:
 
 	int GetTime( )
 	{
-		int mo = m_month->GetSelection()+1;
+		int mo = m_month->GetSelection();
 		int dy = m_day->GetSelection();
 		int hr = m_hour->GetSelection();
 
 		int time = hr + dy*24;
 
-		for( int m=1;m<mo;m++ )
+		for( int m=0;m<mo;m++ )
 			time += nday[m]*24;
 		
 		return time;
@@ -2391,6 +2404,9 @@ public:
 
 BEGIN_EVENT_TABLE( HourOfYearPickerCtrl, wxPanel )
 	EVT_CHOICE( ID_MONTH_SEL, HourOfYearPickerCtrl::OnCommand )
+	EVT_CHOICE( ID_DAY_SEL, HourOfYearPickerCtrl::OnCommand )
+	EVT_CHOICE( ID_HOUR_SEL, HourOfYearPickerCtrl::OnCommand )
+	EVT_TEXT_ENTER( ID_TIME, HourOfYearPickerCtrl::OnCommand )
 END_EVENT_TABLE()
 
 enum{ ID_ADD_PERIOD = wxID_HIGHEST+452, 
