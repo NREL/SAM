@@ -95,8 +95,6 @@ public:
 	void ClearListeners();
 	void SendEvent( CaseEvent e );
 
-	double GetSubstanceDensity( size_t substanceID, double tempC) const;
-
 private:
 	/* case data */
 	ConfigInfo *m_config;
