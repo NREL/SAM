@@ -14,7 +14,7 @@ function setup_pvwatts_pages()
 {
 	addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource' } );
 	addpage( [[ 'PVWatts' ]], { 'sidebar'='System Design', 'help'='PVWatts' } );
-	addpage( [[ 'Annual Performance' ]] );
+	addpage( [[ 'Degradation' ]] );
 }
 
 function setup_flat_plate_pv_pages()
@@ -89,7 +89,7 @@ function setup_solar_water_heating_pages()
 {
 	addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource' } );
 	addpage( [[ 'Solar Water Heating' ]], { 'sidebar'='Solar Water Heating', 'help'='Solar Water Heating' } );
-	addpage( [[ 'Annual Performance' ]] );
+	addpage( [[ 'Degradation' ]] );
 }
 
 function setup_csp_physical_trough_pages()
@@ -111,7 +111,7 @@ function setup_csp_physical_trough_pages()
 	addpage( [[ 'DTR Thermal Storage' ]], { 'sidebar'='Thermal Storage' } );
 	addpage( [[ 'DTR Parasitics' ]], { 'sidebar'='Parasitics' } );
 	addpage( [[ 'DTR Solar Field' ]], { 'sidebar'='Solar Field' } );
-	addpage( [[ 'Annual Performance' ]] );
+	addpage( [[ 'Degradation' ]] );
 }
 
 

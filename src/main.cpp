@@ -1073,7 +1073,7 @@ void ConfigDatabase::RebuildCaches()
 							it != vars.end();
 							++it )
 						{
-							ci->Variables.Add( it->second );
+							ci->Variables.Add( it->first, it->second );
 
 						//	if ( EqnData *ed = ipd->Equations()..GetEquationData( it->first ))
 //								ci->Equations.Add( ed );
@@ -1091,7 +1091,7 @@ void ConfigDatabase::RebuildCaches()
 								vv->DefaultValue.Set( pi.CollapsedByDefault ? 0 : 1 );
 							}
 
-							ci->Variables.Add( vv );
+							ci->Variables.Add( pi.CollapsiblePageVar, vv );
 						}
 					}
 					else
@@ -1111,7 +1111,7 @@ void ConfigDatabase::RebuildCaches()
 					vv->DefaultValue.Set( 0 );
 				}
 
-				ci->Variables.Add( vv );
+				ci->Variables.Add( igrp->ExclusivePageVar, vv );
 			}
 		}
 	}

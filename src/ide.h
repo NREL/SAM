@@ -73,6 +73,9 @@ public:
 	wxUIFormDesigner *GetDesigner() { return m_uiFormEditor; }
 	wxUIPropertyEditor *GetPropertyEditor() { return m_uiPropEditor; }
 
+	void FormToVarInfo( );
+	void VarInfoToForm( const wxString &name );
+
 private:
 	wxArrayString m_callbackGotoList;
 	void OnCallbackGoto( wxCommandEvent & );
@@ -94,9 +97,7 @@ private:
 	wxCheckBox *m_varFlagHideLabels, *m_varFlagParametric, *m_varFlagIndicator, 
 		*m_varFlagCalculated, *m_varFlagLibrary;
 
-	VarInfo *m_curVar;
-	void FormToVarInfo( VarInfo * );
-	void VarInfoToForm( VarInfo * );
+	wxString m_curVarName;
 
 	void SyncFormUIToDataBeforeWriting();
 

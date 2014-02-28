@@ -479,6 +479,10 @@ public:
 			break;
 		case wxID_APPLY:
 		{
+			m_ui->GetPropertyEditor()->SetObject( 0 );
+			m_ui->VarInfoToForm( wxEmptyString );
+			m_ui->LoadVarList( );
+
 			wxUIFormData *form = m_ui->GetFormData();
 			VarDatabase *vars = m_ui->GetVars();
 
@@ -486,7 +490,7 @@ public:
 			wxString cb = m_ui->GetCallbacks();
 			wxString eqn = m_ui->GetEquations();
 			int n_cbreps = 0, n_eqnreps = 0;
-
+			
 			for( int i=0;i<m_grid->GetNumberRows();i++ )
 			{
 				wxString sold = m_grid->GetCellValue(i,0);
@@ -521,9 +525,9 @@ public:
 
 			wxShowTextMessageDialog( wxString::Format("textual replacements\n\tcallbacks: %d equations: %d\n\n", n_cbreps, n_eqnreps )
 				+ result, "Remapping result", this );
+			
 			LoadVariables();
 
-			m_ui->GetPropertyEditor()->SetObject( 0 );
 			m_ui->LoadVarList();
 			m_ui->GetDesigner()->Refresh();
 
@@ -796,8 +800,6 @@ UIEditorPanel::UIEditorPanel( wxWindow *parent )
 	m_uiFormEditor->SetPropertyEditor( m_uiPropEditor );
 	m_uiFormEditor->SetFormData( &m_exForm );
 
-	m_curVar = 0;
-
 
 	wxBoxSizer *sz_form_top = new wxBoxSizer( wxVERTICAL );
 	sz_form_top->Add( sz_form_tools, 0, wxALL|wxEXPAND, 2 );
@@ -806,7 +808,7 @@ UIEditorPanel::UIEditorPanel( wxWindow *parent )
 
 	LoadFormList();
 	LoadVarList();
-	VarInfoToForm( NULL );
+	VarInfoToForm( wxEmptyString );
 }
 
 void UIEditorPanel::LoadFormList( const wxString &sel )
@@ -916,13 +918,14 @@ void UIEditorPanel::OnCommand( wxCommandEvent &evt )
 			m_uiFormEditor->SetFormData( 0 ) ;
 			m_exForm.DeleteAll();
 			m_ipd.Clear();
-			m_curVar = 0;
+			
 			m_callbackScript->SetText( wxEmptyString );
 			m_equationScript->SetText( wxEmptyString );
 			Write( name );
 			if ( !Load( name ) )
 				wxMessageBox("error loading newly created form: " + name, "notice", wxOK, this );
 			LoadFormList( name );
+			VarInfoToForm( wxEmptyString );
 		}
 		break;
 	case ID_FORM_DELETE:
@@ -935,15 +938,14 @@ void UIEditorPanel::OnCommand( wxCommandEvent &evt )
 				
 				m_formName.Clear();
 				m_exForm.DeleteAll();
-				m_ipd.Clear();
-				m_curVar = 0;
+				m_ipd.Clear();				
 				m_uiFormEditor->SetFormData( &m_exForm );
 				m_uiFormEditor->Refresh();
 				m_callbackScript->Clear();
 				m_equationScript->Clear();
 				LoadFormList();
 				LoadVarList();
-				VarInfoToForm( NULL );
+				VarInfoToForm( wxEmptyString );
 			}
 		}
 		break;
@@ -1033,17 +1035,13 @@ void UIEditorPanel::OnCommand( wxCommandEvent &evt )
 			{
 				VarInfo *vv = m_ipd.Variables().Lookup( name );
 				if ( vv )
-				{
-					FormToVarInfo( m_curVar );
-					VarInfoToForm( vv );
-				}
+					FormToVarInfo( );
 				else
-				{
-					VarInfoToForm( m_ipd.Variables().Add( name, VV_INVALID ) );
-					LoadVarList( name );
-				}
-			}
+					m_ipd.Variables().Add( name, VV_INVALID );
 
+				LoadVarList( name );
+				VarInfoToForm( name );
+			}
 		}
 		break;
 	case ID_VAR_DELETE:
@@ -1064,33 +1062,34 @@ void UIEditorPanel::OnCommand( wxCommandEvent &evt )
 				m_ipd.Variables().Delete( checked[i] );
 			}
 			
-			VarInfoToForm( NULL );
+			VarInfoToForm( wxEmptyString );
 		}
 		break;
 	case ID_VAR_LIST:
-		FormToVarInfo( m_curVar ); // save the current var
-		VarInfoToForm( m_ipd.Variables().Lookup( m_varList->GetStringSelection() ) ); // switch to the new var
+		FormToVarInfo( ); // save the current var
+		VarInfoToForm( m_varList->GetStringSelection() ); // switch to the new var
 		break;
 	case ID_VAR_NAME:
-		if ( m_curVar )
+		if ( !m_curVarName.IsEmpty() )
 		{
+			wxString old_name = m_curVarName;
 			wxString new_name = m_varName->GetValue();
 
 			if ( m_ipd.Variables().Lookup( new_name ) )
 			{
-				wxMessageBox("that variable already exists: " + m_varName->GetValue(), "notice", wxOK, this );
-				m_varName->ChangeValue( m_curVar->Name );
+				wxMessageBox("that variable already exists: " + new_name, "notice", wxOK, this );
+				m_varName->ChangeValue( old_name );
 				m_varName->SelectAll();
 				return;
 			}
 
-			if ( m_ipd.Variables().Rename( m_curVar->Name, new_name ) )
+			if ( m_ipd.Variables().Rename( old_name, new_name ) )
 			{
-				m_curVar->Name = new_name;
+				m_curVarName = new_name;
 				LoadVarList( new_name );
 			}
 			else
-				wxMessageBox("failed to rename: " + m_curVar->Name + " --> " + new_name );
+				wxMessageBox("failed to rename: " + old_name + " --> " + new_name );
 		}
 		break;
 	case ID_VAR_LABEL:
@@ -1214,7 +1213,7 @@ void UIEditorPanel::OnCommand( wxCommandEvent &evt )
 					err.Add( it->first );
 			}
 
-			VarInfoToForm( 0 );
+			VarInfoToForm( wxEmptyString );
 			LoadVarList( m_varList->GetStringSelection() );
 
 			wxShowTextMessageDialog( "Conflicts?\n" + wxJoin(err, '\n') + "\nLoaded:\n" + wxJoin( m_varCopyBuffer.ListAll(), '\n' ) );
@@ -1226,29 +1225,29 @@ void UIEditorPanel::OnCommand( wxCommandEvent &evt )
 
 void UIEditorPanel::SyncFormUIToDataBeforeWriting()
 {
-	if ( m_curVar ) FormToVarInfo( m_curVar ); // sync any updates to the var before writing
+	FormToVarInfo( ); // sync any updates to the var before writing
 }
 
 void UIEditorPanel::OnFormSelectObject( wxUIFormEvent &evt )
 {
 	if ( wxUIObject *obj = evt.GetUIObject() )
 	{
-		if ( VarInfo *vv = m_ipd.Variables().Lookup( obj->GetName() ) )
+		wxString name = obj->GetName();
+		if ( VarInfo *vv = m_ipd.Variables().Lookup( name ) )
 		{
-			FormToVarInfo( m_curVar ); // save the current var
-			m_varList->SetStringSelection( vv->Name );
-			m_curVar = vv;
-			VarInfoToForm( m_curVar );
+			FormToVarInfo( ); // save the current var
+			m_varList->SetStringSelection( name );
+			VarInfoToForm( name );
 		}		
 	}
 	
 }
 
-void UIEditorPanel::FormToVarInfo( VarInfo *vv )
+void UIEditorPanel::FormToVarInfo( )
 {
+	VarInfo *vv = m_ipd.Variables().Lookup( m_curVarName );
 	if ( !vv ) return;
 
-	vv->Name = m_varName->GetValue();
 	vv->Type = m_varType->GetSelection();
 	vv->Label = m_varLabel->GetValue();
 	vv->Units = m_varUnits->GetValue();
@@ -1265,20 +1264,13 @@ void UIEditorPanel::FormToVarInfo( VarInfo *vv )
 	VarValue::Parse( vv->Type, m_varDefaultValue->GetValue(), vv->DefaultValue );
 }
 
-void UIEditorPanel::VarInfoToForm( VarInfo *vv )
+void UIEditorPanel::VarInfoToForm( const wxString &name )
 {
-	m_curVar = vv;
-
-	if ( vv )
+	if ( VarInfo *vv = m_ipd.Variables().Lookup( name ) )
 	{
-		if ( vv->Name != m_varList->GetStringSelection() )
-		{
-			wxMessageBox("will resolve discrepancy in variable name: " + vv->Name + " != " + m_varList->GetStringSelection() );
-			vv->Name = m_varList->GetStringSelection();
-		}
-		
-		m_varName->ChangeValue( vv->Name );
+		m_curVarName = name;
 
+		m_varName->ChangeValue( m_curVarName );
 		m_varType->SetSelection( vv->Type );
 		m_varLabel->ChangeValue( vv->Label );
 		m_varUnits->ChangeValue( vv->Units );
@@ -1294,6 +1286,8 @@ void UIEditorPanel::VarInfoToForm( VarInfo *vv )
 	}
 	else
 	{
+		m_curVarName.Clear(); // m_curVarName was not a valid variable
+
 		m_varName->ChangeValue( wxEmptyString );
 		m_varType->SetSelection( 0 );
 		m_varLabel->ChangeValue( wxEmptyString );
@@ -1307,20 +1301,21 @@ void UIEditorPanel::VarInfoToForm( VarInfo *vv )
 		m_varFlagLibrary->SetValue( false );
 		m_varDefaultValue->SetValue( wxEmptyString );
 	}
-	
-	m_varName->Enable( m_curVar != 0 );
-	m_varType->Enable( m_curVar != 0 );
-	m_varLabel->Enable( m_curVar != 0 );
-	m_varUnits->Enable( m_curVar != 0 );
-	m_varGroup->Enable( m_curVar != 0 );
-	m_varIndexLabels->Enable( m_curVar != 0 );
-	m_varDefaultValue->Enable( m_curVar != 0 );
-	m_varFlagHideLabels->Enable( m_curVar != 0 );
-	m_varFlagParametric->Enable( m_curVar != 0 );
-	m_varFlagIndicator->Enable( m_curVar != 0 );
-	m_varFlagCalculated->Enable( m_curVar != 0 );
-	m_varFlagLibrary->Enable( m_curVar != 0 );
 
+	bool en = !m_curVarName.IsEmpty();
+	
+	m_varName->Enable( en );
+	m_varType->Enable( en );
+	m_varLabel->Enable( en );
+	m_varUnits->Enable( en );
+	m_varGroup->Enable( en );
+	m_varIndexLabels->Enable( en );
+	m_varDefaultValue->Enable( en );
+	m_varFlagHideLabels->Enable( en );
+	m_varFlagParametric->Enable( en );
+	m_varFlagIndicator->Enable( en );
+	m_varFlagCalculated->Enable( en );
+	m_varFlagLibrary->Enable( en );
 }
 
 void UIEditorPanel::LoadVarList( const wxString &sel )
@@ -1374,10 +1369,8 @@ bool UIEditorPanel::Load( const wxString &name )
 			m_uiFormEditor->SetFormData( &m_exForm );
 			m_uiFormEditor->Refresh();
 			m_formName = name;
-			
-			m_curVar = 0;
 			LoadVarList();
-			VarInfoToForm( NULL );
+			VarInfoToForm( wxEmptyString );
 
 			m_callbackScript->SetText( m_ipd.CbScript() );
 			m_equationScript->SetText( m_ipd.EqnScript() );
