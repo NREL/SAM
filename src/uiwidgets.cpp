@@ -2280,7 +2280,7 @@ class HourOfYearPickerCtrl : public wxPanel
 	wxChoice *m_month;
 	wxChoice *m_day;
 	wxChoice *m_hour;
-	wxTextCtrl *m_text;
+	//wxTextCtrl *m_text;
 public:
 	HourOfYearPickerCtrl( wxWindow *win, int id, const wxPoint &pos = wxDefaultPosition, const wxSize &size = wxDefaultSize )
 		: wxPanel( win, id )
@@ -2297,13 +2297,13 @@ public:
 		for( int i=1;i<=11;i++ ) m_hour->Append( wxString::Format("%d pm", i) );
 		m_hour->SetSelection(12);
 
-		m_text = new wxTextCtrl( this, ID_TIME, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxTE_PROCESS_ENTER );
+		//m_text = new wxTextCtrl( this, ID_TIME, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxTE_PROCESS_ENTER );
 
 		wxSizer *sizer = new wxBoxSizer( wxHORIZONTAL );
 		sizer->Add( m_month, 1, wxALL|wxEXPAND, 2 );
 		sizer->Add( m_day, 0, wxALL|wxEXPAND, 2 );
 		sizer->Add( m_hour, 0, wxALL|wxEXPAND, 2 );
-		sizer->Add( m_text, 0, wxALL|wxEXPAND, 2 );
+		//sizer->Add( m_text, 0, wxALL|wxEXPAND, 2 );
 		SetSizer( sizer );
 	}
 
@@ -2323,12 +2323,14 @@ public:
 		if ( evt.GetId() == ID_MONTH_SEL )
 			UpdateDay();
 
+		/*
 		if ( evt.GetId() == ID_TIME ) 
 		{
 			SetTime( wxAtoi( m_text->GetValue() ) );
 			m_text->SelectAll();
 		}
 		else m_text->ChangeValue( wxString::Format("%d", GetTime()) );
+		*/
 	}
 	
 	int MonthOf(double time)
@@ -2406,8 +2408,8 @@ BEGIN_EVENT_TABLE( HourOfYearPickerCtrl, wxPanel )
 	EVT_CHOICE( ID_MONTH_SEL, HourOfYearPickerCtrl::OnCommand )
 	EVT_CHOICE( ID_DAY_SEL, HourOfYearPickerCtrl::OnCommand )
 	EVT_CHOICE( ID_HOUR_SEL, HourOfYearPickerCtrl::OnCommand )
-	EVT_TEXT_ENTER( ID_TIME, HourOfYearPickerCtrl::OnCommand )
 END_EVENT_TABLE()
+// EVT_TEXT_ENTER( ID_TIME, HourOfYearPickerCtrl::OnCommand )
 
 enum{ ID_ADD_PERIOD = wxID_HIGHEST+452, 
 	ID_DELETE_PERIOD };
