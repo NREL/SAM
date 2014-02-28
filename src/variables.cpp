@@ -671,7 +671,6 @@ VarInfo::VarInfo()
 
 VarInfo::VarInfo( const VarInfo &copy )
 {
-	Name = copy.Name;
 	Type = copy.Type;
 	Label = copy.Label;
 	Units = copy.Units;
@@ -685,9 +684,8 @@ void VarInfo::Write( wxOutputStream &os )
 {
 	wxDataOutputStream out(os);
 	out.Write8( 0xe1 );
-	out.Write8( 1 );
+	out.Write8( 2 );
 
-	out.WriteString( Name );
 	out.Write32( Type );
 	out.WriteString( Label );
 	out.WriteString( Units );
@@ -703,9 +701,10 @@ bool VarInfo::Read( wxInputStream &is )
 {
 	wxDataInputStream in(is);
 	wxUint8 code = in.Read8();
-	in.Read8(); // ver
+	int ver = in.Read8(); // ver
 
-	Name = in.ReadString();
+	if ( ver < 2 ) in.ReadString(); // formerly, name field
+
 	Type = in.Read32();
 	Label = in.ReadString();
 	Units = in.ReadString();
@@ -793,7 +792,6 @@ VarInfo *VarDatabase::Add( const wxString &name, int type,
 	else
 		vv = it->second;
 
-	vv->Name = name;
 	vv->Type = type;
 	vv->Label = label;
 	vv->Units = units;
@@ -839,8 +837,6 @@ bool VarDatabase::Rename( const wxString &old_name, const wxString &new_name )
 	VarInfo *vv = it->second;
 	erase( it );
 	
-	vv->Name = new_name;
-
 	(*this)[ new_name ] = vv;
 	return true;
 }
@@ -869,13 +865,13 @@ VarInfoLookup::~VarInfoLookup()
 	/* nothing to do */
 }
 
-void VarInfoLookup::Add( VarInfo *vv )
+void VarInfoLookup::Add( const wxString &name, VarInfo *vv )
 {
 	if ( vv == 0 ) return;
 
-	VarInfoHash::iterator it = find( vv->Name );
+	VarInfoHash::iterator it = find( name );
 	if ( it == end() )
-		(*this)[vv->Name] = vv;
+		(*this)[name] = vv;
 	else
 	{
 		delete it->second;
@@ -885,9 +881,10 @@ void VarInfoLookup::Add( VarInfo *vv )
 
 void VarInfoLookup::Add( VarInfoLookup *vil )
 {
-	wxArrayString names = vil->ListAll();
-	for( size_t i=0;i<names.size(); i++ )
-		Add( vil->Lookup( names[i] ) );
+	for( VarInfoLookup::iterator it = vil->begin();
+		it != vil->end();
+		++it )
+		Add( it->first, it->second );
 }
 
 wxArrayString VarInfoLookup::ListAll()

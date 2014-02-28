@@ -128,7 +128,6 @@ public:
 	void Write( wxOutputStream & );
 	bool Read( wxInputStream & );
 
-	wxString Name;
 	int Type;
 	wxString Label;
 	wxString Units;
@@ -146,7 +145,7 @@ public:
 	VarInfoLookup();
 	virtual ~VarInfoLookup();
 
-	void Add( VarInfo *vv );
+	void Add( const wxString &name, VarInfo *vv );
 	void Add( VarInfoLookup *vil );
 	
 	VarInfo *Lookup( const wxString &name );
