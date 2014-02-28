@@ -145,7 +145,7 @@ public:
 	VarInfoLookup();
 	virtual ~VarInfoLookup();
 
-	void Add( const wxString &name, VarInfo *vv );
+	bool Add( const wxString &name, VarInfo *vv );
 	void Add( VarInfoLookup *vil );
 	
 	VarInfo *Lookup( const wxString &name );
@@ -166,12 +166,11 @@ public:
 	VarDatabase();
 	virtual ~VarDatabase();
 
-	VarInfo *Add( const wxString &name, int type,
+	VarInfo *Create( const wxString &name, int type,
 		const wxString &label = wxEmptyString, const wxString &units = wxEmptyString,
 		const wxString &group = wxEmptyString, const wxString &indexlabels = wxEmptyString,
 		unsigned long flags = VF_NONE, const VarValue &defval = VarValue::Invalid );
-	void Add( const wxString &name, VarInfo *vi );
-
+			
 	bool Delete( const wxString &name );
 	bool Rename( const wxString &old_name, const wxString &new_name );
 	virtual void clear();	
