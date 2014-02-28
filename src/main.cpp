@@ -1073,7 +1073,12 @@ void ConfigDatabase::RebuildCaches()
 							it != vars.end();
 							++it )
 						{
-							ci->Variables.Add( it->first, it->second );
+							if ( !ci->Variables.Add( it->first, it->second ) )
+							{
+								wxMessageBox("Internal error in configuration.\n\n" + ci->Technology + ", " + ci->Financing + "   [ " + pi.Name + " ]\n\n"
+									"An error occured when attempting to instantiate variable: '" + it->first + "'\n"
+									"Duplicate variables within a configuration are not allowed.", "sam-engine", wxICON_ERROR|wxOK );
+							}
 
 						//	if ( EqnData *ed = ipd->Equations()..GetEquationData( it->first ))
 //								ci->Equations.Add( ed );
@@ -1084,7 +1089,7 @@ void ConfigDatabase::RebuildCaches()
 							VarInfo *vv = ci->AutoVariables.Lookup( pi.CollapsiblePageVar );
 							if( vv == 0 )
 							{
-								vv = ci->AutoVariables.Add( pi.CollapsiblePageVar, VV_NUMBER,
+								vv = ci->AutoVariables.Create( pi.CollapsiblePageVar, VV_NUMBER,
 									"Current selection for " + pi.Caption );
 
 								vv->Flags |= VF_COLLAPSIBLE_PANE;
@@ -1104,7 +1109,7 @@ void ConfigDatabase::RebuildCaches()
 				VarInfo *vv = ci->AutoVariables.Lookup( igrp->ExclusivePageVar );
 				if ( vv == 0 )
 				{
-					vv = ci->AutoVariables.Add( igrp->ExclusivePageVar, VV_NUMBER, 
+					vv = ci->AutoVariables.Create( igrp->ExclusivePageVar, VV_NUMBER, 
 						"Current selection for " + igrp->SideBarLabel );
 
 					vv->Flags |= VF_EXCLUSIVE_PAGES;

@@ -777,21 +777,13 @@ bool VarDatabase::Read( wxInputStream &is, const wxString &page )
 	return in.Read8() == code;
 }
 
-VarInfo *VarDatabase::Add( const wxString &name, int type,
+
+VarInfo *VarDatabase::Create( const wxString &name, int type,
 	const wxString &label, const wxString &units,
 	const wxString &group, const wxString &indexlabels, 
 	unsigned long flags, const VarValue &defval )
 {
-	VarInfo *vv = 0;
-	VarInfoHash::iterator it = find( name );
-	if ( it == end() )
-	{
-		vv = new VarInfo;
-		(*this)[name] = vv;
-	}
-	else
-		vv = it->second;
-
+	VarInfo *vv = new VarInfo;
 	vv->Type = type;
 	vv->Label = label;
 	vv->Units = units;
@@ -800,19 +792,9 @@ VarInfo *VarDatabase::Add( const wxString &name, int type,
 	vv->Flags = flags;
 	vv->DefaultValue = defval;
 
-	return vv;
-}
+	Add( name, vv );
 
-void VarDatabase::Add( const wxString &name, VarInfo *vi )
-{
-	VarInfoHash::iterator it = find( name );
-	if ( it != end() )
-	{
-		delete it->second;
-		it->second = vi;
-	}
-	else
-		(*this)[name] = vi;
+	return vv;
 }
 
 bool VarDatabase::Delete( const wxString &name )
@@ -865,18 +847,20 @@ VarInfoLookup::~VarInfoLookup()
 	/* nothing to do */
 }
 
-void VarInfoLookup::Add( const wxString &name, VarInfo *vv )
+bool VarInfoLookup::Add( const wxString &name, VarInfo *vv )
 {
-	if ( vv == 0 ) return;
+	if ( vv == 0 )
+		return false;
 
 	VarInfoHash::iterator it = find( name );
 	if ( it == end() )
-		(*this)[name] = vv;
-	else
 	{
-		delete it->second;
-		it->second = vv;
+		(*this)[name] = vv;
+		return true;
 	}
+	else
+		return false;
+
 }
 
 void VarInfoLookup::Add( VarInfoLookup *vil )

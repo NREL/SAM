@@ -977,49 +977,49 @@ void UIEditorPanel::OnCommand( wxCommandEvent &evt )
 				if ( m_ipd.Variables().Lookup( name ) == 0 )
 				{
 					if ( type == "Numeric" )
-						m_ipd.Variables().Add( name, VV_NUMBER );
+						m_ipd.Variables().Create( name, VV_NUMBER );
 					else if ( type == "Choice" )
-						m_ipd.Variables().Add( name, VV_NUMBER );
+						m_ipd.Variables().Create( name, VV_NUMBER );
 					else if ( type == "ListBox" )
-						m_ipd.Variables().Add( name, VV_STRING );
+						m_ipd.Variables().Create( name, VV_STRING );
 					else if ( type == "RadioChoice" )
-						m_ipd.Variables().Add( name, VV_NUMBER );
+						m_ipd.Variables().Create( name, VV_NUMBER );
 					else if ( type == "TextEntry" )
-						m_ipd.Variables().Add( name, VV_STRING );
+						m_ipd.Variables().Create( name, VV_STRING );
 					else if ( type == "Slider" )
-						m_ipd.Variables().Add( name, VV_NUMBER );
+						m_ipd.Variables().Create( name, VV_NUMBER );
 					else if ( type == "CheckBox" )
-						m_ipd.Variables().Add( name, VV_NUMBER );
+						m_ipd.Variables().Create( name, VV_NUMBER );
 					else if ( type == "RadioChoice" )
-						m_ipd.Variables().Add( name, VV_NUMBER );
+						m_ipd.Variables().Create( name, VV_NUMBER );
 					else if ( type == "Slider" )
-						m_ipd.Variables().Add( name, VV_NUMBER );
+						m_ipd.Variables().Create( name, VV_NUMBER );
 					else if ( type == "SchedNumeric" )
-						m_ipd.Variables().Add( name, VV_ARRAY );
+						m_ipd.Variables().Create( name, VV_ARRAY );
 					else if ( type == "TOUSchedule" )
-						m_ipd.Variables().Add( name, VV_STRING );
+						m_ipd.Variables().Create( name, VV_STRING );
 					else if ( type == "PTLayout" )
-						m_ipd.Variables().Add( name, VV_TABLE );
+						m_ipd.Variables().Create( name, VV_TABLE );
 					else if ( type == "MaterialProperties" )
-						m_ipd.Variables().Add( name, VV_MATRIX );
+						m_ipd.Variables().Create( name, VV_MATRIX );
 					else if ( type == "TroughLoop" )
-						m_ipd.Variables().Add( name, VV_ARRAY );
+						m_ipd.Variables().Create( name, VV_ARRAY );
 					else if ( type == "MonthlyFactor" )
-						m_ipd.Variables().Add( name, VV_ARRAY );
+						m_ipd.Variables().Create( name, VV_ARRAY );
 					else if ( type == "SearchListBox" )
-						m_ipd.Variables().Add( name, VV_STRING );
+						m_ipd.Variables().Create( name, VV_STRING );
 					else if ( type == "DataArray" )
-						m_ipd.Variables().Add( name, VV_ARRAY );
+						m_ipd.Variables().Create( name, VV_ARRAY );
 					else if ( type == "DataMatrix" )
-						m_ipd.Variables().Add( name, VV_MATRIX );
+						m_ipd.Variables().Create( name, VV_MATRIX );
 					else if ( type == "ShadingFactors" )
-						m_ipd.Variables().Add( name, VV_TABLE );
+						m_ipd.Variables().Create( name, VV_TABLE );
 					else if ( type == "ValueMatrix" )
-						m_ipd.Variables().Add( name, VV_MATRIX );
+						m_ipd.Variables().Create( name, VV_MATRIX );
 					else if ( type == "MonthByHourFactors" )
-						m_ipd.Variables().Add( name, VV_MATRIX );
+						m_ipd.Variables().Create( name, VV_MATRIX );
 					else if ( type == "HourlyFactor" )
-						m_ipd.Variables().Add( name, VV_TABLE );
+						m_ipd.Variables().Create( name, VV_TABLE );
 					
 					// extend this list in the future for additional controls
 				}
@@ -1037,7 +1037,7 @@ void UIEditorPanel::OnCommand( wxCommandEvent &evt )
 				if ( vv )
 					FormToVarInfo( );
 				else
-					m_ipd.Variables().Add( name, VV_INVALID );
+					m_ipd.Variables().Create( name, VV_INVALID );
 
 				LoadVarList( name );
 				VarInfoToForm( name );
