@@ -95,22 +95,22 @@ function setup_solar_water_heating_pages()
 function setup_csp_physical_trough_pages()
 {
 	addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource' } );
-	addpage( [[ 'Collector (SCA) Header',
-	 {'name'='Collector (SCA) Type 1', 'caption'='Collector Type 1', 'collapsible'=true, 'collapsible_var'='sca_1_is_shown'},
-	 {'name'='Collector (SCA) Type 2', 'caption'='Collector Type 2', 'collapsible'=true, 'collapsible_var'='sca_2_is_shown'},
-	 {'name'='Collector (SCA) Type 3', 'caption'='Collector Type 3', 'collapsible'=true, 'collapsible_var'='sca_3_is_shown'},
-	 {'name'='Collector (SCA) Type 4', 'caption'='Collector Type 4', 'collapsible'=true, 'collapsible_var'='sca_4_is_shown'} ]],
+	addpage( [[ 'Physical Trough Collector Header',
+	 {'name'='Physical Trough Collector Type 1', 'caption'='Collector Type 1', 'collapsible'=true, 'collapsible_var'='sca_1_is_shown'},
+	 {'name'='Physical Trough Collector Type 2', 'caption'='Collector Type 2', 'collapsible'=true, 'collapsible_var'='sca_2_is_shown'},
+	 {'name'='Physical Trough Collector Type 3', 'caption'='Collector Type 3', 'collapsible'=true, 'collapsible_var'='sca_3_is_shown'},
+	 {'name'='Physical Trough Collector Type 4', 'caption'='Collector Type 4', 'collapsible'=true, 'collapsible_var'='sca_4_is_shown'} ]],
 	 { 'sidebar'='Collector (SCAs)' } );
-	addpage( [[ 'Receiver (HCE) Header',
-	 {'name'='Receiver (HCE) Type 1', 'caption'='Receiver Type 1', 'collapsible'=true, 'collapsible_var'='hce_1_is_shown'},
-	 {'name'='Receiver (HCE) Type 2', 'caption'='Receiver Type 2', 'collapsible'=true, 'collapsible_var'='hce_2_is_shown'},
-	 {'name'='Receiver (HCE) Type 3', 'caption'='Receiver Type 3', 'collapsible'=true, 'collapsible_var'='hce_3_is_shown'},
-	 {'name'='Receiver (HCE) Type 4', 'caption'='Receiver Type 4', 'collapsible'=true, 'collapsible_var'='hce_4_is_shown'} ]],
+	addpage( [[ 'Physical Trough Receiver Header',
+	 {'name'='Physical Trough Receiver Type 1', 'caption'='Receiver Type 1', 'collapsible'=true, 'collapsible_var'='hce_1_is_shown'},
+	 {'name'='Physical Trough Receiver Type 2', 'caption'='Receiver Type 2', 'collapsible'=true, 'collapsible_var'='hce_2_is_shown'},
+	 {'name'='Physical Trough Receiver Type 3', 'caption'='Receiver Type 3', 'collapsible'=true, 'collapsible_var'='hce_3_is_shown'},
+	 {'name'='Physical Trough Receiver Type 4', 'caption'='Receiver Type 4', 'collapsible'=true, 'collapsible_var'='hce_4_is_shown'} ]],
 	 { 'sidebar'='Receiver (HCEs)' } );
-	addpage( [[ 'DTR Power Block' ]], { 'sidebar'='Power Cycle' } );
-	addpage( [[ 'DTR Thermal Storage' ]], { 'sidebar'='Thermal Storage' } );
-	addpage( [[ 'DTR Parasitics' ]], { 'sidebar'='Parasitics' } );
-	addpage( [[ 'DTR Solar Field' ]], { 'sidebar'='Solar Field' } );
+	addpage( [[ 'Physical Trough Power Block' ]], { 'sidebar'='Power Cycle' } );
+	addpage( [[ 'Physical Trough Thermal Storage' ]], { 'sidebar'='Thermal Storage' } );
+	addpage( [[ 'Physical Trough Parasitics' ]], { 'sidebar'='Parasitics' } );
+	addpage( [[ 'Physical Trough Solar Field' ]], { 'sidebar'='Solar Field' } );
 	addpage( [[ 'Degradation' ]] );
 }
 
