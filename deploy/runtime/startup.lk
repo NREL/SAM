@@ -14,7 +14,6 @@ function setup_pvwatts_pages()
 {
 	addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource' } );
 	addpage( [[ 'PVWatts' ]], { 'sidebar'='System Design', 'help'='PVWatts' } );
-	addpage( [[ 'Degradation' ]] );
 }
 
 function setup_flat_plate_pv_pages()
@@ -46,9 +45,7 @@ function setup_utility_rate()
 
 function setup_residential_pages()
 {
-	//addpage( [[ 'Residential Loan','Financing' ]], { 'caption'='Financing', 'help'='Financing Residential' } );
-	//addpage( [[ 'Tax Credits','Incentives' ]], { 'caption'='Incentives' } );
-	
+	addpage( [[ 'Degradation' ]] );
 	addpage( [[ 'Residential Loan',
 				{'name'='Financing', 'collapsible'=true,'collapsible_var'='show_financing'},
 				{'name'='Tax Credits', 'collapsible'=true, 'collapsible_var'='show_tax_credits', 'collapsed_by_default'=false},
@@ -62,7 +59,7 @@ function setup_residential_pages()
 
 function setup_commercial_pages()
 {
-	
+	addpage( [[ 'Degradation' ]] );
 	addpage( [[ 'Commercial Loan',
 				{'name'='Financing', 'collapsible'=true,'collapsible_var'='show_financing'},
 				{'name'='Depreciation', 'collapsible'=true,'collapsible_var'='show_depreciation'},
@@ -89,7 +86,6 @@ function setup_solar_water_heating_pages()
 {
 	addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource' } );
 	addpage( [[ 'Solar Water Heating' ]], { 'sidebar'='Solar Water Heating', 'help'='Solar Water Heating' } );
-	addpage( [[ 'Degradation' ]] );
 }
 
 function setup_csp_physical_trough_pages()
@@ -111,7 +107,6 @@ function setup_csp_physical_trough_pages()
 	addpage( [[ 'Physical Trough Thermal Storage' ]], { 'sidebar'='Thermal Storage' } );
 	addpage( [[ 'Physical Trough Parasitics' ]], { 'sidebar'='Parasitics' } );
 	addpage( [[ 'Physical Trough Solar Field' ]], { 'sidebar'='Solar Field' } );
-	addpage( [[ 'Degradation' ]] );
 }
 
 
