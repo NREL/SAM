@@ -626,8 +626,6 @@ bool VarValue::Parse( int type, const wxString &str, VarValue &value )
 
 wxString VarValue::AsString( wxChar arrsep )
 {
-	wxString buf;
-
 	switch( m_type )
 	{
 	case VV_INVALID: return "<invalid>";
@@ -635,7 +633,7 @@ wxString VarValue::AsString( wxChar arrsep )
 	case VV_NUMBER: return wxString::Format("%g", (float)m_val );
 	case VV_ARRAY:
 	{
-		wxString buf;
+		wxString buf="";
 		for( size_t i=0;i<m_val.length();i++ )
 		{
 			buf += wxString::Format("%g", (float)m_val[i]  );
@@ -645,7 +643,7 @@ wxString VarValue::AsString( wxChar arrsep )
 	}
 	case VV_MATRIX:
 	{
-		wxString buf;
+		wxString buf="";
 		for( size_t r=0;r<m_val.nrows();r++ )
 		{
 			buf += '[';
@@ -658,9 +656,21 @@ wxString VarValue::AsString( wxChar arrsep )
 		}
 		return buf;
 	}
+	case VV_TABLE:
+	{
+		wxString buf = "";
+		wxArrayString as = m_tab.ListAll();
+		as.Sort();
+		for (size_t i = 0; i < as.Count(); i++)
+		{
+			buf += as[i] + "=" + m_tab.Get(as[i])->AsString();
+			if (i < as.Count() - 1) buf += arrsep;
+		}
+		return buf;
+	}
 	}
 
-	return buf;
+	return "<no value found>";
 }
 
 VarInfo::VarInfo() 

@@ -317,14 +317,31 @@ void MainWindow::OnInternalCommand( wxCommandEvent &evt )
 			grid->CreateGrid( vals.size(), 2 );
 			size_t idx = 0;
 			grid->Freeze();
+			/*
+			// unsorted fast - uses unordered map from the VarTableBase
 			for( VarTable::iterator it = vals.begin();
 				it != vals.end();
 				++it )
 			{
 				grid->SetCellValue( idx, 0, it->first );
-				grid->SetCellValue( idx, 1, it->second->AsString() );
+				//grid->SetCellValue(idx, 1, it->second->AsString());
+				// wxGrid only support 6500 characters per cell (empirically determined) - use 1024 for display
+				wxString strVal = it->second->AsString();
+				if (strVal.Length() > 1024) strVal = strVal.Left(1024) + "...";
+				grid->SetCellValue( idx, 1, strVal );
 				idx++;
 			}
+			*/
+			wxArrayString sorted_names = vals.ListAll();
+			sorted_names.Sort();
+			for (idx = 0; idx < sorted_names.Count(); idx++)
+			{
+				grid->SetCellValue(idx, 0, sorted_names[idx]);
+				wxString strVal = vals.Get(sorted_names[idx])->AsString();
+				if (strVal.Length() > 1024) strVal = strVal.Left(1024) + "...";
+				grid->SetCellValue(idx, 1, strVal);
+			}
+			grid->AutoSizeColumns();
 			grid->Thaw();
 
 			frame->Show();
