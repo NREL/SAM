@@ -52,6 +52,9 @@ public:
 	virtual void Write( wxOutputStream & );
 	virtual bool Read( wxInputStream & );
 	
+	bool LoadDefaults();
+	bool SaveDefaults();
+
 	void SetConfiguration( const wxString &tech, const wxString &fin );
 	void GetConfiguration( wxString *tech, wxString *fin );	
 	ConfigInfo *GetConfiguration() { return m_config; }
