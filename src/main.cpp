@@ -93,7 +93,7 @@ enum { __idFirst = wxID_HIGHEST+592,
 	__idCaseMenuLast,
 	__idInternalFirst,
 		ID_INTERNAL_IDE, ID_INTERNAL_RESTART, ID_INTERNAL_SHOWLOG, 
-		ID_INTERNAL_DATAFOLDER, ID_INTERNAL_CASE_VALUES,
+		ID_INTERNAL_DATAFOLDER, ID_INTERNAL_CASE_VALUES, ID_SAVE_CASE_DEFAULTS,
 	__idInternalLast
 };
 
@@ -185,8 +185,9 @@ MainWindow::MainWindow()
 	entries.push_back( wxAcceleratorEntry( wxACCEL_SHIFT, WXK_F7,  ID_INTERNAL_IDE ) ) ;
 	entries.push_back( wxAcceleratorEntry( wxACCEL_SHIFT, WXK_F8,  ID_INTERNAL_RESTART ) );
 	entries.push_back( wxAcceleratorEntry( wxACCEL_SHIFT, WXK_F4,  ID_INTERNAL_SHOWLOG ) );
-	entries.push_back( wxAcceleratorEntry( wxACCEL_SHIFT, WXK_F12, ID_INTERNAL_CASE_VALUES ) );
-	entries.push_back( wxAcceleratorEntry( wxACCEL_SHIFT, WXK_F9,  ID_INTERNAL_DATAFOLDER ) );
+	entries.push_back(wxAcceleratorEntry(wxACCEL_SHIFT, WXK_F12, ID_INTERNAL_CASE_VALUES));
+	entries.push_back(wxAcceleratorEntry(wxACCEL_SHIFT, WXK_F10, ID_SAVE_CASE_DEFAULTS));
+	entries.push_back(wxAcceleratorEntry(wxACCEL_SHIFT, WXK_F9, ID_INTERNAL_DATAFOLDER));
 	entries.push_back( wxAcceleratorEntry( wxACCEL_CMD, 'o', wxID_OPEN ) );
 	entries.push_back( wxAcceleratorEntry( wxACCEL_CMD, 's', wxID_SAVE ) );
 	entries.push_back( wxAcceleratorEntry( wxACCEL_CMD, 'w', wxID_CLOSE ) );
@@ -200,8 +201,8 @@ bool MainWindow::CreateProject()
 
 	m_topBook->SetSelection( 1 );
 
-	CreateNewCase( wxEmptyString, "Flat Plate PV", "Residential" );
-	CreateNewCase( wxEmptyString, "PVWatts", "None" );
+	//CreateNewCase( wxEmptyString, "Flat Plate PV", "Residential" );
+	//CreateNewCase( wxEmptyString, "PVWatts", "None" );
 	return true;
 }
 
@@ -293,7 +294,7 @@ extern void ShowIDEWindow();
 
 void MainWindow::OnInternalCommand( wxCommandEvent &evt )
 {
-	switch( evt.GetId() )
+	switch (evt.GetId())
 	{
 	case ID_INTERNAL_IDE:
 		ShowIDEWindow();
@@ -306,30 +307,30 @@ void MainWindow::OnInternalCommand( wxCommandEvent &evt )
 		SamLogWindow::Setup();
 		break;
 	case ID_INTERNAL_DATAFOLDER:
-		wxLaunchDefaultBrowser( SamApp::GetUserLocalDataDir() );
+		wxLaunchDefaultBrowser(SamApp::GetUserLocalDataDir());
 		break;
 	case ID_INTERNAL_CASE_VALUES:
-		if ( Case *cc = GetCurrentCase() )
+		if (Case *cc = GetCurrentCase())
 		{
-			wxFrame *frame = new wxFrame( this, wxID_ANY, "Current Case Values: " + m_project.GetCaseName( cc ), wxDefaultPosition, wxSize(400,700) );
-			wxGrid *grid = new wxGrid( frame, wxID_ANY );
+			wxFrame *frame = new wxFrame(this, wxID_ANY, "Current Case Values: " + m_project.GetCaseName(cc), wxDefaultPosition, wxSize(400, 700));
+			wxGrid *grid = new wxGrid(frame, wxID_ANY);
 			VarTable &vals = cc->Values();
-			grid->CreateGrid( vals.size(), 2 );
+			grid->CreateGrid(vals.size(), 2);
 			size_t idx = 0;
 			grid->Freeze();
 			/*
 			// unsorted fast - uses unordered map from the VarTableBase
 			for( VarTable::iterator it = vals.begin();
-				it != vals.end();
-				++it )
+			it != vals.end();
+			++it )
 			{
-				grid->SetCellValue( idx, 0, it->first );
-				//grid->SetCellValue(idx, 1, it->second->AsString());
-				// wxGrid only support 6500 characters per cell (empirically determined) - use 1024 for display
-				wxString strVal = it->second->AsString();
-				if (strVal.Length() > 1024) strVal = strVal.Left(1024) + "...";
-				grid->SetCellValue( idx, 1, strVal );
-				idx++;
+			grid->SetCellValue( idx, 0, it->first );
+			//grid->SetCellValue(idx, 1, it->second->AsString());
+			// wxGrid only support 6500 characters per cell (empirically determined) - use 1024 for display
+			wxString strVal = it->second->AsString();
+			if (strVal.Length() > 1024) strVal = strVal.Left(1024) + "...";
+			grid->SetCellValue( idx, 1, strVal );
+			idx++;
 			}
 			*/
 			wxArrayString sorted_names = vals.ListAll();
@@ -345,6 +346,12 @@ void MainWindow::OnInternalCommand( wxCommandEvent &evt )
 			grid->Thaw();
 
 			frame->Show();
+		}
+		break;
+	case ID_SAVE_CASE_DEFAULTS:
+		if (Case *cc = GetCurrentCase())
+		{
+			cc->SaveDefaults();
 		}
 		break;
 	}
@@ -674,6 +681,17 @@ void MainWindow::OnCaseMenu( wxCommandEvent &evt )
 		break;
 	case ID_CASE_MOVE_RIGHT:
 		m_caseTabList->ReorderRight( tab_sel );
+		break;
+	case ID_CASE_RESET_DEFAULTS:
+		{
+			c->LoadDefaults();
+			// update UI
+			CaseEvaluator eval(c, c->Values(), c->GetConfiguration()->Equations);
+			int n = eval.CalculateAll();
+			if (n < 0)
+				::wxShowTextMessageDialog(wxJoin(eval.GetErrors(), wxChar('\n')));
+
+	}
 		break;
 	};
 
