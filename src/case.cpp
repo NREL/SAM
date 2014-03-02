@@ -1,4 +1,5 @@
 #include <wx/datstrm.h>
+#include <wx/wfstream.h>
 
 #include <wex/utils.h>
 
@@ -211,6 +212,8 @@ void Case::Write( wxOutputStream &_o )
 	out.Write8( 0x9b );
 }
 
+
+
 bool Case::Read( wxInputStream &_i )
 {
 	wxDataInputStream in(_i);
@@ -230,6 +233,41 @@ bool Case::Read( wxInputStream &_i )
 
 	return (in.Read8() == code);
 }
+
+
+bool Case::SaveDefaults()
+{
+	if (!m_config) return false;
+	wxString file = SamApp::GetRuntimePath() + "../defaults/"
+		+ m_config->Technology + "_" + m_config->Financing;
+	if (wxMessageBox(wxString::Format("Save defaults for %s %s?", m_config->Technology.c_str(), m_config->Financing.c_str()), "Save Defaults", wxYES_NO | wxCANCEL) != wxYES) return false;
+
+	wxFFileOutputStream out(file);
+	if (!out.IsOk()) return false;
+
+	m_vals.Write(out);
+	wxLogStatus("Case: defaults saved for " + file);
+	return true;
+}
+
+bool Case::LoadDefaults()
+{
+	if (!m_config) return false;
+	wxString file = SamApp::GetRuntimePath() + "../defaults/" 
+		+ m_config->Technology + "_" + m_config->Financing;
+	if (!wxFileExists(file)) return false;
+	wxFFileInputStream in(file);
+	if (!in.IsOk()) return false;
+
+	if (!m_vals.Read(in))
+	{
+		wxLogStatus("Case error: reading defaults for " + file);
+	}
+	wxLogStatus("Case: defaults loaded for " + file);
+
+	return true;
+}
+
 
 
 void Case::SetConfiguration( const wxString &tech, const wxString &fin )
@@ -255,7 +293,10 @@ void Case::SetConfiguration( const wxString &tech, const wxString &fin )
 
 	m_vals.Delete( to_remove );
 
-	// set up any new variables with internal default values
+	// set up any new variables with default values
+	LoadDefaults();
+
+	// set up any remaining new variables with internal default values
 	for( VarInfoLookup::iterator it = vars.begin(); it != vars.end(); ++it )
 		if ( !m_vals.Get( it->first ) )
 			m_vals.Set( it->first, it->second->DefaultValue ); // will create new variable if it doesnt exist
