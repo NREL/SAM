@@ -155,6 +155,26 @@ VarTable &Simulation::Results()
 }
 
 
+wxArrayString Simulation::GetVariables()
+{
+	return Results().ListAll();
+}
+
+VarValue *Simulation::GetValue( const wxString &var )
+{
+	return Results().Get( var );
+}
+
+wxString Simulation::GetLabel( const wxString &var )
+{
+	return m_outputLabels[ var ];
+}
+
+wxString Simulation::GetUnits( const wxString &var )
+{
+	return m_outputUnits[ var ];
+}
+
 class SimulationContext
 {
 public:
@@ -319,12 +339,17 @@ bool Simulation::Invoke()
 		}
 		else
 		{
+			m_outputLabels.clear();
+			m_outputUnits.clear();
+
 			pidx = 0;
 			while( const ssc_info_t p_inf = ssc_module_var_info( p_mod, pidx++ ) )
 			{
 				int var_type = ssc_info_var_type( p_inf );   // SSC_INPUT, SSC_OUTPUT, SSC_INOUT
 				int data_type = ssc_info_data_type( p_inf ); // SSC_STRING, SSC_NUMBER, SSC_ARRAY, SSC_MATRIX		
-				const char *name( ssc_info_name( p_inf ) ); // assumed to be non-null
+				const char *name = ssc_info_name( p_inf ); // assumed to be non-null
+				wxString label( ssc_info_label( p_inf ) );
+				wxString units( ssc_info_units( p_inf ) );
 				
 				if ( var_type == SSC_OUTPUT && data_type == SSC_NUMBER )
 				{
@@ -333,6 +358,9 @@ bool Simulation::Invoke()
 					{
 						VarValue *vv = m_results.Create( name, VV_NUMBER );
 						vv->Set( (float) vval );
+						
+						m_outputLabels[ name ] = label;
+						m_outputUnits[ name ] = units;
 					}
 				}
 				else if ( var_type == SSC_OUTPUT && data_type == SSC_ARRAY )
@@ -347,6 +375,9 @@ bool Simulation::Invoke()
 
 						vv->Set( ff, (size_t)len );
 						delete [] ff;
+						
+						m_outputLabels[ name ] = label;
+						m_outputUnits[ name ] = units;
 					}		
 				}
 			}

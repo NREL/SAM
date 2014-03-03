@@ -188,6 +188,70 @@ static void fcall_addpage( lk::invoke_t &cxt )
 	SamApp::Config().AddInputPageGroup( pages, sidebar, help, exclusive_var );
 }
 
+static void fcall_metric( lk::invoke_t &cxt )
+{
+	LK_DOC("metric", "Add an output metric to the current configuration. Options include mode,deci,thousep,pre,post,label,scale", "(string:variable, [table:options]):none");
+	 
+	if ( ConfigInfo *ci = SamApp::Config().CurrentConfig() )
+	{
+		ConfigInfo::MetricData md;
+		md.var = cxt.arg(0).as_string();
+		
+		if (cxt.arg_count() > 1 )
+		{
+			lk::vardata_t &opts = cxt.arg(1).deref();
+			if ( lk::vardata_t *x = opts.lookup("mode") )
+			{
+				wxString mm = x->as_string();
+				mm.MakeLower();
+				if ( mm == "f" ) md.mode = 'f';
+				else if ( mm == "e" ) md.mode = 'e';
+				else if ( mm == "h" ) md.mode = 'h';			
+			}
+
+			if ( lk::vardata_t *x = opts.lookup("deci") )
+				md.deci = x->as_integer();
+
+			if ( lk::vardata_t *x = opts.lookup("thousep") )
+				md.thousep = x->as_boolean();
+
+			if ( lk::vardata_t *x = opts.lookup("pre") )
+				md.pre = x->as_string();
+
+			if ( lk::vardata_t *x = opts.lookup("post") )
+				md.post = x->as_string();
+
+			if ( lk::vardata_t *x = opts.lookup("label") )
+				md.label = x->as_string();
+
+			if ( lk::vardata_t *x = opts.lookup("scale") )
+				md.scale = x->as_number();
+		}
+
+		ci->Metrics.push_back( md );
+	}
+}
+
+static void fcall_setting( lk::invoke_t &cxt )
+{
+	LK_DOC( "setting", "Sets a setting field for the current configuration", "(string:name, string:value -or- table:name/value pairs):none");
+
+	if ( ConfigInfo *ci = SamApp::Config().CurrentConfig() )
+	{
+		if( cxt.arg_count() == 2 )
+			ci->Settings[ cxt.arg(0).as_string() ] = cxt.arg(1).as_string();
+		else if ( cxt.arg_count() == 1 && cxt.arg(0).deref().type() == lk::vardata_t::HASH )
+		{
+			lk::varhash_t *hash = cxt.arg(0).deref().hash();
+			for( lk::varhash_t::iterator it = hash->begin();
+				it != hash->end();
+				++it )
+				ci->Settings[ it->first ] = it->second->deref().as_string();
+		}
+	}
+}
+	
+
 
 static void plottarget( CallbackContext &cc, const wxString &name )
 {
@@ -804,6 +868,8 @@ lk::fcall_t* invoke_config_funcs()
 		fcall_addconfig,
 		fcall_setconfig,
 		fcall_addpage,
+		fcall_metric,
+		fcall_setting,
 		fcall_setmodules,
 		0 };
 	return (lk::fcall_t*)vec;

@@ -14,6 +14,11 @@ function setup_pvwatts_pages()
 {
 	addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource' } );
 	addpage( [[ 'PVWatts' ]], { 'sidebar'='System Design', 'help'='PVWatts' } );
+	
+	/*metric( 'solrad_annual' ); //, {'label'='Average Radiation', 'post'=' kWh/m2/day' } );
+	metric( 'ac_annual' ); //, {'label'='AC Energy', 'post'=' kWh' } );
+	metric( 'annual_energy' ); //, {'label'='Net Annual Energy', 'post'=' kWh' } );
+	*/
 }
 
 function setup_flat_plate_pv_pages()
@@ -86,6 +91,7 @@ function setup_solar_water_heating_pages()
 {
 	addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource' } );
 	addpage( [[ 'Solar Water Heating' ]], { 'sidebar'='Solar Water Heating', 'help'='Solar Water Heating' } );
+	
 }
 
 function setup_csp_physical_trough_pages()
