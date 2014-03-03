@@ -94,8 +94,9 @@ BEGIN_EVENT_TABLE( ActiveInputPage, wxPanel )
 	EVT_TRLOOP( wxID_ANY, ActiveInputPage::OnNativeEvent )
 	EVT_MONTHLYFACTOR( wxID_ANY, ActiveInputPage::OnNativeEvent )
 	EVT_DATAARRAYBUTTON( wxID_ANY, ActiveInputPage::OnNativeEvent )
-	EVT_DATAMATRIX( wxID_ANY, ActiveInputPage::OnNativeEvent )
-	EVT_MONTHBYHOURFACTOR( wxID_ANY, ActiveInputPage::OnNativeEvent )
+	EVT_DATAMATRIX(wxID_ANY, ActiveInputPage::OnNativeEvent)
+	EVT_DIURNALPERIODCTRL(wxID_ANY, ActiveInputPage::OnNativeEvent)
+	EVT_MONTHBYHOURFACTOR(wxID_ANY, ActiveInputPage::OnNativeEvent)
 	EVT_SHADINGBUTTON( wxID_ANY, ActiveInputPage::OnNativeEvent )
 	EVT_VALUEMATRIXBUTTON( wxID_ANY, ActiveInputPage::OnNativeEvent )
 	EVT_LIBRARYCTRL( wxID_ANY, ActiveInputPage::OnNativeEvent )
@@ -507,6 +508,11 @@ bool ActiveInputPage::DataExchange( wxUIObject *obj, VarValue &val, DdxDir dir )
 	{
 		if ( dir == VAR_TO_OBJ ) hf->Read( &val );
 		else hf->Write( &val );
+	}
+	else if (AFDiurnalPeriodCtrl *dp = obj->GetNative<AFDiurnalPeriodCtrl>())
+	{
+		if (dir == VAR_TO_OBJ) dp->SetData(val.Matrix());
+		else val.Set(dp->GetData());
 	}
 	else return false; // object data exch not handled for this type
 
