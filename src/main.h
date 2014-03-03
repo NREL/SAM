@@ -197,6 +197,22 @@ public:
 	VarInfoLookup Variables;		
 	EqnFastLookup Equations;
 
+	struct MetricData {
+		MetricData() :
+			scale( 1.0 ), mode( 'g' ), thousep( false ), deci( 2 )
+		{}
+		wxString var;
+		wxString label;
+		double scale;
+		char mode;
+		bool thousep;
+		int deci;
+		wxString pre, post;
+	};
+	std::vector<MetricData> Metrics;
+
+	StringHash Settings;
+
 	// storage for variables specific to this configuration
 	// this variables are automatically added when the configuration
 	// cache is generated, and serve purposes like exclusive pages
@@ -213,6 +229,7 @@ public:
 	void Clear();
 	void Add( const wxString &tech, const wxArrayString &fin );
 	void SetConfig( const wxString &t, const wxString &f );
+	ConfigInfo *CurrentConfig() { return m_curConfig; }
 	
 	void SetModules( const wxArrayString &list );
 	void AddInputPageGroup( const std::vector< std::vector<PageInfo> > &pages, const wxString &sidebar = wxEmptyString,

@@ -726,6 +726,9 @@ bool VarInfo::Read( wxInputStream &is )
 	return  lastcode == code && valok;
 }
 
+DataProvider::DataProvider() { /* nothing to do */ }
+DataProvider::~DataProvider() { /* nothing to do - virtual */ }
+
 VarDatabase::VarDatabase()
 {
 }

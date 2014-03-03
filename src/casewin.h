@@ -14,6 +14,7 @@ class wxLKScriptCtrl;
 
 class InputPageList;
 class BaseCase;
+class Simulation;
 
 class PageNote;
 class CollapsePaneCtrl;
@@ -37,6 +38,8 @@ public:
 	void ShowPageNote();
 
 	void SaveCurrentViewProperties();
+
+	bool RunBaseCaseSimulation();
 
 private:
 	Case *m_case;
@@ -76,7 +79,8 @@ private:
 
 	wxSimplebook *m_pageFlipper;
 	wxMetroNotebook *m_resultsTab;
-	BaseCase *m_baseCase;
+	Simulation *m_baseCaseSimulation;
+	BaseCase *m_baseCaseResults;
 	wxLKScriptCtrl *m_scriptCtrl;
 
 	PageNote *m_pageNote;
