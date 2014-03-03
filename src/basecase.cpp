@@ -1,7 +1,11 @@
+#include <algorithm>
+
 #include <wx/simplebook.h>
 #include <wx/panel.h>
 #include <wx/clipbrd.h>
 #include <wx/dcbuffer.h>
+#include <wx/statline.h>
+#include <wx/busyinfo.h>
 
 #include <wex/extgrid.h>
 #include <wex/metro.h>
@@ -9,109 +13,32 @@
 #include <wex/plot/plplotctrl.h>
 #include <wex/plot/plaxis.h>
 #include <wex/plot/pllineplot.h>
+#include <wex/numeric.h>
+#include <wex/ole/excelauto.h>
+#include <wex/csv.h>
 
-
+#include "main.h"
+#include "variables.h"
+#include "simulation.h"
 #include "basecase.h"
 
 enum { ID_PAGESELECT = wxID_HIGHEST+948 };
 
-static void setup_plot( wxPLPlotCtrl *plot, int i )
-{	
-	plot->SetTitle( wxT("Demo Plot: using \\theta(x)=sin(x)^2, x_0=1\n\\zeta(x)=3\\dot sin^2(x)") );
-
-		
-	wxPLLabelAxis *mx = new wxPLLabelAxis( -1, 12, "Months of the year (\\Chi\\Psi)" );
-	mx->ShowLabel( false );
-
-	mx->Add( 0,  "Jan" );
-	mx->Add( 1,  "Feb" );
-	mx->Add( 2,  "March\nMarzo" );
-	mx->Add( 3,  "Apr" );
-	mx->Add( 4,  "May" );
-	mx->Add( 5,  "June\nJunio" );
-	mx->Add( 6,  "July" );
-	mx->Add( 7,  "August" );
-	mx->Add( 8,  "September" );
-	mx->Add( 9,  "October" );
-	mx->Add( 10, "November" );
-	mx->Add( 11, "December\nDeciembre" );
-
-	plot->SetXAxis2( mx );
-	/*
-	plot->SetYAxis1( new wxPLLinearAxis(-140, 150, wxT("y1 label\ntakes up 2 lines")) );
-	plot->SetYAxis1( new wxPLLinearAxis(-11, -3, wxT("\\theta(x)")), wxPLPlotCtrl::PLOT_BOTTOM );
-		
-	*/
-	//plot->SetScaleTextSize( true );
-
-	plot->ShowGrid( true, true );
-		
-	plot->SetXAxis1( new wxPLLogAxis( 0.01, 100, "\\nu  (m^3/kg)" ) );	
-
-	std::vector< wxRealPoint > sine_data;
-	std::vector< wxRealPoint > cosine_data;
-	std::vector< wxRealPoint > tangent_data;
-	for (double x = -6; x < 12; x+= 0.01)
-	{
-		sine_data.push_back( wxRealPoint( x, (i+1)*3*sin( x )*sin( x ) ) );
-		cosine_data.push_back( wxRealPoint( x/2, 2*cos( x/2 )*x ) );
-		tangent_data.push_back( wxRealPoint( x, x*tan( x ) ) );
-	}
-
-
-	plot->AddPlot( new wxPLLinePlot( sine_data, "3\\dot sin^2(x)", "forest green", wxPLLinePlot::DOTTED ), 
-		wxPLPlotCtrl::X_BOTTOM, 
-		wxPLPlotCtrl::Y_LEFT, 
-		wxPLPlotCtrl::PLOT_TOP);
-
-
-	plot->GetXAxis1()->SetLabel( "Bottom X Axis has a great sequence of \\nu  values!" );
-		
-
-	plot->AddPlot( new wxPLLinePlot( cosine_data, "cos(\\Omega_\\alpha  )", *wxRED, wxPLLinePlot::DASHED ), 
-		wxPLPlotCtrl::X_BOTTOM, 
-		wxPLPlotCtrl::Y_LEFT,
-		wxPLPlotCtrl::PLOT_TOP);
-		
-	if ( i > 2 )
-	{
-		wxPLLinePlot *lltan = new wxPLLinePlot( tangent_data, "\\beta\\dot tan(\\beta)", *wxBLUE, wxPLLinePlot::SOLID, 1, false );
-		lltan->SetAntiAliasing( true );
-		plot->AddPlot( lltan, 
-			wxPLPlotCtrl::X_BOTTOM, 
-			wxPLPlotCtrl::Y_LEFT,
-			wxPLPlotCtrl::PLOT_BOTTOM);
-
-		std::vector< wxRealPoint > pow_data;
-		for (double i=0.01;i<20;i+=0.1)
-			pow_data.push_back( wxRealPoint(i, pow(i,3)-0.02*pow(i,6) ) );
-		
-
-		plot->AddPlot( new wxPLLinePlot( pow_data, "i^3 -0.02\\dot i^6", *wxBLACK, wxPLLinePlot::SOLID ),
-			wxPLPlotCtrl::X_BOTTOM,
-			wxPLPlotCtrl::Y_LEFT,
-			wxPLPlotCtrl::PLOT_TOP );
-	}
-
-
-
-	plot->GetYAxis1()->SetLabel( "Pressure (kPa)" );
-	plot->GetYAxis1()->SetColour( *wxRED );
-	plot->GetYAxis1()->SetWorld( -20, 20 );
-
-}
 
 BEGIN_EVENT_TABLE( BaseCase, wxSplitterWindow )	
 	EVT_LISTBOX( ID_PAGESELECT, BaseCase::OnCommand )
 END_EVENT_TABLE()
 
-BaseCase::BaseCase( wxWindow *parent, CaseWindow *cw )
-	: wxSplitterWindow( parent, wxID_ANY, 
-		wxDefaultPosition, wxDefaultSize, wxSP_NOBORDER | wxSP_LIVE_UPDATE )
-{
-	wxPanel *left_panel = new wxPanel( this );
+#define DEFAULT_SASH_POS 217
 
-	m_metrics = new MetricsTable( left_panel );
+BaseCase::BaseCase( wxWindow *parent )
+	: wxSplitterWindow( parent, wxID_ANY, wxDefaultPosition, wxDefaultSize,
+		wxSP_LIVE_UPDATE|wxBORDER_NONE ),
+	 m_cfg( 0 ),
+	 m_results( 0 )
+{
+	m_leftPanel = new wxPanel( this );
+	m_metrics = new MetricsTable( m_leftPanel );	
 	matrix_t<wxString> data( 10, 2 );
 	data.at(0,0) = "Metric"; data.at(0,1) = "Value";
 	for( size_t i=1;i<10;i++ )
@@ -121,59 +48,262 @@ BaseCase::BaseCase( wxWindow *parent, CaseWindow *cw )
 	}
 	m_metrics->SetData( data );
 
-	m_pageList = new wxMetroListBox( left_panel, ID_PAGESELECT );
-	//m_pageList->SetFont( wxMetroTheme::Font( wxMT_LIGHT, 10 ) );
-	m_pageList->Add( "Standard Graphs" );
-	m_pageList->Add( "Data Tables" );
-	m_pageList->Add( "Cash Flow" );
-	m_pageList->Add( "Hourly Time Series" );
-	m_pageList->Add( "Average Day Profiles" );
-	m_pageList->Add( "Hourly Heat Map" );
-	m_pageList->Add( "Histograms" );
-	m_pageList->Add( "Duration Curves" );
-	m_pageList->Add( "Hourly Scatter Plots" );
-	m_pageList->SetSelection( 0 );
+	m_nav = new wxMetroListBox( m_leftPanel, ID_PAGESELECT );	
 
 	wxBoxSizer *left_sizer = new wxBoxSizer( wxVERTICAL );
 	left_sizer->Add( m_metrics, 0, wxALL|wxEXPAND, 0 );
-	left_sizer->Add( m_pageList, 1, wxALL|wxEXPAND, 0 );
-	left_panel->SetSizer( left_sizer );
+	left_sizer->Add( m_nav, 1, wxALL|wxEXPAND, 0 );
+	m_leftPanel->SetSizer( left_sizer );
 
+	m_pages = new wxSimplebook( this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxBORDER_NONE );
 
-	m_pageFlipper = new wxSimplebook( this, wxID_ANY, 
-		wxDefaultPosition, wxDefaultSize, wxBORDER_NONE );
+	m_tables = new TabularBrowser( m_pages );
+	m_pages->AddPage( m_tables, "Tabular Browser" );
+	m_nav->Add( "Tables" );
 
-	wxScrolledWindow *scrolwin = new wxScrolledWindow( m_pageFlipper, wxID_ANY );
-	scrolwin->SetBackgroundColour( *wxWHITE );
-	int y = 10;
-	for( size_t i=0;i<5;i++ )
-	{
-		wxPLPlotCtrl *pl = new wxPLPlotCtrl( scrolwin, wxID_ANY, wxPoint(10, y), wxSize(400,300) );
-		y+=310;
-		setup_plot( pl, i );
-		m_plot.push_back( pl );
-	}
+	wxPanel *cf_panel = new wxPanel( m_pages );
+	m_cashFlow = new wxExtGridCtrl( cf_panel, wxID_ANY );
+	m_cashFlow->CreateGrid( 100, 30 );
+	wxBoxSizer *cf_tools = new wxBoxSizer( wxHORIZONTAL );
+	cf_tools->Add( new wxButton( cf_panel, wxID_ANY, "Copy to clipboard" ), 0, wxALL, 2 );
+	cf_tools->Add( new wxButton( cf_panel, wxID_ANY, "Save as CSV" ), 0, wxALL, 2 );
+	cf_tools->Add( new wxButton( cf_panel, wxID_ANY, "Send to Excel" ), 0, wxALL, 2 );
+	cf_tools->Add( new wxButton( cf_panel, wxID_ANY, "Send to Excel with Equations" ), 0, wxALL, 2 );
+	wxBoxSizer *cf_sizer = new wxBoxSizer( wxVERTICAL );
+	cf_sizer->Add( cf_tools, 0, wxALL|wxEXPAND, 2 );
+	cf_sizer->Add( m_cashFlow, 1, wxALL|wxEXPAND, 0 );
+	cf_panel->SetSizer(cf_sizer);
+	m_pages->AddPage( cf_panel, "Cash Flow" );
+	m_nav->Add( "Cash Flow" );
 
-	scrolwin->SetScrollbars( 1, 1, 400, y );
-	m_pageFlipper->AddPage( scrolwin, "Graphs", true );
+	m_timeSeries = new wxDVTimeSeriesCtrl( m_pages, wxID_ANY );
+	m_pages->AddPage( m_timeSeries, "Time Series" );
+	m_nav->Add( "Time Series" );
 
-	m_cashFlowGrid = new wxExtGridCtrl( m_pageFlipper, wxID_ANY );
-	m_cashFlowGrid->CreateGrid( 10, 30 );
-	m_pageFlipper->AddPage( m_cashFlowGrid, "Cash Flow" );
+	m_dMap = new wxDVDMapCtrl( m_pages, wxID_ANY );
+	m_pages->AddPage( m_dMap, "DMap" );
+	m_nav->Add( "Heat Map" );
 
-	m_dview = new wxDVPlotCtrl( m_pageFlipper );
-	m_pageFlipper->AddPage( m_dview, "Time Series" );
-
+	m_profilePlots = new wxDVProfileCtrl( m_pages, wxID_ANY );
+	m_pages->AddPage( m_profilePlots, "Profile Plots" );
+	m_nav->Add( "Daily Profiles" );
 	
-	m_pageFlipper->AddPage( new wxPanel( m_pageFlipper ), "Data tables" );
+	m_scatterPlot = new wxDVScatterPlotCtrl( m_pages, wxID_ANY );
+	m_pages->AddPage( m_scatterPlot, "Scatter Plots" );
+	m_nav->Add( "Scatter Plots" );
 
-	SplitVertically( left_panel, m_pageFlipper, 200 );
+	m_pnCdf = new wxDVPnCdfCtrl( m_pages, wxID_ANY );
+	m_pages->AddPage( m_pnCdf, "PN-CDF" );
+	m_nav->Add( "Histogram" );
+	
+	m_durationCurve = new wxDVDCCtrl( m_pages, wxID_ANY );
+	m_pages->AddPage( m_durationCurve, "Duration Curve" );
+	m_nav->Add( "Duration Curve" );
 
+
+	SetMinimumPaneSize( 180 );
+	SplitVertically( m_leftPanel, m_pages, DEFAULT_SASH_POS );
+	
+	m_nav->SetSelection( 0 );
+	m_pages->ChangeSelection( 0 );
 }
 
 BaseCase::~BaseCase()
 {
-	/* nothing to do */
+	for( size_t i=0;m_tsDataSets.size();i++ )
+		delete m_tsDataSets[i];
+}
+
+class TimeSeries8760 : public wxDVTimeSeriesDataSet
+{
+	float *m_pdata;
+	wxString m_label, m_units;
+public:
+	TimeSeries8760( float *p, const wxString &label, const wxString &units )
+		: wxDVTimeSeriesDataSet(), m_pdata(p), m_label(label), m_units(units) { }
+	virtual wxRealPoint At(size_t i) const
+	{
+		if ( i < 8760 ) return wxRealPoint(i, m_pdata[i]);
+		else return wxRealPoint(0,0);
+	}
+	virtual size_t Length() const { return 8760; }
+	virtual double GetTimeStep() const { return 1.0; }
+	virtual wxString GetSeriesTitle() const { return m_label; }
+	virtual wxString GetUnits() const { return m_units; }
+};
+
+
+void BaseCase::Setup( ConfigInfo *cfg, DataProvider *results )
+{
+	m_cfg = cfg;
+	m_results = results;
+
+
+	if ( m_cfg == 0 || m_results == 0 )
+	{
+		Clear();
+		return;
+	}
+
+	// save the current view
+	StringHash viewinfo;
+	SavePerspective( viewinfo );
+
+	// update metrics
+	m_metrics->Clear();
+	if ( m_cfg->Metrics.size() > 0 )
+	{
+		matrix_t<wxString> metrics;
+		metrics.resize( m_cfg->Metrics.size()+1, 2 );
+		metrics(0,0) = "Metric";
+		metrics(0,1) = "Value";
+
+		for( size_t i=0;i<m_cfg->Metrics.size();i++ )
+		{
+			ConfigInfo::MetricData &md = m_cfg->Metrics[i];
+			wxString slab( md.var );
+			wxString sval( "<inval>" );
+
+			double value = 0.0;
+			if ( VarValue *vv = m_results->GetValue( md.var ) )
+			{
+				value = md.scale*(double)vv->Value();
+
+				int deci = md.deci;
+				if ( md.mode == 'g' ) deci = wxNumericCtrl::GENERIC;
+				else if ( md.mode == 'e' ) deci = wxNumericCtrl::EXPONENTIAL;
+				else if ( md.mode == 'h' ) deci = wxNumericCtrl::HEXADECIMAL;
+			
+				slab = md.label;
+				if ( slab.IsEmpty() )
+					slab = m_results->GetLabel( md.var );
+				
+				wxString post = md.post;
+				if ( post.IsEmpty() )
+					post = " " + m_results->GetUnits( md.var );
+				
+				sval = wxNumericCtrl::Format( value, wxNumericCtrl::REAL, 
+					deci, md.thousep, md.pre, post );
+			}
+
+			metrics(i+1, 0) = slab;
+			metrics(i+1, 1) = sval;
+		}
+
+		m_metrics->SetData( metrics );
+	}
+	else
+	{
+		wxArrayString mvars;
+		std::vector<double> mvals;
+		wxArrayString vars = m_results->GetVariables();
+		for( size_t i=0;i<vars.size();i++ )
+			if ( VarValue *vv = m_results->GetValue( vars[i] ) )
+				if ( vv->Type() == VV_NUMBER )
+				{
+					mvars.Add( vars[i] );
+					mvals.push_back( vv->Value() );
+				}
+
+		if ( mvars.size() > 0 )
+		{
+			matrix_t<wxString> metrics( mvars.size()+1, 2 );
+			metrics(0,0) = "Auto-metric";
+			metrics(0,1) = "Value";
+			for( size_t i=0;i<mvars.size();i++ )
+			{
+				wxString label = m_results->GetLabel( mvars[i] );
+				if ( label.IsEmpty() ) label = mvars[i];
+				metrics(i+1,0) = label;
+
+				metrics(i+1,1) = wxString::Format("%lg", mvals[i]) + " " + m_results->GetUnits(mvars[i]);
+			}
+			m_metrics->SetData( metrics );
+		}
+	}
+
+	RemoveAllDataSets();
+	wxArrayString vars = m_results->GetVariables();
+	for( size_t i=0;i<vars.size();i++ )
+	{
+		if ( VarValue *vv = m_results->GetValue( vars[i] ) )
+		{
+			if ( vv->Type() == VV_ARRAY )
+			{
+				size_t n = 0;
+				float *p = vv->Array( &n );
+				
+				if ( n == 8760 )
+					AddDataSet( new TimeSeries8760( p, m_results->GetLabel(vars[i]), m_results->GetUnits(vars[i])) );
+			}
+		}
+	}
+
+	m_tables->Setup( m_cfg, m_results );
+	
+	int sash = m_metrics->GetBestSize().x;
+	if ( sash < 150 ) sash = 150;
+	SetSashPosition( sash );
+	
+	// load the formerly saved perspective
+	LoadPerspective( viewinfo );
+}
+
+void BaseCase::AddDataSet(wxDVTimeSeriesDataSet *d, const wxString& group, bool update_ui)
+{
+	//Take ownership of the data Set.  We will delete it on destruction.
+	m_tsDataSets.push_back(d);
+
+	m_timeSeries->AddDataSet(d, group, update_ui);
+	m_dMap->AddDataSet(d, group, update_ui);
+	m_profilePlots->AddDataSet(d, group, update_ui);
+	m_pnCdf->AddDataSet(d, group, update_ui); 
+	m_durationCurve->AddDataSet(d, group, update_ui);
+	m_scatterPlot->AddDataSet(d, group, update_ui);
+}
+
+void BaseCase::RemoveAllDataSets()
+{
+	m_timeSeries->RemoveAllDataSets();
+	m_dMap->RemoveAllDataSets();
+	m_profilePlots->RemoveAllDataSets();
+	m_pnCdf->RemoveAllDataSets();
+	m_durationCurve->RemoveAllDataSets();
+	m_scatterPlot->RemoveAllDataSets();
+
+	for (int i=0; i<m_tsDataSets.size(); i++)
+		delete m_tsDataSets[i];
+
+	m_tsDataSets.clear();
+}
+
+void BaseCase::SavePerspective( StringHash &map )
+{
+	// save information about the current view
+	map[ "navigation" ] = wxString::Format( "%d", m_nav->GetSelection() );
+}
+
+void BaseCase::LoadPerspective( StringHash &map )
+{
+	int nnav = wxAtoi( map["navigation"] );
+	if ( nnav >= 0 && nnav < m_nav->Count() )
+	{
+		m_nav->SetSelection( nnav );
+		m_pages->SetSelection( nnav );
+	}
+}
+
+void BaseCase::Clear()
+{
+	m_cfg = 0;
+	m_results = 0;
+
+	matrix_t<wxString> metrics(2,1);
+	metrics(0,0) = "Metrics";
+	metrics(1,0) = "No data available.";
+	m_metrics->SetData( metrics );
+
+	RemoveAllDataSets();
 }
 
 void BaseCase::OnCommand( wxCommandEvent &evt )
@@ -181,8 +311,8 @@ void BaseCase::OnCommand( wxCommandEvent &evt )
 	switch( evt.GetId() )
 	{
 	case ID_PAGESELECT:
-		if ( m_pageList->GetSelection() < m_pageFlipper->GetPageCount() )
-			m_pageFlipper->SetSelection( m_pageList->GetSelection() );
+		if ( m_nav->GetSelection() < m_pages->GetPageCount() )
+			m_pages->SetSelection( m_nav->GetSelection() );
 		break;
 	default:
 		break;
@@ -194,8 +324,10 @@ void BaseCase::OnCommand( wxCommandEvent &evt )
 
 
 
-enum { ID_METRICS_COPY_TSV = wxID_HIGHEST+258,
-ID_METRICS_COPY_CSV};
+enum { ID_METRICS_COPY_TSV = wxID_HIGHEST+258, ID_METRICS_COPY_CSV };
+
+#define MT_BORDER 1
+#define MT_SPACE 4
 
 BEGIN_EVENT_TABLE( MetricsTable, wxWindow)
 	EVT_SIZE( MetricsTable::OnResize)
@@ -208,12 +340,9 @@ END_EVENT_TABLE()
 MetricsTable::MetricsTable(wxWindow *parent)
 	: wxWindow(parent,-1,wxDefaultPosition, wxDefaultSize, wxCLIP_CHILDREN)
 {
-	mRowHeight = 0;
-	mBestHeight = 0;
+	m_rowHeight = 10;
+	SetFont( *wxNORMAL_FONT );
 	SetBackgroundStyle(wxBG_STYLE_CUSTOM);
-	mFillColour = wxColour(50,50,50);
-	mTableColour = *wxWHITE;
-
 }
 
 void MetricsTable::OnContextMenu(wxCommandEvent &evt)
@@ -221,9 +350,9 @@ void MetricsTable::OnContextMenu(wxCommandEvent &evt)
 	wxString sep = evt.GetId() == ID_METRICS_COPY_CSV ? "," : "\t";
 
 	wxString tdat;
-	for (int r=0;r<mTable.nrows();r++)
-		for (int c=0;c<mTable.ncols();c++)
-			tdat += mTable.at(r,c) + (c==mTable.ncols()-1 ? "\n" : sep);
+	for (int r=0;r<m_table.nrows();r++)
+		for (int c=0;c<m_table.ncols();c++)
+			tdat += m_table.at(r,c) + (c==m_table.ncols()-1 ? "\n" : sep);
 
 	if (wxTheClipboard->Open())
 	{
@@ -244,22 +373,55 @@ void MetricsTable::OnRightClick(wxMouseEvent &evt)
 
 void MetricsTable::SetData(const matrix_t<wxString> &data)
 {
-	mTable = data;
+	m_table = data;
+	if ( m_table.nrows() > 0 && m_table.ncols() > 0 )
+	{
+		m_cellsz.resize_fill( m_table.nrows(), m_table.ncols(), wxSize(40,15) );
+		wxClientDC dc( const_cast<MetricsTable*>(this) );
+		dc.SetFont( GetFont() );
+		for (size_t r=0;r<m_table.nrows();r++)
+			for (size_t c=0;c<m_table.ncols();c++)
+				m_cellsz(r,c) = dc.GetTextExtent( m_table(r,c) );
+
+	
+		m_colxsz.resize( m_table.ncols(), 1 );
+		for (size_t c=0;c<m_table.ncols();c++)
+		{
+			m_colxsz[c] = 0;
+			for (size_t r=0;r<m_table.nrows();r++)
+				if (m_cellsz(r,c).x > m_colxsz[c])
+					m_colxsz[c] = m_cellsz(r,c).x;
+
+			m_colxsz[c] += MT_SPACE*2;
+		}
+			
+		m_rowHeight = dc.GetCharHeight() + MT_SPACE;
+	}
+
+	InvalidateBestSize();
+	Refresh();
+}
+
+void MetricsTable::Clear()
+{
+	m_table.clear();
 	Refresh();
 }
 
 wxSize MetricsTable::DoGetBestSize() const
 {
-	int height = 0;
-	wxClientDC dc( const_cast<MetricsTable*>(this) );
-	wxFont f = *wxNORMAL_FONT;
-	f.SetWeight( wxFONTWEIGHT_BOLD );
-	dc.SetFont( f );
-	height = (dc.GetCharHeight()+2) * (mTable.nrows()) + 10;
-	return wxSize(200,height); // mBestHeight;
+	int width = 0, height = 0;
+	for( size_t i=0;i<m_colxsz.size();i++ )
+		width += m_colxsz[i];
+	width += 2*MT_BORDER;
+	if ( width < 100 ) width = 100;
+
+	height = m_rowHeight * m_table.nrows() + 2*MT_BORDER;
+	if ( height < 10 ) height = 10;
+
+	return wxSize(width,height);
 }
 
-#define XBORDER 3
 
 void MetricsTable::OnPaint(wxPaintEvent &evt)
 {
@@ -267,104 +429,628 @@ void MetricsTable::OnPaint(wxPaintEvent &evt)
 	int cwidth, cheight;
 	GetClientSize(&cwidth, &cheight);
 	
-	dc.SetPen( wxPen( mFillColour, 1) );
-	dc.SetBrush( wxBrush( mFillColour, wxSOLID ) );
+	dc.SetPen( wxPen( wxColour(50,50,50), 1) );
+	dc.SetBrush( wxBrush( wxColour(50,50,50), wxSOLID ) );
 	dc.DrawRectangle(0,0,cwidth,cheight);
 
-	wxFont f = *wxNORMAL_FONT;
-	f.SetWeight( wxFONTWEIGHT_BOLD );
-	dc.SetFont( f );
+	dc.SetFont( GetFont() );
 
 	int ch = dc.GetCharHeight();
-	int nrows = mTable.nrows();
-	int ncols = mTable.ncols();
+
+	int nrows = m_table.nrows();
+	int ncols = m_table.ncols();
+
+	if ( nrows == 0 || ncols == 0 ) return;
 
 	int r,c;
-	matrix_t<wxSize> cellsz;
 
 	dc.SetTextForeground( *wxWHITE );
 
-	cellsz.resize( nrows, ncols );
-	for (r=0;r<nrows;r++)
-		for (c=0;c<ncols;c++)
-			cellsz.at(r,c) = dc.GetTextExtent( mTable.at(r,c) );
-
-	int rowheight=0;
-	std::vector<int> colxsz( ncols );
-	for (c=0;c<ncols;c++)
+	for (int i=0;i<m_table.ncols();i++)
 	{
-		colxsz[c] = 0;
-		for (r=0;r<nrows;r++)
-		{
-			if (cellsz.at(r,c).x > colxsz[c])
-				colxsz[c] = cellsz.at(r,c).x;
+		if (m_table.at(0,i).IsEmpty())
+			continue;
 
-			if (cellsz.at(r,c).y > rowheight)
-				rowheight = cellsz.at(r,c).y;
-		}
+		int xpos = MT_BORDER;
+		for (int k=0;k<i && k<m_colxsz.size();k++)
+			xpos += m_colxsz[k];
 
+		dc.DrawText(m_table.at(0,i), xpos+MT_SPACE, MT_BORDER+1 );
 	}
 	
-	rowheight += 2;
-
-	if (mTable.nrows() > 0)
-	{
-		for (int i=0;i<mTable.ncols();i++)
-		{
-			if (mTable.at(0,i).IsEmpty())
-				continue;
-
-			int xpos = XBORDER;
-			for (int k=0;k<i && k<colxsz.size();k++)
-				xpos += colxsz[k];
-
-			dc.DrawText(mTable.at(0,i), xpos, 2);
-		}
-	}
 	
-	dc.SetPen( wxPen(mTableColour, 1) );
-	dc.SetBrush( wxBrush( mTableColour, wxSOLID ) );
-	dc.DrawRectangle(XBORDER,ch+5,cwidth-XBORDER-XBORDER,cheight-ch-8);
-	dc.SetClippingRegion(wxRect(XBORDER,ch+5,cwidth-XBORDER-XBORDER,cheight-ch-8));
+	int wy = MT_BORDER+m_rowHeight;
+
+	dc.SetPen( wxPen( *wxWHITE, 1) );
+	dc.SetBrush( wxBrush( *wxWHITE, wxSOLID ) );
+
+	wxRect tabR( MT_BORDER, wy,cwidth-MT_BORDER-MT_BORDER,cheight-wy-MT_BORDER );
+
+	dc.DrawRectangle( tabR );
+	dc.SetClippingRegion( tabR );
 
 	// draw table;
 
-	dc.SetFont( *wxNORMAL_FONT );
+	dc.SetFont( GetFont() );
 	dc.SetTextForeground(*wxBLACK);
-
-	int y=ch+6;
-
-	std::vector<int> colstart;
-	if (ncols > 0)
-	{
-		colstart.resize(ncols);
-		colstart[0] = 0;
-		for (c=1;c<ncols;c++)
-			colstart[c] = colstart[c-1] + colxsz[c-1];
-	}
-
+	
 	for (r=1;r<nrows;r++)
 	{
+		int xpos = MT_BORDER;
 		for (c=0;c<ncols;c++)
-			dc.DrawText(mTable.at(r,c), XBORDER+1+colstart[c], y+1);
+		{
+			dc.DrawText(m_table.at(r,c), xpos+MT_SPACE, wy+1);			
+			xpos += m_colxsz[c];
+		}
 
-		y += rowheight;
+		wy += m_rowHeight;
 	}
 
-	dc.SetPen( wxPen(*::wxLIGHT_GREY, 1) );
+	dc.SetPen( wxPen(wxColour(240,240,240), 1) );
 	for (r=1;r<nrows;r++)
-		dc.DrawLine(XBORDER,r*rowheight+ch+6, cwidth-XBORDER, r*rowheight+ch+6);
-
-	for (c=1;c<ncols;c++)
-		dc.DrawLine( colstart[c], ch+5, colstart[c], (nrows-1)*rowheight+ch+6);
+		dc.DrawLine(MT_BORDER,r*m_rowHeight+tabR.y, cwidth-MT_BORDER, r*m_rowHeight+tabR.y);
 
 	dc.DestroyClippingRegion();
-
-	mBestHeight = ch+12+rowheight*(nrows-1);
-	mRowHeight = rowheight;
 }
 
 void MetricsTable::OnResize(wxSizeEvent &evt)
 {
 	Refresh();
+}
+
+
+
+
+enum { IDOB_COPYCLIPBOARD=wxID_HIGHEST+494, 
+	IDOB_SAVECSV, IDOB_SENDEXCEL, IDOB_EXPORTMODE, IDOB_CLEAR_ALL, 
+	IDOB_VARTREE, IDOB_GRID };
+
+
+BEGIN_EVENT_TABLE( TabularBrowser, wxPanel )
+	EVT_BUTTON( IDOB_COPYCLIPBOARD,  TabularBrowser::OnCommand )
+	EVT_BUTTON( IDOB_SAVECSV,  TabularBrowser::OnCommand )
+	EVT_BUTTON( IDOB_SENDEXCEL, TabularBrowser::OnCommand )
+	EVT_BUTTON( IDOB_CLEAR_ALL, TabularBrowser::OnCommand )
+	EVT_TREE_ITEM_ACTIVATED(IDOB_VARTREE, TabularBrowser::OnVarTree)
+END_EVENT_TABLE()
+
+
+class TabularBrowser::ResultsTable : public wxGridTableBase
+{
+public:
+
+	struct ColData
+	{
+		wxString Label;
+		float *Values;
+		float Value;
+		size_t N;
+	};
+
+	size_t MaxCount;
+	size_t MinCount;
+	std::vector<ColData> Table;
+
+
+	ResultsTable()
+	{
+		MinCount = 0;
+		MaxCount = 0;
+	}
+
+    virtual int GetNumberRows()
+	{
+		return MaxCount;
+	}
+
+    virtual int GetNumberCols()
+	{
+		return Table.size();
+	}
+
+    virtual bool IsEmptyCell( int row, int col )
+	{
+		return (col < 0 || col >= Table.size()
+			|| row >= Table[col].N || row < 0);
+	}
+
+    virtual wxString GetValue( int row, int col )
+	{
+		if ( col >= 0 && col < Table.size() && row >= 0 && row < Table[col].N )
+		{
+			return wxString::Format("%g", Table[col].Values[row]);
+		}
+		else return wxEmptyString;
+	}
+
+    virtual void SetValue( int row, int col, const wxString &)
+	{
+		// nothing to do
+	}
+
+	virtual wxString GetColLabelValue( int col )
+	{
+		if (col >= 0 && col < Table.size())	return Table[col].Label;
+		else return wxEmptyString;
+	}
+
+	virtual wxString GetRowLabelValue( int row )
+	{
+		if ( MinCount == MaxCount && MaxCount == 8760 )
+		{
+			wxDateTime dt( 1, wxDateTime::Jan, 1970, 0, 0, 0 );
+			dt.Add( wxTimeSpan::Minutes(60 * row) );
+			return dt.Format("%b %d, %I:%M %p");
+		}
+		else
+			return wxString::Format("%d",row+1);
+	}
+
+    virtual wxString GetTypeName( int row, int col )
+	{
+		return wxGRID_VALUE_STRING;
+	}
+
+	void LoadData( DataProvider *results, const wxArrayString &vars)
+	{
+		MaxCount = 0;
+		MinCount = 0;
+		Table.clear();
+
+		if ( vars.size() == 0 ) return;
+
+		MinCount = 10000000;
+		
+		for (size_t i=0;i<vars.size();i++)
+		{
+			if( VarValue *vv = results->GetValue( vars[i] ) )
+			{
+				Table.push_back( ColData() );
+				ColData &cc = Table[ Table.size()-1 ];
+
+				cc.Label = vars[i];
+				wxString label = results->GetLabel( vars[i] );
+				if ( !label.IsEmpty() ) cc.Label = label;
+
+				wxString units = results->GetUnits( vars[i] );
+				if ( !units.IsEmpty() ) cc.Label += "\n(" + units + ")";
+
+				cc.Values = 0;
+				cc.Value = 0.0f;
+				cc.N = 1;
+
+				if ( vv->Type() == VV_ARRAY )
+					cc.Values = vv->Array( &cc.N );
+				else if ( vv->Type() == VV_NUMBER )
+				{
+					cc.Value = vv->Value();
+					cc.Values = &cc.Value;
+					cc.N = 1;
+				}
+				
+				if ( cc.N > MaxCount )
+					MaxCount = cc.N;
+
+				if ( cc.N < MinCount )
+					MinCount = cc.N;
+
+			}
+		}
+	}
+
+	void ReleaseData()
+	{
+		Table.clear();
+		MaxCount = 0;
+	}
+
+};
+
+
+TabularBrowser::TabularBrowser( wxWindow *parent )
+	: wxPanel(parent )
+{
+	m_gridTable = NULL;
+
+
+	wxBoxSizer *tb_sizer = new wxBoxSizer(wxHORIZONTAL);	
+	tb_sizer->Add( new wxButton( this, IDOB_CLEAR_ALL, "Clear all selections "), 0, wxEXPAND|wxALL, 2);
+	tb_sizer->Add( new wxButton( this, IDOB_COPYCLIPBOARD, "Copy to clipboard"), 0, wxEXPAND|wxALL, 2);
+	tb_sizer->Add( new wxButton( this, IDOB_SAVECSV, "Save as CSV..."), 0, wxEXPAND|wxALL, 2);
+#ifdef __WXMSW__
+	tb_sizer->Add( new wxButton( this, IDOB_SENDEXCEL, "Send to Excel"), 0, wxEXPAND|wxALL, 2);
+#endif
+	tb_sizer->AddStretchSpacer(1);
+
+	wxSplitterWindow *splitwin = new wxSplitterWindow(this, wxID_ANY, 
+		wxDefaultPosition, wxDefaultSize, wxSP_LIVE_UPDATE ); 
+	splitwin->SetMinimumPaneSize(210);
+
+
+	m_tree = new wxExtTreeCtrl(splitwin, IDOB_VARTREE, wxDefaultPosition, wxDefaultSize, wxBORDER_NONE );
+
+
+	m_grid = new wxExtGridCtrl(splitwin, IDOB_GRID);
+	m_grid->EnableEditing(false);
+	m_grid->DisableDragCell();
+	m_grid->DisableDragRowSize();
+	m_grid->DisableDragColMove();
+	m_grid->DisableDragGridSize();
+	m_grid->SetDefaultCellAlignment( wxALIGN_RIGHT, wxALIGN_CENTER );
+	m_grid->SetRowLabelAlignment( wxALIGN_LEFT, wxALIGN_CENTER );
+
+	splitwin->SetMinimumPaneSize( 170 );
+	splitwin->SplitVertically(m_tree, m_grid, 210);
+
+
+	wxBoxSizer *szv_main = new wxBoxSizer(wxVERTICAL);
+	szv_main->Add( tb_sizer, 0, wxALL|wxEXPAND, 1 );
+	//szv_main->Add( new wxStaticLine( this ), 0, wxALL|wxEXPAND);
+	szv_main->Add( splitwin, 1, wxALL|wxEXPAND, 1 );
+
+	SetSizer( szv_main );
+
+}
+
+void TabularBrowser::UpdateGrid()
+{
+	if ( !m_results )
+	{
+		m_grid->ResizeGrid(1,1);
+		m_grid->SetCellValue(0,0,"No data");
+		return;
+	}
+
+	m_grid->Freeze();
+
+	if (m_gridTable) m_gridTable->ReleaseData();
+	
+	m_gridTable = new ResultsTable( );
+	m_gridTable->LoadData( m_results, m_selectedVars );
+	m_gridTable->SetAttrProvider( new wxExtGridCellAttrProvider );
+	m_grid->SetTable(m_gridTable, true);
+
+	m_grid->SetRowLabelSize( wxGRID_AUTOSIZE );
+
+	wxClientDC cdc(this);
+	wxFont f = *wxNORMAL_FONT;
+	f.SetWeight( wxFONTWEIGHT_BOLD );
+	cdc.SetFont( f );
+
+	for (int i=0;i<m_gridTable->Table.size();i++)
+	{
+		wxArrayString lines = wxSplit(m_gridTable->Table[i].Label, '\n');
+		int w = 40;
+		for( size_t k=0;k<lines.size();k++ )
+		{
+			int cw = cdc.GetTextExtent( lines[k] ).x;
+			if ( cw > w )
+				w = cw;
+		}
+
+		m_grid->SetColSize(i, w+6);
+	}
+
+	m_grid->SetColLabelSize( wxGRID_AUTOSIZE );
+	m_grid->Thaw();
+
+
+	m_grid->Layout();
+	m_grid->GetParent()->Layout();
+	m_grid->ForceRefresh();
+
+	
+}
+
+void TabularBrowser::Setup( ConfigInfo *cfg, DataProvider *data )
+{	
+	m_config = cfg;
+	m_results = data;
+	
+	UpdateAll();
+	UpdateGrid();
+}
+
+void TabularBrowser::UpdateAll()
+{
+	m_items.clear();
+	m_names.Clear();
+	m_tree->DeleteAllItems();
+	m_root = m_tree->AddRoot("Variables");
+
+	if ( !m_results || !m_config ) 
+	{
+		m_tree->AppendItem( m_root, "( no data )", wxExtTreeCtrl::ICON_BROKEN_LINK, wxExtTreeCtrl::ICON_BROKEN_LINK);
+		return;
+	}
+
+	
+	int an_period = -1;
+	wxString an_var = m_config->Settings["analysis_period_var"];
+	if ( !an_var.IsEmpty() )
+	{
+		if ( VarValue *vv = m_results->GetValue( an_var ) )
+			if ( vv->Type() == VV_NUMBER )
+				an_period = (int) vv->Value();
+	}
+
+	wxArrayString vars = m_results->GetVariables();
+
+	std::vector<size_t> varlengths;
+	varlengths.push_back( 1 );
+
+	for ( size_t i=0;i<vars.Count();i++ )
+	{
+		int len = -1;
+		if ( VarValue *vv = m_results->GetValue( vars[i] ) )
+		{
+			if ( vv->Type() == VV_ARRAY )
+			{
+				size_t n = 0;
+				float *f = vv->Array( &n );
+
+				if ( n > 1 && std::find( varlengths.begin(), varlengths.end(), n ) == varlengths.end() )
+					varlengths.push_back( n );
+			}
+		}
+	}
+
+	// sort variable lengths
+	std::stable_sort( varlengths.begin(), varlengths.end() );
+	
+
+	m_names.Clear();
+	m_items.clear();
+
+
+	for (size_t i=0;i<varlengths.size();i++)
+	{		
+		wxArrayString list;
+		
+		ListByCount( varlengths[i], list );
+
+		if (list.Count() == 0)
+			continue;
+		
+		wxString name;
+		if (varlengths[i] == 1)
+			name = "Single Values";
+		else if (varlengths[i] == 12)
+			name = "Monthly Data";
+		else if (varlengths[i] == 8760)
+			name = "Hourly Data";
+		else if (varlengths[i] == an_period)
+			name = "Annual Data";
+		else if (varlengths[i] == (an_period-1)*12)
+			name = "Lifetime Monthly Data";
+		else if (varlengths[i] == (an_period-1)*8760)
+			name = "Lifetime Hourly Data";
+		else
+			name.Printf("Data: %d values", (int)varlengths[i]);
+
+		wxTreeItemId cur_parent = m_tree->AppendItem( m_root, name, wxExtTreeCtrl::ICON_FOLDER, wxExtTreeCtrl::ICON_FOLDER);
+		m_tree->SetItemBold(cur_parent,true);
+		
+		wxArrayString labels;
+		for ( size_t j=0;j<list.Count();j++)
+			labels.Add( m_results->GetLabel( list[j] ));
+
+		SortByLabels( list, labels );
+
+		for (size_t j=0;j<list.Count();j++)
+		{
+			if (!labels[j].IsEmpty())
+			{
+				wxTreeItemId item = m_tree->AppendItem( cur_parent, labels[j], wxExtTreeCtrl::ICON_CHECK_FALSE,-1);
+				m_tree->Check(item, false);
+				m_items.push_back( item );		
+				m_names.Add(list[j]);
+			}
+		}
+	}
+
+
+	m_tree->Expand(m_root);
+	m_tree->UnselectAll();
+
+	size_t i=0;
+	while (i<m_selectedVars.Count())
+	{
+		int idx = m_names.Index( m_selectedVars[i] );
+		if (idx < 0)
+			m_selectedVars.RemoveAt(i);
+		else
+		{
+			m_tree->Check( m_items[idx], true );
+			m_tree->EnsureVisible( m_items[idx] );
+			i++;
+		}
+	}
+
+	UpdateGrid();
+}
+
+void TabularBrowser::SortByLabels(wxArrayString &names, wxArrayString &labels)
+{
+	// sort the selections by labels
+	wxString buf;
+	int count = (int)labels.Count();
+	for (int i=0;i<count-1;i++)
+	{
+		int smallest = i;
+
+		for (int j=i+1;j<count;j++)
+			if ( labels[j] < labels[smallest] )
+				smallest = j;
+
+		// swap
+		buf = labels[i];
+		labels[i] = labels[smallest];
+		labels[smallest] = buf;
+
+		buf = names[i];
+		names[i] = names[smallest];
+		names[smallest] = buf;
+
+	}
+}
+
+void TabularBrowser::ListByCount( size_t n, wxArrayString &list )
+{
+	if ( !m_results ) return;
+	wxArrayString vars = m_results->GetVariables();
+	for( size_t i=0;i<vars.size();i++ )
+	{
+		size_t len = 0;
+		if (VarValue *vv = m_results->GetValue( vars[i] ))
+		{
+			if ( vv->Type() == VV_NUMBER )
+				len = 1;
+			else if ( vv->Type() == VV_ARRAY )
+				vv->Array( &len );
+		}
+
+		if ( len == n )
+			list.Add( vars[i] );
+	}
+}
+
+void TabularBrowser::OnCommand(wxCommandEvent &evt)
+{
+	switch(evt.GetId())
+	{
+	case IDOB_CLEAR_ALL:
+		{
+			m_selectedVars.Clear();
+			UpdateAll();
+		}
+		break;
+	case IDOB_COPYCLIPBOARD:
+	case IDOB_SENDEXCEL:
+		{
+			wxBusyInfo busy("Processing data table... please wait");
+			wxString dat;
+			GetTextData(dat, '\t');
+			
+			// strip commas per request from Paul 5/23/12 meeting
+			dat.Replace(",","");
+
+#ifdef __WXMSW__
+			if (evt.GetId() == IDOB_SENDEXCEL)
+			{
+							
+				wxExcelAutomation xl;
+				if (!xl.StartExcel())
+				{
+					wxMessageBox("Could not start Excel.");
+					return;
+				}
+
+				xl.Show(true);
+
+				if (!xl.NewWorkbook())
+				{
+					wxMessageBox("Could not create a new Excel worksheet.");
+					return;
+				}
+				if (wxTheClipboard->Open())
+				{
+					wxTheClipboard->SetData( new wxTextDataObject(dat) );
+					wxTheClipboard->Close();
+					xl.PasteClipboard();
+				}
+			}
+#endif
+			if (evt.GetId() == IDOB_COPYCLIPBOARD)
+			{
+				if (wxTheClipboard->Open())
+				{
+					wxTheClipboard->SetData( new wxTextDataObject(dat) );
+					wxTheClipboard->Close();
+				}
+			}
+		}
+		break;
+	case IDOB_SAVECSV:
+		{
+			wxFileDialog fdlg(this, "Save results as CSV", wxEmptyString, "results.csv", "Comma-separated values (*.csv)|*.csv", wxFD_SAVE|wxFD_OVERWRITE_PROMPT);
+			if (fdlg.ShowModal() != wxID_OK) return;
+			
+			FILE *fp = fopen(fdlg.GetPath().c_str(), "w");
+			if (!fp)
+			{
+				wxMessageBox("Could not open file for write:\n\n" + fdlg.GetPath());
+				return;
+			}
+
+			wxBusyInfo busy("Writing CSV file... please wait");
+
+			wxString dat;
+			GetTextData(dat, ',');
+			fputs( dat.c_str(), fp );
+			fclose(fp);
+		}
+		break;
+	}
+}
+
+void TabularBrowser::OnVarTree(wxTreeEvent &evt)
+{	
+	wxTreeItemId item = evt.GetItem();
+	std::vector<wxTreeItemId>::iterator it = std::find( m_items.begin(), m_items.end(), item ) ;
+	if ( it != m_items.end() )
+	{
+		wxString name = m_names[ it - m_items.begin() ];
+
+		if ( m_tree->IsChecked(item) && m_selectedVars.Index( name ) == wxNOT_FOUND)
+			m_selectedVars.Add( name );
+		
+		if (!m_tree->IsChecked(item) && m_selectedVars.Index( name ) != wxNOT_FOUND)
+			m_selectedVars.Remove( name );
+
+		UpdateGrid();
+	}
+	evt.Skip();
+}
+
+void TabularBrowser::GetTextData(wxString &dat, char sep)
+{
+	dat = wxEmptyString;
+	if (!m_gridTable)
+		return;
+
+	size_t approxbytes = m_gridTable->MaxCount * 15 * m_gridTable->Table.size();
+	dat.Alloc(approxbytes);
+
+	size_t c;
+
+	for (c=0;c<m_gridTable->Table.size();c++)
+	{
+		wxString label = m_gridTable->Table[c].Label;
+		label.Replace( '\n', " | " );
+
+		if (sep == ',')
+			dat += '"' + label + '"';
+		else
+			dat += label;
+
+		if (c < m_gridTable->Table.size()-1)
+			dat += sep;
+		else
+			dat += '\n';
+	}
+
+	for (size_t r=0;r<m_gridTable->MaxCount;r++)
+	{
+		for (c=0;c<m_gridTable->Table.size();c++)
+		{
+			if (r < m_gridTable->Table[c].N)
+				dat += wxString::Format("%g", m_gridTable->Table[c].Values[r]);
+			
+			if (c < m_gridTable->Table.size()-1)
+				dat += sep;
+			else
+				dat += '\n';
+		}
+	}
 }

@@ -95,7 +95,7 @@ END_EVENT_TABLE()
 
 CaseWindow::CaseWindow( wxWindow *parent, Case *c )
 	: wxSplitterWindow( parent, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxSP_NOBORDER | wxSP_LIVE_UPDATE ),
-	m_case( c )
+	m_case( c ), m_baseCaseSimulation( 0 )
 {
 	m_case->AddListener( this );
 
@@ -144,8 +144,8 @@ CaseWindow::CaseWindow( wxWindow *parent, Case *c )
 
 	m_resultsTab = new wxMetroNotebook( m_pageFlipper, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxMT_LIGHTTHEME );
 	
-	m_baseCase = new BaseCase( m_resultsTab, 0 );
-	m_resultsTab->AddPage( m_baseCase, "Base Case", true );
+	m_baseCaseResults = new BaseCase( m_resultsTab);
+	m_resultsTab->AddPage( m_baseCaseResults, "Base Case", true );
 
 	wxPanel *param_panel = new wxPanel( m_resultsTab );
 
@@ -260,6 +260,10 @@ CaseWindow::CaseWindow( wxWindow *parent, Case *c )
 
 CaseWindow::~CaseWindow()
 {
+	m_baseCaseResults->Clear();
+	if ( m_baseCaseSimulation != 0 )
+		delete m_baseCaseSimulation;
+	
 	// detach forms if any shown on input pages.
 	DetachCurrentInputPage();
 	m_currentGroup = 0;
@@ -287,65 +291,75 @@ void CaseWindow::SaveCurrentViewProperties()
 	m_case->SetProperty("NoteWindowHeight", wxString::Format("%d", h ));
 }
 
+bool CaseWindow::RunBaseCaseSimulation()
+{
+	m_inputPageList->Select( -1 );
+		
+	// run simulations for this case
+	if ( m_baseCaseSimulation != 0 )
+	{
+		m_baseCaseResults->Clear();
+		delete m_baseCaseSimulation;
+	}
+		
+	m_baseCaseSimulation = new Simulation( m_case, "Base Case" );
+	return m_baseCaseSimulation->Invoke();
+		/*
+		wxFrame *frame = new wxFrame( this, wxID_ANY, "Results", wxDefaultPosition, wxSize(750,700) );
+		wxExtGridCtrl *grid = new wxExtGridCtrl( frame, wxID_ANY );
+
+		size_t maxlen = 1;
+		for( VarTable::iterator it = sim.Results().begin();
+			it != sim.Results().end();
+			++it )
+		{
+			VarValue *vv = it->second;
+			if ( vv->Type() == VV_ARRAY )
+			{
+				size_t n;
+				float *ff = vv->Array( &n );
+				if ( n > maxlen ) maxlen = n;
+			}
+		}
+
+		grid->CreateGrid( maxlen, sim.Results().size() );
+		grid->Freeze();
+		size_t col = 0;
+		for( VarTable::iterator it = sim.Results().begin();
+			it != sim.Results().end();
+			++it )
+		{
+			grid->SetColLabelValue( col, it->first );
+
+			if ( it->second->Type() == VV_NUMBER )
+				grid->SetCellValue( 0, col, wxString::Format("%.3f", it->second->Value() ) );
+			else if (it->second->Type() == VV_ARRAY )
+			{
+				size_t n;
+				float *ff = it->second->Array( &n );
+				for( size_t j=0;j<n;j++ )
+					grid->SetCellValue( j, col, wxString::Format("%.3f", ff[j] ) );
+			}
+			col++;
+		}
+		grid->Thaw();
+
+		frame->Show();
+		*/
+}
+
 void CaseWindow::OnCommand( wxCommandEvent &evt )
 {
 	if ( evt.GetId() == ID_SIMULATE )
 	{
-		m_inputPageList->Select( -1 );
-		
-		// run simulations for this case
-		Simulation sim( m_case, "base case simulation" );
-		if( sim.Invoke() )
+		if ( RunBaseCaseSimulation() )
 		{
-			wxFrame *frame = new wxFrame( this, wxID_ANY, "Results", wxDefaultPosition, wxSize(750,700) );
-			wxExtGridCtrl *grid = new wxExtGridCtrl( frame, wxID_ANY );
-
-			size_t maxlen = 1;
-			for( VarTable::iterator it = sim.Results().begin();
-				it != sim.Results().end();
-				++it )
-			{
-				VarValue *vv = it->second;
-				if ( vv->Type() == VV_ARRAY )
-				{
-					size_t n;
-					float *ff = vv->Array( &n );
-					if ( n > maxlen ) maxlen = n;
-				}
-			}
-
-			grid->CreateGrid( maxlen, sim.Results().size() );
-			grid->Freeze();
-			size_t col = 0;
-			for( VarTable::iterator it = sim.Results().begin();
-				it != sim.Results().end();
-				++it )
-			{
-				grid->SetColLabelValue( col, it->first );
-
-				if ( it->second->Type() == VV_NUMBER )
-					grid->SetCellValue( 0, col, wxString::Format("%.3f", it->second->Value() ) );
-				else if (it->second->Type() == VV_ARRAY )
-				{
-					size_t n;
-					float *ff = it->second->Array( &n );
-					for( size_t j=0;j<n;j++ )
-						grid->SetCellValue( j, col, wxString::Format("%.3f", ff[j] ) );
-				}
-				col++;
-			}
-			grid->Thaw();
-
-			frame->Show();
-
+			m_baseCaseResults->Setup( m_case->GetConfiguration(), m_baseCaseSimulation );
+			m_pageFlipper->SetSelection( 1 );
+			m_resultsTab->SetSelection( 0 ); // show base case
 		}
 		else
-			wxShowTextMessageDialog( wxJoin(sim.GetErrors(), '\n') );
-
-	//	m_pageFlipper->SetSelection( 1 );
-	//	m_resultsTab->SetSelection( 0 ); // show base case
-
-
+			wxShowTextMessageDialog( wxJoin(m_baseCaseSimulation->GetErrors(), '\n') );
 	}
 	else if (evt.GetId() == ID_RESULTSPAGE )
 	{

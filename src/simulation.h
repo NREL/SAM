@@ -4,6 +4,7 @@
 #include <wx/string.h>
 #include <lk_env.h>
 #include "variables.h"
+#include "basecase.h"
 
 class SimulationContext;
 
@@ -28,11 +29,10 @@ General simulation process:
   
 */
 
-
 class Case;
 class SimulationEngine;
 
-class Simulation
+class Simulation : public DataProvider
 {
 	friend class SimulationEngine;
 public:
@@ -50,6 +50,11 @@ public:
 	wxArrayString &GetErrors();
 	wxArrayString &GetWarnings();
 	VarTable &Results();
+
+	virtual wxArrayString GetVariables();
+	virtual VarValue *GetValue( const wxString &var );
+	virtual wxString GetLabel( const wxString &var );
+	virtual wxString GetUnits( const wxString &var );
 	
 	bool Invoke();
 
@@ -60,7 +65,7 @@ private:
 	VarTable m_inputs;
 	VarTable m_results;
 	wxArrayString m_errors, m_warnings;
-
+	StringHash m_outputLabels, m_outputUnits;
 };
 
 class SimulationEngine
