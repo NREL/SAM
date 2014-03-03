@@ -9,6 +9,12 @@
 #include <wex/plot/plplotctrl.h>
 #include <wex/csv.h>
 
+#ifdef __WXMSW__
+#include <wx/msw/private.h>
+#endif
+
+
+
 #include "ptlayoutctrl.h"
 #include "materials.h"
 #include "troughloop.h"
@@ -2715,6 +2721,718 @@ END_EVENT_TABLE()
 
 
 
+
+
+
+
+
+
+
+int ScheduleCharToInt(char c)
+{
+	int ret = 0;
+	switch (c)
+	{
+	case '1':
+		ret = 1;
+		break;
+	case '2':
+		ret = 2;
+		break;
+	case '3':
+		ret = 3;
+		break;
+	case '4':
+		ret = 4;
+		break;
+	case '5':
+		ret = 5;
+		break;
+	case '6':
+		ret = 6;
+		break;
+	case '7':
+		ret = 7;
+		break;
+	case '8':
+		ret = 8;
+		break;
+	case '9':
+		ret = 9;
+		break;
+	case 'A':
+	case 'a':
+	case ':':
+		ret = 10;
+		break;
+	case 'B':
+	case 'b':
+	case '=':
+		ret = 11;
+		break;
+	case 'C':
+	case 'c':
+	case '<':
+		ret = 12;
+		break;
+	}
+	return ret;
+}
+
+char ScheduleIntToChar(int d)
+{
+	char ret = '0';
+	switch (d)
+	{
+	case 1:
+		ret = '1';
+		break;
+	case 2:
+		ret = '2';
+		break;
+	case 3:
+		ret = '3';
+		break;
+	case 4:
+		ret = '4';
+		break;
+	case 5:
+		ret = '5';
+		break;
+	case 6:
+		ret = '6';
+		break;
+	case 7:
+		ret = '7';
+		break;
+	case 8:
+		ret = '8';
+		break;
+	case 9:
+		ret = '9';
+		break;
+	case 10:
+		ret = 'A';
+		break;
+	case 11:
+		ret = 'B';
+		break;
+	case 12:
+		ret = 'C';
+		break;
+	}
+	return ret;
+}
+
+
+
+
+
+BEGIN_EVENT_TABLE(AFDiurnalPeriodCtrl, wxWindow)
+EVT_PAINT(AFDiurnalPeriodCtrl::OnPaint)
+EVT_ERASE_BACKGROUND(AFDiurnalPeriodCtrl::OnErase)
+EVT_SIZE(AFDiurnalPeriodCtrl::OnResize)
+EVT_CHAR(AFDiurnalPeriodCtrl::OnChar)
+EVT_KEY_DOWN(AFDiurnalPeriodCtrl::OnKeyDown)
+EVT_LEFT_DOWN(AFDiurnalPeriodCtrl::OnMouseDown)
+EVT_LEFT_UP(AFDiurnalPeriodCtrl::OnMouseUp)
+EVT_MOTION(AFDiurnalPeriodCtrl::OnMouseMove)
+EVT_KILL_FOCUS(AFDiurnalPeriodCtrl::OnLostFocus)
+END_EVENT_TABLE()
+
+DEFINE_EVENT_TYPE(wxEVT_DIURNALPERIODCTRL_CHANGE)
+
+#ifndef MIN
+#define MIN(a,b) (((a)<(b))?(a):(b))
+#endif
+#ifndef MAX
+#define MAX(a,b) (((a)>(b))?(a):(b))
+#endif
+
+#define SCHED_FONT wxFont(8, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD)
+
+AFDiurnalPeriodCtrl::AFDiurnalPeriodCtrl(wxWindow *parent, int id, const wxPoint &pos, const wxSize &sz)
+: wxWindow(parent, id, pos, sz, wxWANTS_CHARS)
+{
+	SetBackgroundColour(*wxWHITE);
+	SetBackgroundStyle(wxBG_STYLE_CUSTOM);
+
+	m_colLabelsVertical = true;
+	m_autosizeHeaders = true;
+	m_mouseDown = false;
+	m_rowHeaderSize = 30;
+	m_colHeaderSize = 21;
+	m_cellSize = 17;
+	m_data.resize(12,24); // 12 rows x 24 cols
+	m_cols = 24;
+	m_selStartR = m_selStartC = m_selEndR = m_selEndC = -1;
+	m_min = 0;
+	m_max = 9; // can be set to higher value in SetMinMax
+}
+
+AFDiurnalPeriodCtrl::~AFDiurnalPeriodCtrl()
+{
+	/* nothing to do */
+}
+
+void AFDiurnalPeriodCtrl::AddColour(const wxColour &c)
+{
+	m_colours.push_back(c);
+}
+
+bool AFDiurnalPeriodCtrl::GetColour(int i, wxColour &c)
+{
+	if (i >= 0 && i < (int)m_colours.size())
+	{
+		c = m_colours[i];
+		return true;
+	}
+	else
+		return false;
+}
+
+void AFDiurnalPeriodCtrl::Set(int r, int c, int val)
+{
+	if (r < m_data.nrows() && c < m_data.ncols())
+		m_data.at(r,c) = val;
+}
+
+
+void AFDiurnalPeriodCtrl::SetMin(int min)
+{ 
+	SetMinMax(min, m_max);
+}
+
+int AFDiurnalPeriodCtrl::GetMin()
+{ 
+	return m_min; 
+}
+
+void AFDiurnalPeriodCtrl::SetMax(int max)
+{ 
+	SetMinMax(m_min, max);
+}
+
+int AFDiurnalPeriodCtrl::GetMax()
+{ 
+	return m_max; 
+}
+
+
+void AFDiurnalPeriodCtrl::SetMinMax(int min, int max, bool clamp)
+{
+	m_min = min;
+	m_max = max;
+
+	if (!clamp)
+		return;
+
+	for (size_t r = 0; r < m_data.nrows(); r++)
+		for (size_t c = 0; c < m_data.ncols(); c++)
+		{
+			if (m_data.at(r,c) < min) m_data.at(r,c) = min;
+			if (m_data.at(r,c) > max) m_data.at(r,c) = max;
+		}
+}
+
+int AFDiurnalPeriodCtrl::Get(int r, int c) const
+{
+	if (r < m_data.nrows() && c < m_data.ncols())
+		return m_data.at(r,c);
+	else
+		return -1;
+}
+
+void AFDiurnalPeriodCtrl::Set(int val)
+{
+	for (size_t r = 0; r < m_data.nrows(); r++)
+		for (size_t c = 0; c < m_data.ncols(); c++)
+			m_data.at(r,c) = val;
+	Refresh();
+}
+
+void AFDiurnalPeriodCtrl::SetGrid(int nr, int nc)
+{
+	if (nr*nc > 0)
+	{
+		m_data.resize(nr,nc);
+		m_cols = nc;
+	}
+}
+
+
+void AFDiurnalPeriodCtrl::AddRowLabel(const wxString &s)
+{
+	m_rowLabels.Add(s);
+}
+
+void AFDiurnalPeriodCtrl::AddColLabel(const wxString &s)
+{
+	m_colLabels.Add(s);
+}
+
+void AFDiurnalPeriodCtrl::ClearLabels()
+{
+	m_rowLabels.Clear();
+	m_colLabels.Clear();
+}
+
+void AFDiurnalPeriodCtrl::ClearRowLabels()
+{
+	m_rowLabels.Clear();
+}
+
+void AFDiurnalPeriodCtrl::ClearColLabels()
+{
+	m_colLabels.Clear();
+}
+
+
+void AFDiurnalPeriodCtrl::AutosizeHeaders()
+{
+	if (!m_autosizeHeaders) return;
+
+	wxClientDC dc(this);
+	dc.SetFont(SCHED_FONT);
+
+
+	int r, c;
+	int rows = m_data.nrows();
+	int cols = m_data.ncols();
+	int s;
+	m_rowHeaderSize = 0;
+	for (r = 0; r<rows&&r<(int)m_rowLabels.Count(); r++)
+	{
+		dc.GetTextExtent(m_rowLabels[r], &s, NULL);
+		if (s > m_rowHeaderSize)
+			m_rowHeaderSize = s;
+	}
+
+	m_colHeaderSize = 0;
+	for (c = 0; c<cols&&c<(int)m_colLabels.Count(); c++)
+	{
+		int textW, textH;
+		dc.GetTextExtent(m_colLabels[c], &textW, &textH);
+		if ((s = m_colLabelsVertical ? textW : textH) > m_colHeaderSize)
+			m_colHeaderSize = s;
+	}
+
+	m_rowHeaderSize += 6;
+	m_colHeaderSize += 4;
+}
+
+void AFDiurnalPeriodCtrl::OnErase(wxEraseEvent &)
+{
+	/* nothing to do */
+}
+
+void AFDiurnalPeriodCtrl::OnPaint(wxPaintEvent &)
+{
+	wxAutoBufferedPaintDC dc(this);
+	wxSize sz(GetClientSize());
+	wxRect geom(0, 0, sz.GetWidth(), sz.GetHeight());
+
+	dc.SetBackground(GetBackgroundColour());
+	dc.Clear();
+
+	int r, c;
+	int rows = m_data.nrows();
+	int cols = m_data.ncols();
+
+	dc.SetFont(SCHED_FONT);
+
+	dc.SetPen(*wxTRANSPARENT_PEN);
+	for (r = 0; r<rows; r++)
+	{
+		for (c = 0; c<cols; c++)
+		{
+			int x = m_rowHeaderSize + c*m_cellSize;
+			int y = m_colHeaderSize + r*m_cellSize;
+
+			int selrs = MIN(m_selStartR, m_selEndR);
+			int selcs = MIN(m_selStartC, m_selEndC);
+			int selre = MAX(m_selStartR, m_selEndR);
+			int selce = MAX(m_selStartC, m_selEndC);
+
+			bool sel = (r >= selrs && r <= selre && c >= selcs && c <= selce);
+
+			if (x >= geom.width || y >= geom.height)
+				break;
+
+			int val = m_data.at(r,c);
+			if (val >= 1 && val - 1 < (int)m_colours.size() || sel)
+			{
+				dc.SetBrush(wxBrush(sel ? *wxBLUE : m_colours[val - 1]));
+				dc.DrawRectangle(geom.x + x, geom.y + y, m_cellSize, m_cellSize);
+			}
+
+			wxString buf;
+			buf << val;
+			int textW, textH;
+			dc.GetTextExtent(buf, &textW, &textH);
+			x += m_cellSize / 2 - textW / 2;
+			y += m_cellSize / 2 - textH / 2;
+
+			dc.SetTextForeground(sel ? *wxWHITE : *wxBLACK);
+			dc.DrawText(buf, geom.x + x, geom.y + y);
+		}
+	}
+
+
+	dc.SetPen(wxPen(wxColour(120, 120, 120)));
+	dc.SetTextForeground(wxColour(120, 120, 120));
+
+	for (r = 0; r <= rows; r++)
+	{
+		dc.DrawLine(geom.x, geom.y + m_colHeaderSize + r*m_cellSize,
+			geom.x + m_rowHeaderSize + cols*m_cellSize, geom.y + m_colHeaderSize + r*m_cellSize);
+
+		if (r < (int)m_rowLabels.Count() && r < rows)
+		{
+			int yoff = m_cellSize / 2 - dc.GetCharHeight() / 2;
+			dc.DrawText(m_rowLabels[r], geom.x + 2, geom.y + m_colHeaderSize + r*m_cellSize + yoff);
+		}
+	}
+
+	for (c = 0; c <= cols; c++)
+	{
+		dc.DrawLine(geom.x + m_rowHeaderSize + c*m_cellSize, geom.y,
+			geom.x + m_rowHeaderSize + c*m_cellSize, geom.y + m_colHeaderSize + rows*m_cellSize);
+
+		if (c < (int)m_colLabels.Count() && c < cols)
+		{
+			if (m_colLabelsVertical)
+			{
+				int xoff = m_cellSize / 2 - dc.GetCharHeight() / 2;
+				dc.DrawRotatedText(m_colLabels[c], geom.x + m_rowHeaderSize + c*m_cellSize + xoff, geom.y + m_colHeaderSize - 2, 90);
+			}
+			else
+			{
+				int textW;
+				dc.GetTextExtent(m_colLabels[c], &textW, NULL);
+				int xoff = m_cellSize / 2 - textW / 2;
+				dc.DrawText(m_colLabels[c], geom.x + m_rowHeaderSize + c*m_cellSize + xoff, geom.y + 2);
+			}
+		}
+	}
+
+}
+
+void AFDiurnalPeriodCtrl::OnResize(wxSizeEvent &)
+{
+	Refresh();
+}
+
+wxSize AFDiurnalPeriodCtrl::DoGetBestSize() const
+{
+	const_cast<AFDiurnalPeriodCtrl*>(this)->AutosizeHeaders();
+
+	return wxSize(m_rowHeaderSize + m_data.ncols()*m_cellSize,
+		m_colHeaderSize + m_data.nrows()*m_cellSize);
+}
+
+bool AFDiurnalPeriodCtrl::Schedule(const wxString &sched)
+{
+	if ((int)sched.Len() != m_data.nrows()*m_data.ncols())
+		return false;
+
+	int x;
+
+	for (int r = 0; r<m_data.nrows(); r++)
+		for (int c = 0; c<m_data.ncols(); c++)
+			m_data.at(r, c) = ScheduleCharToInt(sched[r*m_data.ncols() + c]);
+
+	Refresh();
+
+	return true;
+}
+
+wxString AFDiurnalPeriodCtrl::Schedule() const
+{
+	wxString buf;
+	for (int r = 0; r<m_data.nrows(); r++)
+		for (int c = 0; c<m_data.ncols(); c++)
+			buf << ScheduleIntToChar(m_data.at(r, c));
+
+	return buf;
+}
+
+void AFDiurnalPeriodCtrl::OnKeyDown(wxKeyEvent &evt)
+{
+
+	int key = evt.GetKeyCode();
+	if (evt.GetModifiers() == wxMOD_CONTROL)
+	{
+		switch (evt.GetKeyCode())
+		{
+		case 'C':
+			Copy();
+			return;
+		case 'V':
+			Paste();
+			return;
+		default:
+			break;
+		}
+	}
+	evt.Skip();
+}
+
+void AFDiurnalPeriodCtrl::Copy()
+{
+	if (wxTheClipboard->Open())
+	{
+		// This data objects are held by the clipboard, 
+		// so do not delete them in the app.
+		wxString tsv;
+		for (int r = 0; r<m_data.nrows(); r++)
+		{
+			for (int c = 0; c<m_data.ncols(); c++)
+			{
+				tsv += wxString::Format("%d", m_data.at(r, c));
+				if (c < m_data.ncols() - 1)
+					tsv += '\t';
+			}
+			tsv += '\n';
+		}
+
+		wxTheClipboard->SetData(new wxTextDataObject(tsv));
+		wxTheClipboard->Close();
+	}
+}
+
+void AFDiurnalPeriodCtrl::Paste()
+{
+	if (wxTheClipboard->Open())
+	{
+		wxTextDataObject tobj;
+		wxTheClipboard->GetData(tobj);
+		wxString sched = tobj.GetText();
+		wxArrayString as = wxStringTokenize(sched, "\n\t");
+		if (as.Count() >= (m_data.nrows() * m_data.ncols()))
+		{
+			int as_ndx = 0;
+			for (int r = 0; r<m_data.nrows(); r++)
+			{
+				for (int c = 0; c<m_data.ncols(); c++)
+				{
+					long val = 0;
+					if (as_ndx < as.Count())
+						as[as_ndx].ToLong(&val);
+					if ((val <= m_max) && (val >= m_min))
+						m_data.at(r, c) = val;
+					as_ndx++;
+				}
+			}
+		}
+		Refresh();
+	}
+}
+
+#ifdef __WXMSW__
+bool AFDiurnalPeriodCtrl::MSWShouldPreProcessMessage(WXMSG* msg)
+{
+	// windows processing of ctrl+c and ctrl+v for copy and paste - from textctrl
+	// check for our special keys here: if we don't do it and the parent frame
+	// uses them as accelerators, they wouldn't work at all, so we disable
+	// usual preprocessing for them
+	if (msg->message == WM_KEYDOWN)
+	{
+		const WPARAM vkey = msg->wParam;
+		if (HIWORD(msg->lParam) & KF_ALTDOWN)
+		{
+			// Alt-Backspace is accelerator for "Undo"
+			if (vkey == VK_BACK)
+				return false;
+		}
+		else // no Alt
+		{
+			// we want to process some Ctrl-foo and Shift-bar but no key
+			// combinations without either Ctrl or Shift nor with both of them
+			// pressed
+			const int ctrl = wxIsCtrlDown();
+			if (ctrl)
+			{
+				switch (vkey)
+				{
+				case 'C':
+				case 'V':
+					return false;
+				}
+			}
+		}
+	}
+
+	return wxWindow::MSWShouldPreProcessMessage(msg);
+}
+#endif
+
+
+
+void AFDiurnalPeriodCtrl::OnChar(wxKeyEvent &evt)
+{
+	int selrs = MIN(m_selStartR, m_selEndR);
+	int selcs = MIN(m_selStartC, m_selEndC);
+	int selre = MAX(m_selStartR, m_selEndR);
+	int selce = MAX(m_selStartC, m_selEndC);
+
+	int key = evt.GetKeyCode();
+	if ((ScheduleCharToInt(key) >= m_min) && (ScheduleCharToInt(key) <= m_max) &&
+		selrs >= 0 && selcs >= 0)
+	{
+		for (int r = selrs; r <= selre && r<m_data.nrows(); r++)
+			for (int c = selcs; c <= selce && c<m_data.ncols(); c++)
+				m_data.at(r, c) = ScheduleCharToInt(key);
+
+		Refresh();
+
+		wxCommandEvent change(wxEVT_DIURNALPERIODCTRL_CHANGE, this->GetId());
+		change.SetEventObject(this);
+		GetEventHandler()->ProcessEvent(change);
+	}
+}
+
+void AFDiurnalPeriodCtrl::OnMouseDown(wxMouseEvent &evt)
+{
+	m_selStartC = (evt.GetX() - m_rowHeaderSize) / m_cellSize;
+	m_selStartR = (evt.GetY() - m_colHeaderSize) / m_cellSize;
+
+	if (m_selStartC < 0 || m_selStartC >= m_data.ncols() ||
+		m_selStartR < 0 || m_selStartR >= m_data.nrows() ||
+		evt.GetX() < m_rowHeaderSize || evt.GetY() < m_colHeaderSize)
+	{
+		m_selStartC = m_selStartR = -1;
+	}
+	else
+		this->SetFocus();
+
+	m_selEndR = m_selStartR;
+	m_selEndC = m_selStartC;
+	m_mouseDown = true;
+	Refresh();
+
+}
+
+void AFDiurnalPeriodCtrl::OnMouseUp(wxMouseEvent &)
+{
+	m_mouseDown = false;
+}
+
+void AFDiurnalPeriodCtrl::OnMouseMove(wxMouseEvent &evt)
+{
+	if (!m_mouseDown)
+		return;
+
+	int c = (evt.GetX() - m_rowHeaderSize) / m_cellSize;
+	int r = (evt.GetY() - m_colHeaderSize) / m_cellSize;
+
+	if (r >= 0 && r < m_data.nrows() &&
+		c >= 0 && c < m_data.ncols())
+	{
+		m_selEndR = r;
+		m_selEndC = c;
+		Refresh();
+	}
+}
+
+void AFDiurnalPeriodCtrl::OnLostFocus(wxFocusEvent &)
+{
+	m_selEndR = m_selStartR = -1;
+	m_selEndC = m_selStartC = -1;
+	Refresh();
+}
+
+void AFDiurnalPeriodCtrl::SetData(const matrix_t<float> &data)
+{
+	if ((data.nrows() == m_data.nrows()) && (data.ncols()==m_data.ncols()))
+	m_data = data;
+}
+
+
+void AFDiurnalPeriodCtrl::GetData(matrix_t<float> &mat)
+{
+	mat = m_data;
+}
+
+matrix_t<float> AFDiurnalPeriodCtrl::GetData()
+{
+	matrix_t<float> data(m_data);
+
+	return data;
+}
+
+void AFDiurnalPeriodCtrl::SetupTOUGrid()
+{
+	SetupDefaultColours();
+	SetGrid(12, 24);
+	SetMinMax(1, 9, true);
+
+	m_rowLabels.clear();
+	AddRowLabel("Jan");
+	AddRowLabel("Feb");
+	AddRowLabel("Mar");
+	AddRowLabel("Apr");
+	AddRowLabel("May");
+	AddRowLabel("Jun");
+	AddRowLabel("Jul");
+	AddRowLabel("Aug");
+	AddRowLabel("Sep");
+	AddRowLabel("Oct");
+	AddRowLabel("Nov");
+	AddRowLabel("Dec");
+
+	m_colLabels.clear();
+	AddColLabel("12am");
+	AddColLabel("1am");
+	AddColLabel("2am");
+	AddColLabel("3am");
+	AddColLabel("4am");
+	AddColLabel("5am");
+	AddColLabel("6am");
+	AddColLabel("7am");
+	AddColLabel("8am");
+	AddColLabel("9am");
+	AddColLabel("10am");
+	AddColLabel("11am");
+	AddColLabel("12pm");
+	AddColLabel("1pm");
+	AddColLabel("2pm");
+	AddColLabel("3pm");
+	AddColLabel("4pm");
+	AddColLabel("5pm");
+	AddColLabel("6pm");
+	AddColLabel("7pm");
+	AddColLabel("8pm");
+	AddColLabel("9pm");
+	AddColLabel("10pm");
+	AddColLabel("11pm");
+
+	AutosizeHeaders();
+	InvalidateBestSize();
+}
+
+void AFDiurnalPeriodCtrl::SetupDefaultColours()
+{
+	m_colours.clear();
+	AddColour("AQUAMARINE");
+	AddColour("CADET BLUE");
+	AddColour("SIENNA");
+	AddColour("SEA GREEN");
+	AddColour("GOLDENROD");
+	AddColour("FIREBRICK");
+	AddColour("DARK GREEN");
+	AddColour("ORCHID");
+	AddColour("ORANGE RED");
+	AddColour("SKY BLUE");
+	AddColour("TAN");
+	AddColour("YELLOW");
+	AddColour("VIOLET");
+}
+
+
+
+
+
 class wxUISchedNumericObject : public wxUIObject
 {
 public:
@@ -3237,6 +3955,52 @@ public:
 	}
 };
 
+
+class wxUIDiurnalPeriodObject : public wxUIObject
+{
+public:
+	wxUIDiurnalPeriodObject() {
+		AddProperty("TabOrder", new wxUIProperty((int)-1));
+		AddProperty("Schedule", new wxUIProperty(wxString("")));
+		AddProperty("Max", new wxUIProperty((int)9));
+		AddProperty("Min", new wxUIProperty((int)1));
+
+		Property("Width").Set(444);
+		Property("Height").Set(246);
+	}
+	virtual wxString GetTypeName() { return "DiurnalPeriod"; }
+	virtual wxUIObject *Duplicate() { wxUIObject *o = new wxUIDiurnalPeriodObject; o->Copy(this); return o; }
+	virtual bool IsNativeObject() { return true; }
+	virtual wxWindow *CreateNative(wxWindow *parent) {
+		AFDiurnalPeriodCtrl *dp = new AFDiurnalPeriodCtrl(parent, wxID_ANY, wxDefaultPosition, wxDefaultSize);
+		dp->SetupTOUGrid();
+		dp->Schedule(Property("Schedule").GetString());
+		dp->SetMinMax(Property("Min").GetInteger(),Property("Max").GetInteger());
+		return AssignNative(dp);
+	}
+	virtual void OnPropertyChanged(const wxString &id, wxUIProperty *p)
+	{
+		if (AFDiurnalPeriodCtrl *dp = GetNative<AFDiurnalPeriodCtrl>())
+		{
+			if (id == "Schedule") dp->Schedule(p->GetString());
+			if (id == "Min") dp->SetMin(p->GetInteger());
+			if (id == "Max") dp->SetMax(p->GetInteger());
+		}
+	}
+	virtual void Draw(wxWindow *win, wxDC &dc, const wxRect &geom)
+	{
+		dc.SetPen(*wxBLACK_PEN);
+		dc.SetBrush(*wxLIGHT_GREY_BRUSH);
+		dc.DrawRectangle(geom);
+		dc.SetFont(*wxNORMAL_FONT);
+		dc.SetTextForeground(*wxBLUE);
+		dc.DrawText("Diurnal Period", geom.x + 2, geom.y + 2);
+	}
+
+};
+
+
+
 void RegisterUIWidgetsForSAM()
 {
 	wxUIObjectTypeProvider::Register( new wxUISchedNumericObject );
@@ -3253,8 +4017,9 @@ void RegisterUIWidgetsForSAM()
 	wxUIObjectTypeProvider::Register( new wxUIValueMatrixObject );
 	wxUIObjectTypeProvider::Register( new wxUIMonthByHourFactorCtrl );
 	wxUIObjectTypeProvider::Register( new wxUILibraryCtrl );
-	wxUIObjectTypeProvider::Register( new wxUIHourlyFactorCtrl );
-/* TODO LIST 
+	wxUIObjectTypeProvider::Register( new wxUIHourlyFactorCtrl);
+	wxUIObjectTypeProvider::Register( new wxUIDiurnalPeriodObject);
+	/* TODO LIST
 { GUI_ADD_CONTROL_ID+26, "DataGridBtn",      "AFValueMatrixButton",         datagridbtn_xpm, CTRL_NATIVE,  10, 15, 100, 21,   props_AFValueMatrixButton,  NULL,       objinit_AFValueMatrixButton, objfree_AFValueMatrixButton, nativesetprop_AFValueMatrixButton, paint_AFValueMatrixButton, iswithin_default,   nativeevt_AFValueMatrixButton, vartoctrl_AFValueMatrixButton, ctrltovar_AFValueMatrixButton, false },
 { GUI_ADD_CONTROL_ID+28, "AFDataArrayButton",  "AFDataArrayButton",        dataarraybtn_xpm,CTRL_NATIVE,  10, 15, 110, 21,   props_AFDataArrayButton, NULL,       objinit_AFDataArrayButton,objfree_AFDataArrayButton,nativesetprop_AFDataArrayButton,paint_AFDataArrayButton,iswithin_default,   nativeevt_AFDataArrayButton,vartoctrl_AFDataArrayButton,ctrltovar_AFDataArrayButton,false },
 { GUI_ADD_CONTROL_ID+29, "AFDataMatrixCtrl", "AFDataMatrixCtrl",       dblmatctrl_xpm,  CTRL_NATIVE,  10, 15, 800, 400,  props_dblmatctrl,      NULL,       objinit_dblmatctrl,     objfree_dblmatctrl,     nativesetprop_dblmatctrl,     paint_dblmatctrl,     iswithin_default,   nativeevt_dblmatctrl,     vartoctrl_dblmatctrl,     ctrltovar_dblmatctrl,     false },

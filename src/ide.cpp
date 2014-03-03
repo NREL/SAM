@@ -1020,7 +1020,9 @@ void UIEditorPanel::OnCommand( wxCommandEvent &evt )
 						m_ipd.Variables().Create( name, VV_MATRIX );
 					else if ( type == "HourlyFactor" )
 						m_ipd.Variables().Create( name, VV_TABLE );
-					
+					else if (type == "DiurnalPeriod")
+						m_ipd.Variables().Create(name, VV_MATRIX);
+
 					// extend this list in the future for additional controls
 				}
 			}
