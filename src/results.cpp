@@ -63,8 +63,8 @@ ResultsViewer::ResultsViewer( wxWindow *parent )
 	m_nav->Add( "Tables" );
 
 	wxPanel *cf_panel = new wxPanel( m_pages );
-	cf_panel->SetFont( *wxNORMAL_FONT );
 	m_cashFlow = new wxExtGridCtrl( cf_panel, wxID_ANY );
+	m_cashFlow->SetFont( *wxNORMAL_FONT );
 	m_cashFlow->CreateGrid(1,1);
 	m_cashFlow->SetRowLabelAlignment(wxALIGN_RIGHT,wxALIGN_CENTRE);
 	m_cashFlow->SetDefaultCellAlignment(wxALIGN_RIGHT,wxALIGN_CENTRE);
@@ -297,7 +297,7 @@ void ResultsViewer::Setup( ConfigInfo *cfg, DataProvider *results )
 					{
 						float fval = p[i]*cl.scale;
 						wxString sval;
-						if ( cl.digits > 0 )
+						if ( cl.digits > 0 && fval != 0.0f )
 							sval = wxNumericCtrl::Format( fval,	wxNumericCtrl::REAL, cl.digits, true, wxEmptyString, wxEmptyString );
 						else if ( cl.digits == -2 )
 							sval = wxString::Format("%d", (int)fval );
