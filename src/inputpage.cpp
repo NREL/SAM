@@ -9,7 +9,7 @@
 #include <wex/exttext.h>
 #include <wex/extgrid.h>
 #include <wex/radiochoice.h>
-#include <wex/sched.h>
+#include <wex/diurnal.h>
 #include <wex/utils.h>
 
 #include <lk_parse.h>
@@ -88,7 +88,6 @@ BEGIN_EVENT_TABLE( ActiveInputPage, wxPanel )
 	EVT_TEXT_ENTER( wxID_ANY, ActiveInputPage::OnNativeEvent )
 	EVT_NUMERIC( wxID_ANY, ActiveInputPage::OnNativeEvent )
 	EVT_SLIDER( wxID_ANY, ActiveInputPage::OnNativeEvent )
-	EVT_SCHEDCTRL( wxID_ANY, ActiveInputPage::OnNativeEvent )
 	EVT_PTLAYOUT( wxID_ANY, ActiveInputPage::OnNativeEvent )
 	EVT_MATPROPCTRL( wxID_ANY, ActiveInputPage::OnNativeEvent )
 	EVT_TRLOOP( wxID_ANY, ActiveInputPage::OnNativeEvent )
@@ -425,11 +424,6 @@ bool ActiveInputPage::DataExchange( wxUIObject *obj, VarValue &val, DdxDir dir )
 			val.Set( &vals[0], vals.size() );
 		}
 	}
-	else if( wxSchedCtrl *sc = obj->GetNative<wxSchedCtrl>() )
-	{
-		if ( dir == VAR_TO_OBJ ) sc->Schedule( val.String() );
-		else val.Set( sc->Schedule() );
-	}
 	else if ( PTLayoutCtrl *pt = obj->GetNative<PTLayoutCtrl>() )
 	{
 		if ( dir == VAR_TO_OBJ )
@@ -509,10 +503,29 @@ bool ActiveInputPage::DataExchange( wxUIObject *obj, VarValue &val, DdxDir dir )
 		if ( dir == VAR_TO_OBJ ) hf->Read( &val );
 		else hf->Write( &val );
 	}
-	else if (AFDiurnalPeriodCtrl *dp = obj->GetNative<AFDiurnalPeriodCtrl>())
+	else if ( wxDiurnalPeriodCtrl *dp = obj->GetNative<wxDiurnalPeriodCtrl>())
 	{
-		if (dir == VAR_TO_OBJ) dp->SetData(val.Matrix());
-		else val.Set(dp->GetData());
+		if ( val.Type() == VV_STRING )
+		{
+			if ( dir == VAR_TO_OBJ ) dp->Schedule( val.String() );
+			else val.Set( dp->Schedule() );
+		}
+		else if ( val.Type() == VV_MATRIX )
+		{
+			float *p;
+			size_t nr, nc;
+
+			if (dir == VAR_TO_OBJ)
+			{
+				p = val.Matrix( &nr, &nc );
+				dp->SetData( p, nr, nc );
+			}
+			else
+			{
+				p = dp->GetData( &nr, &nc );
+				val.Set( p, nr, nc );
+			}
+		}
 	}
 	else return false; // object data exch not handled for this type
 

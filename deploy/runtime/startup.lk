@@ -149,12 +149,14 @@ setup_pvwatts_pages();
 
 setconfig( 'PVWatts', 'Residential' );	
 setmodules( ['pvwattsv5',  'utilityrate2', 'cashloan']);
+setting( { 'analysis_period_var'='cf_length' } );
 setup_pvwatts_pages();
 addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='PV System Costs' } );
 setup_residential_pages();
 
 setconfig( 'PVWatts', 'Commercial' );	
 setmodules( ['pvwattsv5',  'utilityrate2', 'cashloan']);
+setting( { 'analysis_period_var'='cf_length' } );
 setup_pvwatts_pages();
 addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='PV System Costs' } );
 setup_commercial_pages();

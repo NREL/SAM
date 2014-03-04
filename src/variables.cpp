@@ -428,6 +428,13 @@ matrix_t<float> &VarValue::Matrix()
 	return m_val;
 }
 
+float *VarValue::Matrix( size_t *nr, size_t *nc )
+{
+	*nr = m_val.nrows();
+	*nc = m_val.ncols();
+	return m_val.data();
+}
+
 wxString VarValue::String()
 {
 	return m_str;
