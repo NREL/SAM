@@ -232,6 +232,41 @@ static void fcall_metric( lk::invoke_t &cxt )
 	}
 }
 
+static void fcall_cashflow( lk::invoke_t &cxt )
+{
+	LK_DOC("cashflow", "Add one or more cashflow line items to the current configuration. Names can be comma-separated list. For spacer use name='', for header use digits=0, for generic format use digits=-1, for integer cast, use digits=-2.", "( string:names, [number:digits], [number:scale] ):none" );
+	
+	if ( ConfigInfo *ci = SamApp::Config().CurrentConfig() )
+	{
+		wxString name = cxt.arg(0).as_string();
+
+		int type = ConfigInfo::CashFlowLine::VARIABLE;
+		int digit = 2;
+		float scale = 1.0f;
+		if ( cxt.arg_count() == 2 )
+			digit = cxt.arg(1).as_integer();
+
+		if ( cxt.arg_count() == 3 )
+			scale = (float)cxt.arg(2).as_number();
+
+		if ( name.IsEmpty() ) type = ConfigInfo::CashFlowLine::SPACER;
+		if ( digit == 0 ) type = ConfigInfo::CashFlowLine::HEADER;
+		
+		wxArrayString list = wxSplit(name, ',');
+		if ( list.size() == 0 ) list.Add( name ); // handle empty string
+
+		for( size_t i=0;i<list.Count();i++ )
+		{
+			ConfigInfo::CashFlowLine cl;
+			cl.type = type;
+			cl.digits = digit;
+			cl.name = list[i];
+			cl.scale = scale;
+			ci->CashFlow.push_back( cl );
+		}
+	}
+}
+
 static void fcall_setting( lk::invoke_t &cxt )
 {
 	LK_DOC( "setting", "Sets a setting field for the current configuration", "(string:name, string:value -or- table:name/value pairs):none");
@@ -869,6 +904,7 @@ lk::fcall_t* invoke_config_funcs()
 		fcall_setconfig,
 		fcall_addpage,
 		fcall_metric,
+		fcall_cashflow,
 		fcall_setting,
 		fcall_setmodules,
 		0 };

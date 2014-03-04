@@ -210,6 +210,17 @@ public:
 		wxString pre, post;
 	};
 	std::vector<MetricData> Metrics;
+	
+	struct CashFlowLine {
+		enum { SPACER, HEADER, VARIABLE };
+		CashFlowLine() : type(VARIABLE), digits(2), scale(1.0f) {  }
+
+		int type;
+		wxString name;
+		int digits;
+		float scale;
+	};
+	std::vector<CashFlowLine> CashFlow;
 
 	StringHash Settings;
 
@@ -258,6 +269,7 @@ private:
 
 class SamApp : public wxApp
 {
+	wxLocale m_locale;
 public:
 	virtual bool OnInit();
 	virtual int OnExit();

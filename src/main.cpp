@@ -1191,6 +1191,11 @@ extern void RegisterUIWidgetsForSAM();
 
 bool SamApp::OnInit()
 {
+	if ( !wxApp::OnInit() )
+		return false;
+
+	m_locale.Init();
+
 	SetAppName( "SAM" );
 	SetVendorName( "NREL" );
 
