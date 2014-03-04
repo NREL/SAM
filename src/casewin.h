@@ -13,7 +13,7 @@ class wxSimpleNotebook;
 class wxLKScriptCtrl;
 
 class InputPageList;
-class BaseCase;
+class ResultsViewer;
 class Simulation;
 
 class PageNote;
@@ -80,7 +80,7 @@ private:
 	wxSimplebook *m_pageFlipper;
 	wxMetroNotebook *m_resultsTab;
 	Simulation *m_baseCaseSimulation;
-	BaseCase *m_baseCaseResults;
+	ResultsViewer *m_baseCaseResults;
 	wxLKScriptCtrl *m_scriptCtrl;
 
 	PageNote *m_pageNote;

@@ -14,7 +14,7 @@
 
 #include <wex/utils.h>
 
-#include "basecase.h"
+#include "results.h"
 #include "main.h"
 #include "case.h"
 #include "casewin.h"
@@ -144,7 +144,7 @@ CaseWindow::CaseWindow( wxWindow *parent, Case *c )
 
 	m_resultsTab = new wxMetroNotebook( m_pageFlipper, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxMT_LIGHTTHEME );
 	
-	m_baseCaseResults = new BaseCase( m_resultsTab);
+	m_baseCaseResults = new ResultsViewer( m_resultsTab);
 	m_resultsTab->AddPage( m_baseCaseResults, "Base Case", true );
 
 	wxPanel *param_panel = new wxPanel( m_resultsTab );
