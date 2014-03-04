@@ -16,6 +16,7 @@
 #include <wex/numeric.h>
 #include <wex/ole/excelauto.h>
 #include <wex/csv.h>
+#include <wex/utils.h>
 
 #include "main.h"
 #include "variables.h"
@@ -577,11 +578,7 @@ public:
 	virtual wxString GetRowLabelValue( int row )
 	{
 		if ( MinCount == MaxCount && MaxCount == 8760 )
-		{
-			wxDateTime dt( 1, wxDateTime::Jan, 1970, 0, 0, 0 );
-			dt.Add( wxTimeSpan::Minutes(60 * row) );
-			return dt.Format("%b %d, %I:%M %p");
-		}
+			return wxFormatTime( row );
 		else
 			return wxString::Format("%d",row+1);
 	}
@@ -710,7 +707,11 @@ void TabularBrowser::UpdateGrid()
 	m_gridTable->SetAttrProvider( new wxExtGridCellAttrProvider );
 	m_grid->SetTable(m_gridTable, true);
 
-	m_grid->SetRowLabelSize( wxGRID_AUTOSIZE );
+	if ( m_gridTable->MinCount == m_gridTable->MaxCount
+		&& m_gridTable->MaxCount == 8760 )	
+		m_grid->SetRowLabelSize( 110 );
+	else
+		m_grid->SetRowLabelSize( 55 );
 
 	wxClientDC cdc(this);
 	wxFont f = *wxNORMAL_FONT;
