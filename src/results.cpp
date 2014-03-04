@@ -912,7 +912,7 @@ void TabularBrowser::UpdateAll()
 		else
 			name.Printf("Data: %d values", (int)varlengths[i]);
 
-		wxTreeItemId cur_parent = m_tree->AppendItem( m_root, name, wxExtTreeCtrl::ICON_FOLDER, wxExtTreeCtrl::ICON_FOLDER);
+		wxTreeItemId cur_parent = m_tree->AppendItem( m_root, name /*, wxExtTreeCtrl::ICON_FOLDER, wxExtTreeCtrl::ICON_FOLDER*/);
 		m_tree->SetItemBold(cur_parent,true);
 		
 		wxArrayString labels;
