@@ -47,7 +47,7 @@
     <ClInclude Include="..\src\ipagelist.h">
       <Filter>Source</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\basecase.h">
+    <ClInclude Include="..\src\results.h">
       <Filter>Source</Filter>
     </ClInclude>
     <ClInclude Include="..\src\equations.h">
@@ -115,7 +115,7 @@
     <ClCompile Include="..\src\ipagelist.cpp">
       <Filter>Source</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\basecase.cpp">
+    <ClCompile Include="..\src\results.cpp">
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="..\src\equations.cpp">

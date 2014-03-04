@@ -4,7 +4,6 @@
 #include <wx/string.h>
 #include <lk_env.h>
 #include "variables.h"
-#include "basecase.h"
 
 class SimulationContext;
 

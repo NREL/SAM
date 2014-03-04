@@ -20,18 +20,18 @@
 #include "main.h"
 #include "variables.h"
 #include "simulation.h"
-#include "basecase.h"
+#include "results.h"
 
 enum { ID_PAGESELECT = wxID_HIGHEST+948 };
 
 
-BEGIN_EVENT_TABLE( BaseCase, wxSplitterWindow )	
-	EVT_LISTBOX( ID_PAGESELECT, BaseCase::OnCommand )
+BEGIN_EVENT_TABLE( ResultsViewer, wxSplitterWindow )	
+	EVT_LISTBOX( ID_PAGESELECT, ResultsViewer::OnCommand )
 END_EVENT_TABLE()
 
 #define DEFAULT_SASH_POS 217
 
-BaseCase::BaseCase( wxWindow *parent )
+ResultsViewer::ResultsViewer( wxWindow *parent )
 	: wxSplitterWindow( parent, wxID_ANY, wxDefaultPosition, wxDefaultSize,
 		wxSP_LIVE_UPDATE|wxBORDER_NONE ),
 	 m_cfg( 0 ),
@@ -108,7 +108,7 @@ BaseCase::BaseCase( wxWindow *parent )
 	m_pages->ChangeSelection( 0 );
 }
 
-BaseCase::~BaseCase()
+ResultsViewer::~ResultsViewer()
 {
 	for( size_t i=0;m_tsDataSets.size();i++ )
 		delete m_tsDataSets[i];
@@ -133,7 +133,7 @@ public:
 };
 
 
-void BaseCase::Setup( ConfigInfo *cfg, DataProvider *results )
+void ResultsViewer::Setup( ConfigInfo *cfg, DataProvider *results )
 {
 	m_cfg = cfg;
 	m_results = results;
@@ -249,7 +249,7 @@ void BaseCase::Setup( ConfigInfo *cfg, DataProvider *results )
 	LoadPerspective( viewinfo );
 }
 
-void BaseCase::AddDataSet(wxDVTimeSeriesDataSet *d, const wxString& group, bool update_ui)
+void ResultsViewer::AddDataSet(wxDVTimeSeriesDataSet *d, const wxString& group, bool update_ui)
 {
 	//Take ownership of the data Set.  We will delete it on destruction.
 	m_tsDataSets.push_back(d);
@@ -262,7 +262,7 @@ void BaseCase::AddDataSet(wxDVTimeSeriesDataSet *d, const wxString& group, bool 
 	m_scatterPlot->AddDataSet(d, group, update_ui);
 }
 
-void BaseCase::RemoveAllDataSets()
+void ResultsViewer::RemoveAllDataSets()
 {
 	m_timeSeries->RemoveAllDataSets();
 	m_dMap->RemoveAllDataSets();
@@ -277,13 +277,13 @@ void BaseCase::RemoveAllDataSets()
 	m_tsDataSets.clear();
 }
 
-void BaseCase::SavePerspective( StringHash &map )
+void ResultsViewer::SavePerspective( StringHash &map )
 {
 	// save information about the current view
 	map[ "navigation" ] = wxString::Format( "%d", m_nav->GetSelection() );
 }
 
-void BaseCase::LoadPerspective( StringHash &map )
+void ResultsViewer::LoadPerspective( StringHash &map )
 {
 	int nnav = wxAtoi( map["navigation"] );
 	if ( nnav >= 0 && nnav < m_nav->Count() )
@@ -293,7 +293,7 @@ void BaseCase::LoadPerspective( StringHash &map )
 	}
 }
 
-void BaseCase::Clear()
+void ResultsViewer::Clear()
 {
 	m_cfg = 0;
 	m_results = 0;
@@ -306,7 +306,7 @@ void BaseCase::Clear()
 	RemoveAllDataSets();
 }
 
-void BaseCase::OnCommand( wxCommandEvent &evt )
+void ResultsViewer::OnCommand( wxCommandEvent &evt )
 {
 	switch( evt.GetId() )
 	{
