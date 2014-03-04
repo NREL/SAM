@@ -63,8 +63,20 @@ ResultsViewer::ResultsViewer( wxWindow *parent )
 	m_nav->Add( "Tables" );
 
 	wxPanel *cf_panel = new wxPanel( m_pages );
+	cf_panel->SetFont( *wxNORMAL_FONT );
 	m_cashFlow = new wxExtGridCtrl( cf_panel, wxID_ANY );
-	m_cashFlow->CreateGrid( 100, 30 );
+	m_cashFlow->CreateGrid(1,1);
+	m_cashFlow->SetRowLabelAlignment(wxALIGN_RIGHT,wxALIGN_CENTRE);
+	m_cashFlow->SetDefaultCellAlignment(wxALIGN_RIGHT,wxALIGN_CENTRE);
+	m_cashFlow->DisableCellEditControl();
+	m_cashFlow->DisableDragCell();
+	m_cashFlow->DisableDragRowSize();
+	m_cashFlow->DisableDragColMove();
+	m_cashFlow->DisableDragGridSize();
+	m_cashFlow->SetCellValue(0,0,"No data.");
+	m_cashFlow->EnableEditing(false);
+	m_cashFlow->EnableCopyPaste(true);
+	m_cashFlow->EnablePasteEvent(false);
 	wxBoxSizer *cf_tools = new wxBoxSizer( wxHORIZONTAL );
 	cf_tools->Add( new wxButton( cf_panel, wxID_ANY, "Copy to clipboard" ), 0, wxALL, 2 );
 	cf_tools->Add( new wxButton( cf_panel, wxID_ANY, "Save as CSV" ), 0, wxALL, 2 );
@@ -241,7 +253,78 @@ void ResultsViewer::Setup( ConfigInfo *cfg, DataProvider *results )
 	}
 
 	m_tables->Setup( m_cfg, m_results );
-	
+
+	// build cashflow
+	m_cashFlow->Freeze();
+	m_cashFlow->ClearGrid();
+
+	if ( m_cfg->CashFlow.size() > 0 )
+	{
+		int nyears = 0;
+		if ( VarValue *vv = m_results->GetValue( m_cfg->Settings[ "analysis_period_var" ] ) )
+			nyears = (int)vv->Value();
+		if ( nyears < 16 ) nyears = 16;
+		if ( nyears > 100 ) nyears = 100;
+		m_cashFlow->ResizeGrid( 400, nyears );
+		for( size_t c=0;c<nyears;c++ )
+			m_cashFlow->SetColLabelValue( c, wxString::Format("%d", (int)c) );
+
+		for( size_t r=0;r<m_cfg->CashFlow.size() && r < 400;r++ )
+		{
+			ConfigInfo::CashFlowLine &cl = m_cfg->CashFlow[r];
+
+			if ( cl.type == ConfigInfo::CashFlowLine::SPACER )
+				m_cashFlow->SetRowLabelValue( r, wxEmptyString );
+			else if ( cl.type == ConfigInfo::CashFlowLine::HEADER )
+				m_cashFlow->SetRowLabelValue( r, cl.name );
+			else if ( cl.type == ConfigInfo::CashFlowLine::VARIABLE )
+			{
+				wxString label = m_results->GetLabel( cl.name );
+				wxString units = m_results->GetUnits( cl.name );
+				if ( !units.IsEmpty() ) label += " (" + units + ")";
+				m_cashFlow->SetRowLabelValue( r, label );
+
+				if ( VarValue *vv = m_results->GetValue( cl.name ) )
+				{
+					float _val = 0.0f;
+					float *p = &_val;
+					size_t n = 1;
+
+					if ( vv->Type() == VV_ARRAY ) p = vv->Array( &n );
+					else if ( vv->Type() == VV_NUMBER ) _val = vv->Value();
+
+					for( size_t i=0;i<n && i<nyears;i++ )
+					{
+						float fval = p[i]*cl.scale;
+						wxString sval;
+						if ( cl.digits > 0 )
+							sval = wxNumericCtrl::Format( fval,	wxNumericCtrl::REAL, cl.digits, true, wxEmptyString, wxEmptyString );
+						else if ( cl.digits == -2 )
+							sval = wxString::Format("%d", (int)fval );
+						else
+							sval = wxString::Format("%g", fval );
+
+						m_cashFlow->SetCellValue( sval, r, i );
+					}
+					
+				}
+				else
+					m_cashFlow->SetCellValue( "'" + cl.name + "' not found.", r, 0 );
+			}
+		}
+
+		
+		m_cashFlow->SetRowLabelSize(wxGRID_AUTOSIZE);
+		m_cashFlow->SetColLabelSize(wxGRID_AUTOSIZE);
+		m_cashFlow->GetParent()->Layout();
+		m_cashFlow->Layout();
+		m_cashFlow->EnableCopyPaste(true);
+		m_cashFlow->ResizeGrid( m_cfg->CashFlow.size(), nyears );
+
+		m_cashFlow->AutoSize();
+		m_cashFlow->Thaw();	
+	}
+
 	int sash = m_metrics->GetBestSize().x;
 	if ( sash < 150 ) sash = 150;
 	SetSashPosition( sash );

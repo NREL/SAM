@@ -238,7 +238,7 @@ bool Case::Read( wxInputStream &_i )
 bool Case::SaveDefaults()
 {
 	if (!m_config) return false;
-	wxString file = SamApp::GetRuntimePath() + "../defaults/"
+	wxString file = SamApp::GetRuntimePath() + "/defaults/"
 		+ m_config->Technology + "_" + m_config->Financing;
 	if (wxMessageBox(wxString::Format("Save defaults for %s %s?", m_config->Technology.c_str(), m_config->Financing.c_str()), "Save Defaults", wxYES_NO | wxCANCEL) != wxYES) return false;
 
@@ -253,7 +253,7 @@ bool Case::SaveDefaults()
 bool Case::LoadDefaults()
 {
 	if (!m_config) return false;
-	wxString file = SamApp::GetRuntimePath() + "../defaults/" 
+	wxString file = SamApp::GetRuntimePath() + "/defaults/" 
 		+ m_config->Technology + "_" + m_config->Financing;
 	if (!wxFileExists(file)) return false;
 	wxFFileInputStream in(file);

@@ -9,7 +9,6 @@ addconfig( 'Solar Water Heating', ['Residential', 'Commercial', 'None']);
 addconfig( 'Concentrating Solar Power - Physical Trough', ['None']);
 
 
-
 function setup_pvwatts_pages()
 {
 	addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource' } );
@@ -115,6 +114,73 @@ function setup_csp_physical_trough_pages()
 	addpage( [[ 'Physical Trough Solar Field' ]], { 'sidebar'='Solar Field' } );
 }
 
+// setup cashflow tables
+
+
+function setup_incentives_cashflow()
+{
+	cashflow( "ibi_total_fed,ibi_total_sta,ibi_total_uti,ibi_total_oth,ibi_total", -1 ); // -1 = use generic format
+	cashflow( '' ); // spacer 
+	cashflow( "cbi_total_fed,cbi_total_sta,cbi_total_uti,cbi_total_oth,cbi_total", -1 );
+	cashflow( '' ); // spacer 
+	cashflow( "cf_pbi_total_fed,cf_pbi_total_sta,cf_pbi_total_uti,cf_pbi_total_oth,cf_pbi_total", -1 );
+	cashflow( '' ); // spacer 
+	cashflow( "cf_ptc_fed,cf_ptc_sta,cf_ptc_total", -1 );
+	cashflow( '' ); // spacer 
+	cashflow( "itc_fed_total,itc_sta_total,itc_total", -1 );
+	cashflow( '' ); // spacer 
+}
+
+function setup_residential_cashflow()
+{
+	cashflow( 'cf_energy_net', 1); // use one digit
+	cashflow( 'cf_energy_value');
+	cashflow( '' ); // spacer
+
+	cashflow( "Operating Expenses", 0 ); // header	
+	cashflow( 'cf_om_fixed_expense,cf_om_production_expense,cf_om_capacity_expense,cf_om_fuel_expense');
+	cashflow( 'cf_om_opt_fuel_1_expense' );
+	cashflow( 'cf_om_opt_fuel_2_expense' );
+	
+	cashflow( 'cf_property_tax_assessed_value');
+	cashflow( 'cf_property_tax_expense');
+	cashflow( 'cf_insurance_expense');
+	cashflow( 'cf_net_salvage_value');
+	cashflow( 'cf_operating_expenses');
+	cashflow( '' ); // spacer
+	
+	cashflow( 'cf_deductible_expenses');
+	cashflow( '' ); // spacer
+	
+	cashflow( "Financing", 0 ); // header
+	cashflow( 'cf_debt_balance');
+	cashflow( 'cf_debt_payment_interest');
+	cashflow( 'cf_debt_payment_principal');
+	cashflow( 'cf_debt_payment_total');
+	
+	// incentives
+	setup_incentives_cashflow();
+	
+	cashflow( "Tax Effect on Equity (State)", 0 ); // header
+	cashflow( 'cf_sta_depr_sched');
+	cashflow( 'cf_sta_depreciation');
+	cashflow( 'cf_sta_incentive_income_less_deductions');
+	cashflow( 'cf_sta_taxable_income_less_deductions');
+	cashflow( 'cf_sta_tax_savings');
+	cashflow( '' ); // spacer
+	
+	cashflow( "Tax Effect on Equity (Federal)", 0 ); // header
+	cashflow( 'cf_fed_depr_sched' );
+	cashflow( 'cf_fed_depreciation');
+	cashflow( 'cf_fed_incentive_income_less_deductions');
+	cashflow( 'cf_fed_taxable_income_less_deductions');	
+	cashflow( 'cf_fed_tax_savings' );
+	cashflow( '' ); // spacer
+	
+	cashflow( 'cf_after_tax_net_equity_cost_flow');
+	cashflow( 'cf_after_tax_cash_flow');
+}
+
 
 // now setup all the pages
 
@@ -153,6 +219,7 @@ setting( { 'analysis_period_var'='cf_length' } );
 setup_pvwatts_pages();
 addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='PV System Costs' } );
 setup_residential_pages();
+setup_residential_cashflow();
 
 setconfig( 'PVWatts', 'Commercial' );	
 setmodules( ['pvwattsv5',  'utilityrate2', 'cashloan']);
