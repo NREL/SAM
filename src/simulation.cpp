@@ -224,6 +224,9 @@ bool Simulation::Invoke()
 		m_errors.Add("no valid configuration");
 		return false;
 	}
+	
+	m_outputLabels.clear();
+	m_outputUnits.clear();
 
 	// transfer all the values except for ones that have been 'overriden'
 
@@ -339,9 +342,6 @@ bool Simulation::Invoke()
 		}
 		else
 		{
-			m_outputLabels.clear();
-			m_outputUnits.clear();
-
 			pidx = 0;
 			while( const ssc_info_t p_inf = ssc_module_var_info( p_mod, pidx++ ) )
 			{
