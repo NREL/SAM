@@ -8,6 +8,7 @@
 #include <wex/extgrid.h>
 #include <wex/plot/plplotctrl.h>
 #include <wex/csv.h>
+#include <wex/utils.h>
 
 #include "ptlayoutctrl.h"
 #include "materials.h"
@@ -2264,14 +2265,7 @@ void AFMonthByHourFactorCtrl::DispatchEvent()
 	GetEventHandler()->ProcessEvent(change);
 }
 
-static int nday[12] = {31,28,31,30,31,30,31,31,30,31,30,31};
  /* hour: 0 = jan 1st 12am-1am, returns 1-12 */
-
-
-static int hours_in_month(int month)
-{	// month=1 for January, 12 for December
-	return ( (month<1) || (month>12) ) ? 0 : nday[month-1]*24;
-}
 
 enum { ID_MONTH_SEL = wxID_HIGHEST+495, ID_DAY_SEL, ID_HOUR_SEL, ID_TIME };
 
@@ -2312,7 +2306,7 @@ public:
 		int mo = m_month->GetSelection();
 		int dy = m_day->GetSelection();
 		m_day->Clear();
-		for( int i=1;i<=nday[mo];i++ ) m_day->Append( wxString::Format("%d", i ) );
+		for( int i=1;i<=wxNDay[mo];i++ ) m_day->Append( wxString::Format("%d", i ) );
 		if ( dy < 0 ) dy = 0;
 		if ( dy >= (int)m_day->GetCount() ) dy = m_day->GetCount()-1;
 		m_day->SetSelection( dy );
@@ -2332,54 +2326,11 @@ public:
 		else m_text->ChangeValue( wxString::Format("%d", GetTime()) );
 		*/
 	}
-	
-	int MonthOf(double time)
-	{
-		/* returns month number 1..12 given 
-		   time: hour index in year 0..8759 */
-		if (time < 0) return 0;
-		if (time < 744) return 1;
-		if (time < 1416) return 2;
-		if (time < 2160) return 3;
-		if (time < 2880) return 4;
-		if (time < 3624) return 5;
-		if (time < 4344) return 6;
-		if (time < 5088) return 7;
-		if (time < 5832) return 8;
-		if (time < 6552) return 9;
-		if (time < 7296) return 10;
-		if (time < 8016) return 11;
-		if (time < 8760) return 12;
-		return 0;
-	}
-	 /* month: 1-12 time: hours, starting 0=jan 1st 12am, returns 1-nday*/
-	int DayOfMonth(int month, double time)
-	{
-		int daynum = ( ((int)(time/24.0)) + 1 );   // day goes 1-365
-		switch(month)
-		{
-		case 1: return  daynum;
-		case 2: return  daynum-31;
-		case 3: return  daynum-31-28;
-		case 4: return  daynum-31-28-31;
-		case 5: return  daynum-31-28-31-30;
-		case 6: return  daynum-31-28-31-30-31;
-		case 7: return  daynum-31-28-31-30-31-30;
-		case 8: return  daynum-31-28-31-30-31-30-31;
-		case 9: return  daynum-31-28-31-30-31-30-31-31;
-		case 10: return daynum-31-28-31-30-31-30-31-31-30;
-		case 11: return daynum-31-28-31-30-31-30-31-31-30-31;
-		case 12: return daynum-31-28-31-30-31-30-31-31-30-31-30; 
-		default: break;
-		}
-		return daynum;
-	}
 
 	void SetTime( int time )
 	{
-		int mo = MonthOf( time );
-		int dy = DayOfMonth( mo, time );
-		int hr = (int)(time%24);
+		int mo, dy, hr;
+		wxTimeToMDHM( time, &mo, &dy, &hr );
 
 		m_month->SetSelection( mo-1 );
 		UpdateDay();
@@ -2389,16 +2340,7 @@ public:
 
 	int GetTime( )
 	{
-		int mo = m_month->GetSelection();
-		int dy = m_day->GetSelection();
-		int hr = m_hour->GetSelection();
-
-		int time = hr + dy*24;
-
-		for( int m=0;m<mo;m++ )
-			time += nday[m]*24;
-		
-		return time;
+		return wxMDHMToTime( m_month->GetSelection()+1, m_day->GetSelection()+1, m_hour->GetSelection() );
 	}
 
 	DECLARE_EVENT_TABLE();
