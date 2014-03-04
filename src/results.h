@@ -1,5 +1,5 @@
-#ifndef __basecase_h
-#define __basecase_h
+#ifndef __ResultsViewer_h
+#define __ResultsViewer_h
 
 #include <wx/splitter.h>
 #include <wex/exttree.h>
@@ -29,11 +29,11 @@ class wxDVTimeSeriesDataSet;
 class ConfigInfo;
 class VarTable;
 
-class BaseCase : public wxSplitterWindow
+class ResultsViewer : public wxSplitterWindow
 {
 public:
-	BaseCase( wxWindow *parent );
-	virtual ~BaseCase();
+	ResultsViewer( wxWindow *parent );
+	virtual ~ResultsViewer();
 
 	void Setup( ConfigInfo *cfg, DataProvider *results );
 	void Clear();

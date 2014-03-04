@@ -19,7 +19,7 @@ OBJECTS = ide.o \
 	defaultsmanager.o \
 	simulation.o \
 	library.o \
-	basecase.o \
+	results.o \
 	ipagelist.o \
 	casewin.o \
 	invoke.o \

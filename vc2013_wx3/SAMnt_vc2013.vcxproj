@@ -22,7 +22,7 @@
     <ResourceCompile Include="SAM.rc" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\src\basecase.cpp" />
+    <ClCompile Include="..\src\results.cpp" />
     <ClCompile Include="..\src\case.cpp" />
     <ClCompile Include="..\src\casewin.cpp" />
     <ClCompile Include="..\src\defaultsmanager.cpp" />
@@ -46,7 +46,7 @@
     <ClCompile Include="..\src\welcome.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\src\basecase.h" />
+    <ClInclude Include="..\src\results.h" />
     <ClInclude Include="..\src\case.h" />
     <ClInclude Include="..\src\casewin.h" />
     <ClInclude Include="..\src\defaultsmanager.h" />
