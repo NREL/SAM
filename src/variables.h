@@ -93,6 +93,7 @@ public:
 	std::vector<float> Array();
 	std::vector<int> IntegerArray();
 	::matrix_t<float> &Matrix();
+	float *Matrix( size_t *nr, size_t *nc );
 	wxString String();
 	VarTable &Table();
 
