@@ -597,7 +597,7 @@ bool VarValue::Parse( int type, const wxString &str, VarValue &value )
 		}
 	case VV_ARRAY:
 		{
-			wxArrayString tokens = wxStringTokenize(str," ,;|\t[]\n");
+			wxArrayString tokens = wxStringTokenize(str," ;|", wxTOKEN_STRTOK );
 			value.m_type = VV_ARRAY;
 			value.m_val.resize_fill( tokens.size(), 0.0 );
 			for (size_t i=0; i<tokens.size(); i++)
@@ -607,22 +607,22 @@ bool VarValue::Parse( int type, const wxString &str, VarValue &value )
 		}
 	case VV_MATRIX:
 		{
-			wxArrayString rows = wxStringTokenize(str,"[]\n");
+			wxArrayString rows = wxStringTokenize(str," []", wxTOKEN_STRTOK );
 			if (rows.size() < 1) return false;
-			wxArrayString cur_row = wxStringTokenize(rows[0], " ,;|\t");
-			if (cur_row.size() < 1) return false;
+			wxArrayString cols = wxStringTokenize(rows[0], " ;|", wxTOKEN_STRTOK );
+			if (cols.size() < 1) return false;
+
+			size_t nrows = rows.size();
+			size_t ncols = cols.size();
 
 			value.m_type = VV_MATRIX;
-			value.m_val.resize_fill( rows.size(), cur_row.size(), 0.0 );
-
-			for( size_t c=0; c < cur_row.size(); c++)
-				value.m_val.at(0,c) = wxAtof( cur_row[c] );
-
-			for (size_t r=1; r < rows.size(); r++)
+			value.m_val.resize_fill( nrows, ncols, 0.0 );
+			
+			for (size_t r=0; r < nrows; r++)
 			{
-				cur_row = wxStringTokenize(rows[r], " ,\t");
-				for (size_t c=0; c<cur_row.size() && c<value.m_val.ncols(); c++)
-					value.m_val.at(r,c) = wxAtof( cur_row[c] );
+				cols = wxStringTokenize(rows[r], " ;|");
+				for (size_t c=0; c<cols.size() && c<ncols; c++)
+					value.m_val(r,c) = wxAtof( cols[c] );
 			}
 			return true;
 		}
