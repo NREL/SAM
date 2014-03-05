@@ -878,6 +878,37 @@ static void fcall_substance_density(lk::invoke_t &cxt)
 	cxt.result().assign(density);
 }
 
+
+void fcall_snlinverter( lk::invoke_t &cxt )
+{
+	LK_DOC( "snlinverter", "Calculates the sandia inverter AC power from DC and specs", "(number:pdc, number:vdc, number:vdco, number:pdco, number:pso, number:paco, number:c0, number:c1, number:c2, number:c3):number" );
+
+	double pdc = cxt.arg(0).as_number();
+	double vdc = cxt.arg(1).as_number();
+	double vdco = cxt.arg(2).as_number();
+	double pdco = cxt.arg(3).as_number();
+	double pso = cxt.arg(4).as_number();
+	double paco = cxt.arg(5).as_number();
+	double c0 = cxt.arg(6).as_number();
+	double c1 = cxt.arg(7).as_number();
+	double c2 = cxt.arg(8).as_number();
+	double c3 = cxt.arg(9).as_number();
+
+	// Pac = {(Paco / (A - B)) – C · (A - B)}· (Pdc- B) + C · (Pdc - B)**2
+
+	
+	  double vdcminusvdco = vdc - vdco;
+	  double A = pdco * (1 + c1 * vdcminusvdco);
+	  double B = pso * (1 + c2 * vdcminusvdco);
+	  // Steve Miller email 12/16/10 - check for psc < 0 see Inverters_12_23_10.docx
+	  B = (B<0)? 0:B;
+
+	  double C = c0 * (1 + c3 * vdcminusvdco);
+	  double pac = ((paco / (A- B)) - C * (A - B)) * (pdc - B) + C * (pdc - B) * (pdc - B);
+
+	  cxt.result().assign( pac );
+}
+
 lk::fcall_t* invoke_general_funcs()
 {
 	static const lk::fcall_t vec[] = {
@@ -911,10 +942,11 @@ lk::fcall_t* invoke_config_funcs()
 	return (lk::fcall_t*)vec;
 }
 
-lk::fcall_t* invoke_other_funcs()
+lk::fcall_t* invoke_equation_funcs()
 {
 	static const lk::fcall_t vec[] = {
 		fcall_substance_density,
+		fcall_snlinverter,
 		0 };
 	return (lk::fcall_t*)vec;
 }
@@ -933,6 +965,7 @@ lk::fcall_t* invoke_uicallback_funcs()
 		fcall_financing,
 		fcall_dview,
 		fcall_substance_density,
+		fcall_snlinverter,
 		0 };
 	return (lk::fcall_t*)vec;
 }

@@ -778,6 +778,7 @@ UIEditorPanel::UIEditorPanel( wxWindow *parent )
 		wxLK_STDLIB_BASIC | wxLK_STDLIB_STRING | wxLK_STDLIB_MATH | wxLK_STDLIB_WXUI  );
 	m_equationScript->RegisterLibrary( invoke_equation_stubs(), "Case Information", 0 );
 	m_equationScript->RegisterLibrary( invoke_ssc_funcs(), "SSC Functions", 0 );
+	m_equationScript->RegisterLibrary( invoke_equation_funcs(), "Additional Equation Functions", 0 );
 
 	wxBoxSizer *sz_scripts_right = new wxBoxSizer( wxVERTICAL );
 	sz_scripts_right->Add( sz_equation_tools, 0, wxALL|wxEXPAND, 2 );
