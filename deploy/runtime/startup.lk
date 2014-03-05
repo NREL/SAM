@@ -84,6 +84,7 @@ function setup_independent_power_producer_pages()
 				{'name'='Depreciation', 'collapsible'=true,'collapsible_var'='show_depreciation'},
 				{'name'='Tax Credits', 'collapsible'=true, 'collapsible_var'='show_tax_credits', 'collapsed_by_default'=false},
 				{'name'='Incentives', 'collapsible'=true, 'collapsible_var'='show_incentives'} ]], { 'sidebar'='Financing', 'help'='Financing Commercial' } );
+	addpage( [[ 'Energy Payment Dispatch' ]], { 'sidebar'='Payment Allocation Factors' });
 }
 
 function setup_windpower_pages()
