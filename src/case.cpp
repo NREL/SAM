@@ -37,7 +37,7 @@ void CaseEvaluator::SetupEnvironment( lk::env_t &env )
 	env.register_func( fcall_technology_pCase, m_case );
 	env.register_func( fcall_financing_pCase, m_case );
 	env.register_funcs( invoke_ssc_funcs() );
-	env.register_funcs( invoke_other_funcs() );
+	env.register_funcs( invoke_equation_funcs() );
 }
 	
 int CaseEvaluator::CalculateAll()
