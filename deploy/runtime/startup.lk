@@ -1,7 +1,7 @@
 // SAM startup script.
 
 // define all the configurations
-addconfig( 'PVWatts', [ 'Residential', 'Commercial', 'None' ] );
+addconfig( 'PVWatts', [ 'Residential', 'Commercial', 'Independent Power Producer', 'None' ] );
 addconfig( 'Flat Plate PV', ['Residential', 'Commercial', 'None'] );
 addconfig( 'Test Only', [ 'None' ] );
 addconfig( 'Wind Power', ['Residential', 'Commercial', 'None' ] );
@@ -75,6 +75,16 @@ function setup_commercial_pages()
 	addpage( [[ 'Electric Load' ]] );
 }
 
+function setup_independent_power_producer_pages()
+{
+	addpage( [[ 'Degradation' ]] );
+	addpage( [[ 'Utility IPP Financing',
+				{'name'='Financing', 'collapsible'=true,'collapsible_var'='show_financing'},
+				{'name'='Construction Period', 'collapsible'=true,'collapsible_var'='show_construction_period'},
+				{'name'='Depreciation', 'collapsible'=true,'collapsible_var'='show_depreciation'},
+				{'name'='Tax Credits', 'collapsible'=true, 'collapsible_var'='show_tax_credits', 'collapsed_by_default'=false},
+				{'name'='Incentives', 'collapsible'=true, 'collapsible_var'='show_incentives'} ]], { 'sidebar'='Financing', 'help'='Financing Commercial' } );
+}
 
 function setup_windpower_pages()
 {
@@ -114,7 +124,7 @@ function setup_csp_physical_trough_pages()
 	addpage( [[ 'Physical Trough Solar Field' ]], { 'sidebar'='Solar Field' } );
 }
 
-// setup cashflow tables
+// setup cashflow tables////////////////////////////////////////////////////////
 
 
 function setup_incentives_cashflow()
@@ -182,17 +192,20 @@ function setup_residential_cashflow()
 }
 
 
-// now setup all the pages
-
-setconfig( 'Concentrating Solar Power - Physical Trough', 'None' );
-setmodules( ['tcstrough_physical']);
-setup_csp_physical_trough_pages();
+// now setup all the pages /////////////////////////////////////////////////////
 
 setconfig( 'Test Only', 'None' );
 addpage( [[ 'Test 1' ]] );
 //addpage( [[ 'Location' ]] );
 
 
+//CSP - Physical Trough ////////////////////////////////////////////////////////
+setconfig( 'Concentrating Solar Power - Physical Trough', 'None' );
+setmodules( ['tcstrough_physical']);
+setup_csp_physical_trough_pages();
+
+
+// Flat Plat PV ////////////////////////////////////////////////////////////////
 setconfig( 'Flat Plate PV', 'None' );
 setup_flat_plate_pv_pages();
 setmodules( ['pvsamv1'] );
@@ -209,6 +222,8 @@ setup_flat_plate_pv_pages();
 addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='PV System Costs' } );
 setup_commercial_pages();
 
+
+// PVWatts/////////////////////////////////////////////////////////////////////
 setconfig( 'PVWatts', 'None' );
 setmodules( ['pvwattsv5']);
 setup_pvwatts_pages();
@@ -228,8 +243,15 @@ setup_pvwatts_pages();
 addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='PV System Costs' } );
 setup_commercial_pages();
 
+setconfig( 'PVWatts', 'Independent Power Producer' );	
+setmodules( ['pvwattsv5', 'ippppa']);
+setting( { 'analysis_period_var'='cf_length' } );
+setup_pvwatts_pages();
+addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='PV System Costs' } );
+setup_independent_power_producer_pages();
 
 
+// Wind Power ///////////////////////////////////////////////////////////////
 setconfig( 'Wind Power', 'None' );
 setmodules( ['windpower']);
 setup_windpower_pages();
