@@ -89,7 +89,7 @@ ResultsViewer::ResultsViewer( wxWindow *parent )
 	m_pages->AddPage( cf_panel, "Cash Flow" );
 	m_nav->Add( "Cash Flow" );
 
-	m_timeSeries = new wxDVTimeSeriesCtrl( m_pages, wxID_ANY );
+	m_timeSeries = new wxDVTimeSeriesCtrl( m_pages, wxID_ANY,  HOURLY_TIME_SERIES, AVERAGE );
 	m_pages->AddPage( m_timeSeries, "Time Series" );
 	m_nav->Add( "Time Series" );
 
@@ -143,6 +143,7 @@ public:
 	virtual double GetTimeStep() const { return 1.0; }
 	virtual wxString GetSeriesTitle() const { return m_label; }
 	virtual wxString GetUnits() const { return m_units; }
+	virtual void SetDataValue(size_t i, double newYValue) { /* nothing to do */ }
 };
 
 
