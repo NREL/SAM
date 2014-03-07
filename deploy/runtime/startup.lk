@@ -4,6 +4,7 @@
 addconfig( 'PVWatts', [ 'Residential', 'Commercial', 'Independent Power Producer', 'None' ] );
 addconfig( 'Flat Plate PV', ['Residential', 'Commercial', 'None'] );
 addconfig( 'Test Only', [ 'None' ] );
+//addconfig( 'Test Wind BOS', [ 'None' ] );
 addconfig( 'Wind Power', ['Residential', 'Commercial', 'None' ] );
 addconfig( 'Solar Water Heating', ['Residential', 'Commercial', 'None']);
 addconfig( 'Concentrating Solar Power - Physical Trough', ['None']);
@@ -192,12 +193,20 @@ function setup_residential_cashflow()
 	cashflow( 'cf_after_tax_cash_flow');
 }
 
-
+////////////////////////////////////////////////////////////////////////////////
 // now setup all the pages /////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 
+
+
+///////////////// Test pages ///////////////////////////////////////////////////
 setconfig( 'Test Only', 'None' );
 addpage( [[ 'Test 1' ]] );
 //addpage( [[ 'Location' ]] );
+
+//setconfig( 'Test Wind BOS', 'None' );
+//addpage( [[ 'Test Wind BOS' ]] );
+//setmodules( ['windbos']);
 
 
 //CSP - Physical Trough ////////////////////////////////////////////////////////
@@ -224,7 +233,7 @@ addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='PV System Costs'
 setup_commercial_pages();
 
 
-// PVWatts//////////////////////////////////////////////////////////////////////
+// PVWatts /////////////////////////////////////////////////////////////////////
 setconfig( 'PVWatts', 'None' );
 setmodules( ['pvwattsv5']);
 setup_pvwatts_pages();
