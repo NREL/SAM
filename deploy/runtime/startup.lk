@@ -224,7 +224,7 @@ addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='PV System Costs'
 setup_commercial_pages();
 
 
-// PVWatts/////////////////////////////////////////////////////////////////////
+// PVWatts//////////////////////////////////////////////////////////////////////
 setconfig( 'PVWatts', 'None' );
 setmodules( ['pvwattsv5']);
 setup_pvwatts_pages();
@@ -252,11 +252,12 @@ addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='PV System Costs'
 setup_independent_power_producer_pages();
 
 
-// Wind Power ///////////////////////////////////////////////////////////////
+// Wind Power //////////////////////////////////////////////////////////////////
 setconfig( 'Wind Power', 'None' );
 setmodules( ['windpower']);
 setup_windpower_pages();
 
+// Solar Water Heating /////////////////////////////////////////////////////////
 setconfig( 'Solar Water Heating', 'None');
 setmodules( ['swh'] );
 setup_solar_water_heating_pages();
