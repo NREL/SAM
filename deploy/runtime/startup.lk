@@ -15,10 +15,10 @@ function setup_pvwatts_pages()
 	addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource' } );
 	addpage( [[ 'PVWatts' ]], { 'sidebar'='System Design', 'help'='PVWatts' } );
 	
-	/*metric( 'solrad_annual' ); //, {'label'='Average Radiation', 'post'=' kWh/m2/day' } );
-	metric( 'ac_annual' ); //, {'label'='AC Energy', 'post'=' kWh' } );
-	metric( 'annual_energy' ); //, {'label'='Net Annual Energy', 'post'=' kWh' } );
-	*/
+	metric( 'solrad_annual', {'label'='Average Radiation', 'post'=' kWh/m2/day' } );
+	metric( 'ac_annual', {'label'='AC Energy', 'post'=' kWh' } );
+	metric( 'annual_energy', {'label'='Net Annual Energy', 'post'=' kWh' } );
+	
 }
 
 function setup_flat_plate_pv_pages()
@@ -59,6 +59,8 @@ function setup_residential_pages()
 	setup_utility_rate();
 	
 	addpage( [[ 'Electric Load' ]] );
+	metric( 'lcoe_real', {'label'='Real LCOE', 'post'=' $/kWh' } );
+	metric( 'lcoe_nom', {'label'='Nominal LCOE', 'post'=' $/kWh' } );
 }
 
 
@@ -74,6 +76,8 @@ function setup_commercial_pages()
 	setup_utility_rate();
 	
 	addpage( [[ 'Electric Load' ]] );
+	metric( 'lcoe_real', {'label'='Real LCOE', 'post'=' $/kWh' } );
+	metric( 'lcoe_nom', {'label'='Nominal LCOE', 'post'=' $/kWh' } );
 }
 
 function setup_independent_power_producer_pages()
@@ -86,6 +90,9 @@ function setup_independent_power_producer_pages()
 				{'name'='Tax Credits', 'collapsible'=true, 'collapsible_var'='show_tax_credits', 'collapsed_by_default'=false},
 				{'name'='Incentives', 'collapsible'=true, 'collapsible_var'='show_incentives'} ]], { 'sidebar'='Financing', 'help'='Financing Commercial' } );
 	addpage( [[ 'Energy Payment Dispatch' ]], { 'sidebar'='Payment Allocation Factors' });
+	metric( 'lcoe_real', {'label'='Real LCOE', 'post'=' $/kWh' } );
+	metric( 'lcoe_nom', {'label'='Nominal LCOE', 'post'=' $/kWh' } );
+	metric( 'ppa', {'label'='PPA Price', 'post'=' $/kWh' } );
 }
 
 function setup_windpower_pages()
@@ -193,6 +200,107 @@ function setup_residential_cashflow()
 	cashflow( 'cf_after_tax_cash_flow');
 }
 
+function setup_commercial_cashflow()
+{
+	cashflow( 'cf_energy_net', 1); // use one digit
+	cashflow( 'cf_energy_value');
+	cashflow( '' ); // spacer
+
+	cashflow( "Operating Expenses", 0 ); // header	
+	cashflow( 'cf_om_fixed_expense,cf_om_production_expense,cf_om_capacity_expense,cf_om_fuel_expense');
+	cashflow( 'cf_om_opt_fuel_1_expense' );
+	cashflow( 'cf_om_opt_fuel_2_expense' );
+	
+	cashflow( 'cf_property_tax_assessed_value');
+	cashflow( 'cf_property_tax_expense');
+	cashflow( 'cf_insurance_expense');
+	cashflow( 'cf_net_salvage_value');
+	cashflow( 'cf_operating_expenses');
+	cashflow( '' ); // spacer
+	
+	cashflow( 'cf_deductible_expenses');
+	cashflow( '' ); // spacer
+	
+	cashflow( "Financing", 0 ); // header
+	cashflow( 'cf_debt_balance');
+	cashflow( 'cf_debt_payment_interest');
+	cashflow( 'cf_debt_payment_principal');
+	cashflow( 'cf_debt_payment_total');
+	
+	// incentives
+	setup_incentives_cashflow();
+	
+	cashflow( "Tax Effect on Equity (State)", 0 ); // header
+	cashflow( 'cf_sta_depr_sched');
+	cashflow( 'cf_sta_depreciation');
+	cashflow( 'cf_sta_incentive_income_less_deductions');
+	cashflow( 'cf_sta_taxable_income_less_deductions');
+	cashflow( 'cf_sta_tax_savings');
+	cashflow( '' ); // spacer
+	
+	cashflow( "Tax Effect on Equity (Federal)", 0 ); // header
+	cashflow( 'cf_fed_depr_sched' );
+	cashflow( 'cf_fed_depreciation');
+	cashflow( 'cf_fed_incentive_income_less_deductions');
+	cashflow( 'cf_fed_taxable_income_less_deductions');	
+	cashflow( 'cf_fed_tax_savings' );
+	cashflow( '' ); // spacer
+	
+	cashflow( 'cf_after_tax_net_equity_cost_flow');
+	cashflow( 'cf_after_tax_cash_flow');
+}
+
+
+function setup_independent_power_producer_cashflow()
+{
+	cashflow( 'cf_energy_net', 1); // use one digit
+	cashflow( 'cf_energy_value');
+	cashflow( '' ); // spacer
+
+	cashflow( "Operating Expenses", 0 ); // header	
+	cashflow( 'cf_om_fixed_expense,cf_om_production_expense,cf_om_capacity_expense,cf_om_fuel_expense');
+	cashflow( 'cf_om_opt_fuel_1_expense' );
+	cashflow( 'cf_om_opt_fuel_2_expense' );
+	
+	cashflow( 'cf_property_tax_assessed_value');
+	cashflow( 'cf_property_tax_expense');
+	cashflow( 'cf_insurance_expense');
+	cashflow( 'cf_net_salvage_value');
+	cashflow( 'cf_operating_expenses');
+	cashflow( '' ); // spacer
+	
+	cashflow( 'cf_deductible_expenses');
+	cashflow( '' ); // spacer
+	
+	cashflow( "Financing", 0 ); // header
+	cashflow( 'cf_debt_balance');
+	cashflow( 'cf_debt_payment_interest');
+	cashflow( 'cf_debt_payment_principal');
+	cashflow( 'cf_debt_payment_total');
+	
+	// incentives
+	setup_incentives_cashflow();
+	
+	cashflow( "Tax Effect on Equity (State)", 0 ); // header
+	cashflow( 'cf_sta_depr_sched');
+	cashflow( 'cf_sta_depreciation');
+	cashflow( 'cf_sta_incentive_income_less_deductions');
+	cashflow( 'cf_sta_taxable_income_less_deductions');
+	cashflow( 'cf_sta_tax_savings');
+	cashflow( '' ); // spacer
+	
+	cashflow( "Tax Effect on Equity (Federal)", 0 ); // header
+	cashflow( 'cf_fed_depr_sched' );
+	cashflow( 'cf_fed_depreciation');
+	cashflow( 'cf_fed_incentive_income_less_deductions');
+	cashflow( 'cf_fed_taxable_income_less_deductions');	
+	cashflow( 'cf_fed_tax_savings' );
+	cashflow( '' ); // spacer
+	
+	cashflow( 'cf_after_tax_net_equity_cost_flow');
+	cashflow( 'cf_after_tax_cash_flow');
+}
+
 ////////////////////////////////////////////////////////////////////////////////
 // now setup all the pages /////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
@@ -237,6 +345,7 @@ setup_commercial_pages();
 setconfig( 'PVWatts', 'None' );
 setmodules( ['pvwattsv5']);
 setup_pvwatts_pages();
+metric( 'annual_energy' );
 
 setconfig( 'PVWatts', 'Residential' );	
 setmodules( ['pvwattsv5',  'utilityrate2', 'cashloan']);
@@ -252,6 +361,7 @@ setting( { 'analysis_period_var'='cf_length' } );
 setup_pvwatts_pages();
 addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='PV System Costs' } );
 setup_commercial_pages();
+setup_commercial_cashflow();
 
 setconfig( 'PVWatts', 'Independent Power Producer' );	
 setmodules( ['pvwattsv5', 'ippppa']);
@@ -259,6 +369,7 @@ setting( { 'analysis_period_var'='cf_length' } );
 setup_pvwatts_pages();
 addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='PV System Costs' } );
 setup_independent_power_producer_pages();
+setup_independent_power_producer_cashflow();
 
 
 // Wind Power //////////////////////////////////////////////////////////////////
