@@ -293,10 +293,8 @@ void Case::SetConfiguration( const wxString &tech, const wxString &fin )
 
 	m_vals.Delete( to_remove );
 
-	// set up any new variables with default values
-	LoadDefaults();
-
 	// set up any remaining new variables with internal default values
+	// LoadDefaults is only called when creating new cases or explicitly resetting from case menu
 	for( VarInfoLookup::iterator it = vars.begin(); it != vars.end(); ++it )
 		if ( !m_vals.Get( it->first ) )
 			m_vals.Set( it->first, it->second->DefaultValue ); // will create new variable if it doesnt exist

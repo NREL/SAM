@@ -261,6 +261,7 @@ void MainWindow::CreateNewCase( const wxString &_name, wxString tech, wxString f
 
 
 	Case *c = m_project.AddCase( GetUniqueCaseName(_name ) );
+	c->LoadDefaults();
 	c->SetConfiguration( tech, fin );
 	CreateCaseWindow( c );
 }
@@ -685,13 +686,14 @@ void MainWindow::OnCaseMenu( wxCommandEvent &evt )
 	case ID_CASE_RESET_DEFAULTS:
 		{
 			c->LoadDefaults();
+			// update calculated values and ui
+			c->RecalculateAll();
 			// update UI
-			CaseEvaluator eval(c, c->Values(), c->GetConfiguration()->Equations);
-			int n = eval.CalculateAll();
-			if (n < 0)
-				::wxShowTextMessageDialog(wxJoin(eval.GetErrors(), wxChar('\n')));
+			wxString tech, fin;
+			c->GetConfiguration(&tech, &fin);
+			c->SendEvent(CaseEvent(CaseEvent::CONFIG_CHANGED, tech, fin));
 
-	}
+		}
 		break;
 	};
 
