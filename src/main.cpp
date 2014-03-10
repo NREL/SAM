@@ -164,7 +164,7 @@ MainWindow::MainWindow()
 	wxMetroButton *metbut = 0;
 
 	wxBoxSizer *tools = new wxBoxSizer( wxHORIZONTAL );
-	tools->Add( new wxMetroButton( m_caseTabPanel, ID_MAIN_MENU, wxEmptyString, wxBITMAP_PNG_FROM_DATA( main_menu ), wxDefaultPosition, wxDefaultSize /*, wxMB_DOWNARROW */), 0, wxALL|wxEXPAND, 0 );
+	tools->Add( m_mainMenuButton = new wxMetroButton( m_caseTabPanel, ID_MAIN_MENU, wxEmptyString, wxBITMAP_PNG_FROM_DATA( main_menu ), wxDefaultPosition, wxDefaultSize /*, wxMB_DOWNARROW */), 0, wxALL|wxEXPAND, 0 );
 	tools->Add( new wxMetroButton( m_caseTabPanel, ID_CASE_CREATE, "New", wxBITMAP_PNG_FROM_DATA( cirplus ), wxDefaultPosition, wxDefaultSize), 0, wxALL|wxEXPAND, 0 );
 	m_caseTabList = new wxMetroTabList( m_caseTabPanel, ID_CASE_TABS, wxDefaultPosition, wxDefaultSize, wxMT_MENUBUTTONS );
 	tools->Add( m_caseTabList, 1, wxALL|wxEXPAND, 0 );		
@@ -376,41 +376,17 @@ void MainWindow::OnCommand( wxCommandEvent &evt )
 		break;
 	case ID_MAIN_MENU:
 		{
-			wxMenu *add_obj_menu = new wxMenu;
-			add_obj_menu->Append( wxID_ANY, "Weather data file" );
-			add_obj_menu->Append( wxID_ANY, "3D Shading scene" );
-			add_obj_menu->Append( wxID_ANY, "Script" );
-			add_obj_menu->Append( wxID_ANY, "User defined variables" );
-			add_obj_menu->Append( wxID_ANY, "Text file" );
-			add_obj_menu->Append( wxID_ANY, "Report template" );
-
-			wxMenu *edit_obj_menu = new wxMenu;
-			edit_obj_menu->Append( wxID_ANY, "site measured (Weather File)" );
-			edit_obj_menu->Append( wxID_ANY, "shading scene 1 (3D Shading)" );
-			edit_obj_menu->Append( wxID_ANY, "shading scene 2 (3D Shading)" );
-			edit_obj_menu->Append( wxID_ANY, "batch processor (Script)" );
-			
-			wxMenu *del_obj_menu = new wxMenu;
-			del_obj_menu->Append( wxID_ANY, "site measured (Weather File)" );
-			del_obj_menu->Append( wxID_ANY, "shading scene 1 (3D Shading)" );
-			del_obj_menu->Append( wxID_ANY, "shading scene 2 (3D Shading)" );
-			del_obj_menu->Append( wxID_ANY, "batch processor (Script)" );
-
-
-			wxMenu menu;
-			menu.Append( wxID_ANY, "Add to project", add_obj_menu );
-			menu.Append( wxID_ANY, "Edit", edit_obj_menu );
-			menu.Append( wxID_ANY, "Delete", del_obj_menu );
-			menu.AppendSeparator();
-			menu.Append( wxID_NEW, "New project" );
+			wxPoint p = m_mainMenuButton->ClientToScreen( wxPoint( 0, m_mainMenuButton->GetClientSize().y ) );
+			wxMetroPopupMenu menu;
+			menu.Append( wxID_NEW, "New project\tCtrl-N" );
 			menu.AppendSeparator();
 			menu.Append( wxID_OPEN, "Open\tCtrl-O" );
 			menu.Append( wxID_SAVE, "Save\tCtrl-S" );
 			menu.Append( wxID_SAVEAS, "Save as" );
 			menu.AppendSeparator();
-			menu.Append( wxID_CLOSE, "Close" );
-			menu.Append( wxID_EXIT );
-			PopupMenu( &menu );
+			menu.Append( wxID_CLOSE, "Close\tCtrl-W" );
+			menu.Append( wxID_EXIT, "Exit" );
+			menu.Popup( this, p );
 		}
 		break;
 	case wxID_NEW:
@@ -583,7 +559,7 @@ void MainWindow::OnCaseTabChange( wxCommandEvent &evt )
 
 void MainWindow::OnCaseTabButton( wxCommandEvent &evt )
 {
-	wxMenu menu;
+	wxMetroPopupMenu menu;
 	
 	menu.Append( ID_CASE_CONFIG, "Select technology and market" );
 	menu.AppendSeparator();
@@ -604,7 +580,7 @@ void MainWindow::OnCaseTabButton( wxCommandEvent &evt )
 	menu.AppendSeparator();
 	menu.Append( ID_CASE_IMPORT, "Import" );
 
-	PopupMenu( &menu );
+	menu.Popup( this, m_caseTabList->GetPopupMenuPosition( m_caseTabList->GetSelection() ) );
 }
 
 CaseWindow *MainWindow::GetCurrentCaseWindow()
