@@ -508,8 +508,13 @@ void CaseWindow::OnCaseEvent( Case *, CaseEvent &evt )
 	{
 		wxString sel = m_inputPageList->GetStringSelection();
 		UpdateConfiguration();
-		SwitchToInputPage( sel );
+		if (!sel.empty()) 
+			SwitchToInputPage( sel );
+		else
+			m_pageFlipper->SetSelection(0);
 		
+		m_baseCaseResults->Clear();
+
 		SamApp::Window()->Project().SetModified( true );
 	}
 }
