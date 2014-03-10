@@ -14,6 +14,7 @@
 
 class wxSimplebook;
 class wxPanel;
+class wxMetroButton;
 class wxMetroTabList;
 
 class SamException : public std::exception
@@ -76,6 +77,7 @@ private:
 	wxSimplebook *m_topBook;
 	WelcomeScreen *m_welcomeScreen;
 	wxPanel *m_caseTabPanel;
+	wxMetroButton *m_mainMenuButton;
 	wxMetroTabList *m_caseTabList;
 	wxSimplebook *m_caseNotebook;
 
