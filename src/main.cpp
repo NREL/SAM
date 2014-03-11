@@ -714,7 +714,8 @@ public:
 		GetClientSize( &width, &height );
 
 		//dc.SetBackground( wxBrush( wxMetroTheme::Colour( wxMT_ACCENT ) ) );
-		dc.SetBackground( wxBrush( wxColour(220,14,158) ) );
+		//dc.SetBackground( wxBrush( wxColour(220,14,158) ) );
+		dc.SetBackground( wxBrush( wxColour(15,79,34) ) );
 		dc.Clear();
 
 		dc.SetBrush( *wxWHITE_BRUSH );

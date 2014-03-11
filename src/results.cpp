@@ -1,11 +1,11 @@
 #include <algorithm>
 
-#include <wx/simplebook.h>
 #include <wx/panel.h>
 #include <wx/clipbrd.h>
 #include <wx/dcbuffer.h>
 #include <wx/statline.h>
 #include <wx/busyinfo.h>
+#include <wx/splitter.h>
 
 #include <wex/extgrid.h>
 #include <wex/metro.h>
@@ -23,23 +23,24 @@
 #include "simulation.h"
 #include "results.h"
 
-enum { ID_PAGESELECT = wxID_HIGHEST+948 };
+enum { ID_RESULTS_PAGE=wxID_HIGHEST+458,ID_RESULTS_PAGE_MAX=ID_RESULTS_PAGE+25 };
 
 
-BEGIN_EVENT_TABLE( ResultsViewer, wxSplitterWindow )	
-	EVT_LISTBOX( ID_PAGESELECT, ResultsViewer::OnCommand )
+BEGIN_EVENT_TABLE( ResultsViewer, wxSimplebook )	
+	EVT_MENU_RANGE( ID_RESULTS_PAGE, ID_RESULTS_PAGE_MAX, ResultsViewer::OnCommand )
 END_EVENT_TABLE()
 
-#define DEFAULT_SASH_POS 217
 
 ResultsViewer::ResultsViewer( wxWindow *parent )
-	: wxSplitterWindow( parent, wxID_ANY, wxDefaultPosition, wxDefaultSize,
-		wxSP_LIVE_UPDATE|wxBORDER_NONE ),
+	: wxSimplebook( parent, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxBORDER_NONE ),
 	 m_cfg( 0 ),
 	 m_results( 0 )
 {
-	m_leftPanel = new wxPanel( this );
-	m_metrics = new MetricsTable( m_leftPanel );	
+	wxPanel *summary_panel = new wxPanel( this );
+	AddPage( summary_panel, "Summary", true );
+	wxBoxSizer *summary_sizer = new wxBoxSizer( wxVERTICAL );
+
+	m_metrics = new MetricsTable( summary_panel );
 	matrix_t<wxString> data( 10, 2 );
 	data.at(0,0) = "Metric"; data.at(0,1) = "Value";
 	for( size_t i=1;i<10;i++ )
@@ -48,21 +49,15 @@ ResultsViewer::ResultsViewer( wxWindow *parent )
 		data.at(i,1) = wxString::Format("%.2lf", (i+193)*pow(1.22, (double)(i)/3.0) );
 	}
 	m_metrics->SetData( data );
-
-	m_nav = new wxMetroListBox( m_leftPanel, ID_PAGESELECT );	
-
-	wxBoxSizer *left_sizer = new wxBoxSizer( wxVERTICAL );
-	left_sizer->Add( m_metrics, 0, wxALL|wxEXPAND, 0 );
-	left_sizer->Add( m_nav, 1, wxALL|wxEXPAND, 0 );
-	m_leftPanel->SetSizer( left_sizer );
-
-	m_pages = new wxSimplebook( this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxBORDER_NONE );
-
-	m_tables = new TabularBrowser( m_pages );
-	m_pages->AddPage( m_tables, "Tabular Browser" );
-	m_nav->Add( "Tables" );
-
-	wxPanel *cf_panel = new wxPanel( m_pages );
+	
+	summary_sizer->Add( m_metrics, 0, wxALL, 30 );
+	summary_panel->SetSizer( summary_sizer );
+	
+	m_tables = new TabularBrowser( this );
+	AddPage( m_tables, "Tables" );
+	
+	wxPanel *cf_panel = new wxPanel( this );
+	AddPage( cf_panel, "Cash Flow" );
 	m_cashFlow = new wxExtGridCtrl( cf_panel, wxID_ANY );
 	m_cashFlow->SetFont( *wxNORMAL_FONT );
 	m_cashFlow->CreateGrid(1,1);
@@ -86,45 +81,41 @@ ResultsViewer::ResultsViewer( wxWindow *parent )
 	cf_sizer->Add( cf_tools, 0, wxALL|wxEXPAND, 2 );
 	cf_sizer->Add( m_cashFlow, 1, wxALL|wxEXPAND, 0 );
 	cf_panel->SetSizer(cf_sizer);
-	m_pages->AddPage( cf_panel, "Cash Flow" );
-	m_nav->Add( "Cash Flow" );
-
-	m_timeSeries = new wxDVTimeSeriesCtrl( m_pages, wxID_ANY,  HOURLY_TIME_SERIES, AVERAGE );
-	m_pages->AddPage( m_timeSeries, "Time Series" );
-	m_nav->Add( "Time Series" );
-
-	m_dMap = new wxDVDMapCtrl( m_pages, wxID_ANY );
-	m_pages->AddPage( m_dMap, "DMap" );
-	m_nav->Add( "Heat Map" );
-
-	m_profilePlots = new wxDVProfileCtrl( m_pages, wxID_ANY );
-	m_pages->AddPage( m_profilePlots, "Profile Plots" );
-	m_nav->Add( "Daily Profiles" );
 	
-	m_scatterPlot = new wxDVScatterPlotCtrl( m_pages, wxID_ANY );
-	m_pages->AddPage( m_scatterPlot, "Scatter Plots" );
-	m_nav->Add( "Scatter Plots" );
+	m_timeSeries = new wxDVTimeSeriesCtrl( this, wxID_ANY,  HOURLY_TIME_SERIES, AVERAGE );
+	AddPage( m_timeSeries, "Time Series" );
 
-	m_pnCdf = new wxDVPnCdfCtrl( m_pages, wxID_ANY );
-	m_pages->AddPage( m_pnCdf, "PN-CDF" );
-	m_nav->Add( "Histogram" );
+	m_dMap = new wxDVDMapCtrl( this, wxID_ANY );
+	AddPage( m_dMap, "Heat Map" );
+
+	m_profilePlots = new wxDVProfileCtrl( this, wxID_ANY );
+	AddPage( m_profilePlots, "Profile Plots" );
 	
-	m_durationCurve = new wxDVDCCtrl( m_pages, wxID_ANY );
-	m_pages->AddPage( m_durationCurve, "Duration Curve" );
-	m_nav->Add( "Duration Curve" );
+	m_scatterPlot = new wxDVScatterPlotCtrl( this, wxID_ANY );
+	AddPage( m_scatterPlot, "Scatter Plots" );
 
-
-	SetMinimumPaneSize( 180 );
-	SplitVertically( m_leftPanel, m_pages, DEFAULT_SASH_POS );
+	m_pnCdf = new wxDVPnCdfCtrl( this, wxID_ANY );
+	AddPage( m_pnCdf, "Histograms" );
 	
-	m_nav->SetSelection( 0 );
-	m_pages->ChangeSelection( 0 );
+	m_durationCurve = new wxDVDCCtrl( this, wxID_ANY );
+	AddPage( m_durationCurve, "Duration Curve" );
+
 }
 
 ResultsViewer::~ResultsViewer()
 {
 	for( size_t i=0;m_tsDataSets.size();i++ )
 		delete m_tsDataSets[i];
+}
+
+
+void ResultsViewer::ShowMenu( wxPoint pos )
+{
+	wxMetroPopupMenu menu( wxMT_LIGHTTHEME );
+	menu.SetFont( wxMetroTheme::Font( wxMT_NORMAL, 15 ) );
+	for( size_t i=0;i<GetPageCount();i++ )
+		menu.Append( ID_RESULTS_PAGE+i,GetPageText(i));
+	menu.Popup( this, pos );
 }
 
 class TimeSeries8760 : public wxDVTimeSeriesDataSet
@@ -326,9 +317,7 @@ void ResultsViewer::Setup( ConfigInfo *cfg, DataProvider *results )
 		m_cashFlow->Thaw();	
 	}
 
-	int sash = m_metrics->GetBestSize().x;
-	if ( sash < 150 ) sash = 150;
-	SetSashPosition( sash );
+	m_metrics->SetSize( m_metrics->GetBestSize() );
 	
 	// load the formerly saved perspective
 	LoadPerspective( viewinfo );
@@ -365,17 +354,14 @@ void ResultsViewer::RemoveAllDataSets()
 void ResultsViewer::SavePerspective( StringHash &map )
 {
 	// save information about the current view
-	map[ "navigation" ] = wxString::Format( "%d", m_nav->GetSelection() );
+	map[ "navigation" ] = wxString::Format( "%d", GetSelection() );
 }
 
 void ResultsViewer::LoadPerspective( StringHash &map )
 {
 	int nnav = wxAtoi( map["navigation"] );
-	if ( nnav >= 0 && nnav < m_nav->Count() )
-	{
-		m_nav->SetSelection( nnav );
-		m_pages->SetSelection( nnav );
-	}
+	if ( nnav >= 0 && nnav < GetPageCount() )
+		SetSelection( nnav );
 }
 
 void ResultsViewer::Clear()
@@ -393,20 +379,10 @@ void ResultsViewer::Clear()
 
 void ResultsViewer::OnCommand( wxCommandEvent &evt )
 {
-	switch( evt.GetId() )
-	{
-	case ID_PAGESELECT:
-		if ( m_nav->GetSelection() < m_pages->GetPageCount() )
-			m_pages->SetSelection( m_nav->GetSelection() );
-		break;
-	default:
-		break;
-	}
+	int id = evt.GetId();
+	if ( id >= ID_RESULTS_PAGE && id < ID_RESULTS_PAGE_MAX )
+		SetSelection( id - ID_RESULTS_PAGE );
 }
-
-
-
-
 
 
 enum { ID_METRICS_COPY_TSV = wxID_HIGHEST+258, ID_METRICS_COPY_CSV };

@@ -1,7 +1,7 @@
 #ifndef __ResultsViewer_h
 #define __ResultsViewer_h
 
-#include <wx/splitter.h>
+#include <wx/simplebook.h>
 #include <wex/exttree.h>
 
 #include "object.h"
@@ -29,7 +29,7 @@ class wxDVTimeSeriesDataSet;
 class ConfigInfo;
 class VarTable;
 
-class ResultsViewer : public wxSplitterWindow
+class ResultsViewer : public wxSimplebook
 {
 public:
 	ResultsViewer( wxWindow *parent );
@@ -40,6 +40,8 @@ public:
 
 	void SavePerspective( StringHash &map );
 	void LoadPerspective( StringHash &map );
+	
+	void ShowMenu( wxPoint pos );
 
 private:
 	void OnCommand( wxCommandEvent & );
@@ -47,13 +49,7 @@ private:
 	ConfigInfo *m_cfg;
 	DataProvider *m_results;
 
-	MetricsTable *m_metrics;	
-
-	wxPanel *m_leftPanel;
-	wxMetroListBox *m_nav;
-	wxSimplebook *m_pages;
-
-	
+	MetricsTable *m_metrics;		
 	TabularBrowser *m_tables;
 	wxExtGridCtrl *m_cashFlow;
 	
