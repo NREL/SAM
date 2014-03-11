@@ -95,7 +95,11 @@ function setup_independent_power_producer_pages()
 	metric( 'lcoe_real', {'label'='Real LCOE', 'post'=' _/kWh' } );
 	metric( 'lppa_nom', {'label'='Nominal LPPA', 'post'=' _/kWh' } );
 	metric( 'lppa_real', {'label'='Real LPPA', 'post'=' _/kWh' } );
-	metric( 'irr', {'label'='Internal Rate of Return', 'post'=' %' } );
+//	metric( 'irr', {'label'='Internal Rate of Return', 'post'=' %' } );
+	metric( 'irr_ev', {'label'='IRR (energy value)', 'post'=' %' } );
+	metric( 'irr_eq_cash', {'label'='IRR (equity cash flow)', 'post'=' %' } );
+	metric( 'irr_eq_cost', {'label'='IRR (equity cost flow)', 'post'=' %' } );
+	metric( 'irr_cash', {'label'='IRR (cash flow)', 'post'=' %' } );
 	metric( 'min_dscr', {'label'='Minimum DSCR' } );
 	metric( 'npv', {'label'='Net present value' } );
 	metric( 'actual_ppa_escalation', {'label'='Calculated PPA escalation', 'post = %' } );
@@ -307,6 +311,7 @@ function setup_independent_power_producer_cashflow()
 	cashflow( 'cf_fed_tax_savings' );
 	cashflow( '' ); // spacer
 	
+	cashflow( 'cf_after_tax_net_equity_cash_flow');
 	cashflow( 'cf_after_tax_net_equity_cost_flow');
 	cashflow( 'cf_after_tax_cash_flow');
 }
