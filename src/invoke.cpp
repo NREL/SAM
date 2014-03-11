@@ -774,6 +774,66 @@ void fcall_snlinverter( lk::invoke_t &cxt )
 	  cxt.result().assign( pac );
 }
 
+void fcall_current_at_voltage_cec(lk::invoke_t &cxt)
+{
+	LK_DOC("current_at_voltage_cec", "Calculates the CEC module model voltage from module current and specs", "(number:Vmodule, number:IL_ref, number:IO_ref, number:RS, number:A_ref, number:RSH_ref, number:I_mp_ref):number");
+
+	double Vmodule = cxt.arg(0).as_number();
+	double IL_ref = cxt.arg(1).as_number();
+	double IO_ref = cxt.arg(2).as_number();
+	double RS = cxt.arg(3).as_number();
+	double A_ref = cxt.arg(4).as_number();
+	double RSH_ref = cxt.arg(5).as_number();
+	double I_mp_ref = cxt.arg(6).as_number();
+
+	double F = 0, Fprime = 0;
+	double Iold = 0.0;
+	double Inew = I_mp_ref;
+
+	while (abs(Inew - Iold) > 1.0e-4)
+	{
+		Iold = Inew;
+
+		F = IL_ref - Iold - IO_ref *
+			(exp((Vmodule + Iold * RS) / A_ref) - 1.0) -
+			(Vmodule + Iold * RS) / RSH_ref;
+
+		Fprime = -1.0 - IO_ref * (RS / A_ref) *
+			exp((Vmodule + Iold * RS) / A_ref) -
+			(RS / RSH_ref);
+
+		Inew = MAX(0.0, (Iold - (F / Fprime)));
+	}
+
+	cxt.result().assign(Inew);
+}
+
+void fcall_current_at_voltage_sandia(lk::invoke_t &cxt)
+{
+	LK_DOC("current_at_voltage_sandia", "Calculates the Sandia module model voltage from module current and specs", "(number:V, number:VmaxPow, number:ImaxPow, number:Voc, number:Isc):number");
+
+	double V = cxt.arg(0).as_number(); 
+	double VmaxPow = cxt.arg(1).as_number(); 
+	double ImaxPow = cxt.arg(2).as_number();
+	double Voc = cxt.arg(3).as_number();
+	double Isc = cxt.arg(4).as_number();
+
+	double Itrw = 0, C_1 = 0, C_2 = 0;
+	if ((Isc > 0) && (Voc > 0)) {
+		if (ImaxPow < Isc) C_2 = (VmaxPow / Voc - 1.0) / log(1.0 - ImaxPow / Isc);
+
+		if (C_2 > 0) {
+			C_1 = (1.0 - ImaxPow / Isc) * exp(-VmaxPow / C_2 / Voc);
+			Itrw = Isc*(1.0 - C_1 * (exp(V / C_2 / Voc) - 1.0));
+		}
+		else {
+			Itrw = 0.0;
+		}
+	}
+	if (Itrw < 0) Itrw = 0;
+	cxt.result().assign(Itrw);
+}
+
 lk::fcall_t* invoke_general_funcs()
 {
 	static const lk::fcall_t vec[] = {
@@ -813,6 +873,8 @@ lk::fcall_t* invoke_equation_funcs()
 		fcall_substance_density,
 		fcall_substance_specific_heat,
 		fcall_snlinverter,
+		fcall_current_at_voltage_cec,
+		fcall_current_at_voltage_sandia,
 		0 };
 	return (lk::fcall_t*)vec;
 }
@@ -833,6 +895,8 @@ lk::fcall_t* invoke_uicallback_funcs()
 		fcall_substance_density,
 		fcall_substance_specific_heat,
 		fcall_snlinverter,
+		fcall_current_at_voltage_cec,
+		fcall_current_at_voltage_sandia,
 		0 };
 	return (lk::fcall_t*)vec;
 }
