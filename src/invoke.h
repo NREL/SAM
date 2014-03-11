@@ -6,7 +6,7 @@
 lk::fcall_t* invoke_general_funcs();
 lk::fcall_t* invoke_ssc_funcs();
 lk::fcall_t* invoke_config_funcs();
-lk::fcall_t* invoke_equation_funcs(); // additional functions that can be called equations
+lk::fcall_t* invoke_equation_funcs(); // additional functions that can be called in equations
 
 
 // these functions expect a CallbackContext* as user_data
