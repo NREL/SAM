@@ -81,7 +81,7 @@ END_EVENT_TABLE()
 
 
 enum { ID_INPUTPAGELIST = wxID_HIGHEST + 142,
-	ID_SIMULATE, ID_RESULTSPAGE, ID_COLLAPSE,
+	ID_SIMULATE, ID_RESULTSPAGE, ID_COLLAPSE, ID_RESULTS_NOTEBOOK,
 	ID_EXCL_BUTTON, ID_EXCL_OPTION, ID_EXCL_OPTION_MAX=ID_EXCL_OPTION+25 };
 
 BEGIN_EVENT_TABLE( CaseWindow, wxSplitterWindow )
@@ -91,6 +91,7 @@ BEGIN_EVENT_TABLE( CaseWindow, wxSplitterWindow )
 	EVT_BUTTON( ID_EXCL_BUTTON, CaseWindow::OnCommand )
 	EVT_CHECKBOX( ID_COLLAPSE, CaseWindow::OnCommand )
 	EVT_MENU_RANGE( ID_EXCL_OPTION, ID_EXCL_OPTION_MAX, CaseWindow::OnCommand )
+	EVT_BUTTON( ID_RESULTS_NOTEBOOK, CaseWindow::OnCommand )
 END_EVENT_TABLE()
 
 CaseWindow::CaseWindow( wxWindow *parent, Case *c )
@@ -142,10 +143,11 @@ CaseWindow::CaseWindow( wxWindow *parent, Case *c )
 	ip_sizer->Add( m_inputPageScrollWin, 1, wxALL|wxEXPAND, 0 );
 	m_inputPagePanel->SetSizer( ip_sizer );
 
-	m_resultsTab = new wxMetroNotebook( m_pageFlipper, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxMT_LIGHTTHEME );
+	m_resultsTab = new wxMetroNotebook( m_pageFlipper, ID_RESULTS_NOTEBOOK, 
+		wxDefaultPosition, wxDefaultSize, wxMT_LIGHTTHEME );
 	
 	m_baseCaseResults = new ResultsViewer( m_resultsTab);
-	m_resultsTab->AddPage( m_baseCaseResults, "Base Case", true );
+	m_resultsTab->AddPage( m_baseCaseResults, "Base Case", true, true );
 
 	wxPanel *param_panel = new wxPanel( m_resultsTab );
 
@@ -360,6 +362,10 @@ void CaseWindow::OnCommand( wxCommandEvent &evt )
 		}
 		else
 			wxShowTextMessageDialog( wxJoin(m_baseCaseSimulation->GetErrors(), '\n') );
+	}
+	else if ( evt.GetId() == ID_RESULTS_NOTEBOOK && evt.GetEventType() == wxEVT_BUTTON )
+	{
+		m_baseCaseResults->ShowMenu( m_resultsTab->GetPopupMenuPosition(0) );
 	}
 	else if (evt.GetId() == ID_RESULTSPAGE )
 	{
