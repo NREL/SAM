@@ -115,9 +115,9 @@ private:
 !    36+) User specified (lookup tables)
 */
 
-double FluidDensity(int flnum, double Tc);
-double FluidCp(int flnum, double Tc);
-wxString FluidName(int flnum);
+wxString substance_flname(int flnum);
+double substance_dens(int flnum, double Tc);
+double substance_sph(int flnum, double Tc);
 
 
 #endif

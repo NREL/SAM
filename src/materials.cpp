@@ -512,7 +512,7 @@ density = Dens_fluid((T-273.15),int(Fnumd)) !Trough calcs take fluid properties 
 		density = std::max(density, 100.0);
 		break;
 	case 24: //   24.) Dowtherm RP** type 805 dens_Dowtherm_RP(Tc)
-		density = -0.000186495 * Tc*Tc - 0.668337 * T + 1042.11;
+		density = -0.000186495 * Tc*Tc - 0.668337 * Tc + 1042.11;
 		density = std::max(density, 200.0);
 		break;
 	case 25: //   25.) Salt XL** type 805 dens_salt_xl(Tc)
