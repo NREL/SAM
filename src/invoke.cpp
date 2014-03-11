@@ -12,10 +12,6 @@
 
 #include "invoke.h"
 
-#ifndef MAX
-#define MAX(a, b) ((a) > (b) ? a : b)
-#endif
-
 static void fcall_dview(lk::invoke_t &cxt)
 {
 	LK_DOC("dview", "Creates a separate dview viewer for viewing specified data.", "( number:num_datasets, , number:timestep, string:window name, string:data_name1, string:data_units1, number:multiplier1, variant:data1, [ string:data_name2, string:data_units2, number:multiplier2, variant:data2], ...):none");
@@ -82,7 +78,6 @@ static void fcall_browse( lk::invoke_t &cxt )
 	LK_DOC("browse", "Open a URL, local file, or folder using the default browser.", "(string:url):none");
 	::wxLaunchDefaultBrowser( cxt.arg(0).as_string() );
 }
-
 
 static void fcall_addconfig( lk::invoke_t &cxt )
 {
@@ -287,8 +282,6 @@ static void fcall_setting( lk::invoke_t &cxt )
 	}
 }
 	
-
-
 static void plottarget( CallbackContext &cc, const wxString &name )
 {
 	wxLKSetPlotTarget( 0 );
@@ -735,7 +728,7 @@ void fcall_ssc_exec( lk::invoke_t &cxt )
 	}
 }
 
-static void fcall_substance_density(lk::invoke_t &cxt)
+void fcall_substance_density(lk::invoke_t &cxt)
 {
 	LK_DOC("substance_density", "Return the density given a substance ID and temperature in C", "(variant:substanceID, variant:tempC):variant");
 	size_t substanceID = cxt.arg(0).as_unsigned();
@@ -743,7 +736,7 @@ static void fcall_substance_density(lk::invoke_t &cxt)
 	cxt.result().assign(substance_dens(substanceID, tempC));
 }
 
-static void fcall_substance_specific_heat(lk::invoke_t &cxt)
+void fcall_substance_specific_heat(lk::invoke_t &cxt)
 {
 	LK_DOC("substance_specific_heat", "Return the specific heat given a substance ID and temperature in C", "(variant:substanceID, variant:tempC):variant");
 	size_t substanceID = cxt.arg(0).as_unsigned();
