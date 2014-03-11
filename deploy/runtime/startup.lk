@@ -15,8 +15,8 @@ function setup_pvwatts_pages()
 	addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource' } );
 	addpage( [[ 'PVWatts' ]], { 'sidebar'='System Design', 'help'='PVWatts' } );
 	
-	metric( 'solrad_annual', {'label'='Average Radiation', 'post'=' kWh/m2/day' } );
-	metric( 'ac_annual', {'label'='AC Energy', 'post'=' kWh' } );
+//	metric( 'solrad_annual', {'label'='Average Radiation', 'post'=' kWh/m2/day' } );
+//	metric( 'ac_annual', {'label'='AC Energy', 'post'=' kWh' } );
 	metric( 'annual_energy', {'label'='Net Annual Energy', 'post'=' kWh' } );
 	
 }
@@ -90,16 +90,19 @@ function setup_independent_power_producer_pages()
 				{'name'='Tax Credits', 'collapsible'=true, 'collapsible_var'='show_tax_credits', 'collapsed_by_default'=false},
 				{'name'='Incentives', 'collapsible'=true, 'collapsible_var'='show_incentives'} ]], { 'sidebar'='Financing', 'help'='Financing Commercial' } );
 	addpage( [[ 'Energy Payment Dispatch' ]], { 'sidebar'='Payment Allocation Factors' });
-	metric( 'lcoe_real', {'label'='Real LCOE', 'post'=' $/kWh' } );
-	metric( 'lcoe_nom', {'label'='Nominal LCOE', 'post'=' $/kWh' } );
-	metric( 'lppa_real', {'label'='Real LPPA', 'post'=' $/kWh' } );
-	metric( 'lppa_nom', {'label'='Nominal LPPA', 'post'=' $/kWh' } );
-	metric( 'ppa', {'label'='PPA Price', 'post'=' $/kWh' } );
+	metric( 'ppa', {'label'='PPA Price', 'post'=' _/kWh' } );
+	metric( 'lcoe_nom', {'label'='Nominal LCOE', 'post'=' _/kWh' } );
+	metric( 'lcoe_real', {'label'='Real LCOE', 'post'=' _/kWh' } );
+	metric( 'lppa_nom', {'label'='Nominal LPPA', 'post'=' _/kWh' } );
+	metric( 'lppa_real', {'label'='Real LPPA', 'post'=' _/kWh' } );
 	metric( 'irr', {'label'='Internal Rate of Return', 'post'=' %' } );
 	metric( 'min_dscr', {'label'='Minimum DSCR' } );
-	metric( 'min_cashflow', {'label'='Minimum Cash Flow' } );
-	metric( 'actual_debt_frac', {'label'='Calculated debt fraction', 'post = %' } );
+	metric( 'npv', {'label'='Net present value' } );
 	metric( 'actual_ppa_escalation', {'label'='Calculated PPA escalation', 'post = %' } );
+	metric( 'actual_debt_frac', {'label'='Calculated debt fraction', 'post = %' } );
+	metric( 'min_cashflow', {'label'='Minimum Cash Flow' } );
+	metric( 'sv_capacity_factor', {'label' = 'Capacity factor', 'post = %' } );
+	metric( 'sv_kwh_per_kw', {'label' = 'First year kWhac/kWdc' } );
 }
 
 function setup_windpower_pages()
