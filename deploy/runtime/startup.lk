@@ -129,6 +129,7 @@ function setup_solar_water_heating_pages()
 function setup_csp_physical_trough_pages()
 {
 	addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource' } );
+	addpage( [[ 'Physical Trough Solar Field' ]], { 'sidebar'='Solar Field' } );
 	addpage( [[ 'Physical Trough Collector Header',
 	 {'name'='Physical Trough Collector Type 1', 'caption'='Collector Type 1', 'collapsible'=true, 'collapsible_var'='sca_1_is_shown'},
 	 {'name'='Physical Trough Collector Type 2', 'caption'='Collector Type 2', 'collapsible'=true, 'collapsible_var'='sca_2_is_shown'},
@@ -144,7 +145,6 @@ function setup_csp_physical_trough_pages()
 	addpage( [[ 'Physical Trough Power Block' ]], { 'sidebar'='Power Cycle' } );
 	addpage( [[ 'Physical Trough Thermal Storage' ]], { 'sidebar'='Thermal Storage' } );
 	addpage( [[ 'Physical Trough Parasitics' ]], { 'sidebar'='Parasitics' } );
-	addpage( [[ 'Physical Trough Solar Field' ]], { 'sidebar'='Solar Field' } );
 }
 
 // setup cashflow tables////////////////////////////////////////////////////////
