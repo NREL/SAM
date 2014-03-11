@@ -1,3 +1,4 @@
+#include <algorithm>
 #include <wx/log.h>
 
 #include <wex/plot/plplotctrl.h>
@@ -802,7 +803,7 @@ void fcall_current_at_voltage_cec(lk::invoke_t &cxt)
 			exp((Vmodule + Iold * RS) / A_ref) -
 			(RS / RSH_ref);
 
-		Inew = MAX(0.0, (Iold - (F / Fprime)));
+		Inew = std::max(0.0, (Iold - (F / Fprime)));
 	}
 
 	cxt.result().assign(Inew);
