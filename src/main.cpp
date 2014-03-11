@@ -261,8 +261,8 @@ void MainWindow::CreateNewCase( const wxString &_name, wxString tech, wxString f
 
 
 	Case *c = m_project.AddCase( GetUniqueCaseName(_name ) );
-	c->LoadDefaults();
 	c->SetConfiguration( tech, fin );
+	c->LoadDefaults();
 	CreateCaseWindow( c );
 }
 
@@ -661,14 +661,14 @@ void MainWindow::OnCaseMenu( wxCommandEvent &evt )
 		break;
 	case ID_CASE_RESET_DEFAULTS:
 		{
+			// load default values from config from disk
 			c->LoadDefaults();
-			// update calculated values and ui
+			
+			// update calculated values
 			c->RecalculateAll();
-			// update UI
-			wxString tech, fin;
-			c->GetConfiguration(&tech, &fin);
-			c->SendEvent(CaseEvent(CaseEvent::CONFIG_CHANGED, tech, fin));
 
+			// update ui
+			c->SendEvent( CaseEvent( CaseEvent::VARS_CHANGED, c->Values().ListAll() ) );
 		}
 		break;
 	};
