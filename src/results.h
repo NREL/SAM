@@ -1,7 +1,7 @@
 #ifndef __ResultsViewer_h
 #define __ResultsViewer_h
 
-#include <wx/simplebook.h>
+#include <wex/metro.h>
 #include <wex/exttree.h>
 
 #include "object.h"
@@ -29,7 +29,7 @@ class wxDVTimeSeriesDataSet;
 class ConfigInfo;
 class VarTable;
 
-class ResultsViewer : public wxSimplebook
+class ResultsViewer : public wxMetroNotebook
 {
 public:
 	ResultsViewer( wxWindow *parent );
@@ -40,8 +40,6 @@ public:
 
 	void SavePerspective( StringHash &map );
 	void LoadPerspective( StringHash &map );
-	
-	void ShowMenu( wxPoint pos );
 
 private:
 	void OnCommand( wxCommandEvent & );
@@ -54,7 +52,9 @@ private:
 	wxExtGridCtrl *m_cashFlow;
 	
 	std::vector<wxDVTimeSeriesDataSet*> m_tsDataSets;
-	wxDVTimeSeriesCtrl *m_timeSeries;
+	wxDVTimeSeriesCtrl *m_hourlySeries;
+	wxDVTimeSeriesCtrl *m_dailySeries;
+	wxDVTimeSeriesCtrl *m_monthlySeries;
 	wxDVDMapCtrl *m_dMap;
 	wxDVProfileCtrl *m_profilePlots;
 	wxDVPnCdfCtrl *m_pnCdf;

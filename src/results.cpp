@@ -23,16 +23,14 @@
 #include "simulation.h"
 #include "results.h"
 
-enum { ID_RESULTS_PAGE=wxID_HIGHEST+458,ID_RESULTS_PAGE_MAX=ID_RESULTS_PAGE+25 };
 
-
-BEGIN_EVENT_TABLE( ResultsViewer, wxSimplebook )	
-	EVT_MENU_RANGE( ID_RESULTS_PAGE, ID_RESULTS_PAGE_MAX, ResultsViewer::OnCommand )
+BEGIN_EVENT_TABLE( ResultsViewer, wxMetroNotebook )	
+//	EVT_MENU_RANGE( ID_RESULTS_PAGE, ID_RESULTS_PAGE_MAX, ResultsViewer::OnCommand )
 END_EVENT_TABLE()
 
 
 ResultsViewer::ResultsViewer( wxWindow *parent )
-	: wxSimplebook( parent, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxBORDER_NONE ),
+	: wxMetroNotebook( parent, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxMT_LIGHTTHEME ),
 	 m_cfg( 0 ),
 	 m_results( 0 )
 {
@@ -53,11 +51,13 @@ ResultsViewer::ResultsViewer( wxWindow *parent )
 	summary_sizer->Add( m_metrics, 0, wxALL, 30 );
 	summary_panel->SetSizer( summary_sizer );
 	
+	AddPage( new wxPanel( this ), "Graphs" );
+
 	m_tables = new TabularBrowser( this );
-	AddPage( m_tables, "Tables" );
+	AddPage( m_tables, "Data" );
 	
 	wxPanel *cf_panel = new wxPanel( this );
-	AddPage( cf_panel, "Cash Flow" );
+	AddPage( cf_panel, "Cash flow" );
 	m_cashFlow = new wxExtGridCtrl( cf_panel, wxID_ANY );
 	m_cashFlow->SetFont( *wxNORMAL_FONT );
 	m_cashFlow->CreateGrid(1,1);
@@ -82,23 +82,29 @@ ResultsViewer::ResultsViewer( wxWindow *parent )
 	cf_sizer->Add( m_cashFlow, 1, wxALL|wxEXPAND, 0 );
 	cf_panel->SetSizer(cf_sizer);
 	
-	m_timeSeries = new wxDVTimeSeriesCtrl( this, wxID_ANY,  HOURLY_TIME_SERIES, AVERAGE );
-	AddPage( m_timeSeries, "Time Series" );
+	m_hourlySeries = new wxDVTimeSeriesCtrl( this, wxID_ANY,  HOURLY_TIME_SERIES, AVERAGE );
+	AddPage( m_hourlySeries, "Hourly" );
+
+	m_dailySeries = new wxDVTimeSeriesCtrl( this, wxID_ANY,  DAILY_TIME_SERIES, AVERAGE );
+	AddPage( m_dailySeries, "Daily" );
+	
+	m_monthlySeries = new wxDVTimeSeriesCtrl( this, wxID_ANY,  MONTHLY_TIME_SERIES, AVERAGE );
+	AddPage( m_monthlySeries, "Monthly" );
+	
+	m_profilePlots = new wxDVProfileCtrl( this, wxID_ANY );
+	AddPage( m_profilePlots, "Profiles" );
 
 	m_dMap = new wxDVDMapCtrl( this, wxID_ANY );
-	AddPage( m_dMap, "Heat Map" );
-
-	m_profilePlots = new wxDVProfileCtrl( this, wxID_ANY );
-	AddPage( m_profilePlots, "Profile Plots" );
-	
+	AddPage( m_dMap, "Heat map" );
+		
 	m_scatterPlot = new wxDVScatterPlotCtrl( this, wxID_ANY );
-	AddPage( m_scatterPlot, "Scatter Plots" );
+	AddPage( m_scatterPlot, "Scatter" );
 
 	m_pnCdf = new wxDVPnCdfCtrl( this, wxID_ANY );
-	AddPage( m_pnCdf, "Histograms" );
+	AddPage( m_pnCdf, "PDF / CDF" );
 	
 	m_durationCurve = new wxDVDCCtrl( this, wxID_ANY );
-	AddPage( m_durationCurve, "Duration Curve" );
+	AddPage( m_durationCurve, "Duration curve" );
 
 }
 
@@ -106,16 +112,6 @@ ResultsViewer::~ResultsViewer()
 {
 	for( size_t i=0;m_tsDataSets.size();i++ )
 		delete m_tsDataSets[i];
-}
-
-
-void ResultsViewer::ShowMenu( wxPoint pos )
-{
-	wxMetroPopupMenu menu( wxMT_LIGHTTHEME );
-	menu.SetFont( wxMetroTheme::Font( wxMT_NORMAL, 15 ) );
-	for( size_t i=0;i<GetPageCount();i++ )
-		menu.Append( ID_RESULTS_PAGE+i,GetPageText(i));
-	menu.Popup( this, pos );
 }
 
 class TimeSeries8760 : public wxDVTimeSeriesDataSet
@@ -328,7 +324,9 @@ void ResultsViewer::AddDataSet(wxDVTimeSeriesDataSet *d, const wxString& group, 
 	//Take ownership of the data Set.  We will delete it on destruction.
 	m_tsDataSets.push_back(d);
 
-	m_timeSeries->AddDataSet(d, group, update_ui);
+	m_hourlySeries->AddDataSet(d, group, update_ui);
+	m_dailySeries->AddDataSet(d, group, update_ui);
+	m_monthlySeries->AddDataSet(d, group, update_ui);
 	m_dMap->AddDataSet(d, group, update_ui);
 	m_profilePlots->AddDataSet(d, group, update_ui);
 	m_pnCdf->AddDataSet(d, group, update_ui); 
@@ -338,7 +336,9 @@ void ResultsViewer::AddDataSet(wxDVTimeSeriesDataSet *d, const wxString& group, 
 
 void ResultsViewer::RemoveAllDataSets()
 {
-	m_timeSeries->RemoveAllDataSets();
+	m_hourlySeries->RemoveAllDataSets();
+	m_dailySeries->RemoveAllDataSets();
+	m_monthlySeries->RemoveAllDataSets();
 	m_dMap->RemoveAllDataSets();
 	m_profilePlots->RemoveAllDataSets();
 	m_pnCdf->RemoveAllDataSets();
@@ -375,13 +375,6 @@ void ResultsViewer::Clear()
 	m_metrics->SetData( metrics );
 
 	RemoveAllDataSets();
-}
-
-void ResultsViewer::OnCommand( wxCommandEvent &evt )
-{
-	int id = evt.GetId();
-	if ( id >= ID_RESULTS_PAGE && id < ID_RESULTS_PAGE_MAX )
-		SetSelection( id - ID_RESULTS_PAGE );
 }
 
 
