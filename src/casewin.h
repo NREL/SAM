@@ -78,7 +78,6 @@ private:
 	wxMetroButton *m_simButton, *m_resultsButton;
 
 	wxSimplebook *m_pageFlipper;
-	wxMetroNotebook *m_resultsTab;
 	Simulation *m_baseCaseSimulation;
 	ResultsViewer *m_baseCaseResults;
 	wxLKScriptCtrl *m_scriptCtrl;
