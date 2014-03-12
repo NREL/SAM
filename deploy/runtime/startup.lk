@@ -7,7 +7,7 @@ addconfig( 'Test Only', [ 'None' ] );
 //addconfig( 'Test Wind BOS', [ 'None' ] );
 addconfig( 'Wind Power', ['Residential', 'Commercial', 'None' ] );
 addconfig( 'Solar Water Heating', ['Residential', 'Commercial', 'None']);
-addconfig( 'Concentrating Solar Power - Physical Trough', ['None']);
+addconfig( 'Concentrating Solar Power - Physical Trough', ['Independent Power Producer','None']);
 
 
 function setup_pvwatts_pages()
@@ -332,12 +332,17 @@ function setup_independent_power_producer_cashflow()
 //setmodules( ['windbos']);
 
 
-//CSP - Physical Trough ////////////////////////////////////////////////////////
-//addconfig( 'Concentrating Solar Power - Physical Trough', ['None']);
+// CSP - Physical Trough ///////////////////////////////////////////////////////
 setconfig( 'Concentrating Solar Power - Physical Trough', 'None' );
 setmodules( ['tcstrough_physical']);
 setup_csp_physical_trough_pages();
 
+setconfig( 'Concentrating Solar Power - Physical Trough', 'Independent Power Producer' );
+setmodules( ['tcstrough_physical']);
+setup_csp_physical_trough_pages();
+addpage( [[ 'Physical Trough Capital Costs','O and M Costs' ]], { 'sidebar'='Capital Costs' } );
+setup_independent_power_producer_pages();
+setup_independent_power_producer_cashflow();
 
 // Flat Plat PV ////////////////////////////////////////////////////////////////
 setconfig( 'Flat Plate PV', 'None' );
