@@ -1285,7 +1285,7 @@ void UIEditorPanel::VarInfoToForm( const wxString &name )
 		m_varFlagCalculated->SetValue( vv->Flags & VF_CALCULATED );
 		m_varFlagLibrary->SetValue( vv->Flags & VF_LIBRARY );
 		
-		m_varDefaultValue->SetValue( vv->DefaultValue.AsString() );
+		m_varDefaultValue->SetValue(vv->DefaultValue.AsString(';') );
 	}
 	else
 	{
