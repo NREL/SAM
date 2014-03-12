@@ -90,11 +90,11 @@ function setup_independent_power_producer_pages()
 				{'name'='Tax Credits', 'collapsible'=true, 'collapsible_var'='show_tax_credits', 'collapsed_by_default'=false},
 				{'name'='Incentives', 'collapsible'=true, 'collapsible_var'='show_incentives'} ]], { 'sidebar'='Financing', 'help'='Financing Commercial' } );
 	addpage( [[ 'Energy Payment Dispatch' ]], { 'sidebar'='Payment Allocation Factors' });
-	metric( 'ppa', {'label'='PPA Price', 'post'=' _/kWh' } );
-	metric( 'lcoe_nom', {'label'='Nominal LCOE', 'post'=' _/kWh' } );
-	metric( 'lcoe_real', {'label'='Real LCOE', 'post'=' _/kWh' } );
-	metric( 'lppa_nom', {'label'='Nominal LPPA', 'post'=' _/kWh' } );
-	metric( 'lppa_real', {'label'='Real LPPA', 'post'=' _/kWh' } );
+	metric( 'ppa', {'label'='PPA Price', 'post'=' \u00A2/kWh' } );
+	metric( 'lcoe_nom', {'label'='Nominal LCOE', 'post'=' \u00A2/kWh' } );
+	metric( 'lcoe_real', {'label'='Real LCOE', 'post'=' \u00A2/kWh' } );
+	metric( 'lppa_nom', {'label'='Nominal LPPA', 'post'=' \u0A2/kWh' } );
+	metric( 'lppa_real', {'label'='Real LPPA', 'post'=' \u00A2/kWh' } );
 //	metric( 'irr', {'label'='Internal Rate of Return', 'post'=' %' } );
 	metric( 'irr_ev', {'label'='IRR (energy value)', 'post'=' %' } );
 	metric( 'irr_eq_cash', {'label'='IRR (equity cash flow)', 'post'=' %' } );
