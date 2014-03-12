@@ -81,17 +81,25 @@ END_EVENT_TABLE()
 
 
 enum { ID_INPUTPAGELIST = wxID_HIGHEST + 142,
-	ID_SIMULATE, ID_RESULTSPAGE, ID_COLLAPSE, ID_RESULTS_NOTEBOOK,
-	ID_EXCL_BUTTON, ID_EXCL_OPTION, ID_EXCL_OPTION_MAX=ID_EXCL_OPTION+25 };
+	ID_SIMULATE, ID_RESULTSPAGE, ID_ADVANCED, ID_PARAMETRICS, ID_SENSITIVITY, ID_P50P90, ID_SCRIPTING,
+	ID_COLLAPSE,ID_EXCL_BUTTON, ID_EXCL_OPTION, ID_EXCL_OPTION_MAX=ID_EXCL_OPTION+25 };
 
 BEGIN_EVENT_TABLE( CaseWindow, wxSplitterWindow )
 	EVT_BUTTON( ID_SIMULATE, CaseWindow::OnCommand )
 	EVT_BUTTON( ID_RESULTSPAGE, CaseWindow::OnCommand )
+	EVT_BUTTON( ID_ADVANCED, CaseWindow::OnCommand )
+	EVT_BUTTON( ID_PARAMETRICS, CaseWindow::OnCommand )
+	EVT_BUTTON( ID_SENSITIVITY, CaseWindow::OnCommand )
+	EVT_BUTTON( ID_P50P90, CaseWindow::OnCommand )
+	EVT_BUTTON( ID_SCRIPTING, CaseWindow::OnCommand )
+	EVT_MENU( ID_PARAMETRICS, CaseWindow::OnCommand )
+	EVT_MENU( ID_SENSITIVITY, CaseWindow::OnCommand )
+	EVT_MENU( ID_P50P90, CaseWindow::OnCommand )
+	EVT_MENU( ID_SCRIPTING, CaseWindow::OnCommand )
 	EVT_LISTBOX( ID_INPUTPAGELIST, CaseWindow::OnCommand )
 	EVT_BUTTON( ID_EXCL_BUTTON, CaseWindow::OnCommand )
 	EVT_CHECKBOX( ID_COLLAPSE, CaseWindow::OnCommand )
 	EVT_MENU_RANGE( ID_EXCL_OPTION, ID_EXCL_OPTION_MAX, CaseWindow::OnCommand )
-	EVT_BUTTON( ID_RESULTS_NOTEBOOK, CaseWindow::OnCommand )
 END_EVENT_TABLE()
 
 CaseWindow::CaseWindow( wxWindow *parent, Case *c )
@@ -113,13 +121,25 @@ CaseWindow::CaseWindow( wxWindow *parent, Case *c )
 	m_simButton->SetFont( wxMetroTheme::Font( wxMT_NORMAL, 14) );
 	m_resultsButton = new wxMetroButton( left_panel, ID_RESULTSPAGE, wxEmptyString, wxBITMAP_PNG_FROM_DATA( graph ) );
 
+	wxMetroButton *adv_button = new wxMetroButton( left_panel, ID_ADVANCED, wxEmptyString, wxNullBitmap, wxDefaultPosition, wxDefaultSize, wxMB_UPARROW );
+
+
 	wxBoxSizer *szhl = new wxBoxSizer( wxHORIZONTAL );
 	szhl->Add( m_simButton, 1, wxALL|wxEXPAND, 0 );
 	szhl->Add( m_resultsButton, 0, wxALL|wxEXPAND, 0 );
+	szhl->Add( adv_button, 0, wxALL|wxEXPAND, 0 );
 
 	wxBoxSizer *szvl = new wxBoxSizer( wxVERTICAL );
 	szvl->Add( m_inputPageList, 1, wxALL|wxEXPAND, 0 );
 	szvl->Add( szhl, 0, wxALL|wxEXPAND, 0 );
+	/*
+	wxBoxSizer *szsims = new wxBoxSizer(wxHORIZONTAL);
+	szsims->Add( new wxMetroButton( left_panel, ID_PARAMETRICS, "Parametrics" ), 0, wxALL|wxEXPAND, 0 );
+	szsims->Add( new wxMetroButton( left_panel, ID_SENSITIVITY, "Sensitivity" ), 0, wxALL|wxEXPAND, 0 );
+	szsims->Add( new wxMetroButton( left_panel, ID_P50P90, "P50/P90" ), 0, wxALL|wxEXPAND, 0 );
+	szsims->Add( new wxMetroButton( left_panel, ID_SCRIPTING, "Scripting" ), 0, wxALL|wxEXPAND, 0 );
+	szvl->Add( szsims, 0, wxALL|wxEXPAND, 0 );
+	*/
 
 	left_panel->SetSizer( szvl );
 
@@ -142,14 +162,14 @@ CaseWindow::CaseWindow( wxWindow *parent, Case *c )
 	ip_sizer->Add( m_exclPanel, 0, wxALL|wxEXPAND, 0 );
 	ip_sizer->Add( m_inputPageScrollWin, 1, wxALL|wxEXPAND, 0 );
 	m_inputPagePanel->SetSizer( ip_sizer );
-
-	m_resultsTab = new wxMetroNotebook( m_pageFlipper, ID_RESULTS_NOTEBOOK, 
-		wxDefaultPosition, wxDefaultSize, wxMT_LIGHTTHEME );
 	
-	m_baseCaseResults = new ResultsViewer( m_resultsTab);
-	m_resultsTab->AddPage( m_baseCaseResults, "Base Case", true, true );
+	m_pageFlipper->AddPage( m_inputPagePanel, "Input Pages", true );
 
-	wxPanel *param_panel = new wxPanel( m_resultsTab );
+	
+	m_baseCaseResults = new ResultsViewer( m_pageFlipper );
+	m_pageFlipper->AddPage( m_baseCaseResults, "Base Case", true, true );
+
+	wxPanel *param_panel = new wxPanel( m_pageFlipper );
 
 	wxBoxSizer *par_sizer = new wxBoxSizer( wxHORIZONTAL );
 	par_sizer->Add( new wxButton( param_panel, wxID_ANY, "Configure..."), 0, wxALL|wxEXPAND, 2 );
@@ -210,15 +230,13 @@ CaseWindow::CaseWindow( wxWindow *parent, Case *c )
 
 	param_panel->SetSizer( par_vsizer );
 
-	m_resultsTab->AddPage( param_panel, "Parametric", false );
-	m_resultsTab->AddPage( new wxPanel( m_resultsTab ), "Sensitivity", false );
-	m_resultsTab->AddPage( new wxPanel( m_resultsTab ), "P50/P90", false );
+	m_pageFlipper->AddPage( param_panel, "Parametric", false );
+	m_pageFlipper->AddPage( new wxPanel( m_pageFlipper ), "Sensitivity", false );
+	m_pageFlipper->AddPage( new wxPanel( m_pageFlipper ), "P50/P90", false );
 
-	m_scriptCtrl = new wxLKScriptCtrl( m_resultsTab, wxID_ANY );
-	m_resultsTab->AddPage( m_scriptCtrl, "Scripting", false );
+	m_scriptCtrl = new wxLKScriptCtrl( m_pageFlipper, wxID_ANY );
+	m_pageFlipper->AddPage( m_scriptCtrl, "Scripting", false );
 
-	m_pageFlipper->AddPage( m_inputPagePanel, "Input Pages", true );
-	m_pageFlipper->AddPage( m_resultsTab, "Output Pages", false );
 
 	SplitVertically( left_panel, m_pageFlipper, 210 );
 	
@@ -358,19 +376,51 @@ void CaseWindow::OnCommand( wxCommandEvent &evt )
 		{
 			m_baseCaseResults->Setup( m_case->GetConfiguration(), m_baseCaseSimulation );
 			m_pageFlipper->SetSelection( 1 );
-			m_resultsTab->SetSelection( 0 ); // show base case
 		}
 		else
 			wxShowTextMessageDialog( wxJoin(m_baseCaseSimulation->GetErrors(), '\n') );
-	}
-	else if ( evt.GetId() == ID_RESULTS_NOTEBOOK && evt.GetEventType() == wxEVT_BUTTON )
-	{
-		m_baseCaseResults->ShowMenu( m_resultsTab->GetPopupMenuPosition(0) );
 	}
 	else if (evt.GetId() == ID_RESULTSPAGE )
 	{
 		m_inputPageList->Select( -1 );
 		m_pageFlipper->SetSelection( 1 );
+	}
+	else if ( evt.GetId() == ID_ADVANCED )
+	{
+		wxPoint pos(wxDefaultPosition);
+		if ( wxWindow *win = dynamic_cast<wxWindow*>(evt.GetEventObject()) )
+		{
+			pos = win->GetScreenPosition();
+			pos.x += win->GetClientSize().x;
+		}
+
+		wxMetroPopupMenu menu;
+		menu.Append( ID_PARAMETRICS, "Parametrics" );
+		menu.Append( ID_SENSITIVITY, "Sensitivity" );
+		menu.Append( ID_P50P90, "P50 / P90" );
+		menu.Append( ID_SCRIPTING, "Scripting" );
+		
+		menu.Popup( this, pos, wxBOTTOM|wxRIGHT );
+	}
+	else if ( evt.GetId() == ID_PARAMETRICS )
+	{
+		m_inputPageList->Select( -1 );
+		m_pageFlipper->SetSelection( 2 );
+	}
+	else if ( evt.GetId() == ID_SENSITIVITY )
+	{
+		m_inputPageList->Select( -1 );
+		m_pageFlipper->SetSelection( 3 );
+	}
+	else if ( evt.GetId() == ID_P50P90 )
+	{
+		m_inputPageList->Select( -1 );
+		m_pageFlipper->SetSelection( 4 );
+	}
+	else if ( evt.GetId() == ID_SCRIPTING )
+	{
+		m_inputPageList->Select( -1 );
+		m_pageFlipper->SetSelection( 5 );
 	}
 	else if ( evt.GetId() == ID_INPUTPAGELIST )
 	{
@@ -805,45 +855,30 @@ wxString CaseWindow::GetCurrentContext()
 	m_case->GetConfiguration( &tech, &fin );
 	int page = m_pageFlipper->GetSelection();
 
-	if (page == 0)
+	switch( page )
 	{
+	case 0: // inputs page
 		if ( m_currentGroup ) id = m_currentGroup->HelpContext;
 		else id = "Inputs";
-	}
-	else if (page == 1)
-	{
-		int respage = m_resultsTab->GetSelection();
-		switch(respage)
-		{
-		case 0: id = "Base Case"; break;			
-		case 1: id = "Parametrics"; break;
-		case 2: 
-			{
-				if (fin=="Residential") 
-					id="Cash Flow Residential";
-				else if (fin=="Commercial") 
-					id="Cash Flow Commercial";
-				else if (fin=="Commercial PPA") 
-					id="Cash Flow Commercial PPA";
-				else if (fin=="Independent Power Producer") 
-					id="Cash Flow Utility IPP";
-				else if (fin=="Single Owner") 
-					id="Cash Flow Utility SO";
-				else if (fin=="All Equity Partnership Flip") 
-					id="Cash Flow Utility AEPF";
-				else if (fin=="Leveraged Partnership Flip") 
-					id="Cash Flow Utility LPF";
-				else if (fin=="Sale Leaseback") 
-					id="Cash Flow Utility SL";
-				else
-					id = "Base Case Cashflow"; 
-				break;
-			}
-
-		case 3: id = "Monte Carlo"; break;		
-		case 4: id = "Scripting"; break;
-		default: id = "Results";
-		}
+		break;
+	case 1: // base case results
+		id = "Base Case Results";
+		break;
+	case 2: // parametrics
+		id = "Parametrics";
+		break;
+	case 3:
+		id = "Sensitivity";
+		break;
+	case 4:
+		id = "P50/P90";
+		break;
+	case 5:
+		id = "Scripting";
+		break;
+	default:
+		id = "Results";
+		break;
 	}
 
 	return id;
