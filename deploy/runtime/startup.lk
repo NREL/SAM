@@ -323,8 +323,8 @@ function setup_independent_power_producer_cashflow()
 
 
 ///////////////// Test pages ///////////////////////////////////////////////////
-setconfig( 'Test Only', 'None' );
-addpage( [[ 'Test 1' ]] );
+//setconfig( 'Test Only', 'None' );
+//addpage( [[ 'Test 1' ]] );
 //addpage( [[ 'Location' ]] );
 
 //setconfig( 'Test Wind BOS', 'None' );
@@ -333,6 +333,7 @@ addpage( [[ 'Test 1' ]] );
 
 
 //CSP - Physical Trough ////////////////////////////////////////////////////////
+//addconfig( 'Concentrating Solar Power - Physical Trough', ['None']);
 setconfig( 'Concentrating Solar Power - Physical Trough', 'None' );
 setmodules( ['tcstrough_physical']);
 setup_csp_physical_trough_pages();
