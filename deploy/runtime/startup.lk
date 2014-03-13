@@ -1,7 +1,8 @@
 // SAM startup script.
 
 // define all the configurations
-addconfig( 'PVWatts', [ 'Residential', 'Commercial', 'Independent Power Producer', 'None' ] );
+addconfig( 'PVWatts', [ 'Residential', 'Commercial', 'Commercial PPA', 'Independent Power Producer',
+ 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'Single Owner', 'None' ] );
 addconfig( 'Flat Plate PV', ['Residential', 'Commercial', 'None'] );
 addconfig( 'Test Only', [ 'None' ] );
 //addconfig( 'Test Wind BOS', [ 'None' ] );
@@ -69,7 +70,8 @@ function setup_commercial_pages()
 				{'name'='Financing', 'collapsible'=true,'collapsible_var'='show_financing'},
 				{'name'='Depreciation', 'collapsible'=true,'collapsible_var'='show_depreciation'},
 				{'name'='Tax Credits', 'collapsible'=true, 'collapsible_var'='show_tax_credits', 'collapsed_by_default'=false},
-				{'name'='Incentives', 'collapsible'=true, 'collapsible_var'='show_incentives'} ]], { 'sidebar'='Financing', 'help'='Financing Commercial' } );
+				{'name'='Incentives', 'collapsible'=true, 'collapsible_var'='show_incentives'} ]], 
+				{ 'sidebar'='Financing', 'help'='Financing Commercial' } );
 	
 	setup_utility_rate();
 	
@@ -78,16 +80,16 @@ function setup_commercial_pages()
 	metric( 'lcoe_nom', {'label'='Nominal LCOE', 'post'=' $/kWh' } );
 }
 
-function setup_independent_power_producer_pages()
+function setup_commercial_ppa_pages()
 {
 	addpage( [[ 'Degradation' ]] );
-	addpage( [[ 'Utility IPP Financing',
+	addpage( [[ 'Commercial PPA Financing',
 				{'name'='Financing', 'collapsible'=true,'collapsible_var'='show_financing'},
-				{'name'='Construction Period', 'collapsible'=true,'collapsible_var'='show_construction_period'},
-				{'name'='Depreciation', 'collapsible'=true,'collapsible_var'='show_depreciation'},
-				{'name'='Tax Credits', 'collapsible'=true, 'collapsible_var'='show_tax_credits', 'collapsed_by_default'=false},
-				{'name'='Incentives', 'collapsible'=true, 'collapsible_var'='show_incentives'} ]], { 'sidebar'='Financing', 'help'='Financing Commercial' } );
-	addpage( [[ 'Energy Payment Dispatch' ]], { 'sidebar'='Payment Allocation Factors' });
+				{'name'='Construction Period', 'collapsible'=true,'collapsible_var'='show_construction_period'} ]], 
+				{ 'sidebar'='Financing', 'help'='FinancingCommercial PPA' }  );
+	addpage ( [[ 'Tax Credits','Incentives']],
+				{ 'sidebar'='Incentives', 'help'='Incentives' } );					
+	addpage ( [['Depreciation' ]]);
 
 	metric( 'lcoe_nom', {'label'='LCOE (Nominal)', 'post'=' \u00A2/kWh', 'mode'='f', 'deci'='2' } );
 	metric( 'lcoe_real', {'label'='LCOE (Real)', 'post'=' \u00A2/kWh', 'mode'='f', 'deci'='2' } );
@@ -101,6 +103,146 @@ function setup_independent_power_producer_pages()
 	metric( 'actual_debt_frac', {'label'='Debt Fraction', 'post'=' %', 'mode'='f', 'deci'='2' } );
 	metric( 'min_cashflow', {'label'='Minimum Cash Flow (After Tax)', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
 }
+
+
+function setup_independent_power_producer_pages()
+{
+	addpage( [[ 'Degradation' ]] );
+	addpage( [[ 'Utility IPP Financing',
+				{'name'='Financing', 'collapsible'=true,'collapsible_var'='show_financing'},
+				{'name'='Construction Period', 'collapsible'=true,'collapsible_var'='show_construction_period'} ]], 
+				{ 'sidebar'='Financing', 'help'='Financing Independent Power Producer' }  );
+	addpage( [[ 'Energy Payment Dispatch' ]], { 'sidebar'='Time of Delivery Factors' });
+	addpage ( [[ 'Tax Credits','Incentives']],
+				{ 'sidebar'='Incentives', 'help'='Incentives' } );					
+	addpage ( [['Depreciation' ]]);
+
+	metric( 'lcoe_nom', {'label'='LCOE (Nominal)', 'post'=' \u00A2/kWh', 'mode'='f', 'deci'='2' } );
+	metric( 'lcoe_real', {'label'='LCOE (Real)', 'post'=' \u00A2/kWh', 'mode'='f', 'deci'='2' } );
+	metric( 'ppa', {'label'='PPA Price (Year 1)', 'post'= ' \u00A2/kWh', 'mode'='f', 'deci'='2' } );
+	metric( 'actual_ppa_escalation', {'label'='PPA Price Escalation', 'mode'='f', 'post'=' %', 'deci'='2' } );
+	metric( 'lppa_nom', {'label'='Levelized PPA Price (Nominal)', 'mode'='f', 'post'=' \u0A2/kWh', 'deci'='2' } );
+	metric( 'lppa_real', {'label'='Levelized PPA Price (Real)', 'mode'='f', 'post'=' \u00A2/kWh', 'deci'='2' } );
+	metric( 'irr', {'label'='Internal Rate of Return', 'mode'='f', 'post'=' %', 'deci'='2' } );
+	metric( 'npv', {'label'='Net Present Value', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
+	metric( 'min_dscr', {'label'='Minimum DSCR', 'mode'='f', 'deci'='2' } );
+	metric( 'actual_debt_frac', {'label'='Debt Fraction', 'post'=' %', 'mode'='f', 'deci'='2' } );
+	metric( 'min_cashflow', {'label'='Minimum Cash Flow (After Tax)', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
+}
+
+
+function setup_leveraged_partnership_flip_pages()
+{
+	addpage( [[ 'Degradation' ]] );
+	addpage( [[ 'FlipModel', 'TaxInvestor', 'ConstantDSCRDebt',
+				{'name'='Financing', 'collapsible'=true,'collapsible_var'='show_financing'},
+				{'name'='Construction Period', 'collapsible'=true,'collapsible_var'='show_construction_period'},
+				{'name'='CapitalCost', 'collapsible'=true,'collapsible_var'='show_CapitalCost'},
+				{'name'='ReserveAccounts', 'collapsible'=true,'collapsible_var'='show_ReserveAccounts'}
+				 ]], 
+				{ 'sidebar'='Financing', 'help'='Financing Leveraged Partnership Flip' }  );
+	addpage( [[ 'Energy Payment Dispatch' ]], { 'sidebar'='Time of Delivery Factors' });
+	addpage ( [[ 'Tax Credits','Incentives']],
+				{ 'sidebar'='Incentives', 'help'='Incentives' } );					
+	addpage ( [['DHFDepreciation' ]], { 'sidebar'='Depreciation' });
+
+	metric( 'lcoe_nom', {'label'='LCOE (Nominal)', 'post'=' \u00A2/kWh', 'mode'='f', 'deci'='2' } );
+	metric( 'lcoe_real', {'label'='LCOE (Real)', 'post'=' \u00A2/kWh', 'mode'='f', 'deci'='2' } );
+	metric( 'ppa', {'label'='PPA Price (Year 1)', 'post'= ' \u00A2/kWh', 'mode'='f', 'deci'='2' } );
+	metric( 'actual_ppa_escalation', {'label'='PPA Price Escalation', 'mode'='f', 'post'=' %', 'deci'='2' } );
+	metric( 'lppa_nom', {'label'='Levelized PPA Price (Nominal)', 'mode'='f', 'post'=' \u0A2/kWh', 'deci'='2' } );
+	metric( 'lppa_real', {'label'='Levelized PPA Price (Real)', 'mode'='f', 'post'=' \u00A2/kWh', 'deci'='2' } );
+	metric( 'irr', {'label'='Internal Rate of Return', 'mode'='f', 'post'=' %', 'deci'='2' } );
+	metric( 'npv', {'label'='Net Present Value', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
+	metric( 'min_dscr', {'label'='Minimum DSCR', 'mode'='f', 'deci'='2' } );
+	metric( 'actual_debt_frac', {'label'='Debt Fraction', 'post'=' %', 'mode'='f', 'deci'='2' } );
+	metric( 'min_cashflow', {'label'='Minimum Cash Flow (After Tax)', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
+}
+
+function setup_all_equity_partnership_flip_pages()
+{
+	addpage( [[ 'Degradation' ]] );
+	addpage( [[ 'FlipModel', 'TaxInvestor', 'CapitalRecovery',
+				{'name'='Financing', 'collapsible'=true,'collapsible_var'='show_financing'},
+				{'name'='Construction Period', 'collapsible'=true,'collapsible_var'='show_construction_period'},
+				{'name'='CapitalCost', 'collapsible'=true,'collapsible_var'='show_CapitalCost'},
+				{'name'='ReserveAccounts', 'collapsible'=true,'collapsible_var'='show_ReserveAccounts'}
+				 ]], 
+				{ 'sidebar'='Financing', 'help'='Financing All Equity Partnership Flip' }  );
+	addpage( [[ 'Energy Payment Dispatch' ]], { 'sidebar'='Time of Delivery Factors' });
+	addpage ( [[ 'Tax Credits','Incentives']],
+				{ 'sidebar'='Incentives', 'help'='Incentives' } );					
+	addpage ( [['DHFDepreciation' ]], { 'sidebar'='Depreciation' });
+
+	metric( 'lcoe_nom', {'label'='LCOE (Nominal)', 'post'=' \u00A2/kWh', 'mode'='f', 'deci'='2' } );
+	metric( 'lcoe_real', {'label'='LCOE (Real)', 'post'=' \u00A2/kWh', 'mode'='f', 'deci'='2' } );
+	metric( 'ppa', {'label'='PPA Price (Year 1)', 'post'= ' \u00A2/kWh', 'mode'='f', 'deci'='2' } );
+	metric( 'actual_ppa_escalation', {'label'='PPA Price Escalation', 'mode'='f', 'post'=' %', 'deci'='2' } );
+	metric( 'lppa_nom', {'label'='Levelized PPA Price (Nominal)', 'mode'='f', 'post'=' \u0A2/kWh', 'deci'='2' } );
+	metric( 'lppa_real', {'label'='Levelized PPA Price (Real)', 'mode'='f', 'post'=' \u00A2/kWh', 'deci'='2' } );
+	metric( 'irr', {'label'='Internal Rate of Return', 'mode'='f', 'post'=' %', 'deci'='2' } );
+	metric( 'npv', {'label'='Net Present Value', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
+	metric( 'min_dscr', {'label'='Minimum DSCR', 'mode'='f', 'deci'='2' } );
+	metric( 'actual_debt_frac', {'label'='Debt Fraction', 'post'=' %', 'mode'='f', 'deci'='2' } );
+	metric( 'min_cashflow', {'label'='Minimum Cash Flow (After Tax)', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
+}
+
+function setup_all_equity_sale_leaseback_pages()
+{
+	addpage( [[ 'Degradation' ]] );
+	addpage( [[ 'FlipModel', 'SaleLeaseback', 
+				{'name'='Financing', 'collapsible'=true,'collapsible_var'='show_financing'},
+				{'name'='Construction Period', 'collapsible'=true,'collapsible_var'='show_construction_period'},
+				{'name'='CapitalCost', 'collapsible'=true,'collapsible_var'='show_CapitalCost'},
+				{'name'='ReserveAccounts', 'collapsible'=true,'collapsible_var'='show_ReserveAccounts'}
+				 ]], 
+				{ 'sidebar'='Financing', 'help'='Financing Sale Leaseback' }  );
+	addpage( [[ 'Energy Payment Dispatch' ]], { 'sidebar'='Time of Delivery Factors' });
+	addpage ( [[ 'Tax Credits','Incentives']],
+				{ 'sidebar'='Incentives', 'help'='Incentives' } );					
+	addpage ( [['DHFDepreciation' ]], { 'sidebar'='Depreciation' });
+
+	metric( 'lcoe_nom', {'label'='LCOE (Nominal)', 'post'=' \u00A2/kWh', 'mode'='f', 'deci'='2' } );
+	metric( 'lcoe_real', {'label'='LCOE (Real)', 'post'=' \u00A2/kWh', 'mode'='f', 'deci'='2' } );
+	metric( 'ppa', {'label'='PPA Price (Year 1)', 'post'= ' \u00A2/kWh', 'mode'='f', 'deci'='2' } );
+	metric( 'actual_ppa_escalation', {'label'='PPA Price Escalation', 'mode'='f', 'post'=' %', 'deci'='2' } );
+	metric( 'lppa_nom', {'label'='Levelized PPA Price (Nominal)', 'mode'='f', 'post'=' \u0A2/kWh', 'deci'='2' } );
+	metric( 'lppa_real', {'label'='Levelized PPA Price (Real)', 'mode'='f', 'post'=' \u00A2/kWh', 'deci'='2' } );
+	metric( 'irr', {'label'='Internal Rate of Return', 'mode'='f', 'post'=' %', 'deci'='2' } );
+	metric( 'npv', {'label'='Net Present Value', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
+	metric( 'min_dscr', {'label'='Minimum DSCR', 'mode'='f', 'deci'='2' } );
+	metric( 'actual_debt_frac', {'label'='Debt Fraction', 'post'=' %', 'mode'='f', 'deci'='2' } );
+	metric( 'min_cashflow', {'label'='Minimum Cash Flow (After Tax)', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
+}
+
+function setup_all_equity_single_owner_pages()
+{
+	addpage( [[ 'Degradation' ]] );
+	addpage( [[ 'FlipModel', 'ConstantDSCRDebt',
+				{'name'='Financing', 'collapsible'=true,'collapsible_var'='show_financing'},
+				{'name'='Construction Period', 'collapsible'=true,'collapsible_var'='show_construction_period'},
+				{'name'='CapitalCostSO', 'collapsible'=true,'collapsible_var'='show_CapitalCostSO'},
+				{'name'='ReserveAccounts', 'collapsible'=true,'collapsible_var'='show_ReserveAccounts'}
+				 ]], 
+				{ 'sidebar'='Financing', 'help'='Financing Single Owner' }  );
+	addpage( [[ 'Energy Payment Dispatch' ]], { 'sidebar'='Time of Delivery Factors' });
+	addpage ( [[ 'Tax Credits','Incentives']],
+				{ 'sidebar'='Incentives', 'help'='Incentives' } );					
+	addpage ( [['DHFDepreciation' ]], { 'sidebar'='Depreciation' });
+
+	metric( 'lcoe_nom', {'label'='LCOE (Nominal)', 'post'=' \u00A2/kWh', 'mode'='f', 'deci'='2' } );
+	metric( 'lcoe_real', {'label'='LCOE (Real)', 'post'=' \u00A2/kWh', 'mode'='f', 'deci'='2' } );
+	metric( 'ppa', {'label'='PPA Price (Year 1)', 'post'= ' \u00A2/kWh', 'mode'='f', 'deci'='2' } );
+	metric( 'actual_ppa_escalation', {'label'='PPA Price Escalation', 'mode'='f', 'post'=' %', 'deci'='2' } );
+	metric( 'lppa_nom', {'label'='Levelized PPA Price (Nominal)', 'mode'='f', 'post'=' \u0A2/kWh', 'deci'='2' } );
+	metric( 'lppa_real', {'label'='Levelized PPA Price (Real)', 'mode'='f', 'post'=' \u00A2/kWh', 'deci'='2' } );
+	metric( 'irr', {'label'='Internal Rate of Return', 'mode'='f', 'post'=' %', 'deci'='2' } );
+	metric( 'npv', {'label'='Net Present Value', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
+	metric( 'min_dscr', {'label'='Minimum DSCR', 'mode'='f', 'deci'='2' } );
+	metric( 'actual_debt_frac', {'label'='Debt Fraction', 'post'=' %', 'mode'='f', 'deci'='2' } );
+	metric( 'min_cashflow', {'label'='Minimum Cash Flow (After Tax)', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
+}
+
 
 function setup_windpower_pages()
 {
@@ -377,6 +519,13 @@ addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='PV System Costs'
 setup_commercial_pages();
 setup_commercial_cashflow();
 
+setconfig( 'PVWatts', 'Commercial PPA' );	
+setmodules( ['pvwattsv5', 'ippppa']);
+setting( { 'analysis_period_var'='cf_length' } );
+setup_pvwatts_pages();
+addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='PV System Costs' } );
+setup_commercial_ppa_pages();
+
 setconfig( 'PVWatts', 'Independent Power Producer' );	
 setmodules( ['pvwattsv5', 'ippppa']);
 setting( { 'analysis_period_var'='cf_length' } );
@@ -385,6 +534,33 @@ addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='PV System Costs'
 setup_independent_power_producer_pages();
 setup_independent_power_producer_cashflow();
 
+setconfig( 'PVWatts', 'Leveraged Partnership Flip' );	
+setmodules( ['pvwattsv5', 'levpartflip']);
+setting( { 'analysis_period_var'='cf_length' } );
+setup_pvwatts_pages();
+addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='PV System Costs' } );
+setup_leveraged_partnership_flip_pages();
+
+setconfig( 'PVWatts', 'All Equity Partnership Flip' );	
+setmodules( ['pvwattsv5', 'equpartflip']);
+setting( { 'analysis_period_var'='cf_length' } );
+setup_pvwatts_pages();
+addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='PV System Costs' } );
+setup_all_equity_partnership_flip_pages();
+
+setconfig( 'PVWatts', 'Sale Leaseback' );	
+setmodules( ['pvwattsv5', 'saleleaseback']);
+setting( { 'analysis_period_var'='cf_length' } );
+setup_pvwatts_pages();
+addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='PV System Costs' } );
+setup_sale_leaseback_pages();
+
+setconfig( 'PVWatts', 'Single Owner' );	
+setmodules( ['pvwattsv5', 'singleowner']);
+setting( { 'analysis_period_var'='cf_length' } );
+setup_pvwatts_pages();
+addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='PV System Costs' } );
+setup_single_owner_pages();
 
 // Wind Power //////////////////////////////////////////////////////////////////
 setconfig( 'Wind Power', 'None' );
