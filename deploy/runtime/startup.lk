@@ -187,7 +187,7 @@ function setup_all_equity_partnership_flip_pages()
 	metric( 'min_cashflow', {'label'='Minimum Cash Flow (After Tax)', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
 }
 
-function setup_all_equity_sale_leaseback_pages()
+function setup_sale_leaseback_pages()
 {
 	addpage( [[ 'Degradation' ]] );
 	addpage( [[ 'FlipModel', 'SaleLeaseback', 
@@ -215,7 +215,7 @@ function setup_all_equity_sale_leaseback_pages()
 	metric( 'min_cashflow', {'label'='Minimum Cash Flow (After Tax)', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
 }
 
-function setup_all_equity_single_owner_pages()
+function setup_single_owner_pages()
 {
 	addpage( [[ 'Degradation' ]] );
 	addpage( [[ 'FlipModel', 'ConstantDSCRDebt',
