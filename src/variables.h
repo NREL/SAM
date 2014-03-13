@@ -101,7 +101,7 @@ public:
 	bool Write( lk::vardata_t &val );
 
 	static bool Parse( int type, const wxString &str, VarValue &val );
-	wxString AsString( wxChar arrsep = ',' );
+	wxString AsString(wxChar arrsep = ';');
 
 	static VarValue Invalid;
 private:
