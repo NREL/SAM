@@ -597,7 +597,7 @@ bool VarValue::Parse( int type, const wxString &str, VarValue &value )
 		}
 	case VV_ARRAY:
 		{
-			wxArrayString tokens = wxStringTokenize(str," ;|", wxTOKEN_STRTOK );
+			wxArrayString tokens = wxStringTokenize(str," ,;|", wxTOKEN_STRTOK );
 			value.m_type = VV_ARRAY;
 			value.m_val.resize_fill( tokens.size(), 0.0 );
 			for (size_t i=0; i<tokens.size(); i++)
@@ -609,7 +609,7 @@ bool VarValue::Parse( int type, const wxString &str, VarValue &value )
 		{
 			wxArrayString rows = wxStringTokenize(str," []", wxTOKEN_STRTOK );
 			if (rows.size() < 1) return false;
-			wxArrayString cols = wxStringTokenize(rows[0], " ;|", wxTOKEN_STRTOK );
+			wxArrayString cols = wxStringTokenize(rows[0], " ,;|", wxTOKEN_STRTOK );
 			if (cols.size() < 1) return false;
 
 			size_t nrows = rows.size();
@@ -620,7 +620,7 @@ bool VarValue::Parse( int type, const wxString &str, VarValue &value )
 			
 			for (size_t r=0; r < nrows; r++)
 			{
-				cols = wxStringTokenize(rows[r], " ;|");
+				cols = wxStringTokenize(rows[r], " ,;|");
 				for (size_t c=0; c<cols.size() && c<ncols; c++)
 					value.m_val(r,c) = wxAtof( cols[c] );
 			}
