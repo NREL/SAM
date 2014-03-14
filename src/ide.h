@@ -13,13 +13,14 @@ class wxMetroNotebook;
 class wxExtTextCtrl;
 class wxLKScriptCtrl;
 
-class StartupScriptPanel : public wxPanel
+class ScriptPanel : public wxPanel
 {
 public:
-	StartupScriptPanel( wxWindow *parent );
+	ScriptPanel( wxWindow *parent, const wxString &script_file_name );
+	void AddLibrary( lk::fcall_t *, const wxString &name );
 private:
 	void OnCommand( wxCommandEvent & );
-
+	wxString m_fileName;
 	wxLKScriptCtrl *m_scriptCtrl;
 
 	DECLARE_EVENT_TABLE();
@@ -123,10 +124,15 @@ private:
 	void OnClose( wxCloseEvent & );
 	wxMetroNotebook *m_notebook;
 
-	DefaultsManager *m_defaultsmanager;
 
-	StartupScriptPanel *m_startupPanel;
+	ScriptPanel *m_startupPanel;
 	UIEditorPanel *m_uiPanel;
+	DefaultsManager *m_defaultsPanel;
+	ScriptPanel *m_metricsPanel;
+	ScriptPanel *m_cashFlowPanel;
+	ScriptPanel *m_autoGraphPanel;
+	ScriptPanel *m_navigationPanel;
+
 	//SimulationScriptPanel *m_simPanel;
 
 	DECLARE_EVENT_TABLE();

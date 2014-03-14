@@ -46,6 +46,7 @@ static const int g_verMicro = 1;
 static ConfigDatabase g_cfgDatabase;
 static InputPageDatabase g_uiDatabase;
 static wxLogWindow *g_logWindow = 0;
+static ScriptDatabase g_globalCallbacks;
 
 
 class SamLogWindow : public wxLogWindow
@@ -1293,6 +1294,20 @@ void SamApp::Restart()
 		}
 	}
 
+
+	g_globalCallbacks.ClearAll();
+	if ( !g_globalCallbacks.LoadFile( SamApp::GetRuntimePath() + "/metrics.lk" )) 
+		wxLogStatus( "error loading metrics.lk" );
+
+	if ( !g_globalCallbacks.LoadFile( SamApp::GetRuntimePath() + "/cashflow.lk" ))
+		wxLogStatus( "error loading cashflow.lk" );
+
+	if ( !g_globalCallbacks.LoadFile( SamApp::GetRuntimePath() + "/autographs.lk" ))
+		wxLogStatus( "error loading autographs.lk" );
+
+	if ( !g_globalCallbacks.LoadFile( SamApp::GetRuntimePath() + "/navigation.lk" ))
+		wxLogStatus( "error loading navigation.lk" );
+
 	wxString solar_resource_db = SamApp::GetUserLocalDataDir() + "/SolarResourceData.csv";
 	if ( !wxFileExists( solar_resource_db ) ) ScanSolarResourceData( solar_resource_db );
 	Library::Load( solar_resource_db );
@@ -1360,6 +1375,7 @@ int SamApp::VersionMinor() { return g_verMinor; }
 int SamApp::VersionMicro() { return g_verMicro; }
 ConfigDatabase &SamApp::Config() { return g_cfgDatabase; }
 InputPageDatabase &SamApp::InputPages() { return g_uiDatabase; }
+ScriptDatabase &SamApp::GlobalCallbacks() { return g_globalCallbacks; }
 
 
 bool SamApp::LoadAndRunScriptFile( const wxString &script_file, wxArrayString *errors )

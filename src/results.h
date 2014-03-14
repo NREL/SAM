@@ -25,8 +25,9 @@ class MetricsTable;
 class TabularBrowser;
 class wxMetroListBox;
 class wxDVTimeSeriesDataSet;
-
 class ConfigInfo;
+
+class Case;
 class VarTable;
 
 class ResultsViewer : public wxMetroNotebook
@@ -35,7 +36,7 @@ public:
 	ResultsViewer( wxWindow *parent );
 	virtual ~ResultsViewer();
 
-	void Setup( ConfigInfo *cfg, DataProvider *results );
+	void Setup( Case *cfg, DataProvider *results );
 	void Clear();
 
 	void SavePerspective( StringHash &map );
@@ -44,7 +45,7 @@ public:
 private:
 	void OnCommand( wxCommandEvent & );
 
-	ConfigInfo *m_cfg;
+	Case *m_case;
 	DataProvider *m_results;
 
 	MetricsTable *m_metrics;		

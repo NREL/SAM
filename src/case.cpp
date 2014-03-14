@@ -8,6 +8,59 @@
 #include "main.h"
 #include "library.h"
 #include "invoke.h"
+#include <lk_stdlib.h>
+
+
+CaseCallbackContext::CaseCallbackContext( Case *cc, const wxString &desc )
+	: m_case(cc), m_desc(desc)
+{	
+	// nothing to do
+}
+
+VarTable &CaseCallbackContext::GetValues() { return GetCase().Values(); }
+Case &CaseCallbackContext::GetCase() { return *m_case; }
+
+void CaseCallbackContext::SetupLibraries( lk::env_t *env )
+{
+	/* nothing here - for descendents like UICallbackContext*/
+}
+	
+bool CaseCallbackContext::Invoke( lk::node_t *root, lk::env_t *parent_env )
+{
+	lk::env_t local_env( parent_env );
+	
+	local_env.register_funcs( lk::stdlib_basic() );
+	local_env.register_funcs( lk::stdlib_math() );
+	local_env.register_funcs( lk::stdlib_string() );
+	local_env.register_funcs( lk::stdlib_wxui(), this );
+	local_env.register_funcs( invoke_general_funcs(), this );
+	local_env.register_funcs( invoke_casecallback_funcs(), this );
+	local_env.register_funcs( invoke_ssc_funcs(), this );
+	
+	// add other callback environment functions
+	SetupLibraries( &local_env );
+
+	try {
+
+		VarTableScriptInterpreter e( root, &local_env, &GetValues() );
+		if ( !e.run() )
+		{
+			wxString text = "Could not evaluate callback function:" +  m_desc + "\n";
+			for (size_t i=0;i<e.error_count();i++)
+				text += e.get_error(i);
+
+			wxShowTextMessageDialog( text );
+		}
+		
+	} catch(std::exception &e ){
+		wxShowTextMessageDialog( "Could not evaluate callback function: " + m_desc + wxString("\n\n") + e.what());
+		return false;
+	}
+
+	return true;
+}
+
+
 
 static void fcall_technology_pCase( lk::invoke_t &cxt )
 {

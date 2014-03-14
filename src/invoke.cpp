@@ -9,6 +9,7 @@
 
 #include "main.h"
 #include "case.h"
+#include "casewin.h"
 #include "materials.h" // used to call functions for substance density and specific heat
 
 #include "invoke.h"
@@ -185,13 +186,46 @@ static void fcall_addpage( lk::invoke_t &cxt )
 	SamApp::Config().AddInputPageGroup( pages, sidebar, help, exclusive_var );
 }
 
+static void fcall_setting( lk::invoke_t &cxt )
+{
+	LK_DOC( "setting", "Sets a setting field for the current configuration", "(string:name, string:value -or- table:name/value pairs):none");
+
+	if ( ConfigInfo *ci = SamApp::Config().CurrentConfig() )
+	{
+		if( cxt.arg_count() == 2 )
+			ci->Settings[ cxt.arg(0).as_string() ] = cxt.arg(1).as_string();
+		else if ( cxt.arg_count() == 1 && cxt.arg(0).deref().type() == lk::vardata_t::HASH )
+		{
+			lk::varhash_t *hash = cxt.arg(0).deref().hash();
+			for( lk::varhash_t::iterator it = hash->begin();
+				it != hash->end();
+				++it )
+				ci->Settings[ it->first ] = it->second->deref().as_string();
+		}
+	}
+}
+
+static void fcall_technology( lk::invoke_t &cxt )
+{
+	LK_DOC( "technology", "Return the current technology option name", "(void):string" );
+	CaseCallbackContext &cc = *static_cast<CaseCallbackContext*>( cxt.user_data() ); 
+	cxt.result().assign( cc.GetCase().GetTechnology() );
+}
+
+static void fcall_financing( lk::invoke_t &cxt )
+{
+	LK_DOC( "financing", "Return the current financing option name", "(void):string" );
+	CaseCallbackContext &cc = *static_cast<CaseCallbackContext*>( cxt.user_data() ); 
+	cxt.result().assign( cc.GetCase().GetFinancing() );
+}
+
 static void fcall_metric( lk::invoke_t &cxt )
 {
 	LK_DOC("metric", "Add an output metric to the current configuration. Options include mode,deci,thousep,pre,post,label,scale", "(string:variable, [table:options]):none");
 	 
-	if ( ConfigInfo *ci = SamApp::Config().CurrentConfig() )
+	if ( CaseCallbackContext *ci = static_cast<CaseCallbackContext*>(cxt.user_data()) )
 	{
-		ConfigInfo::MetricData md;
+		CaseCallbackContext::MetricData md;
 		md.var = cxt.arg(0).as_string();
 		
 		if (cxt.arg_count() > 1 )
@@ -229,15 +263,15 @@ static void fcall_metric( lk::invoke_t &cxt )
 	}
 }
 
-static void fcall_cashflow( lk::invoke_t &cxt )
+static void fcall_cfline( lk::invoke_t &cxt )
 {
-	LK_DOC("cashflow", "Add one or more cashflow line items to the current configuration. Names can be comma-separated list. For spacer use name='', for header use digits=0, for generic format use digits=-1, for integer cast, use digits=-2.", "( string:names, [number:digits], [number:scale] ):none" );
+	LK_DOC("cfline", "Add one or more cashflow line items to the current configuration. Names can be comma-separated list. For spacer use name='', for header use digits=0, for generic format use digits=-1, for integer cast, use digits=-2.", "( string:names, [number:digits], [number:scale] ):none" );
 	
-	if ( ConfigInfo *ci = SamApp::Config().CurrentConfig() )
+	if ( CaseCallbackContext *ci = static_cast<CaseCallbackContext*>(cxt.user_data()) )
 	{
 		wxString name = cxt.arg(0).as_string();
 
-		int type = ConfigInfo::CashFlowLine::VARIABLE;
+		int type = CaseCallbackContext::CashFlowLine::VARIABLE;
 		int digit = 2;
 		float scale = 1.0f;
 		if ( cxt.arg_count() == 2 )
@@ -246,15 +280,15 @@ static void fcall_cashflow( lk::invoke_t &cxt )
 		if ( cxt.arg_count() == 3 )
 			scale = (float)cxt.arg(2).as_number();
 
-		if ( name.IsEmpty() ) type = ConfigInfo::CashFlowLine::SPACER;
-		if ( digit == 0 ) type = ConfigInfo::CashFlowLine::HEADER;
+		if ( name.IsEmpty() ) type = CaseCallbackContext::CashFlowLine::SPACER;
+		if ( digit == 0 ) type = CaseCallbackContext::CashFlowLine::HEADER;
 		
 		wxArrayString list = wxSplit(name, ',');
 		if ( list.size() == 0 ) list.Add( name ); // handle empty string
 
 		for( size_t i=0;i<list.Count();i++ )
 		{
-			ConfigInfo::CashFlowLine cl;
+			CaseCallbackContext::CashFlowLine cl;
 			cl.type = type;
 			cl.digits = digit;
 			cl.name = list[i];
@@ -264,59 +298,12 @@ static void fcall_cashflow( lk::invoke_t &cxt )
 	}
 }
 
-static void fcall_setting( lk::invoke_t &cxt )
-{
-	LK_DOC( "setting", "Sets a setting field for the current configuration", "(string:name, string:value -or- table:name/value pairs):none");
-
-	if ( ConfigInfo *ci = SamApp::Config().CurrentConfig() )
-	{
-		if( cxt.arg_count() == 2 )
-			ci->Settings[ cxt.arg(0).as_string() ] = cxt.arg(1).as_string();
-		else if ( cxt.arg_count() == 1 && cxt.arg(0).deref().type() == lk::vardata_t::HASH )
-		{
-			lk::varhash_t *hash = cxt.arg(0).deref().hash();
-			for( lk::varhash_t::iterator it = hash->begin();
-				it != hash->end();
-				++it )
-				ci->Settings[ it->first ] = it->second->deref().as_string();
-		}
-	}
-}
-	
-static void plottarget( CallbackContext &cc, const wxString &name )
-{
-	wxLKSetPlotTarget( 0 );
-	if ( wxUIObject *obj = cc.InputPage()->Find(name) )
-		if ( wxPLPlotCtrl *plot = obj->GetNative<wxPLPlotCtrl>() )
-			wxLKSetPlotTarget( plot );
-}
-
-void fcall_setplot( lk::invoke_t &cxt )
-{
-	LK_DOC("setplot", "Sets the current plot target by name", "(string:name):boolean");
-	
-	plottarget( *(CallbackContext*)cxt.user_data(), cxt.arg(0).as_string() );
-}
-
-void fcall_clearplot( lk::invoke_t &cxt )
-{
-	LK_DOC("clearplot", "Clears the current plot, and optionally switches the plot target.", "([string:plot name]):none");
-	
-	if (cxt.arg_count() > 0)
-		plottarget( *(CallbackContext*)cxt.user_data(), cxt.arg(0).as_string() );
-
-	if ( wxPLPlotCtrl *plot = wxLKGetPlotTarget() )
-	{
-		plot->DeleteAllPlots();
-		plot->Refresh();
-	}
-}
 
 void fcall_value( lk::invoke_t &cxt )
 {
 	LK_DOC("value", "Gets or sets the value of a variable by name", "(string:name [,variant:value]):[variant]");
 	
-	CallbackContext &cc = *(CallbackContext*)cxt.user_data();
+	CaseCallbackContext &cc = *(CaseCallbackContext*)cxt.user_data();
 	wxString name = cxt.arg(0).as_string();
 	if ( VarValue *vv = cc.GetValues().Get( name ) )
 	{
@@ -332,11 +319,41 @@ void fcall_value( lk::invoke_t &cxt )
 	}
 }
 
+	
+static void plottarget( UICallbackContext &cc, const wxString &name )
+{
+	wxLKSetPlotTarget( 0 );
+	if ( wxUIObject *obj = cc.InputPage()->Find(name) )
+		if ( wxPLPlotCtrl *plot = obj->GetNative<wxPLPlotCtrl>() )
+			wxLKSetPlotTarget( plot );
+}
+
+void fcall_setplot( lk::invoke_t &cxt )
+{
+	LK_DOC("setplot", "Sets the current plot target by name", "(string:name):boolean");
+	
+	plottarget( *(UICallbackContext*)cxt.user_data(), cxt.arg(0).as_string() );
+}
+
+void fcall_clearplot( lk::invoke_t &cxt )
+{
+	LK_DOC("clearplot", "Clears the current plot, and optionally switches the plot target.", "([string:plot name]):none");
+	
+	if (cxt.arg_count() > 0)
+		plottarget( *(UICallbackContext*)cxt.user_data(), cxt.arg(0).as_string() );
+
+	if ( wxPLPlotCtrl *plot = wxLKGetPlotTarget() )
+	{
+		plot->DeleteAllPlots();
+		plot->Refresh();
+	}
+}
+
 void fcall_refresh( lk::invoke_t &cxt )
 {
 	LK_DOC("refresh", "Refresh the current form or a specific widget", "([string:name]):none" );
 	
-	CallbackContext &cc = *(CallbackContext*)cxt.user_data();
+	UICallbackContext &cc = *(UICallbackContext*)cxt.user_data();
 	if ( cxt.arg_count() == 0 )
 		cc.InputPage()->Refresh();
 	else
@@ -351,7 +368,7 @@ void fcall_property( lk::invoke_t &cxt )
 {
 	LK_DOC("property", "Set or get a user interface widget property", "(string:name, string:property[, variant:value]):variant");
 
-	CallbackContext &cc = *(CallbackContext*)cxt.user_data();
+	UICallbackContext &cc = *(UICallbackContext*)cxt.user_data();
 	ActiveInputPage *aip = 0;
 	wxUIObject *obj = cc.InputPage()->FindActiveObject( cxt.arg(0).as_string(), &aip );
 	if ( !obj ) return;
@@ -444,7 +461,7 @@ void fcall_enable( lk::invoke_t &cxt )
 {
 	LK_DOC("enable", "Enable or disable a user interface widget", "(string:name, boolean:enable):none");
 
-	CallbackContext &cc = *(CallbackContext*)cxt.user_data();
+	UICallbackContext &cc = *(UICallbackContext*)cxt.user_data();
 	if ( wxUIObject *obj = cc.InputPage()->FindActiveObject( cxt.arg(0).as_string(), 0 ) )
 		if ( wxWindow *native = obj->GetNative() )
 			native->Enable( cxt.arg(1).as_boolean() );
@@ -453,23 +470,9 @@ static void fcall_show( lk::invoke_t &cxt )
 {
 	LK_DOC("show", "Show or hide a user interface widget.", "(string:name, boolean:show):none");
 
-	CallbackContext &cc = *(CallbackContext*)cxt.user_data();
+	UICallbackContext &cc = *(UICallbackContext*)cxt.user_data();
 	if ( wxUIObject *obj = cc.InputPage()->FindActiveObject( cxt.arg(0).as_string(), 0 ) )
 		obj->Show( cxt.arg(1).as_boolean() );
-}
-
-static void fcall_technology( lk::invoke_t &cxt )
-{
-	LK_DOC( "technology", "Return the current technology option name", "(void):string" );
-	CallbackContext &cc = *static_cast<CallbackContext*>( cxt.user_data() ); 
-	cxt.result().assign( cc.GetCase().GetTechnology() );
-}
-
-static void fcall_financing( lk::invoke_t &cxt )
-{
-	LK_DOC( "financing", "Return the current financing option name", "(void):string" );
-	CallbackContext &cc = *static_cast<CallbackContext*>( cxt.user_data() ); 
-	cxt.result().assign( cc.GetCase().GetFinancing() );
 }
 
 /*
@@ -860,8 +863,6 @@ lk::fcall_t* invoke_config_funcs()
 		fcall_addconfig,
 		fcall_setconfig,
 		fcall_addpage,
-		fcall_metric,
-		fcall_cashflow,
 		fcall_setting,
 		fcall_setmodules,
 		0 };
@@ -880,18 +881,27 @@ lk::fcall_t* invoke_equation_funcs()
 	return (lk::fcall_t*)vec;
 }
 
+lk::fcall_t* invoke_casecallback_funcs()
+{
+	static const lk::fcall_t vec[] = {
+		fcall_value,
+		fcall_metric,
+		fcall_cfline,
+		fcall_technology,
+		fcall_financing,
+		0 };
+	return (lk::fcall_t*)vec;
+}
+
 lk::fcall_t* invoke_uicallback_funcs()
 {
 	static const lk::fcall_t vec[] = {
 		fcall_setplot,
 		fcall_clearplot,
-		fcall_value,
 		fcall_enable,
 		fcall_show,
 		fcall_property,
 		fcall_refresh,
-		fcall_technology,
-		fcall_financing,
 		fcall_dview,
 		fcall_substance_density,
 		fcall_substance_specific_heat,

@@ -36,16 +36,16 @@ enum { ID_STARTUP_EDITOR = wxID_HIGHEST+124,
 	ID_STARTUP_RESTART
 };
 
-BEGIN_EVENT_TABLE( StartupScriptPanel, wxPanel )
-	EVT_BUTTON( ID_STARTUP_SAVE, StartupScriptPanel::OnCommand )
-	EVT_BUTTON( ID_STARTUP_FIND, StartupScriptPanel::OnCommand )
-	EVT_BUTTON( ID_STARTUP_HELP, StartupScriptPanel::OnCommand )
-	EVT_BUTTON( ID_STARTUP_RESTART, StartupScriptPanel::OnCommand )
+BEGIN_EVENT_TABLE( ScriptPanel, wxPanel )
+	EVT_BUTTON( ID_STARTUP_SAVE, ScriptPanel::OnCommand )
+	EVT_BUTTON( ID_STARTUP_FIND, ScriptPanel::OnCommand )
+	EVT_BUTTON( ID_STARTUP_HELP, ScriptPanel::OnCommand )
+	EVT_BUTTON( ID_STARTUP_RESTART, ScriptPanel::OnCommand )
 END_EVENT_TABLE()
 
 
-StartupScriptPanel::StartupScriptPanel( wxWindow *parent )	
-	: wxPanel( parent )
+ScriptPanel::ScriptPanel( wxWindow *parent, const wxString &script_file_name )	
+	: wxPanel( parent ), m_fileName( script_file_name )
 {
 	wxBoxSizer *sz_startup_tools = new wxBoxSizer( wxHORIZONTAL );
 	sz_startup_tools->Add( new wxButton( this, ID_STARTUP_SAVE, "Save"), 0, wxALL|wxEXPAND, 2 );
@@ -53,29 +53,34 @@ StartupScriptPanel::StartupScriptPanel( wxWindow *parent )
 	sz_startup_tools->Add( new wxButton( this, ID_STARTUP_HELP, "Help"), 0, wxALL|wxEXPAND, 2 );
 	sz_startup_tools->Add( new wxButton( this, ID_STARTUP_RESTART, "Restart SAM"), 0, wxALL|wxEXPAND, 2 );	
 	m_scriptCtrl = new wxLKScriptCtrl( this, ID_STARTUP_EDITOR );
-	m_scriptCtrl->RegisterLibrary( invoke_general_funcs(), "General Functions", 0 );
-	m_scriptCtrl->RegisterLibrary( invoke_config_funcs(), "Config Functions", 0 );
 	wxBoxSizer *sz_startup_main = new wxBoxSizer( wxVERTICAL );
 	sz_startup_main->Add( sz_startup_tools, 0, wxALL|wxEXPAND, 2 );
 	sz_startup_main->Add( m_scriptCtrl, 1, wxALL|wxEXPAND, 0 );
 	
 	SetSizer( sz_startup_main );
+	
+	m_scriptCtrl->RegisterLibrary( invoke_general_funcs(), "General Functions", 0 );
 
-	if (!m_scriptCtrl->ReadAscii( SamApp::GetRuntimePath() + "/startup.lk" ) )
-		wxMessageBox("Error loading startup.lk", "notice", wxOK, this);
+	if (!m_scriptCtrl->ReadAscii( SamApp::GetRuntimePath() + "/" + m_fileName ) )
+		wxMessageBox("Error loading " + m_fileName, "notice", wxOK, this);
 }
 
-void StartupScriptPanel::OnCommand( wxCommandEvent &evt )
+void ScriptPanel::AddLibrary( lk::fcall_t *lib, const wxString &name )
+{
+	m_scriptCtrl->RegisterLibrary( lib, name );
+}
+
+void ScriptPanel::OnCommand( wxCommandEvent &evt )
 {
 	switch( evt.GetId() )
 	{
 	case ID_STARTUP_SAVE:
 		{
-			wxBusyInfo savemsg( "Writing startup.lk to disk" );
+			wxBusyInfo savemsg( "Writing " + m_fileName + " to disk" );
 			wxYield();
 			wxMilliSleep(300);
-			if ( !m_scriptCtrl->WriteAscii( SamApp::GetRuntimePath() + "/startup.lk" ))
-				wxMessageBox("Error writing startup.lk to disk" , "notice", wxOK, this);
+			if ( !m_scriptCtrl->WriteAscii( SamApp::GetRuntimePath() + "/" + m_fileName ))
+				wxMessageBox("Error writing " + m_fileName + "  to disk" , "notice", wxOK, this);
 			break;
 		}
 	case ID_STARTUP_FIND:
@@ -87,8 +92,8 @@ void StartupScriptPanel::OnCommand( wxCommandEvent &evt )
 	case ID_STARTUP_RESTART:
 		{
 			if ( m_scriptCtrl->IsModified() 
-				&& wxYES == wxMessageBox( "startup.lk is modified. Save first?", "Query", wxYES_NO, this) )
-				m_scriptCtrl->WriteAscii( SamApp::GetRuntimePath() + "/startup.lk" );
+				&& wxYES == wxMessageBox( m_fileName + " is modified. Save first?", "Query", wxYES_NO, this) )
+				m_scriptCtrl->WriteAscii( SamApp::GetRuntimePath() + "/" + m_fileName );
 		
 			wxBusyInfo restartmsg( "Restarting SAM... messages in debug output screen" );
 				wxYield();
@@ -760,6 +765,7 @@ UIEditorPanel::UIEditorPanel( wxWindow *parent )
 
 	m_callbackScript = new wxLKScriptCtrl( scripts_panel, ID_CALLBACK_EDITOR ); // by default registers all LK stdlib functions
 	m_callbackScript->RegisterLibrary( invoke_general_funcs(), "Callback UI Functions" );
+	m_callbackScript->RegisterLibrary( invoke_casecallback_funcs(), "Callback UI Functions" );
 	m_callbackScript->RegisterLibrary( invoke_uicallback_funcs(), "Callback UI Functions" );
 	m_callbackScript->RegisterLibrary( invoke_ssc_funcs(), "SSC Functions" );
 	wxBoxSizer *sz_scripts_left = new wxBoxSizer( wxVERTICAL );
@@ -1410,23 +1416,31 @@ IDEWindow::IDEWindow( wxWindow *parent )
 
 	m_notebook = new wxMetroNotebook( this );
 
-	m_startupPanel = new StartupScriptPanel( m_notebook );
+	m_startupPanel = new ScriptPanel( m_notebook, "startup.lk" );	
+	m_startupPanel->AddLibrary( invoke_config_funcs(), "Config Functions" );
 	m_notebook->AddPage( m_startupPanel, "Startup" );
 
 	m_uiPanel = new UIEditorPanel( m_notebook );
 	m_notebook->AddPage( m_uiPanel, "User Interface" );
 
-	//m_simPanel = new SimulationScriptPanel( this );
-	//m_notebook->AddPage( m_simPanel, "Simulations" );
+	m_defaultsPanel = new DefaultsManager( m_notebook );
+	m_notebook->AddPage( m_defaultsPanel, "Defaults" );
+
+	m_metricsPanel = new ScriptPanel( m_notebook, "metrics.lk" );
+	m_metricsPanel->AddLibrary( invoke_casecallback_funcs(), "Case callbacks" );
+	m_notebook->AddPage( m_metricsPanel, "Metrics" );
 	
-	//m_notebook->AddPage( new wxPanel( m_notebook ), "Default Values" );
+	m_cashFlowPanel = new ScriptPanel( m_notebook, "cashflow.lk" );
+	m_cashFlowPanel->AddLibrary( invoke_casecallback_funcs(), "Case callbacks" );
+	m_notebook->AddPage( m_cashFlowPanel, "Cashflows" );
 
-	m_defaultsmanager = new DefaultsManager( m_notebook );
-	m_notebook->AddPage( m_defaultsmanager, "Default Values" );
+	m_autoGraphPanel = new ScriptPanel( m_notebook, "autographs.lk" );
+	m_autoGraphPanel->AddLibrary( invoke_casecallback_funcs(), "Case callbacks" );
+	m_notebook->AddPage( m_autoGraphPanel, "Autographs" );
 
-	m_notebook->AddPage( new wxPanel( m_notebook ), "Default Graphs" );
-	m_notebook->AddPage( new wxPanel( m_notebook ), "Cash Flows" );
-	m_notebook->AddPage( new wxPanel( m_notebook ), "Report Templates" );
+	m_navigationPanel = new ScriptPanel( m_notebook, "navigation.lk" );
+	m_navigationPanel->AddLibrary( invoke_casecallback_funcs(), "Case callbacks" );
+	m_notebook->AddPage( m_navigationPanel, "Navigation" );
 
 	m_notebook->Refresh();
 }

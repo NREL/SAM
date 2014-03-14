@@ -1,0 +1,31 @@
+function rescom_metrics()
+{
+	metric( 'lcoe_real', {'label'='Real LCOE', 'post'=' $/kWh' } );
+	metric( 'lcoe_nom', {'label'='Nominal LCOE', 'post'=' $/kWh' } );
+}
+
+function ipp_metrics()
+{
+
+	metric( 'lcoe_nom', {'label'='LCOE (Nominal)', 'post'=' \u00A2/kWh', 'mode'='f', 'deci'='2' } );
+	metric( 'lcoe_real', {'label'='LCOE (Real)', 'post'=' \u00A2/kWh', 'mode'='f', 'deci'='2' } );
+	metric( 'ppa', {'label'='PPA Price (Year 1)', 'post'= ' \u00A2/kWh', 'mode'='f', 'deci'='2' } );
+	metric( 'actual_ppa_escalation', {'label'='PPA Price Escalation', 'mode'='f', 'post'=' %', 'deci'='2' } );
+	metric( 'lppa_nom', {'label'='Levelized PPA Price (Nominal)', 'mode'='f', 'post'=' \u0A2/kWh', 'deci'='2' } );
+	metric( 'lppa_real', {'label'='Levelized PPA Price (Real)', 'mode'='f', 'post'=' \u00A2/kWh', 'deci'='2' } );
+	metric( 'irr', {'label'='Internal Rate of Return', 'mode'='f', 'post'=' %', 'deci'='2' } );
+	metric( 'npv', {'label'='Net Present Value', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
+	metric( 'min_dscr', {'label'='Minimum DSCR', 'mode'='f', 'deci'='2' } );
+	metric( 'actual_debt_frac', {'label'='Debt Fraction', 'post'=' %', 'mode'='f', 'deci'='2' } );
+	metric( 'min_cashflow', {'label'='Minimum Cash Flow (After Tax)', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
+}
+
+function pv_metrics() {
+	metric( 'annual_energy', {'label'='Annual Energy', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh' } );
+}
+
+metrics{ 'PVWatts' } = define() {	pv_metrics(); };
+metrics{ 'Flat Plate PV' } = define() { pv_metrics(); };
+metrics{ 'Residential' } = define() { rescom_metrics(); };
+metrics{ 'Commercial' } = define() { rescom_metrics(); };
+metrics{ 'Independent Power Producer' } = define() { ipp_metrics(); };
