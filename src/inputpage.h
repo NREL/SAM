@@ -8,25 +8,21 @@
 
 #include "variables.h"
 #include "equations.h"
+#include "case.h"
 
 class Case;
 class CaseWindow;
 class ActiveInputPage;
 
-class CallbackContext
+class UICallbackContext  : public CaseCallbackContext
 {
 	ActiveInputPage *m_inputPage;
-	lk::node_t *m_root;
-	lk::env_t *m_parentEnv;
-	wxString m_desc;
-
 public:
-	CallbackContext( ActiveInputPage *ip, lk::node_t *root, const wxString &desc = wxEmptyString );	
+	UICallbackContext( ActiveInputPage *ip, const wxString &desc = wxEmptyString );	
 	ActiveInputPage *InputPage();
-	VarTable &GetValues();
-	Case &GetCase();
 	CaseWindow *GetCaseWindow();
-	virtual bool Invoke(  );
+protected:
+	virtual void SetupLibraries( lk::env_t *env );
 };
 
 class ActiveInputPage : public wxPanel

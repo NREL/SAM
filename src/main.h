@@ -140,6 +140,7 @@ public:
 	
 };
 
+
 typedef unordered_map<wxString, InputPageData*, wxStringHash, wxStringEqual> InputPageDataHash;
 
 class InputPageDatabase
@@ -198,32 +199,7 @@ public:
 	InputPageDataHash InputPages;
 	VarInfoLookup Variables;		
 	EqnFastLookup Equations;
-
-	struct MetricData {
-		MetricData() :
-			scale( 1.0 ), mode( 'g' ), thousep( false ), deci( 2 )
-		{}
-		wxString var;
-		wxString label;
-		double scale;
-		char mode;
-		bool thousep;
-		int deci;
-		wxString pre, post;
-	};
-	std::vector<MetricData> Metrics;
 	
-	struct CashFlowLine {
-		enum { SPACER, HEADER, VARIABLE };
-		CashFlowLine() : type(VARIABLE), digits(2), scale(1.0f) {  }
-
-		int type;
-		wxString name;
-		int digits;
-		float scale;
-	};
-	std::vector<CashFlowLine> CashFlow;
-
 	StringHash Settings;
 
 	// storage for variables specific to this configuration
@@ -292,6 +268,7 @@ public:
 	
 	static ConfigDatabase &Config();
 	static InputPageDatabase &InputPages();
+	static ScriptDatabase &GlobalCallbacks();
 
 	static bool LoadAndRunScriptFile( const wxString &script_file, wxArrayString *errors = 0 );
 };
