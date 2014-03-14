@@ -121,25 +121,25 @@ CaseWindow::CaseWindow( wxWindow *parent, Case *c )
 	m_simButton->SetFont( wxMetroTheme::Font( wxMT_NORMAL, 14) );
 	m_resultsButton = new wxMetroButton( left_panel, ID_RESULTSPAGE, wxEmptyString, wxBITMAP_PNG_FROM_DATA( graph ) );
 
-	wxMetroButton *adv_button = new wxMetroButton( left_panel, ID_ADVANCED, wxEmptyString, wxNullBitmap, wxDefaultPosition, wxDefaultSize, wxMB_UPARROW );
+	//wxMetroButton *adv_button = new wxMetroButton( left_panel, ID_ADVANCED, wxEmptyString, wxNullBitmap, wxDefaultPosition, wxDefaultSize, wxMB_UPARROW );
 
 
 	wxBoxSizer *szhl = new wxBoxSizer( wxHORIZONTAL );
 	szhl->Add( m_simButton, 1, wxALL|wxEXPAND, 0 );
 	szhl->Add( m_resultsButton, 0, wxALL|wxEXPAND, 0 );
-	szhl->Add( adv_button, 0, wxALL|wxEXPAND, 0 );
+	//szhl->Add( adv_button, 0, wxALL|wxEXPAND, 0 );
 
 	wxBoxSizer *szvl = new wxBoxSizer( wxVERTICAL );
 	szvl->Add( m_inputPageList, 1, wxALL|wxEXPAND, 0 );
 	szvl->Add( szhl, 0, wxALL|wxEXPAND, 0 );
-	/*
-	wxBoxSizer *szsims = new wxBoxSizer(wxHORIZONTAL);
+	
+	wxSizer *szsims = new wxGridSizer(2, 0, 0);
 	szsims->Add( new wxMetroButton( left_panel, ID_PARAMETRICS, "Parametrics" ), 0, wxALL|wxEXPAND, 0 );
-	szsims->Add( new wxMetroButton( left_panel, ID_SENSITIVITY, "Sensitivity" ), 0, wxALL|wxEXPAND, 0 );
-	szsims->Add( new wxMetroButton( left_panel, ID_P50P90, "P50/P90" ), 0, wxALL|wxEXPAND, 0 );
-	szsims->Add( new wxMetroButton( left_panel, ID_SCRIPTING, "Scripting" ), 0, wxALL|wxEXPAND, 0 );
+	szsims->Add( new wxMetroButton( left_panel, ID_SENSITIVITY, "Tornado" ), 0, wxALL|wxEXPAND, 0 );
+	szsims->Add( new wxMetroButton( left_panel, ID_P50P90, "P50 / P90" ), 0, wxALL|wxEXPAND, 0 );
+	szsims->Add( new wxMetroButton( left_panel, ID_SCRIPTING, "Hypercube" ), 0, wxALL|wxEXPAND, 0 );
 	szvl->Add( szsims, 0, wxALL|wxEXPAND, 0 );
-	*/
+	
 
 	left_panel->SetSizer( szvl );
 
