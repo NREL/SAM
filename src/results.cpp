@@ -40,13 +40,8 @@ ResultsViewer::ResultsViewer( wxWindow *parent )
 	wxBoxSizer *summary_sizer = new wxBoxSizer( wxVERTICAL );
 
 	m_metrics = new MetricsTable( summary_panel );
-	matrix_t<wxString> data( 10, 2 );
+	matrix_t<wxString> data( 1, 2 );
 	data.at(0,0) = "Metric"; data.at(0,1) = "Value";
-	for( size_t i=1;i<10;i++ )
-	{
-		data.at(i,0) = wxString::Format("Metric %d", (int)i+1);
-		data.at(i,1) = wxString::Format("%.2lf", (i+193)*pow(1.22, (double)(i)/3.0) );
-	}
 	m_metrics->SetData( data );
 	
 	summary_sizer->Add( m_metrics, 0, wxALL, 30 );

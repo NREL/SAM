@@ -374,7 +374,7 @@ void CaseWindow::OnCommand( wxCommandEvent &evt )
 	{
 		if ( RunBaseCaseSimulation() )
 		{
-			m_baseCaseResults->Setup( m_case->GetConfiguration(), m_baseCaseSimulation );
+			m_baseCaseResults->Setup( m_case, m_baseCaseSimulation );
 			m_pageFlipper->SetSelection( 1 );
 		}
 		else
