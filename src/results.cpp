@@ -22,6 +22,7 @@
 #include "variables.h"
 #include "simulation.h"
 #include "results.h"
+#include "casewin.h"
 
 
 BEGIN_EVENT_TABLE( ResultsViewer, wxMetroNotebook )	
@@ -31,7 +32,7 @@ END_EVENT_TABLE()
 
 ResultsViewer::ResultsViewer( wxWindow *parent )
 	: wxMetroNotebook( parent, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxMT_LIGHTTHEME ),
-	 m_cfg( 0 ),
+	 m_case( 0 ),
 	 m_results( 0 )
 {
 	wxPanel *summary_panel = new wxPanel( this );
@@ -134,13 +135,13 @@ public:
 };
 
 
-void ResultsViewer::Setup( ConfigInfo *cfg, DataProvider *results )
+void ResultsViewer::Setup( Case *c, DataProvider *results )
 {
-	m_cfg = cfg;
+	m_case = c;
 	m_results = results;
+	ConfigInfo *cfg = ( m_case != 0 ? m_case->GetConfiguration() : 0 );
 
-
-	if ( m_cfg == 0 || m_results == 0 )
+	if ( m_case == 0 || cfg == 0 || m_results == 0 )
 	{
 		Clear();
 		return;
@@ -152,16 +153,34 @@ void ResultsViewer::Setup( ConfigInfo *cfg, DataProvider *results )
 
 	// update metrics
 	m_metrics->Clear();
-	if ( m_cfg->Metrics.size() > 0 )
+
+	CaseCallbackContext cc( m_case, "Metrics callback: " + cfg->Technology + ", " + cfg->Financing );
+
+	
+	// first try to invoke a T/F specific callback if one exists
+	if ( lk::node_t *metricscb = SamApp::GlobalCallbacks().Lookup( "metrics", cfg->Technology + "|" + cfg->Financing ))
+		cc.Invoke( metricscb, SamApp::GlobalCallbacks().GetEnv() );
+
+	// if no metrics were defined, run it T & F one at a time
+	if ( cc.Metrics.size() == 0 )
+	{
+		if ( lk::node_t *metricscb = SamApp::GlobalCallbacks().Lookup( "metrics", cfg->Technology ))
+			cc.Invoke( metricscb, SamApp::GlobalCallbacks().GetEnv() );
+		
+		if ( lk::node_t *metricscb = SamApp::GlobalCallbacks().Lookup( "metrics", cfg->Financing ))
+			cc.Invoke( metricscb, SamApp::GlobalCallbacks().GetEnv() );
+	}
+	
+	if ( cc.Metrics.size() > 0 )
 	{
 		matrix_t<wxString> metrics;
-		metrics.resize( m_cfg->Metrics.size()+1, 2 );
+		metrics.resize( cc.Metrics.size()+1, 2 );
 		metrics(0,0) = "Metric";
 		metrics(0,1) = "Value";
 
-		for( size_t i=0;i<m_cfg->Metrics.size();i++ )
+		for( size_t i=0;i<cc.Metrics.size();i++ )
 		{
-			ConfigInfo::MetricData &md = m_cfg->Metrics[i];
+			CaseCallbackContext::MetricData &md = cc.Metrics[i];
 			wxString slab( md.var );
 			wxString sval( "<inval>" );
 
@@ -240,16 +259,21 @@ void ResultsViewer::Setup( ConfigInfo *cfg, DataProvider *results )
 		}
 	}
 
-	m_tables->Setup( m_cfg, m_results );
+	m_tables->Setup( cfg, m_results );
 
 	// build cashflow
 	m_cashFlow->Freeze();
 	m_cashFlow->ClearGrid();
 
-	if ( m_cfg->CashFlow.size() > 0 )
+	
+	if ( lk::node_t *cfcb = SamApp::GlobalCallbacks().Lookup( "cashflow", cfg->Financing ))
 	{
+		CaseCallbackContext cc( m_case, "Cashflow callback: " + cfg->Financing );
+		if ( !cc.Invoke( cfcb, SamApp::GlobalCallbacks().GetEnv() ) )
+			wxLogStatus( "error running metrics script." );
+		
 		int nyears = 0;
-		if ( VarValue *vv = m_results->GetValue( m_cfg->Settings[ "analysis_period_var" ] ) )
+		if ( VarValue *vv = m_results->GetValue( cfg->Settings[ "analysis_period_var" ] ) )
 			nyears = (int)vv->Value();
 		if ( nyears < 16 ) nyears = 16;
 		if ( nyears > 100 ) nyears = 100;
@@ -257,15 +281,15 @@ void ResultsViewer::Setup( ConfigInfo *cfg, DataProvider *results )
 		for( size_t c=0;c<nyears;c++ )
 			m_cashFlow->SetColLabelValue( c, wxString::Format("%d", (int)c) );
 
-		for( size_t r=0;r<m_cfg->CashFlow.size() && r < 400;r++ )
+		for( size_t r=0;r<cc.CashFlow.size() && r < 400;r++ )
 		{
-			ConfigInfo::CashFlowLine &cl = m_cfg->CashFlow[r];
+			CaseCallbackContext::CashFlowLine &cl = cc.CashFlow[r];
 
-			if ( cl.type == ConfigInfo::CashFlowLine::SPACER )
+			if ( cl.type == CaseCallbackContext::CashFlowLine::SPACER )
 				m_cashFlow->SetRowLabelValue( r, wxEmptyString );
-			else if ( cl.type == ConfigInfo::CashFlowLine::HEADER )
+			else if ( cl.type == CaseCallbackContext::CashFlowLine::HEADER )
 				m_cashFlow->SetRowLabelValue( r, cl.name );
-			else if ( cl.type == ConfigInfo::CashFlowLine::VARIABLE )
+			else if ( cl.type == CaseCallbackContext::CashFlowLine::VARIABLE )
 			{
 				wxString label = m_results->GetLabel( cl.name );
 				wxString units = m_results->GetUnits( cl.name );
@@ -307,7 +331,7 @@ void ResultsViewer::Setup( ConfigInfo *cfg, DataProvider *results )
 		m_cashFlow->GetParent()->Layout();
 		m_cashFlow->Layout();
 		m_cashFlow->EnableCopyPaste(true);
-		m_cashFlow->ResizeGrid( m_cfg->CashFlow.size(), nyears );
+		m_cashFlow->ResizeGrid( cc.CashFlow.size(), nyears );
 
 		m_cashFlow->AutoSize();
 		m_cashFlow->Thaw();	
@@ -366,7 +390,7 @@ void ResultsViewer::LoadPerspective( StringHash &map )
 
 void ResultsViewer::Clear()
 {
-	m_cfg = 0;
+	m_case = 0;
 	m_results = 0;
 
 	matrix_t<wxString> metrics(2,1);

@@ -14,6 +14,47 @@
 class Case;
 class ConfigInfo;
 
+class CaseCallbackContext
+{
+	Case *m_case;
+	wxString m_desc;
+public:
+	CaseCallbackContext( Case *cc, const wxString &desc );
+
+	VarTable &GetValues();
+	Case &GetCase();
+	
+	struct MetricData {
+		MetricData() :
+			scale( 1.0 ), mode( 'g' ), thousep( false ), deci( 2 )
+		{}
+		wxString var;
+		wxString label;
+		double scale;
+		char mode;
+		bool thousep;
+		int deci;
+		wxString pre, post;
+	};
+	std::vector<MetricData> Metrics;
+	
+	struct CashFlowLine {
+		enum { SPACER, HEADER, VARIABLE };
+		CashFlowLine() : type(VARIABLE), digits(2), scale(1.0f) {  }
+
+		int type;
+		wxString name;
+		int digits;
+		float scale;
+	};
+	std::vector<CashFlowLine> CashFlow;
+
+	bool Invoke( lk::node_t *root, lk::env_t *parent );
+
+protected:
+	virtual void SetupLibraries( lk::env_t *env );
+};
+
 class CaseEvent
 {
 private:

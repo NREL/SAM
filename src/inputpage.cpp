@@ -30,51 +30,20 @@
 #include "shadingfactors.h"
 #include "library.h"
 
-CallbackContext::CallbackContext( ActiveInputPage *ip, lk::node_t *root, const wxString &desc )
-	: m_inputPage(ip), m_root(root), m_desc(desc)
+UICallbackContext::UICallbackContext( ActiveInputPage *ip, const wxString &desc )
+	: CaseCallbackContext( ip->GetCase(), desc ), m_inputPage(ip)
 {
 	// nothing to do
 }
-
-ActiveInputPage *CallbackContext::InputPage() { return m_inputPage; }
-VarTable &CallbackContext::GetValues() { return m_inputPage->GetCase()->Values(); }
-Case &CallbackContext::GetCase() { return *m_inputPage->GetCase(); }
-CaseWindow *CallbackContext::GetCaseWindow() { return m_inputPage->GetCaseWindow(); }
+ActiveInputPage *UICallbackContext::InputPage() { return m_inputPage; }
+CaseWindow *UICallbackContext::GetCaseWindow() { return m_inputPage->GetCaseWindow(); }
 	
-bool CallbackContext::Invoke( )
+void UICallbackContext::SetupLibraries( lk::env_t *env )
 {
-	lk::env_t local_env( &GetCase().CallbackEnvironment() );
-
-	// add other callback environment functions
-	local_env.register_funcs( lk::stdlib_basic() );
-	local_env.register_funcs( lk::stdlib_math() );
-	local_env.register_funcs( lk::stdlib_string() );
-	local_env.register_funcs( lk::stdlib_wxui(), this );
-	local_env.register_funcs( invoke_general_funcs(), this );
-	local_env.register_funcs( invoke_uicallback_funcs(), this );
-	local_env.register_funcs( invoke_ssc_funcs(), this );
-	local_env.register_funcs( wxLKPlotFunctions() );
-	local_env.register_funcs( wxLKHttpFunctions() );
-	local_env.register_funcs( wxLKMiscFunctions() );
-	
-	try {
-
-		VarTableScriptInterpreter e( m_root, &local_env, &GetValues() );
-		if ( !e.run() )
-		{
-			wxString text = "Could not evaluate callback function:" +  m_desc + "\n";
-			for (size_t i=0;i<e.error_count();i++)
-				text += e.get_error(i);
-
-			wxShowTextMessageDialog( text );
-		}
-		
-	} catch(std::exception &e ){
-		wxShowTextMessageDialog( "Could not evaluate callback function: " + m_desc + wxString("\n\n") + e.what());
-		return false;
-	}
-
-	return true;
+	env->register_funcs( invoke_uicallback_funcs(), this );
+	env->register_funcs( wxLKPlotFunctions() );
+	env->register_funcs( wxLKHttpFunctions() );
+	env->register_funcs( wxLKMiscFunctions() );	
 }
 
 
@@ -218,8 +187,8 @@ void ActiveInputPage::Initialize()
 	// lookup and run any callback functions.
 	if ( lk::node_t *root = m_case->QueryCallback( "on_load", m_formData->GetName() ) )
 	{
-		CallbackContext cbcxt( this, root, m_formData->GetName() + "->on_load" );
-		if ( cbcxt.Invoke() )
+		UICallbackContext cbcxt( this, m_formData->GetName() + "->on_load" );
+		if ( cbcxt.Invoke( root, &m_case->CallbackEnvironment() ) )
 			wxLogStatus("callback script " + m_formData->GetName() + "->on_load succeeded");
 	}
 }
@@ -347,8 +316,8 @@ void ActiveInputPage::OnNativeEvent( wxCommandEvent &evt )
 	// lookup and run any callback functions.
 	if ( lk::node_t *root = m_case->QueryCallback( "on_change", obj->GetName() ) )
 	{
-		CallbackContext cbcxt( this, root, obj->GetName() + "->on_change" );
-		if ( cbcxt.Invoke() )
+		UICallbackContext cbcxt( this, obj->GetName() + "->on_change" );
+		if ( cbcxt.Invoke( root, &m_case->CallbackEnvironment() ) )
 			wxLogStatus("callback script " + obj->GetName() + "->on_change succeeded");
 	}
 	

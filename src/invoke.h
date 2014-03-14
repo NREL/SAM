@@ -3,13 +3,22 @@
 
 #include <lk_env.h>
 
+// general functions like logging
 lk::fcall_t* invoke_general_funcs();
+
+// functions for invoking SSC
 lk::fcall_t* invoke_ssc_funcs();
+
+// functions for the startup script
 lk::fcall_t* invoke_config_funcs();
-lk::fcall_t* invoke_equation_funcs(); // additional functions that can be called in equations
 
-
-// these functions expect a CallbackContext* as user_data
+// these functions expect a UICallbackContext* as user_data
 lk::fcall_t* invoke_uicallback_funcs();
+
+// these functions expect a CaseCallbackContext* as user_data
+lk::fcall_t* invoke_casecallback_funcs();
+
+// functions that can be called in equations
+lk::fcall_t* invoke_equation_funcs(); 
 
 #endif
