@@ -1,7 +1,7 @@
 function rescom_metrics()
 {
-	metric( 'lcoe_real', {'label'='Real LCOE', 'post'=' $/kWh' } );
-	metric( 'lcoe_nom', {'label'='Nominal LCOE', 'post'=' $/kWh' } );
+	metric( 'lcoe_nom',{'label'='LCOE (Nominal)', 'post'=' \u00A2/kWh', 'mode'='f', 'deci'='2' } );
+	metric( 'lcoe_real',{'label'='LCOE (Real)', 'post'=' \u00A2/kWh', 'mode'='f', 'deci'='2' } );
 }
 
 function ipp_metrics()
