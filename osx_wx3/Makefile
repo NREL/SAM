@@ -16,6 +16,7 @@ CXXFLAGS = $(CFLAGS)
 LDFLAGS = `wx-config-3 --libs` `wx-config-3 --libs aui` `wx-config-3 --libs stc` -lm $(LKLIB) $(WEXLIB) -lstdc++ -lcurl
 
 OBJECTS = ide.o \
+	graph.o \
 	defaultsmanager.o \
 	simulation.o \
 	library.o \
