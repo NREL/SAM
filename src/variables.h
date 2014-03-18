@@ -91,6 +91,7 @@ public:
 	float Value();
 	float *Array( size_t *n );
 	std::vector<float> Array();
+	size_t Length();
 	std::vector<int> IntegerArray();
 	::matrix_t<float> &Matrix();
 	float *Matrix( size_t *nr, size_t *nc );

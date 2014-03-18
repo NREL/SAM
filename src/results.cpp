@@ -6,6 +6,7 @@
 #include <wx/statline.h>
 #include <wx/busyinfo.h>
 #include <wx/splitter.h>
+#include <wx/datstrm.h>
 
 #include <wex/extgrid.h>
 #include <wex/metro.h>
@@ -23,6 +24,7 @@
 #include "simulation.h"
 #include "results.h"
 #include "casewin.h"
+#include "graph.h"
 
 
 BEGIN_EVENT_TABLE( ResultsViewer, wxMetroNotebook )	
@@ -47,7 +49,8 @@ ResultsViewer::ResultsViewer( wxWindow *parent )
 	summary_sizer->Add( m_metrics, 0, wxALL, 30 );
 	summary_panel->SetSizer( summary_sizer );
 	
-	AddPage( new wxPanel( this ), "Graphs" );
+	m_graphViewer = new GraphViewer( this );
+	AddPage( m_graphViewer, "Graphs" );
 
 	m_tables = new TabularBrowser( this );
 	AddPage( m_tables, "Data" );
@@ -253,6 +256,9 @@ void ResultsViewer::Setup( Case *c, DataProvider *results )
 			}
 		}
 	}
+
+	// setup graphs
+	m_graphViewer->Setup( m_case, m_results );
 
 	m_tables->Setup( cfg, m_results );
 
@@ -908,7 +914,7 @@ void TabularBrowser::UpdateAll()
 		for ( size_t j=0;j<list.Count();j++)
 			labels.Add( m_results->GetLabel( list[j] ));
 
-		SortByLabels( list, labels );
+		wxSortByLabels( list, labels );
 
 		for (size_t j=0;j<list.Count();j++)
 		{
@@ -941,31 +947,6 @@ void TabularBrowser::UpdateAll()
 	}
 
 	UpdateGrid();
-}
-
-void TabularBrowser::SortByLabels(wxArrayString &names, wxArrayString &labels)
-{
-	// sort the selections by labels
-	wxString buf;
-	int count = (int)labels.Count();
-	for (int i=0;i<count-1;i++)
-	{
-		int smallest = i;
-
-		for (int j=i+1;j<count;j++)
-			if ( labels[j] < labels[smallest] )
-				smallest = j;
-
-		// swap
-		buf = labels[i];
-		labels[i] = labels[smallest];
-		labels[smallest] = buf;
-
-		buf = names[i];
-		names[i] = names[smallest];
-		names[smallest] = buf;
-
-	}
 }
 
 void TabularBrowser::ListByCount( size_t n, wxArrayString &list )

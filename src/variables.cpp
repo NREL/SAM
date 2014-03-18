@@ -383,6 +383,12 @@ float VarValue::Value()
 	else return std::numeric_limits<float>::quiet_NaN();
 }
 
+size_t VarValue::Length()
+{
+	if ( m_type == VV_ARRAY ) return m_val.length();
+	else return 0;
+}
+
 float *VarValue::Array( size_t *n )
 {
 	if ( m_type == VV_ARRAY )
