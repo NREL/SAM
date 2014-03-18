@@ -1,8 +1,11 @@
 #ifndef __ResultsViewer_h
 #define __ResultsViewer_h
 
+#include <wx/datstrm.h>
 #include <wex/metro.h>
 #include <wex/exttree.h>
+
+#include <wex/plot/plplotctrl.h>
 
 #include "object.h"
 
@@ -26,6 +29,7 @@ class TabularBrowser;
 class wxMetroListBox;
 class wxDVTimeSeriesDataSet;
 class ConfigInfo;
+class GraphViewer;
 
 class Case;
 class VarTable;
@@ -51,7 +55,9 @@ private:
 	MetricsTable *m_metrics;		
 	TabularBrowser *m_tables;
 	wxExtGridCtrl *m_cashFlow;
-	
+
+	GraphViewer *m_graphViewer;
+		
 	std::vector<wxDVTimeSeriesDataSet*> m_tsDataSets;
 	wxDVTimeSeriesCtrl *m_hourlySeries;
 	wxDVTimeSeriesCtrl *m_dailySeries;
@@ -106,7 +112,6 @@ private:
 	void OnVarTree(wxTreeEvent &evt);
 
 	void ListByCount( size_t n, wxArrayString &list );
-	void SortByLabels(wxArrayString &names, wxArrayString &labels);
 	void UpdateGrid();
 
 	ConfigInfo *m_config;
