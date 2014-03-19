@@ -9,6 +9,7 @@
 #include <wex/utils.h>
 #include <wex/exttext.h>
 #include <wex/metro.h>
+#include <wex/snaplay.h>
 
 #include "graph.h"
 #include "variables.h"
@@ -121,8 +122,15 @@ bool Graph::Read( wxInputStream &is )
 }
 
 
+DEFINE_EVENT_TYPE( wxEVT_GRAPH_SELECT )
+
+BEGIN_EVENT_TABLE( GraphCtrl, wxPLPlotCtrl )
+	EVT_LEFT_DOWN( GraphCtrl::OnLeftDown )
+END_EVENT_TABLE()
+
+
 GraphCtrl::GraphCtrl( wxWindow *parent, int id )
-	: wxPLPlotCtrl( parent, id )
+	: wxPLPlotCtrl( parent, id, wxDefaultPosition, wxSize(500,400) )
 {
 	/* nothing to do */
 }
@@ -276,9 +284,9 @@ static std::vector<wxColour> s_colours;
 	if ( ndata == 1 )
 	{
 		// single value axis
-		wxPLLabelAxis *x1 = new wxPLLabelAxis( -1, yvars.size() + 1, m_g.XLabel );
+		wxPLLabelAxis *x1 = new wxPLLabelAxis( -1, yvars.size(), m_g.XLabel );
 		for( size_t i=0;i<ynames.size();i++)
-			x1->Add( i+1, m_d->GetLabel( ynames[i] ) );
+			x1->Add( i, m_d->GetLabel( ynames[i] ) );
 		SetXAxis1( x1 );
 	}
 	else if ( ndata == 12 )
@@ -324,29 +332,38 @@ static std::vector<wxColour> s_colours;
 	Refresh();
 }
 
+void GraphCtrl::OnLeftDown( wxMouseEvent &evt )
+{
+	wxCommandEvent e( wxEVT_GRAPH_SELECT, GetId() );
+	e.SetEventObject( this );
+	GetEventHandler()->ProcessEvent( e );
+	
+	evt.Skip();
+}
 
+
+
+DEFINE_EVENT_TYPE( wxEVT_GRAPH_PROPERTY_CHANGE )
 
 enum { ID_Y = wxID_HIGHEST+495, ID_TYPE, ID_TITLE, ID_XLABEL, ID_YLABEL, ID_LEGEND, 
 	ID_SCALE, ID_SIZE, ID_COARSE, ID_FINE };
 
-BEGIN_EVENT_TABLE( GraphViewer, wxPanel )
-	EVT_CHECKLISTBOX( ID_Y, GraphViewer::OnEdit )
-	EVT_TEXT_ENTER( ID_TITLE, GraphViewer::OnEdit )
-	EVT_TEXT_ENTER( ID_XLABEL, GraphViewer::OnEdit )
-	EVT_TEXT_ENTER( ID_YLABEL, GraphViewer::OnEdit )
-	EVT_RADIOBUTTON( ID_TYPE, GraphViewer::OnEdit )
-	EVT_COMMAND_SCROLL( ID_SCALE, GraphViewer::OnSlider )
-	EVT_COMMAND_SCROLL( ID_SIZE, GraphViewer::OnSlider )
-	EVT_CHECKBOX( ID_COARSE, GraphViewer::OnEdit )
-	EVT_CHECKBOX( ID_FINE, GraphViewer::OnEdit )
+BEGIN_EVENT_TABLE( GraphProperties, wxPanel )
+	EVT_CHECKLISTBOX( ID_Y, GraphProperties::OnEdit )
+	EVT_TEXT( ID_TITLE, GraphProperties::OnEdit )
+	EVT_TEXT( ID_XLABEL, GraphProperties::OnEdit )
+	EVT_TEXT( ID_YLABEL, GraphProperties::OnEdit )
+	EVT_RADIOBUTTON( ID_TYPE, GraphProperties::OnEdit )
+	EVT_COMMAND_SCROLL( ID_SCALE, GraphProperties::OnSlider )
+	EVT_COMMAND_SCROLL( ID_SIZE, GraphProperties::OnSlider )
+	EVT_CHECKBOX( ID_COARSE, GraphProperties::OnEdit )
+	EVT_CHECKBOX( ID_FINE, GraphProperties::OnEdit )
 END_EVENT_TABLE()
 
 
-GraphViewer::GraphViewer( wxWindow *parent )
-	: wxPanel( parent )
+GraphProperties::GraphProperties( wxWindow *parent, int id )
+	: wxPanel( parent, id )
 {
-	m_case = 0;
-	m_data = 0;
 
 	m_Y = new wxCheckListBox( this, ID_Y );
 	m_type = new wxRadioChoice( this, ID_TYPE );
@@ -368,42 +385,29 @@ GraphViewer::GraphViewer( wxWindow *parent )
 	m_coarse->SetValue( true );
 	m_fine = new wxCheckBox( this, ID_FINE, "Fine grid" );
 	m_fine->SetValue( true );
-
-	m_scroll = new wxScrolledWindow( this, wxID_ANY );
+		
+	wxBoxSizer *sizer = new wxBoxSizer( wxVERTICAL );
+	sizer->Add( m_type, 0, wxALL|wxEXPAND, 4 );
+	sizer->Add( m_title, 0, wxALL|wxEXPAND, 4 );
+	sizer->Add( m_xlabel, 0, wxALL|wxEXPAND, 4 );
+	sizer->Add( m_ylabel, 0, wxALL|wxEXPAND, 4 );
+	sizer->Add( m_size, 0, wxALL|wxEXPAND, 4 );
+	sizer->Add( m_scale, 0, wxALL|wxEXPAND, 4 );
+	sizer->Add( m_coarse, 0, wxALL|wxEXPAND, 4 );
+	sizer->Add( m_fine, 0, wxALL|wxEXPAND, 4 );
+	sizer->Add( m_Y, 1, wxALL|wxEXPAND, 4 );
+	SetSizer( sizer );
 	
-	wxBoxSizer *sizer_left = new wxBoxSizer( wxVERTICAL );
-	sizer_left->Add( m_type, 0, wxALL|wxEXPAND, 4 );
-	sizer_left->Add( m_title, 0, wxALL|wxEXPAND, 4 );
-	sizer_left->Add( m_xlabel, 0, wxALL|wxEXPAND, 4 );
-	sizer_left->Add( m_ylabel, 0, wxALL|wxEXPAND, 4 );
-	sizer_left->Add( m_size, 0, wxALL|wxEXPAND, 4 );
-	sizer_left->Add( m_scale, 0, wxALL|wxEXPAND, 4 );
-	sizer_left->Add( m_coarse, 0, wxALL|wxEXPAND, 4 );
-	sizer_left->Add( m_fine, 0, wxALL|wxEXPAND, 4 );
-	sizer_left->Add( m_Y, 1, wxALL|wxEXPAND, 4 );
-	
-
-	wxBoxSizer *sizer_main = new wxBoxSizer( wxHORIZONTAL );
-	sizer_main->Add( sizer_left, 0, wxALL|wxEXPAND,  0 );
-	sizer_main->Add( m_scroll, 1, wxALL|wxEXPAND, 0 );
-	SetSizer( sizer_main );
-
-	m_graph = new GraphCtrl( m_scroll, wxID_ANY );
-	m_graph->SetClientSize( 700, 500 );
+	Enable( false );
 }
 
-GraphViewer::~GraphViewer()
-{
-}
 
-void GraphViewer::Setup( Case *c, DataProvider *dp )
+void GraphProperties::SetupVariables( DataProvider *dp )
 {
-	m_case = c;
-	m_data = dp;
 
 	Clear();
 
-	if ( !m_case || !m_data ) return;
+	if ( !dp ) return;
 
 	m_names = dp->GetVariables();
 	m_labels.Clear();
@@ -414,23 +418,40 @@ void GraphViewer::Setup( Case *c, DataProvider *dp )
 	
 	m_Y->Clear();
 	m_Y->Append( m_labels );
+
+	Enable( true );
 }
 
-void GraphViewer::Clear()
+void GraphProperties::Clear()
 {
-	for( size_t i=0;i<m_graphs.size();i++ )
-		m_graphs[i]->Destroy();
-
-	m_graphs.clear();
-
 	m_xlabel->Clear();
 	m_ylabel->Clear();
 	m_title->Clear();
+
+	Enable( false );
 }
 
-void GraphViewer::UpdateCurrentGraph()
+
+void GraphProperties::Set( const Graph &g )
 {
-	Graph g;
+	for( size_t i=0;i<m_names.size();i++ )
+		m_Y->Check( i, g.Y.Index( m_names[i] ) != wxNOT_FOUND );
+
+	m_type->SetSelection( g.Type );
+	m_title->ChangeValue( g.Title );
+	m_xlabel->ChangeValue( g.XLabel );
+	m_ylabel->ChangeValue( g.YLabel );
+	m_scale->SetValue( (int)(g.FontScale*10) );
+	m_size->SetValue( g.Size );
+	m_coarse->SetValue( g.CoarseGrid );
+	m_fine->SetValue( g.FineGrid );
+
+	Enable( true );
+}
+
+void GraphProperties::Get( Graph &g )
+{
+	g.Y.Clear();
 	for( size_t i=0;i<m_names.size();i++)
 		if ( m_Y->IsChecked( i ) )
 			g.Y.Add( m_names[i] );
@@ -443,18 +464,154 @@ void GraphViewer::UpdateCurrentGraph()
 	g.Size = m_size->GetValue();
 	g.CoarseGrid = m_coarse->GetValue();
 	g.FineGrid = m_fine->GetValue();
-
-	m_graph->Display( m_data, g );
-
 }
 
 
-void GraphViewer::OnEdit( wxCommandEvent & )
+void GraphProperties::SendChangeEvent()
 {
-	UpdateCurrentGraph();
+	wxCommandEvent e( wxEVT_GRAPH_PROPERTY_CHANGE, GetId() );
+	e.SetEventObject( this );
+	GetEventHandler()->ProcessEvent( e );
 }
 
-void GraphViewer::OnSlider( wxScrollEvent & )
+void GraphProperties::OnEdit( wxCommandEvent & )
+{	
+	SendChangeEvent();
+}
+
+void GraphProperties::OnSlider( wxScrollEvent & )
 {
-	UpdateCurrentGraph();
+	SendChangeEvent();
+}
+
+
+enum { ID_CREATE_GRAPH = wxID_HIGHEST+466, ID_DELETE_GRAPH,
+	ID_GRAPH_PROPS };
+
+BEGIN_EVENT_TABLE( GraphViewer, wxSplitterWindow )
+	EVT_BUTTON( ID_CREATE_GRAPH, GraphViewer::OnCommand )
+	EVT_BUTTON( ID_DELETE_GRAPH, GraphViewer::OnCommand )
+	EVT_GRAPH_PROPERTY_CHANGE( ID_GRAPH_PROPS, GraphViewer::OnCommand )
+	EVT_GRAPH_SELECT( wxID_ANY, GraphViewer::OnGraphSelect )
+END_EVENT_TABLE()
+
+
+GraphViewer::GraphViewer( wxWindow *parent )
+	: wxSplitterWindow( parent, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxSP_LIVE_UPDATE|wxSP_NOBORDER )
+{
+	m_case = 0;
+	m_data = 0;
+	m_current = 0;
+
+	wxPanel *lpanel = new wxPanel( this );
+	wxBoxSizer *sizer_tools = new wxBoxSizer( wxHORIZONTAL );
+	sizer_tools->Add( new wxButton( lpanel, ID_CREATE_GRAPH, "Create graph" ), 0, wxALL|wxEXPAND, 2 );
+	sizer_tools->Add( new wxButton( lpanel, ID_DELETE_GRAPH, "Delete graph" ), 0, wxALL|wxEXPAND, 2 );
+		
+	m_props = new GraphProperties( lpanel, ID_GRAPH_PROPS );
+
+	wxBoxSizer *sizer_left = new wxBoxSizer( wxVERTICAL );
+	sizer_left->Add( sizer_tools, 0, wxALL|wxEXPAND, 0 );
+	sizer_left->Add( m_props, 1, wxALL|wxEXPAND, 0 );
+
+	lpanel->SetSizer( sizer_left );
+
+
+	m_layout = new wxSnapLayout( this, wxID_ANY );	
+	SetMinimumPaneSize( 50 );
+	SplitVertically( lpanel, m_layout, 210 );
+
+	SetCurrent( CreateNewGraph() );
+}
+
+GraphCtrl *GraphViewer::CreateNewGraph()
+{
+	GraphCtrl *gc = new GraphCtrl( m_layout, wxID_ANY );
+	m_graphs.push_back( gc );
+	m_layout->Add( gc );
+	return gc;
+}
+
+void GraphViewer::DeleteGraph( GraphCtrl *gc )
+{
+	
+	std::vector<GraphCtrl*>::iterator it = std::find( m_graphs.begin(), m_graphs.end(), gc );
+	if ( it != m_graphs.end() )
+	{
+		m_layout->Delete( *it );
+		m_graphs.erase( it );
+	}
+}
+
+	
+void GraphViewer::Setup( Case *c, DataProvider *dp )
+{
+	m_case = c;
+	m_data = dp;
+	m_props->Clear();
+
+	if ( !m_case || !m_data ) return;
+
+	m_props->SetupVariables( dp );
+}
+
+
+GraphCtrl *GraphViewer::Current()
+{
+	return m_current;
+}
+
+void GraphViewer::UpdateGraph()
+{
+	if( !m_current || !m_data) return;
+	Graph g;
+	m_props->Get( g );
+	m_current->Display( m_data, g );
+}
+
+void GraphViewer::UpdateProperties()
+{
+	if ( m_current ) m_props->Set( m_current->GetGraph() );
+	else m_props->Clear();
+}
+
+void GraphViewer::OnCommand( wxCommandEvent &evt )
+{
+	if ( evt.GetId() == ID_CREATE_GRAPH )
+	{
+		SetCurrent( CreateNewGraph() );
+	}
+	else if ( evt.GetId() == ID_DELETE_GRAPH )
+	{
+		if ( m_current != 0 )
+		{
+			DeleteGraph( m_current );
+			m_current = 0;
+			SetCurrent( 0 );
+		}
+	}
+	else if ( evt.GetId() == ID_GRAPH_PROPS )
+		UpdateGraph();
+}
+
+void GraphViewer::OnGraphSelect( wxCommandEvent &evt )
+{
+	if ( GraphCtrl *gc = dynamic_cast<GraphCtrl*>( evt.GetEventObject() ) )
+		SetCurrent( gc );
+}
+
+void GraphViewer::SetCurrent( GraphCtrl *gc )
+{
+	if ( m_current )
+	{
+		m_layout->ClearHighlights();
+		m_current = 0;
+	}
+	
+	m_current = gc;
+
+	if(  m_current )
+		m_layout->Highlight( m_current );
+
+	UpdateProperties();
 }

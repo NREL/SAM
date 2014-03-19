@@ -237,7 +237,8 @@ CaseWindow::CaseWindow( wxWindow *parent, Case *c )
 	m_scriptCtrl = new wxLKScriptCtrl( m_pageFlipper, wxID_ANY );
 	m_pageFlipper->AddPage( m_scriptCtrl, "Scripting", false );
 
-
+	
+	SetMinimumPaneSize( 50 );
 	SplitVertically( left_panel, m_pageFlipper, 210 );
 	
 	
