@@ -4,6 +4,7 @@
 #include <wx/datstrm.h>
 #include <wx/arrstr.h>
 #include <wx/panel.h>
+#include <wx/splitter.h>
 
 #include <wex/plot/plplotctrl.h>
 
@@ -14,6 +15,7 @@ class Case;
 class DataProvider;
 class wxExtTextCtrl;
 class wxCheckListBox;
+class wxSnapLayout;
 
 class Graph
 {
@@ -48,6 +50,12 @@ public:
 	double FontScale;
 };
 
+BEGIN_DECLARE_EVENT_TYPES()
+	DECLARE_EVENT_TYPE( wxEVT_GRAPH_SELECT, 0)
+END_DECLARE_EVENT_TYPES()
+
+#define EVT_GRAPH_SELECT(id, func) EVT_COMMAND(id, wxEVT_GRAPH_SELECT, func)
+
 class GraphCtrl : public wxPLPlotCtrl
 {
 public:
@@ -58,16 +66,28 @@ public:
 protected:
 	DataProvider *m_d;
 	Graph m_g;
+
+	void OnLeftDown( wxMouseEvent & );
+
+	DECLARE_EVENT_TABLE();
 };
 
-class GraphViewer : public wxPanel
+BEGIN_DECLARE_EVENT_TYPES()
+	DECLARE_EVENT_TYPE( wxEVT_GRAPH_PROPERTY_CHANGE, 0)
+END_DECLARE_EVENT_TYPES()
+
+#define EVT_GRAPH_PROPERTY_CHANGE(id, func) EVT_COMMAND(id, wxEVT_GRAPH_PROPERTY_CHANGE, func)
+
+class GraphProperties : public wxPanel
 {
 public:
-	GraphViewer( wxWindow *parent );
-	virtual ~GraphViewer();
+	GraphProperties( wxWindow *parent, int id );
 
-	void Setup( Case *c, DataProvider *dp );
+	void SetupVariables( DataProvider *dp );
 	void Clear();
+
+	void Set( const Graph &g );
+	void Get( Graph &g );
 
 private:
 	wxArrayString m_names, m_labels;
@@ -80,15 +100,36 @@ private:
 	wxSlider *m_scale;
 	wxSlider *m_size;
 	wxCheckBox *m_coarse, *m_fine;
-
-	GraphCtrl *m_graph;
-
-	void UpdateCurrentGraph();
-
+	
 	void OnEdit( wxCommandEvent & );
 	void OnSlider( wxScrollEvent & );
+	void SendChangeEvent();
 
-	wxScrolledWindow *m_scroll;
+	DECLARE_EVENT_TABLE();
+
+};
+
+class GraphViewer : public wxSplitterWindow
+{
+public:
+	GraphViewer( wxWindow *parent );
+	
+	void Setup( Case *c, DataProvider *dp );
+	
+	GraphCtrl *CreateNewGraph();
+	void DeleteGraph( GraphCtrl * );
+
+	GraphCtrl *Current();
+private:
+	void UpdateGraph();
+	void UpdateProperties();
+	void OnCommand( wxCommandEvent & );
+	void OnGraphSelect( wxCommandEvent & );
+	void SetCurrent( GraphCtrl *gc );
+
+	GraphCtrl *m_current;
+	GraphProperties *m_props;
+	wxSnapLayout *m_layout;
 	std::vector<GraphCtrl*> m_graphs;
 
 	Case *m_case;
