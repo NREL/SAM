@@ -18,6 +18,7 @@
 #include <wex/ole/excelauto.h>
 #include <wex/csv.h>
 #include <wex/utils.h>
+#include <wex/snaplay.h>
 
 #include "main.h"
 #include "variables.h"
@@ -37,17 +38,32 @@ ResultsViewer::ResultsViewer( wxWindow *parent )
 	 m_case( 0 ),
 	 m_results( 0 )
 {
-	wxPanel *summary_panel = new wxPanel( this );
-	AddPage( summary_panel, "Summary", true );
-	wxBoxSizer *summary_sizer = new wxBoxSizer( wxVERTICAL );
+	m_summaryLayout = new wxSnapLayout( this, wxID_ANY );
+	AddPage( m_summaryLayout, "Summary", true );
 
-	m_metrics = new MetricsTable( summary_panel );
+	m_metrics = new MetricsTable( m_summaryLayout );
 	matrix_t<wxString> data( 1, 2 );
 	data.at(0,0) = "Metric"; data.at(0,1) = "Value";
-	m_metrics->SetData( data );
-	
-	summary_sizer->Add( m_metrics, 0, wxALL, 30 );
-	summary_panel->SetSizer( summary_sizer );
+	m_metrics->SetData( data );	
+	m_summaryLayout->Add( m_metrics );
+	m_summaryLayout->Add( new wxCheckListBox( m_summaryLayout, wxID_ANY ) );
+	m_summaryLayout->Add( new wxCheckListBox( m_summaryLayout, wxID_ANY ) );
+	wxPLPlotCtrl *pl = new wxPLPlotCtrl( m_summaryLayout, wxID_ANY );
+	pl->SetTitle("Super_i^2");
+	std::vector<wxRealPoint> pld;
+	pld.push_back( wxRealPoint( 1, 4 ) );
+	pld.push_back( wxRealPoint( 2, 3 ) );
+	pld.push_back( wxRealPoint( 3, 1 ) );
+	pld.push_back( wxRealPoint( 4, -4.5 ) );
+	pld.push_back( wxRealPoint( 5, -0.75 ) );
+	pld.push_back( wxRealPoint( 6, 2 ) );
+	pld.push_back( wxRealPoint( 7, 7 ) );
+	pld.push_back( wxRealPoint( 8, 9 ) );
+	pl->AddPlot( new wxPLLinePlot( pld, "Demo data", *wxRED, wxPLLinePlot::DOTTED, 3, true ) );
+	m_summaryLayout->Add( pl, 400, 300 );
+	wxGrid *gr = new wxGrid( m_summaryLayout, wxID_ANY );
+	gr->CreateGrid( 5, 7 );
+	m_summaryLayout->Add( gr );
 	
 	m_graphViewer = new GraphViewer( this );
 	AddPage( m_graphViewer, "Graphs" );
@@ -338,7 +354,7 @@ void ResultsViewer::Setup( Case *c, DataProvider *results )
 		m_cashFlow->Thaw();	
 	}
 
-	m_metrics->SetSize( m_metrics->GetBestSize() );
+	m_summaryLayout->AutoLayout();
 	
 	// load the formerly saved perspective
 	LoadPerspective( viewinfo );

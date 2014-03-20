@@ -48,6 +48,7 @@ public:
 	double YMin, YMax;
 	wxString Notes;
 	double FontScale;
+	int FontFace; // 0=system,1=arial,2=times,3=metro	
 };
 
 BEGIN_DECLARE_EVENT_TYPES()
@@ -100,6 +101,9 @@ private:
 	wxSlider *m_scale;
 	wxSlider *m_size;
 	wxCheckBox *m_coarse, *m_fine;
+	wxCheckBox *m_showLegend;
+	wxChoice *m_legendPos;
+	wxChoice *m_font;
 	
 	void OnEdit( wxCommandEvent & );
 	void OnSlider( wxScrollEvent & );

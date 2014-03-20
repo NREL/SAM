@@ -31,6 +31,8 @@ class wxDVTimeSeriesDataSet;
 class ConfigInfo;
 class GraphViewer;
 
+class wxSnapLayout;
+
 class Case;
 class VarTable;
 
@@ -52,6 +54,7 @@ private:
 	Case *m_case;
 	DataProvider *m_results;
 
+	wxSnapLayout *m_summaryLayout;
 	MetricsTable *m_metrics;		
 	TabularBrowser *m_tables;
 	wxExtGridCtrl *m_cashFlow;
