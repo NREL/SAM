@@ -271,3 +271,209 @@ cashflow{ 'Single Owner' } = define()
 	cfline( 'cf_after_tax_net_equity_cost_flow');
 	cfline( 'cf_after_tax_cash_flow');
 };
+
+cashflow{ 'All Equity Partnership Flip' } = define()
+{
+	cfline( 'cf_energy_net', 1); // use one digit
+	cfline( 'cf_energy_price');
+	cfline( 'cf_energy_value');
+	cfline( '' ); // spacer
+
+	cfline( "Operating Expenses", 0 ); // header	
+	cfline( 'cf_om_fixed_expense,cf_om_production_expense,cf_om_capacity_expense,cf_om_fuel_expense');
+	cfline( 'cf_om_opt_fuel_1_expense' );
+	cfline( 'cf_om_opt_fuel_2_expense' );
+	
+	cfline( 'cf_property_tax_assessed_value');
+	cfline( 'cf_property_tax_expense');
+	cfline( 'cf_insurance_expense');
+	cfline( 'cf_net_salvage_value');
+	cfline( 'cf_operating_expenses');
+	cfline( '' ); // spacer
+	
+	cfline( 'cf_operating_income');
+	cfline( '' ); // spacer
+	
+	cfline( "Financing", 0 ); // header
+	cfline( 'cf_debt_balance');
+	cfline( 'cf_debt_payment_interest');
+	cfline( 'cf_debt_payment_principal');
+	cfline( 'cf_debt_payment_total');
+	
+	// incentives
+	setup_incentives_cashflow();
+	
+	cfline( "Tax Effect on Equity (State)", 0 ); // header
+	cfline( 'cf_sta_depr_sched');
+	cfline( 'cf_sta_depreciation');
+	cfline( 'cf_sta_incentive_income_less_deductions');
+	cfline( 'cf_sta_taxable_income_less_deductions');
+	cfline( 'cf_sta_tax_savings');
+	cfline( '' ); // spacer
+	
+	cfline( "Tax Effect on Equity (Federal)", 0 ); // header
+	cfline( 'cf_fed_depr_sched' );
+	cfline( 'cf_fed_depreciation');
+	cfline( 'cf_fed_incentive_income_less_deductions');
+	cfline( 'cf_fed_taxable_income_less_deductions');	
+	cfline( 'cf_fed_tax_savings' );
+	cfline( '' ); // spacer
+	
+	cfline( 'cf_after_tax_net_equity_cash_flow');
+	cfline( 'cf_after_tax_net_equity_cost_flow');
+	cfline( 'cf_after_tax_cash_flow');
+};	
+
+cashflow{ 'Leveraged Partnership Flip' } = define()
+{
+	cfline( 'cf_energy_net', 1); // use one digit
+	cfline( 'cf_energy_price');
+	cfline( 'cf_energy_value');
+	cfline( '' ); // spacer
+
+	cfline( "Operating Expenses", 0 ); // header	
+	cfline( 'cf_om_fixed_expense,cf_om_production_expense,cf_om_capacity_expense,cf_om_fuel_expense');
+	cfline( 'cf_om_opt_fuel_1_expense' );
+	cfline( 'cf_om_opt_fuel_2_expense' );
+	
+	cfline( 'cf_property_tax_assessed_value');
+	cfline( 'cf_property_tax_expense');
+	cfline( 'cf_insurance_expense');
+	cfline( 'cf_net_salvage_value');
+	cfline( 'cf_operating_expenses');
+	cfline( '' ); // spacer
+	
+	cfline( 'cf_operating_income');
+	cfline( '' ); // spacer
+	
+	cfline( "Financing", 0 ); // header
+	cfline( 'cf_debt_balance');
+	cfline( 'cf_debt_payment_interest');
+	cfline( 'cf_debt_payment_principal');
+	cfline( 'cf_debt_payment_total');
+	
+	// incentives
+	setup_incentives_cashflow();
+	
+	cfline( "Tax Effect on Equity (State)", 0 ); // header
+	cfline( 'cf_sta_depr_sched');
+	cfline( 'cf_sta_depreciation');
+	cfline( 'cf_sta_incentive_income_less_deductions');
+	cfline( 'cf_sta_taxable_income_less_deductions');
+	cfline( 'cf_sta_tax_savings');
+	cfline( '' ); // spacer
+	
+	cfline( "Tax Effect on Equity (Federal)", 0 ); // header
+	cfline( 'cf_fed_depr_sched' );
+	cfline( 'cf_fed_depreciation');
+	cfline( 'cf_fed_incentive_income_less_deductions');
+	cfline( 'cf_fed_taxable_income_less_deductions');	
+	cfline( 'cf_fed_tax_savings' );
+	cfline( '' ); // spacer
+	
+	cfline( 'cf_after_tax_net_equity_cash_flow');
+	cfline( 'cf_after_tax_net_equity_cost_flow');
+	cfline( 'cf_after_tax_cash_flow');
+	
+	
+};cashflow{ 'Sale Leaseback' } = define()
+{
+	cfline( 'cf_energy_net', 1); // use one digit
+	cfline( 'cf_energy_price');
+	cfline( 'cf_energy_value');
+	cfline( '' ); // spacer
+
+	cfline( "Operating Expenses", 0 ); // header	
+	cfline( 'cf_om_fixed_expense,cf_om_production_expense,cf_om_capacity_expense,cf_om_fuel_expense');
+	cfline( 'cf_om_opt_fuel_1_expense' );
+	cfline( 'cf_om_opt_fuel_2_expense' );
+	
+	cfline( 'cf_property_tax_assessed_value');
+	cfline( 'cf_property_tax_expense');
+	cfline( 'cf_insurance_expense');
+	cfline( 'cf_net_salvage_value');
+	cfline( 'cf_operating_expenses');
+	cfline( '' ); // spacer
+	
+	cfline( 'cf_operating_income');
+	cfline( '' ); // spacer
+	
+	cfline( "Financing", 0 ); // header
+	cfline( 'cf_debt_balance');
+	cfline( 'cf_debt_payment_interest');
+	cfline( 'cf_debt_payment_principal');
+	cfline( 'cf_debt_payment_total');
+	
+	// incentives
+	setup_incentives_cashflow();
+	
+	cfline( "Tax Effect on Equity (State)", 0 ); // header
+	cfline( 'cf_sta_depr_sched');
+	cfline( 'cf_sta_depreciation');
+	cfline( 'cf_sta_incentive_income_less_deductions');
+	cfline( 'cf_sta_taxable_income_less_deductions');
+	cfline( 'cf_sta_tax_savings');
+	cfline( '' ); // spacer
+	
+	cfline( "Tax Effect on Equity (Federal)", 0 ); // header
+	cfline( 'cf_fed_depr_sched' );
+	cfline( 'cf_fed_depreciation');
+	cfline( 'cf_fed_incentive_income_less_deductions');
+	cfline( 'cf_fed_taxable_income_less_deductions');	
+	cfline( 'cf_fed_tax_savings' );
+	cfline( '' ); // spacer
+	
+	cfline( 'cf_after_tax_net_equity_cash_flow');
+	cfline( 'cf_after_tax_net_equity_cost_flow');
+	cfline( 'cf_after_tax_cash_flow');
+};cashflow{ 'Single Owner' } = define()
+{
+	cfline( 'cf_energy_net', 1); // use one digit
+	cfline( 'cf_energy_price');
+	cfline( 'cf_energy_value');
+	cfline( '' ); // spacer
+
+	cfline( "Operating Expenses", 0 ); // header	
+	cfline( 'cf_om_fixed_expense,cf_om_production_expense,cf_om_capacity_expense,cf_om_fuel_expense');
+	cfline( 'cf_om_opt_fuel_1_expense' );
+	cfline( 'cf_om_opt_fuel_2_expense' );
+	
+	cfline( 'cf_property_tax_assessed_value');
+	cfline( 'cf_property_tax_expense');
+	cfline( 'cf_insurance_expense');
+	cfline( 'cf_net_salvage_value');
+	cfline( 'cf_operating_expenses');
+	cfline( '' ); // spacer
+	
+	cfline( 'cf_operating_income');
+	cfline( '' ); // spacer
+	
+	cfline( "Financing", 0 ); // header
+	cfline( 'cf_debt_balance');
+	cfline( 'cf_debt_payment_interest');
+	cfline( 'cf_debt_payment_principal');
+	cfline( 'cf_debt_payment_total');
+	
+	// incentives
+	setup_incentives_cashflow();
+	
+	cfline( "Tax Effect on Equity (State)", 0 ); // header
+	cfline( 'cf_sta_depr_sched');
+	cfline( 'cf_sta_depreciation');
+	cfline( 'cf_sta_incentive_income_less_deductions');
+	cfline( 'cf_sta_taxable_income_less_deductions');
+	cfline( 'cf_sta_tax_savings');
+	cfline( '' ); // spacer
+	
+	cfline( "Tax Effect on Equity (Federal)", 0 ); // header
+	cfline( 'cf_fed_depr_sched' );
+	cfline( 'cf_fed_depreciation');
+	cfline( 'cf_fed_incentive_income_less_deductions');
+	cfline( 'cf_fed_taxable_income_less_deductions');	
+	cfline( 'cf_fed_tax_savings' );
+	cfline( '' ); // spacer
+	
+	cfline( 'cf_after_tax_net_equity_cash_flow');
+	cfline( 'cf_after_tax_net_equity_cost_flow');
+	cfline( 'cf_after_tax_cash_flow');
+};
