@@ -1,4 +1,5 @@
 #include <wx/wx.h>
+#include <wx/gbsizer.h>
 
 #include <wex/plot/plaxis.h>
 #include <wex/plot/plbarplot.h>
@@ -24,6 +25,7 @@ Graph::Graph()
 	CoarseGrid = FineGrid = true;	
 	YMin=YMax= std::numeric_limits<double>::quiet_NaN();
 	FontScale = 1;
+	FontFace = 1;  // default to 'modern'
 }
 
 void Graph::Copy(Graph *gr)
@@ -45,6 +47,7 @@ void Graph::Copy(Graph *gr)
 	YMax = gr->YMax;
 	Notes = gr->Notes;
 	FontScale = gr->FontScale;
+	FontFace = gr->FontFace;
 }
 
 
@@ -78,6 +81,7 @@ bool Graph::Write( wxOutputStream &os )
 	ds.WriteDouble( YMax );
 	ds.WriteString( Notes );
 	ds.WriteDouble( FontScale );
+	ds.Write8( FontFace );
 
 	ds.Write16( 0xfd ); // identifier
 	return true;
@@ -117,6 +121,7 @@ bool Graph::Read( wxInputStream &is )
 	
 	Notes = ds.ReadString();
 	FontScale = ds.ReadDouble();
+	FontFace = ds.Read8();
 
 	return identifier == ds.Read16();
 }
@@ -132,7 +137,7 @@ END_EVENT_TABLE()
 GraphCtrl::GraphCtrl( wxWindow *parent, int id )
 	: wxPLPlotCtrl( parent, id, wxDefaultPosition, wxSize(500,400) )
 {
-	/* nothing to do */
+	SetBackgroundColour( *wxWHITE );
 }
 
 
@@ -172,7 +177,15 @@ static std::vector<wxColour> s_colours;
 	}
 	
 	// setup visual properties of graph
-	wxFont font( wxMetroTheme::Font(wxMT_LIGHT, 12) );
+	wxFont font( *wxNORMAL_FONT );
+	switch( m_g.FontFace )
+	{
+	case 1: font = wxMetroTheme::Font( wxMT_LIGHT ); break;
+	case 2: font = *wxSWISS_FONT; break;
+	case 3: font = wxFont( 12, wxFONTFAMILY_ROMAN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL ); break;
+	case 4: font = wxFont( 12, wxFONTFAMILY_MODERN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL ); break;
+	}
+	
 	if ( m_g.FontScale != 0.0 )
 	{
 		int points = (int)(((double)font.GetPointSize())*m_g.FontScale);
@@ -185,10 +198,9 @@ static std::vector<wxColour> s_colours;
 
 	ShowGrid( m_g.CoarseGrid, m_g.FineGrid );
 	SetTitle( m_g.Title );
-	ShowLegend( m_g.ShowLegend );
+	ShowLegend( m_g.ShowLegend );	
 	SetLegendLocation( (wxPLPlotCtrl::LegendPos)m_g.LegendPos );
-
-
+	
 	// setup data
 	std::vector<VarValue*> yvars;
 	wxArrayString ynames;
@@ -345,8 +357,8 @@ void GraphCtrl::OnLeftDown( wxMouseEvent &evt )
 
 DEFINE_EVENT_TYPE( wxEVT_GRAPH_PROPERTY_CHANGE )
 
-enum { ID_Y = wxID_HIGHEST+495, ID_TYPE, ID_TITLE, ID_XLABEL, ID_YLABEL, ID_LEGEND, 
-	ID_SCALE, ID_SIZE, ID_COARSE, ID_FINE };
+enum { ID_Y = wxID_HIGHEST+495, ID_TYPE, ID_TITLE, ID_XLABEL, ID_YLABEL, ID_SHOW_LEGEND, ID_LEGENDPOS, 
+	ID_SCALE, ID_SIZE, ID_COARSE, ID_FINE, ID_FONT_FACE };
 
 BEGIN_EVENT_TABLE( GraphProperties, wxPanel )
 	EVT_CHECKLISTBOX( ID_Y, GraphProperties::OnEdit )
@@ -358,6 +370,9 @@ BEGIN_EVENT_TABLE( GraphProperties, wxPanel )
 	EVT_COMMAND_SCROLL( ID_SIZE, GraphProperties::OnSlider )
 	EVT_CHECKBOX( ID_COARSE, GraphProperties::OnEdit )
 	EVT_CHECKBOX( ID_FINE, GraphProperties::OnEdit )
+	EVT_CHECKBOX( ID_SHOW_LEGEND, GraphProperties::OnEdit )
+	EVT_CHOICE( ID_LEGENDPOS, GraphProperties::OnEdit )
+	EVT_CHOICE( ID_FONT_FACE, GraphProperties::OnEdit )
 END_EVENT_TABLE()
 
 
@@ -369,7 +384,7 @@ GraphProperties::GraphProperties( wxWindow *parent, int id )
 	m_type = new wxRadioChoice( this, ID_TYPE );
 	m_type->SetHorizontal( true );
 	m_type->Add( "Bar" );
-	m_type->Add( "Stacked" );
+	m_type->Add( "Stack" );
 	m_type->Add( "Line" );
 	m_type->Add( "Scatter" );
 	m_type->SetSelection( 0 );
@@ -378,23 +393,61 @@ GraphProperties::GraphProperties( wxWindow *parent, int id )
 	m_xlabel = new wxExtTextCtrl( this, ID_XLABEL );
 	m_ylabel = new wxExtTextCtrl( this, ID_YLABEL );
 	
-	m_scale = new wxSlider( this, ID_SCALE, 10, 0, 20 );
-	m_size = new wxSlider( this, ID_SIZE, 0, 0, 30 );
+	m_size = new wxSlider( this, ID_SIZE, 0, 0, 35);
+	m_scale = new wxSlider( this, ID_SCALE, 10, 5, 15 );
 
 	m_coarse = new wxCheckBox( this, ID_COARSE, "Coarse grid" );
 	m_coarse->SetValue( true );
 	m_fine = new wxCheckBox( this, ID_FINE, "Fine grid" );
 	m_fine->SetValue( true );
+
+
+	m_showLegend = new wxCheckBox( this, ID_SHOW_LEGEND, "Legend" );
+
+	wxString lpos[] = { "Manual", 
+		"Northwest", "Southwest", "Northeast", "Southeast", 
+		"North", "South", "East", "West", 
+		"Bottom", "Right" };
+	m_legendPos = new wxChoice( this, ID_LEGENDPOS, wxDefaultPosition, wxDefaultSize, 11, lpos );
+
+	wxString faces[] = { "Default", "Modern", "Sanserif", "Serif", "Fixed" };
+	m_font = new wxChoice( this, ID_FONT_FACE, wxDefaultPosition, wxDefaultSize, 5, faces );
+	
+	wxFlexGridSizer *prop_sizer = new wxFlexGridSizer( 2 );
+	prop_sizer->AddGrowableCol( 1 );
+
+	prop_sizer->Add( new wxStaticText( this, wxID_ANY, "Title:" ), 0, wxALL|wxALIGN_CENTER_VERTICAL, 2 );
+	prop_sizer->Add( m_title, 0, wxALL|wxEXPAND, 1 );
+	
+	prop_sizer->Add( new wxStaticText( this, wxID_ANY, "X label:" ), 0, wxALL|wxALIGN_CENTER_VERTICAL, 2 );
+	prop_sizer->Add( m_xlabel, 0, wxALL|wxEXPAND, 1 );
+	
+	prop_sizer->Add( new wxStaticText( this, wxID_ANY, "Y label:" ), 0, wxALL|wxALIGN_CENTER_VERTICAL, 2 );
+	prop_sizer->Add( m_ylabel, 0,  wxALL|wxEXPAND, 1 );
+	
+	prop_sizer->Add( new wxStaticText( this, wxID_ANY, "Size:" ),0, wxALL|wxALIGN_CENTER_VERTICAL, 2 );
+	prop_sizer->Add( m_size, 0, wxALL|wxEXPAND, 1 );
+
+	prop_sizer->Add( new wxStaticText( this, wxID_ANY, "Text:" ), 0, wxALL|wxALIGN_CENTER_VERTICAL, 2 );
+	
+	wxBoxSizer *text_sizer = new wxBoxSizer( wxHORIZONTAL );
+	text_sizer->Add( m_scale, 0, wxALL|wxEXPAND, 1 );
+	text_sizer->Add( m_font, 0, wxALL, 1 );
+	prop_sizer->Add( text_sizer, 0, wxALL|wxEXPAND, 1 );
+
+	prop_sizer->Add( m_showLegend, 0, wxALL|wxALIGN_CENTER_VERTICAL, 2 );
+	prop_sizer->Add( m_legendPos, 0, wxALL, 1 );
+
+
+	wxBoxSizer *chk_sizer = new wxBoxSizer( wxHORIZONTAL );
+	chk_sizer->Add( m_coarse, 1, wxALL|wxEXPAND, 4 );
+	chk_sizer->Add( m_fine, 1, wxALL|wxEXPAND, 4 );
 		
+
 	wxBoxSizer *sizer = new wxBoxSizer( wxVERTICAL );
 	sizer->Add( m_type, 0, wxALL|wxEXPAND, 4 );
-	sizer->Add( m_title, 0, wxALL|wxEXPAND, 4 );
-	sizer->Add( m_xlabel, 0, wxALL|wxEXPAND, 4 );
-	sizer->Add( m_ylabel, 0, wxALL|wxEXPAND, 4 );
-	sizer->Add( m_size, 0, wxALL|wxEXPAND, 4 );
-	sizer->Add( m_scale, 0, wxALL|wxEXPAND, 4 );
-	sizer->Add( m_coarse, 0, wxALL|wxEXPAND, 4 );
-	sizer->Add( m_fine, 0, wxALL|wxEXPAND, 4 );
+	sizer->Add( prop_sizer, 0, wxALL|wxEXPAND, 4 );
+	sizer->Add( chk_sizer, 0, wxALL|wxEXPAND, 4 );
 	sizer->Add( m_Y, 1, wxALL|wxEXPAND, 4 );
 	SetSizer( sizer );
 	
@@ -442,11 +495,15 @@ void GraphProperties::Set( const Graph &g )
 	m_xlabel->ChangeValue( g.XLabel );
 	m_ylabel->ChangeValue( g.YLabel );
 	m_scale->SetValue( (int)(g.FontScale*10) );
+	m_font->SetSelection( g.FontFace );
 	m_size->SetValue( g.Size );
 	m_coarse->SetValue( g.CoarseGrid );
 	m_fine->SetValue( g.FineGrid );
+	m_showLegend->SetValue( g.ShowLegend );
+	m_legendPos->SetSelection( g.LegendPos );
 
 	Enable( true );
+	m_legendPos->Enable( m_showLegend->GetValue() );
 }
 
 void GraphProperties::Get( Graph &g )
@@ -461,9 +518,12 @@ void GraphProperties::Get( Graph &g )
 	g.XLabel = m_xlabel->GetValue();
 	g.YLabel = m_ylabel->GetValue();
 	g.FontScale = ((double)m_scale->GetValue())/10.0;
+	g.FontFace = m_font->GetSelection();
 	g.Size = m_size->GetValue();
 	g.CoarseGrid = m_coarse->GetValue();
 	g.FineGrid = m_fine->GetValue();
+	g.ShowLegend = m_showLegend->GetValue();
+	g.LegendPos = m_legendPos->GetSelection();
 }
 
 
@@ -477,6 +537,7 @@ void GraphProperties::SendChangeEvent()
 void GraphProperties::OnEdit( wxCommandEvent & )
 {	
 	SendChangeEvent();
+	m_legendPos->Enable( m_showLegend->GetValue() );
 }
 
 void GraphProperties::OnSlider( wxScrollEvent & )
@@ -519,7 +580,7 @@ GraphViewer::GraphViewer( wxWindow *parent )
 
 	m_layout = new wxSnapLayout( this, wxID_ANY );	
 	SetMinimumPaneSize( 50 );
-	SplitVertically( lpanel, m_layout, 210 );
+	SplitVertically( lpanel, m_layout, 260 );
 
 	SetCurrent( CreateNewGraph() );
 }
