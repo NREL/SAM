@@ -40,9 +40,9 @@ function so_metrics()
 
 	metric( 'debt_fraction', {'label'='Debt Fraction', 'post'=' %', 'mode'='f', 'deci'='2' } );
 
-	metric( 'total_direct', {'label'='Direct Cost', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
-	metric( 'total_indirect', {'label'='Indirect Cost', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
-	metric( 'cost_financing', {'label'='Financing Cost', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
+	metric( 'direct_cost', {'label'='Direct Cost', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
+	metric( 'indirect_cost', {'label'='Indirect Cost', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
+	metric( 'financing_cost', {'label'='Financing Cost', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
 	metric( 'cost_installed', {'label'='Total Project Cost', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
 	metric( 'size_of_debt', {'label'='Total Debt', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
 	metric( 'size_of_equity', {'label'='Total Equity', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
@@ -62,16 +62,16 @@ function aepf_metrics()
 	metric( 'flip_actual_year', {'label'='IRR Actual Year'} );
 	metric( 'flip_actual_irr', {'label'='IRR in Target Year', 'mode'='f', 'post'=' %', 'deci'='2' } );
 
-	metric( 'project_return_aftertax_irr', {'label'='After-tax IRR', 'mode'='f', 'post'=' %', 'deci'='2' } );
-	metric( 'project_return_aftertax_npv', {'label'='After-tax NPV', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
+	metric( 'tax_investor_aftertax_irr', {'label'='After-tax tax investor IRR', 'mode'='f', 'post'=' %', 'deci'='2' } );
+	metric( 'tax_investor_aftertax_npv', {'label'='After-tax tax investor NPV', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
+	metric( 'sponsor_aftertax_irr', {'label'='After-tax developer IRR', 'mode'='f', 'post'=' %', 'deci'='2' } );
+	metric( 'sponsor_aftertax_npv', {'label'='After-tax developer NPV', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
 
-	metric( 'debt_fraction', {'label'='Debt Fraction', 'post'=' %', 'mode'='f', 'deci'='2' } );
 
-	metric( 'total_direct', {'label'='Direct Cost', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
-	metric( 'total_indirect', {'label'='Indirect Cost', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
-	metric( 'cost_financing', {'label'='Financing Cost', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
+	metric( 'direct_cost', {'label'='Direct Cost', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
+	metric( 'indirect_cost', {'label'='Indirect Cost', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
+	metric( 'financing_cost', {'label'='Financing Cost', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
 	metric( 'cost_installed', {'label'='Total Project Cost', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
-	metric( 'size_of_debt', {'label'='Total Debt', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
 	metric( 'size_of_equity', {'label'='Total Equity', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
 }
 
@@ -89,14 +89,16 @@ function lpf_metrics()
 	metric( 'flip_actual_year', {'label'='IRR Actual Year'} );
 	metric( 'flip_actual_irr', {'label'='IRR in Target Year', 'mode'='f', 'post'=' %', 'deci'='2' } );
 
-	metric( 'project_return_aftertax_irr', {'label'='After-tax IRR', 'mode'='f', 'post'=' %', 'deci'='2' } );
-	metric( 'project_return_aftertax_npv', {'label'='After-tax NPV', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
+	metric( 'tax_investor_aftertax_irr', {'label'='After-tax tax investor IRR', 'mode'='f', 'post'=' %', 'deci'='2' } );
+	metric( 'tax_investor_aftertax_npv', {'label'='After-tax tax investor NPV', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
+	metric( 'sponsor_aftertax_irr', {'label'='After-tax developer IRR', 'mode'='f', 'post'=' %', 'deci'='2' } );
+	metric( 'sponsor_aftertax_npv', {'label'='After-tax developer NPV', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
 
 	metric( 'debt_fraction', {'label'='Debt Fraction', 'post'=' %', 'mode'='f', 'deci'='2' } );
 
-	metric( 'total_direct', {'label'='Direct Cost', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
-	metric( 'total_indirect', {'label'='Indirect Cost', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
-	metric( 'cost_financing', {'label'='Financing Cost', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
+	metric( 'direct_cost', {'label'='Direct Cost', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
+	metric( 'indirect_cost', {'label'='Indirect Cost', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
+	metric( 'financing_cost', {'label'='Financing Cost', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
 	metric( 'cost_installed', {'label'='Total Project Cost', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
 	metric( 'size_of_debt', {'label'='Total Debt', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
 	metric( 'size_of_equity', {'label'='Total Equity', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
@@ -117,16 +119,16 @@ function sl_metrics()
 	metric( 'flip_actual_year', {'label'='IRR Actual Year'} );
 	metric( 'flip_actual_irr', {'label'='IRR in Target Year', 'mode'='f', 'post'=' %', 'deci'='2' } );
 
-	metric( 'project_return_aftertax_irr', {'label'='After-tax IRR', 'mode'='f', 'post'=' %', 'deci'='2' } );
-	metric( 'project_return_aftertax_npv', {'label'='After-tax NPV', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
+	metric( 'tax_investor_aftertax_irr', {'label'='After-tax tax investor IRR', 'mode'='f', 'post'=' %', 'deci'='2' } );
+	metric( 'tax_investor_aftertax_npv', {'label'='After-tax tax investor NPV', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
+	metric( 'sponsor_aftertax_irr', {'label'='After-tax developer IRR', 'mode'='f', 'post'=' %', 'deci'='2' } );
+	metric( 'sponsor_aftertax_npv', {'label'='After-tax developer NPV', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
 
-	metric( 'debt_fraction', {'label'='Debt Fraction', 'post'=' %', 'mode'='f', 'deci'='2' } );
 
-	metric( 'total_direct', {'label'='Direct Cost', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
-	metric( 'total_indirect', {'label'='Indirect Cost', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
-	metric( 'cost_financing', {'label'='Financing Cost', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
+	metric( 'direct_cost', {'label'='Direct Cost', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
+	metric( 'indirect_cost', {'label'='Indirect Cost', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
+	metric( 'financing_cost', {'label'='Financing Cost', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
 	metric( 'cost_installed', {'label'='Total Project Cost', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
-	metric( 'size_of_debt', {'label'='Total Debt', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
 	metric( 'size_of_equity', {'label'='Total Equity', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
 }
 
