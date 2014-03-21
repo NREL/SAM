@@ -48,12 +48,12 @@ public:
 	bool Ok();
 	wxArrayString &GetErrors();
 	wxArrayString &GetWarnings();
-	VarTable &Results();
 
 	virtual wxArrayString GetVariables();
 	virtual VarValue *GetValue( const wxString &var );
 	virtual wxString GetLabel( const wxString &var );
 	virtual wxString GetUnits( const wxString &var );
+	virtual VarTable &Values();
 	
 	bool Invoke();
 

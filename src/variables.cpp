@@ -1,3 +1,5 @@
+#include <algorithm>
+
 #include <wx/datstrm.h>
 #include <wx/wfstream.h>
 #include <wx/ffile.h>
@@ -741,6 +743,55 @@ bool VarInfo::Read( wxInputStream &is )
 
 DataProvider::DataProvider() { /* nothing to do */ }
 DataProvider::~DataProvider() { /* nothing to do - virtual */ }
+
+void DataProvider::ListByCount( size_t n, wxArrayString &list )
+{
+	VarTable &vt = Values();
+	for ( VarTable::iterator it = vt.begin();
+		it != vt.end();
+		++it )
+	{
+		size_t len = 0;
+		if ( it->second->Type() == VV_NUMBER )
+			len = 1;
+		else if ( it->second->Type() == VV_ARRAY )
+			len = it->second->Length();
+
+		if ( len == n )
+			list.Add( it->first );
+	}
+}
+
+void DataProvider::GetVariableLengths( std::vector<size_t> &varlengths )
+{	
+	varlengths.clear();
+	
+	VarTable &vt = Values();
+	if( vt.size() == 0 ) return;
+	
+	bool has_single_value = false;
+	for ( VarTable::iterator it = vt.begin();
+		it != vt.end();
+		++it )
+	{
+		if ( it->second->Type() == VV_ARRAY )
+		{
+			size_t n = 0;
+			float *f = it->second->Array( &n );
+
+			if ( n > 1 && std::find( varlengths.begin(), varlengths.end(), n ) == varlengths.end() )
+				varlengths.push_back( n );
+		}
+		else if ( it->second->Type() == VV_NUMBER )
+			has_single_value = true;
+	}
+
+	if ( has_single_value ) 
+		varlengths.push_back( 1 );
+
+	// sort variable lengths
+	std::stable_sort( varlengths.begin(), varlengths.end() );
+}
 
 VarDatabase::VarDatabase()
 {

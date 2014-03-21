@@ -11,11 +11,13 @@
 // forwards
 class wxRadioChoice;
 class wxScrolledWindow;
-class Case;
-class DataProvider;
 class wxExtTextCtrl;
 class wxCheckListBox;
 class wxSnapLayout;
+class wxDVSelectionListCtrl;
+
+class Case;
+class DataProvider;
 
 class Graph
 {
@@ -84,18 +86,18 @@ class GraphProperties : public wxPanel
 public:
 	GraphProperties( wxWindow *parent, int id );
 
-	void SetupVariables( DataProvider *dp );
+	void SetupVariables( DataProvider *dp, ConfigInfo *cfg );
 	void Clear();
 
 	void Set( const Graph &g );
 	void Get( Graph &g );
 
 private:
-	wxArrayString m_names, m_labels;
+	wxArrayString m_names;
 
 	wxRadioChoice *m_type;
 	wxExtTextCtrl *m_title;
-	wxCheckListBox *m_Y;
+	wxDVSelectionListCtrl *m_Y;
 	wxExtTextCtrl *m_xlabel;
 	wxExtTextCtrl *m_ylabel;
 	wxSlider *m_scale;
