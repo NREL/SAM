@@ -293,7 +293,11 @@ bool Case::SaveDefaults()
 	if (!m_config) return false;
 	wxString file = SamApp::GetRuntimePath() + "/defaults/"
 		+ m_config->Technology + "_" + m_config->Financing;
-	if (wxMessageBox(wxString::Format("Save defaults for %s %s?", m_config->Technology.c_str(), m_config->Financing.c_str()), "Save Defaults", wxYES_NO | wxCANCEL) != wxYES) return false;
+	
+	if (wxMessageBox("Save defaults for configuration:\n\n" 
+		+ m_config->Technology + " / " + m_config->Financing, 
+		"Save Defaults", wxYES_NO) != wxYES)
+		return false;
 
 	wxFFileOutputStream out(file);
 	if (!out.IsOk()) return false;
@@ -306,17 +310,52 @@ bool Case::SaveDefaults()
 bool Case::LoadDefaults()
 {
 	if (!m_config) return false;
+
 	wxString file = SamApp::GetRuntimePath() + "/defaults/" 
 		+ m_config->Technology + "_" + m_config->Financing;
+
 	if (!wxFileExists(file)) return false;
+	
 	wxFFileInputStream in(file);
 	if (!in.IsOk()) return false;
 
-	if (!m_vals.Read(in))
+	VarTable vt;
+	if (!vt.Read(in))
 	{
 		wxLogStatus("Case error: reading defaults for " + file);
+		return false;
 	}
+
+	// copy over values for variables that already exist
+	// in the configuration
+	int not_found = 0;
+	int wrong_type = 0;
+	for( VarTable::iterator it = vt.begin();
+		it != vt.end();
+		++it )
+	{
+		if( VarValue *vv = m_vals.Get( it->first ) )
+		{
+			if ( vv->Type() == it->second->Type() )
+				vv->Copy( *(it->second) );
+			else
+				wrong_type++;
+		}
+		else
+			not_found++;
+	}
+		
 	wxLogStatus("Case: defaults loaded for " + file);
+
+	if (RecalculateAll() < 0)
+		wxLogStatus("   error recalculating equations after loading default values");	
+
+	if ( not_found > 0 || wrong_type > 0 || vt.size() != m_vals.size() ) 
+		if ( wxYES == wxMessageBox( wxString::Format("Defaults file is likely out of date.\n\n"
+			"Variables: %d not found, %d wrong type, defaults has %d, config has %d\n\n"
+			"Would you like to update the defaults with the current values right now?\n"
+			"(Otherwise press Shift-F10 later)", not_found, wrong_type, (int)vt.size(), (int)m_vals.size()), "Query", wxYES_NO) )
+			SaveDefaults();
 
 	return true;
 }

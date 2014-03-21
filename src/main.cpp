@@ -201,6 +201,8 @@ bool MainWindow::CreateProject()
 	if ( !CloseProject()) return false;
 
 	m_topBook->SetSelection( 1 );
+	CreateNewCase();
+
 
 	//CreateNewCase( wxEmptyString, "Flat Plate PV", "Residential" );
 	//CreateNewCase( wxEmptyString, "PVWatts", "None" );
@@ -273,11 +275,18 @@ CaseWindow *MainWindow::CreateCaseWindow( Case *c )
 		return cw;
 
 	wxString name = m_project.GetCaseName( c );	
+	
+	wxBusyCursor bc;
+
+	m_caseNotebook->Freeze();
 	CaseWindow *win = new CaseWindow( m_caseNotebook, c );
 	m_caseNotebook->AddPage( win, name, true );
+	m_caseNotebook->Thaw();
+
 	m_caseTabList->Append( name );
 	m_caseTabList->SetSelection( m_caseTabList->Count()-1 );
 	m_caseTabList->Refresh();
+	wxGetApp().Yield();
 
 	return win;
 }
@@ -665,9 +674,6 @@ void MainWindow::OnCaseMenu( wxCommandEvent &evt )
 			// load default values from config from disk
 			c->LoadDefaults();
 			
-			// update calculated values
-			c->RecalculateAll();
-
 			// update ui
 			c->SendEvent( CaseEvent( CaseEvent::VARS_CHANGED, c->Values().ListAll() ) );
 		}
