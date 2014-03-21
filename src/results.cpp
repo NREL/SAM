@@ -14,6 +14,7 @@
 #include <wex/plot/plplotctrl.h>
 #include <wex/plot/plaxis.h>
 #include <wex/plot/pllineplot.h>
+#include <wex/dview/dvselectionlist.h>
 #include <wex/numeric.h>
 #include <wex/ole/excelauto.h>
 #include <wex/csv.h>
@@ -26,6 +27,69 @@
 #include "results.h"
 #include "casewin.h"
 #include "graph.h"
+
+
+void PopulateSelectionList( wxDVSelectionListCtrl *sel, wxArrayString *names, 
+	DataProvider *results, ConfigInfo *config )
+{		
+	int an_period = -1;
+	if ( config != 0 )
+	{
+		wxString an_var = config->Settings["analysis_period_var"];
+		if ( !an_var.IsEmpty() )
+		{
+			if ( VarValue *vv = results->GetValue( an_var ) )
+				if ( vv->Type() == VV_NUMBER )
+					an_period = (int) vv->Value();
+		}
+	}
+
+	std::vector<size_t> varlengths;
+	results->GetVariableLengths( varlengths );
+
+	names->Clear();
+
+	for (size_t i=0;i<varlengths.size();i++)
+	{		
+		wxArrayString list;		
+		results->ListByCount( varlengths[i], list );
+
+		if (list.Count() == 0)
+			continue;
+		
+		wxString group;
+		if (varlengths[i] == 1)
+			group = "Single Values";
+		else if (varlengths[i] == 12)
+			group = "Monthly Data";
+		else if (varlengths[i] == 8760)
+			group = "Hourly Data";
+		else if (varlengths[i] == an_period)
+			group = "Annual Data";
+		else if (varlengths[i] == (an_period-1)*12)
+			group = "Lifetime Monthly Data";
+		else if (varlengths[i] == (an_period-1)*8760)
+			group = "Lifetime Hourly Data";
+		else
+			group.Printf("Data: %d values", (int)varlengths[i]);
+		
+		wxArrayString labels;
+		for ( size_t j=0;j<list.Count();j++)
+			labels.Add( results->GetLabel( list[j] ));
+
+		wxSortByLabels( list, labels );
+
+		for (size_t j=0;j<list.Count();j++)
+		{
+			if (!labels[j].IsEmpty())
+			{
+				sel->Append( labels[j], group );
+				names->Add(list[j]);
+			}
+		}
+	}
+}
+
 
 
 BEGIN_EVENT_TABLE( ResultsViewer, wxMetroNotebook )	
@@ -596,18 +660,6 @@ void MetricsTable::OnResize(wxSizeEvent &evt)
 
 
 
-enum { IDOB_COPYCLIPBOARD=wxID_HIGHEST+494, 
-	IDOB_SAVECSV, IDOB_SENDEXCEL, IDOB_EXPORTMODE, IDOB_CLEAR_ALL, 
-	IDOB_VARTREE, IDOB_GRID };
-
-
-BEGIN_EVENT_TABLE( TabularBrowser, wxPanel )
-	EVT_BUTTON( IDOB_COPYCLIPBOARD,  TabularBrowser::OnCommand )
-	EVT_BUTTON( IDOB_SAVECSV,  TabularBrowser::OnCommand )
-	EVT_BUTTON( IDOB_SENDEXCEL, TabularBrowser::OnCommand )
-	EVT_BUTTON( IDOB_CLEAR_ALL, TabularBrowser::OnCommand )
-	EVT_TREE_ITEM_ACTIVATED(IDOB_VARTREE, TabularBrowser::OnVarTree)
-END_EVENT_TABLE()
 
 
 class TabularBrowser::ResultsTable : public wxGridTableBase
@@ -618,19 +670,24 @@ public:
 	{
 		wxString Label;
 		float *Values;
-		float Value;
+		float SingleValue;
 		size_t N;
 	};
 
 	size_t MaxCount;
 	size_t MinCount;
-	std::vector<ColData> Table;
+	std::vector<ColData*> Table;
 
 
 	ResultsTable()
 	{
 		MinCount = 0;
 		MaxCount = 0;
+	}
+
+	virtual ~ResultsTable()
+	{
+		ReleaseData();
 	}
 
     virtual int GetNumberRows()
@@ -646,14 +703,14 @@ public:
     virtual bool IsEmptyCell( int row, int col )
 	{
 		return (col < 0 || col >= Table.size()
-			|| row >= Table[col].N || row < 0);
+			|| row >= Table[col]->N || row < 0);
 	}
 
     virtual wxString GetValue( int row, int col )
 	{
-		if ( col >= 0 && col < Table.size() && row >= 0 && row < Table[col].N )
+		if ( col >= 0 && col < Table.size() && row >= 0 && row < Table[col]->N )
 		{
-			return wxString::Format("%g", Table[col].Values[row]);
+			return wxString::Format("%g", Table[col]->Values[row]);
 		}
 		else return wxEmptyString;
 	}
@@ -665,7 +722,7 @@ public:
 
 	virtual wxString GetColLabelValue( int col )
 	{
-		if (col >= 0 && col < Table.size())	return Table[col].Label;
+		if (col >= 0 && col < Table.size())	return Table[col]->Label;
 		else return wxEmptyString;
 	}
 
@@ -696,8 +753,8 @@ public:
 		{
 			if( VarValue *vv = results->GetValue( vars[i] ) )
 			{
-				Table.push_back( ColData() );
-				ColData &cc = Table[ Table.size()-1 ];
+				Table.push_back( new ColData() );
+				ColData &cc = *Table[ Table.size()-1 ];
 
 				cc.Label = vars[i];
 				wxString label = results->GetLabel( vars[i] );
@@ -707,15 +764,14 @@ public:
 				if ( !units.IsEmpty() ) cc.Label += "\n(" + units + ")";
 
 				cc.Values = 0;
-				cc.Value = 0.0f;
 				cc.N = 1;
 
 				if ( vv->Type() == VV_ARRAY )
 					cc.Values = vv->Array( &cc.N );
 				else if ( vv->Type() == VV_NUMBER )
 				{
-					cc.Value = vv->Value();
-					cc.Values = &cc.Value;
+					cc.SingleValue = vv->Value();
+					cc.Values = &cc.SingleValue;
 					cc.N = 1;
 				}
 				
@@ -731,12 +787,28 @@ public:
 
 	void ReleaseData()
 	{
+		for( size_t i=0;i<Table.size();i++ )
+			delete Table[i];
+
 		Table.clear();
 		MaxCount = 0;
 	}
 
 };
 
+
+enum { IDOB_COPYCLIPBOARD=wxID_HIGHEST+494, 
+	IDOB_SAVECSV, IDOB_SENDEXCEL, IDOB_EXPORTMODE, IDOB_CLEAR_ALL, 
+	IDOB_VARSEL, IDOB_GRID };
+
+
+BEGIN_EVENT_TABLE( TabularBrowser, wxPanel )
+	EVT_BUTTON( IDOB_COPYCLIPBOARD,  TabularBrowser::OnCommand )
+	EVT_BUTTON( IDOB_SAVECSV,  TabularBrowser::OnCommand )
+	EVT_BUTTON( IDOB_SENDEXCEL, TabularBrowser::OnCommand )
+	EVT_BUTTON( IDOB_CLEAR_ALL, TabularBrowser::OnCommand )
+	EVT_DVSELECTIONLIST(IDOB_VARSEL, TabularBrowser::OnVarSel)
+END_EVENT_TABLE()
 
 TabularBrowser::TabularBrowser( wxWindow *parent )
 	: wxPanel(parent )
@@ -758,7 +830,9 @@ TabularBrowser::TabularBrowser( wxWindow *parent )
 	splitwin->SetMinimumPaneSize(210);
 
 
-	m_tree = new wxExtTreeCtrl(splitwin, IDOB_VARTREE, wxDefaultPosition, wxDefaultSize, wxBORDER_NONE );
+	m_varSel = new wxDVSelectionListCtrl(splitwin, IDOB_VARSEL, 1, wxDefaultPosition, wxDefaultSize,
+		wxDVSEL_NO_COLOURS );
+	m_varSel->SetBackgroundColour( *wxWHITE );
 
 
 	m_grid = new wxExtGridCtrl(splitwin, IDOB_GRID);
@@ -771,7 +845,7 @@ TabularBrowser::TabularBrowser( wxWindow *parent )
 	m_grid->SetRowLabelAlignment( wxALIGN_LEFT, wxALIGN_CENTER );
 
 	splitwin->SetMinimumPaneSize( 170 );
-	splitwin->SplitVertically(m_tree, m_grid, 210);
+	splitwin->SplitVertically(m_varSel, m_grid, 210);
 
 
 	wxBoxSizer *szv_main = new wxBoxSizer(wxVERTICAL);
@@ -814,7 +888,7 @@ void TabularBrowser::UpdateGrid()
 
 	for (int i=0;i<m_gridTable->Table.size();i++)
 	{
-		wxArrayString lines = wxSplit(m_gridTable->Table[i].Label, '\n');
+		wxArrayString lines = wxSplit(m_gridTable->Table[i]->Label, '\n');
 		int w = 40;
 		for( size_t k=0;k<lines.size();k++ )
 		{
@@ -848,105 +922,17 @@ void TabularBrowser::Setup( ConfigInfo *cfg, DataProvider *data )
 
 void TabularBrowser::UpdateAll()
 {
-	m_items.clear();
 	m_names.Clear();
-	m_tree->DeleteAllItems();
-	m_root = m_tree->AddRoot("Variables");
+
+	int vsx, vsy;
+	m_varSel->GetViewStart( &vsx, &vsy );
+	m_varSel->RemoveAll();
 
 	if ( !m_results || !m_config ) 
-	{
-		m_tree->AppendItem( m_root, "( no data )", wxExtTreeCtrl::ICON_BROKEN_LINK, wxExtTreeCtrl::ICON_BROKEN_LINK);
 		return;
-	}
 
-	
-	int an_period = -1;
-	wxString an_var = m_config->Settings["analysis_period_var"];
-	if ( !an_var.IsEmpty() )
-	{
-		if ( VarValue *vv = m_results->GetValue( an_var ) )
-			if ( vv->Type() == VV_NUMBER )
-				an_period = (int) vv->Value();
-	}
-
-	wxArrayString vars = m_results->GetVariables();
-
-	std::vector<size_t> varlengths;
-	varlengths.push_back( 1 );
-
-	for ( size_t i=0;i<vars.Count();i++ )
-	{
-		int len = -1;
-		if ( VarValue *vv = m_results->GetValue( vars[i] ) )
-		{
-			if ( vv->Type() == VV_ARRAY )
-			{
-				size_t n = 0;
-				float *f = vv->Array( &n );
-
-				if ( n > 1 && std::find( varlengths.begin(), varlengths.end(), n ) == varlengths.end() )
-					varlengths.push_back( n );
-			}
-		}
-	}
-
-	// sort variable lengths
-	std::stable_sort( varlengths.begin(), varlengths.end() );
-	
-
-	m_names.Clear();
-	m_items.clear();
-
-
-	for (size_t i=0;i<varlengths.size();i++)
-	{		
-		wxArrayString list;
-		
-		ListByCount( varlengths[i], list );
-
-		if (list.Count() == 0)
-			continue;
-		
-		wxString name;
-		if (varlengths[i] == 1)
-			name = "Single Values";
-		else if (varlengths[i] == 12)
-			name = "Monthly Data";
-		else if (varlengths[i] == 8760)
-			name = "Hourly Data";
-		else if (varlengths[i] == an_period)
-			name = "Annual Data";
-		else if (varlengths[i] == (an_period-1)*12)
-			name = "Lifetime Monthly Data";
-		else if (varlengths[i] == (an_period-1)*8760)
-			name = "Lifetime Hourly Data";
-		else
-			name.Printf("Data: %d values", (int)varlengths[i]);
-
-		wxTreeItemId cur_parent = m_tree->AppendItem( m_root, name /*, wxExtTreeCtrl::ICON_FOLDER, wxExtTreeCtrl::ICON_FOLDER*/);
-		m_tree->SetItemBold(cur_parent,true);
-		
-		wxArrayString labels;
-		for ( size_t j=0;j<list.Count();j++)
-			labels.Add( m_results->GetLabel( list[j] ));
-
-		wxSortByLabels( list, labels );
-
-		for (size_t j=0;j<list.Count();j++)
-		{
-			if (!labels[j].IsEmpty())
-			{
-				wxTreeItemId item = m_tree->AppendItem( cur_parent, labels[j], wxExtTreeCtrl::ICON_CHECK_FALSE,-1);
-				m_tree->Check(item, false);
-				m_items.push_back( item );		
-				m_names.Add(list[j]);
-			}
-		}
-	}
-
-
-	m_tree->Expand(m_root);
-	m_tree->UnselectAll();
+	m_varSel->Freeze();
+	PopulateSelectionList( m_varSel, &m_names, m_results, m_config );
 
 	size_t i=0;
 	while (i<m_selectedVars.Count())
@@ -956,34 +942,18 @@ void TabularBrowser::UpdateAll()
 			m_selectedVars.RemoveAt(i);
 		else
 		{
-			m_tree->Check( m_items[idx], true );
-			m_tree->EnsureVisible( m_items[idx] );
+			m_varSel->SelectRowInCol( idx );
 			i++;
 		}
 	}
 
+	m_varSel->ExpandSelections();
+	m_varSel->Scroll( vsx, vsy );
+	m_varSel->Thaw();
+
 	UpdateGrid();
 }
 
-void TabularBrowser::ListByCount( size_t n, wxArrayString &list )
-{
-	if ( !m_results ) return;
-	wxArrayString vars = m_results->GetVariables();
-	for( size_t i=0;i<vars.size();i++ )
-	{
-		size_t len = 0;
-		if (VarValue *vv = m_results->GetValue( vars[i] ))
-		{
-			if ( vv->Type() == VV_NUMBER )
-				len = 1;
-			else if ( vv->Type() == VV_ARRAY )
-				vv->Array( &len );
-		}
-
-		if ( len == n )
-			list.Add( vars[i] );
-	}
-}
 
 void TabularBrowser::OnCommand(wxCommandEvent &evt)
 {
@@ -1064,23 +1034,25 @@ void TabularBrowser::OnCommand(wxCommandEvent &evt)
 	}
 }
 
-void TabularBrowser::OnVarTree(wxTreeEvent &evt)
+void TabularBrowser::OnVarSel( wxCommandEvent & )
 {	
-	wxTreeItemId item = evt.GetItem();
-	std::vector<wxTreeItemId>::iterator it = std::find( m_items.begin(), m_items.end(), item ) ;
-	if ( it != m_items.end() )
-	{
-		wxString name = m_names[ it - m_items.begin() ];
+	int row, col;
+	bool checked;
+	m_varSel->GetLastEventInfo( &row, &col, &checked );
 
-		if ( m_tree->IsChecked(item) && m_selectedVars.Index( name ) == wxNOT_FOUND)
+	
+	if ( row >= 0 && row < (int)m_names.size() )
+	{
+		wxString name = m_names[ row ];
+
+		if ( checked && m_selectedVars.Index( name ) == wxNOT_FOUND)
 			m_selectedVars.Add( name );
 		
-		if (!m_tree->IsChecked(item) && m_selectedVars.Index( name ) != wxNOT_FOUND)
+		if (!checked && m_selectedVars.Index( name ) != wxNOT_FOUND)
 			m_selectedVars.Remove( name );
 
 		UpdateGrid();
 	}
-	evt.Skip();
 }
 
 void TabularBrowser::GetTextData(wxString &dat, char sep)
@@ -1096,7 +1068,7 @@ void TabularBrowser::GetTextData(wxString &dat, char sep)
 
 	for (c=0;c<m_gridTable->Table.size();c++)
 	{
-		wxString label = m_gridTable->Table[c].Label;
+		wxString label = m_gridTable->Table[c]->Label;
 		label.Replace( '\n', " | " );
 
 		if (sep == ',')
@@ -1114,8 +1086,8 @@ void TabularBrowser::GetTextData(wxString &dat, char sep)
 	{
 		for (c=0;c<m_gridTable->Table.size();c++)
 		{
-			if (r < m_gridTable->Table[c].N)
-				dat += wxString::Format("%g", m_gridTable->Table[c].Values[r]);
+			if (r < m_gridTable->Table[c]->N)
+				dat += wxString::Format("%g", m_gridTable->Table[c]->Values[r]);
 			
 			if (c < m_gridTable->Table.size()-1)
 				dat += sep;

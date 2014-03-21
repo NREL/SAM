@@ -3,12 +3,12 @@
 
 #include <wx/datstrm.h>
 #include <wex/metro.h>
-#include <wex/exttree.h>
 
 #include <wex/plot/plplotctrl.h>
 
 #include "object.h"
 
+class wxDVSelectionListCtrl;
 class CaseWindow;
 class Case;
 class wxExtGridCtrl;
@@ -35,6 +35,10 @@ class wxSnapLayout;
 
 class Case;
 class VarTable;
+
+
+void PopulateSelectionList( wxDVSelectionListCtrl *sel, wxArrayString *names, 
+	DataProvider *results, ConfigInfo *config );
 
 class ResultsViewer : public wxMetroNotebook
 {
@@ -112,9 +116,8 @@ public:
 
 private:
 	void OnCommand(wxCommandEvent &evt);
-	void OnVarTree(wxTreeEvent &evt);
+	void OnVarSel(wxCommandEvent &evt);
 
-	void ListByCount( size_t n, wxArrayString &list );
 	void UpdateGrid();
 
 	ConfigInfo *m_config;
@@ -122,10 +125,8 @@ private:
 
 	wxExtGridCtrl *m_grid;
 	ResultsTable *m_gridTable;
-	wxExtTreeCtrl *m_tree;
+	wxDVSelectionListCtrl *m_varSel;
 	
-	wxTreeItemId m_root;
-	std::vector<wxTreeItemId> m_items;
 	wxArrayString m_names;
 	wxArrayString m_selectedVars;
 	

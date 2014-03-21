@@ -6,15 +6,18 @@
 #include <wex/plot/pllineplot.h>
 #include <wex/plot/plscatterplot.h>
 
+#include <wex/dview/dvselectionlist.h>
+
 #include <wex/radiochoice.h>
 #include <wex/utils.h>
 #include <wex/exttext.h>
 #include <wex/metro.h>
 #include <wex/snaplay.h>
 
+#include "case.h"
 #include "graph.h"
 #include "variables.h"
-
+#include "results.h"
 
 Graph::Graph()
 {
@@ -361,7 +364,7 @@ enum { ID_Y = wxID_HIGHEST+495, ID_TYPE, ID_TITLE, ID_XLABEL, ID_YLABEL, ID_SHOW
 	ID_SCALE, ID_SIZE, ID_COARSE, ID_FINE, ID_FONT_FACE };
 
 BEGIN_EVENT_TABLE( GraphProperties, wxPanel )
-	EVT_CHECKLISTBOX( ID_Y, GraphProperties::OnEdit )
+	EVT_DVSELECTIONLIST( ID_Y, GraphProperties::OnEdit )
 	EVT_TEXT( ID_TITLE, GraphProperties::OnEdit )
 	EVT_TEXT( ID_XLABEL, GraphProperties::OnEdit )
 	EVT_TEXT( ID_YLABEL, GraphProperties::OnEdit )
@@ -379,8 +382,9 @@ END_EVENT_TABLE()
 GraphProperties::GraphProperties( wxWindow *parent, int id )
 	: wxPanel( parent, id )
 {
+	m_Y = new wxDVSelectionListCtrl( this, ID_Y, 1, wxDefaultPosition, wxDefaultSize, wxDVSEL_NO_COLOURS );
+	m_Y->SetBackgroundColour( *wxWHITE );
 
-	m_Y = new wxCheckListBox( this, ID_Y );
 	m_type = new wxRadioChoice( this, ID_TYPE );
 	m_type->SetHorizontal( true );
 	m_type->Add( "Bar" );
@@ -435,7 +439,7 @@ GraphProperties::GraphProperties( wxWindow *parent, int id )
 	text_sizer->Add( m_font, 0, wxALL, 1 );
 	prop_sizer->Add( text_sizer, 0, wxALL|wxEXPAND, 1 );
 
-	prop_sizer->Add( m_showLegend, 0, wxALL|wxALIGN_CENTER_VERTICAL, 2 );
+	prop_sizer->Add( m_showLegend, 0, wxALL|wxALIGN_CENTER_VERTICAL, 4 );
 	prop_sizer->Add( m_legendPos, 0, wxALL, 1 );
 
 
@@ -455,22 +459,26 @@ GraphProperties::GraphProperties( wxWindow *parent, int id )
 }
 
 
-void GraphProperties::SetupVariables( DataProvider *dp )
+void GraphProperties::SetupVariables( DataProvider *dp, ConfigInfo *cfg )
 {
 
 	Clear();
 
 	if ( !dp ) return;
 
-	m_names = dp->GetVariables();
-	m_labels.Clear();
-	for( size_t i=0;i<m_names.size();i++ )
-		m_labels.Add( dp->GetLabel( m_names[i] ) );
+	m_names.Clear();
 
-	wxSortByLabels( m_names, m_labels );
-	
-	m_Y->Clear();
-	m_Y->Append( m_labels );
+	int vsx, vsy;
+	m_Y->GetViewStart( &vsx, &vsy );	
+	m_Y->Freeze();
+	m_Y->RemoveAll();
+
+	PopulateSelectionList( m_Y, &m_names, dp, cfg );
+
+	m_Y->ExpandSelections();
+	m_Y->Scroll( vsx, vsy );
+	m_Y->Thaw();
+
 
 	Enable( true );
 }
@@ -488,7 +496,7 @@ void GraphProperties::Clear()
 void GraphProperties::Set( const Graph &g )
 {
 	for( size_t i=0;i<m_names.size();i++ )
-		m_Y->Check( i, g.Y.Index( m_names[i] ) != wxNOT_FOUND );
+		m_Y->SelectRowInCol( i, 0, g.Y.Index( m_names[i] ) != wxNOT_FOUND );
 
 	m_type->SetSelection( g.Type );
 	m_title->ChangeValue( g.Title );
@@ -510,7 +518,7 @@ void GraphProperties::Get( Graph &g )
 {
 	g.Y.Clear();
 	for( size_t i=0;i<m_names.size();i++)
-		if ( m_Y->IsChecked( i ) )
+		if ( m_Y->IsRowSelected( i, 0 ) )
 			g.Y.Add( m_names[i] );
 
 	g.Type = m_type->GetSelection();
@@ -613,7 +621,7 @@ void GraphViewer::Setup( Case *c, DataProvider *dp )
 
 	if ( !m_case || !m_data ) return;
 
-	m_props->SetupVariables( dp );
+	m_props->SetupVariables( dp, m_case->GetConfiguration() );
 }
 
 

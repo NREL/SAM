@@ -149,7 +149,7 @@ wxArrayString &Simulation::GetWarnings()
 	return m_warnings;
 }
 
-VarTable &Simulation::Results()
+VarTable &Simulation::Values()
 {
 	return m_results;
 }
@@ -157,12 +157,12 @@ VarTable &Simulation::Results()
 
 wxArrayString Simulation::GetVariables()
 {
-	return Results().ListAll();
+	return Values().ListAll();
 }
 
 VarValue *Simulation::GetValue( const wxString &var )
 {
-	return Results().Get( var );
+	return Values().Get( var );
 }
 
 wxString Simulation::GetLabel( const wxString &var )
