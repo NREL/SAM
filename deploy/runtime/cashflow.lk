@@ -477,3 +477,16 @@ cashflow{ 'Leveraged Partnership Flip' } = define()
 	cfline( 'cf_after_tax_net_equity_cost_flow');
 	cfline( 'cf_after_tax_cash_flow');
 };
+/*
+cashflow_to_excel{ 'Ipp' } = define() 
+{
+	// wrappers around wxExcelAutomation
+	
+	xl_open( 'filename');
+	xl_set( ${analysis_period}, 3, 4 );
+	xl_set( output('cf_energy_value') , 'A3' );
+	xl_set( '431knl', 'named_range');
+	
+	
+	
+};*/
