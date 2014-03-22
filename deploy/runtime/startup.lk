@@ -5,7 +5,7 @@ addconfig( 'PVWatts', [ 'Residential', 'Commercial', 'Commercial PPA', 'Independ
  'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'Single Owner', 'None' ] );
 addconfig( 'Flat Plate PV', ['Residential', 'Commercial', 'None'] );
 addconfig( 'Test Only', [ 'None' ] );
-//addconfig( 'Test Wind BOS', [ 'None' ] );
+addconfig( 'Test Wind BOS', [ 'None' ] );
 addconfig( 'Wind Power', ['Residential', 'Commercial', 'None' ] );
 addconfig( 'Solar Water Heating', ['Residential', 'Commercial', 'None']);
 addconfig( 'Concentrating Solar Power - Physical Trough', ['Independent Power Producer','None']);
@@ -218,9 +218,9 @@ function setup_csp_physical_trough_pages()
 //addpage( [[ 'Test 1' ]] );
 //addpage( [[ 'Location' ]] );
 
-//setconfig( 'Test Wind BOS', 'None' );
-//addpage( [[ 'Test Wind BOS' ]] );
-//setmodules( ['windbos']);
+setconfig( 'Test Wind BOS', 'None' );
+addpage( [[ 'Test Wind BOS' ]] );
+setmodules( ['windbos']);
 
 
 // CSP - Physical Trough ///////////////////////////////////////////////////////

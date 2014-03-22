@@ -132,11 +132,14 @@ function sl_metrics()
 	metric( 'size_of_equity', {'label'='Total Equity', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
 }
 
-
-
 function pv_metrics() 
 {
 	metric( 'annual_energy', {'label'='Annual Energy', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh' } );
+}
+
+function wind_bos_metrics() 
+{
+	metric( 'project_total_budgeted_cost', {'label'='Total Cost',  'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
 }
 
 metrics{ 'PVWatts' } = define() {	pv_metrics(); };
@@ -149,4 +152,5 @@ metrics{ 'Single Owner' } = define() { so_metrics(); };
 metrics{ 'All Equity Partnership Flip' } = define() { aepf_metrics(); };
 metrics{ 'Leveraged Partnership Flip' } = define() { lpf_metrics(); };
 metrics{ 'Sale Leaseback' } = define() { sl_metrics(); };
+metrics{ 'Test Wind BOS' } = define() { wind_bos_metrics(); };
 
