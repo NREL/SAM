@@ -7,6 +7,8 @@
 #include <wx/busyinfo.h>
 #include <wx/splitter.h>
 #include <wx/datstrm.h>
+#include <wx/filedlg.h>
+#include <wx/filename.h>
 
 #include <wex/extgrid.h>
 #include <wex/metro.h>
@@ -27,7 +29,7 @@
 #include "results.h"
 #include "casewin.h"
 #include "graph.h"
-
+#include "xlautomation.h"
 
 void PopulateSelectionList( wxDVSelectionListCtrl *sel, wxArrayString *names, 
 	DataProvider *results, ConfigInfo *config )
@@ -90,10 +92,13 @@ void PopulateSelectionList( wxDVSelectionListCtrl *sel, wxArrayString *names,
 	}
 }
 
-
+enum { ID_CF_COPY, ID_CF_SAVECSV, ID_CF_SENDEXCEL, ID_CF_SENDEQNEXCEL };
 
 BEGIN_EVENT_TABLE( ResultsViewer, wxMetroNotebook )	
-//	EVT_MENU_RANGE( ID_RESULTS_PAGE, ID_RESULTS_PAGE_MAX, ResultsViewer::OnCommand )
+EVT_BUTTON(ID_CF_COPY, ResultsViewer::OnCFCommand)
+EVT_BUTTON(ID_CF_SAVECSV, ResultsViewer::OnCFCommand)
+EVT_BUTTON(ID_CF_SENDEXCEL, ResultsViewer::OnCFCommand)
+EVT_BUTTON(ID_CF_SENDEQNEXCEL, ResultsViewer::OnCFCommand)
 END_EVENT_TABLE()
 
 
@@ -152,10 +157,10 @@ ResultsViewer::ResultsViewer( wxWindow *parent )
 	m_cashFlow->EnableCopyPaste(true);
 	m_cashFlow->EnablePasteEvent(false);
 	wxBoxSizer *cf_tools = new wxBoxSizer( wxHORIZONTAL );
-	cf_tools->Add( new wxButton( cf_panel, wxID_ANY, "Copy to clipboard" ), 0, wxALL, 2 );
-	cf_tools->Add( new wxButton( cf_panel, wxID_ANY, "Save as CSV" ), 0, wxALL, 2 );
-	cf_tools->Add( new wxButton( cf_panel, wxID_ANY, "Send to Excel" ), 0, wxALL, 2 );
-	cf_tools->Add( new wxButton( cf_panel, wxID_ANY, "Send to Excel with Equations" ), 0, wxALL, 2 );
+	cf_tools->Add(new wxButton(cf_panel, ID_CF_COPY, "Copy to clipboard"), 0, wxALL, 2);
+	cf_tools->Add( new wxButton( cf_panel, ID_CF_SAVECSV, "Save as CSV" ), 0, wxALL, 2 );
+	cf_tools->Add( new wxButton( cf_panel, ID_CF_SENDEXCEL, "Send to Excel" ), 0, wxALL, 2 );
+	cf_tools->Add( new wxButton( cf_panel, ID_CF_SENDEQNEXCEL, "Send to Excel with Equations" ), 0, wxALL, 2 );
 	wxBoxSizer *cf_sizer = new wxBoxSizer( wxVERTICAL );
 	cf_sizer->Add( cf_tools, 0, wxALL|wxEXPAND, 2 );
 	cf_sizer->Add( m_cashFlow, 1, wxALL|wxEXPAND, 0 );
@@ -351,7 +356,7 @@ void ResultsViewer::Setup( Case *c, DataProvider *results )
 	{
 		CaseCallbackContext cc( m_case, "Cashflow callback: " + cfg->Financing );
 		if ( !cc.Invoke( cfcb, SamApp::GlobalCallbacks().GetEnv() ) )
-			wxLogStatus( "error running metrics script." );
+			wxLogStatus( "error running cashflow script." );
 		
 		int nyears = 0;
 		if ( VarValue *vv = m_results->GetValue( cfg->Settings[ "analysis_period_var" ] ) )
@@ -438,6 +443,152 @@ void ResultsViewer::AddDataSet(wxDVTimeSeriesDataSet *d, const wxString& group, 
 	m_durationCurve->AddDataSet(d, group, update_ui);
 	m_scatterPlot->AddDataSet(d, group, update_ui);
 }
+
+
+void ResultsViewer::GetExportData(int data, matrix_t<wxString> &table)
+{
+	if (data & EXP_CASHFLOW)
+	{
+		int nrows = m_cashFlow->GetNumberRows();
+		int ncols = m_cashFlow->GetNumberCols();
+		int r, c;
+
+		table.resize(nrows + 1, ncols + 1);
+
+		for (c = 0; c<ncols; c++)
+			table.at(0, c + 1) = wxString::Format( "%d", c);
+
+		for (r = 0; r<nrows; r++)
+		{
+			table.at(r + 1, 0) = m_cashFlow->GetRowLabelValue(r);
+			for (c = 0; c<ncols; c++)
+				table.at(r + 1, c + 1) = m_cashFlow->GetCellValue(r, c);
+		}
+
+	}
+}
+
+
+
+void ResultsViewer::Export(int data, int mechanism)
+{
+	matrix_t<wxString> table;
+
+	GetExportData(data, table);
+
+	if (table.nrows() == 0 || table.ncols() == 0)
+	{
+		wxMessageBox("No data to export!");
+		return;
+	}
+
+
+	// now select export mechanism
+	if (mechanism & EXP_COPY_CLIPBOARD)
+	{
+		if (wxTheClipboard->Open())
+		{
+			wxString tab_data = UnsplitCells(table, '\t', '\n', false);
+			// remove commas per request from Paul 5/23/12 meeting
+			tab_data.Replace(",", "");
+
+			wxTheClipboard->SetData(new wxTextDataObject(
+				tab_data));
+			wxTheClipboard->Close();
+		}
+	}
+
+	if (mechanism & EXP_SAVE_CSV)
+	{
+		wxString csv_data = UnsplitCells(table, ',', '\n', true);
+
+		wxFileDialog fdlg(this, "Save Data", "", "samdata.csv",
+			"CSV Data Files (*.csv)|*.csv", wxFD_SAVE | wxFD_OVERWRITE_PROMPT);
+
+		if (fdlg.ShowModal() == wxID_OK)
+		{
+			wxString fn = fdlg.GetPath();
+			if (fn != "")
+			{
+				// ensure the extension is attached
+				wxString ext;
+				wxFileName::SplitPath(fn, NULL, NULL, NULL, &ext);
+				if (ext.Lower() != "csv")
+					fn += ".csv";
+
+				FILE *fp = fopen(fn.c_str(), "w");
+				if (fp)
+				{
+					fputs(csv_data.c_str(), fp);
+					fclose(fp);
+				}
+				else
+					wxMessageBox("Could not write to file:\n\n" + fn, "Save Error", wxICON_ERROR);
+			}
+		}
+	}
+
+#ifdef __WXMSW__
+	if (mechanism & EXP_SEND_EXCEL)
+	{
+		XLAutomation xl;
+		if (!xl.StartExcel())
+		{
+			wxMessageBox("Could not start Excel.");
+			return;
+		}
+
+		xl.Show(true);
+
+		if (!xl.NewWorkbook())
+		{
+			wxMessageBox("Could not create a new Excel worksheet.");
+			return;
+		}
+		// Excel 2013 requires starting before copying to clipboard
+		if (wxTheClipboard->Open())
+		{
+			wxString tab_data = UnsplitCells(table, '\t', '\n', false);
+			// remove commas per request from Paul 5/23/12 meeting
+			tab_data.Replace(",", "");
+
+			wxTheClipboard->SetData(new wxTextDataObject(
+				tab_data));
+			wxTheClipboard->Close();
+		}
+		xl.PasteClipboard();
+		xl.AutoFitColumns();
+		xl.SetSelectedCellsFontSize(9);
+		xl.SetRowColBold(1, true);
+		if (data == EXP_CASHFLOW) xl.SetRowColBold(-1, true);
+	}
+#endif
+
+
+}
+
+
+void ResultsViewer::OnCFCommand(wxCommandEvent &evt)
+{
+	switch (evt.GetId())
+	{
+	case ID_CF_COPY:
+		Export(EXP_CASHFLOW, EXP_COPY_CLIPBOARD);
+		break;
+	case ID_CF_SAVECSV:
+		Export(EXP_CASHFLOW, EXP_SAVE_CSV);
+		break;
+	case ID_CF_SENDEXCEL:
+		Export(EXP_CASHFLOW, EXP_SEND_EXCEL);
+		break;
+	case ID_CF_SENDEQNEXCEL:
+//		ExportExcelEquations();
+		break;
+	}
+
+}
+
+
 
 void ResultsViewer::RemoveAllDataSets()
 {
