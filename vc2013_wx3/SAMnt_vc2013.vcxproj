@@ -45,6 +45,7 @@
     <ClCompile Include="..\src\uiwidgets.cpp" />
     <ClCompile Include="..\src\variables.cpp" />
     <ClCompile Include="..\src\welcome.cpp" />
+    <ClCompile Include="..\src\xlautomation.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\graph.h" />
@@ -70,6 +71,7 @@
     <ClInclude Include="..\src\uiwidgets.h" />
     <ClInclude Include="..\src\variables.h" />
     <ClInclude Include="..\src\welcome.h" />
+    <ClInclude Include="..\src\xlautomation.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectName>SAMnt</ProjectName>
