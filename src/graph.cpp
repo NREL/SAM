@@ -512,6 +512,7 @@ void GraphProperties::Set( const Graph &g )
 
 	Enable( true );
 	m_legendPos->Enable( m_showLegend->GetValue() );
+	m_Y->ExpandSelections();
 }
 
 void GraphProperties::Get( Graph &g )
