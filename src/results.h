@@ -37,6 +37,17 @@ class Case;
 class VarTable;
 
 
+
+//#define EXP_GRAPHDATA         0x01
+#define EXP_CASHFLOW          0x02
+//#define EXP_BASE_ALL          0x04
+
+#define EXP_COPY_CLIPBOARD    0x01
+#define EXP_SAVE_CSV          0x02
+#define EXP_SEND_EXCEL        0x04
+
+
+
 void PopulateSelectionList( wxDVSelectionListCtrl *sel, wxArrayString *names, 
 	DataProvider *results, ConfigInfo *config );
 
@@ -54,6 +65,7 @@ public:
 
 private:
 	void OnCommand( wxCommandEvent & );
+	void OnCFCommand(wxCommandEvent &evt);
 
 	Case *m_case;
 	DataProvider *m_results;
@@ -77,7 +89,8 @@ private:
 
 	void AddDataSet( wxDVTimeSeriesDataSet *ds, const wxString &group = wxEmptyString, bool update_ui = true );
 	void RemoveAllDataSets();
-	
+	void Export(int data, int mechanism);
+	void GetExportData(int data, matrix_t<wxString> &table);
 
 	DECLARE_EVENT_TABLE();
 };

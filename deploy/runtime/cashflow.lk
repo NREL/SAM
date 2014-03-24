@@ -376,7 +376,9 @@ cashflow{ 'Leveraged Partnership Flip' } = define()
 	cfline( 'cf_after_tax_cash_flow');
 	
 	
-};cashflow{ 'Sale Leaseback' } = define()
+};
+
+cashflow{ 'Sale Leaseback' } = define()
 {
 	cfline( 'cf_energy_net', 1); // use one digit
 	cfline( 'cf_energy_price');
