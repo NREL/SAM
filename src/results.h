@@ -47,6 +47,7 @@ class VarTable;
 #define EXP_SEND_EXCEL        0x04
 
 
+wxString UnsplitCells(const matrix_t<wxString> &table, char colsep, char rowsep, bool quote_colsep);
 
 void PopulateSelectionList( wxDVSelectionListCtrl *sel, wxArrayString *names, 
 	DataProvider *results, ConfigInfo *config );
