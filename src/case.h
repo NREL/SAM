@@ -49,6 +49,11 @@ public:
 	};
 	std::vector<CashFlowLine> CashFlow;
 
+	struct AutoGraph {
+		wxString title, xlabel, ylabel, yvals;
+	};
+	std::vector<AutoGraph> AutoGraphs;
+
 	bool Invoke( lk::node_t *root, lk::env_t *parent );
 
 protected:

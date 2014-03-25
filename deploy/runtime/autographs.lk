@@ -1,0 +1,4 @@
+autographs{ 'PVWatts'} = define() {
+	agraph( 'dc_monthly,ac_monthly', 'Energy', '', 'kWh' );
+	agraph( 'lat,lon', 'Location', '', 'deg' );
+};
