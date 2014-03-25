@@ -283,6 +283,21 @@ static void fcall_metric( lk::invoke_t &cxt )
 	}
 }
 
+static void fcall_agraph( lk::invoke_t &cxt )
+{
+	LK_DOC("agraph", "Create an autograph", "(string:Y, string:title, string:xlabel, string:ylabel):none" );
+	
+	if ( CaseCallbackContext *ci = static_cast<CaseCallbackContext*>(cxt.user_data()) )
+	{
+		CaseCallbackContext::AutoGraph ag;
+		ag.yvals = cxt.arg(0).as_string();
+		ag.title = cxt.arg(1).as_string();
+		ag.xlabel = cxt.arg(2).as_string();
+		ag.ylabel = cxt.arg(3).as_string();
+		ci->AutoGraphs.push_back( ag );
+	}
+}
+
 static void fcall_cfline( lk::invoke_t &cxt )
 {
 	LK_DOC("cfline", "Add one or more cashflow line items to the current configuration. Names can be comma-separated list. For spacer use name='', for header use digits=0, for generic format use digits=-1, for integer cast, use digits=-2.", "( string:names, [number:digits], [number:scale] ):none" );
@@ -1035,6 +1050,7 @@ lk::fcall_t* invoke_casecallback_funcs()
 		fcall_value,
 		fcall_metric,
 		fcall_cfline,
+		fcall_agraph,
 		fcall_technology,
 		fcall_financing,
 		0 };

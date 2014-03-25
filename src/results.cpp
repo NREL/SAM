@@ -150,6 +150,8 @@ ResultsViewer::ResultsViewer( wxWindow *parent )
 	data.at(0,0) = "Metric"; data.at(0,1) = "Value";
 	m_metrics->SetData( data );	
 	m_summaryLayout->Add( m_metrics );
+
+/*
 	m_summaryLayout->Add( new wxCheckListBox( m_summaryLayout, wxID_ANY ) );
 	m_summaryLayout->Add( new wxCheckListBox( m_summaryLayout, wxID_ANY ) );
 	wxPLPlotCtrl *pl = new wxPLPlotCtrl( m_summaryLayout, wxID_ANY );
@@ -168,7 +170,8 @@ ResultsViewer::ResultsViewer( wxWindow *parent )
 	wxGrid *gr = new wxGrid( m_summaryLayout, wxID_ANY );
 	gr->CreateGrid( 5, 7 );
 	m_summaryLayout->Add( gr );
-	
+*/
+
 	m_graphViewer = new GraphViewer( this );
 	AddPage( m_graphViewer, "Graphs" );
 
@@ -458,6 +461,8 @@ void ResultsViewer::Setup( Case *c, DataProvider *results )
 		m_cashFlow->Thaw();	
 	}
 
+	CreateAutoGraphs();
+
 	m_summaryLayout->AutoLayout();
 	
 	// load the formerly saved perspective
@@ -622,6 +627,59 @@ void ResultsViewer::OnCFCommand(wxCommandEvent &evt)
 		break;
 	}
 
+}
+
+class AutoGraph : public GraphCtrl
+{
+public:
+	AutoGraph( wxWindow *parent, DataProvider *prov, Graph &g )
+		: GraphCtrl( parent, wxID_ANY )
+	{
+		Display( prov, g );
+	}
+	virtual ~AutoGraph() { }
+};
+
+void ResultsViewer::CreateAutoGraphs()
+{
+	ConfigInfo *cfg = (m_case != 0 ? m_case->GetConfiguration() : 0);
+	if ( !cfg )
+	{
+		wxMessageBox("no configuration could be determined");
+		return;
+	}
+	
+	CaseCallbackContext cc(m_case, "Create autographs callback: " + cfg->Technology);
+
+	if (lk::node_t *cfcb = SamApp::GlobalCallbacks().Lookup("autographs", cfg->Technology))
+	{
+		if (!cc.Invoke(cfcb, SamApp::GlobalCallbacks().GetEnv()))
+			wxLogStatus("error running create autographs to excel script.");
+	}
+
+
+	// clear all the current autographs
+	size_t i=0;
+	while( i<m_summaryLayout->Count() )
+	{
+		if( AutoGraph *ag = dynamic_cast<AutoGraph*>( m_summaryLayout->Get(i) ) )
+			m_summaryLayout->Delete( ag );
+		else
+			i++;
+	}
+
+	if ( !m_results ) return;
+
+	for( size_t i=0;i<cc.AutoGraphs.size();i++ )
+	{
+		Graph g;
+		g.Y = wxSplit( cc.AutoGraphs[i].yvals, ',' );
+		g.Title = cc.AutoGraphs[i].title;
+		g.XLabel = cc.AutoGraphs[i].xlabel;
+		g.YLabel = cc.AutoGraphs[i].ylabel;
+		g.LegendPos = wxPLPlotCtrl::BOTTOM;
+		m_summaryLayout->Add( new AutoGraph( m_summaryLayout, m_results, g ) );
+	}
 }
 
 void ResultsViewer::ExportEqnExcel()

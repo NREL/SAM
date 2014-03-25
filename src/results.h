@@ -94,6 +94,8 @@ private:
 	void GetExportData(int data, matrix_t<wxString> &table);
 	void ExportEqnExcel();
 
+	void CreateAutoGraphs();
+
 	DECLARE_EVENT_TABLE();
 };
 
