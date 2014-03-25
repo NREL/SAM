@@ -47,6 +47,9 @@ static ConfigDatabase g_cfgDatabase;
 static InputPageDatabase g_uiDatabase;
 static wxLogWindow *g_logWindow = 0;
 static ScriptDatabase g_globalCallbacks;
+#ifdef __WXMSW__
+static wxExcelAutomation g_xl;
+#endif
 
 
 class SamLogWindow : public wxLogWindow
@@ -598,6 +601,11 @@ CaseWindow *MainWindow::GetCurrentCaseWindow()
 	return GetCaseWindow( GetCurrentCase() );
 }
 
+wxExcelAutomation MainWindow::XL()
+{
+	return m_xl;
+}
+
 Case *MainWindow::GetCurrentCase()
 {
 	size_t tab_sel = m_caseTabList->GetSelection();
@@ -690,6 +698,12 @@ void MainWindow::OnClose( wxCloseEvent &evt )
 		evt.Veto();
 		return;
 	}
+
+
+#ifdef __WXMSW__
+	m_xl.QuitExcel();
+#endif
+
 
 	Destroy();
 }
@@ -1354,6 +1368,7 @@ MainWindow *SamApp::Window()
 {
 	return g_mainWindow;
 }
+
 
 wxFileHistory &SamApp::FileHistory()
 {

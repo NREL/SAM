@@ -92,6 +92,7 @@ private:
 	void RemoveAllDataSets();
 	void Export(int data, int mechanism);
 	void GetExportData(int data, matrix_t<wxString> &table);
+	void ExportEqnExcel();
 
 	DECLARE_EVENT_TABLE();
 };

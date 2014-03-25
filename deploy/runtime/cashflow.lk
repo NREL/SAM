@@ -479,16 +479,13 @@ cashflow{ 'Sale Leaseback' } = define()
 	cfline( 'cf_after_tax_net_equity_cost_flow');
 	cfline( 'cf_after_tax_cash_flow');
 };
-/*
-cashflow_to_excel{ 'Ipp' } = define() 
+
+cashflow_to_excel{ 'Independent Power Producer' } = define() 
 {
 	// wrappers around wxExcelAutomation
 	
-	xl_open( 'filename');
-	xl_set( ${analysis_period}, 3, 4 );
-	xl_set( output('cf_energy_value') , 'A3' );
-	xl_set( '431knl', 'named_range');
-	
-	
-	
-};*/
+	xl_open( 'C:/SAM/2014.1.14/exelib/spreadsheets/equations/utility_ipp.xls');
+//	xl_set( ${analysis_period}, 3, 4 );
+//	xl_set( output('cf_energy_value') , 'A3' );
+//	xl_set( '431knl', 'named_range');
+};

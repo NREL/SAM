@@ -475,6 +475,25 @@ static void fcall_show( lk::invoke_t &cxt )
 		obj->Show( cxt.arg(1).as_boolean() );
 }
 
+#ifdef __WXMSW__
+static void fcall_xl_open(lk::invoke_t &cxt)
+{
+	LK_DOC("xl_open", "Opens an Excel file on Windows platform.", "( string:file_name):none");
+
+	if (CaseCallbackContext *ci = static_cast<CaseCallbackContext*>(cxt.user_data()))
+	{
+		wxString file_name = cxt.arg(0).as_string();
+//		SamApp::XL().Show(true);
+//		SamApp::Window()->XL().StartExcel(); fails in SamApp and MainWindow
+		SamApp::Window()->XL().AttachExcel(true); // fails if not already started
+		SamApp::Window()->XL().OpenFile(file_name);
+		SamApp::Window()->XL().Show(true);
+	}
+}
+#endif
+
+
+
 /*
 static bool sscvar_to_lkvar( lk::vardata_t &out, var_data *vv)
 {
@@ -889,6 +908,7 @@ lk::fcall_t* invoke_casecallback_funcs()
 		fcall_cfline,
 		fcall_technology,
 		fcall_financing,
+		fcall_xl_open,
 		0 };
 	return (lk::fcall_t*)vec;
 }
