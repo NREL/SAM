@@ -9,11 +9,6 @@
 #include <wx/filehistory.h>
 #include <wx/dialog.h>
 
-#ifdef __WXMSW__
-#include <wex/ole/excelauto.h>
-#endif
-
-
 #include "inputpage.h"
 #include "project.h"
 
@@ -64,10 +59,6 @@ public:
 
 	Case *GetCurrentCase();
 	CaseWindow *GetCurrentCaseWindow();
-#ifdef __WXMSW__
-	wxExcelAutomation XL();
-#endif
-
 
 protected:
 	void OnClose( wxCloseEvent & );
@@ -91,9 +82,7 @@ private:
 
 	ProjectFile m_project;
 	wxString m_projectFileName;
-
-	wxExcelAutomation m_xl;
-
+	
 	void UpdateFrameTitle();
 	
 	DECLARE_EVENT_TABLE();
