@@ -47,10 +47,6 @@ static ConfigDatabase g_cfgDatabase;
 static InputPageDatabase g_uiDatabase;
 static wxLogWindow *g_logWindow = 0;
 static ScriptDatabase g_globalCallbacks;
-#ifdef __WXMSW__
-static wxExcelAutomation g_xl;
-#endif
-
 
 class SamLogWindow : public wxLogWindow
 {
@@ -601,11 +597,6 @@ CaseWindow *MainWindow::GetCurrentCaseWindow()
 	return GetCaseWindow( GetCurrentCase() );
 }
 
-wxExcelAutomation MainWindow::XL()
-{
-	return m_xl;
-}
-
 Case *MainWindow::GetCurrentCase()
 {
 	size_t tab_sel = m_caseTabList->GetSelection();
@@ -698,12 +689,6 @@ void MainWindow::OnClose( wxCloseEvent &evt )
 		evt.Veto();
 		return;
 	}
-
-
-#ifdef __WXMSW__
-	m_xl.QuitExcel();
-#endif
-
 
 	Destroy();
 }
@@ -1188,7 +1173,6 @@ ConfigInfo *ConfigDatabase::Find( const wxString &t, const wxString &f )
 
 extern void RegisterUIWidgetsForSAM();
 
-
 bool SamApp::OnInit()
 {
 	if ( !wxApp::OnInit() )
@@ -1212,7 +1196,6 @@ bool SamApp::OnInit()
 	SamLogWindow::Setup();
 #endif
 
-	
 	// register all the object types that can
 	// be read or written to streams.
 	ObjectTypes::Register( new StringHash );
@@ -1257,7 +1240,7 @@ int SamApp::OnExit()
 	if ( g_config != 0 ) delete g_config;
 
 	wxSimpleCurlShutdown();
-
+	
 	wxLog::SetActiveTarget( 0 );
 	return 0;
 }
@@ -1397,7 +1380,6 @@ int SamApp::VersionMicro() { return g_verMicro; }
 ConfigDatabase &SamApp::Config() { return g_cfgDatabase; }
 InputPageDatabase &SamApp::InputPages() { return g_uiDatabase; }
 ScriptDatabase &SamApp::GlobalCallbacks() { return g_globalCallbacks; }
-
 
 bool SamApp::LoadAndRunScriptFile( const wxString &script_file, wxArrayString *errors )
 {

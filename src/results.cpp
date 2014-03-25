@@ -627,6 +627,12 @@ void ResultsViewer::OnCFCommand(wxCommandEvent &evt)
 void ResultsViewer::ExportEqnExcel()
 {
 	ConfigInfo *cfg = (m_case != 0 ? m_case->GetConfiguration() : 0);
+	if ( !cfg )
+	{
+		wxMessageBox("no configuration could be determined");
+		return;
+	}
+
 	if (lk::node_t *cfcb = SamApp::GlobalCallbacks().Lookup("cashflow_to_excel", cfg->Financing))
 	{
 		CaseCallbackContext cc(m_case, "Cashflow to Excel callback: " + cfg->Financing);

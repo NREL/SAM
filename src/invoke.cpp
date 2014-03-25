@@ -5,6 +5,10 @@
 #include <wex/lkscript.h>
 #include <wex/dview/dvplotctrl.h>
 
+#ifdef __WXMSW__
+#include <wex/ole/excelauto.h>
+#endif
+
 #include <ssc/sscapi.h>
 
 #include "main.h"
@@ -79,6 +83,22 @@ static void fcall_browse( lk::invoke_t &cxt )
 {
 	LK_DOC("browse", "Open a URL, local file, or folder using the default browser.", "(string:url):none");
 	::wxLaunchDefaultBrowser( cxt.arg(0).as_string() );
+}
+
+static void fcall_appdir( lk::invoke_t &cxt )
+{
+	LK_DOC("appdir", "Return the application folder.", "(none):string");
+	cxt.result().assign( SamApp::GetAppPath() );
+}
+static void fcall_runtimedir( lk::invoke_t &cxt )
+{
+	LK_DOC("runtimedir", "Return the application runtime data folder.", "(none):string");
+	cxt.result().assign( SamApp::GetRuntimePath() );
+}
+static void fcall_userlocaldatadir( lk::invoke_t &cxt )
+{
+	LK_DOC("userlocaldatadir", "Return the user's local data folder in their home folder.", "(none):string");
+	cxt.result().assign( SamApp::GetUserLocalDataDir() );
 }
 
 static void fcall_addconfig( lk::invoke_t &cxt )
@@ -476,20 +496,115 @@ static void fcall_show( lk::invoke_t &cxt )
 }
 
 #ifdef __WXMSW__
+
+class lkXLObject : public lk::objref_t
+{
+	wxExcelAutomation m_xl;
+public: 
+	lkXLObject() { };
+	virtual ~lkXLObject() { };
+	virtual lk_string type_name() { return "ole-excel-automation"; }
+	wxExcelAutomation &Excel() { return m_xl; }
+	operator wxExcelAutomation&() { return m_xl; }
+	wxExcelAutomation &operator*() { return m_xl; }
+};
+
+static void fcall_xl_create( lk::invoke_t &cxt )
+{
+	LK_DOC("xl_create", "Create a new Excel OLE automation object", "( [string: optional file to open] ):xl-object-ref" );
+
+	lkXLObject *xl = new lkXLObject;
+	xl->Excel().StartExcel();
+	if ( cxt.arg_count() > 0 )
+		xl->Excel().OpenFile( cxt.arg(0).as_string() );
+	
+	xl->Excel().Show( true );
+	cxt.result().assign( cxt.env()->insert_object( xl ) );
+}
+
+static void fcall_xl_free( lk::invoke_t &cxt )
+{
+	LK_DOC("xl_free", "Frees up an Excel OLE automation object", "( xl-obj-ref:xl ):none" );
+	
+	if ( lkXLObject *xl = dynamic_cast<lkXLObject*>( cxt.env()->query_object( cxt.arg(0).as_integer() ) ) )
+		cxt.env()->destroy_object( xl );
+}
+
 static void fcall_xl_open(lk::invoke_t &cxt)
 {
-	LK_DOC("xl_open", "Opens an Excel file on Windows platform.", "( string:file_name):none");
+	LK_DOC("xl_open", "Opens an Excel file on Windows platform.", "( xl-obj-ref:xl, string:file_name):none");
 
-	if (CaseCallbackContext *ci = static_cast<CaseCallbackContext*>(cxt.user_data()))
+	if ( lkXLObject *xl = dynamic_cast<lkXLObject*>( cxt.env()->query_object( cxt.arg(0).as_integer() ) ) )
 	{
-		wxString file_name = cxt.arg(0).as_string();
-//		SamApp::XL().Show(true);
-//		SamApp::Window()->XL().StartExcel(); fails in SamApp and MainWindow
-		SamApp::Window()->XL().AttachExcel(true); // fails if not already started
-		SamApp::Window()->XL().OpenFile(file_name);
-		SamApp::Window()->XL().Show(true);
+		xl->Excel().OpenFile( cxt.arg(1).as_string() );
+		xl->Excel().Show( true );
+		wxString file_name = cxt.arg(0).as_string();	
 	}
 }
+
+static void fcall_xl_autosizecols( lk::invoke_t &cxt )
+{
+	LK_DOC( "xl_autosizecols", "Automatically size columns in the current Excel file", "( xl-obj-ref:xl ):none" );
+	
+	if ( lkXLObject *xl = dynamic_cast<lkXLObject*>( cxt.env()->query_object( cxt.arg(0).as_integer() ) ) )
+		xl->Excel().AutoFitColumns();
+}
+
+static void fcall_xl_wkbook( lk::invoke_t &cxt )
+{
+	LK_DOC( "xl_wkbook", "Create a new empty workbook in the Excel file", "( xl-obj-ref:xl ):none" );
+	
+	if ( lkXLObject *xl = dynamic_cast<lkXLObject*>( cxt.env()->query_object( cxt.arg(0).as_integer() ) ) )
+		xl->Excel().NewWorkbook();
+}
+
+static void fcall_xl_sheet( lk::invoke_t &cxt )
+{
+	LK_DOC( "xl_sheet", "Create a new worksheet in the current workbook", "( xl-obj-ref:xl, [string: optional name] ):none");
+	
+	if ( lkXLObject *xl = dynamic_cast<lkXLObject*>( cxt.env()->query_object( cxt.arg(0).as_integer() ) ) )
+	{
+		if ( xl->Excel().AddWorksheet() && cxt.arg_count() == 2 )
+			xl->Excel().SetWorksheetName( cxt.arg(1).as_string() );
+	}
+}
+
+static void fcall_xl_set( lk::invoke_t &cxt )
+{
+	LK_DOC("xl_set", "Sets a value in an Excel file", "( xl-obj-ref:xl, variant:value, [string:named range -or- row, col] ):none");
+	
+	if ( lkXLObject *xl = dynamic_cast<lkXLObject*>( cxt.env()->query_object( cxt.arg(0).as_integer() ) ) )
+	{	
+		if ( cxt.arg_count() == 4 )
+			xl->Excel().SetCellValue( cxt.arg(2).as_integer(), cxt.arg(3).as_integer(), cxt.arg(1).as_string() );
+		else if ( cxt.arg_count() == 3 && cxt.arg(1).type() == lk::vardata_t::VECTOR )
+		{
+			wxArrayString list;
+			for( size_t i=0;i<cxt.arg(1).length();i++ )
+				list.Add( cxt.arg(1).index( i )->deref().as_string() );
+			xl->Excel().SetNamedRangeArray( cxt.arg(2).as_string(), list );
+		}
+		else if ( cxt.arg_count() == 3 )
+			xl->Excel().SetNamedRangeValue( cxt.arg(2).as_string(), cxt.arg(1).as_string() );
+	}
+}
+
+static void fcall_xl_get( lk::invoke_t &cxt )
+{
+	LK_DOC( "xl_get", "Gets a value from the current Excel file", "( xl-obj-ref:xl, [string:named range -or- row, col] ):variant" );
+	
+	if ( lkXLObject *xl = dynamic_cast<lkXLObject*>( cxt.env()->query_object( cxt.arg(0).as_integer() ) ) )
+	{	
+		wxString val;
+		if ( cxt.arg_count() == 2 )
+			xl->Excel().GetNamedRangeValue( cxt.arg(1).as_string(), val );
+		else if ( cxt.arg_count() == 3 )
+			xl->Excel().GetCellValue( cxt.arg(1).as_integer(), cxt.arg(2).as_integer(), val );
+
+		cxt.result().assign( val );
+	}
+}
+
 #endif
 
 
@@ -681,6 +796,7 @@ void sscvar_to_lkvar( lk::vardata_t &out, const char *name, ssc_data_t p_dat )
 }
 
 
+
 class lkSSCdataObj
 {
 	ssc_data_t m_data;
@@ -862,6 +978,19 @@ lk::fcall_t* invoke_general_funcs()
 	static const lk::fcall_t vec[] = {
 		fcall_logmsg,
 		fcall_browse,
+		fcall_appdir,
+		fcall_runtimedir,
+		fcall_userlocaldatadir,
+#ifdef __WXMSW__
+		fcall_xl_create,
+		fcall_xl_free,
+		fcall_xl_open,
+		fcall_xl_wkbook,
+		fcall_xl_sheet,
+		fcall_xl_set,
+		fcall_xl_get,
+		fcall_xl_autosizecols,
+#endif
 		0 };
 	return (lk::fcall_t*)vec;
 }
@@ -908,7 +1037,6 @@ lk::fcall_t* invoke_casecallback_funcs()
 		fcall_cfline,
 		fcall_technology,
 		fcall_financing,
-		fcall_xl_open,
 		0 };
 	return (lk::fcall_t*)vec;
 }
