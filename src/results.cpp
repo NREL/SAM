@@ -596,6 +596,7 @@ void ResultsViewer::Export(int data, int mechanism)
 		xl.SetSelectedCellsFontSize(9);
 		xl.SetRowColBold(1, true);
 		if (data == EXP_CASHFLOW) xl.SetRowColBold(-1, true);
+
 	}
 #endif
 
@@ -617,13 +618,22 @@ void ResultsViewer::OnCFCommand(wxCommandEvent &evt)
 		Export(EXP_CASHFLOW, EXP_SEND_EXCEL);
 		break;
 	case ID_CF_SENDEQNEXCEL:
-//		ExportExcelEquations();
+		ExportEqnExcel();
 		break;
 	}
 
 }
 
-
+void ResultsViewer::ExportEqnExcel()
+{
+	ConfigInfo *cfg = (m_case != 0 ? m_case->GetConfiguration() : 0);
+	if (lk::node_t *cfcb = SamApp::GlobalCallbacks().Lookup("cashflow_to_excel", cfg->Financing))
+	{
+		CaseCallbackContext cc(m_case, "Cashflow to Excel callback: " + cfg->Financing);
+		if (!cc.Invoke(cfcb, SamApp::GlobalCallbacks().GetEnv()))
+			wxLogStatus("error running cashflow to excel script.");
+	}
+}
 
 void ResultsViewer::RemoveAllDataSets()
 {
