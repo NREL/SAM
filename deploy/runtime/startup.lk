@@ -6,7 +6,7 @@ addconfig( 'PVWatts', [ 'Residential', 'Commercial', 'Commercial PPA', 'Independ
 addconfig( 'Flat Plate PV', ['Residential', 'Commercial', 'None'] );
 addconfig( 'Test Only', [ 'None' ] );
 addconfig( 'Test Wind BOS', [ 'None' ] );
-addconfig( 'Wind Power', ['Residential', 'Commercial', 'None' ] );
+addconfig( 'Wind Power', ['None', 'Independent Power Producer'] );
 addconfig( 'Solar Water Heating', ['Residential', 'Commercial', 'None']);
 addconfig( 'Concentrating Solar Power - Physical Trough', ['Independent Power Producer','None']);
 
@@ -219,8 +219,8 @@ function setup_csp_physical_trough_pages()
 //addpage( [[ 'Location' ]] );
 
 setconfig( 'Test Wind BOS', 'None' );
-addpage( [[ 'Test Wind BOS' ]] );
 setmodules( ['windbos']);
+addpage( [[ 'Test Wind BOS' ]] );
 
 
 // CSP - Physical Trough ///////////////////////////////////////////////////////
@@ -317,6 +317,14 @@ setup_single_owner_pages();
 setconfig( 'Wind Power', 'None' );
 setmodules( ['windpower']);
 setup_windpower_pages();
+
+setconfig( 'Wind Power', 'Independent Power Producer' );	
+setmodules( ['windpower', 'ippppa']);
+setting( { 'analysis_period_var'='cf_length' } );
+setup_windpower_pages();
+addpage( [[ 'Wind Farm Capital Costs','O and M Costs' ]], { 'sidebar'='Wind System Costs' } );
+setup_independent_power_producer_pages();
+
 
 // Solar Water Heating /////////////////////////////////////////////////////////
 setconfig( 'Solar Water Heating', 'None');
