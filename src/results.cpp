@@ -29,7 +29,42 @@
 #include "results.h"
 #include "casewin.h"
 #include "graph.h"
-#include "xlautomation.h"
+
+
+wxString UnsplitCells(const matrix_t<wxString> &table, char colsep, char rowsep, bool quote_colsep)
+{
+	wxString result = "";
+	int r, c;
+
+	for (r = 0; r<table.nrows(); r++)
+	{
+		for (c = 0; c<table.ncols(); c++)
+		{
+			if (quote_colsep && table.at(r, c).Find(colsep) != wxNOT_FOUND)
+			{
+				result = result + '"' + table.at(r, c) + '"';
+			}
+			else
+			{
+				result = result + table.at(r, c);
+			}
+
+			if (c < table.ncols() - 1)
+			{
+				result = result + colsep;
+			}
+		}
+
+		if (r < table.nrows() - 1)
+		{
+			result = result + rowsep;
+		}
+	}
+	return result;
+}
+
+
+
 
 void PopulateSelectionList( wxDVSelectionListCtrl *sel, wxArrayString *names, 
 	DataProvider *results, ConfigInfo *config )
@@ -531,7 +566,7 @@ void ResultsViewer::Export(int data, int mechanism)
 #ifdef __WXMSW__
 	if (mechanism & EXP_SEND_EXCEL)
 	{
-		XLAutomation xl;
+		wxExcelAutomation xl;
 		if (!xl.StartExcel())
 		{
 			wxMessageBox("Could not start Excel.");
