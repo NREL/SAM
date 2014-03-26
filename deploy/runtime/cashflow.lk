@@ -485,7 +485,7 @@ cashflow_to_excel{ 'Independent Power Producer' } = define()
 	// wrappers around wxExcelAutomation
 	//xl = xl_create( 'C:/SAM/2014.1.14/exelib/spreadsheets/equations/utility_ipp.xls' );
 	
-	xl = xl_create( runtimedir() + '/xl-ole-test.xlsx' );
+	xl = xl_create( runtimedir() + 'spreadsheets/utility_ipp.xls' );
 	xl_set( xl, '134', 5, 4 );
 	
 /*
