@@ -1,5 +1,6 @@
 #include <algorithm>
 #include <wx/log.h>
+#include <wx/tokenzr.h>
 
 #include <wex/plot/plplotctrl.h>
 #include <wex/lkscript.h>
@@ -13,6 +14,7 @@
 
 #include "main.h"
 #include "case.h"
+#include "simulation.h"
 #include "casewin.h"
 #include "materials.h" // used to call functions for substance density and specific heat
 
@@ -524,6 +526,73 @@ public:
 	wxExcelAutomation &operator*() { return m_xl; }
 };
 
+static void fcall_case_name(lk::invoke_t &cxt)
+{
+	LK_DOC("case_name", "Returns the current case name.", "( none ):none");
+
+	Case *c = SamApp::Window()->GetCurrentCase();
+	wxString case_name = SamApp::Window()->Project().GetCaseName(c);
+
+	cxt.result().assign(case_name);
+
+}
+
+static void fcall_output(lk::invoke_t &cxt)
+{
+	LK_DOC("output", "Gets the requested output from the base case simulaiton for the current case.", "( string: output variable name ):none");
+
+	Case *c = SamApp::Window()->GetCurrentCase();
+	Simulation *results  = new Simulation(c, "Base Case");
+	results->Invoke();
+	VarValue *vv = results->GetValue(cxt.arg(0).as_string());
+	vv->Write(cxt.result());
+}
+
+static void fcall_copy_file(lk::invoke_t &cxt)
+{
+	LK_DOC("copy_file", "Copy file source to destination. Use full path for source and destination. Overwrite true overwrites destination.", "( string: source file name, string: destination file name, bool: overwrite=false ):none");
+
+	if (!((cxt.arg_count() == 2) || (cxt.arg_count() == 3))) return;
+
+	bool overwrite = false;
+	if (cxt.arg_count() == 3) overwrite = cxt.arg(2).as_boolean();
+	
+	wxString source = cxt.arg(0).as_string();
+
+	if (!wxFileExists(source)) return;
+
+	wxString destination = cxt.arg(1).as_string();
+
+	if (!overwrite)
+	{
+		wxArrayString dest_file_parts = wxStringTokenize(destination, '.');
+		if (dest_file_parts.Count() < 2) return;
+
+		wxString suffix = dest_file_parts[dest_file_parts.Count() - 1];
+		wxString prefix = "";
+		int i = 0;
+		for (i = 0; i < (int)dest_file_parts.Count() - 1; i++)
+		{
+			if (i == (int)dest_file_parts.Count() - 2)
+				prefix += dest_file_parts[i];
+			else
+				prefix += dest_file_parts[i] + ".";
+		}
+
+		i = 0;
+		destination = wxString::Format("%s.%s", prefix, suffix);
+		while (wxFileExists(destination))
+		{
+			destination = wxString::Format("%s(%d).%s", prefix, i, suffix);
+			i++;
+		}
+	}
+
+	wxCopyFile(source, destination);
+	cxt.result().assign(destination);
+
+}
+
 static void fcall_xl_create( lk::invoke_t &cxt )
 {
 	LK_DOC("xl_create", "Create a new Excel OLE automation object", "( [string: optional file to open] ):xl-object-ref" );
@@ -996,6 +1065,9 @@ lk::fcall_t* invoke_general_funcs()
 		fcall_appdir,
 		fcall_runtimedir,
 		fcall_userlocaldatadir,
+		fcall_copy_file,
+		fcall_case_name,
+		fcall_output,
 #ifdef __WXMSW__
 		fcall_xl_create,
 		fcall_xl_free,

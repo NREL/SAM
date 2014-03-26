@@ -1432,7 +1432,6 @@ IDEWindow::IDEWindow( wxWindow *parent )
 	
 	m_cashFlowPanel = new ScriptPanel( m_notebook, "cashflow.lk" );
 	m_cashFlowPanel->AddLibrary(invoke_casecallback_funcs(), "Case callbacks");
-	m_cashFlowPanel->AddLibrary(invoke_general_funcs(), "General functions");
 	m_notebook->AddPage(m_cashFlowPanel, "Cashflows");
 
 	m_autoGraphPanel = new ScriptPanel( m_notebook, "autographs.lk" );
