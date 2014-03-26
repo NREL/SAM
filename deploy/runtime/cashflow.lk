@@ -482,17 +482,15 @@ cashflow{ 'Sale Leaseback' } = define()
 
 cashflow_to_excel{ 'Independent Power Producer' } = define() 
 {
-	// wrappers around wxExcelAutomation
-	//xl = xl_create( 'C:/SAM/2014.1.14/exelib/spreadsheets/equations/utility_ipp.xls' );
+	source = runtimedir() + 'spreadsheets/utility_ipp.xls';
+	destination = userlocaldatadir() + "/"+ case_name() + '.xls';
 	
-	xl = xl_create( runtimedir() + 'spreadsheets/utility_ipp.xls' );
-	xl_set( xl, '134', 5, 4 );
+	destination = copy_file( source, destination );
 	
-/*
-	xl_set( xl, ${analysis_period}, 3, 4 );
-	xl_set( xl, output('cf_energy_value') , 'A3' );
-	xl_set( xl, '431knl', 'named_range');
-*/
+	xl = xl_create( destination );
+	xl_set( xl, ${analysis_period}, 'inAnalysisPeriod' );
+	xl_set( xl, output('cf_energy_net'), 'inSystemOutput' );
+	xl_set( xl, output('cf_energy_value'), 'inEnergyValue' );
 
 	xl_free( xl );
 };
