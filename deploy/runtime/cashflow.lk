@@ -480,6 +480,20 @@ cashflow{ 'Sale Leaseback' } = define()
 	cfline( 'cf_after_tax_cash_flow');
 };
 
+
+function cashflow_to_excel_incentives(xl)
+{
+	// incentives section 
+	xl_set( xl, (${cbi_fed_deprbas_fed}?'x':''), 'inFedCBIITCBasisFed');
+	xl_set( xl, (${cbi_fed_deprbas_sta}?'x':''), 'inFedCBIITCBasisState');
+	xl_set( xl, (${cbi_sta_deprbas_fed}?'x':''), 'inStateCBIITCBasisFed');
+	xl_set( xl, (${cbi_sta_deprbas_sta}?'x':''), 'inStateCBIITCBasisState');
+	xl_set( xl, (${cbi_uti_deprbas_fed}?'x':''), 'inUtilityCBIITCBasisFed');
+	xl_set( xl, (${cbi_uti_deprbas_sta}?'x':''), 'inUtilityCBIITCBasisState');
+	xl_set( xl, (${cbi_oth_deprbas_fed}?'x':''), 'inOtherCBIITCBasisFed');
+	xl_set( xl, (${cbi_oth_deprbas_sta}?'x':''), 'inOtherCBIITCBasisState');
+} 
+
 cashflow_to_excel{ 'Independent Power Producer' } = define() 
 {
 	source = runtimedir() + 'spreadsheets/utility_ipp.xls';
@@ -489,26 +503,21 @@ cashflow_to_excel{ 'Independent Power Producer' } = define()
 	
 	xl = xl_create( destination );
 	xl_set( xl, ${analysis_period}, 'inAnalysisPeriod' );
-	// annual energy for degradation to be applied
+	// annual energy for degradation to be applied in spreadsheet
 	ae = alloc(${analysis_period});
-	for(i=0;i<#ae;i++)
-	{
-		ae[i] = output('annual_energy');
-	}
+	for(i=0;i<#ae;i++)	{
+		ae[i] = output('annual_energy');	}
 	xl_set( xl, ae, 'inSystemOutput' );
-
 //	xl_set( xl, output('cf_energy_net'), 'inSystemOutput' );
 	xl_set( xl, output('cf_energy_value'), 'inEnergyValue' );
+	
 	// for single value or schedule items
 	degrad = ${degradation};
 //	xl_set( xl, degrad, 'inDegradation' );
 	xl_set( xl, ((#degrad == 1) ? degrad[0]/100 : 1), 'inDegradation' );
 	xl_set( xl, ((#degrad == 1) ? 0 : output('cf_degradation')), 'inDegradationSched' );
 	
-	// incentives section - make into function for all
-	xl_set( xl, (${cbi_fed_deprbas_fed}?'x':''), 'inFedCBIITCBasisFed');
-	
-	
+	cashflow_to_excel_incentives(xl);
 
 	xl_free( xl );
 };
