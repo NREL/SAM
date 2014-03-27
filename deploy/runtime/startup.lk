@@ -5,7 +5,7 @@ addconfig( 'PVWatts', [ 'Residential', 'Commercial', 'Commercial PPA', 'Independ
  'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'Single Owner', 'None' ] );
 addconfig( 'Flat Plate PV', ['Residential', 'Commercial', 'None'] );
 addconfig( 'Test Only', [ 'None' ] );
-addconfig( 'Test Wind BOS', [ 'None' ] );
+addconfig( 'Wind BOS', [ 'None' ] );
 addconfig( 'Wind Power', ['None', 'Independent Power Producer'] );
 addconfig( 'Solar Water Heating', ['Residential', 'Commercial', 'None']);
 addconfig( 'Concentrating Solar Power - Physical Trough', ['Independent Power Producer','None']);
@@ -175,7 +175,6 @@ function setup_windpower_pages()
 	addpage( [[ 'Wind Siting Considerations' ]], { 'sidebar'='Wind Siting Considerations' } );
 	addpage( [[ 'Wind Turbine Design' ]], { 'sidebar'='Wind Turbine Design' } );
 	addpage( [[ 'Wind Farm Specifications' ]], { 'sidebar'='Wind Farm Specifications' } );
-	//addpage( [[ 'Wind Farm Capital Costs' ]], { 'sidebar'='Wind Farm Capital Costs' } );
 
 }
 
@@ -218,9 +217,9 @@ function setup_csp_physical_trough_pages()
 //addpage( [[ 'Test 1' ]] );
 //addpage( [[ 'Location' ]] );
 
-setconfig( 'Test Wind BOS', 'None' );
-setmodules( ['windbos']);
-addpage( [[ 'Test Wind BOS' ]] );
+//setconfig( 'Wind BOS', 'None' );
+//setmodules( ['windbos']);
+//addpage( [[ 'Wind BOS' ]] );
 
 
 // CSP - Physical Trough ///////////////////////////////////////////////////////
@@ -322,7 +321,17 @@ setconfig( 'Wind Power', 'Independent Power Producer' );
 setmodules( ['windpower', 'ippppa']);
 setting( { 'analysis_period_var'='cf_length' } );
 setup_windpower_pages();
-addpage( [[ 'Wind Farm Capital Costs','O and M Costs' ]], { 'sidebar'='Wind System Costs' } );
+//addpage( [[ 'Wind BOS',
+//		{ 'name'='Wind BOS 1', 'caption'='Detailed BOS Results', 'collapsible'=true, 'collapsible_var'='wind_detailed_bos_results_shown'},
+//		{ 'name'='Wind BOS 2', 'caption'='Estimated Inputs', 'collapsible'=true, 'collapsible_var'='wind_estimated_inputs_shown'},
+//		{ 'name'='Wind BOS 3', 'caption'='Advanced Inputs', 'collapsible'=true, 'collapsible_var'='wind_advanced_inputs_shown'} ]],
+//		{ 'sidebar'='Balance of System Costs' } );
+addpage( [[ 'Wind Farm Capital Costs','O and M Costs',
+		{ 'name'='Wind BOS',   'caption'='Balance of System Costs', 'collapsible'=false, 'collapsible_var'='wind_detailed_bos_results_shown'},
+		{ 'name'='Wind BOS 1', 'caption'='Detailed BOS Results', 'collapsible'=true, 'collapsible_var'='wind_detailed_bos_results_shown'},
+		{ 'name'='Wind BOS 2', 'caption'='Estimated BOS Inputs', 'collapsible'=true, 'collapsible_var'='wind_estimated_inputs_shown'},
+		{ 'name'='Wind BOS 3', 'caption'='Advanced BOS Inputs', 'collapsible'=true, 'collapsible_var'='wind_advanced_inputs_shown'} ]],
+		{ 'sidebar'='Wind System Costs' } );
 setup_independent_power_producer_pages();
 
 
