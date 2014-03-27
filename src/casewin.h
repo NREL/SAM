@@ -39,7 +39,8 @@ public:
 
 	void SaveCurrentViewProperties();
 
-	bool RunBaseCaseSimulation();
+	bool RunBaseCase();
+	void UpdateResults();
 
 private:
 	Case *m_case;
@@ -78,7 +79,6 @@ private:
 	wxMetroButton *m_simButton, *m_resultsButton;
 
 	wxSimplebook *m_pageFlipper;
-	Simulation *m_baseCaseSimulation;
 	ResultsViewer *m_baseCaseResults;
 	wxLKScriptCtrl *m_scriptCtrl;
 

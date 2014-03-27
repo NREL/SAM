@@ -20,9 +20,9 @@ CaseCallbackContext::CaseCallbackContext( Case *cc, const wxString &desc )
 VarTable &CaseCallbackContext::GetValues() { return GetCase().Values(); }
 Case &CaseCallbackContext::GetCase() { return *m_case; }
 
-void CaseCallbackContext::SetupLibraries( lk::env_t *env )
+void CaseCallbackContext::SetupLibraries( lk::env_t * )
 {
-	/* nothing here - for descendents like UICallbackContext*/
+	/* nothing here - for descendents like UICallbackContext or ResultsCallbackContext */
 }
 	
 bool CaseCallbackContext::Invoke( lk::node_t *root, lk::env_t *parent_env )
@@ -199,7 +199,7 @@ bool CaseEvaluator::UpdateLibrary( const wxString &trigger, wxArrayString &chang
 
 
 Case::Case()
-	: m_config(0)
+	: m_config(0), m_baseCase( this, "Base Case Simulation" )
 {
 
 }
@@ -221,7 +221,7 @@ bool Case::Copy( Object *obj )
 	if ( Case *rhs = dynamic_cast<Case*>( obj ) )
 	{
 		m_vals.Copy( rhs->m_vals );
-		m_baseCase.Copy( rhs->m_vals );
+		m_baseCase.Copy( rhs->m_baseCase );
 		m_properties = rhs->m_properties;
 		m_notes = rhs->m_notes;
 		
@@ -245,7 +245,7 @@ void Case::Write( wxOutputStream &_o )
 	wxDataOutputStream out(_o);
 
 	out.Write8( 0x9b );
-	out.Write8( 1 );
+	out.Write8( 2 );
 
 	wxString tech, fin;
 	if ( m_config != 0 )
@@ -272,17 +272,28 @@ bool Case::Read( wxInputStream &_i )
 	wxDataInputStream in(_i);
 
 	wxUint8 code = in.Read8();
-	in.Read8(); // version
+	wxUint8 ver = in.Read8(); // version
 
 	// read data
 	wxString tech = in.ReadString();
 	wxString fin = in.ReadString();
+
+	SetConfiguration( tech, fin );
+
 	if ( !m_vals.Read( _i ) ) wxLogStatus("error reading m_vals in Case::Read");
-	if ( !m_baseCase.Read( _i ) ) wxLogStatus("error reading m_baseCase in Case::Read");
+
+	if ( ver <= 1 )
+	{
+		m_baseCase.Clear();
+		VarTable dum;
+		if ( !dum.Read( _i ) ) wxLogStatus("error reading dummy var table in Case::Read");
+	}
+	else
+		if ( !m_baseCase.Read( _i ) ) wxLogStatus("error reading m_baseCase in Case::Read");
+
 	if ( !m_properties.Read( _i ) ) wxLogStatus("error reading m_properties in Case::Read");
 	if ( !m_notes.Read( _i ) ) wxLogStatus("error reading m_notes in Case::Read");
 
-	SetConfiguration( tech, fin );
 
 	return (in.Read8() == code);
 }
@@ -365,7 +376,7 @@ bool Case::LoadDefaults()
 void Case::SetConfiguration( const wxString &tech, const wxString &fin )
 {
 	// erase results
-	m_baseCase.clear();
+	m_baseCase.Clear();
 
 	m_config = SamApp::Config().Find( tech, fin );
 		
@@ -609,4 +620,10 @@ wxString Case::RetrieveNote( const wxString &id )
 void Case::SaveNote( const wxString &id, const wxString &text )
 {
 	m_notes[id] = text;
+}
+
+
+Simulation &Case::BaseCase()
+{
+	return m_baseCase;
 }
