@@ -18,6 +18,9 @@ lk::fcall_t* invoke_uicallback_funcs();
 // these functions expect a CaseCallbackContext* as user_data
 lk::fcall_t* invoke_casecallback_funcs();
 
+// these functions expect a ResultsCallbackContext* as user_data
+lk::fcall_t* invoke_resultscallback_funcs();
+
 // functions that can be called in equations
 lk::fcall_t* invoke_equation_funcs(); 
 

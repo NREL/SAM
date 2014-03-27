@@ -1,3 +1,6 @@
+#include <algorithm>
+
+#include <wx/datstrm.h>
 #include <wx/gauge.h>
 #include <wx/progdlg.h>
 
@@ -94,6 +97,92 @@ Simulation::Simulation( Case *cc, const wxString &name )
 }
 
 
+static void write_array_string( wxDataOutputStream &out, wxArrayString &list )
+{
+	out.Write32( list.size() );
+	for( size_t i=0;i<list.size();i++ )
+		out.WriteString( list[i] );
+}
+
+static void read_array_string( wxDataInputStream &in, wxArrayString &list )
+{
+	list.Clear();
+	size_t n = in.Read32();
+	for( size_t i=0;i<n;i++ )
+		list.Add( in.ReadString() );
+}
+
+void Simulation::Write( wxOutputStream &os )
+{
+	wxDataOutputStream out( os );
+	out.Write8( 0x9c );
+	out.Write8( 1 ); // version
+
+	out.WriteString( m_name );
+
+	write_array_string( out, m_overrides );
+
+	m_inputs.Write( os );
+	m_outputs.Write( os );
+	
+	write_array_string( out, m_errors );
+	write_array_string( out, m_warnings );
+
+	m_outputLabels.Write( os );
+	m_outputUnits.Write( os );
+
+	out.Write8( 0x9c );
+}
+
+bool Simulation::Read( wxInputStream &is )
+{
+	Clear();
+	wxDataInputStream in( is );
+
+	wxUint8 code = in.Read8(); // code
+	in.Read8(); // ver
+
+	m_name = in.ReadString();
+
+	read_array_string( in, m_overrides );
+
+	m_inputs.Read( is );
+	m_outputs.Read( is );
+
+	read_array_string( in, m_errors );
+	read_array_string( in, m_warnings );
+		
+	m_outputLabels.Read( is );
+	m_outputUnits.Read( is );
+	
+	
+	return ( code == in.Read8() );	
+}
+
+void Simulation::Copy( const Simulation &rh )
+{
+	Clear();
+	m_name = rh.m_name;
+	m_overrides = rh.m_overrides;
+	m_inputs = rh.m_inputs;
+	m_outputs = rh.m_outputs;
+	m_errors = rh.m_errors;
+	m_warnings = rh.m_warnings;
+	m_outputLabels = rh.m_outputLabels;
+	m_outputUnits = rh.m_outputUnits;
+}
+
+void Simulation::Clear()
+{
+	m_overrides.clear();
+	m_inputs.clear();
+	m_outputs.clear();
+	m_errors.clear();
+	m_warnings.clear();
+	m_outputLabels.clear();
+	m_outputUnits.clear();
+}
+
 void Simulation::Override( const wxString &name, const VarValue &val )
 {
 	if ( VarValue *vv = m_inputs.Create( name, val.Type() ) )
@@ -149,20 +238,26 @@ wxArrayString &Simulation::GetWarnings()
 	return m_warnings;
 }
 
-VarTable &Simulation::Values()
+VarTable &Simulation::Outputs()
 {
-	return m_results;
+	return m_outputs;
 }
 
 
-wxArrayString Simulation::GetVariables()
+wxArrayString Simulation::GetOutputs()
 {
-	return Values().ListAll();
+	return Outputs().ListAll();
 }
 
-VarValue *Simulation::GetValue( const wxString &var )
+VarValue *Simulation::GetOutput( const wxString &var )
 {
-	return Values().Get( var );
+	return Outputs().Get( var );
+}
+
+VarValue *Simulation::GetValue( const wxString &name )
+{
+	if ( VarValue *vv = Outputs().Get( name ) ) return vv;
+	else return GetInput( name );
 }
 
 wxString Simulation::GetLabel( const wxString &var )
@@ -356,7 +451,7 @@ bool Simulation::Invoke()
 					ssc_number_t vval;
 					if ( ssc_data_get_number( p_data, name, &vval ) )
 					{
-						VarValue *vv = m_results.Create( name, VV_NUMBER );
+						VarValue *vv = m_outputs.Create( name, VV_NUMBER );
 						vv->Set( (float) vval );
 						
 						m_outputLabels[ name ] = label;
@@ -368,7 +463,7 @@ bool Simulation::Invoke()
 					int len;
 					if ( ssc_number_t *varr = ssc_data_get_array( p_data, name, &len ) )
 					{
-						VarValue *vv = m_results.Create( name, VV_ARRAY );
+						VarValue *vv = m_outputs.Create( name, VV_ARRAY );
 						float *ff = new float[len];
 						for( int i=0;i<len;i++ )
 							ff[i] = (float)(varr[i]);
@@ -393,3 +488,53 @@ bool Simulation::Invoke()
 	return m_errors.size() == 0;
 
 }
+
+void Simulation::ListByCount( size_t n, wxArrayString &list )
+{
+	VarTable &vt = Outputs();
+	for ( VarTable::iterator it = vt.begin();
+		it != vt.end();
+		++it )
+	{
+		size_t len = 0;
+		if ( it->second->Type() == VV_NUMBER )
+			len = 1;
+		else if ( it->second->Type() == VV_ARRAY )
+			len = it->second->Length();
+
+		if ( len == n )
+			list.Add( it->first );
+	}
+}
+
+void Simulation::GetVariableLengths( std::vector<size_t> &varlengths )
+{	
+	varlengths.clear();
+	
+	VarTable &vt = Outputs();
+	if( vt.size() == 0 ) return;
+	
+	bool has_single_value = false;
+	for ( VarTable::iterator it = vt.begin();
+		it != vt.end();
+		++it )
+	{
+		if ( it->second->Type() == VV_ARRAY )
+		{
+			size_t n = 0;
+			float *f = it->second->Array( &n );
+
+			if ( n > 1 && std::find( varlengths.begin(), varlengths.end(), n ) == varlengths.end() )
+				varlengths.push_back( n );
+		}
+		else if ( it->second->Type() == VV_NUMBER )
+			has_single_value = true;
+	}
+
+	if ( has_single_value ) 
+		varlengths.push_back( 1 );
+
+	// sort variable lengths
+	std::stable_sort( varlengths.begin(), varlengths.end() );
+}
+
