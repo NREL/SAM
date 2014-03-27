@@ -29,9 +29,10 @@
 #include "results.h"
 #include "casewin.h"
 #include "graph.h"
+#include "invoke.h"
 
 
-wxString UnsplitCells(const matrix_t<wxString> &table, char colsep, char rowsep, bool quote_colsep)
+static wxString UnsplitCells(const matrix_t<wxString> &table, char colsep, char rowsep, bool quote_colsep)
 {
 	wxString result = "";
 	int r, c;
@@ -66,30 +67,30 @@ wxString UnsplitCells(const matrix_t<wxString> &table, char colsep, char rowsep,
 
 
 
-void PopulateSelectionList( wxDVSelectionListCtrl *sel, wxArrayString *names, 
-	DataProvider *results, ConfigInfo *config )
+void PopulateSelectionList( wxDVSelectionListCtrl *sel, wxArrayString *names, Simulation *sim )
 {		
 	int an_period = -1;
+	ConfigInfo *config = sim->GetCase()->GetConfiguration();
 	if ( config != 0 )
 	{
 		wxString an_var = config->Settings["analysis_period_var"];
 		if ( !an_var.IsEmpty() )
 		{
-			if ( VarValue *vv = results->GetValue( an_var ) )
+			if ( VarValue *vv = sim->GetValue( an_var ) )
 				if ( vv->Type() == VV_NUMBER )
 					an_period = (int) vv->Value();
 		}
 	}
 
 	std::vector<size_t> varlengths;
-	results->GetVariableLengths( varlengths );
+	sim->GetVariableLengths( varlengths );
 
 	names->Clear();
 
 	for (size_t i=0;i<varlengths.size();i++)
 	{		
 		wxArrayString list;		
-		results->ListByCount( varlengths[i], list );
+		sim->ListByCount( varlengths[i], list );
 
 		if (list.Count() == 0)
 			continue;
@@ -112,7 +113,7 @@ void PopulateSelectionList( wxDVSelectionListCtrl *sel, wxArrayString *names,
 		
 		wxArrayString labels;
 		for ( size_t j=0;j<list.Count();j++)
-			labels.Add( results->GetLabel( list[j] ));
+			labels.Add( sim->GetLabel( list[j] ));
 
 		wxSortByLabels( list, labels );
 
@@ -127,51 +128,51 @@ void PopulateSelectionList( wxDVSelectionListCtrl *sel, wxArrayString *names,
 	}
 }
 
-enum { ID_CF_COPY, ID_CF_SAVECSV, ID_CF_SENDEXCEL, ID_CF_SENDEQNEXCEL };
+
+ResultsCallbackContext::ResultsCallbackContext( ResultsViewer *rv, const wxString &desc )
+	: CaseCallbackContext( rv->GetSimulation()->GetCase(), desc ), m_resview( rv )
+{
+}
+
+ResultsViewer *ResultsCallbackContext::GetResultsViewer()
+{
+	return m_resview;
+}
+
+Simulation *ResultsCallbackContext::GetSimulation()
+{
+	return m_resview->GetSimulation();
+}
+
+void ResultsCallbackContext::SetupLibraries( lk::env_t *env )
+{
+	env->register_funcs( invoke_resultscallback_funcs(), this );
+}
+
+
+enum { ID_CF_COPY = wxID_ANY , ID_CF_SAVECSV, ID_CF_SENDEXCEL, ID_CF_SENDEQNEXCEL };
 
 BEGIN_EVENT_TABLE( ResultsViewer, wxMetroNotebook )	
-EVT_BUTTON(ID_CF_COPY, ResultsViewer::OnCFCommand)
-EVT_BUTTON(ID_CF_SAVECSV, ResultsViewer::OnCFCommand)
-EVT_BUTTON(ID_CF_SENDEXCEL, ResultsViewer::OnCFCommand)
-EVT_BUTTON(ID_CF_SENDEQNEXCEL, ResultsViewer::OnCFCommand)
+	EVT_BUTTON(ID_CF_COPY, ResultsViewer::OnCommand)
+	EVT_BUTTON(ID_CF_SAVECSV, ResultsViewer::OnCommand)
+	EVT_BUTTON(ID_CF_SENDEXCEL, ResultsViewer::OnCommand)
+	EVT_BUTTON(ID_CF_SENDEQNEXCEL, ResultsViewer::OnCommand)
 END_EVENT_TABLE()
 
 
 ResultsViewer::ResultsViewer( wxWindow *parent )
 	: wxMetroNotebook( parent, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxMT_LIGHTTHEME ),
-	 m_case( 0 ),
-	 m_results( 0 )
+	 m_sim( 0 )
 {
 	m_summaryLayout = new wxSnapLayout( this, wxID_ANY );
 	AddPage( m_summaryLayout, "Summary", true );
 
-	m_metrics = new MetricsTable( m_summaryLayout );
+	m_metricsTable = new MetricsTable( m_summaryLayout );
 	matrix_t<wxString> data( 1, 2 );
 	data.at(0,0) = "Metric"; data.at(0,1) = "Value";
-	m_metrics->SetData( data );	
-	m_summaryLayout->Add( m_metrics );
-
-/*
-	m_summaryLayout->Add( new wxCheckListBox( m_summaryLayout, wxID_ANY ) );
-	m_summaryLayout->Add( new wxCheckListBox( m_summaryLayout, wxID_ANY ) );
-	wxPLPlotCtrl *pl = new wxPLPlotCtrl( m_summaryLayout, wxID_ANY );
-	pl->SetTitle("Super_i^2");
-	std::vector<wxRealPoint> pld;
-	pld.push_back( wxRealPoint( 1, 4 ) );
-	pld.push_back( wxRealPoint( 2, 3 ) );
-	pld.push_back( wxRealPoint( 3, 1 ) );
-	pld.push_back( wxRealPoint( 4, -4.5 ) );
-	pld.push_back( wxRealPoint( 5, -0.75 ) );
-	pld.push_back( wxRealPoint( 6, 2 ) );
-	pld.push_back( wxRealPoint( 7, 7 ) );
-	pld.push_back( wxRealPoint( 8, 9 ) );
-	pl->AddPlot( new wxPLLinePlot( pld, "Demo data", *wxRED, wxPLLinePlot::DOTTED, 3, true ) );
-	m_summaryLayout->Add( pl, 400, 300 );
-	wxGrid *gr = new wxGrid( m_summaryLayout, wxID_ANY );
-	gr->CreateGrid( 5, 7 );
-	m_summaryLayout->Add( gr );
-*/
-
+	m_metricsTable->SetData( data );	
+	m_summaryLayout->Add( m_metricsTable );
+	
 	m_graphViewer = new GraphViewer( this );
 	AddPage( m_graphViewer, "Graphs" );
 
@@ -180,20 +181,20 @@ ResultsViewer::ResultsViewer( wxWindow *parent )
 	
 	wxPanel *cf_panel = new wxPanel( this );
 	AddPage( cf_panel, "Cash flow" );
-	m_cashFlow = new wxExtGridCtrl( cf_panel, wxID_ANY );
-	m_cashFlow->SetFont( *wxNORMAL_FONT );
-	m_cashFlow->CreateGrid(1,1);
-	m_cashFlow->SetRowLabelAlignment(wxALIGN_RIGHT,wxALIGN_CENTRE);
-	m_cashFlow->SetDefaultCellAlignment(wxALIGN_RIGHT,wxALIGN_CENTRE);
-	m_cashFlow->DisableCellEditControl();
-	m_cashFlow->DisableDragCell();
-	m_cashFlow->DisableDragRowSize();
-	m_cashFlow->DisableDragColMove();
-	m_cashFlow->DisableDragGridSize();
-	m_cashFlow->SetCellValue(0,0,"No data.");
-	m_cashFlow->EnableEditing(false);
-	m_cashFlow->EnableCopyPaste(true);
-	m_cashFlow->EnablePasteEvent(false);
+	m_cashFlowTable = new wxExtGridCtrl( cf_panel, wxID_ANY );
+	m_cashFlowTable->SetFont( *wxNORMAL_FONT );
+	m_cashFlowTable->CreateGrid(1,1);
+	m_cashFlowTable->SetRowLabelAlignment(wxALIGN_RIGHT,wxALIGN_CENTRE);
+	m_cashFlowTable->SetDefaultCellAlignment(wxALIGN_RIGHT,wxALIGN_CENTRE);
+	m_cashFlowTable->DisableCellEditControl();
+	m_cashFlowTable->DisableDragCell();
+	m_cashFlowTable->DisableDragRowSize();
+	m_cashFlowTable->DisableDragColMove();
+	m_cashFlowTable->DisableDragGridSize();
+	m_cashFlowTable->SetCellValue(0,0,"No data.");
+	m_cashFlowTable->EnableEditing(false);
+	m_cashFlowTable->EnableCopyPaste(true);
+	m_cashFlowTable->EnablePasteEvent(false);
 	wxBoxSizer *cf_tools = new wxBoxSizer( wxHORIZONTAL );
 	cf_tools->Add(new wxButton(cf_panel, ID_CF_COPY, "Copy to clipboard"), 0, wxALL, 2);
 	cf_tools->Add( new wxButton( cf_panel, ID_CF_SAVECSV, "Save as CSV" ), 0, wxALL, 2 );
@@ -201,7 +202,7 @@ ResultsViewer::ResultsViewer( wxWindow *parent )
 	cf_tools->Add( new wxButton( cf_panel, ID_CF_SENDEQNEXCEL, "Send to Excel with Equations" ), 0, wxALL, 2 );
 	wxBoxSizer *cf_sizer = new wxBoxSizer( wxVERTICAL );
 	cf_sizer->Add( cf_tools, 0, wxALL|wxEXPAND, 2 );
-	cf_sizer->Add( m_cashFlow, 1, wxALL|wxEXPAND, 0 );
+	cf_sizer->Add( m_cashFlowTable, 1, wxALL|wxEXPAND, 0 );
 	cf_panel->SetSizer(cf_sizer);
 	
 	m_hourlySeries = new wxDVTimeSeriesCtrl( this, wxID_ANY,  HOURLY_TIME_SERIES, AVERAGE );
@@ -256,13 +257,12 @@ public:
 };
 
 
-void ResultsViewer::Setup( Case *c, DataProvider *results )
+void ResultsViewer::Setup( Simulation *sim )
 {
-	m_case = c;
-	m_results = results;
-	ConfigInfo *cfg = ( m_case != 0 ? m_case->GetConfiguration() : 0 );
+	m_sim = sim;
+	ConfigInfo *cfg = ( m_sim != 0 ? m_sim->GetCase()->GetConfiguration() : 0 );
 
-	if ( m_case == 0 || cfg == 0 || m_results == 0 )
+	if ( cfg == 0 || m_sim == 0 )
 	{
 		Clear();
 		return;
@@ -273,17 +273,17 @@ void ResultsViewer::Setup( Case *c, DataProvider *results )
 	SavePerspective( viewinfo );
 
 	// update metrics
-	m_metrics->Clear();
+	m_metricsTable->Clear();
 
-	CaseCallbackContext cc( m_case, "Metrics callback: " + cfg->Technology + ", " + cfg->Financing );
-
-	
+	m_metrics.clear();
+	ResultsCallbackContext cc( this, "Metrics callback: " + cfg->Technology + ", " + cfg->Financing );
+		
 	// first try to invoke a T/F specific callback if one exists
 	if ( lk::node_t *metricscb = SamApp::GlobalCallbacks().Lookup( "metrics", cfg->Technology + "|" + cfg->Financing ))
 		cc.Invoke( metricscb, SamApp::GlobalCallbacks().GetEnv() );
 
 	// if no metrics were defined, run it T & F one at a time
-	if ( cc.Metrics.size() == 0 )
+	if ( m_metrics.size() == 0 )
 	{
 		if ( lk::node_t *metricscb = SamApp::GlobalCallbacks().Lookup( "metrics", cfg->Technology ))
 			cc.Invoke( metricscb, SamApp::GlobalCallbacks().GetEnv() );
@@ -292,21 +292,21 @@ void ResultsViewer::Setup( Case *c, DataProvider *results )
 			cc.Invoke( metricscb, SamApp::GlobalCallbacks().GetEnv() );
 	}
 	
-	if ( cc.Metrics.size() > 0 )
+	if ( m_metrics.size() > 0 )
 	{
 		matrix_t<wxString> metrics;
-		metrics.resize( cc.Metrics.size()+1, 2 );
+		metrics.resize( m_metrics.size()+1, 2 );
 		metrics(0,0) = "Metric";
 		metrics(0,1) = "Value";
 
-		for( size_t i=0;i<cc.Metrics.size();i++ )
+		for( size_t i=0;i<m_metrics.size();i++ )
 		{
-			CaseCallbackContext::MetricData &md = cc.Metrics[i];
+			MetricData &md = m_metrics[i];
 			wxString slab( md.var );
 			wxString sval( "<inval>" );
 
 			double value = 0.0;
-			if ( VarValue *vv = m_results->GetValue( md.var ) )
+			if ( VarValue *vv = m_sim->GetValue( md.var ) )
 			{
 				value = md.scale*(double)vv->Value();
 
@@ -317,11 +317,11 @@ void ResultsViewer::Setup( Case *c, DataProvider *results )
 			
 				slab = md.label;
 				if ( slab.IsEmpty() )
-					slab = m_results->GetLabel( md.var );
+					slab = m_sim->GetLabel( md.var );
 				
 				wxString post = md.post;
 				if ( post.IsEmpty() )
-					post = " " + m_results->GetUnits( md.var );
+					post = " " + m_sim->GetUnits( md.var );
 				
 				sval = wxNumericCtrl::Format( value, wxNumericCtrl::REAL, 
 					deci, md.thousep, md.pre, post );
@@ -331,15 +331,15 @@ void ResultsViewer::Setup( Case *c, DataProvider *results )
 			metrics(i+1, 1) = sval;
 		}
 
-		m_metrics->SetData( metrics );
+		m_metricsTable->SetData( metrics );
 	}
 	else
 	{
 		wxArrayString mvars;
 		std::vector<double> mvals;
-		wxArrayString vars = m_results->GetVariables();
+		wxArrayString vars = m_sim->GetOutputs();
 		for( size_t i=0;i<vars.size();i++ )
-			if ( VarValue *vv = m_results->GetValue( vars[i] ) )
+			if ( VarValue *vv = m_sim->GetValue( vars[i] ) )
 				if ( vv->Type() == VV_NUMBER )
 				{
 					mvars.Add( vars[i] );
@@ -353,21 +353,21 @@ void ResultsViewer::Setup( Case *c, DataProvider *results )
 			metrics(0,1) = "Value";
 			for( size_t i=0;i<mvars.size();i++ )
 			{
-				wxString label = m_results->GetLabel( mvars[i] );
+				wxString label = m_sim->GetLabel( mvars[i] );
 				if ( label.IsEmpty() ) label = mvars[i];
 				metrics(i+1,0) = label;
 
-				metrics(i+1,1) = wxString::Format("%lg", mvals[i]) + " " + m_results->GetUnits(mvars[i]);
+				metrics(i+1,1) = wxString::Format("%lg", mvals[i]) + " " + m_sim->GetUnits(mvars[i]);
 			}
-			m_metrics->SetData( metrics );
+			m_metricsTable->SetData( metrics );
 		}
 	}
 
 	RemoveAllDataSets();
-	wxArrayString vars = m_results->GetVariables();
+	wxArrayString vars = m_sim->GetOutputs();
 	for( size_t i=0;i<vars.size();i++ )
 	{
-		if ( VarValue *vv = m_results->GetValue( vars[i] ) )
+		if ( VarValue *vv = m_sim->GetValue( vars[i] ) )
 		{
 			if ( vv->Type() == VV_ARRAY )
 			{
@@ -375,52 +375,53 @@ void ResultsViewer::Setup( Case *c, DataProvider *results )
 				float *p = vv->Array( &n );
 				
 				if ( n == 8760 )
-					AddDataSet( new TimeSeries8760( p, m_results->GetLabel(vars[i]), m_results->GetUnits(vars[i])) );
+					AddDataSet( new TimeSeries8760( p, m_sim->GetLabel(vars[i]), m_sim->GetUnits(vars[i])) );
 			}
 		}
 	}
 
 	// setup graphs
-	m_graphViewer->Setup( m_case, m_results );
+	m_graphViewer->Setup( m_sim );
 
-	m_tables->Setup( cfg, m_results );
+	m_tables->Setup( m_sim );
 
 	// build cashflow
-	m_cashFlow->Freeze();
-	m_cashFlow->ClearGrid();
+	m_cashFlowTable->Freeze();
+	m_cashFlowTable->ClearGrid();
 
 	
+	m_cashflow.clear();
 	if ( lk::node_t *cfcb = SamApp::GlobalCallbacks().Lookup( "cashflow", cfg->Financing ))
 	{
-		CaseCallbackContext cc( m_case, "Cashflow callback: " + cfg->Financing );
+		ResultsCallbackContext cc( this, "Cashflow callback: " + cfg->Financing );
 		if ( !cc.Invoke( cfcb, SamApp::GlobalCallbacks().GetEnv() ) )
 			wxLogStatus( "error running cashflow script." );
 		
 		int nyears = 0;
-		if ( VarValue *vv = m_results->GetValue( cfg->Settings[ "analysis_period_var" ] ) )
+		if ( VarValue *vv = m_sim->GetValue( cfg->Settings[ "analysis_period_var" ] ) )
 			nyears = (int)vv->Value();
 		if ( nyears < 16 ) nyears = 16;
 		if ( nyears > 100 ) nyears = 100;
-		m_cashFlow->ResizeGrid( 400, nyears );
+		m_cashFlowTable->ResizeGrid( 400, nyears );
 		for( size_t c=0;c<nyears;c++ )
-			m_cashFlow->SetColLabelValue( c, wxString::Format("%d", (int)c) );
+			m_cashFlowTable->SetColLabelValue( c, wxString::Format("%d", (int)c) );
 
-		for( size_t r=0;r<cc.CashFlow.size() && r < 400;r++ )
+		for( size_t r=0;r<m_cashflow.size() && r < 400;r++ )
 		{
-			CaseCallbackContext::CashFlowLine &cl = cc.CashFlow[r];
+			CashFlowLine &cl = m_cashflow[r];
 
-			if ( cl.type == CaseCallbackContext::CashFlowLine::SPACER )
-				m_cashFlow->SetRowLabelValue( r, wxEmptyString );
-			else if ( cl.type == CaseCallbackContext::CashFlowLine::HEADER )
-				m_cashFlow->SetRowLabelValue( r, cl.name );
-			else if ( cl.type == CaseCallbackContext::CashFlowLine::VARIABLE )
+			if ( cl.type == CashFlowLine::SPACER )
+				m_cashFlowTable->SetRowLabelValue( r, wxEmptyString );
+			else if ( cl.type == CashFlowLine::HEADER )
+				m_cashFlowTable->SetRowLabelValue( r, cl.name );
+			else if ( cl.type == CashFlowLine::VARIABLE )
 			{
-				wxString label = m_results->GetLabel( cl.name );
-				wxString units = m_results->GetUnits( cl.name );
+				wxString label = m_sim->GetLabel( cl.name );
+				wxString units = m_sim->GetUnits( cl.name );
 				if ( !units.IsEmpty() ) label += " (" + units + ")";
-				m_cashFlow->SetRowLabelValue( r, label );
+				m_cashFlowTable->SetRowLabelValue( r, label );
 
-				if ( VarValue *vv = m_results->GetValue( cl.name ) )
+				if ( VarValue *vv = m_sim->GetValue( cl.name ) )
 				{
 					float _val = 0.0f;
 					float *p = &_val;
@@ -440,25 +441,25 @@ void ResultsViewer::Setup( Case *c, DataProvider *results )
 						else
 							sval = wxString::Format("%g", fval );
 
-						m_cashFlow->SetCellValue( sval, r, i );
+						m_cashFlowTable->SetCellValue( sval, r, i );
 					}
 					
 				}
 				else
-					m_cashFlow->SetCellValue( "'" + cl.name + "' not found.", r, 0 );
+					m_cashFlowTable->SetCellValue( "'" + cl.name + "' not found.", r, 0 );
 			}
 		}
 
 		
-		m_cashFlow->SetRowLabelSize(wxGRID_AUTOSIZE);
-		m_cashFlow->SetColLabelSize(wxGRID_AUTOSIZE);
-		m_cashFlow->GetParent()->Layout();
-		m_cashFlow->Layout();
-		m_cashFlow->EnableCopyPaste(true);
-		m_cashFlow->ResizeGrid( cc.CashFlow.size(), nyears );
+		m_cashFlowTable->SetRowLabelSize(wxGRID_AUTOSIZE);
+		m_cashFlowTable->SetColLabelSize(wxGRID_AUTOSIZE);
+		m_cashFlowTable->GetParent()->Layout();
+		m_cashFlowTable->Layout();
+		m_cashFlowTable->EnableCopyPaste(true);
+		m_cashFlowTable->ResizeGrid( m_cashflow.size(), nyears );
 
-		m_cashFlow->AutoSize();
-		m_cashFlow->Thaw();	
+		m_cashFlowTable->AutoSize();
+		m_cashFlowTable->Thaw();	
 	}
 
 	CreateAutoGraphs();
@@ -489,8 +490,8 @@ void ResultsViewer::GetExportData(int data, matrix_t<wxString> &table)
 {
 	if (data & EXP_CASHFLOW)
 	{
-		int nrows = m_cashFlow->GetNumberRows();
-		int ncols = m_cashFlow->GetNumberCols();
+		int nrows = m_cashFlowTable->GetNumberRows();
+		int ncols = m_cashFlowTable->GetNumberCols();
 		int r, c;
 
 		table.resize(nrows + 1, ncols + 1);
@@ -500,9 +501,9 @@ void ResultsViewer::GetExportData(int data, matrix_t<wxString> &table)
 
 		for (r = 0; r<nrows; r++)
 		{
-			table.at(r + 1, 0) = m_cashFlow->GetRowLabelValue(r);
+			table.at(r + 1, 0) = m_cashFlowTable->GetRowLabelValue(r);
 			for (c = 0; c<ncols; c++)
-				table.at(r + 1, c + 1) = m_cashFlow->GetCellValue(r, c);
+				table.at(r + 1, c + 1) = m_cashFlowTable->GetCellValue(r, c);
 		}
 
 	}
@@ -608,10 +609,9 @@ void ResultsViewer::Export(int data, int mechanism)
 
 }
 
-
-void ResultsViewer::OnCFCommand(wxCommandEvent &evt)
+void ResultsViewer::OnCommand( wxCommandEvent &evt )
 {
-	switch (evt.GetId())
+	switch( evt.GetId() )
 	{
 	case ID_CF_COPY:
 		Export(EXP_CASHFLOW, EXP_COPY_CLIPBOARD);
@@ -626,30 +626,30 @@ void ResultsViewer::OnCFCommand(wxCommandEvent &evt)
 		ExportEqnExcel();
 		break;
 	}
-
 }
 
-class AutoGraph : public GraphCtrl
+class AutoGraphCtrl : public GraphCtrl
 {
 public:
-	AutoGraph( wxWindow *parent, DataProvider *prov, Graph &g )
+	AutoGraphCtrl( wxWindow *parent, Simulation *sim, Graph &g )
 		: GraphCtrl( parent, wxID_ANY )
 	{
-		Display( prov, g );
+		Display( sim, g );
 	}
-	virtual ~AutoGraph() { }
+	virtual ~AutoGraphCtrl() { }
 };
 
 void ResultsViewer::CreateAutoGraphs()
 {
-	ConfigInfo *cfg = (m_case != 0 ? m_case->GetConfiguration() : 0);
+	ConfigInfo *cfg = (m_sim != 0 ? m_sim->GetCase()->GetConfiguration() : 0);
 	if ( !cfg )
 	{
 		wxMessageBox("no configuration could be determined");
 		return;
 	}
 	
-	CaseCallbackContext cc(m_case, "Create autographs callback: " + cfg->Technology);
+	m_autographs.clear();
+	ResultsCallbackContext cc(this, "Create autographs callback: " + cfg->Technology);
 
 	if (lk::node_t *cfcb = SamApp::GlobalCallbacks().Lookup("autographs", cfg->Technology))
 	{
@@ -662,29 +662,31 @@ void ResultsViewer::CreateAutoGraphs()
 	size_t i=0;
 	while( i<m_summaryLayout->Count() )
 	{
-		if( AutoGraph *ag = dynamic_cast<AutoGraph*>( m_summaryLayout->Get(i) ) )
+		if( AutoGraphCtrl *ag = dynamic_cast<AutoGraphCtrl*>( m_summaryLayout->Get(i) ) )
 			m_summaryLayout->Delete( ag );
 		else
 			i++;
 	}
 
-	if ( !m_results ) return;
+	if ( !m_sim ) return;
 
-	for( size_t i=0;i<cc.AutoGraphs.size();i++ )
+	for( size_t i=0;i<m_autographs.size();i++ )
 	{
 		Graph g;
-		g.Y = wxSplit( cc.AutoGraphs[i].yvals, ',' );
-		g.Title = cc.AutoGraphs[i].title;
-		g.XLabel = cc.AutoGraphs[i].xlabel;
-		g.YLabel = cc.AutoGraphs[i].ylabel;
+		g.Y = wxSplit( m_autographs[i].yvals, ',' );
+		g.Title = m_autographs[i].title;
+		g.XLabel = m_autographs[i].xlabel;
+		g.YLabel = m_autographs[i].ylabel;
 		g.LegendPos = wxPLPlotCtrl::BOTTOM;
-		m_summaryLayout->Add( new AutoGraph( m_summaryLayout, m_results, g ) );
+		m_summaryLayout->Add( new AutoGraphCtrl( m_summaryLayout, m_sim, g ) );
 	}
 }
 
 void ResultsViewer::ExportEqnExcel()
 {
-	ConfigInfo *cfg = (m_case != 0 ? m_case->GetConfiguration() : 0);
+	if ( !m_sim ) return;
+
+	ConfigInfo *cfg = ( m_sim != 0 ? m_sim->GetCase()->GetConfiguration() : 0);
 	if ( !cfg )
 	{
 		wxMessageBox("no configuration could be determined");
@@ -693,7 +695,7 @@ void ResultsViewer::ExportEqnExcel()
 
 	if (lk::node_t *cfcb = SamApp::GlobalCallbacks().Lookup("cashflow_to_excel", cfg->Financing))
 	{
-		CaseCallbackContext cc(m_case, "Cashflow to Excel callback: " + cfg->Financing);
+		CaseCallbackContext cc( m_sim->GetCase(), "Cashflow to Excel callback: " + cfg->Financing);
 		if (!cc.Invoke(cfcb, SamApp::GlobalCallbacks().GetEnv()))
 			wxLogStatus("error running cashflow to excel script.");
 	}
@@ -731,13 +733,12 @@ void ResultsViewer::LoadPerspective( StringHash &map )
 
 void ResultsViewer::Clear()
 {
-	m_case = 0;
-	m_results = 0;
+	m_sim = 0;
 
 	matrix_t<wxString> metrics(2,1);
 	metrics(0,0) = "Metrics";
 	metrics(1,0) = "No data available.";
-	m_metrics->SetData( metrics );
+	m_metricsTable->SetData( metrics );
 
 	RemoveAllDataSets();
 }
@@ -999,7 +1000,7 @@ public:
 		return wxGRID_VALUE_STRING;
 	}
 
-	void LoadData( DataProvider *results, const wxArrayString &vars)
+	void LoadData( Simulation *results, const wxArrayString &vars)
 	{
 		MaxCount = 0;
 		MinCount = 0;
@@ -1119,7 +1120,7 @@ TabularBrowser::TabularBrowser( wxWindow *parent )
 
 void TabularBrowser::UpdateGrid()
 {
-	if ( !m_results )
+	if ( !m_sim )
 	{
 		m_grid->ResizeGrid(1,1);
 		m_grid->SetCellValue(0,0,"No data");
@@ -1131,7 +1132,7 @@ void TabularBrowser::UpdateGrid()
 	if (m_gridTable) m_gridTable->ReleaseData();
 	
 	m_gridTable = new ResultsTable( );
-	m_gridTable->LoadData( m_results, m_selectedVars );
+	m_gridTable->LoadData( m_sim, m_selectedVars );
 	m_gridTable->SetAttrProvider( new wxExtGridCellAttrProvider );
 	m_grid->SetTable(m_gridTable, true);
 
@@ -1171,10 +1172,9 @@ void TabularBrowser::UpdateGrid()
 	
 }
 
-void TabularBrowser::Setup( ConfigInfo *cfg, DataProvider *data )
-{	
-	m_config = cfg;
-	m_results = data;
+void TabularBrowser::Setup( Simulation *data )
+{
+	m_sim = data;
 	
 	UpdateAll();
 	UpdateGrid();
@@ -1188,11 +1188,10 @@ void TabularBrowser::UpdateAll()
 	m_varSel->GetViewStart( &vsx, &vsy );
 	m_varSel->RemoveAll();
 
-	if ( !m_results || !m_config ) 
-		return;
+	if ( !m_sim ) return;
 
 	m_varSel->Freeze();
-	PopulateSelectionList( m_varSel, &m_names, m_results, m_config );
+	PopulateSelectionList( m_varSel, &m_names, m_sim );
 
 	size_t i=0;
 	while (i<m_selectedVars.Count())

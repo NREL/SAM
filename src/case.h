@@ -6,6 +6,7 @@
 #include "object.h"
 #include "variables.h"
 #include "equations.h"
+#include "simulation.h"
 
 // case events allow the user interface to be updated
 // when something internal in the case changes that needs to be reflected
@@ -23,36 +24,6 @@ public:
 
 	VarTable &GetValues();
 	Case &GetCase();
-	
-	struct MetricData {
-		MetricData() :
-			scale( 1.0 ), mode( 'g' ), thousep( false ), deci( 2 )
-		{}
-		wxString var;
-		wxString label;
-		double scale;
-		char mode;
-		bool thousep;
-		int deci;
-		wxString pre, post;
-	};
-	std::vector<MetricData> Metrics;
-	
-	struct CashFlowLine {
-		enum { SPACER, HEADER, VARIABLE };
-		CashFlowLine() : type(VARIABLE), digits(2), scale(1.0f) {  }
-
-		int type;
-		wxString name;
-		int digits;
-		float scale;
-	};
-	std::vector<CashFlowLine> CashFlow;
-
-	struct AutoGraph {
-		wxString title, xlabel, ylabel, yvals;
-	};
-	std::vector<AutoGraph> AutoGraphs;
 
 	bool Invoke( lk::node_t *root, lk::env_t *parent );
 
@@ -129,9 +100,7 @@ public:
 	// recalculate all equations in this case
 	// CaseEvent is issued for all updated variables
 	int RecalculateAll();
-
-	VarTable &BaseCase();
-
+	
 	StringHash &Properties() { return m_properties; }
 	wxString GetProperty( const wxString &id );
 	void SetProperty( const wxString &id, const wxString &value );
@@ -144,12 +113,14 @@ public:
 	void ClearListeners();
 	void SendEvent( CaseEvent e );
 
+	Simulation &BaseCase();
+
 private:
 	/* case data */
 	ConfigInfo *m_config;
 	VarTable m_vals;
 	lk::env_t m_cbEnv;
-	VarTable m_baseCase;
+	Simulation m_baseCase;
 	StringHash m_properties;
 	StringHash m_notes;
 	std::vector<CaseEventListener*> m_listeners;
@@ -167,5 +138,6 @@ public:
 
 	bool UpdateLibrary( const wxString &trigger, wxArrayString &changed );
 };
+
 
 #endif

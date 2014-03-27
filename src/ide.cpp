@@ -1428,14 +1428,17 @@ IDEWindow::IDEWindow( wxWindow *parent )
 
 	m_metricsPanel = new ScriptPanel( m_notebook, "metrics.lk" );
 	m_metricsPanel->AddLibrary( invoke_casecallback_funcs(), "Case callbacks" );
+	m_metricsPanel->AddLibrary( invoke_resultscallback_funcs(), "Results callbacks" );
 	m_notebook->AddPage( m_metricsPanel, "Metrics" );
 	
 	m_cashFlowPanel = new ScriptPanel( m_notebook, "cashflow.lk" );
 	m_cashFlowPanel->AddLibrary(invoke_casecallback_funcs(), "Case callbacks");
+	m_metricsPanel->AddLibrary( invoke_resultscallback_funcs(), "Results callbacks" );
 	m_notebook->AddPage(m_cashFlowPanel, "Cashflows");
 
 	m_autoGraphPanel = new ScriptPanel( m_notebook, "autographs.lk" );
 	m_autoGraphPanel->AddLibrary( invoke_casecallback_funcs(), "Case callbacks" );
+	m_metricsPanel->AddLibrary( invoke_resultscallback_funcs(), "Results callbacks" );
 	m_notebook->AddPage( m_autoGraphPanel, "Autographs" );
 
 	m_navigationPanel = new ScriptPanel( m_notebook, "navigation.lk" );

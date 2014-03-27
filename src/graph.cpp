@@ -17,6 +17,7 @@
 #include "case.h"
 #include "graph.h"
 #include "variables.h"
+#include "simulation.h"
 #include "results.h"
 
 Graph::Graph()
@@ -144,7 +145,7 @@ GraphCtrl::GraphCtrl( wxWindow *parent, int id )
 }
 
 
-void GraphCtrl::Display( DataProvider *data, Graph &gi )
+void GraphCtrl::Display( Simulation *sim, Graph &gi )
 {
 static const char *s_monthNames[12] = { "Jan", "Feb", "Mar", "Apr", "May", "Jun", 
 										"Jul", "Aug", "Sep", "Oct", "Nov", "Dec" };
@@ -168,12 +169,12 @@ static std::vector<wxColour> s_colours;
 		s_colours.push_back( wxColour("brown") );
 	}
 
-	m_d = data;
+	m_s = sim;
 	m_g.Copy( &gi );
 
 	DeleteAllPlots();
 	
-	if ( !m_d )
+	if ( !m_s )
 	{
 		Refresh();
 		return;
@@ -211,7 +212,7 @@ static std::vector<wxColour> s_colours;
 
 	for( size_t i=0;i<m_g.Y.size();i++ )
 	{
-		if ( VarValue *vv = m_d->GetValue( m_g.Y[i] ) )
+		if ( VarValue *vv = m_s->GetValue( m_g.Y[i] ) )
 		{
 			int count = 0;
 			if ( vv->Type() == VV_NUMBER )
@@ -259,11 +260,11 @@ static std::vector<wxColour> s_colours;
 
 		wxPLPlottable *plot = 0;
 		if ( m_g.Type == Graph::LINE )
-			plot = new wxPLLinePlot( plotdata[i], m_d->GetLabel( ynames[i] ), s_colours[cidx], 
+			plot = new wxPLLinePlot( plotdata[i], m_s->GetLabel( ynames[i] ), s_colours[cidx], 
 				wxPLLinePlot::SOLID, m_g.Size+2 );
 		else if ( m_g.Type == Graph::BAR || m_g.Type == Graph::STACKED )
 		{
-			wxPLBarPlot *bar = new wxPLBarPlot(  plotdata[i], m_d->GetLabel(ynames[i]), s_colours[cidx] );
+			wxPLBarPlot *bar = new wxPLBarPlot(  plotdata[i], m_s->GetLabel(ynames[i]), s_colours[cidx] );
 			if ( m_g.Size != 0 )
 				bar->SetThickness( m_g.Size, false );
 
@@ -277,7 +278,7 @@ static std::vector<wxColour> s_colours;
 		}
 		else if ( m_g.Type == Graph::SCATTER )
 		{
-			plot = new wxPLScatterPlot( plotdata[i], m_d->GetLabel( ynames[i] ), s_colours[cidx], m_g.Size+2 );
+			plot = new wxPLScatterPlot( plotdata[i], m_s->GetLabel( ynames[i] ), s_colours[cidx], m_g.Size+2 );
 			if ( plotdata[i].size() < 100 )
 				plot->SetAntiAliasing( true );
 		}
@@ -301,7 +302,7 @@ static std::vector<wxColour> s_colours;
 		// single value axis
 		wxPLLabelAxis *x1 = new wxPLLabelAxis( -1, yvars.size(), m_g.XLabel );
 		for( size_t i=0;i<ynames.size();i++)
-			x1->Add( i, m_d->GetLabel( ynames[i] ) );
+			x1->Add( i, m_s->GetLabel( ynames[i] ) );
 		SetXAxis1( x1 );
 	}
 	else if ( ndata == 12 )
@@ -459,12 +460,12 @@ GraphProperties::GraphProperties( wxWindow *parent, int id )
 }
 
 
-void GraphProperties::SetupVariables( DataProvider *dp, ConfigInfo *cfg )
+void GraphProperties::SetupVariables( Simulation *sim )
 {
 
 	Clear();
 
-	if ( !dp ) return;
+	if ( !sim ) return;
 
 	m_names.Clear();
 
@@ -473,7 +474,7 @@ void GraphProperties::SetupVariables( DataProvider *dp, ConfigInfo *cfg )
 	m_Y->Freeze();
 	m_Y->RemoveAll();
 
-	PopulateSelectionList( m_Y, &m_names, dp, cfg );
+	PopulateSelectionList( m_Y, &m_names, sim );
 
 	m_Y->ExpandSelections();
 	m_Y->Scroll( vsx, vsy );
@@ -569,8 +570,7 @@ END_EVENT_TABLE()
 GraphViewer::GraphViewer( wxWindow *parent )
 	: wxSplitterWindow( parent, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxSP_LIVE_UPDATE|wxSP_NOBORDER )
 {
-	m_case = 0;
-	m_data = 0;
+	m_sim = 0;
 	m_current = 0;
 
 	wxPanel *lpanel = new wxPanel( this );
@@ -614,15 +614,14 @@ void GraphViewer::DeleteGraph( GraphCtrl *gc )
 }
 
 	
-void GraphViewer::Setup( Case *c, DataProvider *dp )
+void GraphViewer::Setup( Simulation *sim )
 {
-	m_case = c;
-	m_data = dp;
+	m_sim = sim;
 	m_props->Clear();
 
-	if ( !m_case || !m_data ) return;
+	if ( !m_sim ) return;
 
-	m_props->SetupVariables( dp, m_case->GetConfiguration() );
+	m_props->SetupVariables( m_sim );
 }
 
 
@@ -633,10 +632,10 @@ GraphCtrl *GraphViewer::Current()
 
 void GraphViewer::UpdateGraph()
 {
-	if( !m_current || !m_data) return;
+	if( !m_current || !m_sim) return;
 	Graph g;
 	m_props->Get( g );
-	m_current->Display( m_data, g );
+	m_current->Display( m_sim, g );
 }
 
 void GraphViewer::UpdateProperties()

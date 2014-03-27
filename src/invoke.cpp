@@ -16,7 +16,8 @@
 #include "case.h"
 #include "simulation.h"
 #include "casewin.h"
-#include "materials.h" // used to call functions for substance density and specific heat
+#include "materials.h"
+#include "results.h"
 
 #include "invoke.h"
 
@@ -245,9 +246,9 @@ static void fcall_metric( lk::invoke_t &cxt )
 {
 	LK_DOC("metric", "Add an output metric to the current configuration. Options include mode,deci,thousep,pre,post,label,scale", "(string:variable, [table:options]):none");
 	 
-	if ( CaseCallbackContext *ci = static_cast<CaseCallbackContext*>(cxt.user_data()) )
+	if ( ResultsCallbackContext *ci = static_cast<ResultsCallbackContext*>(cxt.user_data()) )
 	{
-		CaseCallbackContext::MetricData md;
+		MetricData md;
 		md.var = cxt.arg(0).as_string();
 		
 		if (cxt.arg_count() > 1 )
@@ -281,7 +282,7 @@ static void fcall_metric( lk::invoke_t &cxt )
 				md.scale = x->as_number();
 		}
 
-		ci->Metrics.push_back( md );
+		ci->GetResultsViewer()->AddMetric( md );
 	}
 }
 
@@ -289,14 +290,14 @@ static void fcall_agraph( lk::invoke_t &cxt )
 {
 	LK_DOC("agraph", "Create an autograph", "(string:Y, string:title, string:xlabel, string:ylabel):none" );
 	
-	if ( CaseCallbackContext *ci = static_cast<CaseCallbackContext*>(cxt.user_data()) )
+	if ( ResultsCallbackContext *ci = static_cast<ResultsCallbackContext*>(cxt.user_data()) )
 	{
-		CaseCallbackContext::AutoGraph ag;
+		AutoGraph ag;
 		ag.yvals = cxt.arg(0).as_string();
 		ag.title = cxt.arg(1).as_string();
 		ag.xlabel = cxt.arg(2).as_string();
 		ag.ylabel = cxt.arg(3).as_string();
-		ci->AutoGraphs.push_back( ag );
+		ci->GetResultsViewer()->AddAutoGraph( ag );
 	}
 }
 
@@ -304,11 +305,11 @@ static void fcall_cfline( lk::invoke_t &cxt )
 {
 	LK_DOC("cfline", "Add one or more cashflow line items to the current configuration. Names can be comma-separated list. For spacer use name='', for header use digits=0, for generic format use digits=-1, for integer cast, use digits=-2.", "( string:names, [number:digits], [number:scale] ):none" );
 	
-	if ( CaseCallbackContext *ci = static_cast<CaseCallbackContext*>(cxt.user_data()) )
+	if ( ResultsCallbackContext *ci = static_cast<ResultsCallbackContext*>(cxt.user_data()) )
 	{
 		wxString name = cxt.arg(0).as_string();
 
-		int type = CaseCallbackContext::CashFlowLine::VARIABLE;
+		int type = CashFlowLine::VARIABLE;
 		int digit = 2;
 		float scale = 1.0f;
 		if ( cxt.arg_count() == 2 )
@@ -317,22 +318,31 @@ static void fcall_cfline( lk::invoke_t &cxt )
 		if ( cxt.arg_count() == 3 )
 			scale = (float)cxt.arg(2).as_number();
 
-		if ( name.IsEmpty() ) type = CaseCallbackContext::CashFlowLine::SPACER;
-		if ( digit == 0 ) type = CaseCallbackContext::CashFlowLine::HEADER;
+		if ( name.IsEmpty() ) type = CashFlowLine::SPACER;
+		if ( digit == 0 ) type = CashFlowLine::HEADER;
 		
 		wxArrayString list = wxSplit(name, ',');
 		if ( list.size() == 0 ) list.Add( name ); // handle empty string
 
 		for( size_t i=0;i<list.Count();i++ )
 		{
-			CaseCallbackContext::CashFlowLine cl;
+			CashFlowLine cl;
 			cl.type = type;
 			cl.digits = digit;
 			cl.name = list[i];
 			cl.scale = scale;
-			ci->CashFlow.push_back( cl );
+			ci->GetResultsViewer()->AddCashFlowLine( cl );
 		}
 	}
+}
+
+static void fcall_output(lk::invoke_t &cxt)
+{
+	LK_DOC("output", "Gets the requested output from the base case simulation for the current case.", "( string: output variable name ):none");
+
+	if ( CaseCallbackContext *ci = static_cast<CaseCallbackContext*>(cxt.user_data()) )
+		if ( VarValue *vv = ci->GetCase().BaseCase().GetOutput(cxt.arg(0).as_string()) )
+			vv->Write( cxt.result() );
 }
 
 
@@ -534,18 +544,6 @@ static void fcall_case_name(lk::invoke_t &cxt)
 	wxString case_name = SamApp::Window()->Project().GetCaseName(c);
 
 	cxt.result().assign(case_name);
-
-}
-
-static void fcall_output(lk::invoke_t &cxt)
-{
-	LK_DOC("output", "Gets the requested output from the base case simulaiton for the current case.", "( string: output variable name ):none");
-
-	Case *c = SamApp::Window()->GetCurrentCase();
-	Simulation *results  = new Simulation(c, "Base Case");
-	results->Invoke();
-	VarValue *vv = results->GetValue(cxt.arg(0).as_string());
-	vv->Write(cxt.result());
 }
 
 static void fcall_copy_file(lk::invoke_t &cxt)
@@ -692,57 +690,6 @@ static void fcall_xl_get( lk::invoke_t &cxt )
 #endif
 
 
-
-/*
-static bool sscvar_to_lkvar( lk::vardata_t &out, var_data *vv)
-{
-	if (!vv) return false;
-
-	switch( vv->type )
-	{
-	case SSC_NUMBER:
-		out.assign( (double) vv->num );
-		break;
-	case SSC_STRING:
-		out.assign( vv->str.c_str() );
-		break;
-	case SSC_ARRAY:
-		out.empty_vector();
-		out.vec()->reserve( (size_t) vv->num.length() );
-		for (int i=0;i<vv->num.length();i++)
-			out.vec_append( vv->num[i] );
-		break;
-	case SSC_MATRIX:
-		out.empty_vector();
-		out.vec()->reserve( vv->num.nrows() );
-		for (int i=0;i<vv->num.nrows();i++)
-		{
-			out.vec()->push_back( lk::vardata_t() );
-			out.vec()->at(i).empty_vector();
-			out.vec()->at(i).vec()->reserve( vv->num.ncols() );
-			for (int j=0;j<vv->num.ncols();j++)
-				out.vec()->at(i).vec_append( vv->num.at(i,j) );
-		}
-		break;
-	case SSC_TABLE:
-		{
-			out.empty_hash();
-			const char *key = vv->table.first();
-			while (key != 0)
-			{
-				var_data *x = vv->table.lookup( key );
-				lk::vardata_t &xvd = out.hash_item( lk_string(key) );
-				sscvar_to_lkvar( xvd, x );
-				key = vv->table.next();
-			}
-		}
-		break;
-	}
-
-	return true;
-}
-*/
-
 static bool lkvar_to_sscvar( ssc_data_t p_dat, const char *name, lk::vardata_t &val )
 {	
 	switch (val.type())
@@ -813,7 +760,7 @@ static bool lkvar_to_sscvar( ssc_data_t p_dat, const char *name, lk::vardata_t &
 	return true;
 }
 
-void sscvar_to_lkvar( lk::vardata_t &out, const char *name, ssc_data_t p_dat )
+static void sscvar_to_lkvar( lk::vardata_t &out, const char *name, ssc_data_t p_dat )
 {
 	int ty = ssc_data_query( p_dat, name );
 	switch( ty )
@@ -1067,7 +1014,6 @@ lk::fcall_t* invoke_general_funcs()
 		fcall_userlocaldatadir,
 		fcall_copy_file,
 		fcall_case_name,
-		fcall_output,
 #ifdef __WXMSW__
 		fcall_xl_create,
 		fcall_xl_free,
@@ -1120,11 +1066,19 @@ lk::fcall_t* invoke_casecallback_funcs()
 {
 	static const lk::fcall_t vec[] = {
 		fcall_value,
+		fcall_output,
+		fcall_technology,
+		fcall_financing,
+		0 };
+	return (lk::fcall_t*)vec;
+}
+
+lk::fcall_t* invoke_resultscallback_funcs()
+{
+	static const lk::fcall_t vec[] = {
 		fcall_metric,
 		fcall_cfline,
 		fcall_agraph,
-		fcall_technology,
-		fcall_financing,
 		0 };
 	return (lk::fcall_t*)vec;
 }

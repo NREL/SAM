@@ -112,24 +112,6 @@ private:
 	VarTable m_tab;
 };
 
-class DataProvider 
-{
-public:
-	DataProvider();
-	virtual ~DataProvider();
-
-	virtual wxArrayString GetVariables() = 0;
-	virtual VarTable &Values() = 0;
-	virtual VarValue *GetValue( const wxString &name ) = 0;
-	virtual wxString GetLabel( const wxString &var ) = 0;
-	virtual wxString GetUnits( const wxString &var ) = 0;
-
-	void ListByCount( size_t n, wxArrayString &list );
-	void GetVariableLengths( std::vector<size_t> &varlengths );
-};
-
-
-
 #define VF_NONE                0x00
 #define VF_HIDE_LABELS         0x01
 #define VF_PARAMETRIC          0x02

@@ -7,6 +7,7 @@
 #include <wex/plot/plplotctrl.h>
 
 #include "object.h"
+#include "case.h"
 
 class wxDVSelectionListCtrl;
 class CaseWindow;
@@ -23,7 +24,6 @@ class wxPLPlotCtrl;
 class wxTextCtrl;
 class wxListBox;
 class wxSimplebook;
-class DataProvider;
 class MetricsTable;
 class TabularBrowser;
 class wxMetroListBox;
@@ -34,7 +34,9 @@ class GraphViewer;
 class wxSnapLayout;
 
 class Case;
+class Simulation;
 class VarTable;
+class ResultsViewer;
 
 
 
@@ -46,35 +48,76 @@ class VarTable;
 #define EXP_SAVE_CSV          0x02
 #define EXP_SEND_EXCEL        0x04
 
+void PopulateSelectionList( wxDVSelectionListCtrl *sel, wxArrayString *names, Simulation *results );
 
-wxString UnsplitCells(const matrix_t<wxString> &table, char colsep, char rowsep, bool quote_colsep);
 
-void PopulateSelectionList( wxDVSelectionListCtrl *sel, wxArrayString *names, 
-	DataProvider *results, ConfigInfo *config );
+class ResultsCallbackContext  : public CaseCallbackContext
+{
+	ResultsViewer *m_resview;
+public:
+	ResultsCallbackContext( ResultsViewer *rv, const wxString &desc = wxEmptyString );	
+	ResultsViewer *GetResultsViewer();
+	Simulation *GetSimulation();
+protected:
+	virtual void SetupLibraries( lk::env_t *env );
+};
+	
+struct MetricData {
+	MetricData() :
+		scale( 1.0 ), mode( 'g' ), thousep( false ), deci( 2 )
+	{}
+	wxString var;
+	wxString label;
+	double scale;
+	char mode;
+	bool thousep;
+	int deci;
+	wxString pre, post;
+};
+	
+struct CashFlowLine {
+	enum { SPACER, HEADER, VARIABLE };
+	CashFlowLine() : type(VARIABLE), digits(2), scale(1.0f) {  }
 
+	int type;
+	wxString name;
+	int digits;
+	float scale;
+};
+
+struct AutoGraph {
+	wxString title, xlabel, ylabel, yvals;
+};
+	
 class ResultsViewer : public wxMetroNotebook
 {
 public:
 	ResultsViewer( wxWindow *parent );
 	virtual ~ResultsViewer();
 
-	void Setup( Case *cfg, DataProvider *results );
+	void Setup( Simulation *results );
 	void Clear();
 
 	void SavePerspective( StringHash &map );
 	void LoadPerspective( StringHash &map );
 
-private:
-	void OnCommand( wxCommandEvent & );
-	void OnCFCommand(wxCommandEvent &evt);
+	Simulation *GetSimulation() { return m_sim; }
+	
+	void AddMetric( MetricData &md ) { m_metrics.push_back(md); }
+	void AddCashFlowLine( CashFlowLine &cl ) { m_cashflow.push_back(cl); }
+	void AddAutoGraph( AutoGraph &ag ) { m_autographs.push_back(ag); }
+	
+private:	
+	Simulation *m_sim;
 
-	Case *m_case;
-	DataProvider *m_results;
+	std::vector<MetricData> m_metrics;
+	std::vector<CashFlowLine> m_cashflow;
+	std::vector<AutoGraph> m_autographs;
 
 	wxSnapLayout *m_summaryLayout;
-	MetricsTable *m_metrics;		
+	MetricsTable *m_metricsTable;		
 	TabularBrowser *m_tables;
-	wxExtGridCtrl *m_cashFlow;
+	wxExtGridCtrl *m_cashFlowTable;
 
 	GraphViewer *m_graphViewer;
 		
@@ -95,6 +138,10 @@ private:
 	void ExportEqnExcel();
 
 	void CreateAutoGraphs();
+	
+
+	void OnCommand( wxCommandEvent & );
+
 
 	DECLARE_EVENT_TABLE();
 };
@@ -126,20 +173,18 @@ public:
 
 	TabularBrowser( wxWindow *parent );
 
-	void Setup( ConfigInfo *cfg, DataProvider *results );
+	void Setup( Simulation *sim );
 	void UpdateAll();
 	void GetTextData(wxString &dat, char sep);
 	
 
-private:
+private:	
+	Simulation *m_sim;
+
 	void OnCommand(wxCommandEvent &evt);
 	void OnVarSel(wxCommandEvent &evt);
-
 	void UpdateGrid();
-
-	ConfigInfo *m_config;
-	DataProvider *m_results;
-
+	
 	wxExtGridCtrl *m_grid;
 	ResultsTable *m_gridTable;
 	wxDVSelectionListCtrl *m_varSel;

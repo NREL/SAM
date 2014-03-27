@@ -677,6 +677,13 @@ void MainWindow::OnCaseMenu( wxCommandEvent &evt )
 			c->SendEvent( CaseEvent( CaseEvent::VARS_CHANGED, c->Values().ListAll() ) );
 		}
 		break;
+	case ID_CASE_SIMULATE:
+		cw->RunBaseCase();
+		break;
+	case ID_CASE_CLEAR_RESULTS:
+		c->BaseCase().Clear();
+		cw->UpdateResults();		
+		break;
 	};
 
 	//wxMessageBox( wxString::Format("case id: %d, command %d", sel, evt.GetId() ) );

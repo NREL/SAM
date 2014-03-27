@@ -17,7 +17,7 @@ class wxSnapLayout;
 class wxDVSelectionListCtrl;
 
 class Case;
-class DataProvider;
+class Simulation;
 
 class Graph
 {
@@ -63,11 +63,11 @@ class GraphCtrl : public wxPLPlotCtrl
 {
 public:
 	GraphCtrl( wxWindow *parent, int id );
-	void Display( DataProvider *data, Graph &g );
+	void Display( Simulation *sim, Graph &g );
 
 	Graph &GetGraph() { return m_g; }
 protected:
-	DataProvider *m_d;
+	Simulation *m_s;
 	Graph m_g;
 
 	void OnLeftDown( wxMouseEvent & );
@@ -86,7 +86,7 @@ class GraphProperties : public wxPanel
 public:
 	GraphProperties( wxWindow *parent, int id );
 
-	void SetupVariables( DataProvider *dp, ConfigInfo *cfg );
+	void SetupVariables( Simulation *sim );
 	void Clear();
 
 	void Set( const Graph &g );
@@ -120,7 +120,7 @@ class GraphViewer : public wxSplitterWindow
 public:
 	GraphViewer( wxWindow *parent );
 	
-	void Setup( Case *c, DataProvider *dp );
+	void Setup( Simulation *sim );
 	
 	GraphCtrl *CreateNewGraph();
 	void DeleteGraph( GraphCtrl * );
@@ -138,8 +138,7 @@ private:
 	wxSnapLayout *m_layout;
 	std::vector<GraphCtrl*> m_graphs;
 
-	Case *m_case;
-	DataProvider *m_data;
+	Simulation *m_sim;
 
 
 	DECLARE_EVENT_TABLE();
