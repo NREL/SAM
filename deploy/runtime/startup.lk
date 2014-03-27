@@ -217,11 +217,6 @@ function setup_csp_physical_trough_pages()
 //addpage( [[ 'Test 1' ]] );
 //addpage( [[ 'Location' ]] );
 
-//setconfig( 'Wind BOS', 'None' );
-//setmodules( ['windbos']);
-//addpage( [[ 'Wind BOS' ]] );
-
-
 // CSP - Physical Trough ///////////////////////////////////////////////////////
 setconfig( 'Concentrating Solar Power - Physical Trough', 'None' );
 setmodules( ['tcstrough_physical']);
@@ -333,6 +328,17 @@ addpage( [[ 'Wind Farm Capital Costs','O and M Costs',
 		{ 'name'='Wind BOS 3', 'caption'='Advanced BOS Inputs', 'collapsible'=true, 'collapsible_var'='wind_advanced_inputs_shown'} ]],
 		{ 'sidebar'='Wind System Costs' } );
 setup_independent_power_producer_pages();
+
+
+setconfig( 'Wind BOS', 'None' );
+setmodules( ['windbos']);
+addpage( [[ 'Wind BOS Tester',
+        { 'name'='Wind BOS',   'caption'='Balance of System Costs', 'collapsible'=false, 'collapsible_var'='wind_detailed_bos_results_shown'},
+		{ 'name'='Wind BOS 1', 'caption'='Detailed BOS Results', 'collapsible'=true, 'collapsible_var'='wind_detailed_bos_results_shown'},
+		{ 'name'='Wind BOS 2', 'caption'='Estimated BOS Inputs', 'collapsible'=true, 'collapsible_var'='wind_estimated_inputs_shown'},
+		{ 'name'='Wind BOS 3', 'caption'='Advanced BOS Inputs', 'collapsible'=true, 'collapsible_var'='wind_advanced_inputs_shown'} ]],
+		{ 'sidebar'='Wind BOS Model' } );
+
 
 
 // Solar Water Heating /////////////////////////////////////////////////////////
