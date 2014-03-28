@@ -6,7 +6,7 @@ addconfig( 'PVWatts', [ 'Residential', 'Commercial', 'Commercial PPA', 'Independ
 addconfig( 'Flat Plate PV', ['Residential', 'Commercial', 'None'] );
 addconfig( 'Test Only', [ 'None' ] );
 addconfig( 'Wind BOS', [ 'None' ] );
-addconfig( 'Wind Power', ['None', 'Independent Power Producer'] );
+addconfig( 'Wind Power', ['Independent Power Producer', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'Single Owner', 'None'] );
 addconfig( 'Solar Water Heating', ['Residential', 'Commercial', 'None']);
 addconfig( 'Concentrating Solar Power - Physical Trough', ['Independent Power Producer','None']);
 
@@ -308,28 +308,6 @@ addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='PV System Costs'
 setup_single_owner_pages();
 
 // Wind Power //////////////////////////////////////////////////////////////////
-setconfig( 'Wind Power', 'None' );
-setmodules( ['windpower']);
-setup_windpower_pages();
-
-setconfig( 'Wind Power', 'Independent Power Producer' );	
-setmodules( ['windpower', 'ippppa']);
-setting( { 'analysis_period_var'='cf_length' } );
-setup_windpower_pages();
-//addpage( [[ 'Wind BOS',
-//		{ 'name'='Wind BOS 1', 'caption'='Detailed BOS Results', 'collapsible'=true, 'collapsible_var'='wind_detailed_bos_results_shown'},
-//		{ 'name'='Wind BOS 2', 'caption'='Estimated Inputs', 'collapsible'=true, 'collapsible_var'='wind_estimated_inputs_shown'},
-//		{ 'name'='Wind BOS 3', 'caption'='Advanced Inputs', 'collapsible'=true, 'collapsible_var'='wind_advanced_inputs_shown'} ]],
-//		{ 'sidebar'='Balance of System Costs' } );
-addpage( [[ 'Wind Farm Capital Costs','O and M Costs',
-		{ 'name'='Wind BOS',   'caption'='Balance of System Costs', 'collapsible'=false, 'collapsible_var'='wind_detailed_bos_results_shown'},
-		{ 'name'='Wind BOS 1', 'caption'='Detailed BOS Results', 'collapsible'=true, 'collapsible_var'='wind_detailed_bos_results_shown'},
-		{ 'name'='Wind BOS 2', 'caption'='Estimated BOS Inputs', 'collapsible'=true, 'collapsible_var'='wind_estimated_inputs_shown'},
-		{ 'name'='Wind BOS 3', 'caption'='Advanced BOS Inputs', 'collapsible'=true, 'collapsible_var'='wind_advanced_inputs_shown'} ]],
-		{ 'sidebar'='Wind System Costs' } );
-setup_independent_power_producer_pages();
-
-
 setconfig( 'Wind BOS', 'None' );
 setmodules( ['windbos']);
 addpage( [[ 'Wind BOS Tester',
@@ -339,6 +317,74 @@ addpage( [[ 'Wind BOS Tester',
 		{ 'name'='Wind BOS 3', 'caption'='Advanced BOS Inputs', 'collapsible'=true, 'collapsible_var'='wind_advanced_inputs_shown'} ]],
 		{ 'sidebar'='Wind BOS Model' } );
 
+//-----------------------------------------------------
+setconfig( 'Wind Power', 'Independent Power Producer' );
+setmodules( ['windpower', 'ippppa']);
+setting( { 'analysis_period_var'='cf_length' } );
+setup_windpower_pages();
+addpage( [[ 'Wind Farm Capital Costs','O and M Costs',
+		{ 'name'='Wind BOS',   'caption'='Balance of System Costs', 'collapsible'=false, 'collapsible_var'='wind_detailed_bos_results_shown'},
+		{ 'name'='Wind BOS 1', 'caption'='Detailed BOS Results', 'collapsible'=true, 'collapsible_var'='wind_detailed_bos_results_shown'},
+		{ 'name'='Wind BOS 2', 'caption'='Estimated BOS Inputs', 'collapsible'=true, 'collapsible_var'='wind_estimated_inputs_shown'},
+		{ 'name'='Wind BOS 3', 'caption'='Advanced BOS Inputs', 'collapsible'=true, 'collapsible_var'='wind_advanced_inputs_shown'} ]],
+		{ 'sidebar'='Wind System Costs' } );
+setup_independent_power_producer_pages();
+
+//-----------------------------------------------------
+setconfig( 'Wind Power', 'Leveraged Partnership Flip' );
+setmodules( ['windpower', 'levpartflip']);
+setting( { 'analysis_period_var'='cf_length' } );
+setup_windpower_pages();
+addpage( [[ 'Wind Farm Capital Costs','O and M Costs',
+		{ 'name'='Wind BOS',   'caption'='Balance of System Costs', 'collapsible'=false, 'collapsible_var'='wind_detailed_bos_results_shown'},
+		{ 'name'='Wind BOS 1', 'caption'='Detailed BOS Results', 'collapsible'=true, 'collapsible_var'='wind_detailed_bos_results_shown'},
+		{ 'name'='Wind BOS 2', 'caption'='Estimated BOS Inputs', 'collapsible'=true, 'collapsible_var'='wind_estimated_inputs_shown'},
+		{ 'name'='Wind BOS 3', 'caption'='Advanced BOS Inputs', 'collapsible'=true, 'collapsible_var'='wind_advanced_inputs_shown'} ]],
+		{ 'sidebar'='Wind System Costs' } );
+setup_leveraged_partnership_flip_pages();
+
+//-----------------------------------------------------
+setconfig( 'Wind Power', 'All Equity Partnership Flip' );
+setmodules( ['windpower', 'equpartflip']);
+setting( { 'analysis_period_var'='cf_length' } );
+setup_windpower_pages();
+addpage( [[ 'Wind Farm Capital Costs','O and M Costs',
+		{ 'name'='Wind BOS',   'caption'='Balance of System Costs', 'collapsible'=false, 'collapsible_var'='wind_detailed_bos_results_shown'},
+		{ 'name'='Wind BOS 1', 'caption'='Detailed BOS Results', 'collapsible'=true, 'collapsible_var'='wind_detailed_bos_results_shown'},
+		{ 'name'='Wind BOS 2', 'caption'='Estimated BOS Inputs', 'collapsible'=true, 'collapsible_var'='wind_estimated_inputs_shown'},
+		{ 'name'='Wind BOS 3', 'caption'='Advanced BOS Inputs', 'collapsible'=true, 'collapsible_var'='wind_advanced_inputs_shown'} ]],
+		{ 'sidebar'='Wind System Costs' } );
+setup_all_equity_partnership_flip_pages();
+
+//-----------------------------------------------------
+setconfig( 'Wind Power', 'Sale Leaseback' );
+setmodules( ['windpower', 'saleleaseback']);
+setting( { 'analysis_period_var'='cf_length' } );
+setup_windpower_pages();
+addpage( [[ 'Wind Farm Capital Costs','O and M Costs',
+		{ 'name'='Wind BOS',   'caption'='Balance of System Costs', 'collapsible'=false, 'collapsible_var'='wind_detailed_bos_results_shown'},
+		{ 'name'='Wind BOS 1', 'caption'='Detailed BOS Results', 'collapsible'=true, 'collapsible_var'='wind_detailed_bos_results_shown'},
+		{ 'name'='Wind BOS 2', 'caption'='Estimated BOS Inputs', 'collapsible'=true, 'collapsible_var'='wind_estimated_inputs_shown'},
+		{ 'name'='Wind BOS 3', 'caption'='Advanced BOS Inputs', 'collapsible'=true, 'collapsible_var'='wind_advanced_inputs_shown'} ]],
+		{ 'sidebar'='Wind System Costs' } );
+setup_sale_leaseback_pages();
+
+setconfig( 'Wind Power', 'Single Owner' );
+setmodules( ['windpower', 'singleowner']);
+setting( { 'analysis_period_var'='cf_length' } );
+setup_windpower_pages();
+addpage( [[ 'Wind Farm Capital Costs','O and M Costs',
+		{ 'name'='Wind BOS',   'caption'='Balance of System Costs', 'collapsible'=false, 'collapsible_var'='wind_detailed_bos_results_shown'},
+		{ 'name'='Wind BOS 1', 'caption'='Detailed BOS Results', 'collapsible'=true, 'collapsible_var'='wind_detailed_bos_results_shown'},
+		{ 'name'='Wind BOS 2', 'caption'='Estimated BOS Inputs', 'collapsible'=true, 'collapsible_var'='wind_estimated_inputs_shown'},
+		{ 'name'='Wind BOS 3', 'caption'='Advanced BOS Inputs', 'collapsible'=true, 'collapsible_var'='wind_advanced_inputs_shown'} ]],
+		{ 'sidebar'='Wind System Costs' } );
+setup_single_owner_pages();
+
+//-----------------------------------------------------
+setconfig( 'Wind Power', 'None' );
+setmodules( ['windpower']);
+setup_windpower_pages();
 
 
 // Solar Water Heating /////////////////////////////////////////////////////////
