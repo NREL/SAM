@@ -4,6 +4,7 @@
 #include <wx/splitter.h>
 #include <wx/minifram.h>
 
+
 #include "case.h"
 
 class wxPanel;
@@ -76,6 +77,7 @@ private:
 	void LayoutPage();
 	void DetachCurrentInputPage();
 
+	//wxStaticText *m_techLabel, *m_finLabel;
 	wxMetroButton *m_simButton, *m_resultsButton;
 
 	wxSimplebook *m_pageFlipper;

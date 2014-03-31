@@ -121,15 +121,27 @@ CaseWindow::CaseWindow( wxWindow *parent, Case *c )
 	m_simButton->SetFont( wxMetroTheme::Font( wxMT_NORMAL, 14) );
 	m_resultsButton = new wxMetroButton( left_panel, ID_RESULTSPAGE, wxEmptyString, wxBITMAP_PNG_FROM_DATA( graph ) );
 
-	//wxMetroButton *adv_button = new wxMetroButton( left_panel, ID_ADVANCED, wxEmptyString, wxNullBitmap, wxDefaultPosition, wxDefaultSize, wxMB_UPARROW );
-
-
 	wxBoxSizer *szhl = new wxBoxSizer( wxHORIZONTAL );
 	szhl->Add( m_simButton, 1, wxALL|wxEXPAND, 0 );
 	szhl->Add( m_resultsButton, 0, wxALL|wxEXPAND, 0 );
-	//szhl->Add( adv_button, 0, wxALL|wxEXPAND, 0 );
+	
+	/*
+	wxColour lafore( *wxWHITE ), laback( 100,100,100 );
+	wxFont lafont( *wxNORMAL_FONT );
+	lafont.SetWeight( wxFONTWEIGHT_BOLD );
+	m_techLabel = new wxStaticText( this, wxID_ANY, "-technology-" );
+	m_techLabel->SetBackgroundColour( laback );
+	m_techLabel->SetForegroundColour( lafore );
+	m_techLabel->SetFont( lafont );
+	m_finLabel = new wxStaticText( this, wxID_ANY, "-financing-");
+	m_finLabel->SetBackgroundColour( laback );
+	m_finLabel->SetForegroundColour( lafore );
+	m_finLabel->SetFont( lafont );
+	*/
 
 	wxBoxSizer *szvl = new wxBoxSizer( wxVERTICAL );
+	//szvl->Add( m_techLabel, 0, wxEXPAND|wxALIGN_CENTER_VERTICAL|wxALIGN_CENTER, 0 );
+	//szvl->Add( m_finLabel, 0, wxEXPAND|wxALIGN_CENTER_VERTICAL|wxALIGN_LEFT, 0 );
 	szvl->Add( m_inputPageList, 1, wxALL|wxEXPAND, 0 );
 	szvl->Add( szhl, 0, wxALL|wxEXPAND, 0 );
 	
@@ -742,6 +754,9 @@ void CaseWindow::UpdateConfiguration()
 
 	ConfigInfo *cfg = m_case->GetConfiguration();
 	if ( !cfg ) return;
+
+	//m_techLabel->SetLabel( cfg->Technology  + ", " + cfg->Financing );
+	//m_finLabel->SetLabel( cfg->Financing );
 
 	// update current set of input pages
 	m_pageGroups = cfg->InputPageGroups;

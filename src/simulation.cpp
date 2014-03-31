@@ -428,6 +428,70 @@ bool Simulation::Invoke()
 			}
 		}
 
+		wxString dbgfile( wxGetHomeDir() + "/ssc-" + cfg->Simulations[kk] + ".lk" );
+		if( FILE *fp = fopen( dbgfile.c_str(), "w" ) )
+		{
+			ssc_number_t value;
+			ssc_number_t *p;
+			int len, nr, nc;
+			pidx = 0;
+			wxString str_value;
+			double dbl_value;
+			int dbgidx = 0;
+			while( const ssc_info_t p_inf = ssc_module_var_info( p_mod, dbgidx++ ) )
+			{
+				const char *name = ::ssc_info_name( p_inf );
+				const char *desc = ::ssc_info_label( p_inf );
+				const char *units = ::ssc_info_units( p_inf );
+				int type = ::ssc_data_query( p_data, name );
+				switch( type )
+				{
+				case SSC_STRING:
+					str_value = wxString::FromUTF8(::ssc_data_get_string( p_data, name ));
+					str_value.Replace("\\", "/" );
+					fprintf(fp, "var( '%s', '%s' );\n", name, str_value.c_str() );
+					break;
+				case SSC_NUMBER:
+					::ssc_data_get_number( p_data, name, &value );
+					dbl_value = (double)value;
+					if ( dbl_value > DBL_MAX ) dbl_value = 1e38;
+					fprintf(fp, "var( '%s', %lg );\n", name, dbl_value );
+					break;
+				case SSC_ARRAY:
+					p = ::ssc_data_get_array( p_data, name, &len );
+					fprintf(fp, "var( '%s', [", name);
+					for ( int i=0;i<(len-1);i++ )
+					{
+						dbl_value = (double)p[i];
+						if ( dbl_value > DBL_MAX ) dbl_value = 1e38;
+						fprintf(fp, " %lg,", dbl_value );
+					}
+					dbl_value = (double)p[len-1];
+					if ( dbl_value > DBL_MAX ) dbl_value = 1e38;
+					fprintf(fp, " %lg ] );\n", dbl_value );
+					break;
+				case SSC_MATRIX:
+					p = ::ssc_data_get_matrix( p_data, name, &nr, &nc );
+					len = nr*nc;
+					fprintf( fp, "var( '%s', \n[ [", name );					
+					for (int k=0;k<(len-1);k++)
+					{
+						dbl_value = (double)p[k];
+						if ( dbl_value > DBL_MAX ) dbl_value = 1e38;
+						if ( (k+1)%nc == 0 ) 
+							fprintf(fp, " %lg ], \n[", dbl_value);
+						else
+							fprintf(fp, " %lg,", dbl_value);
+					}
+					dbl_value = (double)p[len-1];
+					if ( dbl_value > DBL_MAX ) dbl_value = 1e38;
+					fprintf(fp, " %lg ] ] );\n", dbl_value);
+				}
+			}
+			fclose( fp );
+		}
+
+
 		if ( !ssc_module_exec_with_handler( p_mod, p_data, ssc_invoke_handler, &sc ))
 		{
 			m_errors.Add(wxString::Format("simulation did not succeed - compute module %s failed", cfg->Simulations[kk].c_str() ));
