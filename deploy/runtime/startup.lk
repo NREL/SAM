@@ -10,7 +10,7 @@ addconfig( 'Wind Power', [ 'Residential', 'Commercial', 'Commercial PPA', 'Indep
 //addconfig( 'Wind Power', [ 'Independent Power Producer', 'None'] );
 
 addconfig( 'Solar Water Heating', ['Residential', 'Commercial', 'None']);
-addconfig( 'Concentrating Solar Power - Physical Trough', ['Independent Power Producer','None']);
+addconfig( 'Concentrating Solar Power - Physical Trough', ['Independent Power Producer', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'Single Owner', 'None']);
 
 
 function setup_pvwatts_pages()
@@ -219,17 +219,6 @@ function setup_csp_physical_trough_pages()
 //addpage( [[ 'Test 1' ]] );
 //addpage( [[ 'Location' ]] );
 
-// CSP - Physical Trough ///////////////////////////////////////////////////////
-setconfig( 'Concentrating Solar Power - Physical Trough', 'None' );
-setmodules( ['tcstrough_physical']);
-setup_csp_physical_trough_pages();
-
-setconfig( 'Concentrating Solar Power - Physical Trough', 'Independent Power Producer' );
-setmodules( ['tcstrough_physical']);
-setup_csp_physical_trough_pages();
-addpage( [[ 'Physical Trough Capital Costs','O and M Costs' ]], { 'sidebar'='Capital Costs' } );
-setup_independent_power_producer_pages();
-
 // Flat Plat PV ////////////////////////////////////////////////////////////////
 setconfig( 'Flat Plate PV', 'None' );
 setup_flat_plate_pv_pages();
@@ -246,6 +235,52 @@ setmodules( ['pvsamv1', 'utilityrate2', 'cashloan']);
 setup_flat_plate_pv_pages();
 addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='PV System Costs' } );
 setup_commercial_pages();
+
+
+// CSP - Physical Trough ///////////////////////////////////////////////////////
+setconfig( 'Concentrating Solar Power - Physical Trough', 'None' );
+setmodules( ['tcstrough_physical']);
+setup_csp_physical_trough_pages();
+
+//-----------------------------------------------------
+setconfig( 'Concentrating Solar Power - Physical Trough', 'Independent Power Producer' );
+setmodules( ['tcstrough_physical', 'ippppa']);
+setting( { 'analysis_period_var'='cf_length' } );
+setup_csp_physical_trough_pages();
+addpage( [[ 'Physical Trough Capital Costs','O and M Costs' ]], { 'sidebar'='Capital Costs' } );
+setup_independent_power_producer_pages();
+
+//-----------------------------------------------------
+setconfig( 'Concentrating Solar Power - Physical Trough', 'Leveraged Partnership Flip' );
+setmodules( ['tcstrough_physical', 'levpartflip']);
+setting( { 'analysis_period_var'='cf_length' } );
+setup_csp_physical_trough_pages();
+addpage( [[ 'Physical Trough Capital Costs','O and M Costs' ]], { 'sidebar'='Capital Costs' } );
+setup_leveraged_partnership_flip_pages();
+
+//-----------------------------------------------------
+setconfig( 'Concentrating Solar Power - Physical Trough', 'All Equity Partnership Flip' );
+setmodules( ['tcstrough_physical', 'equpartflip']);
+setting( { 'analysis_period_var'='cf_length' } );
+setup_csp_physical_trough_pages();
+addpage( [[ 'Physical Trough Capital Costs','O and M Costs' ]], { 'sidebar'='Capital Costs' } );
+setup_all_equity_partnership_flip_pages();
+
+//-----------------------------------------------------
+setconfig( 'Concentrating Solar Power - Physical Trough', 'Sale Leaseback' );
+setmodules( ['tcstrough_physical', 'saleleaseback']);
+setting( { 'analysis_period_var'='cf_length' } );
+setup_csp_physical_trough_pages();
+addpage( [[ 'Physical Trough Capital Costs','O and M Costs' ]], { 'sidebar'='Capital Costs' } );
+setup_sale_leaseback_pages();
+
+//-----------------------------------------------------
+setconfig( 'Concentrating Solar Power - Physical Trough', 'Single Owner' );
+setmodules( ['tcstrough_physical', 'singleowner']);
+setting( { 'analysis_period_var'='cf_length' } );
+setup_csp_physical_trough_pages();
+addpage( [[ 'Physical Trough Capital Costs','O and M Costs' ]], { 'sidebar'='Capital Costs' } );
+setup_single_owner_pages();
 
 
 // PVWatts /////////////////////////////////////////////////////////////////////

@@ -147,6 +147,12 @@ function wind_bos_metrics()
 	metric( 'project_total_budgeted_cost', {'label'='Total Cost',  'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
 }
 
+function csp_physical_trough_metrics() 
+{
+	metric( 'annual_energy', {'label'='Annual Energy', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh' } );
+	metric( 'conversion_factor', {'label'='Gross to Net Conversion Factor', 'mode'='f', 'deci'='1', 'thousep'='true', 'post'=' %' } );
+}
+
 metrics{ 'PVWatts' } = define() {	pv_metrics(); };
 metrics{ 'Flat Plate PV' } = define() { pv_metrics(); };
 metrics{ 'Residential' } = define() { rescom_metrics(); };
@@ -159,4 +165,5 @@ metrics{ 'Leveraged Partnership Flip' } = define() { lpf_metrics(); };
 metrics{ 'Sale Leaseback' } = define() { sl_metrics(); };
 metrics{ 'Wind Power' } = define() { wind_power_metrics(); };
 metrics{ 'Wind BOS' } = define() { wind_bos_metrics(); };
+metrics{ 'Concentrating Solar Power - Physical Trough' } = define() { csp_physical_trough_metrics(); };
 
