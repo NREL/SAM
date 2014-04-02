@@ -9,7 +9,7 @@
 
 #include <wex/csv.h>
 
-#include "uiwidgets.h"
+#include "widgets.h"
 
 #include "variables.h"
 #include "shadingfactors.h"

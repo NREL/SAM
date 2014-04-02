@@ -23,7 +23,8 @@
 #include "casewin.h"
 
 // UI widgets
-#include "uiwidgets.h"
+#include "widgets.h"
+#include "adjfac.h"
 #include "ptlayoutctrl.h"
 #include "troughloop.h"
 #include "materials.h"
