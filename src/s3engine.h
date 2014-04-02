@@ -1,0 +1,279 @@
+#ifndef __s3dengine_h
+#define __s3dengine_h
+
+#include <vector>
+#include <string>
+
+namespace s3d {
+
+class point3d
+{
+public:
+	point3d();
+	point3d( float x_, float y_, float z_ );
+	float x, y, z; // original points
+	float _x, _y, _z; // translated points
+};
+
+class rgba
+{
+public:
+	rgba();
+	rgba( unsigned char r, unsigned char g, unsigned char b, unsigned char a = 255 );
+	unsigned char r, g, b, a;
+};
+
+class text3d
+{
+public:
+	text3d();
+	text3d( float x, float y, float z, const std::string &text );
+	text3d( float x, float y, float z, const std::string &text, 
+		rgba col, int size, const std::string &face );
+
+	point3d pos;
+	std::string text;
+	rgba color;
+	std::string face;
+	int size;
+
+};
+
+class polygon3d
+{
+public:
+	polygon3d( int _id = 0);
+	polygon3d( int _id, int _type, rgba _fill, rgba _border, int thick, bool line );
+	polygon3d( int _id, int _type, rgba _fill, rgba _border, int thick, bool line, const std::vector<point3d> &pts );
+	polygon3d( const polygon3d &rhs );
+		
+	std::vector<point3d> points;
+	int id;
+	int type;
+	rgba fill;
+	rgba border;
+	int thick;
+	bool as_line;
+};
+
+
+class transform
+{
+public:
+	transform();
+	virtual ~transform();
+	void reset();
+	
+	void operator() ( point3d & );
+	
+	
+	double get_scale();
+	void get_rotation( double *rx, double *yy );
+	void get_azal( double *azi, double *alt );
+	void set_azal( double &azi, double &alt);
+	void get_offset( double *xoff, double *yoff, double *zoff );
+	void get_view_normal( double v[3] );
+
+	void get_xy( double *x, double *y );
+	void get_xyz( double *x, double *y, double *z );
+
+	void set_scale( double s );
+	void set_zorient( int zor );
+	
+	void aspect( double xa, double ya, double za );
+	
+	// angles in degrees
+	void rotate_x( double xa );
+	void rotate_z( double za );
+	void rotate_xz( double xa, double za );
+	void change_xz( double dx, double dz );
+	void rotate_azal( double azimuth, double altitude );
+	void offset( double xoff, double yoff, double zoff );
+	
+	
+protected:
+	
+	void init();
+	void compute();	
+	void matprod4(double z[4][4], double u[4][4], double v[4][4]);
+	
+	double angleX, angleY, angleZ;
+	double cosZ, sinZ, cosX, sinX, cosY, sinY;
+	double scale;
+	double xaspect, yaspect, zaspect;
+	int zorientation;
+	
+	double m[4][4];
+	double mX[4][4];
+	double mY[4][4];
+	double mZ[4][4];
+	
+	double m_Z[4][4];
+	double m_YZ[4][4];
+	double m_XYZ[4][4];
+	
+	double xO, yO, zO;
+	
+	double a00, a01, a02, a03;  // coefficients of the transformation
+	double a10, a11, a12, a13;
+	double a20, a21, a22, a23;	
+	
+	double x, y, z;
+	double X, Y, Z;
+	
+};
+
+class shade_polygon
+{
+public:
+	shade_polygon() : active_area(0.0), shade_area(0.0) {  }
+	polygon3d intersect;
+	double shade_fraction;
+	double active_area;
+	double shade_area;
+};
+
+class shade_result
+{
+public:
+	shade_result() : total_active_area(0.0), total_shade_area(0.0), shade_fraction(0.0) {  }
+	double total_active_area;
+	double total_shade_area;
+	double shade_fraction;
+	std::vector<shade_polygon> shadings;
+};
+
+static const unsigned int RIGHT = 0x0001;
+static const unsigned int TOP = 0x0002;
+static const unsigned int BOTTOM = 0x0004;
+static const unsigned int BACK = 0x0008;
+static const unsigned int FRONT = 0x0010;
+static const unsigned int LEFT = 0x0020;
+static const unsigned int ALL_FACES = RIGHT|TOP|BOTTOM|BACK|FRONT|LEFT;
+
+class scene
+{
+private:
+	std::vector<polygon3d*> m_polygons;
+	std::vector<text3d*> m_labels;
+	
+	std::vector<polygon3d*> m_culled;
+	std::vector<polygon3d*> m_culled_sorted; // BSP tree sorted polygons (can be as large as 2x size if m_culled if all are split
+
+	int m_polyType;
+	rgba m_fillColor, m_lineColor;
+	std::vector<point3d> m_curPoints;
+
+	// for setting viewpoint
+	double m_view_x;
+	double m_view_y;
+	double m_view_z;
+
+	void cull_backfaces( );
+	void sort_polys();
+public:
+	scene();
+	scene( const scene & rhs );
+	~scene();
+
+	void copy( const scene &rhs );
+	scene &operator=( const scene &rhs );
+		
+	void basic_axes_with_ground( int axes_len = 100 );
+
+	void label( float x, float y, float z, const std::string &text, 
+		rgba col = rgba(0,0,0), int size=-1, const std::string &face = "" );
+
+	// state based drawing routines
+	enum { OBSTRUCTION=1, ACTIVE }; // polygon types
+
+	void reset();
+	void type( int m );
+	void fill( rgba c );
+	void outline( rgba o );
+	void colors( rgba fill, rgba line );
+	void point( float x, float y, float z );
+	void line( int id=0, int thick=1 );
+	void poly( int id=0 );
+	void conical( int id, float x, float y, float zstart, float height, float r1, float r2, 
+				  float angle_start=0.0, float angle_end = 360.0, bool fill = false, int npoly=18 );
+	void cylinder( int id, float x, float y, float zstart, float height, float r,
+				   float angle_start=0.0, float angle_end = 360.0, float angle_xy = 0.0, int npoly=18 );
+		
+	void box( int id, float x, float y, float angle_xy, float xdim, float ydim, 
+			  float zstart, float height, unsigned int faces = ALL_FACES, int rotateCenter=1 );
+	void plane(int id, double x[4], double y[4], double z[4]);
+	void roof( int id, float xc, float yc, float zstart, float width, float length, 
+				 float height, float pitch1, float pitch2, float angle_xy );
+
+	// add a new polygon all custom properties
+	void poly( int _id, int _type, rgba _fill, rgba _border, int thick, bool line, const std::vector<point3d> &pts );
+	
+	// clear everything
+	void clear();
+
+	// erase all polygons of a specific ID
+	void clear( int id );
+	
+	// transform, cull, sort	
+	void build( transform &tr );
+
+	// set camera location
+	void set_viewxyz( double &x, double &y, double &z);
+	void get_viewxyz( double *x, double *y, double *z);
+
+	// compute shade after scene is built
+	void shade( shade_result &result );
+
+	// get polygons and labels for rendering
+	const std::vector<text3d*> &get_labels() const;
+	const std::vector<polygon3d*> &get_polygons() const;
+};
+
+
+bool intri(double x1, double y1,
+				 double x2, double y2,
+				 double x3, double y3,
+				 double xt, double yt);
+
+bool inquad(double x1, double y1,
+				 double x2, double y2,
+				 double x3, double y3,
+				 double x4, double y4,
+				 double xt, double yt);
+
+bool inpoly( double *x, double *y, size_t n,
+			double xt, double yt );
+
+bool incirc( double xc, double yc, double r, 
+			 double xt, double yt );
+			 
+
+
+void rotate2dxz( double xc, double yc, double x[], double y[],  double angle_xy /*deg*/, int n);
+void rotate2dy( double xc, double zc, double x[], double z[],  double angle_xz /*deg*/, int n);
+
+
+void get_rotated_box_points( double xc, double yc,
+							 double width, double height, 
+							 double angle_xy,  /*deg*/
+							 double x[4], double y[4]);
+void get_rotated_box_points( double xc, double yc,
+							 double width, double height, 
+							 double angle_xy,  /*deg*/
+							 double x[4], double y[4],
+							 int rotateCenter);
+
+
+
+
+/* angles in degrees for these functions */
+void sun_unit( double sazi, double szen, double sun[3] );
+void sun_pos( int year,int month,int day,int hour,double minute,double lat,double lng,double tz, 
+		double *sazi, double *szen );
+
+
+}; // namespace s3d
+
+
+#endif

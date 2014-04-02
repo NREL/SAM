@@ -28,7 +28,9 @@ OBJECTS = ide.o \
 	main.o \
 	equations.o \
 	inputpage.o \
-	uiwidgets.o \
+	uiobjects.o \
+	adjfac.o \
+	widgets.o \
 	variables.o \
 	project.o \
 	object.o \
