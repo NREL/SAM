@@ -27,7 +27,7 @@
 #include "equations.h"
 #include "inputpage.h"
 #include "invoke.h"
-#include "uiwidgets.h"
+#include "widgets.h"
 
 enum { ID_STARTUP_EDITOR = wxID_HIGHEST+124,
 	ID_STARTUP_SAVE,

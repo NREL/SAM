@@ -35,6 +35,7 @@
 #include "casewin.h"
 #include "invoke.h"
 #include "library.h"
+#include "uiobjects.h"
 
 // application globals
 static wxArrayString g_appArgs;
@@ -1177,9 +1178,6 @@ ConfigInfo *ConfigDatabase::Find( const wxString &t, const wxString &f )
 	return 0;
 }
 
-
-extern void RegisterUIWidgetsForSAM();
-
 bool SamApp::OnInit()
 {
 	if ( !wxApp::OnInit() )
@@ -1210,7 +1208,7 @@ bool SamApp::OnInit()
 
 	// register all input page UI objects 
 	wxUIObjectTypeProvider::RegisterBuiltinTypes();
-	RegisterUIWidgetsForSAM();
+	RegisterUIObjectsForSAM();
 
 	wxInitAllImageHandlers();
 	wxSimpleCurlInit();
