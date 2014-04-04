@@ -295,6 +295,32 @@ bool Case::Read( wxInputStream &_i )
 	if ( !m_notes.Read( _i ) ) wxLogStatus("error reading m_notes in Case::Read");
 
 
+	// checking m_vals VarTable for current configuration to make sure no inputs are missing or have been removed - can be used to update old project files
+	ConfigInfo *config = SamApp::Config().Find(tech, fin);
+
+	if (!config)
+	{
+		wxMessageBox("Case error: could not find configuration information for " + tech + ", " + fin);
+		return false;
+	}
+
+	// erase all input variables that are no longer in the current configuration
+	wxArrayString to_remove;
+	VarInfoLookup &vars = config->Variables;
+
+	for (VarTable::iterator it = m_vals.begin(); it != m_vals.end(); ++it)
+		if (vars.find(it->first) == vars.end())
+			to_remove.Add(it->first);
+
+	m_vals.Delete(to_remove);
+
+	// set up any remaining new variables with internal default values
+	// note that could load from defaults first (if available) and then use internal values
+	for (VarInfoLookup::iterator it = vars.begin(); it != vars.end(); ++it)
+		if (!m_vals.Get(it->first))
+			m_vals.Set(it->first, it->second->DefaultValue); // will create new variable if it doesnt exist
+
+
 	return (in.Read8() == code);
 }
 
