@@ -10,8 +10,9 @@ addconfig( 'Wind Power', [ 'Residential', 'Commercial', 'Commercial PPA', 'Indep
 //addconfig( 'Wind Power', [ 'Independent Power Producer', 'None'] );
 
 addconfig( 'Solar Water Heating', ['Residential', 'Commercial', 'None']);
-addconfig( 'Concentrating Solar Power - Physical Trough', ['Independent Power Producer', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'Single Owner', 'None']);
-
+//addconfig( 'Physical Trough', ['Independent Power Producer','None']);
+addconfig( 'Empirical Trough', ['Independent Power Producer', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'Single Owner','Commercial','None']);
+addconfig( 'Physical Trough', ['Independent Power Producer', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'Single Owner', 'None']);
 
 function setup_pvwatts_pages()
 {
@@ -208,6 +209,17 @@ function setup_csp_physical_trough_pages()
 	addpage( [[ 'Physical Trough Parasitics' ]], { 'sidebar'='Parasitics' } );
 }
 
+function setup_csp_empirical_trough_pages()
+{
+	addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource' } );
+	addpage( [[ 'Empirical Trough Solar Field' ]], { 'sidebar'='Solar Field' } );
+	addpage( [[ 'Empirical Trough SCA' ]], { 'sidebar'='Collectors (SCAs)' } );
+	addpage( [[ 'Empirical Trough HCE' ]], { 'sidebar'='Receivers (HCEs)' } );
+	addpage( [[ 'Empirical Trough Power Block' ]], { 'sidebar'='Power Block' } );
+	addpage( [[ 'Empirical Trough Thermal Storage' ]], { 'sidebar'='Thermal Storage' } );
+	addpage( [[ 'Empirical Trough Parasitics' ]], { 'sidebar'='Parasitics' } );		
+}
+
 ////////////////////////////////////////////////////////////////////////////////
 // now setup all the pages /////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
@@ -218,6 +230,36 @@ function setup_csp_physical_trough_pages()
 //setconfig( 'Test Only', 'None' );
 //addpage( [[ 'Test 1' ]] );
 //addpage( [[ 'Location' ]] );
+
+// CSP - Physical Trough ///////////////////////////////////////////////////////
+setconfig( 'Physical Trough', 'None' );
+setmodules( ['tcstrough_physical']);
+setup_csp_physical_trough_pages();
+
+setconfig( 'Physical Trough', 'Independent Power Producer' );
+setmodules( ['tcstrough_physical']);
+setup_csp_physical_trough_pages();
+addpage( [[ 'Physical Trough Capital Costs','O and M Costs' ]], { 'sidebar'='Capital Costs' } );
+setup_independent_power_producer_pages();
+
+// CSP - Empirical Trough ///////////////////////////////////////////////////////
+setconfig( 'Empirical Trough', 'None' );
+setmodules( ['tcstrough_empirical']);
+setup_csp_empirical_trough_pages();
+
+setconfig( 'Empirical Trough', 'Independent Power Producer' );
+setmodules( ['tcstrough_empirical']);
+setup_csp_empirical_trough_pages();
+//TODO add cost page
+setup_independent_power_producer_pages();
+
+setconfig( 'Empirical Trough', 'Commercial' );
+setmodules( ['tcstrough_empirical']);
+setup_csp_empirical_trough_pages();
+//TODO add cost page
+setup_commercial_pages();
+
+
 
 // Flat Plat PV ////////////////////////////////////////////////////////////////
 setconfig( 'Flat Plate PV', 'None' );
