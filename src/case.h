@@ -68,11 +68,13 @@ public:
 	virtual wxString GetTypeName();
 	virtual void Write( wxOutputStream & );
 	virtual bool Read( wxInputStream & );
-	
+
+	bool LoadValuesFromExternalSource( wxInputStream &in, size_t &not_found, size_t &wrong_type, size_t &nread );
+
 	bool LoadDefaults();
 	bool SaveDefaults();
 
-	void SetConfiguration( const wxString &tech, const wxString &fin );
+	bool SetConfiguration( const wxString &tech, const wxString &fin );
 	void GetConfiguration( wxString *tech, wxString *fin );	
 	ConfigInfo *GetConfiguration() { return m_config; }
 	VarTable &Values() { return m_vals; }
