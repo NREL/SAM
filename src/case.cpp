@@ -278,10 +278,20 @@ bool Case::Read( wxInputStream &_i )
 	wxString tech = in.ReadString();
 	wxString fin = in.ReadString();
 
-	SetConfiguration( tech, fin );
+	if ( !SetConfiguration( tech, fin ) )
+		wxLogStatus("failed to set configuration when reading project file");
 
-	if ( !m_vals.Read( _i ) ) wxLogStatus("error reading m_vals in Case::Read");
+	// read in the variable table
+	size_t not_found = 0;
+	size_t wrong_type = 0;
+	size_t nread = 0;
 
+	bool ok = LoadValuesFromExternalSource( _i, not_found, wrong_type, nread );
+
+	if ( !ok || not_found > 0 || wrong_type > 0 || nread != m_vals.size() )
+		wxLogStatus("discrepancy reading in values from project file: %d not found, %d wrong type, %d read != %d in config",
+			(int)not_found, (int)wrong_type, (int)nread, (int)m_vals.size() );
+	
 	if ( ver <= 1 )
 	{
 		m_baseCase.Clear();
@@ -293,33 +303,6 @@ bool Case::Read( wxInputStream &_i )
 
 	if ( !m_properties.Read( _i ) ) wxLogStatus("error reading m_properties in Case::Read");
 	if ( !m_notes.Read( _i ) ) wxLogStatus("error reading m_notes in Case::Read");
-
-
-	// checking m_vals VarTable for current configuration to make sure no inputs are missing or have been removed - can be used to update old project files
-	ConfigInfo *config = SamApp::Config().Find(tech, fin);
-
-	if (!config)
-	{
-		wxMessageBox("Case error: could not find configuration information for " + tech + ", " + fin);
-		return false;
-	}
-
-	// erase all input variables that are no longer in the current configuration
-	wxArrayString to_remove;
-	VarInfoLookup &vars = config->Variables;
-
-	for (VarTable::iterator it = m_vals.begin(); it != m_vals.end(); ++it)
-		if (vars.find(it->first) == vars.end())
-			to_remove.Add(it->first);
-
-	m_vals.Delete(to_remove);
-
-	// set up any remaining new variables with internal default values
-	// note that could load from defaults first (if available) and then use internal values
-	for (VarInfoLookup::iterator it = vars.begin(); it != vars.end(); ++it)
-		if (!m_vals.Get(it->first))
-			m_vals.Set(it->first, it->second->DefaultValue); // will create new variable if it doesnt exist
-
 
 	return (in.Read8() == code);
 }
@@ -344,29 +327,23 @@ bool Case::SaveDefaults()
 	return true;
 }
 
-bool Case::LoadDefaults()
+bool Case::LoadValuesFromExternalSource( wxInputStream &in, 
+		size_t &not_found, size_t &wrong_type, size_t &nread )
 {
-	if (!m_config) return false;
-
-	wxString file = SamApp::GetRuntimePath() + "/defaults/" 
-		+ m_config->Technology + "_" + m_config->Financing;
-
-	if (!wxFileExists(file)) return false;
-	
-	wxFFileInputStream in(file);
-	if (!in.IsOk()) return false;
-
+	not_found = 0;
+	wrong_type = 0;
+	nread = 0;
 	VarTable vt;
 	if (!vt.Read(in))
 	{
-		wxLogStatus("Case error: reading defaults for " + file);
+		wxLogStatus("error reading inputs from external source");
 		return false;
 	}
 
+	nread = vt.size();
+
 	// copy over values for variables that already exist
 	// in the configuration
-	int not_found = 0;
-	int wrong_type = 0;
 	for( VarTable::iterator it = vt.begin();
 		it != vt.end();
 		++it )
@@ -382,16 +359,38 @@ bool Case::LoadDefaults()
 			not_found++;
 	}
 		
-	wxLogStatus("Case: defaults loaded for " + file);
-
 	if (RecalculateAll() < 0)
-		wxLogStatus("   error recalculating equations after loading default values");	
+	{
+		wxLogStatus("   error recalculating equations after loading values from external source");	
+		return false;
+	}
 
-	if ( not_found > 0 || wrong_type > 0 || vt.size() != m_vals.size() ) 
+	return true;
+}
+
+bool Case::LoadDefaults()
+{
+	if (!m_config) return false;
+
+	wxString file = SamApp::GetRuntimePath() + "/defaults/" 
+		+ m_config->Technology + "_" + m_config->Financing;
+
+	if (!wxFileExists(file)) return false;
+	
+	wxFFileInputStream in(file);
+	if (!in.IsOk()) return false;
+
+	size_t not_found = 0;
+	size_t wrong_type = 0;
+	size_t nread = 0;
+
+	bool ok = LoadValuesFromExternalSource( in, not_found, wrong_type, nread );
+
+	if ( !ok || not_found > 0 || wrong_type > 0 || nread != m_vals.size() ) 
 		if ( wxYES == wxMessageBox( wxString::Format("Defaults file is likely out of date.\n\n"
 			"Variables: %d not found, %d wrong type, defaults has %d, config has %d\n\n"
 			"Would you like to update the defaults with the current values right now?\n"
-			"(Otherwise press Shift-F10 later)", not_found, wrong_type, (int)vt.size(), (int)m_vals.size()), "Query", wxYES_NO) )
+			"(Otherwise press Shift-F10 later)", (int)not_found, (int)wrong_type, (int)nread, (int)m_vals.size()), "Query", wxYES_NO) )
 			SaveDefaults();
 
 	return true;
@@ -399,7 +398,7 @@ bool Case::LoadDefaults()
 
 
 
-void Case::SetConfiguration( const wxString &tech, const wxString &fin )
+bool Case::SetConfiguration( const wxString &tech, const wxString &fin )
 {
 	// erase results
 	m_baseCase.Clear();
@@ -409,7 +408,7 @@ void Case::SetConfiguration( const wxString &tech, const wxString &fin )
 	if ( !m_config )
 	{
 		wxMessageBox("Case error: could not find configuration information for " + tech + ", " + fin );
-		return;
+		return false;
 	}
 
 	// erase all input variables that are no longer in the current configuration
@@ -481,6 +480,8 @@ void Case::SetConfiguration( const wxString &tech, const wxString &fin )
 	
 	// update UI
 	SendEvent( CaseEvent( CaseEvent::CONFIG_CHANGED, tech, fin ) );
+
+	return true;
 }
 
 lk::env_t &Case::CallbackEnvironment()
