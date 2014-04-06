@@ -1,3 +1,5 @@
+#include<set>
+
 #include <wx/wx.h>
 #include <wx/frame.h>
 #include <wx/stc/stc.h>
@@ -101,7 +103,9 @@ enum { __idFirst = wxID_HIGHEST+592,
 BEGIN_EVENT_TABLE( MainWindow, wxFrame )
 	EVT_CLOSE( MainWindow::OnClose )
 	EVT_MENU( wxID_NEW, MainWindow::OnCommand )
-	EVT_MENU( wxID_OPEN, MainWindow::OnCommand )
+	EVT_MENU(ID_CASE_VARIABLE_LIST, MainWindow::OnCommand)
+	EVT_MENU(ID_CASE_COMPARE, MainWindow::OnCommand)
+	EVT_MENU(wxID_OPEN, MainWindow::OnCommand)
 	EVT_MENU( wxID_SAVE, MainWindow::OnCommand )
 	EVT_MENU( wxID_SAVEAS, MainWindow::OnCommand )
 	EVT_MENU( wxID_CLOSE, MainWindow::OnCommand )
@@ -323,12 +327,19 @@ void MainWindow::OnInternalCommand( wxCommandEvent &evt )
 	case ID_INTERNAL_CASE_VALUES:
 		if (Case *cc = GetCurrentCase())
 		{
+			wxString title = "Current Case Values: " + m_project.GetCaseName(cc);
+			std::vector<VarTable> vt;
+			vt.push_back(cc->Values());
+			VarTableGrid(title, vt);
+
+			/*
 			wxFrame *frame = new wxFrame(this, wxID_ANY, "Current Case Values: " + m_project.GetCaseName(cc), wxDefaultPosition, wxSize(400, 700));
 			wxGrid *grid = new wxGrid(frame, wxID_ANY);
 			VarTable &vals = cc->Values();
 			grid->CreateGrid(vals.size(), 2);
 			size_t idx = 0;
 			grid->Freeze();
+			*/
 			/*
 			// unsorted fast - uses unordered map from the VarTableBase
 			for( VarTable::iterator it = vals.begin();
@@ -344,6 +355,7 @@ void MainWindow::OnInternalCommand( wxCommandEvent &evt )
 			idx++;
 			}
 			*/
+			/*
 			wxArrayString sorted_names = vals.ListAll();
 			sorted_names.Sort();
 			for (idx = 0; idx < sorted_names.Count(); idx++)
@@ -357,6 +369,7 @@ void MainWindow::OnInternalCommand( wxCommandEvent &evt )
 			grid->Thaw();
 
 			frame->Show();
+			*/
 		}
 		break;
 	case ID_SAVE_CASE_DEFAULTS:
@@ -366,6 +379,68 @@ void MainWindow::OnInternalCommand( wxCommandEvent &evt )
 		}
 		break;
 	}
+}
+
+void MainWindow::VarTableGrid( wxString &title, std::vector<VarTable> &var_table_vec )
+{
+	if (var_table_vec.size() > 0)
+	{
+		wxFrame *frame = new wxFrame(this, wxID_ANY, title, wxDefaultPosition, wxSize(400, 700));
+		wxGrid *grid = new wxGrid(frame, wxID_ANY);
+
+		size_t num_cols = var_table_vec.size() + 2;
+
+		std::set<wxString> var_names;
+
+		for (std::vector<VarTable>::iterator it = var_table_vec.begin(); it != var_table_vec.end(); ++it)
+		{
+			wxArrayString as = it->ListAll();
+			for (size_t i = 0; i < as.Count();i++)
+				var_names.insert(as[i]);
+		}
+		size_t num_rows = var_names.size();
+
+
+		grid->CreateGrid(num_rows, num_cols);
+		size_t idx = 0;
+		grid->Freeze();
+		/*
+		// unsorted fast - uses unordered map from the VarTableBase
+		for( VarTable::iterator it = vals.begin();
+		it != vals.end();
+		++it )
+		{
+		grid->SetCellValue( idx, 0, it->first );
+		//grid->SetCellValue(idx, 1, it->second->AsString());
+		// wxGrid only support 6500 characters per cell (empirically determined) - use 1024 for display
+		wxString strVal = it->second->AsString();
+		if (strVal.Length() > 1024) strVal = strVal.Left(1024) + "...";
+		grid->SetCellValue( idx, 1, strVal );
+		idx++;
+		}
+		*/
+		size_t col = 0, row=0;
+		for (std::set<wxString>::iterator idx = var_names.begin(); idx != var_names.end(); ++idx)
+		{
+			grid->SetCellValue(row, col++, *idx); //name
+			// todo set label
+			//grid->SetCellValue(row, col++, *idx); //label
+			for (std::vector<VarTable>::iterator it = var_table_vec.begin(); it != var_table_vec.end(); ++it)
+			{
+				wxString strVal = "";
+				if (it->Get(*idx)) strVal = it->Get(*idx)->AsString();
+				if (strVal.Length() > 1024) strVal = strVal.Left(1024) + "...";
+				grid->SetCellValue(row, col++, strVal);
+			}
+			row++;
+			col = 0;
+		}
+		grid->AutoSizeColumns();
+		grid->Thaw();
+
+		frame->Show();
+	}
+
 }
 
 void MainWindow::OnCommand( wxCommandEvent &evt )
@@ -410,6 +485,26 @@ void MainWindow::OnCommand( wxCommandEvent &evt )
 				if( !LoadProject( dlg.GetPath() ) )
 					wxMessageBox("Error loading project file:\n\n" 
 						+ dlg.GetPath() + "\n\n" + m_project.GetLastError(), "Notice", wxOK, this );
+		}
+		break;	
+	case ID_CASE_VARIABLE_LIST:
+		if (Case *cc = GetCurrentCase())
+		{
+			wxString title = "Current Case Values: " + m_project.GetCaseName(cc);
+			std::vector<VarTable> vt;
+			vt.push_back(cc->Values());
+			VarTableGrid(title, vt);
+		}
+		break;
+	case ID_CASE_COMPARE:
+		if (m_project.GetCases().size() > 0)
+		{
+			wxString title = "Case comparison";
+			std::vector<VarTable> vt;
+			std::vector<Case*> cases = m_project.GetCases();
+			for (std::vector<Case*>::iterator it = cases.begin(); it != cases.end(); ++it)
+				vt.push_back((*it)->Values());
+			VarTableGrid(title, vt);
 		}
 		break;
 	case wxID_SAVEAS:
@@ -583,7 +678,7 @@ void MainWindow::OnCaseTabButton( wxCommandEvent &evt )
 	menu.Append( ID_CASE_SIMULATE, "Simulate" );
 	menu.Append( ID_CASE_CLEAR_RESULTS, "Clear all results" );
 	menu.Append( ID_CASE_REPORT, "Generate report" );
-	menu.Append( ID_CASE_COMPARE, "Compare to..." );
+	menu.Append(ID_CASE_COMPARE, "Compare to...");
 	menu.AppendSeparator();
 	menu.Append( ID_CASE_RESET_DEFAULTS, "Reset inputs to default values" );
 	menu.Append( ID_CASE_VARIABLE_LIST, "Input variable list");
