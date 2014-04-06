@@ -59,6 +59,8 @@ public:
 
 	Case *GetCurrentCase();
 	CaseWindow *GetCurrentCaseWindow();
+	void VarTableGrid( wxString &title, std::vector<VarTable> &var_table_vec);
+
 
 protected:
 	void OnClose( wxCloseEvent & );
