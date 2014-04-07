@@ -330,45 +330,6 @@ void MainWindow::OnInternalCommand( wxCommandEvent &evt )
 			std::vector<Case*> cases;
 			cases.push_back(cc);
 			CaseVarGrid(cases);
-
-			/*
-			wxFrame *frame = new wxFrame(this, wxID_ANY, "Current Case Values: " + m_project.GetCaseName(cc), wxDefaultPosition, wxSize(400, 700));
-			wxGrid *grid = new wxGrid(frame, wxID_ANY);
-			VarTable &vals = cc->Values();
-			grid->CreateGrid(vals.size(), 2);
-			size_t idx = 0;
-			grid->Freeze();
-			*/
-			/*
-			// unsorted fast - uses unordered map from the VarTableBase
-			for( VarTable::iterator it = vals.begin();
-			it != vals.end();
-			++it )
-			{
-			grid->SetCellValue( idx, 0, it->first );
-			//grid->SetCellValue(idx, 1, it->second->AsString());
-			// wxGrid only support 6500 characters per cell (empirically determined) - use 1024 for display
-			wxString strVal = it->second->AsString();
-			if (strVal.Length() > 1024) strVal = strVal.Left(1024) + "...";
-			grid->SetCellValue( idx, 1, strVal );
-			idx++;
-			}
-			*/
-			/*
-			wxArrayString sorted_names = vals.ListAll();
-			sorted_names.Sort();
-			for (idx = 0; idx < sorted_names.Count(); idx++)
-			{
-				grid->SetCellValue(idx, 0, sorted_names[idx]);
-				wxString strVal = vals.Get(sorted_names[idx])->AsString();
-				if (strVal.Length() > 1024) strVal = strVal.Left(1024) + "...";
-				grid->SetCellValue(idx, 1, strVal);
-			}
-			grid->AutoSizeColumns();
-			grid->Thaw();
-
-			frame->Show();
-			*/
 		}
 		break;
 	case ID_SAVE_CASE_DEFAULTS:
@@ -441,26 +402,10 @@ void MainWindow::CaseVarGrid(std::vector<Case*> &cases)
 			var_labels.push_back(str_label);
 		}
 
-
-
 		grid->CreateGrid(num_rows, num_cols);
 		size_t idx = 0;
 		grid->Freeze();
-		/*
-		// unsorted fast - uses unordered map from the VarTableBase
-		for( VarTable::iterator it = vals.begin();
-		it != vals.end();
-		++it )
-		{
-		grid->SetCellValue( idx, 0, it->first );
-		//grid->SetCellValue(idx, 1, it->second->AsString());
 		// wxGrid only support 6500 characters per cell (empirically determined) - use 1024 for display
-		wxString strVal = it->second->AsString();
-		if (strVal.Length() > 1024) strVal = strVal.Left(1024) + "...";
-		grid->SetCellValue( idx, 1, strVal );
-		idx++;
-		}
-		*/
 		size_t col = 0, row=0;
 		for (std::set<wxString>::iterator idx = var_names.begin(); idx != var_names.end(); ++idx)
 		{
@@ -476,6 +421,19 @@ void MainWindow::CaseVarGrid(std::vector<Case*> &cases)
 			}
 			row++;
 			col = 0;
+		}
+
+		// go through all rows for case comparison and only show unequal values
+		if (cases.size() > 1)
+		{
+			for (row = 0; row < num_rows; row++)
+			{
+				wxString str_val = grid->GetCellValue(row, 2);
+				bool same_val = true;
+				for (col = 3; col < num_cols; col++)
+					same_val = same_val && (str_val == grid->GetCellValue(row, col));
+				if (same_val) grid->HideRow(row);
+			}
 		}
 		//grid->AutoSizeColumns();
 		for (col = 0; col < col_hdrs.Count(); col++)
