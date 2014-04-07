@@ -327,10 +327,9 @@ void MainWindow::OnInternalCommand( wxCommandEvent &evt )
 	case ID_INTERNAL_CASE_VALUES:
 		if (Case *cc = GetCurrentCase())
 		{
-			wxString title = "Current Case Values: " + m_project.GetCaseName(cc);
-			std::vector<VarTable> vt;
-			vt.push_back(cc->Values());
-			VarTableGrid(title, vt);
+			std::vector<Case*> cases;
+			cases.push_back(cc);
+			CaseVarGrid(cases);
 
 			/*
 			wxFrame *frame = new wxFrame(this, wxID_ANY, "Current Case Values: " + m_project.GetCaseName(cc), wxDefaultPosition, wxSize(400, 700));
@@ -381,15 +380,43 @@ void MainWindow::OnInternalCommand( wxCommandEvent &evt )
 	}
 }
 
-void MainWindow::VarTableGrid( wxString &title, std::vector<VarTable> &var_table_vec )
+void MainWindow::CaseVarGrid(std::vector<Case*> &cases)
 {
-	if (var_table_vec.size() > 0)
+	if (cases.size() > 0)
 	{
+		wxArrayString col_hdrs;
+		wxString title;
+		std::vector<VarTable> var_table_vec;
+		std::vector<VarInfoLookup> var_info_lookup_vec;
+		if (cases.size() == 1)
+		{
+			col_hdrs.push_back("Variable");
+			col_hdrs.push_back("Label");
+			wxString case_name = m_project.GetCaseName(cases[0]);
+			col_hdrs.push_back(case_name);
+			title = "Current Case Values: " + case_name;
+			var_table_vec.push_back(cases[0]->Values());
+			var_info_lookup_vec.push_back(cases[0]->Variables());
+		}
+		else
+		{
+			title = "Case comparison";
+			col_hdrs = m_project.GetCaseNames();
+			col_hdrs.Insert("Label", 0);
+			col_hdrs.Insert("Variable", 0);
+			for (std::vector<Case*>::iterator it = cases.begin(); it != cases.end(); ++it)
+			{
+				var_table_vec.push_back((*it)->Values());
+				var_info_lookup_vec.push_back((*it)->Variables());
+			}
+		}
+
 		wxFrame *frame = new wxFrame(this, wxID_ANY, title, wxDefaultPosition, wxSize(400, 700));
 		wxGrid *grid = new wxGrid(frame, wxID_ANY);
 
-		size_t num_cols = var_table_vec.size() + 2;
+		size_t num_cols = col_hdrs.Count();
 
+		// variable names
 		std::set<wxString> var_names;
 
 		for (std::vector<VarTable>::iterator it = var_table_vec.begin(); it != var_table_vec.end(); ++it)
@@ -399,6 +426,21 @@ void MainWindow::VarTableGrid( wxString &title, std::vector<VarTable> &var_table
 				var_names.insert(as[i]);
 		}
 		size_t num_rows = var_names.size();
+
+		// variable labels
+		wxArrayString var_labels;
+
+		for (std::set<wxString>::iterator idx = var_names.begin(); idx != var_names.end(); ++idx)
+		{
+			wxString str_label = " ";
+			for (std::vector<VarInfoLookup>::iterator it = var_info_lookup_vec.begin(); it != var_info_lookup_vec.end(); ++it)
+			{
+				if ((*it).Lookup(*idx)) 
+					str_label = (*it).Label(*idx);
+			}
+			var_labels.push_back(str_label);
+		}
+
 
 
 		grid->CreateGrid(num_rows, num_cols);
@@ -423,19 +465,21 @@ void MainWindow::VarTableGrid( wxString &title, std::vector<VarTable> &var_table
 		for (std::set<wxString>::iterator idx = var_names.begin(); idx != var_names.end(); ++idx)
 		{
 			grid->SetCellValue(row, col++, *idx); //name
-			// todo set label
-			//grid->SetCellValue(row, col++, *idx); //label
+			if (row < var_labels.Count())
+				grid->SetCellValue(row, col++, var_labels[row]); //label
 			for (std::vector<VarTable>::iterator it = var_table_vec.begin(); it != var_table_vec.end(); ++it)
 			{
-				wxString strVal = "";
-				if (it->Get(*idx)) strVal = it->Get(*idx)->AsString();
-				if (strVal.Length() > 1024) strVal = strVal.Left(1024) + "...";
-				grid->SetCellValue(row, col++, strVal);
+				wxString str_val = "";
+				if (it->Get(*idx)) str_val = it->Get(*idx)->AsString();
+				if (str_val.Length() > 1024) str_val = str_val.Left(1024) + "...";
+				grid->SetCellValue(row, col++, str_val);
 			}
 			row++;
 			col = 0;
 		}
-		grid->AutoSizeColumns();
+		//grid->AutoSizeColumns();
+		for (col = 0; col < col_hdrs.Count(); col++)
+			grid->SetColLabelValue(col, col_hdrs[col]);
 		grid->Thaw();
 
 		frame->Show();
@@ -490,21 +534,16 @@ void MainWindow::OnCommand( wxCommandEvent &evt )
 	case ID_CASE_VARIABLE_LIST:
 		if (Case *cc = GetCurrentCase())
 		{
-			wxString title = "Current Case Values: " + m_project.GetCaseName(cc);
-			std::vector<VarTable> vt;
-			vt.push_back(cc->Values());
-			VarTableGrid(title, vt);
+			std::vector<Case*> cases;
+			cases.push_back(cc);
+			CaseVarGrid(cases);
 		}
 		break;
 	case ID_CASE_COMPARE:
 		if (m_project.GetCases().size() > 0)
 		{
-			wxString title = "Case comparison";
-			std::vector<VarTable> vt;
 			std::vector<Case*> cases = m_project.GetCases();
-			for (std::vector<Case*>::iterator it = cases.begin(); it != cases.end(); ++it)
-				vt.push_back((*it)->Values());
-			VarTableGrid(title, vt);
+			CaseVarGrid(cases);
 		}
 		break;
 	case wxID_SAVEAS:
