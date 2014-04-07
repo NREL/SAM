@@ -59,7 +59,7 @@ public:
 
 	Case *GetCurrentCase();
 	CaseWindow *GetCurrentCaseWindow();
-	void VarTableGrid( wxString &title, std::vector<VarTable> &var_table_vec);
+	void CaseVarGrid(std::vector<Case*> &cases);
 
 
 protected:
