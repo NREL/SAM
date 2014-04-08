@@ -9,13 +9,15 @@
 
 class VObject;
 
+enum { NONDIM, LENGTH, TIME, MASS, TEMP, ANGLE };
+
 class VProperty
 {
 public:
 	explicit VProperty();
 	explicit VProperty( VProperty *ref );
-	explicit VProperty( double d );
-	explicit VProperty( int i );
+	explicit VProperty( double d, int dim = NONDIM );
+	explicit VProperty( int i, int dim = NONDIM );
 	explicit VProperty( bool b );
 	explicit VProperty( const wxString &s );
 	explicit VProperty( const wxColour &c );
@@ -23,6 +25,7 @@ public:
 	enum { INVALID, DOUBLE, BOOLEAN, INTEGER, COLOUR, STRING };
 
 	int GetType();
+	int GetDimension();
 
 	void Set( double d );
 	void Set( bool b );
@@ -49,6 +52,7 @@ private:
 	int m_intVal;
 	wxColour m_colour;
 	wxString m_string;
+	int m_dimension;
 };
 
 class VHandle
@@ -136,10 +140,10 @@ private:
 };
 
 
-class VTreeObject : public VObject
+class VConicalTreeObject : public VObject
 {
 public:
-	VTreeObject();
+	VConicalTreeObject();
 	virtual wxString GetTypeName();
 	virtual VObject *Duplicate();
 	virtual void BuildModel( s3d::scene & );
@@ -175,10 +179,10 @@ private:
 };
 
 
-class VPVArray : public VObject
+class VActiveSurfaceObject : public VObject
 {
 public:
-	VPVArray();
+	VActiveSurfaceObject();
 	virtual wxString GetTypeName();
 	virtual VObject *Duplicate();
 	virtual void SetupHandles( VPlaneType plane );
@@ -215,10 +219,10 @@ private:
  */
 };
 
-class VPoleObject : public VObject
+class VCylinderObject : public VObject
 {
 public:
-	VPoleObject();
+	VCylinderObject();
 	virtual wxString GetTypeName();
 	virtual VObject *Duplicate();
 	virtual void BuildModel( s3d::scene & );
@@ -229,33 +233,6 @@ public:
 	virtual bool IsWithin( double x, double y, VPlaneType plane );
 	
 	enum{ HH_MOVE, HH_DIAM, HH_BOTTOM, HH_TOP};
-};
-
-class VHedgeObject : public VObject
-{
-public:
-	VHedgeObject();
-	virtual wxString GetTypeName();
-	virtual VObject *Duplicate();
-	virtual void BuildModel( s3d::scene & );
-	
-	virtual void SetupHandles( VPlaneType plane );
-	virtual bool OnHandleMoved( VHandle *, VPlaneType );
-	virtual void DrawOnPlane( VRenderer2D &dc, VPlaneType plane );	
-	virtual bool IsWithin( double x, double yz, VPlaneType plane );
-
-	// specific to Hedge
-	void RotateCenter( int center);
-	int ReturnRotateCenter(double *xc, double *yc);
-	void ReturnXYPoints( double x[], double y[]);
-	void StoreHandles( );
-	void GetHandles (double x[2], double y[2] );
-
-	enum{HH_LEFT_MOVE, HH_RIGHT_MOVE,HH_DIAM,HH_Z_MOVE, HH_TOP,HH_BOTTOM};
-
-private:
-	int m_rotate;
-	double m_x[2], m_y[2];
 };
 
 class VRoofObject : public VObject
@@ -277,25 +254,6 @@ public:
 };
 
 
-// for testing
-
-class VTriangleObject : public VObject
-{
-public:
-	VTriangleObject();
-	virtual wxString GetTypeName();
-	virtual VObject *Duplicate();
-	virtual void SetupHandles( VPlaneType plane );
-	virtual bool OnHandleMoved( VHandle *, VPlaneType );
-	virtual void BuildModel( s3d::scene & );
-	virtual void DrawOnPlane( VRenderer2D &dc, VPlaneType plane );	
-	virtual bool IsWithin( double x, double y, VPlaneType plane );
-
-	enum { HH_MOVE, HH_TOP, HH_RIGHT, HH_ROTATE_XY, HH_LEFT, HH_BOTTOM };
-
-private:
-
-};
 
 
 

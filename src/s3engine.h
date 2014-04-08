@@ -10,9 +10,9 @@ class point3d
 {
 public:
 	point3d();
-	point3d( float x_, float y_, float z_ );
-	float x, y, z; // original points
-	float _x, _y, _z; // translated points
+	point3d( double x_, double y_, double z_ );
+	double x, y, z; // original points
+	double _x, _y, _z; // translated points
 };
 
 class rgba
@@ -27,8 +27,8 @@ class text3d
 {
 public:
 	text3d();
-	text3d( float x, float y, float z, const std::string &text );
-	text3d( float x, float y, float z, const std::string &text, 
+	text3d( double x, double y, double z, const std::string &text );
+	text3d( double x, double y, double z, const std::string &text, 
 		rgba col, int size, const std::string &face );
 
 	point3d pos;
@@ -150,6 +150,7 @@ static const unsigned int BACK = 0x0008;
 static const unsigned int FRONT = 0x0010;
 static const unsigned int LEFT = 0x0020;
 static const unsigned int ALL_FACES = RIGHT|TOP|BOTTOM|BACK|FRONT|LEFT;
+static const unsigned int SIDES = RIGHT|BACK|FRONT|LEFT;
 
 class scene
 {
@@ -169,6 +170,8 @@ private:
 	double m_view_y;
 	double m_view_z;
 
+	double m_vn[3];
+
 	void cull_backfaces( );
 	void sort_polys();
 public:
@@ -181,7 +184,7 @@ public:
 		
 	void basic_axes_with_ground( int axes_len = 100 );
 
-	void label( float x, float y, float z, const std::string &text, 
+	void label( double x, double y, double z, const std::string &text, 
 		rgba col = rgba(0,0,0), int size=-1, const std::string &face = "" );
 
 	// state based drawing routines
@@ -192,19 +195,19 @@ public:
 	void fill( rgba c );
 	void outline( rgba o );
 	void colors( rgba fill, rgba line );
-	void point( float x, float y, float z );
+	void point( double x, double y, double z );
 	void line( int id=0, int thick=1 );
 	void poly( int id=0 );
-	void conical( int id, float x, float y, float zstart, float height, float r1, float r2, 
-				  float angle_start=0.0, float angle_end = 360.0, bool fill = false, int npoly=18 );
-	void cylinder( int id, float x, float y, float zstart, float height, float r,
-				   float angle_start=0.0, float angle_end = 360.0, float angle_xy = 0.0, int npoly=18 );
+	void conical( int id, double x, double y, double zstart, double height, double r1, double r2, 
+				  double angle_start=0.0, double angle_end = 360.0, int npoly=15 );
+	void cylinder( int id, double x, double y, double zstart, double height, double r,
+				   double angle_start=0.0, double angle_end = 360.0, double angle_xy = 0.0, int npoly=18 );
 		
-	void box( int id, float x, float y, float angle_xy, float xdim, float ydim, 
-			  float zstart, float height, unsigned int faces = ALL_FACES, int rotateCenter=1 );
+	void box( int id, double x, double y, double z, double rot, double xdim, double ydim, double zdim, 
+		unsigned int faces = ALL_FACES );
 	void plane(int id, double x[4], double y[4], double z[4]);
-	void roof( int id, float xc, float yc, float zstart, float width, float length, 
-				 float height, float pitch1, float pitch2, float angle_xy );
+	void roof( int id, double xc, double yc, double zstart, double width, double length, 
+				 double height, double pitch1, double pitch2, double angle_xy );
 
 	// add a new polygon all custom properties
 	void poly( int _id, int _type, rgba _fill, rgba _border, int thick, bool line, const std::vector<point3d> &pts );
@@ -221,6 +224,8 @@ public:
 	// set camera location
 	void set_viewxyz( double &x, double &y, double &z);
 	void get_viewxyz( double *x, double *y, double *z);
+
+	void get_viewnormal( double *x, double *y, double *z );
 
 	// compute shade after scene is built
 	void shade( shade_result &result );
@@ -254,17 +259,10 @@ void rotate2dxz( double xc, double yc, double x[], double y[],  double angle_xy 
 void rotate2dy( double xc, double zc, double x[], double z[],  double angle_xz /*deg*/, int n);
 
 
-void get_rotated_box_points( double xc, double yc,
+void get_rotated_box_points( double x, double y,
 							 double width, double height, 
 							 double angle_xy,  /*deg*/
-							 double x[4], double y[4]);
-void get_rotated_box_points( double xc, double yc,
-							 double width, double height, 
-							 double angle_xy,  /*deg*/
-							 double x[4], double y[4],
-							 int rotateCenter);
-
-
+							 double xr[4], double yr[4]);
 
 
 /* angles in degrees for these functions */
