@@ -78,7 +78,7 @@ public:
 enum { __idFirst = wxID_HIGHEST+592,
 
 	ID_MAIN_MENU, ID_CASE_TABS, ID_CONTEXT_HELP, ID_PAGE_NOTES,
-	ID_CASE_CREATE,
+	ID_CASE_CREATE, ID_RUN_ALL_CASES,
 	__idCaseMenuFirst,
 	ID_CASE_CONFIG,
 	ID_CASE_RENAME,
@@ -110,8 +110,9 @@ BEGIN_EVENT_TABLE( MainWindow, wxFrame )
 	EVT_MENU( wxID_SAVEAS, MainWindow::OnCommand )
 	EVT_MENU( wxID_CLOSE, MainWindow::OnCommand )
 	EVT_MENU( wxID_EXIT, MainWindow::OnCommand )
-	EVT_BUTTON( ID_CASE_CREATE, MainWindow::OnCommand )
-	EVT_BUTTON( ID_MAIN_MENU, MainWindow::OnCommand )
+	EVT_BUTTON(ID_CASE_CREATE, MainWindow::OnCommand)
+	EVT_MENU(ID_RUN_ALL_CASES, MainWindow::OnCommand)
+	EVT_BUTTON(ID_MAIN_MENU, MainWindow::OnCommand)
 	EVT_LISTBOX( ID_CASE_TABS, MainWindow::OnCaseTabChange )
 	EVT_BUTTON( ID_CASE_TABS, MainWindow::OnCaseTabButton )
 	EVT_BUTTON( ID_CONTEXT_HELP, MainWindow::OnCommand )
@@ -191,6 +192,7 @@ MainWindow::MainWindow()
 	entries.push_back( wxAcceleratorEntry( wxACCEL_SHIFT, WXK_F8,  ID_INTERNAL_RESTART ) );
 	entries.push_back( wxAcceleratorEntry( wxACCEL_SHIFT, WXK_F4,  ID_INTERNAL_SHOWLOG ) );
 	entries.push_back(wxAcceleratorEntry(wxACCEL_SHIFT, WXK_F12, ID_INTERNAL_CASE_VALUES));
+	entries.push_back(wxAcceleratorEntry(wxACCEL_SHIFT, WXK_F11, ID_RUN_ALL_CASES));
 	entries.push_back(wxAcceleratorEntry(wxACCEL_SHIFT, WXK_F10, ID_SAVE_CASE_DEFAULTS));
 	entries.push_back(wxAcceleratorEntry(wxACCEL_SHIFT, WXK_F9, ID_INTERNAL_DATAFOLDER));
 	entries.push_back( wxAcceleratorEntry( wxACCEL_CMD, 'o', wxID_OPEN ) );
@@ -407,11 +409,19 @@ void MainWindow::CaseVarGrid(std::vector<Case*> &cases)
 		grid->Freeze();
 		// wxGrid only support 6500 characters per cell (empirically determined) - use 1024 for display
 		size_t col = 0, row=0;
+		int width, height;
+		std::vector<int> col_width(num_cols, 60);
 		for (std::set<wxString>::iterator idx = var_names.begin(); idx != var_names.end(); ++idx)
 		{
+			GetTextExtent(*idx, &width, &height);
+			if ((width + 10) > col_width[col]) col_width[col] = width + 10;
 			grid->SetCellValue(row, col++, *idx); //name
 			if (row < var_labels.Count())
+			{
+				GetTextExtent(var_labels[row], &width, &height);
+				if ((width + 10) > col_width[col]) col_width[col] = width + 10;
 				grid->SetCellValue(row, col++, var_labels[row]); //label
+			}
 			for (std::vector<VarTable>::iterator it = var_table_vec.begin(); it != var_table_vec.end(); ++it)
 			{
 				wxString str_val = "";
@@ -436,8 +446,14 @@ void MainWindow::CaseVarGrid(std::vector<Case*> &cases)
 			}
 		}
 		//grid->AutoSizeColumns();
+		// column headers
 		for (col = 0; col < col_hdrs.Count(); col++)
+		{
 			grid->SetColLabelValue(col, col_hdrs[col]);
+			GetTextExtent(col_hdrs[col], &width, &height);
+			if ((width + 10) > col_width[col]) col_width[col] = width + 10;
+			grid->SetColumnWidth(col, col_width[col]);
+		}
 		grid->Thaw();
 
 		frame->Show();
@@ -460,6 +476,17 @@ void MainWindow::OnCommand( wxCommandEvent &evt )
 		break;
 	case ID_CASE_CREATE:
 		CreateNewCase();
+		break;
+	case ID_RUN_ALL_CASES:
+		if (m_project.GetCases().size() > 0)
+		{
+			std::vector<Case*> cases = m_project.GetCases();
+			for (std::vector<Case*>::iterator it = cases.begin(); it != cases.end(); ++it)
+			{
+				CaseWindow *cw = GetCaseWindow(*it);
+				if ( cw ) cw->RunBaseCase();
+			}
+		}
 		break;
 	case ID_MAIN_MENU:
 		{
