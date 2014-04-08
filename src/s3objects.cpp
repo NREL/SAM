@@ -20,11 +20,12 @@ VProperty::VProperty( VProperty *ref )
 	m_pReference = ref;
 }
 
-VProperty::VProperty( double dp )
+VProperty::VProperty( double dp, int dim )
 {
 	Init();
 	m_type = DOUBLE;
 	m_doubleVal = dp;
+	m_dimension = dim;
 }
 
 VProperty::VProperty( bool bp )
@@ -34,11 +35,12 @@ VProperty::VProperty( bool bp )
 	m_boolVal = bp;
 }
 
-VProperty::VProperty( int ip )
+VProperty::VProperty( int ip, int dim )
 {
 	Init();
 	m_type = INTEGER;
 	m_intVal = ip;
+	m_dimension = dim;
 }
 
 VProperty::VProperty( const wxColour &cp )
@@ -180,11 +182,17 @@ bool VProperty::Read( wxInputStream &_i )
 
 void VProperty::Init()
 {
+	m_dimension = NONDIM;
 	m_type = INVALID;
 	m_pReference = 0;
 	m_doubleVal = 0.0;
 	m_intVal = 0;
 	m_boolVal = false;
+}
+
+int VProperty::GetDimension()
+{
+	return m_dimension;
 }
 
 static int gs_idCounter = 0;
@@ -410,29 +418,29 @@ void VHandle::MoveTo( double x, double yz )
 }
 
 
-VTreeObject::VTreeObject()
+VConicalTreeObject::VConicalTreeObject()
 {
-	AddProperty( "X", new VProperty( 0.0 ) );
-	AddProperty( "Y", new VProperty( 0.0 ) );
-	AddProperty( "Diameter", new VProperty( 20.0 ) );
-	AddProperty( "Top Diameter", new VProperty( 5.0) );
-	AddProperty( "Overall Height", new VProperty( 50.0 ) );
-	AddProperty( "Trunk Height", new VProperty( 10.0 ) );
+	AddProperty( "X", new VProperty( 0.0, LENGTH ) );
+	AddProperty( "Y", new VProperty( 0.0, LENGTH ) );
+	AddProperty( "Diameter", new VProperty( 20.0, LENGTH ) );
+	AddProperty( "Top Diameter", new VProperty( 5.0, LENGTH ) );
+	AddProperty( "Overall Height", new VProperty( 50.0, LENGTH ) );
+	AddProperty( "Trunk Height", new VProperty( 10.0, LENGTH ) );
 }
 
-wxString VTreeObject::GetTypeName()
+wxString VConicalTreeObject::GetTypeName()
 {
-	return "Tree";
+	return "Tree (Conical)";
 }
 
-VObject *VTreeObject::Duplicate()
+VObject *VConicalTreeObject::Duplicate()
 {
-	VTreeObject *tree = new VTreeObject;
+	VConicalTreeObject *tree = new VConicalTreeObject;
 	tree->Copy( this );
 	return tree;
 }
 
-void VTreeObject::BuildModel( s3d::scene &sc )
+void VConicalTreeObject::BuildModel( s3d::scene &sc )
 {
 	double x = Property("X").GetDouble();
 	double y = Property("Y").GetDouble();
@@ -448,7 +456,7 @@ void VTreeObject::BuildModel( s3d::scene &sc )
 	sc.conical( GetId(), x, y, trunk, height-trunk, diam/2, topDiam/2 );
 }
 
-void VTreeObject::SetupHandles( VPlaneType plane )
+void VConicalTreeObject::SetupHandles( VPlaneType plane )
 {	
 	double xc = Property("X").GetDouble();
 	double diam = Property("Diameter").GetDouble();
@@ -475,7 +483,7 @@ void VTreeObject::SetupHandles( VPlaneType plane )
 	}
 }
 
-bool VTreeObject::OnHandleMoved( VHandle *h, VPlaneType plane )
+bool VConicalTreeObject::OnHandleMoved( VHandle *h, VPlaneType plane )
 {
 	int id = h->GetId();
 	if ( id == HH_MOVE )
@@ -517,7 +525,7 @@ bool VTreeObject::OnHandleMoved( VHandle *h, VPlaneType plane )
 	return false;
 }
 
-void VTreeObject::GetXZPoints( double x[m_nPoints], double z[m_nPoints] )
+void VConicalTreeObject::GetXZPoints( double x[m_nPoints], double z[m_nPoints] )
 {
 	double xc = Property("X").GetDouble();
 	double diam = Property("Diameter").GetDouble();
@@ -567,7 +575,7 @@ void VTreeObject::GetXZPoints( double x[m_nPoints], double z[m_nPoints] )
 	z[8] = height;
 }
 
-void VTreeObject::DrawOnPlane( VRenderer2D &dc, VPlaneType plane )
+void VConicalTreeObject::DrawOnPlane( VRenderer2D &dc, VPlaneType plane )
 {
 
 	if ( plane == PLANE_XY )
@@ -588,7 +596,7 @@ void VTreeObject::DrawOnPlane( VRenderer2D &dc, VPlaneType plane )
 	}
 }
 
-bool VTreeObject::IsWithin( double x, double y, VPlaneType plane )
+bool VConicalTreeObject::IsWithin( double x, double y, VPlaneType plane )
 {
 	if ( plane == PLANE_XY )
 	{
@@ -609,14 +617,15 @@ bool VTreeObject::IsWithin( double x, double y, VPlaneType plane )
 
 VBoxObject::VBoxObject()
 {
-	AddProperty( "Center X", new VProperty(0.0) );
-	AddProperty( "Center Y", new VProperty(0.0) );
-	AddProperty( "Center Z", new VProperty(2.5) );
-	AddProperty( "Width", new VProperty(10.0) );
-	AddProperty( "Height", new VProperty(5.0) );
-	AddProperty( "Depth", new VProperty(5.0) );
-	AddProperty( "Angle XY", new VProperty(0.0 ) );
+	AddProperty( "X", new VProperty(0.0, LENGTH) );
+	AddProperty( "Y", new VProperty(0.0, LENGTH) );
+	AddProperty( "Z", new VProperty(0.0, LENGTH) );
+	AddProperty( "Width", new VProperty(15.0, LENGTH) );
+	AddProperty( "Length", new VProperty(15.0, LENGTH) );
+	AddProperty( "Height", new VProperty(15.0, LENGTH) );
+	AddProperty( "Rotation", new VProperty(0.0 ) );
 	AddProperty( "Color", new VProperty( wxColour(155,0,0,144) ) );
+	AddProperty( "Capped", new VProperty( true ) );
 }
 
 wxString VBoxObject::GetTypeName()
@@ -633,13 +642,14 @@ VObject *VBoxObject::Duplicate()
 
 void VBoxObject::BuildModel( s3d::scene &sc )
 {
-	double xc = Property("Center X").GetDouble();
-	double yc = Property("Center Y").GetDouble();
-	double zc = Property("Center Z").GetDouble();
+	double x = Property("X").GetDouble();
+	double y = Property("Y").GetDouble();
+	double z = Property("Z").GetDouble();
 	double w = Property("Width").GetDouble();
+	double l = Property("Length").GetDouble();
 	double h = Property("Height").GetDouble();
-	double d = Property("Depth").GetDouble();
-	double angle_xy = Property("Angle XY").GetDouble();
+	double r = Property("Rotation").GetDouble();
+	bool cap = Property("Capped").GetBoolean();
 	
 	wxColour cc = Property("Color").GetColour();
 	s3d::rgba scc1( cc.Red(), cc.Green(), cc.Blue(), cc.Alpha() );
@@ -647,224 +657,209 @@ void VBoxObject::BuildModel( s3d::scene &sc )
 	sc.reset();
 	sc.colors( scc1, scc2 );
 	sc.type( s3d::scene::OBSTRUCTION );
-	sc.box( GetId(), xc, yc, angle_xy, w, h, zc-d/2, d );
+
+	sc.box( GetId(), x, y, z, r, w, l, h, cap ? s3d::ALL_FACES : s3d::SIDES );
 
 }
 
 void VBoxObject::SetupHandles( VPlaneType plane )
 {
-
-	double xc = Property("Center X").GetDouble();
-	double yc = Property("Center Y").GetDouble();
-	double zc = Property("Center Z").GetDouble();
+	
+	double x = Property("X").GetDouble();
+	double y = Property("Y").GetDouble();
+	double z = Property("Z").GetDouble();
 	double w = Property("Width").GetDouble();
+	double l = Property("Length").GetDouble();
 	double h = Property("Height").GetDouble();
-	double d = Property("Depth").GetDouble();
-	double angle_xy = Property("Angle XY").GetDouble();
+	double r = Property("Rotation").GetDouble();
 
-	double x[5], y[5];
-	x[0] = xc + w/2; y[0] = yc;    //HH_RIGHT
-	x[1] = xc; y[1] = yc+h/2;      // HH_TOP
-	x[2] = xc+w/4; y[2] = yc;      // HH_ROTATE_XY
-	x[3] = xc - w/2; y[3] = yc;    //HH_LEFT
-	x[4] = xc ; y[4] = yc - h/2;   // HH_BOTTOM
-	s3d::rotate2dxz(xc,yc,x,y,angle_xy,5);
+	double xx[5], yy[5];
+	xx[0] = x + w;        yy[0] = y+l/2;    //HH_RIGHT
+	xx[1] = x + w/2;      yy[1] = y+l;      // HH_TOP
+	xx[2] = x + 3*w/4;    yy[2] = y;      // HH_ROTATE_XY
+	xx[3] = x ;           yy[3] = y+l/2;    //HH_LEFT
+	xx[4] = x + w/2;      yy[4] = y;   // HH_BOTTOM
+	s3d::rotate2dxz(x,y,xx,yy,r,5);
 
 	if ( plane == PLANE_XY )
 	{
-		AddHandle( HH_MOVE, xc, yc );
-		AddHandle( HH_RIGHT,x[0], y[0], wxCURSOR_SIZEWE );
-		AddHandle( HH_TOP, x[1], y[1], wxCURSOR_SIZENS );
-		AddHandle( HH_ROTATE_XY, x[2], y[2], wxCURSOR_BULLSEYE );
-		AddHandle( HH_LEFT, x[3], y[3], wxCURSOR_SIZEWE );
-		AddHandle( HH_BOTTOM, x[4], y[4], wxCURSOR_SIZENS );
+		AddHandle( HH_MOVE, x, y );
+		AddHandle( HH_RIGHT,xx[0], yy[0], wxCURSOR_SIZEWE );
+		AddHandle( HH_TOP, xx[1], yy[1], wxCURSOR_SIZENS );
+		AddHandle( HH_ROTATE_XY, xx[2], yy[2], wxCURSOR_BULLSEYE );
+		AddHandle( HH_LEFT, xx[3], yy[3], wxCURSOR_SIZEWE );
+		AddHandle( HH_BOTTOM, xx[4], yy[4], wxCURSOR_SIZENS );
 
 	}
 	else if ( plane == PLANE_XZ )
 	{
-		AddHandle( HH_MOVE, xc, zc );
-		AddHandle( HH_TOP, xc, zc + d/2, wxCURSOR_SIZENS );
-		AddHandle( HH_BOTTOM, xc, zc - d/2, wxCURSOR_SIZENS);
+		AddHandle( HH_MOVE, x, z );
+		AddHandle( HH_TOP, x + w/2, z + h, wxCURSOR_SIZENS );
+		AddHandle( HH_BOTTOM, x + w/2, z, wxCURSOR_SIZENS);
 	}
 }
 
-bool VBoxObject::OnHandleMoved( VHandle *h, VPlaneType plane )
+double GetLength( double bx, double by, double bw, double bh, double br, 
+	double x, double y, int mode, double *xshifted = 0, double *yshifted = 0 )
+{
+	double xx00 = bw;
+	double yy00 = 0;
+	if ( mode == 2 )
+	{
+		xx00 = 0;
+		yy00 = bh;
+	}
+
+	double r = br*M_PI/180.0;
+	double xx0 = xx00*cos(r)-yy00*sin(r);
+	double yy0 = xx00*sin(r)+yy00*cos(r);
+
+	double xx1 = x - bx;
+	double yy1 = y - by;
+
+	double scale = (xx1*xx0 + yy1*yy0)/(xx0*xx0 + yy0*yy0);
+	double projx = scale*xx0;
+	double projy = scale*yy0;
+	double len = sqrt(projx*projx + projy*projy);
+	if ( len < 0.1 ) len = 0.1;
+
+	if ( xshifted ) *xshifted = x-len*cos(r);
+	if ( yshifted ) *yshifted = y-len*sin(r);
+
+	return len;
+}
+
+bool VBoxObject::OnHandleMoved( VHandle *hh, VPlaneType plane )
 {
 	// extract previous properties
-	double xc = Property("Center X").GetDouble();
-	double yc = Property("Center Y").GetDouble();
-	double zc = Property("Center Z").GetDouble();
-	double angle_xy = Property("Angle XY").GetDouble();
-	double width = Property("Width").GetDouble();
-	double height = Property("Height").GetDouble();
-	double depth = Property("Depth").GetDouble();
+	double bx = Property("X").GetDouble();
+	double by = Property("Y").GetDouble();
+	double bz = Property("Z").GetDouble();
+	double bw = Property("Width").GetDouble();
+	double bl = Property("Length").GetDouble();
+	double bh = Property("Height").GetDouble();
+	double br = Property("Rotation").GetDouble();
 
-	// get current properties
-	int id = h->GetId();
-	double x = h->GetX();
-	double yz = h->GetYZ();
-	double dx = x - xc;
-	double dy = yz - yc;
-	double dz = yz - zc;
+	int id = hh->GetId();
+	double x = hh->GetX();
+	double y = hh->GetYZ();
+	double z = hh->GetYZ();
+
 
 	if ( id == HH_MOVE )
 	{
-		Property("Center X").Set( x );
-		if ( plane == PLANE_XY ) Property("Center Y").Set( yz);
-		else Property("Center Z").Set(yz );
+		Property("X").Set( x );
+		if ( plane == PLANE_XY ) Property("Y").Set( y );
+		else Property("Z").Set( z );
 		return true;
 	}
 	else if ( id == HH_RIGHT) 
 	{
-		// compute new center and width
-		double d = sqrt(dx*dx + dy*dy);
-		double dw = d - width/2;
-		double wP = width + dw;
-		double xcP = xc + (dw*cos(angle_xy*M_PI/180)/2);
-		double ycP = yc + (dw*sin(angle_xy*M_PI/180)/2);
-
-		// update properties
-		Property("Width").Set(wP);
-		Property("Center X").Set(xcP);
-		Property("Center Y").Set(ycP);
-
+		Property("Width").Set( GetLength( bx, by, bw, bh, br, x, y, 1 ) );
 		return true;
 	}
 	else if ( id == HH_TOP )
 	{
 		// compute new center and height/depth
-		if ( plane == PLANE_XY ) 
-		{
-			double d = sqrt(dx*dx + dy*dy);
-			double dh = d - height/2;
-			double hP = height + dh;
-			double alpha = (angle_xy+90)*(M_PI/180);
-			double xcP = xc + 0.5*dh*cos(alpha);
-			double ycP = yc + 0.5*dh*sin(alpha);
-
-			Property("Height").Set(hP);
-			Property("Center X").Set(xcP);
-			Property("Center Y").Set(ycP);
-		}
+		if ( plane == PLANE_XY )
+			Property("Length").Set( GetLength( bx, by, bw, bh, br, x, y, 2 ) );
 		else
-		{
-			double dd = fabs(dz) - depth/2;
-			double dP = depth + dd;
-			double zcP = zc + 0.5*dd;
-
-			Property("Depth").Set(dP);
-			Property("Center Z").Set(zcP);
-		}
+			Property("Height").Set( z - bz );
 
 		return true;
 	}
-	else if ( id == HH_ROTATE_XY ) 
-	{
-		double angle_xy = (180/M_PI)*atan2(yz-yc,x-xc);
-		Property("Angle XY").Set(angle_xy /*deg*/);
-	}
-
+	/*
 	else if ( id == HH_LEFT) 
 	{
-		// compute new center and width
-		double d = sqrt(dx*dx + dy*dy);
-		double dw = d - width/2;
-		double wP = width + dw;
-		double xcP = xc - (dw*cos(angle_xy*M_PI/180)/2);
-		double ycP = yc - (dw*sin(angle_xy*M_PI/180)/2);
-
-		// update properties
-		Property("Width").Set(wP);
-		Property("Center X").Set(xcP);
-		Property("Center Y").Set(ycP);
+		double xsh = x, ysh = y;
+		double len = GetLength( bx, by, bw, bh, br, x, y, 1, &xsh, &ysh );		
+		Property("X").Set(xsh);
+		Property("Y").Set(ysh);
+		Property("Width").Set(len);
 
 		return true;
-	}
+	}*/
+	/*
 	else if ( id == HH_BOTTOM )
 	{
 		// compute new center and height/depth
 		if ( plane == PLANE_XY ) 
 		{
-			double d = sqrt(dx*dx + dy*dy);
-			double dh = d - height/2;
-			double hP = height + dh;
-			double alpha = (angle_xy+90)*(M_PI/180);
-			double xcP = xc - 0.5*dh*cos(alpha);
-			double ycP = yc - 0.5*dh*sin(alpha);
+			double d = dxy;
+			double dh = d - l/2;
+			double hP = l + dh;
 
-			Property("Height").Set(hP);
-			Property("Center X").Set(xcP);
-			Property("Center Y").Set(ycP);
+			Property("Y").Set(y-dh);
+			Property("Length").Set(hP);
 		}
 		else
 		{
-			double dd = fabs(dz) - depth/2;
-			double dP = depth + dd;
-			double zcP = zc - 0.5*dd;
-
-			Property("Depth").Set(dP);
-			Property("Center Z").Set(zcP);
+			double dd = fabs(dz) - h/2;
+			double dP = h + dd;
+			Property("Z").Set(z-dd);
+			Property("Height").Set(dP);
 		}
 
 		return true;
 	}
+	*/
+	else if ( id == HH_ROTATE_XY ) 
+	{
+		double r = (180.0/M_PI)*atan2( hh->GetYZ()-by, hh->GetX()-bx );
+		Property("Rotation").Set( r /*deg*/);
+	}
+	
 	return false;
 }
 
 void VBoxObject::DrawOnPlane( VRenderer2D &dc, VPlaneType plane )
 {
-	double xc = Property("Center X").GetDouble();
-	double width = Property("Width").GetDouble();
-	double yc = Property("Center Y").GetDouble();
-	double height = Property("Height").GetDouble();
-	double angle_xy = Property("Angle XY").GetDouble();
+	double x = Property("X").GetDouble();
+	double y = Property("Y").GetDouble();
+	double z = Property("Z").GetDouble();
+	double w = Property("Width").GetDouble();
+	double l = Property("Length").GetDouble();
+	double h = Property("Height").GetDouble();
+	double r = Property("Rotation").GetDouble();
 
 	if ( plane == PLANE_XY )
 	{
-		double x[4], y[4];
-		s3d::get_rotated_box_points( xc, yc, width, height, angle_xy,x, y);
-		dc.Poly(x,y,4);
+		double xx[4], yy[4];
+		s3d::get_rotated_box_points( x, y, w, l, r, xx, yy);
+		dc.Poly(xx,yy,4);
 	}
 	else if ( plane == PLANE_XZ )
 	{
-
-		double zc = Property("Center Z").GetDouble();
-		double depth = Property("Depth").GetDouble();
-		double minDim = std::min(width,height);
-		double maxDim = std::max(width,height);
+		double minDim = std::min(w,l);
+		double maxDim = std::max(w,l);
 		double dDim = maxDim-minDim;
-		double xDim = minDim + fabs(cos(angle_xy*M_PI/180))*dDim;
+		double xDim = minDim + fabs(cos(r*M_PI/180))*dDim;
 
-		dc.Rect(xc-xDim/2, zc-depth/2,xDim,depth);
+		dc.Rect(x, z,xDim, h);
 	}
 }
 
-bool VBoxObject::IsWithin( double x, double yz, VPlaneType plane )
+bool VBoxObject::IsWithin( double px, double pyz, VPlaneType plane )
 {
-	double xc = Property("Center X").GetDouble();
+	double x = Property("X").GetDouble();
+	double y = Property("Y").GetDouble();
+	double z = Property("Z").GetDouble();
 	double w = Property("Width").GetDouble();
+	double l = Property("Length").GetDouble();
+	double h = Property("Height").GetDouble();
+	double r = Property("Rotation").GetDouble();
 
 	if ( plane == PLANE_XY )
 	{
-		double xx[4]; double yy[4];
-		double yc = Property("Center Y").GetDouble();
-		double h = Property("Height").GetDouble();
-		double angle_xy = Property("Angle XY").GetDouble();
-
-		s3d::get_rotated_box_points( xc, yc,w, h,angle_xy, xx,yy );
-		return s3d::inpoly( xx, yy, 4, x, yz );
+		double xx[4], yy[4];
+		s3d::get_rotated_box_points( x, y, w, l, r, xx, yy);
+		return s3d::inpoly( xx, yy, 4, px, pyz );
 
 	}
 	else if ( plane == PLANE_XZ )
 	{
-		double zc = Property("Center Z").GetDouble();
-		double d = Property("Depth").GetDouble();
-
-		double xx = xc-w/2;
-		double zz = zc-d/2;
-
-		return ( x >= xx && x <= xx+w
-			&& yz >= zz && yz <= zz+d );
+		return ( px >= x && px <= x+w
+			&& pyz >= z && pyz <= z+h );
 	}
 
 	return false;
@@ -872,30 +867,30 @@ bool VBoxObject::IsWithin( double x, double yz, VPlaneType plane )
 
 
 
-VPVArray::VPVArray()
+VActiveSurfaceObject::VActiveSurfaceObject()
 {
-	AddProperty( "X", new VProperty(0.0 ) );
-	AddProperty( "Y", new VProperty(0.0 ) );
-	AddProperty( "Z", new VProperty(0.0 ) );
-	AddProperty( "Width", new VProperty( 5.0 ) );
-	AddProperty( "Height", new VProperty( 10.0 ) );
+	AddProperty( "X", new VProperty(0.0, LENGTH ) );
+	AddProperty( "Y", new VProperty(0.0, LENGTH ) );
+	AddProperty( "Z", new VProperty(0.0, LENGTH ) );
+	AddProperty( "Width", new VProperty( 5.0, LENGTH ) );
+	AddProperty( "Height", new VProperty( 10.0, LENGTH ) );
 	AddProperty( "Azimuth", new VProperty(180.0 ) );
 	AddProperty( "Tilt", new VProperty(30.0) );
 }
 
-wxString VPVArray::GetTypeName()
+wxString VActiveSurfaceObject::GetTypeName()
 {
 	return "PVArray";
 }
 
-VObject *VPVArray::Duplicate()
+VObject *VActiveSurfaceObject::Duplicate()
 {
-	VPVArray *p = new VPVArray;
+	VActiveSurfaceObject *p = new VActiveSurfaceObject;
 	p->Copy( this );
 	return p;
 }
 
-void VPVArray::SetupHandles( VPlaneType plane )
+void VActiveSurfaceObject::SetupHandles( VPlaneType plane )
 {
 	double xc = Property("X").GetDouble();
 	double yc = Property("Y").GetDouble();
@@ -934,7 +929,7 @@ void VPVArray::SetupHandles( VPlaneType plane )
 	}
 }
 
-bool VPVArray::OnHandleMoved( VHandle *h, VPlaneType plane )
+bool VActiveSurfaceObject::OnHandleMoved( VHandle *h, VPlaneType plane )
 {
 	// extract previous properties
 	double width = Property("Width").GetDouble();
@@ -991,7 +986,7 @@ bool VPVArray::OnHandleMoved( VHandle *h, VPlaneType plane )
 	return false;
 }
 
-void VPVArray::BuildModel( s3d::scene &sc )
+void VActiveSurfaceObject::BuildModel( s3d::scene &sc )
 {
 	double x = Property("X").GetDouble();
 	double y = Property("Y").GetDouble();
@@ -1015,7 +1010,7 @@ void VPVArray::BuildModel( s3d::scene &sc )
 	sc.poly( GetId() );
 }
 
-void VPVArray::DrawOnPlane( VRenderer2D &dc, VPlaneType plane )
+void VActiveSurfaceObject::DrawOnPlane( VRenderer2D &dc, VPlaneType plane )
 {
 
 	double w = Property("Width").GetDouble();
@@ -1035,7 +1030,7 @@ void VPVArray::DrawOnPlane( VRenderer2D &dc, VPlaneType plane )
 
 }
 
-bool VPVArray::IsWithin( double xt, double yt, VPlaneType plane )
+bool VActiveSurfaceObject::IsWithin( double xt, double yt, VPlaneType plane )
 {
 	double w = Property("Width").GetDouble();
 	double h = Property("Height").GetDouble();
@@ -1054,7 +1049,7 @@ bool VPVArray::IsWithin( double xt, double yt, VPlaneType plane )
 
 }
 
-void VPVArray::TiltAndAzimuth(double n_points, double tilt,double azimuth,
+void VActiveSurfaceObject::TiltAndAzimuth(double n_points, double tilt,double azimuth,
 							  double xc, double yc, double zc, double length, 
 							  double x[], double y[],double z[])
 {
@@ -1072,7 +1067,7 @@ void VPVArray::TiltAndAzimuth(double n_points, double tilt,double azimuth,
 	
 }
 
-void VPVArray::SetVertices(double x[4], double y[4], double z[4])
+void VActiveSurfaceObject::SetVertices(double x[4], double y[4], double z[4])
 {
 	for (int i = 0; i < 4; i++) 
 	{
@@ -1082,7 +1077,7 @@ void VPVArray::SetVertices(double x[4], double y[4], double z[4])
 	}
 }
 
-void VPVArray::GetVertices(double x[4], double y[4], double z[4])
+void VActiveSurfaceObject::GetVertices(double x[4], double y[4], double z[4])
 {
 	for (int i = 0; i < 4; i++) 
 	{
@@ -1092,7 +1087,7 @@ void VPVArray::GetVertices(double x[4], double y[4], double z[4])
 	}
 }
 
-void VPVArray::GetDistances(int face, double distances[4])
+void VActiveSurfaceObject::GetDistances(int face, double distances[4])
 {
 	int high = face+1; int low = face;
 	if (high > 3) high = 0;
@@ -1103,7 +1098,7 @@ void VPVArray::GetDistances(int face, double distances[4])
 	distances[3] = sqrt(distances[0]*distances[0] + distances[1]*distances[1] + distances[2]*distances[2]);
 }
 
-void VPVArray::UnitVectorNormal(int face, double unit_vector[3])
+void VActiveSurfaceObject::UnitVectorNormal(int face, double unit_vector[3])
 {
 	double distances[4];
 
@@ -1115,7 +1110,7 @@ void VPVArray::UnitVectorNormal(int face, double unit_vector[3])
 	// compute unit vector
 	for (int i = 0; i < 3; i++) unit_vector[i] = distances[i]/distances[3];
 }
-void VPVArray::UpdateOnMove( VHandle *h, VPlaneType plane )
+void VActiveSurfaceObject::UpdateOnMove( VHandle *h, VPlaneType plane )
 {
 	double xc = Property("X").GetDouble();
 	double yc = Property("Y").GetDouble();
@@ -1172,7 +1167,7 @@ void VPVArray::UpdateOnMove( VHandle *h, VPlaneType plane )
 	h->SetOriginalPos(x,yz);
 
 }
-double VPVArray::UpdateOnStretch(int face, double length, VHandle *h )
+double VActiveSurfaceObject::UpdateOnStretch(int face, double length, VHandle *h )
 {
 	double xc = Property("X").GetDouble();
 	double yc = Property("Y").GetDouble();
@@ -1224,28 +1219,28 @@ double VPVArray::UpdateOnStretch(int face, double length, VHandle *h )
 
 }
 
-VPoleObject::VPoleObject()
+VCylinderObject::VCylinderObject()
 {
-	AddProperty( "X", new VProperty(0.0 ) );
-	AddProperty( "Y", new VProperty(0.0 ) );
-	AddProperty( "Z", new VProperty(5.0 ) );
-	AddProperty( "Diameter", new VProperty(2.5 ) );
-	AddProperty( "Height", new VProperty(10.0 ) );
+	AddProperty( "X", new VProperty(0.0, LENGTH ) );
+	AddProperty( "Y", new VProperty(0.0 , LENGTH) );
+	AddProperty( "Z", new VProperty(5.0, LENGTH ) );
+	AddProperty( "Diameter", new VProperty(2.5, LENGTH ) );
+	AddProperty( "Height", new VProperty(10.0, LENGTH ) );
 }
 
-wxString VPoleObject::GetTypeName()
+wxString VCylinderObject::GetTypeName()
 {
-	return "Pole";
+	return "Cylinder";
 }
 
-VObject *VPoleObject::Duplicate()
+VObject *VCylinderObject::Duplicate()
 {
-	VPoleObject *p = new VPoleObject;
+	VCylinderObject *p = new VCylinderObject;
 	p->Copy( this );
 	return p;
 }
 
-void VPoleObject::BuildModel( s3d::scene &sc )
+void VCylinderObject::BuildModel( s3d::scene &sc )
 {
 	double x = Property("X").GetDouble();
 	double y = Property("Y").GetDouble();
@@ -1258,7 +1253,7 @@ void VPoleObject::BuildModel( s3d::scene &sc )
 	sc.conical( GetId(), x, y, z-height/2, height, diam/2, diam/2 );
 }
 
-void VPoleObject::SetupHandles( VPlaneType plane )
+void VCylinderObject::SetupHandles( VPlaneType plane )
 {
 	double x = Property("X").GetDouble();
 	double diam = Property("Diameter").GetDouble();
@@ -1282,7 +1277,7 @@ void VPoleObject::SetupHandles( VPlaneType plane )
 	}
 }
 
-bool VPoleObject::OnHandleMoved(VHandle *h, VPlaneType plane )
+bool VCylinderObject::OnHandleMoved(VHandle *h, VPlaneType plane )
 {
 	int id = h->GetId();
 	double xc = Property("X").GetDouble();
@@ -1329,7 +1324,7 @@ bool VPoleObject::OnHandleMoved(VHandle *h, VPlaneType plane )
 	return true;
 }
 
-void VPoleObject::DrawOnPlane( VRenderer2D &dc, VPlaneType plane )
+void VCylinderObject::DrawOnPlane( VRenderer2D &dc, VPlaneType plane )
 {
 	double xc = Property("X").GetDouble();
 	double diam = Property("Diameter").GetDouble();
@@ -1347,7 +1342,7 @@ void VPoleObject::DrawOnPlane( VRenderer2D &dc, VPlaneType plane )
 	}
 }
 
-bool VPoleObject::IsWithin( double x, double yz, VPlaneType plane )
+bool VCylinderObject::IsWithin( double x, double yz, VPlaneType plane )
 {
 	double xc = Property("X").GetDouble();
 	double diam = Property("Diameter").GetDouble();
@@ -1368,442 +1363,16 @@ bool VPoleObject::IsWithin( double x, double yz, VPlaneType plane )
 }
 
 /* *******************************************************************************************************
-VHedgeObject
-******************************************************************************************************** */
-VHedgeObject::VHedgeObject()
-{
-
-	double xc = 0.0;
-	double yc = 0.0;
-	double width = 10.0;
-	double length = 5.0;
-	double angle_xy = 45.;
-
-	// initalize left, right handles
-	double xx[2], yy[2];
-	xx[0] = xc - width/2; yy[0] = yc; // left
-	xx[1] = xc + width/2; yy[1] = yc; // right
-	s3d::rotate2dxz(xc, yc, xx, yy, angle_xy, 2);
-
-	RotateCenter(1); // initially rotate about center
-
-	AddProperty( "Bottom Z", new VProperty(0.0 ) );
-	AddProperty( "Width", new VProperty( width ) );
-	AddProperty( "Length", new VProperty( length ) );
-	AddProperty( "Depth", new VProperty(5.0 ) );
-	AddProperty("Left X", new VProperty(xx[0]) );
-	AddProperty("Left Y", new VProperty(yy[0]) );
-	AddProperty("Right X", new VProperty(xx[1]) );
-	AddProperty("Right Y", new VProperty(yy[1]) );
-	AddProperty( "Angle XY", new VProperty( angle_xy ) );
-	
-	// Store
-	StoreHandles();
-
-}
-
-wxString VHedgeObject::GetTypeName()
-{
-	return "Hedge";
-}
-
-VObject* VHedgeObject::Duplicate()
-{
-	VHedgeObject *p = new VHedgeObject;
-	p->Copy( this );
-	return p;
-}
-
-void VHedgeObject::BuildModel( s3d::scene & sc)
-{
-	double zb = Property("Bottom Z").GetDouble();
-	double length = Property("Length").GetDouble();
-	double width = Property("Width").GetDouble();
-	double depth = Property("Depth").GetDouble();
-	double angle_xy = Property("Angle XY").GetDouble();
-	double xleft = Property("Left X").GetDouble();
-	double yleft = Property("Left Y").GetDouble();
-	double xright = Property("Right X").GetDouble();
-	double yright = Property("Right Y").GetDouble();
-
-	// catch for if user manually enters width
-	double distance = sqrt( pow(xright-xleft, 2) + pow(yright - yleft, 2) );
-	double dw = width - distance;
-	double angle_check = atan2( yright - yleft, xright - xleft)*180/M_PI;
-	if ( (fabs(dw) > 0.01) && (fabs(angle_check - angle_xy) < 0.01) )
-	{
-		RotateCenter(0);
-
-		double e_x = (xright - xleft)/distance;
-		double e_y = (yright - yleft)/distance;
-
-		xright += e_x*dw;
-		yright += e_y*dw;
-
-		Property("Right X").Set(xright);
-		Property("Right Y").Set(yright);
-	}
-	// catch for if user manually inputs positions or angle
-	else if (fabs(angle_check-angle_xy) > 0.01)
-	{	
-		double x_old[2], y_old[2];
-		GetHandles(x_old, y_old);
-
-		// changed Left X or Left Y
-		if ( (fabs(x_old[0] - xleft) > 0.01) || (fabs(y_old[0] - yleft) > 0.01) )
-		{
-			// set rotate center as HH_RIGHT_MOVE
-			RotateCenter(2);
-
-			// update width
-			width = sqrt( pow(xleft-xright,2) + pow(yleft-yright,2) );
-			Property("Width").Set(width);
-
-			// update angle
-			Property("Angle XY").Set(angle_check);
-			angle_xy = angle_check;
-		}
-		// changed Right X or Right Y
-		else if ( (fabs(x_old[1] - xright) > 0.01) || (fabs(y_old[1] - yright) > 0.01) )
-		{
-
-			// set rotate center as HH_LEFT_MOVE
-			RotateCenter(0);
-
-			// update properties
-			width = sqrt( pow(xright-xleft,2) + pow(yright-yleft,2) );
-			Property("Width").Set(width);
-
-			// update angle
-			Property("Angle XY").Set(angle_check);
-			angle_xy = angle_check;
-		}
-		// changed angle_xy
-		else
-		{
-			RotateCenter(0);
-
-			xright = xleft + width*cos(angle_xy*DTOR);
-			yright = yleft + width*sin(angle_xy*DTOR);
-
-			Property("Right X").Set(xright);
-			Property("Right Y").Set(yright);
-
-		}
-	}
-
-	StoreHandles();
-
-	
-	// extract unrotated end positions
-	double xr,yr;
-	int rotateCenter = ReturnRotateCenter( &xr, &yr);
-
-	// set initial unrotated angles
-	float start1 = 180.0 - angle_xy; float start2 = 180.0-angle_xy;
-	float end1 = 360.0 -angle_xy; float end2 = 0.0 - angle_xy;
-	
-	// draw
-	sc.reset();
-	sc.colors( s3d::rgba(25,51, 0, 155), s3d::rgba(25, 51, 0, 155) );
-	sc.cylinder( GetId(), xleft, yleft,zb, depth, length/2,
-	 			start1, end1, angle_xy, 18);
-	sc.colors( s3d::rgba(25, 51, 0, 155), s3d::rgba(25, 51, 0, 255) );
-	sc.box( GetId(),xr , yr, angle_xy, width, length,zb,depth, 
-		s3d::FRONT|s3d::BACK|s3d::TOP|s3d::BOTTOM, rotateCenter);
-	sc.colors( s3d::rgba(25, 51, 0, 155), s3d::rgba(25, 51, 0, 155) );
-	sc.cylinder( GetId(), xright, yright,zb, depth, length/2,
-	   			start2, end2, angle_xy, 18);
-
-}
-
-void VHedgeObject::SetupHandles( VPlaneType plane )
-{
-	double width = Property("Width").GetDouble();
-	double length = Property("Length").GetDouble();
-
-	double xx[3], yy[3];
-	xx[0] = Property("Left X").GetDouble();
-	yy[0] = Property("Left Y").GetDouble();
-	xx[1] = Property("Right X").GetDouble();
-	yy[1] = Property("Right Y").GetDouble();
-
-	// compute location of HH_DIAM
-	double dx = (xx[1] - xx[0])/width;
-	double dy = (yy[1] - yy[0])/width;
-	xx[2] = xx[1] + dy*length/2;
-	yy[2] = yy[1] - dx*length/2;
-
-	if (plane == PLANE_XY)
-	{
-		AddHandle( HH_LEFT_MOVE, xx[0],yy[0]);
-		AddHandle( HH_RIGHT_MOVE, xx[1],yy[1]);
-		AddHandle( HH_DIAM, xx[2],yy[2],  wxCURSOR_SIZENS);
-	}
-	else if (plane == PLANE_XZ)
-	{
-		double zb = Property("Bottom Z").GetDouble();
-		double depth = Property("Depth").GetDouble();
-
-		AddHandle( HH_Z_MOVE, 0.5*(xx[0]+xx[1]), zb + depth/2);
-		AddHandle( HH_TOP, 0.5*(xx[0]+ xx[1]), zb + depth, wxCURSOR_SIZENS);
-		AddHandle( HH_BOTTOM, 0.5*(xx[0] + xx[1]), zb, wxCURSOR_SIZENS);
-		
-	}
-	
-}
-bool VHedgeObject::OnHandleMoved( VHandle *h, VPlaneType plane )
-{
-	
-	int id = h->GetId();
-	double x = h->GetX();
-	double y = h->GetYZ();
-
-	if (plane == PLANE_XY)
-	{
-		if (id == HH_LEFT_MOVE)
-		{
-			double xr = Property("Right X").GetDouble();
-			double yr = Property("Right Y").GetDouble();
-
-			// set rotate center as HH_RIGHT_MOVE
-			RotateCenter(2);
-
-			// update properties
-			Property("Left X").Set(x);
-			Property("Left Y").Set(y);
-			double width = sqrt( pow(x-xr,2) + pow(y-yr,2) );
-			Property("Width").Set(width);
-
-			// update angle
-			double angle_xy = atan2( yr - y, xr - x ) * 180/M_PI;
-			Property("Angle XY").Set(angle_xy);
-		}
-		
-		else if (id == HH_RIGHT_MOVE)
-		{
-			double xl = Property("Left X").GetDouble();
-			double yl = Property("Left Y").GetDouble();
-
-			// set rotate center as HH_LEFT_MOVE
-			RotateCenter(0);
-
-			// update properties
-			Property("Right X").Set(x);
-			Property("Right Y").Set(y);
-			double width = sqrt( pow(x-xl,2) + pow(y-yl,2) );
-			Property("Width").Set(width);
-
-			// update angle
-			double angle_xy = atan2( y - yl, x - xl ) * 180/M_PI;
-			Property("Angle XY").Set(angle_xy);
-		}
-		else if (id == HH_DIAM)
-		{
-			double xr = Property("Right X").GetDouble();
-			double yr = Property("Right Y").GetDouble();
-			double length = 2*sqrt( pow(x-xr,2) + pow(y-yr,2) );
-			Property("Length").Set(length);
-		}
-		
-	}
-	
-	else if (plane == PLANE_XZ)
-	{
-		double depth = Property("Depth").GetDouble();
-		double zb = Property("Bottom Z").GetDouble();
-
-
-		if (id == HH_Z_MOVE)
-		{	
-			double dx = h->GetDeltaX();
-			double dz = h->GetDeltaYZ();
-
-			double xl = Property("Left X").GetDouble();
-			double xr = Property("Right X").GetDouble();
-
-			Property("Left X").Set( xl + dx );
-			Property("Right X").Set( xr + dx );
-			Property("Bottom Z").Set(zb + dz );
-		}
-		else if (id == HH_TOP ) Property("Depth").Set(y - zb);
-		else if (id == HH_BOTTOM )
-		{
-			double dz = zb - y;
-			Property("Bottom Z").Set(y);
-			Property("Depth").Set(depth += dz);
-		}
-			
-	}
-	h->SetOriginalPos(x,y);
-	StoreHandles();
-	
-	return true;
-}
-
-void VHedgeObject::DrawOnPlane( VRenderer2D &dc, VPlaneType plane)
-{
-	
-	double xp[38], yp[38];
-	ReturnXYPoints(xp, yp);
-
-	if (plane == PLANE_XY)
-	{
-		dc.Poly(xp,yp,38);
-	}
-	else if (plane == PLANE_XZ)
-	{
-		double zb = Property("Bottom Z").GetDouble();
-		double depth = Property("Depth").GetDouble();
-		double xmin = xp[0];
-		double xmax = xp[0];
-
-		for (int i = 1; i < 38; i++)
-		{
-			if (xp[i] < xmin) xmin = xp[i];
-			if (xp[i] > xmax) xmax = xp[i];
-		}
-		dc.Rect(xmin, zb,xmax-xmin,depth);
-	}
-	
-}
-
-bool VHedgeObject::IsWithin( double xt, double yt, VPlaneType plane)
-{
-	double xp[38], yp[38];
-	ReturnXYPoints(xp,yp);
-
-	if (plane == PLANE_XY)
-	{
-		return s3d::inpoly(xp,yp,38,xt,yt);
-	}
-	else if (plane == PLANE_XZ)
-	{
-		double zb = Property("Bottom Z").GetDouble();
-		double depth = Property("Depth").GetDouble();
-		double xmin = xp[0];
-		double xmax = xp[0];
-
-		for (int i = 1; i < 38; i++)
-		{
-			if (xp[i] < xmin) xmin = xp[i];
-			if (xp[i] > xmax) xmax = xp[i];
-		}
-		return ( (xt >= xmin) && (xt <= xmax) && 
-			     (yt >=zb) && (yt <= zb + depth) );
-	}
-	
-	return false;
-}
-
-void VHedgeObject::RotateCenter( int center)
-{
-	m_rotate = center;
-	// 0 - left; 1 - center; 2 - right 
-}
-int VHedgeObject::ReturnRotateCenter(double *xc, double *yc)
-{
-
-	double xl = Property("Left X").GetDouble();
-	double yl = Property("Left Y").GetDouble();
-	double xr = Property("Right X").GetDouble();
-	double yr = Property("Right Y").GetDouble();
-
-	if (m_rotate == 0)
-	{
-		*xc = xl;
-		*yc = yl;
-	}
-	else if (m_rotate == 1) 
-	{
-		*xc = 0.5*(xl+xr);
-		*yc = 0.5*(yl+yr);
-	}
-	else if (m_rotate == 2)
-	{
-		*xc = xr;
-		*yc = yr;
-	}
-
-	return m_rotate;
-}
-
-void VHedgeObject::ReturnXYPoints( double xp[38], double yp[38] )
-{
-		double length = Property("Length").GetDouble();
-		double width = Property("Width").GetDouble();
-		double angle_xy = Property("Angle XY").GetDouble();
-		double r = length/2;
-
-		// retrieve circle centers
-		double xx[2], yy[2];
-		xx[0] = Property("Left X").GetDouble();
-		yy[0] = Property("Left Y").GetDouble();
-		xx[1] = Property("Right X").GetDouble();
-		yy[1] = Property("Right Y").GetDouble();		
-
-		double xr, yr; 
-		int rotateCenter = ReturnRotateCenter(&xr,&yr);
-
-		// compute start and end angles: rotation from bottom right to top right
-		// and then rotation from top left to bottom left
-		float start1 = 180.0 - angle_xy; float end1 = 0.0 - angle_xy;
-		float start2 = 360.0 - angle_xy; float end2 = 180.0 - angle_xy;
-
-		// rotate box
-		double xb[4], yb[4];
-		s3d::get_rotated_box_points(xr, yr, width,length,angle_xy,xb,yb,rotateCenter);
-		
-		// begin polygon
-		double step1 = (end1 - start1)/18;
-		for (int i = 0; i < 19; i++)
-		{
-			double angle = start1 + step1*i;
-			double sinA = sin(angle*M_PI/180);
-			double cosA = cos(angle*M_PI/180);
-
-			xp[i] = xx[1] + r*sinA;
-			yp[i] = yy[1] + r*cosA;
-		}
-		double step2 = (end2 - start2)/18;
-		for (int i = 0; i < 19; i++)
-		{
-			double angle = start2 + step2*i;
-			double sinA = sin(angle*M_PI/180);
-			double cosA = cos(angle*M_PI/180);
-
-			xp[i+19] = xx[0] + r*sinA;
-			yp[i+19] = yy[0] + r*cosA;
-		}
-
-
-}
-void VHedgeObject::StoreHandles()
-{
-	m_x[0] = Property("Left X").GetDouble();
-	m_x[1] = Property("Right X").GetDouble();
-	m_y[0] = Property("Left Y").GetDouble();
-	m_y[1] = Property("Right Y").GetDouble();
-}
-void VHedgeObject::GetHandles( double x[2], double y[2] )
-{
-	x[0] = m_x[0];
-	x[1] = m_x[1];
-	y[0] = m_y[0];
-	y[1] = m_y[1];
-}
-
-/* *******************************************************************************************************
 VRoofObject
 ******************************************************************************************************** */
 VRoofObject::VRoofObject()
 {
-	AddProperty( "Center X", new VProperty(0.0 ) );
-	AddProperty( "Center Y", new VProperty(0.0 ) );
-	AddProperty( "Bottom Z", new VProperty(0.0 ) );
-	AddProperty( "Width", new VProperty( 10.0 ) );
-	AddProperty( "Length", new VProperty( 20.0 ) );
-	AddProperty( "Height", new VProperty(5.0 ) );
+	AddProperty( "Center X", new VProperty(0.0, LENGTH ) );
+	AddProperty( "Center Y", new VProperty(0.0, LENGTH ) );
+	AddProperty( "Bottom Z", new VProperty(0.0, LENGTH ) );
+	AddProperty( "Width", new VProperty( 10.0, LENGTH ) );
+	AddProperty( "Length", new VProperty( 20.0, LENGTH ) );
+	AddProperty( "Height", new VProperty(5.0, LENGTH ) );
 	AddProperty( "Angle XY", new VProperty( 0.0 ) );
 	AddProperty( "Pitch Angle 1", new VProperty( 45.0 ) );
 	AddProperty( "Pitch Angle 2", new VProperty( 45.0 ) );
@@ -2090,271 +1659,3 @@ void VRoofObject::GetXZPoints(double xd[4], double zd[4])
 		xd[3] = xr[3]; zd[0] = zb;
 	}
 }
-
-
-
-
-VTriangleObject::VTriangleObject()
-{
-	AddProperty( "Center X", new VProperty(0.0) );
-	AddProperty( "Center Y", new VProperty(0.0) );
-	AddProperty( "Center Z", new VProperty(2.5) );
-	AddProperty( "Width", new VProperty(10.0) );
-	AddProperty( "Height", new VProperty(5.0) );
-	AddProperty( "Depth", new VProperty(5.0) );
-	AddProperty( "Angle XY", new VProperty(0.0 ) );
-	AddProperty( "Color", new VProperty( wxColour(155,0,0,144) ) );
-}
-
-wxString VTriangleObject::GetTypeName()
-{
-	return "Triangle";
-}
-
-VObject *VTriangleObject::Duplicate()
-{
-	VTriangleObject *Triangle = new VTriangleObject;
-	Triangle->Copy( this );
-	return Triangle;
-}
-
-void VTriangleObject::BuildModel( s3d::scene &sc )
-{
-	double xc = Property("Center X").GetDouble();
-	double yc = Property("Center Y").GetDouble();
-	double zc = Property("Center Z").GetDouble();
-	double w = Property("Width").GetDouble();
-	double h = Property("Height").GetDouble();
-	double d = Property("Depth").GetDouble();
-	double angle_xy = Property("Angle XY").GetDouble();
-	
-	wxColour cc = Property("Color").GetColour();
-	s3d::rgba scc1( cc.Red(), cc.Green(), cc.Blue(), cc.Alpha() );
-	s3d::rgba scc2( cc.Red(), cc.Green(), cc.Blue(), 255 );
-	sc.reset();
-	sc.colors( scc1, scc2 );
-	sc.type( s3d::scene::OBSTRUCTION );
-	sc.box( GetId(), xc, yc, angle_xy, w, h, zc-d/2, d );
-
-}
-
-void VTriangleObject::SetupHandles( VPlaneType plane )
-{
-
-	double xc = Property("Center X").GetDouble();
-	double yc = Property("Center Y").GetDouble();
-	double zc = Property("Center Z").GetDouble();
-	double w = Property("Width").GetDouble();
-	double h = Property("Height").GetDouble();
-	double d = Property("Depth").GetDouble();
-	double angle_xy = Property("Angle XY").GetDouble();
-
-	double x[5], y[5];
-	x[0] = xc + w/2; y[0] = yc;    //HH_RIGHT
-	x[1] = xc; y[1] = yc+h/2;      // HH_TOP
-	x[2] = xc+w/4; y[2] = yc;      // HH_ROTATE_XY
-	x[3] = xc - w/2; y[3] = yc;    //HH_LEFT
-	x[4] = xc ; y[4] = yc - h/2;   // HH_BOTTOM
-	s3d::rotate2dxz(xc,yc,x,y,angle_xy,5);
-
-	if ( plane == PLANE_XY )
-	{
-		AddHandle( HH_MOVE, xc, yc );
-		AddHandle( HH_RIGHT,x[0], y[0], wxCURSOR_SIZEWE );
-		AddHandle( HH_TOP, x[1], y[1], wxCURSOR_SIZENS );
-		AddHandle( HH_ROTATE_XY, x[2], y[2], wxCURSOR_BULLSEYE );
-		AddHandle( HH_LEFT, x[3], y[3], wxCURSOR_SIZEWE );
-		AddHandle( HH_BOTTOM, x[4], y[4], wxCURSOR_SIZENS );
-
-	}
-	else if ( plane == PLANE_XZ )
-	{
-		AddHandle( HH_MOVE, xc, zc );
-		AddHandle( HH_TOP, xc, zc + d/2, wxCURSOR_SIZENS );
-		AddHandle( HH_BOTTOM, xc, zc - d/2, wxCURSOR_SIZENS);
-	}
-}
-
-bool VTriangleObject::OnHandleMoved( VHandle *h, VPlaneType plane )
-{
-	// extract previous properties
-	double xc = Property("Center X").GetDouble();
-	double yc = Property("Center Y").GetDouble();
-	double zc = Property("Center Z").GetDouble();
-	double angle_xy = Property("Angle XY").GetDouble();
-	double width = Property("Width").GetDouble();
-	double height = Property("Height").GetDouble();
-	double depth = Property("Depth").GetDouble();
-
-	// get current properties
-	int id = h->GetId();
-	double x = h->GetX();
-	double yz = h->GetYZ();
-	double dx = x - xc;
-	double dy = yz - yc;
-	double dz = yz - zc;
-
-	if ( id == HH_MOVE )
-	{
-		Property("Center X").Set( x );
-		if ( plane == PLANE_XY ) Property("Center Y").Set( yz);
-		else Property("Center Z").Set(yz );
-		return true;
-	}
-	else if ( id == HH_RIGHT) 
-	{
-		// compute new center and width
-		double d = sqrt(dx*dx + dy*dy);
-		double dw = d - width/2;
-		double wP = width + dw;
-		double xcP = xc + (dw*cos(angle_xy*M_PI/180)/2);
-		double ycP = yc + (dw*sin(angle_xy*M_PI/180)/2);
-
-		// update properties
-		Property("Width").Set(wP);
-		Property("Center X").Set(xcP);
-		Property("Center Y").Set(ycP);
-
-		return true;
-	}
-	else if ( id == HH_TOP )
-	{
-		// compute new center and height/depth
-		if ( plane == PLANE_XY ) 
-		{
-			double d = sqrt(dx*dx + dy*dy);
-			double dh = d - height/2;
-			double hP = height + dh;
-			double alpha = (angle_xy+90)*(M_PI/180);
-			double xcP = xc + 0.5*dh*cos(alpha);
-			double ycP = yc + 0.5*dh*sin(alpha);
-
-			Property("Height").Set(hP);
-			Property("Center X").Set(xcP);
-			Property("Center Y").Set(ycP);
-		}
-		else
-		{
-			double dd = fabs(dz) - depth/2;
-			double dP = depth + dd;
-			double zcP = zc + 0.5*dd;
-
-			Property("Depth").Set(dP);
-			Property("Center Z").Set(zcP);
-		}
-
-		return true;
-	}
-	else if ( id == HH_ROTATE_XY ) 
-	{
-		double angle_xy = (180/M_PI)*atan2(yz-yc,x-xc);
-		Property("Angle XY").Set(angle_xy /*deg*/);
-	}
-
-	else if ( id == HH_LEFT) 
-	{
-		// compute new center and width
-		double d = sqrt(dx*dx + dy*dy);
-		double dw = d - width/2;
-		double wP = width + dw;
-		double xcP = xc - (dw*cos(angle_xy*M_PI/180)/2);
-		double ycP = yc - (dw*sin(angle_xy*M_PI/180)/2);
-
-		// update properties
-		Property("Width").Set(wP);
-		Property("Center X").Set(xcP);
-		Property("Center Y").Set(ycP);
-
-		return true;
-	}
-	else if ( id == HH_BOTTOM )
-	{
-		// compute new center and height/depth
-		if ( plane == PLANE_XY ) 
-		{
-			double d = sqrt(dx*dx + dy*dy);
-			double dh = d - height/2;
-			double hP = height + dh;
-			double alpha = (angle_xy+90)*(M_PI/180);
-			double xcP = xc - 0.5*dh*cos(alpha);
-			double ycP = yc - 0.5*dh*sin(alpha);
-
-			Property("Height").Set(hP);
-			Property("Center X").Set(xcP);
-			Property("Center Y").Set(ycP);
-		}
-		else
-		{
-			double dd = fabs(dz) - depth/2;
-			double dP = depth + dd;
-			double zcP = zc - 0.5*dd;
-
-			Property("Depth").Set(dP);
-			Property("Center Z").Set(zcP);
-		}
-
-		return true;
-	}
-	return false;
-}
-
-void VTriangleObject::DrawOnPlane( VRenderer2D &dc, VPlaneType plane )
-{
-	double xc = Property("Center X").GetDouble();
-	double width = Property("Width").GetDouble();
-	double yc = Property("Center Y").GetDouble();
-	double height = Property("Height").GetDouble();
-	double angle_xy = Property("Angle XY").GetDouble();
-
-	if ( plane == PLANE_XY )
-	{
-		double x[4], y[4];
-		s3d::get_rotated_box_points( xc, yc, width, height, angle_xy,x, y);
-		dc.Poly(x,y,4);
-	}
-	else if ( plane == PLANE_XZ )
-	{
-
-		double zc = Property("Center Z").GetDouble();
-		double depth = Property("Depth").GetDouble();
-		double minDim = std::min(width,height);
-		double maxDim = std::max(width,height);
-		double dDim = maxDim-minDim;
-		double xDim = minDim + fabs(cos(angle_xy*M_PI/180))*dDim;
-
-		dc.Rect(xc-xDim/2, zc-depth/2,xDim,depth);
-	}
-}
-
-bool VTriangleObject::IsWithin( double x, double yz, VPlaneType plane )
-{
-	double xc = Property("Center X").GetDouble();
-	double w = Property("Width").GetDouble();
-
-	if ( plane == PLANE_XY )
-	{
-		double xx[4]; double yy[4];
-		double yc = Property("Center Y").GetDouble();
-		double h = Property("Height").GetDouble();
-		double angle_xy = Property("Angle XY").GetDouble();
-
-		s3d::get_rotated_box_points( xc, yc,w, h,angle_xy, xx,yy );
-		return s3d::inpoly( xx, yy, 4, x, yz );
-
-	}
-	else if ( plane == PLANE_XZ )
-	{
-		double zc = Property("Center Z").GetDouble();
-		double d = Property("Depth").GetDouble();
-
-		double xx = xc-w/2;
-		double zz = zc-d/2;
-
-		return ( x >= xx && x <= xx+w
-			&& yz >= zz && yz <= zz+d );
-	}
-
-	return false;
-}
-
-

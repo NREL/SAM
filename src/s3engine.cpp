@@ -17,12 +17,12 @@
 namespace s3d {
 
 point3d::point3d() { x = y = z = _x = _y = _z = 0.0f; }
-point3d::point3d( float x_, float y_, float z_ )  : x(x_), y(y_), z(z_), _x(0), _y(0), _z(0) { }
+point3d::point3d( double x_, double y_, double z_ )  : x(x_), y(y_), z(z_), _x(0), _y(0), _z(0) { }
 rgba::rgba() : r(0), g(0), b(0), a(255)  { }
 rgba::rgba( unsigned char _r, unsigned char _g, unsigned char _b, unsigned char _a ) : r(_r), g(_g), b(_b), a(_a) {  }
 text3d::text3d() : size(-1) { }
-text3d::text3d( float x, float y, float z, const std::string &t ) : pos(x,y,z), text(t), size(-1) { }
-text3d::text3d( float x, float y, float z, const std::string &t, 
+text3d::text3d( double x, double y, double z, const std::string &t ) : pos(x,y,z), text(t), size(-1) { }
+text3d::text3d( double x, double y, double z, const std::string &t, 
 		rgba col, int sz, const std::string &ff )
 		: pos(x,y,z), text(t), color(col), size(sz), face(ff) { }
 
@@ -74,9 +74,9 @@ void transform::operator() ( point3d &pt )
 	y = pt.y;
 	z = pt.z;
 	compute();
-	pt._x = (float)X;
-	pt._y = (float)Y;
-	pt._z = (float)Z;
+	pt._x = (double)X;
+	pt._y = (double)Y;
+	pt._z = (double)Z;
 }
 
 
@@ -446,7 +446,7 @@ scene &scene::operator=( const scene &rhs )
 }
 
 
-void scene::label( float x, float y, float z, const std::string &text, 
+void scene::label( double x, double y, double z, const std::string &text, 
 		rgba col, int size, const std::string &face )
 {
 	m_labels.push_back( new text3d( x, y, z, text, col, size, face ) );
@@ -481,7 +481,7 @@ void scene::colors( rgba fill, rgba line )
 	m_lineColor = line;
 }
 
-void scene::point( float x, float y, float z )
+void scene::point( double x, double y, double z )
 {
 	m_curPoints.push_back( point3d(x,y,z) );
 }
@@ -506,26 +506,20 @@ void scene::poly( int _id, int _type, rgba _fill, rgba _border, int thick, bool 
 	m_polygons.push_back( new polygon3d( _id, _type, _fill, _border, thick, line, pts ) );
 }
 
-void scene::box( int id, float x, float y, float angle_xy, float xdim, float ydim, float zstart, float height, 
-				unsigned int faces, int rotateCenter )
+//void scene::box( int id, double x, double y, double angle_xy, double xdim, double ydim, double zstart, double height, 
+//				unsigned int faces, int rotateCenter )
+				
+void scene::box( int id, double x, double y, double z, double rot, double xdim, double ydim, double zdim, 
+		unsigned int faces )
 {
 	// NO ends: {0,1,1,1,1,0};
 	// rotate
-	double xx[4], yy[4];
-	float zmin = zstart;
-	float zmax = zstart + height;
-
-	if (rotateCenter == 1)
-		s3d::get_rotated_box_points( x, y, xdim, ydim, angle_xy, xx, yy);
-	else s3d::get_rotated_box_points( x, y, xdim, ydim, angle_xy, xx, yy, rotateCenter);
-
-	// extract and cast from double to float
-	float xr[4], yr[4];
-	xr[0] = static_cast<float>(xx[0]); yr[0] = static_cast<float>(yy[0]);
-	xr[1] = static_cast<float>(xx[1]); yr[1] = static_cast<float>(yy[1]);
-	xr[2] = static_cast<float>(xx[2]); yr[2] = static_cast<float>(yy[2]);
-	xr[3] = static_cast<float>(xx[3]); yr[3] = static_cast<float>(yy[3]);
-
+	double xr[4], yr[4];
+	double zmin = z;
+	double zmax = z + zdim;
+	
+	s3d::get_rotated_box_points( x, y, xdim, ydim, rot, xr, yr);
+	
 	// right face
 	if ( faces & RIGHT )
 	{
@@ -585,12 +579,12 @@ void scene::box( int id, float x, float y, float angle_xy, float xdim, float ydi
 void scene::plane( int id, double x[4], double y[4], double z[4] )
 {
 	
-	// extract and cast from double to float
-	float xr[4], yr[4], zr[4];
-	xr[0] = static_cast<float>(x[0]); yr[0] = static_cast<float>(y[0]); zr[0] = static_cast<float>(z[0]);
-	xr[1] = static_cast<float>(x[1]); yr[1] = static_cast<float>(y[1]); zr[1] = static_cast<float>(z[1]);
-	xr[2] = static_cast<float>(x[2]); yr[2] = static_cast<float>(y[2]); zr[2] = static_cast<float>(z[2]);
-	xr[3] = static_cast<float>(x[3]); yr[3] = static_cast<float>(y[3]); zr[3] = static_cast<float>(z[3]);
+	// extract and cast from double to double
+	double xr[4], yr[4], zr[4];
+	xr[0] = static_cast<double>(x[0]); yr[0] = static_cast<double>(y[0]); zr[0] = static_cast<double>(z[0]);
+	xr[1] = static_cast<double>(x[1]); yr[1] = static_cast<double>(y[1]); zr[1] = static_cast<double>(z[1]);
+	xr[2] = static_cast<double>(x[2]); yr[2] = static_cast<double>(y[2]); zr[2] = static_cast<double>(z[2]);
+	xr[3] = static_cast<double>(x[3]); yr[3] = static_cast<double>(y[3]); zr[3] = static_cast<double>(z[3]);
 
 	// Plane
 	point(xr[3],yr[3],zr[3]);
@@ -600,8 +594,8 @@ void scene::plane( int id, double x[4], double y[4], double z[4] )
 	poly( id );
 }
 
-void scene::conical( int id, float x, float y, float zstart, float height, float r1, float r2,
-					 float angle_start, float angle_end, bool fill, int npoly )
+void scene::conical( int id, double x, double y, double zstart, double height, double r1, double r2,
+					 double angle_start, double angle_end, int npoly )
 {
 	if ( (r1 == 0.0 && r2 == 0.0) 
 		|| r1 < 0.0
@@ -618,10 +612,10 @@ void scene::conical( int id, float x, float y, float zstart, float height, float
 	if ( step < 1 ) step = 10;
 	if ( step > 45 ) step = 45;
 	
-	float x_last1 = x + r1;
-	float y_last1 = y ;
-	float x_last2 = x + r2;
-	float y_last2 = y ;
+	double x_last1 = x + r1;
+	double y_last1 = y ;
+	double x_last2 = x + r2;
+	double y_last2 = y ;
 	
 	
 	end1.push_back( s3d::point3d( x_last1, y_last1, zstart+0 ) );
@@ -629,13 +623,13 @@ void scene::conical( int id, float x, float y, float zstart, float height, float
 
 	while( angle <= angle_end )
 	{
-		float cosA = (float)cos( angle*3.14159/180 );
-		float sinA = (float)sin( angle*3.14159/180 );
+		double cosA = (double)cos( angle*3.14159/180 );
+		double sinA = (double)sin( angle*3.14159/180 );
 
-		float x1 = x + r1*cosA;
-		float y1 = y + r1*sinA;
-		float x2 = x + r2*cosA;
-		float y2 = y + r2*sinA;
+		double x1 = x + r1*cosA;
+		double y1 = y + r1*sinA;
+		double x2 = x + r2*cosA;
+		double y2 = y + r2*sinA;
 		
 
 		std::vector<point3d> pplist;
@@ -667,8 +661,8 @@ void scene::conical( int id, float x, float y, float zstart, float height, float
 	if ( r2 > 0.0 ) poly( id, m_polyType, m_fillColor, m_lineColor, 1, false, end2 );
 }
 
-void scene::cylinder( int id, float x, float y, float zstart, float height, float r,
-					 float angle_start, float angle_end, float angle_xy, int npoly )
+void scene::cylinder( int id, double x, double y, double zstart, double height, double r,
+					 double angle_start, double angle_end, double angle_xy, int npoly )
 {
 // function developed in support of VHedgeObject	
 	if ( (r == 0.0) 
@@ -681,29 +675,29 @@ void scene::cylinder( int id, float x, float y, float zstart, float height, floa
 
 	double range = angle_end - angle_start;
 	double angle = angle_start, step = range/npoly;
-	float cosAxy = cos(angle_xy*3.14159/180);
-	float sinAxy = sin(angle_xy*3.14159/180);
+	double cosAxy = cos(angle_xy*3.14159/180);
+	double sinAxy = sin(angle_xy*3.14159/180);
 
-	float x_last1 = x + r*sinAxy;
-	float y_last1 = y - r*cosAxy;
-	float x_last2 = x + r*sinAxy;
-	float y_last2 = y - r*cosAxy;
+	double x_last1 = x + r*sinAxy;
+	double y_last1 = y - r*cosAxy;
+	double x_last2 = x + r*sinAxy;
+	double y_last2 = y - r*cosAxy;
 
 	end1.push_back( s3d::point3d( x_last1, y_last1, zstart+0 ) );
 	end2.push_back( s3d::point3d( x_last2, y_last2, zstart+height ) );
 
-	std::vector<float> x_store(npoly+1), y_store(npoly+1);
+	std::vector<double> x_store(npoly+1), y_store(npoly+1);
 
 	for (int i = 0; i < npoly+1; i++)
 	{
 
-		float cosA = (float)cos( angle*3.14159/180 );
-		float sinA = (float)sin( angle*3.14159/180 );
+		double cosA = (double)cos( angle*3.14159/180 );
+		double sinA = (double)sin( angle*3.14159/180 );
 
-		float x1 = x + r*sinA;
-		float y1 = y + r*cosA;
-		float x2 = x + r*sinA;
-		float y2 = y + r*cosA;
+		double x1 = x + r*sinA;
+		double y1 = y + r*cosA;
+		double x2 = x + r*sinA;
+		double y2 = y + r*cosA;
 
 		int j = npoly - i;
 		x_store[j] = x2;
@@ -757,8 +751,8 @@ void scene::cylinder( int id, float x, float y, float zstart, float height, floa
 	poly( id, m_polyType, m_fillColor, m_lineColor, 1, false, end2 );
 }
 
-void scene::roof( int id, float xc, float yc, float zmin, float width, float length, 
-				 float height, float pitch1, float pitch2, float angle_xy )
+void scene::roof( int id, double xc, double yc, double zmin, double width, double length, 
+				 double height, double pitch1, double pitch2, double angle_xy )
 {
 	double zmax = zmin + height;
 	double xr[4], yr[4], xu[4], yu[4];
@@ -897,56 +891,6 @@ static double average_z( const s3d::polygon3d *p )
 		sum += points[i]._z;
 
 	return sum/points.size();
-}
-
-static double max_z( const s3d::polygon3d *p ) 
-{
-	const std::vector<point3d> &points = p->points;
-	float maxz = -FLT_MAX;
-	for ( size_t i=0;i<points.size(); i++ )
-		if( points[i]._z > maxz) maxz= points[i]._z;
-
-	return maxz;
-}
-
-static size_t max_z_index( const s3d::polygon3d *p ) 
-{
-	const std::vector<point3d> &points = p->points;
-	float maxz = -FLT_MAX;
-	size_t maxz_index = 0;
-	for ( size_t i=0;i<points.size(); i++ )
-		if( points[i]._z > maxz) 
-		{
-			maxz= points[i]._z;
-			maxz_index = i;
-		}
-
-	return maxz_index;
-}
-
-static double min_z( const s3d::polygon3d *p ) 
-{
-	const std::vector<point3d> &points = p->points;
-	float minz = FLT_MAX;
-	for ( size_t i=0;i<points.size(); i++ )
-		if( points[i]._z < minz) minz= points[i]._z;
-
-	return minz;
-}
-
-static size_t min_z_index( const s3d::polygon3d *p ) 
-{
-	const std::vector<point3d> &points = p->points;
-	size_t minz_index=0;
-	float minz = FLT_MAX;
-	for ( size_t i=0;i<points.size(); i++ )
-		if( points[i]._z < minz) 
-		{
-			minz= points[i]._z;
-			minz_index = i;
-		}
-
-	return minz_index;
 }
 
 static bool polybefore( const s3d::polygon3d *p1, const s3d::polygon3d *p2 )
@@ -1115,9 +1059,15 @@ void scene::build( transform &tr )
 	for (i=0;i<m_culled_sorted.size();i++)
 		m_culled.push_back(m_culled_sorted[i]);
 
-
+	tr.get_view_normal( m_vn );
 }
 
+void scene::get_viewnormal( double *x, double *y, double *z )
+{
+	*x = m_vn[0];
+	*y = m_vn[1];
+	*z = m_vn[2];
+}
 
 const std::vector<text3d*> &scene::get_labels() const
 {
@@ -1334,82 +1284,34 @@ void rotate2dy( double xc, double zc, double x[], double z[], double angle_xz /*
 	}
 }
 
-void get_rotated_box_points( double xc, double yc,
+
+void get_rotated_box_points( double x, double y,
 							 double width, double height, 
-							 double angle_xy, /*deg*/
-							 double x[4], double y[4] )
+							 double angle_xy,  /*deg*/
+							 double xr[4], double yr[4])
 {
 	// currently set to work only with rotations about x,z axes.
 	// rotates correctly only about the center, not ends
 
 	// Right Bottom point
-	x[0] = xc + width/2;
-	y[0] = yc - height/2;
+	xr[0] = x + width;
+	yr[0] = y;
 
 	// Right Top
-	x[1] = xc + width/2;
-	y[1] = yc + height/2;
+	xr[1] = x + width;
+	yr[1] = y + height;
 
 	// Left Top
-	x[2] = xc - width/2;
-	y[2] = yc + height/2;
+	xr[2] = x;
+	yr[2] = y + height;
 
 	// Left Bottom
-	x[3] = xc - width/2;
-	y[3] = yc - height/2;
+	xr[3] = x;
+	yr[3] = y;
 
 	// rotate
-	rotate2dxz( xc, yc, x,y, angle_xy /*deg*/,4);
+	rotate2dxz( x, y, xr,yr, angle_xy /*deg*/,4);
 }
-
-void get_rotated_box_points( double xc, double yc,
-							 double width, double height, 
-							 double angle_xy, /*deg*/
-							 double x[4], double y[4], int rotateCenter )
-{
-
-// rotation about left center
-if (rotateCenter == 0)
-{
-	// Right Bottom point
-	x[0] = xc + width;
-	y[0] = yc - height/2;
-
-	// Right Top
-	x[1] = xc + width;
-	y[1] = yc + height/2;
-
-	// Left Top
-	x[2] = xc;
-	y[2] = yc + height/2;
-
-	// Left Bottom
-	x[3] = xc;
-	y[3] = yc - height/2;
-}
-else if (rotateCenter == 2)
-{
-	// Right Bottom point
-	x[0] = xc;
-	y[0] = yc - height/2;
-
-	// Right Top
-	x[1] = xc;
-	y[1] = yc + height/2;
-
-	// Left Top
-	x[2] = xc - width;
-	y[2] = yc + height/2;
-
-	// Left Bottom
-	x[3] = xc - width;
-	y[3] = yc - height/2;
-}
-	// rotate
-	rotate2dxz( xc, yc, x,y, angle_xy /*deg*/,4);
-}
-
-
 
 
 
@@ -1491,7 +1393,7 @@ void sun_pos(int year,int month,int day,int hour,double minute,double lat,double
 	double zulu,jd,time,mnlong,mnanom,
 			eclong,oblqec,num,den,ra,dec,gmst,lmst,ha,elv,azm,refrac,
 			E,ws,sunrise,sunset,Eo,tst;
-	double arg,hextra,Gon,zen;
+	double arg,zen;
 
 	jday = julian(year,month,day);       /* Get julian day of year */
 	zulu = hour + minute/60.0 - tz;      /* Convert local time to zulu time */
