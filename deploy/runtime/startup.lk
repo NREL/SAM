@@ -3,7 +3,8 @@
 // define all the configurations
 addconfig( 'PVWatts', [ 'Residential', 'Commercial', 'Commercial PPA', 'Independent Power Producer',
  'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'Single Owner', 'None' ] );
-addconfig( 'Flat Plate PV', ['Residential', 'Commercial', 'None'] );
+addconfig( 'Flat Plate PV', ['Residential', 'Commercial', 'Commercial PPA', 'Independent Power Producer',
+ 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'Single Owner', 'None'] );
 addconfig( 'Test Only', [ 'None' ] );
 addconfig( 'Wind BOS', [ 'None' ] );
 addconfig( 'Wind Power', [ 'Residential', 'Commercial', 'Commercial PPA', 'Independent Power Producer', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'Single Owner', 'None'] );
@@ -277,6 +278,49 @@ setmodules( ['pvsamv1', 'utilityrate2', 'cashloan']);
 setup_flat_plate_pv_pages();
 addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='PV System Costs' } );
 setup_commercial_pages();
+
+setconfig( 'Flat Plate PV', 'Commercial PPA' );	
+setmodules( ['pvsamv1', 'ippppa']);
+setting( { 'analysis_period_var'='cf_length' } );
+setup_flat_plate_pv_pages();
+addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='PV System Costs' } );
+setup_commercial_ppa_pages();
+
+setconfig( 'Flat Plate PV', 'Independent Power Producer' );	
+setmodules( ['pvsamv1', 'ippppa']);
+setting( { 'analysis_period_var'='cf_length' } );
+setup_flat_plate_pv_pages();
+addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='PV System Costs' } );
+setup_independent_power_producer_pages();
+
+setconfig( 'Flat Plate PV', 'Leveraged Partnership Flip' );	
+setmodules( ['pvsamv1', 'levpartflip']);
+setting( { 'analysis_period_var'='cf_length' } );
+setup_flat_plate_pv_pages();
+addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='PV System Costs' } );
+setup_leveraged_partnership_flip_pages();
+
+setconfig( 'Flat Plate PV', 'All Equity Partnership Flip' );	
+setmodules( ['pvsamv1', 'equpartflip']);
+setting( { 'analysis_period_var'='cf_length' } );
+setup_flat_plate_pv_pages();
+addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='PV System Costs' } );
+setup_all_equity_partnership_flip_pages();
+
+setconfig( 'Flat Plate PV', 'Sale Leaseback' );	
+setmodules( ['pvsamv1', 'saleleaseback']);
+setting( { 'analysis_period_var'='cf_length' } );
+setup_flat_plate_pv_pages();
+addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='PV System Costs' } );
+setup_sale_leaseback_pages();
+
+setconfig( 'Flat Plate PV', 'Single Owner' );	
+setmodules( ['pvsamv1', 'singleowner']);
+setting( { 'analysis_period_var'='cf_length' } );
+setup_flat_plate_pv_pages();
+addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='PV System Costs' } );
+setup_single_owner_pages();
+
 
 
 // CSP - Physical Trough ///////////////////////////////////////////////////////
