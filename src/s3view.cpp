@@ -155,17 +155,17 @@ View3D::View3D( wxWindow *parent, int id, const wxPoint &pos, const wxSize &size
 	m_panMode = false;
 	m_pressed = false;
 	m_eraseNeeded = false;
-	m_movingHandle = false;
+	m_movingHandle = 0;
 	m_gridSpacing = 5;
 	m_snapSpacing = 1;
 	SetBackgroundStyle( wxBG_STYLE_PAINT );
-
-	RegisterType( new VTreeObject );
+	
 	RegisterType( new VBoxObject );
-	RegisterType( new VPVArray );
-	RegisterType( new VPoleObject );
-	RegisterType( new VHedgeObject );
+	RegisterType( new VCylinderObject );
 	RegisterType( new VRoofObject );
+	RegisterType( new VConicalTreeObject );
+//	RegisterType( new VRoundTreeObject );
+	RegisterType( new VActiveSurfaceObject );
 
 	m_scene.basic_axes_with_ground();
 		
@@ -918,6 +918,7 @@ void View3D::OnPaint( wxPaintEvent & )
 			xp-scaled_width/2, yp-scaled_height/2 );
 	}
 
+	double vx, vy, vz, nx, ny, nz;
 	const std::vector<s3d::polygon3d*> &polygons = m_scene.get_polygons();
 	for ( size_t i=0;i<polygons.size(); i++ )
 	{
@@ -929,8 +930,38 @@ void View3D::OnPaint( wxPaintEvent & )
 		if ( VObject *obj = FindObjectById( p.id ) )
 			if ( !obj->IsVisible() )
 				continue;
-		
-		dc.SetBrush( wxBrush( FromRGBA( p.fill ) ) );
+			
+		s3d::rgba cc = p.fill;
+
+		if ( !p.as_line && p.id >= 0 )
+		{
+			// get polygon normal (cross prod of p._x,p._y,p._z [0] --> [1]
+			m_scene.get_viewnormal( &vx, &vy, &vz );
+
+			double Ax = p.points[0].x;
+			double Ay = p.points[0].y;
+			double Az = p.points[0].z;
+			double Bx = p.points[1].x;
+			double By = p.points[1].y;
+			double Bz = p.points[1].z;
+
+			nx = (Ay*Bz)-(By*Az);
+			ny = -(Ax*Bz)+(Bx*Az);
+			nz = (Ax*By)-(Ay*Bx);
+
+			double dot = nx*vx + ny*vy + nz*vz;
+			double costh = dot/( sqrt(nx*nx+ny*ny+nz*nz)*sqrt(vx*vx+vy*vy+vz*vz) );
+			double theta = acos( costh ) * 180/3.1415926;
+
+			double factor = theta/180.0 + 0.5;
+
+			cc.r = (unsigned char)(((double)cc.r)*factor);
+			cc.g = (unsigned char)(((double)cc.g)*factor);
+			cc.b = (unsigned char)(((double)cc.b)*factor);
+			cc.a = 255;
+		}
+				
+		dc.SetBrush( wxBrush( FromRGBA( cc ) ) );
 
 #ifdef _DEBUG
 		dc.SetPen( wxPen( FromRGBA( p.border ), p.thick ) );		
