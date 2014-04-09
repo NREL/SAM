@@ -152,6 +152,10 @@ static const unsigned int LEFT = 0x0020;
 static const unsigned int ALL_FACES = RIGHT|TOP|BOTTOM|BACK|FRONT|LEFT;
 static const unsigned int SIDES = RIGHT|BACK|FRONT|LEFT;
 
+
+bool is_backface( const s3d::polygon3d &p );
+void polynormal( const s3d::polygon3d &p, double *x, double *y, double *z );
+
 class scene
 {
 private:
@@ -199,7 +203,8 @@ public:
 	void line( int id=0, int thick=1 );
 	void poly( int id=0 );
 	void conical( int id, double x, double y, double zstart, double height, double r1, double r2, 
-				  double angle_start=0.0, double angle_end = 360.0, int npoly=15 );
+				  double angle_start=0.0, double angle_end = 360.0, int npoly=15,
+				  bool face_bottom = true, bool face_top = true );
 	void cylinder( int id, double x, double y, double zstart, double height, double r,
 				   double angle_start=0.0, double angle_end = 360.0, double angle_xy = 0.0, int npoly=18 );
 		
