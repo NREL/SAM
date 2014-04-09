@@ -595,12 +595,12 @@ void scene::plane( int id, double x[4], double y[4], double z[4] )
 }
 
 void scene::conical( int id, double x, double y, double zstart, double height, double r1, double r2,
-					 double angle_start, double angle_end, int npoly )
+					 double angle_start, double angle_end, int npoly, bool face_bottom, bool face_top )
 {
 	if ( (r1 == 0.0 && r2 == 0.0) 
 		|| r1 < 0.0
 		|| r2 < 0.0
-		|| npoly == 0
+		|| npoly < 3
 		|| height == 0.0 ) return;
 		
 	std::vector<point3d> end1;
@@ -608,7 +608,8 @@ void scene::conical( int id, double x, double y, double zstart, double height, d
 
 	double range = angle_end - angle_start;
 	if (range <= 0) range += 360.0;
-	double angle = angle_start, step = range/npoly;
+	double angle = angle_start;
+	double step = range/npoly;
 	if ( step < 1 ) step = 10;
 	if ( step > 45 ) step = 45;
 	
@@ -623,8 +624,8 @@ void scene::conical( int id, double x, double y, double zstart, double height, d
 
 	while( angle <= angle_end )
 	{
-		double cosA = (double)cos( angle*3.14159/180 );
-		double sinA = (double)sin( angle*3.14159/180 );
+		double cosA = (double)cos( angle*3.1415926/180 );
+		double sinA = (double)sin( angle*3.1415926/180 );
 
 		double x1 = x + r1*cosA;
 		double y1 = y + r1*sinA;
@@ -657,8 +658,8 @@ void scene::conical( int id, double x, double y, double zstart, double height, d
 		angle += step;
 	}
 	
-	if ( r1 > 0.0 ) poly( id, m_polyType, m_fillColor, m_lineColor, 1, false, end1 );
-	if ( r2 > 0.0 ) poly( id, m_polyType, m_fillColor, m_lineColor, 1, false, end2 );
+	if ( r1 > 0.0 && face_bottom ) poly( id, m_polyType, m_fillColor, m_lineColor, 1, false, end1 );
+	if ( r2 > 0.0 && face_top ) poly( id, m_polyType, m_fillColor, m_lineColor, 1, false, end2 );
 }
 
 void scene::cylinder( int id, double x, double y, double zstart, double height, double r,
@@ -907,20 +908,33 @@ static bool polybefore( const s3d::polygon3d *p1, const s3d::polygon3d *p2 )
 		return average_z(p1) > average_z(p2);
 }
 
-static bool is_backface( const s3d::polygon3d *p )
-{	
-	const std::vector<point3d> &points = p->points;
+void polynormal( const s3d::polygon3d &p, double *x, double *y, double *z )
+{
+	const std::vector<point3d> &points = p.points;
 
+	double A = 0;
+	double B = 0;
 	double C = 0;
 	size_t i, j;
-	for ( i=0;i< points.size();i++ )
+	for ( i=0;i< p.points.size();i++ )
 	{
-		if ( i == points.size() - 1 ) j = 0;
+		if ( i == p.points.size() - 1 ) j = 0;
 		else j = i+1;
 
-		C += ( points[i]._x - points[j]._x ) * ( points[i]._y + points[j]._y );
+		A += ( p.points[i]._y - p.points[j]._y ) * ( p.points[i]._z + p.points[j]._z );
+		B += ( p.points[i]._z - p.points[j]._z ) * ( p.points[i]._x + p.points[j]._x );
+		C += ( p.points[i]._x - p.points[j]._x ) * ( p.points[i]._y + p.points[j]._y );
 	}
 
+	*x = A;
+	*y = B;
+	*z = C;
+}
+
+bool is_backface( const s3d::polygon3d &p )
+{	
+	double A,B,C;
+	polynormal(p, &A, &B, &C );
 	return (C > 0);
 }
 
@@ -955,7 +969,7 @@ void scene::build( transform &tr )
 	m_culled.reserve( m_polygons.size() );
 	for ( i=0; i<m_polygons.size();i++ )
 	{
-		if ( m_polygons[i]->as_line || ! is_backface( m_polygons[i] ) )
+		if ( m_polygons[i]->as_line || ! is_backface( *m_polygons[i] ) )
 			m_culled.push_back( m_polygons[i] );
 	}
 //double azi, alt;
