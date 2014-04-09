@@ -451,9 +451,9 @@ void VConicalTreeObject::BuildModel( s3d::scene &sc )
 
 	sc.reset();
 	sc.colors(s3d::rgba(128, 64, 0, 155), s3d::rgba(128, 64, 0, 155));
-	sc.conical(GetId(), x, y, 0, trunk, diam / 6, diam / 6);
+	sc.conical(GetId(), x, y, 0, trunk, diam / 6, diam / 6, 0, 360, 10, true, false);
 	sc.colors( s3d::rgba(0, 186, 107, 155 ), s3d::rgba(0, 186, 107, 155 ) );
-	sc.conical( GetId(), x, y, trunk, height-trunk, diam/2, topDiam/2 );
+	sc.conical( GetId(), x, y, trunk, height-trunk, diam/2, topDiam/2, 0, 360, 10, true, true );
 }
 
 void VConicalTreeObject::SetupHandles( VPlaneType plane )

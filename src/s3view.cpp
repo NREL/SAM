@@ -882,6 +882,10 @@ void View3D::DrawGrid( wxDC &dc )
 	}
 }
 
+template <typename T> T CLAMP(T value, T low, T high)
+{
+    return (value < low) ? low : ((value > high) ? high : value);
+}
 
 void View3D::OnPaint( wxPaintEvent & )
 {
@@ -930,46 +934,51 @@ void View3D::OnPaint( wxPaintEvent & )
 		if ( VObject *obj = FindObjectById( p.id ) )
 			if ( !obj->IsVisible() )
 				continue;
-			
+		
+		// compute "shaded" color of polygon	
 		s3d::rgba cc = p.fill;
-
 		if ( !p.as_line && p.id >= 0 )
 		{
 			// get polygon normal (cross prod of p._x,p._y,p._z [0] --> [1]
 			m_scene.get_viewnormal( &vx, &vy, &vz );
+			s3d::point3d vn( vx, vy, vz );
+			m_transform( vn );
+			vx = vn._x;
+			vy = vn._y;
+			vz = vn._z;
 
-			double Ax = p.points[0].x;
-			double Ay = p.points[0].y;
-			double Az = p.points[0].z;
-			double Bx = p.points[1].x;
-			double By = p.points[1].y;
-			double Bz = p.points[1].z;
-
-			nx = (Ay*Bz)-(By*Az);
-			ny = -(Ax*Bz)+(Bx*Az);
-			nz = (Ax*By)-(Ay*Bx);
-
+			s3d::polynormal( p, &nx, &ny, &nz );
+			nx = 0-nx;
+			ny = 0-ny;
+			nz = 0-nz;
+			
 			double dot = nx*vx + ny*vy + nz*vz;
 			double costh = dot/( sqrt(nx*nx+ny*ny+nz*nz)*sqrt(vx*vx+vy*vy+vz*vz) );
 			double theta = acos( costh ) * 180/3.1415926;
 
 			double factor = theta/180.0 + 0.5;
 
-			cc.r = (unsigned char)(((double)cc.r)*factor);
-			cc.g = (unsigned char)(((double)cc.g)*factor);
-			cc.b = (unsigned char)(((double)cc.b)*factor);
+			double R = cc.r*factor;
+			double G = cc.g*factor;
+			double B = cc.b*factor;
+			
+			cc.r = (unsigned char)CLAMP<double>( R, 1, 254 );
+			cc.g = (unsigned char)CLAMP<double>( G, 1, 254 );
+			cc.b = (unsigned char)CLAMP<double>( B, 1, 254 );			
 			cc.a = 255;
 		}
 				
-		dc.SetBrush( wxBrush( FromRGBA( cc ) ) );
+		wxColour wcol( FromRGBA( cc ) );
+
+		dc.SetBrush( wxBrush( wcol ) );
 
 #ifdef _DEBUG
 		dc.SetPen( wxPen( FromRGBA( p.border ), p.thick ) );		
 #else // no borders in release mode
-		if (p.as_line)
-			dc.SetPen( wxPen( FromRGBA( p.border ), p.thick ) );		
-		else
-			dc.SetPen( *wxTRANSPARENT_PEN );
+		//if (p.as_line)
+		//	dc.SetPen( wxPen( FromRGBA( p.border ), p.thick ) );		
+		//else
+			dc.SetPen( wxPen(wcol,2) );
 #endif
 		Draw( dc, p, p.as_line, xoff, yoff );
 	}
