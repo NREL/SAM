@@ -44,6 +44,7 @@
     <ClCompile Include="..\src\simulation.cpp" />
     <ClCompile Include="..\src\troughloop.cpp" />
     <ClCompile Include="..\src\uiobjects.cpp" />
+    <ClCompile Include="..\src\variablegrid.cpp" />
     <ClCompile Include="..\src\variables.cpp" />
     <ClCompile Include="..\src\welcome.cpp" />
     <ClCompile Include="..\src\widgets.cpp" />
@@ -71,6 +72,7 @@
     <ClInclude Include="..\src\simulation.h" />
     <ClInclude Include="..\src\troughloop.h" />
     <ClInclude Include="..\src\uiobjects.h" />
+    <ClInclude Include="..\src\variablegrid.h" />
     <ClInclude Include="..\src\variables.h" />
     <ClInclude Include="..\src\welcome.h" />
     <ClInclude Include="..\src\widgets.h" />
