@@ -38,6 +38,7 @@
 #include "invoke.h"
 #include "library.h"
 #include "uiobjects.h"
+#include "variablegrid.h"
 
 // application globals
 static wxArrayString g_appArgs;
@@ -327,12 +328,19 @@ void MainWindow::OnInternalCommand( wxCommandEvent &evt )
 		wxLaunchDefaultBrowser(SamApp::GetUserLocalDataDir());
 		break;
 	case ID_INTERNAL_CASE_VALUES:
+		
 		if (Case *cc = GetCurrentCase())
 		{
-			std::vector<Case*> cases;
-			cases.push_back(cc);
-			CaseVarGrid(cases);
+		std::vector<Case*> cases;
+		cases.push_back(cc);
+		CaseVarGrid(cases);
 		}
+		/*
+	{
+		VariableGridFrame *var_frame = new VariableGridFrame(this,m_project);
+		var_frame->Show();
+	}
+		*/
 		break;
 	case ID_SAVE_CASE_DEFAULTS:
 		if (Case *cc = GetCurrentCase())
