@@ -11,12 +11,10 @@
 
 #include <vector>
 
-
-
 class VariableGridData : public wxGridTableBase
 {
 public:
-	VariableGridData(ProjectFile &project);
+	VariableGridData(std::vector<Case *> &cases, wxArrayString &case_names);
 	virtual int GetNumberRows();
 	virtual int GetNumberCols();
 //	virtual bool IsEmptyCell(int row, int col);
@@ -37,7 +35,7 @@ private:
 class VariableGridFrame : public wxFrame
 {
 public:
-	VariableGridFrame(wxWindow *parent, ProjectFile &project);
+	VariableGridFrame(wxWindow *parent, std::vector<Case *> &cases, wxArrayString &case_names);
 private:
 	wxGrid *m_grid;
 	VariableGridData *m_griddata;
