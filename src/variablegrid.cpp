@@ -4,28 +4,27 @@
 
 #include "variablegrid.h"
 
-VariableGridData::VariableGridData(ProjectFile &project)
+
+VariableGridData::VariableGridData(std::vector<Case *> &cases, wxArrayString &case_names)
 {
 
-	m_cases = project.GetCases();
+	m_cases = cases;
 	if (m_cases.size() > 0)
 	{
+		m_col_hdrs.push_back("Variable");
+		m_col_hdrs.push_back("Label");
 		if (m_cases.size() == 1)
 		{
-			m_col_hdrs.push_back("Variable");
-			m_col_hdrs.push_back("Label");
-			wxString case_name = project.GetCaseName(m_cases[0]);
-			m_col_hdrs.push_back(case_name);
+			m_col_hdrs.push_back(case_names[0]);
 			m_var_table_vec.push_back(m_cases[0]->Values());
 			m_var_info_lookup_vec.push_back(m_cases[0]->Variables());
 		}
 		else
 		{
-			m_col_hdrs = project.GetCaseNames();
-			m_col_hdrs.Insert("Label", 0);
-			m_col_hdrs.Insert("Variable", 0);
+			int i = 0;
 			for (std::vector<Case*>::iterator it = m_cases.begin(); it != m_cases.end(); ++it)
 			{
+				m_col_hdrs.push_back(case_names[i++]);
 				m_var_table_vec.push_back((*it)->Values());
 				m_var_info_lookup_vec.push_back((*it)->Variables());
 			}
@@ -148,7 +147,12 @@ wxString VariableGridData::GetValue(int row, int col)
 	else if (col == 1) // variable label
 		return m_var_labels[row];
 	else // get var table and value
-		return m_var_table_vec[col-2].Get(m_var_names[row])->AsString();
+	{
+		if (m_var_table_vec[col - 2].Get(m_var_names[row]))
+			return m_var_table_vec[col - 2].Get(m_var_names[row])->AsString();
+		else
+			return wxEmptyString;
+	}
 }
 
 void VariableGridData::SetValue(int row, int col, const wxString& value)
@@ -157,24 +161,19 @@ void VariableGridData::SetValue(int row, int col, const wxString& value)
 }
 
 
-VariableGridFrame::VariableGridFrame(wxWindow *parent, ProjectFile &project) : wxFrame(parent, wxID_ANY, "Variable Grid", wxDefaultPosition, wxSize(400, 700))
+VariableGridFrame::VariableGridFrame(wxWindow *parent, std::vector<Case *> &cases, wxArrayString &case_names) : wxFrame(parent, wxID_ANY, "Variable Grid", wxDefaultPosition, wxSize(400, 700))
 {
 
-	if (project.GetCases().size() > 0)
+	if (cases.size() > 0)
 	{
 		wxString title;
-		if (project.GetCases().size() == 1)
-		{
-			wxString case_name = project.GetCaseName(project.GetCases()[0]);
-			title = "Current Case Values: " + case_name;
-		}
+		if (cases.size() == 1)
+			title = "Current Case Values: " + case_names[0];
 		else
-		{
 			title = "Case comparison";
-		}
 		
 		SetTitle(title);
-		m_griddata = new VariableGridData(project);
+		m_griddata = new VariableGridData(cases, case_names);
 
 		m_grid = new wxGrid(this, wxID_ANY);
 		m_grid->Freeze();

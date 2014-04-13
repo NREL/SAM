@@ -331,16 +331,13 @@ void MainWindow::OnInternalCommand( wxCommandEvent &evt )
 		
 		if (Case *cc = GetCurrentCase())
 		{
-		std::vector<Case*> cases;
-		cases.push_back(cc);
-		CaseVarGrid(cases);
+			std::vector<Case*> cases;
+			cases.push_back(cc);
+			//CaseVarGrid(cases);
+			wxArrayString case_names = m_project.GetCaseNames();
+			VariableGridFrame *var_frame = new VariableGridFrame(this, cases, case_names);
+			var_frame->Show();
 		}
-		/*
-	{
-		VariableGridFrame *var_frame = new VariableGridFrame(this,m_project);
-		var_frame->Show();
-	}
-		*/
 		break;
 	case ID_SAVE_CASE_DEFAULTS:
 		if (Case *cc = GetCurrentCase())
@@ -530,6 +527,9 @@ void MainWindow::OnCommand( wxCommandEvent &evt )
 			std::vector<Case*> cases;
 			cases.push_back(cc);
 			CaseVarGrid(cases);
+			wxArrayString case_names = m_project.GetCaseNames();
+			VariableGridFrame *var_frame = new VariableGridFrame(this, cases, case_names);
+			var_frame->Show();
 		}
 		break;
 	case ID_CASE_COMPARE:
@@ -537,6 +537,9 @@ void MainWindow::OnCommand( wxCommandEvent &evt )
 		{
 			std::vector<Case*> cases = m_project.GetCases();
 			CaseVarGrid(cases);
+			wxArrayString case_names = m_project.GetCaseNames();
+			VariableGridFrame *var_frame = new VariableGridFrame(this, cases, case_names);
+			var_frame->Show();
 		}
 		break;
 	case wxID_SAVEAS:
