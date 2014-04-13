@@ -21,9 +21,13 @@ public:
 	virtual wxString GetValue(int row, int col);
 	virtual void SetValue(int row, int col, const wxString& value);
 	virtual wxString GetColLabelValue(int col);
+	void Sort(int col, bool ascending);
+
 private:
 	int m_rows;
 	int m_cols;
+	bool m_sorted;
+	wxArrayInt m_sorted_index;
 	std::vector<Case*> m_cases;
 	wxArrayString m_col_hdrs;
 	wxArrayString m_var_names;
@@ -39,6 +43,10 @@ public:
 private:
 	wxGrid *m_grid;
 	VariableGridData *m_griddata;
+
+	void OnGridColSort(wxGridEvent& event);
+
+	DECLARE_EVENT_TABLE();
 };
 
 #endif

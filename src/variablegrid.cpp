@@ -7,7 +7,7 @@
 
 VariableGridData::VariableGridData(std::vector<Case *> &cases, wxArrayString &case_names)
 {
-
+	m_sorted = false;
 	m_cases = cases;
 	if (m_cases.size() > 0)
 	{
@@ -43,6 +43,8 @@ VariableGridData::VariableGridData(std::vector<Case *> &cases, wxArrayString &ca
 		}
 
 		m_rows = var_names.size();
+		for (int row = 0; row < m_rows; row++)
+			m_sorted_index.Add(row);
 
 		// variable labels
 		for (std::set<wxString>::iterator idx = var_names.begin(); idx != var_names.end(); ++idx)
@@ -142,14 +144,16 @@ wxString VariableGridData::GetColLabelValue(int col)
 
 wxString VariableGridData::GetValue(int row, int col)
 {
+	int lookup_row = row;
+	if (m_sorted) lookup_row = m_sorted_index[row];
 	if (col == 0) // variable name
-		return m_var_names[row];
+		return m_var_names[lookup_row];
 	else if (col == 1) // variable label
-		return m_var_labels[row];
+		return m_var_labels[lookup_row];
 	else // get var table and value
 	{
-		if (m_var_table_vec[col - 2].Get(m_var_names[row]))
-			return m_var_table_vec[col - 2].Get(m_var_names[row])->AsString();
+		if (m_var_table_vec[col - 2].Get(m_var_names[lookup_row]))
+			return m_var_table_vec[col - 2].Get(m_var_names[lookup_row])->AsString();
 		else
 			return wxEmptyString;
 	}
@@ -160,6 +164,44 @@ void VariableGridData::SetValue(int row, int col, const wxString& value)
 	// TODO
 }
 
+
+
+void VariableGridData::Sort(int col, bool ascending)
+{
+	// get all values for column
+	m_sorted = false;
+	wxArrayString col_values;
+	for (int row = 0; row < m_rows; row++)
+		col_values.Add(GetValue(row, col));
+	wxArrayString sorted_col_value(col_values);
+	// sort 
+	sorted_col_value.Sort(!ascending);
+	// update index to get value
+	// TODO - handle same values
+
+	for (int row = 0; row < m_rows; row++)
+		m_sorted_index[row] = -1;
+	for (int row = 0; row < m_rows; row++)
+		{
+		int ndx = col_values.Index(sorted_col_value[row]);
+		if (m_sorted_index.Index(ndx) != wxNOT_FOUND)
+			col_values[ndx] = "|||||||||"; // hopefully not in original list
+		ndx = col_values.Index(sorted_col_value[row]);
+		m_sorted_index[row] = ndx;
+	}
+	m_sorted = true;
+}
+
+
+
+BEGIN_EVENT_TABLE(VariableGridFrame, wxFrame)
+
+EVT_GRID_COL_SORT(VariableGridFrame::OnGridColSort)
+//EVT_GRID_COL_MOVE(VariableGridFrame::OnGridColMove)
+//EVT_GRID_COL_SIZE(VariableGridFrame::OnGridColSize)
+
+//EVT_IDLE(VariableGridFrame::OnIdle)
+END_EVENT_TABLE()
 
 VariableGridFrame::VariableGridFrame(wxWindow *parent, std::vector<Case *> &cases, wxArrayString &case_names) : wxFrame(parent, wxID_ANY, "Variable Grid", wxDefaultPosition, wxSize(400, 700))
 {
@@ -176,7 +218,11 @@ VariableGridFrame::VariableGridFrame(wxWindow *parent, std::vector<Case *> &case
 		m_griddata = new VariableGridData(cases, case_names);
 
 		m_grid = new wxGrid(this, wxID_ANY);
-		m_grid->Freeze();
+//		m_grid->UseNativeColHeader();
+		m_grid->HideRowLabels();
+
+
+//		m_grid->Freeze();
 		m_grid->SetTable(m_griddata, true, wxGrid::wxGridSelectRows);
 		/*
 		// wxGrid only support 6500 characters per cell (empirically determined) - use 1024 for display
@@ -227,8 +273,16 @@ VariableGridFrame::VariableGridFrame(wxWindow *parent, std::vector<Case *> &case
 			grid->SetColumnWidth(col, col_width[col]);
 		}
 		*/
-		m_grid->Thaw();
+//		m_grid->Thaw();
 
 		Show();
 	}
+}
+
+void VariableGridFrame::OnGridColSort(wxGridEvent& event)
+{
+	const int col = event.GetCol();
+	m_griddata->Sort(col, !(m_grid->IsSortingBy(col) &&
+		m_grid->IsSortOrderAscending()));
+
 }
