@@ -1,7 +1,6 @@
 #include <algorithm>
 #include <set>
 
-
 #include "variablegrid.h"
 
 
@@ -59,58 +58,6 @@ VariableGridData::VariableGridData(std::vector<Case *> &cases, wxArrayString &ca
 			m_var_names.push_back(*idx);
 		}
 
-		/*
-		// wxGrid only support 6500 characters per cell (empirically determined) - use 1024 for display
-		size_t col = 0, row = 0;
-		int width, height;
-		std::vector<int> col_width(num_cols, 60);
-		for (std::set<wxString>::iterator idx = var_names.begin(); idx != var_names.end(); ++idx)
-		{
-			GetTextExtent(*idx, &width, &height);
-			if ((width + 10) > col_width[col]) col_width[col] = width + 10;
-			grid->SetCellValue(row, col++, *idx); //name
-			if (row < var_labels.Count())
-			{
-				GetTextExtent(var_labels[row], &width, &height);
-				if ((width + 10) > col_width[col]) col_width[col] = width + 10;
-				grid->SetCellValue(row, col++, var_labels[row]); //label
-			}
-			for (std::vector<VarTable>::iterator it = var_table_vec.begin(); it != var_table_vec.end(); ++it)
-			{
-				wxString str_val = "";
-				if (it->Get(*idx)) str_val = it->Get(*idx)->AsString();
-				if (str_val.Length() > 1024) str_val = str_val.Left(1024) + "...";
-				grid->SetCellValue(row, col++, str_val);
-			}
-			row++;
-			col = 0;
-		}
-
-		// go through all rows for case comparison and only show unequal values
-		if (m_cases.size() > 1)
-		{
-			for (row = 0; row < num_rows; row++)
-			{
-				wxString str_val = grid->GetCellValue(row, 2);
-				bool same_val = true;
-				for (col = 3; col < num_cols; col++)
-					same_val = same_val && (str_val == grid->GetCellValue(row, col));
-				if (same_val) grid->HideRow(row);
-			}
-		}
-		//grid->AutoSizeColumns();
-		// column headers
-		for (col = 0; col < col_hdrs.Count(); col++)
-		{
-			grid->SetColLabelValue(col, col_hdrs[col]);
-			GetTextExtent(col_hdrs[col], &width, &height);
-			if ((width + 10) > col_width[col]) col_width[col] = width + 10;
-			grid->SetColumnWidth(col, col_width[col]);
-		}
-		grid->Thaw();
-
-		frame->Show();
-		*/
 	}
 
 }
@@ -193,87 +140,117 @@ void VariableGridData::Sort(int col, bool ascending)
 }
 
 
+wxString VariableGridData::GetTypeName(int row, int col)
+{
+	if ((col > -1) && (col < 2))
+		return wxGRID_VALUE_STRING;
+	else if (col < m_cols)
+	{
+		int lookup_row = row;
+		if (m_sorted) lookup_row = m_sorted_index[row];
+		if (m_var_table_vec[col - 2].Get(m_var_names[lookup_row]))
+		{
+			VarValue *vv = m_var_table_vec[col - 2].Get(m_var_names[lookup_row]);
+			switch (vv->Type())
+			{
+			case VV_ARRAY:
+			case VV_MATRIX:
+			case VV_TABLE:
+				return "autowrapstring";
+				break;
+			case VV_NUMBER:
+			case VV_STRING:
+			default:
+				return wxGRID_VALUE_STRING;
+				break;
+			}
+			return m_var_table_vec[col - 2].Get(m_var_names[lookup_row])->AsString();
+		}
+		else
+			return wxGRID_VALUE_STRING;
+	}
+	else
+		return wxGRID_VALUE_STRING;
+}
+
+
 
 BEGIN_EVENT_TABLE(VariableGridFrame, wxFrame)
 
 EVT_GRID_COL_SORT(VariableGridFrame::OnGridColSort)
-//EVT_GRID_COL_MOVE(VariableGridFrame::OnGridColMove)
-//EVT_GRID_COL_SIZE(VariableGridFrame::OnGridColSize)
-
-//EVT_IDLE(VariableGridFrame::OnIdle)
 END_EVENT_TABLE()
 
-VariableGridFrame::VariableGridFrame(wxWindow *parent, std::vector<Case *> &cases, wxArrayString &case_names) : wxFrame(parent, wxID_ANY, "Variable Grid", wxDefaultPosition, wxSize(400, 700))
+VariableGridFrame::VariableGridFrame(wxWindow *parent, std::vector<Case *> &cases, wxArrayString &case_names) : wxFrame(parent, wxID_ANY, "Variable Grid", wxDefaultPosition, wxSize(400, 700)), m_cases(cases)
 {
 
-	if (cases.size() > 0)
+	if (m_cases.size() > 0)
 	{
 		wxString title;
-		if (cases.size() == 1)
+		if (m_cases.size() == 1)
 			title = "Current Case Values: " + case_names[0];
 		else
 			title = "Case comparison";
 		
 		SetTitle(title);
-		m_griddata = new VariableGridData(cases, case_names);
+		m_griddata = new VariableGridData(m_cases, case_names);
 
 		m_grid = new wxGrid(this, wxID_ANY);
-//		m_grid->UseNativeColHeader();
+//		m_grid->UseNativeColHeader(); // does not load correctly
+		m_grid->RegisterDataType("autowrapstring", new wxGridCellAutoWrapStringRenderer, new wxGridCellAutoWrapStringEditor);
 		m_grid->HideRowLabels();
 
 
-//		m_grid->Freeze();
+		m_grid->Freeze();
 		m_grid->SetTable(m_griddata, true, wxGrid::wxGridSelectRows);
-		/*
-		// wxGrid only support 6500 characters per cell (empirically determined) - use 1024 for display
-		size_t col = 0, row = 0;
+//		m_grid->AutoSize(); // fails with autowrap string renderer
+
+
+		// column widths
+		int col = 0, row = 0;
 		int width, height;
-		std::vector<int> col_width(num_cols, 60);
-		for (std::set<wxString>::iterator idx = var_names.begin(); idx != var_names.end(); ++idx)
+		std::vector<int> col_width(m_grid->GetNumberCols(), 60);
+		for (row = 0; row< m_grid->GetNumberRows(); row++)
 		{
-			GetTextExtent(*idx, &width, &height);
-			if ((width + 10) > col_width[col]) col_width[col] = width + 10;
-			grid->SetCellValue(row, col++, *idx); //name
-			if (row < var_labels.Count())
+			if (m_griddata->GetTypeName(row, 2) != "autowrapstring")
 			{
-				GetTextExtent(var_labels[row], &width, &height);
-				if ((width + 10) > col_width[col]) col_width[col] = width + 10;
-				grid->SetCellValue(row, col++, var_labels[row]); //label
+				for (col = 0; col < m_grid->GetNumberCols(); col++)
+				{
+					GetTextExtent(m_grid->GetCellValue(row, col), &width, &height);
+					if ((width + 10) > col_width[col]) col_width[col] = width + 10;
+				}
 			}
-			for (std::vector<VarTable>::iterator it = var_table_vec.begin(); it != var_table_vec.end(); ++it)
-			{
-				wxString str_val = "";
-				if (it->Get(*idx)) str_val = it->Get(*idx)->AsString();
-				if (str_val.Length() > 1024) str_val = str_val.Left(1024) + "...";
-				grid->SetCellValue(row, col++, str_val);
-			}
-			row++;
-			col = 0;
 		}
 
+		for (col = 0; col < m_grid->GetNumberCols(); col++)
+		{
+			GetTextExtent(m_grid->GetColLabelValue(col), &width, &height);
+			if ((width + 10) > col_width[col]) col_width[col] = width + 10;
+			if (col_width[col] > 250) col_width[col] = 250;
+			m_grid->SetColumnWidth(col, col_width[col]);
+		}
+
+		/*
+		// TODO - radio button group for show all, same, different
 		// go through all rows for case comparison and only show unequal values
+		// skip same values or all empty strings
 		if (m_cases.size() > 1)
 		{
-			for (row = 0; row < num_rows; row++)
+			for (int row = 0; row < m_grid->GetNumberRows(); row++)
 			{
-				wxString str_val = grid->GetCellValue(row, 2);
+				wxString str_val = m_grid->GetCellValue(row, 2);
 				bool same_val = true;
-				for (col = 3; col < num_cols; col++)
-					same_val = same_val && (str_val == grid->GetCellValue(row, col));
-				if (same_val) grid->HideRow(row);
+				bool empty_val = (m_grid->GetCellValue(row, 2) == wxEmptyString);
+				for (int col = 3; col < m_grid->GetNumberCols(); col++)
+				{
+					same_val = same_val && (str_val == m_grid->GetCellValue(row, col));
+					empty_val = empty_val || (m_grid->GetCellValue(row, col) == wxEmptyString);
+				}
+				if (same_val || empty_val) m_grid->HideRow(row);
 			}
 		}
-		//grid->AutoSizeColumns();
-		// column headers
-		for (col = 0; col < col_hdrs.Count(); col++)
-		{
-			grid->SetColLabelValue(col, col_hdrs[col]);
-			GetTextExtent(col_hdrs[col], &width, &height);
-			if ((width + 10) > col_width[col]) col_width[col] = width + 10;
-			grid->SetColumnWidth(col, col_width[col]);
-		}
 		*/
-//		m_grid->Thaw();
+		UpdateGrid();
+		m_grid->Thaw();
 
 		Show();
 	}
@@ -281,8 +258,29 @@ VariableGridFrame::VariableGridFrame(wxWindow *parent, std::vector<Case *> &case
 
 void VariableGridFrame::OnGridColSort(wxGridEvent& event)
 {
+	m_grid->Freeze();
 	const int col = event.GetCol();
 	m_griddata->Sort(col, !(m_grid->IsSortingBy(col) &&
 		m_grid->IsSortOrderAscending()));
+	UpdateGrid();
+	m_grid->Thaw();
+}
 
+
+void VariableGridFrame::UpdateGrid()
+{
+	for (int row = 0; row < m_grid->GetNumberRows(); row++)
+	{
+		//if (m_grid->IsRowShown(row))
+		{
+			bool big_height = false;
+			for (int col = 2; col < m_grid->GetNumberCols(); col++)
+				big_height = (big_height || (m_griddata->GetTypeName(row, 2) == "autowrapstring"));
+
+			if (big_height)
+				m_grid->SetRowHeight(row, 10 * m_grid->GetDefaultRowSize());
+			else
+				m_grid->SetRowHeight(row, m_grid->GetDefaultRowSize());
+		}
+	}
 }
