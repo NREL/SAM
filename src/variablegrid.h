@@ -22,7 +22,7 @@ public:
 	virtual void SetValue(int row, int col, const wxString& value);
 	virtual wxString GetColLabelValue(int col);
 	virtual wxString GetTypeName(int row, int col);
-
+	bool ShowRow(int row, int comparison_type);
 	void Sort(int col, bool ascending);
 
 private:
@@ -46,9 +46,12 @@ private:
 	wxGrid *m_grid;
 	VariableGridData *m_griddata;
 	std::vector<Case*> m_cases;
+	int m_compare_show_type;
 
 	void OnGridColSort(wxGridEvent& event);
 	void UpdateGrid();
+	void OnCommand(wxCommandEvent &evt);
+
 
 	DECLARE_EVENT_TABLE();
 };

@@ -1,8 +1,16 @@
 #include <algorithm>
 #include <set>
 
+#include <wx/sizer.h>
+#include <wx/bitmap.h>
+
+#include <wex/metro.h>
+
 #include "variablegrid.h"
 
+#define COMPARE_SHOW_ALL 0
+#define COMPARE_SHOW_DIFFERENT 1
+#define COMPARE_SHOW_SAME 2
 
 VariableGridData::VariableGridData(std::vector<Case *> &cases, wxArrayString &case_names)
 {
@@ -173,11 +181,70 @@ wxString VariableGridData::GetTypeName(int row, int col)
 		return wxGRID_VALUE_STRING;
 }
 
+bool VariableGridData::ShowRow(int row, int comparison_type)
+{
+	bool show = true;
+	if (m_cases.size() > 1) // comparison
+	{
+		switch (comparison_type)
+		{
+		case COMPARE_SHOW_DIFFERENT:
+		case COMPARE_SHOW_SAME:
+		{
+				int lookup_row = row;
+				if (m_sorted) lookup_row = m_sorted_index[row];
+				if (m_var_table_vec[0].Get(m_var_names[lookup_row]))
+				{
+					VarValue *vv = m_var_table_vec[0].Get(m_var_names[lookup_row]);
+					int row_var_type = vv->Type();
+					bool row_varvalues_same = true;
+					for (int col = 1; col < m_cases.size(); col++)
+					{
+						if (m_var_table_vec[col].Get(m_var_names[lookup_row]))
+						{
+							VarValue *vv_new = m_var_table_vec[col].Get(m_var_names[lookup_row]);
+							if (vv->Type() == vv_new->Type())
+								row_varvalues_same = (row_varvalues_same && (vv->ValueEqual(*vv_new)));
+							else
+							{
+								show = false; // different variable type in row - should not happen
+								continue;
+							}
+						}
+						else
+						{
+							show = false; // no variable value for (row, col)
+							continue;
+						}
+					}
+					if (comparison_type == COMPARE_SHOW_DIFFERENT)
+						show = (show && !row_varvalues_same);
+					else
+						show = (show && row_varvalues_same);
+				}
+				else
+					show = false; // no variable value for (row, col=0)
+			}
+			break;
+		case COMPARE_SHOW_ALL:
+		default:
+			break;
+		}
+	}
+	return show;
+}
 
+enum {
+	__idFirst = wxID_HIGHEST + 992,
+	ID_SHOW_DIFFERENT, ID_SHOW_SAME, ID_SHOW_ALL
+};
 
 BEGIN_EVENT_TABLE(VariableGridFrame, wxFrame)
+	EVT_BUTTON(ID_SHOW_DIFFERENT, VariableGridFrame::OnCommand)
+	EVT_BUTTON(ID_SHOW_SAME, VariableGridFrame::OnCommand)
+	EVT_BUTTON(ID_SHOW_ALL, VariableGridFrame::OnCommand)
 
-EVT_GRID_COL_SORT(VariableGridFrame::OnGridColSort)
+	EVT_GRID_COL_SORT(VariableGridFrame::OnGridColSort)
 END_EVENT_TABLE()
 
 VariableGridFrame::VariableGridFrame(wxWindow *parent, std::vector<Case *> &cases, wxArrayString &case_names) : wxFrame(parent, wxID_ANY, "Variable Grid", wxDefaultPosition, wxSize(400, 700)), m_cases(cases)
@@ -192,12 +259,19 @@ VariableGridFrame::VariableGridFrame(wxWindow *parent, std::vector<Case *> &case
 			title = "Case comparison";
 		
 		SetTitle(title);
+
 		m_griddata = new VariableGridData(m_cases, case_names);
 
 		m_grid = new wxGrid(this, wxID_ANY);
+
+
+
+
 //		m_grid->UseNativeColHeader(); // does not load correctly
 		m_grid->RegisterDataType("autowrapstring", new wxGridCellAutoWrapStringRenderer, new wxGridCellAutoWrapStringEditor);
 		m_grid->HideRowLabels();
+
+
 
 
 		m_grid->Freeze();
@@ -252,7 +326,22 @@ VariableGridFrame::VariableGridFrame(wxWindow *parent, std::vector<Case *> &case
 		UpdateGrid();
 		m_grid->Thaw();
 
-		Show();
+
+		wxBoxSizer *tools = new wxBoxSizer(wxHORIZONTAL);
+		tools->Add(new wxMetroButton(this, ID_SHOW_DIFFERENT, "Show differences"), wxALL | wxEXPAND, 0);
+		tools->Add(new wxMetroButton(this, ID_SHOW_SAME, "Show equal values"), wxALL | wxEXPAND, 0);
+		tools->Add(new wxMetroButton(this, ID_SHOW_ALL, "Show all"), wxALL | wxEXPAND, 0);
+
+
+		wxBoxSizer *sizer = new wxBoxSizer(wxVERTICAL);
+		sizer->Add(tools, 0, wxALL | wxEXPAND, 0);
+		sizer->Add(m_grid, 1, wxALL | wxEXPAND, 0);
+		SetSizer(sizer);
+
+		m_compare_show_type = COMPARE_SHOW_ALL;
+
+		if (m_cases.size() < 2)
+			tools->Show(false);
 	}
 }
 
@@ -271,8 +360,9 @@ void VariableGridFrame::UpdateGrid()
 {
 	for (int row = 0; row < m_grid->GetNumberRows(); row++)
 	{
-		//if (m_grid->IsRowShown(row))
+		if (m_griddata->ShowRow(row, m_compare_show_type))
 		{
+			m_grid->ShowRow(row);
 			bool big_height = false;
 			for (int col = 2; col < m_grid->GetNumberCols(); col++)
 				big_height = (big_height || (m_griddata->GetTypeName(row, 2) == "autowrapstring"));
@@ -282,5 +372,33 @@ void VariableGridFrame::UpdateGrid()
 			else
 				m_grid->SetRowHeight(row, m_grid->GetDefaultRowSize());
 		}
+		else
+			m_grid->HideRow(row);
 	}
+}
+
+void VariableGridFrame::OnCommand(wxCommandEvent &evt)
+{
+	switch (evt.GetId())
+	{
+	case ID_SHOW_DIFFERENT:
+		m_compare_show_type = COMPARE_SHOW_DIFFERENT;
+		m_grid->Freeze();
+		UpdateGrid();
+		m_grid->Thaw();
+		break;
+	case ID_SHOW_SAME:
+		m_compare_show_type = COMPARE_SHOW_SAME;
+		m_grid->Freeze();
+		UpdateGrid();
+		m_grid->Thaw();
+		break;
+	case ID_SHOW_ALL:
+		m_compare_show_type = COMPARE_SHOW_ALL;
+		m_grid->Freeze();
+		UpdateGrid();
+		m_grid->Thaw();
+		break;
+	}
+
 }
