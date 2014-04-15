@@ -254,6 +254,57 @@ VarValue &VarValue::operator=( const VarValue &rhs )
 	return *this;
 }
 
+
+bool VarValue::ValueEqual( VarValue &rhs)
+{
+	bool equal = false;
+	if (m_type == rhs.m_type)
+	{
+		std::vector<VarValue*> vv_vec1, vv_vec2;
+		switch (m_type)
+		{
+		case VV_INVALID: // this and rhs are both invalid
+			equal = true;
+			break;
+		case VV_NUMBER:
+		case VV_ARRAY:
+		case VV_MATRIX:
+			equal = ((m_val.nrows() == rhs.m_val.nrows()) && (m_val.ncols() == rhs.m_val.ncols()));
+			if (equal)
+				for (size_t r = 0; r < m_val.nrows(); r++)
+					for (size_t c = 0; c < m_val.ncols(); c++)
+						if (equal)
+							equal = equal && (m_val(r, c) == rhs.m_val(r, c));
+						else
+							break;
+			break;
+		case VV_TABLE: // not working correctly 
+//			equal = (m_tab.size() == rhs.m_tab.size());
+			if (equal)
+				for (VarTable::iterator it1 = m_tab.begin(); it1 != m_tab.end(); ++it1)
+					if (equal)
+					{ 
+						VarTable::iterator it2 = find(rhs.m_tab.begin(), rhs.m_tab.end(), *it1);
+						if (it2 != rhs.m_tab.end())
+							equal = equal && (it1->second->ValueEqual(*(it2->second)));
+						else
+						{
+							equal = false;
+							break;
+						}
+					}
+					else
+						break;
+			break;
+		case VV_STRING:
+			equal = (m_str == rhs.m_str);
+			break;
+		}
+	}
+	return equal;
+}
+
+
 void VarValue::Copy( const VarValue &rhs )
 {
 	if ( this != &rhs )
