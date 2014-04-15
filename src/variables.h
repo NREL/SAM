@@ -68,6 +68,7 @@ public:
 	virtual ~VarValue();
 
 	VarValue &operator=( const VarValue &rhs );
+	bool ValueEqual( VarValue &rhs);
 	void Copy( const VarValue &rhs );
 
 	void Write( wxOutputStream & );
