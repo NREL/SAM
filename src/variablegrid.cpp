@@ -435,5 +435,6 @@ void VariableGridFrame::OnCaseEvent(Case *, CaseEvent &evt)
 	{
 		// refresh when any case values change
 		m_grid->ForceRefresh(); // does not work with AutoWrapString Renderer with TOD schedule updating.
+		UpdateGrid(); // for comparison views
 	}
 }
