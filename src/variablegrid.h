@@ -34,11 +34,12 @@ private:
 	wxArrayString m_col_hdrs;
 	wxArrayString m_var_names;
 	wxArrayString m_var_labels;
-	std::vector<VarTable> m_var_table_vec;
-	std::vector<VarInfoLookup> m_var_info_lookup_vec;
+	std::vector<VarTable*> m_var_table_vec;
+	std::vector<VarInfoLookup*> m_var_info_lookup_vec;
+
 };
 
-class VariableGridFrame : public wxFrame
+class VariableGridFrame : public wxFrame, CaseEventListener
 {
 public:
 	VariableGridFrame(wxWindow *parent, std::vector<Case *> &cases, wxArrayString &case_names);
@@ -52,6 +53,8 @@ private:
 	void UpdateGrid();
 	void OnCommand(wxCommandEvent &evt);
 
+	// update data when values in case change
+	virtual void OnCaseEvent(Case *, CaseEvent &);
 
 	DECLARE_EVENT_TABLE();
 };
