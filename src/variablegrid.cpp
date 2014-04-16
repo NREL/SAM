@@ -23,8 +23,8 @@ VariableGridData::VariableGridData(std::vector<Case *> &cases, wxArrayString &ca
 		if (m_cases.size() == 1)
 		{
 			m_col_hdrs.push_back(case_names[0]);
-			m_var_table_vec.push_back(m_cases[0]->Values());
-			m_var_info_lookup_vec.push_back(m_cases[0]->Variables());
+			m_var_table_vec.push_back(&m_cases[0]->Values());
+			m_var_info_lookup_vec.push_back(&m_cases[0]->Variables());
 		}
 		else
 		{
@@ -32,8 +32,8 @@ VariableGridData::VariableGridData(std::vector<Case *> &cases, wxArrayString &ca
 			for (std::vector<Case*>::iterator it = m_cases.begin(); it != m_cases.end(); ++it)
 			{
 				m_col_hdrs.push_back(case_names[i++]);
-				m_var_table_vec.push_back((*it)->Values());
-				m_var_info_lookup_vec.push_back((*it)->Variables());
+				m_var_table_vec.push_back(&(*it)->Values());
+				m_var_info_lookup_vec.push_back(&(*it)->Variables());
 			}
 		}
 
@@ -42,9 +42,9 @@ VariableGridData::VariableGridData(std::vector<Case *> &cases, wxArrayString &ca
 
 		std::set<wxString> var_names;
 		// variable names
-		for (std::vector<VarTable>::iterator it = m_var_table_vec.begin(); it != m_var_table_vec.end(); ++it)
+		for (std::vector<VarTable*>::iterator it = m_var_table_vec.begin(); it != m_var_table_vec.end(); ++it)
 		{
-			wxArrayString as = it->ListAll();
+			wxArrayString as = (*it)->ListAll();
 			for (size_t i = 0; i < as.Count(); i++)
 				var_names.insert(as[i]);
 		}
@@ -57,10 +57,10 @@ VariableGridData::VariableGridData(std::vector<Case *> &cases, wxArrayString &ca
 		for (std::set<wxString>::iterator idx = var_names.begin(); idx != var_names.end(); ++idx)
 		{
 			wxString str_label = " ";
-			for (std::vector<VarInfoLookup>::iterator it = m_var_info_lookup_vec.begin(); it != m_var_info_lookup_vec.end(); ++it)
+			for (std::vector<VarInfoLookup*>::iterator it = m_var_info_lookup_vec.begin(); it != m_var_info_lookup_vec.end(); ++it)
 			{
-				if ((*it).Lookup(*idx))
-					str_label = (*it).Label(*idx);
+				if ((*it)->Lookup(*idx))
+					str_label = (*it)->Label(*idx);
 			}
 			m_var_labels.push_back(str_label);
 			m_var_names.push_back(*idx);
@@ -107,8 +107,8 @@ wxString VariableGridData::GetValue(int row, int col)
 		return m_var_labels[lookup_row];
 	else // get var table and value
 	{
-		if (m_var_table_vec[col - 2].Get(m_var_names[lookup_row]))
-			return m_var_table_vec[col - 2].Get(m_var_names[lookup_row])->AsString();
+		if (m_var_table_vec[col - 2]->Get(m_var_names[lookup_row]))
+			return m_var_table_vec[col - 2]->Get(m_var_names[lookup_row])->AsString();
 		else
 			return wxEmptyString;
 	}
@@ -116,7 +116,28 @@ wxString VariableGridData::GetValue(int row, int col)
 
 void VariableGridData::SetValue(int row, int col, const wxString& value)
 { // must update labels and values as necessary
-	// TODO
+	// TODO - update label 
+	if (col == 0)
+		return; // no updating of variable name allowed here!
+	else if (col == 1)
+		// TODO - update label and update m_var_labels
+		return;
+	else if ((col > 1) && (col < (m_cases.size()+2)))
+	{
+		int lookup_row = row;
+		if (m_sorted) lookup_row = m_sorted_index[row];
+		if (m_var_table_vec[col - 2]->Get(m_var_names[lookup_row]))
+		{
+			// fails to update case value
+			VarValue *vv = m_var_table_vec[col - 2]->Get(m_var_names[lookup_row]);
+			//VarValue *vv = m_cases[col - 2]->Values().Get(m_var_names[lookup_row]);
+			if (vv) // TODO - check for table updating
+			{
+				VarValue::Parse(vv->Type(), value, *vv);
+				m_cases[col - 2]->VariableChanged(m_var_names[lookup_row]);
+			}
+		}
+	}
 }
 
 
@@ -156,9 +177,9 @@ wxString VariableGridData::GetTypeName(int row, int col)
 	{
 		int lookup_row = row;
 		if (m_sorted) lookup_row = m_sorted_index[row];
-		if (m_var_table_vec[col - 2].Get(m_var_names[lookup_row]))
+		if (m_var_table_vec[col - 2]->Get(m_var_names[lookup_row]))
 		{
-			VarValue *vv = m_var_table_vec[col - 2].Get(m_var_names[lookup_row]);
+			VarValue *vv = m_var_table_vec[col - 2]->Get(m_var_names[lookup_row]);
 			switch (vv->Type())
 			{
 			case VV_ARRAY:
@@ -172,7 +193,7 @@ wxString VariableGridData::GetTypeName(int row, int col)
 				return wxGRID_VALUE_STRING;
 				break;
 			}
-			return m_var_table_vec[col - 2].Get(m_var_names[lookup_row])->AsString();
+			return m_var_table_vec[col - 2]->Get(m_var_names[lookup_row])->AsString();
 		}
 		else
 			return wxGRID_VALUE_STRING;
@@ -193,16 +214,16 @@ bool VariableGridData::ShowRow(int row, int comparison_type)
 		{
 				int lookup_row = row;
 				if (m_sorted) lookup_row = m_sorted_index[row];
-				if (m_var_table_vec[0].Get(m_var_names[lookup_row]))
+				if (m_var_table_vec[0]->Get(m_var_names[lookup_row]))
 				{
-					VarValue *vv = m_var_table_vec[0].Get(m_var_names[lookup_row]);
+					VarValue *vv = m_var_table_vec[0]->Get(m_var_names[lookup_row]);
 					int row_var_type = vv->Type();
 					bool row_varvalues_same = true;
 					for (int col = 1; col < m_cases.size(); col++)
 					{
-						if (m_var_table_vec[col].Get(m_var_names[lookup_row]))
+						if (m_var_table_vec[col]->Get(m_var_names[lookup_row]))
 						{
-							VarValue *vv_new = m_var_table_vec[col].Get(m_var_names[lookup_row]);
+							VarValue *vv_new = m_var_table_vec[col]->Get(m_var_names[lookup_row]);
 							if (vv->Type() == vv_new->Type())
 								row_varvalues_same = (row_varvalues_same && (vv->ValueEqual(*vv_new)));
 							else
@@ -234,6 +255,8 @@ bool VariableGridData::ShowRow(int row, int comparison_type)
 	return show;
 }
 
+
+
 enum {
 	__idFirst = wxID_HIGHEST + 992,
 	ID_SHOW_DIFFERENT, ID_SHOW_SAME, ID_SHOW_ALL
@@ -252,6 +275,9 @@ VariableGridFrame::VariableGridFrame(wxWindow *parent, std::vector<Case *> &case
 
 	if (m_cases.size() > 0)
 	{
+		for (size_t i = 0; i < m_cases.size(); i++)
+			m_cases[i]->AddListener(this);
+
 		wxString title;
 		if (m_cases.size() == 1)
 			title = "Current Case Values: " + case_names[0];
@@ -401,4 +427,13 @@ void VariableGridFrame::OnCommand(wxCommandEvent &evt)
 		break;
 	}
 
+}
+
+void VariableGridFrame::OnCaseEvent(Case *, CaseEvent &evt)
+{
+	if (evt.GetType() == CaseEvent::VARS_CHANGED)
+	{
+		// refresh when any case values change
+		m_grid->ForceRefresh(); // does not work with AutoWrapString Renderer with TOD schedule updating.
+	}
 }
