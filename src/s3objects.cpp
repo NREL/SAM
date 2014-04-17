@@ -709,6 +709,11 @@ double GetLength( double bx, double by, double bw, double bh, double br,
 		xx00 = 0;
 		yy00 = bh;
 	}
+	else if ( mode == 3 )
+	{
+		xx00 = -bw;
+		yy00 = 0;
+	}
 
 	double r = br*M_PI/180.0;
 	double xx0 = xx00*cos(r)-yy00*sin(r);
@@ -772,10 +777,10 @@ bool VBoxObject::OnHandleMoved( VHandle *hh, VPlaneType plane )
 	else if ( id == HH_LEFT) 
 	{
 		double xsh = x, ysh = y;
-		double len = GetLength( bx, by, bw, bh, br, x, y, 1, &xsh, &ysh );		
-		Property("X").Set(xsh);
-		Property("Y").Set(ysh);
-		Property("Width").Set(len);
+		double len = GetLength( bx, by, bw, bh, br, x, y, 3, &xsh, &ysh );		
+		Property("X").Set(x+xsh);
+		Property("Y").Set(x+ysh);
+		Property("Width").Set(bw + len);
 
 		return true;
 	}*/
