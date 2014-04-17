@@ -941,7 +941,10 @@ void ShadeTool::OnCommand( wxCommandEvent &evt)
 	switch (evt.GetId())
 	{
 	case wxID_SAVE: m_view->SaveScene(); break;
-	case wxID_OPEN: m_view->LoadScene(); break;
+	case wxID_OPEN: 		
+		if( m_view->LoadScene() )
+			m_book->SetSelection( PG_SCENE );
+		break;
 	case ID_LOCATION:
 		m_book->SetSelection( PG_LOCATION );
 		break;
