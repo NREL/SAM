@@ -60,7 +60,7 @@ public:
 	void DeleteSelected();
 	void ShowAll();
 	void SaveScene();
-	void LoadScene();
+	bool LoadScene();
 	bool WriteToFile( const wxString &file );
 	bool LoadFromFile( const wxString &file );
 	void ChangeMap( const wxBitmap &map, double mpp );

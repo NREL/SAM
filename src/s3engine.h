@@ -72,7 +72,7 @@ public:
 	void get_azal( double *azi, double *alt );
 	void set_azal( double &azi, double &alt);
 	void get_offset( double *xoff, double *yoff, double *zoff );
-	void get_view_normal( double v[3] );
+	void get_view_normal( double *vx, double *vy, double *vz );
 
 	void get_xy( double *x, double *y );
 	void get_xyz( double *x, double *y, double *z );
@@ -155,6 +155,7 @@ static const unsigned int SIDES = RIGHT|BACK|FRONT|LEFT;
 
 bool is_backface( const s3d::polygon3d &p );
 void polynormal( const s3d::polygon3d &p, double *x, double *y, double *z );
+double polyareatr( const s3d::polygon3d &p );
 
 class scene
 {
@@ -173,9 +174,7 @@ private:
 	double m_view_x;
 	double m_view_y;
 	double m_view_z;
-
-	double m_vn[3];
-
+	
 	void cull_backfaces( );
 	void sort_polys();
 public:
@@ -229,8 +228,6 @@ public:
 	// set camera location
 	void set_viewxyz( double &x, double &y, double &z);
 	void get_viewxyz( double *x, double *y, double *z);
-
-	void get_viewnormal( double *x, double *y, double *z );
 
 	// compute shade after scene is built
 	void shade( shade_result &result );
