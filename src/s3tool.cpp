@@ -796,7 +796,7 @@ enum { ID_SLIDER = wxID_HIGHEST+441, ID_LAST_SLIDER = ID_SLIDER+100,
 
 	// debugging
 	ID_AZIMUTH, ID_ALTITUDE, ID_SCALE, ID_TRI_TEST, 
-	ID_VIEW_X, ID_VIEW_Y, ID_VIEW_Z,ID_EXPORT_HOURLY, ID_EXPORT_DIURNAL
+	ID_EXPORT_HOURLY, ID_EXPORT_DIURNAL
 };
 
 BEGIN_EVENT_TABLE( ShadeTool, wxPanel )
@@ -822,9 +822,6 @@ BEGIN_EVENT_TABLE( ShadeTool, wxPanel )
 	EVT_TEXT_ENTER(ID_ALTITUDE, ShadeTool::OnDebugCommand)
 	EVT_TEXT_ENTER(ID_SCALE, ShadeTool::OnDebugCommand)
 	EVT_BUTTON(ID_TRI_TEST, ShadeTool::OnDebugCommand)
-	EVT_TEXT_ENTER(ID_VIEW_X, ShadeTool::OnDebugCommand)
-	EVT_TEXT_ENTER(ID_VIEW_Y, ShadeTool::OnDebugCommand)
-	EVT_TEXT_ENTER(ID_VIEW_Z, ShadeTool::OnDebugCommand)
 	EVT_BUTTON(ID_EXPORT_HOURLY, ShadeTool::OnDebugCommand)
 	EVT_BUTTON(ID_EXPORT_DIURNAL, ShadeTool::OnDebugCommand)
 END_EVENT_TABLE()
@@ -840,7 +837,7 @@ ShadeTool::ShadeTool( wxWindow *parent, int id )
 	sizer_tool->Add( new wxMetroButton( this, wxID_SAVE, "Save" ), 0, wxALL|wxEXPAND, 0 );
 	sizer_tool->Add( new wxMetroButton( this, ID_LOCATION, "Location" ), 0, wxALL|wxEXPAND, 0 );
 	sizer_tool->Add( new wxMetroButton( this, ID_CREATE, "Create", wxNullBitmap, wxDefaultPosition, wxDefaultSize, wxMB_DOWNARROW ), 0, wxALL|wxEXPAND, 0 );
-	sizer_tool->Add( new wxMetroButton( this, ID_VIEW_XYZ, "Full scene" ), 0, wxALL|wxEXPAND, 0 );
+	sizer_tool->Add( new wxMetroButton( this, ID_VIEW_XYZ, "3D scene" ), 0, wxALL|wxEXPAND, 0 );
 	sizer_tool->Add( new wxMetroButton( this, ID_VIEW_XY, "Bird's eye" ), 0, wxALL|wxEXPAND, 0 );
 	sizer_tool->Add( new wxMetroButton( this, ID_VIEW_XZ, "Elevations" ), 0, wxALL|wxEXPAND, 0 );
 	sizer_tool->Add( new wxMetroButton( this, ID_ANALYSIS, "Analyze" ), 0, wxALL|wxEXPAND, 0 );
@@ -873,15 +870,6 @@ ShadeTool::ShadeTool( wxWindow *parent, int id )
 	debug_sizer->Add(new wxStaticText(m_debugPanel, wxID_ANY, "scale:"), 0, wxALIGN_CENTER_VERTICAL|wxALL, 4);
 	debug_sizer->Add(m_txtScale = new wxTextCtrl(m_debugPanel, ID_SCALE, "4", wxDefaultPosition, wxSize(70, 24), wxTE_PROCESS_ENTER), 0, wxALL | wxEXPAND, 2);
 	
-	debug_sizer->Add(new wxStaticText(m_debugPanel, wxID_ANY, "view x:"), 0, wxALIGN_CENTER_VERTICAL|wxALL, 4);
-	debug_sizer->Add(m_txtViewX = new wxTextCtrl(m_debugPanel, ID_VIEW_X, "0", wxDefaultPosition, wxSize(70, 24), wxTE_PROCESS_ENTER), 0, wxALL | wxEXPAND, 2);
-	
-	debug_sizer->Add(new wxStaticText(m_debugPanel, wxID_ANY, "view y:"), 0, wxALIGN_CENTER_VERTICAL|wxALL, 4);
-	debug_sizer->Add(m_txtViewY = new wxTextCtrl(m_debugPanel, ID_VIEW_Y, "0", wxDefaultPosition, wxSize(70, 24), wxTE_PROCESS_ENTER), 0, wxALL | wxEXPAND, 2);
-	
-	debug_sizer->Add(new wxStaticText(m_debugPanel, wxID_ANY, "view z:"), 0, wxALIGN_CENTER_VERTICAL|wxALL, 4);
-	debug_sizer->Add(m_txtViewZ = new wxTextCtrl(m_debugPanel, ID_VIEW_Z, "-1e99", wxDefaultPosition, wxSize(70, 24), wxTE_PROCESS_ENTER), 0, wxALL | wxEXPAND, 2);
-
 	debug_sizer->Add(new wxButton(m_debugPanel, ID_EXPORT_HOURLY, "Export Hourly"), 0, wxALL | wxEXPAND, 0);
 	debug_sizer->Add(new wxButton(m_debugPanel, ID_EXPORT_DIURNAL, "Export Diurnal"), 0, wxALL | wxEXPAND, 0);
 	debug_sizer->Add(new wxButton(m_debugPanel, ID_TRI_TEST, "Triangle Test"), 0, wxALL | wxEXPAND, 0);
@@ -1020,17 +1008,6 @@ void ShadeTool::OnDebugCommand( wxCommandEvent &evt )
 				double scale;
 				m_txtScale->GetValue().ToDouble(&scale);
 				m_view->SetScale(scale);
-		}
-		break;
-	case ID_VIEW_X:
-	case ID_VIEW_Y:
-	case ID_VIEW_Z:
-		{
-			double x, y, z;
-			m_txtViewX->GetValue().ToDouble(&x);
-			m_txtViewY->GetValue().ToDouble(&y);
-			m_txtViewZ->GetValue().ToDouble(&z);
-			m_view->SetViewXYZ(x,y,z);
 		}
 		break;
 	case ID_EXPORT_HOURLY:

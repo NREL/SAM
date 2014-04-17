@@ -67,8 +67,6 @@ public:
 	void ShowMap( bool b );
 
 	void SetAzAl( double &az, double &al);
-	void SetViewXYZ( double &x, double &y, double &z);
-	void GetViewXYZ( double *x, double *y, double *z);
 
 	void UpdateModel( VObject *obj );
 	void UpdateAllModels();

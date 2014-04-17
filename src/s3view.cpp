@@ -996,17 +996,19 @@ void View3D::OnPaint( wxPaintEvent & )
 
 	if ( m_mode == SPIN_VIEW )
 	{
-		dc.SetPen( *wxTRANSPARENT_PEN );
-		dc.SetBrush( wxColour( 90, 90, 90, 220 ) );
+		
+		wxColour cshade( 70, 70, 70 );
+		dc.SetPen( wxPen(cshade,1) );
+		dc.SetBrush( wxBrush( cshade, wxSOLID ) );
 		for ( size_t i=0;i<m_shade.shadings.size();i++ )
 		{
 			s3d::polygon3d &shade = m_shade.shadings[i].intersect;
 			Draw( dc, shade, false, xoff, yoff );
 		}
+
 		std::vector<VObject*> sel = GetSelectedObjects();
-		// magenta
-		dc.SetBrush( wxBrush( wxColour(255,0,255, 200) ) );
 		dc.SetPen( *wxTRANSPARENT_PEN );
+		dc.SetBrush( wxBrush( wxColour(255,0,255, 200), wxSOLID ) );
 		std::vector<int> sel_ids;
 		for (size_t i=0; i<sel.size(); i++)
 			sel_ids.push_back(sel[i]->GetId());
@@ -1092,23 +1094,8 @@ void View3D::OnPaint( wxPaintEvent & )
 	double s = m_transform.get_scale();
 	dc.SetFont( *wxNORMAL_FONT );
 	dc.SetTextForeground( *wxBLUE );
-	// shade fraction calculated at same scale for scene, day and year
-//	dc.DrawText(wxString::Format("Azimuth: %.1lf   Altitude: %.1lf   Scale: %.2lf   Shade fraction: %.3lf", azi, alt, s, m_shade.shade_fraction),4, m_winHeight - dc.GetCharHeight() - 3);
-	
-//	dc.DrawText(wxString::Format("Azimuth: %.1lf   Altitude: %.1lf   Scale: %.2lf   Shade fraction: %.3lf Viewpoint(%lg,%lg,%lg)", azi, alt, s, m_shade.shade_fraction, x,y,z),	4, m_winHeight - dc.GetCharHeight() - 3);
-#ifdef _DEBUG
-	double x,y,z;
-	//m_scene.get_viewxyz(&x,&y,&z);
-	m_transform.get_xyz( &x,&y,&z);
-//	dc.DrawText(wxString::Format("Azimuth: %.1lf   Altitude: %.1lf   Scale: %.2lf   Shade fraction: %.3lf View_normal(%lg,%lg,%lg)", azi, alt, s, m_shade.shade_fraction, x,y,z),	4, m_winHeight - dc.GetCharHeight() - 3);
-	dc.DrawText(wxString::Format("Azimuth: %.1lf   Altitude: %.1lf   Scale: %.2lf   Shade fraction: %.3lf Mouse_pos(%lg,%lg,%lg)", azi, alt, s, m_shade.shade_fraction, m_xw,m_yw,m_zw),	4, m_winHeight - dc.GetCharHeight() - 3);
-#else
-	dc.DrawText(wxString::Format("Azimuth: %.1lf   Altitude: %.1lf   Scale: %.2lf", azi, alt, s),4, m_winHeight - dc.GetCharHeight() - 3);
-#endif
-/*
-	dc.DrawText(wxString::Format("Azimuth: %.1lf   Altitude: %.1lf   Scale: %.2lf   Shade fraction: %.3lf", azi, alt, s, m_sf_shade.shade_fraction),
+	dc.DrawText(wxString::Format("Azimuth: %.1lf   Altitude: %.1lf   Scale: %.2lf   Shade: %0.3lf", azi, alt, s, m_shade.shade_fraction ),
 		4, m_winHeight - dc.GetCharHeight() - 3);
-*/
 }
 
 void View3D::OnSize( wxSizeEvent & )
@@ -1523,19 +1510,6 @@ void View3D::SetAzAl( double &az, double &al)
 	Render();
 	Refresh();
 	SendEvent( wxEVT_VIEW3D_UPDATE_VIEW );
-}
-
-void View3D::SetViewXYZ( double &x, double &y, double &z)
-{
-	m_scene.set_viewxyz(x,y,z);
-	Render();
-	Refresh();
-	SendEvent( wxEVT_VIEW3D_UPDATE_VIEW );
-}
-
-void View3D::GetViewXYZ( double *x, double *y, double *z)
-{
-	m_scene.get_viewxyz(x,y,z);
 }
 
 void View3D::SendEvent( int type )

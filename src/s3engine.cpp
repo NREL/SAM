@@ -1,13 +1,13 @@
 #include <math.h>
 #include <algorithm>
+#include <iostream>
+#include <sstream>
 
 #include <wex/utils.h>
 
 
 #include "s3engine.h"
 #include "s3clipper.h"
-#include "s3bsp.h"
-
 
 
 #ifndef DTOR
@@ -18,6 +18,69 @@ namespace s3d {
 
 point3d::point3d() { x = y = z = _x = _y = _z = 0.0f; }
 point3d::point3d( double x_, double y_, double z_ )  : x(x_), y(y_), z(z_), _x(0), _y(0), _z(0) { }
+
+double point3d::magnitude( void ) const
+{
+	return sqrt( dot( *this ) );
+}
+
+void point3d::normalize( void )
+{
+	double Length = magnitude();
+
+	if( Length )
+	{
+		x /= Length;
+		y /= Length;
+		z /= Length;	
+	}
+	else
+		x = y = z = 0.0;
+}
+
+
+double point3d::dot( const point3d& Pnt ) const
+{
+	return x * Pnt.x + y * Pnt.y + z * Pnt.z;
+}
+
+
+point3d point3d::cross( const point3d& Pnt ) const
+{
+	point3d Result;
+
+	Result.x = y * Pnt.z - z * Pnt.y;
+	Result.y = z * Pnt.x - x * Pnt.z;
+	Result.z = x * Pnt.y - y * Pnt.x;
+
+	return Result;
+}
+
+
+bool point3d::operator==( const point3d& Pnt ) const
+{
+	/*
+	point3d Result = *this - Pnt;
+	return ( 0.001 >= Result.magnitude() );
+	*/
+
+	return ( this->x == Pnt.x
+			&& this->y == Pnt.y
+			&& this->z == Pnt.z );	
+}
+
+
+point3d point3d::operator-( const point3d& Pnt ) const
+{
+	point3d Result;
+
+	Result.x = x - Pnt.x;
+	Result.y = y - Pnt.y;
+	Result.z = z - Pnt.z;
+	
+	return Result;
+}
+
 rgba::rgba() : r(0), g(0), b(0), a(255)  { }
 rgba::rgba( unsigned char _r, unsigned char _g, unsigned char _b, unsigned char _a ) : r(_r), g(_g), b(_b), a(_a) {  }
 text3d::text3d() : size(-1) { }
@@ -397,14 +460,627 @@ void transform::matprod4(double z[4][4], double u[4][4], double v[4][4])
 		}
 }
 
+
+
+	
+typedef unsigned short ushort;
+typedef unsigned long ulong;
+
+#if defined(_DEBUG)&&defined(_MSC_VER)
+//#define _CRTDBG_MAP_ALLOC
+#define _INC_CRTDBG
+#include <crtdbg.h>
+
+// File for windows debugging
+// Usage:  DBOUT(" x = " << x)
+#include <windows.h>
+
+#define DBOUT( s )            \
+{                             \
+   std::wostringstream os_;    \
+   os_ << s;                   \
+   OutputDebugStringW( os_.str().c_str() );  \
+}
+
+// debugging for memory leaks
+#ifdef __WXMSW__
+    #include <wx/msw/msvcrt.h>      // redefines the new() operator 
+#endif
+
+#if !defined(_INC_CRTDBG) || !defined(_CRTDBG_MAP_ALLOC)
+//    #error Debug CRT functions have not been included!
+#endif
+
+static void debug_out( char* prefix, point3d point)
+{
+	DBOUT( prefix << ": (" << point.x << ","  << point.y << ","  << point.z << ")\n");
+}
+
+static void debug_out( char* prefix, BSPNode* node)
+{
+	DBOUT( prefix << ": m_id=" << node->id << " , m_type=" << node->type << ", m_fill.r=" << node->fill.r <<  ", m_fill.g=" << node->fill.g << ", m_border=" << node->border.r << ", m_thick=" << node->thick << ", m_as_line=" << node->as_line << ", point.size()=" << node->points.size() << ", D=" << node->D << "\n");
+		for( size_t i=0; i< node->points.size(); i++ )
+			debug_out("i=",node->points[i]);
+	debug_out( "\tCenter", node->Center);
+	debug_out( "\tNormal", node->Normal);
+}
+
+#endif
+
+
+
+#define MAX_DELTA		0.03491
+//#define MAX_DELTA		0.00000001
+
+
+
+/*
+	Implementation of top level BSPTree class
+*/
+
+
+BSPNode *BSPTree::_FindRoot( std::vector<BSPNode*>& List )
+// Returns node which splits the least other nodes
+{
+//	short BestCount = 0x7fff;
+//	int BestCount = -1;
+
+
+	int BestCount = List.size();
+	BSPNode *BestRoot = NULL;
+
+	// testing different roots
+//	if ( List.size() > 0) BestRoot = List[0 ];
+//	if ( List.size() > 0) BestRoot = List[List.size() / 2 ];
+//	if ( List.size() > 0) BestRoot = List[List.size() - 1 ];
+
+//	return BestRoot;
+	//
+
+	std::vector<BSPNode*>::iterator Iter = List.begin();
+	BSPNode *TestNode = *Iter;
+	
+	while( Iter != List.end() )
+	{
+		TestNode = *Iter;
+		std::vector<BSPNode*>::iterator Iter2 = List.begin();
+		BSPNode *CheckNode = *Iter2;
+		int Count = 0;
+		
+		while( Iter2 != List.end() )
+		{
+			CheckNode = *Iter2;
+			if( CheckNode != TestNode )
+				if( CheckNode->Intersects( TestNode ) )
+					Count++;
+			Iter2++;					
+		}
+		
+		if( Count < BestCount )
+		{
+			if( !Count )
+				return TestNode;
+
+			BestCount = Count;
+			BestRoot = TestNode;
+		}
+
+		Iter++;
+	}
+	
+	return BestRoot;
+}				
+
+
+
+BSPNode *BSPTree::_BuildBSPTree( std::vector<BSPNode*>& List )
+{
+	point3d Delta;
+	std::vector<BSPNode*> Front, Back;
+
+	BSPNode *Root = _FindRoot( List );
+
+	if (Root==NULL) 
+		return Root;
+	// remove root node from list
+	List.erase(std::remove(List.begin(), List.end(), Root), List.end());
+
+	std::vector<BSPNode*>::iterator Iter = List.begin();
+	BSPNode *TestNode;
+	
+	while( List.size() > 0 )
+	{
+		TestNode = *Iter;			
+		if( TestNode->Intersects( Root ) )
+		{
+			BSPNode *NewNode = TestNode->Split( Root );
+
+			assert(NewNode);
+
+			m_listnodes.push_back( NewNode );
+
+			
+			Delta = TestNode->GetCenter() - Root->GetCenter();
+
+			if( Delta.dot( Root->GetNormal() ) > 0.0 )
+			{
+				Front.push_back( TestNode );
+				Back.push_back( NewNode );
+			}
+			else
+			{
+				Back.push_back( TestNode );
+				Front.push_back( NewNode );
+			}
+		}
+		else
+		{
+			Delta = TestNode->GetCenter() - Root->GetCenter();
+			if( Delta.dot( Root->GetNormal() ) > MAX_DELTA )
+				Front.push_back( TestNode );
+			else if( Delta.dot( Root->GetNormal() ) < MAX_DELTA )
+				Back.push_back( TestNode );
+			else
+			{
+				if ( Delta.z < 0 )
+					Front.push_back( TestNode );
+				else
+					Back.push_back( TestNode );
+			}
+		}
+		// remove test node from list
+		List.erase(std::remove(List.begin(), List.end(), TestNode), List.end());
+		Iter = List.begin();
+	}
+	
+	Root->SetFront( (Front.size()==0) ? NULL : _BuildBSPTree( Front ) );
+	Root->SetBack( (Back.size()==0) ? NULL : _BuildBSPTree( Back ) );
+	
+	return Root;
+}
+
+BSPTree::BSPTree( std::vector<s3d::polygon3d*>& polys, double x_viewport, double y_viewport, double z_viewport)
+{
+	ReadPolyList( polys );
+	polys.clear();
+
+	BuildTree();
+
+	point3d viewport;
+	viewport.x = x_viewport;
+	viewport.y = y_viewport;
+	viewport.z = z_viewport;
+
+	Traverse( viewport, polys);
+}
+
+BSPTree::~BSPTree()
+{
+	Reset();
+}
+
+void BSPTree::Reset()
+{
+	m_root = 0;
+	m_id_minz.clear();
+	for (std::vector<BSPNode*>::iterator it = m_listnodes.begin(); it != m_listnodes.end();++it )
+		delete *it;
+	m_listnodes.clear();
+	m_nodes.clear();
+}
+
+void BSPTree::BuildTree()
+{
+	m_root = _BuildBSPTree( m_nodes );
+	
+//#ifdef _DEBUG
+//	DBOUT("Root: m_id=" << m_root->m_id << " , m_type=" << m_root->m_type << ", m_fill.r=" << m_root->m_fill.r <<  ", m_fill.g=" << m_root->m_fill.g << ", m_border=" << m_root->m_border.r << ", m_thick=" << m_root->m_thick << ", m_as_line=" << m_root->m_as_line << ", point.size()=" << m_root->points.size() << "\n");
+//		for( size_t i=0; i< m_root->points.size(); i++ )
+//			DBOUT("i=" << i << " , x=" << m_root->points[i].x << ", y=" << m_root->points[i].y <<  ", z=" <<  m_root->points[i].z <<  "\n");
+	//for (size_t j=0; j< m_listnodes.size(); j++)
+	//{
+	//DBOUT("BuildTree m_listnode[" << j << "]: m_id=" << m_listnodes[j]->m_id << " , m_type=" <<  m_listnodes[j]->m_type << ", m_fill.r=" <<  m_listnodes[j]->m_fill.r <<  ", m_fill.g=" <<  m_listnodes[j]->m_fill.g << ", m_border=" <<  m_listnodes[j]->m_border.r << ", m_thick=" <<  m_listnodes[j]->m_thick << ", m_as_line=" <<  m_listnodes[j]->m_as_line << ", point.size()=" <<  m_listnodes[j]->points.size() << "\n");
+	//	for( size_t i=0; i<  m_listnodes[j]->points.size(); i++ )
+	//		DBOUT("i=" << i << " , x=" <<  m_listnodes[j]->points[i].x << ", y=" <<  m_listnodes[j]->points[i].y <<  ", z=" <<   m_listnodes[j]->points[i].z <<  "\n");
+	//}
+//#endif
+}
+
+void BSPTree::ReadPolyList( const std::vector<s3d::polygon3d*>& polys )
+{
+	for (size_t i=0; i<polys.size(); i++)
+	{
+		if (polys[i]->points.size() < 3)
+			continue;
+		BSPNode *new_node = new BSPNode( *polys[i] );
+		m_nodes.push_back( new_node );
+		m_listnodes.push_back( new_node );
+	}
+
+//#ifdef _DEBUG
+	//for (size_t j=0; j< m_listnodes.size(); j++)
+	//{
+	//DBOUT("ReadPolyList m_listnode[" << j << "]: m_id=" << m_listnodes[j]->m_id << " , m_type=" <<  m_listnodes[j]->m_type << ", m_fill.r=" <<  m_listnodes[j]->m_fill.r <<  ", m_fill.g=" <<  m_listnodes[j]->m_fill.g << ", m_border=" <<  m_listnodes[j]->m_border.r << ", m_thick=" <<  m_listnodes[j]->m_thick << ", m_as_line=" <<  m_listnodes[j]->m_as_line << ", point.size()=" <<  m_listnodes[j]->points.size() << "\n");
+	//	for( size_t i=0; i<  m_listnodes[j]->points.size(); i++ )
+	//		DBOUT("i=" << i << " , x=" <<  m_listnodes[j]->points[i].x << ", y=" <<  m_listnodes[j]->points[i].y <<  ", z=" <<   m_listnodes[j]->points[i].z <<  "\n");
+	//}
+//#endif
+}
+
+
+void BSPTree::Traverse( point3d& CameraLoc, std::vector<s3d::polygon3d*>& polys )
+{
+	if( m_root )
+		m_root->Traverse( CameraLoc, polys );
+
+#ifdef _DEBUG
+	int count =0;
+	for (std::vector<BSPNode*>::iterator it = m_listnodes.begin(); it != m_listnodes.end();++it )
+	{
+		if (!(*it)->GetRendered()) count++;
+	}
+	if (count > 0)
+		DBOUT("Traverse: " << count << " nodes not added from BSP tree \n");
+#endif
+}
+
+
+/*
+	Implementation of BSPNode class
+*/
+
+ulong BSPNode::_SplitPoly( BSPNode *Plane, std::vector<point3d> &SplitPnts, bool savepoints )
+// This is limited to convex polygons with no more than 32 (unsigned long 32 bits) sides
+// unsigned integer is used for mask operations in Split function
+// splitPoly checks each side of the BSPNode polygon against the plane
+// a line-plan split occurs and the "Sides" unsigned long contains a 1 whereever splits occur ( along polygon side segment ).
+// A convex polygon can only be split in two points
+{
+	SplitPnts.clear();
+	SplitPnts.reserve(points.size());
+	for ( size_t i = 0; i<points.size(); i++)
+		SplitPnts.push_back( point3d( 0,0,0));
+
+	ulong Sides = 0;
+
+	int count=0;
+
+//#ifdef _DEBUG
+	//if (points.size() > 32)
+	//	DBOUT("_SplitPoly: PntCnt = " << points.size() << "\n");
+
+//#endif
+	if (points.size() > 32) 
+		return 0;
+
+	bool LastSideParallel = false;
+
+	// if polygon normal = plane normal then skip
+	// this means that the polygon is parallel or in same plane as the "Plane" input
+	if( !( Normal == Plane->Normal ) )
+	{
+		point3d u,w;
+		double numer, denom, si;
+
+
+		// check each edge of polygon against plane
+
+		for( ushort vertex=0; vertex<points.size(); vertex++ )
+		{
+			ushort prevVertex = vertex ? vertex - 1 : (ushort)(points.size() - 1);
+
+			u = points[ vertex ] - points[ prevVertex ];
+			denom = u.dot( Plane->Normal );
+
+#ifdef _DEBUG
+//			DBOUT("_SplitPoly: denom=" << denom << "\n");
+//			debug_out("_SplitPoly: Plane:", Plane);
+#endif
+
+// Dot product of line segment and plane non-zero so not parallel 
+// lines segment and plane potentially intersects at one point
+//			if( denom != 0)
+			if( fabs(denom) > MAX_DELTA )
+			{
+//				numer = points[ prevVertex ].dot( Plane->Normal ) +	Plane->D;
+
+				w = points[prevVertex] - Plane->Center;
+				numer = w.dot( Plane->Normal );
+				si = - numer / denom;
+
+#ifdef _DEBUG
+//			DBOUT("_SplitPoly: numer=" << numer << ", denom=" << denom << ", t=" << si << "\n");
+#endif
+		
+//				if( !( LastSideParallel && (t == 0) ) )
+//				if( !( LastSideParallel && (si == 0) ) )
+				if( !( LastSideParallel && (si < MAX_DELTA) ) )
+				{
+
+					
+
+
+//					if( t >= 0.0 && t < 0.999999 )		
+					if( (si >= 0) && (si < 1.0))
+//					if( (si > 0) && (si < 1.0))
+//					if( (si >-MAX_DELTA) && (si < (1.0-MAX_DELTA)))
+//					if( (si >-MAX_DELTA) && (si < (1.0-MAX_DELTA)))
+////					if( (si > MAX_DELTA) && (si < (1.0 - MAX_DELTA) ))
+//					if( (si > -MAX_DELTA) && (si < (1.0 + MAX_DELTA) ))
+					{
+						Sides |= 1 << vertex;
+						count++;
+						if (savepoints)
+						{
+//							SplitPnts.push_back( point3d( 
+//								points[ prevVertex ].x + t * EdgeDelta.x,
+//								points[ prevVertex ].y + t * EdgeDelta.y,
+//								points[ prevVertex ].z + t * EdgeDelta.z ));
+
+							//if ( si < MAX_DELTA )
+							//{
+							//	SplitPnts[vertex].x=points[ prevVertex ].x;
+							//	SplitPnts[vertex].y=points[ prevVertex ].y;
+							//	SplitPnts[vertex].z=points[ prevVertex ].z;
+							//}
+							//else if ( si > (1.0 - MAX_DELTA))
+							//{
+							//	SplitPnts[vertex].x=points[ vertex ].x;
+							//	SplitPnts[vertex].y=points[ vertex ].y;
+							//	SplitPnts[vertex].z=points[ vertex ].z;
+							//}
+							//else
+							{
+							SplitPnts[vertex].x=points[ prevVertex ].x + si * u.x;
+							SplitPnts[vertex].y=points[ prevVertex ].y + si * u.y;
+							SplitPnts[vertex].z=points[ prevVertex ].z + si * u.z;
+							}
+						}
+					}
+				}
+			}
+//			LastSideParallel = ( denom == 0 );
+			LastSideParallel = ( fabs(denom) <= MAX_DELTA );
+		}
+	}
+	
+#ifdef _DEBUG
+	if ((count != 0) && (count !=2)  )
+	{
+	//if (count > 2 )
+		DBOUT("_SplitPoly: count=" << count << std::hex << ", Sides=" <<  std::hex << Sides << ", points.size()=" << std::dec << points.size() << "\n");
+		debug_out( "Plane=", Plane);
+		debug_out( "This=", this);
+		for(size_t i=0;i<SplitPnts.size();i++) debug_out("SplitPnts=", SplitPnts[i]);
+	}
+#endif
+	if ((count != 0) && (count !=2)) 
+//	if ((count < 2)) 
+	{
+		Sides=0;
+		SplitPnts.clear();
+	}
+
+	return Sides;
+}
+
+
+void BSPNode::_ComputeCenter( void )
+{
+	Center.x = Center.y = Center.z = 0.0;
+
+	for( size_t i=0; i<points.size(); i++ )
+	{
+		Center.x += points[ i ].x;
+		Center.y += points[ i ].y;
+		Center.z += points[ i ].z;
+	}
+
+	Center.x /= points.size();
+	Center.y /= points.size();
+	Center.z /= points.size();
+}
+
+
+void BSPNode::_ComputeNormal( void )
+{
+	point3d a, b;
+
+	assert( points.size() >= 3 );
+
+	a = points[ 0 ] - points[ 1 ];
+	b = points[ 2 ] - points[ 1 ];
+
+	Normal = a.cross( b );
+	Normal.normalize();
+}
+
+
+void BSPNode::_ComputeD( void )
+{
+	D = -Normal.dot( Center );
+}
+
+//-------------- Public Functions
+
+BSPNode::BSPNode( const polygon3d &rhs )
+ : polygon3d( rhs ),
+	FrontNode( NULL ),
+	BackNode( NULL ),
+	m_rendered( false )
+{
+	_ComputeCenter();
+	_ComputeNormal();
+	_ComputeD();
+}
+
+
+BSPNode::~BSPNode()
+{
+	FrontNode = NULL;
+	BackNode = NULL;
+};
+
+
+
+bool BSPNode::Intersects( BSPNode *Plane )
+{
+	std::vector<point3d> points;
+
+	return ( _SplitPoly( Plane, points, false ) != 0 );
+//	return ( _SplitPoly( Plane, points ) != 0 );
+}
+
+
+BSPNode *BSPNode::Split( BSPNode *Plane )
+{
+	BSPNode *NewNode=NULL;
+	ulong Splits;
+//	size_t split_ndx=0;
+ 	std::vector<point3d> SplitPnts;
+	Splits = _SplitPoly( Plane, SplitPnts );
+
+//#ifdef __DEBUG__
+		//DBOUT("Split: m_id=" << m_id << " , m_type=" << m_type << ", m_fill.r=" << m_fill.r <<  ", m_fill.g=" << m_fill.g << ", m_border=" << m_border.r << ", m_thick=" << m_thick << ", m_as_line=" << m_as_line << ", point.size()=" << points.size() << ", Normal=" << Normal.Magnitude() << ", Center=" << Center.Magnitude() << ", D=" << D << "\n");
+		//for( size_t i=0; i< points.size(); i++ )
+		//	DBOUT("Split: points[" << i << "], x=" << points[i].x << ", y=" << points[i].y <<  ", z=" <<  points[i].z <<  "\n");
+		//DBOUT("Split: Splits=" << Splits << "\n");
+		//for( size_t i=0; i< SplitPnts.size(); i++ )
+		//	DBOUT("Split: SplitPnts[" << i << "], x=" << SplitPnts[i].x << ", y=" << SplitPnts[i].y <<  ", z=" <<  SplitPnts[i].z <<  "\n");
+//#endif
+
+
+
+	if( Splits )
+	{
+		ushort Destination = 0;
+
+		std::vector<point3d> NewPoly1;
+		std::vector<point3d> NewPoly2;
+
+		for( ushort i=0; i<points.size(); i++ )
+		{
+			// Handle split points
+			if( Splits & ( 1 << i ) )
+			{
+				//if ( split_ndx < SplitPnts.size())
+				//{
+				//	NewPoly1.push_back(SplitPnts[ split_ndx ]);
+				//	NewPoly2.push_back(SplitPnts[ split_ndx ]);
+				//	split_ndx++;
+				//}
+//					if (std::find( NewPoly1.begin(), NewPoly1.end(), SplitPnts[i]) == NewPoly1.end())
+						NewPoly1.push_back(SplitPnts[ i ]);
+//				if (std::find( NewPoly2.begin(), NewPoly2.end(), SplitPnts[i]) == NewPoly2.end())
+						NewPoly2.push_back(SplitPnts[ i ]);
+			
+				Destination ^= 1;
+			}
+
+			if( Destination )
+			{
+//				if (std::find( NewPoly1.begin(), NewPoly1.end(), points[i]) == NewPoly1.end())
+					NewPoly1.push_back( points[ i ]);
+			}
+			else
+			{
+//				if (std::find( NewPoly2.begin(), NewPoly2.end(), points[i]) == NewPoly2.end())
+					NewPoly2.push_back(points[ i ]);
+			}
+		}
+
+//#ifdef _DEBUG
+//		if ( (NewPoly1.size()+NewPoly2.size()) != points.size())
+			//DBOUT("(NewPoly1.size() " << NewPoly1.size() << " + NewPoly2.size() " << NewPoly2.size() << " ) != points.size()=" << points.size() << "\n");
+/*		// check for duplicate points
+			DBOUT("NewPoly1\n");
+		for (size_t i=0;i<NewPoly1.size(); i++)
+			DBOUT( "(" << NewPoly1[i].x << "," << NewPoly1[i].y << "," << NewPoly1[i].z << "),");
+			DBOUT("\n");
+			DBOUT("NewPoly2\n");
+		for (size_t i=0;i<NewPoly2.size(); i++)
+			DBOUT( "(" << NewPoly2[i].x << "," << NewPoly2[i].y << "," << NewPoly2[i].z << "),");
+			DBOUT("\n");
+*/
+		// check that all original vertices are in new polygons
+		//for (size_t i=0; i<points.size(); i++)
+		//{
+		//	if ( 
+		//	(std::find(NewPoly1.begin(), NewPoly1.end(), points[i]) == NewPoly1.end()) &&(std::find(NewPoly2.begin(), NewPoly2.end(), points[i]) == NewPoly2.end()))
+		//		DBOUT("Vertex, (" << points[i].x << "," << points[i].y << "," << points[i].z << "), from points not in either Split\n");
+		//}
+
+//#endif
+		// Make New node
+		polygon3d ppol( id, type, fill, border, thick, as_line, NewPoly1 );
+		NewNode = new BSPNode( ppol );
+		points.clear();
+		points = NewPoly2;
+		_ComputeCenter();
+		_ComputeNormal();
+		_ComputeD(); //???
+
+
+	}
+
+	return NewNode;
+}
+
+
+void BSPNode::Traverse( const point3d& CameraLoc, std::vector<s3d::polygon3d*>& polys )
+{
+	point3d VecToCam = CameraLoc - Center;
+	s3d::polygon3d* new_poly;
+#ifdef __DEBUG__
+	DBOUT("\n\nTraverse\n");
+#endif
+	if( VecToCam.dot( Normal ) < 0 )
+	{
+		if( FrontNode )
+			FrontNode->Traverse( CameraLoc, polys );
+
+#ifdef __DEBUG__
+		DBOUT("Next Node dot < 0\n");
+#endif
+		new_poly = new s3d::polygon3d( *this );
+		if (new_poly != NULL)
+		{
+				polys.push_back(new_poly);
+				m_rendered = true;
+		}
+
+		if( BackNode )
+			BackNode->Traverse( CameraLoc, polys );
+	}
+	else
+	{
+		if( BackNode )
+			BackNode->Traverse( CameraLoc, polys );
+
+#ifdef __DEBUG__
+		DBOUT("Next Node dot >= 0\n");
+#endif
+		new_poly = new s3d::polygon3d( *this );
+		if (new_poly != NULL)
+		{
+				polys.push_back(new_poly);
+				m_rendered = true;
+		}
+
+		if( FrontNode )
+			FrontNode->Traverse( CameraLoc, polys );
+	}
+}
+
+
+
+
 scene::scene()
 {
+	m_bspValid = false;
 	m_fillColor = rgba(  18, 92, 14, 80 );
 	m_lineColor = rgba(  0, 0, 0, 255 );
 	m_polyType = OBSTRUCTION;
-	m_view_x = 0;
-	m_view_y = 0;
-	m_view_z = -1e99;
 }
 
 scene::scene( const scene & rhs )
@@ -438,9 +1114,9 @@ void scene::copy( const scene &rhs )
 	m_fillColor = rhs.m_fillColor;
 	m_lineColor = rhs.m_lineColor;
 	m_polyType = rhs.m_polyType;
-	m_view_x = rhs.m_view_x;
-	m_view_y = rhs.m_view_y;
-	m_view_z = rhs.m_view_z;
+	
+	m_bsp.Reset();
+	m_bspValid = false;
 }
 
 scene &scene::operator=( const scene &rhs )
@@ -502,12 +1178,14 @@ void scene::poly( int id )
 	if ( m_curPoints.size() < 3 ) return;
 	m_polygons.push_back( new polygon3d( id, m_polyType, m_fillColor, m_lineColor, 1, false, m_curPoints ) );
 	m_curPoints.clear();
+	m_bspValid = false;
 }
 
 
 void scene::poly( int _id, int _type, rgba _fill, rgba _border, int thick, bool line, const std::vector<point3d> &pts )
 {
 	m_polygons.push_back( new polygon3d( _id, _type, _fill, _border, thick, line, pts ) );
+	m_bspValid = false;
 }
 
 //void scene::box( int id, double x, double y, double angle_xy, double xdim, double ydim, double zstart, double height, 
@@ -808,10 +1486,13 @@ void scene::roof( int id, double xc, double yc, double zmin, double width, doubl
 
 void scene::clear()
 {
-	for ( std::vector<polygon3d*>::iterator it = m_culled_sorted.begin(); it != m_culled_sorted.end(); ++it )
+	m_bspValid = false;
+	m_bsp.Reset();
+
+	for ( std::vector<polygon3d*>::iterator it = m_sorted_culled.begin(); it != m_sorted_culled.end(); ++it )
 		if ( std::find( m_polygons.begin(), m_polygons.end(), *it) == m_polygons.end() )
 			delete *it;
-	m_culled_sorted.clear();
+	m_sorted_culled.clear();
 
 
 	for ( std::vector<polygon3d*>::iterator it = m_polygons.begin();
@@ -842,16 +1523,19 @@ void scene::clear( int id )
 		}
 		else i++;
 	}
+
 	i=0;
-	while( i < m_culled_sorted.size() )
+	while( i < m_sorted_culled.size() )
 	{
-		if (m_culled_sorted[i]->id == id)
+		if (m_sorted_culled[i]->id == id)
 		{
-			delete m_culled_sorted[i];
-			m_culled_sorted.erase( m_culled_sorted.begin() + i );
+			delete m_sorted_culled[i];
+			m_sorted_culled.erase( m_sorted_culled.begin() + i );
 		}
 		else i++;
 	}
+
+	m_bspValid = false;
 }
 
 void scene::basic_axes_with_ground( int axes_len )
@@ -928,8 +1612,6 @@ double polyareatr(const s3d::polygon3d &p)
 
 void polynormal( const s3d::polygon3d &p, double *x, double *y, double *z )
 {
-	const std::vector<point3d> &points = p.points;
-
 	double A = 0;
 	double B = 0;
 	double C = 0;
@@ -956,140 +1638,99 @@ bool is_backface( const s3d::polygon3d &p )
 	return (C > 0);
 }
 
-void scene::set_viewxyz( double &x, double &y, double &z)
-{
-	m_view_x = x;
-	m_view_y = y;
-	m_view_z = z;
-}
-
-void scene::get_viewxyz( double *x, double *y, double *z)
-{
-	*x = m_view_x;
-	*y = m_view_y;
-	*z = m_view_z;
-}
+#define FARAWAY 1000000
 
 void scene::build( transform &tr )
 {
 	size_t i;
+	
+	std::vector<polygon3d*> background, foreground;
+	
+	for (size_t i=0;i<m_polygons.size();i++)
+	{
+		if ( m_polygons[i]->as_line || m_polygons[i]->id < 0 )
+			background.push_back(m_polygons[i]);
+		else
+			foreground.push_back(m_polygons[i]);
+	}
 
-	// transform all points
-	for ( size_t i=0;i<m_polygons.size();i++ )
-		for ( size_t j=0;j<m_polygons[i]->points.size();j++ )
-			tr( m_polygons[i]->points[j] );
+	// update the BSP tree if needed
+	if ( ! m_bspValid && foreground.size() > 0 )
+	{
+		m_bsp.Reset();
+		m_bsp.ReadPolyList( foreground );
+		m_bsp.BuildTree();
+		m_bspValid = true;
+	}
+	
+	if ( foreground.size() > 0 )
+	{
+		// traverse the tree from the view
+		double vx, vy, vz;
+		tr.get_view_normal(&vx, &vy, &vz );
+		point3d cam(FARAWAY*vx,FARAWAY*vy,FARAWAY*vz);
 
+		// make sure all newly created "split" polygons are deleted
+		for ( std::vector<polygon3d*>::iterator it = m_sorted_culled.begin(); it != m_sorted_culled.end(); ++it )
+			if ( std::find( m_polygons.begin(), m_polygons.end(), *it) == m_polygons.end() )
+				delete *it;
+		m_sorted_culled.clear();
+
+		// traverse the tree	
+		m_bsp.Traverse( cam, m_sorted_culled );
+	
+		// transform all points
+		for ( size_t i=0;i<m_sorted_culled.size();i++ )
+			for ( size_t j=0;j<m_sorted_culled[i]->points.size();j++ )
+				tr( m_sorted_culled[i]->points[j] );
+	}
+	
+
+	// transform background points
+	for ( size_t i=0;i<background.size();i++ )
+		for ( size_t j=0;j<background[i]->points.size();j++ )
+			tr( background[i]->points[j] );
+
+
+	// transform all labels
 	for ( size_t i=0;i<m_labels.size();i++ )
 		tr( m_labels[i]->pos );
 
-	// cull backfaces into secondary list
-	m_culled.clear();
-	m_culled.reserve( m_polygons.size() );
-	for ( i=0; i<m_polygons.size();i++ )
+
+	// cull backfaces
+	i=0;
+	while( i < m_sorted_culled.size() )
 	{
-		if ( m_polygons[i]->as_line || ! is_backface( *m_polygons[i] ) )
-			m_culled.push_back( m_polygons[i] );
-	}
-//double azi, alt;
-//tr.get_azal(&azi, &alt);
-//DBOUT("\n\nscene::build azimuth = " << azi << ", altitude = " << alt << "\n" );
-	// sort by average z order
-//	std::sort( m_culled.begin(), m_culled.end(), polybefore );
-
-	std::vector<s3d::polygon3d*> background;
-
-
-	// use BSP
-	 // make sure all newly created "split" polygons are deleted
-	for ( std::vector<polygon3d*>::iterator it = m_culled_sorted.begin(); it != m_culled_sorted.end(); ++it )
-		if ( std::find( m_polygons.begin(), m_polygons.end(), *it) == m_polygons.end() )
-			delete *it;
-	m_culled_sorted.clear();
-
-	for (i=0;i<m_culled.size();i++)
-	{
-		if ( m_culled[i]->as_line || ( m_culled[i]->id < 0 ))
-			background.push_back(m_culled[i]);
+		polygon3d *pp = m_sorted_culled[i];
+		if ( !pp->as_line && is_backface( *pp ) )
+		{
+			m_sorted_culled.erase( m_sorted_culled.begin() + i );
+			if ( std::find( m_polygons.begin(), m_polygons.end(), pp ) == m_polygons.end() )
+				delete pp;
+		}
 		else
-			m_culled_sorted.push_back(m_culled[i]);
+			i++;
 	}
-
-	if (m_culled_sorted.size() > 0)
+	
+	i=0;
+	while( i < background.size() )
 	{
-
-		// test presort and use middle node as root for more balanced tree
-		//std::sort( m_culled_sorted.begin(), m_culled_sorted.end(), polybefore );
-
-
-		//BSPTree bsp( m_culled_sorted , vec[0], vec[1], -1.0e6);
-		BSPTree bsp;
-		bsp.ReadPolyList( m_culled_sorted );
-		m_culled_sorted.clear();
-		
-		bsp.BuildTree();
-
-
-
-/*
-		// From Sun's viewpoint
-		double azi, alt;
-		double scale = tr.get_scale();
-		tr.get_azal(&azi, &alt);
-		s3d::point3d sun( scale * sind(azi), scale* cosd(azi), scale * sind(alt));
-		//s3d::point3d sun( 0,0,1e6);
-		//s3d::point3d sun( x,y,z);
-		tr(sun);
-		CPoint viewpoint;
-		viewpoint.x = sun._x;
-		viewpoint.y = sun._y;
-		viewpoint.z = 1e99*sun._z;
-*/
-
-// suggestion from Aron coordinate.pptx
-//		double x,y,z;
-//		tr.get_xy(&x, &y);
-//		tr.get_xyz(&x, &y, &z); // unscaled normal
-
-//		double scale = tr.get_scale();
-//		double sf = 1e6 * scale;
-
-		CPoint viewpoint;
-//		viewpoint.x = sf*x;
-//		viewpoint.y = sf*y;
-//		viewpoint.z = -sf*z;
-
-		viewpoint.x = m_view_x;
-		viewpoint.y = m_view_y;
-		viewpoint.z = m_view_z;
-
-
-
-
-//		double r=1e6;
-//		CPoint viewpoint;
-//		viewpoint.x = -r*x;
-//		viewpoint.y = -r*y;
-//		viewpoint.z = -r*z;
-//		viewpoint.x = 1.0e6;
-//		viewpoint.y = 1.0e6;
-//		viewpoint.z = 1.0e6;
-//		viewpoint.x = 0;
-//		viewpoint.y = 0;
-//		viewpoint.z = 1.0e9;
-//		viewport.z = 0;
-
-
-		bsp.Traverse( viewpoint, m_culled_sorted);
+		polygon3d *pp = background[i];
+		if ( !pp->as_line && is_backface( *pp ) )
+			background.erase( background.begin() + i );
+		else
+			i++;
 	}
-
+	
+	// sort background polygons
 	std::sort( background.begin(), background.end(), polybefore );
 
-	m_culled.clear();
+	m_rendered.clear();
 	for (i=0;i<background.size();i++)
-		m_culled.push_back(background[i]);
+		m_rendered.push_back(background[i]);
 
-	for (i=0;i<m_culled_sorted.size();i++)
-		m_culled.push_back(m_culled_sorted[i]);
+	for (i=0;i<m_sorted_culled.size();i++)
+		m_rendered.push_back(m_sorted_culled[i]);
 
 }
 
@@ -1100,7 +1741,7 @@ const std::vector<text3d*> &scene::get_labels() const
 
 const std::vector<polygon3d*> &scene::get_polygons() const
 {
-	return m_culled;
+	return m_rendered;
 }
 
 
@@ -1133,9 +1774,9 @@ void scene::shade( shade_result &result )
 	result.total_shade_area = 0.0;
 	result.shadings.clear();
 
-	for ( size_t i = 0; i < m_culled.size(); i++ )
+	for ( size_t i = 0; i < m_rendered.size(); i++ )
 	{
-		polygon3d *p = m_culled[i];
+		polygon3d *p = m_rendered[i];
 		if ( !p->as_line && p->type == ACTIVE && p->points.size() > 2 )
 		{
 			ClipperLib::Path active;
@@ -1147,17 +1788,12 @@ void scene::shade( shade_result &result )
 			result.total_active_area += active_area;
 
 			ClipperLib::Clipper cc;
-/*
-			DBOUT("\nClipperLib Preserve Collinear=" << cc.PreserveCollinear() << "\n");
-			DBOUT("\nClipperLib Strictly Simple=" << cc.StrictlySimple() << "\n");
-*/
 			cc.AddPath(active, ClipperLib::ptSubject,true);
 
 			size_t nobstruct=0;
-			for ( size_t j=i+1; j<m_culled.size();j++ )				
+			for ( size_t j=i+1; j<m_rendered.size();j++ )				
 			{
-				polygon3d *obs = m_culled[j];
-//				if ( !obs->as_line && obs->type == OBSTRUCTION && obs->points.size() > 2 )
+				polygon3d *obs = m_rendered[j];
 				if ( !obs->as_line && obs->id != p->id && obs->points.size() > 2 )
 				{
 					ClipperLib::Path obstruct;
@@ -1179,11 +1815,7 @@ void scene::shade( shade_result &result )
 
 
 				if (shade_area > active_area)
-				{
-//					DBOUT("\nshade_area=" << shade_area << " > " << active_area << "=active_area  for k=" << k << "\n");
 					shade_area = active_area;
-				}
-
 
 				shade_polygon sr;
 				sr.shade_area = shade_area;
