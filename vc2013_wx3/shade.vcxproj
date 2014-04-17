@@ -22,7 +22,6 @@
     <ResourceCompile Include="shade.rc" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\src\s3bsp.cpp" />
     <ClCompile Include="..\src\s3clipper.cpp" />
     <ClCompile Include="..\src\s3engine.cpp" />
     <ClCompile Include="..\src\s3objects.cpp" />
@@ -33,7 +32,6 @@
     <ClCompile Include="shade.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\src\s3bsp.h" />
     <ClInclude Include="..\src\s3clipper.h" />
     <ClInclude Include="..\src\s3engine.h" />
     <ClInclude Include="..\src\s3objects.h" />

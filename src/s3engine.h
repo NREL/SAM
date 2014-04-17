@@ -3,6 +3,7 @@
 
 #include <vector>
 #include <string>
+#include <unordered_map>
 
 namespace s3d {
 
@@ -12,6 +13,14 @@ public:
 	point3d();
 	point3d( double x_, double y_, double z_ );
 	double x, y, z; // original points
+	
+	double magnitude( void ) const;
+	void normalize( void );
+	double dot( const point3d& Pnt ) const;
+	point3d cross( const point3d& Pnt ) const;
+	bool operator==( const point3d& Pnt ) const;
+	point3d operator-( const point3d& Pnt ) const;
+
 	double _x, _y, _z; // translated points
 };
 
@@ -143,6 +152,80 @@ public:
 	std::vector<shade_polygon> shadings;
 };
 
+class BSPNode : public polygon3d
+{
+#ifdef _DEBUG
+public:
+#endif
+
+	size_t Index;
+	BSPNode *FrontNode, *BackNode;
+	
+	point3d Center;
+	point3d Normal;
+	double D;
+
+	bool m_rendered;
+
+
+	unsigned long _SplitPoly( BSPNode *Plane, std::vector<point3d> &SplitPnts, bool savepoints=true );
+	void _ComputeCenter( void );
+	void _ComputeNormal( void );
+	void _ComputeD( void );
+
+public:
+	BSPNode( const polygon3d &rhs );
+	~BSPNode();
+
+	bool GetRendered() { return m_rendered;}
+		
+	point3d GetCenter( void )				{ return Center; }
+	point3d GetNormal( void )				{ return Normal; }
+
+	bool Intersects( BSPNode *Plane );
+	BSPNode *Split( BSPNode *Plane );
+
+	BSPNode *GetFront( void )			{ return FrontNode; }
+	BSPNode *GetBack( void )			{ return BackNode; }
+
+	void SetFront( BSPNode *Node )		{ FrontNode = Node; }
+	void SetBack( BSPNode *Node)		{ BackNode = Node; }
+
+	void Traverse( const point3d& CameraLoc, std::vector<s3d::polygon3d*>& polys );
+
+	double GetMinZ();
+};
+
+
+
+class BSPTree
+{
+private:
+	std::unordered_map<int, float> m_id_minz;
+	std::vector<BSPNode*> m_nodes;
+	std::vector<BSPNode*> m_listnodes; // for deletion
+	BSPNode *m_root;
+
+	BSPNode *_FindRoot( std::vector<BSPNode*>& List );
+	BSPNode *_BuildBSPTree( std::vector<BSPNode*>& List );
+
+public:
+	BSPTree() {};
+	BSPTree( std::vector<s3d::polygon3d*>& polys, double x_viewport, double y_viewport, double z_viewport);
+	~BSPTree();
+
+	void Traverse( point3d& CameraLoc, std::vector<s3d::polygon3d*>& polys );
+
+	void Reset();
+	void ReadPolyList(const std::vector<s3d::polygon3d*>& polys );
+
+	void ReadPolyList( std::ifstream& Input );
+	void ReadTree( std::ifstream& Input );
+	void WriteTree( std::ofstream& Output );
+
+	void BuildTree( void );
+};
+
 static const unsigned int RIGHT = 0x0001;
 static const unsigned int TOP = 0x0002;
 static const unsigned int BOTTOM = 0x0004;
@@ -163,18 +246,14 @@ private:
 	std::vector<polygon3d*> m_polygons;
 	std::vector<text3d*> m_labels;
 	
-	std::vector<polygon3d*> m_culled;
-	std::vector<polygon3d*> m_culled_sorted; // BSP tree sorted polygons (can be as large as 2x size if m_culled if all are split
+	bool m_bspValid;
+	BSPTree m_bsp;
+	std::vector<polygon3d*> m_sorted_culled, m_rendered;
 
 	int m_polyType;
 	rgba m_fillColor, m_lineColor;
 	std::vector<point3d> m_curPoints;
 
-	// for setting viewpoint
-	double m_view_x;
-	double m_view_y;
-	double m_view_z;
-	
 	void cull_backfaces( );
 	void sort_polys();
 public:
@@ -224,10 +303,6 @@ public:
 	
 	// transform, cull, sort	
 	void build( transform &tr );
-
-	// set camera location
-	void set_viewxyz( double &x, double &y, double &z);
-	void get_viewxyz( double *x, double *y, double *z);
 
 	// compute shade after scene is built
 	void shade( shade_result &result );
