@@ -186,9 +186,9 @@ void transform::get_xyz( double *x, double *y, double *z )
 
 }
 
-void transform::get_view_normal( double vec[3] )
+void transform::get_view_normal( double *vx, double *vy, double *vz )
 {	
-	double azimuth, altitude;
+	double azimuth, altitude, vec[3];
 
 	get_azal( &azimuth, &altitude );
 
@@ -220,6 +220,10 @@ void transform::get_view_normal( double vec[3] )
 	vec[0] = vec[0] / magnitude;
 	vec[1] = vec[1] / magnitude;
 	vec[2] = vec[2] / magnitude;
+
+	*vx = vec[0];
+	*vy = vec[1];
+	*vz = vec[2];
 }
 
 
@@ -632,7 +636,6 @@ void scene::conical( int id, double x, double y, double zstart, double height, d
 		double x2 = x + r2*cosA;
 		double y2 = y + r2*sinA;
 		
-
 		std::vector<point3d> pplist;
 
 		if ( r2 > 0.0 )
@@ -908,6 +911,21 @@ static bool polybefore( const s3d::polygon3d *p1, const s3d::polygon3d *p2 )
 		return average_z(p1) > average_z(p2);
 }
 
+
+double polyareatr(const s3d::polygon3d &p)
+{
+  size_t size = (int)p.points.size();
+  if (size < 3) return 0;
+
+  double a = 0;
+  for (size_t i = 0, j = size -1; i < size; ++i)
+  {
+    a += ((double)p.points[j]._x + p.points[i]._x) * ((double)p.points[j]._y - p.points[i]._y);
+    j = i;
+  }
+  return -a * 0.5;
+}
+
 void polynormal( const s3d::polygon3d &p, double *x, double *y, double *z )
 {
 	const std::vector<point3d> &points = p.points;
@@ -1073,14 +1091,6 @@ void scene::build( transform &tr )
 	for (i=0;i<m_culled_sorted.size();i++)
 		m_culled.push_back(m_culled_sorted[i]);
 
-	tr.get_view_normal( m_vn );
-}
-
-void scene::get_viewnormal( double *x, double *y, double *z )
-{
-	*x = m_vn[0];
-	*y = m_vn[1];
-	*z = m_vn[2];
 }
 
 const std::vector<text3d*> &scene::get_labels() const

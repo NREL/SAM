@@ -539,15 +539,19 @@ void View3D::SaveScene()
 	}
 }
 
-void View3D::LoadScene()
+bool View3D::LoadScene()
 {
 	wxFileDialog dlg( this, "Load scene from file", wxEmptyString,
 		wxEmptyString, "Scene file (*.s3d)|*.s3d", wxFD_OPEN );
 	if ( dlg.ShowModal() == wxID_OK )
 	{
-		if (!LoadFromFile( dlg.GetPath() ))
+		if (LoadFromFile( dlg.GetPath() ))
+			return true;
+		else
 			wxMessageBox("Could not open file for reading:\n\n" + dlg.GetPath() );
 	}
+
+	return false;
 }
 
 bool View3D::WriteToFile( const wxString &file )
@@ -795,6 +799,12 @@ wxColour View3D::FromRGBA( s3d::rgba &c )
 
 void View3D::Draw( wxDC &dc, const s3d::polygon3d &poly, bool as_line, int xoff, int yoff )
 {
+	// Issue: why are there some zero area polygons?? - perhaps an issue in the BSP	
+	double a = s3d::polyareatr( poly );
+	if ( !as_line && a == 0.0  )
+		return;
+		
+
 	size_t n = poly.points.size();
 	if ( n < 2 ) return;
 	wxPoint *pp = new wxPoint[ n ];
@@ -940,8 +950,10 @@ void View3D::OnPaint( wxPaintEvent & )
 		if ( !p.as_line && p.id >= 0 )
 		{
 			// get polygon normal (cross prod of p._x,p._y,p._z [0] --> [1]
-			m_scene.get_viewnormal( &vx, &vy, &vz );
-			s3d::point3d vn( vx, vy, vz );
+			double xo, yo, zo;
+			m_transform.get_offset( &xo, &yo, &zo );
+			m_transform.get_view_normal( &vx, &vy, &vz );
+			s3d::point3d vn( xo+vx, yo+vy, zo+vz );
 			m_transform( vn );
 			vx = vn._x;
 			vy = vn._y;
@@ -956,7 +968,7 @@ void View3D::OnPaint( wxPaintEvent & )
 			double costh = dot/( sqrt(nx*nx+ny*ny+nz*nz)*sqrt(vx*vx+vy*vy+vz*vz) );
 			double theta = acos( costh ) * 180/3.1415926;
 
-			double factor = theta/180.0 + 0.5;
+			double factor = theta/180.0+0.5;
 
 			double R = cc.r*factor;
 			double G = cc.g*factor;
@@ -974,11 +986,8 @@ void View3D::OnPaint( wxPaintEvent & )
 
 #ifdef _DEBUG
 		dc.SetPen( wxPen( FromRGBA( p.border ), p.thick ) );		
-#else // no borders in release mode
-		//if (p.as_line)
-		//	dc.SetPen( wxPen( FromRGBA( p.border ), p.thick ) );		
-		//else
-			dc.SetPen( wxPen(wcol,2) );
+#else 
+		dc.SetPen( wxPen(wcol,2) );
 #endif
 		Draw( dc, p, p.as_line, xoff, yoff );
 	}
