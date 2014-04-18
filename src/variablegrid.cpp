@@ -14,6 +14,7 @@
 
 VariableGridData::VariableGridData(std::vector<Case *> &cases, wxArrayString &case_names)
 {
+	wxArrayString to_remove;
 	m_sorted = false;
 	m_cases = cases;
 	if (m_cases.size() > 0)
@@ -25,6 +26,7 @@ VariableGridData::VariableGridData(std::vector<Case *> &cases, wxArrayString &ca
 			m_col_hdrs.push_back(case_names[0]);
 			m_var_table_vec.push_back(&m_cases[0]->Values());
 			m_var_info_lookup_vec.push_back(&m_cases[0]->Variables());
+			// TODO: skip calculated value
 		}
 		else
 		{
@@ -436,5 +438,6 @@ void VariableGridFrame::OnCaseEvent(Case *, CaseEvent &evt)
 		// refresh when any case values change
 		m_grid->ForceRefresh(); // does not work with AutoWrapString Renderer with TOD schedule updating.
 		UpdateGrid(); // for comparison views
+		m_grid->Refresh();
 	}
 }
