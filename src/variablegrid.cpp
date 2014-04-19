@@ -433,10 +433,9 @@ void VariableGridFrame::OnCommand(wxCommandEvent &evt)
 
 void VariableGridFrame::OnCaseEvent(Case *, CaseEvent &evt)
 {
-	if (evt.GetType() == CaseEvent::VARS_CHANGED)
+	if (evt.GetType() == CaseEvent::VALUE_CHANGED)
 	{
 		// refresh when any case values change
-		m_grid->ForceRefresh(); // does not work with AutoWrapString Renderer with TOD schedule updating.
 		UpdateGrid(); // for comparison views
 		m_grid->Refresh();
 	}
