@@ -576,7 +576,10 @@ int Case::Recalculate( const wxString &trigger )
 		return -1;
 	}
 
-	
+	// send value changed whenever recalculate is called to update other windows
+	// for example the VariableGrid
+	SendEvent(CaseEvent(CaseEvent::VALUE_CHANGED));
+
 	CaseEvaluator eval( this, m_vals, m_config->Equations );
 	int n = eval.Changed( trigger );	
 	if ( n > 0 ) SendEvent( CaseEvent( CaseEvent::VARS_CHANGED, eval.GetUpdated() ) );
