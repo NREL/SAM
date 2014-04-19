@@ -38,7 +38,7 @@ private:
 	wxArrayString m_vars;
 	wxString m_str, m_str2;
 public:
-	enum { VARS_CHANGED, CONFIG_CHANGED };
+	enum { VARS_CHANGED, CONFIG_CHANGED, VALUE_CHANGED };
 
 	CaseEvent( int type ) : m_type(type) { }
 	CaseEvent( int type, const wxString &str ) : m_type(type), m_str(str) { }
