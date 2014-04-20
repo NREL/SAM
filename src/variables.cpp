@@ -685,12 +685,32 @@ bool VarValue::Parse( int type, const wxString &str, VarValue &value )
 			}
 			return true;
 		}
+	case VV_TABLE:
+		{
+			value.m_type = VV_TABLE;
+			VarTable vt;
+			wxArrayString hash = wxStringTokenize(str, "|", wxTOKEN_STRTOK);
+			if (hash.size() < 1) return false;
+			for (size_t i = 0; i < hash.size(); i++)
+			{
+				wxArrayString name_value = wxStringTokenize(hash[i], "=", wxTOKEN_STRTOK);
+				if (name_value.Count() != 2) return false;
+				wxArrayString name_type = wxStringTokenize(name_value[0], ":", wxTOKEN_STRTOK);
+				if (name_type.Count() != 2) return false;
+				VarValue vv;
+				if (!Parse(wxAtoi(name_type[1]), name_value[1], vv)) return false;
+				if (!vt.Set(name_type[0], vv)) return false;
+			}
+			if (vt.size() != hash.size()) return false;
+			value.m_tab = vt;
+		return true;
+		}
 	}
 	
 	return false;
 }
 
-wxString VarValue::AsString( wxChar arrsep )
+wxString VarValue::AsString( wxChar arrsep, wxChar tabsep )
 {
 	switch( m_type )
 	{
@@ -725,13 +745,13 @@ wxString VarValue::AsString( wxChar arrsep )
 	case VV_TABLE:
 	{
 		wxString buf = "";
-		wxArrayString as = m_tab.ListAll();
-		as.Sort();
-		for (size_t i = 0; i < as.Count(); i++)
+		size_t i = 0;
+		for (VarTable::iterator it = m_tab.begin(); it != m_tab.end(); ++it)
 		{
-			buf += as[i] + "=" + m_tab.Get(as[i])->AsString();
-			if (i < as.Count() - 1) buf += arrsep;
+			buf += (it->first) + ":" + wxString::Format("%d",it->second->Type()) + "=" + it->second->AsString();
+			if ( ++i < (m_tab.size())) buf += tabsep; 
 		}
+
 		return buf;
 	}
 	}
