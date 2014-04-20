@@ -82,7 +82,7 @@ int VariableGridData::GetNumberCols()
 	return m_cols;
 }
 
-/*
+
 bool VariableGridData::IsEmptyCell(int row, int col)
 {
 	if (col == 0) // variable name
@@ -90,9 +90,18 @@ bool VariableGridData::IsEmptyCell(int row, int col)
 	else if (col == 1) // variable label
 		return (m_var_labels[row] == wxEmptyString);
 	else // get var table and value
-		return (m_var_table_vec[col].Get(m_var_names[row])->AsString() == wxEmptyString);
+	{
+		if (m_var_table_vec.empty())
+			return wxEmptyString;
+		else if (m_var_table_vec.size() < (col - 1))
+			return wxEmptyString;
+		else if (m_var_table_vec[col - 2]->Get(m_var_names[row]))
+			return (m_var_table_vec[col-2]->Get(m_var_names[row])->AsString() == wxEmptyString);
+		else return
+			wxEmptyString;
+	}
 }
-*/
+
 
 wxString VariableGridData::GetColLabelValue(int col)
 {
