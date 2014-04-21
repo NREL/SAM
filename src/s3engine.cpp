@@ -1258,24 +1258,6 @@ void scene::box( int id, double x, double y, double z, double rot, double xdim, 
 	}
 }
 
-void scene::plane( int id, double x[4], double y[4], double z[4] )
-{
-	
-	// extract and cast from double to double
-	double xr[4], yr[4], zr[4];
-	xr[0] = static_cast<double>(x[0]); yr[0] = static_cast<double>(y[0]); zr[0] = static_cast<double>(z[0]);
-	xr[1] = static_cast<double>(x[1]); yr[1] = static_cast<double>(y[1]); zr[1] = static_cast<double>(z[1]);
-	xr[2] = static_cast<double>(x[2]); yr[2] = static_cast<double>(y[2]); zr[2] = static_cast<double>(z[2]);
-	xr[3] = static_cast<double>(x[3]); yr[3] = static_cast<double>(y[3]); zr[3] = static_cast<double>(z[3]);
-
-	// Plane
-	point(xr[3],yr[3],zr[3]);
-	point(xr[2],yr[2],zr[2]);
-	point(xr[1],yr[1],zr[1]);
-	point(xr[0],yr[0],zr[0]);
-	poly( id );
-}
-
 void scene::conical( int id, double x, double y, double zstart, double height, double r1, double r2,
 					 double angle_start, double angle_end, int npoly, bool face_bottom, bool face_top )
 {
@@ -1433,13 +1415,13 @@ void scene::cylinder( int id, double x, double y, double zstart, double height, 
 	poly( id, m_polyType, m_fillColor, m_lineColor, 1, false, end2 );
 }
 
-void scene::roof( int id, double xc, double yc, double zmin, double width, double length, 
+void scene::roof( int id, double x, double y, double z, double width, double length, 
 				 double height, double pitch1, double pitch2, double angle_xy )
 {
-	double zmax = zmin + height;
+	double zmax = z + height;
 	double xr[4], yr[4], xu[4], yu[4];
-	get_rotated_box_points(xc,yc,width,length,0.0,xu,yu);
-	get_rotated_box_points(xc,yc,width,length,angle_xy,xr,yr);
+	get_rotated_box_points(x,y,width,length,0.0,xu,yu);
+	get_rotated_box_points(x,y,width,length,angle_xy,xr,yr);
 
 	// compute xy pitch points
 	double xp[2], yp[2];
@@ -1447,41 +1429,40 @@ void scene::roof( int id, double xc, double yc, double zmin, double width, doubl
 	xp[1] = xp[0];
 	yp[0] = yu[0] + height/(tan(pitch1*DTOR) );
 	yp[1] = yu[1] - height/(tan(pitch2*DTOR) );
-	rotate2dxz(xc,yc,xp,yp,angle_xy,2);
+	rotate2dxz(x,y,xp,yp,angle_xy,2);
 
 	// bottom face
-	point(xr[0],yr[0],zmin);
-	point(xr[1],yr[1],zmin);
-	point(xr[2],yr[2],zmin);
-	point(xr[3],yr[3],zmin);
+	point(xr[0],yr[0],z);
+	point(xr[1],yr[1],z);
+	point(xr[2],yr[2],z);
+	point(xr[3],yr[3],z);
 	poly (id );
 
 	// Triangle Face 1
-	point(xr[3], yr[3],zmin);
+	point(xr[3], yr[3],z);
 	point(xp[0], yp[0],zmax);
-	point(xr[0], yr[0],zmin);
+	point(xr[0], yr[0],z);
 	poly (id );
 
 	// Triangle Face 2
-	point(xr[1], yr[1], zmin);
+	point(xr[1], yr[1], z);
 	point(xp[1], yp[1], zmax);
-	point(xr[2], yr[2], zmin);
+	point(xr[2], yr[2], z);
 	poly (id );
 
 	// Side Face 1
-	point(xr[0], yr[0], zmin);
+	point(xr[0], yr[0], z);
 	point(xp[0], yp[0], zmax);
 	point(xp[1], yp[1], zmax);
-	point(xr[1], yr[1], zmin);
+	point(xr[1], yr[1], z);
 	poly (id);
 
 	// Side Face 2
-	point(xr[2], yr[2], zmin);
+	point(xr[2], yr[2], z);
 	point(xp[1], yp[1], zmax);
 	point(xp[0], yp[0], zmax);
-	point(xr[3], yr[3], zmin);
+	point(xr[3], yr[3], z);
 	poly(id);
-
 }
 
 void scene::clear()

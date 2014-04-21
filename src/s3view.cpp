@@ -160,12 +160,12 @@ View3D::View3D( wxWindow *parent, int id, const wxPoint &pos, const wxSize &size
 	m_snapSpacing = 1;
 	SetBackgroundStyle( wxBG_STYLE_PAINT );
 	
+	RegisterType( new VActiveSurfaceObject );
 	RegisterType( new VBoxObject );
 	RegisterType( new VCylinderObject );
 	RegisterType( new VRoofObject );
+	RegisterType( new VRoundTreeObject );
 	RegisterType( new VConicalTreeObject );
-//	RegisterType( new VRoundTreeObject );
-	RegisterType( new VActiveSurfaceObject );
 
 	m_scene.basic_axes_with_ground();
 		

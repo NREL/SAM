@@ -288,8 +288,7 @@ public:
 		
 	void box( int id, double x, double y, double z, double rot, double xdim, double ydim, double zdim, 
 		unsigned int faces = ALL_FACES );
-	void plane(int id, double x[4], double y[4], double z[4]);
-	void roof( int id, double xc, double yc, double zstart, double width, double length, 
+	void roof( int id, double x, double y, double z, double width, double length, 
 				 double height, double pitch1, double pitch2, double angle_xy );
 
 	// add a new polygon all custom properties

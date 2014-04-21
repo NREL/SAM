@@ -62,9 +62,7 @@ public:
 		const wxCursor &curs = wxCURSOR_SIZING, const wxString &name = wxEmptyString );
 
 	VObject *GetObject();
-	void GetOriginalPos( double *x, double *yz );
 	void GetCurrentPos( double *x, double *yz );
-	void SetOriginalPos( double x, double yz );
 	double GetX();
 	double GetYZ();
 	double GetDeltaX();
@@ -159,6 +157,24 @@ private:
 	void GetXZPoints( double x[m_nPoints], double z[m_nPoints] );
 };
 
+class VRoundTreeObject : public VObject
+{
+public:
+	VRoundTreeObject();
+	virtual wxString GetTypeName();
+	virtual VObject *Duplicate();
+	virtual void BuildModel( s3d::scene & );
+	virtual void SetupHandles( VPlaneType plane );
+	virtual bool OnHandleMoved( VHandle *, VPlaneType );	
+	virtual void DrawOnPlane( VRenderer2D &dc, VPlaneType plane );	
+	virtual bool IsWithin( double x, double y, VPlaneType plane );
+
+private:
+	enum { HH_MOVE, HH_DIAM, HH_HEIGHT };
+	void GetXZPoints( double x[10], double z[10] );
+
+};
+
 
 class VBoxObject : public VObject
 {
@@ -191,32 +207,14 @@ public:
 	virtual void DrawOnPlane( VRenderer2D &dc, VPlaneType plane );	
 	virtual bool IsWithin( double x, double y, VPlaneType plane );
 
-	// Specific to PVArray since can rotate about two-axes
-	void TiltAndAzimuth(double n_points, double tilt, double azimuth, double xc, double yc, double zc, double length, double x[4], double y[4], double z[4]);
-	void SetVertices(double x[4],double y[4],double z[4]);
-	void GetVertices(double x[4],double y[4], double z[4]);
-	void GetDistances(int face, double distances[4]);
-	void UnitVectorNormal(int face, double unit_vector[3]);
-	void UpdateOnMove( VHandle *h, VPlaneType plane );
-	double UpdateOnStretch(int face, double length, VHandle *h );
+	void TiltAndAzimuth(double n_points, double tilt, double azimuth, 
+		double x0, double y0, double z0, 
+		double x[], double y[], double z[]);
 
+	void GetPoints( double xx[4], double yy[4], double zz[4] );
+	
 	enum { HH_MOVE, HH_LEFT, HH_BOTTOM, HH_AZIMUTH, HH_RIGHT, HH_TOP };
 
-private:
-	double m_x[4], m_y[4], m_z[4];
-
-	// As looking down on x-y plane
-	// 0 - Right Bottom point
-	// 1 - Right Top
-	// 2 - Left Top
-	// 3 - Left Bottom
-
-/*
- 2|----<------|1
-  |           |
-  |           |
- 3|---->------|0
- */
 };
 
 class VCylinderObject : public VObject
