@@ -14,6 +14,8 @@ addconfig( 'Solar Water Heating', ['Residential', 'Commercial', 'None']);
 //addconfig( 'Physical Trough', ['Independent Power Producer','None']);
 addconfig( 'Empirical Trough', ['Independent Power Producer', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'Single Owner','Commercial','None']);
 addconfig( 'Physical Trough', ['Independent Power Producer', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'Single Owner', 'None']);
+//addconfig( 'Geothermal Power', ['Independent Power Producer', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'Single Owner', 'None']);
+addconfig( 'Geothermal Power', ['None']);
 
 function setup_pvwatts_pages()
 {
@@ -220,6 +222,15 @@ function setup_csp_empirical_trough_pages()
 	addpage( [[ 'Empirical Trough Thermal Storage' ]], { 'sidebar'='Thermal Storage' } );
 	addpage( [[ 'Empirical Trough Parasitics' ]], { 'sidebar'='Parasitics' } );		
 }
+
+function setup_geothermal_power_pages()
+{
+	addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Ambient Conditions' } );
+	addpage( [[ 'Geothermal Resource' ]], { 'sidebar'='Geothermal Resource' } );
+	addpage( [[ 'Geothermal Plant and Equipment' ]], { 'sidebar'='Plant and Equipment' } );
+	addpage( [[ 'Geothermal Power Block' ]], { 'sidebar'='Power Block' } );
+}
+
 
 ////////////////////////////////////////////////////////////////////////////////
 // now setup all the pages /////////////////////////////////////////////////////
@@ -538,3 +549,14 @@ setmodules( ['swh',  'utilityrate2', 'cashloan'] );
 setup_solar_water_heating_pages();
 addpage( [[ 'Solar Water Heating Costs','O and M Costs' ]], { 'sidebar'='SWH System Costs' } );
 setup_commercial_pages();
+
+// Geothermal Power ////////////////////////////////////////////////////////////
+setconfig( 'Geothermal Power', 'None' );
+setmodules( ['geothermal']);
+setup_geothermal_power_pages();
+
+setconfig( 'Geothermal Power', 'Independent Power Producer' );
+setmodules( ['geothermal',  'ippppa']);
+setup_geothermal_power_pages();
+addpage( [[ 'Geothermal Costs' ]], { 'sidebar'='Geothermal System Costs' } );
+setup_independent_power_producer_pages();
