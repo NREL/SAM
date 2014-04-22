@@ -1936,7 +1936,7 @@ static const char *col_labels[SFCOLS] =
   "12pm", "1pm", "2pm", "3pm", "4pm", "5pm", "6pm", "7pm", "8pm", "9pm", "10pm", "11pm" };
 
 AFMonthByHourFactorCtrl::AFMonthByHourFactorCtrl(wxWindow *parent, int id, const wxPoint &pos, const wxSize &sz)
-	: wxPanel(parent, id, pos, sz, wxCLIP_CHILDREN|wxTAB_TRAVERSAL)
+	: wxPanel(parent, id, pos, sz, wxCLIP_CHILDREN|wxTAB_TRAVERSAL|wxBORDER_NONE)
 {
 	Colour1 = *wxRED;
 	Colour2 = *wxWHITE;
@@ -1956,6 +1956,10 @@ AFMonthByHourFactorCtrl::AFMonthByHourFactorCtrl(wxWindow *parent, int id, const
 			mData.at(r,c) = 1.0;
 
 	m_title = new wxStaticText(this, -1, "Beam Shading Factor");
+	wxFont fbold( *wxNORMAL_FONT );
+	fbold.SetWeight( wxFONTWEIGHT_BOLD );
+	m_title->SetFont( fbold );
+
 	m_legend = new wxStaticText(this, -1, "0=Full Shading, 1=No Shading");
 	mBtnApply = new wxButton(this, IDSF_APPLY, "Apply to selected cells");
 
