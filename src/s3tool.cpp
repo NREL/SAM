@@ -89,8 +89,7 @@ LocationSetup::LocationSetup( wxWindow *parent, ShadeTool *st )
 {
 	SetBackgroundColour( *wxWHITE );
 	
-	wxFont font( *wxNORMAL_FONT );
-
+	
 	m_scrollWin = new wxScrolledWindow( this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxScrolledWindowStyle|wxBORDER_NONE );
 	m_bitmapCtrl = new wxGenericStaticBitmap( m_scrollWin, wxID_ANY, wxNullBitmap );
 	m_address = new wxTextCtrl( this, ID_ADDRESS, "Denver, CO", wxDefaultPosition, wxDefaultSize, wxTE_PROCESS_ENTER );
@@ -121,25 +120,11 @@ LocationSetup::LocationSetup( wxWindow *parent, ShadeTool *st )
 
 	wxBoxSizer *tools3 = new wxBoxSizer( wxHORIZONTAL );
 	
-	btn = new wxMetroButton( panel_map_tools, ID_LOOKUP_ADDRESS, "Lookup address" );
-	btn->SetFont( font );
-	tools3->Add( btn );
-
-	btn = new wxMetroButton( panel_map_tools, ID_GET_MAP, "Update map from coordinates" );
-	btn->SetFont( font );
-	tools3->Add( btn );
-	
-	btn = new wxMetroButton( panel_map_tools, ID_LOAD_MAP_IMAGE, "Load image" );
-	btn->SetFont( font );
-	tools3->Add( btn );
-	
-	btn = new wxMetroButton( panel_map_tools, ID_PASTE_MAP_IMAGE, "Paste image" );
-	btn->SetFont( font );
-	tools3->Add( btn );
-	
-	btn = new wxMetroButton( panel_map_tools, ID_MANUAL_SCALE, "Manual scale" );
-	btn->SetFont( font );
-	tools3->Add( btn );
+	tools3->Add( new wxMetroButton( panel_map_tools, ID_LOOKUP_ADDRESS, "Lookup address", wxNullBitmap, wxDefaultPosition, wxDefaultSize, wxMB_SMALLFONT ) );
+	tools3->Add( new wxMetroButton( panel_map_tools, ID_GET_MAP, "Update map from coordinates", wxNullBitmap, wxDefaultPosition, wxDefaultSize, wxMB_SMALLFONT  ) );	
+	tools3->Add( new wxMetroButton( panel_map_tools, ID_LOAD_MAP_IMAGE, "Load image", wxNullBitmap, wxDefaultPosition, wxDefaultSize, wxMB_SMALLFONT ) );
+	tools3->Add( new wxMetroButton( panel_map_tools, ID_PASTE_MAP_IMAGE, "Paste image", wxNullBitmap, wxDefaultPosition, wxDefaultSize, wxMB_SMALLFONT ) );
+	tools3->Add( new wxMetroButton( panel_map_tools, ID_MANUAL_SCALE, "Manual scale", wxNullBitmap, wxDefaultPosition, wxDefaultSize, wxMB_SMALLFONT ) );
 
 	tools3->Add( new wxMetroButton( panel_map_tools, ID_ZOOM_IN, wxEmptyString, wxBITMAP_PNG_FROM_DATA( cirplus_12 )), 0, wxALL|wxEXPAND, 0 );
 	tools3->Add( new wxMetroButton( panel_map_tools, ID_ZOOM_OUT, wxEmptyString, wxBITMAP_PNG_FROM_DATA( cirminus_12 )), 0, wxALL|wxEXPAND, 0 );
@@ -148,9 +133,7 @@ LocationSetup::LocationSetup( wxWindow *parent, ShadeTool *st )
 	tools3->Add( new wxMetroButton( panel_map_tools, ID_GO_UP, wxEmptyString, wxBITMAP_PNG_FROM_DATA( up_arrow_13 ) ), 0, wxALL|wxEXPAND, 0 );
 	tools3->Add( new wxMetroButton( panel_map_tools, ID_GO_DOWN, wxEmptyString, wxBITMAP_PNG_FROM_DATA( down_arrow_13 ) ), 0, wxALL|wxEXPAND, 0 );
 
-	btn = new wxMetroButton( panel_map_tools, ID_UNDERLAY_MAP, "Underlay this map in the scene" );
-	btn->SetFont( font );
-	tools3->Add( btn );
+	tools3->Add( new wxMetroButton( panel_map_tools, ID_UNDERLAY_MAP, "Underlay this map in the scene", wxNullBitmap, wxDefaultPosition, wxDefaultSize, wxMB_SMALLFONT  ) );
 
 	tools3->AddStretchSpacer();
 
@@ -763,19 +746,21 @@ ShadeAnalysis::ShadeAnalysis( wxWindow *parent, ShadeTool *st )
 	SetBackgroundColour( *wxWHITE );
 
 	wxBoxSizer *tools = new wxBoxSizer( wxHORIZONTAL );
-	tools->Add( new wxButton(this, ID_GENERATE_DIURNAL, "Calculate diurnal shading" ), 0, wxALL, 3 );
-	tools->Add( new wxButton(this, ID_GENERATE_HOURLY, "Calculate hourly shading"), 0, wxALL, 3 );
+
+	tools->Add( new wxButton(this, ID_GENERATE_DIURNAL, "Diurnal analysis" ), 0, wxALL, 2 );
+	tools->Add( new wxButton(this, ID_GENERATE_HOURLY, "Hourly analysis (entire array)" ), 0, wxALL, 2 );
+
+	wxString modes[] = { "Shade fraction", "Derate factor" };
+	m_sfMode = new wxChoice( this, wxID_ANY, wxDefaultPosition, wxDefaultSize, 2, modes );
+	m_sfMode->SetSelection( 0 );
+	tools->Add( m_sfMode, 0, wxALL|wxALIGN_CENTER_VERTICAL, 2 );
+
 	tools->AddStretchSpacer();
 
 	m_scroll = new wxScrolledWindow( this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxScrolledWindowStyle|wxBORDER_NONE );
 	
-	
-	m_mxh = new AFMonthByHourFactorCtrl( this, wxID_ANY, wxDefaultPosition, wxSize(1000,350) );
-
 	wxBoxSizer *sizer = new wxBoxSizer( wxVERTICAL );	
-	sizer->Add( new wxStaticLine( this, wxID_ANY ), 0, wxALL|wxEXPAND, 2 );
-	sizer->Add( tools, 0, wxALL|wxEXPAND, 0 );
-	sizer->Add( m_mxh, 1, wxALL|wxEXPAND, 0 );
+	sizer->Add( tools, 0, wxALL|wxEXPAND, 2 );
 	sizer->Add( m_scroll, 1, wxALL|wxEXPAND, 0 );	
 
 	SetSizer( sizer );
@@ -876,6 +861,22 @@ void ShadeAnalysis::OnGenerateHourly( wxCommandEvent & )
 	*/
 }
 
+
+struct surfshade
+{
+	surfshade()
+		: group("Entire Array"), sfac( 12, 24, 1 ), shaded(12,24,0), active(12,24,0)
+	{
+	}
+	
+	wxString group;
+	matrix_t<float> sfac;
+	matrix_t<double> shaded, active;
+	std::vector<VActiveSurfaceObject*> surfaces;
+	std::vector<int> ids;
+};
+
+
 void ShadeAnalysis::OnGenerateDiurnal( wxCommandEvent & )
 {	
 	wxProgressDialog pdlg( "Shade calculation", "Computing...", 288, m_shadeTool,
@@ -893,14 +894,43 @@ void ShadeAnalysis::OnGenerateDiurnal( wxCommandEvent & )
 	double azi, zen, alt;
 	size_t m, d, h;
 
-	
-	matrix_t<float> shade_factor(12,24, 1);
+	std::vector<surfshade> shade;
+	shade.push_back( surfshade() ); // overall system shade
+
+	// setup shading result storage for each group
+	std::vector<VObject*> objs = m_shadeTool->GetView()->GetObjects();
+	for( size_t i=0;i<objs.size();i++ )
+	{
+		if ( VActiveSurfaceObject *surf = dynamic_cast<VActiveSurfaceObject*>( objs[i] ) )
+		{
+			wxString grp = surf->Property("Group").GetString();
+			if ( grp.IsEmpty() ) continue;
+
+			int index = -1;
+			for( int k=0;k<shade.size();k++ )
+				if ( shade[k].group == grp )
+					index = k;
+
+			if ( index < 0 )
+			{
+				shade.push_back( surfshade() );
+				index = shade.size()-1;
+			}
+
+			surfshade &ss = shade[index];
+			ss.surfaces.push_back( surf );
+			ss.group = grp;
+			if ( std::find( ss.ids.begin(), ss.ids.end(), surf->GetId() ) == ss.ids.end() )
+				ss.ids.push_back( surf->GetId() );
+		}
+	}
+
+	int mode = m_sfMode->GetSelection();
 
 	s3d::transform tr;
 	tr.set_scale( SF_ANALYSIS_SCALE );
 
-	s3d::scene sc( m_shadeTool->GetView()->GetScene() );	
-	std::vector<s3d::shade_result> shresult;
+	s3d::scene sc( m_shadeTool->GetView()->GetScene() );
 
 	wxStopWatch sw;
 	bool stopped = false;
@@ -919,23 +949,76 @@ void ShadeAnalysis::OnGenerateDiurnal( wxCommandEvent & )
 			// for nighttime full shading (fraction=1 and factor=0)
 			// consistent with SAM shading factor of zero for night time
 			//	double sf = 0;
-			double sf = 1; 
+			double scene_sf = 1; 
 			if (alt > 0)
 			{
 				tr.rotate_azal( azi, alt );
 				sc.build( tr );
-				sf = sc.shade( shresult );
+					
+				std::vector<s3d::shade_result> shresult;
+				scene_sf = sc.shade( shresult );
+
+				for ( size_t k=0;k<shresult.size();k++ )
+				{
+					int id = shresult[k].id;
+					double sf = shresult[k].shade_fraction;
+
+					// find the correct shade group for this 'id'
+					// and accumulate the total shaded and active areas
+					for( size_t n=1;n<shade.size();n++ )
+					{
+						std::vector<int> &ids = shade[n].ids;
+						if ( std::find( ids.begin(), ids.end(), id ) != ids.end() )
+						{
+							shade[n].shaded(m,h) += shresult[k].shade_area;
+							shade[n].active(m,h) += shresult[k].active_area;
+						}
+					}
+				}
+			}
+			
+			// store overall array shading factor
+			shade[0].sfac( m, h ) = (float)( (mode==0) ? scene_sf : 1.0-scene_sf );
+
+			// compute each group's shading factor from the overall areas
+			for( size_t n=1;n<shade.size();n++ )
+			{
+				double sf = 1;
+				if ( shade[n].active(m,h) != 0.0 )
+					sf = shade[n].shaded(m,h) / shade[n].active(m,h);
+
+				shade[n].sfac(m,h) =  (float)( (mode==0) ? sf : 1.0-sf );
 			}
 
-			shade_factor( m, h ) = (float)(1.0-sf);
 
 			if (pdlg.WasCancelled())
 				stopped = true;
 		}
 	}
 
+	int y = 0;
+	for( size_t i=0;i<shade.size();i++ )
+	{
+		if ( i >= m_mxhList.size() )
+			m_mxhList.push_back( new AFMonthByHourFactorCtrl( m_scroll, wxID_ANY ) );
 
-	m_mxh->SetData( shade_factor );
+		AFMonthByHourFactorCtrl *mxh = m_mxhList[i];
+		mxh->SetSize( 0, y, 1300, 360 );
+		mxh->Colour1 = ( mode == 0 ) ? *wxWHITE : *wxRED;
+		mxh->Colour2 = ( mode == 0 ) ? *wxRED : *wxWHITE;
+		mxh->SetTitle( shade[i].group );
+		mxh->SetData( shade[i].sfac );
+		mxh->SetLegend( mode==0 ? "(shade fraction) 0=no shade, 1=fully shaded" : "(derate)  0=fully shaded, 1=no shade" );
+		y += 360;
+	}
+
+	while ( m_mxhList.size() > shade.size() )
+	{
+		m_mxhList[ m_mxhList.size()-1 ]->Destroy();
+		m_mxhList.erase( m_mxhList.end()-1 );
+	}
+
+	m_scroll->SetScrollbars( 1, 1, 1100, y );
 }
 
 
