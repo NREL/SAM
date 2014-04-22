@@ -35,8 +35,13 @@ public:
 	wxString GetAddress();
 	void GetLocation( double *lat, double *lon, double *tz );
 	wxBitmap GetMap(double *lat = 0, double *lon = 0, double *tz = 0, double *mpp = 0 );
-	void SetMap( const wxBitmap &bit, const wxString &addrstr, double lat, double lon, double tz );
-	
+	void SetMap( const wxBitmap &bit, const wxString &addrstr, double lat, double lon, double tz, double mpp );
+	void AnnotateMap();
+	void UpdateScale();
+	void UpdateMapCtrl();
+
+	void Write( wxOutputStream & );
+	bool Read( wxInputStream & );
 
 private:	
 	ShadeTool *m_shadeTool;
@@ -45,7 +50,7 @@ private:
 	wxTextCtrl *m_address;
 	wxGenericStaticBitmap *m_bitmapCtrl;
 	wxScrolledWindow *m_scrollWin;
-	wxBitmap m_bitmap;
+	wxBitmap m_bitmap, m_unannotatedBitmap;
 	wxTextCtrl *m_locationInfo;
 	wxSimpleCurlDownloadThread m_curl;
 	wxNumericCtrl *m_lat, *m_lon, *m_tz;
@@ -57,7 +62,8 @@ private:
 	void OnMapChange( wxCommandEvent &evt );
 	void OnAddressChange( wxCommandEvent & );
 	void OnUnderlayMap( wxCommandEvent & );
-
+	void OnImportMapImage( wxCommandEvent & );
+	void OnManualScale( wxCommandEvent & );
 	DECLARE_EVENT_TABLE();
 };
 
@@ -132,6 +138,15 @@ public:
 	LocationSetup *GetLocationSetup();
 	View3D *GetView();
 	void SwitchTo( int page );
+
+	bool Load();
+	void Save();
+
+	bool WriteToFile( const wxString &file );
+	bool LoadFromFile( const wxString &file );
+
+	void Write( wxOutputStream & );
+	bool Read( wxInputStream & );
 
 private:
 	wxSimplebook *m_book;

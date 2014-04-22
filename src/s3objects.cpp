@@ -43,6 +43,15 @@ VProperty::VProperty( int ip, int dim )
 	m_dimension = dim;
 }
 
+VProperty::VProperty( int i, const wxArrayString &choices )
+{
+	Init();
+	m_type = INTEGER;
+	m_intVal = i;
+	m_dimension = NONDIM;
+	m_choices = choices;
+}
+
 VProperty::VProperty( const wxColour &cp )
 {
 	Init();
@@ -122,6 +131,12 @@ wxString VProperty::GetString()
 {
 	if ( m_pReference ) return m_pReference->GetString();
 	else return m_string;
+}
+
+wxArrayString &VProperty::GetChoices()
+{
+	if ( m_pReference ) return m_pReference->GetChoices();
+	else return m_choices;
 }
 
 void VProperty::Write( wxOutputStream &_o )
@@ -803,7 +818,7 @@ VBoxObject::VBoxObject()
 	AddProperty( "Height", new VProperty(15.0, LENGTH) );
 	AddProperty( "Rotation", new VProperty(0.0 ) );
 	AddProperty( "Color", new VProperty( wxColour(155,0,0,144) ) );
-	AddProperty( "Capped", new VProperty( true ) );
+	AddProperty( "Sides only", new VProperty( false ) );
 }
 
 wxString VBoxObject::GetTypeName()
@@ -827,7 +842,7 @@ void VBoxObject::BuildModel( s3d::scene &sc )
 	double l = Property("Length").GetDouble();
 	double h = Property("Height").GetDouble();
 	double r = Property("Rotation").GetDouble();
-	bool cap = Property("Capped").GetBoolean();
+	bool sides = Property("Sides only").GetBoolean();
 	
 	wxColour cc = Property("Color").GetColour();
 	s3d::rgba scc1( cc.Red(), cc.Green(), cc.Blue(), cc.Alpha() );
@@ -836,7 +851,13 @@ void VBoxObject::BuildModel( s3d::scene &sc )
 	sc.colors( scc1, scc2 );
 	sc.type( s3d::scene::OBSTRUCTION );
 
-	sc.box( GetId(), x, y, z, r, w, l, h, cap ? s3d::ALL_FACES : s3d::SIDES );
+	unsigned int faces = s3d::ALL_FACES;
+	if ( sides )
+	{
+		sc.nocull( true );
+		faces = s3d::SIDES;
+	}
+	sc.box( GetId(), x, y, z, r, w, l, h, faces );
 
 }
 
@@ -1061,6 +1082,10 @@ VActiveSurfaceObject::VActiveSurfaceObject()
 	AddProperty( "Length", new VProperty( 10.0, LENGTH ) );
 	AddProperty( "Azimuth", new VProperty( 180.0 ) );
 	AddProperty( "Tilt", new VProperty( 30.0) );
+	wxArrayString shapes;
+	shapes.Add( "Rectangle" );
+	shapes.Add( "Triangle" );
+	AddProperty( "Shape", new VProperty( 0, shapes ) );
 }
 
 wxString VActiveSurfaceObject::GetTypeName()
@@ -1108,10 +1133,24 @@ void VActiveSurfaceObject::BuildModel( s3d::scene &sc )
 	double xx[4], yy[4], zz[4];
 	GetPoints( xx, yy, zz );
 	sc.reset();
-	sc.colors( s3d::rgba( 0, 107, 186, 200 ), s3d::rgba( 0, 88, 153 ) );
+	sc.colors( s3d::rgba( 0, 107, 186, 170 ), s3d::rgba( 0, 88, 153, 170 ) );
 	sc.type( s3d::scene::ACTIVE );
-	for( size_t i=0;i<4;i++ )
-		sc.point( xx[i], yy[i], zz[i] );
+	sc.nocull( true );
+
+	int shape = Property("Shape").GetInteger();
+	if ( shape == 0 )
+	{ // rectangular
+		for( int i=0;i<4;i++ ) sc.point( xx[i], yy[i], zz[i] );
+	}
+	else if ( shape == 1 )
+	{ // triangular
+		sc.point( 0.5*(xx[2]+xx[1]), 
+			0.5*(yy[2]+yy[1]),
+			0.5*(zz[2]+zz[1]) );
+		sc.point( xx[3], yy[3], zz[3] );
+		sc.point( xx[0], yy[0], zz[0] );
+	}
+
 	sc.poly( GetId() );
 }
 

@@ -27,6 +27,7 @@
 #include <wx/tglbtn.h>
 #include <wx/busyinfo.h>
 #include <wx/statbmp.h>
+#include <wx/clipbrd.h>
 #include <wx/generic/statbmpg.h>
 
 #include <wx/propgrid/propgrid.h>
@@ -58,7 +59,8 @@ static wxString GOOGLE_API_KEY("AIzaSyCyH4nHkZ7FhBK5xYg4db3K7WN-vhpDxas");
 static wxString BING_API_KEY("Av0Op8DvYGR2w07w_771JLum7-fdry0kBtu3ZA4uu_9jBJOUZgPY7mdbWhVjiORY");
 
 enum { ID_ADDRESS = wxID_HIGHEST+239, ID_CURL, ID_LOOKUP_ADDRESS, ID_LATITUDE, ID_LONGITUDE, ID_TIMEZONE,
-	ID_GET_MAP, ID_GO_UP, ID_GO_DOWN, ID_GO_LEFT, ID_GO_RIGHT, ID_ZOOM_IN, ID_ZOOM_OUT, ID_UNDERLAY_MAP };
+	ID_GET_MAP, ID_GO_UP, ID_GO_DOWN, ID_GO_LEFT, ID_GO_RIGHT, ID_ZOOM_IN, ID_ZOOM_OUT, ID_UNDERLAY_MAP,
+	ID_LOAD_MAP_IMAGE, ID_PASTE_MAP_IMAGE, ID_MANUAL_SCALE };
 
 
 BEGIN_EVENT_TABLE( LocationSetup, wxPanel )
@@ -72,6 +74,9 @@ BEGIN_EVENT_TABLE( LocationSetup, wxPanel )
 	EVT_BUTTON( ID_GO_DOWN, LocationSetup::OnMapChange )
 	EVT_BUTTON( ID_ZOOM_IN, LocationSetup::OnMapChange )
 	EVT_BUTTON( ID_ZOOM_OUT, LocationSetup::OnMapChange )
+	EVT_BUTTON( ID_LOAD_MAP_IMAGE, LocationSetup::OnImportMapImage )
+	EVT_BUTTON( ID_PASTE_MAP_IMAGE, LocationSetup::OnImportMapImage )
+	EVT_BUTTON( ID_MANUAL_SCALE, LocationSetup::OnManualScale )
 	EVT_BUTTON( ID_UNDERLAY_MAP, LocationSetup::OnUnderlayMap )
 	EVT_SIMPLECURL( ID_CURL, LocationSetup::OnCurl )
 END_EVENT_TABLE()
@@ -91,7 +96,7 @@ LocationSetup::LocationSetup( wxWindow *parent, ShadeTool *st )
 	m_address = new wxTextCtrl( this, ID_ADDRESS, "Denver, CO", wxDefaultPosition, wxDefaultSize, wxTE_PROCESS_ENTER );
 
 	m_zoomLevel = 19;
-	m_mpp = 1;
+	m_mpp = 0.01;
 	
 	wxMetroButton *btn;
 	
@@ -123,6 +128,18 @@ LocationSetup::LocationSetup( wxWindow *parent, ShadeTool *st )
 	btn = new wxMetroButton( panel_map_tools, ID_GET_MAP, "Update map from coordinates" );
 	btn->SetFont( font );
 	tools3->Add( btn );
+	
+	btn = new wxMetroButton( panel_map_tools, ID_LOAD_MAP_IMAGE, "Load image" );
+	btn->SetFont( font );
+	tools3->Add( btn );
+	
+	btn = new wxMetroButton( panel_map_tools, ID_PASTE_MAP_IMAGE, "Paste image" );
+	btn->SetFont( font );
+	tools3->Add( btn );
+	
+	btn = new wxMetroButton( panel_map_tools, ID_MANUAL_SCALE, "Manual scale" );
+	btn->SetFont( font );
+	tools3->Add( btn );
 
 	tools3->Add( new wxMetroButton( panel_map_tools, ID_ZOOM_IN, wxEmptyString, wxBITMAP_PNG_FROM_DATA( cirplus_12 )), 0, wxALL|wxEXPAND, 0 );
 	tools3->Add( new wxMetroButton( panel_map_tools, ID_ZOOM_OUT, wxEmptyString, wxBITMAP_PNG_FROM_DATA( cirminus_12 )), 0, wxALL|wxEXPAND, 0 );
@@ -134,6 +151,7 @@ LocationSetup::LocationSetup( wxWindow *parent, ShadeTool *st )
 	btn = new wxMetroButton( panel_map_tools, ID_UNDERLAY_MAP, "Underlay this map in the scene" );
 	btn->SetFont( font );
 	tools3->Add( btn );
+
 	tools3->AddStretchSpacer();
 
 	panel_map_tools->SetSizer( tools3 );
@@ -274,11 +292,25 @@ void LocationSetup::DownloadMap(  )
 		wxMessageBox("Invalid image data file");
 		return;
 	}
+
+	m_unannotatedBitmap = m_bitmap;
 	
 	// Map resolution = 156543.04 meters/pixel * cos(latitude) / (2 ^ zoomlevel)
 	// http://msdn.microsoft.com/en-us/library/aa940990.aspx
 	m_mpp = 156543.04 * cos(lat*3.15926/180) / pow(2,m_zoomLevel);
+	
+	AnnotateMap();
 
+	m_bitmapCtrl->SetBitmap( m_bitmap );
+
+	m_scrollWin->SetScrollbars(1, 1, m_bitmap.GetWidth(), m_bitmap.GetHeight());
+	m_scrollWin->SetScrollRate( 20, 20 );
+
+}
+
+void LocationSetup::AnnotateMap()
+{
+	m_bitmap = m_unannotatedBitmap;
 	wxMemoryDC dc( m_bitmap );
 	wxFont font( *wxNORMAL_FONT );
 	font.SetWeight( wxFONTWEIGHT_BOLD );
@@ -289,12 +321,6 @@ void LocationSetup::DownloadMap(  )
 	dc.DrawLine( 2, 2, 2, 6 );
 	dc.DrawLine( 102, 2, 102, 6 );
 	dc.DrawText( wxString::Format("%0.2lf m", m_mpp*100), 5, 3 );
-
-	m_bitmapCtrl->SetBitmap( m_bitmap );
-
-	m_scrollWin->SetScrollbars(1, 1, m_bitmap.GetWidth(), m_bitmap.GetHeight());
-	m_scrollWin->SetScrollRate( 20, 20 );
-
 }
 
 void LocationSetup::OnMapChange( wxCommandEvent &evt )
@@ -343,18 +369,18 @@ wxBitmap LocationSetup::GetMap(double *lat, double *lon, double *tz, double *mpp
 	return m_bitmap;
 }
 
-void LocationSetup::SetMap( const wxBitmap &bit, const wxString &addrstr, double lat, double lon, double tz )
+void LocationSetup::SetMap( const wxBitmap &bit, const wxString &addrstr, double lat, double lon, double tz, double mpp )
 {
 	m_lat->SetValue( lat );
 	m_lon->SetValue( lon );
 	m_tz->SetValue( tz );
 	m_address->SetValue( addrstr );
 
-	m_bitmap = bit;
-	m_bitmapCtrl->SetBitmap( m_bitmap );
+	m_mpp = mpp;
+	m_unannotatedBitmap = bit;
 
-	m_scrollWin->SetScrollbars(1, 1, m_bitmap.GetWidth(), m_bitmap.GetHeight());
-	m_scrollWin->SetScrollRate( 20, 20 );
+	AnnotateMap();
+	UpdateMapCtrl();
 }
 
 void LocationSetup::OnUnderlayMap( wxCommandEvent & )
@@ -371,6 +397,128 @@ void LocationSetup::OnUnderlayMap( wxCommandEvent & )
 		wxMessageBox("Please setup a map image first.");
 }
 
+void LocationSetup::OnImportMapImage( wxCommandEvent &evt )
+{
+	wxBitmap map( wxNullBitmap );
+	if ( evt.GetId() == ID_LOAD_MAP_IMAGE )
+	{
+		wxFileDialog dlg( this, "Select a map image file", wxEmptyString, wxEmptyString,
+			"Image Files (*.bmp;*.jpg;*.png)|*.bmp;*.jpg;*.png", wxFD_OPEN );
+
+		if ( dlg.ShowModal() != wxID_OK )
+			return;
+
+		if ( ! map.LoadFile( dlg.GetPath(), wxBITMAP_TYPE_ANY ) )
+		{
+			wxMessageBox("Error loading selected image file:\n\n" + dlg.GetPath() );
+			return;
+		}
+	}
+	else
+	{
+		// paste clipboard
+		if (wxTheClipboard->Open())
+		{
+			wxBitmapDataObject bitobj;
+			if (wxTheClipboard->GetData( bitobj ))
+			{
+				map = bitobj.GetBitmap();
+				wxTheClipboard->Close();
+			}
+		}
+
+		if ( map.IsNull() )
+		{
+			wxMessageBox("No image data is in the clipboard");
+			return;
+		}
+	}
+	
+	UpdateMapCtrl();	
+	UpdateScale();
+}
+
+void LocationSetup::UpdateMapCtrl()
+{
+	m_bitmap = m_unannotatedBitmap;
+	m_bitmapCtrl->SetBitmap( m_bitmap );
+	m_bitmapCtrl->Refresh();
+
+	m_scrollWin->SetScrollbars(1, 1, m_bitmap.GetWidth(), m_bitmap.GetHeight());
+	m_scrollWin->SetScrollRate( 20, 20 );
+}
+
+void LocationSetup::UpdateScale()
+{
+	wxString text = wxGetTextFromUser( "Please enter image scale in meters per pixel", "Scale", 
+		wxString::Format("%lg", m_mpp ) );
+	if ( text.IsEmpty() )
+		return;
+
+	m_mpp = wxAtof( text );
+	if ( m_mpp < 0.0001 ) m_mpp = 0.0001;
+	if ( m_mpp > 10 ) m_mpp = 10;
+	
+	AnnotateMap();
+	UpdateMapCtrl();
+}
+
+void LocationSetup::OnManualScale( wxCommandEvent & )
+{
+	UpdateScale();
+}
+
+
+void LocationSetup::Write( wxOutputStream &os )
+{
+	wxDataOutputStream out( os );
+	out.Write8( 0x94 );
+	out.Write8( 1 );
+	
+	out.WriteString( m_address->GetValue() );
+	out.WriteDouble( m_lat->Value() );
+	out.WriteDouble( m_lon->Value() );
+	out.WriteDouble( m_tz->Value() );
+	out.WriteDouble( m_mpp );
+	out.Write32( m_zoomLevel );
+
+	out.Write8( m_unannotatedBitmap.IsNull() ? 0 : 1 ); // has map or not
+	if ( !m_unannotatedBitmap.IsNull() )
+	{
+		wxImage img = m_unannotatedBitmap.ConvertToImage();
+		wxPNGHandler().SaveFile( &img, os, false );
+	}
+
+	out.Write8( 0x94 );
+}
+
+bool LocationSetup::Read( wxInputStream &is )
+{
+	wxDataInputStream in( is );
+
+	wxUint8 code = in.Read8();
+	wxUint8 ver = in.Read8();
+
+	m_address->ChangeValue( in.ReadString() );
+	m_lat->SetValue( in.ReadDouble() );
+	m_lon->SetValue( in.ReadDouble() );
+	m_tz->SetValue( in.ReadDouble() );
+	m_mpp = in.ReadDouble();
+	m_zoomLevel = in.Read32();
+
+	wxUint8 has_map = in.Read8();
+	if ( has_map != 0 )
+	{
+		wxImage img;
+		wxPNGHandler().LoadFile( &img, is, false );
+		m_unannotatedBitmap = wxBitmap(img);
+	}
+
+	AnnotateMap();
+	UpdateMapCtrl();
+
+	return code == in.Read8();
+}
 
 enum { ID_PROPGRID = wxID_HIGHEST+959, ID_OBJLIST };
 
@@ -462,7 +610,10 @@ void ObjectEditor::SetObject( VObject *obj )
 			pg = new wxFloatProperty( list[i], wxPG_LABEL );
 			break;
 		case VProperty::INTEGER:
-			pg = new wxIntProperty( list[i], wxPG_LABEL );
+			if ( p.GetChoices().size() == 0 )
+				pg = new wxIntProperty( list[i], wxPG_LABEL );
+			else
+				pg = new wxEnumProperty( list[i], wxPG_LABEL, p.GetChoices() );
 			break;
 		case VProperty::STRING:
 			pg =  new wxStringProperty( list[i], wxPG_LABEL);
@@ -907,6 +1058,70 @@ void ShadeTool::SwitchTo( int page )
 	m_book->SetSelection( page );
 }
 
+
+void ShadeTool::Save()
+{
+	wxFileDialog dlg( this, "Save scene to file", wxEmptyString, 
+		wxEmptyString, "Scene file (*.s3d)|*.s3d", wxFD_SAVE|wxFD_OVERWRITE_PROMPT );
+	if ( dlg.ShowModal() == wxID_OK )
+	{
+		if (!WriteToFile( dlg.GetPath() ))
+			wxMessageBox("Could not open file for writing:\n\n" + dlg.GetPath() );
+	}
+}
+
+bool ShadeTool::Load()
+{
+	wxFileDialog dlg( this, "Load scene from file", wxEmptyString,
+		wxEmptyString, "Scene file (*.s3d)|*.s3d", wxFD_OPEN );
+	if ( dlg.ShowModal() == wxID_OK )
+	{
+		if (LoadFromFile( dlg.GetPath() ))
+			return true;
+		else
+			wxMessageBox("Could not open file for reading:\n\n" + dlg.GetPath() );
+	}
+
+	return false;
+}
+
+bool ShadeTool::WriteToFile( const wxString &file )
+{
+	wxFFileOutputStream fos( file );
+	if ( !fos.IsOk() ) return false;
+	Write( fos );
+	return true;
+}
+
+bool ShadeTool::LoadFromFile( const wxString &file )
+{
+	wxFFileInputStream fis( file );
+	if ( !fis.IsOk() || !Read( fis ) ) return false;
+	else return true;
+}
+
+void ShadeTool::Write( wxOutputStream &os )
+{
+	wxDataOutputStream out(os);
+	out.Write8( 0x84 );
+	out.Write8( 1 );
+	m_location->Write( os );
+	m_view->Write( os );
+	out.Write8( 0x84 );
+}
+
+bool ShadeTool::Read( wxInputStream &is )
+{
+	wxDataInputStream in(is);
+	wxUint8 code = in.Read8();
+	in.Read8();
+
+	bool ok1 = m_location->Read( is );
+	bool ok2 = m_view->Read( is );
+
+	return in.Read8() == code && ok1 && ok2;
+}
+
 void ShadeTool::OnUpdateObjectList( wxCommandEvent & )
 {
 	m_sceneParams->UpdateObjectList();
@@ -928,10 +1143,9 @@ void ShadeTool::OnCommand( wxCommandEvent &evt)
 
 	switch (evt.GetId())
 	{
-	case wxID_SAVE: m_view->SaveScene(); break;
+	case wxID_SAVE: Save(); break;
 	case wxID_OPEN: 		
-		if( m_view->LoadScene() )
-			m_book->SetSelection( PG_SCENE );
+		if( Load() ) m_book->SetSelection( PG_SCENE );
 		break;
 	case ID_LOCATION:
 		m_book->SetSelection( PG_LOCATION );
