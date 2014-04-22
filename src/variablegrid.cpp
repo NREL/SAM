@@ -90,7 +90,6 @@ bool VariableGridData::IsValid()
 	{
 		for (size_t i = 0; i < m_cases.size(); i++)
 		{
-			if 
 			if (m_cases[i]->GetTechnology() == wxEmptyString)
 				return false;
 		}
