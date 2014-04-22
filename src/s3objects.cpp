@@ -1075,6 +1075,7 @@ bool VBoxObject::IsWithin( double px, double pyz, VPlaneType plane )
 
 VActiveSurfaceObject::VActiveSurfaceObject()
 {
+	AddProperty( "Group", new VProperty( wxString("") ) );
 	AddProperty( "X", new VProperty(0.0, LENGTH ) );
 	AddProperty( "Y", new VProperty(0.0, LENGTH ) );
 	AddProperty( "Z", new VProperty(0.0, LENGTH ) );

@@ -806,7 +806,7 @@ void ShadeAnalysis::OnGenerateHourly( wxCommandEvent & )
 	tr.set_scale( SF_ANALYSIS_SCALE );
 
 	s3d::scene sc( m_shadeTool->GetView()->GetScene() );	
-	s3d::shade_result shresult;
+	std::vector<s3d::shade_result> shresult;
 
 	wxStopWatch sw;
 	bool stopped = false;
@@ -839,8 +839,7 @@ void ShadeAnalysis::OnGenerateHourly( wxCommandEvent & )
 				{
 					tr.rotate_azal( azi, alt );
 					sc.build( tr );
-					sc.shade( shresult );
-					sf = shresult.shade_fraction;
+					sf = sc.shade( shresult );
 				}
 
 				shade_fraction.push_back(sf);
@@ -901,7 +900,7 @@ void ShadeAnalysis::OnGenerateDiurnal( wxCommandEvent & )
 	tr.set_scale( SF_ANALYSIS_SCALE );
 
 	s3d::scene sc( m_shadeTool->GetView()->GetScene() );	
-	s3d::shade_result shresult;
+	std::vector<s3d::shade_result> shresult;
 
 	wxStopWatch sw;
 	bool stopped = false;
@@ -925,8 +924,7 @@ void ShadeAnalysis::OnGenerateDiurnal( wxCommandEvent & )
 			{
 				tr.rotate_azal( azi, alt );
 				sc.build( tr );
-				sc.shade( shresult );
-				sf = shresult.shade_fraction;
+				sf = sc.shade( shresult );
 			}
 
 			shade_factor( m, h ) = (float)(1.0-sf);

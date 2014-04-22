@@ -133,26 +133,6 @@ protected:
 	
 };
 
-class shade_polygon
-{
-public:
-	shade_polygon() : active_area(0.0), shade_area(0.0) {  }
-	polygon3d intersect;
-	double shade_fraction;
-	double active_area;
-	double shade_area;
-};
-
-class shade_result
-{
-public:
-	shade_result() : total_active_area(0.0), total_shade_area(0.0), shade_fraction(0.0) {  }
-	double total_active_area;
-	double total_shade_area;
-	double shade_fraction;
-	std::vector<shade_polygon> shadings;
-};
-
 class BSPNode : public polygon3d
 {
 #ifdef _DEBUG
@@ -242,6 +222,19 @@ void polynormal( const s3d::polygon3d &p, double *x, double *y, double *z );
 double polyareatr( const s3d::polygon3d &p );
 
 
+class shade_result
+{
+public:
+	shade_result() : id(-1), active_area(0.0), shade_area(0.0), shade_fraction(0.0), backmost(0) {  }
+	int id;
+	double active_area;
+	double shade_area;
+	double shade_fraction;
+	std::vector<polygon3d> shadings;
+	std::vector<polygon3d*> polygons;
+	int backmost;
+};
+
 class scene
 {
 private:
@@ -307,7 +300,8 @@ public:
 	void build( transform &tr );
 
 	// compute shade after scene is built
-	void shade( shade_result &result );
+	double shade( std::vector<shade_result> &results, 
+		double *total_active = 0, double *total_shade = 0 );
 
 	// get polygons and labels for rendering
 	const std::vector<text3d*> &get_labels() const;

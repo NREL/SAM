@@ -1773,78 +1773,128 @@ static void copy_poly(polygon3d &lhs, ClipperLib::Path &rhs)
 	}
 }
 
-void scene::shade( shade_result &result )
+double scene::shade( std::vector<shade_result> &results, 
+		double *total_active, double *total_shade )
 {
-//	result.shade_fraction = 0;
-	result.shade_fraction = 1; // initialize to fully shaded when active area = 0
-	result.total_active_area = 0.0;
-	result.total_shade_area = 0.0;
-	result.shadings.clear();
+	results.clear();
 
-	for ( size_t i = 0; i < m_rendered.size(); i++ )
+	// determine shading results independently for each object (by 'id')
+	// first, allocate shading result structures for each
+	// active object
+	for( size_t i=0;i<m_rendered.size();i++ )
 	{
-		polygon3d *p = m_rendered[i];
-		if ( !p->as_line && p->type == ACTIVE && p->points.size() > 2 )
+		if ( m_rendered[i]->type != ACTIVE 
+			|| m_rendered[i]->points.size() < 3
+			|| m_rendered[i]->as_line )
+			continue;
+		
+		int id = m_rendered[i]->id;
+		int index = -1;
+		for( int j=0;j<results.size();j++ )
+			if ( results[j].id == id )
+				index = j;
+
+		if ( index < 0 )
 		{
-			ClipperLib::Path active;
-			copy_poly( active, *p );
-			
-			double active_area = fabs(ClipperLib::Area( active ));
-			if ( active_area == 0.0 ) continue;
-
-			result.total_active_area += active_area;
-
-			ClipperLib::Clipper cc;
-			cc.AddPath(active, ClipperLib::ptSubject,true);
-
-			size_t nobstruct=0;
-			for ( size_t j=i+1; j<m_rendered.size();j++ )				
-			{
-				polygon3d *obs = m_rendered[j];
-				if ( !obs->as_line && obs->id != p->id && obs->points.size() > 2 )
-				{
-					ClipperLib::Path obstruct;
-					copy_poly( obstruct, *obs );
-					cc.AddPath(obstruct, ClipperLib::ptClip, true);
-					nobstruct++;
-				}
-			}
-
-			if ( nobstruct==0 ) continue;
-
-			ClipperLib::Paths soln;
-			cc.Execute(ClipperLib::ctIntersection, soln, ClipperLib::pftNonZero, ClipperLib::pftNonZero);
-
-			for ( size_t k=0;k<soln.size();k++ )
-			{
-				double shade_area = fabs(ClipperLib::Area( soln[k] ));				
-				if ( shade_area == 0.0 ) continue;
-
-
-				if (shade_area > active_area)
-					shade_area = active_area;
-
-				shade_polygon sr;
-				sr.shade_area = shade_area;
-				sr.active_area = active_area;
-				sr.shade_fraction = sr.shade_area/sr.active_area;
-				sr.intersect.points.reserve( soln[k].size() );
-				copy_poly( sr.intersect, soln[k] );
-
-				result.total_shade_area += shade_area;
-				result.shadings.push_back( sr );
-			}
-			
+			results.push_back( shade_result() );
+			index = results.size() - 1;
+			results[index].backmost = i; // store rendered index of first polygon of this object
 		}
 
+		shade_result &sr = results[index];
+		sr.id = id;
+		sr.active_area = 0.0;
+		sr.shade_area = 0.0;
+		sr.shade_fraction = 1.0; // initialize to fully shaded if active area = 0
+		sr.polygons.push_back( m_rendered[i] ); // store this polygon as an active part
 	}
 
-	if (result.total_active_area != 0.0)
+	// now for each object for which we are tracking shading results,
+	// determine obstruction shading
+	for ( std::vector<shade_result>::iterator it = results.begin();
+		it != results.end();
+		++it )
 	{
-		if (result.total_shade_area > result.total_active_area) 
-			result.total_shade_area = result.total_active_area;
-		result.shade_fraction = result.total_shade_area / result.total_active_area;
+		shade_result &sr = *it; 
+		ClipperLib::Clipper cc;
+
+		// merge together all transformed polygons that are part of the
+		// current object whose shading results are in 'sr'
+		for( std::vector<polygon3d*>::iterator ipoly = sr.polygons.begin();
+			ipoly != sr.polygons.end();
+			++ipoly )
+		{
+			ClipperLib::Path active;
+			copy_poly( active, *(*ipoly) );
+			
+			double area = fabs(ClipperLib::Area( active ));
+			if ( area == 0.0 ) continue;
+
+			sr.active_area += area;
+			cc.AddPath(active, ClipperLib::ptSubject, true );
+		}
+
+		size_t nobstruct=0;
+		for ( size_t j=sr.backmost+1; j<m_rendered.size();j++ )				
+		{
+			polygon3d *obs = m_rendered[j];
+			if ( !obs->as_line && obs->id != sr.id && obs->points.size() > 2 )
+			{
+				ClipperLib::Path obstruct;
+				copy_poly( obstruct, *obs );
+				cc.AddPath(obstruct, ClipperLib::ptClip, true);
+				nobstruct++;
+			}
+		}
+
+		if ( nobstruct == 0 || sr.active_area == 0.0 ) continue;
+
+		ClipperLib::Paths soln;
+		cc.Execute(ClipperLib::ctIntersection, soln, ClipperLib::pftNonZero, ClipperLib::pftNonZero);
+
+		for ( size_t k=0;k<soln.size();k++ )
+		{
+			double shade_area = fabs(ClipperLib::Area( soln[k] ));				
+			if ( shade_area == 0.0 ) continue;
+			
+			if (shade_area > sr.active_area)
+				shade_area = sr.active_area;
+			
+			sr.shade_area += shade_area;
+			
+			polygon3d shpoly;
+			copy_poly( shpoly, soln[k] );			
+			sr.shadings.push_back( shpoly );
+		}	
 	}
+
+	
+	// compute shading fraction on each object and overall scene
+	double scene_active = 0.0;
+	double scene_shade = 0.0;
+
+	for( size_t i=0;i<results.size();i++ )
+	{
+		shade_result &sr = results[i];
+		if ( sr.active_area != 0.0 )
+		{
+			if (sr.shade_area > sr.active_area) 
+				sr.shade_area = sr.active_area;
+			sr.shade_fraction = sr.shade_area / sr.active_area;
+
+			scene_active += sr.active_area;
+			scene_shade += sr.shade_area;
+		}
+	}
+
+	double sfscene = 1.0;
+	if ( scene_active != 0.0 )
+		sfscene = scene_shade / scene_active;
+
+	if ( total_active != 0 ) *total_active = scene_active;
+	if ( total_shade != 0 ) *total_shade = scene_shade;
+
+	return sfscene;
 }
 
 
