@@ -14,8 +14,8 @@ addconfig( 'Solar Water Heating', ['Residential', 'Commercial', 'None']);
 //addconfig( 'Physical Trough', ['Independent Power Producer','None']);
 addconfig( 'Empirical Trough', ['Independent Power Producer', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'Single Owner','Commercial','None']);
 addconfig( 'Physical Trough', ['Independent Power Producer', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'Single Owner', 'None']);
-//addconfig( 'Geothermal Power', ['Independent Power Producer', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'Single Owner', 'None']);
-addconfig( 'Geothermal Power', ['None']);
+addconfig( 'Geothermal Power', ['Independent Power Producer', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'Single Owner', 'None']);
+//addconfig( 'Geothermal Power', ['None']);
 
 function setup_pvwatts_pages()
 {
@@ -551,12 +551,46 @@ addpage( [[ 'Solar Water Heating Costs','O and M Costs' ]], { 'sidebar'='SWH Sys
 setup_commercial_pages();
 
 // Geothermal Power ////////////////////////////////////////////////////////////
-setconfig( 'Geothermal Power', 'None' );
-setmodules( ['geothermal']);
-setup_geothermal_power_pages();
 
 setconfig( 'Geothermal Power', 'Independent Power Producer' );
 setmodules( ['geothermal',  'ippppa']);
 setup_geothermal_power_pages();
 addpage( [[ 'Geothermal Costs' ]], { 'sidebar'='Geothermal System Costs' } );
 setup_independent_power_producer_pages();
+
+//-----------------------------------------------------
+setconfig( 'Geothermal Power', 'Leveraged Partnership Flip' );
+setmodules( ['geothermal', 'levpartflip']);
+setting( { 'analysis_period_var'='cf_length' } );
+setup_geothermal_power_pages();
+addpage( [[ 'Geothermal Costs' ]], { 'sidebar'='Geothermal System Costs' } );
+setup_leveraged_partnership_flip_pages();
+
+//-----------------------------------------------------
+setconfig( 'Geothermal Power', 'All Equity Partnership Flip' );
+setmodules( ['geothermal', 'equpartflip']);
+setting( { 'analysis_period_var'='cf_length' } );
+setup_geothermal_power_pages();
+addpage( [[ 'Geothermal Costs' ]], { 'sidebar'='Geothermal System Costs' } );
+setup_all_equity_partnership_flip_pages();
+
+//-----------------------------------------------------
+setconfig( 'Geothermal Power', 'Sale Leaseback' );
+setmodules( ['geothermal', 'saleleaseback']);
+setting( { 'analysis_period_var'='cf_length' } );
+setup_geothermal_power_pages();
+addpage( [[ 'Geothermal Costs' ]], { 'sidebar'='Geothermal System Costs' } );
+setup_sale_leaseback_pages();
+
+//-----------------------------------------------------
+setconfig( 'Geothermal Power', 'Single Owner' );
+setmodules( ['geothermal', 'singleowner']);
+setting( { 'analysis_period_var'='cf_length' } );
+setup_geothermal_power_pages();
+addpage( [[ 'Geothermal Costs' ]], { 'sidebar'='Geothermal System Costs' } );
+setup_single_owner_pages();
+
+//-----------------------------------------------------
+setconfig( 'Geothermal Power', 'None' );
+setmodules( ['geothermal']);
+setup_geothermal_power_pages();
