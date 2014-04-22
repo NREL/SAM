@@ -37,6 +37,9 @@ private:
 	std::vector<VarTable*> m_var_table_vec;
 	std::vector<VarInfoLookup*> m_var_info_lookup_vec;
 
+	// for some reason, OnPaint on grid is called when destroying
+	bool IsValid();
+
 };
 
 class VariableGridFrame : public wxFrame, CaseEventListener
@@ -55,6 +58,9 @@ private:
 
 	// update data when values in case change
 	virtual void OnCaseEvent(Case *, CaseEvent &);
+protected:
+	void OnClose(wxCloseEvent &);
+
 
 	DECLARE_EVENT_TABLE();
 };

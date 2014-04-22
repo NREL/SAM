@@ -238,7 +238,13 @@ static const unsigned int SIDES = RIGHT|BACK|FRONT|LEFT;
 
 bool is_backface( const s3d::polygon3d &p );
 void polynormal( const s3d::polygon3d &p, double *x, double *y, double *z );
-double polyareatr( const s3d::polygon3d &p );
+double polyareatr(const s3d::polygon3d &p);
+double bspnodeareatr(const s3d::BSPNode &p);
+double pointareatr(const std::vector<s3d::point3d> &points);
+double pointareainvtr(const std::vector<s3d::point3d> &points);
+double pointareaxz(const std::vector<s3d::point3d> &points);
+double pointareayz(const std::vector<s3d::point3d> &points);
+double pointarea(const std::vector<s3d::point3d> &points, bool transformed=true);
 
 class scene
 {
