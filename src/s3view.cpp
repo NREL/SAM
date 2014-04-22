@@ -800,10 +800,9 @@ wxColour View3D::FromRGBA( s3d::rgba &c )
 void View3D::Draw( wxDC &dc, const s3d::polygon3d &poly, bool as_line, int xoff, int yoff )
 {
 	// Issue: why are there some zero area polygons?? - perhaps an issue in the BSP	
-	double a = s3d::polyareatr( poly );
-	if ( !as_line && a == 0.0  )
-		return;
-		
+	//double a = s3d::polyareatr( poly );
+	//if ( !as_line && a == 0.0  )
+	//	return;
 
 	size_t n = poly.points.size();
 	if ( n < 2 ) return;

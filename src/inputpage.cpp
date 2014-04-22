@@ -224,6 +224,9 @@ void ActiveInputPage::OnUserInputChanged( wxUIObject *obj )
 		{
 			wxLogStatus( "Variable " + obj->GetName() + " changed by user interaction, case notified." );
 			m_case->Recalculate( obj->GetName() );
+			// send value changed whenever recalculate is called to update other windows
+			// for example the VariableGrid
+//			m_case->SendEvent(CaseEvent(CaseEvent::VALUE_CHANGED));
 		}
 		else
 			wxMessageBox("ActiveInputPage >> data exchange fail: " + obj->GetName() );
