@@ -53,7 +53,7 @@ class polygon3d
 public:
 	polygon3d( int _id = 0);
 	polygon3d( int _id, int _type, rgba _fill, rgba _border, int thick, bool line );
-	polygon3d( int _id, int _type, rgba _fill, rgba _border, int thick, bool line, const std::vector<point3d> &pts );
+	polygon3d( int _id, int _type, rgba _fill, rgba _border, int thick, bool line, const std::vector<point3d> &pts, bool ncul=false );
 	polygon3d( const polygon3d &rhs );
 		
 	std::vector<point3d> points;
@@ -63,6 +63,7 @@ public:
 	rgba border;
 	int thick;
 	bool as_line;
+	bool no_cull;
 };
 
 
@@ -252,6 +253,7 @@ private:
 	std::vector<polygon3d*> m_sorted_culled, m_rendered;
 
 	int m_polyType;
+	bool m_noCull;
 	rgba m_fillColor, m_lineColor;
 	std::vector<point3d> m_curPoints;
 
@@ -279,6 +281,7 @@ public:
 	void outline( rgba o );
 	void colors( rgba fill, rgba line );
 	void point( double x, double y, double z );
+	void nocull( bool b );
 	void line( int id=0, int thick=1 );
 	void poly( int id=0 );
 	void conical( int id, double x, double y, double zstart, double height, double r1, double r2, 

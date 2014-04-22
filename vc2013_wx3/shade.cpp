@@ -73,7 +73,7 @@ public:
 		frame->Show();
 
 		if ( g_appArgs.Count() > 1 )
-			frame->m_shade->GetView()->LoadFromFile( g_appArgs[1] );
+			frame->m_shade->LoadFromFile( g_appArgs[1] );
 
 	
 		return true;

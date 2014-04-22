@@ -89,9 +89,15 @@ text3d::text3d( double x, double y, double z, const std::string &t,
 		rgba col, int sz, const std::string &ff )
 		: pos(x,y,z), text(t), color(col), size(sz), face(ff) { }
 
-polygon3d::polygon3d( int _id ) : id(_id), type(0), thick(1), as_line(false) { }
-polygon3d::polygon3d( int _id, int _type, rgba _fill, rgba _border, int th, bool line ) : id(_id), type(_type), fill(_fill), border(_border), thick(th), as_line(line) {  }
-polygon3d::polygon3d( int _id, int _type, rgba _fill, rgba _border, int th, bool line, const std::vector<point3d> &pts ) : id(_id), type(_type), fill(_fill), border(_border), thick(th), as_line(line), points(pts) {  }
+polygon3d::polygon3d( int _id )
+	: id(_id), type(0), thick(1), as_line(false), no_cull(false) { }
+
+polygon3d::polygon3d( int _id, int _type, rgba _fill, rgba _border, int th, bool line )
+	: id(_id), type(_type), fill(_fill), border(_border), thick(th), as_line(line), no_cull(false) {  }
+
+polygon3d::polygon3d( int _id, int _type, rgba _fill, rgba _border, int th, bool line, const std::vector<point3d> &pts, bool ncul )
+	: id(_id), type(_type), fill(_fill), border(_border), thick(th), as_line(line), points(pts), no_cull(ncul) {  }
+
 polygon3d::polygon3d( const polygon3d &rhs )
 {
 	points = rhs.points;
@@ -101,6 +107,7 @@ polygon3d::polygon3d( const polygon3d &rhs )
 	border = rhs.border;
 	thick = rhs.thick;
 	as_line = rhs.as_line;
+	no_cull = rhs.no_cull;
 }
 
 transform::transform()
@@ -1144,6 +1151,7 @@ void scene::outline( rgba o )
 
 void scene::reset()
 {
+	m_noCull = false;
 	m_fillColor = rgba(  18, 92, 14, 80 );
 	m_lineColor = rgba(  0, 0, 0, 255 );
 	m_polyType = OBSTRUCTION;
@@ -1166,6 +1174,11 @@ void scene::point( double x, double y, double z )
 	m_curPoints.push_back( point3d(x,y,z) );
 }
 
+void scene::nocull( bool b )
+{
+	m_noCull = b;
+}
+
 void scene::line( int id, int thick )
 {
 	if ( m_curPoints.size() < 2 ) return;
@@ -1176,7 +1189,7 @@ void scene::line( int id, int thick )
 void scene::poly( int id )
 {
 	if ( m_curPoints.size() < 3 ) return;
-	m_polygons.push_back( new polygon3d( id, m_polyType, m_fillColor, m_lineColor, 1, false, m_curPoints ) );
+	m_polygons.push_back( new polygon3d( id, m_polyType, m_fillColor, m_lineColor, 1, false, m_curPoints, m_noCull ) );
 	m_curPoints.clear();
 	m_bspValid = false;
 }
@@ -1192,15 +1205,13 @@ void scene::poly( int _id, int _type, rgba _fill, rgba _border, int thick, bool 
 void scene::box( int id, double x, double y, double z, double rot, double xdim, double ydim, double zdim, 
 		unsigned int faces )
 {
-	// NO ends: {0,1,1,1,1,0};
-	// rotate
 	double xr[4], yr[4];
 	double zmin = z;
 	double zmax = z + zdim;
 	
 	s3d::get_rotated_box_points( x, y, xdim, ydim, rot, xr, yr);
 	
-	// right face
+	
 	if ( faces & RIGHT )
 	{
 		point(xr[0],yr[0],zmax);
@@ -1209,8 +1220,8 @@ void scene::box( int id, double x, double y, double z, double rot, double xdim, 
 		point(xr[0],yr[0],zmin);
 		poly( id );
 	}
-	// top face
-	if ( faces & TOP )
+	
+	if ( faces & BACK )
 	{
 		point(xr[2],yr[2],zmin);
 		point(xr[1],yr[1],zmin);
@@ -1218,8 +1229,8 @@ void scene::box( int id, double x, double y, double z, double rot, double xdim, 
 		point(xr[2],yr[2],zmax);
 		poly ( id ); 
 	}
-	// bottom face
-	if ( faces & BOTTOM )
+	
+	if ( faces & FRONT )
 	{
 		point(xr[0],yr[0],zmax);
 		point(xr[0],yr[0],zmin);
@@ -1227,25 +1238,7 @@ void scene::box( int id, double x, double y, double z, double rot, double xdim, 
 		point(xr[3],yr[3],zmax);
 		poly ( id );
 	}
-	// back face
-	if ( faces & BACK )
-	{
-		point(xr[0],yr[0],zmin);
-		point(xr[1],yr[1],zmin);
-		point(xr[2],yr[2],zmin);
-		point(xr[3],yr[3],zmin);
-		poly (id );
-	}
-	// front face
-	if ( faces & FRONT )
-	{
-		point(xr[0],yr[0],zmax);
-		point(xr[3],yr[3],zmax);
-		point(xr[2],yr[2],zmax);
-		point(xr[1],yr[1],zmax);
-		poly (id );
-	}
-	// left face
+	
 	if ( faces & LEFT )
 	{
 		point(xr[2],yr[2],zmax);
@@ -1253,6 +1246,24 @@ void scene::box( int id, double x, double y, double z, double rot, double xdim, 
 		point(xr[3],yr[3],zmin);
 		point(xr[2],yr[2],zmin);
 		poly( id );
+	}
+	
+	if ( faces & BOTTOM )
+	{
+		point(xr[0],yr[0],zmin);
+		point(xr[1],yr[1],zmin);
+		point(xr[2],yr[2],zmin);
+		point(xr[3],yr[3],zmin);
+		poly (id );
+	}
+	
+	if ( faces & TOP )
+	{
+		point(xr[0],yr[0],zmax);
+		point(xr[3],yr[3],zmax);
+		point(xr[2],yr[2],zmax);
+		point(xr[1],yr[1],zmax);
+		poly (id );
 	}
 }
 
@@ -1676,7 +1687,7 @@ void scene::build( transform &tr )
 	while( i < m_sorted_culled.size() )
 	{
 		polygon3d *pp = m_sorted_culled[i];
-		if ( !pp->as_line && is_backface( *pp ) )
+		if ( !pp->as_line && !pp->no_cull && is_backface( *pp ) )
 		{
 			m_sorted_culled.erase( m_sorted_culled.begin() + i );
 			if ( std::find( m_polygons.begin(), m_polygons.end(), pp ) == m_polygons.end() )
@@ -1690,7 +1701,7 @@ void scene::build( transform &tr )
 	while( i < background.size() )
 	{
 		polygon3d *pp = background[i];
-		if ( !pp->as_line && is_backface( *pp ) )
+		if ( !pp->as_line && !pp->no_cull && is_backface( *pp ) )
 			background.erase( background.begin() + i );
 		else
 			i++;
@@ -1715,7 +1726,7 @@ void scene::build( transform &tr )
 	m_rendered.clear();
 	m_rendered.reserve( m_polygons.size() );
 	for( size_t i=0;i<m_polygons.size();i++ )
-		if (  m_polygons[i]->as_line || 
+		if (  m_polygons[i]->as_line || m_polygons[i]->no_cull ||
 			( /* polyareatr( *m_polygons[i] ) != 0.0 && */ !is_backface( *m_polygons[i] ) ) )
 			m_rendered.push_back( m_polygons[i] );
 				

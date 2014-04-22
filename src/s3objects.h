@@ -18,6 +18,7 @@ public:
 	explicit VProperty( VProperty *ref );
 	explicit VProperty( double d, int dim = NONDIM );
 	explicit VProperty( int i, int dim = NONDIM );
+	explicit VProperty( int i, const wxArrayString &choices );
 	explicit VProperty( bool b );
 	explicit VProperty( const wxString &s );
 	explicit VProperty( const wxColour &c );
@@ -39,6 +40,8 @@ public:
 	wxColour GetColour();
 	wxString GetString();
 
+	wxArrayString &GetChoices();
+
 	void Write( wxOutputStream & );
 	bool Read( wxInputStream & );
 
@@ -53,6 +56,7 @@ private:
 	wxColour m_colour;
 	wxString m_string;
 	int m_dimension;
+	wxArrayString m_choices;
 };
 
 class VHandle
