@@ -138,6 +138,8 @@ View3D::View3D( wxWindow *parent, int id, const wxPoint &pos, const wxSize &size
 	m_winWidth = 400;
 	m_winHeight = 300;
 
+	m_sf = 0.0;
+
 	m_modeToolHeight = 30;
 	for ( int i=0;i<__N_MODES;i++ )
 		m_modeToolWidths[i] = 0;
@@ -653,7 +655,7 @@ const s3d::scene &View3D::GetScene()
 
 double View3D::GetShadeFraction()
 {
-	return m_shade.shade_fraction;
+	return m_sf;
 }
 
 void View3D::SetRotation( double azimuth, double altitude )
@@ -748,9 +750,9 @@ void View3D::Render()
 	m_scene.build( m_transform );
 
 	if (m_mode == SPIN_VIEW)
-		m_scene.shade(m_shade);
+		m_sf = m_scene.shade(m_shade);
 	else
-		m_shade.shade_fraction = 0.0;
+		m_sf = 0.0;
 }
 
 wxColour View3D::FromRGBA( s3d::rgba &c )
@@ -961,10 +963,13 @@ void View3D::OnPaint( wxPaintEvent & )
 		wxColour cshade( 70, 70, 70 );
 		dc.SetPen( wxPen(cshade,1) );
 		dc.SetBrush( wxBrush( cshade, wxSOLID ) );
-		for ( size_t i=0;i<m_shade.shadings.size();i++ )
+		for( size_t k=0;k<m_shade.size();k++ )
 		{
-			s3d::polygon3d &shade = m_shade.shadings[i].intersect;
-			Draw( dc, shade, false, xoff, yoff );
+			for ( size_t i=0;i<m_shade[k].shadings.size();i++ )
+			{
+				s3d::polygon3d &shade = m_shade[k].shadings[i];
+				Draw( dc, shade, false, xoff, yoff );
+			}
 		}
 
 		std::vector<VObject*> sel = GetSelectedObjects();
@@ -1024,38 +1029,13 @@ void View3D::OnPaint( wxPaintEvent & )
 	dc.SetFont( font );
 	dc.SetTextForeground( *wxWHITE );
 
-/* hide embedded buttons
-	char *modes[__N_MODES] = { "3D:s (view)", "Top:t (edit)", "Side:z (edit)" };
-	int total_width = 0;
-	for( int i=0;i<__N_MODES;i++ )
-	{
-		m_modeToolWidths[i] = dc.GetTextExtent( modes[i] ).GetWidth()+6;
-		total_width += m_modeToolWidths[i];
-	}	
-	m_modeToolHeight = dc.GetCharHeight()+6;
-	dc.SetPen( wxPen( "navy", 1 ) );
-	dc.SetBrush( wxBrush( "navy" ) );
-	dc.DrawRectangle( 0, 0, total_width, m_modeToolHeight );
-	int cur_x = 0;
-	for ( int i=0;i<__N_MODES;i++ )
-	{
-		if ( m_mode == i )
-		{
-			dc.SetPen( wxPen( "magenta", 1 ) );
-			dc.SetBrush( wxBrush("magenta") );
-			dc.DrawRectangle( cur_x, 0, m_modeToolWidths[i], m_modeToolHeight );
-		}
-		dc.DrawText( modes[i], cur_x+3, 3 );
-		cur_x += m_modeToolWidths[i];
-	}
-
-	*/
 	double azi, alt;
 	m_transform.get_azal( &azi, &alt );
 	double s = m_transform.get_scale();
 	dc.SetFont( *wxNORMAL_FONT );
 	dc.SetTextForeground( *wxBLUE );
-	dc.DrawText(wxString::Format("Azimuth: %.1lf   Altitude: %.1lf   Scale: %.2lf   Shade: %0.3lf", azi, alt, s, m_shade.shade_fraction ),
+	dc.DrawText(wxString::Format("Azimuth: %.1lf   Altitude: %.1lf   Scale: %.2lf   Shade: %0.3lf",
+		azi, alt, s, m_sf ),
 		4, m_winHeight - dc.GetCharHeight() - 3);
 }
 

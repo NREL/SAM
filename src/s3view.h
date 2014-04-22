@@ -118,7 +118,9 @@ protected:
 	// scene rendering
 	s3d::scene m_scene;
 	s3d::transform m_transform;
-	s3d::shade_result m_shade;
+
+	std::vector<s3d::shade_result> m_shade;
+	double m_sf; // scene shading fraction (computed for spin view)
 	
 	int m_mode;
 	std::vector<VObject*> m_objects;
