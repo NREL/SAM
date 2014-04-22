@@ -157,7 +157,7 @@ View3D::View3D( wxWindow *parent, int id, const wxPoint &pos, const wxSize &size
 	m_eraseNeeded = false;
 	m_movingHandle = 0;
 	m_gridSpacing = 5;
-	m_snapSpacing = 1;
+	m_snapSpacing = 0.25;
 	SetBackgroundStyle( wxBG_STYLE_PAINT );
 	
 	RegisterType( new VActiveSurfaceObject );
@@ -803,6 +803,7 @@ void View3D::Draw( wxDC &dc, const s3d::polygon3d &poly, bool as_line, int xoff,
 	//double a = s3d::polyareatr( poly );
 	//if ( !as_line && a == 0.0  )
 	//	return;
+		
 
 	size_t n = poly.points.size();
 	if ( n < 2 ) return;
