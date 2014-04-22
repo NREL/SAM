@@ -590,38 +590,30 @@ BSPNode *BSPTree::_BuildBSPTree( std::vector<BSPNode*>& List )
 	
 	while( List.size() > 0 )
 	{
-		TestNode = *Iter;	
-		bool valid_split = false;
+		TestNode = *Iter;			
+		if( TestNode->Intersects( Root ) )
+		{
+			BSPNode *NewNode = TestNode->Split( Root );
 
-		//if (TestNode->Intersects(Root))
-		//{
-		//	BSPNode *NewNode = TestNode->Split(Root);
+			assert(NewNode);
 
-		//	//assert(NewNode);
-		//	if (NewNode)
-		//	{
-		//		valid_split = true;
-		//		m_listnodes.push_back(NewNode);
+			m_listnodes.push_back( NewNode );
 
+			
+			Delta = TestNode->GetCenter() - Root->GetCenter();
 
-		//		Delta = TestNode->GetCenter() - Root->GetCenter();
-
-		//		if (Delta.dot(Root->GetNormal()) > 0.0)
-		//		{
-		//			Front.push_back(TestNode);
-		//			Back.push_back(NewNode);
-		//		}
-		//		else
-		//		{
-		//			Back.push_back(TestNode);
-		//			Front.push_back(NewNode);
-		//		}
-		//	}
-		//	else
-		//		delete NewNode;
-		//}
-		//else
-		if (!valid_split)
+			if( Delta.dot( Root->GetNormal() ) > 0.0 )
+			{
+				Front.push_back( TestNode );
+				Back.push_back( NewNode );
+			}
+			else
+			{
+				Back.push_back( TestNode );
+				Front.push_back( NewNode );
+			}
+		}
+		else
 		{
 			Delta = TestNode->GetCenter() - Root->GetCenter();
 			if( Delta.dot( Root->GetNormal() ) > MAX_DELTA )
@@ -699,10 +691,6 @@ void BSPTree::ReadPolyList( const std::vector<s3d::polygon3d*>& polys )
 	for (size_t i=0; i<polys.size(); i++)
 	{
 		if (polys[i]->points.size() < 3)
-			continue;
-		if (s3d::polyareatr(*polys[i]) <= 0)
-			continue;
-		if (s3d::pointarea(polys[i]->points) <= 0)
 			continue;
 		BSPNode *new_node = new BSPNode( *polys[i] );
 		m_nodes.push_back( new_node );
@@ -1023,30 +1011,15 @@ BSPNode *BSPNode::Split( BSPNode *Plane )
 		//}
 
 //#endif
+		// Make New node
+		polygon3d ppol( id, type, fill, border, thick, as_line, NewPoly1 );
+		NewNode = new BSPNode( ppol );
+		points.clear();
+		points = NewPoly2;
+		_ComputeCenter();
+		_ComputeNormal();
+		_ComputeD(); //???
 
-		// do not add zero area polygons
-		//double a1 = s3d::pointareatr(NewPoly1);
-		//double a2 = s3d::pointareatr(NewPoly2);
-		//double a3 = s3d::pointareaxz(NewPoly1);
-		//double a4 = s3d::pointareaxz(NewPoly2);
-		//double a5 = s3d::pointareayz(NewPoly1);
-		//double a6 = s3d::pointareayz(NewPoly2);
-		//double a7 = s3d::pointareainvtr(NewPoly1);
-		//double a8 = s3d::pointareainvtr(NewPoly2);
-		//if (a1*a2*a3*a4*a5*a6*a7*a8 > 1e-3)
-		double a1 = s3d::pointarea(NewPoly1);
-		double a2 = s3d::pointarea(NewPoly2);
-		//if ((a1>0) && (a2>0))
-		//{
-		//	// Make New node
-		//	polygon3d ppol(id, type, fill, border, thick, as_line, NewPoly1);
-		//	NewNode = new BSPNode(ppol);
-		//	points.clear();
-		//	points = NewPoly2;
-		//	_ComputeCenter();
-		//	_ComputeNormal();
-		//	_ComputeD(); 
-		//}
 
 	}
 
@@ -1211,12 +1184,10 @@ void scene::poly( int id )
 
 void scene::poly( int _id, int _type, rgba _fill, rgba _border, int thick, bool line, const std::vector<point3d> &pts )
 {
-	m_polygons.push_back( new polygon3d( _id, _type, _fill, _border, thick, line, pts ) );
+	if ( pts.size() < 3 ) return;
+	m_polygons.push_back(  new polygon3d( _id, _type, _fill, _border, thick, line, pts ) );
 	m_bspValid = false;
 }
-
-//void scene::box( int id, double x, double y, double angle_xy, double xdim, double ydim, double zstart, double height, 
-//				unsigned int faces, int rotateCenter )
 				
 void scene::box( int id, double x, double y, double z, double rot, double xdim, double ydim, double zdim, 
 		unsigned int faces )
@@ -1286,7 +1257,7 @@ void scene::box( int id, double x, double y, double z, double rot, double xdim, 
 }
 
 void scene::conical( int id, double x, double y, double zstart, double height, double r1, double r2,
-					 double angle_start, double angle_end, int npoly, bool face_bottom, bool face_top )
+					 int npoly, bool face_bottom, bool face_top )
 {
 	if ( (r1 == 0.0 && r2 == 0.0) 
 		|| r1 < 0.0
@@ -1297,10 +1268,7 @@ void scene::conical( int id, double x, double y, double zstart, double height, d
 	std::vector<point3d> end1;
 	std::vector<point3d> end2;
 
-	double range = angle_end - angle_start;
-	if (range <= 0) range += 360.0;
-	double angle = angle_start;
-	double step = range/npoly;
+	double step = 360.0/npoly;
 	if ( step < 1 ) step = 10;
 	if ( step > 45 ) step = 45;
 	
@@ -1312,8 +1280,9 @@ void scene::conical( int id, double x, double y, double zstart, double height, d
 	
 	end1.push_back( s3d::point3d( x_last1, y_last1, zstart+0 ) );
 	end2.push_back( s3d::point3d( x_last2, y_last2, zstart+height ) );
-
-	while( angle <= angle_end )
+	
+	double angle = step;
+	while( angle <= 360.0 )
 	{
 		double cosA = (double)cos( angle*3.1415926/180 );
 		double sinA = (double)sin( angle*3.1415926/180 );
@@ -1324,16 +1293,17 @@ void scene::conical( int id, double x, double y, double zstart, double height, d
 		double y2 = y + r2*sinA;
 		
 		std::vector<point3d> pplist;
-
-		if ( r2 > 0.0 )
-			pplist.push_back( s3d::point3d( x_last2, y_last2, zstart + height ) );
 				
-		pplist.push_back( s3d::point3d( x2, y2, zstart + height ) );
+		pplist.push_back( s3d::point3d( x_last2, y_last2, zstart + height ) );	
+		
+		if ( r2 > 0.0 )
+			pplist.push_back( s3d::point3d( x2, y2, zstart + height ) );
 		
 		if ( r1 > 0.0 )
 			pplist.push_back( s3d::point3d( x1, y1, zstart ) );
 		
 		pplist.push_back( s3d::point3d( x_last1, y_last1, zstart ) );
+		
 
 		poly( id, m_polyType, m_fillColor, m_lineColor, 1, false, pplist );
 		
@@ -1603,131 +1573,19 @@ static bool polybefore( const s3d::polygon3d *p1, const s3d::polygon3d *p2 )
 		return average_z(p1) > average_z(p2);
 }
 
-
 double polyareatr(const s3d::polygon3d &p)
 {
-	size_t size = (int)p.points.size();
-	if (size < 3) return 0;
+  size_t size = (int)p.points.size();
+  if (size < 3) return 0;
 
-	double a = 0;
-	for (size_t i = 0, j = size - 1; i < size; ++i)
-	{
-		a += ((double)p.points[j]._x + p.points[i]._x) * ((double)p.points[j]._y - p.points[i]._y);
-		j = i;
-	}
-	return -a * 0.5;
+  double a = 0;
+  for (size_t i = 0, j = size -1; i < size; ++i)
+  {
+    a += ((double)p.points[j]._x + p.points[i]._x) * ((double)p.points[j]._y - p.points[i]._y);
+    j = i;
+  }
+  return -a * 0.5;
 }
-
-double bspnodeareatr(const s3d::BSPNode &p)
-{
-	size_t size = (int)p.points.size();
-	if (size < 3) return 0;
-
-	double a = 0;
-	for (size_t i = 0, j = size - 1; i < size; ++i)
-	{
-		a += ((double)p.points[j]._x + p.points[i]._x) * ((double)p.points[j]._y - p.points[i]._y);
-		j = i;
-	}
-	return -a * 0.5;
-}
-
-double pointareatr(const std::vector<s3d::point3d> &points)
-{
-	size_t size = (int)points.size();
-	if (size < 3) return 0;
-
-	double a = 0;
-	for (size_t i = 0, j = size - 1; i < size; ++i)
-	{
-		a += ((double)points[j]._x + points[i]._x) * ((double)points[j]._y - points[i]._y);
-		j = i;
-	}
-	return -a * 0.5;
-}
-
-double pointareainvtr(const std::vector<s3d::point3d> &points)
-{
-	size_t size = (int)points.size();
-	if (size < 3) return 0;
-
-	double a = 0;
-	for (size_t i = 0, j = size - 1; i < size; ++i)
-	{
-		a += ((double)points[j]._y + points[i]._y) * ((double)points[j]._x - points[i]._x);
-		j = i;
-	}
-	return -a * 0.5;
-}
-
-double pointareaxz(const std::vector<s3d::point3d> &points)
-{
-	size_t size = (int)points.size();
-	if (size < 3) return 0;
-
-	double a = 0;
-	for (size_t i = 0, j = size - 1; i < size; ++i)
-	{
-		a += ((double)points[j]._x + points[i]._x) * ((double)points[j]._z - points[i]._z);
-		j = i;
-	}
-	return -a * 0.5;
-}
-
-
-double pointareayz(const std::vector<s3d::point3d> &points)
-{
-	size_t size = (int)points.size();
-	if (size < 3) return 0;
-
-	double a = 0;
-	for (size_t i = 0, j = size - 1; i < size; ++i)
-	{
-		a += ((double)points[j]._y + points[i]._y) * ((double)points[j]._z - points[i]._z);
-		j = i;
-	}
-	return -a * 0.5;
-}
-
-double pointarea(const std::vector<s3d::point3d> &points, bool transformed)
-{
-	size_t size = (int)points.size();
-	if (size < 3) return 0;
-
-	
-	double max_x = -DBL_MAX;
-	double min_x = DBL_MAX;
-	double max_y = -DBL_MAX;
-	double min_y = DBL_MAX;
-	double max_z = -DBL_MAX;
-	double min_z = DBL_MAX;
-	for (size_t i = 0; i < size; ++i)
-	{
-		if (transformed)
-		{
-			if (points[i]._x > max_x) max_x = points[i]._x;
-			if (points[i]._y > max_y) max_y = points[i]._y;
-			if (points[i]._z > max_z) max_z = points[i]._z;
-			if (points[i]._x < min_x) min_x = points[i]._x;
-			if (points[i]._y < min_y) min_y = points[i]._y;
-			if (points[i]._z < min_z) min_z = points[i]._z;
-		}
-		else
-		{
-			if (points[i].x > max_x) max_x = points[i].x;
-			if (points[i].y > max_y) max_y = points[i].y;
-			if (points[i].z > max_z) max_z = points[i].z;
-			if (points[i].x < min_x) min_x = points[i].x;
-			if (points[i].y < min_y) min_y = points[i].y;
-			if (points[i].z < min_z) min_z = points[i].z;
-		}
-	}
-	double a = (max_x - min_x)*(max_y - min_y);
-	if (a <= 0) a = (max_x - min_x)*(max_z - min_z);
-	if (a <= 0) a = (max_y - min_y)*(max_z - min_z);
-	return a;
-}
-
 
 void polynormal( const s3d::polygon3d &p, double *x, double *y, double *z )
 {
@@ -1758,39 +1616,22 @@ bool is_backface( const s3d::polygon3d &p )
 }
 
 #define FARAWAY 1000000
+#define USE_BSP 1
 
 void scene::build( transform &tr )
 {
 	size_t i;
+
+#ifdef USE_BSP
 	
-	std::vector<polygon3d*> background, foreground, invalid_polys;
-
-	// check for any polygons with zero area
-	for (size_t i = 0; i < m_polygons.size(); i++)
-	{
-		if (!m_polygons[i]->as_line)
-			if (s3d::pointarea(m_polygons[i]->points, false) <= 0)
-				invalid_polys.push_back(m_polygons[i]);
-	}
-	for (std::vector<polygon3d*>::iterator it_invalid = invalid_polys.begin(); it_invalid != invalid_polys.end(); ++it_invalid)
-	{
-		std::vector<polygon3d*>::iterator it = std::find(m_polygons.begin(), m_polygons.end(), *it_invalid);
-		if (it != m_polygons.end())
-		{
-			m_polygons.erase(it);
-			delete *it_invalid;
-		}
-	}
-	invalid_polys.clear();
-
-
-
+	std::vector<polygon3d*> background, foreground;
+	
 	for (size_t i=0;i<m_polygons.size();i++)
 	{
-//		if ( m_polygons[i]->as_line || m_polygons[i]->id < 0 )
+		if ( m_polygons[i]->as_line || m_polygons[i]->id < 0 )
 			background.push_back(m_polygons[i]);
-//		else
-//			foreground.push_back(m_polygons[i]);
+		else
+			foreground.push_back(m_polygons[i]);
 	}
 
 	// update the BSP tree if needed
@@ -1829,13 +1670,7 @@ void scene::build( transform &tr )
 	for ( size_t i=0;i<background.size();i++ )
 		for ( size_t j=0;j<background[i]->points.size();j++ )
 			tr( background[i]->points[j] );
-
-
-	// transform all labels
-	for ( size_t i=0;i<m_labels.size();i++ )
-		tr( m_labels[i]->pos );
-
-
+		
 	// cull backfaces
 	i=0;
 	while( i < m_sorted_culled.size() )
@@ -1870,6 +1705,28 @@ void scene::build( transform &tr )
 
 	for (i=0;i<m_sorted_culled.size();i++)
 		m_rendered.push_back(m_sorted_culled[i]);
+
+#else
+	
+	for ( size_t i=0;i<m_polygons.size();i++ )
+		for ( size_t j=0;j<m_polygons[i]->points.size();j++ )
+			tr( m_polygons[i]->points[j] );
+
+	m_rendered.clear();
+	m_rendered.reserve( m_polygons.size() );
+	for( size_t i=0;i<m_polygons.size();i++ )
+		if (  m_polygons[i]->as_line || 
+			( /* polyareatr( *m_polygons[i] ) != 0.0 && */ !is_backface( *m_polygons[i] ) ) )
+			m_rendered.push_back( m_polygons[i] );
+				
+	std::sort( m_rendered.begin(), m_rendered.end(), polybefore );
+#endif
+
+	
+	// transform all labels
+	for ( size_t i=0;i<m_labels.size();i++ )
+		tr( m_labels[i]->pos );
+
 
 }
 

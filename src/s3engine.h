@@ -238,13 +238,8 @@ static const unsigned int SIDES = RIGHT|BACK|FRONT|LEFT;
 
 bool is_backface( const s3d::polygon3d &p );
 void polynormal( const s3d::polygon3d &p, double *x, double *y, double *z );
-double polyareatr(const s3d::polygon3d &p);
-double bspnodeareatr(const s3d::BSPNode &p);
-double pointareatr(const std::vector<s3d::point3d> &points);
-double pointareainvtr(const std::vector<s3d::point3d> &points);
-double pointareaxz(const std::vector<s3d::point3d> &points);
-double pointareayz(const std::vector<s3d::point3d> &points);
-double pointarea(const std::vector<s3d::point3d> &points, bool transformed=true);
+double polyareatr( const s3d::polygon3d &p );
+
 
 class scene
 {
@@ -287,8 +282,7 @@ public:
 	void line( int id=0, int thick=1 );
 	void poly( int id=0 );
 	void conical( int id, double x, double y, double zstart, double height, double r1, double r2, 
-				  double angle_start=0.0, double angle_end = 360.0, int npoly=15,
-				  bool face_bottom = true, bool face_top = true );
+				   int npoly=10, bool face_bottom = true, bool face_top = true );
 	void cylinder( int id, double x, double y, double zstart, double height, double r,
 				   double angle_start=0.0, double angle_end = 360.0, double angle_xy = 0.0, int npoly=18 );
 		

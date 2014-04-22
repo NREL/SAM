@@ -440,9 +440,9 @@ void VConicalTreeObject::BuildModel( s3d::scene &sc )
 
 	sc.reset();
 	sc.colors(s3d::rgba(128, 64, 0, 155), s3d::rgba(128, 64, 0, 155));
-	sc.conical(GetId(), x, y, 0, trunk, diam / 6, diam / 6, 0, 360, 10, true, false);
+	sc.conical(GetId(), x, y, 0, trunk, diam / 6, diam / 6, 10, true, false);
 	sc.colors( s3d::rgba(0, 186, 107, 155 ), s3d::rgba(0, 186, 107, 155 ) );
-	sc.conical( GetId(), x, y, trunk, height-trunk, diam/2, topDiam/2, 0, 360, 10, true, true );
+	sc.conical( GetId(), x, y, trunk, height-trunk, diam/2, topDiam/2, 10, true, true );
 }
 
 void VConicalTreeObject::SetupHandles( VPlaneType plane )
@@ -637,13 +637,13 @@ void VRoundTreeObject::BuildModel( s3d::scene &sc )
 
 	sc.reset();
 	sc.colors(s3d::rgba(128, 64, 0, 155), s3d::rgba(128, 64, 0, 155));
-	sc.conical( id, X, Y, 0, H/6, TRr, TRr, 0, 360, 10, true, false);
+	sc.conical( id, X, Y, 0, H/6, TRr, TRr, 10, true, false);
 
 	sc.colors( s3d::rgba(0, 186, 107, 155 ), s3d::rgba(0, 186, 107, 155 ) );
 
-	sc.conical( id, X, Y, H/6, H/6, TRr, D/2, 0, 360, 10, false, false );
-	sc.conical( id, X, Y, H/3, H/2, D/2, D/2, 0, 360, 10, false, false );
-	sc.conical( id, X, Y, 5*H/6, H/6, D/2, TRr, 0, 360, 10, false, true );
+	sc.conical( id, X, Y, H/6, H/6, TRr, D/2, 10, false, false );
+	sc.conical( id, X, Y, H/3, H/2, D/2, D/2, 10, false, false );
+	sc.conical( id, X, Y, 5*H/6, H/6, D/2, TRr, 10, false, true );
 }
 
 void VRoundTreeObject::SetupHandles( VPlaneType plane )
