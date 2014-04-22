@@ -114,8 +114,9 @@ public:
 
 private:
 	ShadeTool *m_shadeTool;
+	
+	wxChoice *m_sfMode;
 
-	AFMonthByHourFactorCtrl *m_mxh;
 	wxScrolledWindow *m_scroll;
 	std::vector<AFMonthByHourFactorCtrl*> m_mxhList;
 	
