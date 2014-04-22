@@ -82,15 +82,33 @@ int VariableGridData::GetNumberCols()
 	return m_cols;
 }
 
+bool VariableGridData::IsValid()
+{
+	if (m_cases.size() == 0) 
+		return false;
+	else
+	{
+		for (size_t i = 0; i < m_cases.size(); i++)
+		{
+			if 
+			if (m_cases[i]->GetTechnology() == wxEmptyString)
+				return false;
+		}
+	}
+	
+	return true;
+}
 
 bool VariableGridData::IsEmptyCell(int row, int col)
 {
+	if (!GetView()->GetParent()->IsShown()) return wxEmptyString;
 	if (col == 0) // variable name
 		return (m_var_names[row]==wxEmptyString);
 	else if (col == 1) // variable label
 		return (m_var_labels[row] == wxEmptyString);
 	else // get var table and value
 	{
+		if (!IsValid()) return wxEmptyString;
 		if (m_var_table_vec.empty())
 			return wxEmptyString;
 		else if (m_var_table_vec.size() < (col - 1))
@@ -142,10 +160,11 @@ void VariableGridData::SetValue(int row, int col, const wxString& value)
 			// fails to update case value
 			VarValue *vv = m_var_table_vec[col - 2]->Get(m_var_names[lookup_row]);
 			//VarValue *vv = m_cases[col - 2]->Values().Get(m_var_names[lookup_row]);
-			if (vv) // TODO - check for table updating
+			if (vv) 
 			{
 				VarValue::Parse(vv->Type(), value, *vv);
-				m_cases[col - 2]->VariableChanged(m_var_names[lookup_row]);
+				// updates ui from grid
+//				m_cases[col - 2]->VariableChanged(m_var_names[lookup_row]);
 			}
 		}
 	}
@@ -196,15 +215,15 @@ wxString VariableGridData::GetTypeName(int row, int col)
 			case VV_ARRAY:
 			case VV_MATRIX:
 			case VV_TABLE:
-				return "autowrapstring";
-				break;
+//				return "autowrapstring";
+//				break;
 			case VV_NUMBER:
 			case VV_STRING:
 			default:
 				return wxGRID_VALUE_STRING;
 				break;
 			}
-			return m_var_table_vec[col - 2]->Get(m_var_names[lookup_row])->AsString();
+//			return m_var_table_vec[col - 2]->Get(m_var_names[lookup_row])->AsString();
 		}
 		else
 			return wxGRID_VALUE_STRING;
@@ -277,7 +296,7 @@ BEGIN_EVENT_TABLE(VariableGridFrame, wxFrame)
 	EVT_BUTTON(ID_SHOW_DIFFERENT, VariableGridFrame::OnCommand)
 	EVT_BUTTON(ID_SHOW_SAME, VariableGridFrame::OnCommand)
 	EVT_BUTTON(ID_SHOW_ALL, VariableGridFrame::OnCommand)
-
+	EVT_CLOSE(VariableGridFrame::OnClose)
 	EVT_GRID_COL_SORT(VariableGridFrame::OnGridColSort)
 END_EVENT_TABLE()
 
@@ -305,7 +324,7 @@ VariableGridFrame::VariableGridFrame(wxWindow *parent, std::vector<Case *> &case
 
 
 //		m_grid->UseNativeColHeader(); // does not load correctly
-		m_grid->RegisterDataType("autowrapstring", new wxGridCellAutoWrapStringRenderer, new wxGridCellAutoWrapStringEditor);
+//		m_grid->RegisterDataType("autowrapstring", new wxGridCellAutoWrapStringRenderer, new wxGridCellAutoWrapStringEditor);
 		m_grid->HideRowLabels();
 
 
@@ -380,6 +399,7 @@ VariableGridFrame::VariableGridFrame(wxWindow *parent, std::vector<Case *> &case
 		if (m_cases.size() < 2)
 			tools->Show(false);
 	}
+	Show();
 }
 
 void VariableGridFrame::OnGridColSort(wxGridEvent& event)
@@ -448,4 +468,13 @@ void VariableGridFrame::OnCaseEvent(Case *, CaseEvent &evt)
 		UpdateGrid(); // for comparison views
 		m_grid->Refresh();
 	}
+}
+
+
+
+void VariableGridFrame::OnClose(wxCloseEvent &evt)
+{
+	if (m_griddata) m_griddata->Clear();
+
+	Destroy();
 }

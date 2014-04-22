@@ -590,30 +590,38 @@ BSPNode *BSPTree::_BuildBSPTree( std::vector<BSPNode*>& List )
 	
 	while( List.size() > 0 )
 	{
-		TestNode = *Iter;			
-		if( TestNode->Intersects( Root ) )
-		{
-			BSPNode *NewNode = TestNode->Split( Root );
+		TestNode = *Iter;	
+		bool valid_split = false;
 
-			assert(NewNode);
+		//if (TestNode->Intersects(Root))
+		//{
+		//	BSPNode *NewNode = TestNode->Split(Root);
 
-			m_listnodes.push_back( NewNode );
+		//	//assert(NewNode);
+		//	if (NewNode)
+		//	{
+		//		valid_split = true;
+		//		m_listnodes.push_back(NewNode);
 
-			
-			Delta = TestNode->GetCenter() - Root->GetCenter();
 
-			if( Delta.dot( Root->GetNormal() ) > 0.0 )
-			{
-				Front.push_back( TestNode );
-				Back.push_back( NewNode );
-			}
-			else
-			{
-				Back.push_back( TestNode );
-				Front.push_back( NewNode );
-			}
-		}
-		else
+		//		Delta = TestNode->GetCenter() - Root->GetCenter();
+
+		//		if (Delta.dot(Root->GetNormal()) > 0.0)
+		//		{
+		//			Front.push_back(TestNode);
+		//			Back.push_back(NewNode);
+		//		}
+		//		else
+		//		{
+		//			Back.push_back(TestNode);
+		//			Front.push_back(NewNode);
+		//		}
+		//	}
+		//	else
+		//		delete NewNode;
+		//}
+		//else
+		if (!valid_split)
 		{
 			Delta = TestNode->GetCenter() - Root->GetCenter();
 			if( Delta.dot( Root->GetNormal() ) > MAX_DELTA )
@@ -691,6 +699,10 @@ void BSPTree::ReadPolyList( const std::vector<s3d::polygon3d*>& polys )
 	for (size_t i=0; i<polys.size(); i++)
 	{
 		if (polys[i]->points.size() < 3)
+			continue;
+		if (s3d::polyareatr(*polys[i]) <= 0)
+			continue;
+		if (s3d::pointarea(polys[i]->points) <= 0)
 			continue;
 		BSPNode *new_node = new BSPNode( *polys[i] );
 		m_nodes.push_back( new_node );
@@ -1011,15 +1023,30 @@ BSPNode *BSPNode::Split( BSPNode *Plane )
 		//}
 
 //#endif
-		// Make New node
-		polygon3d ppol( id, type, fill, border, thick, as_line, NewPoly1 );
-		NewNode = new BSPNode( ppol );
-		points.clear();
-		points = NewPoly2;
-		_ComputeCenter();
-		_ComputeNormal();
-		_ComputeD(); //???
 
+		// do not add zero area polygons
+		//double a1 = s3d::pointareatr(NewPoly1);
+		//double a2 = s3d::pointareatr(NewPoly2);
+		//double a3 = s3d::pointareaxz(NewPoly1);
+		//double a4 = s3d::pointareaxz(NewPoly2);
+		//double a5 = s3d::pointareayz(NewPoly1);
+		//double a6 = s3d::pointareayz(NewPoly2);
+		//double a7 = s3d::pointareainvtr(NewPoly1);
+		//double a8 = s3d::pointareainvtr(NewPoly2);
+		//if (a1*a2*a3*a4*a5*a6*a7*a8 > 1e-3)
+		double a1 = s3d::pointarea(NewPoly1);
+		double a2 = s3d::pointarea(NewPoly2);
+		//if ((a1>0) && (a2>0))
+		//{
+		//	// Make New node
+		//	polygon3d ppol(id, type, fill, border, thick, as_line, NewPoly1);
+		//	NewNode = new BSPNode(ppol);
+		//	points.clear();
+		//	points = NewPoly2;
+		//	_ComputeCenter();
+		//	_ComputeNormal();
+		//	_ComputeD(); 
+		//}
 
 	}
 
@@ -1579,17 +1606,128 @@ static bool polybefore( const s3d::polygon3d *p1, const s3d::polygon3d *p2 )
 
 double polyareatr(const s3d::polygon3d &p)
 {
-  size_t size = (int)p.points.size();
-  if (size < 3) return 0;
+	size_t size = (int)p.points.size();
+	if (size < 3) return 0;
 
-  double a = 0;
-  for (size_t i = 0, j = size -1; i < size; ++i)
-  {
-    a += ((double)p.points[j]._x + p.points[i]._x) * ((double)p.points[j]._y - p.points[i]._y);
-    j = i;
-  }
-  return -a * 0.5;
+	double a = 0;
+	for (size_t i = 0, j = size - 1; i < size; ++i)
+	{
+		a += ((double)p.points[j]._x + p.points[i]._x) * ((double)p.points[j]._y - p.points[i]._y);
+		j = i;
+	}
+	return -a * 0.5;
 }
+
+double bspnodeareatr(const s3d::BSPNode &p)
+{
+	size_t size = (int)p.points.size();
+	if (size < 3) return 0;
+
+	double a = 0;
+	for (size_t i = 0, j = size - 1; i < size; ++i)
+	{
+		a += ((double)p.points[j]._x + p.points[i]._x) * ((double)p.points[j]._y - p.points[i]._y);
+		j = i;
+	}
+	return -a * 0.5;
+}
+
+double pointareatr(const std::vector<s3d::point3d> &points)
+{
+	size_t size = (int)points.size();
+	if (size < 3) return 0;
+
+	double a = 0;
+	for (size_t i = 0, j = size - 1; i < size; ++i)
+	{
+		a += ((double)points[j]._x + points[i]._x) * ((double)points[j]._y - points[i]._y);
+		j = i;
+	}
+	return -a * 0.5;
+}
+
+double pointareainvtr(const std::vector<s3d::point3d> &points)
+{
+	size_t size = (int)points.size();
+	if (size < 3) return 0;
+
+	double a = 0;
+	for (size_t i = 0, j = size - 1; i < size; ++i)
+	{
+		a += ((double)points[j]._y + points[i]._y) * ((double)points[j]._x - points[i]._x);
+		j = i;
+	}
+	return -a * 0.5;
+}
+
+double pointareaxz(const std::vector<s3d::point3d> &points)
+{
+	size_t size = (int)points.size();
+	if (size < 3) return 0;
+
+	double a = 0;
+	for (size_t i = 0, j = size - 1; i < size; ++i)
+	{
+		a += ((double)points[j]._x + points[i]._x) * ((double)points[j]._z - points[i]._z);
+		j = i;
+	}
+	return -a * 0.5;
+}
+
+
+double pointareayz(const std::vector<s3d::point3d> &points)
+{
+	size_t size = (int)points.size();
+	if (size < 3) return 0;
+
+	double a = 0;
+	for (size_t i = 0, j = size - 1; i < size; ++i)
+	{
+		a += ((double)points[j]._y + points[i]._y) * ((double)points[j]._z - points[i]._z);
+		j = i;
+	}
+	return -a * 0.5;
+}
+
+double pointarea(const std::vector<s3d::point3d> &points, bool transformed)
+{
+	size_t size = (int)points.size();
+	if (size < 3) return 0;
+
+	
+	double max_x = -DBL_MAX;
+	double min_x = DBL_MAX;
+	double max_y = -DBL_MAX;
+	double min_y = DBL_MAX;
+	double max_z = -DBL_MAX;
+	double min_z = DBL_MAX;
+	for (size_t i = 0; i < size; ++i)
+	{
+		if (transformed)
+		{
+			if (points[i]._x > max_x) max_x = points[i]._x;
+			if (points[i]._y > max_y) max_y = points[i]._y;
+			if (points[i]._z > max_z) max_z = points[i]._z;
+			if (points[i]._x < min_x) min_x = points[i]._x;
+			if (points[i]._y < min_y) min_y = points[i]._y;
+			if (points[i]._z < min_z) min_z = points[i]._z;
+		}
+		else
+		{
+			if (points[i].x > max_x) max_x = points[i].x;
+			if (points[i].y > max_y) max_y = points[i].y;
+			if (points[i].z > max_z) max_z = points[i].z;
+			if (points[i].x < min_x) min_x = points[i].x;
+			if (points[i].y < min_y) min_y = points[i].y;
+			if (points[i].z < min_z) min_z = points[i].z;
+		}
+	}
+	double a = (max_x - min_x)*(max_y - min_y);
+	if (a <= 0) a = (max_x - min_x)*(max_z - min_z);
+	if (a <= 0) a = (max_y - min_y)*(max_z - min_z);
+	return a;
+}
+
 
 void polynormal( const s3d::polygon3d &p, double *x, double *y, double *z )
 {
@@ -1625,14 +1763,34 @@ void scene::build( transform &tr )
 {
 	size_t i;
 	
-	std::vector<polygon3d*> background, foreground;
-	
+	std::vector<polygon3d*> background, foreground, invalid_polys;
+
+	// check for any polygons with zero area
+	for (size_t i = 0; i < m_polygons.size(); i++)
+	{
+		if (!m_polygons[i]->as_line)
+			if (s3d::pointarea(m_polygons[i]->points, false) <= 0)
+				invalid_polys.push_back(m_polygons[i]);
+	}
+	for (std::vector<polygon3d*>::iterator it_invalid = invalid_polys.begin(); it_invalid != invalid_polys.end(); ++it_invalid)
+	{
+		std::vector<polygon3d*>::iterator it = std::find(m_polygons.begin(), m_polygons.end(), *it_invalid);
+		if (it != m_polygons.end())
+		{
+			m_polygons.erase(it);
+			delete *it_invalid;
+		}
+	}
+	invalid_polys.clear();
+
+
+
 	for (size_t i=0;i<m_polygons.size();i++)
 	{
-		if ( m_polygons[i]->as_line || m_polygons[i]->id < 0 )
+//		if ( m_polygons[i]->as_line || m_polygons[i]->id < 0 )
 			background.push_back(m_polygons[i]);
-		else
-			foreground.push_back(m_polygons[i]);
+//		else
+//			foreground.push_back(m_polygons[i]);
 	}
 
 	// update the BSP tree if needed

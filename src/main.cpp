@@ -336,7 +336,7 @@ void MainWindow::OnInternalCommand( wxCommandEvent &evt )
 			//CaseVarGrid(cases);
 			wxArrayString case_names = m_project.GetCaseNames();
 			VariableGridFrame *var_frame = new VariableGridFrame(this, cases, case_names);
-			var_frame->Show();
+		//	var_frame->Show();
 		}
 		break;
 	case ID_SAVE_CASE_DEFAULTS:
@@ -529,7 +529,7 @@ void MainWindow::OnCommand( wxCommandEvent &evt )
 //			CaseVarGrid(cases);
 			wxArrayString case_names = m_project.GetCaseNames();
 			VariableGridFrame *var_frame = new VariableGridFrame(this, cases, case_names);
-			var_frame->Show();
+	//		var_frame->Show();
 		}
 		break;
 	case ID_CASE_COMPARE:
@@ -539,7 +539,7 @@ void MainWindow::OnCommand( wxCommandEvent &evt )
 //			CaseVarGrid(cases);
 			wxArrayString case_names = m_project.GetCaseNames();
 			VariableGridFrame *var_frame = new VariableGridFrame(this, cases, case_names);
-			var_frame->Show();
+	//		var_frame->Show();
 		}
 		break;
 	case wxID_SAVEAS:
