@@ -112,7 +112,7 @@ public:
 
 enum { _idMenuFirst = wxID_HIGHEST+982,
 	ID_CENTER_VIEW, ID_DELETE, ID_DUPLICATE, ID_SHOW_ALL, ID_DELETE_ALL, 
-	ID_SAVE_SCENE, ID_LOAD_SCENE, ID_SHOW_MAP, ID_CLEAR_MAP,
+	ID_SHOW_MAP, ID_CLEAR_MAP,
 	ID_CREATE_OBJECT, ID_CREATE_OBJECT_MAX=ID_CREATE_OBJECT+100,	
 	ID_SELECT_OBJECT, ID_SELECT_OBJECT_MAX=ID_SELECT_OBJECT+500,
 	
@@ -527,48 +527,6 @@ void View3D::ShowAll()
 	Refresh();
 }
 
-
-void View3D::SaveScene()
-{
-	wxFileDialog dlg( this, "Save scene to file", wxEmptyString, 
-		wxEmptyString, "Scene file (*.s3d)|*.s3d", wxFD_SAVE|wxFD_OVERWRITE_PROMPT );
-	if ( dlg.ShowModal() == wxID_OK )
-	{
-		if (!WriteToFile( dlg.GetPath() ))
-			wxMessageBox("Could not open file for writing:\n\n" + dlg.GetPath() );
-	}
-}
-
-bool View3D::LoadScene()
-{
-	wxFileDialog dlg( this, "Load scene from file", wxEmptyString,
-		wxEmptyString, "Scene file (*.s3d)|*.s3d", wxFD_OPEN );
-	if ( dlg.ShowModal() == wxID_OK )
-	{
-		if (LoadFromFile( dlg.GetPath() ))
-			return true;
-		else
-			wxMessageBox("Could not open file for reading:\n\n" + dlg.GetPath() );
-	}
-
-	return false;
-}
-
-bool View3D::WriteToFile( const wxString &file )
-{
-	wxFFileOutputStream fos( file );
-	if ( !fos.IsOk() ) return false;
-	Write( fos );
-	return true;
-}
-
-bool View3D::LoadFromFile( const wxString &file )
-{
-	wxFFileInputStream fis( file );
-	if ( !fis.IsOk() || !Read( fis ) ) return false;
-	else return true;
-}
-
 void View3D::ChangeMap( const wxBitmap &map, double mpp )
 {
 	m_mpp = mpp;
@@ -639,7 +597,10 @@ bool View3D::Read( wxInputStream &istrm )
 	wxUint32 nobj = in.Read32();
 	for( size_t i=0;i<nobj;i++ )
 	{
-		if ( VObject *klass = FindRegisteredType( in.ReadString() ) )
+		wxString tyname = in.ReadString();
+		// if object type names change, update them 
+		// here manually for upgrading
+		if ( VObject *klass = FindRegisteredType( tyname ) )
 		{
 			VObject *obj = klass->Duplicate();
 			if ( obj ) obj->Read( istrm );
@@ -977,7 +938,7 @@ void View3D::OnPaint( wxPaintEvent & )
 			cc.r = (unsigned char)CLAMP<double>( R, 1, 254 );
 			cc.g = (unsigned char)CLAMP<double>( G, 1, 254 );
 			cc.b = (unsigned char)CLAMP<double>( B, 1, 254 );			
-			cc.a = 255;
+			cc.a = (m_mode==SPIN_VIEW||p.as_line) ? 255 : 180;
 		}
 				
 		wxColour wcol( FromRGBA( cc ) );
@@ -987,7 +948,7 @@ void View3D::OnPaint( wxPaintEvent & )
 #ifdef _DEBUG
 		dc.SetPen( wxPen( FromRGBA( p.border ), p.thick ) );		
 #else 
-		dc.SetPen( wxPen(wcol,2) );
+		dc.SetPen( (m_mode==SPIN_VIEW||p.as_line) ? wxPen(wcol,2) : *wxTRANSPARENT_PEN );
 #endif
 		Draw( dc, p, p.as_line, xoff, yoff );
 	}
@@ -1333,9 +1294,6 @@ void View3D::OnRightDown( wxMouseEvent & )
 	menu.AppendCheckItem( ID_SHOW_MAP, "Show map" );
 	menu.Check( ID_SHOW_MAP, m_showMap );
 	menu.Append( ID_CLEAR_MAP, "Clear map" );
-	menu.AppendSeparator();
-	menu.Append( ID_SAVE_SCENE, "Save scene to file..." );
-	menu.Append( ID_LOAD_SCENE, "Load scene from file..." );
 	PopupMenu( &menu );
 }
 
@@ -1450,13 +1408,6 @@ void View3D::OnMenu( wxCommandEvent &evt )
 {
 	switch(evt.GetId())
 	{
-	case ID_SAVE_SCENE:
-		SaveScene();
-		break;
-	case ID_LOAD_SCENE:
-		LoadScene();
-		break;
-
 	case ID_DUPLICATE:
 		DuplicateSelected();
 		break;
