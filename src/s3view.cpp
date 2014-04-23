@@ -140,10 +140,6 @@ View3D::View3D( wxWindow *parent, int id, const wxPoint &pos, const wxSize &size
 
 	m_sf = 0.0;
 
-	m_modeToolHeight = 30;
-	for ( int i=0;i<__N_MODES;i++ )
-		m_modeToolWidths[i] = 0;
-
 	m_nextSelectionIndex = 0;
 
 	m_mpp = 1;
@@ -454,6 +450,14 @@ void View3D::Select( VObject *obj )
 	Refresh();
 }
 
+void View3D::ClearSelections()
+{
+	m_selections.clear();
+	SendEvent( wxEVT_VIEW3D_UPDATE_OBJECTS );
+	SendEvent( wxEVT_VIEW3D_UPDATE_SELECTION );
+	Refresh();
+}
+
 
 bool View3D::IsSelected( VObject *obj )
 {
@@ -760,13 +764,10 @@ wxColour View3D::FromRGBA( s3d::rgba &c )
 	return wxColour( c.r, c.g, c.b, c.a );
 }
 
-void View3D::Draw( wxDC &dc, const s3d::polygon3d &poly, bool as_line, int xoff, int yoff )
-{
-	// Issue: why are there some zero area polygons?? - perhaps an issue in the BSP	
-	//double a = s3d::polyareatr( poly );
-	//if ( !as_line && a == 0.0  )
-	//	return;
-		
+void View3D::Draw( wxDC &dc, const s3d::polygon3d &poly, int xoff, int yoff )
+{	
+	if ( !poly.as_line && s3d::zeroarea( poly ) ) 
+		return;
 
 	size_t n = poly.points.size();
 	if ( n < 2 ) return;
@@ -778,7 +779,7 @@ void View3D::Draw( wxDC &dc, const s3d::polygon3d &poly, bool as_line, int xoff,
 		pp[i].y = (int) -poly.points[i]._y;
 	}
 
-	if ( as_line ) dc.DrawLines( n, pp, xoff, yoff );
+	if ( poly.as_line ) dc.DrawLines( n, pp, xoff, yoff );
 	else dc.DrawPolygon( n, pp, xoff, yoff );
 
 	delete [] pp;
@@ -896,7 +897,7 @@ void View3D::OnPaint( wxPaintEvent & )
 	}
 
 	double vx, vy, vz, nx, ny, nz;
-	const std::vector<s3d::polygon3d*> &polygons = m_scene.get_polygons();
+	const std::vector<s3d::polygon3d*> &polygons = m_scene.get_rendered();
 	for ( size_t i=0;i<polygons.size(); i++ )
 	{
 		s3d::polygon3d &p = *polygons[i];
@@ -952,7 +953,7 @@ void View3D::OnPaint( wxPaintEvent & )
 #else 
 		dc.SetPen( (m_mode==SPIN_VIEW||p.as_line) ? wxPen(wcol,2) : *wxTRANSPARENT_PEN );
 #endif
-		Draw( dc, p, p.as_line, xoff, yoff );
+		Draw( dc, p, xoff, yoff );
 	}
 
 
@@ -968,7 +969,7 @@ void View3D::OnPaint( wxPaintEvent & )
 			for ( size_t i=0;i<m_shade[k].shadings.size();i++ )
 			{
 				s3d::polygon3d &shade = m_shade[k].shadings[i];
-				Draw( dc, shade, false, xoff, yoff );
+				Draw( dc, shade, xoff, yoff );
 			}
 		}
 
@@ -982,7 +983,7 @@ void View3D::OnPaint( wxPaintEvent & )
 		{
 			s3d::polygon3d &p = *polygons[i];
 			if (std::find(sel_ids.begin(), sel_ids.end(), p.id) != sel_ids.end())
-			Draw( dc, p, p.as_line, xoff, yoff );
+			Draw( dc, p, xoff, yoff );
 		}
 	}
 	
@@ -1185,20 +1186,6 @@ void View3D::OnMotion( wxMouseEvent &evt )
 
 void View3D::OnLeftDown( wxMouseEvent &evt )
 {
-	if ( evt.GetY() < m_modeToolHeight )
-	{
-		int x_max = 0;
-		for ( int i=0;i<__N_MODES;i++ )
-		{
-			x_max += m_modeToolWidths[i];
-			if ( evt.GetX() < x_max )
-			{
-				SetMode( i );
-				return;
-			}
-		}
-	}
-
 	SetFocus();
 	m_pressed = true;
 	m_zoomMode = evt.ControlDown();
@@ -1231,7 +1218,7 @@ void View3D::OnLeftDown( wxMouseEvent &evt )
 			if ( m_nextSelectionIndex >= selectable.size() )
 				m_nextSelectionIndex = 0;
 
-			sel_obj = 0;
+			VObject *sel_obj = 0;
 			if ( m_nextSelectionIndex < selectable.size() )
 				sel_obj = selectable[m_nextSelectionIndex];
 
@@ -1243,11 +1230,64 @@ void View3D::OnLeftDown( wxMouseEvent &evt )
 	}
 	else if ( m_mode == SPIN_VIEW )
 	{
-		// selection code goes here - for now deselect all selected (clear object list selected)
-		m_selections.clear();
-		SendEvent( wxEVT_VIEW3D_UPDATE_OBJECTS );
-		SendEvent( wxEVT_VIEW3D_UPDATE_SELECTION );
-		Render();
+		// intersect mouse x, y with transformed polygons currently displayed
+		int mx = evt.GetX();
+		int my = evt.GetY();
+		
+		GetClientSize( &m_winWidth, &m_winHeight );
+		int xoff = m_winWidth/2;
+		int yoff = m_winHeight/2;
+
+		// get list of all object ids that are selectable
+		std::vector<int> selids;
+		const std::vector<s3d::polygon3d*> &polys = m_scene.get_rendered();
+		for( int i=polys.size()-1;i>=0;i-- )
+		{
+			s3d::polygon3d &poly = *polys[i];
+			size_t nn = poly.points.size();
+			if ( nn >= 3 
+				&& !poly.as_line 
+				&& poly.id >= 0 
+				&& !s3d::zeroarea( poly ) )
+			{
+				double *xx = new double[nn];
+				double *yy = new double[nn];
+				for( size_t j=0;j<nn;j++ )
+				{
+					xx[j] = xoff + poly.points[j]._x;
+					yy[j] = yoff - poly.points[j]._y;
+				}
+
+				if( s3d::inpoly( xx, yy, nn, mx, my )
+					&& std::find( selids.begin(), selids.end(), poly.id ) == selids.end() )
+					selids.push_back( poly.id );
+
+				delete [] xx;
+				delete [] yy;
+			}
+		}
+
+		// now obtain list of objects that are selectable
+		std::vector<VObject*> selectable;
+		for( size_t i=0;i<m_objects.size();i++ )
+		{
+			if ( std::find( selids.begin(), selids.end(), m_objects[i]->GetId() ) != selids.end() )
+				selectable.push_back( m_objects[i] );
+		}			
+
+		// iterate through possible selectiosn
+		if ( m_nextSelectionIndex >= selectable.size() )
+			m_nextSelectionIndex = 0;
+
+		VObject *sel_obj = 0;
+		if ( m_nextSelectionIndex < selectable.size() )
+			sel_obj = selectable[m_nextSelectionIndex];
+
+		if ( sel_obj ) Select( sel_obj );
+		else ClearSelections();
+
+		m_nextSelectionIndex++; // increment to cycle through possible selectable objects
+
 		Refresh();
 	}
 }

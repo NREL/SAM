@@ -47,6 +47,7 @@ public:
 	std::vector<VObject*> GetObjects();
 	void DeleteAll();
 	void Select( VObject *obj );
+	void ClearSelections();
 	bool IsSelected( VObject *obj );
 	std::vector<VObject*> GetSelectedObjects();
 	VObject *GetFirstSelectedObject();
@@ -126,10 +127,7 @@ protected:
 	std::vector<VObject*> m_objects;
 	std::vector<VObject*> m_selections;
 	std::vector<VObject*> m_registeredTypes;
-
-	int m_modeToolWidths[__N_MODES];
-	int m_modeToolHeight;
-
+	
 	struct ViewParams
 	{
 		ViewParams();
@@ -171,8 +169,7 @@ protected:
 	double m_xw, m_yw, m_zw;
 
 	wxColour FromRGBA( s3d::rgba &c );
-	void Draw( wxDC &dc, const s3d::polygon3d &pts, 
-		bool as_line, int xoff, int yoff );
+	void Draw( wxDC &dc, const s3d::polygon3d &pts, int xoff, int yoff );
 	void DrawGrid( wxDC &dc );
 
 
