@@ -12,18 +12,32 @@
 #define COMPARE_SHOW_DIFFERENT 1
 #define COMPARE_SHOW_SAME 2
 
-VariableGridData::VariableGridData(std::vector<Case *> &cases, wxArrayString &case_names)
+VariableGridData::VariableGridData(ProjectFile *pf, Case *c)
 {
-	wxArrayString to_remove;
+	m_pf = pf;
 	m_sorted = false;
-	m_cases = cases;
+	if (c)
+		m_cases.push_back(c);
+	else
+		m_cases = m_pf->GetCases();
+	Init();
+}
+
+void VariableGridData::Init()
+{
+	m_col_hdrs.Clear();
+	m_var_names.Clear();
+	m_var_labels.Clear();
+	m_var_info_lookup_vec.clear();
+	m_var_table_vec.clear();
+
 	if (m_cases.size() > 0)
 	{
 		m_col_hdrs.push_back("Variable");
 		m_col_hdrs.push_back("Label");
 		if (m_cases.size() == 1)
 		{
-			m_col_hdrs.push_back(case_names[0]);
+			m_col_hdrs.push_back(m_pf->GetCaseName(m_cases[0]));
 			m_var_table_vec.push_back(&m_cases[0]->Values());
 			m_var_info_lookup_vec.push_back(&m_cases[0]->Variables());
 			// TODO: skip calculated value
@@ -33,7 +47,7 @@ VariableGridData::VariableGridData(std::vector<Case *> &cases, wxArrayString &ca
 			int i = 0;
 			for (std::vector<Case*>::iterator it = m_cases.begin(); it != m_cases.end(); ++it)
 			{
-				m_col_hdrs.push_back(case_names[i++]);
+				m_col_hdrs.push_back(m_pf->GetCaseName(*it));
 				m_var_table_vec.push_back(&(*it)->Values());
 				m_var_info_lookup_vec.push_back(&(*it)->Variables());
 			}
@@ -69,7 +83,6 @@ VariableGridData::VariableGridData(std::vector<Case *> &cases, wxArrayString &ca
 		}
 
 	}
-
 }
 
 int VariableGridData::GetNumberRows()
@@ -82,22 +95,6 @@ int VariableGridData::GetNumberCols()
 	return m_cols;
 }
 
-bool VariableGridData::IsValid()
-{
-	if (m_cases.size() == 0) 
-		return false;
-	else
-	{
-		for (size_t i = 0; i < m_cases.size(); i++)
-		{
-			if (m_cases[i]->GetTechnology() == wxEmptyString)
-				return false;
-		}
-	}
-	
-	return true;
-}
-
 bool VariableGridData::IsEmptyCell(int row, int col)
 {
 	if (!GetView()->GetParent()->IsShown()) return wxEmptyString;
@@ -107,21 +104,17 @@ bool VariableGridData::IsEmptyCell(int row, int col)
 		return (m_var_labels[row] == wxEmptyString);
 	else // get var table and value
 	{
-		if (!IsValid()) return wxEmptyString;
-		if (m_var_table_vec.empty())
+		if ((col - 2) >= m_var_table_vec.size())
 			return wxEmptyString;
-		else if (m_var_table_vec.size() < (col - 1))
-			return wxEmptyString;
-		else if (m_var_table_vec[col - 2]->Get(m_var_names[row]))
-			return (m_var_table_vec[col-2]->Get(m_var_names[row])->AsString() == wxEmptyString);
-		else return
-			wxEmptyString;
+		else
+			return (m_var_table_vec[col - 2]->Get(m_var_names[row])->AsString() == wxEmptyString);
 	}
 }
 
 
 wxString VariableGridData::GetColLabelValue(int col)
 {
+	if (col >= m_col_hdrs.size());
 	return m_col_hdrs[col];
 }
 
@@ -135,10 +128,15 @@ wxString VariableGridData::GetValue(int row, int col)
 		return m_var_labels[lookup_row];
 	else // get var table and value
 	{
-		if (m_var_table_vec[col - 2]->Get(m_var_names[lookup_row]))
-			return m_var_table_vec[col - 2]->Get(m_var_names[lookup_row])->AsString();
-		else
+		if ((col - 2) >= m_var_table_vec.size())
 			return wxEmptyString;
+		else
+		{
+			if (m_var_table_vec[col - 2]->Get(m_var_names[lookup_row]))
+				return m_var_table_vec[col - 2]->Get(m_var_names[lookup_row])->AsString();
+			else
+				return wxEmptyString;
+		}
 	}
 }
 
@@ -222,7 +220,6 @@ wxString VariableGridData::GetTypeName(int row, int col)
 				return wxGRID_VALUE_STRING;
 				break;
 			}
-//			return m_var_table_vec[col - 2]->Get(m_var_names[lookup_row])->AsString();
 		}
 		else
 			return wxGRID_VALUE_STRING;
@@ -284,6 +281,25 @@ bool VariableGridData::ShowRow(int row, int comparison_type)
 	return show;
 }
 
+bool VariableGridData::DeleteCase(Case *c)
+{
+	std::vector<Case*>::iterator it = std::find(m_cases.begin(), m_cases.end(), c);
+	if (it != m_cases.end())
+	{
+		m_cases.erase(it);
+		Init();
+		return true;
+	}
+	return false;
+}
+
+
+bool VariableGridData::DeleteCols(size_t pos, size_t numCols)
+{
+	m_cols--;
+	return true;
+}
+
 
 
 enum {
@@ -299,9 +315,13 @@ BEGIN_EVENT_TABLE(VariableGridFrame, wxFrame)
 	EVT_GRID_COL_SORT(VariableGridFrame::OnGridColSort)
 END_EVENT_TABLE()
 
-VariableGridFrame::VariableGridFrame(wxWindow *parent, std::vector<Case *> &cases, wxArrayString &case_names) : wxFrame(parent, wxID_ANY, "Variable Grid", wxDefaultPosition, wxSize(400, 700)), m_cases(cases)
+VariableGridFrame::VariableGridFrame(wxWindow *parent, ProjectFile *pf, Case *c) : wxFrame(parent, wxID_ANY, "Variable Grid", wxDefaultPosition, wxSize(400, 700))
 {
-
+	
+	if (c)
+		m_cases.push_back(c);
+	else
+		m_cases = pf->GetCases();
 	if (m_cases.size() > 0)
 	{
 		for (size_t i = 0; i < m_cases.size(); i++)
@@ -309,13 +329,13 @@ VariableGridFrame::VariableGridFrame(wxWindow *parent, std::vector<Case *> &case
 
 		wxString title;
 		if (m_cases.size() == 1)
-			title = "Current Case Values: " + case_names[0];
+			title = "Current Case Values: " + pf->GetCaseName(m_cases[0]);
 		else
 			title = "Case comparison";
 		
 		SetTitle(title);
 
-		m_griddata = new VariableGridData(m_cases, case_names);
+		m_griddata = new VariableGridData(pf, c);
 
 		m_grid = new wxGrid(this, wxID_ANY);
 
@@ -459,7 +479,7 @@ void VariableGridFrame::OnCommand(wxCommandEvent &evt)
 
 }
 
-void VariableGridFrame::OnCaseEvent(Case *, CaseEvent &evt)
+void VariableGridFrame::OnCaseEvent(Case *c, CaseEvent &evt)
 {
 	if (evt.GetType() == CaseEvent::VALUE_CHANGED)
 	{
@@ -470,18 +490,20 @@ void VariableGridFrame::OnCaseEvent(Case *, CaseEvent &evt)
 	else if (evt.GetType() == CaseEvent::CASE_DESTROYED)
 	{
 		// single case and case comparison handling cases destroyed and oncloseing AV when grid open
+		// check m_cases collection and find which has been deleted
 		// single case
-		if (m_grid->GetNumberCols() == 3)
-			Close();
+		std::vector<Case*>::iterator it = std::find(m_cases.begin(),m_cases.end(),c);
+		if (it != m_cases.end())
+		{
+			m_cases.erase(it);
+			if (m_cases.size() == 0) Close(); // AV when closeing main window protection
+			m_griddata->DeleteCase(c);
+			m_grid->DeleteCols(m_grid->GetNumberCols() - 1);
+			m_grid->Refresh();
+			UpdateGrid();
+		}
 	}
 
 }
 
 
-
-//void VariableGridFrame::OnClose(wxCloseEvent &evt)
-//{
-//	if (m_griddata) m_griddata->Clear();
-
-//	Destroy();
-//}
