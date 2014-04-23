@@ -1584,18 +1584,25 @@ static bool polybefore( const s3d::polygon3d *p1, const s3d::polygon3d *p2 )
 		return average_z(p1) > average_z(p2);
 }
 
+#define POLYEPS 0.0001
+
+bool zeroarea( const s3d::polygon3d &p )
+{
+	return ( fabs( s3d::polyareatr(p) ) < POLYEPS );
+}
+
 double polyareatr(const s3d::polygon3d &p)
 {
-  size_t size = (int)p.points.size();
-  if (size < 3) return 0;
+	int size = (int)p.points.size();
+	if (size < 3) return 0;
 
-  double a = 0;
-  for (size_t i = 0, j = size -1; i < size; ++i)
-  {
-    a += ((double)p.points[j]._x + p.points[i]._x) * ((double)p.points[j]._y - p.points[i]._y);
-    j = i;
-  }
-  return -a * 0.5;
+	double a = 0;
+	for (int i = 0, j = size -1; i < size; ++i)
+	{
+		a += (p.points[j]._x + p.points[i]._x) * (p.points[j]._y - p.points[i]._y);
+		j = i;
+	}
+	return -a * 0.5;
 }
 
 void polynormal( const s3d::polygon3d &p, double *x, double *y, double *z )
@@ -1710,6 +1717,7 @@ void scene::build( transform &tr )
 	// sort background polygons
 	std::sort( background.begin(), background.end(), polybefore );
 
+	// accumulate all rendered polygons with nonzero area
 	m_rendered.clear();
 	for (i=0;i<background.size();i++)
 		m_rendered.push_back(background[i]);
@@ -1748,8 +1756,14 @@ const std::vector<text3d*> &scene::get_labels() const
 
 const std::vector<polygon3d*> &scene::get_polygons() const
 {
+	return m_polygons;
+}
+
+const std::vector<polygon3d*> &scene::get_rendered() const
+{
 	return m_rendered;
 }
+
 
 
 static void copy_poly(ClipperLib::Path &lhs, polygon3d &rhs)
@@ -1828,7 +1842,7 @@ double scene::shade( std::vector<shade_result> &results,
 			copy_poly( active, *(*ipoly) );
 			
 			double area = fabs(ClipperLib::Area( active ));
-			if ( area == 0.0 ) continue;
+			if ( fabs(area) < POLYEPS ) continue;
 
 			sr.active_area += area;
 			cc.AddPath(active, ClipperLib::ptSubject, true );
@@ -1842,8 +1856,11 @@ double scene::shade( std::vector<shade_result> &results,
 			{
 				ClipperLib::Path obstruct;
 				copy_poly( obstruct, *obs );
-				cc.AddPath(obstruct, ClipperLib::ptClip, true);
-				nobstruct++;
+				if ( fabs( ClipperLib::Area( obstruct ) ) >= POLYEPS )
+				{
+					cc.AddPath(obstruct, ClipperLib::ptClip, true);
+					nobstruct++;
+				}
 			}
 		}
 

@@ -471,19 +471,19 @@ void VConicalTreeObject::SetupHandles( VPlaneType plane )
 	{
 		double yc = Property("Y").GetDouble();
 		AddHandle( HH_MOVE, xc, yc );
-		AddHandle( HH_DIAM, xc + diam/2, yc );
-		AddHandle( HH_TOPDIAM, xc + topDiam/2, yc );
+		AddHandle( HH_DIAM, xc + diam/2, yc, wxCURSOR_PENCIL );
+		AddHandle( HH_TOPDIAM, xc + topDiam/2, yc, wxCURSOR_PENCIL );
 	}
 	// side view
 	else if ( plane == PLANE_XZ )
 	{
 		double trunk = Property("Trunk Height").GetDouble();
 		double height = Property("Height").GetDouble();
-		AddHandle( HH_MOVE, xc, 0, wxCURSOR_SIZEWE );
-		AddHandle( HH_DIAM, xc+diam/2, trunk, wxCURSOR_SIZEWE );
-		AddHandle( HH_TOPDIAM, xc+topDiam/2, height, wxCURSOR_SIZEWE ) ;
-		AddHandle( HH_TRUNK, xc, trunk, wxCURSOR_SIZENS );
-		AddHandle( HH_HEIGHT, xc, height, wxCURSOR_SIZENS );
+		AddHandle( HH_MOVE, xc, 0 );
+		AddHandle( HH_DIAM, xc+diam/2, trunk, wxCURSOR_PENCIL );
+		AddHandle( HH_TOPDIAM, xc+topDiam/2, height, wxCURSOR_PENCIL ) ;
+		AddHandle( HH_TRUNK, xc, trunk, wxCURSOR_PENCIL );
+		AddHandle( HH_HEIGHT, xc, height, wxCURSOR_PENCIL );
 	}
 }
 
@@ -671,15 +671,15 @@ void VRoundTreeObject::SetupHandles( VPlaneType plane )
 	{
 		double Y = Property("Y").GetDouble();
 		AddHandle( HH_MOVE, X, Y );
-		AddHandle( HH_DIAM, X + D/2, Y );
+		AddHandle( HH_DIAM, X + D/2, Y, wxCURSOR_PENCIL );
 	}
 	// side view
 	else if ( plane == PLANE_XZ )
 	{
 		double H = Property("Height").GetDouble();
-		AddHandle( HH_MOVE, X, 0, wxCURSOR_SIZEWE );
-		AddHandle( HH_DIAM, X+D/2, H/2, wxCURSOR_SIZEWE );
-		AddHandle( HH_HEIGHT, X, H, wxCURSOR_SIZENS );
+		AddHandle( HH_MOVE, X, 0 );
+		AddHandle( HH_DIAM, X+D/2, H/2, wxCURSOR_PENCIL );
+		AddHandle( HH_HEIGHT, X, H, wxCURSOR_PENCIL );
 	}
 }
 
@@ -883,18 +883,18 @@ void VBoxObject::SetupHandles( VPlaneType plane )
 	if ( plane == PLANE_XY )
 	{
 		AddHandle( HH_MOVE, x, y );
-		AddHandle( HH_RIGHT,xx[0], yy[0], wxCURSOR_SIZEWE );
-		AddHandle( HH_TOP, xx[1], yy[1], wxCURSOR_SIZENS );
+		AddHandle( HH_RIGHT,xx[0], yy[0], wxCURSOR_PENCIL );
+		AddHandle( HH_TOP, xx[1], yy[1], wxCURSOR_PENCIL );
 		AddHandle( HH_ROTATE_XY, xx[2], yy[2], wxCURSOR_BULLSEYE );
-		AddHandle( HH_LEFT, xx[3], yy[3], wxCURSOR_SIZEWE );
-		AddHandle( HH_BOTTOM, xx[4], yy[4], wxCURSOR_SIZENS );
+		AddHandle( HH_LEFT, xx[3], yy[3], wxCURSOR_PENCIL );
+		AddHandle( HH_BOTTOM, xx[4], yy[4], wxCURSOR_PENCIL );
 
 	}
 	else if ( plane == PLANE_XZ )
 	{
 		AddHandle( HH_MOVE, x, z );
-		AddHandle( HH_TOP, x + w/2, z + h, wxCURSOR_SIZENS );
-		AddHandle( HH_BOTTOM, x + w/2, z, wxCURSOR_SIZENS);
+		AddHandle( HH_TOP, x + w/2, z + h, wxCURSOR_PENCIL );
+		AddHandle( HH_BOTTOM, x + w/2, z, wxCURSOR_PENCIL);
 	}
 }
 
@@ -1134,25 +1134,30 @@ void VActiveSurfaceObject::BuildModel( s3d::scene &sc )
 	double xx[4], yy[4], zz[4];
 	GetPoints( xx, yy, zz );
 	sc.reset();
-	sc.colors( s3d::rgba( 0, 107, 186, 170 ), s3d::rgba( 0, 88, 153, 170 ) );
-	sc.type( s3d::scene::ACTIVE );
-	sc.nocull( true );
+	
+	std::vector< s3d::point3d > points;
 
 	int shape = Property("Shape").GetInteger();
 	if ( shape == 0 )
 	{ // rectangular
-		for( int i=0;i<4;i++ ) sc.point( xx[i], yy[i], zz[i] );
+		for( int i=0;i<4;i++ ) points.push_back( s3d::point3d( xx[i], yy[i], zz[i] ) );
 	}
 	else if ( shape == 1 )
 	{ // triangular
-		sc.point( 0.5*(xx[2]+xx[1]), 
+		points.push_back( s3d::point3d( 0.5*(xx[2]+xx[1]), 
 			0.5*(yy[2]+yy[1]),
-			0.5*(zz[2]+zz[1]) );
-		sc.point( xx[3], yy[3], zz[3] );
-		sc.point( xx[0], yy[0], zz[0] );
+			0.5*(zz[2]+zz[1]) ) );
+		points.push_back( s3d::point3d( xx[3], yy[3], zz[3] ) );
+		points.push_back( s3d::point3d( xx[0], yy[0], zz[0] ) );
 	}
+	
+	// generate front of panel
+	sc.poly( GetId(), s3d::scene::ACTIVE, s3d::rgba( 0, 107, 186, 170 ), s3d::rgba( 0, 88, 153, 170 ), 1, false, points );
 
-	sc.poly( GetId() );
+	// generate back of panel
+	std::reverse( points.begin(), points.end() );
+	sc.poly( GetId(), s3d::scene::OBSTRUCTION, s3d::rgba( 0, 50, 100, 170 ), s3d::rgba( 0, 50, 100, 170 ), 1, false, points );
+	
 }
 
 void VActiveSurfaceObject::SetupHandles( VPlaneType plane )
@@ -1182,11 +1187,10 @@ void VActiveSurfaceObject::SetupHandles( VPlaneType plane )
 	if ( plane == PLANE_XY )
 	{
 		AddHandle( HH_MOVE,    x[0], y[0] );
-		AddHandle( HH_LEFT,    x[1], y[1], wxCURSOR_SIZEWE );
-		//AddHandle( HH_BOTTOM,  x[2], y[2], wxCURSOR_SIZENS );
+		AddHandle( HH_LEFT,    x[1], y[1], wxCURSOR_PENCIL );
 		AddHandle( HH_AZIMUTH, x[3], y[3], wxCURSOR_BULLSEYE );
-		AddHandle( HH_RIGHT,   x[4], y[4], wxCURSOR_SIZEWE );
-		AddHandle( HH_TOP,     x[5], y[5], wxCURSOR_SIZENS );		
+		AddHandle( HH_RIGHT,   x[4], y[4], wxCURSOR_PENCIL );
+		AddHandle( HH_TOP,     x[5], y[5], wxCURSOR_PENCIL );		
 	}
 	else if (plane == PLANE_XZ )
 	{
@@ -1320,7 +1324,7 @@ void VCylinderObject::SetupHandles( VPlaneType plane )
 		double y = Property("Y").GetDouble();
 
 		AddHandle( HH_MOVE, x,y);
-		AddHandle( HH_DIAM, x+diam/2,y,wxCURSOR_SIZEWE );
+		AddHandle( HH_DIAM, x+diam/2,y,wxCURSOR_PENCIL );
 	}
 	else if (plane == PLANE_XZ)
 	{
@@ -1328,9 +1332,9 @@ void VCylinderObject::SetupHandles( VPlaneType plane )
 		double height = Property("Height").GetDouble();
 
 		AddHandle( HH_MOVE, x, z);
-		AddHandle( HH_DIAM, x+diam/2,z,wxCURSOR_SIZEWE );
-		AddHandle( HH_BOTTOM, x, z-height/2, wxCURSOR_SIZENS );
-		AddHandle( HH_TOP, x, z+height/2, wxCURSOR_SIZENS );
+		AddHandle( HH_DIAM, x+diam/2,z,wxCURSOR_PENCIL );
+		AddHandle( HH_BOTTOM, x, z-height/2, wxCURSOR_PENCIL );
+		AddHandle( HH_TOP, x, z+height/2, wxCURSOR_PENCIL );
 	}
 }
 
@@ -1483,18 +1487,18 @@ void VRoofObject::SetupHandles( VPlaneType plane)
 	if ( plane == PLANE_XY )
 	{
 		AddHandle( HH_MOVE, x, y );
-		AddHandle( HH_RIGHT,xx[0], yy[0], wxCURSOR_SIZEWE );
-		AddHandle( HH_TOP, xx[1], yy[1], wxCURSOR_SIZENS );
+		AddHandle( HH_RIGHT,xx[0], yy[0], wxCURSOR_PENCIL );
+		AddHandle( HH_TOP, xx[1], yy[1], wxCURSOR_PENCIL );
 		AddHandle( HH_ROTATE_XY, xx[2], yy[2], wxCURSOR_BULLSEYE );
-		AddHandle( HH_LEFT, xx[3], yy[3], wxCURSOR_SIZEWE );
-		AddHandle( HH_BOTTOM, xx[4], yy[4], wxCURSOR_SIZENS );
+		AddHandle( HH_LEFT, xx[3], yy[3], wxCURSOR_PENCIL );
+		AddHandle( HH_BOTTOM, xx[4], yy[4], wxCURSOR_PENCIL );
 
 	}
 	else if ( plane == PLANE_XZ )
 	{
 		AddHandle( HH_MOVE, x, z );
-		AddHandle( HH_TOP, x + w/2, z + h, wxCURSOR_SIZENS );
-		AddHandle( HH_BOTTOM, x + w/2, z, wxCURSOR_SIZENS);
+		AddHandle( HH_TOP, x + w/2, z + h, wxCURSOR_PENCIL );
+		AddHandle( HH_BOTTOM, x + w/2, z, wxCURSOR_PENCIL);
 	}
 
 }
