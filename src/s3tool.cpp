@@ -503,13 +503,15 @@ bool LocationSetup::Read( wxInputStream &is )
 	return code == in.Read8();
 }
 
-enum { ID_PROPGRID = wxID_HIGHEST+959, ID_OBJLIST };
+enum { ID_PROPGRID = wxID_HIGHEST+959, ID_OBJLIST, ID_DUPLICATE, ID_DELETE };
 
 BEGIN_EVENT_TABLE( ObjectEditor, wxPanel )
     EVT_PG_CHANGED( ID_PROPGRID, ObjectEditor::OnPropertyGridChange )
     EVT_PG_CHANGING( ID_PROPGRID, ObjectEditor::OnPropertyGridChanging )
 	EVT_LISTBOX( ID_OBJLIST, ObjectEditor::OnObjectList )
 	EVT_CHECKLISTBOX( ID_OBJLIST, ObjectEditor::OnObjectCheckList )	
+	EVT_BUTTON( ID_DUPLICATE, ObjectEditor::OnCommand )
+	EVT_BUTTON( ID_DELETE, ObjectEditor::OnCommand )
 END_EVENT_TABLE()
 
 
@@ -522,11 +524,25 @@ ObjectEditor::ObjectEditor( wxWindow *parent, int id, View3D *view,
 	m_view( view ),
 	m_curObject( 0 )
 {
+	SetBackgroundColour( wxMetroTheme::Colour( wxMT_FOREGROUND ) );
+
 	m_objList = new wxCheckListBox(this, ID_OBJLIST, wxDefaultPosition, wxDefaultSize, 0, 0, wxBORDER_NONE );
 	m_propGrid = new wxPropertyGrid(this, ID_PROPGRID, wxDefaultPosition, wxDefaultSize, wxPG_SPLITTER_AUTO_CENTER|wxBORDER_NONE );
 	
+	m_duplicate = new wxMetroButton( this, ID_DUPLICATE, "Duplicate", wxNullBitmap, wxDefaultPosition, wxDefaultSize, wxMB_SMALLFONT );
+	m_delete = new wxMetroButton( this, ID_DELETE, "Delete", wxNullBitmap, wxDefaultPosition, wxDefaultSize, wxMB_SMALLFONT );
+
+	wxBoxSizer *objtools = new wxBoxSizer( wxHORIZONTAL );
+	objtools->Add( m_duplicate, 0, wxALL, 0 );
+	objtools->Add( m_delete, 0, wxALL, 0 );
+	objtools->AddStretchSpacer();
+
+	m_duplicate->Hide();
+	m_delete->Hide();
+
 	wxBoxSizer *sizer = new wxBoxSizer( wxVERTICAL );
 	sizer->Add( m_objList, 1, wxALL|wxEXPAND, 0 );
+	sizer->Add( objtools, 0, wxALL|wxEXPAND, 0 );
 	sizer->Add( m_propGrid, 1, wxALL|wxEXPAND, 0 );
 	SetSizer( sizer );
 }
@@ -565,12 +581,19 @@ void ObjectEditor::SetObject( VObject *obj )
 {	
 	m_curObject = 0;
 
+	m_duplicate->Hide();
+	m_delete->Hide();
+
 	// clear the property grid
 	m_curProps.clear();
 	m_propGrid->Clear();
 	m_objList->SetSelection( m_objList->GetSelection(), false );
 
-	if ( obj == 0 ) return;
+	if ( obj == 0 ) 
+	{
+		Layout();
+		return;
+	}
 
 	m_curObject = obj;
 
@@ -622,6 +645,9 @@ void ObjectEditor::SetObject( VObject *obj )
 		}
 	}
 
+	m_duplicate->Show();
+	m_delete->Show();
+	Layout();
 }
 
 void ObjectEditor::ValueToPropGrid( pgpinfo &p )
@@ -704,6 +730,22 @@ void ObjectEditor::OnPropertyGridChange(wxPropertyGridEvent &evt)
 
 void ObjectEditor::OnPropertyGridChanging(wxPropertyGridEvent &evt)
 {
+}
+
+void ObjectEditor::OnCommand( wxCommandEvent &evt )
+{
+	if ( !m_view ) return;
+
+	switch( evt.GetId() )
+	{
+	case ID_DELETE:
+		m_view->DeleteSelected();
+		SetObject( 0 );
+		break;
+	case ID_DUPLICATE:
+		m_view->DuplicateSelected();
+		break;
+	}
 }
 
 void ObjectEditor::OnObjectList( wxCommandEvent &evt )
