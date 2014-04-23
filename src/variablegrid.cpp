@@ -295,7 +295,7 @@ BEGIN_EVENT_TABLE(VariableGridFrame, wxFrame)
 	EVT_BUTTON(ID_SHOW_DIFFERENT, VariableGridFrame::OnCommand)
 	EVT_BUTTON(ID_SHOW_SAME, VariableGridFrame::OnCommand)
 	EVT_BUTTON(ID_SHOW_ALL, VariableGridFrame::OnCommand)
-	EVT_CLOSE(VariableGridFrame::OnClose)
+//	EVT_CLOSE(VariableGridFrame::OnClose)
 	EVT_GRID_COL_SORT(VariableGridFrame::OnGridColSort)
 END_EVENT_TABLE()
 
@@ -467,13 +467,21 @@ void VariableGridFrame::OnCaseEvent(Case *, CaseEvent &evt)
 		UpdateGrid(); // for comparison views
 		m_grid->Refresh();
 	}
+	else if (evt.GetType() == CaseEvent::CASE_DESTROYED)
+	{
+		// single case and case comparison handling cases destroyed and oncloseing AV when grid open
+		// single case
+		if (m_grid->GetNumberCols() == 3)
+			Close();
+	}
+
 }
 
 
 
-void VariableGridFrame::OnClose(wxCloseEvent &evt)
-{
-	if (m_griddata) m_griddata->Clear();
+//void VariableGridFrame::OnClose(wxCloseEvent &evt)
+//{
+//	if (m_griddata) m_griddata->Clear();
 
-	Destroy();
-}
+//	Destroy();
+//}
