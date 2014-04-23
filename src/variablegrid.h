@@ -14,7 +14,7 @@
 class VariableGridData : public wxGridTableBase
 {
 public:
-	VariableGridData(std::vector<Case *> &cases, wxArrayString &case_names);
+	VariableGridData(ProjectFile *pf, Case *c = NULL);
 	virtual int GetNumberRows();
 	virtual int GetNumberCols();
 	virtual bool IsEmptyCell(int row, int col);
@@ -22,13 +22,17 @@ public:
 	virtual void SetValue(int row, int col, const wxString& value);
 	virtual wxString GetColLabelValue(int col);
 	virtual wxString GetTypeName(int row, int col);
+	virtual bool DeleteCols(size_t pos = 0, size_t	numCols = 1);
+	bool DeleteCase(Case *c);
 	bool ShowRow(int row, int comparison_type);
 	void Sort(int col, bool ascending);
 
 private:
+	void Init();
 	int m_rows;
 	int m_cols;
 	bool m_sorted;
+	ProjectFile *m_pf;
 	wxArrayInt m_sorted_index;
 	std::vector<Case*> m_cases;
 	wxArrayString m_col_hdrs;
@@ -37,15 +41,13 @@ private:
 	std::vector<VarTable*> m_var_table_vec;
 	std::vector<VarInfoLookup*> m_var_info_lookup_vec;
 
-	// for some reason, OnPaint on grid is called when destroying
-	bool IsValid();
 
 };
 
 class VariableGridFrame : public wxFrame, CaseEventListener
 {
 public:
-	VariableGridFrame(wxWindow *parent, std::vector<Case *> &cases, wxArrayString &case_names);
+	VariableGridFrame(wxWindow *parent, ProjectFile *pf, Case *c=NULL);
 private:
 	wxGrid *m_grid;
 	VariableGridData *m_griddata;
@@ -57,10 +59,7 @@ private:
 	void OnCommand(wxCommandEvent &evt);
 
 	// update data when values in case change
-	virtual void OnCaseEvent(Case *, CaseEvent &);
-//protected:
-//	void OnClose(wxCloseEvent &);
-
+	virtual void OnCaseEvent(Case *c, CaseEvent &);
 
 	DECLARE_EVENT_TABLE();
 };
