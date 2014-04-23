@@ -220,6 +220,7 @@ static const unsigned int SIDES = RIGHT|BACK|FRONT|LEFT;
 bool is_backface( const s3d::polygon3d &p );
 void polynormal( const s3d::polygon3d &p, double *x, double *y, double *z );
 double polyareatr( const s3d::polygon3d &p );
+bool zeroarea( const s3d::polygon3d &p );
 
 
 class shade_result
@@ -306,6 +307,7 @@ public:
 	// get polygons and labels for rendering
 	const std::vector<text3d*> &get_labels() const;
 	const std::vector<polygon3d*> &get_polygons() const;
+	const std::vector<polygon3d*> &get_rendered() const;
 };
 
 
