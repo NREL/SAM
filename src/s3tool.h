@@ -23,6 +23,7 @@ class wxNumericCtrl;
 class wxGenericStaticBitmap;
 class ShadeTool;
 class AFMonthByHourFactorCtrl;
+class wxMetroButton;
 
 class LocationSetup : public wxPanel
 {
@@ -96,12 +97,15 @@ private:
 
 	wxPropertyGrid *m_propGrid;
 	wxCheckListBox *m_objList;
+	
+	wxMetroButton *m_duplicate, *m_delete;
 
     void OnPropertyGridChange(wxPropertyGridEvent &evt);
     void OnPropertyGridChanging(wxPropertyGridEvent &evt);
 
 	void OnObjectList( wxCommandEvent & );
 	void OnObjectCheckList( wxCommandEvent & );
+	void OnCommand( wxCommandEvent & );
 		
 	DECLARE_EVENT_TABLE();
 };
