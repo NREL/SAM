@@ -206,6 +206,7 @@ Case::Case()
 
 Case::~Case()
 {
+	SendEvent(CaseEvent::CASE_DESTROYED);
 	ClearListeners();
 }
 	

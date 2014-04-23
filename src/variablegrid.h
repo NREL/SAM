@@ -58,8 +58,8 @@ private:
 
 	// update data when values in case change
 	virtual void OnCaseEvent(Case *, CaseEvent &);
-protected:
-	void OnClose(wxCloseEvent &);
+//protected:
+//	void OnClose(wxCloseEvent &);
 
 
 	DECLARE_EVENT_TABLE();
