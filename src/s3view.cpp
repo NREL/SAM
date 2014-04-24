@@ -1014,14 +1014,16 @@ void View3D::OnPaint( wxPaintEvent & )
 	dc.SetFont( font );
 	dc.SetTextForeground( *wxWHITE );
 
-	double azi, alt;
-	m_transform.get_azal( &azi, &alt );
-	double s = m_transform.get_scale();
-	dc.SetFont( *wxNORMAL_FONT );
-	dc.SetTextForeground( *wxBLUE );
-	dc.DrawText(wxString::Format("Azimuth: %.1lf   Altitude: %.1lf   Scale: %.2lf   Shade: %0.3lf",
-		azi, alt, s, m_sf ),
-		4, m_winHeight - dc.GetCharHeight() - 3);
+	if ( m_mode == SPIN_VIEW )
+	{
+		double azi, alt;
+		m_transform.get_azal( &azi, &alt );
+		dc.SetFont( *wxNORMAL_FONT );
+		dc.SetTextForeground( *wxBLACK );
+		dc.DrawText(wxString::Format("Azimuth: %.1lf   Altitude: %.1lf   Shade fraction: %0.3lf",
+			azi, alt, m_sf ),
+			4, m_winHeight - dc.GetCharHeight() - 3);
+	}
 }
 
 void View3D::OnSize( wxSizeEvent & )
