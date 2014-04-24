@@ -16,10 +16,24 @@ class MyFrame : public wxFrame
 public:
 	ShadeTool *m_shade;
 
-	MyFrame() : wxFrame( 0, wxID_ANY, "Shading Tool", wxDefaultPosition, wxSize(900,700) )
+	MyFrame() : wxFrame( 0, wxID_ANY, "Shade Calculator", wxDefaultPosition, wxSize(1000,700) )
 	{
 		SetIcon( wxICON( appicon ) );
-		m_shade = new ShadeTool( this, wxID_ANY );
+		m_shade = new ShadeTool( this, wxID_ANY, wxPathOnly( g_appArgs[0] ) );
+		
+		std::vector<wxAcceleratorEntry> entries;
+		entries.push_back( wxAcceleratorEntry( wxACCEL_CMD, 's', wxID_SAVE ) );
+		entries.push_back( wxAcceleratorEntry( wxACCEL_CMD, 'o', wxID_OPEN ) );
+		SetAcceleratorTable( wxAcceleratorTable( entries.size(), &entries[0] ) );
+	}
+
+	void OnCommand( wxCommandEvent &evt )
+	{
+		switch( evt.GetId() )
+		{
+		case wxID_SAVE: m_shade->Save(); break;
+		case wxID_OPEN: m_shade->Load(); break;
+		}
 	}
 
 	void OnClose( wxCloseEvent &evt )
@@ -38,6 +52,8 @@ public:
 
 BEGIN_EVENT_TABLE( MyFrame, wxFrame )
 	EVT_CLOSE( MyFrame::OnClose )
+	EVT_MENU( wxID_SAVE, MyFrame::OnCommand )
+	EVT_MENU( wxID_OPEN, MyFrame::OnCommand )
 END_EVENT_TABLE()
 
 class MyApp : public wxApp
@@ -54,7 +70,7 @@ public:
 
 		m_locale.Init();
 
-		SetAppName( "SAM" );
+		SetAppName( "Shade Calculator" );
 		SetVendorName( "NREL" );
 
 		for( int i=0;i<argc;i++ )

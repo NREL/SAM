@@ -3,6 +3,8 @@
 
 #include <wx/frame.h>
 #include <wx/propgrid/propgrid.h>
+#include <wx/webview.h>
+
 #include <wex/lkscript.h>
 
 #include "simplecurl.h"
@@ -37,9 +39,8 @@ public:
 	void GetLocation( double *lat, double *lon, double *tz );
 	wxBitmap GetMap(double *lat = 0, double *lon = 0, double *tz = 0, double *mpp = 0 );
 	void SetMap( const wxBitmap &bit, const wxString &addrstr, double lat, double lon, double tz, double mpp );
-	void AnnotateMap();
 	void UpdateScale();
-	void UpdateMapCtrl();
+	void UpdateMap();
 
 	void Write( wxOutputStream & );
 	bool Read( wxInputStream & );
@@ -63,6 +64,7 @@ private:
 	void OnMapChange( wxCommandEvent &evt );
 	void OnAddressChange( wxCommandEvent & );
 	void OnUnderlayMap( wxCommandEvent & );
+	void OnRemoveUnderlay( wxCommandEvent & );
 	void OnImportMapImage( wxCommandEvent & );
 	void OnManualScale( wxCommandEvent & );
 	DECLARE_EVENT_TABLE();
@@ -133,12 +135,12 @@ private:
 #define PG_LOCATION 0
 #define PG_SCENE 1
 #define PG_ANALYSIS 2
+#define PG_HELP 3
 
 class ShadeTool : public wxPanel
 {
-
 public:
-	ShadeTool( wxWindow *parent, int id );
+	ShadeTool( wxWindow *parent, int id, const wxString &data_path = wxEmptyString );
 	
 	LocationSetup *GetLocationSetup();
 	View3D *GetView();
@@ -154,6 +156,8 @@ public:
 	bool Read( wxInputStream & );
 
 private:
+	wxString m_fileName;
+
 	wxSimplebook *m_book;
 	wxSplitterWindow *m_split;
 
@@ -161,7 +165,9 @@ private:
 	View3D *m_view;
 	ObjectEditor *m_sceneParams;
 	ShadeAnalysis *m_analysis;
-	
+	wxWebView *m_helpViewer;
+
+
 	void OnCommand( wxCommandEvent &evt );
 	void OnUpdateObjectList( wxCommandEvent & );
 	void OnUpdateProperties( wxCommandEvent & );
