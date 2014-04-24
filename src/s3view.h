@@ -61,8 +61,7 @@ public:
 	void DeleteSelected();
 	void ShowAll();
 	void ChangeMap( const wxBitmap &map, double mpp );
-	void ShowMap( bool b );
-
+	
 	void SetAzAl( double &az, double &al);
 
 	void UpdateModel( VObject *obj );
@@ -111,7 +110,6 @@ public:
 protected:
 	int m_winWidth, m_winHeight;
 
-	bool m_showMap;
 	wxBitmap m_staticMapXY;
 	wxBitmap m_staticMapXYScaled;
 	double m_mpp;
@@ -178,11 +176,9 @@ protected:
 	void OnMotion( wxMouseEvent & );
 	void OnLeftDown( wxMouseEvent & );
 	void OnLeftUp( wxMouseEvent & );
-	void OnRightDown( wxMouseEvent & );
 	void OnWheel( wxMouseEvent & );
 	void OnKey( wxKeyEvent & );
-	void OnMenu( wxCommandEvent & );
-
+	
 	void SendEvent( int type );
 
 	DECLARE_EVENT_TABLE();

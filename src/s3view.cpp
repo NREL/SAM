@@ -110,24 +110,14 @@ public:
 
 #define HANDLE_RADIUS 5
 
-enum { _idMenuFirst = wxID_HIGHEST+982,
-	ID_CENTER_VIEW, ID_DELETE, ID_DUPLICATE, ID_SHOW_ALL, ID_DELETE_ALL, 
-	ID_SHOW_MAP, ID_CLEAR_MAP,
-	ID_CREATE_OBJECT, ID_CREATE_OBJECT_MAX=ID_CREATE_OBJECT+100,	
-	ID_SELECT_OBJECT, ID_SELECT_OBJECT_MAX=ID_SELECT_OBJECT+500,
-	
-	_idMenuLast };
-
 BEGIN_EVENT_TABLE( View3D, wxWindow )
 	EVT_PAINT( View3D::OnPaint )
 	EVT_SIZE( View3D::OnSize )
 	EVT_LEFT_DOWN( View3D::OnLeftDown )
 	EVT_LEFT_DCLICK( View3D::OnLeftDown )
 	EVT_LEFT_UP( View3D::OnLeftUp )
-	EVT_RIGHT_DOWN( View3D::OnRightDown )
 	EVT_MOUSEWHEEL( View3D::OnWheel )
 	EVT_MOTION( View3D::OnMotion )
-	EVT_MENU_RANGE( _idMenuFirst, _idMenuLast, View3D::OnMenu )
 	EVT_KEY_DOWN( View3D::OnKey )
 END_EVENT_TABLE()
 
@@ -143,7 +133,6 @@ View3D::View3D( wxWindow *parent, int id, const wxPoint &pos, const wxSize &size
 	m_nextSelectionIndex = 0;
 
 	m_mpp = 1;
-	m_showMap = true;
 
 	m_mode = SPIN_VIEW;
 	m_origX = m_origY = 0;
@@ -540,19 +529,13 @@ void View3D::ChangeMap( const wxBitmap &map, double mpp )
 	m_staticMapXYScaled = wxNullBitmap;			
 }
 
-void View3D::ShowMap( bool b )
-{
-	m_showMap = b;
-	Refresh();
-}
-
 
 void View3D::Write( wxOutputStream &ostrm )
 {
 	wxDataOutputStream out(ostrm);
 
 	out.Write8( 0xf2 ); // start code
-	out.Write8( 2 ); // version
+	out.Write8( 3 ); // version
 
 	// view settings
 	out.Write8( (wxUint8)m_mode );
@@ -570,7 +553,6 @@ void View3D::Write( wxOutputStream &ostrm )
 
 	// background map if it exists
 	out.WriteDouble( m_mpp );
-	out.Write8( m_showMap ? 1 : 0 );
 	out.Write8( m_staticMapXY.IsNull() ? 0 : 1 ); // has map or not
 	if ( !m_staticMapXY.IsNull() )
 	{
@@ -623,11 +605,13 @@ bool View3D::Read( wxInputStream &istrm )
 		in.ReadString(); // addr
 		in.Read32(); // zoom
 	}
-	else if ( ver == 2 )
+	else if ( ver >= 2 )
 	{
 		m_mpp = in.ReadDouble();
 	}
-	m_showMap = in.Read8() != 0;
+
+	if ( ver < 3 )
+		in.Read8(); // formerly showmap flag
 	
 	m_staticMapXY = wxNullBitmap;
 	m_staticMapXYScaled = wxNullBitmap;
@@ -874,7 +858,7 @@ void View3D::OnPaint( wxPaintEvent & )
 	dc.Clear();
 		
 	bool has_statmap = false;
-	if ( m_mode == TOP_VIEW && !m_staticMapXY.IsNull() && m_showMap )
+	if ( m_mode == TOP_VIEW && !m_staticMapXY.IsNull() )
 	{
 		has_statmap = true;
 		
@@ -1292,30 +1276,6 @@ void View3D::OnLeftDown( wxMouseEvent &evt )
 	}
 }
 
-void View3D::OnRightDown( wxMouseEvent & )
-{
-	wxMenu menu;
-
-	wxArrayString types = GetRegisteredTypes();
-	for( size_t i=0;i<types.size();i++ )
-		menu.Append( ID_CREATE_OBJECT+i, "Create " + types[i] + "" );
-	
-	bool has_sel = (GetFirstSelectedObject() != 0);
-	menu.AppendSeparator();
-	menu.Append( ID_DUPLICATE, "Duplicate");
-	menu.Enable( ID_DUPLICATE, has_sel );
-	menu.Append( ID_DELETE, "Delete" );
-	menu.Enable( ID_DELETE, has_sel );
-	menu.Append( ID_DELETE_ALL, "Delete all" );
-	menu.AppendSeparator();
-	menu.Append( ID_SHOW_ALL, "Show all" );	
-	menu.Append( ID_CENTER_VIEW, "Move to origin" );
-	menu.AppendSeparator();
-	menu.AppendCheckItem( ID_SHOW_MAP, "Show map" );
-	menu.Check( ID_SHOW_MAP, m_showMap );
-	menu.Append( ID_CLEAR_MAP, "Clear map" );
-	PopupMenu( &menu );
-}
 
 void View3D::OnLeftUp( wxMouseEvent & )
 {
@@ -1415,6 +1375,10 @@ void View3D::OnKey( wxKeyEvent &evt )
 	{
 		SetMode( SPIN_VIEW );
 	}
+	else if (ukey == 'A')
+	{
+		ShowAll();
+	}
 
 	if ( needs_render )
 	{
@@ -1423,57 +1387,6 @@ void View3D::OnKey( wxKeyEvent &evt )
 		Refresh();
 	}
 }
-
-void View3D::OnMenu( wxCommandEvent &evt )
-{
-	switch(evt.GetId())
-	{
-	case ID_DUPLICATE:
-		DuplicateSelected();
-		break;
-
-	case ID_DELETE:
-		DeleteSelected();
-		break;
-
-	case ID_DELETE_ALL:
-		DeleteAll();
-		Refresh();
-		break;
-		
-	case ID_SHOW_ALL:
-		ShowAll();
-		break;
-
-	case ID_SHOW_MAP:
-		m_showMap = !m_showMap;
-		Refresh();
-		break;
-
-	case ID_CLEAR_MAP:
-		m_staticMapXY = wxNullBitmap;
-		m_staticMapXYScaled = wxNullBitmap;
-		Refresh();
-		break;
-
-	case ID_CENTER_VIEW: SetOffset( 0, 0, 0 ); break;
-	default:
-		if ( evt.GetId() >= ID_CREATE_OBJECT
-			&& evt.GetId() < ID_CREATE_OBJECT_MAX )
-		{
-			size_t idx = evt.GetId() - ID_CREATE_OBJECT;
-			wxArrayString types = GetRegisteredTypes();
-			if ( idx < types.Count() )
-			{
-				CreateObject( types[idx] );
-				Render();
-				Refresh();
-			}
-		}		
-		break;
-	}
-}
-
 
 void View3D::SetAzAl( double &az, double &al)
 {

@@ -1284,9 +1284,10 @@ VCylinderObject::VCylinderObject()
 {
 	AddProperty( "X", new VProperty(0.0, LENGTH ) );
 	AddProperty( "Y", new VProperty(0.0 , LENGTH) );
-	AddProperty( "Z", new VProperty(5.0, LENGTH ) );
-	AddProperty( "Diameter", new VProperty(2.5, LENGTH ) );
-	AddProperty( "Height", new VProperty(10.0, LENGTH ) );
+	AddProperty( "Z", new VProperty(0.0, LENGTH ) );
+	AddProperty( "Diameter", new VProperty(6.0, LENGTH ) );
+	AddProperty( "Height", new VProperty(15.0, LENGTH ) );	
+	AddProperty( "Color", new VProperty( wxColour(255, 127, 39, 155) ) );
 }
 
 wxString VCylinderObject::GetTypeName()
@@ -1307,11 +1308,12 @@ void VCylinderObject::BuildModel( s3d::scene &sc )
 	double y = Property("Y").GetDouble();
 	double z = Property("Z").GetDouble();
 	double diam = Property("Diameter").GetDouble();
-	double height = Property("Height").GetDouble();
-
+	double height = Property("Height").GetDouble();	
+	wxColour cc = Property("Color").GetColour();
+	s3d::rgba scc1( cc.Red(), cc.Green(), cc.Blue(), cc.Alpha() );
 	sc.reset();
-	sc.colors( s3d::rgba(64, 64, 64, 155), s3d::rgba(64, 64, 64, 155) );
-	sc.conical( GetId(), x, y, z-height/2, height, diam/2, diam/2 );
+	sc.colors( scc1, scc1 );
+	sc.conical( GetId(), x, y, z, height, diam/2, diam/2 );
 }
 
 void VCylinderObject::SetupHandles( VPlaneType plane )
@@ -1323,7 +1325,7 @@ void VCylinderObject::SetupHandles( VPlaneType plane )
 	{
 		double y = Property("Y").GetDouble();
 
-		AddHandle( HH_MOVE, x,y);
+		AddHandle( HH_MOVE, x,y );
 		AddHandle( HH_DIAM, x+diam/2,y,wxCURSOR_PENCIL );
 	}
 	else if (plane == PLANE_XZ)
@@ -1331,53 +1333,51 @@ void VCylinderObject::SetupHandles( VPlaneType plane )
 		double z = Property("Z").GetDouble();
 		double height = Property("Height").GetDouble();
 
-		AddHandle( HH_MOVE, x, z);
-		AddHandle( HH_DIAM, x+diam/2,z,wxCURSOR_PENCIL );
-		AddHandle( HH_BOTTOM, x, z-height/2, wxCURSOR_PENCIL );
-		AddHandle( HH_TOP, x, z+height/2, wxCURSOR_PENCIL );
+		AddHandle( HH_MOVE, x, z+height/2);
+		AddHandle( HH_DIAM, x+diam/2,z+height/2,wxCURSOR_PENCIL );
+		AddHandle( HH_BOTTOM, x, z, wxCURSOR_PENCIL );
+		AddHandle( HH_TOP, x, z+height, wxCURSOR_PENCIL );
 	}
 }
 
 bool VCylinderObject::OnHandleMoved(VHandle *h, VPlaneType plane )
 {
 	int id = h->GetId();
-	double xc = Property("X").GetDouble();
-	double zc = Property("Z").GetDouble();
-	double x = h->GetX();
-	double yz = h->GetYZ();
+	double X = Property("X").GetDouble();
+	double Z = Property("Z").GetDouble();
+	double H = Property("Height").GetDouble();
+	double mx = h->GetX();
+	double myz = h->GetYZ();
 	
 	if (id == HH_DIAM)
-		{
-			Property("Diameter").Set(2*(x-xc) );
-		}
+	{
+		Property("Diameter").Set(2*(mx-X) );
+	}
 	else if (plane == PLANE_XY)
 	{
 		if (id == HH_MOVE)
 		{
-			Property("X").Set(x);
-			Property("Y").Set(yz);
+			Property("X").Set(mx);
+			Property("Y").Set(myz);
 		}
 	}
 	else if (plane == PLANE_XZ )
 	{
 		if (id == HH_MOVE)
 		{
-			Property("X").Set(x);
-			Property("Z").Set(yz);
+			Property("X").Set(mx);
+			Property("Z").Set(myz-H/2);
 		}
 		else if (id == HH_BOTTOM )
-		{
-			double height = Property("Height").GetDouble();
-			double dz = h->GetDeltaYZ();
-			Property("Height").Set(height - dz);
-			Property("Z").Set(zc + 0.5*dz);
+		{			
+			double ztop = Z+H;
+			double hnew = fabs( myz - ztop );
+			Property("Z").Set( ztop - hnew );
+			Property("Height").Set( hnew );
 		}
 		else if ( id == HH_TOP )
 		{
-			double height = Property("Height").GetDouble();
-			double dz = h->GetDeltaYZ();
-			Property("Height").Set(height + dz);
-			Property("Z").Set(zc + 0.5*dz);
+			Property("Height").Set( myz - Z );
 		}
 	}
 
@@ -1398,7 +1398,7 @@ void VCylinderObject::DrawOnPlane( VRenderer2D &dc, VPlaneType plane )
 	{
 		double height = Property("Height").GetDouble();
 		double zc = Property("Z").GetDouble();
-		dc.Rect(xc-diam/2,zc-height/2,diam,height);
+		dc.Rect(xc-diam/2,zc,diam,height);
 	}
 }
 
@@ -1417,7 +1417,7 @@ bool VCylinderObject::IsWithin( double x, double yz, VPlaneType plane )
 		double zc = Property("Z").GetDouble();
 		double height = Property("Height").GetDouble();
 		return ( (x >= xc - diam/2) && (x <= xc + diam/2) && 
-				 (yz >= zc - height/2) && (yz <= zc + height/2) );
+				 (yz >= zc ) && (yz <= zc + height) );
 	}
 	return false;
 }
@@ -1429,13 +1429,14 @@ VRoofObject::VRoofObject()
 {
 	AddProperty( "X", new VProperty(0.0, LENGTH ) );
 	AddProperty( "Y", new VProperty(0.0, LENGTH ) );
-	AddProperty( "Z", new VProperty(0.0, LENGTH ) );
-	AddProperty( "Width", new VProperty( 10.0, LENGTH ) );
-	AddProperty( "Length", new VProperty( 20.0, LENGTH ) );
+	AddProperty( "Z", new VProperty(15.0, LENGTH ) );
+	AddProperty( "Width", new VProperty( 17.0, LENGTH ) );
+	AddProperty( "Length", new VProperty( 30.0, LENGTH ) );
 	AddProperty( "Height", new VProperty(5.0, LENGTH ) );
 	AddProperty( "Rotation", new VProperty( 0.0 ) );
 	AddProperty( "Pitch Angle 1", new VProperty( 45.0 ) );
 	AddProperty( "Pitch Angle 2", new VProperty( 45.0 ) );
+	AddProperty( "Color", new VProperty( wxColour(102,51, 0, 155) ) );
 }
 
 wxString VRoofObject::GetTypeName()
@@ -1461,8 +1462,12 @@ void VRoofObject::BuildModel( s3d::scene & sc)
 	double rot = Property("Rotation").GetDouble();
 	double pitch1 = Property("Pitch Angle 1").GetDouble();
 	double pitch2 = Property("Pitch Angle 2").GetDouble();
+	
+	wxColour cc = Property("Color").GetColour();
+	s3d::rgba scc1( cc.Red(), cc.Green(), cc.Blue(), cc.Alpha() );
 
-	sc.colors( s3d::rgba(102,51, 0, 155), s3d::rgba(102, 51, 0, 155) );
+	sc.reset();
+	sc.colors( scc1, scc1 );
 	sc.roof( GetId(), x, y, z, width, length, height, pitch1, pitch2, rot );
 }
 

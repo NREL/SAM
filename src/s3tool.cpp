@@ -60,7 +60,7 @@ static wxString BING_API_KEY("Av0Op8DvYGR2w07w_771JLum7-fdry0kBtu3ZA4uu_9jBJOUZg
 
 enum { ID_ADDRESS = wxID_HIGHEST+239, ID_CURL, ID_LOOKUP_ADDRESS, ID_LATITUDE, ID_LONGITUDE, ID_TIMEZONE,
 	ID_GET_MAP, ID_GO_UP, ID_GO_DOWN, ID_GO_LEFT, ID_GO_RIGHT, ID_ZOOM_IN, ID_ZOOM_OUT, ID_UNDERLAY_MAP,
-	ID_LOAD_MAP_IMAGE, ID_PASTE_MAP_IMAGE, ID_MANUAL_SCALE };
+	ID_REMOVE_UNDERLAY,	ID_LOAD_MAP_IMAGE, ID_PASTE_MAP_IMAGE, ID_MANUAL_SCALE };
 
 
 BEGIN_EVENT_TABLE( LocationSetup, wxPanel )
@@ -78,6 +78,7 @@ BEGIN_EVENT_TABLE( LocationSetup, wxPanel )
 	EVT_BUTTON( ID_PASTE_MAP_IMAGE, LocationSetup::OnImportMapImage )
 	EVT_BUTTON( ID_MANUAL_SCALE, LocationSetup::OnManualScale )
 	EVT_BUTTON( ID_UNDERLAY_MAP, LocationSetup::OnUnderlayMap )
+	EVT_BUTTON( ID_REMOVE_UNDERLAY, LocationSetup::OnRemoveUnderlay )
 	EVT_SIMPLECURL( ID_CURL, LocationSetup::OnCurl )
 END_EVENT_TABLE()
 
@@ -134,6 +135,7 @@ LocationSetup::LocationSetup( wxWindow *parent, ShadeTool *st )
 	tools3->Add( new wxMetroButton( panel_map_tools, ID_GO_DOWN, wxEmptyString, wxBITMAP_PNG_FROM_DATA( down_arrow_13 ) ), 0, wxALL|wxEXPAND, 0 );
 
 	tools3->Add( new wxMetroButton( panel_map_tools, ID_UNDERLAY_MAP, "Underlay this map in the scene", wxNullBitmap, wxDefaultPosition, wxDefaultSize, wxMB_SMALLFONT  ) );
+	tools3->Add( new wxMetroButton( panel_map_tools, ID_REMOVE_UNDERLAY, "Remove underlay in scene", wxNullBitmap, wxDefaultPosition, wxDefaultSize, wxMB_SMALLFONT  ) );
 
 	tools3->AddStretchSpacer();
 
@@ -282,29 +284,9 @@ void LocationSetup::DownloadMap(  )
 	// http://msdn.microsoft.com/en-us/library/aa940990.aspx
 	m_mpp = 156543.04 * cos(lat*3.15926/180) / pow(2,m_zoomLevel);
 	
-	AnnotateMap();
-
-	m_bitmapCtrl->SetBitmap( m_bitmap );
-
-	m_scrollWin->SetScrollbars(1, 1, m_bitmap.GetWidth(), m_bitmap.GetHeight());
-	m_scrollWin->SetScrollRate( 20, 20 );
-
+	UpdateMap();
 }
 
-void LocationSetup::AnnotateMap()
-{
-	m_bitmap = m_unannotatedBitmap;
-	wxMemoryDC dc( m_bitmap );
-	wxFont font( *wxNORMAL_FONT );
-	font.SetWeight( wxFONTWEIGHT_BOLD );
-	dc.SetFont( font );
-	dc.SetTextForeground( *wxWHITE );
-	dc.SetPen( wxPen( *wxWHITE, 2 ) );
-	dc.DrawLine( 2, 2, 102, 2 );
-	dc.DrawLine( 2, 2, 2, 6 );
-	dc.DrawLine( 102, 2, 102, 6 );
-	dc.DrawText( wxString::Format("%0.2lf m", m_mpp*100), 5, 3 );
-}
 
 void LocationSetup::OnMapChange( wxCommandEvent &evt )
 {
@@ -362,8 +344,7 @@ void LocationSetup::SetMap( const wxBitmap &bit, const wxString &addrstr, double
 	m_mpp = mpp;
 	m_unannotatedBitmap = bit;
 
-	AnnotateMap();
-	UpdateMapCtrl();
+	UpdateMap();
 }
 
 void LocationSetup::OnUnderlayMap( wxCommandEvent & )
@@ -371,13 +352,24 @@ void LocationSetup::OnUnderlayMap( wxCommandEvent & )
 	if ( m_bitmap.IsOk() )
 	{
 		m_shadeTool->SwitchTo( PG_SCENE );
-		wxYield();
-		m_shadeTool->GetView()->ChangeMap( m_bitmap, m_mpp );
-		m_shadeTool->GetView()->ShowMap( true );
 		m_shadeTool->GetView()->SetMode( View3D::TOP_VIEW );
+		wxYield();
+		wxMilliSleep( 50 );
+		m_shadeTool->GetView()->ChangeMap( m_bitmap, m_mpp );
+		m_shadeTool->GetView()->Refresh();
 	}
 	else
 		wxMessageBox("Please setup a map image first.");
+}
+
+void LocationSetup::OnRemoveUnderlay( wxCommandEvent & )
+{
+	m_shadeTool->SwitchTo( PG_SCENE );
+	m_shadeTool->GetView()->SetMode( View3D::TOP_VIEW );
+	wxYield();
+	wxMilliSleep( 50 );
+	m_shadeTool->GetView()->ChangeMap( wxNullBitmap, 1 );
+	m_shadeTool->GetView()->Refresh();
 }
 
 void LocationSetup::OnImportMapImage( wxCommandEvent &evt )
@@ -416,14 +408,27 @@ void LocationSetup::OnImportMapImage( wxCommandEvent &evt )
 			return;
 		}
 	}
-	
-	UpdateMapCtrl();	
+
+	m_unannotatedBitmap = map;	
+	UpdateMap();
 	UpdateScale();
 }
 
-void LocationSetup::UpdateMapCtrl()
+void LocationSetup::UpdateMap()
 {
 	m_bitmap = m_unannotatedBitmap;
+
+	wxMemoryDC dc( m_bitmap );
+	wxFont font( *wxNORMAL_FONT );
+	font.SetWeight( wxFONTWEIGHT_BOLD );
+	dc.SetFont( font );
+	dc.SetTextForeground( *wxWHITE );
+	dc.SetPen( wxPen( *wxWHITE, 2 ) );
+	dc.DrawLine( 2, 2, 102, 2 );
+	dc.DrawLine( 2, 2, 2, 6 );
+	dc.DrawLine( 102, 2, 102, 6 );
+	dc.DrawText( wxString::Format("%0.2lf m", m_mpp*100), 5, 3 );
+
 	m_bitmapCtrl->SetBitmap( m_bitmap );
 	m_bitmapCtrl->Refresh();
 
@@ -442,8 +447,7 @@ void LocationSetup::UpdateScale()
 	if ( m_mpp < 0.0001 ) m_mpp = 0.0001;
 	if ( m_mpp > 10 ) m_mpp = 10;
 	
-	AnnotateMap();
-	UpdateMapCtrl();
+	UpdateMap();
 }
 
 void LocationSetup::OnManualScale( wxCommandEvent & )
@@ -497,8 +501,7 @@ bool LocationSetup::Read( wxInputStream &is )
 		m_unannotatedBitmap = wxBitmap(img);
 	}
 
-	AnnotateMap();
-	UpdateMapCtrl();
+	UpdateMap();
 
 	return code == in.Read8();
 }
@@ -1101,7 +1104,7 @@ BEGIN_EVENT_TABLE( ShadeTool, wxPanel )
 END_EVENT_TABLE()
 
 
-ShadeTool::ShadeTool( wxWindow *parent, int id )
+ShadeTool::ShadeTool( wxWindow *parent, int id, const wxString &data_path )
 	: wxPanel( parent, id )
 {
 	SetBackgroundColour( wxMetroTheme::Colour( wxMT_FOREGROUND ) );
@@ -1153,6 +1156,7 @@ ShadeTool::ShadeTool( wxWindow *parent, int id )
 
 	m_analysis = new ShadeAnalysis( m_book, this );
 
+	m_helpViewer = wxWebView::New( m_book, wxID_ANY, "file:///" + data_path + "/help/index.html");
 
 	wxBoxSizer *sizer_main = new wxBoxSizer( wxVERTICAL );
 	sizer_main->Add( sizer_tool, 0, wxALL|wxEXPAND, 0 );
@@ -1163,6 +1167,7 @@ ShadeTool::ShadeTool( wxWindow *parent, int id )
 	m_book->AddPage( m_location, "Location" );
 	m_book->AddPage( m_split, "Scene Editor" );
 	m_book->AddPage( m_analysis, "Analysis page" );
+	m_book->AddPage( m_helpViewer, "Help" );
 	//m_book->SetSelection( PG_SCENE );
 }
 	
@@ -1184,23 +1189,33 @@ void ShadeTool::SwitchTo( int page )
 
 void ShadeTool::Save()
 {
-	wxFileDialog dlg( this, "Save scene to file", wxEmptyString, 
-		wxEmptyString, "Scene file (*.s3d)|*.s3d", wxFD_SAVE|wxFD_OVERWRITE_PROMPT );
+	wxFileDialog dlg( this, "Save scene to file", wxPathOnly(m_fileName), 
+		m_fileName, "Scene file (*.s3d)|*.s3d", wxFD_SAVE );
 	if ( dlg.ShowModal() == wxID_OK )
 	{
-		if (!WriteToFile( dlg.GetPath() ))
+		if ( m_fileName != dlg.GetPath()
+			&& wxFileExists( dlg.GetPath() )
+			&& wxNO == wxMessageBox("Overwrite existing file?\n\n" + dlg.GetPath(), "Query", wxYES_NO) )
+			return;
+
+		if ( WriteToFile( dlg.GetPath() ) )
+			m_fileName = dlg.GetPath();
+		else
 			wxMessageBox("Could not open file for writing:\n\n" + dlg.GetPath() );
 	}
 }
 
 bool ShadeTool::Load()
 {
-	wxFileDialog dlg( this, "Load scene from file", wxEmptyString,
+	wxFileDialog dlg( this, "Load scene from file", wxPathOnly(m_fileName),
 		wxEmptyString, "Scene file (*.s3d)|*.s3d", wxFD_OPEN );
 	if ( dlg.ShowModal() == wxID_OK )
 	{
 		if (LoadFromFile( dlg.GetPath() ))
+		{
+			m_fileName = dlg.GetPath();
 			return true;
+		}
 		else
 			wxMessageBox("Could not open file for reading:\n\n" + dlg.GetPath() );
 	}
@@ -1210,6 +1225,9 @@ bool ShadeTool::Load()
 
 bool ShadeTool::WriteToFile( const wxString &file )
 {
+	wxBusyInfo busy("Writing shading data to file: " + wxFileNameFromPath( file ), this );
+	wxYield();
+	wxMilliSleep( 50 );
 	wxFFileOutputStream fos( file );
 	if ( !fos.IsOk() ) return false;
 	Write( fos );
@@ -1298,19 +1316,7 @@ void ShadeTool::OnCommand( wxCommandEvent &evt)
 	case ID_VIEW_XY: m_book->SetSelection( PG_SCENE ); m_view->SetMode( m_view->TOP_VIEW ); break;
 	case ID_VIEW_XZ: m_book->SetSelection( PG_SCENE ); m_view->SetMode( m_view->Z_VIEW ); break;
 	case wxID_HELP:
-		wxMessageBox("Shortcut keys:\n"
-			"Arrow keys offset the scene from center\n"
-			"I zooms in (increases the scale)\n"
-			"O zooms out\n"
-			"C centers the scene\n"
-			"Z sets view mode to side view\n"
-			"T sets view mode to top view\n"
-			"S sets view mode to 3D view\n\n"
-			"Mouse buttons\n"
-			"Left in top and side views resize and moves objects\n"
-			"Left in 3D view moves through azimuths and altitudes\n"
-			"Right opens a context menu\n"
-			"Wheel zooms in and out\n",  "Help");
+		m_book->SetSelection( PG_HELP );
 		break;
 	}
 }
