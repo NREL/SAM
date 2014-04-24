@@ -438,12 +438,12 @@ void LocationSetup::UpdateMap()
 
 void LocationSetup::UpdateScale()
 {
-	wxString text = wxGetTextFromUser( "Please enter image scale in meters per pixel", "Scale", 
-		wxString::Format("%lg", m_mpp ) );
+	wxString text = wxGetTextFromUser( "Please enter image scale in meters per 100 pixels", "Scale", 
+		wxString::Format("%lg", m_mpp*100 ) );
 	if ( text.IsEmpty() )
 		return;
 
-	m_mpp = wxAtof( text );
+	m_mpp = wxAtof( text )/100.0;
 	if ( m_mpp < 0.0001 ) m_mpp = 0.0001;
 	if ( m_mpp > 10 ) m_mpp = 10;
 	
@@ -795,7 +795,7 @@ ShadeAnalysis::ShadeAnalysis( wxWindow *parent, ShadeTool *st )
 	tools->Add( new wxButton(this, ID_GENERATE_DIURNAL, "Diurnal analysis" ), 0, wxALL, 2 );
 	tools->Add( new wxButton(this, ID_GENERATE_HOURLY, "Hourly analysis (entire array)" ), 0, wxALL, 2 );
 
-	wxString modes[] = { "Shade fraction", "Derate factor" };
+	wxString modes[] = { "Shade fraction", "Beam shading factor" };
 	m_sfMode = new wxChoice( this, wxID_ANY, wxDefaultPosition, wxDefaultSize, 2, modes );
 	m_sfMode->SetSelection( 0 );
 	tools->Add( m_sfMode, 0, wxALL|wxALIGN_CENTER_VERTICAL, 2 );
