@@ -1538,21 +1538,29 @@ void scene::basic_axes_with_ground( int axes_len )
 	point(size, -size, 0 );
 	poly(-2);
 
+	// change axes to polygons for bsp sorting
+	double axes_thick = 0.01;
+	// x-axis
 	colors( rgba( 200, 0, 0 ), rgba(200, 0, 0 ) );
-	point( 0, 0, 0 );
-	point( axes_len, 0, 0 );
-	line(-1, 2);
+	box(0, 0, -axes_thick, -axes_thick, 0, axes_len, axes_thick, axes_thick);
+//	point( 0, 0, 0 );
+//	point( axes_len, 0, 0 );
+//	line(-1, 2);
 
+	// y-axis
 	colors( rgba( 0, 130, 0 ), rgba(0, 130, 0 ) );
-	point( 0, 0, 0 );
-	point( 0, axes_len, 0 );
-	line(-1, 2);
+	box(0, -axes_thick, 0, -axes_thick, 0, axes_thick, axes_len, axes_thick);
+//	point( 0, 0, 0 );
+//	point( 0, axes_len, 0 );
+//	line(-1, 2);
 	
+	//z-axis
 	colors( rgba(0, 0, 200 ), rgba(0, 0, 200 ) );
-	point( 0, 0, 0 );
-	point( 0, 0, axes_len );
-	line(-1, 2);
-	
+	box(0, -axes_thick, -axes_thick, 0, 0, axes_thick, axes_thick, axes_len);
+//	point( 0, 0, 0 );
+//	point( 0, 0, axes_len );
+//	line(-1, 2);
+
 	label( axes_len+4, 0, 0, "X (east)" );
 	label( 0, axes_len+4, 0, "Y (north)" );
 	label( 0, 0, axes_len+6, "Z (sky)" );
