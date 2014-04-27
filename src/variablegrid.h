@@ -23,7 +23,10 @@ public:
 	virtual wxString GetColLabelValue(int col);
 	virtual wxString GetTypeName(int row, int col);
 	virtual bool DeleteCols(size_t pos = 0, size_t	numCols = 1);
+//	virtual bool InsertCols(size_t pos = 0, size_t numCols = 1);
+	virtual bool AppendCols(size_t numCols = 1);
 	bool DeleteCase(Case *c);
+	bool AddCase(Case *c);
 	bool ShowRow(int row, int comparison_type);
 	void Sort(int col, bool ascending);
 

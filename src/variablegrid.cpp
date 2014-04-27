@@ -288,6 +288,7 @@ bool VariableGridData::DeleteCase(Case *c)
 	{
 		m_cases.erase(it);
 		Init();
+		DeleteCols();
 		return true;
 	}
 	return false;
@@ -296,10 +297,46 @@ bool VariableGridData::DeleteCase(Case *c)
 
 bool VariableGridData::DeleteCols(size_t pos, size_t numCols)
 {
-	m_cols--;
+	if (GetView())
+	{
+		wxGridTableMessage msg(this,
+			wxGRIDTABLE_NOTIFY_COLS_DELETED,
+			pos,
+			numCols);
+
+		GetView()->ProcessTableMessage(msg);
+	}
+
 	return true;
 }
 
+bool VariableGridData::AddCase(Case *c)
+{
+	std::vector<Case*>::iterator it = std::find(m_cases.begin(), m_cases.end(), c);
+	if (it == m_cases.end())
+	{
+		m_cases.push_back(c);
+		Init();
+		AppendCols();
+		return true;
+	}
+	return false;
+}
+
+
+bool VariableGridData::AppendCols(size_t numCols)
+{
+	if (GetView())
+	{
+		wxGridTableMessage msg(this,
+			wxGRIDTABLE_NOTIFY_COLS_APPENDED,
+			numCols);
+
+		GetView()->ProcessTableMessage(msg);
+	}
+
+	return true;
+}
 
 
 enum {
@@ -489,16 +526,25 @@ void VariableGridFrame::OnCaseEvent(Case *c, CaseEvent &evt)
 	}
 	else if (evt.GetType() == CaseEvent::CASE_DESTROYED)
 	{
-		// single case and case comparison handling cases destroyed and oncloseing AV when grid open
-		// check m_cases collection and find which has been deleted
-		// single case
-		std::vector<Case*>::iterator it = std::find(m_cases.begin(),m_cases.end(),c);
+		std::vector<Case*>::iterator it = std::find(m_cases.begin(), m_cases.end(), c);
 		if (it != m_cases.end())
 		{
 			m_cases.erase(it);
 			if (m_cases.size() == 0) Close(); // AV when closeing main window protection
 			m_griddata->DeleteCase(c);
-			m_grid->DeleteCols(m_grid->GetNumberCols() - 1);
+//			m_grid->DeleteCols(m_grid->GetNumberCols() - 1);
+			m_grid->Refresh();
+			UpdateGrid();
+		}
+	}
+	else if (evt.GetType() == CaseEvent::CASE_CREATED)
+	{
+		std::vector<Case*>::iterator it = std::find(m_cases.begin(), m_cases.end(), c);
+		if (it == m_cases.end())
+		{
+			m_cases.push_back(*it);
+			m_griddata->AddCase(c);
+//			m_grid->AppendCols(m_grid->GetNumberCols() - 1);
 			m_grid->Refresh();
 			UpdateGrid();
 		}
