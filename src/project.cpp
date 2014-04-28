@@ -13,6 +13,7 @@ ProjectFile::ProjectFile()
 
 ProjectFile::~ProjectFile()
 {
+	SendEvent(ProjectFileEvent::PROJECTFILE_DELETED);
 	ClearListeners();
 	Clear();
 }
