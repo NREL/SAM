@@ -83,6 +83,7 @@ protected:
 };
 
 // app-wide init and shutdown calls for underlying libcurl initialization
+void wxSimpleCurlSetupProxy( const wxString &proxy );
 void wxSimpleCurlInit();
 void wxSimpleCurlShutdown();
 
