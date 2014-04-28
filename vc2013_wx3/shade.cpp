@@ -16,7 +16,7 @@ class MyFrame : public wxFrame
 public:
 	ShadeTool *m_shade;
 
-	MyFrame() : wxFrame( 0, wxID_ANY, "Shade Calculator", wxDefaultPosition, 
+	MyFrame() : wxFrame( 0, wxID_ANY, "Shade Calculator v0.9", wxDefaultPosition, 
 		wxSize(1100,700) )
 	{
 		SetIcon( wxICON( appicon ) );
@@ -66,9 +66,6 @@ public:
 		wxInitAllImageHandlers();
 		wxSimpleCurlInit();
 		
-		if ( !wxApp::OnInit() )
-			return false;
-
 		m_locale.Init();
 
 		SetAppName( "Shade Calculator" );
@@ -77,14 +74,15 @@ public:
 		for( int i=0;i<argc;i++ )
 			g_appArgs.Add( argv[i] );
 
-		if ( g_appArgs.Count() < 1 )
+		if ( g_appArgs.Count() < 1 || !wxDirExists( wxPathOnly(g_appArgs[0]) ) )
 		{
-			wxMessageBox("Internal error - cannot determine runtime folder from startup argument 0" );
+
+			wxMessageBox("Startup error - cannot determine application runtime folder from startup argument.\n\n"
+				"Try running " + g_appArgs[0] + " by specifying the full path to the executable." );
 			return false;
 		}
 
 		//wxMessageBox( wxT("Hello, \x01dc\x03AE\x03AA\x00C7\x00D6\x018C\x01dd in wxWidgets 3.0!") );
-
 		
 		wxString proxy_file = wxPathOnly(g_appArgs[0]) + "/proxy.txt";
 		if ( wxFileExists(proxy_file)  )
@@ -102,7 +100,8 @@ public:
 		frame->Show();
 
 		if ( g_appArgs.Count() > 1 )
-			frame->m_shade->LoadFromFile( g_appArgs[1] );
+			if( frame->m_shade->LoadFromFile( g_appArgs[1] ) )
+				frame->m_shade->SwitchTo( PG_SCENE );
 
 	
 		return true;
