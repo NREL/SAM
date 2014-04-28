@@ -14,7 +14,7 @@ private:
 	int m_type;
 	wxString m_str, m_str2;
 public:
-	enum { CASE_ADDED, CASE_DELETED, CASE_RENAMED };
+	enum { CASE_ADDED, CASE_DELETED, CASE_RENAMED, PROJECTFILE_DELETED };
 
 	ProjectFileEvent(int type) : m_type(type) { }
 	ProjectFileEvent(int type, const wxString &str) : m_type(type), m_str(str) { }
