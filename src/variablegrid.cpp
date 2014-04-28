@@ -339,6 +339,27 @@ bool VariableGridData::AppendCols(size_t numCols)
 }
 
 
+bool VariableGridData::RenameCase(const wxString &old_name, const wxString &new_name)
+{
+	int ndx = m_col_hdrs.Index(old_name);
+	if (ndx == wxNOT_FOUND)
+		return false;
+	else
+	{
+		SetColLabelValue(ndx, new_name);
+		return true;
+	}
+}
+
+void VariableGridData::SetColLabelValue(int col, const wxString &label)
+{
+	if ((col > 0) && (col < m_col_hdrs.Count()))
+	{
+		m_col_hdrs[col] = label;
+	}
+}
+
+
 enum {
 	__idFirst = wxID_HIGHEST + 992,
 	ID_SHOW_DIFFERENT, ID_SHOW_SAME, ID_SHOW_ALL
@@ -352,13 +373,17 @@ BEGIN_EVENT_TABLE(VariableGridFrame, wxFrame)
 	EVT_GRID_COL_SORT(VariableGridFrame::OnGridColSort)
 END_EVENT_TABLE()
 
-VariableGridFrame::VariableGridFrame(wxWindow *parent, ProjectFile *pf, Case *c) : wxFrame(parent, wxID_ANY, "Variable Grid", wxDefaultPosition, wxSize(400, 700))
+VariableGridFrame::VariableGridFrame(wxWindow *parent, ProjectFile *pf, Case *c) : wxFrame(parent, wxID_ANY, "Variable Grid", wxDefaultPosition, wxSize(400, 700)), m_pf(pf)
 {
 	
+	if (!m_pf) return;
+
+	m_pf->AddListener(this);
+
 	if (c)
 		m_cases.push_back(c);
 	else
-		m_cases = pf->GetCases();
+		m_cases = m_pf->GetCases();
 	if (m_cases.size() > 0)
 	{
 		for (size_t i = 0; i < m_cases.size(); i++)
@@ -366,13 +391,13 @@ VariableGridFrame::VariableGridFrame(wxWindow *parent, ProjectFile *pf, Case *c)
 
 		wxString title;
 		if (m_cases.size() == 1)
-			title = "Current Case Values: " + pf->GetCaseName(m_cases[0]);
+			title = "Current Case Values: " + m_pf->GetCaseName(m_cases[0]);
 		else
 			title = "Case comparison";
 		
 		SetTitle(title);
 
-		m_griddata = new VariableGridData(pf, c);
+		m_griddata = new VariableGridData(m_pf, c);
 
 		m_grid = new wxGrid(this, wxID_ANY);
 
@@ -516,6 +541,49 @@ void VariableGridFrame::OnCommand(wxCommandEvent &evt)
 
 }
 
+void VariableGridFrame::OnProjectFileEvent(ProjectFile *p, ProjectFileEvent &evt)
+{
+	if (evt.GetType() == ProjectFileEvent::CASE_DELETED)
+	{
+		Case *c = m_pf->GetCase(evt.GetString());
+		std::vector<Case*>::iterator it = std::find(m_cases.begin(), m_cases.end(), c);
+		if (it != m_cases.end())
+		{
+			m_cases.erase(it);
+			if (m_cases.size() == 0) Close(); // AV when closeing main window protection
+			m_griddata->DeleteCase(c);
+			//			m_grid->DeleteCols(m_grid->GetNumberCols() - 1);
+			m_grid->Refresh();
+			UpdateGrid();
+		}
+	}
+	else if (evt.GetType() == ProjectFileEvent::CASE_ADDED)
+	{
+		Case *c = m_pf->GetCase(evt.GetString());
+		std::vector<Case*>::iterator it = std::find(m_cases.begin(), m_cases.end(), c);
+		if (it == m_cases.end())
+		{
+			m_cases.push_back(*it);
+			m_griddata->AddCase(c);
+			//			m_grid->AppendCols(m_grid->GetNumberCols() - 1);
+			m_grid->Refresh();
+			UpdateGrid();
+		}
+	}
+	else if (evt.GetType() == ProjectFileEvent::CASE_RENAMED)
+	{
+		Case *c = m_pf->GetCase(evt.GetString());
+		std::vector<Case*>::iterator it = std::find(m_cases.begin(), m_cases.end(), c);
+		if (it == m_cases.end())
+		{
+			m_griddata->RenameCase(evt.GetString(),evt.GetString2());
+			m_grid->Refresh();
+			UpdateGrid();
+		}
+	}
+
+}
+
 void VariableGridFrame::OnCaseEvent(Case *c, CaseEvent &evt)
 {
 	if (evt.GetType() == CaseEvent::VALUE_CHANGED)
@@ -524,6 +592,7 @@ void VariableGridFrame::OnCaseEvent(Case *c, CaseEvent &evt)
 		UpdateGrid(); // for comparison views
 		m_grid->Refresh();
 	}
+	/*
 	else if (evt.GetType() == CaseEvent::CASE_DESTROYED)
 	{
 		std::vector<Case*>::iterator it = std::find(m_cases.begin(), m_cases.end(), c);
@@ -549,7 +618,8 @@ void VariableGridFrame::OnCaseEvent(Case *c, CaseEvent &evt)
 			UpdateGrid();
 		}
 	}
-
+	*/
 }
+
 
 
