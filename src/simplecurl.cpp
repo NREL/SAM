@@ -8,6 +8,8 @@
 #include "simplecurl.h"
 #include <wx/wx.h>
 
+static wxString gs_curlProxyAddress;
+
 DEFINE_EVENT_TYPE(wxSIMPLECURL_EVENT);
 
 extern "C" {
@@ -113,6 +115,9 @@ public:
 			curl_easy_setopt(curl, CURLOPT_PROGRESSFUNCTION, simplecurl_progress_func);	
 
 			curl_easy_setopt(curl, CURLOPT_FOLLOWLOCATION, 1);
+
+			if ( !gs_curlProxyAddress.IsEmpty() )
+				curl_easy_setopt(curl, CURLOPT_PROXY, (const char*)gs_curlProxyAddress.ToAscii() );
 
 			m_resultCode = curl_easy_perform(curl);
 			curl_easy_cleanup(curl);
@@ -247,6 +252,11 @@ extern "C" {
 
 }; // extern "C"
 
+
+void wxSimpleCurlSetupProxy( const wxString &proxy )
+{
+	gs_curlProxyAddress = proxy;
+}
 
 void wxSimpleCurlInit()
 {

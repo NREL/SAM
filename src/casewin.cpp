@@ -147,9 +147,9 @@ CaseWindow::CaseWindow( wxWindow *parent, Case *c )
 	
 	wxSizer *szsims = new wxGridSizer(2, 0, 0);
 	szsims->Add( new wxMetroButton( left_panel, ID_PARAMETRICS, "Parametrics" ), 0, wxALL|wxEXPAND, 0 );
-	szsims->Add( new wxMetroButton( left_panel, ID_SENSITIVITY, "Tornado" ), 0, wxALL|wxEXPAND, 0 );
+	szsims->Add( new wxMetroButton( left_panel, ID_SENSITIVITY, "Sensitivity" ), 0, wxALL|wxEXPAND, 0 );
 	szsims->Add( new wxMetroButton( left_panel, ID_P50P90, "P50 / P90" ), 0, wxALL|wxEXPAND, 0 );
-	szsims->Add( new wxMetroButton( left_panel, ID_SCRIPTING, "Hypercube" ), 0, wxALL|wxEXPAND, 0 );
+	szsims->Add( new wxMetroButton( left_panel, ID_SCRIPTING, "Monte Carlo" ), 0, wxALL|wxEXPAND, 0 );
 	szvl->Add( szsims, 0, wxALL|wxEXPAND, 0 );
 	
 
