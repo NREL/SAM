@@ -62,6 +62,7 @@ private:
 
 	void OnGridColSort(wxGridEvent& event);
 	void UpdateGrid();
+	void SizeColumns();
 	void OnCommand(wxCommandEvent &evt);
 
 	// update data when values in case change

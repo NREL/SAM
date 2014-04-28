@@ -104,10 +104,17 @@ bool VariableGridData::IsEmptyCell(int row, int col)
 		return (m_var_labels[row] == wxEmptyString);
 	else // get var table and value
 	{
-		if ((col - 2) >= m_var_table_vec.size())
-			return wxEmptyString;
+		int lookup_row = row;
+		if (m_sorted) lookup_row = m_sorted_index[row];
+		if (m_var_table_vec[col - 2]->Get(m_var_names[lookup_row]))
+		{
+			if ((col - 2) >= m_var_table_vec.size())
+				return wxEmptyString;
+			else
+				return (m_var_table_vec[col - 2]->Get(m_var_names[lookup_row])->AsString() == wxEmptyString);
+		}
 		else
-			return (m_var_table_vec[col - 2]->Get(m_var_names[row])->AsString() == wxEmptyString);
+			return wxEmptyString;
 	}
 }
 
@@ -161,7 +168,7 @@ void VariableGridData::SetValue(int row, int col, const wxString& value)
 			{
 				VarValue::Parse(vv->Type(), value, *vv);
 				// updates ui from grid
-//				m_cases[col - 2]->VariableChanged(m_var_names[lookup_row]);
+				m_cases[col - 2]->VariableChanged(m_var_names[lookup_row]);
 			}
 		}
 	}
@@ -369,7 +376,6 @@ BEGIN_EVENT_TABLE(VariableGridFrame, wxFrame)
 	EVT_BUTTON(ID_SHOW_DIFFERENT, VariableGridFrame::OnCommand)
 	EVT_BUTTON(ID_SHOW_SAME, VariableGridFrame::OnCommand)
 	EVT_BUTTON(ID_SHOW_ALL, VariableGridFrame::OnCommand)
-//	EVT_CLOSE(VariableGridFrame::OnClose)
 	EVT_GRID_COL_SORT(VariableGridFrame::OnGridColSort)
 END_EVENT_TABLE()
 
@@ -405,40 +411,12 @@ VariableGridFrame::VariableGridFrame(wxWindow *parent, ProjectFile *pf, Case *c)
 
 
 //		m_grid->UseNativeColHeader(); // does not load correctly
-//		m_grid->RegisterDataType("autowrapstring", new wxGridCellAutoWrapStringRenderer, new wxGridCellAutoWrapStringEditor);
+		m_grid->RegisterDataType("autowrapstring", new wxGridCellAutoWrapStringRenderer, new wxGridCellAutoWrapStringEditor);
 		m_grid->HideRowLabels();
 
 
-
-
-		m_grid->Freeze();
 		m_grid->SetTable(m_griddata, true, wxGrid::wxGridSelectRows);
-//		m_grid->AutoSize(); // fails with autowrap string renderer
 
-
-		// column widths
-		int col = 0, row = 0;
-		int width, height;
-		std::vector<int> col_width(m_grid->GetNumberCols(), 60);
-		for (row = 0; row< m_grid->GetNumberRows(); row++)
-		{
-			if (m_griddata->GetTypeName(row, 2) != "autowrapstring")
-			{
-				for (col = 0; col < m_grid->GetNumberCols(); col++)
-				{
-					GetTextExtent(m_grid->GetCellValue(row, col), &width, &height);
-					if ((width + 10) > col_width[col]) col_width[col] = width + 10;
-				}
-			}
-		}
-
-		for (col = 0; col < m_grid->GetNumberCols(); col++)
-		{
-			GetTextExtent(m_grid->GetColLabelValue(col), &width, &height);
-			if ((width + 10) > col_width[col]) col_width[col] = width + 10;
-			if (col_width[col] > 250) col_width[col] = 250;
-			m_grid->SetColumnWidth(col, col_width[col]);
-		}
 
 		/*
 		// TODO - radio button group for show all, same, different
@@ -460,8 +438,8 @@ VariableGridFrame::VariableGridFrame(wxWindow *parent, ProjectFile *pf, Case *c)
 			}
 		}
 		*/
+		SizeColumns();
 		UpdateGrid();
-		m_grid->Thaw();
 
 
 		wxBoxSizer *tools = new wxBoxSizer(wxHORIZONTAL);
@@ -485,17 +463,47 @@ VariableGridFrame::VariableGridFrame(wxWindow *parent, ProjectFile *pf, Case *c)
 
 void VariableGridFrame::OnGridColSort(wxGridEvent& event)
 {
-	m_grid->Freeze();
 	const int col = event.GetCol();
 	m_griddata->Sort(col, !(m_grid->IsSortingBy(col) &&
 		m_grid->IsSortOrderAscending()));
 	UpdateGrid();
-	m_grid->Thaw();
 }
 
 
+
+void VariableGridFrame::SizeColumns()
+{
+	// column widths
+	int col = 0, row = 0;
+	int width, height;
+	std::vector<int> col_width(m_grid->GetNumberCols(), 60);
+	for (row = 0; row< m_grid->GetNumberRows(); row++)
+	{
+		if (m_griddata->ShowRow(row, m_compare_show_type))
+		{
+			if (m_griddata->GetTypeName(row, 2) != "autowrapstring")
+			{
+				for (col = 0; col < m_grid->GetNumberCols(); col++)
+				{
+					GetTextExtent(m_grid->GetCellValue(row, col), &width, &height);
+					if ((width + 10) > col_width[col]) col_width[col] = width + 10;
+				}
+			}
+		}
+	}
+
+	for (col = 0; col < m_grid->GetNumberCols(); col++)
+	{
+		GetTextExtent(m_grid->GetColLabelValue(col), &width, &height);
+		if ((width + 10) > col_width[col]) col_width[col] = width + 10;
+		if (col_width[col] > 250) col_width[col] = 250;
+		m_grid->SetColumnWidth(col, col_width[col]);
+	}
+}
+
 void VariableGridFrame::UpdateGrid()
 {
+	m_grid->Freeze();
 	for (int row = 0; row < m_grid->GetNumberRows(); row++)
 	{
 		if (m_griddata->ShowRow(row, m_compare_show_type))
@@ -513,6 +521,7 @@ void VariableGridFrame::UpdateGrid()
 		else
 			m_grid->HideRow(row);
 	}
+	m_grid->Thaw();
 }
 
 void VariableGridFrame::OnCommand(wxCommandEvent &evt)
@@ -521,21 +530,15 @@ void VariableGridFrame::OnCommand(wxCommandEvent &evt)
 	{
 	case ID_SHOW_DIFFERENT:
 		m_compare_show_type = COMPARE_SHOW_DIFFERENT;
-		m_grid->Freeze();
 		UpdateGrid();
-		m_grid->Thaw();
 		break;
 	case ID_SHOW_SAME:
 		m_compare_show_type = COMPARE_SHOW_SAME;
-		m_grid->Freeze();
 		UpdateGrid();
-		m_grid->Thaw();
 		break;
 	case ID_SHOW_ALL:
 		m_compare_show_type = COMPARE_SHOW_ALL;
-		m_grid->Freeze();
 		UpdateGrid();
-		m_grid->Thaw();
 		break;
 	}
 
@@ -552,7 +555,6 @@ void VariableGridFrame::OnProjectFileEvent(ProjectFile *p, ProjectFileEvent &evt
 			m_cases.erase(it);
 			if (m_cases.size() == 0) Close(); // AV when closeing main window protection
 			m_griddata->DeleteCase(c);
-			//			m_grid->DeleteCols(m_grid->GetNumberCols() - 1);
 			m_grid->Refresh();
 			UpdateGrid();
 		}
@@ -563,9 +565,8 @@ void VariableGridFrame::OnProjectFileEvent(ProjectFile *p, ProjectFileEvent &evt
 		std::vector<Case*>::iterator it = std::find(m_cases.begin(), m_cases.end(), c);
 		if (it == m_cases.end())
 		{
-			m_cases.push_back(*it);
+			m_cases.push_back(c);
 			m_griddata->AddCase(c);
-			//			m_grid->AppendCols(m_grid->GetNumberCols() - 1);
 			m_grid->Refresh();
 			UpdateGrid();
 		}
@@ -576,10 +577,14 @@ void VariableGridFrame::OnProjectFileEvent(ProjectFile *p, ProjectFileEvent &evt
 		std::vector<Case*>::iterator it = std::find(m_cases.begin(), m_cases.end(), c);
 		if (it == m_cases.end())
 		{
-			m_griddata->RenameCase(evt.GetString(),evt.GetString2());
+			m_griddata->RenameCase(evt.GetString(), evt.GetString2());
 			m_grid->Refresh();
 			UpdateGrid();
 		}
+	}
+	else if (evt.GetType() == ProjectFileEvent::PROJECTFILE_DELETED)
+	{
+		Close(); // to prevent AV when closing main window
 	}
 
 }
@@ -592,33 +597,6 @@ void VariableGridFrame::OnCaseEvent(Case *c, CaseEvent &evt)
 		UpdateGrid(); // for comparison views
 		m_grid->Refresh();
 	}
-	/*
-	else if (evt.GetType() == CaseEvent::CASE_DESTROYED)
-	{
-		std::vector<Case*>::iterator it = std::find(m_cases.begin(), m_cases.end(), c);
-		if (it != m_cases.end())
-		{
-			m_cases.erase(it);
-			if (m_cases.size() == 0) Close(); // AV when closeing main window protection
-			m_griddata->DeleteCase(c);
-//			m_grid->DeleteCols(m_grid->GetNumberCols() - 1);
-			m_grid->Refresh();
-			UpdateGrid();
-		}
-	}
-	else if (evt.GetType() == CaseEvent::CASE_CREATED)
-	{
-		std::vector<Case*>::iterator it = std::find(m_cases.begin(), m_cases.end(), c);
-		if (it == m_cases.end())
-		{
-			m_cases.push_back(*it);
-			m_griddata->AddCase(c);
-//			m_grid->AppendCols(m_grid->GetNumberCols() - 1);
-			m_grid->Refresh();
-			UpdateGrid();
-		}
-	}
-	*/
 }
 
 

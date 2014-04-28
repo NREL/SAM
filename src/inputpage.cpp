@@ -226,7 +226,7 @@ void ActiveInputPage::OnUserInputChanged( wxUIObject *obj )
 			m_case->Recalculate( obj->GetName() );
 			// send value changed whenever recalculate is called to update other windows
 			// for example the VariableGrid
-//			m_case->SendEvent(CaseEvent(CaseEvent::VALUE_CHANGED));
+			m_case->SendEvent(CaseEvent(CaseEvent::VALUE_CHANGED));
 		}
 		else
 			wxMessageBox("ActiveInputPage >> data exchange fail: " + obj->GetName() );
