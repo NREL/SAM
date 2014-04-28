@@ -13,6 +13,7 @@ ProjectFile::ProjectFile()
 
 ProjectFile::~ProjectFile()
 {
+	ClearListeners();
 	Clear();
 }
 
@@ -24,10 +25,36 @@ void ProjectFile::Clear()
 }
 
 
+void ProjectFile::AddListener(ProjectFileEventListener *pel)
+{
+	m_listeners.push_back(pel);
+}
+
+void ProjectFile::RemoveListener(ProjectFileEventListener *pel)
+{
+	std::vector<ProjectFileEventListener*>::iterator it = std::find(m_listeners.begin(), m_listeners.end(), pel);
+	if (it != m_listeners.end())
+		m_listeners.erase(it);
+}
+
+
+void ProjectFile::ClearListeners()
+{
+	m_listeners.clear();
+}
+
+void ProjectFile::SendEvent(ProjectFileEvent e)
+{
+	for (size_t i = 0; i<m_listeners.size(); i++)
+		m_listeners[i]->OnProjectFileEvent(this, e);
+}
+
+
 // managing cases
 void ProjectFile::AddCase( const wxString &name, Case *c )
 {
 	m_cases.Add( name, c );
+	SendEvent(ProjectFileEvent(ProjectFileEvent::CASE_ADDED, name));
 	m_modified = true;
 }
 
@@ -40,7 +67,8 @@ Case *ProjectFile::AddCase( const wxString &name )
 
 bool ProjectFile::DeleteCase( const wxString &name )
 {
-	if ( m_cases.Delete( name ) )
+	SendEvent(ProjectFileEvent(ProjectFileEvent::CASE_DELETED, name));
+	if (m_cases.Delete(name))
 	{
 		m_modified = true;
 		return true;
@@ -50,7 +78,12 @@ bool ProjectFile::DeleteCase( const wxString &name )
 
 bool ProjectFile::RenameCase( const wxString &old_name, const wxString &new_name )
 {
-	return m_cases.Rename( old_name, new_name );
+	if (m_cases.Rename(old_name, new_name))
+	{
+		SendEvent(ProjectFileEvent(ProjectFileEvent::CASE_RENAMED, old_name, new_name));
+		return true;
+	}
+	else return false;
 }
 
 std::vector<Case*> ProjectFile::GetCases()
