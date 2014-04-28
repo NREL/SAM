@@ -21,12 +21,14 @@ public:
 	virtual wxString GetValue(int row, int col);
 	virtual void SetValue(int row, int col, const wxString& value);
 	virtual wxString GetColLabelValue(int col);
+	virtual void SetColLabelValue(int col, const wxString &label);
 	virtual wxString GetTypeName(int row, int col);
 	virtual bool DeleteCols(size_t pos = 0, size_t	numCols = 1);
 //	virtual bool InsertCols(size_t pos = 0, size_t numCols = 1);
 	virtual bool AppendCols(size_t numCols = 1);
 	bool DeleteCase(Case *c);
 	bool AddCase(Case *c);
+	bool RenameCase(const wxString &old_name, const wxString &new_name);
 	bool ShowRow(int row, int comparison_type);
 	void Sort(int col, bool ascending);
 
@@ -47,12 +49,13 @@ private:
 
 };
 
-class VariableGridFrame : public wxFrame, CaseEventListener
+class VariableGridFrame : public wxFrame, ProjectFileEventListener, CaseEventListener
 {
 public:
 	VariableGridFrame(wxWindow *parent, ProjectFile *pf, Case *c=NULL);
 private:
 	wxGrid *m_grid;
+	ProjectFile *m_pf;
 	VariableGridData *m_griddata;
 	std::vector<Case*> m_cases;
 	int m_compare_show_type;
@@ -62,7 +65,8 @@ private:
 	void OnCommand(wxCommandEvent &evt);
 
 	// update data when values in case change
-	virtual void OnCaseEvent(Case *c, CaseEvent &);
+	virtual void OnCaseEvent(Case *c, CaseEvent &evt);
+	virtual void OnProjectFileEvent(ProjectFile *p, ProjectFileEvent &evt);
 
 	DECLARE_EVENT_TABLE();
 };
