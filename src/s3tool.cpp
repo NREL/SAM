@@ -1156,7 +1156,8 @@ ShadeTool::ShadeTool( wxWindow *parent, int id, const wxString &data_path )
 
 	m_analysis = new ShadeAnalysis( m_book, this );
 
-	m_helpViewer = wxWebView::New( m_book, wxID_ANY, "file:///" + data_path + "/help/index.html");
+	m_helpViewer = wxWebView::New( m_book, wxID_ANY, "file:///" + data_path + "/help/index.html",
+		wxDefaultPosition, wxDefaultSize, wxWebViewBackendDefault, wxBORDER_NONE );
 
 	wxBoxSizer *sizer_main = new wxBoxSizer( wxVERTICAL );
 	sizer_main->Add( sizer_tool, 0, wxALL|wxEXPAND, 0 );

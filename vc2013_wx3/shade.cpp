@@ -16,7 +16,8 @@ class MyFrame : public wxFrame
 public:
 	ShadeTool *m_shade;
 
-	MyFrame() : wxFrame( 0, wxID_ANY, "Shade Calculator", wxDefaultPosition, wxSize(1000,700) )
+	MyFrame() : wxFrame( 0, wxID_ANY, "Shade Calculator", wxDefaultPosition, 
+		wxSize(1100,700) )
 	{
 		SetIcon( wxICON( appicon ) );
 		m_shade = new ShadeTool( this, wxID_ANY, wxPathOnly( g_appArgs[0] ) );
@@ -85,6 +86,18 @@ public:
 		//wxMessageBox( wxT("Hello, \x01dc\x03AE\x03AA\x00C7\x00D6\x018C\x01dd in wxWidgets 3.0!") );
 
 		
+		wxString proxy_file = wxPathOnly(g_appArgs[0]) + "/proxy.txt";
+		if ( wxFileExists(proxy_file)  )
+		{
+			if ( FILE *fp = fopen( proxy_file.c_str(), "r" ) )
+			{
+				char buf[512];
+				fgets( buf, 511, fp );
+				fclose(fp);
+				wxSimpleCurlSetupProxy( wxString::FromAscii( buf ) );
+			}
+		}
+
 		MyFrame *frame = new MyFrame;
 		frame->Show();
 
