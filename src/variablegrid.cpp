@@ -458,6 +458,10 @@ VariableGridFrame::VariableGridFrame(wxWindow *parent, ProjectFile *pf, Case *c)
 		if (m_cases.size() < 2)
 			tools->Show(false);
 	}
+#ifdef __WXMSW__
+	SetIcon(wxICON(appicon));
+#endif	
+	CenterOnParent();
 	Show();
 }
 
