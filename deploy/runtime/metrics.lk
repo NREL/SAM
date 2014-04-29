@@ -159,6 +159,11 @@ function geothermal_metrics()
 	//metric( 'lifetime_output', {'label'='Lifetime Energy', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh' } );
 }
 
+function generic_system_metrics() 
+{
+	metric( 'annual_energy', {'label'='Annual Energy', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh' } );
+}
+
 metrics{ 'PVWatts' } = define() {	pv_metrics(); };
 metrics{ 'Flat Plate PV' } = define() { pv_metrics(); };
 metrics{ 'Residential' } = define() { rescom_metrics(); };
@@ -173,4 +178,4 @@ metrics{ 'Wind Power' } = define() { wind_power_metrics(); };
 metrics{ 'Wind BOS' } = define() { wind_bos_metrics(); };
 metrics{ 'Concentrating Solar Power - Physical Trough' } = define() { csp_physical_trough_metrics(); };
 metrics{ 'Geothermal Power' } = define() { geothermal_metrics(); };
-
+metrics{ 'Generic System' } = define() { generic_system_metrics(); };
