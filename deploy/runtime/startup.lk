@@ -15,7 +15,7 @@ addconfig( 'Solar Water Heating', ['Residential', 'Commercial', 'None']);
 addconfig( 'Empirical Trough', ['Independent Power Producer', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'Single Owner','Commercial','None']);
 addconfig( 'Physical Trough', ['Independent Power Producer', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'Single Owner', 'None']);
 addconfig( 'Geothermal Power', ['Independent Power Producer', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'Single Owner', 'None']);
-//addconfig( 'Geothermal Power', ['None']);
+addconfig( 'Generic System', ['Residential', 'Commercial', 'Commercial PPA', 'Independent Power Producer', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'Single Owner', 'None']);
 
 function setup_pvwatts_pages()
 {
@@ -518,6 +518,7 @@ addpage( [['Wind Farm Capital Costs','O and M Costs',
 		{ 'sidebar'='Wind System Costs' } );
 setup_sale_leaseback_pages();
 
+//-----------------------------------------------------
 setconfig( 'Wind Power', 'Single Owner' );
 setmodules( ['windpower', 'singleowner']);
 setting( { 'analysis_period_var'='cf_length' } );
@@ -551,7 +552,6 @@ addpage( [[ 'Solar Water Heating Costs','O and M Costs' ]], { 'sidebar'='SWH Sys
 setup_commercial_pages();
 
 // Geothermal Power ////////////////////////////////////////////////////////////
-
 setconfig( 'Geothermal Power', 'Independent Power Producer' );
 setmodules( ['geothermal',  'ippppa']);
 setup_geothermal_power_pages();
@@ -594,3 +594,79 @@ setup_single_owner_pages();
 setconfig( 'Geothermal Power', 'None' );
 setmodules( ['geothermal']);
 setup_geothermal_power_pages();
+
+// Generic System //////////////////////////////////////////////////////////////
+function setup_generic_system_pages()
+{
+	addpage( [[ 'Generic System Plant' ]], { 'sidebar'='Power Plant' } );
+}
+
+setconfig( 'Generic System', 'Residential' );	
+setmodules( ['generic_system',  'utilityrate2', 'cashloan']);
+setting( { 'analysis_period_var'='cf_length' } );
+setup_generic_system_pages();
+addpage( [[ 'Generic System Costs','O and M Costs']],{ 'sidebar'='System Costs' } );
+setup_residential_pages();
+
+//-----------------------------------------------------
+setconfig( 'Generic System', 'Commercial' );	
+setmodules( ['generic_system',  'utilityrate2', 'cashloan']);
+setting( { 'analysis_period_var'='cf_length' } );
+setup_generic_system_pages();
+addpage( [[ 'Generic System Costs','O and M Costs']],{ 'sidebar'='System Costs' } );
+setup_commercial_pages();
+
+//-----------------------------------------------------
+setconfig( 'Generic System', 'Commercial PPA' );	
+setmodules( ['generic_system',  'ippppa']);
+setting( { 'analysis_period_var'='cf_length' } );
+setup_generic_system_pages();
+addpage( [[ 'Generic System Costs','O and M Costs']],{ 'sidebar'='System Costs' } );
+setup_commercial_ppa_pages();
+
+//-----------------------------------------------------
+setconfig( 'Generic System', 'Independent Power Producer' );
+setmodules( ['generic_system', 'ippppa']);
+setting( { 'analysis_period_var'='cf_length' } );
+setup_generic_system_pages();
+addpage( [[ 'Generic System Costs','O and M Costs']],{ 'sidebar'='System Costs' } );
+setup_independent_power_producer_pages();
+
+//-----------------------------------------------------
+setconfig( 'Generic System', 'Leveraged Partnership Flip' );
+setmodules( ['generic_system', 'levpartflip']);
+setting( { 'analysis_period_var'='cf_length' } );
+setup_generic_system_pages();
+addpage( [[ 'Generic System Costs','O and M Costs']],{ 'sidebar'='System Costs' } );
+setup_leveraged_partnership_flip_pages();
+
+//-----------------------------------------------------
+setconfig( 'Generic System', 'All Equity Partnership Flip' );
+setmodules( ['generic_system', 'equpartflip']);
+setting( { 'analysis_period_var'='cf_length' } );
+setup_generic_system_pages();
+addpage( [[ 'Generic System Costs','O and M Costs']],{ 'sidebar'='System Costs' } );
+setup_all_equity_partnership_flip_pages();
+
+//-----------------------------------------------------
+setconfig( 'Generic System', 'Sale Leaseback' );
+setmodules( ['generic_system', 'saleleaseback']);
+setting( { 'analysis_period_var'='cf_length' } );
+setup_generic_system_pages();
+addpage( [[ 'Generic System Costs','O and M Costs']],{ 'sidebar'='System Costs' } );
+setup_sale_leaseback_pages();
+
+//-----------------------------------------------------
+setconfig( 'Generic System', 'Single Owner' );
+setmodules( ['generic_system', 'singleowner']);
+setting( { 'analysis_period_var'='cf_length' } );
+setup_generic_system_pages();
+addpage( [[ 'Generic System Costs','O and M Costs']],{ 'sidebar'='System Costs' } );
+setup_single_owner_pages();
+
+//-----------------------------------------------------
+setconfig( 'Generic System', 'None' );
+setmodules( ['generic_system']);
+setup_generic_system_pages();
+
+
