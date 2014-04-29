@@ -340,6 +340,12 @@ static std::vector<wxColour> s_colours;
 		if (ymin != 0) ymin -= yadj;
 		if (ymax != 0) ymax += yadj;
 
+		if (ymin == ymax) {
+			// no variation in y values, so pick some reasonable graph bounds
+			ymax = (ymax == 0) ? 1 : ymax += ymax*0.05;
+			ymin = (ymin == 0) ? -1 : ymin -= ymin*0.05;
+		}
+
 		SetYAxis1( new wxPLLinearAxis( ymin, ymax, m_g.YLabel ) );
 	}
 
