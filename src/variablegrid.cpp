@@ -3,10 +3,11 @@
 
 #include <wx/sizer.h>
 #include <wx/bitmap.h>
-
+#include <wx/msgdlg.h>
 #include <wex/metro.h>
 
 #include "variablegrid.h"
+#include "widgets.h"
 
 #define COMPARE_SHOW_ALL 0
 #define COMPARE_SHOW_DIFFERENT 1
@@ -125,6 +126,55 @@ wxString VariableGridData::GetColLabelValue(int col)
 	return m_col_hdrs[col];
 }
 
+
+VarInfo* VariableGridData::GetVarInfo(int row, int col)
+{
+	VarInfo* vi = NULL;
+	int lookup_row = row;
+	if (m_sorted) lookup_row = m_sorted_index[row];
+	if ((col > 1) && ((col - 2) <  m_var_info_lookup_vec.size()))
+	{
+		vi = m_var_info_lookup_vec[col - 2]->Lookup(m_var_names[lookup_row]);
+	}
+	return vi;
+}
+
+void VariableGridData::SetVarInfo(int row, int col, VarInfo *vi)
+{
+	int lookup_row = row;
+	if (m_sorted) lookup_row = m_sorted_index[row];
+	if ((col > 1) && ((col - 2) <  m_var_info_lookup_vec.size()))
+	{
+		if (VarInfo *var_info = m_var_info_lookup_vec[col - 2]->Lookup(m_var_names[lookup_row]))
+			var_info = vi;
+	}
+}
+
+VarValue* VariableGridData::GetVarValue(int row, int col)
+{
+	VarValue* vv = NULL;
+	int lookup_row = row;
+	if (m_sorted) lookup_row = m_sorted_index[row];
+	if ((col > 1) && ((col - 2) <  m_var_table_vec.size()))
+	{
+		vv = m_var_table_vec[col - 2]->Get(m_var_names[lookup_row]);
+	}
+	return vv;
+
+}
+
+void VariableGridData::SetVarValue(int row, int col, VarValue *vv)
+{
+	int lookup_row = row;
+	if (m_sorted) lookup_row = m_sorted_index[row];
+	if ((col > 1) && ((col - 2) <  m_var_info_lookup_vec.size()))
+	{
+		if (VarValue *var_value = m_var_table_vec[col - 2]->Get(m_var_names[lookup_row]))
+			var_value = vv;
+	}
+}
+
+
 wxString VariableGridData::GetValue(int row, int col)
 {
 	int lookup_row = row;
@@ -219,8 +269,8 @@ wxString VariableGridData::GetTypeName(int row, int col)
 			case VV_ARRAY:
 			case VV_MATRIX:
 			case VV_TABLE:
-//				return "autowrapstring";
-//				break;
+				return "gridcellbutton";
+				break;
 			case VV_NUMBER:
 			case VV_STRING:
 			default:
@@ -367,6 +417,426 @@ void VariableGridData::SetColLabelValue(int col, const wxString &label)
 }
 
 
+//////////////////////////////////////////////////////////////////////////////////////
+
+#define BUTTON_WIDTH 10;
+
+GridCellButtonRenderer::GridCellButtonRenderer(wxString label)
+{
+	m_strLabel = label;
+	m_button_width = BUTTON_WIDTH;
+}
+
+GridCellButtonRenderer::~GridCellButtonRenderer(void)
+{
+}
+
+void GridCellButtonRenderer::Draw(wxGrid &grid, wxGridCellAttr &attr, wxDC &dc, const wxRect &rectCell, int row, int col, bool isSelected)
+{
+	wxRect rect = rectCell;
+	rect.Inflate(-1);
+
+	// draw button at right end
+	int x = rect.x + rect.width - m_button_width;
+	int y = rect.y;
+	wxRect button_rect(x, y, m_button_width, rect.height);
+	wxRendererNative::Get().DrawPushButton(&grid, dc, button_rect, wxCONTROL_CURRENT);
+	dc.DrawText(m_strLabel, x + 1, y + 1);
+
+
+	//  draw the text
+	// resize to fit starting at 100
+	// text extent to resize by 
+	int dec_width = 5;
+	int str_width = 100;
+	wxString value = grid.GetCellValue(row, col).Left(str_width);
+	rect.width -= button_rect.width;
+
+	wxSize sz = dc.GetTextExtent(value);
+	while ((sz.GetWidth() > rect.GetWidth()) && (str_width > dec_width))
+	{
+		str_width -= dec_width;
+		value = grid.GetCellValue(row, col).Left(str_width);
+		sz = dc.GetTextExtent(value);
+	}
+
+	// erase only this cells background
+	wxGridCellRenderer::Draw(grid, attr, dc, rect, row, col, isSelected);
+	int hAlign, vAlign;
+	attr.GetAlignment(&hAlign, &vAlign);
+
+	SetTextColoursAndFont(grid, attr, dc, isSelected);
+	grid.DrawTextRectangle(dc, value,	rect, hAlign, vAlign);
+
+}
+
+wxSize GridCellButtonRenderer::GetBestSize(wxGrid &grid, wxGridCellAttr &attr, wxDC &dc, int row, int col)
+{
+	wxString text = grid.GetCellValue(row, col);
+	dc.SetFont(attr.GetFont());
+	return dc.GetTextExtent(text);
+}
+
+wxGridCellRenderer *GridCellButtonRenderer::Clone() const
+{
+	return new GridCellButtonRenderer(m_strLabel);
+}
+
+void GridCellButtonRenderer::SetTextColoursAndFont(const wxGrid& grid, const wxGridCellAttr& attr, wxDC& dc, bool isSelected)
+{
+	dc.SetBackgroundMode(wxBRUSHSTYLE_TRANSPARENT);
+
+	// TODO some special colours for attr.IsReadOnly() case?
+
+	// different coloured text when the grid is disabled
+	if (grid.IsThisEnabled())
+	{
+		if (isSelected)
+		{
+			wxColour clr;
+			if (grid.HasFocus())
+				clr = grid.GetSelectionBackground();
+			else
+				clr = wxSystemSettings::GetColour(wxSYS_COLOUR_BTNSHADOW);
+			dc.SetTextBackground(clr);
+			dc.SetTextForeground(grid.GetSelectionForeground());
+		}
+		else
+		{
+			dc.SetTextBackground(attr.GetBackgroundColour());
+			dc.SetTextForeground(attr.GetTextColour());
+		}
+	}
+	else
+	{
+		dc.SetTextBackground(wxSystemSettings::GetColour(wxSYS_COLOUR_BTNFACE));
+		dc.SetTextForeground(wxSystemSettings::GetColour(wxSYS_COLOUR_GRAYTEXT));
+	}
+
+	dc.SetFont(attr.GetFont());
+}
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////
+
+GridCellButtonEditor::GridCellButtonEditor(wxString label)
+{
+	m_strLabel = label;
+	m_button_width = BUTTON_WIDTH
+}
+
+GridCellButtonEditor::~GridCellButtonEditor(void)
+{
+}
+
+void GridCellButtonEditor::Create(wxWindow *parent, wxWindowID id, wxEvtHandler* pEvtHandler)
+{
+	m_parent = parent;
+	m_pButton = new wxButton(parent, id, m_strLabel);
+	SetControl(m_pButton);
+	m_pButton->Connect(wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler(GridCellButtonEditor::OnButton));
+}
+
+void GridCellButtonEditor::OnButton(wxCommandEvent &evt)
+{
+//	wxMessageBox("Button pushed");
+//	VariableGridData *vgd = static_cast<VariableGridData *>(m_grid->GetTable());
+//	VariablePopupEditor *vpe = new VariablePopupEditor(m_parent, vgd->GetVarInfo(m_row, m_col), vgd->GetVarValue(m_row, m_col), vgd->GetValue(m_row, 0));
+	evt.Skip();
+}
+
+void GridCellButtonEditor::SetSize(const wxRect &rect)
+{
+	
+	m_pButton->SetSize(rect.x - m_button_width, rect.y, m_button_width + 2, rect.height + 2, wxSIZE_ALLOW_MINUS_ONE);
+}
+
+
+void GridCellButtonEditor::BeginEdit(int row, int col, wxGrid *pGrid)
+{
+	/* event values are not preserved*/
+	m_row = row;
+	m_col = col;
+	m_grid = pGrid;
+	VariableGridData *vgd = static_cast<VariableGridData *>(pGrid->GetTable());
+	m_vpe = new VariablePopupEditor(m_parent, vgd->GetVarInfo(row, col), vgd->GetVarValue(row, col), vgd->GetValue(row, 0));
+	wxGridEvent evt(wxID_ANY, wxEVT_GRID_CELL_LEFT_CLICK, pGrid, row, col);
+	wxPostEvent(m_pButton, wxCommandEvent(wxEVT_COMMAND_BUTTON_CLICKED));
+}
+
+bool GridCellButtonEditor::EndEdit(int row, int col, const wxGrid *grid, const wxString &oldval, wxString *newval)
+{
+	return true;
+}
+
+void GridCellButtonEditor::ApplyEdit(int row, int col, wxGrid *grid)
+{
+
+}
+
+void GridCellButtonEditor::Reset()
+{
+}
+
+wxString GridCellButtonEditor::GetValue() const
+{
+	return wxEmptyString;
+}
+
+wxGridCellEditor *GridCellButtonEditor::Clone() const
+{
+	return new GridCellButtonEditor(m_strLabel);
+}
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////
+
+BEGIN_EVENT_TABLE(VariableGrid, wxGrid)
+EVT_GRID_CELL_LEFT_CLICK(VariableGrid::OnLeftClick)
+END_EVENT_TABLE()
+
+VariableGrid::
+VariableGrid(wxWindow *parent, wxWindowID id, const wxPoint &pos, const wxSize &size, long style, const wxString &name)
+: wxGrid(parent, id, pos, size, style, name)
+{
+}
+
+VariableGrid::
+~VariableGrid()
+{
+}
+
+void VariableGrid::
+OnLeftClick(wxGridEvent &evt)
+{
+	SetGridCursor(evt.GetRow(), evt.GetCol());
+	evt.Skip();
+}
+////////////////////////////////////////////////////////////////////////////////////////
+
+VariablePopupEditor::VariablePopupEditor(wxWindow *parent, VarInfo *vi, VarValue *vv, wxString &var_name)
+: wxFrame(parent, wxID_ANY, "Variable Editor", wxDefaultPosition, wxSize(400, 700)), m_vi(vi), m_vv(vv), m_var_name(var_name)
+{
+	if (!m_vi || !m_vv) return;
+	m_form_data = new wxUIFormData;
+
+	m_form_data->Attach(this);
+	SetClientSize(m_form_data->GetSize());
+
+	Init();
+	SetTitle("Variable editor for: " + var_name);
+#ifdef __WXMSW__
+	SetIcon(wxICON(appicon));
+#endif	
+	CenterOnParent();
+	Show();
+
+}
+
+VariablePopupEditor::~VariablePopupEditor()
+{
+	m_form_data->Detach();
+	delete m_form_data;
+}
+
+
+void VariablePopupEditor::Init()
+{
+	// TODO get editor name from VarInfo and create appropriate editor
+	// 	e.g.	wxUIObject *obj = m_form_data->Create(vi->Editor, GetClientSize(), m_var_name);
+	if (m_vv->Type() == VV_MATRIX)
+	{
+		wxUIObject *obj = m_form_data->Create("DataMatrix", GetClientSize(), m_var_name);
+		DataExchange(obj, *m_vv, VAR_TO_OBJ);
+	}
+
+}
+
+
+// ActiveInputPage code repeated here! TODO - update
+bool VariablePopupEditor::DataExchange(wxUIObject *obj, VarValue &val, DdxDir dir)
+{
+	if (wxNumericCtrl *num = obj->GetNative<wxNumericCtrl>())
+	{
+		if (dir == VAR_TO_OBJ)	num->SetValue(val.Value());
+		else val.Set(num->Value());
+	}
+	else if (wxItemContainerImmutable *ici = obj->GetNative<wxItemContainerImmutable>())
+	{
+		// handles:  wxListBox, wxCheckListBox, wxChoice and wxComboBox
+		if (dir == VAR_TO_OBJ)
+		{
+			if (val.Type() == VV_STRING) ici->SetStringSelection(val.String());
+			else ici->SetSelection(val.Integer());
+		}
+		else
+		{
+			if (val.Type() == VV_STRING) val.Set(ici->GetStringSelection());
+			else val.Set(ici->GetSelection());
+		}
+	}
+	else if (wxCheckBox *chk = obj->GetNative<wxCheckBox>())
+	{
+		if (dir == VAR_TO_OBJ) chk->SetValue(val.Integer() ? true : false);
+		else val.Set(chk->GetValue() ? 1 : 0);
+	}
+	else if (wxRadioChoice *rdc = obj->GetNative<wxRadioChoice>())
+	{
+		if (dir == VAR_TO_OBJ) rdc->SetSelection(val.Integer());
+		else val.Set(rdc->GetSelection());
+	}
+	else if (wxTextCtrl *txt = obj->GetNative<wxTextCtrl>())
+	{
+		if (dir == VAR_TO_OBJ) txt->SetValue(val.String());
+		else val.Set(txt->GetValue());
+	}
+	else if (wxSlider *sli = obj->GetNative<wxSlider>())
+	{
+		if (dir == VAR_TO_OBJ) sli->SetValue(val.Integer());
+		else val.Set(sli->GetValue());
+	}
+	else if (AFSchedNumeric *sn = obj->GetNative<AFSchedNumeric>())
+	{
+		if (dir == VAR_TO_OBJ)
+		{
+			std::vector<float> vals = val.Array();
+			bool bScheduleOnly = obj->Property("ScheduleOnly").GetBoolean();
+			if (!bScheduleOnly)
+				sn->UseSchedule(vals.size() > 1);
+			else
+				sn->UseSchedule(true);
+
+			if (vals.size() > 0)
+			{
+				sn->SetValue(vals[0]);
+				if (vals.size() > 1)
+					sn->SetSchedule(vals);
+			}
+		}
+		else
+		{
+			std::vector<float> vals;
+			if ((sn->UseSchedule()) || (sn->ScheduleOnly()))
+				sn->GetSchedule(&vals);
+			else
+				vals.push_back(sn->GetValue());
+
+			val.Set(&vals[0], vals.size());
+		}
+	}
+	else if (PTLayoutCtrl *pt = obj->GetNative<PTLayoutCtrl>())
+	{
+		if (dir == VAR_TO_OBJ)
+		{
+			VarTable &tab = val.Table();
+			if (VarValue *v = tab.Get("grid")) pt->SetGrid(v->Matrix());
+			if (VarValue *v = tab.Get("span")) pt->SetSpanAngle(v->Value());
+		}
+		else
+		{
+			VarTable tab;
+			tab.Set("grid", VarValue(pt->GetGrid()));
+			tab.Set("span", VarValue((float)pt->GetSpanAngle()));
+			val.Set(tab);
+		}
+	}
+	else if (MatPropCtrl *mp = obj->GetNative<MatPropCtrl>())
+	{
+		if (dir == VAR_TO_OBJ) mp->SetData(val.Matrix());
+		else val.Set(mp->GetData());
+	}
+	else if (TRLoopCtrl *tr = obj->GetNative<TRLoopCtrl>())
+	{
+		if (dir == VAR_TO_OBJ) tr->LoopData(val.IntegerArray());
+		else val.Set(tr->LoopData());
+	}
+	else if (AFMonthlyFactorCtrl *mf = obj->GetNative<AFMonthlyFactorCtrl>())
+	{
+		if (dir == VAR_TO_OBJ) mf->Set(val.Array());
+		else val.Set(mf->Get());
+	}
+	else if (AFDataArrayButton *da = obj->GetNative<AFDataArrayButton>())
+	{
+		if (dir == VAR_TO_OBJ) da->Set(val.Array());
+		else val.Set(da->Get());
+	}
+	else if (AFDataMatrixCtrl *dm = obj->GetNative<AFDataMatrixCtrl>())
+	{
+		if (dir == VAR_TO_OBJ) dm->SetData(val.Matrix());
+		else val.Set(dm->GetData());
+	}
+	else if (AFMonthByHourFactorCtrl *dm = obj->GetNative<AFMonthByHourFactorCtrl>())
+	{
+		if (dir == VAR_TO_OBJ) dm->SetData(val.Matrix());
+		else val.Set(dm->GetData());
+	}
+	else if (ShadingButtonCtrl *sb = obj->GetNative<ShadingButtonCtrl>())
+	{
+		if (dir == VAR_TO_OBJ) sb->Read(&val);
+		else sb->Write(&val);
+	}
+	else if (AFValueMatrixButton *vm = obj->GetNative<AFValueMatrixButton>())
+	{
+		if (dir == VAR_TO_OBJ) vm->Set(val.Matrix());
+		else val.Set(vm->Get());
+	}
+	else if (AFSearchListBox *slb = obj->GetNative<AFSearchListBox>())
+	{
+		if (dir == VAR_TO_OBJ)
+		{
+			if (!slb->SetStringSelection(val.String()))
+				wxMessageBox("Error: the selection '" + val.String() + "' was not found in the available choices.");
+		}
+		else val.Set(slb->GetStringSelection());
+	}
+	else if (LibraryCtrl *ll = obj->GetNative<LibraryCtrl>())
+	{
+		if (dir == VAR_TO_OBJ)
+		{
+			if (!ll->SetEntrySelection(val.String()))
+				wxMessageBox("Error: the selection '" + val.String() + "' was not found in the available choices.");
+		}
+		else val.Set(ll->GetEntrySelection());
+	}
+	else if (AFHourlyFactorCtrl *hf = obj->GetNative<AFHourlyFactorCtrl>())
+	{
+		if (dir == VAR_TO_OBJ) hf->Read(&val);
+		else hf->Write(&val);
+	}
+	else if (wxDiurnalPeriodCtrl *dp = obj->GetNative<wxDiurnalPeriodCtrl>())
+	{
+		if (val.Type() == VV_STRING)
+		{
+			if (dir == VAR_TO_OBJ) dp->Schedule(val.String());
+			else val.Set(dp->Schedule());
+		}
+		else if (val.Type() == VV_MATRIX)
+		{
+			float *p;
+			size_t nr, nc;
+
+			if (dir == VAR_TO_OBJ)
+			{
+				p = val.Matrix(&nr, &nc);
+				dp->SetData(p, nr, nc);
+			}
+			else
+			{
+				p = dp->GetData(&nr, &nc);
+				val.Set(p, nr, nc);
+			}
+		}
+	}
+	else return false; // object data exch not handled for this type
+
+	return true;  // all ok!
+}
+
+
+////////////////////////////////////////////////////////////////////////////////////////
+
 enum {
 	__idFirst = wxID_HIGHEST + 992,
 	ID_SHOW_DIFFERENT, ID_SHOW_SAME, ID_SHOW_ALL
@@ -379,7 +849,7 @@ BEGIN_EVENT_TABLE(VariableGridFrame, wxFrame)
 	EVT_GRID_COL_SORT(VariableGridFrame::OnGridColSort)
 END_EVENT_TABLE()
 
-VariableGridFrame::VariableGridFrame(wxWindow *parent, ProjectFile *pf, Case *c) : wxFrame(parent, wxID_ANY, "Variable Grid", wxDefaultPosition, wxSize(400, 700)), m_pf(pf)
+VariableGridFrame::VariableGridFrame(wxWindow *parent, ProjectFile *pf, Case *c) : wxFrame(parent, wxID_ANY, "Variable Grid", wxDefaultPosition, wxSize(800, 700)), m_pf(pf)
 {
 	
 	if (!m_pf) return;
@@ -405,13 +875,11 @@ VariableGridFrame::VariableGridFrame(wxWindow *parent, ProjectFile *pf, Case *c)
 
 		m_griddata = new VariableGridData(m_pf, c);
 
-		m_grid = new wxGrid(this, wxID_ANY);
+		m_grid = new VariableGrid(this, wxID_ANY);
 
-
-
-
-//		m_grid->UseNativeColHeader(); // does not load correctly
+		//		m_grid->UseNativeColHeader(); // does not load correctly
 		m_grid->RegisterDataType("autowrapstring", new wxGridCellAutoWrapStringRenderer, new wxGridCellAutoWrapStringEditor);
+		m_grid->RegisterDataType("gridcellbutton", new GridCellButtonRenderer("..."), new GridCellButtonEditor("..."));
 		m_grid->HideRowLabels();
 
 
@@ -463,6 +931,13 @@ VariableGridFrame::VariableGridFrame(wxWindow *parent, ProjectFile *pf, Case *c)
 #endif	
 	CenterOnParent();
 	Show();
+}
+
+VariableGridFrame::~VariableGridFrame()
+{
+	for (std::vector<Case*>::iterator it = m_cases.begin(); it != m_cases.end(); ++it)
+		if (*it) (*it)->RemoveListener(this);
+	if (m_pf) m_pf->RemoveListener(this);
 }
 
 void VariableGridFrame::OnGridColSort(wxGridEvent& event)

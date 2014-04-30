@@ -47,7 +47,7 @@ void ProjectFile::ClearListeners()
 void ProjectFile::SendEvent(ProjectFileEvent e)
 {
 	for (size_t i = 0; i<m_listeners.size(); i++)
-		m_listeners[i]->OnProjectFileEvent(this, e);
+		if (m_listeners[i])	m_listeners[i]->OnProjectFileEvent(this, e);
 }
 
 
