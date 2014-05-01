@@ -142,10 +142,10 @@ private:
 };
 
 
-class VConicalTreeObject : public VObject
+class VTreeObject : public VObject
 {
 public:
-	VConicalTreeObject();
+	VTreeObject();
 	virtual wxString GetTypeName();
 	virtual VObject *Duplicate();
 	virtual void BuildModel( s3d::scene & );
@@ -156,27 +156,10 @@ public:
 
 	enum { HH_MOVE, HH_DIAM, HH_TOPDIAM, HH_TRUNK, HH_HEIGHT };
 
-private:
-	static const int m_nPoints = 9; // number of points to draw with
-	void GetXZPoints( double x[m_nPoints], double z[m_nPoints] );
-};
-
-class VRoundTreeObject : public VObject
-{
-public:
-	VRoundTreeObject();
-	virtual wxString GetTypeName();
-	virtual VObject *Duplicate();
-	virtual void BuildModel( s3d::scene & );
-	virtual void SetupHandles( VPlaneType plane );
-	virtual bool OnHandleMoved( VHandle *, VPlaneType );	
-	virtual void DrawOnPlane( VRenderer2D &dc, VPlaneType plane );	
-	virtual bool IsWithin( double x, double y, VPlaneType plane );
+	enum { ROUNDED, CONICAL };
 
 private:
-	enum { HH_MOVE, HH_DIAM, HH_HEIGHT };
-	void GetXZPoints( double x[10], double z[10] );
-
+	size_t GetXZPoints( double x[10], double z[10] );
 };
 
 

@@ -16,7 +16,7 @@ class MyFrame : public wxFrame
 public:
 	ShadeTool *m_shade;
 
-	MyFrame() : wxFrame( 0, wxID_ANY, "Shade Calculator v0.9", wxDefaultPosition, 
+	MyFrame() : wxFrame( 0, wxID_ANY, "SAM Shade Calculator - Beta (2014.05.01)", wxDefaultPosition, 
 		wxSize(1100,700) )
 	{
 		SetIcon( wxICON( appicon ) );
@@ -68,7 +68,7 @@ public:
 		
 		m_locale.Init();
 
-		SetAppName( "Shade Calculator" );
+		SetAppName( "SAM Shade Calculator" );
 		SetVendorName( "NREL" );
 
 		for( int i=0;i<argc;i++ )

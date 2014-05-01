@@ -151,8 +151,8 @@ View3D::View3D( wxWindow *parent, int id, const wxPoint &pos, const wxSize &size
 	RegisterType( new VBoxObject );
 	RegisterType( new VCylinderObject );
 	RegisterType( new VRoofObject );
-	RegisterType( new VRoundTreeObject );
-	RegisterType( new VConicalTreeObject );
+	RegisterType( new VTreeObject );
+	//RegisterType( new VConicalTreeObject );
 
 	m_scene.basic_axes_with_ground();
 		
@@ -231,7 +231,7 @@ void View3D::CreateStaticDemoScene()
 	Refresh();
 }
 
-void linspace( double *v, size_t N, double start, double end )
+static void linspace( double *v, size_t N, double start, double end )
 {
 	double step = (end-start)/N;
 	for ( size_t i=0;i<N;i++ )

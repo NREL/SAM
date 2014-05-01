@@ -422,7 +422,7 @@ void VHandle::MoveTo( double x, double yz )
 }
 
 
-VConicalTreeObject::VConicalTreeObject()
+VTreeObject::VTreeObject()
 {
 	AddProperty( "X", new VProperty( 0.0, LENGTH ) );
 	AddProperty( "Y", new VProperty( 0.0, LENGTH ) );
@@ -430,37 +430,65 @@ VConicalTreeObject::VConicalTreeObject()
 	AddProperty( "Height", new VProperty( 66.0, LENGTH ) );
 	AddProperty( "Top Diameter", new VProperty( 8.0, LENGTH ) );
 	AddProperty( "Trunk Height", new VProperty( 10.0, LENGTH ) );
+	wxArrayString shapes;
+	shapes.Add( "Rounded" );
+	shapes.Add( "Conical" );
+	AddProperty( "Shape", new VProperty( ROUNDED, shapes ) );
 }
 
-wxString VConicalTreeObject::GetTypeName()
+wxString VTreeObject::GetTypeName()
 {
-	return "Tree, conical";
+	return "Tree";
 }
 
-VObject *VConicalTreeObject::Duplicate()
+VObject *VTreeObject::Duplicate()
 {
-	VConicalTreeObject *tree = new VConicalTreeObject;
+	VTreeObject *tree = new VTreeObject;
 	tree->Copy( this );
 	return tree;
 }
 
-void VConicalTreeObject::BuildModel( s3d::scene &sc )
+void VTreeObject::BuildModel( s3d::scene &sc )
 {
-	double x = Property("X").GetDouble();
-	double y = Property("Y").GetDouble();
-	double diam = Property("Diameter").GetDouble();
-	double topDiam = Property("Top Diameter").GetDouble();
-	double height = Property("Height").GetDouble();
-	double trunk = Property("Trunk Height").GetDouble();
+	int shape = Property("Shape").GetInteger();
+	double X = Property("X").GetDouble();
+	double Y = Property("Y").GetDouble();
+	double D = Property("Diameter").GetDouble();
+	double H = Property("Height").GetDouble();
+	double TD = Property("Top Diameter").GetDouble();
+	double TH = Property("Trunk Height").GetDouble();
+	double TRR = D/8;
 
-	sc.reset();
-	sc.colors(s3d::rgba(128, 64, 0, 155), s3d::rgba(128, 64, 0, 155));
-	sc.conical(GetId(), x, y, 0, trunk, diam / 6, diam / 6, 10, true, false);
-	sc.colors( s3d::rgba(0, 186, 107, 155 ), s3d::rgba(0, 186, 107, 155 ) );
-	sc.conical( GetId(), x, y, trunk, height-trunk, diam/2, topDiam/2, 10, true, true );
+	static const s3d::rgba ctrunk(128, 64, 0, 155);
+	static const s3d::rgba cfoliage(0, 186, 107, 155 );
+
+	if ( shape == ROUNDED )
+	{
+		int id = GetId();
+
+		sc.reset();
+		sc.colors( ctrunk, ctrunk );
+		sc.conical( id, X, Y, 0, TH, TRR, TRR, 10, true, false);
+
+		double TREMU = (H - TH)/5;
+
+		sc.colors( cfoliage, cfoliage );
+		sc.conical( id, X, Y, TH, TREMU, TRR, D/2, 10, false, false );
+		sc.conical( id, X, Y, TH+TREMU, TREMU*3, D/2, D/2, 10, false, false );
+		sc.conical( id, X, Y, H-TREMU, TREMU, D/2, TD/2, 10, false, true );
+	}
+	else
+	{
+
+		sc.reset();
+		sc.colors( ctrunk, ctrunk );
+		sc.conical(GetId(), X, Y, 0, TH, D / 6, D / 6, 10, true, false);
+		sc.colors( cfoliage, cfoliage );
+		sc.conical( GetId(), X, Y, TH, H-TH, D/2, TD/2, 10, true, true );
+	}
 }
 
-void VConicalTreeObject::SetupHandles( VPlaneType plane )
+void VTreeObject::SetupHandles( VPlaneType plane )
 {	
 	double xc = Property("X").GetDouble();
 	double diam = Property("Diameter").GetDouble();
@@ -487,7 +515,7 @@ void VConicalTreeObject::SetupHandles( VPlaneType plane )
 	}
 }
 
-bool VConicalTreeObject::OnHandleMoved( VHandle *h, VPlaneType plane )
+bool VTreeObject::OnHandleMoved( VHandle *h, VPlaneType plane )
 {
 	int id = h->GetId();
 	if ( id == HH_MOVE )
@@ -529,57 +557,106 @@ bool VConicalTreeObject::OnHandleMoved( VHandle *h, VPlaneType plane )
 	return false;
 }
 
-void VConicalTreeObject::GetXZPoints( double x[m_nPoints], double z[m_nPoints] )
+size_t VTreeObject::GetXZPoints( double x[10], double z[10] )
 {
-	double xc = Property("X").GetDouble();
-	double diam = Property("Diameter").GetDouble();
-	double trunk = Property("Trunk Height").GetDouble();
-	double height = Property("Height").GetDouble();
-	double top_diam = Property("Top Diameter").GetDouble();
+	int shape = Property("Shape").GetInteger();
+	double X = Property("X").GetDouble();
+	double Y = Property("Y").GetDouble();
+	double D = Property("Diameter").GetDouble();
+	double H = Property("Height").GetDouble();
+	double TD = Property("Top Diameter").GetDouble();
+	double TH = Property("Trunk Height").GetDouble();
+	double TRR = D/8;
+	
+	if ( ROUNDED == shape )
+	{		
+		double TREMU = (H-TH)/5;
 
+		// left top
+		x[0] = X-TD/2;
+		z[0] = H;
 
-	double skirt_radius = diam/2;
-	double trunk_radius = diam/6;
-	double top_radius = top_diam/2;
+		// left upper
+		x[1] = X-D/2;
+		z[1] = H-TREMU;
 
-	// top point
-	x[0] = xc;
-	z[0] = height;
+		// left lower
+		x[2] = X-D/2;
+		z[2] = TH+TREMU;
 
-	// top left point
-	x[1] = xc-top_radius;
-	z[1] = height;
+		// left inner
+		x[3] = X-TRR;
+		z[3] = TH;
 
-	// left point
-	x[2] = xc-skirt_radius;
-	z[2] = trunk;
+		// left bottom
+		x[4] = X-TRR;
+		z[4] = 0;
 
-	// inner left point
-	x[3] = xc-trunk_radius;
-	z[3] = trunk;
+		// right bottom
+		x[5] = X+TRR;
+		z[5] = 0;
 
-	// bottom left point
-	x[4] = xc-trunk_radius;
-	z[4] = 0.0;
+		// right inner
+		x[6] = X+TRR;
+		z[6] = TH;
 
-	// bottom right point
-	x[5] = xc+trunk_radius;
-	z[5] = 0.0;
+		// right lower
+		x[7] = X+D/2;
+		z[7] = TH+TREMU;
 
-	// inner right point
-	x[6] = xc+trunk_radius;
-	z[6] = trunk;
+		// right upper
+		x[8] = X+D/2;
+		z[8] = H-TREMU;
 
-	// right point
-	x[7] = xc+skirt_radius;
-	z[7] = trunk;
+		// right top
+		x[9] = X+TD/2;
+		z[9] = H;
 
-	// top right point
-	x[8] = xc+top_radius;
-	z[8] = height;
+		return 10;
+	}
+	else
+	{	// Conical Tree
+		
+		// top left point
+		x[0] = X-TD/2;
+		z[0] = H;
+
+		// left point
+		x[1] = X-D/2;
+		z[1] = TH;
+
+		// inner left point
+		x[2] = X-TRR;
+		z[2] = TH;
+
+		// bottom left point
+		x[3] = X-TRR;
+		z[3] = 0.0;
+
+		// bottom right point
+		x[4] = X+TRR;
+		z[4] = 0.0;
+
+		// inner right point
+		x[5] = X+TRR;
+		z[5] = TH;
+
+		// right point
+		x[6] = X+D/2;
+		z[6] = TH;
+
+		if ( TD > 0 )
+		{
+			// top right point
+			x[7] = X+TD/2;
+			z[7] = H;
+		}
+				
+		return TD > 0 ? 8 : 7;
+	}
 }
 
-void VConicalTreeObject::DrawOnPlane( VRenderer2D &dc, VPlaneType plane )
+void VTreeObject::DrawOnPlane( VRenderer2D &dc, VPlaneType plane )
 {
 
 	if ( plane == PLANE_XY )
@@ -594,13 +671,13 @@ void VConicalTreeObject::DrawOnPlane( VRenderer2D &dc, VPlaneType plane )
 	}
 	else if ( plane == PLANE_XZ )
 	{		
-		double x[m_nPoints], z[m_nPoints];
-		GetXZPoints( x, z );
-		dc.Poly( x, z, m_nPoints );
+		double x[10], z[10];
+		size_t n = GetXZPoints( x, z );
+		dc.Poly( x, z, n );
 	}
 }
 
-bool VConicalTreeObject::IsWithin( double x, double y, VPlaneType plane )
+bool VTreeObject::IsWithin( double x, double y, VPlaneType plane )
 {
 	if ( plane == PLANE_XY )
 	{
@@ -612,13 +689,14 @@ bool VConicalTreeObject::IsWithin( double x, double y, VPlaneType plane )
 	}
 	else
 	{
-		double XX[m_nPoints], ZZ[m_nPoints];
-		GetXZPoints( XX, ZZ );
-		return s3d::inpoly( XX, ZZ, m_nPoints, x, y );
+		double XX[10], ZZ[10];
+		size_t n = GetXZPoints( XX, ZZ );
+		return s3d::inpoly( XX, ZZ, n, x, y );
 	}
 }
 
 
+/*
 
 VRoundTreeObject::VRoundTreeObject()
 {
@@ -757,56 +835,7 @@ bool VRoundTreeObject::IsWithin( double x, double y, VPlaneType plane )
 
 	return false;
 }
-
-void VRoundTreeObject::GetXZPoints( double x[10], double z[10] )
-{
-	double X = Property("X").GetDouble();
-	double D = Property("Diameter").GetDouble();
-	double H = Property("Height").GetDouble();
-	double TRr = D/8;
-	double R = D/2;
-
-	// left top
-	x[0] = X-TRr;
-	z[0] = H;
-
-	// left upper
-	x[1] = X-R;
-	z[1] = 5*H/6;
-
-	// left lower
-	x[2] = X-R;
-	z[2] = H/3;
-
-	// left inner
-	x[3] = X-TRr;
-	z[3] = H/6;
-
-	// left bottom
-	x[4] = X-TRr;
-	z[4] = 0;
-
-	// right bottom
-	x[5] = X+TRr;
-	z[5] = 0;
-
-	// right inner
-	x[6] = X+TRr;
-	z[6] = H/6;
-
-	// right lower
-	x[7] = X+R;
-	z[7] = H/3;
-
-	// right upper
-	x[8] = X+R;
-	z[8] = 5*H/6;
-
-	// right top
-	x[9] = X+TRr;
-	z[9] = H;
-
-}
+*/
 
 VBoxObject::VBoxObject()
 {

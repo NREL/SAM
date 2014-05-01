@@ -1068,7 +1068,7 @@ void ShadeAnalysis::OnGenerateDiurnal( wxCommandEvent & )
 
 
 enum { ID_SLIDER = wxID_HIGHEST+441, ID_LAST_SLIDER = ID_SLIDER+100, 
-	ID_LOCATION, ID_CREATE, ID_GRAPHICS, ID_ANALYSIS, ID_VIEW_XYZ, ID_VIEW_XY, ID_VIEW_XZ,
+	ID_LOCATION, ID_CREATE, ID_GRAPHICS, ID_ANALYSIS, ID_VIEW_XYZ, ID_VIEW_XY, ID_VIEW_XZ, ID_FEEDBACK,
 	ID_OBJECT_ID, ID_OBJECT_IDMAX=ID_OBJECT_ID+100,
 
 	// debugging
@@ -1089,6 +1089,7 @@ BEGIN_EVENT_TABLE( ShadeTool, wxPanel )
 	EVT_BUTTON( ID_VIEW_XYZ, ShadeTool::OnCommand )
 	EVT_BUTTON( ID_VIEW_XY, ShadeTool::OnCommand )
 	EVT_BUTTON( ID_VIEW_XZ, ShadeTool::OnCommand )
+	EVT_BUTTON( ID_FEEDBACK, ShadeTool::OnCommand )
 	EVT_BUTTON( wxID_HELP, ShadeTool::OnCommand )
 	
 
@@ -1120,6 +1121,7 @@ ShadeTool::ShadeTool( wxWindow *parent, int id, const wxString &data_path )
 	sizer_tool->Add( new wxMetroButton( this, ID_ANALYSIS, "Analyze" ), 0, wxALL|wxEXPAND, 0 );
 	
 	sizer_tool->AddStretchSpacer();
+	sizer_tool->Add( new wxMetroButton( this, ID_FEEDBACK, "Feedback" ), 0, wxALL|wxEXPAND, 0 );
 	sizer_tool->Add( new wxMetroButton( this, wxID_HELP, "Help" ), 0, wxALL|wxEXPAND, 0 );
 	
 	m_book = new wxSimplebook( this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxBORDER_NONE );
@@ -1318,6 +1320,9 @@ void ShadeTool::OnCommand( wxCommandEvent &evt)
 	case ID_VIEW_XYZ: m_book->SetSelection( PG_SCENE ); m_view->SetMode( m_view->SPIN_VIEW ); break;
 	case ID_VIEW_XY: m_book->SetSelection( PG_SCENE ); m_view->SetMode( m_view->TOP_VIEW ); break;
 	case ID_VIEW_XZ: m_book->SetSelection( PG_SCENE ); m_view->SetMode( m_view->Z_VIEW ); break;
+	case ID_FEEDBACK:
+		wxLaunchDefaultBrowser( "mailto://sam.support@nrel.gov?subject=Shade Calculator - Beta Feedback" );
+		break;
 	case wxID_HELP:
 		m_book->SetSelection( PG_HELP );
 		break;
