@@ -14,8 +14,8 @@ ArchitecturesAllowed=x86 x64 ia64
 ArchitecturesInstallIn64BitMode=x64 ia64
 
 ; UPDATE THESE TO MATCH THE VERSION
-AppVerName=SAM Shade Calculator v0.9
-DefaultDirName={sd}\SAM\ShadeCalculator-v0.9
+AppVerName=SAM Shade Calculator - Beta (2014.5.1)
+DefaultDirName={sd}\SAM\ShadeCalculator-beta-2014.5.1
 
 AppPublisher=National Renewable Energy Laboratory
 AppPublisherURL=http://sam.nrel.gov
