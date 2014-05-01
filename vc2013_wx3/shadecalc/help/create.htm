@@ -43,12 +43,12 @@
 <p class="p_Text"><span class="f_Text">An active surface is a surface that is shaded by the shading objects. For photovoltaic systems, the active surface is the photovoltaic array. Active surfaces can be rectangular or triangular in shape.</span></p>
 <p class="p_ImageCaption"><span class="f_ImageCaption">A Building with Two Rectangular Active Surfaces in 3D Scene View </span><br />
 <span class="f_ImageCaption">and Properties of the South Facing Surface</span></p>
-<p class="p_ImageCaption"><img src="ss-properties-active-surface.png" width="495" height="232" alt="ss-properties-active-surface" style="border:none" /></p>
+<p class="p_ImageCaption"><img src="ss-properties-active-surface.png" width="446" height="216" alt="ss-properties-active-surface" style="border:none" /></p>
 <p class="p_Item"><span class="f_Item">Name</span></p>
 <p class="p_Description"><span class="f_Description">Descriptive name for the active surface to help you identify it. Does not affect shade analysis.</span></p>
 <p class="p_Item"><span class="f_Item">Group</span></p>
 <p class="p_Description"><span class="f_Description">For scenes with more than one active surface, the shade analysis will calculate a diurnal table for each named group. For scenes with a single active surface, the group name can be empty. See <a href="generate-data.htm" class="topiclink">Generating shade data</a> for details.</span></p>
-<p class="p_Description"><span class="f_Description">For example, for the scene above, the south subarray's group name is subarray 1 (shown), and the east subarray's group name is subarray 2. <a href="generate-data.htm" class="topiclink">Running a shade analysis</a> on this scene would result in three diurnal shade factor tables: One for the entire array (both subarrays), one for the south subarray, and one for the east subarray. This is designed to work with the subarray inputs in SAM.</span></p>
+<p class="p_Description"><span class="f_Description">For example, for the scene above, the south subarray's group name is subarray 1 (shown), and the east subarray's group name is subarray 2, and it consists of two active surfaces that both have the group name subarray 2: The top triangle and the bottom rectangle. <a href="generate-data.htm" class="topiclink">Running a shade analysis</a> on this scene would result in three diurnal shade factor tables: One for the entire array (both subarrays), one for the south subarray, and one for the east subarray. This is designed to work with the subarray inputs in SAM.</span></p>
 <p class="p_Item"><span class="f_Item">X, Y, Z</span></p>
 <p class="p_Description"><span class="f_Description">The X, Y, and Z coordinates of the bottom left corner of the active surface.</span></p>
 <p class="p_Item"><span class="f_Item">Width</span></p>
@@ -62,7 +62,7 @@
 <h2 class="p_Heading2" style="border-top: none; border-right: none; border-left: none;"><span class="f_Heading2">Box</span></h2>
 <p class="p_Text"><span class="f_Text">A box shading object is a rectangular solid with either six sides or four sides. Use it to represent buildings, chimneys, parapets, enclosures, and other structures.</span></p>
 <p class="p_ImageCaption"><span class="f_ImageCaption">Examples of Box Shading Objects with Properties and in 3D Scene View</span></p>
-<p class="p_ImageCaption"><img src="ss-properties-boxes.png" width="570" height="289" alt="ss-properties-boxes" style="border:none" /></p>
+<p class="p_ImageCaption"><img src="ss-properties-boxes.png" width="400" height="236" alt="ss-properties-boxes" style="border:none" /></p>
 <p class="p_Item"><span class="f_Item">Name</span></p>
 <p class="p_Description"><span class="f_Description">Descriptive name for the box to you identify it. Does not affect shade analysis.</span></p>
 <p class="p_Item"><span class="f_Item">X, Y, Z</span></p>
