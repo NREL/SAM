@@ -88,15 +88,13 @@ private:
 	int m_button_width;
 };
 
-class VariablePopupEditor : public wxFrame
+class VariablePopupEditor : public wxDialog
 {
 public:
 	VariablePopupEditor(wxWindow *parent, VarInfo *vi, VarValue *vv, wxString &var_name);
 	~VariablePopupEditor();
 
 	void Init();
-	enum DdxDir { OBJ_TO_VAR, VAR_TO_OBJ };
-	static bool DataExchange(wxUIObject *obj, VarValue &val, DdxDir dir);
 private:
 	VarInfo *m_vi;
 	VarValue *m_vv;
