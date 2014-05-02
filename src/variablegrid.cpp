@@ -8,6 +8,7 @@
 
 #include "variablegrid.h"
 #include "widgets.h"
+#include "inputpage.h"
 
 #define COMPARE_SHOW_ALL 0
 #define COMPARE_SHOW_DIFFERENT 1
@@ -560,9 +561,15 @@ void GridCellButtonEditor::BeginEdit(int row, int col, wxGrid *pGrid)
 	m_col = col;
 	m_grid = pGrid;
 	VariableGridData *vgd = static_cast<VariableGridData *>(pGrid->GetTable());
-	m_vpe = new VariablePopupEditor(m_parent, vgd->GetVarInfo(row, col), vgd->GetVarValue(row, col), vgd->GetValue(row, 0));
+	VariablePopupEditor vpe(m_parent, vgd->GetVarInfo(row, col), vgd->GetVarValue(row, col), vgd->GetValue(row, 0));
+	if (vpe.ShowModal() == wxID_OK) 
+		// update variable value
+		m_grid = pGrid;
+	else
+		// cancel;
+		m_grid = pGrid;
 	wxGridEvent evt(wxID_ANY, wxEVT_GRID_CELL_LEFT_CLICK, pGrid, row, col);
-	wxPostEvent(m_pButton, wxCommandEvent(wxEVT_COMMAND_BUTTON_CLICKED));
+//	wxPostEvent(m_pButton, wxCommandEvent(wxEVT_COMMAND_BUTTON_CLICKED));
 }
 
 bool GridCellButtonEditor::EndEdit(int row, int col, const wxGrid *grid, const wxString &oldval, wxString *newval)
@@ -617,7 +624,7 @@ OnLeftClick(wxGridEvent &evt)
 ////////////////////////////////////////////////////////////////////////////////////////
 
 VariablePopupEditor::VariablePopupEditor(wxWindow *parent, VarInfo *vi, VarValue *vv, wxString &var_name)
-: wxFrame(parent, wxID_ANY, "Variable Editor", wxDefaultPosition, wxSize(400, 700)), m_vi(vi), m_vv(vv), m_var_name(var_name)
+: wxDialog(parent, wxID_ANY, "Variable Editor", wxDefaultPosition, wxSize(400, 700)), m_vi(vi), m_vv(vv), m_var_name(var_name)
 {
 	if (!m_vi || !m_vv) return;
 	m_form_data = new wxUIFormData;
@@ -631,7 +638,6 @@ VariablePopupEditor::VariablePopupEditor(wxWindow *parent, VarInfo *vi, VarValue
 	SetIcon(wxICON(appicon));
 #endif	
 	CenterOnParent();
-	Show();
 
 }
 
@@ -649,189 +655,9 @@ void VariablePopupEditor::Init()
 	if (m_vv->Type() == VV_MATRIX)
 	{
 		wxUIObject *obj = m_form_data->Create("DataMatrix", GetClientSize(), m_var_name);
-		DataExchange(obj, *m_vv, VAR_TO_OBJ);
+		ActiveInputPage::DataExchange(obj, *m_vv, ActiveInputPage::VAR_TO_OBJ);
 	}
 
-}
-
-
-// ActiveInputPage code repeated here! TODO - update
-bool VariablePopupEditor::DataExchange(wxUIObject *obj, VarValue &val, DdxDir dir)
-{
-	if (wxNumericCtrl *num = obj->GetNative<wxNumericCtrl>())
-	{
-		if (dir == VAR_TO_OBJ)	num->SetValue(val.Value());
-		else val.Set(num->Value());
-	}
-	else if (wxItemContainerImmutable *ici = obj->GetNative<wxItemContainerImmutable>())
-	{
-		// handles:  wxListBox, wxCheckListBox, wxChoice and wxComboBox
-		if (dir == VAR_TO_OBJ)
-		{
-			if (val.Type() == VV_STRING) ici->SetStringSelection(val.String());
-			else ici->SetSelection(val.Integer());
-		}
-		else
-		{
-			if (val.Type() == VV_STRING) val.Set(ici->GetStringSelection());
-			else val.Set(ici->GetSelection());
-		}
-	}
-	else if (wxCheckBox *chk = obj->GetNative<wxCheckBox>())
-	{
-		if (dir == VAR_TO_OBJ) chk->SetValue(val.Integer() ? true : false);
-		else val.Set(chk->GetValue() ? 1 : 0);
-	}
-	else if (wxRadioChoice *rdc = obj->GetNative<wxRadioChoice>())
-	{
-		if (dir == VAR_TO_OBJ) rdc->SetSelection(val.Integer());
-		else val.Set(rdc->GetSelection());
-	}
-	else if (wxTextCtrl *txt = obj->GetNative<wxTextCtrl>())
-	{
-		if (dir == VAR_TO_OBJ) txt->SetValue(val.String());
-		else val.Set(txt->GetValue());
-	}
-	else if (wxSlider *sli = obj->GetNative<wxSlider>())
-	{
-		if (dir == VAR_TO_OBJ) sli->SetValue(val.Integer());
-		else val.Set(sli->GetValue());
-	}
-	else if (AFSchedNumeric *sn = obj->GetNative<AFSchedNumeric>())
-	{
-		if (dir == VAR_TO_OBJ)
-		{
-			std::vector<float> vals = val.Array();
-			bool bScheduleOnly = obj->Property("ScheduleOnly").GetBoolean();
-			if (!bScheduleOnly)
-				sn->UseSchedule(vals.size() > 1);
-			else
-				sn->UseSchedule(true);
-
-			if (vals.size() > 0)
-			{
-				sn->SetValue(vals[0]);
-				if (vals.size() > 1)
-					sn->SetSchedule(vals);
-			}
-		}
-		else
-		{
-			std::vector<float> vals;
-			if ((sn->UseSchedule()) || (sn->ScheduleOnly()))
-				sn->GetSchedule(&vals);
-			else
-				vals.push_back(sn->GetValue());
-
-			val.Set(&vals[0], vals.size());
-		}
-	}
-	else if (PTLayoutCtrl *pt = obj->GetNative<PTLayoutCtrl>())
-	{
-		if (dir == VAR_TO_OBJ)
-		{
-			VarTable &tab = val.Table();
-			if (VarValue *v = tab.Get("grid")) pt->SetGrid(v->Matrix());
-			if (VarValue *v = tab.Get("span")) pt->SetSpanAngle(v->Value());
-		}
-		else
-		{
-			VarTable tab;
-			tab.Set("grid", VarValue(pt->GetGrid()));
-			tab.Set("span", VarValue((float)pt->GetSpanAngle()));
-			val.Set(tab);
-		}
-	}
-	else if (MatPropCtrl *mp = obj->GetNative<MatPropCtrl>())
-	{
-		if (dir == VAR_TO_OBJ) mp->SetData(val.Matrix());
-		else val.Set(mp->GetData());
-	}
-	else if (TRLoopCtrl *tr = obj->GetNative<TRLoopCtrl>())
-	{
-		if (dir == VAR_TO_OBJ) tr->LoopData(val.IntegerArray());
-		else val.Set(tr->LoopData());
-	}
-	else if (AFMonthlyFactorCtrl *mf = obj->GetNative<AFMonthlyFactorCtrl>())
-	{
-		if (dir == VAR_TO_OBJ) mf->Set(val.Array());
-		else val.Set(mf->Get());
-	}
-	else if (AFDataArrayButton *da = obj->GetNative<AFDataArrayButton>())
-	{
-		if (dir == VAR_TO_OBJ) da->Set(val.Array());
-		else val.Set(da->Get());
-	}
-	else if (AFDataMatrixCtrl *dm = obj->GetNative<AFDataMatrixCtrl>())
-	{
-		if (dir == VAR_TO_OBJ) dm->SetData(val.Matrix());
-		else val.Set(dm->GetData());
-	}
-	else if (AFMonthByHourFactorCtrl *dm = obj->GetNative<AFMonthByHourFactorCtrl>())
-	{
-		if (dir == VAR_TO_OBJ) dm->SetData(val.Matrix());
-		else val.Set(dm->GetData());
-	}
-	else if (ShadingButtonCtrl *sb = obj->GetNative<ShadingButtonCtrl>())
-	{
-		if (dir == VAR_TO_OBJ) sb->Read(&val);
-		else sb->Write(&val);
-	}
-	else if (AFValueMatrixButton *vm = obj->GetNative<AFValueMatrixButton>())
-	{
-		if (dir == VAR_TO_OBJ) vm->Set(val.Matrix());
-		else val.Set(vm->Get());
-	}
-	else if (AFSearchListBox *slb = obj->GetNative<AFSearchListBox>())
-	{
-		if (dir == VAR_TO_OBJ)
-		{
-			if (!slb->SetStringSelection(val.String()))
-				wxMessageBox("Error: the selection '" + val.String() + "' was not found in the available choices.");
-		}
-		else val.Set(slb->GetStringSelection());
-	}
-	else if (LibraryCtrl *ll = obj->GetNative<LibraryCtrl>())
-	{
-		if (dir == VAR_TO_OBJ)
-		{
-			if (!ll->SetEntrySelection(val.String()))
-				wxMessageBox("Error: the selection '" + val.String() + "' was not found in the available choices.");
-		}
-		else val.Set(ll->GetEntrySelection());
-	}
-	else if (AFHourlyFactorCtrl *hf = obj->GetNative<AFHourlyFactorCtrl>())
-	{
-		if (dir == VAR_TO_OBJ) hf->Read(&val);
-		else hf->Write(&val);
-	}
-	else if (wxDiurnalPeriodCtrl *dp = obj->GetNative<wxDiurnalPeriodCtrl>())
-	{
-		if (val.Type() == VV_STRING)
-		{
-			if (dir == VAR_TO_OBJ) dp->Schedule(val.String());
-			else val.Set(dp->Schedule());
-		}
-		else if (val.Type() == VV_MATRIX)
-		{
-			float *p;
-			size_t nr, nc;
-
-			if (dir == VAR_TO_OBJ)
-			{
-				p = val.Matrix(&nr, &nc);
-				dp->SetData(p, nr, nc);
-			}
-			else
-			{
-				p = dp->GetData(&nr, &nc);
-				val.Set(p, nr, nc);
-			}
-		}
-	}
-	else return false; // object data exch not handled for this type
-
-	return true;  // all ok!
 }
 
 
