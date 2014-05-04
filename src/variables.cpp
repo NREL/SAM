@@ -780,7 +780,8 @@ void VarInfo::Write( wxOutputStream &os )
 {
 	wxDataOutputStream out(os);
 	out.Write8( 0xe1 );
-	out.Write8( 2 );
+//	out.Write8(2);
+	out.Write8(3); // change to version 3 after wxString "editor" field added
 
 	out.Write32( Type );
 	out.WriteString( Label );
@@ -789,6 +790,7 @@ void VarInfo::Write( wxOutputStream &os )
 	out.WriteString( wxJoin(IndexLabels, '|') );
 	out.Write32( Flags );
 	DefaultValue.Write( os );
+	out.WriteString(UIObject);
 
 	out.Write8( 0xe1 );
 }
@@ -808,6 +810,10 @@ bool VarInfo::Read( wxInputStream &is )
 	IndexLabels = wxSplit( in.ReadString(), '|' );
 	Flags = in.Read32();
 	bool valok = DefaultValue.Read( is );
+	if (ver < 3) 
+		UIObject = "not_set"; // wxUIObject associated with variable
+	else
+		UIObject = in.ReadString();
 	wxUint8 lastcode = in.Read8();
 	return  lastcode == code && valok;
 }
@@ -877,7 +883,7 @@ bool VarDatabase::Read( wxInputStream &is, const wxString &page )
 VarInfo *VarDatabase::Create( const wxString &name, int type,
 	const wxString &label, const wxString &units,
 	const wxString &group, const wxString &indexlabels, 
-	unsigned long flags, const VarValue &defval )
+	unsigned long flags, const VarValue &defval, const wxString &uiobject )
 {
 	VarInfo *vv = new VarInfo;
 	vv->Type = type;
@@ -887,6 +893,7 @@ VarInfo *VarDatabase::Create( const wxString &name, int type,
 	vv->IndexLabels = wxStringTokenize( indexlabels, "," );
 	vv->Flags = flags;
 	vv->DefaultValue = defval;
+	vv->UIObject = uiobject;
 
 	Add( name, vv );
 
