@@ -781,7 +781,7 @@ void VarInfo::Write( wxOutputStream &os )
 	wxDataOutputStream out(os);
 	out.Write8( 0xe1 );
 //	out.Write8(2);
-	out.Write8(3); // change to version 3 after wxString "editor" field added
+	out.Write8(3); // change to version 3 after wxString "UIObject" field added
 
 	out.Write32( Type );
 	out.WriteString( Label );
@@ -811,7 +811,7 @@ bool VarInfo::Read( wxInputStream &is )
 	Flags = in.Read32();
 	bool valok = DefaultValue.Read( is );
 	if (ver < 3) 
-		UIObject = "not_set"; // wxUIObject associated with variable
+		UIObject = VUIOBJ_NONE; // wxUIObject associated with variable
 	else
 		UIObject = in.ReadString();
 	wxUint8 lastcode = in.Read8();

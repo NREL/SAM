@@ -718,6 +718,7 @@ UIEditorPanel::UIEditorPanel( wxWindow *parent )
 	wxArrayString UIObjs;
 	for (size_t i = 0; i<ctrls.size(); i++)
 		UIObjs.Add(ctrls[i]->GetTypeName());
+	UIObjs.Add(VUIOBJ_NONE); // default editor associated with variable
 	m_varUIObject = new wxChoice(this, ID_VAR_UIOBJECT, wxDefaultPosition, wxDefaultSize, UIObjs);
 
 
@@ -1301,7 +1302,13 @@ void UIEditorPanel::VarInfoToForm( const wxString &name )
 		if (ndx != wxNOT_FOUND)
 			m_varUIObject->SetSelection( ndx );
 		else
-			m_varUIObject->SetSelection(0);
+		{
+			ndx = m_varUIObject->GetStrings().Index(VUIOBJ_NONE);
+			if (ndx != wxNOT_FOUND)
+				m_varUIObject->SetSelection(ndx);
+			else
+				m_varUIObject->SetSelection(0);
+		}
 		m_varLabel->ChangeValue(vv->Label);
 		m_varUnits->ChangeValue( vv->Units );
 		m_varGroup->ChangeValue( vv->Group );
@@ -1320,8 +1327,12 @@ void UIEditorPanel::VarInfoToForm( const wxString &name )
 
 		m_varName->ChangeValue( wxEmptyString );
 		m_varType->SetSelection( 0 );
-		m_varUIObject->SetSelection(0);
-		m_varLabel->ChangeValue( wxEmptyString );
+		int ndx = m_varUIObject->GetStrings().Index(VUIOBJ_NONE);
+		if (ndx != wxNOT_FOUND)
+			m_varUIObject->SetSelection(ndx);
+		else
+			m_varUIObject->SetSelection(0);
+		m_varLabel->ChangeValue(wxEmptyString);
 		m_varUnits->ChangeValue( wxEmptyString );
 		m_varGroup->ChangeValue( wxEmptyString );
 		m_varIndexLabels->ChangeValue( wxEmptyString );

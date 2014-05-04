@@ -122,6 +122,8 @@ private:
 #define VF_EXCLUSIVE_PAGES     0x20
 #define VF_COLLAPSIBLE_PANE    0x40
 
+#define VUIOBJ_NONE		"Default"
+
 class VarInfo
 {
 public:
