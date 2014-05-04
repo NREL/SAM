@@ -168,7 +168,7 @@ void VariableGridData::SetVarValue(int row, int col, VarValue *vv)
 {
 	int lookup_row = row;
 	if (m_sorted) lookup_row = m_sorted_index[row];
-	if ((col > 1) && ((col - 2) <  m_var_info_lookup_vec.size()))
+	if ((col > 1) && ((col - 2) <  m_var_table_vec.size()))
 	{
 		if (VarValue *var_value = m_var_table_vec[col - 2]->Get(m_var_names[lookup_row]))
 			var_value = vv;
@@ -260,6 +260,15 @@ wxString VariableGridData::GetTypeName(int row, int col)
 	{
 		int lookup_row = row;
 		if (m_sorted) lookup_row = m_sorted_index[row];
+		if (VarInfo *var_info = m_var_info_lookup_vec[col - 2]->Lookup(m_var_names[lookup_row]))
+		{
+			if (var_info->UIObject == VUIOBJ_NONE)
+				return wxGRID_VALUE_STRING;
+			else
+				return "gridcellbutton";
+		}
+
+		/* based on variable type
 		if (m_var_table_vec[col - 2]->Get(m_var_names[lookup_row]))
 		{
 			VarValue *vv = m_var_table_vec[col - 2]->Get(m_var_names[lookup_row]);
@@ -279,6 +288,7 @@ wxString VariableGridData::GetTypeName(int row, int col)
 		}
 		else
 			return wxGRID_VALUE_STRING;
+			*/
 	}
 	else
 		return wxGRID_VALUE_STRING;
@@ -534,7 +544,7 @@ void GridCellButtonEditor::Create(wxWindow *parent, wxWindowID id, wxEvtHandler*
 	m_parent = parent;
 	m_pButton = new wxButton(parent, id, m_strLabel);
 	SetControl(m_pButton);
-	m_pButton->Connect(wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler(GridCellButtonEditor::OnButton));
+//	m_pButton->Connect(wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler(GridCellButtonEditor::OnButton));
 }
 
 void GridCellButtonEditor::OnButton(wxCommandEvent &evt)
@@ -555,28 +565,42 @@ void GridCellButtonEditor::SetSize(const wxRect &rect)
 void GridCellButtonEditor::BeginEdit(int row, int col, wxGrid *pGrid)
 {
 	/* event values are not preserved*/
-	m_row = row;
-	m_col = col;
-	m_grid = pGrid;
+	m_cell_value = pGrid->GetTable()->GetValue(row, col);
+
 	VariableGridData *vgd = static_cast<VariableGridData *>(pGrid->GetTable());
-	VariablePopupEditor vpe(m_parent, vgd->GetVarInfo(row, col), vgd->GetVarValue(row, col), vgd->GetValue(row, 0));
+	VarValue *vv = vgd->GetVarValue(row, col);
+	VariablePopupEditor vpe(m_parent, vgd->GetVarInfo(row, col), vv, vgd->GetValue(row, 0));
 	if (vpe.ShowModal() == wxID_OK) 
 		// update variable value
-		m_grid = pGrid;
+		ActiveInputPage::DataExchange(vpe.GetUIObject(), *vv, ActiveInputPage::OBJ_TO_VAR);
 	else
-		// cancel;
-		m_grid = pGrid;
+		// TODO - implement cancel;
+		ActiveInputPage::DataExchange(vpe.GetUIObject(), *vv, ActiveInputPage::OBJ_TO_VAR);
 	wxGridEvent evt(wxID_ANY, wxEVT_GRID_CELL_LEFT_CLICK, pGrid, row, col);
 //	wxPostEvent(m_pButton, wxCommandEvent(wxEVT_COMMAND_BUTTON_CLICKED));
 }
 
 bool GridCellButtonEditor::EndEdit(int row, int col, const wxGrid *grid, const wxString &oldval, wxString *newval)
 {
+	wxString new_cell_value = grid->GetTable()->GetValue(row, col);
+	if (new_cell_value == m_cell_value)
+		return false;
+
+	m_cell_value = new_cell_value;
+
+	if (newval)
+		*newval = m_cell_value;
+
 	return true;
 }
 
 void GridCellButtonEditor::ApplyEdit(int row, int col, wxGrid *grid)
 {
+	grid->GetTable()->SetValue(row, col, m_cell_value);
+	m_cell_value.clear();
+	VariableGridFrame *vgf = static_cast<VariableGridFrame *>(grid->GetParent());
+	vgf->UpdateGrid(); // for comparison views
+	grid->Refresh();
 
 }
 
@@ -586,7 +610,7 @@ void GridCellButtonEditor::Reset()
 
 wxString GridCellButtonEditor::GetValue() const
 {
-	return wxEmptyString;
+	return m_cell_value;
 }
 
 wxGridCellEditor *GridCellButtonEditor::Clone() const
@@ -650,11 +674,16 @@ void VariablePopupEditor::Init()
 {
 	// TODO get editor name from VarInfo and create appropriate editor
 	// 	e.g.	wxUIObject *obj = m_form_data->Create(vi->Editor, GetClientSize(), m_var_name);
+	/* testing based on type
 	if (m_vv->Type() == VV_MATRIX)
 	{
 		wxUIObject *obj = m_form_data->Create("DataMatrix", GetClientSize(), m_var_name);
 		ActiveInputPage::DataExchange(obj, *m_vv, ActiveInputPage::VAR_TO_OBJ);
 	}
+	*/
+	m_obj = m_form_data->Create(m_vi->UIObject, GetClientSize(), m_var_name);
+	ActiveInputPage::DataExchange(m_obj, *m_vv, ActiveInputPage::VAR_TO_OBJ);
+
 
 }
 
