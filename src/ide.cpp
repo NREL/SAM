@@ -584,6 +584,7 @@ enum {
 	ID_VAR_GROUP,
 	ID_VAR_INDEX_LABELS,
 	ID_VAR_DEFAULT_VALUE,
+	ID_VAR_UIOBJECT,
 	ID_VAR_FL_HIDELABELS,
 	ID_VAR_FL_PARAMETRIC,
 	ID_VAR_FL_INDICATOR,
@@ -712,6 +713,14 @@ UIEditorPanel::UIEditorPanel( wxWindow *parent )
 	m_varFlagLibrary = new wxCheckBox( this, ID_VAR_FL_LIBRARY, "Library?" );
 
 
+
+	std::vector<wxUIObject*> ctrls = wxUIObjectTypeProvider::GetTypes();
+	wxArrayString UIObjs;
+	for (size_t i = 0; i<ctrls.size(); i++)
+		UIObjs.Add(ctrls[i]->GetTypeName());
+	m_varUIObject = new wxChoice(this, ID_VAR_UIOBJECT, wxDefaultPosition, wxDefaultSize, UIObjs);
+
+
 	wxGridBagSizer *sz_var_fields = new wxGridBagSizer(1,1);
 	sz_var_fields->SetFlexibleDirection( wxHORIZONTAL );
 	
@@ -734,11 +743,14 @@ UIEditorPanel::UIEditorPanel( wxWindow *parent )
 	sz_var_fields->Add( new wxStaticText( this, wxID_ANY, "Default Value:" ), wxGBPosition(5,0), wxDefaultSpan, wxALL|wxALIGN_CENTER_VERTICAL, 3 );
 	sz_var_fields->Add( m_varDefaultValue, wxGBPosition(5, 1), wxGBSpan(1,3), wxALL|wxEXPAND, 2  );
 
-	sz_var_fields->Add( m_varFlagHideLabels, wxGBPosition(6,0), wxGBSpan(1,1), wxALL|wxALIGN_CENTER_VERTICAL, 3  );
-	sz_var_fields->Add( m_varFlagParametric, wxGBPosition(6,1), wxGBSpan(1,1), wxALL|wxALIGN_CENTER_VERTICAL, 3  );
-	sz_var_fields->Add( m_varFlagIndicator, wxGBPosition(7,0), wxGBSpan(1,1), wxALL|wxALIGN_CENTER_VERTICAL, 3  );
-	sz_var_fields->Add( m_varFlagCalculated, wxGBPosition(7,1), wxGBSpan(1,1), wxALL|wxALIGN_CENTER_VERTICAL, 3 );
-	sz_var_fields->Add( m_varFlagLibrary,  wxGBPosition(8,1), wxGBSpan(1,1), wxALL|wxALIGN_CENTER_VERTICAL, 3 );
+	sz_var_fields->Add(new wxStaticText(this, wxID_ANY, "UIObject:"), wxGBPosition(6, 0), wxDefaultSpan, wxALL | wxALIGN_CENTER_VERTICAL, 3);
+	sz_var_fields->Add(m_varUIObject, wxGBPosition(6, 1), wxGBSpan(1, 3), wxALL | wxEXPAND, 2);
+
+	sz_var_fields->Add(m_varFlagHideLabels, wxGBPosition(7, 0), wxGBSpan(1, 1), wxALL | wxALIGN_CENTER_VERTICAL, 3);
+	sz_var_fields->Add( m_varFlagParametric, wxGBPosition(7,1), wxGBSpan(1,1), wxALL|wxALIGN_CENTER_VERTICAL, 3  );
+	sz_var_fields->Add( m_varFlagIndicator, wxGBPosition(8,0), wxGBSpan(1,1), wxALL|wxALIGN_CENTER_VERTICAL, 3  );
+	sz_var_fields->Add( m_varFlagCalculated, wxGBPosition(8,1), wxGBSpan(1,1), wxALL|wxALIGN_CENTER_VERTICAL, 3 );
+	sz_var_fields->Add( m_varFlagLibrary,  wxGBPosition(9,1), wxGBSpan(1,1), wxALL|wxALIGN_CENTER_VERTICAL, 3 );
 
 	sz_var_fields->AddGrowableCol( 1 );
 
@@ -981,56 +993,58 @@ void UIEditorPanel::OnCommand( wxCommandEvent &evt )
 			{
 				wxString type = objects[i]->GetTypeName();
 				wxString name = objects[i]->GetName();
+				VarInfo *vi = NULL;
 				if ( m_ipd.Variables().Lookup( name ) == 0 )
 				{
 					if ( type == "Numeric" )
-						m_ipd.Variables().Create( name, VV_NUMBER );
+						vi = m_ipd.Variables().Create( name, VV_NUMBER );
 					else if ( type == "Choice" )
-						m_ipd.Variables().Create( name, VV_NUMBER );
+						vi = m_ipd.Variables().Create(name, VV_NUMBER);
 					else if ( type == "ListBox" )
-						m_ipd.Variables().Create( name, VV_STRING );
+						vi = m_ipd.Variables().Create(name, VV_STRING);
 					else if ( type == "RadioChoice" )
-						m_ipd.Variables().Create( name, VV_NUMBER );
+						vi = m_ipd.Variables().Create(name, VV_NUMBER);
 					else if ( type == "TextEntry" )
-						m_ipd.Variables().Create( name, VV_STRING );
+						vi = m_ipd.Variables().Create(name, VV_STRING);
 					else if ( type == "Slider" )
-						m_ipd.Variables().Create( name, VV_NUMBER );
+						vi = m_ipd.Variables().Create(name, VV_NUMBER);
 					else if ( type == "CheckBox" )
-						m_ipd.Variables().Create( name, VV_NUMBER );
+						vi = m_ipd.Variables().Create(name, VV_NUMBER);
 					else if ( type == "RadioChoice" )
-						m_ipd.Variables().Create( name, VV_NUMBER );
+						vi = m_ipd.Variables().Create(name, VV_NUMBER);
 					else if ( type == "Slider" )
-						m_ipd.Variables().Create( name, VV_NUMBER );
+						vi = m_ipd.Variables().Create(name, VV_NUMBER);
 					else if ( type == "SchedNumeric" )
-						m_ipd.Variables().Create( name, VV_ARRAY );
+						vi = m_ipd.Variables().Create(name, VV_ARRAY);
 					else if ( type == "TOUSchedule" )
-						m_ipd.Variables().Create( name, VV_STRING );
+						vi = m_ipd.Variables().Create(name, VV_STRING);
 					else if ( type == "PTLayout" )
-						m_ipd.Variables().Create( name, VV_TABLE );
+						vi = m_ipd.Variables().Create(name, VV_TABLE);
 					else if ( type == "MaterialProperties" )
-						m_ipd.Variables().Create( name, VV_MATRIX );
+						vi = m_ipd.Variables().Create(name, VV_MATRIX);
 					else if ( type == "TroughLoop" )
-						m_ipd.Variables().Create( name, VV_ARRAY );
+						vi = m_ipd.Variables().Create(name, VV_ARRAY);
 					else if ( type == "MonthlyFactor" )
-						m_ipd.Variables().Create( name, VV_ARRAY );
+						vi = m_ipd.Variables().Create(name, VV_ARRAY);
 					else if ( type == "SearchListBox" )
-						m_ipd.Variables().Create( name, VV_STRING );
+						vi = m_ipd.Variables().Create(name, VV_STRING);
 					else if ( type == "DataArray" )
-						m_ipd.Variables().Create( name, VV_ARRAY );
+						vi = m_ipd.Variables().Create(name, VV_ARRAY);
 					else if ( type == "DataMatrix" )
-						m_ipd.Variables().Create( name, VV_MATRIX );
+						vi = m_ipd.Variables().Create(name, VV_MATRIX);
 					else if ( type == "ShadingFactors" )
-						m_ipd.Variables().Create( name, VV_TABLE );
+						vi = m_ipd.Variables().Create(name, VV_TABLE);
 					else if ( type == "ValueMatrix" )
-						m_ipd.Variables().Create( name, VV_MATRIX );
+						vi = m_ipd.Variables().Create(name, VV_MATRIX);
 					else if ( type == "MonthByHourFactors" )
-						m_ipd.Variables().Create( name, VV_MATRIX );
+						vi = m_ipd.Variables().Create(name, VV_MATRIX);
 					else if ( type == "HourlyFactor" )
-						m_ipd.Variables().Create( name, VV_TABLE );
+						vi = m_ipd.Variables().Create(name, VV_TABLE);
 					else if (type == "DiurnalPeriod")
-						m_ipd.Variables().Create(name, VV_MATRIX);
+						vi = m_ipd.Variables().Create(name, VV_MATRIX);
 
 					// extend this list in the future for additional controls
+					if (vi) vi->UIObject = type; // set UIObject field for subsequent editing
 				}
 			}
 
@@ -1271,6 +1285,8 @@ void UIEditorPanel::FormToVarInfo( )
 
 	vv->DefaultValue.SetType( vv->Type );
 	VarValue::Parse( vv->Type, m_varDefaultValue->GetValue(), vv->DefaultValue );
+
+	vv->UIObject = m_varUIObject->GetString((m_varUIObject->GetCurrentSelection()));
 }
 
 void UIEditorPanel::VarInfoToForm( const wxString &name )
@@ -1281,7 +1297,12 @@ void UIEditorPanel::VarInfoToForm( const wxString &name )
 
 		m_varName->ChangeValue( m_curVarName );
 		m_varType->SetSelection( vv->Type );
-		m_varLabel->ChangeValue( vv->Label );
+		int ndx = m_varUIObject->GetStrings().Index(vv->UIObject);
+		if (ndx != wxNOT_FOUND)
+			m_varUIObject->SetSelection( ndx );
+		else
+			m_varUIObject->SetSelection(0);
+		m_varLabel->ChangeValue(vv->Label);
 		m_varUnits->ChangeValue( vv->Units );
 		m_varGroup->ChangeValue( vv->Group );
 		m_varIndexLabels->ChangeValue( wxJoin( vv->IndexLabels, ',' ) );
@@ -1299,6 +1320,7 @@ void UIEditorPanel::VarInfoToForm( const wxString &name )
 
 		m_varName->ChangeValue( wxEmptyString );
 		m_varType->SetSelection( 0 );
+		m_varUIObject->SetSelection(0);
 		m_varLabel->ChangeValue( wxEmptyString );
 		m_varUnits->ChangeValue( wxEmptyString );
 		m_varGroup->ChangeValue( wxEmptyString );
@@ -1314,8 +1336,9 @@ void UIEditorPanel::VarInfoToForm( const wxString &name )
 	bool en = !m_curVarName.IsEmpty();
 	
 	m_varName->Enable( en );
-	m_varType->Enable( en );
-	m_varLabel->Enable( en );
+	m_varType->Enable(en);
+	m_varUIObject->Enable(en);
+	m_varLabel->Enable(en);
 	m_varUnits->Enable( en );
 	m_varGroup->Enable( en );
 	m_varIndexLabels->Enable( en );

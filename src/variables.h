@@ -138,6 +138,7 @@ public:
 	wxArrayString IndexLabels;
 	long Flags;
 	VarValue DefaultValue;
+	wxString UIObject; // typename of wxUIObject used for editing
 };
 
 typedef unordered_map<wxString, VarInfo*, wxStringHash, wxStringEqual> VarInfoHash;	
@@ -172,7 +173,7 @@ public:
 	VarInfo *Create( const wxString &name, int type,
 		const wxString &label = wxEmptyString, const wxString &units = wxEmptyString,
 		const wxString &group = wxEmptyString, const wxString &indexlabels = wxEmptyString,
-		unsigned long flags = VF_NONE, const VarValue &defval = VarValue::Invalid );
+		unsigned long flags = VF_NONE, const VarValue &defval = VarValue::Invalid, const wxString &uiobject = wxEmptyString);
 			
 	bool Delete( const wxString &name );
 	bool Rename( const wxString &old_name, const wxString &new_name );
