@@ -212,9 +212,7 @@ void VariableGridData::SetValue(int row, int col, const wxString& value)
 		if (m_sorted) lookup_row = m_sorted_index[row];
 		if (m_var_table_vec[col - 2]->Get(m_var_names[lookup_row]))
 		{
-			// fails to update case value
 			VarValue *vv = m_var_table_vec[col - 2]->Get(m_var_names[lookup_row]);
-			//VarValue *vv = m_cases[col - 2]->Values().Get(m_var_names[lookup_row]);
 			if (vv) 
 			{
 				VarValue::Parse(vv->Type(), value, *vv);
