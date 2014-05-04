@@ -94,8 +94,11 @@ public:
 	VariablePopupEditor(wxWindow *parent, VarInfo *vi, VarValue *vv, wxString &var_name);
 	~VariablePopupEditor();
 
+	wxUIObject *GetUIObject() { return m_obj; }
+
 	void Init();
 private:
+	wxUIObject *m_obj;
 	VarInfo *m_vi;
 	VarValue *m_vv;
 	wxUIFormData *m_form_data;
@@ -121,15 +124,13 @@ public:
 	virtual wxGridCellEditor *Clone() const;
 
 private:
+	wxString m_cell_value;
 	wxString m_strLabel;
 	int m_button_width;
 	wxButton *m_pButton;
 	VarInfo *m_var_info;
 	VarValue *m_var_value;
 	wxWindow *m_parent;
-	wxGrid *m_grid;
-	int m_row;
-	int m_col;
 	VariablePopupEditor *m_vpe;
 
 	DECLARE_NO_COPY_CLASS(GridCellButtonEditor)
@@ -155,6 +156,7 @@ class VariableGridFrame : public wxFrame, ProjectFileEventListener, CaseEventLis
 public:
 	VariableGridFrame(wxWindow *parent, ProjectFile *pf, Case *c=NULL);
 	~VariableGridFrame();
+	void UpdateGrid();
 private:
 	wxGrid *m_grid;
 	ProjectFile *m_pf;
@@ -163,7 +165,6 @@ private:
 	int m_compare_show_type;
 
 	void OnGridColSort(wxGridEvent& event);
-	void UpdateGrid();
 	void SizeColumns();
 	void OnCommand(wxCommandEvent &evt);
 
