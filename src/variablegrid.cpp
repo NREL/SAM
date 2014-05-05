@@ -542,11 +542,12 @@ GridCellButtonEditor::~GridCellButtonEditor(void)
 void GridCellButtonEditor::Create(wxWindow *parent, wxWindowID id, wxEvtHandler* pEvtHandler)
 {
 	m_parent = parent;
-	m_pButton = new wxButton(parent, id, m_strLabel);
-	SetControl(m_pButton);
+	m_text = new wxStaticText(parent, id, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxST_NO_AUTORESIZE | wxST_ELLIPSIZE_END);
+	//	m_pButton = new wxButton(parent, id, m_strLabel);
+	SetControl(m_text);
 //	m_pButton->Connect(wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler(GridCellButtonEditor::OnButton));
 }
-
+/*
 void GridCellButtonEditor::OnButton(wxCommandEvent &evt)
 {
 //	wxMessageBox("Button pushed");
@@ -554,18 +555,35 @@ void GridCellButtonEditor::OnButton(wxCommandEvent &evt)
 //	VariablePopupEditor *vpe = new VariablePopupEditor(m_parent, vgd->GetVarInfo(m_row, m_col), vgd->GetVarValue(m_row, m_col), vgd->GetValue(m_row, 0));
 	evt.Skip();
 }
+*/
+
+void GridCellButtonEditor::Reset()
+{
+	m_text->SetLabel(m_cell_value);
+}
+
 
 void GridCellButtonEditor::SetSize(const wxRect &rect)
 {
-	
-	m_pButton->SetSize(rect.x - m_button_width, rect.y, m_button_width + 2, rect.height + 2, wxSIZE_ALLOW_MINUS_ONE);
+//	m_text->SetSize(rect.x+10, rect.y, rect.width-10, rect.height, wxSIZE_FORCE);
+	m_text->Move(10,1.0);
+	wxGridCellEditor::SetSize(rect);
 }
 
+void GridCellButtonEditor::PaintBackground(wxDC& (dc),
+	const wxRect& (rectCell),
+	const wxGridCellAttr& (attr))
+{
+	// as we fill the entire client area,
+	// don't do anything here to minimize flicker
+
+}
 
 void GridCellButtonEditor::BeginEdit(int row, int col, wxGrid *pGrid)
 {
 	/* event values are not preserved*/
 	m_cell_value = pGrid->GetTable()->GetValue(row, col);
+	m_text->SetLabel(m_cell_value);
 
 	VariableGridData *vgd = static_cast<VariableGridData *>(pGrid->GetTable());
 	VarValue *vv = vgd->GetVarValue(row, col);
@@ -576,21 +594,26 @@ void GridCellButtonEditor::BeginEdit(int row, int col, wxGrid *pGrid)
 	else
 		// TODO - implement cancel;
 		ActiveInputPage::DataExchange(vpe.GetUIObject(), *vv, ActiveInputPage::OBJ_TO_VAR);
+	// if changed then get new value and apply to static text control
+	m_text->SetLabel(vv->AsString());
+
+
 	wxGridEvent evt(wxID_ANY, wxEVT_GRID_CELL_LEFT_CLICK, pGrid, row, col);
 //	wxPostEvent(m_pButton, wxCommandEvent(wxEVT_COMMAND_BUTTON_CLICKED));
 }
 
 bool GridCellButtonEditor::EndEdit(int row, int col, const wxGrid *grid, const wxString &oldval, wxString *newval)
 {
-	wxString new_cell_value = grid->GetTable()->GetValue(row, col);
+	wxString new_cell_value = m_text->GetLabel();
 	if (new_cell_value == m_cell_value)
-		return false;
+		return false; // no change
 
 	m_cell_value = new_cell_value;
 
 	if (newval)
 		*newval = m_cell_value;
 
+	m_text->SetLabel(m_cell_value);
 	return true;
 }
 
@@ -601,12 +624,8 @@ void GridCellButtonEditor::ApplyEdit(int row, int col, wxGrid *grid)
 	VariableGridFrame *vgf = static_cast<VariableGridFrame *>(grid->GetParent());
 	vgf->UpdateGrid(); // for comparison views
 	grid->Refresh();
-
 }
 
-void GridCellButtonEditor::Reset()
-{
-}
 
 wxString GridCellButtonEditor::GetValue() const
 {

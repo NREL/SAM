@@ -8,6 +8,7 @@
 #include <wx/event.h>
 #include <wx/dc.h>
 #include <wx/button.h>
+#include <wx/stattext.h>
 
 #include <wex/uiform.h>
 #include <wex/numeric.h>
@@ -112,9 +113,12 @@ public:
 	GridCellButtonEditor(wxString label);
 	virtual ~GridCellButtonEditor(void);
 
-	virtual void Create(wxWindow *parent, wxWindowID id, wxEvtHandler* pEvtHandler);
-	void OnButton(wxCommandEvent &evt);
+	virtual void PaintBackground(wxDC& dc,
+		const wxRect& rectCell,
+		const wxGridCellAttr& attr);
 
+	virtual void Create(wxWindow *parent, wxWindowID id, wxEvtHandler* pEvtHandler);
+	//void OnButton(wxCommandEvent &evt);
 	virtual void SetSize(const wxRect &rect);
 	virtual void BeginEdit(int row, int col, wxGrid *pGrid);
 	virtual bool EndEdit(int row, int col, const wxGrid *grid, const wxString &oldval, wxString *newval);
@@ -127,7 +131,8 @@ private:
 	wxString m_cell_value;
 	wxString m_strLabel;
 	int m_button_width;
-	wxButton *m_pButton;
+	//wxButton *m_pButton;
+	wxStaticText *m_text;
 	VarInfo *m_var_info;
 	VarValue *m_var_value;
 	wxWindow *m_parent;
