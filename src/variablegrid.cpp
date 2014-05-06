@@ -563,10 +563,58 @@ void GridCellButtonEditor::Reset()
 }
 
 
-void GridCellButtonEditor::SetSize(const wxRect &rect)
-{
+void GridCellButtonEditor::SetSize(const wxRect &rect_orig)
+{	// similar to wxGridCellTextEditor
 //	m_text->SetSize(rect.x+10, rect.y, rect.width-10, rect.height, wxSIZE_FORCE);
-	m_text->Move(10,1.0);
+//	m_text->Move(10,1.0);
+	wxRect rect(rect_orig);
+
+	// Make the edit control large enough to allow for internal margins
+	//
+	// TODO: remove this if the text ctrl sizing is improved esp. for unix
+	//
+#if defined(__WXGTK__)
+	if (rect.x != 0)
+	{
+		rect.x += 1;
+		rect.y += 1;
+		rect.width -= 1;
+		rect.height -= 1;
+	}
+#elif defined(__WXMSW__)
+	if (rect.x == 0)
+		rect.x += 2;
+	else
+		rect.x += 3;
+
+	if (rect.y == 0)
+		rect.y += 2;
+	else
+		rect.y += 3;
+
+	rect.width -= 2;
+	rect.height -= 2;
+#elif defined(__WXOSX__)
+	rect.x += 1;
+	rect.y += 1;
+
+	rect.width -= 1;
+	rect.height -= 1;
+#else
+	int extra_x = (rect.x > 2) ? 2 : 1;
+	int extra_y = (rect.y > 2) ? 2 : 1;
+
+#if defined(__WXMOTIF__)
+	extra_x *= 2;
+	extra_y *= 2;
+#endif
+
+	rect.SetLeft(wxMax(0, rect.x - extra_x));
+	rect.SetTop(wxMax(0, rect.y - extra_y));
+	rect.SetRight(rect.GetRight() + 2 * extra_x);
+	rect.SetBottom(rect.GetBottom() + 2 * extra_y);
+#endif
+
 	wxGridCellEditor::SetSize(rect);
 }
 
@@ -574,9 +622,7 @@ void GridCellButtonEditor::PaintBackground(wxDC& (dc),
 	const wxRect& (rectCell),
 	const wxGridCellAttr& (attr))
 {
-	// as we fill the entire client area,
 	// don't do anything here to minimize flicker
-
 }
 
 void GridCellButtonEditor::BeginEdit(int row, int col, wxGrid *pGrid)
@@ -596,6 +642,9 @@ void GridCellButtonEditor::BeginEdit(int row, int col, wxGrid *pGrid)
 		ActiveInputPage::DataExchange(vpe.GetUIObject(), *vv, ActiveInputPage::OBJ_TO_VAR);
 	// if changed then get new value and apply to static text control
 	m_text->SetLabel(vv->AsString());
+	// to refresh when editing
+	if (m_cell_value != vv->AsString())
+		pGrid->GetTable()->SetValue(row, col, m_cell_value);
 
 
 	wxGridEvent evt(wxID_ANY, wxEVT_GRID_CELL_LEFT_CLICK, pGrid, row, col);
@@ -946,7 +995,7 @@ void VariableGridFrame::OnCaseEvent(Case *c, CaseEvent &evt)
 	{
 		// refresh when any case values change
 		UpdateGrid(); // for comparison views
-		m_grid->Refresh();
+		m_grid->ForceRefresh();
 	}
 }
 
