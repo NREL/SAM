@@ -73,11 +73,11 @@ private:
 };
 
 
-class GridCellButtonRenderer : public wxGridCellRenderer
+class GridCellVarValueRenderer : public wxGridCellRenderer
 {
 public:
-	GridCellButtonRenderer(wxString label);
-	virtual ~GridCellButtonRenderer(void);
+	GridCellVarValueRenderer();
+	virtual ~GridCellVarValueRenderer(void);
 
 	virtual void Draw(wxGrid &grid, wxGridCellAttr &attr, wxDC &dc, const wxRect &rect, int row, int col, bool isSelected);
 	virtual wxSize GetBestSize(wxGrid &grid, wxGridCellAttr& attr, wxDC &dc, int row, int col);
@@ -85,15 +85,15 @@ public:
 	void SetTextColoursAndFont(const wxGrid& grid, const wxGridCellAttr& attr, wxDC& dc, bool isSelected);
 
 private:
-	wxString m_strLabel;
-	int m_button_width;
+	wxString m_ellipsis;
+
 };
 
-class VariablePopupEditor : public wxDialog
+class VariablePopupPanel : public wxPanel
 {
 public:
-	VariablePopupEditor(wxWindow *parent, VarInfo *vi, VarValue *vv, wxString &var_name);
-	~VariablePopupEditor();
+	VariablePopupPanel(wxWindow *parent, VarInfo *vi, VarValue *vv, wxString &var_name);
+	~VariablePopupPanel();
 
 	wxUIObject *GetUIObject() { return m_obj; }
 
@@ -106,12 +106,29 @@ private:
 	wxString m_var_name;
 };
 
-
-class GridCellButtonEditor : public wxEvtHandler, public wxGridCellEditor
+class VariablePopupDialog : public wxDialog
 {
 public:
-	GridCellButtonEditor(wxString label);
-	virtual ~GridCellButtonEditor(void);
+	VariablePopupDialog(wxWindow *parent, VarInfo *vi, VarValue *vv, wxString &var_name);
+	~VariablePopupDialog();
+
+	wxUIObject *GetUIObject();
+
+	void Init();
+private:
+	VariablePopupPanel *m_panel;
+	VarInfo *m_vi;
+	VarValue *m_vv;
+	wxUIFormData *m_form_data;
+	wxString m_var_name;
+};
+
+
+class GridCellVarValueEditor : public wxEvtHandler, public wxGridCellEditor
+{
+public:
+	GridCellVarValueEditor();
+	virtual ~GridCellVarValueEditor(void);
 
 	virtual void PaintBackground(wxDC& dc,
 		const wxRect& rectCell,
@@ -129,16 +146,13 @@ public:
 
 private:
 	wxString m_cell_value;
-	wxString m_strLabel;
-	int m_button_width;
-	//wxButton *m_pButton;
 	wxStaticText *m_text;
 	VarInfo *m_var_info;
 	VarValue *m_var_value;
 	wxWindow *m_parent;
-	VariablePopupEditor *m_vpe;
+	VariablePopupDialog *m_vpe;
 
-	DECLARE_NO_COPY_CLASS(GridCellButtonEditor)
+	DECLARE_NO_COPY_CLASS(GridCellVarValueEditor)
 };
 
 
