@@ -545,6 +545,8 @@ void GridCellButtonEditor::Create(wxWindow *parent, wxWindowID id, wxEvtHandler*
 	m_text = new wxStaticText(parent, id, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxST_NO_AUTORESIZE | wxST_ELLIPSIZE_END);
 	//	m_pButton = new wxButton(parent, id, m_strLabel);
 	SetControl(m_text);
+	wxGridCellEditor::Create(parent, id, pEvtHandler);
+
 //	m_pButton->Connect(wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler(GridCellButtonEditor::OnButton));
 }
 /*
@@ -625,6 +627,21 @@ void GridCellButtonEditor::PaintBackground(wxDC& (dc),
 	// don't do anything here to minimize flicker
 }
 
+bool GridCellButtonEditor::IsAcceptedKey(wxKeyEvent& event)
+{
+	switch (event.GetKeyCode())
+	{
+	case WXK_DELETE:
+	case WXK_BACK:
+	case WXK_ESCAPE:
+		return true;
+
+	default:
+		return wxGridCellEditor::IsAcceptedKey(event);
+	}
+}
+
+
 void GridCellButtonEditor::BeginEdit(int row, int col, wxGrid *pGrid)
 {
 	/* event values are not preserved*/
@@ -643,11 +660,10 @@ void GridCellButtonEditor::BeginEdit(int row, int col, wxGrid *pGrid)
 	// if changed then get new value and apply to static text control
 	m_text->SetLabel(vv->AsString());
 	// to refresh when editing
-	if (m_cell_value != vv->AsString())
-		pGrid->GetTable()->SetValue(row, col, m_cell_value);
+	pGrid->SaveEditControlValue();
 
 
-	wxGridEvent evt(wxID_ANY, wxEVT_GRID_CELL_LEFT_CLICK, pGrid, row, col);
+//	wxGridEvent evt(wxID_ANY, wxEVT_GRID_CELL_LEFT_CLICK, pGrid, row, col);
 //	wxPostEvent(m_pButton, wxCommandEvent(wxEVT_COMMAND_BUTTON_CLICKED));
 }
 

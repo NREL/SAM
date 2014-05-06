@@ -118,7 +118,7 @@ public:
 		const wxGridCellAttr& attr);
 
 	virtual void Create(wxWindow *parent, wxWindowID id, wxEvtHandler* pEvtHandler);
-	//void OnButton(wxCommandEvent &evt);
+	virtual bool IsAcceptedKey(wxKeyEvent& event);
 	virtual void SetSize(const wxRect &rect_orig);
 	virtual void BeginEdit(int row, int col, wxGrid *pGrid);
 	virtual bool EndEdit(int row, int col, const wxGrid *grid, const wxString &oldval, wxString *newval);
