@@ -136,17 +136,57 @@ bool VarTable::Rename( const wxString &old_name, const wxString &new_name )
 	return true;
 }
 
-void VarTable::Write( wxOutputStream &_O )
+void VarTable::Write( wxOutputStream &_O, size_t maxdim )
 {
 	wxDataOutputStream out(_O);
 	out.Write8( 0xf9 );
 	out.Write8( 1 );
 
-	out.Write32( size() );
-	for( iterator it = begin(); it != end(); ++it )
+	if ( maxdim == 0 )
 	{
-		out.WriteString( it->first );
-		it->second->Write( _O );
+		out.Write32( size() );
+		for( iterator it = begin(); it != end(); ++it )
+		{
+			out.WriteString( it->first );
+			it->second->Write( _O );
+		}
+	}
+	else
+	{
+		wxArrayString names;
+		std::vector<VarValue*> list;
+		list.reserve( size() );
+
+		for( iterator it = begin(); it != end(); ++ it )
+		{
+			VarValue &vv = *(it->second);
+			if ( vv.Type() == VV_ARRAY 
+				&& vv.Length() <= maxdim )
+			{
+				names.Add( it->first );
+				list.push_back( it->second );
+			}
+			else if ( vv.Type() == VV_MATRIX
+				&& vv.Matrix().nrows() <= maxdim
+				&& vv.Matrix().ncols() <= maxdim )
+			{
+				names.Add( it->first );
+				list.push_back( it->second );
+			}
+			else if ( vv.Type() != VV_MATRIX
+				&& vv.Type() != VV_ARRAY )
+			{
+				names.Add( it->first );
+				list.push_back( it->second );
+			}
+		}
+
+		out.Write32( list.size() );
+		for( size_t i=0;i<list.size();i++ )
+		{
+			out.WriteString( names[i] );
+			list[i]->Write( _O );
+		}
 	}
 
 	out.Write8( 0xf9 );

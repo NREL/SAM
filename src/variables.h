@@ -43,7 +43,7 @@ public:
 	VarValue *Get( const wxString &name );
 	bool Rename( const wxString &old_name, const wxString &new_name );
 
-	void Write( wxOutputStream & );
+	void Write( wxOutputStream &, size_t maxdim = 0 ); // MaxDim specifies the maximum allowable array or matrix dimension when writing.
 	bool Read( wxInputStream & );
 		
 };
