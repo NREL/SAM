@@ -1303,22 +1303,38 @@ ConfigInfo *ConfigDatabase::Find( const wxString &t, const wxString &f )
 
 bool SamApp::OnInit()
 {
-	if ( !wxApp::OnInit() )
-		return false;
-
-	m_locale.Init();
+	m_locale.Init(); // necessary for comma-formatting
 
 	SetAppName( "SAM" );
 	SetVendorName( "NREL" );
 
+
+	wxInitAllImageHandlers();
+	wxSimpleCurlInit();
+
 	for( int i=0;i<argc;i++ )
 		g_appArgs.Add( argv[i] );
-
-	if ( g_appArgs.Count() < 1 )
+	
+	if ( g_appArgs.Count() < 1 || !wxDirExists( wxPathOnly(g_appArgs[0]) ) )
 	{
-		wxMessageBox("Internal error - cannot determine runtime folder from startup argument 0" );
+
+		wxMessageBox("Startup error - cannot determine application runtime folder from startup argument.\n\n"
+			"Try running " + g_appArgs[0] + " by specifying the full path to the executable.");
 		return false;
 	}
+	
+	wxString proxy_file = wxPathOnly(g_appArgs[0]) + "/proxy.txt";
+	if (wxFileExists(proxy_file))
+	{
+		if (FILE *fp = fopen(proxy_file.c_str(), "r"))
+		{
+			char buf[512];
+			fgets(buf, 511, fp);
+			fclose(fp);
+			wxSimpleCurlSetupProxy(wxString::FromAscii(buf));
+		}
+	}
+
 
 #ifdef _DEBUG
 	SamLogWindow::Setup();
@@ -1332,9 +1348,6 @@ bool SamApp::OnInit()
 	// register all input page UI objects 
 	wxUIObjectTypeProvider::RegisterBuiltinTypes();
 	RegisterUIObjectsForSAM();
-
-	wxInitAllImageHandlers();
-	wxSimpleCurlInit();
 	
 	wxLogStatus( "startup with SSC version %d, %s", ssc_version(), ssc_build_info() );
 
@@ -1344,7 +1357,6 @@ bool SamApp::OnInit()
 	splash.Update();
 
 	Yield(true);
-	wxMilliSleep( 500 );
 
 	g_config = new wxConfig( "SAMnt", "NREL" );
 	FileHistory().Load( Settings() );
@@ -1355,8 +1367,6 @@ bool SamApp::OnInit()
 	SetTopWindow( g_mainWindow );
 
 	g_mainWindow->Show();
-//	g_mainWindow->CreateProject();
-	//ShowIDEWindow();
 
 	return true;
 }
