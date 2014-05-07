@@ -9,6 +9,7 @@
 #include "variablegrid.h"
 #include "widgets.h"
 #include "inputpage.h"
+#include <unordered_map>
 
 #define COMPARE_SHOW_ALL 0
 #define COMPARE_SHOW_DIFFERENT 1
@@ -32,6 +33,9 @@ void VariableGridData::Init()
 	m_var_labels.Clear();
 	m_var_info_lookup_vec.clear();
 	m_var_table_vec.clear();
+	VarInfoLookup vi_not_calculated;
+	VarTable vt_not_calculated;
+
 
 	if (m_cases.size() > 0)
 	{
@@ -42,11 +46,9 @@ void VariableGridData::Init()
 			m_col_hdrs.push_back(m_pf->GetCaseName(m_cases[0]));
 			m_var_table_vec.push_back(&m_cases[0]->Values());
 			m_var_info_lookup_vec.push_back(&m_cases[0]->Variables());
-			// TODO: skip calculated value
 		}
 		else
 		{
-			int i = 0;
 			for (std::vector<Case*>::iterator it = m_cases.begin(); it != m_cases.end(); ++it)
 			{
 				m_col_hdrs.push_back(m_pf->GetCaseName(*it));
@@ -60,13 +62,22 @@ void VariableGridData::Init()
 
 		std::set<wxString> var_names;
 		// variable names
+		//		skip calculated
+		for (std::vector<VarInfoLookup*>::iterator it = m_var_info_lookup_vec.begin(); it != m_var_info_lookup_vec.end(); ++it)
+		{
+			wxArrayString as = (*it)->ListAll();
+			for (size_t i = 0; i < as.Count(); i++)
+				if (!((*it)->Lookup(as[i])->Flags  & VF_CALCULATED))
+					var_names.insert(as[i]);
+		}
+/*		all
 		for (std::vector<VarTable*>::iterator it = m_var_table_vec.begin(); it != m_var_table_vec.end(); ++it)
 		{
 			wxArrayString as = (*it)->ListAll();
 			for (size_t i = 0; i < as.Count(); i++)
 				var_names.insert(as[i]);
 		}
-
+*/
 		m_rows = var_names.size();
 		for (int row = 0; row < m_rows; row++)
 			m_sorted_index.Add(row);
@@ -261,11 +272,58 @@ wxString VariableGridData::GetTypeName(int row, int col)
 		int lookup_row = row;
 		if (m_sorted) lookup_row = m_sorted_index[row];
 		if (VarInfo *var_info = m_var_info_lookup_vec[col - 2]->Lookup(m_var_names[lookup_row]))
-		{
-			if (var_info->UIObject == VUIOBJ_NONE)
+		{ // TODO - better control list maintenance here and in UIEditorPanel
+			wxString type = var_info->UIObject;
+			if (type == "Numeric")
+				return wxGRID_VALUE_STRING;
+			else if (type == "Choice")
+				return "GridCellVarValue";
+			else if (type == "ListBox")
+				return "GridCellVarValue";
+			else if (type == "RadioChoice")
+				return "GridCellVarValue";
+			else if (type == "TextEntry")
+				return wxGRID_VALUE_STRING;
+			else if (type == "Slider")
+				return "GridCellVarValue";
+			else if (type == "CheckBox")
+				return "GridCellVarValue";
+			else if (type == "RadioChoice")
+				return "GridCellVarValue";
+			else if (type == "Slider")
+				return "GridCellVarValue";
+			else if (type == "SchedNumeric")
+				return "GridCellVarValue";
+			else if (type == "TOUSchedule")
+				return "GridCellVarValue";
+			else if (type == "PTLayout")
+				return "GridCellVarValue";
+			else if (type == "MaterialProperties")
+				return "GridCellVarValue";
+			else if (type == "TroughLoop")
+				return "GridCellVarValue";
+			else if (type == "MonthlyFactor")
+				return "GridCellVarValue";
+			else if (type == "SearchListBox")
+				return "GridCellVarValue";
+			else if (type == "DataArray")
+				return "GridCellVarValue";
+			else if (type == "DataMatrix")
+				return "GridCellVarValue";
+			else if (type == "ShadingFactors")
+				return "GridCellVarValue";
+			else if (type == "ValueMatrix")
+				return "GridCellVarValue";
+			else if (type == "MonthByHourFactors")
+				return "GridCellVarValue";
+			else if (type == "HourlyFactor")
+				return "GridCellVarValue";
+			else if (type == "DiurnalPeriod")
+				return "GridCellVarValue";
+			else if (var_info->UIObject == VUIOBJ_NONE)
 				return wxGRID_VALUE_STRING;
 			else
-				return "GridCellVarValue";
+				return wxGRID_VALUE_STRING;
 		}
 
 		/* based on variable type
@@ -801,9 +859,15 @@ VariableGridFrame::VariableGridFrame(wxWindow *parent, ProjectFile *pf, Case *c)
 	m_pf->AddListener(this);
 
 	if (c)
+	{
 		m_cases.push_back(c);
+		m_input_list = true; // input list - do not allow for cases to be added
+	}
 	else
+	{
 		m_cases = m_pf->GetCases();
+		m_input_list = false;
+	}
 	if (m_cases.size() > 0)
 	{
 		for (size_t i = 0; i < m_cases.size(); i++)
@@ -971,7 +1035,7 @@ void VariableGridFrame::OnProjectFileEvent(ProjectFile *p, ProjectFileEvent &evt
 	{
 		Case *c = m_pf->GetCase(evt.GetString());
 		std::vector<Case*>::iterator it = std::find(m_cases.begin(), m_cases.end(), c);
-		if (it == m_cases.end())
+		if ((!m_input_list) && (it == m_cases.end()))
 		{
 			m_cases.push_back(c);
 			m_griddata->AddCase(c);

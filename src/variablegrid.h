@@ -175,6 +175,7 @@ public:
 private:
 	wxGrid *m_grid;
 	ProjectFile *m_pf;
+	bool m_input_list;
 	VariableGridData *m_griddata;
 	std::vector<Case*> m_cases;
 	int m_compare_show_type;
