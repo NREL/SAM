@@ -295,6 +295,12 @@ CaseWindow *MainWindow::CreateCaseWindow( Case *c )
 	m_caseTabList->Refresh();
 	wxGetApp().Yield();
 
+	// when creating a new case, at least 
+	// show the first input page
+	wxArrayString pages = win->GetInputPages();
+	if ( pages.size() > 0 )
+		win->SwitchToInputPage( pages[0] );
+
 	return win;
 }
 

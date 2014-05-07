@@ -92,7 +92,7 @@ struct AutoGraph {
 class ResultsViewer : public wxMetroNotebook
 {
 public:
-	ResultsViewer( wxWindow *parent );
+	ResultsViewer( wxWindow *parent, int id = wxID_ANY );
 	virtual ~ResultsViewer();
 
 	void Setup( Simulation *results );
@@ -106,6 +106,7 @@ public:
 	void AddMetric( MetricData &md ) { m_metrics.push_back(md); }
 	void AddCashFlowLine( CashFlowLine &cl ) { m_cashflow.push_back(cl); }
 	void AddAutoGraph( AutoGraph &ag ) { m_autographs.push_back(ag); }
+
 	
 private:	
 	Simulation *m_sim;
