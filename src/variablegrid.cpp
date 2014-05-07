@@ -448,7 +448,6 @@ void GridCellVarValueRenderer::Draw(wxGrid &grid, wxGridCellAttr &attr, wxDC &dc
 	int x = rect.x + rect.width - sz_ellipsis.GetWidth();
 	int y = rect.y;
 	wxRect ellipsis_rect(x, y, sz_ellipsis.GetWidth(), rect.height);
-//	wxRendererNative::Get().DrawPushButton(&grid, dc, ellipsis_rect, wxCONTROL_CURRENT);
 
 
 	//  draw the text
@@ -457,7 +456,6 @@ void GridCellVarValueRenderer::Draw(wxGrid &grid, wxGridCellAttr &attr, wxDC &dc
 	int dec_width = 2;
 	int str_width = 100;
 	wxString value = grid.GetCellValue(row, col).Left(str_width) + m_ellipsis;
-	//rect.width -= ellipsis_rect.width;
 
 	wxSize sz = dc.GetTextExtent(value);
 	while ((sz.GetWidth() > rect.GetWidth()) && (str_width > dec_width))
@@ -474,7 +472,6 @@ void GridCellVarValueRenderer::Draw(wxGrid &grid, wxGridCellAttr &attr, wxDC &dc
 
 	SetTextColoursAndFont(grid, attr, dc, isSelected);
 	grid.DrawTextRectangle(dc, value,	rect, hAlign, vAlign);
-	//dc.DrawText(m_ellipsis, x, y);
 
 }
 
@@ -540,21 +537,9 @@ void GridCellVarValueEditor::Create(wxWindow *parent, wxWindowID id, wxEvtHandle
 {
 	m_parent = parent;
 	m_text = new wxStaticText(parent, id, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxST_NO_AUTORESIZE | wxST_ELLIPSIZE_END);
-	//	m_pButton = new wxButton(parent, id, m_strLabel);
 	SetControl(m_text);
 	wxGridCellEditor::Create(parent, id, pEvtHandler);
-
-//	m_pButton->Connect(wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler(GridCellVarValueEditor::OnButton));
 }
-/*
-void GridCellVarValueEditor::OnButton(wxCommandEvent &evt)
-{
-//	wxMessageBox("Button pushed");
-//	VariableGridData *vgd = static_cast<VariableGridData *>(m_grid->GetTable());
-//	VariablePopupEditor *vpe = new VariablePopupEditor(m_parent, vgd->GetVarInfo(m_row, m_col), vgd->GetVarValue(m_row, m_col), vgd->GetValue(m_row, 0));
-	evt.Skip();
-}
-*/
 
 void GridCellVarValueEditor::Reset()
 {
@@ -564,8 +549,6 @@ void GridCellVarValueEditor::Reset()
 
 void GridCellVarValueEditor::SetSize(const wxRect &rect_orig)
 {	// similar to wxGridCellTextEditor
-//	m_text->SetSize(rect.x+10, rect.y, rect.width-10, rect.height, wxSIZE_FORCE);
-//	m_text->Move(10,1.0);
 	wxRect rect(rect_orig);
 
 	// Make the edit control large enough to allow for internal margins
@@ -648,20 +631,17 @@ void GridCellVarValueEditor::BeginEdit(int row, int col, wxGrid *pGrid)
 	VariableGridData *vgd = static_cast<VariableGridData *>(pGrid->GetTable());
 	VarValue *vv = vgd->GetVarValue(row, col);
 	VariablePopupDialog vpe(m_parent, vgd->GetVarInfo(row, col), vv, vgd->GetValue(row, 0));
-	if (vpe.ShowModal() == wxID_OK) 
+	if (vpe.ShowModal() == wxID_OK)
+	{
 		// update variable value
 		ActiveInputPage::DataExchange(vpe.GetUIObject(), *vv, ActiveInputPage::OBJ_TO_VAR);
-	else
-		// TODO - implement cancel;
-		ActiveInputPage::DataExchange(vpe.GetUIObject(), *vv, ActiveInputPage::OBJ_TO_VAR);
-	// if changed then get new value and apply to static text control
-	m_text->SetLabel(vv->AsString());
+		// if changed then get new value and apply to static text control
+		m_text->SetLabel(vv->AsString());
+	}
 	// to refresh when editing
 	pGrid->SaveEditControlValue();
 
-
 //	wxGridEvent evt(wxID_ANY, wxEVT_GRID_CELL_LEFT_CLICK, pGrid, row, col);
-//	wxPostEvent(m_pButton, wxCommandEvent(wxEVT_COMMAND_BUTTON_CLICKED));
 }
 
 bool GridCellVarValueEditor::EndEdit(int row, int col, const wxGrid *grid, const wxString &oldval, wxString *newval)
@@ -742,29 +722,12 @@ VariablePopupPanel::VariablePopupPanel(wxWindow *parent, VarInfo *vi, VarValue *
 
 }
 
-
-
 VariablePopupPanel::~VariablePopupPanel()
 {
 	m_form_data->Detach();
 	delete m_form_data;
 }
 
-
-void VariablePopupPanel::Init()
-{
-	// TODO get editor name from VarInfo and create appropriate editor
-	// 	e.g.	wxUIObject *obj = m_form_data->Create(vi->Editor, GetClientSize(), m_var_name);
-	/* testing based on type
-	if (m_vv->Type() == VV_MATRIX)
-	{
-	wxUIObject *obj = m_form_data->Create("DataMatrix", GetClientSize(), m_var_name);
-	ActiveInputPage::DataExchange(obj, *m_vv, ActiveInputPage::VAR_TO_OBJ);
-	}
-	*/
-
-
-}
 
 ////////////////////////////////////////////////////////////////////////////////////////
 
@@ -775,8 +738,6 @@ VariablePopupDialog::VariablePopupDialog(wxWindow *parent, VarInfo *vi, VarValue
 
 	m_panel = new VariablePopupPanel(this, vi, vv, var_name);
 
-	//	Init();
-	
 	wxBoxSizer *sizer = new wxBoxSizer(wxVERTICAL);
 	sizer->Add( m_panel,
 	1,            // make vertically stretchable
@@ -801,13 +762,11 @@ VariablePopupDialog::VariablePopupDialog(wxWindow *parent, VarInfo *vi, VarValue
 	wxSizerFlags(0).Right());
 	SetSizerAndFit(sizer); // use the sizer for layout and set size and hints
 	
-
 	SetTitle("Variable editor for: " + var_name);
 #ifdef __WXMSW__
 	SetIcon(wxICON(appicon));
 #endif	
 	CenterOnParent();
-
 }
 
 VariablePopupDialog::~VariablePopupDialog()
@@ -817,21 +776,6 @@ VariablePopupDialog::~VariablePopupDialog()
 wxUIObject *VariablePopupDialog::GetUIObject()
 {
 	return m_panel->GetUIObject();
-}
-
-void VariablePopupDialog::Init()
-{
-	// TODO get editor name from VarInfo and create appropriate editor
-	// 	e.g.	wxUIObject *obj = m_form_data->Create(vi->Editor, GetClientSize(), m_var_name);
-	/* testing based on type
-	if (m_vv->Type() == VV_MATRIX)
-	{
-	wxUIObject *obj = m_form_data->Create("DataMatrix", GetClientSize(), m_var_name);
-	ActiveInputPage::DataExchange(obj, *m_vv, ActiveInputPage::VAR_TO_OBJ);
-	}
-	*/
-
-
 }
 
 

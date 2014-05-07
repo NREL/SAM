@@ -96,8 +96,6 @@ public:
 	~VariablePopupPanel();
 
 	wxUIObject *GetUIObject() { return m_obj; }
-
-	void Init();
 private:
 	wxUIObject *m_obj;
 	VarInfo *m_vi;
@@ -113,8 +111,6 @@ public:
 	~VariablePopupDialog();
 
 	wxUIObject *GetUIObject();
-
-	void Init();
 private:
 	VariablePopupPanel *m_panel;
 	VarInfo *m_vi;
