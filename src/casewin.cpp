@@ -82,7 +82,8 @@ END_EVENT_TABLE()
 
 enum { ID_INPUTPAGELIST = wxID_HIGHEST + 142,
 	ID_SIMULATE, ID_RESULTSPAGE, ID_ADVANCED, ID_PARAMETRICS, ID_SENSITIVITY, ID_P50P90, ID_SCRIPTING,
-	ID_COLLAPSE,ID_EXCL_BUTTON, ID_EXCL_OPTION, ID_EXCL_OPTION_MAX=ID_EXCL_OPTION+25 };
+	ID_COLLAPSE,ID_EXCL_BUTTON, ID_EXCL_OPTION, ID_EXCL_OPTION_MAX=ID_EXCL_OPTION+25,
+	ID_PAGES, ID_BASECASE_PAGES };
 
 BEGIN_EVENT_TABLE( CaseWindow, wxSplitterWindow )
 	EVT_BUTTON( ID_SIMULATE, CaseWindow::OnCommand )
@@ -100,6 +101,9 @@ BEGIN_EVENT_TABLE( CaseWindow, wxSplitterWindow )
 	EVT_BUTTON( ID_EXCL_BUTTON, CaseWindow::OnCommand )
 	EVT_CHECKBOX( ID_COLLAPSE, CaseWindow::OnCommand )
 	EVT_MENU_RANGE( ID_EXCL_OPTION, ID_EXCL_OPTION_MAX, CaseWindow::OnCommand )
+
+	EVT_NOTEBOOK_PAGE_CHANGED( ID_PAGES, CaseWindow::OnSubNotebookPageChanged )
+	EVT_NOTEBOOK_PAGE_CHANGED( ID_BASECASE_PAGES, CaseWindow::OnSubNotebookPageChanged )
 END_EVENT_TABLE()
 
 CaseWindow::CaseWindow( wxWindow *parent, Case *c )
@@ -108,6 +112,7 @@ CaseWindow::CaseWindow( wxWindow *parent, Case *c )
 {
 	m_case->AddListener( this );
 
+	m_pageNote = 0;
 	m_currentGroup = 0;
 
 	wxPanel *left_panel = new wxPanel( this );
@@ -155,7 +160,7 @@ CaseWindow::CaseWindow( wxWindow *parent, Case *c )
 
 	left_panel->SetSizer( szvl );
 
-	m_pageFlipper = new wxSimplebook( this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxBORDER_NONE );
+	m_pageFlipper = new wxSimplebook( this, ID_PAGES, wxDefaultPosition, wxDefaultSize, wxBORDER_NONE );
 
 	m_inputPagePanel = new wxPanel( m_pageFlipper );
 	m_inputPagePanel->SetBackgroundColour( *wxWHITE );
@@ -178,8 +183,8 @@ CaseWindow::CaseWindow( wxWindow *parent, Case *c )
 	m_pageFlipper->AddPage( m_inputPagePanel, "Input Pages", true );
 
 	
-	m_baseCaseResults = new ResultsViewer( m_pageFlipper );
-	m_pageFlipper->AddPage( m_baseCaseResults, "Base Case", true, true );
+	m_baseCaseResults = new ResultsViewer( m_pageFlipper, ID_BASECASE_PAGES );
+	m_pageFlipper->AddPage( m_baseCaseResults, "Base Case" );
 
 	wxPanel *param_panel = new wxPanel( m_pageFlipper );
 
@@ -540,6 +545,13 @@ void CaseWindow::OnCaseEvent( Case *, CaseEvent &evt )
 			SwitchToInputPage( sel );
 		else
 			m_pageFlipper->SetSelection(0);
+
+		// make sure at least the first input page is selected
+		// if nothing else
+		if ( m_pageFlipper->GetSelection() == 0
+			&& m_currentGroup == 0 
+			&& m_pageGroups.size() > 0 )
+			SwitchToInputPage( m_pageGroups[0]->SideBarLabel );
 		
 		m_baseCaseResults->Clear();
 
@@ -569,6 +581,14 @@ void CaseWindow::DetachCurrentInputPage()
 	m_currentActivePages.clear();
 }
 
+wxArrayString CaseWindow::GetInputPages()
+{
+	wxArrayString list;
+	for( size_t i=0; i<m_pageGroups.size();i++ )
+		list.Add( m_pageGroups[i]->SideBarLabel );
+	return list;
+}
+
 bool CaseWindow::SwitchToInputPage( const wxString &name )
 {
 	wxBusyCursor wait;
@@ -592,6 +612,9 @@ bool CaseWindow::SwitchToInputPage( const wxString &name )
 	UpdatePageNote();
 
 //	m_inputPagePanel->Thaw();
+
+	if ( m_inputPageList->GetStringSelection() != name )
+		m_inputPageList->Select( m_inputPageList->Find( name ) );
 
 	return true;
 }
@@ -790,6 +813,8 @@ void CaseWindow::UpdateConfiguration()
 
 void CaseWindow::UpdatePageNote()
 {
+	if ( m_pageNote == 0 ) return;
+
 	// save page note to ID
 	if (m_lastPageNoteId != "")
 	{
@@ -823,6 +848,12 @@ bool CaseWindow::HasPageNote(const wxString &id)
 	return !id.IsEmpty() && !m_case->RetrieveNote(id).IsEmpty();
 }
 
+void CaseWindow::OnSubNotebookPageChanged( wxNotebookEvent &evt )
+{
+	// common event handler for notebook page events to update the page note
+	UpdatePageNote();
+}
+
 wxString CaseWindow::GetCurrentContext()
 {
 	wxString id = "about";
@@ -837,7 +868,7 @@ wxString CaseWindow::GetCurrentContext()
 		else id = "Inputs";
 		break;
 	case 1: // base case results
-		id = "Base Case Results";
+		id = "Base Case " + m_baseCaseResults->GetSelectionText();
 		break;
 	case 2: // parametrics
 		id = "Parametrics";

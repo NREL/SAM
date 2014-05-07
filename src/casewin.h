@@ -3,7 +3,7 @@
 
 #include <wx/splitter.h>
 #include <wx/minifram.h>
-
+#include <wx/notebook.h>
 
 #include "case.h"
 
@@ -31,6 +31,7 @@ public:
 	void UpdateConfiguration();
 
 	bool SwitchToInputPage( const wxString &name );
+	wxArrayString GetInputPages();
 	wxUIObject *FindActiveObject( const wxString &name, ActiveInputPage **page = 0 );
 
 	wxString GetCurrentContext();
@@ -89,6 +90,7 @@ private:
 
 	void OnCommand( wxCommandEvent & );	
 	virtual void OnCaseEvent( Case *, CaseEvent & );
+	void OnSubNotebookPageChanged( wxNotebookEvent &evt );
 
 
 	DECLARE_EVENT_TABLE();

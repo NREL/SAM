@@ -160,8 +160,8 @@ BEGIN_EVENT_TABLE( ResultsViewer, wxMetroNotebook )
 END_EVENT_TABLE()
 
 
-ResultsViewer::ResultsViewer( wxWindow *parent )
-	: wxMetroNotebook( parent, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxMT_LIGHTTHEME ),
+ResultsViewer::ResultsViewer( wxWindow *parent, int id )
+	: wxMetroNotebook( parent, id, wxDefaultPosition, wxDefaultSize, wxMT_LIGHTTHEME ),
 	 m_sim( 0 )
 {
 	m_summaryLayout = new wxSnapLayout( this, wxID_ANY );
@@ -292,7 +292,7 @@ void ResultsViewer::Setup( Simulation *sim )
 			cc.Invoke( metricscb, SamApp::GlobalCallbacks().GetEnv() );
 	}
 	
-	if ( m_metrics.size() > 0 )
+	if ( m_metrics.size() > 0 && m_sim->Outputs().size() > 0 )
 	{
 		matrix_t<wxString> metrics;
 		metrics.resize( m_metrics.size()+1, 2 );
@@ -333,7 +333,7 @@ void ResultsViewer::Setup( Simulation *sim )
 
 		m_metricsTable->SetData( metrics );
 	}
-	else
+	else if ( m_sim->Outputs().size() > 0 )
 	{
 		wxArrayString mvars;
 		std::vector<double> mvals;
@@ -361,6 +361,13 @@ void ResultsViewer::Setup( Simulation *sim )
 			}
 			m_metricsTable->SetData( metrics );
 		}
+	}
+	else
+	{
+		matrix_t<wxString> metrics( 2, 1 );
+		metrics(0,0) = "No results are available.";
+		metrics(1,0) = "Click the 'Simulate' button first to run a simulation.";
+		m_metricsTable->SetData( metrics );
 	}
 
 	RemoveAllDataSets();
@@ -668,7 +675,7 @@ void ResultsViewer::CreateAutoGraphs()
 			i++;
 	}
 
-	if ( !m_sim ) return;
+	if ( !m_sim || m_sim->Outputs().size() == 0 ) return;
 
 	for( size_t i=0;i<m_autographs.size();i++ )
 	{
