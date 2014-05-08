@@ -249,6 +249,12 @@ wxString MainWindow::GetProjectDisplayName()
 	else return m_projectFileName;
 }
 
+wxString MainWindow::GetProjectFileName()
+{
+	return m_projectFileName;
+}
+
+
 wxString MainWindow::GetUniqueCaseName( wxString base )
 {	
 	if ( base.IsEmpty() ) base = wxT("untitled");
@@ -801,6 +807,9 @@ void MainWindow::OnCaseMenu( wxCommandEvent &evt )
 			c->SendEvent( CaseEvent( CaseEvent::VARS_CHANGED, c->Values().ListAll() ) );
 		}
 		break;
+	case ID_CASE_REPORT:
+		cw->GenerateReport();
+		break;
 	case ID_CASE_SIMULATE:
 		cw->RunBaseCase();
 		break;
@@ -1311,7 +1320,7 @@ bool SamApp::OnInit()
 
 	wxInitAllImageHandlers();
 	wxSimpleCurlInit();
-
+	
 	for( int i=0;i<argc;i++ )
 		g_appArgs.Add( argv[i] );
 	
@@ -1348,6 +1357,11 @@ bool SamApp::OnInit()
 	// register all input page UI objects 
 	wxUIObjectTypeProvider::RegisterBuiltinTypes();
 	RegisterUIObjectsForSAM();
+
+	// register standard sam report objects for report generation
+extern void RegisterReportObjectTypes();
+	RegisterReportObjectTypes();
+
 	
 	wxLogStatus( "startup with SSC version %d, %s", ssc_version(), ssc_build_info() );
 

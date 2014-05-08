@@ -28,6 +28,7 @@
 #include "inputpage.h"
 #include "invoke.h"
 #include "widgets.h"
+#include "reports.h"
 
 enum { ID_STARTUP_EDITOR = wxID_HIGHEST+124,
 	ID_STARTUP_SAVE,
@@ -1483,6 +1484,9 @@ IDEWindow::IDEWindow( wxWindow *parent )
 	m_navigationPanel = new ScriptPanel( m_notebook, "navigation.lk" );
 	m_navigationPanel->AddLibrary( invoke_casecallback_funcs(), "Case callbacks" );
 	m_notebook->AddPage( m_navigationPanel, "Navigation" );
+
+	m_reportEditorPanel = new SamReportWindow( m_notebook );
+	m_notebook->AddPage( m_reportEditorPanel, "Reports" );
 
 	m_notebook->Refresh();
 }
