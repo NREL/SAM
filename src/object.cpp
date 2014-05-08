@@ -1,4 +1,5 @@
 #include <wx/datstrm.h>
+#include <wx/tokenzr.h>
 #include "object.h"
 
 
@@ -211,4 +212,16 @@ bool StringHash::Read( wxInputStream &input )
 		(*this)[name] = value;
 	}
 	return code == in.Read8();
+}
+
+void StringHash::Split(const wxString &input, char sep, char eq)
+{
+	clear();
+	wxArrayString items = wxStringTokenize(input,sep);
+	for (int i=0;i<(int)items.Count();i++)
+	{
+		int eqpos = items[i].Index(eq);
+		if (eqpos >= 0)
+			(*this)[ items[i].Left(eqpos) ] = items[i].Mid(eqpos+1);
+	}
 }

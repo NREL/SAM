@@ -44,6 +44,8 @@ public:
 	bool RunBaseCase();
 	void UpdateResults();
 
+	void GenerateReport();
+
 private:
 	Case *m_case;
 	

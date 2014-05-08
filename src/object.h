@@ -76,6 +76,9 @@ public:
 	virtual wxString GetTypeName();
 	virtual void Write( wxOutputStream & );
 	virtual bool Read( wxInputStream & );
+
+	void Split(const wxString &input, char sep, char eq);
+
 };
 
 

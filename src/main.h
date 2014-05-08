@@ -56,6 +56,7 @@ public:
 	void SaveAs();
 
 	wxString GetProjectDisplayName();
+	wxString GetProjectFileName();
 
 	Case *GetCurrentCase();
 	CaseWindow *GetCurrentCaseWindow();

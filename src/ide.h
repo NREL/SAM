@@ -13,6 +13,8 @@ class wxMetroNotebook;
 class wxExtTextCtrl;
 class wxLKScriptCtrl;
 
+class SamReportWindow;
+
 class ScriptPanel : public wxPanel
 {
 public:
@@ -133,6 +135,7 @@ private:
 	ScriptPanel *m_cashFlowPanel;
 	ScriptPanel *m_autoGraphPanel;
 	ScriptPanel *m_navigationPanel;
+	SamReportWindow *m_reportEditorPanel;
 
 	//SimulationScriptPanel *m_simPanel;
 

@@ -2,6 +2,7 @@
 #include <wx/splitter.h>
 #include <wx/simplebook.h>
 #include <wx/statline.h>
+#include <wx/dir.h>
 
 #include <wex/metro.h>
 #include <wex/lkscript.h>
@@ -14,6 +15,7 @@
 
 #include <wex/utils.h>
 
+#include "reports.h"
 #include "results.h"
 #include "main.h"
 #include "case.h"
@@ -349,6 +351,112 @@ bool CaseWindow::RunBaseCase( )
 void CaseWindow::UpdateResults()
 {
 	m_baseCaseResults->Setup( &m_case->BaseCase() );
+}
+
+
+void CaseWindow::GenerateReport( )
+{
+
+
+	// run base case automatically 
+	if ( !RunBaseCase() )
+	{
+		wxMessageBox( "Base case simulation did not succeed.  Please check your inputs before creating a report");
+		return;
+	}
+
+	wxString ct, cf;
+	if ( ConfigInfo *ci = m_case->GetConfiguration() )
+	{
+		ct = ci->Technology;
+		cf = ci->Financing;
+	}
+	else
+	{
+		wxMessageBox( "Internal error - invalid case configuration");
+		return;
+	}
+
+	
+	int total = 0;
+	wxArrayString validfiles;
+	wxString path = SamApp::GetRuntimePath() + "/reports";
+	wxDir dir( path );
+	if ( dir.IsOpened() )
+	{
+		wxString file;
+		bool has_more = dir.GetFirst( &file, "*.samreport", wxDIR_FILES  );
+		while( has_more )
+		{
+			wxString fp( path + "/" + file );
+			SamReportTemplate templ;
+			if ( templ.Read( fp ))
+			{
+				total++;
+				if ( templ.GetSpecificModelsOnly())
+				{
+					wxArrayString tt, tf;
+					templ.GetModels( &tt, &tf );
+
+					if (tt.Index(ct) != wxNOT_FOUND && tf.Index(cf) != wxNOT_FOUND)
+						validfiles.Add( fp );
+				}
+				else
+					validfiles.Add( fp );
+			}
+
+			has_more = dir.GetNext( &file );
+		}
+	}
+	dir.Close();
+
+	if ( total == 0 )
+	{
+		wxMessageBox("SAM could not find any report templates.\n\nPlease contact SAM user support at sam.support@nrel.gov for more information.");
+		return;
+	}
+
+
+	if (validfiles.Count() == 0)
+	{
+		wxMessageBox( "SAM could not find any templates valid for the current technology and financing combination.\n\nPlease contact SAM user support at sam.support@nrel.gov for more information." );
+		return;
+	}
+
+	int index = 0;
+	SamReportTemplate templ;
+
+	// prompt when more than one report available
+	if ( validfiles.Count() > 1)
+	{
+		wxArrayString choices;
+		for (size_t i=0;i<validfiles.Count();i++)
+			choices.Add( wxFileNameFromPath( validfiles[i] ) );
+
+		index = ::wxGetSingleChoiceIndex( "Select a report template", "Report generation", choices, this );
+	}
+
+	if (index < 0)
+		return;
+
+	wxString casename = SamApp::Window()->Project().GetCaseName( m_case );
+	wxString folder = wxPathOnly( SamApp::Window()->GetProjectFileName() );
+
+	wxFileDialog fdlg( this, "Create PDF report for: " + casename, folder,
+		casename + ".pdf", "Portable Document Format (*.pdf)|*.pdf", wxFD_SAVE|wxFD_OVERWRITE_PROMPT );
+
+	if ( fdlg.ShowModal() != wxID_OK )
+		return;
+
+	wxString pdffile = fdlg.GetPath();
+
+	if (templ.Read( validfiles[index] ))
+	{
+		if (!templ.RenderPdf( pdffile, m_case ))
+			wxMessageBox("Failed to write to selected PDF file:\n\n" + pdffile);
+		else
+			::wxLaunchDefaultBrowser( pdffile );
+	}
 }
 
 void CaseWindow::OnCommand( wxCommandEvent &evt )
