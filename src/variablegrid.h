@@ -52,6 +52,11 @@ public:
 	bool ShowRow(int row, int comparison_type);
 	void Sort(int col, bool ascending);
 
+	// for choice controls
+	wxString GetChoices(int row, int col);
+//	virtual bool CanGetValueAs(int row, int col, const wxString &typeName);
+//	virtual bool CanSetValueAs(int row, int col, const wxString &typeName);
+
 	VarInfo* GetVarInfo(int row, int col);
 	void SetVarInfo(int row, int col, VarInfo *vi);
 	VarValue* GetVarValue(int row, int col);
