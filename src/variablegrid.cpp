@@ -186,6 +186,40 @@ void VariableGridData::SetVarValue(int row, int col, VarValue *vv)
 	}
 }
 
+/*
+bool VariableGridData::CanGetValueAs(int row, int col, const wxString &typeName)
+{
+	if (GetTypeName(row, col) == wxGRID_VALUE_CHOICE)
+		return (typeName == wxGRID_VALUE_NUMBER);
+}
+
+bool VariableGridData::CanSetValueAs(int row, int col, const wxString &typeName)
+{
+	if (GetTypeName(row, col) == wxGRID_VALUE_CHOICE)
+		return (typeName == wxGRID_VALUE_STRING);
+}
+*/
+
+wxString VariableGridData::GetChoices(int row, int col)
+{
+	wxString ret_str = wxEmptyString;
+	int lookup_row = row;
+	if (m_sorted) lookup_row = m_sorted_index[row];
+	if ( col >= 2 ) // get var table and value
+	{
+		if ((col - 2) < m_var_info_lookup_vec.size())
+		{
+			if (m_var_info_lookup_vec[col - 2]->Lookup(m_var_names[lookup_row]))
+			{
+				wxArrayString as = m_var_info_lookup_vec[col - 2]->Lookup(m_var_names[lookup_row])->IndexLabels;
+				for (int i = 0; i < as.Count() - 1; i++)
+					ret_str += as[i] + ",";
+				ret_str += as[as.Count()-1];
+			}
+		}
+	}
+	return ret_str;
+}
 
 wxString VariableGridData::GetValue(int row, int col)
 {
@@ -277,7 +311,7 @@ wxString VariableGridData::GetTypeName(int row, int col)
 			if (type == "Numeric")
 				return wxGRID_VALUE_STRING;
 			else if (type == "Choice")
-				return "GridCellVarValue";
+				return wxGRID_VALUE_CHOICE;
 			else if (type == "ListBox")
 				return "GridCellVarValue";
 			else if (type == "RadioChoice")
@@ -287,11 +321,7 @@ wxString VariableGridData::GetTypeName(int row, int col)
 			else if (type == "Slider")
 				return "GridCellVarValue";
 			else if (type == "CheckBox")
-				return "GridCellVarValue";
-			else if (type == "RadioChoice")
-				return "GridCellVarValue";
-			else if (type == "Slider")
-				return "GridCellVarValue";
+				return wxGRID_VALUE_BOOL;
 			else if (type == "SchedNumeric")
 				return "GridCellVarValue";
 			else if (type == "TOUSchedule")
@@ -890,6 +920,17 @@ VariableGridFrame::VariableGridFrame(wxWindow *parent, ProjectFile *pf, Case *c)
 
 
 		m_grid->SetTable(m_griddata, true, wxGrid::wxGridSelectRows);
+
+
+		// update choices as necessary
+		for (int row = 0; row < m_grid->GetNumberRows(); row++)
+			for (int col = 2; col < m_grid->GetNumberCols(); col++)
+				if (m_griddata->GetTypeName(row, col) == wxGRID_VALUE_CHOICE)
+				{
+
+					m_grid->SetCellRenderer(row, col, new wxGridCellEnumRenderer(m_griddata->GetChoices(row,col)));
+					m_grid->SetCellEditor(row, col, new wxGridCellEnumEditor(m_griddata->GetChoices(row,col)));
+				}
 
 
 		/*
