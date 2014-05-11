@@ -4,6 +4,8 @@
 #include <wx/sizer.h>
 #include <wx/bitmap.h>
 #include <wx/msgdlg.h>
+#include <wx/tokenzr.h>
+
 #include <wex/metro.h>
 
 #include "variablegrid.h"
@@ -196,7 +198,7 @@ bool VariableGridData::CanGetValueAs(int row, int col, const wxString &typeName)
 bool VariableGridData::CanSetValueAs(int row, int col, const wxString &typeName)
 {
 	if (GetTypeName(row, col) == wxGRID_VALUE_CHOICE)
-		return (typeName == wxGRID_VALUE_STRING);
+		return (typeName == wxGRID_VALUE_NUMBER);
 }
 */
 
@@ -311,7 +313,7 @@ wxString VariableGridData::GetTypeName(int row, int col)
 			if (type == "Numeric")
 				return wxGRID_VALUE_STRING;
 			else if (type == "Choice")
-				return wxGRID_VALUE_CHOICE;
+				return "GridCellChoice";
 			else if (type == "ListBox")
 				return "GridCellVarValue";
 			else if (type == "RadioChoice")
@@ -321,7 +323,7 @@ wxString VariableGridData::GetTypeName(int row, int col)
 			else if (type == "Slider")
 				return "GridCellVarValue";
 			else if (type == "CheckBox")
-				return wxGRID_VALUE_BOOL;
+				return "GridCellCheckBox";
 			else if (type == "SchedNumeric")
 				return "GridCellVarValue";
 			else if (type == "TOUSchedule")
@@ -771,6 +773,471 @@ wxGridCellEditor *GridCellVarValueEditor::Clone() const
 
 ////////////////////////////////////////////////////////////////////////////////////////
 
+GridCellChoiceRenderer::GridCellChoiceRenderer(const wxString& choices)
+{
+	if (!choices.empty())
+		SetParameters(choices);
+}
+
+wxGridCellRenderer *GridCellChoiceRenderer::Clone() const
+{
+	GridCellChoiceRenderer *renderer = new GridCellChoiceRenderer;
+	renderer->m_choices = m_choices;
+	return renderer;
+}
+
+wxString GridCellChoiceRenderer::GetString(const wxGrid& grid, int row, int col)
+{
+	wxGridTableBase *table = grid.GetTable();
+	wxString text;
+	long choiceno;
+	table->GetValue(row, col).ToLong(&choiceno);
+	if ((choiceno > -1) && (choiceno < m_choices.size()))
+		text.Printf(wxT("%s"), m_choices[choiceno].c_str());
+	return text;
+}
+
+void GridCellChoiceRenderer::Draw(wxGrid& grid,
+	wxGridCellAttr& attr,
+	wxDC& dc,
+	const wxRect& rectCell,
+	int row, int col,
+	bool isSelected)
+{
+	wxGridCellRenderer::Draw(grid, attr, dc, rectCell, row, col, isSelected);
+
+	SetTextColoursAndFont(grid, attr, dc, isSelected);
+
+	// draw the text left aligned by default
+	int hAlign = wxALIGN_LEFT,
+		vAlign = wxALIGN_INVALID;
+	attr.GetNonDefaultAlignment(&hAlign, &vAlign);
+
+	wxRect rect = rectCell;
+	rect.Inflate(-1);
+
+	grid.DrawTextRectangle(dc, GetString(grid, row, col), rect, hAlign, vAlign);
+}
+
+wxSize GridCellChoiceRenderer::GetBestSize(wxGrid& grid,
+	wxGridCellAttr& attr,
+	wxDC& dc,
+	int row, int col)
+{
+	return DoGetBestSize(attr, dc, GetString(grid, row, col));
+}
+
+void GridCellChoiceRenderer::SetParameters(const wxString& params)
+{
+	if (!params)
+	{
+		return;
+	}
+
+	m_choices.Empty();
+
+	wxStringTokenizer tk(params, wxT(','));
+	while (tk.HasMoreTokens())
+	{
+		m_choices.Add(tk.GetNextToken());
+	}
+}
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////
+
+
+GridCellChoiceEditor::GridCellChoiceEditor(const wxString& choices)
+:wxGridCellChoiceEditor()
+{
+	m_index = -1;
+
+	if (!choices.empty())
+		SetParameters(choices);
+}
+
+wxGridCellEditor *GridCellChoiceEditor::Clone() const
+{
+	GridCellChoiceEditor *editor = new GridCellChoiceEditor();
+	editor->m_index = m_index;
+	return editor;
+}
+
+void GridCellChoiceEditor::BeginEdit(int row, int col, wxGrid* grid)
+{
+	wxASSERT_MSG(m_control,
+		wxT("The GridCellChoiceEditor must be Created first!"));
+
+	wxGridCellEditorEvtHandler* evtHandler = NULL;
+	if (m_control)
+		evtHandler = wxDynamicCast(m_control->GetEventHandler(), wxGridCellEditorEvtHandler);
+
+	// Don't immediately end if we get a kill focus event within BeginEdit
+	if (evtHandler)
+		evtHandler->SetInSetFocus(true);
+
+	wxGridTableBase *table = grid->GetTable();
+
+	if (table->CanGetValueAs(row, col, wxGRID_VALUE_NUMBER))
+	{
+		m_index = table->GetValueAsLong(row, col);
+	}
+	else
+	{
+		wxString startValue = table->GetValue(row, col);
+		if (startValue.IsNumber() && !startValue.empty())
+		{
+			startValue.ToLong(&m_index);
+		}
+		else
+		{
+			m_index = -1;
+		}
+	}
+
+	Combo()->SetSelection(m_index);
+	Combo()->SetFocus();
+
+#ifdef __WXOSX_COCOA__
+	// This is a work around for the combobox being simply dismissed when a
+	// choice is made in it under OS X. The bug is almost certainly due to a
+	// problem in focus events generation logic but it's not obvious to fix and
+	// for now this at least allows to use wxGrid.
+	Combo()->Popup();
+#endif
+
+	if (evtHandler)
+	{
+		// When dropping down the menu, a kill focus event
+		// happens after this point, so we can't reset the flag yet.
+#if !defined(__WXGTK20__)
+		evtHandler->SetInSetFocus(false);
+#endif
+	}
+}
+
+bool GridCellChoiceEditor::EndEdit(int WXUNUSED(row),
+	int WXUNUSED(col),
+	const wxGrid* WXUNUSED(grid),
+	const wxString& WXUNUSED(oldval),
+	wxString *newval)
+{
+	long idx = Combo()->GetSelection();
+	if (idx == m_index)
+		return false;
+
+	m_index = idx;
+
+	if (newval)
+		newval->Printf("%ld", m_index);
+
+	return true;
+}
+
+void GridCellChoiceEditor::ApplyEdit(int row, int col, wxGrid* grid)
+{
+	wxGridTableBase * const table = grid->GetTable();
+	table->SetValue(row, col, wxString::Format("%ld", m_index));
+}
+
+////////////////////////////////////////////////////////////////////////////////////////
+
+
+wxSize GridCellCheckBoxRenderer::ms_sizeCheckMark;
+
+wxSize GridCellCheckBoxRenderer::GetBestSize(wxGrid& grid,
+	wxGridCellAttr& WXUNUSED(attr),
+	wxDC& WXUNUSED(dc),
+	int WXUNUSED(row),
+	int WXUNUSED(col))
+{
+	// compute it only once (no locks for MT safeness in GUI thread...)
+	if (!ms_sizeCheckMark.x)
+	{
+		ms_sizeCheckMark = wxRendererNative::Get().GetCheckBoxSize(&grid);
+	}
+
+	return ms_sizeCheckMark;
+}
+
+void GridCellCheckBoxRenderer::Draw(wxGrid& grid,
+	wxGridCellAttr& attr,
+	wxDC& dc,
+	const wxRect& rect,
+	int row, int col,
+	bool isSelected)
+{
+	wxGridCellRenderer::Draw(grid, attr, dc, rect, row, col, isSelected);
+
+	// draw a check mark in the centre (ignoring alignment - TODO)
+	wxSize size = GetBestSize(grid, attr, dc, row, col);
+
+	// don't draw outside the cell
+	wxCoord minSize = wxMin(rect.width, rect.height);
+	if (size.x >= minSize || size.y >= minSize)
+	{
+		// and even leave (at least) 1 pixel margin
+		size.x = size.y = minSize;
+	}
+
+	// draw a border around checkmark
+	int vAlign, hAlign;
+	attr.GetAlignment(&hAlign, &vAlign);
+
+	wxRect rectBorder;
+	if (hAlign == wxALIGN_CENTRE)
+	{
+		rectBorder.x = rect.x + rect.width / 2 - size.x / 2;
+		rectBorder.y = rect.y + rect.height / 2 - size.y / 2;
+		rectBorder.width = size.x;
+		rectBorder.height = size.y;
+	}
+	else if (hAlign == wxALIGN_LEFT)
+	{
+		rectBorder.x = rect.x + 2;
+		rectBorder.y = rect.y + rect.height / 2 - size.y / 2;
+		rectBorder.width = size.x;
+		rectBorder.height = size.y;
+	}
+	else if (hAlign == wxALIGN_RIGHT)
+	{
+		rectBorder.x = rect.x + rect.width - size.x - 2;
+		rectBorder.y = rect.y + rect.height / 2 - size.y / 2;
+		rectBorder.width = size.x;
+		rectBorder.height = size.y;
+	}
+
+	bool value;
+	wxString cellval(grid.GetTable()->GetValue(row, col));
+	value = (cellval == "1");
+
+	int flags = 0;
+	if (value)
+		flags |= wxCONTROL_CHECKED;
+
+	wxRendererNative::Get().DrawCheckBox(&grid, dc, rectBorder, flags);
+}
+
+
+////////////////////////////////////////////////////////////////////////////////////////
+
+void GridCellCheckBoxEditor::Create(wxWindow* parent,
+	wxWindowID id,
+	wxEvtHandler* evtHandler)
+{
+	m_control = new wxCheckBox(parent, id, wxEmptyString,
+		wxDefaultPosition, wxDefaultSize,
+		wxNO_BORDER);
+
+	wxGridCellEditor::Create(parent, id, evtHandler);
+}
+
+void GridCellCheckBoxEditor::SetSize(const wxRect& r)
+{
+	bool resize = false;
+	wxSize size = m_control->GetSize();
+	wxCoord minSize = wxMin(r.width, r.height);
+
+	// check if the checkbox is not too big/small for this cell
+	wxSize sizeBest = m_control->GetBestSize();
+	if (!(size == sizeBest))
+	{
+		// reset to default size if it had been made smaller
+		size = sizeBest;
+
+		resize = true;
+	}
+
+	if (size.x >= minSize || size.y >= minSize)
+	{
+		// leave 1 pixel margin
+		size.x = size.y = minSize - 2;
+
+		resize = true;
+	}
+
+	if (resize)
+	{
+		m_control->SetSize(size);
+	}
+
+	// position it in the centre of the rectangle (TODO: support alignment?)
+
+#if defined(__WXGTK__) || defined (__WXMOTIF__)
+	// the checkbox without label still has some space to the right in wxGTK,
+	// so shift it to the right
+	size.x -= 8;
+#elif defined(__WXMSW__)
+	// here too, but in other way
+	size.x += 1;
+	size.y -= 2;
+#endif
+
+	int hAlign = wxALIGN_CENTRE;
+	int vAlign = wxALIGN_CENTRE;
+	if (GetCellAttr())
+		GetCellAttr()->GetAlignment(&hAlign, &vAlign);
+
+	int x = 0, y = 0;
+	if (hAlign == wxALIGN_LEFT)
+	{
+		x = r.x + 2;
+
+#ifdef __WXMSW__
+		x += 2;
+#endif
+
+		y = r.y + r.height / 2 - size.y / 2;
+	}
+	else if (hAlign == wxALIGN_RIGHT)
+	{
+		x = r.x + r.width - size.x - 2;
+		y = r.y + r.height / 2 - size.y / 2;
+	}
+	else if (hAlign == wxALIGN_CENTRE)
+	{
+		x = r.x + r.width / 2 - size.x / 2;
+		y = r.y + r.height / 2 - size.y / 2;
+	}
+
+	m_control->Move(x, y);
+}
+
+void GridCellCheckBoxEditor::Show(bool show, wxGridCellAttr *attr)
+{
+	m_control->Show(show);
+
+	if (show)
+	{
+		wxColour colBg = attr ? attr->GetBackgroundColour() : *wxLIGHT_GREY;
+		CBox()->SetBackgroundColour(colBg);
+	}
+}
+
+void GridCellCheckBoxEditor::BeginEdit(int row, int col, wxGrid* grid)
+{
+	wxASSERT_MSG(m_control,
+		wxT("The wxGridCellEditor must be created first!"));
+
+	wxString cellval(grid->GetTable()->GetValue(row, col));
+
+	if (cellval == "0")
+		m_value = false;
+	else if (cellval == "1")
+		m_value = true;
+	else
+	{
+			// do not try to be smart here and convert it to true or false
+			// because we'll still overwrite it with something different and
+			// this risks to be very surprising for the user code, let them
+			// know about it
+		wxFAIL_MSG(wxT("invalid value for a cell with bool editor!"));
+	}
+
+	CBox()->SetValue(m_value);
+	CBox()->SetFocus();
+}
+
+bool GridCellCheckBoxEditor::EndEdit(int WXUNUSED(row),
+	int WXUNUSED(col),
+	const wxGrid* WXUNUSED(grid),
+	const wxString& WXUNUSED(oldval),
+	wxString *newval)
+{
+	bool value = CBox()->GetValue();
+	if (value == m_value)
+		return false;
+
+	m_value = value;
+
+	if (newval)
+		*newval = GetValue();
+
+	return true;
+}
+
+void GridCellCheckBoxEditor::ApplyEdit(int row, int col, wxGrid* grid)
+{
+	wxGridTableBase * const table = grid->GetTable();
+	if (table->CanSetValueAs(row, col, wxGRID_VALUE_BOOL))
+		table->SetValueAsBool(row, col, m_value);
+	else
+		table->SetValue(row, col, GetValue());
+}
+
+void GridCellCheckBoxEditor::Reset()
+{
+	wxASSERT_MSG(m_control,
+		wxT("The wxGridCellEditor must be created first!"));
+
+	CBox()->SetValue(m_value);
+}
+
+/*
+void GridCellCheckBoxEditor::StartingClick()
+{
+	CBox()->SetValue(!CBox()->GetValue());
+}
+*/
+
+bool GridCellCheckBoxEditor::IsAcceptedKey(wxKeyEvent& event)
+{
+	if (wxGridCellEditor::IsAcceptedKey(event))
+	{
+		int keycode = event.GetKeyCode();
+		switch (keycode)
+		{
+		case WXK_SPACE:
+		case '+':
+		case '-':
+			return true;
+		}
+	}
+
+	return false;
+}
+
+wxString GridCellCheckBoxEditor::GetValue() const
+{
+	if (CBox()->GetValue())
+		return "1";
+	else
+		return "0";
+}
+
+/*
+void GridCellCheckBoxEditor::StartingKey(wxKeyEvent& event)
+{
+	int keycode = event.GetKeyCode();
+	switch (keycode)
+	{
+	case WXK_SPACE:
+		CBox()->SetValue(!CBox()->GetValue());
+		break;
+
+	case '+':
+		CBox()->SetValue(true);
+		break;
+
+	case '-':
+		CBox()->SetValue(false);
+		break;
+	}
+}
+
+
+
+ static  bool
+GridCellCheckBoxEditor::IsTrueValue(const wxString& value)
+{
+	return value == ms_stringValues[true];
+}
+*/
+
+
+////////////////////////////////////////////////////////////////////////////////////////
+
 BEGIN_EVENT_TABLE(VariableGrid, wxGrid)
 EVT_GRID_CELL_LEFT_CLICK(VariableGrid::OnLeftClick)
 END_EVENT_TABLE()
@@ -824,11 +1291,20 @@ VariablePopupDialog::VariablePopupDialog(wxWindow *parent, VarInfo *vi, VarValue
 {
 	if (!m_vi || !m_vv) return;
 
-	m_panel = new VariablePopupPanel(this, vi, vv, var_name);
+	//m_panel = new VariablePopupPanel(this, vi, vv, var_name);
+	m_obj = wxUIObjectTypeProvider::Create(m_vi->UIObject);
+	if (m_obj == 0) return;
+
+	m_obj->SetName(m_var_name);
+	m_obj->SetGeometry(GetClientSize());
+	ActiveInputPage::DataExchange(m_obj, *m_vv, ActiveInputPage::VAR_TO_OBJ);
+	m_ctrl = m_obj->CreateNative(this);
+
 
 	wxBoxSizer *sizer = new wxBoxSizer(wxVERTICAL);
-	sizer->Add( m_panel,
-	1,            // make vertically stretchable
+	//sizer->Add(m_panel,
+	sizer->Add(m_ctrl,
+		1,            // make vertically stretchable
 	wxEXPAND |    // make horizontally stretchable
 	wxALL,        //   and make border all around
 	0 );         // set border width to 10
@@ -863,7 +1339,8 @@ VariablePopupDialog::~VariablePopupDialog()
 
 wxUIObject *VariablePopupDialog::GetUIObject()
 {
-	return m_panel->GetUIObject();
+//	return m_panel->GetUIObject();
+	return m_obj;
 }
 
 
@@ -915,6 +1392,10 @@ VariableGridFrame::VariableGridFrame(wxWindow *parent, ProjectFile *pf, Case *c)
 
 		m_grid = new VariableGrid(this, wxID_ANY);
 
+		m_grid->RegisterDataType("GridCellCheckBox", new GridCellCheckBoxRenderer, new GridCellCheckBoxEditor);
+		m_grid->HideRowLabels();
+		m_grid->RegisterDataType("GridCellChoice", new GridCellChoiceRenderer, new GridCellChoiceEditor);
+		m_grid->HideRowLabels();
 		m_grid->RegisterDataType("GridCellVarValue", new GridCellVarValueRenderer, new GridCellVarValueEditor);
 		m_grid->HideRowLabels();
 
@@ -925,11 +1406,12 @@ VariableGridFrame::VariableGridFrame(wxWindow *parent, ProjectFile *pf, Case *c)
 		// update choices as necessary
 		for (int row = 0; row < m_grid->GetNumberRows(); row++)
 			for (int col = 2; col < m_grid->GetNumberCols(); col++)
-				if (m_griddata->GetTypeName(row, col) == wxGRID_VALUE_CHOICE)
+//				if (m_griddata->GetTypeName(row, col) == wxGRID_VALUE_CHOICE)
+				if (m_griddata->GetTypeName(row, col) == "GridCellChoice")
 				{
 
-					m_grid->SetCellRenderer(row, col, new wxGridCellEnumRenderer(m_griddata->GetChoices(row,col)));
-					m_grid->SetCellEditor(row, col, new wxGridCellEnumEditor(m_griddata->GetChoices(row,col)));
+					m_grid->SetCellRenderer(row, col, new GridCellChoiceRenderer(m_griddata->GetChoices(row,col)));
+					m_grid->SetCellEditor(row, col, new GridCellChoiceEditor(m_griddata->GetChoices(row,col)));
 				}
 
 
