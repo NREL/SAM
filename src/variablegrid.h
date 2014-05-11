@@ -91,36 +91,16 @@ private:
 
 };
 
-class VariablePopupPanel : public wxPanel
-{
-public:
-	VariablePopupPanel(wxWindow *parent, VarInfo *vi, VarValue *vv, wxString &var_name);
-	~VariablePopupPanel();
-
-	wxUIObject *GetUIObject() { return m_obj; }
-private:
-	wxUIObject *m_obj;
-	VarInfo *m_vi;
-	VarValue *m_vv;
-	wxUIFormData *m_form_data;
-	wxString m_var_name;
-};
 
 class VariablePopupDialog : public wxDialog
 {
 public:
-	VariablePopupDialog(wxWindow *parent, VarInfo *vi, VarValue *vv, wxString &var_name);
+	VariablePopupDialog(wxWindow *parent, wxUIObject *obj, wxString &name);
 	~VariablePopupDialog();
 
 	wxUIObject *GetUIObject();
 private:
-	VariablePopupPanel *m_panel;
-	VarInfo *m_vi;
-	VarValue *m_vv;
-	wxUIFormData *m_form_data;
-	wxString m_var_name;
 	wxUIObject *m_obj;
-	wxWindow *m_ctrl;
 };
 
 
@@ -151,6 +131,7 @@ private:
 	VarValue *m_var_value;
 	wxWindow *m_parent;
 	VariablePopupDialog *m_vpe;
+	bool DisplayEditor(wxUIObject *obj, wxString &name, wxGrid *grid, VarValue *vv);
 
 	DECLARE_NO_COPY_CLASS(GridCellVarValueEditor)
 };

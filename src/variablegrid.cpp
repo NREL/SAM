@@ -712,6 +712,32 @@ bool GridCellVarValueEditor::IsAcceptedKey(wxKeyEvent& event)
 }
 
 
+bool GridCellVarValueEditor::DisplayEditor(wxUIObject *obj, wxString &name, wxGrid *grid, VarValue *vv)
+{
+	// from ActiveInputPage::DataExchange 
+	obj->CreateNative(grid); // needed to provide valid GetNative call
+	if (AFHourlyFactorCtrl *hf = obj->GetNative<AFHourlyFactorCtrl>())
+	{
+		hf->OnPressed(wxCommandEvent(wxEVT_BUTTON));
+	}
+	else if (wxDiurnalPeriodCtrl *dp = obj->GetNative<wxDiurnalPeriodCtrl>())
+	{
+		VariablePopupDialog vpe(grid, obj, name);
+		vpe.ShowModal();
+		obj = vpe.GetUIObject();
+	}
+	else return false; // object data exch not handled for this type
+
+	// update variable value - can be paced in DisplayEditor but kept here for central updating
+	ActiveInputPage::DataExchange(obj, *vv, ActiveInputPage::OBJ_TO_VAR);
+
+	return true;  // all ok!
+
+
+
+
+}
+
 void GridCellVarValueEditor::BeginEdit(int row, int col, wxGrid *pGrid)
 {
 	/* event values are not preserved*/
@@ -720,14 +746,26 @@ void GridCellVarValueEditor::BeginEdit(int row, int col, wxGrid *pGrid)
 
 	VariableGridData *vgd = static_cast<VariableGridData *>(pGrid->GetTable());
 	VarValue *vv = vgd->GetVarValue(row, col);
-	VariablePopupDialog vpe(m_parent, vgd->GetVarInfo(row, col), vv, vgd->GetValue(row, 0));
-	if (vpe.ShowModal() == wxID_OK)
-	{
-		// update variable value
-		ActiveInputPage::DataExchange(vpe.GetUIObject(), *vv, ActiveInputPage::OBJ_TO_VAR);
+	VarInfo *vi = vgd->GetVarInfo(row, col);
+	wxString var_name = vgd->GetValue(row, 0);
+	wxString var_label = vgd->GetValue(row, 1);
+
+	wxUIObject *obj = wxUIObjectTypeProvider::Create(vi->UIObject);
+	if (obj == 0) return;
+
+	obj->SetName(var_name);
+	ActiveInputPage::DataExchange(obj, *vv, ActiveInputPage::VAR_TO_OBJ);
+
+
+	if (var_label.IsEmpty())
+		DisplayEditor(obj, var_name, pGrid, vv);
+	else
+		DisplayEditor(obj, var_label, pGrid, vv);
+
+	// update variable value - can be paced in DisplayEditor but kept here for central updating
+//	ActiveInputPage::DataExchange(obj, *vv, ActiveInputPage::OBJ_TO_VAR);
 		// if changed then get new value and apply to static text control
-		m_text->SetLabel(vv->AsString());
-	}
+	m_text->SetLabel(vv->AsString());
 	// to refresh when editing
 	pGrid->SaveEditControlValue();
 
@@ -1174,12 +1212,6 @@ void GridCellCheckBoxEditor::Reset()
 	CBox()->SetValue(m_value);
 }
 
-/*
-void GridCellCheckBoxEditor::StartingClick()
-{
-	CBox()->SetValue(!CBox()->GetValue());
-}
-*/
 
 bool GridCellCheckBoxEditor::IsAcceptedKey(wxKeyEvent& event)
 {
@@ -1205,35 +1237,6 @@ wxString GridCellCheckBoxEditor::GetValue() const
 	else
 		return "0";
 }
-
-/*
-void GridCellCheckBoxEditor::StartingKey(wxKeyEvent& event)
-{
-	int keycode = event.GetKeyCode();
-	switch (keycode)
-	{
-	case WXK_SPACE:
-		CBox()->SetValue(!CBox()->GetValue());
-		break;
-
-	case '+':
-		CBox()->SetValue(true);
-		break;
-
-	case '-':
-		CBox()->SetValue(false);
-		break;
-	}
-}
-
-
-
- static  bool
-GridCellCheckBoxEditor::IsTrueValue(const wxString& value)
-{
-	return value == ms_stringValues[true];
-}
-*/
 
 
 ////////////////////////////////////////////////////////////////////////////////////////
@@ -1261,77 +1264,39 @@ OnLeftClick(wxGridEvent &evt)
 }
 ////////////////////////////////////////////////////////////////////////////////////////
 
-VariablePopupPanel::VariablePopupPanel(wxWindow *parent, VarInfo *vi, VarValue *vv, wxString &var_name)
-: wxPanel(parent, wxID_ANY,  wxDefaultPosition, wxSize(400, 700)), m_vi(vi), m_vv(vv), m_var_name(var_name)
+
+VariablePopupDialog::VariablePopupDialog(wxWindow *parent, wxUIObject *obj, wxString &name)
+: wxDialog(parent, wxID_ANY, "Variable Editor", wxDefaultPosition, wxDefaultSize), m_obj(obj)
 {
-	if (!m_vi || !m_vv) return;
-	m_form_data = new wxUIFormData;
-
-	m_form_data->Attach(this);
-	SetClientSize(m_form_data->GetSize());
-
-	SetSizeHints(GetClientSize());
-
-	m_obj = m_form_data->Create(m_vi->UIObject, GetClientSize(), m_var_name);
-	ActiveInputPage::DataExchange(m_obj, *m_vv, ActiveInputPage::VAR_TO_OBJ);
-
-}
-
-VariablePopupPanel::~VariablePopupPanel()
-{
-	m_form_data->Detach();
-	delete m_form_data;
-}
-
-
-////////////////////////////////////////////////////////////////////////////////////////
-
-VariablePopupDialog::VariablePopupDialog(wxWindow *parent, VarInfo *vi, VarValue *vv, wxString &var_name)
-: wxDialog(parent, wxID_ANY, "Variable Editor", wxDefaultPosition, wxDefaultSize), m_vi(vi), m_vv(vv), m_var_name(var_name)
-{
-	if (!m_vi || !m_vv) return;
-
-	//m_panel = new VariablePopupPanel(this, vi, vv, var_name);
-	m_obj = wxUIObjectTypeProvider::Create(m_vi->UIObject);
 	if (m_obj == 0) return;
 
-	m_obj->SetName(m_var_name);
 	m_obj->SetGeometry(GetClientSize());
-	ActiveInputPage::DataExchange(m_obj, *m_vv, ActiveInputPage::VAR_TO_OBJ);
-	m_ctrl = m_obj->CreateNative(this);
+	wxWindow *ctrl = m_obj->CreateNative(this);
 
-	if (AFHourlyFactorCtrl *hf = m_obj->GetNative<AFHourlyFactorCtrl>())
-	{
-		hf->OnPressed(wxCommandEvent(wxEVT_BUTTON));
-	}
-	else
-	{
-		wxBoxSizer *sizer = new wxBoxSizer(wxVERTICAL);
-		//sizer->Add(m_panel,
-		sizer->Add(m_ctrl,
-			1,            // make vertically stretchable
-			wxEXPAND |    // make horizontally stretchable
-			wxALL,        //   and make border all around
-			0);         // set border width to 10
+	wxBoxSizer *sizer = new wxBoxSizer(wxVERTICAL);
+	sizer->Add(ctrl,
+		1,            // make vertically stretchable
+		wxEXPAND |    // make horizontally stretchable
+		wxALL,        //   and make border all around
+		0);         // set border width to 10
 
-		wxBoxSizer *button_sizer = new wxBoxSizer(wxHORIZONTAL);
-		button_sizer->Add(
-			new wxButton(this, wxID_OK, "OK"),
-			0,           // make horizontally unstretchable
-			wxALL,       // make border all around (implicit top alignment)
-			0);        // set border width to 10
-		button_sizer->Add(
-			new wxButton(this, wxID_CANCEL, "Cancel"),
-			0,           // make horizontally unstretchable
-			wxALL,       // make border all around (implicit top alignment)
-			0);        // set border width to 10
+	wxBoxSizer *button_sizer = new wxBoxSizer(wxHORIZONTAL);
+	button_sizer->Add(
+		new wxButton(this, wxID_OK, "OK"),
+		0,           // make horizontally unstretchable
+		wxALL,       // make border all around (implicit top alignment)
+		0);        // set border width to 10
+	button_sizer->Add(
+		new wxButton(this, wxID_CANCEL, "Cancel"),
+		0,           // make horizontally unstretchable
+		wxALL,       // make border all around (implicit top alignment)
+		0);        // set border width to 10
 
-		sizer->Add(
-			button_sizer,
-			wxSizerFlags(0).Right());
-		SetSizerAndFit(sizer); // use the sizer for layout and set size and hints
-	}
-	SetTitle("Variable editor for: " + var_name);
+	sizer->Add(
+		button_sizer,
+		wxSizerFlags(0).Right());
+	SetSizerAndFit(sizer); // use the sizer for layout and set size and hints
+	SetTitle("Variable editor for: " + name);
 #ifdef __WXMSW__
 	SetIcon(wxICON(appicon));
 #endif	
@@ -1344,7 +1309,6 @@ VariablePopupDialog::~VariablePopupDialog()
 
 wxUIObject *VariablePopupDialog::GetUIObject()
 {
-//	return m_panel->GetUIObject();
 	return m_obj;
 }
 
