@@ -43,8 +43,9 @@ public:
 		matrix_t<float> periods; // stored as n x 3 matrix: columns: [start hour] [length hour] [factor]
 	};
 
+	void OnPressed(wxCommandEvent &);
+
 private:
-	void OnPressed( wxCommandEvent & );
 	FactorData m_data;
 	DECLARE_EVENT_TABLE();
 };

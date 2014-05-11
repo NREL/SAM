@@ -1300,32 +1300,37 @@ VariablePopupDialog::VariablePopupDialog(wxWindow *parent, VarInfo *vi, VarValue
 	ActiveInputPage::DataExchange(m_obj, *m_vv, ActiveInputPage::VAR_TO_OBJ);
 	m_ctrl = m_obj->CreateNative(this);
 
+	if (AFHourlyFactorCtrl *hf = m_obj->GetNative<AFHourlyFactorCtrl>())
+	{
+		hf->OnPressed(wxCommandEvent(wxEVT_BUTTON));
+	}
+	else
+	{
+		wxBoxSizer *sizer = new wxBoxSizer(wxVERTICAL);
+		//sizer->Add(m_panel,
+		sizer->Add(m_ctrl,
+			1,            // make vertically stretchable
+			wxEXPAND |    // make horizontally stretchable
+			wxALL,        //   and make border all around
+			0);         // set border width to 10
 
-	wxBoxSizer *sizer = new wxBoxSizer(wxVERTICAL);
-	//sizer->Add(m_panel,
-	sizer->Add(m_ctrl,
-		1,            // make vertically stretchable
-	wxEXPAND |    // make horizontally stretchable
-	wxALL,        //   and make border all around
-	0 );         // set border width to 10
-	
-	wxBoxSizer *button_sizer = new wxBoxSizer(wxHORIZONTAL);
-	button_sizer->Add(
-		new wxButton(this, wxID_OK, "OK"),
-		0,           // make horizontally unstretchable
-		wxALL,       // make border all around (implicit top alignment)
-		0);        // set border width to 10
-	button_sizer->Add(
-		new wxButton(this, wxID_CANCEL, "Cancel"),
-		0,           // make horizontally unstretchable
-		wxALL,       // make border all around (implicit top alignment)
-		0);        // set border width to 10
-	
-	sizer->Add(
-	button_sizer,
-	wxSizerFlags(0).Right());
-	SetSizerAndFit(sizer); // use the sizer for layout and set size and hints
-	
+		wxBoxSizer *button_sizer = new wxBoxSizer(wxHORIZONTAL);
+		button_sizer->Add(
+			new wxButton(this, wxID_OK, "OK"),
+			0,           // make horizontally unstretchable
+			wxALL,       // make border all around (implicit top alignment)
+			0);        // set border width to 10
+		button_sizer->Add(
+			new wxButton(this, wxID_CANCEL, "Cancel"),
+			0,           // make horizontally unstretchable
+			wxALL,       // make border all around (implicit top alignment)
+			0);        // set border width to 10
+
+		sizer->Add(
+			button_sizer,
+			wxSizerFlags(0).Right());
+		SetSizerAndFit(sizer); // use the sizer for layout and set size and hints
+	}
 	SetTitle("Variable editor for: " + var_name);
 #ifdef __WXMSW__
 	SetIcon(wxICON(appicon));
