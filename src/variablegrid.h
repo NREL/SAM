@@ -44,7 +44,6 @@ public:
 	virtual void SetColLabelValue(int col, const wxString &label);
 	virtual wxString GetTypeName(int row, int col);
 	virtual bool DeleteCols(size_t pos = 0, size_t	numCols = 1);
-//	virtual bool InsertCols(size_t pos = 0, size_t numCols = 1);
 	virtual bool AppendCols(size_t numCols = 1);
 	bool DeleteCase(Case *c);
 	bool AddCase(Case *c);
@@ -54,8 +53,6 @@ public:
 
 	// for choice controls
 	wxString GetChoices(int row, int col);
-//	virtual bool CanGetValueAs(int row, int col, const wxString &typeName);
-//	virtual bool CanSetValueAs(int row, int col, const wxString &typeName);
 
 	VarInfo* GetVarInfo(int row, int col);
 	void SetVarInfo(int row, int col, VarInfo *vi);
@@ -122,6 +119,8 @@ private:
 	VarValue *m_vv;
 	wxUIFormData *m_form_data;
 	wxString m_var_name;
+	wxUIObject *m_obj;
+	wxWindow *m_ctrl;
 };
 
 
@@ -157,6 +156,117 @@ private:
 };
 
 
+// renders a text string using the corresponding VarValue in for wxUIObject Choice
+// based on wxGridCellEnumRenderer
+class GridCellChoiceRenderer : public wxGridCellStringRenderer
+{
+public:
+	GridCellChoiceRenderer(const wxString& choices = wxEmptyString);
+
+	virtual void Draw(wxGrid& grid,
+		wxGridCellAttr& attr,
+		wxDC& dc,
+		const wxRect& rect,
+		int row, int col,
+		bool isSelected);
+	virtual wxSize GetBestSize(wxGrid& grid,
+		wxGridCellAttr& attr,
+		wxDC& dc,
+		int row, int col);
+	virtual wxGridCellRenderer *Clone() const;
+	void SetParameters(const wxString& params);
+
+protected:
+	wxString GetString(const wxGrid& grid, int row, int col);
+
+	wxArrayString m_choices;
+};
+
+class GridCellChoiceEditor : public wxGridCellChoiceEditor
+{
+public:
+	GridCellChoiceEditor(const wxString& choices = wxEmptyString);
+	virtual ~GridCellChoiceEditor() {}
+
+	virtual wxGridCellEditor*  Clone() const;
+
+	virtual void BeginEdit(int row, int col, wxGrid* grid);
+	virtual bool EndEdit(int row, int col, const wxGrid* grid,
+		const wxString& oldval, wxString *newval);
+	virtual void ApplyEdit(int row, int col, wxGrid* grid);
+
+private:
+	long m_index;
+
+	wxDECLARE_NO_COPY_CLASS(GridCellChoiceEditor);
+};
+
+
+// renders check box based on wxGridCellBoolRenderer and wxGridCellBoolEditor
+// renderer for boolean fields
+class GridCellCheckBoxRenderer : public wxGridCellRenderer
+{
+public:
+	// draw a check mark or nothing
+	virtual void Draw(wxGrid& grid,
+		wxGridCellAttr& attr,
+		wxDC& dc,
+		const wxRect& rect,
+		int row, int col,
+		bool isSelected);
+
+	// return the checkmark size
+	virtual wxSize GetBestSize(wxGrid& grid,
+		wxGridCellAttr& attr,
+		wxDC& dc,
+		int row, int col);
+
+	virtual wxGridCellRenderer *Clone() const
+	{
+		return new GridCellCheckBoxRenderer;
+	}
+
+private:
+	static wxSize ms_sizeCheckMark;
+};
+
+class GridCellCheckBoxEditor : public wxGridCellEditor
+{
+public:
+	GridCellCheckBoxEditor() { }
+
+	virtual void Create(wxWindow* parent,
+		wxWindowID id,
+		wxEvtHandler* evtHandler);
+
+	virtual void SetSize(const wxRect& rect);
+	virtual void Show(bool show, wxGridCellAttr *attr = NULL);
+
+	virtual bool IsAcceptedKey(wxKeyEvent& event);
+	virtual void BeginEdit(int row, int col, wxGrid* grid);
+	virtual bool EndEdit(int row, int col, const wxGrid* grid,
+		const wxString& oldval, wxString *newval);
+	virtual void ApplyEdit(int row, int col, wxGrid* grid);
+
+	virtual void Reset();
+//	virtual void StartingClick();
+//	virtual void StartingKey(wxKeyEvent& event);
+
+	virtual wxGridCellEditor *Clone() const
+	{
+		return new GridCellCheckBoxEditor;
+	}
+
+	virtual wxString GetValue() const;
+
+protected:
+	wxCheckBox *CBox() const { return (wxCheckBox *)m_control; }
+
+private:
+	bool m_value;
+
+	wxDECLARE_NO_COPY_CLASS(GridCellCheckBoxEditor);
+};
 
 
 class VariableGrid : public wxGrid
