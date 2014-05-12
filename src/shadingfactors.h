@@ -53,11 +53,11 @@ public:
 	void Write( VarValue * );
 	bool Read( VarValue * );
 	void SetDescription( const wxString &s ) { m_descText = s; }
+	void OnPressed(wxCommandEvent &evt);
 
 private:
 	ShadingInputData m_shad;
 	wxString m_descText;
-	void OnPressed(wxCommandEvent &evt);
 	DECLARE_EVENT_TABLE();
 };
 

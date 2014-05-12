@@ -37,9 +37,9 @@ public:
 	void SetData(const matrix_t<float> &data);
 	matrix_t<float> GetData();
 	
+	void OnButton(wxCommandEvent &evt);
 
 private:
-	void OnButton(wxCommandEvent &evt);
 
 	matrix_t<float> m_data;
 	DECLARE_EVENT_TABLE();
