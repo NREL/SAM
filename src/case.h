@@ -7,6 +7,7 @@
 #include "variables.h"
 #include "equations.h"
 #include "simulation.h"
+#include "excelexch.h"
 
 // case events allow the user interface to be updated
 // when something internal in the case changes that needs to be reflected
@@ -117,6 +118,8 @@ public:
 
 	Simulation &BaseCase();
 
+	ExcelExchange &ExcelExch() { return m_excelExch; }
+
 private:
 	/* case data */
 	ConfigInfo *m_config;
@@ -126,6 +129,7 @@ private:
 	StringHash m_properties;
 	StringHash m_notes;
 	std::vector<CaseEventListener*> m_listeners;
+	ExcelExchange m_excelExch;
 };
 
 class CaseEvaluator : public EqnEvaluator
@@ -140,6 +144,7 @@ public:
 
 	bool UpdateLibrary( const wxString &trigger, wxArrayString &changed );
 };
+
 
 
 #endif

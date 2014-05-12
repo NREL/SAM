@@ -4,6 +4,8 @@
 #include <wx/statline.h>
 #include <wx/dir.h>
 
+#include <wex/exttree.h>
+#include <wex/exttext.h>
 #include <wex/metro.h>
 #include <wex/lkscript.h>
 #include <wex/extgrid.h>
@@ -998,6 +1000,43 @@ wxString CaseWindow::GetCurrentContext()
 	return id;
 }
 
+bool CaseWindow::ShowSelectVariableDialog( const wxString &title, 
+	const wxArrayString &names, const wxArrayString &labels, wxArrayString &list,
+	bool expand_all )
+{
+	SelectVariableDialog dlg(this, title);
+	dlg.SetItems( names, labels );
+	dlg.SetCheckedNames( list );
+	if (expand_all)
+		dlg.ShowAllItems();
+
+	if (dlg.ShowModal() == wxID_OK)
+	{
+		wxArrayString names = dlg.GetCheckedNames();
+		
+		// remove any from list
+		int i=0;
+		while (i<(int)list.Count())
+		{
+			if (names.Index( list[i] ) < 0)
+				list.RemoveAt(i);
+			else
+				i++;
+		}
+
+		// append any new ones
+		for (i=0;i<(int)names.Count();i++)
+		{
+			if (list.Index( names[i] ) < 0)
+				list.Add( names[i] );
+		}
+
+
+		return true;
+	}
+	else
+		return false;
+}
 
 /* ********* SAM Page Notes ************** */
 
@@ -1036,3 +1075,218 @@ void PageNote::OnHideClose(wxCloseEvent &evt)
 	evt.Veto();
 	Hide();
 }
+
+
+
+enum {
+  ID_txtSearch = wxID_HIGHEST+494,
+  ID_tree,
+  ID_btnUncheckAll,
+  ID_btnExpandAll };
+
+BEGIN_EVENT_TABLE( SelectVariableDialog, wxDialog )
+	EVT_BUTTON(ID_btnUncheckAll, SelectVariableDialog::OnUncheckAll)
+	EVT_BUTTON(ID_btnExpandAll, SelectVariableDialog::OnExpandAll)
+	EVT_TEXT(ID_txtSearch, SelectVariableDialog::OnSearch )
+	EVT_TREE_ITEM_ACTIVATED(ID_tree, SelectVariableDialog::OnTree)
+END_EVENT_TABLE()
+
+SelectVariableDialog::SelectVariableDialog(wxWindow *parent, const wxString &title)
+	 : wxDialog( parent, wxID_ANY, title, wxDefaultPosition, wxSize(500,500), wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER )
+{	
+	wxBoxSizer *search_sizer = new wxBoxSizer( wxHORIZONTAL );
+	search_sizer->Add( new wxStaticText(this, wxID_ANY, "  Search: "), 0, wxALL|wxALIGN_CENTER_VERTICAL, 4);
+	txtSearch = new wxExtTextCtrl(this, ID_txtSearch);
+	search_sizer->Add( txtSearch, 1, wxALL|wxEXPAND, 4 );
+	
+	wxBoxSizer *button_sizer = new wxBoxSizer(wxHORIZONTAL);
+	button_sizer->Add(  new wxButton(this, ID_btnExpandAll, "Expand All"), 0, wxALL|wxEXPAND, 4 );
+	button_sizer->Add(  new wxButton(this, ID_btnUncheckAll, "Uncheck All"), 0, wxALL|wxEXPAND, 4 );
+	button_sizer->AddStretchSpacer();
+	button_sizer->Add( new wxButton(this, wxID_OK), 0, wxALL|wxEXPAND, 4  );
+	button_sizer->Add( new wxButton(this, wxID_CANCEL), 0, wxALL|wxEXPAND, 4  );
+
+	tree = new wxExtTreeCtrl(this, ID_tree);
+
+	wxBoxSizer *sizer = new wxBoxSizer(wxVERTICAL);
+	sizer->Add( search_sizer, 0, wxALL|wxEXPAND, 0 );
+	sizer->Add( tree, 1, wxALL|wxEXPAND, 4 );
+	sizer->Add( button_sizer, 0, wxALL|wxEXPAND, 0 );
+
+	SetSizer( sizer );
+	SetEscapeId( wxID_CANCEL );
+}
+
+void SelectVariableDialog::OnSearch( wxCommandEvent & evt)
+{
+	wxString filter = txtSearch->GetValue().Lower();
+
+	if (filter.IsEmpty())
+	{
+		for (size_t i=0;i<m_items.size();i++)
+			m_items[i].shown = true;
+	}
+	else
+	{
+		for (size_t i=0;i<m_items.size();i++)
+		{
+			if (filter.Len() <= 2 && m_items[i].label.Left( filter.Len() ).Lower() == filter)
+				m_items[i].shown = true;
+			else if (m_items[i].label.Lower().Find( filter ) >= 0)
+				m_items[i].shown = true;
+			else if (m_items[i].name.Lower().Find( filter ) == 0)
+				m_items[i].shown = true;
+			else
+				m_items[i].shown = false;
+		}
+	}
+
+	UpdateTree();
+
+	if ( !filter.IsEmpty() )
+	{
+		tree->Freeze();
+		tree->ExpandAll();
+		tree->EnsureVisible( m_root );
+		tree->Thaw();
+	}
+	else
+	{
+		tree->Freeze();
+		for (size_t i=0;i<m_items.size();i++)
+		{
+			if ( m_items[i].tree_id.IsOk() && m_items[i].checked )
+				tree->Expand( tree->GetItemParent( m_items[i].tree_id ));
+		}
+		tree->EnsureVisible( m_root );
+		tree->Thaw();
+	}
+}
+
+void SelectVariableDialog::OnTree(wxTreeEvent &evt)
+{
+	wxTreeItemId item = evt.GetItem();	
+	for (size_t i=0;i<m_items.size();i++)
+		if (m_items[i].tree_id == item)
+			m_items[i].checked = tree->IsChecked( m_items[i].tree_id );
+
+	evt.Skip();
+}
+
+void SelectVariableDialog::ShowAllItems()
+{
+	tree->ExpandAll();
+	tree->UnselectAll();
+	tree->ScrollTo(this->m_root);
+}
+
+void SelectVariableDialog::SetItems(const wxArrayString &names, const wxArrayString &labels)
+{
+	if ( names.Count() != labels.Count() ) return;
+
+	m_items.resize( names.Count() );
+	for (size_t i=0;i<names.Count();i++)
+	{
+		m_items[i].name = names[i];
+		m_items[i].label = labels[i];
+		m_items[i].tree_id = 0;
+		m_items[i].shown = true;
+		m_items[i].checked = false;
+	}
+
+	UpdateTree();
+	txtSearch->SetFocus();
+}
+
+void SelectVariableDialog::UpdateTree()
+{
+	tree->Freeze();
+	tree->DeleteAllItems();
+
+	m_root = tree->AddRoot("Available Variables",
+		wxExtTreeCtrl::ICON_REMOVE,wxExtTreeCtrl::ICON_REMOVE);
+	tree->SetItemBold(m_root);
+	wxTreeItemId cur_parent;
+	wxString cur_context;
+
+	for (size_t i=0;i < m_items.size();i++)
+	{
+		m_items[i].tree_id.Unset();
+
+		if ( !m_items[i].shown && !m_items[i].checked ) continue;
+
+		wxString cxt;
+		wxString lbl;
+		int pos = m_items[i].label.Find('/');
+		if (pos != wxNOT_FOUND)
+		{
+			cxt = m_items[i].label.Left(pos);
+			lbl = m_items[i].label.Mid(pos+1);
+
+			if (cur_context != cxt)
+			{
+				cur_context = cxt;
+				cur_parent = tree->AppendItem(m_root, cur_context);
+				tree->SetItemBold(cur_parent);
+			}
+		}
+		
+		if (lbl.IsEmpty())
+			lbl = m_items[i].label;
+
+		if (cur_parent.IsOk())
+			m_items[i].tree_id = tree->AppendItem( cur_parent, lbl,wxExtTreeCtrl::ICON_CHECK_FALSE,-1 );
+		else
+			m_items[i].tree_id = tree->AppendItem( m_root, lbl, wxExtTreeCtrl::ICON_CHECK_FALSE, -1 );
+
+		if ( m_items[i].checked )
+			tree->Check( m_items[i].tree_id, true );
+	}
+
+	tree->Expand(m_root);
+	tree->UnselectAll();
+	tree->Thaw();
+}
+
+void SelectVariableDialog::SetCheckedNames(const wxArrayString &list)
+{
+	for (size_t i=0;i<m_items.size();i++)
+	{
+		m_items[i].checked = (list.Index( m_items[i].name ) >= 0);
+
+		if (m_items[i].tree_id.IsOk())
+		{
+			tree->Check( m_items[i].tree_id, m_items[i].checked );
+			if ( m_items[i].checked )
+				tree->EnsureVisible( m_items[i].tree_id );
+		}
+	}
+
+	if (m_root.IsOk())
+		tree->EnsureVisible(m_root);
+}
+
+wxArrayString SelectVariableDialog::GetCheckedNames()
+{
+	wxArrayString list;
+	for (size_t i=0;i<m_items.size();i++)
+		if ( m_items[i].checked )
+			list.Add( m_items[i].name );
+
+	return list;
+}
+	
+void SelectVariableDialog::OnExpandAll(wxCommandEvent &evt)
+{
+	tree->ExpandAll();
+	if (m_root.IsOk())
+		tree->EnsureVisible(m_root);
+}
+
+void SelectVariableDialog::OnUncheckAll(wxCommandEvent &evt)
+{
+	for (size_t i=0;i<m_items.size();i++)
+		m_items[i].checked = false;
+	UpdateTree();
+}
+

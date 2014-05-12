@@ -86,6 +86,7 @@ enum { __idFirst = wxID_HIGHEST+592,
 	ID_CASE_DUPLICATE,
 	ID_CASE_DELETE,
 	ID_CASE_REPORT,
+	ID_CASE_EXCELEXCH,
 	ID_CASE_SIMULATE,
 	ID_CASE_RESET_DEFAULTS,
 	ID_CASE_CLEAR_RESULTS,
@@ -712,6 +713,7 @@ void MainWindow::OnCaseTabButton( wxCommandEvent &evt )
 	menu.Append( ID_CASE_SIMULATE, "Simulate" );
 	menu.Append( ID_CASE_CLEAR_RESULTS, "Clear all results" );
 	menu.Append( ID_CASE_REPORT, "Generate report" );
+	menu.Append( ID_CASE_EXCELEXCH, "Excel exchange...");
 	menu.Append(ID_CASE_COMPARE, "Compare to...");
 	menu.AppendSeparator();
 	menu.Append( ID_CASE_RESET_DEFAULTS, "Reset inputs to default values" );
@@ -806,6 +808,9 @@ void MainWindow::OnCaseMenu( wxCommandEvent &evt )
 			// update ui
 			c->SendEvent( CaseEvent( CaseEvent::VARS_CHANGED, c->Values().ListAll() ) );
 		}
+		break;
+	case ID_CASE_EXCELEXCH:
+		ExcelExchange::ShowExcelExchangeDialog( &c->ExcelExch(), cw );
 		break;
 	case ID_CASE_REPORT:
 		cw->GenerateReport();
@@ -1692,10 +1697,9 @@ void ConfigDialog::OnHelp(wxCommandEvent &evt)
 	SamApp::ShowHelp("Technology Market");
 }
 
-bool ShowConfigurationDialog( wxWindow *parent, wxString *tech, wxString *fin, bool *reset )
-{
-	if ( parent == 0 ) return false;
 
+wxFrame *CreateTransparentOverlay( wxWindow *parent )
+{
 	wxPoint pos = parent->ClientToScreen( wxPoint(0,0) );
 	wxSize size = parent->GetClientSize();
 
@@ -1705,7 +1709,15 @@ bool ShowConfigurationDialog( wxWindow *parent, wxString *tech, wxString *fin, b
 	trans->SetTransparent( 200 );
 	trans->Show();
 
+	return trans;
+}
 
+bool ShowConfigurationDialog( wxWindow *parent, wxString *tech, wxString *fin, bool *reset )
+{
+	if ( parent == 0 ) return false;
+
+	wxFrame *trans = CreateTransparentOverlay( parent );
+	
 	ConfigDialog *dlg = new ConfigDialog( parent );
 	dlg->ShowResetCheckbox( *reset );
 	if ( !tech->IsEmpty() && !fin->IsEmpty() )
