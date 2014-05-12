@@ -95,6 +95,9 @@
     <ClInclude Include="..\src\reports.h">
       <Filter>Source</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\excelexch.h">
+      <Filter>Source</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\welcome.cpp">
@@ -176,6 +179,9 @@
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="..\src\reports.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\excelexch.cpp">
       <Filter>Source</Filter>
     </ClCompile>
   </ItemGroup>

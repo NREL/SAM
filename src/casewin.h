@@ -1,24 +1,30 @@
 #ifndef __casewin_h
 #define __casewin_h
 
+#include <vector>
+
 #include <wx/splitter.h>
 #include <wx/minifram.h>
 #include <wx/notebook.h>
+#include <wx/treectrl.h>
 
 #include "case.h"
+#include "inputpage.h"
 
 class wxPanel;
 class wxMetroButton;
 class wxMetroNotebook;
-class wxSimpleNotebook;
+class wxSimplebook;
 class wxLKScriptCtrl;
 
+class InputPageGroup;
 class InputPageList;
 class ResultsViewer;
 class Simulation;
 
 class PageNote;
 class CollapsePaneCtrl;
+class wxUIObject;
 
 class CaseWindow : public wxSplitterWindow, CaseEventListener
 {
@@ -45,6 +51,10 @@ public:
 	void UpdateResults();
 
 	void GenerateReport();
+
+	bool ShowSelectVariableDialog( const wxString &title, 
+		const wxArrayString &names, const wxArrayString &labels, wxArrayString &list,
+		bool expand_all=false );
 
 private:
 	Case *m_case;
@@ -110,6 +120,50 @@ private:
 	wxTextCtrl *m_text;
 	void OnHideClose(wxCloseEvent &evt);
 	DECLARE_EVENT_TABLE();
+};
+
+class wxExtTextCtrl;
+class wxExtTreeCtrl;
+
+class SelectVariableDialog : public wxDialog
+{
+private:	
+	wxExtTextCtrl *txtSearch;
+	wxExtTreeCtrl *tree;
+	wxButton *btnOk;
+	wxButton *btnCancel;
+	wxButton *btnUncheckAll;
+	wxButton *btnExpandAll;
+
+public:
+	SelectVariableDialog( wxWindow *parent, const wxString &title );
+	
+	void SetItems(const wxArrayString &names, const wxArrayString &labels);
+	void SetCheckedNames(const wxArrayString &list);
+	wxArrayString GetCheckedNames();
+	void ShowAllItems();
+	void UpdateTree();
+
+private:
+	void OnUncheckAll(wxCommandEvent &evt);
+	void OnExpandAll(wxCommandEvent &evt);
+	void OnSearch( wxCommandEvent & );
+	void OnTree(wxTreeEvent &evt);
+
+	struct item_info
+	{
+		wxString name;
+		wxString label;
+		wxTreeItemId tree_id;
+		bool shown;
+		bool checked;
+	};
+
+	wxTreeItemId m_root;
+	std::vector<item_info> m_items;
+
+
+	DECLARE_EVENT_TABLE()
 };
 
 #endif
