@@ -810,7 +810,7 @@ void MainWindow::OnCaseMenu( wxCommandEvent &evt )
 		}
 		break;
 	case ID_CASE_EXCELEXCH:
-		ExcelExchange::ShowExcelExchangeDialog( &c->ExcelExch(), cw );
+		ExcelExchange::ShowExcelExchangeDialog( c->ExcelExch(), cw );
 		break;
 	case ID_CASE_REPORT:
 		cw->GenerateReport();

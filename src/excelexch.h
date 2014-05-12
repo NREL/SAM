@@ -29,10 +29,18 @@ public:
 	};
 
 	std::vector<ExchVar> Vars;
+
+
+	struct Captured {
+		wxString Name;
+		wxString Range;
+		wxString Value;
+	};
+	std::vector<Captured> Summary;
 	
 
-	static bool ShowExcelExchangeDialog( ExcelExchange *exch, CaseWindow *cw );
-	static bool RunExcelExchange( ExcelExchange *exch, Simulation *sim );
+	static bool ShowExcelExchangeDialog( ExcelExchange &exch, CaseWindow *cw );
+	static int RunExcelExchange( ExcelExchange &exch, VarTable &inputs, Simulation *sim );
 };
 
 
