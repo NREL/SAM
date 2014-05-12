@@ -714,22 +714,21 @@ bool GridCellVarValueEditor::IsAcceptedKey(wxKeyEvent& event)
 
 bool GridCellVarValueEditor::DisplayEditor(wxUIObject *obj, wxString &name, wxGrid *grid, VarValue *vv)
 {
-	// from ActiveInputPage::DataExchange 
-	obj->CreateNative(grid); // needed to provide valid GetNative call
-	if (AFHourlyFactorCtrl *hf = obj->GetNative<AFHourlyFactorCtrl>())
+	if (obj->GetTypeName() == "HourlyFactor")
 	{
+		obj->CreateNative(grid);
+		AFHourlyFactorCtrl *hf = obj->GetNative<AFHourlyFactorCtrl>();
 		hf->OnPressed(wxCommandEvent(wxEVT_BUTTON));
+		ActiveInputPage::DataExchange(obj, *vv, ActiveInputPage::OBJ_TO_VAR);
 	}
-	else if (wxDiurnalPeriodCtrl *dp = obj->GetNative<wxDiurnalPeriodCtrl>())
+	else if (obj->GetTypeName() == "DiurnalPeriod")
 	{
 		VariablePopupDialog vpe(grid, obj, name);
 		vpe.ShowModal();
-		obj = vpe.GetUIObject();
+		ActiveInputPage::DataExchange(vpe.GetUIObject(), *vv, ActiveInputPage::OBJ_TO_VAR);
 	}
 	else return false; // object data exch not handled for this type
 
-	// update variable value - can be paced in DisplayEditor but kept here for central updating
-	ActiveInputPage::DataExchange(obj, *vv, ActiveInputPage::OBJ_TO_VAR);
 
 	return true;  // all ok!
 
@@ -755,7 +754,7 @@ void GridCellVarValueEditor::BeginEdit(int row, int col, wxGrid *pGrid)
 
 	obj->SetName(var_name);
 	ActiveInputPage::DataExchange(obj, *vv, ActiveInputPage::VAR_TO_OBJ);
-
+	//ActiveInputPage::DataExchange(obj, *vv, ActiveInputPage::OBJ_TO_VAR);
 
 	if (var_label.IsEmpty())
 		DisplayEditor(obj, var_name, pGrid, vv);
@@ -1269,7 +1268,7 @@ VariablePopupDialog::VariablePopupDialog(wxWindow *parent, wxUIObject *obj, wxSt
 : wxDialog(parent, wxID_ANY, "Variable Editor", wxDefaultPosition, wxDefaultSize), m_obj(obj)
 {
 	if (m_obj == 0) return;
-
+	
 	m_obj->SetGeometry(GetClientSize());
 	wxWindow *ctrl = m_obj->CreateNative(this);
 
