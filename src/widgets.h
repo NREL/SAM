@@ -70,8 +70,8 @@ public:
 	void Set( const std::vector<float> &data );
 	void SetDescription(const wxString &s);
 	wxString GetDescription();
-private:
 	void OnPressed(wxCommandEvent &evt);
+private:
 	wxString mDescription;
 	float mData[12];
 	DECLARE_EVENT_TABLE();
@@ -138,8 +138,8 @@ public:
 	void SetMode(int mode);
 	int GetMode();
 
-private:
 	void OnPressed(wxCommandEvent &evt);
+private:
 	wxString mDataLabel;
 	int mMode;
 	std::vector<float> mData;
