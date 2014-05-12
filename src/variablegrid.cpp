@@ -348,6 +348,8 @@ wxString VariableGridData::GetTypeName(int row, int col)
 				return "GridCellVarValue";
 			else if (type == "MonthByHourFactors")
 				return "GridCellVarValue";
+			else if (type == "Library")
+				return "GridCellVarValue";
 			else if (type == "HourlyFactor")
 				return "GridCellVarValue";
 			else if (type == "DiurnalPeriod")
@@ -839,15 +841,17 @@ bool GridCellVarValueEditor::DisplayEditor(wxUIObject *obj, wxString &name, wxGr
 		vpe.ShowModal();
 		ActiveInputPage::DataExchange(vpe.GetUIObject(), *vv, ActiveInputPage::OBJ_TO_VAR);
 	}
+	else if (type == "Library")
+	{
+		ActiveInputPage::DataExchange(obj, *vv, ActiveInputPage::VAR_TO_OBJ);
+		VariablePopupDialog vpe(grid, obj, name);
+		vpe.ShowModal();
+		ActiveInputPage::DataExchange(vpe.GetUIObject(), *vv, ActiveInputPage::OBJ_TO_VAR);
+	}
 
 	else return false; // object data exch not handled for this type
 
-
 	return true;  // all ok!
-
-
-
-
 }
 
 void GridCellVarValueEditor::BeginEdit(int row, int col, wxGrid *pGrid)
@@ -866,22 +870,14 @@ void GridCellVarValueEditor::BeginEdit(int row, int col, wxGrid *pGrid)
 	if (obj == 0) return;
 
 	obj->SetName(var_name);
-//	ActiveInputPage::DataExchange(obj, *vv, ActiveInputPage::VAR_TO_OBJ);
-	//ActiveInputPage::DataExchange(obj, *vv, ActiveInputPage::OBJ_TO_VAR);
 
 	if (var_label.IsEmpty())
 		DisplayEditor(obj, var_name, pGrid, vv);
 	else
 		DisplayEditor(obj, var_label, pGrid, vv);
 
-	// update variable value - can be paced in DisplayEditor but kept here for central updating
-//	ActiveInputPage::DataExchange(obj, *vv, ActiveInputPage::OBJ_TO_VAR);
-		// if changed then get new value and apply to static text control
 	m_text->SetLabel(vv->AsString());
-	// to refresh when editing
 	pGrid->SaveEditControlValue();
-
-//	wxGridEvent evt(wxID_ANY, wxEVT_GRID_CELL_LEFT_CLICK, pGrid, row, col);
 }
 
 bool GridCellVarValueEditor::EndEdit(int row, int col, const wxGrid *grid, const wxString &oldval, wxString *newval)
