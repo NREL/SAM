@@ -244,7 +244,7 @@ void Case::Write( wxOutputStream &_o )
 	wxDataOutputStream out(_o);
 
 	out.Write8( 0x9b );
-	out.Write8( 2 );
+	out.Write8( 3 );
 
 	wxString tech, fin;
 	if ( m_config != 0 )
@@ -260,6 +260,7 @@ void Case::Write( wxOutputStream &_o )
 	m_baseCase.Write( _o );
 	m_properties.Write( _o );
 	m_notes.Write( _o );
+	m_excelExch.Write( _o );
 
 	out.Write8( 0x9b );
 }
@@ -302,6 +303,12 @@ bool Case::Read( wxInputStream &_i )
 
 	if ( !m_properties.Read( _i ) ) wxLogStatus("error reading m_properties in Case::Read");
 	if ( !m_notes.Read( _i ) ) wxLogStatus("error reading m_notes in Case::Read");
+
+	if ( ver >= 3 )
+	{
+		if (!m_excelExch.Read( _i ))
+			wxLogStatus("error reading excel exchange data in Case::Read");
+	}
 
 	return (in.Read8() == code);
 }
