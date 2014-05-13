@@ -16,6 +16,7 @@ addconfig( 'Empirical Trough', ['Independent Power Producer', 'Leveraged Partner
 addconfig( 'Physical Trough', ['Independent Power Producer', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'Single Owner', 'None']);
 addconfig( 'Geothermal Power', ['Independent Power Producer', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'Single Owner', 'None']);
 addconfig( 'Generic System', ['Residential', 'Commercial', 'Commercial PPA', 'Independent Power Producer', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'Single Owner', 'None']);
+addconfig( 'Generic CSP System', ['Commercial', 'Commercial PPA', 'Independent Power Producer', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'Single Owner', 'None']);
 
 function setup_pvwatts_pages()
 {
@@ -670,3 +671,72 @@ setmodules( ['generic_system']);
 setup_generic_system_pages();
 
 
+// Generic CSP System //////////////////////////////////////////////////////////
+function setup_generic_csp_pages()
+{
+	addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource' } );
+	addpage( [[ 'Generic CSP Solar Field' ]], { 'sidebar'='Solar Field' } );
+	addpage( [[ 'Generic CSP Power Block' ]], { 'sidebar'='Power Block' } );
+	addpage( [[ 'Generic CSP Thermal Storage' ]], { 'sidebar'='Thermal Storage' } );
+}
+
+//-----------------------------------------------------
+setconfig( 'Generic CSP System', 'Commercial' );	
+setmodules( ['tcsgeneric_solar',  'utilityrate2', 'cashloan']);
+setting( { 'analysis_period_var'='cf_length' } );
+setup_generic_csp_pages();
+addpage( [[ 'Generic CSP System Costs','O and M Costs']],{ 'sidebar'='System Costs' } );
+setup_commercial_pages();
+
+//-----------------------------------------------------
+setconfig( 'Generic CSP System', 'Commercial PPA' );	
+setmodules( ['tcsgeneric_solar',  'ippppa']);
+setting( { 'analysis_period_var'='cf_length' } );
+setup_generic_csp_pages();
+addpage( [[ 'Generic CSP System Costs','O and M Costs']],{ 'sidebar'='System Costs' } );
+setup_commercial_ppa_pages();
+
+//-----------------------------------------------------
+setconfig( 'Generic CSP System', 'Independent Power Producer' );
+setmodules( ['tcsgeneric_solar', 'ippppa']);
+setting( { 'analysis_period_var'='cf_length' } );
+setup_generic_csp_pages();
+addpage( [[ 'Generic CSP System Costs','O and M Costs']],{ 'sidebar'='System Costs' } );
+setup_independent_power_producer_pages();
+
+//-----------------------------------------------------
+setconfig( 'Generic CSP System', 'Leveraged Partnership Flip' );
+setmodules( ['tcsgeneric_solar', 'levpartflip']);
+setting( { 'analysis_period_var'='cf_length' } );
+setup_generic_csp_pages();
+addpage( [[ 'Generic CSP System Costs','O and M Costs']],{ 'sidebar'='System Costs' } );
+setup_leveraged_partnership_flip_pages();
+
+//-----------------------------------------------------
+setconfig( 'Generic CSP System', 'All Equity Partnership Flip' );
+setmodules( ['tcsgeneric_solar', 'equpartflip']);
+setting( { 'analysis_period_var'='cf_length' } );
+setup_generic_csp_pages();
+addpage( [[ 'Generic CSP System Costs','O and M Costs']],{ 'sidebar'='System Costs' } );
+setup_all_equity_partnership_flip_pages();
+
+//-----------------------------------------------------
+setconfig( 'Generic CSP System', 'Sale Leaseback' );
+setmodules( ['tcsgeneric_solar', 'saleleaseback']);
+setting( { 'analysis_period_var'='cf_length' } );
+setup_generic_csp_pages();
+addpage( [[ 'Generic CSP System Costs','O and M Costs']],{ 'sidebar'='System Costs' } );
+setup_sale_leaseback_pages();
+
+//-----------------------------------------------------
+setconfig( 'Generic CSP System', 'Single Owner' );
+setmodules( ['tcsgeneric_solar', 'singleowner']);
+setting( { 'analysis_period_var'='cf_length' } );
+setup_generic_csp_pages();
+addpage( [[ 'Generic CSP System Costs','O and M Costs']],{ 'sidebar'='System Costs' } );
+setup_single_owner_pages();
+
+//-----------------------------------------------------
+setconfig( 'Generic CSP System', 'None' );
+setmodules( ['tcsgeneric_solar']);
+setup_generic_csp_pages();
