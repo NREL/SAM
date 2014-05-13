@@ -295,9 +295,16 @@ CaseWindow::CaseWindow( wxWindow *parent, Case *c )
 
 		m_pageNote->SetPosition(wxPoint(notex,notey));
 	}
-
 	
+
 	UpdateConfiguration();
+
+	// load graphs and perspective from case
+	std::vector<Graph> gl;
+	m_case->GetGraphs( gl );
+	m_baseCaseResults->SetGraphs( gl );
+	m_baseCaseResults->LoadPerspective( m_case->Perspective() );
+
 	UpdateResults();
 }
 
@@ -671,6 +678,21 @@ void CaseWindow::OnCaseEvent( Case *, CaseEvent &evt )
 		m_baseCaseResults->Clear();
 
 		SamApp::Window()->Project().SetModified( true );
+	}
+	else if ( evt.GetType() == CaseEvent::SAVE_NOTIFICATION )
+	{
+		// this event is issued before the case is written to a stream (disk)
+		// here we need to save any perspective information or other data
+		// generated in the UI
+		
+		// save the user created graphs
+		std::vector<Graph> gl;
+		m_baseCaseResults->GetGraphs( gl );
+		m_case->SetGraphs( gl );
+
+		// save the perspective of the results browser
+		m_case->Perspective().clear();
+		m_baseCaseResults->SavePerspective( m_case->Perspective() );		
 	}
 }
 

@@ -241,10 +241,12 @@ wxString Case::GetTypeName()
 
 void Case::Write( wxOutputStream &_o )
 {
+	SendEvent( CaseEvent( CaseEvent::SAVE_NOTIFICATION ) );
+
 	wxDataOutputStream out(_o);
 
 	out.Write8( 0x9b );
-	out.Write8( 3 );
+	out.Write8( 4 );
 
 	wxString tech, fin;
 	if ( m_config != 0 )
@@ -261,6 +263,12 @@ void Case::Write( wxOutputStream &_o )
 	m_properties.Write( _o );
 	m_notes.Write( _o );
 	m_excelExch.Write( _o );
+
+	out.Write32( m_graphs.size() );
+	for( size_t i=0;i<m_graphs.size();i++ )
+		m_graphs[i].Write( _o );
+
+	m_perspective.Write( _o );
 
 	out.Write8( 0x9b );
 }
@@ -308,6 +316,20 @@ bool Case::Read( wxInputStream &_i )
 	{
 		if (!m_excelExch.Read( _i ))
 			wxLogStatus("error reading excel exchange data in Case::Read");
+	}
+
+	if ( ver >= 4 )
+	{
+		m_graphs.clear();
+		size_t n = in.Read32();
+		for( size_t i=0;i<n;i++) 
+		{
+			Graph g;
+			if ( !g.Read( _i ) ) wxLogStatus("error reading Graph %d of %d in Case::Read", (int)i, (int)n);
+			m_graphs.push_back( g );
+		}
+
+		if ( !m_perspective.Read( _i ) ) wxLogStatus("error reading perspective of results viewer in Case::Read");
 	}
 
 	return (in.Read8() == code);

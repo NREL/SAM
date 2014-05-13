@@ -29,7 +29,7 @@ void ExcelExchange::Write( wxOutputStream &_O )
 	wxDataOutputStream out(_O);
 
 	out.Write8( 0x4c );
-	out.Write8( 1 );
+	out.Write8( 2 );
 
 	out.Write8( Enabled ? 1 : 0 );
 	out.WriteString( ExcelFile );
@@ -42,6 +42,13 @@ void ExcelExchange::Write( wxOutputStream &_O )
 		out.Write8( Vars[i].Type );
 	}
 	
+	out.Write32( Summary.size() );
+	for( size_t i=0;i<Summary.size();i++ )
+	{
+		out.WriteString( Summary[i].Name );
+		out.WriteString( Summary[i].Range );
+		out.WriteString( Summary[i].Value );
+	}
 
 	out.Write8( 0x4c );
 }
@@ -67,6 +74,20 @@ bool ExcelExchange::Read( wxInputStream &_I )
 		Vars.push_back( ev );
 	}
 	
+	if ( ver >= 2 )
+	{
+		n = in.Read32();
+		Summary.clear();
+		for( size_t i=0;i<n;i++ )
+		{
+			Captured c;
+			c.Name = in.ReadString();
+			c.Range = in.ReadString();
+			c.Value = in.ReadString();
+			Summary.push_back( c );
+		}
+	}
+
 	return in.Read8() == code;
 }
 
