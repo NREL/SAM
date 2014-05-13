@@ -775,6 +775,17 @@ void ResultsViewer::LoadPerspective( StringHash &map )
 		SetSelection( nnav );
 }
 
+
+void ResultsViewer::SetGraphs( std::vector<Graph> &gl )
+{
+	m_graphViewer->SetGraphs( gl );
+}
+
+void ResultsViewer::GetGraphs( std::vector<Graph> &gl )
+{
+	m_graphViewer->GetGraphs( gl );
+}
+
 void ResultsViewer::Clear()
 {
 	m_sim = 0;

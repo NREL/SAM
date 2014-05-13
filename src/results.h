@@ -101,6 +101,9 @@ public:
 	void SavePerspective( StringHash &map );
 	void LoadPerspective( StringHash &map );
 
+	void SetGraphs( std::vector<Graph> &gl );
+	void GetGraphs( std::vector<Graph> &gl );
+
 	Simulation *GetSimulation() { return m_sim; }
 	
 	void AddMetric( MetricData &md ) { m_metrics.push_back(md); }

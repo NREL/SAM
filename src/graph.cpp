@@ -596,8 +596,6 @@ GraphViewer::GraphViewer( wxWindow *parent )
 	m_layout = new wxSnapLayout( this, wxID_ANY );	
 	SetMinimumPaneSize( 50 );
 	SplitVertically( lpanel, m_layout, 260 );
-
-	SetCurrent( CreateNewGraph() );
 }
 
 GraphCtrl *GraphViewer::CreateNewGraph()
@@ -610,13 +608,47 @@ GraphCtrl *GraphViewer::CreateNewGraph()
 
 void GraphViewer::DeleteGraph( GraphCtrl *gc )
 {
-	
 	std::vector<GraphCtrl*>::iterator it = std::find( m_graphs.begin(), m_graphs.end(), gc );
 	if ( it != m_graphs.end() )
+	{
+		if ( m_current == *it )
+			m_current = 0;
+
+		m_layout->Delete( *it );
+		m_graphs.erase( it );
+	}
+}
+
+void GraphViewer::DeleteAll()
+{
+	for( std::vector<GraphCtrl*>::iterator it = m_graphs.begin();
+		it != m_graphs.end();
+		++it )
 	{
 		m_layout->Delete( *it );
 		m_graphs.erase( it );
 	}
+
+	m_current = 0;
+}
+
+void GraphViewer::SetGraphs( std::vector<Graph> &gl )
+{
+	DeleteAll();
+	
+	for( size_t i=0;i<gl.size();i++ )
+	{
+		GraphCtrl *gc = CreateNewGraph();
+		gc->SetGraph(gl[i]);
+	}
+}
+
+void GraphViewer::GetGraphs( std::vector<Graph> &gl )
+{
+	gl.clear();
+	gl.reserve( m_graphs.size() );
+	for( size_t i=0;i<m_graphs.size();i++ )
+		gl.push_back( m_graphs[i]->GetGraph() );
 }
 
 	
@@ -628,6 +660,14 @@ void GraphViewer::Setup( Simulation *sim )
 	if ( !m_sim ) return;
 
 	m_props->SetupVariables( m_sim );
+
+	for( std::vector<GraphCtrl*>::iterator it = m_graphs.begin();
+		it != m_graphs.end();
+		++it )
+		(*it)->Display( m_sim, (*it)->GetGraph() );
+
+	if ( m_current != 0 )
+		m_props->Set( m_current->GetGraph() );
 }
 
 

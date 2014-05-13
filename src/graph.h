@@ -15,6 +15,9 @@ class wxExtTextCtrl;
 class wxCheckListBox;
 class wxSnapLayout;
 class wxDVSelectionListCtrl;
+class wxSlider;
+class wxCheckBox;
+class wxChoice;
 
 class Case;
 class Simulation;
@@ -65,7 +68,8 @@ public:
 	GraphCtrl( wxWindow *parent, int id );
 	void Display( Simulation *sim, Graph &g );
 
-	Graph &GetGraph() { return m_g; }
+	void SetGraph( const Graph &g ) { m_g = g; }
+	Graph GetGraph() { return m_g; }
 protected:
 	Simulation *m_s;
 	Graph m_g;
@@ -124,6 +128,10 @@ public:
 	
 	GraphCtrl *CreateNewGraph();
 	void DeleteGraph( GraphCtrl * );
+	void DeleteAll();
+
+	void SetGraphs( std::vector<Graph> &gl );
+	void GetGraphs( std::vector<Graph> &gl );
 
 	GraphCtrl *Current();
 private:
