@@ -714,7 +714,7 @@ bool GridCellVarValueEditor::IsAcceptedKey(wxKeyEvent& event)
 }
 
 
-bool GridCellVarValueEditor::DisplayEditor(wxUIObject *obj, wxString &name, wxGrid *grid, VarValue *vv)
+bool GridCellVarValueEditor::DisplayEditor(wxUIObject *obj, wxString &name, wxGrid *grid, VarValue *vv, VarInfo *vi)
 {
 	wxString type = obj->GetTypeName();
 	if (type == "HourlyFactor")
@@ -727,50 +727,43 @@ bool GridCellVarValueEditor::DisplayEditor(wxUIObject *obj, wxString &name, wxGr
 	}
 	else if (type == "DiurnalPeriod")
 	{
-		ActiveInputPage::DataExchange(obj, *vv, ActiveInputPage::VAR_TO_OBJ);
-		VariablePopupDialog vpe(grid, obj, name);
+		VariablePopupDialog vpe(grid, obj, name, vv, vi);
 		vpe.ShowModal();
 		ActiveInputPage::DataExchange(vpe.GetUIObject(), *vv, ActiveInputPage::OBJ_TO_VAR);
 	}
 	else if (type == "ListBox")
 	{
-		ActiveInputPage::DataExchange(obj, *vv, ActiveInputPage::VAR_TO_OBJ);
-		VariablePopupDialog vpe(grid, obj, name);
+		VariablePopupDialog vpe(grid, obj, name, vv, vi);
 		vpe.ShowModal();
 		ActiveInputPage::DataExchange(vpe.GetUIObject(), *vv, ActiveInputPage::OBJ_TO_VAR);
 	}
 	else if (type == "RadioChoice")
 	{
-		ActiveInputPage::DataExchange(obj, *vv, ActiveInputPage::VAR_TO_OBJ);
-		VariablePopupDialog vpe(grid, obj, name);
+		VariablePopupDialog vpe(grid, obj, name, vv, vi);
 		vpe.ShowModal();
 		ActiveInputPage::DataExchange(vpe.GetUIObject(), *vv, ActiveInputPage::OBJ_TO_VAR);
 	}
 	else if (type == "Slider")
 	{
-		ActiveInputPage::DataExchange(obj, *vv, ActiveInputPage::VAR_TO_OBJ);
-		VariablePopupDialog vpe(grid, obj, name);
+		VariablePopupDialog vpe(grid, obj, name, vv, vi);
 		vpe.ShowModal();
 		ActiveInputPage::DataExchange(vpe.GetUIObject(), *vv, ActiveInputPage::OBJ_TO_VAR);
 	}
 	else if (type == "SchedNumeric")
 	{
-		ActiveInputPage::DataExchange(obj, *vv, ActiveInputPage::VAR_TO_OBJ);
-		VariablePopupDialog vpe(grid, obj, name);
+		VariablePopupDialog vpe(grid, obj, name, vv, vi);
 		vpe.ShowModal();
 		ActiveInputPage::DataExchange(vpe.GetUIObject(), *vv, ActiveInputPage::OBJ_TO_VAR);
 	}
 	else if (type == "TOUSchedule")
 	{
-		ActiveInputPage::DataExchange(obj, *vv, ActiveInputPage::VAR_TO_OBJ);
-		VariablePopupDialog vpe(grid, obj, name);
+		VariablePopupDialog vpe(grid, obj, name, vv, vi);
 		vpe.ShowModal();
 		ActiveInputPage::DataExchange(vpe.GetUIObject(), *vv, ActiveInputPage::OBJ_TO_VAR);
 	}
 	else if (type == "PTLayout")
 	{
-		ActiveInputPage::DataExchange(obj, *vv, ActiveInputPage::VAR_TO_OBJ);
-		VariablePopupDialog vpe(grid, obj, name);
+		VariablePopupDialog vpe(grid, obj, name, vv, vi);
 		vpe.ShowModal();
 		ActiveInputPage::DataExchange(vpe.GetUIObject(), *vv, ActiveInputPage::OBJ_TO_VAR);
 	}
@@ -784,8 +777,7 @@ bool GridCellVarValueEditor::DisplayEditor(wxUIObject *obj, wxString &name, wxGr
 	}
 	else if (type == "TroughLoop")
 	{
-		ActiveInputPage::DataExchange(obj, *vv, ActiveInputPage::VAR_TO_OBJ);
-		VariablePopupDialog vpe(grid, obj, name);
+		VariablePopupDialog vpe(grid, obj, name, vv, vi);
 		vpe.ShowModal();
 		ActiveInputPage::DataExchange(vpe.GetUIObject(), *vv, ActiveInputPage::OBJ_TO_VAR);
 	}
@@ -799,8 +791,7 @@ bool GridCellVarValueEditor::DisplayEditor(wxUIObject *obj, wxString &name, wxGr
 	}
 	else if (type == "SearchListBox")
 	{
-		ActiveInputPage::DataExchange(obj, *vv, ActiveInputPage::VAR_TO_OBJ);
-		VariablePopupDialog vpe(grid, obj, name);
+		VariablePopupDialog vpe(grid, obj, name, vv, vi);
 		vpe.ShowModal();
 		ActiveInputPage::DataExchange(vpe.GetUIObject(), *vv, ActiveInputPage::OBJ_TO_VAR);
 	}
@@ -814,8 +805,7 @@ bool GridCellVarValueEditor::DisplayEditor(wxUIObject *obj, wxString &name, wxGr
 	}
 	else if (type == "DataMatrix")
 	{
-		ActiveInputPage::DataExchange(obj, *vv, ActiveInputPage::VAR_TO_OBJ);
-		VariablePopupDialog vpe(grid, obj, name);
+		VariablePopupDialog vpe(grid, obj, name, vv, vi);
 		vpe.ShowModal();
 		ActiveInputPage::DataExchange(vpe.GetUIObject(), *vv, ActiveInputPage::OBJ_TO_VAR);
 	}
@@ -829,22 +819,19 @@ bool GridCellVarValueEditor::DisplayEditor(wxUIObject *obj, wxString &name, wxGr
 	}
 	else if (type == "ValueMatrix")
 	{
-		ActiveInputPage::DataExchange(obj, *vv, ActiveInputPage::VAR_TO_OBJ);
-		VariablePopupDialog vpe(grid, obj, name);
+		VariablePopupDialog vpe(grid, obj, name, vv, vi);
 		vpe.ShowModal();
 		ActiveInputPage::DataExchange(vpe.GetUIObject(), *vv, ActiveInputPage::OBJ_TO_VAR);
 	}
 	else if (type == "MonthByHourFactors")
 	{
-		ActiveInputPage::DataExchange(obj, *vv, ActiveInputPage::VAR_TO_OBJ);
-		VariablePopupDialog vpe(grid, obj, name);
+		VariablePopupDialog vpe(grid, obj, name, vv, vi);
 		vpe.ShowModal();
 		ActiveInputPage::DataExchange(vpe.GetUIObject(), *vv, ActiveInputPage::OBJ_TO_VAR);
 	}
-	else if (type == "Library")
+	else if (type == "Library") 
 	{
-		ActiveInputPage::DataExchange(obj, *vv, ActiveInputPage::VAR_TO_OBJ);
-		VariablePopupDialog vpe(grid, obj, name);
+		VariablePopupDialog vpe(grid, obj, name, vv, vi);
 		vpe.ShowModal();
 		ActiveInputPage::DataExchange(vpe.GetUIObject(), *vv, ActiveInputPage::OBJ_TO_VAR);
 	}
@@ -872,9 +859,9 @@ void GridCellVarValueEditor::BeginEdit(int row, int col, wxGrid *pGrid)
 	obj->SetName(var_name);
 
 	if (var_label.IsEmpty())
-		DisplayEditor(obj, var_name, pGrid, vv);
+		DisplayEditor(obj, var_name, pGrid, vv, vi);
 	else
-		DisplayEditor(obj, var_label, pGrid, vv);
+		DisplayEditor(obj, var_label, pGrid, vv, vi);
 
 	m_text->SetLabel(vv->AsString());
 	pGrid->SaveEditControlValue();
@@ -1373,13 +1360,25 @@ OnLeftClick(wxGridEvent &evt)
 ////////////////////////////////////////////////////////////////////////////////////////
 
 
-VariablePopupDialog::VariablePopupDialog(wxWindow *parent, wxUIObject *obj, wxString &name)
-: wxDialog(parent, wxID_ANY, "Variable Editor", wxDefaultPosition, wxDefaultSize), m_obj(obj)
+VariablePopupDialog::VariablePopupDialog(wxWindow *parent, wxUIObject *obj, wxString &name, VarValue *vv, VarInfo *vi)
+: wxDialog(parent, wxID_ANY, "Variable Editor", wxDefaultPosition, wxDefaultSize), m_obj(obj), m_vv(vv), m_vi(vi)
 {
-	if (m_obj == 0) return;
+	if ((m_vv == 0) || (m_vi == 0) || (m_obj == 0)) return;
 	
 	m_obj->SetGeometry(GetClientSize());
+	
 	wxWindow *ctrl = m_obj->CreateNative(this);
+
+	if (m_obj->GetTypeName() == "Library")
+	{
+		LibraryCtrl *ll = m_obj->GetNative<LibraryCtrl>();
+		wxArrayString lib = m_vi->IndexLabels;
+		if (lib.Count() > 0 )
+			ll->SetLibrary(lib[0],"*"); // no field list kept with VarInfo - only with form object
+	}
+	ActiveInputPage::DataExchange(obj, *vv, ActiveInputPage::VAR_TO_OBJ);
+
+
 
 	wxBoxSizer *sizer = new wxBoxSizer(wxVERTICAL);
 	sizer->Add(ctrl,
