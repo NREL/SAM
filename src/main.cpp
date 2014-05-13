@@ -79,7 +79,7 @@ public:
 enum { __idFirst = wxID_HIGHEST+592,
 
 	ID_MAIN_MENU, ID_CASE_TABS, ID_CONTEXT_HELP, ID_PAGE_NOTES,
-	ID_CASE_CREATE, ID_RUN_ALL_CASES,
+	ID_CASE_CREATE, ID_RUN_ALL_CASES, ID_SAVE_HOURLY,
 	__idCaseMenuFirst,
 	ID_CASE_CONFIG,
 	ID_CASE_RENAME,
@@ -104,12 +104,14 @@ enum { __idFirst = wxID_HIGHEST+592,
 
 BEGIN_EVENT_TABLE( MainWindow, wxFrame )
 	EVT_CLOSE( MainWindow::OnClose )
+	EVT_MENU( ID_SAVE_HOURLY, MainWindow::OnCommand )
 	EVT_MENU( wxID_NEW, MainWindow::OnCommand )
 	EVT_MENU(ID_CASE_VARIABLE_LIST, MainWindow::OnCommand)
 	EVT_MENU(ID_CASE_COMPARE, MainWindow::OnCommand)
 	EVT_MENU(wxID_OPEN, MainWindow::OnCommand)
 	EVT_MENU( wxID_SAVE, MainWindow::OnCommand )
 	EVT_MENU( wxID_SAVEAS, MainWindow::OnCommand )
+	EVT_MENU( ID_SAVE_HOURLY, MainWindow::OnCommand )
 	EVT_MENU( wxID_CLOSE, MainWindow::OnCommand )
 	EVT_MENU( wxID_EXIT, MainWindow::OnCommand )
 	EVT_BUTTON(ID_CASE_CREATE, MainWindow::OnCommand)
@@ -510,7 +512,8 @@ void MainWindow::OnCommand( wxCommandEvent &evt )
 			menu.AppendSeparator();
 			menu.Append( wxID_OPEN, "Open\tCtrl-O" );
 			menu.Append( wxID_SAVE, "Save\tCtrl-S" );
-			menu.Append( wxID_SAVEAS, "Save as" );
+			menu.Append( wxID_SAVEAS, "Save as..." );
+			menu.Append( ID_SAVE_HOURLY, "Save with hourly results");
 			menu.AppendSeparator();
 			menu.Append( wxID_CLOSE, "Close\tCtrl-W" );
 			menu.Append( wxID_EXIT, "Exit" );
@@ -547,6 +550,11 @@ void MainWindow::OnCommand( wxCommandEvent &evt )
 		break;
 	case wxID_SAVE:
 		Save();
+		break;
+	case ID_SAVE_HOURLY:
+		m_project.SetSaveHourlyData( true );
+		Save();
+		m_project.SetSaveHourlyData( false );
 		break;
 	case wxID_CLOSE:
 		CloseProject();
@@ -589,6 +597,9 @@ void MainWindow::SaveAs()
 
 bool MainWindow::LoadProject( const wxString &file )
 {
+	if ( file.IsEmpty() || !wxFileExists( file ) )
+		return false;
+
 	m_project.Clear();
 	if ( m_project.ReadArchive( file ) )
 	{
@@ -1507,6 +1518,11 @@ wxConfig &SamApp::Settings()
 MainWindow *SamApp::Window()
 {
 	return g_mainWindow;
+}
+
+ProjectFile &SamApp::Project()
+{
+	return g_mainWindow->Project();
 }
 
 

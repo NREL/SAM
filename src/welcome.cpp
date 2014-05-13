@@ -246,7 +246,7 @@ void WelcomeScreen::OnCommand( wxCommandEvent &evt )
 	case ID_OPEN_EXISTING:
 	{
 		wxFileDialog dlg( this, "Open a SAM file", wxEmptyString, wxEmptyString, "SAM Project Files (*.sam)|*.sam" );
-		if ( dlg.ShowModal() && SamApp::Window()->CloseProject())
+		if ( wxID_OK == dlg.ShowModal() && SamApp::Window()->CloseProject())
 			SamApp::Window()->LoadProject( dlg.GetPath() );
 	}
 		break;

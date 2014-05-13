@@ -541,7 +541,7 @@ static void fcall_case_name(lk::invoke_t &cxt)
 	LK_DOC("case_name", "Returns the current case name.", "( none ):none");
 
 	Case *c = SamApp::Window()->GetCurrentCase();
-	wxString case_name = SamApp::Window()->Project().GetCaseName(c);
+	wxString case_name = SamApp::Project().GetCaseName(c);
 
 	cxt.result().assign(case_name);
 }

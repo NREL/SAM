@@ -119,8 +119,10 @@ CaseWindow::CaseWindow( wxWindow *parent, Case *c )
 	m_pageNote = 0;
 	m_currentGroup = 0;
 
+	wxColour lafore( *wxWHITE ), laback( 100,100,100 );
+
 	wxPanel *left_panel = new wxPanel( this );
-	left_panel->SetBackgroundColour( *wxWHITE );
+	left_panel->SetBackgroundColour( laback );
 	m_inputPageList = new InputPageList( left_panel, ID_INPUTPAGELIST );
 	m_inputPageList->SetCaseWindow( this );
 	m_inputPageList->SetBackgroundColour( wxColour(243,243,243) );
@@ -134,23 +136,16 @@ CaseWindow::CaseWindow( wxWindow *parent, Case *c )
 	szhl->Add( m_simButton, 1, wxALL|wxEXPAND, 0 );
 	szhl->Add( m_resultsButton, 0, wxALL|wxEXPAND, 0 );
 	
-	/*
-	wxColour lafore( *wxWHITE ), laback( 100,100,100 );
 	wxFont lafont( *wxNORMAL_FONT );
 	lafont.SetWeight( wxFONTWEIGHT_BOLD );
-	m_techLabel = new wxStaticText( this, wxID_ANY, "-technology-" );
-	m_techLabel->SetBackgroundColour( laback );
-	m_techLabel->SetForegroundColour( lafore );
-	m_techLabel->SetFont( lafont );
-	m_finLabel = new wxStaticText( this, wxID_ANY, "-financing-");
-	m_finLabel->SetBackgroundColour( laback );
-	m_finLabel->SetForegroundColour( lafore );
-	m_finLabel->SetFont( lafont );
-	*/
+	m_configLabel = new wxStaticText( left_panel, wxID_ANY, "-technology-" );
+	m_configLabel->SetBackgroundColour( laback );
+	m_configLabel->SetForegroundColour( lafore );
+	m_configLabel->SetFont( lafont );
+	
 
 	wxBoxSizer *szvl = new wxBoxSizer( wxVERTICAL );
-	//szvl->Add( m_techLabel, 0, wxEXPAND|wxALIGN_CENTER_VERTICAL|wxALIGN_CENTER, 0 );
-	//szvl->Add( m_finLabel, 0, wxEXPAND|wxALIGN_CENTER_VERTICAL|wxALIGN_LEFT, 0 );
+	szvl->Add( m_configLabel, 0, wxALIGN_CENTER_VERTICAL|wxALIGN_CENTER|wxTOP|wxBOTTOM, 3 );
 	szvl->Add( m_inputPageList, 1, wxALL|wxEXPAND, 0 );
 	szvl->Add( szhl, 0, wxALL|wxEXPAND, 0 );
 	
@@ -453,7 +448,7 @@ void CaseWindow::GenerateReport( )
 	if (index < 0)
 		return;
 
-	wxString casename = SamApp::Window()->Project().GetCaseName( m_case );
+	wxString casename = SamApp::Project().GetCaseName( m_case );
 	wxString folder = wxPathOnly( SamApp::Window()->GetProjectFileName() );
 
 	wxFileDialog fdlg( this, "Create PDF report for: " + casename, folder,
@@ -657,7 +652,7 @@ void CaseWindow::OnCaseEvent( Case *, CaseEvent &evt )
 		// update side bar
 		m_inputPageList->Refresh();
 
-		SamApp::Window()->Project().SetModified( true );
+		SamApp::Project().SetModified( true );
 	}
 	else if ( evt.GetType() == CaseEvent::CONFIG_CHANGED )
 	{
@@ -677,7 +672,7 @@ void CaseWindow::OnCaseEvent( Case *, CaseEvent &evt )
 		
 		m_baseCaseResults->Clear();
 
-		SamApp::Window()->Project().SetModified( true );
+		SamApp::Project().SetModified( true );
 	}
 	else if ( evt.GetType() == CaseEvent::SAVE_NOTIFICATION )
 	{
@@ -915,9 +910,8 @@ void CaseWindow::UpdateConfiguration()
 	ConfigInfo *cfg = m_case->GetConfiguration();
 	if ( !cfg ) return;
 
-	//m_techLabel->SetLabel( cfg->Technology  + ", " + cfg->Financing );
-	//m_finLabel->SetLabel( cfg->Financing );
-
+	m_configLabel->SetLabel( cfg->Technology  + ", " + cfg->Financing );
+	
 	// update current set of input pages
 	m_pageGroups = cfg->InputPageGroups;
 
@@ -945,6 +939,8 @@ void CaseWindow::UpdateConfiguration()
 		m_inputPageList->Add( m_pageGroups[i]->SideBarLabel, i == m_pageGroups.size()-1, m_pageGroups[i]->HelpContext );
 	}
 
+	Layout();
+
 }
 
 
@@ -958,7 +954,7 @@ void CaseWindow::UpdatePageNote()
 		// check if the note text has changed
 		wxString old_note = m_case->RetrieveNote(m_lastPageNoteId);
 		if (old_note != m_pageNote->GetText())
-			SamApp::Window()->Project().SetModified( true );
+			SamApp::Project().SetModified( true );
 
 		m_case->SaveNote( m_lastPageNoteId, m_pageNote->GetText() );
 		if (m_pageFlipper->GetSelection() == 0)
