@@ -48,6 +48,9 @@ public:
 	bool Ok();
 	wxArrayString &GetErrors();
 	wxArrayString &GetWarnings();
+	
+	static bool ListAllOutputs( Case *cc, 
+		wxArrayString *names, wxArrayString *labels, wxArrayString *units );
 
 private:
 	Case *m_case;
@@ -58,6 +61,7 @@ private:
 	wxArrayString m_errors, m_warnings;
 	StringHash m_outputLabels, m_outputUnits;
 };
+
 
 
 #endif

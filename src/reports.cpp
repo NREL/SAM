@@ -13,7 +13,7 @@
 #include "case.h"
 #include "reports.h"
 #include "graph.h"
-//#include "selectvariabledialog.h"
+#include "casewin.h"
 
 #include <wex/codeedit.h>
 #include <wex/pagelayout.h>
@@ -24,6 +24,7 @@
 #include <wex/lkscript.h>
 #include <wex/exttext.h>
 #include <wex/label.h>
+#include <wex/utils.h>
 
 #include <wex/icons/stock_dnd_32.cpng>
 
@@ -648,49 +649,60 @@ Case *SamReportObject::GetCase()
 static wxString InsertVariable( wxWindow *parent, bool with_curly = true )
 {
 	wxArrayString names, labels;
-
-	/*
-
+	
 	std::vector<Case*> cur_cases = SamApp::Window()->Project().GetCases();
+
+	if ( cur_cases.size() == 0 )
+	{
+		wxMessageBox("To see a list of variables, create one or more cases first." );
+		return wxEmptyString;
+	}
+	
 	for (int i=0;i<cur_cases.size();i++)
 	{
+		wxString case_name( SamApp::Window()->Project().GetCaseName( cur_cases[i] ) );
 		wxArrayString output_names, output_labels;
-		cur_cases[i]->ListOutputs( output_names, &output_labels );
+		Simulation::ListAllOutputs( cur_cases[i], &output_names, &output_labels, 0 );
 
 		for (int j=0;j<(int)output_labels.size();j++)
 		{
 			if (!output_labels[j].IsEmpty())
 			{
 				names.Add(output_names[j]);
-				labels.Add("@[" + cur_cases[i]->GetTitle() + "] Outputs/" + output_labels[j]);
+				labels.Add("[" + case_name + "] Outputs/" + output_labels[j]);
 			}
 		}
-	}
 
-	SymTab *syms = DbGet()->GetMasterSymTab();
-	std::vector<VarInfo*> vars = syms->GetVariables(false);
-	for (int i=0;i<vars.size();i++)
-	{
-		wxString label = vars[i]->GetLabel();
-		if (!label.IsEmpty())
+		ConfigInfo *ci = cur_cases[i]->GetConfiguration();
+		VarInfoLookup &vil = ci->Variables;
+
+		for( VarInfoLookup::iterator it = vil.begin(); it != vil.end(); ++it )
 		{
-			if (vars[i]->GetUnits() != "") 
-				label += " (" + vars[i]->GetUnits() + ")";
+			wxString name = it->first;
+			VarInfo &vi = *(it->second);
 
-			label += "  ";
-		}
+			wxString label = vi.Label;
+			if (!label.IsEmpty())
+			{
+				if ( !vi.Units.IsEmpty() ) 
+					label += " (" + vi.Units + ")";
 
-		label += "{ " + vars[i]->GetName() + " }";
+				label += "  ";
+			}
 
-		if (vars[i]->GetContext().IsEmpty()) label = "-Unsorted-/" + label;
-		else label = vars[i]->GetContext() + "/" + label;
+			label += "{ " + name + " }";
+
+			if ( vi.Group.IsEmpty() ) label = "-Unsorted-/" + label;
+			else label = vi.Group + "/" + label;
 		
-		labels.Add( label );
-		names.Add( vars[i]->GetName() );
+			label = "[" +case_name + "] Inputs/" + label;
+
+			labels.Add( label );
+			names.Add( name );
+		}
 	}
 
-
-	SortByLabels(names, labels);
+	wxSortByLabels(names, labels);
 	SelectVariableDialog dlg( parent, "Select variable" );
 	dlg.SetItems( names, labels );
 	if (dlg.ShowModal() == wxID_OK)
@@ -707,7 +719,6 @@ static wxString InsertVariable( wxWindow *parent, bool with_curly = true )
 		}
 		return text;
 	}
-	*/
 
 	return wxEmptyString;
 }
@@ -1917,6 +1928,26 @@ static void fcall_var( lk::invoke_t &cxt )
 			vv->Write( cxt.result() );
 	}
 }
+
+static void fcall_technology( lk::invoke_t &cxt )
+{
+	LK_DOC("technology", "Returns the current case's technology", "(none):string");
+	SamReportScriptObject *so = (SamReportScriptObject*) cxt.user_data();
+	if (!so) return;
+	if ( Case *c = so->GetCase() )
+		if ( ConfigInfo *ci = c->GetConfiguration() )
+			cxt.result().assign( ci->Technology );
+}
+
+static void fcall_financing( lk::invoke_t &cxt )
+{
+	LK_DOC("financing", "Returns the current case's financing", "(none):string");
+	SamReportScriptObject *so = (SamReportScriptObject*) cxt.user_data();
+	if (!so) return;
+	if ( Case *c = so->GetCase() )
+		if ( ConfigInfo *ci = c->GetConfiguration() )
+			cxt.result().assign( ci->Financing );
+}
 	
 VarTable *SamReportScriptObject::GetSymbols()
 {
@@ -1926,8 +1957,13 @@ VarTable *SamReportScriptObject::GetSymbols()
 
 
 enum { IDT_SCRIPT=1495, IDT_BOLD, IDT_ITALIC, IDT_FACE, IDT_SIZE, 
-	IDT_COLOUR, IDT_SYMBOL, IDT_ALIGN, IDT_INSERTVAR,
+	IDT_COLOUR, IDT_SYMBOL, IDT_ALIGN, IDT_INSERTVAR, IDT_FIND, IDT_HELP,
 	IDT_OUTPUT, IDT_TIMER };
+
+static lk::fcall_t report_script_funcs[] = {
+	fcall_out, fcall_outln, fcall_style, fcall_move_to, fcall_line_to, fcall_cursor,
+	fcall_measure, fcall_table, fcall_graph, fcall_var, fcall_technology, fcall_financing,
+	0 };
 
 class SamScriptObjectEditDialog : public wxDialog
 {
@@ -1954,18 +1990,14 @@ public:
 			
 		m_editor = new wxLKScriptCtrl(this, IDT_SCRIPT, wxDefaultPosition, wxDefaultSize, 
 			wxLK_STDLIB_BASIC|wxLK_STDLIB_STRING|wxLK_STDLIB_MATH|wxLK_STDLIB_WXUI);
-
-		lk::fcall_t funcs[] = {
-			fcall_out, fcall_outln, fcall_style, fcall_move_to, fcall_line_to, fcall_cursor,
-			fcall_measure, fcall_table, fcall_graph, fcall_var,
-			0
-		};
-
-		m_editor->RegisterLibrary( funcs );
+		
+		m_editor->RegisterLibrary( report_script_funcs );
 
 		m_toolSizer = new wxBoxSizer( wxHORIZONTAL );
-		m_toolSizer->Add( new wxButton( this, IDT_INSERTVAR, "Variables...", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT ), 0, wxRIGHT|wxALIGN_CENTER, 4 );
-		m_toolSizer->Add( new wxButton( this, IDT_SYMBOL, "@...", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT ), 0, wxRIGHT|wxALIGN_CENTER, 4 );
+		m_toolSizer->Add( new wxButton( this, IDT_INSERTVAR, "Variables", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT ), 0, wxRIGHT|wxALIGN_CENTER, 4 );
+		m_toolSizer->Add( new wxButton( this, IDT_SYMBOL, "@", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT ), 0, wxRIGHT|wxALIGN_CENTER, 4 );
+		m_toolSizer->Add( new wxButton( this, IDT_FIND, "Find", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT ), 0, wxRIGHT|wxALIGN_CENTER, 4 );
+		m_toolSizer->Add( new wxButton( this, IDT_HELP, "Help", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT ), 0, wxRIGHT|wxALIGN_CENTER, 4 );
 
 		wxBoxSizer *lay = new wxBoxSizer( wxVERTICAL );
 		lay->Add( m_toolSizer, 0, wxEXPAND|wxALL, 4 );
@@ -2053,22 +2085,27 @@ public:
 		}
 	}
 
+	void OnFind( wxCommandEvent & )
+	{
+		m_editor->ShowFindReplaceDialog();
+	}
+
+	void OnHelp( wxCommandEvent & )
+	{
+		m_editor->ShowHelpDialog();
+	}
+
 	DECLARE_EVENT_TABLE()
 };
 
 BEGIN_EVENT_TABLE( SamScriptObjectEditDialog, wxDialog )
 
 	EVT_STC_CHANGE( IDT_SCRIPT,SamScriptObjectEditDialog::OnScriptChanged )	
-	EVT_COLOURPICKER_CHANGED( IDT_COLOUR, SamScriptObjectEditDialog::OnColour )	
-	EVT_SPINCTRL( IDT_SIZE, SamScriptObjectEditDialog::OnSpin )
-	EVT_CHECKBOX( IDT_BOLD, SamScriptObjectEditDialog::OnChange )
-	EVT_CHECKBOX( IDT_ITALIC, SamScriptObjectEditDialog::OnChange )
-	EVT_COMBOBOX( IDT_FACE, SamScriptObjectEditDialog::OnChange )
-	EVT_COMBOBOX( IDT_ALIGN, SamScriptObjectEditDialog::OnChange )
 	EVT_BUTTON( IDT_INSERTVAR, SamScriptObjectEditDialog::OnInsertVar )
-	EVT_TIMER( IDT_TIMER, SamScriptObjectEditDialog::OnTimer )
 	EVT_BUTTON( IDT_SYMBOL, SamScriptObjectEditDialog::OnSymbol )
-
+	EVT_BUTTON( IDT_FIND, SamScriptObjectEditDialog::OnFind )
+	EVT_BUTTON( IDT_HELP, SamScriptObjectEditDialog::OnHelp )
+	EVT_TIMER( IDT_TIMER, SamScriptObjectEditDialog::OnTimer )
 END_EVENT_TABLE()
 
 bool SamReportScriptObject::EditObject( wxPageLayoutCtrl *lay )
@@ -2107,18 +2144,8 @@ void SamReportScriptObject::Render( wxPageOutputDevice &dv )
 	}
 	else
 	{
-		lk::env_t env;	
-		env.register_func( fcall_style, this );
-		env.register_func( fcall_table, this );
-		env.register_func( fcall_graph, this );
-		env.register_func( fcall_move_to, this );
-		env.register_func( fcall_line_to, this );
-		env.register_func( fcall_cursor, this );
-		env.register_func( fcall_measure, this );
-		env.register_func( fcall_out, this );
-		env.register_func( fcall_outln, this );
-		env.register_func( fcall_var, this );
-
+		lk::env_t env;			
+		env.register_funcs( report_script_funcs, this );
 		env.register_funcs( lk::stdlib_basic() );
 		env.register_funcs( lk::stdlib_string() );
 		env.register_funcs( lk::stdlib_math() );

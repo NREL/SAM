@@ -602,3 +602,31 @@ void Simulation::GetVariableLengths( std::vector<size_t> &varlengths )
 	std::stable_sort( varlengths.begin(), varlengths.end() );
 }
 
+
+bool Simulation::ListAllOutputs( Case *cc, 
+	wxArrayString *names, wxArrayString *labels, wxArrayString *units )
+{
+	ConfigInfo *cfg = cc->GetConfiguration();
+	if ( !cfg ) return false;
+
+	for( size_t kk=0;kk<cfg->Simulations.size();kk++ )
+	{
+		ssc_module_t p_mod = ssc_module_create( cfg->Simulations[kk].c_str() );
+		if ( !p_mod )
+			return false;
+
+		int pidx=0;
+		while( const ssc_info_t p_inf = ssc_module_var_info( p_mod, pidx++ ) )
+		{
+			int var_type = ssc_info_var_type( p_inf );   // SSC_INPUT, SSC_OUTPUT, SSC_INOUT
+			int data_type = ssc_info_data_type( p_inf ); // SSC_STRING, SSC_NUMBER, SSC_ARRAY, SSC_MATRIX		
+			
+			if ( var_type == SSC_OUTPUT || var_type == SSC_INOUT )
+			{
+				if ( names ) names->Add( wxString(ssc_info_name( p_inf )) );
+				if ( labels ) labels->Add( wxString(ssc_info_label( p_inf )) );
+				if ( units ) units->Add( wxString(ssc_info_units( p_inf )) );
+			}
+		}
+	}
+}
