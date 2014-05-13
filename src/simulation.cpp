@@ -176,6 +176,7 @@ void Simulation::Clear()
 {
 	m_overrides.clear();
 	m_inputs.clear();
+	m_outputList.clear();
 	m_outputs.clear();
 	m_errors.clear();
 	m_warnings.clear();
@@ -243,10 +244,9 @@ VarTable &Simulation::Outputs()
 	return m_outputs;
 }
 
-
-wxArrayString Simulation::GetOutputs()
+wxArrayString Simulation::ListOutputs()
 {
-	return Outputs().ListAll();
+	return m_outputList;
 }
 
 VarValue *Simulation::GetOutput( const wxString &var )
@@ -320,6 +320,7 @@ bool Simulation::Invoke()
 		return false;
 	}
 	
+	m_outputList.clear();
 	m_outputLabels.clear();
 	m_outputUnits.clear();
 
@@ -515,6 +516,7 @@ bool Simulation::Invoke()
 					ssc_number_t vval;
 					if ( ssc_data_get_number( p_data, name, &vval ) )
 					{
+						m_outputList.Add( name );
 						VarValue *vv = m_outputs.Create( name, VV_NUMBER );
 						vv->Set( (float) vval );
 						
@@ -527,6 +529,7 @@ bool Simulation::Invoke()
 					int len;
 					if ( ssc_number_t *varr = ssc_data_get_array( p_data, name, &len ) )
 					{
+						m_outputList.Add( name );
 						VarValue *vv = m_outputs.Create( name, VV_ARRAY );
 						float *ff = new float[len];
 						for( int i=0;i<len;i++ )
