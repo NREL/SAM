@@ -223,7 +223,7 @@ void SamReportTemplate::SetCaseName( const wxString &cn )
 
 bool SamReportTemplate::RenderPdf( const wxString &file, Case *c )
 {
-	if ( c != 0 ) SetCaseName( SamApp::Window()->Project().GetCaseName( c ) );
+	if ( c != 0 ) SetCaseName( SamApp::Project().GetCaseName( c ) );
 	wxPagePdfRenderer pdf;
 	for (int i=0;i<m_pages.size();i++)
 		pdf.AddPage( m_pages[i], EscapeHF(m_header), EscapeHF(m_footer) );
@@ -632,7 +632,7 @@ void SamReportWindow::UpdateCaseList()
 	m_caseListCtrl->Clear();
 	m_caseListCtrl->Append("Refresh list");
 	m_caseListCtrl->Append("No active case");	
-	m_caseListCtrl->Append( SamApp::Window()->Project().GetCaseNames() );
+	m_caseListCtrl->Append( SamApp::Project().GetCaseNames() );
 
 	if ( !sel.IsEmpty() )
 	{
@@ -643,14 +643,14 @@ void SamReportWindow::UpdateCaseList()
 
 Case *SamReportObject::GetCase()
 {
-	return SamApp::Window()->Project().GetCase( m_caseName );
+	return SamApp::Project().GetCase( m_caseName );
 }
 
 static wxString InsertVariable( wxWindow *parent, bool with_curly = true )
 {
 	wxArrayString names, labels;
 	
-	std::vector<Case*> cur_cases = SamApp::Window()->Project().GetCases();
+	std::vector<Case*> cur_cases = SamApp::Project().GetCases();
 
 	if ( cur_cases.size() == 0 )
 	{
@@ -660,7 +660,7 @@ static wxString InsertVariable( wxWindow *parent, bool with_curly = true )
 	
 	for (int i=0;i<cur_cases.size();i++)
 	{
-		wxString case_name( SamApp::Window()->Project().GetCaseName( cur_cases[i] ) );
+		wxString case_name( SamApp::Project().GetCaseName( cur_cases[i] ) );
 		wxArrayString output_names, output_labels;
 		Simulation::ListAllOutputs( cur_cases[i], &output_names, &output_labels, 0 );
 
@@ -998,7 +998,7 @@ wxString SamReportEscapeString( const wxString &input, Case *c )
 
 void SamReportTextObject::Render( wxPageOutputDevice &dv )
 {
-	Case *c = SamApp::Window()->Project().GetCase( GetCaseName() );
+	Case *c = SamApp::Project().GetCase( GetCaseName() );
 
 	if ( !c ) wxPageTextObject::Render(dv);
 	else

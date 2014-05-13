@@ -8,6 +8,7 @@
 
 ProjectFile::ProjectFile()
 {
+	m_saveHourlyData = false;
 	m_modified = false;
 }
 
@@ -171,7 +172,7 @@ void ProjectFile::Write( wxOutputStream &output )
 	wxDataOutputStream out(output);
 
 	out.Write16( 0x3c ); // identifier code
-	out.Write16( 1 ); // data format version
+	out.Write16( 2 ); // data format version
 	out.Write16( SamApp::VersionMajor() );
 	out.Write16( SamApp::VersionMinor() );
 	out.Write16( SamApp::VersionMicro() );
@@ -179,6 +180,8 @@ void ProjectFile::Write( wxOutputStream &output )
 	m_properties.Write( output );
 	m_cases.Write( output );
 	m_objects.Write( output );
+
+	out.Write8( m_saveHourlyData ? 1 : 0 );
 	
 	out.Write16( 0x3c ); // identifier code to finish
 } 
@@ -203,6 +206,12 @@ bool ProjectFile::Read( wxInputStream &input )
 	if ( !m_objects.Read( input ) ) m_lastError = "could not read objects" ;
 
 	m_modified = false;
+
+	if ( ver >= 2 )
+		m_saveHourlyData = ( in.Read8() != 0 );
+	else
+		m_saveHourlyData = false;
+
 	return (in.Read16() == code );
 }
 
@@ -210,8 +219,20 @@ bool ProjectFile::WriteArchive( const wxString &file )
 {
 	wxFFileOutputStream out( file );
 	if ( ! out.IsOk() ) return false;
+
+	// write two bytes of uncompressed identifiers
+	wxUint8 code = 0x41;
+	out.Write( &code, 1 );
+	code = 0xb9;
+	out.Write( &code, 1 );
+
+	// write one byte to indicate compression format
+	// currently only zlib (=1) supported
+	code = 1;
+	out.Write( &code, 1 );
+
 	wxZlibOutputStream zout( out );
-	Write( out );
+	Write( zout );
 	return true;
 }
 
@@ -219,6 +240,27 @@ bool ProjectFile::ReadArchive( const wxString &file )
 {
 	wxFFileInputStream in( file );
 	if ( !in.IsOk() ) return false;
-	wxZlibInputStream zin( in );
-	return Read( in );
+	
+	wxUint8 code1, code2, comp;
+	in.Read( &code1, 1 );
+	in.Read( &code2, 1 );
+
+	if ( code1 != 0x41 || code2 != 0xb9 )
+	{
+		// old format, uncompressed
+		in.Ungetch( code2 );
+		in.Ungetch( code1 );
+		
+		return Read( in );
+	}
+	else
+	{
+		// determine compression format
+		in.Read(&comp, 1);
+		if ( comp != 1 ) // unknown compression type
+			return false;
+
+		wxZlibInputStream zin( in );
+		return Read( zin );
+	}
 }

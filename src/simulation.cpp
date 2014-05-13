@@ -123,7 +123,7 @@ void Simulation::Write( wxOutputStream &os )
 	write_array_string( out, m_overrides );
 
 	m_inputs.Write( os );
-	m_outputs.Write( os );
+	m_outputs.Write( os, SamApp::Project().GetSaveHourlyData() ? 0 : 1024 );
 	
 	write_array_string( out, m_errors );
 	write_array_string( out, m_warnings );
