@@ -260,6 +260,7 @@ public:
 	static wxString GetUserLocalDataDir();
 	static wxConfig &Settings();
 	static MainWindow *Window();
+	static ProjectFile &Project();
 	static wxFileHistory &FileHistory();	
 	static wxArrayString RecentFiles();
 	static void ShowHelp( const wxString &id );

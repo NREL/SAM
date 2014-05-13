@@ -78,11 +78,15 @@ public:
 	void ClearListeners();
 	void SendEvent(ProjectFileEvent e);
 
+	void SetSaveHourlyData( bool b ) { m_saveHourlyData = b; }
+	bool GetSaveHourlyData() { return m_saveHourlyData; }
+
 private:
 	ObjectCollection m_cases;
 	ObjectCollection m_objects;
 	StringHash m_properties;
 	wxString m_lastError;
+	bool m_saveHourlyData;
 	bool m_modified;
 	std::vector<ProjectFileEventListener*> m_listeners;
 };

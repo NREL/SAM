@@ -16,7 +16,6 @@ class wxMetroButton;
 class wxMetroNotebook;
 class wxSimplebook;
 class wxLKScriptCtrl;
-
 class InputPageGroup;
 class InputPageList;
 class ResultsViewer;
@@ -90,7 +89,7 @@ private:
 	void LayoutPage();
 	void DetachCurrentInputPage();
 
-	//wxStaticText *m_techLabel, *m_finLabel;
+	wxStaticText *m_configLabel;
 	wxMetroButton *m_simButton, *m_resultsButton;
 
 	wxSimplebook *m_pageFlipper;
