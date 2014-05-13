@@ -8,6 +8,7 @@
 #include "equations.h"
 #include "simulation.h"
 #include "excelexch.h"
+#include "graph.h"
 
 // case events allow the user interface to be updated
 // when something internal in the case changes that needs to be reflected
@@ -39,7 +40,7 @@ private:
 	wxArrayString m_vars;
 	wxString m_str, m_str2;
 public:
-	enum { VARS_CHANGED, CONFIG_CHANGED, VALUE_CHANGED };
+	enum { VARS_CHANGED, CONFIG_CHANGED, VALUE_CHANGED, SAVE_NOTIFICATION };
 
 	CaseEvent( int type ) : m_type(type) { }
 	CaseEvent( int type, const wxString &str ) : m_type(type), m_str(str) { }
@@ -119,8 +120,13 @@ public:
 	Simulation &BaseCase();
 
 	ExcelExchange &ExcelExch() { return m_excelExch; }
+	void SetGraphs( std::vector<Graph> &gl ) { m_graphs = gl; }
+	void GetGraphs( std::vector<Graph> &gl ) { gl = m_graphs; }
+	StringHash &Perspective() { return m_perspective; }
 
 private:
+	std::vector<CaseEventListener*> m_listeners;
+
 	/* case data */
 	ConfigInfo *m_config;
 	VarTable m_vals;
@@ -128,8 +134,9 @@ private:
 	Simulation m_baseCase;
 	StringHash m_properties;
 	StringHash m_notes;
-	std::vector<CaseEventListener*> m_listeners;
 	ExcelExchange m_excelExch;
+	std::vector<Graph> m_graphs;
+	StringHash m_perspective;
 };
 
 class CaseEvaluator : public EqnEvaluator

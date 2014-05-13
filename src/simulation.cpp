@@ -629,4 +629,6 @@ bool Simulation::ListAllOutputs( Case *cc,
 			}
 		}
 	}
+
+	return true;
 }
