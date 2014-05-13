@@ -358,7 +358,7 @@ void ResultsViewer::Setup( Simulation *sim )
 	{
 		wxArrayString mvars;
 		std::vector<double> mvals;
-		wxArrayString vars = m_sim->GetOutputs();
+		wxArrayString vars = m_sim->ListOutputs();
 		for( size_t i=0;i<vars.size();i++ )
 			if ( VarValue *vv = m_sim->GetValue( vars[i] ) )
 				if ( vv->Type() == VV_NUMBER )
@@ -408,7 +408,7 @@ void ResultsViewer::Setup( Simulation *sim )
 
 	// setup time series datasets
 	RemoveAllDataSets();
-	wxArrayString vars = m_sim->GetOutputs();
+	wxArrayString vars = m_sim->ListOutputs();
 	for( size_t i=0;i<vars.size();i++ )
 	{
 		if ( VarValue *vv = m_sim->GetValue( vars[i] ) )

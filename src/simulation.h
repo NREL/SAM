@@ -30,7 +30,7 @@ public:
 
 	Case *GetCase() { return m_case; }
 	
-	virtual wxArrayString GetOutputs();
+	virtual wxArrayString ListOutputs();
 	virtual VarValue *GetOutput( const wxString &var );
 	virtual wxString GetLabel( const wxString &var );
 	virtual wxString GetUnits( const wxString &var );
@@ -57,6 +57,7 @@ private:
 	wxString m_name;
 	wxArrayString m_overrides;
 	VarTable m_inputs;
+	wxArrayString m_outputList;
 	VarTable m_outputs;
 	wxArrayString m_errors, m_warnings;
 	StringHash m_outputLabels, m_outputUnits;
