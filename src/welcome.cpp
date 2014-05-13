@@ -59,6 +59,7 @@ WelcomeScreen::WelcomeScreen(wxWindow *parent)
 	m_htmlWin = new wxHtmlWindow(this, ID_MESSAGES_HTML, wxDefaultPosition, wxDefaultSize, wxBORDER_NONE);
 	m_htmlWin->SetFont( *wxNORMAL_FONT );
 	m_htmlWin->SetFonts( wxNORMAL_FONT->GetFaceName(), "courier" );
+	m_htmlWin->SetPage( "<html><body><font color=#a9a9a9 face=\"Segoe UI Light\" size=10>Loading news...</font></body></html>" );
 
 
 	m_createCase = new wxMetroButton(this, ID_CREATE_PROJECT, "Start a new project", wxNullBitmap, 
@@ -123,7 +124,13 @@ void WelcomeScreen::UpdateMessagesHtml(const wxString &html)
 		m_messageStatus = RETRIEVED;
 	}
 	else
+	{
+		
+		m_htmlWin->SetPage( "<html><body><font color=#a9a9a9 face=\"Segoe UI Light\" size=10>"
+			"Could not connect to the SAM news feed."
+			"</font></body></html>" );
 		m_messageStatus = FAILED;
+	}
 
 	FILE *fp = fopen(GetLocalMessagesFile().c_str(), "w");
 	if (fp)
