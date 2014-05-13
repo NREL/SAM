@@ -256,6 +256,27 @@ public:
 	virtual void SetDataValue(size_t i, double newYValue) { /* nothing to do */ }
 };
 
+class ExcelExchSummary : public MetricsTable
+{
+public:
+	ExcelExchSummary( wxWindow *parent, Simulation *sim )
+		: MetricsTable( parent )
+	{
+		ConfigInfo *ci = sim->GetCase()->GetConfiguration();
+		std::vector<ExcelExchange::Captured> &summ = sim->GetCase()->ExcelExch().Summary;
+		matrix_t<wxString> mat( summ.size()+1, 3 );
+		mat(0,0) = "Captured from Excel";
+		mat(0,1) = "Range";
+		mat(0,2) = "Value";
+		for( size_t i=0;i<summ.size();i++ )
+		{
+			mat(i+1,0) = ci->Variables.Label( summ[i].Name );
+			mat(i+1,1) = summ[i].Range;
+			mat(i+1,2) = summ[i].Value;
+		}
+		SetData( mat );
+	}
+};
 
 void ResultsViewer::Setup( Simulation *sim )
 {
@@ -370,6 +391,22 @@ void ResultsViewer::Setup( Simulation *sim )
 		m_metricsTable->SetData( metrics );
 	}
 
+
+	// update excel exchange outputs
+	size_t i=0;
+	while( i < m_summaryLayout->Count() )
+	{
+		if ( ExcelExchSummary *exsum = dynamic_cast<ExcelExchSummary*>( m_summaryLayout->Get(i) ) )
+			m_summaryLayout->Delete( exsum );
+		else
+			i++;
+	}
+
+	if ( sim->GetCase()->ExcelExch().Enabled && sim->GetCase()->ExcelExch().Summary.size() > 0 )
+		m_summaryLayout->Add( new ExcelExchSummary( m_summaryLayout, sim ) );
+
+
+	// setup time series datasets
 	RemoveAllDataSets();
 	wxArrayString vars = m_sim->GetOutputs();
 	for( size_t i=0;i<vars.size();i++ )

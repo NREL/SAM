@@ -97,32 +97,34 @@ class ExcelExchDialog : public wxDialog
 public:
 
 	ExcelExchDialog(wxWindow *parent, int id)
-		 : wxDialog( parent, id, "Excel Exchange", wxDefaultPosition, wxSize(600,350),
+		 : wxDialog( parent, id, "Configure Excel Exchange", wxDefaultPosition, wxSize(600,350),
 		 wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER)
 	{
+		//SetBackgroundColour( *wxWHITE );
+
 		txtExcelFile = new wxExtTextCtrl(this, ID_txtExcelFile, "<Select an Excel file>", wxPoint(303,30), wxSize(334,21));
 		txtExcelRange = new wxExtTextCtrl(this, ID_txtExcelRange, "A1", wxPoint(417,132), wxSize(121,21));
 			
 		lstVariables = new wxListBox(this, ID_lstVariables, wxPoint(111,30), wxSize(182,123), 0, 0, wxLB_SINGLE);
 		
-		chkEnableExch = new wxCheckBox(this, ID_chkEnableExch, "Turn on Excel Exchange for base case simulation");
+		chkEnableExch = new wxCheckBox(this, ID_chkEnableExch, "Turn on Excel Exchange for the base case simulation");
 
 		wxArrayString _data_rbgToFrom;
-		_data_rbgToFrom.Add("Send Variable Value To Excel Range");
-		_data_rbgToFrom.Add("Capture Variable Value From Excel Range");
+		_data_rbgToFrom.Add("Send variable value to Excel");
+		_data_rbgToFrom.Add("Capture variable value from Excel");
 		rbgToFrom = new wxRadioChoice(this, ID_rbgToFrom, wxPoint(303,84), wxSize(332,44));
 		rbgToFrom->Add( _data_rbgToFrom);
 			
 		wxBoxSizer *sz1 = new wxBoxSizer( wxHORIZONTAL );
 		sz1->Add( new wxStaticText( this, wxID_ANY, "Excel file:"), 0, wxALL|wxALIGN_CENTER_VERTICAL, 4 );
-		sz1->Add( txtExcelFile, 1, wxALL, 4 );
-		sz1->Add( new wxButton(this, ID_btnSelectExcelFile, "Browse..." ), 0, wxALL, 4 );
+		sz1->Add( txtExcelFile, 1, wxALL|wxALIGN_CENTER_VERTICAL, 4 );
+		sz1->Add( new wxButton(this, ID_btnSelectExcelFile, "...", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT ), 0, wxALL|wxALIGN_CENTER_VERTICAL, 4 );
 		
 		wxBoxSizer *szvvl = new wxBoxSizer( wxVERTICAL );
 		szvvl->Add( new wxStaticText( this, wxID_ANY, "Variables:" ), 0, wxALL|wxEXPAND, 4 );
-		szvvl->Add( new wxButton(this, ID_btnAddVar, "Add..."), 0, wxALL|wxEXPAND, 2 );
-		szvvl->Add( new wxButton(this, ID_btnRemoveVar, "Remove"), 0, wxALL|wxEXPAND, 2 );
-		szvvl->Add( new wxButton(this, ID_btnRemoveAll, "Clear All"), 0, wxALL|wxEXPAND, 2 );
+		szvvl->Add( new wxButton(this, ID_btnAddVar, "Add...", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL|wxEXPAND, 1 );
+		szvvl->Add( new wxButton(this, ID_btnRemoveVar, "Remove", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL|wxEXPAND, 1 );
+		szvvl->Add( new wxButton(this, ID_btnRemoveAll, "Clear all", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL|wxEXPAND, 1 );
 		szvvl->AddStretchSpacer();
 
 		wxBoxSizer *szvvr = new wxBoxSizer( wxVERTICAL );
@@ -132,22 +134,23 @@ public:
 		szvvr->AddStretchSpacer();
 
 		wxBoxSizer *sz2 = new wxBoxSizer( wxHORIZONTAL );
-		sz2->Add( szvvl, 0, wxALL|wxEXPAND, 0 );
-		sz2->Add( lstVariables, 1, wxALL|wxEXPAND, 0 );
-		sz2->Add( szvvr, 0, wxALL|wxEXPAND, 0 );
+		sz2->Add( szvvl, 0, wxALL|wxEXPAND, 2 );
+		sz2->Add( lstVariables, 1, wxALL|wxEXPAND, 2 );
+		sz2->Add( szvvr, 0, wxALL|wxEXPAND, 2 );
 
 		wxStaticText *notes = new wxStaticText( this, wxID_ANY, 
-			"If you specify an Excel file name with no path, SAM searches the folder containing the SAM file (*.sam).\n\n"
-			"Excel Range can be a cell reference (such as C7) or a named range.\n\n"
-			"To exchange values with an annual schedule variable, use a reference (A1:12, B:G1) rather than a named range.\n\n" );
-		notes->Wrap( 450 );
+			"The Excel range can be a cell reference (such as C7) or a named range.\n\n"
+			"To exchange values with an annual schedule variable, use a reference (A1:12, B:G1) rather than a named range.\n\n"
+			"If you specify an Excel file with no path, SAM looks in the folder containing the current SAM project file.\n\n" );
+		notes->Wrap( 590 );
+		notes->SetForegroundColour( wxColour(255,128,0) );
 		
 		wxBoxSizer *sizer = new wxBoxSizer( wxVERTICAL );
 		sizer->Add( chkEnableExch, 0, wxALL|wxEXPAND, 10 );
-		sizer->Add( new wxStaticLine( this, wxID_ANY ), 0, wxALL|wxEXPAND, 3 );
-		sizer->Add( sz1, 0, wxALL|wxEXPAND, 0 );
-		sizer->Add( sz2, 1, wxALL|wxEXPAND, 0 );
-		sizer->Add( notes, 0, wxALL|wxEXPAND, 5 );
+		sizer->Add( new wxStaticLine( this, wxID_ANY ), 0, wxALL|wxEXPAND, 5 );
+		sizer->Add( sz1, 0, wxALL|wxEXPAND, 5 );
+		sizer->Add( sz2, 1, wxALL|wxEXPAND, 5 );
+		sizer->Add( notes, 0, wxLEFT|wxRIGHT|wxEXPAND, 10 );
 		sizer->Add( CreateButtonSizer( wxOK|wxCANCEL ), 0, wxALL|wxEXPAND, 10 );
 		SetSizerAndFit( sizer );
 	}
@@ -279,7 +282,6 @@ public:
 	void UpdateUI()
 	{
 		int idx = lstVariables->GetSelection();
-		txtExcelFile->Enable( idx >= 0);
 		rbgToFrom->Enable( idx >= 0);
 		txtExcelRange->Enable( idx >= 0 );		
 	}
@@ -658,6 +660,8 @@ int ExcelExchange::RunExcelExchange( ExcelExchange &ex, VarTable &inputs, Simula
 		}
 		else
 		{
+			// override the variable value in the simulation object
+			sim->Override( ex.Vars[i].Name, vval );
 
 			// log successful exchange transaction
 			// will be shown in results summary window

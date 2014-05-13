@@ -337,6 +337,11 @@ bool CaseWindow::RunBaseCase( )
 	Simulation &bcsim = m_case->BaseCase();
 	m_inputPageList->Select( -1 );	
 	bcsim.Clear();
+
+	ExcelExchange &ex = m_case->ExcelExch();
+	if ( ex.Enabled )
+		ExcelExchange::RunExcelExchange( ex, m_case->Values(), &bcsim );
+
 	if ( bcsim.Invoke() )
 	{
 		UpdateResults();

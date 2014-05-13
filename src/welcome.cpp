@@ -168,6 +168,7 @@ void WelcomeScreen::UpdateRecentList()
 #define YSTART 100
 #define SPACER 30
 #define BORDER 40
+#define LEFTWIDTH 300
 
 void WelcomeScreen::LayoutWidgets()
 {
@@ -178,14 +179,15 @@ void WelcomeScreen::LayoutWidgets()
 	int ht = 2*ch/3; // top section height
 	int hb = ch-ht; // bottom section height
 
-	m_htmlWin->SetSize( BORDER+350, top, cw-BORDER-BORDER-350, ht );
+	m_htmlWin->SetSize( BORDER+LEFTWIDTH, top, cw-BORDER-BORDER-LEFTWIDTH, ht );
 
-	m_recent->SetSize( BORDER+350, top+ht, cw-BORDER-BORDER-350, hb);
+	m_recent->SetSize( BORDER+LEFTWIDTH, top+ht, cw-BORDER-BORDER-LEFTWIDTH, hb);
 
 
 	wxSize size2 = m_createCase->GetBestSize();
-	m_createCase->SetSize( BORDER+SPACER, top+SPACER, 350-SPACER-SPACER, size2.GetHeight()  );
-	m_openExisting->SetSize( BORDER+SPACER, top+SPACER+size2.GetHeight()+10, 350-SPACER-SPACER, size2.GetHeight() );
+	size2.y+=5;
+	m_createCase->SetSize( BORDER, top, LEFTWIDTH, size2.GetHeight()  );
+	m_openExisting->SetSize( BORDER, top+size2.GetHeight(), LEFTWIDTH, size2.GetHeight() );
 }
 
 void WelcomeScreen::OnPaint(wxPaintEvent &)
@@ -195,11 +197,13 @@ void WelcomeScreen::OnPaint(wxPaintEvent &)
 	wxAutoBufferedPaintDC dc(this);
 	wxSize sz = GetClientSize();
 
+	wxColour grey(180, 180, 180);
+
 	dc.SetBackground( wxBrush( *wxWHITE ) );
 	dc.Clear();
 	
 	dc.SetFont( wxMetroTheme::Font( wxMT_LIGHT, 28 ) );	
-	dc.SetTextForeground( wxColour(180, 180, 180) );
+	dc.SetTextForeground( grey );
 	dc.DrawText( wxString::Format("System Advisor %d", SamApp::VersionMajor()), BORDER, 30 );
 
 	dc.DrawBitmap( m_nrelLogo, sz.GetWidth()-m_nrelLogo.GetWidth()-BORDER, 33 );
@@ -207,8 +211,8 @@ void WelcomeScreen::OnPaint(wxPaintEvent &)
 	int y = 100;
 		
 	dc.SetPen( *wxTRANSPARENT_PEN );
-	dc.SetBrush( wxBrush( wxMetroTheme::Colour( wxMT_ACCENT ) ) );
-	dc.DrawRectangle( BORDER, y, 350, sz.GetHeight() - y+1 );
+	dc.SetBrush( wxBrush( grey ) );
+	dc.DrawRectangle( BORDER, y, LEFTWIDTH, sz.GetHeight() - y+1 );
 
 	//dc.SetPen( wxPen(wxMetroTheme::Colour( wxMT_ACCENT ), 1) );
 	//dc.DrawLine( BORDER, y, sz.GetWidth()-BORDER, y );
