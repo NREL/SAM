@@ -95,12 +95,14 @@ private:
 class VariablePopupDialog : public wxDialog
 {
 public:
-	VariablePopupDialog(wxWindow *parent, wxUIObject *obj, wxString &name);
+	VariablePopupDialog(wxWindow *parent, wxUIObject *obj, wxString &name, VarValue *vv, VarInfo *vi);
 	~VariablePopupDialog();
 
 	wxUIObject *GetUIObject();
 private:
 	wxUIObject *m_obj;
+	VarValue *m_vv;
+	VarInfo *m_vi;
 };
 
 
@@ -131,7 +133,7 @@ private:
 	VarValue *m_var_value;
 	wxWindow *m_parent;
 	VariablePopupDialog *m_vpe;
-	bool DisplayEditor(wxUIObject *obj, wxString &name, wxGrid *grid, VarValue *vv);
+	bool DisplayEditor(wxUIObject *obj, wxString &name, wxGrid *grid, VarValue *vv, VarInfo *vi);
 
 	DECLARE_NO_COPY_CLASS(GridCellVarValueEditor)
 };
