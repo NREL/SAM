@@ -533,6 +533,10 @@ GridCellVarValueRenderer::~GridCellVarValueRenderer(void)
 
 void GridCellVarValueRenderer::Draw(wxGrid &grid, wxGridCellAttr &attr, wxDC &dc, const wxRect &rectCell, int row, int col, bool isSelected)
 {
+	wxGridCellRenderer::Draw(grid, attr, dc, rectCell, row, col, isSelected);
+
+	SetTextColoursAndFont(grid, attr, dc, isSelected);
+
 	wxRect rect = rectCell;
 	rect.Inflate(-1);
 
@@ -548,13 +552,27 @@ void GridCellVarValueRenderer::Draw(wxGrid &grid, wxGridCellAttr &attr, wxDC &dc
 	// text extent to resize by 
 	int dec_width = 2;
 	int str_width = 100;
-	wxString value = grid.GetCellValue(row, col).Left(str_width) + m_ellipsis;
+	wxString display_string = grid.GetCellValue(row, col);
+	VarInfo * vi = ((VariableGridData*)grid.GetTable())->GetVarInfo(row, col);
+	wxString type = vi->UIObject;
+
+	if (vi->Type == VV_NUMBER && vi->IndexLabels.size() > 0
+		&& (type == "Choice" || type == "ListBox" || type == "CheckListBox" || type == "RadioChoice"))
+	{
+		wxArrayString items = vi->IndexLabels;
+		long ndx;
+		if (display_string.ToLong(&ndx) && (ndx > -1) && (ndx < items.Count()))
+			display_string = items[ndx];
+	}
+
+
+	wxString value = display_string.Left(str_width); //+ m_ellipsis;
 
 	wxSize sz = dc.GetTextExtent(value);
 	while ((sz.GetWidth() > rect.GetWidth()) && (str_width > dec_width))
 	{
 		str_width -= dec_width;
-		value = grid.GetCellValue(row, col).Left(str_width) + m_ellipsis;
+		value = display_string.Left(str_width);// +m_ellipsis;
 		sz = dc.GetTextExtent(value);
 	}
 
@@ -729,44 +747,44 @@ bool GridCellVarValueEditor::DisplayEditor(wxUIObject *obj, wxString &name, wxGr
 	else if (type == "DiurnalPeriod")
 	{
 		VariablePopupDialog vpe(grid, obj, name, vv, vi);
-		vpe.ShowModal();
-		ActiveInputPage::DataExchange(vpe.GetUIObject(), *vv, ActiveInputPage::OBJ_TO_VAR);
+		if (vpe.ShowModal() == wxID_OK)
+			ActiveInputPage::DataExchange(vpe.GetUIObject(), *vv, ActiveInputPage::OBJ_TO_VAR);
 	}
 	else if (type == "ListBox")
 	{
 		VariablePopupDialog vpe(grid, obj, name, vv, vi);
-		vpe.ShowModal();
-		ActiveInputPage::DataExchange(vpe.GetUIObject(), *vv, ActiveInputPage::OBJ_TO_VAR);
+		if (vpe.ShowModal() == wxID_OK)
+			ActiveInputPage::DataExchange(vpe.GetUIObject(), *vv, ActiveInputPage::OBJ_TO_VAR);
 	}
 	else if (type == "RadioChoice")
 	{
 		VariablePopupDialog vpe(grid, obj, name, vv, vi);
-		vpe.ShowModal();
-		ActiveInputPage::DataExchange(vpe.GetUIObject(), *vv, ActiveInputPage::OBJ_TO_VAR);
+		if (vpe.ShowModal() == wxID_OK)
+			ActiveInputPage::DataExchange(vpe.GetUIObject(), *vv, ActiveInputPage::OBJ_TO_VAR);
 	}
 	else if (type == "Slider")
 	{
 		VariablePopupDialog vpe(grid, obj, name, vv, vi);
-		vpe.ShowModal();
-		ActiveInputPage::DataExchange(vpe.GetUIObject(), *vv, ActiveInputPage::OBJ_TO_VAR);
+		if (vpe.ShowModal() == wxID_OK)
+			ActiveInputPage::DataExchange(vpe.GetUIObject(), *vv, ActiveInputPage::OBJ_TO_VAR);
 	}
 	else if (type == "SchedNumeric")
 	{
 		VariablePopupDialog vpe(grid, obj, name, vv, vi);
-		vpe.ShowModal();
-		ActiveInputPage::DataExchange(vpe.GetUIObject(), *vv, ActiveInputPage::OBJ_TO_VAR);
+		if (vpe.ShowModal() == wxID_OK)
+			ActiveInputPage::DataExchange(vpe.GetUIObject(), *vv, ActiveInputPage::OBJ_TO_VAR);
 	}
 	else if (type == "TOUSchedule")
 	{
 		VariablePopupDialog vpe(grid, obj, name, vv, vi);
-		vpe.ShowModal();
-		ActiveInputPage::DataExchange(vpe.GetUIObject(), *vv, ActiveInputPage::OBJ_TO_VAR);
+		if (vpe.ShowModal() == wxID_OK)
+			ActiveInputPage::DataExchange(vpe.GetUIObject(), *vv, ActiveInputPage::OBJ_TO_VAR);
 	}
 	else if (type == "PTLayout")
 	{
 		VariablePopupDialog vpe(grid, obj, name, vv, vi);
-		vpe.ShowModal();
-		ActiveInputPage::DataExchange(vpe.GetUIObject(), *vv, ActiveInputPage::OBJ_TO_VAR);
+		if (vpe.ShowModal() == wxID_OK)
+			ActiveInputPage::DataExchange(vpe.GetUIObject(), *vv, ActiveInputPage::OBJ_TO_VAR);
 	}
 	else if (type == "MaterialProperties")
 	{
@@ -779,8 +797,8 @@ bool GridCellVarValueEditor::DisplayEditor(wxUIObject *obj, wxString &name, wxGr
 	else if (type == "TroughLoop")
 	{
 		VariablePopupDialog vpe(grid, obj, name, vv, vi);
-		vpe.ShowModal();
-		ActiveInputPage::DataExchange(vpe.GetUIObject(), *vv, ActiveInputPage::OBJ_TO_VAR);
+		if (vpe.ShowModal() == wxID_OK)
+			ActiveInputPage::DataExchange(vpe.GetUIObject(), *vv, ActiveInputPage::OBJ_TO_VAR);
 	}
 	else if (type == "MonthlyFactor")
 	{
@@ -793,8 +811,8 @@ bool GridCellVarValueEditor::DisplayEditor(wxUIObject *obj, wxString &name, wxGr
 	else if (type == "SearchListBox")
 	{
 		VariablePopupDialog vpe(grid, obj, name, vv, vi);
-		vpe.ShowModal();
-		ActiveInputPage::DataExchange(vpe.GetUIObject(), *vv, ActiveInputPage::OBJ_TO_VAR);
+		if (vpe.ShowModal() == wxID_OK)
+			ActiveInputPage::DataExchange(vpe.GetUIObject(), *vv, ActiveInputPage::OBJ_TO_VAR);
 	}
 	else if (type == "DataArray")
 	{
@@ -807,8 +825,8 @@ bool GridCellVarValueEditor::DisplayEditor(wxUIObject *obj, wxString &name, wxGr
 	else if (type == "DataMatrix")
 	{
 		VariablePopupDialog vpe(grid, obj, name, vv, vi);
-		vpe.ShowModal();
-		ActiveInputPage::DataExchange(vpe.GetUIObject(), *vv, ActiveInputPage::OBJ_TO_VAR);
+		if (vpe.ShowModal() == wxID_OK)
+			ActiveInputPage::DataExchange(vpe.GetUIObject(), *vv, ActiveInputPage::OBJ_TO_VAR);
 	}
 	else if (type == "ShadingFactors")
 	{
@@ -821,20 +839,20 @@ bool GridCellVarValueEditor::DisplayEditor(wxUIObject *obj, wxString &name, wxGr
 	else if (type == "ValueMatrix")
 	{
 		VariablePopupDialog vpe(grid, obj, name, vv, vi);
-		vpe.ShowModal();
-		ActiveInputPage::DataExchange(vpe.GetUIObject(), *vv, ActiveInputPage::OBJ_TO_VAR);
+		if (vpe.ShowModal() == wxID_OK)
+			ActiveInputPage::DataExchange(vpe.GetUIObject(), *vv, ActiveInputPage::OBJ_TO_VAR);
 	}
 	else if (type == "MonthByHourFactors")
 	{
 		VariablePopupDialog vpe(grid, obj, name, vv, vi);
-		vpe.ShowModal();
-		ActiveInputPage::DataExchange(vpe.GetUIObject(), *vv, ActiveInputPage::OBJ_TO_VAR);
+		if (vpe.ShowModal() == wxID_OK)
+			ActiveInputPage::DataExchange(vpe.GetUIObject(), *vv, ActiveInputPage::OBJ_TO_VAR);
 	}
 	else if (type == "Library") 
 	{
 		VariablePopupDialog vpe(grid, obj, name, vv, vi);
-		vpe.ShowModal();
-		ActiveInputPage::DataExchange(vpe.GetUIObject(), *vv, ActiveInputPage::OBJ_TO_VAR);
+		if (vpe.ShowModal() == wxID_OK)
+			ActiveInputPage::DataExchange(vpe.GetUIObject(), *vv, ActiveInputPage::OBJ_TO_VAR);
 	}
 
 	else return false; // object data exch not handled for this type
@@ -846,7 +864,7 @@ void GridCellVarValueEditor::BeginEdit(int row, int col, wxGrid *pGrid)
 {
 	/* event values are not preserved*/
 	m_cell_value = pGrid->GetTable()->GetValue(row, col);
-	m_text->SetLabel(m_cell_value);
+	m_text->SetLabel(GetDisplayString(m_cell_value, row, col, pGrid));
 
 	VariableGridData *vgd = static_cast<VariableGridData *>(pGrid->GetTable());
 	VarValue *vv = vgd->GetVarValue(row, col);
@@ -864,13 +882,35 @@ void GridCellVarValueEditor::BeginEdit(int row, int col, wxGrid *pGrid)
 	else
 		DisplayEditor(obj, var_label, pGrid, vv, vi);
 
-	m_text->SetLabel(vv->AsString());
+	m_new_cell_value = vv->AsString();
+	m_text->SetLabel( GetDisplayString( m_new_cell_value, row, col, pGrid));
 	pGrid->SaveEditControlValue();
 }
 
+wxString GridCellVarValueEditor::GetDisplayString(wxString &var_string, int row, int col, const wxGrid *grid)
+{
+	wxString display_string = var_string;
+	VarInfo * vi = ((VariableGridData*)grid->GetTable())->GetVarInfo(row, col);
+	wxString type = vi->UIObject;
+
+	if (vi->Type == VV_NUMBER && vi->IndexLabels.size() > 0
+		&& (type == "Choice" || type == "ListBox" || type == "CheckListBox" || type == "RadioChoice"))
+	{
+		wxArrayString items = vi->IndexLabels;
+		long ndx;
+		if (display_string.ToLong(&ndx) && (ndx > -1) && (ndx < items.Count()))
+			display_string = items[ndx];
+	}
+
+	return display_string;
+}
+
+
+
 bool GridCellVarValueEditor::EndEdit(int row, int col, const wxGrid *grid, const wxString &oldval, wxString *newval)
 {
-	wxString new_cell_value = m_text->GetLabel();
+//	wxString new_cell_value = m_text->GetLabel();
+	wxString new_cell_value = m_new_cell_value;
 	if (new_cell_value == m_cell_value)
 		return false; // no change
 
@@ -879,7 +919,7 @@ bool GridCellVarValueEditor::EndEdit(int row, int col, const wxGrid *grid, const
 	if (newval)
 		*newval = m_cell_value;
 
-	m_text->SetLabel(m_cell_value);
+	m_text->SetLabel(GetDisplayString(m_cell_value, row, col, grid));
 	return true;
 }
 
@@ -887,6 +927,7 @@ void GridCellVarValueEditor::ApplyEdit(int row, int col, wxGrid *grid)
 {
 	grid->GetTable()->SetValue(row, col, m_cell_value);
 	m_cell_value.clear();
+	m_new_cell_value.clear();
 	VariableGridFrame *vgf = static_cast<VariableGridFrame *>(grid->GetParent());
 	vgf->UpdateGrid(); // for comparison views
 	grid->Refresh();
