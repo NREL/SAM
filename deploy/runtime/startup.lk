@@ -17,6 +17,7 @@ addconfig( 'Physical Trough', ['Independent Power Producer', 'Leveraged Partners
 addconfig( 'Geothermal Power', ['Independent Power Producer', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'Single Owner', 'None']);
 addconfig( 'Generic System', ['Residential', 'Commercial', 'Commercial PPA', 'Independent Power Producer', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'Single Owner', 'None']);
 addconfig( 'Generic CSP System', ['Commercial', 'Commercial PPA', 'Independent Power Producer', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'Single Owner', 'None']);
+addconfig( 'High-X Concentrating PV', ['Independent Power Producer', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'Single Owner', 'None']);
 
 function setup_pvwatts_pages()
 {
@@ -740,3 +741,57 @@ setup_single_owner_pages();
 setconfig( 'Generic CSP System', 'None' );
 setmodules( ['tcsgeneric_solar']);
 setup_generic_csp_pages();
+
+// High-X Concentrating PV /////////////////////////////////////////////////////
+function setup_hcpv_pages()
+{
+	addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource' } );
+	addpage( [[ 'HCPV Module' ]], { 'sidebar'='Module' } );
+	addpage( [ ['Inverter CEC Database']], { 'sidebar'='Inverter' } );
+	addpage( [[ 'HCPV Array' ]], { 'sidebar'='Array' } );
+}
+
+//-----------------------------------------------------
+setconfig( 'High-X Concentrating PV', 'Independent Power Producer' );
+setmodules( ['hcpv', 'ippppa']);
+setting( { 'analysis_period_var'='cf_length' } );
+setup_hcpv_pages();
+addpage( [[ 'HCPV Costs','O and M Costs']],{ 'sidebar'='System Costs' } );
+setup_independent_power_producer_pages();
+
+//-----------------------------------------------------
+setconfig( 'High-X Concentrating PV', 'Leveraged Partnership Flip' );
+setmodules( ['hcpv', 'levpartflip']);
+setting( { 'analysis_period_var'='cf_length' } );
+setup_hcpv_pages();
+addpage( [[ 'HCPV Costs','O and M Costs']],{ 'sidebar'='System Costs' } );
+setup_leveraged_partnership_flip_pages();
+
+//-----------------------------------------------------
+setconfig( 'High-X Concentrating PV', 'All Equity Partnership Flip' );
+setmodules( ['hcpv', 'equpartflip']);
+setting( { 'analysis_period_var'='cf_length' } );
+setup_hcpv_pages();
+addpage( [[ 'HCPV Costs','O and M Costs']],{ 'sidebar'='System Costs' } );
+setup_all_equity_partnership_flip_pages();
+
+//-----------------------------------------------------
+setconfig( 'High-X Concentrating PV', 'Sale Leaseback' );
+setmodules( ['hcpv', 'saleleaseback']);
+setting( { 'analysis_period_var'='cf_length' } );
+setup_hcpv_pages();
+addpage( [[ 'HCPV Costs','O and M Costs']],{ 'sidebar'='System Costs' } );
+setup_sale_leaseback_pages();
+
+//-----------------------------------------------------
+setconfig( 'High-X Concentrating PV', 'Single Owner' );
+setmodules( ['hcpv', 'singleowner']);
+setting( { 'analysis_period_var'='cf_length' } );
+setup_hcpv_pages();
+addpage( [[ 'HCPV Costs','O and M Costs']],{ 'sidebar'='System Costs' } );
+setup_single_owner_pages();
+
+//-----------------------------------------------------
+setconfig( 'High-X Concentrating PV', 'None' );
+setmodules( ['hcpv']);
+setup_hcpv_pages();

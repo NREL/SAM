@@ -170,6 +170,12 @@ function generic_csp_metrics()
 	metric( 'conversion_factor', {'label'='Gross to Net Conversion Factor', 'mode'='f', 'deci'='1', 'thousep'='true', 'post'=' %' } );
 }
 
+function generic_hcpv_metrics() 
+{
+	metric( 'annual_energy', {'label'='Annual Energy', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh' } );
+	//metric( 'conversion_factor', {'label'='Gross to Net Conversion Factor', 'mode'='f', 'deci'='1', 'thousep'='true', 'post'=' %' } );
+}
+
 metrics{ 'PVWatts' } = define() {	pv_metrics(); };
 metrics{ 'Flat Plate PV' } = define() { pv_metrics(); };
 metrics{ 'Residential' } = define() { rescom_metrics(); };
@@ -186,3 +192,4 @@ metrics{ 'Concentrating Solar Power - Physical Trough' } = define() { csp_physic
 metrics{ 'Geothermal Power' } = define() { geothermal_metrics(); };
 metrics{ 'Generic System' } = define() { generic_system_metrics(); };
 metrics{ 'Generic CSP System' } = define() { generic_csp_metrics(); };
+metrics{ 'High-X Concentrating PV' } = define() { generic_hcpv_metrics(); };
