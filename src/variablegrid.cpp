@@ -69,7 +69,8 @@ void VariableGridData::Init()
 		{
 			wxArrayString as = (*it)->ListAll();
 			for (size_t i = 0; i < as.Count(); i++)
-				if (!((*it)->Lookup(as[i])->Flags  & VF_CALCULATED))
+				if ((!((*it)->Lookup(as[i])->Flags  & VF_CALCULATED)) && 
+					(!((*it)->Lookup(as[i])->Flags  & VF_INDICATOR)) )
 					var_names.insert(as[i]);
 		}
 /*		all
@@ -1365,20 +1366,51 @@ VariablePopupDialog::VariablePopupDialog(wxWindow *parent, wxUIObject *obj, wxSt
 {
 	if ((m_vv == 0) || (m_vi == 0) || (m_obj == 0)) return;
 	
-	m_obj->SetGeometry(GetClientSize());
-	
 	wxWindow *ctrl = m_obj->CreateNative(this);
 
-	if (m_obj->GetTypeName() == "Library")
+	wxString type = m_obj->GetTypeName();
+
+	// similar to main.cpp and activeinput page initilaize
+	if (type == "Library")
 	{
 		LibraryCtrl *ll = m_obj->GetNative<LibraryCtrl>();
 		wxArrayString lib = m_vi->IndexLabels;
 		if (lib.Count() > 0 )
 			ll->SetLibrary(lib[0],"*"); // no field list kept with VarInfo - only with form object
 	}
+	else if (vi->Type == VV_NUMBER && vi->IndexLabels.size() > 0
+		&& (type == "Choice" || type == "ListBox" || type == "CheckListBox" || type == "RadioChoice"))
+	{
+		m_obj->Property("Items").SetNamedOptions(vi->IndexLabels, 0);
+		// RadioChoice not a wxItemContainer descendant
+		if (type == "RadioChoice")
+		{
+			if (wxRadioChoice *rc = m_obj->GetNative<wxRadioChoice>())
+			{
+				rc->Clear();
+				rc->Add(vi->IndexLabels);
+			}
+		}
+		else if (wxItemContainer *ic = m_obj->GetNative<wxItemContainer>())
+		{
+			ic->Clear();
+			ic->Append(vi->IndexLabels);
+		}
+	}
+	else if (vi->Type == VV_STRING && vi->Flags & VF_LIBRARY
+		&& type == "SearchListBox" && vi->IndexLabels.size() == 2)
+	{
+		if (Library *lib = Library::Find(vi->IndexLabels[0]))
+		{
+			if (AFSearchListBox *slb = m_obj->GetNative<AFSearchListBox>())
+			{
+				slb->Clear();
+				slb->Append(lib->ListEntries());
+			}
+		}
+	}
+
 	ActiveInputPage::DataExchange(obj, *vv, ActiveInputPage::VAR_TO_OBJ);
-
-
 
 	wxBoxSizer *sizer = new wxBoxSizer(wxVERTICAL);
 	sizer->Add(ctrl,
@@ -1403,7 +1435,7 @@ VariablePopupDialog::VariablePopupDialog(wxWindow *parent, wxUIObject *obj, wxSt
 		button_sizer,
 		wxSizerFlags(0).Right());
 	SetSizerAndFit(sizer); // use the sizer for layout and set size and hints
-	SetTitle("Variable editor for: " + name);
+	SetTitle(name);
 #ifdef __WXMSW__
 	SetIcon(wxICON(appicon));
 #endif	

@@ -144,12 +144,22 @@ void ActiveInputPage::Initialize()
 				&& ( type == "Choice" || type == "ListBox" || type == "CheckListBox" || type == "RadioChoice" ) )
 			{
 				objs[i]->Property( "Items" ).SetNamedOptions( vv->IndexLabels, 0 );
-				if ( wxItemContainer *ic = objs[i]->GetNative<wxItemContainer>() )
+				// RadioChoice not a wxItemContainer descendant
+				if (type == "RadioChoice")
+				{
+					if (wxRadioChoice *rc = objs[i]->GetNative<wxRadioChoice>())
+					{
+						rc->Clear();
+						rc->Add(vv->IndexLabels);
+					}
+				}
+				else if ( wxItemContainer *ic = objs[i]->GetNative<wxItemContainer>() )
 				{
 					ic->Clear();
 					ic->Append( vv->IndexLabels );
 				}
 			}
+
 
 			wxTextCtrl *tc = objs[i]->GetNative<wxTextCtrl>();
 			if ( tc != 0 && (vv->Flags & VF_CALCULATED || vv->Flags & VF_INDICATOR ) )
