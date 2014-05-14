@@ -251,6 +251,7 @@ public:
 	}
 	virtual size_t Length() const { return 8760; }
 	virtual double GetTimeStep() const { return 1.0; }
+	virtual double GetOffset() const { return 0.0; }
 	virtual wxString GetSeriesTitle() const { return m_label; }
 	virtual wxString GetUnits() const { return m_units; }
 	virtual void SetDataValue(size_t i, double newYValue) { /* nothing to do */ }
