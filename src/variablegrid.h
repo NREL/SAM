@@ -128,12 +128,14 @@ public:
 
 private:
 	wxString m_cell_value;
+	wxString m_new_cell_value;
 	wxStaticText *m_text;
 	VarInfo *m_var_info;
 	VarValue *m_var_value;
 	wxWindow *m_parent;
 	VariablePopupDialog *m_vpe;
 	bool DisplayEditor(wxUIObject *obj, wxString &name, wxGrid *grid, VarValue *vv, VarInfo *vi);
+	wxString GetDisplayString(wxString &var_string, int row, int col, const wxGrid *grid);
 
 	DECLARE_NO_COPY_CLASS(GridCellVarValueEditor)
 };
