@@ -24,6 +24,7 @@ class Simulation;
 class PageNote;
 class CollapsePaneCtrl;
 class wxUIObject;
+class ParametricViewer;
 
 class CaseWindow : public wxSplitterWindow, CaseEventListener
 {
@@ -94,6 +95,7 @@ private:
 
 	wxSimplebook *m_pageFlipper;
 	ResultsViewer *m_baseCaseResults;
+	ParametricViewer *m_parametrics;
 	wxLKScriptCtrl *m_scriptCtrl;
 
 	PageNote *m_pageNote;

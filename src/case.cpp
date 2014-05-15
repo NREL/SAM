@@ -199,7 +199,7 @@ bool CaseEvaluator::UpdateLibrary( const wxString &trigger, wxArrayString &chang
 
 
 Case::Case()
-	: m_config(0), m_baseCase( this, "Base Case Simulation" )
+	: m_config(0), m_baseCase( this, "Base Case Simulation" ), m_parametric( this )
 {
 }
 
@@ -246,7 +246,7 @@ void Case::Write( wxOutputStream &_o )
 	wxDataOutputStream out(_o);
 
 	out.Write8( 0x9b );
-	out.Write8( 4 );
+	out.Write8( 5 );
 
 	wxString tech, fin;
 	if ( m_config != 0 )
@@ -269,6 +269,8 @@ void Case::Write( wxOutputStream &_o )
 		m_graphs[i].Write( _o );
 
 	m_perspective.Write( _o );
+
+	m_parametric.Write( _o );
 
 	out.Write8( 0x9b );
 }
@@ -330,6 +332,11 @@ bool Case::Read( wxInputStream &_i )
 		}
 
 		if ( !m_perspective.Read( _i ) ) wxLogStatus("error reading perspective of results viewer in Case::Read");
+	}
+
+	if ( ver >= 5 )
+	{
+		if ( !m_parametric.Read( _i ) ) wxLogStatus("error reading parametric simulation information in Case::Read");
 	}
 
 	return (in.Read8() == code);
