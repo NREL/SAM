@@ -1463,9 +1463,6 @@ IDEWindow::IDEWindow( wxWindow *parent )
 	m_uiPanel = new UIEditorPanel( m_notebook );
 	m_notebook->AddPage( m_uiPanel, "User Interface" );
 
-	m_defaultsPanel = new DefaultsManager( m_notebook );
-	m_notebook->AddPage( m_defaultsPanel, "Defaults" );
-
 	m_metricsPanel = new ScriptPanel( m_notebook, "metrics.lk" );
 	m_metricsPanel->AddLibrary( invoke_casecallback_funcs(), "Case callbacks" );
 	m_metricsPanel->AddLibrary( invoke_resultscallback_funcs(), "Results callbacks" );

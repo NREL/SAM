@@ -30,7 +30,6 @@
     <ClCompile Include="..\src\results.cpp" />
     <ClCompile Include="..\src\case.cpp" />
     <ClCompile Include="..\src\casewin.cpp" />
-    <ClCompile Include="..\src\defaultsmanager.cpp" />
     <ClCompile Include="..\src\equations.cpp" />
     <ClCompile Include="..\src\ide.cpp" />
     <ClCompile Include="..\src\inputpage.cpp" />
@@ -61,7 +60,6 @@
     <ClInclude Include="..\src\results.h" />
     <ClInclude Include="..\src\case.h" />
     <ClInclude Include="..\src\casewin.h" />
-    <ClInclude Include="..\src\defaultsmanager.h" />
     <ClInclude Include="..\src\equations.h" />
     <ClInclude Include="..\src\ide.h" />
     <ClInclude Include="..\src\inputpage.h" />
