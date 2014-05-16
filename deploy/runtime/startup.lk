@@ -18,6 +18,7 @@ addconfig( 'Geothermal Power', ['Independent Power Producer', 'Leveraged Partner
 addconfig( 'Generic System', ['Residential', 'Commercial', 'Commercial PPA', 'Independent Power Producer', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'Single Owner', 'None']);
 addconfig( 'Generic CSP System', ['Commercial', 'Commercial PPA', 'Independent Power Producer', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'Single Owner', 'None']);
 addconfig( 'High-X Concentrating PV', ['Independent Power Producer', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'Single Owner', 'None']);
+addconfig( 'Dish Stirling', ['Commercial', 'Commercial PPA', 'Independent Power Producer', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'Single Owner', 'None']);
 
 function setup_pvwatts_pages()
 {
@@ -795,3 +796,77 @@ setup_single_owner_pages();
 setconfig( 'High-X Concentrating PV', 'None' );
 setmodules( ['hcpv']);
 setup_hcpv_pages();
+
+// Dish Stirling ///////////////////////////////////////////////////////////////
+function setup_dish_stirling_pages()
+{
+	addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource' } );
+	addpage( [[ 'Dish Solar Field' ]], { 'sidebar'='Solar Field' } );
+	addpage( [[ 'Dish Collector' ]], { 'sidebar'='Collector' } );
+	addpage( [[ 'Dish Receiver' ]], { 'sidebar'='Receiver' } );
+	addpage( [[ 'Dish Stirling Engine' ]], { 'sidebar'='Stirling Engine' } );
+	addpage( [[ 'Dish Parasitics' ]], { 'sidebar'='Parasitics' } );
+	addpage( [[ 'Dish Reference Inputs' ]], { 'sidebar'='Reference Inputs' } );
+}
+
+//-----------------------------------------------------
+setconfig( 'Dish Stirling', 'Commercial' );	
+setmodules( ['tcsdish',  'utilityrate2', 'cashloan']);
+setting( { 'analysis_period_var'='cf_length' } );
+setup_dish_stirling_pages();
+addpage( [[ 'Dish Capital Costs','O and M Costs']],{ 'sidebar'='System Costs' } );
+setup_commercial_pages();
+
+//-----------------------------------------------------
+setconfig( 'Dish Stirling', 'Commercial PPA' );	
+setmodules( ['tcsdish',  'ippppa']);
+setting( { 'analysis_period_var'='cf_length' } );
+setup_dish_stirling_pages();
+addpage( [[ 'Dish Capital Costs','O and M Costs']],{ 'sidebar'='System Costs' } );
+setup_commercial_ppa_pages();
+
+//-----------------------------------------------------
+setconfig( 'Dish Stirling', 'Independent Power Producer' );
+setmodules( ['tcsdish', 'ippppa']);
+setting( { 'analysis_period_var'='cf_length' } );
+setup_dish_stirling_pages();
+addpage( [[ 'Dish Capital Costs','O and M Costs']],{ 'sidebar'='System Costs' } );
+setup_independent_power_producer_pages();
+
+//-----------------------------------------------------
+setconfig( 'Dish Stirling', 'Leveraged Partnership Flip' );
+setmodules( ['tcsdish', 'levpartflip']);
+setting( { 'analysis_period_var'='cf_length' } );
+setup_dish_stirling_pages();
+addpage( [[ 'Dish Capital Costs','O and M Costs']],{ 'sidebar'='System Costs' } );
+setup_leveraged_partnership_flip_pages();
+
+//-----------------------------------------------------
+setconfig( 'Dish Stirling', 'All Equity Partnership Flip' );
+setmodules( ['tcsdish', 'equpartflip']);
+setting( { 'analysis_period_var'='cf_length' } );
+setup_dish_stirling_pages();
+addpage( [[ 'Dish Capital Costs','O and M Costs']],{ 'sidebar'='System Costs' } );
+setup_all_equity_partnership_flip_pages();
+
+//-----------------------------------------------------
+setconfig( 'Dish Stirling', 'Sale Leaseback' );
+setmodules( ['tcsdish', 'saleleaseback']);
+setting( { 'analysis_period_var'='cf_length' } );
+setup_dish_stirling_pages();
+addpage( [[ 'Dish Capital Costs','O and M Costs']],{ 'sidebar'='System Costs' } );
+setup_sale_leaseback_pages();
+
+//-----------------------------------------------------
+setconfig( 'Dish Stirling', 'Single Owner' );
+setmodules( ['tcsdish', 'singleowner']);
+setting( { 'analysis_period_var'='cf_length' } );
+setup_dish_stirling_pages();
+addpage( [[ 'Dish Capital Costs','O and M Costs']],{ 'sidebar'='System Costs' } );
+setup_single_owner_pages();
+
+//-----------------------------------------------------
+setconfig( 'Dish Stirling', 'None' );
+setmodules( ['tcsdish']);
+setup_dish_stirling_pages();
+
