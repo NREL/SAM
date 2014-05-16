@@ -6,7 +6,6 @@
 
 #include "variables.h"
 #include "main.h"
-#include "defaultsmanager.h"
 
 class wxListBox;
 class wxMetroNotebook;
@@ -130,7 +129,6 @@ private:
 
 	ScriptPanel *m_startupPanel;
 	UIEditorPanel *m_uiPanel;
-	DefaultsManager *m_defaultsPanel;
 	ScriptPanel *m_metricsPanel;
 	ScriptPanel *m_cashFlowPanel;
 	ScriptPanel *m_autoGraphPanel;
