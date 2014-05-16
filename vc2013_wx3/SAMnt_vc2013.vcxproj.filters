@@ -74,9 +74,6 @@
     <ClInclude Include="..\src\simulation.h">
       <Filter>Source</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\defaultsmanager.h">
-      <Filter>Source</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\graph.h">
       <Filter>Source</Filter>
     </ClInclude>
@@ -161,9 +158,6 @@
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="..\src\simulation.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\defaultsmanager.cpp">
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="..\src\graph.cpp">
