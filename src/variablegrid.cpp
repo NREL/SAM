@@ -1420,28 +1420,27 @@ VariablePopupDialog::VariablePopupDialog(wxWindow *parent, wxUIObject *obj, wxSt
 	// similar to main.cpp and activeinput page initilaize
 	if (type == "Library")
 	{
-		LibraryCtrl *ll = m_obj->GetNative<LibraryCtrl>();
-		wxArrayString lib = m_vi->IndexLabels;
-		if (lib.Count() > 0 )
-			ll->SetLibrary(lib[0],"*"); // no field list kept with VarInfo - only with form object
+		if (LibraryCtrl *ll = m_obj->GetNative<LibraryCtrl>())
+		{
+			wxArrayString lib = m_vi->IndexLabels;
+			if (lib.Count() > 0)
+				ll->SetLibrary(lib[0], "*"); // no field list kept with VarInfo - only with form object
+		}
 	}
 	else if (vi->Type == VV_NUMBER && vi->IndexLabels.size() > 0
 		&& (type == "Choice" || type == "ListBox" || type == "CheckListBox" || type == "RadioChoice"))
 	{
 		m_obj->Property("Items").SetNamedOptions(vi->IndexLabels, 0);
 		// RadioChoice not a wxItemContainer descendant
-		if (type == "RadioChoice")
-		{
-			if (wxRadioChoice *rc = m_obj->GetNative<wxRadioChoice>())
-			{
-				rc->Clear();
-				rc->Add(vi->IndexLabels);
-			}
-		}
-		else if (wxItemContainer *ic = m_obj->GetNative<wxItemContainer>())
+		if (wxItemContainer *ic = m_obj->GetNative<wxItemContainer>())
 		{
 			ic->Clear();
 			ic->Append(vi->IndexLabels);
+		}
+		else if (wxRadioChoice *rc = m_obj->GetNative<wxRadioChoice>())
+		{
+			rc->Clear();
+			rc->Add(vi->IndexLabels);
 		}
 	}
 	else if (vi->Type == VV_STRING && vi->Flags & VF_LIBRARY
@@ -1465,6 +1464,7 @@ VariablePopupDialog::VariablePopupDialog(wxWindow *parent, wxUIObject *obj, wxSt
 		wxEXPAND |    // make horizontally stretchable
 		wxALL,        //   and make border all around
 		0);         // set border width to 10
+		
 
 	wxBoxSizer *button_sizer = new wxBoxSizer(wxHORIZONTAL);
 	button_sizer->Add(
