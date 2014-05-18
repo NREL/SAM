@@ -113,32 +113,34 @@ int VariableGridData::GetNumberCols()
 
 bool VariableGridData::IsEmptyCell(int row, int col)
 {
-	if (!GetView()->GetParent()->IsShown()) return wxEmptyString;
+	if (!GetView()->GetParent()->IsShown()) return true;
 	if (col == 0) // variable name
-		return (m_var_names[row]==wxEmptyString);
+		return (m_var_names[row].IsEmpty());
 	else if (col == 1) // variable label
-		return (m_var_labels[row] == wxEmptyString);
+		return (m_var_labels[row].IsEmpty());
 	else // get var table and value
 	{
 		int lookup_row = row;
 		if (m_sorted) lookup_row = m_sorted_index[row];
 		if (m_var_table_vec[col - 2]->Get(m_var_names[lookup_row]))
 		{
-			if ((col - 2) >= m_var_table_vec.size())
-				return wxEmptyString;
+			if ((col - 2) >= (int)m_var_table_vec.size())
+				return true;
 			else
 				return (m_var_table_vec[col - 2]->Get(m_var_names[lookup_row])->AsString() == wxEmptyString);
 		}
 		else
-			return wxEmptyString;
+			return true;
 	}
 }
 
 
 wxString VariableGridData::GetColLabelValue(int col)
 {
-	if (col >= m_col_hdrs.size());
-	return m_col_hdrs[col];
+	if (col >= (int)m_col_hdrs.size())
+		return m_col_hdrs[col];
+	else
+		return wxEmptyString;
 }
 
 
@@ -147,7 +149,7 @@ VarInfo* VariableGridData::GetVarInfo(int row, int col)
 	VarInfo* vi = NULL;
 	int lookup_row = row;
 	if (m_sorted) lookup_row = m_sorted_index[row];
-	if ((col > 1) && ((col - 2) <  m_var_info_lookup_vec.size()))
+	if ((col > 1) && ((col - 2) <  (int)m_var_info_lookup_vec.size()))
 	{
 		vi = m_var_info_lookup_vec[col - 2]->Lookup(m_var_names[lookup_row]);
 	}
@@ -158,7 +160,7 @@ void VariableGridData::SetVarInfo(int row, int col, VarInfo *vi)
 {
 	int lookup_row = row;
 	if (m_sorted) lookup_row = m_sorted_index[row];
-	if ((col > 1) && ((col - 2) <  m_var_info_lookup_vec.size()))
+	if ((col > 1) && ((col - 2) < (int)m_var_info_lookup_vec.size()))
 	{
 		if (VarInfo *var_info = m_var_info_lookup_vec[col - 2]->Lookup(m_var_names[lookup_row]))
 			var_info = vi;
@@ -170,7 +172,7 @@ VarValue* VariableGridData::GetVarValue(int row, int col)
 	VarValue* vv = NULL;
 	int lookup_row = row;
 	if (m_sorted) lookup_row = m_sorted_index[row];
-	if ((col > 1) && ((col - 2) <  m_var_table_vec.size()))
+	if ((col > 1) && ((col - 2) <  (int)m_var_table_vec.size()))
 	{
 		vv = m_var_table_vec[col - 2]->Get(m_var_names[lookup_row]);
 	}
@@ -182,7 +184,7 @@ void VariableGridData::SetVarValue(int row, int col, VarValue *vv)
 {
 	int lookup_row = row;
 	if (m_sorted) lookup_row = m_sorted_index[row];
-	if ((col > 1) && ((col - 2) <  m_var_table_vec.size()))
+	if ((col > 1) && ((col - 2) <  (int)m_var_table_vec.size()))
 	{
 		if (VarValue *var_value = m_var_table_vec[col - 2]->Get(m_var_names[lookup_row]))
 			var_value = vv;
@@ -210,12 +212,12 @@ wxString VariableGridData::GetChoices(int row, int col)
 	if (m_sorted) lookup_row = m_sorted_index[row];
 	if ( col >= 2 ) // get var table and value
 	{
-		if ((col - 2) < m_var_info_lookup_vec.size())
+		if ((col - 2) < (int)m_var_info_lookup_vec.size())
 		{
 			if (m_var_info_lookup_vec[col - 2]->Lookup(m_var_names[lookup_row]))
 			{
 				wxArrayString as = m_var_info_lookup_vec[col - 2]->Lookup(m_var_names[lookup_row])->IndexLabels;
-				for (int i = 0; i < as.Count() - 1; i++)
+				for (int i = 0; i < (int)as.Count() - 1; i++)
 					ret_str += as[i] + ",";
 				ret_str += as[as.Count()-1];
 			}
@@ -234,7 +236,7 @@ wxString VariableGridData::GetValue(int row, int col)
 		return m_var_labels[lookup_row];
 	else // get var table and value
 	{
-		if ((col - 2) >= m_var_table_vec.size())
+		if ((col - 2) >= (int)m_var_table_vec.size())
 			return wxEmptyString;
 		else
 		{
@@ -254,7 +256,7 @@ void VariableGridData::SetValue(int row, int col, const wxString& value)
 	else if (col == 1)
 		// TODO - update label and update m_var_labels
 		return;
-	else if ((col > 1) && (col < (m_cases.size()+2)))
+	else if ((col > 1) && (col < (int)(m_cases.size() + 2)))
 	{
 		int lookup_row = row;
 		if (m_sorted) lookup_row = m_sorted_index[row];
@@ -378,10 +380,9 @@ wxString VariableGridData::GetTypeName(int row, int col)
 				return wxGRID_VALUE_STRING;
 				break;
 			}
-		}
+		}*/
 		else
 			return wxGRID_VALUE_STRING;
-			*/
 	}
 	else
 		return wxGRID_VALUE_STRING;
@@ -402,9 +403,9 @@ bool VariableGridData::ShowRow(int row, int comparison_type)
 				if (m_var_table_vec[0]->Get(m_var_names[lookup_row]))
 				{
 					VarValue *vv = m_var_table_vec[0]->Get(m_var_names[lookup_row]);
-					int row_var_type = vv->Type();
+//					int row_var_type = vv->Type();
 					bool row_varvalues_same = true;
-					for (int col = 1; col < m_cases.size(); col++)
+					for (int col = 1; col < (int)m_cases.size(); col++)
 					{
 						if (m_var_table_vec[col]->Get(m_var_names[lookup_row]))
 						{
@@ -512,7 +513,7 @@ bool VariableGridData::RenameCase(const wxString &old_name, const wxString &new_
 
 void VariableGridData::SetColLabelValue(int col, const wxString &label)
 {
-	if ((col > 0) && (col < m_col_hdrs.Count()))
+	if ((col > 0) && (col < (int)m_col_hdrs.Count()))
 	{
 		m_col_hdrs[col] = label;
 	}
@@ -561,7 +562,7 @@ void GridCellVarValueRenderer::Draw(wxGrid &grid, wxGridCellAttr &attr, wxDC &dc
 	{
 		wxArrayString items = vi->IndexLabels;
 		long ndx;
-		if (display_string.ToLong(&ndx) && (ndx > -1) && (ndx < items.Count()))
+		if (display_string.ToLong(&ndx) && (ndx > -1) && (ndx < (int)items.Count()))
 			display_string = items[ndx];
 	}
 
@@ -711,9 +712,9 @@ void GridCellVarValueEditor::SetSize(const wxRect &rect_orig)
 	wxGridCellEditor::SetSize(rect);
 }
 
-void GridCellVarValueEditor::PaintBackground(wxDC& (dc),
-	const wxRect& (rectCell),
-	const wxGridCellAttr& (attr))
+void GridCellVarValueEditor::PaintBackground(wxDC& WXUNUSED(dc),
+	const wxRect& WXUNUSED(rectCell),
+	const wxGridCellAttr& WXUNUSED(attr))
 {
 	// don't do anything here to minimize flicker
 }
@@ -741,7 +742,8 @@ bool GridCellVarValueEditor::DisplayEditor(wxUIObject *obj, wxString &name, wxGr
 		obj->CreateNative(grid);
 		ActiveInputPage::DataExchange(obj, *vv, ActiveInputPage::VAR_TO_OBJ);
 		AFHourlyFactorCtrl *hf = obj->GetNative<AFHourlyFactorCtrl>();
-		hf->OnPressed(wxCommandEvent(wxEVT_BUTTON));
+		wxCommandEvent evt = wxCommandEvent(wxEVT_BUTTON);
+		hf->OnPressed(evt);
 		ActiveInputPage::DataExchange(obj, *vv, ActiveInputPage::OBJ_TO_VAR);
 	}
 	else if (type == "DiurnalPeriod")
@@ -791,7 +793,8 @@ bool GridCellVarValueEditor::DisplayEditor(wxUIObject *obj, wxString &name, wxGr
 		obj->CreateNative(grid);
 		ActiveInputPage::DataExchange(obj, *vv, ActiveInputPage::VAR_TO_OBJ);
 		MatPropCtrl *mp = obj->GetNative<MatPropCtrl>();
-		mp->OnButton(wxCommandEvent(wxEVT_BUTTON));
+		wxCommandEvent evt = wxCommandEvent(wxEVT_BUTTON);
+		mp->OnButton(evt);
 		ActiveInputPage::DataExchange(obj, *vv, ActiveInputPage::OBJ_TO_VAR);
 	}
 	else if (type == "TroughLoop")
@@ -805,7 +808,8 @@ bool GridCellVarValueEditor::DisplayEditor(wxUIObject *obj, wxString &name, wxGr
 		obj->CreateNative(grid);
 		ActiveInputPage::DataExchange(obj, *vv, ActiveInputPage::VAR_TO_OBJ);
 		AFMonthlyFactorCtrl *mf = obj->GetNative<AFMonthlyFactorCtrl>();
-		mf->OnPressed(wxCommandEvent(wxEVT_BUTTON));
+		wxCommandEvent evt = wxCommandEvent(wxEVT_BUTTON);
+		mf->OnPressed(evt);
 		ActiveInputPage::DataExchange(obj, *vv, ActiveInputPage::OBJ_TO_VAR);
 	}
 	else if (type == "SearchListBox")
@@ -819,7 +823,8 @@ bool GridCellVarValueEditor::DisplayEditor(wxUIObject *obj, wxString &name, wxGr
 		obj->CreateNative(grid);
 		ActiveInputPage::DataExchange(obj, *vv, ActiveInputPage::VAR_TO_OBJ);
 		AFDataArrayButton *da = obj->GetNative<AFDataArrayButton>();
-		da->OnPressed(wxCommandEvent(wxEVT_BUTTON));
+		wxCommandEvent evt = wxCommandEvent(wxEVT_BUTTON);
+		da->OnPressed(evt);
 		ActiveInputPage::DataExchange(obj, *vv, ActiveInputPage::OBJ_TO_VAR);
 	}
 	else if (type == "DataMatrix")
@@ -833,7 +838,8 @@ bool GridCellVarValueEditor::DisplayEditor(wxUIObject *obj, wxString &name, wxGr
 		obj->CreateNative(grid);
 		ActiveInputPage::DataExchange(obj, *vv, ActiveInputPage::VAR_TO_OBJ);
 		ShadingButtonCtrl *sf = obj->GetNative<ShadingButtonCtrl>();
-		sf->OnPressed(wxCommandEvent(wxEVT_BUTTON));
+		wxCommandEvent evt = wxCommandEvent(wxEVT_BUTTON);
+		sf->OnPressed(evt);
 		ActiveInputPage::DataExchange(obj, *vv, ActiveInputPage::OBJ_TO_VAR);
 	}
 	else if (type == "ValueMatrix")
@@ -898,7 +904,7 @@ wxString GridCellVarValueEditor::GetDisplayString(wxString &var_string, int row,
 	{
 		wxArrayString items = vi->IndexLabels;
 		long ndx;
-		if (display_string.ToLong(&ndx) && (ndx > -1) && (ndx < items.Count()))
+		if (display_string.ToLong(&ndx) && (ndx > -1) && (ndx < (int)items.Count()))
 			display_string = items[ndx];
 	}
 
@@ -907,7 +913,7 @@ wxString GridCellVarValueEditor::GetDisplayString(wxString &var_string, int row,
 
 
 
-bool GridCellVarValueEditor::EndEdit(int row, int col, const wxGrid *grid, const wxString &oldval, wxString *newval)
+bool GridCellVarValueEditor::EndEdit(int row, int col, const wxGrid *grid, const wxString& WXUNUSED(oldval), wxString *newval)
 {
 //	wxString new_cell_value = m_text->GetLabel();
 	wxString new_cell_value = m_new_cell_value;
@@ -967,7 +973,7 @@ wxString GridCellChoiceRenderer::GetString(const wxGrid& grid, int row, int col)
 	wxString text;
 	long choiceno;
 	table->GetValue(row, col).ToLong(&choiceno);
-	if ((choiceno > -1) && (choiceno < m_choices.size()))
+	if ((choiceno > -1) && (choiceno < (int)m_choices.size()))
 		text.Printf(wxT("%s"), m_choices[choiceno].c_str());
 	return text;
 }
@@ -1688,7 +1694,7 @@ void VariableGridFrame::OnCommand(wxCommandEvent &evt)
 
 }
 
-void VariableGridFrame::OnProjectFileEvent(ProjectFile *p, ProjectFileEvent &evt)
+void VariableGridFrame::OnProjectFileEvent(ProjectFile* WXUNUSED(p), ProjectFileEvent &evt)
 {
 	if (evt.GetType() == ProjectFileEvent::CASE_DELETED)
 	{
@@ -1733,7 +1739,7 @@ void VariableGridFrame::OnProjectFileEvent(ProjectFile *p, ProjectFileEvent &evt
 
 }
 
-void VariableGridFrame::OnCaseEvent(Case *c, CaseEvent &evt)
+void VariableGridFrame::OnCaseEvent(Case* WXUNUSED(c), CaseEvent &evt)
 {
 	if (evt.GetType() == CaseEvent::VALUE_CHANGED)
 	{
