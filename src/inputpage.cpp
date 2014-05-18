@@ -145,18 +145,15 @@ void ActiveInputPage::Initialize()
 			{
 				objs[i]->Property( "Items" ).SetNamedOptions( vv->IndexLabels, 0 );
 				// RadioChoice not a wxItemContainer descendant
-				if (type == "RadioChoice")
-				{
-					if (wxRadioChoice *rc = objs[i]->GetNative<wxRadioChoice>())
-					{
-						rc->Clear();
-						rc->Add(vv->IndexLabels);
-					}
-				}
-				else if ( wxItemContainer *ic = objs[i]->GetNative<wxItemContainer>() )
+				if (wxItemContainer *ic = objs[i]->GetNative<wxItemContainer>())
 				{
 					ic->Clear();
-					ic->Append( vv->IndexLabels );
+					ic->Append(vv->IndexLabels);
+				}
+				else if (wxRadioChoice *rc = objs[i]->GetNative<wxRadioChoice>())
+				{
+					rc->Clear();
+					rc->Add(vv->IndexLabels);
 				}
 			}
 
