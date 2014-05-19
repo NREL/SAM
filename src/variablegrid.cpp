@@ -137,7 +137,7 @@ bool VariableGridData::IsEmptyCell(int row, int col)
 
 wxString VariableGridData::GetColLabelValue(int col)
 {
-	if (col >= (int)m_col_hdrs.size())
+	if (col <= (int)m_col_hdrs.size())
 		return m_col_hdrs[col];
 	else
 		return wxEmptyString;
@@ -249,13 +249,11 @@ wxString VariableGridData::GetValue(int row, int col)
 }
 
 void VariableGridData::SetValue(int row, int col, const wxString& value)
-{ // must update labels and values as necessary
-	// TODO - update label 
+{
 	if (col == 0)
 		return; // no updating of variable name allowed here!
 	else if (col == 1)
-		// TODO - update label and update m_var_labels
-		return;
+		return; // no updating of variable label allowed here!
 	else if ((col > 1) && (col < (int)(m_cases.size() + 2)))
 	{
 		int lookup_row = row;
@@ -362,25 +360,6 @@ wxString VariableGridData::GetTypeName(int row, int col)
 			else
 				return wxGRID_VALUE_STRING;
 		}
-
-		/* based on variable type
-		if (m_var_table_vec[col - 2]->Get(m_var_names[lookup_row]))
-		{
-			VarValue *vv = m_var_table_vec[col - 2]->Get(m_var_names[lookup_row]);
-			switch (vv->Type())
-			{
-			case VV_ARRAY:
-			case VV_MATRIX:
-			case VV_TABLE:
-				return "GridCellVarValue";
-				break;
-			case VV_NUMBER:
-			case VV_STRING:
-			default:
-				return wxGRID_VALUE_STRING;
-				break;
-			}
-		}*/
 		else
 			return wxGRID_VALUE_STRING;
 	}
@@ -403,7 +382,6 @@ bool VariableGridData::ShowRow(int row, int comparison_type)
 				if (m_var_table_vec[0]->Get(m_var_names[lookup_row]))
 				{
 					VarValue *vv = m_var_table_vec[0]->Get(m_var_names[lookup_row]);
-//					int row_var_type = vv->Type();
 					bool row_varvalues_same = true;
 					for (int col = 1; col < (int)m_cases.size(); col++)
 					{
@@ -1413,9 +1391,6 @@ VariablePopupDialog::VariablePopupDialog(wxWindow *parent, wxUIObject *obj, wxSt
 {
 	if ((m_vv == 0) || (m_vi == 0) || (m_obj == 0)) return;
 	
-
-//	wxPanel *pnl = new wxPanel(this);
-//	wxWindow *ctrl = m_obj->CreateNative(pnl);
 	wxWindow *ctrl = m_obj->CreateNative(this);
 
 	wxString type = m_obj->GetTypeName();
@@ -1472,9 +1447,6 @@ VariablePopupDialog::VariablePopupDialog(wxWindow *parent, wxUIObject *obj, wxSt
 		0);         // set border width to 10
 
 
-//	pnl->GetSize()
-
-
 	wxBoxSizer *button_sizer = new wxBoxSizer(wxHORIZONTAL);
 	button_sizer->Add(
 		new wxButton(this, wxID_OK, "OK"),
@@ -1493,9 +1465,6 @@ VariablePopupDialog::VariablePopupDialog(wxWindow *parent, wxUIObject *obj, wxSt
 
 
 	SetSizerAndFit(sizer); // use the sizer for layout and set size and hints
-
-//	wxRect rect = sizer->GetItem(pnl)->GetRect();
-//	ctrl->SetSize(25, 1, rect.GetWidth() - 26, rect.GetHeight() - 2);
 
 	SetTitle(name);
 #ifdef __WXMSW__

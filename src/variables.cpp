@@ -319,22 +319,18 @@ bool VarValue::ValueEqual( VarValue &rhs)
 							break;
 			break;
 		case VV_TABLE: // not working correctly 
-//			equal = (m_tab.size() == rhs.m_tab.size());
+			equal = (m_tab.size() == rhs.m_tab.size());
 			if (equal)
 				for (VarTable::iterator it1 = m_tab.begin(); it1 != m_tab.end(); ++it1)
-					if (equal)
-					{ 
-						VarTable::iterator it2 = find(rhs.m_tab.begin(), rhs.m_tab.end(), *it1);
-						if (it2 != rhs.m_tab.end())
-							equal = equal && (it1->second->ValueEqual(*(it2->second)));
-						else
-						{
-							equal = false;
-							break;
-						}
-					}
+				{
+					if (VarValue *vv = rhs.m_tab.Get(it1->first))
+						equal = equal && (it1->second->ValueEqual(*vv));
 					else
+					{
+						equal = false;
 						break;
+					}
+				}
 			break;
 		case VV_STRING:
 			equal = (m_str == rhs.m_str);
