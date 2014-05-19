@@ -34,9 +34,17 @@ void ProjectFile::AddListener(ProjectFileEventListener *pel)
 
 void ProjectFile::RemoveListener(ProjectFileEventListener *pel)
 {
-	std::vector<ProjectFileEventListener*>::iterator it = std::find(m_listeners.begin(), m_listeners.end(), pel);
-	if (it != m_listeners.end())
-		m_listeners.erase(it);
+	if (m_listeners.size() > 0)
+	{
+		for (size_t i = 0; i < m_listeners.size(); i++)
+		{
+			if (m_listeners[i] == pel)
+			{
+				m_listeners.erase(m_listeners.begin() + i);
+				break;
+			}
+		}
+	}
 }
 
 
