@@ -1413,6 +1413,9 @@ VariablePopupDialog::VariablePopupDialog(wxWindow *parent, wxUIObject *obj, wxSt
 {
 	if ((m_vv == 0) || (m_vi == 0) || (m_obj == 0)) return;
 	
+
+//	wxPanel *pnl = new wxPanel(this);
+//	wxWindow *ctrl = m_obj->CreateNative(pnl);
 	wxWindow *ctrl = m_obj->CreateNative(this);
 
 	wxString type = m_obj->GetTypeName();
@@ -1456,15 +1459,21 @@ VariablePopupDialog::VariablePopupDialog(wxWindow *parent, wxUIObject *obj, wxSt
 		}
 	}
 
+
 	ActiveInputPage::DataExchange(obj, *vv, ActiveInputPage::VAR_TO_OBJ);
 
+	
+	
 	wxBoxSizer *sizer = new wxBoxSizer(wxVERTICAL);
 	sizer->Add(ctrl,
 		1,            // make vertically stretchable
 		wxEXPAND |    // make horizontally stretchable
 		wxALL,        //   and make border all around
 		0);         // set border width to 10
-		
+
+
+//	pnl->GetSize()
+
 
 	wxBoxSizer *button_sizer = new wxBoxSizer(wxHORIZONTAL);
 	button_sizer->Add(
@@ -1481,7 +1490,13 @@ VariablePopupDialog::VariablePopupDialog(wxWindow *parent, wxUIObject *obj, wxSt
 	sizer->Add(
 		button_sizer,
 		wxSizerFlags(0).Right());
+
+
 	SetSizerAndFit(sizer); // use the sizer for layout and set size and hints
+
+//	wxRect rect = sizer->GetItem(pnl)->GetRect();
+//	ctrl->SetSize(25, 1, rect.GetWidth() - 26, rect.GetHeight() - 2);
+
 	SetTitle(name);
 #ifdef __WXMSW__
 	SetIcon(wxICON(appicon));
