@@ -641,9 +641,17 @@ void Case::AddListener( CaseEventListener *cel )
 
 void Case::RemoveListener( CaseEventListener *cel )
 {
-	std::vector<CaseEventListener*>::iterator it = std::find( m_listeners.begin(), m_listeners.end() , cel );
-	if ( it != m_listeners.end() )
-		m_listeners.erase( it );
+	if (m_listeners.size() > 0 )
+	{
+		for (size_t i = 0; i < m_listeners.size(); i++)
+		{
+			if (m_listeners[i] == cel)
+			{
+				m_listeners.erase(m_listeners.begin() + i);
+				break;
+			}
+		}
+	}
 }
 
 void Case::ClearListeners()
