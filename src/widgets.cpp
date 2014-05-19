@@ -125,7 +125,6 @@ void AFSchedNumeric::OnResize(wxSizeEvent &evt)
 	int cw, ch;
 	GetClientSize(&cw,&ch);
 	if (bScheduleOnly)
-//	if (bUseSchedule)
 	{
 		mBtnEditSched->SetSize(0,0,cw,ch);
 	}
