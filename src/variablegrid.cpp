@@ -1603,8 +1603,9 @@ VariableGridFrame::VariableGridFrame(wxWindow *parent, ProjectFile *pf, Case *c)
 
 VariableGridFrame::~VariableGridFrame()
 {
-	for (std::vector<Case*>::iterator it = m_cases.begin(); it != m_cases.end(); ++it)
-		if (*it) (*it)->RemoveListener(this);
+	if (m_cases.size() > 0)
+		for (size_t i = 0; i < m_cases.size(); i++)
+			if (m_cases[i]) m_cases[i]->RemoveListener(this);
 	if (m_pf) m_pf->RemoveListener(this);
 }
 
