@@ -262,18 +262,53 @@ setconfig( 'Empirical Trough', 'None' );
 setmodules( ['tcstrough_empirical']);
 setup_csp_empirical_trough_pages();
 
-setconfig( 'Empirical Trough', 'Independent Power Producer' );
-setmodules( ['tcstrough_empirical']);
-setup_csp_empirical_trough_pages();
-//TODO add cost page
-setup_independent_power_producer_pages();
-
 setconfig( 'Empirical Trough', 'Commercial' );
-setmodules( ['tcstrough_empirical']);
+setmodules( ['tcstrough_empirical', 'utilityrate2', 'cashloan']);
 setup_csp_empirical_trough_pages();
-//TODO add cost page
+addpage( [[ 'Empirical Trough Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs' } );
 setup_commercial_pages();
 
+setconfig( 'Empirical Trough', 'Commercial PPA' );
+setmodules( ['tcstrough_empirical', 'ippppa']);
+setting( { 'analysis_period_var'='cf_length' } );
+setup_csp_empirical_trough_pages();
+addpage( [[ 'Empirical Trough Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs' } );
+setup_commercial_ppa_pages();
+
+setconfig( 'Empirical Trough', 'Independent Power Producer' );
+setmodules( ['tcstrough_empirical', 'ippppa']);
+setting( { 'analysis_period_var'='cf_length' } );
+setup_csp_empirical_trough_pages();
+addpage( [[ 'Empirical Trough Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs' } );
+setup_independent_power_producer_pages();
+
+setconfig( 'Empirical Trough', 'Single Owner' );
+setmodules( ['tcstrough_empirical']);
+setting( { 'analysis_period_var'='cf_length' } );
+setup_csp_empirical_trough_pages();
+addpage( [[ 'Empirical Trough Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs' } );
+setup_single_owner_pages();
+
+setconfig( 'Empirical Trough', 'All Equity Parternship Flip' );
+setmodules( ['tcstrough_empirical', 'equpartflip']);
+setting( { 'analysis_period_var'='cf_length' } );
+setup_csp_empirical_trough_pages();
+addpage( [[ 'Empirical Trough Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs' } );
+setup_all_equity_partnership_flip_pages();
+
+setconfig( 'Empirical Trough', 'Leveraged Partnership Flip' );
+setmodules( ['tcstrough_empirical', 'levpartflip']);
+setting( { 'analysis_period_var'='cf_length' } );
+setup_csp_empirical_trough_pages();
+addpage( [[ 'Empirical Trough Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs' } );
+setup_leveraged_partnership_flip_pages();
+
+setconfig( 'Empirical Trough', 'Sale Leaseback' );
+setmodules( ['tcstrough_empirical', 'saleleaseback']);
+setting( { 'analysis_period_var'='cf_length' } );
+setup_csp_empirical_trough_pages();
+addpage( [[ 'Empirical Trough Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs' } );
+setup_sale_leaseback_pages();
 
 
 // Flat Plat PV ////////////////////////////////////////////////////////////////
