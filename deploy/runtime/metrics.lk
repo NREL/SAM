@@ -182,6 +182,14 @@ function dish_stirling_metrics()
 	//metric( 'conversion_factor', {'label'='Gross to Net Conversion Factor', 'mode'='f', 'deci'='1', 'thousep'='true', 'post'=' %' } );
 }
 
+function empirical_trough_metrics() 
+{
+	metric( 'annual_energy', {'label'='Annual Energy', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh' } );
+	//metric( 'conversion_factor', {'label'='Gross to Net Conversion Factor', 'mode'='f', 'deci'='1', 'thousep'='true', 'post'=' %' } );
+}
+
+
+metrics{ 'Empirical Trough' } = define() { empirical_trough_metrics(); };
 metrics{ 'PVWatts' } = define() {	pv_metrics(); };
 metrics{ 'Flat Plate PV' } = define() { pv_metrics(); };
 metrics{ 'Residential' } = define() { rescom_metrics(); };
@@ -200,3 +208,4 @@ metrics{ 'Generic System' } = define() { generic_system_metrics(); };
 metrics{ 'Generic CSP System' } = define() { generic_csp_metrics(); };
 metrics{ 'High-X Concentrating PV' } = define() { generic_hcpv_metrics(); };
 metrics{ 'Dish Stirling' } = define() { dish_stirling_metrics(); };
+
