@@ -163,7 +163,7 @@ ParametricViewer::ParametricViewer( wxWindow *parent, Case *cc )
 
 	wxBoxSizer *par_vsizer = new wxBoxSizer( wxVERTICAL );
 	par_vsizer->Add( par_sizer, 0, wxALL|wxEXPAND, 2 );
-	par_vsizer->Add( m_grid, 1, wxALL|wxEXPAND, 0 );
+//	par_vsizer->Add( m_grid, 1, wxALL|wxEXPAND, 0 );
 //	par_vsizer->Add( par_plot, 1, wxALL|wxEXPAND, 0 );
 
 	SetSizer( par_vsizer );
