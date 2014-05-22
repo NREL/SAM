@@ -50,6 +50,7 @@ public:
 	// for choice controls
 	wxString GetChoices(int row, int col);
 
+	bool IsInput(int col);
 	VarInfo* GetVarInfo(int row, int col);
 	void SetVarInfo(int row, int col, VarInfo *vi);
 	VarValue* GetVarValue(int row, int col);
@@ -63,8 +64,8 @@ private:
 	ParametricData *m_par;
 	wxArrayString m_var_names;
 	wxArrayString m_var_labels;
-	VarTable* m_var_table;
-	VarInfoLookup* m_var_info_lookup;
+//	VarTable* m_var_table;
+//	VarInfoLookup* m_var_info_lookup;
 };
 
 

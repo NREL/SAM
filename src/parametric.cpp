@@ -91,7 +91,7 @@ bool ParametricData::Read( wxInputStream &_I )
 
 
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////
 
 enum {	ID_CONFIGURE};
 
@@ -143,7 +143,7 @@ ParametricViewer::ParametricViewer( wxWindow *parent, Case *cc )
 	bar_data.push_back( wxRealPoint( 2, 2.9 ) );
 	bar_data.push_back( wxRealPoint( 3, 3.2 ) );
 	bar_data.push_back( wxRealPoint( 4, 3.7 ) );
-	bar_data.push_back( wxRealPoint( 5, 2.2 ) );
+	bar_data.push_back( wxRealPoint+( 5, 2.2 ) );
 	bar_data.push_back( wxRealPoint( 6, 1.7 ) );
 	wxPLBarPlot *bar0, *bar1;
 	par_plot->AddPlot( bar0 = new wxPLBarPlot( bar_data, "Var2 run^0", wxMetroTheme::Colour( wxMT_ACCENT ) ) );
@@ -193,9 +193,9 @@ void ParametricViewer::UpdateGrid()
 }
 
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////
 
-
+// m_par contains list of inputs and outputs
 ParametricGridData::ParametricGridData( ParametricData &par)
 {
 	*m_par = par;
@@ -209,22 +209,14 @@ void ParametricGridData::Init()
 	if (!m_par) return;
 	m_col_hdrs.Clear();
 	m_var_labels.Clear();
+	m_var_names.Clear();
 
+	m_cols = m_par->Setup.size();
 
-	//m_col_hdrs.push_back(m_pf->GetCaseName(m_cases[0]));
-	//m_var_table = &m_par->GetCase()->Values();
-	m_var_info_lookup = &m_par->GetCase()->Variables();
-
-
-	m_cols = m_col_hdrs.Count();
-
-	for (size_t i = 0; i < m_var_names.Count(); i++)
-	{
-		wxString str_label = " ";
-		if (m_var_info_lookup->Lookup(m_var_names[i]))
-			str_label = m_var_info_lookup->Label(m_var_names[i]);
-		m_var_labels.push_back(str_label);
-	}
+	for (size_t i = 0; i < (size_t)m_cols; i++)
+		m_var_names.push_back(m_par->Setup[i].Name);
+	
+	m_rows = m_par->Runs.size();
 }
 
 int ParametricGridData::GetNumberRows()
@@ -239,104 +231,153 @@ int ParametricGridData::GetNumberCols()
 
 bool ParametricGridData::IsEmptyCell(int row, int col)
 {
-	if (row>-1 && row<m_rows)
+	bool emptycell = true;
+	if ((row>-1 && row<m_rows) && (col > -1 && col <m_cols))
 	{
-//		if (col > -1 && col <m_par->Setup.size())
-//			return (m_var_table->Get(m_var_names[lookup_row])->AsString() == wxEmptyString);
+		if (IsInput(col))
+		{
+			if (row < (int)m_par->Setup[col].Values.size())
+				emptycell = (m_par->Setup[col].Values[row].AsString() == wxEmptyString);
+		}
+		else
+		{
+			if (row < (int)m_par->Runs.size())
+				if (VarValue *vv = m_par->Runs[row]->GetOutput(m_var_names[col]))
+					emptycell = (vv->AsString() == wxEmptyString);
+		}
 	}
+	return emptycell;
+}
+
+bool ParametricGridData::IsInput(int col)
+{
+	if ((col>-1)&&(col<m_cols)&&(m_par->GetCase()->Values().Get(m_var_names[col])))
+		return true;
 	else
 		return false;
 }
 
-
 wxString ParametricGridData::GetColLabelValue(int col)
 {
-	if (col <= (int)m_col_hdrs.size())
-		return m_col_hdrs[col];
-	else
-		return wxEmptyString;
+	wxString col_label = wxEmptyString;
+	if ((col>-1) && (col < m_cols))
+	{
+		if (IsInput(col)) // label if non-blank
+		{
+			if (VarInfo *vi = m_par->GetCase()->Variables().Lookup(m_var_names[col]))
+				col_label = vi->Label;
+		}
+		else
+		{
+			if (m_par->Runs.size() > 0)
+				col_label = m_par->Runs[0]->GetLabel(m_var_names[col]);
+		}
+		if (col_label.IsEmpty()) 
+			col_label = m_var_names[col];
+	}
+	return col_label;
 }
 
 
 VarInfo* ParametricGridData::GetVarInfo(int row, int col)
 {
 	VarInfo* vi = NULL;
-//	if ((col > 1) && ((col - 2) <  (int)m_var_info_lookup_vec.size()))
-//	{
-//		vi = m_var_info_lookup_vec[col - 2]->Lookup(m_var_names[lookup_row]);
-//	}
+	if ((col>-1) && (col < m_cols))
+	{
+		if (IsInput(col))
+			vi = m_par->GetCase()->Variables().Lookup(m_var_names[col]);
+	}
 	return vi;
 }
 
 void ParametricGridData::SetVarInfo(int row, int col, VarInfo *vi)
 {
-	//if ((col > 1) && ((col - 2) < (int)m_var_info_lookup_vec.size()))
-	//{
-	//	if (VarInfo *var_info = m_var_info_lookup_vec[col - 2]->Lookup(m_var_names[lookup_row]))
-	//		var_info = vi;
-	//}
+	if ((col>-1) && (col < m_cols))
+	{
+		if (IsInput(col))
+			if (VarInfo *var_info = m_par->GetCase()->Variables().Lookup(m_var_names[col]))
+				var_info = vi;
+	}
 }
 
 VarValue* ParametricGridData::GetVarValue(int row, int col)
 {
 	VarValue* vv = NULL;
-	//if ((col > 1) && ((col - 2) <  (int)m_var_table_vec.size()))
-	//{
-	//	vv = m_var_table_vec[col - 2]->Get(m_var_names[lookup_row]);
-	//}
+	if ((col>-1) && (col < m_cols))
+	{
+		if (IsInput(col))
+		{
+			if (row < (int)m_par->Setup[col].Values.size())
+				vv = &m_par->Setup[col].Values[row];
+		}
+		else
+		{
+			if (row < (int)m_par->Runs.size())
+				vv = m_par->Runs[row]->GetOutput(m_var_names[col]);
+		}
+	}
 	return vv;
 
 }
 
 void ParametricGridData::SetVarValue(int row, int col, VarValue *vv)
 {
-	//if ((col > 1) && ((col - 2) <  (int)m_var_table_vec.size()))
-	//{
-	//	if (VarValue *var_value = m_var_table_vec[col - 2]->Get(m_var_names[lookup_row]))
-	//		var_value = vv;
-	//}
+	if ((col>-1) && (col < m_cols))
+	{
+		if (IsInput(col))
+		{
+			if (row < (int)m_par->Setup[col].Values.size())
+				if (VarValue *var_value = &m_par->Setup[col].Values[row])
+					var_value = vv;
+		}
+		else
+		{
+			if (row < (int)m_par->Runs.size())
+				if (VarValue *var_value = m_par->Runs[row]->GetOutput(m_var_names[col]))
+					var_value = vv;
+		}
+	}
 }
 
 wxString ParametricGridData::GetChoices(int row, int col)
 {
 	wxString ret_str = wxEmptyString;
-	if (col >= 2) // get var table and value
+	if ((col>-1) && (col < m_cols))
 	{
-		//if ((col - 2) < (int)m_var_info_lookup_vec.size())
-		//{
-		//	if (m_var_info_lookup_vec[col - 2]->Lookup(m_var_names[lookup_row]))
-		//	{
-		//		wxArrayString as = m_var_info_lookup_vec[col - 2]->Lookup(m_var_names[lookup_row])->IndexLabels;
-		//		for (int i = 0; i < (int)as.Count() - 1; i++)
-		//			ret_str += as[i] + ",";
-		//		ret_str += as[as.Count() - 1];
-		//	}
-		//}
+		if (VarInfo *vi = GetVarInfo(row,col))
+		{
+			wxArrayString as = vi->IndexLabels;
+			for (int i = 0; i < (int)as.Count() - 1; i++)
+				ret_str += as[i] + ",";
+			ret_str += as[as.Count() - 1];
+		}
 	}
 	return ret_str;
 }
 
 wxString ParametricGridData::GetValue(int row, int col)
 {
+	wxString value = wxEmptyString;
 	{
-		//if ((col - 2) >= (int)m_var_table_vec.size())
-		//	return wxEmptyString;
-		//else
-		//{
-		//	if (m_var_table_vec[col - 2]->Get(m_var_names[lookup_row]))
-		//		return m_var_table_vec[col - 2]->Get(m_var_names[lookup_row])->AsString();
-		//	else
-				return wxEmptyString;
-		//}
+		if ((col > -1) && (col < m_cols))
+		{
+			if (VarValue *vv = GetVarValue(row, col))
+				value = vv->AsString();
+		}
 	}
+	return value;
 }
 
 void ParametricGridData::SetValue(int row, int col, const wxString& value)
 {
 	if ((col > -1) && (col < m_cols))
 	{
-		VarValue vv = m_par->Setup[col].Values[row];
-		VarValue::Parse(vv.Type(), value, vv);
+		if (IsInput(col))
+		{
+			VarValue vv = m_par->Setup[col].Values[row];
+			VarValue::Parse(vv.Type(), value, vv);
+		}
+		// outputs are calculated in simulations
 	}
 }
 
@@ -344,12 +385,12 @@ void ParametricGridData::SetValue(int row, int col, const wxString& value)
 
 wxString ParametricGridData::GetTypeName(int row, int col)
 {
-	if (col < m_cols)
+	if ((col > -1) && (col < m_cols))
 	{
-//		if (VarInfo *var_info = m_par->Setup[col].Values[row])
-		{ // TODO - better control list maintenance here and in UIEditorPanel
-//			wxString type = var_info->UIObject;
-			wxString type; // fix this - need var info 
+		if (VarInfo *vi = GetVarInfo(row, col))
+		{
+			 // TODO - better control list maintenance here and in UIEditorPanel
+			wxString type = vi->UIObject;
 			if (type == "Numeric")
 				return wxGRID_VALUE_STRING;
 			else if (type == "Choice")
@@ -394,13 +435,13 @@ wxString ParametricGridData::GetTypeName(int row, int col)
 				return "GridCellVarValue";
 			else if (type == "DiurnalPeriod")
 				return "GridCellVarValue";
-//			else if (var_info->UIObject == VUIOBJ_NONE)
-//				return wxGRID_VALUE_STRING;
+			else if (vi->UIObject == VUIOBJ_NONE)
+				return wxGRID_VALUE_STRING;
 			else
 				return wxGRID_VALUE_STRING;
 		}
-//		else
-//			return wxGRID_VALUE_STRING;
+		else
+			return wxGRID_VALUE_STRING;
 	}
 	else
 		return wxGRID_VALUE_STRING;
