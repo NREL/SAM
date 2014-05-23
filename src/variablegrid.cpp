@@ -217,9 +217,12 @@ wxString VariableGridData::GetChoices(int row, int col)
 			if (m_var_info_lookup_vec[col - 2]->Lookup(m_var_names[lookup_row]))
 			{
 				wxArrayString as = m_var_info_lookup_vec[col - 2]->Lookup(m_var_names[lookup_row])->IndexLabels;
-				for (int i = 0; i < (int)as.Count() - 1; i++)
-					ret_str += as[i] + ",";
-				ret_str += as[as.Count()-1];
+				if (as.Count() > 0)
+				{
+					for (int i = 0; i < (int)as.Count() - 1; i++)
+						ret_str += as[i] + ",";
+					ret_str += as[as.Count() - 1];
+				}
 			}
 		}
 	}
