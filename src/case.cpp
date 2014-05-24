@@ -641,7 +641,7 @@ void Case::AddListener( CaseEventListener *cel )
 
 void Case::RemoveListener( CaseEventListener *cel )
 {
-	if (m_listeners.size() > 0 )
+	if (m_listeners.size() > 0)
 	{
 		for (size_t i = 0; i < m_listeners.size(); i++)
 		{
