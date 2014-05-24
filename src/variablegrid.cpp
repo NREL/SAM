@@ -1606,10 +1606,15 @@ VariableGridFrame::VariableGridFrame(wxWindow *parent, ProjectFile *pf, Case *c)
 
 VariableGridFrame::~VariableGridFrame()
 {
+	/*Strange issue with VS2013 in release mode only*/
+	/*The following code caused AV when exiting with input list open*/
+	/*No issue running in debug mode or outside of VS2013*/
+	/*
 	if (m_cases.size() > 0)
 		for (size_t i = 0; i < m_cases.size(); i++)
 			if (m_cases[i]) m_cases[i]->RemoveListener(this);
 	if (m_pf) m_pf->RemoveListener(this);
+	*/
 }
 
 void VariableGridFrame::OnGridColSort(wxGridEvent& event)
