@@ -4,6 +4,9 @@
 #include <wx/datstrm.h>
 #include <wx/panel.h>
 #include <wx/grid.h>
+#include <wx/sizer.h>
+
+#include <wex/numeric.h>
 
 #include "simulation.h"
 #include "object.h"
@@ -81,8 +84,13 @@ private:
 	void UpdateGrid();
 
 	wxGrid *m_grid;
+	ParametricGridData *m_grid_data;
+	wxNumericCtrl *m_num_runs;
+	wxBoxSizer *m_par_vsizer;
+
 	Case *m_case;
 	ParametricData &m_par;
+
 
 	DECLARE_EVENT_TABLE();
 };
