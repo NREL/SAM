@@ -1,15 +1,16 @@
 #include <wx/panel.h>
-#include <wx/sizer.h>
 #include <wx/button.h>
 
 #include <wex/plot/plplotctrl.h>
 #include <wex/plot/plbarplot.h>
 #include <wex/metro.h>
 #include <wex/extgrid.h>
+#include <wex/utils.h>
 
 #include "parametric.h"
 #include "case.h"
-
+#include "main.h"
+#include "casewin.h"
 
 
 ParametricData::ParametricData( Case *c )
@@ -108,10 +109,14 @@ ParametricViewer::ParametricViewer( wxWindow *parent, Case *cc )
 {
 	wxBoxSizer *par_sizer = new wxBoxSizer( wxHORIZONTAL );
 	par_sizer->Add( new wxButton( this, ID_CONFIGURE, "Configure..."), 0, wxALL|wxEXPAND, 2 );
-	par_sizer->Add( new wxButton( this, wxID_ANY, "Run parametric simulation"), 0, wxALL|wxEXPAND, 2 );
+	par_sizer->Add(new wxStaticText(this, wxID_ANY, "   Number of Runs:"), 0, wxALIGN_CENTER_VERTICAL, 2);
+	m_num_runs = new wxNumericCtrl(this, wxID_ANY, 5, wxNumericCtrl::INTEGER, wxDefaultPosition, wxSize(50,24));
+	par_sizer->Add(m_num_runs, 0, wxALL, 2);
 	par_sizer->AddStretchSpacer();
-	par_sizer->Add( new wxButton( this, wxID_ANY, "Clear results"), 0, wxALL|wxEXPAND, 2 );
+	par_sizer->Add(new wxButton(this, wxID_ANY, "Run parametric simulation"), 0, wxALL | wxEXPAND, 2);
+	par_sizer->Add(new wxButton(this, wxID_ANY, "Clear results"), 0, wxALL | wxEXPAND, 2);
 	
+
 	/* Mock-up
 	wxExtGridCtrl *par_grid = new wxExtGridCtrl( this, wxID_ANY );
 	par_grid->CreateGrid( 7, 4 );
@@ -161,12 +166,12 @@ ParametricViewer::ParametricViewer( wxWindow *parent, Case *cc )
 	*/
 
 
-	wxBoxSizer *par_vsizer = new wxBoxSizer( wxVERTICAL );
-	par_vsizer->Add( par_sizer, 0, wxALL|wxEXPAND, 2 );
+	m_par_vsizer = new wxBoxSizer( wxVERTICAL );
+	m_par_vsizer->Add( par_sizer, 0, wxALL|wxEXPAND, 2 );
 //	par_vsizer->Add( m_grid, 1, wxALL|wxEXPAND, 0 );
 //	par_vsizer->Add( par_plot, 1, wxALL|wxEXPAND, 0 );
 
-	SetSizer( par_vsizer );
+	SetSizer( m_par_vsizer );
 }
 
 
@@ -184,12 +189,71 @@ void ParametricViewer::OnCommand(wxCommandEvent &evt)
 
 void ParametricViewer::Configure()
 {
+	wxArrayString names, labels;
+	wxString case_name(SamApp::Project().GetCaseName(m_case));
+	wxArrayString output_names, output_labels;
+	Simulation::ListAllOutputs(m_case, &output_names, &output_labels, 0);
+
+	for (int j = 0; j<(int)output_labels.size(); j++)
+	{
+		if (!output_labels[j].IsEmpty())
+		{
+			names.Add(output_names[j]);
+			labels.Add("[" + case_name + "] Outputs/" + output_labels[j]);
+		}
+	}
+
+	ConfigInfo *ci = m_case->GetConfiguration();
+	VarInfoLookup &vil = ci->Variables;
+
+	for (VarInfoLookup::iterator it = vil.begin(); it != vil.end(); ++it)
+	{
+		wxString name = it->first;
+		VarInfo &vi = *(it->second);
+
+		wxString label = vi.Label;
+		if (!label.IsEmpty())
+		{
+			if (!vi.Units.IsEmpty())
+				label += " (" + vi.Units + ")";
+
+			label += "  ";
+		}
+
+		label += "{ " + name + " }";
+
+		if (vi.Group.IsEmpty()) label = "-Unsorted-/" + label;
+		else label = vi.Group + "/" + label;
+
+		label = "[" + case_name + "] Inputs/" + label;
+
+		labels.Add(label);
+		names.Add(name);
+	}
+
+	wxSortByLabels(names, labels);
+	SelectVariableDialog dlg(this, "Configure Parametrics");
+	dlg.SetItems(names, labels);
+	if (dlg.ShowModal() == wxID_OK)
+	{
+		wxArrayString names = dlg.GetCheckedNames();
+	}
 
 }
 
 void ParametricViewer::UpdateGrid()
 {
+	if (!m_grid)
+	{
+		// create grid and grid data
+		m_grid = new wxExtGridCtrl(this, wxID_ANY);
+		m_grid_data = new ParametricGridData(m_par);
 
+	}
+	else
+	{
+		// update grid data with m_par updates from configure and number of runs
+	}
 }
 
 
@@ -347,9 +411,12 @@ wxString ParametricGridData::GetChoices(int row, int col)
 		if (VarInfo *vi = GetVarInfo(row,col))
 		{
 			wxArrayString as = vi->IndexLabels;
-			for (int i = 0; i < (int)as.Count() - 1; i++)
-				ret_str += as[i] + ",";
-			ret_str += as[as.Count() - 1];
+			if (as.Count() > 0)
+			{
+				for (int i = 0; i < (int)as.Count() - 1; i++)
+					ret_str += as[i] + ",";
+				ret_str += as[as.Count() - 1];
+			}
 		}
 	}
 	return ret_str;
