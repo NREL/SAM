@@ -4,7 +4,6 @@
 #include <wx/datstrm.h>
 #include <wx/panel.h>
 #include <wx/grid.h>
-#include <wx/sizer.h>
 
 #include <wex/numeric.h>
 
@@ -28,6 +27,9 @@ public:
 	std::vector<Var> Setup;
 	std::vector<Simulation*> Runs;
 
+	int FindSetup(wxString &name);
+	bool RemoveSetup(wxString &name);
+
 	void Write( wxOutputStream & );
 	bool Read( wxInputStream & );
 
@@ -40,7 +42,7 @@ private:
 class ParametricGridData : public wxGridTableBase
 {
 public:
-	ParametricGridData(ParametricData &par);
+	ParametricGridData(Case *cc);
 	virtual int GetNumberRows();
 	virtual int GetNumberCols();
 	virtual bool IsEmptyCell(int row, int col);
@@ -58,17 +60,15 @@ public:
 	void SetVarInfo(int row, int col, VarInfo *vi);
 	VarValue* GetVarValue(int row, int col);
 	void SetVarValue(int row, int col, VarValue *vv);
+	void Init();
 
 private:
-	void Init();
 	int m_rows;
 	int m_cols;
 	wxArrayString m_col_hdrs;
-	ParametricData *m_par;
+	ParametricData &m_par;
+	Case *m_case;
 	wxArrayString m_var_names;
-	wxArrayString m_var_labels;
-//	VarTable* m_var_table;
-//	VarInfoLookup* m_var_info_lookup;
 };
 
 
@@ -85,12 +85,11 @@ private:
 
 	wxGrid *m_grid;
 	ParametricGridData *m_grid_data;
-	wxNumericCtrl *m_num_runs;
-	wxBoxSizer *m_par_vsizer;
+	wxNumericCtrl *m_num_runs_ctrl;
 
 	Case *m_case;
 	ParametricData &m_par;
-
+	wxArrayString m_var_names;
 
 	DECLARE_EVENT_TABLE();
 };
