@@ -16,7 +16,6 @@ class wxMetroButton;
 class wxMetroNotebook;
 class wxSimplebook;
 class wxLKScriptCtrl;
-class InputPageGroup;
 class InputPageList;
 class ResultsViewer;
 class Simulation;
@@ -25,6 +24,8 @@ class PageNote;
 class CollapsePaneCtrl;
 class wxUIObject;
 class ParametricViewer;
+
+struct InputPageGroup;
 
 class CaseWindow : public wxSplitterWindow, CaseEventListener
 {
