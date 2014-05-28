@@ -522,19 +522,6 @@ static void fcall_show( lk::invoke_t &cxt )
 		obj->Show( cxt.arg(1).as_boolean() );
 }
 
-#ifdef __WXMSW__
-
-class lkXLObject : public lk::objref_t
-{
-	wxExcelAutomation m_xl;
-public: 
-	lkXLObject() { };
-	virtual ~lkXLObject() { };
-	virtual lk_string type_name() { return "ole-excel-automation"; }
-	wxExcelAutomation &Excel() { return m_xl; }
-	operator wxExcelAutomation&() { return m_xl; }
-	wxExcelAutomation &operator*() { return m_xl; }
-};
 
 static void fcall_case_name(lk::invoke_t &cxt)
 {
@@ -590,6 +577,20 @@ static void fcall_copy_file(lk::invoke_t &cxt)
 	cxt.result().assign(destination);
 
 }
+
+#ifdef __WXMSW__
+
+class lkXLObject : public lk::objref_t
+{
+	wxExcelAutomation m_xl;
+public: 
+	lkXLObject() { };
+	virtual ~lkXLObject() { };
+	virtual lk_string type_name() { return "ole-excel-automation"; }
+	wxExcelAutomation &Excel() { return m_xl; }
+	operator wxExcelAutomation&() { return m_xl; }
+	wxExcelAutomation &operator*() { return m_xl; }
+};
 
 static void fcall_xl_create( lk::invoke_t &cxt )
 {
