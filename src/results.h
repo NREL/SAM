@@ -2,6 +2,7 @@
 #define __ResultsViewer_h
 
 #include <wx/datstrm.h>
+#include <wx/notebook.h>
 #include <wex/metro.h>
 
 #include <wex/plot/plplotctrl.h>
@@ -89,7 +90,7 @@ struct AutoGraph {
 	wxString title, xlabel, ylabel, yvals;
 };
 	
-class ResultsViewer : public wxMetroNotebook
+class ResultsViewer : public wxNotebook
 {
 public:
 	ResultsViewer( wxWindow *parent, int id = wxID_ANY );
