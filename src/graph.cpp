@@ -664,7 +664,10 @@ void GraphViewer::Setup( Simulation *sim )
 	for( std::vector<GraphCtrl*>::iterator it = m_graphs.begin();
 		it != m_graphs.end();
 		++it )
-		(*it)->Display( m_sim, (*it)->GetGraph() );
+	{
+		Graph g = (*it)->GetGraph();
+		(*it)->Display( m_sim, g );
+	}
 
 	if ( m_current != 0 )
 		m_props->Set( m_current->GetGraph() );
