@@ -120,12 +120,15 @@ bool ParametricData::Read( wxInputStream &_I )
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
-enum {	ID_CONFIGURE};
+enum {	ID_CONFIGURE, ID_NUMRUNS, ID_RUN, ID_CLEAR};
 
 
 
 BEGIN_EVENT_TABLE(ParametricViewer, wxPanel)
-	EVT_BUTTON(ID_CONFIGURE, ParametricViewer::OnCommand)
+EVT_BUTTON(ID_CONFIGURE, ParametricViewer::OnCommand)
+EVT_NUMERIC(ID_NUMRUNS, ParametricViewer::OnCommand)
+EVT_BUTTON(ID_RUN, ParametricViewer::OnCommand)
+EVT_BUTTON(ID_CLEAR, ParametricViewer::OnCommand)
 END_EVENT_TABLE()
 
 
@@ -136,11 +139,11 @@ ParametricViewer::ParametricViewer( wxWindow *parent, Case *cc )
 	wxBoxSizer *par_sizer = new wxBoxSizer( wxHORIZONTAL );
 	par_sizer->Add( new wxButton( this, ID_CONFIGURE, "Configure..."), 0, wxALL|wxEXPAND, 2 );
 	par_sizer->Add(new wxStaticText(this, wxID_ANY, "   Number of Runs:"), 0, wxALIGN_CENTER_VERTICAL, 2);
-	m_num_runs_ctrl = new wxNumericCtrl(this, wxID_ANY, 5, wxNumericCtrl::INTEGER, wxDefaultPosition, wxSize(50,24));
+	m_num_runs_ctrl = new wxNumericCtrl(this, ID_NUMRUNS, 5, wxNumericCtrl::INTEGER, wxDefaultPosition, wxSize(50, 24));
 	par_sizer->Add(m_num_runs_ctrl, 0, wxALL, 2);
 	par_sizer->AddStretchSpacer();
-	par_sizer->Add(new wxButton(this, wxID_ANY, "Run parametric simulation"), 0, wxALL | wxEXPAND, 2);
-	par_sizer->Add(new wxButton(this, wxID_ANY, "Clear results"), 0, wxALL | wxEXPAND, 2);
+	par_sizer->Add(new wxButton(this, ID_RUN, "Run parametric simulation"), 0, wxALL | wxEXPAND, 2);
+	par_sizer->Add(new wxButton(this, ID_CLEAR, "Clear results"), 0, wxALL | wxEXPAND, 2);
 	
 
 	/* Mock-up
@@ -215,9 +218,49 @@ void ParametricViewer::OnCommand(wxCommandEvent &evt)
 		Configure();
 		UpdateGrid();
 		break;
+	case ID_NUMRUNS:
+		UpdateNumRuns();
+		UpdateGrid();
+		break;
+	case ID_RUN:
+		RunSimulations();
+		UpdateGrid();
+		break;
+	case ID_CLEAR:
+		ClearResults();
+		UpdateGrid();
+		break;
 	}
 }
 
+void ParametricViewer::UpdateNumRuns()
+{
+	// update number of runs - here and when number of runs change
+	m_grid_data->UpdateNumberRows(m_num_runs_ctrl->AsInteger());
+	/*
+	bool change_num_runs = (m_par.Runs.size() != m_num_runs_ctrl->AsInteger());
+	if (change_num_runs)
+	{
+		m_par.ClearRuns();
+		for (int num_run = 0; num_run < m_num_runs_ctrl->AsInteger(); num_run++)
+		{
+			m_par.Runs.push_back(new Simulation(m_case, wxString::Format("Run %d", num_run)));
+		}
+	}
+	*/
+}
+
+void ParametricViewer::RunSimulations()
+{
+	//  call run simulations from parametric grid data to update all inputs with current grid values
+	m_grid_data->RunSimulations();
+}
+
+void ParametricViewer::ClearResults()
+{
+//	m_par.ClearRuns();
+//	UpdateNumRuns();
+}
 
 void ParametricViewer::Configure()
 {
@@ -275,21 +318,22 @@ void ParametricViewer::Configure()
 		for (size_t i = 0; i < m_var_names.size(); i++)
 		{
 			size_t ndx = m_par.FindSetup(m_var_names[i]);
-			if (ndx == -1)
+			if (ndx < 0)
 			{
 				std::vector<VarValue> vvv;
 				ParametricData::Var pv;
 				for (int num_run = 0; num_run < m_num_runs_ctrl->AsInteger(); num_run++)
-				{
+				{ // add values for inputs only
 					if (VarValue *vv = m_case->Values().Get(m_var_names[i]))
 						vvv.push_back(*vv);
 				}
 				pv.Name = m_var_names[i];
 				pv.Values = vvv;
-				m_par.Setup.push_back(pv);
+				m_grid_data->AddSetup(pv);
+				//m_par.Setup.push_back(pv);
 			}
 		}
-		// remove any not selected
+		// remove any variables not selected
 		wxArrayString to_remove;
 		for (size_t i = 0; i < m_par.Setup.size(); i++)
 		{
@@ -297,18 +341,10 @@ void ParametricViewer::Configure()
 				to_remove.push_back(m_par.Setup[i].Name);
 		}
 		for (size_t i = 0; i < to_remove.Count(); i++)
-			m_par.RemoveSetup(to_remove[i]);
-		// update number of runs - here and when number of runs change
-		bool change_num_runs = (m_par.Runs.size() != m_num_runs_ctrl->AsInteger());
-		if (change_num_runs)
-		{
-			m_par.ClearRuns();
-			for (int num_run = 0; num_run < m_num_runs_ctrl->AsInteger(); num_run++)
-			{
-				m_par.Runs.push_back(new Simulation(m_case, wxString::Format("Run %d", num_run)));
-			}
-		}
-		UpdateGrid();
+			m_grid_data->DeleteSetup(to_remove[i]);
+//			m_par.RemoveSetup(to_remove[i]);
+		// TODO - conditionally call
+	//	UpdateNumRuns();
 	}
 }
 
@@ -583,4 +619,166 @@ void ParametricGridData::SetColLabelValue(int col, const wxString &label)
 	{
 		m_col_hdrs[col] = label;
 	}
+}
+
+
+bool ParametricGridData::AppendCols(size_t ncols)
+{
+	if (GetView())
+	{
+		wxGridTableMessage msg(this,
+			wxGRIDTABLE_NOTIFY_COLS_APPENDED,
+			ncols);
+		GetView()->ProcessTableMessage(msg);
+	}
+	return true;
+}
+
+bool ParametricGridData::InsertCols(size_t pos, size_t ncols)
+{
+	if (GetView())
+	{
+		wxGridTableMessage msg(this,
+			wxGRIDTABLE_NOTIFY_COLS_INSERTED,
+			pos,
+			ncols);
+		GetView()->ProcessTableMessage(msg);
+	}
+	return true;
+}
+
+bool ParametricGridData::DeleteCols(size_t pos, size_t ncols)
+{
+	if (GetView())
+	{
+		wxGridTableMessage msg(this,
+			wxGRIDTABLE_NOTIFY_COLS_DELETED,
+			pos,
+			ncols);
+		GetView()->ProcessTableMessage(msg);
+	}
+	return true;
+}
+
+bool ParametricGridData::AppendRows(size_t nrows)
+{
+	if (GetView())
+	{
+		wxGridTableMessage msg(this,
+			wxGRIDTABLE_NOTIFY_ROWS_APPENDED,
+			nrows);
+		GetView()->ProcessTableMessage(msg);
+	}
+	return true;
+}
+
+bool ParametricGridData::InsertRows(size_t pos, size_t nrows)
+{
+	if (GetView())
+	{
+		wxGridTableMessage msg(this,
+			wxGRIDTABLE_NOTIFY_ROWS_INSERTED,
+			pos,
+			nrows);
+		GetView()->ProcessTableMessage(msg);
+	}
+	return true;
+}
+
+bool ParametricGridData::DeleteRows(size_t pos, size_t nrows)
+{
+	if (GetView())
+	{
+		wxGridTableMessage msg(this,
+			wxGRIDTABLE_NOTIFY_ROWS_DELETED,
+			pos,
+			nrows);
+		GetView()->ProcessTableMessage(msg);
+	}
+	return true;
+}
+
+void ParametricGridData::AddSetup(ParametricData::Var &var)
+{
+	//if (IsInput) append only for now
+	m_par.Setup.push_back(var);
+	AppendCols();
+}
+
+void ParametricGridData::DeleteSetup(wxString &var_name)
+{
+	if (m_par.RemoveSetup(var_name))
+		DeleteCols();
+}
+
+void ParametricGridData::UpdateNumberRows(int rows)
+{
+	if (m_rows != rows)
+	{
+		if (rows > m_rows) // append rows
+		{
+			// go through all variables and append VarValues as necessary
+			for (size_t i = 0; i < m_var_names.Count(); i++)
+			{
+
+			}
+		}
+		else // delete rows
+		{
+
+		}
+		m_rows = rows;
+	}
+}
+
+void ParametricGridData::UpdateView()
+{
+	if (GetView())
+	{
+		wxGridTableMessage msg(this,
+			wxGRIDTABLE_REQUEST_VIEW_GET_VALUES);
+		GetView()->ProcessTableMessage(msg);
+	}
+}
+
+bool ParametricGridData::RunSimulations(int row)
+{
+	for (size_t i = 0; i < m_par.Runs.size(); i++)
+	{
+		// base case copied whenever number rows updated
+		// update all input values with setValue varValues
+		// TODO
+		// Excel exchange if necessary
+		ExcelExchange &ex = m_case->ExcelExch();
+		if (ex.Enabled)
+			ExcelExchange::RunExcelExchange(ex, m_case->Values(), m_par.Runs[i]);
+
+		// invoke simulation
+		//update results in grid - send message to grid to update
+		if (m_par.Runs[i]->Invoke())
+		{
+			// update outputs
+			for (int col = 0; col < m_cols; col++)
+			{
+				if (!IsInput(col))
+				{
+					if (VarValue *vv = m_par.Runs[i]->Outputs().Get(m_var_names[col]))
+						m_par.Setup[col].Values[i] = *vv;
+				}
+			}
+			UpdateView();
+			return true;
+		}
+		else
+		{
+			wxShowTextMessageDialog(wxJoin(m_par.Runs[i]->GetErrors(), '\n'));
+			return false;
+		}
+
+	}
+}
+
+void ParametricGridData::ClearResults(int row)
+{
+
 }
