@@ -11,7 +11,7 @@
 #include "variablegrid.h"
 #include "widgets.h"
 #include "inputpage.h"
-#include <unordered_map>
+#include "object.h"
 
 #define COMPARE_SHOW_ALL 0
 #define COMPARE_SHOW_DIFFERENT 1

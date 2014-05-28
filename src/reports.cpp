@@ -786,7 +786,7 @@ wxString SamReportFormatVariable( double value, const wxString &fmt )
 
 	if (fmt[0] == '.' || fmt[0] == ',')
 	{
-		int dec = atoi( fmt.Mid(1) );
+		int dec = wxAtoi( fmt.Mid(1) );
 		if (dec < 1) dec = 0;
 		if (dec > 30) dec = 30;		
 		return wxNumericCtrl::Format( value, wxNumericCtrl::REAL, dec, fmt[0]==',', wxEmptyString, wxEmptyString );
@@ -966,7 +966,7 @@ wxString SamReportEscapeString( const wxString &input, Case *c )
 
 						if (args.find("index") != args.end())
 						{
-							int idx = atoi( args["index"] );
+							int idx = wxAtoi( args["index"] );
 							if (idx < 0) idx = 0;
 							if (idx >= vals.size()) idx = vals.size()-1;
 
