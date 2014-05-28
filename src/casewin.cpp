@@ -124,19 +124,11 @@ CaseWindow::CaseWindow( wxWindow *parent, Case *c )
 
 	wxPanel *left_panel = new wxPanel( this );
 	left_panel->SetBackgroundColour( laback );
+	
 	m_inputPageList = new InputPageList( left_panel, ID_INPUTPAGELIST );
 	m_inputPageList->SetCaseWindow( this );
 	m_inputPageList->SetBackgroundColour( wxColour(243,243,243) );
-	for ( int i=0;i<10;i++ ) m_inputPageList->Add( wxString::Format("Input page %d", i+1) );
 
-	m_simButton = new wxMetroButton( left_panel, ID_SIMULATE, "Simulate", wxNullBitmap, wxDefaultPosition, wxDefaultSize, wxMB_RIGHTARROW );
-	m_simButton->SetFont( wxMetroTheme::Font( wxMT_NORMAL, 14) );
-	m_resultsButton = new wxMetroButton( left_panel, ID_RESULTSPAGE, wxEmptyString, wxBITMAP_PNG_FROM_DATA( graph ) );
-
-	wxBoxSizer *szhl = new wxBoxSizer( wxHORIZONTAL );
-	szhl->Add( m_simButton, 1, wxALL|wxEXPAND, 0 );
-	szhl->Add( m_resultsButton, 0, wxALL|wxEXPAND, 0 );
-	
 	wxFont lafont( *wxNORMAL_FONT );
 	lafont.SetWeight( wxFONTWEIGHT_BOLD );
 	m_configLabel = new wxStaticText( left_panel, wxID_ANY, "-technology-" );
@@ -145,19 +137,26 @@ CaseWindow::CaseWindow( wxWindow *parent, Case *c )
 	m_configLabel->SetFont( lafont );
 	
 
-	wxBoxSizer *szvl = new wxBoxSizer( wxVERTICAL );
-	szvl->Add( m_configLabel, 0, wxALIGN_CENTER_VERTICAL|wxALIGN_CENTER|wxTOP|wxBOTTOM, 3 );
-	szvl->Add( m_inputPageList, 1, wxALL|wxEXPAND, 0 );
-	szvl->Add( szhl, 0, wxALL|wxEXPAND, 0 );
 	
+	m_simButton = new wxMetroButton( left_panel, ID_SIMULATE, "Simulate", wxNullBitmap, wxDefaultPosition, wxDefaultSize, wxMB_RIGHTARROW );
+	m_simButton->SetFont( wxMetroTheme::Font( wxMT_NORMAL, 14) );
+	m_resultsButton = new wxMetroButton( left_panel, ID_RESULTSPAGE, wxEmptyString, wxBITMAP_PNG_FROM_DATA( graph ) );
+
+	wxBoxSizer *szhl = new wxBoxSizer( wxHORIZONTAL );
+	szhl->Add( m_simButton, 1, wxALL|wxEXPAND, 0 );
+	szhl->Add( m_resultsButton, 0, wxALL|wxEXPAND, 0 );
+
 	wxSizer *szsims = new wxGridSizer(2, 0, 0);
 	szsims->Add( new wxMetroButton( left_panel, ID_PARAMETRICS, "Parametrics" ), 0, wxALL|wxEXPAND, 0 );
 	szsims->Add( new wxMetroButton( left_panel, ID_SENSITIVITY, "Sensitivity" ), 0, wxALL|wxEXPAND, 0 );
 	szsims->Add( new wxMetroButton( left_panel, ID_P50P90, "P50 / P90" ), 0, wxALL|wxEXPAND, 0 );
 	szsims->Add( new wxMetroButton( left_panel, ID_SCRIPTING, "Monte Carlo" ), 0, wxALL|wxEXPAND, 0 );
-	szvl->Add( szsims, 0, wxALL|wxEXPAND, 0 );
-	
 
+	wxBoxSizer *szvl = new wxBoxSizer( wxVERTICAL );
+	szvl->Add( m_configLabel, 0, wxALIGN_CENTER_VERTICAL|wxALIGN_CENTER|wxTOP|wxBOTTOM, 3 );
+	szvl->Add( m_inputPageList, 1, wxALL|wxEXPAND, 0 );
+	szvl->Add( szhl, 0, wxALL|wxEXPAND, 0 );
+	szvl->Add( szsims, 0, wxALL|wxEXPAND, 0 );
 	left_panel->SetSizer( szvl );
 
 	m_pageFlipper = new wxSimplebook( this, ID_PAGES, wxDefaultPosition, wxDefaultSize, wxBORDER_NONE );
@@ -192,9 +191,7 @@ CaseWindow::CaseWindow( wxWindow *parent, Case *c )
 
 	m_pageFlipper->AddPage( new wxPanel( m_pageFlipper ), "Sensitivity", false );
 	m_pageFlipper->AddPage( new wxPanel( m_pageFlipper ), "P50/P90", false );
-
-	m_scriptCtrl = new wxLKScriptCtrl( m_pageFlipper, wxID_ANY );
-	m_pageFlipper->AddPage( m_scriptCtrl, "Scripting", false );
+	m_pageFlipper->AddPage( new wxPanel( m_pageFlipper ), "Scripting", false );
 
 	
 	SetMinimumPaneSize( 50 );
@@ -244,6 +241,7 @@ CaseWindow::CaseWindow( wxWindow *parent, Case *c )
 	m_baseCaseResults->LoadPerspective( m_case->Perspective() );
 
 	UpdateResults();
+
 }
 
 CaseWindow::~CaseWindow()
@@ -944,7 +942,7 @@ wxString CaseWindow::GetCurrentContext()
 		else id = "Inputs";
 		break;
 	case 1: // base case results
-		id = "Base Case " + m_baseCaseResults->GetSelectionText();
+		id = "Base Case ";// + m_baseCaseResults->GetSelectionText();
 		break;
 	case 2: // parametrics
 		id = "Parametrics";
