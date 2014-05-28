@@ -450,12 +450,12 @@ bool Simulation::Invoke()
 				case SSC_STRING:
 					str_value = wxString::FromUTF8(::ssc_data_get_string( p_data, name ));
 					str_value.Replace("\\", "/" );
-					fprintf(fp, "var( '%s', '%s' );\n", name, str_value.c_str() );
+					fprintf(fp, "var( '%s', '%s' );\n", name, (const char*)str_value.c_str() );
 					break;
 				case SSC_NUMBER:
 					::ssc_data_get_number( p_data, name, &value );
 					dbl_value = (double)value;
-					if ( dbl_value > DBL_MAX ) dbl_value = 1e38;
+					if ( dbl_value > 1e38 ) dbl_value = 1e38;
 					fprintf(fp, "var( '%s', %lg );\n", name, dbl_value );
 					break;
 				case SSC_ARRAY:
@@ -464,11 +464,11 @@ bool Simulation::Invoke()
 					for ( int i=0;i<(len-1);i++ )
 					{
 						dbl_value = (double)p[i];
-						if ( dbl_value > DBL_MAX ) dbl_value = 1e38;
+						if ( dbl_value > 1e38 ) dbl_value = 1e38;
 						fprintf(fp, " %lg,", dbl_value );
 					}
 					dbl_value = (double)p[len-1];
-					if ( dbl_value > DBL_MAX ) dbl_value = 1e38;
+					if ( dbl_value > 1e38 ) dbl_value = 1e38;
 					fprintf(fp, " %lg ] );\n", dbl_value );
 					break;
 				case SSC_MATRIX:
@@ -478,14 +478,14 @@ bool Simulation::Invoke()
 					for (int k=0;k<(len-1);k++)
 					{
 						dbl_value = (double)p[k];
-						if ( dbl_value > DBL_MAX ) dbl_value = 1e38;
+						if ( dbl_value > 1e38 ) dbl_value = 1e38;
 						if ( (k+1)%nc == 0 ) 
 							fprintf(fp, " %lg ], \n[", dbl_value);
 						else
 							fprintf(fp, " %lg,", dbl_value);
 					}
 					dbl_value = (double)p[len-1];
-					if ( dbl_value > DBL_MAX ) dbl_value = 1e38;
+					if ( dbl_value > 1e38 ) dbl_value = 1e38;
 					fprintf(fp, " %lg ] ] );\n", dbl_value);
 				}
 			}
