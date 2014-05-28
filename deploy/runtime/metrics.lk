@@ -2,6 +2,15 @@ function rescom_metrics()
 {
 	metric( 'lcoe_nom',{'label'='LCOE (Nominal)', 'post'=' \u00A2/kWh', 'mode'='f', 'deci'='2' } );
 	metric( 'lcoe_real',{'label'='LCOE (Real)', 'post'=' \u00A2/kWh', 'mode'='f', 'deci'='2' } );
+	metric( 'elec_cost_without_system',{'label'='Electricity Cost Without System', 'pre'='$', 'post'=' ', 'thousep'='true', 'mode'='f', 'deci'='2' } );
+	metric( 'elec_cost_with_system',{'label'='Electricity Cost With System', 'pre'='$', 'post'=' ', 'thousep'='true', 'mode'='f', 'deci'='2' } );
+	// where is the net savings metric?
+	metric( 'npv', {'label'='Net Present Value', 'mode'='f', 'deci'='2', 'thousep'='true', 'pre'='$', 'post'=' ' } );
+	metric( 'payback', {'label'='Payback Period', 'mode'='f', 'deci'='4', 'thousep'='true', 'post'=' years' } );
+	metric( 'capacity_factor', {'label'='Capacity Factor', 'mode'='f', 'deci'='1', 'thousep'='true', 'post'='%' } );
+	metric( 'kwh_per_kw', {'label'='First Year kWhAC/kWDC', 'mode'='f', 'deci'='0', 'thousep'='true' } );
+	metric( 'annual_performance_factor', {'label'='Performance Factor', 'mode'='f', 'deci'='2', 'post'='%' } );
+	// where is the total land area metric?
 }
 
 function ipp_metrics()
@@ -62,10 +71,10 @@ function aepf_metrics()
 	metric( 'flip_actual_year', {'label'='IRR Actual Year'} );
 	metric( 'flip_actual_irr', {'label'='IRR in Target Year', 'mode'='f', 'post'=' %', 'deci'='2' } );
 
-	metric( 'tax_investor_aftertax_irr', {'label'='After-tax tax investor IRR', 'mode'='f', 'post'=' %', 'deci'='2' } );
-	metric( 'tax_investor_aftertax_npv', {'label'='After-tax tax investor NPV', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
-	metric( 'sponsor_aftertax_irr', {'label'='After-tax developer IRR', 'mode'='f', 'post'=' %', 'deci'='2' } );
-	metric( 'sponsor_aftertax_npv', {'label'='After-tax developer NPV', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
+	metric( 'tax_investor_aftertax_irr', {'label'='After-tax Tax Investor IRR', 'mode'='f', 'post'=' %', 'deci'='2' } );
+	metric( 'tax_investor_aftertax_npv', {'label'='After-tax Tax Investor NPV', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
+	metric( 'sponsor_aftertax_irr', {'label'='After-tax Developer IRR', 'mode'='f', 'post'=' %', 'deci'='2' } );
+	metric( 'sponsor_aftertax_npv', {'label'='After-tax Developer NPV', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
 
 
 	metric( 'direct_cost', {'label'='Direct Cost', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
@@ -89,10 +98,10 @@ function lpf_metrics()
 	metric( 'flip_actual_year', {'label'='IRR Actual Year'} );
 	metric( 'flip_actual_irr', {'label'='IRR in Target Year', 'mode'='f', 'post'=' %', 'deci'='2' } );
 
-	metric( 'tax_investor_aftertax_irr', {'label'='After-tax tax investor IRR', 'mode'='f', 'post'=' %', 'deci'='2' } );
-	metric( 'tax_investor_aftertax_npv', {'label'='After-tax tax investor NPV', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
-	metric( 'sponsor_aftertax_irr', {'label'='After-tax developer IRR', 'mode'='f', 'post'=' %', 'deci'='2' } );
-	metric( 'sponsor_aftertax_npv', {'label'='After-tax developer NPV', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
+	metric( 'tax_investor_aftertax_irr', {'label'='After-tax Tax Investor IRR', 'mode'='f', 'post'=' %', 'deci'='2' } );
+	metric( 'tax_investor_aftertax_npv', {'label'='After-tax Tax Investor NPV', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
+	metric( 'sponsor_aftertax_irr', {'label'='After-tax Developer IRR', 'mode'='f', 'post'=' %', 'deci'='2' } );
+	metric( 'sponsor_aftertax_npv', {'label'='After-tax Developer NPV', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
 
 	metric( 'debt_fraction', {'label'='Debt Fraction', 'post'=' %', 'mode'='f', 'deci'='2' } );
 
@@ -119,10 +128,10 @@ function sl_metrics()
 	metric( 'flip_actual_year', {'label'='IRR Actual Year'} );
 	metric( 'flip_actual_irr', {'label'='IRR in Target Year', 'mode'='f', 'post'=' %', 'deci'='2' } );
 
-	metric( 'tax_investor_aftertax_irr', {'label'='After-tax tax investor IRR', 'mode'='f', 'post'=' %', 'deci'='2' } );
-	metric( 'tax_investor_aftertax_npv', {'label'='After-tax tax investor NPV', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
-	metric( 'sponsor_aftertax_irr', {'label'='After-tax developer IRR', 'mode'='f', 'post'=' %', 'deci'='2' } );
-	metric( 'sponsor_aftertax_npv', {'label'='After-tax developer NPV', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
+	metric( 'tax_investor_aftertax_irr', {'label'='After-tax Tax Investor IRR', 'mode'='f', 'post'=' %', 'deci'='2' } );
+	metric( 'tax_investor_aftertax_npv', {'label'='After-tax Tax Investor NPV', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
+	metric( 'sponsor_aftertax_irr', {'label'='After-tax Developer IRR', 'mode'='f', 'post'=' %', 'deci'='2' } );
+	metric( 'sponsor_aftertax_npv', {'label'='After-tax Developer NPV', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
 
 
 	metric( 'direct_cost', {'label'='Direct Cost', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
