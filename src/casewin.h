@@ -97,7 +97,6 @@ private:
 	wxSimplebook *m_pageFlipper;
 	ResultsViewer *m_baseCaseResults;
 	ParametricViewer *m_parametrics;
-	wxLKScriptCtrl *m_scriptCtrl;
 
 	PageNote *m_pageNote;
 	wxString m_lastPageNoteId;

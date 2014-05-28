@@ -13,13 +13,12 @@ CC = gcc
 CXX = g++
 CFLAGS = -g -DLK_USE_WXWIDGETS -I. -I$(SRCDIR) -I$(WEXDIR)/include -I$(LKDIR) -I$(SSCDIR) `wx-config-3 --cflags`
 CXXFLAGS = $(CFLAGS)
-LDFLAGS = `wx-config-3 --libs` `wx-config-3 --libs aui` `wx-config-3 --libs stc` -lm $(LKLIB) $(WEXLIB) -lstdc++ -lcurl
+LDFLAGS = `wx-config-3 --libs` `wx-config-3 --libs aui` `wx-config-3 --libs stc` `wx-config-3 --libs richtext` -lm $(LKLIB) $(WEXLIB) -lstdc++ -lcurl
 
 OBJECTS = ide.o \
 	reports.o \
 	graph.o \
 	excelexch.o \
-	defaultsmanager.o \
 	simulation.o \
 	library.o \
 	results.o \
@@ -37,6 +36,8 @@ OBJECTS = ide.o \
 	project.o \
 	object.o \
 	simplecurl.o \
+	variablegrid.o \
+	parametric.o \
 	welcome.o \
 	ptlayoutctrl.o \
 	troughloop.o \

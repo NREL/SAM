@@ -152,7 +152,7 @@ void ResultsCallbackContext::SetupLibraries( lk::env_t *env )
 
 enum { ID_CF_COPY = wxID_ANY , ID_CF_SAVECSV, ID_CF_SENDEXCEL, ID_CF_SENDEQNEXCEL };
 
-BEGIN_EVENT_TABLE( ResultsViewer, wxMetroNotebook )	
+BEGIN_EVENT_TABLE( ResultsViewer, wxNotebook )	
 	EVT_BUTTON(ID_CF_COPY, ResultsViewer::OnCommand)
 	EVT_BUTTON(ID_CF_SAVECSV, ResultsViewer::OnCommand)
 	EVT_BUTTON(ID_CF_SENDEXCEL, ResultsViewer::OnCommand)
@@ -161,23 +161,25 @@ END_EVENT_TABLE()
 
 
 ResultsViewer::ResultsViewer( wxWindow *parent, int id )
-	: wxMetroNotebook( parent, id, wxDefaultPosition, wxDefaultSize, wxMT_LIGHTTHEME ),
+	//: wxMetroNotebook( parent, id, wxDefaultPosition, wxDefaultSize, wxMT_LIGHTTHEME ),
+	: wxNotebook( parent, id, wxDefaultPosition, wxDefaultSize ),
 	 m_sim( 0 )
 {
 	m_summaryLayout = new wxSnapLayout( this, wxID_ANY );
 	AddPage( m_summaryLayout, "Summary", true );
-
 	m_metricsTable = new MetricsTable( m_summaryLayout );
 	matrix_t<wxString> data( 1, 2 );
 	data.at(0,0) = "Metric"; data.at(0,1) = "Value";
 	m_metricsTable->SetData( data );	
 	m_summaryLayout->Add( m_metricsTable );
-	
+
+
 	m_graphViewer = new GraphViewer( this );
 	AddPage( m_graphViewer, "Graphs" );
 
 	m_tables = new TabularBrowser( this );
 	AddPage( m_tables, "Data" );
+	
 	
 	wxPanel *cf_panel = new wxPanel( this );
 	AddPage( cf_panel, "Cash flow" );
@@ -204,7 +206,7 @@ ResultsViewer::ResultsViewer( wxWindow *parent, int id )
 	cf_sizer->Add( cf_tools, 0, wxALL|wxEXPAND, 2 );
 	cf_sizer->Add( m_cashFlowTable, 1, wxALL|wxEXPAND, 0 );
 	cf_panel->SetSizer(cf_sizer);
-	
+
 	m_hourlySeries = new wxDVTimeSeriesCtrl( this, wxID_ANY,  HOURLY_TIME_SERIES, AVERAGE );
 	AddPage( m_hourlySeries, "Hourly" );
 
@@ -228,7 +230,6 @@ ResultsViewer::ResultsViewer( wxWindow *parent, int id )
 	
 	m_durationCurve = new wxDVDCCtrl( this, wxID_ANY );
 	AddPage( m_durationCurve, "Duration curve" );
-
 }
 
 ResultsViewer::~ResultsViewer()
@@ -431,9 +432,9 @@ void ResultsViewer::Setup( Simulation *sim )
 	m_tables->Setup( m_sim );
 
 	// build cashflow
+	
 	m_cashFlowTable->Freeze();
 	m_cashFlowTable->ClearGrid();
-
 	
 	m_cashflow.clear();
 	if ( lk::node_t *cfcb = SamApp::GlobalCallbacks().Lookup( "cashflow", cfg->Financing ))
@@ -519,7 +520,7 @@ void ResultsViewer::AddDataSet(wxDVTimeSeriesDataSet *d, const wxString& group, 
 {
 	//Take ownership of the data Set.  We will delete it on destruction.
 	m_tsDataSets.push_back(d);
-
+	
 	m_hourlySeries->AddDataSet(d, group, update_ui);
 	m_dailySeries->AddDataSet(d, group, update_ui);
 	m_monthlySeries->AddDataSet(d, group, update_ui);
@@ -756,7 +757,7 @@ void ResultsViewer::RemoveAllDataSets()
 	m_pnCdf->RemoveAllDataSets();
 	m_durationCurve->RemoveAllDataSets();
 	m_scatterPlot->RemoveAllDataSets();
-
+	
 	for (int i=0; i<m_tsDataSets.size(); i++)
 		delete m_tsDataSets[i];
 
