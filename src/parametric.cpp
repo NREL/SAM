@@ -139,7 +139,7 @@ ParametricViewer::ParametricViewer( wxWindow *parent, Case *cc )
 	wxBoxSizer *par_sizer = new wxBoxSizer( wxHORIZONTAL );
 	par_sizer->Add( new wxButton( this, ID_CONFIGURE, "Configure..."), 0, wxALL|wxEXPAND, 2 );
 	par_sizer->Add(new wxStaticText(this, wxID_ANY, "   Number of Runs:"), 0, wxALIGN_CENTER_VERTICAL, 2);
-	m_num_runs_ctrl = new wxNumericCtrl(this, ID_NUMRUNS, 5, wxNumericCtrl::INTEGER, wxDefaultPosition, wxSize(50, 24));
+	m_num_runs_ctrl = new wxNumericCtrl(this, ID_NUMRUNS, 0, wxNumericCtrl::INTEGER, wxDefaultPosition, wxSize(50, 24));
 	par_sizer->Add(m_num_runs_ctrl, 0, wxALL, 2);
 	par_sizer->AddStretchSpacer();
 	par_sizer->Add(new wxButton(this, ID_RUN, "Run parametric simulation"), 0, wxALL | wxEXPAND, 2);
@@ -197,7 +197,7 @@ ParametricViewer::ParametricViewer( wxWindow *parent, Case *cc )
 	m_grid = new wxExtGridCtrl(this, wxID_ANY);
 	m_grid_data = new ParametricGridData(m_case);
 	m_grid->SetTable(m_grid_data);
-
+	m_num_runs_ctrl->SetValue(m_grid_data->GetNumberRows());
 //	for (size_t i = 0; i < m_par.Setup.size(); i++)
 //		m_var_names.push_back(m_par.Setup[i].Name);
 
@@ -207,6 +207,8 @@ ParametricViewer::ParametricViewer( wxWindow *parent, Case *cc )
 //	par_vsizer->Add( par_plot, 1, wxALL|wxEXPAND, 0 );
 
 	SetSizer( par_vsizer );
+
+//	UpdateGrid();
 }
 
 
@@ -314,11 +316,6 @@ void ParametricViewer::Configure()
 	{
 		m_var_names = dlg.GetCheckedNames();
 		m_grid_data->Configure(m_var_names);
-		// update all m_par values
-		// add
-//			m_par.RemoveSetup(to_remove[i]);
-		// TODO - conditionally call
-	//	UpdateNumRuns();
 	}
 }
 
@@ -336,9 +333,9 @@ void ParametricViewer::UpdateGrid()
 // m_par contains list of inputs and outputs
 ParametricGridData::ParametricGridData(Case *cc) :m_case(cc), m_par(cc->Parametric())
 {
-	Init();
 	m_rows = 0;
 	m_cols = 0;
+	Init();
 }
 
 void ParametricGridData::Init()
