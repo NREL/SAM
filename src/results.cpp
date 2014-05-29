@@ -152,7 +152,7 @@ void ResultsCallbackContext::SetupLibraries( lk::env_t *env )
 
 enum { ID_CF_COPY = wxID_ANY , ID_CF_SAVECSV, ID_CF_SENDEXCEL, ID_CF_SENDEQNEXCEL };
 
-BEGIN_EVENT_TABLE( ResultsViewer, wxNotebook )	
+BEGIN_EVENT_TABLE( ResultsViewer, wxMetroNotebook )	
 	EVT_BUTTON(ID_CF_COPY, ResultsViewer::OnCommand)
 	EVT_BUTTON(ID_CF_SAVECSV, ResultsViewer::OnCommand)
 	EVT_BUTTON(ID_CF_SENDEXCEL, ResultsViewer::OnCommand)
@@ -161,8 +161,8 @@ END_EVENT_TABLE()
 
 
 ResultsViewer::ResultsViewer( wxWindow *parent, int id )
-	//: wxMetroNotebook( parent, id, wxDefaultPosition, wxDefaultSize, wxMT_LIGHTTHEME ),
-	: wxNotebook( parent, id, wxDefaultPosition, wxDefaultSize ),
+	: wxMetroNotebook( parent, id, wxDefaultPosition, wxDefaultSize, wxMT_LIGHTTHEME ),
+	//: wxNotebook( parent, id, wxDefaultPosition, wxDefaultSize ),
 	 m_sim( 0 )
 {
 	m_summaryLayout = new wxSnapLayout( this, wxID_ANY );
