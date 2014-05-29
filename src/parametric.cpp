@@ -134,7 +134,7 @@ END_EVENT_TABLE()
 
 
 ParametricViewer::ParametricViewer( wxWindow *parent, Case *cc )
-	: wxPanel( parent, wxID_ANY ), m_case( cc )//, m_par( cc->Parametric() ) 
+	: wxPanel( parent, wxID_ANY ), m_case( cc )
 {
 	wxBoxSizer *par_sizer = new wxBoxSizer( wxHORIZONTAL );
 	par_sizer->Add( new wxButton( this, ID_CONFIGURE, "Configure..."), 0, wxALL|wxEXPAND, 2 );
@@ -146,69 +146,18 @@ ParametricViewer::ParametricViewer( wxWindow *parent, Case *cc )
 	par_sizer->Add(new wxButton(this, ID_CLEAR, "Clear results"), 0, wxALL | wxEXPAND, 2);
 	
 
-	/* Mock-up
-	wxExtGridCtrl *par_grid = new wxExtGridCtrl( this, wxID_ANY );
-	par_grid->CreateGrid( 7, 4 );
-
-	wxString grid[8][5]= {
-		{ "Tilt", "Input 2", "LCOEreal", "AnnOutput", "NPV" },
-		{ "10", "1", "1",   "1", "-4" },
-		{ "15", "2", "3.1", "2", "-3" },
-		{ "20", "3", "4.1", "3", "-2" },
-		{ "25", "4", "3.1", "4", "-1" },
-		{ "30", "5", "2.1", "5", "-2" },
-		{ "35", "6", "1.1", "6", "-3" },
-		{ "40", "7", "1.1", "7", "-4" } };
-
-	for( size_t r=1;r<8;r++ )
-	{
-		for( size_t c=1;c<5;c++ )
-		{
-			if ( r == 1 ) par_grid->SetColLabelValue( c-1, grid[0][c-1] );
-			par_grid->SetCellValue( grid[r][c], r-1, c-1 );
-			if ( c <= 2 ) par_grid->SetCellBackgroundColour( wxColour(244,244,210), r-1, c-1 );
-		}
-	}
-	par_grid->AutoSizeColumns();
-
-	wxPLPlotCtrl *par_plot = new wxPLPlotCtrl( this, wxID_ANY );
-	std::vector<wxRealPoint> bar_data;
-	bar_data.push_back( wxRealPoint( 1, 3 ) );
-	bar_data.push_back( wxRealPoint( 2, 2.9 ) );
-	bar_data.push_back( wxRealPoint( 3, 3.2 ) );
-	bar_data.push_back( wxRealPoint( 4, 3.7 ) );
-	bar_data.push_back( wxRealPoint+( 5, 2.2 ) );
-	bar_data.push_back( wxRealPoint( 6, 1.7 ) );
-	wxPLBarPlot *bar0, *bar1;
-	par_plot->AddPlot( bar0 = new wxPLBarPlot( bar_data, "Var2 run^0", wxMetroTheme::Colour( wxMT_ACCENT ) ) );
-	for( size_t i=0;i<bar_data.size();i++ ) bar_data[i].y *= 0.7 + ((double)i)/5;
-	par_plot->AddPlot( bar1 = new wxPLBarPlot( bar_data, "Var1 run^0", wxMetroTheme::Colour( wxMT_FOREGROUND ) ) );
-	par_plot->GetXAxis1()->SetWorld( 0, 7 );
-	par_plot->GetYAxis1()->SetWorld( 0, 5 );
-	std::vector<wxPLBarPlot*> bar_group;
-	bar_group.push_back( bar0 );
-	bar_group.push_back( bar1 );
-	bar0->SetGroup( bar_group );
-	bar1->SetGroup( bar_group );
-	bar0->SetThickness( 30 );
-	bar1->SetThickness( 30 );
-	*/
-
 	m_grid = new wxExtGridCtrl(this, wxID_ANY);
 	m_grid_data = new ParametricGridData(m_case);
 	m_grid->SetTable(m_grid_data);
 	m_num_runs_ctrl->SetValue(m_grid_data->GetNumberRows());
-//	for (size_t i = 0; i < m_par.Setup.size(); i++)
-//		m_var_names.push_back(m_par.Setup[i].Name);
+	m_var_names = m_grid_data->GetVarNames();
 
 	wxBoxSizer *par_vsizer = new wxBoxSizer( wxVERTICAL );
 	par_vsizer->Add( par_sizer, 0, wxALL|wxEXPAND, 2 );
 	par_vsizer->Add( m_grid, 1, wxALL|wxEXPAND, 0 );
-//	par_vsizer->Add( par_plot, 1, wxALL|wxEXPAND, 0 );
 
 	SetSizer( par_vsizer );
-
-//	UpdateGrid();
+	UpdateGrid();
 }
 
 
@@ -239,17 +188,6 @@ void ParametricViewer::UpdateNumRuns()
 {
 	// update number of runs - here and when number of runs change
 	m_grid_data->UpdateNumberRows(m_num_runs_ctrl->AsInteger());
-	/*
-	bool change_num_runs = (m_par.Runs.size() != m_num_runs_ctrl->AsInteger());
-	if (change_num_runs)
-	{
-		m_par.ClearRuns();
-		for (int num_run = 0; num_run < m_num_runs_ctrl->AsInteger(); num_run++)
-		{
-			m_par.Runs.push_back(new Simulation(m_case, wxString::Format("Run %d", num_run)));
-		}
-	}
-	*/
 }
 
 void ParametricViewer::RunSimulations()
@@ -260,8 +198,8 @@ void ParametricViewer::RunSimulations()
 
 void ParametricViewer::ClearResults()
 {
-//	m_par.ClearRuns();
-//	UpdateNumRuns();
+	// TODO - verify this is what we want
+	m_grid_data->ClearResults();
 }
 
 void ParametricViewer::Configure()
@@ -287,6 +225,9 @@ void ParametricViewer::Configure()
 	{
 		wxString name = it->first;
 		VarInfo &vi = *(it->second);
+
+		// skip calculated and indicator values
+		if (vi.Flags & VF_CALCULATED || vi.Flags & VF_INDICATOR) continue;
 
 		wxString label = vi.Label;
 		if (!label.IsEmpty())
@@ -322,9 +263,18 @@ void ParametricViewer::Configure()
 void ParametricViewer::UpdateGrid()
 {
 	// update grid data with m_par updates from configure and number of runs
-//	m_grid_data->Init();
 	m_grid->SetTable(m_grid_data);
 	m_grid->ForceRefresh();
+	for (int col = 0; col < m_grid_data->GetNumberCols(); col++)
+	{
+		for (int row = 0; row < m_grid_data->GetNumberRows(); row++)
+		{
+			if (m_grid_data->IsInput(col))
+				m_grid->SetReadOnly(row, col, false);
+			else
+				m_grid->SetReadOnly(row, col, true);
+		}
+	}
 }
 
 
@@ -741,6 +691,12 @@ void ParametricGridData::UpdateNumberRows(int rows)
 	}
 }
 
+wxArrayString ParametricGridData::GetVarNames()
+{
+	return m_var_names;
+}
+
+/* does nothing ? */
 void ParametricGridData::UpdateView()
 {
 	if (GetView())
@@ -839,5 +795,11 @@ void ParametricGridData::Configure(wxArrayString &var_names)
 
 void ParametricGridData::ClearResults(int row)
 {
-
+	for (int col = 0; col < m_cols; col++)
+	{
+		if (!IsInput(col))
+		{
+			m_par.Setup[col].Values.clear();
+		}
+	}
 }
