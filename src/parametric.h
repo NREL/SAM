@@ -68,6 +68,8 @@ public:
 	void SetVarValue(int row, int col, VarValue *vv);
 	void Init();
 
+	wxArrayString GetVarNames();
+
 	void AddSetup(ParametricData::Var &var);
 	void DeleteSetup(wxString &var_name);
 	void UpdateNumberRows(int rows);
