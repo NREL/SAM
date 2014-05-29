@@ -73,7 +73,7 @@ public:
 	void UpdateNumberRows(int rows);
 	bool RunSimulations(int row = -1);
 	void ClearResults(int row = -1);
-
+	void Configure(wxArrayString &var_names);
 	void UpdateView();
 
 private:
@@ -106,7 +106,7 @@ private:
 	wxNumericCtrl *m_num_runs_ctrl;
 
 	Case *m_case;
-	ParametricData &m_par;
+//	ParametricData &m_par;
 	wxArrayString m_var_names;
 
 	DECLARE_EVENT_TABLE();
