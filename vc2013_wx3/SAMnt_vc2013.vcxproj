@@ -41,6 +41,7 @@
     <ClCompile Include="..\src\object.cpp" />
     <ClCompile Include="..\src\project.cpp" />
     <ClCompile Include="..\src\ptlayoutctrl.cpp" />
+    <ClCompile Include="..\src\script.cpp" />
     <ClCompile Include="..\src\shadingfactors.cpp" />
     <ClCompile Include="..\src\simplecurl.cpp" />
     <ClCompile Include="..\src\simulation.cpp" />
@@ -71,6 +72,7 @@
     <ClInclude Include="..\src\object.h" />
     <ClInclude Include="..\src\project.h" />
     <ClInclude Include="..\src\ptlayoutctrl.h" />
+    <ClInclude Include="..\src\script.h" />
     <ClInclude Include="..\src\shadingfactors.h" />
     <ClInclude Include="..\src\simplecurl.h" />
     <ClInclude Include="..\src\simulation.h" />
