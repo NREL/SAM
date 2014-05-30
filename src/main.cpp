@@ -39,6 +39,7 @@
 #include "library.h"
 #include "uiobjects.h"
 #include "variablegrid.h"
+#include "script.h"
 
 // application globals
 static wxArrayString g_appArgs;
@@ -840,7 +841,14 @@ void MainWindow::OnCaseMenu( wxCommandEvent &evt )
 
 void MainWindow::OnClose( wxCloseEvent &evt )
 {
+	Raise();
 	if ( !CloseProject() )
+	{
+		evt.Veto();
+		return;
+	}
+
+	if ( !ScriptWindow::CloseAll() )
 	{
 		evt.Veto();
 		return;

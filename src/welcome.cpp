@@ -21,10 +21,12 @@
 #include "../resource/nrel.cpng"
 
 #include "main.h"
+#include "script.h"
 #include "welcome.h"
 
 enum { ID_CREATE_PROJECT=wxID_HIGHEST+556, ID_OPEN_EXISTING, ID_RECENT_FILES,
-	ID_MESSAGES_HTML, ID_MESSAGE_THREAD, ID_USAGE_THREAD, ID_DOWNLOAD_TIMER };
+	ID_MESSAGES_HTML, ID_MESSAGE_THREAD, ID_USAGE_THREAD, ID_DOWNLOAD_TIMER,
+ID_NEW_SCRIPT, ID_OPEN_SCRIPT };
 
 BEGIN_EVENT_TABLE(WelcomeScreen, wxPanel)
 	EVT_PAINT(WelcomeScreen::OnPaint)
@@ -32,6 +34,9 @@ BEGIN_EVENT_TABLE(WelcomeScreen, wxPanel)
 	
 	EVT_BUTTON( ID_CREATE_PROJECT, WelcomeScreen::OnCommand )
 	EVT_BUTTON( ID_OPEN_EXISTING, WelcomeScreen::OnCommand )
+	EVT_BUTTON( ID_NEW_SCRIPT, WelcomeScreen::OnCommand )
+	EVT_BUTTON( ID_OPEN_SCRIPT, WelcomeScreen::OnCommand )
+
 	EVT_LISTBOX_DCLICK( ID_RECENT_FILES, WelcomeScreen::OnCommand )
 	
 	EVT_HTML_LINK_CLICKED( ID_MESSAGES_HTML, WelcomeScreen::OnMessagesLinkClicked )
@@ -66,8 +71,11 @@ WelcomeScreen::WelcomeScreen(wxWindow *parent)
 		wxPoint(459,51), wxSize(208,21), wxMB_RIGHTARROW);
 	m_createCase->SetFont( wxMetroTheme::Font( wxMT_NORMAL, 14) );
 
-	m_openExisting = new wxMetroButton( this, ID_OPEN_EXISTING, "Open an existing file", wxNullBitmap );
+	m_openExisting = new wxMetroButton( this, ID_OPEN_EXISTING, "Open an project file", wxNullBitmap );
 	m_openExisting->SetFont( wxMetroTheme::Font( wxMT_NORMAL, 14) );
+
+	m_openScript = new wxMetroButton( this, ID_OPEN_SCRIPT, "Open script" );
+	m_newScript = new wxMetroButton( this, ID_NEW_SCRIPT, "New script" );
 	
 	
 	m_recent = new wxMetroListBox(this, ID_RECENT_FILES, wxPoint(15,327), wxSize(650,150) );
@@ -195,6 +203,12 @@ void WelcomeScreen::LayoutWidgets()
 	size2.y+=5;
 	m_createCase->SetSize( BORDER, top, LEFTWIDTH, size2.GetHeight()  );
 	m_openExisting->SetSize( BORDER, top+size2.GetHeight(), LEFTWIDTH, size2.GetHeight() );
+
+	int y = top+size2.GetHeight()*2;
+
+	wxSize size3 = m_newScript->GetBestSize();
+	m_newScript->SetSize( BORDER, y, LEFTWIDTH/2, size3.GetHeight() );
+	m_openScript->SetSize( BORDER + LEFTWIDTH/2, y, LEFTWIDTH/2, size3.GetHeight() );
 }
 
 void WelcomeScreen::OnPaint(wxPaintEvent &)
@@ -247,6 +261,12 @@ void WelcomeScreen::OnCommand( wxCommandEvent &evt )
 {
 	switch( evt.GetId() )
 	{
+	case ID_NEW_SCRIPT:
+		ScriptWindow::CreateNewWindow();
+		break;
+	case ID_OPEN_SCRIPT:
+		ScriptWindow::OpenFiles();
+		break;
 	case ID_CREATE_PROJECT:
 		SamApp::Window()->CreateProject();
 		break;
