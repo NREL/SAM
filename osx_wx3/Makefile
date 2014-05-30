@@ -17,6 +17,7 @@ LDFLAGS = `wx-config-3 --libs` `wx-config-3 --libs aui` `wx-config-3 --libs stc`
 
 OBJECTS = ide.o \
 	reports.o \
+	script.o \
 	graph.o \
 	excelexch.o \
 	simulation.o \

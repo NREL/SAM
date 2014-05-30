@@ -98,6 +98,9 @@
     <ClInclude Include="..\src\parametric.h">
       <Filter>Source</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\script.h">
+      <Filter>Source</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\welcome.cpp">
@@ -182,6 +185,9 @@
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="..\src\parametric.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\script.cpp">
       <Filter>Source</Filter>
     </ClCompile>
   </ItemGroup>
