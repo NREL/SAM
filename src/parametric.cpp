@@ -7,6 +7,7 @@
 #include <wex/extgrid.h>
 #include <wex/utils.h>
 
+#include "variablegrid.h"
 #include "parametric.h"
 #include "main.h"
 #include "casewin.h"
@@ -144,20 +145,25 @@ END_EVENT_TABLE()
 
 
 
-ParametricViewer::ParametricViewer( wxWindow *parent, Case *cc )
-	: wxPanel( parent, wxID_ANY ), m_case( cc )
+ParametricViewer::ParametricViewer(wxWindow *parent, Case *cc)
+: wxPanel(parent, wxID_ANY), m_case(cc)
 {
-	wxBoxSizer *par_sizer = new wxBoxSizer( wxHORIZONTAL );
-	par_sizer->Add( new wxButton( this, ID_CONFIGURE, "Configure..."), 0, wxALL|wxEXPAND, 2 );
+	wxBoxSizer *par_sizer = new wxBoxSizer(wxHORIZONTAL);
+	par_sizer->Add(new wxButton(this, ID_CONFIGURE, "Configure..."), 0, wxALL | wxEXPAND, 2);
 	par_sizer->Add(new wxStaticText(this, wxID_ANY, "   Number of Runs:"), 0, wxALIGN_CENTER_VERTICAL, 2);
 	m_num_runs_ctrl = new wxNumericCtrl(this, ID_NUMRUNS, 0, wxNumericCtrl::INTEGER, wxDefaultPosition, wxSize(50, 24));
 	par_sizer->Add(m_num_runs_ctrl, 0, wxALL, 2);
 	par_sizer->AddStretchSpacer();
 	par_sizer->Add(new wxButton(this, ID_RUN, "Run parametric simulation"), 0, wxALL | wxEXPAND, 2);
 	par_sizer->Add(new wxButton(this, ID_CLEAR, "Clear results"), 0, wxALL | wxEXPAND, 2);
-	
+
 
 	m_grid = new wxExtGridCtrl(this, wxID_ANY);
+
+	m_grid->RegisterDataType("GridCellCheckBox", new GridCellCheckBoxRenderer, new GridCellCheckBoxEditor);
+	m_grid->RegisterDataType("GridCellChoice", new GridCellChoiceRenderer, new GridCellChoiceEditor);
+	m_grid->RegisterDataType("GridCellVarValue", new GridCellVarValueRenderer, new GridCellVarValueEditor);
+
 	m_grid_data = new ParametricGridData(m_case);
 	m_grid->SetTable(m_grid_data);
 	m_num_runs_ctrl->SetValue(m_grid_data->GetNumberRows());
@@ -286,6 +292,19 @@ void ParametricViewer::UpdateGrid()
 				m_grid->SetReadOnly(row, col, true);
 		}
 	}
+	// update choices as necessary
+	for (int row = 0; row < m_grid->GetNumberRows(); row++)
+	{
+		for (int col = 0; col < m_grid->GetNumberCols(); col++)
+		{
+			if (m_grid_data->GetTypeName(row, col) == "GridCellChoice")
+			{
+				m_grid->SetCellRenderer(row, col, new GridCellChoiceRenderer(m_grid_data->GetChoices(row, col)));
+				m_grid->SetCellEditor(row, col, new GridCellChoiceEditor(m_grid_data->GetChoices(row, col)));
+			}
+		}
+	}
+
 }
 
 
@@ -474,8 +493,7 @@ void ParametricGridData::SetValue(int row, int col, const wxString& value)
 			VarValue *vv = &m_par.Setup[col].Values[row];
 			VarValue::Parse(vv->Type(), value, *vv);
 			// set for simulation
-			if (VarValue *vvp = m_par.Runs[row]->GetInput(m_var_names[col]))
-				vvp = vv;
+			m_par.Runs[row]->Override(m_var_names[col], *vv);
 		}
 	}
 }
@@ -725,6 +743,7 @@ bool ParametricGridData::RunSimulations(int row)
 		// base case copied whenever number rows updated
 		// update all input values with setValue varValues - does not update
 		// TODO - update simulation inputs - check if updated properly.
+		/* use ovverride in SetValue
 		for (size_t irow = 0; irow < m_par.Runs.size(); irow++)
 		{
 			for (int col = 0; col < m_var_names.Count(); col++)
@@ -735,6 +754,7 @@ bool ParametricGridData::RunSimulations(int row)
 				// update with current value from grid
 			}
 		}
+		*/
 		// Excel exchange if necessary
 		ExcelExchange &ex = m_case->ExcelExch();
 		if (ex.Enabled)
