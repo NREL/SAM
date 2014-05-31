@@ -1535,12 +1535,10 @@ VariableGridFrame::VariableGridFrame(wxWindow *parent, ProjectFile *pf, Case *c)
 		m_grid = new VariableGrid(this, wxID_ANY);
 
 		m_grid->RegisterDataType("GridCellCheckBox", new GridCellCheckBoxRenderer, new GridCellCheckBoxEditor);
-		m_grid->HideRowLabels();
 		m_grid->RegisterDataType("GridCellChoice", new GridCellChoiceRenderer, new GridCellChoiceEditor);
-		m_grid->HideRowLabels();
 		m_grid->RegisterDataType("GridCellVarValue", new GridCellVarValueRenderer, new GridCellVarValueEditor);
-		m_grid->HideRowLabels();
 
+		m_grid->HideRowLabels();
 
 		m_grid->SetTable(m_griddata, true, wxGrid::wxGridSelectRows);
 
