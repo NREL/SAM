@@ -22,6 +22,17 @@ ParametricData::~ParametricData()
 	ClearRuns();
 }
 
+void ParametricData::Copy(ParametricData &rhs)
+{
+	ClearRuns();
+	Setup = rhs.Setup;
+	for (size_t i = 0; i < rhs.Runs.size(); i++)
+	{
+		Simulation *s = new Simulation(m_case, rhs.Runs[i]->GetName());
+		Runs.push_back(s);
+	}
+}
+
 void ParametricData::ClearRuns()
 {
 	for( size_t i=0;i<Runs.size();i++ )
@@ -712,7 +723,7 @@ bool ParametricGridData::RunSimulations(int row)
 	for (size_t i = 0; i < m_par.Runs.size(); i++)
 	{
 		// base case copied whenever number rows updated
-		// update all input values with setValue varValues
+		// update all input values with setValue varValues - does not update
 		// TODO - update simulation inputs - check if updated properly.
 		for (size_t irow = 0; irow < m_par.Runs.size(); irow++)
 		{
