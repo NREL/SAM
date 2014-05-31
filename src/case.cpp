@@ -223,6 +223,7 @@ bool Case::Copy( Object *obj )
 		m_baseCase.Copy( rhs->m_baseCase );
 		m_properties = rhs->m_properties;
 		m_notes = rhs->m_notes;
+		m_parametric.Copy(rhs->m_parametric);
 		
 		m_config = 0;
 		if ( rhs->m_config )

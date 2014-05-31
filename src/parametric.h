@@ -19,6 +19,7 @@ public:
 	~ParametricData();
 
 	void ClearRuns();
+	void Copy(ParametricData &rhs);
 
 	struct Var {
 		wxString Name;
