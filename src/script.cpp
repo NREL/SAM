@@ -5,8 +5,181 @@
 #include <wex/lkscript.h>
 #include <wex/metro.h>
 
+#include "casewin.h"
 #include "main.h"
+#include "invoke.h"
 #include "script.h"
+
+static void fcall_open_project( lk::invoke_t &cxt )
+{
+	LK_DOC( "open_project", "Open a SAM project file.", "(string:file):boolean" );
+
+	if ( !SamApp::Window()->CloseProject() ) cxt.result().assign( 0.0 );
+	else cxt.result().assign( SamApp::Window()->LoadProject( cxt.arg(0).as_string() ) ? 1.0 : 0.0 );
+}
+
+static void fcall_close_project( lk::invoke_t &cxt )
+{
+	LK_DOC( "close_project", "Closes the current SAM project, if one is open.", "(none):boolean" );
+	cxt.result().assign( SamApp::Window()->CloseProject() ? 1.0 : 0.0 );
+}
+
+static void fcall_save_project( lk::invoke_t &cxt )
+{
+	LK_DOC( "save_project", "Saves the current SAM project to disk.", "(string:file):boolean" );
+	cxt.result().assign( SamApp::Window()->SaveProject( cxt.arg(0).as_string() ) ? 1.0 : 0.0 );
+}
+
+static void fcall_project_file( lk::invoke_t &cxt )
+{
+	LK_DOC( "project_file", "Returns the file name of the current project.", "(none):string" );
+	cxt.result().assign( SamApp::Window()->GetProjectFileName() );
+}
+
+static void fcall_list_cases( lk::invoke_t &cxt )
+{
+	LK_DOC( "list_cases", "Return a list of the case names in the current project.", "(none):array" );
+	cxt.result().empty_vector();
+	wxArrayString names = SamApp::Window()->Project().GetCaseNames();
+	for( size_t i=0;i<names.size();i++ )
+		cxt.result().vec_append( names[i] );
+}
+
+static wxString gs_curCaseName;
+static Case *CurrentCase() { return SamApp::Window()->Project().GetCase( gs_curCaseName ); }
+
+static void fcall_active_case( lk::invoke_t &cxt )
+{
+	LK_DOC( "active_case", "Sets the currently active case, or returns its name.", "([string:case name]):variant" );
+	if (cxt.arg_count() == 0 )
+		cxt.result().assign( SamApp::Window()->Project().GetCaseName( CurrentCase() ) );
+	else
+	{
+		if ( SamApp::Window()->Project().GetCase( cxt.arg(0).as_string() ) != 0 )
+		{
+			gs_curCaseName = cxt.arg(0).as_string();
+			cxt.result().assign( 1.0 );
+		}
+		else
+			cxt.result().assign( 0.0 );
+	}
+}
+
+static void fcall_set( lk::invoke_t &cxt )
+{
+	LK_DOC( "set", "Set an input variable's value.", "(string:name, variant:value):boolean" );
+	cxt.result().assign( 0.0 );
+	wxString name = cxt.arg(0).as_string();
+	if ( Case *c = CurrentCase() )
+	{
+		if ( VarValue *vv = c->Values().Get( name ) )
+		{
+			bool ok = vv->Read( cxt.arg(1) );
+			c->VariableChanged( name );		
+			cxt.result().assign( ok ? 1.0 : 0.0 );
+		}
+	}
+}
+
+static void fcall_get( lk::invoke_t &cxt )
+{
+	LK_DOC("get", "Get an output or input variable's value.", "(string:name):variant" );
+	if ( Case *c = CurrentCase() )
+	{
+		wxString name = cxt.arg(0).as_string();
+		if ( VarValue *vv = c->BaseCase().GetOutput( name ) )
+			vv->Write( cxt.result() );
+		else if ( VarValue *vv = c->Values().Get( name ) )
+			vv->Write( cxt.result() );
+	}
+}
+
+static void fcall_simulate( lk::invoke_t &cxt )
+{
+	LK_DOC("simulate", "Run the base case simulation for the currently active case.", "(none):boolean" );
+	if ( Case *c = CurrentCase() )
+		if ( CaseWindow *cw = SamApp::Window()->GetCaseWindow( c ) )
+			cxt.result().assign( cw->RunBaseCase() ? 1.0 : 0.0 );
+}
+
+/* 
+	pptab->Add( CurrentCaseName, "CurrentCaseName", 0, "Returns the currently selected case's name.", "( NONE ):STRING");
+	pptab->Add( RerunCase, "RerunCase", 1, "Resimulates all setups for the specified case.", "( STRING:Case name ):BOOLEAN");
+	pptab->Add( OverwriteDefaults, "OverwriteDefaults", 1, "Overwrites the existing defaults file with the current case inputs for the specified case.", "( STRING:Case name ):BOOLEAN");
+
+	tab->Add( ResetOutputSource, "ResetOutputSource", -1, "Resets the output data source to default BASE case, or changes it to a different simulation and run number.", "( NONE or STRING:Simulation name, INTEGER:Run number ):NONE");
+	tab->Add( ClearSimResults, "ClearSimResults", 1, "Clears all results for the specific simulation name.", "( STRING:Simulation name ):NONE");
+	tab->Add( SwitchToCase, "SwitchToCase", 0, "Switches to the active case tab in the interface.", "( NONE ):NONE");
+	tab->Add( ChangeConfig, "ChangeConfig", 2, "Changes the current case's configuration. Application must be '*'.", "( STRING:Technology, STRING:Financing ):BOOLEAN");
+	tab->Add( ListCases, "ListCases", 0, "Lists all the cases in the project.", "( NONE ):ARRAY");
+	tab->Add( SamDir, "SamDir", 0, "Returns the SAM installation folder on the local computer.", "( NONE ):STRING");
+	tab->Add( MPSimulate, "MPSimulate", 2, "Runs many simulations using multiple processors.", "( STRING:Simulation name, ARRAY[ARRAY]:Variable name/value table NRUNS+1 x NVARS with top row having var names ):BOOLEAN" );
+	tab->Add( WriteResults, "WriteResults", 2, "Write a comma-separated-value file, with each column specified by a string of comma-separated output names.", "( STRING:File name, STRING:Comma-separated output variable names):BOOLEAN");
+	tab->Add( ClearResults, "ClearResults", 0, "Clear the active case's results from memory.", "( NONE ):NONE");
+	tab->Add( ClearCache, "ClearCache", 0, "Clear the memory cache of previously run simulations.", "( NONE ):NONE");
+	tab->Add( DeleteTempFiles, "DeleteTempFiles", 0, "Delete any lingering simulation temporary files.", "( NONE ):NONE");
+	tab->Add( SetTimestep, "SetTimestep", 1, "Sets the TRNSYS timestep for the active case.", "( STRING:Timestep with units ):NONE");
+	tab->Add( ReloadDefaults, "ReloadDefaults", 0, "Reloads all default values for the active case.", "( NONE ):NONE");
+	tab->Add( ListTechnologies, "ListTechnologies", 0, "Returns an array of all the technologies in SAM.", "( NONE ):ARRAY");
+	tab->Add( ListFinancing, "ListFinancing", 1, "Lists all financing options in SAM for a given technology.", "( STRING:Technology ):ARRAY");
+	tab->Add( TechnologyType, "TechnologyType", 0, "Returns the active case technology type.", "( NONE ):STRING");
+	tab->Add( FinancingType, "FinancingType", 0, "Returns the active case financing type.", "( NONE ):STRING");
+	tab->Add( ActiveVariables, "ActiveVariables", -1, "List all active variables for the current case or technology/market name.", "( [STRING:Technology, STRING:Financing] ):ARRAY");
+	tab->Add( FlDensity, "FluidDensity", 2, "Returns density at temperature Tc for a given fluid number (pressure assumed 1Pa).", "( INTEGER:Fluid number, DOUBLE:Temp 'C ):DOUBLE");
+	tab->Add( FlSpecificHeat, "FluidSpecificHeat", 2, "Returns specific heat at temperature Tc for a given fluid number (pressure assumed 1Pa).", "( INTEGER:Fluid number, DOUBLE:Temp 'C ):DOUBLE");
+	tab->Add( FlName, "FluidName", 1, "Returns fluid name for a given fluid number.", "( INTEGER:Fluid number ):STRING");
+	tab->Add( PtOptimize, "PtOptimize", 0, "Optimizes the power tower heliostat field, tower height, receiver height, and receiver diameter.  Returns whether the optimization succeeded.", "( NONE ):BOOLEAN");
+	tab->Add( PtGetOutput, "PtGetOutput", 0, "Returns any output or error messages from the PTGen solar field optimization routine.", "(NONE):STRING");
+	tab->Add( Coeffgen6par, "Coeffgen6par", 9, "Calculates the 6 parameters for the CEC 6 parameter model", "(STRING:cell type, DOUBLE:Vmp, DOUBLE:Imp, DOUBLE:Voc, DOUBLE:Isc, DOUBLE:beta, DOUBLE:alpha, DOUBLE:gamma, INTEGER:nser):ARRAY[a,Io,Il,Rs,Rsh,Adj] or false on failure");
+	tab->Add( SetTrnsysOutputFolder, "SetTrnsysOutputFolder", 1, "Sets the output folder for hourly TRNSYS output data and files.", "(STRING:path):NONE");
+	tab->Add( Library, "Library", -1, "Obtain a list of library types (no arguments), or all entries for a particular type (1 argument).", "([STRING:type]):ARRAY");
+	tab->Add( Pearson, "Pearson", -1, "Calculates the linear (pearson) correlation coefficient between two arrays of the same length.", "(ARRAY:x, ARRAY:y):DOUBLE");
+
+
+	tab->Add( LHS_create, "LHSCreate", 0, "Creates a new Latin Hypercube Sampling object.", "( NONE ):INTEGER");
+	tab->Add( LHS_free, "LHSFree", 1, "Frees an LHS object.", "( INTEGER:lhsref ):NONE");
+	tab->Add( LHS_reset, "LHSReset", 1, "Erases all distributions and correlations in an LHS object.", "( INTEGER:lhsref ):NONE");
+	tab->Add( LHS_seed, "LHSSeed", 2, "Sets the seed value for the LHS object.", "( INTEGER:seed ):NONE");
+	tab->Add( LHS_points, "LHSPoints", 2, "Sets the number of samples desired.", "( INTEGER:lhsref, INTEGER:number of points ):NONE");
+	tab->Add( LHS_dist, "LHSDist", -1, "Sets up a distribution for a variable.", "( INTEGER:lhsref, STRING:distribution name, STRING: variable name, [DOUBLE:param1, DOUBLE:param2, DOUBLE:param3, DOUBLE:param4] ): NONE");
+	tab->Add( LHS_corr, "LHSCorr", 4, "Sets up correlation between two variables.", "( INTEGER:lhsref, STRING:variable 1, STRING:variable 2, DOUBLE:corr val ):NONE");
+	tab->Add( LHS_run, "LHSRun", 1, "Runs the LHS sampling program.", "( INTEGER:lhsref ):BOOLEAN");
+	tab->Add( LHS_error, "LHSError", 1, "Returns an error message if any.", "( INTEGER:lhsref ):STRING");
+	tab->Add( LHS_vector, "LHSVector", 2, "Returns the sampled values for a variable.", "( INTEGER:lhsref, STRING:variable ):ARRAY");
+
+	tab->Add( STEPWISE_create, "STEPCreate", 0, "Create a new STEPWISE regression analysis object.", "( NONE ):INTEGER");
+	tab->Add( STEPWISE_free, "STEPFree", 1, "Frees a STEPWISE object.", "( INTEGER:stpref ):NONE" );
+	tab->Add( STEPWISE_input, "STEPInput", 3, "Sets a STEPWISE input vector.", "( INTEGER:stpref, STRING:name, ARRAY:values ):NONE");
+	tab->Add( STEPWISE_output, "STEPOutput", 2, "Sets a STEPWISE output vector.", "( INTEGER:stpref, ARRAY:values ):NONE");
+	tab->Add( STEPWISE_run, "STEPRun", 1, "Runs the STEPWISE analysis.", "( INTEGER:stpref ):NONE" );
+	tab->Add( STEPWISE_error, "STEPError", 1, "Returns any error code from STEPWISE.", "( INTEGER:stpref ):STRING" );
+	tab->Add( STEPWISE_result, "STEPResult", 2, "Returns R2 and SRC for a given input name.", "( INTEGER:stpref, STRING:name ):ARRAY");
+
+	tab->Add( OpenEIListUtilities, "OpenEIListUtilities", 0, "Returns a list of utility company names from OpenEI.org", "( NONE ):ARRAY");
+	tab->Add( OpenEIListRates, "OpenEIListRates", 3, "Lists all rate schedules for a utility company.", "( STRING:Utility name, <ARRAY:Names>, <ARRAY:Guids> ):INTEGER");
+	tab->Add( OpenEIApplyRate, "OpenEIApplyRate", 1, "Downloads and applies the specified rate schedule from OpenEI.", "( STRING:Guid ):BOOLEAN");
+
+	tab->Add( URdbFileWrite, "URdbFileWrite", 1, "Writes a local URdb format file with the current case's utility rate information.", "( STRING:file ):BOOLEAN");
+	tab->Add( URdbFileRead, "URdbFileRead", 1, "Reads a local URdb format file and overwrites the current case's utility rate information.", "( STRING:file ):BOOLEAN");
+
+	*/
+
+static lk::fcall_t *sam_functions() {
+	
+	static const lk::fcall_t vec[] = {
+		fcall_open_project,
+		fcall_close_project,
+		fcall_save_project,
+		fcall_project_file,
+		fcall_list_cases,
+		fcall_active_case,
+		fcall_set,
+		fcall_get,
+		fcall_simulate,
+		0 };
+	return (lk::fcall_t*)vec;
+
+};
 
 class SamScriptCtrl : public wxLKScriptCtrl
 {
@@ -18,6 +191,9 @@ public:
 		 m_scriptwin( scriptwin )
 	{
 		// register SAM-specific invoke functions here
+		RegisterLibrary( invoke_general_funcs(), "General Functions" );
+		RegisterLibrary( sam_functions(), "SAM Functions" );
+		RegisterLibrary( invoke_ssc_funcs(), "Direct Access To SSC" );
 	}
 	
 	virtual bool OnEval( int line )
