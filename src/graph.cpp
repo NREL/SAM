@@ -524,10 +524,14 @@ void GraphProperties::Set( const Graph &g )
 
 void GraphProperties::Get( Graph &g )
 {
-	g.Y.Clear();
 	for( size_t i=0;i<m_names.size();i++)
-		if ( m_Y->IsRowSelected( i, 0 ) )
+	{
+		if ( g.Y.Index( m_names[i] ) != wxNOT_FOUND && !m_Y->IsRowSelected( i, 0 ) )
+			g.Y.Remove( m_names[i] );
+
+		if ( m_Y->IsRowSelected( i, 0 ) && g.Y.Index( m_names[i] ) == wxNOT_FOUND )
 			g.Y.Add( m_names[i] );
+	}
 
 	g.Type = m_type->GetSelection();
 	g.Title = m_title->GetValue();
@@ -550,7 +554,7 @@ void GraphProperties::SendChangeEvent()
 	GetEventHandler()->ProcessEvent( e );
 }
 
-void GraphProperties::OnEdit( wxCommandEvent & )
+void GraphProperties::OnEdit( wxCommandEvent &evt )
 {	
 	SendChangeEvent();
 	m_legendPos->Enable( m_showLegend->GetValue() );
@@ -682,7 +686,7 @@ GraphCtrl *GraphViewer::Current()
 void GraphViewer::UpdateGraph()
 {
 	if( !m_current || !m_sim) return;
-	Graph g;
+	Graph g = m_current->GetGraph();
 	m_props->Get( g );
 	m_current->Display( m_sim, g );
 }
