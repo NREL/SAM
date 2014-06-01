@@ -609,7 +609,7 @@ bool VarValue::Read( const lk::vardata_t &val, bool change_type )
 					++it )
 				{
 					VarValue *item = Table().Set( (*it).first, vv_inval );
-					item->Read( *(*it).second );
+					item->Read( *(*it).second, true );
 				}
 			}
 		}
@@ -659,6 +659,7 @@ bool VarValue::Write( lk::vardata_t &val )
 		break;
 	case VV_TABLE:
 		{
+			val.empty_hash();
 			VarTable &tab = Table();
 			for (VarTableBase::iterator it = tab.begin();
 				it != tab.end();
