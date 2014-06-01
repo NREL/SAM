@@ -213,15 +213,12 @@ ResultsViewer::ResultsViewer( wxWindow *parent, int id )
 	cf_sizer->Add( m_cashFlowTable, 1, wxALL|wxEXPAND, 0 );
 	cf_panel->SetSizer(cf_sizer);
 
-	m_hourlySeries = new wxDVTimeSeriesCtrl( this, wxID_ANY,  HOURLY_TIME_SERIES, AVERAGE );
+	m_hourlySeries = new wxDVTimeSeriesCtrl( this, wxID_ANY,  RAW_DATA_TIME_SERIES, AVERAGE );
 	AddPage( m_hourlySeries, "Hourly" );
 
 	m_dailySeries = new wxDVTimeSeriesCtrl( this, wxID_ANY,  DAILY_TIME_SERIES, AVERAGE );
 	AddPage( m_dailySeries, "Daily" );
-	
-	m_monthlySeries = new wxDVTimeSeriesCtrl( this, wxID_ANY,  MONTHLY_TIME_SERIES, AVERAGE );
-	AddPage( m_monthlySeries, "Monthly" );
-	
+		
 	m_profilePlots = new wxDVProfileCtrl( this, wxID_ANY );
 	AddPage( m_profilePlots, "Profiles" );
 
@@ -529,7 +526,6 @@ void ResultsViewer::AddDataSet(wxDVTimeSeriesDataSet *d, const wxString& group, 
 	
 	m_hourlySeries->AddDataSet(d, group, update_ui);
 	m_dailySeries->AddDataSet(d, group, update_ui);
-	m_monthlySeries->AddDataSet(d, group, update_ui);
 	m_dMap->AddDataSet(d, group, update_ui);
 	m_profilePlots->AddDataSet(d, group, update_ui);
 	m_pnCdf->AddDataSet(d, group, update_ui); 
@@ -757,7 +753,6 @@ void ResultsViewer::RemoveAllDataSets()
 {
 	m_hourlySeries->RemoveAllDataSets();
 	m_dailySeries->RemoveAllDataSets();
-	m_monthlySeries->RemoveAllDataSets();
 	m_dMap->RemoveAllDataSets();
 	m_profilePlots->RemoveAllDataSets();
 	m_pnCdf->RemoveAllDataSets();
