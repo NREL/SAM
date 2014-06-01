@@ -128,7 +128,6 @@ private:
 	std::vector<wxDVTimeSeriesDataSet*> m_tsDataSets;
 	wxDVTimeSeriesCtrl *m_hourlySeries;
 	wxDVTimeSeriesCtrl *m_dailySeries;
-	wxDVTimeSeriesCtrl *m_monthlySeries;
 	wxDVDMapCtrl *m_dMap;
 	wxDVProfileCtrl *m_profilePlots;
 	wxDVPnCdfCtrl *m_pnCdf;
