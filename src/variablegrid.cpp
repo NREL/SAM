@@ -950,13 +950,20 @@ wxGridCellRenderer *GridCellChoiceRenderer::Clone() const
 
 wxString GridCellChoiceRenderer::GetString(const wxGrid& grid, int row, int col)
 {
-	wxGridTableBase *table = grid.GetTable();
-	wxString text;
-	long choiceno;
-	table->GetValue(row, col).ToLong(&choiceno);
-	if ((choiceno > -1) && (choiceno < (int)m_choices.size()))
-		text.Printf(wxT("%s"), m_choices[choiceno].c_str());
-	return text;
+	//		wxGridTableBase *table = grid.GetTable();
+	if (VariableGridData *vgd = (VariableGridData *)grid.GetTable())
+	{
+		wxString text;
+		long choiceno;
+		SetParameters(vgd->GetChoices(row,col));
+		//table->GetValue(row, col).ToLong(&choiceno);
+		vgd->GetValue(row, col).ToLong(&choiceno);
+		if ((choiceno > -1) && (choiceno < (int)m_choices.size()))
+			text.Printf(wxT("%s"), m_choices[choiceno].c_str());
+		return text;
+	}
+	else
+		return wxEmptyString;
 }
 
 void GridCellChoiceRenderer::Draw(wxGrid& grid,
@@ -1039,15 +1046,18 @@ void GridCellChoiceEditor::BeginEdit(int row, int col, wxGrid* grid)
 	if (evtHandler)
 		evtHandler->SetInSetFocus(true);
 
-	wxGridTableBase *table = grid->GetTable();
+//	wxGridTableBase *table = grid->GetTable();
+	VariableGridData *vgd = (VariableGridData *)grid->GetTable();
+	SetParameters(vgd->GetChoices(row, col));
 
-	if (table->CanGetValueAs(row, col, wxGRID_VALUE_NUMBER))
+//		if (table->CanGetValueAs(row, col, wxGRID_VALUE_NUMBER))
+	if (vgd->CanGetValueAs(row, col, wxGRID_VALUE_NUMBER))
 	{
-		m_index = table->GetValueAsLong(row, col);
+		m_index = vgd->GetValueAsLong(row, col);
 	}
 	else
 	{
-		wxString startValue = table->GetValue(row, col);
+		wxString startValue = vgd->GetValue(row, col);
 		if (startValue.IsNumber() && !startValue.empty())
 		{
 			startValue.ToLong(&m_index);
@@ -1543,18 +1553,6 @@ VariableGridFrame::VariableGridFrame(wxWindow *parent, ProjectFile *pf, Case *c)
 		m_grid->SetTable(m_griddata, true, wxGrid::wxGridSelectRows);
 
 
-		// update choices as necessary
-		for (int row = 0; row < m_grid->GetNumberRows(); row++)
-			for (int col = 2; col < m_grid->GetNumberCols(); col++)
-//				if (m_griddata->GetTypeName(row, col) == wxGRID_VALUE_CHOICE)
-				if (m_griddata->GetTypeName(row, col) == "GridCellChoice")
-				{
-
-					m_grid->SetCellRenderer(row, col, new GridCellChoiceRenderer(m_griddata->GetChoices(row,col)));
-					m_grid->SetCellEditor(row, col, new GridCellChoiceEditor(m_griddata->GetChoices(row,col)));
-				}
-
-
 		/*
 		// TODO - radio button group for show all, same, different
 		// go through all rows for case comparison and only show unequal values
@@ -1611,8 +1609,9 @@ VariableGridFrame::~VariableGridFrame()
 	if (m_cases.size() > 0)
 		for (size_t i = 0; i < m_cases.size(); i++)
 			if (m_cases[i]) m_cases[i]->RemoveListener(this);
+			*/
 	if (m_pf) m_pf->RemoveListener(this);
-	*/
+	
 }
 
 void VariableGridFrame::OnGridColSort(wxGridEvent& event)
@@ -1662,6 +1661,22 @@ void VariableGridFrame::UpdateGrid()
 		else
 			m_grid->HideRow(row);
 	}
+	/*
+	// update choices as necessary
+	for (int row = 0; row < m_grid->GetNumberRows(); row++)
+	{
+		for (int col = 2; col < m_grid->GetNumberCols(); col++)
+		{
+			if (m_griddata->GetTypeName(row, col) == "GridCellChoice")
+			{
+				if (GridCellChoiceRenderer *cr = (GridCellChoiceRenderer*)m_grid->GetCellRenderer(row, col))
+					cr->SetParameters(m_griddata->GetChoices(row, col));
+				if (GridCellChoiceEditor *ce = (GridCellChoiceEditor*)m_grid->GetCellEditor(row, col))
+					ce->SetParameters(m_griddata->GetChoices(row, col));
+			}
+		}
+	}
+	*/
 	m_grid->Thaw();
 }
 
