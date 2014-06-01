@@ -113,7 +113,13 @@ void PopulateSelectionList( wxDVSelectionListCtrl *sel, wxArrayString *names, Si
 		
 		wxArrayString labels;
 		for ( size_t j=0;j<list.Count();j++)
-			labels.Add( sim->GetLabel( list[j] ));
+		{
+			wxString label( sim->GetLabel( list[j] ) );
+			wxString units( sim->GetUnits( list[j] ) );
+			if ( !units.IsEmpty() )
+				label += " (" + units + ")";
+			labels.Add( label );
+		}
 
 		wxSortByLabels( list, labels );
 
