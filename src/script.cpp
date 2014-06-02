@@ -745,15 +745,12 @@ void ScriptWindow::OnClose( wxCloseEvent &evt )
 {	
 	if ( m_script->IsScriptRunning() )
 	{
-		if ( wxNO == wxMessageBox("The script is running.  Stop it?", "Query", wxYES_NO, this ) )
-		{
-			evt.Veto();
-			return;
-		}
-	}
+		if ( wxYES == wxMessageBox("The script is running.  Stop it?", "Query", wxYES_NO, this ) )
+			m_script->Stop();
 
-	// make sure the script is stopped before closing the window
-	m_script->Stop();
+		evt.Veto();
+		return;
+	}
 
 	if ( m_script->IsModified() )
 	{
