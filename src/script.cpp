@@ -4,10 +4,13 @@
 
 #include <wex/lkscript.h>
 #include <wex/metro.h>
+#include <wex/utils.h>
 
 #include "casewin.h"
+#include "library.h"
 #include "main.h"
 #include "invoke.h"
+#include "simulation.h"
 #include "script.h"
 
 static void fcall_open_project( lk::invoke_t &cxt )
@@ -102,16 +105,101 @@ static void fcall_simulate( lk::invoke_t &cxt )
 			cxt.result().assign( cw->RunBaseCase() ? 1.0 : 0.0 );
 }
 
+static void fcall_change_config( lk::invoke_t &cxt )
+{
+	LK_DOC( "change_config", "Change the current active case's technology/market configuration.", "(string:technology, string:financing):boolean");
+
+	wxString tech = cxt.arg(0).as_string();
+	wxString fin = cxt.arg(1).as_string();
+
+	cxt.result().assign( 0.0 );
+	wxArrayString techlist = SamApp::Config().GetTechnologies();
+	if ( techlist.Index( tech ) == wxNOT_FOUND ) return;
+	wxArrayString finlist = SamApp::Config().GetFinancingForTech( tech );
+	if ( finlist.Index( fin ) == wxNOT_FOUND ) return;
+	if ( Case *c = CurrentCase() )
+		cxt.result().assign( c->SetConfiguration( tech, fin ) ? 1.0 : 0.0 );
+}
+
+static void fcall_load_defaults( lk::invoke_t &cxt )
+{
+	LK_DOC( "load_defaults", "Load SAM default values for the current active case.", "(none):boolean" );
+	if ( Case *c = CurrentCase() )
+		cxt.result().assign( c->LoadDefaults() );
+}
+
+static void fcall_overwrite_defaults( lk::invoke_t &cxt )
+{
+	LK_DOC( "overwrite_defaults", "Overwrite SAM default values file for the current configuration with current values.", "(none):boolean");
+	if ( Case *c = CurrentCase() )
+		cxt.result().assign( c->SaveDefaults() );
+}
+
+static void fcall_list_technologies( lk::invoke_t &cxt )
+{
+	LK_DOC( "list_technologies", "List available technology options in SAM.", "(none):array" );
+	wxArrayString list = SamApp::Config().GetTechnologies();
+	cxt.result().empty_vector();
+	for( size_t i=0;i<list.size();i++ )
+		cxt.result().vec_append( list[i] );
+}
+
+static void fcall_list_financing( lk::invoke_t &cxt )
+{
+	LK_DOC( "list_financing", "List available financial model options for a particular technology.", "(string:technology):array" );
+	wxArrayString list = SamApp::Config().GetFinancingForTech( cxt.arg(0).as_string() );
+	cxt.result().empty_vector();
+	for( size_t i=0;i<list.size();i++ )
+		cxt.result().vec_append( list[i] );
+}
+
+static void fcall_current_technology( lk::invoke_t &cxt )
+{
+	LK_DOC( "current_technology", "Return the technology option of the current active case.", "(none):string");
+	if ( Case *c = CurrentCase() )
+		cxt.result().assign( c->GetTechnology() );
+}
+
+static void fcall_current_financing( lk::invoke_t &cxt )
+{
+	LK_DOC( "current_financing", "Return the financial model option of the current active case.", "(none):string");
+	if ( Case *c = CurrentCase() )
+		cxt.result().assign( c->GetFinancing() );
+}
+
+static void fcall_library( lk::invoke_t &cxt )
+{
+	LK_DOC( "library", "Obtain a list of library types (no arguments), or all entries for a particular type (1 argument).", "( [string:lib type] ):array" );
+	
+	wxArrayString list;
+	if ( cxt.arg_count() == 0 )
+		list = Library::ListAll();
+	else if ( Library *lib = Library::Find( cxt.arg(0).as_string() ) )
+		list = lib->ListEntries();
+
+	cxt.result().empty_vector();
+	for( size_t i=0;i<list.size();i++ )
+		cxt.result().vec_append( list[i] );
+}
+
+
 /* 
+	tab->Add( ChangeConfig, "ChangeConfig", 2, "Changes the current case's configuration. Application must be '*'.", "( STRING:Technology, STRING:Financing ):BOOLEAN");
+	tab->Add( ReloadDefaults, "ReloadDefaults", 0, "Reloads all default values for the active case.", "( NONE ):NONE");
+	tab->Add( ListTechnologies, "ListTechnologies", 0, "Returns an array of all the technologies in SAM.", "( NONE ):ARRAY");
+	tab->Add( ListFinancing, "ListFinancing", 1, "Lists all financing options in SAM for a given technology.", "( STRING:Technology ):ARRAY");
+	pptab->Add( OverwriteDefaults, "OverwriteDefaults", 1, "Overwrites the existing defaults file with the current case inputs for the specified case.", "( STRING:Case name ):BOOLEAN");
+	tab->Add( ListCases, "ListCases", 0, "Lists all the cases in the project.", "( NONE ):ARRAY");
+	tab->Add( TechnologyType, "TechnologyType", 0, "Returns the active case technology type.", "( NONE ):STRING");
+	tab->Add( FinancingType, "FinancingType", 0, "Returns the active case financing type.", "( NONE ):STRING");
+
+	// remaining
+
 	pptab->Add( CurrentCaseName, "CurrentCaseName", 0, "Returns the currently selected case's name.", "( NONE ):STRING");
 	pptab->Add( RerunCase, "RerunCase", 1, "Resimulates all setups for the specified case.", "( STRING:Case name ):BOOLEAN");
-	pptab->Add( OverwriteDefaults, "OverwriteDefaults", 1, "Overwrites the existing defaults file with the current case inputs for the specified case.", "( STRING:Case name ):BOOLEAN");
-
 	tab->Add( ResetOutputSource, "ResetOutputSource", -1, "Resets the output data source to default BASE case, or changes it to a different simulation and run number.", "( NONE or STRING:Simulation name, INTEGER:Run number ):NONE");
 	tab->Add( ClearSimResults, "ClearSimResults", 1, "Clears all results for the specific simulation name.", "( STRING:Simulation name ):NONE");
 	tab->Add( SwitchToCase, "SwitchToCase", 0, "Switches to the active case tab in the interface.", "( NONE ):NONE");
-	tab->Add( ChangeConfig, "ChangeConfig", 2, "Changes the current case's configuration. Application must be '*'.", "( STRING:Technology, STRING:Financing ):BOOLEAN");
-	tab->Add( ListCases, "ListCases", 0, "Lists all the cases in the project.", "( NONE ):ARRAY");
 	tab->Add( SamDir, "SamDir", 0, "Returns the SAM installation folder on the local computer.", "( NONE ):STRING");
 	tab->Add( MPSimulate, "MPSimulate", 2, "Runs many simulations using multiple processors.", "( STRING:Simulation name, ARRAY[ARRAY]:Variable name/value table NRUNS+1 x NVARS with top row having var names ):BOOLEAN" );
 	tab->Add( WriteResults, "WriteResults", 2, "Write a comma-separated-value file, with each column specified by a string of comma-separated output names.", "( STRING:File name, STRING:Comma-separated output variable names):BOOLEAN");
@@ -119,11 +207,6 @@ static void fcall_simulate( lk::invoke_t &cxt )
 	tab->Add( ClearCache, "ClearCache", 0, "Clear the memory cache of previously run simulations.", "( NONE ):NONE");
 	tab->Add( DeleteTempFiles, "DeleteTempFiles", 0, "Delete any lingering simulation temporary files.", "( NONE ):NONE");
 	tab->Add( SetTimestep, "SetTimestep", 1, "Sets the TRNSYS timestep for the active case.", "( STRING:Timestep with units ):NONE");
-	tab->Add( ReloadDefaults, "ReloadDefaults", 0, "Reloads all default values for the active case.", "( NONE ):NONE");
-	tab->Add( ListTechnologies, "ListTechnologies", 0, "Returns an array of all the technologies in SAM.", "( NONE ):ARRAY");
-	tab->Add( ListFinancing, "ListFinancing", 1, "Lists all financing options in SAM for a given technology.", "( STRING:Technology ):ARRAY");
-	tab->Add( TechnologyType, "TechnologyType", 0, "Returns the active case technology type.", "( NONE ):STRING");
-	tab->Add( FinancingType, "FinancingType", 0, "Returns the active case financing type.", "( NONE ):STRING");
 	tab->Add( ActiveVariables, "ActiveVariables", -1, "List all active variables for the current case or technology/market name.", "( [STRING:Technology, STRING:Financing] ):ARRAY");
 	tab->Add( FlDensity, "FluidDensity", 2, "Returns density at temperature Tc for a given fluid number (pressure assumed 1Pa).", "( INTEGER:Fluid number, DOUBLE:Temp 'C ):DOUBLE");
 	tab->Add( FlSpecificHeat, "FluidSpecificHeat", 2, "Returns specific heat at temperature Tc for a given fluid number (pressure assumed 1Pa).", "( INTEGER:Fluid number, DOUBLE:Temp 'C ):DOUBLE");
@@ -134,7 +217,6 @@ static void fcall_simulate( lk::invoke_t &cxt )
 	tab->Add( SetTrnsysOutputFolder, "SetTrnsysOutputFolder", 1, "Sets the output folder for hourly TRNSYS output data and files.", "(STRING:path):NONE");
 	tab->Add( Library, "Library", -1, "Obtain a list of library types (no arguments), or all entries for a particular type (1 argument).", "([STRING:type]):ARRAY");
 	tab->Add( Pearson, "Pearson", -1, "Calculates the linear (pearson) correlation coefficient between two arrays of the same length.", "(ARRAY:x, ARRAY:y):DOUBLE");
-
 
 	tab->Add( LHS_create, "LHSCreate", 0, "Creates a new Latin Hypercube Sampling object.", "( NONE ):INTEGER");
 	tab->Add( LHS_free, "LHSFree", 1, "Frees an LHS object.", "( INTEGER:lhsref ):NONE");
@@ -176,6 +258,14 @@ static lk::fcall_t *sam_functions() {
 		fcall_set,
 		fcall_get,
 		fcall_simulate,
+		fcall_change_config,
+		fcall_load_defaults,
+		fcall_overwrite_defaults,
+		fcall_list_technologies,
+		fcall_list_financing,
+		fcall_current_technology,
+		fcall_current_financing,
+		fcall_library,
 		0 };
 	return (lk::fcall_t*)vec;
 
@@ -208,7 +298,8 @@ public:
 	}
 };
 
-enum { ID_SCRIPT = wxID_HIGHEST+494 };
+enum { ID_SCRIPT = wxID_HIGHEST+494 ,
+	ID_VARIABLES };
 
 BEGIN_EVENT_TABLE( ScriptWindow, wxFrame )
 	EVT_BUTTON( wxID_NEW, ScriptWindow::OnCommand )
@@ -220,6 +311,7 @@ BEGIN_EVENT_TABLE( ScriptWindow, wxFrame )
 	EVT_BUTTON( wxID_STOP, ScriptWindow::OnCommand )
 	EVT_BUTTON( wxID_CLOSE, ScriptWindow::OnCommand )
 	EVT_BUTTON( wxID_HELP, ScriptWindow::OnCommand )
+	EVT_BUTTON( ID_VARIABLES, ScriptWindow::OnCommand )
 	
 	EVT_MENU( wxID_NEW, ScriptWindow::OnCommand )
 	EVT_MENU( wxID_OPEN, ScriptWindow::OnCommand )
@@ -228,6 +320,7 @@ BEGIN_EVENT_TABLE( ScriptWindow, wxFrame )
 	EVT_MENU( wxID_EXECUTE, ScriptWindow::OnCommand )
 	EVT_MENU( wxID_CLOSE, ScriptWindow::OnCommand )
 	EVT_MENU( wxID_HELP, ScriptWindow::OnCommand )
+	EVT_MENU( ID_VARIABLES, ScriptWindow::OnCommand )
 
 	EVT_STC_MODIFIED( ID_SCRIPT, ScriptWindow::OnModified )
 	EVT_CLOSE( ScriptWindow::OnClose )
@@ -270,6 +363,7 @@ ScriptWindow::ScriptWindow( wxWindow *parent, int id, const wxPoint &pos, const 
 	toolbar->Add( m_runBtn=new wxMetroButton( this, wxID_EXECUTE, "Run", wxNullBitmap, wxDefaultPosition, wxDefaultSize, wxMB_RIGHTARROW ), 0, wxALL|wxEXPAND, 0 );
 	toolbar->Add( m_stopBtn=new wxMetroButton( this, wxID_STOP, "Stop" ), 0, wxALL|wxEXPAND, 0 );
 	toolbar->AddStretchSpacer();
+	toolbar->Add( new wxMetroButton( this, ID_VARIABLES, "Variables" ), 0, wxALL|wxEXPAND, 0 );
 	toolbar->Add( new wxMetroButton( this, wxID_HELP, "Help" ), 0, wxALL|wxEXPAND, 0 );
 	toolbar->Add( new wxMetroButton( this, wxID_CLOSE, "Close" ), 0, wxALL|wxEXPAND, 0 );
 
@@ -296,6 +390,7 @@ ScriptWindow::ScriptWindow( wxWindow *parent, int id, const wxPoint &pos, const 
 	entries.push_back( wxAcceleratorEntry( wxACCEL_CMD, 's', wxID_SAVE ) );
 	entries.push_back( wxAcceleratorEntry( wxACCEL_CMD, 'f', wxID_FIND ) );
 	entries.push_back( wxAcceleratorEntry( wxACCEL_CMD, 'w', wxID_CLOSE ) );
+	entries.push_back( wxAcceleratorEntry( wxACCEL_CMD, 'i', wxID_CLOSE ) );
 	entries.push_back( wxAcceleratorEntry( wxACCEL_NORMAL, WXK_F1, wxID_HELP ) );
 	entries.push_back( wxAcceleratorEntry( wxACCEL_NORMAL, WXK_F5, wxID_EXECUTE ) );
 	SetAcceleratorTable( wxAcceleratorTable( entries.size(), &entries[0] ) );
@@ -456,6 +551,100 @@ wxString ScriptWindow::GetFileName()
 	return m_fileName;
 }
 
+class VarSelectDialog : public SelectVariableDialog
+{
+	wxChoice *m_cfglist;
+public:
+	VarSelectDialog( wxWindow *parent, const wxString &title )
+	: SelectVariableDialog( parent, title )
+	{
+		wxArrayString choices, tech( SamApp::Config().GetTechnologies() );
+		for( size_t i=0;i<tech.size();i++ )
+		{
+			wxArrayString fin( SamApp::Config().GetFinancingForTech( tech[i] ));
+			for( size_t k=0;k<fin.size();k++ )
+				choices.Add( tech[i] + ", " + fin[k] );
+		}
+		m_cfglist = new wxChoice( this, wxID_ANY, wxDefaultPosition, wxDefaultSize, choices );
+		m_sizer->Prepend( m_cfglist, 0, wxALL|wxEXPAND, 4 );
+
+		m_cfglist->SetSelection( 0 );
+		UpdateVariables();
+	}
+
+	void UpdateVariables()
+	{
+		wxString tech, fin, sel = m_cfglist->GetStringSelection();
+		int pos = sel.Find( ',' );
+		tech = sel.Mid( 0, pos );
+		fin = sel.Mid( pos+2 );
+		SetConfiguration( tech, fin );		
+	}
+
+	void SetConfiguration( const wxString &tech, const wxString &fin )
+	{
+		if ( ConfigInfo *ci = SamApp::Config().Find( tech, fin ) )
+		{
+			wxArrayString names, labels;
+			for( VarInfoLookup::iterator it = ci->Variables.begin();
+				it != ci->Variables.end();
+				++it )
+			{
+				names.Add( it->first );
+				wxString label( it->second->Label );
+				label += " {'" + it->first + "'}";
+				if ( !it->second->Units.IsEmpty() ) label += " (" + it->second->Units + ")";
+				int ty = it->second->Type;
+				wxString sty;
+				if (ty == VV_NUMBER ) sty = "number";
+				else if ( ty == VV_ARRAY ) sty = "array";
+				else if ( ty == VV_MATRIX ) sty = "matrix";
+				else if ( ty == VV_STRING ) sty = "string";
+				else if ( ty == VV_TABLE ) sty = "table";
+				label += " [" + sty + "]";
+
+				if ( !it->second->Group.IsEmpty() )
+					label = it->second->Group + "/" + label;
+				else
+					label = "Other/" + label;
+
+				labels.Add( label );
+			}
+
+			wxArrayString output_names, output_labels, output_units;
+			Simulation::ListAllOutputs( ci, &output_names, &output_labels, &output_units );
+			for( size_t i=0;i<output_names.size();i++ )
+			{
+				names.Add( output_names[i] );
+				wxString label( output_labels[i] + " {'" + output_names[i] + "'}" );
+				if ( !output_units[i].IsEmpty() )
+					label += " (" + output_units[i] + ")";
+
+				labels.Add( "@ Outputs/" + label );
+			}
+
+			wxSortByLabels( names, labels );
+			SetItems( names, labels );
+		}
+	}
+
+	void OnConfig( wxCommandEvent &evt )
+	{
+		if (evt.GetEventObject() == m_cfglist )
+		{
+			UpdateVariables();
+		}
+	}
+
+
+	DECLARE_EVENT_TABLE()
+};
+
+BEGIN_EVENT_TABLE( VarSelectDialog, SelectVariableDialog )
+	EVT_CHOICE( wxID_ANY, VarSelectDialog::OnConfig )
+END_EVENT_TABLE()
+
+
 void ScriptWindow::OnCommand( wxCommandEvent &evt )
 {
 	switch( evt.GetId() )
@@ -503,6 +692,26 @@ void ScriptWindow::OnCommand( wxCommandEvent &evt )
 	case wxID_CLOSE:
 		Close();
 		break;
+
+	case ID_VARIABLES:
+	{
+		VarSelectDialog dlg( this, "Browse Variables" );
+		if ( Case *c = SamApp::Window()->GetCurrentCase() )
+		{
+			wxString tech, fin;
+			c->GetConfiguration(&tech, &fin);
+			dlg.SetConfiguration( tech, fin );
+		}
+
+		dlg.CenterOnParent();
+		if ( dlg.ShowModal() == wxID_OK )
+		{
+			m_script->InsertText(
+				m_script->GetCurrentPos(), wxJoin(dlg.GetCheckedNames(),',') );
+		}
+	}
+		break;
+
 	};
 }
 

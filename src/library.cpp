@@ -57,6 +57,13 @@ void Library::UnloadAll()
 	gs_libs.DeleteAll();
 }
 
+wxArrayString Library::ListAll()
+{
+	wxArrayString list;
+	for( size_t i=0;i<gs_libs.m_libs.size();i++ )
+		list.Add( gs_libs.m_libs[i]->GetName() );
+	return list;
+}
 
 Library::Library()
 {

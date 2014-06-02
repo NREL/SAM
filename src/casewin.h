@@ -163,6 +163,8 @@ private:
 	wxTreeItemId m_root;
 	std::vector<item_info> m_items;
 
+protected:
+	wxSizer *m_sizer;
 
 	DECLARE_EVENT_TABLE()
 };

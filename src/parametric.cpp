@@ -224,7 +224,7 @@ void ParametricViewer::Configure()
 	wxArrayString names, labels;
 	wxString case_name(SamApp::Project().GetCaseName(m_case));
 	wxArrayString output_names, output_labels;
-	Simulation::ListAllOutputs(m_case, &output_names, &output_labels, 0);
+	Simulation::ListAllOutputs(m_case->GetConfiguration(), &output_names, &output_labels, 0);
 
 	for (int j = 0; j<(int)output_labels.size(); j++)
 	{
