@@ -1,103 +1,76 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html><head>
    <title>SAM Help</title>
-   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-   <meta http-equiv="content-language" content="en-us" />
-   <meta name="robots" content="noarchive,noindex,nofollow" />
-   <meta http-equiv="Content-Style-Type" content="text/css" />
-   <script type="text/javascript" src="jquery.js"></script>
-   <script type="text/javascript" src="jquery.tools.min.js"></script>
-   <link type="text/css" href="default.css" rel="stylesheet" />
-   <link id="tabscheme" type="text/css" href="hm_topic.css" rel="stylesheet" />
-<!--[if IE 9]>
-<link id="iesvgcss" rel="stylesheet" type="text/css" href="hm_webhelp_svg.css" />
-<![endif]-->
-<style type="text/css">
-body,html { 
-	overflow: hidden;
-	font-family: Verdana, Tahoma, Helvetica, Sans-Serif;  
-	}
-a { color: blue; }
-a:visited {color: blue;}
-a:hover {color: blue;}
-div.results { position: absolute; left: 0; right: 0; bottom: 0; overflow-y: scroll; padding-right: 5px; padding-top: 5px; }
-.navtitle { font-size: 14pt; font-weight: bold; margin-bottom: 16px; }
-.navbar { font-size: 10pt; }
-.submit { font-size: 9pt; margin: 5px 0; }
-.highlight { background: #FFFF40; }
-.searchheading { font-size: 9pt; font-weight: bold; margin-top: 7px; }
-.summary { font-size: 8pt; font-style: italic; }
-.results { font-size: 9pt; }
-.description { font-size: 9pt; }
-.context { font-size: 9pt; }
-.result_title { font-size: 9pt; }
-.suggestion { font-size: 100%; }
-.category { color: #999999; }
-.sorting { text-align: right; }
-.zoom_searchform { font-size: 100%; }
-.zoom_results_per_page { font-size: 80%; }
-.zoom_match { font-size: 80%; line-height: 10%; margin-left: 10px;}
-.zoom_match input {margin-left: 3px;}
-.zoom_categories { font-size: 80%; }
-.zoom_categories ul { display: inline; margin: 0px; padding: 0px;}
-.zoom_categories li { display: inline; margin-left: 15px; list-style-type: none; }
-input.zoom_button {  }
-input.zoom_searchbox {  }
-input#zoom_searchbox, input.zoom_button { margin-bottom: 5px;}
-.result_image { float: left; display: block; }
-.result_image img { margin: 10px; width: 80px; border: 0px; }
-.result_block { margin-top: 0px; margin-bottom: 10px; clear: left; }
-div.result_title { font-size: 110%;}
-div.description { font-style: italic;}
-div.infoline { font-weight: bold; margin-top: 2px;}
-.result_altblock { margin-top: 0px; margin-bottom: 10px; clear: left; }
-.result_pages { font-size: 80%; white-space: nowrap; font-weight: bold; }
-.result_pages a:link { text-decoration: none; color: blue;}
-.result_pages a:visited { text-decoration: none; color: blue;}
-.result_pages a:hover { text-decoration: underline;}
-.result_pagescount { font-size: 100%; }
-.searchtime { font-size: 80%; }
-.recommended {
-	background: #DFFFBF;
-	border-top: 1px dotted #808080;
-	border-bottom: 1px dotted #808080;
-	margin-top: 15px;
-	margin-bottom: 15px;
-	}
-.recommended_heading { float: right; font-weight: bold; }
-.recommend_block { margin-top: 15px; margin-bottom: 15px; clear: left; }
-.recommend_title { font-size: 100%; }
-.recommend_description { font-size: 100%; color: #008000; }
-.recommend_infoline { font-size: 80%; font-style: normal; color: #808080;}
-span.highlight {background-color: #ffff40;}
-</style>
-<script type="text/javascript">
-/*! Full-text search init functions for HM Premium Pack Version 2.02
-Copyright (c) 2008-2012 by Tim Green. 
-All rights reserved. */
-$(document).ready(function(){try{var d=parent.hmWebHelp?parent:window.opener.hmWebHelp?window.opener:false}catch(e){document.location.replace("index.html")}var c=$("form.zoom_searchform")[0];$(c).attr("id","hmsearchform");$("input#zoom_searchbox").attr({autocapitalize:"off",autocorrect:"off"});$("body").css("visibility","hidden");setTimeout(function(){if($("div.results").length<1){$("span br, div.searchheading br").remove()}else{if($("div.results").children().length>0){$("span br, div.searchheading br, div.result_pagescount br").remove();var h=$("div.results")[0];var f=$("div.result_pagescount").length>0?$("div.result_pages").html():false;if(f){$("div.result_pagescount").remove();$(h).css("top",($("div.result_pages").position().top+25)+"px").css("border-top","1px solid silver");$(window).bind("resize",function(){$(h).css("top",($("div.result_pages").position().top+25)+"px")})}else{$(h).css("top",($("div.summary").position().top+25)+"px").css("border-top","1px solid silver");$(window).bind("resize",function(){$(h).css("top",($("div.summary").position().top+25)+"px")})}$("#dummy").remove();$("div.results a[target='hmcontent']").click(function(){var i=$(this).attr("href");d.hmWebHelp.tocWin.tocScroller(i)})}else{var h=$("div.results")[0];$("span br, div.searchheading br").remove();$(h).css("overflow","hidden")}}$("body").css("visibility","visible");if(d.hmLayout.hmSearchArg!=""){var g=setInterval(function(){var j=document.getElementById("zoom_searchbox");try{if(j.name){clearInterval(g);j.value=d.hmLayout.hmSearchArg;d.hmLayout.hmSearchArg="";document.forms[0].submit()}}catch(i){}},100)}},100);if(window.opener){$("ul.tabs").show();$("ul.tabs a").css("cursor","default");$("div#hmbox").css("padding","10px");$("div.results").css("padding","5px 2px 5px 5px");var b=window.opener.window.hmWebHelp.searchArgs;$("form#hmsearchform").submit(function(){window.opener.window.hmWebHelp.searchReturnArgs=$("input#zoom_searchbox").val()});if(b){window.opener.window.hmWebHelp.searchArgs=null;$("input#zoom_searchbox").val(b);$("form#hmsearchform").submit()}$("link#tabscheme").attr("href","hm_webhelp_undocked.css");$("body,html").css("backgroundImage","url('bg.png')");var a=setInterval(function(){function h(){clearInterval(a);window.close()}try{var f=window.opener.hmWebHelp.openWindows.length}catch(g){h()}if(!window.opener||f<1){h()}},500)}});
-</script>
-</head>
-<body bgcolor="#FFFFFF">
-<ul id="topictabs" class="tabs">
-<li id="searchtab" class="hmtabs"><a href="#" id="searchtablink" class="current"><span>Search</span></a></li>
-</ul>
-<div id="hmbox">
-<div id="hminnerbox">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-<p class="submit">Enter one or more keywords to search ('*' and '?' wildcards are supported):</p>
-<!-- This is where the search form and results will appear -->
-<div id="loadingmsg" align="center"><img src="cicon_loadindex_ani.gif" style="border:none" alt="Loading..." /></div>
+   <!-- This line includes the general project style sheet (not required) -->
+   <link type="text/css" href="default.css" rel="stylesheet" />
+
+   <!-- You can change the fonts, text colors, and styles of your search results with the CSS below -->
+   <style type="text/css">
+        body { background:#0072C6; color:#FFFFFF;}
+        .navbar { font-size: 120%; }
+
+        .submit { font-size: 9pt; }
+        .highlight { background: #FFFFFF; color:#0072C6;}
+        .searchheading { font-size: 9pt; font-weight: bold; color:#FFFFFF;}
+        .summary { font-size: 8pt; font-style: italic; color:#FFFFFF;}
+        .results { font-size: 9pt; color:#FFFFFF;}
+        .description { font-size: 9pt; color:#FFFFFF;}
+        .context { font-size: 9pt; color:#FFFFFF;}
+        .result_title { font-size: 9pt;}
+
+	       .suggestion { font-size: 100%; color: #FFFFFF;}
+	       .category { color: #FFFFFF; }
+	       .sorting { text-align: right; }
+	       .zoom_searchform { font-size: 100%; color: #FFFFFF;}
+	       .zoom_results_per_page { font-size: 80%; margin-left: 10px; color: #FFFFFF;}
+	       .zoom_match { font-size: 80%; margin-left: 10px; color: #FFFFFF;}
+	       .zoom_categories { font-size: 80%; color: #FFFFFF;}
+	       .zoom_categories ul { display: inline; margin: 0px; padding: 0px; color: #FFFFFF;}
+	       .zoom_categories li { display: inline; margin-left: 15px; list-style-type: none; color: #FFFFFF;}
+	       input.zoom_button {  }
+	       input.zoom_searchbox {  }
+	       .result_image { float: left; display: block; }
+	       .result_image img { margin: 10px; width: 80px; border: 0px; }
+	       .result_block { margin-top: 15px; margin-bottom: 15px; clear: left; color:#FFFFFF;}
+	       .result_altblock { margin-top: 15px; margin-bottom: 15px; clear: left; }
+	       .result_pages { font-size: 100%; }
+	       .result_pagescount { font-size: 100%; }
+	       .searchtime { font-size: 80%; }
+	       .recommended
+	       {
+		        background: #DFFFBF;
+	       		border-top: 1px dotted #808080;
+	       		border-bottom: 1px dotted #808080;
+	       		margin-top: 15px;
+	       		margin-bottom: 15px;
+	       }
+	       .recommended_heading { float: right; font-weight: bold; }
+	       .recommend_block { margin-top: 15px; margin-bottom: 15px; clear: left; }
+	       .recommend_title { font-size: 100%; }
+	       .recommend_description { font-size: 100%; color: #008000; }
+	       .recommend_infoline { font-size: 80%; font-style: normal; color: #808080;}
+
+ 	</style>
+</head>
+<body>
+<p class="navbar" style="font:segoe ui;color:#FFFFFF;background:#0072C6;"><a href="samhelp_content.htm" style="font:segoe ui;color:#FFFFFF;background:#0072C6;text-decoration:none;">Contents</a>
+
+ | <b>Search</b>
+</p>
+<hr/>
+<p class="submit">&nbsp;</p>
+  <!-- This is where the search form and results will appear -->
+  <div id="loadingmsg" align="center"><img src="cicon_loadindex_ani.gif" style="border:none" alt="Loading..." /></div>
 <script type="text/javascript" src="settings.js" charset="UTF-8"></script>
 <script type="text/javascript" src="zoom_search.js"></script>
 <script type="text/javascript">ZoomSearch();</script>
 
-<p id="dummy">&nbsp;&nbsp;&nbsp;</p>
+
 <noscript>
-<p>You must have JavaScript enabled to use WebHelp search</p>
+<p style="color:#FFFFFF;">You must have JavaScript enabled to use search.</p>
 </noscript>
-</div><!-- hminnerbox -->
-</div><!-- hmbox -->
 </body>
 </html>

@@ -1,115 +1,19 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
 <head>
    <title>PVWatts Solar Array</title>
-   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
    <meta name="generator" content="Help &amp; Manual" />
    <meta name="keywords" content="" />
    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-   <meta http-equiv="content-language" content="en-us" />
-   <meta name="description" content="The PVWatts Solar Array page displays variables for SAM's implementation of NREL's PVWatts model. For links to references describing the PVWatts model, see PVWatts." />
-   <meta http-equiv="Content-Style-Type" content="text/css" />
+   
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
    <link type="text/css" href="default.css" rel="stylesheet" />
-   <link id="tabscheme" type="text/css" href="hm_topic.css" rel="stylesheet" />   
-<style type="text/css">
-/* No header topics */
-
-/* Breadcrumb trail */
-p#breadcrumbs {
-font-family: Verdana, Tahoma, Helvetica, Sans-Serif;   padding: 2px 0 1px 2px;
-   margin: 0;
-   font-size: 8pt; 
-   color: #999;
-   }   
-p#breadcrumbs a { color: #999; text-decoration: none;}
-p#breadcrumbs a:visited { color: #999; }
-p#breadcrumbs a:hover { color: #333; border-bottom: 1px dotted #333; }
-
-/* Search hightlight color */
-span.highlight {background-color: #ffff40;}
-</style>
-<script type="text/javascript">
-var hmHeaderTopic = true;
-
-</script> 
-<!--[if IE 9]>
-<link id="iesvgcss" rel="stylesheet" type="text/css" href="hm_webhelp_svg.css" />
-<![endif]-->	
-<script src="jquery.js"></script>
-<script type="text/javascript" src="jquery.tools.min.js"></script>
-<script type="text/javascript" src="jquery.scrollTo-min.js"></script>
-<script type="text/javascript"> 
-// General topic variables
-var tVars = {
-   hmHelpPage: "index.html",
-   nextP: "concentrating_solar_power_csp.htm",
-   prevP: "pvwatts.htm",
-   currP: "pvwatts_solar_array.htm",
-   defP: "introduction.htm",
-   titleP: "PVWatts Solar Array",
-   mailsubject: "Feedback on: SAM Help - PVWatts Solar Array",
-   simplesubject: "Documentation%20Feedback",
-   mailid: "PVWatts_Solar_Array",
-   mailpath: "Photovoltaic Systems &gt; PVWatts &gt; PVWatts Solar Array /",
-   mailbody: "Dear SAM Support,",
-   mailrecipient: "SAM Support <sam.support@nrel.gov>",
-   simplerecipient: "sam.support@nrel.gov",
-   fbtype: false,
-   header: true,
-   background: "bg.png",
-   tablesReady: false,
-   togglesReady: false,
-   webRedirect: true
-   }
-// Popup configuration
- var hmpBShadow = true;
- var hmPopSmallDim = 500;
- var hmPopKillVideo = false;
- // AutoTOC variables
- var hmatocvars = {
-   atoc_show: true,
-   atoc_title: "Contents",
-   atoc_tip: "Jump to:&nbsp;",
-   atoc_minHeaders: 2,
-   atoc_btntip_off: "No contents entries on this page",
-   atoc_btntip_on: "Display/hide topic directory",
-   atoc_toptip: "Jump to top of page",
-   atoc_top: "Scroll to Top of Page",
-   atoc_bg: "#f6f6f6",
-   atoc_border: "silver",
-   atoc_linkcolor: "#444",
-   atoc_linklimit: 45,
-   atoc_hovercolor: "#000",
-   atoc_hoverbgcolor: "#e0e0e0"
-}
-// Sortable tables
-var sortVars = {
-   europeandate: false,
-   germanNumbers: false,
-   imagePath: "",
-   image_up: "arrow-up.gif",
-   image_down: "arrow-down.gif",
-   image_empty: "arrow-empty.gif",
-   image_none: "arrow-none.gif",
-   sort_tip: "Click to sort on this column",
-   umlauts: "false"
-   }
-
-</script>
-
-<script type="text/javascript"> 
-$(document).ready(function() {
-var doc = document;  
-try {
-if (parent.hmWebHelp.navWidth != null) doc = parent.document;
-doc.title = $("<div/>").html("SAM Help - PVWatts Solar Array").text();
-window.onunload = function() {doc.title = $("<div/>").html("SAM Help").text();}
-} catch(err) {}
-});
-</script>
-<script type="text/javascript" src="helpman_settings.js"></script>
-<script type="text/javascript" src="helpman_topicinit.js"></script>
-<script type="text/javascript" src="hmtopic.js"></script>
+   <style type="text/css">
+     body { margin: 0px; background: #FFFFFF; }
+   </style>
+   <script type="text/javascript" src="jquery.js"></script>
+   <script type="text/javascript" src="helpman_settings.js"></script>
+   <script type="text/javascript" src="helpman_topicinit.js"></script>
 
    <script type="text/javascript">
      HMSyncTOC("index.html", "pvwatts_solar_array.htm");
@@ -120,29 +24,20 @@ window.onunload = function() {doc.title = $("<div/>").html("SAM Help").text();}
    </script>
 </head>
 <body>
-<!--ZOOMSTOP-->
-<ul id="topictabs" class="tabs">
-<li id="indextab" class="hmtabs"><a href="#" id="indextablink" class="current"><span>PVWatts Solar Array</span></a></li>
-</ul>
-<div id="hmbox">
-<div id="hmheader">
-<div id="hmheadercontents">
-<p id="breadcrumbs">
-<b>Navigation:</b>
-<a href="photovoltaic_systems.htm">Photovoltaic Systems</a> &gt; <a href="pvwatts.htm">PVWatts</a>:</p> 
-<h1 class="p_Heading1"><span class="f_Heading1">PVWatts Solar Array</span></h1>
 
-</div>
-<div id="atocIcon" class="navdivs">
-<img class="navicon" id="hmAtocLink" src="contents_off.png" alt="No contents entries on this page" title="No contents entries on this page" />
-<br /><span>Contents</span>
-</div>
-</div>
-<div id="autoTocWrapper" class="topicmenu"></div>
-<div id="idcontent">
-<div id="unclicker"></div>
 
-<!--ZOOMRESTART-->
+<table style="width:100%; border:none; border-spacing:0px; padding:5px; background:#FFFFFF; color:#0072C6;">
+  <tr style="vertical-align:middle">
+    <td style="text-align:left">
+      <h1 class="p_Heading1"><span class="f_Heading1">PVWatts Solar Array</span></h1>
+
+    </td>
+  </tr>
+</table>
+
+
+<!-- Placeholder for topic body. -->
+<table style="width:100%;border:none;border-spacing:0px"><tr style="vertical-align:top"><td style="text-align:left;padding:5px">
 <p class="p_Text"><span class="f_Text">The PVWatts Solar Array page displays variables for SAM's implementation of NREL's PVWatts model. For links to references describing the PVWatts model, see <a href="pvwatts.htm" class="topiclink">PVWatts</a>.</span></p>
 <h3 class="p_Heading3_atocs_" style="border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">PVWatts System Inputs</span></h3>
 <p class="p_Text"><span class="f_Text">The system inputs define the size of the system, derate factor, and the array orientation. </span></p>
@@ -174,7 +69,7 @@ window.onunload = function() {doc.title = $("<div/>").html("SAM Help").text();}
 <p class="p_VariableDescription"><span class="f_VariableDescription">For systems north of the equator, a typical azimuth value would be 180 degrees. For systems south of the equator, a typical value would be 0 degrees.</span></p>
 <h3 class="p_Heading3_atocs_" style="border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Shading</span></h3>
 <p class="p_Text"><span class="f_Text">The shading scene defines the effect of shadows from nearby objects on the subarray.</span></p>
-<p style="text-align: left; padding: 0px 0px 0px 13px; margin: 0px 0px 6px 24px;"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;display:inline-block;width:13px;margin-left:-13px">&#8226;</span><span class="f_VariableDescription">Click </span><span class="f_CHInterfaceElement">Edit shading</span><span class="f_VariableDescription"> to specify a set of shading factors for each subarray. See <a href="pv_shading.htm" class="topiclink">Shading</a> for details.</span></p><h3 class="p_Heading3_atocs_" style="border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Advanced: Module thermal behavior</span></h3>
+<div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 6px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:13px"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;">&#8226;</span></td><td style="border:none"><span class="f_VariableDescription">Click </span><span class="f_CHInterfaceElement">Edit shading</span><span class="f_VariableDescription"> to specify a set of shading factors for each subarray. See <a href="pv_shading.htm" class="topiclink">Shading</a> for details.</span></td></tr></table></div><h3 class="p_Heading3_atocs_" style="border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Advanced: Module thermal behavior</span></h3>
 <p class="p_Text"><span class="f_Text">The module thermal behavior inputs allow you to adjust the parameters of PVWatts' temperature correction algorithm. You should not change these values unless you are familiar with the algorithm.</span></p>
 <p class="p_VariableName"><span class="f_VariableName">Installed nominal operating cell temp (INOCT)</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The photovoltaic cell's nominal operating temperature.</span></p>
@@ -188,14 +83,11 @@ window.onunload = function() {doc.title = $("<div/>").html("SAM Help").text();}
 <p class="p_VariableDescription"><span class="f_VariableDescription">Check this option to use your own measured plane-of-array irradiance data instead of the solar resource data from the weather file.</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">SAM uses meteorological data (ambient dry-bulb temperature and wind speed) from the weather file that you specify on the <a href="climate_solar.htm" class="topiclink">Location and Resource</a> page. If you have your own meteorological data that matches the POA irradiance data, you can use the <a href="weather_create_tmy3.htm" class="topiclink">TMY3 Creator</a> to cut and paste your data into a TMY3 formatted weather file.</span></p>
 <p class="p_VariableName"><span class="f_VariableName">Enter hourly POA irradiance Data</span></p>
-<p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">1.</span><span class="f_ProcedureStep">Click </span><span class="f_CHInterfaceElement">Edit Data</span><span class="f_ProcedureStep"> to open the Edit Data window.</span></p><p class="p_ProcedureStepNoNumber"><span class="f_ProcedureStepNoNumber">If your POA irradiance data is in a single column of 8,760 rows in a text file, spreadsheet file, or other file that allows you to copy it to your computer's clipboard as a single column: In your text editor, spreadsheet program, or other software, copy the column of data. In SAM's Edit Data window, click </span><span class="f_CHInterfaceElement">Paste</span><span class="f_ProcedureStepNoNumber">.</span></p>
+<div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 3px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:24px"><span style="font-size:10pt; font-family: 'Segoe UI';color:#000000;">1.</span></td><td style="border:none"><span class="f_ProcedureStep">Click </span><span class="f_CHInterfaceElement">Edit Data</span><span class="f_ProcedureStep"> to open the Edit Data window.</span></td></tr></table></div><p class="p_ProcedureStepNoNumber"><span class="f_ProcedureStepNoNumber">If your POA irradiance data is in a single column of 8,760 rows in a text file, spreadsheet file, or other file that allows you to copy it to your computer's clipboard as a single column: In your text editor, spreadsheet program, or other software, copy the column of data. In SAM's Edit Data window, click </span><span class="f_CHInterfaceElement">Paste</span><span class="f_ProcedureStepNoNumber">.</span></p>
 <p class="p_ProcedureStep"><span class="f_ProcedureStepNoNumber">If your POA irradiance data is in a text file with one row at the top containing header text followed by 8,760 rows of POA data, click </span><span class="f_CHInterfaceElement">Import</span><span class="f_ProcedureStepNoNumber">,and n</span><span class="f_ProcedureStep">avigate to the folder containing the text file to import it.</span></p>
-<p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">2.</span><span class="f_ProcedureStep">Scroll through the table to verify that all of the data was imported or pasted into the table.</span></p><p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">3.</span><span class="f_ProcedureStep">Click </span><span class="f_CHInterfaceElement">OK</span><span class="f_ProcedureStep"> to return to the PVWatts Array page.</span></p><p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 6px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">4.</span><span class="f_ProcedureStepLast">On the <a href="climate_solar.htm" class="topiclink">Location and Resource</a> page, either choose a weather file for the location where you measured the data, or use the <a href="weather_create_tmy3.htm" class="topiclink">TMY3 Creator</a> to paste your own wind speed and ambient temperature data into a TMY3-formatted weather file.</span></p><p class="p_Note"><span class="f_CHNote">Tip.</span><span class="f_Note"> If you are importing your POA irradiance data from a text file, before importing the data, you can export the sample data from the Edit Data window to a text file to see what the correct file format looks like.</span></p>
+<div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 3px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:24px"><span style="font-size:10pt; font-family: 'Segoe UI';color:#000000;">2.</span></td><td style="border:none"><span class="f_ProcedureStep">Scroll through the table to verify that all of the data was imported or pasted into the table.</span></td></tr></table></div><div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 3px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:24px"><span style="font-size:10pt; font-family: 'Segoe UI';color:#000000;">3.</span></td><td style="border:none"><span class="f_ProcedureStep">Click </span><span class="f_CHInterfaceElement">OK</span><span class="f_ProcedureStep"> to return to the PVWatts Array page.</span></td></tr></table></div><div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 6px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:24px"><span style="font-size:10pt; font-family: 'Segoe UI';color:#000000;">4.</span></td><td style="border:none"><span class="f_ProcedureStepLast">On the <a href="climate_solar.htm" class="topiclink">Location and Resource</a> page, either choose a weather file for the location where you measured the data, or use the <a href="weather_create_tmy3.htm" class="topiclink">TMY3 Creator</a> to paste your own wind speed and ambient temperature data into a TMY3-formatted weather file.</span></td></tr></table></div><p class="p_Note"><span class="f_CHNote">Tip.</span><span class="f_Note"> If you are importing your POA irradiance data from a text file, before importing the data, you can export the sample data from the Edit Data window to a text file to see what the correct file format looks like.</span></p>
 
-<!--ZOOMSTOP--> 
+</td></tr></table>
 
-
-</div> <!-- idcontent -->
-</div><!-- hmbox --> 
 </body>
 </html>

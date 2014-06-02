@@ -1,115 +1,19 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
 <head>
    <title>Inverter&nbsp;</title>
-   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
    <meta name="generator" content="Help &amp; Manual" />
    <meta name="keywords" content="" />
    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-   <meta http-equiv="content-language" content="en-us" />
-   <meta name="description" content="The Inverter page allows you to choose an inverter performance model and either choose an inverter from a list, or enter inverter parameters from a manufacturer's data sheet..." />
-   <meta http-equiv="Content-Style-Type" content="text/css" />
+   
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
    <link type="text/css" href="default.css" rel="stylesheet" />
-   <link id="tabscheme" type="text/css" href="hm_topic.css" rel="stylesheet" />   
-<style type="text/css">
-/* No header topics */
-
-/* Breadcrumb trail */
-p#breadcrumbs {
-font-family: Verdana, Tahoma, Helvetica, Sans-Serif;   padding: 2px 0 1px 2px;
-   margin: 0;
-   font-size: 8pt; 
-   color: #999;
-   }   
-p#breadcrumbs a { color: #999; text-decoration: none;}
-p#breadcrumbs a:visited { color: #999; }
-p#breadcrumbs a:hover { color: #333; border-bottom: 1px dotted #333; }
-
-/* Search hightlight color */
-span.highlight {background-color: #ffff40;}
-</style>
-<script type="text/javascript">
-var hmHeaderTopic = true;
-
-</script> 
-<!--[if IE 9]>
-<link id="iesvgcss" rel="stylesheet" type="text/css" href="hm_webhelp_svg.css" />
-<![endif]-->	
-<script src="jquery.js"></script>
-<script type="text/javascript" src="jquery.tools.min.js"></script>
-<script type="text/javascript" src="jquery.scrollTo-min.js"></script>
-<script type="text/javascript"> 
-// General topic variables
-var tVars = {
-   hmHelpPage: "index.html",
-   nextP: "pvfp_array.htm",
-   prevP: "pvfp_module.htm",
-   currP: "pvfp_inverter.htm",
-   defP: "introduction.htm",
-   titleP: "Inverter&nbsp;",
-   mailsubject: "Feedback on: SAM Help - Inverter&nbsp;",
-   simplesubject: "Documentation%20Feedback",
-   mailid: "PVFP_Inverter",
-   mailpath: "Photovoltaic Systems &gt; Flat Plate PV &gt; Inverter /",
-   mailbody: "Dear SAM Support,",
-   mailrecipient: "SAM Support <sam.support@nrel.gov>",
-   simplerecipient: "sam.support@nrel.gov",
-   fbtype: false,
-   header: true,
-   background: "bg.png",
-   tablesReady: false,
-   togglesReady: false,
-   webRedirect: true
-   }
-// Popup configuration
- var hmpBShadow = true;
- var hmPopSmallDim = 500;
- var hmPopKillVideo = false;
- // AutoTOC variables
- var hmatocvars = {
-   atoc_show: true,
-   atoc_title: "Contents",
-   atoc_tip: "Jump to:&nbsp;",
-   atoc_minHeaders: 2,
-   atoc_btntip_off: "No contents entries on this page",
-   atoc_btntip_on: "Display/hide topic directory",
-   atoc_toptip: "Jump to top of page",
-   atoc_top: "Scroll to Top of Page",
-   atoc_bg: "#f6f6f6",
-   atoc_border: "silver",
-   atoc_linkcolor: "#444",
-   atoc_linklimit: 45,
-   atoc_hovercolor: "#000",
-   atoc_hoverbgcolor: "#e0e0e0"
-}
-// Sortable tables
-var sortVars = {
-   europeandate: false,
-   germanNumbers: false,
-   imagePath: "",
-   image_up: "arrow-up.gif",
-   image_down: "arrow-down.gif",
-   image_empty: "arrow-empty.gif",
-   image_none: "arrow-none.gif",
-   sort_tip: "Click to sort on this column",
-   umlauts: "false"
-   }
-
-</script>
-
-<script type="text/javascript"> 
-$(document).ready(function() {
-var doc = document;  
-try {
-if (parent.hmWebHelp.navWidth != null) doc = parent.document;
-doc.title = $("<div/>").html("SAM Help - Inverter&nbsp;").text();
-window.onunload = function() {doc.title = $("<div/>").html("SAM Help").text();}
-} catch(err) {}
-});
-</script>
-<script type="text/javascript" src="helpman_settings.js"></script>
-<script type="text/javascript" src="helpman_topicinit.js"></script>
-<script type="text/javascript" src="hmtopic.js"></script>
+   <style type="text/css">
+     body { margin: 0px; background: #FFFFFF; }
+   </style>
+   <script type="text/javascript" src="jquery.js"></script>
+   <script type="text/javascript" src="helpman_settings.js"></script>
+   <script type="text/javascript" src="helpman_topicinit.js"></script>
 
    <script type="text/javascript">
      HMSyncTOC("index.html", "pvfp_inverter.htm");
@@ -120,35 +24,26 @@ window.onunload = function() {doc.title = $("<div/>").html("SAM Help").text();}
    </script>
 </head>
 <body>
-<!--ZOOMSTOP-->
-<ul id="topictabs" class="tabs">
-<li id="indextab" class="hmtabs"><a href="#" id="indextablink" class="current"><span>Inverter&nbsp;</span></a></li>
-</ul>
-<div id="hmbox">
-<div id="hmheader">
-<div id="hmheadercontents">
-<p id="breadcrumbs">
-<b>Navigation:</b>
-<a href="photovoltaic_systems.htm">Photovoltaic Systems</a> &gt; <a href="pvfp_flat_plate_pv.htm">Flat Plate PV</a>:</p> 
-<h1 class="p_Heading1"><span class="f_Heading1">Inverter </span></h1>
 
-</div>
-<div id="atocIcon" class="navdivs">
-<img class="navicon" id="hmAtocLink" src="contents_off.png" alt="No contents entries on this page" title="No contents entries on this page" />
-<br /><span>Contents</span>
-</div>
-</div>
-<div id="autoTocWrapper" class="topicmenu"></div>
-<div id="idcontent">
-<div id="unclicker"></div>
 
-<!--ZOOMRESTART-->
+<table style="width:100%; border:none; border-spacing:0px; padding:5px; background:#FFFFFF; color:#0072C6;">
+  <tr style="vertical-align:middle">
+    <td style="text-align:left">
+      <h1 class="p_Heading1"><span class="f_Heading1">Inverter </span></h1>
+
+    </td>
+  </tr>
+</table>
+
+
+<!-- Placeholder for topic body. -->
+<table style="width:100%;border:none;border-spacing:0px"><tr style="vertical-align:top"><td style="text-align:left;padding:5px">
 <p class="p_Text"><span class="f_Text">The Inverter page allows you to choose an inverter performance model and either choose an inverter from a list, or enter inverter parameters from a manufacturer's data sheet using either a weighted efficiency or a table of part-load efficiency values.</span></p>
 <p class="p_Text"><span class="f_Text">SAM can only model a photovoltaic system with a single type of inverter. Specify the number of inverters in the system on the <a href="pvfp_array.htm" class="topiclink">Array</a> page.</span></p>
 <p class="p_Text"><span class="f_Text">SAM displays the name of the active inverter model at the top of the Inverter page. Click </span><span class="f_CHInterfaceElement">Change</span><span class="f_Text"> to choose a different model.</span></p>
 <p class="p_Text"><img src="ss_pvinverter-choosemodel.gif" width="420" height="304" alt="SS_PVInverter-ChooseModel" style="border:none" /></p>
 <p class="p_Text"><span class="f_Text">You can choose from three different inverter performance models:</span></p>
-<p style="text-align: left; padding: 0px 0px 0px 13px; margin: 0px 0px 3px 10px;"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;display:inline-block;width:13px;margin-left:-13px">&#9679;</span><span class="f_List"><a href="pvfp_inverter.htm#sandia" class="topiclink">Inverter CEC Database</a> calculates the system's AC output using parameters from SAM's CEC database of inverter parameters with the Sandia inverter model. To use this model, you simply choose an inverter from the list. Use this model for most analyses.</span></p><p style="text-align: left; padding: 0px 0px 0px 13px; margin: 0px 0px 3px 10px;"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;display:inline-block;width:13px;margin-left:-13px">&#9679;</span><span class="f_List"><a href="pvfp_inverter.htm#datasheet" class="topiclink">Inverter Datasheet</a> allows you to specify the inverter's parameters using values from a manufacturer's data sheet, and calculates coefficients for the Sandia inverter model from the parameters you provide. Use this model for an inverter that is not in the CEC database.</span></p><p style="text-align: left; padding: 0px 0px 0px 13px; margin: 0px 0px 6px 10px;"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;display:inline-block;width:13px;margin-left:-13px">&#9679;</span><span class="f_ListLast"><a href="pvfp_inverter.htm#partload" class="topiclink">Inverter Part Load Curve</a> allows you to specify a table of part-load efficiency values for an inverter using data from a manufacturer's data sheet or other source. Use this model when you have the inverter's part-load efficiency data.</span></p><p class="p_Text"><span class="f_Text">Each of the three inverter models calculates a DC to AC conversion efficiency, assuming that the DC power input to the inverter is equal to the derated DC output of the photovoltaic array. The inverter models limit the inverter's output to the inverter's Maximum AC Power parameter so that the inverter's output is &quot;clipped&quot; to this value. SAM uses the inverter Operating Ranges parameters to either size the system or display sizing suggestion messages on the <a href="pvfp_array.htm" class="topiclink">Array</a> page.</span></p>
+<div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 3px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:24px"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;">&#8226;</span></td><td style="border:none"><span class="f_List"><a href="pvfp_inverter.htm#sandia" class="topiclink">Inverter CEC Database</a> calculates the system's AC output using parameters from SAM's CEC database of inverter parameters with the Sandia inverter model. To use this model, you simply choose an inverter from the list. Use this model for most analyses.</span></td></tr></table></div><div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 3px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:24px"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;">&#8226;</span></td><td style="border:none"><span class="f_List"><a href="pvfp_inverter.htm#datasheet" class="topiclink">Inverter Datasheet</a> allows you to specify the inverter's parameters using values from a manufacturer's data sheet, and calculates coefficients for the Sandia inverter model from the parameters you provide. Use this model for an inverter that is not in the CEC database.</span></td></tr></table></div><div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 6px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:24px"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;">&#8226;</span></td><td style="border:none"><span class="f_ListLast"><a href="pvfp_inverter.htm#partload" class="topiclink">Inverter Part Load Curve</a> allows you to specify a table of part-load efficiency values for an inverter using data from a manufacturer's data sheet or other source. Use this model when you have the inverter's part-load efficiency data.</span></td></tr></table></div><p class="p_Text"><span class="f_Text">Each of the three inverter models calculates a DC to AC conversion efficiency, assuming that the DC power input to the inverter is equal to the derated DC output of the photovoltaic array. The inverter models limit the inverter's output to the inverter's Maximum AC Power parameter so that the inverter's output is &quot;clipped&quot; to this value. SAM uses the inverter Operating Ranges parameters to either size the system or display sizing suggestion messages on the <a href="pvfp_array.htm" class="topiclink">Array</a> page.</span></p>
 <p class="p_Text"><span class="f_Text">The inverter model reports several <a href="pm_flat_plate_pv.htm" class="topiclink">hourly simulation results</a> on the <a href="results.htm" class="topiclink">Results</a> page that you can use to understand how SAM models the inverter or to troubleshoot your analyses:</span></p>
 <p class="p_VariableName"><span class="f_VariableName">Gross ac output (kWh)</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The inverter's AC output in kilowatt-hours before the interconnection derate factors from the Array page.</span></p>
@@ -164,7 +59,7 @@ window.onunload = function() {doc.title = $("<div/>").html("SAM Help").text();}
 <p class="p_VariableDescription"><span class="f_VariableDescription">The amount of electricity consumed by the inverter, not including the night-time loss. SAM estimates the hourly power consumption loss by adjusting the value you specify for Power consumption during operation based on the inverter's DC input voltage. The Inverter Part Load model assumes that the inverter's power consumption is accounted for in the part-load efficiency table that you specify, so it reports an inverter power consumption loss value of zero for all hours.</span></p>
 <p class="p_VariableName"><span class="f_VariableName">Net ac output (kWh)</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The inverter's AC output, before the interconnection derate factors.</span></p>
-<div style="text-align: left; text-indent: 0px; border-color: #000000; border-style: solid; border-width: 1px; background: #ebebeb; padding: 2px 2px 2px 2px; margin: 3px 0px 3px 0px;"><table style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr style="vertical-align:baseline"><td style="border:none;padding:0;width:19px"><a id="sandia"></a><img id="TOGGLE0186A1_ICON" class="dropdown-toggle-icon" src="ico-minus-16x16.gif" width="16" height="16" alt="Click to expand or collapse" title="Click to expand or collapse" style="border:none" /></td><td style="border:none;padding:0"><span class="f_Heading2_atoc_"><a class="dropdown-toggle" style="font-size: 16pt; font-family: Arial; font-style: normal; font-weight: bold; color: #000000; background-color: transparent; text-decoration: none;" title="Click to expand or collapse" href="javascript:HMToggle('toggle','TOGGLE0186A1','TOGGLE0186A1_ICON')">Inverter CEC Database</a></span></td></tr></table></div><div id="TOGGLE0186A1" style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 6px 0px;"><table class="toggle content table" style="width:100%; border:none; border-spacing:0px;">
+<div style="text-align: left; text-indent: 0px; border-color: #000000; border-style: solid; border-width: 1px; background: #ebebeb; padding: 2px 2px 2px 2px; margin: 3px 0px 3px 0px;"><table style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr style="vertical-align:baseline"><td style="border:none;padding:0;width:19px"><a id="sandia"></a><img id="TOGGLE0186A1_ICON" class="dropdown-toggle-icon" src="ico-minus-16x16.gif" width="16" height="16" alt="Click to expand or collapse" title="Click to expand or collapse" style="border:none" /></td><td style="border:none;padding:0"><span class="f_Heading2_atoc_"><a class="dropdown-toggle" style="font-size: 16pt; font-family: Arial; font-style: normal; font-weight: bold; color: #000000; background-color: transparent; text-decoration: none;" title="Click to expand or collapse" href="javascript:HMToggle('toggle','TOGGLE0186A1','TOGGLE0186A1_ICON')">Inverter CEC Database</a></span></td></tr></table></div><div id="TOGGLE0186A1" style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 6px 0px;"><table class="ToggleContentTable" style="width:100%; border:none; border-spacing:0px;">
 <tr style="text-align:left;vertical-align:top;">
 <td style="vertical-align:top; padding:0px;"><p class="p_Text"><span class="f_Text">The Inverter CEC Database model is an implementation of the Sandia Model for Grid-Connected PV Inverters (Sandia inverter model). It is an empirically-based performance model of inverter performance that uses parameters from a database of commercially available inverters maintained by the California Energy Commission (CEC).</span></p>
 <p class="p_Text"><span class="f_Text">The Inverter CEC Database model consists of a set of equations that SAM uses to calculate the inverter's hourly AC output based on the DC input (equivalent to the derated output of the photovoltaic array) and a set of empirically-determined coefficients that describe the inverter's performance characteristics. The coefficients for each inverter are empirically determined from data provided by the inverter's manufacturer and either field measurements from an inverter of the same type installed in an operating photovoltaic system, or laboratory measurements. Measured values are taken using the CEC inverter test protocol.</span></p>
@@ -176,7 +71,7 @@ window.onunload = function() {doc.title = $("<div/>").html("SAM Help").text();}
 <span class="f_Note">&nbsp;</span><br />
 <span class="f_Note">If you are an inverter manufacturer and would like to add your inverter to the list, you should contact the California Energy Commission (CEC) or Sandia National Laboratories directly. For information about the Sandia Test and Evaluation program, see <a href="http://energy.sandia.gov/?page_id=279" target="_blank" class="weblink">http://energy.sandia.gov/?page_id=279</a>. For a list of Sandia contacts, see <a href="http://energy.sandia.gov/?page_id=2772" target="_blank" class="weblink">http://energy.sandia.gov/?page_id=2772</a>. For CEC contacts, see <a href="http://www.gosolarcalifornia.ca.gov/equipment/add.php" target="_blank" class="weblink">http://www.gosolarcalifornia.ca.gov/equipment/add.php</a>.</span></p>
 <p class="p_TitleProcedure"><span class="f_TitleProcedure">To use the Inverter CEC Database model:</span></p>
-<p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">1.</span><span class="f_ProcedureStep">On the Inverter page, click </span><span class="f_CHInterfaceElement">Change</span><span class="f_ProcedureStep"> and choose </span><span class="f_CHInterfaceElement">Inverter CEC Database</span><span class="f_ProcedureStep">.</span></p><p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">2.</span><span class="f_ProcedureStep">Choose an inverter from the list of available inverters. You can type a few letters of the manufacturer or inverter name in the Search box to filter the list.</span></p><p class="p_ProcedureStepNoNumber"><span class="f_ProcedureStepNoNumber">If you are modeling an inverter not included in the database and want to use the Sandia inverter model, you can use the <a href="pvfp_inverter.htm#datasheet" class="topiclink">Inverter Datasheet</a> model with values from a manufacturer's data sheet.</span></p>
+<div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 3px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:24px"><span style="font-size:10pt; font-family: 'Segoe UI';color:#000000;">1.</span></td><td style="border:none"><span class="f_ProcedureStep">On the Inverter page, click </span><span class="f_CHInterfaceElement">Change</span><span class="f_ProcedureStep"> and choose </span><span class="f_CHInterfaceElement">Inverter CEC Database</span><span class="f_ProcedureStep">.</span></td></tr></table></div><div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 3px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:24px"><span style="font-size:10pt; font-family: 'Segoe UI';color:#000000;">2.</span></td><td style="border:none"><span class="f_ProcedureStep">Choose an inverter from the list of available inverters. You can type a few letters of the manufacturer or inverter name in the Search box to filter the list.</span></td></tr></table></div><p class="p_ProcedureStepNoNumber"><span class="f_ProcedureStepNoNumber">If you are modeling an inverter not included in the database and want to use the Sandia inverter model, you can use the <a href="pvfp_inverter.htm#datasheet" class="topiclink">Inverter Datasheet</a> model with values from a manufacturer's data sheet.</span></p>
 <p class="p_Text"><span class="f_Text">Each inverter listing shows the manufacturer name, model number and AC voltage rating, and information in brackets about the organization responsible for generating the test data and the year the data was generated. &quot;CEC&quot; indicates that test data was generated by the California Energy Commission.</span></p>
 <h4 class="p_Heading4"><span class="f_Heading4">Efficiency Curve and Characteristics</span></h4>
 <p class="p_Text"><span class="f_Text">When you select an inverter from the list, SAM displays an efficiency curve and the inverter's parameters for your reference. The parameter values are from the Sandia inverter library, and are values that the Sandia inverter model uses as inputs.</span></p>
@@ -217,14 +112,14 @@ window.onunload = function() {doc.title = $("<div/>").html("SAM Help").text();}
 </tr>
 </table>
 </div>
-<div style="text-align: left; text-indent: 0px; border-color: #000000; border-style: solid; border-width: 1px; background: #ebebeb; padding: 2px 2px 2px 2px; margin: 3px 0px 3px 0px;"><table style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr style="vertical-align:baseline"><td style="border:none;padding:0;width:19px"><a id="datasheet"></a><img id="TOGGLE0186A2_ICON" class="dropdown-toggle-icon" src="ico-minus-16x16.gif" width="16" height="16" alt="Click to expand or collapse" title="Click to expand or collapse" style="border:none" /></td><td style="border:none;padding:0"><span class="f_Heading2_atoc_"><a class="dropdown-toggle" style="font-size: 16pt; font-family: Arial; font-style: normal; font-weight: bold; color: #000000; background-color: transparent; text-decoration: none;" title="Click to expand or collapse" href="javascript:HMToggle('toggle','TOGGLE0186A2','TOGGLE0186A2_ICON')">Inverter Datasheet</a></span></td></tr></table></div><div id="TOGGLE0186A2" style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 6px 0px;"><table class="toggle content table" style="width:100%; border:none; border-spacing:0px;">
+<div style="text-align: left; text-indent: 0px; border-color: #000000; border-style: solid; border-width: 1px; background: #ebebeb; padding: 2px 2px 2px 2px; margin: 3px 0px 3px 0px;"><table style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr style="vertical-align:baseline"><td style="border:none;padding:0;width:19px"><a id="datasheet"></a><img id="TOGGLE0186A2_ICON" class="dropdown-toggle-icon" src="ico-minus-16x16.gif" width="16" height="16" alt="Click to expand or collapse" title="Click to expand or collapse" style="border:none" /></td><td style="border:none;padding:0"><span class="f_Heading2_atoc_"><a class="dropdown-toggle" style="font-size: 16pt; font-family: Arial; font-style: normal; font-weight: bold; color: #000000; background-color: transparent; text-decoration: none;" title="Click to expand or collapse" href="javascript:HMToggle('toggle','TOGGLE0186A2','TOGGLE0186A2_ICON')">Inverter Datasheet</a></span></td></tr></table></div><div id="TOGGLE0186A2" style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 6px 0px;"><table class="ToggleContentTable" style="width:100%; border:none; border-spacing:0px;">
 <tr style="text-align:left;vertical-align:top;">
 <td style="vertical-align:top; padding:0px;"><p class="p_Text"><span class="f_Text">The Inverter Datasheet model is an implementation of the Sandia Model for Grid-Connected PV Inverters that allows you to model an inverter by entering data from a manufacturer's data sheet.</span></p>
 <p class="p_Text"><span class="f_Text">The Inverter Datasheet model consists of a set of equations that SAM uses to calculate the inverter's hourly AC output based on the DC input (equivalent to the derated output of the photovoltaic array) and a set of coefficients that describe the inverter's performance characteristics. SAM calculates the coefficients from the manufacturer data you provide.</span></p>
 <p class="p_Note"><span class="f_CHNote">Note.</span><span class="f_Note"> If you have a table of part-load efficiency values for the inverter, you may want to use the <a href="pvfp_inverter.htm#partload" class="topiclink">Inverter Part Load Curve model</a> instead of the Inverter Datasheet model.</span></p>
 <p class="p_TitleProcedure"><span class="f_TitleProcedure">To use the Inverter Datasheet model:</span></p>
 <p class="p_ProcedureStep"><span class="f_ProcedureStep">On the Inverter page, click </span><span class="f_CHInterfaceElement">Change</span><span class="f_ProcedureStep">, and choose </span><span class="f_CHInterfaceElement">Inverter Datasheet</span><span class="f_ProcedureStep">.</span></p>
-<p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 6px 24px;"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;display:inline-block;width:24px;margin-left:-24px">&#9679;</span><span class="f_ProcedureStepLast">Enter input values from the manufacturer's data sheet. See below for descriptions of the inputs.</span></p><h4 class="p_Heading4"><span class="f_Heading4">Power Ratings</span></h4>
+<div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 6px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:24px"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;">&#8226;</span></td><td style="border:none"><span class="f_ProcedureStepLast">Enter input values from the manufacturer's data sheet. See below for descriptions of the inputs.</span></td></tr></table></div><h4 class="p_Heading4"><span class="f_Heading4">Power Ratings</span></h4>
 <p class="p_VariableName"><span class="f_VariableName">Maximum AC output power</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The inverter's rated maximum AC output in Watts. Manufacturers may use different names for this value, such as continuous output power, rated active power, peak output, etc.</span></p>
 <p class="p_VariableName"><span class="f_VariableName">Weighted efficiency and Manufacturer efficiency</span></p>
@@ -265,12 +160,12 @@ window.onunload = function() {doc.title = $("<div/>").html("SAM Help").text();}
 </tr>
 </table>
 </div>
-<div style="text-align: left; text-indent: 0px; border-color: #000000; border-style: solid; border-width: 1px; background: #ebebeb; padding: 2px 2px 2px 2px; margin: 3px 0px 3px 0px;"><table style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr style="vertical-align:baseline"><td style="border:none;padding:0;width:19px"><a id="partload"></a><img id="TOGGLE0186A3_ICON" class="dropdown-toggle-icon" src="ico-minus-16x16.gif" width="16" height="16" alt="Click to expand or collapse" title="Click to expand or collapse" style="border:none" /></td><td style="border:none;padding:0"><span class="f_Heading2_atoc_"><a class="dropdown-toggle" style="font-size: 16pt; font-family: Arial; font-style: normal; font-weight: bold; color: #000000; background-color: transparent; text-decoration: none;" title="Click to expand or collapse" href="javascript:HMToggle('toggle','TOGGLE0186A3','TOGGLE0186A3_ICON')">Inverter Part Load Curve</a></span></td></tr></table></div><div id="TOGGLE0186A3" style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 6px 0px;"><table class="toggle content table" style="width:100%; border:none; border-spacing:0px;">
+<div style="text-align: left; text-indent: 0px; border-color: #000000; border-style: solid; border-width: 1px; background: #ebebeb; padding: 2px 2px 2px 2px; margin: 3px 0px 3px 0px;"><table style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr style="vertical-align:baseline"><td style="border:none;padding:0;width:19px"><a id="partload"></a><img id="TOGGLE0186A3_ICON" class="dropdown-toggle-icon" src="ico-minus-16x16.gif" width="16" height="16" alt="Click to expand or collapse" title="Click to expand or collapse" style="border:none" /></td><td style="border:none;padding:0"><span class="f_Heading2_atoc_"><a class="dropdown-toggle" style="font-size: 16pt; font-family: Arial; font-style: normal; font-weight: bold; color: #000000; background-color: transparent; text-decoration: none;" title="Click to expand or collapse" href="javascript:HMToggle('toggle','TOGGLE0186A3','TOGGLE0186A3_ICON')">Inverter Part Load Curve</a></span></td></tr></table></div><div id="TOGGLE0186A3" style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 6px 0px;"><table class="ToggleContentTable" style="width:100%; border:none; border-spacing:0px;">
 <tr style="text-align:left;vertical-align:top;">
 <td style="vertical-align:top; padding:0px;"><p class="p_Text"><span class="f_Text">The Inverter Part Load Curve model allows you to model an inverter by entering part-load efficiency and other data from a manufacturer's data sheet. Unlike the CEC Database and Inverter Datasheet inverter models, this model is not based on the Sandia inverter model. Instead, it determines the inverter's hourly conversion efficiency based on the part-load efficiency data points and night-time loss values you provide.</span></p>
 <p class="p_Note"><span class="f_CHNote">Note.</span><span class="f_Note"> If you do not have a table of part-load efficiency values for the inverter, you may want to use the <a href="pvfp_inverter.htm#datasheet" class="topiclink">Inverter Datasheet model</a> instead of the Part Load Curve model.</span></p>
 <p class="p_TitleProcedure"><span class="f_TitleProcedure">To use the Inverter Part Load Curve model:</span></p>
-<p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">1.</span><span class="f_ProcedureStep">On the Inverter page, click </span><span class="f_CHInterfaceElement">Change</span><span class="f_ProcedureStep">, and choose </span><span class="f_CHInterfaceElement">Inverter Part Load Curve</span><span class="f_ProcedureStep">.</span></p><p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">2.</span><span class="f_ProcedureStep">Type a value for the </span><span class="f_CHInterfaceElement">Maximum AC output power</span><span class="f_ProcedureStep">, and choose </span><span class="f_CHInterfaceElement">CEC efficiency</span><span class="f_ProcedureStep"> or </span><span class="f_CHInterfaceElement">European efficiency</span><span class="f_ProcedureStep">.</span></p><p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">3.</span><span class="f_ProcedureStep">Type values for the </span><span class="f_CHInterfaceElement">Operating Ranges</span><span class="f_ProcedureStep"> input variables and for </span><span class="f_CHInterfaceElement">Power consumption at night loss</span><span class="f_ProcedureStep">.</span></p><p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">4.</span><span class="f_ProcedureStep">Type values in the part-load efficiency table and for the operating range input variables.</span></p><p class="p_ProcedureStepNoNumber"><span class="f_ProcedureStepNoNumber">See below for descriptions of the variables, and more detailed instructions for working with the part-load efficency table.</span></p>
+<div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 3px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:24px"><span style="font-size:10pt; font-family: 'Segoe UI';color:#000000;">1.</span></td><td style="border:none"><span class="f_ProcedureStep">On the Inverter page, click </span><span class="f_CHInterfaceElement">Change</span><span class="f_ProcedureStep">, and choose </span><span class="f_CHInterfaceElement">Inverter Part Load Curve</span><span class="f_ProcedureStep">.</span></td></tr></table></div><div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 3px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:24px"><span style="font-size:10pt; font-family: 'Segoe UI';color:#000000;">2.</span></td><td style="border:none"><span class="f_ProcedureStep">Type a value for the </span><span class="f_CHInterfaceElement">Maximum AC output power</span><span class="f_ProcedureStep">, and choose </span><span class="f_CHInterfaceElement">CEC efficiency</span><span class="f_ProcedureStep"> or </span><span class="f_CHInterfaceElement">European efficiency</span><span class="f_ProcedureStep">.</span></td></tr></table></div><div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 3px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:24px"><span style="font-size:10pt; font-family: 'Segoe UI';color:#000000;">3.</span></td><td style="border:none"><span class="f_ProcedureStep">Type values for the </span><span class="f_CHInterfaceElement">Operating Ranges</span><span class="f_ProcedureStep"> input variables and for </span><span class="f_CHInterfaceElement">Power consumption at night loss</span><span class="f_ProcedureStep">.</span></td></tr></table></div><div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 3px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:24px"><span style="font-size:10pt; font-family: 'Segoe UI';color:#000000;">4.</span></td><td style="border:none"><span class="f_ProcedureStep">Type values in the part-load efficiency table and for the operating range input variables.</span></td></tr></table></div><p class="p_ProcedureStepNoNumber"><span class="f_ProcedureStepNoNumber">See below for descriptions of the variables, and more detailed instructions for working with the part-load efficency table.</span></p>
 <h4 class="p_Heading4"><span class="f_Heading4">Power Ratings</span></h4>
 <p class="p_VariableName"><span class="f_VariableName">Maximum AC output power</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The inverter's rated maximum AC output in Watts. Manufacturers may use different names for this value, such as continuous output power, rated active power, peak output, etc.</span></p>
@@ -302,109 +197,109 @@ window.onunload = function() {doc.title = $("<div/>").html("SAM Help").text();}
 <p class="p_Text"><span class="f_Text">SAM uses the part-load efficiency table you specify to determine the inverter's efficiency during simulations. You can either type values in the table by hand, import values to the table from a properly formatted text file, or paste data to the table from your computer's clipboard.</span></p>
 <p class="p_Text"><span class="f_Text">SAM uses linear interpolation to calculate efficiency values for output power levels between the points in the table. If you specify only a single row, SAM assumes that the inverter's efficiency is constant over its full output power range.</span></p>
 <p class="p_TitleProcedure"><span class="f_TitleProcedure">Tips for working with the part-load efficiency table:</span></p>
-<p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;display:inline-block;width:24px;margin-left:-24px">&#9679;</span><span class="f_ProcedureStep">To clear the table, change </span><span class="f_CHInterfaceElement">Rows</span><span class="f_ProcedureStep"> to 1, and then change it to the number of rows in your data set.</span></p><p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;display:inline-block;width:24px;margin-left:-24px">&#9679;</span><span class="f_ProcedureStep">Double click a cell to select it.</span></p><p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;display:inline-block;width:24px;margin-left:-24px">&#9679;</span><span class="f_ProcedureStep">Use the Tab and Shift-Tab keys to move between columns.</span></p><p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;display:inline-block;width:24px;margin-left:-24px">&#9679;</span><span class="f_ProcedureStep">Use the Enter key to move down a column.</span></p><p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;display:inline-block;width:24px;margin-left:-24px">&#9679;</span><span class="f_ProcedureStep">If you type a non-numeric character, SAM replaces the character with a zero.</span></p><p class="p_TitleProcedure"><span class="f_TitleProcedure">To specify the part-load efficiency curve using the table:</span></p>
-<p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">1.</span><span class="f_ProcedureStep">Under Rows, type the number of data points you want to include in the table. You must specify at least one row of values in the table.</span></p><p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">2.</span><span class="f_ProcedureStep">For each row in the table, type a value for output power as a percentage of the inverter's rated capacity, and a DC to AC conversion efficiency value as a percentage.</span></p><p class="p_ProcedureStepNoNumber"><span class="f_ProcedureStepNoNumber">SAM displays the part-load efficiency curve in the plot area as you type values in the table.</span></p>
+<div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 3px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:24px"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;">&#8226;</span></td><td style="border:none"><span class="f_ProcedureStep">To clear the table, change </span><span class="f_CHInterfaceElement">Rows</span><span class="f_ProcedureStep"> to 1, and then change it to the number of rows in your data set.</span></td></tr></table></div><div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 3px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:24px"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;">&#8226;</span></td><td style="border:none"><span class="f_ProcedureStep">Double click a cell to select it.</span></td></tr></table></div><div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 3px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:24px"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;">&#8226;</span></td><td style="border:none"><span class="f_ProcedureStep">Use the Tab and Shift-Tab keys to move between columns.</span></td></tr></table></div><div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 3px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:24px"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;">&#8226;</span></td><td style="border:none"><span class="f_ProcedureStep">Use the Enter key to move down a column.</span></td></tr></table></div><div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 3px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:24px"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;">&#8226;</span></td><td style="border:none"><span class="f_ProcedureStep">If you type a non-numeric character, SAM replaces the character with a zero.</span></td></tr></table></div><p class="p_TitleProcedure"><span class="f_TitleProcedure">To specify the part-load efficiency curve using the table:</span></p>
+<div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 3px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:24px"><span style="font-size:10pt; font-family: 'Segoe UI';color:#000000;">1.</span></td><td style="border:none"><span class="f_ProcedureStep">Under Rows, type the number of data points you want to include in the table. You must specify at least one row of values in the table.</span></td></tr></table></div><div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 3px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:24px"><span style="font-size:10pt; font-family: 'Segoe UI';color:#000000;">2.</span></td><td style="border:none"><span class="f_ProcedureStep">For each row in the table, type a value for output power as a percentage of the inverter's rated capacity, and a DC to AC conversion efficiency value as a percentage.</span></td></tr></table></div><p class="p_ProcedureStepNoNumber"><span class="f_ProcedureStepNoNumber">SAM displays the part-load efficiency curve in the plot area as you type values in the table.</span></p>
 <p class="p_TitleProcedure"><span class="f_TitleProcedure">To import part-load efficiency data from a text file:</span></p>
-<p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">1.</span><span class="f_ProcedureStep">Prepare a text file of comma-separated values. The file should have one line for each output-efficiency value pair separated by a comma with no header rows. For example:</span></p><p class="p_ProcedureStepNoNumber"><span class="f_ProcedureStepNoNumber">0,0</span></p>
+<div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 3px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:24px"><span style="font-size:10pt; font-family: 'Segoe UI';color:#000000;">1.</span></td><td style="border:none"><span class="f_ProcedureStep">Prepare a text file of comma-separated values. The file should have one line for each output-efficiency value pair separated by a comma with no header rows. For example:</span></td></tr></table></div><p class="p_ProcedureStepNoNumber"><span class="f_ProcedureStepNoNumber">0,0</span></p>
 <p class="p_ProcedureStepNoNumber"><span class="f_ProcedureStepNoNumber">10,96.1</span></p>
 <p class="p_ProcedureStepNoNumber"><span class="f_ProcedureStepNoNumber">20,97.55</span></p>
 <p class="p_ProcedureStepNoNumber"><span class="f_ProcedureStepNoNumber">30,97.87</span></p>
 <p class="p_ProcedureStepNoNumber"><span class="f_ProcedureStepNoNumber">...</span></p>
 <p class="p_ProcedureStepNoNumber"><span class="f_ProcedureStepNoNumber">The output percentages should increase from the first row to the last, but not necessarily in equal increments.</span></p>
 <p class="p_ProcedureStepNoNumber"><span class="f_ProcedureStepNoNumber">You can also export the efficiency data from the default flat plate photovoltaic case to see an example of what the file should look like.</span></p>
-<p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">2.</span><span class="f_ProcedureStep">Click </span><span class="f_CHInterfaceElement">Import</span><span class="f_ProcedureStep">.</span></p><p class="p_ProcedureStepNoNumber"><span class="f_ProcedureStepNoNumber">SAM populates the part-load efficiency table with data from the file.</span></p>
+<div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 3px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:24px"><span style="font-size:10pt; font-family: 'Segoe UI';color:#000000;">2.</span></td><td style="border:none"><span class="f_ProcedureStep">Click </span><span class="f_CHInterfaceElement">Import</span><span class="f_ProcedureStep">.</span></td></tr></table></div><p class="p_ProcedureStepNoNumber"><span class="f_ProcedureStepNoNumber">SAM populates the part-load efficiency table with data from the file.</span></p>
 <p class="p_TitleProcedure"><span class="f_TitleProcedure">To paste part-load efficiency data from your computer's clipboard:</span></p>
-<p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">1.</span><span class="f_ProcedureStep">Prepare a spreadsheet file or text file with one row for each output-efficiency pair, and output and efficiency values in separate columns or separated by a tab.</span></p><p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">2.</span><span class="f_ProcedureStep">In your spreadsheet program or text editor, select the two columns containing the data. Do not include column headings or other labels or data.</span></p><p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">3.</span><span class="f_ProcedureStep">In SAM, on the Inverter page under </span><span class="f_CHInterfaceElement">Part Load Efficiency</span><span class="f_ProcedureStep">, click </span><span class="f_CHInterfaceElement">Paste</span><span class="f_ProcedureStep">.</span></p><p class="p_ProcedureStepNoNumber"><span class="f_ProcedureStepNoNumber">SAM populates the part-load efficiency table with data from the clipboard.</span></p>
+<div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 3px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:24px"><span style="font-size:10pt; font-family: 'Segoe UI';color:#000000;">1.</span></td><td style="border:none"><span class="f_ProcedureStep">Prepare a spreadsheet file or text file with one row for each output-efficiency pair, and output and efficiency values in separate columns or separated by a tab.</span></td></tr></table></div><div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 3px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:24px"><span style="font-size:10pt; font-family: 'Segoe UI';color:#000000;">2.</span></td><td style="border:none"><span class="f_ProcedureStep">In your spreadsheet program or text editor, select the two columns containing the data. Do not include column headings or other labels or data.</span></td></tr></table></div><div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 3px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:24px"><span style="font-size:10pt; font-family: 'Segoe UI';color:#000000;">3.</span></td><td style="border:none"><span class="f_ProcedureStep">In SAM, on the Inverter page under </span><span class="f_CHInterfaceElement">Part Load Efficiency</span><span class="f_ProcedureStep">, click </span><span class="f_CHInterfaceElement">Paste</span><span class="f_ProcedureStep">.</span></td></tr></table></div><p class="p_ProcedureStepNoNumber"><span class="f_ProcedureStepNoNumber">SAM populates the part-load efficiency table with data from the clipboard.</span></p>
 </td>
 </tr>
 </table>
 </div>
-<div style="text-align: left; text-indent: 0px; border-color: #000000; border-style: solid; border-width: 1px; background: #ebebeb; padding: 2px 2px 2px 2px; margin: 3px 0px 3px 0px;"><table style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr style="vertical-align:baseline"><td style="border:none;padding:0;width:19px"><a id="weightedefficiency"></a><img id="TOGGLE0186A4_ICON" class="dropdown-toggle-icon" src="ico-minus-16x16.gif" width="16" height="16" alt="Click to expand or collapse" title="Click to expand or collapse" style="border:none" /></td><td style="border:none;padding:0"><span class="f_Heading2_atoc_"><a class="dropdown-toggle" style="font-size: 16pt; font-family: Arial; font-style: normal; font-weight: bold; color: #000000; background-color: transparent; text-decoration: none;" title="Click to expand or collapse" href="javascript:HMToggle('toggle','TOGGLE0186A4','TOGGLE0186A4_ICON')">Weighted and Manufacturer Efficiency Values</a></span></td></tr></table></div><div id="TOGGLE0186A4" style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 6px 0px;"><table class="toggle content table" style="width:100%; border:none; border-spacing:0px;">
+<div style="text-align: left; text-indent: 0px; border-color: #000000; border-style: solid; border-width: 1px; background: #ebebeb; padding: 2px 2px 2px 2px; margin: 3px 0px 3px 0px;"><table style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr style="vertical-align:baseline"><td style="border:none;padding:0;width:19px"><a id="weightedefficiency"></a><img id="TOGGLE0186A4_ICON" class="dropdown-toggle-icon" src="ico-minus-16x16.gif" width="16" height="16" alt="Click to expand or collapse" title="Click to expand or collapse" style="border:none" /></td><td style="border:none;padding:0"><span class="f_Heading2_atoc_"><a class="dropdown-toggle" style="font-size: 16pt; font-family: Arial; font-style: normal; font-weight: bold; color: #000000; background-color: transparent; text-decoration: none;" title="Click to expand or collapse" href="javascript:HMToggle('toggle','TOGGLE0186A4','TOGGLE0186A4_ICON')">Weighted and Manufacturer Efficiency Values</a></span></td></tr></table></div><div id="TOGGLE0186A4" style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 6px 0px;"><table class="ToggleContentTable" style="width:100%; border:none; border-spacing:0px;">
 <tr style="text-align:left;vertical-align:top;">
 <td style="vertical-align:top; padding:0px;"><p class="p_Text"><span class="f_Text">When you use either the Inverter Datasheet model or the Inverter Part Load Curve model, you must provide SAM with an efficiency value that determines the invereter's maximum DC input power that SAM uses for sizing the photovoltaic array. </span></p>
 <p class="p_Text"><span class="f_Text">Inverter manufacturers often show several efficiency values on an inverter's datasheet. Weighted efficiency values are more accurate representations of an inverter's efficiency over a range of output levels than an efficiency value at a single operating point.</span></p>
 <p class="p_Text"><span class="f_Text">Many inverter data sheets will show two versions of the weighted efficiency value: The CEC weighted efficiency, or the European weighted efficiency. The table below shows the weighting factors used to determine both versions of the weighted efficiency. In general, you should use the CEC weighted efficiency to model a system in a sunny location, and you should use the European weighted efficiency for less sunny locations. The following equation shows how the weighted efficiency is calculated, where ηweighted is the weighted efficiency value, F1..F7 are shown in the table below, and η5, η10... are the inverter part-load efficiencies at 5%, 10%... of maximum AC output:</span></p>
 <p class="p_EquationExcel"><span class="f_EquationExcel">ηweighted = F1 × η5 + F2 × η10 + F3 × η20 + F4 × η30 + F5 × η50 + F6 × η75 + F7 × η100</span></p>
 <p class="p_TitleTable"><span class="f_TitleTable">Weighting Factors for CEC and European Weighted Inverter Efficiencies</span></p>
-<div style="text-align: center; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 0px 0px;"><table style="width:100%; border:none; border-spacing:0px; border-collapse:collapse;">
+<div style="text-align: center; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 0px 0px;"><table style="margin:0 auto; border:none; border-spacing:0px;">
 <tr style="text-align:left;vertical-align:top;">
-<td style="vertical-align:top; width:68px; height:19px; padding:2px; border:solid 1px #000000; border-top:none; border-right:none; border-bottom:none; border-left:none;"><p class="p_TableHeadColumn"><span class="f_TableHeadColumn">Percent of Inverter Maximum AC Output</span></p>
+<td style="vertical-align:top; width:68px; height:19px; padding:0px;"><p class="p_TableHeadColumn"><span class="f_TableHeadColumn">Percent of Inverter Maximum AC Output</span></p>
 </td>
-<td style="vertical-align:top; width:68px; height:19px; padding:2px; border:solid 1px #000000; border-top:none; border-right:none; border-bottom:none; border-left:none;"><p class="p_TableHeadColumn"><span class="f_TableHeadColumn">Factor</span></p>
+<td style="vertical-align:top; width:68px; height:19px; padding:0px;"><p class="p_TableHeadColumn"><span class="f_TableHeadColumn">Factor</span></p>
 </td>
-<td style="vertical-align:top; width:68px; height:19px; padding:2px; border:solid 1px #000000; border-top:none; border-right:none; border-bottom:none; border-left:none;"><p class="p_TableHeadColumn"><span class="f_TableHeadColumn">CEC Weighting Factor</span></p>
+<td style="vertical-align:top; width:68px; height:19px; padding:0px;"><p class="p_TableHeadColumn"><span class="f_TableHeadColumn">CEC Weighting Factor</span></p>
 </td>
-<td style="vertical-align:top; width:68px; height:19px; padding:2px; border:solid 1px #000000; border-top:none; border-right:none; border-bottom:none; border-left:none;"><p class="p_TableHeadColumn"><span class="f_TableHeadColumn">European Weighting Factor</span></p>
+<td style="vertical-align:top; width:68px; height:19px; padding:0px;"><p class="p_TableHeadColumn"><span class="f_TableHeadColumn">European Weighting Factor</span></p>
 </td>
 </tr>
 <tr style="text-align:left;vertical-align:top;">
-<td style="vertical-align:top; width:68px; height:19px; background-color:#c0c0c0; padding:2px; border:solid 1px #000000; border-top:none; border-right:none; border-bottom:none; border-left:none;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">5</span></p>
+<td style="vertical-align:top; width:68px; height:19px; background-color:#c0c0c0; padding:0px;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">5</span></p>
 </td>
-<td style="vertical-align:top; width:68px; height:19px; background-color:#c0c0c0; padding:2px; border:solid 1px #000000; border-top:none; border-right:none; border-bottom:none; border-left:none;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">F1</span></p>
+<td style="vertical-align:top; width:68px; height:19px; background-color:#c0c0c0; padding:0px;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">F1</span></p>
 </td>
-<td style="vertical-align:top; width:68px; height:19px; background-color:#c0c0c0; padding:2px; border:solid 1px #000000; border-top:none; border-right:none; border-bottom:none; border-left:none;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">0.00</span></p>
+<td style="vertical-align:top; width:68px; height:19px; background-color:#c0c0c0; padding:0px;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">0.00</span></p>
 </td>
-<td style="vertical-align:top; width:68px; height:19px; background-color:#c0c0c0; padding:2px; border:solid 1px #000000; border-top:none; border-right:none; border-bottom:none; border-left:none;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">0.03</span></p>
-</td>
-</tr>
-<tr style="text-align:left;vertical-align:top;">
-<td style="vertical-align:top; width:68px; height:19px; padding:2px; border:solid 1px #000000; border-top:none; border-right:none; border-bottom:none; border-left:none;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">10</span></p>
-</td>
-<td style="vertical-align:top; width:68px; height:19px; padding:2px; border:solid 1px #000000; border-top:none; border-right:none; border-bottom:none; border-left:none;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">F2</span></p>
-</td>
-<td style="vertical-align:top; width:68px; height:19px; padding:2px; border:solid 1px #000000; border-top:none; border-right:none; border-bottom:none; border-left:none;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">0.04</span></p>
-</td>
-<td style="vertical-align:top; width:68px; height:19px; padding:2px; border:solid 1px #000000; border-top:none; border-right:none; border-bottom:none; border-left:none;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">0.06</span></p>
+<td style="vertical-align:top; width:68px; height:19px; background-color:#c0c0c0; padding:0px;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">0.03</span></p>
 </td>
 </tr>
 <tr style="text-align:left;vertical-align:top;">
-<td style="vertical-align:top; width:68px; height:19px; background-color:#c0c0c0; padding:2px; border:solid 1px #000000; border-top:none; border-right:none; border-bottom:none; border-left:none;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">20</span></p>
+<td style="vertical-align:top; width:68px; height:19px; padding:0px;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">10</span></p>
 </td>
-<td style="vertical-align:top; width:68px; height:19px; background-color:#c0c0c0; padding:2px; border:solid 1px #000000; border-top:none; border-right:none; border-bottom:none; border-left:none;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">F3</span></p>
+<td style="vertical-align:top; width:68px; height:19px; padding:0px;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">F2</span></p>
 </td>
-<td style="vertical-align:top; width:68px; height:19px; background-color:#c0c0c0; padding:2px; border:solid 1px #000000; border-top:none; border-right:none; border-bottom:none; border-left:none;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">0.05</span></p>
+<td style="vertical-align:top; width:68px; height:19px; padding:0px;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">0.04</span></p>
 </td>
-<td style="vertical-align:top; width:68px; height:19px; background-color:#c0c0c0; padding:2px; border:solid 1px #000000; border-top:none; border-right:none; border-bottom:none; border-left:none;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">0.13</span></p>
-</td>
-</tr>
-<tr style="text-align:left;vertical-align:top;">
-<td style="vertical-align:top; width:68px; height:19px; padding:2px; border:solid 1px #000000; border-top:none; border-right:none; border-bottom:none; border-left:none;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">30</span></p>
-</td>
-<td style="vertical-align:top; width:68px; height:19px; padding:2px; border:solid 1px #000000; border-top:none; border-right:none; border-bottom:none; border-left:none;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">F4</span></p>
-</td>
-<td style="vertical-align:top; width:68px; height:19px; padding:2px; border:solid 1px #000000; border-top:none; border-right:none; border-bottom:none; border-left:none;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">0.12</span></p>
-</td>
-<td style="vertical-align:top; width:68px; height:19px; padding:2px; border:solid 1px #000000; border-top:none; border-right:none; border-bottom:none; border-left:none;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">0.10</span></p>
+<td style="vertical-align:top; width:68px; height:19px; padding:0px;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">0.06</span></p>
 </td>
 </tr>
 <tr style="text-align:left;vertical-align:top;">
-<td style="vertical-align:top; width:68px; height:19px; background-color:#c0c0c0; padding:2px; border:solid 1px #000000; border-top:none; border-right:none; border-bottom:none; border-left:none;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">50</span></p>
+<td style="vertical-align:top; width:68px; height:19px; background-color:#c0c0c0; padding:0px;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">20</span></p>
 </td>
-<td style="vertical-align:top; width:68px; height:19px; background-color:#c0c0c0; padding:2px; border:solid 1px #000000; border-top:none; border-right:none; border-bottom:none; border-left:none;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">F5</span></p>
+<td style="vertical-align:top; width:68px; height:19px; background-color:#c0c0c0; padding:0px;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">F3</span></p>
 </td>
-<td style="vertical-align:top; width:68px; height:19px; background-color:#c0c0c0; padding:2px; border:solid 1px #000000; border-top:none; border-right:none; border-bottom:none; border-left:none;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">0.21</span></p>
+<td style="vertical-align:top; width:68px; height:19px; background-color:#c0c0c0; padding:0px;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">0.05</span></p>
 </td>
-<td style="vertical-align:top; width:68px; height:19px; background-color:#c0c0c0; padding:2px; border:solid 1px #000000; border-top:none; border-right:none; border-bottom:none; border-left:none;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">0.48</span></p>
-</td>
-</tr>
-<tr style="text-align:left;vertical-align:top;">
-<td style="vertical-align:top; width:68px; height:19px; padding:2px; border:solid 1px #000000; border-top:none; border-right:none; border-bottom:none; border-left:none;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">75</span></p>
-</td>
-<td style="vertical-align:top; width:68px; height:19px; padding:2px; border:solid 1px #000000; border-top:none; border-right:none; border-bottom:none; border-left:none;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">F6</span></p>
-</td>
-<td style="vertical-align:top; width:68px; height:19px; padding:2px; border:solid 1px #000000; border-top:none; border-right:none; border-bottom:none; border-left:none;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">0.53</span></p>
-</td>
-<td style="vertical-align:top; width:68px; height:19px; padding:2px; border:solid 1px #000000; border-top:none; border-right:none; border-bottom:none; border-left:none;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">0.00</span></p>
+<td style="vertical-align:top; width:68px; height:19px; background-color:#c0c0c0; padding:0px;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">0.13</span></p>
 </td>
 </tr>
 <tr style="text-align:left;vertical-align:top;">
-<td style="vertical-align:top; width:68px; height:19px; background-color:#c0c0c0; padding:2px; border:solid 1px #000000; border-top:none; border-right:none; border-bottom:none; border-left:none;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">100</span></p>
+<td style="vertical-align:top; width:68px; height:19px; padding:0px;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">30</span></p>
 </td>
-<td style="vertical-align:top; width:68px; height:19px; background-color:#c0c0c0; padding:2px; border:solid 1px #000000; border-top:none; border-right:none; border-bottom:none; border-left:none;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">F7</span></p>
+<td style="vertical-align:top; width:68px; height:19px; padding:0px;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">F4</span></p>
 </td>
-<td style="vertical-align:top; width:68px; height:19px; background-color:#c0c0c0; padding:2px; border:solid 1px #000000; border-top:none; border-right:none; border-bottom:none; border-left:none;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">0.05</span></p>
+<td style="vertical-align:top; width:68px; height:19px; padding:0px;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">0.12</span></p>
 </td>
-<td style="vertical-align:top; width:68px; height:19px; background-color:#c0c0c0; padding:2px; border:solid 1px #000000; border-top:none; border-right:none; border-bottom:none; border-left:none;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">2.00</span></p>
+<td style="vertical-align:top; width:68px; height:19px; padding:0px;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">0.10</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; width:68px; height:19px; background-color:#c0c0c0; padding:0px;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">50</span></p>
+</td>
+<td style="vertical-align:top; width:68px; height:19px; background-color:#c0c0c0; padding:0px;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">F5</span></p>
+</td>
+<td style="vertical-align:top; width:68px; height:19px; background-color:#c0c0c0; padding:0px;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">0.21</span></p>
+</td>
+<td style="vertical-align:top; width:68px; height:19px; background-color:#c0c0c0; padding:0px;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">0.48</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; width:68px; height:19px; padding:0px;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">75</span></p>
+</td>
+<td style="vertical-align:top; width:68px; height:19px; padding:0px;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">F6</span></p>
+</td>
+<td style="vertical-align:top; width:68px; height:19px; padding:0px;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">0.53</span></p>
+</td>
+<td style="vertical-align:top; width:68px; height:19px; padding:0px;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">0.00</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; width:68px; height:19px; background-color:#c0c0c0; padding:0px;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">100</span></p>
+</td>
+<td style="vertical-align:top; width:68px; height:19px; background-color:#c0c0c0; padding:0px;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">F7</span></p>
+</td>
+<td style="vertical-align:top; width:68px; height:19px; background-color:#c0c0c0; padding:0px;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">0.05</span></p>
+</td>
+<td style="vertical-align:top; width:68px; height:19px; background-color:#c0c0c0; padding:0px;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">2.00</span></p>
 </td>
 </tr>
 </table>
@@ -414,11 +309,8 @@ window.onunload = function() {doc.title = $("<div/>").html("SAM Help").text();}
 </table>
 </div>
 
-<!--ZOOMSTOP--> 
+</td></tr></table>
 
-
-</div> <!-- idcontent -->
-</div><!-- hmbox --> 
 <script type="text/javascript">
 HMInitToggle('TOGGLE0186A1_ICON','hm.type','dropdown','hm.state','0','hm.src0','ico-plus-16x16.gif','hm.src1','ico-minus-16x16.gif','onclick','HMToggle(\'toggle\',\'TOGGLE0186A1\',\'TOGGLE0186A1_ICON\')');
 HMInitToggle('TOGGLE0186A1','hm.type','dropdown','hm.state','0');

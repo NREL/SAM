@@ -80,9 +80,12 @@ function hmContentFrame() {
   return hmcontent;  	
 }
 
+var lastTrackEvent = "";
+
 function track(action, data) {
   if (gaaccount != "") {	
-    if (window._gat) {
+    if ((window._gat) && (lastTrackEvent != action+data)) {
+      lastTrackEvent = action+data;	
       var pageTracker = window._gat._getTracker(gaaccount);
       switch(action) {
       case "topic":

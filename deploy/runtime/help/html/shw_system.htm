@@ -1,115 +1,19 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
 <head>
    <title>Solar Water Heating</title>
-   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
    <meta name="generator" content="Help &amp; Manual" />
    <meta name="keywords" content="" />
    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-   <meta http-equiv="content-language" content="en-us" />
-   <meta name="description" content="The SWH System page is where you specify the design parameters for the solar water heating system. For a general description of the model, see Solar Water Heating Overview." />
-   <meta http-equiv="Content-Style-Type" content="text/css" />
+   
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
    <link type="text/css" href="default.css" rel="stylesheet" />
-   <link id="tabscheme" type="text/css" href="hm_topic.css" rel="stylesheet" />   
-<style type="text/css">
-/* No header topics */
-
-/* Breadcrumb trail */
-p#breadcrumbs {
-font-family: Verdana, Tahoma, Helvetica, Sans-Serif;   padding: 2px 0 1px 2px;
-   margin: 0;
-   font-size: 8pt; 
-   color: #999;
-   }   
-p#breadcrumbs a { color: #999; text-decoration: none;}
-p#breadcrumbs a:visited { color: #999; }
-p#breadcrumbs a:hover { color: #333; border-bottom: 1px dotted #333; }
-
-/* Search hightlight color */
-span.highlight {background-color: #ffff40;}
-</style>
-<script type="text/javascript">
-var hmHeaderTopic = true;
-
-</script> 
-<!--[if IE 9]>
-<link id="iesvgcss" rel="stylesheet" type="text/css" href="hm_webhelp_svg.css" />
-<![endif]-->	
-<script src="jquery.js"></script>
-<script type="text/javascript" src="jquery.tools.min.js"></script>
-<script type="text/javascript" src="jquery.scrollTo-min.js"></script>
-<script type="text/javascript"> 
-// General topic variables
-var tVars = {
-   hmHelpPage: "index.html",
-   nextP: "wind_power.htm",
-   prevP: "shw_overview.htm",
-   currP: "shw_system.htm",
-   defP: "introduction.htm",
-   titleP: "Solar Water Heating",
-   mailsubject: "Feedback on: SAM Help - Solar Water Heating",
-   simplesubject: "Documentation%20Feedback",
-   mailid: "SHW_System",
-   mailpath: "Solar Water Heating &gt; Solar Water Heating /",
-   mailbody: "Dear SAM Support,",
-   mailrecipient: "SAM Support <sam.support@nrel.gov>",
-   simplerecipient: "sam.support@nrel.gov",
-   fbtype: false,
-   header: true,
-   background: "bg.png",
-   tablesReady: false,
-   togglesReady: false,
-   webRedirect: true
-   }
-// Popup configuration
- var hmpBShadow = true;
- var hmPopSmallDim = 500;
- var hmPopKillVideo = false;
- // AutoTOC variables
- var hmatocvars = {
-   atoc_show: true,
-   atoc_title: "Contents",
-   atoc_tip: "Jump to:&nbsp;",
-   atoc_minHeaders: 2,
-   atoc_btntip_off: "No contents entries on this page",
-   atoc_btntip_on: "Display/hide topic directory",
-   atoc_toptip: "Jump to top of page",
-   atoc_top: "Scroll to Top of Page",
-   atoc_bg: "#f6f6f6",
-   atoc_border: "silver",
-   atoc_linkcolor: "#444",
-   atoc_linklimit: 45,
-   atoc_hovercolor: "#000",
-   atoc_hoverbgcolor: "#e0e0e0"
-}
-// Sortable tables
-var sortVars = {
-   europeandate: false,
-   germanNumbers: false,
-   imagePath: "",
-   image_up: "arrow-up.gif",
-   image_down: "arrow-down.gif",
-   image_empty: "arrow-empty.gif",
-   image_none: "arrow-none.gif",
-   sort_tip: "Click to sort on this column",
-   umlauts: "false"
-   }
-
-</script>
-
-<script type="text/javascript"> 
-$(document).ready(function() {
-var doc = document;  
-try {
-if (parent.hmWebHelp.navWidth != null) doc = parent.document;
-doc.title = $("<div/>").html("SAM Help - Solar Water Heating").text();
-window.onunload = function() {doc.title = $("<div/>").html("SAM Help").text();}
-} catch(err) {}
-});
-</script>
-<script type="text/javascript" src="helpman_settings.js"></script>
-<script type="text/javascript" src="helpman_topicinit.js"></script>
-<script type="text/javascript" src="hmtopic.js"></script>
+   <style type="text/css">
+     body { margin: 0px; background: #FFFFFF; }
+   </style>
+   <script type="text/javascript" src="jquery.js"></script>
+   <script type="text/javascript" src="helpman_settings.js"></script>
+   <script type="text/javascript" src="helpman_topicinit.js"></script>
 
    <script type="text/javascript">
      HMSyncTOC("index.html", "shw_system.htm");
@@ -120,29 +24,20 @@ window.onunload = function() {doc.title = $("<div/>").html("SAM Help").text();}
    </script>
 </head>
 <body>
-<!--ZOOMSTOP-->
-<ul id="topictabs" class="tabs">
-<li id="indextab" class="hmtabs"><a href="#" id="indextablink" class="current"><span>Solar Water Heating</span></a></li>
-</ul>
-<div id="hmbox">
-<div id="hmheader">
-<div id="hmheadercontents">
-<p id="breadcrumbs">
-<b>Navigation:</b>
-<a href="solar_hot_water.htm">Solar Water Heating</a>:</p> 
-<h1 class="p_Heading1"><span class="f_Heading1">Solar Water Heating</span></h1>
 
-</div>
-<div id="atocIcon" class="navdivs">
-<img class="navicon" id="hmAtocLink" src="contents_off.png" alt="No contents entries on this page" title="No contents entries on this page" />
-<br /><span>Contents</span>
-</div>
-</div>
-<div id="autoTocWrapper" class="topicmenu"></div>
-<div id="idcontent">
-<div id="unclicker"></div>
 
-<!--ZOOMRESTART-->
+<table style="width:100%; border:none; border-spacing:0px; padding:5px; background:#FFFFFF; color:#0072C6;">
+  <tr style="vertical-align:middle">
+    <td style="text-align:left">
+      <h1 class="p_Heading1"><span class="f_Heading1">Solar Water Heating</span></h1>
+
+    </td>
+  </tr>
+</table>
+
+
+<!-- Placeholder for topic body. -->
+<table style="width:100%;border:none;border-spacing:0px"><tr style="vertical-align:top"><td style="text-align:left;padding:5px">
 <p class="p_Text"><span class="f_Text">The SWH System page is where you specify the design parameters for the solar water heating system. For a general description of the model, see <a href="shw_overview.htm" class="topiclink">Solar Water Heating Overview</a>.</span></p>
 <p class="p_Note"><span class="f_CHNote">Notes. </span><br />
 <span class="f_CHNote">&nbsp;</span><br />
@@ -250,18 +145,15 @@ window.onunload = function() {doc.title = $("<div/>").html("SAM Help").text();}
 <p class="p_Text"><span class="f_Text">The hot water draw represents the solar water heating system's hourly thermal load over the period of one year.</span></p>
 <p class="p_Text"><span class="f_Text">A load data file is a text file with 8,761 rows: The first row is a text header that SAM ignores, and the remaining 8,760 rows must contain average hourly hot water demand data in kg/hr. The first data element represents the hour beginning at midnight and ending at 1 a.m. on January 1 when you run the model with a <a href="weather_overview.htm" class="topiclink">weather file</a> in one of SAM's standard formats, TMY2, TMY3, or EPW.</span></p>
 <p class="p_TitleProcedure"><span class="f_TitleProcedure">To import load data from a properly formatted text file:</span></p>
-<p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">1.</span><span class="f_ProcedureStep">On the SWH System page, click </span><span class="f_CHInterfaceElement">Edit data</span><span class="f_ProcedureStep">.</span></p><p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">2.</span><span class="f_ProcedureStep">In the Edit Hourly Data window, click </span><span class="f_CHInterfaceElement">Import</span><span class="f_ProcedureStep">.</span></p><p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">3.</span><span class="f_ProcedureStep">Navigate to the folder containing the load data file and open the file.</span></p><p class="p_ProcedureStepNoNumber"><span class="f_ProcedureStepNoNumber">SAM displays the data in the data table. Use the scroll bars to see all of the data.</span></p>
-<p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 6px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">4.</span><span class="f_ProcedureStepLast">Click </span><span class="f_CHInterfaceElement">OK</span><span class="f_ProcedureStepLast"> to return to the SWH System page.</span></p><p class="p_TitleProcedure"><span class="f_TitleProcedure">To import load data from a spreadsheet or other file:</span></p>
-<p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">1.</span><span class="f_ProcedureStep">On the SWH System page, click </span><span class="f_CHInterfaceElement">Edit</span><span class="f_ProcedureStep">.</span></p><p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">2.</span><span class="f_ProcedureStep">Open the spreadsheet containing the load data. The data must be in a single column of 8,760 rows, and expressed in kg.</span></p><p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">3.</span><span class="f_ProcedureStep">In the spreadsheet, select the load data and copy it.</span></p><p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">4.</span><span class="f_ProcedureStep">In the Edit Hourly Data window, click </span><span class="f_CHInterfaceElement">Paste</span><span class="f_ProcedureStep">. </span></p><p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 6px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">5.</span><span class="f_ProcedureStepLast">You can also copy data from the Edit Hourly Data window by clicking </span><span class="f_CHInterfaceElement">Copy</span><span class="f_ProcedureStepLast">, or export the data to a text file by clicking </span><span class="f_CHInterfaceElement">Save</span><span class="f_ProcedureStepLast">.</span></p><p class="p_Text"><span class="f_Text">If you do not have a complete 8,760 set of load data, you can use a set of daily load profiles for each month, and use SAM to create a set of 8,760 values.</span></p>
+<div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 3px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:24px"><span style="font-size:10pt; font-family: 'Segoe UI';color:#000000;">1.</span></td><td style="border:none"><span class="f_ProcedureStep">On the SWH System page, click </span><span class="f_CHInterfaceElement">Edit data</span><span class="f_ProcedureStep">.</span></td></tr></table></div><div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 3px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:24px"><span style="font-size:10pt; font-family: 'Segoe UI';color:#000000;">2.</span></td><td style="border:none"><span class="f_ProcedureStep">In the Edit Hourly Data window, click </span><span class="f_CHInterfaceElement">Import</span><span class="f_ProcedureStep">.</span></td></tr></table></div><div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 3px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:24px"><span style="font-size:10pt; font-family: 'Segoe UI';color:#000000;">3.</span></td><td style="border:none"><span class="f_ProcedureStep">Navigate to the folder containing the load data file and open the file.</span></td></tr></table></div><p class="p_ProcedureStepNoNumber"><span class="f_ProcedureStepNoNumber">SAM displays the data in the data table. Use the scroll bars to see all of the data.</span></p>
+<div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 6px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:24px"><span style="font-size:10pt; font-family: 'Segoe UI';color:#000000;">4.</span></td><td style="border:none"><span class="f_ProcedureStepLast">Click </span><span class="f_CHInterfaceElement">OK</span><span class="f_ProcedureStepLast"> to return to the SWH System page.</span></td></tr></table></div><p class="p_TitleProcedure"><span class="f_TitleProcedure">To import load data from a spreadsheet or other file:</span></p>
+<div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 3px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:24px"><span style="font-size:10pt; font-family: 'Segoe UI';color:#000000;">1.</span></td><td style="border:none"><span class="f_ProcedureStep">On the SWH System page, click </span><span class="f_CHInterfaceElement">Edit</span><span class="f_ProcedureStep">.</span></td></tr></table></div><div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 3px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:24px"><span style="font-size:10pt; font-family: 'Segoe UI';color:#000000;">2.</span></td><td style="border:none"><span class="f_ProcedureStep">Open the spreadsheet containing the load data. The data must be in a single column of 8,760 rows, and expressed in kg.</span></td></tr></table></div><div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 3px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:24px"><span style="font-size:10pt; font-family: 'Segoe UI';color:#000000;">3.</span></td><td style="border:none"><span class="f_ProcedureStep">In the spreadsheet, select the load data and copy it.</span></td></tr></table></div><div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 3px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:24px"><span style="font-size:10pt; font-family: 'Segoe UI';color:#000000;">4.</span></td><td style="border:none"><span class="f_ProcedureStep">In the Edit Hourly Data window, click </span><span class="f_CHInterfaceElement">Paste</span><span class="f_ProcedureStep">. </span></td></tr></table></div><div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 6px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:24px"><span style="font-size:10pt; font-family: 'Segoe UI';color:#000000;">5.</span></td><td style="border:none"><span class="f_ProcedureStepLast">You can also copy data from the Edit Hourly Data window by clicking </span><span class="f_CHInterfaceElement">Copy</span><span class="f_ProcedureStepLast">, or export the data to a text file by clicking </span><span class="f_CHInterfaceElement">Save</span><span class="f_ProcedureStepLast">.</span></td></tr></table></div><p class="p_Text"><span class="f_Text">If you do not have a complete 8,760 set of load data, you can use a set of daily load profiles for each month, and use SAM to create a set of 8,760 values.</span></p>
 <p class="p_TitleProcedure"><span class="f_TitleProcedure">To create a load data set using daily load profiles:</span></p>
-<p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">1.</span><span class="f_ProcedureStep">On the SWH System page, click </span><span class="f_CHInterfaceElement">Edit data</span><span class="f_ProcedureStep">.</span></p><p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">2.</span><span class="f_ProcedureStep">In the Edit Hourly Data window, check</span><span class="f_CHInterfaceElement"> Use monthly grid to generate 8760 data</span><span class="f_ProcedureStep">.</span></p><p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">3.</span><span class="f_ProcedureStep">For each month of the year, define a daily load profile by typing a kg hot water draw value for each of the 24 hours of the day. The first column represents the first hour of the day, beginning at midnight and ending at 1:00 a.m.</span></p><p class="p_ProcedureStepNoNumber"><span class="f_ProcedureStepNoNumber">If you want to specify separate load profiles for weekdays and weekends, click Weekend Values to define profiles that apply to two days each week. SAM arbitrarily assumes that the first day in the data set is a Monday, and that weekends fall on Saturday and Sunday.</span></p>
+<div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 3px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:24px"><span style="font-size:10pt; font-family: 'Segoe UI';color:#000000;">1.</span></td><td style="border:none"><span class="f_ProcedureStep">On the SWH System page, click </span><span class="f_CHInterfaceElement">Edit data</span><span class="f_ProcedureStep">.</span></td></tr></table></div><div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 3px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:24px"><span style="font-size:10pt; font-family: 'Segoe UI';color:#000000;">2.</span></td><td style="border:none"><span class="f_ProcedureStep">In the Edit Hourly Data window, check</span><span class="f_CHInterfaceElement"> Use monthly grid to generate 8760 data</span><span class="f_ProcedureStep">.</span></td></tr></table></div><div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 3px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:24px"><span style="font-size:10pt; font-family: 'Segoe UI';color:#000000;">3.</span></td><td style="border:none"><span class="f_ProcedureStep">For each month of the year, define a daily load profile by typing a kg hot water draw value for each of the 24 hours of the day. The first column represents the first hour of the day, beginning at midnight and ending at 1:00 a.m.</span></td></tr></table></div><p class="p_ProcedureStepNoNumber"><span class="f_ProcedureStepNoNumber">If you want to specify separate load profiles for weekdays and weekends, click Weekend Values to define profiles that apply to two days each week. SAM arbitrarily assumes that the first day in the data set is a Monday, and that weekends fall on Saturday and Sunday.</span></p>
 <p class="p_ProcedureStepNoNumber"><span class="f_ProcedureStepNoNumber">If you do not specify separate weekend profiles, SAM applies the weekday profile to all days of the week.</span></p>
-<p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">4.</span><span class="f_ProcedureStep">When you have specified all of the daily load profiles, click </span><span class="f_CHInterfaceElement">To 8760</span><span class="f_ProcedureStep"> to transfer the data to the User Specified data table. You must complete this step for SAM to use the profile data in simulations.</span></p><p class="p_ProcedureStepNoNumber"><span class="f_ProcedureStepNoNumber">When you define a load with daily load profiles, SAM assumes that all days in a given month have identical load profiles.</span></p>
-<p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 6px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">5.</span><span class="f_ProcedureStepLast">If you want to export the 8,760 data to a text file, click </span><span class="f_CHInterfaceElement">Save</span><span class="f_ProcedureStepLast">. You can also copy the data to a spreadsheet or other file by clicking </span><span class="f_CHInterfaceElement">Copy</span><span class="f_ProcedureStepLast">, and then pasting the data in to the file.</span></p>
-<!--ZOOMSTOP--> 
+<div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 3px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:24px"><span style="font-size:10pt; font-family: 'Segoe UI';color:#000000;">4.</span></td><td style="border:none"><span class="f_ProcedureStep">When you have specified all of the daily load profiles, click </span><span class="f_CHInterfaceElement">To 8760</span><span class="f_ProcedureStep"> to transfer the data to the User Specified data table. You must complete this step for SAM to use the profile data in simulations.</span></td></tr></table></div><p class="p_ProcedureStepNoNumber"><span class="f_ProcedureStepNoNumber">When you define a load with daily load profiles, SAM assumes that all days in a given month have identical load profiles.</span></p>
+<div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 6px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:24px"><span style="font-size:10pt; font-family: 'Segoe UI';color:#000000;">5.</span></td><td style="border:none"><span class="f_ProcedureStepLast">If you want to export the 8,760 data to a text file, click </span><span class="f_CHInterfaceElement">Save</span><span class="f_ProcedureStepLast">. You can also copy the data to a spreadsheet or other file by clicking </span><span class="f_CHInterfaceElement">Copy</span><span class="f_ProcedureStepLast">, and then pasting the data in to the file.</span></td></tr></table></div>
+</td></tr></table>
 
-
-</div> <!-- idcontent -->
-</div><!-- hmbox --> 
 </body>
 </html>

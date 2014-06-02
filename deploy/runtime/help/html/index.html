@@ -1,238 +1,43 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN"
+  "http://www.w3.org/TR/html4/frameset.dtd">
 <html>
 <head>
 <title>SAM Help</title>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <script type="text/javascript" src="jquery.js"></script>
-<script type="text/javascript" src="jquery.tools.min.js"></script>
-<script type="text/javascript" src="jquery.easing.1.3.js"></script>
-<meta http-equiv="content-language" content="en-us" />
-<meta name="robots" content="noarchive,index,follow" />
-<meta name="description" content="&nbsp;" />
-<link id="colorscheme" rel="stylesheet" type="text/css" href="hm_webhelp.css" />	
-<style type="text/css">
-body {
-	background-image: url('bg.png');
-}
-div#hmbanner { 
-	height: 55px;
-	background-color: #e1e1e1;
-	background: url("header_background.jpg");
-	}
-div#hmtopicpane {
-	top: 55px; /* Top must match banner width, same variable */
-  	margin-top: 0px;
-}
-div#hmnavbox {
-   top: 55px; /* Top must match banner width, same variable */
-   margin-top: 4px;
-}
-
-</style> 
-<script type="text/javascript">
-// HM WebHelp Configuration Variables
-
-// Layout control variables
-var hmLayout = {
-	// Show/hide speed for banner header
-	bannerSpeed: 250
-	// Permalink option in toolbar
-	// permalink: true
-}
-
-// Permalink function
-var hmpldata =  {
-   show: false,
-   auto: true,
-   copy: "Copy permalink to current topic",
-   hurl: "https://sam.nrel.gov/forums/support-forum",
-   sorry: "Sorry, your browser can't bookmark pages using this function. Right-click to copy the permalink, then press Ctrl+D to bookmark the topic with the copied permalink.",
-   noserver: "No web server. Please right-click on the selected permalink below to copy.",
-   manualcopy: "Auto-copy function only available online! Please right-click on the permalink to copy.",
-   select: "Copy Permalink",
-   bookmark: "Bookmark Topic",
-   close: "Close Dialog",
-   copied: "Permalink copied to clipboard:"
-}
-
-// Navigation pages
-var hmnavpages = {
-   toc: "samhelp_content.htm",
-   tocWidth: 275,
-   idx: "",
-   sch: "samhelp_ftsearch.htm",
-   top: "index.html",
-   def: "introduction.htm"
-}
-
-// Mobile device redirects
-
-var mobRe = {
-	smart: "",
-	ipad: ""
-}
-
-// General messages
-var hminfo = {
-	tabopen: "This topic is already open in an additional tab!",
-	tabclose: "Close this tab",
-	noundock: "You can\'t undock the main tab!",
-	webfile: "Web File",
-	hidenav: "Hide contents pane",
-	shownav: "Show contents pane",
- 	currtopic: "Current Topic"
-}
-
-
-
-
-
-
-</script>
 <script type="text/javascript" src="helpman_settings.js"></script>
 <script type="text/javascript" src="helpman_navigation.js"></script>
-<script type="text/javascript" src="hmwebhelp.js"></script>
-<!--[if IE 9]>
-<link id="iesvgcss" rel="stylesheet" type="text/css" href="hm_webhelp_svg.css" />	
-<![endif]-->
+<script type="text/javascript" src="samhelp_contextids.js"></script>
+<script type="text/javascript">
+<!--
+    var defaulttopic="introduction.htm";
+    var query = window.location.search.substring(1).replace(/:|&#58;|&#x3a;|\//g,"");
+    if (query != "") {
+       defaulttopic = query + window.location.hash;
+       if (typeof(hmGetContextId) != "undefined") {
+         var tmpCntx = hmGetContextId(query);
+         if (tmpCntx != "") defaulttopic = tmpCntx;
+       }
+    }
+document.write('<frameset cols="30%,*" frameborder="0" framespacing="1">');
+if (document.getElementById) {
+  document.write('<frame name="hmnavigation" src="samhelp_content.htm" title="Navigation frame">'); }
+else {
+  document.write('<frame name="hmnavigation" src="samhelp_content.htm" title="Navigation frame">'); }
+document.write('<frame name="hmcontent" src="' + defaulttopic + '" title="Content frame">');
+document.write('</frameset>');
+//-->
+</script>
 </head>
-<body>
-<div id="hmcontainer">
-
-<div id="hmbanner">
-<a href="https://sam.nrel.gov/" title="SAM Website" target="_blank"><img id="bannerlogo" src="background-logo.png" height="50" border="0" style="margin: 3px 0 0 3px"/></a>
-
-<ul class="topnav">  
-  <li><a href="https://sam.nrel.gov/forums/support-forum" target="_blank" title="Support Forum">Support Forum</a></li>  
-  <li>
-    <a href="https://sam.nrel.gov/" title="SAM Website">SAM Website</a>  
-    <ul class="subnav">  
-      <li><a href="https://sam.nrel.gov/content/downloads" target="_blank" title="Downloads">Downloads</a></li>  
-      <li><a href="https://sam.nrel.gov/forums/support-forum" target="_blank" title="Downloads">Support Forum</a></li>
-      <li><a href="https://sam.nrel.gov/content/resources-learning-sam" target="_blank" title="Downloads">Learning</a></li>
-      <li><a href="https://sam.nrel.gov/financial" target="_blank" title="Financial Models">Financial Models</a></li>                 
-      <li><a href="https://sam.nrel.gov/content/reports-featuring-sam" target="_blank" title="Reports Featuring SAM">Reports Featuring SAM</a></li>
-      <li><a href="https://sam.nrel.gov/reference" target="_blank" title="Reference Manuals">Reference Manuals</a></li>
-      <li><a href="https://sam.nrel.gov/cost" target="_blank" title="System Cost Data">System Cost Data</a></li>                                
-      <li><a href="https://sam.nrel.gov/contact" target="_blank" title="Contact Us">Contact Us</a></li>
-      <li><a href="https://sam.nrel.gov/user" target="_blank" title="My Account">My Account</a></li>
-    </ul>  
-  </li>
-  <li><a href="mailto:sam.support@nrel.gov?subject=SAM Support Question from Help" title="Send us an email">Send us an email</a></li>
-</ul>
-
-</div>
-
-<div id="hmtoolbar" class="bannerToolbar">
-<table id="tbtable"><tr>
-  <td class="tbsearch">
-  <div id="hmsearch" class="searchTextOn">
-  Quick Search:<br />
-  &nbsp;<span id="quickSearch" onclick="hmWebHelp.remoteSearch()"><img id="qsearch_on" class="navicon" src="search.png" alt="Search help topics" title="Search help topics" /><img id="qsearch_off" src="searchoff.png" /></span><input type="text" name="searchinput" id="searchinput" autocapitalize="off" autocorrect="off" />
-  </div>
-  </td>
-  <td class="tbleft">
-  <div class="naviconboxL">
-     <span id="navicon_topic" onclick="hmWebHelp.topicsPane()" title="Select main topic tab"><img class="navicon" id="topic_on" src="browse.png" /></span>
-     <br /><span id="indexText" class="navtextOn">Browse</span>
-     </div>
-     		
-     <div class="naviconboxL">
-     <span id="navicon_search" onclick="hmWebHelp.searchPane()"><img class="navicon" id="search_on" title="Search help topics" alt="Search help topics" src="search.png" /></span>
-     <img id="search_off" src="searchoff.png" />
-     <br /><span id="searchText" class="navtextOn">Search</span>
-     </div>
-     
-     <div class="naviconboxL" id="undocktabtool">
-     <span id="navicon_undocktab" onclick="hmWebHelp.undockTab()"><img class="navicon" id="undock_on" src="undock.png" title="Undock Current Tab" alt="Undock Current Tab" /></span>
-     <img id="undock_off" src="undock_off.png" />
-     <br /><span id="undockText" class="navtextOn">Undock</span>
-     </div>
-     <div class="naviconboxL" id="newtabtool">
-     <span id="navicon_newtab" onclick="hmWebHelp.newTab()"><img class="navicon" id="newtab_on" src="newtab.png" title="Open current topic in a new tab" alt="Open current topic in a new tab"/></span>
-     <img id="newtab_off" src="newtab_off.png" title="Select main tab to activate this function" alt="Select main tab to activate this function" />
-     <br /><span id="newtabText" class="navtextOn">New Tab</span>
-     </div>
-   </td>
-   <td class="tbcenter">
-     <div class="naviconboxR">
-     <span onclick="hmWebHelp.toggleBanner();"><img class="navicon" src="togmenu.png" title="Show/hide page header and menu" alt="Show/hide page header and menu" /></span>
-     <br /><span class="navtextOn">Menu</span>
-     </div>
-     <div class="naviconboxR">
-     <span id="navicon_toggle" onclick="hmWebHelp.toggleToggles();"><img id="togtog_on" class="navicon" src="showhide.png" alt="Show/hide hidden text in current topic" title="Show/hide hidden text in current topic" /></span>
-     <img id="togtog_off" src="showhideoff.png" />
-     <br /><span id="togtogText" class="navtextOn">Show/Hide</span>
-     </div>
-     <div class="naviconboxR">
-     <a id="navicon_feedback" href="javascript:void(0);" onclick="hmWebHelp.mailFB(false);"><img id="feedback_on" class="navicon" src="email.png" title="Email us feedback on the current topic" alt="Email us feedback on the current topic"/></a>
-     <img id="feedback_off" src="emailoff.png" />
-     <br /><span id="feedbackText" class="navtextOn">Feedback</span>
-     </div>
-     <div class="naviconboxR">
-     <a id="navicon_printer" href="javascript:void(0);" onclick="hmWebHelp.printTopic(hmWebHelp.activePage);"><img id="printer_on" class="navicon" src="printer.png" title="Print the current topic" alt="Print the current topic"/></a>
-     <img id="printer_off" src="printer_off.png" />
-     <br /><span id="printerText" class="navtextOn">Print</span>
-     </div>
-   </td>
-   <td class="tbright" id="topicNavTD">
-     <div class="naviconboxR">
-     <a id="navicon_home" href="#" target="hmcontent" onclick="hmWebHelp.tocWin.tocScroller(this.href)"><img class="navicon" src="home.png" title="Go to home topic" alt="Go to home topic" /></a>
-     <br /><span class="navtextOn">Home</span>
-     </div>
-     <div class="naviconboxR" title="Previous topic">
-     <a id="navicon_previous" href="#" target="hmcontent" onclick="hmWebHelp.tocWin.tocScroller(this.href)"><img class="navicon" src="arrow_left.png" title="Go to previous topic" alt="Go to previous topic" /></a>
-     <br /><span class="navtextOn">Previous</span>
-     </div>
-     <div class="naviconboxR" >
-     <a id="navicon_next" href="#" target="hmcontent" onclick="hmWebHelp.tocWin.tocScroller(this.href)"><img class="navicon" src="arrow_right.png" title="Go to next topic" alt="Go to next topic" /></a>
-     <br /><span class="navtextOn">Next</span>
-     </div>
-   </td>
-   </tr></table>
-</div>
-<div id="hmnavbox">
-<div id="hmnavborder">
-<iframe name="hmnavigation" id="hmnavigation" class="scrollpane" src="samhelp_content.htm" title="Navigation Pane" frameborder="0" scrolling="auto" /></iframe> 
-</div>
-</div>
-<div id="hmtopicpane" >
-<div id="hmtabscontrols">
-<div id="hmtabsCtab">
-<div id="hmTabsCtabRight">
-<img class="tabPlayer" id="tabEndLeft" src="tabendleft.png" alt="Start of tab bar" title="Start of tab bar"/>
-<img class="tabPlayer" id="tabLeft" src="tableft.png" alt="Next tab left" title="Next tab left" />
-<img class="tabPlayer" id="toggleTabMenu" src="tabs_menu.png" alt="Tabs Menu" title="Tabs Menu" />
-<img class="tabPlayer" id="tabRight" src="tabright.png" alt="Next tab right" title="Next tab right" />
-<img class="tabPlayer" id="tabEndRight" src="tabendright.png" alt="End of tab bar" title="End of tab bar" />
-</div>
-</div>
-<div id="tabsMenuBox">
-	<div id="tabsMenu" class="hmMenu">
-	<ul id="tabsList">
-	</ul>
-	</div>
-	</div>
-<div id="hmtabswindow">
-<div id="hmtabslider">
-<ul id="topictabs" class="tabs">
-<li id="topictab" class="hmtabs" ondblclick="alert('You can\'t undock the main tab!')" onclick="hmWebHelp.activePage = hmWebHelp.currentPage;"><a href="#topictablink" id="topictablink"><span>Topic Text</span></a></li>
-<li id="indextab" class="hmtabs" onclick="hmWebHelp.activePage ='index';" hpage="index"><img class="closetab" src="closetaboff.png" alt="Close this tab" title="Close this tab" /><a href="#indextablink" id="indextablink" ondblclick="hmWebHelp.undockTab()" title="Double-click to undock Index tab"><span>Keyword Index</span></a></li>
-<li id="searchtab" class="hmtabs" onclick="hmWebHelp.activePage='search';" hpage="search"><img class="closetab" src="closetaboff.png" alt="Close this tab" title="Close this tab" /><a href="#searchtablink" id="searchtablink" ondblclick="hmWebHelp.undockTab()" title="Double-click to undock Search tab"><span>Search</span></a></li>
-</ul>
-</div>
-</div>
-<!--<img class="tabPlayer" id="tabEndRight" src="tabendright.png" alt="End of tab bar" title="End of tab bar" />
-<img class="tabPlayer" id="tabEndLeft" src="tabendleft.png" alt="Start of tab bar" title="Start of tab bar"/> -->
-</div>
-<div id="hmtopicbox">
-<div id="hmcontentbox" >
-<iframe name="hmcontent" id="hmcontent" class="scrollpane" src="introduction.htm" title="Content Tab" height="100%" width="100%" frameborder="0" scrolling="auto" /></iframe>
-</div>
-</div> <!-- End hmcontentbox --> 
-</div>
-</div>
-</body>
+<noscript>
+  <frameset cols="30%,*" frameborder="0" framespacing="1">
+    <frame name="hmnavigation" src="samhelp_content.htm" title="Navigation frame">
+    <frame name="hmcontent" src="introduction.htm" title="Content frame">
+    <noframes>
+      This page requires frames<br><a href="samhelp_content.htm">Click here to view the table of contents without frames</a>
+    </noframes>
+  </frameset>
+</noscript>
 </html>
 
