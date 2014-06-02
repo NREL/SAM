@@ -1017,23 +1017,33 @@ void GridCellChoiceRenderer::SetParameters(const wxString& params)
 ////////////////////////////////////////////////////////////////////////////////////////
 
 
-GridCellChoiceEditor::GridCellChoiceEditor(const wxString& choices)
-:wxGridCellChoiceEditor()
+GridCellChoiceEditor::GridCellChoiceEditor()
+:wxGridCellEditor()
 {
 	m_index = -1;
-
-	if (!choices.empty())
-		SetParameters(choices);
 }
 
 wxGridCellEditor *GridCellChoiceEditor::Clone() const
 {
 	GridCellChoiceEditor *editor = new GridCellChoiceEditor();
 	editor->m_index = m_index;
+	editor->m_choices = m_choices;
 	return editor;
 }
 
-void GridCellChoiceEditor::UpdateComboBox(int row, int col, wxGrid* grid)
+void GridCellChoiceEditor::Create(wxWindow* parent, wxWindowID id, wxEvtHandler* evtHandler)
+{
+	int style = wxTE_PROCESS_ENTER |
+		wxTE_PROCESS_TAB | wxCB_READONLY |
+		wxBORDER_NONE;
+	m_control = new wxComboBox(parent, id, wxEmptyString,
+		wxDefaultPosition, wxDefaultSize, m_choices, style);
+
+	wxGridCellEditor::Create(parent, id, evtHandler);
+}
+
+
+void GridCellChoiceEditor::UpdateComboBox()
 { // original combo box in Create method of ancestor 
 //	create and destroy to support sorting and populating with current selections/
 	int style = wxTE_PROCESS_ENTER |
@@ -1047,6 +1057,42 @@ void GridCellChoiceEditor::UpdateComboBox(int row, int col, wxGrid* grid)
 	m_control->Destroy();
 	
 	m_control = new wxComboBox(p, id, wxEmptyString, pt, sz, m_choices,	style);
+}
+
+void GridCellChoiceEditor::SetSize(const wxRect& rect)
+{
+	wxASSERT_MSG(m_control,
+		wxT("The GridCellChoiceEditor must be created first!"));
+
+	// Check that the height is not too small to fit the combobox.
+	wxRect rectTallEnough = rect;
+	const wxSize bestSize = m_control->GetBestSize();
+	const wxCoord diffY = bestSize.GetHeight() - rectTallEnough.GetHeight();
+	if (diffY > 0)
+	{
+		// Do make it tall enough.
+		rectTallEnough.height += diffY;
+
+		// Also centre the effective rectangle vertically with respect to the
+		// original one.
+		rectTallEnough.y -= diffY / 2;
+	}
+	//else: The rectangle provided is already tall enough.
+
+	wxGridCellEditor::SetSize(rectTallEnough);
+}
+
+void GridCellChoiceEditor::PaintBackground(wxDC& dc,
+	const wxRect& rectCell,
+	const wxGridCellAttr& attr)
+{
+	// as we fill the entire client area, don't do anything here to minimize
+	// flicker
+
+	// TODO: It doesn't actually fill the client area since the height of a
+	// combo always defaults to the standard.  Until someone has time to
+	// figure out the right rectangle to paint, just do it the normal way.
+	wxGridCellEditor::PaintBackground(dc, rectCell, attr);
 }
 
 void GridCellChoiceEditor::BeginEdit(int row, int col, wxGrid* grid)
@@ -1064,7 +1110,7 @@ void GridCellChoiceEditor::BeginEdit(int row, int col, wxGrid* grid)
 
 	VariableGridData *vgd = (VariableGridData *)grid->GetTable();
 	SetParameters(vgd->GetChoices(row, col));
-	UpdateComboBox(row,col,grid);
+	UpdateComboBox();
 
 	if (vgd->CanGetValueAs(row, col, wxGRID_VALUE_NUMBER))
 	{
@@ -1127,6 +1173,39 @@ void GridCellChoiceEditor::ApplyEdit(int row, int col, wxGrid* grid)
 	wxGridTableBase * const table = grid->GetTable();
 	table->SetValue(row, col, wxString::Format("%ld", m_index));
 }
+
+void GridCellChoiceEditor::Reset()
+{
+	// find the right position, or default to the first if not found
+	int pos = Combo()->FindString(m_value);
+	if (pos == wxNOT_FOUND)
+		pos = 0;
+	Combo()->SetSelection(pos);
+}
+
+void GridCellChoiceEditor::SetParameters(const wxString& params)
+{
+	if (!params)
+	{
+		// what can we do?
+		return;
+	}
+
+	m_choices.Empty();
+
+	wxStringTokenizer tk(params, wxT(','));
+	while (tk.HasMoreTokens())
+	{
+		m_choices.Add(tk.GetNextToken());
+	}
+}
+
+// return the value in the text control
+wxString GridCellChoiceEditor::GetValue() const
+{
+	return Combo()->GetValue();
+}
+
 
 ////////////////////////////////////////////////////////////////////////////////////////
 
@@ -1676,22 +1755,6 @@ void VariableGridFrame::UpdateGrid()
 		else
 			m_grid->HideRow(row);
 	}
-	/* fails when exiting and editor not populating combo box
-	// update choices as necessary
-	for (int row = 0; row < m_grid->GetNumberRows(); row++)
-	{
-		for (int col = 2; col < m_grid->GetNumberCols(); col++)
-		{
-			if (m_griddata->GetTypeName(row, col) == "GridCellChoice")
-			{
-				if (GridCellChoiceRenderer *cr = (GridCellChoiceRenderer*)m_grid->GetCellRenderer(row, col))
-					cr->SetParameters(m_griddata->GetChoices(row, col));
-				if (GridCellChoiceEditor *ce = (GridCellChoiceEditor*)m_grid->GetCellEditor(row, col))
-					ce->SetParameters(m_griddata->GetChoices(row, col));
-			}
-		}
-	}
-	*/
 	m_grid->Thaw();
 }
 

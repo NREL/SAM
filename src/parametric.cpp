@@ -292,19 +292,6 @@ void ParametricViewer::UpdateGrid()
 				m_grid->SetReadOnly(row, col, true);
 		}
 	}
-	// update choices as necessary
-	for (int row = 0; row < m_grid->GetNumberRows(); row++)
-	{
-		for (int col = 0; col < m_grid->GetNumberCols(); col++)
-		{
-			if (m_grid_data->GetTypeName(row, col) == "GridCellChoice")
-			{
-				m_grid->SetCellRenderer(row, col, new GridCellChoiceRenderer(m_grid_data->GetChoices(row, col)));
-				m_grid->SetCellEditor(row, col, new GridCellChoiceEditor(m_grid_data->GetChoices(row, col)));
-			}
-		}
-	}
-
 }
 
 

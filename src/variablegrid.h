@@ -167,23 +167,43 @@ protected:
 	wxArrayString m_choices;
 };
 
-class GridCellChoiceEditor : public wxGridCellChoiceEditor
+class GridCellChoiceEditor : public wxGridCellEditor
 {
 public:
-	GridCellChoiceEditor(const wxString& choices = wxEmptyString);
+	GridCellChoiceEditor();
 	virtual ~GridCellChoiceEditor() {}
 
-	virtual wxGridCellEditor*  Clone() const;
+	virtual void Create(wxWindow* parent,
+		wxWindowID id,
+		wxEvtHandler* evtHandler);
 
+	virtual void SetSize(const wxRect& rect);
+
+	virtual void PaintBackground(wxDC& dc,
+		const wxRect& rectCell,
+		const wxGridCellAttr& attr);
+
+	virtual void Reset();
+
+	// parameters string format is "item1[,item2[...,itemN]]"
+	virtual void SetParameters(const wxString& params);
+
+	virtual wxGridCellEditor *Clone() const;
+
+	// added GetValue so we can get the value which is in the control
+	virtual wxString GetValue() const;
 	virtual void BeginEdit(int row, int col, wxGrid* grid);
 	virtual bool EndEdit(int row, int col, const wxGrid* grid,
 		const wxString& oldval, wxString *newval);
 	virtual void ApplyEdit(int row, int col, wxGrid* grid);
 
 	// update with choices based on table base row and column
-	void UpdateComboBox(int row, int col, wxGrid* grid);
+	void UpdateComboBox();
 private:
 	long m_index;
+	wxComboBox *Combo() const { return (wxComboBox *)m_control; }
+	wxString        m_value;
+	wxArrayString   m_choices;
 
 	wxDECLARE_NO_COPY_CLASS(GridCellChoiceEditor);
 };
