@@ -1033,6 +1033,22 @@ wxGridCellEditor *GridCellChoiceEditor::Clone() const
 	return editor;
 }
 
+void GridCellChoiceEditor::UpdateComboBox(int row, int col, wxGrid* grid)
+{ // original combo box in Create method of ancestor 
+//	create and destroy to support sorting and populating with current selections/
+	int style = wxTE_PROCESS_ENTER |
+		wxTE_PROCESS_TAB | wxCB_READONLY |
+		wxBORDER_NONE;
+
+	wxWindow *p = m_control->GetParent();
+	wxWindowID id = m_control->GetId();
+	wxPoint pt = m_control->GetPosition();
+	wxSize sz = m_control->GetSize();
+	m_control->Destroy();
+	
+	m_control = new wxComboBox(p, id, wxEmptyString, pt, sz, m_choices,	style);
+}
+
 void GridCellChoiceEditor::BeginEdit(int row, int col, wxGrid* grid)
 {
 	wxASSERT_MSG(m_control,
@@ -1046,11 +1062,10 @@ void GridCellChoiceEditor::BeginEdit(int row, int col, wxGrid* grid)
 	if (evtHandler)
 		evtHandler->SetInSetFocus(true);
 
-//	wxGridTableBase *table = grid->GetTable();
 	VariableGridData *vgd = (VariableGridData *)grid->GetTable();
 	SetParameters(vgd->GetChoices(row, col));
+	UpdateComboBox(row,col,grid);
 
-//		if (table->CanGetValueAs(row, col, wxGRID_VALUE_NUMBER))
 	if (vgd->CanGetValueAs(row, col, wxGRID_VALUE_NUMBER))
 	{
 		m_index = vgd->GetValueAsLong(row, col);
@@ -1661,7 +1676,7 @@ void VariableGridFrame::UpdateGrid()
 		else
 			m_grid->HideRow(row);
 	}
-	/*
+	/* fails when exiting and editor not populating combo box
 	// update choices as necessary
 	for (int row = 0; row < m_grid->GetNumberRows(); row++)
 	{
