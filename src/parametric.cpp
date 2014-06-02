@@ -4,7 +4,6 @@
 #include <wex/plot/plplotctrl.h>
 #include <wex/plot/plbarplot.h>
 #include <wex/metro.h>
-#include <wex/extgrid.h>
 #include <wex/utils.h>
 
 #include "variablegrid.h"
@@ -125,8 +124,42 @@ bool ParametricData::Read( wxInputStream &_I )
 
 	return in.Read8() == code;
 }
+////////////////////////////////////////////////////////////////////////////////////////////////
+
+enum {ID_INPUTMENU};
+
+BEGIN_EVENT_TABLE(ParametricGrid, wxGrid)
+EVT_GRID_CMD_CELL_RIGHT_CLICK(ID_INPUTMENU, ParametricGrid::OnGridCommand)
+END_EVENT_TABLE()
 
 
+ParametricGrid::ParametricGrid(wxWindow *parent, wxWindowID id, const wxPoint &pos, const wxSize &size, long style, const wxString &name)
+: wxGrid(parent, id, pos, size)
+{
+}
+
+ParametricGrid::~ParametricGrid()
+{
+}
+
+void ParametricGrid::OnLeftClick(wxGridEvent &evt)
+{
+	SetGridCursor(evt.GetRow(), evt.GetCol());
+	evt.Skip();
+}
+
+
+
+void ParametricGrid::OnGridCommand(wxGridEvent &evt)
+{
+	switch (evt.GetId())
+	{
+	case ID_INPUTMENU:
+		// show input menu
+		wxMessageBox("here");
+		break;
+	}
+}
 
 
 
@@ -158,7 +191,7 @@ ParametricViewer::ParametricViewer(wxWindow *parent, Case *cc)
 	par_sizer->Add(new wxButton(this, ID_CLEAR, "Clear results"), 0, wxALL | wxEXPAND, 2);
 
 
-	m_grid = new wxExtGridCtrl(this, wxID_ANY);
+	m_grid = new ParametricGrid(this, wxID_ANY);
 
 	m_grid->RegisterDataType("GridCellCheckBox", new GridCellCheckBoxRenderer, new GridCellCheckBoxEditor);
 	m_grid->RegisterDataType("GridCellChoice", new GridCellChoiceRenderer, new GridCellChoiceEditor);
@@ -176,7 +209,6 @@ ParametricViewer::ParametricViewer(wxWindow *parent, Case *cc)
 	SetSizer( par_vsizer );
 	UpdateGrid();
 }
-
 
 void ParametricViewer::OnCommand(wxCommandEvent &evt)
 {

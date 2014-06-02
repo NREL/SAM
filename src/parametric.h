@@ -6,6 +6,7 @@
 #include <wx/grid.h>
 
 #include <wex/numeric.h>
+#include <wex/extgrid.h>
 
 #include "simulation.h"
 #include "object.h"
@@ -90,6 +91,20 @@ private:
 
 
 
+class ParametricGrid : public wxGrid
+{
+public:
+	ParametricGrid(wxWindow *parent, wxWindowID id, const wxPoint &pos = wxDefaultPosition, const wxSize &size = wxDefaultSize,
+		long style = wxWANTS_CHARS, const wxString& name = wxPanelNameStr);
+	virtual ~ParametricGrid();
+
+	void OnGridCommand(wxGridEvent &evt);
+	void OnLeftClick(wxGridEvent &evt);
+
+	DECLARE_EVENT_TABLE()
+};
+
+
 class ParametricViewer : public wxPanel
 {
 public:
@@ -104,12 +119,11 @@ private:
 	void RunSimulations();
 	void ClearResults();
 
-	wxGrid *m_grid;
+	ParametricGrid *m_grid;
 	ParametricGridData *m_grid_data;
 	wxNumericCtrl *m_num_runs_ctrl;
 
 	Case *m_case;
-//	ParametricData &m_par;
 	wxArrayString m_var_names;
 
 	DECLARE_EVENT_TABLE();
