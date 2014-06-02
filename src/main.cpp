@@ -1760,7 +1760,17 @@ void SamApp::ShowHelp( const wxString &context )
 	}
 		
 	// sj 11/29/11 Kludge to allow modal dialogs with help buttons to not block help window
-	if ( gs_helpWin != 0 && gs_helpWin->IsShown() )
+	bool modal_active = false;
+	for( wxWindowList::iterator wl = wxTopLevelWindows.begin();
+		wl != wxTopLevelWindows.end();
+		++wl )
+	{
+		if ( wxDialog *dia = dynamic_cast<wxDialog*>( *wl ) )
+			if ( dia->IsActive() && dia->IsModal() )
+				modal_active = true;
+	}
+
+	if ( modal_active && gs_helpWin != 0 && gs_helpWin->IsShown() )
 	{
 		wxRect h_rect = gs_helpWin->GetRect();
 
@@ -1769,7 +1779,7 @@ void SamApp::ShowHelp( const wxString &context )
 			gs_helpWin = new HelpWin;
 			gs_helpWin->SetSize(h_rect);
 		}
-	}  // end of 11/29/11 Kludge
+	}
 	else if ( 0 == gs_helpWin )			
 		gs_helpWin = new HelpWin;
 		
