@@ -61,7 +61,7 @@ public:
 	wxSimpleCurlDownloadThread( wxEvtHandler *handler, int id );
 	virtual ~wxSimpleCurlDownloadThread();
 
-	void Start( const wxString &url );
+	void Start( const wxString &url, const wxString &post = wxEmptyString );
 	wxString GetDataAsString();
 	wxImage GetDataAsImage( int bittype = wxBITMAP_TYPE_JPEG );
 	bool WriteDataToFile( const wxString &file );
