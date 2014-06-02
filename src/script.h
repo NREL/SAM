@@ -15,7 +15,7 @@ public:
 	ScriptWindow( wxWindow *parent, int id = wxID_ANY, const wxPoint &pos = wxDefaultPosition, const wxSize &size = wxDefaultSize );
 
 	static ScriptWindow *CreateNewWindow( bool show = true );
-	static void ScriptWindow::OpenFiles( ScriptWindow *current = 0);
+	static void OpenFiles( ScriptWindow *current = 0);
 	static std::vector<ScriptWindow*> GetWindows();
 	static ScriptWindow *FindOpenFile( const wxString &file );
 	static bool CloseAll();
