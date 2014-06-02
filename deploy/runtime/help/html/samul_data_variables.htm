@@ -1,115 +1,19 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
 <head>
    <title>SamUL: Data Variables</title>
-   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
    <meta name="generator" content="Help &amp; Manual" />
    <meta name="keywords" content="" />
    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-   <meta http-equiv="content-language" content="en-us" />
-   <meta name="description" content="General Syntax In SamUL, a program statement is generally placed on a line by itself, and the end-of-line marks the end of the statement. Currently, there is no facility to..." />
-   <meta http-equiv="Content-Style-Type" content="text/css" />
+   
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
    <link type="text/css" href="default.css" rel="stylesheet" />
-   <link id="tabscheme" type="text/css" href="hm_topic.css" rel="stylesheet" />   
-<style type="text/css">
-/* No header topics */
-
-/* Breadcrumb trail */
-p#breadcrumbs {
-font-family: Verdana, Tahoma, Helvetica, Sans-Serif;   padding: 2px 0 1px 2px;
-   margin: 0;
-   font-size: 8pt; 
-   color: #999;
-   }   
-p#breadcrumbs a { color: #999; text-decoration: none;}
-p#breadcrumbs a:visited { color: #999; }
-p#breadcrumbs a:hover { color: #333; border-bottom: 1px dotted #333; }
-
-/* Search hightlight color */
-span.highlight {background-color: #ffff40;}
-</style>
-<script type="text/javascript">
-var hmHeaderTopic = true;
-
-</script> 
-<!--[if IE 9]>
-<link id="iesvgcss" rel="stylesheet" type="text/css" href="hm_webhelp_svg.css" />
-<![endif]-->	
-<script src="jquery.js"></script>
-<script type="text/javascript" src="jquery.tools.min.js"></script>
-<script type="text/javascript" src="jquery.scrollTo-min.js"></script>
-<script type="text/javascript"> 
-// General topic variables
-var tVars = {
-   hmHelpPage: "index.html",
-   nextP: "samul_flow_control.htm",
-   prevP: "samul_overview.htm",
-   currP: "samul_data_variables.htm",
-   defP: "introduction.htm",
-   titleP: "SamUL: Data Variables",
-   mailsubject: "Feedback on: SAM Help - Data Variables",
-   simplesubject: "Documentation%20Feedback",
-   mailid: "SamUL_Data_Variables",
-   mailpath: "SamUL Scripting Language &gt; Data Variables /",
-   mailbody: "Dear SAM Support,",
-   mailrecipient: "SAM Support <sam.support@nrel.gov>",
-   simplerecipient: "sam.support@nrel.gov",
-   fbtype: false,
-   header: true,
-   background: "bg.png",
-   tablesReady: false,
-   togglesReady: false,
-   webRedirect: true
-   }
-// Popup configuration
- var hmpBShadow = true;
- var hmPopSmallDim = 500;
- var hmPopKillVideo = false;
- // AutoTOC variables
- var hmatocvars = {
-   atoc_show: true,
-   atoc_title: "Contents",
-   atoc_tip: "Jump to:&nbsp;",
-   atoc_minHeaders: 2,
-   atoc_btntip_off: "No contents entries on this page",
-   atoc_btntip_on: "Display/hide topic directory",
-   atoc_toptip: "Jump to top of page",
-   atoc_top: "Scroll to Top of Page",
-   atoc_bg: "#f6f6f6",
-   atoc_border: "silver",
-   atoc_linkcolor: "#444",
-   atoc_linklimit: 45,
-   atoc_hovercolor: "#000",
-   atoc_hoverbgcolor: "#e0e0e0"
-}
-// Sortable tables
-var sortVars = {
-   europeandate: false,
-   germanNumbers: false,
-   imagePath: "",
-   image_up: "arrow-up.gif",
-   image_down: "arrow-down.gif",
-   image_empty: "arrow-empty.gif",
-   image_none: "arrow-none.gif",
-   sort_tip: "Click to sort on this column",
-   umlauts: "false"
-   }
-
-</script>
-
-<script type="text/javascript"> 
-$(document).ready(function() {
-var doc = document;  
-try {
-if (parent.hmWebHelp.navWidth != null) doc = parent.document;
-doc.title = $("<div/>").html("SAM Help - SamUL: Data Variables").text();
-window.onunload = function() {doc.title = $("<div/>").html("SAM Help").text();}
-} catch(err) {}
-});
-</script>
-<script type="text/javascript" src="helpman_settings.js"></script>
-<script type="text/javascript" src="helpman_topicinit.js"></script>
-<script type="text/javascript" src="hmtopic.js"></script>
+   <style type="text/css">
+     body { margin: 0px; background: #FFFFFF; }
+   </style>
+   <script type="text/javascript" src="jquery.js"></script>
+   <script type="text/javascript" src="helpman_settings.js"></script>
+   <script type="text/javascript" src="helpman_topicinit.js"></script>
 
    <script type="text/javascript">
      HMSyncTOC("index.html", "samul_data_variables.htm");
@@ -120,29 +24,20 @@ window.onunload = function() {doc.title = $("<div/>").html("SAM Help").text();}
    </script>
 </head>
 <body>
-<!--ZOOMSTOP-->
-<ul id="topictabs" class="tabs">
-<li id="indextab" class="hmtabs"><a href="#" id="indextablink" class="current"><span>SamUL: Data Variables</span></a></li>
-</ul>
-<div id="hmbox">
-<div id="hmheader">
-<div id="hmheadercontents">
-<p id="breadcrumbs">
-<b>Navigation:</b>
-<a href="samul.htm">SamUL Scripting Language</a>:</p> 
-<h1 class="p_Heading1"><span class="f_Heading1">Data Variables</span></h1>
 
-</div>
-<div id="atocIcon" class="navdivs">
-<img class="navicon" id="hmAtocLink" src="contents_off.png" alt="No contents entries on this page" title="No contents entries on this page" />
-<br /><span>Contents</span>
-</div>
-</div>
-<div id="autoTocWrapper" class="topicmenu"></div>
-<div id="idcontent">
-<div id="unclicker"></div>
 
-<!--ZOOMRESTART-->
+<table style="width:100%; border:none; border-spacing:0px; padding:5px; background:#FFFFFF; color:#0072C6;">
+  <tr style="vertical-align:middle">
+    <td style="text-align:left">
+      <h1 class="p_Heading1"><span class="f_Heading1">Data Variables</span></h1>
+
+    </td>
+  </tr>
+</table>
+
+
+<!-- Placeholder for topic body. -->
+<table style="width:100%;border:none;border-spacing:0px"><tr style="vertical-align:top"><td style="text-align:left;padding:5px">
 <h3 class="p_Heading3_atocs_" style="border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">General Syntax</span></h3>
 <p class="p_Text"><span class="f_Text">In SamUL, a program statement is generally placed on a line by itself, and the end-of-line marks the end of the statement. Currently, there is no facility to split a long statement across multiple lines.</span></p>
 <p class="p_Text"><span class="f_Text">Blank lines may be inserted between statements. While they have no meaning, they can help make a script easier to read. Spaces can also be added or removed nearly anywhere, except of course in the middle of a word. The following statements all have the same meaning.</span></p>
@@ -154,7 +49,7 @@ window.onunload = function() {doc.title = $("<div/>").html("SAM Help").text();}
 <p class="p_TextCode"><span class="f_TextCode">out( &quot;Hello, world!\n&quot; ) ' display the greeting to the user</span></p>
 <h3 class="p_Heading3_atocs_" style="border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Variables</span></h3>
 <p class="p_Text"><span class="f_Text">Variables store information while your script is running. SamUL variables share many characteristics with other computer languages.</span></p>
-<p style="text-align: left; padding: 0px 0px 0px 13px; margin: 0px 0px 3px 10px;"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;display:inline-block;width:13px;margin-left:-13px">&#9679;</span><span class="f_List">Variables do not need to be declared in advance of being used</span></p><p style="text-align: left; padding: 0px 0px 0px 13px; margin: 0px 0px 3px 10px;"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;display:inline-block;width:13px;margin-left:-13px">&#9679;</span><span class="f_List">There is no distinction between variables that store text and variables that store numbers</span></p><p style="text-align: left; padding: 0px 0px 0px 13px; margin: 0px 0px 3px 10px;"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;display:inline-block;width:13px;margin-left:-13px">&#9679;</span><span class="f_List">Variable names may contain letters, digit, and the underscore symbol. A limitation is that variables cannot start with a digit. Unlike some languages such as C and Perl, SamUL does not distinguish between upper and lower case letters in a variable (or subroutine) name. As a result, the name </span><span class="f_CHCode">myData</span><span class="f_List"> is the same as </span><span class="f_CHCode">MYdata</span><span class="f_List">.</span></p><p style="text-align: left; padding: 0px 0px 0px 13px; margin: 0px 0px 3px 10px;"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;display:inline-block;width:13px;margin-left:-13px">&#9679;</span><span class="f_List">Values are assigned to variables using the equal sign </span><span class="f_CHCode">=</span><span class="f_List">. Some examples are below:</span></p><p class="p_TextCode" style="margin: 0px 0px 6px 47px;"><span class="f_TextCode">Num_Modules = 10</span></p>
+<div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 3px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:24px"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;">&#8226;</span></td><td style="border:none"><span class="f_List">Variables do not need to be declared in advance of being used</span></td></tr></table></div><div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 3px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:24px"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;">&#8226;</span></td><td style="border:none"><span class="f_List">There is no distinction between variables that store text and variables that store numbers</span></td></tr></table></div><div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 3px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:24px"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;">&#8226;</span></td><td style="border:none"><span class="f_List">Variable names may contain letters, digit, and the underscore symbol. A limitation is that variables cannot start with a digit. Unlike some languages such as C and Perl, SamUL does not distinguish between upper and lower case letters in a variable (or subroutine) name. As a result, the name </span><span class="f_CHCode">myData</span><span class="f_List"> is the same as </span><span class="f_CHCode">MYdata</span><span class="f_List">.</span></td></tr></table></div><div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 3px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:24px"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;">&#8226;</span></td><td style="border:none"><span class="f_List">Values are assigned to variables using the equal sign </span><span class="f_CHCode">=</span><span class="f_List">. Some examples are below:</span></td></tr></table></div><p class="p_TextCode" style="margin: 0px 0px 6px 47px;"><span class="f_TextCode">Num_Modules = 10</span></p>
 <p class="p_TextCode" style="margin: 0px 0px 6px 47px;"><span class="f_TextCode">ArrayPowerWatts = 4k</span></p>
 <p class="p_TextCode" style="margin: 0px 0px 6px 47px;"><span class="f_TextCode">Tilt = 18.2</span></p>
 <p class="p_TextCode" style="margin: 0px 0px 6px 47px;"><span class="f_TextCode">system_name = &quot;Super PV System&quot;</span></p>
@@ -163,93 +58,93 @@ window.onunload = function() {doc.title = $("<div/>").html("SAM Help").text();}
 <p class="p_TextCode" style="margin: 0px 0px 6px 47px;"><span class="f_TextCode">cost = 1M</span></p>
 <p class="p_Text"><span class="f_Text">Assigning a value to a variable overwrites its previous value. As shown above, decimal numbers can be written using scientific notation or engineering suffixes. The last two assignments to Cost are the same value. </span></p>
 <p class="p_Text"><span class="f_Text">Recognized suffixes are listed in the table below. Suffixes are case-sensitive, so that SamUL can distinguish between m (milli) and M (Mega).</span></p>
-<div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 0px 0px;"><table style="width:100%; border:none; border-spacing:0px; border-collapse:collapse;">
+<div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 0px 0px;"><table style="border:none; border-spacing:0px;">
 <tr style="text-align:left;vertical-align:top;">
-<td style="vertical-align:top; padding:2px; border:solid 1px #000000;"><p class="p_TableHeadColumn"><span class="f_TableHeadColumn">Name</span></p>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableHeadColumn"><span class="f_TableHeadColumn">Name</span></p>
 </td>
-<td style="vertical-align:top; padding:2px; border:solid 1px #000000;"><p class="p_TableHeadColumn"><span class="f_TableHeadColumn">Suffix</span></p>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableHeadColumn"><span class="f_TableHeadColumn">Suffix</span></p>
 </td>
-<td style="vertical-align:top; padding:2px; border:solid 1px #000000;"><p class="p_TableHeadColumn"><span class="f_TableHeadColumn">Multiplier</span></p>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableHeadColumn"><span class="f_TableHeadColumn">Multiplier</span></p>
 </td>
 </tr>
 <tr style="text-align:left;vertical-align:top;">
-<td style="vertical-align:top; padding:2px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">Tera</span></p>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">Tera</span></p>
 </td>
-<td style="vertical-align:top; padding:2px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">T</span></p>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">T</span></p>
 </td>
-<td style="vertical-align:top; padding:2px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">1e12</span></p>
-</td>
-</tr>
-<tr style="text-align:left;vertical-align:top;">
-<td style="vertical-align:top; padding:2px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">Giga</span></p>
-</td>
-<td style="vertical-align:top; padding:2px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">G</span></p>
-</td>
-<td style="vertical-align:top; padding:2px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">1e9</span></p>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">1e12</span></p>
 </td>
 </tr>
 <tr style="text-align:left;vertical-align:top;">
-<td style="vertical-align:top; padding:2px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">Mega</span></p>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">Giga</span></p>
 </td>
-<td style="vertical-align:top; padding:2px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">M</span></p>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">G</span></p>
 </td>
-<td style="vertical-align:top; padding:2px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">1e6</span></p>
-</td>
-</tr>
-<tr style="text-align:left;vertical-align:top;">
-<td style="vertical-align:top; padding:2px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">Kilo</span></p>
-</td>
-<td style="vertical-align:top; padding:2px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">k</span></p>
-</td>
-<td style="vertical-align:top; padding:2px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">1e3</span></p>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">1e9</span></p>
 </td>
 </tr>
 <tr style="text-align:left;vertical-align:top;">
-<td style="vertical-align:top; padding:2px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">Milli</span></p>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">Mega</span></p>
 </td>
-<td style="vertical-align:top; padding:2px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">m</span></p>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">M</span></p>
 </td>
-<td style="vertical-align:top; padding:2px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">1e-3</span></p>
-</td>
-</tr>
-<tr style="text-align:left;vertical-align:top;">
-<td style="vertical-align:top; padding:2px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">Micro</span></p>
-</td>
-<td style="vertical-align:top; padding:2px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">u</span></p>
-</td>
-<td style="vertical-align:top; padding:2px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">1e-6</span></p>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">1e6</span></p>
 </td>
 </tr>
 <tr style="text-align:left;vertical-align:top;">
-<td style="vertical-align:top; padding:2px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">Nano</span></p>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">Kilo</span></p>
 </td>
-<td style="vertical-align:top; padding:2px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">n</span></p>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">k</span></p>
 </td>
-<td style="vertical-align:top; padding:2px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">1e-9</span></p>
-</td>
-</tr>
-<tr style="text-align:left;vertical-align:top;">
-<td style="vertical-align:top; padding:2px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">Pico</span></p>
-</td>
-<td style="vertical-align:top; padding:2px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">p</span></p>
-</td>
-<td style="vertical-align:top; padding:2px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">1e-12</span></p>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">1e3</span></p>
 </td>
 </tr>
 <tr style="text-align:left;vertical-align:top;">
-<td style="vertical-align:top; padding:2px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">Femto</span></p>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">Milli</span></p>
 </td>
-<td style="vertical-align:top; padding:2px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">f</span></p>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">m</span></p>
 </td>
-<td style="vertical-align:top; padding:2px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">1e-15</span></p>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">1e-3</span></p>
 </td>
 </tr>
 <tr style="text-align:left;vertical-align:top;">
-<td style="vertical-align:top; padding:2px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">Atto</span></p>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">Micro</span></p>
 </td>
-<td style="vertical-align:top; padding:2px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">a</span></p>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">u</span></p>
 </td>
-<td style="vertical-align:top; padding:2px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">1e-18</span></p>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">1e-6</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">Nano</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">n</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">1e-9</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">Pico</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">p</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">1e-12</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">Femto</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">f</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">1e-15</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">Atto</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">a</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">1e-18</span></p>
 </td>
 </tr>
 </table>
@@ -281,45 +176,45 @@ window.onunload = function() {doc.title = $("<div/>").html("SAM Help").text();}
 <p>The <span class="f_CHCode">notice</span> function works like <span class="f_CHCode">out</span>, except that it displays a pop up message box on the computer screen.</p>
 <h3 class="p_Heading3_atocs_" style="border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Data Types and Conversion</span></h3>
 <p class="p_Text"><span class="f_Text">SamUL supports four basic types of data, although most conversions between types happen automatically. Because of this, SamUL is generally a weakly typed language, meaning that you can add text variables to number variables, and SamUL will try to make a appropriate conversion in context.</span></p>
-<div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 0px 0px;"><table style="width:100%; border:none; border-spacing:0px; border-collapse:collapse;">
+<div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 0px 0px;"><table style="border:none; border-spacing:0px;">
 <tr style="text-align:left;vertical-align:top;">
-<td style="vertical-align:top; padding:2px; border:solid 1px #000000;"><p class="p_TableHeadColumn"><span class="f_TableHeadColumn">Type</span></p>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableHeadColumn"><span class="f_TableHeadColumn">Type</span></p>
 </td>
-<td style="vertical-align:top; padding:2px; border:solid 1px #000000;"><p class="p_TableHeadColumn"><span class="f_TableHeadColumn">Conversion Function</span></p>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableHeadColumn"><span class="f_TableHeadColumn">Conversion Function</span></p>
 </td>
-<td style="vertical-align:top; padding:2px; border:solid 1px #000000;"><p class="p_TableHeadColumn"><span class="f_TableHeadColumn">Valid Values</span></p>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableHeadColumn"><span class="f_TableHeadColumn">Valid Values</span></p>
 </td>
 </tr>
 <tr style="text-align:left;vertical-align:top;">
-<td style="vertical-align:top; padding:2px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">Integer Number</span></p>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">Integer Number</span></p>
 </td>
-<td style="vertical-align:top; padding:2px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_CHCode"> integer()</span></p>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextCenter"><span class="f_CHCode"> integer()</span></p>
 </td>
-<td style="vertical-align:top; padding:2px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">+/- approx. 2 billion</span></p>
-</td>
-</tr>
-<tr style="text-align:left;vertical-align:top;">
-<td style="vertical-align:top; padding:2px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">Double-precision Decimal Number</span></p>
-</td>
-<td style="vertical-align:top; padding:2px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter"> </span><span class="f_CHCode">double()</span></p>
-</td>
-<td style="vertical-align:top; padding:2px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">1e-308 to 1e308, with infinity</span></p>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">+/- approx. 2 billion</span></p>
 </td>
 </tr>
 <tr style="text-align:left;vertical-align:top;">
-<td style="vertical-align:top; padding:2px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">Boolean</span></p>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">Double-precision Decimal Number</span></p>
 </td>
-<td style="vertical-align:top; padding:2px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter"> </span><span class="f_CHCode">boolean()</span></p>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextCenter"><span class="f_TableTextCenter"> </span><span class="f_CHCode">double()</span></p>
 </td>
-<td style="vertical-align:top; padding:2px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">true or false (1 or 0)</span></p>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">1e-308 to 1e308, with infinity</span></p>
 </td>
 </tr>
 <tr style="text-align:left;vertical-align:top;">
-<td style="vertical-align:top; padding:2px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">Text Strings</span></p>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">Boolean</span></p>
 </td>
-<td style="vertical-align:top; padding:2px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_CHCode"> string()</span></p>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextCenter"><span class="f_TableTextCenter"> </span><span class="f_CHCode">boolean()</span></p>
 </td>
-<td style="vertical-align:top; padding:2px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">Any length text string</span></p>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">true or false (1 or 0)</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">Text Strings</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextCenter"><span class="f_CHCode"> string()</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">Any length text string</span></p>
 </td>
 </tr>
 </table>
@@ -342,41 +237,41 @@ window.onunload = function() {doc.title = $("<div/>").html("SAM Help").text();}
 <p class="p_TextCode"><span class="f_TextCode">&nbsp;</span></p>
 <h3 class="p_Heading3_atocs_" style="border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Special Characters</span></h3>
 <p class="p_Text"><span class="f_Text">Text data can contain special characters to denote tabs, line endings, and other useful elements that are not part of the normal alphabet. These are inserted into quoted text strings with escape sequences, which begin with the </span><span class="f_CHCode">\</span><span class="f_Text"> character.</span></p>
-<div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 0px 0px;"><table style="width:100%; border:none; border-spacing:0px; border-collapse:collapse;">
+<div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 0px 0px;"><table style="border:none; border-spacing:0px;">
 <tr style="text-align:left;vertical-align:top;">
-<td style="vertical-align:top; padding:2px; border:solid 1px #000000;"><p class="p_TableHeadColumn"><span class="f_TableHeadColumn">Escape Sequence</span></p>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableHeadColumn"><span class="f_TableHeadColumn">Escape Sequence</span></p>
 </td>
-<td style="vertical-align:top; padding:2px; border:solid 1px #000000;"><p class="p_TableHeadColumn"><span class="f_TableHeadColumn">Meaning</span></p>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableHeadColumn"><span class="f_TableHeadColumn">Meaning</span></p>
 </td>
 </tr>
 <tr style="text-align:left;vertical-align:top;">
-<td style="vertical-align:top; padding:2px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">\n</span></p>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">\n</span></p>
 </td>
-<td style="vertical-align:top; padding:2px; border:solid 1px #000000;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">New line</span></p>
-</td>
-</tr>
-<tr style="text-align:left;vertical-align:top;">
-<td style="vertical-align:top; padding:2px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">\t</span></p>
-</td>
-<td style="vertical-align:top; padding:2px; border:solid 1px #000000;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Tab character</span></p>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">New line</span></p>
 </td>
 </tr>
 <tr style="text-align:left;vertical-align:top;">
-<td style="vertical-align:top; padding:2px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">\r</span></p>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">\t</span></p>
 </td>
-<td style="vertical-align:top; padding:2px; border:solid 1px #000000;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Carriage return</span></p>
-</td>
-</tr>
-<tr style="text-align:left;vertical-align:top;">
-<td style="vertical-align:top; padding:2px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">\&quot;</span></p>
-</td>
-<td style="vertical-align:top; padding:2px; border:solid 1px #000000;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Double quote</span></p>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Tab character</span></p>
 </td>
 </tr>
 <tr style="text-align:left;vertical-align:top;">
-<td style="vertical-align:top; padding:2px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">\\</span></p>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">\r</span></p>
 </td>
-<td style="vertical-align:top; padding:2px; border:solid 1px #000000;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Backslash character</span></p>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Carriage return</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">\&quot;</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Double quote</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">\\</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Backslash character</span></p>
 </td>
 </tr>
 </table>
@@ -386,10 +281,7 @@ window.onunload = function() {doc.title = $("<div/>").html("SAM Help").text();}
 <p class="p_TextCode"><span class="f_TextCode">program = &quot;c:\\Windows\\notepad.exe&quot;</span></p>
 <p>Note that for file names on a Windows computer, it is important to convert back slashes ('\') to forward slashes (/). Otherwise, the file name may be translated incorrectly and the file won't be found.</p>
 
-<!--ZOOMSTOP--> 
+</td></tr></table>
 
-
-</div> <!-- idcontent -->
-</div><!-- hmbox --> 
 </body>
 </html>

@@ -1,115 +1,19 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
 <head>
    <title>Solar Water Heating</title>
-   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
    <meta name="generator" content="Help &amp; Manual" />
    <meta name="keywords" content="" />
    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-   <meta http-equiv="content-language" content="en-us" />
-   <meta name="description" content="After running simulations, SAM displays hourly results for the solar water heating model on the Results page Tables and Time Series graphs." />
-   <meta http-equiv="Content-Style-Type" content="text/css" />
+   
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
    <link type="text/css" href="default.css" rel="stylesheet" />
-   <link id="tabscheme" type="text/css" href="hm_topic.css" rel="stylesheet" />   
-<style type="text/css">
-/* No header topics */
-
-/* Breadcrumb trail */
-p#breadcrumbs {
-font-family: Verdana, Tahoma, Helvetica, Sans-Serif;   padding: 2px 0 1px 2px;
-   margin: 0;
-   font-size: 8pt; 
-   color: #999;
-   }   
-p#breadcrumbs a { color: #999; text-decoration: none;}
-p#breadcrumbs a:visited { color: #999; }
-p#breadcrumbs a:hover { color: #333; border-bottom: 1px dotted #333; }
-
-/* Search hightlight color */
-span.highlight {background-color: #ffff40;}
-</style>
-<script type="text/javascript">
-var hmHeaderTopic = true;
-
-</script> 
-<!--[if IE 9]>
-<link id="iesvgcss" rel="stylesheet" type="text/css" href="hm_webhelp_svg.css" />
-<![endif]-->	
-<script src="jquery.js"></script>
-<script type="text/javascript" src="jquery.tools.min.js"></script>
-<script type="text/javascript" src="jquery.scrollTo-min.js"></script>
-<script type="text/javascript"> 
-// General topic variables
-var tVars = {
-   hmHelpPage: "index.html",
-   nextP: "pm_geothermal.htm",
-   prevP: "pm_dish_stirling.htm",
-   currP: "pm_solar_water_heating.htm",
-   defP: "introduction.htm",
-   titleP: "Solar Water Heating",
-   mailsubject: "Feedback on: SAM Help - Solar Water Heating Model Hourly Data",
-   simplesubject: "Documentation%20Feedback",
-   mailid: "PM_Solar_Water_Heating",
-   mailpath: "Performance Model Results &gt; Solar Water Heating /",
-   mailbody: "Dear SAM Support,",
-   mailrecipient: "SAM Support <sam.support@nrel.gov>",
-   simplerecipient: "sam.support@nrel.gov",
-   fbtype: false,
-   header: true,
-   background: "bg.png",
-   tablesReady: false,
-   togglesReady: false,
-   webRedirect: true
-   }
-// Popup configuration
- var hmpBShadow = true;
- var hmPopSmallDim = 500;
- var hmPopKillVideo = false;
- // AutoTOC variables
- var hmatocvars = {
-   atoc_show: true,
-   atoc_title: "Contents",
-   atoc_tip: "Jump to:&nbsp;",
-   atoc_minHeaders: 2,
-   atoc_btntip_off: "No contents entries on this page",
-   atoc_btntip_on: "Display/hide topic directory",
-   atoc_toptip: "Jump to top of page",
-   atoc_top: "Scroll to Top of Page",
-   atoc_bg: "#f6f6f6",
-   atoc_border: "silver",
-   atoc_linkcolor: "#444",
-   atoc_linklimit: 45,
-   atoc_hovercolor: "#000",
-   atoc_hoverbgcolor: "#e0e0e0"
-}
-// Sortable tables
-var sortVars = {
-   europeandate: false,
-   germanNumbers: false,
-   imagePath: "",
-   image_up: "arrow-up.gif",
-   image_down: "arrow-down.gif",
-   image_empty: "arrow-empty.gif",
-   image_none: "arrow-none.gif",
-   sort_tip: "Click to sort on this column",
-   umlauts: "false"
-   }
-
-</script>
-
-<script type="text/javascript"> 
-$(document).ready(function() {
-var doc = document;  
-try {
-if (parent.hmWebHelp.navWidth != null) doc = parent.document;
-doc.title = $("<div/>").html("SAM Help - Solar Water Heating").text();
-window.onunload = function() {doc.title = $("<div/>").html("SAM Help").text();}
-} catch(err) {}
-});
-</script>
-<script type="text/javascript" src="helpman_settings.js"></script>
-<script type="text/javascript" src="helpman_topicinit.js"></script>
-<script type="text/javascript" src="hmtopic.js"></script>
+   <style type="text/css">
+     body { margin: 0px; background: #FFFFFF; }
+   </style>
+   <script type="text/javascript" src="jquery.js"></script>
+   <script type="text/javascript" src="helpman_settings.js"></script>
+   <script type="text/javascript" src="helpman_topicinit.js"></script>
 
    <script type="text/javascript">
      HMSyncTOC("index.html", "pm_solar_water_heating.htm");
@@ -120,234 +24,222 @@ window.onunload = function() {doc.title = $("<div/>").html("SAM Help").text();}
    </script>
 </head>
 <body>
-<!--ZOOMSTOP-->
-<ul id="topictabs" class="tabs">
-<li id="indextab" class="hmtabs"><a href="#" id="indextablink" class="current"><span>Solar Water Heating</span></a></li>
-</ul>
-<div id="hmbox">
-<div id="hmheader">
-<div id="hmheadercontents">
-<p id="breadcrumbs">
-<b>Navigation:</b>
-<a href="pm_outputs.htm">Performance Model Results</a>:</p> 
-<h1 class="p_Heading1"><span class="f_Heading1">Solar Water Heating Model Hourly Data</span></h1>
 
-</div>
-<div id="atocIcon" class="navdivs">
-<img class="navicon" id="hmAtocLink" src="contents_off.png" alt="No contents entries on this page" title="No contents entries on this page" />
-<br /><span>Contents</span>
-</div>
-</div>
-<div id="autoTocWrapper" class="topicmenu"></div>
-<div id="idcontent">
-<div id="unclicker"></div>
 
-<!--ZOOMRESTART-->
+<table style="width:100%; border:none; border-spacing:0px; padding:5px; background:#FFFFFF; color:#0072C6;">
+  <tr style="vertical-align:middle">
+    <td style="text-align:left">
+      <h1 class="p_Heading1"><span class="f_Heading1">Solar Water Heating Model Hourly Data</span></h1>
+
+    </td>
+  </tr>
+</table>
+
+
+<!-- Placeholder for topic body. -->
+<table style="width:100%;border:none;border-spacing:0px"><tr style="vertical-align:top"><td style="text-align:left;padding:5px">
 <p class="p_Text"><span class="f_Text">After running simulations, SAM displays hourly results for the solar water heating model on the Results page <a href="tabular_data_browser.htm" class="topiclink">Tables</a> and <a href="base_case_time_series.htm" class="topiclink">Time Series</a> graphs.</span></p>
 <p class="p_Note"><span class="f_CHNote">Notes.</span><span class="f_Note"> </span><br />
 <span class="f_Note">&nbsp;</span><br />
 <span class="f_Note">For simulations that involve time-of-delivery pricing, results include additional variables described in <a href="time_dependent_pricing.htm" class="topiclink">Savings and Revenue</a>.</span></p>
-<div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 0px 0px;"><table id="SWH-Hourly_srt_" class="variable list sortable" style="width:100%; border:none; border-spacing:0px;">
+<div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 0px 0px;"><table id="SWH-Hourly_srt_" class="VariableListSortable" style="width:100%; border:none; border-spacing:0px;">
 <tr style="text-align:left;vertical-align:top;">
-<th style="vertical-align:top; background-color:#99ccff; padding:0px;"><p class="p_TableHeadColumn"><a id="_defaultsort_"></a><span style="font-weight: bold;">Variable Name</span></p>
+<th style="vertical-align:top; background-color:#99ccff; padding:0px;"><p class="p_TableHeadColumn"><a id="_defaultsort_"></a><span style="font-family: Verdana; font-weight: bold;">Variable Name</span></p>
 </th>
-<th style="vertical-align:top; background-color:#99ccff; padding:0px;"><p class="p_TableHeadColumn"><a id="_sortable_"></a><span style="font-weight: bold;">Units</span></p>
+<th style="vertical-align:top; background-color:#99ccff; padding:0px;"><p class="p_TableHeadColumn"><a id="_sortable_"></a><span style="font-family: Verdana; font-weight: bold;">Units</span></p>
 </th>
-<th style="vertical-align:top; background-color:#99ccff; padding:0px;"><p class="p_TableHeadColumn"><a id="_sortable_"></a><span style="font-weight: bold;">Description</span></p>
+<th style="vertical-align:top; background-color:#99ccff; padding:0px;"><p class="p_TableHeadColumn"><a id="_sortable_"></a><span style="font-family: Verdana; font-weight: bold;">Description</span></p>
 </th>
 </tr>
 <tr style="text-align:left;vertical-align:top;">
-<td style="vertical-align:top; padding:0px;"><p style="margin: 0px 0px 8px 0px;">Hourly Energy Delivered </p>
+<td style="vertical-align:top; padding:0px;"><p style="margin: 0px 0px 8px 0px;"><span style="font-family: Verdana;">Hourly Energy Delivered </span></p>
 </td>
-<td style="vertical-align:top; padding:0px;"><p style="margin: 0px 0px 8px 0px;">kWh</p>
+<td style="vertical-align:top; padding:0px;"><p style="margin: 0px 0px 8px 0px;"><span style="font-family: Verdana;">kWh</span></p>
 </td>
-<td style="vertical-align:top; padding:0px;"><p style="margin: 0px 0px 8px 0px;">Energy saved by the solar water system, adjusted by the values you specify on the Performance Adjustment Page.</p>
-</td>
-</tr>
-<tr style="text-align:left;vertical-align:top;">
-<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p style="margin: 0px 0px 8px 0px;">Q delivered </p>
-</td>
-<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p style="margin: 0px 0px 8px 0px;">kWh</p>
-</td>
-<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p style="margin: 0px 0px 8px 0px;">Thermal energy delivered by the solar water heating system.</p>
+<td style="vertical-align:top; padding:0px;"><p style="margin: 0px 0px 8px 0px;"><span style="font-family: Verdana;">Energy saved by the solar water system, adjusted by the values you specify on the Performance Adjustment Page.</span></p>
 </td>
 </tr>
 <tr style="text-align:left;vertical-align:top;">
-<td style="vertical-align:top; padding:0px;"><p style="margin: 0px 0px 8px 0px;">Q saved </p>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p style="margin: 0px 0px 8px 0px;"><span style="font-family: Verdana;">Q delivered </span></p>
 </td>
-<td style="vertical-align:top; padding:0px;"><p style="margin: 0px 0px 8px 0px;">kWh</p>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p style="margin: 0px 0px 8px 0px;"><span style="font-family: Verdana;">kWh</span></p>
 </td>
-<td style="vertical-align:top; padding:0px;"><p style="margin: 0px 0px 8px 0px;">Electric energy saved by the solar water heating system: <img src="eq_swh_qsaved.gif" width="195" height="17" alt="EQ_SWH_Qsaved" style="border:none" />. This value is equivalent to the energy delivered by the solar water heating system.</p>
-</td>
-</tr>
-<tr style="text-align:left;vertical-align:top;">
-<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p style="margin: 0px 0px 8px 0px;">Draw – hot water </p>
-</td>
-<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p style="margin: 0px 0px 8px 0px;">kg/hr</p>
-</td>
-<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p style="margin: 0px 0px 8px 0px;">The hourly usage of hot water specified in the draw profile on the input page.</p>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p style="margin: 0px 0px 8px 0px;"><span style="font-family: Verdana;">Thermal energy delivered by the solar water heating system.</span></p>
 </td>
 </tr>
 <tr style="text-align:left;vertical-align:top;">
-<td style="vertical-align:top; padding:0px;"><p style="margin: 0px 0px 8px 0px;">Irradiance - Beam </p>
+<td style="vertical-align:top; padding:0px;"><p style="margin: 0px 0px 8px 0px;"><span style="font-family: Verdana;">Q saved </span></p>
 </td>
-<td style="vertical-align:top; padding:0px;"><p style="margin: 0px 0px 8px 0px;">W/m2</p>
+<td style="vertical-align:top; padding:0px;"><p style="margin: 0px 0px 8px 0px;"><span style="font-family: Verdana;">kWh</span></p>
 </td>
-<td style="vertical-align:top; padding:0px;"><p style="margin: 0px 0px 8px 0px;">Direct normal radiation value from the weather file.</p>
-</td>
-</tr>
-<tr style="text-align:left;vertical-align:top;">
-<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p style="margin: 0px 0px 8px 0px;">Irradiance - Diffuse </p>
-</td>
-<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p style="margin: 0px 0px 8px 0px;">W/m2</p>
-</td>
-<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p style="margin: 0px 0px 8px 0px;">Diffuse horizontal radiation value from the weather file.</p>
+<td style="vertical-align:top; padding:0px;"><p style="margin: 0px 0px 8px 0px;"><span style="font-family: Verdana;">Electric energy saved by the solar water heating system: </span><img src="eq_swh_qsaved.gif" width="195" height="17" alt="EQ_SWH_Qsaved" style="border:none" /><span style="font-family: Verdana;">. This value is equivalent to the energy delivered by the solar water heating system.</span></p>
 </td>
 </tr>
 <tr style="text-align:left;vertical-align:top;">
-<td style="vertical-align:top; padding:0px;"><p style="margin: 0px 0px 8px 0px;">Irradiance - Incident </p>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p style="margin: 0px 0px 8px 0px;"><span style="font-family: Verdana;">Draw – hot water </span></p>
 </td>
-<td style="vertical-align:top; padding:0px;"><p style="margin: 0px 0px 8px 0px;">W/m2</p>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p style="margin: 0px 0px 8px 0px;"><span style="font-family: Verdana;">kg/hr</span></p>
 </td>
-<td style="vertical-align:top; padding:0px;"><p style="margin: 0px 0px 8px 0px;">The total hourly incident global radiation incident on the collector.</p>
-</td>
-</tr>
-<tr style="text-align:left;vertical-align:top;">
-<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p style="margin: 0px 0px 8px 0px;">Irradiance - Transmitted </p>
-</td>
-<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p style="margin: 0px 0px 8px 0px;">W/m2</p>
-</td>
-<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p style="margin: 0px 0px 8px 0px;">The total hourly radiation that makes it into the collector. Depends on the optical properties of the collector.</p>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p style="margin: 0px 0px 8px 0px;"><span style="font-family: Verdana;">The hourly usage of hot water specified in the draw profile on the input page.</span></p>
 </td>
 </tr>
 <tr style="text-align:left;vertical-align:top;">
-<td style="vertical-align:top; padding:0px;"><p style="margin: 0px 0px 8px 0px;">Operation mode</p>
+<td style="vertical-align:top; padding:0px;"><p style="margin: 0px 0px 8px 0px;"><span style="font-family: Verdana;">Irradiance - Beam </span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p style="margin: 0px 0px 8px 0px;"><span style="font-family: Verdana;">W/m2</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p style="margin: 0px 0px 8px 0px;"><span style="font-family: Verdana;">Direct normal radiation value from the weather file.</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p style="margin: 0px 0px 8px 0px;"><span style="font-family: Verdana;">Irradiance - Diffuse </span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p style="margin: 0px 0px 8px 0px;"><span style="font-family: Verdana;">W/m2</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p style="margin: 0px 0px 8px 0px;"><span style="font-family: Verdana;">Diffuse horizontal radiation value from the weather file.</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; padding:0px;"><p style="margin: 0px 0px 8px 0px;"><span style="font-family: Verdana;">Irradiance - Incident </span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p style="margin: 0px 0px 8px 0px;"><span style="font-family: Verdana;">W/m2</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p style="margin: 0px 0px 8px 0px;"><span style="font-family: Verdana;">The total hourly incident global radiation incident on the collector.</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p style="margin: 0px 0px 8px 0px;"><span style="font-family: Verdana;">Irradiance - Transmitted </span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p style="margin: 0px 0px 8px 0px;"><span style="font-family: Verdana;">W/m2</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p style="margin: 0px 0px 8px 0px;"><span style="font-family: Verdana;">The total hourly radiation that makes it into the collector. Depends on the optical properties of the collector.</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; padding:0px;"><p style="margin: 0px 0px 8px 0px;"><span style="font-family: Verdana;">Operation mode</span></p>
 </td>
 <td style="vertical-align:top; padding:0px;"><p style="margin: 0px 0px 8px 0px;"><span style="font-family: Arial; color: #000000;">&nbsp;</span></p>
 </td>
-<td style="vertical-align:top; padding:0px;"><p style="margin: 0px 0px 8px 0px;">1 – mixed mode, during hours when useful energy is collected</p>
-<p style="margin: 0px 0px 8px 0px;">2 – stratified mode, during hours no useful energy is collected.</p>
+<td style="vertical-align:top; padding:0px;"><p style="margin: 0px 0px 8px 0px;"><span style="font-family: Verdana;">1 – mixed mode, during hours when useful energy is collected</span></p>
+<p style="margin: 0px 0px 8px 0px;"><span style="font-family: Verdana;">2 – stratified mode, during hours no useful energy is collected.</span></p>
 </td>
 </tr>
 <tr style="text-align:left;vertical-align:top;">
-<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p style="margin: 0px 0px 8px 0px;">P pump</p>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p style="margin: 0px 0px 8px 0px;"><span style="font-family: Verdana;">P pump</span></p>
 </td>
-<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p style="margin: 0px 0px 8px 0px;">kWh</p>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p style="margin: 0px 0px 8px 0px;"><span style="font-family: Verdana;">kWh</span></p>
 </td>
-<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p style="margin: 0px 0px 8px 0px;">The total amount of electric pump power needed to drive the collector loop and heat exchanger loop.</p>
-</td>
-</tr>
-<tr style="text-align:left;vertical-align:top;">
-<td style="vertical-align:top; padding:0px;"><p style="margin: 0px 0px 8px 0px;">Q auxiliary </p>
-</td>
-<td style="vertical-align:top; padding:0px;"><p style="margin: 0px 0px 8px 0px;">kWh</p>
-</td>
-<td style="vertical-align:top; padding:0px;"><p style="margin: 0px 0px 8px 0px;">Electricity energy required by the auxiliary heater to raise the water temperature from the solar storage tank to the set temperature: <img src="eq_swh_qaux.gif" width="172" height="17" alt="EQ_SWH_Qaux" style="border:none" />, where <img src="eq_swh_tdelivvar.gif" width="30" height="16" alt="EQ_SWH_Tdelivvar" style="border:none" /> is the temperature of the water delivered from the solar tank. Because solar heat has been added to the water, <img src="eq_swh_tdelivgttmain.gif" width="83" height="16" alt="EQ_SWH_TdelivgtTmain" style="border:none" />, and less energy is needed to bring the water to the desired set temperature than would be required without the solar water heating system.</p>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p style="margin: 0px 0px 8px 0px;"><span style="font-family: Verdana;">The total amount of electric pump power needed to drive the collector loop and heat exchanger loop.</span></p>
 </td>
 </tr>
 <tr style="text-align:left;vertical-align:top;">
-<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p style="margin: 0px 0px 8px 0px;">Q auxiliary only </p>
+<td style="vertical-align:top; padding:0px;"><p style="margin: 0px 0px 8px 0px;"><span style="font-family: Verdana;">Q auxiliary </span></p>
 </td>
-<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p style="margin: 0px 0px 8px 0px;">kWh</p>
+<td style="vertical-align:top; padding:0px;"><p style="margin: 0px 0px 8px 0px;"><span style="font-family: Verdana;">kWh</span></p>
 </td>
-<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p style="margin: 0px 0px 8px 0px;">Electric energy that would be required without the solar water heating system: <img src="eq_swh_qauxonly.gif" width="201" height="17" alt="EQ_SWH_Qauxonly" style="border:none" />.</p>
-</td>
-</tr>
-<tr style="text-align:left;vertical-align:top;">
-<td style="vertical-align:top; padding:0px;"><p style="margin: 0px 0px 8px 0px;">Q loss </p>
-</td>
-<td style="vertical-align:top; padding:0px;"><p style="margin: 0px 0px 8px 0px;">kWh</p>
-</td>
-<td style="vertical-align:top; padding:0px;"><p> Envelope loss to room: <img src="eq_swh_qloss2.gif" width="155" height="16" alt="EQ_SWH_Qloss2" style="border:none" /><span class="f_ImageCaption">.</span></p>
+<td style="vertical-align:top; padding:0px;"><p style="margin: 0px 0px 8px 0px;"><span style="font-family: Verdana;">Electricity energy required by the auxiliary heater to raise the water temperature from the solar storage tank to the set temperature: </span><img src="eq_swh_qaux.gif" width="172" height="17" alt="EQ_SWH_Qaux" style="border:none" /><span style="font-family: Verdana;">, where </span><img src="eq_swh_tdelivvar.gif" width="30" height="16" alt="EQ_SWH_Tdelivvar" style="border:none" /><span style="font-family: Verdana;"> is the temperature of the water delivered from the solar tank. Because solar heat has been added to the water, </span><img src="eq_swh_tdelivgttmain.gif" width="83" height="16" alt="EQ_SWH_TdelivgtTmain" style="border:none" /><span style="font-family: Verdana;">, and less energy is needed to bring the water to the desired set temperature than would be required without the solar water heating system.</span></p>
 </td>
 </tr>
 <tr style="text-align:left;vertical-align:top;">
-<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p style="margin: 0px 0px 8px 0px;">Q transmitted</p>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p style="margin: 0px 0px 8px 0px;"><span style="font-family: Verdana;">Q auxiliary only </span></p>
 </td>
-<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p style="margin: 0px 0px 8px 0px;">kWh</p>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p style="margin: 0px 0px 8px 0px;"><span style="font-family: Verdana;">kWh</span></p>
 </td>
-<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p style="margin: 0px 0px 8px 0px;">Solar radiation transmitted through the collector glass, accounting for collector area: <img src="eq_swh_qtransmitted.gif" width="172" height="16" alt="EQ_SWH_Qtransmitted" style="border:none" />, where Itransmitted is the transmitted irradiance and Ac is the total collector area.</p>
-</td>
-</tr>
-<tr style="text-align:left;vertical-align:top;">
-<td style="vertical-align:top; padding:0px;"><p style="margin: 0px 0px 8px 0px;">Q useful </p>
-</td>
-<td style="vertical-align:top; padding:0px;"><p style="margin: 0px 0px 8px 0px;">kWh</p>
-</td>
-<td style="vertical-align:top; padding:0px;"><p style="margin: 0px 0px 8px 0px;">Energy delivered by the collector to the solar water storage tank.</p>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p style="margin: 0px 0px 8px 0px;"><span style="font-family: Verdana;">Electric energy that would be required without the solar water heating system: </span><img src="eq_swh_qauxonly.gif" width="201" height="17" alt="EQ_SWH_Qauxonly" style="border:none" /><span style="font-family: Verdana;">.</span></p>
 </td>
 </tr>
 <tr style="text-align:left;vertical-align:top;">
-<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p style="margin: 0px 0px 8px 0px;">T ambient </p>
+<td style="vertical-align:top; padding:0px;"><p style="margin: 0px 0px 8px 0px;"><span style="font-family: Verdana;">Q loss </span></p>
 </td>
-<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p style="margin: 0px 0px 8px 0px;">C</p>
+<td style="vertical-align:top; padding:0px;"><p style="margin: 0px 0px 8px 0px;"><span style="font-family: Verdana;">kWh</span></p>
 </td>
-<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p style="margin: 0px 0px 8px 0px;">The mid-hour ambient temperature calculated by the weather data processor by averaging the end-of-hour temperature from the previous hour with the end-of-hour temperature from the current hour in the weather file.</p>
-</td>
-</tr>
-<tr style="text-align:left;vertical-align:top;">
-<td style="vertical-align:top; padding:0px;"><p style="margin: 0px 0px 8px 0px;">T cold </p>
-</td>
-<td style="vertical-align:top; padding:0px;"><p style="margin: 0px 0px 8px 0px;">C</p>
-</td>
-<td style="vertical-align:top; padding:0px;"><p style="margin: 0px 0px 8px 0px;">The temperature of the cold portion of the solar storage tank volume during stratified mode (Operation mode = 2). If the tank is not stratified (Operation mode = 1), this value is equal to the previous hour's cold temperature.</p>
+<td style="vertical-align:top; padding:0px;"><p><span style="font-family: Verdana;"> Envelope loss to room: </span><img src="eq_swh_qloss2.gif" width="155" height="16" alt="EQ_SWH_Qloss2" style="border:none" /><span class="f_ImageCaption">.</span></p>
 </td>
 </tr>
 <tr style="text-align:left;vertical-align:top;">
-<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p style="margin: 0px 0px 8px 0px;">T delivered </p>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p style="margin: 0px 0px 8px 0px;"><span style="font-family: Verdana;">Q transmitted</span></p>
 </td>
-<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p style="margin: 0px 0px 8px 0px;">C</p>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p style="margin: 0px 0px 8px 0px;"><span style="font-family: Verdana;">kWh</span></p>
 </td>
-<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p style="margin: 0px 0px 8px 0px;">The temperature of the water delivered from the storage tank.</p>
-</td>
-</tr>
-<tr style="text-align:left;vertical-align:top;">
-<td style="vertical-align:top; padding:0px;"><p style="margin: 0px 0px 8px 0px;">T hot </p>
-</td>
-<td style="vertical-align:top; padding:0px;"><p style="margin: 0px 0px 8px 0px;">C</p>
-</td>
-<td style="vertical-align:top; padding:0px;"><p style="margin: 0px 0px 8px 0px;">The temperature of the hot portion of the solar storage tank volume during stratified mode (Operation mode = 2). If not stratified (Operation mode = 1), this value is equal to the previous hour's hot temperature.</p>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p style="margin: 0px 0px 8px 0px;"><span style="font-family: Verdana;">Solar radiation transmitted through the collector glass, accounting for collector area: </span><img src="eq_swh_qtransmitted.gif" width="172" height="16" alt="EQ_SWH_Qtransmitted" style="border:none" /><span style="font-family: Verdana;">, where Itransmitted is the transmitted irradiance and Ac is the total collector area.</span></p>
 </td>
 </tr>
 <tr style="text-align:left;vertical-align:top;">
-<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p style="margin: 0px 0px 8px 0px;">T mains </p>
+<td style="vertical-align:top; padding:0px;"><p style="margin: 0px 0px 8px 0px;"><span style="font-family: Verdana;">Q useful </span></p>
 </td>
-<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p style="margin: 0px 0px 8px 0px;">C</p>
+<td style="vertical-align:top; padding:0px;"><p style="margin: 0px 0px 8px 0px;"><span style="font-family: Verdana;">kWh</span></p>
 </td>
-<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p style="margin: 0px 0px 8px 0px;">The temperature of water incoming from the supply source.</p>
-</td>
-</tr>
-<tr style="text-align:left;vertical-align:top;">
-<td style="vertical-align:top; padding:0px;"><p style="margin: 0px 0px 8px 0px;">T tank </p>
-</td>
-<td style="vertical-align:top; padding:0px;"><p style="margin: 0px 0px 8px 0px;">C</p>
-</td>
-<td style="vertical-align:top; padding:0px;"><p style="margin: 0px 0px 8px 0px;">The mean temperature of the solar storage tank.</p>
+<td style="vertical-align:top; padding:0px;"><p style="margin: 0px 0px 8px 0px;"><span style="font-family: Verdana;">Energy delivered by the collector to the solar water storage tank.</span></p>
 </td>
 </tr>
 <tr style="text-align:left;vertical-align:top;">
-<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p style="margin: 0px 0px 8px 0px;">V cold </p>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p style="margin: 0px 0px 8px 0px;"><span style="font-family: Verdana;">T ambient </span></p>
 </td>
-<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p style="margin: 0px 0px 8px 0px;">m3</p>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p style="margin: 0px 0px 8px 0px;"><span style="font-family: Verdana;">C</span></p>
 </td>
-<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p style="margin: 0px 0px 8px 0px;">The estimated volume of the cold portion of the solar storage tank, where &quot;cold&quot; is with respect to the hot portion of the tank. SAM models the hot and cold portions as separate nodes. The cold volume increases as users draw water from the tank and mains water replaces it.</p>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p style="margin: 0px 0px 8px 0px;"><span style="font-family: Verdana;">The mid-hour ambient temperature calculated by the weather data processor by averaging the end-of-hour temperature from the previous hour with the end-of-hour temperature from the current hour in the weather file.</span></p>
 </td>
 </tr>
 <tr style="text-align:left;vertical-align:top;">
-<td style="vertical-align:top; padding:0px;"><p style="margin: 0px 0px 8px 0px;">V hot </p>
+<td style="vertical-align:top; padding:0px;"><p style="margin: 0px 0px 8px 0px;"><span style="font-family: Verdana;">T cold </span></p>
 </td>
-<td style="vertical-align:top; padding:0px;"><p style="margin: 0px 0px 8px 0px;">m3</p>
+<td style="vertical-align:top; padding:0px;"><p style="margin: 0px 0px 8px 0px;"><span style="font-family: Verdana;">C</span></p>
 </td>
-<td style="vertical-align:top; padding:0px;"><p style="margin: 0px 0px 8px 0px;">The estimated volume of the hot portion of the solar storage tank, where &quot;hot&quot; is with respect to the cold portion of the tank. SAM models the hot and cold portions as separate nodes. The hot volume increases from hour to hour as the useful energy from the collector is added until the hot volume is equal to the tank volume (and cold volume is zero).</p>
+<td style="vertical-align:top; padding:0px;"><p style="margin: 0px 0px 8px 0px;"><span style="font-family: Verdana;">The temperature of the cold portion of the solar storage tank volume during stratified mode (Operation mode = 2). If the tank is not stratified (Operation mode = 1), this value is equal to the previous hour's cold temperature.</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p style="margin: 0px 0px 8px 0px;"><span style="font-family: Verdana;">T delivered </span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p style="margin: 0px 0px 8px 0px;"><span style="font-family: Verdana;">C</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p style="margin: 0px 0px 8px 0px;"><span style="font-family: Verdana;">The temperature of the water delivered from the storage tank.</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; padding:0px;"><p style="margin: 0px 0px 8px 0px;"><span style="font-family: Verdana;">T hot </span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p style="margin: 0px 0px 8px 0px;"><span style="font-family: Verdana;">C</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p style="margin: 0px 0px 8px 0px;"><span style="font-family: Verdana;">The temperature of the hot portion of the solar storage tank volume during stratified mode (Operation mode = 2). If not stratified (Operation mode = 1), this value is equal to the previous hour's hot temperature.</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p style="margin: 0px 0px 8px 0px;"><span style="font-family: Verdana;">T mains </span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p style="margin: 0px 0px 8px 0px;"><span style="font-family: Verdana;">C</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p style="margin: 0px 0px 8px 0px;"><span style="font-family: Verdana;">The temperature of water incoming from the supply source.</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; padding:0px;"><p style="margin: 0px 0px 8px 0px;"><span style="font-family: Verdana;">T tank </span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p style="margin: 0px 0px 8px 0px;"><span style="font-family: Verdana;">C</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p style="margin: 0px 0px 8px 0px;"><span style="font-family: Verdana;">The mean temperature of the solar storage tank.</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p style="margin: 0px 0px 8px 0px;"><span style="font-family: Verdana;">V cold </span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p style="margin: 0px 0px 8px 0px;"><span style="font-family: Verdana;">m3</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p style="margin: 0px 0px 8px 0px;"><span style="font-family: Verdana;">The estimated volume of the cold portion of the solar storage tank, where &quot;cold&quot; is with respect to the hot portion of the tank. SAM models the hot and cold portions as separate nodes. The cold volume increases as users draw water from the tank and mains water replaces it.</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; padding:0px;"><p style="margin: 0px 0px 8px 0px;"><span style="font-family: Verdana;">V hot </span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p style="margin: 0px 0px 8px 0px;"><span style="font-family: Verdana;">m3</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p style="margin: 0px 0px 8px 0px;"><span style="font-family: Verdana;">The estimated volume of the hot portion of the solar storage tank, where &quot;hot&quot; is with respect to the cold portion of the tank. SAM models the hot and cold portions as separate nodes. The hot volume increases from hour to hour as the useful energy from the collector is added until the hot volume is equal to the tank volume (and cold volume is zero).</span></p>
 </td>
 </tr>
 </table>
 </div>
 
-<!--ZOOMSTOP--> 
+</td></tr></table>
 
-
-</div> <!-- idcontent -->
-</div><!-- hmbox --> 
 </body>
 </html>
