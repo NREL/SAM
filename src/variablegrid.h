@@ -180,6 +180,8 @@ public:
 		const wxString& oldval, wxString *newval);
 	virtual void ApplyEdit(int row, int col, wxGrid* grid);
 
+	// update with choices based on table base row and column
+	void UpdateComboBox(int row, int col, wxGrid* grid);
 private:
 	long m_index;
 
