@@ -74,8 +74,8 @@ public:
 
 	bool LoadValuesFromExternalSource( wxInputStream &in, size_t &not_found, size_t &wrong_type, size_t &nread );
 
-	bool LoadDefaults();
-	bool SaveDefaults();
+	bool LoadDefaults( wxString *error_msg = 0 );
+	bool SaveDefaults( bool quiet = false );
 
 	bool SetConfiguration( const wxString &tech, const wxString &fin );
 	void GetConfiguration( wxString *tech, wxString *fin );	
