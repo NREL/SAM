@@ -533,7 +533,7 @@ void MainWindow::OnCommand( wxCommandEvent &evt )
 			menu.Append( ID_SAVE_HOURLY, "Save with hourly results");
 			menu.AppendSeparator();
 			menu.Append( wxID_CLOSE, "Close\tCtrl-W" );
-			menu.Append( wxID_EXIT, "Exit" );
+			menu.Append( wxID_EXIT, "Quit" );
 			menu.Popup( this, p );
 		}
 		break;
@@ -1574,22 +1574,82 @@ wxArrayString SamApp::RecentFiles()
 class HelpWin;
 static HelpWin *gs_helpWin = 0;
 
+enum { ID_BACK = wxID_HIGHEST+439, ID_HOME, ID_EMAIL_SUPPORT, ID_WEBSITE, ID_FORUM, ID_RELEASE_NOTES };
+
+
 class HelpWin : public wxFrame
 {
 	wxWebView *m_webView;
+	wxString m_aboutHtml;
 public:
 	HelpWin()
 		: wxFrame( SamApp::Window(), wxID_ANY, "System Advisor Model Help", wxDefaultPosition, wxSize(800,600) )
 	{
+		CreateAboutHtml();
+
 #ifdef __WXMSW__
 		SetIcon( wxICON( appicon ) );
 #endif
-		m_webView = wxWebView::New( this, wxID_ANY, wxT("http://sam.nrel.gov"), wxDefaultPosition, wxDefaultSize, 
+		SetBackgroundColour( wxMetroTheme::Colour( wxMT_FOREGROUND ) );
+		m_webView = wxWebView::New( this, wxID_ANY, ::wxWebViewDefaultURLStr, wxDefaultPosition, wxDefaultSize, 
 			::wxWebViewBackendDefault, wxBORDER_NONE );
+		m_webView->SetPage( m_aboutHtml, "About SAM" );
+
+		wxBoxSizer *tools = new wxBoxSizer( wxHORIZONTAL );
+		tools->Add( new wxMetroButton( this, ID_BACK, "Back" ), 0, wxALL|wxEXPAND, 0 );
+		tools->Add( new wxMetroButton( this, ID_HOME, "Home" ), 0, wxALL|wxEXPAND, 0 );
+		tools->Add( new wxMetroButton( this, ID_WEBSITE, "Web site" ), 0, wxALL|wxEXPAND, 0 );
+		tools->Add( new wxMetroButton( this, ID_FORUM, "Forum" ), 0, wxALL|wxEXPAND, 0 );
+		tools->Add( new wxMetroButton( this, ID_EMAIL_SUPPORT, "Email support" ), 0, wxALL|wxEXPAND, 0 );
+		tools->Add( new wxMetroButton( this, ID_RELEASE_NOTES, "Release notes" ), 0, wxALL|wxEXPAND, 0 );
+		tools->AddStretchSpacer();
+		tools->Add( new wxMetroButton( this, wxID_ABOUT, "About" ), 0, wxALL|wxEXPAND, 0 ); 
+		tools->Add( new wxMetroButton( this, wxID_CLOSE, "Close" ), 0, wxALL|wxEXPAND, 0 ); 
+
+		wxBoxSizer *sizer = new wxBoxSizer( wxVERTICAL );
+		sizer->Add( tools, 0, wxALL|wxEXPAND, 0 );
+		sizer->Add( m_webView, 1, wxALL|wxEXPAND, 0 );
+		SetSizer( sizer );
 	}
 
-	void LoadPage( const wxString &url )
+	void CreateAboutHtml()
 	{
+		static char *s_samDisclaimerHtml = "DISCLAIMER\<br><br>"
+				"The System Advisor Model (\"Model\") is provided by the National Renewable Energy Laboratory (\"NREL\"), which is operated by the Alliance for Sustainable Energy, LLC (\"Alliance\") for the U.S. Department Of Energy (\"DOE\") and may be used for any purpose whatsoever.<br><br>"
+				"The names DOE/NREL/ALLIANCE shall not be used in any representation, advertising, publicity or other manner whatsoever to endorse or promote any entity that adopts or uses the Model.  DOE/NREL/ALLIANCE shall not provide any support, consulting, training or assistance of any kind with regard to the use of the Model or any updates, revisions or new versions of the Model.<br><br>"
+				"YOU AGREE TO INDEMNIFY DOE/NREL/ALLIANCE, AND ITS AFFILIATES, OFFICERS, AGENTS, AND EMPLOYEES AGAINST ANY CLAIM OR DEMAND, INCLUDING REASONABLE ATTORNEYS' FEES, RELATED TO YOUR USE, RELIANCE, OR ADOPTION OF THE MODEL FOR ANY PURPOSE WHATSOEVER.  THE MODEL IS PROVIDED BY DOE/NREL/ALLIANCE \"AS IS\" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE EXPRESSLY DISCLAIMED.  IN NO EVENT SHALL DOE/NREL/ALLIANCE BE LIABLE FOR ANY SPECIAL, INDIRECT OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER, INCLUDING BUT NOT LIMITED TO CLAIMS ASSOCIATED WITH THE LOSS OF DATA OR PROFITS, WHICH MAY RESULT FROM ANY ACTION IN CONTRACT, NEGLIGENCE OR OTHER TORTIOUS CLAIM THAT ARISES OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THE MODEL.<br><br>";
+
+		m_aboutHtml = "<html><body bgcolor=#ffffff>"
+				"<font color=#a9a9a9 face=\"Segoe UI Light\" size=10>System Advisor Model<br>Version " + SamApp::VersionStr() + "</font><br><br>"
+				"<font color=#999999 face=\"Segoe UI Light\" size=3>" 
+				+ wxString::Format("SSC Version %d: %s", ssc_version(), ssc_build_info() ) + "<br><br><br>"
+				+ wxString(s_samDisclaimerHtml) + "</font>"
+				"</body></html>";
+	}
+	void LoadPage( wxString url )
+	{
+		if ( url == ":about" )
+		{
+			m_webView->SetPage( m_aboutHtml, "About SAM" );
+			return;
+		}
+		else if ( url == ":release_notes" )
+		{
+			wxFileName fn( SamApp::GetRuntimePath() + "/help/release_notes.pdf" );
+			fn.MakeAbsolute();
+			wxLaunchDefaultBrowser( fn.GetFullPath() );
+			return;
+		}
+		else if ( url == ":email_support" )
+		{
+			wxLaunchDefaultBrowser( "mailto:sam.support@nrel.gov" );
+			return;
+		}
+		else if ( url == ":forum" )
+			url = "https://sam.nrel.gov/forums/support-forum";
+		else if ( url == ":website" )
+			url = "https://sam.nrel.gov";
+		
 		m_webView->LoadURL( url );
 	}
 
@@ -1599,10 +1659,53 @@ public:
 		evt.Veto();
 	}
 
+	void OnCommand( wxCommandEvent &evt )
+	{
+		switch( evt.GetId() )
+		{
+		case ID_BACK:
+			if ( m_webView->CanGoBack() ) m_webView->GoBack();
+			break;
+		case ID_WEBSITE:
+			LoadPage( ":website" );
+			break;
+		case ID_FORUM:
+			LoadPage( ":forum" );
+			break;
+		case ID_EMAIL_SUPPORT:
+			LoadPage( ":email_support" );
+			break;
+		case ID_RELEASE_NOTES:
+			LoadPage( ":release_notes" );
+			break;
+		case ID_HOME:
+		{
+			wxFileName fn( SamApp::GetRuntimePath() + "/help/html/index.html" );
+			fn.MakeAbsolute();
+			LoadPage( "file:///" + fn.GetFullPath() );
+		}
+			break;
+		case wxID_ABOUT:
+			LoadPage( ":about" );
+			break;
+		case wxID_CLOSE:
+			Close();
+			break;
+		}
+	}
+
 	DECLARE_EVENT_TABLE();
 };
 
 BEGIN_EVENT_TABLE( HelpWin, wxFrame )
+	EVT_BUTTON( ID_BACK, HelpWin::OnCommand )
+	EVT_BUTTON( ID_HOME, HelpWin::OnCommand )
+	EVT_BUTTON( ID_WEBSITE, HelpWin::OnCommand )
+	EVT_BUTTON( ID_FORUM, HelpWin::OnCommand )
+	EVT_BUTTON( ID_RELEASE_NOTES, HelpWin::OnCommand )
+	EVT_BUTTON( ID_EMAIL_SUPPORT, HelpWin::OnCommand )
+	EVT_BUTTON( wxID_CLOSE, HelpWin::OnCommand )
+	EVT_BUTTON( wxID_ABOUT, HelpWin::OnCommand )
 	EVT_CLOSE( HelpWin::OnClose )
 END_EVENT_TABLE()
 
@@ -1635,15 +1738,26 @@ void SamApp::ShowHelp( const wxString &context )
 			}
 		}
 
-		wxMessageBox(wxString::Format("Help map loaded, %d references.\n", (int)_map.size()));
+		//wxMessageBox(wxString::Format("Help map loaded, %d references.\n", (int)_map.size()));
 		_map_loaded = true;
 	}
 
 	wxString url = SamApp::GetRuntimePath() + "/help/html/";
-	if ( _map.find( context.Lower() ) == _map.end() )
-		url += "index.html";
+	if ( context.Left(1) == ":" )
+	{
+		url = context;
+	}
 	else
-		url += _map[context.Lower()];
+	{
+		if ( _map.find( context.Lower() ) == _map.end() )
+			url += "index.html";
+		else
+			url += _map[context.Lower()];
+		
+		wxFileName fn( url );
+		fn.MakeAbsolute();
+		url = "file:///" + fn.GetFullPath( wxPATH_NATIVE );
+	}
 		
 	// sj 11/29/11 Kludge to allow modal dialogs with help buttons to not block help window
 	if ( gs_helpWin != 0 && gs_helpWin->IsShown() )
@@ -1658,11 +1772,7 @@ void SamApp::ShowHelp( const wxString &context )
 	}  // end of 11/29/11 Kludge
 	else if ( 0 == gs_helpWin )			
 		gs_helpWin = new HelpWin;
-
-	
-	wxFileName fn( url );
-	fn.MakeAbsolute();
-	url = "file:///" + fn.GetFullPath( wxPATH_NATIVE );
+		
 	gs_helpWin->Show( );
 	gs_helpWin->LoadPage( url );
 	gs_helpWin->Raise();

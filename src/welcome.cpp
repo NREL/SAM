@@ -36,6 +36,9 @@ BEGIN_EVENT_TABLE(WelcomeScreen, wxPanel)
 	EVT_BUTTON( ID_OPEN_EXISTING, WelcomeScreen::OnCommand )
 	EVT_BUTTON( ID_NEW_SCRIPT, WelcomeScreen::OnCommand )
 	EVT_BUTTON( ID_OPEN_SCRIPT, WelcomeScreen::OnCommand )
+	EVT_BUTTON( wxID_ABOUT, WelcomeScreen::OnCommand )
+	EVT_BUTTON( wxID_HELP, WelcomeScreen::OnCommand )
+	EVT_BUTTON( wxID_EXIT, WelcomeScreen::OnCommand )
 
 	EVT_LISTBOX_DCLICK( ID_RECENT_FILES, WelcomeScreen::OnCommand )
 	
@@ -77,6 +80,9 @@ WelcomeScreen::WelcomeScreen(wxWindow *parent)
 	m_openScript = new wxMetroButton( this, ID_OPEN_SCRIPT, "Open script" );
 	m_newScript = new wxMetroButton( this, ID_NEW_SCRIPT, "New script" );
 	
+	m_btnHelp = new wxMetroButton( this, wxID_HELP, "Help" );
+	m_btnAbout = new wxMetroButton( this, wxID_ABOUT, "About" );
+	m_btnQuit = new wxMetroButton( this, wxID_EXIT, "Quit" );
 	
 	m_recent = new wxMetroListBox(this, ID_RECENT_FILES, wxPoint(15,327), wxSize(650,150) );
 	
@@ -209,6 +215,10 @@ void WelcomeScreen::LayoutWidgets()
 	wxSize size3 = m_newScript->GetBestSize();
 	m_newScript->SetSize( BORDER, y, LEFTWIDTH/2, size3.GetHeight() );
 	m_openScript->SetSize( BORDER + LEFTWIDTH/2, y, LEFTWIDTH/2, size3.GetHeight() );
+
+	m_btnHelp->SetSize( BORDER, top+ch-size3.y, LEFTWIDTH/3, size3.y );
+	m_btnAbout->SetSize( BORDER+ LEFTWIDTH/3, top+ch-size3.y, LEFTWIDTH/3, size3.y );
+	m_btnQuit->SetSize( BORDER+LEFTWIDTH/3+LEFTWIDTH/3,top+ch-size3.y, LEFTWIDTH/3, size3.y );
 }
 
 void WelcomeScreen::OnPaint(wxPaintEvent &)
@@ -283,6 +293,16 @@ void WelcomeScreen::OnCommand( wxCommandEvent &evt )
 		if ( SamApp::Window()->CloseProject())
 			SamApp::Window()->LoadProject( fn );
 	}
+	case wxID_ABOUT:
+		SamApp::ShowHelp( ":about" );
+		break;
+
+	case wxID_HELP:
+		SamApp::ShowHelp( wxEmptyString );
+		break;
+
+	case wxID_EXIT:
+		SamApp::Window()->Close();
 		break;
 	}
 }
