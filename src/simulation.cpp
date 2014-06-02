@@ -347,7 +347,12 @@ bool Simulation::Invoke()
 	}
 
 	SimulationContext sc;
-	sc.progdlg = new wxProgressDialog( "Simulation", "in progress", 100, 0, wxPD_APP_MODAL|wxPD_SMOOTH|wxPD_CAN_ABORT );
+	sc.progdlg = new wxProgressDialog( "Simulation", "in progress", 100, 
+		SamApp::CurrentActiveWindow(),  // progress dialog parent is current active window - works better when invoked scripting
+		wxPD_APP_MODAL|wxPD_SMOOTH|wxPD_CAN_ABORT );
+#ifdef __WXMSW__
+	sc.progdlg->SetIcon( wxICON( appicon ) );
+#endif
 	sc.progdlg->Show();
 	sc.errors = &m_errors;
 	sc.warnings = &m_warnings;

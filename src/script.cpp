@@ -21,6 +21,18 @@ static void fcall_open_project( lk::invoke_t &cxt )
 	else cxt.result().assign( SamApp::Window()->LoadProject( cxt.arg(0).as_string() ) ? 1.0 : 0.0 );
 }
 
+static void fcall_create_case( lk::invoke_t &cxt )
+{
+	LK_DOC( "create_case", "Create a new case.", "(string:technology, string:financing, [string:name]):boolean" );
+	wxString name;
+	if ( cxt.arg_count() == 3 )
+		name = cxt.arg(2).as_string();
+
+	cxt.result().assign( SamApp::Window()->CreateNewCase( name, 
+			cxt.arg(0).as_string(), 
+			cxt.arg(1).as_string() ) ? 1.0 : 0.0 );
+}
+
 static void fcall_close_project( lk::invoke_t &cxt )
 {
 	LK_DOC( "close_project", "Closes the current SAM project, if one is open.", "(none):boolean" );
@@ -105,34 +117,49 @@ static void fcall_simulate( lk::invoke_t &cxt )
 			cxt.result().assign( cw->RunBaseCase() ? 1.0 : 0.0 );
 }
 
-static void fcall_change_config( lk::invoke_t &cxt )
+static void fcall_configuration( lk::invoke_t &cxt )
 {
-	LK_DOC( "change_config", "Change the current active case's technology/market configuration.", "(string:technology, string:financing):boolean");
+	LK_DOC( "configuration", "Change the current active case's technology/market configuration, or return the current configuration.", "(string:technology, string:financing):boolean or (none):array");
 
-	wxString tech = cxt.arg(0).as_string();
-	wxString fin = cxt.arg(1).as_string();
+	if ( cxt.arg_count() == 2 )
+	{
+		wxString tech = cxt.arg(0).as_string();
+		wxString fin = cxt.arg(1).as_string();
 
-	cxt.result().assign( 0.0 );
-	wxArrayString techlist = SamApp::Config().GetTechnologies();
-	if ( techlist.Index( tech ) == wxNOT_FOUND ) return;
-	wxArrayString finlist = SamApp::Config().GetFinancingForTech( tech );
-	if ( finlist.Index( fin ) == wxNOT_FOUND ) return;
-	if ( Case *c = CurrentCase() )
-		cxt.result().assign( c->SetConfiguration( tech, fin ) ? 1.0 : 0.0 );
+		cxt.result().assign( 0.0 );
+		wxArrayString techlist = SamApp::Config().GetTechnologies();
+		if ( techlist.Index( tech ) == wxNOT_FOUND ) return;
+		wxArrayString finlist = SamApp::Config().GetFinancingForTech( tech );
+		if ( finlist.Index( fin ) == wxNOT_FOUND ) return;
+		if ( Case *c = CurrentCase() )
+			cxt.result().assign( c->SetConfiguration( tech, fin ) ? 1.0 : 0.0 );
+	}
+	else if ( Case *c = CurrentCase() )
+	{
+		cxt.result().empty_vector();
+		cxt.result().vec_append( c->GetTechnology() );
+		cxt.result().vec_append( c->GetFinancing() );
+	}
 }
 
 static void fcall_load_defaults( lk::invoke_t &cxt )
 {
-	LK_DOC( "load_defaults", "Load SAM default values for the current active case.", "(none):boolean" );
+	LK_DOC( "load_defaults", "Load SAM default values for the current active case. Returns a string error message if failed, or boolean 'true' on success.", "(none):variant" );
 	if ( Case *c = CurrentCase() )
-		cxt.result().assign( c->LoadDefaults() );
+	{
+		wxString err;
+		if ( c->LoadDefaults( &err ) )
+			cxt.result().assign( 1.0 );
+		else
+			cxt.result().assign( err );
+	}
 }
 
 static void fcall_overwrite_defaults( lk::invoke_t &cxt )
 {
 	LK_DOC( "overwrite_defaults", "Overwrite SAM default values file for the current configuration with current values.", "(none):boolean");
 	if ( Case *c = CurrentCase() )
-		cxt.result().assign( c->SaveDefaults() );
+		cxt.result().assign( c->SaveDefaults( true ) );
 }
 
 static void fcall_list_technologies( lk::invoke_t &cxt )
@@ -151,20 +178,6 @@ static void fcall_list_financing( lk::invoke_t &cxt )
 	cxt.result().empty_vector();
 	for( size_t i=0;i<list.size();i++ )
 		cxt.result().vec_append( list[i] );
-}
-
-static void fcall_current_technology( lk::invoke_t &cxt )
-{
-	LK_DOC( "current_technology", "Return the technology option of the current active case.", "(none):string");
-	if ( Case *c = CurrentCase() )
-		cxt.result().assign( c->GetTechnology() );
-}
-
-static void fcall_current_financing( lk::invoke_t &cxt )
-{
-	LK_DOC( "current_financing", "Return the financial model option of the current active case.", "(none):string");
-	if ( Case *c = CurrentCase() )
-		cxt.result().assign( c->GetFinancing() );
 }
 
 static void fcall_library( lk::invoke_t &cxt )
@@ -252,20 +265,19 @@ static lk::fcall_t *sam_functions() {
 		fcall_open_project,
 		fcall_close_project,
 		fcall_save_project,
+		fcall_create_case,
 		fcall_project_file,
 		fcall_list_cases,
 		fcall_active_case,
 		fcall_set,
 		fcall_get,
 		fcall_simulate,
-		fcall_change_config,
+		fcall_configuration,
+		fcall_library,
 		fcall_load_defaults,
 		fcall_overwrite_defaults,
 		fcall_list_technologies,
 		fcall_list_financing,
-		fcall_current_technology,
-		fcall_current_financing,
-		fcall_library,
 		0 };
 	return (lk::fcall_t*)vec;
 
@@ -299,7 +311,7 @@ public:
 };
 
 enum { ID_SCRIPT = wxID_HIGHEST+494 ,
-	ID_VARIABLES };
+	ID_VARIABLES, ID_FUNCTIONS };
 
 BEGIN_EVENT_TABLE( ScriptWindow, wxFrame )
 	EVT_BUTTON( wxID_NEW, ScriptWindow::OnCommand )
@@ -312,6 +324,7 @@ BEGIN_EVENT_TABLE( ScriptWindow, wxFrame )
 	EVT_BUTTON( wxID_CLOSE, ScriptWindow::OnCommand )
 	EVT_BUTTON( wxID_HELP, ScriptWindow::OnCommand )
 	EVT_BUTTON( ID_VARIABLES, ScriptWindow::OnCommand )
+	EVT_BUTTON( ID_FUNCTIONS, ScriptWindow::OnCommand )
 	
 	EVT_MENU( wxID_NEW, ScriptWindow::OnCommand )
 	EVT_MENU( wxID_OPEN, ScriptWindow::OnCommand )
@@ -320,7 +333,6 @@ BEGIN_EVENT_TABLE( ScriptWindow, wxFrame )
 	EVT_MENU( wxID_EXECUTE, ScriptWindow::OnCommand )
 	EVT_MENU( wxID_CLOSE, ScriptWindow::OnCommand )
 	EVT_MENU( wxID_HELP, ScriptWindow::OnCommand )
-	EVT_MENU( ID_VARIABLES, ScriptWindow::OnCommand )
 
 	EVT_STC_MODIFIED( ID_SCRIPT, ScriptWindow::OnModified )
 	EVT_CLOSE( ScriptWindow::OnClose )
@@ -364,6 +376,7 @@ ScriptWindow::ScriptWindow( wxWindow *parent, int id, const wxPoint &pos, const 
 	toolbar->Add( m_stopBtn=new wxMetroButton( this, wxID_STOP, "Stop" ), 0, wxALL|wxEXPAND, 0 );
 	toolbar->AddStretchSpacer();
 	toolbar->Add( new wxMetroButton( this, ID_VARIABLES, "Variables" ), 0, wxALL|wxEXPAND, 0 );
+	toolbar->Add( new wxMetroButton( this, ID_FUNCTIONS, "Functions" ), 0, wxALL|wxEXPAND, 0 );
 	toolbar->Add( new wxMetroButton( this, wxID_HELP, "Help" ), 0, wxALL|wxEXPAND, 0 );
 	toolbar->Add( new wxMetroButton( this, wxID_CLOSE, "Close" ), 0, wxALL|wxEXPAND, 0 );
 
@@ -625,6 +638,10 @@ public:
 
 			wxSortByLabels( names, labels );
 			SetItems( names, labels );
+
+			wxString cfgstr = tech + ", " + fin;
+			if ( cfgstr != m_cfglist->GetStringSelection() )
+				m_cfglist->SetStringSelection( cfgstr );
 		}
 	}
 
@@ -682,15 +699,19 @@ void ScriptWindow::OnCommand( wxCommandEvent &evt )
 		break;
 
 	case wxID_HELP:
-		m_script->ShowHelpDialog();
+		SamApp::ShowHelp( "scripting" );
 		break;
-
+		
 	case wxID_STOP:
 		m_script->Stop();
 		break;
 
 	case wxID_CLOSE:
 		Close();
+		break;
+		
+	case ID_FUNCTIONS:
+		m_script->ShowHelpDialog();
 		break;
 
 	case ID_VARIABLES:

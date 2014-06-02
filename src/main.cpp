@@ -81,6 +81,7 @@ enum { __idFirst = wxID_HIGHEST+592,
 
 	ID_MAIN_MENU, ID_CASE_TABS, ID_CONTEXT_HELP, ID_PAGE_NOTES,
 	ID_CASE_CREATE, ID_RUN_ALL_CASES, ID_SAVE_HOURLY,
+	ID_NEW_SCRIPT, ID_OPEN_SCRIPT,
 	__idCaseMenuFirst,
 	ID_CASE_CONFIG,
 	ID_CASE_RENAME,
@@ -107,6 +108,8 @@ BEGIN_EVENT_TABLE( MainWindow, wxFrame )
 	EVT_CLOSE( MainWindow::OnClose )
 	EVT_MENU( ID_SAVE_HOURLY, MainWindow::OnCommand )
 	EVT_MENU( wxID_NEW, MainWindow::OnCommand )
+	EVT_MENU( ID_NEW_SCRIPT, MainWindow::OnCommand )
+	EVT_MENU( ID_OPEN_SCRIPT, MainWindow::OnCommand )
 	EVT_MENU(ID_CASE_VARIABLE_LIST, MainWindow::OnCommand)
 	EVT_MENU(ID_CASE_COMPARE, MainWindow::OnCommand)
 	EVT_MENU(wxID_OPEN, MainWindow::OnCommand)
@@ -270,20 +273,26 @@ wxString MainWindow::GetUniqueCaseName( wxString base )
 	return base + suffix;
 }
 
-void MainWindow::CreateNewCase( const wxString &_name, wxString tech, wxString fin )
+bool MainWindow::CreateNewCase( const wxString &_name, wxString tech, wxString fin )
 {
 	if ( tech.IsEmpty() || fin.IsEmpty() )
 	{
 		bool reset = false;
 		if (!ShowConfigurationDialog( this, &tech, &fin, &reset ))
-			return;
+			return false;
 	}
+	
+	if ( 0 == SamApp::Config().Find( tech, fin ) )
+		return false;
 
+	if ( m_topBook->GetSelection() != 1 )
+		m_topBook->SetSelection( 1 ); // switch to cases view if currently in welcome window
 
 	Case *c = m_project.AddCase( GetUniqueCaseName(_name ) );
 	c->SetConfiguration( tech, fin );
 	c->LoadDefaults();
 	CreateCaseWindow( c );
+	return true;
 }
 
 CaseWindow *MainWindow::CreateCaseWindow( Case *c )
@@ -510,8 +519,11 @@ void MainWindow::OnCommand( wxCommandEvent &evt )
 			wxPoint p = m_mainMenuButton->ClientToScreen( wxPoint( 0, m_mainMenuButton->GetClientSize().y ) );
 			wxMetroPopupMenu menu;
 			menu.Append( wxID_NEW, "New project\tCtrl-N" );
+			menu.Append( ID_NEW_SCRIPT, "New script" );
 			menu.AppendSeparator();
 			menu.Append( wxID_OPEN, "Open\tCtrl-O" );
+			menu.Append( ID_OPEN_SCRIPT, "Open script" );
+			menu.AppendSeparator();
 			menu.Append( wxID_SAVE, "Save\tCtrl-S" );
 			menu.Append( wxID_SAVEAS, "Save as..." );
 			menu.Append( ID_SAVE_HOURLY, "Save with hourly results");
@@ -534,6 +546,12 @@ void MainWindow::OnCommand( wxCommandEvent &evt )
 						+ dlg.GetPath() + "\n\n" + m_project.GetLastError(), "Notice", wxOK, this );
 		}
 		break;	
+	case ID_NEW_SCRIPT:
+		ScriptWindow::CreateNewWindow();
+		break;
+	case ID_OPEN_SCRIPT:
+		ScriptWindow::OpenFiles();
+		break;
 	case ID_CASE_VARIABLE_LIST:
 		if (Case *cc = GetCurrentCase())
 		{
@@ -1558,6 +1576,18 @@ wxString SamApp::VersionStr() { return wxString::Format("%d.%d.%d", VersionMajor
 int SamApp::VersionMajor() { return g_verMajor; }
 int SamApp::VersionMinor() { return g_verMinor; }
 int SamApp::VersionMicro() { return g_verMicro; }
+
+wxWindow *SamApp::CurrentActiveWindow()
+{
+	wxWindowList &wl = ::wxTopLevelWindows;
+	for( wxWindowList::iterator it = wl.begin(); it != wl.end(); ++it )
+		if ( wxTopLevelWindow *tlw = dynamic_cast<wxTopLevelWindow*>( *it ) )
+			if ( tlw->IsActive() )
+				return tlw;
+
+	return 0;
+}
+
 ConfigDatabase &SamApp::Config() { return g_cfgDatabase; }
 InputPageDatabase &SamApp::InputPages() { return g_uiDatabase; }
 ScriptDatabase &SamApp::GlobalCallbacks() { return g_globalCallbacks; }

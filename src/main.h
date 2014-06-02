@@ -40,7 +40,7 @@ public:
 	bool CloseProject();
 
 	wxString GetUniqueCaseName( wxString base = wxEmptyString );
-	void CreateNewCase( const wxString &name = wxEmptyString, 
+	bool CreateNewCase( const wxString &name = wxEmptyString, 
 		wxString tech = wxEmptyString, 
 		wxString fin = wxEmptyString );
 
@@ -268,7 +268,8 @@ public:
 	static int VersionMajor();
 	static int VersionMinor();
 	static int VersionMicro();
-	
+	static wxWindow *CurrentActiveWindow();
+
 	static ConfigDatabase &Config();
 	static InputPageDatabase &InputPages();
 	static ScriptDatabase &GlobalCallbacks();

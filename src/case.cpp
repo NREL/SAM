@@ -344,15 +344,15 @@ bool Case::Read( wxInputStream &_i )
 }
 
 
-bool Case::SaveDefaults()
+bool Case::SaveDefaults( bool quiet )
 {
 	if (!m_config) return false;
 	wxString file = SamApp::GetRuntimePath() + "/defaults/"
 		+ m_config->Technology + "_" + m_config->Financing;
 	
-	if (wxMessageBox("Save defaults for configuration:\n\n" 
+	if ( !quiet && wxMessageBox("Save defaults for configuration:\n\n" 
 		+ m_config->Technology + " / " + m_config->Financing, 
-		"Save Defaults", wxYES_NO) != wxYES)
+		"Save Defaults", wxYES_NO) != wxYES )
 		return false;
 
 	wxFFileOutputStream out(file);
@@ -404,7 +404,7 @@ bool Case::LoadValuesFromExternalSource( wxInputStream &in,
 	return true;
 }
 
-bool Case::LoadDefaults()
+bool Case::LoadDefaults( wxString *pmsg )
 {
 	if (!m_config) return false;
 
@@ -421,15 +421,18 @@ bool Case::LoadDefaults()
 	size_t nread = 0;
 
 	bool ok = LoadValuesFromExternalSource( in, not_found, wrong_type, nread );
-
-	if ( !ok || not_found > 0 || wrong_type > 0 || nread != m_vals.size() ) 
-		if ( wxYES == wxMessageBox( wxString::Format("Defaults file is likely out of date.\n\n"
+	wxString message = wxString::Format("Defaults file is likely out of date.\n\n"
 			"Variables: %d not found, %d wrong type, defaults has %d, config has %d\n\n"
 			"Would you like to update the defaults with the current values right now?\n"
-			"(Otherwise press Shift-F10 later)", (int)not_found, (int)wrong_type, (int)nread, (int)m_vals.size()), "Query", wxYES_NO) )
-			SaveDefaults();
+			"(Otherwise press Shift-F10 later)", (int)not_found, (int)wrong_type, (int)nread, (int)m_vals.size());
 
-	return true;
+	if ( pmsg != 0 )
+		*pmsg = message;
+	else if ( !ok || not_found > 0 || wrong_type > 0 || nread != m_vals.size() ) 
+		if ( wxYES == wxMessageBox( message, "Query", wxYES_NO) )
+			ok = SaveDefaults();
+
+	return ok;
 }
 
 
