@@ -263,7 +263,7 @@ public:
 	static ProjectFile &Project();
 	static wxFileHistory &FileHistory();	
 	static wxArrayString RecentFiles();
-	static void ShowHelp( const wxString &id );
+	static void ShowHelp( const wxString &context = wxEmptyString );
 	static wxString VersionStr();
 	static int VersionMajor();
 	static int VersionMinor();
