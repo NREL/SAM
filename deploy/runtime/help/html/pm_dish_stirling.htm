@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>Dish Stirling</title>
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="" />
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+   <meta http-equiv="content-language" content="en-us" />
+   <meta name="description" content="After running simulations, SAM displays time series results for the dish stirling model on the Results page Tables and Time Series graphs." />
+   <meta http-equiv="Content-Style-Type" content="text/css" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+   <link id="tabscheme" type="text/css" href="hm_topic.css" rel="stylesheet" />   
+<style type="text/css">
+/* No header topics */
+
+/* Breadcrumb trail */
+p#breadcrumbs {
+font-family: Verdana, Tahoma, Helvetica, Sans-Serif;   padding: 2px 0 1px 2px;
+   margin: 0;
+   font-size: 8pt; 
+   color: #999;
+   }   
+p#breadcrumbs a { color: #999; text-decoration: none;}
+p#breadcrumbs a:visited { color: #999; }
+p#breadcrumbs a:hover { color: #333; border-bottom: 1px dotted #333; }
+
+/* Search hightlight color */
+span.highlight {background-color: #ffff40;}
+</style>
+<script type="text/javascript">
+var hmHeaderTopic = true;
+
+</script> 
+<!--[if IE 9]>
+<link id="iesvgcss" rel="stylesheet" type="text/css" href="hm_webhelp_svg.css" />
+<![endif]-->	
+<script src="jquery.js"></script>
+<script type="text/javascript" src="jquery.tools.min.js"></script>
+<script type="text/javascript" src="jquery.scrollTo-min.js"></script>
+<script type="text/javascript"> 
+// General topic variables
+var tVars = {
+   hmHelpPage: "index.html",
+   nextP: "pm_solar_water_heating.htm",
+   prevP: "pm_linear_fresnel.htm",
+   currP: "pm_dish_stirling.htm",
+   defP: "introduction.htm",
+   titleP: "Dish Stirling",
+   mailsubject: "Feedback on: SAM Help - Dish Stirling",
+   simplesubject: "Documentation%20Feedback",
+   mailid: "PM_Dish_Stirling",
+   mailpath: "Performance Model Results &gt; Dish Stirling /",
+   mailbody: "Dear SAM Support,",
+   mailrecipient: "SAM Support <sam.support@nrel.gov>",
+   simplerecipient: "sam.support@nrel.gov",
+   fbtype: false,
+   header: true,
+   background: "bg.png",
+   tablesReady: false,
+   togglesReady: false,
+   webRedirect: true
+   }
+// Popup configuration
+ var hmpBShadow = true;
+ var hmPopSmallDim = 500;
+ var hmPopKillVideo = false;
+ // AutoTOC variables
+ var hmatocvars = {
+   atoc_show: true,
+   atoc_title: "Contents",
+   atoc_tip: "Jump to:&nbsp;",
+   atoc_minHeaders: 2,
+   atoc_btntip_off: "No contents entries on this page",
+   atoc_btntip_on: "Display/hide topic directory",
+   atoc_toptip: "Jump to top of page",
+   atoc_top: "Scroll to Top of Page",
+   atoc_bg: "#f6f6f6",
+   atoc_border: "silver",
+   atoc_linkcolor: "#444",
+   atoc_linklimit: 45,
+   atoc_hovercolor: "#000",
+   atoc_hoverbgcolor: "#e0e0e0"
+}
+// Sortable tables
+var sortVars = {
+   europeandate: false,
+   germanNumbers: false,
+   imagePath: "",
+   image_up: "arrow-up.gif",
+   image_down: "arrow-down.gif",
+   image_empty: "arrow-empty.gif",
+   image_none: "arrow-none.gif",
+   sort_tip: "Click to sort on this column",
+   umlauts: "false"
+   }
+
+</script>
+
+<script type="text/javascript"> 
+$(document).ready(function() {
+var doc = document;  
+try {
+if (parent.hmWebHelp.navWidth != null) doc = parent.document;
+doc.title = $("<div/>").html("SAM Help - Dish Stirling").text();
+window.onunload = function() {doc.title = $("<div/>").html("SAM Help").text();}
+} catch(err) {}
+});
+</script>
+<script type="text/javascript" src="helpman_settings.js"></script>
+<script type="text/javascript" src="helpman_topicinit.js"></script>
+<script type="text/javascript" src="hmtopic.js"></script>
+
+   <script type="text/javascript">
+     HMSyncTOC("index.html", "pm_dish_stirling.htm");
+   </script>
+   <script type="text/javascript" src="highlight.js"></script>
+   <script type="text/javascript">
+     $(document).ready(function(){highlight();});
+   </script>
+</head>
+<body>
+<!--ZOOMSTOP-->
+<ul id="topictabs" class="tabs">
+<li id="indextab" class="hmtabs"><a href="#" id="indextablink" class="current"><span>Dish Stirling</span></a></li>
+</ul>
+<div id="hmbox">
+<div id="hmheader">
+<div id="hmheadercontents">
+<p id="breadcrumbs">
+<b>Navigation:</b>
+<a href="pm_outputs.htm">Performance Model Results</a>:</p> 
+<h1 class="p_Heading1"><span class="f_Heading1">Dish Stirling</span></h1>
+
+</div>
+<div id="atocIcon" class="navdivs">
+<img class="navicon" id="hmAtocLink" src="contents_off.png" alt="No contents entries on this page" title="No contents entries on this page" />
+<br /><span>Contents</span>
+</div>
+</div>
+<div id="autoTocWrapper" class="topicmenu"></div>
+<div id="idcontent">
+<div id="unclicker"></div>
+
+<!--ZOOMRESTART-->
+<p class="p_Text"><span class="f_Text">After running simulations, SAM displays time series results for the dish stirling model on the Results page <a href="tabular_data_browser.htm" class="topiclink">Tables</a> and <a href="base_case_time_series.htm" class="topiclink">Time Series</a> graphs.</span></p>
+<p class="p_Note"><span class="f_CHNote">Notes.</span><span class="f_Note"> </span><br />
+<span class="f_Note">&nbsp;</span><br />
+<span class="f_Note">The solar radiation values (DNI) represent total energy values over the time step, and are equivalent to the values in the weather file. Temperature and wind speed values are mid-point values calculated by the weather data processor by averaging the end-of-time step wind speed from the previous time step with the end-of-time step wind speed from the current time step in the weather file</span><span class="f_Text">.</span><br />
+<span class="f_Text">&nbsp;</span><br />
+<span class="f_Note">For simulations that involve time-of-delivery pricing, results include additional variables described in <a href="td_variables_overview.htm" class="topiclink">Time Dependent Pricing Overview</a>.</span></p>
+<div style="text-align: left; text-indent: 0px; border-color: #000000; border-style: solid; border-width: 1px; background: #ebebeb; padding: 2px 2px 2px 2px; margin: 3px 0px 3px 0px;"><table style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr style="vertical-align:baseline"><td style="border:none;padding:0;width:19px"><img id="TOGGLE0186A1_ICON" class="dropdown-toggle-icon" src="hmtoggle_arrow1.gif" width="9" height="9" alt="hmtoggle_arrow1" style="border:none" /></td><td style="border:none;padding:0"><span class="f_Heading2_atoc_"><a class="dropdown-toggle" style="font-size: 16pt; font-family: Arial; font-style: normal; font-weight: bold; color: #000000; background-color: transparent; text-decoration: none;" href="javascript:HMToggle('toggle','TOGGLE0186A1','TOGGLE0186A1_ICON')">Hourly</a> Data</span></td></tr></table></div><div id="TOGGLE0186A1" style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 6px 0px;"><table id="DISH-Hourly_srt_" class="variable list sortable" style="width:100%; border:none; border-spacing:0px;">
+<tr style="text-align:left;vertical-align:top;">
+<th style="vertical-align:top; background-color:#99ccff; padding:0px;"><p class="p_TableHeadColumn"><a id="_sortable_"></a><span class="f_TableHeadColumn">Hourly data file name</span></p>
+</th>
+<th style="vertical-align:top; background-color:#99ccff; padding:0px;"><p class="p_TableHeadColumn"><a id="_sortable_"></a><span class="f_TableHeadColumn">TRNSYS Units</span></p>
+</th>
+<th style="vertical-align:top; background-color:#99ccff; padding:0px;"><p class="p_TableHeadColumn"><a id="_defaultsort_"></a><span class="f_TableHeadColumn">Descriptive name</span></p>
+</th>
+<th style="vertical-align:top; background-color:#99ccff; padding:0px;"><p class="p_TableHeadColumn"><a id="_sortable_"></a><span class="f_TableHeadColumn">SAM Units</span></p>
+</th>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">T_amb_C</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">C</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Ambient Temperature</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">C</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">wind_speed_out</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">m/s</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Wind Speed</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">m/s</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">DNI</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">W/m^2</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">DNI</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">W/m^2</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Power_in_Collector</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">MW</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Power Incident on Collector</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">MW</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Power_out_col</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">MW</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Power from the collector dish</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">MW</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Power_in_Receiver</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">MW</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Power entering receiver from the collector</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">MW</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Power_out_Rec</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">MW</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Receiver Output Power</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">MW</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">P_out_SE</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">MW</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Stirling Engine Gross Output</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">MW</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Net_Dish_Field_Power</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">MW</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Net_Dish_Field_Power</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">MW</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Net_system_efficiency</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">none</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Net System Efficiency</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">none</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">phi_shade</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">none</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Dish-to-Dish shading performance factor</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">none</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Collector_Losses</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">MW</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Total Collector Losses</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">MW</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">eta_Collector</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">none</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Collector Efficiency</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">none</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">P_Rec_losses</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">MW</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Total Receiver Losses</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">MW</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">eta_Receiver</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">none</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Receiver Thermal Efficiency</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">none</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">T_heater_head_operate</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">K</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Receiver head operating temperature</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">K</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Stirling_Engine_Losses</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">none</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Stirling Engine Losses</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">none</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Stirling_Engine_Efficiency</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">none</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Stirling Engine Efficiency</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">none</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">engine_pressure</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Pa</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Engine Pressure</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Pa</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">P_parasitic</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">MW</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Total Parasitic Load</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">MW</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">T_compression_C</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">C</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Cold Sink Temperature / Compression Temperature</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">C</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">temp_into_radiator</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">C</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Cooling Fluid Temp to Cold Sink</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">C</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">temp_out_of_radiator</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">C</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Cooling Fluid Temp from Cold Sink</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">C</span></p>
+</td>
+</tr>
+</table>
+</div>
+<div style="text-align: left; text-indent: 0px; border-color: #000000; border-style: solid; border-width: 1px; background: #ebebeb; padding: 2px 2px 2px 2px; margin: 3px 0px 3px 0px;"><table style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr style="vertical-align:baseline"><td style="border:none;padding:0;width:19px"><img id="TOGGLE0186A2_ICON" class="dropdown-toggle-icon" src="hmtoggle_arrow1.gif" width="9" height="9" alt="hmtoggle_arrow1" style="border:none" /></td><td style="border:none;padding:0"><span class="f_Heading2_atoc_"><a class="dropdown-toggle" style="font-size: 16pt; font-family: Arial; font-style: normal; font-weight: bold; color: #000000; background-color: transparent; text-decoration: none;" href="javascript:HMToggle('toggle','TOGGLE0186A2','TOGGLE0186A2_ICON')">Monthly Data and Single Values</a></span></td></tr></table></div><div id="TOGGLE0186A2" style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 6px 0px;"><table id="DISH-Monthly_srt_" class="variable list sortable" style="width:100%; border:none; border-spacing:0px;">
+<tr style="text-align:left;vertical-align:top;">
+<th style="vertical-align:top; background-color:#99ccff; padding:0px;"><p class="p_TableHeadColumn"><a id="_sortable_"></a><span class="f_TableHeadColumn">Monthly data file name</span></p>
+</th>
+<th style="vertical-align:top; background-color:#99ccff; padding:0px;"><p class="p_TableHeadColumn"><a id="_sortable_"></a><span class="f_TableHeadColumn">TRNSYS Units</span></p>
+</th>
+<th style="vertical-align:top; background-color:#99ccff; padding:0px;"><p class="p_TableHeadColumn"><a id="_defaultsort_"></a><span class="f_TableHeadColumn">Descriptive name</span></p>
+</th>
+<th style="vertical-align:top; background-color:#99ccff; padding:0px;"><p class="p_TableHeadColumn"><a id="_sortable_"></a><span class="f_TableHeadColumn">SAM Units</span></p>
+</th>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Power_in_Coll_Field  </span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">MWh</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Total Field Power Incident on Collector</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">MWh</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Power_out_Coll_Field</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">MWh</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Total Field Power from the Collector</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">MWh</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Power_in_Receiver_Field  </span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">MWh</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Total Field Receiver Inlet Power from the collector</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">MWh</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Receiver_Power_Out_Field</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">MWh</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Total Field Receiver Power Output</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">MWh</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Gross_Field_Power</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">MWh</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Total Field Stirling Engine Gross Power Output</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">MWh</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Net_Field_Power</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">MWh</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Total Field Net Power Output</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">MWh</span></p>
+</td>
+</tr>
+</table>
+</div>
+
+<!--ZOOMSTOP--> 
+
+
+</div> <!-- idcontent -->
+</div><!-- hmbox --> 
+<script type="text/javascript">
+HMInitToggle('TOGGLE0186A1_ICON','hm.type','dropdown','hm.state','0','hm.src0','hmtoggle_arrow0.gif','hm.src1','hmtoggle_arrow1.gif','onclick','HMToggle(\'toggle\',\'TOGGLE0186A1\',\'TOGGLE0186A1_ICON\')');
+HMInitToggle('TOGGLE0186A1','hm.type','dropdown','hm.state','0');
+HMInitToggle('TOGGLE0186A2_ICON','hm.type','dropdown','hm.state','0','hm.src0','hmtoggle_arrow0.gif','hm.src1','hmtoggle_arrow1.gif','onclick','HMToggle(\'toggle\',\'TOGGLE0186A2\',\'TOGGLE0186A2_ICON\')');
+HMInitToggle('TOGGLE0186A2','hm.type','dropdown','hm.state','0');
+</script>
+</body>
+</html>

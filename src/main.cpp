@@ -12,6 +12,8 @@
 #include <wx/datstrm.h>
 #include <wx/grid.h>
 #include <wx/stdpaths.h>
+#include <wx/webview.h>
+#include <wx/txtstrm.h>
 
 #include <wex/metro.h>
 #include <wex/icons/cirplus.cpng>
@@ -79,7 +81,7 @@ public:
 
 enum { __idFirst = wxID_HIGHEST+592,
 
-	ID_MAIN_MENU, ID_CASE_TABS, ID_CONTEXT_HELP, ID_PAGE_NOTES,
+	ID_MAIN_MENU, ID_CASE_TABS, ID_PAGE_NOTES,
 	ID_CASE_CREATE, ID_RUN_ALL_CASES, ID_SAVE_HOURLY,
 	ID_NEW_SCRIPT, ID_OPEN_SCRIPT,
 	__idCaseMenuFirst,
@@ -106,6 +108,7 @@ enum { __idFirst = wxID_HIGHEST+592,
 
 BEGIN_EVENT_TABLE( MainWindow, wxFrame )
 	EVT_CLOSE( MainWindow::OnClose )
+	EVT_MENU( wxID_HELP, MainWindow::OnCommand )
 	EVT_MENU( ID_SAVE_HOURLY, MainWindow::OnCommand )
 	EVT_MENU( wxID_NEW, MainWindow::OnCommand )
 	EVT_MENU( ID_NEW_SCRIPT, MainWindow::OnCommand )
@@ -123,7 +126,7 @@ BEGIN_EVENT_TABLE( MainWindow, wxFrame )
 	EVT_BUTTON(ID_MAIN_MENU, MainWindow::OnCommand)
 	EVT_LISTBOX( ID_CASE_TABS, MainWindow::OnCaseTabChange )
 	EVT_BUTTON( ID_CASE_TABS, MainWindow::OnCaseTabButton )
-	EVT_BUTTON( ID_CONTEXT_HELP, MainWindow::OnCommand )
+	EVT_BUTTON( wxID_HELP, MainWindow::OnCommand )
 	EVT_BUTTON( ID_PAGE_NOTES, MainWindow::OnCommand )
 	EVT_MENU_RANGE( __idCaseMenuFirst, __idCaseMenuLast, MainWindow::OnCaseMenu )
 	EVT_MENU_RANGE( __idInternalFirst, __idInternalLast, MainWindow::OnInternalCommand )
@@ -184,7 +187,7 @@ MainWindow::MainWindow()
 	tools->Add( m_caseTabList, 1, wxALL|wxEXPAND, 0 );		
 	tools->Add( metbut = new wxMetroButton( m_caseTabPanel, ID_PAGE_NOTES, wxEmptyString, wxBITMAP_PNG_FROM_DATA( notes_white ), wxDefaultPosition, wxDefaultSize), 0, wxALL|wxEXPAND, 0 );
 	metbut->SetToolTip( "Add a page note" );
-	tools->Add( new wxMetroButton( m_caseTabPanel, ID_CONTEXT_HELP, wxEmptyString, wxBITMAP_PNG_FROM_DATA(qmark), wxDefaultPosition, wxDefaultSize), 0, wxALL|wxEXPAND, 0 );
+	tools->Add( new wxMetroButton( m_caseTabPanel, wxID_HELP, wxEmptyString, wxBITMAP_PNG_FROM_DATA(qmark), wxDefaultPosition, wxDefaultSize), 0, wxALL|wxEXPAND, 0 );
 	
 	m_caseNotebook = new wxSimplebook( m_caseTabPanel, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxBORDER_NONE );
 		
@@ -207,6 +210,7 @@ MainWindow::MainWindow()
 	entries.push_back( wxAcceleratorEntry( wxACCEL_CMD, 's', wxID_SAVE ) );
 	entries.push_back( wxAcceleratorEntry( wxACCEL_CMD, 'w', wxID_CLOSE ) );
 	entries.push_back( wxAcceleratorEntry( wxACCEL_NORMAL, WXK_F2, ID_CASE_RENAME ) );
+	entries.push_back( wxAcceleratorEntry( wxACCEL_NORMAL, WXK_F1, wxID_HELP ) );
 	SetAcceleratorTable( wxAcceleratorTable( entries.size(), &entries[0] ) );
 }
 
@@ -493,8 +497,8 @@ void MainWindow::OnCommand( wxCommandEvent &evt )
 
 	switch( evt.GetId() )
 	{
-	case ID_CONTEXT_HELP:
-		wxMessageBox( "the help system is not enabled: " + (cwin?cwin->GetCurrentContext():wxString("n/a")));
+	case wxID_HELP:
+		SamApp::ShowHelp( cwin ? cwin->GetCurrentContext() : wxString("main") );
 		break;
 	case ID_PAGE_NOTES:
 		if ( cwin != 0 )
@@ -1567,9 +1571,102 @@ wxArrayString SamApp::RecentFiles()
 	return files;
 }
 
-void SamApp::ShowHelp( const wxString &id )
+class HelpWin;
+static HelpWin *gs_helpWin = 0;
+
+class HelpWin : public wxFrame
 {
-	wxMessageBox("no help system yet: " + id);
+	wxWebView *m_webView;
+public:
+	HelpWin()
+		: wxFrame( SamApp::Window(), wxID_ANY, "System Advisor Model Help", wxDefaultPosition, wxSize(800,600) )
+	{
+#ifdef __WXMSW__
+		SetIcon( wxICON( appicon ) );
+#endif
+		m_webView = wxWebView::New( this, wxID_ANY, wxT("http://sam.nrel.gov"), wxDefaultPosition, wxDefaultSize, 
+			::wxWebViewBackendDefault, wxBORDER_NONE );
+	}
+
+	void LoadPage( const wxString &url )
+	{
+		m_webView->LoadURL( url );
+	}
+
+	void OnClose( wxCloseEvent &evt )
+	{
+		Hide();
+		evt.Veto();
+	}
+
+	DECLARE_EVENT_TABLE();
+};
+
+BEGIN_EVENT_TABLE( HelpWin, wxFrame )
+	EVT_CLOSE( HelpWin::OnClose )
+END_EVENT_TABLE()
+
+
+void SamApp::ShowHelp( const wxString &context )
+{	
+	static StringHash _map;
+	static bool _map_loaded = false;
+		
+	if (!_map_loaded)
+	{
+		wxFileInputStream infile(SamApp::GetRuntimePath() + "/help/contextmap.txt");
+		if (!infile.IsOk())
+			return;
+
+		wxTextInputStream in(infile);
+		while ( infile.CanRead() )
+		{
+			wxString line( in.ReadLine() );
+			if (line.Trim(false).Trim() == "" || line.Left(1) == "'")
+				continue;
+
+			int pos = line.Find('=');
+			if ( pos != wxNOT_FOUND )
+			{
+				wxString key = line.Mid(0, pos);
+				wxString val = line.Mid(pos+1);
+				if ( !key.IsEmpty() && !val.IsEmpty() )
+					_map[ key ] = val;
+			}
+		}
+
+		wxMessageBox(wxString::Format("Help map loaded, %d references.\n", (int)_map.size()));
+		_map_loaded = true;
+	}
+
+	wxString url = SamApp::GetRuntimePath() + "/help/html/";
+	if ( _map.find( context.Lower() ) == _map.end() )
+		url += "index.html";
+	else
+		url += _map[context.Lower()];
+		
+	// sj 11/29/11 Kludge to allow modal dialogs with help buttons to not block help window
+	if ( gs_helpWin != 0 && gs_helpWin->IsShown() )
+	{
+		wxRect h_rect = gs_helpWin->GetRect();
+
+		if (gs_helpWin->Destroy())
+		{
+			gs_helpWin = new HelpWin;
+			gs_helpWin->SetSize(h_rect);
+		}
+	}  // end of 11/29/11 Kludge
+	else if ( 0 == gs_helpWin )			
+		gs_helpWin = new HelpWin;
+
+	
+	wxFileName fn( url );
+	fn.MakeAbsolute();
+	url = "file:///" + fn.GetFullPath( wxPATH_NATIVE );
+	gs_helpWin->Show( );
+	gs_helpWin->LoadPage( url );
+	gs_helpWin->Raise();
+	gs_helpWin->SetTitle( "System Advisor Model Help {" + context + " --> " + url + "}" );
 }
 
 wxString SamApp::VersionStr() { return wxString::Format("%d.%d.%d", VersionMajor(), VersionMinor(), VersionMicro());};

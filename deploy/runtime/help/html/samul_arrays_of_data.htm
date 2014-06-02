@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>SamUL: Arrays of Data</title>
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="" />
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+   <meta http-equiv="content-language" content="en-us" />
+   <meta name="description" content="Often you need to store a list of related values. For example, you may need to refer to the price of energy in different years. Or you might have a table of state names and..." />
+   <meta http-equiv="Content-Style-Type" content="text/css" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+   <link id="tabscheme" type="text/css" href="hm_topic.css" rel="stylesheet" />   
+<style type="text/css">
+/* No header topics */
+
+/* Breadcrumb trail */
+p#breadcrumbs {
+font-family: Verdana, Tahoma, Helvetica, Sans-Serif;   padding: 2px 0 1px 2px;
+   margin: 0;
+   font-size: 8pt; 
+   color: #999;
+   }   
+p#breadcrumbs a { color: #999; text-decoration: none;}
+p#breadcrumbs a:visited { color: #999; }
+p#breadcrumbs a:hover { color: #333; border-bottom: 1px dotted #333; }
+
+/* Search hightlight color */
+span.highlight {background-color: #ffff40;}
+</style>
+<script type="text/javascript">
+var hmHeaderTopic = true;
+
+</script> 
+<!--[if IE 9]>
+<link id="iesvgcss" rel="stylesheet" type="text/css" href="hm_webhelp_svg.css" />
+<![endif]-->	
+<script src="jquery.js"></script>
+<script type="text/javascript" src="jquery.tools.min.js"></script>
+<script type="text/javascript" src="jquery.scrollTo-min.js"></script>
+<script type="text/javascript"> 
+// General topic variables
+var tVars = {
+   hmHelpPage: "index.html",
+   nextP: "samul_function_calls.htm",
+   prevP: "samul_flow_control.htm",
+   currP: "samul_arrays_of_data.htm",
+   defP: "introduction.htm",
+   titleP: "SamUL: Arrays of Data",
+   mailsubject: "Feedback on: SAM Help - Arrays of Data",
+   simplesubject: "Documentation%20Feedback",
+   mailid: "SamUL_Arrays_of_Data",
+   mailpath: "SamUL Scripting Language &gt; Arrays of Data /",
+   mailbody: "Dear SAM Support,",
+   mailrecipient: "SAM Support <sam.support@nrel.gov>",
+   simplerecipient: "sam.support@nrel.gov",
+   fbtype: false,
+   header: true,
+   background: "bg.png",
+   tablesReady: false,
+   togglesReady: false,
+   webRedirect: true
+   }
+// Popup configuration
+ var hmpBShadow = true;
+ var hmPopSmallDim = 500;
+ var hmPopKillVideo = false;
+ // AutoTOC variables
+ var hmatocvars = {
+   atoc_show: true,
+   atoc_title: "Contents",
+   atoc_tip: "Jump to:&nbsp;",
+   atoc_minHeaders: 2,
+   atoc_btntip_off: "No contents entries on this page",
+   atoc_btntip_on: "Display/hide topic directory",
+   atoc_toptip: "Jump to top of page",
+   atoc_top: "Scroll to Top of Page",
+   atoc_bg: "#f6f6f6",
+   atoc_border: "silver",
+   atoc_linkcolor: "#444",
+   atoc_linklimit: 45,
+   atoc_hovercolor: "#000",
+   atoc_hoverbgcolor: "#e0e0e0"
+}
+// Sortable tables
+var sortVars = {
+   europeandate: false,
+   germanNumbers: false,
+   imagePath: "",
+   image_up: "arrow-up.gif",
+   image_down: "arrow-down.gif",
+   image_empty: "arrow-empty.gif",
+   image_none: "arrow-none.gif",
+   sort_tip: "Click to sort on this column",
+   umlauts: "false"
+   }
+
+</script>
+
+<script type="text/javascript"> 
+$(document).ready(function() {
+var doc = document;  
+try {
+if (parent.hmWebHelp.navWidth != null) doc = parent.document;
+doc.title = $("<div/>").html("SAM Help - SamUL: Arrays of Data").text();
+window.onunload = function() {doc.title = $("<div/>").html("SAM Help").text();}
+} catch(err) {}
+});
+</script>
+<script type="text/javascript" src="helpman_settings.js"></script>
+<script type="text/javascript" src="helpman_topicinit.js"></script>
+<script type="text/javascript" src="hmtopic.js"></script>
+
+   <script type="text/javascript">
+     HMSyncTOC("index.html", "samul_arrays_of_data.htm");
+   </script>
+   <script type="text/javascript" src="highlight.js"></script>
+   <script type="text/javascript">
+     $(document).ready(function(){highlight();});
+   </script>
+</head>
+<body>
+<!--ZOOMSTOP-->
+<ul id="topictabs" class="tabs">
+<li id="indextab" class="hmtabs"><a href="#" id="indextablink" class="current"><span>SamUL: Arrays of Data</span></a></li>
+</ul>
+<div id="hmbox">
+<div id="hmheader">
+<div id="hmheadercontents">
+<p id="breadcrumbs">
+<b>Navigation:</b>
+<a href="samul.htm">SamUL Scripting Language</a>:</p> 
+<h1 class="p_Heading1"><span class="f_Heading1">Arrays of Data</span></h1>
+
+</div>
+<div id="atocIcon" class="navdivs">
+<img class="navicon" id="hmAtocLink" src="contents_off.png" alt="No contents entries on this page" title="No contents entries on this page" />
+<br /><span>Contents</span>
+</div>
+</div>
+<div id="autoTocWrapper" class="topicmenu"></div>
+<div id="idcontent">
+<div id="unclicker"></div>
+
+<!--ZOOMRESTART-->
+<p class="p_Text"><span class="f_Text">Often you need to store a list of related values. For example, you may need to refer to the price of energy in different years. Or you might have a table of state names and capital cities. In SamUL, you can use arrays to store these types of collections of data.</span></p>
+<h3 class="p_Heading3_atocs_" style="border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Initializing and Indexing</span></h3>
+<p class="p_Text"><span class="f_Text">An array is simply a list of variables that are indexed by numbers. Each variable in the array is called an element of the array, and the position of the element within the array is called the element's index. The index of the first element in an array is always 0.</span></p>
+<p class="p_Text"><span class="f_Text">To access array elements, enclose the index number in square brackets immediately following the variable name. SamUL does not require you to declare or allocate space for the array data in advance.</span></p>
+<p class="p_TextCode"><span class="f_TextCode">names[0] = &quot;Sean&quot;</span></p>
+<p class="p_TextCode"><span class="f_TextCode">names[1] = &quot;Walter&quot;</span></p>
+<p class="p_TextCode"><span class="f_TextCode">names[2] = &quot;Pam&quot;</span></p>
+<p class="p_TextCode"><span class="f_TextCode">names[3] = &quot;Claire&quot;</span></p>
+<p class="p_TextCode"><span class="f_TextCode">names[4] = &quot;Patrick&quot;</span></p>
+<p class="p_TextCode"><span class="f_TextCode">&nbsp;</span></p>
+<p class="p_TextCode"><span class="f_TextCode">outln( names[3] ) ' output is &quot;Claire&quot;</span></p>
+<p class="p_TextCode"><span class="f_TextCode">my_index = 2</span></p>
+<p class="p_TextCode"><span class="f_TextCode">outln( names[my_index] ) ' output is &quot;Pam&quot;</span></p>
+<p class="p_Text"><span class="f_Text">You can also initialize a fixed array using the </span><span class="f_CHCode">array</span><span class="f_Text"> command provided in SamUL. Simply separate each element with a comma. There is no limit to the number of elements you can pass to array.</span></p>
+<p class="p_TextCode"><span class="f_TextCode">names = array(&quot;Sean&quot;, &quot;Walter&quot;, &quot;Pam&quot;, &quot;Claire&quot;, &quot;Patrick&quot;)</span></p>
+<p class="p_TextCode"><span class="f_TextCode">outln( &quot;First: &quot; + names[0] )</span></p>
+<p class="p_TextCode"><span class="f_TextCode">outln( &quot;All: &quot; + names )</span></p>
+<p class="p_Text"><span class="f_Text">Note that calling the </span><span class="f_CHCode">typeof</span><span class="f_Text"> function on an array variable will return &quot;ärray&quot; as the type description, not the type of the elements. This is because SamUL is not strict about the types of variables stored in an array, and does not require all elements to be of the same type.</span></p>
+<h3 class="p_Heading3_atocs_" style="border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Array Length</span></h3>
+<p class="p_Text"><span class="f_Text">Sometimes you do not know in advance how many elements are in an array. This can happen if you are reading a list of numbers from a text file, storing each as an element in an array. After the all the data has been read, you can use the length function to determine how many elements the array contains.</span></p>
+<p class="p_TextCode"><span class="f_TextCode">count = length( names )</span></p>
+<h3 class="p_Heading3_atocs_" style="border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Processing Arrays</span></h3>
+<p class="p_Text"><span class="f_Text">Arrays and loops naturally go together, since frequently you may want to perform the same operation on each element of an array. For example, you may want to find the total sum of an array of numbers.</span></p>
+<p class="p_TextCode"><span class="f_TextCode">numbers = array( 1, -3, 2.4, 9, 7, 22, -2.1, 5.8 )</span></p>
+<p class="p_TextCode"><span class="f_TextCode">&nbsp;</span></p>
+<p class="p_TextCode"><span class="f_TextCode">count = length( numbers )</span></p>
+<p class="p_TextCode"><span class="f_TextCode">sum = 0</span></p>
+<p class="p_TextCode"><span class="f_TextCode">for (i=0; i&lt;count; i=i+1)</span></p>
+<p class="p_TextCode"><span class="f_TextCode"> &nbsp;sum = sum + numbers[i]</span></p>
+<p class="p_TextCode"><span class="f_TextCode">end</span></p>
+<p class="p_TextCode"><span class="f_TextCode">&nbsp;</span></p>
+<p class="p_Text"><span class="f_Text">The important feature of this code is that it will work regardless of how many elements are in the array.</span></p>
+<h3 class="p_Heading3_atocs_" style="border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Multidimensional Arrays</span></h3>
+<p class="p_Text"><span class="f_Text">As previously noted, SamUL is not strict with the types of elements stored in an array. Therefore, a single array element can even be another array. This allows you to define matrices with both row and column indexes, and also three (or greater) dimensional arrays.</span></p>
+<p class="p_Text"><span class="f_Text">To create a multi-dimensional array, simply separate the indices with commas between the square brackets. For example:</span></p>
+<p class="p_TextCode"><span class="f_TextCode">data[0,0] = 3</span></p>
+<p class="p_TextCode"><span class="f_TextCode">data[0,1] = -2</span></p>
+<p class="p_TextCode"><span class="f_TextCode">data[1,0] = 5</span></p>
+<p class="p_TextCode"><span class="f_TextCode">data[2,0] = 1</span></p>
+<p class="p_TextCode"><span class="f_TextCode">&nbsp;</span></p>
+<p class="p_TextCode"><span class="f_TextCode">nrows = length(data) ' result is 4</span></p>
+<p class="p_TextCode"><span class="f_TextCode">ncols = length(data[0]) ' result is 2</span></p>
+<p class="p_TextCode"><span class="f_TextCode">&nbsp;</span></p>
+<p class="p_TextCode"><span class="f_TextCode">row1 = data[0] ' extract the first row</span></p>
+<p class="p_TextCode"><span class="f_TextCode">&nbsp;</span></p>
+<p class="p_TextCode"><span class="f_TextCode">x = row1[0] ' value is 3</span></p>
+<p class="p_TextCode"><span class="f_TextCode">y = row1[1] ' value is -2</span></p>
+<p class="p_TextCode"><span class="f_TextCode">&nbsp;</span></p>
+<h3 class="p_Heading3_atocs_" style="border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Managing Array Storage</span></h3>
+<p class="p_Text"><span class="f_Text">When you define an array, SamUL automatically allocates sufficient computer memory to store the elements. If you know in advance that your array will contain 100 elements, for example, it can be much faster to allocate the computer memory before filling the array with data. Use the </span><span class="f_CHCode">allocate</span><span class="f_Text"> command to make space for 1 or 2 dimensional arrays.</span></p>
+<p class="p_TextCode"><span class="f_TextCode">data = allocate(3,2) ' a matrix with 3 rows and 2 columns</span></p>
+<p class="p_TextCode"><span class="f_TextCode">data[2,1] = 3</span></p>
+<p class="p_TextCode"><span class="f_TextCode">prices = allocate( 5 ) ' a simple 5 element array</span></p>
+<p class="p_Text"><span class="f_Text">As before, you can extend the array simply by using higher indexes. However, if you know in advance how many more elements you will be adding, it can be faster to use the resize command to reallocate computer memory to store the array. resize preserves any data in the array, or truncates data if the new size is smaller than the old size.</span></p>
+<p class="p_TextCode"><span class="f_TextCode">data = allocate(5)</span></p>
+<p class="p_TextCode"><span class="f_TextCode">outln( length(data) )</span></p>
+<p class="p_TextCode"><span class="f_TextCode">resize(data, 10)</span></p>
+<p class="p_TextCode"><span class="f_TextCode">outln( length(data) )</span></p>
+<p class="p_TextCode"><span class="f_TextCode">&nbsp;</span></p>
+<p class="p_TextCode"><span class="f_TextCode">resize(data, 2, 4)</span></p>
+<p class="p_TextCode"><span class="f_TextCode">outln( length(data) )</span></p>
+<p class="p_TextCode"><span class="f_TextCode">outln( length( data[0] ) )</span></p>
+<p class="p_TextCode"><span class="f_TextCode">&nbsp;</span></p>
+<h3 class="p_Heading3_atocs_" style="border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Multiple Advance Declarations</span></h3>
+<p class="p_Text"><span class="f_Text">You can also declare many variables and arrays in advance using the </span><span class="f_CHCode">declare</span><span class="f_Text"> statement. For example:</span></p>
+<p class="p_TextCode"><span class="f_TextCode">declare radiation[8760],temp[8760],matrix[3,3],i=0</span></p>
+<p class="p_Text"><span class="f_Text">This statement will create the array variables radiation and temp, each with 8760 values. It will also set aside memory for the 3x3 matrix variable, and 'create' the variable i and assign it the value of zero. The declare statement can be a useful shortcut to creating arrays and initializing many variables in a single line. The only limitation is that you cannot define arrays of greater than two dimensions using the declare command.</span></p>
+
+<!--ZOOMSTOP--> 
+
+
+</div> <!-- idcontent -->
+</div><!-- hmbox --> 
+</body>
+</html>
