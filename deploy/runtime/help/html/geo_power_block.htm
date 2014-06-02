@@ -1,115 +1,19 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
 <head>
    <title>Geothermal Power Block</title>
-   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
    <meta name="generator" content="Help &amp; Manual" />
    <meta name="keywords" content="" />
    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-   <meta http-equiv="content-language" content="en-us" />
-   <meta name="description" content="The Power Block page allows you to specify the parameters of a power block that converts thermal energy from the geothermal resource to electric energy using a conventional..." />
-   <meta http-equiv="Content-Style-Type" content="text/css" />
+   
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
    <link type="text/css" href="default.css" rel="stylesheet" />
-   <link id="tabscheme" type="text/css" href="hm_topic.css" rel="stylesheet" />   
-<style type="text/css">
-/* No header topics */
-
-/* Breadcrumb trail */
-p#breadcrumbs {
-font-family: Verdana, Tahoma, Helvetica, Sans-Serif;   padding: 2px 0 1px 2px;
-   margin: 0;
-   font-size: 8pt; 
-   color: #999;
-   }   
-p#breadcrumbs a { color: #999; text-decoration: none;}
-p#breadcrumbs a:visited { color: #999; }
-p#breadcrumbs a:hover { color: #333; border-bottom: 1px dotted #333; }
-
-/* Search hightlight color */
-span.highlight {background-color: #ffff40;}
-</style>
-<script type="text/javascript">
-var hmHeaderTopic = true;
-
-</script> 
-<!--[if IE 9]>
-<link id="iesvgcss" rel="stylesheet" type="text/css" href="hm_webhelp_svg.css" />
-<![endif]-->	
-<script src="jquery.js"></script>
-<script type="text/javascript" src="jquery.tools.min.js"></script>
-<script type="text/javascript" src="jquery.scrollTo-min.js"></script>
-<script type="text/javascript"> 
-// General topic variables
-var tVars = {
-   hmHelpPage: "index.html",
-   nextP: "geothermal_co-production.htm",
-   prevP: "geo_plant_equipment.htm",
-   currP: "geo_power_block.htm",
-   defP: "introduction.htm",
-   titleP: "Geothermal Power Block",
-   mailsubject: "Feedback on: SAM Help - Power Block",
-   simplesubject: "Documentation%20Feedback",
-   mailid: "Geo_Power_Block",
-   mailpath: "Geothermal &gt; Geothermal Power &gt; Power Block /",
-   mailbody: "Dear SAM Support,",
-   mailrecipient: "SAM Support <sam.support@nrel.gov>",
-   simplerecipient: "sam.support@nrel.gov",
-   fbtype: false,
-   header: true,
-   background: "bg.png",
-   tablesReady: false,
-   togglesReady: false,
-   webRedirect: true
-   }
-// Popup configuration
- var hmpBShadow = true;
- var hmPopSmallDim = 500;
- var hmPopKillVideo = false;
- // AutoTOC variables
- var hmatocvars = {
-   atoc_show: true,
-   atoc_title: "Contents",
-   atoc_tip: "Jump to:&nbsp;",
-   atoc_minHeaders: 2,
-   atoc_btntip_off: "No contents entries on this page",
-   atoc_btntip_on: "Display/hide topic directory",
-   atoc_toptip: "Jump to top of page",
-   atoc_top: "Scroll to Top of Page",
-   atoc_bg: "#f6f6f6",
-   atoc_border: "silver",
-   atoc_linkcolor: "#444",
-   atoc_linklimit: 45,
-   atoc_hovercolor: "#000",
-   atoc_hoverbgcolor: "#e0e0e0"
-}
-// Sortable tables
-var sortVars = {
-   europeandate: false,
-   germanNumbers: false,
-   imagePath: "",
-   image_up: "arrow-up.gif",
-   image_down: "arrow-down.gif",
-   image_empty: "arrow-empty.gif",
-   image_none: "arrow-none.gif",
-   sort_tip: "Click to sort on this column",
-   umlauts: "false"
-   }
-
-</script>
-
-<script type="text/javascript"> 
-$(document).ready(function() {
-var doc = document;  
-try {
-if (parent.hmWebHelp.navWidth != null) doc = parent.document;
-doc.title = $("<div/>").html("SAM Help - Geothermal Power Block").text();
-window.onunload = function() {doc.title = $("<div/>").html("SAM Help").text();}
-} catch(err) {}
-});
-</script>
-<script type="text/javascript" src="helpman_settings.js"></script>
-<script type="text/javascript" src="helpman_topicinit.js"></script>
-<script type="text/javascript" src="hmtopic.js"></script>
+   <style type="text/css">
+     body { margin: 0px; background: #FFFFFF; }
+   </style>
+   <script type="text/javascript" src="jquery.js"></script>
+   <script type="text/javascript" src="helpman_settings.js"></script>
+   <script type="text/javascript" src="helpman_topicinit.js"></script>
 
    <script type="text/javascript">
      HMSyncTOC("index.html", "geo_power_block.htm");
@@ -120,29 +24,20 @@ window.onunload = function() {doc.title = $("<div/>").html("SAM Help").text();}
    </script>
 </head>
 <body>
-<!--ZOOMSTOP-->
-<ul id="topictabs" class="tabs">
-<li id="indextab" class="hmtabs"><a href="#" id="indextablink" class="current"><span>Geothermal Power Block</span></a></li>
-</ul>
-<div id="hmbox">
-<div id="hmheader">
-<div id="hmheadercontents">
-<p id="breadcrumbs">
-<b>Navigation:</b>
-<a href="geothermal.htm">Geothermal</a> &gt; <a href="geo_overview.htm">Geothermal Power</a>:</p> 
-<h1 class="p_Heading1"><span class="f_Heading1">Power Block</span></h1>
 
-</div>
-<div id="atocIcon" class="navdivs">
-<img class="navicon" id="hmAtocLink" src="contents_off.png" alt="No contents entries on this page" title="No contents entries on this page" />
-<br /><span>Contents</span>
-</div>
-</div>
-<div id="autoTocWrapper" class="topicmenu"></div>
-<div id="idcontent">
-<div id="unclicker"></div>
 
-<!--ZOOMRESTART-->
+<table style="width:100%; border:none; border-spacing:0px; padding:5px; background:#FFFFFF; color:#0072C6;">
+  <tr style="vertical-align:middle">
+    <td style="text-align:left">
+      <h1 class="p_Heading1"><span class="f_Heading1">Power Block</span></h1>
+
+    </td>
+  </tr>
+</table>
+
+
+<!-- Placeholder for topic body. -->
+<table style="width:100%;border:none;border-spacing:0px"><tr style="vertical-align:top"><td style="text-align:left;padding:5px">
 <p class="p_Text"><span class="f_Text">The Power Block page allows you to specify the parameters of a power block that converts thermal energy from the geothermal resource to electric energy using a conventional steam Rankine cycle power plant.</span></p>
 <p class="p_Text"><span class="f_Text">The power cycle can use either an evaporative cooling system for wet cooling, an air-cooled system for dry cooling, or a hybrid cooling system with both wet and dry cooling.</span></p>
 <p class="p_Text"><span class="f_Text">The geothermal model runs simulations over the multi-year life of the plant (defined by </span><span class="f_CHInterfaceElement">Analysis Period</span><span class="f_Text"> on the <a href="financing_models.htm" class="topiclink">Financing</a> page) to account for the decline in geothermal resource. SAM models the geothermal resource decline on a monthly basis. </span></p>
@@ -151,7 +46,7 @@ window.onunload = function() {doc.title = $("<div/>").html("SAM Help").text();}
 <h3 class="p_Heading3_atocs_" style="border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Power Block Model</span></h3>
 <p class="p_VariableName"><span class="f_VariableName">Model</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">You can choose from two different power block model options: </span></p>
-<p style="text-align: left; padding: 0px 0px 0px 13px; margin: 0px 0px 6px 24px;"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;display:inline-block;width:13px;margin-left:-13px">&#9679;</span><span class="f_VariableDescription">The GETEM option calculates the power block's monthly output.</span></p><p style="text-align: left; padding: 0px 0px 0px 13px; margin: 0px 0px 6px 24px;"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;display:inline-block;width:13px;margin-left:-13px">&#9679;</span><span class="f_VariableDescription">The Power Block Monthly and Power Block Hourly options calculate either monthly or hourly power block output values, and use a more sophisticated algorithm based on physical principles using the power block model developed for SAM's physical parabolic trough model. For a detailed description, see Chapter 4 of Wagner M, 2008. Simulation and Predictive Performance Modeling of Utility-Scale Central Receiver System Power Plants. Master of Science Thesis. University of Wisconsin-Madison. http://sel.me.wisc.edu/theses/wagner08.zip.</span></p><h3 class="p_Heading3_atocs_" style="border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Power Block Design Point</span></h3>
+<div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 6px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:13px"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;">&#8226;</span></td><td style="border:none"><span class="f_VariableDescription">The GETEM option calculates the power block's monthly output.</span></td></tr></table></div><div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 6px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:13px"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;">&#8226;</span></td><td style="border:none"><span class="f_VariableDescription">The Power Block Monthly and Power Block Hourly options calculate either monthly or hourly power block output values, and use a more sophisticated algorithm based on physical principles using the power block model developed for SAM's physical parabolic trough model. For a detailed description, see Chapter 4 of Wagner M, 2008. Simulation and Predictive Performance Modeling of Utility-Scale Central Receiver System Power Plants. Master of Science Thesis. University of Wisconsin-Madison. http://sel.me.wisc.edu/theses/wagner08.zip.</span></td></tr></table></div><h3 class="p_Heading3_atocs_" style="border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Power Block Design Point</span></h3>
 <p class="p_VariableName"><span class="f_VariableName">Rated cycle conversion efficiency</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The thermal to electric conversion efficiency of the power cycle under design conditions.</span></p>
 <p class="p_VariableName"><span class="f_VariableName">Design inlet temperature (ºC)</span></p>
@@ -164,12 +59,12 @@ window.onunload = function() {doc.title = $("<div/>").html("SAM Help").text();}
 <p class="p_VariableDescription"><span class="f_VariableDescription">The fraction of the steam mass flow rate in the power cycle that is extracted and replaced by fresh water. This fraction is multiplied by the steam mass flow rate in the power cycle for each hour of plant operation to determine the total required quantity of power cycle makeup water. The blowdown fraction accounts for water use related directly to replacement of the steam working fluid. The default value of 0.013 for the wet-cooled case represents makeup due to blowdown quench and steam cycle makeup during operation and startup. A value of 0.016 is appropriate for dry-cooled systems to account for additional wet-surface air cooling for critical Rankine cycle components.</span></p>
 <h3 class="p_Heading3_atocs_" style="border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Cooling System</span></h3>
 <p class="p_VariableName"><span class="f_VariableName">Condenser type</span></p>
-<p style="margin: 0px 0px 6px 24px;">Choose either an air-cooled condenser (dry cooling), evaporative cooling (wet cooling), or hybrid cooling system.</p>
-<p style="margin: 0px 0px 6px 24px;">In hybrid cooling a wet-cooling system and dry-cooling share the heat rejection load. Although there are many possible theoretical configurations of hybrid cooling systems, SAM only allows a parallel cooling option. </p>
+<p style="margin: 0px 0px 6px 24px;"><span style="font-family: Verdana;">Choose either an air-cooled condenser (dry cooling), evaporative cooling (wet cooling), or hybrid cooling system.</span></p>
+<p style="margin: 0px 0px 6px 24px;"><span style="font-family: Verdana;">In hybrid cooling a wet-cooling system and dry-cooling share the heat rejection load. Although there are many possible theoretical configurations of hybrid cooling systems, SAM only allows a parallel cooling option. </span></p>
 <p class="p_VariableName"><span class="f_VariableName">Hybrid Dispatch</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">For hybrid cooling, the hybrid dispatch table specifies how much of the cooling load should be handled by the wet-cooling system for each of 6 periods in the year. The periods are specified in the matrices. Each value in the table is a fraction of the design cooling load. For example, if you want 60% of heat rejection load to go to wet cooling in Period 1, type 0.6 for Period 1, and then user your mouse to select the hours and months in the schedule that Period 1 applies, and type the number 1. See <a href="fin_energy_payment_dispatch.htm" class="topiclink">Time of Delivery Factors</a> for step-by-step instructions for using assigning periods to a schedule matrix. </span></p>
-<p style="margin: 0px 0px 6px 24px;">Directing part of the heat rejection load to the wet cooling system reduces the total condenser temperature and improves performance, but increases the water requirement. SAM sizes the wet-cooling system to match the maximum fraction that you specify in the hybrid dispatch table, and sizes the air-cooling system to meet the full cooling load.</p>
-<p class="p_Note"><span class="f_CHNote">Note.</span> The hybrid dispatch option only works with the hourly power block model. The option does not work with the monthly or GETEM power block model.</p>
+<p style="margin: 0px 0px 6px 24px;"><span style="font-family: Verdana;">Directing part of the heat rejection load to the wet cooling system reduces the total condenser temperature and improves performance, but increases the water requirement. SAM sizes the wet-cooling system to match the maximum fraction that you specify in the hybrid dispatch table, and sizes the air-cooling system to meet the full cooling load.</span></p>
+<p class="p_Note"><span class="f_CHNote">Note.</span><span style="font-family: Verdana;"> The hybrid dispatch option only works with the hourly power block model. The option does not work with the monthly or GETEM power block model.</span></p>
 <p class="p_VariableName"><span class="f_VariableName">Ambient temperature at design (ºC)</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The ambient temperature at which the power cycle operates at its design-point-rated cycle conversion efficiency. For the air-cooled condenser option, use a dry bulb ambient temperature value. For the evaporative condenser, use the wet bulb temperature.</span></p>
 <p class="p_VariableName"><span class="f_VariableName">Ref. Condenser Water dT (ºC)</span></p>
@@ -185,10 +80,7 @@ window.onunload = function() {doc.title = $("<div/>").html("SAM Help").text();}
 <p class="p_VariableName"><span class="f_VariableName">Cooling system part load levels</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The cooling system part load levels tells the heat rejection system model how many discrete operating points there are. A value of 2 means that the system can run at either 100% or 50% rejection. A value of three means rejection operating points of 100% 66% 33%. The part load levels determine how the heat rejection operates under part load conditions when the heat load is less than full load. The default value is 2, and recommended range is between 2 and 10. The value must be an integer.</span></p>
 
-<!--ZOOMSTOP--> 
+</td></tr></table>
 
-
-</div> <!-- idcontent -->
-</div><!-- hmbox --> 
 </body>
 </html>
