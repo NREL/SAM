@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>Power Tower (Molten Salt)</title>
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="" />
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+   <meta http-equiv="content-language" content="en-us" />
+   <meta name="description" content="After running simulations, SAM displays time series results for the molten salt power tower model on the Results page Tables and Time Series graphs." />
+   <meta http-equiv="Content-Style-Type" content="text/css" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+   <link id="tabscheme" type="text/css" href="hm_topic.css" rel="stylesheet" />   
+<style type="text/css">
+/* No header topics */
+
+/* Breadcrumb trail */
+p#breadcrumbs {
+font-family: Verdana, Tahoma, Helvetica, Sans-Serif;   padding: 2px 0 1px 2px;
+   margin: 0;
+   font-size: 8pt; 
+   color: #999;
+   }   
+p#breadcrumbs a { color: #999; text-decoration: none;}
+p#breadcrumbs a:visited { color: #999; }
+p#breadcrumbs a:hover { color: #333; border-bottom: 1px dotted #333; }
+
+/* Search hightlight color */
+span.highlight {background-color: #ffff40;}
+</style>
+<script type="text/javascript">
+var hmHeaderTopic = true;
+
+</script> 
+<!--[if IE 9]>
+<link id="iesvgcss" rel="stylesheet" type="text/css" href="hm_webhelp_svg.css" />
+<![endif]-->	
+<script src="jquery.js"></script>
+<script type="text/javascript" src="jquery.tools.min.js"></script>
+<script type="text/javascript" src="jquery.scrollTo-min.js"></script>
+<script type="text/javascript"> 
+// General topic variables
+var tVars = {
+   hmHelpPage: "index.html",
+   nextP: "pm_power_tower_ds.htm",
+   prevP: "pm_empirical_trough.htm",
+   currP: "pm_power_tower_ms.htm",
+   defP: "introduction.htm",
+   titleP: "Power Tower (Molten Salt)",
+   mailsubject: "Feedback on: SAM Help - Power Tower (Molten Salt)",
+   simplesubject: "Documentation%20Feedback",
+   mailid: "PM_Power_Tower_MS",
+   mailpath: "Performance Model Results &gt; Power Tower (Molten Salt) /",
+   mailbody: "Dear SAM Support,",
+   mailrecipient: "SAM Support <sam.support@nrel.gov>",
+   simplerecipient: "sam.support@nrel.gov",
+   fbtype: false,
+   header: true,
+   background: "bg.png",
+   tablesReady: false,
+   togglesReady: false,
+   webRedirect: true
+   }
+// Popup configuration
+ var hmpBShadow = true;
+ var hmPopSmallDim = 500;
+ var hmPopKillVideo = false;
+ // AutoTOC variables
+ var hmatocvars = {
+   atoc_show: true,
+   atoc_title: "Contents",
+   atoc_tip: "Jump to:&nbsp;",
+   atoc_minHeaders: 2,
+   atoc_btntip_off: "No contents entries on this page",
+   atoc_btntip_on: "Display/hide topic directory",
+   atoc_toptip: "Jump to top of page",
+   atoc_top: "Scroll to Top of Page",
+   atoc_bg: "#f6f6f6",
+   atoc_border: "silver",
+   atoc_linkcolor: "#444",
+   atoc_linklimit: 45,
+   atoc_hovercolor: "#000",
+   atoc_hoverbgcolor: "#e0e0e0"
+}
+// Sortable tables
+var sortVars = {
+   europeandate: false,
+   germanNumbers: false,
+   imagePath: "",
+   image_up: "arrow-up.gif",
+   image_down: "arrow-down.gif",
+   image_empty: "arrow-empty.gif",
+   image_none: "arrow-none.gif",
+   sort_tip: "Click to sort on this column",
+   umlauts: "false"
+   }
+
+</script>
+
+<script type="text/javascript"> 
+$(document).ready(function() {
+var doc = document;  
+try {
+if (parent.hmWebHelp.navWidth != null) doc = parent.document;
+doc.title = $("<div/>").html("SAM Help - Power Tower (Molten Salt)").text();
+window.onunload = function() {doc.title = $("<div/>").html("SAM Help").text();}
+} catch(err) {}
+});
+</script>
+<script type="text/javascript" src="helpman_settings.js"></script>
+<script type="text/javascript" src="helpman_topicinit.js"></script>
+<script type="text/javascript" src="hmtopic.js"></script>
+
+   <script type="text/javascript">
+     HMSyncTOC("index.html", "pm_power_tower_ms.htm");
+   </script>
+   <script type="text/javascript" src="highlight.js"></script>
+   <script type="text/javascript">
+     $(document).ready(function(){highlight();});
+   </script>
+</head>
+<body>
+<!--ZOOMSTOP-->
+<ul id="topictabs" class="tabs">
+<li id="indextab" class="hmtabs"><a href="#" id="indextablink" class="current"><span>Power Tower (Molten Salt)</span></a></li>
+</ul>
+<div id="hmbox">
+<div id="hmheader">
+<div id="hmheadercontents">
+<p id="breadcrumbs">
+<b>Navigation:</b>
+<a href="pm_outputs.htm">Performance Model Results</a>:</p> 
+<h1 class="p_Heading1"><span class="f_Heading1">Power Tower (Molten Salt)</span></h1>
+
+</div>
+<div id="atocIcon" class="navdivs">
+<img class="navicon" id="hmAtocLink" src="contents_off.png" alt="No contents entries on this page" title="No contents entries on this page" />
+<br /><span>Contents</span>
+</div>
+</div>
+<div id="autoTocWrapper" class="topicmenu"></div>
+<div id="idcontent">
+<div id="unclicker"></div>
+
+<!--ZOOMRESTART-->
+<p class="p_Text"><span class="f_Text">After running simulations, SAM displays time series results for the molten salt power tower model on the Results page <a href="tabular_data_browser.htm" class="topiclink">Tables</a> and <a href="base_case_time_series.htm" class="topiclink">Time Series</a> graphs.</span></p>
+<p class="p_Note"><span class="f_CHNote">Notes.</span><span class="f_Note"> </span><br />
+<span class="f_Note">&nbsp;</span><br />
+<span class="f_Note">The solar radiation values (DNI) represent total energy values over the time step, and are equivalent to the values in the weather file. Temperature and wind speed values are mid-point values calculated by the weather data processor by averaging the end-of-time step wind speed from the previous time step with the end-of-time step wind speed from the current time step in the weather file</span><span class="f_Text">.</span><br />
+<span class="f_Text">&nbsp;</span><br />
+<span class="f_Note">For simulations that involve time-of-delivery pricing, results include additional variables described in <a href="td_variables_overview.htm" class="topiclink">Time Dependent Pricing Overview</a>.</span></p>
+<div style="text-align: left; text-indent: 0px; border-color: #000000; border-style: solid; border-width: 1px; background: #ebebeb; padding: 2px 2px 2px 2px; margin: 3px 0px 3px 0px;"><table style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr style="vertical-align:baseline"><td style="border:none;padding:0;width:19px"><img id="TOGGLE0186A1_ICON" class="dropdown-toggle-icon" src="hmtoggle_arrow1.gif" width="9" height="9" alt="hmtoggle_arrow1" style="border:none" /></td><td style="border:none;padding:0"><span class="f_Heading2_atoc_"><a class="dropdown-toggle" style="font-size: 16pt; font-family: Arial; font-style: normal; font-weight: bold; color: #000000; background-color: transparent; text-decoration: none;" href="javascript:HMToggle('toggle','TOGGLE0186A1','TOGGLE0186A1_ICON')">Hourly</a> Data</span></td></tr></table></div><div id="TOGGLE0186A1" style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 6px 0px;"><table id="PTMS-Hourly_srt_" class="variable list sortable" style="width:100%; border:none; border-spacing:0px;">
+<tr style="text-align:left;vertical-align:top;">
+<th style="vertical-align:top; background-color:#99ccff; padding:0px;"><p class="p_TableHeadColumn"><a id="_sortable_"></a><span class="f_TableHeadColumn">Hourly data file name</span></p>
+</th>
+<th style="vertical-align:top; background-color:#99ccff; padding:0px;"><p class="p_TableHeadColumn"><a id="_sortable_"></a><span class="f_TableHeadColumn">TRNSYS Units</span></p>
+</th>
+<th style="vertical-align:top; background-color:#99ccff; padding:0px;"><p class="p_TableHeadColumn"><a id="_defaultsort_"></a><span class="f_TableHeadColumn">Descriptive name</span></p>
+</th>
+<th style="vertical-align:top; background-color:#99ccff; padding:0px;"><p class="p_TableHeadColumn"><a id="_sortable_"></a><span class="f_TableHeadColumn">SAM Units</span></p>
+</th>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Cold_tank_vol</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">m^3</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Cold tank HTF volume</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">m^3</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Cond_op_frac</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">none</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Fraction of operating condenser bays</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">none</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Cond_pressure</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Pa</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Condenser operating pressure</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Pa</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Cycle_eff</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">none</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Power cycle efficiency</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">none</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Cycle_power</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">MWh</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Gross electric power output</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">MWh</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">DNI</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">kJ/m^2-hr</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Direct normal irradiation</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">kJ/m^2-hr</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">E_net</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">MWh</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Net electric power output</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">MWh</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">f_TC_cold</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">-</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Thermocline: Cold depth fraction</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">-</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">f_TC_hot</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">-</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Thermocline: Hot depth fraction</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">-</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Field_control</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">none</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Field operation fraction</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">none</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Fossil_energy</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">MWh</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Thermal energy delivered by aux backup</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">MWh</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Fossil_fuel</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">MMBTU</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Auxiliary heater fuel consumption</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">MMBTU</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Hel_field_eff</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">none</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Solar field optical efficiency</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">none</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Hel_track_power</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">MWh</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Heliostat drive electrical consumption</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">MWh</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Hot_tank_vol</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">m^3</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Hot tank HTF volume</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">m^3</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">mdot_from_storage</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">kg/hr</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">TES discharge mass flow rate</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">kg/hr</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">mdot_to_powercycle</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">kg/hr</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Power block HTF mass flow rate</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">kg/hr</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">mdot_to_receiver</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">kg/hr</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Receiver mass flow rate</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">kg/hr</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">mdot_to_storage</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">kg/hr</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">TES charge mass flow rate</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">kg/hr</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Par_aux</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">MWh</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Auxiliary heater operation parasitic load</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">MWh</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Par_cooling_tower</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">MWh</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Cooling system parasitic power</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">MWh</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Par_fixed</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">MWh</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Fixed parasitic load</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">MWh</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Par_pipe_loss</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">MWh</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Non-receiver piping thermal loss</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">MWh</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Par_plant_bal</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">MWh</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Balance of plant parasitic load</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">MWh</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Par_recirc_htr</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">MWh</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Receiver freeze protection energy</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">MWh</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Par_store_pump</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">MWh</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Power cycle/TES pumping power</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">MWh</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Par_tank_htr</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">MWh</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Tank freeze protection energy</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">MWh</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Par_total</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">MWh</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Total parasitic consumption</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">MWh</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Power_to_receiver</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">MWh</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Thermal energy on receiver</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">MWh</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Q_from_TES</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">MWh</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Thermal energy from thermal storage</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">MWh</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Q_to_PB</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">MWh</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Thermal energy to the power cycle</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">MWh</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Q_to_TES</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">MWh</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Thermal energy to thermal storage</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">MWh</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Rec_conv_loss</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">MWh</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Receiver convective loss</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">MWh</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Rec_eff</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">none</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Receiver thermal efficiency</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">none</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Rec_pump_power</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">MWh</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Receiver pumping power consumption</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">MWh</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Rec_rad_loss</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">MWh</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Receiver radiative loss</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">MWh</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Rec_therm_power</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">MWh</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Receiver thermal power output</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">MWh</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">solar_azimuth</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">deg</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Solar azimuth angle</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">deg</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">solar_zenith</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">deg</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Solar zenith angle</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">deg</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">T_dry_bulb</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">C</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Dry-bulb temperature</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">C</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">T_from_powerblock</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">C</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Power cycle HTF return temperature</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">C</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">T_rec_inlet</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">C</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Receiver inlet HTF temperature</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">C</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">T_rec_outlet</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">C</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Receiver outlet HTF temperature</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">C</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">T_TC_cold</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">C</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Thermocline: Cold node temperature</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">C</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">T_TC_hot</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">C</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Thermocline: Hot node temperature</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">C</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">T_TC_max</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">C</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Thermocline: Maximum temperature</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">C</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">T_to_powerblock</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">C</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Power cycle HTF inlet temperature</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">C</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">T_wb</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">C</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Wet-bulb temperatre</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">C</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Total_incident_power</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">MWh</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Total incident thermal energy</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">MWh</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Total_tank_loss</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">MWh</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Total tank thermal losses</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">MWh</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">TOUperiod</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">none</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Time-of-dispatch period</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">none</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">V_wind</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">m/s</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Wind velocity</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">m/s</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Water_makeup_flow</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">kg/hr</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Water consumption mass flow rate</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">kg/hr</span></p>
+</td>
+</tr>
+</table>
+</div>
+<div style="text-align: left; text-indent: 0px; border-color: #000000; border-style: solid; border-width: 1px; background: #ebebeb; padding: 2px 2px 2px 2px; margin: 3px 0px 3px 0px;"><table style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr style="vertical-align:baseline"><td style="border:none;padding:0;width:19px"><img id="TOGGLE0186A2_ICON" class="dropdown-toggle-icon" src="hmtoggle_arrow1.gif" width="9" height="9" alt="hmtoggle_arrow1" style="border:none" /></td><td style="border:none;padding:0"><span class="f_Heading2_atoc_"><a class="dropdown-toggle" style="font-size: 16pt; font-family: Arial; font-style: normal; font-weight: bold; color: #000000; background-color: transparent; text-decoration: none;" href="javascript:HMToggle('toggle','TOGGLE0186A2','TOGGLE0186A2_ICON')">Monthly Data and Single Values</a></span></td></tr></table></div><div id="TOGGLE0186A2" style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 6px 0px;"><table id="PTMS-Monthly_srt_" class="variable list sortable" style="width:100%; border:none; border-spacing:0px;">
+<tr style="text-align:left;vertical-align:top;">
+<th style="vertical-align:top; background-color:#99ccff; padding:0px;"><p class="p_TableHeadColumn"><a id="_sortable_"></a><span class="f_TableHeadColumn">Monthly data file name</span></p>
+</th>
+<th style="vertical-align:top; background-color:#99ccff; padding:0px;"><p class="p_TableHeadColumn"><a id="_sortable_"></a><span class="f_TableHeadColumn">TRNSYS Units</span></p>
+</th>
+<th style="vertical-align:top; background-color:#99ccff; padding:0px;"><p class="p_TableHeadColumn"><a id="_defaultsort_"></a><span class="f_TableHeadColumn">Descriptive name</span></p>
+</th>
+<th style="vertical-align:top; background-color:#99ccff; padding:0px;"><p class="p_TableHeadColumn"><a id="_sortable_"></a><span class="f_TableHeadColumn">SAM Units</span></p>
+</th>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Power_from_cycle_elec</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">MWh</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Gross Electric Output</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">kWh</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Power_to_the_grid</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">MWh</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Net Electric Output</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">kWh</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Total_incident_power</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">MWh</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Total Incident Thermal Energy</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">MWh</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Power_from_receiver</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">MWh</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Receiver Thermal Output</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">MWh</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Q_to_PB</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">MWh</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Thermal Energy to Power Block</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">MWh</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Water_makeup_flow</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">MWh</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Water usage</span></p>
+</td>
+<td style="vertical-align:top; background-color:#d7ebff; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">m^3</span></p>
+</td>
+</tr>
+</table>
+</div>
+
+<!--ZOOMSTOP--> 
+
+
+</div> <!-- idcontent -->
+</div><!-- hmbox --> 
+<script type="text/javascript">
+HMInitToggle('TOGGLE0186A1_ICON','hm.type','dropdown','hm.state','0','hm.src0','hmtoggle_arrow0.gif','hm.src1','hmtoggle_arrow1.gif','onclick','HMToggle(\'toggle\',\'TOGGLE0186A1\',\'TOGGLE0186A1_ICON\')');
+HMInitToggle('TOGGLE0186A1','hm.type','dropdown','hm.state','0');
+HMInitToggle('TOGGLE0186A2_ICON','hm.type','dropdown','hm.state','0','hm.src0','hmtoggle_arrow0.gif','hm.src1','hmtoggle_arrow1.gif','onclick','HMToggle(\'toggle\',\'TOGGLE0186A2\',\'TOGGLE0186A2_ICON\')');
+HMInitToggle('TOGGLE0186A2','hm.type','dropdown','hm.state','0');
+</script>
+</body>
+</html>

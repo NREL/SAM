@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>Component Models and Databases</title>
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="" />
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+   <meta http-equiv="content-language" content="en-us" />
+   <meta name="description" content="This topic lists all of SAM's performance models and describes the component-level models and databases SAM uses." />
+   <meta http-equiv="Content-Style-Type" content="text/css" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+   <link id="tabscheme" type="text/css" href="hm_topic.css" rel="stylesheet" />   
+<style type="text/css">
+/* No header topics */
+
+/* Breadcrumb trail */
+p#breadcrumbs {
+font-family: Verdana, Tahoma, Helvetica, Sans-Serif;   padding: 2px 0 1px 2px;
+   margin: 0;
+   font-size: 8pt; 
+   color: #999;
+   }   
+p#breadcrumbs a { color: #999; text-decoration: none;}
+p#breadcrumbs a:visited { color: #999; }
+p#breadcrumbs a:hover { color: #333; border-bottom: 1px dotted #333; }
+
+/* Search hightlight color */
+span.highlight {background-color: #ffff40;}
+</style>
+<script type="text/javascript">
+var hmHeaderTopic = true;
+
+</script> 
+<!--[if IE 9]>
+<link id="iesvgcss" rel="stylesheet" type="text/css" href="hm_webhelp_svg.css" />
+<![endif]-->	
+<script src="jquery.js"></script>
+<script type="text/javascript" src="jquery.tools.min.js"></script>
+<script type="text/javascript" src="jquery.scrollTo-min.js"></script>
+<script type="text/javascript"> 
+// General topic variables
+var tVars = {
+   hmHelpPage: "index.html",
+   nextP: "user_support.htm",
+   prevP: "about_sam.htm",
+   currP: "component_models_databases.htm",
+   defP: "introduction.htm",
+   titleP: "Component Models and Databases",
+   mailsubject: "Feedback on: SAM Help - Component Models and Databases",
+   simplesubject: "Documentation%20Feedback",
+   mailid: "Component_Models_Databases",
+   mailpath: "Introduction &gt; Component Models and Databases /",
+   mailbody: "Dear SAM Support,",
+   mailrecipient: "SAM Support <sam.support@nrel.gov>",
+   simplerecipient: "sam.support@nrel.gov",
+   fbtype: false,
+   header: true,
+   background: "bg.png",
+   tablesReady: false,
+   togglesReady: false,
+   webRedirect: true
+   }
+// Popup configuration
+ var hmpBShadow = true;
+ var hmPopSmallDim = 500;
+ var hmPopKillVideo = false;
+ // AutoTOC variables
+ var hmatocvars = {
+   atoc_show: true,
+   atoc_title: "Contents",
+   atoc_tip: "Jump to:&nbsp;",
+   atoc_minHeaders: 2,
+   atoc_btntip_off: "No contents entries on this page",
+   atoc_btntip_on: "Display/hide topic directory",
+   atoc_toptip: "Jump to top of page",
+   atoc_top: "Scroll to Top of Page",
+   atoc_bg: "#f6f6f6",
+   atoc_border: "silver",
+   atoc_linkcolor: "#444",
+   atoc_linklimit: 45,
+   atoc_hovercolor: "#000",
+   atoc_hoverbgcolor: "#e0e0e0"
+}
+// Sortable tables
+var sortVars = {
+   europeandate: false,
+   germanNumbers: false,
+   imagePath: "",
+   image_up: "arrow-up.gif",
+   image_down: "arrow-down.gif",
+   image_empty: "arrow-empty.gif",
+   image_none: "arrow-none.gif",
+   sort_tip: "Click to sort on this column",
+   umlauts: "false"
+   }
+
+</script>
+
+<script type="text/javascript"> 
+$(document).ready(function() {
+var doc = document;  
+try {
+if (parent.hmWebHelp.navWidth != null) doc = parent.document;
+doc.title = $("<div/>").html("SAM Help - Component Models and Databases").text();
+window.onunload = function() {doc.title = $("<div/>").html("SAM Help").text();}
+} catch(err) {}
+});
+</script>
+<script type="text/javascript" src="helpman_settings.js"></script>
+<script type="text/javascript" src="helpman_topicinit.js"></script>
+<script type="text/javascript" src="hmtopic.js"></script>
+
+   <script type="text/javascript">
+     HMSyncTOC("index.html", "component_models_databases.htm");
+   </script>
+   <script type="text/javascript" src="highlight.js"></script>
+   <script type="text/javascript">
+     $(document).ready(function(){highlight();});
+   </script>
+</head>
+<body>
+<!--ZOOMSTOP-->
+<ul id="topictabs" class="tabs">
+<li id="indextab" class="hmtabs"><a href="#" id="indextablink" class="current"><span>Component Models and Databases</span></a></li>
+</ul>
+<div id="hmbox">
+<div id="hmheader">
+<div id="hmheadercontents">
+<p id="breadcrumbs">
+<b>Navigation:</b>
+<a href="introduction.htm">Introduction</a>:</p> 
+<h1 class="p_Heading1"><span class="f_Heading1">Component Models and Databases</span></h1>
+
+</div>
+<div id="atocIcon" class="navdivs">
+<img class="navicon" id="hmAtocLink" src="contents_off.png" alt="No contents entries on this page" title="No contents entries on this page" />
+<br /><span>Contents</span>
+</div>
+</div>
+<div id="autoTocWrapper" class="topicmenu"></div>
+<div id="idcontent">
+<div id="unclicker"></div>
+
+<!--ZOOMRESTART-->
+<p class="p_Text"><span class="f_Text">This topic lists all of SAM's performance models and describes the component-level models and databases SAM uses.</span></p>
+<h3 class="p_Heading3_atocs_" style="border-top: none; border-right: none; border-left: none;"><a id="systemperformance"></a><span class="f_Heading3_atocs_">System Performance Models</span></h3>
+<p class="p_Text"><span class="f_Text">The system models represent a complete renewable energy system and were developed by NREL using algorithms from partners listed below.</span></p>
+<div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 0px 0px;"><table class="default no border" style="width:100%; border:none; border-spacing:0px;">
+<tr style="text-align:left;vertical-align:top;">
+<th style="vertical-align:top; padding:2px;"><p class="p_TableHeadColumn"><span class="f_TableHeadColumn">Model Name</span></p>
+</th>
+<th style="vertical-align:top; padding:2px;"><p class="p_TableHeadColumn"><span class="f_TableHeadColumn">Partner (if any)</span></p>
+</th>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Flat Plate PV</span></p>
+</td>
+<td style="vertical-align:top; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Component models from Sandia National Laboratories and the University of Wisconsin</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; background-color:#c0c0c0; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">High-X Concentrating PV</span></p>
+</td>
+<td style="vertical-align:top; background-color:#c0c0c0; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">&nbsp;</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">PVWatts System Model</span></p>
+</td>
+<td style="vertical-align:top; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">&nbsp;</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; background-color:#c0c0c0; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Parabolic Trough Physical Model</span></p>
+</td>
+<td style="vertical-align:top; background-color:#c0c0c0; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">University of Wisconsin</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Parabolic Trough Empirical Model </span></p>
+</td>
+<td style="vertical-align:top; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">University of Wisconsin</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; background-color:#c0c0c0; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Molten Salt Power Tower </span></p>
+</td>
+<td style="vertical-align:top; background-color:#c0c0c0; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">University of Wisconsin</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Direct Steam Power Tower </span></p>
+</td>
+<td style="vertical-align:top; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">University of Wisconsin</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; background-color:#c0c0c0; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Linear Fresnel</span></p>
+</td>
+<td style="vertical-align:top; background-color:#c0c0c0; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">University of Wisconsin</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Dish Stirling</span></p>
+</td>
+<td style="vertical-align:top; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">University of Wisconsin</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; background-color:#c0c0c0; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Generic Solar System</span></p>
+</td>
+<td style="vertical-align:top; background-color:#c0c0c0; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">&nbsp;</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Generic System</span></p>
+</td>
+<td style="vertical-align:top; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">&nbsp;</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; background-color:#c0c0c0; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Solar Water Heating</span></p>
+</td>
+<td style="vertical-align:top; background-color:#c0c0c0; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">&nbsp;</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Wind Power</span></p>
+</td>
+<td style="vertical-align:top; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">University of Wisconsin</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; background-color:#c0c0c0; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Geothermal Power</span></p>
+</td>
+<td style="vertical-align:top; background-color:#c0c0c0; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Princeton Energy Resources International</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Geothermal Co-production</span></p>
+</td>
+<td style="vertical-align:top; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">&nbsp;</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; background-color:#c0c0c0; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Biomass Power</span></p>
+</td>
+<td style="vertical-align:top; background-color:#c0c0c0; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">&nbsp;</span></p>
+</td>
+</tr>
+</table>
+</div>
+<h3 class="p_Heading3_atocs_" style="border-top: none; border-right: none; border-left: none;"><a id="componentperformance"></a><span class="f_Heading3_atocs_">Component Performance Models</span></h3>
+<p class="p_Text"><span class="f_Text">The Flat Plate PV and Wind Power model include options for choosing a component performance model to represent part of the system.</span></p>
+<div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 0px 0px;"><table class="default no border" style="width:100%; border:none; border-spacing:0px;">
+<tr style="text-align:left;vertical-align:top;">
+<th style="vertical-align:top; padding:2px;"><p class="p_TableHeadColumn"><span class="f_TableHeadColumn">Model Name</span></p>
+</th>
+<th style="vertical-align:top; padding:2px;"><p class="p_TableHeadColumn"><span class="f_TableHeadColumn">Component</span></p>
+</th>
+<th style="vertical-align:top; padding:2px;"><p class="p_TableHeadColumn"><span class="f_TableHeadColumn">Developer</span></p>
+</th>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Simple Efficiency Module Model</span></p>
+</td>
+<td style="vertical-align:top; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Photovoltaic module</span></p>
+</td>
+<td style="vertical-align:top; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">NREL</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; background-color:#c0c0c0; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">CEC Performance Model with Module Data base</span></p>
+</td>
+<td style="vertical-align:top; background-color:#c0c0c0; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Photovoltaic module</span></p>
+</td>
+<td style="vertical-align:top; background-color:#c0c0c0; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">University of Wisconsin </span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">CEC Performance Model with User Entered Specifications</span></p>
+</td>
+<td style="vertical-align:top; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Photovoltaic module</span></p>
+</td>
+<td style="vertical-align:top; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Adapted by NREL</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; background-color:#c0c0c0; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Sandia PV Array Performance Model with Module Database</span></p>
+</td>
+<td style="vertical-align:top; background-color:#c0c0c0; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Photovoltaic module</span></p>
+</td>
+<td style="vertical-align:top; background-color:#c0c0c0; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Sandia National Laboratories</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Single Point Efficiency Inverter</span></p>
+</td>
+<td style="vertical-align:top; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Inverter</span></p>
+</td>
+<td style="vertical-align:top; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">NREL</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; background-color:#c0c0c0; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Sandia Performance Model for Grid Connected PV Inverters</span></p>
+</td>
+<td style="vertical-align:top; background-color:#c0c0c0; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Inverter</span></p>
+</td>
+<td style="vertical-align:top; background-color:#c0c0c0; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Sandia National Laboratories</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Wind Turbine Design Model</span></p>
+</td>
+<td style="vertical-align:top; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Wind Turbine</span></p>
+</td>
+<td style="vertical-align:top; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">NREL</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; background-color:#c0c0c0; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Wind Power Curve Model</span></p>
+</td>
+<td style="vertical-align:top; background-color:#c0c0c0; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Wind Turbine</span></p>
+</td>
+<td style="vertical-align:top; background-color:#c0c0c0; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">NREL</span></p>
+</td>
+</tr>
+</table>
+</div>
+<h3 class="p_Heading3_atocs_" style="border-top: none; border-right: none; border-left: none;"><a id="componentdatabases"></a><span class="f_Heading3_atocs_">Component Parameter Databases</span></h3>
+<p class="p_Text"><span class="f_Text">Some of the component models use a library of input parameters to represent the performance characteristics of the component. The libraries listed below are owned by organizations other than NREL.</span></p>
+<div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 0px 0px;"><table class="default no border" style="width:100%; border:none; border-spacing:0px;">
+<tr style="text-align:left;vertical-align:top;">
+<th style="vertical-align:top; padding:2px;"><p class="p_TableHeadColumn"><span class="f_TableHeadColumn"> Library Name</span></p>
+</th>
+<th style="vertical-align:top; padding:2px;"><p class="p_TableHeadColumn"><span class="f_TableHeadColumn">Component</span></p>
+</th>
+<th style="vertical-align:top; padding:2px;"><p class="p_TableHeadColumn"><span class="f_TableHeadColumn">Owner</span></p>
+</th>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">CEC Modules</span></p>
+</td>
+<td style="vertical-align:top; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">PV module</span></p>
+</td>
+<td style="vertical-align:top; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">California Energy Commission</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; background-color:#c0c0c0; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Sandia Inverters</span></p>
+</td>
+<td style="vertical-align:top; background-color:#c0c0c0; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Inverter</span></p>
+</td>
+<td style="vertical-align:top; background-color:#c0c0c0; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Sandia National Laboratories</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Sandia Modules</span></p>
+</td>
+<td style="vertical-align:top; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">PV module</span></p>
+</td>
+<td style="vertical-align:top; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Sandia National Laboratories</span></p>
+</td>
+</tr>
+</table>
+</div>
+<h3 class="p_Heading3_atocs_" style="border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Online Financial Model Data</span></h3>
+<p class="p_Text"><a id="financialdata"></a><span class="f_Text">SAM can automatically download data from the following online databases to populate values on its financial model input pages.</span></p>
+<div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 0px 0px;"><table class="default no border" style="width:100%; border:none; border-spacing:0px;">
+<tr style="text-align:left;vertical-align:top;">
+<th style="vertical-align:top; padding:2px;"><p class="p_TableHeadColumn"><span class="f_TableHeadColumn">Database Name</span></p>
+</th>
+<th style="vertical-align:top; padding:2px;"><p class="p_TableHeadColumn"><span class="f_TableHeadColumn">Type of Data</span></p>
+</th>
+<th style="vertical-align:top; padding:2px;"><p class="p_TableHeadColumn"><span class="f_TableHeadColumn">Database Manager</span></p>
+</th>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft"><a href="http://en.openei.org/wiki/Gateway:Utilities" target="_blank" class="weblink" title="http://en.openei.org/wiki/Gateway:Utilities">OpenEI Utilities Gateway</a></span></p>
+</td>
+<td style="vertical-align:top; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Retail electricity prices and rate structures</span></p>
+</td>
+<td style="vertical-align:top; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">NREL and Illinois State University</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; background-color:#c0c0c0; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft"><a href="http://www.dsireusa.org/" target="_blank" class="weblink" title="http://www.dsireusa.org/">DSIRE</a></span></p>
+</td>
+<td style="vertical-align:top; background-color:#c0c0c0; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Incentives</span></p>
+</td>
+<td style="vertical-align:top; background-color:#c0c0c0; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">North Carolina Solar Center and Interstate Renewable Energy Council</span></p>
+</td>
+</tr>
+</table>
+</div>
+<h3 class="p_Heading3_atocs_" style="border-top: none; border-right: none; border-left: none;"><a id="weatherdata"></a><span class="f_Heading3_atocs_">Online Renewable Resource and Weather Data Sources</span></h3>
+<p class="p_Text"><span class="f_Text">SAM can automatically download renewable energy resource and weather data from the following online databases.</span></p>
+<div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 0px 0px;"><table class="default no border" style="width:100%; border:none; border-spacing:0px;">
+<tr style="text-align:left;vertical-align:top;">
+<th style="vertical-align:top; padding:2px;"><p class="p_TableHeadColumn"><span class="f_TableHeadColumn">Database Name</span></p>
+</th>
+<th style="vertical-align:top; padding:2px;"><p class="p_TableHeadColumn"><span class="f_TableHeadColumn">Type of Resource Data</span></p>
+</th>
+<th style="vertical-align:top; padding:2px;"><p class="p_TableHeadColumn"><span class="f_TableHeadColumn">Database Manager</span></p>
+</th>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft"><a href="http://maps.nrel.gov/prospector" target="_blank" class="weblink" title="http://maps.nrel.gov/prospector">Solar Prospector</a></span></p>
+</td>
+<td style="vertical-align:top; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Solar and Meteorological</span></p>
+</td>
+<td style="vertical-align:top; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">NREL </span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; background-color:#c0c0c0; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft"><a href="http://www.nrel.gov/electricity/transmission/wind_integration_dataset.html" target="_blank" class="weblink" title="http://www.nrel.gov/electricity/transmission/wind_integration_dataset.html">Wind Integration Datasets</a></span></p>
+</td>
+<td style="vertical-align:top; background-color:#c0c0c0; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Wind and Meteorological</span></p>
+</td>
+<td style="vertical-align:top; background-color:#c0c0c0; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">NREL with 3Tier and AWS Truepower</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft"><a href="http://www.nrel.gov/rredc/geothermal_resource.html" target="_blank" class="weblink" title="http://www.nrel.gov/rredc/geothermal_resource.html">Geothermal Resource</a></span></p>
+</td>
+<td style="vertical-align:top; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Ground temperature and depth</span></p>
+</td>
+<td style="vertical-align:top; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Southern Methodist University</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; background-color:#c0c0c0; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft"><a href="http://maps.nrel.gov/biomass" target="_blank" class="weblink" title="http://maps.nrel.gov/biomass">NREL Biofuels Atlas</a></span></p>
+</td>
+<td style="vertical-align:top; background-color:#c0c0c0; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Agricultural Residues</span></p>
+</td>
+<td style="vertical-align:top; background-color:#c0c0c0; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">NREL </span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; padding:2px;"><p class="p_TableTextLeft"><span class="f_VariableDescription"><a href="http://www1.eere.energy.gov/biomass/billion_ton_update.html" target="_blank" class="weblink" title="http://www1.eere.energy.gov/biomass/billion_ton_update.html">Billion Ton Update</a></span></p>
+</td>
+<td style="vertical-align:top; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Dedicated energy crops</span></p>
+</td>
+<td style="vertical-align:top; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Department of Energy</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="p_Text"><span class="f_Text">&nbsp;</span></p>
+<p class="p_Text"><span class="f_Text">SAM also comes with a complete set of TMY2 files (1961-1990) from the <a href="http://rredc.nrel.gov/solar/old_data/nsrdb/" target="_blank" class="weblink" title="http://rredc.nrel.gov/solar/old_data/nsrdb/">National Solar Radiation Database (NSRDB)</a>. It can read NSRDB TMY3 files, and EPW files developed for the Department of Energy's EnergyPlus building simulation model.</span></p>
+
+<!--ZOOMSTOP--> 
+
+
+</div> <!-- idcontent -->
+</div><!-- hmbox --> 
+</body>
+</html>

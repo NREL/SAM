@@ -1,0 +1,721 @@
+/* EDITABLE SETTINGS for CSS Coders */
+
+/* General Background */
+body {
+	background-color: #d4d4d4;
+	}
+
+/* TOC pane inner box background */
+div#hmnavborder {
+	background-color: white;
+	border-color: #ababab;
+	}
+
+/* Topic pane background */
+ /* This color should match the color of your topic page background */ 
+ div#hmtopicbox, div#hmcontentbox{
+	background-color: #ffffff;
+	}
+
+/* Toolbar and other components borders and backgrounds */
+.compactToolbar, .tableToolbar, div#hmnavbox, div#hmtopicbox, div#tabsMenu , div#hmbanner {
+	border-color: #818181;
+	}
+
+/* Backgrounds */
+div#hmnavbox, .compactToolbar, .tableToolbar, .bannerToolbar {
+	background-color: #e8e9e9;
+	background: -moz-linear-gradient(top,  #ffffff,  #C5CDD7);
+	background: -ms-linear-gradient(top,  #ffffff,  #C5CDD7);
+	background: -webkit-linear-gradient(top,  #ffffff,  #C5CDD7);
+	background: -o-linear-gradient(top,rgb(255,255,255),rgb(197,205,215));
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#ffffff, endColorstr=#C5CDD7);
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#ffffff, endColorstr=#C5CDD7)";
+	border-width: 1px;
+}
+
+/* Shadows */
+div#hmnavbox, div#hmtopicbox, .compactToolbar, .bannerToolbar {
+	-moz-box-shadow: 2px 2px 2px #aaa;
+	-webkit-box-shadow: 2px 2px 2px #aaa;
+	box-shadow: 2px 2px 2px #aaa;
+	}
+	
+/* Toolbar tools */
+
+/* Off state border */
+img.navicon, img.naviconH, img#newtab_off, img#undock_off, img#search_off, img#qsearch_off, img#index_off, img#togtog_off, img#perma_off, img#feedback_off, img#printer_off {
+	border-color:  transparent;
+}
+/* Tab close mini button */
+img.closetab {
+	display: none;
+}
+/* Highlighted tool */
+img.naviconH {
+	border-color: #79befd;
+	background-color: #eaeff7;
+	background: -moz-linear-gradient(top,  #ffffff,  #eaeff7);
+	background: -ms-linear-gradient(top,  #ffffff,  #eaeff7);
+	background: -webkit-linear-gradient(top,  #ffffff,  #eaeff7);
+	background: -o-linear-gradient(top,rgb(255,255,255),rgb(234,239,247));
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#ffffff, endColorstr=#eaeff7);
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#ffffff, endColorstr=#eaeff7)";
+	cursor: pointer;
+	-moz-box-shadow: 1px 1px 1px #aaa;
+	-webkit-box-shadow: 1px 1px 1px #aaa;
+	box-shadow: 1px 1px 1px #aaa;
+	filter:progid:DXImageTransform.Microsoft.Shadow(color=#aaaaaa,direction=120,strength=2);
+	}
+/* Tool Colors */
+.navtextOn {
+	color: #1f1f1f;
+}
+.searchTextOn {
+	color: #4e4e4e;
+}
+.navtextOff {
+	color: #999;
+}
+
+/* GRAPHICS-BASED TABS */
+/* Use graphics with exactly the same dimensions as replacements! */
+/* Technical settings are in the main body of the stylesheet. */
+
+/* Tabs Graphics -- tab menu at left of slider */
+div#hmtabsCtab {
+	background: url("tab_left.png") left -62px no-repeat;
+	}
+div#hmTabsCtabRight {
+	background: url("tab_right.png") right -62px no-repeat;
+	}
+ /* Tabs borders and shadow (no border for graphics) */
+ul.tabs a, ul.tabs a.current, div#hmtabsCtab, div#hmTabsCtabRight{
+	border-color: transparent;
+	-moz-box-shadow: 3px -1px 4px -2px #aaa;
+	-webkit-box-shadow: 3px -1px 4px -2px #aaa;
+	box-shadow: 3px -1px 4px -2px  #aaa;
+	}
+
+/* Tabs Graphics - main tabs in topic pane */
+/* Non-current tabs */
+ul.tabs a {
+	background: url("tab_left.png") left top no-repeat;
+	color: #777; /* text color */
+	}
+ul.tabs a span {
+	background: url("tab_right.png") right top no-repeat;
+	color: #9e9e9e;	
+	}
+ul.tabs a.hover {
+	background: url("tab_left.png") left -62px no-repeat;
+	color:#000;
+	}
+ul.tabs a span.hover {
+	background: url("tab_right.png") right -62px no-repeat;
+	color: #9e9e9e;
+	}
+/* Current tab */
+ul.tabs a.current {
+	background: url("tab_left.png") left -62px no-repeat;
+	}
+ul.tabs a.current span {
+	background: url("tab_right.png") right -62px no-repeat;
+	color: #666;
+	}
+ul.tabs a.current:hover {
+	color:#000;
+	background: url("tab_left.png") left -62px no-repeat;
+	}
+ul.tabs a.current span:hover {
+	background: url("tab_right.png") right -62px no-repeat;
+	}
+	
+/* Tab menu top border */ 
+div#tabsMenu {
+	border-top-color: #ccc;
+}
+/* Tab player tools mouseover highlight */
+img.tabPlayerH {
+	border: 1px solid #999;
+	background-color: #fff;
+	cursor: pointer;
+	}
+/* Drop-down tabs list menu and header menu shadows */
+div#tabsMenu {
+	-moz-box-shadow: 2px 2px 2px #999;
+	-webkit-box-shadow: 2px 2px 2px #999;
+	box-shadow: 2px 2px 2px #999;
+	filter:progid:DXImageTransform.Microsoft.Shadow(color=#aaaaaa,direction=120,strength=3);
+	background-color: #ffffff;
+	-webkit-border-radius: 0px 0px 4px 4px;
+	-moz-border-radius: 0px 0px 4px 4px;
+	border-radius: 0px 0px 4px 4px;
+	}
+/* Drop-down tabs list menu entries */
+ul#tabsList li a {
+	text-decoration: none;
+	color: #666;
+	}
+ul#tabsList li a:visited {
+	color: #666;
+	}
+ul#tabsList li a:hover {
+	color: #666;
+	text-decoration: underline;
+	}
+/* Banner header menu title bar */
+ul.topnav {
+	border-color: #818181;
+	border-style: solid;
+	background-color: #ffffff;
+	border-radius: 5px 0 0 0;
+	-webkit-border-radius: 5px 0 0 0;
+	-moz-border-radius: 5px 0 0 0;
+}
+/* Banner header dropdown menu colors */
+/* Menu titles */
+ul.topnav li a, ul.topnav li a:visited, ul.topnav li a:hover {
+	color: #666;
+	text-decoration: none;
+	font-weight: bold;
+}
+ul.topnav li a:hover, ul.topnav li ul.subnav li a:hover {
+	text-decoration: underline;
+	}
+/* Menu items */
+ul.subnav li a {
+	color: #666;
+}
+/* Menu background and border */
+ul.topnav li ul.subnav {
+	background: #fff;
+	border-color: #3f3f3f;
+	border-width: 0px 1px 1px 1px;
+}
+/* Menu shadows and curved corners */
+ul.subnav {
+	-moz-box-shadow: 2px 2px 2px #999;
+	-webkit-box-shadow: 2px 2px 2px #999;
+	box-shadow: 2px 2px 2px #999;
+	-webkit-border-radius: 0px 0px 4px 4px;
+	-moz-border-radius: 0px 0px 4px 4px;
+	border-radius: 0px 0px 4px 4px;
+}	
+
+/* DO NOT EDIT BELOW HERE UNLESS YOU'RE PLANNING TO COMPLETELY REDESIGN THE SKIN ON YOUR OWN */
+
+/* Main page framework */
+html, body {
+	height: 100%;
+	position: absolute; top: 0; left: 0; right: 0; bottom: 0; 
+	margin: 0; padding: 0;
+	}
+body {
+	overflow: hidden;
+	}
+table, td, tr, img, p {
+	padding: 0;
+	margin: 0; 
+	}
+div#unclicker {
+	display: none;
+	position: absolute;
+	top: 0; bottom: 0; left: 0; right: 0;
+	background-image: url("spacer.gif");
+	z-index: 200;
+	}
+
+/* Prevent selection of tools etc */
+div#hmnavbox *, div#hmtabscontrols * {
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	}
+
+/* Toolbar and tools */
+div#hmtoolbar {
+	display: none;
+	position: relative;
+	height: 31px;
+	padding: 1px 5px 7px 5px;
+    }
+div#hmnavbox, div#hmnavborder, div#hmtopicbox, .compactToolbar, .bannerToolbar {
+	border-style: solid; 
+	border-width: 1px; 
+	margin: 4px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	}
+.bannerToolbar {
+	border-width: 0 0 1px 0; 
+	-webkit-border-radius: 0px;
+	-moz-border-radius: 0px;
+	border-radius: 0px;
+	margin: 0px;
+}
+div#hmbanner {
+	display: block;
+	margin: 0;
+	padding: 0;
+	position: relative;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	border-width: 0 0 1px 0;
+	border-style: solid;
+}
+table#tbtable {
+	width: 100%;
+	padding: 0;
+	margin: 0;
+	border-collapse: collapse;
+	display: none;
+}
+.tableToolbar {
+	border-width: 1px 0 1px 0;
+	border-style: solid;
+	border-collapse: collapse;
+	position: absolute;
+	left: 0; top: 0;
+	margin: 0;
+}
+td.tbleft {text-align: left;}
+td.tbright {text-align: right;}
+td.tbcenter {text-align: center; margin: 0 auto;}
+td.tbsearch {text-align: left; width: 185px; vertical-align: top; padding: 0;}
+div.naviconboxR, div.naviconboxL {
+	padding: 2px 1px 3px 1px;
+	display: inline-block;
+	margin-right: 2px;
+	text-align: center;
+	white-space: nowrap;
+	text-transform: capitalize;
+	line-height: 1em;
+	}
+div.naviconboxR, div.naviconboxL, div#hmsearch {
+	font-family: Tahoma, Verdana, Arial, sans-serif, Helvetica;
+	font-size: 9px;
+	font-weight: normal;
+}
+img.navicon, img.naviconH, img#newtab_off, img#undock_off, img#search_off, img#qsearch_off, img#index_off, img#togtog_off, img#perma_off, img#feedback_off, img#printer_off {
+	margin: 0;
+	padding: 2px 4px 2px 4px;
+	border-width: 1px;
+	border-style: solid;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	}
+img#newtab_off, img#undock_off, img#search_off, img#qsearch_off, img#index_off, img#togtog_off, img#perma_off, img#feedback_off, img#printer_off {
+	display: none;
+	cursor: default;
+	}
+	
+/* Main container page components */
+div#hmcontainer {
+	position: absolute;
+	top:0; bottom: 0; left: 0; right: 0;
+	}
+div#hmnavbox {
+	position: absolute; 
+	left: 0; bottom: 0;
+	width:275px;
+	padding: 2px 2px 2px 5px;
+	}
+div#hmnavborder {
+	position: absolute;
+	top: 0px; right: 0px; bottom: 0px; left: 0px;
+	}
+iframe#hmnavigation, iframe#hmcontent {
+	position: absolute;
+	left: 0; top: 0;
+	width: 100%;
+	height: 100%;
+	}
+div#hmnavhandle {
+	position: absolute;
+	width: 15px;
+	height: 62px;
+	right: 5px;
+	top: 7px;
+	border-right: 0;
+	z-index: 200;
+	}
+div#hmdragdivider{
+	position: absolute;
+	width: 8px;
+	top: 26px;
+	bottom: 0px;
+	right: -9px;
+	cursor: col-resize;
+	z-index: 100;
+	}
+div#hmtopicpane {
+	position: absolute;
+	left: 292px; right: 0px;
+	bottom: 0px;
+	min-width: 300px;
+	}
+	
+/* Tabs components */
+ul#topictabs {
+	min-width: 400px;
+}
+div#hmtabscontrols {
+	position: absolute;
+	top: -28px; left: 0; right: 0;
+	height: 33px;
+	background-color: transparent;
+	display: none;
+	}
+div#hmtabswindow {
+	position: absolute;
+	top: 0; right: 10px; left: 54px;
+	overflow: hidden;
+	height: 33px; 
+	}
+div#hmtabslider {
+	position: absolute;
+	top: 0; bottom: 0;
+	border-bottom: 0;
+	width: 1200px;
+	}
+li.hmtabs { 
+	position: relative;
+	}
+img.closetab {
+	position: absolute;
+	top: 11px; right: 7px;
+	border: 0;
+	z-index: 203;
+	}
+/* Content containers */
+div#hmtopicbox {
+	position: absolute;
+	top: 0; right: 0; bottom: 0; left: 0;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	}
+div#hmcontentbox, div#hmindexbox, div#hmsearchbox, div.hmnewtabbox {
+	position: absolute;
+	top: 2px; right: 2px; bottom: 1px; left: 5px;
+	}
+.interface {
+	font-family: Verdana, Arial, sans-serif, Helvetica;
+	font-size: 8pt;
+	font-weight: bold;
+	}
+
+div#hmsearch {
+	padding: 0;
+	font-weight: bold;
+	min-width: 200px;
+	}
+input#searchinput {
+	float: left;
+	width: 152px;
+	padding: 0;
+	margin: 0;
+	}
+
+/* Graphics tabs */	
+div#hmtabsCtab {
+	position: absolute;
+	top: 12px; left: 10px;
+	height: 21px;
+	width: 41px;
+	z-index: 201;
+	overflow: hidden;
+	border-bottom: 0;
+	font-family: Tahoma, Verdana, Arial, sans-serif, Helvetica;
+	font-size: 11px;
+	font-weight: normal;
+	}
+div#hmTabsCtabRight {
+	position: absolute;
+	top: 0; right: 0; left: 0; bottom: 0;
+	z-index: 202;
+	margin-left: 4px;
+	}
+	
+/* Drop-down tabs list menu components */
+ul#tabsList {
+	list-style:none;
+	margin:0 !important;
+	padding:0;
+	font-family: Verdana, Arial, sans-serif, Helvetica;
+	font-size: 11px;
+	}
+ul#tabsList li {
+	text-indent:0;
+	padding:0;
+	margin:0 !important;
+	list-style-image:none !important;
+	white-space: nowrap;
+	}
+div#tabsMenuBox {
+	position: absolute;
+	top: 32px; left: 10px;
+	z-index: 202;
+	}
+/* Same settings for tabs menu and banner menu */
+div#tabsMenu, ul.subnav {
+	clear: both;
+	display: none;
+	border-width: 1px;
+	border-style: solid;
+	padding: 3px;
+	z-index: 202;
+	}
+/* Tab player icons */
+img.tabPlayer {
+	position: absolute;
+	display: block;
+	padding: 1px;
+	border: 1px solid transparent;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	top: 5px;
+	z-index: 200;
+	}
+img.tabPlayerH {
+	position: absolute;
+	display: block;
+	padding: 1px;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	top: 5px;
+	z-index: 200;
+	}
+img#tabEndLeft {
+	display: none;
+	left:9px;
+	top: 3px;
+	}
+img#tabLeft {
+	left: -1px;
+	}
+img#tabEndRight {
+	display: none;
+	right:11px;
+	top: 3px;
+	}
+img#tabRight {
+	right: 2px;
+	}
+img#toggleTabMenu {
+	left: 9px;
+	top: 4px;
+	display: block;
+	}
+
+/* Topic pane tabs */
+/* Basic Tabs Wrapper */
+ul.tabs {
+	list-style:none;
+	margin:0 !important;
+	padding:0;
+	height:30px;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	font-family: Verdana, Tahoma, Sans-Serif, Helvetica;
+	}
+
+/* Single tab */
+ul.tabs li {
+	float:left;
+	text-indent:0;
+	padding:0;
+	margin:0 !important;
+	list-style-image:none !important;
+}
+
+/* Suppress HTML selection outlines */ 
+ul.tabs a:active {
+	outline:none;
+	}
+
+/* Non-current tabs */
+ul.tabs a {
+	font-size:13px;
+	display:block;
+	background-color: transparent;
+	line-height:20px;
+	width: auto;
+	text-align:center;
+	text-decoration:none;
+	padding:0px 14px 0px 7px;
+	margin:0px 4px 0px 0px;
+	position:relative;
+	top:6px;
+	}
+ul.tabs a span {
+	display: block;
+	padding: 4px 15px 13px 5px;
+	margin: 0 -15px 0 0px;
+	}
+	
+
+/* Current Tab */ 
+ul.tabs a.current {
+	font-size:13px;
+	display:block;
+	line-height:20px;
+	background-color: transparent;
+	width: auto;
+	text-align:center;
+	text-decoration:none;
+	padding:0px 14px 0px 7px;
+	margin:0px 4px 0px 0px;
+	position:relative;
+	top:6px;
+	z-index: 200;
+	}
+ul.tabs a.current span {
+	display: block;
+	background-color: transparent;
+	padding: 4px 15px 13px 5px;
+	margin: 0 -15px 0 0px;
+	}
+
+ul.tabs a.current, ul.tabs a.current:hover, ul.tabs li.current a {
+	cursor:default !important;
+	}
+ul.tabs a, div#hmnavhandle a {
+	outline: none;
+	}
+/* Initially all panes are hidden */
+.panes .pane {
+	display:none;
+	}
+
+/* Drop-down menus in banner header */
+ul.topnav {
+	position: absolute;
+	bottom: 0px; right: 0;
+	border-width: 1px 0px 0px 1px;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	width: auto;
+	font-size: 11px;
+	font-family: Verdana, Arial, sans-serif, Helvetica;
+	z-index: 1000;
+	white-space: nowrap;
+	}
+ul.topnav li {
+	float: left;
+	margin: 0;
+	padding: 0 0 0 0;
+	font-weight: bold;
+	position: relative; 
+	}
+ul.topnav li a{
+	padding: 2px 5px;
+	display: block;
+	float: left;
+	}
+ul.topnav li span { 
+	width: 17px;
+	height: 35px;
+	float: left;
+	}
+ul.topnav li span.subhover {
+	background-position: center bottom; 
+	cursor: pointer;
+	} 
+ul.topnav li ul.subnav {
+	list-style: none;
+	position: absolute;
+	left: 0; top: 17px;
+	float: left;
+	margin: 0px;
+	}
+ul.topnav li ul.subnav li{
+	margin: 0; padding: 0;
+	clear: both;
+	width: auto;
+	}
+html ul.topnav li ul.subnav li a {
+	float: left;
+	width: auto;
+	font-weight: normal;
+	}
+
+/* Get rid of general selection outlines */
+a, a:active, * :focus {
+  outline:0;
+  -moz-outline-style:none;
+	}
+
+/* Permalink box styles */
+
+div.popups {
+	visibility: hidden;
+	width: auto;
+	margin: 0;
+	padding: 0 7px 7px 0;
+	overflow: auto;
+	position: absolute;
+	z-index: 900;
+	border-width: 2px;    
+	border-style: solid;
+    border-bottom-color: #333333;
+    border-right-color: #555555;
+    border-left-color: #EEEEEE;
+    border-top-color: #EEEEEE;
+	-moz-border-radius: 5px; 
+	-webkit-border-radius: 5px; 
+	border-radius: 5px;
+	-moz-box-shadow: 2px 2px 3px #969696; 
+	-webkit-box-shadow: 2px 2px 3px #969696;
+	box-shadow: 2px 2px 3px #969696;
+	background-color: #fff;  zoom: 1;  
+	filter: progid:DXImageTransform.Microsoft.Shadow(color='#969696', Direction=135, Strength=3);
+}
+div#permalink {
+	position: absolute;
+	top: 70px;
+	right: 30px;
+	z-index: 1000;
+	visibility: hidden;
+	width: auto;
+	padding-top: 3px;
+	background-color:#fdfcdc;
+	overflow: hidden;
+}
+div#permalink tr#offlinemessage{
+   display: none;
+   font-family: Arial, sans-serif, Helvetica;
+   font-size: 12px;
+}
+div#permalink textarea {
+	position: relative;
+	width: 250px;
+	top: 3px; bottom: 3px; left: 3px; right: 3px;
+	text-align: center;
+	font-family: Verdana, Tahoma, Arial, sans-serif;
+	font-size: 11px; 
+	font-weight: bold;
+	}
+
+/* For image lightboxes opened in the main page */
+#hmlightbox 
+{
+  border: none;
+  padding: 8px;
+  background: #FFF;
+  font-size: 110%;
+  font-weight: bold;
+  color: #777;
+  box-shadow: 5px 5px 5px #888;
+}

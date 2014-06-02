@@ -1,0 +1,428 @@
+/* Text Styles */
+hr { color: #000000}
+body, table, tr, th /* Normal */
+{
+ font-size: 10pt;
+ font-family: Verdana;
+ font-style: normal;
+ font-weight: normal;
+ color: #000000;
+ text-decoration: none;
+}
+span.f_CHCode /* CH Code */
+{
+ font-family: Courier;
+}
+span.f_CHEquationVariable /* CH Equation Variable */
+{
+ font-size: 11pt;
+ font-family: 'Times New Roman';
+ font-style: italic;
+}
+span.f_CHFileName /* CH File Name */
+{
+ font-style: italic;
+}
+span.f_CHInterfaceElement /* CH Interface Element */
+{
+ font-family: 'Segoe UI';
+ font-weight: bold;
+}
+span.f_CHNote /* CH Note */
+{
+ font-weight: bold;
+}
+span.f_CHVariableSubscript /* CH Variable Subscript */
+{
+ font-size: 8pt;
+ font-family: 'Times New Roman';
+ vertical-align: sub;
+}
+span.f_Character /* Character */
+{
+}
+span.f_CodeExample /* Code Example */
+{
+ font-size: 8pt;
+ font-family: 'Courier New';
+}
+span.f_Comment /* Comment */
+{
+}
+span.f_Construction /* Construction */
+{
+ font-size: 16pt;
+ font-weight: bold;
+ color: #feeada;
+}
+span.f_Definition /* Definition */
+{
+}
+span.f_Emphasis /* Emphasis */
+{
+ font-style: italic;
+}
+span.f_Equation /* Equation */
+{
+}
+span.f_EquationExcel /* Equation Excel */
+{
+ font-style: italic;
+}
+span.f_Heading1 /* Heading1 */
+{
+ font-size: 22pt;
+ font-family: 'Malgun Gothic';
+ font-weight: bold;
+}
+span.f_Heading2_atoc_ /* Heading2_atoc_ */
+{
+ font-size: 16pt;
+ font-family: Arial;
+ font-weight: bold;
+}
+span.f_Heading3_atocs_ /* Heading3_atocs_ */
+{
+ font-size: 14pt;
+ font-family: Arial;
+ font-weight: bold;
+}
+span.f_Heading4 /* Heading4 */
+{
+ font-size: 12pt;
+ font-family: Arial;
+ font-weight: bold;
+}
+span.f_ImageCaption /* Image Caption */
+{
+}
+span.f_List /* List */
+{
+}
+span.f_ListLast /* List Last */
+{
+}
+span.f_ListNoNumber /* List No Number */
+{
+}
+span.f_Note /* Note */
+{
+}
+span.f_Notes /* Notes */
+{
+}
+span.f_ProcedureStep /* Procedure Step */
+{
+}
+span.f_ProcedureStepLast /* Procedure Step Last */
+{
+}
+span.f_ProcedureStepNoNumber /* Procedure Step No Number */
+{
+}
+span.f_Superscript /* Superscript */
+{
+ font-size: 8pt;
+ vertical-align: super;
+}
+span.f_Table /* Table */
+{
+}
+span.f_TableEquationNumber /* Table Equation Number */
+{
+}
+span.f_TableHeadColumn /* Table Head Column */
+{
+ font-weight: bold;
+}
+span.f_TableHeadRow /* Table Head Row */
+{
+ font-weight: bold;
+}
+span.f_TableText /* Table Text */
+{
+}
+span.f_TableTextCenter /* Table Text Center */
+{
+}
+span.f_TableTextLeft /* Table Text Left */
+{
+}
+span.f_TableTextRight /* Table Text Right */
+{
+}
+span.f_Term /* Term */
+{
+ font-weight: bold;
+}
+span.f_Text /* Text */
+{
+}
+span.f_TextCenter /* Text Center */
+{
+}
+span.f_TextCode /* Text Code */
+{
+ font-family: Courier;
+}
+span.f_Title /* Title */
+{
+ font-family: Arial;
+ font-weight: bold;
+}
+span.f_TitleFigure /* Title Figure */
+{
+ font-weight: bold;
+}
+span.f_TitleProcedure /* Title Procedure */
+{
+ font-weight: bold;
+}
+span.f_TitleTable /* Title Table */
+{
+ font-family: Arial;
+ font-weight: bold;
+}
+span.f_TopicTOCHeading /* Topic TOC Heading */
+{
+ font-weight: bold;
+}
+span.f_TopicTOClist /* Topic TOC list */
+{
+}
+span.f_VariableDescription /* Variable Description */
+{
+}
+span.f_VariableName /* Variable Name */
+{
+ font-weight: bold;
+}
+/* Paragraph styles */
+p /* Normal */
+{
+ text-align: left;
+ text-indent: 0px;
+ padding: 0px 0px 0px 0px;
+ margin: 0px 0px 0px 0px;
+}
+.p_CodeExample /* Code Example */
+{
+ white-space: nowrap;
+}
+.p_Comment /* Comment */
+{
+}
+.p_Construction /* Construction */
+{
+ text-align: center;
+}
+.p_Definition /* Definition */
+{
+ margin: 0px 0px 6px 24px;
+}
+.p_Equation /* Equation */
+{
+ text-align: center;
+ margin: 0px 0px 6px 0px;
+}
+.p_EquationExcel /* Equation Excel */
+{
+ text-indent: -24px;
+ margin: 0px 0px 6px 72px;
+}
+.p_Heading1 /* Heading1 */
+{
+ font-size: 100%;
+ font-weight: normal;
+ text-align: left;
+ text-indent: 0px;
+ padding: 0px 0px 0px 0px;
+ margin: 0px 0px 0px 0px;
+}
+.p_Heading2_atoc_ /* Heading2_atoc_ */
+{
+ font-size: 100%;
+ font-weight: normal;
+ text-align: left;
+ text-indent: -19px;
+ border-color: #000000;
+ border-style: solid;
+ border-width: 1px;
+ background: #ebebeb;
+ padding: 2px 2px 2px 2px;
+ margin: 1px -2px 1px 17px;
+}
+.p_Heading3_atocs_ /* Heading3_atocs_ */
+{
+ font-size: 100%;
+ font-weight: normal;
+ text-align: left;
+ text-indent: 0px;
+ border-color: #000000;
+ border-style: solid;
+ border-width: 2px;
+ border-top: none;
+ border-right: none;
+ border-left: none;
+ padding: 2px 2px 2px 2px;
+ margin: 1px -2px 10px -2px;
+}
+.p_Heading4 /* Heading4 */
+{
+ font-size: 100%;
+ font-weight: normal;
+ text-align: left;
+ text-indent: 0px;
+ padding: 0px 0px 0px 0px;
+ margin: 6px 0px 6px 0px;
+}
+.p_ImageCaption /* Image Caption */
+{
+ text-align: center;
+ margin: 2px 0px 6px 0px;
+}
+.p_List /* List */
+{
+ text-indent: -10px;
+ margin: 0px 0px 3px 20px;
+}
+.p_ListLast /* List Last */
+{
+ text-indent: -10px;
+ margin: 0px 0px 6px 20px;
+}
+.p_ListNoNumber /* List No Number */
+{
+ margin: 0px 0px 3px 24px;
+}
+.p_Note /* Note */
+{
+ border-color: #000000;
+ border-style: solid;
+ border-width: 1px;
+ background: #ffffc4;
+ padding: 5px 5px 5px 5px;
+ margin: 1px 43px 7px 43px;
+}
+.p_Notes /* Notes */
+{
+}
+.p_ProcedureStep /* Procedure Step */
+{
+ text-indent: -24px;
+ margin: 0px 0px 3px 48px;
+}
+.p_ProcedureStepLast /* Procedure Step Last */
+{
+ text-indent: -24px;
+ margin: 0px 0px 6px 48px;
+}
+.p_ProcedureStepNoNumber /* Procedure Step No Number */
+{
+ margin: 0px 0px 3px 48px;
+}
+.p_Table /* Table */
+{
+ text-align: center;
+ margin: 0px 0px 12px 0px;
+}
+.p_TableEquationNumber /* Table Equation Number */
+{
+ text-align: right;
+}
+.p_TableHeadColumn /* Table Head Column */
+{
+ text-align: center;
+}
+.p_TableHeadRow /* Table Head Row */
+{
+}
+.p_TableText /* Table Text */
+{
+}
+.p_TableTextCenter /* Table Text Center */
+{
+ text-align: center;
+}
+.p_TableTextLeft /* Table Text Left */
+{
+}
+.p_TableTextRight /* Table Text Right */
+{
+ text-align: right;
+}
+.p_Term /* Term */
+{
+ margin: 6px 0px 0px 0px;
+}
+.p_Text /* Text */
+{
+ margin: 0px 0px 6px 0px;
+}
+.p_TextCenter /* Text Center */
+{
+ text-align: center;
+ margin: 0px 0px 6px 0px;
+}
+.p_TextCode /* Text Code */
+{
+ margin: 0px 0px 6px 24px;
+}
+.p_Title /* Title */
+{
+ margin: 0px 0px 6px 0px;
+}
+.p_TitleFigure /* Title Figure */
+{
+ text-align: center;
+ margin: 12px 0px 12px 0px;
+}
+.p_TitleProcedure /* Title Procedure */
+{
+ margin: 12px 0px 6px 0px;
+}
+.p_TitleTable /* Title Table */
+{
+ margin: 6px 0px 1px 0px;
+}
+.p_TopicTOCHeading /* Topic TOC Heading */
+{
+ margin: 6px 0px 6px 5px;
+}
+.p_TopicTOClist /* Topic TOC list */
+{
+ margin: 3px 43px 3px 19px;
+}
+.p_VariableDescription /* Variable Description */
+{
+ margin: 0px 0px 6px 24px;
+}
+.p_VariableName /* Variable Name */
+{
+ margin: 0px 0px 6px 12px;
+}
+
+
+#hmlightbox /* image lightbox */
+{
+  border: none;
+  padding: 8px;
+  background: #FFF;
+  font-size: 110%;
+  font-weight: bold;
+  color: #777;
+  box-shadow: 5px 5px 5px #888;
+}
+
+a.dropdown-toggle /* dropdown toggle caption */
+{
+  cursor: pointer;
+}
+a.inline-toggle /* inline toggle caption */
+{
+  cursor: pointer;
+}
+img.dropdown-toggle-icon /* toggle icon */
+{
+  cursor: pointer;
+}

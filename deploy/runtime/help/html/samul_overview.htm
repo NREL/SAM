@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>Why use SamUL?</title>
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="" />
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+   <meta http-equiv="content-language" content="en-us" />
+   <meta name="description" content="The SAM User Language (SamUL) is a built-in scripting language that allows a user to automate tasks and perform more complex analyses directly from within SAM. This guide..." />
+   <meta http-equiv="Content-Style-Type" content="text/css" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+   <link id="tabscheme" type="text/css" href="hm_topic.css" rel="stylesheet" />   
+<style type="text/css">
+/* No header topics */
+
+/* Breadcrumb trail */
+p#breadcrumbs {
+font-family: Verdana, Tahoma, Helvetica, Sans-Serif;   padding: 2px 0 1px 2px;
+   margin: 0;
+   font-size: 8pt; 
+   color: #999;
+   }   
+p#breadcrumbs a { color: #999; text-decoration: none;}
+p#breadcrumbs a:visited { color: #999; }
+p#breadcrumbs a:hover { color: #333; border-bottom: 1px dotted #333; }
+
+/* Search hightlight color */
+span.highlight {background-color: #ffff40;}
+</style>
+<script type="text/javascript">
+var hmHeaderTopic = true;
+
+</script> 
+<!--[if IE 9]>
+<link id="iesvgcss" rel="stylesheet" type="text/css" href="hm_webhelp_svg.css" />
+<![endif]-->	
+<script src="jquery.js"></script>
+<script type="text/javascript" src="jquery.tools.min.js"></script>
+<script type="text/javascript" src="jquery.scrollTo-min.js"></script>
+<script type="text/javascript"> 
+// General topic variables
+var tVars = {
+   hmHelpPage: "index.html",
+   nextP: "samul_data_variables.htm",
+   prevP: "samul_write_a_simple_script.htm",
+   currP: "samul_overview.htm",
+   defP: "introduction.htm",
+   titleP: "Why use SamUL?",
+   mailsubject: "Feedback on: SAM Help - Why use SamUL?",
+   simplesubject: "Documentation%20Feedback",
+   mailid: "SamUL_Overview",
+   mailpath: "SamUL Scripting Language &gt; Why use SamUL? /",
+   mailbody: "Dear SAM Support,",
+   mailrecipient: "SAM Support <sam.support@nrel.gov>",
+   simplerecipient: "sam.support@nrel.gov",
+   fbtype: false,
+   header: true,
+   background: "bg.png",
+   tablesReady: false,
+   togglesReady: false,
+   webRedirect: true
+   }
+// Popup configuration
+ var hmpBShadow = true;
+ var hmPopSmallDim = 500;
+ var hmPopKillVideo = false;
+ // AutoTOC variables
+ var hmatocvars = {
+   atoc_show: true,
+   atoc_title: "Contents",
+   atoc_tip: "Jump to:&nbsp;",
+   atoc_minHeaders: 2,
+   atoc_btntip_off: "No contents entries on this page",
+   atoc_btntip_on: "Display/hide topic directory",
+   atoc_toptip: "Jump to top of page",
+   atoc_top: "Scroll to Top of Page",
+   atoc_bg: "#f6f6f6",
+   atoc_border: "silver",
+   atoc_linkcolor: "#444",
+   atoc_linklimit: 45,
+   atoc_hovercolor: "#000",
+   atoc_hoverbgcolor: "#e0e0e0"
+}
+// Sortable tables
+var sortVars = {
+   europeandate: false,
+   germanNumbers: false,
+   imagePath: "",
+   image_up: "arrow-up.gif",
+   image_down: "arrow-down.gif",
+   image_empty: "arrow-empty.gif",
+   image_none: "arrow-none.gif",
+   sort_tip: "Click to sort on this column",
+   umlauts: "false"
+   }
+
+</script>
+
+<script type="text/javascript"> 
+$(document).ready(function() {
+var doc = document;  
+try {
+if (parent.hmWebHelp.navWidth != null) doc = parent.document;
+doc.title = $("<div/>").html("SAM Help - Why use SamUL?").text();
+window.onunload = function() {doc.title = $("<div/>").html("SAM Help").text();}
+} catch(err) {}
+});
+</script>
+<script type="text/javascript" src="helpman_settings.js"></script>
+<script type="text/javascript" src="helpman_topicinit.js"></script>
+<script type="text/javascript" src="hmtopic.js"></script>
+
+   <script type="text/javascript">
+     HMSyncTOC("index.html", "samul_overview.htm");
+   </script>
+   <script type="text/javascript" src="highlight.js"></script>
+   <script type="text/javascript">
+     $(document).ready(function(){highlight();});
+   </script>
+</head>
+<body>
+<!--ZOOMSTOP-->
+<ul id="topictabs" class="tabs">
+<li id="indextab" class="hmtabs"><a href="#" id="indextablink" class="current"><span>Why use SamUL?</span></a></li>
+</ul>
+<div id="hmbox">
+<div id="hmheader">
+<div id="hmheadercontents">
+<p id="breadcrumbs">
+<b>Navigation:</b>
+<a href="samul.htm">SamUL Scripting Language</a>:</p> 
+<h1 class="p_Heading1"><span class="f_Heading1">Why use SamUL?</span></h1>
+
+</div>
+<div id="atocIcon" class="navdivs">
+<img class="navicon" id="hmAtocLink" src="contents_off.png" alt="No contents entries on this page" title="No contents entries on this page" />
+<br /><span>Contents</span>
+</div>
+</div>
+<div id="autoTocWrapper" class="topicmenu"></div>
+<div id="idcontent">
+<div id="unclicker"></div>
+
+<!--ZOOMRESTART-->
+<p class="p_Text"><span class="f_Text">The SAM User Language (SamUL) is a built-in scripting language that allows a user to automate tasks and perform more complex analyses directly from within SAM. This guide assumes some rudimentary facility with basic programming concepts and familiarity with the SAM interface, capabilities, and general work flow.</span></p>
+<h3 class="p_Heading3_atocs_" style="border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Why use SamUL?</span></h3>
+<p class="p_Text"><span class="f_Text">Suppose you are an energy analyst, and want to calculate the levelized cost of energy (LCOE) for several hundred locations in the United States for a specific PV system of a given size, installation costs, and financial assumptions. You are familiar with the SAM, and have access to weather data for all the requested locations.</span></p>
+<p class="p_Text"><span class="f_Text">The first step would be to set up a case for the PV system with appropriate input values. Next, you could run a simulation for each weather file individually, and record the results in a spreadsheet. You could even set up many locations in a <a href="parametric.htm" class="topiclink">parametric</a> simulation. Either method would be tedious and error prone for the several hundred locations. Furthermore, if you decided to change even just one specification of the system, you would have to start all over. Automating the process would minimize errors and allow the flexibility of modifying inputs.</span></p>
+<p class="p_Text"><span class="f_Text">SamUL, SAM's built in scripting language allows you to perform this task in just a few lines of code. Once you've written the script, you can easily make changes to the assumptions in the base case, or modify the script. Because the scripting language is built in to SAM you do not need a software development environment or compiler to use it.</span></p>
+<p class="p_Text"><span class="f_Text">To get started using SamUL, see <a href="samul_write_a_simple_script.htm" class="topiclink">Write a Simple SamUL Script</a>. For a more detailed reference information, see the following topics:</span></p>
+<p style="text-align: left; padding: 0px 0px 0px 13px; margin: 0px 0px 3px 10px;"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;display:inline-block;width:13px;margin-left:-13px">&#9679;</span><span class="f_List"><a href="samul_data_variables.htm" class="topiclink">Data Variables</a></span></p><p style="text-align: left; padding: 0px 0px 0px 13px; margin: 0px 0px 3px 10px;"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;display:inline-block;width:13px;margin-left:-13px">&#9679;</span><span class="f_List"><a href="samul_flow_control.htm" class="topiclink">Flow Control</a></span></p><p style="text-align: left; padding: 0px 0px 0px 13px; margin: 0px 0px 3px 10px;"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;display:inline-block;width:13px;margin-left:-13px">&#9679;</span><span class="f_List"><a href="samul_arrays_of_data.htm" class="topiclink">Arrays of Data</a></span></p><p style="text-align: left; padding: 0px 0px 0px 13px; margin: 0px 0px 3px 10px;"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;display:inline-block;width:13px;margin-left:-13px">&#9679;</span><span class="f_List"><a href="samul_function_calls.htm" class="topiclink">Function Calls</a></span></p><p style="text-align: left; padding: 0px 0px 0px 13px; margin: 0px 0px 3px 10px;"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;display:inline-block;width:13px;margin-left:-13px">&#9679;</span><span class="f_List"><a href="samul_input_output.htm" class="topiclink">Input, Output, and System Access</a></span></p><p style="text-align: left; padding: 0px 0px 0px 13px; margin: 0px 0px 3px 10px;"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;display:inline-block;width:13px;margin-left:-13px">&#9679;</span><span class="f_List"><a href="samul_interfacing_with_sam.htm" class="topiclink">Interfacing with SAM Analyses</a></span></p><p style="text-align: left; padding: 0px 0px 0px 13px; margin: 0px 0px 6px 10px;"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;display:inline-block;width:13px;margin-left:-13px">&#9679;</span><span class="f_ListLast"><a href="samul_library_reference.htm" class="topiclink">Library Reference</a></span></p><h3 class="p_Heading3_atocs_" style="border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Why SamUL instead of VBA?</span></h3>
+<p class="p_Text"><span class="f_Text">Since SamUL is so similar in functionality and syntax to Visual Basic, you might wonder why we didn't simply put a VBA engine behind SAM. Visual Basic for Applications (VBA) is a closed source Microsoft product that is very tightly integrated into the Office suite of applications, and while there are some freely available interpreters for subsets of VB-like languages, we decided that engineering a simple scripting language would be straightforward enough. In the future, we might consider integrating other well known languages, such as Lua.</span></p>
+<p class="p_Text"><span class="f_Text">In general, SamUL is close enough to VBA in syntax and structure to make it easily understandable by people familiar with VBA. By developing our own script engine, we have been able to integrate it very tightly into the SAM environment for maximum ease of use.</span></p>
+<p class="p_Text"><span class="f_Text">Some notable points distinctions include:</span></p>
+<p style="text-align: left; padding: 0px 0px 0px 13px; margin: 0px 0px 3px 10px;"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;display:inline-block;width:13px;margin-left:-13px">&#9679;</span><span class="f_List">'for' loop syntax follows the C / Perl convention</span></p><p style="text-align: left; padding: 0px 0px 0px 13px; margin: 0px 0px 3px 10px;"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;display:inline-block;width:13px;margin-left:-13px">&#9679;</span><span class="f_List">Array arithmetic is automatically performed element by element</span></p><p style="text-align: left; padding: 0px 0px 0px 13px; margin: 0px 0px 3px 10px;"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;display:inline-block;width:13px;margin-left:-13px">&#9679;</span><span class="f_List">'elseif' statement formatting is similar to PHP</span></p><p style="text-align: left; padding: 0px 0px 0px 13px; margin: 0px 0px 6px 10px;"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;display:inline-block;width:13px;margin-left:-13px">&#9679;</span><span class="f_ListLast">No distinction between functions and procedures</span></p><p class="p_Text"><span class="f_Text">&nbsp;</span></p>
+
+<!--ZOOMSTOP--> 
+
+
+</div> <!-- idcontent -->
+</div><!-- hmbox --> 
+</body>
+</html>

@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>Libraries</title>
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="" />
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+   <meta http-equiv="content-language" content="en-us" />
+   <meta name="description" content="A library is a collection of stored values for groups of input variables that characterize a system component, heat transfer fluid, or fuel, or describe a set of adjustment..." />
+   <meta http-equiv="Content-Style-Type" content="text/css" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+   <link id="tabscheme" type="text/css" href="hm_topic.css" rel="stylesheet" />   
+<style type="text/css">
+/* No header topics */
+
+/* Breadcrumb trail */
+p#breadcrumbs {
+font-family: Verdana, Tahoma, Helvetica, Sans-Serif;   padding: 2px 0 1px 2px;
+   margin: 0;
+   font-size: 8pt; 
+   color: #999;
+   }   
+p#breadcrumbs a { color: #999; text-decoration: none;}
+p#breadcrumbs a:visited { color: #999; }
+p#breadcrumbs a:hover { color: #333; border-bottom: 1px dotted #333; }
+
+/* Search hightlight color */
+span.highlight {background-color: #ffff40;}
+</style>
+<script type="text/javascript">
+var hmHeaderTopic = true;
+
+</script> 
+<!--[if IE 9]>
+<link id="iesvgcss" rel="stylesheet" type="text/css" href="hm_webhelp_svg.css" />
+<![endif]-->	
+<script src="jquery.js"></script>
+<script type="text/javascript" src="jquery.tools.min.js"></script>
+<script type="text/javascript" src="jquery.scrollTo-min.js"></script>
+<script type="text/javascript"> 
+// General topic variables
+var tVars = {
+   hmHelpPage: "index.html",
+   nextP: "simulator_options.htm",
+   prevP: "advanced_topics.htm",
+   currP: "libraries.htm",
+   defP: "introduction.htm",
+   titleP: "Libraries",
+   mailsubject: "Feedback on: SAM Help - Libraries",
+   simplesubject: "Documentation%20Feedback",
+   mailid: "Libraries",
+   mailpath: "Advanced Modeling Topics &gt; Libraries /",
+   mailbody: "Dear SAM Support,",
+   mailrecipient: "SAM Support <sam.support@nrel.gov>",
+   simplerecipient: "sam.support@nrel.gov",
+   fbtype: false,
+   header: true,
+   background: "bg.png",
+   tablesReady: false,
+   togglesReady: false,
+   webRedirect: true
+   }
+// Popup configuration
+ var hmpBShadow = true;
+ var hmPopSmallDim = 500;
+ var hmPopKillVideo = false;
+ // AutoTOC variables
+ var hmatocvars = {
+   atoc_show: true,
+   atoc_title: "Contents",
+   atoc_tip: "Jump to:&nbsp;",
+   atoc_minHeaders: 2,
+   atoc_btntip_off: "No contents entries on this page",
+   atoc_btntip_on: "Display/hide topic directory",
+   atoc_toptip: "Jump to top of page",
+   atoc_top: "Scroll to Top of Page",
+   atoc_bg: "#f6f6f6",
+   atoc_border: "silver",
+   atoc_linkcolor: "#444",
+   atoc_linklimit: 45,
+   atoc_hovercolor: "#000",
+   atoc_hoverbgcolor: "#e0e0e0"
+}
+// Sortable tables
+var sortVars = {
+   europeandate: false,
+   germanNumbers: false,
+   imagePath: "",
+   image_up: "arrow-up.gif",
+   image_down: "arrow-down.gif",
+   image_empty: "arrow-empty.gif",
+   image_none: "arrow-none.gif",
+   sort_tip: "Click to sort on this column",
+   umlauts: "false"
+   }
+
+</script>
+
+<script type="text/javascript"> 
+$(document).ready(function() {
+var doc = document;  
+try {
+if (parent.hmWebHelp.navWidth != null) doc = parent.document;
+doc.title = $("<div/>").html("SAM Help - Libraries").text();
+window.onunload = function() {doc.title = $("<div/>").html("SAM Help").text();}
+} catch(err) {}
+});
+</script>
+<script type="text/javascript" src="helpman_settings.js"></script>
+<script type="text/javascript" src="helpman_topicinit.js"></script>
+<script type="text/javascript" src="hmtopic.js"></script>
+
+   <script type="text/javascript">
+     HMSyncTOC("index.html", "libraries.htm");
+   </script>
+   <script type="text/javascript" src="highlight.js"></script>
+   <script type="text/javascript">
+     $(document).ready(function(){highlight();});
+   </script>
+</head>
+<body>
+<!--ZOOMSTOP-->
+<ul id="topictabs" class="tabs">
+<li id="indextab" class="hmtabs"><a href="#" id="indextablink" class="current"><span>Libraries</span></a></li>
+</ul>
+<div id="hmbox">
+<div id="hmheader">
+<div id="hmheadercontents">
+<p id="breadcrumbs">
+<b>Navigation:</b>
+<a href="advanced_topics.htm">Advanced Modeling Topics</a>:</p> 
+<h1 class="p_Heading1"><span class="f_Heading1">Libraries</span></h1>
+
+</div>
+<div id="atocIcon" class="navdivs">
+<img class="navicon" id="hmAtocLink" src="contents_off.png" alt="No contents entries on this page" title="No contents entries on this page" />
+<br /><span>Contents</span>
+</div>
+</div>
+<div id="autoTocWrapper" class="topicmenu"></div>
+<div id="idcontent">
+<div id="unclicker"></div>
+
+<!--ZOOMRESTART-->
+<p class="p_Text"><span class="f_Text">A library is a collection of stored values for groups of input variables that characterize a system component, heat transfer fluid, or fuel, or describe a set of adjustment factors. SAM displays each library as a list on the appropriate input page. For example, the Sandia inverter library stores a set of input values for each inverter in the California Energy Commission's inverter database. SAM displays the library as a list of inverter names on the Inverter page with the Inverter CEC Database model option. When you choose an inverter from the list, SAM populates the input variables on the Inverter page with values from the library. See <a href="libraries.htm#libraries_accessingfrominputpages" class="topiclink">Accessing Libraries from Input Pages</a> for details.</span></p>
+<p class="p_Text"><span class="f_Text">For advanced analyses, you may want to add your own entries to a library, or to modify entries in an existing library. Or, you may want to export the data in a library to a text file. The library editor allows you to manage and export data from libraries. You should only add or modify a library entry when you have a complete set of data for the entry. Because values in the entry may be interdependent in ways that are not obvious, you can easily introduce errors to simulation results by changing values in a library entry. An obvious example would be changing one of the power values for an entry in the inverter library without changing the current and voltage values. In general, you should not modify libraries unless you are familiar with both the characterization of the physical component represented by library entries, and with SAM's mathematical representation of the component.</span></p>
+<p class="p_Note"><span class="f_CHNote">Note.</span><span class="f_Note"> If you decide to modify or create your own libraries, you should first read about the difference between <a href="libraries.htm#libraries_defaultuser" class="topiclink">default and user libraries</a>, and refer to the instructions for working with the <a href="libraries.htm" class="topiclink">library editor</a>.</span></p>
+<p class="p_Text"><span class="f_Text">You cannot edit default libraries from the library editor. To edit a default library, you can either create a copy of the library as a user library (the recommended approach), or you can edit the file directly using a text editor. See <a href="libraries.htm#libraries_defaultuser" class="topiclink">Default and User Libraries</a> for details.</span></p>
+<p class="p_TitleProcedure"><span class="f_TitleProcedure">To open the library editor:</span></p>
+<p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 6px 24px;"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;display:inline-block;width:24px;margin-left:-24px">&#9679;</span><span class="f_ProcedureStepLast">On the Tools menu, click </span><span class="f_CHInterfaceElement">Library Editor</span><span class="f_ProcedureStepLast">.</span></p><p class="p_Note"><span class="f_CHNote">Note</span><span class="f_Note">. In order for the library editor to be fully functional, you must open a SAM file before opening the library editor. If you open the library editor from SAM's welcome page, only the export function is active.</span></p>
+<p class="p_Text"><img src="ss_libraries-libraryeditor.gif" width="518" height="322" alt="SS_Libraries-LibraryEditor" style="border:none" /></p>
+<p class="p_VariableName"><span class="f_VariableName">Libraries</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Shows the list of default libraries with the prefix &quot;SAM/&quot; and any user libraries in the project with the prefix &quot;USER/&quot;. Click a library name to display the library's contents. Each library entry is a row in the table.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">New User Library</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Click to add a new user library to the project. SAM stores user library data in the project file rather than in external library files.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Remove User Library</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Click to remove a user library. You cannot remove a default library indicated by the &quot;SAM/&quot; prefix.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Add Entries</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Add rows of data to a user library. You must choose a user library indicated by the &quot;USER/&quot; prefix before adding entries. You cannot add entries to a default library with the &quot;SAM/&quot; prefix.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Export</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Export the current library to a library file (</span><span class="f_Emphasis">.samlib</span><span class="f_VariableDescription">). Export a library when you want to use it in a different project. You must import the library into the other project for it to be available in that project. You can export a library to the default library folder </span><span class="f_Text">(</span><span class="f_Emphasis">/exelib/libraries</span><span class="f_Text"> in your SAM installation folder) to make the library available to all SAM projects on your computer.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Save As CSV</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Export the current library to a comma-separated values (CSV) text file. You can then open the file in a spreadsheet program or text editor.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Import</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Create a new user library by importing entries from a library file (</span><span class="f_Emphasis">.samlib</span><span class="f_VariableDescription">). When you import a library, SAM stores the library entries in the project file, which affects the file's size.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Help</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Display the Libraries help topic.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Close</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Close the library editor.</span></p>
+<p class="p_TitleProcedure"><span class="f_TitleProcedure">To create a new user library:</span></p>
+<p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">1.</span><span class="f_ProcedureStep">Open the library editor.</span></p><p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">2.</span><span class="f_ProcedureStep">Click </span><span class="f_CHInterfaceElement">New User Library</span><span class="f_ProcedureStep">. </span></p><p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">3.</span><span class="f_ProcedureStep">Type a name for the library in the Import Library window. This is the name that will appear in library lists.</span></p><p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 6px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">4.</span><span class="f_ProcedureStepLast">Choose a library type in the New User Library window. See the <a href="libraries.htm#libraries_descriptions" class="topiclink">table of library types</a> for type descriptions.</span></p><p class="p_Text"><span class="f_Text">When you create a new user library, SAM adds an empty library with the name you specified and the prefix &quot;USER/&quot; to the list of libraries. To assign values to the entry, you must first add a copy of an existing entry, and then modify its values. This helps to ensure that no library entries have blank values.</span></p>
+<p class="p_TitleProcedure"><span class="f_TitleProcedure">To add entries to a new or existing user library:</span></p>
+<p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">1.</span><span class="f_ProcedureStep">Click the user library's name in the Libraries list. User libraries are indicated by the prefix &quot;USER/&quot;.</span></p><p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">2.</span><span class="f_ProcedureStep">Click </span><span class="f_CHInterfaceElement">Add Entries</span><span class="f_ProcedureStep">.</span></p><p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">3.</span><span class="f_ProcedureStep">In the Copy Existing Entry window, check one or more items that have similar characteristics to the entry you want to add.</span></p><p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">4.</span><span class="f_ProcedureStep">Click </span><span class="f_CHInterfaceElement">OK</span><span class="f_ProcedureStep">.</span></p><p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">5.</span><span class="f_ProcedureStep">To rename a library entry, in the library table, right-click the entry's name, and choose </span><span class="f_CHInterfaceElement">Rename</span><span class="f_ProcedureStep"> from the shortcut menu. </span></p><p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">6.</span><span class="f_ProcedureStep">To add values to a library entry, you can either</span></p><p class="p_ProcedureStepNoNumber"><span class="f_ProcedureStepNoNumber">change values manually by double-clicking each cell and typing a value, or </span></p>
+<p class="p_ProcedureStepNoNumber"><span class="f_ProcedureStepNoNumber">copy a row of values from a comma-separated text file or Excel worksheet file, and then right clicking the library entry's name and choosing </span><span class="f_CHInterfaceElement">Paste Values</span><span class="f_ProcedureStepNoNumber"> in the shortcut menu.</span></p>
+<p class="p_Note"><span class="f_CHNote">Note.</span><span class="f_Note"> The library editor does no error checking, so be sure to use valid values in your library entries.</span></p>
+<p class="p_TitleProcedure"><span class="f_TitleProcedure">To modify values in a default library:</span></p>
+<p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">1.</span><span class="f_ProcedureStep">Create a new user library of the same type as the default library (see instructions above).</span></p><p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 6px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">2.</span><span class="f_ProcedureStepLast">Add the entry that contains the values you want to modify from the default library and change the value (see instructions above).</span></p><p class="p_Note"><span class="f_CHNote">Note.</span><span class="f_Note"> You can also use a text editor to change values directly in a default library. You should only use this approach if you are very familiar with the parameters stored in the library, and are certain that you want to discard the original values stored in the library. We recommend only modifying copies of libraries. See <a href="libraries.htm#libraries_defaultuser" class="topiclink">Default and User Libraries</a> for file location details.</span></p>
+<p class="p_TitleProcedure"><span class="f_TitleProcedure">To &quot;convert&quot; a user library to a default library:</span></p>
+<p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">1.</span><span class="f_ProcedureStep">Click user library's name in the Libraries list.</span></p><p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">2.</span><span class="f_ProcedureStep">Click </span><span class="f_CHInterfaceElement">Export</span><span class="f_ProcedureStep"> and save the file in the libraries folder (</span><span class="f_Emphasis">/exelib/libraries</span><span class="f_ProcedureStep"> in your SAM installation folder).</span></p><p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 6px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">3.</span><span class="f_ProcedureStepLast">SAM will display the library with the &quot;SAM/&quot; prefix, and make it available to all SAM projects on your computer.</span></p><div style="text-align: left; text-indent: 0px; border-color: #000000; border-style: solid; border-width: 1px; background: #ebebeb; padding: 2px 2px 2px 2px; margin: 3px 0px 3px 0px;"><table style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr style="vertical-align:baseline"><td style="border:none;padding:0;width:19px"><a id="libraries_accessingfrominputpages"></a><img id="TOGGLE0186A1_ICON" class="dropdown-toggle-icon" src="ico-minus-16x16.gif" width="16" height="16" alt="Click to expand or collapse" title="Click to expand or collapse" style="border:none" /></td><td style="border:none;padding:0"><span class="f_Heading2_atoc_"><a class="dropdown-toggle" style="font-size: 16pt; font-family: Arial; font-style: normal; font-weight: bold; color: #000000; background-color: transparent; text-decoration: none;" title="Click to expand or collapse" href="javascript:HMToggle('toggle','TOGGLE0186A1','TOGGLE0186A1_ICON')">Accessing Libraries from Input Pages</a></span></td></tr></table></div><div id="TOGGLE0186A1" style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 6px 0px;"><table class="toggle content table" style="width:100%; border:none; border-spacing:0px;">
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; padding:0px;"><p class="p_Text"><span class="f_Text">Depending on the library, SAM either displays a &quot;Choose from library&quot; or &quot;Library&quot; button, or displays the library entries as a list directly on the input page. For some components, to choose an item from a library, you click the Choose (or Library) button and then click the item's name in a list of library items. SAM automatically populates appropriate variables on the input page, which you can edit if necessary. For example, on the physical trough model's Collectors page, to choose an entry from the parabolic trough collector library, click </span><span class="f_CHInterfaceElement">Choose collector from library</span><span class="f_Text">. SAM displays a list of collectors from the library. When you click a collector name in the list, SAM copies collector geometry and optical parameter values from the library to the variables on the Collectors page.</span></p>
+<p class="p_Text"><img src="ss_libraries-collectorlist.gif" width="531" height="306" alt="SS_Libraries-CollectorList" style="border:none" /><span class="f_Text"> </span></p>
+<p class="p_Text"><span class="f_Text">If you change the value of one of those variables, SAM indicates that the parameters on the input page differ from parameter values in the library by displaying &quot;No library match&quot; in the library name box:</span></p>
+<p class="p_Text"><img src="ss_libraries-nolibrarymatch.gif" width="793" height="51" alt="SS_Libraries-NoLibraryMatch" style="border:none" /></p>
+<p class="p_Text">For other libraries, such as the <span class="f_VariableDescription">Flat Plate PV</span> model's Sandia module library, SAM displays the list of library items directly on the input page. When you choose an item from the list, SAM copies values from the library to the project's case, and displays some of them as read-only values on the Module page. If you want to use change a value, you must create a new user library.</p>
+<p class="p_Text"><span class="f_Text"> <img src="ss_libraries-moduleslist.gif" width="485" height="298" alt="SS_Libraries-ModulesList" style="border:none" /></span></p>
+<p class="p_Note"><span class="f_CHNote">Note.</span><span class="f_Note"> SAM often only displays a subset of the parameters from a library on input pages. If you want to see the complete parameter set for a library item, you can view the values in the <a href="libraries.htm" class="topiclink">library editor</a>.</span></p>
+</td>
+</tr>
+</table>
+</div>
+<div style="text-align: left; text-indent: 0px; border-color: #000000; border-style: solid; border-width: 1px; background: #ebebeb; padding: 2px 2px 2px 2px; margin: 3px 0px 3px 0px;"><table style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr style="vertical-align:baseline"><td style="border:none;padding:0;width:19px"><a id="libraries_descriptions"></a><img id="TOGGLE0186A2_ICON" class="dropdown-toggle-icon" src="ico-minus-16x16.gif" width="16" height="16" alt="Click to expand or collapse" title="Click to expand or collapse" style="border:none" /></td><td style="border:none;padding:0"><span class="f_Heading2_atoc_"><a class="dropdown-toggle" style="font-size: 16pt; font-family: Arial; font-style: normal; font-weight: bold; color: #000000; background-color: transparent; text-decoration: none;" title="Click to expand or collapse" href="javascript:HMToggle('toggle','TOGGLE0186A2','TOGGLE0186A2_ICON')">Library Descriptions</a></span></td></tr></table></div><div id="TOGGLE0186A2" style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 6px 0px;"><table class="toggle content table" style="width:100%; border:none; border-spacing:0px;">
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; padding:0px;"><p class="p_Text"><span class="f_Text">SAM uses libraries to store parameter sets for the following performance model components and displays them as lists on the relevant input pages.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">BIOBIB Fuels</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Not used.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">CEC Modules</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">List of photovoltaic modules from the California Energy Commission database of approved modules for the flat plate photovoltaic model, displayed on the <a href="pvfp_module.htm" class="topiclink">Module</a> page when the CEC Performance Model with Module Database option is active.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">CSP Empirical Trough TES Dispatch </span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Storage dispatch schedules based on time-of-use rates of different electric utilities for the empirical trough model displayed on the </span><span class="f_Text"><a href="troughempirical_thermal_storage.htm" class="topiclink">Thermal Storage</a> page.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">CSP GSS TES Dispatch</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Storage dispatch schedules based on time-of-use rates of different electric utilities for the generic solar system model displayed on the </span><span class="f_Text"><a href="gss_thermal_storage.htm" class="topiclink">Thermal Storage</a> page.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">CSP Physical Trough Receiver (HCE)</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Receiver characteristics for the physical trough model displayed on the </span><span class="f_Text"><a href="troughphysical_receivers_hces.htm" class="topiclink">Receivers (HCEs)</a> page.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">CSP Physical Trough SCAs</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Collector characteristics for the physical trough model displayed on the </span><span class="f_Text"><a href="troughphysical_collectors_scas.htm" class="topiclink">Collectors (SCAs)</a> page.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">CSP Physical Trough TES Dispatch</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Storage dispatch schedules based on time-of-use rates of different electric utilities for the physical trough model displayed on the <a href="troughphysical_thermal_storage.htm" class="topiclink">Thermal Storage</a> page.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">CSP Tower TES Dispatch</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Storage dispatch schedules based on time-of-use rates of different electric utilities for the power tower model displayed on the </span><span class="f_Text"><a href="towerms_thermal_storage.htm" class="topiclink">Thermal Storage</a> page.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">CSP Trough HCEs</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Receiver characteristic for the empirical trough model displayed on the </span><span class="f_Text"><a href="troughempirical_sca_hce.htm" class="topiclink">SCA/HCE</a> page.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">CSP Trough Parasitics</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Parasitic loss coefficients for different reference power cycle options of the empirical trough model displayed on the </span><span class="f_Text"><a href="troughempirical_parasitics.htm" class="topiclink">Parasitics</a> page.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">CSP Trough Power Cycles</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Steam turbine characteristics for different reference power cycle options of the empirical trough model displayed on the </span><span class="f_Text"><a href="troughempirical_power_block.htm" class="topiclink">Power Block</a> page.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">CSP Trough SCAs</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Collector characteristics for the empirical trough model displayed on the </span><span class="f_Text"><a href="troughempirical_sca_hce.htm" class="topiclink">SCA/HCE</a> page.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Dish Stirling Systems</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Complete system descriptions for the dish-Stirling model displayed on the </span><span class="f_Text"><a href="dish_system_library.htm" class="topiclink">System Library</a> page.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Energy Payment Dispatch</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">TOD factors and schedules displayed on the <a href="fin_energy_payment_dispatch.htm" class="topiclink">Time of Delivery Factors</a> page.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">SRCC</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">List of solar water heating collectors displayed on the <a href="shw_system.htm" class="topiclink">SWH System</a> page.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Sandia Inverters</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">List of inverters from the California Energy Commissions inverter database for the flat plate photovoltaic model, displayed on the <a href="pvfp_inverter.htm" class="topiclink">Inverter</a> page when the Inverter Database model option is active.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Sandia Modules</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">List of modules from the Sandia module database for the flat plate photovoltaic model, displayed on the <a href="pvfp_module.htm" class="topiclink">Module</a> page when the Sandia PV Array Performance Model with Module Database option is active.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">SunPower Modules</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">List of SunPower modules with Sandia photovoltaic module model parameters provided by the SunPower Corporation, displayed on the <a href="pvfp_module.htm" class="topiclink">Module</a> page when the Sandia PV Array Performance Model with Module Database is active.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">TOU Utility Rates</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Retail time-of-use rates for projects with residential or commercial financing displayed on the </span><span class="f_Text"><a href="utility_rate.htm" class="topiclink">Utility Rate</a> page.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Wind Turbine Library</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">List of wind turbines for the wind power model displayed on the <a href="wind_turbine.htm" class="topiclink">Turbine</a> page.</span></p>
+</td>
+</tr>
+</table>
+</div>
+<div style="text-align: left; text-indent: 0px; border-color: #000000; border-style: solid; border-width: 1px; background: #ebebeb; padding: 2px 2px 2px 2px; margin: 3px 0px 3px 0px;"><table style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr style="vertical-align:baseline"><td style="border:none;padding:0;width:19px"><a id="libraries_defaultuser"></a><img id="TOGGLE0186A3_ICON" class="dropdown-toggle-icon" src="ico-minus-16x16.gif" width="16" height="16" alt="Click to expand or collapse" title="Click to expand or collapse" style="border:none" /></td><td style="border:none;padding:0"><span class="f_Heading2_atoc_"><a class="dropdown-toggle" style="font-size: 16pt; font-family: Arial; font-style: normal; font-weight: bold; color: #000000; background-color: transparent; text-decoration: none;" title="Click to expand or collapse" href="javascript:HMToggle('toggle','TOGGLE0186A3','TOGGLE0186A3_ICON')">Default and User Libraries</a></span></td></tr></table></div><div id="TOGGLE0186A3" style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 6px 0px;"><table class="toggle content table" style="width:100%; border:none; border-spacing:0px;">
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; padding:0px;"><p class="p_Text"><span class="f_Text">SAM stores data for each library in library files. A library file is a text file with a the </span><span class="f_Emphasis">.samlib</span><span class="f_Text"> extension. You can find the library files in the library folder (</span><span class="f_Emphasis">/exelib/libraries</span><span class="f_Text"> in your SAM installation folder). SAM uses a library type definition file with the </span><span class="f_Emphasis">.samlibtype</span><span class="f_Text"> extension to map values from the library file to SAM input variables.</span></p>
+<p class="p_Text"><span class="f_Text">There are two types of libraries, default libraries indicated in lists by the prefix &quot;SAM/&quot; in lists, and user libraries indicated by the prefix &quot;USER/&quot;:</span></p>
+<p style="text-align: left; padding: 0px 0px 0px 13px; margin: 0px 0px 3px 10px;"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;display:inline-block;width:13px;margin-left:-13px">&#9679;</span><span class="f_List">Default libraries are available to all project files on your computer and cannot be modified from the library editor. SAM considers any library file stored in the library folder to be a default library, and indicates default libraries in lists on input pages with the prefix &quot;SAM/.&quot; Although you can use a text editor to modify a default library, we recommend using the <a href="libraries.htm" class="topiclink">library editor</a> to create a copy of the default library for editing so that you always have a copy of the original default library that came with SAM. Note that you can add your own library to the default collection by creating a library file and putting it the libraries folder.</span></p><p style="text-align: left; padding: 0px 0px 0px 13px; margin: 0px 0px 6px 10px;"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;display:inline-block;width:13px;margin-left:-13px">&#9679;</span><span class="f_ListLast">User libraries are libraries stored in the project file. A user library must be added to a project file to be available in the file. User libraries are indicated in lists by the prefix &quot;USER/.&quot; Unlike default libraries, user library parameters are stored in the project file and can increase the project file size. To make a user library available to more than one SAM project on your computer, you can either export it as a library file and then import it into other projects, or you can export to the default library folder so that it is available to all projects on your computer.</span></p><p class="p_Text"><span class="f_Text">SAM displays user libraries at the end of the list. For example, the modules from the user library for the Sandia PV module model appear at the end of the list of modules:</span></p>
+<p class="p_Text"><img src="ss_libraries-usersandiamodule.gif" width="393" height="423" alt="SS_Libraries-UserSandiaModule" style="border:none" /></p>
+</td>
+</tr>
+</table>
+</div>
+
+<!--ZOOMSTOP--> 
+
+
+</div> <!-- idcontent -->
+</div><!-- hmbox --> 
+<script type="text/javascript">
+HMInitToggle('TOGGLE0186A1_ICON','hm.type','dropdown','hm.state','0','hm.src0','ico-plus-16x16.gif','hm.src1','ico-minus-16x16.gif','onclick','HMToggle(\'toggle\',\'TOGGLE0186A1\',\'TOGGLE0186A1_ICON\')');
+HMInitToggle('TOGGLE0186A1','hm.type','dropdown','hm.state','0');
+HMInitToggle('TOGGLE0186A2_ICON','hm.type','dropdown','hm.state','0','hm.src0','ico-plus-16x16.gif','hm.src1','ico-minus-16x16.gif','onclick','HMToggle(\'toggle\',\'TOGGLE0186A2\',\'TOGGLE0186A2_ICON\')');
+HMInitToggle('TOGGLE0186A2','hm.type','dropdown','hm.state','0');
+HMInitToggle('TOGGLE0186A3_ICON','hm.type','dropdown','hm.state','0','hm.src0','ico-plus-16x16.gif','hm.src1','ico-minus-16x16.gif','onclick','HMToggle(\'toggle\',\'TOGGLE0186A3\',\'TOGGLE0186A3_ICON\')');
+HMInitToggle('TOGGLE0186A3','hm.type','dropdown','hm.state','0');
+</script>
+</body>
+</html>

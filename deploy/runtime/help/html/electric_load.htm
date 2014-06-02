@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>Electric Load</title>
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="" />
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+   <meta http-equiv="content-language" content="en-us" />
+   <meta name="description" content="The Electric Load page allows you to specify the electric load for systems with either the Residential or Commercial financing option. You only need to specify an electric load..." />
+   <meta http-equiv="Content-Style-Type" content="text/css" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+   <link id="tabscheme" type="text/css" href="hm_topic.css" rel="stylesheet" />   
+<style type="text/css">
+/* No header topics */
+
+/* Breadcrumb trail */
+p#breadcrumbs {
+font-family: Verdana, Tahoma, Helvetica, Sans-Serif;   padding: 2px 0 1px 2px;
+   margin: 0;
+   font-size: 8pt; 
+   color: #999;
+   }   
+p#breadcrumbs a { color: #999; text-decoration: none;}
+p#breadcrumbs a:visited { color: #999; }
+p#breadcrumbs a:hover { color: #333; border-bottom: 1px dotted #333; }
+
+/* Search hightlight color */
+span.highlight {background-color: #ffff40;}
+</style>
+<script type="text/javascript">
+var hmHeaderTopic = true;
+
+</script> 
+<!--[if IE 9]>
+<link id="iesvgcss" rel="stylesheet" type="text/css" href="hm_webhelp_svg.css" />
+<![endif]-->	
+<script src="jquery.js"></script>
+<script type="text/javascript" src="jquery.tools.min.js"></script>
+<script type="text/javascript" src="jquery.scrollTo-min.js"></script>
+<script type="text/javascript"> 
+// General topic variables
+var tVars = {
+   hmHelpPage: "index.html",
+   nextP: "system_costs.htm",
+   prevP: "utility_rate.htm",
+   currP: "electric_load.htm",
+   defP: "introduction.htm",
+   titleP: "Electric Load",
+   mailsubject: "Feedback on: SAM Help - Electric Load",
+   simplesubject: "Documentation%20Feedback",
+   mailid: "Electric_Load",
+   mailpath: "Retail Electricity Rates &gt; Electric Load /",
+   mailbody: "Dear SAM Support,",
+   mailrecipient: "SAM Support <sam.support@nrel.gov>",
+   simplerecipient: "sam.support@nrel.gov",
+   fbtype: false,
+   header: true,
+   background: "bg.png",
+   tablesReady: false,
+   togglesReady: false,
+   webRedirect: true
+   }
+// Popup configuration
+ var hmpBShadow = true;
+ var hmPopSmallDim = 500;
+ var hmPopKillVideo = false;
+ // AutoTOC variables
+ var hmatocvars = {
+   atoc_show: true,
+   atoc_title: "Contents",
+   atoc_tip: "Jump to:&nbsp;",
+   atoc_minHeaders: 2,
+   atoc_btntip_off: "No contents entries on this page",
+   atoc_btntip_on: "Display/hide topic directory",
+   atoc_toptip: "Jump to top of page",
+   atoc_top: "Scroll to Top of Page",
+   atoc_bg: "#f6f6f6",
+   atoc_border: "silver",
+   atoc_linkcolor: "#444",
+   atoc_linklimit: 45,
+   atoc_hovercolor: "#000",
+   atoc_hoverbgcolor: "#e0e0e0"
+}
+// Sortable tables
+var sortVars = {
+   europeandate: false,
+   germanNumbers: false,
+   imagePath: "",
+   image_up: "arrow-up.gif",
+   image_down: "arrow-down.gif",
+   image_empty: "arrow-empty.gif",
+   image_none: "arrow-none.gif",
+   sort_tip: "Click to sort on this column",
+   umlauts: "false"
+   }
+
+</script>
+
+<script type="text/javascript"> 
+$(document).ready(function() {
+var doc = document;  
+try {
+if (parent.hmWebHelp.navWidth != null) doc = parent.document;
+doc.title = $("<div/>").html("SAM Help - Electric Load").text();
+window.onunload = function() {doc.title = $("<div/>").html("SAM Help").text();}
+} catch(err) {}
+});
+</script>
+<script type="text/javascript" src="helpman_settings.js"></script>
+<script type="text/javascript" src="helpman_topicinit.js"></script>
+<script type="text/javascript" src="hmtopic.js"></script>
+
+   <script type="text/javascript">
+     HMSyncTOC("index.html", "electric_load.htm");
+   </script>
+   <script type="text/javascript" src="highlight.js"></script>
+   <script type="text/javascript">
+     $(document).ready(function(){highlight();});
+   </script>
+</head>
+<body>
+<!--ZOOMSTOP-->
+<ul id="topictabs" class="tabs">
+<li id="indextab" class="hmtabs"><a href="#" id="indextablink" class="current"><span>Electric Load</span></a></li>
+</ul>
+<div id="hmbox">
+<div id="hmheader">
+<div id="hmheadercontents">
+<p id="breadcrumbs">
+<b>Navigation:</b>
+<a href="retail_electric_rates.htm">Retail Electricity Rates</a>:</p> 
+<h1 class="p_Heading1"><span class="f_Heading1">Electric Load</span></h1>
+
+</div>
+<div id="atocIcon" class="navdivs">
+<img class="navicon" id="hmAtocLink" src="contents_off.png" alt="No contents entries on this page" title="No contents entries on this page" />
+<br /><span>Contents</span>
+</div>
+</div>
+<div id="autoTocWrapper" class="topicmenu"></div>
+<div id="idcontent">
+<div id="unclicker"></div>
+
+<!--ZOOMRESTART-->
+<p class="p_Text"><span class="f_Text">The Electric Load page allows you to specify the electric load for systems with either the Residential or Commercial <a href="fin_overview.htm" class="topiclink">financing option</a>. You only need to specify an electric load if you are modeling a residential or commercial system with tiered rates or demand charges specified on the <a href="utility_rate.htm" class="topiclink">Utility Rate page</a>.</span></p>
+<p class="p_Text"><span class="f_Text">To view the Electric Load page, click </span><span class="f_CHInterfaceElement">Electric Load</span><span class="f_Text"> on the main window's navigation menu.</span></p>
+<p class="p_Text"><span class="f_Text">For a description of where to find simulation results for analyses that involve time-dependent power pricing, see <a href="td_retail.htm" class="topiclink">Retail Electricity Savings</a>.</span></p>
+<p class="p_Note"><span class="f_CHNote">Notes.</span><span class="f_Note"> </span><br />
+<span class="f_Note">&nbsp;</span><br />
+<span class="f_Note">The <a href="http://en.openei.org/datasets/node/961" target="_blank" class="weblink" title="http://en.openei.org/datasets/node/961">NREL OpenEI commercial and residential load profile database</a> is a set of hourly load data files for each of the locations in the NREL National Solar Radiation Database TMY3 weather file collection. To automatically download a load profile from the OpenEI database, see the sample file </span><span class="f_Emphasis">SamUL Download Building Load Data</span><span class="f_Note"> (click </span><span class="f_CHInterfaceElement">File</span><span class="f_Note">, </span><span class="f_CHInterfaceElement">Open sample file</span><span class="f_Note">).</span><br />
+<span class="f_Note">&nbsp;</span><br />
+<span class="f_Note">SAM comes with a set of computer-generated residential load data files for some cities in the U.S. See <a href="electric_load.htm#timeseries" class="topiclink">Working with Time Series Load Data</a> for details. </span></p>
+<div style="text-align: left; text-indent: 0px; border-color: #000000; border-style: solid; border-width: 1px; background: #ebebeb; padding: 2px 2px 2px 2px; margin: 3px 0px 3px 0px;"><table style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr style="vertical-align:baseline"><td style="border:none;padding:0;width:19px"><a id="overview"></a><img id="TOGGLE0186A1_ICON" class="dropdown-toggle-icon" src="ico-minus-16x16.gif" width="16" height="16" alt="Click to expand or collapse" title="Click to expand or collapse" style="border:none" /></td><td style="border:none;padding:0"><span class="f_Heading2_atoc_"><a class="dropdown-toggle" style="font-size: 16pt; font-family: Arial; font-style: normal; font-weight: bold; color: #000000; background-color: transparent; text-decoration: none;" title="Click to expand or collapse" href="javascript:HMToggle('toggle','TOGGLE0186A1','TOGGLE0186A1_ICON')">Overview</a></span></td></tr></table></div><div id="TOGGLE0186A1" style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 6px 0px;"><table class="toggle content table" style="width:100%; border:none; border-spacing:0px;">
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; padding:0px;"><p class="p_Text"><span class="f_Text">The Electric Load page allows you to specify the electric demand, or expected electricity consumption for a grid-connected power system. The load data represents the electric demand of a building or other load center over the period of a single year.</span></p>
+<p class="p_Note"><span class="f_CHNote">Note.</span><span class="f_Note"> You should only specify electric load data for residential or commercial projects that include demand charges or tiered rates on the <a href="utility_rate.htm" class="topiclink">Utility Rate page</a>. If your project does not use these rate structures, choose the No load data option on the Electric Load page. </span></p>
+<p class="p_Text"><span class="f_Text">Energy values represent the electric energy required over a single time step and are expressed in kilowatt-hours. Peak load values represent the maximum electric power required in either a month or year and are expressed in kilowatts.</span></p>
+<p style="text-align: left; padding: 0px 0px 0px 13px; margin: 0px 0px 3px 10px;"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;display:inline-block;width:13px;margin-left:-13px">&#9679;</span><span class="f_List">If you have load data stored in a text file, spreadsheet file, or other file that allows you to copy columns of data to your computer's clipboard, you can paste the data into SAM using the Edit Data window. See <a href="electric_load.htm#timeseries" class="topiclink">Working with Time Series Load Data</a> for details.</span></p><p style="text-align: left; padding: 0px 0px 0px 13px; margin: 0px 0px 3px 10px;"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;display:inline-block;width:13px;margin-left:-13px">&#9679;</span><span class="f_List">You can also import load data from a properly formatted text file. See <a href="electric_load.htm#timeseries" class="topiclink">Working with Time Series Load Data</a> for details.</span></p><p style="text-align: left; padding: 0px 0px 0px 13px; margin: 0px 0px 3px 10px;"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;display:inline-block;width:13px;margin-left:-13px">&#9679;</span><span class="f_List">You can specify load data using an hourly time step or sub-hourly time step. The load data time step can be different from the weather data time step. For example, you can use 10-minute load data with hourly weather data. See <a href="electric_load.htm#timeseries" class="topiclink">Working with Time Series Load Data</a> for details.</span></p><p style="text-align: left; padding: 0px 0px 0px 13px; margin: 0px 0px 3px 10px;"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;display:inline-block;width:13px;margin-left:-13px">&#9679;</span><span class="f_List">If you do not have time series load data, SAM allows you to specify load data by typing a values for twelve monthly 24-hour load profiles. See <a href="electric_load.htm#profiles" class="topiclink">Creating Load Data from Daily Profiles</a> for details.</span></p><p style="text-align: left; padding: 0px 0px 0px 13px; margin: 0px 0px 3px 10px;"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;display:inline-block;width:13px;margin-left:-13px">&#9679;</span><span class="f_List">You can scale the load upwards or downwards, or specify a load that increases from year to year. See <a href="electric_load.htm#inputs" class="topiclink">Input Variable Reference</a> for details.</span></p><p style="text-align: left; padding: 0px 0px 0px 13px; margin: 0px 0px 3px 10px;"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;display:inline-block;width:13px;margin-left:-13px">&#9679;</span><span class="f_List">SAM displays a load data summary table and allows you to view graphs of hourly load data. See <a href="electric_load.htm#inputs" class="topiclink">Input Variable Reference</a> for details.</span></p><p style="text-align: left; padding: 0px 0px 0px 13px; margin: 0px 0px 3px 10px;"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;display:inline-block;width:13px;margin-left:-13px">&#9679;</span><span class="f_List">SAM reports load data in the hourly results. See <a href="tabular_data_browser.htm" class="topiclink">Tables</a> for details.</span></p></td>
+</tr>
+</table>
+</div>
+<div style="text-align: left; text-indent: 0px; border-color: #000000; border-style: solid; border-width: 1px; background: #ebebeb; padding: 2px 2px 2px 2px; margin: 3px 0px 3px 0px;"><table style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr style="vertical-align:baseline"><td style="border:none;padding:0;width:19px"><a id="inputs"></a><img id="TOGGLE0186A2_ICON" class="dropdown-toggle-icon" src="ico-minus-16x16.gif" width="16" height="16" alt="Click to expand or collapse" title="Click to expand or collapse" style="border:none" /></td><td style="border:none;padding:0"><span class="f_Heading2_atoc_"><a class="dropdown-toggle" style="font-size: 16pt; font-family: Arial; font-style: normal; font-weight: bold; color: #000000; background-color: transparent; text-decoration: none;" title="Click to expand or collapse" href="javascript:HMToggle('toggle','TOGGLE0186A2','TOGGLE0186A2_ICON')">Input Variable Reference</a></span></td></tr></table></div><div id="TOGGLE0186A2" style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 6px 0px;"><table class="toggle content table" style="width:100%; border:none; border-spacing:0px;">
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; padding:0px;"><h3 class="p_Heading3_atocs_" style="border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Electric Load Data</span></h3>
+<p class="p_VariableName"><span class="f_VariableName">No load data</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Choose </span><span class="f_CHInterfaceElement">No load data</span><span class="f_VariableDescription"> for an analysis that does not require load data. You should choose this option unless you are modeling a residential or commercial project with time-of-use rates, demand charges, or tiered rates on the <a href="utility_rate.htm" class="topiclink">Utility Rate</a> page.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Monthly schedule</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Choose </span><span class="f_CHInterfaceElement">Monthly schedule</span><span class="f_VariableDescription"> to specify the load using a set of monthly 24-hour load profiles. </span><span class="f_List">See <a href="electric_load.htm#profiles" class="topiclink">Creating Load Data from Daily Profiles</a> for details.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Edit monthly schedule</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Click </span><span class="f_CHInterfaceElement">Edit monthly schedule</span><span class="f_VariableDescription"> to specify 24-hour load profiles when you chose the monthly schedule option. </span><span class="f_CHInterfaceElement">Edit monthly schedule</span><span class="f_VariableDescription"> is inactive when you choose </span><span class="f_CHInterfaceElement">No load data</span><span class="f_VariableDescription"> or </span><span class="f_CHInterfaceElement">User entered data</span><span class="f_VariableDescription">.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">User entered hourly data</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Choose </span><span class="f_CHInterfaceElement">User entered data</span><span class="f_VariableDescription"> to specify the load by either cutting and pasting load data from an external program, or by importing load data from a properly formatted text file. See <a href="electric_load.htm#timeseries" class="topiclink">Working with Time Series Load Data</a> for details.</span></p>
+<p class="p_Note"><span class="f_CHNote">Note.</span><span class="f_Note"> You can use this option to work with the sample computer-generated residential load data that comes with SAM.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Edit data</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Click </span><span class="f_CHInterfaceElement">Edit data</span><span class="f_VariableDescription"> to either cut and paste load data from another program or to import data from a properly formatted text file. </span><span class="f_CHInterfaceElement">Edit data</span><span class="f_VariableDescription"> is inactive when you choose </span><span class="f_CHInterfaceElement">No load data</span><span class="f_VariableDescription"> or </span><span class="f_CHInterfaceElement">Monthly schedule</span><span class="f_VariableDescription">.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Normalize supplied load profile to monthly utility bill data</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Check this option when you want to specify the load using monthly data from a utility bill. See Working with Monthly Utility Bill Data for details.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Edit Values</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Click </span><span class="f_CHInterfaceElement">Edit Values</span><span class="f_VariableDescription"> to enter monthly load data from a utility bill. </span><span class="f_CHInterfaceElement">Edit Values</span><span class="f_VariableDescription"> is inactive unless </span><span class="f_CHInterfaceElement">Normalize supplied load profile to monthly utility bill data</span><span class="f_VariableDescription"> is checked.</span></p>
+<h3 class="p_Heading3_atocs_" style="border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Adjustments</span></h3>
+<p class="p_Text"><span class="f_Text">The load adjustment factors allow you to uniformly scale the load up or down, and to model a load profile that increases from year to year. Scaling the load can be useful for scenario analyses where you want to investigate the effect of a higher or lower load than expected loads.</span></p>
+<p class="p_Note"><span class="f_CHNote">Note.</span><span class="f_Note"> Before using the adjustment factors, you should specify the load data using the monthly schedule or user-entered hourly data options described above.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Escalation</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The load escalation scales the load in years two and later by the percentage you specify. For example, if you specify a load escalation rate of 0.5% per year, for each year in the analysis period specified on the <a href="fin_residential.htm" class="topiclink">Financing page</a>, SAM would increase the load value in each time step by 0.5% of the previous year's load value for the same time step.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">You can also assign load escalation values to specific years using the annual schedule:</span></p>
+<p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">1.</span><span class="f_ProcedureStep">Click the blue and gray button next to the input variable button to change the mode to </span><span class="f_CHInterfaceElement">Sched</span><span class="f_ProcedureStep"> and activate the Edit button. The button will show &quot;Sched&quot; in blue to indicate that the schedule mode is active for the variable.</span></p><p class="p_ProcedureStepNoNumber"><img src="ss_annsched-schededit.gif" width="150" height="31" alt="SS_AnnSched-SchedEdit" style="border:none" /></p>
+<p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">2.</span><span class="f_ProcedureStep">Click </span><span class="f_CHInterfaceElement">Edit</span><span class="f_ProcedureStep">.</span></p><p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">3.</span><span class="f_ProcedureStep">In the Edit Schedule window, type values for each year in the analysis period. Use the vertical scroll bar to move through the years.</span></p><p class="p_ProcedureStepNoNumber"><span class="f_ProcedureStepNoNumber">SAM ignores any values for years after the end of the analysis period. You can change the value in </span><span class="f_CHInterfaceElement"># Values</span><span class="f_ProcedureStepNoNumber"> to a number less than or equal to the analysis period to shorten the length of the table.</span></p>
+<p class="p_ProcedureStepNoNumber"><span class="f_ProcedureStepNoNumber">To delete a value, select it and press the Delete key on your keyboard.</span></p>
+<p class="p_ProcedureStepNoNumber"><span class="f_ProcedureStepNoNumber">You can use the Copy and Paste buttons to copy values from the table to your clipboard, or paste them into the table from the clipboard.</span></p>
+<p class="p_Note"><span class="f_CHNote">Note.</span><span class="f_Note"> You must type a value for each year. If you delete a value, SAM will clear the cell, and you must type a number in the cell or SAM will consider the schedule to be invalid. For years with no escalation rate, type a zero.</span></p>
+<p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 6px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">4.</span><span class="f_ProcedureStepLast">When you have finished editing the schedule, click </span><span class="f_CHInterfaceElement">Accept</span><span class="f_ProcedureStepLast">.</span></p><p class="p_VariableName"><span class="f_VariableName">Scaling factor</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Use the scaling factor to scale up or down the data set you specified using either the monthly schedule or user-entered hourly data option.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">When you change the scaling factor value, SAM recalculates the monthly and annual energy and peak values shown on the Electric Load page so you can verify that the value is correct.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">To calculate the load value during simulation, SAM multiplies the hourly load data you provided by the scaling factor that you specify. For example, if you specify a scaling factor of 1.5, and the hourly average load at 2 p.m. on March 18th is 1.2 kWh, SAM would use a load value of 1.5 × 1.2 = 1.8 kWh for that hour.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Offset value</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">To calculate the load value during simulation, for each time step, SAM adds the offset value you specify to the load value. For example, if you specify an offset value of 0.5 kWh, and the hourly average load at 2 p.m. on March 18th is 1.2 kWh, SAM would use a load value of 1.2 + 0.5 = 1.7 kWh for that hour.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">To see the effect of the offset value, try changing the value from the default of 1 to another value, and look at how the values under </span><span class="f_CHInterfaceElement">Hourly Simulation Load Profile Data</span><span class="f_VariableDescription"> change.</span></p>
+<h3 class="p_Heading3_atocs_" style="border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Hourly Simulation Load Profile Data</span></h3>
+<p class="p_Text"><span class="f_Text">SAM displays the table of monthly and annual averages to help you verify that the load data is correct. SAM also allows you to view also graphs of the time series load data using the built-in data viewer.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Energy (kWh)</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The Energy column displays the total amount of electricity required by the load for each month. SAM calculates the value by adding the average hourly values for each month, or if you specify a different time step for the load data, the sum of average values over each time step for the month.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Peak (kW)</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The maximum load value that occurs in each month. If you specify hourly load data, the monthly peak is equal to the maximum hourly load value in kWh/h. If you specify sub-hourly load data, the monthly peak is equal to the maximum load value that occurs in the sub-hourly data.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Annual Total</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The total amount of electricity required by the load over an entire year. SAM calculates the value by adding the average hourly values for the year, or if you specify a different time step for the load data, the sum of average values over each time step for the year.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The annual total applies to year one of the analysis period. If you specify a load escalation rate under </span><span class="f_CHInterfaceElement">Adjustments</span><span class="f_VariableDescription">, the annual total does not reflect load data in years two and later.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Annual Peak</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The maximum load value that occurs in the year. If you specify hourly load data, the annual peak is equal to the maximum hourly load value in kWh/h. If you specify sub-hourly load data, the annual peak is equal to the maximum load value that occurs in the sub-hourly data.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Visualize load data</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Click Visualize load data to display the time series data in SAM's built-in <a href="base_case_time_series.htm" class="topiclink">data viewer</a>.</span></p>
+<h3 class="p_Heading3_atocs_" style="border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Calculate Load Profiles</span></h3>
+<p class="p_Text"><span class="f_Text">EnergyPlus is a building simulation model developed for the Department of Energy. You can use the EnergyPlus Example File Generator to generate a text file containing hourly load data for different building types and configurations for some locations in the United States. SAM includes a set of residential load profiles created by this web application in the </span><span class="f_Emphasis">\samples\Residential Load Data</span><span class="f_List"> folder.</span></p>
+<p class="p_Text"><span class="f_List">The EnergyPlus load data generator uses weather data from the TMY2 data set to generate the load data. If you model a system in SAM using this load data, you may want to use the same weather file to ensure that the energy model results are consistent with the load data. Choose the weather file on the <a href="climate_solar.htm" class="topiclink">Location and Ambient Conditions</a> page.</span></p>
+<p class="p_Text"><span class="f_List">To visit the EnergyPlus file generator website, click </span><span class="f_CHInterfaceElement">EERE Building Technologies Program EnergyPlus Load Calculator</span><span class="f_List">. The websites URL is <a href="http://apps1.eere.energy.gov/buildings/energyplus/cfm/inputs/" target="_blank" class="weblink">http://apps1.eere.energy.gov/buildings/energyplus/cfm/inputs/</a>.</span></p>
+</td>
+</tr>
+</table>
+</div>
+<div style="text-align: left; text-indent: 0px; border-color: #000000; border-style: solid; border-width: 1px; background: #ebebeb; padding: 2px 2px 2px 2px; margin: 3px 0px 3px 0px;"><table style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr style="vertical-align:baseline"><td style="border:none;padding:0;width:19px"><a id="utilitybill"></a><img id="TOGGLE0186A3_ICON" class="dropdown-toggle-icon" src="ico-minus-16x16.gif" width="16" height="16" alt="Click to expand or collapse" title="Click to expand or collapse" style="border:none" /></td><td style="border:none;padding:0"><span class="f_Heading2_atoc_"><a class="dropdown-toggle" style="font-size: 16pt; font-family: Arial; font-style: normal; font-weight: bold; color: #000000; background-color: transparent; text-decoration: none;" title="Click to expand or collapse" href="javascript:HMToggle('toggle','TOGGLE0186A3','TOGGLE0186A3_ICON')">Working with Monthly Utility Bill Data
+</a></span></td></tr></table></div><div id="TOGGLE0186A3" style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 6px 0px;"><table class="toggle content table" style="width:100%; border:none; border-spacing:0px;">
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; padding:0px;"><p class="p_Text"><span class="f_Text">In some cases, the only data you may have about a building or facility load may be monthly utility bills showing monthly electricity usage in kWh/month, and perhaps a monthly peak consumption value in kW. This data is insufficient for SAM to model the system's performance because SAM requires a load value for each of the 8,760 hours in a year.</span></p>
+<p class="p_Text"><span class="f_Text">The &quot;Normalize supplied load profile to monthly utility bill data&quot; feature provides one way to work with monthly electric usage data in SAM. To use it, you first specify hourly load data using the User Entered Hourly Data option, and then enter the monthly usage data. SAM scales the hourly data so that it matches the monthly usage data.</span></p>
+<p class="p_Note"><span class="f_CHNote">Note.</span><span class="f_Note"> SAM comes with a set of computer-generated hourly load data files for some cities in the United States. These files may be suitable for you to get started with your analysis. See <a href="electric_load.htm#timeseries" class="topiclink">Working with Time Series Load Data</a> for more details.</span></p>
+<p class="p_TitleProcedure"><span class="f_TitleProcedure">To enter monthly usage data:</span></p>
+<p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">1.</span><span class="f_ProcedureStep">Under Electric Load Data, click </span><span class="f_CHInterfaceElement">User entered hourly data</span><span class="f_ProcedureStep">.</span></p><p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">2.</span><span class="f_ProcedureStep">Click </span><span class="f_CHInterfaceElement">Edit data</span><span class="f_ProcedureStep"> and <a href="electric_load.htm#timeseries" class="topiclink">specify the hourly data</a>.</span></p><p class="p_ProcedureStepNoNumber"><span class="f_ProcedureStepNoNumber">If you do not have hourly load data, you can use one of the computer-generated load files that comes with SAM.</span></p>
+<p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">3.</span><span class="f_ProcedureStep">Check </span><span class="f_CHInterfaceElement">Normalize supplied load profile to monthly utility bill data</span><span class="f_ProcedureStep">.</span></p><p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">4.</span><span class="f_ProcedureStep">Click </span><span class="f_CHInterfaceElement">Edit Values</span><span class="f_ProcedureStep">.</span></p><p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">5.</span><span class="f_ProcedureStep">Type the 12 monthly usage values in the table.</span></p><p class="p_ProcedureStepNoNumber"><span class="f_ProcedureStepNoNumber">If the monthly usage is constant, enter the value under </span><span class="f_CHInterfaceElement">Single Value</span><span class="f_ProcedureStepNoNumber"> and click </span><span class="f_CHInterfaceElement">Apply</span><span class="f_ProcedureStepNoNumber">.</span></p>
+<p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 6px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">6.</span><span class="f_ProcedureStepLast">Click </span><span class="f_CHInterfaceElement">OK</span><span class="f_ProcedureStepLast">.</span></p></td>
+</tr>
+</table>
+</div>
+<div style="text-align: left; text-indent: 0px; border-color: #000000; border-style: solid; border-width: 1px; background: #ebebeb; padding: 2px 2px 2px 2px; margin: 3px 0px 3px 0px;"><table style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr style="vertical-align:baseline"><td style="border:none;padding:0;width:19px"><a id="timeseries"></a><img id="TOGGLE0186A4_ICON" class="dropdown-toggle-icon" src="ico-minus-16x16.gif" width="16" height="16" alt="Click to expand or collapse" title="Click to expand or collapse" style="border:none" /></td><td style="border:none;padding:0"><span class="f_Heading2_atoc_"><a class="dropdown-toggle" style="font-size: 16pt; font-family: Arial; font-style: normal; font-weight: bold; color: #000000; background-color: transparent; text-decoration: none;" title="Click to expand or collapse" href="javascript:HMToggle('toggle','TOGGLE0186A4','TOGGLE0186A4_ICON')">Working with Time Series Load Data</a></span></td></tr></table></div><div id="TOGGLE0186A4" style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 6px 0px;"><table class="toggle content table" style="width:100%; border:none; border-spacing:0px;">
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; padding:0px;"><p class="p_Text"><span class="f_Text">SAM requires time series load data with at least hourly resolution to run simulations involving an electric load. You can either import the data from a properly formatted text file, or copy and paste the data from a spreadsheet program or other software.</span></p>
+<p class="p_Text"><span class="f_Text">If you do not have access to hourly or sub-hourly electric load data, you can use one of the following options:</span></p>
+<p style="text-align: left; padding: 0px 0px 0px 13px; margin: 0px 0px 3px 10px;"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;display:inline-block;width:13px;margin-left:-13px">&#9679;</span><span class="f_List">Specify a set of 12 <a href="electric_load.htm#profiles" class="topiclink">daily profiles</a> by month.</span></p><p style="text-align: left; padding: 0px 0px 0px 13px; margin: 0px 0px 6px 10px;"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;display:inline-block;width:13px;margin-left:-13px">&#9679;</span><span class="f_ListLast">Use one of the computer-generated residential load data sets for different cities in the United States that comes with SAM. This data may be suitable for preliminary analyses before you have access to better quality data. See Importing Data from a File below for instructions.</span></p><h3 class="p_Heading3_atocs_" style="border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Data Sources</span></h3>
+<p class="p_Text"><span class="f_Text">The following examples are some sources of electric load data:</span></p>
+<p style="text-align: left; padding: 0px 0px 0px 13px; margin: 0px 0px 3px 10px;"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;display:inline-block;width:13px;margin-left:-13px">&#9679;</span><span class="f_List">Electrical measurements from a building or other load center. Some electricity service providers make load data available to their customers.</span></p><p style="text-align: left; padding: 0px 0px 0px 13px; margin: 0px 0px 3px 10px;"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;display:inline-block;width:13px;margin-left:-13px">&#9679;</span><span class="f_List">Data generated by a building simulation model, such as the EnergyPlus Example File Generator, <a href="http://apps1.eere.energy.gov/buildings/energyplus/cfm/inputs/" target="_blank" class="weblink">http://apps1.eere.energy.gov/buildings/energyplus/cfm/inputs/</a>.</span></p><p style="text-align: left; padding: 0px 0px 0px 13px; margin: 0px 0px 3px 10px;"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;display:inline-block;width:13px;margin-left:-13px">&#9679;</span><span class="f_List">Some electric service area operators provide system-wide load data on their websites. For examples, see California ISO and Midwest ISO websites.</span></p><p style="text-align: left; padding: 0px 0px 0px 13px; margin: 0px 0px 6px 10px;"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;display:inline-block;width:13px;margin-left:-13px">&#9679;</span><span class="f_ListLast">Sample residential load data generated by the EnergyPlus load data generator supplied with SAM in </span><span class="f_Emphasis">\samples\Simulated Electric Load Data - Residential</span><span class="f_ProcedureStepNoNumber"> folder.</span></p><h3 class="p_Heading3_atocs_" style="border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Time Step and Convention</span></h3>
+<p class="p_Text"><span class="f_Text">SAM requires load data in a single column of average kilowatt per time step values. The number of data rows depends on the time step.</span></p>
+<p class="p_Text"><span class="f_Text">For hourly data, SAM requires a column of 8,760 data rows, where each row contains a value in kilowatts representing the average power required by the load over the hour. For sub-hourly data, SAM requires a column of 8,760 × Number of Times Steps per Hour data rows, with kilowatt values representing the average electric power over the period of a single time step.</span></p>
+<p class="p_Text"><span class="f_Text">The time convention must follow the time convention of the weather data specified on the <a href="climate_solar.htm" class="topiclink">Location and Resource</a>, <a href="wind_resource.htm" class="topiclink">Wind Resource</a>, <a href="climate_biopower.htm" class="topiclink">Location and Ambient Conditions</a>, or <a href="climate_geothermal.htm" class="topiclink">Ambient Conditions</a> page. For NREL typical meteorological year data (TMY2 and TMY3), the first row of data represents the time step beginning at midnight on January 1. SAM assumes that January first is a Monday.</span></p>
+<p class="p_Text"><span class="f_Text">When you use sub-hourly load data with hourly weather data, SAM uses hourly average load values to for the energy charge calculations, and the sub-hourly data to determine the peak load for demand charges.</span></p>
+<h3 class="p_Heading3_atocs_" style="border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Importing Data from a File</span></h3>
+<p class="p_Text"><span class="f_Text">SAM can import data from a text file that contains a single column of values representing the load in a single year. SAM ignores the first row, so you can use that row to store text describing the data. The number of rows depends on the number of time steps. For hourly data, the file should contain a total of 8,761 rows: The first row for header information, and the remaining rows for the load data. For 15-minute data, the file should contain 1 + 8760 x 4 = 35,041 rows.</span></p>
+<p class="p_TitleProcedure"><span class="f_TitleProcedure">To import load data from a properly formatted text file:</span></p>
+<p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">1.</span><span class="f_ProcedureStep">Under </span><span class="f_CHInterfaceElement">Electric Load Data</span><span class="f_ProcedureStep">, click </span><span class="f_CHInterfaceElement">User entered data</span><span class="f_ProcedureStep">.</span></p><p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">2.</span><span class="f_ProcedureStep">Click </span><span class="f_CHInterfaceElement">Edit Data</span><span class="f_ProcedureStep">.</span></p><p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">3.</span><span class="f_ProcedureStep">In the Edit Data window, click </span><span class="f_CHInterfaceElement">Import</span><span class="f_ProcedureStep">.</span></p><p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">4.</span><span class="f_ProcedureStep">Navigate to the folder containing the load data file and open the file. For example to import data from one of the computer-generated residential load files included with SAM, navigate to </span><span class="f_Emphasis">C:\SAM\[version number]\samples\Simulated Electric Load Data - Residential</span><span class="f_ProcedureStep">.</span></p><p class="p_ProcedureStepNoNumber"><span class="f_ProcedureStepNoNumber">SAM displays the data in the data table. Use the scroll bar to see all of the data.</span></p>
+<p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">5.</span><span class="f_ProcedureStep">Click </span><span class="f_CHInterfaceElement">OK</span><span class="f_ProcedureStep"> to return to the Electric Load page.</span></p><p class="p_ProcedureStepNoNumber"><span class="f_ProcedureStepNoNumber">SAM displays monthly and annual load data under </span><span class="f_CHInterfaceElement">Hourly Simulation Load Profile Data</span><span class="f_ProcedureStepNoNumber">.</span></p>
+<p class="p_Text"><span class="f_Text">After importing the data, you can use the scaling and escalation factors on the Electric Load page to scale the entire data set up or down, and to model a load that increases from year to year by the percentage that you specify.</span></p>
+<h3 class="p_Heading3_atocs_" style="border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Pasting Load Data from your Computer's Clipboard</span></h3>
+<p class="p_Text"><span class="f_Text">If you have load data in a spreadsheet or other program that allows you to copy columns of data to your computer's clipboard, you can paste the data into SAM. The data should be a single column of </span><span class="f_ListLast">values in kilowatt-hours representing the load in a single year. The number of rows depends on the number of time steps. For hourly data, the column should contain 8,760 rows of load data.</span></p>
+<p class="p_TitleProcedure"><span class="f_TitleProcedure">To paste load data from your computer's clipboard:</span></p>
+<p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">1.</span><span class="f_ProcedureStep">Under </span><span class="f_CHInterfaceElement">Electric Load Data</span><span class="f_ProcedureStep">, click </span><span class="f_CHInterfaceElement">User entered data</span><span class="f_ProcedureStep">.</span></p><p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">2.</span><span class="f_ProcedureStep">Click </span><span class="f_CHInterfaceElement">Edit Data</span><span class="f_ProcedureStep">.</span></p><p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">3.</span><span class="f_ProcedureStep">Open the spreadsheet or other program containing the load data. The data must be in a single column with the appropriate number of rows for the data's time step.</span></p><p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">4.</span><span class="f_ProcedureStep">Select the entire column of data and copy it.</span></p><p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">5.</span><span class="f_ProcedureStep">In SAM's Edit Data window, click </span><span class="f_CHInterfaceElement">Paste</span><span class="f_ProcedureStep">.</span></p><p class="p_ProcedureStepNoNumber"><span class="f_ProcedureStepNoNumber">SAM displays the data in the data table. Use the scroll bar to see all of the data.</span></p>
+<p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">6.</span><span class="f_ProcedureStep">Click </span><span class="f_CHInterfaceElement">OK</span><span class="f_ProcedureStep"> to return to the Electric Load page.</span></p><p class="p_ProcedureStepNoNumber"><span class="f_ProcedureStepNoNumber">SAM displays monthly and annual load data under </span><span class="f_CHInterfaceElement">Hourly Simulation Load Profile Data</span><span class="f_ProcedureStepNoNumber">.</span></p>
+</td>
+</tr>
+</table>
+</div>
+<div style="text-align: left; text-indent: 0px; border-color: #000000; border-style: solid; border-width: 1px; background: #ebebeb; padding: 2px 2px 2px 2px; margin: 3px 0px 3px 0px;"><table style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr style="vertical-align:baseline"><td style="border:none;padding:0;width:19px"><a id="profiles"></a><img id="TOGGLE0186A5_ICON" class="dropdown-toggle-icon" src="ico-minus-16x16.gif" width="16" height="16" alt="Click to expand or collapse" title="Click to expand or collapse" style="border:none" /></td><td style="border:none;padding:0"><span class="f_Heading2_atoc_"><a class="dropdown-toggle" style="font-size: 16pt; font-family: Arial; font-style: normal; font-weight: bold; color: #000000; background-color: transparent; text-decoration: none;" title="Click to expand or collapse" href="javascript:HMToggle('toggle','TOGGLE0186A5','TOGGLE0186A5_ICON')">Creating Load Data from Daily Profiles</a></span></td></tr></table></div><div id="TOGGLE0186A5" style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 6px 0px;"><table class="toggle content table" style="width:100%; border:none; border-spacing:0px;">
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; padding:0px;"><p class="p_Text"><span class="f_Text">If you do not have a complete 8,760 set of load data, you specify the load using a set of daily load profiles for each month. SAM creates a set of 8,760 values representing the load for an entire year. </span><span class="f_ProcedureStep">When you define a load with daily load profiles, SAM assumes that the load for all days in a given month is identical.</span></p>
+<p class="p_TitleProcedure"><span class="f_TitleProcedure">To create a load data set using daily load profiles:</span></p>
+<p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">1.</span><span class="f_ProcedureStep">Under Electric Load Data, click Monthly schedule.</span></p><p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">2.</span><span class="f_ProcedureStep">Click </span><span class="f_CHInterfaceElement">Edit monthly schedule</span><span class="f_ProcedureStep">.</span></p><p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">3.</span><span class="f_ProcedureStep">In the Edit Monthly Schedule window, click </span><span class="f_CHInterfaceElement">Weekday Values</span><span class="f_ProcedureStep">.</span></p><p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">4.</span><span class="f_ProcedureStep">For each month of the year, define a daily load profile by typing a value in kilowatt-hours for each of the 24 hours of the day. The first column represents the first hour of the day, beginning at midnight and ending at 1:00 a.m. SAM assumes that January 1st is a Monday.</span></p><p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">5.</span><span class="f_ProcedureStep">Click </span><span class="f_CHInterfaceElement">Weekend Values</span><span class="f_ProcedureStep">.</span></p><p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">6.</span><span class="f_ProcedureStep">Repeat Step 4 to define the daily load profile for Saturdays and Sundays. SAM assumes that January 6 is a Saturday.</span></p><p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">7.</span><span class="f_ProcedureStep">Click </span><span class="f_CHInterfaceElement">OK</span><span class="f_ProcedureStep"> to return to the Electric Load page.</span></p><p class="p_ProcedureStepNoNumber"><span class="f_ProcedureStepNoNumber">SAM displays monthly and annual load data under </span><span class="f_CHInterfaceElement">Hourly Simulation Load Profile Data</span><span class="f_ProcedureStepNoNumber">.</span><span class="f_ProcedureStep">.</span></p>
+</td>
+</tr>
+</table>
+</div>
+
+<!--ZOOMSTOP--> 
+
+
+</div> <!-- idcontent -->
+</div><!-- hmbox --> 
+<script type="text/javascript">
+HMInitToggle('TOGGLE0186A1_ICON','hm.type','dropdown','hm.state','0','hm.src0','ico-plus-16x16.gif','hm.src1','ico-minus-16x16.gif','onclick','HMToggle(\'toggle\',\'TOGGLE0186A1\',\'TOGGLE0186A1_ICON\')');
+HMInitToggle('TOGGLE0186A1','hm.type','dropdown','hm.state','0');
+HMInitToggle('TOGGLE0186A2_ICON','hm.type','dropdown','hm.state','0','hm.src0','ico-plus-16x16.gif','hm.src1','ico-minus-16x16.gif','onclick','HMToggle(\'toggle\',\'TOGGLE0186A2\',\'TOGGLE0186A2_ICON\')');
+HMInitToggle('TOGGLE0186A2','hm.type','dropdown','hm.state','0');
+HMInitToggle('TOGGLE0186A3_ICON','hm.type','dropdown','hm.state','0','hm.src0','ico-plus-16x16.gif','hm.src1','ico-minus-16x16.gif','onclick','HMToggle(\'toggle\',\'TOGGLE0186A3\',\'TOGGLE0186A3_ICON\')');
+HMInitToggle('TOGGLE0186A3','hm.type','dropdown','hm.state','0');
+HMInitToggle('TOGGLE0186A4_ICON','hm.type','dropdown','hm.state','0','hm.src0','ico-plus-16x16.gif','hm.src1','ico-minus-16x16.gif','onclick','HMToggle(\'toggle\',\'TOGGLE0186A4\',\'TOGGLE0186A4_ICON\')');
+HMInitToggle('TOGGLE0186A4','hm.type','dropdown','hm.state','0');
+HMInitToggle('TOGGLE0186A5_ICON','hm.type','dropdown','hm.state','0','hm.src0','ico-plus-16x16.gif','hm.src1','ico-minus-16x16.gif','onclick','HMToggle(\'toggle\',\'TOGGLE0186A5\',\'TOGGLE0186A5_ICON\')');
+HMInitToggle('TOGGLE0186A5','hm.type','dropdown','hm.state','0');
+</script>
+</body>
+</html>
