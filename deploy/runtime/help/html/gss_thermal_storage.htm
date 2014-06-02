@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>Generic Solar Thermal Storage</title>
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="" />
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+   <meta http-equiv="content-language" content="en-us" />
+   <meta name="description" content="Thermal Energy Storage (TES) Full Load Hours of TES The thermal storage capacity expressed in number of hours of thermal energy delivered at the power block's design thermal..." />
+   <meta http-equiv="Content-Style-Type" content="text/css" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+   <link id="tabscheme" type="text/css" href="hm_topic.css" rel="stylesheet" />   
+<style type="text/css">
+/* No header topics */
+
+/* Breadcrumb trail */
+p#breadcrumbs {
+font-family: Verdana, Tahoma, Helvetica, Sans-Serif;   padding: 2px 0 1px 2px;
+   margin: 0;
+   font-size: 8pt; 
+   color: #999;
+   }   
+p#breadcrumbs a { color: #999; text-decoration: none;}
+p#breadcrumbs a:visited { color: #999; }
+p#breadcrumbs a:hover { color: #333; border-bottom: 1px dotted #333; }
+
+/* Search hightlight color */
+span.highlight {background-color: #ffff40;}
+</style>
+<script type="text/javascript">
+var hmHeaderTopic = true;
+
+</script> 
+<!--[if IE 9]>
+<link id="iesvgcss" rel="stylesheet" type="text/css" href="hm_webhelp_svg.css" />
+<![endif]-->	
+<script src="jquery.js"></script>
+<script type="text/javascript" src="jquery.tools.min.js"></script>
+<script type="text/javascript" src="jquery.scrollTo-min.js"></script>
+<script type="text/javascript"> 
+// General topic variables
+var tVars = {
+   hmHelpPage: "index.html",
+   nextP: "generic_system.htm",
+   prevP: "gss_power_block.htm",
+   currP: "gss_thermal_storage.htm",
+   defP: "introduction.htm",
+   titleP: "Generic Solar Thermal Storage",
+   mailsubject: "Feedback on: SAM Help - Thermal Storage",
+   simplesubject: "Documentation%20Feedback",
+   mailid: "GSS_Thermal_Storage",
+   mailpath: "Concentrating Solar Power &gt; Generic Solar System &gt; Thermal Storage /",
+   mailbody: "Dear SAM Support,",
+   mailrecipient: "SAM Support <sam.support@nrel.gov>",
+   simplerecipient: "sam.support@nrel.gov",
+   fbtype: false,
+   header: true,
+   background: "bg.png",
+   tablesReady: false,
+   togglesReady: false,
+   webRedirect: true
+   }
+// Popup configuration
+ var hmpBShadow = true;
+ var hmPopSmallDim = 500;
+ var hmPopKillVideo = false;
+ // AutoTOC variables
+ var hmatocvars = {
+   atoc_show: true,
+   atoc_title: "Contents",
+   atoc_tip: "Jump to:&nbsp;",
+   atoc_minHeaders: 2,
+   atoc_btntip_off: "No contents entries on this page",
+   atoc_btntip_on: "Display/hide topic directory",
+   atoc_toptip: "Jump to top of page",
+   atoc_top: "Scroll to Top of Page",
+   atoc_bg: "#f6f6f6",
+   atoc_border: "silver",
+   atoc_linkcolor: "#444",
+   atoc_linklimit: 45,
+   atoc_hovercolor: "#000",
+   atoc_hoverbgcolor: "#e0e0e0"
+}
+// Sortable tables
+var sortVars = {
+   europeandate: false,
+   germanNumbers: false,
+   imagePath: "",
+   image_up: "arrow-up.gif",
+   image_down: "arrow-down.gif",
+   image_empty: "arrow-empty.gif",
+   image_none: "arrow-none.gif",
+   sort_tip: "Click to sort on this column",
+   umlauts: "false"
+   }
+
+</script>
+
+<script type="text/javascript"> 
+$(document).ready(function() {
+var doc = document;  
+try {
+if (parent.hmWebHelp.navWidth != null) doc = parent.document;
+doc.title = $("<div/>").html("SAM Help - Generic Solar Thermal Storage").text();
+window.onunload = function() {doc.title = $("<div/>").html("SAM Help").text();}
+} catch(err) {}
+});
+</script>
+<script type="text/javascript" src="helpman_settings.js"></script>
+<script type="text/javascript" src="helpman_topicinit.js"></script>
+<script type="text/javascript" src="hmtopic.js"></script>
+
+   <script type="text/javascript">
+     HMSyncTOC("index.html", "gss_thermal_storage.htm");
+   </script>
+   <script type="text/javascript" src="highlight.js"></script>
+   <script type="text/javascript">
+     $(document).ready(function(){highlight();});
+   </script>
+</head>
+<body>
+<!--ZOOMSTOP-->
+<ul id="topictabs" class="tabs">
+<li id="indextab" class="hmtabs"><a href="#" id="indextablink" class="current"><span>Generic Solar Thermal Storage</span></a></li>
+</ul>
+<div id="hmbox">
+<div id="hmheader">
+<div id="hmheadercontents">
+<p id="breadcrumbs">
+<b>Navigation:</b>
+<a href="concentrating_solar_power_csp.htm">Concentrating Solar Power</a> &gt; <a href="generic_solar_system.htm">Generic Solar System</a>:</p> 
+<h1 class="p_Heading1"><span class="f_Heading1">Thermal Storage</span></h1>
+
+</div>
+<div id="atocIcon" class="navdivs">
+<img class="navicon" id="hmAtocLink" src="contents_off.png" alt="No contents entries on this page" title="No contents entries on this page" />
+<br /><span>Contents</span>
+</div>
+</div>
+<div id="autoTocWrapper" class="topicmenu"></div>
+<div id="idcontent">
+<div id="unclicker"></div>
+
+<!--ZOOMRESTART-->
+<h3 class="p_Heading3_atocs_" style="border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Thermal Energy Storage (TES)</span></h3>
+<p class="p_VariableName"><span class="f_VariableName">Full Load Hours of TES</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The thermal storage capacity expressed in number of hours of thermal energy delivered at the power block's design thermal input level. The physical capacity is the number of hours of storage multiplied by the power block design thermal input. Used to calculate the TES maximum storage capacity.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Max thermal capacity (MWh)</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The maximum thermal energy storage capacity of the TES, assuming that thermal storage can be fully discharged (see Thermal Storage Dispatch Control).</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Charging energy derate</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">SAM applies the derate factor to the turbine efficiency for trough systems with storage to account for the lower steam temperature that results from imperfect heat exchange in the storage system.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Discharging energy derate</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Efficiency adjustment factor. Used to calculate maximum TES discharge rate.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Charge based loss adj</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Coefficients for evaluating a polynomial equation that adjust thermal losses from the thermal storage system based on charge level. The polynomial is formulated as follows:</span></p>
+<p class="p_VariableDescription"><img src="eq_gss_fhl-tes-charge.gif" width="336" height="18" alt="EQ_GSS_Fhl-tes-charge" style="border:none" /></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">where </span><span class="f_CHEquationVariable">X</span><span class="f_CHVariableSubscript">charge</span><span class="f_VariableDescription"> is the fractional charge level of the thermal storage system. The fractional charge is evaluated at the average charge level over the time step.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Temp based loss adj</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Coefficients for evaluating a polynomial equation that adjust thermal losses from the thermal storage system based on ambient temperature. The polynomial is formulated as follows:</span></p>
+<p class="p_VariableDescription"><img src="eq_gss_fhl-tes-temp.gif" width="460" height="21" alt="EQ_GSS_Fhl-tes-temp" style="border:none" /></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">where </span><span class="f_CHEquationVariable">T</span><span class="f_CHVariableSubscript">sf,des</span><span class="f_VariableDescription"> is the design-point solar field ambient temperature defined on the Solar Field page.</span></p>
+<h3 class="p_Heading3_atocs_" style="border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Thermal Storage Dispatch Control</span></h3>
+<p class="p_Text"><span class="f_Text">The storage dispatch control variables each have six values, one for each of six possible dispatch periods. They determine how SAM calculates the energy flows between the solar field, thermal energy storage system, and power block. The fossil-fill fraction is used to calculate the energy from a backup boiler.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Storage Dispatch Fraction with Solar</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The fraction of the TES maximum storage capacity indicating the minimum level of charge that the storage system can discharge to while the solar field is producing power. A value of zero will always dispatch the TES in any hour assigned to the given dispatch period; a value of one will never dispatch the TES. Used to calculate the storage dispatch levels.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Storage Dispatch Fraction without Solar</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The fraction of the TES maximum storage capacity indicating the minimum level of charge that the storage system can discharge to while no solar resource is available. A value of zero will always dispatch the TES in any hour assigned to the given dispatch period; a value of one will never dispatch the TES. Used to calculate the storage dispatch levels.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Turbine Output Fraction</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The fraction of design-point thermal load to the power block before part-load and temperature efficiency corrections. These values allow the user to dispatch the power cycle at a desired level according to the time-of-dispatch period.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Fossil Fill Fraction</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">A fraction of the power block design turbine gross output from the Power Block page that can be met by the backup boiler. Used by the power block module to calculate the energy from the backup boiler.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">TOD Factor</span></p>
+<p class="p_Text"><span class="f_Text">The time-of-delivery (TOD) factors allow you to specify a set of TOD power price factors to model <a href="td_variables_overview.htm" class="topiclink">time-dependent pricing</a> for projects with one of the Utility Financing options.</span></p>
+<p class="p_Text"><span class="f_Text">The TOD factors are a set of multipliers that SAM uses to adjust the <a href="mtf_ppa_price.htm" class="topiclink">PPA price</a> based on time of day and month of year for utility projects. The TOD factors work in conjunction with the assumptions on the <a href="financing_models.htm" class="topiclink">Financing</a> page.</span></p>
+<p class="p_Note"><span class="f_CHNote">Note.</span><span class="f_Note"> For utility projects with no TOD factors, set the value for all periods to one.</span></p>
+<p class="p_Text"><span class="f_Text">For the CSP models, although the TOD power price factors are financial model inputs, they are on the Storage page because it includes other time-dependent variables, and there may be a relationship between the dispatch factors and the TOD power price factors. For PV and other technology models, the TOD power price factors are on a separate Time of Delivery Factors input page. For a description of how to specify the TOD power price factors for all technology models, see <a href="fin_energy_payment_dispatch.htm" class="topiclink">Time of Delivery Factors</a>.</span></p>
+<p class="p_Text"><span class="f_Text">For a description of TOD-related simulation results, see <a href="td_ppa.htm" class="topiclink">PPA Revenue with TOD Factors</a>.</span></p>
+<h3 class="p_Heading3_atocs_" style="border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Storage and Fossil Dispatch Controls</span></h3>
+<p class="p_Text"><span class="f_Text">The thermal storage dispatch controls determine the timing of releases of energy from the thermal energy storage and fossil backup systems to the power block. When the system includes thermal energy storage or fossil backup, SAM can use a different dispatch strategy for up to six different dispatch periods.</span></p>
+<h3 class="p_Heading3_atocs_" style="border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Storage Dispatch</span></h3>
+<p class="p_Text"><span class="f_Text">SAM decides whether or not to operate the power block in each hour of the simulation based on how much energy is stored in the TES, how much energy is provided by the solar field, and the values of the thermal storage dispatch controls parameters. You can define when the power block operates for each of the six dispatch periods. For each hour in the simulation, if the power block is not already operating, SAM looks at the amount of energy that is in thermal energy storage at the beginning of the hour and decides whether it should operate the power block. For each period, there are two targets for starting the power block: one for periods of sunshine (w/solar), and one for period of no sunshine (w/o solar). </span></p>
+<p class="p_Text"><span class="f_Text">The turbine output fraction for each dispatch period determines at what load level the power block runs using energy from storage during that period. The load level is a function of the turbine output fraction, design turbine thermal input, and the five turbine part load electric to thermal factors on the <a href="troughempirical_power_block.htm" class="topiclink">Power Block page</a>.</span></p>
+<p class="p_Text"><span class="f_Text">For each dispatch period during periods of sunshine, thermal storage is dispatched to meet the power block load level for that period only when the thermal power from the solar field is insufficient and available storage is equal to or greater than the product of the storage dispatch fraction (with solar) and maximum energy in storage. Similarly, during periods of no sunshine when no thermal power is produced by the solar field, the power block will not run except when the energy available in storage is equal to or greater than the product of storage dispatch fraction (without solar) and maximum energy in storage.</span></p>
+<p class="p_Text"><span class="f_Text">By setting the thermal storage dispatch controls parameters, you can simulate the effect of a clear day when the operator may need to start the plant earlier in the day to make sure that the storage is not filled to capacity and solar energy is dumped, or of a cloudy day when the operator may want to store energy for later use in a higher value period.</span></p>
+<h3 class="p_Heading3_atocs_" style="border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Fossil Dispatch</span></h3>
+<p class="p_Text"><span class="f_Text">When the fossil fill fraction is greater than zero for any dispatch period, the system is considered to include fossil backup. The fossil fill fraction defines the solar output level at which the backup system runs during each hour of a specific dispatch period. For example, a fossil fill fraction of 1.0 would require that the fossil backup operate to fill in every hour during a specified period to 100% of design output. In that case, during periods when solar is providing 100% output, no fossil energy would be used. When solar is providing less than 100% output, the fossil backup operates to fill in the remaining energy so that the system achieves 100% output. For a fossil fill fraction of 0.5, the system would use energy from the fossil backup only when solar output drops below 50%.</span></p>
+<p class="p_Text"><span class="f_Text">The boiler LHV efficiency value on the <a href="troughempirical_power_block.htm" class="topiclink">Power Block page</a> determines the quantity of fuel used by the fossil backup system. A value of 0.9 is reasonable for a natural gas-fired backup boiler. SAM includes the cost of fuel for the backup system in the <a href="mtf_lcoe.htm" class="topiclink">levelized cost of energy</a> and other metrics reported in the results, and reports the energy equivalent of the hourly fuel consumption in the <a href="pm_generic_solar.htm" class="topiclink">time series simulation results</a>. The cost of fuel for the backup system is defined on the <a href="trough_system_costs.htm" class="topiclink">Trough System Costs page</a>.</span></p>
+<h3 class="p_Heading3_atocs_" style="border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">TOD Factor</span></h3>
+<p class="p_Text"><span class="f_Text">The TOD factors allow you to specify a set of TOD factors for projects with one of the Utility Financing options. See above for details.</span></p>
+<h3 class="p_Heading3_atocs_" style="border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Defining Dispatch Schedules</span></h3>
+<p class="p_Text"><span class="f_Text">The storage dispatch schedules determine when each of the six periods apply during weekdays and weekends throughout the year. You can either choose an existing schedule from one of the schedules in the CSP trough TES dispatch library or define a custom schedule. For information about libraries, see <a href="libraries.htm" class="topiclink">Working with Libraries</a>.</span></p>
+<p class="p_Text"><span class="f_Text">The TES dispatch library only assigns period numbers to the weekday and weekend schedule matrices. The dispatch fractions assigned to each of the six periods are not stored in the library.</span></p>
+<p class="p_TitleProcedure"><span class="f_TitleProcedure">To choose a schedule from the library:</span></p>
+<p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">1.</span><span class="f_ProcedureStep">Click </span><span class="f_CHInterfaceElement">Dispatch schedule library</span><span class="f_ProcedureStep">.</span></p><p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">2.</span><span class="f_ProcedureStep">Choose a schedule from the list of four schedules. The schedules are based on time-of-use pricing schedules from four California utilities.</span></p><p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">3.</span><span class="f_ProcedureStep">Click </span><span class="f_CHInterfaceElement">OK</span><span class="f_ProcedureStep">.</span></p><p class="p_ProcedureStepNoNumber"><span class="f_ProcedureStepNoNumber">You can modify a schedule using the steps described below. Modifying a schedule does not affect the schedule stored in the library.</span></p>
+<p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">4.</span><span class="f_ProcedureStep">For each of the up to six periods used in the schedule, enter values for the dispatch fractions described above. Use the period number and color to identify the times in the schedule that each period applies.</span></p><p class="p_TitleProcedure"><span class="f_TitleProcedure">To specify a weekday or weekend schedule:</span></p>
+<p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">1.</span><span class="f_ProcedureStep">Assign values as appropriate to the Storage Dispatch, Turbine Output Fraction, Fossil Fill Fraction, and TOD Factor for each of the up to nine periods.</span></p><p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">2.</span><span class="f_ProcedureStep">Click </span><span class="f_CHInterfaceElement">Dispatch schedule library</span><span class="f_ProcedureStep">.</span></p><p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">3.</span><span class="f_ProcedureStep">Choose a </span><span class="f_CHInterfaceElement">Uniform Dispatch</span><span class="f_ProcedureStep">.</span></p><p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">4.</span><span class="f_ProcedureStep">Click </span><span class="f_CHInterfaceElement">OK</span><span class="f_ProcedureStep">.</span></p><p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">5.</span><span class="f_ProcedureStep">Use your mouse to draw a rectangle in the matrix for the first block of time that applies to period 2.</span></p><p class="p_ProcedureStepNoNumber"><img src="ss_schedule-select-block.gif" width="438" height="240" alt="SS_Schedule-select-block" style="border:none" /></p>
+<p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">6.</span><span class="f_ProcedureStep">Type the number 2.</span></p><p class="p_ProcedureStepNoNumber"><img src="ss_schedule-type-value.gif" width="441" height="241" alt="SS_Schedule-type-value" style="border:none" /></p>
+<p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">7.</span><span class="f_ProcedureStep">SAM shades displays the period number in the squares that make up the rectangle, and shades the rectangle to match the color of the period.</span></p><p class="p_ProcedureStepNoNumber"><img src="ss_schedule-troughdispatchblockoftwos.gif" width="600" height="277" alt="SS_Schedule-TroughDispatchBlockOfTwos" style="border:none" /></p>
+<p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 6px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">8.</span><span class="f_ProcedureStepLast">Repeat Steps 2-4 for each of the remaining periods that apply to the schedule.</span></p>
+<!--ZOOMSTOP--> 
+
+
+</div> <!-- idcontent -->
+</div><!-- hmbox --> 
+</body>
+</html>

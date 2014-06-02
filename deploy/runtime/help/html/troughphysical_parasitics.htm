@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>Physical Trough Parasitics</title>
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="" />
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+   <meta http-equiv="content-language" content="en-us" />
+   <meta name="description" content="To view the Parasitics page, click Parasitics on the main window's navigation menu. Note that for the physical trough input pages to be available, the technology option in the..." />
+   <meta http-equiv="Content-Style-Type" content="text/css" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+   <link id="tabscheme" type="text/css" href="hm_topic.css" rel="stylesheet" />   
+<style type="text/css">
+/* No header topics */
+
+/* Breadcrumb trail */
+p#breadcrumbs {
+font-family: Verdana, Tahoma, Helvetica, Sans-Serif;   padding: 2px 0 1px 2px;
+   margin: 0;
+   font-size: 8pt; 
+   color: #999;
+   }   
+p#breadcrumbs a { color: #999; text-decoration: none;}
+p#breadcrumbs a:visited { color: #999; }
+p#breadcrumbs a:hover { color: #333; border-bottom: 1px dotted #333; }
+
+/* Search hightlight color */
+span.highlight {background-color: #ffff40;}
+</style>
+<script type="text/javascript">
+var hmHeaderTopic = true;
+
+</script> 
+<!--[if IE 9]>
+<link id="iesvgcss" rel="stylesheet" type="text/css" href="hm_webhelp_svg.css" />
+<![endif]-->	
+<script src="jquery.js"></script>
+<script type="text/javascript" src="jquery.tools.min.js"></script>
+<script type="text/javascript" src="jquery.scrollTo-min.js"></script>
+<script type="text/javascript"> 
+// General topic variables
+var tVars = {
+   hmHelpPage: "index.html",
+   nextP: "parabolic_trough_empirical.htm",
+   prevP: "troughphysical_thermal_storage.htm",
+   currP: "troughphysical_parasitics.htm",
+   defP: "introduction.htm",
+   titleP: "Physical Trough Parasitics",
+   mailsubject: "Feedback on: SAM Help - Parasitics",
+   simplesubject: "Documentation%20Feedback",
+   mailid: "TroughPhysical_Parasitics",
+   mailpath: "Concentrating Solar Power &gt; Parabolic Trough Physical &gt; Parasitics /",
+   mailbody: "Dear SAM Support,",
+   mailrecipient: "SAM Support <sam.support@nrel.gov>",
+   simplerecipient: "sam.support@nrel.gov",
+   fbtype: false,
+   header: true,
+   background: "bg.png",
+   tablesReady: false,
+   togglesReady: false,
+   webRedirect: true
+   }
+// Popup configuration
+ var hmpBShadow = true;
+ var hmPopSmallDim = 500;
+ var hmPopKillVideo = false;
+ // AutoTOC variables
+ var hmatocvars = {
+   atoc_show: true,
+   atoc_title: "Contents",
+   atoc_tip: "Jump to:&nbsp;",
+   atoc_minHeaders: 2,
+   atoc_btntip_off: "No contents entries on this page",
+   atoc_btntip_on: "Display/hide topic directory",
+   atoc_toptip: "Jump to top of page",
+   atoc_top: "Scroll to Top of Page",
+   atoc_bg: "#f6f6f6",
+   atoc_border: "silver",
+   atoc_linkcolor: "#444",
+   atoc_linklimit: 45,
+   atoc_hovercolor: "#000",
+   atoc_hoverbgcolor: "#e0e0e0"
+}
+// Sortable tables
+var sortVars = {
+   europeandate: false,
+   germanNumbers: false,
+   imagePath: "",
+   image_up: "arrow-up.gif",
+   image_down: "arrow-down.gif",
+   image_empty: "arrow-empty.gif",
+   image_none: "arrow-none.gif",
+   sort_tip: "Click to sort on this column",
+   umlauts: "false"
+   }
+
+</script>
+
+<script type="text/javascript"> 
+$(document).ready(function() {
+var doc = document;  
+try {
+if (parent.hmWebHelp.navWidth != null) doc = parent.document;
+doc.title = $("<div/>").html("SAM Help - Physical Trough Parasitics").text();
+window.onunload = function() {doc.title = $("<div/>").html("SAM Help").text();}
+} catch(err) {}
+});
+</script>
+<script type="text/javascript" src="helpman_settings.js"></script>
+<script type="text/javascript" src="helpman_topicinit.js"></script>
+<script type="text/javascript" src="hmtopic.js"></script>
+
+   <script type="text/javascript">
+     HMSyncTOC("index.html", "troughphysical_parasitics.htm");
+   </script>
+   <script type="text/javascript" src="highlight.js"></script>
+   <script type="text/javascript">
+     $(document).ready(function(){highlight();});
+   </script>
+</head>
+<body>
+<!--ZOOMSTOP-->
+<ul id="topictabs" class="tabs">
+<li id="indextab" class="hmtabs"><a href="#" id="indextablink" class="current"><span>Physical Trough Parasitics</span></a></li>
+</ul>
+<div id="hmbox">
+<div id="hmheader">
+<div id="hmheadercontents">
+<p id="breadcrumbs">
+<b>Navigation:</b>
+<a href="concentrating_solar_power_csp.htm">Concentrating Solar Power</a> &gt; <a href="parabolic_trough_physical.htm">Parabolic Trough Physical</a>:</p> 
+<h1 class="p_Heading1"><span class="f_Heading1">Parasitics</span></h1>
+
+</div>
+<div id="atocIcon" class="navdivs">
+<img class="navicon" id="hmAtocLink" src="contents_off.png" alt="No contents entries on this page" title="No contents entries on this page" />
+<br /><span>Contents</span>
+</div>
+</div>
+<div id="autoTocWrapper" class="topicmenu"></div>
+<div id="idcontent">
+<div id="unclicker"></div>
+
+<!--ZOOMRESTART-->
+<p class="p_Text"><span class="f_Text">To view the Parasitics page, click </span><span class="f_CHInterfaceElement">Parasitics</span><span class="f_Text"> on the main window's navigation menu. Note that for the physical trough input pages to be available, the technology option in the <a href="window_technology_market.htm" class="topiclink">Technology and Market</a> window must be Concentrating Solar Power - Physical Trough System.</span></p>
+<p class="p_Text"><span class="f_Text">The variables on the Parasitics page define electrical loads in the system. For each hour of the simulation, SAM calculates the parasitic load and subtracts it from the power cycle's gross electrical output to calculate the net electrical output.</span></p>
+<p class="p_Note"><span class="f_CHNote">Note.</span><span class="f_Note"> For a detailed explanation of the physical trough model, see Wagner, M. J.; Gilman, P. (2011). </span><span class="f_Emphasis">Technical Manual for the SAM Physical Trough Model</span><span class="f_Note">. 124 pp.; NREL Report No. TP-5500-51825. <a href="http://www.nrel.gov/docs/fy11osti/51825.pdf" target="_blank" class="weblink">http://www.nrel.gov/docs/fy11osti/51825.pdf</a> (3.7 MB)</span></p>
+<h3 class="p_Heading3_atocs_" style="border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Parasitics</span></h3>
+<p class="p_VariableName"><span class="f_VariableName">Piping thermal loss coefficient (W/m</span><span class="f_VariableName" style="font-size: 7pt; vertical-align: super;">2</span><span class="f_VariableName">-K)</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The thermal loss coefficient that is used to calculate thermal losses from piping between receivers, crossover piping, header piping, and runner piping. The coefficient specifies the number of thermal watts lost from the system as a function of the piping surface area, and the temperature difference between the fluid in the piping and the ambient air (dry bulb temperature). The length of crossover piping depends on the row spacing variable on the <a href="troughphysical_solar_field.htm" class="topiclink">Solar Field</a> page, and the piping distance between assemblies on the <a href="troughphysical_collectors_scas.htm" class="topiclink">Collectors</a> page.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Tracking power (W per collector)</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The amount of electrical power consumed by a single collector tracking mechanism. SAM only calculates tracking losses during hours when collectors are actively tracking the sun. The total field tracking power is calculated by multiplying this value by the number of loops in the field and number of assemblies per loop specified on the <a href="troughphysical_solar_field.htm" class="topiclink">Solar Field</a> page.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Required pumping power for HTF through power block (kJ/kg)</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">A coefficient used to calculate the electric power required to pump heat transfer fluid through the power cycle. SAM applies the coefficient to all heat transfer fluid flowing through the power cycle. The coefficient can alternatively be defined as the pumping power divided by the mass flow rate kW/kg-s, which is equivalent to the units kJ/kg.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Required pumping power for HTF through storage (kJ/kg)</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">A coefficient used to calculate the electric power consumed by pumps to move heat transfer fluid through the storage heat exchanger on both the solar field side and the storage tank side (for cases where a heat exchanger exists, specified on the <a href="troughphysical_thermal_storage.htm" class="topiclink">Thermal Storage</a> page). This coefficient is applied separately to the solar field flow and the tank flow.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Fraction of rated gross power consumed at all times</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">A fixed electric load applied to all hours of the simulation, expressed as a fraction of rated gross power at design from the <a href="troughphysical_power_cycle.htm" class="topiclink">Power Cycle</a> page.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Balance of plant parasitic (MWe/MWcap)</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">A parasitic load that is applied as a function of the thermal input to the power cycle.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Aux heater, boiler parasitic (MWe/MWcap)</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">A parasitic load that is applied as a function of the thermal output of the auxiliary fossil-fired heaters. Applies only when the system includes fossil backup. See <a href="troughphysical_power_cycle.htm#fossilbackup" class="topiclink">the fossil backup inputs on the Power Cycle page</a>.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Design Point Total Tracking (W)</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">A value displayed for reference indicating what the total tracking parasitic load would be if all collectors in the field were actively tracking simultaneously.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Design Point Total Fixed (MWe)</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The value of the fixed parasitic load applied at all times.</span></p>
+<p class="p_EquationExcel"><span class="f_EquationExcel">Fixed (MWe) = Fraction of Gross Power Consumed at All Times × Design Gross Output (MWe)</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Design Point Total BOP (MWe)</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The value of the balance-of-plant parasitic load assuming design-point operation.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Design Point Total Aux (MWe)</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The value of the auxiliary heater (for the backup gas boiler) parasitic load assuming the auxiliary heater is providing 100% of the thermal load required for the power cycle.</span></p>
+<h4 class="p_Heading4"><span class="f_Heading4">Design Point Totals</span></h4>
+<p class="p_Text"><span class="f_Text">The design point total values represent the maximum limit of parasitic losses. SAM calculates actual parasitic losses during simulations.</span></p>
+<div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 0px 0px;"><table class="default no border" style="width:100%; border:none; border-spacing:0px;">
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; width:142px; padding:2px;"><p class="p_TableHeadColumn"><span class="f_TableHeadColumn">Variable</span></p>
+</td>
+<td style="vertical-align:top; width:316px; padding:2px;"><p class="p_TableHeadColumn"><span class="f_TableHeadColumn">Equation</span></p>
+</td>
+<td style="vertical-align:top; width:184px; padding:2px;"><p class="p_TableHeadColumn"><span class="f_TableHeadColumn">Note</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; width:142px; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Tracking</span></p>
+</td>
+<td style="vertical-align:top; width:316px; padding:2px;"><p class="p_TableTextCenter"><img src="eq_trp-trackingpower.gif" width="147" height="20" alt="EQ_TRP-TrackingPower" style="border:none" /></p>
+</td>
+<td style="vertical-align:top; width:184px; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">&nbsp;</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; width:142px; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Fixed</span></p>
+</td>
+<td style="vertical-align:top; width:316px; padding:2px;"><p class="p_TableTextCenter"><img src="eq_trp-fractionofratedgross.gif" width="114" height="20" alt="EQ_TRP-FractionofRatedGross" style="border:none" /></p>
+</td>
+<td style="vertical-align:top; width:184px; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">&nbsp;</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; width:142px; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">BOP</span></p>
+</td>
+<td style="vertical-align:top; width:316px; padding:2px;"><p class="p_TableTextCenter"><img src="eq_trp-bopparasitic.gif" width="108" height="20" alt="EQ_TRP-BOPParasitic" style="border:none" /></p>
+</td>
+<td style="vertical-align:top; width:184px; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Only multiply gross power by the first coefficient</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; width:142px; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Aux</span></p>
+</td>
+<td style="vertical-align:top; width:316px; padding:2px;"><p class="p_TableTextCenter"><img src="eq_trp-auxheaterboiler.gif" width="106" height="20" alt="EQ_TRP-AuxHeaterBoiler" style="border:none" /></p>
+</td>
+<td style="vertical-align:top; width:184px; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Only multiply gross power by the first coefficient</span></p>
+</td>
+</tr>
+</table>
+</div>
+
+<!--ZOOMSTOP--> 
+
+
+</div> <!-- idcontent -->
+</div><!-- hmbox --> 
+</body>
+</html>

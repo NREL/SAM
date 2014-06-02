@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>Solar Water Heating</title>
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="" />
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+   <meta http-equiv="content-language" content="en-us" />
+   <meta name="description" content="The SWH System page is where you specify the design parameters for the solar water heating system. For a general description of the model, see Solar Water Heating Overview." />
+   <meta http-equiv="Content-Style-Type" content="text/css" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+   <link id="tabscheme" type="text/css" href="hm_topic.css" rel="stylesheet" />   
+<style type="text/css">
+/* No header topics */
+
+/* Breadcrumb trail */
+p#breadcrumbs {
+font-family: Verdana, Tahoma, Helvetica, Sans-Serif;   padding: 2px 0 1px 2px;
+   margin: 0;
+   font-size: 8pt; 
+   color: #999;
+   }   
+p#breadcrumbs a { color: #999; text-decoration: none;}
+p#breadcrumbs a:visited { color: #999; }
+p#breadcrumbs a:hover { color: #333; border-bottom: 1px dotted #333; }
+
+/* Search hightlight color */
+span.highlight {background-color: #ffff40;}
+</style>
+<script type="text/javascript">
+var hmHeaderTopic = true;
+
+</script> 
+<!--[if IE 9]>
+<link id="iesvgcss" rel="stylesheet" type="text/css" href="hm_webhelp_svg.css" />
+<![endif]-->	
+<script src="jquery.js"></script>
+<script type="text/javascript" src="jquery.tools.min.js"></script>
+<script type="text/javascript" src="jquery.scrollTo-min.js"></script>
+<script type="text/javascript"> 
+// General topic variables
+var tVars = {
+   hmHelpPage: "index.html",
+   nextP: "wind_power.htm",
+   prevP: "shw_overview.htm",
+   currP: "shw_system.htm",
+   defP: "introduction.htm",
+   titleP: "Solar Water Heating",
+   mailsubject: "Feedback on: SAM Help - Solar Water Heating",
+   simplesubject: "Documentation%20Feedback",
+   mailid: "SHW_System",
+   mailpath: "Solar Water Heating &gt; Solar Water Heating /",
+   mailbody: "Dear SAM Support,",
+   mailrecipient: "SAM Support <sam.support@nrel.gov>",
+   simplerecipient: "sam.support@nrel.gov",
+   fbtype: false,
+   header: true,
+   background: "bg.png",
+   tablesReady: false,
+   togglesReady: false,
+   webRedirect: true
+   }
+// Popup configuration
+ var hmpBShadow = true;
+ var hmPopSmallDim = 500;
+ var hmPopKillVideo = false;
+ // AutoTOC variables
+ var hmatocvars = {
+   atoc_show: true,
+   atoc_title: "Contents",
+   atoc_tip: "Jump to:&nbsp;",
+   atoc_minHeaders: 2,
+   atoc_btntip_off: "No contents entries on this page",
+   atoc_btntip_on: "Display/hide topic directory",
+   atoc_toptip: "Jump to top of page",
+   atoc_top: "Scroll to Top of Page",
+   atoc_bg: "#f6f6f6",
+   atoc_border: "silver",
+   atoc_linkcolor: "#444",
+   atoc_linklimit: 45,
+   atoc_hovercolor: "#000",
+   atoc_hoverbgcolor: "#e0e0e0"
+}
+// Sortable tables
+var sortVars = {
+   europeandate: false,
+   germanNumbers: false,
+   imagePath: "",
+   image_up: "arrow-up.gif",
+   image_down: "arrow-down.gif",
+   image_empty: "arrow-empty.gif",
+   image_none: "arrow-none.gif",
+   sort_tip: "Click to sort on this column",
+   umlauts: "false"
+   }
+
+</script>
+
+<script type="text/javascript"> 
+$(document).ready(function() {
+var doc = document;  
+try {
+if (parent.hmWebHelp.navWidth != null) doc = parent.document;
+doc.title = $("<div/>").html("SAM Help - Solar Water Heating").text();
+window.onunload = function() {doc.title = $("<div/>").html("SAM Help").text();}
+} catch(err) {}
+});
+</script>
+<script type="text/javascript" src="helpman_settings.js"></script>
+<script type="text/javascript" src="helpman_topicinit.js"></script>
+<script type="text/javascript" src="hmtopic.js"></script>
+
+   <script type="text/javascript">
+     HMSyncTOC("index.html", "shw_system.htm");
+   </script>
+   <script type="text/javascript" src="highlight.js"></script>
+   <script type="text/javascript">
+     $(document).ready(function(){highlight();});
+   </script>
+</head>
+<body>
+<!--ZOOMSTOP-->
+<ul id="topictabs" class="tabs">
+<li id="indextab" class="hmtabs"><a href="#" id="indextablink" class="current"><span>Solar Water Heating</span></a></li>
+</ul>
+<div id="hmbox">
+<div id="hmheader">
+<div id="hmheadercontents">
+<p id="breadcrumbs">
+<b>Navigation:</b>
+<a href="solar_hot_water.htm">Solar Water Heating</a>:</p> 
+<h1 class="p_Heading1"><span class="f_Heading1">Solar Water Heating</span></h1>
+
+</div>
+<div id="atocIcon" class="navdivs">
+<img class="navicon" id="hmAtocLink" src="contents_off.png" alt="No contents entries on this page" title="No contents entries on this page" />
+<br /><span>Contents</span>
+</div>
+</div>
+<div id="autoTocWrapper" class="topicmenu"></div>
+<div id="idcontent">
+<div id="unclicker"></div>
+
+<!--ZOOMRESTART-->
+<p class="p_Text"><span class="f_Text">The SWH System page is where you specify the design parameters for the solar water heating system. For a general description of the model, see <a href="shw_overview.htm" class="topiclink">Solar Water Heating Overview</a>.</span></p>
+<p class="p_Note"><span class="f_CHNote">Notes. </span><br />
+<span class="f_CHNote">&nbsp;</span><br />
+<span class="f_Note">The solar water heating model in SAM 2013.1.15 and earlier has been replaced with a new model that has similar but not identical input variables. If you use the current version of SAM to open file or case created with the previous model, SAM converts the input variables from the previous model to the new model as closely as possible. You should expect slightly different results between the old and new models. See <a href="shw_overview.htm#newmodel" class="topiclink">here</a> for details.</span><br />
+<span class="f_Note">&nbsp;</span><br />
+<span class="f_Note">You can explore the details of the SWH model by reviewing the hourly <a href="pm_solar_water_heating.htm" class="topiclink">performance model results</a>.</span></p>
+<h3 class="p_Heading3_atocs_" style="border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Hot Water Draw</span></h3>
+<p class="p_Text"><span class="f_Text">You must specify a set of 8,760 hourly values representing the hot water system's heating load. You can either import values from a text file, paste values from a spreadsheet or other file using your computer's clipboard, or type a set of 24-hour load profiles for each of the twelve months of the year, with the option of specifying separate profiles for weekdays and weekends.</span></p>
+<p class="p_Text"><span class="f_Text">See Specifying the Hot Water Draw for details.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Hourly Hot Water Draw Profile (kg/hr)</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The mass of hot water drawn over an hour. Click Edit Data to specify the hot water draw.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Scale draw profile to average daily usage</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Check this box to scale the 8,760 hourly data to the average value you specify in Average Daily Hot Water Usage.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Average Daily Hot Water Usage (kg/day)</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The daily average hot water usage. SAM scales the 8,760 hourly data you specify in the Edit Data window to this annual average value.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Total Annual Hot Water Draw (kg/year)</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">SAM calculates the total annual hot water draw in kilograms per year by adding the 8,760 values you specify in the Edit data window, and scaling it to the average daily hot water usage value you specify.</span></p>
+<h3 class="p_Heading3_atocs_" style="border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">System</span></h3>
+<p class="p_VariableName"><span class="f_VariableName">Tilt (degrees)</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The array's tilt angle in degrees from horizontal, where zero degrees is horizontal, and 90 degrees is vertical. As a rule of thumb, system designers often use the location's latitude (shown on the Location and Resource page) as the optimal array tilt angle. The actual tilt angle will vary based on project requirements.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Azimuth (degrees)</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The array's east-west orientation in degrees. An azimuth value of 180˚ is facing south in the northern hemisphere. As a rule of thumb, system designers often use an array azimuth of 180˚, or facing the equator.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Total system flow rate (kg/s)</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The flow rate in the collector loop when it is operating.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Working fluid </span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The fluid in the solar collector loop, which one may choose either glycol or water.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Number of Collectors</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The number of collectors in the system</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Diffuse Sky Model</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Allows three different sky models to be chosen: Isotropic, HDKR (Hay-Davies-Klucher-Reindl), or Perez.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Irradiance Inputs</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Allows either Beam &amp; Diffuse irradiation or Total &amp; Beam irradiation.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Albedo</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The ground reflectance.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Total Collector Area (m2)</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Total area of all collectors. :</span></p>
+<p class="p_EquationExcel"><span class="f_EquationExcel">Total Collector Area = Single Collector Area × Number of Collectors</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Rated System Size (kWt)</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The system's nominal capacity in thermal kilowatts, used to in capacity based cost and financing calculations, and to calculate the system capacity factor reported in results:</span></p>
+<p class="p_EquationExcel"><span class="f_EquationExcel">Nameplate Capacity = Total Collector Area × FRta - FRUL × 30/1000</span></p>
+<h3 class="p_Heading3_atocs_" style="border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Collector</span></h3>
+<p class="p_VariableName"><span class="f_VariableName">Enter user defined parameters</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Choose this option to specify your own collector parameters.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Select from library</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Use this option to choose a collector from the collector library. SAM applies parameters from the library to model the collector.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The collector library contains parameters for collectors certified by the Solar Rating and Certification Corporation (SRCC): http://www.solar-rating.org.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Search by collector name</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Type a few characters of the collector manufacturer or model name to filter the list of available collectors.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Click the collector name in the list to select it.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">SRCC#</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The collector's SRCC number.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Type</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The collector's optic type.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Fluid</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The solar system's heat transfer fluid.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Test flow</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Fluid flow rate used to generate test data.</span></p>
+<p class="p_Text"><span class="f_Text">The </span><span class="f_CHInterfaceElement">User-defined Collector</span><span class="f_Text"> variables are active for the </span><span class="f_CHInterfaceElement">User Specified</span><span class="f_Text"> option. (SAM ignores the user-specified values when you use the </span><span class="f_CHInterfaceElement">Choose From Library option</span><span class="f_Text">.)</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Collector Area</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Area of a single collector. Choose a value consistent with the area convention used in the collector efficiency equation. For example, use gross area for all SRCC data.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">FRta</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Optical gain a in Hottel-Whillier-Bliss (HWB) equation, </span><span class="f_Emphasis">hcoll = a – b × dT</span><span class="f_VariableDescription">.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">FRUL (W/m2-°C)</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Thermal loss coefficient b in the Hottel-Whillier-Bliss (HWB) equation, </span><span class="f_Emphasis">hcoll = a – b × dT</span><span class="f_VariableDescription">.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">IAM</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The incident angle modifier coefficient: The constant </span><span class="f_Emphasis">b0</span><span class="f_VariableDescription"> in the equation, </span><span class="f_Emphasis">IAM = 1 – b0 × (1/cos(q) – 1)</span><span class="f_VariableDescription">.</span></p>
+<h3 class="p_Heading3_atocs_" style="border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Solar Tank and Heat Exchanger</span></h3>
+<p class="p_VariableName"><span class="f_VariableName">Solar Tank Storage Volume (m³)</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The actual volume of the solar storage tank. Note that the actual volume may be different from the rated volume.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Solar Tank Height/Diameter Ratio</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Defines the solar storage tank geometry, and by extension its geometry.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Solar Tank U Value (W/m²-ºC)</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The solar storage tank loss coefficient. Note that 1 kJ/h-m²-ºC = 3.6 W/m²-ºC.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Heat Exchanger Efficiency</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Heat exchanger effectiveness, where the effectiveness e, is defined as </span><span class="f_Emphasis">e = (Tcold-out – Tcold-in) / (Thot-in - Tcold-in)</span><span class="f_VariableDescription">.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Outlet Set Temperature</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The desired set temperature delivered to the user. The value in this box is used only if </span><span class="f_CHInterfaceElement">Use custom set temperatures</span><span class="f_VariableDescription"> is not checked.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Ambient Temperature in Mechanical Room</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The temperature where the solar tank is stored. This temperature is used to compute heat transfer to and from the storage tank as:</span></p>
+<p class="p_VariableDescription"><img src="eq_swh_qloss.gif" width="172" height="16" alt="EQ_SWH_Qloss" style="border:none" /></p>
+<h3 class="p_Heading3_atocs_" style="border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Piping and Pumping</span></h3>
+<p class="p_VariableName"><span class="f_VariableName">Total piping in system (m)</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Estimate of piping in system to compute pipe losses. For studies where piping loss is not of interest, reduce this length to small value, such as 0.001 m.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Pipe diameter (m)</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Average diameter of system piping</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Pipe Insulation Conductivity (W/m2 - ˚C)</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Thermal conductivity of pipe insulation</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Pipe insulation thickness (m)</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Average thickness of insulation</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Pump Power (W)</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The pump's peak power rating in Watts.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Pump Efficiency (0 to 1)</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">An estimate of the pump efficiency.</span></p>
+<h3 class="p_Heading3_atocs_" style="border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Custom Water Input</span></h3>
+<p class="p_VariableName"><span class="f_VariableName">Use custom mains profile</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">If checked, the model will use the hourly data that you specify instead of calculating the mains temperature from the ambient temperature. Check this box if you have detailed experimental measurements of the mains temperature.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Hourly custom mains profile (˚C)</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">A set of 8760 values specifying the incoming mains temperature, used only if </span><span class="f_CHInterfaceElement">Use custom mains profile</span><span class="f_VariableDescription"> is checked.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Use custom set temperatures</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Check this box if you want to specify custom hourly or monthly values for the outlet set temperature.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">If the box is not checked, SAM uses the </span><span class="f_CHInterfaceElement">Outlet set temperature</span><span class="f_VariableDescription"> value for every hour of the year.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Hourly custom set temperatures</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">A set of 8760 values specifying hourly desired set temperatures. SAM only uses these values if </span><span class="f_CHInterfaceElement">Use custom set temperatures</span><span class="f_VariableDescription"> is checked.</span></p>
+<h3 class="p_Heading3_atocs_" style="border-top: none; border-right: none; border-left: none;"><a id="swh_specifyhotwaterdraw"></a><span class="f_Heading3_atocs_">Specifying the Hot Water Draw</span></h3>
+<p class="p_Text"><span class="f_Text">The hot water draw represents the solar water heating system's hourly thermal load over the period of one year.</span></p>
+<p class="p_Text"><span class="f_Text">A load data file is a text file with 8,761 rows: The first row is a text header that SAM ignores, and the remaining 8,760 rows must contain average hourly hot water demand data in kg/hr. The first data element represents the hour beginning at midnight and ending at 1 a.m. on January 1 when you run the model with a <a href="weather_overview.htm" class="topiclink">weather file</a> in one of SAM's standard formats, TMY2, TMY3, or EPW.</span></p>
+<p class="p_TitleProcedure"><span class="f_TitleProcedure">To import load data from a properly formatted text file:</span></p>
+<p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">1.</span><span class="f_ProcedureStep">On the SWH System page, click </span><span class="f_CHInterfaceElement">Edit data</span><span class="f_ProcedureStep">.</span></p><p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">2.</span><span class="f_ProcedureStep">In the Edit Hourly Data window, click </span><span class="f_CHInterfaceElement">Import</span><span class="f_ProcedureStep">.</span></p><p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">3.</span><span class="f_ProcedureStep">Navigate to the folder containing the load data file and open the file.</span></p><p class="p_ProcedureStepNoNumber"><span class="f_ProcedureStepNoNumber">SAM displays the data in the data table. Use the scroll bars to see all of the data.</span></p>
+<p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 6px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">4.</span><span class="f_ProcedureStepLast">Click </span><span class="f_CHInterfaceElement">OK</span><span class="f_ProcedureStepLast"> to return to the SWH System page.</span></p><p class="p_TitleProcedure"><span class="f_TitleProcedure">To import load data from a spreadsheet or other file:</span></p>
+<p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">1.</span><span class="f_ProcedureStep">On the SWH System page, click </span><span class="f_CHInterfaceElement">Edit</span><span class="f_ProcedureStep">.</span></p><p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">2.</span><span class="f_ProcedureStep">Open the spreadsheet containing the load data. The data must be in a single column of 8,760 rows, and expressed in kg.</span></p><p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">3.</span><span class="f_ProcedureStep">In the spreadsheet, select the load data and copy it.</span></p><p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">4.</span><span class="f_ProcedureStep">In the Edit Hourly Data window, click </span><span class="f_CHInterfaceElement">Paste</span><span class="f_ProcedureStep">. </span></p><p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 6px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">5.</span><span class="f_ProcedureStepLast">You can also copy data from the Edit Hourly Data window by clicking </span><span class="f_CHInterfaceElement">Copy</span><span class="f_ProcedureStepLast">, or export the data to a text file by clicking </span><span class="f_CHInterfaceElement">Save</span><span class="f_ProcedureStepLast">.</span></p><p class="p_Text"><span class="f_Text">If you do not have a complete 8,760 set of load data, you can use a set of daily load profiles for each month, and use SAM to create a set of 8,760 values.</span></p>
+<p class="p_TitleProcedure"><span class="f_TitleProcedure">To create a load data set using daily load profiles:</span></p>
+<p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">1.</span><span class="f_ProcedureStep">On the SWH System page, click </span><span class="f_CHInterfaceElement">Edit data</span><span class="f_ProcedureStep">.</span></p><p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">2.</span><span class="f_ProcedureStep">In the Edit Hourly Data window, check</span><span class="f_CHInterfaceElement"> Use monthly grid to generate 8760 data</span><span class="f_ProcedureStep">.</span></p><p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">3.</span><span class="f_ProcedureStep">For each month of the year, define a daily load profile by typing a kg hot water draw value for each of the 24 hours of the day. The first column represents the first hour of the day, beginning at midnight and ending at 1:00 a.m.</span></p><p class="p_ProcedureStepNoNumber"><span class="f_ProcedureStepNoNumber">If you want to specify separate load profiles for weekdays and weekends, click Weekend Values to define profiles that apply to two days each week. SAM arbitrarily assumes that the first day in the data set is a Monday, and that weekends fall on Saturday and Sunday.</span></p>
+<p class="p_ProcedureStepNoNumber"><span class="f_ProcedureStepNoNumber">If you do not specify separate weekend profiles, SAM applies the weekday profile to all days of the week.</span></p>
+<p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">4.</span><span class="f_ProcedureStep">When you have specified all of the daily load profiles, click </span><span class="f_CHInterfaceElement">To 8760</span><span class="f_ProcedureStep"> to transfer the data to the User Specified data table. You must complete this step for SAM to use the profile data in simulations.</span></p><p class="p_ProcedureStepNoNumber"><span class="f_ProcedureStepNoNumber">When you define a load with daily load profiles, SAM assumes that all days in a given month have identical load profiles.</span></p>
+<p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 6px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">5.</span><span class="f_ProcedureStepLast">If you want to export the 8,760 data to a text file, click </span><span class="f_CHInterfaceElement">Save</span><span class="f_ProcedureStepLast">. You can also copy the data to a spreadsheet or other file by clicking </span><span class="f_CHInterfaceElement">Copy</span><span class="f_ProcedureStepLast">, and then pasting the data in to the file.</span></p>
+<!--ZOOMSTOP--> 
+
+
+</div> <!-- idcontent -->
+</div><!-- hmbox --> 
+</body>
+</html>

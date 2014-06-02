@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>Power Plant</title>
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="" />
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+   <meta http-equiv="content-language" content="en-us" />
+   <meta name="description" content="The Power Plant page allows you to specify the electricity output of the generic power system either as a nameplate capacity and capacity factor, or using time series data from..." />
+   <meta http-equiv="Content-Style-Type" content="text/css" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+   <link id="tabscheme" type="text/css" href="hm_topic.css" rel="stylesheet" />   
+<style type="text/css">
+/* No header topics */
+
+/* Breadcrumb trail */
+p#breadcrumbs {
+font-family: Verdana, Tahoma, Helvetica, Sans-Serif;   padding: 2px 0 1px 2px;
+   margin: 0;
+   font-size: 8pt; 
+   color: #999;
+   }   
+p#breadcrumbs a { color: #999; text-decoration: none;}
+p#breadcrumbs a:visited { color: #999; }
+p#breadcrumbs a:hover { color: #333; border-bottom: 1px dotted #333; }
+
+/* Search hightlight color */
+span.highlight {background-color: #ffff40;}
+</style>
+<script type="text/javascript">
+var hmHeaderTopic = true;
+
+</script> 
+<!--[if IE 9]>
+<link id="iesvgcss" rel="stylesheet" type="text/css" href="hm_webhelp_svg.css" />
+<![endif]-->	
+<script src="jquery.js"></script>
+<script type="text/javascript" src="jquery.tools.min.js"></script>
+<script type="text/javascript" src="jquery.scrollTo-min.js"></script>
+<script type="text/javascript"> 
+// General topic variables
+var tVars = {
+   hmHelpPage: "index.html",
+   nextP: "solar_hot_water.htm",
+   prevP: "generic_system_overview.htm",
+   currP: "generic_system_plant.htm",
+   defP: "introduction.htm",
+   titleP: "Power Plant",
+   mailsubject: "Feedback on: SAM Help - Power Plant",
+   simplesubject: "Documentation%20Feedback",
+   mailid: "Generic_System_Plant",
+   mailpath: "Generic System &gt; Power Plant /",
+   mailbody: "Dear SAM Support,",
+   mailrecipient: "SAM Support <sam.support@nrel.gov>",
+   simplerecipient: "sam.support@nrel.gov",
+   fbtype: false,
+   header: true,
+   background: "bg.png",
+   tablesReady: false,
+   togglesReady: false,
+   webRedirect: true
+   }
+// Popup configuration
+ var hmpBShadow = true;
+ var hmPopSmallDim = 500;
+ var hmPopKillVideo = false;
+ // AutoTOC variables
+ var hmatocvars = {
+   atoc_show: true,
+   atoc_title: "Contents",
+   atoc_tip: "Jump to:&nbsp;",
+   atoc_minHeaders: 2,
+   atoc_btntip_off: "No contents entries on this page",
+   atoc_btntip_on: "Display/hide topic directory",
+   atoc_toptip: "Jump to top of page",
+   atoc_top: "Scroll to Top of Page",
+   atoc_bg: "#f6f6f6",
+   atoc_border: "silver",
+   atoc_linkcolor: "#444",
+   atoc_linklimit: 45,
+   atoc_hovercolor: "#000",
+   atoc_hoverbgcolor: "#e0e0e0"
+}
+// Sortable tables
+var sortVars = {
+   europeandate: false,
+   germanNumbers: false,
+   imagePath: "",
+   image_up: "arrow-up.gif",
+   image_down: "arrow-down.gif",
+   image_empty: "arrow-empty.gif",
+   image_none: "arrow-none.gif",
+   sort_tip: "Click to sort on this column",
+   umlauts: "false"
+   }
+
+</script>
+
+<script type="text/javascript"> 
+$(document).ready(function() {
+var doc = document;  
+try {
+if (parent.hmWebHelp.navWidth != null) doc = parent.document;
+doc.title = $("<div/>").html("SAM Help - Power Plant").text();
+window.onunload = function() {doc.title = $("<div/>").html("SAM Help").text();}
+} catch(err) {}
+});
+</script>
+<script type="text/javascript" src="helpman_settings.js"></script>
+<script type="text/javascript" src="helpman_topicinit.js"></script>
+<script type="text/javascript" src="hmtopic.js"></script>
+
+   <script type="text/javascript">
+     HMSyncTOC("index.html", "generic_system_plant.htm");
+   </script>
+   <script type="text/javascript" src="highlight.js"></script>
+   <script type="text/javascript">
+     $(document).ready(function(){highlight();});
+   </script>
+</head>
+<body>
+<!--ZOOMSTOP-->
+<ul id="topictabs" class="tabs">
+<li id="indextab" class="hmtabs"><a href="#" id="indextablink" class="current"><span>Power Plant</span></a></li>
+</ul>
+<div id="hmbox">
+<div id="hmheader">
+<div id="hmheadercontents">
+<p id="breadcrumbs">
+<b>Navigation:</b>
+<a href="generic_system.htm">Generic System</a>:</p> 
+<h1 class="p_Heading1"><span class="f_Heading1">Power Plant</span></h1>
+
+</div>
+<div id="atocIcon" class="navdivs">
+<img class="navicon" id="hmAtocLink" src="contents_off.png" alt="No contents entries on this page" title="No contents entries on this page" />
+<br /><span>Contents</span>
+</div>
+</div>
+<div id="autoTocWrapper" class="topicmenu"></div>
+<div id="idcontent">
+<div id="unclicker"></div>
+
+<!--ZOOMRESTART-->
+<p class="p_Text"><span class="f_Text">The Power Plant page allows you to specify the electricity output of the generic power system either as a nameplate capacity and capacity factor, or using time series data from other simulation software or measurements from an installed system.</span></p>
+<p class="p_Text"><span class="f_Text">After running simulations, you can see the hourly energy values in the <a href="tabular_data_browser.htm" class="topiclink">Tables</a> or <a href="base_case_time_series.htm" class="topiclink">time series graphs</a> on the <a href="results_page.htm" class="topiclink">Results</a> page.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Nameplate Capacity</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The system's nameplate electrical capacity in electric kilowatts.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">SAM uses the nameplate capacity to calculate capacity-based costs that you specify in $/kW on the <a href="generic_system_costs.htm" class="topiclink">Generic System Costs</a> page, and also to calculate the capacity factor when you run the generic system model in user-specified generation profile mode.</span></p>
+<h3 class="p_Heading3_atocs_" style="border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Constant generation profile (via capacity factor)</span></h3>
+<p class="p_Text"><span class="f_Text">In constant generation profile mode, SAM calculates the total energy generated by the system over a single year from the nameplate capacity, capacity factor, and performance adjustment factor values that you specify. SAM assumes that the system's hourly output is constant over the entire year so that:</span></p>
+<p class="p_EquationExcel"><span class="f_EquationExcel">Hourly Energy (kWh/hour) = Annual Energy (kWh/year) ÷ 8760 (hour/year)</span></p>
+<p class="p_Note"><span class="f_CHNote">Note.</span><span class="f_Note"> Because of the way SAM's internal calculations work, the hourly energy values displayed on the Results page data tables and graphs are not adjusted by the </span><span class="f_CHInterfaceElement">percent of annual output</span><span class="f_Note"> factor on the <a href="fin_annual_performance.htm" class="topiclink">Performance Adjustment</a> page.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Capacity factor</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The power plant's capacity factor. SAM uses the value to calculate the first year annual generation value. The capacity factor input is disabled in user-specified generation profile mode.</span></p>
+<h3 class="p_Heading3_atocs_" style="border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">User specified generation profile (hourly or subhourly)</span></h3>
+<p class="p_Text"><span class="f_Text">SAM represents the system's electricity output using hourly or subhourly electricity generation data that you provide.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Hourly (or sub-hourly) Energy Production Profile</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Click </span><span class="f_CHInterfaceElement">Edit data</span><span class="f_VariableDescription"> to import electric generation data from a text file, or to paste the data from your computer's clipboard.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">In user-specified generation profile mode, SAM uses the time series data you provide to represent the system's electricity production.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">If you are working with data in a time step other than hourly (60-minute time steps), click </span><span class="f_CHInterfaceElement">Change time step</span><span class="f_VariableDescription"> and type the time step in minutes.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The data must be in a single column with one row for each time step. Each row should contain a value in kWh of electricity generated over the time step. For example, an hourly data set should consist of 8,760 rows of kWh/h values. A 15-minute data set would consist of 35,040 rows of values of kWh generated over each 15-minute time step.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">To paste the data from a text editor, spreadsheet, or other software, copy the data to your clipboard, and then click </span><span class="f_CHInterfaceElement">Paste</span><span class="f_VariableDescription">.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">To import the data from a text file, click </span><span class="f_CHInterfaceElement">Import</span><span class="f_VariableDescription">, navigate to the file, and open it.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">If you import the data from a text file, the first row is reserved for a header, so do not include any electricity generation data in the first row. SAM checks the number of data rows in the file to ensure it is consistent with the time step you specify. For example, for a 60-minute time step, the text file should contain 8761 rows: One row at the top of the file for the header followed by 8760 data rows. </span></p>
+<h3 class="p_Heading3_atocs_" style="border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Derate and Heat Rate</span></h3>
+<p class="p_VariableName"><span class="f_VariableName">Derate</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">A loss factor to account for output reductions caused by inefficiencies in the system, such as from wiring losses or other factors. For example, a value of 5% would reduce the system output in each time step by 5%.</span></p>
+<p class="p_Note"><span class="f_CHNote">Note.</span><span class="f_Note"> To calculate annual energy values for the financial models, SAM also applies the factors from the <a href="fin_annual_performance.htm" class="topiclink">Performance Adjustment</a> page.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Heat Rate</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">SAM uses the heat rate value to calculate the cost of fuel consumed by the system using a simple conversion of the kWh values you specify for the energy output to equivalent MMBtu of fuel.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">If you are using the generic plant to represent a system that does not consume fuel, you should change the heat rate value to zero.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">SAM uses the heat rate to calculate the annual year fuel cost:</span></p>
+<p class="p_EquationExcel"><span class="f_EquationExcel">Fuel Cost ($/yr) = Fossil Fuel Cost ($) × Heat Rate (MMBtu/MWhe) × Energy (kWh/yr) ÷ 1000 (kWh/MWh)</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Where Fossil Fuel Cost is an annual cost in $/MMBtu that you specify on the <a href="generic_system_costs.htm" class="topiclink">Generic System Costs</a> page, under Operation and Maintenance Costs, and Fuel Cost and Energy are reported on the <a href="results_page.htm" class="topiclink">Results</a> page.</span></p>
+<h3 class="p_Heading3_atocs_" style="border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Calculated Values</span></h3>
+<p class="p_Text"><span class="f_Text">SAM calculates the system's conversion efficiency and annual electrical output for the first year in the project cash flow based on the inputs you specify.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Thermal to Electric Conversion Eff.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">SAM calculates and displays the system's thermal to electric conversion efficiency for reference to help you verify that the heat rate you specified is reasonable. SAM does not use this value during simulations.</span></p>
+<p class="p_VariableDescription"><span class="f_Emphasis">Thermal to Electric Conversion Eff = 100% ÷ Heat Rate (MMBtu/MWhe) ÷ 0.2931 (Wh/Btu)</span></p>
+<p class="p_VariableName"><span class="f_VariableName">First Year Annual Generation</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The system's output in the first year of operation.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">This value is either the sum of hourly or subhourly generation values you specify with the user-specified generation profile option, or calculated as described below for the constant generation profile option.</span></p>
+<p class="p_VariableDescription"><span class="f_Emphasis">First Year Annual Generation (kWh) = Nameplate Capacity (kW) × Capacity Factor (%) ÷ 100 % × Percent of Annual Output (%) ÷ 100 %</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Where </span><span class="f_Emphasis">Percent of Annual Output</span><span class="f_VariableDescription"> is from the <a href="fin_annual_performance.htm" class="topiclink">Performance Adjustment</a> page.</span></p>
+
+<!--ZOOMSTOP--> 
+
+
+</div> <!-- idcontent -->
+</div><!-- hmbox --> 
+</body>
+</html>

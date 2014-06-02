@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>Case Compare</title>
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="" />
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+   <meta http-equiv="content-language" content="en-us" />
+   <meta name="description" content="Case Compare is a flexible viewer and editor that allows you to explore the data in your SAM files. It allows you to build a table of input and results variables and their..." />
+   <meta http-equiv="Content-Style-Type" content="text/css" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+   <link id="tabscheme" type="text/css" href="hm_topic.css" rel="stylesheet" />   
+<style type="text/css">
+/* No header topics */
+
+/* Breadcrumb trail */
+p#breadcrumbs {
+font-family: Verdana, Tahoma, Helvetica, Sans-Serif;   padding: 2px 0 1px 2px;
+   margin: 0;
+   font-size: 8pt; 
+   color: #999;
+   }   
+p#breadcrumbs a { color: #999; text-decoration: none;}
+p#breadcrumbs a:visited { color: #999; }
+p#breadcrumbs a:hover { color: #333; border-bottom: 1px dotted #333; }
+
+/* Search hightlight color */
+span.highlight {background-color: #ffff40;}
+</style>
+<script type="text/javascript">
+var hmHeaderTopic = true;
+
+</script> 
+<!--[if IE 9]>
+<link id="iesvgcss" rel="stylesheet" type="text/css" href="hm_webhelp_svg.css" />
+<![endif]-->	
+<script src="jquery.js"></script>
+<script type="text/javascript" src="jquery.tools.min.js"></script>
+<script type="text/javascript" src="jquery.scrollTo-min.js"></script>
+<script type="text/javascript"> 
+// General topic variables
+var tVars = {
+   hmHelpPage: "index.html",
+   nextP: "",
+   prevP: "",
+   currP: "window_case_compare.htm",
+   defP: "introduction.htm",
+   titleP: "Case Compare",
+   mailsubject: "Feedback on: SAM Help - Case Compare",
+   simplesubject: "Documentation%20Feedback",
+   mailid: "Window_Case_Compare",
+   mailpath: "References /",
+   mailbody: "Dear SAM Support,",
+   mailrecipient: "SAM Support <sam.support@nrel.gov>",
+   simplerecipient: "sam.support@nrel.gov",
+   fbtype: false,
+   header: true,
+   background: "bg.png",
+   tablesReady: false,
+   togglesReady: false,
+   webRedirect: true
+   }
+// Popup configuration
+ var hmpBShadow = true;
+ var hmPopSmallDim = 500;
+ var hmPopKillVideo = false;
+ // AutoTOC variables
+ var hmatocvars = {
+   atoc_show: true,
+   atoc_title: "Contents",
+   atoc_tip: "Jump to:&nbsp;",
+   atoc_minHeaders: 2,
+   atoc_btntip_off: "No contents entries on this page",
+   atoc_btntip_on: "Display/hide topic directory",
+   atoc_toptip: "Jump to top of page",
+   atoc_top: "Scroll to Top of Page",
+   atoc_bg: "#f6f6f6",
+   atoc_border: "silver",
+   atoc_linkcolor: "#444",
+   atoc_linklimit: 45,
+   atoc_hovercolor: "#000",
+   atoc_hoverbgcolor: "#e0e0e0"
+}
+// Sortable tables
+var sortVars = {
+   europeandate: false,
+   germanNumbers: false,
+   imagePath: "",
+   image_up: "arrow-up.gif",
+   image_down: "arrow-down.gif",
+   image_empty: "arrow-empty.gif",
+   image_none: "arrow-none.gif",
+   sort_tip: "Click to sort on this column",
+   umlauts: "false"
+   }
+
+</script>
+
+<script type="text/javascript"> 
+$(document).ready(function() {
+var doc = document;  
+try {
+if (parent.hmWebHelp.navWidth != null) doc = parent.document;
+doc.title = $("<div/>").html("SAM Help - Case Compare").text();
+window.onunload = function() {doc.title = $("<div/>").html("SAM Help").text();}
+} catch(err) {}
+});
+</script>
+<script type="text/javascript" src="helpman_settings.js"></script>
+<script type="text/javascript" src="helpman_topicinit.js"></script>
+<script type="text/javascript" src="hmtopic.js"></script>
+
+   <script type="text/javascript">
+     HMSyncTOC("index.html", "window_case_compare.htm");
+   </script>
+   <script type="text/javascript" src="highlight.js"></script>
+   <script type="text/javascript">
+     $(document).ready(function(){highlight();});
+   </script>
+</head>
+<body>
+<!--ZOOMSTOP-->
+<ul id="topictabs" class="tabs">
+<li id="indextab" class="hmtabs"><a href="#" id="indextablink" class="current"><span>Case Compare</span></a></li>
+</ul>
+<div id="hmbox">
+<div id="hmheader">
+<div id="hmheadercontents">
+<p id="breadcrumbs">
+<b>Navigation:</b>&nbsp;&raquo;No topics above this level&laquo;
+</p> 
+<h1 class="p_Heading1"><span class="f_Heading1">Case Compare</span></h1>
+
+</div>
+<div id="atocIcon" class="navdivs">
+<img class="navicon" id="hmAtocLink" src="contents_off.png" alt="No contents entries on this page" title="No contents entries on this page" />
+<br /><span>Contents</span>
+</div>
+</div>
+<div id="autoTocWrapper" class="topicmenu"></div>
+<div id="idcontent">
+<div id="unclicker"></div>
+
+<!--ZOOMRESTART-->
+<p class="p_Text"><span class="f_Text">Case Compare is a flexible viewer and editor that allows you to explore the data in your SAM files. It allows you to build a table of input and results variables and their values and:</span></p>
+<p style="text-align: left; padding: 0px 0px 0px 13px; margin: 0px 0px 3px 10px;"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;display:inline-block;width:13px;margin-left:-13px">&#9679;</span><span class="f_List">Compare variables and values across cases in your file</span></p><p style="text-align: left; padding: 0px 0px 0px 13px; margin: 0px 0px 3px 10px;"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;display:inline-block;width:13px;margin-left:-13px">&#9679;</span><span class="f_List">Edit values of input variables</span></p><p style="text-align: left; padding: 0px 0px 0px 13px; margin: 0px 0px 6px 10px;"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;display:inline-block;width:13px;margin-left:-13px">&#9679;</span><span class="f_ListLast">Export lists of variables and values</span></p><p class="p_Note"><span class="f_CHNote">Note</span><span class="f_Note">. Although you can use Case Compare to create tables of results, the tools on the <a href="results.htm" class="topiclink">Results</a> page are better suited for that purpose.</span></p>
+<p class="p_Text"><span class="f_Text">To open Case Compare, on the </span><span class="f_CHInterfaceElement">Tools</span><span class="f_Text"> menu, click </span><span class="f_CHInterfaceElement">Case Compare</span><span class="f_Text">.</span></p>
+<h3 class="p_Heading3_atocs_" style="border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Choose Variables to Display in the Table</span></h3>
+<p class="p_Text"><span class="f_Text">The variables that appear in the table depend on the case, groups, inputs, and outputs, along with the display mode options that you choose.</span></p>
+<p class="p_TitleProcedure"><span class="f_TitleProcedure">To choose the case, groups, inputs, and outputs:</span></p>
+<p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">1.</span><span class="f_ProcedureStep">Under </span><span class="f_CHInterfaceElement">Total Cases</span><span class="f_ProcedureStep">, check the box for each case to include in the comparison or to export.</span></p><p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">2.</span><span class="f_ProcedureStep">Under </span><span class="f_CHInterfaceElement">Total Groups</span><span class="f_ProcedureStep">, check the box for each group.</span></p><p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">3.</span><span class="f_ProcedureStep">Review the list of variables under </span><span class="f_CHInterfaceElement">Inputs Selected</span><span class="f_ProcedureStep">. SAM generates the list based on the checked boxes under </span><span class="f_CHInterfaceElement">Total Cases</span><span class="f_ProcedureStep"> and </span><span class="f_CHInterfaceElement">Total Groups</span><span class="f_ProcedureStep">.</span></p><p class="p_ProcedureStepNoNumber"><span class="f_ProcedureStepNoNumber">You can add to or remove from variables in the list by clicking </span><span class="f_CHInterfaceElement">Add/Remove</span><span class="f_ProcedureStepNoNumber">.</span></p>
+<p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 6px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">4.</span><span class="f_ProcedureStepLast">If you want to include results variables in your comparison or list to export, check the appropriate boxes under </span><span class="f_CHInterfaceElement">Total Outputs</span><span class="f_ProcedureStepLast">.</span></p><p class="p_VariableName"><span class="f_VariableName">Total Cases</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">A list of all of the <a href="manage_cases.htm" class="topiclink">cases</a> in the SAM file.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">SAM displays the number of cases in the file. For example for a file with two cases, SAM displays </span><span class="f_CHInterfaceElement">2 total cases</span><span class="f_VariableDescription">.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Total Groups</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">A list of input variable groups available for the cases you choose under </span><span class="f_CHInterfaceElement">Total Cases</span><span class="f_VariableDescription">. A group contains related input variables. For example, the Financing group contains input variables for the Financial model. A single <a href="input_pages.htm" class="topiclink">input page</a> in SAM may display variables from one or more groups.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">SAM displays the number of available groups based on the cases you choose under </span><span class="f_CHInterfaceElement">Total Cases</span><span class="f_VariableDescription">. For example, if there are 27 groups available, SAM displays </span><span class="f_CHInterfaceElement">27 total groups</span><span class="f_VariableDescription">.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Inputs Selected</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">A list of the input variables available to compare or export. The list depends on the check boxes under Total Cases and Total Groups. </span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">SAM displays the number of available input variables for the combination of cases and groups you choose, and for variables you add or remove. For example, if there are 49 input variables, SAM displays </span><span class="f_CHInterfaceElement">49 inputs selected</span><span class="f_VariableDescription">.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Total Outputs</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">A list of results variables available to compare of export. The list depends on the check boxes under Total Cases and Total Groups.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">SAM displays the number of results variables available for the combination of cases and groups you choose. For example, if there are 22 results variables available, SAM displays </span><span class="f_CHInterfaceElement">22 total outputs</span><span class="f_VariableDescription">.</span></p>
+<h3 class="p_Heading3_atocs_" style="border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Choose the Table's Display Mode</span></h3>
+<p class="p_Text"><span class="f_Text">After you choose the variables to display in the table, you can use the options under </span><span class="f_CHInterfaceElement">Display</span><span class="f_Text"> to choose how SAM displays the variables. You can choose to display variables that exist in any or all cases, and variables that have the same or different values.</span></p>
+<p class="p_TitleProcedure"><span class="f_TitleProcedure">To choose the display mode:</span></p>
+<p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">1.</span><span class="f_ProcedureStep">Under </span><span class="f_CHInterfaceElement">Display</span><span class="f_ProcedureStep">, choose a </span><span class="f_CHInterfaceElement">Case</span><span class="f_ProcedureStep"> mode to show variables that appear in any case or all cases.</span></p><p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">2.</span><span class="f_ProcedureStep">Choose a </span><span class="f_CHInterfaceElement">Value</span><span class="f_ProcedureStep"> mode to show variables with the same value, different values, or both to show all variables.</span></p><p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 6px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">3.</span><span class="f_ProcedureStepLast">Check </span><span class="f_CHInterfaceElement">Hide N/A Rows</span><span class="f_ProcedureStepLast"> to hide variables with the N/A value in all cases. Clear the box to show all variables with N/A values.</span></p><h4 class="p_Heading4"><span class="f_Heading4">Case</span></h4>
+<p class="p_Text"><span class="f_Text">The Case options determine the variables that appear in the table based whether or not they exist in the cases you choose under </span><span class="f_CHInterfaceElement">Total Cases</span><span class="f_Text">. Only variables from the groups you choose under </span><span class="f_CHInterfaceElement">Total Groups</span><span class="f_Text"> appear in the table.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Any</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Displays variables that exist in any of the cases you choose under </span><span class="f_CHInterfaceElement">Total Cases</span><span class="f_VariableDescription">.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">All</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Displays only variables that exist in all of the cases you choose under </span><span class="f_CHInterfaceElement">Total Cases</span><span class="f_VariableDescription">.</span></p>
+<p>For example, in a file that contains a case with the residential financing option and another with the utility single owner financing option, <span class="f_CHInterfaceElement">Any</span> would display the Financing group variables that apply to either the residential or the single owner option, and <span class="f_CHInterfaceElement">All</span> would only display only the Financing group variables that apply to both financing options.</p>
+<h4 class="p_Heading4"><span class="f_Heading4">Value</span></h4>
+<p class="p_Text"><span class="f_Text">The Value options determine the variables that appear in the table based on their values.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Same</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Displays variables that have the same value in all cases.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Different</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Displays variables that have different values in one or more cases.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Both</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Displays all variables, regardless of their value, i.e., both variables that have the same value and different values.</span></p>
+<p class="p_Note"><span class="f_CHNote">Note.</span><span class="f_Note"> A yellow highlight in the table indicates variables that have different values.</span></p>
+<h4 class="p_Heading4"><span class="f_Heading4">N/A Rows</span></h4>
+<p class="p_Text"><span class="f_Text">SAM displays N/A (&quot;not applicable&quot;) in the table for variables that do not exist in a case. For example, if you compare a case for a photovoltaic system with a case for a wind system, and check the PV Module group under Total Groups, SAM displays &quot;N/A&quot; in the wind case's column for the module variables.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Hide N/A Rows</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Check this box to hide rows that contain &quot;N/A&quot; in all columns of the table.</span></p>
+<h4 class="p_Heading4"><span class="f_Heading4">Numbers of Variables</span></h4>
+<p class="p_Text"><span class="f_Text">SAM displays the number of variables for each combination of Case and Value modes for reference. These numbers do not change when you choose different display options.</span></p>
+<h3 class="p_Heading3_atocs_" style="border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Copy and Paste Values</span></h3>
+<p class="p_Text"><span class="f_Text">You can use Case Compare to copy and paste data between SAM and a spreadsheet or other document, and to modify values of input variables in the cases.</span></p>
+<p class="p_Note"><span class="f_CHNote">Note.</span><span class="f_Note"> Use tab-delimited data to copy and paste values into the Case Compare table. You can copy and paste data directly between the Case Compare table and Excel.</span></p>
+<p class="p_Text"><span class="f_Text">Case Compare relies on your computer's clipboard to export data to spreadsheets and other documents.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Copy</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Copies data from the Case Compare table to your computer's clipboard as tab-delimited data.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Paste</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Pastes data from your computer's clipboard to the Case Compare table. The data in the clipboard should be tab-delimited with the same number of rows and columns as the table. Do not include row and column headers.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Copy Values from Cases to Table</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Replaces values in the Case Compare table with values from each case checked under </span><span class="f_CHInterfaceElement">Total Cases</span><span class="f_VariableDescription">.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Copy Values from Table To Cases</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Replaces input variable values in each case checked under </span><span class="f_CHInterfaceElement">Total Cases</span><span class="f_VariableDescription"> with values from the Case Compare table.</span></p>
+<p class="p_TitleProcedure"><span class="f_TitleProcedure">To export the table to a spreadsheet or other document:</span></p>
+<p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">1.</span><span class="f_ProcedureStep">Choose the variables you want to appear in the table.</span></p><p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">2.</span><span class="f_ProcedureStep">Click </span><span class="f_CHInterfaceElement">Copy</span><span class="f_ProcedureStep"> to copy the table to your computer's clipboard as tab-delimited data.</span></p><p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">3.</span><span class="f_ProcedureStep">Open the spreadsheet or other document.</span></p><p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">4.</span><span class="f_ProcedureStep">Paste the table into the document.</span></p><p class="p_TitleProcedure"><span class="f_TitleProcedure">To export a list of all input variables and their values from a single case:</span></p>
+<p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">1.</span><span class="f_ProcedureStep">Check the case name under </span><span class="f_CHInterfaceElement">Total Cases</span><span class="f_ProcedureStep">.</span></p><p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">2.</span><span class="f_ProcedureStep">For </span><span class="f_CHInterfaceElement">Total Groups</span><span class="f_ProcedureStep">, click </span><span class="f_CHInterfaceElement">Select All</span><span class="f_ProcedureStep">.</span></p><p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">3.</span><span class="f_ProcedureStep">To include results variables in the list, under </span><span class="f_CHInterfaceElement">Total Outputs</span><span class="f_ProcedureStep">, click </span><span class="f_CHInterfaceElement">Select All</span><span class="f_ProcedureStep">.</span></p><p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">4.</span><span class="f_ProcedureStep">Under </span><span class="f_CHInterfaceElement">Display</span><span class="f_ProcedureStep">, click </span><span class="f_CHInterfaceElement">Any</span><span class="f_ProcedureStep"> (case) and </span><span class="f_CHInterfaceElement">Both</span><span class="f_ProcedureStep"> (value).</span></p><p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">5.</span><span class="f_ProcedureStep">Click </span><span class="f_CHInterfaceElement">Hide N/A Rows</span><span class="f_ProcedureStep">.</span></p><p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">6.</span><span class="f_ProcedureStep">Click </span><span class="f_CHInterfaceElement">Copy</span><span class="f_ProcedureStep">.</span></p><p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">7.</span><span class="f_ProcedureStep">Open a spreadsheet or other document and paste the data into the document.</span></p><p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 6px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">8.</span><span class="f_ProcedureStepLast">Click </span><span class="f_CHInterfaceElement">Close</span><span class="f_ProcedureStepLast"> to exit Case Compare.</span></p><p style="text-align: left; padding: 0px 0px 0px 48px; margin: 0px 0px 6px 0px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">9.</span><span class="f_Text">You can change values of variables in the table and copy them to cases so that they appear on the SAM input pages after you close Case Compare.</span></p><h4 class="p_Heading4"><span class="f_Heading4">Change Values of Input Variables in your SAM File</span></h4>
+<p class="p_Text"><span class="f_Text">One application of Case Compare is to verify and edit values of input variables in your cases. For example, if your file contains two cases with the same financing option, you can use Case Compare to ensure that the values of all of the financing input variables are the same for both cases.</span></p>
+<p class="p_Note"><span class="f_CHNote">Important Note!</span><span class="f_Note"> You cannot automatically undo the changes you make to variable values. Be careful to check your changes before copying values from the table to cases.</span></p>
+<p class="p_TitleProcedure"><span class="f_TitleProcedure">To update values on input pages to match those in the Case Compare table:</span></p>
+<p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">1.</span><span class="f_ProcedureStep">Choose the cases and variables you want to compare and edit.</span></p><p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">2.</span><span class="f_ProcedureStep">Type new values for variables in the table.</span></p><p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">3.</span><span class="f_ProcedureStep">Check the values to make sure they are correct. You cannot automatically undo changes after you copy values to the cases!</span></p><p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">4.</span><span class="f_ProcedureStep">Click </span><span class="f_CHInterfaceElement">Copy Values from Table to Cases</span><span class="f_ProcedureStep">.</span></p><p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 6px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">5.</span><span class="f_ProcedureStepLast">SAM lists the changes it made in the text box at the bottom right of the Case Compare window.</span></p>
+<!--ZOOMSTOP--> 
+
+
+</div> <!-- idcontent -->
+</div><!-- hmbox --> 
+</body>
+</html>

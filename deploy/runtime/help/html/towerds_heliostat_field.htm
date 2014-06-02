@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>Heliostat Field</title>
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="" />
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+   <meta http-equiv="content-language" content="en-us" />
+   <meta name="description" content="The Heliostat Field page displays the variables that specify the position of the heliostats in the solar field along with the heliostat geometry and optical properties. Unlike..." />
+   <meta http-equiv="Content-Style-Type" content="text/css" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+   <link id="tabscheme" type="text/css" href="hm_topic.css" rel="stylesheet" />   
+<style type="text/css">
+/* No header topics */
+
+/* Breadcrumb trail */
+p#breadcrumbs {
+font-family: Verdana, Tahoma, Helvetica, Sans-Serif;   padding: 2px 0 1px 2px;
+   margin: 0;
+   font-size: 8pt; 
+   color: #999;
+   }   
+p#breadcrumbs a { color: #999; text-decoration: none;}
+p#breadcrumbs a:visited { color: #999; }
+p#breadcrumbs a:hover { color: #333; border-bottom: 1px dotted #333; }
+
+/* Search hightlight color */
+span.highlight {background-color: #ffff40;}
+</style>
+<script type="text/javascript">
+var hmHeaderTopic = true;
+
+</script> 
+<!--[if IE 9]>
+<link id="iesvgcss" rel="stylesheet" type="text/css" href="hm_webhelp_svg.css" />
+<![endif]-->	
+<script src="jquery.js"></script>
+<script type="text/javascript" src="jquery.tools.min.js"></script>
+<script type="text/javascript" src="jquery.scrollTo-min.js"></script>
+<script type="text/javascript"> 
+// General topic variables
+var tVars = {
+   hmHelpPage: "index.html",
+   nextP: "towerds_tower_and_receiver.htm",
+   prevP: "towerds_overview.htm",
+   currP: "towerds_heliostat_field.htm",
+   defP: "introduction.htm",
+   titleP: "Heliostat Field",
+   mailsubject: "Feedback on: SAM Help - Heliostat Field",
+   simplesubject: "Documentation%20Feedback",
+   mailid: "TowerDS_Heliostat_Field",
+   mailpath: "Concentrating Solar Power &gt; Power Tower Direct Steam &gt; Heliostat Field /",
+   mailbody: "Dear SAM Support,",
+   mailrecipient: "SAM Support <sam.support@nrel.gov>",
+   simplerecipient: "sam.support@nrel.gov",
+   fbtype: false,
+   header: true,
+   background: "bg.png",
+   tablesReady: false,
+   togglesReady: false,
+   webRedirect: true
+   }
+// Popup configuration
+ var hmpBShadow = true;
+ var hmPopSmallDim = 500;
+ var hmPopKillVideo = false;
+ // AutoTOC variables
+ var hmatocvars = {
+   atoc_show: true,
+   atoc_title: "Contents",
+   atoc_tip: "Jump to:&nbsp;",
+   atoc_minHeaders: 2,
+   atoc_btntip_off: "No contents entries on this page",
+   atoc_btntip_on: "Display/hide topic directory",
+   atoc_toptip: "Jump to top of page",
+   atoc_top: "Scroll to Top of Page",
+   atoc_bg: "#f6f6f6",
+   atoc_border: "silver",
+   atoc_linkcolor: "#444",
+   atoc_linklimit: 45,
+   atoc_hovercolor: "#000",
+   atoc_hoverbgcolor: "#e0e0e0"
+}
+// Sortable tables
+var sortVars = {
+   europeandate: false,
+   germanNumbers: false,
+   imagePath: "",
+   image_up: "arrow-up.gif",
+   image_down: "arrow-down.gif",
+   image_empty: "arrow-empty.gif",
+   image_none: "arrow-none.gif",
+   sort_tip: "Click to sort on this column",
+   umlauts: "false"
+   }
+
+</script>
+
+<script type="text/javascript"> 
+$(document).ready(function() {
+var doc = document;  
+try {
+if (parent.hmWebHelp.navWidth != null) doc = parent.document;
+doc.title = $("<div/>").html("SAM Help - Heliostat Field").text();
+window.onunload = function() {doc.title = $("<div/>").html("SAM Help").text();}
+} catch(err) {}
+});
+</script>
+<script type="text/javascript" src="helpman_settings.js"></script>
+<script type="text/javascript" src="helpman_topicinit.js"></script>
+<script type="text/javascript" src="hmtopic.js"></script>
+
+   <script type="text/javascript">
+     HMSyncTOC("index.html", "towerds_heliostat_field.htm");
+   </script>
+   <script type="text/javascript" src="highlight.js"></script>
+   <script type="text/javascript">
+     $(document).ready(function(){highlight();});
+   </script>
+</head>
+<body>
+<!--ZOOMSTOP-->
+<ul id="topictabs" class="tabs">
+<li id="indextab" class="hmtabs"><a href="#" id="indextablink" class="current"><span>Heliostat Field</span></a></li>
+</ul>
+<div id="hmbox">
+<div id="hmheader">
+<div id="hmheadercontents">
+<p id="breadcrumbs">
+<b>Navigation:</b>
+<a href="concentrating_solar_power_csp.htm">Concentrating Solar Power</a> &gt; <a href="power_tower_direct_steam.htm">Power Tower Direct Steam</a>:</p> 
+<h1 class="p_Heading1"><span class="f_Heading1">Heliostat Field</span></h1>
+
+</div>
+<div id="atocIcon" class="navdivs">
+<img class="navicon" id="hmAtocLink" src="contents_off.png" alt="No contents entries on this page" title="No contents entries on this page" />
+<br /><span>Contents</span>
+</div>
+</div>
+<div id="autoTocWrapper" class="topicmenu"></div>
+<div id="idcontent">
+<div id="unclicker"></div>
+
+<!--ZOOMRESTART-->
+<p class="p_Text"><span class="f_Text">The Heliostat Field page displays the variables that specify the position of the heliostats in the solar field along with the heliostat geometry and optical properties. Unlike parabolic trough and dish system designs, which can be based on modular designs of individual components, power tower system designs typically require optimization of the tower height, receiver geometry, and distribution of heliostats around the receiver as a complete system.</span></p>
+<p class="p_Text"><span class="f_Text">Page numbers relevant to this section from the Wagner (2008) and Kistler B (1986) <a href="references.htm" class="topiclink">references</a> are:</span></p>
+<p style="text-align: left; padding: 0px 0px 0px 13px; margin: 0px 0px 3px 10px;"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;display:inline-block;width:13px;margin-left:-13px">&#9679;</span><span class="f_List">Wagner p 10, 23-42, 49</span></p><p style="text-align: left; padding: 0px 0px 0px 13px; margin: 0px 0px 6px 10px;"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;display:inline-block;width:13px;margin-left:-13px">&#9679;</span><span class="f_ListLast">Kistler p 25-37, 39-47, 74-75</span></p><p class="p_Text"><span class="f_Text">You can define the heliostat field layout in two ways: If you have a field layout in mind, you can enter values by hand. Or, you can use SAM's <a href="window_optimization_wizard.htm" class="topiclink">optimization wizard</a> to determine the optimal layout for you.</span></p>
+<h3 class="p_Heading3_atocs_" style="border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Input Variable Reference</span></h3>
+<h4 class="p_Heading4"><span class="f_Heading4">Heliostat Parameters</span></h4>
+<p class="p_Text"><span class="f_Text">The heliostat properties define the area of a single heliostat mirrored surface, shape of the heliostat, and the boundaries of the solar field area. Note that SAM assumes that each heliostat employs a two-axis drive system with a pivot at the center of the mirrored surface.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Heliostat width, m</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The width of the heliostat surface in meters, including the mirrored surface, edge supports and any cutouts or slots.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Heliostat height, m</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The height of the heliostat surface in meters, including the mirrored surface, edge supports and any cutouts or slots.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Ratio of reflective area to profile</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The fraction of the area defined by the heliostat width and height that actually reflects sunlight. This value determines the ratio of reflective area on each heliostat to the total projected area of the heliostat on a plane normal to the heliostat surface. The ratio accounts for non-reflective area on the heliostat that may cause shading of neighboring heliostats. </span></p>
+<p class="p_VariableName"><span class="f_VariableName">Use round heliostats (Dia=W)</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Check the box to use round heliostats in place of the standard rectangular shape. For round heliostats, the heliostat diameter is equal to the value of the Heliostat Width variable.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Heliostat area, m²</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The area of the heliostat mirrored area. For rectangular heliostats, the area is the product of the heliostat width and height (or the product of the square of half the width and pi for round heliostats) and the ratio of reflective area to heliostat profile.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Total reflective area, m²</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Total mirrored area of the heliostat field, equal to the heliostat reflective area multiplied by the number of heliostats. SAM uses the total field area to calculate the site improvements and heliostat costs on the Tower System Costs page.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Solar field land area</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The total land area required for the solar field.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Number of heliostats</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The total number of individual heliostats in the field. SAM displays the number of heliostats based either on the results of the <a href="window_optimization_wizard.htm" class="topiclink">optimization wizard</a>, or based on the data in the heliostat layout file when the heliostat locations are loaded from a text file.</span></p>
+<h4 class="p_Heading4"><span class="f_Heading4">Derates</span></h4>
+<p class="p_VariableName"><span class="f_VariableName">Reflectance and soiling</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The mirror reflectance input is the solar weighted specular reflectance. The solar-weighted specular reflectance is the fraction of incident solar radiation reflected into a given solid angle about the specular reflection direction. The appropriate choice for the solid angle is that subtended by the receiver as viewed from the point on the mirror surface from which the ray is being reflected. For parabolic troughs, typical values for solar mirrors are 0.923 (4-mm glass), 0.945 (1-mm or laminated glass), 0..906 (silvered polymer), 0.836 (enhanced anodized aluminum), and 0.957 (silvered front surface).</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Heliostat availability</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">An adjustment factor that accounts for reduction in energy output due to downtime of some heliostats in the field for maintenance and repair. A value of 1 means that each heliostat in the field operates whenever sufficient solar energy is available. SAM multiplies the solar field output for each hour by the availability factor.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Image error, radians</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">A measure of the deviation of the actual heliostat image on the receiver from the expected or ideal image that helps determine the overall shape and distribution of the reflected solar flux on the receiver. This value specifies the total conical error distribution for each heliostat at one standard deviation in radians. SAM applies the value to each heliostat in the field regardless of its distance from the tower. The image error accounts for all error sources, including tracking imprecision, foundation motion, mirror waviness, panel alignment problems, atmospheric refraction and tower sway.</span></p>
+<h4 class="p_Heading4"><span class="f_Heading4">Operation</span></h4>
+<p class="p_VariableName"><span class="f_VariableName">Stow deploy angle, degrees</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Solar elevation angle below which the heliostat field will not operate.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Stow wind speed, m/s</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Wind velocity from the weather file at which the heliostats defocus and go into stowed position. At wind speeds above the stow speed, SAM assumes that the heliostats move into stow position to protect the mirror surface and support structure from wind damage. SAM accounts for the parasitic tracking power required to stow the heliostats, and to reposition them when the wind speed falls below the stow speed.</span></p>
+<h4 class="p_Heading4"><span class="f_Heading4">Mirror Washing</span></h4>
+<p class="p_Text"><span class="f_Text">SAM reports the water usage of the system in the results based on the mirror washing variables and the power cycle water use determined in the annual performance calculation. The annual water usage is the product of the water usage per wash and 365 (days per year) divided by the washing frequency plus the calculated power cycle usage.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Water usage per wash, L/m²</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The volume of water in liters per square meter of solar field aperture area required for periodic mirror washing.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Washes per year</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Number of times per year that heliostats mirrors are washed.</span></p>
+<h4 class="p_Heading4"><span class="f_Heading4">Distance to Tower</span></h4>
+<p class="p_VariableName"><span class="f_VariableName">Min and Max heliostat dist to tower height ratio</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The minimum and maximum allowable radial distances expressed as the ratio of minimum and maximum distances between tower and nearest and furthest heliostat to the center of the tower base. Under certain conditions, SAM uses this value to calculate the radial step size. (See radial step size variable description below.)</span></p>
+<h4 class="p_Heading4"><a id="landarea"></a><span class="f_Heading4">Land Area</span></h4>
+<p class="p_VariableName"><span class="f_VariableName">Non-Solar Field Land Area, acres</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The land area in acres occupied by the project, not including the heliostat field.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Solar Field Land Area Multiplier</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The total solar field land area, including the area occupied by heliostats and space between heliostats, expressed as a multiple of the area occupied by heliostats. The default value is 1.3, which represents a total solar field land area that is 1.3 times the area occupied by heliostats.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Calculated Total Land Area, acres</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Land area required for the entire system including the solar field land area.</span></p>
+<p class="p_EquationExcel"><span class="f_EquationExcel">Total Land Area (acres) = Non-Solar Field Area (acres) + Area of Zones Occupied by Heliostats (m²) × Solar Field Land Area Multiplier × 0.0002471 (acres/m)</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The area of zones occupied by heliostats depends on the field geometry, which is either calculated by the field optimization wizard, or for a rectangular field, depends on the geometry you specify.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The land area appears on the System Costs page, where you can specify land costs in dollars per acre.</span></p>
+<h4 class="p_Heading4"><span class="f_Heading4">Heliostat Field Layout Optimization</span></h4>
+<p class="p_Text"><span class="f_Text">When the you are specifying the heliostat field using radial sections, SAM can find the optimal number of heliostats for each section automatically. See <a href="window_optimization_wizard.htm" class="topiclink">Optimization Wizard</a> for more information.</span></p>
+<p class="p_Note"><span class="f_CHNote">Note.</span><span class="f_Note"> The <a href="window_optimization_wizard.htm" class="topiclink">optimization wizard</a> will not work if you are specifying the solar field using x-y coordinates.</span></p>
+<h3 class="p_Heading3_atocs_" style="border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Specifying the Field</span></h3>
+<p class="p_Text"><span class="f_Text">SAM allows the heliostat locations in the field to be specified either by a set of rectangular coordinates (x-y) or as a number of heliostats per radial section of the field (number of radial and azimuthal zones).</span></p>
+<h4 class="p_Heading4"><span class="f_Heading4">Radial and Azimuthal Zones</span></h4>
+<p class="p_Text"><span class="f_Text">To specify the field as a number of heliostats per radial zone enter the number of radial zones and azimuthal zones to divide the heliostat field into radial zones shown in the field diagram. You can then specify the field manually or automatically. To specify the field manually, either type values in the Number of Heliostats Per Zone table or import the data as a text file. To specify the field automatically, use the <a href="window_optimization_wizard.htm" class="topiclink">optimization wizard</a> to specify a set of optimization parameters and allow SAM to optimize the heliostat field design and calculate the optimal number of heliostats per zone, receiver tower height, receiver height and diameter, and other variables.</span></p>
+<p class="p_Text"><img src="ss_tower-fielddiagram.gif" width="730" height="319" alt="SS_Tower-FieldDiagram" style="border:none" /></p>
+<p class="p_Text"><span class="f_Text">The diagram shows that solar field is divided into evenly distributed sections of a circle called zones. The rows of the Zones table specify the radial position if each zone relative to the tower located at the center of the field. The zone closest to the tower is assigned the number one, with each successively farther zone incrementing by one. The columns specify the position of the zone's center in degrees east of due north, where zero is north, 90 degrees is east, 180 degrees is south, and 270 degrees is west. The number of heliostats per zone can be a non-integer value because SAM converts the value to a mirror surface area for each zone that is equivalent to the total mirrored surface of all heliostats in the zone.</span></p>
+<h4 class="p_Heading4"><span class="f_Heading4">Rectangular (x-y) Coordinates</span></h4>
+<p class="p_Text"><span class="f_Text">To specify the field as a set of rectangular coordinates, change the value of Azimuthal Zones to 2, and enter the number of heliostats for # of Heliostats. You can then either type the x-y coordinates of each heliostat in the field, or import a text file of x-y coordinates. SAM displays the location of each heliostat on the field diagram. It models the system based on the heliostat locations specified by the set of x-y locations, and based on the values you specify for the tower height, receiver height, receiver diameter, and other input values. This approach is appropriate for predicting the output of a system with a known design. The <a href="window_optimization_wizard.htm" class="topiclink">optimization wizard</a> does not work in the x-y coordinate mode.</span></p>
+<p class="p_Text"><span class="f_Text">Each row specifies the position of an individual heliostat relative to the tower. The first column in the table specifies the x-coordinate along the east-west axis of the field, with negative values indicating positions west of the tower, and positive values indicating positions east of the tower. The second column specifies the y-coordinate along the north-south axis, with positive values indicating positions north of the tower, and negative values indicating positions south of the tower. The tower is assumed to be at 0,0. Note that this convention also applies to systems in the southern hemisphere. In the x-y coordinate mode, SAM requires that the field be symmetric about the north-south axis.</span></p>
+<h3 class="p_Heading3_atocs_" style="border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Working with Heliostat Field Files</span></h3>
+<p class="p_Text"><span class="f_Text">SAM allows you to use text files to save and load field layout data when you specify the field layout by hand instead of relying on the <a href="window_optimization_wizard.htm" class="topiclink">optimization wizard</a> to calculate the optimal layout.</span></p>
+<p class="p_Text"><span class="f_Text">For radial zone data, each row in the file represents a radial step (distance away from the center of the circle), and each column represents an azimuthal division (distance clockwise around the circle from the zero degree line pointing north), as shown on the sample layout diagram. The first row must contain data for the radial step closest to the center of the field, and subsequent rows should be in consecutive order away from the center. The first column of each row must contain data for the azimuthal division containing the north line at zero degrees, and the second column the next division moving counterclockwise from the first column, and so on. Zones with no heliostats should be indicated by a zero. Each column in the file should be separated by a space, and each row by a new line. For example, a text file with the following contents would describe a field with three radial steps and four azimuthal divisions:</span></p>
+<p class="p_List"><span class="f_List">9.0 10.0 9.0 10.0</span></p>
+<p class="p_List"><span class="f_List">15.5 15.5 15.5 15.5</span></p>
+<p class="p_ListLast"><span class="f_ListLast">22.5 18.0 18.5 22.5</span></p>
+<p class="p_Text"><span class="f_Text">For rectangular coordinate data, each row represents an individual heliostat position in the field, with the x coordinate in the first column and the y coordinate in the second column. A positive x value is east, and a positive y value is north of the tower. Use negative values for positions west and south of the tower. The heliostat coordinates do not have to be in a particular order in the file. Each column in the file should be separated by a space, and each row by a new line. A file with the following contents would describe a solar field with three heliostats at (x = 0.0, y = 75.0), (x = 7.5, y = 70.0), and (x = 15.0, y = 65.0):</span></p>
+<p class="p_List"><span class="f_List">0.0 75.0</span></p>
+<p class="p_List"><span class="f_List">7.5 70.0</span></p>
+<p class="p_ListLast"><span class="f_ListLast">15.0 65.0</span></p>
+
+<!--ZOOMSTOP--> 
+
+
+</div> <!-- idcontent -->
+</div><!-- hmbox --> 
+</body>
+</html>

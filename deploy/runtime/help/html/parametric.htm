@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>Parametric Analysis</title>
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="" />
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+   <meta http-equiv="content-language" content="en-us" />
+   <meta name="description" content="A parametric analysis makes it possible to create graphs showing the relationship between a result metric and one or more input variables. You might use such a graph for..." />
+   <meta http-equiv="Content-Style-Type" content="text/css" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+   <link id="tabscheme" type="text/css" href="hm_topic.css" rel="stylesheet" />   
+<style type="text/css">
+/* No header topics */
+
+/* Breadcrumb trail */
+p#breadcrumbs {
+font-family: Verdana, Tahoma, Helvetica, Sans-Serif;   padding: 2px 0 1px 2px;
+   margin: 0;
+   font-size: 8pt; 
+   color: #999;
+   }   
+p#breadcrumbs a { color: #999; text-decoration: none;}
+p#breadcrumbs a:visited { color: #999; }
+p#breadcrumbs a:hover { color: #333; border-bottom: 1px dotted #333; }
+
+/* Search hightlight color */
+span.highlight {background-color: #ffff40;}
+</style>
+<script type="text/javascript">
+var hmHeaderTopic = true;
+
+</script> 
+<!--[if IE 9]>
+<link id="iesvgcss" rel="stylesheet" type="text/css" href="hm_webhelp_svg.css" />
+<![endif]-->	
+<script src="jquery.js"></script>
+<script type="text/javascript" src="jquery.tools.min.js"></script>
+<script type="text/javascript" src="jquery.scrollTo-min.js"></script>
+<script type="text/javascript"> 
+// General topic variables
+var tVars = {
+   hmHelpPage: "index.html",
+   nextP: "sensitivity_analysis.htm",
+   prevP: "simulation_options.htm",
+   currP: "parametric.htm",
+   defP: "introduction.htm",
+   titleP: "Parametric Analysis",
+   mailsubject: "Feedback on: SAM Help - Parametric Analysis",
+   simplesubject: "Documentation%20Feedback",
+   mailid: "Parametric",
+   mailpath: "Analysis Options &gt; Parametric Analysis /",
+   mailbody: "Dear SAM Support,",
+   mailrecipient: "SAM Support <sam.support@nrel.gov>",
+   simplerecipient: "sam.support@nrel.gov",
+   fbtype: false,
+   header: true,
+   background: "bg.png",
+   tablesReady: false,
+   togglesReady: false,
+   webRedirect: true
+   }
+// Popup configuration
+ var hmpBShadow = true;
+ var hmPopSmallDim = 500;
+ var hmPopKillVideo = false;
+ // AutoTOC variables
+ var hmatocvars = {
+   atoc_show: true,
+   atoc_title: "Contents",
+   atoc_tip: "Jump to:&nbsp;",
+   atoc_minHeaders: 2,
+   atoc_btntip_off: "No contents entries on this page",
+   atoc_btntip_on: "Display/hide topic directory",
+   atoc_toptip: "Jump to top of page",
+   atoc_top: "Scroll to Top of Page",
+   atoc_bg: "#f6f6f6",
+   atoc_border: "silver",
+   atoc_linkcolor: "#444",
+   atoc_linklimit: 45,
+   atoc_hovercolor: "#000",
+   atoc_hoverbgcolor: "#e0e0e0"
+}
+// Sortable tables
+var sortVars = {
+   europeandate: false,
+   germanNumbers: false,
+   imagePath: "",
+   image_up: "arrow-up.gif",
+   image_down: "arrow-down.gif",
+   image_empty: "arrow-empty.gif",
+   image_none: "arrow-none.gif",
+   sort_tip: "Click to sort on this column",
+   umlauts: "false"
+   }
+
+</script>
+
+<script type="text/javascript"> 
+$(document).ready(function() {
+var doc = document;  
+try {
+if (parent.hmWebHelp.navWidth != null) doc = parent.document;
+doc.title = $("<div/>").html("SAM Help - Parametric Analysis").text();
+window.onunload = function() {doc.title = $("<div/>").html("SAM Help").text();}
+} catch(err) {}
+});
+</script>
+<script type="text/javascript" src="helpman_settings.js"></script>
+<script type="text/javascript" src="helpman_topicinit.js"></script>
+<script type="text/javascript" src="hmtopic.js"></script>
+
+   <script type="text/javascript">
+     HMSyncTOC("index.html", "parametric.htm");
+   </script>
+   <script type="text/javascript" src="highlight.js"></script>
+   <script type="text/javascript">
+     $(document).ready(function(){highlight();});
+   </script>
+</head>
+<body>
+<!--ZOOMSTOP-->
+<ul id="topictabs" class="tabs">
+<li id="indextab" class="hmtabs"><a href="#" id="indextablink" class="current"><span>Parametric Analysis</span></a></li>
+</ul>
+<div id="hmbox">
+<div id="hmheader">
+<div id="hmheadercontents">
+<p id="breadcrumbs">
+<b>Navigation:</b>
+<a href="simulation_options.htm">Analysis Options</a>:</p> 
+<h1 class="p_Heading1"><span class="f_Heading1">Parametric Analysis</span></h1>
+
+</div>
+<div id="atocIcon" class="navdivs">
+<img class="navicon" id="hmAtocLink" src="contents_off.png" alt="No contents entries on this page" title="No contents entries on this page" />
+<br /><span>Contents</span>
+</div>
+</div>
+<div id="autoTocWrapper" class="topicmenu"></div>
+<div id="idcontent">
+<div id="unclicker"></div>
+
+<!--ZOOMRESTART-->
+<p class="p_Text"><span class="f_Text">A parametric analysis makes it possible to create graphs showing the relationship between a result metric and one or more input variables. You might use such a graph for showing relationships between variables, or for optimizing the value of an input variable. For example:</span></p>
+<p style="text-align: left; padding: 0px 0px 0px 13px; margin: 0px 0px 3px 10px;"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;display:inline-block;width:13px;margin-left:-13px">&#9679;</span><span class="f_List">For one of the utility financing options, show the <a href="parametric.htm#relationship" class="topiclink">relationship</a> between internal rate of return and power purchase agreement price.</span></p><p style="text-align: left; padding: 0px 0px 0px 13px; margin: 0px 0px 3px 10px;"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;display:inline-block;width:13px;margin-left:-13px">&#9679;</span><span class="f_List">For photovoltaic systems, create a graph of annual energy (or levelized cost of energy) versus array tilt and azimuth to <a href="parametric.htm#optimization" class="topiclink">optimize</a> the array orientation.</span></p><p style="text-align: left; padding: 0px 0px 0px 13px; margin: 0px 0px 6px 10px;"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;display:inline-block;width:13px;margin-left:-13px">&#9679;</span><span class="f_ListLast">For CSP trough systems with thermal energy storage, create a graph showing levelized cost of energy versus solar multiple and thermal storage capacity. (See <a href="troughphysical_solar_field.htm#sizingfield" class="topiclink">Sizing the Solar Field for the physical trough model</a>, or <a href="troughempirical_solar_field.htm#trough_sizefield" class="topiclink">Sizing the Solar Field for the empirical trough model</a>.)</span></p><p class="p_TitleProcedure"><span class="f_TitleProcedure">To display the parametric simulation setup options:</span></p>
+<p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">1.</span><span class="f_ProcedureStep">On the Main window, click </span><span class="f_CHInterfaceElement">Configure Simulations</span><span class="f_ProcedureStep"> to view the Configure Simulation page.</span></p><p class="p_ProcedureStepNoNumber"><img src="ss_mainwindow-configuresimulationsbutton.gif" width="247" height="86" alt="SS_MainWindow-ConfigureSimulationsButton" style="border:none" /></p>
+<p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">2.</span><span class="f_ProcedureStep">On the Configure Simulations page, click </span><span class="f_CHInterfaceElement">Parametrics</span><span class="f_ProcedureStep"> to display the Parametric simulation setup options.</span></p><p class="p_ProcedureStepNoNumber"><img src="ss_configuresimulations-parametricsclick.gif" width="657" height="64" alt="SS_ConfigureSimulations-ParametricsClick" style="border:none" /></p>
+<p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">3.</span><span class="f_ProcedureStep">Click </span><span class="f_CHInterfaceElement">Add Parametric Simulation</span><span class="f_ProcedureStep"> to add a set of parametric simulation setup options. You can add as many parametric simulations as your analysis requires.</span></p><p class="p_ProcedureStepNoNumber"><img src="ss_parametrics-addsimulation.gif" width="230" height="33" alt="SS_Parametrics-AddSimulation" style="border:none" /></p>
+<p class="p_ProcedureStepNoNumber"><span class="f_ProcedureStepNoNumber">Click </span><span class="f_CHInterfaceElement">Remove Simulation</span><span class="f_ProcedureStepNoNumber"> to delete an analysis option. </span></p>
+<p class="p_ProcedureStepNoNumber"><span class="f_ProcedureStepNoNumber">Click </span><span class="f_CHInterfaceElement">Clear All</span><span class="f_ProcedureStepNoNumber"> to remove all analysis options from the case.</span></p>
+<h3 class="p_Heading3_atocs_" style="border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Parametric Simulation Setup</span></h3>
+<p class="p_Text"><span class="f_Text">The Parametric Simulation Setup options allow you to add and remove variables from the list of parametric variables, assign values to and edit parametric variables, and to set up linkages between parametric variables that have interdependent values.</span></p>
+<p class="p_Text"><img src="ss_parametrics-overview.gif" width="578" height="180" alt="SS_Parametrics-Overview" style="border:none" /></p>
+<p class="p_VariableName"><span class="f_VariableName">Add</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Add an input variable to the parametric variables list. You must add a variable before you can assign it multiple values.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Remove</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Remove a variable from the parametric variables list. When you remove a variable, SAM assigns the value from the variable's input page to the variable.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Setup Linkages</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Create linkages between parametric variables when the values of one of the variables is dependent on those of the other.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Edit</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Assign values to or edit values of the variable highlighted in the parametric variables list.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Up</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Move the highlighted value in the variable values list up one row.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Down</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Move the highlighted value in the variable values list down one row.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Remove Simulation</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Remove the parametric simulation setup and delete all parametric values. You can also clear the Enable this simulation checkbox to keep the setup options but exclude the parametric analysis from simulations.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Enable this simulation</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">This box must be checked for the parametric simulation setup to be included in simulations when you run the model.</span></p>
+<h3 class="p_Heading3_atocs_" style="border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Setting up a Parametric Analysis</span></h3>
+<p class="p_Text"><span class="f_Text">Once you have added a parametric simulation, you must add one or more parametric variables to the simulation, and assign multiple values to each variable.</span></p>
+<p class="p_Text"><span class="f_Text">After setting up the optimization, click the Run All Simulations button, or click </span><span class="f_CHInterfaceElement">Run All Simulations</span><span class="f_Text"> on the Case menu to run the optimization and any other enabled simulations.</span></p>
+<p class="p_TitleProcedure"><span class="f_TitleProcedure">To set up a parametric analysis:</span></p>
+<p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">1.</span><span class="f_ProcedureStep">Display the parametric simulation setup options as described above.</span></p><p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">2.</span><span class="f_ProcedureStep">Click </span><span class="f_CHInterfaceElement">Add</span><span class="f_ProcedureStep"> to choose variables to which you want to assign multiple values from a list of available input variables. </span></p><p class="p_ProcedureStepNoNumber"><img src="ss_parametrics-add.gif" width="305" height="60" alt="SS_Parametrics-Add" style="border:none" /></p>
+<p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">3.</span><span class="f_ProcedureStep">In the Search box, type the first few letters of the variable name and check the variable's box in the list of available variables.</span></p><p class="p_ProcedureStepNoNumber"><img src="ss_parametrics-addvariablesearchbox.gif" width="237" height="108" alt="SS_Parametrics-AddVariableSearchBox" style="border:none" /></p>
+<p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">4.</span><span class="f_ProcedureStep">Highlight each variable in the parametric variables list and click </span><span class="f_CHInterfaceElement">Edit</span><span class="f_ProcedureStep"> to assign values to the variables. See <a href="window_numeric_ranges.htm" class="topiclink">Working with Numeric Ranges</a> for details.</span></p><p class="p_ProcedureStepNoNumber"><img src="ss_parametrics-edit.gif" width="572" height="86" alt="SS_Parametrics-Edit" style="border:none" /></p>
+<p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 6px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">5.</span><span class="f_ProcedureStepLast">Check </span><span class="f_CHInterfaceElement">Enable this simulation</span><span class="f_ProcedureStepLast"> to include the parametric analysis in simulation runs. You can save the parametric simulation setup options and exclude the analysis from simulations by clearing the checkbox. Clearing the checkbox allows you to shorten simulation run times without losing the setup configuration.</span></p><p class="p_ProcedureStepNoNumber"><img src="ss_parametrics-enable.gif" width="200" height="66" alt="SS_Parametrics-Enable" style="border:none" /></p>
+<h3 class="p_Heading3_atocs_" style="border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Working with Linkages</span></h3>
+<p class="p_Text"><span class="f_Text">In some analyses, parametric variables may be interdependent. For example:</span></p>
+<p style="text-align: left; padding: 0px 0px 0px 13px; margin: 0px 0px 3px 10px;"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;display:inline-block;width:13px;margin-left:-13px">&#9679;</span><span class="f_List">Tilt depends on location when an analysis assumes that the photovoltaic array or CSP collector tilt angle is equal to the location's latitude.</span></p><p style="text-align: left; padding: 0px 0px 0px 13px; margin: 0px 0px 6px 10px;"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;display:inline-block;width:13px;margin-left:-13px">&#9679;</span><span class="f_ListLast">Thermal storage capacity depends on the solar multiple for a CSP trough analysis that assumes that the storage system capacity scales with the solar field area.</span></p><p class="p_Text"><span class="f_Text">For these analyses, linking the interdependent parametric variables prevents SAM from simulating combinations of parametric variable values that are not relevant to the analysis. For example, linking the array or collector tilt variable to the location variable ensures that SAM only simulates systems that use a location's latitude as the tilt angle. Without linkages, SAM would simulate all combinations of locations and tilt values.</span></p>
+<p class="p_TitleProcedure"><span class="f_TitleProcedure">To setup a linkage between two parametric variables:</span></p>
+<p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">1.</span><span class="f_ProcedureStep">Add the two variables to the parametric variables list as described above. The parametric variables list may include other variables.</span></p><p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">2.</span><span class="f_ProcedureStep">Click </span><span class="f_CHInterfaceElement">Setup Linkages</span><span class="f_ProcedureStep">.</span></p><p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">3.</span><span class="f_ProcedureStep">In the Choose Linked Parametric Variables window, check the variable names for each of the two linked variables.</span></p><p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">4.</span><span class="f_ProcedureStep">Click </span><span class="f_CHInterfaceElement">OK</span><span class="f_ProcedureStep">. SAM displays the word &quot;Linked&quot; in brackets next to the variable names in the parametric variables list indicating the linked variables</span></p><p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">5.</span><span class="f_ProcedureStep">Click the first linked variable. SAM displays the variable's values in the variable values list, and shows the value of the other linked variable in brackets.</span></p><p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">6.</span><span class="f_ProcedureStep">Click </span><span class="f_CHInterfaceElement">Edit</span><span class="f_ProcedureStep"> to assign multiple values to the first linked variable. See <a href="window_numeric_ranges.htm" class="topiclink">Working with Numeric Ranges</a> for details.</span></p><p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">7.</span><span class="f_ProcedureStep">Click </span><span class="f_CHInterfaceElement">OK</span><span class="f_ProcedureStep">. SAM displays question marks in brackets next to the values of the second linked variable to which you have not yet assigned values.</span></p><p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">8.</span><span class="f_ProcedureStep">In the parametric variables list, click the second linked variable.</span></p><p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">9.</span><span class="f_ProcedureStep">Click </span><span class="f_CHInterfaceElement">Edit</span><span class="f_ProcedureStep"> to assign multiple values to the variable. Note that you should assign the same number of values to this variable as you did to the first linked variable.</span></p><p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 6px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">10.</span><span class="f_ProcedureStepLast">Click </span><span class="f_CHInterfaceElement">OK</span><span class="f_ProcedureStepLast">. SAM displays the values of both variables in the variable values list. Check the list to make sure that there are no question marks in brackets indicating a missing linked value and that the values are in correctly matched pairs.</span></p><h3 class="p_Heading3_atocs_" style="border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Parametric Analysis Results in Graphs and Tables</span></h3>
+<p class="p_Text"><span class="f_Text">After running simulations for a parametric analysis, you can create graphs and tables to show results. </span></p>
+<p class="p_TitleProcedure"><span class="f_TitleProcedure">To create graphs of parametric analysis results:</span></p>
+<p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">1.</span><span class="f_ProcedureStep">Set up the parametric variables and run simulations.</span></p><p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">2.</span><span class="f_ProcedureStep">On the <a href="results_page.htm" class="topiclink">Results</a> page, click </span><span class="f_CHInterfaceElement"><a href="graphs_and_charts.htm" class="topiclink">Graphs</a></span><span class="f_ProcedureStep">.</span></p><p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">3.</span><span class="f_ProcedureStep">Click </span><span class="f_CHInterfaceElement">Add a new graph</span><span class="f_ProcedureStep">.</span></p><p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">4.</span><span class="f_ProcedureStep">Under </span><span class="f_CHInterfaceElement">Choose Simulation</span><span class="f_ProcedureStep">, choose </span><span class="f_CHInterfaceElement">Parametric Set 1</span><span class="f_ProcedureStep">.</span></p><p class="p_ProcedureStepNoNumber"><span class="f_ProcedureStepNoNumber">Choose </span><span class="f_CHInterfaceElement">Base Case</span><span class="f_ProcedureStepNoNumber"> to create graphs of input variable values that you see on the input pages. When you run simulations for parametric or other analyses that involve input variables with more than one value, SAM lists the analysis options in addition to the base case.</span></p>
+<p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">5.</span><span class="f_ProcedureStep">For </span><span class="f_CHInterfaceElement">X Value</span><span class="f_ProcedureStep">, choose the parametric variable that you want to appear on the X axis. </span></p><p class="p_ProcedureStepNoNumber"><span class="f_ProcedureStepNoNumber">When your analysis includes more than one parametric variable, you can create a contour graph with parametric variables for the X and Y axes.</span></p>
+<p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">6.</span><span class="f_ProcedureStep">Choose appropriate options for your graph. See <a href="window_edit_graph.htm" class="topiclink">Edit Graph Window</a> for details. </span></p><p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">7.</span><span class="f_ProcedureStep">Click </span><span class="f_CHInterfaceElement">Accept</span><span class="f_ProcedureStep">.</span></p><p class="p_ProcedureStepNoNumber"><span class="f_ProcedureStepNoNumber">SAM creates the graph, displays it on the Results page, and adds a thumbnail for the graph.</span></p>
+<p class="p_TitleProcedure"><span class="f_TitleProcedure">To create tables of parametric analysis results:</span></p>
+<p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">1.</span><span class="f_ProcedureStep">Set up the parametric variables and run simulations.</span></p><p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">2.</span><span class="f_ProcedureStep">On the <a href="results_page.htm" class="topiclink">Results</a> page, click </span><span class="f_CHInterfaceElement"><a href="tabular_data_browser.htm" class="topiclink">Tables</a></span><span class="f_ProcedureStep">.</span></p><p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">3.</span><span class="f_ProcedureStep">For </span><span class="f_CHInterfaceElement">Choose Simulation</span><span class="f_ProcedureStep">, choose </span><span class="f_CHInterfaceElement">Parametric Set 1</span><span class="f_ProcedureStep">.</span></p><p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">4.</span><span class="f_ProcedureStep">Under </span><span class="f_CHInterfaceElement">Output Variables</span><span class="f_ProcedureStep">, choose the variables you want to display in the table.</span></p><p class="p_ProcedureStepNoNumber"><span class="f_ProcedureStepNoNumber">SAM displays a column of values for each parametric variable's value.</span></p>
+<h3 class="p_Heading3_atocs_" style="border-top: none; border-right: none; border-left: none;"><a id="relationship"></a><span class="f_Heading3_atocs_">Example 1. Graph the relationship between an input variables and a result</span></h3>
+<p class="p_Text"><span class="f_Text">The following graph is for a 58 MW wind farm with an installed cost of $3,000 per kW, and shows the relationship between the project internal rate (result) of return and PPA price (input). The graph shows that the project requires a PPA price of at least 7 cents/kWh to make a positive return on investment:</span></p>
+<h4 class="p_Heading4"><img src="ss_parametrics-irr-vs-ppa-price.gif" width="400" height="300" alt="SS_Parametrics-irr-vs-ppa-price" style="border:none" /></h4>
+<p class="p_Text"><span class="f_Text">To plot the graph, we chose the Specify PPA Price option on the Financing page, and on the Parametrics input page, added PPA Price as a parametric variable with Start Value = $0.05/kWh, End Value = $0.2/kWh, and Increment of $0.01/kWh.</span></p>
+<p class="p_Text"><img src="ss_parametrics-irr-vs-ppa-price-inputs.gif" width="538" height="263" alt="SS_Parametrics-irr-vs-ppa-price-inputs" style="border:none" /></p>
+<p class="p_Text"><span class="f_ImageCaption">After running simulations, on the Results page, we added a new graph with the following properties Choose Simulation = Parametric Set 1, X Value = PPA Price, Y1 Values = Internal Rate of Return, Graph Type = Bar Graph:</span></p>
+<p class="p_Text"><img src="ss_parametrics-irr-vs-ppa-price-graph.gif" width="477" height="376" alt="SS_Parametrics-irr-vs-ppa-price-graph" style="border:none" /></p>
+<h3 class="p_Heading3_atocs_" style="border-top: none; border-right: none; border-left: none;"><a id="optimization"></a><span class="f_Heading3_atocs_">Example 2: Optimize Photovoltaic Array Tilt and Azimuth Angles</span></h3>
+<p class="p_Text"><span class="f_Text">The following graphs show how to use parametric analyses to optimize the array orientation of a photovoltaic system. We created the graphs by setting up a system using the PVWatts performance model for a 4 kW system.</span></p>
+<p class="p_Text"><span class="f_Text">The first graph shows how for the 4 kW system in Phoenix, Arizona, the annual electric output depends on the array tilt. We defined tilt variable as a parametric variable with ten values: 0, 10, 20, 30, 40, 50, 60, 70, 80, and 90 degrees from horizontal. The bar graph shows Parametric Set 1 results with Tilt as the X Value and Annual Energy as the Y1 Value:</span></p>
+<p class="p_Text"><img src="ss_parametrics-outputvstiltgraph.gif" width="400" height="300" alt="SS_Parametrics-OutputVsTiltGraph" style="border:none" /></p>
+<p class="p_Text"><span class="f_Text">The next graph shows how the first year annual electric output depends on both the array tilt and azimuth. We used the same range of values for the tilt variable, and added azimuth as a parametric variable with values between 90 and 270 degrees east of north in increments of 15 degrees. The contour graph shows Parametric Set 1 results with Annual Energy as the Z Value, tilt as the X Parametric, and azimuth as the Y Parametric:</span></p>
+<p class="p_Text"><img src="ss_parametrics-outputvstiltazimuthgraph.gif" width="400" height="300" alt="SS_Parametrics-OutputVsTiltAzimuthGraph" style="border:none" /></p>
+<p class="p_Text"><span class="f_Text">The third graph shows the relationship between the first year annual electric output and array azimuth for three locations, assuming an array tilt equal to the location's latitude. We assigned a range of azimuth angle values between 150 and 210 degrees east of north. We linked the tilt and location variables as follows: Location = Boulder / Tilt = 40 degrees, Location = Los Angeles / Tilt = 34 degrees, Location = New York City / Tilt = 41 degrees. </span></p>
+<p class="p_Text"><span class="f_Text">Each cluster of bars in the graph shows the annual energy output for each azimuth value for New York, Boulder, and Los Angeles. Because of different weather patterns in each city, the optimal azimuth angle is different for each city. For example, summer afternoon thunderstorms in Boulder cause the optimal azimuth angle to be 170 degrees east of north, or about 10 degrees east of south, which is oriented away from the foothills to the west where the summer afternoon clouds block the sun.</span></p>
+<p class="p_Text"><img src="ss_parametrics-outputvsazimuthtiltlinkedlocation.gif" width="743" height="390" alt="SS_Parametrics-OutputVsAzimuthTiltLinkedLocation" style="border:none" /></p>
+
+<!--ZOOMSTOP--> 
+
+
+</div> <!-- idcontent -->
+</div><!-- hmbox --> 
+</body>
+</html>

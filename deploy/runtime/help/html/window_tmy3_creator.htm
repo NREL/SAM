@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>TMY3 Creator</title>
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="" />
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+   <meta http-equiv="content-language" content="en-us" />
+   <meta name="description" content="The TMY3 Creator allows you to cut and paste your own weather data from columns in a spreadsheet program into SAM, and to save it as a weather file in the TMY3 file format." />
+   <meta http-equiv="Content-Style-Type" content="text/css" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+   <link id="tabscheme" type="text/css" href="hm_topic.css" rel="stylesheet" />   
+<style type="text/css">
+/* No header topics */
+
+/* Breadcrumb trail */
+p#breadcrumbs {
+font-family: Verdana, Tahoma, Helvetica, Sans-Serif;   padding: 2px 0 1px 2px;
+   margin: 0;
+   font-size: 8pt; 
+   color: #999;
+   }   
+p#breadcrumbs a { color: #999; text-decoration: none;}
+p#breadcrumbs a:visited { color: #999; }
+p#breadcrumbs a:hover { color: #333; border-bottom: 1px dotted #333; }
+
+/* Search hightlight color */
+span.highlight {background-color: #ffff40;}
+</style>
+<script type="text/javascript">
+var hmHeaderTopic = true;
+
+</script> 
+<!--[if IE 9]>
+<link id="iesvgcss" rel="stylesheet" type="text/css" href="hm_webhelp_svg.css" />
+<![endif]-->	
+<script src="jquery.js"></script>
+<script type="text/javascript" src="jquery.tools.min.js"></script>
+<script type="text/javascript" src="jquery.scrollTo-min.js"></script>
+<script type="text/javascript"> 
+// General topic variables
+var tVars = {
+   hmHelpPage: "index.html",
+   nextP: "",
+   prevP: "",
+   currP: "window_tmy3_creator.htm",
+   defP: "introduction.htm",
+   titleP: "TMY3 Creator",
+   mailsubject: "Feedback on: SAM Help - TMY3 Creator",
+   simplesubject: "Documentation%20Feedback",
+   mailid: "Window_TMY3_Creator",
+   mailpath: "References /",
+   mailbody: "Dear SAM Support,",
+   mailrecipient: "SAM Support <sam.support@nrel.gov>",
+   simplerecipient: "sam.support@nrel.gov",
+   fbtype: false,
+   header: true,
+   background: "bg.png",
+   tablesReady: false,
+   togglesReady: false,
+   webRedirect: true
+   }
+// Popup configuration
+ var hmpBShadow = true;
+ var hmPopSmallDim = 500;
+ var hmPopKillVideo = false;
+ // AutoTOC variables
+ var hmatocvars = {
+   atoc_show: true,
+   atoc_title: "Contents",
+   atoc_tip: "Jump to:&nbsp;",
+   atoc_minHeaders: 2,
+   atoc_btntip_off: "No contents entries on this page",
+   atoc_btntip_on: "Display/hide topic directory",
+   atoc_toptip: "Jump to top of page",
+   atoc_top: "Scroll to Top of Page",
+   atoc_bg: "#f6f6f6",
+   atoc_border: "silver",
+   atoc_linkcolor: "#444",
+   atoc_linklimit: 45,
+   atoc_hovercolor: "#000",
+   atoc_hoverbgcolor: "#e0e0e0"
+}
+// Sortable tables
+var sortVars = {
+   europeandate: false,
+   germanNumbers: false,
+   imagePath: "",
+   image_up: "arrow-up.gif",
+   image_down: "arrow-down.gif",
+   image_empty: "arrow-empty.gif",
+   image_none: "arrow-none.gif",
+   sort_tip: "Click to sort on this column",
+   umlauts: "false"
+   }
+
+</script>
+
+<script type="text/javascript"> 
+$(document).ready(function() {
+var doc = document;  
+try {
+if (parent.hmWebHelp.navWidth != null) doc = parent.document;
+doc.title = $("<div/>").html("SAM Help - TMY3 Creator").text();
+window.onunload = function() {doc.title = $("<div/>").html("SAM Help").text();}
+} catch(err) {}
+});
+</script>
+<script type="text/javascript" src="helpman_settings.js"></script>
+<script type="text/javascript" src="helpman_topicinit.js"></script>
+<script type="text/javascript" src="hmtopic.js"></script>
+
+   <script type="text/javascript">
+     HMSyncTOC("index.html", "window_tmy3_creator.htm");
+   </script>
+   <script type="text/javascript" src="highlight.js"></script>
+   <script type="text/javascript">
+     $(document).ready(function(){highlight();});
+   </script>
+</head>
+<body>
+<!--ZOOMSTOP-->
+<ul id="topictabs" class="tabs">
+<li id="indextab" class="hmtabs"><a href="#" id="indextablink" class="current"><span>TMY3 Creator</span></a></li>
+</ul>
+<div id="hmbox">
+<div id="hmheader">
+<div id="hmheadercontents">
+<p id="breadcrumbs">
+<b>Navigation:</b>&nbsp;&raquo;No topics above this level&laquo;
+</p> 
+<h1 class="p_Heading1"><span class="f_Heading1">TMY3 Creator</span></h1>
+
+</div>
+<div id="atocIcon" class="navdivs">
+<img class="navicon" id="hmAtocLink" src="contents_off.png" alt="No contents entries on this page" title="No contents entries on this page" />
+<br /><span>Contents</span>
+</div>
+</div>
+<div id="autoTocWrapper" class="topicmenu"></div>
+<div id="idcontent">
+<div id="unclicker"></div>
+
+<!--ZOOMRESTART-->
+<p class="p_Text"><span class="f_Text">The TMY3 Creator allows you to cut and paste your own weather data from columns in a spreadsheet program into SAM, and to save it as a weather file in the TMY3 file format.</span></p>
+<p class="p_Text"><span class="f_Text">The TMY3 Creator allows you to use your own weather data in SAM, and helps to ensure that the data is correctly formatted. Although SAM only uses some of the columns of data in a TMY3 file, the weather file reader will fail if any of the columns in the file contain incorrectly formatted data because it reads the weather file before the performance model simulations begin.</span></p>
+<p class="p_Text"><span class="f_Text">Using the TMY3 Creator involves three overall steps:</span></p>
+<p class="p_List"><span class="f_List">1. Open an existing, correctly formatted TMY3 file to use as a base file.</span></p>
+<p class="p_List"><span class="f_List">2. Type and paste data in the the tables in the TMY3 Creator window to replace data in the base file with your data.</span></p>
+<p class="p_List"><span class="f_List">3. Save the data to a new TMY3 file.</span></p>
+<p class="p_Text"><span class="f_Text">&nbsp;</span></p>
+<p class="p_Note"><span class="f_CHNote">Notes.</span><span class="f_Note"> </span><br />
+<span class="f_Note">&nbsp;</span><br />
+<span class="f_Note">Unless you have a complete set of weather data for your location that you can use with confidence, using your own data introduces uncertainty into your analysis, and may result in inaccurate results or simulation errors.</span><br />
+<span class="f_Note">&nbsp;</span><br />
+<span class="f_Note">As an alternative to the TMY3 Creator, if you plan to use your weather data with the physical trough model or one of the photovoltaic models, you may want to create a weather file in the <a href="weather_format.htm#smw" class="topiclink">SMW format</a>.</span></p>
+<p class="p_Text"><span class="f_Text"> To use the TMY3 Creator, you must have the following:</span></p>
+<p style="text-align: left; padding: 0px 0px 0px 13px; margin: 0px 0px 3px 10px;"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;display:inline-block;width:13px;margin-left:-13px">&#9679;</span><span class="f_List">A &quot;base&quot; TMY3 file, which is an existing file in <a href="weather_format.htm#tmy3" class="topiclink">TMY3 format</a> that SAM modifies by replacing only the columns that SAM needs for simulations with your data. If you have a complete data set that includes all of the columns shown in the table below, then you can use any valid TMY3 file as a base file. If you do not have data for all of the categories listed in the table below, you may want to use a base file with data for the same or a nearby location with similar weather characteristics.</span></p><p style="text-align: left; padding: 0px 0px 0px 13px; margin: 0px 0px 6px 10px;"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;display:inline-block;width:13px;margin-left:-13px">&#9679;</span><span class="f_ListLast">Hourly data (8,760 rows) for each of the data columns shown in the table below with no gaps. If you do not have data for one or more of the columns, you can choose to not replace data for those columns, and instead use data from the base file. This will result in a data set that SAM can read but with mismatched elements that may cause inaccurate results or errors in the simulation. In some cases, you maybe able to use a null value indicator such as 999 or -999 for columns or cells for which you have no data.</span></p><p class="p_Note"><span class="f_CHNote">A Note about Excel and TMY3 Files.</span><span class="f_Note"> </span><br />
+<span class="f_Note">&nbsp;</span><br />
+<span class="f_Note">Opening TMY3 files in Excel and saving them can cause the data in the files to become unreadable in SAM:</span><br />
+<span class="f_Note">&nbsp;</span><br />
+<span class="f_Note">1. Excel adds commas to the header rows to match the number of columns in the data rows because it assumes that all rows in the file have the same number of columns.</span><br />
+<span class="f_Note">&nbsp;</span><br />
+<span class="f_Note">2. Excel automatically changes date and number formats so that SAM's weather data processor can no longer recognize the data, for example changing 01/01/1987 to 1/1/1987.</span><br />
+<span class="f_Note">&nbsp;</span><br />
+<span class="f_Note">To avoid these problems, do not open and save your TMY3 format files in Excel. To examine the data, use a program like DView (<a href="http://www.mistaya.ca/software/dview.htm)" target="_blank" class="weblink">http://www.mistaya.ca/software/dview.htm)</a> or a text editor. If you do use Excel to make changes to data in a TMY3 file, you can avoid the inadvertently changing the data format by using the TMY3 Creator to create a new file containing your modified data.</span></p>
+<p class="p_TitleProcedure"><span class="f_TitleProcedure">To prepare your data:</span></p>
+<p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">1.</span><span class="f_ProcedureStep">Identify a file in TMY3 format to use as the base file (see description above). This can be any of the following:</span></p><p style="text-align: left; padding: 0px 0px 0px 13px; margin: 0px 0px 3px 48px;"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;display:inline-block;width:13px;margin-left:-13px">&#9679;</span><span class="f_ProcedureStepNoNumber">One of the TMY3 files included with SAM in the </span><span class="f_Emphasis">\weather</span><span class="f_ProcedureStepNoNumber"> folder of you SAM installation folder (</span><span class="f_Emphasis">c:\SAM\SAM 2013.9.20</span><span class="f_ProcedureStepNoNumber"> in Windows</span><span class="f_Emphasis">)</span><span class="f_ProcedureStepNoNumber">. The TMY3 files have the </span><span class="f_Emphasis">.csv</span><span class="f_ProcedureStepNoNumber"> extension, for example, </span><span class="f_Emphasis">723815TY.csv</span><span class="f_ProcedureStepNoNumber">.</span></p><p style="text-align: left; padding: 0px 0px 0px 13px; margin: 0px 0px 3px 48px;"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;display:inline-block;width:13px;margin-left:-13px">&#9679;</span><span class="f_ProcedureStepNoNumber">A TMY3 file for a location near your weather file location from the NSRDB database <a href="http://rredc.nrel.gov/solar/old_data/nsrdb/1991-2005/tmy3/" target="_blank" class="weblink">http://rredc.nrel.gov/solar/old_data/nsrdb/1991-2005/tmy3/</a>.</span></p><p style="text-align: left; padding: 0px 0px 0px 13px; margin: 0px 0px 3px 48px;"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;display:inline-block;width:13px;margin-left:-13px">&#9679;</span><span class="f_ProcedureStepNoNumber">A valid TMY3 file that you created for a different location, and tested in SAM.</span></p><p style="text-align: left; padding: 0px 0px 0px 48px; margin: 0px 0px 6px 0px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">2.</span><span class="f_Text">To facilitate copying and pasting data, create a spreadsheet with tables of data that match the two TMY3 Creator tables: One containing a row of header information (Site Identifier Code, Station Name, etc.), and the other containing columns of weather data. Organize the columns in your spreadsheet so that they are in the same order as those in the TMY3 Creator tables.</span></p><p class="p_TitleProcedure"><span class="f_TitleProcedure">To create a TMY3 weather file:</span></p>
+<p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">1.</span><span class="f_ProcedureStep">Open the file or files containing your weather data in a spreadsheet program or any software that allows you to copy columns of 8,760 rows to your computer's clipboard.</span></p><p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">2.</span><span class="f_ProcedureStep">Start SAM, and create a new case for the technology you want to use with your weather data.</span></p><p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">3.</span><span class="f_ProcedureStep">On the Location and Resource page, click </span><span class="f_CHInterfaceElement">Create TMY3 file</span><span class="f_ProcedureStep">.</span></p><p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">4.</span><span class="f_ProcedureStep">In the TMY3 Creator window, click </span><span class="f_CHInterfaceElement">Open base TMY3 file</span><span class="f_ProcedureStep">, and navigate to the folder containing the base file.</span></p><p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">5.</span><span class="f_ProcedureStep">Type values in the header fields as appropriate. See below descriptions of the fields.</span></p><p class="p_ProcedureStepNoNumber"><span class="f_ProcedureStepNoNumber">If you have organized the data in your spreadsheet as a table with columns in the same order as they are in the TMY3 Creator: Select and copy the entire table in the spreadsheet (without column headings), click the first column in the TMY3 Creator table, and click </span><span class="f_CHInterfaceElement">Paste</span><span class="f_ProcedureStepNoNumber"> to populate the entire table.</span></p>
+<p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">6.</span><span class="f_ProcedureStep">In your weather data file, copy the column of global horizontal radiation data. Be sure to copy all 8,760 rows of data, but do not include the row header. The column should contain 8,760 rows of numbers.</span></p><p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">7.</span><span class="f_ProcedureStep">In the TMY3 Creator window, click the</span><span class="f_CHInterfaceElement"> GHI (W/m2)</span><span class="f_ProcedureStep"> column heading. SAM should highlight the entire column in dark gray.</span></p><p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">8.</span><span class="f_ProcedureStep">Click </span><span class="f_CHInterfaceElement">Paste</span><span class="f_ProcedureStep">.</span></p><p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">9.</span><span class="f_ProcedureStep">Repeat the copy and paste procedure for each column until you have pasted all of your data into the table.</span></p><p class="p_ProcedureStepNoNumber"><span class="f_ProcedureStepNoNumber">Alternatively, you can copy and paste the entire 9 x 8760 table as described under Step 6 above.</span></p>
+<p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">10.</span><span class="f_ProcedureStep">Click </span><span class="f_CHInterfaceElement">Save as TMY3 file</span><span class="f_ProcedureStep"> (at the bottom of the window).</span></p><p class="p_ProcedureStepNoNumber"><span class="f_ProcedureStepNoNumber">Save the file in a folder that you have included in the weather file search list, or to a folder that you plan to add to the list. See <a href="weather_manage_folders.htm" class="topiclink">Weather File Folders</a> for details.</span></p>
+<p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">11.</span><span class="f_ProcedureStep">Click the close button at the top right of the window, or click </span><span class="f_CHInterfaceElement">Cancel and Discard Data </span><span class="f_ProcedureStep">to close the TMY3 Creator.</span></p><p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">12.</span><span class="f_ProcedureStep">Click</span><span class="f_CHInterfaceElement"> Refresh list</span><span class="f_ProcedureStep">. SAM may take a moment or two to refresh the location list.</span></p><p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 3px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">13.</span><span class="f_ProcedureStep">In the Location list, select the new TMY3 file. You should find it toward the end of the list.</span></p><p style="text-align: left; padding: 0px 0px 0px 24px; margin: 0px 0px 6px 24px;"><span style="font-size:10pt; font-family: 'Verdana';color:#000000;display:inline-block;width:24px;margin-left:-24px">14.</span><span class="f_ProcedureStepLast">Click </span><span class="f_CHInterfaceElement">View Hourly Data</span><span class="f_ProcedureStepLast"> to open the time series data viewer and visually inspect the data.</span></p><p class="p_Text"><span class="f_Text">After creating and loading your weather file, run some test simulations and examine the time series results to see if there are any problems with the data. You can view graphs of the data with the <a href="weather_viewer.htm" class="topiclink">weather data viewer</a>.</span></p>
+<h3 class="p_Heading3_atocs_" style="border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Header Data</span></h3>
+<p class="p_VariableName"><span class="f_VariableName">Site Identifier Code</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">A six-digit number identifying the location. If you do not have a station code, use a dummy value like 999999.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Station Name</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">A text description identifying the location. The station name must contain at least one character.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Station State</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">A two-letter text abbreviation for the location's state. If you do not have a state abbreviation, use a dummy value like NA.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Site Time Zone (GMT)</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The location's time zone offset from Greenwich Mean Time (GMT) with no daylight savings adjustment. A positive value indicates a time zone east of the Prime Meridian. Decimals indicate fractions of hours. A negative value indicates a time zone west of the prime meridian. For example, Chicago is -6; India is 5.5.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Site Latitude (DD)</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Location's latitude in decimal degrees. A positive value between zero and 90 indicates a latitude north of the equator. A negative value between 0 and -90 indicates a latitude south of the equator. For example, Durban (South Africa) is -29.97; New York City is 40.71.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Site Longitude (DD)</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Location's longitude in decimal degrees. A positive value between zero and 180 indicates a longitude east of the Prime Meridian. A negative value between zero and -180 indicates a longitude west of the Prime Meridian. For example, Durban (South Africa) is 30.95; New York City is -74.01.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Site Elevation (m)</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Location's height above</span> sea level in meters.</p>
+<h3 class="p_Heading3_atocs_" style="border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Hourly Data</span></h3>
+<p class="p_VariableName"><span class="f_VariableName">GHI (W/m2)</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Global horizontal irradiance: Total amount of direct and diffuse solar radiation received on a horizontal surface Watts per square meter.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">DNI (W/m2)</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Direct normal irradiance: Amount of solar radiation received within a limited field of view centered on the sun in Watts per square meter.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">DHI (W/m2)</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Diffuse horizontal irradiance: Amount of solar radiation received from the sky, excluding the solar disk on a horizontal surface in Watts per square meter.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Dry-bulb (C)</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Average dry bulb temperature for the hour in degrees Celsius..</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Dew-point (C)</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Average dew point temperature for the hour in degrees Celsius.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">RHum (%)</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Average relative humidity for the hour.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Pressure (mbar)</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Station pressure or measured atmospheric pressure in millibars corrected for temperature and humidity for the hour.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Wspd (m/s)</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Average speed of the wind for the hour in meters per second.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Albedo (unitless)</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Ratio of reflected solar radiation to global horizontal radiation. Use -99 for null.</span></p>
+
+<!--ZOOMSTOP--> 
+
+
+</div> <!-- idcontent -->
+</div><!-- hmbox --> 
+</body>
+</html>

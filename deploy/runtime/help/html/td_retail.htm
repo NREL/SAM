@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>Retail Electricity Savings</title>
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="" />
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+   <meta http-equiv="content-language" content="en-us" />
+   <meta name="description" content="For projects with the residential or commercial financing option (not including commercial PPA) that buy and sell electricity at retail rates, you specify a rate structure (net..." />
+   <meta http-equiv="Content-Style-Type" content="text/css" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+   <link id="tabscheme" type="text/css" href="hm_topic.css" rel="stylesheet" />   
+<style type="text/css">
+/* No header topics */
+
+/* Breadcrumb trail */
+p#breadcrumbs {
+font-family: Verdana, Tahoma, Helvetica, Sans-Serif;   padding: 2px 0 1px 2px;
+   margin: 0;
+   font-size: 8pt; 
+   color: #999;
+   }   
+p#breadcrumbs a { color: #999; text-decoration: none;}
+p#breadcrumbs a:visited { color: #999; }
+p#breadcrumbs a:hover { color: #333; border-bottom: 1px dotted #333; }
+
+/* Search hightlight color */
+span.highlight {background-color: #ffff40;}
+</style>
+<script type="text/javascript">
+var hmHeaderTopic = true;
+
+</script> 
+<!--[if IE 9]>
+<link id="iesvgcss" rel="stylesheet" type="text/css" href="hm_webhelp_svg.css" />
+<![endif]-->	
+<script src="jquery.js"></script>
+<script type="text/javascript" src="jquery.tools.min.js"></script>
+<script type="text/javascript" src="jquery.scrollTo-min.js"></script>
+<script type="text/javascript"> 
+// General topic variables
+var tVars = {
+   hmHelpPage: "index.html",
+   nextP: "sdk.htm",
+   prevP: "td_ppa.htm",
+   currP: "td_retail.htm",
+   defP: "introduction.htm",
+   titleP: "Retail Electricity Savings",
+   mailsubject: "Feedback on: SAM Help - Retail Electricity Savings",
+   simplesubject: "Documentation%20Feedback",
+   mailid: "TD_Retail",
+   mailpath: "Savings and Revenue &gt; Retail Electricity Savings /",
+   mailbody: "Dear SAM Support,",
+   mailrecipient: "SAM Support <sam.support@nrel.gov>",
+   simplerecipient: "sam.support@nrel.gov",
+   fbtype: false,
+   header: true,
+   background: "bg.png",
+   tablesReady: false,
+   togglesReady: false,
+   webRedirect: true
+   }
+// Popup configuration
+ var hmpBShadow = true;
+ var hmPopSmallDim = 500;
+ var hmPopKillVideo = false;
+ // AutoTOC variables
+ var hmatocvars = {
+   atoc_show: true,
+   atoc_title: "Contents",
+   atoc_tip: "Jump to:&nbsp;",
+   atoc_minHeaders: 2,
+   atoc_btntip_off: "No contents entries on this page",
+   atoc_btntip_on: "Display/hide topic directory",
+   atoc_toptip: "Jump to top of page",
+   atoc_top: "Scroll to Top of Page",
+   atoc_bg: "#f6f6f6",
+   atoc_border: "silver",
+   atoc_linkcolor: "#444",
+   atoc_linklimit: 45,
+   atoc_hovercolor: "#000",
+   atoc_hoverbgcolor: "#e0e0e0"
+}
+// Sortable tables
+var sortVars = {
+   europeandate: false,
+   germanNumbers: false,
+   imagePath: "",
+   image_up: "arrow-up.gif",
+   image_down: "arrow-down.gif",
+   image_empty: "arrow-empty.gif",
+   image_none: "arrow-none.gif",
+   sort_tip: "Click to sort on this column",
+   umlauts: "false"
+   }
+
+</script>
+
+<script type="text/javascript"> 
+$(document).ready(function() {
+var doc = document;  
+try {
+if (parent.hmWebHelp.navWidth != null) doc = parent.document;
+doc.title = $("<div/>").html("SAM Help - Retail Electricity Savings").text();
+window.onunload = function() {doc.title = $("<div/>").html("SAM Help").text();}
+} catch(err) {}
+});
+</script>
+<script type="text/javascript" src="helpman_settings.js"></script>
+<script type="text/javascript" src="helpman_topicinit.js"></script>
+<script type="text/javascript" src="hmtopic.js"></script>
+
+   <script type="text/javascript">
+     HMSyncTOC("index.html", "td_retail.htm");
+   </script>
+   <script type="text/javascript" src="highlight.js"></script>
+   <script type="text/javascript">
+     $(document).ready(function(){highlight();});
+   </script>
+</head>
+<body>
+<!--ZOOMSTOP-->
+<ul id="topictabs" class="tabs">
+<li id="indextab" class="hmtabs"><a href="#" id="indextablink" class="current"><span>Retail Electricity Savings</span></a></li>
+</ul>
+<div id="hmbox">
+<div id="hmheader">
+<div id="hmheadercontents">
+<p id="breadcrumbs">
+<b>Navigation:</b>
+<a href="time_dependent_pricing.htm">Savings and Revenue</a>:</p> 
+<h1 class="p_Heading1"><span class="f_Heading1">Retail Electricity Savings</span></h1>
+
+</div>
+<div id="atocIcon" class="navdivs">
+<img class="navicon" id="hmAtocLink" src="contents_off.png" alt="No contents entries on this page" title="No contents entries on this page" />
+<br /><span>Contents</span>
+</div>
+</div>
+<div id="autoTocWrapper" class="topicmenu"></div>
+<div id="idcontent">
+<div id="unclicker"></div>
+
+<!--ZOOMRESTART-->
+<p class="p_Text"><span class="f_Text">For projects with the <a href="fin_overview.htm#rescom" class="topiclink">residential or commercial</a> financing option (not including commercial PPA) that buy and sell electricity at retail rates, you specify a rate structure (net metering, energy rates, demand charges, and monthly charges) on the <a href="utility_rate.htm" class="topiclink">Utility Rate</a> page, and a building or facility load on the <a href="electric_load.htm" class="topiclink">Electric Load</a> page. SAM assumes that electricity generated by the system serves the load. The project sells electricity generated by the system that exceeds the load, and buys electricity required from the grid to meet the load. The buy and sell rates depend on the rate structure rate for when the system output is less than the load.</span></p>
+<p class="p_Text"><span class="f_Text">SAM reports hourly, monthly, and annual time electricity rate results in the tables and graphs on the <a href="results_page.htm" class="topiclink">Results</a> page.</span></p>
+<p class="p_Note"><span class="f_CHNote">Note.</span><span class="f_Note"> If SAM reports zeroes for rates or charges in the variables described below where you expect to see non-zero values, it is possible that you are modeling a system with no <a href="electric_load.htm" class="topiclink">electric load</a>, which means that all electricity generated by the system is delivered to the grid at the sell rate that applies in each hour that electricity is generated.</span></p>
+<h4 class="p_Heading4"><span class="f_Heading4">Inflation and Escalation Rate</span></h4>
+<p class="p_Text"><span class="f_Text">SAM reports some results as &quot;Year 1&quot; values, representing values in the first year of the project cash flow. To calculate Year two and later values, SAM applies both the inflation rate from the <a href="financing_models.htm" class="topiclink">Financing</a> page and the escalation rate from the <a href="utility_rate.htm" class="topiclink">Utility Rate</a> page to the Year one rates that you specify on the Utility Rate page. For example, if you specify a fixed monthly charge $6.5/month, an inflation rate of 2.5%, and an escalation rate of 0.5%, the monthly charge will be $6.5/month in Year one, $6.695/month in Year 2, $6.89585/month in Year 3, etc. (SAM does not apply the inflation rate to sales and purchases when you use an annual schedule to specify different escalation rates for different years.)</span></p>
+<h4 class="p_Heading4"><span class="f_Heading4">Energy and Power Units</span></h4>
+<p class="p_Text"><span class="f_Text">SAM reports hourly, monthly, and annual electricity values in kilowatt-hours (kWh), representing a total quantity of electricity over each period. Because the units for hourly electricity values are effectively kilowatt-hour per hour (kWh/h) values, they may also be expressed in kilowatt (kW). However, to avoid confusion, units for hourly energy values are shown below as kWh/h.</span></p>
+<p class="p_Text"><span class="f_Text">SAM reports hourly peak electricity values in kilowatts (kW). For simulations using hourly load data, the peak and total electricity values are the same. For simulations using sub-hourly load data (15-minute, 10-minute, 1-minute), the peak value will not be the same as the total hourly value. SAM uses the peak electricity values to determine peak monthly values for demand charge calculation. For example, for hourly load data, the monthly peak value will be an hourly value, for 15-minute load data, the monthly peak value will be a 15-minute value.</span></p>
+<h3 class="p_Heading3_atocs_" style="border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Monthly Data</span></h3>
+<p class="p_Text"><span class="f_Text">The monthly data shows the first year values by month. The monthly variables are available on the Results page in <a href="graphs_and_charts.htm" class="topiclink">Graphs</a> and <a href="tabular_data_browser.htm" class="topiclink">Tables</a>.</span></p>
+<p class="p_Note"><span class="f_CHNote">Note.</span><span class="f_Note"> To see how monthly data changes from year to year for a given month, in <a href="tabular_data_browser.htm" class="topiclink">Tables</a>, display the Annual Data, and choose the variable and month.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Monthly Energy (kWh)</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The total amount of electricity generated by the system in each month.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Year 1 monthly demand charge (fixed) [with/without] system($)</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The demand charge for each month of Year one that results from the demand charges defined in the </span><span class="f_CHInterfaceElement">Fixed or Tiered Monthly Demand Charges</span><span class="f_VariableDescription"> table on the <a href="utility_rate.htm" class="topiclink">Utility Rate</a> page.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Year 1 monthly demand charge (TOU) [with/without] system($)</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The demand charge for each month of Year one that results from the demand charges defined in the </span><span class="f_CHInterfaceElement">Time-of-use or Tiered Time-of-use Demand Charges</span><span class="f_VariableDescription"> table on the <a href="utility_rate.htm" class="topiclink">Utility Rate</a> page.</span></p>
+<p class="p_Note"><span class="f_CHNote">Demand Charge Notes. </span><br />
+<span class="f_CHNote">&nbsp;</span><br />
+<span class="f_Note">The &quot;with system&quot; value is for the load and rate structure with the renewable energy system, and the without system value is for the same load and rate structure without the system.</span><br />
+<span class="f_Note">&nbsp;</span><br />
+<span class="f_Note">SAM does not report the fixed monthly charge from the Utility Rate page in the Monthly results. Be sure to account for that value when you calculate monthly costs.</span><br />
+<span class="f_Note">&nbsp;</span><br />
+<span class="f_Note">You can see the total monthly costs in the hourly results </span><span class="f_CHInterfaceElement">Year 1 hourly sales/purchases</span><span class="f_Note"> variable (see below). They appear in the last hour of each month:</span><br />
+<span class="f_Note">&nbsp;</span><br />
+<img src="img_utilityrate-month-end-hours.gif" width="131" height="263" alt="IMG_UtilityRate-month-end-hours" style="border:none" /></p>
+<p class="p_VariableName"><span class="f_VariableName">Year 1 monthly electric load (kWh)</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The total amount of electricity required by the building or facility in each month.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Year 1 monthly electricity to/from grid (kWh)</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The total amount of electricity delivered to the grid (positive number) or required from the grid (negative number).</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Year 1 monthly net metering electricity credit (kWh)</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The credit earned this month for electricity generated by the system in excess of the load to be applied to the next month's electric bill. These values only apply when net metering is enabled on the Utility Rate page.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Year 1 monthly sales/purchases with system ($)</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The total sales (positive value) or purchases (negative value) of electricity in each month, including fixed monthly charges and demand charges.</span></p>
+<h3 class="p_Heading3_atocs_" style="border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Hourly Data </span></h3>
+<p class="p_Text"><span class="f_Text">SAM reports hourly results for the project's first year on the Results page in the <a href="tabular_data_browser.htm" class="topiclink">Tables</a> and <a href="base_case_time_series.htm" class="topiclink">Time Series</a> graphs. These variables appear with the prefix &quot;Year 1.&quot;</span></p>
+<h4 class="p_Heading4"><span class="f_Heading4">Year 1 Values and Cash Flow Calculations</span></h4>
+<p class="p_Text"><span class="f_Text">If you specify a </span><span class="f_CHInterfaceElement">Year-to-year decline in output</span><span class="f_Text"> factor of one on the <a href="fin_annual_performance.htm" class="topiclink">Performance Adjustment</a> page, SAM assumes that the system's hourly generation profile is the same from year to year. In that case, the amount of electricity sold to and purchased from the grid will also be the same from year to year. If you specify a different value for the </span><span class="f_CHInterfaceElement">Year-to-year decline in output</span><span class="f_Text"> factor, SAM uses the factor to adjust the system's hourly output values in years two and later.</span></p>
+<p class="p_Text"><span class="f_Text">Similarly, for electricity rates, SAM increases the rates from year to year based on the inflation rate on the <a href="financing_models.htm" class="topiclink">Financing</a> page, and the escalation rate on the <a href="utility_rate.htm" class="topiclink">Utility Rate</a> page.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Hourly Energy (kWh)</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The electricity generated by the system in each hour.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Hourly demand charge TOU period</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The demand charge period number that applies to each hour defined in the </span><span class="f_CHInterfaceElement">Time-of-use or Tiered Time-of-use Demand Charges</span><span class="f_VariableDescription"> Weekday and Weekend matrices on the Utility Rate page.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Hourly energy charge TOU period</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The energy charge period number that applies to each hour defined in the </span><span class="f_CHInterfaceElement">Time-of-use and Tiered Energy Rates</span><span class="f_VariableDescription"> Weekday and Weekend matrices on the Utility Rate page.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Year 1 hourly electricity to/from grid (kWh)</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The quantity of electricity delivered to the grid (positive value) or purchased from the grid (negative value) in each hour.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Year 1 hourly electric load (kWh)</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The quantity of electricity required by the building or facility in each hour.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Year 1 hourly sales/purchases [with/without] system ($)</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The value of electricity delivered to the grid (positive) or purchased to the grid (negative) in each hour. For a rate structure with net metering, sales and purchases are calculated on a monthly basis (see above), so the hourly values are all zeros.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Year 1 subhourly peak to/from grid (kW)</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Applies only when you specify sub-hourly load data on the <a href="electric_load.htm" class="topiclink">Electric Load page</a>. The maximum value of the sub-hourly electricity at grid values for each hour. Negative values indicate electricity from the grid, positive values indicate electricity to the grid.</span></p>
+
+<!--ZOOMSTOP--> 
+
+
+</div> <!-- idcontent -->
+</div><!-- hmbox --> 
+</body>
+</html>
