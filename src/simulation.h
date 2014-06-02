@@ -9,6 +9,7 @@
 #include "variables.h"
 
 class Case;
+class ConfigInfo;
 
 class Simulation
 {
@@ -49,7 +50,7 @@ public:
 	wxArrayString &GetErrors();
 	wxArrayString &GetWarnings();
 	
-	static bool ListAllOutputs( Case *cc, 
+	static bool ListAllOutputs( ConfigInfo *cfg, 
 		wxArrayString *names, wxArrayString *labels, wxArrayString *units );
 
 private:
