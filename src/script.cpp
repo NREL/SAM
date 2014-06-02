@@ -775,6 +775,6 @@ void ScriptWindow::OnClose( wxCloseEvent &evt )
 			return;
 		}
 	}
-
-	Destroy();
+	
+	wxGetApp().ScheduleForDestruction( this );
 }
