@@ -27,6 +27,7 @@ public:
 	Library();
 
 	static Library *Load( const wxString &file );
+	static wxArrayString ListAll();
 	static void UnloadAll();
 	static Library *Find( const wxString &name );
 	

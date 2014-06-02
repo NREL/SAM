@@ -1072,12 +1072,12 @@ SelectVariableDialog::SelectVariableDialog(wxWindow *parent, const wxString &tit
 
 	tree = new wxExtTreeCtrl(this, ID_tree);
 
-	wxBoxSizer *sizer = new wxBoxSizer(wxVERTICAL);
-	sizer->Add( search_sizer, 0, wxALL|wxEXPAND, 0 );
-	sizer->Add( tree, 1, wxALL|wxEXPAND, 4 );
-	sizer->Add( button_sizer, 0, wxALL|wxEXPAND, 0 );
+	m_sizer = new wxBoxSizer(wxVERTICAL);
+	m_sizer->Add( search_sizer, 0, wxALL|wxEXPAND, 0 );
+	m_sizer->Add( tree, 1, wxALL|wxEXPAND, 4 );
+	m_sizer->Add( button_sizer, 0, wxALL|wxEXPAND, 0 );
 
-	SetSizer( sizer );
+	SetSizer( m_sizer );
 	SetEscapeId( wxID_CANCEL );
 }
 

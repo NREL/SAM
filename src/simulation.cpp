@@ -606,10 +606,9 @@ void Simulation::GetVariableLengths( std::vector<size_t> &varlengths )
 }
 
 
-bool Simulation::ListAllOutputs( Case *cc, 
+bool Simulation::ListAllOutputs( ConfigInfo *cfg, 
 	wxArrayString *names, wxArrayString *labels, wxArrayString *units )
 {
-	ConfigInfo *cfg = cc->GetConfiguration();
 	if ( !cfg ) return false;
 
 	for( size_t kk=0;kk<cfg->Simulations.size();kk++ )
