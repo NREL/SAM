@@ -25,6 +25,7 @@ private:
 	int m_id;
 	wxSimpleCurlDownloadThread *m_simpleCurl;
 	wxString m_url;
+	wxString m_post;
 	CURLcode m_resultCode;
 
 	wxMemoryBuffer m_data;
@@ -53,6 +54,7 @@ public:
 	
 
 	void SetUrl( const wxString &url ) { m_url = url; }
+	void SetPost( const wxString &post ) { m_post = post; }
 	int GetHandlerId() { return m_id; }
 	wxEvtHandler *GetEvtHandler() { return m_handler; }
 	wxString GetUrl() { return m_url; }
@@ -119,6 +121,9 @@ public:
 			if ( !gs_curlProxyAddress.IsEmpty() )
 				curl_easy_setopt(curl, CURLOPT_PROXY, (const char*)gs_curlProxyAddress.ToAscii() );
 
+			if ( !m_post.IsEmpty() )
+				curl_easy_setopt( curl, CURLOPT_POSTFIELDS, (const char*)m_post.ToAscii() );
+
 			m_resultCode = curl_easy_perform(curl);
 			curl_easy_cleanup(curl);
 
@@ -173,12 +178,13 @@ wxSimpleCurlDownloadThread::~wxSimpleCurlDownloadThread()
 	if ( m_thread ) delete m_thread;
 }
 
-void wxSimpleCurlDownloadThread::Start( const wxString &url )
+void wxSimpleCurlDownloadThread::Start( const wxString &url, const wxString &post )
 {
 	if ( m_thread != 0 ) delete m_thread;
 
 	m_thread = new DLThread( m_handler, m_id, this );
 	m_thread->SetUrl( url );
+	if ( ! post.IsEmpty() ) m_thread->SetPost( post );
 	m_thread->Create();
 	m_thread->Run();
 }
