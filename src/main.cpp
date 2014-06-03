@@ -1574,7 +1574,7 @@ wxArrayString SamApp::RecentFiles()
 class HelpWin;
 static HelpWin *gs_helpWin = 0;
 
-enum { ID_BACK = wxID_HIGHEST+439, ID_HOME, ID_EMAIL_SUPPORT, ID_WEBSITE, ID_FORUM, ID_RELEASE_NOTES };
+enum { ID_BACK = wxID_HIGHEST+439, ID_BROWSER, ID_HOME, ID_EMAIL_SUPPORT, ID_WEBSITE, ID_FORUM, ID_RELEASE_NOTES };
 
 
 class HelpWin : public wxFrame
@@ -1591,7 +1591,7 @@ public:
 		SetIcon( wxICON( appicon ) );
 #endif
 		SetBackgroundColour( wxMetroTheme::Colour( wxMT_FOREGROUND ) );
-		m_webView = wxWebView::New( this, wxID_ANY, ::wxWebViewDefaultURLStr, wxDefaultPosition, wxDefaultSize, 
+		m_webView = wxWebView::New( this, ID_BROWSER, ::wxWebViewDefaultURLStr, wxDefaultPosition, wxDefaultSize, 
 			::wxWebViewBackendDefault, wxBORDER_NONE );
 		m_webView->SetPage( m_aboutHtml, "About SAM" );
 
@@ -1694,6 +1694,11 @@ public:
 		}
 	}
 
+	void OnNewWindow( wxWebViewEvent &evt )
+	{
+		wxLaunchDefaultBrowser( evt.GetURL() );
+	}
+
 	DECLARE_EVENT_TABLE();
 };
 
@@ -1706,6 +1711,7 @@ BEGIN_EVENT_TABLE( HelpWin, wxFrame )
 	EVT_BUTTON( ID_EMAIL_SUPPORT, HelpWin::OnCommand )
 	EVT_BUTTON( wxID_CLOSE, HelpWin::OnCommand )
 	EVT_BUTTON( wxID_ABOUT, HelpWin::OnCommand )
+	EVT_WEBVIEW_NEWWINDOW( ID_BROWSER, HelpWin::OnNewWindow )
 	EVT_CLOSE( HelpWin::OnClose )
 END_EVENT_TABLE()
 
