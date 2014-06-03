@@ -255,6 +255,7 @@ public:
 	virtual int OnExit();
 
 	static void Restart();
+	static wxString WebApi( const wxString &name );
 	static wxString GetAppPath();
 	static wxString GetRuntimePath();
 	static wxString GetUserLocalDataDir();
