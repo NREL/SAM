@@ -58,7 +58,7 @@ class wxSimpleCurlDownloadThread : public wxObject
 public:
 	class DLThread;
 
-	wxSimpleCurlDownloadThread( wxEvtHandler *handler, int id );
+	wxSimpleCurlDownloadThread( wxEvtHandler *handler = 0, int id = wxID_ANY );
 	virtual ~wxSimpleCurlDownloadThread();
 
 	void Start( const wxString &url, const wxString &post = wxEmptyString );
