@@ -1,6 +1,6 @@
 Name,BIPV,Date,T_NOCT,A_c,N_s,I_sc_ref,V_oc_ref,I_mp_ref,V_mp_ref,alpha_sc,beta_oc,a_ref,I_L_ref,I_o_ref,R_s,R_sh_ref,Adjust,gamma_r,Version,PTC,Technology
 Units,,,C,m2,,A,V,A,V,A/K,V/K,V,A,A,Ohm,Ohm,%,%/K,,,
-[0],,,cec_t_noct,cec_area,cec_n_s,cec_i_sc_ref,cec_v_oc_ref,cec_i_mp_ref,cec_v_mp_ref,cec_alpha_sc,cec_beta_oc,cec_a_ref,cec_i_l_ref,cec_i_o_ref,cec_r_s,cec_r_sh_ref,cec_adjust,cec_gamma_r,,,
+[0],,,cec_t_noct,cec_area,cec_n_s,cec_i_sc_ref,cec_v_oc_ref,cec_i_mp_ref,cec_v_mp_ref,cec_alpha_sc,cec_beta_oc,cec_a_ref,cec_i_l_ref,cec_i_o_ref,cec_r_s,cec_r_sh_ref,cec_adjust,cec_gamma_r,,,cec_material
 BEoptCA Default Module,Y,12/17/2008,65,0.67,18,7.5,10.4,6.6,8.4,0.003,-0.04,0.473,7.545,1.94E-09,0.094,15.72,10.6,-0.5,MM106,48.9,Multi-c-Si
 Example Module,Y,4/28/2008,65,0.67,18,7.5,10.4,6.6,8.4,0.003,-0.04,0.473,7.545,1.94E-09,0.094,15.72,10.6,-0.5,MM105,48.9,Multi-c-Si
 1Soltech 1STH-215-P,N,10/7/2010,47.4,1.567,60,7.84,36.3,7.35,29,0.007997,-0.13104,1.6413,7.843,1.94E-09,0.359,839.4,16.5,-0.495,MM107,189.4,Multi-c-Si
