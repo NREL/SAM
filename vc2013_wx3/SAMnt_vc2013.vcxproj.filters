@@ -101,6 +101,9 @@
     <ClInclude Include="..\src\script.h">
       <Filter>Source</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\registration.h">
+      <Filter>Source</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\welcome.cpp">
@@ -188,6 +191,9 @@
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="..\src\script.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\registration.cpp">
       <Filter>Source</Filter>
     </ClCompile>
   </ItemGroup>

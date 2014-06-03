@@ -105,6 +105,9 @@ public:
 		if( CURL *curl = curl_easy_init() )
 		{
 			curl_easy_setopt(curl, CURLOPT_URL, (const char*)m_url.c_str());
+
+			if ( !m_post.IsEmpty() )
+				curl_easy_setopt( curl, CURLOPT_POSTFIELDS, (const char*)m_post.c_str() );
 			
 			curl_easy_setopt(curl, CURLOPT_SSL_VERIFYPEER, 0L);
 			curl_easy_setopt(curl, CURLOPT_SSL_VERIFYHOST, 0L);
@@ -117,13 +120,10 @@ public:
 			curl_easy_setopt(curl, CURLOPT_PROGRESSFUNCTION, simplecurl_progress_func);	
 
 			curl_easy_setopt(curl, CURLOPT_FOLLOWLOCATION, 1);
-
+			
 			if ( !gs_curlProxyAddress.IsEmpty() )
 				curl_easy_setopt(curl, CURLOPT_PROXY, (const char*)gs_curlProxyAddress.ToAscii() );
-
-			if ( !m_post.IsEmpty() )
-				curl_easy_setopt( curl, CURLOPT_POSTFIELDS, (const char*)m_post.ToAscii() );
-
+			
 			m_resultCode = curl_easy_perform(curl);
 			curl_easy_cleanup(curl);
 
@@ -133,9 +133,12 @@ public:
 			m_threadDoneLock.Unlock();
 
 			// issue finished event
-			wxSimpleCurlEvent evt( GetHandlerId(), wxSIMPLECURL_EVENT, 
-				wxSimpleCurlEvent::FINISHED, "finished", m_url );
-			wxPostEvent( GetEvtHandler(), evt );
+			if ( m_handler != 0 )
+			{
+				wxSimpleCurlEvent evt( GetHandlerId(), wxSIMPLECURL_EVENT, 
+					wxSimpleCurlEvent::FINISHED, "finished", m_url );
+				wxPostEvent( GetEvtHandler(), evt );
+			}
 		}
 		
 		return 0;
@@ -232,11 +235,14 @@ extern "C" {
         {
             if (rUlTotal == 0 || rUlNow == 0)
             {
-				wxSimpleCurlEvent evt( tt->GetHandlerId(), wxSIMPLECURL_EVENT, 
-					wxSimpleCurlEvent::PROGRESS, "progress", tt->GetUrl() );
-				evt.SetBytesTotal( rDlTotal );
-				evt.SetBytesTransferred( rDlNow );
-				wxPostEvent( tt->GetEvtHandler(), evt );
+				if ( tt->GetEvtHandler() != 0 )
+				{
+					wxSimpleCurlEvent evt( tt->GetHandlerId(), wxSIMPLECURL_EVENT, 
+						wxSimpleCurlEvent::PROGRESS, "progress", tt->GetUrl() );
+					evt.SetBytesTotal( rDlTotal );
+					evt.SetBytesTransferred( rDlNow );
+					wxPostEvent( tt->GetEvtHandler(), evt );
+				}
             }
 			
 			if (tt->IsCanceled())
