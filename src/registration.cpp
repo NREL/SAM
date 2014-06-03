@@ -21,7 +21,6 @@ BEGIN_EVENT_TABLE( SamRegistration, wxDialog )
 	EVT_BUTTON( wxID_HELP, SamRegistration::OnHelp )
 END_EVENT_TABLE()
 
-static const char *sam_reg_url = "http://samreg.devstage.nrel.gov/api/sam/v1/tracker";
 static const char *sam_api_key = "yXv3dcb6f5piO0abUMrrTuQvLDFgWvnBz52TJmDJ";
 
 const char *override_list[] = {
@@ -1115,16 +1114,18 @@ bool SamRegistration::ConfirmWithServer()
 
 	if ( email.IsEmpty() || key.IsEmpty() )
 		return false;
-	
+		
 	wxBusyCursor curs;
 	wxSimpleCurlDownloadThread curl;
 	
-	wxString url = sam_reg_url + wxString::Format("/%s?api_key=%s&app_code=desktop&sam_version=%s&count=%d", 
-		(const char*)key.c_str(), sam_api_key, (const char*) GetVersionAndPlatform().c_str(), count );
+	wxString url = SamApp::WebApi("registration") + wxString::Format("/usage?api_key=%s", sam_api_key );
+	wxString post = wxString::Format("sam_key=%s&app_code=desktop&sam_version=%s&count=%d", 
+		(const char*)key.c_str(), (const char*) GetVersionAndPlatform().c_str(), count );
 		
 	wxLogStatus( url );
+	wxLogStatus( post );
 
-	curl.Start( url );
+	curl.Start( url, post );
 	while( 1 )
 	{
 		if ( curl.IsStarted() && !curl.Finished() )
@@ -1254,7 +1255,7 @@ void SamRegistration::OnRegister( wxCommandEvent & )
 
 	int count = 0;
 	
-	wxString url = sam_reg_url + wxString("?api_key=") + sam_api_key;
+	wxString url = SamApp::WebApi("registration") + "/register?api_key=" + wxString(sam_api_key);
 	wxString post = "app_code=desktop"
 		"&email=" + m_email->GetValue() + 
 		"&count=" + wxString::Format("%d", count) + 

@@ -1,3 +1,5 @@
+#include <wx/wfstream.h>
+#include <wx/txtstrm.h>
 #include <wx/datstrm.h>
 #include <wx/tokenzr.h>
 #include "object.h"
@@ -224,4 +226,32 @@ void StringHash::Split(const wxString &input, char sep, char eq)
 		if (eqpos >= 0)
 			(*this)[ items[i].Left(eqpos) ] = items[i].Mid(eqpos+1);
 	}
+}
+
+bool StringHash::ReadKeyValueFile( const wxString &file, bool clear )
+{
+	if ( clear ) this->clear();
+
+	wxFileInputStream infile( file );
+	if (!infile.IsOk())
+		return false;
+
+	wxTextInputStream in(infile);
+	while ( infile.CanRead() )
+	{
+		wxString line( in.ReadLine() );
+		if (line.Trim(false).Trim() == "" || line.Left(1) == "'")
+			continue;
+
+		int pos = line.Find('=');
+		if ( pos != wxNOT_FOUND )
+		{
+			wxString key = line.Mid(0, pos);
+			wxString val = line.Mid(pos+1);
+			if ( !key.IsEmpty() && !val.IsEmpty() )
+				(*this)[ key ] = val;
+		}
+	}
+	
+	return true;
 }

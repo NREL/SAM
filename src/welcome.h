@@ -49,10 +49,6 @@ private:
 	void OnMessageDownloadThread( wxSimpleCurlEvent & );
 	void UpdateMessagesHtml(const wxString &html);
 	
-	wxSimpleCurlDownloadThread m_ssCurlUsage;
-	void OnUsageDownloadThread( wxSimpleCurlEvent & );
-
-	wxString GetLocalMessagesFile();
 	DECLARE_EVENT_TABLE()
 };
 

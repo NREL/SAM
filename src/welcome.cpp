@@ -26,7 +26,7 @@
 #include "welcome.h"
 
 enum { ID_CREATE_PROJECT=wxID_HIGHEST+556, ID_OPEN_EXISTING, ID_RECENT_FILES,
-	ID_MESSAGES_HTML, ID_MESSAGE_THREAD, ID_USAGE_THREAD, ID_DOWNLOAD_TIMER,
+	ID_MESSAGES_HTML, ID_MESSAGE_THREAD, ID_DOWNLOAD_TIMER,
 ID_NEW_SCRIPT, ID_OPEN_SCRIPT, ID_REGISTRATION };
 
 BEGIN_EVENT_TABLE(WelcomeScreen, wxPanel)
@@ -47,7 +47,6 @@ BEGIN_EVENT_TABLE(WelcomeScreen, wxPanel)
 	EVT_HTML_LINK_CLICKED( ID_MESSAGES_HTML, WelcomeScreen::OnMessagesLinkClicked )
 
 	EVT_SIMPLECURL( ID_MESSAGE_THREAD, WelcomeScreen::OnMessageDownloadThread )
-	EVT_SIMPLECURL( ID_USAGE_THREAD, WelcomeScreen::OnUsageDownloadThread )
 	EVT_TIMER( ID_DOWNLOAD_TIMER, WelcomeScreen::OnDownloadTimeout )
 END_EVENT_TABLE();
 
@@ -56,8 +55,7 @@ enum { DOWNLOADING, FAILED, RETRIEVED };
 WelcomeScreen::WelcomeScreen(wxWindow *parent)
 	: wxPanel(parent, wxID_ANY),
 	  m_downloadTimer( this, ID_DOWNLOAD_TIMER ),
-	  m_ssCurlMessage( this, ID_MESSAGE_THREAD ),
-	  m_ssCurlUsage( this, ID_USAGE_THREAD )
+	  m_ssCurlMessage( this, ID_MESSAGE_THREAD )
 {
 	SetBackgroundStyle(wxBG_STYLE_CUSTOM);
 	SetBackgroundColour( *wxWHITE );
@@ -92,12 +90,8 @@ WelcomeScreen::WelcomeScreen(wxWindow *parent)
 
 	LayoutWidgets();
 
-	wxString msg_url = "https://sam.nrel.gov/files/content/updates/messages.html";
-	m_ssCurlMessage.Start( msg_url );
+	m_ssCurlMessage.Start( SamApp::WebApi("messages") );
 	
-	wxString usage_url = "https://nreldev.nrel.gov/analysis/sam/usage/samnt/startup.php?action=increment";
-	m_ssCurlUsage.Start( usage_url );
-
 	m_downloadTimer.Start(15000, true);
 
 	UpdateRecentList();
@@ -112,7 +106,6 @@ WelcomeScreen::~WelcomeScreen()
 void WelcomeScreen::AbortDownloadThreads()
 {
 	m_ssCurlMessage.Abort();
-	m_ssCurlUsage.Abort();
 }
 
 void WelcomeScreen::OnDownloadTimeout( wxTimerEvent & )
@@ -149,35 +142,9 @@ void WelcomeScreen::UpdateMessagesHtml(const wxString &html)
 		m_messageStatus = FAILED;
 	}
 
-	FILE *fp = fopen(GetLocalMessagesFile().c_str(), "w");
-	if (fp)
-	{
-		wxLogStatus("updated local messages file: %s\n", GetLocalMessagesFile().c_str());
-		fputs( html.c_str(), fp );
-		fclose(fp);
-	}
-
 	Refresh();
 }
 
-wxString WelcomeScreen::GetLocalMessagesFile()
-{	
-	wxString path = wxStandardPaths::Get().GetUserLocalDataDir(); 
-	
-	if (!wxDirExists( path ))
-		wxFileName::Mkdir( path, 511, wxPATH_MKDIR_FULL );
-
-	return path + "/messages.html";
-}
-
-void WelcomeScreen::OnUsageDownloadThread( wxSimpleCurlEvent &evt )
-{
-	if (evt.GetStatusCode() == wxSimpleCurlEvent::FINISHED)
-	{
-		wxLogStatus("Logged usage download thread request: " + evt.GetMessage() );
-		// nothing to do here - discard whatever data we get back from this url.
-	}
-}
 
 void WelcomeScreen::UpdateRecentList()
 {

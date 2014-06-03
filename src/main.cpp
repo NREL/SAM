@@ -1546,6 +1546,17 @@ void SamApp::Restart()
 	Library::Load( wind_resource_db );
 }
 
+wxString SamApp::WebApi( const wxString &name )
+{
+static StringHash s_apis;
+	if ( s_apis.size() == 0 )
+		if ( ! s_apis.ReadKeyValueFile( GetRuntimePath() + "/webapis.conf" ) || s_apis.size() == 0 )
+			wxMessageBox( "error loading webapis.conf, or no apis defined");
+
+	if ( s_apis.find( name ) != s_apis.end() ) return s_apis[ name ];
+	else return wxEmptyString;
+}
+
 wxString SamApp::GetAppPath()
 {
 	return wxPathOnly( g_appArgs[0] );
@@ -1670,13 +1681,13 @@ public:
 		}
 		else if ( url == ":email_support" )
 		{
-			wxLaunchDefaultBrowser( "mailto:sam.support@nrel.gov" );
+			wxLaunchDefaultBrowser( SamApp::WebApi("support_email") );
 			return;
 		}
 		else if ( url == ":forum" )
-			url = "https://sam.nrel.gov/forums/support-forum";
+			url = SamApp::WebApi( "forum" );
 		else if ( url == ":website" )
-			url = "https://sam.nrel.gov";
+			url = SamApp::WebApi( "website" );
 		
 		m_webView->LoadURL( url );
 	}
@@ -1747,34 +1758,10 @@ END_EVENT_TABLE()
 void SamApp::ShowHelp( const wxString &context )
 {	
 	static StringHash _map;
-	static bool _map_loaded = false;
 		
-	if (!_map_loaded)
-	{
-		wxFileInputStream infile(SamApp::GetRuntimePath() + "/help/contextmap.txt");
-		if (!infile.IsOk())
-			return;
-
-		wxTextInputStream in(infile);
-		while ( infile.CanRead() )
-		{
-			wxString line( in.ReadLine() );
-			if (line.Trim(false).Trim() == "" || line.Left(1) == "'")
-				continue;
-
-			int pos = line.Find('=');
-			if ( pos != wxNOT_FOUND )
-			{
-				wxString key = line.Mid(0, pos);
-				wxString val = line.Mid(pos+1);
-				if ( !key.IsEmpty() && !val.IsEmpty() )
-					_map[ key ] = val;
-			}
-		}
-
-		//wxMessageBox(wxString::Format("Help map loaded, %d references.\n", (int)_map.size()));
-		_map_loaded = true;
-	}
+	if ( !_map.size() == 0 )
+		if ( !_map.ReadKeyValueFile( SamApp::GetRuntimePath() + "/help/contextmap.txt" ) || _map.size() == 0)
+			wxMessageBox( "failed to read help/contextmap.txt or there were no entries" );
 
 	wxString url = SamApp::GetRuntimePath() + "/help/html/";
 	if ( context.Left(1) == ":" )
