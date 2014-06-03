@@ -32,6 +32,7 @@
 #include <lk_stdlib.h>
 
 #include "main.h"
+#include "registration.h"
 #include "welcome.h"
 #include "project.h"
 #include "variables.h"
@@ -1407,18 +1408,45 @@ bool SamApp::OnInit()
 	// register standard sam report objects for report generation
 extern void RegisterReportObjectTypes();
 	RegisterReportObjectTypes();
-
+	
+	g_config = new wxConfig( "SAMnt", "NREL" );
 	
 	wxLogStatus( "startup with SSC version %d, %s", ssc_version(), ssc_build_info() );
+
+	wxString email = SamRegistration::GetEmail();
+	wxString key = SamRegistration::GetKey();
+	
+	if ( email.IsEmpty() || key.IsEmpty() )
+		SamRegistration::ShowDialog();
+		
+	if ( !SamRegistration::IncrementUsage() )
+	{
+		if ( !SamRegistration::CanStart() )
+		{
+			SamRegistration::ShowDialog( "You have reached the limit for the number of times you can run SAM without verifying your registration key.\n\n"
+				"Please check your email address, verification code, and internet connection." );
+
+			if ( !SamRegistration::CanStart() )
+				return false;
+		}
+		else 
+		{
+			wxString text = ("SAM was not able to verify your registration key with NREL servers.\n"
+				"This can be caused by your internet connection being unavailable, or an invalid proxy. See help for more information.\n\n" );
+			int nstarts = SamRegistration::AllowedStartsRemaining()+1;
+			if ( nstarts == 1 )	text += "This is the last time you may run SAM without your registration being verified.\n\n";
+			else text += wxString::Format( "You may run SAM %d more times without your registration being verified.\n\n", nstarts );
+
+			SamRegistration::ShowDialog( text, wxString::Format("Skip for now (%d left)", nstarts) );
+		}
+	}
 
 	SplashScreen splash;
 	splash.CenterOnScreen();
 	splash.Show();
 	splash.Update();
-
 	Yield(true);
 
-	g_config = new wxConfig( "SAMnt", "NREL" );
 	FileHistory().Load( Settings() );
 
 	Restart(); // loads and runs startup scripts, sets up variable databases
