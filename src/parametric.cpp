@@ -126,15 +126,13 @@ bool ParametricData::Read( wxInputStream &_I )
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
-enum {ID_INPUTMENU};
-
-BEGIN_EVENT_TABLE(ParametricGrid, wxGrid)
-EVT_GRID_CMD_CELL_RIGHT_CLICK(ID_INPUTMENU, ParametricGrid::OnGridCommand)
+BEGIN_EVENT_TABLE(ParametricGrid, wxExtGridCtrl)
+EVT_GRID_CELL_LEFT_CLICK(VariableGrid::OnLeftClick)
 END_EVENT_TABLE()
 
 
 ParametricGrid::ParametricGrid(wxWindow *parent, wxWindowID id, const wxPoint &pos, const wxSize &size, long style, const wxString &name)
-: wxGrid(parent, id, pos, size)
+: wxExtGridCtrl(parent, id, pos, size)
 {
 }
 
@@ -150,22 +148,12 @@ void ParametricGrid::OnLeftClick(wxGridEvent &evt)
 
 
 
-void ParametricGrid::OnGridCommand(wxGridEvent &evt)
-{
-	switch (evt.GetId())
-	{
-	case ID_INPUTMENU:
-		// show input menu
-		wxMessageBox("here");
-		break;
-	}
-}
 
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
-enum {	ID_CONFIGURE, ID_NUMRUNS, ID_RUN, ID_CLEAR};
+enum {	ID_CONFIGURE, ID_NUMRUNS, ID_RUN, ID_CLEAR, ID_GRID};
 
 
 
@@ -174,6 +162,7 @@ EVT_BUTTON(ID_CONFIGURE, ParametricViewer::OnCommand)
 EVT_NUMERIC(ID_NUMRUNS, ParametricViewer::OnCommand)
 EVT_BUTTON(ID_RUN, ParametricViewer::OnCommand)
 EVT_BUTTON(ID_CLEAR, ParametricViewer::OnCommand)
+EVT_GRID_CMD_LABEL_RIGHT_CLICK(ID_GRID, ParametricViewer::OnGridColLabelRightClick)
 END_EVENT_TABLE()
 
 
@@ -191,7 +180,7 @@ ParametricViewer::ParametricViewer(wxWindow *parent, Case *cc)
 	par_sizer->Add(new wxButton(this, ID_CLEAR, "Clear results"), 0, wxALL | wxEXPAND, 2);
 
 
-	m_grid = new ParametricGrid(this, wxID_ANY);
+	m_grid = new ParametricGrid(this, ID_GRID);
 
 	m_grid->RegisterDataType("GridCellCheckBox", new GridCellCheckBoxRenderer, new GridCellCheckBoxEditor);
 	m_grid->RegisterDataType("GridCellChoice", new GridCellChoiceRenderer, new GridCellChoiceEditor);
@@ -232,6 +221,20 @@ void ParametricViewer::OnCommand(wxCommandEvent &evt)
 		break;
 	}
 }
+
+
+void ParametricViewer::OnGridColLabelRightClick(wxGridEvent &evt)
+{
+	if (evt.GetRow() < 0 && evt.GetCol() >= 0)
+	{
+		if (m_grid_data->IsInput(evt.GetCol()))
+			// show input menu
+			wxMessageBox("Input menu");
+		else
+			wxMessageBox("Output menu");
+	}
+}
+
 
 void ParametricViewer::UpdateNumRuns()
 {
