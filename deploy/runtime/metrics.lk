@@ -153,12 +153,6 @@ function wind_power_metrics()
 	// where is the approximate land use metric?
 }
 
-// how to combine this in with the wind power module?
-function wind_bos_metrics() 
-{
-	metric( 'project_total_budgeted_cost', {'label'='Total Cost',  'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
-}
-
 function csp_physical_trough_metrics() 
 {
 	metric( 'annual_energy', {'label'='Annual Energy', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh' } );
