@@ -891,12 +891,22 @@ void MainWindow::UpdateFrameTitle()
 class SplashScreen : public wxDialog
 {
 	wxBitmap m_nrelLogo;
+	wxString m_message;
 public:
 
 	SplashScreen()
-		: wxDialog( 0, wxID_ANY, wxEmptyString, wxDefaultPosition, wxSize(515,385), wxBORDER_NONE )
+		: wxDialog( 0, wxID_ANY, wxEmptyString, wxDefaultPosition, wxSize(515,385), wxBORDER_NONE ),
+		m_message( "Starting up... please wait" )
 	{
 		m_nrelLogo = wxBITMAP_PNG_FROM_DATA( nrel_small );
+	}
+
+	void SetMessage( const wxString &msg )
+	{
+		m_message = msg;
+		Refresh();
+		Update();
+		wxGetApp().Yield( true );
 	}
 
 	void OnPaint( wxPaintEvent & )
@@ -921,7 +931,7 @@ public:
 
 		dc.SetFont( wxMetroTheme::Font( wxMT_LIGHT, 18 ) );
 		dc.DrawText( "Version " + SamApp::VersionStr(), 35, 135 );
-		dc.DrawText( "Starting up... please wait", 35, 275 );
+		dc.DrawText( m_message, 35, 275 );
 
 		dc.SetTextForeground( wxMetroTheme::Colour( wxMT_TEXT ) );
 		dc.SetFont( wxMetroTheme::Font( wxMT_LIGHT, 10 ) );
@@ -1411,41 +1421,59 @@ extern void RegisterReportObjectTypes();
 	
 	g_config = new wxConfig( "SAMnt", "NREL" );
 	
-	wxLogStatus( "startup with SSC version %d, %s", ssc_version(), ssc_build_info() );
-
-	wxString email = SamRegistration::GetEmail();
-	wxString key = SamRegistration::GetKey();
 	
-	if ( email.IsEmpty() || key.IsEmpty() )
-		SamRegistration::ShowDialog();
-		
-	if ( !SamRegistration::IncrementUsage() )
-	{
-		if ( !SamRegistration::CanStart() )
-		{
-			SamRegistration::ShowDialog( "You have reached the limit for the number of times you can run SAM without verifying your registration key.\n\n"
-				"Please check your email address, verification code, and internet connection." );
-
-			if ( !SamRegistration::CanStart() )
-				return false;
-		}
-		else 
-		{
-			wxString text = ("SAM was not able to verify your registration key with NREL servers.\n"
-				"This can be caused by your internet connection being unavailable, or an invalid proxy. See help for more information.\n\n" );
-			int nstarts = SamRegistration::AllowedStartsRemaining()+1;
-			if ( nstarts == 1 )	text += "This is the last time you may run SAM without your registration being verified.\n\n";
-			else text += wxString::Format( "You may run SAM %d more times without your registration being verified.\n\n", nstarts );
-
-			SamRegistration::ShowDialog( text, wxString::Format("Skip for now (%d left)", nstarts) );
-		}
-	}
-
+	wxLogStatus( "startup with SSC version %d, %s", ssc_version(), ssc_build_info() );
+	
 	SplashScreen splash;
 	splash.CenterOnScreen();
 	splash.Show();
 	splash.Update();
 	Yield(true);
+
+	
+	wxString devoverride;
+	SamApp::Settings().Read( "developer-registration", &devoverride );
+
+	if ( devoverride != "09332s" )
+	{
+		splash.SetMessage( "Verifying registration..." );
+
+		wxString email = SamRegistration::GetEmail();
+		wxString key = SamRegistration::GetKey();
+	
+		if ( email.IsEmpty() || key.IsEmpty() )
+		{
+			splash.Hide();
+			SamRegistration::ShowDialog();
+		}
+		
+		if ( !SamRegistration::IncrementUsage() )
+		{
+			splash.Hide();
+
+			if ( !SamRegistration::CanStart() )
+			{
+				SamRegistration::ShowDialog( "You have reached the limit for the number of times you can run SAM without verifying your registration key.\n\n"
+					"Please check your email address, verification code, and internet connection." );
+
+				if ( !SamRegistration::CanStart() )
+					return false;
+			}
+			else 
+			{
+				wxString text = ("SAM was not able to verify your registration key with NREL servers.\n"
+					"This can be caused by your internet connection being unavailable, or an invalid proxy. See help for more information.\n\n" );
+				int nstarts = SamRegistration::AllowedStartsRemaining();
+				if ( nstarts == 1 )	text += "This is the last time you may run SAM without your registration being verified.\n\n";
+				else text += wxString::Format( "You may run SAM %d more times without your registration being verified.\n\n", nstarts );
+
+				SamRegistration::ShowDialog( text, wxString::Format("Skip for now (%d left)", nstarts) );
+			}
+		}
+	}
+	
+	splash.Show();
+	splash.SetMessage( "Starting up... please wait" );
 
 	FileHistory().Load( Settings() );
 
@@ -1621,8 +1649,8 @@ class HelpWin : public wxFrame
 	wxWebView *m_webView;
 	wxString m_aboutHtml;
 public:
-	HelpWin()
-		: wxFrame( SamApp::Window(), wxID_ANY, "System Advisor Model Help", wxDefaultPosition, wxSize(800,600) )
+	HelpWin( wxWindow *parent )
+		: wxFrame( parent, wxID_ANY, "System Advisor Model Help", wxDefaultPosition, wxSize(800,600) )
 	{
 		CreateAboutHtml();
 
@@ -1780,16 +1808,29 @@ void SamApp::ShowHelp( const wxString &context )
 		url = "file:///" + fn.GetFullPath( wxPATH_NATIVE );
 	}
 		
-	// sj 11/29/11 Kludge to allow modal dialogs with help buttons to not block help window
-	bool modal_active = false;
+	wxWindow *modal_active = 0;
+	wxWindow *nonmodal_tlw = 0;
 	for( wxWindowList::iterator wl = wxTopLevelWindows.begin();
 		wl != wxTopLevelWindows.end();
 		++wl )
 	{
-		if ( wxDialog *dia = dynamic_cast<wxDialog*>( *wl ) )
-			if ( dia->IsActive() && dia->IsModal() )
-				modal_active = true;
+		wxTopLevelWindow *tlw = dynamic_cast<wxTopLevelWindow*>( *wl );
+		wxDialog *dia = dynamic_cast<wxDialog*>( *wl );
+
+		if ( tlw != 0 && (dia == 0  || !dia->IsModal()) )
+			nonmodal_tlw = tlw;
+
+		if ( dia != 0 && dia->IsActive() && dia->IsModal() )
+			modal_active = dia;
 	}
+
+	// try several different parent windows for the help window
+	// if possible, use the SAM main window
+	// otherwise, choose any top level window that is not modal
+	// last resort, choose a currently modal dialog box
+	wxWindow *parent = SamApp::Window();
+	if ( !parent ) parent = nonmodal_tlw;
+	if ( !parent ) parent = modal_active;
 
 	if ( modal_active && gs_helpWin != 0 && gs_helpWin->IsShown() )
 	{
@@ -1797,12 +1838,12 @@ void SamApp::ShowHelp( const wxString &context )
 
 		if (gs_helpWin->Destroy())
 		{
-			gs_helpWin = new HelpWin;
+			gs_helpWin = new HelpWin( parent );
 			gs_helpWin->SetSize(h_rect);
 		}
 	}
 	else if ( 0 == gs_helpWin )			
-		gs_helpWin = new HelpWin;
+		gs_helpWin = new HelpWin( parent );
 		
 	gs_helpWin->Show( );
 	gs_helpWin->LoadPage( url );

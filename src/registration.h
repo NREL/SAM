@@ -13,11 +13,10 @@ public:
 	
 	static wxString GetEmail();
 	static wxString GetKey();
-	static int GetCount();
 	static wxString GetVersionAndPlatform();
-	static int LastLoggedCount();
 	static bool IncrementUsage();
-	static bool ConfirmWithServer();
+	static bool CheckInWithServer( int *total_usage_count = 0 );
+	static int CountSinceLastVerify();
 	static bool CanStart();
 	static int AllowedStartsRemaining();
 	static void ShowDialog( const wxString &msg = wxEmptyString, const wxString &btn = wxEmptyString );

@@ -264,6 +264,8 @@ void WelcomeScreen::OnCommand( wxCommandEvent &evt )
 		if ( SamApp::Window()->CloseProject())
 			SamApp::Window()->LoadProject( fn );
 	}
+		break;
+
 	case wxID_ABOUT:
 		SamApp::ShowHelp( ":about" );
 		break;

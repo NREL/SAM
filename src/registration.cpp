@@ -21,8 +21,10 @@ BEGIN_EVENT_TABLE( SamRegistration, wxDialog )
 	EVT_BUTTON( wxID_HELP, SamRegistration::OnHelp )
 END_EVENT_TABLE()
 
-static const char *sam_api_key = "yXv3dcb6f5piO0abUMrrTuQvLDFgWvnBz52TJmDJ";
-
+static const char *sam_api_key = 
+//"rJzFOTOJhNHcLOnPmW2TNCLV8I4HHLgKddAycGpn" // production (sam.support@nrel.gov)
+"yXv3dcb6f5piO0abUMrrTuQvLDFgWvnBz52TJmDJ" // staging (aron.dobos@nrel.gov)
+;
 const char *override_list[] = {
 	"09332s",
 	"CB18B612-F85E-47C9-AB54-AFBCD468BB4B",
@@ -1052,39 +1054,23 @@ wxString SamRegistration::GetKey()
 	return key;
 }
 
-int SamRegistration::GetCount()
-{
-	long count = 0;
-	SamApp::Settings().Read("startup-count-" + GetVersionAndPlatform(), &count );
-	return (int)count;
-}
-int SamRegistration::LastLoggedCount()
-{
-	long count = 0;
-	SamApp::Settings().Read("last-logged-count-" + GetVersionAndPlatform(), &count );
-	return (int)count;
-}
-	static bool CanStart();
-
-bool SamRegistration::IncrementUsage()
-{
-	// keep track of usage locally first
-	int count = GetCount()+1;
-	SamApp::Settings().Write("startup-count-" + GetVersionAndPlatform(), count );
-
-	return ConfirmWithServer();
-}
-
 #define MAX_ATTEMPTS 5
 
 bool SamRegistration::CanStart()
 {
-	return IsOverride( GetKey().c_str() ) || GetCount() <= LastLoggedCount() + MAX_ATTEMPTS;
+	return IsOverride( GetKey().c_str() ) || CountSinceLastVerify() < MAX_ATTEMPTS;
 }
 
 int SamRegistration::AllowedStartsRemaining()
 {
-	return MAX_ATTEMPTS - (GetCount() - LastLoggedCount());
+	return MAX_ATTEMPTS - CountSinceLastVerify();
+}
+
+int SamRegistration::CountSinceLastVerify()
+{
+	int count = 0;
+	SamApp::Settings().Read("count-since-last-verify-" + GetVersionAndPlatform(), &count );
+	return count;
 }
 
 void SamRegistration::ShowDialog( const wxString &msg, const wxString &btn )
@@ -1101,13 +1087,24 @@ void SamRegistration::ShowDialog( const wxString &msg, const wxString &btn )
 	regdlg.Layout();
 	regdlg.ShowModal();
 }
+
+bool SamRegistration::IncrementUsage()
+{
+	int count = CountSinceLastVerify();
+	// don't increment local count if SAM won't start
+	// but do increment if using an override key
+	if ( count < MAX_ATTEMPTS || IsOverride(GetKey()))
+		SamApp::Settings().Write("count-since-last-verify-" + GetVersionAndPlatform(), count+1);
+
+	return CheckInWithServer();
+}
 	
-bool SamRegistration::ConfirmWithServer()
+bool SamRegistration::CheckInWithServer( int *usage_count )
 {
 	// now try to sync with the server using the current email and key
 	wxString email = GetEmail();
 	wxString key = GetKey();
-	int count = GetCount();
+	int count = CountSinceLastVerify();
 	
 	if ( IsOverride( GetKey().c_str() ) )
 		return true;
@@ -1135,6 +1132,8 @@ bool SamRegistration::ConfirmWithServer()
 		}
 		else break;
 	}
+
+	if ( usage_count ) *usage_count = -999;
 	
 	wxJSONValue root;
 	wxJSONReader reader;
@@ -1143,9 +1142,12 @@ bool SamRegistration::ConfirmWithServer()
 		int code = root.Item("status").AsInt();
 		if (code == 200)
 		{
-			SamApp::Settings().Write("last-logged-count-" + GetVersionAndPlatform(), count );
+			SamApp::Settings().Write("count-since-last-verify-" + GetVersionAndPlatform(), 0 );
+			if ( usage_count ) *usage_count = root.Item("result").Item("usage_count").AsInt();
 			return true;
 		}
+
+
 	}
 
 	return false;
@@ -1294,13 +1296,15 @@ void SamRegistration::OnConfirm( wxCommandEvent & )
 	wxBusyCursor curs;
 	wxString key = m_key->GetValue();
 	SamApp::Settings().Write("user-key-" + GetVersionAndPlatform(), key );
-	if ( !ConfirmWithServer() )
+
+	int total_usage = 0;
+	if ( !CheckInWithServer( &total_usage ) )
 		m_output->SetValue("The registration key could not be verified.  Please check your key and internet connection.");
 	else
 	{
-		m_output->SetValue("Registration successful!");
+		m_output->SetValue(wxString::Format("Registration successful!\n\nYou have used SAM %d times.", total_usage ));
 		wxYield();
-		wxMilliSleep(1000);
+		wxMilliSleep(1100);
 		EndModal(1);
 	}
 }
