@@ -6,7 +6,6 @@ addconfig( 'PVWatts', [ 'Residential', 'Commercial', 'Commercial PPA', 'Independ
 addconfig( 'Flat Plate PV', ['Residential', 'Commercial', 'Commercial PPA', 'Independent Power Producer',
  'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'Single Owner', 'None'] );
 addconfig( 'Test Only', [ 'None' ] );
-addconfig( 'Wind BOS', [ 'None' ] );
 addconfig( 'Wind Power', [ 'Residential', 'Commercial', 'Commercial PPA', 'Independent Power Producer', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'Single Owner', 'None'] );
 //addconfig( 'Wind Power', [ 'Independent Power Producer', 'None'] );
 
@@ -480,13 +479,6 @@ addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='PV System Costs'
 setup_single_owner_pages();
 
 // Wind Power //////////////////////////////////////////////////////////////////
-setconfig( 'Wind BOS', 'None' );
-setmodules( ['windbos']);
-addpage( [[ 'Wind BOS Tester',
-		{ 'name'='Wind BOS',   'caption'='Balance of System Cost Model', 'collapsible'=true, 'collapsible_var'='wind_detailed_bos_results_shown'} ]],
-		{ 'sidebar'='BOS Input Page' } );
-
-//-----------------------------------------------------
 setconfig( 'Wind Power', 'Residential' );	
 setmodules( ['windpower',  'utilityrate2', 'cashloan']);
 setting( { 'analysis_period_var'='cf_length' } );
