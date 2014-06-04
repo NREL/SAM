@@ -10,8 +10,8 @@
 
 #include "simulation.h"
 #include "object.h"
+#include "gridsupport.h"
 
-class Case;
 
 class ParametricData
 {
@@ -41,7 +41,7 @@ private:
 };
 
 
-class ParametricGridData : public wxGridTableBase
+class ParametricGridData : public GridChoiceData
 {
 public:
 	ParametricGridData(Case *cc);
