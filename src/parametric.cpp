@@ -6,7 +6,6 @@
 #include <wex/metro.h>
 #include <wex/utils.h>
 
-#include "variablegrid.h"
 #include "parametric.h"
 #include "main.h"
 #include "casewin.h"
@@ -127,7 +126,7 @@ bool ParametricData::Read( wxInputStream &_I )
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
 BEGIN_EVENT_TABLE(ParametricGrid, wxExtGridCtrl)
-EVT_GRID_CELL_LEFT_CLICK(VariableGrid::OnLeftClick)
+EVT_GRID_CELL_LEFT_CLICK(ParametricGrid::OnLeftClick)
 END_EVENT_TABLE()
 
 
