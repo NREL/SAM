@@ -91,14 +91,13 @@ private:
 
 
 
-class ParametricGrid : public wxGrid
+class ParametricGrid : public wxExtGridCtrl
 {
 public:
 	ParametricGrid(wxWindow *parent, wxWindowID id, const wxPoint &pos = wxDefaultPosition, const wxSize &size = wxDefaultSize,
 		long style = wxWANTS_CHARS, const wxString& name = wxPanelNameStr);
 	virtual ~ParametricGrid();
 
-	void OnGridCommand(wxGridEvent &evt);
 	void OnLeftClick(wxGridEvent &evt);
 
 	DECLARE_EVENT_TABLE()
@@ -112,6 +111,7 @@ public:
 
 private:
 	void OnCommand(wxCommandEvent &evt);
+	void OnGridColLabelRightClick(wxGridEvent &evt);
 
 	void Configure();
 	void UpdateGrid();
