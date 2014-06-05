@@ -204,7 +204,6 @@ metrics{ 'Empirical Trough' } = define() { empirical_trough_metrics(); };
 metrics{ 'Dish Stirling' } = define() { dish_stirling_metrics(); };
 metrics{ 'Generic CSP System' } = define() { generic_csp_metrics(); };
 metrics{ 'Wind Power' } = define() { wind_power_metrics(); };
-metrics{ 'Wind BOS' } = define() { wind_bos_metrics(); };
 metrics{ 'Geothermal Power' } = define() { geothermal_metrics(); };
 metrics{ 'Generic System' } = define() { generic_system_metrics(); };
 
