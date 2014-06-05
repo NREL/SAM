@@ -152,12 +152,13 @@ void ParametricGrid::OnLeftClick(wxGridEvent &evt)
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
-enum {	ID_CONFIGURE, ID_NUMRUNS, ID_RUN, ID_CLEAR, ID_GRID};
+enum { ID_SELECT_INPUTS, ID_SELECT_OUTPUTS, ID_NUMRUNS, ID_RUN, ID_CLEAR, ID_GRID };
 
 
 
 BEGIN_EVENT_TABLE(ParametricViewer, wxPanel)
-EVT_BUTTON(ID_CONFIGURE, ParametricViewer::OnCommand)
+EVT_BUTTON(ID_SELECT_INPUTS, ParametricViewer::OnCommand)
+EVT_BUTTON(ID_SELECT_OUTPUTS, ParametricViewer::OnCommand)
 EVT_NUMERIC(ID_NUMRUNS, ParametricViewer::OnCommand)
 EVT_BUTTON(ID_RUN, ParametricViewer::OnCommand)
 EVT_BUTTON(ID_CLEAR, ParametricViewer::OnCommand)
@@ -170,7 +171,8 @@ ParametricViewer::ParametricViewer(wxWindow *parent, Case *cc)
 : wxPanel(parent, wxID_ANY), m_case(cc)
 {
 	wxBoxSizer *par_sizer = new wxBoxSizer(wxHORIZONTAL);
-	par_sizer->Add(new wxButton(this, ID_CONFIGURE, "Configure..."), 0, wxALL | wxEXPAND, 2);
+	par_sizer->Add(new wxButton(this, ID_SELECT_INPUTS, "Select Inputs..."), 0, wxALL | wxEXPAND, 2);
+	par_sizer->Add(new wxButton(this, ID_SELECT_OUTPUTS, "Select Outputs..."), 0, wxALL | wxEXPAND, 2);
 	par_sizer->Add(new wxStaticText(this, wxID_ANY, "   Number of Runs:"), 0, wxALIGN_CENTER_VERTICAL, 2);
 	m_num_runs_ctrl = new wxNumericCtrl(this, ID_NUMRUNS, 0, wxNumericCtrl::INTEGER, wxDefaultPosition, wxSize(50, 24));
 	par_sizer->Add(m_num_runs_ctrl, 0, wxALL, 2);
@@ -188,7 +190,8 @@ ParametricViewer::ParametricViewer(wxWindow *parent, Case *cc)
 	m_grid_data = new ParametricGridData(m_case);
 	m_grid->SetTable(m_grid_data);
 	m_num_runs_ctrl->SetValue(m_grid_data->GetNumberRows());
-	m_var_names = m_grid_data->GetVarNames();
+	m_input_names = m_grid_data->GetInputNames();
+	m_output_names = m_grid_data->GetOutputNames();
 
 	wxBoxSizer *par_vsizer = new wxBoxSizer( wxVERTICAL );
 	par_vsizer->Add( par_sizer, 0, wxALL|wxEXPAND, 2 );
@@ -202,8 +205,12 @@ void ParametricViewer::OnCommand(wxCommandEvent &evt)
 {
 	switch (evt.GetId())
 	{
-	case ID_CONFIGURE:
-		Configure();
+	case ID_SELECT_INPUTS:
+		SelectInputs();
+		UpdateGrid();
+		break;
+	case ID_SELECT_OUTPUTS:
+		SelectOutputs();
 		UpdateGrid();
 		break;
 	case ID_NUMRUNS:
@@ -253,21 +260,10 @@ void ParametricViewer::ClearResults()
 	m_grid_data->ClearResults();
 }
 
-void ParametricViewer::Configure()
+void ParametricViewer::SelectInputs()
 {
 	wxArrayString names, labels;
 	wxString case_name(SamApp::Project().GetCaseName(m_case));
-	wxArrayString output_names, output_labels;
-	Simulation::ListAllOutputs(m_case->GetConfiguration(), &output_names, &output_labels, 0);
-
-	for (int j = 0; j<(int)output_labels.size(); j++)
-	{
-		if (!output_labels[j].IsEmpty())
-		{
-			names.Add(output_names[j]);
-			labels.Add("[" + case_name + "] Outputs/" + output_labels[j]);
-		}
-	}
 
 	ConfigInfo *ci = m_case->GetConfiguration();
 	VarInfoLookup &vil = ci->Variables;
@@ -291,23 +287,52 @@ void ParametricViewer::Configure()
 
 		label += "{ " + name + " }";
 
+		/*
 		if (vi.Group.IsEmpty()) label = "-Unsorted-/" + label;
 		else label = vi.Group + "/" + label;
 
 		label = "[" + case_name + "] Inputs/" + label;
-
+		*/
 		labels.Add(label);
 		names.Add(name);
 	}
 
 	wxSortByLabels(names, labels);
-	SelectVariableDialog dlg(this, "Configure Parametrics");
+	SelectVariableDialog dlg(this, "Select Inputs");
 	dlg.SetItems(names, labels);
-	dlg.SetCheckedNames(m_var_names);
+	dlg.SetCheckedNames(m_input_names);
 	if (dlg.ShowModal() == wxID_OK)
 	{
-		m_var_names = dlg.GetCheckedNames();
-		m_grid_data->Configure(m_var_names);
+		m_input_names = dlg.GetCheckedNames();
+		m_grid_data->UpdateInputs(m_input_names);
+	}
+}
+
+void ParametricViewer::SelectOutputs()
+{
+	wxArrayString names, labels;
+	wxString case_name(SamApp::Project().GetCaseName(m_case));
+	wxArrayString output_names, output_labels;
+	Simulation::ListAllOutputs(m_case->GetConfiguration(), &output_names, &output_labels, 0);
+
+	for (int j = 0; j<(int)output_labels.size(); j++)
+	{
+		if (!output_labels[j].IsEmpty())
+		{
+			names.Add(output_names[j]);
+			labels.Add(output_labels[j]);
+//			labels.Add("[" + case_name + "] Outputs/" + output_labels[j]);
+		}
+	}
+
+	wxSortByLabels(names, labels);
+	SelectVariableDialog dlg(this, "Select Outputs");
+	dlg.SetItems(names, labels);
+	dlg.SetCheckedNames(m_output_names);
+	if (dlg.ShowModal() == wxID_OK)
+	{
+		m_output_names = dlg.GetCheckedNames();
+		m_grid_data->UpdateOutputs(m_output_names);
 	}
 }
 
@@ -343,13 +368,24 @@ void ParametricGridData::Init()
 {
 	if (m_par.Setup.size()<1) return;
 	m_col_hdrs.Clear();
+	m_input_names.Clear();
+	m_output_names.Clear();
 	m_var_names.Clear();
 
 	m_cols = m_par.Setup.size();
 
-	for (size_t i = 0; i < (size_t)m_cols; i++)
-		m_var_names.push_back(m_par.Setup[i].Name);
+	for (int i = 0; i < (int)m_par.Setup.size(); i++)
+	{
+		if (IsInput(i))
+			m_input_names.push_back(m_par.Setup[i].Name);
+		else
+			m_output_names.push_back(m_par.Setup[i].Name);
+	}
 	
+	for (size_t i = 0; i < m_input_names.Count(); i++)
+		m_var_names.push_back(m_input_names[i]);
+	for (size_t i = 0; i < m_output_names.Count(); i++)
+		m_var_names.push_back(m_output_names[i]);
 	m_rows = m_par.Runs.size();
 }
 
@@ -385,8 +421,11 @@ bool ParametricGridData::IsEmptyCell(int row, int col)
 
 bool ParametricGridData::IsInput(int col)
 {
-	if ((col>-1)&&(col<m_cols)&&(m_par.GetCase()->Values().Get(m_var_names[col])))
-		return true;
+	if ((col>-1) && (col < m_cols))
+		if (VarValue *vv = m_par.GetCase()->Values().Get(m_par.Setup[col].Name))
+			return true;
+		else
+			return false;
 	else
 		return false;
 }
@@ -741,9 +780,14 @@ void ParametricGridData::UpdateNumberRows(int rows)
 	}
 }
 
-wxArrayString ParametricGridData::GetVarNames()
+wxArrayString ParametricGridData::GetInputNames()
 {
-	return m_var_names;
+	return m_input_names;
+}
+
+wxArrayString ParametricGridData::GetOutputNames()
+{
+	return m_output_names;
 }
 
 /* does nothing ? */
@@ -811,21 +855,21 @@ bool ParametricGridData::RunSimulations(int row)
 	return true;
 }
 
-void ParametricGridData::Configure(wxArrayString &var_names)
+void ParametricGridData::UpdateInputs(wxArrayString &input_names)
 {
-	for (size_t i = 0; i < var_names.size(); i++)
+	for (size_t i = 0; i < input_names.size(); i++)
 	{
-		int ndx = m_par.FindSetup(var_names[i]);
+		int ndx = m_par.FindSetup(input_names[i]);
 		if (ndx < 0)
 		{
 			std::vector<VarValue> vvv;
 			ParametricData::Var pv;
 			for (int num_run = 0; num_run < m_rows; num_run++)
 			{ // add values for inputs only
-				if (VarValue *vv = m_case->Values().Get(var_names[i]))
+				if (VarValue *vv = m_case->Values().Get(input_names[i]))
 					vvv.push_back(*vv);
 			}
-			pv.Name = var_names[i];
+			pv.Name = input_names[i];
 			pv.Values = vvv;
 			AddSetup(pv);
 //			m_par.Setup.push_back(pv);
@@ -835,12 +879,46 @@ void ParametricGridData::Configure(wxArrayString &var_names)
 	wxArrayString to_remove;
 	for (size_t i = 0; i < m_par.Setup.size(); i++)
 	{
-		if (var_names.Index(m_par.Setup[i].Name) == wxNOT_FOUND)
+		if (input_names.Index(m_par.Setup[i].Name) == wxNOT_FOUND)
 			to_remove.push_back(m_par.Setup[i].Name);
 	}
 	for (size_t i = 0; i < to_remove.Count(); i++)
 		DeleteSetup(to_remove[i]);
-	m_var_names = var_names;
+	m_input_names = input_names;
+	Init();
+	UpdateView();
+}
+
+void ParametricGridData::UpdateOutputs(wxArrayString &output_names)
+{
+	for (size_t i = 0; i < output_names.size(); i++)
+	{
+		int ndx = m_par.FindSetup(output_names[i]);
+		if (ndx < 0)
+		{
+			std::vector<VarValue> vvv;
+			ParametricData::Var pv;
+			for (int num_run = 0; num_run < m_rows; num_run++)
+			{ // add values for inputs only
+				if (VarValue *vv = m_case->Values().Get(output_names[i]))
+					vvv.push_back(*vv);
+			}
+			pv.Name = output_names[i];
+			pv.Values = vvv;
+			AddSetup(pv);
+			//			m_par.Setup.push_back(pv);
+		}
+	}
+	// remove any variables not selected
+	wxArrayString to_remove;
+	for (size_t i = 0; i < m_par.Setup.size(); i++)
+	{
+		if (output_names.Index(m_par.Setup[i].Name) == wxNOT_FOUND)
+			to_remove.push_back(m_par.Setup[i].Name);
+	}
+	for (size_t i = 0; i < to_remove.Count(); i++)
+		DeleteSetup(to_remove[i]);
+	m_output_names = output_names;
 	Init();
 	UpdateView();
 }
