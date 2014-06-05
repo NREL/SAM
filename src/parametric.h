@@ -70,14 +70,16 @@ public:
 	void SetVarValue(int row, int col, VarValue *vv);
 	void Init();
 
-	wxArrayString GetVarNames();
+	wxArrayString GetInputNames();
+	wxArrayString GetOutputNames();
 
 	void AddSetup(ParametricData::Var &var);
 	void DeleteSetup(wxString &var_name);
 	void UpdateNumberRows(int rows);
 	bool RunSimulations(int row = -1);
 	void ClearResults(int row = -1);
-	void Configure(wxArrayString &var_names);
+	void UpdateInputs(wxArrayString &input_names);
+	void UpdateOutputs(wxArrayString &output_names);
 	void UpdateView();
 
 private:
@@ -86,6 +88,8 @@ private:
 	wxArrayString m_col_hdrs;
 	ParametricData &m_par;
 	Case *m_case;
+	wxArrayString m_input_names;
+	wxArrayString m_output_names;
 	wxArrayString m_var_names;
 };
 
@@ -113,7 +117,8 @@ private:
 	void OnCommand(wxCommandEvent &evt);
 	void OnGridColLabelRightClick(wxGridEvent &evt);
 
-	void Configure();
+	void SelectInputs();
+	void SelectOutputs();
 	void UpdateGrid();
 	void UpdateNumRuns();
 	void RunSimulations();
@@ -124,7 +129,8 @@ private:
 	wxNumericCtrl *m_num_runs_ctrl;
 
 	Case *m_case;
-	wxArrayString m_var_names;
+	wxArrayString m_input_names;
+	wxArrayString m_output_names;
 
 	DECLARE_EVENT_TABLE();
 };
