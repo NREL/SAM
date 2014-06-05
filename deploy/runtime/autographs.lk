@@ -1,4 +1,98 @@
-autographs{ 'PVWatts'} = define() {
+
+//Technology Graphs/////////////////////////////////////////////////////////////////////
+
+autographs{ 'PVWatts'} = define() 
+{
 	agraph( 'dc_monthly,ac_monthly', 'Energy', '', 'kWh' );
-	agraph( 'lat,lon', 'Location', '', 'deg' );
+	//agraph( 'lat,lon', 'Location', '', 'deg' );
+};
+
+autographs{ 'Flat Plate PV' } = define()
+{
+	agraph( 'monthly_dc_net,monthly_ac_net,monthly_energy', 'Energy', '', 'kWh' );
+};
+
+autographs{ 'High-X Concentrating PV' } = define()
+{
+	agraph( 'monthly_energy', 'Energy', '', 'kWh' );
+};
+
+autographs{ 'Concentrating Solar Power = Physical Trough' } = define()
+{
+	agraph( 'monthly_energy', 'Energy', '', 'kWh' );
+};
+
+autographs{ 'Empirical Trough' } = define() 
+{ 
+	//agraph( 'monthly_energy', 'Energy', '', 'kWh' );
+	return;
+};
+
+autographs{ 'Dish Stirling' } = define() 
+{ 
+	agraph( 'monthly_energy', 'Energy', '', 'kWh' );
+};
+
+autographs{ 'Generic CSP System' } = define() 
+{ 
+	agraph( 'monthly_energy', 'Energy', '', 'kWh' );
+};
+
+autographs{ 'Wind Power' } = define() 
+{ 
+	agraph( 'monthly_energy', 'Energy', '', 'kWh' );
+};
+
+autographs{ 'Geothermal Power' } = define() 
+{ 
+	agraph( 'monthly_energy', 'Energy', '', 'kWh' );	//add monthly_resource_temperature on separate x scale? also add monthly_power on separate scale?
+};
+
+autographs{ 'Generic System' } = define() 
+{ 
+	agraph( 'monthly_energy', 'Energy', '', 'kWh' );
+};
+
+//Financial Graphs/////////////////////////////////////////////////////////////////////
+
+autographs{ 'Residential' } = define() 
+{ 
+	//rescom_autographs(); 
+	return;
+};
+
+autographs{ 'Commercial' } = define() 
+{ 
+	//rescom_autographs();
+	return; 
+};
+
+autographs{ 'Commercial PPA' } = define() 
+{ 
+	agraph( 'cf_energy_net', 'Energy', '', 'kWh' );
+};
+
+autographs{ 'Independent Power Producer' } = define() 
+{ 
+	agraph( 'cf_energy_net', 'Energy', '', 'kWh' );
+};
+
+autographs{ 'Single Owner' } = define() 
+{ 
+	agraph( 'cf_energy_net', 'Energy', '', 'kWh' );
+};
+
+autographs{ 'All Equity Partnership Flip' } = define() 
+{ 
+	agraph( 'cf_energy_net', 'Energy', '', 'kWh' );
+};
+
+autographs{ 'Leveraged Partnership Flip' } = define() 
+{ 
+	agraph( 'cf_energy_net', 'Energy', '', 'kWh' );
+};
+
+autographs{ 'Sale Leaseback' } = define() 
+{ 
+	agraph( 'cf_energy_net', 'Energy', '', 'kWh' );
 };
