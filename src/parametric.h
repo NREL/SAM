@@ -64,11 +64,13 @@ public:
 	wxString GetChoices(int row, int col);
 
 	bool IsInput(int col);
+	bool IsInput(wxString &var_name);
 	VarInfo* GetVarInfo(int row, int col);
 	void SetVarInfo(int row, int col, VarInfo *vi);
 	VarValue* GetVarValue(int row, int col);
 	void SetVarValue(int row, int col, VarValue *vv);
 	void Init();
+	void UpdateSetup();
 
 	wxArrayString GetInputNames();
 	wxArrayString GetOutputNames();
