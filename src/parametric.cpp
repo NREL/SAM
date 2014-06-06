@@ -365,7 +365,7 @@ ParametricGridData::ParametricGridData(Case *cc) :m_case(cc), m_par(cc->Parametr
 }
 
 void ParametricGridData::Init()
-{
+{ // assumes m_par has been read in and is sorted properly..
 	if (m_par.Setup.size()<1) return;
 	m_col_hdrs.Clear();
 	m_input_names.Clear();
@@ -374,20 +374,64 @@ void ParametricGridData::Init()
 
 	m_cols = m_par.Setup.size();
 
-	for (int i = 0; i < (int)m_par.Setup.size(); i++)
+	for (int i = 0; i < m_cols; i++)
 	{
-		if (IsInput(i))
-			m_input_names.push_back(m_par.Setup[i].Name);
+		wxString var_name = m_par.Setup[i].Name;
+		if (IsInput(var_name))
+			m_input_names.push_back(var_name);
 		else
-			m_output_names.push_back(m_par.Setup[i].Name);
+			m_output_names.push_back(var_name);
 	}
-	
+	// sorted order
 	for (size_t i = 0; i < m_input_names.Count(); i++)
 		m_var_names.push_back(m_input_names[i]);
 	for (size_t i = 0; i < m_output_names.Count(); i++)
 		m_var_names.push_back(m_output_names[i]);
+
 	m_rows = m_par.Runs.size();
 }
+
+void ParametricGridData::UpdateSetup()
+{ // assumes inputs or outputs have been updated
+	// sorts m_var_name and m_par.Setup based in inputs first and then outputs.
+// used instead of inserting inputs so that additional sorting can be performed
+	std::vector<ParametricData::Var> sorted_setup;
+	int i, ndx;
+	for (i = 0; i < m_input_names.Count(); i++)
+	{
+		ndx = m_par.FindSetup(m_input_names[i]);
+		if (ndx < 0)
+		{
+			// throw error?
+			return;
+		}
+		sorted_setup.push_back(m_par.Setup[ndx]);
+	}
+
+	for (i = 0; i < m_output_names.Count(); i++)
+	{
+		ndx = m_par.FindSetup(m_output_names[i]);
+		if (ndx < 0)
+		{
+			// throw error?
+			return;
+		}
+		sorted_setup.push_back(m_par.Setup[ndx]);
+	}
+	m_par.Setup = sorted_setup;
+
+	// sorted order
+	m_var_names.Clear();
+	for (size_t i = 0; i < m_input_names.Count(); i++)
+		m_var_names.push_back(m_input_names[i]);
+	for (size_t i = 0; i < m_output_names.Count(); i++)
+		m_var_names.push_back(m_output_names[i]);
+
+	m_cols = m_par.Setup.size();
+	m_rows = m_par.Runs.size();
+
+}
+
 
 int ParametricGridData::GetNumberRows()
 {
@@ -429,6 +473,15 @@ bool ParametricGridData::IsInput(int col)
 	else
 		return false;
 }
+
+bool ParametricGridData::IsInput(wxString &var_name)
+{
+	if (VarValue *vv = m_par.GetCase()->Values().Get(var_name))
+		return true;
+	else
+		return false;
+}
+
 
 wxString ParametricGridData::GetColLabelValue(int col)
 {
@@ -872,20 +925,20 @@ void ParametricGridData::UpdateInputs(wxArrayString &input_names)
 			pv.Name = input_names[i];
 			pv.Values = vvv;
 			AddSetup(pv);
-//			m_par.Setup.push_back(pv);
 		}
 	}
 	// remove any variables not selected
 	wxArrayString to_remove;
 	for (size_t i = 0; i < m_par.Setup.size(); i++)
 	{
-		if (input_names.Index(m_par.Setup[i].Name) == wxNOT_FOUND)
-			to_remove.push_back(m_par.Setup[i].Name);
+		wxString var_name = m_par.Setup[i].Name;
+		if ((input_names.Index(var_name) == wxNOT_FOUND) && (IsInput(var_name)))
+			to_remove.push_back(var_name);
 	}
 	for (size_t i = 0; i < to_remove.Count(); i++)
 		DeleteSetup(to_remove[i]);
 	m_input_names = input_names;
-	Init();
+	UpdateSetup();
 	UpdateView();
 }
 
@@ -906,20 +959,20 @@ void ParametricGridData::UpdateOutputs(wxArrayString &output_names)
 			pv.Name = output_names[i];
 			pv.Values = vvv;
 			AddSetup(pv);
-			//			m_par.Setup.push_back(pv);
 		}
 	}
 	// remove any variables not selected
 	wxArrayString to_remove;
 	for (size_t i = 0; i < m_par.Setup.size(); i++)
 	{
-		if (output_names.Index(m_par.Setup[i].Name) == wxNOT_FOUND)
-			to_remove.push_back(m_par.Setup[i].Name);
+		wxString var_name = m_par.Setup[i].Name;
+		if ((output_names.Index(var_name) == wxNOT_FOUND) && (!IsInput(var_name)))
+			to_remove.push_back(var_name);
 	}
 	for (size_t i = 0; i < to_remove.Count(); i++)
 		DeleteSetup(to_remove[i]);
 	m_output_names = output_names;
-	Init();
+	UpdateSetup();
 	UpdateView();
 }
 
