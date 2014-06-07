@@ -193,11 +193,11 @@ ParametricViewer::ParametricViewer(wxWindow *parent, Case *cc)
 	m_input_names = m_grid_data->GetInputNames();
 	m_output_names = m_grid_data->GetOutputNames();
 
-	wxBoxSizer *par_vsizer = new wxBoxSizer( wxVERTICAL );
-	par_vsizer->Add( par_sizer, 0, wxALL|wxEXPAND, 2 );
-	par_vsizer->Add( m_grid, 1, wxALL|wxEXPAND, 0 );
+	m_par_sizer = new wxBoxSizer(wxVERTICAL);
+	m_par_sizer->Add(par_sizer, 0, wxALL | wxEXPAND, 2);
+	m_par_sizer->Add(m_grid, 1, wxALL | wxEXPAND, 0);
 
-	SetSizer( par_vsizer );
+	SetSizer(m_par_sizer);
 	UpdateGrid();
 }
 
@@ -236,8 +236,31 @@ void ParametricViewer::OnGridColLabelRightClick(wxGridEvent &evt)
 		if (m_grid_data->IsInput(evt.GetCol()))
 			// show input menu
 			wxMessageBox("Input menu");
-		else
-			wxMessageBox("Output menu");
+		else // plot export
+		{
+		//	wxMessageBox("Output menu");
+			// test plotting - single value only
+			int col = evt.GetCol();
+			std::vector<wxRealPoint> bar_data;
+			double max_x = m_grid_data->GetRowsCount() + 1;
+			double max_y = -9e99;
+			for (size_t row = 0; row < m_grid_data->GetRowsCount(); row++)
+			{
+				double y = m_grid_data->GetDouble(row, col);
+				if (y>max_y) max_y = y;
+				bar_data.push_back(wxRealPoint(row+1, y));
+			}
+			wxPLPlotCtrl *par_plot = new wxPLPlotCtrl(this, wxID_ANY);
+			wxPLBarPlot *bar;
+			par_plot->AddPlot(bar = new wxPLBarPlot(bar_data, m_grid_data->GetColLabelValue(col), wxMetroTheme::Colour(wxMT_ACCENT)));
+			par_plot->GetXAxis1()->SetWorld(0, max_x);
+			par_plot->GetYAxis1()->SetWorld(0, max_y);
+			m_par_sizer->Add(par_plot, 1, wxALL | wxEXPAND, 0);
+			m_par_sizer->Layout();
+			Update();
+
+			// arrays - determine if monthly or hourly
+		}
 	}
 }
 
@@ -667,8 +690,22 @@ wxString ParametricGridData::GetTypeName(int row, int col)
 				return "GridCellVarValue";
 			else if (vi->UIObject == VUIOBJ_NONE)
 				return wxGRID_VALUE_STRING;
-			else
-				return wxGRID_VALUE_STRING;
+			else // TODO for outputs
+			{
+				/*
+				if (VarValue *vv = GetVarValue(row,col))
+				{
+					switch (vv->Type)
+					{
+					case VV_ARRAY:
+						return single column grid for read only editor 
+						return GridCellWrapTextRenderer to show long arrays?
+					}
+				}
+				else
+				*/
+					return wxGRID_VALUE_STRING;
+			}
 		}
 		else
 			return wxGRID_VALUE_STRING;
@@ -854,25 +891,21 @@ void ParametricGridData::UpdateView()
 	}
 }
 
+double ParametricGridData::GetDouble(int row, int col)
+{
+	double ret_val = 0;
+	if (VarValue *vv = GetVarValue(row, col))
+	{
+		if (vv->Type() == VV_NUMBER)
+			ret_val = vv->Value();
+	}
+	return ret_val;
+}
+
 bool ParametricGridData::RunSimulations(int row)
 {
 	for (size_t i = 0; i < m_par.Runs.size(); i++)
 	{
-		// base case copied whenever number rows updated
-		// update all input values with setValue varValues - does not update
-		// TODO - update simulation inputs - check if updated properly.
-		/* use ovverride in SetValue
-		for (size_t irow = 0; irow < m_par.Runs.size(); irow++)
-		{
-			for (int col = 0; col < m_var_names.Count(); col++)
-			{
-				// see if in simulation inputs
-				if (VarValue *vv = m_par.Runs[irow]->GetInput(m_var_names[col]))
-					VarValue::Parse(vv->Type(), GetValue(irow, col), *vv);
-				// update with current value from grid
-			}
-		}
-		*/
 		// Excel exchange if necessary
 		ExcelExchange &ex = m_case->ExcelExch();
 		if (ex.Enabled)
