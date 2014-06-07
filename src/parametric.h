@@ -84,6 +84,8 @@ public:
 	void UpdateOutputs(wxArrayString &output_names);
 	void UpdateView();
 
+	double GetDouble(int row, int col);
+
 private:
 	int m_rows;
 	int m_cols;
@@ -133,6 +135,7 @@ private:
 	Case *m_case;
 	wxArrayString m_input_names;
 	wxArrayString m_output_names;
+	wxBoxSizer *m_par_sizer;
 
 	DECLARE_EVENT_TABLE();
 };
