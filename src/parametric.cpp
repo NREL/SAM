@@ -3,6 +3,7 @@
 
 #include <wex/plot/plplotctrl.h>
 #include <wex/plot/plbarplot.h>
+#include <wex/plot/pllineplot.h>
 #include <wex/metro.h>
 #include <wex/utils.h>
 
@@ -239,27 +240,70 @@ void ParametricViewer::OnGridColLabelRightClick(wxGridEvent &evt)
 		else // plot export
 		{
 		//	wxMessageBox("Output menu");
-			// test plotting - single value only
+			// test plotting 
 			int col = evt.GetCol();
-			std::vector<wxRealPoint> bar_data;
-			double max_x = m_grid_data->GetRowsCount() + 1;
-			double max_y = -9e99;
-			for (size_t row = 0; row < m_grid_data->GetRowsCount(); row++)
+			if (m_grid_data->GetRowsCount() > 0)
 			{
-				double y = m_grid_data->GetDouble(row, col);
-				if (y>max_y) max_y = y;
-				bar_data.push_back(wxRealPoint(row+1, y));
-			}
-			wxPLPlotCtrl *par_plot = new wxPLPlotCtrl(this, wxID_ANY);
-			wxPLBarPlot *bar;
-			par_plot->AddPlot(bar = new wxPLBarPlot(bar_data, m_grid_data->GetColLabelValue(col), wxMetroTheme::Colour(wxMT_ACCENT)));
-			par_plot->GetXAxis1()->SetWorld(0, max_x);
-			par_plot->GetYAxis1()->SetWorld(0, max_y);
-			m_par_sizer->Add(par_plot, 1, wxALL | wxEXPAND, 0);
-			m_par_sizer->Layout();
-			Update();
+				if (VarValue *vv = m_grid_data->GetVarValue(0, col))
+				{
+					switch (vv->Type())
+					{
+						//single value only
+						case VV_NUMBER:
+							{	
+							std::vector<wxRealPoint> bar_data;
+							double max_x = m_grid_data->GetRowsCount() + 1;
+							double max_y = -9e99;
+							for (size_t row = 0; row < m_grid_data->GetRowsCount(); row++)
+							{
+								double y = m_grid_data->GetDouble(row, col);
+								if (y>max_y) max_y = y;
+								bar_data.push_back(wxRealPoint(row + 1, y));
+							}
+							wxPLPlotCtrl *par_plot = new wxPLPlotCtrl(this, wxID_ANY);
+							wxPLBarPlot *bar;
+							par_plot->AddPlot(bar = new wxPLBarPlot(bar_data, m_grid_data->GetColLabelValue(col), wxMetroTheme::Colour(wxMT_ACCENT)));
+							par_plot->GetXAxis1()->SetWorld(0, max_x);
+							par_plot->GetYAxis1()->SetWorld(0, max_y);
+							m_par_sizer->Add(par_plot, 1, wxALL | wxEXPAND, 0);
+							m_par_sizer->Layout();
+							Update();
+							}
+							break;
 
-			// arrays - determine if monthly or hourly
+						// arrays - determine if monthly or hourly
+						case VV_ARRAY:
+							{
+							wxArrayString line_colors;
+							line_colors.push_back("BLUE");
+							line_colors.push_back("RED");
+							line_colors.push_back("GREEN");
+							line_colors.push_back("ORANGE");
+							line_colors.push_back("TAN");
+							line_colors.push_back("VIOLET");
+							line_colors.push_back("YELLOW");
+							line_colors.push_back("MAROON");
+							line_colors.push_back("BLACK");
+							line_colors.push_back("CYAN");
+							wxPLPlotCtrl *par_plot = new wxPLPlotCtrl(this, wxID_ANY);
+							wxPLLinePlot *line;
+							for (size_t row = 0; row < m_grid_data->GetRowsCount(); row++)
+							{
+								wxPLLinePlot *line;
+								std::vector<wxRealPoint> line_data;
+								std::vector<float> y = m_grid_data->GetArray(row, col);
+								for (size_t i = 0; i< y.size(); i++)
+									line_data.push_back(wxRealPoint(i, y[i]));
+								par_plot->AddPlot(line = new wxPLLinePlot(line_data, m_grid_data->GetColLabelValue(col) + wxString::Format(": run(%d)",row+1), wxTheColourDatabase->Find(line_colors[row]) ));
+							}
+							m_par_sizer->Add(par_plot, 1, wxALL | wxEXPAND, 0);
+							m_par_sizer->Layout();
+							Update();
+						}
+							break;
+					}
+				}
+			}
 		}
 	}
 }
@@ -898,6 +942,17 @@ double ParametricGridData::GetDouble(int row, int col)
 	{
 		if (vv->Type() == VV_NUMBER)
 			ret_val = vv->Value();
+	}
+	return ret_val;
+}
+
+std::vector<float> ParametricGridData::GetArray(int row, int col)
+{
+	std::vector<float> ret_val;
+	if (VarValue *vv = GetVarValue(row, col))
+	{
+		if (vv->Type() == VV_ARRAY)
+			ret_val = vv->Array();
 	}
 	return ret_val;
 }
