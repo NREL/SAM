@@ -85,6 +85,7 @@ public:
 	void UpdateView();
 
 	double GetDouble(int row, int col);
+	std::vector<float> GetArray(int row, int col);
 
 private:
 	int m_rows;
