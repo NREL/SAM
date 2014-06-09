@@ -179,7 +179,7 @@ void ParametricGrid::OnLeftClick(wxGridEvent &evt)
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
-enum { ID_SELECT_INPUTS, ID_SELECT_OUTPUTS, ID_NUMRUNS, ID_RUN, ID_CLEAR, ID_GRID };
+enum { ID_SELECT_INPUTS, ID_SELECT_OUTPUTS, ID_NUMRUNS, ID_RUN, ID_CLEAR, ID_GRID, ID_INPUTMENU_FILL_DOWN, ID_OUTPUTMENU_ADD_PLOT, ID_OUTPUTMENU_REMOVE_PLOT, ID_OUTPUTMENU_EXPORT };
 
 
 
@@ -190,6 +190,9 @@ EVT_NUMERIC(ID_NUMRUNS, ParametricViewer::OnCommand)
 EVT_BUTTON(ID_RUN, ParametricViewer::OnCommand)
 EVT_BUTTON(ID_CLEAR, ParametricViewer::OnCommand)
 EVT_GRID_CMD_LABEL_RIGHT_CLICK(ID_GRID, ParametricViewer::OnGridColLabelRightClick)
+EVT_MENU(ID_OUTPUTMENU_ADD_PLOT, ParametricViewer::OnMenuItem)
+EVT_MENU(ID_OUTPUTMENU_REMOVE_PLOT, ParametricViewer::OnMenuItem)
+EVT_MENU(ID_OUTPUTMENU_EXPORT, ParametricViewer::OnMenuItem)
 END_EVENT_TABLE()
 
 
@@ -225,6 +228,9 @@ ParametricViewer::ParametricViewer(wxWindow *parent, Case *cc)
 	m_par_sizer->Add(m_grid, 1, wxALL | wxEXPAND, 0);
 
 	SetSizer(m_par_sizer);
+
+	// for adding and removing plots - keep grid and buttons
+	m_fixed_sizer_count = (int)m_par_sizer->GetItemCount();
 	UpdateGrid();
 }
 
@@ -255,98 +261,171 @@ void ParametricViewer::OnCommand(wxCommandEvent &evt)
 	}
 }
 
+void ParametricViewer::OnMenuItem(wxCommandEvent &evt)
+{
+	switch (evt.GetId())
+	{
+	case ID_OUTPUTMENU_ADD_PLOT:
+		AddPlot();
+		break;
+	case ID_OUTPUTMENU_REMOVE_PLOT:
+		RemovePlot();
+		break;
+	case ID_OUTPUTMENU_EXPORT:
+		UpdateNumRuns();
+		UpdateGrid();
+		break;
+	case ID_INPUTMENU_FILL_DOWN:
+		break;
+	}
+}
+
 
 void ParametricViewer::OnGridColLabelRightClick(wxGridEvent &evt)
 {
-	if (evt.GetRow() < 0 && evt.GetCol() >= 0)
+	m_selected_grid_col = evt.GetCol();
+	if (evt.GetRow() < 0 && m_selected_grid_col >= 0) // header
 	{
-		if (m_grid_data->IsInput(evt.GetCol()))
+		if (m_grid_data->IsInput(m_selected_grid_col))
+		{
 			// show input menu
 			wxMessageBox("Input menu");
-		else // plot export
+		}
+		else // plot, export
 		{
-		//	wxMessageBox("Output menu");
-			// test plotting 
-			int col = evt.GetCol();
-			if (m_grid_data->GetRowsCount() > 0)
-			{
-				if (VarValue *vv = m_grid_data->GetVarValue(0, col))
-				{
-					switch (vv->Type())
-					{
-						//single value only
-						case VV_NUMBER:
-							{	
-							std::vector<wxRealPoint> bar_data;
-							double max_x = m_grid_data->GetRowsCount() + 1;
-							double max_y = -9e99;
-							for (size_t row = 0; row < m_grid_data->GetRowsCount(); row++)
-							{
-								double y = m_grid_data->GetDouble(row, col);
-								if (y>max_y) max_y = y;
-								bar_data.push_back(wxRealPoint(row + 1, y));
-							}
-							wxPLPlotCtrl *par_plot = new wxPLPlotCtrl(this, wxID_ANY);
-							wxPLBarPlot *bar;
-							par_plot->AddPlot(bar = new wxPLBarPlot(bar_data, m_grid_data->GetColLabelValue(col), wxMetroTheme::Colour(wxMT_ACCENT)));
-							par_plot->GetXAxis1()->SetWorld(0, max_x);
-							par_plot->GetYAxis1()->SetWorld(0, max_y);
-							m_par_sizer->Add(par_plot, 1, wxALL | wxEXPAND, 0);
-							m_par_sizer->Layout();
-							Update();
-							}
-							break;
-
-						// arrays - determine if monthly or hourly
-						case VV_ARRAY:
-							{
-							wxArrayString line_colors;
-							line_colors.push_back("BLUE");
-							line_colors.push_back("RED");
-							line_colors.push_back("GREEN");
-							line_colors.push_back("ORANGE");
-							line_colors.push_back("TAN");
-							line_colors.push_back("VIOLET");
-							line_colors.push_back("YELLOW");
-							line_colors.push_back("MAROON");
-							line_colors.push_back("BLACK");
-							line_colors.push_back("CYAN");
-							wxPLPlotCtrl *par_plot = new wxPLPlotCtrl(this, wxID_ANY);
-							wxPLLinePlot *line;
-							for (size_t row = 0; row < m_grid_data->GetRowsCount(); row++)
-							{
-								wxPLLinePlot *line;
-								std::vector<wxRealPoint> line_data;
-								std::vector<float> y = m_grid_data->GetArray(row, col);
-								for (size_t i = 0; i< y.size(); i++)
-									line_data.push_back(wxRealPoint(i, y[i]));
-								par_plot->AddPlot(line = new wxPLLinePlot(line_data, m_grid_data->GetColLabelValue(col) + wxString::Format(": run(%d)",row+1), wxTheColourDatabase->Find(line_colors[row]) ));
-							}
-							m_par_sizer->Add(par_plot, 1, wxALL | wxEXPAND, 0);
-							m_par_sizer->Layout();
-							Update();
-							// test dview control for 8760 data
-							wxDVTimeSeriesCtrl *dv = new wxDVTimeSeriesCtrl(this, wxID_ANY, RAW_DATA_TIME_SERIES, AVERAGE);
-							for (size_t row = 0; row < m_grid_data->GetRowsCount(); row++)
-							{
-								size_t n;
-								float *y = m_grid_data->GetArray(row, col, &n);
-								//if (n == 8760)
-									dv->AddDataSet(new TimeSeries8760(y, m_grid_data->GetColLabelValue(col) + wxString::Format(": run(%d)", row + 1), m_grid_data->GetUnits(col) ), wxEmptyString, true );
-						}
-							m_par_sizer->Add(dv, 1, wxALL | wxEXPAND, 0);
-							m_par_sizer->Layout();
-							Update();
-						}
-							break;
-
-					}
-				}
-			}
+		//	Output menu
+			wxPoint point = evt.GetPosition();
+			wxMenu *menu = new wxMenu;
+			menu->Append(ID_OUTPUTMENU_ADD_PLOT, _T("Add Plot"));
+			menu->Append(ID_OUTPUTMENU_REMOVE_PLOT, _T("Remove Plot"));
+			menu->Append(ID_OUTPUTMENU_EXPORT, _T("Export Data"));
+			PopupMenu(menu, point);
 		}
 	}
 }
 
+bool ParametricViewer::Plot()
+{
+	bool ret_val = false;
+
+	int col = m_selected_grid_col;
+	if (m_grid_data->GetRowsCount() > 0)
+	{
+		if (VarValue *vv = m_grid_data->GetVarValue(0, col))
+		{
+			switch (vv->Type())
+			{
+				//single value only
+			case VV_NUMBER:
+				{
+					std::vector<wxRealPoint> bar_data;
+					double max_x = m_grid_data->GetRowsCount() + 1;
+					double max_y = -9e99;
+					for (size_t row = 0; row < m_grid_data->GetRowsCount(); row++)
+					{
+						double y = m_grid_data->GetDouble(row, col);
+						if (y>max_y) max_y = y;
+						bar_data.push_back(wxRealPoint(row + 1, y));
+					}
+					wxPLPlotCtrl *par_plot = new wxPLPlotCtrl(this, wxID_ANY);
+					wxPLBarPlot *bar;
+					par_plot->AddPlot(bar = new wxPLBarPlot(bar_data, m_grid_data->GetColLabelValue(col), wxMetroTheme::Colour(wxMT_ACCENT)));
+					par_plot->GetXAxis1()->SetWorld(0, max_x);
+					par_plot->GetYAxis1()->SetWorld(0, max_y);
+					m_par_sizer->Add(par_plot, 1, wxALL | wxEXPAND, 0);
+					m_par_sizer->Layout();
+					Update();
+					ret_val = true;
+					break;
+				}
+				// arrays - determine if monthly or hourly
+			case VV_ARRAY:
+				{
+					size_t n;
+					float *y = m_grid_data->GetArray(0, col, &n); // checked above for rows>0
+
+					if (n == 12) // asume monthly
+					{
+						// TODO - consistent coloring with either DView or SAM graphs
+						wxArrayString line_colors;
+						line_colors.push_back("BLUE");
+						line_colors.push_back("RED");
+						line_colors.push_back("GREEN");
+						line_colors.push_back("ORANGE");
+						line_colors.push_back("TAN");
+						line_colors.push_back("VIOLET");
+						line_colors.push_back("YELLOW");
+						line_colors.push_back("MAROON");
+						line_colors.push_back("BLACK");
+						line_colors.push_back("CYAN");
+						wxPLPlotCtrl *par_plot = new wxPLPlotCtrl(this, wxID_ANY);
+						wxPLLinePlot *line;
+						for (size_t row = 0; row < m_grid_data->GetRowsCount(); row++)
+						{
+							wxPLLinePlot *line;
+							std::vector<wxRealPoint> line_data;
+							std::vector<float> y = m_grid_data->GetArray(row, col);
+							for (size_t i = 0; i < y.size(); i++)
+								line_data.push_back(wxRealPoint(i, y[i]));
+							par_plot->AddPlot(line = new wxPLLinePlot(line_data, m_grid_data->GetColLabelValue(col) + wxString::Format(": run(%d)", row + 1), wxTheColourDatabase->Find(line_colors[row])));
+						}
+						m_par_sizer->Add(par_plot, 1, wxALL | wxEXPAND, 0);
+						m_par_sizer->Layout();
+						Update();
+					}
+					else if (n == 8760) // assume hourly
+					{
+						wxDVTimeSeriesCtrl *dv = new wxDVTimeSeriesCtrl(this, wxID_ANY, RAW_DATA_TIME_SERIES, AVERAGE);
+						for (size_t row = 0; row < m_grid_data->GetRowsCount(); row++)
+						{
+							size_t n;
+							float *y = m_grid_data->GetArray(row, col, &n);
+							//if (n == 8760)
+							dv->AddDataSet(new TimeSeries8760(y, m_grid_data->GetColLabelValue(col) + wxString::Format(": run(%d)", row + 1), m_grid_data->GetUnits(col)), wxEmptyString, true);
+						}
+						m_par_sizer->Add(dv, 1, wxALL | wxEXPAND, 0);
+						m_par_sizer->Layout();
+						Update();
+					}
+					ret_val = true;
+					break;
+				}
+			}
+		}
+	}
+	return ret_val;
+}
+
+void ParametricViewer::AddPlot()
+{
+	// check if already plotted
+	int col = m_selected_grid_col;
+	wxString var_name = m_grid_data->GetVarName(col);
+	int ndx = m_plot_var_names.Index(var_name);
+	if (ndx == wxNOT_FOUND)
+	{
+		if (Plot())
+			m_plot_var_names.push_back(var_name);
+	}
+}
+
+void ParametricViewer::RemovePlot()
+{
+	int col = m_selected_grid_col;
+	wxString var_name = m_grid_data->GetVarName(col);
+	int ndx = m_plot_var_names.Index(var_name);
+	if (ndx != wxNOT_FOUND)
+	{
+		ndx += m_fixed_sizer_count;
+		if (ndx<m_par_sizer->GetItemCount())
+		{
+			m_par_sizer->GetItem(ndx)->GetWindow()->Destroy();
+			//m_par_sizer->Remove(ndx);
+			m_plot_var_names.Remove(var_name);
+			m_par_sizer->Layout();
+		}
+	}
+}
 
 void ParametricViewer::UpdateNumRuns()
 {
@@ -1009,13 +1088,23 @@ float *ParametricGridData::GetArray(int row, int col, size_t *n)
 
 wxString ParametricGridData::GetUnits(int col)
 {
-	wxString  ret_val;
+	wxString  ret_val = wxEmptyString;
 	if (m_rows > 0)
 	{
 		if (VarInfo *vi = GetVarInfo(0, col))
 		{
 			ret_val = vi->Label;
 		}
+	}
+	return ret_val;
+}
+
+wxString ParametricGridData::GetVarName(int col)
+{
+	wxString  ret_val=wxEmptyString;
+	if ((col > 0) && (col < m_var_names.Count()))
+	{
+		ret_val = m_var_names[col];
 	}
 	return ret_val;
 }

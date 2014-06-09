@@ -88,6 +88,7 @@ public:
 	std::vector<float> GetArray(int row, int col);
 	float *GetArray(int row, int col, size_t *n);
 	wxString GetUnits(int col);
+	wxString GetVarName(int col);
 
 private:
 	int m_rows;
@@ -123,6 +124,7 @@ public:
 private:
 	void OnCommand(wxCommandEvent &evt);
 	void OnGridColLabelRightClick(wxGridEvent &evt);
+	void OnMenuItem(wxCommandEvent &evt);
 
 	void SelectInputs();
 	void SelectOutputs();
@@ -131,6 +133,10 @@ private:
 	void RunSimulations();
 	void ClearResults();
 
+	void AddPlot();
+	void RemovePlot();
+	bool Plot();
+
 	ParametricGrid *m_grid;
 	ParametricGridData *m_grid_data;
 	wxNumericCtrl *m_num_runs_ctrl;
@@ -138,7 +144,11 @@ private:
 	Case *m_case;
 	wxArrayString m_input_names;
 	wxArrayString m_output_names;
+	wxArrayString m_plot_var_names;
 	wxBoxSizer *m_par_sizer;
+
+	int m_selected_grid_col;
+	int m_fixed_sizer_count;
 
 	DECLARE_EVENT_TABLE();
 };
