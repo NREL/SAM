@@ -5,6 +5,7 @@
 #include <wx/config.h>
 
 #include <wex/metro.h>
+#include <wex/utils.h>
 #include <wex/jsonreader.h>
 
 #include "main.h"
@@ -22,8 +23,8 @@ BEGIN_EVENT_TABLE( SamRegistration, wxDialog )
 END_EVENT_TABLE()
 
 static const char *sam_api_key = 
-//"rJzFOTOJhNHcLOnPmW2TNCLV8I4HHLgKddAycGpn" // production (sam.support@nrel.gov)
-"yXv3dcb6f5piO0abUMrrTuQvLDFgWvnBz52TJmDJ" // staging (aron.dobos@nrel.gov)
+"rJzFOTOJhNHcLOnPmW2TNCLV8I4HHLgKddAycGpn" // production (sam.support@nrel.gov)
+//"yXv3dcb6f5piO0abUMrrTuQvLDFgWvnBz52TJmDJ" // staging (aron.dobos@nrel.gov)
 ;
 const char *override_list[] = {
 	"09332s",
@@ -1137,7 +1138,8 @@ bool SamRegistration::CheckInWithServer( int *usage_count )
 	
 	wxJSONValue root;
 	wxJSONReader reader;
-	if ( reader.Parse( curl.GetDataAsString(), &root ) == 0 )
+	wxString raw( curl.GetDataAsString() );
+	if ( reader.Parse( raw, &root ) == 0 )
 	{
 		int code = root.Item("status").AsInt();
 		if (code == 200)
@@ -1146,8 +1148,11 @@ bool SamRegistration::CheckInWithServer( int *usage_count )
 			if ( usage_count ) *usage_count = root.Item("result").Item("usage_count").AsInt();
 			return true;
 		}
-
-
+		/*
+		else
+		{
+			wxShowTextMessageDialog( "url:\n" + url + "\n\n" + raw );
+		}*/
 	}
 
 	return false;
@@ -1279,15 +1284,21 @@ void SamRegistration::OnRegister( wxCommandEvent & )
 	int code = -1;
 	wxJSONValue root;
 	wxJSONReader reader;
-	if ( reader.Parse( curl.GetDataAsString(), &root ) == 0 )
+	wxString raw( curl.GetDataAsString() );
+	if ( reader.Parse( raw, &root ) == 0 )
 		code = root.Item("status").AsInt();
 
 	m_output->SetForegroundColour( wxMetroTheme::Colour( wxMT_TEXT ) );
 
-	if ( code == 200 ) m_output->SetValue( "Registration OK!");
+	if ( code == 200 ) m_output->SetValue( "Registration successful!  You have been sent an email with a registration key.");
 	else if ( code == 409 ) m_output->SetValue("You are already registered.  Please enter the registration key sent to you by email when you first registered SAM." );
+	else if ( code == 404 ) m_output->SetValue("Your registration information was not correct.  No user exists with that registration code." );
 	else m_output->SetValue(wxString::Format("Registration failed with error code %d.  Please check your internet connection.", code));
-	
+
+	/*
+	if ( code != 200 )
+		m_output->AppendText( "\n\n" + raw );
+		*/	
 }
 
 void SamRegistration::OnConfirm( wxCommandEvent & )
