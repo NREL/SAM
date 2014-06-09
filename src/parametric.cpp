@@ -4,12 +4,38 @@
 #include <wex/plot/plplotctrl.h>
 #include <wex/plot/plbarplot.h>
 #include <wex/plot/pllineplot.h>
+#include <wex/dview/dvtimeseriesctrl.h>
+#include <wex/dview/dvtimeseriesdataset.h>
 #include <wex/metro.h>
 #include <wex/utils.h>
 
 #include "parametric.h"
 #include "main.h"
 #include "casewin.h"
+
+
+// TODO repeated from Results.cpp - need to combine into common location
+class TimeSeries8760 : public wxDVTimeSeriesDataSet
+{
+	float *m_pdata;
+	wxString m_label, m_units;
+public:
+	TimeSeries8760(float *p, const wxString &label, const wxString &units)
+		: wxDVTimeSeriesDataSet(), m_pdata(p), m_label(label), m_units(units) { }
+	virtual wxRealPoint At(size_t i) const
+	{
+		if (i < 8760) return wxRealPoint(i, m_pdata[i]);
+		else return wxRealPoint(0, 0);
+	}
+	virtual size_t Length() const { return 8760; }
+	virtual double GetTimeStep() const { return 1.0; }
+	virtual double GetOffset() const { return 0.0; }
+	virtual wxString GetSeriesTitle() const { return m_label; }
+	virtual wxString GetUnits() const { return m_units; }
+	virtual void SetDataValue(size_t i, double newYValue) { /* nothing to do */ }
+};
+
+
 
 
 ParametricData::ParametricData( Case *c )
@@ -299,8 +325,21 @@ void ParametricViewer::OnGridColLabelRightClick(wxGridEvent &evt)
 							m_par_sizer->Add(par_plot, 1, wxALL | wxEXPAND, 0);
 							m_par_sizer->Layout();
 							Update();
+							// test dview control for 8760 data
+							wxDVTimeSeriesCtrl *dv = new wxDVTimeSeriesCtrl(this, wxID_ANY, RAW_DATA_TIME_SERIES, AVERAGE);
+							for (size_t row = 0; row < m_grid_data->GetRowsCount(); row++)
+							{
+								size_t n;
+								float *y = m_grid_data->GetArray(row, col, &n);
+								//if (n == 8760)
+									dv->AddDataSet(new TimeSeries8760(y, m_grid_data->GetColLabelValue(col) + wxString::Format(": run(%d)", row + 1), m_grid_data->GetUnits(col) ), wxEmptyString, true );
+						}
+							m_par_sizer->Add(dv, 1, wxALL | wxEXPAND, 0);
+							m_par_sizer->Layout();
+							Update();
 						}
 							break;
+
 					}
 				}
 			}
@@ -953,6 +992,30 @@ std::vector<float> ParametricGridData::GetArray(int row, int col)
 	{
 		if (vv->Type() == VV_ARRAY)
 			ret_val = vv->Array();
+	}
+	return ret_val;
+}
+
+float *ParametricGridData::GetArray(int row, int col, size_t *n)
+{
+	float *ret_val;
+	if (VarValue *vv = GetVarValue(row, col))
+	{
+		if (vv->Type() == VV_ARRAY)
+			ret_val = vv->Array(n);
+	}
+	return ret_val;
+}
+
+wxString ParametricGridData::GetUnits(int col)
+{
+	wxString  ret_val;
+	if (m_rows > 0)
+	{
+		if (VarInfo *vi = GetVarInfo(0, col))
+		{
+			ret_val = vi->Label;
+		}
 	}
 	return ret_val;
 }
