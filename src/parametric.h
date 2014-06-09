@@ -90,6 +90,8 @@ public:
 	wxString GetUnits(int col);
 	wxString GetVarName(int col);
 
+	void FillDown(int col, int rows=2);
+
 private:
 	int m_rows;
 	int m_cols;
@@ -136,6 +138,8 @@ private:
 	void AddPlot();
 	void RemovePlot();
 	bool Plot();
+
+	void FillDown(int rows);
 
 	ParametricGrid *m_grid;
 	ParametricGridData *m_grid_data;
