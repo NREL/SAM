@@ -1702,10 +1702,7 @@ public:
 		}
 		else if ( url == ":release_notes" )
 		{
-			wxFileName fn( SamApp::GetRuntimePath() + "/help/release_notes.pdf" );
-			fn.MakeAbsolute();
-			wxLaunchDefaultBrowser( fn.GetFullPath() );
-			return;
+			url = SamApp::WebApi("release_notes");
 		}
 		else if ( url == ":email_support" )
 		{
