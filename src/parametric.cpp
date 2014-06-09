@@ -179,7 +179,7 @@ void ParametricGrid::OnLeftClick(wxGridEvent &evt)
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
-enum { ID_SELECT_INPUTS, ID_SELECT_OUTPUTS, ID_NUMRUNS, ID_RUN, ID_CLEAR, ID_GRID, ID_INPUTMENU_FILL_DOWN, ID_OUTPUTMENU_ADD_PLOT, ID_OUTPUTMENU_REMOVE_PLOT, ID_OUTPUTMENU_EXPORT };
+enum { ID_SELECT_INPUTS, ID_SELECT_OUTPUTS, ID_NUMRUNS, ID_RUN, ID_CLEAR, ID_GRID, ID_INPUTMENU_FILL_DOWN_SEQUENCE, ID_INPUTMENU_FILL_DOWN_ONE_VALUE, ID_OUTPUTMENU_ADD_PLOT, ID_OUTPUTMENU_REMOVE_PLOT, ID_OUTPUTMENU_EXPORT };
 
 
 
@@ -193,6 +193,8 @@ EVT_GRID_CMD_LABEL_RIGHT_CLICK(ID_GRID, ParametricViewer::OnGridColLabelRightCli
 EVT_MENU(ID_OUTPUTMENU_ADD_PLOT, ParametricViewer::OnMenuItem)
 EVT_MENU(ID_OUTPUTMENU_REMOVE_PLOT, ParametricViewer::OnMenuItem)
 EVT_MENU(ID_OUTPUTMENU_EXPORT, ParametricViewer::OnMenuItem)
+EVT_MENU(ID_INPUTMENU_FILL_DOWN_ONE_VALUE, ParametricViewer::OnMenuItem)
+EVT_MENU(ID_INPUTMENU_FILL_DOWN_SEQUENCE, ParametricViewer::OnMenuItem)
 END_EVENT_TABLE()
 
 
@@ -272,10 +274,12 @@ void ParametricViewer::OnMenuItem(wxCommandEvent &evt)
 		RemovePlot();
 		break;
 	case ID_OUTPUTMENU_EXPORT:
-		UpdateNumRuns();
-		UpdateGrid();
 		break;
-	case ID_INPUTMENU_FILL_DOWN:
+	case ID_INPUTMENU_FILL_DOWN_ONE_VALUE:
+		FillDown(1);
+		break;
+	case ID_INPUTMENU_FILL_DOWN_SEQUENCE:
+		FillDown(2);
 		break;
 	}
 }
@@ -288,20 +292,35 @@ void ParametricViewer::OnGridColLabelRightClick(wxGridEvent &evt)
 	{
 		if (m_grid_data->IsInput(m_selected_grid_col))
 		{
-			// show input menu
-			wxMessageBox("Input menu");
+			// input menu
+			wxPoint point = evt.GetPosition();
+			wxMenu *menu = new wxMenu;
+			menu->Append(ID_INPUTMENU_FILL_DOWN_ONE_VALUE, _T("Fill down one value"));
+			menu->Append(ID_INPUTMENU_FILL_DOWN_SEQUENCE, _T("Fill down sequence"));
+			PopupMenu(menu, point);
 		}
-		else // plot, export
+		else 
 		{
 		//	Output menu
 			wxPoint point = evt.GetPosition();
 			wxMenu *menu = new wxMenu;
-			menu->Append(ID_OUTPUTMENU_ADD_PLOT, _T("Add Plot"));
-			menu->Append(ID_OUTPUTMENU_REMOVE_PLOT, _T("Remove Plot"));
-			menu->Append(ID_OUTPUTMENU_EXPORT, _T("Export Data"));
+			menu->Append(ID_OUTPUTMENU_ADD_PLOT, _T("Add plot"));
+			menu->Append(ID_OUTPUTMENU_REMOVE_PLOT, _T("Remove plot"));
+			menu->Append(ID_OUTPUTMENU_EXPORT, _T("Export data"));
+			int ndx = m_plot_var_names.Index(m_grid_data->GetVarName(m_selected_grid_col));
+			menu->Enable(ID_OUTPUTMENU_ADD_PLOT, (ndx == wxNOT_FOUND));
+			menu->Enable(ID_OUTPUTMENU_REMOVE_PLOT, (ndx != wxNOT_FOUND));
 			PopupMenu(menu, point);
 		}
 	}
+}
+
+
+void ParametricViewer::FillDown(int rows)
+{
+	// get first two values in column and fill down
+	int col = m_selected_grid_col;
+	m_grid_data->FillDown(col,rows);
 }
 
 bool ParametricViewer::Plot()
@@ -420,7 +439,6 @@ void ParametricViewer::RemovePlot()
 		if (ndx<m_par_sizer->GetItemCount())
 		{
 			m_par_sizer->GetItem(ndx)->GetWindow()->Destroy();
-			//m_par_sizer->Remove(ndx);
 			m_plot_var_names.Remove(var_name);
 			m_par_sizer->Layout();
 		}
@@ -1050,6 +1068,7 @@ void ParametricGridData::UpdateView()
 		wxGridTableMessage msg(this,
 			wxGRIDTABLE_REQUEST_VIEW_GET_VALUES);
 		GetView()->ProcessTableMessage(msg);
+		GetView()->Update();
 	}
 }
 
@@ -1109,10 +1128,62 @@ wxString ParametricGridData::GetVarName(int col)
 	return ret_val;
 }
 
+void ParametricGridData::FillDown(int col, int rows)
+{
+	if (m_rows > 0)
+	{
+		if (VarValue *vv = GetVarValue(0, col))
+		{
+			switch (vv->Type())
+			{
+				//single value only
+			case VV_NUMBER:
+				if (m_rows > 2)
+				{
+					double num0 = GetDouble(0, col);
+					// (rows==2) // fill sequence down
+					double num1 = GetDouble(1, col); 
+					int start_row = 2;
+					if (rows == 1)
+					{
+						num1 = GetDouble(0, col);
+						start_row = 1;
+					}
+					double diff = num1 - num0;
+					double old_val = num1;
+					for (int row = start_row; row < m_rows; row++)
+					{
+						double new_val = old_val + diff;
+						if (VarValue *vv = &m_par.Setup[col].Values[row])
+							vv->Set(new_val);
+						old_val = new_val;
+					}
+					UpdateView();
+				}
+				break;
+			}
+		}
+	}
+
+}
+
+
 bool ParametricGridData::RunSimulations(int row)
 {
 	for (size_t i = 0; i < m_par.Runs.size(); i++)
 	{
+		// override values here to handle copying
+		for (int col = 0; col < m_cols; col++)
+		{
+			if (IsInput(col))
+			{
+				if (VarValue *vv = &m_par.Setup[col].Values[i])
+				{
+					// set for simulation
+					m_par.Runs[i]->Override(m_var_names[col], *vv);
+				}
+			}
+		}
 		// Excel exchange if necessary
 		ExcelExchange &ex = m_case->ExcelExch();
 		if (ex.Enabled)
