@@ -1094,7 +1094,7 @@ bool SamRegistration::IncrementUsage()
 	int count = CountSinceLastVerify();
 	// don't increment local count if SAM won't start
 	// but do increment if using an override key
-	if ( count < MAX_ATTEMPTS || IsOverride(GetKey()))
+	if ( count < MAX_ATTEMPTS || IsOverride(GetKey().c_str()))
 		SamApp::Settings().Write("count-since-last-verify-" + GetVersionAndPlatform(), count+1);
 
 	return CheckInWithServer();
