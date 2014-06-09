@@ -86,6 +86,8 @@ public:
 
 	double GetDouble(int row, int col);
 	std::vector<float> GetArray(int row, int col);
+	float *GetArray(int row, int col, size_t *n);
+	wxString GetUnits(int col);
 
 private:
 	int m_rows;
