@@ -11,6 +11,7 @@
 #include "simulation.h"
 #include "object.h"
 #include "gridsupport.h"
+#include "graph.h"
 
 
 class ParametricData
@@ -118,10 +119,19 @@ public:
 };
 
 
-class ParametricViewer : public wxPanel
+class ParametricViewer : public wxSplitterWindow
 {
 public:
 	ParametricViewer( wxWindow *parent, Case *cc );
+
+	void Setup();
+
+	GraphCtrl *CreateNewGraph();
+	void DeleteGraph(GraphCtrl *);
+	void DeleteAll();
+
+	void SetGraphs(std::vector<Graph> &gl);
+	void GetGraphs(std::vector<Graph> &gl);
 
 private:
 	void OnCommand(wxCommandEvent &evt);
@@ -149,10 +159,18 @@ private:
 	wxArrayString m_input_names;
 	wxArrayString m_output_names;
 	wxArrayString m_plot_var_names;
-	wxBoxSizer *m_par_sizer;
 
 	int m_selected_grid_col;
 	int m_fixed_sizer_count;
+
+	void UpdateGraph();
+	GraphCtrl* CurrentGraph();
+	void OnGraphSelect(wxCommandEvent &);
+	void SetCurrent(GraphCtrl *gc);
+
+	GraphCtrl *m_current_graph;
+	wxSnapLayout *m_layout;
+	std::vector<GraphCtrl*> m_graphs;
 
 	DECLARE_EVENT_TABLE();
 };

@@ -8,6 +8,7 @@
 #include <wex/dview/dvtimeseriesdataset.h>
 #include <wex/metro.h>
 #include <wex/utils.h>
+#include <wex/snaplay.h>
 
 #include "parametric.h"
 #include "main.h"
@@ -200,17 +201,21 @@ END_EVENT_TABLE()
 
 
 ParametricViewer::ParametricViewer(wxWindow *parent, Case *cc)
-: wxPanel(parent, wxID_ANY), m_case(cc)
+: wxSplitterWindow(parent, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxSP_LIVE_UPDATE | wxSP_NOBORDER), m_case(cc)
 {
-	wxBoxSizer *par_sizer = new wxBoxSizer(wxHORIZONTAL);
-	par_sizer->Add(new wxButton(this, ID_SELECT_INPUTS, "Select Inputs..."), 0, wxALL | wxEXPAND, 2);
-	par_sizer->Add(new wxButton(this, ID_SELECT_OUTPUTS, "Select Outputs..."), 0, wxALL | wxEXPAND, 2);
-	par_sizer->Add(new wxStaticText(this, wxID_ANY, "   Number of Runs:"), 0, wxALIGN_CENTER_VERTICAL, 2);
+	m_current_graph = 0;
+
+	wxPanel *top_panel = new wxPanel(this);
+
+	wxBoxSizer *tool_sizer = new wxBoxSizer(wxHORIZONTAL);
+	tool_sizer->Add(new wxButton(this, ID_SELECT_INPUTS, "Select Inputs..."), 0, wxALL | wxEXPAND, 2);
+	tool_sizer->Add(new wxButton(this, ID_SELECT_OUTPUTS, "Select Outputs..."), 0, wxALL | wxEXPAND, 2);
+	tool_sizer->Add(new wxStaticText(this, wxID_ANY, "   Number of Runs:"), 0, wxALIGN_CENTER_VERTICAL, 2);
 	m_num_runs_ctrl = new wxNumericCtrl(this, ID_NUMRUNS, 0, wxNumericCtrl::INTEGER, wxDefaultPosition, wxSize(50, 24));
-	par_sizer->Add(m_num_runs_ctrl, 0, wxALL, 2);
-	par_sizer->AddStretchSpacer();
-	par_sizer->Add(new wxButton(this, ID_RUN, "Run parametric simulation"), 0, wxALL | wxEXPAND, 2);
-	par_sizer->Add(new wxButton(this, ID_CLEAR, "Clear results"), 0, wxALL | wxEXPAND, 2);
+	tool_sizer->Add(m_num_runs_ctrl, 0, wxALL, 2);
+	tool_sizer->AddStretchSpacer();
+	tool_sizer->Add(new wxButton(this, ID_RUN, "Run parametric simulation"), 0, wxALL | wxEXPAND, 2);
+	tool_sizer->Add(new wxButton(this, ID_CLEAR, "Clear results"), 0, wxALL | wxEXPAND, 2);
 
 
 	m_grid = new ParametricGrid(this, ID_GRID);
@@ -225,16 +230,124 @@ ParametricViewer::ParametricViewer(wxWindow *parent, Case *cc)
 	m_input_names = m_grid_data->GetInputNames();
 	m_output_names = m_grid_data->GetOutputNames();
 
-	m_par_sizer = new wxBoxSizer(wxVERTICAL);
-	m_par_sizer->Add(par_sizer, 0, wxALL | wxEXPAND, 2);
-	m_par_sizer->Add(m_grid, 1, wxALL | wxEXPAND, 0);
+	wxBoxSizer *par_sizer = new wxBoxSizer(wxVERTICAL);
+	par_sizer->Add(tool_sizer, 0, wxALL | wxEXPAND, 2);
+	par_sizer->Add(m_grid, 1, wxALL | wxEXPAND, 0);
 
-	SetSizer(m_par_sizer);
 
 	// for adding and removing plots - keep grid and buttons
-	m_fixed_sizer_count = (int)m_par_sizer->GetItemCount();
+	m_fixed_sizer_count = (int)par_sizer->GetItemCount();
 	UpdateGrid();
+	par_sizer->Layout();
+
+	top_panel->SetSizer(par_sizer);
+
+	m_layout = new wxSnapLayout(this, wxID_ANY);
+	SetMinimumPaneSize(250);
+	SplitHorizontally(top_panel, m_layout, 360);
+
 }
+
+GraphCtrl *ParametricViewer::CreateNewGraph()
+{
+	GraphCtrl *gc = new GraphCtrl(m_layout, wxID_ANY);
+	m_graphs.push_back(gc);
+	m_layout->Add(gc);
+	return gc;
+}
+
+void ParametricViewer::DeleteGraph(GraphCtrl *gc)
+{
+	std::vector<GraphCtrl*>::iterator it = std::find(m_graphs.begin(), m_graphs.end(), gc);
+	if (it != m_graphs.end())
+	{
+		if (m_current_graph == *it)
+			m_current_graph = 0;
+
+		m_layout->Delete(*it);
+		m_graphs.erase(it);
+	}
+}
+
+void ParametricViewer::DeleteAll()
+{
+	for (std::vector<GraphCtrl*>::iterator it = m_graphs.begin();
+		it != m_graphs.end();
+		++it)
+	{
+		m_layout->Delete(*it);
+		m_graphs.erase(it);
+	}
+
+	m_current_graph = 0;
+}
+
+void ParametricViewer::SetGraphs(std::vector<Graph> &gl)
+{
+	DeleteAll();
+
+	for (size_t i = 0; i<gl.size(); i++)
+	{
+		GraphCtrl *gc = CreateNewGraph();
+		gc->SetGraph(gl[i]);
+	}
+}
+
+void ParametricViewer::GetGraphs(std::vector<Graph> &gl)
+{
+	gl.clear();
+	gl.reserve(m_graphs.size());
+	for (size_t i = 0; i<m_graphs.size(); i++)
+		gl.push_back(m_graphs[i]->GetGraph());
+}
+
+
+void ParametricViewer::Setup()
+{
+	for (std::vector<GraphCtrl*>::iterator it = m_graphs.begin();
+		it != m_graphs.end();
+		++it)
+	{
+		Graph g = (*it)->GetGraph();
+//		(*it)->Display(m_sim, g);
+	}
+
+}
+
+
+GraphCtrl *ParametricViewer::CurrentGraph()
+{
+	return m_current_graph;
+}
+
+void ParametricViewer::UpdateGraph()
+{
+	if (!m_current_graph) return;
+	Graph g = m_current_graph->GetGraph();
+//	m_current->Display(m_sim, g);
+}
+
+void ParametricViewer::OnGraphSelect(wxCommandEvent &evt)
+{
+	if (GraphCtrl *gc = dynamic_cast<GraphCtrl*>(evt.GetEventObject()))
+		SetCurrent(gc);
+}
+
+void ParametricViewer::SetCurrent(GraphCtrl *gc)
+{
+	if (m_current_graph)
+	{
+		m_layout->ClearHighlights();
+		m_current_graph = 0;
+	}
+
+	m_current_graph = gc;
+
+	if (m_current_graph)
+		m_layout->Highlight(m_current_graph);
+
+}
+
 
 void ParametricViewer::OnCommand(wxCommandEvent &evt)
 {
@@ -351,8 +464,8 @@ bool ParametricViewer::Plot()
 					par_plot->AddPlot(bar = new wxPLBarPlot(bar_data, m_grid_data->GetColLabelValue(col), wxMetroTheme::Colour(wxMT_ACCENT)));
 					par_plot->GetXAxis1()->SetWorld(0, max_x);
 					par_plot->GetYAxis1()->SetWorld(0, max_y);
-					m_par_sizer->Add(par_plot, 1, wxALL | wxEXPAND, 0);
-					m_par_sizer->Layout();
+					//m_par_sizer->Add(par_plot, 1, wxALL | wxEXPAND, 0);
+					//m_par_sizer->Layout();
 					Update();
 					ret_val = true;
 					break;
@@ -388,8 +501,8 @@ bool ParametricViewer::Plot()
 								line_data.push_back(wxRealPoint(i, y[i]));
 							par_plot->AddPlot(line = new wxPLLinePlot(line_data, m_grid_data->GetColLabelValue(col) + wxString::Format(": run(%d)", row + 1), wxTheColourDatabase->Find(line_colors[row])));
 						}
-						m_par_sizer->Add(par_plot, 1, wxALL | wxEXPAND, 0);
-						m_par_sizer->Layout();
+						//m_par_sizer->Add(par_plot, 1, wxALL | wxEXPAND, 0);
+						//m_par_sizer->Layout();
 						Update();
 					}
 					else if (n == 8760) // assume hourly
@@ -402,8 +515,8 @@ bool ParametricViewer::Plot()
 							//if (n == 8760)
 							dv->AddDataSet(new TimeSeries8760(y, m_grid_data->GetColLabelValue(col) + wxString::Format(": run(%d)", row + 1), m_grid_data->GetUnits(col)), wxEmptyString, true);
 						}
-						m_par_sizer->Add(dv, 1, wxALL | wxEXPAND, 0);
-						m_par_sizer->Layout();
+						//m_par_sizer->Add(dv, 1, wxALL | wxEXPAND, 0);
+						//m_par_sizer->Layout();
 						Update();
 					}
 					ret_val = true;
@@ -436,11 +549,11 @@ void ParametricViewer::RemovePlot()
 	if (ndx != wxNOT_FOUND)
 	{
 		ndx += m_fixed_sizer_count;
-		if (ndx<m_par_sizer->GetItemCount())
+//		if (ndx<m_par_sizer->GetItemCount())
 		{
-			m_par_sizer->GetItem(ndx)->GetWindow()->Destroy();
+//			m_par_sizer->GetItem(ndx)->GetWindow()->Destroy();
 			m_plot_var_names.Remove(var_name);
-			m_par_sizer->Layout();
+//			m_par_sizer->Layout();
 		}
 	}
 }
