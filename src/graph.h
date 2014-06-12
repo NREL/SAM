@@ -119,7 +119,7 @@ private:
 
 };
 
-class GraphViewer : public wxSplitterWindow
+class GraphViewer : public wxPanel
 {
 public:
 	GraphViewer( wxWindow *parent );
