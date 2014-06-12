@@ -93,6 +93,8 @@ public:
 
 	void FillDown(int col, int rows=2);
 
+	std::vector<Simulation *> GetRuns();
+
 private:
 	int m_rows;
 	int m_cols;
@@ -148,6 +150,7 @@ private:
 	void AddPlot();
 	void RemovePlot();
 	bool Plot();
+	bool Plot(Graph &g);
 
 	void FillDown(int rows);
 

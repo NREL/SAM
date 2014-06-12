@@ -66,7 +66,9 @@ class GraphCtrl : public wxPLPlotCtrl
 {
 public:
 	GraphCtrl( wxWindow *parent, int id );
-	void Display( Simulation *sim, Graph &g );
+	void Display(Simulation *sim, Graph &g);
+
+	void Display(std::vector<Simulation *> sims, Graph &g);
 
 	void SetGraph( const Graph &g ) { m_g = g; }
 	Graph GetGraph() { return m_g; }
