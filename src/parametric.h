@@ -119,7 +119,7 @@ public:
 };
 
 
-class ParametricViewer : public wxSplitterWindow
+class ParametricViewer : public wxPanel
 {
 public:
 	ParametricViewer( wxWindow *parent, Case *cc );
