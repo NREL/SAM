@@ -200,25 +200,30 @@ END_EVENT_TABLE()
 
 
 
-ParametricViewer::ParametricViewer(wxWindow *parent, Case *cc)
-: wxSplitterWindow(parent, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxSP_LIVE_UPDATE | wxSP_NOBORDER), m_case(cc)
+ParametricViewer::ParametricViewer(wxWindow *parent, Case *cc) : wxPanel(parent, wxID_ANY), m_case(cc)
+//: wxSplitterWindow(parent, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxSP_LIVE_UPDATE | wxSP_NOBORDER), m_case(cc)
 {
 	m_current_graph = 0;
 
-	wxPanel *top_panel = new wxPanel(this);
+	wxBoxSizer *main_sizer = new wxBoxSizer(wxHORIZONTAL);
+	wxSplitterWindow *splitter = new wxSplitterWindow(this, wxID_ANY);
+	main_sizer->Add(splitter, 1, wxBOTTOM | wxLEFT | wxEXPAND, 5);
+
+
+	wxPanel *top_panel = new wxPanel(splitter);
 
 	wxBoxSizer *tool_sizer = new wxBoxSizer(wxHORIZONTAL);
-	tool_sizer->Add(new wxButton(this, ID_SELECT_INPUTS, "Select Inputs..."), 0, wxALL | wxEXPAND, 2);
-	tool_sizer->Add(new wxButton(this, ID_SELECT_OUTPUTS, "Select Outputs..."), 0, wxALL | wxEXPAND, 2);
-	tool_sizer->Add(new wxStaticText(this, wxID_ANY, "   Number of Runs:"), 0, wxALIGN_CENTER_VERTICAL, 2);
-	m_num_runs_ctrl = new wxNumericCtrl(this, ID_NUMRUNS, 0, wxNumericCtrl::INTEGER, wxDefaultPosition, wxSize(50, 24));
+	tool_sizer->Add(new wxButton(top_panel, ID_SELECT_INPUTS, "Select Inputs..."), 0, wxALL | wxEXPAND, 2);
+	tool_sizer->Add(new wxButton(top_panel, ID_SELECT_OUTPUTS, "Select Outputs..."), 0, wxALL | wxEXPAND, 2);
+	tool_sizer->Add(new wxStaticText(top_panel, wxID_ANY, "   Number of Runs:"), 0, wxALIGN_CENTER_VERTICAL, 2);
+	m_num_runs_ctrl = new wxNumericCtrl(top_panel, ID_NUMRUNS, 0, wxNumericCtrl::INTEGER, wxDefaultPosition, wxSize(50, 24));
 	tool_sizer->Add(m_num_runs_ctrl, 0, wxALL, 2);
 	tool_sizer->AddStretchSpacer();
-	tool_sizer->Add(new wxButton(this, ID_RUN, "Run parametric simulation"), 0, wxALL | wxEXPAND, 2);
-	tool_sizer->Add(new wxButton(this, ID_CLEAR, "Clear results"), 0, wxALL | wxEXPAND, 2);
+	tool_sizer->Add(new wxButton(top_panel, ID_RUN, "Run parametric simulation"), 0, wxALL | wxEXPAND, 2);
+	tool_sizer->Add(new wxButton(top_panel, ID_CLEAR, "Clear results"), 0, wxALL | wxEXPAND, 2);
 
 
-	m_grid = new ParametricGrid(this, ID_GRID);
+	m_grid = new ParametricGrid(top_panel, ID_GRID);
 
 	m_grid->RegisterDataType("GridCellCheckBox", new GridCellCheckBoxRenderer, new GridCellCheckBoxEditor);
 	m_grid->RegisterDataType("GridCellChoice", new GridCellChoiceRenderer, new GridCellChoiceEditor);
@@ -238,13 +243,15 @@ ParametricViewer::ParametricViewer(wxWindow *parent, Case *cc)
 	// for adding and removing plots - keep grid and buttons
 	m_fixed_sizer_count = (int)par_sizer->GetItemCount();
 	UpdateGrid();
-	par_sizer->Layout();
 
 	top_panel->SetSizer(par_sizer);
+	m_layout = new wxSnapLayout(splitter, wxID_ANY);
 
-	m_layout = new wxSnapLayout(this, wxID_ANY);
-	SetMinimumPaneSize(250);
-	SplitHorizontally(top_panel, m_layout, 360);
+	splitter->SetMinimumPaneSize(50);
+	splitter->SplitHorizontally(top_panel, m_layout, 360);
+
+	SetSizer(main_sizer);
+	main_sizer->SetSizeHints(this);
 
 }
 
