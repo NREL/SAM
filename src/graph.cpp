@@ -569,7 +569,7 @@ void GraphProperties::OnSlider( wxScrollEvent & )
 enum { ID_CREATE_GRAPH = wxID_HIGHEST+466, ID_DELETE_GRAPH,
 	ID_GRAPH_PROPS };
 
-BEGIN_EVENT_TABLE( GraphViewer, wxSplitterWindow )
+BEGIN_EVENT_TABLE(GraphViewer, wxPanel)
 	EVT_BUTTON( ID_CREATE_GRAPH, GraphViewer::OnCommand )
 	EVT_BUTTON( ID_DELETE_GRAPH, GraphViewer::OnCommand )
 	EVT_GRAPH_PROPERTY_CHANGE( ID_GRAPH_PROPS, GraphViewer::OnCommand )
@@ -577,13 +577,17 @@ BEGIN_EVENT_TABLE( GraphViewer, wxSplitterWindow )
 END_EVENT_TABLE()
 
 
-GraphViewer::GraphViewer( wxWindow *parent )
-	: wxSplitterWindow( parent, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxSP_LIVE_UPDATE|wxSP_NOBORDER )
+GraphViewer::GraphViewer(wxWindow *parent) : wxPanel(parent, wxID_ANY)
+//	: wxSplitterWindow( parent, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxSP_LIVE_UPDATE|wxSP_NOBORDER )
 {
 	m_sim = 0;
 	m_current = 0;
 
-	wxPanel *lpanel = new wxPanel( this );
+	wxBoxSizer *main_sizer = new wxBoxSizer(wxHORIZONTAL);
+	wxSplitterWindow *splitter = new wxSplitterWindow(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxSP_LIVE_UPDATE | wxSP_NOBORDER);
+	main_sizer->Add(splitter, 1, wxBOTTOM | wxLEFT | wxEXPAND, 5);
+
+	wxPanel *lpanel = new wxPanel(splitter);
 	wxBoxSizer *sizer_tools = new wxBoxSizer( wxHORIZONTAL );
 	sizer_tools->Add( new wxButton( lpanel, ID_CREATE_GRAPH, "Create graph" ), 0, wxALL|wxEXPAND, 2 );
 	sizer_tools->Add( new wxButton( lpanel, ID_DELETE_GRAPH, "Delete graph" ), 0, wxALL|wxEXPAND, 2 );
@@ -596,10 +600,14 @@ GraphViewer::GraphViewer( wxWindow *parent )
 
 	lpanel->SetSizer( sizer_left );
 
+	m_layout = new wxSnapLayout(splitter, wxID_ANY);
 
-	m_layout = new wxSnapLayout( this, wxID_ANY );	
-	SetMinimumPaneSize( 50 );
-	SplitVertically( lpanel, m_layout, 260 );
+	splitter->SetMinimumPaneSize( 50 );
+	splitter->SplitVertically( lpanel, m_layout, 260 );
+
+	SetSizer(main_sizer);
+	main_sizer->SetSizeHints(this);
+
 }
 
 GraphCtrl *GraphViewer::CreateNewGraph()

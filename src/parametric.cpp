@@ -247,7 +247,7 @@ ParametricViewer::ParametricViewer(wxWindow *parent, Case *cc) : wxPanel(parent,
 	top_panel->SetSizer(par_sizer);
 	m_layout = new wxSnapLayout(splitter, wxID_ANY);
 
-	splitter->SetMinimumPaneSize(50);
+	splitter->SetMinimumPaneSize(100);
 	splitter->SplitHorizontally(top_panel, m_layout, 360);
 
 	SetSizer(main_sizer);
