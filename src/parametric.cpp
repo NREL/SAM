@@ -535,6 +535,32 @@ bool ParametricViewer::Plot()
 	return ret_val;
 }
 
+
+bool ParametricViewer::Plot(Graph &g)
+{
+	bool ret_val = false;
+
+	int col = m_selected_grid_col;
+	if (m_grid_data->GetRowsCount() > 0)
+	{
+		if (VarValue *vv = m_grid_data->GetVarValue(0, col))
+		{
+			g.Y.push_back(m_grid_data->GetVarName(col));
+			switch (vv->Type())
+			{
+			case VV_NUMBER:
+			{
+				g.Type = Graph::BAR;
+				ret_val = true;
+			}
+				break;
+			}
+		}
+	}
+	return ret_val;
+}
+
+
 void ParametricViewer::AddPlot()
 {
 	// check if already plotted
@@ -543,8 +569,14 @@ void ParametricViewer::AddPlot()
 	int ndx = m_plot_var_names.Index(var_name);
 	if (ndx == wxNOT_FOUND)
 	{
-		if (Plot())
+		Graph g;
+		if (Plot(g))
+		{
 			m_plot_var_names.push_back(var_name);
+			GraphCtrl *gc = new GraphCtrl(m_layout, wxID_ANY);
+			gc->Display(m_grid_data->GetRuns(), g);
+			m_graphs.push_back(gc);
+		}
 	}
 }
 
@@ -1287,6 +1319,10 @@ void ParametricGridData::FillDown(int col, int rows)
 
 }
 
+std::vector<Simulation *> ParametricGridData::GetRuns()
+{
+	return m_par.Runs;
+}
 
 bool ParametricGridData::RunSimulations(int row)
 {

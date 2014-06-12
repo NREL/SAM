@@ -354,6 +354,228 @@ static std::vector<wxColour> s_colours;
 	Refresh();
 }
 
+void GraphCtrl::Display(std::vector<Simulation *>sims, Graph &gi)
+{
+	static const char *s_monthNames[12] = { "Jan", "Feb", "Mar", "Apr", "May", "Jun",
+		"Jul", "Aug", "Sep", "Oct", "Nov", "Dec" };
+
+	static std::vector<wxColour> s_colours;
+	if (s_colours.size() == 0)
+	{
+		s_colours.push_back(wxColour(111, 164, 196));
+		s_colours.push_back(wxColour("GREY"));
+		s_colours.push_back(wxColour(181, 211, 227));
+		s_colours.push_back(*wxLIGHT_GREY);
+		s_colours.push_back(wxColour("PALE GREEN"));
+		s_colours.push_back(wxColour("GOLDENROD"));
+		s_colours.push_back(wxColour("MEDIUM VIOLET RED"));
+		s_colours.push_back(wxColour("MEDIUM SEA GREEN"));
+		s_colours.push_back(wxColour("DARK SLATE GREY"));
+		s_colours.push_back(wxColour("WHEAT"));
+		s_colours.push_back(wxColour("FIREBRICK"));
+		s_colours.push_back(wxColour("dark orchid"));
+		s_colours.push_back(wxColour("dim grey"));
+		s_colours.push_back(wxColour("brown"));
+	}
+
+	m_g.Copy(&gi);
+
+	DeleteAllPlots();
+
+	if (sims.size() <=0)
+	{
+		Refresh();
+		return;
+	}
+	m_s = sims[0];
+
+	// setup visual properties of graph
+	wxFont font(*wxNORMAL_FONT);
+	switch (m_g.FontFace)
+	{
+	case 1: font = wxMetroTheme::Font(wxMT_LIGHT); break;
+	case 2: font = *wxSWISS_FONT; break;
+	case 3: font = wxFont(12, wxFONTFAMILY_ROMAN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL); break;
+	case 4: font = wxFont(12, wxFONTFAMILY_MODERN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL); break;
+	}
+
+	if (m_g.FontScale != 0.0)
+	{
+		int points = (int)(((double)font.GetPointSize())*m_g.FontScale);
+		if (points < 4) points = 4;
+		if (points > 32) points = 32;
+		font.SetPointSize(points);
+	}
+
+	SetFont(font);
+
+	ShowGrid(m_g.CoarseGrid, m_g.FineGrid);
+	SetTitle(m_g.Title);
+	ShowLegend(m_g.ShowLegend);
+	SetLegendLocation((wxPLPlotCtrl::LegendPos)m_g.LegendPos);
+
+	// setup data
+	std::vector<std::vector<VarValue*>> yvars;
+	wxArrayString ynames;
+	int ndata = -1;
+	std::vector<VarValue*> yv;
+
+	for (size_t s = 0; s < sims.size(); s++)
+	{
+		yv.clear();
+		for (size_t i = 0; i < m_g.Y.size(); i++)
+		{
+			if (VarValue *vv = sims[i]->GetValue(m_g.Y[i]))
+			{
+				int count = 0;
+				if (vv->Type() == VV_NUMBER)
+					count = 1;
+				else if (vv->Type() == VV_ARRAY)
+					count = vv->Length();
+
+				if (i == 0) ndata = count;
+				else if (ndata != count) ndata = -1;
+
+				if (count > 0)
+				{
+					yv.push_back(vv);
+					ynames.push_back(m_g.Y[i]);
+				}
+			}
+		}
+		if (ndata < 0) break;
+		yvars.push_back(yv);
+	}
+	if (ndata < 0)
+	{
+		SetTitle("All variables must have the same number of data values.");
+		Refresh();
+		return;
+	}
+
+	std::vector< std::vector<wxRealPoint> > plotdata(yvars.size());
+
+	int cidx = 0; // colour index
+	wxPLBarPlot *last_bar = 0;
+	std::vector<wxPLBarPlot*> bar_group;
+
+	for (size_t s = 0; s < sims.size(); s++)
+	{
+		for (size_t i = 0; i < yvars[s].size(); i++)
+		{
+			if (yvars[s][i]->Type() == VV_ARRAY)
+			{
+				size_t n = 0;
+				float *p = yvars[s][i]->Array(&n);
+
+				plotdata[i].reserve(ndata);
+				for (size_t k = 0; k < n; k++)
+					plotdata[i].push_back(wxRealPoint(k, p[k]));
+			}
+			else
+				plotdata[i].push_back(wxRealPoint(i, yvars[s][i]->Value()));
+
+			wxPLPlottable *plot = 0;
+			if (m_g.Type == Graph::LINE)
+				plot = new wxPLLinePlot(plotdata[i], sims[s]->GetLabel(ynames[i]), s_colours[cidx],
+				wxPLLinePlot::SOLID, m_g.Size + 2);
+			else if (m_g.Type == Graph::BAR || m_g.Type == Graph::STACKED)
+			{
+				wxPLBarPlot *bar = new wxPLBarPlot(plotdata[i], sims[s]->GetLabel(ynames[i]), s_colours[cidx]);
+				if (m_g.Size != 0)
+					bar->SetThickness(m_g.Size, false);
+
+				if (m_g.Type == Graph::STACKED)
+					bar->SetStackedOn(last_bar);
+				else
+					bar_group.push_back(bar);
+
+				last_bar = bar;
+				plot = bar;
+			}
+			else if (m_g.Type == Graph::SCATTER)
+			{
+				plot = new wxPLScatterPlot(plotdata[i], sims[s]->GetLabel(ynames[i]), s_colours[cidx], m_g.Size + 2);
+				if (plotdata[i].size() < 100)
+					plot->SetAntiAliasing(true);
+			}
+
+
+			if (++cidx >= s_colours.size()) cidx = 0; // incr and wrap around colour index
+
+			if (plot != 0)
+				AddPlot(plot, wxPLPlotCtrl::X_BOTTOM, wxPLPlotCtrl::Y_LEFT, wxPLPlotCtrl::PLOT_TOP, false);
+		}
+	}
+
+	// group the bars together if they're not stacked and not single values
+	if (ndata > 1 && m_g.Type == Graph::BAR)
+		for (size_t i = 0; i<bar_group.size(); i++)
+			bar_group[i]->SetGroup(bar_group);
+
+	// create the axes
+	if (ndata == 1)
+	{
+		// single value axis
+		wxPLLabelAxis *x1 = new wxPLLabelAxis(-1, yvars.size(), m_g.XLabel);
+		for (size_t s = 0; s < sims.size(); s++)
+		{
+			for (size_t i = 0; i < ynames.size(); i++)
+				x1->Add(i, sims[s]->GetLabel(ynames[i]));
+		}
+		SetXAxis1(x1);
+	}
+	else if (ndata == 12)
+	{
+		// month axis
+		wxPLLabelAxis *x1 = new wxPLLabelAxis(-1, 12, m_g.XLabel);
+		for (size_t i = 0; i<12; i++)
+			x1->Add(i, s_monthNames[i]);
+		SetXAxis1(x1);
+	}
+	else
+	{
+		// linear axis
+		SetXAxis1(new wxPLLinearAxis(-1, ndata + 1, m_g.XLabel));
+	}
+
+
+	// setup y axis
+
+	if (GetPlotCount() > 0)
+	{
+		double ymin, ymax;
+		GetPlot(0)->GetMinMax(0, 0, &ymin, &ymax);
+		for (size_t i = 1; i<GetPlotCount(); i++)
+			GetPlot(i)->ExtendMinMax(0, 0, &ymin, &ymax);
+
+		if (m_g.Type == Graph::STACKED || m_g.Type == Graph::BAR)
+		{ // forcibly include the zero line for bar plots
+			if (ymin > 0) ymin = 0;
+			if (ymax < 0) ymax = 0;
+		}
+
+		double yadj = (ymax - ymin)*0.05;
+
+		if (ymin != 0) ymin -= yadj;
+		if (ymax != 0) ymax += yadj;
+
+		if (ymin == ymax) {
+			// no variation in y values, so pick some reasonable graph bounds
+			ymax = (ymax == 0) ? 1 : ymax += ymax*0.05;
+			ymin = (ymin == 0) ? -1 : ymin -= ymin*0.05;
+		}
+
+		SetYAxis1(new wxPLLinearAxis(ymin, ymax, m_g.YLabel));
+	}
+
+
+	Invalidate();
+	Refresh();
+}
+
+
+
 void GraphCtrl::OnLeftDown( wxMouseEvent &evt )
 {
 	wxCommandEvent e( wxEVT_GRAPH_SELECT, GetId() );
