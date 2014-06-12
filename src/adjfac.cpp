@@ -261,7 +261,7 @@ public:
 		
 		m_factor = new wxNumericCtrl( m_scrollWin, wxID_ANY );
 		
-		m_enableHourly = new wxCheckBox( m_scrollWin, ID_ENABLE_HOURLY, "Enable hourly beam irradiance shading factors" );
+		m_enableHourly = new wxCheckBox( m_scrollWin, ID_ENABLE_HOURLY, "Enable hourly factors" );
 		m_hourly = new AFDataArrayButton( m_scrollWin, wxID_ANY );
 		m_hourly->SetMode( DATA_ARRAY_8760_ONLY );
 
