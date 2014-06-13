@@ -265,7 +265,7 @@ GraphCtrl *ParametricViewer::CreateNewGraph()
 
 void ParametricViewer::DeleteGraph(GraphCtrl *gc)
 {
-	std::vector<GraphCtrl*>::iterator it = std::find(m_graphs.begin(), m_graphs.end(), gc);
+	std::vector<wxWindow*>::iterator it = std::find(m_graphs.begin(), m_graphs.end(), gc);
 	if (it != m_graphs.end())
 	{
 		if (m_current_graph == *it)
@@ -278,7 +278,7 @@ void ParametricViewer::DeleteGraph(GraphCtrl *gc)
 
 void ParametricViewer::DeleteAll()
 {
-	for (std::vector<GraphCtrl*>::iterator it = m_graphs.begin();
+	for (std::vector<wxWindow*>::iterator it = m_graphs.begin();
 		it != m_graphs.end();
 		++it)
 	{
@@ -300,6 +300,7 @@ void ParametricViewer::SetGraphs(std::vector<Graph> &gl)
 	}
 }
 
+/*
 void ParametricViewer::GetGraphs(std::vector<Graph> &gl)
 {
 	gl.clear();
@@ -320,7 +321,7 @@ void ParametricViewer::Setup()
 	}
 
 }
-
+*/
 
 GraphCtrl *ParametricViewer::CurrentGraph()
 {
@@ -520,7 +521,7 @@ bool ParametricViewer::Plot()
 							size_t n;
 							float *y = m_grid_data->GetArray(row, col, &n);
 							//if (n == 8760)
-							dv->AddDataSet(new TimeSeries8760(y, m_grid_data->GetColLabelValue(col) + wxString::Format(": run(%d)", row + 1), m_grid_data->GetUnits(col)), wxEmptyString, true);
+							dv->AddDataSet(new TimeSeries8760(y, m_grid_data->GetColLabelValue(col) + wxString::Format(" : run(%d)", row + 1), m_grid_data->GetUnits(col)), wxEmptyString, true);
 						}
 						//m_par_sizer->Add(dv, 1, wxALL | wxEXPAND, 0);
 						//m_par_sizer->Layout();
@@ -567,7 +568,8 @@ bool ParametricViewer::Plot(Graph &g)
 					}
 					else if (n == 8760)
 					{
-						g.Type = Graph::LINE;
+//						g.Type = Graph::LINE;
+						g.Type = -1; // DView - do not use GraphCtrl
 						ret_val = true;
 					}
 				}
@@ -591,10 +593,26 @@ void ParametricViewer::AddPlot()
 		if (Plot(g))
 		{
 			m_plot_var_names.push_back(var_name);
-			GraphCtrl *gc = new GraphCtrl(m_layout, wxID_ANY);
-			gc->Display(m_grid_data->GetRuns(), g);
-			m_graphs.push_back(gc);
-			m_layout->Add(gc);
+			if (g.Type >= 0)
+			{
+				GraphCtrl *gc = new GraphCtrl(m_layout, wxID_ANY);
+				gc->Display(m_grid_data->GetRuns(), g);
+				m_graphs.push_back(gc);
+				m_layout->Add(gc);
+			}
+			else // DView
+			{
+				wxDVTimeSeriesCtrl *dv = new wxDVTimeSeriesCtrl(this, wxID_ANY, RAW_DATA_TIME_SERIES, AVERAGE);
+				for (size_t row = 0; row < m_grid_data->GetRowsCount(); row++)
+				{
+					size_t n;
+					float *y = m_grid_data->GetArray(row, col, &n);
+					//if (n == 8760)
+					dv->AddDataSet(new TimeSeries8760(y, m_grid_data->GetColLabelValue(col) + wxString::Format(" : run(%d)", row + 1), m_grid_data->GetUnits(col)), wxEmptyString, true);
+				}
+				m_graphs.push_back(dv);
+				m_layout->Add(dv);
+			}
 		}
 	}
 }
@@ -607,7 +625,7 @@ void ParametricViewer::RemovePlot()
 	if (ndx != wxNOT_FOUND)
 	{
 		m_plot_var_names.Remove(var_name);
-		std::vector<GraphCtrl*>::iterator it = m_graphs.begin() + ndx;
+		std::vector<wxWindow*>::iterator it = m_graphs.begin() + ndx;
 		m_layout->Delete(*it);
 		m_graphs.erase(it);
 	}

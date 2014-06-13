@@ -435,7 +435,7 @@ void GraphCtrl::Display(std::vector<Simulation *>sims, Graph &gi)
 			if (count > 0)
 			{
 				yvars.push_back(vv);
-				ynames.push_back(m_g.Y[0] + wxString::Format(" : run %d",i));
+				ynames.push_back(sims[i]->GetLabel(m_g.Y[0]) + wxString::Format(" : run %d", i+1));
 			}
 		}
 	}
@@ -469,11 +469,11 @@ void GraphCtrl::Display(std::vector<Simulation *>sims, Graph &gi)
 
 		wxPLPlottable *plot = 0;
 		if (m_g.Type == Graph::LINE)
-			plot = new wxPLLinePlot(plotdata[i], sims[i]->GetLabel(ynames[i]), s_colours[cidx],
+			plot = new wxPLLinePlot(plotdata[i], ynames[i], s_colours[cidx],
 			wxPLLinePlot::SOLID, m_g.Size + 2);
 		else if (m_g.Type == Graph::BAR || m_g.Type == Graph::STACKED)
 		{
-			wxPLBarPlot *bar = new wxPLBarPlot(plotdata[i], sims[i]->GetLabel(ynames[i]), s_colours[cidx]);
+			wxPLBarPlot *bar = new wxPLBarPlot(plotdata[i], ynames[i], s_colours[cidx]);
 			if (m_g.Size != 0)
 				bar->SetThickness(m_g.Size, false);
 
@@ -487,7 +487,7 @@ void GraphCtrl::Display(std::vector<Simulation *>sims, Graph &gi)
 		}
 		else if (m_g.Type == Graph::SCATTER)
 		{
-			plot = new wxPLScatterPlot(plotdata[i], sims[i]->GetLabel(ynames[i]), s_colours[cidx], m_g.Size + 2);
+			plot = new wxPLScatterPlot(plotdata[i], ynames[i], s_colours[cidx], m_g.Size + 2);
 			if (plotdata[i].size() < 100)
 				plot->SetAntiAliasing(true);
 		}
@@ -511,7 +511,7 @@ void GraphCtrl::Display(std::vector<Simulation *>sims, Graph &gi)
 		// single value axis
 		wxPLLabelAxis *x1 = new wxPLLabelAxis(-1, yvars.size(), m_g.XLabel);
 		for (size_t i = 0; i<ynames.size(); i++)
-			x1->Add(i, sims[i]->GetLabel(ynames[i]));
+			x1->Add(i, ynames[i]);
 		SetXAxis1(x1);
 	}
 	else if (ndata == 12)
