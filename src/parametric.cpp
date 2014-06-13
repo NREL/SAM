@@ -606,13 +606,10 @@ void ParametricViewer::RemovePlot()
 	int ndx = m_plot_var_names.Index(var_name);
 	if (ndx != wxNOT_FOUND)
 	{
-		ndx += m_fixed_sizer_count;
-//		if (ndx<m_par_sizer->GetItemCount())
-		{
-//			m_par_sizer->GetItem(ndx)->GetWindow()->Destroy();
-			m_plot_var_names.Remove(var_name);
-//			m_par_sizer->Layout();
-		}
+		m_plot_var_names.Remove(var_name);
+		std::vector<GraphCtrl*>::iterator it = m_graphs.begin() + ndx;
+		m_layout->Delete(*it);
+		m_graphs.erase(it);
 	}
 }
 
