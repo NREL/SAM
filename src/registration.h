@@ -15,11 +15,12 @@ public:
 	static wxString GetKey();
 	static wxString GetVersionAndPlatform();
 	static bool IncrementUsage();
+	static void DecrementUsage();
 	static bool CheckInWithServer( int *total_usage_count = 0 );
 	static int CountSinceLastVerify();
 	static bool CanStart();
 	static int AllowedStartsRemaining();
-	static void ShowDialog( const wxString &msg = wxEmptyString, const wxString &btn = wxEmptyString );
+	static bool ShowDialog( const wxString &msg = wxEmptyString, const wxString &btn = wxEmptyString ); // returns false on cancel
 
 private:
 

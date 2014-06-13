@@ -1374,6 +1374,19 @@ bool SamApp::OnInit()
 	SetAppName( "SAM" );
 	SetVendorName( "NREL" );
 
+	// register all the object types that can
+	// be read or written to streams.
+	ObjectTypes::Register( new StringHash );
+	ObjectTypes::Register( new Case );
+
+	// register all input page UI objects 
+	wxUIObjectTypeProvider::RegisterBuiltinTypes();
+	RegisterUIObjectsForSAM();
+
+	// register standard sam report objects for report generation
+extern void RegisterReportObjectTypes();
+	RegisterReportObjectTypes();
+
 
 	wxInitAllImageHandlers();
 	wxSimpleCurlInit();
@@ -1406,18 +1419,6 @@ bool SamApp::OnInit()
 	SamLogWindow::Setup();
 #endif
 
-	// register all the object types that can
-	// be read or written to streams.
-	ObjectTypes::Register( new StringHash );
-	ObjectTypes::Register( new Case );
-
-	// register all input page UI objects 
-	wxUIObjectTypeProvider::RegisterBuiltinTypes();
-	RegisterUIObjectsForSAM();
-
-	// register standard sam report objects for report generation
-extern void RegisterReportObjectTypes();
-	RegisterReportObjectTypes();
 	
 	g_config = new wxConfig( "SAMnt", "NREL" );
 	
@@ -1467,7 +1468,12 @@ extern void RegisterReportObjectTypes();
 				if ( nstarts == 1 )	text += "This is the last time you may run SAM without your registration being verified.\n\n";
 				else text += wxString::Format( "You may run SAM %d more times without your registration being verified.\n\n", nstarts );
 
-				SamRegistration::ShowDialog( text, wxString::Format("Skip for now (%d left)", nstarts) );
+				if ( !SamRegistration::ShowDialog( text, wxString::Format("Skip for now (%d left)", nstarts) ) )
+				{
+					// since app is not going to start, decrement usage count (it was incremented already for this start above)
+					SamRegistration::DecrementUsage();
+					return false;
+				}
 			}
 		}
 	}

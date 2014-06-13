@@ -23,7 +23,7 @@ BEGIN_EVENT_TABLE( SamRegistration, wxDialog )
 END_EVENT_TABLE()
 
 static const char *sam_api_key = 
-"rJzFOTOJhNHcLOnPmW2TNCLV8I4HHLgKddAycGpn" // production (sam.support@nrel.gov)
+  "rJzFOTOJhNHcLOnPmW2TNCLV8I4HHLgKddAycGpn" // production (sam.support@nrel.gov)
 //"yXv3dcb6f5piO0abUMrrTuQvLDFgWvnBz52TJmDJ" // staging (aron.dobos@nrel.gov)
 ;
 const char *override_list[] = {
@@ -1074,7 +1074,7 @@ int SamRegistration::CountSinceLastVerify()
 	return count;
 }
 
-void SamRegistration::ShowDialog( const wxString &msg, const wxString &btn )
+bool SamRegistration::ShowDialog( const wxString &msg, const wxString &btn )
 {
 	SamRegistration regdlg( 0 );
 	regdlg.CenterOnScreen();
@@ -1086,7 +1086,7 @@ void SamRegistration::ShowDialog( const wxString &msg, const wxString &btn )
 
 	if ( !btn.IsEmpty() ) regdlg.m_close->SetLabel( btn );
 	regdlg.Layout();
-	regdlg.ShowModal();
+	return regdlg.ShowModal() == wxID_OK;
 }
 
 bool SamRegistration::IncrementUsage()
@@ -1098,6 +1098,11 @@ bool SamRegistration::IncrementUsage()
 		SamApp::Settings().Write("count-since-last-verify-" + GetVersionAndPlatform(), count+1);
 
 	return CheckInWithServer();
+}
+
+void SamRegistration::DecrementUsage()
+{
+	SamApp::Settings().Write("count-since-last-verify-" + GetVersionAndPlatform(), CountSinceLastVerify()-1);
 }
 	
 bool SamRegistration::CheckInWithServer( int *usage_count )
@@ -1223,7 +1228,7 @@ SamRegistration::SamRegistration( wxWindow *parent )
 	sizer->Add( m_output, 1, wxALL|wxEXPAND, 0 );
 
 	
-	m_close = new wxMetroButton( this, wxID_CANCEL, "Close" );
+	m_close = new wxMetroButton( this, wxID_OK, "Close" );
 
 	wxSizer *tools = new wxBoxSizer( wxHORIZONTAL );
 	tools->Add( new wxMetroButton( this, wxID_HELP, "Help" ), 0 );
@@ -1316,7 +1321,7 @@ void SamRegistration::OnConfirm( wxCommandEvent & )
 		m_output->SetValue(wxString::Format("Registration successful!\n\nYou have used SAM %d times.", total_usage ));
 		wxYield();
 		wxMilliSleep(1100);
-		EndModal(1);
+		EndModal( wxID_OK );
 	}
 }
 
