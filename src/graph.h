@@ -66,8 +66,11 @@ class GraphCtrl : public wxPLPlotCtrl
 {
 public:
 	GraphCtrl( wxWindow *parent, int id );
+	
+	// multiple variables over a single simulation
 	void Display(Simulation *sim, Graph &g);
 
+	// one variable over multiple simulations
 	void Display(std::vector<Simulation *> sims, Graph &g);
 
 	void SetGraph( const Graph &g ) { m_g = g; }
