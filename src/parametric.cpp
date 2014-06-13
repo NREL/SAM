@@ -548,11 +548,29 @@ bool ParametricViewer::Plot(Graph &g)
 			g.Y.push_back(m_grid_data->GetVarName(col));
 			switch (vv->Type())
 			{
-			case VV_NUMBER:
-			{
-				g.Type = Graph::BAR;
-				ret_val = true;
-			}
+				case VV_NUMBER:
+				{
+					g.Type = Graph::BAR;
+					ret_val = true;
+				}
+				break;
+				// arrays - determine if monthly or hourly
+				case VV_ARRAY:
+				{
+					size_t n;
+					float *y = m_grid_data->GetArray(0, col, &n); // checked above for rows>0
+
+					if (n == 12) // asume monthly
+					{
+						g.Type = Graph::BAR;
+						ret_val = true;
+					}
+					else if (n == 8760)
+					{
+						g.Type = Graph::LINE;
+						ret_val = true;
+					}
+				}
 				break;
 			}
 		}
@@ -576,6 +594,7 @@ void ParametricViewer::AddPlot()
 			GraphCtrl *gc = new GraphCtrl(m_layout, wxID_ANY);
 			gc->Display(m_grid_data->GetRuns(), g);
 			m_graphs.push_back(gc);
+			m_layout->Add(gc);
 		}
 	}
 }
