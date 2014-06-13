@@ -382,7 +382,7 @@ void GraphCtrl::Display(std::vector<Simulation *>sims, Graph &gi)
 
 	DeleteAllPlots();
 
-	if (sims.size() <=0)
+	if ((sims.size() <= 0) || (m_g.Y.Count() > 1))
 	{
 		Refresh();
 		return;
@@ -415,37 +415,31 @@ void GraphCtrl::Display(std::vector<Simulation *>sims, Graph &gi)
 	SetLegendLocation((wxPLPlotCtrl::LegendPos)m_g.LegendPos);
 
 	// setup data
-	std::vector<std::vector<VarValue*>> yvars;
+	std::vector<VarValue*> yvars;
 	wxArrayString ynames;
 	int ndata = -1;
-	std::vector<VarValue*> yv;
 
-	for (size_t s = 0; s < sims.size(); s++)
+	for (size_t i = 0; i<sims.size(); i++)
 	{
-		yv.clear();
-		for (size_t i = 0; i < m_g.Y.size(); i++)
+		if (VarValue *vv = sims[i]->GetValue(m_g.Y[0]))
 		{
-			if (VarValue *vv = sims[i]->GetValue(m_g.Y[i]))
+			int count = 0;
+			if (vv->Type() == VV_NUMBER)
+				count = 1;
+			else if (vv->Type() == VV_ARRAY)
+				count = vv->Length();
+
+			if (i == 0) ndata = count;
+			else if (ndata != count) ndata = -1;
+
+			if (count > 0)
 			{
-				int count = 0;
-				if (vv->Type() == VV_NUMBER)
-					count = 1;
-				else if (vv->Type() == VV_ARRAY)
-					count = vv->Length();
-
-				if (i == 0) ndata = count;
-				else if (ndata != count) ndata = -1;
-
-				if (count > 0)
-				{
-					yv.push_back(vv);
-					ynames.push_back(m_g.Y[i]);
-				}
+				yvars.push_back(vv);
+				ynames.push_back(m_g.Y[0] + wxString::Format(" : run %d",i));
 			}
 		}
-		if (ndata < 0) break;
-		yvars.push_back(yv);
 	}
+
 	if (ndata < 0)
 	{
 		SetTitle("All variables must have the same number of data values.");
@@ -459,54 +453,52 @@ void GraphCtrl::Display(std::vector<Simulation *>sims, Graph &gi)
 	wxPLBarPlot *last_bar = 0;
 	std::vector<wxPLBarPlot*> bar_group;
 
-	for (size_t s = 0; s < sims.size(); s++)
+	for (size_t i = 0; i<yvars.size(); i++)
 	{
-		for (size_t i = 0; i < yvars[s].size(); i++)
+		if (yvars[i]->Type() == VV_ARRAY)
 		{
-			if (yvars[s][i]->Type() == VV_ARRAY)
-			{
-				size_t n = 0;
-				float *p = yvars[s][i]->Array(&n);
+			size_t n = 0;
+			float *p = yvars[i]->Array(&n);
 
-				plotdata[i].reserve(ndata);
-				for (size_t k = 0; k < n; k++)
-					plotdata[i].push_back(wxRealPoint(k, p[k]));
-			}
-			else
-				plotdata[i].push_back(wxRealPoint(i, yvars[s][i]->Value()));
-
-			wxPLPlottable *plot = 0;
-			if (m_g.Type == Graph::LINE)
-				plot = new wxPLLinePlot(plotdata[i], sims[s]->GetLabel(ynames[i]), s_colours[cidx],
-				wxPLLinePlot::SOLID, m_g.Size + 2);
-			else if (m_g.Type == Graph::BAR || m_g.Type == Graph::STACKED)
-			{
-				wxPLBarPlot *bar = new wxPLBarPlot(plotdata[i], sims[s]->GetLabel(ynames[i]), s_colours[cidx]);
-				if (m_g.Size != 0)
-					bar->SetThickness(m_g.Size, false);
-
-				if (m_g.Type == Graph::STACKED)
-					bar->SetStackedOn(last_bar);
-				else
-					bar_group.push_back(bar);
-
-				last_bar = bar;
-				plot = bar;
-			}
-			else if (m_g.Type == Graph::SCATTER)
-			{
-				plot = new wxPLScatterPlot(plotdata[i], sims[s]->GetLabel(ynames[i]), s_colours[cidx], m_g.Size + 2);
-				if (plotdata[i].size() < 100)
-					plot->SetAntiAliasing(true);
-			}
-
-
-			if (++cidx >= s_colours.size()) cidx = 0; // incr and wrap around colour index
-
-			if (plot != 0)
-				AddPlot(plot, wxPLPlotCtrl::X_BOTTOM, wxPLPlotCtrl::Y_LEFT, wxPLPlotCtrl::PLOT_TOP, false);
+			plotdata[i].reserve(ndata);
+			for (size_t k = 0; k<n; k++)
+				plotdata[i].push_back(wxRealPoint(k, p[k]));
 		}
+		else
+			plotdata[i].push_back(wxRealPoint(i, yvars[i]->Value()));
+
+		wxPLPlottable *plot = 0;
+		if (m_g.Type == Graph::LINE)
+			plot = new wxPLLinePlot(plotdata[i], sims[i]->GetLabel(ynames[i]), s_colours[cidx],
+			wxPLLinePlot::SOLID, m_g.Size + 2);
+		else if (m_g.Type == Graph::BAR || m_g.Type == Graph::STACKED)
+		{
+			wxPLBarPlot *bar = new wxPLBarPlot(plotdata[i], sims[i]->GetLabel(ynames[i]), s_colours[cidx]);
+			if (m_g.Size != 0)
+				bar->SetThickness(m_g.Size, false);
+
+			if (m_g.Type == Graph::STACKED)
+				bar->SetStackedOn(last_bar);
+			else
+				bar_group.push_back(bar);
+
+			last_bar = bar;
+			plot = bar;
+		}
+		else if (m_g.Type == Graph::SCATTER)
+		{
+			plot = new wxPLScatterPlot(plotdata[i], sims[i]->GetLabel(ynames[i]), s_colours[cidx], m_g.Size + 2);
+			if (plotdata[i].size() < 100)
+				plot->SetAntiAliasing(true);
+		}
+
+
+		if (++cidx >= s_colours.size()) cidx = 0; // incr and wrap around colour index
+
+		if (plot != 0)
+			AddPlot(plot, wxPLPlotCtrl::X_BOTTOM, wxPLPlotCtrl::Y_LEFT, wxPLPlotCtrl::PLOT_TOP, false);
 	}
+
 
 	// group the bars together if they're not stacked and not single values
 	if (ndata > 1 && m_g.Type == Graph::BAR)
@@ -518,11 +510,8 @@ void GraphCtrl::Display(std::vector<Simulation *>sims, Graph &gi)
 	{
 		// single value axis
 		wxPLLabelAxis *x1 = new wxPLLabelAxis(-1, yvars.size(), m_g.XLabel);
-		for (size_t s = 0; s < sims.size(); s++)
-		{
-			for (size_t i = 0; i < ynames.size(); i++)
-				x1->Add(i, sims[s]->GetLabel(ynames[i]));
-		}
+		for (size_t i = 0; i<ynames.size(); i++)
+			x1->Add(i, sims[i]->GetLabel(ynames[i]));
 		SetXAxis1(x1);
 	}
 	else if (ndata == 12)
