@@ -173,7 +173,8 @@ private:
 
 	GraphCtrl *m_current_graph;
 	wxSnapLayout *m_layout;
-	std::vector<GraphCtrl*> m_graphs;
+//	std::vector<GraphCtrl*> m_graphs;
+	std::vector<wxWindow*> m_graphs;
 
 	DECLARE_EVENT_TABLE();
 };
