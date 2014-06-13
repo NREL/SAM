@@ -690,19 +690,34 @@ public:
 void ResultsViewer::CreateAutoGraphs()
 {
 	ConfigInfo *cfg = (m_sim != 0 ? m_sim->GetCase()->GetConfiguration() : 0);
-	if ( !cfg )
+	if (!cfg)
 	{
 		wxMessageBox("no configuration could be determined");
 		return;
 	}
-	
+
 	m_autographs.clear();
 	ResultsCallbackContext cc(this, "Create autographs callback: " + cfg->Technology);
 
-	if (lk::node_t *cfcb = SamApp::GlobalCallbacks().Lookup("autographs", cfg->Technology))
+	if (lk::node_t *cfcb = SamApp::GlobalCallbacks().Lookup("autographs", cfg->Technology + "|" + cfg->Financing))
 	{
 		if (!cc.Invoke(cfcb, SamApp::GlobalCallbacks().GetEnv()))
-			wxLogStatus("error running create autographs to excel script.");
+			wxLogStatus("error running create autographs script.");
+	}
+
+	if ( m_autographs.size() == 0 )
+	{
+		if (lk::node_t *cfcb = SamApp::GlobalCallbacks().Lookup("autographs", cfg->Technology))
+		{
+			if (!cc.Invoke(cfcb, SamApp::GlobalCallbacks().GetEnv()))
+				wxLogStatus("error running create autographs script.");
+		}
+
+		if (lk::node_t *cfcb = SamApp::GlobalCallbacks().Lookup("autographs", cfg->Financing))
+		{
+			if (!cc.Invoke(cfcb, SamApp::GlobalCallbacks().GetEnv()))
+				wxLogStatus("error running create autographs script.");
+		}
 	}
 
 
