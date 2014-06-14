@@ -228,6 +228,7 @@ ParametricViewer::ParametricViewer(wxWindow *parent, Case *cc) : wxPanel(parent,
 	m_grid->RegisterDataType("GridCellCheckBox", new GridCellCheckBoxRenderer, new GridCellCheckBoxEditor);
 	m_grid->RegisterDataType("GridCellChoice", new GridCellChoiceRenderer, new GridCellChoiceEditor);
 	m_grid->RegisterDataType("GridCellVarValue", new GridCellVarValueRenderer, new GridCellVarValueEditor);
+	m_grid->RegisterDataType("GridCellArray", new GridCellArrayRenderer, new wxGridCellAutoWrapStringEditor);
 
 	m_grid_data = new ParametricGridData(m_case);
 	m_grid->SetTable(m_grid_data);
@@ -300,28 +301,6 @@ void ParametricViewer::SetGraphs(std::vector<Graph> &gl)
 	}
 }
 
-/*
-void ParametricViewer::GetGraphs(std::vector<Graph> &gl)
-{
-	gl.clear();
-	gl.reserve(m_graphs.size());
-	for (size_t i = 0; i<m_graphs.size(); i++)
-		gl.push_back(m_graphs[i]->GetGraph());
-}
-
-
-void ParametricViewer::Setup()
-{
-	for (std::vector<GraphCtrl*>::iterator it = m_graphs.begin();
-		it != m_graphs.end();
-		++it)
-	{
-		Graph g = (*it)->GetGraph();
-//		(*it)->Display(m_sim, g);
-	}
-
-}
-*/
 
 GraphCtrl *ParametricViewer::CurrentGraph()
 {
@@ -1001,7 +980,6 @@ void ParametricGridData::SetValue(int row, int col, const wxString& value)
 }
 
 
-
 wxString ParametricGridData::GetTypeName(int row, int col)
 {
 	if ((col > -1) && (col < m_cols))
@@ -1056,25 +1034,25 @@ wxString ParametricGridData::GetTypeName(int row, int col)
 				return "GridCellVarValue";
 			else if (vi->UIObject == VUIOBJ_NONE)
 				return wxGRID_VALUE_STRING;
-			else // TODO for outputs
-			{
-				/*
-				if (VarValue *vv = GetVarValue(row,col))
-				{
-					switch (vv->Type)
-					{
-					case VV_ARRAY:
-						return single column grid for read only editor 
-						return GridCellWrapTextRenderer to show long arrays?
-					}
-				}
-				else
-				*/
-					return wxGRID_VALUE_STRING;
-			}
+			else 
+				return wxGRID_VALUE_STRING;
 		}
 		else
-			return wxGRID_VALUE_STRING;
+		{
+			if (VarValue *vv = GetVarValue(row, col))
+			{
+				switch (vv->Type())
+				{
+				case VV_ARRAY:
+					return "GridCellArray";
+					break;
+				default:
+					return wxGRID_VALUE_STRING;
+				}
+			}
+			else
+				return wxGRID_VALUE_STRING;
+		}
 	}
 	else
 		return wxGRID_VALUE_STRING;

@@ -107,7 +107,6 @@ private:
 };
 
 
-
 class ParametricGrid : public wxExtGridCtrl
 {
 public:

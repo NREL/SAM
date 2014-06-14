@@ -447,6 +447,71 @@ wxGridCellEditor *GridCellVarValueEditor::Clone() const
 	return new GridCellVarValueEditor();
 }
 
+////////////////////////////////////////////////////////////////////////////////////////
+
+
+wxGridCellRenderer *GridCellArrayRenderer::Clone() const
+{
+	GridCellArrayRenderer *renderer = new GridCellArrayRenderer;
+	return renderer;
+}
+
+wxString GridCellArrayRenderer::GetString(const wxGrid& grid, int row, int col)
+{
+	//		wxGridTableBase *table = grid.GetTable();
+	if (GridChoiceData *vgd = (GridChoiceData *)grid.GetTable())
+	{
+		wxString text = wxEmptyString;
+		if (VarValue *vv = vgd->GetVarValue(row, col))
+		{
+			if (vv->Type() == VV_ARRAY)
+			{
+				size_t n;
+				float *v = vv->Array(&n);
+				if (n == 12)
+					text = "monthly...";
+				else if (n == 8760)
+					text = "hourly...";
+				else
+					text = wxString::Format("array of size %d", n);
+			}
+		}
+		return text;
+	}
+	else
+		return wxEmptyString;
+}
+
+void GridCellArrayRenderer::Draw(wxGrid& grid,
+	wxGridCellAttr& attr,
+	wxDC& dc,
+	const wxRect& rectCell,
+	int row, int col,
+	bool isSelected)
+{
+	wxGridCellRenderer::Draw(grid, attr, dc, rectCell, row, col, isSelected);
+
+	SetTextColoursAndFont(grid, attr, dc, isSelected);
+
+	// draw the text left aligned by default
+	int hAlign = wxALIGN_LEFT,
+		vAlign = wxALIGN_INVALID;
+	attr.GetNonDefaultAlignment(&hAlign, &vAlign);
+
+	wxRect rect = rectCell;
+	rect.Inflate(-1);
+
+	grid.DrawTextRectangle(dc, GetString(grid, row, col), rect, hAlign, vAlign);
+}
+
+wxSize GridCellArrayRenderer::GetBestSize(wxGrid& grid,
+	wxGridCellAttr& attr,
+	wxDC& dc,
+	int row, int col)
+{
+	return DoGetBestSize(attr, dc, GetString(grid, row, col));
+}
+
 
 
 ////////////////////////////////////////////////////////////////////////////////////////
@@ -471,7 +536,7 @@ wxString GridCellChoiceRenderer::GetString(const wxGrid& grid, int row, int col)
 	{
 		wxString text;
 		long choiceno;
-		SetParameters(vgd->GetChoices(row,col));
+		SetParameters(vgd->GetChoices(row, col));
 		//table->GetValue(row, col).ToLong(&choiceno);
 		vgd->GetValue(row, col).ToLong(&choiceno);
 		if ((choiceno > -1) && (choiceno < (int)m_choices.size()))
