@@ -103,8 +103,32 @@ private:
 	DECLARE_NO_COPY_CLASS(GridCellVarValueEditor)
 };
 
-
 // renders a text string using the corresponding VarValue in for wxUIObject Choice
+// based on wxGridCellStringRenderer
+class GridCellArrayRenderer : public wxGridCellStringRenderer
+{
+public:
+
+	virtual void Draw(wxGrid& grid,
+		wxGridCellAttr& attr,
+		wxDC& dc,
+		const wxRect& rect,
+		int row, int col,
+		bool isSelected);
+	virtual wxSize GetBestSize(wxGrid& grid,
+		wxGridCellAttr& attr,
+		wxDC& dc,
+		int row, int col);
+	virtual wxGridCellRenderer *Clone() const;
+
+protected:
+	wxString GetString(const wxGrid& grid, int row, int col);
+
+};
+
+
+
+// renders a text string using the corresponding VarInfo in GridTableBase for wxUIObject Choice
 // based on wxGridCellEnumRenderer
 class GridCellChoiceRenderer : public wxGridCellStringRenderer
 {
