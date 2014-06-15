@@ -163,7 +163,6 @@ private:
 	wxArrayString m_plot_var_names;
 
 	int m_selected_grid_col;
-	int m_fixed_sizer_count;
 
 	void UpdateGraph();
 	GraphCtrl* CurrentGraph();
@@ -172,7 +171,6 @@ private:
 
 	GraphCtrl *m_current_graph;
 	wxSnapLayout *m_layout;
-//	std::vector<GraphCtrl*> m_graphs;
 	std::vector<wxWindow*> m_graphs;
 
 	DECLARE_EVENT_TABLE();
