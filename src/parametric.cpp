@@ -228,7 +228,8 @@ ParametricViewer::ParametricViewer(wxWindow *parent, Case *cc) : wxPanel(parent,
 	m_grid->RegisterDataType("GridCellCheckBox", new GridCellCheckBoxRenderer, new GridCellCheckBoxEditor);
 	m_grid->RegisterDataType("GridCellChoice", new GridCellChoiceRenderer, new GridCellChoiceEditor);
 	m_grid->RegisterDataType("GridCellVarValue", new GridCellVarValueRenderer, new GridCellVarValueEditor);
-	m_grid->RegisterDataType("GridCellArray", new GridCellArrayRenderer, new wxGridCellAutoWrapStringEditor);
+	// TODO
+	m_grid->RegisterDataType("GridCellArray", new GridCellArrayRenderer, new GridCellVarValueEditor);
 
 	m_grid_data = new ParametricGridData(m_case);
 	m_grid->SetTable(m_grid_data);
@@ -240,9 +241,6 @@ ParametricViewer::ParametricViewer(wxWindow *parent, Case *cc) : wxPanel(parent,
 	par_sizer->Add(tool_sizer, 0, wxALL | wxEXPAND, 2);
 	par_sizer->Add(m_grid, 1, wxALL | wxEXPAND, 0);
 
-
-	// for adding and removing plots - keep grid and buttons
-	m_fixed_sizer_count = (int)par_sizer->GetItemCount();
 	UpdateGrid();
 
 	top_panel->SetSizer(par_sizer);
@@ -451,8 +449,6 @@ bool ParametricViewer::Plot()
 					par_plot->AddPlot(bar = new wxPLBarPlot(bar_data, m_grid_data->GetColLabelValue(col), wxMetroTheme::Colour(wxMT_ACCENT)));
 					par_plot->GetXAxis1()->SetWorld(0, max_x);
 					par_plot->GetYAxis1()->SetWorld(0, max_y);
-					//m_par_sizer->Add(par_plot, 1, wxALL | wxEXPAND, 0);
-					//m_par_sizer->Layout();
 					Update();
 					ret_val = true;
 					break;
@@ -488,8 +484,6 @@ bool ParametricViewer::Plot()
 								line_data.push_back(wxRealPoint(i, y[i]));
 							par_plot->AddPlot(line = new wxPLLinePlot(line_data, m_grid_data->GetColLabelValue(col) + wxString::Format(": run(%d)", row + 1), wxTheColourDatabase->Find(line_colors[row])));
 						}
-						//m_par_sizer->Add(par_plot, 1, wxALL | wxEXPAND, 0);
-						//m_par_sizer->Layout();
 						Update();
 					}
 					else if (n == 8760) // assume hourly
@@ -499,11 +493,8 @@ bool ParametricViewer::Plot()
 						{
 							size_t n;
 							float *y = m_grid_data->GetArray(row, col, &n);
-							//if (n == 8760)
 							dv->AddDataSet(new TimeSeries8760(y, m_grid_data->GetColLabelValue(col) + wxString::Format(" : run(%d)", row + 1), m_grid_data->GetUnits(col)), wxEmptyString, true);
 						}
-						//m_par_sizer->Add(dv, 1, wxALL | wxEXPAND, 0);
-						//m_par_sizer->Layout();
 						Update();
 					}
 					ret_val = true;
@@ -588,9 +579,13 @@ void ParametricViewer::AddPlot()
 					float *y = m_grid_data->GetArray(row, col, &n);
 					//if (n == 8760)
 					dv->AddDataSet(new TimeSeries8760(y, m_grid_data->GetColLabelValue(col) + wxString::Format(" : run(%d)", row + 1), m_grid_data->GetUnits(col)), wxEmptyString, true);
+					dv->SelectDataSetAtIndex(row);
 				}
 				m_graphs.push_back(dv);
-				m_layout->Add(dv);
+				// TODO - good way to size dview control
+				//m_layout->Add(dv, dv->GetBestSize().GetWidth(), dv->GetBestSize().GetHeight());
+				//m_layout->Add(dv, 1000, 300); // twice default width in wxSnapLayout
+				m_layout->Add(dv, 800, 300);
 			}
 		}
 	}
