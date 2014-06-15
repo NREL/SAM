@@ -229,7 +229,7 @@ ParametricViewer::ParametricViewer(wxWindow *parent, Case *cc) : wxPanel(parent,
 	m_grid->RegisterDataType("GridCellChoice", new GridCellChoiceRenderer, new GridCellChoiceEditor);
 	m_grid->RegisterDataType("GridCellVarValue", new GridCellVarValueRenderer, new GridCellVarValueEditor);
 	// TODO
-	m_grid->RegisterDataType("GridCellArray", new GridCellArrayRenderer, new GridCellVarValueEditor);
+	m_grid->RegisterDataType("GridCellArray", new GridCellArrayRenderer, new GridCellArrayEditor);
 
 	m_grid_data = new ParametricGridData(m_case);
 	m_grid->SetTable(m_grid_data);
@@ -710,8 +710,8 @@ void ParametricViewer::UpdateGrid()
 		{
 			if (m_grid_data->IsInput(col))
 				m_grid->SetReadOnly(row, col, false);
-			else
-				m_grid->SetReadOnly(row, col, true);
+			else 
+				m_grid->SetReadOnly(row, col, (m_grid_data->GetTypeName(row, col) != "GridCellArray"));
 		}
 	}
 }

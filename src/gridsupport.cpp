@@ -458,7 +458,6 @@ wxGridCellRenderer *GridCellArrayRenderer::Clone() const
 
 wxString GridCellArrayRenderer::GetString(const wxGrid& grid, int row, int col)
 {
-	//		wxGridTableBase *table = grid.GetTable();
 	if (GridChoiceData *vgd = (GridChoiceData *)grid.GetTable())
 	{
 		wxString text = wxEmptyString;
@@ -511,6 +510,263 @@ wxSize GridCellArrayRenderer::GetBestSize(wxGrid& grid,
 {
 	return DoGetBestSize(attr, dc, GetString(grid, row, col));
 }
+
+////////////////////////////////////////////////////////////////////////////////////////
+
+
+GridCellArrayEditor::GridCellArrayEditor()
+{
+}
+
+GridCellArrayEditor::~GridCellArrayEditor(void)
+{
+}
+
+void GridCellArrayEditor::Create(wxWindow *parent, wxWindowID id, wxEvtHandler* pEvtHandler)
+{
+	m_parent = parent;
+	m_text = new wxStaticText(parent, id, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxST_NO_AUTORESIZE | wxST_ELLIPSIZE_END);
+	SetControl(m_text);
+	wxGridCellEditor::Create(parent, id, pEvtHandler);
+}
+
+void GridCellArrayEditor::Reset()
+{
+	m_text->SetLabel(m_cell_value);
+}
+
+
+void GridCellArrayEditor::SetSize(const wxRect &rect_orig)
+{	// similar to wxGridCellTextEditor
+	wxRect rect(rect_orig);
+
+	// Make the edit control large enough to allow for internal margins
+	//
+	// TODO: remove this if the text ctrl sizing is improved esp. for unix
+	//
+#if defined(__WXGTK__)
+	if (rect.x != 0)
+	{
+		rect.x += 1;
+		rect.y += 1;
+		rect.width -= 1;
+		rect.height -= 1;
+	}
+#elif defined(__WXMSW__)
+	if (rect.x == 0)
+		rect.x += 2;
+	else
+		rect.x += 3;
+
+	if (rect.y == 0)
+		rect.y += 2;
+	else
+		rect.y += 3;
+
+	rect.width -= 2;
+	rect.height -= 2;
+#elif defined(__WXOSX__)
+	rect.x += 1;
+	rect.y += 1;
+
+	rect.width -= 1;
+	rect.height -= 1;
+#else
+	int extra_x = (rect.x > 2) ? 2 : 1;
+	int extra_y = (rect.y > 2) ? 2 : 1;
+
+#if defined(__WXMOTIF__)
+	extra_x *= 2;
+	extra_y *= 2;
+#endif
+
+	rect.SetLeft(wxMax(0, rect.x - extra_x));
+	rect.SetTop(wxMax(0, rect.y - extra_y));
+	rect.SetRight(rect.GetRight() + 2 * extra_x);
+	rect.SetBottom(rect.GetBottom() + 2 * extra_y);
+#endif
+
+	wxGridCellEditor::SetSize(rect);
+}
+
+void GridCellArrayEditor::PaintBackground(wxDC& WXUNUSED(dc),
+	const wxRect& WXUNUSED(rectCell),
+	const wxGridCellAttr& WXUNUSED(attr))
+{
+	// don't do anything here to minimize flicker
+}
+
+bool GridCellArrayEditor::IsAcceptedKey(wxKeyEvent& event)
+{
+	switch (event.GetKeyCode())
+	{
+	case WXK_DELETE:
+	case WXK_BACK:
+	case WXK_ESCAPE:
+		return true;
+
+	default:
+		return wxGridCellEditor::IsAcceptedKey(event);
+	}
+}
+
+
+bool GridCellArrayEditor::DisplayEditor( wxString &name, wxGrid *grid, VarValue *vv, VarInfo *vi)
+{
+	ArrayPopupDialog apd(grid, name, vv, vi);
+	// read only - no updating
+	apd.ShowModal();
+	return true;  // all ok!
+}
+
+void GridCellArrayEditor::BeginEdit(int row, int col, wxGrid *pGrid)
+{
+	/* event values are not preserved*/
+	m_cell_value = GetString(row, col, pGrid);
+	m_text->SetLabel(m_cell_value);
+
+	GridChoiceData *vgd = static_cast<GridChoiceData *>(pGrid->GetTable());
+	VarValue *vv = vgd->GetVarValue(row, col);
+	VarInfo *vi = vgd->GetVarInfo(row, col);
+	wxString var_name = vgd->GetValue(row, 0);
+	wxString var_label = vgd->GetValue(row, 1);
+
+	if (var_label.IsEmpty())
+		DisplayEditor( var_name, pGrid, vv, vi);
+	else
+		DisplayEditor( var_label, pGrid, vv, vi);
+
+	m_new_cell_value = m_cell_value;
+	m_text->SetLabel(m_new_cell_value);
+	pGrid->SaveEditControlValue();
+}
+
+wxString GridCellArrayEditor::GetString(int row, int col, const wxGrid *grid)
+{
+	if (GridChoiceData *vgd = (GridChoiceData *)grid->GetTable())
+	{
+		wxString text = wxEmptyString;
+		if (VarValue *vv = vgd->GetVarValue(row, col))
+		{
+			if (vv->Type() == VV_ARRAY)
+			{
+				size_t n;
+				float *v = vv->Array(&n);
+				if (n == 12)
+					text = "monthly...";
+				else if (n == 8760)
+					text = "hourly...";
+				else
+					text = wxString::Format("array of size %d", n);
+			}
+		}
+		return text;
+	}
+	else
+		return wxEmptyString;
+}
+
+
+
+bool GridCellArrayEditor::EndEdit(int row, int col, const wxGrid *grid, const wxString& WXUNUSED(oldval), wxString *newval)
+{
+	wxString new_cell_value = m_new_cell_value;
+	if (new_cell_value == m_cell_value)
+		return false; // no change
+
+	m_cell_value = new_cell_value;
+
+	if (newval)
+		*newval = m_cell_value;
+
+	m_text->SetLabel(m_cell_value);
+	return true;
+}
+
+void GridCellArrayEditor::ApplyEdit(int row, int col, wxGrid *grid)
+{
+// read only display
+//	grid->GetTable()->SetValue(row, col, m_cell_value);
+//	m_cell_value.clear();
+//	m_new_cell_value.clear();
+//	grid->Refresh();
+}
+
+
+wxString GridCellArrayEditor::GetValue() const
+{
+	return m_cell_value;
+}
+
+wxGridCellEditor *GridCellArrayEditor::Clone() const
+{
+	return new GridCellArrayEditor();
+}
+
+////////////////////////////////////////////////////////////////////////////////////////
+
+
+ArrayPopupDialog::ArrayPopupDialog(wxWindow *parent, wxString &name, VarValue *vv, VarInfo *vi)
+	: wxDialog(parent, wxID_ANY, "Array Viewer", wxDefaultPosition, wxDefaultSize), m_vv(vv), m_vi(vi)
+{
+	if (!m_vv)  return;
+
+	if (vv->Type() != VV_ARRAY) return;
+	
+	std::vector<float> vec = vv->Array();
+
+	int rows = vec.size();
+	int cols = 1;
+
+	wxExtGridCtrl *grid = new wxExtGridCtrl(this, wxID_ANY);
+	grid->CreateGrid(rows, cols);
+
+//	wxString label = vi->Label;
+
+//	grid->SetColLabelValue(0, label);
+
+	for (size_t i = 0; i < vec.size(); i++)
+		grid->SetCellValue(i, 0, wxString::Format("%lg", vec[i]));
+
+	grid->ForceRefresh();
+	
+	wxBoxSizer *sizer = new wxBoxSizer(wxVERTICAL);
+	sizer->Add(grid,
+		1,            // make vertically stretchable
+		wxEXPAND |    // make horizontally stretchable
+		wxALL,        //   and make border all around
+		0);         // set border width to 10
+
+	
+
+	wxBoxSizer *button_sizer = new wxBoxSizer(wxHORIZONTAL);
+	button_sizer->Add(
+		new wxButton(this, wxID_OK, "OK"),
+		0,           // make horizontally unstretchable
+		wxALL,       // make border all around (implicit top alignment)
+		0);        // set border width to 10
+
+	sizer->Add(
+		button_sizer,
+		wxSizerFlags(0).Right());
+
+
+	SetSizerAndFit(sizer); // use the sizer for layout and set size and hints
+	
+	SetTitle(name);
+#ifdef __WXMSW__
+	SetIcon(wxICON(appicon));
+#endif	
+	CenterOnParent();
+}
+
+ArrayPopupDialog::~ArrayPopupDialog()
+{
+}
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////
 
 
 
