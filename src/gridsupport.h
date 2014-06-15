@@ -103,7 +103,7 @@ private:
 	DECLARE_NO_COPY_CLASS(GridCellVarValueEditor)
 };
 
-// renders a text string using the corresponding VarValue in for wxUIObject Choice
+// renders a text string using arrays from the corresponding VarValue
 // based on wxGridCellStringRenderer
 class GridCellArrayRenderer : public wxGridCellStringRenderer
 {
@@ -126,6 +126,52 @@ protected:
 
 };
 
+class ArrayPopupDialog : public wxDialog
+{
+public:
+	ArrayPopupDialog(wxWindow *parent, wxString &name, VarValue *vv, VarInfo *vi);
+	~ArrayPopupDialog();
+
+private:
+	VarValue *m_vv;
+	VarInfo *m_vi;
+};
+
+
+
+class GridCellArrayEditor : public wxEvtHandler, public wxGridCellEditor
+{
+public:
+	GridCellArrayEditor();
+	virtual ~GridCellArrayEditor(void);
+
+	virtual void PaintBackground(wxDC& dc,
+		const wxRect& rectCell,
+		const wxGridCellAttr& attr);
+
+	virtual void Create(wxWindow *parent, wxWindowID id, wxEvtHandler* pEvtHandler);
+	virtual bool IsAcceptedKey(wxKeyEvent& event);
+	virtual void SetSize(const wxRect &rect_orig);
+	virtual void BeginEdit(int row, int col, wxGrid *pGrid);
+	virtual bool EndEdit(int row, int col, const wxGrid *grid, const wxString &oldval, wxString *newval);
+	virtual void ApplyEdit(int row, int col, wxGrid *grid);
+	virtual void Reset();
+	virtual wxString GetValue() const;
+	virtual wxGridCellEditor *Clone() const;
+
+private:
+	wxString m_cell_value;
+	wxString m_new_cell_value;
+	wxStaticText *m_text;
+	VarInfo *m_var_info;
+	VarValue *m_var_value;
+	wxWindow *m_parent;
+	VariablePopupDialog *m_vpe;
+	bool DisplayEditor(wxString &name, wxGrid *grid, VarValue *vv, VarInfo *vi);
+	wxString GetString(int row, int col, const wxGrid *grid);
+
+	DECLARE_NO_COPY_CLASS(GridCellArrayEditor)
+};
 
 
 // renders a text string using the corresponding VarInfo in GridTableBase for wxUIObject Choice
