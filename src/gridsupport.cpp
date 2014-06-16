@@ -5,6 +5,7 @@
 #include <wx/bitmap.h>
 #include <wx/msgdlg.h>
 #include <wx/tokenzr.h>
+#include <wx/stattext.h>
 
 #include <wex/metro.h>
 
@@ -611,9 +612,10 @@ bool GridCellArrayEditor::IsAcceptedKey(wxKeyEvent& event)
 }
 
 
-bool GridCellArrayEditor::DisplayEditor( wxString &name, wxGrid *grid, VarValue *vv, VarInfo *vi)
+bool GridCellArrayEditor::DisplayEditor(wxString &title, wxString &label, wxGrid *grid, VarValue *vv)
 {
-	ArrayPopupDialog apd(grid, name, vv, vi);
+	wxSize sz = grid->GetParent()->GetSize();
+	ArrayPopupDialog apd(grid, title, label, vv, sz);
 	// read only - no updating
 	apd.ShowModal();
 	return true;  // all ok!
@@ -627,14 +629,10 @@ void GridCellArrayEditor::BeginEdit(int row, int col, wxGrid *pGrid)
 
 	GridChoiceData *vgd = static_cast<GridChoiceData *>(pGrid->GetTable());
 	VarValue *vv = vgd->GetVarValue(row, col);
-	VarInfo *vi = vgd->GetVarInfo(row, col);
-	wxString var_name = vgd->GetValue(row, 0);
-	wxString var_label = vgd->GetValue(row, 1);
+	wxString title = vgd->GetColLabelValue(col) + wxString::Format(" for run %d", row);
+	wxString label = vgd->GetColLabelValue(col);
 
-	if (var_label.IsEmpty())
-		DisplayEditor( var_name, pGrid, vv, vi);
-	else
-		DisplayEditor( var_label, pGrid, vv, vi);
+	DisplayEditor( title, label, pGrid, vv);
 
 	m_new_cell_value = m_cell_value;
 	m_text->SetLabel(m_new_cell_value);
@@ -651,7 +649,8 @@ wxString GridCellArrayEditor::GetString(int row, int col, const wxGrid *grid)
 			if (vv->Type() == VV_ARRAY)
 			{
 				size_t n;
-				float *v = vv->Array(&n);
+//				float *v = vv->Array(&n);
+				vv->Array(&n);
 				if (n == 12)
 					text = "monthly...";
 				else if (n == 8760)
@@ -706,8 +705,7 @@ wxGridCellEditor *GridCellArrayEditor::Clone() const
 ////////////////////////////////////////////////////////////////////////////////////////
 
 
-ArrayPopupDialog::ArrayPopupDialog(wxWindow *parent, wxString &name, VarValue *vv, VarInfo *vi)
-	: wxDialog(parent, wxID_ANY, "Array Viewer", wxDefaultPosition, wxDefaultSize), m_vv(vv), m_vi(vi)
+ArrayPopupDialog::ArrayPopupDialog( wxWindow *parent, wxString &title, wxString &label, VarValue *vv, const wxSize &sz)	: wxDialog(parent, wxID_ANY, "Array Viewer", wxDefaultPosition, sz), m_vv(vv)
 {
 	if (!m_vv)  return;
 
@@ -716,23 +714,65 @@ ArrayPopupDialog::ArrayPopupDialog(wxWindow *parent, wxString &name, VarValue *v
 	std::vector<float> vec = vv->Array();
 
 	int rows = vec.size();
-	int cols = 1;
+	int cols = 2;
 
 	wxExtGridCtrl *grid = new wxExtGridCtrl(this, wxID_ANY);
 	grid->CreateGrid(rows, cols);
 
-//	wxString label = vi->Label;
+	grid->HideRowLabels();
+	/* Does nothing
+	wxGridCellAttr *at = new wxGridCellAttr;
+	at->SetAlignment(wxALIGN_BOTTOM, wxALIGN_RIGHT);
+	grid->SetColAttr(0, at);
+	*/
+	int vec_size = vec.size();
+	wxString index_label = "Index";
+	if (vec_size == 12)
+		index_label = "Month";
+	else if (vec_size == 8760)
+		index_label = "Hour";
 
-//	grid->SetColLabelValue(0, label);
+	grid->SetColLabelValue(0, index_label);
 
-	for (size_t i = 0; i < vec.size(); i++)
-		grid->SetCellValue(i, 0, wxString::Format("%lg", vec[i]));
+	grid->SetColLabelValue(1, label);
 
+
+	for (size_t i = 0; i < vec_size; i++)
+	{
+		grid->SetCellAlignment(wxALIGN_RIGHT, i, 0);
+		grid->SetCellAlignment(wxALIGN_RIGHT, i, 1);
+		if (vec_size != 12) grid->SetCellValue(i, 0, wxString::Format("%d", i));
+		grid->SetCellValue(i, 1, wxString::Format("%lg", vec[i]));
+	}
+
+
+	if (vec_size == 12)
+	{
+		grid->SetCellValue(0, 0, "Jan");
+		grid->SetCellValue(1, 0, "Feb");
+		grid->SetCellValue(2, 0, "Mar");
+		grid->SetCellValue(3, 0, "Apr");
+		grid->SetCellValue(4, 0, "May");
+		grid->SetCellValue(5, 0, "Jun");
+		grid->SetCellValue(6, 0, "Jul");
+		grid->SetCellValue(7, 0, "Aug");
+		grid->SetCellValue(8, 0, "Sep");
+		grid->SetCellValue(9, 0, "Oct");
+		grid->SetCellValue(10, 0, "Nov");
+		grid->SetCellValue(11, 0, "Dec");
+	}
+
+
+	grid->AutoSizeColLabelSize(0);
+	grid->AutoSizeColLabelSize(1);
 	grid->ForceRefresh();
 	
 	wxBoxSizer *sizer = new wxBoxSizer(wxVERTICAL);
+
+	sizer->Add(new wxStaticText(this, wxID_ANY, "        " + title), 0, wxEXPAND | wxALL, 0);
+
 	sizer->Add(grid,
-		1,            // make vertically stretchable
+		0,            // make vertically stretchable
 		wxEXPAND |    // make horizontally stretchable
 		wxALL,        //   and make border all around
 		0);         // set border width to 10
@@ -751,13 +791,14 @@ ArrayPopupDialog::ArrayPopupDialog(wxWindow *parent, wxString &name, VarValue *v
 		wxSizerFlags(0).Right());
 
 
-	SetSizerAndFit(sizer); // use the sizer for layout and set size and hints
 	
-	SetTitle(name);
+	SetTitle(title);
 #ifdef __WXMSW__
 	SetIcon(wxICON(appicon));
 #endif	
 	CenterOnParent();
+
+	SetSizerAndFit(sizer); // use the sizer for layout and set size and hints
 }
 
 ArrayPopupDialog::~ArrayPopupDialog()
