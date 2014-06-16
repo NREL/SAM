@@ -1,98 +1,65 @@
-
-//Technology Graphs/////////////////////////////////////////////////////////////////////
-
-autographs{ 'PVWatts'} = define() 
+//**************Basic Graphs for all technologies***************************
+function base_technology_graphs()
 {
-	agraph( 'dc_monthly,ac_monthly', 'Energy', '', 'kWh' );
-	//agraph( 'lat,lon', 'Location', '', 'deg' );
+	agraph( 'monthly_energy', 'Monthly Energy Production', '', 'kWh' );
+}
+
+//**************Two categories of graphs for financials- simple or advanced***************************
+function simple_financial_graphs()
+{
+	agraph( 'cf_energy_net', 'Annual Energy Production- System Lifetime', '', 'kWh' );
+	agraph( 'cf_after_tax_cash_flow', 'After Tax Cash Flow- System Lifetime', '', '$' );
+}
+
+function advanced_financial_graphs()
+{
+	agraph( 'cf_energy_net', 'Annual Energy Production- System Lifetime', '', 'kWh' );
+	agraph( 'cf_tax_investor_aftertax_cash', 'Tax Investor After Tax Cash Flow- System Lifetime', '', '$' );
+}
+
+//**************Technologies***************************
+autographs{ 'High-X Concentrating PV' } = define() { base_technology_graphs(); };
+autographs{ 'Concentrating Solar Power = Physical Trough' } = define() { base_technology_graphs(); };
+autographs{ 'Dish Stirling' } = define() { base_technology_graphs(); };
+autographs{ 'Generic CSP System' } = define() { base_technology_graphs(); };
+autographs{ 'Solar Water Heating' } = define() { base_technology_graphs(); };
+autographs{ 'Generic System' } = define() { base_technology_graphs(); };
+autographs{ 'Wind Power' } = define() { base_technology_graphs(); };
+
+//**************Technologies with unique graphs***************************
+autographs{ 'PVWatts'} = define() 
+{	
+	agraph( 'dc_monthly,ac_monthly', 'Monthly Energy Production', '', 'kWh' ); 
 };
 
 autographs{ 'Flat Plate PV' } = define()
-{
-	agraph( 'monthly_dc_net,monthly_ac_net,monthly_energy', 'Energy', '', 'kWh' );
-};
-
-autographs{ 'High-X Concentrating PV' } = define()
-{
-	agraph( 'monthly_energy', 'Energy', '', 'kWh' );
-};
-
-autographs{ 'Concentrating Solar Power = Physical Trough' } = define()
-{
-	agraph( 'monthly_energy', 'Energy', '', 'kWh' );
+{	
+	agraph( 'monthly_dc_net,monthly_ac_net,monthly_energy', 'Monthly Energy Production', '', 'kWh' ); 
 };
 
 autographs{ 'Empirical Trough' } = define() 
-{ 
+{	
 	//agraph( 'monthly_energy', 'Energy', '', 'kWh' );
 	return;
 };
 
-autographs{ 'Dish Stirling' } = define() 
-{ 
-	agraph( 'monthly_energy', 'Energy', '', 'kWh' );
-};
-
-autographs{ 'Generic CSP System' } = define() 
-{ 
-	agraph( 'monthly_energy', 'Energy', '', 'kWh' );
-};
-
-autographs{ 'Wind Power' } = define() 
-{ 
-	agraph( 'monthly_energy', 'Energy', '', 'kWh' );
-};
-
 autographs{ 'Geothermal Power' } = define() 
 { 
-	agraph( 'monthly_energy', 'Energy', '', 'kWh' );	//add monthly_resource_temperature on separate x scale? also add monthly_power on separate scale?
+	base_technology_graphs();		//add monthly_resource_temperature on separate x scale? also add monthly_power on separate scale?
 };
 
-autographs{ 'Generic System' } = define() 
-{ 
-	agraph( 'monthly_energy', 'Energy', '', 'kWh' );
-};
+//**************Financials***************************
+autographs{ 'Residential' } = define() { simple_financial_graphs(); };
+autographs{ 'Commercial' } = define() { simple_financial_graphs(); };
+autographs{ 'Commercial PPA' } = define() { simple_financial_graphs(); };
+autographs{ 'Independent Power Producer' } = define() { simple_financial_graphs(); };
+autographs{ 'All Equity Partnership Flip' } = define() { advanced_financial_graphs(); };
+autographs{ 'Leveraged Partnership Flip' } = define() { advanced_financial_graphs(); };
+autographs{ 'Sale Leaseback' } = define() { advanced_financial_graphs(); };
 
-//Financial Graphs/////////////////////////////////////////////////////////////////////
-
-autographs{ 'Residential' } = define() 
-{ 
-	//rescom_autographs(); 
-	return;
-};
-
-autographs{ 'Commercial' } = define() 
-{ 
-	//rescom_autographs();
-	return; 
-};
-
-autographs{ 'Commercial PPA' } = define() 
-{ 
-	agraph( 'cf_energy_net', 'Energy', '', 'kWh' );
-};
-
-autographs{ 'Independent Power Producer' } = define() 
-{ 
-	agraph( 'cf_energy_net', 'Energy', '', 'kWh' );
-};
-
-autographs{ 'Single Owner' } = define() 
-{ 
-	agraph( 'cf_energy_net', 'Energy', '', 'kWh' );
-};
-
-autographs{ 'All Equity Partnership Flip' } = define() 
-{ 
-	agraph( 'cf_energy_net', 'Energy', '', 'kWh' );
-};
-
-autographs{ 'Leveraged Partnership Flip' } = define() 
-{ 
-	agraph( 'cf_energy_net', 'Energy', '', 'kWh' );
-};
-
-autographs{ 'Sale Leaseback' } = define() 
-{ 
-	agraph( 'cf_energy_net', 'Energy', '', 'kWh' );
+//**************Financials with unique graphs***************************
+autographs{ 'Single Owner'} = define() 
+{	
+	agraph( 'cf_energy_net', 'Annual Energy Production- System Lifetime', '', 'kWh' );
+	agraph( 'cf_project_return_aftertax_cash', 'After Tax Cash Flow- System Lifetime', '', '$' );
 };
