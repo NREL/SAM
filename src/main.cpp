@@ -1691,11 +1691,14 @@ public:
 				"The System Advisor Model (\"Model\") is provided by the National Renewable Energy Laboratory (\"NREL\"), which is operated by the Alliance for Sustainable Energy, LLC (\"Alliance\") for the U.S. Department Of Energy (\"DOE\") and may be used for any purpose whatsoever.<br><br>"
 				"The names DOE/NREL/ALLIANCE shall not be used in any representation, advertising, publicity or other manner whatsoever to endorse or promote any entity that adopts or uses the Model.  DOE/NREL/ALLIANCE shall not provide any support, consulting, training or assistance of any kind with regard to the use of the Model or any updates, revisions or new versions of the Model.<br><br>"
 				"YOU AGREE TO INDEMNIFY DOE/NREL/ALLIANCE, AND ITS AFFILIATES, OFFICERS, AGENTS, AND EMPLOYEES AGAINST ANY CLAIM OR DEMAND, INCLUDING REASONABLE ATTORNEYS' FEES, RELATED TO YOUR USE, RELIANCE, OR ADOPTION OF THE MODEL FOR ANY PURPOSE WHATSOEVER.  THE MODEL IS PROVIDED BY DOE/NREL/ALLIANCE \"AS IS\" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE EXPRESSLY DISCLAIMED.  IN NO EVENT SHALL DOE/NREL/ALLIANCE BE LIABLE FOR ANY SPECIAL, INDIRECT OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER, INCLUDING BUT NOT LIMITED TO CLAIMS ASSOCIATED WITH THE LOSS OF DATA OR PROFITS, WHICH MAY RESULT FROM ANY ACTION IN CONTRACT, NEGLIGENCE OR OTHER TORTIOUS CLAIM THAT ARISES OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THE MODEL.<br><br>";
-
+		
+		int nbit = (sizeof(void*) == 8) ? 64 : 32;
 		m_aboutHtml = "<html><body bgcolor=#ffffff>"
-				"<font color=#a9a9a9 face=\"Segoe UI Light\" size=10>System Advisor Model<br>Version " + SamApp::VersionStr() + "</font><br><br>"
-				"<font color=#999999 face=\"Segoe UI Light\" size=3>" 
-				+ wxString::Format("SSC Version %d: %s", ssc_version(), ssc_build_info() ) + "<br><br><br>"
+			"<font color=#a9a9a9 face=\"Segoe UI Light\" size=10>System Advisor Model</font><br>"
+				"<font color=#a9a9a9 face=\"Segoe UI Light\" size=5>Version " + SamApp::VersionStr() + wxString::Format(", %d bit</font><br><br>", nbit )
+				+ "<font color=#999999 face=\"Segoe UI Light\" size=3>" 
+				+ wxString::Format("SSC Version %d:  %s", ssc_version(), ssc_build_info() ) + "<br>"
+				+ wxString::Format("wxWidgets %d.%d.%d", wxMAJOR_VERSION, wxMINOR_VERSION, wxRELEASE_NUMBER )  + " on " + wxGetOsDescription() + "<br><br><br>"				
 				+ wxString(s_samDisclaimerHtml) + "</font>"
 				"</body></html>";
 	}

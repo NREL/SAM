@@ -1171,7 +1171,8 @@ wxString SamRegistration::GetVersionAndPlatform()
 #else
 	wxString platform("osx");
 #endif
-	platform += wxIsPlatform64Bit() ? "64" : "32";
+	bool is64 = (sizeof(void*) == 8);
+	platform += is64 ? "64" : "32";
 	return SamApp::VersionStr() + "-" + platform;
 }
 
