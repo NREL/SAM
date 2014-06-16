@@ -129,12 +129,11 @@ protected:
 class ArrayPopupDialog : public wxDialog
 {
 public:
-	ArrayPopupDialog(wxWindow *parent, wxString &name, VarValue *vv, VarInfo *vi);
+	ArrayPopupDialog(wxWindow *parent, wxString &title, wxString &label, VarValue *vv, const wxSize &sz);
 	~ArrayPopupDialog();
 
 private:
 	VarValue *m_vv;
-	VarInfo *m_vi;
 };
 
 
@@ -167,7 +166,7 @@ private:
 	VarValue *m_var_value;
 	wxWindow *m_parent;
 	VariablePopupDialog *m_vpe;
-	bool DisplayEditor(wxString &name, wxGrid *grid, VarValue *vv, VarInfo *vi);
+	bool DisplayEditor(wxString &title, wxString &label, wxGrid *grid, VarValue *vv);
 	wxString GetString(int row, int col, const wxGrid *grid);
 
 	DECLARE_NO_COPY_CLASS(GridCellArrayEditor)
