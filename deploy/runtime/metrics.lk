@@ -195,6 +195,14 @@ function empirical_trough_metrics()
 	//metric( 'conversion_factor', {'label'='Gross to Net Conversion Factor', 'mode'='f', 'deci'='1', 'thousep'='true', 'post'=' %' } );
 }
 
+function solar_water_metrics()
+{
+	metric( 'annual_energy', {'label'='Annual Energy Saved', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh' } );
+	metric( 'annual_Q_aux', {'label'='Aux With Solar', 'mode'='f', 'deci'='1', 'thousep'='true', 'post'=' kWh' } );
+	metric( 'annual_Q_auxonly', {'label'='Aux Without Solar', 'mode'='f', 'deci'='1', 'thousep'='true', 'post'=' kWh' } );
+	metric( 'solar_fraction', {'label'='Annual Solar Fraction', 'mode'='f', 'deci'='3', 'thousep'='false' } );
+}
+
 // Technology Metrics
 metrics{ 'Flat Plate PV' } = define() { pv_metrics(); };
 metrics{ 'PVWatts' } = define() {	pv_metrics(); };
@@ -203,6 +211,7 @@ metrics{ 'Concentrating Solar Power - Physical Trough' } = define() { csp_physic
 metrics{ 'Empirical Trough' } = define() { empirical_trough_metrics(); };
 metrics{ 'Dish Stirling' } = define() { dish_stirling_metrics(); };
 metrics{ 'Generic CSP System' } = define() { generic_csp_metrics(); };
+metrics{ 'Solar Water Heating' } = define() { solar_water_metrics(); };
 metrics{ 'Wind Power' } = define() { wind_power_metrics(); };
 metrics{ 'Geothermal Power' } = define() { geothermal_metrics(); };
 metrics{ 'Generic System' } = define() { generic_system_metrics(); };
