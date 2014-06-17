@@ -46,6 +46,7 @@ class ParametricGridData : public GridChoiceData
 {
 public:
 	ParametricGridData(Case *cc);
+	~ParametricGridData();
 	virtual int GetNumberRows();
 	virtual int GetNumberCols();
 	virtual bool IsEmptyCell(int row, int col);
@@ -60,6 +61,9 @@ public:
 	virtual bool AppendCols(size_t ncols=1);
 	virtual bool InsertCols(size_t pos=0, size_t ncols=1);
 	virtual bool DeleteCols(size_t pos=0, size_t ncols=1);
+
+	// set cell background based on input and output status
+	virtual wxGridCellAttr *GetAttr(int row, int col, wxGridCellAttr::wxAttrKind kind);
 
 	// for choice controls
 	wxString GetChoices(int row, int col);
@@ -104,6 +108,13 @@ private:
 	wxArrayString m_input_names;
 	wxArrayString m_output_names;
 	wxArrayString m_var_names;
+
+	wxGridCellAttr *m_attr_for_inputs;
+	wxGridCellAttr *m_attr_for_valid_outputs;
+	wxGridCellAttr *m_attr_for_invalid_outputs;
+	wxColour m_color_for_inputs;
+	wxColour m_color_for_valid_outputs;
+	wxColour m_color_for_invalid_outputs;
 };
 
 
