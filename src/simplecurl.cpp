@@ -295,7 +295,16 @@ void wxSimpleCurlShutdown()
 
 
 
+// Google APIs:
+// login to developer api console at: https://code.google.com/apis/console
+// user name: aron.dobos@nrel.gov
+// passwd: 1Ho************r
 static wxString GOOGLE_API_KEY("AIzaSyCyH4nHkZ7FhBK5xYg4db3K7WN-vhpDxas");
+
+// Bing Map APIs:
+// login to account center at: https://www.bingmapsportal.com/
+// user name: aron.dobos@nrel.gov
+// passwd: 1Ho************r
 static wxString BING_API_KEY("Av0Op8DvYGR2w07w_771JLum7-fdry0kBtu3ZA4uu_9jBJOUZgPY7mdbWhVjiORY");
 
 
