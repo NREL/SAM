@@ -3,8 +3,7 @@
 
 #include <vector>
 
-#include <wx/window.h>
-#include <wx/button.h>
+#include <wx/panel.h>
 
 #include "object.h"
 
@@ -19,11 +18,15 @@
 	adjust:periods
 */
 
+class wxButton;
+class wxTextCtrl;
+class wxStaticText;
+
 class VarValue;
 
 #define EVT_HOURLYFACTORS(i,f) EVT_BUTTON(i,f)
 
-class AFHourlyFactorCtrl : public wxButton
+class AFHourlyFactorCtrl : public wxPanel
 {
 public:
 	AFHourlyFactorCtrl( wxWindow *parent, int id,
@@ -43,10 +46,16 @@ public:
 		matrix_t<float> periods; // stored as n x 3 matrix: columns: [start hour] [length hour] [factor]
 	};
 
-	void OnPressed(wxCommandEvent &);
+	bool DoEdit();
 
 private:
+	void OnPressed(wxCommandEvent &);
+	void UpdateText();
+	
+	wxButton *m_button;
+	wxStaticText *m_label;
 	FactorData m_data;
+
 	DECLARE_EVENT_TABLE();
 };
 

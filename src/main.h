@@ -309,7 +309,7 @@ private:
 
 	wxString m_t, m_f;
 
-	void OnHelp( wxCommandEvent &evt );
+	void OnHelp( wxCommandEvent & );
 
 	wxCheckBox *m_pChkUseDefaults;
 	DECLARE_EVENT_TABLE();
