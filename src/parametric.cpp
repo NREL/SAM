@@ -702,9 +702,9 @@ void ParametricViewer::SelectOutputs()
 void ParametricViewer::UpdateGrid()
 {
 	// update grid data with m_par updates from configure and number of runs
-	m_grid->SetTable(m_grid_data);
-	m_grid->ForceRefresh();
-	/* setting with attr in table base
+	//m_grid->SetTable(m_grid_data);
+	//m_grid->ForceRefresh();
+	// setting with attr in table base
 	for (int col = 0; col < m_grid_data->GetNumberCols(); col++)
 	{
 		for (int row = 0; row < m_grid_data->GetNumberRows(); row++)
@@ -715,7 +715,8 @@ void ParametricViewer::UpdateGrid()
 				m_grid->SetReadOnly(row, col, (m_grid_data->GetTypeName(row, col) != "GridCellArray"));
 		}
 	}
-	*/
+	m_grid->AutoSizeColumns();
+	
 }
 
 
@@ -731,10 +732,10 @@ ParametricGridData::ParametricGridData(Case *cc) :m_case(cc), m_par(cc->Parametr
 	m_attr_for_inputs->SetBackgroundColour(m_color_for_inputs);
 	m_attr_for_valid_outputs = new wxGridCellAttr;
 	m_attr_for_valid_outputs->SetBackgroundColour(m_color_for_valid_outputs);
-	m_attr_for_valid_outputs->SetReadOnly(true);
+//	m_attr_for_valid_outputs->SetReadOnly(true);
 	m_attr_for_invalid_outputs = new wxGridCellAttr;
 	m_attr_for_invalid_outputs->SetBackgroundColour(m_color_for_invalid_outputs);
-	m_attr_for_invalid_outputs->SetReadOnly(true);
+//	m_attr_for_invalid_outputs->SetReadOnly(true);
 
 	m_rows = 0;
 	m_cols = 0;
@@ -1524,6 +1525,7 @@ wxGridCellAttr *ParametricGridData::GetAttr(int row, int col, wxGridCellAttr::wx
 					attr = attrNew;
 					attr->SetBackgroundColour(m_color_for_valid_outputs);
 				}
+				/*
 				if (!attr->IsReadOnly())
 				{
 					wxGridCellAttr *attrNew = attr->Clone();
@@ -1531,6 +1533,7 @@ wxGridCellAttr *ParametricGridData::GetAttr(int row, int col, wxGridCellAttr::wx
 					attr = attrNew;
 					attr->SetReadOnly(true);
 				}
+				*/
 			}
 		}
 	}
