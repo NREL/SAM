@@ -282,6 +282,7 @@ DECLARE_APP( SamApp );
 
 
 class wxCheckBox;
+class wxMetroButton;
 class wxMetroListBox;
 
 class ConfigDialog : public wxDialog
@@ -300,6 +301,8 @@ private:
 	bool ValidateSelections();
 	void OnTechTree(wxCommandEvent &evt);
 	void OnDoubleClick(wxCommandEvent &evt);
+
+	void UpdateFinTree();
 
 	wxMetroListBox *m_pTech;
 	wxMetroListBox *m_pFin;
