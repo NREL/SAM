@@ -614,8 +614,7 @@ bool GridCellArrayEditor::IsAcceptedKey(wxKeyEvent& event)
 
 bool GridCellArrayEditor::DisplayEditor(wxString &title, wxString &label, wxGrid *grid, VarValue *vv)
 {
-	wxSize sz = grid->GetParent()->GetSize();
-	ArrayPopupDialog apd(grid, title, label, vv, sz);
+	ArrayPopupDialog apd(grid, title, label, vv);
 	// read only - no updating
 	apd.ShowModal();
 	return true;  // all ok!
@@ -685,10 +684,6 @@ bool GridCellArrayEditor::EndEdit(int row, int col, const wxGrid *grid, const wx
 void GridCellArrayEditor::ApplyEdit(int row, int col, wxGrid *grid)
 {
 // read only display
-//	grid->GetTable()->SetValue(row, col, m_cell_value);
-//	m_cell_value.clear();
-//	m_new_cell_value.clear();
-//	grid->Refresh();
 }
 
 
@@ -705,7 +700,7 @@ wxGridCellEditor *GridCellArrayEditor::Clone() const
 ////////////////////////////////////////////////////////////////////////////////////////
 
 
-ArrayPopupDialog::ArrayPopupDialog( wxWindow *parent, wxString &title, wxString &label, VarValue *vv, const wxSize &sz)	: wxDialog(parent, wxID_ANY, "Array Viewer", wxDefaultPosition, sz), m_vv(vv)
+ArrayPopupDialog::ArrayPopupDialog(wxWindow *parent, wxString &title, wxString &label, VarValue *vv ) : wxDialog(parent, wxID_ANY, "Array Viewer", wxDefaultPosition, wxDefaultSize, wxRESIZE_BORDER | wxDEFAULT_DIALOG_STYLE), m_vv(vv)
 {
 	if (!m_vv)  return;
 
@@ -720,11 +715,6 @@ ArrayPopupDialog::ArrayPopupDialog( wxWindow *parent, wxString &title, wxString 
 	grid->CreateGrid(rows, cols);
 
 	grid->HideRowLabels();
-	/* Does nothing
-	wxGridCellAttr *at = new wxGridCellAttr;
-	at->SetAlignment(wxALIGN_BOTTOM, wxALIGN_RIGHT);
-	grid->SetColAttr(0, at);
-	*/
 	int vec_size = vec.size();
 	wxString index_label = "Index";
 	if (vec_size == 12)
@@ -741,6 +731,8 @@ ArrayPopupDialog::ArrayPopupDialog( wxWindow *parent, wxString &title, wxString 
 	{
 		grid->SetCellAlignment(wxALIGN_RIGHT, i, 0);
 		grid->SetCellAlignment(wxALIGN_RIGHT, i, 1);
+		grid->SetReadOnly(i, 0);
+		grid->SetReadOnly(i, 1);
 		if (vec_size != 12) grid->SetCellValue(i, 0, wxString::Format("%d", i));
 		grid->SetCellValue(i, 1, wxString::Format("%lg", vec[i]));
 	}
@@ -763,13 +755,25 @@ ArrayPopupDialog::ArrayPopupDialog( wxWindow *parent, wxString &title, wxString 
 	}
 
 
-	grid->AutoSizeColLabelSize(0);
-	grid->AutoSizeColLabelSize(1);
-	grid->ForceRefresh();
+	//grid->AutoSizeColLabelSize(0);
+	//grid->AutoSizeColLabelSize(1);
+	//grid->ForceRefresh();
 	
 	wxBoxSizer *sizer = new wxBoxSizer(wxVERTICAL);
 
-	sizer->Add(new wxStaticText(this, wxID_ANY, "        " + title), 0, wxEXPAND | wxALL, 0);
+	// TODO want text extent of title bar title
+	wxSize sz = GetTextExtent(title);
+	wxString spacer = " ";
+	spacer.Pad(sz.GetWidth(), ' ', false);
+
+	sz = GetTextExtent(spacer);
+	int width = sz.GetWidth() - 20 ; // subtract scrollbar width
+
+	grid->SetColumnWidth(0, (int)(width / 2.0));
+	grid->SetColumnWidth(1, width - (int)(width / 2.0));
+
+
+	sizer->Add(new wxStaticText(this, wxID_ANY, spacer), 0, wxEXPAND | wxALL, 0);
 
 	sizer->Add(grid,
 		0,            // make vertically stretchable
@@ -797,7 +801,6 @@ ArrayPopupDialog::ArrayPopupDialog( wxWindow *parent, wxString &title, wxString 
 	SetIcon(wxICON(appicon));
 #endif	
 	CenterOnParent();
-
 	SetSizerAndFit(sizer); // use the sizer for layout and set size and hints
 }
 
