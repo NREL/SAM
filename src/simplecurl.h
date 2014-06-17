@@ -61,7 +61,10 @@ public:
 	wxSimpleCurlDownloadThread( wxEvtHandler *handler = 0, int id = wxID_ANY );
 	virtual ~wxSimpleCurlDownloadThread();
 
-	void Start( const wxString &url, const wxString &post = wxEmptyString );
+	void Start( const wxString &url, 
+		bool synchronous=false, 
+		const wxString &post_data = wxEmptyString );
+
 	wxString GetDataAsString();
 	wxImage GetDataAsImage( int bittype = wxBITMAP_TYPE_JPEG );
 	bool WriteDataToFile( const wxString &file );
@@ -86,6 +89,14 @@ protected:
 void wxSimpleCurlSetupProxy( const wxString &proxy );
 void wxSimpleCurlInit();
 void wxSimpleCurlShutdown();
+
+// geocoding function using google APIs.
+// call is synchronous.  Optionally determine time 
+// zone from lat/lon using second service call
+bool wxSimpleGeoCode( const wxString &address, double *lat, double *lon, double *tz = 0);
+
+enum MapProvider { GOOGLE_MAPS, BING_MAPS };
+wxBitmap wxSimpleStaticMap( double lat, double lon, int zoom, MapProvider service = BING_MAPS );
 
 #endif
 

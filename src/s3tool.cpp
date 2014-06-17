@@ -55,9 +55,6 @@
 #include "s3view.h"
 #include "simplecurl.h"
 
-static wxString GOOGLE_API_KEY("AIzaSyCyH4nHkZ7FhBK5xYg4db3K7WN-vhpDxas");
-static wxString BING_API_KEY("Av0Op8DvYGR2w07w_771JLum7-fdry0kBtu3ZA4uu_9jBJOUZgPY7mdbWhVjiORY");
-
 enum { ID_ADDRESS = wxID_HIGHEST+239, ID_CURL, ID_LOOKUP_ADDRESS, ID_LATITUDE, ID_LONGITUDE, ID_TIMEZONE,
 	ID_GET_MAP, ID_GO_UP, ID_GO_DOWN, ID_GO_LEFT, ID_GO_RIGHT, ID_ZOOM_IN, ID_ZOOM_OUT, ID_UNDERLAY_MAP,
 	ID_REMOVE_UNDERLAY,	ID_LOAD_MAP_IMAGE, ID_PASTE_MAP_IMAGE, ID_MANUAL_SCALE };
@@ -155,76 +152,6 @@ void LocationSetup::OnCurl( wxSimpleCurlEvent &evt )
 	// could do a progress thing...?
 }
 
-void LocationSetup::DoCurl( const wxString &url )
-{
-	wxBusyCursor curs;
-	m_curl.Start( url );
-	while( 1 )
-	{
-		if ( m_curl.IsStarted() && !m_curl.Finished() )
-		{
-			wxMilliSleep( 50 );
-			//wxYield();
-		}
-		else break;
-	}
-}
-
-
-bool LocationSetup::GeoCode( const wxString &address, double *lat, double *lon, double *tz)
-{
-	wxBusyCursor _curs;
-	bool latlonok = false;
-
-	wxString plusaddr = address;
-	plusaddr.Replace("   ", " ");
-	plusaddr.Replace("  ", " ");
-	plusaddr.Replace(" ", "+");
-	
-	wxString query = "https://maps.googleapis.com/maps/api/geocode/json?address=" + plusaddr + "&sensor=false&key=" + GOOGLE_API_KEY;
-	DoCurl( query );
-
-	wxJSONReader reader;
-	wxJSONValue root;
-	if (reader.Parse( m_curl.GetDataAsString(), &root )==0)
-	{
-		wxJSONValue loc = root.Item("results").Item(0).Item("geometry").Item("location");
-		if (!loc.IsValid()) return false;
-		*lat = loc.Item("lat").AsDouble();
-		*lon = loc.Item("lng").AsDouble();
-		
-		if ( root.Item("status").AsString() != "OK" )
-		{
-			wxMessageBox("Status error from geocoding web service");
-			return false;
-		}
-	}
-	else
-	{
-		wxMessageBox("Error parsing json output of geocoder");
-		return false;
-	}
-
-	// get timezone from another service
-	query = wxString::Format("https://maps.googleapis.com/maps/api/timezone/json?location=%.14lf,%.14lf&timestamp=1&sensor=false&key=",
-		*lat, *lon) + GOOGLE_API_KEY;
-	DoCurl( query );
-	if (reader.Parse( m_curl.GetDataAsString(), &root )==0)
-	{
-		wxJSONValue val = root.Item("rawOffset");
-		if ( val.IsDouble() ) *tz = val.AsDouble() / 3600.0;
-		else *tz = val.AsInt() / 3600.0;
-
-		return root.Item("status").AsString() == "OK";
-	}
-	else
-	{
-		wxMessageBox("Error parsing timezone output of service api");
-		return false;
-	}
-
-}
-
 void LocationSetup::OnAddressChange( wxCommandEvent &e )
 {
 	m_lat->SetValue( std::numeric_limits<double>::quiet_NaN() );
@@ -234,7 +161,7 @@ void LocationSetup::OnAddressChange( wxCommandEvent &e )
 	wxYield();
 
 	double lat, lon, tz;
-	if ( !GeoCode( m_address->GetValue(), &lat, &lon, &tz ) )
+	if ( !wxSimpleGeoCode( m_address->GetValue(), &lat, &lon, &tz ) )
 	{
 		wxMessageBox("failed to geocode address");
 		return;
@@ -254,24 +181,8 @@ void LocationSetup::OnGetMap( wxCommandEvent & )
 
 void LocationSetup::DownloadMap(  )
 {
-	double lat = m_lat->Value();
-	double lon = m_lon->Value();
-	if ( m_zoomLevel > 21 ) m_zoomLevel = 21;
-	if ( m_zoomLevel < 1 ) m_zoomLevel = 1;
-	wxString zoomStr = wxString::Format("%d", m_zoomLevel );
-		
-	/*
-	wxString url = "https://maps.googleapis.com/maps/api/staticmap?center=" 
-		+ wxString::Format("%.9lf,%.9lf", lat, lon) + "&zoom=" + zoomStr 
-		+ "&size=800x800&maptype=hybrid&sensor=false&format=jpg-baseline&key=" + GOOGLE_API_KEY;
-	*/
-
-	wxString url = "http://dev.virtualearth.net/REST/v1/Imagery/Map/Aerial/"
-		+ wxString::Format("%.15lf,%.15lf/%d", lat, lon, m_zoomLevel)
-		+ "?mapSize=800,800&format=jpeg&key=" + BING_API_KEY;
-		
-	DoCurl( url );		
-	m_bitmap = wxBitmap( m_curl.GetDataAsImage(wxBITMAP_TYPE_JPEG) );
+	wxBusyInfo info("Obtaining aerial imagery...");
+	m_bitmap = wxSimpleStaticMap( m_lat->Value(), m_lon->Value(), m_zoomLevel, BING_MAPS );
 	if (!m_bitmap.IsOk())
 	{
 		wxMessageBox("Invalid image data file");
@@ -282,7 +193,7 @@ void LocationSetup::DownloadMap(  )
 	
 	// Map resolution = 156543.04 meters/pixel * cos(latitude) / (2 ^ zoomlevel)
 	// http://msdn.microsoft.com/en-us/library/aa940990.aspx
-	m_mpp = 156543.04 * cos(lat*3.15926/180) / pow(2,m_zoomLevel);
+	m_mpp = 156543.04 * cos(m_lat->Value()*3.15926/180) / pow(2,m_zoomLevel);
 	
 	UpdateMap();
 }

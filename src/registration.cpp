@@ -1128,17 +1128,8 @@ bool SamRegistration::CheckInWithServer( int *usage_count )
 	wxLogStatus( url );
 	wxLogStatus( post );
 
-	curl.Start( url, post );
-	while( 1 )
-	{
-		if ( curl.IsStarted() && !curl.Finished() )
-		{
-			wxMilliSleep( 50 );
-			//wxYield();
-		}
-		else break;
-	}
-
+	curl.Start( url, true, post );
+	
 	if ( usage_count ) *usage_count = -999;
 	
 	wxJSONValue root;
@@ -1276,16 +1267,7 @@ void SamRegistration::OnRegister( wxCommandEvent & )
 		
 	wxLogStatus( url );
 	wxLogStatus( post );
-	curl.Start( url, post );
-	while( 1 )
-	{
-		if ( curl.IsStarted() && !curl.Finished() )
-		{
-			wxMilliSleep( 50 );
-			//wxYield();
-		}
-		else break;
-	}
+	curl.Start( url, true, post );
 		
 	int code = -1;
 	wxJSONValue root;
