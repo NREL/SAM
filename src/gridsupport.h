@@ -129,7 +129,7 @@ protected:
 class ArrayPopupDialog : public wxDialog
 {
 public:
-	ArrayPopupDialog(wxWindow *parent, wxString &title, wxString &label, VarValue *vv, const wxSize &sz);
+	ArrayPopupDialog(wxWindow *parent, wxString &title, wxString &label, VarValue *vv);
 	~ArrayPopupDialog();
 
 private:
