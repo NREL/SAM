@@ -1937,6 +1937,7 @@ END_EVENT_TABLE()
 ConfigDialog::ConfigDialog( wxWindow *parent, const wxSize &size )
 	: wxDialog( parent, wxID_ANY, wxEmptyString, wxDefaultPosition, size, wxBORDER_NONE )
 {
+	SetBackgroundColour( wxMetroTheme::Colour( wxMT_FOREGROUND ) );
 	CenterOnParent();
 	SetEscapeId(wxID_CANCEL);
 	
@@ -1949,19 +1950,20 @@ ConfigDialog::ConfigDialog( wxWindow *parent, const wxSize &size )
 
 	wxStaticText *label = new wxStaticText( this, wxID_ANY,
 		"Project configuration: select a technology and then a financing option." );
-	wxFont font = label->GetFont();
-	font.SetWeight( wxFONTWEIGHT_BOLD );
-	font.SetPointSize( font.GetPointSize() + 1 );
+	wxFont font( wxMetroTheme::Font( wxMT_NORMAL, 12  ) );
 	label->SetFont( font );
+	label->SetForegroundColour( *wxWHITE );
 
-	m_pChkUseDefaults = new wxCheckBox(this, wxID_ANY, "Reset new inputs to Tech/Market-specific default values" );	
+	m_pChkUseDefaults = new wxCheckBox(this, wxID_ANY, "Reset new inputs to tech/market-specific default values" );	
 	m_pChkUseDefaults->SetValue(true);
 
 	wxBoxSizer *hbox = new wxBoxSizer (wxHORIZONTAL );
-	hbox->Add( new wxButton(this, wxID_HELP, "Help..." ), 0, wxALL|wxEXPAND, 4 );
+	hbox->Add( new wxMetroButton(this, wxID_HELP, "Help" ), 0, wxALL|wxEXPAND, 0 );
 	hbox->Add( m_pChkUseDefaults, 0, wxALL|wxEXPAND|wxALIGN_CENTER_VERTICAL, 4 );
+	m_pChkUseDefaults->SetForegroundColour( *wxWHITE );
 	hbox->AddStretchSpacer();
-	hbox->Add( CreateButtonSizer( wxOK|wxCANCEL ), 0, wxALL, 4 );
+	hbox->Add( new wxMetroButton(this, wxID_OK, "   OK   "), 0, wxALL, 0 );
+	hbox->Add( new wxMetroButton(this, wxID_CANCEL, "Cancel"), 0, wxALL, 0 );
 	
 	wxBoxSizer *vbox = new wxBoxSizer( wxVERTICAL );
 	vbox->Add( label, 0, wxALL|wxEXPAND|wxALIGN_CENTER_VERTICAL, 8 );
@@ -1984,8 +1986,12 @@ bool ConfigDialog::ResetToDefaults()
 void ConfigDialog::SetConfiguration(const wxString &t, const wxString &f)
 {
 	m_t = t;
-	m_pTech->SetSelection( m_pTech->Find( t ) );
+	int sel = m_pTech->Find( t );
+	m_pTech->SetSelection( sel );
 	m_pTech->Invalidate();
+
+	if ( sel >= 0 )
+		UpdateFinTree();
 	
 	m_f = f;
 	m_pFin->SetSelection( m_pFin->Find( f ) );
@@ -2020,7 +2026,7 @@ void ConfigDialog::PopulateTech()
 	m_pTech->Invalidate();
 }
 
-void ConfigDialog::OnTechTree( wxCommandEvent &evt )
+void ConfigDialog::UpdateFinTree()
 {
 	m_pFin->Clear();
 	wxArrayString list = SamApp::Config().GetFinancingForTech( m_pTech->GetValue() );
@@ -2028,6 +2034,11 @@ void ConfigDialog::OnTechTree( wxCommandEvent &evt )
 		m_pFin->Add( list[i] );
 
 	m_pFin->Invalidate();
+}
+
+void ConfigDialog::OnTechTree( wxCommandEvent &evt )
+{
+	UpdateFinTree();
 }
 
 
@@ -2045,7 +2056,7 @@ wxFrame *CreateTransparentOverlay( wxWindow *parent )
 	wxFrame *trans = new wxFrame( parent, wxID_ANY, wxEmptyString,  pos, size, 
 		wxBORDER_NONE | wxFRAME_FLOAT_ON_PARENT | wxFRAME_NO_TASKBAR );
 	trans->SetBackgroundColour( *wxLIGHT_GREY );
-	trans->SetTransparent( 200 );
+	trans->SetTransparent( 230 );
 	trans->Show();
 
 	return trans;
