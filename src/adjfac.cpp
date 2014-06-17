@@ -352,13 +352,38 @@ END_EVENT_TABLE()
 
 AFHourlyFactorCtrl::AFHourlyFactorCtrl( wxWindow *parent, int id,
 	const wxPoint &pos, const wxSize &size)
-	: wxButton( parent, id, "Edit", pos, size )
+	: wxPanel( parent, id, pos, size )
 {
+	m_button = new wxButton( this, wxID_ANY, "Edit", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT );
+	m_label = new wxStaticText( this, wxID_ANY, wxEmptyString );
+	m_label->SetForegroundColour( wxColour(29,80,173) );
+
+	wxBoxSizer *sizer = new wxBoxSizer( wxHORIZONTAL );
+	sizer->Add( m_button, 0, wxALL|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL, 0 );
+	sizer->Add( m_label, 1, wxALL|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL, 4 );
+	
+	SetSizer( sizer );
+
 	m_data.factor = 1.0f;
 	m_data.en_hourly = false;
 	m_data.hourly.resize( 8760, 1.0f );
 	m_data.en_periods = false;
 	m_data.periods.resize_fill( 1, 3, 1.0f );
+	UpdateText();
+}
+
+void AFHourlyFactorCtrl::UpdateText()
+{
+	wxString txt( wxString::Format( "Annual factor %.2f", m_data.factor ) );
+	
+	float avg = 0;
+	for( size_t i=0;i<m_data.hourly.size();i++ ) avg += m_data.hourly[i];
+	if ( m_data.hourly.size() > 0 ) avg /= m_data.hourly.size();
+	else avg = 0;
+
+	txt += wxString("\n") + (m_data.en_hourly ? wxString::Format( "Hourly factors enabled, avg %.2f", avg ) : "No hourly factors.");
+	txt += wxString("\n") + (m_data.en_periods ? wxString::Format("%d custom periods.", (int)m_data.periods.nrows()) : "No custom period factors.");
+	m_label->SetLabel( txt );
 }
 
 void AFHourlyFactorCtrl::Write( VarValue *vv )
@@ -383,24 +408,35 @@ bool AFHourlyFactorCtrl::Read( VarValue *root )
 		if ( VarValue *vv = tab.Get("hourly") ) m_data.hourly = vv->Array();
 		if ( VarValue *vv = tab.Get("en_periods") ) m_data.en_periods = vv->Boolean();
 		if ( VarValue *vv = tab.Get("periods") ) m_data.periods = vv->Matrix();
+		UpdateText();
 		return true;
 	}
 	else
 		return false;
 }
 
-void AFHourlyFactorCtrl::OnPressed( wxCommandEvent &evt )
+bool AFHourlyFactorCtrl::DoEdit()
 {
 	HourlyFactorDialog dlg( this );
 	dlg.Set( m_data );
 	if ( dlg.ShowModal() == wxID_OK )
 	{
 		dlg.Get( m_data );
-		evt.Skip(); // allow event to propagate indicating underlying value changed
+		UpdateText();
+		return true;
 	}
+
+	return false;
 }
 
-BEGIN_EVENT_TABLE( AFHourlyFactorCtrl, wxButton )
+void AFHourlyFactorCtrl::OnPressed( wxCommandEvent &evt )
+{
+	if ( evt.GetEventObject() == m_button )
+		if ( DoEdit() )
+			evt.Skip();  // allow event to propagate indicating underlying value changed
+}
+
+BEGIN_EVENT_TABLE( AFHourlyFactorCtrl, wxPanel )
 	EVT_BUTTON( wxID_ANY, AFHourlyFactorCtrl::OnPressed )
 END_EVENT_TABLE()
 

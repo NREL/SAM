@@ -1931,7 +1931,9 @@ enum { ID_TechTree = wxID_HIGHEST+98, ID_FinTree };
 
 BEGIN_EVENT_TABLE(ConfigDialog, wxDialog)
 	EVT_LISTBOX( ID_TechTree, ConfigDialog::OnTechTree)
+	EVT_LISTBOX_DCLICK( ID_FinTree, ConfigDialog::OnDoubleClick )
 	EVT_BUTTON( wxID_HELP, ConfigDialog::OnHelp )
+	EVT_MENU( wxID_HELP, ConfigDialog::OnHelp )
 END_EVENT_TABLE()
 
 ConfigDialog::ConfigDialog( wxWindow *parent, const wxSize &size )
@@ -1939,7 +1941,6 @@ ConfigDialog::ConfigDialog( wxWindow *parent, const wxSize &size )
 {
 	SetBackgroundColour( wxMetroTheme::Colour( wxMT_FOREGROUND ) );
 	CenterOnParent();
-	SetEscapeId(wxID_CANCEL);
 	
 	m_pTech = new wxMetroListBox( this, ID_TechTree );
 	m_pFin = new wxMetroListBox( this, ID_FinTree );
@@ -1962,6 +1963,7 @@ ConfigDialog::ConfigDialog( wxWindow *parent, const wxSize &size )
 	hbox->Add( m_pChkUseDefaults, 0, wxALL|wxEXPAND|wxALIGN_CENTER_VERTICAL, 4 );
 	m_pChkUseDefaults->SetForegroundColour( *wxWHITE );
 	hbox->AddStretchSpacer();
+	//hbox->Add( CreateButtonSizer( wxOK|wxCANCEL ) );
 	hbox->Add( new wxMetroButton(this, wxID_OK, "   OK   "), 0, wxALL, 0 );
 	hbox->Add( new wxMetroButton(this, wxID_CANCEL, "Cancel"), 0, wxALL, 0 );
 	
@@ -1970,10 +1972,13 @@ ConfigDialog::ConfigDialog( wxWindow *parent, const wxSize &size )
 	vbox->Add( choice_sizer, 1, wxALL|wxEXPAND, 0 );
 	vbox->Add( hbox, 0, wxALL|wxEXPAND, 0 );	
 	SetSizer( vbox );
+
 	
-	wxAcceleratorEntry entries[1];
-	entries[0].Set( ::wxACCEL_NORMAL, WXK_F1, wxID_HELP );
-	SetAcceleratorTable( wxAcceleratorTable(1,entries) );
+	std::vector<wxAcceleratorEntry> entries;
+	entries.push_back( wxAcceleratorEntry( ::wxACCEL_NORMAL, WXK_F1, wxID_HELP ) );
+	entries.push_back( wxAcceleratorEntry( ::wxACCEL_NORMAL, WXK_ESCAPE, wxID_CANCEL ) );
+	SetAcceleratorTable( wxAcceleratorTable( entries.size(), &entries[0] ) );
+	
 
 	PopulateTech();
 

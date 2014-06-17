@@ -523,6 +523,8 @@ class wxUIHourlyFactorCtrl : public wxUIObject
 public:
 	wxUIHourlyFactorCtrl() {
 		AddProperty("TabOrder", new wxUIProperty( (int)-1 ) );
+		Property("Width").Set(270);
+		Property("Height").Set(70);
 	}
 	virtual wxString GetTypeName() { return "HourlyFactor"; }
 	virtual wxUIObject *Duplicate() { wxUIObject *o = new wxUIHourlyFactorCtrl; o->Copy( this ); return o; }
@@ -533,13 +535,22 @@ public:
 	}
 	virtual void Draw( wxWindow *win, wxDC &dc, const wxRect &geom )
 	{
-		wxRendererNative::Get().DrawPushButton( win, dc, geom );
+		dc.SetPen( *wxWHITE_PEN );
+		dc.SetBrush( *wxWHITE_BRUSH );
+		dc.DrawRectangle( geom );
+		wxSize button( 40,21 );
+		wxRendererNative::Get().DrawPushButton( win, dc, wxRect( geom.x, geom.y+geom.height/2-button.y/2, button.x, button.y ) );
 		dc.SetFont( *wxNORMAL_FONT );
 		dc.SetTextForeground( *wxBLACK );
 		wxString label("Edit...");
 		int x, y;
 		dc.GetTextExtent( label, &x, &y );
-		dc.DrawText( label, geom.x + geom.width/2-x/2, geom.y+geom.height/2-y/2 );
+		int yc = geom.y+geom.height/2;
+		dc.DrawText( label, geom.x + button.x/2-x/2, yc-y/2 );
+		dc.SetTextForeground( wxColour(29,80,173) );
+		dc.DrawText( "Annual factor XXXX", geom.x+button.x+4, yc-y/2-dc.GetCharHeight()-2 );
+		dc.DrawText( "No hourly factors enabled.", geom.x+button.x+4, yc-y/2 );
+		dc.DrawText( "No custom period factors enabled.", geom.x+button.x+4, yc+y/2+2 );
 	}
 };
 
