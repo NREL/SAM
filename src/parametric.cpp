@@ -704,6 +704,7 @@ void ParametricViewer::UpdateGrid()
 	// update grid data with m_par updates from configure and number of runs
 	m_grid->SetTable(m_grid_data);
 	m_grid->ForceRefresh();
+	/* setting with attr in table base
 	for (int col = 0; col < m_grid_data->GetNumberCols(); col++)
 	{
 		for (int row = 0; row < m_grid_data->GetNumberRows(); row++)
@@ -714,6 +715,7 @@ void ParametricViewer::UpdateGrid()
 				m_grid->SetReadOnly(row, col, (m_grid_data->GetTypeName(row, col) != "GridCellArray"));
 		}
 	}
+	*/
 }
 
 
@@ -722,9 +724,28 @@ void ParametricViewer::UpdateGrid()
 // m_par contains list of inputs and outputs
 ParametricGridData::ParametricGridData(Case *cc) :m_case(cc), m_par(cc->Parametric())
 {
+	m_color_for_inputs = wxColour("LIGHT BLUE");
+	m_color_for_valid_outputs = wxColour("PALE GREEN");
+	m_color_for_invalid_outputs = wxColour("VIOLET RED");
+	m_attr_for_inputs = new wxGridCellAttr;
+	m_attr_for_inputs->SetBackgroundColour(m_color_for_inputs);
+	m_attr_for_valid_outputs = new wxGridCellAttr;
+	m_attr_for_valid_outputs->SetBackgroundColour(m_color_for_valid_outputs);
+	m_attr_for_valid_outputs->SetReadOnly(true);
+	m_attr_for_invalid_outputs = new wxGridCellAttr;
+	m_attr_for_invalid_outputs->SetBackgroundColour(m_color_for_invalid_outputs);
+	m_attr_for_invalid_outputs->SetReadOnly(true);
+
 	m_rows = 0;
 	m_cols = 0;
 	Init();
+}
+
+ParametricGridData::~ParametricGridData()
+{
+	m_attr_for_inputs->DecRef();
+	m_attr_for_valid_outputs->DecRef();
+	m_attr_for_invalid_outputs->DecRef();
 }
 
 void ParametricGridData::Init()
@@ -1460,3 +1481,59 @@ void ParametricGridData::ClearResults(int row)
 		}
 	}
 }
+
+wxGridCellAttr *ParametricGridData::GetAttr(int row, int col, wxGridCellAttr::wxAttrKind kind)
+{
+
+	wxGridCellAttr *attr = NULL;
+	if (GetAttrProvider())
+	{
+		attr = GetAttrProvider()->GetAttr(row, col, kind);
+
+		if (IsInput(col))
+		{
+			if (!attr)
+			{
+				attr = m_attr_for_inputs;
+				attr->IncRef();
+			}
+			else
+			{
+				if (!attr->HasBackgroundColour())
+				{
+					wxGridCellAttr *attrNew = attr->Clone();
+					attr->DecRef();
+					attr = attrNew;
+					attr->SetBackgroundColour(m_color_for_inputs);
+				}
+			}
+		}
+		else // output 
+		{ // TODO - check to see if current outputs are valid (simulation is run)
+			if (!attr)
+			{
+				attr = m_attr_for_valid_outputs;
+				attr->IncRef();
+			}
+			else
+			{
+				if (!attr->HasBackgroundColour())
+				{
+					wxGridCellAttr *attrNew = attr->Clone();
+					attr->DecRef();
+					attr = attrNew;
+					attr->SetBackgroundColour(m_color_for_valid_outputs);
+				}
+				if (!attr->IsReadOnly())
+				{
+					wxGridCellAttr *attrNew = attr->Clone();
+					attr->DecRef();
+					attr = attrNew;
+					attr->SetReadOnly(true);
+				}
+			}
+		}
+	}
+	return attr;
+}
+
