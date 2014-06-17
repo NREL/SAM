@@ -1,12 +1,16 @@
 
-#include <curl/curl.h>
+#include <wx/wx.h>
 #include <wx/ffile.h>
 #include <wx/wfstream.h>
 #include <wx/mstream.h>
 #include <wx/buffer.h>
 
+#include <curl/curl.h>
+
+#include <wex/jsonreader.h>
+
 #include "simplecurl.h"
-#include <wx/wx.h>
+
 
 static wxString gs_curlProxyAddress;
 
@@ -181,7 +185,7 @@ wxSimpleCurlDownloadThread::~wxSimpleCurlDownloadThread()
 	if ( m_thread ) delete m_thread;
 }
 
-void wxSimpleCurlDownloadThread::Start( const wxString &url, const wxString &post )
+void wxSimpleCurlDownloadThread::Start( const wxString &url, bool synchronous, const wxString &post )
 {
 	if ( m_thread != 0 ) delete m_thread;
 
@@ -190,6 +194,16 @@ void wxSimpleCurlDownloadThread::Start( const wxString &url, const wxString &pos
 	if ( ! post.IsEmpty() ) m_thread->SetPost( post );
 	m_thread->Create();
 	m_thread->Run();
+
+	
+	if ( synchronous )
+	{
+		while( 1 )
+		{
+			if ( IsStarted() && !Finished() ) wxMilliSleep( 50 );
+			else break;
+		}
+	}
 }
 
 bool wxSimpleCurlDownloadThread::IsStarted()
@@ -277,4 +291,87 @@ void wxSimpleCurlInit()
 void wxSimpleCurlShutdown()
 {
 	::curl_global_cleanup();
+}
+
+
+
+static wxString GOOGLE_API_KEY("AIzaSyCyH4nHkZ7FhBK5xYg4db3K7WN-vhpDxas");
+static wxString BING_API_KEY("Av0Op8DvYGR2w07w_771JLum7-fdry0kBtu3ZA4uu_9jBJOUZgPY7mdbWhVjiORY");
+
+
+bool wxSimpleGeoCode( const wxString &address, double *lat, double *lon, double *tz)
+{
+	wxBusyCursor _curs;
+	bool latlonok = false;
+
+	wxString plusaddr = address;
+	plusaddr.Replace("   ", " ");
+	plusaddr.Replace("  ", " ");
+	plusaddr.Replace(" ", "+");
+	
+	wxString url( "https://maps.googleapis.com/maps/api/geocode/json?address=" + plusaddr + "&sensor=false&key=" + GOOGLE_API_KEY );
+	
+	wxSimpleCurlDownloadThread curl;
+	wxBusyCursor curs;
+	curl.Start( url, true );
+
+	wxJSONReader reader;
+	wxJSONValue root;
+	if (reader.Parse( curl.GetDataAsString(), &root )==0)
+	{
+		wxJSONValue loc = root.Item("results").Item(0).Item("geometry").Item("location");
+		if (!loc.IsValid()) return false;
+		*lat = loc.Item("lat").AsDouble();
+		*lon = loc.Item("lng").AsDouble();
+		
+		if ( root.Item("status").AsString() != "OK" )
+			return false;
+	}
+	else
+		return false;
+
+	if ( tz != 0 )
+	{
+		// get timezone from another service
+		url = wxString::Format("https://maps.googleapis.com/maps/api/timezone/json?location=%.14lf,%.14lf&timestamp=1&sensor=false&key=",
+			*lat, *lon) + GOOGLE_API_KEY;
+		curl.Start( url, true );
+		if (reader.Parse( curl.GetDataAsString(), &root )==0)
+		{
+			wxJSONValue val = root.Item("rawOffset");
+			if ( val.IsDouble() ) *tz = val.AsDouble() / 3600.0;
+			else *tz = val.AsInt() / 3600.0;
+
+			return root.Item("status").AsString() == "OK";
+		}
+		else
+			return false;
+	}
+
+}
+
+wxBitmap wxSimpleStaticMap( double lat, double lon, int zoom, MapProvider service )
+{
+	if ( zoom > 21 ) zoom = 21;
+	if ( zoom < 1 ) zoom = 1;
+	wxString zoomStr = wxString::Format("%d", zoom );
+		
+
+	wxString url;
+	if ( service == GOOGLE_MAPS )
+	{
+		url = "https://maps.googleapis.com/maps/api/staticmap?center=" 
+			+ wxString::Format("%.9lf,%.9lf", lat, lon) + "&zoom=" + zoomStr 
+			+ "&size=800x800&maptype=hybrid&sensor=false&format=jpg-baseline&key=" + GOOGLE_API_KEY;
+	}
+	else
+	{
+		url = "http://dev.virtualearth.net/REST/v1/Imagery/Map/Aerial/"
+			+ wxString::Format("%.15lf,%.15lf/%d", lat, lon, zoom)
+			+ "?mapSize=800,800&format=jpeg&key=" + BING_API_KEY;
+	}
+
+	wxSimpleCurlDownloadThread curl;
+	curl.Start( url, true );
+	return wxBitmap( curl.GetDataAsImage(wxBITMAP_TYPE_JPEG) );
 }

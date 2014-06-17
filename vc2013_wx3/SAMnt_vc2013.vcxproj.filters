@@ -107,6 +107,21 @@
     <ClInclude Include="..\src\gridsupport.h">
       <Filter>Source</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\s3clipper.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\s3engine.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\s3objects.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\s3tool.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\s3view.h">
+      <Filter>Source</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\welcome.cpp">
@@ -200,6 +215,21 @@
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="..\src\gridsupport.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\s3clipper.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\s3engine.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\s3objects.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\s3tool.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\s3view.cpp">
       <Filter>Source</Filter>
     </ClCompile>
   </ItemGroup>

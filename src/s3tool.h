@@ -32,7 +32,6 @@ class LocationSetup : public wxPanel
 public:
 	LocationSetup( wxWindow *parent, ShadeTool *st );
 		
-	bool GeoCode( const wxString &address, double *lat, double *lon, double *tz);
 	void DownloadMap(  );
 	int GetZoomLevel();
 	wxString GetAddress();
@@ -58,8 +57,7 @@ private:
 	wxNumericCtrl *m_lat, *m_lon, *m_tz;
 
 	void OnCurl( wxSimpleCurlEvent &evt );
-	void DoCurlDirect( const wxString &url );
-	void DoCurl( const wxString &url );
+	void DoCurlDirect( const wxString &url );	
 	void OnGetMap( wxCommandEvent &evt );
 	void OnMapChange( wxCommandEvent &evt );
 	void OnAddressChange( wxCommandEvent & );
