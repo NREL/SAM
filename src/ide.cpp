@@ -8,6 +8,7 @@
 #include <wx/txtstrm.h>
 #include <wx/wfstream.h>
 #include <wx/gbsizer.h>
+#include <wx/tokenzr.h>
 
 #include <wex/exttext.h>
 #include <wex/lkscript.h>
@@ -609,11 +610,15 @@ enum {
 	ID_VAR_CHECK_SEL,
 
 	ID_VAR_STORE,
-	ID_VAR_LOAD
+	ID_VAR_LOAD,
+
+	ID_TEXT_FIND,
 
 };
 
 BEGIN_EVENT_TABLE( UIEditorPanel, wxPanel )
+	EVT_BUTTON( ID_TEXT_FIND, UIEditorPanel::OnTextFind )
+
 	EVT_LISTBOX( ID_FORM_LIST, UIEditorPanel::OnCommand )
 	EVT_BUTTON( ID_FORM_LIST_REFRESH, UIEditorPanel::OnCommand )
 	EVT_BUTTON( ID_FORM_ADD, UIEditorPanel::OnCommand )
@@ -673,20 +678,21 @@ UIEditorPanel::UIEditorPanel( wxWindow *parent )
 	: wxPanel( parent ), m_exForm( &m_ipd.Variables() )
 {
 	wxBoxSizer *sz_form_tools = new wxBoxSizer( wxHORIZONTAL );
-	sz_form_tools->Add( new wxButton( this, ID_FORM_LIST_REFRESH, "Refresh list"), 0, wxALL|wxEXPAND, 2 );
-	sz_form_tools->Add( new wxButton( this, ID_FORM_ADD, "Add..."), 0, wxALL|wxEXPAND, 2 );
-	sz_form_tools->Add( new wxButton( this, ID_FORM_SAVE, "Save"), 0, wxALL|wxEXPAND, 2 );
-	sz_form_tools->Add( new wxButton( this, ID_FORM_DELETE, "Delete"), 0, wxALL|wxEXPAND, 2 );
+	sz_form_tools->Add( new wxButton( this, ID_TEXT_FIND, "Search", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL|wxEXPAND, 2 );
+	sz_form_tools->Add( new wxButton( this, ID_FORM_LIST_REFRESH, "Refresh list", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL|wxEXPAND, 2 );
+	sz_form_tools->Add( new wxButton( this, ID_FORM_ADD, "Add...", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL|wxEXPAND, 2 );
+	sz_form_tools->Add( new wxButton( this, ID_FORM_SAVE, "Save", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL|wxEXPAND, 2 );
+	sz_form_tools->Add( new wxButton( this, ID_FORM_DELETE, "Delete", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL|wxEXPAND, 2 );
 	sz_form_tools->AddStretchSpacer();	
-	sz_form_tools->Add( new wxButton( this, ID_VAR_REMAP, "Remap"), 0, wxALL|wxEXPAND, 2 );
-	sz_form_tools->Add( new wxButton( this, ID_VAR_SYNC, "Sync"), 0, wxALL|wxEXPAND, 2 );
-	sz_form_tools->Add( new wxButton( this, ID_VAR_ADD, "Add"), 0, wxALL|wxEXPAND, 2 );
-	sz_form_tools->Add( new wxButton( this, ID_VAR_DELETE, "Delete"), 0, wxALL|wxEXPAND, 2 );
-	sz_form_tools->Add( new wxButton( this, ID_VAR_CHECK_ALL, "Chk all"), 0, wxALL|wxEXPAND, 2 );
-	sz_form_tools->Add( new wxButton( this, ID_VAR_CHECK_NONE, "Chk none"), 0, wxALL|wxEXPAND, 2 );
-	sz_form_tools->Add( new wxButton( this, ID_VAR_CHECK_SEL, "Chk sel"), 0, wxALL|wxEXPAND, 2 );
-	sz_form_tools->Add( new wxButton( this, ID_VAR_STORE, "Store"), 0, wxALL|wxEXPAND, 2 );
-	sz_form_tools->Add( new wxButton( this, ID_VAR_LOAD, "Load"), 0, wxALL|wxEXPAND, 2 );
+	sz_form_tools->Add( new wxButton( this, ID_VAR_REMAP, "Remap", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL|wxEXPAND, 2 );
+	sz_form_tools->Add( new wxButton( this, ID_VAR_SYNC, "Sync", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL|wxEXPAND, 2 );
+	sz_form_tools->Add( new wxButton( this, ID_VAR_ADD, "Add", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL|wxEXPAND, 2 );
+	sz_form_tools->Add( new wxButton( this, ID_VAR_DELETE, "Delete", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL|wxEXPAND, 2 );
+	sz_form_tools->Add( new wxButton( this, ID_VAR_CHECK_ALL, "Chk all", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL|wxEXPAND, 2 );
+	sz_form_tools->Add( new wxButton( this, ID_VAR_CHECK_NONE, "Chk none", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL|wxEXPAND, 2 );
+	sz_form_tools->Add( new wxButton( this, ID_VAR_CHECK_SEL, "Chk sel", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL|wxEXPAND, 2 );
+	sz_form_tools->Add( new wxButton( this, ID_VAR_STORE, "Store", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL|wxEXPAND, 2 );
+	sz_form_tools->Add( new wxButton( this, ID_VAR_LOAD, "Load", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL|wxEXPAND, 2 );
 		
 	m_uiPropEditor = new wxUIPropertyEditor( this, wxID_ANY );
 	m_formList = new wxListBox( this, ID_FORM_LIST, wxDefaultPosition, wxSize(300, 300), 0, 0, wxLB_SINGLE|wxBORDER_NONE );
@@ -908,6 +914,88 @@ bool ExFormData::GetMetaData( const wxString &name,
 	
 	return false;
 }
+
+
+#define SEARCH( TT, MESSG ) if ( (TT).Lower().Find( text ) >= 0 ) tc->AppendText( MESSG + wxString("\n") )
+
+void UIEditorPanel::OnTextFind( wxCommandEvent & )
+{
+	wxString text = wxGetTextFromUser( "Enter text to search for:", "Query", wxEmptyString, this );
+	if ( text.IsEmpty() ) return;
+	
+	wxDialog *dialog = new wxDialog( this, wxID_ANY, "Searching for: '" + text + "'", wxDefaultPosition, wxSize( 550, 400 ), wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER );
+	wxTextCtrl *tc = new wxTextCtrl( dialog, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxTE_MULTILINE );
+	wxGauge *gau = new wxGauge( dialog, wxID_ANY, 1 );
+	wxSizer *sz = new wxBoxSizer( wxVERTICAL );
+	sz->Add( gau, 0, wxALL|wxEXPAND, 0 );
+	sz->Add( tc, 1, wxALL|wxEXPAND, 0 );
+	sz->Add( dialog->CreateButtonSizer( wxOK ), 0, wxALL|wxEXPAND, 5 );
+	dialog->SetSizer( sz );
+	dialog->CenterOnParent();
+	dialog->Show();
+	wxSafeYield( 0, true );
+	
+	// scan through all forms, variables, everything searching for this text
+	text.MakeLower();
+
+	wxArrayString files;
+	wxDir::GetAllFiles( SamApp::GetRuntimePath() + "/ui", &files, "*.ui" );
+	InputPageData ipd;
+
+	gau->SetRange( files.size() );
+	for( size_t ii=0;ii<files.size();ii++ )
+	{
+		gau->SetValue( ii );
+		ipd.Clear();
+		wxFFileInputStream is( files[ii] );
+		if ( !is.IsOk() || !ipd.Read( is ) )
+			tc->AppendText( "Error reading " + files[ii] );
+		
+		wxFileName ff(files[ii]);
+		wxString name( ff.GetName() );
+		ipd.Form().SetName( name );
+
+		// form and associated data loaded, now search everything we can think of
+		SEARCH( name, "form: " + name );
+		wxUIFormData &form = ipd.Form();
+		size_t n;
+		wxUIObject **objs = form.GetObjects( &n );
+		for( size_t i=0;i<n;i++ )
+		{
+			SEARCH( objs[i]->GetName(), "form object: " + name + ".object{" + objs[i]->GetName() +"}");
+			wxArrayString props = objs[i]->Properties();
+			for( size_t k=0;k<props.size();k++ )
+			{
+				wxString pstr( objs[i]->Property( props[k] ).AsString() );
+				wxString prefix( name + ".object{" + objs[i]->GetName() + "}." + props[k] );
+				SEARCH( props[k], prefix );
+				SEARCH( pstr, prefix + ": " + pstr );
+			}
+		}
+
+		VarDatabase &vdb = ipd.Variables();
+		for( VarDatabase::iterator it = vdb.begin(); it!=vdb.end();++it)
+		{
+			wxString prefix(name + ".variable{" + it->first + "}");
+			SEARCH( it->first, prefix );
+			SEARCH( it->second->Label, prefix + ".label: " + it->second->Label );
+			SEARCH( it->second->Units, prefix + ".units: " + it->second->Units );
+			SEARCH( it->second->Group, prefix + ".group: " + it->second->Group );
+			SEARCH( it->second->DefaultValue.AsString(), prefix + ".default: " + it->second->DefaultValue.AsString() );			
+		}
+
+		wxArrayString lines = wxStringTokenize(ipd.EqnScript(), "\n");
+		for( size_t i=0;i<lines.size();i++ )
+			SEARCH( lines[i], name + wxString::Format(".script[%d]: ",i+1) + lines[i] );
+
+		lines = wxStringTokenize( ipd.CbScript(), "\n" );
+		for( size_t i=0;i<lines.size();i++ )
+			SEARCH( lines[i], name + wxString::Format(".callback[%d]: ",i+1) + lines[i] );
+	}	
+
+	gau->SetValue(0);
+}
+
 
 void UIEditorPanel::OnCommand( wxCommandEvent &evt )
 {
