@@ -84,6 +84,7 @@ private:
 	void OnFormTest( wxCommandEvent & );
 	void OnCommand( wxCommandEvent & );
 	void OnFormSelectObject( wxUIFormEvent & );
+	void OnTextFind( wxCommandEvent & );
 
 	wxString m_formName;
 	ExFormData m_exForm;
