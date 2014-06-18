@@ -949,7 +949,11 @@ void ParametricGridData::SetValue(int row, int col, const wxString& value)
 		{
 			VarValue *vv = &m_par.Setup[col].Values[row];
 			VarValue::Parse(vv->Type(), value, *vv);
-			// set for simulation
+			if (row < m_valid_run.size())
+				m_valid_run[row] = false;
+			else // should not happen!
+				m_valid_run.push_back(row);
+			// set for simulation (repeated in run simulation below for copying
 			m_par.Runs[row]->Override(m_var_names[col], *vv);
 		}
 	}
@@ -1179,10 +1183,26 @@ void ParametricGridData::UpdateNumberRows(int rows)
 				m_par.Runs.pop_back();
 		}
 
+		// update valid runs
+		if (m_valid_run.size() < rows)
+		{
+			for (int num_run = m_par.Runs.size(); num_run < rows; num_run++)
+				m_valid_run.push_back(false);
+		}
+		else if (m_valid_run.size() > rows)
+		{
+			while (m_valid_run.size() > rows)
+				m_valid_run.pop_back();
+		}
+
 		if (m_rows > rows)
+		{
 			DeleteRows(rows, m_rows - rows);
+		}
 		else if (m_rows < rows)
+		{
 			AppendRows(rows - m_rows);
+		}
 		m_rows = rows;
 	}
 }
@@ -1354,6 +1374,11 @@ bool ParametricGridData::RunSimulations(int row)
 					}
 				}
 			}
+			// update row status
+			if (i < m_valid_run.size())
+				m_valid_run[i] = true;
+			else // should not happen!
+				m_valid_run.push_back(true);
 			UpdateView();
 		}
 		else
@@ -1361,7 +1386,6 @@ bool ParametricGridData::RunSimulations(int row)
 			wxShowTextMessageDialog(wxJoin(m_par.Runs[i]->GetErrors(), '\n'));
 			return false;
 		}
-
 	}
 	return true;
 }
@@ -1475,7 +1499,10 @@ wxGridCellAttr *ParametricGridData::GetAttr(int row, int col, wxGridCellAttr::wx
 		{ // TODO - check to see if current outputs are valid (simulation is run)
 			if (!attr)
 			{
-				attr = m_attr_for_valid_outputs;
+				if ((row < m_valid_run.size()) && (m_valid_run[row]))
+					attr = m_attr_for_valid_outputs;
+				else
+					attr = m_attr_for_invalid_outputs;
 				attr->IncRef();
 			}
 			else
@@ -1485,7 +1512,10 @@ wxGridCellAttr *ParametricGridData::GetAttr(int row, int col, wxGridCellAttr::wx
 					wxGridCellAttr *attrNew = attr->Clone();
 					attr->DecRef();
 					attr = attrNew;
-					attr->SetBackgroundColour(m_color_for_valid_outputs);
+					if ((row < m_valid_run.size()) && (m_valid_run[row]))
+						attr->SetBackgroundColour(m_color_for_valid_outputs);
+					else
+						attr->SetBackgroundColour(m_color_for_invalid_outputs);
 				}
 				/*
 				if (!attr->IsReadOnly())
