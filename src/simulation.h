@@ -43,7 +43,7 @@ public:
 	void ListByCount( size_t n, wxArrayString &list );
 	void GetVariableLengths( std::vector<size_t> &varlengths );
 	
-	bool Invoke();
+	bool Invoke(bool silent=false);
 
 	// results and messages if it succeeded
 	bool Ok();
