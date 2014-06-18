@@ -1138,55 +1138,52 @@ void ParametricGridData::UpdateNumberRows(int rows)
 	if (rows < 0) return;
 	if (m_rows != rows)
 	{
-		if (rows > m_rows) // append rows
+		// go through all variables and append VarValues as necessary
+		for (size_t i = 0; i < m_var_names.Count(); i++)
 		{
-			// go through all variables and append VarValues as necessary
-			for (size_t i = 0; i < m_var_names.Count(); i++)
+			// update Setup
+			int ndx = m_par.FindSetup(m_var_names[i]);
+			if (ndx > -1)
 			{
-				// update Setup
-				int ndx = m_par.FindSetup(m_var_names[i]);
-				if (ndx > -1)
+				// TODO - update for outputs??
+				if ((m_par.Setup[i].Values.size() < rows) && (IsInput(i)))
 				{
-					// TODO - update for outputs??
-					if ((m_par.Setup[i].Values.size() < rows) && (IsInput(i)))
-					{
-						while (m_par.Setup[i].Values.size() < rows)
-						{ // inputs
-							if (VarValue *vv = m_case->Values().Get(m_var_names[i]))
-								m_par.Setup[i].Values.push_back(*vv);
-							// outputs? - only update from simulations!
-						}
-					}
-					else if (m_par.Setup[i].Values.size() > rows)
-					{
-						while (m_par.Setup[i].Values.size() > rows)
-							m_par.Setup[i].Values.pop_back();
+					while (m_par.Setup[i].Values.size() < rows)
+					{ // inputs
+						if (VarValue *vv = m_case->Values().Get(m_var_names[i]))
+							m_par.Setup[i].Values.push_back(*vv);
+						// outputs? - only update from simulations!
 					}
 				}
-			}
-			// update Runs
-			if (m_par.Runs.size() < rows)
-			{
-				for (int num_run = m_par.Runs.size(); num_run < rows; num_run++)
+				else if (m_par.Setup[i].Values.size() > rows)
 				{
-					Simulation *s = new Simulation(m_case, wxString::Format("Run %d", num_run));
-					s->Copy(m_case->BaseCase());
-					m_par.Runs.push_back(s);
+					while (m_par.Setup[i].Values.size() > rows)
+						m_par.Setup[i].Values.pop_back();
 				}
 			}
-			else if (m_par.Runs.size() > rows)
-			{
-				while (m_par.Runs.size() > rows)
-					m_par.Runs.pop_back();
-			}
+		}
 
-		}
-		else // delete rows
+		// update Runs
+		if (m_par.Runs.size() < rows)
 		{
-			// TODO
+			for (int num_run = m_par.Runs.size(); num_run < rows; num_run++)
+			{
+				Simulation *s = new Simulation(m_case, wxString::Format("Run %d", num_run));
+				s->Copy(m_case->BaseCase());
+				m_par.Runs.push_back(s);
+			}
 		}
+		else if (m_par.Runs.size() > rows)
+		{
+			while (m_par.Runs.size() > rows)
+				m_par.Runs.pop_back();
+		}
+
+		if (m_rows > rows)
+			DeleteRows(rows, m_rows - rows);
+		else if (m_rows < rows)
+			AppendRows(rows - m_rows);
 		m_rows = rows;
-		UpdateView();
 	}
 }
 
