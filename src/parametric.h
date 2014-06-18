@@ -116,6 +116,8 @@ private:
 	wxColour m_color_for_inputs;
 	wxColour m_color_for_valid_outputs;
 	wxColour m_color_for_invalid_outputs;
+
+	std::vector<bool> m_valid_run;
 };
 
 
