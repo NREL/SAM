@@ -1,10 +1,12 @@
 #include <algorithm>
 #include <wx/log.h>
 #include <wx/tokenzr.h>
+#include <wx/filename.h>
 
 #include <wex/plot/plplotctrl.h>
 #include <wex/lkscript.h>
 #include <wex/dview/dvplotctrl.h>
+#include <wex/utils.h>
 
 #ifdef __WXMSW__
 #include <wex/ole/excelauto.h>
@@ -18,6 +20,8 @@
 #include "casewin.h"
 #include "materials.h"
 #include "results.h"
+#include "solarprospector.h"
+#include "simplecurl.h"
 
 #include "invoke.h"
 
@@ -1005,6 +1009,121 @@ void fcall_current_at_voltage_sandia(lk::invoke_t &cxt)
 	cxt.result().assign(Itrw);
 }
 
+void fcall_solarprospector(lk::invoke_t &cxt)
+{
+	LK_DOC("solarprospector", "Creates the solar prospector dialog box, downloads, decompresses, converts, and returns local file name for weather file", "(none) : string");
+
+	//Create the solar prospector object
+	SolarProspectorDialog spd( SamApp::Window(), "Location Lookup");
+	spd.CenterOnParent();
+	int code = spd.ShowModal(); //shows the dialog and makes it so you can't interact with other parts until window is closed
+
+	//Return an empty string if the window was dismissed
+	if (code == wxID_CANCEL)
+	{
+		cxt.result().assign(wxEmptyString);
+		return;
+	}
+
+	//Get parameters for weather file download
+	wxString year;
+	year = spd.GetYear();
+	double lat, lon;
+	if (spd.IsAddressMode() == true)	//entered an address instead of a lat/long
+	{
+		if (!wxSimpleGeoCode(spd.GetAddress(), &lat, &lon))
+		{
+			wxMessageBox("Failed to geocode address");
+			return;
+		}
+	}
+	else
+	{
+		lat = spd.GetLatitude();
+		lon = spd.GetLongitude();		
+	}
+
+	//Create URL for weather file download
+	wxString url;
+	if (spd.GetYear() == "TMY" || spd.GetYear() == "TGY" || spd.GetYear() == "TDY")
+	{
+		url = SamApp::WebApi("prospector_typical");
+		url.Replace("<TYPE>", spd.GetYear().Lower(), 1);	//check with Steve
+	}
+	else
+	{
+		url = SamApp::WebApi("prospector_year");
+		url.Replace("<YEAR>", spd.GetYear(), 1);
+	}
+
+	int short_lat = (int)(fabs(lat));
+	int short_lon = (int)(fabs(lon));
+
+	if (short_lat % 2 > 0) --short_lat;
+	if (short_lon % 2 > 0) --short_lon;
+	//short_lon += 2; // removed for upgrade to prospector 1998-2009
+
+	wxString dir;
+	dir.Printf("%d%d", short_lon, short_lat);
+
+	wxString glat = wxString::Format("%d", (int)(fabs(lat) * 10)) + "5";
+	wxString glon = wxString::Format("%d", (int)(fabs(lon) * 10)) + "5";
+
+	if (glon.Len()<5) glon = "0" + glon;
+	wxString gridcode = glon + glat;
+
+	url.Replace("<DIR>", dir, 1);
+	url.Replace("<GRIDCODE>", gridcode, 1);
+
+	//Download the weather file
+	wxSimpleCurlDownloadThread curl;
+	curl.Start(url, true);	//true won't let it return to code unless it's done downloading
+	// would like to put some code here to tell it not to download and to give an error if hits 404 Not Found
+
+	wxString local_file;
+	::wxGetTempFileName("samwf", local_file);
+
+	if (!curl.WriteDataToFile(local_file))
+	{
+		wxMessageBox("Failed to download the 10 km satellite data weather file from NREL for your location.");
+		return;
+	}
+
+	//Decompress weather file
+	wxString dcompfile = local_file + ".extracted.tm2";
+	if (!wxGunzipFile(local_file, dcompfile))
+	{
+		wxMessageBox("Failed to decompress downloaded weather data.");
+		return;
+	}
+
+	//Convert weather file to csv instead of TMY format
+	ssc_data_t data = ssc_data_create();
+	ssc_data_set_string(data, "input_file", dcompfile.c_str());
+
+	//Create a folder to put the weather file in
+	wxString wfdir;
+	SamApp::Settings().Read("weather_file_dir", &wfdir);
+	if (wfdir.IsEmpty()) wfdir = ::wxGetHomeDir() + "/SAM Downloaded Weather Files";
+	if (!wxDirExists(wfdir)) wxFileName::Mkdir(wfdir, 511, ::wxPATH_MKDIR_FULL);
+
+	//Create the filename
+	wxString filename = wfdir + "/xyz.csv";
+	ssc_data_set_string(data, "output_file", filename.c_str());
+
+	//Convert the file
+	const char* err = ssc_module_exec_simple_nothread("wfcsvconv", data);
+	ssc_data_free(data);
+	if (err != NULL)
+	{
+		wxMessageBox("Failed to convert weather file to csv: \n \n " + wxString (err));
+		return;
+	}
+
+	//Return the converted filename
+	cxt.result().assign(filename);
+}
+
 lk::fcall_t* invoke_general_funcs()
 {
 	static const lk::fcall_t vec[] = {
@@ -1099,6 +1218,7 @@ lk::fcall_t* invoke_uicallback_funcs()
 		fcall_snlinverter,
 		fcall_current_at_voltage_cec,
 		fcall_current_at_voltage_sandia,
+		fcall_solarprospector,
 		0 };
 	return (lk::fcall_t*)vec;
 }
