@@ -310,7 +310,7 @@ static ssc_bool_t ssc_invoke_handler( ssc_module_t p_mod, ssc_handler_t p_handle
 }
 
 
-bool Simulation::Invoke()
+bool Simulation::Invoke(bool silent)
 {
 	
 	ConfigInfo *cfg = m_case->GetConfiguration();
@@ -347,16 +347,18 @@ bool Simulation::Invoke()
 	}
 
 	SimulationContext sc;
-	sc.progdlg = new wxProgressDialog( "Simulation", "in progress", 100, 
-		SamApp::CurrentActiveWindow(),  // progress dialog parent is current active window - works better when invoked scripting
-		wxPD_APP_MODAL|wxPD_SMOOTH|wxPD_CAN_ABORT );
+	if (!silent)
+	{
+		sc.progdlg = new wxProgressDialog("Simulation", "in progress", 100,
+			SamApp::CurrentActiveWindow(),  // progress dialog parent is current active window - works better when invoked scripting
+			wxPD_APP_MODAL | wxPD_SMOOTH | wxPD_CAN_ABORT);
 #ifdef __WXMSW__
-	sc.progdlg->SetIcon( wxICON( appicon ) );
+		sc.progdlg->SetIcon(wxICON(appicon));
 #endif
-	sc.progdlg->Show();
-	sc.errors = &m_errors;
-	sc.warnings = &m_warnings;
-
+		sc.progdlg->Show();
+		sc.errors = &m_errors;
+		sc.warnings = &m_warnings;
+	}
 	ssc_data_t p_data = ssc_data_create();
 
 
@@ -555,7 +557,7 @@ bool Simulation::Invoke()
 
 	ssc_data_free( p_data );
 
-	delete sc.progdlg;
+	if (!silent) delete sc.progdlg;
 
 	return m_errors.size() == 0;
 

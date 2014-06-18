@@ -1341,7 +1341,7 @@ bool ParametricGridData::RunSimulations(int row)
 
 		// invoke simulation
 		//update results in grid - send message to grid to update
-		if (m_par.Runs[i]->Invoke())
+		if (m_par.Runs[i]->Invoke(true))
 		{
 			// update outputs
 			for (int col = 0; col < m_cols; col++)
