@@ -511,7 +511,8 @@ void GraphCtrl::Display(std::vector<Simulation *>sims, Graph &gi)
 		// single value axis
 		wxPLLabelAxis *x1 = new wxPLLabelAxis(-1, yvars.size(), m_g.XLabel);
 		for (size_t i = 0; i<ynames.size(); i++)
-			x1->Add(i, ynames[i]);
+			x1->Add(i, wxString::Format("%d", i+1));
+//			x1->Add(i, ynames[i]);
 		SetXAxis1(x1);
 	}
 	else if (ndata == 12)
