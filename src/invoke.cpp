@@ -1025,7 +1025,7 @@ void fcall_solarprospector(lk::invoke_t &cxt)
 		return;
 	}
 
-	//Get parameters for weather file download
+	//Get parameters from the dialog box for weather file download
 	wxString year;
 	year = spd.GetYear();
 	double lat, lon;
@@ -1048,7 +1048,7 @@ void fcall_solarprospector(lk::invoke_t &cxt)
 	if (spd.GetYear() == "TMY" || spd.GetYear() == "TGY" || spd.GetYear() == "TDY")
 	{
 		url = SamApp::WebApi("prospector_typical");
-		url.Replace("<TYPE>", spd.GetYear().Lower(), 1);	//check with Steve
+		url.Replace("<TYPE>", spd.GetYear().Lower(), 1);
 	}
 	else
 	{
@@ -1074,6 +1074,7 @@ void fcall_solarprospector(lk::invoke_t &cxt)
 
 	url.Replace("<DIR>", dir, 1);
 	url.Replace("<GRIDCODE>", gridcode, 1);
+	url.Replace("sp_data", "prospector_solar_data", 1);	//anonymizes the link in webapis.conf
 
 	//Download the weather file
 	wxSimpleCurlDownloadThread curl;
@@ -1108,7 +1109,10 @@ void fcall_solarprospector(lk::invoke_t &cxt)
 	if (!wxDirExists(wfdir)) wxFileName::Mkdir(wfdir, 511, ::wxPATH_MKDIR_FULL);
 
 	//Create the filename
-	wxString filename = wfdir + "/xyz.csv";
+	wxString location;
+	location.Printf("lat%.2lf_lon%.2lf_", lat, lon);
+	location = location + year;
+	wxString filename = wfdir + "/" + location + ".csv";
 	ssc_data_set_string(data, "output_file", filename.c_str());
 
 	//Convert the file
