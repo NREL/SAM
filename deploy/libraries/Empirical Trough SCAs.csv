@@ -1,5 +1,5 @@
 Name,SCA Length,Aperture,Aperture Area,Focal Len,IAM Coefficient F0,IAM Coefficient F1,AM Coefficient F2,Track Twist,Geom.Accuracy,Reflectance,Cleanliness,Dust,Factor,Availability
-Units,m,m,m2,m
+Units,m,m,m2,m,,,,,,,,,,
 [0],lib_ScaLen,lib_SCA_aper,lib_ui_sca_aperture_area,lib_Ave_Focal_Length,lib_IamF0,lib_IamF1,lib_IamF2,lib_TrkTwstErr,lib_GeoAcc,lib_MirRef,lib_MirCln,lib_HCEdust,lib_ConcFac,lib_SfAvail
 EuroTrough ET150,150,5.75,817.5,2.1,1,0.0506,-0.1763,0.99,0.98,0.935,0.95,0.98,1,0.99
 Luz LS-2,50,5,235,1.8,1,0.0506,-0.1763,0.99,0.98,0.935,0.95,0.98,1,0.99
