@@ -198,19 +198,21 @@ function setup_csp_physical_trough_pages()
 	addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource' } );
 	addpage( [[ 'Physical Trough Solar Field' ]], { 'sidebar'='Solar Field' } );
 	addpage( [[ 'Physical Trough Collector Header',
-	 {'name'='Physical Trough Collector Type 1', 'caption'='Collector Type 1', 'collapsible'=true, 'collapsible_var'='sca_1_is_shown'},
+	 {'name'='Physical Trough Collector Type 1', 'caption'='Collector Type 1', 'collapsible'=false, 'collapsible_var'='sca_1_is_shown'},
 	 {'name'='Physical Trough Collector Type 2', 'caption'='Collector Type 2', 'collapsible'=true, 'collapsible_var'='sca_2_is_shown'},
 	 {'name'='Physical Trough Collector Type 3', 'caption'='Collector Type 3', 'collapsible'=true, 'collapsible_var'='sca_3_is_shown'},
 	 {'name'='Physical Trough Collector Type 4', 'caption'='Collector Type 4', 'collapsible'=true, 'collapsible_var'='sca_4_is_shown'} ]],
 	 { 'sidebar'='Collector (SCAs)' } );
 	addpage( [[ 'Physical Trough Receiver Header',
-	 {'name'='Physical Trough Receiver Type 1', 'caption'='Receiver Type 1', 'collapsible'=true, 'collapsible_var'='hce_1_is_shown'},
+	 {'name'='Physical Trough Receiver Type 1', 'caption'='Receiver Type 1', 'collapsible'=false, 'collapsible_var'='hce_1_is_shown'},
 	 {'name'='Physical Trough Receiver Type 2', 'caption'='Receiver Type 2', 'collapsible'=true, 'collapsible_var'='hce_2_is_shown'},
 	 {'name'='Physical Trough Receiver Type 3', 'caption'='Receiver Type 3', 'collapsible'=true, 'collapsible_var'='hce_3_is_shown'},
 	 {'name'='Physical Trough Receiver Type 4', 'caption'='Receiver Type 4', 'collapsible'=true, 'collapsible_var'='hce_4_is_shown'} ]],
 	 { 'sidebar'='Receiver (HCEs)' } );
 	addpage( [[ 'Physical Trough Power Block' ]], { 'sidebar'='Power Cycle' } );
-	addpage( [[ 'Physical Trough Thermal Storage' ]], { 'sidebar'='Thermal Storage' } );
+	addpage( [[ 'Physical Trough Thermal Storage' ,
+	  {'name' = 'CSP Dispatch Control', 'caption'='Dispatch Control', 'collapsible'=false, 'collapsible_var'='csp_dispatch_is_shown'} ]], 
+	  { 'sidebar'='Thermal Storage' } );
 	addpage( [[ 'Physical Trough Parasitics' ]], { 'sidebar'='Parasitics' } );
 }
 
@@ -221,7 +223,9 @@ function setup_csp_empirical_trough_pages()
 	addpage( [[ 'Empirical Trough SCA' ]], { 'sidebar'='Collectors (SCAs)' } );
 	addpage( [[ 'Empirical Trough HCE' ]], { 'sidebar'='Receivers (HCEs)' } );
 	addpage( [[ 'Empirical Trough Power Block' ]], { 'sidebar'='Power Block' } );
-	addpage( [[ 'Empirical Trough Thermal Storage' ]], { 'sidebar'='Thermal Storage' } );
+	addpage( [[ 'Empirical Trough Thermal Storage',
+	  {'name' = 'CSP Dispatch Control', 'caption'='Dispatch Control', 'collapsible'=false, 'collapsible_var'='csp_dispatch_is_shown'} ]], 
+	  { 'sidebar'='Thermal Storage' } );
 	addpage( [[ 'Empirical Trough Parasitics' ]], { 'sidebar'='Parasitics' } );		
 }
 
