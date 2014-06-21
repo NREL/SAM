@@ -665,8 +665,11 @@ void ParametricViewer::UpdateGrid()
 		{
 			if (m_grid_data->IsInput(col))
 				m_grid->SetReadOnly(row, col, false);
-			else 
-				m_grid->SetReadOnly(row, col, (m_grid_data->GetTypeName(row, col) != "GridCellArray"));
+			else
+			{
+				bool readonly = (m_grid_data->GetTypeName(row, col) == wxGRID_VALUE_STRING);
+				m_grid->SetReadOnly(row, col, readonly);
+			}
 		}
 	}
 	m_grid->AutoSizeColumns();
@@ -1024,7 +1027,14 @@ wxString ParametricGridData::GetTypeName(int row, int col)
 				switch (vv->Type())
 				{
 				case VV_ARRAY:
-					return "GridCellArray";
+					{
+						size_t n;
+						vv->Array(&n);
+						if (n>1)
+							return "GridCellArray";
+						else
+							return wxGRID_VALUE_STRING;
+					}
 					break;
 				default:
 					return wxGRID_VALUE_STRING;
@@ -1222,9 +1232,12 @@ void ParametricGridData::UpdateView()
 {
 	if (GetView())
 	{
-		wxGridTableMessage msg(this,
+		wxGridTableMessage msg2(this,
 			wxGRIDTABLE_REQUEST_VIEW_GET_VALUES);
-		GetView()->ProcessTableMessage(msg);
+//		wxGridTableMessage msg(this,
+//			wxGRIDTABLE_REQUEST_VIEW_SEND_VALUES);
+//		GetView()->ProcessTableMessage(msg);
+		GetView()->ProcessTableMessage(msg2);
 		GetView()->Update();
 	}
 }
@@ -1317,11 +1330,13 @@ void ParametricGridData::FillDown(int col, int rows)
 					for (int row = start_row; row < m_rows; row++)
 					{
 						double new_val = old_val + diff;
-						if (VarValue *vv = &m_par.Setup[col].Values[row])
-							vv->Set(new_val);
+						SetValue(row, col, wxString::Format("%lg", new_val));
+//						if (VarValue *vv = &m_par.Setup[col].Values[row])
+//							vv->Set(new_val);
 						old_val = new_val;
 					}
-					UpdateView();
+					UpdateView(); //does not update attributes
+					//AppendRows(0);//does not update attributes
 				}
 				break;
 			}
@@ -1477,6 +1492,7 @@ wxGridCellAttr *ParametricGridData::GetAttr(int row, int col, wxGridCellAttr::wx
 	{
 		attr = GetAttrProvider()->GetAttr(row, col, kind);
 
+/*
 		if (IsInput(col))
 		{
 			if (!attr)
@@ -1496,6 +1512,9 @@ wxGridCellAttr *ParametricGridData::GetAttr(int row, int col, wxGridCellAttr::wx
 			}
 		}
 		else // output 
+		*/
+		// change from 6/18/14 meeting
+		if (!IsInput(col))
 		{ // TODO - check to see if current outputs are valid (simulation is run)
 			if (!attr)
 			{
