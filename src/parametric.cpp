@@ -912,6 +912,22 @@ void ParametricGridData::SetVarValue(int row, int col, VarValue *vv)
 	}
 }
 
+
+int ParametricGridData::GetMaxChoice(int row, int col)
+{
+	int max_choice = 0;
+	if ((col>-1) && (col < m_cols))
+	{
+		if (VarInfo *vi = GetVarInfo(row, col))
+		{
+			wxArrayString as = vi->IndexLabels;
+			max_choice = as.Count();
+		}
+	}
+	return max_choice;
+}
+
+
 wxString ParametricGridData::GetChoices(int row, int col)
 {
 	wxString ret_str = wxEmptyString;
@@ -1327,9 +1343,12 @@ void ParametricGridData::FillDown(int col, int rows)
 					}
 					double diff = num1 - num0;
 					double old_val = num1;
+					// handle choices
+					int max_choice = GetMaxChoice(0, col);
 					for (int row = start_row; row < m_rows; row++)
 					{
 						double new_val = old_val + diff;
+						if (max_choice > 0) new_val = (int)new_val % max_choice;
 						SetValue(row, col, wxString::Format("%lg", new_val));
 //						if (VarValue *vv = &m_par.Setup[col].Values[row])
 //							vv->Set(new_val);
@@ -1344,6 +1363,46 @@ void ParametricGridData::FillDown(int col, int rows)
 	}
 
 }
+
+
+void ParametricGridData::FillEvenly(int col)
+{
+	if (m_rows > 0)
+	{
+		if (VarValue *vv = GetVarValue(0, col))
+		{
+			switch (vv->Type())
+			{
+				//single value only
+			case VV_NUMBER:
+				if (m_rows > 2)
+				{
+					double num0 = GetDouble(0, col);
+					double num1 = GetDouble(m_rows-1, col);
+					int start_row = 2;
+					double diff = (num1 - num0)/(m_rows);
+					double old_val = num1;
+					// handle choices
+					int max_choice = GetMaxChoice(0, col);
+					for (int row = start_row; row < m_rows; row++)
+					{
+						double new_val = old_val + diff;
+						if (max_choice > 0) new_val = (int)new_val % max_choice;
+						SetValue(row, col, wxString::Format("%lg", new_val));
+						//						if (VarValue *vv = &m_par.Setup[col].Values[row])
+						//							vv->Set(new_val);
+						old_val = new_val;
+					}
+					UpdateView(); //does not update attributes
+					//AppendRows(0);//does not update attributes
+				}
+				break;
+			}
+		}
+	}
+
+}
+
 
 std::vector<Simulation *> ParametricGridData::GetRuns()
 {

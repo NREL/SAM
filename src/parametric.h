@@ -67,6 +67,7 @@ public:
 
 	// for choice controls
 	wxString GetChoices(int row, int col);
+	int GetMaxChoice(int row, int col);
 
 	bool IsInput(int col);
 	bool IsInput(wxString &var_name);
@@ -97,6 +98,7 @@ public:
 	wxString GetVarName(int col);
 
 	void FillDown(int col, int rows=2);
+	void FillEvenly(int col);
 
 	std::vector<Simulation *> GetRuns();
 
