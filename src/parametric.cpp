@@ -180,7 +180,7 @@ void ParametricGrid::OnLeftClick(wxGridEvent &evt)
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
-enum { ID_SELECT_INPUTS, ID_SELECT_OUTPUTS, ID_NUMRUNS, ID_RUN, ID_CLEAR, ID_GRID, ID_INPUTMENU_FILL_DOWN_SEQUENCE, ID_INPUTMENU_FILL_DOWN_ONE_VALUE, ID_OUTPUTMENU_ADD_PLOT, ID_OUTPUTMENU_REMOVE_PLOT, ID_OUTPUTMENU_EXPORT };
+enum { ID_SELECT_INPUTS, ID_SELECT_OUTPUTS, ID_NUMRUNS, ID_RUN, ID_CLEAR, ID_GRID, ID_INPUTMENU_FILL_DOWN_SEQUENCE, ID_INPUTMENU_FILL_DOWN_ONE_VALUE, ID_INPUTMENU_FILL_DOWN_EVENLY, ID_OUTPUTMENU_ADD_PLOT, ID_OUTPUTMENU_REMOVE_PLOT, ID_OUTPUTMENU_EXPORT };
 
 
 
@@ -196,6 +196,7 @@ EVT_MENU(ID_OUTPUTMENU_REMOVE_PLOT, ParametricViewer::OnMenuItem)
 EVT_MENU(ID_OUTPUTMENU_EXPORT, ParametricViewer::OnMenuItem)
 EVT_MENU(ID_INPUTMENU_FILL_DOWN_ONE_VALUE, ParametricViewer::OnMenuItem)
 EVT_MENU(ID_INPUTMENU_FILL_DOWN_SEQUENCE, ParametricViewer::OnMenuItem)
+EVT_MENU(ID_INPUTMENU_FILL_DOWN_EVENLY, ParametricViewer::OnMenuItem)
 END_EVENT_TABLE()
 
 
@@ -379,6 +380,9 @@ void ParametricViewer::OnMenuItem(wxCommandEvent &evt)
 	case ID_INPUTMENU_FILL_DOWN_SEQUENCE:
 		FillDown(2);
 		break;
+	case ID_INPUTMENU_FILL_DOWN_EVENLY:
+		FillDown(-1);
+		break;
 	}
 }
 
@@ -395,6 +399,7 @@ void ParametricViewer::OnGridColLabelRightClick(wxGridEvent &evt)
 			wxMenu *menu = new wxMenu;
 			menu->Append(ID_INPUTMENU_FILL_DOWN_ONE_VALUE, _T("Fill down one value"));
 			menu->Append(ID_INPUTMENU_FILL_DOWN_SEQUENCE, _T("Fill down sequence"));
+			menu->Append(ID_INPUTMENU_FILL_DOWN_EVENLY, _T("Fill down evenly"));
 			PopupMenu(menu, point);
 		}
 		else 
@@ -418,7 +423,10 @@ void ParametricViewer::FillDown(int rows)
 {
 	// get first two values in column and fill down
 	int col = m_selected_grid_col;
-	m_grid_data->FillDown(col,rows);
+	if (rows<0)
+		m_grid_data->FillEvenly(col);
+	else
+		m_grid_data->FillDown(col,rows);
 }
 
 
@@ -1333,7 +1341,6 @@ void ParametricGridData::FillDown(int col, int rows)
 				if (m_rows > 2)
 				{
 					double num0 = GetDouble(0, col);
-					// (rows==2) // fill sequence down
 					double num1 = GetDouble(1, col); 
 					int start_row = 2;
 					if (rows == 1)
@@ -1350,12 +1357,9 @@ void ParametricGridData::FillDown(int col, int rows)
 						double new_val = old_val + diff;
 						if (max_choice > 0) new_val = (int)new_val % max_choice;
 						SetValue(row, col, wxString::Format("%lg", new_val));
-//						if (VarValue *vv = &m_par.Setup[col].Values[row])
-//							vv->Set(new_val);
 						old_val = new_val;
 					}
-					UpdateView(); //does not update attributes
-					//AppendRows(0);//does not update attributes
+					UpdateView(); 
 				}
 				break;
 			}
@@ -1379,22 +1383,18 @@ void ParametricGridData::FillEvenly(int col)
 				{
 					double num0 = GetDouble(0, col);
 					double num1 = GetDouble(m_rows-1, col);
-					int start_row = 2;
-					double diff = (num1 - num0)/(m_rows);
-					double old_val = num1;
+					double diff = (num1 - num0)/(m_rows-1);
+					double old_val = num0;
 					// handle choices
 					int max_choice = GetMaxChoice(0, col);
-					for (int row = start_row; row < m_rows; row++)
+					for (int row = 1; row < m_rows-1; row++)
 					{
 						double new_val = old_val + diff;
 						if (max_choice > 0) new_val = (int)new_val % max_choice;
 						SetValue(row, col, wxString::Format("%lg", new_val));
-						//						if (VarValue *vv = &m_par.Setup[col].Values[row])
-						//							vv->Set(new_val);
 						old_val = new_val;
 					}
-					UpdateView(); //does not update attributes
-					//AppendRows(0);//does not update attributes
+					UpdateView();
 				}
 				break;
 			}
