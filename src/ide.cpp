@@ -577,6 +577,7 @@ enum {
 	ID_VAR_SYNC,
 	ID_VAR_ADD,
 	ID_VAR_DELETE,
+	ID_VAR_GROUP_MULTIPLE,
 
 	ID_VAR_LIST,
 	ID_VAR_NAME,
@@ -629,6 +630,7 @@ BEGIN_EVENT_TABLE( UIEditorPanel, wxPanel )
 	EVT_BUTTON( ID_VAR_REMAP, UIEditorPanel::OnCommand )
 	EVT_BUTTON( ID_VAR_ADD, UIEditorPanel::OnCommand )
 	EVT_BUTTON( ID_VAR_DELETE, UIEditorPanel::OnCommand )
+	EVT_BUTTON( ID_VAR_GROUP_MULTIPLE, UIEditorPanel::OnCommand )
 
 	EVT_BUTTON( ID_VAR_CHECK_ALL, UIEditorPanel::OnCommand )
 	EVT_BUTTON( ID_VAR_CHECK_NONE, UIEditorPanel::OnCommand )
@@ -688,6 +690,7 @@ UIEditorPanel::UIEditorPanel( wxWindow *parent )
 	sz_form_tools->Add( new wxButton( this, ID_VAR_SYNC, "Sync", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL|wxEXPAND, 2 );
 	sz_form_tools->Add( new wxButton( this, ID_VAR_ADD, "Add", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL|wxEXPAND, 2 );
 	sz_form_tools->Add( new wxButton( this, ID_VAR_DELETE, "Delete", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL|wxEXPAND, 2 );
+	sz_form_tools->Add( new wxButton( this, ID_VAR_GROUP_MULTIPLE, "Set group...", wxDefaultPosition,wxDefaultSize, wxBU_EXACTFIT),0, wxALL|wxEXPAND, 2 );
 	sz_form_tools->Add( new wxButton( this, ID_VAR_CHECK_ALL, "Chk all", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL|wxEXPAND, 2 );
 	sz_form_tools->Add( new wxButton( this, ID_VAR_CHECK_NONE, "Chk none", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL|wxEXPAND, 2 );
 	sz_form_tools->Add( new wxButton( this, ID_VAR_CHECK_SEL, "Chk sel", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL|wxEXPAND, 2 );
@@ -1160,6 +1163,34 @@ void UIEditorPanel::OnCommand( wxCommandEvent &evt )
 				LoadVarList( name );
 				VarInfoToForm( name );
 			}
+		}
+		break;
+	case ID_VAR_GROUP_MULTIPLE:
+		{
+			wxArrayString checked;
+			for( size_t i=0;i<m_varList->GetCount();i++ )
+				if ( m_varList->IsChecked( i ) )
+					checked.Add( m_varList->GetString( i ) );
+
+			if (checked.size() == 0)
+			{
+				wxMessageBox( "No variables checked for multiple group edits");
+				return;
+			}
+
+			wxString group = wxGetTextFromUser("Enter group value:", "Change multiple variables", 
+				m_ipd.Variables().Group(m_varList->GetStringSelection()));
+
+			if ( group.IsEmpty()
+				&& wxNO == wxMessageBox("Erase group field from checked variables?", "Query", wxYES_NO) )
+				return;
+
+			for( size_t i=0;i<checked.size();i++ )
+				if ( VarInfo *vv=m_ipd.Variables().Lookup( checked[i] ) )
+					vv->Group = group;
+
+			if ( checked.Index( m_curVarName ) != wxNOT_FOUND )
+				VarInfoToForm( m_curVarName );
 		}
 		break;
 	case ID_VAR_DELETE:
