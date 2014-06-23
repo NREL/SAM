@@ -180,7 +180,7 @@ void ParametricGrid::OnLeftClick(wxGridEvent &evt)
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
-enum { ID_SELECT_INPUTS, ID_SELECT_OUTPUTS, ID_NUMRUNS, ID_RUN, ID_CLEAR, ID_GRID, ID_INPUTMENU_FILL_DOWN_SEQUENCE, ID_INPUTMENU_FILL_DOWN_ONE_VALUE, ID_INPUTMENU_FILL_DOWN_EVENLY, ID_OUTPUTMENU_ADD_PLOT, ID_OUTPUTMENU_REMOVE_PLOT, ID_OUTPUTMENU_EXPORT };
+enum { ID_SELECT_INPUTS, ID_SELECT_OUTPUTS, ID_NUMRUNS, ID_RUN, ID_CLEAR, ID_GRID, ID_INPUTMENU_FILL_DOWN_SEQUENCE, ID_INPUTMENU_FILL_DOWN_ONE_VALUE, ID_INPUTMENU_FILL_DOWN_EVENLY, ID_OUTPUTMENU_ADD_PLOT, ID_OUTPUTMENU_REMOVE_PLOT, ID_OUTPUTMENU_SHOW_DATA, ID_OUTPUTMENU_CLIPBOARD, ID_OUTPUTMENU_CSV, ID_OUTPUTMENU_EXCEL };
 
 
 
@@ -193,7 +193,10 @@ EVT_BUTTON(ID_CLEAR, ParametricViewer::OnCommand)
 EVT_GRID_CMD_LABEL_RIGHT_CLICK(ID_GRID, ParametricViewer::OnGridColLabelRightClick)
 EVT_MENU(ID_OUTPUTMENU_ADD_PLOT, ParametricViewer::OnMenuItem)
 EVT_MENU(ID_OUTPUTMENU_REMOVE_PLOT, ParametricViewer::OnMenuItem)
-EVT_MENU(ID_OUTPUTMENU_EXPORT, ParametricViewer::OnMenuItem)
+EVT_MENU(ID_OUTPUTMENU_SHOW_DATA, ParametricViewer::OnMenuItem)
+EVT_MENU(ID_OUTPUTMENU_CLIPBOARD, ParametricViewer::OnMenuItem)
+EVT_MENU(ID_OUTPUTMENU_CSV, ParametricViewer::OnMenuItem)
+EVT_MENU(ID_OUTPUTMENU_EXCEL, ParametricViewer::OnMenuItem)
 EVT_MENU(ID_INPUTMENU_FILL_DOWN_ONE_VALUE, ParametricViewer::OnMenuItem)
 EVT_MENU(ID_INPUTMENU_FILL_DOWN_SEQUENCE, ParametricViewer::OnMenuItem)
 EVT_MENU(ID_INPUTMENU_FILL_DOWN_EVENLY, ParametricViewer::OnMenuItem)
@@ -372,8 +375,17 @@ void ParametricViewer::OnMenuItem(wxCommandEvent &evt)
 	case ID_OUTPUTMENU_REMOVE_PLOT:
 		RemovePlot(m_grid_data->GetVarName(m_selected_grid_col));
 		break;
-	case ID_OUTPUTMENU_EXPORT:
+	case ID_OUTPUTMENU_SHOW_DATA:
+		ShowAllData();
 		break;
+	case ID_OUTPUTMENU_CLIPBOARD:
+		break;
+	case ID_OUTPUTMENU_CSV:
+		break;
+#ifdef __WXMSW__
+	case ID_OUTPUTMENU_EXCEL:
+		break;
+#endif
 	case ID_INPUTMENU_FILL_DOWN_ONE_VALUE:
 		FillDown(1);
 		break;
@@ -390,34 +402,64 @@ void ParametricViewer::OnMenuItem(wxCommandEvent &evt)
 void ParametricViewer::OnGridColLabelRightClick(wxGridEvent &evt)
 {
 	m_selected_grid_col = evt.GetCol();
-	if (evt.GetRow() < 0 && m_selected_grid_col >= 0) // header
+	if (evt.GetRow() < 0)
 	{
-		if (m_grid_data->IsInput(m_selected_grid_col))
+		if (m_selected_grid_col < 0) // upper left corner of grid
 		{
-			// input menu
+			//	Grid menu
 			wxPoint point = evt.GetPosition();
 			wxMenu *menu = new wxMenu;
-			menu->Append(ID_INPUTMENU_FILL_DOWN_ONE_VALUE, _T("Fill down one value"));
-			menu->Append(ID_INPUTMENU_FILL_DOWN_SEQUENCE, _T("Fill down sequence"));
-			menu->Append(ID_INPUTMENU_FILL_DOWN_EVENLY, _T("Fill down evenly"));
+			menu->Append(ID_OUTPUTMENU_CLIPBOARD, _T("Copy to clipboard"));
+			menu->Append(ID_OUTPUTMENU_CSV, _T("Save as CSV"));
+			menu->Append(ID_OUTPUTMENU_EXCEL, _T("Send to Excel"));
 			PopupMenu(menu, point);
 		}
-		else 
+		else // header with variables
 		{
-		//	Output menu
-			wxPoint point = evt.GetPosition();
-			wxMenu *menu = new wxMenu;
-			menu->Append(ID_OUTPUTMENU_ADD_PLOT, _T("Add plot"));
-			menu->Append(ID_OUTPUTMENU_REMOVE_PLOT, _T("Remove plot"));
-			menu->Append(ID_OUTPUTMENU_EXPORT, _T("Export data"));
-			int ndx = m_plot_var_names.Index(m_grid_data->GetVarName(m_selected_grid_col));
-			menu->Enable(ID_OUTPUTMENU_ADD_PLOT, (ndx == wxNOT_FOUND));
-			menu->Enable(ID_OUTPUTMENU_REMOVE_PLOT, (ndx != wxNOT_FOUND));
-			PopupMenu(menu, point);
+			if (m_grid_data->IsInput(m_selected_grid_col))
+			{
+				// input menu
+				wxPoint point = evt.GetPosition();
+				wxMenu *menu = new wxMenu;
+				menu->Append(ID_INPUTMENU_FILL_DOWN_ONE_VALUE, _T("Fill down one value"));
+				menu->Append(ID_INPUTMENU_FILL_DOWN_SEQUENCE, _T("Fill down sequence"));
+				menu->Append(ID_INPUTMENU_FILL_DOWN_EVENLY, _T("Fill down evenly"));
+				PopupMenu(menu, point);
+			}
+			else
+			{
+				//	Output menu
+				wxPoint point = evt.GetPosition();
+				wxMenu *menu = new wxMenu;
+				menu->Append(ID_OUTPUTMENU_ADD_PLOT, _T("Add plot"));
+				menu->Append(ID_OUTPUTMENU_REMOVE_PLOT, _T("Remove plot"));
+				menu->Append(ID_OUTPUTMENU_SHOW_DATA, _T("Show all data"));
+				int ndx = m_plot_var_names.Index(m_grid_data->GetVarName(m_selected_grid_col));
+				menu->Enable(ID_OUTPUTMENU_ADD_PLOT, (ndx == wxNOT_FOUND));
+				menu->Enable(ID_OUTPUTMENU_REMOVE_PLOT, (ndx != wxNOT_FOUND));
+				PopupMenu(menu, point);
+			}
 		}
 	}
 }
 
+
+void ParametricViewer::ShowAllData()
+{
+	int col = m_selected_grid_col;
+	std::vector<std::vector<float>> values_vec;
+	wxArrayString labels;
+	for (int row = 0; row < m_grid_data->GetNumberRows(); row++)
+	{
+		std::vector<float> vec = m_grid_data->GetArray(row, col);
+		if (vec.size() == 0) // single values
+			vec.push_back(m_grid_data->GetDouble(row, col));
+		values_vec.push_back(vec);
+		labels.push_back(wxString::Format("Run %d", row + 1));
+	}
+	ArrayPopupDialog *apd = new ArrayPopupDialog(this, m_grid_data->GetColLabelValue(col), labels, values_vec);
+	apd->ShowModal();
+}
 
 void ParametricViewer::FillDown(int rows)
 {
@@ -505,8 +547,6 @@ void ParametricViewer::RemoveAllPlots()
 void ParametricViewer::AddPlot(wxString &output_name)
 {
 	// check if already plotted
-	//int col = m_selected_grid_col;
-	//wxString var_name = m_grid_data->GetVarName(col);
 	int col = m_grid_data->GetColumnForName(output_name);
 	if (col != wxNOT_FOUND)
 	{
@@ -549,8 +589,6 @@ void ParametricViewer::AddPlot(wxString &output_name)
 
 void ParametricViewer::RemovePlot(wxString &output_name)
 {
-//	int col = m_selected_grid_col;
-//	wxString var_name = m_grid_data->GetVarName(col);
 	int col = m_grid_data->GetColumnForName(output_name);
 	if (col != wxNOT_FOUND)
 	{

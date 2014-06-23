@@ -713,6 +713,8 @@ ArrayPopupDialog::ArrayPopupDialog(wxWindow *parent, wxString &title, wxString &
 	wxExtGridCtrl *grid = new wxExtGridCtrl(this, wxID_ANY);
 	grid->CreateGrid(rows, cols);
 
+	grid->GetTable()->SetAttrProvider(new AlignRightGridCellAttrProvider());
+
 	grid->HideRowLabels();
 	int vec_size = vec.size();
 	wxString index_label = "Index";
@@ -728,10 +730,6 @@ ArrayPopupDialog::ArrayPopupDialog(wxWindow *parent, wxString &title, wxString &
 
 	for (size_t i = 0; i < vec_size; i++)
 	{
-		grid->SetCellAlignment(wxALIGN_RIGHT, i, 0);
-		grid->SetCellAlignment(wxALIGN_RIGHT, i, 1);
-		grid->SetReadOnly(i, 0);
-		grid->SetReadOnly(i, 1);
 		if (vec_size != 12) grid->SetCellValue(i, 0, wxString::Format("%d", i));
 		grid->SetCellValue(i, 1, wxString::Format("%lg", vec[i]));
 	}
@@ -753,10 +751,7 @@ ArrayPopupDialog::ArrayPopupDialog(wxWindow *parent, wxString &title, wxString &
 		grid->SetCellValue(11, 0, "Dec");
 	}
 
-
-	//grid->AutoSizeColLabelSize(0);
-	//grid->AutoSizeColLabelSize(1);
-	//grid->ForceRefresh();
+	grid->SetEditable(false);
 	
 	wxBoxSizer *sizer = new wxBoxSizer(wxVERTICAL);
 
@@ -803,6 +798,134 @@ ArrayPopupDialog::ArrayPopupDialog(wxWindow *parent, wxString &title, wxString &
 	SetSizerAndFit(sizer); // use the sizer for layout and set size and hints
 }
 
+
+
+ArrayPopupDialog::ArrayPopupDialog(wxWindow *parent, wxString &title, wxArrayString &labels, std::vector<std::vector<float>> &values_vec) : wxDialog(parent, wxID_ANY, "Array Viewer", wxDefaultPosition, wxDefaultSize, wxRESIZE_BORDER | wxDEFAULT_DIALOG_STYLE)
+{
+	// check that all vectors the same size
+	int values_vec_size = values_vec.size();
+	if (values_vec_size <= 0) return;
+	int vec_size = values_vec[0].size();
+
+	bool all_same_size = true;
+
+	for (size_t i = 1; i < values_vec_size; i++)
+	{
+		all_same_size &= (vec_size == values_vec[i].size());
+		if (!all_same_size) break;
+	}
+
+	if (!all_same_size) return;
+
+	int rows = vec_size;
+	int cols = values_vec_size + 1;
+
+	wxExtGridCtrl *grid = new wxExtGridCtrl(this, wxID_ANY);
+	grid->CreateGrid(rows, cols);
+
+	grid->Freeze();
+
+	grid->GetTable()->SetAttrProvider(new AlignRightGridCellAttrProvider());
+
+	grid->HideRowLabels();
+	wxString index_label = "Index";
+	if (vec_size == 12)
+		index_label = "Month";
+	else if (vec_size == 8760)
+		index_label = "Hour";
+
+
+	grid->SetColLabelValue(0, index_label);
+
+
+	for (size_t col = 0; col < values_vec_size; col++)
+	{
+		if (labels.Count()>col)
+			grid->SetColLabelValue(col+1, labels[col]);
+		for (size_t row = 0; row < vec_size; row++)
+			grid->SetCellValue(row, col+1, wxString::Format("%lg", values_vec[col][row]));
+	}
+
+	if (vec_size == 12)
+	{
+		grid->SetCellValue(0, 0, "Jan");
+		grid->SetCellValue(1, 0, "Feb");
+		grid->SetCellValue(2, 0, "Mar");
+		grid->SetCellValue(3, 0, "Apr");
+		grid->SetCellValue(4, 0, "May");
+		grid->SetCellValue(5, 0, "Jun");
+		grid->SetCellValue(6, 0, "Jul");
+		grid->SetCellValue(7, 0, "Aug");
+		grid->SetCellValue(8, 0, "Sep");
+		grid->SetCellValue(9, 0, "Oct");
+		grid->SetCellValue(10, 0, "Nov");
+		grid->SetCellValue(11, 0, "Dec");
+	}
+	else
+	{
+		for (size_t row = 0; row < vec_size; row++)
+			grid->SetCellValue(row, 0, wxString::Format("%d", row));
+	}
+
+	if (vec_size == 1) grid->SetColumnWidth(0, 0); // hide index column for single values.
+	grid->EnableEditing(false);
+	grid->Thaw();
+
+
+	wxBoxSizer *sizer = new wxBoxSizer(wxVERTICAL);
+
+	
+	// for scroll bars for hourly values.
+	// TODO want text extent of title bar title - should not have to resize for scollbars!!
+	int col_width= 40;
+	wxString spacer = " ";
+	spacer.Pad(values_vec_size * col_width, ' ', false);
+
+	wxSize sz = GetTextExtent(spacer);
+	int width = sz.GetWidth() - 100; // subtract scrollbar width
+
+	int tot_width = 0;
+	col_width = (int)(width / values_vec_size);
+	for (size_t i = 1; i < cols; i++)
+	{
+		grid->SetColumnWidth(i, col_width);
+		tot_width += col_width;
+	}
+	grid->SetColumnWidth(0, width - tot_width);
+
+
+	sizer->Add(new wxStaticText(this, wxID_ANY, spacer), 0, wxEXPAND | wxALL, 0);
+
+	sizer->Add(grid,
+		0,            // make vertically stretchable
+		wxEXPAND |    // make horizontally stretchable
+		wxALL,        //   and make border all around
+		0);         // set border width to 10
+
+
+
+	wxBoxSizer *button_sizer = new wxBoxSizer(wxHORIZONTAL);
+	button_sizer->Add(
+		new wxButton(this, wxID_OK, "OK"),
+		0,           // make horizontally unstretchable
+		wxALL,       // make border all around (implicit top alignment)
+		0);        // set border width to 10
+
+	sizer->Add(
+		button_sizer,
+		wxSizerFlags(0).Right());
+
+
+	SetTitle(title);
+#ifdef __WXMSW__
+	SetIcon(wxICON(appicon));
+#endif	
+	CenterOnParent();
+	SetSizerAndFit(sizer); // use the sizer for layout and set size and hints
+}
+
+
+
 ArrayPopupDialog::~ArrayPopupDialog()
 {
 }
@@ -810,6 +933,41 @@ ArrayPopupDialog::~ArrayPopupDialog()
 
 
 ////////////////////////////////////////////////////////////////////////////////////////
+
+AlignRightGridCellAttrProvider::AlignRightGridCellAttrProvider()
+{
+	m_attr_to_align_right = new wxGridCellAttr;
+	m_attr_to_align_right->SetAlignment(wxALIGN_RIGHT, wxALIGN_CENTER);
+}
+
+AlignRightGridCellAttrProvider::~AlignRightGridCellAttrProvider()
+{
+	m_attr_to_align_right->DecRef();
+}
+
+wxGridCellAttr *AlignRightGridCellAttrProvider::GetAttr(int row, int col,
+	wxGridCellAttr::wxAttrKind  kind /* = wxGridCellAttr::Any */) const
+{
+	wxGridCellAttr *attr = wxGridCellAttrProvider::GetAttr(row, col, kind);
+
+	if (!attr)
+	{
+		attr = m_attr_to_align_right;
+		attr->IncRef();
+	}
+	else
+	{
+		if (!attr->HasBackgroundColour())
+		{
+			wxGridCellAttr *attrNew = attr->Clone();
+			attr->DecRef();
+			attr = attrNew;
+			attr->SetAlignment(wxALIGN_RIGHT, wxALIGN_CENTER);
+		}
+	}
+
+	return attr;
+}
 
 
 

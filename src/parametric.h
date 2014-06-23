@@ -170,6 +170,8 @@ private:
 
 	void FillDown(int rows);
 
+	void ShowAllData();
+
 	ParametricGrid *m_grid;
 	ParametricGridData *m_grid_data;
 	wxNumericCtrl *m_num_runs_ctrl;

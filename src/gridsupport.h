@@ -130,12 +130,25 @@ class ArrayPopupDialog : public wxDialog
 {
 public:
 	ArrayPopupDialog(wxWindow *parent, wxString &title, wxString &label, VarValue *vv);
+	ArrayPopupDialog(wxWindow *parent, wxString &title, wxArrayString &labels, std::vector<std::vector<float>> &values_vec);
 	~ArrayPopupDialog();
 
 private:
 	VarValue *m_vv;
 };
 
+class AlignRightGridCellAttrProvider : public wxGridCellAttrProvider
+{
+public:
+	AlignRightGridCellAttrProvider();
+	virtual ~AlignRightGridCellAttrProvider();
+
+	virtual wxGridCellAttr *GetAttr(int row, int col,
+		wxGridCellAttr::wxAttrKind  kind) const;
+
+private:
+	wxGridCellAttr *m_attr_to_align_right;
+};
 
 
 class GridCellArrayEditor : public wxEvtHandler, public wxGridCellEditor
