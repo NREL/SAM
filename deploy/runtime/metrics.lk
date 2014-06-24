@@ -153,11 +153,15 @@ function wind_power_metrics()
 	// where is the approximate land use metric?
 }
 
-function csp_physical_trough_metrics() 
+function physical_trough_metrics() 
 {
 	metric( 'annual_energy', {'label'='Annual Energy', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh' } );
-	metric( 'conversion_factor', {'label'='Gross to Net Conversion Factor', 'mode'='f', 'deci'='1', 'thousep'='true', 'post'=' %' } );
-	metric( 'capacity_factor', {'label'='Capacity Factor', 'mode'='f', 'deci'='1', 'thousep'='true', 'post'='%' } );
+}
+
+function empirical_trough_metrics() 
+{
+	metric( 'annual_energy', {'label'='Annual Energy', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh' } );
+	//metric( 'conversion_factor', {'label'='Gross to Net Conversion Factor', 'mode'='f', 'deci'='1', 'thousep'='true', 'post'=' %' } );
 }
 
 function geothermal_metrics() 
@@ -189,12 +193,6 @@ function dish_stirling_metrics()
 	//metric( 'conversion_factor', {'label'='Gross to Net Conversion Factor', 'mode'='f', 'deci'='1', 'thousep'='true', 'post'=' %' } );
 }
 
-function empirical_trough_metrics() 
-{
-	metric( 'annual_energy', {'label'='Annual Energy', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh' } );
-	//metric( 'conversion_factor', {'label'='Gross to Net Conversion Factor', 'mode'='f', 'deci'='1', 'thousep'='true', 'post'=' %' } );
-}
-
 function solar_water_metrics()
 {
 	metric( 'annual_energy', {'label'='Annual Energy Saved', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh' } );
@@ -207,7 +205,7 @@ function solar_water_metrics()
 metrics{ 'Flat Plate PV' } = define() { pv_metrics(); };
 metrics{ 'PVWatts' } = define() {	pv_metrics(); };
 metrics{ 'High-X Concentrating PV' } = define() { generic_hcpv_metrics(); };
-metrics{ 'Concentrating Solar Power - Physical Trough' } = define() { csp_physical_trough_metrics(); };
+metrics{ 'Physical Trough' } = define() { physical_trough_metrics(); };
 metrics{ 'Empirical Trough' } = define() { empirical_trough_metrics(); };
 metrics{ 'Dish Stirling' } = define() { dish_stirling_metrics(); };
 metrics{ 'Generic CSP System' } = define() { generic_csp_metrics(); };
