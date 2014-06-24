@@ -217,13 +217,14 @@ ParametricViewer::ParametricViewer(wxWindow *parent, Case *cc) : wxPanel(parent,
 	wxPanel *top_panel = new wxPanel(splitter);
 
 	wxBoxSizer *tool_sizer = new wxBoxSizer(wxHORIZONTAL);
-	tool_sizer->Add(new wxButton(top_panel, ID_SELECT_INPUTS, "Select Inputs..."), 0, wxALL | wxEXPAND, 2);
-	tool_sizer->Add(new wxButton(top_panel, ID_SELECT_OUTPUTS, "Select Outputs..."), 0, wxALL | wxEXPAND, 2);
-	tool_sizer->Add(new wxStaticText(top_panel, wxID_ANY, "   Number of Runs:"), 0, wxALIGN_CENTER_VERTICAL, 2);
+	tool_sizer->Add(new wxStaticText(top_panel, wxID_ANY, "Parametric simulations:"), 0, wxALIGN_CENTER_VERTICAL, 2);
+	tool_sizer->Add(new wxButton(top_panel, ID_SELECT_INPUTS, "Input parameters..."), 0, wxALL | wxEXPAND, 2);
+	tool_sizer->Add(new wxButton(top_panel, ID_SELECT_OUTPUTS, "Output metrics..."), 0, wxALL | wxEXPAND, 2);
+	tool_sizer->Add(new wxStaticText(top_panel, wxID_ANY, "Number of runs:"), 0, wxALIGN_CENTER_VERTICAL, 2);
 	m_num_runs_ctrl = new wxNumericCtrl(top_panel, ID_NUMRUNS, 0, wxNumericCtrl::INTEGER, wxDefaultPosition, wxSize(50, 24));
 	tool_sizer->Add(m_num_runs_ctrl, 0, wxALL, 2);
+	tool_sizer->Add(new wxButton(top_panel, ID_RUN, "Run parametric simulations"), 0, wxALL | wxEXPAND, 2);
 	tool_sizer->AddStretchSpacer();
-	tool_sizer->Add(new wxButton(top_panel, ID_RUN, "Run parametric simulation"), 0, wxALL | wxEXPAND, 2);
 	tool_sizer->Add(new wxButton(top_panel, ID_CLEAR, "Clear results"), 0, wxALL | wxEXPAND, 2);
 
 
