@@ -250,8 +250,8 @@ ParametricViewer::ParametricViewer(wxWindow *parent, Case *cc) : wxPanel(parent,
 	top_panel->SetSizer(par_sizer);
 	m_layout = new wxSnapLayout(splitter, wxID_ANY);
 
-	splitter->SetMinimumPaneSize(100);
-	splitter->SplitHorizontally(top_panel, m_layout, 360);
+	splitter->SetMinimumPaneSize(200);
+	splitter->SplitHorizontally(top_panel, m_layout, 500);
 
 	SetSizer(main_sizer);
 	main_sizer->SetSizeHints(this);
@@ -614,6 +614,7 @@ void ParametricViewer::RunSimulations()
 	RemoveAllPlots();
 	m_grid_data->RunSimulations();
 	AddAllPlots();
+	UpdateGrid();
 }
 
 void ParametricViewer::ClearResults()
@@ -657,8 +658,10 @@ void ParametricViewer::SelectInputs()
 	dlg.SetCheckedNames(m_input_names);
 	if (dlg.ShowModal() == wxID_OK)
 	{
+		RemoveAllPlots();
 		m_input_names = dlg.GetCheckedNames();
 		m_grid_data->UpdateInputs(m_input_names);
+		RunSimulations();
 	}
 }
 
@@ -728,24 +731,16 @@ void ParametricViewer::SelectOutputs()
 			}
 		}
 	}
-	else // nothing has been run
-	{
-		Simulation::ListAllOutputs(m_case->GetConfiguration(), &output_names, &output_labels, 0);
-		for (int j = 0; j < (int)output_labels.size(); j++)
-			if (!output_labels[j].IsEmpty())
-			{
-				names.Add(output_names[j]);
-				labels.Add(output_labels[j]);
-			}
-	}
 	wxSortByLabels(names, labels);
 	SelectVariableDialog dlg(this, "Select Outputs");
 	dlg.SetItems(names, labels);
 	dlg.SetCheckedNames(m_output_names);
 	if (dlg.ShowModal() == wxID_OK)
 	{
+		RemoveAllPlots();
 		m_output_names = dlg.GetCheckedNames();
 		m_grid_data->UpdateOutputs(m_output_names);
+		RunSimulations();
 	}
 }
 
@@ -763,8 +758,8 @@ void ParametricViewer::UpdateGrid()
 				m_grid->SetReadOnly(row, col, false);
 			else
 			{
-				bool readonly = (m_grid_data->GetTypeName(row, col) == wxGRID_VALUE_STRING);
-				m_grid->SetReadOnly(row, col, readonly);
+	//			bool readonly = (m_grid_data->GetTypeName(row, col) == wxGRID_VALUE_STRING);
+	//			m_grid->SetReadOnly(row, col, readonly);
 			}
 		}
 	}
