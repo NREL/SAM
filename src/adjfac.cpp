@@ -354,13 +354,13 @@ AFHourlyFactorCtrl::AFHourlyFactorCtrl( wxWindow *parent, int id,
 	const wxPoint &pos, const wxSize &size)
 	: wxPanel( parent, id, pos, size )
 {
-	m_button = new wxButton( this, wxID_ANY, "Edit", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT );
+	m_button = new wxButton( this, wxID_ANY, "Edit factors...", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT );
 	m_label = new wxStaticText( this, wxID_ANY, wxEmptyString );
 	m_label->SetForegroundColour( wxColour(29,80,173) );
 
 	wxBoxSizer *sizer = new wxBoxSizer( wxHORIZONTAL );
-	sizer->Add( m_button, 0, wxALL|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL, 0 );
-	sizer->Add( m_label, 1, wxALL|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL, 4 );
+	sizer->Add( m_button, 0, wxALL|wxALIGN_LEFT|wxALIGN_TOP, 0 );
+	sizer->Add( m_label, 1, wxALL|wxALIGN_LEFT|wxALIGN_TOP, 4 );
 	
 	SetSizer( sizer );
 
@@ -374,15 +374,15 @@ AFHourlyFactorCtrl::AFHourlyFactorCtrl( wxWindow *parent, int id,
 
 void AFHourlyFactorCtrl::UpdateText()
 {
-	wxString txt( wxString::Format( "Annual factor %.2f", m_data.factor ) );
+	wxString txt( wxString::Format( "Annual factor: %.2f", m_data.factor ) );
 	
 	float avg = 0;
 	for( size_t i=0;i<m_data.hourly.size();i++ ) avg += m_data.hourly[i];
 	if ( m_data.hourly.size() > 0 ) avg /= m_data.hourly.size();
 	else avg = 0;
 
-	txt += wxString("\n") + (m_data.en_hourly ? wxString::Format( "Hourly factors enabled, avg %.2f", avg ) : "No hourly factors.");
-	txt += wxString("\n") + (m_data.en_periods ? wxString::Format("%d custom periods.", (int)m_data.periods.nrows()) : "No custom period factors.");
+	txt += wxString("\n") + (m_data.en_hourly ? wxString::Format( "Hourly factors: Avg = %.2f", avg ) : "Hourly factors: None");
+	txt += wxString("\n") + (m_data.en_periods ? wxString::Format("Custom periods: %d", (int)m_data.periods.nrows()) : "Custom periods: None");
 	m_label->SetLabel( txt );
 }
 
