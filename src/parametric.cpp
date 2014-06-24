@@ -640,22 +640,13 @@ void ParametricViewer::SelectInputs()
 		if (vi.Flags & VF_CALCULATED || vi.Flags & VF_INDICATOR) continue;
 
 		wxString label = vi.Label;
-		if (!label.IsEmpty())
-		{
-			if (!vi.Units.IsEmpty())
-				label += " (" + vi.Units + ")";
-
-			label += "  ";
-		}
-
-		label += "{ " + name + " }";
-
-		/*
-		if (vi.Group.IsEmpty()) label = "-Unsorted-/" + label;
-		else label = vi.Group + "/" + label;
-
-		label = "[" + case_name + "] Inputs/" + label;
-		*/
+		if (label.IsEmpty())
+			label = "{ " + name + " }";
+		if (!vi.Units.IsEmpty())
+			label += " (" + vi.Units + ")";
+		if (!vi.Group.IsEmpty())
+			label = vi.Group + "/" + label;
+		
 		labels.Add(label);
 		names.Add(name);
 	}
@@ -676,18 +667,77 @@ void ParametricViewer::SelectOutputs()
 	wxArrayString names, labels;
 	wxString case_name(SamApp::Project().GetCaseName(m_case));
 	wxArrayString output_names, output_labels;
-	Simulation::ListAllOutputs(m_case->GetConfiguration(), &output_names, &output_labels, 0);
 
-	for (int j = 0; j<(int)output_labels.size(); j++)
-	{
-		if (!output_labels[j].IsEmpty())
+	if (m_grid_data->GetRuns().size() > 0)
+	{ // from PopulateSelectionList in results.cpp
+		int an_period = -1;
+		Simulation *sim = m_grid_data->GetRuns()[0];
+		ConfigInfo *config = m_case->GetConfiguration();
+		if (config != 0)
 		{
-			names.Add(output_names[j]);
-			labels.Add(output_labels[j]);
-//			labels.Add("[" + case_name + "] Outputs/" + output_labels[j]);
+			wxString an_var = config->Settings["analysis_period_var"];
+			if (!an_var.IsEmpty())
+			{
+				if (VarValue *vv = sim->GetValue(an_var))
+					if (vv->Type() == VV_NUMBER)
+						an_period = (int)vv->Value();
+			}
+		}
+
+		std::vector<size_t> varlengths;
+		sim->GetVariableLengths(varlengths);
+
+		names.Clear();
+
+		for (size_t i = 0; i<varlengths.size(); i++)
+		{
+			wxArrayString list;
+			sim->ListByCount(varlengths[i], list);
+
+			if (list.Count() == 0)
+				continue;
+
+			wxString group;
+			if (varlengths[i] == 1)
+				group = "Single Values";
+			else if (varlengths[i] == 12)
+				group = "Monthly Data";
+			else if (varlengths[i] == 8760)
+				group = "Hourly Data";
+			else if (varlengths[i] == an_period)
+				group = "Annual Data";
+			else if (varlengths[i] == (an_period - 1) * 12)
+				group = "Lifetime Monthly Data";
+			else if (varlengths[i] == (an_period - 1) * 8760)
+				group = "Lifetime Hourly Data";
+			else
+				group.Printf("Data: %d values", (int)varlengths[i]);
+
+			for (size_t j = 0; j<list.Count(); j++)
+			{
+				wxString name = list[i];
+				wxString label(sim->GetLabel(list[j]));
+				if (label.IsEmpty())
+					label = "{ " + name + " }";
+				wxString units(sim->GetUnits(list[j]));
+				if (!units.IsEmpty())
+					label += " (" + units + ")";
+				label = group + "/" + label;
+				labels.Add(label);
+				names.Add(list[j]);
+			}
 		}
 	}
-
+	else // nothing has been run
+	{
+		Simulation::ListAllOutputs(m_case->GetConfiguration(), &output_names, &output_labels, 0);
+		for (int j = 0; j < (int)output_labels.size(); j++)
+			if (!output_labels[j].IsEmpty())
+			{
+				names.Add(output_names[j]);
+				labels.Add(output_labels[j]);
+			}
+	}
 	wxSortByLabels(names, labels);
 	SelectVariableDialog dlg(this, "Select Outputs");
 	dlg.SetItems(names, labels);
@@ -874,20 +924,29 @@ bool ParametricGridData::IsInput(wxString &var_name)
 wxString ParametricGridData::GetColLabelValue(int col)
 {
 	wxString col_label = wxEmptyString;
+	wxString units = wxEmptyString;
 	if ((col>-1) && (col < m_cols))
 	{
 		if (IsInput(col)) // label if non-blank
 		{
 			if (VarInfo *vi = m_par.GetCase()->Variables().Lookup(m_var_names[col]))
+			{
 				col_label = vi->Label;
+				units = vi->Units;
+			}
 		}
 		else
 		{
 			if (m_par.Runs.size() > 0)
+			{
 				col_label = m_par.Runs[0]->GetLabel(m_var_names[col]);
+				units = m_par.Runs[0]->GetUnits(m_var_names[col]);
+			}
 		}
 		if (col_label.IsEmpty()) 
 			col_label = m_var_names[col];
+		if (!units.IsEmpty())
+			col_label += " (" + units + ")";
 	}
 	return col_label;
 }
