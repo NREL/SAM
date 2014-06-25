@@ -5,6 +5,7 @@
 
 #include <wx/panel.h>
 
+
 #include "object.h"
 
 
@@ -23,8 +24,13 @@ class wxTextCtrl;
 class wxStaticText;
 
 class VarValue;
+BEGIN_DECLARE_EVENT_TYPES()
+DECLARE_EVENT_TYPE(wxEVT_AFHourlyFactorCtrl_CHANGE, 0)
+END_DECLARE_EVENT_TYPES()
 
-#define EVT_HOURLYFACTORS(i,f) EVT_BUTTON(i,f)
+#define EVT_HOURLYFACTORS(id, func)  EVT_COMMAND(id, wxEVT_AFHourlyFactorCtrl_CHANGE, func)
+
+//#define EVT_HOURLYFACTORS(i,f) EVT_BUTTON(i,f)
 
 class AFHourlyFactorCtrl : public wxPanel
 {
