@@ -1938,8 +1938,8 @@ static const char *col_labels[SFCOLS] =
 AFMonthByHourFactorCtrl::AFMonthByHourFactorCtrl(wxWindow *parent, int id, const wxPoint &pos, const wxSize &sz)
 	: wxPanel(parent, id, pos, sz, wxCLIP_CHILDREN|wxTAB_TRAVERSAL|wxBORDER_NONE)
 {
-	Colour1 = *wxRED;
-	Colour2 = *wxWHITE;
+	Colour1 = *wxWHITE;
+	Colour2 = *wxRED;
 
 	bSkipSelect = false;
 
@@ -1953,14 +1953,14 @@ AFMonthByHourFactorCtrl::AFMonthByHourFactorCtrl(wxWindow *parent, int id, const
 
 	for (r=0;r<SFROWS;r++)
 		for (c=0;c<SFCOLS;c++)
-			mData.at(r,c) = 1.0;
+			mData.at(r,c) = 0.0;
 
-	m_title = new wxStaticText(this, -1, "Beam Shading Factor");
+	m_title = new wxStaticText(this, -1, "Beam Shading Loss");
 	wxFont fbold( *wxNORMAL_FONT );
 	fbold.SetWeight( wxFONTWEIGHT_BOLD );
 	m_title->SetFont( fbold );
 
-	m_legend = new wxStaticText(this, -1, "0=Full Shading, 1=No Shading");
+	m_legend = new wxStaticText(this, -1, "0%=No Shading, 100%=Fully Shaded");
 	mBtnApply = new wxButton(this, IDSF_APPLY, "Apply to selected cells");
 
 	mGrid = new wxExtGridCtrl(this, IDSF_GRID);
@@ -2039,7 +2039,7 @@ void AFMonthByHourFactorCtrl::SetData(const matrix_t<float> &data)
 	{
 		for (int c=0;c<SFCOLS;c++)
 		{
-			double val = 1;
+			double val = 0;
 			if (r < data.nrows() && c < data.ncols())
 				val = data.at(r,c);
 
@@ -2079,10 +2079,10 @@ void AFMonthByHourFactorCtrl::UpdateCell(int r, int c)
 {
 	double sf = mData.at(r,c);
 	if (sf<0.0) sf = 0.0;
-	if (sf>1.0) sf = 1.0;
+	if (sf>100) sf = 100;
 
 	mGrid->SetCellValue( r, c, wxString::Format("%lg", sf ) );
-	int cntrIndex = (int)(sf * 100.0);
+	int cntrIndex = (int)(sf);
 	int ncv = 100;
 
 	wxColour shadc;								
@@ -2132,7 +2132,7 @@ void AFMonthByHourFactorCtrl::OnGridCellChange(wxGridEvent &evt)
 void AFMonthByHourFactorCtrl::ApplyVal(int r, int c, double sf)
 {
 	if (sf<0.0) sf = 0.0;
-	if (sf>1.0) sf = 1.0;
+	if (sf>100) sf = 100;
 
 	if (mSelTopRow >= 0 && mSelLeftCol >= 0)
 	{

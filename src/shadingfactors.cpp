@@ -35,10 +35,10 @@ void ShadingInputData::save( std::vector<float> &data )
 	data.push_back( -1.0 );
 
 	for (int i=0;i<8760;i++)
-		data.push_back( i < hourly.size() ? hourly[i] : 1.0 );
+		data.push_back( i < hourly.size() ? hourly[i] : 0.0 );
 	
 	if ( mxh.nrows() != 12 || mxh.ncols() != 24 )
-		mxh.resize_fill(12, 24, 1.0);
+		mxh.resize_fill(12, 24, 0.0);
 
 	for (int r=0;r<12;r++)
 		for (int c=0;c<24;c++)
@@ -59,18 +59,18 @@ void ShadingInputData::clear()
 {
 	en_hourly = en_mxh = en_azal = en_diff = false;
 
-	hourly.resize( 8760, 1 );
+	hourly.resize( 8760, 0 );	//IS THIS TRUE?
 
-	mxh.resize_fill(12,24, 1.0);
+	mxh.resize_fill(12,24, 0.0);
 
-	azal.resize_fill(10, 18, 1.0);
+	azal.resize_fill(10, 18, 0.0);
 
 	for ( int c=0;c<18;c++ )
 		azal.at(0, c) = c*20;
 	for ( int r=0;r<10;r++ )
 		azal.at(r, 0) = r*10;
 	
-	diff = 1.0;
+	diff = 0.0;
 }
 
 bool ShadingInputData::load( const std::vector<float> &data )
@@ -154,15 +154,15 @@ bool ShadingInputData::read( VarValue *root )
 }
 
 
-static const char *hourly_text = "The Hourly 8760 option is appropriate if you have a set of hourly beam shading factors for each of the 8,760 hours in a year. ";
-static const char *mxh_text = "The Month by Hour option allows you to specify a set of 288 (12 months x 24hours) beam shading factors that apply to the 24 hours of the day for each month of the year. Select a cell or group of cells and type a number between 0 and 1 to assign values to the table by hand. Click Import to import a table of values from a properly formatted text file. ";
-static const char *azal_text = "The Azimuth by Altitude option allows you to specify a set of beam shading factors for different sun positions.\n"
+static const char *hourly_text = "The Hourly 8760 option is appropriate if you have a set of hourly beam shading losses for each of the 8,760 hours in a year. ";
+static const char *mxh_text = "The Month by Hour option allows you to specify a set of 288 (12 months x 24hours) beam shading losses that apply to the 24 hours of the day for each month of the year. Select a cell or group of cells and type a number between 0% and 100% to assign values to the table by hand. Click Import to import a table of values from a properly formatted text file. ";
+static const char *azal_text = "The Azimuth by Altitude option allows you to specify a set of beam shading losses for different sun positions.\n"
   "1. Define the size of the table by entering values for the number of rows and columns.\n"
   "2. Enter solar azimuth values from 0 to 360 degrees in the first row of the table, where 0 = north, 90 = east, 180 = south, and 270 = west.\n"
   "3. Enter solar altitude values from 0 to 90 degrees in the first column of the table, where zero is on the horizon.\n"
-  "4. Enter shading factors as a fraction of the beam component of the incident radiation in the remaining table cells.\n"
+  "4. Enter shading factors as the shaded percentage of the beam component of the incident radiation in the remaining table cells.\n"
   "Click Paste to populate the table from your computer\'s clipboard, or click Import to import a table of values from a properly formatted text file.  ";
-static const char *diff_text = "The constant sky diffuse shading factor reduces the overall diffuse irradiance available by the specified factor.  Valid values are between 0 and 1.";
+static const char *diff_text = "The constant sky diffuse shading loss reduces the overall diffuse irradiance available by the specified loss.  Valid values are between 0% and 100%.";
 
 enum { ID_ENABLE_HOURLY = ::wxID_HIGHEST+999,
 	ID_ENABLE_MXH, ID_ENABLE_AZAL, ID_ENABLE_DIFF,
@@ -227,7 +227,7 @@ public:
 		m_azal->SetData( data );
 		
 		m_enableDiffuse = new wxCheckBox( m_scrollWin, ID_ENABLE_DIFF, "Enable sky diffuse shading factor (constant)" );
-		m_diffuseFrac = new wxNumericCtrl( m_scrollWin, wxID_ANY, 1.0 );
+		m_diffuseFrac = new wxNumericCtrl( m_scrollWin, wxID_ANY, 0.0 );
 		
 		wxSizer *import_tools = new wxStaticBoxSizer( wxHORIZONTAL, m_scrollWin, "Import shading data from external tools");
 		import_tools->Add( new wxButton( m_scrollWin, ID_IMPORT_PVSYST_NEAR_SHADING, "PVsyst near shading..." ), 0, wxALL, 3 );
