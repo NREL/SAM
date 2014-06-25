@@ -614,7 +614,7 @@ void Simulation::GetVariableLengths( std::vector<size_t> &varlengths )
 
 
 bool Simulation::ListAllOutputs( ConfigInfo *cfg, 
-	wxArrayString *names, wxArrayString *labels, wxArrayString *units )
+	wxArrayString *names, wxArrayString *labels, wxArrayString *units, bool single_values )
 {
 	if ( !cfg ) return false;
 
@@ -632,9 +632,12 @@ bool Simulation::ListAllOutputs( ConfigInfo *cfg,
 			
 			if ( var_type == SSC_OUTPUT || var_type == SSC_INOUT )
 			{
-				if ( names ) names->Add( wxString(ssc_info_name( p_inf )) );
-				if ( labels ) labels->Add( wxString(ssc_info_label( p_inf )) );
-				if ( units ) units->Add( wxString(ssc_info_units( p_inf )) );
+				if ( !single_values || (single_values && data_type == SSC_NUMBER ) )
+				{
+					if ( names ) names->Add( wxString(ssc_info_name( p_inf )) );
+					if ( labels ) labels->Add( wxString(ssc_info_label( p_inf )) );
+					if ( units ) units->Add( wxString(ssc_info_units( p_inf )) );
+				}
 			}
 		}
 	}

@@ -24,6 +24,7 @@ class PageNote;
 class CollapsePaneCtrl;
 class wxUIObject;
 class ParametricViewer;
+class P50P90Form;
 
 struct InputPageGroup;
 
@@ -97,6 +98,7 @@ private:
 	wxSimplebook *m_pageFlipper;
 	ResultsViewer *m_baseCaseResults;
 	ParametricViewer *m_parametrics;
+	P50P90Form *m_p50p90;
 
 	PageNote *m_pageNote;
 	wxString m_lastPageNoteId;
