@@ -57,7 +57,7 @@ function setup_residential_pages()
 {
 	addpage( [[ 'Degradation' ]] );
 	addpage( [[ 'Residential Loan',
-				{'name'='Taxes and Loan Inputs', 'collapsible'=true,'collapsible_var'='show_financing'},
+				{'name'='Financing','caption'='Taxes and Loan Inputs','collapsible'=true,'collapsible_var'='show_financing'},
 				{'name'='Tax Credits', 'collapsible'=true, 'collapsible_var'='show_tax_credits', 'collapsed_by_default'=false},
 				{'name'='Incentives', 'collapsible'=true, 'collapsible_var'='show_incentives'} ]], { 'sidebar'='Financing', 'help'='Financing Residential' } );
 	
@@ -71,7 +71,7 @@ function setup_commercial_pages()
 {
 	addpage( [[ 'Degradation' ]] );
 	addpage( [[ 'Commercial Loan',
-				{'name'='Taxes and Loan Inputs', 'collapsible'=true,'collapsible_var'='show_financing'},
+				{'name'='Financing','caption'='Taxes and Loan Inputs','collapsible'=true,'collapsible_var'='show_financing'},
 				{'name'='Depreciation', 'collapsible'=true,'collapsible_var'='show_depreciation'},
 				{'name'='Tax Credits', 'collapsible'=true, 'collapsible_var'='show_tax_credits', 'collapsed_by_default'=false},
 				{'name'='Incentives', 'collapsible'=true, 'collapsible_var'='show_incentives'} ]], 
@@ -86,8 +86,8 @@ function setup_commercial_ppa_pages()
 {
 	addpage( [[ 'Degradation' ]] );
 	addpage( [[ 'Commercial PPA Financing',
-				{'name'='Taxes and Loan Inputs', 'collapsible'=true,'collapsible_var'='show_financing'},
-				{'name'='Construction Financing', 'collapsible'=true,'collapsible_var'='show_construction_period'} ]], 
+				{'name'='Financing','caption'='Taxes and Loan Inputs','collapsible'=true,'collapsible_var'='show_financing'},
+				{'name'='Construction Period','caption'='Construction Financing','collapsible'=true,'collapsible_var'='show_construction_period'} ]], 
 				{ 'sidebar'='Financing', 'help'='FinancingCommercial PPA' }  );
 	addpage ( [[ 'Tax Credits','Incentives']],
 				{ 'sidebar'='Incentives', 'help'='Incentives' } );					
@@ -100,8 +100,8 @@ function setup_independent_power_producer_pages()
 {
 	addpage( [[ 'Degradation' ]] );
 	addpage( [[ 'Utility IPP Financing',
-				{'name'='Taxes and Loan Inputs', 'collapsible'=true,'collapsible_var'='show_financing'},
-				{'name'='Construction Financing', 'collapsible'=true,'collapsible_var'='show_construction_period'} ]], 
+				{'name'='Financing','caption'='Taxes and Loan Inputs','collapsible'=true,'collapsible_var'='show_financing'},
+				{'name'='Construction Period','caption'='Construction Financing','collapsible'=true,'collapsible_var'='show_construction_period'} ]], 
 				{ 'sidebar'='Financing', 'help'='Financing Independent Power Producer' }  );
 	addpage( [[ 'Energy Payment Dispatch' ]], { 'sidebar'='Time of Delivery Factors' });
 	addpage ( [[ 'Tax Credits','Incentives']],
@@ -115,8 +115,8 @@ function setup_leveraged_partnership_flip_pages()
 {
 	addpage( [[ 'Degradation' ]] );
 	addpage( [[ 'FlipModel', 'TaxInvestor', 'ConstantDSCRDebt',
-				{'name'='Taxes and Loan Inputs', 'collapsible'=true,'collapsible_var'='show_financing'},
-				{'name'='Construction Financing', 'collapsible'=true,'collapsible_var'='show_construction_period'},
+				{'name'='Financing','caption'='Taxes and Loan Inputs','collapsible'=true,'collapsible_var'='show_financing'},
+				{'name'='Construction Period','caption'='Construction Financing','collapsible'=true,'collapsible_var'='show_construction_period'},
 				{'name'='CapitalCost', 'collapsible'=true,'collapsible_var'='show_CapitalCost'},
 				{'name'='ReserveAccounts', 'collapsible'=true,'collapsible_var'='show_ReserveAccounts'}
 				 ]], 
@@ -132,8 +132,8 @@ function setup_all_equity_partnership_flip_pages()
 {
 	addpage( [[ 'Degradation' ]] );
 	addpage( [[ 'FlipModel', 'TaxInvestor', 'CapitalRecovery',
-				{'name'='Taxes and Loan Inputs', 'collapsible'=true,'collapsible_var'='show_financing'},
-				{'name'='Construction Financing', 'collapsible'=true,'collapsible_var'='show_construction_period'},
+				{'name'='Financing','caption'='Taxes and Loan Inputs','collapsible'=true,'collapsible_var'='show_financing'},
+				{'name'='Construction Period','caption'='Construction Financing','collapsible'=true,'collapsible_var'='show_construction_period'},
 				{'name'='CapitalCost', 'collapsible'=true,'collapsible_var'='show_CapitalCost'},
 				{'name'='ReserveAccounts', 'collapsible'=true,'collapsible_var'='show_ReserveAccounts'}
 				 ]], 
@@ -148,8 +148,8 @@ function setup_sale_leaseback_pages()
 {
 	addpage( [[ 'Degradation' ]] );
 	addpage( [[ 'FlipModel', 'SaleLeaseback', 
-				{'name'='Taxes and Loan Inputs', 'collapsible'=true,'collapsible_var'='show_financing'},
-				{'name'='Construction Financing', 'collapsible'=true,'collapsible_var'='show_construction_period'},
+				{'name'='Financing','caption'='Taxes and Loan Inputs','collapsible'=true,'collapsible_var'='show_financing'},
+				{'name'='Construction Period','caption'='Construction Financing','collapsible'=true,'collapsible_var'='show_construction_period'},
 				{'name'='CapitalCost', 'collapsible'=true,'collapsible_var'='show_CapitalCost'},
 				{'name'='ReserveAccounts', 'collapsible'=true,'collapsible_var'='show_ReserveAccounts'}
 				 ]], 
@@ -164,8 +164,8 @@ function setup_single_owner_pages()
 {
 	addpage( [[ 'Degradation' ]] );
 	addpage( [[ 'FlipModel', 'ConstantDSCRDebt',
-				{'name'='Taxes and Loan Inputs', 'collapsible'=true,'collapsible_var'='show_financing'},
-				{'name'='Construction Financing', 'collapsible'=true,'collapsible_var'='show_construction_period'},
+				{'name'='Financing','caption'='Taxes and Loan Inputs','collapsible'=true,'collapsible_var'='show_financing'},
+				{'name'='Construction Period','caption'='Construction Financing','collapsible'=true,'collapsible_var'='show_construction_period'},
 				{'name'='CapitalCostSO', 'collapsible'=true,'collapsible_var'='show_CapitalCostSO'},
 				{'name'='ReserveAccounts', 'collapsible'=true,'collapsible_var'='show_ReserveAccounts'}
 				 ]], 
