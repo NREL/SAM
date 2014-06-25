@@ -18,6 +18,7 @@ LDFLAGS = `wx-config-3 --libs` `wx-config-3 --libs aui` `wx-config-3 --libs stc`
 OBJECTS = ide.o \
 	registration.o \
 	gridsupport.o \
+	p50p90.o \
 	reports.o \
 	script.o \
 	graph.o \

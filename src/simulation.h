@@ -51,7 +51,7 @@ public:
 	wxArrayString &GetWarnings();
 	
 	static bool ListAllOutputs( ConfigInfo *cfg, 
-		wxArrayString *names, wxArrayString *labels, wxArrayString *units );
+		wxArrayString *names, wxArrayString *labels, wxArrayString *units, bool single_values = false );
 
 private:
 	Case *m_case;

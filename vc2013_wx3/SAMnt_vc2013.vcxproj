@@ -26,6 +26,7 @@
     <ClCompile Include="..\src\excelexch.cpp" />
     <ClCompile Include="..\src\graph.cpp" />
     <ClCompile Include="..\src\gridsupport.cpp" />
+    <ClCompile Include="..\src\p50p90.cpp" />
     <ClCompile Include="..\src\parametric.cpp" />
     <ClCompile Include="..\src\registration.cpp" />
     <ClCompile Include="..\src\reports.cpp" />
@@ -65,6 +66,7 @@
     <ClInclude Include="..\src\excelexch.h" />
     <ClInclude Include="..\src\graph.h" />
     <ClInclude Include="..\src\gridsupport.h" />
+    <ClInclude Include="..\src\p50p90.h" />
     <ClInclude Include="..\src\parametric.h" />
     <ClInclude Include="..\src\registration.h" />
     <ClInclude Include="..\src\reports.h" />

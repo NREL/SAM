@@ -25,6 +25,7 @@
 #include "ipagelist.h"
 #include "simulation.h"
 #include "parametric.h"
+#include "p50p90.h"
 
 #include "../resource/graph.cpng"
 
@@ -190,7 +191,10 @@ CaseWindow::CaseWindow( wxWindow *parent, Case *c )
 
 
 	m_pageFlipper->AddPage( new wxPanel( m_pageFlipper ), "Sensitivity", false );
-	m_pageFlipper->AddPage( new wxPanel( m_pageFlipper ), "P50/P90", false );
+
+	m_p50p90 = new P50P90Form( m_pageFlipper, m_case );
+	m_pageFlipper->AddPage( m_p50p90, "P50/P90", false );
+
 	m_pageFlipper->AddPage( new wxPanel( m_pageFlipper ), "Scripting", false );
 
 	
