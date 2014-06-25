@@ -240,7 +240,7 @@ bool GridCellVarValueEditor::DisplayEditor(wxUIObject *obj, wxString &name, wxGr
 		obj->CreateNative(grid);
 		ActiveInputPage::DataExchange(obj, *vv, ActiveInputPage::VAR_TO_OBJ);
 		AFHourlyFactorCtrl *hf = obj->GetNative<AFHourlyFactorCtrl>();
-		hf->DoEdit();
+//		hf->DoEdit();
 		ActiveInputPage::DataExchange(obj, *vv, ActiveInputPage::OBJ_TO_VAR);
 	}
 	else if (type == "DiurnalPeriod")
