@@ -68,6 +68,7 @@ public:
 	// for choice controls
 	wxString GetChoices(int row, int col);
 	int GetMaxChoice(int row, int col);
+	wxString GetChoice(int row, int col); // actual string choice
 
 	bool IsInput(int col);
 	bool IsInput(wxString &var_name);
@@ -171,6 +172,11 @@ private:
 	void FillDown(int rows);
 
 	void ShowAllData();
+
+	void CopyToClipboard();
+	void SaveToCSV();
+	void SendToExcel();
+	void GetTextData(wxString &dat, char sep);
 
 	ParametricGrid *m_grid;
 	ParametricGridData *m_grid_data;
