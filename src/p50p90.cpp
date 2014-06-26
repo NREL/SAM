@@ -3,6 +3,7 @@
 #include <wx/dir.h>
 #include <wx/textctrl.h>
 #include <wx/filename.h>
+#include <wx/hyperlink.h>
 
 #include <wex/snaplay.h>
 #include <wex/extgrid.h>
@@ -13,6 +14,7 @@
 #include "simulation.h"
 #include "p50p90.h"
 #include "case.h"
+#include "main.h"
 #include "results.h"
 
 enum { ID_SELECT_FOLDER = wxID_HIGHEST+494,
@@ -28,6 +30,7 @@ P50P90Form::P50P90Form( wxWindow *parent, Case *cc )
 	: wxPanel( parent ), m_case(cc)
 {
 	wxBoxSizer *sizer_top = new wxBoxSizer( wxHORIZONTAL );
+	sizer_top->Add( new wxHyperlinkCtrl( this, wxID_ANY, "Download historical weather data", SamApp::WebApi("historical_nsrdb") ), 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
 	sizer_top->Add( new wxStaticText( this, wxID_ANY, "Select weather file folder:" ), 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
 	sizer_top->Add( m_folder = new wxTextCtrl( this, wxID_ANY ), 1, wxALL|wxALIGN_CENTER_VERTICAL, 4 );
 	sizer_top->Add( new wxButton( this, ID_SELECT_FOLDER, "...", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT ), 0, wxALL|wxALIGN_CENTER_VERTICAL, 3 );
