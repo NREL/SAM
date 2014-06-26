@@ -1,5 +1,7 @@
 #include <wx/panel.h>
 #include <wx/button.h>
+#include <wx/busyinfo.h>
+#include <wx/clipbrd.h>
 
 #include <wex/plot/plplotctrl.h>
 #include <wex/plot/plbarplot.h>
@@ -9,6 +11,7 @@
 #include <wex/metro.h>
 #include <wex/utils.h>
 #include <wex/snaplay.h>
+#include <wex/ole/excelauto.h>
 
 #include "parametric.h"
 #include "main.h"
@@ -380,11 +383,14 @@ void ParametricViewer::OnMenuItem(wxCommandEvent &evt)
 		ShowAllData();
 		break;
 	case ID_OUTPUTMENU_CLIPBOARD:
+		CopyToClipboard();
 		break;
 	case ID_OUTPUTMENU_CSV:
+		SaveToCSV();
 		break;
 #ifdef __WXMSW__
 	case ID_OUTPUTMENU_EXCEL:
+		SendToExcel();
 		break;
 #endif
 	case ID_INPUTMENU_FILL_DOWN_ONE_VALUE:
@@ -397,6 +403,123 @@ void ParametricViewer::OnMenuItem(wxCommandEvent &evt)
 		FillDown(-1);
 		break;
 	}
+}
+
+void ParametricViewer::GetTextData(wxString &dat, char sep)
+{
+	dat = wxEmptyString;
+	if (!m_grid)
+		return;
+
+	size_t approxbytes = m_grid_data->GetNumberRows() * 15 * m_grid_data->GetNumberCols();
+	dat.Alloc(approxbytes);
+
+	size_t c;
+
+	for (c = 0; c<m_grid_data->GetNumberCols(); c++)
+	{
+		wxString label = m_grid_data->GetColLabelValue(c);
+		label.Replace('\n', " | ");
+
+		if (sep == ',')
+			dat += '"' + label + '"';
+		else
+			dat += label;
+
+		if (c < m_grid_data->GetNumberCols() - 1)
+			dat += sep;
+		else
+			dat += '\n';
+	}
+
+	for (size_t r = 0; r<m_grid_data->GetNumberRows(); r++)
+	{
+		for (c = 0; c<m_grid_data->GetNumberCols(); c++)
+		{
+			// choice values - can handle hourly and monthly similarly
+			if (m_grid_data->GetTypeName(r, c) == "GridCellChoice")
+
+				dat += m_grid_data->GetChoice(r, c);
+			else 
+				dat += m_grid_data->GetValue(r, c);
+
+			if (c < m_grid_data->GetNumberCols() - 1)
+				dat += sep;
+			else
+				dat += '\n';
+		}
+	}
+}
+
+
+void ParametricViewer::CopyToClipboard()
+{
+	wxBusyInfo busy("Processing data table... please wait");
+	wxString dat;
+	GetTextData(dat, '\t');
+
+	// strip commas per request from Paul 5/23/12 meeting
+	dat.Replace(",", "");
+
+	if (wxTheClipboard->Open())
+	{
+		wxTheClipboard->SetData(new wxTextDataObject(dat));
+		wxTheClipboard->Close();
+	}
+}
+
+void ParametricViewer::SaveToCSV()
+{
+	wxFileDialog fdlg(this, "Save as CSV", wxEmptyString, "results.csv", "Comma-separated values (*.csv)|*.csv", wxFD_SAVE | wxFD_OVERWRITE_PROMPT);
+	if (fdlg.ShowModal() != wxID_OK) return;
+
+	FILE *fp = fopen(fdlg.GetPath().c_str(), "w");
+	if (!fp)
+	{
+		wxMessageBox("Could not open file for write:\n\n" + fdlg.GetPath());
+		return;
+	}
+
+	wxBusyInfo busy("Writing CSV file... please wait");
+
+	wxString dat;
+	GetTextData(dat, ',');
+	fputs(dat.c_str(), fp);
+	fclose(fp);
+
+}
+
+void ParametricViewer::SendToExcel()
+{
+	wxBusyInfo busy("Processing data table... please wait");
+	wxString dat;
+	GetTextData(dat, '\t');
+
+	// strip commas per request from Paul 5/23/12 meeting
+	dat.Replace(",", "");
+
+#ifdef __WXMSW__
+	wxExcelAutomation xl;
+	if (!xl.StartExcel())
+	{
+		wxMessageBox("Could not start Excel.");
+		return;
+	}
+
+	xl.Show(true);
+
+	if (!xl.NewWorkbook())
+	{
+		wxMessageBox("Could not create a new Excel worksheet.");
+		return;
+	}
+	if (wxTheClipboard->Open())
+	{
+		wxTheClipboard->SetData(new wxTextDataObject(dat));
+		wxTheClipboard->Close();
+		xl.PasteClipboard();
+	}
+#endif
 }
 
 
@@ -1028,6 +1151,21 @@ int ParametricGridData::GetMaxChoice(int row, int col)
 	return max_choice;
 }
 
+wxString ParametricGridData::GetChoice(int row, int col)
+{
+	wxString ret_str = wxEmptyString;
+	if ((col>-1) && (col < m_cols))
+	{
+		if (VarInfo *vi = GetVarInfo(row, col))
+		{
+			wxArrayString as = vi->IndexLabels;
+			int ndx = (int)GetDouble(row, col);
+			if ((as.Count() > 0) && (ndx >= 0) && (ndx < as.Count()))
+				ret_str = as[ndx];
+		}
+	}
+	return ret_str;
+}
 
 wxString ParametricGridData::GetChoices(int row, int col)
 {
