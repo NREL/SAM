@@ -55,14 +55,15 @@ function setup_utility_rate()
 
 function setup_residential_pages()
 {
-	addpage( [[ 'Degradation' ]] );
-	addpage( [[ 'Residential Loan',
-				{'name'='Financing','caption'='Taxes and Loan Inputs','collapsible'=true,'collapsible_var'='show_financing'},
-				{'name'='Tax Credits', 'collapsible'=true, 'collapsible_var'='show_tax_credits', 'collapsed_by_default'=false},
-				{'name'='Incentives', 'collapsible'=true, 'collapsible_var'='show_incentives'} ]], { 'sidebar'='Financing', 'help'='Financing Residential' } );
-	
+	addpage( [['Degradation']],
+	         { 'sidebar'='Degradation','help'='Degradation' } );
+	addpage( [['Financial Residential Loan', 'Financial General' ]],
+		     { 'sidebar'='Financial Parameters', 'help'='Financing Residential'} );
+	addpage( [[ 'Financial DSIRE Download',
+	            { 'name'='Financial Tax Credits','caption'='Tax Credits','collapsible'=true,'collapsible_var'='show_tax_credits', 'collapsed_by_default'=false },
+	            { 'name'='Financial Cash Incentives','caption'='Direct Cash Incentives','collapsible'=true,'collapsible_var'='show_cash_incentives', 'collapsed_by_default'=false } ]], 
+			 { 'sidebar'='Financial Incentives','help'='Incentives' } );
 	setup_utility_rate();
-	
 	addpage( [[ 'Electric Load' ]] );
 }
 
@@ -70,15 +71,13 @@ function setup_residential_pages()
 function setup_commercial_pages()
 {
 	addpage( [[ 'Degradation' ]] );
-	addpage( [[ 'Commercial Loan',
-				{'name'='Financing','caption'='Taxes and Loan Inputs','collapsible'=true,'collapsible_var'='show_financing'},
-				{'name'='Depreciation', 'collapsible'=true,'collapsible_var'='show_depreciation'},
-				{'name'='Tax Credits', 'collapsible'=true, 'collapsible_var'='show_tax_credits', 'collapsed_by_default'=false},
-				{'name'='Incentives', 'collapsible'=true, 'collapsible_var'='show_incentives'} ]], 
-				{ 'sidebar'='Financing', 'help'='Financing Commercial' } );
-	
+	addpage( [[ 'Financial Commercial Loan',
+				'Financial General',
+				{'name'='Depreciation', 'collapsible'=true,'collapsible_var'='show_depreciation', 'collapsed_by_default'=true},
+                'Financial DSIRE Download',
+	            { 'name'='Financial Tax Credits','caption'='Tax Credits','collapsible'=true,'collapsible_var'='show_tax_credits', 'collapsed_by_default'=false },
+	            { 'name'='Financial Cash Incentives','caption'='Direct Cash Incentives','collapsible'=true,'collapsible_var'='show_cash_incentives', 'collapsed_by_default'=false } ]], 				{ 'sidebar'='Financial Parameters', 'help'='Financing Commercial' } );
 	setup_utility_rate();
-	
 	addpage( [[ 'Electric Load' ]] );
 }
 
@@ -86,10 +85,10 @@ function setup_commercial_ppa_pages()
 {
 	addpage( [[ 'Degradation' ]] );
 	addpage( [[ 'Commercial PPA Financing',
-				{'name'='Financing','caption'='Taxes and Loan Inputs','collapsible'=true,'collapsible_var'='show_financing'},
+				{'name'='Financial General','caption'='Taxes and Loan Inputs','collapsible'=true,'collapsible_var'='show_financing'},
 				{'name'='Construction Period','caption'='Construction Financing','collapsible'=true,'collapsible_var'='show_construction_period'} ]], 
-				{ 'sidebar'='Financing', 'help'='FinancingCommercial PPA' }  );
-	addpage ( [[ 'Tax Credits','Incentives']],
+				{ 'sidebar'='Financial Parameters', 'help'='FinancingCommercial PPA' }  );
+	addpage ( [[ 'Financial Tax Credits','Financial Cash Incentives']],
 				{ 'sidebar'='Incentives', 'help'='Incentives' } );					
 	addpage ( [['Depreciation' ]]);
 
@@ -100,11 +99,11 @@ function setup_independent_power_producer_pages()
 {
 	addpage( [[ 'Degradation' ]] );
 	addpage( [[ 'Utility IPP Financing',
-				{'name'='Financing','caption'='Taxes and Loan Inputs','collapsible'=true,'collapsible_var'='show_financing'},
+				{'name'='Financial General','caption'='Taxes and Loan Inputs','collapsible'=true,'collapsible_var'='show_financing'},
 				{'name'='Construction Period','caption'='Construction Financing','collapsible'=true,'collapsible_var'='show_construction_period'} ]], 
-				{ 'sidebar'='Financing', 'help'='Financing Independent Power Producer' }  );
+				{ 'sidebar'='Financial Parameters', 'help'='Financing Independent Power Producer' }  );
 	addpage( [[ 'Energy Payment Dispatch' ]], { 'sidebar'='Time of Delivery Factors' });
-	addpage ( [[ 'Tax Credits','Incentives']],
+	addpage ( [[ 'Financial Tax Credits','Financial Cash Incentives']],
 				{ 'sidebar'='Incentives', 'help'='Incentives' } );					
 	addpage ( [['Depreciation' ]]);
 
@@ -114,15 +113,15 @@ function setup_independent_power_producer_pages()
 function setup_leveraged_partnership_flip_pages()
 {
 	addpage( [[ 'Degradation' ]] );
-	addpage( [[ 'FlipModel', 'TaxInvestor', 'ConstantDSCRDebt',
-				{'name'='Financing','caption'='Taxes and Loan Inputs','collapsible'=true,'collapsible_var'='show_financing'},
+	addpage( [[ 'FlipModel', 'Equity Flip Structure', 'ConstantDSCRDebt',
+				{'name'='Financial General','caption'='Taxes and Loan Inputs','collapsible'=true,'collapsible_var'='show_financing'},
 				{'name'='Construction Period','caption'='Construction Financing','collapsible'=true,'collapsible_var'='show_construction_period'},
 				{'name'='CapitalCost', 'collapsible'=true,'collapsible_var'='show_CapitalCost'},
 				{'name'='ReserveAccounts', 'collapsible'=true,'collapsible_var'='show_ReserveAccounts'}
 				 ]], 
-				{ 'sidebar'='Financing', 'help'='Financing Leveraged Partnership Flip' }  );
+				{ 'sidebar'='Financial Parameters', 'help'='Financing Leveraged Partnership Flip' }  );
 	addpage( [[ 'Energy Payment Dispatch' ]], { 'sidebar'='Time of Delivery Factors' });
-	addpage ( [[ 'Tax Credits','Incentives']],
+	addpage ( [[ 'Financial Tax Credits','Financial Cash Incentives']],
 				{ 'sidebar'='Incentives', 'help'='Incentives' } );					
 	addpage ( [['DHFDepreciation' ]], { 'sidebar'='Depreciation' });
 
@@ -131,15 +130,15 @@ function setup_leveraged_partnership_flip_pages()
 function setup_all_equity_partnership_flip_pages()
 {
 	addpage( [[ 'Degradation' ]] );
-	addpage( [[ 'FlipModel', 'TaxInvestor', 'CapitalRecovery',
-				{'name'='Financing','caption'='Taxes and Loan Inputs','collapsible'=true,'collapsible_var'='show_financing'},
+	addpage( [[ 'FlipModel', 'Equity Flip Structure', 'CapitalRecovery',
+				{'name'='Financial General','caption'='Taxes and Loan Inputs','collapsible'=true,'collapsible_var'='show_financing'},
 				{'name'='Construction Period','caption'='Construction Financing','collapsible'=true,'collapsible_var'='show_construction_period'},
 				{'name'='CapitalCost', 'collapsible'=true,'collapsible_var'='show_CapitalCost'},
 				{'name'='ReserveAccounts', 'collapsible'=true,'collapsible_var'='show_ReserveAccounts'}
 				 ]], 
-				{ 'sidebar'='Financing', 'help'='Financing All Equity Partnership Flip' }  );
+				{ 'sidebar'='Financial Parameters', 'help'='Financing All Equity Partnership Flip' }  );
 	addpage( [[ 'Energy Payment Dispatch' ]], { 'sidebar'='Time of Delivery Factors' });
-	addpage ( [[ 'Tax Credits','Incentives']],
+	addpage ( [[ 'Financial Tax Credits','Financial Cash Incentives']],
 				{ 'sidebar'='Incentives', 'help'='Incentives' } );					
 	addpage ( [['DHFDepreciation' ]], { 'sidebar'='Depreciation' });
 }
@@ -148,15 +147,15 @@ function setup_sale_leaseback_pages()
 {
 	addpage( [[ 'Degradation' ]] );
 	addpage( [[ 'FlipModel', 'SaleLeaseback', 
-				{'name'='Financing','caption'='Taxes and Loan Inputs','collapsible'=true,'collapsible_var'='show_financing'},
+				{'name'='Financial General','caption'='Taxes and Loan Inputs','collapsible'=true,'collapsible_var'='show_financing'},
 				{'name'='Construction Period','caption'='Construction Financing','collapsible'=true,'collapsible_var'='show_construction_period'},
 				{'name'='CapitalCost', 'collapsible'=true,'collapsible_var'='show_CapitalCost'},
 				{'name'='ReserveAccounts', 'collapsible'=true,'collapsible_var'='show_ReserveAccounts'}
 				 ]], 
-				{ 'sidebar'='Financing', 'help'='Financing Sale Leaseback' }  );
+				{ 'sidebar'='Financial Parameters', 'help'='Financing Sale Leaseback' }  );
 	addpage( [[ 'Energy Payment Dispatch' ]], { 'sidebar'='Time of Delivery Factors' });
-	addpage ( [[ 'Tax Credits','Incentives']],
-				{ 'sidebar'='Incentives', 'help'='Incentives' } );					
+	addpage ( [[ 'Financial Tax Credits','Financial Cash Incentives']],
+				{ 'sidebar'='Financial Incentives', 'help'='Incentives' } );					
 	addpage ( [['DHFDepreciation' ]], { 'sidebar'='Depreciation' });
 }
 
@@ -164,14 +163,14 @@ function setup_single_owner_pages()
 {
 	addpage( [[ 'Degradation' ]] );
 	addpage( [[ 'FlipModel', 'ConstantDSCRDebt',
-				{'name'='Financing','caption'='Taxes and Loan Inputs','collapsible'=true,'collapsible_var'='show_financing'},
+				{'name'='Financial General','caption'='Taxes and Loan Inputs','collapsible'=true,'collapsible_var'='show_financing'},
 				{'name'='Construction Period','caption'='Construction Financing','collapsible'=true,'collapsible_var'='show_construction_period'},
 				{'name'='CapitalCostSO', 'collapsible'=true,'collapsible_var'='show_CapitalCostSO'},
 				{'name'='ReserveAccounts', 'collapsible'=true,'collapsible_var'='show_ReserveAccounts'}
 				 ]], 
-				{ 'sidebar'='Financing', 'help'='Financing Single Owner' }  );
+				{ 'sidebar'='Financial Parameters', 'help'='Financing Single Owner' }  );
 	addpage( [[ 'Energy Payment Dispatch' ]], { 'sidebar'='Time of Delivery Factors' });
-	addpage ( [[ 'Tax Credits','Incentives']],
+	addpage ( [[ 'Financial Tax Credits','Financial Cash Incentives']],
 				{ 'sidebar'='Incentives', 'help'='Incentives' } );					
 	addpage ( [['DHFDepreciation' ]], { 'sidebar'='Depreciation' });
 }
@@ -195,7 +194,7 @@ function setup_solar_water_heating_pages()
 
 function setup_csp_physical_trough_pages()
 {
-	addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource' } );
+    addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource' } );
 	addpage( [[ 'Physical Trough Solar Field' ]], { 'sidebar'='Solar Field' } );
 	addpage( [[ 'Physical Trough Collector Header',
 	 {'name'='Physical Trough Collector Type 1', 'caption'='Collector Type 1', 'collapsible'=false, 'collapsible_var'='sca_1_is_shown'},
