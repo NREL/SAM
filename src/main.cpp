@@ -84,7 +84,8 @@ enum { __idFirst = wxID_HIGHEST+592,
 
 	ID_MAIN_MENU, ID_CASE_TABS, ID_PAGE_NOTES,
 	ID_CASE_CREATE, ID_RUN_ALL_CASES, ID_SAVE_HOURLY,
-	ID_NEW_SCRIPT, ID_OPEN_SCRIPT,
+	ID_NEW_SCRIPT, ID_OPEN_SCRIPT, ID_BROWSE_INPUTS,
+	ID_NEW_SCENE, ID_OPEN_SCENE,
 	__idCaseMenuFirst,
 	ID_CASE_CONFIG,
 	ID_CASE_RENAME,
@@ -95,8 +96,6 @@ enum { __idFirst = wxID_HIGHEST+592,
 	ID_CASE_SIMULATE,
 	ID_CASE_RESET_DEFAULTS,
 	ID_CASE_CLEAR_RESULTS,
-	ID_CASE_COMPARE,
-	ID_CASE_VARIABLE_LIST,
 	ID_CASE_IMPORT,
 	ID_CASE_MOVE_LEFT,
 	ID_CASE_MOVE_RIGHT,
@@ -114,8 +113,9 @@ BEGIN_EVENT_TABLE( MainWindow, wxFrame )
 	EVT_MENU( wxID_NEW, MainWindow::OnCommand )
 	EVT_MENU( ID_NEW_SCRIPT, MainWindow::OnCommand )
 	EVT_MENU( ID_OPEN_SCRIPT, MainWindow::OnCommand )
-	EVT_MENU(ID_CASE_VARIABLE_LIST, MainWindow::OnCommand)
-	EVT_MENU(ID_CASE_COMPARE, MainWindow::OnCommand)
+	EVT_MENU( ID_NEW_SCENE, MainWindow::OnCommand )
+	EVT_MENU( ID_OPEN_SCENE, MainWindow::OnCommand )
+	EVT_MENU(ID_BROWSE_INPUTS, MainWindow::OnCommand)
 	EVT_MENU(wxID_OPEN, MainWindow::OnCommand)
 	EVT_MENU( wxID_SAVE, MainWindow::OnCommand )
 	EVT_MENU( wxID_SAVEAS, MainWindow::OnCommand )
@@ -525,13 +525,17 @@ void MainWindow::OnCommand( wxCommandEvent &evt )
 			wxMetroPopupMenu menu;
 			menu.Append( wxID_NEW, "New project\tCtrl-N" );
 			menu.Append( ID_NEW_SCRIPT, "New script" );
+			menu.Append( ID_NEW_SCENE, "New 3D scene" );
 			menu.AppendSeparator();
-			menu.Append( wxID_OPEN, "Open\tCtrl-O" );
+			menu.Append( wxID_OPEN, "Open project\tCtrl-O" );
 			menu.Append( ID_OPEN_SCRIPT, "Open script" );
+			menu.Append( ID_OPEN_SCENE, "Open 3D scene" );
 			menu.AppendSeparator();
 			menu.Append( wxID_SAVE, "Save\tCtrl-S" );
 			menu.Append( wxID_SAVEAS, "Save as..." );
 			menu.Append( ID_SAVE_HOURLY, "Save with hourly results");
+			menu.AppendSeparator();
+			menu.Append( ID_BROWSE_INPUTS, "Browse case inputs...");
 			menu.AppendSeparator();
 			menu.Append( wxID_CLOSE, "Close\tCtrl-W" );
 			menu.Append( wxID_EXIT, "Quit" );
@@ -557,17 +561,13 @@ void MainWindow::OnCommand( wxCommandEvent &evt )
 	case ID_OPEN_SCRIPT:
 		ScriptWindow::OpenFiles();
 		break;
-	case ID_CASE_VARIABLE_LIST:
-		if (Case *cc = GetCurrentCase())
-		{
-			VariableGridFrame *var_frame = new VariableGridFrame(this, &m_project, cc);
-		}
+	case ID_NEW_SCENE:
+	case ID_OPEN_SCENE:
+		wxMessageBox("3D scenes not enabled yet.");
 		break;
-	case ID_CASE_COMPARE:
+	case ID_BROWSE_INPUTS:
 		if (m_project.GetCases().size() > 0)
-		{
-			VariableGridFrame *var_frame = new VariableGridFrame(this, &m_project);
-		}
+			new VariableGridFrame(this, &m_project);
 		break;
 	case wxID_SAVEAS:
 		SaveAs();
@@ -749,10 +749,8 @@ void MainWindow::OnCaseTabButton( wxCommandEvent &evt )
 	menu.Append( ID_CASE_CLEAR_RESULTS, "Clear all results" );
 	menu.Append( ID_CASE_REPORT, "Generate report" );
 	menu.Append( ID_CASE_EXCELEXCH, "Excel exchange...");
-	menu.Append(ID_CASE_COMPARE, "Compare to...");
 	menu.AppendSeparator();
 	menu.Append( ID_CASE_RESET_DEFAULTS, "Reset inputs to default values" );
-	menu.Append( ID_CASE_VARIABLE_LIST, "Input variable list");
 	menu.AppendSeparator();
 	menu.Append( ID_CASE_IMPORT, "Import" );
 
