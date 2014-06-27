@@ -671,7 +671,7 @@ GraphProperties::GraphProperties( wxWindow *parent, int id )
 	sizer->Add( m_type, 0, wxALL|wxEXPAND, 4 );
 	sizer->Add( prop_sizer, 0, wxALL|wxEXPAND, 4 );
 	sizer->Add( chk_sizer, 0, wxALL|wxEXPAND, 4 );
-	sizer->Add( m_Y, 1, wxALL|wxEXPAND, 4 );
+	sizer->Add( m_Y, 1, wxALL|wxEXPAND, 0 );
 	SetSizer( sizer );
 	
 	Enable( false );
@@ -797,7 +797,7 @@ GraphViewer::GraphViewer(wxWindow *parent) : wxPanel(parent, wxID_ANY)
 
 	wxBoxSizer *main_sizer = new wxBoxSizer(wxHORIZONTAL);
 	wxSplitterWindow *splitter = new wxSplitterWindow(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxSP_LIVE_UPDATE | wxSP_NOBORDER);
-	main_sizer->Add(splitter, 1, wxBOTTOM | wxLEFT | wxEXPAND, 5);
+	main_sizer->Add(splitter, 1, wxBOTTOM | wxLEFT | wxEXPAND, 0);
 
 	wxPanel *lpanel = new wxPanel(splitter);
 	wxBoxSizer *sizer_tools = new wxBoxSizer( wxHORIZONTAL );
@@ -813,6 +813,7 @@ GraphViewer::GraphViewer(wxWindow *parent) : wxPanel(parent, wxID_ANY)
 	lpanel->SetSizer( sizer_left );
 
 	m_layout = new wxSnapLayout(splitter, wxID_ANY);
+	m_layout->SetShowSizing( true );
 
 	splitter->SetMinimumPaneSize( 50 );
 	splitter->SplitVertically( lpanel, m_layout, 260 );
