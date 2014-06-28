@@ -800,7 +800,7 @@ ArrayPopupDialog::ArrayPopupDialog(wxWindow *parent, wxString &title, wxString &
 
 
 
-ArrayPopupDialog::ArrayPopupDialog(wxWindow *parent, wxString &title, wxArrayString &labels, std::vector<std::vector<float>> &values_vec) : wxDialog(parent, wxID_ANY, "Array Viewer", wxDefaultPosition, wxDefaultSize, wxRESIZE_BORDER | wxDEFAULT_DIALOG_STYLE)
+ArrayPopupDialog::ArrayPopupDialog(wxWindow *parent, wxString &title, wxArrayString &labels, std::vector<std::vector<float> > &values_vec) : wxDialog(parent, wxID_ANY, "Array Viewer", wxDefaultPosition, wxDefaultSize, wxRESIZE_BORDER | wxDEFAULT_DIALOG_STYLE)
 {
 	// check that all vectors the same size
 	int values_vec_size = values_vec.size();

@@ -130,7 +130,7 @@ class ArrayPopupDialog : public wxDialog
 {
 public:
 	ArrayPopupDialog(wxWindow *parent, wxString &title, wxString &label, VarValue *vv);
-	ArrayPopupDialog(wxWindow *parent, wxString &title, wxArrayString &labels, std::vector<std::vector<float>> &values_vec);
+	ArrayPopupDialog(wxWindow *parent, wxString &title, wxArrayString &labels, std::vector<std::vector<float> > &values_vec);
 	~ArrayPopupDialog();
 
 private:
