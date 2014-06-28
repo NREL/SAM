@@ -571,7 +571,7 @@ void ParametricViewer::OnGridColLabelRightClick(wxGridEvent &evt)
 void ParametricViewer::ShowAllData()
 {
 	int col = m_selected_grid_col;
-	std::vector<std::vector<float>> values_vec;
+	std::vector<std::vector<float> > values_vec;
 	wxArrayString labels;
 	for (int row = 0; row < m_grid_data->GetNumberRows(); row++)
 	{
