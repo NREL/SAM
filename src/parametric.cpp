@@ -156,13 +156,14 @@ bool ParametricData::Read( wxInputStream &_I )
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
-BEGIN_EVENT_TABLE(ParametricGrid, wxExtGridCtrl)
+BEGIN_EVENT_TABLE(ParametricGrid, wxGrid)
 EVT_GRID_CELL_LEFT_CLICK(ParametricGrid::OnLeftClick)
 END_EVENT_TABLE()
 
 
 ParametricGrid::ParametricGrid(wxWindow *parent, wxWindowID id, const wxPoint &pos, const wxSize &size, long style, const wxString &name)
-: wxExtGridCtrl(parent, id, pos, size)
+: wxGrid(parent, id, pos, size, style, name)
+//: wxExtGridCtrl(parent, id, pos, size)
 {
 }
 
@@ -1482,7 +1483,7 @@ wxArrayString ParametricGridData::GetOutputNames()
 	return m_output_names;
 }
 
-/* does nothing ? */
+/* does nothing ? 
 void ParametricGridData::UpdateView()
 {
 	if (GetView())
@@ -1496,7 +1497,7 @@ void ParametricGridData::UpdateView()
 		GetView()->Update();
 	}
 }
-
+*/
 double ParametricGridData::GetDouble(int row, int col)
 {
 	double ret_val = 0;
@@ -1590,7 +1591,7 @@ void ParametricGridData::FillDown(int col, int rows)
 						SetValue(row, col, wxString::Format("%lg", new_val));
 						old_val = new_val;
 					}
-					UpdateView(); 
+//					UpdateView(); 
 				}
 				break;
 			}
@@ -1625,7 +1626,7 @@ void ParametricGridData::FillEvenly(int col)
 						SetValue(row, col, wxString::Format("%lg", new_val));
 						old_val = new_val;
 					}
-					UpdateView();
+//					UpdateView();
 				}
 				break;
 			}
@@ -1684,7 +1685,7 @@ bool ParametricGridData::RunSimulations(int row)
 				m_valid_run[i] = true;
 			else // should not happen!
 				m_valid_run.push_back(true);
-			UpdateView();
+//			UpdateView();
 		}
 		else
 		{
@@ -1726,7 +1727,7 @@ void ParametricGridData::UpdateInputs(wxArrayString &input_names)
 		DeleteSetup(to_remove[i]);
 	m_input_names = input_names;
 	UpdateSetup();
-	UpdateView();
+//	UpdateView();
 }
 
 void ParametricGridData::UpdateOutputs(wxArrayString &output_names)
@@ -1760,7 +1761,7 @@ void ParametricGridData::UpdateOutputs(wxArrayString &output_names)
 		DeleteSetup(to_remove[i]);
 	m_output_names = output_names;
 	UpdateSetup();
-	UpdateView();
+//	UpdateView();
 }
 
 void ParametricGridData::ClearResults(int row)
