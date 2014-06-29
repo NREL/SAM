@@ -224,9 +224,11 @@ public:
 
 	virtual void SetSize(const wxRect& rect);
 
+	
 	virtual void PaintBackground(wxDC& dc,
 		const wxRect& rectCell,
 		const wxGridCellAttr& attr);
+
 
 	virtual void Reset();
 
