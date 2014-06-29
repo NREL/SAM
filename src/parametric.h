@@ -6,7 +6,7 @@
 #include <wx/grid.h>
 
 #include <wex/numeric.h>
-#include <wex/extgrid.h>
+//#include <wex/extgrid.h>
 
 #include "simulation.h"
 #include "object.h"
@@ -90,7 +90,7 @@ public:
 	void ClearResults(int row = -1);
 	void UpdateInputs(wxArrayString &input_names);
 	void UpdateOutputs(wxArrayString &output_names);
-	void UpdateView();
+//	void UpdateView();
 
 	double GetDouble(int row, int col);
 	std::vector<float> GetArray(int row, int col);
@@ -124,7 +124,7 @@ private:
 };
 
 
-class ParametricGrid : public wxExtGridCtrl
+class ParametricGrid : public wxGrid
 {
 public:
 	ParametricGrid(wxWindow *parent, wxWindowID id, const wxPoint &pos = wxDefaultPosition, const wxSize &size = wxDefaultSize,

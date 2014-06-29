@@ -930,8 +930,6 @@ ArrayPopupDialog::~ArrayPopupDialog()
 {
 }
 
-
-
 ////////////////////////////////////////////////////////////////////////////////////////
 
 AlignRightGridCellAttrProvider::AlignRightGridCellAttrProvider()
@@ -968,6 +966,107 @@ wxGridCellAttr *AlignRightGridCellAttrProvider::GetAttr(int row, int col,
 
 	return attr;
 }
+
+
+////////////////////////////////////////////////////////////////////////////////////////
+
+
+VariablePopupDialog::VariablePopupDialog(wxWindow *parent, wxUIObject *obj, wxString &name, VarValue *vv, VarInfo *vi)
+	: wxDialog(parent, wxID_ANY, "Variable Editor", wxDefaultPosition, wxDefaultSize), m_obj(obj), m_vv(vv), m_vi(vi)
+{
+	if ((m_vv == 0) || (m_vi == 0) || (m_obj == 0)) return;
+
+	wxWindow *ctrl = m_obj->CreateNative(this);
+
+	wxString type = m_obj->GetTypeName();
+
+	// similar to main.cpp and activeinput page initilaize
+	if (type == "Library")
+	{
+		if (LibraryCtrl *ll = m_obj->GetNative<LibraryCtrl>())
+		{
+			wxArrayString lib = m_vi->IndexLabels;
+			if (lib.Count() > 0)
+				ll->SetLibrary(lib[0], "*"); // no field list kept with VarInfo - only with form object
+		}
+	}
+	else if (vi->Type == VV_NUMBER && vi->IndexLabels.size() > 0
+		&& (type == "Choice" || type == "ListBox" || type == "CheckListBox" || type == "RadioChoice"))
+	{
+		m_obj->Property("Items").SetNamedOptions(vi->IndexLabels, 0);
+		// RadioChoice not a wxItemContainer descendant
+		if (wxItemContainer *ic = m_obj->GetNative<wxItemContainer>())
+		{
+			ic->Clear();
+			ic->Append(vi->IndexLabels);
+		}
+		else if (wxRadioChoice *rc = m_obj->GetNative<wxRadioChoice>())
+		{
+			rc->Clear();
+			rc->Add(vi->IndexLabels);
+		}
+	}
+	else if (vi->Type == VV_STRING && vi->Flags & VF_LIBRARY
+		&& type == "SearchListBox" && vi->IndexLabels.size() == 2)
+	{
+		if (Library *lib = Library::Find(vi->IndexLabels[0]))
+		{
+			if (AFSearchListBox *slb = m_obj->GetNative<AFSearchListBox>())
+			{
+				slb->Clear();
+				slb->Append(lib->ListEntries());
+			}
+		}
+	}
+
+
+	ActiveInputPage::DataExchange(obj, *vv, ActiveInputPage::VAR_TO_OBJ);
+
+
+
+	wxBoxSizer *sizer = new wxBoxSizer(wxVERTICAL);
+	sizer->Add(ctrl,
+		1,            // make vertically stretchable
+		wxEXPAND |    // make horizontally stretchable
+		wxALL,        //   and make border all around
+		0);         // set border width to 10
+
+
+	wxBoxSizer *button_sizer = new wxBoxSizer(wxHORIZONTAL);
+	button_sizer->Add(
+		new wxButton(this, wxID_OK, "OK"),
+		0,           // make horizontally unstretchable
+		wxALL,       // make border all around (implicit top alignment)
+		0);        // set border width to 10
+	button_sizer->Add(
+		new wxButton(this, wxID_CANCEL, "Cancel"),
+		0,           // make horizontally unstretchable
+		wxALL,       // make border all around (implicit top alignment)
+		0);        // set border width to 10
+
+	sizer->Add(
+		button_sizer,
+		wxSizerFlags(0).Right());
+
+
+	SetSizerAndFit(sizer); // use the sizer for layout and set size and hints
+
+	SetTitle(name);
+#ifdef __WXMSW__
+	SetIcon(wxICON(appicon));
+#endif	
+	CenterOnParent();
+}
+
+VariablePopupDialog::~VariablePopupDialog()
+{
+}
+
+wxUIObject *VariablePopupDialog::GetUIObject()
+{
+	return m_obj;
+}
+
 
 
 
