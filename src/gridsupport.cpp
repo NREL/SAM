@@ -1120,6 +1120,7 @@ void GridCellChoiceEditor::SetSize(const wxRect& rect)
 	wxGridCellEditor::SetSize(rectTallEnough);
 }
 
+
 void GridCellChoiceEditor::PaintBackground(wxDC& dc,
 	const wxRect& rectCell,
 	const wxGridCellAttr& attr)
@@ -1130,8 +1131,9 @@ void GridCellChoiceEditor::PaintBackground(wxDC& dc,
 	// TODO: It doesn't actually fill the client area since the height of a
 	// combo always defaults to the standard.  Until someone has time to
 	// figure out the right rectangle to paint, just do it the normal way.
-	wxGridCellEditor::PaintBackground(dc, rectCell, attr);
+//	wxGridCellEditor::PaintBackground(dc, rectCell, attr);
 }
+
 
 void GridCellChoiceEditor::BeginEdit(int row, int col, wxGrid* grid)
 {
