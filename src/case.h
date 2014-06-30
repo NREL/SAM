@@ -145,6 +145,7 @@ private:
 class CaseEvaluator : public EqnEvaluator
 {
 	Case *m_case;
+	VarTable *m_vt;
 public:	
 	CaseEvaluator( Case *cc, VarTable &vars, EqnFastLookup &efl );
 	virtual void SetupEnvironment( lk::env_t &env );	
