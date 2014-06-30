@@ -1452,7 +1452,7 @@ void ParametricGridData::UpdateNumberRows(int rows)
 		// update valid runs
 		if (m_valid_run.size() < rows)
 		{
-			for (int num_run = m_par.Runs.size(); num_run < rows; num_run++)
+			for (int num_run = m_valid_run.size(); num_run < rows; num_run++)
 				m_valid_run.push_back(false);
 		}
 		else if (m_valid_run.size() > rows)
@@ -1645,52 +1645,56 @@ bool ParametricGridData::RunSimulations(int row)
 {
 	for (size_t i = 0; i < m_par.Runs.size(); i++)
 	{
-		// override values here to handle copying
-		for (int col = 0; col < m_cols; col++)
+		if (!m_valid_run[i])
 		{
-			if (IsInput(col))
-			{
-				if (VarValue *vv = &m_par.Setup[col].Values[i])
-				{
-					// set for simulation
-					m_par.Runs[i]->Override(m_var_names[col], *vv);
-				}
-			}
-		}
-		// Excel exchange if necessary
-		ExcelExchange &ex = m_case->ExcelExch();
-		if (ex.Enabled)
-			ExcelExchange::RunExcelExchange(ex, m_case->Values(), m_par.Runs[i]);
-
-		// invoke simulation
-		//update results in grid - send message to grid to update
-		if (m_par.Runs[i]->Invoke(true))
-		{
-			// update outputs
+			m_par.Runs[i]->Clear();
+			// override values here to handle copying
 			for (int col = 0; col < m_cols; col++)
 			{
-				if (!IsInput(col))
+				if (IsInput(col))
 				{
-					if (VarValue *vv = m_par.Runs[i]->Outputs().Get(m_var_names[col]))
+					if (VarValue *vv = &m_par.Setup[col].Values[i])
 					{
-						if (m_par.Setup[col].Values.size() > i)
-							m_par.Setup[col].Values[i] = *vv;
-						else
-							m_par.Setup[col].Values.push_back(*vv);
+						// set for simulation
+						m_par.Runs[i]->Override(m_var_names[col], *vv);
 					}
 				}
 			}
-			// update row status
-			if (i < m_valid_run.size())
-				m_valid_run[i] = true;
-			else // should not happen!
-				m_valid_run.push_back(true);
-//			UpdateView();
-		}
-		else
-		{
-			wxShowTextMessageDialog(wxJoin(m_par.Runs[i]->GetErrors(), '\n'));
-			return false;
+			// Excel exchange if necessary
+			ExcelExchange &ex = m_case->ExcelExch();
+			if (ex.Enabled)
+				ExcelExchange::RunExcelExchange(ex, m_case->Values(), m_par.Runs[i]);
+
+			// invoke simulation
+			//update results in grid - send message to grid to update
+			if (m_par.Runs[i]->Invoke(true))
+			{
+				// update outputs
+				for (int col = 0; col < m_cols; col++)
+				{
+					if (!IsInput(col))
+					{
+						if (VarValue *vv = m_par.Runs[i]->Outputs().Get(m_var_names[col]))
+						{
+							if (m_par.Setup[col].Values.size() > i)
+								m_par.Setup[col].Values[i] = *vv;
+							else
+								m_par.Setup[col].Values.push_back(*vv);
+						}
+					}
+				}
+				// update row status
+				if (i < m_valid_run.size())
+					m_valid_run[i] = true;
+				else // should not happen!
+					m_valid_run.push_back(true);
+				//			UpdateView();
+			}
+			else
+			{
+				wxShowTextMessageDialog(wxJoin(m_par.Runs[i]->GetErrors(), '\n'));
+				return false;
+			}
 		}
 	}
 	return true;

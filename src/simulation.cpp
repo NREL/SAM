@@ -276,6 +276,7 @@ public:
 	wxProgressDialog *progdlg;
 	wxArrayString *errors;
 	wxArrayString *warnings;
+	boolean silent;
 };
 
 static ssc_bool_t ssc_invoke_handler( ssc_module_t p_mod, ssc_handler_t p_handler,
@@ -298,12 +299,20 @@ static ssc_bool_t ssc_invoke_handler( ssc_module_t p_mod, ssc_handler_t p_handle
 			sc->errors->Add( s0 );
 			break;
 		}
-		return sc->progdlg->WasCancelled() ? 0 : 1;
+		if (!sc->silent)
+			return sc->progdlg->WasCancelled() ? 0 : 1;
+		else
+			return true;
 	}
 	else if (action_type == SSC_UPDATE)
 	{
-		sc->progdlg->Update( (int)f0, s0 );
-		return !sc->progdlg->WasCancelled();
+		if (!sc->silent)
+		{
+			sc->progdlg->Update((int)f0, s0);
+			return !sc->progdlg->WasCancelled();
+		}
+		else
+			return true;
 	}
 	else
 		return 0;
@@ -312,7 +321,6 @@ static ssc_bool_t ssc_invoke_handler( ssc_module_t p_mod, ssc_handler_t p_handle
 
 bool Simulation::Invoke(bool silent)
 {
-	
 	ConfigInfo *cfg = m_case->GetConfiguration();
 	if ( !cfg )
 	{
@@ -347,6 +355,7 @@ bool Simulation::Invoke(bool silent)
 	}
 
 	SimulationContext sc;
+	sc.silent = silent;
 	if (!silent)
 	{
 		sc.progdlg = new wxProgressDialog("Simulation", "in progress", 100,
