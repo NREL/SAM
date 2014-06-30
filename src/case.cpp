@@ -80,6 +80,7 @@ CaseEvaluator::CaseEvaluator( Case *cc, VarTable &vars, EqnFastLookup &efl )
 	: EqnEvaluator( vars, efl )
 {
 	m_case = cc;
+	m_vt = &vars;
 }
 
 void CaseEvaluator::SetupEnvironment( lk::env_t &env )
@@ -157,8 +158,9 @@ bool CaseEvaluator::UpdateLibrary( const wxString &trigger, wxArrayString &chang
 {
 	size_t nerrors = 0;
 	VarInfo *vi = m_case->Variables().Lookup( trigger );
-	VarValue *vv = m_case->Values().Get( trigger );
-	if( vv && vv->Type() == VV_STRING && vi && vi->Flags & VF_LIBRARY )
+//	VarValue *vv = m_case->Values().Get(trigger);
+	VarValue *vv = m_vt->Get(trigger);
+	if (vv && vv->Type() == VV_STRING && vi && vi->Flags & VF_LIBRARY)
 	{
 		if ( vi->IndexLabels.size() == 2 )
 		{
