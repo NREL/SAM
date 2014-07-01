@@ -27,7 +27,7 @@ cashflow{ 'Residential' } = define()
 	cfline( 'cf_om_opt_fuel_1_expense' );
 	cfline( 'cf_om_opt_fuel_2_expense' );
 	
-	cfline( 'cf_property_tax_assessed_value');
+//	cfline( 'cf_property_tax_assessed_value');
 	cfline( 'cf_property_tax_expense');
 	cfline( 'cf_insurance_expense');
 	cfline( 'cf_net_salvage_value');
@@ -77,7 +77,7 @@ cashflow{ 'Commercial' } = define()
 	cfline( 'cf_om_opt_fuel_1_expense' );
 	cfline( 'cf_om_opt_fuel_2_expense' );
 	
-	cfline( 'cf_property_tax_assessed_value');
+//	cfline( 'cf_property_tax_assessed_value');
 	cfline( 'cf_property_tax_expense');
 	cfline( 'cf_insurance_expense');
 	cfline( 'cf_net_salvage_value');
@@ -129,7 +129,7 @@ cashflow{ 'Commercial PPA' } = define()
 	cfline( 'cf_om_opt_fuel_1_expense' );
 	cfline( 'cf_om_opt_fuel_2_expense' );
 	
-	cfline( 'cf_property_tax_assessed_value');
+//	cfline( 'cf_property_tax_assessed_value');
 	cfline( 'cf_property_tax_expense');
 	cfline( 'cf_insurance_expense');
 	cfline( 'cf_net_salvage_value');
@@ -180,7 +180,7 @@ cashflow{ 'Independent Power Producer' } = define()
 	cfline( 'cf_om_opt_fuel_1_expense' );
 	cfline( 'cf_om_opt_fuel_2_expense' );
 	
-	cfline( 'cf_property_tax_assessed_value');
+//	cfline( 'cf_property_tax_assessed_value');
 	cfline( 'cf_property_tax_expense');
 	cfline( 'cf_insurance_expense');
 	cfline( 'cf_net_salvage_value');
