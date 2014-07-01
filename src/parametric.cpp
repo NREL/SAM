@@ -375,10 +375,10 @@ void ParametricViewer::OnMenuItem(wxCommandEvent &evt)
 	switch (evt.GetId())
 	{
 	case ID_OUTPUTMENU_ADD_PLOT:
-		AddPlot(m_grid_data->GetVarName(m_selected_grid_col));
+		AddPlot(m_grid_data->GetVarName(0,m_selected_grid_col));
 		break;
 	case ID_OUTPUTMENU_REMOVE_PLOT:
-		RemovePlot(m_grid_data->GetVarName(m_selected_grid_col));
+		RemovePlot(m_grid_data->GetVarName(0,m_selected_grid_col));
 		break;
 	case ID_OUTPUTMENU_SHOW_DATA:
 		ShowAllData();
@@ -559,7 +559,7 @@ void ParametricViewer::OnGridColLabelRightClick(wxGridEvent &evt)
 				menu->Append(ID_OUTPUTMENU_ADD_PLOT, _T("Add plot"));
 				menu->Append(ID_OUTPUTMENU_REMOVE_PLOT, _T("Remove plot"));
 				menu->Append(ID_OUTPUTMENU_SHOW_DATA, _T("Show all data"));
-				int ndx = m_plot_var_names.Index(m_grid_data->GetVarName(m_selected_grid_col));
+				int ndx = m_plot_var_names.Index(m_grid_data->GetVarName(0,m_selected_grid_col));
 				menu->Enable(ID_OUTPUTMENU_ADD_PLOT, (ndx == wxNOT_FOUND));
 				menu->Enable(ID_OUTPUTMENU_REMOVE_PLOT, (ndx != wxNOT_FOUND));
 				PopupMenu(menu, point);
@@ -605,7 +605,7 @@ bool ParametricViewer::Plot(int col, Graph &g)
 	{
 		if (VarValue *vv = m_grid_data->GetVarValue(0, col))
 		{
-			g.Y.push_back(m_grid_data->GetVarName(col));
+			g.Y.push_back(m_grid_data->GetVarName(0,col));
 			switch (vv->Type())
 			{
 				case VV_NUMBER:
@@ -1550,10 +1550,10 @@ wxString ParametricGridData::GetUnits(int col)
 	return ret_val;
 }
 
-wxString ParametricGridData::GetVarName(int col)
+wxString ParametricGridData::GetVarName(int row, int col)
 {
 	wxString  ret_val=wxEmptyString;
-	if ((col > 0) && (col < m_var_names.Count()))
+	if ((col > 0) && (col < m_var_names.Count()) && (row > -1) && (row < m_rows))
 	{
 		ret_val = m_var_names[col];
 	}

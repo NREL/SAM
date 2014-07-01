@@ -69,6 +69,7 @@ public:
 	wxString GetChoices(int row, int col);
 	int GetMaxChoice(int row, int col);
 	wxString GetChoice(int row, int col); // actual string choice
+	wxString GetVarName(int row, int col);
 
 	bool IsInput(int col);
 	bool IsInput(wxString &var_name);
@@ -96,7 +97,7 @@ public:
 	std::vector<float> GetArray(int row, int col);
 	float *GetArray(int row, int col, size_t *n);
 	wxString GetUnits(int col);
-	wxString GetVarName(int col);
+//	wxString GetVarName(int col);
 
 	void FillDown(int col, int rows=2);
 	void FillEvenly(int col);

@@ -54,6 +54,7 @@ public:
 
 	// for choice controls
 	wxString GetChoices(int row, int col);
+	wxString GetVarName(int row, int col);
 
 	VarInfo* GetVarInfo(int row, int col);
 	void SetVarInfo(int row, int col, VarInfo *vi);
