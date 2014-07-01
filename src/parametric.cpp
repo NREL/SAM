@@ -692,7 +692,7 @@ void ParametricViewer::AddPlot(wxString &output_name)
 				}
 				else // DView
 				{
-					wxDVTimeSeriesCtrl *dv = new wxDVTimeSeriesCtrl(this, wxID_ANY, RAW_DATA_TIME_SERIES, AVERAGE);
+					wxDVTimeSeriesCtrl *dv = new wxDVTimeSeriesCtrl(this, wxID_ANY, wxDV_RAW, wxDV_AVERAGE);
 					for (size_t row = 0; row < m_grid_data->GetRowsCount(); row++)
 					{
 						size_t n;

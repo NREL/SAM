@@ -213,10 +213,10 @@ ResultsViewer::ResultsViewer( wxWindow *parent, int id )
 	cf_sizer->Add( m_cashFlowTable, 1, wxALL|wxEXPAND, 0 );
 	cf_panel->SetSizer(cf_sizer);
 
-	m_hourlySeries = new wxDVTimeSeriesCtrl( this, wxID_ANY,  RAW_DATA_TIME_SERIES, AVERAGE );
+	m_hourlySeries = new wxDVTimeSeriesCtrl( this, wxID_ANY,  wxDV_RAW, wxDV_AVERAGE );
 	AddPage( m_hourlySeries, "Hourly" );
 
-	m_dailySeries = new wxDVTimeSeriesCtrl( this, wxID_ANY,  DAILY_TIME_SERIES, AVERAGE );
+	m_dailySeries = new wxDVTimeSeriesCtrl(this, wxID_ANY, wxDV_DAILY, wxDV_AVERAGE);
 	AddPage( m_dailySeries, "Daily" );
 		
 	m_profilePlots = new wxDVProfileCtrl( this, wxID_ANY );
