@@ -16,6 +16,7 @@ CXXFLAGS = $(CFLAGS)
 LDFLAGS = `wx-config-3 --libs` `wx-config-3 --libs aui` `wx-config-3 --libs stc` `wx-config-3 --libs richtext` -lm $(LKLIB) $(WEXLIB) -lstdc++ -lcurl
 
 OBJECTS = ide.o \
+	solarprospector.o \
 	registration.o \
 	gridsupport.o \
 	p50p90.o \
