@@ -276,7 +276,7 @@ public:
 	wxProgressDialog *progdlg;
 	wxArrayString *errors;
 	wxArrayString *warnings;
-	boolean silent;
+	bool silent;
 };
 
 static ssc_bool_t ssc_invoke_handler( ssc_module_t p_mod, ssc_handler_t p_handler,

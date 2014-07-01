@@ -669,7 +669,7 @@ void ParametricViewer::RemoveAllPlots()
 }
 
 
-void ParametricViewer::AddPlot(wxString &output_name)
+void ParametricViewer::AddPlot(const wxString &output_name)
 {
 	// check if already plotted
 	int col = m_grid_data->GetColumnForName(output_name);
@@ -712,7 +712,7 @@ void ParametricViewer::AddPlot(wxString &output_name)
 	}
 }
 
-void ParametricViewer::RemovePlot(wxString &output_name)
+void ParametricViewer::RemovePlot(const wxString &output_name)
 {
 	int col = m_grid_data->GetColumnForName(output_name);
 	if (col != wxNOT_FOUND)
@@ -1093,7 +1093,7 @@ void ParametricGridData::SetVarInfo(int row, int col, VarInfo *vi)
 	}
 }
 
-int ParametricGridData::GetColumnForName(wxString &name)
+int ParametricGridData::GetColumnForName(const wxString &name)
 {
 	return m_var_names.Index(name);
 }
