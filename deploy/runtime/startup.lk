@@ -6,11 +6,8 @@ addconfig( 'PVWatts', [ 'Residential', 'Commercial', 'Commercial PPA', 'Independ
 addconfig( 'Flat Plate PV', ['Residential', 'Commercial', 'Commercial PPA', 'Independent Power Producer',
  'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'Single Owner', 'None'] );
 addconfig( 'Test Only', [ 'None' ] );
-addconfig( 'Wind Power', [ 'Residential', 'Commercial', 'Commercial PPA', 'Independent Power Producer', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'Single Owner', 'None'] );
-//addconfig( 'Wind Power', [ 'Independent Power Producer', 'None'] );
 
 addconfig( 'Solar Water Heating', ['Residential', 'Commercial', 'None']);
-//addconfig( 'Physical Trough', ['Independent Power Producer','None']);
 addconfig( 'Empirical Trough', ['Independent Power Producer', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'Single Owner','Commercial','None']);
 addconfig( 'Physical Trough', ['Independent Power Producer', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'Single Owner', 'None']);
 addconfig( 'Geothermal Power', ['Independent Power Producer', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'Single Owner', 'None']);
@@ -18,6 +15,9 @@ addconfig( 'Generic System', ['Residential', 'Commercial', 'Commercial PPA', 'In
 addconfig( 'Generic CSP System', ['Commercial', 'Commercial PPA', 'Independent Power Producer', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'Single Owner', 'None']);
 addconfig( 'High-X Concentrating PV', ['Independent Power Producer', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'Single Owner', 'None']);
 addconfig( 'Dish Stirling', ['Commercial', 'Commercial PPA', 'Independent Power Producer', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'Single Owner', 'None']);
+addconfig( 'Biopower', ['Commercial', 'Commercial PPA', 'Independent Power Producer', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'Single Owner', 'None']);
+addconfig( 'Wind Power', [ 'Residential', 'Commercial', 'Commercial PPA', 'Independent Power Producer', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'Single Owner', 'None'] );
+//addconfig( 'Wind BOS', [ 'None' ] );
 
 function setup_pvwatts_pages()
 {
@@ -194,7 +194,7 @@ function setup_solar_water_heating_pages()
 
 function setup_csp_physical_trough_pages()
 {
-    addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource' } );
+	addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource' } );
 	addpage( [[ 'Physical Trough Solar Field' ]], { 'sidebar'='Solar Field' } );
 	addpage( [[ 'Physical Trough Collector Header',
 	 {'name'='Physical Trough Collector Type 1', 'caption'='Collector Type 1', 'collapsible'=false, 'collapsible_var'='sca_1_is_shown'},
@@ -899,4 +899,81 @@ setup_single_owner_pages();
 setconfig( 'Dish Stirling', 'None' );
 setmodules( ['tcsdish']);
 setup_dish_stirling_pages();
+
+// Biopower ////////////////////////////////////////////////////////////////////
+function setup_biopower_pages()
+{
+	addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Ambient Conditions' } );
+	addpage( [[ 'Biopower Feedstock' ]], { 'sidebar'='Feedstock' } );
+	addpage( [[ 'Biopower Plant Specifications' ]], { 'sidebar'='Plant Specs' } );
+	addpage( [[ 'Biopower Emissions Comparison' ]], { 'sidebar'='Emissions' } );
+}
+
+//-----------------------------------------------------
+setconfig( 'Biopower', 'Commercial' );	
+setmodules( ['biomass',  'utilityrate2', 'cashloan']);
+setting( { 'analysis_period_var'='cf_length' } );
+setup_biopower_pages();
+addpage( [[ 'Biopower System Cost','O and M Costs']],{ 'sidebar'='System Costs' } );
+addpage( [[ 'Biopower Feedstock Costs' ]], { 'sidebar'='Feedstock Costs' } );
+setup_commercial_pages();
+
+//-----------------------------------------------------
+setconfig( 'Biopower', 'Commercial PPA' );	
+setmodules( ['biomass',  'ippppa']);
+setting( { 'analysis_period_var'='cf_length' } );
+setup_biopower_pages();
+addpage( [[ 'Biopower System Cost','O and M Costs']],{ 'sidebar'='System Costs' } );
+addpage( [[ 'Biopower Feedstock Costs' ]], { 'sidebar'='Feedstock Costs' } );
+setup_commercial_ppa_pages();
+
+//-----------------------------------------------------
+setconfig( 'Biopower', 'Independent Power Producer' );
+setmodules( ['biomass', 'ippppa']);
+setting( { 'analysis_period_var'='cf_length' } );
+setup_biopower_pages();
+addpage( [[ 'Biopower System Cost','O and M Costs']],{ 'sidebar'='System Costs' } );
+addpage( [[ 'Biopower Feedstock Costs' ]], { 'sidebar'='Feedstock Costs' } );
+setup_independent_power_producer_pages();
+
+//-----------------------------------------------------
+setconfig( 'Biopower', 'Leveraged Partnership Flip' );
+setmodules( ['biomass', 'levpartflip']);
+setting( { 'analysis_period_var'='cf_length' } );
+setup_biopower_pages();
+addpage( [[ 'Biopower System Cost','O and M Costs']],{ 'sidebar'='System Costs' } );
+addpage( [[ 'Biopower Feedstock Costs' ]], { 'sidebar'='Feedstock Costs' } );
+setup_leveraged_partnership_flip_pages();
+
+//-----------------------------------------------------
+setconfig( 'Biopower', 'All Equity Partnership Flip' );
+setmodules( ['biomass', 'equpartflip']);
+setting( { 'analysis_period_var'='cf_length' } );
+setup_biopower_pages();
+addpage( [[ 'Biopower System Cost','O and M Costs']],{ 'sidebar'='System Costs' } );
+addpage( [[ 'Biopower Feedstock Costs' ]], { 'sidebar'='Feedstock Costs' } );
+setup_all_equity_partnership_flip_pages();
+
+//-----------------------------------------------------
+setconfig( 'Biopower', 'Sale Leaseback' );
+setmodules( ['biomass', 'saleleaseback']);
+setting( { 'analysis_period_var'='cf_length' } );
+setup_biopower_pages();
+addpage( [[ 'Biopower System Cost','O and M Costs']],{ 'sidebar'='System Costs' } );
+addpage( [[ 'Biopower Feedstock Costs' ]], { 'sidebar'='Feedstock Costs' } );
+setup_sale_leaseback_pages();
+
+//-----------------------------------------------------
+setconfig( 'Biopower', 'Single Owner' );
+setmodules( ['biomass', 'singleowner']);
+setting( { 'analysis_period_var'='cf_length' } );
+setup_biopower_pages();
+addpage( [[ 'Biopower System Cost','O and M Costs']],{ 'sidebar'='System Costs' } );
+addpage( [[ 'Biopower Feedstock Costs' ]], { 'sidebar'='Feedstock Costs' } );
+setup_single_owner_pages();
+
+//-----------------------------------------------------
+setconfig( 'Biopower', 'None' );
+setmodules( ['biomass']);
+setup_biopower_pages();
 
