@@ -372,8 +372,11 @@ void GridCellVarValueEditor::BeginEdit(int row, int col, wxGrid *pGrid)
 	GridChoiceData *vgd = static_cast<GridChoiceData *>(pGrid->GetTable());
 	VarValue *vv = vgd->GetVarValue(row, col);
 	VarInfo *vi = vgd->GetVarInfo(row, col);
-	wxString var_name = vgd->GetValue(row, 0);
-	wxString var_label = vgd->GetValue(row, 1);
+
+	wxString var_name = vgd->GetVarName(row,col);
+	wxString var_label = vi->Label;
+	//wxString var_name = vgd->GetValue(row, 0);
+	//wxString var_label = vgd->GetValue(row, 1);
 
 	wxUIObject *obj = wxUIObjectTypeProvider::Create(vi->UIObject);
 	if (obj == 0) return;

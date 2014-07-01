@@ -143,6 +143,19 @@ wxString VariableGridData::GetColLabelValue(int col)
 		return wxEmptyString;
 }
 
+wxString VariableGridData::GetVarName(int row, int col)
+{
+	wxString  ret_val = wxEmptyString;
+	if ((col > 0) && (col < m_var_names.Count()) && (row > -1) && (row < m_rows))
+	{
+		int lookup_row = row;
+		if (m_sorted) lookup_row = m_sorted_index[row];
+		ret_val = m_var_names[lookup_row];
+	}
+	return ret_val;
+}
+
+
 
 VarInfo* VariableGridData::GetVarInfo(int row, int col)
 {

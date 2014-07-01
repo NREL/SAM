@@ -35,6 +35,7 @@ public:
 	virtual wxString GetChoices(int row, int col)=0;
 	virtual VarValue* GetVarValue(int row, int col) = 0;
 	virtual VarInfo* GetVarInfo(int row, int col) = 0;
+	virtual wxString GetVarName(int row, int col) = 0;
 };
 
 
