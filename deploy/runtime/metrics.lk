@@ -1,12 +1,13 @@
 function rescom_metrics()
 {
-	metric( 'lcoe_nom',{'label'='LCOE (Nominal)', 'post'=' \u00A2/kWh', 'mode'='f', 'deci'='2' } );
-	metric( 'lcoe_real',{'label'='LCOE (Real)', 'post'=' \u00A2/kWh', 'mode'='f', 'deci'='2' } );
-	metric( 'elec_cost_without_system',{'label'='Electricity Cost Without System', 'pre'='$', 'post'=' ', 'thousep'='true', 'mode'='f', 'deci'='2' } );
-	metric( 'elec_cost_with_system',{'label'='Electricity Cost With System', 'pre'='$', 'post'=' ', 'thousep'='true', 'mode'='f', 'deci'='2' } );
-	// where is the net savings metric?
-	metric( 'npv', {'label'='Net Present Value', 'mode'='f', 'deci'='2', 'thousep'='true', 'pre'='$', 'post'=' ' } );
-	metric( 'payback', {'label'='Payback Period', 'mode'='f', 'deci'='4', 'thousep'='true', 'post'=' years' } );
+	metric( 'lcoe_nom',{'label'='LCOE (nominal)', 'post'=' \u00A2/kWh', 'mode'='f', 'deci'='2' } );
+	metric( 'lcoe_real',{'label'='LCOE (real)', 'post'=' \u00A2/kWh', 'mode'='f', 'deci'='2' } );
+	a = value('elec_cost_without_system');
+	metric( a,{'label'='Electricity cost without system', 'pre'='$', 'post'=' ', 'thousep'='true', 'mode'='f', 'deci'='2' } );
+	metric( 'elec_cost_with_system',{'label'='Electricity cost with system', 'pre'='$', 'post'=' ', 'thousep'='true', 'mode'='f', 'deci'='2' } );
+	metric( 'savings',{'label'='Net savings with system', 'pre'='$', 'post'=' ', 'thousep'='true', 'mode'='f', 'deci'='2' } );
+	metric( 'npv', {'label'='Net present value', 'mode'='f', 'deci'='2', 'thousep'='true', 'pre'='$', 'post'=' ' } );
+	metric( 'payback', {'label'='Payback period', 'mode'='f', 'deci'='4', 'thousep'='true', 'post'=' years' } );
 }
 
 function ipp_metrics()
