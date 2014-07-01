@@ -76,7 +76,7 @@ public:
 	VarInfo* GetVarInfo(int row, int col);
 	void SetVarInfo(int row, int col, VarInfo *vi);
 	VarValue* GetVarValue(int row, int col);
-	int GetColumnForName(wxString &name);
+	int GetColumnForName(const wxString &name);
 	void SetVarValue(int row, int col, VarValue *vv);
 	void Init();
 	void UpdateSetup();
@@ -164,8 +164,8 @@ private:
 	void RunSimulations();
 	void ClearResults();
 
-	void AddPlot(wxString &output_name);
-	void RemovePlot(wxString &output_name);
+	void AddPlot(const wxString &output_name);
+	void RemovePlot(const wxString &output_name);
 	bool Plot(int col, Graph &g);
 	void AddAllPlots();
 	void RemoveAllPlots();
