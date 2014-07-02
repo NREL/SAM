@@ -204,6 +204,7 @@ function solar_water_metrics()
 function biopower_metrics() 
 {
 	metric( 'annual_energy', {'label'='Annual Energy', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh' } );
+	metric( 'system.annual.biomass', {'label'='Annual biomass usage', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' dry tons/yr' } );
 }
 
 // Technology Metrics
