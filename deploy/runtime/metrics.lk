@@ -191,7 +191,6 @@ function generic_hcpv_metrics()
 function dish_stirling_metrics() 
 {
 	metric( 'annual_energy', {'label'='Annual Energy', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh' } );
-	//metric( 'conversion_factor', {'label'='Gross to Net Conversion Factor', 'mode'='f', 'deci'='1', 'thousep'='true', 'post'=' %' } );
 }
 
 function solar_water_metrics()
@@ -200,6 +199,11 @@ function solar_water_metrics()
 	metric( 'annual_Q_aux', {'label'='Aux With Solar', 'mode'='f', 'deci'='1', 'thousep'='true', 'post'=' kWh' } );
 	metric( 'annual_Q_auxonly', {'label'='Aux Without Solar', 'mode'='f', 'deci'='1', 'thousep'='true', 'post'=' kWh' } );
 	metric( 'solar_fraction', {'label'='Annual Solar Fraction', 'mode'='f', 'deci'='3', 'thousep'='false' } );
+}
+
+function biopower_metrics() 
+{
+	metric( 'annual_energy', {'label'='Annual Energy', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh' } );
 }
 
 // Technology Metrics
@@ -214,6 +218,7 @@ metrics{ 'Solar Water Heating' } = define() { solar_water_metrics(); };
 metrics{ 'Wind Power' } = define() { wind_power_metrics(); };
 metrics{ 'Geothermal Power' } = define() { geothermal_metrics(); };
 metrics{ 'Generic System' } = define() { generic_system_metrics(); };
+metrics{ 'Biopower' } = define() { biopower_metrics(); };
 
 // Financial Metrics
 metrics{ 'Residential' } = define() { rescom_metrics(); };
