@@ -172,8 +172,9 @@ bool CaseEvaluator::UpdateLibrary( const wxString &trigger, wxArrayString &chang
 			{
 				// find the entry
 				int entry = lib->FindEntry( vv->String() );
-				if ( entry >= 0 && lib->ApplyEntry( entry, varindex, m_case->Values(), changed ) )
-				{
+				if (entry >= 0 && lib->ApplyEntry(entry, varindex, *m_vt, changed))
+//					if (entry >= 0 && lib->ApplyEntry(entry, varindex, m_case->Values(), changed))
+					{
 					wxLogStatus( "applied " + name + ":" + vv->String() + " = " + wxJoin(changed,',') );
 //					SendEvent( CaseEvent( CaseEvent::VARS_CHANGED, changed ) );
 				}
