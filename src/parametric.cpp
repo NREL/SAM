@@ -16,6 +16,7 @@
 #include "parametric.h"
 #include "main.h"
 #include "casewin.h"
+#include "variablegrid.h"
 
 
 // TODO repeated from Results.cpp - need to combine into common location
@@ -184,7 +185,7 @@ void ParametricGrid::OnLeftClick(wxGridEvent &evt)
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
-enum { ID_SELECT_INPUTS, ID_SELECT_OUTPUTS, ID_NUMRUNS, ID_RUN, ID_CLEAR, ID_GRID, ID_INPUTMENU_FILL_DOWN_SEQUENCE, ID_INPUTMENU_FILL_DOWN_ONE_VALUE, ID_INPUTMENU_FILL_DOWN_EVENLY, ID_OUTPUTMENU_ADD_PLOT, ID_OUTPUTMENU_REMOVE_PLOT, ID_OUTPUTMENU_SHOW_DATA, ID_OUTPUTMENU_CLIPBOARD, ID_OUTPUTMENU_CSV, ID_OUTPUTMENU_EXCEL };
+enum { ID_SELECT_INPUTS, ID_SELECT_OUTPUTS, ID_NUMRUNS, ID_RUN, ID_CLEAR, ID_GRID, ID_INPUTMENU_FILL_DOWN_SEQUENCE, ID_INPUTMENU_FILL_DOWN_ONE_VALUE, ID_INPUTMENU_FILL_DOWN_EVENLY, ID_OUTPUTMENU_ADD_PLOT, ID_OUTPUTMENU_REMOVE_PLOT, ID_OUTPUTMENU_SHOW_DATA, ID_OUTPUTMENU_CLIPBOARD, ID_OUTPUTMENU_CSV, ID_OUTPUTMENU_EXCEL, ID_SHOW_ALL_INPUTS };
 
 
 
@@ -204,6 +205,7 @@ EVT_MENU(ID_OUTPUTMENU_EXCEL, ParametricViewer::OnMenuItem)
 EVT_MENU(ID_INPUTMENU_FILL_DOWN_ONE_VALUE, ParametricViewer::OnMenuItem)
 EVT_MENU(ID_INPUTMENU_FILL_DOWN_SEQUENCE, ParametricViewer::OnMenuItem)
 EVT_MENU(ID_INPUTMENU_FILL_DOWN_EVENLY, ParametricViewer::OnMenuItem)
+EVT_MENU(ID_SHOW_ALL_INPUTS, ParametricViewer::OnMenuItem)
 END_EVENT_TABLE()
 
 
@@ -403,6 +405,15 @@ void ParametricViewer::OnMenuItem(wxCommandEvent &evt)
 	case ID_INPUTMENU_FILL_DOWN_EVENLY:
 		FillDown(-1);
 		break;
+	case ID_SHOW_ALL_INPUTS:
+		if (m_grid_data->GetRuns().size() > m_selected_grid_row)
+		{
+			if (m_grid_data->GetRuns()[m_selected_grid_row])
+			{
+				new VariableGridFrame(this, &SamApp::Project(), m_case, m_grid_data->GetRuns()[m_selected_grid_row]->GetInputVarTable(), wxString::Format("Parametric run %d inputs", m_selected_grid_row+1));
+			}
+		}
+		break;
 	}
 }
 
@@ -527,7 +538,8 @@ void ParametricViewer::SendToExcel()
 void ParametricViewer::OnGridColLabelRightClick(wxGridEvent &evt)
 {
 	m_selected_grid_col = evt.GetCol();
-	if (evt.GetRow() < 0)
+	m_selected_grid_row = evt.GetRow();
+	if (m_selected_grid_row < 0)
 	{
 		if (m_selected_grid_col < 0) // upper left corner of grid
 		{
@@ -565,6 +577,14 @@ void ParametricViewer::OnGridColLabelRightClick(wxGridEvent &evt)
 				PopupMenu(menu, point);
 			}
 		}
+	}
+	else if (m_selected_grid_col < 0) // row header
+	{
+		//	row menu
+		wxPoint point = evt.GetPosition();
+		wxMenu *menu = new wxMenu;
+		menu->Append(ID_SHOW_ALL_INPUTS, _T("Show inputs"));
+		PopupMenu(menu, point);
 	}
 }
 

@@ -39,6 +39,8 @@ public:
 
 	// returns an output or input, outputs have precedence
 	VarValue *GetValue( const wxString &name );
+
+	VarTable *GetInputVarTable() { return &m_inputs; }
 	
 	void ListByCount( size_t n, wxArrayString &list );
 	void GetVariableLengths( std::vector<size_t> &varlengths );
