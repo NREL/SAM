@@ -49,24 +49,30 @@ function setup_flat_plate_pv_pages()
 
 function setup_residential_pages()
 {
-	addpage( [['Financial Degradation']],
-	         { 'sidebar'='Degradation','help'='Degradation' } );
-	addpage( [['Financial Debt Residential', 'Financial General' ]],
-		     { 'sidebar'='Financial Parameters', 'help'='Financing Residential'} );
-	addpage( [[ 'Financial DSIRE Download',
-	            { 'name'='Financial Tax Credits','caption'='Tax Credits','collapsible'=true,'collapsible_var'='show_tax_credits', 'collapsed_by_default'=false },
-	            { 'name'='Financial Cash Incentives','caption'='Direct Cash Incentives','collapsible'=true,'collapsible_var'='show_cash_incentives', 'collapsed_by_default'=false } ]], 
-			 { 'sidebar'='Incentives','help'='Incentives' } );
-	setup_utility_rate();
-	addpage( [[ 'Electric Load' ]] );
+  addpage( [[ 'Financial Degradation']],
+           {  'sidebar'='Degradation','help'='Degradation' } );
+  addpage( [[ 'Financial Debt Residential',
+              'Financial Analysis Parameters',
+              'Financial Tax and Insurance Rates',
+              'Financial Salvage Value' ]],
+           { 'sidebar'='Financial Parameters', 'help'='Financing Residential'} );
+  addpage( [[ 'Financial DSIRE Download',
+              { 'name'='Financial Tax Credits','caption'='Tax Credits','collapsible'=true,'collapsible_var'='show_tax_credits', 'collapsed_by_default'=false },
+              { 'name'='Financial Cash Incentives','caption'='Direct Cash Incentives','collapsible'=true,'collapsible_var'='show_cash_incentives', 'collapsed_by_default'=false } ]], 
+           { 'sidebar'='Incentives','help'='Incentives' } );
+  setup_utility_rate();
+  addpage( [[ 'Electric Load' ]] );
 }
 
 function setup_commercial_pages()
 {
   addpage( [[ 'Financial Degradation' ]],
            { 'sidebar'='Degradation','help'='Degradation' }  );
-  addpage( [[ 'Financial General','Financial Debt Min DSCR',
-              { 'name'='Financial Depreciation Simple','caption'='Depreciation','collapsible'=true,'collapsible_var'='show_depreciation', 'collapsed_by_default'=false } ]],
+  addpage( [[ 'Financial Debt Min DSCR',
+              'Financial Analysis Parameters',
+		      'Financial Tax and Insurance Rates',
+		      'Financial Salvage Value',
+              'Financial Depreciation Simple', ]],
            { 'sidebar'='Financial Parameters','help'='Financing Commercial'} );
   addpage( [[ 'Financial DSIRE Download',
               { 'name'='Financial Tax Credits','caption'='Tax Credits','collapsible'=true,'collapsible_var'='show_tax_credits', 'collapsed_by_default'=false },
@@ -88,16 +94,18 @@ function setup_commercial_ppa_pages()
 {
   addpage( [[ 'Financial Degradation' ]],
            { 'sidebar'='Degradation','help'='Degradation' }  );
-  addpage( [[ 'Financial Solution Mode Commercial PPA','Financial Debt Min DSCR',
-              { 'name'='Financial General','caption'='Analysis Parameters, Tax and Insurance Rates, Salvage Value','collapsible'=true,'collapsible_var'='show_financing', 'collapsed_by_default'=false},
-		      { 'name'='Financial Construction Financing','caption'='Construction Financing','collapsible'=true,'collapsible_var'='show_construction_period', 'collapsed_by_default'=false} ]], 
-              { 'sidebar'='Financial Parameters', 'help'='Financing Commercial PPA' }  );
+  addpage( [[ 'Financial Solution Mode Commercial PPA',
+		      'Financial Debt Min DSCR',
+		      'Financial Analysis Parameters',
+		      'Financial Tax and Insurance Rates',
+		      {'name'='Financial Salvage Value','caption'='Salvage Value','collapsible'=true,'collapsible_var'='show_financing', 'collapsed_by_default'=false},
+              {'name'='Financial Construction Financing','caption'='Construction Financing','collapsible'=true,'collapsible_var'='show_construction_period', 'collapsed_by_default'=false}, 
+              {'name'='Financial Depreciation Simple','caption'='Depreciation','collapsible'=true,'collapsible_var'='show_depreciation', 'collapsed_by_default'=false } ]],
+           { 'sidebar'='Financial Parameters', 'help'='Financing Commercial PPA' }  );
   addpage( [[ 'Financial DSIRE Download',
 		       { 'name'='Financial Tax Credits','caption'='Tax Credits','collapsible'=true,'collapsible_var'='show_tax_credits', 'collapsed_by_default'=false },
                { 'name'='Financial Cash Incentives','caption'='Direct Cash Incentives','collapsible'=true,'collapsible_var'='show_cash_incentives', 'collapsed_by_default'=false } ]], 
 		   { 'sidebar'='Incentives','help'='Incentives' } );
-  addpage( [[ 'Financial Depreciation Simple' ]],
-           { 'sidebar'='Depreciation', 'help'='Depreciation'});
   addpage( [[ 'Financial TOD Factors' ]], { 'sidebar'='Time of Delivery Factors' });
 }
 
@@ -106,16 +114,17 @@ function setup_independent_power_producer_pages()
   addpage( [[ 'Financial Degradation' ]],
            { 'sidebar'='Degradation','help'='Degradation' }  );
   addpage( [[ 'Financial Solution Mode Independent Power Producer',
-              'Financial Debt Min DSCR',
-		      {'name'='Financial General','caption'='Analysis Parameters, Tax and Insurance Rates, Salvage Value','collapsible'=true,'collapsible_var'='show_financing', 'collapsed_by_default'=false},
-              {'name'='Financial Construction Financing','caption'='Construction Financing','collapsible'=true,'collapsible_var'='show_construction_period', 'collapsed_by_default'=false} ]], 
-           { 'sidebar'='Financial Parameters', 'help'='Financing Independent Power Producer' }  );
+		      'Financial Debt Min DSCR',
+		      'Financial Analysis Parameters',
+		      'Financial Tax and Insurance Rates',
+		      {'name'='Financial Salvage Value','caption'='Salvage Value','collapsible'=true,'collapsible_var'='show_financing', 'collapsed_by_default'=false},
+              {'name'='Financial Construction Financing','caption'='Construction Financing','collapsible'=true,'collapsible_var'='show_construction_period', 'collapsed_by_default'=false}, 
+              { 'name'='Financial Depreciation Simple','caption'='Depreciation','collapsible'=true,'collapsible_var'='show_depreciation', 'collapsed_by_default'=false } ]],
+           { 'sidebar'='Financial Parameters', 'help'='Financing Commercial PPA' }  );
   addpage( [[ 'Financial DSIRE Download',
 		      { 'name'='Financial Tax Credits','caption'='Tax Credits','collapsible'=true,'collapsible_var'='show_tax_credits', 'collapsed_by_default'=false },
               { 'name'='Financial Cash Incentives','caption'='Direct Cash Incentives','collapsible'=true,'collapsible_var'='show_cash_incentives', 'collapsed_by_default'=false } ]], 
            { 'sidebar'='Incentives','help'='Incentives' } );
-  addpage( [['Financial Depreciation Simple' ]],
-           {'sidebar'='Depreciation', 'help'='Depreciation'});
   addpage( [[ 'Financial TOD Factors' ]],
            { 'sidebar'='Time of Delivery Factors' });
 }
@@ -125,14 +134,16 @@ function setup_single_owner_pages()
   addpage( [[ 'Financial Degradation' ]],
            { 'sidebar'='Degradation','help'='Degradation' }  );
   addpage( [[ 'Financial Solution Mode Single Owner',
-              'Financial Equity Flip Structure', 
-              'Financial Debt Constant DSCR',
-              {'name'='Financial General','caption'='Analysis Parameters, Tax and Insurance Rates, Salvage Value','collapsible'=true,'collapsible_var'='show_financing'},
-              {'name'='Financial Construction Financing','caption'='Construction Financing','collapsible'=true,'collapsible_var'='show_construction_period'},
-              {'name'='Financial Cost of Financing Single Owner', 'collapsible'=true,'collapsible_var'='show_CapitalCostSO'},
-              {'name'='Financial Reserve Accounts', 'collapsible'=true,'collapsible_var'='show_ReserveAccounts'} ]], 
+              'Financial Analysis Parameters',
+		      'Financial Tax and Insurance Rates',
+		      'Financial Salvage Value',
+		      {'name'='Financial Debt Constant DSCR','caption'='Project Term Debt','collapsible'=true,'collapsible_var'='show_DebtConstDSCR'},
+              {'name'='Financial Cost of Financing Single Owner', 'caption'='Cost of Acquiring Financing','collapsible'=true,'collapsible_var'='show_CapitalCostSO'},
+              {'name'='Financial Construction Financing','caption'='Construction Financing','collapsible'=true,'collapsible_var'='show_construction_period', 'collapsed_by_default'=false},
+              {'name'='Financial Reserve Accounts', 'caption'='Reserve Accounts','collapsible'=true,'collapsible_var'='show_ReserveAccounts'} ]], 
            { 'sidebar'='Financial Parameters', 'help'='Financing Single Owner' }  );
-  addpage( [[ 'Financial TOD Factors' ]], { 'sidebar'='Time of Delivery Factors' });
+  addpage( [[ 'Financial TOD Factors' ]], 
+           { 'sidebar'='Time of Delivery Factors' });
   addpage( [[ 'Financial Tax Credits','Financial Cash Incentives']],
            { 'sidebar'='Incentives', 'help'='Incentives' } );					
   addpage( [['Financial Depreciation Detailed' ]], 
@@ -145,11 +156,13 @@ function setup_leveraged_partnership_flip_pages()
            { 'sidebar'='Degradation','help'='Degradation' }  );
   addpage( [[ 'Financial Solution Mode Flip Leaseback',
               'Financial Equity Flip Structure', 
-              'Financial Debt Constant DSCR',
-              {'name'='Financial General','caption'='Analysis Parameters, Tax and Insurance Rates, Salvage Value','collapsible'=true,'collapsible_var'='show_financing'},
+			  'Financial Analysis Parameters',
+			  'Financial Tax and Insurance Rates',
+			  'Financial Salvage Value',
+		      {'name'='Financial Debt Constant DSCR','caption'='Project Term Debt','collapsible'=true,'collapsible_var'='show_DebtConstDSCR'},
+              {'name'='Financial Cost of Financing Flip Leaseback', 'caption'='Cost of Acquiring Financing','collapsible'=true,'collapsible_var'='show_CapitalCostSO'},
               {'name'='Financial Construction Financing','caption'='Construction Financing','collapsible'=true,'collapsible_var'='show_construction_period'},
-              {'name'='Financial Cost of Financing', 'collapsible'=true,'collapsible_var'='show_CapitalCost'},
-              {'name'='Financial Reserve Accounts', 'collapsible'=true,'collapsible_var'='show_ReserveAccounts'} ]], 
+              {'name'='Financial Reserve Accounts', 'caption'='Reserve Accounts','collapsible'=true,'collapsible_var'='show_ReserveAccounts'} ]], 
            { 'sidebar'='Financial Parameters', 'help'='Financing Leveraged Partnership Flip' }  );
   addpage( [[ 'Financial TOD Factors' ]], 
            { 'sidebar'='Time of Delivery Factors' });
@@ -166,11 +179,13 @@ function setup_all_equity_partnership_flip_pages()
            { 'sidebar'='Degradation','help'='Degradation' }  );
   addpage( [[ 'Financial Solution Mode Flip Leaseback',
               'Financial Equity Flip Structure', 
-              'Financial Capital Recovery',
-              {'name'='Financial General','caption'='Analysis Parameters, Tax and Insurance Rates, Salvage Value','collapsible'=true,'collapsible_var'='show_financing'},
+              'Financial Flip Developer Capital Recovery',
+			  'Financial Analysis Parameters',
+			  'Financial Tax and Insurance Rates',
+			  'Financial Salvage Value',
+              {'name'='Financial Cost of Financing Flip Leaseback', 'caption'='Cost of Acquiring Financing','collapsible'=true,'collapsible_var'='show_CapitalCostSO'},
               {'name'='Financial Construction Financing','caption'='Construction Financing','collapsible'=true,'collapsible_var'='show_construction_period'},
-              {'name'='Financial Cost of Financing', 'collapsible'=true,'collapsible_var'='show_CapitalCost'},
-              {'name'='Financial Reserve Accounts', 'collapsible'=true,'collapsible_var'='show_ReserveAccounts'} ]], 
+              {'name'='Financial Reserve Accounts', 'caption'='Reserve Accounts','collapsible'=true,'collapsible_var'='show_ReserveAccounts'} ]], 
            { 'sidebar'='Financial Parameters', 'help'='Financing All Equity Partnership Flip' }  );
   addpage( [[ 'Financial TOD Factors' ]], 
            { 'sidebar'='Time of Delivery Factors' });
@@ -188,10 +203,12 @@ function setup_sale_leaseback_pages()
   addpage( [[ 'Financial Solution Mode Flip Leaseback',
               'Financial Equity Flip Structure', 
               'Financial Sale Leaseback', 
-              {'name'='Financial General','caption'='Analysis Parameters, Tax and Insurance Rates, Salvage Value','collapsible'=true,'collapsible_var'='show_financing'},
-              {'name'='Financial Construction Financing','caption'='Construction Financing','collapsible'=true,'collapsible_var'='show_construction_period'},
-              {'name'='Financial Cost of Financing', 'collapsible'=true,'collapsible_var'='show_CapitalCost'},
-              {'name'='Financial Reserve Accounts', 'collapsible'=true,'collapsible_var'='show_ReserveAccounts'} ]], 
+			  'Financial Analysis Parameters',
+			  'Financial Tax and Insurance Rates',
+			  'Financial Salvage Value',
+		      {'name'='Financial Debt Constant DSCR','caption'='Project Term Debt','collapsible'=true,'collapsible_var'='show_DebtConstDSCR'},
+              {'name'='Financial Cost of Financing Flip Leaseback', 'caption'='Cost of Acquiring Financing','collapsible'=true,'collapsible_var'='show_CapitalCostSO'},
+              {'name'='Financial Reserve Accounts', 'caption'='Reserve Accounts','collapsible'=true,'collapsible_var'='show_ReserveAccounts'} ]], 
           { 'sidebar'='Financial Parameters', 'help'='Financing Sale Leaseback' }  );
   addpage( [[ 'Financial TOD Factors' ]], 
            { 'sidebar'='Time of Delivery Factors' });
@@ -201,8 +218,6 @@ function setup_sale_leaseback_pages()
   addpage ( [['Financial Depreciation Detailed' ]], 
             { 'sidebar'='Depreciation', 'help'='Depreciation' });
 }
-
-
 
 function setup_windpower_pages()
 {
