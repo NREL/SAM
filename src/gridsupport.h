@@ -135,7 +135,17 @@ public:
 	~ArrayPopupDialog();
 
 private:
+	void OnCommand(wxCommandEvent &evt);
+
+	void CopyToClipboard();
+	void SaveToCSV();
+	void SendToExcel();
+	void GetTextData(wxString &dat, char sep);
+
 	VarValue *m_vv;
+	wxGrid *m_grid;
+
+	DECLARE_EVENT_TABLE()
 };
 
 class AlignRightGridCellAttrProvider : public wxGridCellAttrProvider
