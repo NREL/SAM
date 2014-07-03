@@ -35,7 +35,7 @@
 class VariableGridData : public GridChoiceData
 {
 public:
-	VariableGridData(ProjectFile *pf, Case *c = NULL);
+	VariableGridData(ProjectFile *pf, Case *c = NULL, VarTable *vt = NULL);
 	virtual int GetNumberRows();
 	virtual int GetNumberCols();
 	virtual bool IsEmptyCell(int row, int col);
@@ -74,6 +74,7 @@ private:
 	wxArrayString m_var_labels;
 	std::vector<VarTable*> m_var_table_vec;
 	std::vector<VarInfoLookup*> m_var_info_lookup_vec;
+	VarTable *m_vt;
 };
 
 
@@ -93,7 +94,7 @@ public:
 class VariableGridFrame : public wxFrame, ProjectFileEventListener, CaseEventListener
 {
 public:
-	VariableGridFrame(wxWindow *parent, ProjectFile *pf, Case *c=NULL);
+	VariableGridFrame(wxWindow *parent, ProjectFile *pf, Case *c=NULL, VarTable *vt=NULL, wxString frame_title=wxEmptyString);
 	~VariableGridFrame();
 	void UpdateGrid();
 private:
