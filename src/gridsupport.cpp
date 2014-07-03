@@ -6,8 +6,12 @@
 #include <wx/msgdlg.h>
 #include <wx/tokenzr.h>
 #include <wx/stattext.h>
+#include <wx/busyinfo.h>
+#include <wx/clipbrd.h>
+
 
 #include <wex/metro.h>
+#include <wex/ole/excelauto.h>
 
 #include "widgets.h"
 #include "inputpage.h"
@@ -701,6 +705,13 @@ wxGridCellEditor *GridCellArrayEditor::Clone() const
 
 ////////////////////////////////////////////////////////////////////////////////////////
 
+enum { ID_APD_CLIPBOARD, ID_APD_CSV, ID_APD_EXCEL};
+
+BEGIN_EVENT_TABLE(ArrayPopupDialog, wxDialog)
+EVT_BUTTON(ID_APD_CLIPBOARD, ArrayPopupDialog::OnCommand)
+EVT_BUTTON(ID_APD_CSV, ArrayPopupDialog::OnCommand)
+EVT_BUTTON(ID_APD_EXCEL, ArrayPopupDialog::OnCommand)
+END_EVENT_TABLE()
 
 ArrayPopupDialog::ArrayPopupDialog(wxWindow *parent, const wxString &title, const wxString &label, VarValue *vv ) : wxDialog(parent, wxID_ANY, "Array Viewer", wxDefaultPosition, wxDefaultSize, wxRESIZE_BORDER | wxDEFAULT_DIALOG_STYLE), m_vv(vv)
 {
@@ -713,12 +724,12 @@ ArrayPopupDialog::ArrayPopupDialog(wxWindow *parent, const wxString &title, cons
 	int rows = vec.size();
 	int cols = 2;
 
-	wxExtGridCtrl *grid = new wxExtGridCtrl(this, wxID_ANY);
-	grid->CreateGrid(rows, cols);
+	wxGrid *m_grid = new wxGrid(this, wxID_ANY);
+	m_grid->CreateGrid(rows, cols);
 
-	grid->GetTable()->SetAttrProvider(new AlignRightGridCellAttrProvider());
+	m_grid->GetTable()->SetAttrProvider(new AlignRightGridCellAttrProvider());
 
-	grid->HideRowLabels();
+	m_grid->HideRowLabels();
 	int vec_size = vec.size();
 	wxString index_label = "Index";
 	if (vec_size == 12)
@@ -726,35 +737,35 @@ ArrayPopupDialog::ArrayPopupDialog(wxWindow *parent, const wxString &title, cons
 	else if (vec_size == 8760)
 		index_label = "Hour";
 
-	grid->SetColLabelValue(0, index_label);
+	m_grid->SetColLabelValue(0, index_label);
 
-	grid->SetColLabelValue(1, label);
+	m_grid->SetColLabelValue(1, label);
 
 
 	for (size_t i = 0; i < vec_size; i++)
 	{
-		if (vec_size != 12) grid->SetCellValue(i, 0, wxString::Format("%d", i));
-		grid->SetCellValue(i, 1, wxString::Format("%lg", vec[i]));
+		if (vec_size != 12) m_grid->SetCellValue(i, 0, wxString::Format("%d", i));
+		m_grid->SetCellValue(i, 1, wxString::Format("%lg", vec[i]));
 	}
 
 
 	if (vec_size == 12)
 	{
-		grid->SetCellValue(0, 0, "Jan");
-		grid->SetCellValue(1, 0, "Feb");
-		grid->SetCellValue(2, 0, "Mar");
-		grid->SetCellValue(3, 0, "Apr");
-		grid->SetCellValue(4, 0, "May");
-		grid->SetCellValue(5, 0, "Jun");
-		grid->SetCellValue(6, 0, "Jul");
-		grid->SetCellValue(7, 0, "Aug");
-		grid->SetCellValue(8, 0, "Sep");
-		grid->SetCellValue(9, 0, "Oct");
-		grid->SetCellValue(10, 0, "Nov");
-		grid->SetCellValue(11, 0, "Dec");
+		m_grid->SetCellValue(0, 0, "Jan");
+		m_grid->SetCellValue(1, 0, "Feb");
+		m_grid->SetCellValue(2, 0, "Mar");
+		m_grid->SetCellValue(3, 0, "Apr");
+		m_grid->SetCellValue(4, 0, "May");
+		m_grid->SetCellValue(5, 0, "Jun");
+		m_grid->SetCellValue(6, 0, "Jul");
+		m_grid->SetCellValue(7, 0, "Aug");
+		m_grid->SetCellValue(8, 0, "Sep");
+		m_grid->SetCellValue(9, 0, "Oct");
+		m_grid->SetCellValue(10, 0, "Nov");
+		m_grid->SetCellValue(11, 0, "Dec");
 	}
 
-	grid->SetEditable(false);
+	m_grid->SetEditable(false);
 	
 	wxBoxSizer *sizer = new wxBoxSizer(wxVERTICAL);
 
@@ -766,13 +777,21 @@ ArrayPopupDialog::ArrayPopupDialog(wxWindow *parent, const wxString &title, cons
 	sz = GetTextExtent(spacer);
 	int width = sz.GetWidth() - 20 ; // subtract scrollbar width
 
-	grid->SetColumnWidth(0, (int)(width / 2.0));
-	grid->SetColumnWidth(1, width - (int)(width / 2.0));
+	m_grid->SetColumnWidth(0, (int)(width / 2.0));
+	m_grid->SetColumnWidth(1, width - (int)(width / 2.0));
 
 
 	sizer->Add(new wxStaticText(this, wxID_ANY, spacer), 0, wxEXPAND | wxALL, 0);
 
-	sizer->Add(grid,
+	wxBoxSizer *cf_tools = new wxBoxSizer(wxHORIZONTAL);
+	cf_tools->Add(new wxButton(this, ID_APD_CLIPBOARD, "Copy to clipboard"), 0, wxALL, 2);
+	cf_tools->Add(new wxButton(this, ID_APD_CSV, "Save as CSV"), 0, wxALL, 2);
+	cf_tools->Add(new wxButton(this, ID_APD_EXCEL, "Send to Excel"), 0, wxALL, 2);
+	cf_tools->AddStretchSpacer();
+
+	sizer->Add(cf_tools);
+
+	sizer->Add(m_grid,
 		0,            // make vertically stretchable
 		wxEXPAND |    // make horizontally stretchable
 		wxALL,        //   and make border all around
@@ -823,14 +842,14 @@ ArrayPopupDialog::ArrayPopupDialog(wxWindow *parent, const wxString &title, cons
 	int rows = vec_size;
 	int cols = values_vec_size + 1;
 
-	wxExtGridCtrl *grid = new wxExtGridCtrl(this, wxID_ANY);
-	grid->CreateGrid(rows, cols);
+	wxGrid *m_grid = new wxGrid(this, wxID_ANY);
+	m_grid->CreateGrid(rows, cols);
 
-	grid->Freeze();
+	m_grid->Freeze();
 
-	grid->GetTable()->SetAttrProvider(new AlignRightGridCellAttrProvider());
+	m_grid->GetTable()->SetAttrProvider(new AlignRightGridCellAttrProvider());
 
-	grid->HideRowLabels();
+	m_grid->HideRowLabels();
 	wxString index_label = "Index";
 	if (vec_size == 12)
 		index_label = "Month";
@@ -838,41 +857,41 @@ ArrayPopupDialog::ArrayPopupDialog(wxWindow *parent, const wxString &title, cons
 		index_label = "Hour";
 
 
-	grid->SetColLabelValue(0, index_label);
+	m_grid->SetColLabelValue(0, index_label);
 
 
 	for (size_t col = 0; col < values_vec_size; col++)
 	{
 		if (labels.Count()>col)
-			grid->SetColLabelValue(col+1, labels[col]);
+			m_grid->SetColLabelValue(col+1, labels[col]);
 		for (size_t row = 0; row < vec_size; row++)
-			grid->SetCellValue(row, col+1, wxString::Format("%lg", values_vec[col][row]));
+			m_grid->SetCellValue(row, col+1, wxString::Format("%lg", values_vec[col][row]));
 	}
 
 	if (vec_size == 12)
 	{
-		grid->SetCellValue(0, 0, "Jan");
-		grid->SetCellValue(1, 0, "Feb");
-		grid->SetCellValue(2, 0, "Mar");
-		grid->SetCellValue(3, 0, "Apr");
-		grid->SetCellValue(4, 0, "May");
-		grid->SetCellValue(5, 0, "Jun");
-		grid->SetCellValue(6, 0, "Jul");
-		grid->SetCellValue(7, 0, "Aug");
-		grid->SetCellValue(8, 0, "Sep");
-		grid->SetCellValue(9, 0, "Oct");
-		grid->SetCellValue(10, 0, "Nov");
-		grid->SetCellValue(11, 0, "Dec");
+		m_grid->SetCellValue(0, 0, "Jan");
+		m_grid->SetCellValue(1, 0, "Feb");
+		m_grid->SetCellValue(2, 0, "Mar");
+		m_grid->SetCellValue(3, 0, "Apr");
+		m_grid->SetCellValue(4, 0, "May");
+		m_grid->SetCellValue(5, 0, "Jun");
+		m_grid->SetCellValue(6, 0, "Jul");
+		m_grid->SetCellValue(7, 0, "Aug");
+		m_grid->SetCellValue(8, 0, "Sep");
+		m_grid->SetCellValue(9, 0, "Oct");
+		m_grid->SetCellValue(10, 0, "Nov");
+		m_grid->SetCellValue(11, 0, "Dec");
 	}
 	else
 	{
 		for (size_t row = 0; row < vec_size; row++)
-			grid->SetCellValue(row, 0, wxString::Format("%d", row));
+			m_grid->SetCellValue(row, 0, wxString::Format("%d", row));
 	}
 
-	if (vec_size == 1) grid->SetColumnWidth(0, 0); // hide index column for single values.
-	grid->EnableEditing(false);
-	grid->Thaw();
+	if (vec_size == 1) m_grid->SetColumnWidth(0, 0); // hide index column for single values.
+	m_grid->EnableEditing(false);
+	m_grid->Thaw();
 
 
 	wxBoxSizer *sizer = new wxBoxSizer(wxVERTICAL);
@@ -891,15 +910,23 @@ ArrayPopupDialog::ArrayPopupDialog(wxWindow *parent, const wxString &title, cons
 	col_width = (int)(width / values_vec_size);
 	for (size_t i = 1; i < cols; i++)
 	{
-		grid->SetColumnWidth(i, col_width);
+		m_grid->SetColumnWidth(i, col_width);
 		tot_width += col_width;
 	}
-	grid->SetColumnWidth(0, width - tot_width);
+	m_grid->SetColumnWidth(0, width - tot_width);
 
 
 	sizer->Add(new wxStaticText(this, wxID_ANY, spacer), 0, wxEXPAND | wxALL, 0);
 
-	sizer->Add(grid,
+	wxBoxSizer *cf_tools = new wxBoxSizer(wxHORIZONTAL);
+	cf_tools->Add(new wxButton(this, ID_APD_CLIPBOARD, "Copy to clipboard"), 0, wxALL, 2);
+	cf_tools->Add(new wxButton(this, ID_APD_CSV, "Save as CSV"), 0, wxALL, 2);
+	cf_tools->Add(new wxButton(this, ID_APD_EXCEL, "Send to Excel"), 0, wxALL, 2);
+	cf_tools->AddStretchSpacer();
+
+	sizer->Add(cf_tools);
+
+	sizer->Add(m_grid,
 		0,            // make vertically stretchable
 		wxEXPAND |    // make horizontally stretchable
 		wxALL,        //   and make border all around
@@ -927,7 +954,136 @@ ArrayPopupDialog::ArrayPopupDialog(wxWindow *parent, const wxString &title, cons
 	SetSizerAndFit(sizer); // use the sizer for layout and set size and hints
 }
 
+void ArrayPopupDialog::OnCommand(wxCommandEvent &evt)
+{
+	switch (evt.GetId())
+	{
+	case ID_APD_CLIPBOARD:
+		CopyToClipboard();
+		break;
+	case ID_APD_CSV:
+		SaveToCSV();
+		break;
+#ifdef __WXMSW__
+	case ID_APD_EXCEL:
+		SendToExcel();
+		break;
+#endif
+	}
+}
 
+void ArrayPopupDialog::GetTextData(wxString &dat, char sep)
+{
+	dat = wxEmptyString;
+	if (!m_grid)
+		return;
+
+	wxGridTableBase *m_grid_data = m_grid->GetTable();
+	size_t approxbytes = m_grid_data->GetNumberRows() * 15 * m_grid_data->GetNumberCols();
+	dat.Alloc(approxbytes);
+
+	size_t c;
+
+	for (c = 0; c<m_grid_data->GetNumberCols(); c++)
+	{
+		wxString label = m_grid_data->GetColLabelValue(c);
+		label.Replace('\n', " | ");
+
+		if (sep == ',')
+			dat += '"' + label + '"';
+		else
+			dat += label;
+
+		if (c < m_grid_data->GetNumberCols() - 1)
+			dat += sep;
+		else
+			dat += '\n';
+	}
+
+	for (size_t r = 0; r<m_grid_data->GetNumberRows(); r++)
+	{
+		for (c = 0; c<m_grid_data->GetNumberCols(); c++)
+		{
+			dat += m_grid_data->GetValue(r, c);
+
+			if (c < m_grid_data->GetNumberCols() - 1)
+				dat += sep;
+			else
+				dat += '\n';
+		}
+	}
+}
+
+
+void ArrayPopupDialog::CopyToClipboard()
+{
+	wxBusyInfo busy("Processing data table... please wait");
+	wxString dat;
+	GetTextData(dat, '\t');
+
+	// strip commas per request from Paul 5/23/12 meeting
+	dat.Replace(",", "");
+
+	if (wxTheClipboard->Open())
+	{
+		wxTheClipboard->SetData(new wxTextDataObject(dat));
+		wxTheClipboard->Close();
+	}
+}
+
+void ArrayPopupDialog::SaveToCSV()
+{
+	wxFileDialog fdlg(this, "Save as CSV", wxEmptyString, "results.csv", "Comma-separated values (*.csv)|*.csv", wxFD_SAVE | wxFD_OVERWRITE_PROMPT);
+	if (fdlg.ShowModal() != wxID_OK) return;
+
+	FILE *fp = fopen(fdlg.GetPath().c_str(), "w");
+	if (!fp)
+	{
+		wxMessageBox("Could not open file for write:\n\n" + fdlg.GetPath());
+		return;
+	}
+
+	wxBusyInfo busy("Writing CSV file... please wait");
+
+	wxString dat;
+	GetTextData(dat, ',');
+	fputs(dat.c_str(), fp);
+	fclose(fp);
+
+}
+
+void ArrayPopupDialog::SendToExcel()
+{
+	wxBusyInfo busy("Processing data table... please wait");
+	wxString dat;
+	GetTextData(dat, '\t');
+
+	// strip commas per request from Paul 5/23/12 meeting
+	dat.Replace(",", "");
+
+#ifdef __WXMSW__
+	wxExcelAutomation xl;
+	if (!xl.StartExcel())
+	{
+		wxMessageBox("Could not start Excel.");
+		return;
+	}
+
+	xl.Show(true);
+
+	if (!xl.NewWorkbook())
+	{
+		wxMessageBox("Could not create a new Excel worksheet.");
+		return;
+	}
+	if (wxTheClipboard->Open())
+	{
+		wxTheClipboard->SetData(new wxTextDataObject(dat));
+		wxTheClipboard->Close();
+		xl.PasteClipboard();
+	}
+#endif
+}
 
 ArrayPopupDialog::~ArrayPopupDialog()
 {
