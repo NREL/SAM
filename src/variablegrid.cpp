@@ -17,9 +17,8 @@
 #define COMPARE_SHOW_DIFFERENT 1
 #define COMPARE_SHOW_SAME 2
 
-VariableGridData::VariableGridData(ProjectFile *pf, Case *c)
+VariableGridData::VariableGridData(ProjectFile *pf, Case *c, VarTable *vt) : m_pf(pf), m_vt(vt)
 {
-	m_pf = pf;
 	m_sorted = false;
 	if (c)
 		m_cases.push_back(c);
@@ -46,7 +45,10 @@ void VariableGridData::Init()
 		if (m_cases.size() == 1)
 		{
 			m_col_hdrs.push_back(m_pf->GetCaseName(m_cases[0]));
-			m_var_table_vec.push_back(&m_cases[0]->Values());
+			if (m_vt)
+				m_var_table_vec.push_back(m_vt); // for parametric simulation
+			else
+				m_var_table_vec.push_back(&m_cases[0]->Values());
 			m_var_info_lookup_vec.push_back(&m_cases[0]->Variables());
 		}
 		else
@@ -554,12 +556,12 @@ BEGIN_EVENT_TABLE(VariableGridFrame, wxFrame)
 	EVT_GRID_COL_SORT(VariableGridFrame::OnGridColSort)
 END_EVENT_TABLE()
 
-VariableGridFrame::VariableGridFrame(wxWindow *parent, ProjectFile *pf, Case *c) : wxFrame(parent, wxID_ANY, "Variable Grid", wxDefaultPosition, wxSize(800, 700)), m_pf(pf)
+VariableGridFrame::VariableGridFrame(wxWindow *parent, ProjectFile *pf, Case *c, VarTable *vt, wxString frame_title) : wxFrame(parent, wxID_ANY, "Variable Grid", wxDefaultPosition, wxSize(800, 700)), m_pf(pf)
 {
 	
 	if (!m_pf) return;
 
-	m_pf->AddListener(this);
+	if (!vt) m_pf->AddListener(this); // no listeners when using parametric var tables
 
 	if (c)
 	{
@@ -573,18 +575,24 @@ VariableGridFrame::VariableGridFrame(wxWindow *parent, ProjectFile *pf, Case *c)
 	}
 	if (m_cases.size() > 0)
 	{
-		for (size_t i = 0; i < m_cases.size(); i++)
-			m_cases[i]->AddListener(this);
+		if (!vt)
+		{
+			for (size_t i = 0; i < m_cases.size(); i++)
+				m_cases[i]->AddListener(this);
+		}
 
-		wxString title;
-		if (m_cases.size() == 1)
-			title = "Current Case Values: " + m_pf->GetCaseName(m_cases[0]);
-		else
-			title = "Case comparison";
-		
+		wxString title=frame_title;
+		if (title.IsEmpty())
+		{
+			if (m_cases.size() == 1)
+				title = "Current Case Values: " + m_pf->GetCaseName(m_cases[0]);
+			else
+				title = "Case comparison";
+		}
+
 		SetTitle(title);
 
-		m_griddata = new VariableGridData(m_pf, c);
+		m_griddata = new VariableGridData(m_pf, c, vt);
 
 		m_grid = new VariableGrid(this, wxID_ANY);
 

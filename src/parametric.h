@@ -189,6 +189,7 @@ private:
 	wxArrayString m_plot_var_names;
 
 	int m_selected_grid_col;
+	int m_selected_grid_row;
 
 	void UpdateGraph();
 	GraphCtrl* CurrentGraph();
