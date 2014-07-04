@@ -239,7 +239,6 @@ ParametricViewer::ParametricViewer(wxWindow *parent, Case *cc) : wxPanel(parent,
 	m_grid->RegisterDataType("GridCellCheckBox", new GridCellCheckBoxRenderer, new GridCellCheckBoxEditor);
 	m_grid->RegisterDataType("GridCellChoice", new GridCellChoiceRenderer, new GridCellChoiceEditor);
 	m_grid->RegisterDataType("GridCellVarValue", new GridCellVarValueRenderer, new GridCellVarValueEditor);
-	// TODO
 	m_grid->RegisterDataType("GridCellArray", new GridCellArrayRenderer, new GridCellArrayEditor);
 
 	m_grid_data = new ParametricGridData(m_case);
@@ -263,6 +262,15 @@ ParametricViewer::ParametricViewer(wxWindow *parent, Case *cc) : wxPanel(parent,
 	SetSizer(main_sizer);
 	main_sizer->SetSizeHints(this);
 
+	// check that base case is run and if not run 
+	if ((!m_case->BaseCase().Ok()) || (m_case->BaseCase().ListOutputs().Count() <= 0))
+		m_case->BaseCase().Invoke(true);
+
+	if (m_grid_data->GetNumberRows() <= 0)
+	{
+		m_num_runs_ctrl->SetValue(5); // default to 5 runs
+		UpdateNumRuns();
+	}
 }
 
 GraphCtrl *ParametricViewer::CreateNewGraph()
@@ -1575,7 +1583,7 @@ wxString ParametricGridData::GetUnits(int col)
 wxString ParametricGridData::GetVarName(int row, int col)
 {
 	wxString  ret_val=wxEmptyString;
-	if ((col > 0) && (col < m_var_names.Count()) && (row > -1) && (row < m_rows))
+	if ((col > -1) && (col < m_var_names.Count()) && (row > -1) && (row < m_rows))
 	{
 		ret_val = m_var_names[col];
 	}
