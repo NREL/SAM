@@ -602,8 +602,10 @@ void ParametricViewer::ShowAllData()
 		values_vec.push_back(vec);
 		labels.push_back(wxString::Format("Run %d", row + 1));
 	}
-	ArrayPopupDialog *apd = new ArrayPopupDialog(this, m_grid_data->GetColLabelValue(col), labels, values_vec);
-	apd->ShowModal();
+//	ArrayPopupDialog *apd = new ArrayPopupDialog(this, m_grid_data->GetColLabelValue(col), labels, values_vec);
+//	apd->ShowModal();
+	ArrayPopupDialog apd(this, m_grid_data->GetColLabelValue(col), labels, values_vec);
+	apd.ShowModal();
 }
 
 void ParametricViewer::FillDown(int rows)
