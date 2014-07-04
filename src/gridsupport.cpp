@@ -724,7 +724,7 @@ ArrayPopupDialog::ArrayPopupDialog(wxWindow *parent, const wxString &title, cons
 	int rows = vec.size();
 	int cols = 2;
 
-	wxGrid *m_grid = new wxGrid(this, wxID_ANY);
+	m_grid = new wxGrid(this, wxID_ANY);
 	m_grid->CreateGrid(rows, cols);
 
 	m_grid->GetTable()->SetAttrProvider(new AlignRightGridCellAttrProvider());
@@ -842,7 +842,8 @@ ArrayPopupDialog::ArrayPopupDialog(wxWindow *parent, const wxString &title, cons
 	int rows = vec_size;
 	int cols = values_vec_size + 1;
 
-	wxGrid *m_grid = new wxGrid(this, wxID_ANY);
+	m_grid = new wxGrid(this, wxID_ANY);
+	
 	m_grid->CreateGrid(rows, cols);
 
 	m_grid->Freeze();
