@@ -1430,7 +1430,19 @@ void ParametricGridData::AddSetup(ParametricData::Var &var)
 void ParametricGridData::DeleteSetup(wxString &var_name)
 {
 	if (m_par.RemoveSetup(var_name))
+	{
 		DeleteCols();
+		// reset simulaiton input to base case input
+		for (int row = 0; row < m_rows; row++)
+		{
+			if (VarValue *vv = m_case->BaseCase().GetInput(var_name))
+			{
+				m_par.Runs[row]->Override(var_name, *vv);
+				m_valid_run[row] = false;
+			}
+		}
+		// TODO invalidated results.
+	}
 }
 
 void ParametricGridData::UpdateNumberRows(int rows)
@@ -1756,9 +1768,13 @@ void ParametricGridData::UpdateInputs(wxArrayString &input_names)
 			to_remove.push_back(var_name);
 	}
 	for (size_t i = 0; i < to_remove.Count(); i++)
+	{
 		DeleteSetup(to_remove[i]);
+	}
 	m_input_names = input_names;
 	UpdateSetup();
+	// reset inputs
+
 //	UpdateView();
 }
 
