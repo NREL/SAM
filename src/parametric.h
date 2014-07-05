@@ -80,6 +80,7 @@ public:
 	void SetVarValue(int row, int col, VarValue *vv);
 	void Init();
 	void UpdateSetup();
+	void UpdateView();
 
 	wxArrayString GetInputNames();
 	wxArrayString GetOutputNames();
@@ -88,16 +89,14 @@ public:
 	void DeleteSetup(wxString &var_name);
 	void UpdateNumberRows(int rows);
 	bool RunSimulations(int row = -1);
-	void ClearResults(int row = -1);
+	void ClearResults();
 	void UpdateInputs(wxArrayString &input_names);
 	void UpdateOutputs(wxArrayString &output_names);
-//	void UpdateView();
 
 	double GetDouble(int row, int col);
 	std::vector<float> GetArray(int row, int col);
 	float *GetArray(int row, int col, size_t *n);
 	wxString GetUnits(int col);
-//	wxString GetVarName(int col);
 
 	void FillDown(int col, int rows=2);
 	void FillEvenly(int col);
