@@ -610,10 +610,8 @@ void ParametricViewer::ShowAllData()
 		values_vec.push_back(vec);
 		labels.push_back(wxString::Format("Run %d", row + 1));
 	}
-//	ArrayPopupDialog *apd = new ArrayPopupDialog(this, m_grid_data->GetColLabelValue(col), labels, values_vec);
-//	apd->ShowModal();
-	ArrayPopupDialog apd(this, m_grid_data->GetColLabelValue(col), labels, values_vec);
-	apd.ShowModal();
+	ArrayPopupDialog *apd = new ArrayPopupDialog(this, m_grid_data->GetColLabelValue(col), labels, values_vec);
+	apd->ShowModal();
 }
 
 void ParametricViewer::FillDown(int rows)
@@ -774,9 +772,14 @@ void ParametricViewer::RunSimulations()
 
 void ParametricViewer::ClearResults()
 {
-	// TODO - verify this is what we want
 	RemoveAllPlots();
 	m_grid_data->ClearResults();
+	m_input_names.Clear();
+	m_output_names.Clear();
+	m_grid_data->UpdateInputs(m_input_names);
+	m_grid_data->UpdateOutputs(m_output_names);
+	m_grid_data->UpdateNumberRows(0);
+	UpdateNumRuns();
 }
 
 void ParametricViewer::SelectInputs()
@@ -935,10 +938,8 @@ ParametricGridData::ParametricGridData(Case *cc) :m_case(cc), m_par(cc->Parametr
 	m_attr_for_inputs->SetBackgroundColour(m_color_for_inputs);
 	m_attr_for_valid_outputs = new wxGridCellAttr;
 	m_attr_for_valid_outputs->SetBackgroundColour(m_color_for_valid_outputs);
-//	m_attr_for_valid_outputs->SetReadOnly(true);
 	m_attr_for_invalid_outputs = new wxGridCellAttr;
 	m_attr_for_invalid_outputs->SetBackgroundColour(m_color_for_invalid_outputs);
-//	m_attr_for_invalid_outputs->SetReadOnly(true);
 
 	m_rows = 0;
 	m_cols = 0;
@@ -1422,7 +1423,6 @@ bool ParametricGridData::DeleteRows(size_t pos, size_t nrows)
 
 void ParametricGridData::AddSetup(ParametricData::Var &var)
 {
-	//if (IsInput) append only for now
 	m_par.Setup.push_back(var);
 	AppendCols();
 }
@@ -1445,14 +1445,12 @@ void ParametricGridData::UpdateNumberRows(int rows)
 			int ndx = m_par.FindSetup(m_var_names[i]);
 			if (ndx > -1)
 			{
-				// TODO - update for outputs??
 				if ((m_par.Setup[i].Values.size() < rows) && (IsInput(i)))
 				{
 					while (m_par.Setup[i].Values.size() < rows)
 					{ // inputs
 						if (VarValue *vv = m_case->Values().Get(m_var_names[i]))
 							m_par.Setup[i].Values.push_back(*vv);
-						// outputs? - only update from simulations!
 					}
 				}
 				else if (m_par.Setup[i].Values.size() > rows)
@@ -1513,7 +1511,7 @@ wxArrayString ParametricGridData::GetOutputNames()
 	return m_output_names;
 }
 
-/* does nothing ? 
+ //does nothing ? 
 void ParametricGridData::UpdateView()
 {
 	if (GetView())
@@ -1527,7 +1525,7 @@ void ParametricGridData::UpdateView()
 		GetView()->Update();
 	}
 }
-*/
+
 double ParametricGridData::GetDouble(int row, int col)
 {
 	double ret_val = 0;
@@ -1621,7 +1619,7 @@ void ParametricGridData::FillDown(int col, int rows)
 						SetValue(row, col, wxString::Format("%lg", new_val));
 						old_val = new_val;
 					}
-//					UpdateView(); 
+					UpdateView(); 
 				}
 				break;
 			}
@@ -1656,7 +1654,7 @@ void ParametricGridData::FillEvenly(int col)
 						SetValue(row, col, wxString::Format("%lg", new_val));
 						old_val = new_val;
 					}
-//					UpdateView();
+					UpdateView();
 				}
 				break;
 			}
@@ -1798,15 +1796,14 @@ void ParametricGridData::UpdateOutputs(wxArrayString &output_names)
 //	UpdateView();
 }
 
-void ParametricGridData::ClearResults(int row)
+void ParametricGridData::ClearResults()
 {
+	// clear inputs and outputs
 	for (int col = 0; col < m_cols; col++)
-	{
-		if (!IsInput(col))
-		{
-			m_par.Setup[col].Values.clear();
-		}
-	}
+		m_par.Setup[col].Values.clear();
+	// clear simulation results
+	for (int row = 0; row < m_rows; row++)
+		m_par.Runs[row]->Clear();
 }
 
 wxGridCellAttr *ParametricGridData::GetAttr(int row, int col, wxGridCellAttr::wxAttrKind kind)
@@ -1817,30 +1814,8 @@ wxGridCellAttr *ParametricGridData::GetAttr(int row, int col, wxGridCellAttr::wx
 	{
 		attr = GetAttrProvider()->GetAttr(row, col, kind);
 
-/*
-		if (IsInput(col))
-		{
-			if (!attr)
-			{
-				attr = m_attr_for_inputs;
-				attr->IncRef();
-			}
-			else
-			{
-				if (!attr->HasBackgroundColour())
-				{
-					wxGridCellAttr *attrNew = attr->Clone();
-					attr->DecRef();
-					attr = attrNew;
-					attr->SetBackgroundColour(m_color_for_inputs);
-				}
-			}
-		}
-		else // output 
-		*/
-		// change from 6/18/14 meeting
 		if (!IsInput(col))
-		{ // TODO - check to see if current outputs are valid (simulation is run)
+		{ 
 			if (!attr)
 			{
 				if ((row < m_valid_run.size()) && (m_valid_run[row]))
@@ -1861,15 +1836,6 @@ wxGridCellAttr *ParametricGridData::GetAttr(int row, int col, wxGridCellAttr::wx
 					else
 						attr->SetBackgroundColour(m_color_for_invalid_outputs);
 				}
-				/*
-				if (!attr->IsReadOnly())
-				{
-					wxGridCellAttr *attrNew = attr->Clone();
-					attr->DecRef();
-					attr = attrNew;
-					attr->SetReadOnly(true);
-				}
-				*/
 			}
 		}
 	}
