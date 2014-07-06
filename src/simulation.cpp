@@ -365,9 +365,10 @@ bool Simulation::Invoke(bool silent)
 		sc.progdlg->SetIcon(wxICON(appicon));
 #endif
 		sc.progdlg->Show();
-		sc.errors = &m_errors;
-		sc.warnings = &m_warnings;
 	}
+	sc.errors = &m_errors;
+	sc.warnings = &m_warnings;
+
 	ssc_data_t p_data = ssc_data_create();
 
 
