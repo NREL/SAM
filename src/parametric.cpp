@@ -195,6 +195,9 @@ EVT_BUTTON(ID_SELECT_OUTPUTS, ParametricViewer::OnCommand)
 EVT_NUMERIC(ID_NUMRUNS, ParametricViewer::OnCommand)
 EVT_BUTTON(ID_RUN, ParametricViewer::OnCommand)
 EVT_BUTTON(ID_CLEAR, ParametricViewer::OnCommand)
+EVT_BUTTON(ID_OUTPUTMENU_CLIPBOARD, ParametricViewer::OnMenuItem)
+EVT_BUTTON(ID_OUTPUTMENU_CSV, ParametricViewer::OnMenuItem)
+EVT_BUTTON(ID_OUTPUTMENU_EXCEL, ParametricViewer::OnMenuItem)
 EVT_GRID_CMD_LABEL_RIGHT_CLICK(ID_GRID, ParametricViewer::OnGridColLabelRightClick)
 EVT_MENU(ID_OUTPUTMENU_ADD_PLOT, ParametricViewer::OnMenuItem)
 EVT_MENU(ID_OUTPUTMENU_REMOVE_PLOT, ParametricViewer::OnMenuItem)
@@ -233,6 +236,13 @@ ParametricViewer::ParametricViewer(wxWindow *parent, Case *cc) : wxPanel(parent,
 	tool_sizer->AddStretchSpacer();
 	tool_sizer->Add(new wxButton(top_panel, ID_CLEAR, "Clear results"), 0, wxALL | wxEXPAND, 2);
 
+	// main grid menu (also available as right click in upper left of grid)
+	wxBoxSizer *grid_menu_sizer = new wxBoxSizer(wxHORIZONTAL);
+	grid_menu_sizer->Add(new wxButton(top_panel, ID_OUTPUTMENU_CLIPBOARD, "Copy to clipboard"), 0, wxALIGN_CENTER_VERTICAL, 2);
+	grid_menu_sizer->Add(new wxButton(top_panel, ID_OUTPUTMENU_CSV, "Save as CSV"), 0, wxALL | wxEXPAND, 2);
+#ifdef __WXMSW__
+	grid_menu_sizer->Add(new wxButton(top_panel, ID_OUTPUTMENU_EXCEL, "Send to Excel"), 0, wxALL | wxEXPAND, 2);
+#endif
 
 	m_grid = new ParametricGrid(top_panel, ID_GRID);
 
@@ -249,6 +259,7 @@ ParametricViewer::ParametricViewer(wxWindow *parent, Case *cc) : wxPanel(parent,
 
 	wxBoxSizer *par_sizer = new wxBoxSizer(wxVERTICAL);
 	par_sizer->Add(tool_sizer, 0, wxALL | wxEXPAND, 2);
+	par_sizer->Add(grid_menu_sizer, 0, wxALL | wxEXPAND, 2);
 	par_sizer->Add(m_grid, 1, wxALL | wxEXPAND, 0);
 
 	UpdateGrid();
@@ -328,7 +339,6 @@ void ParametricViewer::UpdateGraph()
 {
 	if (!m_current_graph) return;
 	Graph g = m_current_graph->GetGraph();
-//	m_current->Display(m_sim, g);
 }
 
 void ParametricViewer::OnGraphSelect(wxCommandEvent &evt)
@@ -556,7 +566,9 @@ void ParametricViewer::OnGridColLabelRightClick(wxGridEvent &evt)
 			wxMenu *menu = new wxMenu;
 			menu->Append(ID_OUTPUTMENU_CLIPBOARD, _T("Copy to clipboard"));
 			menu->Append(ID_OUTPUTMENU_CSV, _T("Save as CSV"));
+#ifdef __WXMSW__
 			menu->Append(ID_OUTPUTMENU_EXCEL, _T("Send to Excel"));
+#endif
 			PopupMenu(menu, point);
 		}
 		else // header with variables
