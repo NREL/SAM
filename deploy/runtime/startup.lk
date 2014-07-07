@@ -221,10 +221,12 @@ function setup_sale_leaseback_pages()
 
 function setup_windpower_pages()
 {
-	addpage( [ ['Wind Resource by Location'], ['Wind Resource Characteristics'] ], { 'sidebar'='Wind Resource', 'exclusive_var'='wind_resource_model_choice' } );
-	addpage( [[ 'Wind Siting Considerations' ]], { 'sidebar'='Wind Siting Considerations' } );
-	addpage( [[ 'Wind Turbine Design' ]], { 'sidebar'='Wind Turbine Design' } );
-	addpage( [[ 'Wind Farm Specifications' ]], { 'sidebar'='Wind Farm Specifications' } );
+	addpage( [[ 'Wind Resource File'], 
+	          [ 'Wind Speed Weibull Distribution']], 
+	         { 'sidebar'='Wind Resource', 'exclusive_var'='wind_resource_model_choice' } );
+	addpage( [[ 'Wind Siting Considerations' ]], { 'sidebar'='Siting Considerations' } );
+	addpage( [[ 'Wind Turbine Design' ]], { 'sidebar'='Wind Turbine' } );
+	addpage( [[ 'Wind Farm Specifications' ]], { 'sidebar'='Wind Farm' } );
 
 }
 
