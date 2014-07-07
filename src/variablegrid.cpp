@@ -520,23 +520,19 @@ void VariableGridData::SetColLabelValue(int col, const wxString &label)
 
 ////////////////////////////////////////////////////////////////////////////////////////
 
-BEGIN_EVENT_TABLE(VariableGrid, wxGrid)
+BEGIN_EVENT_TABLE(VariableGrid, wxExtGridCtrl)
 EVT_GRID_CELL_LEFT_CLICK(VariableGrid::OnLeftClick)
 END_EVENT_TABLE()
 
-VariableGrid::
-VariableGrid(wxWindow *parent, wxWindowID id, const wxPoint &pos, const wxSize &size, long style, const wxString &name)
-: wxGrid(parent, id, pos, size, style, name)
+VariableGrid::VariableGrid(wxWindow *parent, wxWindowID id, const wxPoint &pos, const wxSize &size, long style, const wxString &name) : wxExtGridCtrl(parent, id, pos, size)
 {
 }
 
-VariableGrid::
-~VariableGrid()
+VariableGrid::~VariableGrid()
 {
 }
 
-void VariableGrid::
-OnLeftClick(wxGridEvent &evt)
+void VariableGrid::OnLeftClick(wxGridEvent &evt)
 {
 	SetGridCursor(evt.GetRow(), evt.GetCol());
 	evt.Skip();

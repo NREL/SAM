@@ -79,7 +79,7 @@ private:
 
 
 
-class VariableGrid : public wxGrid
+class VariableGrid : public wxExtGridCtrl
 {
 public:
 	VariableGrid(wxWindow *parent, wxWindowID id, const wxPoint &pos = wxDefaultPosition, const wxSize &size = wxDefaultSize,
