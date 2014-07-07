@@ -124,7 +124,8 @@ private:
 };
 
 
-class ParametricGrid : public wxGrid
+//class ParametricGrid : public wxGrid
+class ParametricGrid : public wxExtGridCtrl
 {
 public:
 	ParametricGrid(wxWindow *parent, wxWindowID id, const wxPoint &pos = wxDefaultPosition, const wxSize &size = wxDefaultSize,

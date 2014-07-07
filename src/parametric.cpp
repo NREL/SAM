@@ -157,14 +157,15 @@ bool ParametricData::Read( wxInputStream &_I )
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
-BEGIN_EVENT_TABLE(ParametricGrid, wxGrid)
+//BEGIN_EVENT_TABLE(ParametricGrid, wxGrid)
+BEGIN_EVENT_TABLE(ParametricGrid, wxExtGridCtrl)
 EVT_GRID_CELL_LEFT_CLICK(ParametricGrid::OnLeftClick)
 END_EVENT_TABLE()
 
 
 ParametricGrid::ParametricGrid(wxWindow *parent, wxWindowID id, const wxPoint &pos, const wxSize &size, long style, const wxString &name)
-: wxGrid(parent, id, pos, size, style, name)
-//: wxExtGridCtrl(parent, id, pos, size)
+//: wxGrid(parent, id, pos, size, style, name)
+: wxExtGridCtrl(parent, id, pos, size)
 {
 }
 
