@@ -261,8 +261,26 @@ void WelcomeScreen::OnCommand( wxCommandEvent &evt )
 	case ID_RECENT_FILES:
 	{
 		wxString fn = m_recent->GetSelectionString();
+		if ( !wxFileExists(fn) )
+		{
+			wxMessageBox( "The file you selected no longer exists:\n\n" + fn );
+			size_t n = SamApp::FileHistory().GetCount();
+			for( size_t i=0;i<n;i++ )
+			{
+				if ( fn == SamApp::FileHistory().GetHistoryFile( i ) )
+				{
+					SamApp::FileHistory().RemoveFileFromHistory( i );
+					m_recent->Delete( m_recent->GetSelection() );
+					m_recent->SetSelection( -1 );
+					m_recent->Invalidate();
+					break;
+				}
+			}
+			return;
+		}
 		if ( SamApp::Window()->CloseProject())
-			SamApp::Window()->LoadProject( fn );
+			if ( !SamApp::Window()->LoadProject( fn ) )
+				wxMessageBox("The selected file could not be opened:\n\n" + fn );
 	}
 		break;
 
