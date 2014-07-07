@@ -1315,7 +1315,6 @@ void GridCellChoiceRenderer::SetParameters(const wxString& params)
 
 
 GridCellChoiceEditor::GridCellChoiceEditor()
-:wxGridCellEditor()
 {
 	m_index = -1;
 }
@@ -1342,7 +1341,7 @@ void GridCellChoiceEditor::Create(wxWindow* parent, wxWindowID id, wxEvtHandler*
 
 void GridCellChoiceEditor::UpdateComboBox()
 { // original combo box in Create method of ancestor 
-//	create and destroy to support sorting and populating with current selections/
+//	create and destroy to support sorting and populating with current selections
 	int style = wxTE_PROCESS_ENTER |
 		wxTE_PROCESS_TAB | wxCB_READONLY |
 		wxBORDER_NONE;
@@ -1351,9 +1350,18 @@ void GridCellChoiceEditor::UpdateComboBox()
 	wxWindowID id = m_control->GetId();
 	wxPoint pt = m_control->GetPosition();
 	wxSize sz = m_control->GetSize();
+
+	// debug assert errors, release mode runs without error
 	m_control->Destroy();
-	
 	m_control = new wxComboBox(p, id, wxEmptyString, pt, sz, m_choices,	style);
+	// blank dropdown without following line
+	//Combo()->Destroy();
+	//m_control = new wxComboBox(p, id, wxEmptyString, pt, sz, m_choices,	style);
+	// documentation incorrect
+	//m_control->Create(p, id, wxEmptyString, pt, sz, m_choices, style);
+	// fails to update
+	//for (int i = 0; i < m_choices.Count(); i++)
+	//	Combo()->SetString(i, m_choices[i]);
 }
 
 void GridCellChoiceEditor::SetSize(const wxRect& rect)
@@ -1493,9 +1501,11 @@ void GridCellChoiceEditor::SetParameters(const wxString& params)
 	m_choices.Empty();
 
 	wxStringTokenizer tk(params, wxT(','));
+	unsigned int i = 0;
 	while (tk.HasMoreTokens())
 	{
-		m_choices.Add(tk.GetNextToken());
+		wxString choice = tk.GetNextToken();
+		m_choices.Add(choice);
 	}
 }
 
