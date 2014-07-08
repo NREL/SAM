@@ -1,22 +1,18 @@
 // SAM startup script.
 
 // define all the configurations
-addconfig( 'PVWatts', [ 'Residential', 'Commercial', 'Commercial PPA', 'Independent Power Producer',
- 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'Single Owner', 'None' ] );
-addconfig('Flat Plate PV', ['Residential', 'Commercial', 'Commercial PPA', 'Independent Power Producer',
- 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'Single Owner', 'None'] );
-addconfig( 'Test Only', [ 'None' ] );
-
+addconfig( 'Flat Plate PV', ['Residential', 'Commercial', 'Commercial PPA', 'Independent Power Producer', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'Single Owner', 'None'] );
+addconfig( 'PVWatts', [ 'Residential', 'Commercial', 'Commercial PPA', 'Independent Power Producer', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'Single Owner', 'None' ] );
+addconfig( 'High-X Concentrating PV', ['Independent Power Producer', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'Single Owner', 'None']);
 addconfig( 'Solar Water Heating', ['Residential', 'Commercial', 'None']);
+addconfig( 'Wind Power', [ 'Residential', 'Commercial', 'Commercial PPA', 'Independent Power Producer', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'Single Owner', 'None'] );
+addconfig( 'Biopower', ['Commercial', 'Commercial PPA', 'Independent Power Producer', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'Single Owner', 'None']);
+addconfig( 'Geothermal Power', ['Independent Power Producer', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'Single Owner', 'None']);
 addconfig( 'Empirical Trough', ['Independent Power Producer', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'Single Owner','Commercial','None']);
 addconfig( 'Physical Trough', ['Independent Power Producer', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'Single Owner', 'None']);
-addconfig( 'Geothermal Power', ['Independent Power Producer', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'Single Owner', 'None']);
-addconfig( 'Generic System', ['Residential', 'Commercial', 'Commercial PPA', 'Independent Power Producer', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'Single Owner', 'None']);
-addconfig( 'Generic CSP System', ['Commercial', 'Commercial PPA', 'Independent Power Producer', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'Single Owner', 'None']);
-addconfig( 'High-X Concentrating PV', ['Independent Power Producer', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'Single Owner', 'None']);
 addconfig( 'Dish Stirling', ['Commercial', 'Commercial PPA', 'Independent Power Producer', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'Single Owner', 'None']);
-addconfig( 'Biopower', ['Commercial', 'Commercial PPA', 'Independent Power Producer', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'Single Owner', 'None']);
-addconfig( 'Wind Power', [ 'Residential', 'Commercial', 'Commercial PPA', 'Independent Power Producer', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'Single Owner', 'None'] );
+addconfig( 'Generic CSP System', ['Commercial', 'Commercial PPA', 'Independent Power Producer', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'Single Owner', 'None']);
+addconfig( 'Generic System', ['Residential', 'Commercial', 'Commercial PPA', 'Independent Power Producer', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'Single Owner', 'None']);
 //addconfig( 'Wind BOS', [ 'None' ] );
 
 function setup_pvwatts_pages()
