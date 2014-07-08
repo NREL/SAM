@@ -706,11 +706,6 @@ ShadeAnalysis::ShadeAnalysis( wxWindow *parent, ShadeTool *st )
 	tools->Add( new wxButton(this, ID_GENERATE_DIURNAL, "Diurnal analysis" ), 0, wxALL, 2 );
 	tools->Add( new wxButton(this, ID_GENERATE_HOURLY, "Hourly analysis (entire array)" ), 0, wxALL, 2 );
 
-	wxString modes[] = { "Shade fraction", "Beam shading factor" };
-	m_sfMode = new wxChoice( this, wxID_ANY, wxDefaultPosition, wxDefaultSize, 2, modes );
-	m_sfMode->SetSelection( 0 );
-	tools->Add( m_sfMode, 0, wxALL|wxALIGN_CENTER_VERTICAL, 2 );
-
 	tools->AddStretchSpacer();
 
 	m_scroll = new wxScrolledWindow( this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxScrolledWindowStyle|wxBORDER_NONE );
@@ -794,9 +789,9 @@ void ShadeAnalysis::OnGenerateHourly( wxCommandEvent & )
 	{
 		if ( FILE *fp = fopen( (const char*)dlg.GetPath().c_str(), "w" ) )
 		{
-			fprintf( fp, "Shade Fraction,Shading Derate\n");
+			fprintf( fp, "Shade Loss (%%),Shading Derate\n");
 			for( size_t i=0;i<shade_fraction.size();i++ )
-				fprintf( fp, "%.3lf,%.3lf\n", shade_fraction[i], 1.0-shade_fraction[i] );
+				fprintf( fp, "%.3lf,%.3lf\n", 100.0f*shade_fraction[i], 1.0-shade_fraction[i] );
 
 			fclose(fp);
 		}
@@ -880,9 +875,7 @@ void ShadeAnalysis::OnGenerateDiurnal( wxCommandEvent & )
 				ss.ids.push_back( surf->GetId() );
 		}
 	}
-
-	int mode = m_sfMode->GetSelection();
-
+	
 	s3d::transform tr;
 	tr.set_scale( SF_ANALYSIS_SCALE );
 
@@ -934,7 +927,7 @@ void ShadeAnalysis::OnGenerateDiurnal( wxCommandEvent & )
 			}
 			
 			// store overall array shading factor
-			shade[0].sfac( m, h ) = (float)( (mode==0) ? scene_sf : 1.0-scene_sf );
+			shade[0].sfac( m, h ) =  100.0f * scene_sf;
 
 			// compute each group's shading factor from the overall areas
 			for( size_t n=1;n<shade.size();n++ )
@@ -943,7 +936,7 @@ void ShadeAnalysis::OnGenerateDiurnal( wxCommandEvent & )
 				if ( shade[n].active(m,h) != 0.0 )
 					sf = shade[n].shaded(m,h) / shade[n].active(m,h);
 
-				shade[n].sfac(m,h) =  (float)( (mode==0) ? sf : 1.0-sf );
+				shade[n].sfac(m,h) =  100.0f * sf;
 			}
 
 
@@ -960,11 +953,9 @@ void ShadeAnalysis::OnGenerateDiurnal( wxCommandEvent & )
 
 		AFMonthByHourFactorCtrl *mxh = m_mxhList[i];
 		mxh->SetSize( 0, y, 1300, 360 );
-		mxh->Colour1 = ( mode == 0 ) ? *wxWHITE : *wxRED;
-		mxh->Colour2 = ( mode == 0 ) ? *wxRED : *wxWHITE;
 		mxh->SetTitle( shade[i].group );
 		mxh->SetData( shade[i].sfac );
-		mxh->SetLegend( mode==0 ? "(shade fraction) 0=no shade, 1=fully shaded" : "(derate)  0=fully shaded, 1=no shade" );
+		mxh->SetLegend( "Shade Loss (%): 0=no shade, 100=fully shaded" );
 		y += 360;
 	}
 
