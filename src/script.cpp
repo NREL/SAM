@@ -153,6 +153,8 @@ static void fcall_load_defaults( lk::invoke_t &cxt )
 		else
 			cxt.result().assign( err );
 	}
+	else
+		cxt.result().assign( 0.0 );
 }
 
 static void fcall_overwrite_defaults( lk::invoke_t &cxt )

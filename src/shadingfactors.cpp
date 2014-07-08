@@ -59,7 +59,7 @@ void ShadingInputData::clear()
 {
 	en_hourly = en_mxh = en_azal = en_diff = false;
 
-	hourly.resize( 8760, 0 );	//IS THIS TRUE?
+	hourly.resize( 8760, 0 );
 
 	mxh.resize_fill(12,24, 0.0);
 
@@ -477,7 +477,7 @@ void ShadingButtonCtrl::OnPressed(wxCommandEvent &evt)
 bool ImportPVsystNearShading( ShadingInputData &dat, wxWindow *parent )
 {
 	wxString buf;
-	double diffuse = 1.0;
+	double diffuse = 0.0;
 	int i;
 	int j;
 
@@ -488,13 +488,13 @@ bool ImportPVsystNearShading( ShadingInputData &dat, wxWindow *parent )
 	int linesok = 0;
 
 		
-	matrix_t<double> azaltvals;
-	azaltvals.resize_fill(11,20, 1.0);
-	azaltvals.at(0,0) = 0.0;
+	matrix_t<float> azaltvals;
+	azaltvals.resize_fill(11,20, 0.0f);
+	azaltvals.at(0,0) = 0.0f;
 
 	for (i=1;i<20;i++) azaltvals.at(0,i) = 20*(i-1);  // removed -180 degree offset to account for new azimuth convention (180=south) 4/2/2012, apd
 	for (i=1;i<10;i++) azaltvals.at(i,0) = 10*i;
-	azaltvals.at(10,0) = 2.0;
+	azaltvals.at(10,0) = 2.0f;
 
 	wxFileDialog fdlg(parent, "Import PVsyst Near Shading File");
 	if (fdlg.ShowModal() != wxID_OK) return false;
@@ -532,8 +532,8 @@ bool ImportPVsystNearShading( ShadingInputData &dat, wxWindow *parent )
 			{
 				for (i = 0; i<20; i++) // read in Altitude in column zero
 				{
-					if (lnp.Item(i) == "Behind") azaltvals.at(j,i) = 1.0;
-					else azaltvals.at(j,i) = wxAtof(lnp[i]);
+					if (lnp.Item(i) == "Behind") azaltvals.at(j,i) = 100;
+					else azaltvals.at(j,i) = (1- (float)wxAtof(lnp[i])) *100; //convert from factor to loss
 				}
 			}
 		}
@@ -541,7 +541,7 @@ bool ImportPVsystNearShading( ShadingInputData &dat, wxWindow *parent )
 		{
 			if (lnp.Count()== 3)
 			{
-				diffuse = wxAtof(lnp[1]);
+				diffuse = (1- (float)wxAtof(lnp[1])) *100; //convert from factor to loss
 			}
 			else
 			{
@@ -574,7 +574,7 @@ bool ImportPVsystNearShading( ShadingInputData &dat, wxWindow *parent )
 	
 	if (readok)
 	{
-		// resort from small altitude to large, if necessary 
+		// re-sort from small altitude to large, if necessary 
 		if (azaltvals.at(10, 0) < azaltvals.at(1, 0))
 		{
 			azaltvals.resize_preserve(12, 20, 1.0);
@@ -591,7 +591,7 @@ bool ImportPVsystNearShading( ShadingInputData &dat, wxWindow *parent )
 
 		dat.clear();
 		dat.en_azal = true;
-		dat.azal = azaltvals;
+		dat.azal.copy( azaltvals );
 
 		dat.en_diff = true;
 		dat.diff = diffuse;
