@@ -77,7 +77,10 @@
 <p class="p_VariableName"><span class="f_VariableName">Tower Cost Scaling Exponent</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">SAM uses the tower cost in the optimization calculations. The tower cost scaling exponent defines the nonlinear relationship between tower cost and tower height. See Total Tower Cost below.</span></p>
 <p class="p_VariableName"><span class="f_VariableName">Total Tower Cost ($)</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription">Total Tower Cost = Fixed Tower Costs x e ^ (Tower Height x Tower Cost Scaling Exponent)</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">For rectangular heliostats:</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Total Tower Cost = Fixed Tower Costs x e ^ ( Tower Cost Scaling Exponent x ( Tower Height - Receiver Height ÷ 2 + Heliostat Height ÷ 2 ) )</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">For round heliostats:</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Total Tower Cost = Fixed Tower Costs x e ^ ( Tower Cost Scaling Exponent x ( Tower Height - Receiver Height ÷ 2 + </span><span class="f_VariableDescription" style="font-family: 'Times New Roman';">π</span><span class="f_VariableDescription"> ÷ 4 x Heliostat Width ÷ 2 ) )</span></p>
 <p class="p_VariableName"><span class="f_VariableName">Receiver Reference Cost ($)</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The cost per receiver reference area to account for receiver installation costs, including labor and equipment.</span></p>
 <p class="p_VariableName"><span class="f_VariableName">Receiver Reference Area (m</span><span class="f_VariableName" style="font-size: 7pt; vertical-align: super;">2</span><span class="f_VariableName">)</span></p>
@@ -85,7 +88,7 @@
 <p class="p_VariableName"><span class="f_VariableName">Receiver Cost Scaling Exponent</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">SAM uses the receiver cost in the optimization calculations. The receiver cost scaling exponent defines the nonlinear relationship between receiver cost and receiver area based on the reference cost conditions provided.</span></p>
 <p class="p_VariableName"><span class="f_VariableName">Total Receiver Cost ($)</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription">Receiver Cost = Receiver Reference Cost x (Receiver Area / Receiver Reference Area ) ^ Receiver Cost Scaling Exponent.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Receiver Cost = Receiver Reference Cost x ( Receiver Area / Receiver Reference Area ) ^ Receiver Cost Scaling Exponent</span></p>
 <p class="p_VariableName"><span class="f_VariableName">Contingency (%)</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">A percentage of the sum of the site improvements, heliostat field, balance of plant, power block, storage system, fixed solar field, total tower, and total receiver costs to account for expected uncertainties in direct cost estimates.</span></p>
 <p class="p_VariableName"><span class="f_VariableName">Total Direct Cost ($)</span></p>
