@@ -532,8 +532,9 @@ bool ImportPVsystNearShading( ShadingInputData &dat, wxWindow *parent )
 			{
 				for (i = 0; i<20; i++) // read in Altitude in column zero
 				{
-					if (lnp.Item(i) == "Behind") azaltvals.at(j,i) = 100;
-					else azaltvals.at(j,i) = (1- (float)wxAtof(lnp[i])) *100; //convert from factor to loss
+					if (lnp.Item(i) == "Behind") azaltvals.at(j,i) = 0;
+					if (i == 0) azaltvals.at(j, i) = (float)wxAtof(lnp[i]);		//do not change azimuth values
+					else azaltvals.at(j,i) = (1- (float)wxAtof(lnp[i])) *100;	//convert from factor to loss
 				}
 			}
 		}
@@ -638,7 +639,7 @@ bool ImportSunEyeHourly( ShadingInputData &dat, wxWindow *parent )
 	int read_offset=0; // which position to start reading
 	int hour_duration=0; // how many hours with :30 dat in SunEye Annual Shading file
 	double beam[8760];
-	for (i=0;i<8760;i++) beam[i]=1.0;
+	for (i=0;i<8760;i++) beam[i]=0.0;
 
 	buf = tf.GetFirstLine();
 // data at half hour is recorded for hour in 8760 shading file - e.g. Jan-1 5:30 data recoded at hour 5
@@ -724,8 +725,8 @@ bool ImportSunEyeHourly( ShadingInputData &dat, wxWindow *parent )
 					readok = false;
 					break;
 				}
-				else if (lnp.Item(4*i+read_offset).IsEmpty()) beam[x] = 1;
-				else beam[x] = wxAtof(lnp.Item(4*i+read_offset));
+				else if (lnp.Item(4*i+read_offset).IsEmpty()) beam[x] = 0;
+				else beam[x] = (1- wxAtof(lnp.Item(4*i+read_offset))) *100;	//convert to a loss instead of a factor
 			}
 			day++;
 /*			if (lnp.Count() != 60)
@@ -818,7 +819,7 @@ bool ImportSunEyeObstructions( ShadingInputData &dat, wxWindow *parent )
 	double alt[361];
 		
 	matrix_t<float> azaltvals;
-	azaltvals.resize_fill(91,362, 1.0);
+	azaltvals.resize_fill(91,362, 0.0);
 	azaltvals.at(0,0) = 0.;
 
 	buf = tf.GetFirstLine();
@@ -889,7 +890,7 @@ bool ImportSunEyeObstructions( ShadingInputData &dat, wxWindow *parent )
 
 		for (int j=0;j<362;j++)
 		{
-			if (alt[j]<0 && alt[j]>90)
+			if (alt[j]<0 && alt[j]>90)	//SHOULDN'T THIS BE AN "OR"?
 			{
 				wxMessageBox("Error: Elevations Must be less than 90 degrees and greater than 0 degrees");
 				return false;
@@ -897,7 +898,7 @@ bool ImportSunEyeObstructions( ShadingInputData &dat, wxWindow *parent )
 			else
 			{
 				for (int i=90;i>90-alt[j];i--)
-					azaltvals.at(i,j+1) = 0;
+					azaltvals.at(i,j+1) = 100;	//NEED TO CHECK THIS
 			}
 		}
 
@@ -946,7 +947,7 @@ bool ImportSolPathMonthByHour( ShadingInputData &dat, wxWindow *parent )
 	bool headingok = true;
 	int month=0; // 
 	double beam[290];
-	for (i=0;i<290;i++) beam[i]=1.0;
+	for (i=0;i<290;i++) beam[i]=0.0;
 	beam[0]=12;
 	beam[1]=24;
 
@@ -981,7 +982,7 @@ bool ImportSolPathMonthByHour( ShadingInputData &dat, wxWindow *parent )
 					break;
 				}
 				// average hour and half hour values starting at midnight (skip row label)
-				beam[ndex] = (wxAtof(lnp.Item(2*i+1))+wxAtof(lnp.Item(2*i+1+1)))/100.0/2.0;
+				beam[ndex] = 100- (wxAtof(lnp.Item(2*i+1))+wxAtof(lnp.Item(2*i+1+1)))/2.0;	//convert from a factor to a loss
 			}
 			month++;
 		}
@@ -998,7 +999,7 @@ bool ImportSolPathMonthByHour( ShadingInputData &dat, wxWindow *parent )
 	{
 		dat.clear();
 		dat.en_mxh = true;
-		dat.mxh.resize_fill(12,24, 1.0);
+		dat.mxh.resize_fill(12,24, 0.0);
 		for (int r=0;r<12;r++)
 			for (int c=0;c<24;c++)
 				dat.mxh.at(r,c) = beam[ 24*r+c+2 ];
@@ -1038,7 +1039,7 @@ bool ImportSolPathObstructions( ShadingInputData &dat, wxWindow *parent )
 	double alt[51];
 
 	matrix_t<float> azaltvals;
-	azaltvals.resize_fill(91,52, 1.0);	
+	azaltvals.resize_fill(91,52, 0.0);	
 	azaltvals.at(0,0) = 0.;
 
 	int j=0;
@@ -1055,7 +1056,7 @@ bool ImportSolPathObstructions( ShadingInputData &dat, wxWindow *parent )
 		}
 		else
 		{
-			if ( j < 51 )  // prevent butter overrun 2/12/12 
+			if ( j < 51 )  // prevent butter overrun 2/12/12	// <- when SAM comments are confusing to new staff. I'm glad we were not overrun by butter. -jmf 7/9/14
 			{
 				azi[j] = wxAtof(lnp[0]);
 				alt[j] = wxAtof(lnp[1]);
@@ -1098,7 +1099,7 @@ bool ImportSolPathObstructions( ShadingInputData &dat, wxWindow *parent )
 
 		for (int j=0;j<52;j++)
 		{
-			if (alt[j]<0 && alt[j]>90)
+			if (alt[j]<0 && alt[j]>90)	//SAME QUESTION
 			{
 				wxMessageBox("Error: Elevations Must be less than 90 degrees and greater than 0 degrees");
 				return false;
@@ -1106,7 +1107,7 @@ bool ImportSolPathObstructions( ShadingInputData &dat, wxWindow *parent )
 			else
 			{
 				for (int i=90;i>90-alt[j];i--)
-					azaltvals.at(i,j+1) = 0;
+					azaltvals.at(i,j+1) = 100;	//IS THIS RIGHT?
 			}
 		}
 
