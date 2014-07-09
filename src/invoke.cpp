@@ -22,7 +22,8 @@
 #include "results.h"
 #include "solarprospector.h"
 #include "simplecurl.h"
-
+#include "openeiapi.h"
+#include "openeiutilityrateform.h"
 #include "invoke.h"
 
 static void fcall_dview(lk::invoke_t &cxt)
@@ -1128,6 +1129,147 @@ void fcall_solarprospector(lk::invoke_t &cxt)
 	cxt.result().assign(filename);
 }
 
+/*
+tab->Add(OpenEIListUtilities, "OpenEIListUtilities", 0, "Returns a list of utility company names from OpenEI.org", "( NONE ):ARRAY");
+tab->Add(OpenEIListRates, "OpenEIListRates", 3, "Lists all rate schedules for a utility company.", "( STRING:Utility name, <ARRAY:Names>, <ARRAY:Guids> ):INTEGER");
+tab->Add(OpenEIApplyRate, "OpenEIApplyRate", 1, "Downloads and applies the specified rate schedule from OpenEI.", "( STRING:Guid ):BOOLEAN");
+
+tab->Add(URdbFileWrite, "URdbFileWrite", 1, "Writes a local URdb format file with the current case's utility rate information.", "( STRING:file ):BOOLEAN");
+tab->Add(URdbFileRead, "URdbFileRead", 1, "Reads a local URdb format file and overwrites the current case's utility rate information.", "( STRING:file ):BOOLEAN");
+*/
+
+/********** OPENEI capability ***********/
+
+void fcall_openeilistutilities(lk::invoke_t &cxt)
+{
+	wxArrayString names;
+	OpenEI api;
+	if (api.QueryUtilityCompanies(names))
+	{
+		for (size_t i = 0; i<names.size(); i++)
+			cxt.result().vec_append(names[i]);
+	}
+}
+
+// TODO finish implementation and test with script
+void fcall_openeilistrates(lk::invoke_t &cxt)
+{
+	wxString utility;
+
+	std::vector<OpenEI::RateInfo> ratelist;
+	OpenEI api;
+	if (api.QueryUtilityRates(utility, ratelist))
+	{
+		for (int i = 0; i<ratelist.size(); i++)
+		{
+			cxt.result().vec_append(ratelist[i].Name);
+			cxt.result().vec_append(ratelist[i].GUID);
+		}
+		cxt.result().assign(ratelist.size());
+	}
+	else
+		cxt.result().assign(-1);
+
+}
+
+/*
+// TODO finish implementation and test with script
+void fcall_openeiapplyrate(lk::invoke_t &cxt)
+{
+	wxString guid;
+
+	Case *c = locate_case();
+	if (!c)
+	{
+		ivkobj.Messages.Add("OpenEIApplyRate: Fail - no active case.");
+		return true;
+	}
+
+	OpenEI::RateData rate;
+	OpenEI api;
+
+	if (api.RetrieveUtilityRateData(guid, rate))
+	{
+		URApplyOpenEIRateData(rate, c->GetSymTab());
+		c->AllInputsInvalidated();
+	}
+}
+
+DECL_INVOKEFCN(URdbFileWrite)
+{
+	Case *c = locate_case();
+	if (!c)
+	{
+		ivkobj.Messages.Add("URdbFileWrite: fail - no active case.");
+		return true;
+	}
+
+	wxString file, err;
+	IVKARG(0, file, "string");
+
+	if (URWriteFile(file, c->GetSymTab(), &err))
+	{
+		retval->Assign(true);
+	}
+	else
+	{
+		ivkobj.Messages.Add("URdbFileWrite: " + err);
+		retval->Assign(false);
+	}
+
+	return true;
+}
+
+DECL_INVOKEFCN(URdbFileRead)
+{
+	Case *c = locate_case();
+	if (!c)
+	{
+		ivkobj.Messages.Add("URdbFileRead: fail - no active case.");
+		return true;
+	}
+
+	wxString file, err;
+	IVKARG(0, file, "string");
+
+	if (URReadFile(file, c->GetSymTab(), &err))
+	{
+		c->AllInputsInvalidated();
+		retval->Assign(true);
+	}
+	else
+	{
+		ivkobj.Messages.Add("URdbFileRead: " + err);
+		retval->Assign(false);
+	}
+
+	return true;
+}
+*/
+
+void fcall_openeiutilityrateform(lk::invoke_t &cxt)
+{
+	LK_DOC("openeiutilityrateform", "Returns a list of utility company names from OpenEI.org", "( NONE ):ARRAY");
+
+	OpenEIUtilityRateDialog openei(SamApp::Window(), "URDB", "market");
+	openei.CenterOnParent();
+	int code = openei.ShowModal(); //shows the dialog and makes it so you can't interact with other parts until window is closed
+
+	//Return an empty string if the window was dismissed
+	if (code == wxID_CANCEL)
+	{
+		cxt.result().assign(wxEmptyString);
+		return;
+	}
+
+	// interact with data returned and apply to current case
+}
+
+
+
+
+
+
 lk::fcall_t* invoke_general_funcs()
 {
 	static const lk::fcall_t vec[] = {
@@ -1223,6 +1365,7 @@ lk::fcall_t* invoke_uicallback_funcs()
 		fcall_current_at_voltage_cec,
 		fcall_current_at_voltage_sandia,
 		fcall_solarprospector,
+		fcall_openeiutilityrateform,
 		0 };
 	return (lk::fcall_t*)vec;
 }
