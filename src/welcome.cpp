@@ -74,7 +74,7 @@ WelcomeScreen::WelcomeScreen(wxWindow *parent)
 		wxPoint(459,51), wxSize(208,21), wxMB_RIGHTARROW);
 	m_createCase->SetFont( wxMetroTheme::Font( wxMT_NORMAL, 14) );
 
-	m_openExisting = new wxMetroButton( this, ID_OPEN_EXISTING, "Open an project file", wxNullBitmap );
+	m_openExisting = new wxMetroButton( this, ID_OPEN_EXISTING, "Open a project file", wxNullBitmap );
 	m_openExisting->SetFont( wxMetroTheme::Font( wxMT_NORMAL, 14) );
 
 	m_openScript = new wxMetroButton( this, ID_OPEN_SCRIPT, "Open script" );
