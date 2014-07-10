@@ -77,8 +77,10 @@ bool OpenEI::QueryUtilityCompanies(wxArrayString &names, wxString *err)
 {
 
 	//  based on emails from Paul and Jay Huggins 3/24/14
-	wxString url = "http://en.openei.org/services/rest/utility_companies?version=2&format=json_plain&callback=callback";
-	
+//	wxString url = "http://en.openei.org/services/rest/utility_companies?version=2&format=json_plain&callback=callback";
+	//  based on email from Jay Huggins 7/8/14 - use latest format - still at version 2
+	wxString url = "http://en.openei.org/services/rest/utility_companies?version=latest&format=json_plain&callback=callback";
+
 	wxString json_data = wxWebHttpGet( url );
 	if (json_data.IsEmpty())
 	{
@@ -101,7 +103,9 @@ bool OpenEI::QueryUtilityCompanies(wxArrayString &names, wxString *err)
 	{
 		wxString buf = item_list[i].Item("label").AsString();
 		buf.Replace("&amp;", "&");
-		names.Add( buf );
+		// version 3 not handling aliases 7/9/14
+		if (UtilityCompanyRateCount(buf) > 0)
+			names.Add( buf );
 	}
 
 	if (err) *err = wxEmptyString;
@@ -114,8 +118,8 @@ bool OpenEI::QueryUtilityRates(const wxString &name, std::vector<RateInfo> &rate
 {
 	wxString utlnm = name;
 	utlnm.Replace("&", "%26");
-	// production
-	wxString url = "http://en.openei.org/services/rest/utility_rates?version=2&detail=basic&format=json_plain&ratesforutility=" + utlnm;
+	// production http://dev.openei.org/services/doc/rest/util_rates?version=3
+	wxString url = "http://en.openei.org/services/rest/utility_rates?version=3&detail=minimal&format=json_plain&ratesforutility=" + utlnm;
 	
 	wxString json_data = MyGet(url);
 	if (json_data.IsEmpty())
@@ -157,7 +161,7 @@ bool OpenEI::QueryUtilityRates(const wxString &name, std::vector<RateInfo> &rate
 int OpenEI::UtilityCompanyRateCount(const wxString &name)
 {
 	// production
-	wxString url = "http://en.openei.org/services/rest/utility_rates?version=2&limit=500&detail=minimal&format=json_plain&ratesforutility=" + name;
+	wxString url = "http://en.openei.org/services/rest/utility_rates?version=3&limit=500&detail=minimal&format=json_plain&ratesforutility=" + name;
 	wxString json_data = MyGet(url);
 	if (json_data.IsEmpty())
 		return 0;
@@ -173,7 +177,7 @@ int OpenEI::UtilityCompanyRateCount(const wxString &name)
 bool OpenEI::RetrieveUtilityRateData(const wxString &guid, RateData &rate, wxString *json_url, wxString *err)
 {
 	// production
-	wxString url = "http://en.openei.org/services/rest/utility_rates?version=2&format=json_plain&detail=full&getpage=Data:" + guid;
+	wxString url = "http://en.openei.org/services/rest/utility_rates?version=3&format=json_plain&detail=full&getpage=Data:" + guid;
 
 	if (json_url) *json_url = url;
 
