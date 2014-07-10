@@ -1796,6 +1796,9 @@ void SamApp::ShowHelp( const wxString &context )
 			wxMessageBox( "failed to read help/contextmap.txt or there were no entries" );
 
 	wxString url = SamApp::GetRuntimePath() + "/help/html/";
+	wxFileName fn( url );
+	fn.MakeAbsolute();
+	url = fn.GetFullPath( wxPATH_NATIVE );
 	if ( context.Left(1) == ":" )
 	{
 		url = context;
@@ -1805,13 +1808,11 @@ void SamApp::ShowHelp( const wxString &context )
 		if ( _map.find( context.Lower() ) == _map.end() )
 			url += "index.html";
 		else
-			url += _map[context.Lower()];
+			url += "" + _map[context.Lower()];
 		
-		wxFileName fn( url );
-		fn.MakeAbsolute();
-		url = "file:///" + fn.GetFullPath( wxPATH_NATIVE );
+		url = "file:///" + url;
 	}
-		
+	
 	wxWindow *modal_active = 0;
 	wxWindow *nonmodal_tlw = 0;
 	for( wxWindowList::iterator wl = wxTopLevelWindows.begin();
