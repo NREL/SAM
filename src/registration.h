@@ -27,11 +27,12 @@ private:
 	wxTextCtrl *m_email;
 	wxTextCtrl *m_key;
 	wxTextCtrl *m_output;
-	wxMetroButton *m_close;
+	wxMetroButton *m_close, *m_register;
 
 	void OnRegister( wxCommandEvent & );
 	void OnConfirm( wxCommandEvent & );
 	void OnHelp( wxCommandEvent & );
+	void OnEmail( wxCommandEvent & );
 
 	DECLARE_EVENT_TABLE();
 };

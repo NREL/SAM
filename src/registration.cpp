@@ -12,16 +12,6 @@
 #include "simplecurl.h"
 #include "registration.h"
 
-enum { ID_REGISTER = wxID_HIGHEST+134, ID_CONFIRM };
-
-#define SPACE 15
-
-BEGIN_EVENT_TABLE( SamRegistration, wxDialog )
-	EVT_BUTTON( ID_REGISTER, SamRegistration::OnRegister )
-	EVT_BUTTON( ID_CONFIRM, SamRegistration::OnConfirm )
-	EVT_BUTTON( wxID_HELP, SamRegistration::OnHelp )
-END_EVENT_TABLE()
-
 static const char *sam_api_key = 
   "rJzFOTOJhNHcLOnPmW2TNCLV8I4HHLgKddAycGpn" // production (sam.support@nrel.gov)
 //"yXv3dcb6f5piO0abUMrrTuQvLDFgWvnBz52TJmDJ" // staging (aron.dobos@nrel.gov)
@@ -1167,6 +1157,17 @@ wxString SamRegistration::GetVersionAndPlatform()
 	return SamApp::VersionStr() + "-" + platform;
 }
 
+enum { ID_REGISTER = wxID_HIGHEST+134, ID_CONFIRM, ID_EMAIL };
+
+#define SPACE 15
+
+BEGIN_EVENT_TABLE( SamRegistration, wxDialog )
+	EVT_BUTTON( ID_REGISTER, SamRegistration::OnRegister )
+	EVT_BUTTON( ID_CONFIRM, SamRegistration::OnConfirm )
+	EVT_BUTTON( wxID_HELP, SamRegistration::OnHelp )
+	EVT_TEXT( ID_EMAIL, SamRegistration::OnEmail )
+END_EVENT_TABLE()
+
 
 SamRegistration::SamRegistration( wxWindow *parent )
 	: wxDialog( parent, wxID_ANY, "SAM Registration", wxDefaultPosition, wxDefaultSize, wxDEFAULT_DIALOG_STYLE )
@@ -1188,11 +1189,12 @@ SamRegistration::SamRegistration( wxWindow *parent )
 	label->SetForegroundColour( *wxWHITE );
 	grid->Add( label, 0, wxLEFT|wxTOP|wxBOTTOM|wxALIGN_CENTER_VERTICAL|wxALIGN_RIGHT, SPACE );
 
-	m_email = new wxTextCtrl( panel, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxBORDER_NONE );
+	m_email = new wxTextCtrl( panel, ID_EMAIL, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxBORDER_NONE );
 	m_email->SetFont( font );
 	grid->Add( m_email, 0, wxALL|wxEXPAND|wxALIGN_CENTER_VERTICAL, SPACE );
 	
-	grid->Add( new wxMetroButton( panel, ID_REGISTER, "Register" ), 0, wxALIGN_CENTER_VERTICAL|wxALIGN_CENTER|wxRIGHT, SPACE );
+	m_register = new wxMetroButton( panel, ID_REGISTER, "Register" );
+	grid->Add( m_register, 0, wxALIGN_CENTER_VERTICAL|wxALIGN_CENTER|wxRIGHT, SPACE );
 	
 	label = new wxStaticText( panel, wxID_ANY, "Key:" );
 	label->SetFont( font );
@@ -1250,12 +1252,34 @@ void SamRegistration::OnRegister( wxCommandEvent & )
 		wxMessageBox("Please enter a valid email address to register.", "Notice");
 		return;
 	}
-
+	
 	// save the email address in settings.
 	SamApp::Settings().Write("user-email-" + GetVersionAndPlatform(), email );
 
 	wxBusyCursor curs;
 	wxSimpleCurlDownloadThread curl( this, wxID_ANY );
+	int code = -1;
+	wxJSONValue root;
+	wxJSONReader reader;
+	
+	m_output->SetForegroundColour( wxMetroTheme::Colour( wxMT_TEXT ) );
+
+	if ( m_register->GetLabel() == "Resend key" )
+	{
+	//	https://developer.nrel.gov/api/sam/v1/tracker/resend_key?api_key=SAMAPIKEY&email=someusersemail@somedomain.com
+		wxString url = SamApp::WebApi("registration") + "/resend_key?api_key=" + wxString(sam_api_key) + "&email=" + email;
+		curl.Start( url, true );
+		
+		if ( reader.Parse( curl.GetDataAsString(), &root ) == 0 )
+			code = root.Item("status").AsInt();
+		
+		if ( code == 404 ) m_output->SetValue("No user exists with that email address." );
+		else if ( code == 200 ) m_output->SetValue("Registration key has been resent to " + email );
+		else m_output->SetValue( "An unknown error occurred.  Please check your internet connection." );
+
+		return;
+	}
+
 
 	int count = 0;
 	
@@ -1269,17 +1293,18 @@ void SamRegistration::OnRegister( wxCommandEvent & )
 	wxLogStatus( post );
 	curl.Start( url, true, post );
 		
-	int code = -1;
-	wxJSONValue root;
-	wxJSONReader reader;
-	wxString raw( curl.GetDataAsString() );
-	if ( reader.Parse( raw, &root ) == 0 )
+	if ( reader.Parse( curl.GetDataAsString(), &root ) == 0 )
 		code = root.Item("status").AsInt();
 
-	m_output->SetForegroundColour( wxMetroTheme::Colour( wxMT_TEXT ) );
 
 	if ( code == 200 ) m_output->SetValue( "Registration successful!  You have been sent an email with a registration key.");
-	else if ( code == 409 ) m_output->SetValue("You are already registered.  Please enter the registration key sent to you by email when you first registered SAM." );
+	else if ( code == 409 ) 
+	{
+		m_output->SetValue("You are already registered.  Please enter the registration key sent to you by email when you first registered SAM.\n\nYou can press 'Resend key' above to have your key emailed to you again." );
+		m_register->SetLabel( "Resend key");
+		m_register->Refresh();
+		Layout();
+	}
 	else if ( code == 404 ) m_output->SetValue("Your registration information was not correct.  No user exists with that registration code." );
 	else m_output->SetValue(wxString::Format("Registration failed with error code %d.  Please check your internet connection.", code));
 
@@ -1312,4 +1337,14 @@ void SamRegistration::OnConfirm( wxCommandEvent & )
 void SamRegistration::OnHelp( wxCommandEvent & )
 {
 	SamApp::ShowHelp( "registration" );
+}
+
+void SamRegistration::OnEmail( wxCommandEvent & )
+{
+	if ( m_register->GetLabel() != "Register" )
+	{
+		m_register->SetLabel( "Register" );
+		m_register->Refresh();
+		Layout();
+	}
 }
