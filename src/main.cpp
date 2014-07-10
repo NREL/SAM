@@ -1791,7 +1791,7 @@ void SamApp::ShowHelp( const wxString &context )
 {	
 	static StringHash _map;
 		
-	if ( !_map.size() == 0 )
+	if ( _map.size() == 0 )
 		if ( !_map.ReadKeyValueFile( SamApp::GetRuntimePath() + "/help/contextmap.txt" ) || _map.size() == 0)
 			wxMessageBox( "failed to read help/contextmap.txt or there were no entries" );
 
@@ -1813,6 +1813,8 @@ void SamApp::ShowHelp( const wxString &context )
 		url = "file:///" + url;
 	}
 	
+	//wxShowTextMessageDialog( url + "\n\n" + _map[context.Lower()] );
+
 	wxWindow *modal_active = 0;
 	wxWindow *nonmodal_tlw = 0;
 	for( wxWindowList::iterator wl = wxTopLevelWindows.begin();
