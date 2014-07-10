@@ -15,6 +15,7 @@ public:
 		wxString Sector;
 		wxString Description;
 		wxString Source;
+		wxString uri;
 		int Version;
 	};
 

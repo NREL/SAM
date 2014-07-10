@@ -103,8 +103,8 @@ bool OpenEI::QueryUtilityCompanies(wxArrayString &names, wxString *err)
 	{
 		wxString buf = item_list[i].Item("label").AsString();
 		buf.Replace("&amp;", "&");
-		// version 3 not handling aliases 7/9/14
-		if (UtilityCompanyRateCount(buf) > 0)
+		// version 3 not handling aliases 7/9/14 - EXTREMELY SLOW!!
+		//if (UtilityCompanyRateCount(buf) > 0)
 			names.Add( buf );
 	}
 
@@ -143,13 +143,15 @@ bool OpenEI::QueryUtilityRates(const wxString &name, std::vector<RateInfo> &rate
 	{
 
 		RateInfo x;
-		x.GUID = json_string(item_list[i].Item("label")).Mid(5);
+//		x.GUID = json_string(item_list[i].Item("label")).Mid(5);
+		x.GUID = json_string(item_list[i].Item("label"));
 		x.Name = json_string(item_list[i].Item("name"));
 		x.Utility = json_string(item_list[i].Item("utility"));
 		x.Sector = json_string(item_list[i].Item("sector"));
 		x.Description = json_string(item_list[i].Item("description"));
 		x.Source = json_string(item_list[i].Item("source"));
 		x.Version = json_integer(item_list[i].Item("version"));
+		x.uri = json_string(item_list[i].Item("uri"));
 		rates.push_back(x);
 	}
 
@@ -177,7 +179,10 @@ int OpenEI::UtilityCompanyRateCount(const wxString &name)
 bool OpenEI::RetrieveUtilityRateData(const wxString &guid, RateData &rate, wxString *json_url, wxString *err)
 {
 	// production
-	wxString url = "http://en.openei.org/services/rest/utility_rates?version=3&format=json_plain&detail=full&getpage=Data:" + guid;
+	// version 2
+//	wxString url = "http://en.openei.org/services/rest/utility_rates?version=2&format=json_plain&detail=full&getpage=Data:" + guid;
+	// version 3
+	wxString url = "http://en.openei.org/services/rest/utility_rates?version=3&format=json_plain&detail=full&getpage=" + guid;
 
 	if (json_url) *json_url = url;
 
