@@ -863,6 +863,7 @@ void fcall_ssc_var( lk::invoke_t &cxt )
 
 	wxString name = cxt.arg(0).as_string();
 	if (cxt.arg_count() == 1)
+		
 		sscvar_to_lkvar( cxt.result(), (const char*)name.ToUTF8(), sg_sscData );
 	else if (cxt.arg_count() == 2)
 		lkvar_to_sscvar( sg_sscData, (const char*)name.ToUTF8(), cxt.arg(1).deref() );
@@ -1160,7 +1161,7 @@ void fcall_openeilistrates(lk::invoke_t &cxt)
 	OpenEI api;
 	if (api.QueryUtilityRates(utility, ratelist))
 	{
-		for (int i = 0; i<ratelist.size(); i++)
+		for (int i = 0; i<(int)ratelist.size(); i++)
 		{
 			cxt.result().vec_append(ratelist[i].Name);
 			cxt.result().vec_append(ratelist[i].GUID);
@@ -1172,29 +1173,33 @@ void fcall_openeilistrates(lk::invoke_t &cxt)
 
 }
 
-/*
+
 // TODO finish implementation and test with script
 void fcall_openeiapplyrate(lk::invoke_t &cxt)
 {
-	wxString guid;
-
-	Case *c = locate_case();
-	if (!c)
-	{
-		ivkobj.Messages.Add("OpenEIApplyRate: Fail - no active case.");
-		return true;
-	}
+	LK_DOC("openeiapplyrate", "Downloads and applies the specified rate schedule from OpenEI.", "(STRING:Guid) : BOOLEAN");	
+	wxString guid = cxt.arg(0).as_string();
+	if (guid.IsEmpty()) return;
+	// try using hash to apply in script for easier name changes...
+	//Case *c = SamApp::Window()->GetCurrentCase();
+	//if (!c) return;
 
 	OpenEI::RateData rate;
 	OpenEI api;
 
 	if (api.RetrieveUtilityRateData(guid, rate))
 	{
-		URApplyOpenEIRateData(rate, c->GetSymTab());
-		c->AllInputsInvalidated();
+		lk::vardata_t val;
+		lk_string key;
+		key = "flat_buy_rate";
+		val.assign(rate.FlatRateBuy);
+		// causes heap error
+		//cxt.result().assign(key,&val);                               
+//		URApplyOpenEIRateData(rate, c->GetSymTab());
+//		c->AllInputsInvalidated();
 	}
 }
-
+/*
 DECL_INVOKEFCN(URdbFileWrite)
 {
 	Case *c = locate_case();
@@ -1263,6 +1268,7 @@ void fcall_openeiutilityrateform(lk::invoke_t &cxt)
 	}
 
 	// interact with data returned and apply to current case
+	cxt.result().assign(openei.GetCurrentRateData().Header.GUID);
 }
 
 
@@ -1366,6 +1372,7 @@ lk::fcall_t* invoke_uicallback_funcs()
 		fcall_current_at_voltage_sandia,
 		fcall_solarprospector,
 		fcall_openeiutilityrateform,
+		fcall_openeiapplyrate,
 		0 };
 	return (lk::fcall_t*)vec;
 }
