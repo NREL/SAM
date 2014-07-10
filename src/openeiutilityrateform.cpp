@@ -280,7 +280,8 @@ void OpenEIUtilityRateDialog::UpdateRateData()
 		txtRateDescription->SetValue(wxEmptyString);
 		txtRateStartDate->SetValue(wxEmptyString);
 		txtRateEndDate->SetValue(wxEmptyString);
-		hypOpenEILink->SetURL( "http://en.openei.org/wiki/Gateway:Utilities");
+//		hypOpenEILink->SetURL("http://en.openei.org/wiki/Gateway:Utilities");
+		hypOpenEILink->SetURL("http://en.openei.org/wiki/Utility_Rate_Database");
 	}
 	else
 	{
@@ -305,7 +306,8 @@ void OpenEIUtilityRateDialog::UpdateRateData()
 
 			txtRateDescription->SetValue( desc );
 			
-			hypOpenEILink->SetURL( "http://en.openei.org/wiki/Data:" + guid);
+//			hypOpenEILink->SetURL("http://en.openei.org/wiki/Data:" + guid);
+			hypOpenEILink->SetURL("http://dev.openei.org/apps/USURDB/rate/view/" + guid);
 
 			lblStatus->SetLabel("Ready.");
 		}
