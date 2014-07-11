@@ -1585,6 +1585,13 @@ static StringHash s_apis;
 		if ( ! s_apis.ReadKeyValueFile( GetRuntimePath() + "/webapis.conf" ) || s_apis.size() == 0 )
 			wxMessageBox( "error loading webapis.conf, or no apis defined");
 
+	if ( name.IsEmpty() )
+	{
+		wxArrayString names;
+		for( StringHash::iterator it = s_apis.begin(); it != s_apis.end(); ++it )
+			names.Add( it->first );
+		return wxJoin(names, ',');
+	}
 	if ( s_apis.find( name ) != s_apis.end() ) return s_apis[ name ];
 	else return wxEmptyString;
 }

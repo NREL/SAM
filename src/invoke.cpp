@@ -93,6 +93,34 @@ static void fcall_browse( lk::invoke_t &cxt )
 	::wxLaunchDefaultBrowser( cxt.arg(0).as_string() );
 }
 
+static void fcall_webapi( lk::invoke_t &cxt )
+{
+	LK_DOC( "webapi", "Returns the URL for the SAM web API requested.  No arguments returns a list of names.", "( [string:name] ):string");
+	cxt.result().assign( SamApp::WebApi( cxt.arg_count() > 0 ? cxt.arg(0).as_string() : wxEmptyString ) );
+}
+
+static void fcall_geocode( lk::invoke_t &cxt )
+{
+	LK_DOC( "geocode", "Returns the latitude and longitude of an address using Google's geocoding web API.", "(string:address):table");
+	double lat = 0, lon = 0;
+	wxSimpleGeoCode( cxt.arg(0).as_string(), &lat, &lon );
+	cxt.result().empty_hash();
+	cxt.result().hash_item("lat").assign(lat);
+	cxt.result().hash_item("lon").assign(lon);
+}
+
+static void fcall_curl( lk::invoke_t &cxt )
+{
+	LK_DOC( "curl", "Issue a synchronous HTTP/HTTPS request.  By default a GET request, but can support POST via parameter 2.  If a third argument is given, the returned data is downloaded to the specified file on disk rather than returned as a string.", "(string:url, [string:post data], [string:local file]):string" );
+	wxSimpleCurlDownloadThread curl;
+	curl.Start( cxt.arg(0).as_string(), true,  cxt.arg_count() > 1 ? cxt.arg(1).as_string() : wxEmptyString );
+	if ( cxt.arg_count() > 2 )
+		cxt.result().assign( curl.WriteDataToFile( cxt.arg(2).as_string() ) ? 1.0 : 0.0 );
+	else
+		cxt.result().assign( curl.GetDataAsString() );
+}
+
+
 static void fcall_appdir( lk::invoke_t &cxt )
 {
 	LK_DOC("appdir", "Return the application folder.", "(none):string");
@@ -1281,6 +1309,9 @@ lk::fcall_t* invoke_general_funcs()
 	static const lk::fcall_t vec[] = {
 		fcall_logmsg,
 		fcall_browse,
+		fcall_webapi,
+		fcall_geocode,
+		fcall_curl,
 		fcall_appdir,
 		fcall_runtimedir,
 		fcall_userlocaldatadir,
