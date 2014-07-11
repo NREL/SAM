@@ -134,6 +134,9 @@
     <ClInclude Include="..\src\openeiutilityrateform.h">
       <Filter>Source</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\stochastic.h">
+      <Filter>Source</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\welcome.cpp">
@@ -254,6 +257,9 @@
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="..\src\openeiutilityrateform.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\stochastic.cpp">
       <Filter>Source</Filter>
     </ClCompile>
   </ItemGroup>
