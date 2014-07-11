@@ -56,6 +56,7 @@
     <ClCompile Include="..\src\simplecurl.cpp" />
     <ClCompile Include="..\src\simulation.cpp" />
     <ClCompile Include="..\src\solarprospector.cpp" />
+    <ClCompile Include="..\src\stochastic.cpp" />
     <ClCompile Include="..\src\troughloop.cpp" />
     <ClCompile Include="..\src\uiobjects.cpp" />
     <ClCompile Include="..\src\variablegrid.cpp" />
@@ -98,6 +99,7 @@
     <ClInclude Include="..\src\simplecurl.h" />
     <ClInclude Include="..\src\simulation.h" />
     <ClInclude Include="..\src\solarprospector.h" />
+    <ClInclude Include="..\src\stochastic.h" />
     <ClInclude Include="..\src\troughloop.h" />
     <ClInclude Include="..\src\uiobjects.h" />
     <ClInclude Include="..\src\variablegrid.h" />
