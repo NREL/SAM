@@ -49,8 +49,10 @@ public:
 		double DemandMax[12][6]; 
 		double DemandCharge[12][6]; 
 		double DemandAdj[12][6]; 
-		char DemandWeekdaySchedule[289];
-		char DemandWeekendSchedule[289];
+//		char DemandWeekdaySchedule[289];
+//		char DemandWeekendSchedule[289];
+		double DemandWeekdaySchedule[12][24];
+		double DemandWeekendSchedule[12][24];
 
 		bool HasEnergyCharge;	
 		// diurnal based
