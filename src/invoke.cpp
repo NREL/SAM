@@ -1217,14 +1217,16 @@ void fcall_openeiapplyrate(lk::invoke_t &cxt)
 
 	if (api.RetrieveUtilityRateData(guid, rate))
 	{
-		lk::vardata_t val;
-		lk_string key;
-		key = "flat_buy_rate";
-		val.assign(rate.FlatRateBuy);
+//		lk::vardata_t val;
+//		lk_string key;
+//		key = "flat_buy_rate";
+//		val.assign(rate.FlatRateBuy);
 		// causes heap error
 		//cxt.result().assign(key,&val);                               
 //		URApplyOpenEIRateData(rate, c->GetSymTab());
 //		c->AllInputsInvalidated();
+		cxt.result().empty_hash();
+		cxt.result().hash_item("flat_buy_rate").assign(rate.FlatRateBuy);
 	}
 }
 /*

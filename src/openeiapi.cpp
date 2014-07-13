@@ -4,11 +4,15 @@
 #include <wex/jsonreader.h>
 
 #include "openeiapi.h"
+#include "simplecurl.h"
 
 
 static wxString MyGet(const wxString &url)
 {
 	return wxWebHttpGet(url, "Cache-Control", "no-cache");
+//	wxSimpleCurlDownloadThread curl;
+//	curl.Start(url, true);
+//	return curl.GetDataAsString();
 }
 
 OpenEI::RateData::RateData()
@@ -56,19 +60,25 @@ void OpenEI::RateData::Reset()
 	for (i=0;i<12;i++)
 		FlatDemandMonth[i]=0;
 
-	for (i=0;i<12;i++)
-		for (j=0;j<6;j++)
+	for (i = 0; i < 12; i++)
+	{
+		for (j = 0; j < 6; j++)
 		{
-			FlatDemandCharge[i][j]=FlatDemandAdj[i][j]=0.0;
-			FlatDemandMax[i][j]=1e99;
-			DemandCharge[i][j]=DemandAdj[i][j]=0.0;
-			DemandMax[i][j]=1e99;
+			FlatDemandCharge[i][j] = FlatDemandAdj[i][j] = 0.0;
+			FlatDemandMax[i][j] = 1e99;
+			DemandCharge[i][j] = DemandAdj[i][j] = 0.0;
+			DemandMax[i][j] = 1e99;
 		}
+		for (int k = 0; k < 24; k++)
+		{
+			DemandWeekdaySchedule[i][k] = 1;
+			DemandWeekendSchedule[i][k] = 1;
+		}
+	}
+	//for (i=0;i<288;i++)
+	//	DemandWeekdaySchedule[i]=DemandWeekendSchedule[i]='1';
 
-	for (i=0;i<288;i++)
-		DemandWeekdaySchedule[i]=DemandWeekendSchedule[i]='1';
-
-	DemandWeekdaySchedule[288]=DemandWeekendSchedule[288]=0;
+//	DemandWeekdaySchedule[288]=DemandWeekendSchedule[288]=0;
 
 	
 }
@@ -81,7 +91,8 @@ bool OpenEI::QueryUtilityCompanies(wxArrayString &names, wxString *err)
 	//  based on email from Jay Huggins 7/8/14 - use latest format - still at version 2
 	wxString url = "http://en.openei.org/services/rest/utility_companies?version=latest&format=json_plain&callback=callback";
 
-	wxString json_data = wxWebHttpGet( url );
+//	wxString json_data = wxWebHttpGet(url);
+	wxString json_data = MyGet(url);
 	if (json_data.IsEmpty())
 	{
 		if (err) *err = "Could not retrieve JSON data for utility rate companies.";
@@ -294,12 +305,28 @@ bool OpenEI::RetrieveUtilityRateData(const wxString &guid, RateData &rate, wxStr
 			rate.DemandAdj[period][tier] = json_double( val.Item(period_string + "adjustment"), 0.0, &rate.HasDemandCharge );
 		}
 	
+
+	//wxJSONValue default_value(0);
+	wxJSONValue v1 = val.Item("demandweekendschedule");
+
+	if (v1.IsArray())
+	{
+		for (int m = 0; m < 12; m++)
+		{
+			for (int h = 0; h < 24; h++)
+			{
+				//			rate.DemandWeekdaySchedule[m][h] = json_double(v1.ItemAt(m * 24 + h));
+				rate.DemandWeekdaySchedule[m][h] = v1[m * 24 + h].AsInt();
+			}
+		}
+	}
+	/*
 	buf = json_string(val.Item("demandweekdayschedule"), wxEmptyString, &rate.HasDemandCharge );
 	if (buf.Len() == 288) strcpy(rate.DemandWeekdaySchedule, buf.c_str());
 
 	buf = json_string(val.Item("demandweekendschedule"), wxEmptyString, &rate.HasDemandCharge );
 	if (buf.Len() == 288) strcpy(rate.DemandWeekendSchedule, buf.c_str());
-
+	*/
 
 
 	return true;
