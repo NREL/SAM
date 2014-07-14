@@ -25,6 +25,7 @@
 #include "ipagelist.h"
 #include "simulation.h"
 #include "parametric.h"
+#include "stochastic.h"
 #include "p50p90.h"
 
 #include "../resource/graph.cpng"
@@ -189,8 +190,8 @@ CaseWindow::CaseWindow( wxWindow *parent, Case *c )
 	m_parametrics = new ParametricViewer( m_pageFlipper, m_case );
 	m_pageFlipper->AddPage( m_parametrics, "Parametric", false );
 
-
-	m_pageFlipper->AddPage( new wxPanel( m_pageFlipper ), "Sensitivity", false );
+	m_stochastic = new StochasticPanel( m_pageFlipper, m_case );
+	m_pageFlipper->AddPage( m_stochastic, "Stochastic", false );
 
 	m_p50p90 = new P50P90Form( m_pageFlipper, m_case );
 	m_pageFlipper->AddPage( m_p50p90, "P50/P90", false );

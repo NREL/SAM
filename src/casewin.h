@@ -24,6 +24,7 @@ class PageNote;
 class CollapsePaneCtrl;
 class wxUIObject;
 class ParametricViewer;
+class StochasticPanel;
 class P50P90Form;
 
 struct InputPageGroup;
@@ -98,6 +99,7 @@ private:
 	wxSimplebook *m_pageFlipper;
 	ResultsViewer *m_baseCaseResults;
 	ParametricViewer *m_parametrics;
+	StochasticPanel *m_stochastic;
 	P50P90Form *m_p50p90;
 
 	PageNote *m_pageNote;

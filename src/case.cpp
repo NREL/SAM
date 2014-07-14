@@ -227,6 +227,7 @@ bool Case::Copy( Object *obj )
 		m_properties = rhs->m_properties;
 		m_notes = rhs->m_notes;
 		m_parametric.Copy(rhs->m_parametric);
+		m_stochastic.Copy(rhs->m_stochastic);
 		
 		m_config = 0;
 		if ( rhs->m_config )
@@ -250,7 +251,7 @@ void Case::Write( wxOutputStream &_o )
 	wxDataOutputStream out(_o);
 
 	out.Write8( 0x9b );
-	out.Write8( 5 );
+	out.Write8( 6 );
 
 	wxString tech, fin;
 	if ( m_config != 0 )
@@ -275,6 +276,7 @@ void Case::Write( wxOutputStream &_o )
 	m_perspective.Write( _o );
 
 	m_parametric.Write( _o );
+	m_stochastic.Write( _o );
 
 	out.Write8( 0x9b );
 }
@@ -341,6 +343,11 @@ bool Case::Read( wxInputStream &_i )
 	if ( ver >= 5 )
 	{
 		if ( !m_parametric.Read( _i ) ) wxLogStatus("error reading parametric simulation information in Case::Read");
+	}
+
+	if ( ver >= 6 )
+	{
+		if ( !m_stochastic.Read( _i ) ) wxLogStatus("error reading stochastic simulation information in Case::Read");
 	}
 
 	return (in.Read8() == code);
