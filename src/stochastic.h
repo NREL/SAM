@@ -171,5 +171,6 @@ private:
 };
 
 
+bool ComputeLHSInputVectors( StochasticData *ssim, matrix_t<double> &table, wxArrayString *errors);
 
 #endif
