@@ -1,10 +1,12 @@
 #include <wx/tokenzr.h>
+#include <wx/log.h>
 
 #include <wex/utils.h>
 #include <wex/jsonreader.h>
 
 #include "openeiapi.h"
 #include "simplecurl.h"
+
 
 
 static wxString MyGet(const wxString &url)
@@ -41,17 +43,24 @@ void OpenEI::RateData::Reset()
 	HasEnergyCharge=false;	
 	EnergyRateUnit = "kWh";
 
-	for (i=0;i<12;i++)
-		for (j=0;j<6;j++)
+	for (i = 0; i < 12; i++)
+	{
+		for (j = 0; j < 6; j++)
 		{
-			EnergyBuy[i][j]=EnergyBuy[i][j]=EnergySell[i][j]=0.0;
-			EnergyMax[i][j]=1e99;
+			EnergyBuy[i][j] = EnergyBuy[i][j] = EnergySell[i][j] = 0.0;
+			EnergyMax[i][j] = 1e99;
 		}
+		for (int k = 0; k < 24; k++)
+		{
+			EnergyWeekdaySchedule[i][k] = 1;
+			EnergyWeekendSchedule[i][k] = 1;
+		}
+	}
 
-	for (i=0;i<288;i++)
-		EnergyWeekdaySchedule[i]=EnergyWeekendSchedule[i]='1';
-
-	EnergyWeekendSchedule[288]=EnergyWeekendSchedule[288]=0;
+//	for (i=0;i<288;i++)
+//		EnergyWeekdaySchedule[i]=EnergyWeekendSchedule[i]='1';
+//
+//	EnergyWeekendSchedule[288]=EnergyWeekendSchedule[288]=0;
 
 	HasDemandCharge = false;
 	DemandRateUnit = "kW";
@@ -262,13 +271,47 @@ bool OpenEI::RetrieveUtilityRateData(const wxString &guid, RateData &rate, wxStr
 			rate.EnergyAdj[period][tier] = json_double( val.Item(period_string + "adjustment"), 0.0, &rate.HasEnergyCharge );
 		}
 
-	wxString buf;
+/*	wxString buf;
 
 	buf = json_string(val.Item("energyweekdayschedule"), wxEmptyString, &rate.HasEnergyCharge);
 	if (buf.Len() == 288) strcpy(rate.EnergyWeekdaySchedule, buf.c_str());
 
 	buf = json_string(val.Item("energyweekendschedule"), wxEmptyString, &rate.HasEnergyCharge);
 	if (buf.Len() == 288) strcpy(rate.EnergyWeekendSchedule, buf.c_str());
+*/
+	//wxJSONValue default_value(0);
+	wxJSONValue month_ary,hour_ary;
+
+	month_ary = val.Item("energyweekdayschedule");
+	if (month_ary.IsArray())
+	{
+		if (month_ary.Size() != 12) return false;
+		for (int m = 0; m < 12; m++)
+		{
+			hour_ary = month_ary[m];
+			if (hour_ary.Size() != 24) return false;
+			for (int h = 0; h < 24; h++)
+			{
+				rate.EnergyWeekdaySchedule[m][h] = hour_ary[h].AsInt();
+			}
+		}
+	}
+	month_ary = val.Item("energyweekendschedule");
+	if (month_ary.IsArray())
+	{
+		if (month_ary.Size() != 12) return false;
+		for (int m = 0; m < 12; m++)
+		{
+			hour_ary = month_ary[m];
+			if (hour_ary.Size() != 24) return false;
+			for (int h = 0; h < 24; h++)
+			{
+				rate.EnergyWeekendSchedule[m][h] = hour_ary[h].AsInt();
+			}
+		}
+	}
+
+
 
 	/// DEMAND CHARGES
 	rate.HasDemandCharge = true;
@@ -306,20 +349,12 @@ bool OpenEI::RetrieveUtilityRateData(const wxString &guid, RateData &rate, wxStr
 		}
 	
 
-	//wxJSONValue default_value(0);
-	wxJSONValue v1 = val.Item("demandweekendschedule");
 
-	if (v1.IsArray())
-	{
-		for (int m = 0; m < 12; m++)
-		{
-			for (int h = 0; h < 24; h++)
-			{
-				//			rate.DemandWeekdaySchedule[m][h] = json_double(v1.ItemAt(m * 24 + h));
-				rate.DemandWeekdaySchedule[m][h] = v1[m * 24 + h].AsInt();
-			}
-		}
-	}
+	wxLogStatus("\nopenei::RetrieveUtiltyRateData JSON  root= %s", root.AsString().c_str());
+	wxLogStatus("\nopenei::RetrieveUtiltyRateData JSON  root.items= %s", root.Item("items").AsString().c_str());
+	wxLogStatus("\nopenei::RetrieveUtiltyRateData JSON  root.items(0)= %s", val.AsString().c_str());
+
+
 	/*
 	buf = json_string(val.Item("demandweekdayschedule"), wxEmptyString, &rate.HasDemandCharge );
 	if (buf.Len() == 288) strcpy(rate.DemandWeekdaySchedule, buf.c_str());
