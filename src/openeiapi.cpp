@@ -40,7 +40,7 @@ void OpenEI::RateData::Reset()
 
 
 	HasEnergyCharge=false;	
-	EnergyRateUnit = "kWh";
+//	EnergyRateUnit = "kWh";
 
 	for (i = 0; i < 12; i++)
 	{
@@ -55,11 +55,6 @@ void OpenEI::RateData::Reset()
 			EnergyWeekendSchedule[i][k] = 1;
 		}
 	}
-
-//	for (i=0;i<288;i++)
-//		EnergyWeekdaySchedule[i]=EnergyWeekendSchedule[i]='1';
-//
-//	EnergyWeekendSchedule[288]=EnergyWeekendSchedule[288]=0;
 
 	HasDemandCharge = false;
 	DemandRateUnit = "kW";
@@ -83,11 +78,6 @@ void OpenEI::RateData::Reset()
 			DemandWeekendSchedule[i][k] = 1;
 		}
 	}
-	//for (i=0;i<288;i++)
-	//	DemandWeekdaySchedule[i]=DemandWeekendSchedule[i]='1';
-
-//	DemandWeekdaySchedule[288]=DemandWeekendSchedule[288]=0;
-
 	
 }
 
@@ -236,6 +226,8 @@ bool OpenEI::RetrieveUtilityRateData(const wxString &guid, RateData &rate, wxStr
 	rate.Header.Description = json_string( val.Item("description"));
 	rate.Header.Source = json_string( val.Item("source"));
 	rate.Header.Version = json_integer( val.Item("version"));
+	rate.Header.EnergyComments = json_string(val.Item("energycomments"));
+	rate.Header.DemandComments = json_string(val.Item("demandcomments"));
 
 	rate.StartDate = json_string(val.Item("startdate"));
 	rate.EndDate = json_string(val.Item("enddate"));
@@ -253,10 +245,34 @@ bool OpenEI::RetrieveUtilityRateData(const wxString &guid, RateData &rate, wxStr
 
 	/// Energy Charge
 
-	rate.EnergyRateUnit = json_string( val.Item("energyrateunit") );
+//	rate.EnergyRateUnit = json_string( val.Item("energyrateunit") );
 
 	rate.HasEnergyCharge = true;
 
+	wxJSONValue ers_periods = val.Item("energyratestructure");
+	if (ers_periods.IsArray())
+	{
+		if (ers_periods.Size() > 12) return false;
+		for (int period = 0; period < ers_periods.Size(); period++)
+		{	
+			wxJSONValue ers_tier = ers_periods[period];
+			if (ers_tier.IsArray())
+			{
+				if (ers_tier.Size() > 6) return false;
+				for (int tier = 0; tier < ers_tier.Size(); tier++)
+				{
+					rate.EnergyMax[period][tier] = json_double(ers_tier[tier].Item("max"), 1e99, &rate.HasEnergyCharge);
+					rate.EnergyBuy[period][tier] = json_double(ers_tier[tier].Item("rate"), 0.0, &rate.HasEnergyCharge);
+					rate.EnergySell[period][tier] = json_double(ers_tier[tier].Item("sell"), 0.0, &rate.HasEnergyCharge);
+					rate.EnergyAdj[period][tier] = json_double(ers_tier[tier].Item("adj"), 0.0, &rate.HasEnergyCharge);
+					rate.EnergyMaxUnit[period][tier] = json_string(ers_tier[tier].Item("unit"));
+
+				}
+			}
+		}
+	}
+
+	/*
 	for (int period=0;period<12;period++)
 		for (int tier=0; tier<6; tier++)
 		{
@@ -269,53 +285,10 @@ bool OpenEI::RetrieveUtilityRateData(const wxString &guid, RateData &rate, wxStr
 			rate.EnergySell[period][tier] = json_double( val.Item(period_string + "sell"), 0.0, &rate.HasEnergyCharge );
 			rate.EnergyAdj[period][tier] = json_double( val.Item(period_string + "adjustment"), 0.0, &rate.HasEnergyCharge );
 		}
-
-/*	wxString buf;
-
-	buf = json_string(val.Item("energyweekdayschedule"), wxEmptyString, &rate.HasEnergyCharge);
-	if (buf.Len() == 288) strcpy(rate.EnergyWeekdaySchedule, buf.c_str());
-
-	buf = json_string(val.Item("energyweekendschedule"), wxEmptyString, &rate.HasEnergyCharge);
-	if (buf.Len() == 288) strcpy(rate.EnergyWeekendSchedule, buf.c_str());
 */
-	//wxJSONValue default_value(0);
 
 	if (!RetrieveDiurnalData(val.Item("energyweekdayschedule"), rate.EnergyWeekdaySchedule)) return false;
 	if (!RetrieveDiurnalData(val.Item("energyweekendschedule"), rate.EnergyWeekendSchedule)) return false;
-
-	/*
-	wxJSONValue month_ary,hour_ary;
-
-	month_ary = val.Item("energyweekdayschedule");
-	if (month_ary.IsArray())
-	{
-		if (month_ary.Size() != 12) return false;
-		for (int m = 0; m < 12; m++)
-		{
-			hour_ary = month_ary[m];
-			if (hour_ary.Size() != 24) return false;
-			for (int h = 0; h < 24; h++)
-			{
-				rate.EnergyWeekdaySchedule[m][h] = hour_ary[h].AsInt()+1;
-			}
-		}
-	}
-	month_ary = val.Item("energyweekendschedule");
-	if (month_ary.IsArray())
-	{
-		if (month_ary.Size() != 12) return false;
-		for (int m = 0; m < 12; m++)
-		{
-			hour_ary = month_ary[m];
-			if (hour_ary.Size() != 24) return false;
-			for (int h = 0; h < 24; h++)
-			{
-				rate.EnergyWeekendSchedule[m][h] = hour_ary[h].AsInt()+1;
-			}
-		}
-	}
-	*/
-
 
 	/// DEMAND CHARGES
 	rate.HasDemandCharge = true;
@@ -352,20 +325,6 @@ bool OpenEI::RetrieveUtilityRateData(const wxString &guid, RateData &rate, wxStr
 			rate.DemandAdj[period][tier] = json_double( val.Item(period_string + "adjustment"), 0.0, &rate.HasDemandCharge );
 		}
 	
-
-	/*
-
-	wxLogStatus("\nopenei::RetrieveUtiltyRateData JSON  root= %s", root.AsString().c_str());
-	wxLogStatus("\nopenei::RetrieveUtiltyRateData JSON  root.items= %s", root.Item("items").AsString().c_str());
-	wxLogStatus("\nopenei::RetrieveUtiltyRateData JSON  root.items(0)= %s", val.AsString().c_str());
-
-
-	buf = json_string(val.Item("demandweekdayschedule"), wxEmptyString, &rate.HasDemandCharge );
-	if (buf.Len() == 288) strcpy(rate.DemandWeekdaySchedule, buf.c_str());
-
-	buf = json_string(val.Item("demandweekendschedule"), wxEmptyString, &rate.HasDemandCharge );
-	if (buf.Len() == 288) strcpy(rate.DemandWeekendSchedule, buf.c_str());
-	*/
 	if (!RetrieveDiurnalData(val.Item("demandweekdayschedule"), rate.DemandWeekdaySchedule)) return false;
 	if (!RetrieveDiurnalData(val.Item("demandweekendschedule"), rate.DemandWeekendSchedule)) return false;
 
