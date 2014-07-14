@@ -88,7 +88,7 @@ END_EVENT_TABLE()
 
 
 enum { ID_INPUTPAGELIST = wxID_HIGHEST + 142,
-	ID_SIMULATE, ID_RESULTSPAGE, ID_ADVANCED, ID_PARAMETRICS, ID_SENSITIVITY, ID_P50P90, ID_SCRIPTING,
+	ID_SIMULATE, ID_RESULTSPAGE, ID_ADVANCED, ID_PARAMETRICS, ID_STOCHASTIC, ID_P50P90, ID_SCRIPTING,
 	ID_COLLAPSE,ID_EXCL_BUTTON, ID_EXCL_OPTION, ID_EXCL_OPTION_MAX=ID_EXCL_OPTION+25,
 	ID_PAGES, ID_BASECASE_PAGES };
 
@@ -97,11 +97,11 @@ BEGIN_EVENT_TABLE( CaseWindow, wxSplitterWindow )
 	EVT_BUTTON( ID_RESULTSPAGE, CaseWindow::OnCommand )
 	EVT_BUTTON( ID_ADVANCED, CaseWindow::OnCommand )
 	EVT_BUTTON( ID_PARAMETRICS, CaseWindow::OnCommand )
-	EVT_BUTTON( ID_SENSITIVITY, CaseWindow::OnCommand )
+	EVT_BUTTON( ID_STOCHASTIC, CaseWindow::OnCommand )
 	EVT_BUTTON( ID_P50P90, CaseWindow::OnCommand )
 	EVT_BUTTON( ID_SCRIPTING, CaseWindow::OnCommand )
 	EVT_MENU( ID_PARAMETRICS, CaseWindow::OnCommand )
-	EVT_MENU( ID_SENSITIVITY, CaseWindow::OnCommand )
+	EVT_MENU( ID_STOCHASTIC, CaseWindow::OnCommand )
 	EVT_MENU( ID_P50P90, CaseWindow::OnCommand )
 	EVT_MENU( ID_SCRIPTING, CaseWindow::OnCommand )
 	EVT_LISTBOX( ID_INPUTPAGELIST, CaseWindow::OnCommand )
@@ -150,7 +150,7 @@ CaseWindow::CaseWindow( wxWindow *parent, Case *c )
 
 	wxSizer *szsims = new wxGridSizer(2, 0, 0);
 	szsims->Add( new wxMetroButton( left_panel, ID_PARAMETRICS, "Parametrics" ), 0, wxALL|wxEXPAND, 0 );
-	szsims->Add( new wxMetroButton( left_panel, ID_SENSITIVITY, "Sensitivity" ), 0, wxALL|wxEXPAND, 0 );
+	szsims->Add( new wxMetroButton( left_panel, ID_STOCHASTIC, "Stochastic" ), 0, wxALL|wxEXPAND, 0 );
 	szsims->Add( new wxMetroButton( left_panel, ID_P50P90, "P50 / P90" ), 0, wxALL|wxEXPAND, 0 );
 	szsims->Add( new wxMetroButton( left_panel, ID_SCRIPTING, "Monte Carlo" ), 0, wxALL|wxEXPAND, 0 );
 
@@ -436,7 +436,7 @@ void CaseWindow::OnCommand( wxCommandEvent &evt )
 
 		wxMetroPopupMenu menu;
 		menu.Append( ID_PARAMETRICS, "Parametrics" );
-		menu.Append( ID_SENSITIVITY, "Sensitivity" );
+		menu.Append( ID_STOCHASTIC, "Stochastic" );
 		menu.Append( ID_P50P90, "P50 / P90" );
 		menu.Append( ID_SCRIPTING, "Scripting" );
 		
@@ -447,7 +447,7 @@ void CaseWindow::OnCommand( wxCommandEvent &evt )
 		m_inputPageList->Select( -1 );
 		m_pageFlipper->SetSelection( 2 );
 	}
-	else if ( evt.GetId() == ID_SENSITIVITY )
+	else if ( evt.GetId() == ID_STOCHASTIC )
 	{
 		m_inputPageList->Select( -1 );
 		m_pageFlipper->SetSelection( 3 );
@@ -953,7 +953,7 @@ wxString CaseWindow::GetCurrentContext()
 		id = "Parametrics";
 		break;
 	case 3:
-		id = "Sensitivity";
+		id = "Stochastic";
 		break;
 	case 4:
 		id = "P50/P90";
