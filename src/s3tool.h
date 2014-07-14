@@ -53,7 +53,7 @@ private:
 	wxScrolledWindow *m_scrollWin;
 	wxBitmap m_bitmap, m_unannotatedBitmap;
 	wxTextCtrl *m_locationInfo;
-	wxSimpleCurlDownloadThread m_curl;
+	wxSimpleCurl m_curl;
 	wxNumericCtrl *m_lat, *m_lon, *m_tz;
 
 	void OnCurl( wxSimpleCurlEvent &evt );

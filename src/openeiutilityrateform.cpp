@@ -188,7 +188,7 @@ void OpenEIUtilityRateDialog::QueryRates(const wxString &utility_name)
 {
 	lblStatus->SetLabel("Loading rates for " + utility_name + "...");
 	wxString err;
-	wxBusyInfo busy("Communicating with OpenEI.org... please wait", this);
+	//wxBusyInfo busy("Communicating with OpenEI.org... please wait", this);
 	if (!api.QueryUtilityRates( utility_name, mUtilityRates, &err ))
 	{
 		wxMessageBox("Error:\n\n" + err);

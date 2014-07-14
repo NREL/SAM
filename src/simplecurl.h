@@ -53,17 +53,38 @@ typedef void (wxEvtHandler::*wxSimpleCurlEventFunction)(wxSimpleCurlEvent&);
 #define EVT_SIMPLECURL(id, fn) \
     wx__DECLARE_EVT1(wxSIMPLECURL_EVENT, id, wxSimpleCurlEventFunction(fn))
 
-class wxSimpleCurlDownloadThread : public wxObject
+class wxSimpleCurl : public wxObject
 {
 public:
-	class DLThread;
+	// app-wide init and shutdown calls for underlying libcurl initialization
+	static void SetupProxy( const wxString &proxy );
+	static void Init();
+	static void Shutdown();
 
-	wxSimpleCurlDownloadThread( wxEvtHandler *handler = 0, int id = wxID_ANY );
-	virtual ~wxSimpleCurlDownloadThread();
+	// geocoding function using google APIs.
+	// call is synchronous.  Optionally determine time 
+	// zone from lat/lon using second service call
+	static bool GeoCode( const wxString &address, double *lat, double *lon, double *tz = 0);
+	enum MapProvider { GOOGLE_MAPS, BING_MAPS };
+	static wxBitmap StaticMap( double lat, double lon, int zoom, MapProvider service = BING_MAPS );
 
-	void Start( const wxString &url, 
-		bool synchronous=false, 
-		const wxString &post_data = wxEmptyString );
+
+
+	wxSimpleCurl( wxEvtHandler *handler = 0, int id = wxID_ANY );
+	virtual ~wxSimpleCurl();
+
+	void SetPostData( const wxString &s ) { m_postData = s; }
+	void AddHttpHeader( const wxString &s ) { m_httpHeaders.Add( s ); }
+
+	// progress reporting methods
+	// send wxSimpleCurlEvents to the specified wxEvtHandler, and events have the given id
+	void SetEventHandler( wxEvtHandler *hh, int id );
+
+	// receive notifications via a callback function
+	void SetCallback( void (*function)( wxSimpleCurlEvent &, void * ), void *user_data );
+
+	// returns true always for asynchronous calls
+	bool Start( const wxString &url, bool synchronous=false );
 
 	wxString GetDataAsString();
 	wxImage GetDataAsImage( int bittype = wxBITMAP_TYPE_JPEG );
@@ -72,31 +93,25 @@ public:
 	bool Finished();
 	void Abort();
 
-	DLThread *GetThread();
-	int GetId();
-	wxEvtHandler *GetEvtHandler();
-	wxString GetUrl();
-
+	bool Ok();
+	wxString GetLastError();
+	
 	bool IsStarted();
-
+	
+	class DLThread;
+	DLThread *GetThread();
 protected:
+	friend class DLThread;
 	DLThread *m_thread;
 	wxEvtHandler *m_handler;
 	int m_id;
+	void (*m_callback)(wxSimpleCurlEvent &, void * );
+	void *m_userData;
+
+	wxString m_postData;
+	wxArrayString m_httpHeaders;
 };
 
-// app-wide init and shutdown calls for underlying libcurl initialization
-void wxSimpleCurlSetupProxy( const wxString &proxy );
-void wxSimpleCurlInit();
-void wxSimpleCurlShutdown();
-
-// geocoding function using google APIs.
-// call is synchronous.  Optionally determine time 
-// zone from lat/lon using second service call
-bool wxSimpleGeoCode( const wxString &address, double *lat, double *lon, double *tz = 0);
-
-enum MapProvider { GOOGLE_MAPS, BING_MAPS };
-wxBitmap wxSimpleStaticMap( double lat, double lon, int zoom, MapProvider service = BING_MAPS );
 
 #endif
 
