@@ -1109,7 +1109,7 @@ bool SamRegistration::CheckInWithServer( int *usage_count )
 		return false;
 		
 	wxBusyCursor curs;
-	wxSimpleCurlDownloadThread curl;
+	wxSimpleCurl curl;
 	
 	wxString url = SamApp::WebApi("registration") + wxString::Format("/usage?api_key=%s", sam_api_key );
 	wxString post = wxString::Format("sam_key=%s&app_code=desktop&sam_version=%s&count=%d", 
@@ -1118,7 +1118,8 @@ bool SamRegistration::CheckInWithServer( int *usage_count )
 	wxLogStatus( url );
 	wxLogStatus( post );
 
-	curl.Start( url, true, post );
+	curl.SetPostData( post );
+	curl.Start( url, true );
 	
 	if ( usage_count ) *usage_count = -999;
 	
@@ -1257,7 +1258,7 @@ void SamRegistration::OnRegister( wxCommandEvent & )
 	SamApp::Settings().Write("user-email-" + GetVersionAndPlatform(), email );
 
 	wxBusyCursor curs;
-	wxSimpleCurlDownloadThread curl( this, wxID_ANY );
+	wxSimpleCurl curl( this, wxID_ANY );
 	int code = -1;
 	wxJSONValue root;
 	wxJSONReader reader;
@@ -1291,7 +1292,9 @@ void SamRegistration::OnRegister( wxCommandEvent & )
 		
 	wxLogStatus( url );
 	wxLogStatus( post );
-	curl.Start( url, true, post );
+
+	curl.SetPostData( post );
+	curl.Start( url, true );
 		
 	if ( reader.Parse( curl.GetDataAsString(), &root ) == 0 )
 		code = root.Item("status").AsInt();

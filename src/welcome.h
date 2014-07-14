@@ -45,7 +45,7 @@ private:
 		
 	wxTimer m_downloadTimer;
 	
-	wxSimpleCurlDownloadThread m_ssCurlMessage;
+	wxSimpleCurl m_ssCurlMessage;
 	void OnMessageDownloadThread( wxSimpleCurlEvent & );
 	void UpdateMessagesHtml(const wxString &html);
 	

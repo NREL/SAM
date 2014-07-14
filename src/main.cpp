@@ -1387,7 +1387,7 @@ extern void RegisterReportObjectTypes();
 
 
 	wxInitAllImageHandlers();
-	wxSimpleCurlInit();
+	wxSimpleCurl::Init();
 	
 	for( int i=0;i<argc;i++ )
 		g_appArgs.Add( argv[i] );
@@ -1408,7 +1408,7 @@ extern void RegisterReportObjectTypes();
 			char buf[512];
 			fgets(buf, 511, fp);
 			fclose(fp);
-			wxSimpleCurlSetupProxy(wxString::FromAscii(buf));
+			wxSimpleCurl::SetupProxy(wxString::FromAscii(buf));
 		}
 	}
 
@@ -1497,7 +1497,7 @@ int SamApp::OnExit()
 
 	if ( g_config != 0 ) delete g_config;
 
-	wxSimpleCurlShutdown();
+	wxSimpleCurl::Shutdown();
 	
 	wxLog::SetActiveTarget( 0 );
 	return 0;

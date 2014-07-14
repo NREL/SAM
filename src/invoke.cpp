@@ -103,7 +103,7 @@ static void fcall_geocode( lk::invoke_t &cxt )
 {
 	LK_DOC( "geocode", "Returns the latitude and longitude of an address using Google's geocoding web API.", "(string:address):table");
 	double lat = 0, lon = 0;
-	wxSimpleGeoCode( cxt.arg(0).as_string(), &lat, &lon );
+	wxSimpleCurl::GeoCode( cxt.arg(0).as_string(), &lat, &lon );
 	cxt.result().empty_hash();
 	cxt.result().hash_item("lat").assign(lat);
 	cxt.result().hash_item("lon").assign(lon);
@@ -112,8 +112,16 @@ static void fcall_geocode( lk::invoke_t &cxt )
 static void fcall_curl( lk::invoke_t &cxt )
 {
 	LK_DOC( "curl", "Issue a synchronous HTTP/HTTPS request.  By default a GET request, but can support POST via parameter 2.  If a third argument is given, the returned data is downloaded to the specified file on disk rather than returned as a string.", "(string:url, [string:post data], [string:local file]):string" );
-	wxSimpleCurlDownloadThread curl;
-	curl.Start( cxt.arg(0).as_string(), true,  cxt.arg_count() > 1 ? cxt.arg(1).as_string() : wxEmptyString );
+	wxSimpleCurl curl;
+	if( cxt.arg_count() > 1 )
+		curl.SetPostData( cxt.arg(1).as_string() );
+	
+	if ( !curl.Start( cxt.arg(0).as_string(), true ) )
+	{
+		cxt.result().assign( 0.0 );
+		return;
+	}
+
 	if ( cxt.arg_count() > 2 )
 		cxt.result().assign( curl.WriteDataToFile( cxt.arg(2).as_string() ) ? 1.0 : 0.0 );
 	else
@@ -1061,7 +1069,7 @@ void fcall_solarprospector(lk::invoke_t &cxt)
 	double lat, lon;
 	if (spd.IsAddressMode() == true)	//entered an address instead of a lat/long
 	{
-		if (!wxSimpleGeoCode(spd.GetAddress(), &lat, &lon))
+		if (!wxSimpleCurl::GeoCode(spd.GetAddress(), &lat, &lon))
 		{
 			wxMessageBox("Failed to geocode address");
 			return;
@@ -1107,7 +1115,7 @@ void fcall_solarprospector(lk::invoke_t &cxt)
 	url.Replace("sp_data", "prospector_solar_data", 1);	//anonymizes the link in webapis.conf
 
 	//Download the weather file
-	wxSimpleCurlDownloadThread curl;
+	wxSimpleCurl curl;
 	curl.Start(url, true);	//true won't let it return to code unless it's done downloading
 	// would like to put some code here to tell it not to download and to give an error if hits 404 Not Found
 

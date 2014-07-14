@@ -4,6 +4,7 @@
 #include <wx/wfstream.h>
 #include <wx/mstream.h>
 #include <wx/buffer.h>
+#include <wx/uri.h>
 
 #include <curl/curl.h>
 
@@ -22,14 +23,12 @@ extern "C" {
     size_t simplecurl_stream_write(void* ptr, size_t size, size_t nmemb, void* stream);
 
 }; // extern "C"
-class wxSimpleCurlDownloadThread::DLThread : public wxThread
+
+class wxSimpleCurl::DLThread : public wxThread
 {
-private:
-	wxEvtHandler *m_handler;
-	int m_id;
-	wxSimpleCurlDownloadThread *m_simpleCurl;
+public:
+	wxSimpleCurl *m_sc;
 	wxString m_url;
-	wxString m_post;
 	CURLcode m_resultCode;
 
 	wxMemoryBuffer m_data;
@@ -41,13 +40,10 @@ private:
 	bool m_canceled;
 	wxMutex m_canceledLock;
 
-public:
-	DLThread( wxEvtHandler *handler, int id, 
-		wxSimpleCurlDownloadThread *cobj )
+	DLThread( wxSimpleCurl *cobj, const wxString &url )
 		: wxThread( wxTHREAD_JOINABLE ),
-			m_handler(handler),
-			m_id(id),
-			m_simpleCurl(cobj),
+			m_sc(cobj),
+			m_url(url),
 			m_resultCode( CURLE_OK ),
 			m_threadDone(false),
 			m_canceled(false)
@@ -55,14 +51,6 @@ public:
 		
 
 	}
-	
-
-	void SetUrl( const wxString &url ) { m_url = url; }
-	void SetPost( const wxString &post ) { m_post = post; }
-	int GetHandlerId() { return m_id; }
-	wxEvtHandler *GetEvtHandler() { return m_handler; }
-	wxString GetUrl() { return m_url; }
-
 
 	size_t Write( void *p, size_t len )
 	{
@@ -107,11 +95,22 @@ public:
 	virtual void *Entry()
 	{
 		if( CURL *curl = curl_easy_init() )
-		{
-			curl_easy_setopt(curl, CURLOPT_URL, (const char*)m_url.c_str());
+		{			
+			struct curl_slist *chunk = NULL;
+ 
+			wxArrayString headers = m_sc->m_httpHeaders;
 
-			if ( !m_post.IsEmpty() )
-				curl_easy_setopt( curl, CURLOPT_POSTFIELDS, (const char*)m_post.c_str() );
+			for( size_t i=0;i<headers.size();i++ )
+				chunk = curl_slist_append(chunk, (const char*)headers[i].c_str() );
+			
+			curl_easy_setopt(curl, CURLOPT_HTTPHEADER, chunk);
+
+			wxURI uri( m_url );
+			wxString encoded = uri.BuildURI();
+			curl_easy_setopt(curl, CURLOPT_URL, (const char*)encoded.c_str());
+
+			if ( !m_sc->m_postData.IsEmpty() )
+				curl_easy_setopt( curl, CURLOPT_POSTFIELDS, (const char*)m_sc->m_postData.c_str() );
 			
 			curl_easy_setopt(curl, CURLOPT_SSL_VERIFYPEER, 0L);
 			curl_easy_setopt(curl, CURLOPT_SSL_VERIFYHOST, 0L);
@@ -130,23 +129,40 @@ public:
 			
 			m_resultCode = curl_easy_perform(curl);
 			curl_easy_cleanup(curl);
+			
+			/* free the custom headers */ 
+			curl_slist_free_all(chunk);
 
 
 			m_threadDoneLock.Lock();
 			m_threadDone = true;
 			m_threadDoneLock.Unlock();
 
+			
 			// issue finished event
-			if ( m_handler != 0 )
-			{
-				wxSimpleCurlEvent evt( GetHandlerId(), wxSIMPLECURL_EVENT, 
-					wxSimpleCurlEvent::FINISHED, "finished", m_url );
-				wxPostEvent( GetEvtHandler(), evt );
-			}
+			
+			wxSimpleCurlEvent evt( m_sc->m_id, wxSIMPLECURL_EVENT, 
+				wxSimpleCurlEvent::FINISHED, "finished", m_url );
+
+			if ( m_sc->m_handler != 0 )
+				wxPostEvent( m_sc->m_handler, evt );
+
+			if ( m_sc->m_callback != 0 )
+				(* (m_sc->m_callback) )( evt, m_sc->m_userData );
 		}
 		
 		return 0;
 	}
+
+
+	bool FinishedOk() {
+		return m_resultCode == CURLE_OK;
+	}
+
+	wxString GetError() {
+		return wxString( curl_easy_strerror(m_resultCode) );
+	}
+	
 
 	bool IsDone()
 	{
@@ -167,17 +183,57 @@ public:
 	}
 
 	virtual bool TestDestroy() { return IsCanceled(); }
+
+	void IssueProgressEvent( double rDlTotal, double rDlNow )
+	{
+		wxSimpleCurlEvent evt( m_sc->m_id, wxSIMPLECURL_EVENT, 
+			wxSimpleCurlEvent::PROGRESS, "progress", m_url );
+		evt.SetBytesTotal( rDlTotal );
+		evt.SetBytesTransferred( rDlNow );
+
+		if ( m_sc->m_handler != 0 )
+			wxPostEvent( m_sc->m_handler, evt );
+
+		if ( m_sc->m_callback != 0 )
+			( *(m_sc->m_callback) )( evt, m_sc->m_userData );
+	}
 };
 
+extern "C" {
+    int simplecurl_progress_func(void* userp, double rDlTotal, double rDlNow, 
+                                 double rUlTotal, double rUlNow)
+    {
+        wxSimpleCurl::DLThread *tt = static_cast<wxSimpleCurl::DLThread*>(userp);
+        if(tt)
+        {
+			if (tt->IsCanceled())
+				return -1;
+
+			tt->IssueProgressEvent( rDlTotal, rDlNow );			
+        }
+
+        return 0;
+    }
+
+    size_t simplecurl_stream_write(void* ptr, size_t size, size_t nmemb, void* userp)
+    {
+        wxSimpleCurl::DLThread *tt = static_cast<wxSimpleCurl::DLThread*>(userp);
+		if (tt) return tt->Write( ptr, size*nmemb );
+        return 0;
+    }
+
+}; // extern "C"
 
 
-wxSimpleCurlDownloadThread::wxSimpleCurlDownloadThread( wxEvtHandler *handler, int id )
-	: m_handler( handler ), m_id( id ), m_thread( 0 )
+
+
+wxSimpleCurl::wxSimpleCurl( wxEvtHandler *handler, int id )
+	: m_thread( 0 ), m_handler( handler ), 
+	  m_id( id ), m_callback(0), m_userData(0)
 {
-	m_thread = 0;
 }
 
-wxSimpleCurlDownloadThread::~wxSimpleCurlDownloadThread()
+wxSimpleCurl::~wxSimpleCurl()
 {
 	if ( m_thread && !m_thread->IsDone() )
 		Abort();
@@ -185,16 +241,22 @@ wxSimpleCurlDownloadThread::~wxSimpleCurlDownloadThread()
 	if ( m_thread ) delete m_thread;
 }
 
-void wxSimpleCurlDownloadThread::Start( const wxString &url, bool synchronous, const wxString &post )
+bool wxSimpleCurl::Start( const wxString &url, bool synchronous )
 {
-	if ( m_thread != 0 ) delete m_thread;
+	if ( m_thread != 0 )
+	{
+		if ( IsStarted() && !Finished() )
+		{
+			m_thread->Cancel();
+			m_thread->Wait();
+		}
 
-	m_thread = new DLThread( m_handler, m_id, this );
-	m_thread->SetUrl( url );
-	if ( ! post.IsEmpty() ) m_thread->SetPost( post );
+		delete m_thread;
+	}
+
+	m_thread = new DLThread( this, url );
 	m_thread->Create();
 	m_thread->Run();
-
 	
 	if ( synchronous )
 	{
@@ -203,35 +265,61 @@ void wxSimpleCurlDownloadThread::Start( const wxString &url, bool synchronous, c
 			if ( IsStarted() && !Finished() ) wxMilliSleep( 50 );
 			else break;
 		}
+
+		return m_thread->FinishedOk();
 	}
+	else
+		return true;
 }
 
-bool wxSimpleCurlDownloadThread::IsStarted()
+void wxSimpleCurl::SetEventHandler( wxEvtHandler *hh, int id )
+{
+	m_handler = hh;
+	m_id = id;
+}
+
+void wxSimpleCurl::SetCallback( void (*function)( wxSimpleCurlEvent &, void * ), void *user_data )
+{
+	m_callback = function;
+	m_userData = user_data;
+}
+
+bool wxSimpleCurl::Ok()
+{
+	return (m_thread!=0 && m_thread->FinishedOk());
+}
+
+wxString wxSimpleCurl::GetLastError()
+{
+	return m_thread!=0 ? m_thread->GetError() : wxEmptyString;
+}
+
+bool wxSimpleCurl::IsStarted()
 {
 	return (m_thread!=0 && !m_thread->IsDone());
 }
 
-wxString wxSimpleCurlDownloadThread::GetDataAsString()
+wxString wxSimpleCurl::GetDataAsString()
 {
-	return m_thread->GetDataAsString();
+	return m_thread ? m_thread->GetDataAsString() : wxEmptyString;
 }
 
-wxImage wxSimpleCurlDownloadThread::GetDataAsImage( int bittype )
+wxImage wxSimpleCurl::GetDataAsImage( int bittype )
 {
-	return m_thread->GetDataAsImage( bittype );
+	return m_thread ? m_thread->GetDataAsImage( bittype ) : wxNullImage;
 }
 
-bool wxSimpleCurlDownloadThread::WriteDataToFile( const wxString &file )
+bool wxSimpleCurl::WriteDataToFile( const wxString &file )
 {
-	return m_thread->WriteDataToFile( file );
+	return m_thread ? m_thread->WriteDataToFile( file ) : false;
 }
 
-bool wxSimpleCurlDownloadThread::Finished()
+bool wxSimpleCurl::Finished()
 {
 	return (m_thread != 0 && m_thread->IsDone() && !m_thread->IsRunning() );
 }
 
-void wxSimpleCurlDownloadThread::Abort()
+void wxSimpleCurl::Abort()
 {
 	if (m_thread != 0 && IsStarted() && !Finished())
 	{
@@ -240,55 +328,16 @@ void wxSimpleCurlDownloadThread::Abort()
 	}
 }
 
-extern "C" {
-    int simplecurl_progress_func(void* userp, double rDlTotal, double rDlNow, 
-                                 double rUlTotal, double rUlNow)
-    {
-        wxSimpleCurlDownloadThread::DLThread *tt = static_cast<wxSimpleCurlDownloadThread::DLThread*>(userp);
-        if(tt)
-        {
-            if (rUlTotal == 0 || rUlNow == 0)
-            {
-				if ( tt->GetEvtHandler() != 0 )
-				{
-					wxSimpleCurlEvent evt( tt->GetHandlerId(), wxSIMPLECURL_EVENT, 
-						wxSimpleCurlEvent::PROGRESS, "progress", tt->GetUrl() );
-					evt.SetBytesTotal( rDlTotal );
-					evt.SetBytesTransferred( rDlNow );
-					wxPostEvent( tt->GetEvtHandler(), evt );
-				}
-            }
-			
-			if (tt->IsCanceled())
-			{
-				// cancel thread
-				return -1;
-			}
-        }
-
-        return 0;
-    }
-
-    size_t simplecurl_stream_write(void* ptr, size_t size, size_t nmemb, void* userp)
-    {
-        wxSimpleCurlDownloadThread::DLThread *tt = static_cast<wxSimpleCurlDownloadThread::DLThread*>(userp);
-		if (tt) return tt->Write( ptr, size*nmemb );
-        return 0;
-    }
-
-}; // extern "C"
-
-
-void wxSimpleCurlSetupProxy( const wxString &proxy )
+void wxSimpleCurl::SetupProxy( const wxString &proxy )
 {
 	gs_curlProxyAddress = proxy;
 }
 
-void wxSimpleCurlInit()
+void wxSimpleCurl::Init()
 {
 	::curl_global_init( CURL_GLOBAL_ALL );
 }
-void wxSimpleCurlShutdown()
+void wxSimpleCurl::Shutdown()
 {
 	::curl_global_cleanup();
 }
@@ -308,7 +357,7 @@ static wxString GOOGLE_API_KEY("AIzaSyCyH4nHkZ7FhBK5xYg4db3K7WN-vhpDxas");
 static wxString BING_API_KEY("Av0Op8DvYGR2w07w_771JLum7-fdry0kBtu3ZA4uu_9jBJOUZgPY7mdbWhVjiORY");
 
 
-bool wxSimpleGeoCode( const wxString &address, double *lat, double *lon, double *tz)
+bool wxSimpleCurl::GeoCode( const wxString &address, double *lat, double *lon, double *tz)
 {
 	wxBusyCursor _curs;
 	bool latlonok = false;
@@ -320,9 +369,10 @@ bool wxSimpleGeoCode( const wxString &address, double *lat, double *lon, double 
 	
 	wxString url( "https://maps.googleapis.com/maps/api/geocode/json?address=" + plusaddr + "&sensor=false&key=" + GOOGLE_API_KEY );
 	
-	wxSimpleCurlDownloadThread curl;
+	wxSimpleCurl curl;
 	wxBusyCursor curs;
-	curl.Start( url, true );
+	if ( !curl.Start( url, true ) )
+		return false;
 
 	wxJSONReader reader;
 	wxJSONValue root;
@@ -359,7 +409,7 @@ bool wxSimpleGeoCode( const wxString &address, double *lat, double *lon, double 
 
 }
 
-wxBitmap wxSimpleStaticMap( double lat, double lon, int zoom, MapProvider service )
+wxBitmap wxSimpleCurl::StaticMap( double lat, double lon, int zoom, MapProvider service )
 {
 	if ( zoom > 21 ) zoom = 21;
 	if ( zoom < 1 ) zoom = 1;
@@ -380,7 +430,7 @@ wxBitmap wxSimpleStaticMap( double lat, double lon, int zoom, MapProvider servic
 			+ "?mapSize=800,800&format=jpeg&key=" + BING_API_KEY;
 	}
 
-	wxSimpleCurlDownloadThread curl;
+	wxSimpleCurl curl;
 	curl.Start( url, true );
 	return wxBitmap( curl.GetDataAsImage(wxBITMAP_TYPE_JPEG) );
 }
