@@ -1201,45 +1201,47 @@ void fcall_openeilistrates(lk::invoke_t &cxt)
 
 }
 
+bool applydiurnalschedule(lk::invoke_t &cxt, wxString sched_name, double sched[12][24])
+{
+	int nr = 12, nc = 24;
+	lk::vardata_t &val = cxt.result().hash_item(sched_name);
+	val.empty_vector();
+	val.vec()->reserve(nr);
+	for (int i = 0; i<nr; i++)
+	{
+		val.vec()->push_back(lk::vardata_t());
+		val.vec()->at(i).empty_vector();
+		val.vec()->at(i).vec()->reserve(nc);
+		for (int j = 0; j < nc; j++)
+		{
+				val.vec()->at(i).vec_append(sched[i][j]);
+		}
+	}
+	return true;
+}
 
-// TODO finish implementation and test with script
+
 void fcall_openeiapplyrate(lk::invoke_t &cxt)
 {
 	LK_DOC("openeiapplyrate", "Downloads and applies the specified rate schedule from OpenEI.", "(STRING:Guid) : BOOLEAN");	
 	wxString guid = cxt.arg(0).as_string();
 	if (guid.IsEmpty()) return;
-	// try using hash to apply in script for easier name changes...
-	//Case *c = SamApp::Window()->GetCurrentCase();
-	//if (!c) return;
 
 	OpenEI::RateData rate;
 	OpenEI api;
 
 	if (api.RetrieveUtilityRateData(guid, rate))
 	{
-//		lk::vardata_t val;
-//		lk_string key;
-//		key = "flat_buy_rate";
-//		val.assign(rate.FlatRateBuy);
-		// causes heap error
-		//cxt.result().assign(key,&val);                               
-//		URApplyOpenEIRateData(rate, c->GetSymTab());
-//		c->AllInputsInvalidated();
 		cxt.result().empty_hash();
 		cxt.result().hash_item("flat_buy_rate").assign(rate.FlatRateBuy);
-		int nr = 12, nc = 24;
-		lk::vardata_t &val = cxt.result().hash_item("ec_sched_weekday");
-		val.empty_vector();
-		val.vec()->reserve(nr);
-		for (int i = 0; i<nr; i++)
-		{
-			val.vec()->push_back(lk::vardata_t());
-			val.vec()->at(i).empty_vector();
-			val.vec()->at(i).vec()->reserve(nc);
-			for (int j = 0; j<nc; j++)
-				val.vec()->at(i).vec_append(rate.EnergyWeekdaySchedule[i][j]);
-		}
 
+		if (!applydiurnalschedule(cxt, "ec_sched_weekday", rate.EnergyWeekdaySchedule)) return;
+		if (!applydiurnalschedule(cxt, "ec_sched_weekend", rate.EnergyWeekendSchedule)) return;
+
+		if (!applydiurnalschedule(cxt, "dc_sched_weekday", rate.DemandWeekdaySchedule)) return;
+		if (!applydiurnalschedule(cxt, "dc_sched_weekend", rate.DemandWeekendSchedule)) return;
+
+		/*
 		lk::vardata_t &val1 = cxt.result().hash_item("ec_sched_weekend");
 		val1.empty_vector();
 		val1.vec()->reserve(nr);
@@ -1251,6 +1253,7 @@ void fcall_openeiapplyrate(lk::invoke_t &cxt)
 			for (int j = 0; j<nc; j++)
 				val1.vec()->at(i).vec_append(rate.EnergyWeekendSchedule[i][j]);
 		}
+		*/
 	}
 }
 /*
