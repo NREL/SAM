@@ -144,14 +144,19 @@ static void fcall_configuration( lk::invoke_t &cxt )
 
 static void fcall_load_defaults( lk::invoke_t &cxt )
 {
-	LK_DOC( "load_defaults", "Load SAM default values for the current active case. Returns a string error message if failed, or boolean 'true' on success.", "(none):variant" );
+	LK_DOC( "load_defaults", "Load SAM default values for the current active case. An optional error message is stored in the first argument, if given.", "([<string:error>]):boolean" );
 	if ( Case *c = CurrentCase() )
 	{
 		wxString err;
 		if ( c->LoadDefaults( &err ) )
 			cxt.result().assign( 1.0 );
 		else
-			cxt.result().assign( err );
+		{
+			if ( cxt.arg_count() == 1 )
+				cxt.arg(0).assign( err );
+
+			cxt.result().assign( 0.0 );
+		}
 	}
 	else
 		cxt.result().assign( 0.0 );
