@@ -1241,19 +1241,18 @@ void fcall_openeiapplyrate(lk::invoke_t &cxt)
 		if (!applydiurnalschedule(cxt, "dc_sched_weekday", rate.DemandWeekdaySchedule)) return;
 		if (!applydiurnalschedule(cxt, "dc_sched_weekend", rate.DemandWeekendSchedule)) return;
 
-		/*
-		lk::vardata_t &val1 = cxt.result().hash_item("ec_sched_weekend");
-		val1.empty_vector();
-		val1.vec()->reserve(nr);
-		for (int i = 0; i<nr; i++)
+		// energy rate structure, e.g. "ur_ec_p1_t1_ub"
+		for (int period = 0; period < 12; period++)
 		{
-			val1.vec()->push_back(lk::vardata_t());
-			val1.vec()->at(i).empty_vector();
-			val1.vec()->at(i).vec()->reserve(nc);
-			for (int j = 0; j<nc; j++)
-				val1.vec()->at(i).vec_append(rate.EnergyWeekendSchedule[i][j]);
+			for (int tier = 0; tier < 6; tier++)
+			{
+				wxString period_tier = wxString::Format("ur_ec_p%d_t%d_",period+1,tier+1);
+				cxt.result().hash_item(period_tier + "ub").assign(rate.EnergyMax[period][tier]);
+				cxt.result().hash_item(period_tier + "br").assign(rate.EnergyBuy[period][tier] + rate.EnergyAdj[period][tier]);
+				cxt.result().hash_item(period_tier + "sr").assign(rate.EnergySell[period][tier]);
+				// todo - handle different energy upper bound units
+			}
 		}
-		*/
 	}
 }
 /*

@@ -303,6 +303,8 @@ void OpenEIUtilityRateDialog::UpdateRateData()
 			desc += wxString::Format("Has Energy Charges? %s\n", mRateData.HasEnergyCharge?"yes":"no");
 			desc += wxString::Format("Has Demand Charges? %s\n", mRateData.HasDemandCharge?"yes":"no");
 			desc += wxString::Format("\nGUID: '%s'\n", mRateData.Header.GUID.c_str() );
+			desc += wxString::Format("\nEnergy comments: '%s'\n", mRateData.Header.EnergyComments.c_str());
+			desc += wxString::Format("\nDeamand comments: '%s'\n", mRateData.Header.DemandComments.c_str());
 
 			txtRateDescription->SetValue( desc );
 			
