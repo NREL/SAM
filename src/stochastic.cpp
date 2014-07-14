@@ -25,8 +25,9 @@ char *lhs_dist_names[LHS_NUMDISTS] = {
 LHS::LHS()
 {
 	m_npoints = 500;
-	m_seedval = -1;
+	m_seedval = 0;
 }
+
 
 void LHS::Reset()
 {
@@ -165,8 +166,11 @@ bool LHS::Exec()
 	// now run using the callback provided or 'system' function
 
 	// delete any output or error that may exist
-	wxRemoveFile( workdir + "/SAMLHS.LSP" );
-	wxRemoveFile( workdir + "/LHS.ERR" );
+	if( wxFileExists( workdir + "/SAMLHS.LSP" ) )
+		wxRemoveFile( workdir + "/SAMLHS.LSP" );
+
+	if( wxFileExists( workdir + "/LHS.ERR" ) )
+		wxRemoveFile( workdir + "/LHS.ERR" );
 
 	// run the executable synchronously
 	wxString curdir = wxGetCwd();
@@ -234,11 +238,14 @@ bool LHS::Exec()
 
 		if (found_data)
 		{
+			if ( n_runs == m_npoints )
+				break;
+
 			n_runs++;
 			int n = atoi(buf.c_str());
 			if (n != n_runs)
 			{
-				m_errmsg = "output file formatting error (run count) at line " + wxString::Format("%d",nline);
+				m_errmsg = wxString::Format("output file formatting error (run count %d!=%d) at line %d: ",n, n_runs, nline) + buf;
 				fclose(fp);
 				return false;
 			}
@@ -264,6 +271,8 @@ bool LHS::Exec()
 
 		}
 	}
+
+	fclose( fp );
 
 
 	return true;
@@ -1208,22 +1217,106 @@ void StochasticPanel::OnRemoveCorr(wxCommandEvent &evt)
 
 void StochasticPanel::OnComputeSamples(wxCommandEvent &evt)
 {
-	/*
 	wxArrayString errors;
-	Mat2D<double> table;
+	matrix_t<double> table;
 	if (!ComputeLHSInputVectors( mSSimInf, table, &errors))
 	{
-		wxMessageBox("An error occured while computing the samples using LHS:\n\n" + Unsplit(errors,"\n"));
+		wxShowTextMessageDialog("An error occured while computing the samples using LHS:\n\n" + wxJoin(errors,'\n'));
 		return;
 	}
 
 	wxArrayString collabels;
 	for (int i=0;i<mSSimInf->InputDistributions.Count();i++)
-		collabels.Add( mCase->GetVarLabel(SplitExtract(mSSimInf->InputDistributions[i],":",0)) );
+		collabels.Add( mCase->GetConfiguration()->Variables.Label( mSSimInf->InputDistributions[i].BeforeFirst(':') ) );
 
-	DataGridDialog dlg(this, "LHS Input Vectors");
-	dlg.SetData(table, &collabels);
-	dlg.ShowModal();
-	*/
-	wxMessageBox("not yet implemented");
+	
+	wxDialog *dlg = new wxDialog( this, wxID_ANY, "Data Vectors", wxDefaultPosition, wxSize(400,600), wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER);
+	wxExtGridCtrl *grid = new wxExtGridCtrl( dlg, wxID_ANY );
+	grid->EnableCopyPaste( true );
+	grid->CreateGrid( table.nrows(), table.ncols() );
+	grid->Freeze();
+	for( size_t i=0;i<table.nrows();i++ )
+		for( size_t j=0;j<table.ncols();j++ )
+			grid->SetCellValue( i, j, wxString::Format("%lg", table(i,j)) );
+
+	for( size_t i=0;i<table.ncols();i++ )
+		grid->SetColLabelValue( i, collabels[i] );
+
+	grid->Thaw();
+
+	dlg->Show();
+}
+
+bool ComputeLHSInputVectors( StochasticData *ssim, matrix_t<double> &table, wxArrayString *errors)
+{
+	int i, n, j, r, c;
+
+	if (ssim->N < 1)
+	{
+		if (errors) errors->Add("Number of runs requested must be greater than 1.");
+		return false;
+	}
+
+	table.resize_fill(ssim->N, ssim->InputDistributions.Count(), 0.0);
+
+	// compute the input vectors with Sandia LHS
+	LHS lhs;
+	for (i=0;i<(int)ssim->InputDistributions.Count();i++)
+	{
+		wxArrayString distinfo = wxStringTokenize(ssim->InputDistributions[i],":");
+		if (distinfo.Count() < 6) continue;
+		std::vector<double> params;
+		params.push_back( wxAtof(distinfo[2]) );
+		params.push_back( wxAtof(distinfo[3]) );
+		params.push_back( wxAtof(distinfo[4]) );
+		params.push_back( wxAtof(distinfo[5]) );
+		lhs.Distribution( wxAtoi(distinfo[1]), wxString((char)('a' + i)), params);
+	}
+
+	for (i=0;i<(int)ssim->Correlations.Count();i++)
+	{
+		wxArrayString corrinfo = wxStringTokenize(ssim->Correlations[i],":");
+		if (corrinfo.Count() < 3) continue;
+		int name_idx1 = -1;
+		int name_idx2 = -1;
+
+		for (j=0;j<(int)ssim->InputDistributions.Count();j++)
+		{
+			wxString curname = ssim->InputDistributions[j].BeforeFirst(':');
+			if (curname == corrinfo[0]) name_idx1 = j;
+			if (curname == corrinfo[1]) name_idx2 = j;
+		}
+
+		if (name_idx1 < 0 || name_idx2 < 0) continue;
+
+		lhs.Correlate( wxString((char)('a'+name_idx1)), wxString((char)('a'+name_idx2)), atof(corrinfo[2]) );
+	}
+
+	lhs.Points( ssim->N );
+	lhs.SeedVal( ssim->Seed );
+
+	if (!lhs.Exec())
+	{
+		//wxMessageBox("Could not run Sandia Latin Hypercube Sampling (LHS) program.\n\n" + lhs.ErrorMessage());
+		if(errors) errors->Add(lhs.ErrorMessage());
+		return false;
+	}
+
+	// retrieve all input vectors;
+	for (i=0;i<(int)ssim->InputDistributions.Count();i++)
+	{
+		std::vector<double> values;
+		lhs.Retrieve( wxString((char)('a'+i)), values);
+		if (values.size() != ssim->N)
+		{
+			if(errors) errors->Add(wxString::Format("Incorrect number of LHS values (%d) retrieved for input vector %d\n", (int)values.size(), i));
+			return false;
+		}
+
+		// copy to input vector matrix
+		for (n=0;n<ssim->N;n++)
+			table.at(n,i) = values[n];
+	}
+
+	return true;
 }
