@@ -61,8 +61,10 @@ public:
 		double EnergyBuy[12][6]; 
 		double EnergyAdj[12][6]; 
 		double EnergySell[12][6]; 
-		char EnergyWeekdaySchedule[289];
-		char EnergyWeekendSchedule[289];
+//		char EnergyWeekdaySchedule[289];
+//		char EnergyWeekendSchedule[289];
+		double EnergyWeekdaySchedule[12][24];
+		double EnergyWeekendSchedule[12][24];
 
 	
 	};
