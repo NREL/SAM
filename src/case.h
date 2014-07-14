@@ -9,6 +9,7 @@
 #include "simulation.h"
 #include "excelexch.h"
 #include "parametric.h"
+#include "stochastic.h"
 #include "graph.h"
 
 // case events allow the user interface to be updated
@@ -122,6 +123,7 @@ public:
 
 	ExcelExchange &ExcelExch() { return m_excelExch; }
 	ParametricData &Parametric() { return m_parametric; }
+	StochasticData &Stochastic() { return m_stochastic; }
 	void SetGraphs( std::vector<Graph> &gl ) { m_graphs = gl; }
 	void GetGraphs( std::vector<Graph> &gl ) { gl = m_graphs; }
 	StringHash &Perspective() { return m_perspective; }
@@ -138,6 +140,7 @@ private:
 	StringHash m_notes;
 	ExcelExchange m_excelExch;
 	ParametricData m_parametric;
+	StochasticData m_stochastic;
 	std::vector<Graph> m_graphs;
 	StringHash m_perspective;
 };
