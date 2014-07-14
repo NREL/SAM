@@ -17,6 +17,8 @@ public:
 		wxString Description;
 		wxString Source;
 		wxString uri;
+		wxString EnergyComments;
+		wxString DemandComments;
 		int Version;
 	};
 
@@ -57,7 +59,9 @@ public:
 
 		bool HasEnergyCharge;	
 		// diurnal based
-		wxString EnergyRateUnit; // kWh
+//		wxString EnergyRateUnit; // kWh
+		// TODO - handle different max usage units
+		wxString EnergyMaxUnit[12][6];
 		double EnergyMax[12][6]; 
 		double EnergyBuy[12][6]; 
 		double EnergyAdj[12][6]; 
