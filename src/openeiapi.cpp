@@ -292,7 +292,7 @@ bool OpenEI::RetrieveUtilityRateData(const wxString &guid, RateData &rate, wxStr
 			if (hour_ary.Size() != 24) return false;
 			for (int h = 0; h < 24; h++)
 			{
-				rate.EnergyWeekdaySchedule[m][h] = hour_ary[h].AsInt();
+				rate.EnergyWeekdaySchedule[m][h] = hour_ary[h].AsInt()+1;
 			}
 		}
 	}
@@ -306,7 +306,7 @@ bool OpenEI::RetrieveUtilityRateData(const wxString &guid, RateData &rate, wxStr
 			if (hour_ary.Size() != 24) return false;
 			for (int h = 0; h < 24; h++)
 			{
-				rate.EnergyWeekendSchedule[m][h] = hour_ary[h].AsInt();
+				rate.EnergyWeekendSchedule[m][h] = hour_ary[h].AsInt()+1;
 			}
 		}
 	}
