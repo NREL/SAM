@@ -1239,6 +1239,18 @@ void fcall_openeiapplyrate(lk::invoke_t &cxt)
 			for (int j = 0; j<nc; j++)
 				val.vec()->at(i).vec_append(rate.EnergyWeekdaySchedule[i][j]);
 		}
+
+		lk::vardata_t &val1 = cxt.result().hash_item("ec_sched_weekend");
+		val1.empty_vector();
+		val1.vec()->reserve(nr);
+		for (int i = 0; i<nr; i++)
+		{
+			val1.vec()->push_back(lk::vardata_t());
+			val1.vec()->at(i).empty_vector();
+			val1.vec()->at(i).vec()->reserve(nc);
+			for (int j = 0; j<nc; j++)
+				val1.vec()->at(i).vec_append(rate.EnergyWeekendSchedule[i][j]);
+		}
 	}
 }
 /*
