@@ -1227,6 +1227,18 @@ void fcall_openeiapplyrate(lk::invoke_t &cxt)
 //		c->AllInputsInvalidated();
 		cxt.result().empty_hash();
 		cxt.result().hash_item("flat_buy_rate").assign(rate.FlatRateBuy);
+		int nr = 12, nc = 24;
+		lk::vardata_t &val = cxt.result().hash_item("ec_sched_weekday");
+		val.empty_vector();
+		val.vec()->reserve(nr);
+		for (int i = 0; i<nr; i++)
+		{
+			val.vec()->push_back(lk::vardata_t());
+			val.vec()->at(i).empty_vector();
+			val.vec()->at(i).vec()->reserve(nc);
+			for (int j = 0; j<nc; j++)
+				val.vec()->at(i).vec_append(rate.EnergyWeekdaySchedule[i][j]);
+		}
 	}
 }
 /*
