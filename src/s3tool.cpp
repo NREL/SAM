@@ -161,7 +161,7 @@ void LocationSetup::OnAddressChange( wxCommandEvent &e )
 	wxYield();
 
 	double lat, lon, tz;
-	if ( !wxSimpleGeoCode( m_address->GetValue(), &lat, &lon, &tz ) )
+	if ( !wxSimpleCurl::GeoCode( m_address->GetValue(), &lat, &lon, &tz ) )
 	{
 		wxMessageBox("failed to geocode address");
 		return;
@@ -182,7 +182,7 @@ void LocationSetup::OnGetMap( wxCommandEvent & )
 void LocationSetup::DownloadMap(  )
 {
 	wxBusyInfo info("Obtaining aerial imagery...");
-	m_bitmap = wxSimpleStaticMap( m_lat->Value(), m_lon->Value(), m_zoomLevel, BING_MAPS );
+	m_bitmap = wxSimpleCurl::StaticMap( m_lat->Value(), m_lon->Value(), m_zoomLevel, wxSimpleCurl::BING_MAPS );
 	if (!m_bitmap.IsOk())
 	{
 		wxMessageBox("Invalid image data file");
