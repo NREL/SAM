@@ -2,7 +2,6 @@
 #include <wx/log.h>
 
 #include <wex/utils.h>
-#include <wex/jsonreader.h>
 
 #include "openeiapi.h"
 #include "simplecurl.h"
@@ -280,6 +279,11 @@ bool OpenEI::RetrieveUtilityRateData(const wxString &guid, RateData &rate, wxStr
 	if (buf.Len() == 288) strcpy(rate.EnergyWeekendSchedule, buf.c_str());
 */
 	//wxJSONValue default_value(0);
+
+	if (!RetrieveDiurnalData(val.Item("energyweekdayschedule"), rate.EnergyWeekdaySchedule)) return false;
+	if (!RetrieveDiurnalData(val.Item("energyweekendschedule"), rate.EnergyWeekendSchedule)) return false;
+
+	/*
 	wxJSONValue month_ary,hour_ary;
 
 	month_ary = val.Item("energyweekdayschedule");
@@ -310,7 +314,7 @@ bool OpenEI::RetrieveUtilityRateData(const wxString &guid, RateData &rate, wxStr
 			}
 		}
 	}
-
+	*/
 
 
 	/// DEMAND CHARGES
@@ -349,20 +353,44 @@ bool OpenEI::RetrieveUtilityRateData(const wxString &guid, RateData &rate, wxStr
 		}
 	
 
+	/*
 
 	wxLogStatus("\nopenei::RetrieveUtiltyRateData JSON  root= %s", root.AsString().c_str());
 	wxLogStatus("\nopenei::RetrieveUtiltyRateData JSON  root.items= %s", root.Item("items").AsString().c_str());
 	wxLogStatus("\nopenei::RetrieveUtiltyRateData JSON  root.items(0)= %s", val.AsString().c_str());
 
 
-	/*
 	buf = json_string(val.Item("demandweekdayschedule"), wxEmptyString, &rate.HasDemandCharge );
 	if (buf.Len() == 288) strcpy(rate.DemandWeekdaySchedule, buf.c_str());
 
 	buf = json_string(val.Item("demandweekendschedule"), wxEmptyString, &rate.HasDemandCharge );
 	if (buf.Len() == 288) strcpy(rate.DemandWeekendSchedule, buf.c_str());
 	*/
+	if (!RetrieveDiurnalData(val.Item("demandweekdayschedule"), rate.DemandWeekdaySchedule)) return false;
+	if (!RetrieveDiurnalData(val.Item("demandweekendschedule"), rate.DemandWeekendSchedule)) return false;
 
 
+	return true;
+}
+
+
+
+bool OpenEI::RetrieveDiurnalData(wxJSONValue &month_ary, double sched[12][24])
+{
+	wxJSONValue hour_ary;
+
+	if (month_ary.IsArray())
+	{
+		if (month_ary.Size() != 12) return false;
+		for (int m = 0; m < 12; m++)
+		{
+			hour_ary = month_ary[m];
+			if (hour_ary.Size() != 24) return false;
+			for (int h = 0; h < 24; h++)
+			{
+				sched[m][h] = hour_ary[h].AsInt() + 1;
+			}
+		}
+	}
 	return true;
 }
