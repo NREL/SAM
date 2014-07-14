@@ -3,6 +3,7 @@
 
 #include <wx/string.h>
 #include <vector>
+#include <wex/jsonreader.h>
 
 class OpenEI
 {
@@ -73,7 +74,7 @@ public:
 	bool QueryUtilityRates(const wxString &name, std::vector<RateInfo> &rates, wxString *err=NULL);
 	int UtilityCompanyRateCount(const wxString &name);
 	bool RetrieveUtilityRateData(const wxString &guid, RateData &rate, wxString *json_url=NULL, wxString *err=NULL);
-
+	bool RetrieveDiurnalData(wxJSONValue &month_ary, double sched[12][24]);
 };
 
 #endif
