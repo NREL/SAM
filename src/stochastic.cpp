@@ -615,9 +615,9 @@ bool Stepwise::GetStatistics(const wxString &name, double *R2, double *R2inc, do
 	{
 		if (m_inputs[i].name == name && m_inputs[i].calculated )
 		{
-			*R2 = m_inputs[i].R2;
-			*R2inc = m_inputs[i].R2inc;
-			*SRC = m_inputs[i].SRC;
+			if (R2) *R2 = m_inputs[i].R2;
+			if (R2inc) *R2inc = m_inputs[i].R2inc;
+			if (SRC) *SRC = m_inputs[i].SRC;
 			return true;
 		}
 	}
@@ -635,7 +635,7 @@ void StochasticData::Copy( StochasticData &stat )
 {
 	Seed = stat.Seed;
 	N = stat.N;
-	OutputMetrics = stat.OutputMetrics;
+	Outputs = stat.Outputs;
 	InputDistributions = stat.InputDistributions;
 	Correlations = stat.Correlations;
 }
@@ -649,7 +649,7 @@ void StochasticData::Write( wxOutputStream &_o )
 	out.Write32( N );
 	out.Write32( Seed );
 
-	out.WriteString( wxJoin( OutputMetrics, '|' ) );
+	out.WriteString( wxJoin( Outputs, '|' ) );
 	out.WriteString( wxJoin( InputDistributions, '|' ) );
 	out.WriteString( wxJoin( Correlations, '|' ) );
 
@@ -664,7 +664,7 @@ bool StochasticData::Read( wxInputStream &_i )
 
 	N = in.Read32();
 	Seed = in.Read32();
-	OutputMetrics = wxStringTokenize( in.ReadString(), "|" );
+	Outputs = wxStringTokenize( in.ReadString(), "|" );
 	InputDistributions = wxStringTokenize( in.ReadString(), "|" );
 	Correlations = wxStringTokenize( in.ReadString(), "|" );
 
@@ -780,6 +780,8 @@ enum {
   ID_lstOutputMetrics = wxID_HIGHEST+414,
   ID_btnRemoveInput,
   ID_btnAddInput,
+  ID_btnAddOutput,
+  ID_btnRemoveOutput,
   ID_m_seed,
   ID_btnAddCorr,
   ID_btnEditCorr,
@@ -800,6 +802,9 @@ BEGIN_EVENT_TABLE( StochasticPanel, wxPanel )
 	EVT_BUTTON( ID_btnRemoveInput, StochasticPanel::OnRemoveInput)
 	EVT_BUTTON( ID_btnEditInput, StochasticPanel::OnEditInput)
 	EVT_LISTBOX_DCLICK( ID_m_inputList, StochasticPanel::OnEditInput)
+	
+	EVT_BUTTON( ID_btnAddOutput, StochasticPanel::OnAddOutput)
+	EVT_BUTTON( ID_btnRemoveOutput, StochasticPanel::OnRemoveOutput)
 
 	EVT_BUTTON( ID_btnAddCorr, StochasticPanel::OnAddCorr)
 	EVT_BUTTON( ID_btnRemoveCorr, StochasticPanel::OnRemoveCorr)
@@ -860,8 +865,14 @@ StochasticPanel::StochasticPanel(wxWindow *parent, Case *cc)
 
 	sizer_main->Add( szbox, 0, wxALL, 5 );
 	
+	m_outputList = new wxListBox( this, wxID_ANY );
+	sizer_main->Add( m_outputList );
+
+	
 	
 	wxBoxSizer *sizer_cmd = new wxBoxSizer( wxHORIZONTAL );
+	sizer_cmd->Add( new wxButton(this, ID_btnAddOutput, "Add output..."), 0, wxALL|wxEXPAND, 5 );
+	sizer_cmd->Add( new wxButton(this, ID_btnRemoveOutput, "Remove output"), 0, wxALL|wxEXPAND, 5 );
 	sizer_cmd->Add( new wxButton(this, ID_btnComputeSamples, "Compute samples..."), 0, wxALL|wxEXPAND, 5 );
 	sizer_cmd->Add( new wxButton(this, ID_Simulate, "Run simulation"), 0, wxALL|wxEXPAND, 5 );
 
@@ -885,6 +896,22 @@ void StochasticPanel::UpdateFromSimInfo()
 	m_seed->SetValue( m_sd.Seed );
 
 	int i;
+
+	m_outputList->Freeze();
+	m_outputList->Clear();
+	wxArrayString vars, labels;
+	Simulation::ListAllOutputs( m_case->GetConfiguration(), &vars, &labels, NULL, true );
+
+	for (int i=0;i<m_sd.Outputs.Count();i++)
+	{
+		int idx = vars.Index( m_sd.Outputs[i] );
+		if (idx >= 0)
+			m_outputList->Append( labels[idx] ); 
+		else
+			m_outputList->Append("<Error - remove this>");
+	}
+
+	m_outputList->Thaw();
 
 	m_inputList->Freeze();
 	m_inputList->Clear();
@@ -1073,6 +1100,55 @@ void StochasticPanel::OnRemoveInput(wxCommandEvent &evt)
 		m_inputList->Select(idx-1>=0?idx-1:idx);
 }
 
+void StochasticPanel::OnAddOutput(wxCommandEvent &evt)
+{
+	wxArrayString list = m_sd.Outputs;
+	
+	wxDialog dlg( this, wxID_ANY, "Choose output metrics", wxDefaultPosition, wxSize(300,450), wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER );
+	wxCheckListBox *ckl = new wxCheckListBox( &dlg, wxID_ANY );
+	wxBoxSizer *sizer = new wxBoxSizer(wxVERTICAL);
+	sizer->Add( ckl, 1, wxALL|wxEXPAND, 5 );
+	sizer->Add( dlg.CreateButtonSizer( wxOK|wxCANCEL ), 0, wxALL, 10 );
+	dlg.SetSizer(sizer);
+
+	wxArrayString vars, labels;
+	Simulation::ListAllOutputs( m_case->GetConfiguration(), &vars, &labels, NULL, true );
+
+	ckl->Freeze();
+	ckl->Clear();
+	ckl->Append( labels );
+
+	for (int i=0;i<(int)vars.Count();i++)
+		ckl->Check(i, (m_sd.Outputs.Index( vars[i] ) >= 0) );
+
+	ckl->Thaw();
+
+	int result = dlg.ShowModal();
+	if (result == wxID_OK)
+	{
+		m_sd.Outputs.Clear();
+		for( size_t i=0;i<ckl->GetCount();i++ )
+			if ( ckl->IsChecked( i ) )
+				m_sd.Outputs.Add( vars[i] );
+			
+		UpdateFromSimInfo();
+	}
+}
+
+void StochasticPanel::OnRemoveOutput(wxCommandEvent &evt)
+{
+	int idx = m_outputList->GetSelection();
+	if (idx < 0)
+		wxMessageBox("No output metric selected.");
+	else
+		m_sd.Outputs.RemoveAt(idx);
+
+	UpdateFromSimInfo();
+
+	if (m_outputList->GetCount() > 0)
+		m_outputList->Select(idx-1>=0?idx-1:idx);
+}
+
 void StochasticPanel::OnAddCorr(wxCommandEvent &evt)
 {
 	wxArrayString names;
@@ -1204,8 +1280,28 @@ void StochasticPanel::Simulate()
 		return;
 	}
 
-	wxArrayString output_vars, output_labels, output_units;
-	Simulation::ListAllOutputs( m_case->GetConfiguration(), &output_vars, &output_labels, &output_units, true );
+	if ( m_sd.Outputs.size() == 0 )
+	{
+		wxMessageBox("please select one or more output variables to analyze first.");
+		return;
+	}
+
+	wxArrayString output_vars( m_sd.Outputs ), output_labels, output_units, ov, ol, ou;
+	Simulation::ListAllOutputs( m_case->GetConfiguration(), &ov, &ol, &ou, true );
+	for( size_t i=0;i<output_vars.size();i++ )
+	{
+		int idx = ov.Index( output_vars[i] );
+		if ( idx >= 0 )
+		{
+			output_labels.Add( ol[idx] );
+			output_units.Add( ou[idx] );
+		}
+		else
+		{
+			output_labels.Add( "{" + output_vars[i] + "}" );
+			output_units.Add( wxEmptyString );
+		}	
+	}
 
 	// all single value output data for each run
 	matrix_t<double> output_data;
@@ -1221,36 +1317,72 @@ void StochasticPanel::Simulate()
 	dlg->Show();
 	wxSafeYield( 0, true );
 
-	std::vector<Simulation*> sims;
 
+	Simulation sim( m_case, "stochastic");
 	size_t nok = 0;
 	for( size_t i=0;i<m_sd.N;i++ )
 	{
-		Simulation *sim = new Simulation( m_case, wxString::Format("stochastic-%d",(int)i) );
-		sims.push_back( sim);
+		sim.Clear();
+
 		for( size_t j=0;j<m_sd.InputDistributions.size();j++ )
 		{
 			wxString iname( m_sd.InputDistributions[j].BeforeFirst(':') );
-			sim->Override( iname, VarValue( (float)input_data(i,j) ) );
+			sim.Override( iname, VarValue( (float)input_data(i,j) ) );
 		}
 		
 		outlog->AppendText( wxString::Format( "Simulating %d of %d...\n", (int)(i+1), (int)m_sd.N )); 
-		if ( sim->Invoke(true) )
+		if ( sim.Invoke(true) )
 		{
 			nok++;
 			for( size_t j=0;j<output_vars.size();j++ )
-				if ( VarValue *vv = sim->GetOutput( output_vars[j] ) )
+				if ( VarValue *vv = sim.GetOutput( output_vars[j] ) )
 					output_data(i,j) = vv->Value();
 		}
 		else
 		{
-			outlog->AppendText( wxJoin( sim->GetErrors(), '\n') );
+			outlog->AppendText( wxJoin( sim.GetErrors(), '\n') );
 		}
 
 		wxSafeYield( 0, true );
 	}
 
-// update results
+	// compute stepwise regression
+	Stepwise stw;
+	std::vector<double> data;
+	data.resize( m_sd.N );
+	for( size_t i=0;i<m_sd.InputDistributions.size();i++ )
+	{
+		for( size_t j=0;j<m_sd.N;j++ )
+			data[j] = input_data(j,i);
+		stw.SetInputVector( wxString("input_")+((char)('a'+i)), data );
+	}
+
+	for( size_t i=0;i<output_vars.size();i++ )
+	{
+		for( size_t j=0;j<m_sd.N;j++ )
+			data[j] = output_data(j,i);
+
+		stw.SetOutputVector( data );
+		if ( stw.Exec() )
+		{
+			double beta, dr2;
+
+			for( size_t j=0;j<m_sd.InputDistributions.size();j++ )
+			{
+				double dr2, beta;
+				if (stw.GetStatistics( wxString("input_")+((char)('a'+j)), NULL, &dr2, &beta))
+					outlog->AppendText( "Regressed: " + output_labels[i] + " wrt " + m_sd.InputDistributions[j].BeforeFirst(':') 
+						+ wxString::Format("  beta=%lg  deltar2=%lg\n", beta, dr2) );
+				else
+					outlog->AppendText( "No statistics for " + output_labels[i] + "\n" );
+			}
+		}
+		else
+			outlog->AppendText( "Error running stepwise regression: " + output_labels[i] + "\n");
+	}
+	
+
+	// update results
 	m_grid->Freeze();
 	m_grid->ResizeGrid( m_sd.N, output_vars.size() );
 	int row = 0;
@@ -1271,14 +1403,11 @@ void StochasticPanel::Simulate()
 	m_grid->GetParent()->Layout();
 	m_grid->Layout();
 	m_grid->Thaw();
-
-	for( size_t i=0;i<sims.size();i++ )
-		delete sims[i];
-
-	if ( nok == m_sd.N )
-		dlg->Destroy();
-	else
-		wxMessageBox("Not all simulations succeeded");
+	
+	//if ( nok == m_sd.N )
+		//dlg->Destroy();
+	//else
+		//wxMessageBox("Not all simulations succeeded");
 }
 
 bool ComputeLHSInputVectors( StochasticData &sd, matrix_t<double> &table, wxArrayString *errors)
