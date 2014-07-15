@@ -1261,6 +1261,32 @@ void fcall_openeiapplyrate(lk::invoke_t &cxt)
 				// todo - handle different energy upper bound units
 			}
 		}
+
+		//flat demand structure, e.g. ur_dc_jan_t1_ub
+		wxString months[] = { "jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec" };
+
+		for (int month = 0; month < 12; month++)
+		{
+			for (int tier = 0; tier < 6; tier++)
+			{
+				wxString period_tier = wxString::Format("ur_dc_%s_t%d_", months[month], tier + 1);
+				cxt.result().hash_item(period_tier + "ub").assign(rate.FlatDemandMax[rate.FlatDemandMonth[month]][tier]);
+				cxt.result().hash_item(period_tier + "dc").assign(rate.FlatDemandCharge[rate.FlatDemandMonth[month]][tier] + rate.FlatDemandAdj[rate.FlatDemandMonth[month]][tier]);
+			}
+		}
+
+		// demand rate structure, e.g. ur_dc_p1_t1_ub
+		for (int period = 0; period < 12; period++)
+		{
+			for (int tier = 0; tier < 6; tier++)
+			{
+				wxString period_tier = wxString::Format("ur_dc_p%d_t%d_", period + 1, tier + 1);
+				cxt.result().hash_item(period_tier + "ub").assign(rate.DemandMax[period][tier]);
+				cxt.result().hash_item(period_tier + "dc").assign(rate.DemandCharge[period][tier] + rate.DemandAdj[period][tier]);
+			}
+		}
+
+
 	}
 }
 /*

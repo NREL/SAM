@@ -52,6 +52,7 @@ void OpenEI::RateData::Reset()
 		{
 			EnergyBuy[i][j] = EnergyBuy[i][j] = EnergySell[i][j] = 0.0;
 			EnergyMax[i][j] = 1e99;
+			EnergyMaxUnit[i][j] = "kWh Daily"; // TODO implement max unit
 		}
 		for (int k = 0; k < 24; k++)
 		{
@@ -301,10 +302,63 @@ bool OpenEI::RetrieveUtilityRateData(const wxString &guid, RateData &rate, wxStr
 
 	rate.DemandReactivePower = json_double( val.Item("demandreactivepowercharge") );
 
+
+	wxJSONValue fdm_periods = val.Item("flatdemandmonths");
+	if (fdm_periods.IsArray())
+	{
+		if (fdm_periods.Size() > 12) return false;
+		for (int month = 0; month<12; month++)
+			rate.FlatDemandMonth[month] = fdm_periods[month].AsInt();
+	}
+
+	wxJSONValue fds_periods = val.Item("flatdemandstructure");
+	if (fds_periods.IsArray())
+	{
+		if (fds_periods.Size() > 12) return false;
+		for (int period = 0; period < fds_periods.Size(); period++)
+		{
+			wxJSONValue fds_tier = fds_periods[period];
+			if (fds_tier.IsArray())
+			{
+				if (fds_tier.Size() > 6) return false;
+				for (int tier = 0; tier < fds_tier.Size(); tier++)
+				{
+					rate.FlatDemandMax[period][tier] = json_double(fds_tier[tier].Item("max"), 1e99, &rate.HasDemandCharge);
+					rate.FlatDemandCharge[period][tier] = json_double(fds_tier[tier].Item("rate"), 0.0, &rate.HasDemandCharge);
+					rate.FlatDemandAdj[period][tier] = json_double(fds_tier[tier].Item("adj"), 0.0, &rate.HasDemandCharge);
+				}
+			}
+		}
+	}
+
+
+
+	wxJSONValue drs_periods = val.Item("demandratestructure");
+	if (drs_periods.IsArray())
+	{
+		if (drs_periods.Size() > 12) return false;
+		for (int period = 0; period < drs_periods.Size(); period++)
+		{
+			wxJSONValue drs_tier = drs_periods[period];
+			if (drs_tier.IsArray())
+			{
+				if (drs_tier.Size() > 6) return false;
+				for (int tier = 0; tier < drs_tier.Size(); tier++)
+				{
+					rate.DemandMax[period][tier] = json_double(drs_tier[tier].Item("max"), 1e99, &rate.HasDemandCharge);
+					rate.DemandCharge[period][tier] = json_double(drs_tier[tier].Item("rate"), 0.0, &rate.HasDemandCharge);
+					rate.DemandAdj[period][tier] = json_double(drs_tier[tier].Item("adj"), 0.0, &rate.HasDemandCharge);
+				}
+			}
+		}
+	}
+
+
+
+	/*
 	for (int month=0; month<12; month++)
 	{
 		wxString flatmonth_string = wxString::Format("flatdemandmonth%d", month+1);
-
 		rate.FlatDemandMonth[month] = json_integer( val.Item( flatmonth_string ) );
 	}
 
@@ -328,6 +382,7 @@ bool OpenEI::RetrieveUtilityRateData(const wxString &guid, RateData &rate, wxStr
 			rate.DemandCharge[period][tier] = json_double( val.Item(period_string + "rate"), 0.0, &rate.HasDemandCharge );
 			rate.DemandAdj[period][tier] = json_double( val.Item(period_string + "adjustment"), 0.0, &rate.HasDemandCharge );
 		}
+		*/
 	
 	if (!RetrieveDiurnalData(val.Item("demandweekdayschedule"), rate.DemandWeekdaySchedule)) return false;
 	if (!RetrieveDiurnalData(val.Item("demandweekendschedule"), rate.DemandWeekendSchedule)) return false;
