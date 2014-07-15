@@ -152,7 +152,7 @@ CaseWindow::CaseWindow( wxWindow *parent, Case *c )
 	szsims->Add( new wxMetroButton( left_panel, ID_PARAMETRICS, "Parametrics" ), 0, wxALL|wxEXPAND, 0 );
 	szsims->Add( new wxMetroButton( left_panel, ID_STOCHASTIC, "Stochastic" ), 0, wxALL|wxEXPAND, 0 );
 	szsims->Add( new wxMetroButton( left_panel, ID_P50P90, "P50 / P90" ), 0, wxALL|wxEXPAND, 0 );
-	szsims->Add( new wxMetroButton( left_panel, ID_SCRIPTING, "Monte Carlo" ), 0, wxALL|wxEXPAND, 0 );
+	szsims->Add( new wxMetroButton( left_panel, ID_SCRIPTING, "Macros" ), 0, wxALL|wxEXPAND, 0 );
 
 	wxBoxSizer *szvl = new wxBoxSizer( wxVERTICAL );
 	szvl->Add( m_configLabel, 0, wxALIGN_CENTER_VERTICAL|wxALIGN_CENTER|wxTOP|wxBOTTOM, 3 );

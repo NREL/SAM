@@ -778,106 +778,124 @@ END_EVENT_TABLE()
 
 enum {
   ID_lstOutputMetrics = wxID_HIGHEST+414,
-  ID_btnAddMetric,
-  ID_btnRemoveMetric,
   ID_btnRemoveInput,
   ID_btnAddInput,
-  ID_numSeed,
+  ID_m_seed,
   ID_btnAddCorr,
   ID_btnEditCorr,
   ID_btnRemoveCorr,
-  ID_lstCorrelations,
-  ID_lstInputs,
-  ID_numN,
+  ID_m_corrList,
+  ID_m_inputList,
+  ID_m_N,
   ID_btnComputeSamples,
-  ID_btnEditInput };
+  ID_btnEditInput,
+  ID_Simulate
+};
 
 BEGIN_EVENT_TABLE( StochasticPanel, wxPanel )
-	EVT_NUMERIC( ID_numN, StochasticPanel::OnNChange)
-	EVT_NUMERIC( ID_numSeed, StochasticPanel::OnSeedChange)
-
-	EVT_BUTTON( ID_btnAddMetric, StochasticPanel::OnAddMetric )
-	EVT_BUTTON( ID_btnRemoveMetric, StochasticPanel::OnRemoveMetric )
-
+	EVT_NUMERIC( ID_m_N, StochasticPanel::OnNChange)
+	EVT_NUMERIC( ID_m_seed, StochasticPanel::OnSeedChange)
+	
 	EVT_BUTTON( ID_btnAddInput, StochasticPanel::OnAddInput)
 	EVT_BUTTON( ID_btnRemoveInput, StochasticPanel::OnRemoveInput)
 	EVT_BUTTON( ID_btnEditInput, StochasticPanel::OnEditInput)
-	EVT_LISTBOX( ID_lstInputs, StochasticPanel::OnSelectInput)
-	EVT_LISTBOX_DCLICK( ID_lstInputs, StochasticPanel::OnEditInput)
+	EVT_LISTBOX_DCLICK( ID_m_inputList, StochasticPanel::OnEditInput)
 
 	EVT_BUTTON( ID_btnAddCorr, StochasticPanel::OnAddCorr)
 	EVT_BUTTON( ID_btnRemoveCorr, StochasticPanel::OnRemoveCorr)
 	EVT_BUTTON( ID_btnEditCorr, StochasticPanel::OnEditCorr)
-	EVT_LISTBOX_DCLICK( ID_lstCorrelations, StochasticPanel::OnEditCorr)
+	EVT_LISTBOX_DCLICK( ID_m_corrList, StochasticPanel::OnEditCorr)
 	EVT_BUTTON( ID_btnComputeSamples, StochasticPanel::OnComputeSamples)
+
+	EVT_BUTTON( ID_Simulate, StochasticPanel::OnSimulate )
 END_EVENT_TABLE()
 
 StochasticPanel::StochasticPanel(wxWindow *parent, Case *cc)
-	 : wxPanel( parent ), mCase( cc )
+	 : wxPanel( parent ), m_case( cc ), m_sd( m_case->Stochastic() )
 {
-	mSSimInf = &mCase->Stochastic();
+	wxBoxSizer *sizer_main = new wxBoxSizer( wxVERTICAL );
 
-	btnEditInput = new wxButton(this, ID_btnEditInput, "Edit...", wxPoint(9,168), wxSize(80,21));
-	btnComputeSamples = new wxButton(this, ID_btnComputeSamples, "Compute Samples...", wxPoint(540,63), wxSize(149,21));
-	numN = new wxNumericCtrl(this, ID_numN, 100, wxNumericCtrl::INTEGER, wxPoint(420,330), wxSize(100,21));
+	wxStaticBoxSizer *szbox = new wxStaticBoxSizer(wxVERTICAL, this, "Configure Stochastic Simulation");
 
-	wxArrayString _data_lstInputs;
-	lstInputs = new wxListBox(this, ID_lstInputs, wxPoint(171,117), wxSize(347,99), _data_lstInputs, wxLB_SINGLE);
-	wxArrayString _data_lstCorrelations;
-	lstCorrelations = new wxListBox(this, ID_lstCorrelations, wxPoint(171,228), wxSize(347,99), _data_lstCorrelations, wxLB_SINGLE);
-	btnRemoveCorr = new wxButton(this, ID_btnRemoveCorr, "Remove", wxPoint(9,303), wxSize(80,21));
-	btnEditCorr = new wxButton(this, ID_btnEditCorr, "Edit...", wxPoint(9,279), wxSize(80,21));
-	btnAddCorr = new wxButton(this, ID_btnAddCorr, "Add...", wxPoint(9,255), wxSize(80,21));
-	numSeed = new wxNumericCtrl(this, ID_numSeed, -1, wxNumericCtrl::INTEGER, wxPoint(420,354), wxSize(100,21));
-	new wxButton(this, ID_btnAddInput, "Add...", wxPoint(9,144), wxSize(80,21));
-	new wxButton(this, ID_btnRemoveInput, "Remove", wxPoint(9,192), wxSize(80,21));
-	new wxButton(this, ID_btnRemoveMetric, "Remove", wxPoint(9,75), wxSize(80,21));
-	new wxButton(this, ID_btnAddMetric, "Add...", wxPoint(9,51), wxSize(80,21));
-	wxArrayString _data_lstOutputMetrics;
-	lstOutputMetrics = new wxListBox(this, ID_lstOutputMetrics, wxPoint(171,24), wxSize(347,78), _data_lstOutputMetrics, wxLB_SINGLE);
-	new wxStaticText(this, wxID_ANY, "Select output metrics:", wxPoint(9,24), wxSize(158,21));
-	new wxStaticText(this, wxID_ANY, "Select input distributions:", wxPoint(9,117), wxSize(158,21));
-	new wxStaticText(this, wxID_ANY, "Seed value (0 for random):", wxPoint(99,354), wxSize(317,21));
-	new wxStaticText(this, wxID_ANY, "Number of sampled values per variable:", wxPoint(99,330), wxSize(317,21));
-	new wxStaticText(this, wxID_ANY, "Select correlations:", wxPoint(9,228), wxSize(158,21));
+	wxBoxSizer *sizer_inputs = new wxBoxSizer( wxHORIZONTAL );	
+	sizer_inputs->Add( new wxStaticText( szbox->GetStaticBox(), wxID_ANY, "Input distributions:"), 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
+	sizer_inputs->Add( new wxButton(szbox->GetStaticBox(), ID_btnAddInput, "Add...", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL|wxALIGN_CENTER_VERTICAL, 2 );
+	sizer_inputs->Add( new wxButton(szbox->GetStaticBox(), ID_btnEditInput, "Edit...", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL|wxALIGN_CENTER_VERTICAL, 2 );
+	sizer_inputs->Add( new wxButton(szbox->GetStaticBox(), ID_btnRemoveInput, "Remove", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL|wxALIGN_CENTER_VERTICAL, 2 );
+	
+	wxBoxSizer *sizer_inputs_v = new wxBoxSizer( wxVERTICAL );
+	sizer_inputs_v->Add( sizer_inputs, 0, wxALL|wxEXPAND, 3 );
+	m_inputList = new wxListBox(szbox->GetStaticBox(), ID_m_inputList);
+	m_inputList->SetInitialSize( wxSize( 325, 100 ) );
+	sizer_inputs_v->Add( m_inputList, 0, wxALL|wxEXPAND, 5 );
+
+
+	wxBoxSizer *sizer_corr = new wxBoxSizer( wxHORIZONTAL );
+	sizer_corr->Add( new wxStaticText(szbox->GetStaticBox(), wxID_ANY, "Select correlations:"), 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
+	sizer_corr->Add( new wxButton(szbox->GetStaticBox(), ID_btnAddCorr, "Add...", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL|wxALIGN_CENTER_VERTICAL, 2 );
+	sizer_corr->Add( new wxButton(szbox->GetStaticBox(), ID_btnEditCorr, "Edit...", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL|wxALIGN_CENTER_VERTICAL, 2 );
+	sizer_corr->Add( new wxButton(szbox->GetStaticBox(), ID_btnRemoveCorr, "Remove", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL|wxALIGN_CENTER_VERTICAL, 2 );	
+	
+	wxBoxSizer *sizer_corr_v = new wxBoxSizer( wxVERTICAL );
+	sizer_corr_v->Add( sizer_corr, 0, wxALL|wxEXPAND, 3 );
+	m_corrList = new wxListBox(szbox->GetStaticBox(), ID_m_corrList);
+	m_corrList->SetInitialSize( wxSize( 325, 100 ) );	
+	sizer_corr_v->Add( m_corrList, 0, wxALL|wxEXPAND, 5 );
+
+	wxBoxSizer *sizer_horiz = new wxBoxSizer( wxHORIZONTAL );
+	sizer_horiz->Add( sizer_inputs_v, 0, wxALL|wxEXPAND, 5 );
+	sizer_horiz->Add( sizer_corr_v, 0, wxALL|wxEXPAND, 5 );
+	szbox->Add( sizer_horiz );
+
+	m_N = new wxNumericCtrl(szbox->GetStaticBox(), ID_m_N, 100, wxNumericCtrl::INTEGER);
+	m_seed = new wxNumericCtrl(szbox->GetStaticBox(), ID_m_seed, -1, wxNumericCtrl::INTEGER);
+	
+	wxBoxSizer *sizer_ctrls = new wxBoxSizer( wxHORIZONTAL );
+	sizer_ctrls->Add( new wxStaticText(szbox->GetStaticBox(), wxID_ANY, "Number of samples:"), 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
+	sizer_ctrls->Add( m_N );
+	sizer_ctrls->Add( new wxStaticText(szbox->GetStaticBox(), wxID_ANY, "Seed value (0 for random):"), 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
+	sizer_ctrls->Add( m_seed );
+
+	szbox->Add( sizer_ctrls, 0, wxALL|wxEXPAND, 5 );
+
+	sizer_main->Add( szbox, 0, wxALL, 5 );
+	
+	
+	wxBoxSizer *sizer_cmd = new wxBoxSizer( wxHORIZONTAL );
+	sizer_cmd->Add( new wxButton(this, ID_btnComputeSamples, "Compute samples..."), 0, wxALL|wxEXPAND, 5 );
+	sizer_cmd->Add( new wxButton(this, ID_Simulate, "Run simulation"), 0, wxALL|wxEXPAND, 5 );
+
+	sizer_main->Add( sizer_cmd );
+	
+	m_grid = new wxExtGridCtrl( this, wxID_ANY );
+	m_grid->CreateGrid( 1, 1 );
+	m_grid->SetCellValue(0, 0, "No results.");
+
+	sizer_main->Add( m_grid, 1, wxALL|wxEXPAND, 0 );
+
+	SetSizer( sizer_main );
+	
 
 	UpdateFromSimInfo();	
 }
 
 void StochasticPanel::UpdateFromSimInfo()
-{
-	if (!mCase || !mSSimInf)
-		return;
-
-	wxArrayString vars, labels;
-
-	Simulation::ListAllOutputs( mCase->GetConfiguration(), &vars, &labels, NULL, true );
-
-	lstOutputMetrics->Clear();
-	for (int i=0;i<mSSimInf->OutputMetrics.Count();i++)
-	{
-		int idx = vars.Index( mSSimInf->OutputMetrics[i] );
-		if (idx >= 0)
-			lstOutputMetrics->Append( labels[idx] ); 
-		else
-			lstOutputMetrics->Append("<Error - remove this>");
-	}
-
-	numN->SetValue( mSSimInf->N );
-	numSeed->SetValue( mSSimInf->Seed );
+{	
+	m_N->SetValue( m_sd.N );
+	m_seed->SetValue( m_sd.Seed );
 
 	int i;
 
-	lstInputs->Freeze();
-	lstInputs->Clear();
-	for (i=0;i<(int)mSSimInf->InputDistributions.Count();i++)
+	m_inputList->Freeze();
+	m_inputList->Clear();
+	for (i=0;i<(int)m_sd.InputDistributions.Count();i++)
 	{
-		wxArrayString parts = wxStringTokenize(mSSimInf->InputDistributions[i], ":");
+		wxArrayString parts = wxStringTokenize(m_sd.InputDistributions[i], ":");
 		if ( parts.Count() == 0 )
 			continue;
 
 		wxString item = parts[0];
-		item = mCase->GetConfiguration()->Variables.Label( item );
+		item = m_case->GetConfiguration()->Variables.Label( item );
 		
 		if (parts.Count() == 6)
 		{
@@ -898,112 +916,49 @@ void StochasticPanel::UpdateFromSimInfo()
 			}
 		}
 
-		lstInputs->Append( item );
+		m_inputList->Append( item );
 	}
 
-	lstInputs->Thaw();
+	m_inputList->Thaw();
 
-	lstCorrelations->Freeze();
-	lstCorrelations->Clear();
-	for (i=0;i<(int)mSSimInf->Correlations.Count();i++)
+	m_corrList->Freeze();
+	m_corrList->Clear();
+	for (i=0;i<(int)m_sd.Correlations.Count();i++)
 	{
-		wxArrayString parts = wxStringTokenize( mSSimInf->Correlations[i], ":" );
+		wxArrayString parts = wxStringTokenize( m_sd.Correlations[i], ":" );
 		if (parts.Count() < 3) continue;
 		
-		wxString l1 = mCase->GetConfiguration()->Variables.Label( parts[0] );
-		wxString l2 = mCase->GetConfiguration()->Variables.Label( parts[1] );
+		wxString l1 = m_case->GetConfiguration()->Variables.Label( parts[0] );
+		wxString l2 = m_case->GetConfiguration()->Variables.Label( parts[1] );
 		
 		if ( l1.IsEmpty() || l2.IsEmpty() ) continue;
 
-		lstCorrelations->Append( l1 + ", " + l2 + ", " + parts[2] );
+		m_corrList->Append( l1 + ", " + l2 + ", " + parts[2] );
 	}
 
-	lstCorrelations->Thaw();
+	m_corrList->Thaw();
 }
 
-StochasticData *StochasticPanel::GetSimInfo()
-{
-	return mSSimInf;
-}
 
 void StochasticPanel::OnNChange(wxCommandEvent &evt)
 {
-	if (mSSimInf)
-		mSSimInf->N = numN->AsInteger();
+	m_sd.N = m_N->AsInteger();
 }
 
 void StochasticPanel::OnSeedChange(wxCommandEvent &evt)
 {
-	if (mSSimInf)
-		mSSimInf->Seed = numSeed->AsInteger();
-}
-
-void StochasticPanel::OnAddMetric(wxCommandEvent &evt)
-{
-	if ( !mCase || !mSSimInf)
-		return;
-	
-	wxArrayString list = mSSimInf->OutputMetrics;
-	
-	wxDialog dlg( this, wxID_ANY, "Choose output metrics", wxDefaultPosition, wxSize(300,450), wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER );
-	wxCheckListBox *ckl = new wxCheckListBox( &dlg, wxID_ANY );
-	wxBoxSizer *sizer = new wxBoxSizer(wxVERTICAL);
-	sizer->Add( ckl, 1, wxALL|wxEXPAND, 5 );
-	sizer->Add( dlg.CreateButtonSizer( wxOK|wxCANCEL ), 0, wxALL, 10 );
-	dlg.SetSizer(sizer);
-
-	wxArrayString vars, labels;
-	Simulation::ListAllOutputs( mCase->GetConfiguration(), &vars, &labels, NULL, true );
-
-	ckl->Freeze();
-	ckl->Clear();
-	ckl->Append( labels );
-
-	for (int i=0;i<(int)vars.Count();i++)
-		ckl->Check(i, (mSSimInf->OutputMetrics.Index( vars[i] ) >= 0) );
-
-	ckl->Thaw();
-
-	int result = dlg.ShowModal();
-	if (result == wxID_OK)
-	{
-		mSSimInf->OutputMetrics.Clear();
-		for( size_t i=0;i<ckl->GetCount();i++ )
-			if ( ckl->IsChecked( i ) )
-				mSSimInf->OutputMetrics.Add( vars[i] );
-			
-		UpdateFromSimInfo();
-	}
-}
-
-void StochasticPanel::OnRemoveMetric(wxCommandEvent &evt)
-{
-	if ( !mCase || !mSSimInf)
-		return;
-
-	int idx = lstOutputMetrics->GetSelection();
-	if (idx < 0)
-		wxMessageBox("No output metric selected.");
-	else
-		mSSimInf->OutputMetrics.RemoveAt(idx);
-
-	UpdateFromSimInfo();
-
-	if (lstOutputMetrics->GetCount() > 0)
-		lstOutputMetrics->Select(idx-1>=0?idx-1:idx);
+	m_sd.Seed = m_seed->AsInteger();
 }
 
 void StochasticPanel::OnAddInput(wxCommandEvent &evt)
 {
-	if ( !mCase || !mSSimInf) return;
-
 	wxArrayString varlist;
 	int i;
-	for (i=0;i<(int)mSSimInf->InputDistributions.Count();i++)
-		varlist.Add( mSSimInf->InputDistributions[i].BeforeFirst(':') );
+	for (i=0;i<(int)m_sd.InputDistributions.Count();i++)
+		varlist.Add( m_sd.InputDistributions[i].BeforeFirst(':') );
 	
 	wxArrayString names, labels;
-	ConfigInfo *ci = mCase->GetConfiguration();
+	ConfigInfo *ci = m_case->GetConfiguration();
 	VarInfoLookup &vil = ci->Variables;
 
 	for (VarInfoLookup::iterator it = vil.begin(); it != vil.end(); ++it)
@@ -1039,10 +994,10 @@ void StochasticPanel::OnAddInput(wxCommandEvent &evt)
 
 		i=0;
 		// remove any input variables in StochasticData that are no longer in list
-		while (i<(int)mSSimInf->InputDistributions.Count())
+		while (i<(int)m_sd.InputDistributions.Count())
 		{
-			if ( varlist.Index( mSSimInf->InputDistributions[i].BeforeFirst(':') ) < 0 )
-				mSSimInf->InputDistributions.RemoveAt(i);// remove, do not increment i
+			if ( varlist.Index( m_sd.InputDistributions[i].BeforeFirst(':') ) < 0 )
+				m_sd.InputDistributions.RemoveAt(i);// remove, do not increment i
 			else
 				i++;
 		}
@@ -1051,18 +1006,18 @@ void StochasticPanel::OnAddInput(wxCommandEvent &evt)
 		for (i=0;i<(int)varlist.Count();i++)
 		{
 			bool found = false;
-			for (int j=0;j<(int)mSSimInf->InputDistributions.Count();j++)
-				if ( mSSimInf->InputDistributions[j].BeforeFirst(':') == varlist[i] )
+			for (int j=0;j<(int)m_sd.InputDistributions.Count();j++)
+				if ( m_sd.InputDistributions[j].BeforeFirst(':') == varlist[i] )
 					found = true;
 
 			if (!found)
 			{
-				VarValue *vv = mCase->Values().Get( varlist[i] );
+				VarValue *vv = m_case->Values().Get( varlist[i] );
 				if (!vv)
 					continue;
 
 				// default to normal distribution
-				mSSimInf->InputDistributions.Add( 
+				m_sd.InputDistributions.Add( 
 					varlist[i] + wxString::Format(":1:%lg:%lg:0:0", 
 					(double)vv->Value(), (double)0.15*vv->Value() ));
 			}
@@ -1073,22 +1028,17 @@ void StochasticPanel::OnAddInput(wxCommandEvent &evt)
 
 }
 
-void StochasticPanel::OnSelectInput(wxCommandEvent &evt)
-{
-	/* nothing to do */
-}
-
 void StochasticPanel::OnEditInput(wxCommandEvent &evt)
 {
-	int idx = lstInputs->GetSelection();
-	if ( !mCase || !mSSimInf || idx < 0) return;
+	int idx = m_inputList->GetSelection();
+	if ( idx < 0 ) return;
 
-	wxString var = mSSimInf->InputDistributions[idx];
+	wxString var = m_sd.InputDistributions[idx];
 	wxArrayString parts = wxStringTokenize(var, ":");
 	if (parts.Count() < 6) return;
 
-	ConfigInfo *ci = mCase->GetConfiguration();
-	VarValue *vptr = mCase->Values().Get(parts[0]);
+	ConfigInfo *ci = m_case->GetConfiguration();
+	VarValue *vptr = m_case->Values().Get(parts[0]);
 	if (!vptr) return;
 
 	InputDistDialog dlg(this, "Edit " + ci->Variables.Label( parts[0] ) + " Distribution");
@@ -1098,7 +1048,7 @@ void StochasticPanel::OnEditInput(wxCommandEvent &evt)
 
 	if (dlg.ShowModal()==wxID_OK)
 	{
-		mSSimInf->InputDistributions[idx] = parts[0] + ":"
+		m_sd.InputDistributions[idx] = parts[0] + ":"
 			+ wxString::Format("%d",  dlg.cboDistribution->GetSelection() ) + ":"
 			+ wxString::Format("%lg", dlg.nums[0]->Value() ) + ":"
 			+ wxString::Format("%lg", dlg.nums[1]->Value() ) + ":"
@@ -1111,34 +1061,28 @@ void StochasticPanel::OnEditInput(wxCommandEvent &evt)
 
 void StochasticPanel::OnRemoveInput(wxCommandEvent &evt)
 {
-	if ( !mCase || !mSSimInf)
-		return;
-
-	int idx = lstInputs->GetSelection();
+	int idx = m_inputList->GetSelection();
 	if (idx < 0)
 		wxMessageBox("No input variable selected.");
 	else
-		mSSimInf->InputDistributions.RemoveAt(idx);
+		m_sd.InputDistributions.RemoveAt(idx);
 
 	UpdateFromSimInfo();
 
-	if (lstInputs->GetCount() > 0)
-		lstInputs->Select(idx-1>=0?idx-1:idx);
+	if (m_inputList->GetCount() > 0)
+		m_inputList->Select(idx-1>=0?idx-1:idx);
 }
 
 void StochasticPanel::OnAddCorr(wxCommandEvent &evt)
 {
-	if ( !mCase || !mSSimInf)
-		return;
-
 	wxArrayString names;
 	wxArrayString labels;
 
-	for (int i=0;i<mSSimInf->InputDistributions.Count();i++)
+	for (int i=0;i<m_sd.InputDistributions.Count();i++)
 	{
-		names.Add( mSSimInf->InputDistributions[i].BeforeFirst(':'));
+		names.Add( m_sd.InputDistributions[i].BeforeFirst(':'));
 
-		VarInfo *v = mCase->GetConfiguration()->Variables.Lookup( names[i] );
+		VarInfo *v = m_case->GetConfiguration()->Variables.Lookup( names[i] );
 		if (!v)
 		{
 			labels.Add("<<Label Lookup Error>>");
@@ -1172,7 +1116,7 @@ void StochasticPanel::OnAddCorr(wxCommandEvent &evt)
 			double corr = atof(scorr.c_str());
 			if (corr <= -1) corr = -0.999;
 			if (corr >= 1) corr = 0.999;
-			mSSimInf->Correlations.Add( list[0] + ":" + list[1] + ":" + wxString::Format("%lg", corr ) );
+			m_sd.Correlations.Add( list[0] + ":" + list[1] + ":" + wxString::Format("%lg", corr ) );
 			UpdateFromSimInfo();
 		}
 	}
@@ -1181,10 +1125,10 @@ void StochasticPanel::OnAddCorr(wxCommandEvent &evt)
 
 void StochasticPanel::OnEditCorr(wxCommandEvent &evt)
 {
-	int idx = lstCorrelations->GetSelection();
-	if ( !mCase || !mSSimInf || idx < 0) return;
+	int idx = m_corrList->GetSelection();
+	if (idx < 0) return;
 
-	wxArrayString parts = wxStringTokenize(mSSimInf->Correlations[idx], ":");
+	wxArrayString parts = wxStringTokenize(m_sd.Correlations[idx], ":");
 	if (parts.Count() < 3) return;
 
 	wxString result = wxGetTextFromUser("Edit correlation value (-1.0 < corr < 1.0):", "Edit", parts[2]);
@@ -1193,25 +1137,23 @@ void StochasticPanel::OnEditCorr(wxCommandEvent &evt)
 		double corr = atof( result.c_str() );
 		if (corr <= -1) corr = -0.999;
 		if (corr >= 1) corr = 0.999;
-		mSSimInf->Correlations[idx] = parts[0] + ":" + parts[1] + ":" + wxString::Format("%lg", corr );
+		m_sd.Correlations[idx] = parts[0] + ":" + parts[1] + ":" + wxString::Format("%lg", corr );
 		UpdateFromSimInfo();
 	}
 }
 
 void StochasticPanel::OnRemoveCorr(wxCommandEvent &evt)
 {
-	if ( !mCase || !mSSimInf)
-		return;
-	int idx = lstCorrelations->GetSelection();
+	int idx = m_corrList->GetSelection();
 	if (idx < 0)
 		wxMessageBox("No correlation selected.");
 	else
-		mSSimInf->Correlations.RemoveAt(idx);
+		m_sd.Correlations.RemoveAt(idx);
 
 	UpdateFromSimInfo();
 
-	if (lstCorrelations->GetCount() > 0)
-		lstCorrelations->Select(idx-1>=0?idx-1:idx);
+	if (m_corrList->GetCount() > 0)
+		m_corrList->Select(idx-1>=0?idx-1:idx);
 }
 
 
@@ -1219,15 +1161,15 @@ void StochasticPanel::OnComputeSamples(wxCommandEvent &evt)
 {
 	wxArrayString errors;
 	matrix_t<double> table;
-	if (!ComputeLHSInputVectors( mSSimInf, table, &errors))
+	if (!ComputeLHSInputVectors( m_sd, table, &errors))
 	{
 		wxShowTextMessageDialog("An error occured while computing the samples using LHS:\n\n" + wxJoin(errors,'\n'));
 		return;
 	}
 
 	wxArrayString collabels;
-	for (int i=0;i<mSSimInf->InputDistributions.Count();i++)
-		collabels.Add( mCase->GetConfiguration()->Variables.Label( mSSimInf->InputDistributions[i].BeforeFirst(':') ) );
+	for (int i=0;i<m_sd.InputDistributions.Count();i++)
+		collabels.Add( m_case->GetConfiguration()->Variables.Label( m_sd.InputDistributions[i].BeforeFirst(':') ) );
 
 	
 	wxDialog *dlg = new wxDialog( this, wxID_ANY, "Data Vectors", wxDefaultPosition, wxSize(400,600), wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER);
@@ -1247,23 +1189,115 @@ void StochasticPanel::OnComputeSamples(wxCommandEvent &evt)
 	dlg->Show();
 }
 
-bool ComputeLHSInputVectors( StochasticData *ssim, matrix_t<double> &table, wxArrayString *errors)
+void StochasticPanel::OnSimulate( wxCommandEvent & )
+{
+	Simulate();
+}
+
+void StochasticPanel::Simulate()
+{
+	wxArrayString errors;
+	matrix_t<double> input_data;
+	if ( !ComputeLHSInputVectors( m_sd, input_data, &errors ) )
+	{
+		wxShowTextMessageDialog("An error occured while computing the samples using LHS:\n\n" + wxJoin(errors,'\n'));
+		return;
+	}
+
+	wxArrayString output_vars, output_labels, output_units;
+	Simulation::ListAllOutputs( m_case->GetConfiguration(), &output_vars, &output_labels, &output_units, true );
+
+	// all single value output data for each run
+	matrix_t<double> output_data;
+	output_data.resize_fill( m_sd.N, output_vars.size(), 0.0);
+
+	wxDialog *dlg = new wxDialog( this, wxID_ANY, "Stochastic simulation", wxDefaultPosition, wxSize(500,300));
+	wxTextCtrl *outlog = new wxTextCtrl( dlg, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxTE_MULTILINE );
+	wxBoxSizer *sizer = new wxBoxSizer( wxVERTICAL );
+	sizer->Add( outlog, 1, wxALL|wxEXPAND, 0 );
+	sizer->Add( dlg->CreateButtonSizer( wxOK ), 0, wxALL|wxEXPAND, 5 );
+	dlg->SetSizer( sizer );
+	dlg->CenterOnParent();
+	dlg->Show();
+	wxSafeYield( 0, true );
+
+	std::vector<Simulation*> sims;
+
+	size_t nok = 0;
+	for( size_t i=0;i<m_sd.N;i++ )
+	{
+		Simulation *sim = new Simulation( m_case, wxString::Format("stochastic-%d",(int)i) );
+		sims.push_back( sim);
+		for( size_t j=0;j<m_sd.InputDistributions.size();j++ )
+		{
+			wxString iname( m_sd.InputDistributions[j].BeforeFirst(':') );
+			sim->Override( iname, VarValue( (float)input_data(i,j) ) );
+		}
+		
+		outlog->AppendText( wxString::Format( "Simulating %d of %d...\n", (int)(i+1), (int)m_sd.N )); 
+		if ( sim->Invoke(true) )
+		{
+			nok++;
+			for( size_t j=0;j<output_vars.size();j++ )
+				if ( VarValue *vv = sim->GetOutput( output_vars[j] ) )
+					output_data(i,j) = vv->Value();
+		}
+		else
+		{
+			outlog->AppendText( wxJoin( sim->GetErrors(), '\n') );
+		}
+
+		wxSafeYield( 0, true );
+	}
+
+// update results
+	m_grid->Freeze();
+	m_grid->ResizeGrid( m_sd.N, output_vars.size() );
+	int row = 0;
+	for( size_t j=0;j<output_vars.size();j++ )
+	{
+		wxString L( output_labels[j] );
+		if ( !output_units[j].IsEmpty() )
+			L += " (" + output_units[j] + ")";
+
+		m_grid->SetColLabelValue( j, L );
+
+		for( size_t i=0;i<m_sd.N;i++ )
+			m_grid->SetCellValue( i, j, wxString::Format("%lg", output_data(i,j) ) );
+	}
+
+	m_grid->SetRowLabelSize(wxGRID_AUTOSIZE);
+	m_grid->SetColLabelSize(wxGRID_AUTOSIZE);
+	m_grid->GetParent()->Layout();
+	m_grid->Layout();
+	m_grid->Thaw();
+
+	for( size_t i=0;i<sims.size();i++ )
+		delete sims[i];
+
+	if ( nok == m_sd.N )
+		dlg->Destroy();
+	else
+		wxMessageBox("Not all simulations succeeded");
+}
+
+bool ComputeLHSInputVectors( StochasticData &sd, matrix_t<double> &table, wxArrayString *errors)
 {
 	int i, n, j, r, c;
 
-	if (ssim->N < 1)
+	if (sd.N < 1)
 	{
 		if (errors) errors->Add("Number of runs requested must be greater than 1.");
 		return false;
 	}
 
-	table.resize_fill(ssim->N, ssim->InputDistributions.Count(), 0.0);
+	table.resize_fill(sd.N, sd.InputDistributions.Count(), 0.0);
 
 	// compute the input vectors with Sandia LHS
 	LHS lhs;
-	for (i=0;i<(int)ssim->InputDistributions.Count();i++)
+	for (i=0;i<(int)sd.InputDistributions.Count();i++)
 	{
-		wxArrayString distinfo = wxStringTokenize(ssim->InputDistributions[i],":");
+		wxArrayString distinfo = wxStringTokenize(sd.InputDistributions[i],":");
 		if (distinfo.Count() < 6) continue;
 		std::vector<double> params;
 		params.push_back( wxAtof(distinfo[2]) );
@@ -1273,16 +1307,16 @@ bool ComputeLHSInputVectors( StochasticData *ssim, matrix_t<double> &table, wxAr
 		lhs.Distribution( wxAtoi(distinfo[1]), wxString((char)('a' + i)), params);
 	}
 
-	for (i=0;i<(int)ssim->Correlations.Count();i++)
+	for (i=0;i<(int)sd.Correlations.Count();i++)
 	{
-		wxArrayString corrinfo = wxStringTokenize(ssim->Correlations[i],":");
+		wxArrayString corrinfo = wxStringTokenize(sd.Correlations[i],":");
 		if (corrinfo.Count() < 3) continue;
 		int name_idx1 = -1;
 		int name_idx2 = -1;
 
-		for (j=0;j<(int)ssim->InputDistributions.Count();j++)
+		for (j=0;j<(int)sd.InputDistributions.Count();j++)
 		{
-			wxString curname = ssim->InputDistributions[j].BeforeFirst(':');
+			wxString curname = sd.InputDistributions[j].BeforeFirst(':');
 			if (curname == corrinfo[0]) name_idx1 = j;
 			if (curname == corrinfo[1]) name_idx2 = j;
 		}
@@ -1292,8 +1326,8 @@ bool ComputeLHSInputVectors( StochasticData *ssim, matrix_t<double> &table, wxAr
 		lhs.Correlate( wxString((char)('a'+name_idx1)), wxString((char)('a'+name_idx2)), atof(corrinfo[2]) );
 	}
 
-	lhs.Points( ssim->N );
-	lhs.SeedVal( ssim->Seed );
+	lhs.Points( sd.N );
+	lhs.SeedVal( sd.Seed );
 
 	if (!lhs.Exec())
 	{
@@ -1303,18 +1337,18 @@ bool ComputeLHSInputVectors( StochasticData *ssim, matrix_t<double> &table, wxAr
 	}
 
 	// retrieve all input vectors;
-	for (i=0;i<(int)ssim->InputDistributions.Count();i++)
+	for (i=0;i<(int)sd.InputDistributions.Count();i++)
 	{
 		std::vector<double> values;
 		lhs.Retrieve( wxString((char)('a'+i)), values);
-		if (values.size() != ssim->N)
+		if (values.size() != sd.N)
 		{
 			if(errors) errors->Add(wxString::Format("Incorrect number of LHS values (%d) retrieved for input vector %d\n", (int)values.size(), i));
 			return false;
 		}
 
 		// copy to input vector matrix
-		for (n=0;n<ssim->N;n++)
+		for (n=0;n<sd.N;n++)
 			table.at(n,i) = values[n];
 	}
 
