@@ -114,7 +114,7 @@ public:
 	int Seed;
 	int N;
 
-	wxArrayString OutputMetrics;
+	wxArrayString Outputs;
 	wxArrayString InputDistributions;
 	wxArrayString Correlations;
 };
@@ -132,6 +132,9 @@ public:
 	void OnAddInput(wxCommandEvent &evt);
 	void OnEditInput(wxCommandEvent &evt);
 	void OnRemoveInput(wxCommandEvent &evt);
+
+	void OnAddOutput( wxCommandEvent & );
+	void OnRemoveOutput( wxCommandEvent & );
 	
 	void OnAddCorr(wxCommandEvent &evt);
 	void OnEditCorr(wxCommandEvent &evt);
@@ -149,6 +152,7 @@ private:
 
 	wxListBox *m_corrList;
 	wxListBox *m_inputList;
+	wxListBox *m_outputList;
 	wxNumericCtrl *m_N;
 	wxNumericCtrl *m_seed;
 	
