@@ -95,8 +95,9 @@ OpenEIUtilityRateDialog::OpenEIUtilityRateDialog(wxWindow *parent, const wxStrin
 	txtRateDescription->ChangeValue("");
 	txtRateDescription->SetEditable( false );
 
-	hypOpenEILink = new wxHyperlinkCtrl(this, ID_hypOpenEILink, "Go to rate page on OpenEI.org...", "http://en.openei.org/wiki/Gateway:Utilities", wxPoint(294,450), wxSize(281,21));
-	
+	hypOpenEILink = new wxHyperlinkCtrl(this, ID_hypOpenEILink, "Go to rate page on OpenEI.org...", "http://en.openei.org/wiki/Gateway:Utilities", wxPoint(294, 450), wxSize(281, 21));
+	hypJSONLink = new wxHyperlinkCtrl(this, ID_hypOpenEILink, "Rate JSON data page...", "http://en.openei.org/wiki/Gateway:Utilities", wxPoint(594, 450), wxSize(281, 21));
+
 	lblStatus = new wxStaticText(this, ID_lblStatus, "", wxPoint(9,486), wxSize(302,21));
 	
 	btnApply = new wxButton(this, ID_btnApply, "Download and apply utility rate", wxPoint(318,486), wxSize(236,21));
@@ -131,7 +132,8 @@ OpenEIUtilityRateDialog::OpenEIUtilityRateDialog(wxWindow *parent, const wxStrin
 	sz_right->Add( sz_right_top, 0, wxALL|wxEXPAND );
 	sz_right->Add( lstRates, 1, wxALL|wxEXPAND );
 	sz_right->Add( sz_right_grid, 2, wxALL|wxEXPAND );
-	sz_right->Add( hypOpenEILink, 0, wxALL|wxEXPAND );
+	sz_right->Add(hypOpenEILink, 0, wxALL | wxEXPAND);
+	sz_right->Add(hypJSONLink, 0, wxALL | wxEXPAND);
 
 
 	wxBoxSizer *sz_main = new wxBoxSizer(wxHORIZONTAL ); 
@@ -310,6 +312,7 @@ void OpenEIUtilityRateDialog::UpdateRateData()
 			
 //			hypOpenEILink->SetURL("http://en.openei.org/wiki/Data:" + guid);
 			hypOpenEILink->SetURL("http://dev.openei.org/apps/USURDB/rate/view/" + guid);
+			hypJSONLink->SetURL(json_url);
 
 			lblStatus->SetLabel("Ready.");
 		}

@@ -37,6 +37,7 @@ private:
 	wxButton *btnApply;
 	wxStaticText *lblStatus;
 	wxHyperlinkCtrl *hypOpenEILink;
+	wxHyperlinkCtrl *hypJSONLink;
 	wxTextCtrl *txtRateDescription;
 	wxExtTextCtrl *txtRateEndDate;
 	wxExtTextCtrl *txtRateStartDate;
