@@ -124,53 +124,40 @@ class StochasticPanel : public wxPanel
 public:
 	StochasticPanel(wxWindow *parent, Case *cc);
 
-	void UpdateFromSimInfo();
-	StochasticData *GetSimInfo();
-	
+	void UpdateFromSimInfo();	
+
 	void OnSeedChange(wxCommandEvent &evt);
 	void OnNChange(wxCommandEvent &evt);
-
-	void OnAddMetric(wxCommandEvent &evt);
-	void OnRemoveMetric(wxCommandEvent &evt);
 
 	void OnAddInput(wxCommandEvent &evt);
 	void OnEditInput(wxCommandEvent &evt);
 	void OnRemoveInput(wxCommandEvent &evt);
-	void OnSelectInput(wxCommandEvent &evt);
 	
 	void OnAddCorr(wxCommandEvent &evt);
 	void OnEditCorr(wxCommandEvent &evt);
 	void OnRemoveCorr(wxCommandEvent &evt);
-	void OnSelectCorr(wxCommandEvent &evt);
 
 	void OnComputeSamples(wxCommandEvent &evt);
 
-private:
-	Case *mCase;
-	StochasticData *mSSimInf;
+	void OnSimulate( wxCommandEvent & );
 
-	wxListBox *lstOutputMetrics;
-	wxButton *btnAddMetric;
-	wxButton *btnRemoveMetric;
-	wxStaticBox *GroupBox1;
-	wxButton *btnRemoveInput;
-	wxButton *btnAddInput;
-	wxNumericCtrl *numSeed;
-	wxButton *btnAddCorr;
-	wxButton *btnEditCorr;
-	wxButton *btnRemoveCorr;
-	wxListBox *lstCorrelations;
-	wxListBox *lstInputs;
-	wxNumericCtrl *numN;
-	wxButton *btnComputeSamples;
-	wxCheckBox *chkEnable;
-	wxButton *btnRemove;
-	wxButton *btnEditInput;
+	void Simulate();
+
+private:
+	Case *m_case;
+	StochasticData &m_sd;
+
+	wxListBox *m_corrList;
+	wxListBox *m_inputList;
+	wxNumericCtrl *m_N;
+	wxNumericCtrl *m_seed;
+	
+	wxExtGridCtrl *m_grid;
 
 	DECLARE_EVENT_TABLE()
 };
 
 
-bool ComputeLHSInputVectors( StochasticData *ssim, matrix_t<double> &table, wxArrayString *errors);
+bool ComputeLHSInputVectors( StochasticData &sd, matrix_t<double> &table, wxArrayString *errors);
 
 #endif
