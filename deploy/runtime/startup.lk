@@ -305,7 +305,7 @@ setmodules( ['tcstrough_empirical']);
 setup_csp_empirical_trough_pages();
 
 setconfig( 'Empirical Trough', 'Commercial' );
-setmodules( ['tcstrough_empirical', 'utilityrate2', 'cashloan']);
+setmodules( ['tcstrough_empirical', 'utilityrate3', 'cashloan']);
 setup_csp_empirical_trough_pages();
 addpage( [[ 'Empirical Trough Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs' } );
 setup_commercial_pages();
@@ -359,13 +359,13 @@ setup_flat_plate_pv_pages();
 setmodules( ['pvsamv1'] );
 
 setconfig( 'Flat Plate PV', 'Residential' );
-setmodules( ['pvsamv1', 'utilityrate2', 'cashloan']);
+setmodules( ['pvsamv1', 'utilityrate3', 'cashloan']);
 setup_flat_plate_pv_pages();
 addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs' } );
 setup_residential_pages();
 
 setconfig( 'Flat Plate PV', 'Commercial' );
-setmodules( ['pvsamv1', 'utilityrate2', 'cashloan']);
+setmodules( ['pvsamv1', 'utilityrate3', 'cashloan']);
 setup_flat_plate_pv_pages();
 addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs' } );
 setup_commercial_pages();
@@ -466,14 +466,14 @@ setmodules( ['pvwattsv5']);
 setup_pvwatts_pages();
 
 setconfig( 'PVWatts', 'Residential' );	
-setmodules( ['pvwattsv5',  'utilityrate2', 'cashloan']);
+setmodules( ['pvwattsv5',  'utilityrate3', 'cashloan']);
 setting( { 'analysis_period_var'='cf_length' } );
 setup_pvwatts_pages();
 addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs' } );
 setup_residential_pages();
 
 setconfig( 'PVWatts', 'Commercial' );	
-setmodules( ['pvwattsv5',  'utilityrate2', 'cashloan']);
+setmodules( ['pvwattsv5',  'utilityrate3', 'cashloan']);
 setting( { 'analysis_period_var'='cf_length' } );
 setup_pvwatts_pages();
 addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs' } );
@@ -523,7 +523,7 @@ setup_single_owner_pages();
 
 // Wind Power //////////////////////////////////////////////////////////////////
 setconfig( 'Wind Power', 'Residential' );	
-setmodules( ['windpower',  'utilityrate2', 'cashloan']);
+setmodules( ['windpower',  'utilityrate3', 'cashloan']);
 setting( { 'analysis_period_var'='cf_length' } );
 setup_windpower_pages();
 addpage( [[ 'Wind Farm Capital Costs','O and M Costs',
@@ -533,7 +533,7 @@ setup_residential_pages();
 
 //-----------------------------------------------------
 setconfig( 'Wind Power', 'Commercial' );	
-setmodules( ['windpower',  'utilityrate2', 'cashloan']);
+setmodules( ['windpower',  'utilityrate3', 'cashloan']);
 setting( { 'analysis_period_var'='cf_length' } );
 setup_windpower_pages();
 addpage( [[ 'Wind Farm Capital Costs','O and M Costs',
@@ -613,13 +613,13 @@ setmodules( ['swh'] );
 setup_solar_water_heating_pages();
 
 setconfig( 'Solar Water Heating', 'Residential');
-setmodules( ['swh',  'utilityrate2', 'cashloan'] );
+setmodules( ['swh',  'utilityrate3', 'cashloan'] );
 setup_solar_water_heating_pages();
 addpage( [[ 'Solar Water Heating Costs','O and M Costs' ]], { 'sidebar'='System Costs' } );
 setup_residential_pages();
 
 setconfig( 'Solar Water Heating', 'Commercial');
-setmodules( ['swh',  'utilityrate2', 'cashloan'] );
+setmodules( ['swh',  'utilityrate3', 'cashloan'] );
 setup_solar_water_heating_pages();
 addpage( [[ 'Solar Water Heating Costs','O and M Costs' ]], { 'sidebar'='System Costs' } );
 setup_commercial_pages();
@@ -675,7 +675,7 @@ function setup_generic_system_pages()
 }
 
 setconfig( 'Generic System', 'Residential' );	
-setmodules( ['generic_system',  'utilityrate2', 'cashloan']);
+setmodules( ['generic_system',  'utilityrate3', 'cashloan']);
 setting( { 'analysis_period_var'='cf_length' } );
 setup_generic_system_pages();
 addpage( [[ 'Generic System Costs','O and M Costs']],{ 'sidebar'='System Costs' } );
@@ -683,7 +683,7 @@ setup_residential_pages();
 
 //-----------------------------------------------------
 setconfig( 'Generic System', 'Commercial' );	
-setmodules( ['generic_system',  'utilityrate2', 'cashloan']);
+setmodules( ['generic_system',  'utilityrate3', 'cashloan']);
 setting( { 'analysis_period_var'='cf_length' } );
 setup_generic_system_pages();
 addpage( [[ 'Generic System Costs','O and M Costs']],{ 'sidebar'='System Costs' } );
@@ -754,7 +754,7 @@ function setup_generic_csp_pages()
 
 //-----------------------------------------------------
 setconfig( 'Generic CSP System', 'Commercial' );	
-setmodules( ['tcsgeneric_solar',  'utilityrate2', 'cashloan']);
+setmodules( ['tcsgeneric_solar',  'utilityrate3', 'cashloan']);
 setting( { 'analysis_period_var'='cf_length' } );
 setup_generic_csp_pages();
 addpage( [[ 'Generic CSP System Costs','O and M Costs']],{ 'sidebar'='System Costs' } );
@@ -881,7 +881,7 @@ function setup_dish_stirling_pages()
 
 //-----------------------------------------------------
 setconfig( 'Dish Stirling', 'Commercial' );	
-setmodules( ['tcsdish',  'utilityrate2', 'cashloan']);
+setmodules( ['tcsdish',  'utilityrate3', 'cashloan']);
 setting( { 'analysis_period_var'='cf_length' } );
 setup_dish_stirling_pages();
 addpage( [[ 'Dish Capital Costs','O and M Costs']],{ 'sidebar'='System Costs' } );
@@ -951,7 +951,7 @@ function setup_biopower_pages()
 
 //-----------------------------------------------------
 setconfig( 'Biopower', 'Commercial' );	
-setmodules( ['biomass',  'utilityrate2', 'cashloan']);
+setmodules( ['biomass',  'utilityrate3', 'cashloan']);
 setting( { 'analysis_period_var'='cf_length' } );
 setup_biopower_pages();
 addpage( [[ 'Biopower System Cost','O and M Costs']],{ 'sidebar'='System Costs' } );
