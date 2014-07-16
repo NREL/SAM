@@ -155,6 +155,7 @@ private:
 	wxListBox *m_outputList;
 	wxNumericCtrl *m_N;
 	wxNumericCtrl *m_seed;
+	wxCheckBox *m_useThreads;
 	
 	wxExtGridCtrl *m_grid;
 

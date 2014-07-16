@@ -3,6 +3,7 @@
 #include <wx/tokenzr.h>
 #include <wx/utils.h>
 #include <wx/filename.h>
+#include <wx/progdlg.h>
 
 #include <wex/utils.h>
 
@@ -875,6 +876,7 @@ StochasticPanel::StochasticPanel(wxWindow *parent, Case *cc)
 	sizer_cmd->Add( new wxButton(this, ID_btnRemoveOutput, "Remove output"), 0, wxALL|wxEXPAND, 5 );
 	sizer_cmd->Add( new wxButton(this, ID_btnComputeSamples, "Compute samples..."), 0, wxALL|wxEXPAND, 5 );
 	sizer_cmd->Add( new wxButton(this, ID_Simulate, "Run simulation"), 0, wxALL|wxEXPAND, 5 );
+	sizer_cmd->Add( m_useThreads = new wxCheckBox( this, wxID_ANY, "Use threads"), 0, wxALL|wxEXPAND, 5 );
 
 	sizer_main->Add( sizer_cmd );
 	
@@ -1272,6 +1274,8 @@ void StochasticPanel::OnSimulate( wxCommandEvent & )
 
 void StochasticPanel::Simulate()
 {
+	wxBusyCursor _busy;
+
 	wxArrayString errors;
 	matrix_t<double> input_data;
 	if ( !ComputeLHSInputVectors( m_sd, input_data, &errors ) )
@@ -1306,6 +1310,71 @@ void StochasticPanel::Simulate()
 	// all single value output data for each run
 	matrix_t<double> output_data;
 	output_data.resize_fill( m_sd.N, output_vars.size(), 0.0);
+	
+	wxStopWatch sw;
+
+
+	std::vector<Simulation*> sims;
+	for( size_t i=0;i<m_sd.N;i++ )
+	{
+		Simulation *s = new Simulation( m_case, wxString::Format("stochastic-%d",i) );
+
+		for( size_t j=0;j<m_sd.InputDistributions.size();j++ )
+		{
+			wxString iname( m_sd.InputDistributions[j].BeforeFirst(':') );
+			s->Override( iname, VarValue( (float)input_data(i,j) ) );
+		}
+
+		if ( !s->Prepare() )
+			wxMessageBox( wxString::Format("internal error preparing simulation %d for stochastic", (int)(i+1)) );
+
+		sims.push_back( s );
+	}
+
+
+	size_t nok = 0;
+	if ( m_useThreads->GetValue() )
+		nok = Simulation::DispatchThreads( sims );
+	else
+	{
+		wxProgressDialog pd("Simulation", "in progress", sims.size(),
+			SamApp::Window(),  // progress dialog parent is current active window - works better when invoked scripting
+				 wxPD_SMOOTH | wxPD_CAN_ABORT);
+
+		pd.Show();		
+		wxSafeYield( 0, true );
+
+		for( size_t i=0;i<sims.size();i++ )
+		{
+			pd.Update( i, wxString::Format("%d of %d", (int)i, (int)m_sd.N ) );
+			wxSafeYield( 0, true );
+	
+			if( sims[i]->Invoke( true, false ) )
+				nok++;
+		}
+	}
+
+
+	for( size_t i=0;i<m_sd.N;i++ )
+	{
+		if ( sims[i]->Ok() )
+		{
+			for( size_t j=0;j<output_vars.size();j++ )
+				if ( VarValue *vv = sims[i]->GetOutput( output_vars[j] ) )
+					output_data(i,j) = vv->Value();
+		}
+		else
+		{
+		//	outlog->AppendText( wxJoin( sims[i]->GetErrors(), '\n') );
+		}
+
+		delete sims[i];
+	}
+	sims.clear();
+	
+	wxMessageBox(wxString::Format("Completed in %d ms", (int) sw.Time() ) );
+
+	// compute stepwise regression
 
 	wxDialog *dlg = new wxDialog( this, wxID_ANY, "Stochastic simulation", wxDefaultPosition, wxSize(500,300));
 	wxTextCtrl *outlog = new wxTextCtrl( dlg, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxTE_MULTILINE );
@@ -1317,36 +1386,6 @@ void StochasticPanel::Simulate()
 	dlg->Show();
 	wxSafeYield( 0, true );
 
-
-	Simulation sim( m_case, "stochastic");
-	size_t nok = 0;
-	for( size_t i=0;i<m_sd.N;i++ )
-	{
-		sim.Clear();
-
-		for( size_t j=0;j<m_sd.InputDistributions.size();j++ )
-		{
-			wxString iname( m_sd.InputDistributions[j].BeforeFirst(':') );
-			sim.Override( iname, VarValue( (float)input_data(i,j) ) );
-		}
-		
-		outlog->AppendText( wxString::Format( "Simulating %d of %d...\n", (int)(i+1), (int)m_sd.N )); 
-		if ( sim.Invoke(true) )
-		{
-			nok++;
-			for( size_t j=0;j<output_vars.size();j++ )
-				if ( VarValue *vv = sim.GetOutput( output_vars[j] ) )
-					output_data(i,j) = vv->Value();
-		}
-		else
-		{
-			outlog->AppendText( wxJoin( sim.GetErrors(), '\n') );
-		}
-
-		wxSafeYield( 0, true );
-	}
-
-	// compute stepwise regression
 	Stepwise stw;
 	std::vector<double> data;
 	data.resize( m_sd.N );
@@ -1380,7 +1419,6 @@ void StochasticPanel::Simulate()
 		else
 			outlog->AppendText( "Error running stepwise regression: " + output_labels[i] + "\n");
 	}
-	
 
 	// update results
 	m_grid->Freeze();
@@ -1404,10 +1442,10 @@ void StochasticPanel::Simulate()
 	m_grid->Layout();
 	m_grid->Thaw();
 	
-	//if ( nok == m_sd.N )
-		//dlg->Destroy();
-	//else
-		//wxMessageBox("Not all simulations succeeded");
+	if ( nok == m_sd.N )
+		dlg->Destroy();
+	else
+		wxMessageBox("Not all simulations succeeded");
 }
 
 bool ComputeLHSInputVectors( StochasticData &sd, matrix_t<double> &table, wxArrayString *errors)
