@@ -17,8 +17,11 @@ public:
 		wxString Description;
 		wxString Source;
 		wxString uri;
+		wxString BasicInformationComments;
 		wxString EnergyComments;
 		wxString DemandComments;
+		wxString RateURL;
+		wxString JSONURL;
 		int Version;
 	};
 
@@ -33,10 +36,8 @@ public:
 		wxString EndDate;
 
 		bool NetMetering;
-		bool HasFlatRate;
-		double FlatRateBuy;
-		double FlatRateSell;
-		double FlatRateAdj;
+		double MinAnnualCharge;
+		double MinMonthlyCharge;
 		double FixedMonthlyCharge;
 
 

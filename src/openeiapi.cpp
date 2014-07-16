@@ -31,12 +31,13 @@ void OpenEI::RateData::Reset()
 	Header.Description.Empty();
 	Header.Sector.Empty();
 	Header.Utility.Empty();
+	Header.BasicInformationComments.Empty();
+	Header.EnergyComments.Empty();
+	Header.DemandComments.Empty();
 
 	NetMetering=false;
-	HasFlatRate=false;
-	FlatRateBuy=0.0;
-	FlatRateSell=0.0;
-	FlatRateAdj=0.0;
+	MinMonthlyCharge=0.0;
+	MinAnnualCharge=0.0;
 	FixedMonthlyCharge=0.0;
 
 
@@ -58,8 +59,10 @@ void OpenEI::RateData::Reset()
 		}
 	}
 
+	// TODO - coincident demand charges
+
 	HasDemandCharge = false;
-	DemandRateUnit = "kW";
+	DemandRateUnit = "kW"; // TODO update to handle different values
 	DemandReactivePower = 1.0;
 	
 	for (i=0;i<12;i++)
@@ -230,6 +233,7 @@ bool OpenEI::RetrieveUtilityRateData(const wxString &guid, RateData &rate, wxStr
 	rate.Header.Version = json_integer( val.Item("version"));
 	rate.Header.EnergyComments = json_string(val.Item("energycomments"));
 	rate.Header.DemandComments = json_string(val.Item("demandcomments"));
+	rate.Header.BasicInformationComments = json_string(val.Item("demandcomments"));
 
 	rate.StartDate = json_string(val.Item("startdate"));
 	rate.EndDate = json_string(val.Item("enddate"));
@@ -238,12 +242,9 @@ bool OpenEI::RetrieveUtilityRateData(const wxString &guid, RateData &rate, wxStr
 
 	wxJSONValue v;
 	
-	rate.HasFlatRate = true; // if any of these items are missing, will change to 'false'
-	rate.FlatRateBuy = json_double( val.Item("flatratebuy"), 0.0, &rate.HasFlatRate );
-	rate.FlatRateSell = json_double( val.Item("flatratesell"), 0.0, &rate.HasFlatRate );
-	rate.FlatRateAdj = json_double( val.Item("flatratefueladj"), 0.0, &rate.HasFlatRate );
-
-	rate.FixedMonthlyCharge = json_double( val.Item("fixedmonthlycharge") );
+	rate.MinAnnualCharge = json_double(val.Item("annualmincharge"));
+	rate.MinMonthlyCharge = json_double(val.Item("minmonthlycharge"));
+	rate.FixedMonthlyCharge = json_double(val.Item("fixedmonthlycharge"));
 
 	/// Energy Charge
 

@@ -1241,8 +1241,26 @@ void fcall_openeiapplyrate(lk::invoke_t &cxt)
 	if (api.RetrieveUtilityRateData(guid, rate))
 	{
 		cxt.result().empty_hash();
-		cxt.result().hash_item("flat_buy_rate").assign(rate.FlatRateBuy);
 
+		// meta data
+		cxt.result().hash_item("name").assign(rate.Header.Utility);
+		cxt.result().hash_item("schedule_name").assign(rate.Header.Name);
+		cxt.result().hash_item("source").assign(rate.Header.Source);
+		cxt.result().hash_item("description").assign(rate.Header.Description);
+		cxt.result().hash_item("basicinformationcomments").assign(rate.Header.BasicInformationComments);
+		cxt.result().hash_item("energycomments").assign(rate.Header.EnergyComments);
+		cxt.result().hash_item("demandcomments").assign(rate.Header.DemandComments);
+		// URLs
+		cxt.result().hash_item("rateurl").assign(rate.Header.RateURL);
+		cxt.result().hash_item("jsonurl").assign(rate.Header.JSONURL);
+
+
+		// fixed charges
+		cxt.result().hash_item("monthly_fixed_charge").assign(rate.FixedMonthlyCharge);
+		cxt.result().hash_item("monthly_min_charge").assign(rate.MinMonthlyCharge);
+		cxt.result().hash_item("annual_min_charge").assign(rate.MinAnnualCharge);
+
+		// schedules
 		if (!applydiurnalschedule(cxt, "ec_sched_weekday", rate.EnergyWeekdaySchedule)) return;
 		if (!applydiurnalschedule(cxt, "ec_sched_weekend", rate.EnergyWeekendSchedule)) return;
 
