@@ -4,6 +4,7 @@
 #include <wx/frame.h>
 #include <wx/propgrid/propgrid.h>
 #include <wx/webview.h>
+#include <wx/buffer.h>
 
 #include <wex/lkscript.h>
 
@@ -115,6 +116,9 @@ class ShadeAnalysis : public wxPanel
 public:
 	ShadeAnalysis( wxWindow *parent, ShadeTool *st );
 
+	bool SimulateDiurnal();
+	size_t GetDiurnalCount();
+	void GetDiurnal( size_t i, matrix_t<float> *mxh, wxString *name );
 
 private:
 	ShadeTool *m_shadeTool;
@@ -133,10 +137,12 @@ private:
 #define PG_ANALYSIS 2
 #define PG_HELP 3
 
+enum ShadeToolMode { STANDALONE, INTEGRATED };
+
 class ShadeTool : public wxPanel
 {
 public:
-	ShadeTool( wxWindow *parent, int id, const wxString &data_path = wxEmptyString );
+	ShadeTool( wxWindow *parent, int id, const wxString &data_path = wxEmptyString, ShadeToolMode mode = STANDALONE );
 	
 	LocationSetup *GetLocationSetup();
 	View3D *GetView();
@@ -150,6 +156,13 @@ public:
 
 	void Write( wxOutputStream & );
 	bool Read( wxInputStream & );
+
+	struct diurnal {
+		wxString name;
+		matrix_t<float> mxh;
+	};
+
+	bool SimulateDiurnal( std::vector<diurnal> &result );
 
 private:
 	wxString m_fileName;
@@ -185,6 +198,23 @@ private:
 	DECLARE_EVENT_TABLE();
 };
 
+
+class AF3DShadingButton : public wxButton
+{
+public:
+	AF3DShadingButton(wxWindow *parent, int id, const wxPoint &pos=wxDefaultPosition, const wxSize &size=wxDefaultSize);
+
+	void Set( wxMemoryBuffer &mb );
+	void Get( wxMemoryBuffer &mb );
+	void GetDiurnal( std::vector<ShadeTool::diurnal> &list );
+
+	void OnPressed(wxCommandEvent &evt);
+private:
+	wxMemoryBuffer m_bin;
+	std::vector<ShadeTool::diurnal> m_results;
+
+	DECLARE_EVENT_TABLE();
+};
 
 
 #endif

@@ -556,7 +556,22 @@ public:
 };
 
 
+#include "s3tool.h"
 
+class wxUI3DShadingCtrl : public wxUIObject
+{
+public:
+	wxUI3DShadingCtrl() {
+		Property("Width").Set(150);
+		Property("Height").Set(30);
+	}
+	virtual wxString GetTypeName() { return "3DShading"; }
+	virtual wxUIObject *Duplicate() { wxUIObject *o = new wxUI3DShadingCtrl; o->Copy( this ); return o; }
+	virtual bool IsNativeObject() { return true; }
+	virtual wxWindow *CreateNative( wxWindow *parent ) {
+		return AssignNative( new AF3DShadingButton( parent, wxID_ANY ) );
+	}
+};
 
 void RegisterUIObjectsForSAM()
 {
@@ -575,6 +590,7 @@ void RegisterUIObjectsForSAM()
 	wxUIObjectTypeProvider::Register( new wxUIMonthByHourFactorCtrl );
 	wxUIObjectTypeProvider::Register( new wxUILibraryCtrl );
 	wxUIObjectTypeProvider::Register( new wxUIHourlyFactorCtrl);
+	wxUIObjectTypeProvider::Register( new wxUI3DShadingCtrl );
 
 	/* TODO LIST
 { GUI_ADD_CONTROL_ID+26, "DataGridBtn",      "AFValueMatrixButton",         datagridbtn_xpm, CTRL_NATIVE,  10, 15, 100, 21,   props_AFValueMatrixButton,  NULL,       objinit_AFValueMatrixButton, objfree_AFValueMatrixButton, nativesetprop_AFValueMatrixButton, paint_AFValueMatrixButton, iswithin_default,   nativeevt_AFValueMatrixButton, vartoctrl_AFValueMatrixButton, ctrltovar_AFValueMatrixButton, false },

@@ -6,6 +6,7 @@
 #include <wx/string.h>
 #include <wx/arrstr.h>
 #include <wx/stream.h>
+#include <wx/buffer.h>
 
 #include <lk_absyn.h>
 #include <lk_eval.h>
@@ -21,6 +22,7 @@ class VarDatabase;
 #define VV_MATRIX 3
 #define VV_STRING 4
 #define VV_TABLE 5
+#define VV_BINARY 6
 
 typedef unordered_map<wxString, VarValue*, wxStringHash, wxStringEqual> VarTableBase;
 
@@ -61,6 +63,7 @@ public:
 	explicit VarValue( const matrix_t<float> &m );
 	explicit VarValue( const wxString &s );
 	explicit VarValue( const VarTable &t );
+	explicit VarValue( const wxMemoryBuffer &mb );
 
 	VarValue( float *arr, size_t n );
 	VarValue( float *mat, size_t r, size_t c );
@@ -86,6 +89,7 @@ public:
 	void Set( const ::matrix_t<float> &mat );
 	void Set( const wxString &str );
 	void Set( const VarTable &tab );
+	void Set( const wxMemoryBuffer &mb );
 
 	int Integer();
 	bool Boolean();
@@ -98,6 +102,7 @@ public:
 	float *Matrix( size_t *nr, size_t *nc );
 	wxString String();
 	VarTable &Table();
+	wxMemoryBuffer &Binary();
 
 	bool Read( const lk::vardata_t &val, bool change_type = false );
 	bool Write( lk::vardata_t &val );
@@ -111,6 +116,7 @@ private:
 	::matrix_t<float> m_val;
 	wxString m_str;
 	VarTable m_tab;
+	wxMemoryBuffer m_bin;
 };
 
 #define VF_NONE                0x00
