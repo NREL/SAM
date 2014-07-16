@@ -10,9 +10,6 @@
 
 static wxString MyGet(const wxString &url)
 {
-	//return wxWebHttpGet(url, "Cache-Control", "no-cache");
-//	return wxWebHttpGet(url);
-
 	wxSimpleCurl curl;
 	curl.AddHttpHeader( "Content-type: text/plain" );
 	curl.AddHttpHeader( "Cache-Control: no-cache" );
@@ -50,7 +47,7 @@ void OpenEI::RateData::Reset()
 	{
 		for (j = 0; j < 6; j++)
 		{
-			EnergyBuy[i][j] = EnergyBuy[i][j] = EnergySell[i][j] = 0.0;
+			EnergyBuy[i][j] = EnergyAdj[i][j] = EnergySell[i][j] = 0.0;
 			EnergyMax[i][j] = 1e99;
 			EnergyMaxUnit[i][j] = "kWh Daily"; // TODO implement max unit
 		}
