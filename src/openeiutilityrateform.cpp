@@ -301,7 +301,6 @@ void OpenEIUtilityRateDialog::UpdateRateData()
 			
 			wxString desc = mRateData.Header.Description + "\n\n";
 
-			desc += wxString::Format("Has Flat Rate? %s\n", mRateData.HasFlatRate?"yes":"no");
 			desc += wxString::Format("Has Energy Charges? %s\n", mRateData.HasEnergyCharge?"yes":"no");
 			desc += wxString::Format("Has Demand Charges? %s\n", mRateData.HasDemandCharge?"yes":"no");
 			desc += wxString::Format("\nGUID: '%s'\n", mRateData.Header.GUID.c_str() );
@@ -310,9 +309,14 @@ void OpenEIUtilityRateDialog::UpdateRateData()
 
 			txtRateDescription->SetValue( desc );
 			
+			wxString rate_url = "http://dev.openei.org/apps/USURDB/rate/view/" + guid;
+
 //			hypOpenEILink->SetURL("http://en.openei.org/wiki/Data:" + guid);
-			hypOpenEILink->SetURL("http://dev.openei.org/apps/USURDB/rate/view/" + guid);
+			hypOpenEILink->SetURL(rate_url);
 			hypJSONLink->SetURL(json_url);
+
+			mRateData.Header.JSONURL = json_url;
+			mRateData.Header.RateURL = rate_url;
 
 			lblStatus->SetLabel("Ready.");
 		}
