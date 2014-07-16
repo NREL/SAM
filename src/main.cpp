@@ -86,7 +86,6 @@ enum { __idFirst = wxID_HIGHEST+592,
 	ID_MAIN_MENU, ID_CASE_TABS, ID_PAGE_NOTES,
 	ID_CASE_CREATE, ID_RUN_ALL_CASES, ID_SAVE_HOURLY,
 	ID_NEW_SCRIPT, ID_OPEN_SCRIPT, ID_BROWSE_INPUTS,
-	ID_NEW_SCENE, ID_OPEN_SCENE,
 	__idCaseMenuFirst,
 	ID_CASE_CONFIG,
 	ID_CASE_RENAME,
@@ -114,8 +113,6 @@ BEGIN_EVENT_TABLE( MainWindow, wxFrame )
 	EVT_MENU( wxID_NEW, MainWindow::OnCommand )
 	EVT_MENU( ID_NEW_SCRIPT, MainWindow::OnCommand )
 	EVT_MENU( ID_OPEN_SCRIPT, MainWindow::OnCommand )
-	EVT_MENU( ID_NEW_SCENE, MainWindow::OnCommand )
-	EVT_MENU( ID_OPEN_SCENE, MainWindow::OnCommand )
 	EVT_MENU(ID_BROWSE_INPUTS, MainWindow::OnCommand)
 	EVT_MENU(wxID_OPEN, MainWindow::OnCommand)
 	EVT_MENU( wxID_SAVE, MainWindow::OnCommand )
@@ -526,11 +523,9 @@ void MainWindow::OnCommand( wxCommandEvent &evt )
 			wxMetroPopupMenu menu;
 			menu.Append( wxID_NEW, "New project\tCtrl-N" );
 			menu.Append( ID_NEW_SCRIPT, "New script" );
-			menu.Append( ID_NEW_SCENE, "New 3D scene" );
 			menu.AppendSeparator();
 			menu.Append( wxID_OPEN, "Open project\tCtrl-O" );
 			menu.Append( ID_OPEN_SCRIPT, "Open script" );
-			menu.Append( ID_OPEN_SCENE, "Open 3D scene" );
 			menu.AppendSeparator();
 			menu.Append( wxID_SAVE, "Save\tCtrl-S" );
 			menu.Append( wxID_SAVEAS, "Save as..." );
@@ -561,10 +556,6 @@ void MainWindow::OnCommand( wxCommandEvent &evt )
 		break;
 	case ID_OPEN_SCRIPT:
 		ScriptWindow::OpenFiles();
-		break;
-	case ID_NEW_SCENE:
-	case ID_OPEN_SCENE:
-		wxMessageBox("3D scenes not enabled yet.");
 		break;
 	case ID_BROWSE_INPUTS:
 		if (m_project.GetCases().size() > 0)
