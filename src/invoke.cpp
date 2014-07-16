@@ -1385,6 +1385,22 @@ void fcall_openeiutilityrateform(lk::invoke_t &cxt)
 	cxt.result().assign(openei.GetCurrentRateData().Header.GUID);
 }
 
+static void copy_mxh( lk::vardata_t &val, matrix_t<float> &mxh )
+{
+	if ( mxh.nrows() == 12 && mxh.ncols() == 24 )
+	{
+		val.empty_vector();
+		val.resize( 12 );
+		for( size_t r=0;r<12;r++ )
+		{
+			lk::vardata_t *row = val.index( r );
+			row->empty_vector();
+			row->resize(24);
+			for( size_t c=0;c<24;c++ )
+				row->index(c)->assign( mxh(r,c) );
+		}
+	}
+}
 
 void fcall_editscene3d( lk::invoke_t &cxt )
 {
@@ -1444,27 +1460,32 @@ void fcall_editscene3d( lk::invoke_t &cxt )
 	}
 	
 	std::vector<ShadeTool::diurnal> diurnal;
-	if ( st->SimulateDiurnal(diurnal) )
+	if ( st->SimulateDiurnal(diurnal) && diurnal.size() > 0 )
 	{
-		for( size_t i=0;i<diurnal.size();i++ )
+		// overall losses for the system are always in table 0
+		lk::vardata_t &v = cxt.result().hash_item( "losses" );
+		copy_mxh( v, diurnal[0].mxh );
+		
+		// now copy over all the subarray sections
+		// the user must label them as 'Subarray 1', 'Subarray 2', etc for them to
+		// get placed in the right section
+		// here, skip table 0 (loop start at i=1) since it's always copied above
+		for( size_t i=1;i<diurnal.size();i++ )
 		{
 			if ( diurnal[i].mxh.nrows() == 12 && diurnal[i].mxh.ncols() == 24 )
 			{
-				lk::vardata_t &sec = cxt.result().hash_item( wxString::Format("section%d",i) );
-				sec.empty_vector();
-				sec.resize( 12 );
-				for( size_t r=0;r<12;r++ )
-				{
-					lk::vardata_t *row = sec.index( r );
-					row->empty_vector();
-					row->resize(24);
-					for( size_t c=0;c<24;c++ )
-						row->index(c)->assign( diurnal[i].mxh(r,c) );
-				}
+				wxString name = diurnal[i].name.Lower();
+				name.Replace(" ", "");
+				if ( name.IsEmpty() )
+					name.Printf("section%d", (int)i);
+
+				lk::vardata_t &sec = cxt.result().hash_item( name );
+				copy_mxh( sec, diurnal[i].mxh );
 			}
 		}
 
 		cxt.result().hash_item("ierr").assign( 0.0 );
+		cxt.result().hash_item("nsubarrays").assign( (double)( diurnal.size()-1 ));
 	}
 	else
 	{
