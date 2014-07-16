@@ -232,6 +232,15 @@ void LocationSetup::OnMapChange( wxCommandEvent &evt )
 int LocationSetup::GetZoomLevel() { return m_zoomLevel; }
 wxString LocationSetup::GetAddress() { return m_address->GetValue(); }
 
+
+void LocationSetup::SetLocation( const wxString &address, double lat, double lon, double tz )
+{
+	m_address->ChangeValue( address );
+	m_lat->SetValue( lat );
+	m_lon->SetValue( lon );
+	m_tz->SetValue( tz );
+}
+
 void LocationSetup::GetLocation(double *lat, double *lon, double *tz)
 {
 	if ( lat ) *lat = m_lat->Value();
@@ -1322,62 +1331,4 @@ void ShadeTool::OnDebugCommand( wxCommandEvent &evt )
 		wxMessageBox("do analysis and copy to clipboard 12x24 factors table");
 		break;
 	}
-}
-
-BEGIN_EVENT_TABLE( AF3DShadingButton, wxButton )
-	EVT_BUTTON( wxID_ANY, AF3DShadingButton::OnPressed )
-END_EVENT_TABLE()
-
-AF3DShadingButton::AF3DShadingButton(wxWindow *parent, int id, const wxPoint &pos, const wxSize &size)
-	: wxButton( parent, id, "Edit 3D shading scene...", pos, size, wxBU_EXACTFIT )
-{
-}
-
-void AF3DShadingButton::Set( wxMemoryBuffer &mb )
-{
-	m_bin = mb;
-}
-
-void AF3DShadingButton::Get( wxMemoryBuffer &mb )
-{
-	mb = m_bin;
-}
-
-
-void AF3DShadingButton::OnPressed(wxCommandEvent &evt)
-{
-	wxDialog dlg( this, wxID_ANY, "Edit 3D Shading Scene", wxDefaultPosition, wxSize(800,600), wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER );
-	ShadeTool *st = new ShadeTool( &dlg, wxID_ANY, wxEmptyString, INTEGRATED );
-	wxBoxSizer *sizer = new wxBoxSizer( wxVERTICAL );
-	sizer->Add( st, 1, wxALL|wxEXPAND, 0 );
-	dlg.SetSizer( sizer );
-	if ( m_bin.GetDataLen() > 0 )
-	{
-		wxMemoryInputStream in( m_bin.GetData(), m_bin.GetDataLen() );
-		if (!st->Read( in ))
-			wxMessageBox("Error loading stored 3D scene data.");
-	}
-	dlg.ShowModal();
-	wxMemoryOutputStream out;
-	st->Write( out );
-	size_t len = out.GetSize();
-	if ( len > 0 )
-	{
-		void *buf = m_bin.GetWriteBuf( len );
-		out.CopyTo( buf, len );
-		m_bin.UngetWriteBuf( len );
-	}
-
-	wxBusyInfo info( "Calculating diurnal shading factors..." );
-
-	m_results.clear();
-	if ( !st->SimulateDiurnal(m_results) )
-		wxMessageBox("Error in simulation of diurnal shading factors.");
-
-	evt.Skip();
-}
-
-void AF3DShadingButton::GetDiurnal( std::vector<ShadeTool::diurnal> &list )
-{
-	list = m_results;
 }

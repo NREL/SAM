@@ -36,6 +36,7 @@ public:
 	void DownloadMap(  );
 	int GetZoomLevel();
 	wxString GetAddress();
+	void SetLocation( const wxString &address, double lat, double lon, double tz );
 	void GetLocation( double *lat, double *lon, double *tz );
 	wxBitmap GetMap(double *lat = 0, double *lon = 0, double *tz = 0, double *mpp = 0 );
 	void SetMap( const wxBitmap &bit, const wxString &addrstr, double lat, double lon, double tz, double mpp );
@@ -194,24 +195,6 @@ private:
 	wxTextCtrl *m_txtViewY;
 	wxTextCtrl *m_txtViewZ;
 	void OnDebugCommand( wxCommandEvent & );
-
-	DECLARE_EVENT_TABLE();
-};
-
-
-class AF3DShadingButton : public wxButton
-{
-public:
-	AF3DShadingButton(wxWindow *parent, int id, const wxPoint &pos=wxDefaultPosition, const wxSize &size=wxDefaultSize);
-
-	void Set( wxMemoryBuffer &mb );
-	void Get( wxMemoryBuffer &mb );
-	void GetDiurnal( std::vector<ShadeTool::diurnal> &list );
-
-	void OnPressed(wxCommandEvent &evt);
-private:
-	wxMemoryBuffer m_bin;
-	std::vector<ShadeTool::diurnal> m_results;
 
 	DECLARE_EVENT_TABLE();
 };
