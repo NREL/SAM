@@ -138,12 +138,10 @@ private:
 #define PG_ANALYSIS 2
 #define PG_HELP 3
 
-enum ShadeToolMode { STANDALONE, INTEGRATED };
-
 class ShadeTool : public wxPanel
 {
 public:
-	ShadeTool( wxWindow *parent, int id, const wxString &data_path = wxEmptyString, ShadeToolMode mode = STANDALONE );
+	ShadeTool( wxWindow *parent, int id, const wxString &data_path = wxEmptyString);
 	
 	LocationSetup *GetLocationSetup();
 	View3D *GetView();
@@ -175,7 +173,10 @@ private:
 	View3D *m_view;
 	ObjectEditor *m_sceneParams;
 	ShadeAnalysis *m_analysis;
+
+#ifdef S3D_STANDALONE
 	wxWebView *m_helpViewer;
+#endif
 
 
 	void OnCommand( wxCommandEvent &evt );
