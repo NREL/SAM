@@ -56,6 +56,10 @@
 #include "s3view.h"
 #include "simplecurl.h"
 
+#ifndef S3D_STANDALONE
+#include "main.h"
+#endif
+
 enum { ID_ADDRESS = wxID_HIGHEST+239, ID_CURL, ID_LOOKUP_ADDRESS, ID_LATITUDE, ID_LONGITUDE, ID_TIMEZONE,
 	ID_GET_MAP, ID_GO_UP, ID_GO_DOWN, ID_GO_LEFT, ID_GO_RIGHT, ID_ZOOM_IN, ID_ZOOM_OUT, ID_UNDERLAY_MAP,
 	ID_REMOVE_UNDERLAY,	ID_LOAD_MAP_IMAGE, ID_PASTE_MAP_IMAGE, ID_MANUAL_SCALE };
@@ -1039,26 +1043,40 @@ BEGIN_EVENT_TABLE( ShadeTool, wxPanel )
 END_EVENT_TABLE()
 
 
-ShadeTool::ShadeTool( wxWindow *parent, int id, const wxString &data_path, ShadeToolMode mode )
+ShadeTool::ShadeTool( wxWindow *parent, int id, const wxString &data_path )
 	: wxPanel( parent, id )
 {
 	SetBackgroundColour( wxMetroTheme::Colour( wxMT_FOREGROUND ) );
 
 	wxBoxSizer *sizer_tool = new wxBoxSizer( wxHORIZONTAL );
+#ifdef S3D_STANDALONE
 	sizer_tool->Add( new wxMetroButton( this, wxID_OPEN, "Open" ), 0, wxALL|wxEXPAND, 0 );
 	sizer_tool->Add( new wxMetroButton( this, wxID_SAVE, "Save" ), 0, wxALL|wxEXPAND, 0 );
+#endif
 	sizer_tool->Add( new wxMetroButton( this, ID_LOCATION, "Location" ), 0, wxALL|wxEXPAND, 0 );
 	sizer_tool->Add( new wxMetroButton( this, ID_CREATE, "Create", wxNullBitmap, wxDefaultPosition, wxDefaultSize, wxMB_DOWNARROW ), 0, wxALL|wxEXPAND, 0 );
 	sizer_tool->Add( new wxMetroButton( this, ID_VIEW_XYZ, "3D scene" ), 0, wxALL|wxEXPAND, 0 );
 	sizer_tool->Add( new wxMetroButton( this, ID_VIEW_XY, "Bird's eye" ), 0, wxALL|wxEXPAND, 0 );
 	sizer_tool->Add( new wxMetroButton( this, ID_VIEW_XZ, "Elevations" ), 0, wxALL|wxEXPAND, 0 );
 	sizer_tool->Add( new wxMetroButton( this, ID_ANALYSIS, "Analyze" ), 0, wxALL|wxEXPAND, 0 );
+	
+#ifndef S3D_STANDALONE
+	sizer_tool->Add( new wxMetroButton( this, wxID_OPEN, "Import" ), 0, wxALL|wxEXPAND, 0 );
+	sizer_tool->Add( new wxMetroButton( this, wxID_SAVE, "Export" ), 0, wxALL|wxEXPAND, 0 );
+#endif
 
 	sizer_tool->AddStretchSpacer();
-	if ( mode == STANDALONE )
-		sizer_tool->Add( new wxMetroButton( this, ID_FEEDBACK, "Feedback" ), 0, wxALL|wxEXPAND, 0 );
+	
+
+#ifdef S3D_STANDALONE
+	sizer_tool->Add( new wxMetroButton( this, ID_FEEDBACK, "Feedback" ), 0, wxALL|wxEXPAND, 0 );
+#endif
 
 	sizer_tool->Add( new wxMetroButton( this, wxID_HELP, "Help" ), 0, wxALL|wxEXPAND, 0 );
+
+#ifndef S3D_STANDALONE
+	sizer_tool->Add( new wxMetroButton( this, wxID_OK, "Save and close" ), 0, wxALL|wxEXPAND, 0 );
+#endif
 	
 	m_book = new wxSimplebook( this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxBORDER_NONE );
 	
@@ -1094,16 +1112,13 @@ ShadeTool::ShadeTool( wxWindow *parent, int id, const wxString &data_path, Shade
 
 	m_analysis = new ShadeAnalysis( m_book, this );
 
-	if ( mode == STANDALONE )
-	{
-		wxString help_index( "file:///" + data_path + "/help/index.html" );
-		//wxShowTextMessageDialog( help_index );
-		m_helpViewer = wxWebView::New( m_book, wxID_ANY, help_index,
-			wxDefaultPosition, wxDefaultSize, wxWebViewBackendDefault, wxBORDER_NONE );
-	}
-	else
-		m_helpViewer = 0;
-	
+#ifdef S3D_STANDALONE
+	wxString help_index( "file:///" + data_path + "/help/index.html" );
+	//wxShowTextMessageDialog( help_index );
+	m_helpViewer = wxWebView::New( m_book, wxID_ANY, help_index,
+		wxDefaultPosition, wxDefaultSize, wxWebViewBackendDefault, wxBORDER_NONE );
+#endif
+
 	wxBoxSizer *sizer_main = new wxBoxSizer( wxVERTICAL );
 	sizer_main->Add( sizer_tool, 0, wxALL|wxEXPAND, 0 );
 	sizer_main->Add( m_book, 1, wxALL|wxEXPAND, 0 );
@@ -1114,10 +1129,11 @@ ShadeTool::ShadeTool( wxWindow *parent, int id, const wxString &data_path, Shade
 	m_book->AddPage( m_split, "Scene Editor" );
 	m_book->AddPage( m_analysis, "Analysis page" );
 
-	if ( mode == STANDALONE )
-		m_book->AddPage( m_helpViewer, "Help" );
-	else
-		m_book->SetSelection( PG_SCENE );
+#ifdef S3D_STANDALONE
+	m_book->AddPage( m_helpViewer, "Help" );
+#else
+	m_book->SetSelection( PG_SCENE );
+#endif
 }
 	
 View3D *ShadeTool::GetView()
@@ -1286,8 +1302,11 @@ void ShadeTool::OnCommand( wxCommandEvent &evt)
 		wxLaunchDefaultBrowser( "mailto://sam.support@nrel.gov?subject=Shade Calculator - Beta Feedback" );
 		break;
 	case wxID_HELP:
-		if ( m_helpViewer != 0 )
-			m_book->SetSelection( PG_HELP );
+#ifdef S3D_STANDALONE )
+		m_book->SetSelection( PG_HELP );
+#else
+		SamApp::ShowHelp( "3D Scene" );
+#endif
 		break;
 	}
 }
