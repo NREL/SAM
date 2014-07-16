@@ -2,6 +2,8 @@
 #include <wx/log.h>
 #include <wx/tokenzr.h>
 #include <wx/filename.h>
+#include <wx/buffer.h>
+#include <wx/mstream.h>
 
 #include <wex/plot/plplotctrl.h>
 #include <wex/lkscript.h>
@@ -25,6 +27,8 @@
 #include "openeiapi.h"
 #include "openeiutilityrateform.h"
 #include "invoke.h"
+#include "s3tool.h"
+
 
 static void fcall_dview(lk::invoke_t &cxt)
 {
@@ -1382,8 +1386,92 @@ void fcall_openeiutilityrateform(lk::invoke_t &cxt)
 }
 
 
+void fcall_editscene3d( lk::invoke_t &cxt )
+{
+	LK_DOC( "editscene3d", "Loads the 3D scene editor for a given 3D scene variable name.", "(string:variable, number:lat, number:lon, number:tz, string:location):table");
+	UICallbackContext &cc = *(UICallbackContext*)cxt.user_data();
+	
+	cxt.result().empty_hash();
 
+	VarValue *vv = cc.GetCase().Values().Get( cxt.arg(0).as_string() );
+	if ( !vv )
+	{
+		cxt.result().hash_item("ierr").assign( 1.0 );
+		cxt.result().hash_item("message").assign( wxString("no variable with that name") );
+		return;
+	}
+	
+	vv->SetType( VV_BINARY );
+	wxMemoryBuffer &bin = vv->Binary();
 
+	wxDialog dlg( SamApp::Window(), wxID_ANY, "Edit 3D Shading Scene", wxDefaultPosition, wxSize(800,600), wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER );
+	ShadeTool *st = new ShadeTool( &dlg, wxID_ANY, wxEmptyString, INTEGRATED );
+
+	if ( cxt.arg_count() > 1 && bin.GetDataLen() == 0 )
+	{
+		// only update location on the first time
+		double lat = cxt.arg(1).as_number();
+		double lon = cxt.arg(2).as_number();
+		double tz = cxt.arg(3).as_number();
+		wxString addr = cxt.arg(4).as_string();
+		st->GetLocationSetup()->SetLocation( addr, lat, lon, tz );
+
+		wxMessageBox("The 3D scene requires detailed information about your location to calculate shading losses.\n\n"
+			"By default, information about the location you selected in the weather file has been transferred.\n\n"
+			"If you update your weather file in the future, please manually ensure that the address, "
+			"latitude, longitude, and time zone in the 3D scene editor (Location tab) are updated as necessary.", "Notice", 
+			wxICON_INFORMATION|wxOK, SamApp::Window() );
+	}
+
+	wxBoxSizer *sizer = new wxBoxSizer( wxVERTICAL );
+	sizer->Add( st, 1, wxALL|wxEXPAND, 0 );
+	dlg.SetSizer( sizer );
+	if (  bin.GetDataLen() > 0 )
+	{
+		wxMemoryInputStream in( bin.GetData(), bin.GetDataLen() );
+		if (!st->Read( in ))
+			wxMessageBox("Error loading stored 3D scene data.");
+	}
+	dlg.ShowModal();
+	wxMemoryOutputStream out;
+	st->Write( out );
+	size_t len = out.GetSize();
+	if ( len > 0 )
+	{
+		void *buf = bin.GetWriteBuf( len );
+		out.CopyTo( buf, len );
+		bin.UngetWriteBuf( len );
+	}
+	
+	std::vector<ShadeTool::diurnal> diurnal;
+	if ( st->SimulateDiurnal(diurnal) )
+	{
+		for( size_t i=0;i<diurnal.size();i++ )
+		{
+			if ( diurnal[i].mxh.nrows() == 12 && diurnal[i].mxh.ncols() == 24 )
+			{
+				lk::vardata_t &sec = cxt.result().hash_item( wxString::Format("section%d",i) );
+				sec.empty_vector();
+				sec.resize( 12 );
+				for( size_t r=0;r<12;r++ )
+				{
+					lk::vardata_t *row = sec.index( r );
+					row->empty_vector();
+					row->resize(24);
+					for( size_t c=0;c<24;c++ )
+						row->index(c)->assign( diurnal[i].mxh(r,c) );
+				}
+			}
+		}
+
+		cxt.result().hash_item("ierr").assign( 0.0 );
+	}
+	else
+	{
+		cxt.result().hash_item("ierr").assign( 2.0 );
+		cxt.result().hash_item("message").assign( wxString("Error in simulation of diurnal shading factors.") );
+	}
+}
 
 
 lk::fcall_t* invoke_general_funcs()
@@ -1486,6 +1574,7 @@ lk::fcall_t* invoke_uicallback_funcs()
 		fcall_solarprospector,
 		fcall_openeiutilityrateform,
 		fcall_openeiapplyrate,
+		fcall_editscene3d,
 		0 };
 	return (lk::fcall_t*)vec;
 }
