@@ -29,6 +29,7 @@
 #include <wx/statbmp.h>
 #include <wx/clipbrd.h>
 #include <wx/generic/statbmpg.h>
+#include <wx/mstream.h>
 
 #include <wx/propgrid/propgrid.h>
 #include <wx/propgrid/advprops.h>
@@ -829,6 +830,11 @@ struct surfshade
 
 
 void ShadeAnalysis::OnGenerateDiurnal( wxCommandEvent & )
+{
+	SimulateDiurnal();
+}
+
+bool ShadeAnalysis::SimulateDiurnal()
 {	
 	wxProgressDialog pdlg( "Shade calculation", "Computing...", 288, m_shadeTool,
 		wxPD_SMOOTH|wxPD_CAN_ABORT|wxPD_APP_MODAL|wxPD_AUTO_HIDE );
@@ -966,6 +972,23 @@ void ShadeAnalysis::OnGenerateDiurnal( wxCommandEvent & )
 	}
 
 	m_scroll->SetScrollbars( 1, 1, 1100, y );
+
+	return true;
+}
+
+size_t ShadeAnalysis::GetDiurnalCount()
+{
+	return m_mxhList.size();
+}
+
+void ShadeAnalysis::GetDiurnal( size_t i, matrix_t<float> *mxh, wxString *name )
+{
+	if ( i < m_mxhList.size() )
+	{
+		AFMonthByHourFactorCtrl *c = m_mxhList[i];
+		(*mxh) = c->GetData();
+		(*name) = c->GetTitle();
+	}
 }
 
 
@@ -1007,7 +1030,7 @@ BEGIN_EVENT_TABLE( ShadeTool, wxPanel )
 END_EVENT_TABLE()
 
 
-ShadeTool::ShadeTool( wxWindow *parent, int id, const wxString &data_path )
+ShadeTool::ShadeTool( wxWindow *parent, int id, const wxString &data_path, ShadeToolMode mode )
 	: wxPanel( parent, id )
 {
 	SetBackgroundColour( wxMetroTheme::Colour( wxMT_FOREGROUND ) );
@@ -1021,9 +1044,11 @@ ShadeTool::ShadeTool( wxWindow *parent, int id, const wxString &data_path )
 	sizer_tool->Add( new wxMetroButton( this, ID_VIEW_XY, "Bird's eye" ), 0, wxALL|wxEXPAND, 0 );
 	sizer_tool->Add( new wxMetroButton( this, ID_VIEW_XZ, "Elevations" ), 0, wxALL|wxEXPAND, 0 );
 	sizer_tool->Add( new wxMetroButton( this, ID_ANALYSIS, "Analyze" ), 0, wxALL|wxEXPAND, 0 );
-	
+
 	sizer_tool->AddStretchSpacer();
-	sizer_tool->Add( new wxMetroButton( this, ID_FEEDBACK, "Feedback" ), 0, wxALL|wxEXPAND, 0 );
+	if ( mode == STANDALONE )
+		sizer_tool->Add( new wxMetroButton( this, ID_FEEDBACK, "Feedback" ), 0, wxALL|wxEXPAND, 0 );
+
 	sizer_tool->Add( new wxMetroButton( this, wxID_HELP, "Help" ), 0, wxALL|wxEXPAND, 0 );
 	
 	m_book = new wxSimplebook( this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxBORDER_NONE );
@@ -1060,11 +1085,16 @@ ShadeTool::ShadeTool( wxWindow *parent, int id, const wxString &data_path )
 
 	m_analysis = new ShadeAnalysis( m_book, this );
 
-	wxString help_index( "file:///" + data_path + "/help/index.html" );
-	//wxShowTextMessageDialog( help_index );
-	m_helpViewer = wxWebView::New( m_book, wxID_ANY, help_index,
-		wxDefaultPosition, wxDefaultSize, wxWebViewBackendDefault, wxBORDER_NONE );
-
+	if ( mode == STANDALONE )
+	{
+		wxString help_index( "file:///" + data_path + "/help/index.html" );
+		//wxShowTextMessageDialog( help_index );
+		m_helpViewer = wxWebView::New( m_book, wxID_ANY, help_index,
+			wxDefaultPosition, wxDefaultSize, wxWebViewBackendDefault, wxBORDER_NONE );
+	}
+	else
+		m_helpViewer = 0;
+	
 	wxBoxSizer *sizer_main = new wxBoxSizer( wxVERTICAL );
 	sizer_main->Add( sizer_tool, 0, wxALL|wxEXPAND, 0 );
 	sizer_main->Add( m_book, 1, wxALL|wxEXPAND, 0 );
@@ -1074,8 +1104,11 @@ ShadeTool::ShadeTool( wxWindow *parent, int id, const wxString &data_path )
 	m_book->AddPage( m_location, "Location" );
 	m_book->AddPage( m_split, "Scene Editor" );
 	m_book->AddPage( m_analysis, "Analysis page" );
-	m_book->AddPage( m_helpViewer, "Help" );
-	//m_book->SetSelection( PG_SCENE );
+
+	if ( mode == STANDALONE )
+		m_book->AddPage( m_helpViewer, "Help" );
+	else
+		m_book->SetSelection( PG_SCENE );
 }
 	
 View3D *ShadeTool::GetView()
@@ -1170,6 +1203,24 @@ bool ShadeTool::Read( wxInputStream &is )
 	return in.Read8() == code && ok1 && ok2;
 }
 
+bool ShadeTool::SimulateDiurnal( std::vector<diurnal> &result )
+{
+	result.clear();
+	if ( m_analysis->SimulateDiurnal() )
+	{
+		size_t n = m_analysis->GetDiurnalCount();
+		for( size_t i=0;i<n;i++ )
+		{
+			result.push_back( diurnal() );
+			diurnal &d = result[ result.size()-1 ];
+			m_analysis->GetDiurnal( i, &d.mxh, &d.name );
+		}
+		return true;
+	}
+	else
+		return false;
+}
+
 void ShadeTool::OnUpdateObjectList( wxCommandEvent & )
 {
 	m_sceneParams->UpdateObjectList();
@@ -1226,7 +1277,8 @@ void ShadeTool::OnCommand( wxCommandEvent &evt)
 		wxLaunchDefaultBrowser( "mailto://sam.support@nrel.gov?subject=Shade Calculator - Beta Feedback" );
 		break;
 	case wxID_HELP:
-		m_book->SetSelection( PG_HELP );
+		if ( m_helpViewer != 0 )
+			m_book->SetSelection( PG_HELP );
 		break;
 	}
 }
@@ -1270,4 +1322,62 @@ void ShadeTool::OnDebugCommand( wxCommandEvent &evt )
 		wxMessageBox("do analysis and copy to clipboard 12x24 factors table");
 		break;
 	}
+}
+
+BEGIN_EVENT_TABLE( AF3DShadingButton, wxButton )
+	EVT_BUTTON( wxID_ANY, AF3DShadingButton::OnPressed )
+END_EVENT_TABLE()
+
+AF3DShadingButton::AF3DShadingButton(wxWindow *parent, int id, const wxPoint &pos, const wxSize &size)
+	: wxButton( parent, id, "Edit 3D shading scene...", pos, size, wxBU_EXACTFIT )
+{
+}
+
+void AF3DShadingButton::Set( wxMemoryBuffer &mb )
+{
+	m_bin = mb;
+}
+
+void AF3DShadingButton::Get( wxMemoryBuffer &mb )
+{
+	mb = m_bin;
+}
+
+
+void AF3DShadingButton::OnPressed(wxCommandEvent &evt)
+{
+	wxDialog dlg( this, wxID_ANY, "Edit 3D Shading Scene", wxDefaultPosition, wxSize(800,600), wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER );
+	ShadeTool *st = new ShadeTool( &dlg, wxID_ANY, wxEmptyString, INTEGRATED );
+	wxBoxSizer *sizer = new wxBoxSizer( wxVERTICAL );
+	sizer->Add( st, 1, wxALL|wxEXPAND, 0 );
+	dlg.SetSizer( sizer );
+	if ( m_bin.GetDataLen() > 0 )
+	{
+		wxMemoryInputStream in( m_bin.GetData(), m_bin.GetDataLen() );
+		if (!st->Read( in ))
+			wxMessageBox("Error loading stored 3D scene data.");
+	}
+	dlg.ShowModal();
+	wxMemoryOutputStream out;
+	st->Write( out );
+	size_t len = out.GetSize();
+	if ( len > 0 )
+	{
+		void *buf = m_bin.GetWriteBuf( len );
+		out.CopyTo( buf, len );
+		m_bin.UngetWriteBuf( len );
+	}
+
+	wxBusyInfo info( "Calculating diurnal shading factors..." );
+
+	m_results.clear();
+	if ( !st->SimulateDiurnal(m_results) )
+		wxMessageBox("Error in simulation of diurnal shading factors.");
+
+	evt.Skip();
+}
+
+void AF3DShadingButton::GetDiurnal( std::vector<ShadeTool::diurnal> &list )
+{
+	list = m_results;
 }

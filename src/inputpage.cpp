@@ -30,6 +30,7 @@
 #include "materials.h"
 #include "shadingfactors.h"
 #include "library.h"
+#include "s3tool.h"
 
 UICallbackContext::UICallbackContext( ActiveInputPage *ip, const wxString &desc )
 	: CaseCallbackContext( ip->GetCase(), desc ), m_inputPage(ip)
@@ -505,6 +506,32 @@ bool ActiveInputPage::DataExchange( wxUIObject *obj, VarValue &val, DdxDir dir )
 				p = dp->GetData( &nr, &nc );
 				val.Set( p, nr, nc );
 			}
+		}
+	}
+	else if ( AF3DShadingButton *sb = obj->GetNative<AF3DShadingButton>())
+	{
+		if ( dir == VAR_TO_OBJ )
+		{			
+			VarTable &tab = val.Table();
+			if ( VarValue *vv = tab.Get("scene") )
+				sb->Set( vv->Binary() );
+		}
+		else
+		{
+			wxMemoryBuffer mb;
+			sb->Get( mb );
+
+			VarTable tab;
+			tab.Set( "scene", VarValue(mb) );
+
+			std::vector<ShadeTool::diurnal> result;
+			sb->GetDiurnal( result );
+
+			for( size_t i=0;i<result.size();i++ )
+				tab.Set( wxString::Format("section%d", (int)i),
+					VarValue( result[i].mxh ) );
+
+			val.Set( tab );
 		}
 	}
 	else return false; // object data exch not handled for this type
