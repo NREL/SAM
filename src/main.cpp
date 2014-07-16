@@ -14,6 +14,7 @@
 #include <wx/stdpaths.h>
 #include <wx/webview.h>
 #include <wx/txtstrm.h>
+#include <wx/buffer.h>
 
 #include <wex/metro.h>
 #include <wex/icons/cirplus.cpng>
@@ -1478,6 +1479,9 @@ extern void RegisterReportObjectTypes();
 	
 	splash.Show();
 	splash.SetMessage( "Starting up... please wait" );
+
+	//wxMessageBox( wxString::Format("sizeof(VarValue)=%d, sizeof(wxMemoryBuffer)=%d, sizeof(matrix_t<float>)=%d, sizeof(VarTable)=%d, sizeof(wxString)=%d", 
+	//	sizeof(VarValue), sizeof(wxMemoryBuffer), sizeof(matrix_t<float>), sizeof(VarTable), sizeof(wxString) ) );
 
 	FileHistory().Load( Settings() );
 

@@ -5,6 +5,7 @@
 #include <wx/ffile.h>
 #include <wx/tokenzr.h>
 #include <wx/log.h>
+#include <wx/mstream.h>
 
 #include <lk_stdlib.h>
 #include <lk_eval.h>
@@ -283,6 +284,12 @@ VarValue::VarValue( const VarTable &t )
 	m_tab.Copy( t );
 }
 
+VarValue::VarValue( const wxMemoryBuffer &mb )
+{
+	m_type = VV_BINARY;
+	m_bin = mb;
+}
+
 VarValue::~VarValue()
 {
 	// nothing to do 
@@ -295,7 +302,7 @@ VarValue &VarValue::operator=( const VarValue &rhs )
 }
 
 
-bool VarValue::ValueEqual( VarValue &rhs)
+bool VarValue::ValueEqual( VarValue &rhs )
 {
 	bool equal = false;
 	if (m_type == rhs.m_type)
@@ -335,6 +342,25 @@ bool VarValue::ValueEqual( VarValue &rhs)
 		case VV_STRING:
 			equal = (m_str == rhs.m_str);
 			break;
+		case VV_BINARY:
+			if ( m_bin.GetDataLen() == rhs.m_bin.GetDataLen() )
+			{
+				equal = true;
+				size_t n = m_bin.GetDataLen();
+				char *b1 = (char*)m_bin.GetData();
+				char *b2 = (char*)rhs.m_bin.GetData();
+				for( size_t i=0;i<n;i++ )
+				{
+					if ( b1[i] != b2[i] )
+					{
+						equal = false;
+						break;
+					}
+				}
+			}
+			else
+				equal = false;
+			break;
 		}
 	}
 	return equal;
@@ -349,6 +375,7 @@ void VarValue::Copy( const VarValue &rhs )
 		m_str = rhs.m_str;
 		m_val = rhs.m_val;
 		m_tab = rhs.m_tab;
+		m_bin = rhs.m_bin;
 	}
 }
 
@@ -381,6 +408,10 @@ void VarValue::Write( wxOutputStream &_O )
 	case VV_STRING:
 		out.WriteString( m_str );
 		break;
+	case VV_BINARY:
+		out.Write32( m_bin.GetDataLen() );
+		_O.Write( m_bin.GetData(), m_bin.GetDataLen() );
+		break;
 	}
 
 	out.Write8( 0xf2 );
@@ -395,7 +426,7 @@ bool VarValue::Read( wxInputStream &_I )
 
 	m_type = in.Read8();
 
-	size_t nr, nc;
+	size_t nr, nc, len;
 	switch( m_type )
 	{
 	case VV_INVALID:
@@ -416,6 +447,11 @@ bool VarValue::Read( wxInputStream &_I )
 		break;
 	case VV_STRING:
 		m_str = in.ReadString();
+		break;
+	case VV_BINARY:
+		len = in.Read32();
+		_I.Read( m_bin.GetWriteBuf( len ), len );
+		m_bin.UngetWriteBuf( len );
 		break;
 	}
 
@@ -453,6 +489,7 @@ void VarValue::Set( float *mat, size_t r, size_t c ) { m_type = VV_MATRIX; m_val
 void VarValue::Set( const ::matrix_t<float> &mat ) { m_type = VV_MATRIX; m_val = mat; }
 void VarValue::Set( const wxString &str ) { m_type = VV_STRING; m_str = str; }
 void VarValue::Set( const VarTable &tab ) { m_type = VV_TABLE; m_tab.Copy( tab ); }
+void VarValue::Set( const wxMemoryBuffer &mb ) { m_type = VV_BINARY; m_bin = mb; }
 
 int VarValue::Integer()
 {
@@ -539,6 +576,12 @@ VarTable &VarValue::Table()
 {
 	return m_tab;
 }
+
+wxMemoryBuffer &VarValue::Binary()
+{
+	return m_bin;
+}
+
 
 bool VarValue::Read( const lk::vardata_t &val, bool change_type )
 {
@@ -670,6 +713,9 @@ bool VarValue::Write( lk::vardata_t &val )
 			}
 		}
 		break;
+	case VV_BINARY:
+			val.assign( wxString::Format("binary<%d>", (int)m_bin.GetDataLen() ) );
+		break;
 	}
 
 	return m_type != VV_INVALID;
@@ -791,6 +837,8 @@ wxString VarValue::AsString( wxChar arrsep, wxChar tabsep )
 
 		return buf;
 	}
+	case VV_BINARY:
+		return wxString::Format("binary<%d>", (int)m_bin.GetDataLen());
 	}
 
 	return "<no value found>";
