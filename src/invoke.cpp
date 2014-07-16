@@ -1421,7 +1421,7 @@ void fcall_editscene3d( lk::invoke_t &cxt )
 	wxMemoryBuffer &bin = vv->Binary();
 
 	wxDialog dlg( SamApp::Window(), wxID_ANY, "Edit 3D Shading Scene", wxDefaultPosition, wxSize(800,600), wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER );
-	ShadeTool *st = new ShadeTool( &dlg, wxID_ANY, wxEmptyString, INTEGRATED );
+	ShadeTool *st = new ShadeTool( &dlg, wxID_ANY );
 
 	if ( cxt.arg_count() > 1 && bin.GetDataLen() == 0 )
 	{
@@ -1457,6 +1457,7 @@ void fcall_editscene3d( lk::invoke_t &cxt )
 		void *buf = bin.GetWriteBuf( len );
 		out.CopyTo( buf, len );
 		bin.UngetWriteBuf( len );
+		SamApp::Window()->Project().SetModified( true );
 	}
 	
 	std::vector<ShadeTool::diurnal> diurnal;
