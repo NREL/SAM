@@ -3,6 +3,8 @@
 #include <wx/datstrm.h>
 #include <wx/gauge.h>
 #include <wx/progdlg.h>
+#include <wx/thread.h>
+#include <wx/statline.h>
 
 #include <lk_absyn.h>
 #include <lk_stdlib.h>
@@ -270,9 +272,99 @@ wxString Simulation::GetUnits( const wxString &var )
 	return m_outputUnits[ var ];
 }
 
-class SimulationContext
+class SingleThreadHandler : public ISimulationHandler
 {
 public:
+	SingleThreadHandler() {
+		progdlg = 0;
+		errors = 0;
+		warnings = 0;
+
+	};
+	
+	virtual void Warn( const wxString &s ) { 
+		if (warnings) warnings->Add( s );
+	}
+	virtual void Error( const wxString &s ) { 
+		if (errors) errors->Add( s );
+	}
+	virtual void Update( float percent, const wxString &s ) {
+		if( progdlg) progdlg->Update( (int)percent, s );
+	}
+	virtual bool IsCancelled() {
+		if ( progdlg) return progdlg->WasCancelled();
+		else return false;
+	}
+
+	virtual bool WriteDebugFile( const wxString &sim, ssc_module_t p_mod, ssc_data_t p_data )
+	{
+		wxString dbgfile( wxGetHomeDir() + "/ssc-" + sim + ".lk" );
+		if( FILE *fp = fopen( dbgfile.c_str(), "w" ) )
+		{
+			ssc_number_t value;
+			ssc_number_t *p;
+			int len, nr, nc;
+			int pidx = 0;
+			wxString str_value;
+			double dbl_value;
+			int dbgidx = 0;
+			while( const ssc_info_t p_inf = ssc_module_var_info( p_mod, dbgidx++ ) )
+			{
+				const char *name = ::ssc_info_name( p_inf );
+				const char *desc = ::ssc_info_label( p_inf );
+				const char *units = ::ssc_info_units( p_inf );
+				int type = ::ssc_data_query( p_data, name );
+				switch( type )
+				{
+				case SSC_STRING:
+					str_value = wxString::FromUTF8(::ssc_data_get_string( p_data, name ));
+					str_value.Replace("\\", "/" );
+					fprintf(fp, "var( '%s', '%s' );\n", name, (const char*)str_value.c_str() );
+					break;
+				case SSC_NUMBER:
+					::ssc_data_get_number( p_data, name, &value );
+					dbl_value = (double)value;
+					if ( dbl_value > 1e38 ) dbl_value = 1e38;
+					fprintf(fp, "var( '%s', %lg );\n", name, dbl_value );
+					break;
+				case SSC_ARRAY:
+					p = ::ssc_data_get_array( p_data, name, &len );
+					fprintf(fp, "var( '%s', [", name);
+					for ( int i=0;i<(len-1);i++ )
+					{
+						dbl_value = (double)p[i];
+						if ( dbl_value > 1e38 ) dbl_value = 1e38;
+						fprintf(fp, " %lg,", dbl_value );
+					}
+					dbl_value = (double)p[len-1];
+					if ( dbl_value > 1e38 ) dbl_value = 1e38;
+					fprintf(fp, " %lg ] );\n", dbl_value );
+					break;
+				case SSC_MATRIX:
+					p = ::ssc_data_get_matrix( p_data, name, &nr, &nc );
+					len = nr*nc;
+					fprintf( fp, "var( '%s', \n[ [", name );					
+					for (int k=0;k<(len-1);k++)
+					{
+						dbl_value = (double)p[k];
+						if ( dbl_value > 1e38 ) dbl_value = 1e38;
+						if ( (k+1)%nc == 0 ) 
+							fprintf(fp, " %lg ], \n[", dbl_value);
+						else
+							fprintf(fp, " %lg,", dbl_value);
+					}
+					dbl_value = (double)p[len-1];
+					if ( dbl_value > 1e38 ) dbl_value = 1e38;
+					fprintf(fp, " %lg ] ] );\n", dbl_value);
+				}
+			}
+			fclose( fp );
+			return true;
+		}
+		else
+			return false;
+	}
+
 	wxProgressDialog *progdlg;
 	wxArrayString *errors;
 	wxArrayString *warnings;
@@ -284,8 +376,8 @@ static ssc_bool_t ssc_invoke_handler( ssc_module_t p_mod, ssc_handler_t p_handle
 	const char *s0, const char *s1,
 	void *user_data )
 {
-	SimulationContext *sc = (SimulationContext*) user_data;
-	if (!sc) return 0;
+	ISimulationHandler *hh = (ISimulationHandler*) user_data;
+	if (!hh) return 0;
 
 	if (action_type == SSC_LOG)
 	{		
@@ -293,33 +385,52 @@ static ssc_bool_t ssc_invoke_handler( ssc_module_t p_mod, ssc_handler_t p_handle
 		{
 		case SSC_NOTICE:
 		case SSC_WARNING:
-			sc->warnings->Add( s0 );
+			hh->Warn( s0 );
 			break;
 		case SSC_ERROR:
-			sc->errors->Add( s0 );
+			hh->Error( s0 );
 			break;
 		}
-		if (!sc->silent)
-			return sc->progdlg->WasCancelled() ? 0 : 1;
-		else
-			return true;
+		
+		return hh->IsCancelled() ? 0 : 1;		
 	}
 	else if (action_type == SSC_UPDATE)
 	{
-		if (!sc->silent)
-		{
-			sc->progdlg->Update((int)f0, s0);
-			return !sc->progdlg->WasCancelled();
-		}
-		else
-			return true;
+		hh->Update( f0, s0 );
+		return hh->IsCancelled() ? 0 : 1;
 	}
 	else
 		return 0;
 }
 
+bool Simulation::Invoke( bool silent, bool prepare )
+{
+	SingleThreadHandler sc;
+	if (!silent)
+	{
+		sc.progdlg = new wxProgressDialog("Simulation", "in progress", 100,
+			SamApp::CurrentActiveWindow(),  // progress dialog parent is current active window - works better when invoked scripting
+			wxPD_APP_MODAL | wxPD_SMOOTH | wxPD_CAN_ABORT);
+#ifdef __WXMSW__
+		sc.progdlg->SetIcon(wxICON(appicon));
+#endif
+		sc.progdlg->Show();
+	}
+	sc.errors = &m_errors;
+	sc.warnings = &m_warnings;
 
-bool Simulation::Invoke(bool silent)
+
+	if ( prepare && !Prepare() )
+		return false;
+
+	bool ok =  InvokeWithHandler( &sc );
+
+	if (!silent) delete sc.progdlg;
+
+	return ok;
+}
+
+bool Simulation::Prepare()
 {
 	ConfigInfo *cfg = m_case->GetConfiguration();
 	if ( !cfg )
@@ -354,30 +465,20 @@ bool Simulation::Invoke(bool silent)
 		return false;
 	}
 
-	SimulationContext sc;
-	sc.silent = silent;
-	if (!silent)
-	{
-		sc.progdlg = new wxProgressDialog("Simulation", "in progress", 100,
-			SamApp::CurrentActiveWindow(),  // progress dialog parent is current active window - works better when invoked scripting
-			wxPD_APP_MODAL | wxPD_SMOOTH | wxPD_CAN_ABORT);
-#ifdef __WXMSW__
-		sc.progdlg->SetIcon(wxICON(appicon));
-#endif
-		sc.progdlg->Show();
-	}
-	sc.errors = &m_errors;
-	sc.warnings = &m_warnings;
+	return true;
+}
 
+bool Simulation::InvokeWithHandler( ISimulationHandler *ih )
+{
+	wxArrayString simlist = m_case->GetConfiguration()->Simulations;
 	ssc_data_t p_data = ssc_data_create();
 
-
-	for( size_t kk=0;kk<cfg->Simulations.size();kk++ )
+	for( size_t kk=0;kk<simlist.size();kk++ )
 	{
-		ssc_module_t p_mod = ssc_module_create( cfg->Simulations[kk].c_str() );
+		ssc_module_t p_mod = ssc_module_create( simlist[kk].c_str() );
 		if ( !p_mod )
 		{
-			m_errors.Add( "could not create ssc module: " + cfg->Simulations[kk] );
+			m_errors.Add( "could not create ssc module: " + simlist[kk] );
 			continue;
 		}
 
@@ -446,76 +547,16 @@ bool Simulation::Invoke(bool silent)
 			}
 		}
 
-		wxString dbgfile( wxGetHomeDir() + "/ssc-" + cfg->Simulations[kk] + ".lk" );
-		if( FILE *fp = fopen( dbgfile.c_str(), "w" ) )
+		// write a debug input file if using a single threaded
+		ih->WriteDebugFile( simlist[kk], p_mod, p_data );
+		
+		if ( !ssc_module_exec_with_handler( p_mod, p_data, ssc_invoke_handler, ih ))
 		{
-			ssc_number_t value;
-			ssc_number_t *p;
-			int len, nr, nc;
-			pidx = 0;
-			wxString str_value;
-			double dbl_value;
-			int dbgidx = 0;
-			while( const ssc_info_t p_inf = ssc_module_var_info( p_mod, dbgidx++ ) )
-			{
-				const char *name = ::ssc_info_name( p_inf );
-				const char *desc = ::ssc_info_label( p_inf );
-				const char *units = ::ssc_info_units( p_inf );
-				int type = ::ssc_data_query( p_data, name );
-				switch( type )
-				{
-				case SSC_STRING:
-					str_value = wxString::FromUTF8(::ssc_data_get_string( p_data, name ));
-					str_value.Replace("\\", "/" );
-					fprintf(fp, "var( '%s', '%s' );\n", name, (const char*)str_value.c_str() );
-					break;
-				case SSC_NUMBER:
-					::ssc_data_get_number( p_data, name, &value );
-					dbl_value = (double)value;
-					if ( dbl_value > 1e38 ) dbl_value = 1e38;
-					fprintf(fp, "var( '%s', %lg );\n", name, dbl_value );
-					break;
-				case SSC_ARRAY:
-					p = ::ssc_data_get_array( p_data, name, &len );
-					fprintf(fp, "var( '%s', [", name);
-					for ( int i=0;i<(len-1);i++ )
-					{
-						dbl_value = (double)p[i];
-						if ( dbl_value > 1e38 ) dbl_value = 1e38;
-						fprintf(fp, " %lg,", dbl_value );
-					}
-					dbl_value = (double)p[len-1];
-					if ( dbl_value > 1e38 ) dbl_value = 1e38;
-					fprintf(fp, " %lg ] );\n", dbl_value );
-					break;
-				case SSC_MATRIX:
-					p = ::ssc_data_get_matrix( p_data, name, &nr, &nc );
-					len = nr*nc;
-					fprintf( fp, "var( '%s', \n[ [", name );					
-					for (int k=0;k<(len-1);k++)
-					{
-						dbl_value = (double)p[k];
-						if ( dbl_value > 1e38 ) dbl_value = 1e38;
-						if ( (k+1)%nc == 0 ) 
-							fprintf(fp, " %lg ], \n[", dbl_value);
-						else
-							fprintf(fp, " %lg,", dbl_value);
-					}
-					dbl_value = (double)p[len-1];
-					if ( dbl_value > 1e38 ) dbl_value = 1e38;
-					fprintf(fp, " %lg ] ] );\n", dbl_value);
-				}
-			}
-			fclose( fp );
-		}
-
-
-		if ( !ssc_module_exec_with_handler( p_mod, p_data, ssc_invoke_handler, &sc ))
-		{
-			m_errors.Add(wxString::Format("simulation did not succeed - compute module %s failed", cfg->Simulations[kk].c_str() ));
-			if (sc.warnings->Count() > 0)
-				for (size_t i=0; i<sc.warnings->Count();i++)
-					m_errors.Add(wxString::Format("compute module %s warning[%d] = %s", cfg->Simulations[kk].c_str(), i, sc.warnings->Item(i).c_str() ));
+			m_errors.Add(wxString::Format("simulation did not succeed - compute module %s failed", simlist[kk].c_str() ));
+			if ( m_warnings.Count() > 0)
+				for (size_t i=0; i<m_warnings.Count();i++)
+					m_errors.Add(wxString::Format("compute module %s warning[%d] = %s", 
+						(const char*)simlist[kk].c_str(), i, (const char*)m_warnings[i].c_str() ));
 		}
 		else
 		{
@@ -566,9 +607,7 @@ bool Simulation::Invoke(bool silent)
 	}
 
 	ssc_data_free( p_data );
-
-	if (!silent) delete sc.progdlg;
-
+	
 	return m_errors.size() == 0;
 
 }
@@ -653,4 +692,295 @@ bool Simulation::ListAllOutputs( ConfigInfo *cfg,
 	}
 
 	return true;
+}
+
+
+class ThreadProgressDialog : public wxDialog
+{
+	DECLARE_EVENT_TABLE()
+
+	bool m_canceled;
+	std::vector<wxGauge*> m_progbars;
+	std::vector<wxTextCtrl*> m_percents;
+
+	wxTextCtrl *m_log;
+
+public:
+	bool IsCanceled()
+	{		
+		return m_canceled;
+	}
+
+	void Log( const wxArrayString &list )
+	{
+		for (size_t i=0;i<list.Count();i++)
+			Log(list[i]);
+	}
+
+
+	void Log( const wxString &text )
+	{
+		m_log->AppendText( text + "\n" );
+	}
+
+	void Update(int ThreadNum, float percent)
+	{
+		if (ThreadNum >= 0 && ThreadNum < m_progbars.size())
+		{
+			m_progbars[ThreadNum]->SetValue( (int)percent );
+			m_percents[ThreadNum]->SetValue( wxString::Format("%.1f %%", percent) );
+		}
+	}
+
+	ThreadProgressDialog(wxWindow *parent, int nthreads)
+		: wxDialog( parent, wxID_ANY, wxString("Thread Progress"), wxDefaultPosition, 
+		wxSize(600, 400), wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER )
+	{
+		m_canceled = false;
+		wxButton *btnCancel = new wxButton(this, wxID_CANCEL, "Cancel", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT);
+
+		wxBoxSizer *szv = new wxBoxSizer(wxVERTICAL);
+
+		for (int i=0;i<nthreads;i++)
+		{
+			wxBoxSizer *sizer = new wxBoxSizer( wxHORIZONTAL );
+			sizer->Add( new wxStaticText(this, wxID_ANY, wxString::Format("thread %d", i)), 0, wxALL|wxALIGN_CENTER_VERTICAL, 3 );
+			
+			wxGauge *gauge = new wxGauge(this, wxID_ANY, 100);
+			wxTextCtrl *text = new wxTextCtrl(this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxTE_READONLY);
+
+			sizer->Add( gauge, 1, wxALL|wxEXPAND, 3 );
+			sizer->Add( text, 0, wxALL|wxEXPAND, 3 );
+
+			m_progbars.push_back(gauge);
+			m_percents.push_back(text);
+			
+			szv->Add( sizer, 0, wxEXPAND|wxALL, 5 );
+		}
+
+		szv->Add( new wxStaticLine(this), 0, wxEXPAND|wxALL, 4 );
+
+
+		m_log = new wxTextCtrl( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxTE_MULTILINE );
+		szv->Add( m_log, 1, wxALL|wxEXPAND, 3 );
+
+		wxBoxSizer *szh = new wxBoxSizer( wxHORIZONTAL );
+		szh->AddStretchSpacer();
+		szh->Add( btnCancel, 0, wxALIGN_CENTER_VERTICAL|wxALL, 2);
+		szv->Add( szh, 0, wxEXPAND|wxALL, 4 );
+
+		SetSizer(szv);
+	}
+	
+	void OnCancel(wxCommandEvent &evt)
+	{
+		m_canceled = true;
+	}
+
+	void OnDialogClose(wxCloseEvent &evt)
+	{
+		m_canceled = true;
+	}
+};
+
+BEGIN_EVENT_TABLE( ThreadProgressDialog, wxDialog )
+	EVT_BUTTON( wxID_CANCEL, ThreadProgressDialog::OnCancel )
+	EVT_CLOSE( ThreadProgressDialog::OnDialogClose )
+END_EVENT_TABLE( )
+
+
+class SimulationThread : public wxThread, ISimulationHandler
+{
+	std::vector<Simulation*> m_list;
+	wxMutex m_currentLock, m_cancelLock, m_nokLock, m_logLock, m_percentLock;
+	size_t m_current;
+	bool m_canceled;
+	size_t m_nok;
+	wxArrayString m_messages;
+	wxString m_update;
+	float m_percent;
+	int m_threadId;
+public:
+	SimulationThread( int id )
+		: wxThread( wxTHREAD_JOINABLE ) {
+		m_canceled = false;
+		m_threadId = id;
+		m_nok = 0;
+		m_percent = 0;
+		m_current = 0;
+	}
+
+	void Add( Simulation *s ) {
+		m_list.push_back( s );
+	}
+
+	size_t Size() { return m_list.size(); }
+	size_t Current() { 
+		wxMutexLocker _lock( m_currentLock );
+		return m_current;
+	}
+	float GetPercent() {
+		size_t ns = Size();
+		size_t cur = Current();
+		wxMutexLocker _lock(m_percentLock);
+		float curper = m_percent;
+
+		float each = 100/ns;
+		float overall = cur*each + 0.01*curper*each;
+		return overall;
+	}
+
+	void Cancel()
+	{
+		wxMutexLocker _lock(m_cancelLock);
+		m_canceled = true;
+	}
+
+	size_t NOk() {
+		wxMutexLocker _lock(m_nokLock);
+		return m_nok;
+	}
+
+	virtual void Warn( const wxString &text )
+	{
+		wxMutexLocker _lock(m_logLock);
+		m_messages.Add( wxString::Format("thread %d: ", m_threadId) + wxString(text) );
+	}
+
+	virtual void Error( const wxString &text )
+	{
+		Warn(text);
+	}
+
+	virtual void Update( float percent, const wxString &text )
+	{
+		wxMutexLocker _lock(m_percentLock);
+		m_percent = percent;
+		m_update = text;
+	}
+
+
+	virtual bool IsCancelled() {
+		wxMutexLocker _lock(m_cancelLock);
+		return m_canceled;
+	}
+
+	virtual bool WriteDebugFile( const wxString &, ssc_module_t, ssc_data_t )
+	{
+		return false;
+	}
+	
+	wxArrayString GetNewMessages()
+	{
+		wxMutexLocker _lock(m_logLock);
+		wxArrayString list = m_messages;
+		m_messages.Clear();
+		return list;
+	}
+
+	virtual void *Entry()
+	{
+		m_canceled = false;
+		for( size_t i=0;i<m_list.size();i++ )
+		{
+			m_currentLock.Lock();
+			m_current++;
+			m_currentLock.Unlock();
+
+			if ( m_list[i]->InvokeWithHandler( this ) )
+			{
+				wxMutexLocker _lock(m_nokLock);
+				m_nok++;
+			}
+
+			wxMutexLocker _lock(m_cancelLock);
+			if (m_canceled) break;
+		}
+
+		return 0;
+	}
+};
+
+int Simulation::DispatchThreads( std::vector<Simulation*> &sims, int nthread )
+{
+	if ( nthread < 1 )
+		nthread = wxThread::GetCPUCount();
+
+	ThreadProgressDialog tpd( SamApp::Window(), nthread );
+	tpd.CenterOnParent();
+	tpd.Show();
+	wxSafeYield( 0, true );
+
+	wxStopWatch sw;
+
+	std::vector<SimulationThread*> threads;
+	for( int i=0;i<nthread;i++)
+	{
+		SimulationThread *t = new SimulationThread( i );
+		threads.push_back( t );
+		t->Create();
+	}
+
+	// round robin assign each simulation to a thread
+	size_t ithr = 0;
+	for( size_t i=0;i<sims.size();i++ )
+	{
+		threads[ithr++]->Add( sims[i] );
+		if ( ithr == threads.size() )
+			ithr = 0;
+	}
+
+	sw.Start();
+	
+	// start the threads
+	for ( int i=0;i<nthread;i++ )
+		threads[i]->Run();
+
+	while (1)
+	{
+		size_t i, num_finished = 0;
+		for (i=0;i<threads.size();i++)
+			if (!threads[i]->IsRunning())
+				num_finished++;
+
+		if (num_finished == threads.size())
+			break;
+
+		// threads still running so update interface
+		for (i=0;i<threads.size();i++)
+		{
+			float per = threads[i]->GetPercent();
+			tpd.Update(i, per);
+			wxArrayString msgs = threads[i]->GetNewMessages();
+			tpd.Log( msgs );
+		}
+
+		wxGetApp().Yield();
+
+		// if dialog's cancel button was pressed, send cancel signal to all threads
+		if (tpd.IsCanceled())
+		{
+			for (i=0;i<threads.size();i++)
+				threads[i]->Cancel();
+		}
+
+		::wxMilliSleep( 100 );
+	}
+
+	
+	size_t nok = 0;
+	// wait on the joinable threads
+	for (size_t i=0;i<threads.size();i++)
+	{
+		threads[i]->Wait();
+		nok += threads[i]->NOk();
+	}
+	
+	// delete all the thread objects
+	for (size_t i=0;i<threads.size();i++)
+		delete threads[i];
+
+	threads.clear();
+	
+	return nok;
 }
