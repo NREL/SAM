@@ -5,6 +5,9 @@
 #include <wx/progdlg.h>
 #include <wx/thread.h>
 #include <wx/statline.h>
+#include <wx/stattext.h>
+
+#include <wex/metro.h>
 
 #include <lk_absyn.h>
 #include <lk_stdlib.h>
@@ -422,7 +425,7 @@ bool Simulation::Invoke( bool silent, bool prepare )
 
 	if ( prepare && !Prepare() )
 		return false;
-
+	
 	bool ok =  InvokeWithHandler( &sc );
 
 	if (!silent) delete sc.progdlg;
@@ -431,14 +434,16 @@ bool Simulation::Invoke( bool silent, bool prepare )
 }
 
 bool Simulation::Prepare()
-{
+{	
 	ConfigInfo *cfg = m_case->GetConfiguration();
 	if ( !cfg )
 	{
-		m_errors.Add("no valid configuration");
+		m_errors.Add("no valid configuration for this case");
 		return false;
 	}
-	
+
+	m_simlist = cfg->Simulations;
+
 	m_outputList.clear();
 	m_outputLabels.clear();
 	m_outputUnits.clear();
@@ -449,7 +454,7 @@ bool Simulation::Prepare()
 		it != m_case->Values().end();
 		++it )
 		if ( 0 == m_inputs.Get( it->first ) )
-			m_inputs.Set( it->first, *it->second );
+			m_inputs.Set( it->first, *(it->second) );
 
 	// recalculate all the equations
 
@@ -464,21 +469,22 @@ bool Simulation::Prepare()
 
 		return false;
 	}
+	
+	//wxLogStatus("Simulation preparation time: %d copy, %d eval", (int)time_copy, (int)time_eval);
 
 	return true;
 }
 
 bool Simulation::InvokeWithHandler( ISimulationHandler *ih )
 {
-	wxArrayString simlist = m_case->GetConfiguration()->Simulations;
 	ssc_data_t p_data = ssc_data_create();
 
-	for( size_t kk=0;kk<simlist.size();kk++ )
+	for( size_t kk=0;kk<m_simlist.size();kk++ )
 	{
-		ssc_module_t p_mod = ssc_module_create( simlist[kk].c_str() );
+		ssc_module_t p_mod = ssc_module_create( m_simlist[kk].c_str() );
 		if ( !p_mod )
 		{
-			m_errors.Add( "could not create ssc module: " + simlist[kk] );
+			m_errors.Add( "could not create ssc module: " + m_simlist[kk] );
 			continue;
 		}
 
@@ -548,15 +554,15 @@ bool Simulation::InvokeWithHandler( ISimulationHandler *ih )
 		}
 
 		// write a debug input file if using a single threaded
-		ih->WriteDebugFile( simlist[kk], p_mod, p_data );
+		//ih->WriteDebugFile( m_simlist[kk], p_mod, p_data );
 		
 		if ( !ssc_module_exec_with_handler( p_mod, p_data, ssc_invoke_handler, ih ))
 		{
-			m_errors.Add(wxString::Format("simulation did not succeed - compute module %s failed", simlist[kk].c_str() ));
+			m_errors.Add(wxString::Format("simulation did not succeed - compute module %s failed", m_simlist[kk].c_str() ));
 			if ( m_warnings.Count() > 0)
 				for (size_t i=0; i<m_warnings.Count();i++)
 					m_errors.Add(wxString::Format("compute module %s warning[%d] = %s", 
-						(const char*)simlist[kk].c_str(), i, (const char*)m_warnings[i].c_str() ));
+						(const char*)m_simlist[kk].c_str(), i, (const char*)m_warnings[i].c_str() ));
 		}
 		else
 		{
@@ -695,100 +701,6 @@ bool Simulation::ListAllOutputs( ConfigInfo *cfg,
 }
 
 
-class ThreadProgressDialog : public wxDialog
-{
-	DECLARE_EVENT_TABLE()
-
-	bool m_canceled;
-	std::vector<wxGauge*> m_progbars;
-	std::vector<wxTextCtrl*> m_percents;
-
-	wxTextCtrl *m_log;
-
-public:
-	bool IsCanceled()
-	{		
-		return m_canceled;
-	}
-
-	void Log( const wxArrayString &list )
-	{
-		for (size_t i=0;i<list.Count();i++)
-			Log(list[i]);
-	}
-
-
-	void Log( const wxString &text )
-	{
-		m_log->AppendText( text + "\n" );
-	}
-
-	void Update(int ThreadNum, float percent)
-	{
-		if (ThreadNum >= 0 && ThreadNum < m_progbars.size())
-		{
-			m_progbars[ThreadNum]->SetValue( (int)percent );
-			m_percents[ThreadNum]->SetValue( wxString::Format("%.1f %%", percent) );
-		}
-	}
-
-	ThreadProgressDialog(wxWindow *parent, int nthreads)
-		: wxDialog( parent, wxID_ANY, wxString("Thread Progress"), wxDefaultPosition, 
-		wxSize(600, 400), wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER )
-	{
-		m_canceled = false;
-		wxButton *btnCancel = new wxButton(this, wxID_CANCEL, "Cancel", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT);
-
-		wxBoxSizer *szv = new wxBoxSizer(wxVERTICAL);
-
-		for (int i=0;i<nthreads;i++)
-		{
-			wxBoxSizer *sizer = new wxBoxSizer( wxHORIZONTAL );
-			sizer->Add( new wxStaticText(this, wxID_ANY, wxString::Format("thread %d", i)), 0, wxALL|wxALIGN_CENTER_VERTICAL, 3 );
-			
-			wxGauge *gauge = new wxGauge(this, wxID_ANY, 100);
-			wxTextCtrl *text = new wxTextCtrl(this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxTE_READONLY);
-
-			sizer->Add( gauge, 1, wxALL|wxEXPAND, 3 );
-			sizer->Add( text, 0, wxALL|wxEXPAND, 3 );
-
-			m_progbars.push_back(gauge);
-			m_percents.push_back(text);
-			
-			szv->Add( sizer, 0, wxEXPAND|wxALL, 5 );
-		}
-
-		szv->Add( new wxStaticLine(this), 0, wxEXPAND|wxALL, 4 );
-
-
-		m_log = new wxTextCtrl( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxTE_MULTILINE );
-		szv->Add( m_log, 1, wxALL|wxEXPAND, 3 );
-
-		wxBoxSizer *szh = new wxBoxSizer( wxHORIZONTAL );
-		szh->AddStretchSpacer();
-		szh->Add( btnCancel, 0, wxALIGN_CENTER_VERTICAL|wxALL, 2);
-		szv->Add( szh, 0, wxEXPAND|wxALL, 4 );
-
-		SetSizer(szv);
-	}
-	
-	void OnCancel(wxCommandEvent &evt)
-	{
-		m_canceled = true;
-	}
-
-	void OnDialogClose(wxCloseEvent &evt)
-	{
-		m_canceled = true;
-	}
-};
-
-BEGIN_EVENT_TABLE( ThreadProgressDialog, wxDialog )
-	EVT_BUTTON( wxID_CANCEL, ThreadProgressDialog::OnCancel )
-	EVT_CLOSE( ThreadProgressDialog::OnDialogClose )
-END_EVENT_TABLE( )
-
-
 class SimulationThread : public wxThread, ISimulationHandler
 {
 	std::vector<Simulation*> m_list;
@@ -798,9 +710,11 @@ class SimulationThread : public wxThread, ISimulationHandler
 	size_t m_nok;
 	wxArrayString m_messages;
 	wxString m_update;
+	wxString m_curName;
 	float m_percent;
 	int m_threadId;
 public:
+
 	SimulationThread( int id )
 		: wxThread( wxTHREAD_JOINABLE ) {
 		m_canceled = false;
@@ -809,7 +723,7 @@ public:
 		m_percent = 0;
 		m_current = 0;
 	}
-
+	
 	void Add( Simulation *s ) {
 		m_list.push_back( s );
 	}
@@ -844,7 +758,10 @@ public:
 	virtual void Warn( const wxString &text )
 	{
 		wxMutexLocker _lock(m_logLock);
-		m_messages.Add( wxString::Format("thread %d: ", m_threadId) + wxString(text) );
+		wxString prefix( m_curName );
+		if ( prefix.IsEmpty() )
+			prefix.Printf( "Process %d", (int)(m_threadId+1) );
+		m_messages.Add( prefix + ": " + text );
 	}
 
 	virtual void Error( const wxString &text )
@@ -886,7 +803,7 @@ public:
 			m_currentLock.Lock();
 			m_current++;
 			m_currentLock.Unlock();
-
+			m_curName = m_list[i]->GetName();
 			if ( m_list[i]->InvokeWithHandler( this ) )
 			{
 				wxMutexLocker _lock(m_nokLock);
@@ -901,16 +818,10 @@ public:
 	}
 };
 
-int Simulation::DispatchThreads( std::vector<Simulation*> &sims, int nthread )
-{
-	if ( nthread < 1 )
-		nthread = wxThread::GetCPUCount();
-
-	ThreadProgressDialog tpd( SamApp::Window(), nthread );
-	tpd.CenterOnParent();
-	tpd.Show();
-	wxSafeYield( 0, true );
-
+int Simulation::DispatchThreads( ThreadProgressDialog *tpd, 
+	std::vector<Simulation*> &sims, 
+	int nthread )
+{	
 	wxStopWatch sw;
 
 	std::vector<SimulationThread*> threads;
@@ -950,15 +861,15 @@ int Simulation::DispatchThreads( std::vector<Simulation*> &sims, int nthread )
 		for (i=0;i<threads.size();i++)
 		{
 			float per = threads[i]->GetPercent();
-			tpd.Update(i, per);
+			tpd->Update(i, per);
 			wxArrayString msgs = threads[i]->GetNewMessages();
-			tpd.Log( msgs );
+			tpd->Log( msgs );
 		}
 
 		wxGetApp().Yield();
 
 		// if dialog's cancel button was pressed, send cancel signal to all threads
-		if (tpd.IsCanceled())
+		if (tpd->IsCanceled())
 		{
 			for (i=0;i<threads.size();i++)
 				threads[i]->Cancel();
@@ -984,3 +895,141 @@ int Simulation::DispatchThreads( std::vector<Simulation*> &sims, int nthread )
 	
 	return nok;
 }
+
+
+
+BEGIN_EVENT_TABLE( ThreadProgressDialog, wxDialog )
+	EVT_BUTTON( wxID_CANCEL, ThreadProgressDialog::OnCancel )
+	EVT_CLOSE( ThreadProgressDialog::OnDialogClose )
+END_EVENT_TABLE( )
+
+ThreadProgressDialog::ThreadProgressDialog(wxWindow *parent, int nthreads)
+	: wxDialog( parent, wxID_ANY, wxString("Simulation Progress"), wxDefaultPosition, 
+	wxSize(625, 475), wxBORDER_NONE )
+{
+	SetBackgroundColour( *wxWHITE );
+	m_canceled = false;
+	m_button = new wxMetroButton(this, wxID_CANCEL, "Cancel");//, wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT);
+	
+	wxBoxSizer *szv = new wxBoxSizer(wxVERTICAL);
+
+	m_status = new wxStaticText( this, wxID_ANY, "Processing..." );
+	m_status->SetFont( wxMetroTheme::Font( wxMT_LIGHT, 15 ) );
+	m_status->SetForegroundColour( wxMetroTheme::Colour( wxMT_TEXT ) );
+
+	szv->Add( m_status, 0, wxALL|wxEXPAND, 20 );
+
+	for (int i=0;i<nthreads;i++)
+	{
+			
+		wxStaticText *label = new wxStaticText(this, wxID_ANY, wxString::Format("Process %d", i+1));
+		label->SetForegroundColour( wxMetroTheme::Colour( wxMT_TEXT ) );
+
+		wxGauge *gauge = new wxGauge(this, wxID_ANY, 100);
+		wxTextCtrl *text = new wxTextCtrl(this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxTE_READONLY|wxBORDER_NONE);
+		text->SetBackgroundColour( *wxWHITE );
+		text->SetForegroundColour( wxMetroTheme::Colour( wxMT_TEXT ) );
+		
+		wxBoxSizer *sizer = new wxBoxSizer( wxHORIZONTAL );
+		sizer->Add( label, 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
+		sizer->Add( gauge, 1, wxALL|wxEXPAND, 5 );
+		sizer->Add( text, 0, wxALL|wxEXPAND, 5 );
+
+		m_labels.push_back(label);
+		m_progbars.push_back(gauge);
+		m_percents.push_back(text);
+			
+		szv->Add( sizer, 0, wxEXPAND|wxALL, 5 );
+	}
+	
+	m_log = new wxTextCtrl( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxTE_MULTILINE|wxBORDER_NONE );
+	m_log->SetForegroundColour( wxMetroTheme::Colour( wxMT_TEXT ) );		
+	szv->Add( m_log, 1, wxALL|wxEXPAND, 10 );
+	szv->Add( m_button, 0, wxALIGN_CENTER_VERTICAL|wxCENTER|wxLEFT|wxRIGHT|wxBOTTOM, 10);
+
+	SetSizer(szv);
+}
+
+void ThreadProgressDialog::SetButtonText( const wxString &text )
+{
+	m_button->SetLabel( text );
+	Layout();
+	wxYield();
+}
+
+void ThreadProgressDialog::Status( const wxString &s )
+{
+	m_status->SetLabel( s );
+}
+
+void ThreadProgressDialog::Reset()
+{
+	for( size_t i=0;i<m_progbars.size();i++ )
+	{
+		m_labels[i]->SetLabel( wxString::Format("Process %d", i+1) );
+		m_progbars[i]->SetValue( 0 );
+		m_percents[i]->ChangeValue( wxEmptyString );
+	}
+
+	Layout();
+}
+
+void ThreadProgressDialog::ShowBars( int n )
+{
+	if ( n < 0 ) n = m_progbars.size();
+	for( size_t i=0;i<m_progbars.size();i++ )
+	{
+		bool show = (i < n);
+		m_labels[i]->Show( show );
+		m_progbars[i]->Show( show );
+		m_percents[i]->Show( show );
+	}
+
+	Layout();
+}
+
+void ThreadProgressDialog::Log( const wxArrayString &list )
+{
+	for (size_t i=0;i<list.Count();i++)
+		Log(list[i]);
+}
+
+bool ThreadProgressDialog::HasMessages()
+{
+	return ( m_log->GetValue().Len() > 0 );
+}
+
+void ThreadProgressDialog::Log( const wxString &text )
+{
+	m_log->AppendText( text + "\n" );
+}
+
+void ThreadProgressDialog::Update(int ThreadNum, float percent, const wxString &text)
+{
+	if (ThreadNum >= 0 && ThreadNum < m_progbars.size())
+	{
+		m_progbars[ThreadNum]->SetValue( (int)percent );
+		m_percents[ThreadNum]->ChangeValue( wxString::Format("%.1f %%", percent) );
+		if ( !text.IsEmpty() )
+		{
+			m_labels[ThreadNum]->SetLabel( text );
+			Layout();
+		}
+	}
+}
+
+	
+void ThreadProgressDialog::OnCancel(wxCommandEvent &evt)
+{
+	m_canceled = true;
+	if ( IsModal() )
+		EndModal( wxID_CANCEL );
+}
+
+void ThreadProgressDialog::OnDialogClose(wxCloseEvent &evt)
+{
+	m_canceled = true;
+	evt.Skip();
+}
+
+

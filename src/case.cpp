@@ -158,7 +158,6 @@ bool CaseEvaluator::UpdateLibrary( const wxString &trigger, wxArrayString &chang
 {
 	size_t nerrors = 0;
 	VarInfo *vi = m_case->Variables().Lookup( trigger );
-//	VarValue *vv = m_case->Values().Get(trigger);
 	VarValue *vv = m_vt->Get(trigger);
 	if (vv && vv->Type() == VV_STRING && vi && vi->Flags & VF_LIBRARY)
 	{
@@ -172,17 +171,16 @@ bool CaseEvaluator::UpdateLibrary( const wxString &trigger, wxArrayString &chang
 			{
 				// find the entry
 				int entry = lib->FindEntry( vv->String() );
-				if (entry >= 0 && lib->ApplyEntry(entry, varindex, *m_vt, changed))
-//					if (entry >= 0 && lib->ApplyEntry(entry, varindex, m_case->Values(), changed))
-					{
-					wxLogStatus( "applied " + name + ":" + vv->String() + " = " + wxJoin(changed,',') );
-//					SendEvent( CaseEvent( CaseEvent::VARS_CHANGED, changed ) );
-				}
-				else
+				if (entry < 0 || !lib->ApplyEntry(entry, varindex, *m_vt, changed))
 				{
 					nerrors++;
 					m_errors.Add("error applying library entry " + vv->String() + "\n\n" + wxJoin( lib->GetErrors(), wxChar('\n')) );
 				}
+#ifdef _DEBUG
+				else
+					wxLogStatus( "applied " + name + ":" + vv->String() + " = " + wxJoin(changed,',') );
+#endif
+
 			}
 			else
 			{

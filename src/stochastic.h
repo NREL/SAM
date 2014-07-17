@@ -157,8 +157,16 @@ private:
 	wxNumericCtrl *m_seed;
 	wxCheckBox *m_useThreads;
 	
-	wxExtGridCtrl *m_grid;
+	wxExtGridCtrl *m_dataGrid;
+	wxExtGridCtrl *m_statGrid;
 
+	struct stepresult {
+		stepresult() { deltar2 = beta = 0.0; }
+		double deltar2;
+		double beta;
+	};
+	
+	matrix_t<stepresult> m_regressions;
 	DECLARE_EVENT_TABLE()
 };
 

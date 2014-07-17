@@ -418,8 +418,10 @@ int EqnEvaluator::Calculate( )
 
 				VarTableScriptInterpreter e( cur_eqn->tree, &env, &m_vars );
 			
+#ifdef _DEBUG
 				wxLogStatus( "solving... [" + wxJoin(cur_eqn->outputs, ',') 
 					+ "] = f( " + wxJoin(cur_eqn->inputs, ',') + " )" );
+#endif
 
 				// execute the parse tree, check for errors
 				if ( !e.run() )

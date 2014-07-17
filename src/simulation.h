@@ -3,6 +3,7 @@
 
 #include <wx/string.h>
 #include <wx/stream.h>
+#include <wx/dialog.h>
 
 #include <lk_env.h>
 
@@ -24,6 +25,8 @@ public:
 	virtual bool IsCancelled() = 0;
 	virtual bool WriteDebugFile( const wxString &, ssc_module_t, ssc_data_t ) = 0;
 };
+
+class ThreadProgressDialog;
 
 class Simulation
 {
@@ -73,12 +76,13 @@ public:
 	static bool ListAllOutputs( ConfigInfo *cfg, 
 		wxArrayString *names, wxArrayString *labels, wxArrayString *units, bool single_values = false );
 
-	static int DispatchThreads( std::vector<Simulation*> &sims, int nthread = 0 );
+	static int DispatchThreads( ThreadProgressDialog *tpd, 
+		std::vector<Simulation*> &sims, 
+		int nthread );
 
 protected:
-
-
 	Case *m_case;
+	wxArrayString m_simlist;
 	wxString m_name;
 	wxArrayString m_overrides;
 	VarTable m_inputs;
@@ -86,6 +90,40 @@ protected:
 	VarTable m_outputs;
 	wxArrayString m_errors, m_warnings;
 	StringHash m_outputLabels, m_outputUnits;
+};
+
+class wxGauge;
+class wxTextCtrl;
+class wxStaticText;
+class wxMetroButton;
+
+class ThreadProgressDialog : public wxDialog
+{
+public:
+	ThreadProgressDialog(wxWindow *parent, int nthreads);
+		bool IsCanceled() { return m_canceled; }
+	void Log( const wxArrayString &list );
+	void Log( const wxString &text );
+	void Update(int ThreadNum, float percent, const wxString &label = wxEmptyString );
+	void Status( const wxString & );
+	void Reset();
+	void ShowBars( int n=-1 );
+	void OnCancel(wxCommandEvent &evt);
+	void OnClose( wxCommandEvent &evt );
+	void OnDialogClose(wxCloseEvent &evt);
+	void SetButtonText( const wxString &txt );
+	bool HasMessages();
+		
+protected:
+	bool m_canceled;
+	std::vector<wxStaticText*> m_labels;
+	std::vector<wxGauge*> m_progbars;
+	std::vector<wxTextCtrl*> m_percents;
+	wxStaticText *m_status;
+	wxTextCtrl *m_log;
+	wxMetroButton *m_button;
+	
+	DECLARE_EVENT_TABLE()
 };
 
 
