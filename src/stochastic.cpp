@@ -515,11 +515,11 @@ Y                              ! output label (for option 1 in label)
 	// all files written, now change folders and run STEPWISE
 
 	// delete any output file that may exist
-	wxRemoveFile( workdir + "/result.txt" );
-	wxRemoveFile( workdir + "/stp_test_usr.inp" );
-	wxRemoveFile( workdir + "/stp_test_ind.dat" );
-	wxRemoveFile( workdir + "/stp_test_dep.dat" );
-	wxRemoveFile( workdir + "/stp_test_out.out" );
+	if ( wxFileExists( workdir + "/result.txt" ) )	wxRemoveFile( workdir + "/result.txt" );
+	if ( wxFileExists( workdir + "/stp_test_usr.inp" ) )	wxRemoveFile( workdir + "/stp_test_usr.inp" );
+	if ( wxFileExists( workdir + "/stp_test_ind.dat" ) )	wxRemoveFile( workdir + "/stp_test_ind.dat" );
+	if ( wxFileExists( workdir + "/stp_test_dep.dat" ) )	wxRemoveFile( workdir + "/stp_test_dep.dat" );
+	if ( wxFileExists( workdir + "/stp_test_out.out" ) )	wxRemoveFile( workdir + "/stp_test_out.out" );
 
 
 	wxString curdir = wxGetCwd();
@@ -877,14 +877,23 @@ StochasticPanel::StochasticPanel(wxWindow *parent, Case *cc)
 	sizer_cmd->Add( new wxButton(this, ID_btnComputeSamples, "Compute samples..."), 0, wxALL|wxEXPAND, 5 );
 	sizer_cmd->Add( new wxButton(this, ID_Simulate, "Run simulation"), 0, wxALL|wxEXPAND, 5 );
 	sizer_cmd->Add( m_useThreads = new wxCheckBox( this, wxID_ANY, "Use threads"), 0, wxALL|wxEXPAND, 5 );
+	m_useThreads->SetValue( true );
 
 	sizer_main->Add( sizer_cmd );
 	
-	m_grid = new wxExtGridCtrl( this, wxID_ANY );
-	m_grid->CreateGrid( 1, 1 );
-	m_grid->SetCellValue(0, 0, "No results.");
+	m_dataGrid = new wxExtGridCtrl( this, wxID_ANY );
+	m_dataGrid->CreateGrid( 1, 1 );
+	m_dataGrid->SetCellValue(0, 0, "No results.");
 
-	sizer_main->Add( m_grid, 1, wxALL|wxEXPAND, 0 );
+	m_statGrid = new wxExtGridCtrl( this, wxID_ANY );
+	m_statGrid->CreateGrid( 1, 1 );
+	m_statGrid->SetCellValue(0, 0, "No results.");
+
+	wxBoxSizer *sizer_grids = new wxBoxSizer( wxHORIZONTAL );
+	sizer_grids->Add( m_dataGrid, 1, wxALL|wxEXPAND, 10 );
+	sizer_grids->Add( m_statGrid, 1, wxALL|wxEXPAND, 10 );
+
+	sizer_main->Add( sizer_grids, 1, wxALL|wxEXPAND, 0 );
 
 	SetSizer( sizer_main );
 	
@@ -1313,11 +1322,23 @@ void StochasticPanel::Simulate()
 	
 	wxStopWatch sw;
 
+	int nthread = 1;
+	if ( m_useThreads->GetValue() )
+		nthread = wxThread::GetCPUCount();
+
+	wxFrame *transp = CreateTransparentOverlay( SamApp::Window() );
+	ThreadProgressDialog *tpd = new ThreadProgressDialog( transp, nthread );
+	tpd->CenterOnParent();
+	tpd->Show();
+	tpd->Status( "Preparing simulations...");
+	tpd->ShowBars( 1 );
+	wxYield();
 
 	std::vector<Simulation*> sims;
 	for( size_t i=0;i<m_sd.N;i++ )
 	{
-		Simulation *s = new Simulation( m_case, wxString::Format("stochastic-%d",i) );
+		Simulation *s = new Simulation( m_case, wxString::Format("Stochastic #%d", (int)(i+1)) );
+		sims.push_back( s );
 
 		for( size_t j=0;j<m_sd.InputDistributions.size();j++ )
 		{
@@ -1328,32 +1349,48 @@ void StochasticPanel::Simulate()
 		if ( !s->Prepare() )
 			wxMessageBox( wxString::Format("internal error preparing simulation %d for stochastic", (int)(i+1)) );
 
-		sims.push_back( s );
+		tpd->Update( 0, (float)i / (float)m_sd.N * 100.0f, wxString::Format("%d of %d", (int)(i+1), (int)m_sd.N  ) );
+		wxYield();
+
+		if ( tpd->IsCanceled() )
+			break;
 	}
 
+	if ( tpd->IsCanceled() )
+	{
+		for( size_t i=0;i<sims.size();i++ )
+				delete sims[i];
+
+		tpd->Destroy();
+		transp->Destroy();
+		return;
+	}
+
+	int time_prep = sw.Time();
+	sw.Start();
+	
+	tpd->Reset();
+	tpd->Status( "Calculating...");
+	tpd->ShowBars( nthread );
+	wxYield();
 
 	size_t nok = 0;
-	if ( m_useThreads->GetValue() )
-		nok = Simulation::DispatchThreads( sims );
+	if ( nthread > 1 )
+		nok = Simulation::DispatchThreads( tpd, sims, nthread );
 	else
 	{
-		wxProgressDialog pd("Simulation", "in progress", sims.size(),
-			SamApp::Window(),  // progress dialog parent is current active window - works better when invoked scripting
-				 wxPD_SMOOTH | wxPD_CAN_ABORT);
-
-		pd.Show();		
-		wxSafeYield( 0, true );
-
 		for( size_t i=0;i<sims.size();i++ )
-		{
-			pd.Update( i, wxString::Format("%d of %d", (int)i, (int)m_sd.N ) );
-			wxSafeYield( 0, true );
-	
+		{	
 			if( sims[i]->Invoke( true, false ) )
 				nok++;
+			
+			tpd->Update( 0, (float)i / (float)m_sd.N * 100.0f );
+			wxYield();
 		}
 	}
 
+	int time_sim = sw.Time();
+	sw.Start();
 
 	for( size_t i=0;i<m_sd.N;i++ )
 	{
@@ -1371,21 +1408,18 @@ void StochasticPanel::Simulate()
 		delete sims[i];
 	}
 	sims.clear();
+
+	int time_outputs = sw.Time();
 	
-	wxMessageBox(wxString::Format("Completed in %d ms", (int) sw.Time() ) );
+	//tpd->Log( wxString::Format("Prep %d, Sim %d, Outputs %d (ms)", time_prep, time_sim, time_outputs ) );
 
 	// compute stepwise regression
-
-	wxDialog *dlg = new wxDialog( this, wxID_ANY, "Stochastic simulation", wxDefaultPosition, wxSize(500,300));
-	wxTextCtrl *outlog = new wxTextCtrl( dlg, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxTE_MULTILINE );
-	wxBoxSizer *sizer = new wxBoxSizer( wxVERTICAL );
-	sizer->Add( outlog, 1, wxALL|wxEXPAND, 0 );
-	sizer->Add( dlg->CreateButtonSizer( wxOK ), 0, wxALL|wxEXPAND, 5 );
-	dlg->SetSizer( sizer );
-	dlg->CenterOnParent();
-	dlg->Show();
-	wxSafeYield( 0, true );
-
+	
+	tpd->Reset();
+	tpd->Status( "Regressing outputs...");
+	tpd->ShowBars( 1 );
+	wxYield();
+	
 	Stepwise stw;
 	std::vector<double> data;
 	data.resize( m_sd.N );
@@ -1396,56 +1430,112 @@ void StochasticPanel::Simulate()
 		stw.SetInputVector( wxString("input_")+((char)('a'+i)), data );
 	}
 
+	m_regressions.clear();
+	m_regressions.resize_fill( output_vars.size(), m_sd.InputDistributions.size(), stepresult() );
+
 	for( size_t i=0;i<output_vars.size();i++ )
 	{
 		for( size_t j=0;j<m_sd.N;j++ )
 			data[j] = output_data(j,i);
 
 		stw.SetOutputVector( data );
+		
+		tpd->Update( 0, (float)i / (float)output_vars.size() * 100.0f );
+		wxYield();
+
 		if ( stw.Exec() )
 		{
-			double beta, dr2;
-
 			for( size_t j=0;j<m_sd.InputDistributions.size();j++ )
-			{
-				double dr2, beta;
-				if (stw.GetStatistics( wxString("input_")+((char)('a'+j)), NULL, &dr2, &beta))
-					outlog->AppendText( "Regressed: " + output_labels[i] + " wrt " + m_sd.InputDistributions[j].BeforeFirst(':') 
-						+ wxString::Format("  beta=%lg  deltar2=%lg\n", beta, dr2) );
-				else
-					outlog->AppendText( "No statistics for " + output_labels[i] + "\n" );
-			}
+				stw.GetStatistics( wxString("input_")+((char)('a'+j)), NULL, 
+					&m_regressions(i,j).deltar2, 
+					&m_regressions(i,j).beta );
 		}
 		else
-			outlog->AppendText( "Error running stepwise regression: " + output_labels[i] + "\n");
+			tpd->Log( "Error running stepwise regression for: " + output_labels[i]);
 	}
 
 	// update results
-	m_grid->Freeze();
-	m_grid->ResizeGrid( m_sd.N, output_vars.size() );
+	m_dataGrid->Freeze();
+	m_dataGrid->ResizeGrid( m_sd.N, output_vars.size() );
 	int row = 0;
 	for( size_t j=0;j<output_vars.size();j++ )
 	{
 		wxString L( output_labels[j] );
 		if ( !output_units[j].IsEmpty() )
-			L += " (" + output_units[j] + ")";
+			L += "\n(" + output_units[j] + ")";
 
-		m_grid->SetColLabelValue( j, L );
+		m_dataGrid->SetColLabelValue( j, L );
 
 		for( size_t i=0;i<m_sd.N;i++ )
-			m_grid->SetCellValue( i, j, wxString::Format("%lg", output_data(i,j) ) );
+			m_dataGrid->SetCellValue( i, j, wxString::Format("%lg", output_data(i,j) ) );
+	}
+	
+	m_dataGrid->Thaw();
+	m_dataGrid->SetRowLabelSize( wxGRID_AUTOSIZE );
+	m_dataGrid->SetColLabelSize( wxGRID_AUTOSIZE );
+	m_dataGrid->AutoSize();
+	m_dataGrid->Layout();
+
+
+	m_statGrid->Freeze();
+	m_statGrid->ResizeGrid( 2*m_sd.InputDistributions.size(), output_vars.size() );
+
+	for( size_t i=0;i<output_vars.size();i++ )
+	{
+		wxString L( output_labels[i] );
+		if ( !output_units[i].IsEmpty() )
+			L += "\n(" + output_units[i] + ")";
+		m_statGrid->SetColLabelValue( i, L );
 	}
 
-	m_grid->SetRowLabelSize(wxGRID_AUTOSIZE);
-	m_grid->SetColLabelSize(wxGRID_AUTOSIZE);
-	m_grid->GetParent()->Layout();
-	m_grid->Layout();
-	m_grid->Thaw();
+	for( size_t i=0;i<m_sd.InputDistributions.size();i++ )
+	{
+		wxString var( m_sd.InputDistributions[i].BeforeFirst(':') );
+		wxString L( m_case->GetConfiguration()->Variables.Label( var ) );
+		wxString u( m_case->GetConfiguration()->Variables.Units( var ) );
+		if ( !u.IsEmpty() )
+			L += " (" + u + ")";
+
+		m_statGrid->SetRowLabelValue( i, "Delta R^2: " + L);
+		m_statGrid->SetRowLabelValue( m_sd.InputDistributions.size()+i, "Beta: " + L );
+	}
+
+	for( size_t i=0;i<m_regressions.ncols(); i++ )
+	{
+		for( size_t j=0;j<output_vars.size(); j++ )
+		{
+			m_statGrid->SetCellValue( i, j,
+				wxString::Format("%lg", m_regressions(j,i).deltar2) );
+
+			m_statGrid->SetCellValue( m_sd.InputDistributions.size()+i, j,
+				wxString::Format("%lg", m_regressions(j,i).beta) );
+		}
+	}
 	
-	if ( nok == m_sd.N )
-		dlg->Destroy();
-	else
-		wxMessageBox("Not all simulations succeeded");
+	m_statGrid->Thaw();
+	m_statGrid->SetRowLabelAlignment( wxLEFT, wxCENTER );
+	m_statGrid->SetRowLabelSize( wxGRID_AUTOSIZE );
+	m_statGrid->SetColLabelSize( wxGRID_AUTOSIZE );
+	m_statGrid->AutoSize();
+	m_statGrid->Layout();
+
+	Layout();
+	wxYield();
+	
+	if ( nok != m_sd.N )
+		tpd->Log("Not all simulations completed successfully.");
+
+	if ( tpd->HasMessages() )
+	{
+		tpd->Status( "Simulations finished with notices." );
+		tpd->ShowBars( 0 );
+		tpd->SetButtonText( "Close" );
+		tpd->Hide();
+		tpd->ShowModal();
+	}
+
+	tpd->Destroy();
+	transp->Destroy();
 }
 
 bool ComputeLHSInputVectors( StochasticData &sd, matrix_t<double> &table, wxArrayString *errors)
