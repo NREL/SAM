@@ -315,8 +315,6 @@ void OpenEIUtilityRateDialog::UpdateRateData()
 			hypOpenEILink->SetURL(rate_url);
 			hypJSONLink->SetURL(json_url);
 
-			mRateData.Header.JSONURL = json_url;
-			mRateData.Header.RateURL = rate_url;
 
 			lblStatus->SetLabel("Ready.");
 		}

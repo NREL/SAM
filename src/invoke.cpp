@@ -1258,6 +1258,11 @@ void fcall_openeiapplyrate(lk::invoke_t &cxt)
 		cxt.result().hash_item("rateurl").assign(rate.Header.RateURL);
 		cxt.result().hash_item("jsonurl").assign(rate.Header.JSONURL);
 
+		// net metering
+		if (rate.NetMetering)
+			cxt.result().hash_item("enable_net_metering").assign(1.0);
+		else
+			cxt.result().hash_item("enable_net_metering").assign(0.0);
 
 		// fixed charges
 		cxt.result().hash_item("monthly_fixed_charge").assign(rate.FixedMonthlyCharge);
@@ -1272,30 +1277,41 @@ void fcall_openeiapplyrate(lk::invoke_t &cxt)
 		if (!applydiurnalschedule(cxt, "dc_sched_weekend", rate.DemandWeekendSchedule)) return;
 
 		// energy rate structure, e.g. "ur_ec_p1_t1_ub"
+		bool ec_enable = false;
 		for (int period = 0; period < 12; period++)
 		{
 			for (int tier = 0; tier < 6; tier++)
 			{
 				wxString period_tier = wxString::Format("ur_ec_p%d_t%d_",period+1,tier+1);
 				cxt.result().hash_item(period_tier + "ub").assign(rate.EnergyMax[period][tier]);
-				cxt.result().hash_item(period_tier + "br").assign(rate.EnergyBuy[period][tier] + rate.EnergyAdj[period][tier]);
+				double buy_rate = rate.EnergyBuy[period][tier] + rate.EnergyAdj[period][tier];
+				if (!ec_enable && (buy_rate != 0)) ec_enable = true;
+				cxt.result().hash_item(period_tier + "br").assign(buy_rate);
 				cxt.result().hash_item(period_tier + "sr").assign(rate.EnergySell[period][tier]);
 				// todo - handle different energy upper bound units
 			}
 		}
+		if (ec_enable)
+			cxt.result().hash_item("ec_enable").assign(1.0);
+		else
+			cxt.result().hash_item("ec_enable").assign(0.0);
 
 		//flat demand structure, e.g. ur_dc_jan_t1_ub
 		wxString months[] = { "jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec" };
 
+		bool dc_enable = false;
 		for (int month = 0; month < 12; month++)
 		{
 			for (int tier = 0; tier < 6; tier++)
 			{
 				wxString period_tier = wxString::Format("ur_dc_%s_t%d_", months[month], tier + 1);
 				cxt.result().hash_item(period_tier + "ub").assign(rate.FlatDemandMax[rate.FlatDemandMonth[month]][tier]);
-				cxt.result().hash_item(period_tier + "dc").assign(rate.FlatDemandCharge[rate.FlatDemandMonth[month]][tier] + rate.FlatDemandAdj[rate.FlatDemandMonth[month]][tier]);
+				double charge = rate.FlatDemandCharge[rate.FlatDemandMonth[month]][tier] + rate.FlatDemandAdj[rate.FlatDemandMonth[month]][tier];
+				if (!dc_enable && (charge != 0)) dc_enable = true;
+				cxt.result().hash_item(period_tier + "dc").assign(charge);
 			}
 		}
+
 
 		// demand rate structure, e.g. ur_dc_p1_t1_ub
 		for (int period = 0; period < 12; period++)
@@ -1304,10 +1320,15 @@ void fcall_openeiapplyrate(lk::invoke_t &cxt)
 			{
 				wxString period_tier = wxString::Format("ur_dc_p%d_t%d_", period + 1, tier + 1);
 				cxt.result().hash_item(period_tier + "ub").assign(rate.DemandMax[period][tier]);
-				cxt.result().hash_item(period_tier + "dc").assign(rate.DemandCharge[period][tier] + rate.DemandAdj[period][tier]);
+				double charge = rate.DemandCharge[period][tier] + rate.DemandAdj[period][tier];
+				if (!dc_enable && (charge != 0)) dc_enable = true;
+				cxt.result().hash_item(period_tier + "dc").assign(charge);
 			}
 		}
-
+		if (dc_enable)
+			cxt.result().hash_item("dc_enable").assign(1.0);
+		else
+			cxt.result().hash_item("dc_enable").assign(0.0);
 
 	}
 }
