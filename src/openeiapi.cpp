@@ -234,11 +234,13 @@ bool OpenEI::RetrieveUtilityRateData(const wxString &guid, RateData &rate, wxStr
 	rate.Header.EnergyComments = json_string(val.Item("energycomments"));
 	rate.Header.DemandComments = json_string(val.Item("demandcomments"));
 	rate.Header.BasicInformationComments = json_string(val.Item("demandcomments"));
+	rate.Header.JSONURL = url;
+	rate.Header.RateURL = "http://dev.openei.org/apps/USURDB/rate/view/" + guid; 
 
 	rate.StartDate = json_string(val.Item("startdate"));
 	rate.EndDate = json_string(val.Item("enddate"));
 
-	rate.NetMetering = (json_string(val.Item("usenetmetering")).Lower() == "true");
+	rate.NetMetering = val.Item("usenetmetering").AsBool();
 
 	wxJSONValue v;
 	
