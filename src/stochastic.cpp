@@ -832,7 +832,7 @@ StochasticPanel::StochasticPanel(wxWindow *parent, Case *cc)
 	wxBoxSizer *sizer_inputs_v = new wxBoxSizer( wxVERTICAL );
 	sizer_inputs_v->Add( sizer_inputs, 0, wxALL|wxEXPAND, 3 );
 	m_inputList = new wxListBox(szbox->GetStaticBox(), ID_m_inputList);
-	m_inputList->SetInitialSize( wxSize( 325, 100 ) );
+	m_inputList->SetInitialSize( wxSize( 300, 100 ) );
 	sizer_inputs_v->Add( m_inputList, 0, wxALL|wxEXPAND, 5 );
 
 
@@ -845,12 +845,25 @@ StochasticPanel::StochasticPanel(wxWindow *parent, Case *cc)
 	wxBoxSizer *sizer_corr_v = new wxBoxSizer( wxVERTICAL );
 	sizer_corr_v->Add( sizer_corr, 0, wxALL|wxEXPAND, 3 );
 	m_corrList = new wxListBox(szbox->GetStaticBox(), ID_m_corrList);
-	m_corrList->SetInitialSize( wxSize( 325, 100 ) );	
+	m_corrList->SetInitialSize( wxSize( 300, 100 ) );	
 	sizer_corr_v->Add( m_corrList, 0, wxALL|wxEXPAND, 5 );
+
+	wxBoxSizer *sizer_out = new wxBoxSizer( wxHORIZONTAL );
+	sizer_out->Add( new wxStaticText(szbox->GetStaticBox(), wxID_ANY, "Select outputs:"), 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
+	sizer_out->Add( new wxButton(szbox->GetStaticBox(), ID_btnAddOutput, "Add...", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL|wxALIGN_CENTER_VERTICAL, 2 );
+	sizer_out->Add( new wxButton(szbox->GetStaticBox(), ID_btnRemoveOutput, "Remove", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL|wxALIGN_CENTER_VERTICAL, 2 );
+	
+	wxBoxSizer *sizer_out_v = new wxBoxSizer( wxVERTICAL );
+	sizer_out_v->Add( sizer_out, 0, wxALL|wxEXPAND, 3 );
+	m_outputList = new wxListBox( szbox->GetStaticBox(), wxID_ANY );
+	m_outputList->SetInitialSize( wxSize( 200, 100 ) );	
+	sizer_out_v->Add( m_outputList, 0, wxALL|wxEXPAND, 5 );
+
 
 	wxBoxSizer *sizer_horiz = new wxBoxSizer( wxHORIZONTAL );
 	sizer_horiz->Add( sizer_inputs_v, 0, wxALL|wxEXPAND, 5 );
 	sizer_horiz->Add( sizer_corr_v, 0, wxALL|wxEXPAND, 5 );
+	sizer_horiz->Add( sizer_out_v, 0, wxALL|wxEXPAND, 5 );
 	szbox->Add( sizer_horiz );
 
 	m_N = new wxNumericCtrl(szbox->GetStaticBox(), ID_m_N, 100, wxNumericCtrl::INTEGER);
@@ -861,20 +874,13 @@ StochasticPanel::StochasticPanel(wxWindow *parent, Case *cc)
 	sizer_ctrls->Add( m_N );
 	sizer_ctrls->Add( new wxStaticText(szbox->GetStaticBox(), wxID_ANY, "Seed value (0 for random):"), 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
 	sizer_ctrls->Add( m_seed );
+	sizer_ctrls->Add( new wxButton(szbox->GetStaticBox(), ID_btnComputeSamples, "Compute samples...") );
 
 	szbox->Add( sizer_ctrls, 0, wxALL|wxEXPAND, 5 );
 
 	sizer_main->Add( szbox, 0, wxALL, 5 );
 	
-	m_outputList = new wxListBox( this, wxID_ANY );
-	sizer_main->Add( m_outputList );
-
-	
-	
 	wxBoxSizer *sizer_cmd = new wxBoxSizer( wxHORIZONTAL );
-	sizer_cmd->Add( new wxButton(this, ID_btnAddOutput, "Add output..."), 0, wxALL|wxEXPAND, 5 );
-	sizer_cmd->Add( new wxButton(this, ID_btnRemoveOutput, "Remove output"), 0, wxALL|wxEXPAND, 5 );
-	sizer_cmd->Add( new wxButton(this, ID_btnComputeSamples, "Compute samples..."), 0, wxALL|wxEXPAND, 5 );
 	sizer_cmd->Add( new wxButton(this, ID_Simulate, "Run simulation"), 0, wxALL|wxEXPAND, 5 );
 	sizer_cmd->Add( m_useThreads = new wxCheckBox( this, wxID_ANY, "Use threads"), 0, wxALL|wxEXPAND, 5 );
 	m_useThreads->SetValue( true );
