@@ -290,17 +290,22 @@ bool CaseWindow::RunBaseCase( )
 	if ( ex.Enabled )
 		ExcelExchange::RunExcelExchange( ex, m_case->Values(), &bcsim );
 
-	if ( bcsim.Invoke() )
+	SimulationDialog tpd( "Simulating...", 1 );
+
+	std::vector<Simulation*> list;
+	list.push_back( &bcsim );
+	int nok = Simulation::DispatchThreads( tpd, list, 1 );
+
+	tpd.Finalize();
+
+	if ( nok == 1 )
 	{
 		UpdateResults();
 		m_pageFlipper->SetSelection( 1 );
 		return true;
 	}
 	else
-	{
-		wxShowTextMessageDialog( wxJoin(bcsim.GetErrors(), '\n') );
 		return false;
-	}
 }
 
 void CaseWindow::UpdateResults()
@@ -311,7 +316,6 @@ void CaseWindow::UpdateResults()
 
 void CaseWindow::GenerateReport( )
 {
-
 
 	// run base case automatically 
 	if ( !RunBaseCase() )

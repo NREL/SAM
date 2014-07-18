@@ -36,9 +36,6 @@ P50P90Form::P50P90Form( wxWindow *parent, Case *cc )
 	sizer_top->Add( new wxButton( this, ID_SELECT_FOLDER, "...", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT ), 0, wxALL|wxALIGN_CENTER_VERTICAL, 3 );
 	sizer_top->Add( new wxButton( this, ID_SIMULATE, "Simulate P50/P90", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT ), 0, wxALL|wxALIGN_CENTER_VERTICAL, 3 );
 
-	m_output = new wxTextCtrl( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxTE_MULTILINE|wxTE_READONLY );
-	m_output->SetInitialSize( wxSize(600, 300) );
-
 	m_grid = new wxExtGridCtrl( this, wxID_ANY );
 	m_grid->CreateGrid( 1, 1 );
 	m_grid->SetRowLabelAlignment(wxALIGN_RIGHT,wxALIGN_CENTRE);
@@ -53,29 +50,28 @@ P50P90Form::P50P90Form( wxWindow *parent, Case *cc )
 	m_grid->EnableCopyPaste(true);
 	m_grid->EnablePasteEvent(false);
 		
-	m_layout = new wxSnapLayout( this, wxID_ANY );
-
-	wxBoxSizer *sizer_bot = new wxBoxSizer( wxHORIZONTAL );
-	sizer_bot->Add( m_grid, 1, wxALL|wxEXPAND, 0 );
-	sizer_bot->Add( m_layout, 1, wxALL|wxEXPAND, 0 );
-
 	wxBoxSizer *sizer_main = new wxBoxSizer( wxVERTICAL );
 	sizer_main->Add( sizer_top, 0, wxALL|wxEXPAND, 5 );
-	sizer_main->Add( m_output, 0, wxALL|wxEXPAND, 4 );
-	sizer_main->Add( sizer_bot, 1, wxALL|wxEXPAND, 4 );
+	sizer_main->Add( m_grid, 1, wxALL|wxEXPAND, 5 );
 	SetSizer( sizer_main );
 }
 
 void P50P90Form::OnSimulate( wxCommandEvent & )
 {
-	m_output->Clear();
+	int nthread = wxThread::GetCPUCount();
+
+	SimulationDialog tpd( "Scanning...", nthread );
+
 	std::vector<unsigned short> years;
 	wxArrayString folder_files; 
 	wxArrayString list;
-	
+		
 	wxDir::GetAllFiles( m_folder->GetValue(), &list );
 	for (int i=0;i<list.Count();i++)
 	{
+		tpd.Update( 0, (float)i/ (float)list.size() * 100.0f, wxString::Format("%d of %d", (int)(i+1), (int)list.size()  ) );
+		wxYield();	
+
 		wxString file = wxFileNameFromPath(list[i]);
 		wxString ext = wxFileName(file).GetExt().Lower();
 		if (ext != "tm2" && ext != "tm3" && ext != "csv" && ext != "smw" && ext != "smw" )
@@ -127,51 +123,63 @@ void P50P90Form::OnSimulate( wxCommandEvent & )
 	Simulation::ListAllOutputs( m_case->GetConfiguration(), 
 		&output_vars, &output_labels, &output_units, true );
 
-	// all single value output data for each run
-
-	matrix_t<double> output_data;
-	output_data.resize_fill(years.size(), output_vars.Count(), 0.0);
-
+	
+	tpd.NewStage( "Preparing simulations...", 1 );
+	
 	std::vector<Simulation*> sims;
-	size_t nyears = 0;
 	for (size_t n=0; n<years.size(); n++)
 	{
-
 		wxString weatherFile = m_folder->GetValue() + "/" + folder_files[n];
 
-		Simulation *sim = new Simulation( m_case, wxString::Format("year %d", (int)years[n]) );
+		Simulation *sim = new Simulation( m_case, wxString::Format("Year %d", (int)years[n]) );
+		sims.push_back( sim );
+
 		sim->Override( "use_specific_weather_file", VarValue(true) );
 		sim->Override( "user_specified_weather_file", VarValue(weatherFile) );
 
-		m_output->AppendText( wxString::Format("Simulating %d (%d of %d)...\n", (int)years[n], n+1, (int)years.size() ) );
-		if ( sim->Invoke( true ) )
-		{
-			nyears++;
-			// save all single value outputs
-			for( size_t i=0;i<output_vars.size();i++ )
-				if ( VarValue *vv = sim->GetOutput( output_vars[i] ) )
-					output_data.at( n, i ) = (double)vv->Value();
+		if ( !sim->Prepare() )
+			wxMessageBox( wxString::Format("internal error preparing simulation %d for P50 / P90", (int)(n+1)) );
+
+		tpd.Update( 0, (float)n / (float)years.size() * 100.0f, wxString::Format("%d of %d", (int)(n+1), (int)years.size()  ) );
+		
+		if ( tpd.Canceled() )
+		{	
+			// abort right away, delete sims, and return
+			for( size_t i=0;i<sims.size();i++ )
+				delete sims[i];
+
+			return;
 		}
-		else
-			m_output->AppendText( wxJoin(sim->GetErrors(),'\n') );
-
-		sims.push_back( sim );
-
-		wxSafeYield( 0, true );
 	}
 
 
+	tpd.NewStage( "Calculating..." );
+	size_t nyearsok = Simulation::DispatchThreads( tpd, sims, nthread );
+	
+	tpd.NewStage( "Collecting outputs...", 1 );
+	// all single value output data for each run
+	matrix_t<double> output_data;
+	output_data.resize_fill(years.size(), output_vars.Count(), 0.0);
+	for( size_t n=0;n<sims.size();n++ )
+	{
+		for( size_t i=0;i<output_vars.size();i++ )
+			if ( VarValue *vv = sims[n]->GetOutput( output_vars[i] ) )
+				output_data.at( n, i ) = (double)vv->Value();
+			
+		tpd.Update( 0, (float)n / (float)sims.size() * 100.0f );
+	}
+	
 	matrix_t<double> output_stats;
 
 	enum{ P50E, P90E, MIN, MAX, STDDEV, P50N, P90N, NSTATS };
 	output_stats.resize_fill( output_vars.size(), NSTATS, 0.0 );
 	
 	//*** Compute P50, P90, etc ***//
-	if ( nyears == years.size() )
+	if ( nyearsok == years.size() )
 	{
-		m_output->AppendText("Processing results.\n");
-		std::vector<size_t> save_list;
+		tpd.NewStage( "Processing results...", 1 );
 
+		std::vector<size_t> save_list;
 		for ( size_t varIndex = 0; varIndex < output_vars.size(); varIndex++)
 		{
 			//Calculate P50, P90, etc.
@@ -191,6 +199,9 @@ void P50P90Form::OnSimulate( wxCommandEvent & )
 				if ( firstval != output_data(nn,varIndex) )
 					include = true;
 			}
+
+			tpd.Update( 0, (float)varIndex / (float)output_vars.size() * 100.0f );
+			wxYield();
 
 			if ( include )
 			{
@@ -273,46 +284,36 @@ void P50P90Form::OnSimulate( wxCommandEvent & )
 		m_grid->Layout();
 		m_grid->Thaw();
 
-		wxWindowList &wl = m_layout->GetChildren();
-		for( wxWindowList::iterator it = wl.begin(); it!=wl.end();++it )
-			(*it)->Destroy();
-
+		/*
 		std::vector<wxRealPoint> energy;
 		for( size_t n=0;n<years.size();n++ )
 			if ( VarValue *vv = sims[n]->GetOutput("annual_energy") )
 				energy.push_back( wxRealPoint( years[n], vv->Value() ) );
 
-		wxPLPlotCtrl *plot = new wxPLPlotCtrl( m_layout, wxID_ANY, wxDefaultPosition, wxSize(600,400) );
-		plot->AddPlot( new wxPLBarPlot( energy, "Annual Energy" ) );
-		plot->GetXAxis1()->SetWorldMin( plot->GetXAxis1()->GetWorldMin()-1 );
-		plot->GetXAxis1()->SetWorldMax( plot->GetXAxis1()->GetWorldMax()+1 );
-		plot->GetYAxis1()->SetWorldMin( 0 );
-		plot->SetLegendLocation( wxPLPlotCtrl::BOTTOM );
-		plot->Invalidate();
-
-		m_layout->Add( plot );
+		m_plot->DeleteAllPlots();
+		m_plot->AddPlot( new wxPLBarPlot( energy, "Annual Energy" ) );
+		m_plot->GetXAxis1()->SetWorldMin( m_plot->GetXAxis1()->GetWorldMin()-1 );
+		m_plot->GetXAxis1()->SetWorldMax( m_plot->GetXAxis1()->GetWorldMax()+1 );
+		m_plot->GetYAxis1()->SetWorldMin( 0 );
+		m_plot->SetLegendLocation( wxPLPlotCtrl::BOTTOM );
+		m_plot->Invalidate();
+		*/
 	}
 	else
 	{
-		wxMessageBox("not all simulations succeeded.  statistics not calculated.");
+		tpd.Log(wxString::Format("Not all simulations completed successfully. (%d of %d OK)", (int)nyearsok, (int)years.size()));
 	}
-
-	/*
-	wxFrame *frame = new wxFrame( this, wxID_ANY, wxString::Format("Simulation results for year %d", years[0] ), wxDefaultPosition, wxSize(700, 400 ) );
-	ResultsViewer *viwer = new ResultsViewer( frame, wxID_ANY );
-	viwer->Setup( sims[0] );
-	frame->Show();
-	*/
 
 	for( size_t i=0;i<sims.size();i++ )
 		delete sims[i];
+
+
+	tpd.Finalize();
 }
 
 void P50P90Form::OnSelectFolder( wxCommandEvent & )
 {
-	wxDirDialog dlg( this, "Choose weather file folder", m_folder->GetValue(),
-		wxDD_DEFAULT_STYLE | wxDD_DIR_MUST_EXIST );
-
-	if ( dlg.ShowModal() == wxID_OK )
-		m_folder->ChangeValue( dlg.GetPath() );
+	wxString dir = wxDirSelector("Choose weather file folder", m_folder->GetValue());
+	if ( !dir.IsEmpty() )
+		m_folder->ChangeValue( dir );
 }

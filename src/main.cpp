@@ -1498,6 +1498,12 @@ int SamApp::OnExit()
 	return 0;
 }
 
+bool SamApp::OnExceptionInMainLoop()
+{
+	wxMessageBox("SAM unhandled exception occurred.");
+	return false;
+}
+
 void SamApp::Restart()
 {
 	// reload all forms, variables, callbacks, equations
