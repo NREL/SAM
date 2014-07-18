@@ -27,6 +27,7 @@ public:
 };
 
 class ThreadProgressDialog;
+class SimulationDialog;
 
 class Simulation
 {
@@ -76,7 +77,10 @@ public:
 	static bool ListAllOutputs( ConfigInfo *cfg, 
 		wxArrayString *names, wxArrayString *labels, wxArrayString *units, bool single_values = false );
 
-	static int DispatchThreads( ThreadProgressDialog *tpd, 
+	static int DispatchThreads( ThreadProgressDialog &tpd, 
+		std::vector<Simulation*> &sims, 
+		int nthread );
+	static int DispatchThreads( SimulationDialog &tpd, 
 		std::vector<Simulation*> &sims, 
 		int nthread );
 
@@ -113,7 +117,8 @@ public:
 	void OnDialogClose(wxCloseEvent &evt);
 	void SetButtonText( const wxString &txt );
 	bool HasMessages();
-		
+
+
 protected:
 	bool m_canceled;
 	std::vector<wxStaticText*> m_labels;
@@ -122,8 +127,38 @@ protected:
 	wxStaticText *m_status;
 	wxTextCtrl *m_log;
 	wxMetroButton *m_button;
+	wxFrame *m_transp;
 	
 	DECLARE_EVENT_TABLE()
+};
+
+class SimulationDialog
+{
+public:
+	SimulationDialog( const wxString &message=wxEmptyString, int nthreads = 0 );
+	~SimulationDialog();
+	
+	// update the Status title and visiblity of bars.  Calls yield.
+	void NewStage( const wxString &title, int nbars_to_show=-1 );
+	
+	// if messages appeared during simulation,
+	// show the dialog as modal
+	void Finalize();
+	
+	// update progress, calls yield
+	void Update(int ThreadNum, float percent, const wxString &label = wxEmptyString );
+
+	// these don't call yield
+	void Log( const wxArrayString &list ) { m_tpd->Log(list); }
+	void Log( const wxString &s ) { m_tpd->Log(s); }
+
+	bool Canceled() { return m_tpd->IsCanceled(); }
+		
+	ThreadProgressDialog &Dialog() { return *m_tpd; }
+	
+private:
+	ThreadProgressDialog *m_tpd;
+	wxFrame *m_transp;
 };
 
 

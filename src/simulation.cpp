@@ -613,7 +613,7 @@ bool Simulation::InvokeWithHandler( ISimulationHandler *ih )
 	}
 
 	ssc_data_free( p_data );
-	
+		
 	return m_errors.size() == 0;
 
 }
@@ -818,7 +818,14 @@ public:
 	}
 };
 
-int Simulation::DispatchThreads( ThreadProgressDialog *tpd, 
+int Simulation::DispatchThreads( SimulationDialog &tpd, 
+	std::vector<Simulation*> &sims, 
+	int nthread )
+{
+	return DispatchThreads( tpd.Dialog(), sims, nthread );
+} 
+
+int Simulation::DispatchThreads( ThreadProgressDialog &tpd, 
 	std::vector<Simulation*> &sims, 
 	int nthread )
 {	
@@ -861,15 +868,15 @@ int Simulation::DispatchThreads( ThreadProgressDialog *tpd,
 		for (i=0;i<threads.size();i++)
 		{
 			float per = threads[i]->GetPercent();
-			tpd->Update(i, per);
+			tpd.Update(i, per);
 			wxArrayString msgs = threads[i]->GetNewMessages();
-			tpd->Log( msgs );
+			tpd.Log( msgs );
 		}
 
 		wxGetApp().Yield();
 
 		// if dialog's cancel button was pressed, send cancel signal to all threads
-		if (tpd->IsCanceled())
+		if (tpd.IsCanceled())
 		{
 			for (i=0;i<threads.size();i++)
 				threads[i]->Cancel();
@@ -885,6 +892,14 @@ int Simulation::DispatchThreads( ThreadProgressDialog *tpd,
 	{
 		threads[i]->Wait();
 		nok += threads[i]->NOk();
+
+		// update final progress
+		float per = threads[i]->GetPercent();
+		tpd.Update(i, per);
+
+		// get any final simulation messages
+		wxArrayString msgs = threads[i]->GetNewMessages();
+		tpd.Log( msgs );
 	}
 	
 	// delete all the thread objects
@@ -1033,3 +1048,51 @@ void ThreadProgressDialog::OnDialogClose(wxCloseEvent &evt)
 }
 
 
+SimulationDialog::SimulationDialog( const wxString &message, int nthread )
+{
+	if ( nthread < 1 )
+		nthread = wxThread::GetCPUCount();
+
+	m_transp = CreateTransparentOverlay( SamApp::Window() );
+	m_tpd = new ThreadProgressDialog( m_transp, nthread );
+	m_tpd->CenterOnParent();
+	m_tpd->Show();
+	if ( message.IsEmpty() )
+		m_tpd->Status( "Simulating...");
+	else
+		m_tpd->Status( message );
+	m_tpd->ShowBars( 1 );
+	wxYield();
+}
+
+SimulationDialog::~SimulationDialog()
+{
+	m_tpd->Destroy();
+	m_transp->Destroy();
+}
+
+void SimulationDialog::Finalize()
+{			
+	if ( m_tpd->HasMessages() )
+	{
+		m_tpd->Status( "Simulations finished with notices." );
+		m_tpd->ShowBars( 0 );
+		m_tpd->SetButtonText( "Close" );
+		m_tpd->Hide();
+		m_tpd->ShowModal();
+	}
+}
+
+void SimulationDialog::Update(int ThreadNum, float percent, const wxString &label )
+{
+	m_tpd->Update(ThreadNum, percent, label);
+	wxYield();
+}
+
+void SimulationDialog::NewStage( const wxString &title, int nbars_to_show )
+{
+	m_tpd->Reset();
+	m_tpd->Status( title );
+	m_tpd->ShowBars( nbars_to_show );
+	wxYield();
+}

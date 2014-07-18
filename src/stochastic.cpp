@@ -1332,13 +1332,7 @@ void StochasticPanel::Simulate()
 	if ( m_useThreads->GetValue() )
 		nthread = wxThread::GetCPUCount();
 
-	wxFrame *transp = CreateTransparentOverlay( SamApp::Window() );
-	ThreadProgressDialog *tpd = new ThreadProgressDialog( transp, nthread );
-	tpd->CenterOnParent();
-	tpd->Show();
-	tpd->Status( "Preparing simulations...");
-	tpd->ShowBars( 1 );
-	wxYield();
+	SimulationDialog tpd( "Preparing simulations...", nthread );
 
 	std::vector<Simulation*> sims;
 	for( size_t i=0;i<m_sd.N;i++ )
@@ -1355,30 +1349,20 @@ void StochasticPanel::Simulate()
 		if ( !s->Prepare() )
 			wxMessageBox( wxString::Format("internal error preparing simulation %d for stochastic", (int)(i+1)) );
 
-		tpd->Update( 0, (float)i / (float)m_sd.N * 100.0f, wxString::Format("%d of %d", (int)(i+1), (int)m_sd.N  ) );
-		wxYield();
-
-		if ( tpd->IsCanceled() )
-			break;
-	}
-
-	if ( tpd->IsCanceled() )
-	{
-		for( size_t i=0;i<sims.size();i++ )
+		tpd.Update( 0, (float)i / (float)m_sd.N * 100.0f, wxString::Format("%d of %d", (int)(i+1), (int)m_sd.N  ) );
+		
+		if ( tpd.Canceled() )
+		{
+			for( size_t i=0;i<sims.size();i++ )
 				delete sims[i];
-
-		tpd->Destroy();
-		transp->Destroy();
-		return;
+			return;
+		}
 	}
 
 	int time_prep = sw.Time();
 	sw.Start();
 	
-	tpd->Reset();
-	tpd->Status( "Calculating...");
-	tpd->ShowBars( nthread );
-	wxYield();
+	tpd.NewStage( "Calculating...");
 
 	size_t nok = 0;
 	if ( nthread > 1 )
@@ -1390,8 +1374,7 @@ void StochasticPanel::Simulate()
 			if( sims[i]->Invoke( true, false ) )
 				nok++;
 			
-			tpd->Update( 0, (float)i / (float)m_sd.N * 100.0f );
-			wxYield();
+			tpd.Update( 0, (float)i / (float)m_sd.N * 100.0f );
 		}
 	}
 
@@ -1421,11 +1404,7 @@ void StochasticPanel::Simulate()
 
 	// compute stepwise regression
 	
-	tpd->Reset();
-	tpd->Status( "Regressing outputs...");
-	tpd->ShowBars( 1 );
-	wxYield();
-	
+	tpd.NewStage( "Regressing outputs...", 1 );	
 	Stepwise stw;
 	std::vector<double> data;
 	data.resize( m_sd.N );
@@ -1446,8 +1425,7 @@ void StochasticPanel::Simulate()
 
 		stw.SetOutputVector( data );
 		
-		tpd->Update( 0, (float)i / (float)output_vars.size() * 100.0f );
-		wxYield();
+		tpd.Update( 0, (float)i / (float)output_vars.size() * 100.0f );
 
 		if ( stw.Exec() )
 		{
@@ -1457,7 +1435,7 @@ void StochasticPanel::Simulate()
 					&m_regressions(i,j).beta );
 		}
 		else
-			tpd->Log( "Error running stepwise regression for: " + output_labels[i]);
+			tpd.Log( "Error running stepwise regression for: " + output_labels[i]);
 	}
 
 	// update results
@@ -1529,24 +1507,14 @@ void StochasticPanel::Simulate()
 	wxYield();
 	
 	if ( nok != m_sd.N )
-		tpd->Log("Not all simulations completed successfully.");
+		tpd.Log("Not all simulations completed successfully.");
 
-	if ( tpd->HasMessages() )
-	{
-		tpd->Status( "Simulations finished with notices." );
-		tpd->ShowBars( 0 );
-		tpd->SetButtonText( "Close" );
-		tpd->Hide();
-		tpd->ShowModal();
-	}
-
-	tpd->Destroy();
-	transp->Destroy();
+	tpd.Finalize();
 }
 
 bool ComputeLHSInputVectors( StochasticData &sd, matrix_t<double> &table, wxArrayString *errors)
 {
-	int i, n, j, r, c;
+	int i, n, j;
 
 	if (sd.N < 1)
 	{
@@ -1604,7 +1572,7 @@ bool ComputeLHSInputVectors( StochasticData &sd, matrix_t<double> &table, wxArra
 	{
 		std::vector<double> values;
 		lhs.Retrieve( wxString((char)('a'+i)), values);
-		if (values.size() != sd.N)
+		if (values.size() != (size_t)sd.N)
 		{
 			if(errors) errors->Add(wxString::Format("Incorrect number of LHS values (%d) retrieved for input vector %d\n", (int)values.size(), i));
 			return false;

@@ -200,7 +200,7 @@ bool CaseEvaluator::UpdateLibrary( const wxString &trigger, wxArrayString &chang
 
 
 Case::Case()
-	: m_config(0), m_baseCase( this, "Base Case Simulation" ), m_parametric( this )
+	: m_config(0), m_baseCase( this, wxEmptyString ), m_parametric( this )
 {
 }
 
