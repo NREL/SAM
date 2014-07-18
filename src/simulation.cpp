@@ -277,19 +277,23 @@ wxString Simulation::GetUnits( const wxString &var )
 
 class SingleThreadHandler : public ISimulationHandler
 {
+	wxArrayString errors, warnings;
+	wxProgressDialog *progdlg;
 public:
 	SingleThreadHandler() {
 		progdlg = 0;
-		errors = 0;
-		warnings = 0;
-
 	};
+
+	virtual int GetErrorCount() { return errors.size(); }
+	void SetProgressDialog( wxProgressDialog *d ) { progdlg = d; }
+	virtual wxArrayString GetErrors() { return errors; }
+	virtual wxArrayString GetWarnings() { return warnings; }
 	
 	virtual void Warn( const wxString &s ) { 
-		if (warnings) warnings->Add( s );
+		warnings.Add( s );
 	}
 	virtual void Error( const wxString &s ) { 
-		if (errors) errors->Add( s );
+		errors.Add( s );
 	}
 	virtual void Update( float percent, const wxString &s ) {
 		if( progdlg) progdlg->Update( (int)percent, s );
@@ -368,10 +372,6 @@ public:
 			return false;
 	}
 
-	wxProgressDialog *progdlg;
-	wxArrayString *errors;
-	wxArrayString *warnings;
-	bool silent;
 };
 
 static ssc_bool_t ssc_invoke_handler( ssc_module_t p_mod, ssc_handler_t p_handler,
@@ -409,26 +409,23 @@ static ssc_bool_t ssc_invoke_handler( ssc_module_t p_mod, ssc_handler_t p_handle
 bool Simulation::Invoke( bool silent, bool prepare )
 {
 	SingleThreadHandler sc;
-	if (!silent)
+	wxProgressDialog *prog = 0;
+	if ( !silent )
 	{
-		sc.progdlg = new wxProgressDialog("Simulation", "in progress", 100,
+		prog = new wxProgressDialog("Simulation", "in progress", 100,
 			SamApp::CurrentActiveWindow(),  // progress dialog parent is current active window - works better when invoked scripting
 			wxPD_APP_MODAL | wxPD_SMOOTH | wxPD_CAN_ABORT);
-#ifdef __WXMSW__
-		sc.progdlg->SetIcon(wxICON(appicon));
-#endif
-		sc.progdlg->Show();
-	}
-	sc.errors = &m_errors;
-	sc.warnings = &m_warnings;
+		prog->Show();
 
+		sc.SetProgressDialog( prog );
+	}
 
 	if ( prepare && !Prepare() )
 		return false;
 	
 	bool ok =  InvokeWithHandler( &sc );
 
-	if (!silent) delete sc.progdlg;
+	if ( prog ) prog->Destroy();
 
 	return ok;
 }
@@ -479,6 +476,9 @@ bool Simulation::InvokeWithHandler( ISimulationHandler *ih )
 {
 	ssc_data_t p_data = ssc_data_create();
 
+	if ( m_simlist.size() == 0 )
+		m_errors.Add("No simulation compute modules defined for this configuration.");
+	
 	for( size_t kk=0;kk<m_simlist.size();kk++ )
 	{
 		ssc_module_t p_mod = ssc_module_create( m_simlist[kk].c_str() );
@@ -554,15 +554,26 @@ bool Simulation::InvokeWithHandler( ISimulationHandler *ih )
 		}
 
 		// write a debug input file if using a single threaded
-		//ih->WriteDebugFile( m_simlist[kk], p_mod, p_data );
+		ih->WriteDebugFile( m_simlist[kk], p_mod, p_data );
 		
-		if ( !ssc_module_exec_with_handler( p_mod, p_data, ssc_invoke_handler, ih ))
+		ssc_bool_t ok = ssc_module_exec_with_handler( p_mod, p_data, ssc_invoke_handler, ih );
+
+		
+		// copy over warnings and errors from the simulation
+		wxArrayString list = ih->GetErrors();
+		for( size_t k=0;k<list.size();k++ )
+			m_errors.Add( list[k] );
+
+		list = ih->GetWarnings();
+		for( size_t k=0;k<list.size();k++ )
+			m_warnings.Add( list[k] );
+
+		if ( !ok )
 		{
-			m_errors.Add(wxString::Format("simulation did not succeed - compute module %s failed", m_simlist[kk].c_str() ));
+			m_errors.Add( "Simulation " + m_simlist[kk] + " failed." );
 			if ( m_warnings.Count() > 0)
 				for (size_t i=0; i<m_warnings.Count();i++)
-					m_errors.Add(wxString::Format("compute module %s warning[%d] = %s", 
-						(const char*)m_simlist[kk].c_str(), i, (const char*)m_warnings[i].c_str() ));
+					m_errors.Add(wxString::Format("Warning %d: %s", (int)(i+1), (const char*)m_warnings[i].c_str() ));
 		}
 		else
 		{
@@ -713,6 +724,7 @@ class SimulationThread : public wxThread, ISimulationHandler
 	wxString m_curName;
 	float m_percent;
 	int m_threadId;
+	wxArrayString m_errors, m_warnings;
 public:
 
 	SimulationThread( int id )
@@ -754,19 +766,29 @@ public:
 		wxMutexLocker _lock(m_nokLock);
 		return m_nok;
 	}
+	
+	virtual wxArrayString GetErrors() { return m_errors; }
+	virtual wxArrayString GetWarnings() { return m_warnings; }
+	virtual int GetErrorCount() { return m_errors.size(); }
+
+	void Message( const wxString &text )
+	{
+		wxMutexLocker _lock(m_logLock);
+		wxString L( m_curName );
+		if ( !L.IsEmpty() ) L += ": ";
+		m_messages.Add( L + text );
+	}
 
 	virtual void Warn( const wxString &text )
 	{
-		wxMutexLocker _lock(m_logLock);
-		wxString prefix( m_curName );
-		if ( prefix.IsEmpty() )
-			prefix.Printf( "Process %d", (int)(m_threadId+1) );
-		m_messages.Add( prefix + ": " + text );
+		m_warnings.Add( text );
+		Message( text );
 	}
 
 	virtual void Error( const wxString &text )
 	{
-		Warn(text);
+		m_errors.Add( text );		
+		Message( text );
 	}
 
 	virtual void Update( float percent, const wxString &text )
@@ -784,6 +806,8 @@ public:
 
 	virtual bool WriteDebugFile( const wxString &, ssc_module_t, ssc_data_t )
 	{
+		// don't write a debug file here... although we could
+		// write to different files given the simulation ID #?
 		return false;
 	}
 	
@@ -804,6 +828,8 @@ public:
 			m_current++;
 			m_currentLock.Unlock();
 			m_curName = m_list[i]->GetName();
+			m_errors.Clear();
+			m_warnings.Clear();
 			if ( m_list[i]->InvokeWithHandler( this ) )
 			{
 				wxMutexLocker _lock(m_nokLock);
@@ -1071,11 +1097,13 @@ SimulationDialog::~SimulationDialog()
 	m_transp->Destroy();
 }
 
-void SimulationDialog::Finalize()
+void SimulationDialog::Finalize( const wxString &title )
 {			
 	if ( m_tpd->HasMessages() )
 	{
-		m_tpd->Status( "Simulations finished with notices." );
+		if ( title.IsEmpty() ) m_tpd->Status( "Simulations finished with notices." );
+		else m_tpd->Status( title );
+
 		m_tpd->ShowBars( 0 );
 		m_tpd->SetButtonText( "Close" );
 		m_tpd->Hide();

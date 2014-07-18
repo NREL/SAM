@@ -24,6 +24,10 @@ public:
 	virtual void Update( float percent, const wxString & ) = 0;
 	virtual bool IsCancelled() = 0;
 	virtual bool WriteDebugFile( const wxString &, ssc_module_t, ssc_data_t ) = 0;
+
+	virtual int GetErrorCount() = 0;
+	virtual wxArrayString GetErrors() = 0;
+	virtual wxArrayString GetWarnings() = 0;
 };
 
 class ThreadProgressDialog;
@@ -143,7 +147,7 @@ public:
 	
 	// if messages appeared during simulation,
 	// show the dialog as modal
-	void Finalize();
+	void Finalize( const wxString &custom_title = wxEmptyString );
 	
 	// update progress, calls yield
 	void Update(int ThreadNum, float percent, const wxString &label = wxEmptyString );

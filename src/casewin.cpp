@@ -292,11 +292,20 @@ bool CaseWindow::RunBaseCase( )
 
 	SimulationDialog tpd( "Simulating...", 1 );
 
-	std::vector<Simulation*> list;
-	list.push_back( &bcsim );
-	int nok = Simulation::DispatchThreads( tpd, list, 1 );
+	int nok = 0;
+	if ( bcsim.Prepare() )
+	{
+		std::vector<Simulation*> list;
+		list.push_back( &bcsim );
+		nok += Simulation::DispatchThreads( tpd, list, 1 );
+	}
+	else
+	{
+		tpd.Log( bcsim.GetErrors() );
+		tpd.Log("Error preparing simulation.");
+	}
 
-	tpd.Finalize();
+	tpd.Finalize( nok == 0 ? "Simulation failed." : "Simulation finished with warnings." );
 
 	if ( nok == 1 )
 	{

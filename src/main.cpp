@@ -102,7 +102,7 @@ enum { __idFirst = wxID_HIGHEST+592,
 	__idCaseMenuLast,
 	__idInternalFirst,
 		ID_INTERNAL_IDE, ID_INTERNAL_RESTART, ID_INTERNAL_SHOWLOG, 
-		ID_INTERNAL_DATAFOLDER, ID_INTERNAL_CASE_VALUES, ID_SAVE_CASE_DEFAULTS,
+		ID_INTERNAL_DATAFOLDER, ID_INTERNAL_CASE_VALUES, ID_SAVE_CASE_DEFAULTS, ID_INTERNAL_INVOKE_SSC_DEBUG,
 	__idInternalLast
 };
 
@@ -198,6 +198,7 @@ MainWindow::MainWindow()
 	m_topBook->SetSelection( 0 );
 	
 	std::vector<wxAcceleratorEntry> entries;
+	entries.push_back( wxAcceleratorEntry( wxACCEL_SHIFT, WXK_F5,  ID_INTERNAL_INVOKE_SSC_DEBUG ) );
 	entries.push_back( wxAcceleratorEntry( wxACCEL_SHIFT, WXK_F7,  ID_INTERNAL_IDE ) ) ;
 	entries.push_back( wxAcceleratorEntry( wxACCEL_SHIFT, WXK_F8,  ID_INTERNAL_RESTART ) );
 	entries.push_back( wxAcceleratorEntry( wxACCEL_SHIFT, WXK_F4,  ID_INTERNAL_SHOWLOG ) );
@@ -342,6 +343,13 @@ void MainWindow::OnInternalCommand( wxCommandEvent &evt )
 {
 	switch (evt.GetId())
 	{
+	case ID_INTERNAL_INVOKE_SSC_DEBUG:
+		if ( Case *cc = GetCurrentCase() )
+		{
+			if (!cc->BaseCase().Invoke())
+				wxShowTextMessageDialog( wxJoin( cc->BaseCase().GetErrors(), '\n') );
+		}
+		break;
 	case ID_INTERNAL_IDE:
 		ShowIDEWindow();
 		break;
