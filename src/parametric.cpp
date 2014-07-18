@@ -273,8 +273,8 @@ ParametricViewer::ParametricViewer(wxWindow *parent, Case *cc) : wxPanel(parent,
 	main_sizer->SetSizeHints(this);
 
 	// check that base case is run and if not run 
-	if ((!m_case->BaseCase().Ok()) || (m_case->BaseCase().ListOutputs().Count() <= 0))
-		m_case->BaseCase().Invoke(true);
+//	if ((!m_case->BaseCase().Ok()) || (m_case->BaseCase().ListOutputs().Count() <= 0))
+//		m_case->BaseCase().Invoke(true);
 
 	if (m_grid_data->GetNumberRows() <= 0)
 	{
