@@ -53,7 +53,7 @@ OpenEIUtilityRateDialog::OpenEIUtilityRateDialog(wxWindow *parent, const wxStrin
 	cboResCom = new wxComboBox(this, ID_cboResCom, "All Schedules", wxPoint(513,6), wxSize(127,21), _data_cboResCom, wxCB_READONLY);
 
 	int cbo_ndx=0;
-	for (int i=0; i<_data_cboResCom.Count(); i++)
+	for (int i=0; i<(int)_data_cboResCom.Count(); i++)
 		if (_data_cboResCom[i].First(market) != wxNOT_FOUND)
 		{
 			cbo_ndx = i;
@@ -218,7 +218,7 @@ void OpenEIUtilityRateDialog::UpdateUtilityList()
 	}
 	else if (filter.Len() <= 2)
 	{
-		for (int i=0;i<mUtilityCompanies.Count();i++)
+		for (int i=0;i<(int)mUtilityCompanies.Count();i++)
 		{
 			if (mUtilityCompanies[i].Left( filter.Len() ).Lower() == filter)
 				lstUtilities->Append( mUtilityCompanies[i] );
@@ -226,7 +226,7 @@ void OpenEIUtilityRateDialog::UpdateUtilityList()
 	}
 	else
 	{
-		for (int i=0;i<mUtilityCompanies.Count();i++)
+		for (int i = 0; i<(int)mUtilityCompanies.Count(); i++)
 		{
 			if (mUtilityCompanies[i].Lower().Find(filter) >= 0)
 				lstUtilities->Append( mUtilityCompanies[i] );
@@ -242,7 +242,7 @@ void OpenEIUtilityRateDialog::UpdateRateList()
 	lstRates->Clear();
 
 	mGUIDList.Clear();
-	for (int i=0;i<mUtilityRates.size();i++)
+	for (int i = 0; i<(int)mUtilityRates.size(); i++)
 	{
 		if (cboResCom->GetSelection() == 1 && mUtilityRates[i].Sector.Lower() != "residential")
 			continue;
@@ -271,7 +271,7 @@ void OpenEIUtilityRateDialog::UpdateRateData()
 {
 	int idx = lstRates->GetSelection();
 	wxString guid;
-	if (idx >= 0 && idx < mGUIDList.Count())
+	if (idx >= 0 && idx < (int)mGUIDList.Count())
 		guid = mGUIDList[idx];
 
 	wxString ssel = lstRates->GetStringSelection();
@@ -309,7 +309,7 @@ void OpenEIUtilityRateDialog::UpdateRateData()
 
 			txtRateDescription->SetValue( desc );
 			
-			wxString rate_url = "http://dev.openei.org/apps/USURDB/rate/view/" + guid;
+			wxString rate_url = "http://en.openei.org/apps/USURDB/rate/view/" + guid;
 
 //			hypOpenEILink->SetURL("http://en.openei.org/wiki/Data:" + guid);
 			hypOpenEILink->SetURL(rate_url);
