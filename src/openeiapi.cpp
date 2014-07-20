@@ -35,6 +35,17 @@ void OpenEI::RateData::Reset()
 	Header.EnergyComments.Empty();
 	Header.DemandComments.Empty();
 
+	Applicability.peakkwcapacityhistory = 0;
+	Applicability.peakkwcapacitymax = 0;
+	Applicability.peakkwcapacitymin = 0;
+	Applicability.peakkwhusagehistory = 0;
+	Applicability.peakkwhusagemax = 0;
+	Applicability.peakkwhusagemin = 0;
+	Applicability.voltagemaximum = 0;
+	Applicability.voltageminimum = 0;
+	Applicability.voltagecategory.Empty();
+	Applicability.phasewiring.Empty();
+
 	NetMetering=false;
 	MinMonthlyCharge=0.0;
 	MinAnnualCharge=0.0;
@@ -241,6 +252,19 @@ bool OpenEI::RetrieveUtilityRateData(const wxString &guid, RateData &rate, wxStr
 	rate.EndDate = json_string(val.Item("enddate"));
 
 	rate.NetMetering = val.Item("usenetmetering").AsBool();
+
+	// Applicability
+	rate.Applicability.peakkwcapacityhistory = json_double(val.Item("peakkwcapacityhistory"));
+	rate.Applicability.peakkwcapacitymax = json_double(val.Item("peakkwcapacitymax"));
+	rate.Applicability.peakkwcapacitymin = json_double(val.Item("peakkwcapacitymin"));
+	rate.Applicability.peakkwhusagehistory = json_double(val.Item("peakkwhusagehistory"));
+	rate.Applicability.peakkwhusagemax = json_double(val.Item("peakkwhusagemax"));
+	rate.Applicability.peakkwhusagemin = json_double(val.Item("peakkwhusagemin"));
+	rate.Applicability.voltagemaximum = json_double(val.Item("voltagemaximum"));
+	rate.Applicability.voltageminimum = json_double(val.Item("voltageminimum"));
+	rate.Applicability.voltagecategory = json_string(val.Item("voltagecategory"));
+	rate.Applicability.phasewiring = json_string(val.Item("phasewiring"));
+
 
 	wxJSONValue v;
 	
