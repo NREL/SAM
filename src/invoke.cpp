@@ -1254,6 +1254,19 @@ void fcall_openeiapplyrate(lk::invoke_t &cxt)
 		cxt.result().hash_item("basicinformationcomments").assign(rate.Header.BasicInformationComments);
 		cxt.result().hash_item("energycomments").assign(rate.Header.EnergyComments);
 		cxt.result().hash_item("demandcomments").assign(rate.Header.DemandComments);
+		
+		// applicability
+		cxt.result().hash_item("peakkwcapacityhistory").assign(rate.Applicability.peakkwcapacityhistory);
+		cxt.result().hash_item("peakkwcapacitymax").assign(rate.Applicability.peakkwcapacitymax);
+		cxt.result().hash_item("peakkwcapacitymin").assign(rate.Applicability.peakkwcapacitymin);
+		cxt.result().hash_item("peakkwhusagehistory").assign(rate.Applicability.peakkwhusagehistory);
+		cxt.result().hash_item("peakkwhusagemax").assign(rate.Applicability.peakkwhusagemax);
+		cxt.result().hash_item("peakkwhusagemin").assign(rate.Applicability.peakkwhusagemin);
+		cxt.result().hash_item("voltagemaximum").assign(rate.Applicability.voltagemaximum);
+		cxt.result().hash_item("voltageminimum").assign(rate.Applicability.voltageminimum);
+		cxt.result().hash_item("voltagecategory").assign(rate.Applicability.voltagecategory);
+		cxt.result().hash_item("phasewiring").assign(rate.Applicability.phasewiring);
+		
 		// URLs
 		cxt.result().hash_item("rateurl").assign(rate.Header.RateURL);
 		cxt.result().hash_item("jsonurl").assign(rate.Header.JSONURL);

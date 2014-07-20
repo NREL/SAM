@@ -25,12 +25,27 @@ public:
 		int Version;
 	};
 
+	struct ApplicabilityInfo
+	{
+		double peakkwcapacitymin;
+		double peakkwcapacitymax;
+		double peakkwcapacityhistory;
+		double peakkwhusagemin;
+		double peakkwhusagemax;
+		double peakkwhusagehistory;
+		double voltageminimum;
+		double voltagemaximum;
+		wxString voltagecategory;
+		wxString phasewiring;
+	};
+
 	struct RateData
 	{
 		RateData();
 		void Reset();
 
 		RateInfo Header;
+		ApplicabilityInfo Applicability;
 
 		wxString StartDate;
 		wxString EndDate;
