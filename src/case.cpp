@@ -419,10 +419,18 @@ bool Case::LoadDefaults( wxString *pmsg )
 	wxString file = SamApp::GetRuntimePath() + "/defaults/" 
 		+ m_config->Technology + "_" + m_config->Financing;
 
-	if (!wxFileExists(file)) return false;
+	if (!wxFileExists(file))
+	{
+		if (pmsg != 0) *pmsg = "Defaults file does not exist";
+		return false;
+	}
 	
 	wxFFileInputStream in(file);
-	if (!in.IsOk()) return false;
+	if (!in.IsOk())
+	{
+		if (pmsg != 0) *pmsg = "Defaults file could not be read";
+		return false;
+	}
 
 	size_t not_found = 0;
 	size_t wrong_type = 0;
@@ -433,12 +441,13 @@ bool Case::LoadDefaults( wxString *pmsg )
 			"Variables: %d not found, %d wrong type, defaults has %d, config has %d\n\n"
 			"Would you like to update the defaults with the current values right now?\n"
 			"(Otherwise press Shift-F10 later)", (int)not_found, (int)wrong_type, (int)nread, (int)m_vals.size());
-
-	if ( pmsg != 0 )
-		*pmsg = message;
-	else if ( !ok || not_found > 0 || wrong_type > 0 || nread != m_vals.size() ) 
-		if ( wxYES == wxMessageBox( message, "Query", wxYES_NO) )
-			ok = SaveDefaults();
+	
+	if (!ok || not_found > 0 || wrong_type > 0 || nread != m_vals.size())
+	{
+		if (pmsg != 0) *pmsg = message;
+		if (wxYES == wxMessageBox(message, "Query", wxYES_NO))
+		ok = SaveDefaults();
+	}
 
 	return ok;
 }
