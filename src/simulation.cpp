@@ -824,9 +824,6 @@ public:
 		m_canceled = false;
 		for( size_t i=0;i<m_list.size();i++ )
 		{
-			m_currentLock.Lock();
-			m_current++;
-			m_currentLock.Unlock();
 			m_curName = m_list[i]->GetName();
 			m_errors.Clear();
 			m_warnings.Clear();
@@ -835,6 +832,10 @@ public:
 				wxMutexLocker _lock(m_nokLock);
 				m_nok++;
 			}
+
+			m_currentLock.Lock();
+			m_current++;
+			m_currentLock.Unlock();
 
 			wxMutexLocker _lock(m_cancelLock);
 			if (m_canceled) break;

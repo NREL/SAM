@@ -73,7 +73,17 @@ public:
 	virtual void Write( wxOutputStream & );
 	virtual bool Read( wxInputStream & );
 
-	bool LoadValuesFromExternalSource( wxInputStream &in, size_t &not_found, size_t &wrong_type, size_t &nread );
+	struct DefaultStatus
+	{
+		DefaultStatus() { nread = 0; }
+		wxArrayString wrong_type;
+		wxArrayString not_found;
+		size_t nread;
+		wxString error;
+	};
+
+	bool LoadValuesFromExternalSource( wxInputStream &in, 
+		DefaultStatus *di = 0 );
 
 	bool LoadDefaults( wxString *error_msg = 0 );
 	bool SaveDefaults( bool quiet = false );
