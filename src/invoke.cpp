@@ -9,6 +9,7 @@
 #include <wex/lkscript.h>
 #include <wex/dview/dvplotctrl.h>
 #include <wex/utils.h>
+#include <wex/csv.h>
 
 #ifdef __WXMSW__
 #include <wex/ole/excelauto.h>
@@ -1232,6 +1233,33 @@ bool applydiurnalschedule(lk::invoke_t &cxt, wxString sched_name, double sched[1
 	return true;
 }
 
+void fcall_urdbv3writerate(lk::invoke_t &cxt)
+{
+	LK_DOC("urdbv3writerate", "Writes rate data from current case to a file.", "(STRING:filename) : BOOLEAN");
+	Case *c = SamApp::Window()->GetCurrentCase();
+	ConfigInfo *ci = c->GetConfiguration();
+	wxString filename = cxt.arg(0).as_string();
+	wxCSVData csv;
+	int row = 0, col = 0;
+	for (VarInfoLookup::iterator it = ci->Variables.begin();
+		it != ci->Variables.end();	++it)
+	{
+		VarInfo &vi = *(it->second);
+		if (vi.Group == "Utility Rate")
+		{
+			wxString var_name = it->first;
+			// get value
+			if (VarValue *vv = c->Values().Get(var_name))
+			{
+				// write out csv with first row var name and second row var values
+				csv.Set(0, col, var_name);
+				csv.Set(1, col, vv->AsString());
+				col++;
+			}
+		}
+	}
+	cxt.result().assign(csv.WriteFile(filename));
+}
 
 void fcall_openeiapplyrate(lk::invoke_t &cxt)
 {
@@ -1630,6 +1658,7 @@ lk::fcall_t* invoke_uicallback_funcs()
 		fcall_solarprospector,
 		fcall_openeiutilityrateform,
 		fcall_openeiapplyrate,
+		fcall_urdbv3writerate,
 		fcall_editscene3d,
 		0 };
 	return (lk::fcall_t*)vec;
