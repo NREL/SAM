@@ -293,18 +293,18 @@ bool Case::Read( wxInputStream &_i )
 	wxString fin = in.ReadString();
 
 	if ( !SetConfiguration( tech, fin ) )
-		wxLogStatus("failed to set configuration when reading project file");
+	{
+		wxMessageBox( "Failed to set configuration when reading project file: " + tech + "/" + fin );
+		return false;
+	}
 
 	// read in the variable table
-	size_t not_found = 0;
-	size_t wrong_type = 0;
-	size_t nread = 0;
+	DefaultStatus di;
+	bool ok = LoadValuesFromExternalSource( _i, &di );
 
-	bool ok = LoadValuesFromExternalSource( _i, not_found, wrong_type, nread );
-
-	if ( !ok || not_found > 0 || wrong_type > 0 || nread != m_vals.size() )
+	if ( !ok || di.not_found.size() > 0 || di.wrong_type.size() > 0 || di.nread != m_vals.size() )
 		wxLogStatus("discrepancy reading in values from project file: %d not found, %d wrong type, %d read != %d in config",
-			(int)not_found, (int)wrong_type, (int)nread, (int)m_vals.size() );
+			(int)di.not_found.size(), (int)di.wrong_type.size(), (int)di.nread, (int)m_vals.size() );
 	
 	if ( ver <= 1 )
 	{
@@ -358,9 +358,9 @@ bool Case::SaveDefaults( bool quiet )
 	wxString file = SamApp::GetRuntimePath() + "/defaults/"
 		+ m_config->Technology + "_" + m_config->Financing;
 	
-	if ( !quiet && wxMessageBox("Save defaults for configuration:\n\n" 
+	if ( !quiet && wxNO == wxMessageBox("Save defaults for configuration:\n\n" 
 		+ m_config->Technology + " / " + m_config->Financing, 
-		"Save Defaults", wxYES_NO) != wxYES )
+		"Save Defaults", wxYES_NO) )
 		return false;
 
 	wxFFileOutputStream out(file);
@@ -372,19 +372,18 @@ bool Case::SaveDefaults( bool quiet )
 }
 
 bool Case::LoadValuesFromExternalSource( wxInputStream &in, 
-		size_t &not_found, size_t &wrong_type, size_t &nread )
+		DefaultStatus *di )
 {
-	not_found = 0;
-	wrong_type = 0;
-	nread = 0;
 	VarTable vt;
 	if (!vt.Read(in))
 	{
-		wxLogStatus("error reading inputs from external source");
+		wxString e("Error reading inputs from external source");
+		if ( di ) di->error = e;
+		wxLogStatus( e );
 		return false;
 	}
 
-	nread = vt.size();
+	if ( di ) di->nread = vt.size();
 
 	// copy over values for variables that already exist
 	// in the configuration
@@ -397,15 +396,21 @@ bool Case::LoadValuesFromExternalSource( wxInputStream &in,
 			if ( vv->Type() == it->second->Type() )
 				vv->Copy( *(it->second) );
 			else
-				wrong_type++;
+			{
+				if ( di ) di->wrong_type.Add( it->first );
+			}
 		}
 		else
-			not_found++;
+		{
+			if ( di ) di->not_found.Add( it->first );
+		}
 	}
 		
-	if (RecalculateAll() < 0)
+	if ( RecalculateAll() < 0 )
 	{
-		wxLogStatus("   error recalculating equations after loading values from external source");	
+		wxString e("Error recalculating equations after loading values from external source");	
+		if ( di ) di->error = e;
+		wxLogStatus( e );
 		return false;
 	}
 
@@ -418,35 +423,50 @@ bool Case::LoadDefaults( wxString *pmsg )
 
 	wxString file = SamApp::GetRuntimePath() + "/defaults/" 
 		+ m_config->Technology + "_" + m_config->Financing;
-
-	if (!wxFileExists(file))
+	
+	DefaultStatus di;
+	wxString message;
+	bool ok = false;
+	if ( wxFileExists(file) )
 	{
-		if (pmsg != 0) *pmsg = "Defaults file does not exist";
+		wxFFileInputStream in(file);
+		if (!in.IsOk())
+		{
+			if ( pmsg ) *pmsg = "Could not open defaults file";
+			return false;
+		}
+	
+		ok = LoadValuesFromExternalSource( in, &di );
+		message = wxString::Format("Defaults file is likely out of date.\n\n"
+				"Variables: %d not found, %d wrong type, defaults has %d, config has %d\n\n"
+				"Would you like to update the defaults with the current values right now?\n"
+				"(Otherwise press Shift-F10 later)\n", (int)di.not_found.size(),
+				(int)di.wrong_type.size(), (int)di.nread, (int)m_vals.size());
+
+		message += "\nWrong type: " + wxJoin( di.wrong_type, ',' );
+		message += "\nNot found: " + wxJoin( di.not_found, ',' );
+	}
+	else
+	{
+		if ( pmsg ) *pmsg = "Defaults file does not exist";
 		return false;
 	}
-	
-	wxFFileInputStream in(file);
-	if (!in.IsOk())
-	{
-		if (pmsg != 0) *pmsg = "Defaults file could not be read";
-		return false;
-	}
 
-	size_t not_found = 0;
-	size_t wrong_type = 0;
-	size_t nread = 0;
-
-	bool ok = LoadValuesFromExternalSource( in, not_found, wrong_type, nread );
-	wxString message = wxString::Format("Defaults file is likely out of date.\n\n"
-			"Variables: %d not found, %d wrong type, defaults has %d, config has %d\n\n"
-			"Would you like to update the defaults with the current values right now?\n"
-			"(Otherwise press Shift-F10 later)", (int)not_found, (int)wrong_type, (int)nread, (int)m_vals.size());
-	
-	if (!ok || not_found > 0 || wrong_type > 0 || nread != m_vals.size())
+	if ( pmsg != 0 )
+		*pmsg = message;
+	else if ( !ok || di.not_found.size() > 0 || di.wrong_type.size() > 0 || di.nread != m_vals.size() ) 
 	{
-		if (pmsg != 0) *pmsg = message;
-		if (wxYES == wxMessageBox(message, "Query", wxYES_NO))
-		ok = SaveDefaults();
+		if ( wxYES == wxShowTextMessageDialog( message, "Query", SamApp::Window(), wxDefaultSize, wxYES_NO) )
+		{
+			wxFFileOutputStream out( file );
+			if( out.IsOk() )
+			{
+				m_vals.Write( out );
+				wxMessageBox("Saved defaults for configuration.");
+			}
+			else
+				wxMessageBox("Error writing to defaults file: " + file );
+		}
 	}
 
 	return ok;
@@ -456,16 +476,15 @@ bool Case::LoadDefaults( wxString *pmsg )
 
 bool Case::SetConfiguration( const wxString &tech, const wxString &fin )
 {
+	wxArrayString notices;
+
 	// erase results
 	m_baseCase.Clear();
 
 	m_config = SamApp::Config().Find( tech, fin );
-		
+			
 	if ( !m_config )
-	{
-		wxMessageBox("Case error: could not find configuration information for " + tech + ", " + fin );
-		return false;
-	}
+		notices.Add("Case error: could not find configuration " + tech + ", " + fin );
 
 	// erase all input variables that are no longer in the current configuration
 	wxArrayString to_remove;
@@ -477,17 +496,58 @@ bool Case::SetConfiguration( const wxString &tech, const wxString &fin )
 
 	m_vals.Delete( to_remove );
 
-	// set up any remaining new variables with internal default values
-	// LoadDefaults is only called when creating new cases or explicitly resetting from case menu
+	// load the default values for the current
+	// configuration from the external data file
+	wxString file = SamApp::GetRuntimePath() + "/defaults/" 
+		+ m_config->Technology + "_" + m_config->Financing;
+	VarTable vt_defaults;
+	if ( wxFileExists(file))
+	{
+		wxFFileInputStream in(file);
+		if ( in.IsOk() )
+			vt_defaults.Read( in );
+	}
+
+	if ( vt_defaults.size() == 0 )
+		notices.Add( "No external default values located for case when setting configuration: " + tech + "/" + fin );
+	
+	// set up any remaining new variables with default values
 	for( VarInfoLookup::iterator it = vars.begin(); it != vars.end(); ++it )
-		if ( !m_vals.Get( it->first ) )
-			m_vals.Set( it->first, it->second->DefaultValue ); // will create new variable if it doesnt exist
-		
+	{
+		// find the default value for this variable.  first priority is externally saved default,
+		// then as a fallback use the internal default value
+		VarValue *val_default = vt_defaults.Get( it->first );
+		if ( val_default == 0 )
+		{
+			notices.Add( "No default value found for '" + it->first + "' in external file (" + tech + "/" + fin + ")" );
+			val_default = &( it->second->DefaultValue );
+		}
+
+		if ( it->second->Type != it->second->DefaultValue.Type() )
+			notices.Add("internal variable table type mismatch for " + it->first );
+
+		VarValue *vv = m_vals.Get( it->first );
+		if ( 0 == vv )
+		{
+			// if the variable doesn't exist in the current configuration
+			m_vals.Set( it->first, *val_default ); // will create new variable if it doesnt exist
+		}
+		else if ( vv->Type() != it->second->Type )
+		{
+			// if the variable exists but is of a different data type
+			vv->SetType( it->second->Type );
+			vv->Copy( *val_default );
+		}
+	}
+			
 	// reevalute all equations
 	CaseEvaluator eval( this, m_vals, m_config->Equations );
 	int n = eval.CalculateAll();
 	if ( n < 0 )
-		::wxShowTextMessageDialog( wxJoin( eval.GetErrors(), wxChar('\n') ) );
+	{
+		for( size_t i=0;i<eval.GetErrors().size();i++ )
+			notices.Add( eval.GetErrors()[i] );
+	}
 
 	// setup the local callback environment
 	// by merging all the functions defined
@@ -536,6 +596,10 @@ bool Case::SetConfiguration( const wxString &tech, const wxString &fin )
 	
 	// update UI
 	SendEvent( CaseEvent( CaseEvent::CONFIG_CHANGED, tech, fin ) );
+
+	
+	if ( notices.size() > 0 )
+		::wxShowTextMessageDialog( wxJoin( notices, wxChar('\n') ) );
 
 	return true;
 }
