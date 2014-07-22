@@ -1233,19 +1233,21 @@ bool applydiurnalschedule(lk::invoke_t &cxt, wxString sched_name, double sched[1
 	return true;
 }
 
-void fcall_urdbv3writerate(lk::invoke_t &cxt)
+void fcall_urdbv3saverate(lk::invoke_t &cxt)
 {
-	LK_DOC("urdbv3writerate", "Writes rate data from current case to a file.", "(STRING:filename) : BOOLEAN");
+	LK_DOC("urdbv3saverate", "Saves rate data from current case to a file.", "(STRING:filename) : BOOLEAN");
 	Case *c = SamApp::Window()->GetCurrentCase();
 	ConfigInfo *ci = c->GetConfiguration();
 	wxString filename = cxt.arg(0).as_string();
 	wxCSVData csv;
-	int row = 0, col = 0;
+	int col = 0;
 	for (VarInfoLookup::iterator it = ci->Variables.begin();
 		it != ci->Variables.end();	++it)
 	{
 		VarInfo &vi = *(it->second);
-		if (vi.Group == "Utility Rate")
+		if (vi.Flags & VF_CALCULATED || vi.Flags & VF_INDICATOR) continue;
+		if (vi.Group == "Utility Rate")	
+
 		{
 			wxString var_name = it->first;
 			// get value
@@ -1260,6 +1262,36 @@ void fcall_urdbv3writerate(lk::invoke_t &cxt)
 	}
 	cxt.result().assign(csv.WriteFile(filename));
 }
+
+void fcall_urdbv3loadrate(lk::invoke_t &cxt)
+{
+	LK_DOC("urdbv3loadrate", "Loads rate data from current case to a file.", "(STRING:filename) : BOOLEAN");
+	Case *c = SamApp::Window()->GetCurrentCase();
+	wxString filename = cxt.arg(0).as_string();
+	wxCSVData csv;
+	int col = 0;
+	bool ret_val = csv.ReadFile(filename);
+	if (ret_val)
+	{
+		for (col = 0; col < (int)csv.NumCols(); col++)
+		{
+			wxString var_name = csv.Get(0,col);
+			// get value
+			if (VarValue *vv = c->Values().Get(var_name))
+			{
+				wxString value = csv.Get(1, col);
+				ret_val &= VarValue::Parse(vv->Type(), value, *vv);
+				if (!ret_val)
+				{
+					wxMessageBox(wxString::Format("Issue assigning %s = %s", var_name.c_str(), value.c_str()));
+				}
+			}
+		}
+	}
+	cxt.result().assign(ret_val);
+}
+
+
 
 void fcall_openeiapplyrate(lk::invoke_t &cxt)
 {
@@ -1658,7 +1690,8 @@ lk::fcall_t* invoke_uicallback_funcs()
 		fcall_solarprospector,
 		fcall_openeiutilityrateform,
 		fcall_openeiapplyrate,
-		fcall_urdbv3writerate,
+		fcall_urdbv3saverate,
+		fcall_urdbv3loadrate,
 		fcall_editscene3d,
 		0 };
 	return (lk::fcall_t*)vec;
