@@ -437,14 +437,17 @@ bool Case::LoadDefaults( wxString *pmsg )
 		}
 	
 		ok = LoadValuesFromExternalSource( in, &di );
-		message = wxString::Format("Defaults file is likely out of date.\n\n"
-				"Variables: %d not found, %d wrong type, defaults has %d, config has %d\n\n"
+		message = wxString::Format("Defaults file is likely out of date: " + wxFileNameFromPath(file) + "\n\n"
+				"Variables: %d loaded but not in configuration, %d wrong type, defaults file has %d, config has %d\n\n"
 				"Would you like to update the defaults with the current values right now?\n"
 				"(Otherwise press Shift-F10 later)\n", (int)di.not_found.size(),
 				(int)di.wrong_type.size(), (int)di.nread, (int)m_vals.size());
 
-		message += "\nWrong type: " + wxJoin( di.wrong_type, ',' );
-		message += "\nNot found: " + wxJoin( di.not_found, ',' );
+		if ( di.wrong_type.size() == 0 ) di.wrong_type.Add( "(none)" );
+		if ( di.not_found.size() == 0 ) di.not_found.Add( "(none" );
+
+		message += "\nWrong data type: " + wxJoin( di.wrong_type, ',' );
+		message += "\nLoaded but don't exist in config: " + wxJoin( di.not_found, ',' );
 	}
 	else
 	{
