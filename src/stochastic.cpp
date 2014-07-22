@@ -8,7 +8,7 @@
 #include <wex/utils.h>
 
 #include "main.h"
-
+#include "casewin.h"
 #include "stochastic.h"
 
 char *lhs_dist_names[LHS_NUMDISTS] = {
@@ -917,7 +917,7 @@ void StochasticPanel::UpdateFromSimInfo()
 	m_outputList->Freeze();
 	m_outputList->Clear();
 	wxArrayString vars, labels;
-	Simulation::ListAllOutputs( m_case->GetConfiguration(), &vars, &labels, NULL, true );
+	Simulation::ListAllOutputs( m_case->GetConfiguration(), &vars, &labels, NULL, NULL, true );
 
 	for (int i=0;i<m_sd.Outputs.Count();i++)
 	{
@@ -1118,36 +1118,27 @@ void StochasticPanel::OnRemoveInput(wxCommandEvent &evt)
 }
 
 void StochasticPanel::OnAddOutput(wxCommandEvent &evt)
-{
-	wxArrayString list = m_sd.Outputs;
-	
-	wxDialog dlg( this, wxID_ANY, "Choose output metrics", wxDefaultPosition, wxSize(300,450), wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER );
-	wxCheckListBox *ckl = new wxCheckListBox( &dlg, wxID_ANY );
-	wxBoxSizer *sizer = new wxBoxSizer(wxVERTICAL);
-	sizer->Add( ckl, 1, wxALL|wxEXPAND, 5 );
-	sizer->Add( dlg.CreateButtonSizer( wxOK|wxCANCEL ), 0, wxALL, 10 );
-	dlg.SetSizer(sizer);
+{	
+	wxArrayString names, labels, units, groups;
+	Simulation::ListAllOutputs( m_case->GetConfiguration(), 
+		&names, &labels, &units, &groups, true );
 
-	wxArrayString vars, labels;
-	Simulation::ListAllOutputs( m_case->GetConfiguration(), &vars, &labels, NULL, true );
-
-	ckl->Freeze();
-	ckl->Clear();
-	ckl->Append( labels );
-
-	for (int i=0;i<(int)vars.Count();i++)
-		ckl->Check(i, (m_sd.Outputs.Index( vars[i] ) >= 0) );
-
-	ckl->Thaw();
-
-	int result = dlg.ShowModal();
-	if (result == wxID_OK)
+	for( size_t i=0;i<labels.size();i++ )
 	{
-		m_sd.Outputs.Clear();
-		for( size_t i=0;i<ckl->GetCount();i++ )
-			if ( ckl->IsChecked( i ) )
-				m_sd.Outputs.Add( vars[i] );
-			
+		if ( !units[i].IsEmpty() )
+			labels[i] += " (" + units[i] + ")";
+
+		if ( !groups[i].IsEmpty() )
+			labels[i] = groups[i] + "/" + labels[i];
+	}
+
+	wxSortByLabels(names, labels);
+	SelectVariableDialog dlg(this, "Select Output Metrics");
+	dlg.SetItems(names, labels);
+	dlg.SetCheckedNames( m_sd.Outputs );
+	if (dlg.ShowModal() == wxID_OK)
+	{
+		m_sd.Outputs = dlg.GetCheckedNames();			
 		UpdateFromSimInfo();
 	}
 }
@@ -1306,7 +1297,7 @@ void StochasticPanel::Simulate()
 	}
 
 	wxArrayString output_vars( m_sd.Outputs ), output_labels, output_units, ov, ol, ou;
-	Simulation::ListAllOutputs( m_case->GetConfiguration(), &ov, &ol, &ou, true );
+	Simulation::ListAllOutputs( m_case->GetConfiguration(), &ov, &ol, &ou, NULL, true );
 	for( size_t i=0;i<output_vars.size();i++ )
 	{
 		int idx = ov.Index( output_vars[i] );

@@ -661,15 +661,18 @@ static wxString InsertVariable( wxWindow *parent, bool with_curly = true )
 	for (int i=0;i<cur_cases.size();i++)
 	{
 		wxString case_name( SamApp::Project().GetCaseName( cur_cases[i] ) );
-		wxArrayString output_names, output_labels;
-		Simulation::ListAllOutputs( cur_cases[i]->GetConfiguration(), &output_names, &output_labels, 0 );
+		wxArrayString output_names, output_labels, output_groups;
+		Simulation::ListAllOutputs( cur_cases[i]->GetConfiguration(), &output_names, &output_labels, &output_groups, 0 );
 
 		for (int j=0;j<(int)output_labels.size();j++)
 		{
 			if (!output_labels[j].IsEmpty())
 			{
 				names.Add(output_names[j]);
-				labels.Add("[" + case_name + "] Outputs/" + output_labels[j]);
+				wxString G( output_groups[j] );
+				if ( !G.IsEmpty() )
+					G = " (" + G + ")";
+				labels.Add("[" + case_name + "] Outputs" + G + "/" + output_labels[j]);
 			}
 		}
 

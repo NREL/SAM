@@ -631,8 +631,8 @@ public:
 				labels.Add( label );
 			}
 
-			wxArrayString output_names, output_labels, output_units;
-			Simulation::ListAllOutputs( ci, &output_names, &output_labels, &output_units );
+			wxArrayString output_names, output_labels, output_units, output_groups;
+			Simulation::ListAllOutputs( ci, &output_names, &output_labels, &output_units, 0, false );
 			for( size_t i=0;i<output_names.size();i++ )
 			{
 				names.Add( output_names[i] );
@@ -640,7 +640,11 @@ public:
 				if ( !output_units[i].IsEmpty() )
 					label += " (" + output_units[i] + ")";
 
-				labels.Add( "@ Outputs/" + label );
+				wxString G( output_groups[i] );
+				if ( !G.IsEmpty() )
+					G = " (" + G + ")";
+
+				labels.Add( "@ Outputs" + G + "/" + label );
 			}
 
 			wxSortByLabels( names, labels );
