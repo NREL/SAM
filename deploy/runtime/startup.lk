@@ -15,6 +15,15 @@ addconfig( 'Generic CSP System', ['Commercial', 'Commercial PPA', 'Independent P
 addconfig( 'Generic System', ['Residential', 'Commercial', 'Commercial PPA', 'Independent Power Producer', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'Single Owner', 'None']);
 //addconfig( 'Wind BOS', [ 'None' ] );
 
+
+configopt( 'Flat Plate PV', { 'long_name'='Photovoltaics (Detailed)', 'short_name'='PV', 'description'='Detailed PV performance model using specific modules and inverters' } );
+configopt( 'PVWatts', { 'long_name'='Photovoltaics (PVWatts)', 'short_name'='PVWatts', 'description'='Simple PV evaluation using the NREL PVWatts V5 algorithm' } );
+configopt( 'High-X Concentrating PV', { 'long_name'='Photovoltaics (HCPV)', 'short_name'='HCPV', 'description'='High concentration photovoltaic system' } );
+configopt( 'Biopower', { 'long_name'='Biomass Energy', 'short_name'='Biomass', 'description'='Biomass combustion for power' } );
+configopt( 'Empirical Trough', { 'long_name'='Parabolic Trough (Empirical)', 'short_name'='Trough (Empr.)', 'description'='Empirical model for a CSP parabolic trough system' } );
+configopt( 'Physical Trough', { 'long_name'='Parabolic Trough (Physical)', 'short_name'='Trough (Phys.)', 'description'='Physical model for a CSP parabolic trough system' } );
+
+
 function setup_pvwatts_pages()
 {
 	addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource' } );

@@ -15,6 +15,7 @@
 #include <wx/webview.h>
 #include <wx/txtstrm.h>
 #include <wx/buffer.h>
+#include <wx/display.h>
 
 #include <wex/metro.h>
 #include <wex/icons/cirplus.cpng>
@@ -218,9 +219,8 @@ bool MainWindow::CreateProject()
 {
 	if ( !CloseProject()) return false;
 
-	m_topBook->SetSelection( 1 );
+	// This will switch tabs to case panel from welcome screen if needed
 	CreateNewCase();
-
 
 	//CreateNewCase( wxEmptyString, "Flat Plate PV", "Residential" );
 	//CreateNewCase( wxEmptyString, "PVWatts", "None" );
@@ -287,7 +287,10 @@ bool MainWindow::CreateNewCase( const wxString &_name, wxString tech, wxString f
 	}
 	
 	if ( 0 == SamApp::Config().Find( tech, fin ) )
+	{
+		wxMessageBox("Internal error: could not location configuration information for " + tech + "/" + fin );
 		return false;
+	}
 
 	if ( m_topBook->GetSelection() != 1 )
 		m_topBook->SetSelection( 1 ); // switch to cases view if currently in welcome window
@@ -874,7 +877,19 @@ void MainWindow::OnClose( wxCloseEvent &evt )
 		evt.Veto();
 		return;
 	}
+	
+	// save window position to settings
+	wxRect rr;
+	GetPosition( &rr.x,&rr.y );
+	GetClientSize( &rr.width, &rr.height );	
+	SamApp::Settings().Write( "window_x", rr.x);
+	SamApp::Settings().Write( "window_y", rr.y);
+	SamApp::Settings().Write( "window_width", rr.width);
+	SamApp::Settings().Write( "window_height", rr.height);
+	SamApp::Settings().Write( "window_maximized", IsMaximized() );
 
+
+	// destroy the window
 	wxGetApp().ScheduleForDestruction( this );
 }
 
@@ -1365,6 +1380,12 @@ ConfigInfo *ConfigDatabase::Find( const wxString &t, const wxString &f )
 	return 0;
 }
 
+ConfigOptions &ConfigDatabase::Options( const wxString &name )
+{
+static unordered_map<wxString,ConfigOptions, wxStringHash, wxStringEqual> m_opts;
+	return m_opts[name];
+}
+
 bool SamApp::OnInit()
 {
 	m_locale.Init(); // necessary for comma-formatting
@@ -1488,8 +1509,51 @@ extern void RegisterReportObjectTypes();
 
 	g_mainWindow = new MainWindow();
 	SetTopWindow( g_mainWindow );
-
 	g_mainWindow->Show();
+	
+	bool first_load = true;
+	wxString fl_key = wxString::Format("first_load_%d", VersionMajor()*10000+VersionMinor()*100+VersionMicro() );
+	Settings().Read(fl_key, &first_load, true);
+		
+	if ( first_load )
+	{
+		// register the first load
+		Settings().Write(fl_key, false);
+
+		// enable web update app 
+		wxConfig cfg("SamUpdate", "NREL");
+		cfg.Write("allow_web_updates", true);
+				
+		// after installing a new version, always show the reminders again until the user turns them off
+		Settings().Write( "show_reminder", true );
+	}
+	else
+	{
+		// restore window position
+		bool b_maximize = false;
+		int f_x,f_y,f_width,f_height;
+		Settings().Read("window_x", &f_x, -1);
+		Settings().Read("window_y", &f_y, -1);
+		Settings().Read("window_width", &f_width, -1);
+		Settings().Read("window_height", &f_height, -1);
+		Settings().Read("window_maximized", &b_maximize, false);
+		
+		if (b_maximize)
+			g_mainWindow->Maximize();
+		else
+		{
+			if ( wxDisplay::GetFromPoint( wxPoint(f_x,f_y) ) != wxNOT_FOUND )
+			{
+				if (f_width > 100 && f_height > 100)
+					g_mainWindow->SetClientSize(f_width, f_height);
+
+				if (f_x > 0 && f_y > 0)
+					g_mainWindow->SetPosition(wxPoint(f_x,f_y));
+			}
+			else // place default here...
+				g_mainWindow->Maximize();
+		}
+	}
 
 	return true;
 }
@@ -1996,7 +2060,6 @@ ConfigDialog::ConfigDialog( wxWindow *parent, const wxSize &size )
 	entries.push_back( wxAcceleratorEntry( ::wxACCEL_NORMAL, WXK_ESCAPE, wxID_CANCEL ) );
 	SetAcceleratorTable( wxAcceleratorTable( entries.size(), &entries[0] ) );
 	
-
 	PopulateTech();
 
 }
@@ -2005,18 +2068,17 @@ bool ConfigDialog::ResetToDefaults()
 {
 	return m_pChkUseDefaults->GetValue();
 }
+
 void ConfigDialog::SetConfiguration(const wxString &t, const wxString &f)
 {
-	m_t = t;
-	int sel = m_pTech->Find( t );
+	int sel = m_tnames.Index( t );
 	m_pTech->SetSelection( sel );
 	m_pTech->Invalidate();
 
 	if ( sel >= 0 )
 		UpdateFinTree();
 	
-	m_f = f;
-	m_pFin->SetSelection( m_pFin->Find( f ) );
+	m_pFin->SetSelection( m_fnames.Index(f) );
 	m_pFin->Invalidate();
 }
 
@@ -2027,8 +2089,10 @@ void ConfigDialog::ShowResetCheckbox(bool b)
 
 bool ConfigDialog::GetConfiguration(wxString &t, wxString &f)
 {
-	t = m_pTech->GetValue();
-	f = m_pFin->GetValue();
+	int tsel = m_pTech->GetSelection();
+	int fsel = m_pFin->GetSelection();
+	t = tsel >= 0 && tsel < (int)m_tnames.size() ? m_tnames[tsel] : wxEmptyString;
+	f = fsel >= 0 && fsel < (int)m_fnames.size() ? m_fnames[fsel] : wxEmptyString;
 	return true;
 }
 
@@ -2041,9 +2105,15 @@ void ConfigDialog::OnDoubleClick(wxCommandEvent &evt)
 void ConfigDialog::PopulateTech()
 {
 	m_pTech->Clear();
-	wxArrayString list = SamApp::Config().GetTechnologies();
-	for( size_t i=0;i<list.Count();i++)
-		m_pTech->Add(  list[i] );
+
+	m_tnames = SamApp::Config().GetTechnologies();
+	
+	for( size_t i=0;i<m_tnames.Count();i++)
+	{
+		wxString L( SamApp::Config().Options( m_tnames[i] ).LongName );
+		if ( L.IsEmpty() ) L = m_tnames[i];
+		m_pTech->Add( L );
+	}
 	
 	m_pTech->Invalidate();
 }
@@ -2051,9 +2121,14 @@ void ConfigDialog::PopulateTech()
 void ConfigDialog::UpdateFinTree()
 {
 	m_pFin->Clear();
-	wxArrayString list = SamApp::Config().GetFinancingForTech( m_pTech->GetValue() );
-	for( size_t i=0;i<list.Count();i++)
-		m_pFin->Add( list[i] );
+	int tsel = m_pTech->GetSelection();
+	m_fnames = SamApp::Config().GetFinancingForTech( tsel >= 0 && tsel < (int)m_tnames.size() ? m_tnames[tsel] : wxEmptyString );
+	for( size_t i=0;i<m_fnames.Count();i++)
+	{
+		wxString L( SamApp::Config().Options( m_fnames[i] ).LongName );
+		if ( L.IsEmpty() ) L = m_fnames[i];
+		m_pFin->Add( L );
+	}
 
 	m_pFin->Invalidate();
 }

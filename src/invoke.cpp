@@ -170,6 +170,22 @@ static void fcall_setconfig( lk::invoke_t &cxt )
 	SamApp::Config().SetConfig( cxt.arg(0).as_string(), cxt.arg(1).as_string() );
 }
 
+static void fcall_configopt( lk::invoke_t &cxt )
+{
+	LK_DOC("configopt", "Sets configuration options, such as long_name, short_name, description, etc.", "(string:config name, table:options):none");
+	ConfigOptions &opt = SamApp::Config().Options( cxt.arg(0).as_string() );
+
+	lk::vardata_t &tab = cxt.arg(1).deref();
+	if( lk::vardata_t *vv = tab.lookup( "long_name" ) )
+		opt.LongName = vv->as_string();
+	if( lk::vardata_t *vv = tab.lookup( "short_name") ) 
+		opt.ShortName = vv->as_string();
+	if( lk::vardata_t *vv = tab.lookup( "description" ) )
+		opt.Description = vv->as_string();
+
+	// eventually can add other options too, such as icon name, etc
+}
+
 static void fcall_setmodules( lk::invoke_t &cxt )
 {
 	LK_DOC("setmodules", "Sets the simulation models for the currently active configuration", "(array:module names):none");
@@ -1632,6 +1648,7 @@ lk::fcall_t* invoke_config_funcs()
 	static const lk::fcall_t vec[] = {
 		fcall_addconfig,
 		fcall_setconfig,
+		fcall_configopt,
 		fcall_addpage,
 		fcall_setting,
 		fcall_setmodules,
