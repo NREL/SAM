@@ -632,7 +632,7 @@ public:
 			}
 
 			wxArrayString output_names, output_labels, output_units, output_groups;
-			Simulation::ListAllOutputs( ci, &output_names, &output_labels, &output_units, 0, false );
+			Simulation::ListAllOutputs( ci, &output_names, &output_labels, &output_units, &output_groups, false );
 			for( size_t i=0;i<output_names.size();i++ )
 			{
 				names.Add( output_names[i] );
