@@ -121,7 +121,7 @@ void P50P90Form::OnSimulate( wxCommandEvent & )
 	// all single value outputs
 	wxArrayString output_vars, output_labels, output_units;
 	Simulation::ListAllOutputs( m_case->GetConfiguration(), 
-		&output_vars, &output_labels, &output_units, true );
+		&output_vars, &output_labels, &output_units, NULL, true );
 
 	
 	tpd.NewStage( "Preparing simulations...", 1 );

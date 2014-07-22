@@ -77,9 +77,13 @@ public:
 	bool Ok();
 	wxArrayString &GetErrors();
 	wxArrayString &GetWarnings();
-	
+		
 	static bool ListAllOutputs( ConfigInfo *cfg, 
-		wxArrayString *names, wxArrayString *labels, wxArrayString *units, bool single_values = false );
+		wxArrayString *names, 
+		wxArrayString *labels, 
+		wxArrayString *units, 
+		wxArrayString *groups, 
+		bool single_values = false );
 
 	static int DispatchThreads( ThreadProgressDialog &tpd, 
 		std::vector<Simulation*> &sims, 
