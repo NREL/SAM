@@ -869,7 +869,13 @@ void CaseWindow::UpdateConfiguration()
 	ConfigInfo *cfg = m_case->GetConfiguration();
 	if ( !cfg ) return;
 
-	m_configLabel->SetLabel( cfg->Technology  + ", " + cfg->Financing );
+	wxString Ts( SamApp::Config().Options( cfg->Technology ).ShortName );
+	if ( Ts.IsEmpty() ) Ts = cfg->Technology;
+	wxString Fs( SamApp::Config().Options( cfg->Financing ).ShortName );
+	if ( Fs.IsEmpty() ) Fs = cfg->Financing;
+	
+
+	m_configLabel->SetLabel( Ts + ", " + Fs );
 	
 	// update current set of input pages
 	m_pageGroups = cfg->InputPageGroups;
