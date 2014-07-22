@@ -211,6 +211,13 @@ public:
 	VarDatabase AutoVariables;
 };
 
+struct ConfigOptions
+{
+	wxString LongName;
+	wxString ShortName;
+	wxString Description;
+};
+
 class ConfigDatabase
 {
 public:
@@ -239,6 +246,9 @@ public:
 	void RebuildCaches();
 
 	ConfigInfo *Find( const wxString &t, const wxString &f );
+
+	static ConfigOptions &Options( const wxString &name );
+
 
 private:
 	struct TechInfo { wxString Name; wxArrayString FinancingOptions; };
@@ -305,10 +315,8 @@ private:
 
 	void UpdateFinTree();
 
-	wxMetroListBox *m_pTech;
-	wxMetroListBox *m_pFin;
-
-	wxString m_t, m_f;
+	wxMetroListBox *m_pTech, *m_pFin;
+	wxArrayString m_tnames, m_fnames;
 
 	void OnHelp( wxCommandEvent & );
 
