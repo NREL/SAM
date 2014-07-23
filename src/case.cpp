@@ -442,12 +442,9 @@ bool Case::LoadDefaults( wxString *pmsg )
 				"Would you like to update the defaults with the current values right now?\n"
 				"(Otherwise press Shift-F10 later)\n", (int)di.not_found.size(),
 				(int)di.wrong_type.size(), (int)di.nread, (int)m_vals.size());
-
-		if ( di.wrong_type.size() == 0 ) di.wrong_type.Add( "(none)" );
-		if ( di.not_found.size() == 0 ) di.not_found.Add( "(none" );
-
-		message += "\nWrong data type: " + wxJoin( di.wrong_type, ',' );
-		message += "\nLoaded but don't exist in config: " + wxJoin( di.not_found, ',' );
+		
+		if ( di.wrong_type.size() > 0 )	message += "\nWrong data type: " + wxJoin( di.wrong_type, ',' );
+		if ( di.not_found.size() > 0 ) message += "\nLoaded but don't exist in config: " + wxJoin( di.not_found, ',' );
 	}
 	else
 	{
