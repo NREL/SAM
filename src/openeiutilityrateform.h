@@ -4,7 +4,6 @@
 #include <wx/wx.h>
 #include "openeiapi.h"
 
-class AFLabel;
 class wxHyperlinkCtrl;
 class wxExtTextCtrl;
 

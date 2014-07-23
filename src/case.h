@@ -104,6 +104,7 @@ public:
 	// indirect way of changing a variable.  causes any affected
 	// variables to be recalculated, and updates any views
 	void VariableChanged( const wxString &name );
+	void VariablesChanged( const wxArrayString &list );
 
 	// recalculate any variables that are impacted by a changed value of 'trigger'
 	// any views are updated with the variables that are consequently updated with 
@@ -112,6 +113,7 @@ public:
 	// this will also apply all the library values and cause any affected variables
 	// to be subsequently updated
 	int Recalculate( const wxString &trigger ); 
+	int Recalculate( const wxArrayString &triggers ); 
 
 	// recalculate all equations in this case
 	// CaseEvent is issued for all updated variables

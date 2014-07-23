@@ -473,6 +473,7 @@ void fcall_refresh( lk::invoke_t &cxt )
 	}
 }
 
+/*
 void fcall_initialize(lk::invoke_t &cxt)
 {
 	LK_DOC("initialize", "Initialize the current form or a specific widget", "([string:name]):none");
@@ -480,7 +481,7 @@ void fcall_initialize(lk::invoke_t &cxt)
 	UICallbackContext &cc = *(UICallbackContext*)cxt.user_data();
 	cc.InputPage()->Initialize();
 }
-
+*/
 
 void fcall_property( lk::invoke_t &cxt )
 {
@@ -1239,7 +1240,7 @@ void fcall_openeilistrates(lk::invoke_t &cxt)
 
 }
 
-bool applydiurnalschedule(lk::invoke_t &cxt, wxString sched_name, double sched[12][24])
+static bool applydiurnalschedule(lk::invoke_t &cxt, wxString sched_name, double sched[12][24])
 {
 	int nr = 12, nc = 24;
 	lk::vardata_t &val = cxt.result().hash_item(sched_name);
@@ -1261,9 +1262,13 @@ bool applydiurnalschedule(lk::invoke_t &cxt, wxString sched_name, double sched[1
 void fcall_urdbv3saverate(lk::invoke_t &cxt)
 {
 	LK_DOC("urdbv3saverate", "Saves rate data from current case to a file.", "(STRING:filename) : BOOLEAN");
+	
 	Case *c = SamApp::Window()->GetCurrentCase();
+	if ( !c ) return;
+
 	ConfigInfo *ci = c->GetConfiguration();
-	wxString filename = cxt.arg(0).as_string();
+	if ( !ci ) return;
+
 	wxCSVData csv;
 	int col = 0;
 	for (VarInfoLookup::iterator it = ci->Variables.begin();
@@ -1287,19 +1292,24 @@ void fcall_urdbv3saverate(lk::invoke_t &cxt)
 			}
 		}
 	}
-	cxt.result().assign(csv.WriteFile(filename));
+	
+	cxt.result().assign( csv.WriteFile( cxt.arg(0).as_string() ) ? 1.0 : 0.0 );
 }
 
 void fcall_urdbv3loadrate(lk::invoke_t &cxt)
 {
 	LK_DOC("urdbv3loadrate", "Loads rate data from current case to a file.", "(STRING:filename) : BOOLEAN");
+	
 	Case *c = SamApp::Window()->GetCurrentCase();
-	wxString filename = cxt.arg(0).as_string();
+	if ( !c ) return;
+
 	wxCSVData csv;
 	int col = 0;
-	bool ret_val = csv.ReadFile(filename);
+	bool ret_val = csv.ReadFile( cxt.arg(0).as_string() );
 	if (ret_val)
 	{
+		wxArrayString errors;
+		wxArrayString list;
 		for (col = 0; col < (int)csv.NumCols(); col++)
 		{
 			wxString var_name = csv.Get(0,col);
@@ -1308,20 +1318,21 @@ void fcall_urdbv3loadrate(lk::invoke_t &cxt)
 			{
 				wxString value = csv.Get(1, col);
 				value.Replace(";;", "\n");
-				ret_val &= VarValue::Parse(vv->Type(), value, *vv);
-				if (!ret_val)
+				if ( !VarValue::Parse(vv->Type(), value, *vv) )
 				{
-					wxMessageBox(wxString::Format("Issue assigning %s = %s", var_name.c_str(), value.c_str()));
+					errors.Add("Problem assigning " + var_name + " to " + value );
+					ret_val = false;
 				}
+				else
+					list.Add( var_name );
 			}
 		}
-		if (ret_val)
-		{ // updates current acttive page
-			UICallbackContext &cc = *(UICallbackContext*)cxt.user_data();
-			cc.InputPage()->Initialize();
-		}
+
+		// this causes the UI and other variables to be updated
+		c->VariablesChanged( list );
 	}
-	cxt.result().assign(ret_val);
+
+	cxt.result().assign( ret_val ? 1.0 : 0.0 );
 }
 
 
@@ -1726,7 +1737,7 @@ lk::fcall_t* invoke_uicallback_funcs()
 		fcall_openeiapplyrate,
 		fcall_urdbv3saverate,
 		fcall_urdbv3loadrate,
-		fcall_initialize,
+//		fcall_initialize,
 		fcall_editscene3d,
 		0 };
 	return (lk::fcall_t*)vec;

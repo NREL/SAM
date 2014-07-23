@@ -688,6 +688,18 @@ void Case::VariableChanged( const wxString &var )
 	Recalculate( var );
 }
 
+void Case::VariablesChanged( const wxArrayString &list )
+{
+	// Send the additional case event that this variable
+	// was programmatically changed and needs to be updated
+	CaseEvent ce( CaseEvent::VARS_CHANGED );
+	ce.GetVars() = list;
+	SendEvent( ce );
+
+	// recalculate all the equations
+	Recalculate( list );
+}
+
 int Case::Recalculate( const wxString &trigger )
 {
 	if ( !m_config )
@@ -698,6 +710,22 @@ int Case::Recalculate( const wxString &trigger )
 
 	CaseEvaluator eval( this, m_vals, m_config->Equations );
 	int n = eval.Changed( trigger );	
+	if ( n > 0 ) SendEvent( CaseEvent( CaseEvent::VARS_CHANGED, eval.GetUpdated() ) );
+	else if ( n < 0 ) wxShowTextMessageDialog( wxJoin( eval.GetErrors(), wxChar('\n') )  );
+	return n;
+
+}
+
+int Case::Recalculate( const wxArrayString &triggers )
+{
+	if ( !m_config )
+	{
+		wxLogStatus( "cannot recalculate: no active configuration" );
+		return -1;
+	}
+
+	CaseEvaluator eval( this, m_vals, m_config->Equations );
+	int n = eval.Changed( triggers );	
 	if ( n > 0 ) SendEvent( CaseEvent( CaseEvent::VARS_CHANGED, eval.GetUpdated() ) );
 	else if ( n < 0 ) wxShowTextMessageDialog( wxJoin( eval.GetErrors(), wxChar('\n') )  );
 	return n;
