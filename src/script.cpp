@@ -6,6 +6,7 @@
 #include <wex/metro.h>
 #include <wex/utils.h>
 
+#include "openeiapi.h"
 #include "casewin.h"
 #include "library.h"
 #include "main.h"
@@ -202,7 +203,6 @@ static void fcall_library( lk::invoke_t &cxt )
 		cxt.result().vec_append( list[i] );
 }
 
-
 /* 
 	tab->Add( ChangeConfig, "ChangeConfig", 2, "Changes the current case's configuration. Application must be '*'.", "( STRING:Technology, STRING:Financing ):BOOLEAN");
 	tab->Add( ReloadDefaults, "ReloadDefaults", 0, "Reloads all default values for the active case.", "( NONE ):NONE");
@@ -266,6 +266,11 @@ static void fcall_library( lk::invoke_t &cxt )
 
 	*/
 
+// external fcalls that are compatible with running in a script environment
+extern void fcall_urdbv3loadrate( lk::invoke_t & );
+extern void fcall_urdbv3saverate( lk::invoke_t & );
+
+
 static lk::fcall_t *sam_functions() {
 	
 	static const lk::fcall_t vec[] = {
@@ -285,6 +290,8 @@ static lk::fcall_t *sam_functions() {
 		fcall_overwrite_defaults,
 		fcall_list_technologies,
 		fcall_list_financing,
+		fcall_urdbv3loadrate,
+		fcall_urdbv3saverate,
 		0 };
 	return (lk::fcall_t*)vec;
 
