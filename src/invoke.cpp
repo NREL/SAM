@@ -473,6 +473,15 @@ void fcall_refresh( lk::invoke_t &cxt )
 	}
 }
 
+void fcall_initialize(lk::invoke_t &cxt)
+{
+	LK_DOC("initialize", "Initialize the current form or a specific widget", "([string:name]):none");
+
+	UICallbackContext &cc = *(UICallbackContext*)cxt.user_data();
+	cc.InputPage()->Initialize();
+}
+
+
 void fcall_property( lk::invoke_t &cxt )
 {
 	LK_DOC("property", "Set or get a user interface widget property", "(string:name, string:property[, variant:value]):variant");
@@ -1270,8 +1279,10 @@ void fcall_urdbv3saverate(lk::invoke_t &cxt)
 			if (VarValue *vv = c->Values().Get(var_name))
 			{
 				// write out csv with first row var name and second row var values
+				wxString value = vv->AsString();
+				value.Replace("\n", ";;");
 				csv.Set(0, col, var_name);
-				csv.Set(1, col, vv->AsString());
+				csv.Set(1, col, value);
 				col++;
 			}
 		}
@@ -1296,12 +1307,18 @@ void fcall_urdbv3loadrate(lk::invoke_t &cxt)
 			if (VarValue *vv = c->Values().Get(var_name))
 			{
 				wxString value = csv.Get(1, col);
+				value.Replace(";;", "\n");
 				ret_val &= VarValue::Parse(vv->Type(), value, *vv);
 				if (!ret_val)
 				{
 					wxMessageBox(wxString::Format("Issue assigning %s = %s", var_name.c_str(), value.c_str()));
 				}
 			}
+		}
+		if (ret_val)
+		{ // updates current acttive page
+			UICallbackContext &cc = *(UICallbackContext*)cxt.user_data();
+			cc.InputPage()->Initialize();
 		}
 	}
 	cxt.result().assign(ret_val);
@@ -1709,6 +1726,7 @@ lk::fcall_t* invoke_uicallback_funcs()
 		fcall_openeiapplyrate,
 		fcall_urdbv3saverate,
 		fcall_urdbv3loadrate,
+		fcall_initialize,
 		fcall_editscene3d,
 		0 };
 	return (lk::fcall_t*)vec;
