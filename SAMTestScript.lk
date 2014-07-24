@@ -1,0 +1,66 @@
+//Create a results file and write headings
+f = open('SAM Default Results.csv', 'w' );
+outln( 'TECHNOLOGY\tFINANCING\tDEFAULT_OK\tANNUAL_OUTPUT\tLCOE_NOM\tLCOE_REAL');
+
+//Close any open projects and create a case to run
+close_project();
+create_case( 'PVWatts', 'Residential', 'test_case');
+
+//Keep track of the number of configurations
+configs = 0;
+
+//loop through all technologies
+technologies = 	list_technologies();
+for (t=0; t<#technologies; t++)
+{
+	//Loop through all financing options for that technology
+	financing = list_financing(technologies[t]);
+	for(f=0; f<#financing; f++)
+	{	
+		//Write the technology and financing configuration to the file
+		nextline = technologies[t] + '\t' + financing[f] + '\t';
+		configs++;
+		
+		//Check that the case and defaults load ok
+		active_case( 'test_case' );
+		configuration(technologies[t], financing[f]);
+		error = "";
+		if( !load_defaults(error) )
+		{
+			nextline = nextline + error;
+			if(!overwrite_defaults())
+			{
+				nextline = nextline + 'Defaults could not be overwritten';
+				outln( nextline);
+				continue;
+			}
+			nextline = nextline + 'Defaults overwritten\t';
+		}
+		else nextline = nextline + 'Ok\t';
+		
+		//Check that the case simulates ok
+		if(!simulate())
+		{
+			nextline = nextline + 'Did not simulate successfully';
+			outln( nextline);
+			continue;
+		}
+		
+		//Record the outputs of the case
+		annual_energy = 'NA';
+		lcoe_nom = 'NA';
+		lcoe_real = 'NA';
+		
+		if(get('annual_energy')) annual_energy = get('annual_energy');
+		if(financing[f] != 'None')
+		{
+			if(get('lcoe_nom')) lcoe_nom = get('lcoe_nom');
+			if(get('lcoe_real')) lcoe_real = get('lcoe_real');
+		}
+		nextline = nextline + annual_energy + '\t' + lcoe_nom + '\t' + lcoe_real;
+		outln( nextline);	
+	}
+}
+
+outln( 'Total Number of Configurations: ' + configs);
+close(f);
