@@ -232,6 +232,9 @@ ParametricViewer::ParametricViewer(wxWindow *parent, Case *cc) : wxPanel(parent,
 	m_num_runs_ctrl = new wxNumericCtrl(top_panel, ID_NUMRUNS, 0, wxNumericCtrl::INTEGER, wxDefaultPosition, wxSize(50, 24));
 	tool_sizer->Add(m_num_runs_ctrl, 0, wxALL, 2);
 	tool_sizer->Add(new wxButton(top_panel, ID_RUN, "Run parametric simulations"), 0, wxALL | wxEXPAND, 2);
+	m_run_multithreaded = new wxCheckBox(top_panel, wxID_ANY, "Run multi-threaded?", wxDefaultPosition, wxDefaultSize, wxALIGN_RIGHT);
+	m_run_multithreaded->SetValue(true);
+	tool_sizer->Add(m_run_multithreaded, 0, wxALIGN_CENTER_VERTICAL, 1);
 	tool_sizer->AddStretchSpacer();
 	tool_sizer->Add(new wxButton(top_panel, ID_CLEAR, "Clear results"), 0, wxALL | wxEXPAND, 2);
 
@@ -777,7 +780,10 @@ void ParametricViewer::RunSimulations()
 {
 	wxBusyInfo busy("Running simulations... please wait");
 	RemoveAllPlots();
-	m_grid_data->RunSimulations();
+	if (m_run_multithreaded->GetValue())
+		m_grid_data->RunSimulations_multi();
+	else
+		m_grid_data->RunSimulations_single();
 	AddAllPlots();
 	UpdateGrid();
 }
@@ -1659,7 +1665,121 @@ std::vector<Simulation *> ParametricGridData::GetRuns()
 	return m_par.Runs;
 }
 
-bool ParametricGridData::RunSimulations(int row)
+
+
+bool ParametricGridData::RunSimulations_multi()
+{
+	wxStopWatch sw;
+
+	int nthread = 1;
+	nthread = wxThread::GetCPUCount();
+
+	SimulationDialog tpd("Preparing simulations...", nthread);
+
+	int total_runs = 0;
+	for (size_t i = 0; i < m_par.Runs.size(); i++)
+		if (!m_valid_run[i]) total_runs++;
+
+
+	std::vector<Simulation*> sims;
+	for (size_t i = 0; i < m_par.Runs.size(); i++)
+	{
+		if (!m_valid_run[i])
+		{
+			m_par.Runs[i]->Clear();
+
+			for (int col = 0; col < m_cols; col++)
+			{
+				if (IsInput(col))
+				{
+					if (VarValue *vv = &m_par.Setup[col].Values[i])
+					{
+						// set for simulation
+						m_par.Runs[i]->Override(m_var_names[col], *vv);
+					}
+				}
+			}
+			// Excel exchange if necessary
+			ExcelExchange &ex = m_case->ExcelExch();
+			if (ex.Enabled)
+				ExcelExchange::RunExcelExchange(ex, m_case->Values(), m_par.Runs[i]);
+
+			if (!m_par.Runs[i]->Prepare())
+				wxMessageBox(wxString::Format("internal error preparing simulation %d for parametric", (int)(i + 1)));
+
+			tpd.Update(0, (float)i / (float)total_runs * 100.0f, wxString::Format("%d of %d", (int)(i + 1), (int)total_runs));
+		}
+		sims.push_back(m_par.Runs[i]);
+	}
+
+
+	int time_prep = sw.Time();
+	sw.Start();
+
+	tpd.NewStage("Calculating...");
+
+
+
+	size_t nok = 0;
+	if (nthread > 1)
+		nok = Simulation::DispatchThreads(tpd, sims, nthread);
+	else
+	{
+		for (size_t i = 0; i < sims.size(); i++)
+		{
+			if (sims[i]->Invoke(true, false))
+				nok++;
+
+			tpd.Update(0, (float)i / (float)total_runs * 100.0f);
+		}
+	}
+
+	int time_sim = sw.Time();
+	sw.Start();
+
+	for (size_t i = 0; i < m_par.Runs.size(); i++)
+	{
+		if (!m_valid_run[i])
+		{
+			if (m_par.Runs[i]->Ok())
+			{
+				// update outputs
+				for (int col = 0; col < m_cols; col++)
+				{
+					if (!IsInput(col))
+					{
+						if (VarValue *vv = m_par.Runs[i]->Outputs().Get(m_var_names[col]))
+						{
+							if (m_par.Setup[col].Values.size() > i)
+								m_par.Setup[col].Values[i] = *vv;
+							else
+								m_par.Setup[col].Values.push_back(*vv);
+						}
+					}
+				}
+				// update row status
+				if (i < m_valid_run.size())
+					m_valid_run[i] = true;
+				else // should not happen!
+					m_valid_run.push_back(true);
+			}
+			else
+			{
+				wxShowTextMessageDialog(wxJoin(m_par.Runs[i]->GetErrors(), '\n'));
+				return false;
+			}
+		}
+	}
+	sims.clear();
+
+	int time_outputs = sw.Time();
+
+	return true;
+};
+
+			
+
+bool ParametricGridData::RunSimulations_single()
 {
 	for (size_t i = 0; i < m_par.Runs.size(); i++)
 	{
@@ -1717,6 +1837,7 @@ bool ParametricGridData::RunSimulations(int row)
 	}
 	return true;
 }
+
 
 void ParametricGridData::UpdateInputs(wxArrayString &input_names)
 {

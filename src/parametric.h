@@ -88,7 +88,8 @@ public:
 	void AddSetup(ParametricData::Var &var);
 	void DeleteSetup(wxString &var_name);
 	void UpdateNumberRows(int rows);
-	bool RunSimulations(int row = -1);
+	bool RunSimulations_single();
+	bool RunSimulations_multi();
 	void ClearResults();
 	void UpdateInputs(wxArrayString &input_names);
 	void UpdateOutputs(wxArrayString &output_names);
@@ -181,6 +182,7 @@ private:
 	ParametricGrid *m_grid;
 	ParametricGridData *m_grid_data;
 	wxNumericCtrl *m_num_runs_ctrl;
+	wxCheckBox *m_run_multithreaded;
 
 	Case *m_case;
 	wxArrayString m_input_names;
