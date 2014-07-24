@@ -1259,9 +1259,9 @@ static bool applydiurnalschedule(lk::invoke_t &cxt, wxString sched_name, double 
 	return true;
 }
 
-void fcall_urdbv3saverate(lk::invoke_t &cxt)
+void fcall_urdbsaverate(lk::invoke_t &cxt)
 {
-	LK_DOC("urdbv3saverate", "Saves rate data from current case to a file.", "(STRING:filename) : BOOLEAN");
+	LK_DOC("urdbsaverate", "Saves rate data from current case to a file.", "(STRING:filename) : BOOLEAN");
 	
 	Case *c = SamApp::Window()->GetCurrentCase();
 	if ( !c ) return;
@@ -1296,9 +1296,9 @@ void fcall_urdbv3saverate(lk::invoke_t &cxt)
 	cxt.result().assign( csv.WriteFile( cxt.arg(0).as_string() ) ? 1.0 : 0.0 );
 }
 
-void fcall_urdbv3loadrate(lk::invoke_t &cxt)
+void fcall_urdbloadrate(lk::invoke_t &cxt)
 {
-	LK_DOC("urdbv3loadrate", "Loads rate data from current case to a file.", "(STRING:filename) : BOOLEAN");
+	LK_DOC("urdbloadrate", "Loads rate data from current case to a file.", "(STRING:filename) : BOOLEAN");
 	
 	Case *c = SamApp::Window()->GetCurrentCase();
 	if ( !c ) return;
@@ -1327,7 +1327,6 @@ void fcall_urdbv3loadrate(lk::invoke_t &cxt)
 					list.Add( var_name );
 			}
 		}
-
 		// this causes the UI and other variables to be updated
 		c->VariablesChanged( list );
 	}
@@ -1735,9 +1734,8 @@ lk::fcall_t* invoke_uicallback_funcs()
 		fcall_solarprospector,
 		fcall_openeiutilityrateform,
 		fcall_openeiapplyrate,
-		fcall_urdbv3saverate,
-		fcall_urdbv3loadrate,
-//		fcall_initialize,
+		fcall_urdbsaverate,
+		fcall_urdbloadrate,
 		fcall_editscene3d,
 		0 };
 	return (lk::fcall_t*)vec;
