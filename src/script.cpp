@@ -267,8 +267,8 @@ static void fcall_library( lk::invoke_t &cxt )
 	*/
 
 // external fcalls that are compatible with running in a script environment
-extern void fcall_urdbv3loadrate( lk::invoke_t & );
-extern void fcall_urdbv3saverate( lk::invoke_t & );
+extern void fcall_urdbloadrate( lk::invoke_t & );
+extern void fcall_urdbsaverate( lk::invoke_t & );
 
 
 static lk::fcall_t *sam_functions() {
@@ -290,8 +290,8 @@ static lk::fcall_t *sam_functions() {
 		fcall_overwrite_defaults,
 		fcall_list_technologies,
 		fcall_list_financing,
-		fcall_urdbv3loadrate,
-		fcall_urdbv3saverate,
+		fcall_urdbloadrate,
+		fcall_urdbsaverate,
 		0 };
 	return (lk::fcall_t*)vec;
 
