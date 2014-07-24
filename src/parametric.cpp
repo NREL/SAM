@@ -778,7 +778,7 @@ void ParametricViewer::UpdateNumRuns()
 
 void ParametricViewer::RunSimulations()
 {
-	wxBusyInfo busy("Running simulations... please wait");
+	//wxBusyInfo busy("Running simulations... please wait");
 	RemoveAllPlots();
 	if (m_run_multithreaded->GetValue())
 		m_grid_data->RunSimulations_multi();
