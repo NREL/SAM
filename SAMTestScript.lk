@@ -27,6 +27,11 @@ for (t=0; t<#technologies; t++)
 		error = "";
 		if( !load_defaults(error) )
 		{
+			outln('error loading defaults for:' );
+			outln(technologies[t]);
+			outln(financing[f]);
+			continue;
+			
 			nextline = nextline + error;
 			if(!overwrite_defaults())
 			{

@@ -7,15 +7,15 @@
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
 PrivilegesRequired=none
 AppId={{8C4CE967-AC1F-4D46-A12D-54DE2F927AF4}
-AppName=System Advisor Beta
+AppName=System Advisor Alpha
 
 ; 64-bit installer extensions - remove if an issue
 ArchitecturesAllowed=x86 x64 ia64
 ArchitecturesInstallIn64BitMode=x64 ia64
 
-; UPDATE THESE TO MACH THE VERSION
-AppVerName=SAM 2014.1.1
-DefaultDirName={sd}\SAM\2014.1.1
+; UPDATE THESE TO MATCH THE VERSION
+AppVerName=SAM 2014.7.25
+DefaultDirName={sd}\SAM\2014.7.25
 
 AppPublisher=National Renewable Energy Laboratory
 AppPublisherURL=http://sam.nrel.gov
@@ -44,16 +44,16 @@ Source: "solar_resource/*"; DestDir: "{app}/solar_resource"; Excludes: ".svn,*.m
 Source: "wind_resource/*"; DestDir: "{app}/wind_resource"; Excludes: ".svn,*.map"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "win32/*.dll"; DestDir: "{app}/win32"; Excludes: ".svn,*.map"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "win32/sam.exe"; DestDir: "{app}/win32"; Excludes: ".svn,*.map"; Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "x64/*.dll"; DestDir: "{app}/x64"; Excludes: ".svn,*.map"; Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "x64/sam.exe"; DestDir: "{app}/x64"; Excludes: ".svn,*.map"; Flags: ignoreversion recursesubdirs createallsubdirs
+;Source: "x64/*.dll"; DestDir: "{app}/x64"; Excludes: ".svn,*.map"; Flags: ignoreversion recursesubdirs createallsubdirs
+;Source: "x64/sam.exe"; DestDir: "{app}/x64"; Excludes: ".svn,*.map"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "IssProc.dll"; DestDir: "{app}/x64"; Excludes: ".svn,*.map"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "dbghelp.dll"; DestDir: "{app}/x64"; Excludes: ".svn,*.map"; Flags: ignoreversion recursesubdirs createallsubdirs
 
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]
-Name: "{group}\System Advisor Beta (x64)"; Filename: "{app}\x64\sam.exe"
-Name: "{group}\System Advisor Beta (win32)"; Filename: "{app}\win32\sam.exe"
+;Name: "{group}\System Advisor Beta (x64)"; Filename: "{app}\x64\sam.exe"
+Name: "{group}\System Advisor Alpha"; Filename: "{app}\win32\sam.exe"
 ;Name: "{group}\{cm:ProgramOnTheWeb,System Advisor Model}"; Filename: "http://sam.nrel.gov"
 ;Name: "{group}\{cm:UninstallProgram,System Advisor Model}"; Filename: "{uninstallexe}"
 ;Name: "{commondesktop}\System Advisor Beta (x64)"; Filename: "{app}\x64\sam.exe"; Tasks: desktopicon

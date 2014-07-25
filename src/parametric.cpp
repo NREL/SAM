@@ -234,6 +234,7 @@ ParametricViewer::ParametricViewer(wxWindow *parent, Case *cc) : wxPanel(parent,
 	tool_sizer->Add(new wxButton(top_panel, ID_RUN, "Run parametric simulations"), 0, wxALL | wxEXPAND, 2);
 	m_run_multithreaded = new wxCheckBox(top_panel, wxID_ANY, "Run multi-threaded?", wxDefaultPosition, wxDefaultSize, wxALIGN_RIGHT);
 	m_run_multithreaded->SetValue(true);
+	m_run_multithreaded->Hide();
 	tool_sizer->Add(m_run_multithreaded, 0, wxALIGN_CENTER_VERTICAL, 1);
 	tool_sizer->AddStretchSpacer();
 	tool_sizer->Add(new wxButton(top_panel, ID_CLEAR, "Clear results"), 0, wxALL | wxEXPAND, 2);
