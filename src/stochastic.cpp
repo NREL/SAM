@@ -884,6 +884,7 @@ StochasticPanel::StochasticPanel(wxWindow *parent, Case *cc)
 	sizer_cmd->Add( new wxButton(this, ID_Simulate, "Run simulation"), 0, wxALL|wxEXPAND, 5 );
 	sizer_cmd->Add( m_useThreads = new wxCheckBox( this, wxID_ANY, "Use threads"), 0, wxALL|wxEXPAND, 5 );
 	m_useThreads->SetValue( true );
+	m_useThreads->Hide();
 
 	sizer_main->Add( sizer_cmd );
 	

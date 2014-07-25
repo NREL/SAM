@@ -1045,7 +1045,7 @@ wxString SamRegistration::GetKey()
 	return key;
 }
 
-#define MAX_ATTEMPTS 5
+#define MAX_ATTEMPTS 10
 
 bool SamRegistration::CanStart()
 {
