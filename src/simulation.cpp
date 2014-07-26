@@ -863,6 +863,10 @@ int Simulation::DispatchThreads( ThreadProgressDialog &tpd,
 {	
 	wxStopWatch sw;
 
+	// prevent Access violation when running with fewer simulations than threads 7/25/14
+	if (nthread > sims.size()) nthread = sims.size();
+
+
 	std::vector<SimulationThread*> threads;
 	for( int i=0;i<nthread;i++)
 	{
