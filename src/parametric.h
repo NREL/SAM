@@ -90,6 +90,7 @@ public:
 	void UpdateNumberRows(int rows);
 	bool RunSimulations_single();
 	bool RunSimulations_multi();
+	void ClearResults(int row);
 	void ClearResults();
 	void UpdateInputs(wxArrayString &input_names);
 	void UpdateOutputs(wxArrayString &output_names);

@@ -851,7 +851,7 @@ void ParametricViewer::SelectOutputs()
 	wxArrayString output_names, output_labels;
 	wxArrayString names, labels, units, groups;
 	Simulation::ListAllOutputs(m_case->GetConfiguration(),
-		&names, &labels, &units, &groups, true);
+		&names, &labels, &units, &groups);
 
 	for (size_t i = 0; i<labels.size(); i++)
 	{
@@ -905,8 +905,9 @@ void ParametricViewer::UpdateGrid()
 ParametricGridData::ParametricGridData(Case *cc) :m_case(cc), m_par(cc->Parametric())
 {
 	m_color_for_inputs = wxColour("LIGHT BLUE");
-	m_color_for_valid_outputs = wxColour("PALE GREEN");
-	m_color_for_invalid_outputs = wxColour("VIOLET RED");
+	m_color_for_valid_outputs = wxColour("SPRING GREEN");
+	//m_color_for_invalid_outputs = wxColour("LIGHT GRAY");
+	m_color_for_invalid_outputs = wxColour(245, 245, 245);
 	m_attr_for_inputs = new wxGridCellAttr;
 	m_attr_for_inputs->SetBackgroundColour(m_color_for_inputs);
 	m_attr_for_valid_outputs = new wxGridCellAttr;
@@ -1225,11 +1226,14 @@ void ParametricGridData::SetValue(int row, int col, const wxString& value)
 			VarValue *vv = &m_par.Setup[col].Values[row];
 			VarValue::Parse(vv->Type(), value, *vv);
 			if (row < m_valid_run.size())
+			{
 				m_valid_run[row] = false;
+				ClearResults(row);
+			}
 			else // should not happen!
 				m_valid_run.push_back(row);
 			// set for simulation (repeated in run simulation below for copying
-			m_par.Runs[row]->Override(m_var_names[col], *vv);
+			//m_par.Runs[row]->Override(m_var_names[col], *vv);
 		}
 	}
 }
@@ -1914,11 +1918,15 @@ void ParametricGridData::UpdateOutputs(wxArrayString &output_names)
 
 void ParametricGridData::ClearResults()
 {
-	// clear inputs and outputs
-	//for (int col = 0; col < m_cols; col++)
-	//	m_par.Setup[col].Values.clear();
 	// clear simulation results
 	for (int row = 0; row < m_rows; row++)
+		ClearResults(row);
+}
+
+void ParametricGridData::ClearResults(int row)
+{
+	// clear simulation results
+	if ((row > -1) && (row < m_rows))
 	{
 		m_par.Runs[row]->Clear();
 		m_valid_run[row] = false;
