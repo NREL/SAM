@@ -905,9 +905,8 @@ void ParametricViewer::UpdateGrid()
 ParametricGridData::ParametricGridData(Case *cc) :m_case(cc), m_par(cc->Parametric())
 {
 	m_color_for_inputs = wxColour("LIGHT BLUE");
-	m_color_for_valid_outputs = wxColour("SPRING GREEN");
-	//m_color_for_invalid_outputs = wxColour("LIGHT GRAY");
-	m_color_for_invalid_outputs = wxColour(245, 245, 245);
+	m_color_for_valid_outputs = wxColour(145,210,142);
+	m_color_for_invalid_outputs = wxColour(235, 235, 235);
 	m_attr_for_inputs = new wxGridCellAttr;
 	m_attr_for_inputs->SetBackgroundColour(m_color_for_inputs);
 	m_attr_for_valid_outputs = new wxGridCellAttr;
@@ -1721,9 +1720,8 @@ bool ParametricGridData::RunSimulations_multi()
 	int time_prep = sw.Time();
 	sw.Start();
 
-	tpd.NewStage("Calculating...");
-
-
+	if ( nthread > sims.size() ) nthread = sims.size();
+	tpd.NewStage("Calculating...", nthread);
 
 	size_t nok = 0;
 	if (nthread > 1)
