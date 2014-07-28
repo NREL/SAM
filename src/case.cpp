@@ -385,6 +385,7 @@ bool Case::LoadValuesFromExternalSource( wxInputStream &in,
 
 	if ( di ) di->nread = vt.size();
 
+	bool ok = true;
 	// copy over values for variables that already exist
 	// in the configuration
 	for( VarTable::iterator it = vt.begin();
@@ -398,11 +399,13 @@ bool Case::LoadValuesFromExternalSource( wxInputStream &in,
 			else
 			{
 				if ( di ) di->wrong_type.Add( it->first );
+				ok = false;
 			}
 		}
 		else
 		{
 			if ( di ) di->not_found.Add( it->first );
+			ok = false;
 		}
 	}
 		
@@ -414,7 +417,7 @@ bool Case::LoadValuesFromExternalSource( wxInputStream &in,
 		return false;
 	}
 
-	return true;
+	return ok;
 }
 
 bool Case::LoadDefaults( wxString *pmsg )
@@ -443,17 +446,29 @@ bool Case::LoadDefaults( wxString *pmsg )
 				"(Otherwise press Shift-F10 later)\n", (int)di.not_found.size(),
 				(int)di.wrong_type.size(), (int)di.nread, (int)m_vals.size());
 		
-		if ( di.wrong_type.size() > 0 )	message += "\nWrong data type: " + wxJoin( di.wrong_type, ',' );
-		if ( di.not_found.size() > 0 ) message += "\nLoaded but don't exist in config: " + wxJoin( di.not_found, ',' );
+		if ( di.wrong_type.size() > 0 )
+		{
+			message += "\nWrong data type: " + wxJoin( di.wrong_type, ',' );
+			ok = false;
+		}
+
+		if ( di.not_found.size() > 0 )
+		{
+			message += "\nLoaded but don't exist in config: " + wxJoin( di.not_found, ',' );
+			ok = false;
+		}
 	}
 	else
 	{
-		if ( pmsg ) *pmsg = "Defaults file does not exist";
-		return false;
+		message = "Defaults file does not exist";
+		ok = false;
 	}
 
 	if ( pmsg != 0 )
+	{
 		*pmsg = message;
+		return ok;
+	}
 	else if ( !ok || di.not_found.size() > 0 || di.wrong_type.size() > 0 || di.nread != m_vals.size() ) 
 	{
 		if ( wxYES == wxShowTextMessageDialog( message, "Query", SamApp::Window(), wxDefaultSize, wxYES_NO) )
@@ -474,7 +489,7 @@ bool Case::LoadDefaults( wxString *pmsg )
 
 
 
-bool Case::SetConfiguration( const wxString &tech, const wxString &fin )
+bool Case::SetConfiguration( const wxString &tech, const wxString &fin, bool silent, wxString *message )
 {
 	wxArrayString notices;
 
@@ -598,10 +613,13 @@ bool Case::SetConfiguration( const wxString &tech, const wxString &fin )
 	SendEvent( CaseEvent( CaseEvent::CONFIG_CHANGED, tech, fin ) );
 
 	
-	if ( notices.size() > 0 )
-		::wxShowTextMessageDialog( wxJoin( notices, wxChar('\n') ) );
+	wxString mm(  wxJoin( notices, wxChar('\n') ) );
+	if ( !silent && notices.size() > 0 )
+		::wxShowTextMessageDialog( mm );
+	
+	if ( message ) *message = mm;
 
-	return true;
+	return notices.size() == 0;
 }
 
 lk::env_t &Case::CallbackEnvironment()

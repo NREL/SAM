@@ -1051,6 +1051,11 @@ bool ThreadProgressDialog::HasMessages()
 	return ( m_log->GetValue().Len() > 0 );
 }
 
+wxString ThreadProgressDialog::GetMessages()
+{
+	return m_log->GetValue();
+}
+
 void ThreadProgressDialog::Log( const wxString &text )
 {
 	m_log->AppendText( text + "\n" );

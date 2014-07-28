@@ -112,10 +112,18 @@ static void fcall_get( lk::invoke_t &cxt )
 
 static void fcall_simulate( lk::invoke_t &cxt )
 {
-	LK_DOC("simulate", "Run the base case simulation for the currently active case.", "(none):boolean" );
+	LK_DOC("simulate", "Run the base case simulation for the currently active case.  Errors and warnings are optionally returned in the first parameter.", "( [string:messages] ):boolean" );
 	if ( Case *c = CurrentCase() )
+	{
 		if ( CaseWindow *cw = SamApp::Window()->GetCaseWindow( c ) )
-			cxt.result().assign( cw->RunBaseCase() ? 1.0 : 0.0 );
+		{
+			wxString msgs;
+			cxt.result().assign( cw->RunBaseCase( true, &msgs ) ? 1.0 : 0.0 );
+
+			if( cxt.arg_count() > 0 )
+				cxt.arg(0).assign( msgs );
+		}
+	}
 }
 
 static void fcall_configuration( lk::invoke_t &cxt )
@@ -132,8 +140,9 @@ static void fcall_configuration( lk::invoke_t &cxt )
 		if ( techlist.Index( tech ) == wxNOT_FOUND ) return;
 		wxArrayString finlist = SamApp::Config().GetFinancingForTech( tech );
 		if ( finlist.Index( fin ) == wxNOT_FOUND ) return;
+
 		if ( Case *c = CurrentCase() )
-			cxt.result().assign( c->SetConfiguration( tech, fin ) ? 1.0 : 0.0 );
+			cxt.result().assign( c->SetConfiguration( tech, fin, true, 0 ) ? 1.0 : 0.0 ); // invoke silently - do not show error messages
 	}
 	else if ( Case *c = CurrentCase() )
 	{

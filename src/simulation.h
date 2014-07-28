@@ -125,7 +125,7 @@ public:
 	void OnDialogClose(wxCloseEvent &evt);
 	void SetButtonText( const wxString &txt );
 	bool HasMessages();
-
+	wxString GetMessages();
 
 protected:
 	bool m_canceled;
