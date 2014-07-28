@@ -280,7 +280,7 @@ void CaseWindow::SaveCurrentViewProperties()
 	m_case->SetProperty("NoteWindowHeight", wxString::Format("%d", h ));
 }
 
-bool CaseWindow::RunBaseCase( )
+bool CaseWindow::RunBaseCase( bool silent, wxString *messages )
 {
 	Simulation &bcsim = m_case->BaseCase();
 	m_inputPageList->Select( -1 );	
@@ -305,7 +305,11 @@ bool CaseWindow::RunBaseCase( )
 		tpd.Log("Error preparing simulation.");
 	}
 
-	tpd.Finalize( nok == 0 ? "Simulation failed." : "Simulation finished with warnings." );
+	if ( !silent ) tpd.Finalize( nok == 0 
+			? "Simulation failed." 
+			: "Simulation finished with warnings." );
+	
+	if (messages) *messages = tpd.Dialog().GetMessages();
 
 	if ( nok == 1 )
 	{
