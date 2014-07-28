@@ -1275,8 +1275,8 @@ void fcall_urdbsaverate(lk::invoke_t &cxt)
 		it != ci->Variables.end();	++it)
 	{
 		VarInfo &vi = *(it->second);
-		if (vi.Flags & VF_CALCULATED || vi.Flags & VF_INDICATOR) continue;
-		if (vi.Group == "Utility Rate")	
+//		if (vi.Flags & VF_CALCULATED || vi.Flags & VF_INDICATOR) continue;
+		if (vi.Group == "Utility Rate")
 
 		{
 			wxString var_name = it->first;
