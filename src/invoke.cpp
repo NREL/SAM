@@ -1210,6 +1210,7 @@ tab->Add(URdbFileRead, "URdbFileRead", 1, "Reads a local URdb format file and ov
 
 void fcall_openeilistutilities(lk::invoke_t &cxt)
 {
+	LK_DOC("openeilistutilities", "Lists utility companies from OpenEI.", "(none) : string");
 	wxArrayString names;
 	OpenEI api;
 	if (api.QueryUtilityCompanies(names))
@@ -1736,6 +1737,8 @@ lk::fcall_t* invoke_uicallback_funcs()
 		fcall_openeiapplyrate,
 		fcall_urdbsaverate,
 		fcall_urdbloadrate,
+		fcall_openeilistutilities,
+		fcall_openeilistrates,
 		fcall_editscene3d,
 		0 };
 	return (lk::fcall_t*)vec;
