@@ -1215,6 +1215,7 @@ void fcall_openeilistutilities(lk::invoke_t &cxt)
 	OpenEI api;
 	if (api.QueryUtilityCompanies(names))
 	{
+		cxt.result().empty_vector();
 		for (size_t i = 0; i<names.size(); i++)
 			cxt.result().vec_append(names[i]);
 	}
