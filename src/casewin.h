@@ -50,7 +50,7 @@ public:
 
 	void SaveCurrentViewProperties();
 
-	bool RunBaseCase();
+	bool RunBaseCase( bool silent = false, wxString *messages = 0 );
 	void UpdateResults();
 
 	void GenerateReport();
