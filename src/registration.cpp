@@ -1275,7 +1275,7 @@ void SamRegistration::OnRegister( wxCommandEvent & )
 			code = root.Item("status").AsInt();
 		
 		if ( code == 404 ) m_output->SetValue("No user exists with that email address." );
-		else if ( code == 200 ) m_output->SetValue("Registration key has been resent to " + email );
+		else if ( code == 200 ) m_output->SetValue("An email with your registration key has been sent to " + email + ". Paste the key from the email into the box above and click 'Confirm' to register.");
 		else m_output->SetValue( "An unknown error occurred.  Please check your internet connection." );
 
 		return;
@@ -1303,12 +1303,12 @@ void SamRegistration::OnRegister( wxCommandEvent & )
 	if ( code == 200 ) m_output->SetValue( "Registration successful!  You have been sent an email with a registration key.");
 	else if ( code == 409 ) 
 	{
-		m_output->SetValue("You are already registered.  Please enter the registration key sent to you by email when you first registered SAM.\n\nYou can press 'Resend key' above to have your key emailed to you again." );
+		m_output->SetValue("You are already registered.  Please enter the registration key sent to you by email when you first registered.\n\nYou can click 'Resend key' above to have your key emailed to you again." );
 		m_register->SetLabel( "Resend key");
 		m_register->Refresh();
 		Layout();
 	}
-	else if ( code == 404 ) m_output->SetValue("Your registration information was not correct.  No user exists with that registration code." );
+	else if ( code == 404 ) m_output->SetValue("Your registration information was not correct.  No user exists with that registration key." );
 	else m_output->SetValue(wxString::Format("Registration failed with error code %d.  Please check your internet connection.", code));
 
 	/*
@@ -1326,7 +1326,7 @@ void SamRegistration::OnConfirm( wxCommandEvent & )
 
 	int total_usage = 0;
 	if ( !CheckInWithServer( &total_usage ) )
-		m_output->SetValue("The registration key could not be verified.  Please check your key and internet connection.");
+		m_output->SetValue("The registration key could not be verified. Please check the key and internet connection.");
 	else
 	{
 		m_output->SetValue(wxString::Format("Registration successful!\n\nYou have used SAM %d times.", total_usage ));
