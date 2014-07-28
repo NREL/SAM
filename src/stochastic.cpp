@@ -1320,9 +1320,7 @@ void StochasticPanel::Simulate()
 	
 	wxStopWatch sw;
 
-	int nthread = 1;
-	if ( m_useThreads->GetValue() )
-		nthread = wxThread::GetCPUCount();
+	int nthread = wxThread::GetCPUCount();
 
 	SimulationDialog tpd( "Preparing simulations...", nthread );
 
@@ -1354,11 +1352,15 @@ void StochasticPanel::Simulate()
 	int time_prep = sw.Time();
 	sw.Start();
 	
-	tpd.NewStage( "Calculating...");
+
+	if ( nthread > sims.size() ) nthread = sims.size();
+	tpd.NewStage("Calculating...", nthread);
 
 	size_t nok = 0;
-	if ( nthread > 1 )
+	if ( m_useThreads->GetValue() )
+	{
 		nok = Simulation::DispatchThreads( tpd, sims, nthread );
+	}
 	else
 	{
 		for( size_t i=0;i<sims.size();i++ )

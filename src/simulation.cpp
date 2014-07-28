@@ -756,6 +756,8 @@ public:
 		wxMutexLocker _lock(m_percentLock);
 		float curper = m_percent;
 
+		if ( ns == 0 ) return 0.0f;
+
 		float each = 100/ns;
 		float overall = cur*each + 0.01*curper*each;
 		return overall;
@@ -863,9 +865,8 @@ int Simulation::DispatchThreads( ThreadProgressDialog &tpd,
 {	
 	wxStopWatch sw;
 
-	// prevent Access violation when running with fewer simulations than threads 7/25/14
+	// no need to create extra unnecessary threads 
 	if (nthread > sims.size()) nthread = sims.size();
-
 
 	std::vector<SimulationThread*> threads;
 	for( int i=0;i<nthread;i++)
