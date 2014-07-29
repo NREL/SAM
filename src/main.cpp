@@ -288,7 +288,7 @@ bool MainWindow::CreateNewCase( const wxString &_name, wxString tech, wxString f
 	
 	if ( 0 == SamApp::Config().Find( tech, fin ) )
 	{
-		wxMessageBox("Internal error: could not location configuration information for " + tech + "/" + fin );
+		wxMessageBox("Internal error: could not locate configuration information for " + tech + "/" + fin );
 		return false;
 	}
 
@@ -2031,12 +2031,12 @@ ConfigDialog::ConfigDialog( wxWindow *parent, const wxSize &size )
 	choice_sizer->Add( m_pFin, 1, wxALL|wxEXPAND, 0 );
 
 	wxStaticText *label = new wxStaticText( this, wxID_ANY,
-		"Project configuration: select a technology and then a financing option." );
+		"Choose a performance model, and then choose from the available financial models." );
 	wxFont font( wxMetroTheme::Font( wxMT_NORMAL, 12  ) );
 	label->SetFont( font );
 	label->SetForegroundColour( *wxWHITE );
 
-	m_pChkUseDefaults = new wxCheckBox(this, wxID_ANY, "Reset new inputs to tech/market-specific default values" );	
+	m_pChkUseDefaults = new wxCheckBox(this, wxID_ANY, "Reset new inputs to default values" );	
 	m_pChkUseDefaults->SetValue(true);
 
 	wxBoxSizer *hbox = new wxBoxSizer (wxHORIZONTAL );
@@ -2169,7 +2169,7 @@ bool ShowConfigurationDialog( wxWindow *parent, wxString *tech, wxString *fin, b
 	dlg->ShowResetCheckbox( *reset );
 	if ( !tech->IsEmpty() && !fin->IsEmpty() )
 		dlg->SetConfiguration( *tech, *fin );
-
+    	
 	bool result = false;
 	if ( dlg->ShowModal() == wxID_OK )
 	{
