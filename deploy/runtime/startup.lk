@@ -1,28 +1,42 @@
 // SAM startup script.
 
 // define all the configurations
-addconfig( 'Flat Plate PV', ['Residential', 'Commercial', 'Commercial PPA', 'Independent Power Producer', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'Single Owner', 'None'] );
-addconfig( 'PVWatts', [ 'Residential', 'Commercial', 'Commercial PPA', 'Independent Power Producer', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'Single Owner', 'None' ] );
-addconfig( 'High-X Concentrating PV', ['Independent Power Producer', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'Single Owner', 'None']);
+addconfig( 'Flat Plate PV', ['Residential', 'Commercial', 'Commercial PPA', 'Independent Power Producer', 'Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'None'] );
+addconfig( 'PVWatts', [ 'Residential', 'Commercial', 'Commercial PPA', 'Independent Power Producer', 'Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'None' ] );
+addconfig( 'High-X Concentrating PV', ['Commercial PPA', 'Independent Power Producer', 'Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'None']);
 addconfig( 'Solar Water Heating', ['Residential', 'Commercial', 'None']);
-addconfig( 'Wind Power', [ 'Residential', 'Commercial', 'Commercial PPA', 'Independent Power Producer', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'Single Owner', 'None'] );
-addconfig( 'Biopower', ['Commercial', 'Commercial PPA', 'Independent Power Producer', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'Single Owner', 'None']);
-addconfig( 'Geothermal Power', ['Independent Power Producer', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'Single Owner', 'None']);
-addconfig( 'Empirical Trough', ['Independent Power Producer', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'Single Owner','Commercial','None']);
-addconfig( 'Physical Trough', ['Independent Power Producer', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'Single Owner', 'None']);
-addconfig( 'Dish Stirling', ['Commercial', 'Commercial PPA', 'Independent Power Producer', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'Single Owner', 'None']);
-addconfig( 'Generic CSP System', ['Commercial', 'Commercial PPA', 'Independent Power Producer', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'Single Owner', 'None']);
-addconfig( 'Generic System', ['Residential', 'Commercial', 'Commercial PPA', 'Independent Power Producer', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'Single Owner', 'None']);
+addconfig( 'Wind Power', [ 'Residential', 'Commercial', 'Commercial PPA', 'Independent Power Producer', 'Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'None'] );
+addconfig( 'Biopower', ['Commercial', 'Commercial PPA', 'Independent Power Producer', 'Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'None']);
+addconfig( 'Geothermal Power', ['Commercial PPA', 'Independent Power Producer', 'Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'None']);
+addconfig( 'Empirical Trough', ['Commercial','Commercial PPA', 'Independent Power Producer', 'Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'None']);
+addconfig( 'Physical Trough', ['Commercial','Commercial PPA', 'Independent Power Producer', 'Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'None']);
+addconfig( 'Dish Stirling', ['Commercial','Commercial PPA', 'Commercial', 'Commercial PPA', 'Independent Power Producer', 'Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'None']);
+addconfig( 'Generic CSP System', ['Commercial','Commercial', 'Commercial PPA', 'Independent Power Producer', 'Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'None']);
+addconfig( 'Generic System', ['Residential', 'Commercial', 'Commercial PPA', 'Independent Power Producer', 'Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'None']);
 //addconfig( 'Wind BOS', [ 'None' ] );
 
 
-configopt( 'Flat Plate PV', { 'long_name'='Photovoltaics (Detailed)', 'short_name'='PV', 'description'='Detailed PV performance model using specific modules and inverters' } );
-configopt( 'PVWatts', { 'long_name'='Photovoltaics (PVWatts)', 'short_name'='PVWatts', 'description'='Simple PV evaluation using the NREL PVWatts V5 algorithm' } );
-configopt( 'High-X Concentrating PV', { 'long_name'='Photovoltaics (HCPV)', 'short_name'='HCPV', 'description'='High concentration photovoltaic system' } );
-configopt( 'Biopower', { 'long_name'='Biomass Energy', 'short_name'='Biomass', 'description'='Biomass combustion for power' } );
-configopt( 'Empirical Trough', { 'long_name'='Parabolic Trough (Empirical)', 'short_name'='Trough (Empr.)', 'description'='Empirical model for a CSP parabolic trough system' } );
-configopt( 'Physical Trough', { 'long_name'='Parabolic Trough (Physical)', 'short_name'='Trough (Phys.)', 'description'='Physical model for a CSP parabolic trough system' } );
+configopt( 'Flat Plate PV',               { 'long_name'='Photovoltaics (Detailed)',               'short_name'='Photovoltaic',     'description'='Photovoltaic system using detailed photovoltaic model with separate module and inverter component models' } );
+configopt( 'PVWatts',                     { 'long_name'='Photovoltaics (PVWatts)',                'short_name'='PVWatts',          'description'='Photovoltaic system using basic NREL PVWatts V5 algorithm' } );
+configopt( 'High-X Concentrating PV',     { 'long_name'='High-X concentrating photovoltaics',     'short_name'='HCPV',             'description'='Concentrating photovoltaic system with a high-X concentrating module model and separate inverter model' } );
+configopt( 'Solar Water Heating',         { 'long_name'='Solar water heating',                    'short_name'='Solar water',      'description'='Solar water heating model for residential and commercial building applications' } );
+configopt( 'Wind Power',                  { 'long_name'='Wind power',                             'short_name'='Wind',             'description'='Small or large wind power system' } );
+configopt( 'Biopower',                    { 'long_name'='Biomass combustion',                     'short_name'='Biopower',         'description'='Biomass combustion for electricity generation' } );
+configopt( 'Empirical Trough',            { 'long_name'='Parabolic trough (empirical)',           'short_name'='Trough (empr.)',   'description'='CSP parabolic trough system using model with empirically-derived coefficients and equations' } );
+configopt( 'Physical Trough',             { 'long_name'='Parabolic trough (physical)',            'short_name'='Trough (phys.)',   'description'='CSP parabolic trough system using heat transfer and thermodynamic component models' } );
+configopt( 'Dish Stirling',               { 'long_name'='Dish Stirling',                          'short_name'='Dish Stirling',    'description'='Dish Stirling model with parameters for SES and WGA-ADDS systems' } );
+configopt( 'Generic CSP System',          { 'long_name'='Generic CSP model',                      'short_name'='Generic CSP',      'description'='CSP power system with solar field modeled using a table of optical efficiency values' } );
+configopt( 'Generic System',              { 'long_name'='Generic power system',                   'short_name'='Generic',          'description'='Basic power system model using either capacity, capacity factor, and heat rate, or an hourly power generation profile as input' } );
+configopt( 'Geothermal Power',            { 'long_name'='Geothermal power',                       'short_name'='Geothermal',       'description'='Geothermal power model for hydrothermal and EGS systems with flash or binary conversion' } );
 
+configopt( 'Residential',                 { 'long_name'='Residential home',                       'short_name'='Residential',      'description'='Renewable energy system displaces residential home electric load' } );
+configopt( 'Commercial',                  { 'long_name'='Commercial property',                    'short_name'='Commercial',       'description'='Renewable energy system displaces commercial building electric load' } );
+configopt( 'Commercial PPA',              { 'long_name'='PPA single owner debt fraction',         'short_name'='SO debt fraction', 'description'='Single owner PPA with debt fraction and analysis period IRR, and financial constraints and optimization' } );
+configopt( 'Independent Power Producer',  { 'long_name'='PPA single owner financial constraints', 'short_name'='SO constraints',   'description'='Single owner PPA with debt fraction and analysis period IRR, and financial optimization' } );
+configopt( 'Single Owner',                { 'long_name'='PPA single owner DSCR',                  'short_name'='SO DSCR',          'description'='Single owner PPA with constant DSCR and IRR target year, reserve accounts and depreciation allocations' } );
+configopt( 'Leveraged Partnership Flip',  { 'long_name'='PPA partnership flip with debt',         'short_name'='Flip (debt)',      'description'='Developer/investor partnership flip PPA structure with debt' } );
+configopt( 'All Equity Partnership Flip', { 'long_name'='PPA partnership flip without debt',      'short_name'='Flip (no debt)',   'description'='Developer/investor partnership flip PPA structure without debt' } );
+configopt( 'Sale Leaseback',              { 'long_name'='PPA sale leaseback',                     'short_name'='Sale leaseback',   'description'='Sale leaseback partnership PPA structure' } );
 
 function setup_pvwatts_pages()
 {
