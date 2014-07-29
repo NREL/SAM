@@ -933,6 +933,7 @@ void ParametricGridData::Init()
 	m_input_names.Clear();
 	m_output_names.Clear();
 	m_var_names.Clear();
+	m_valid_run.clear();
 
 	m_cols = m_par.Setup.size();
 
@@ -951,6 +952,10 @@ void ParametricGridData::Init()
 		m_var_names.push_back(m_output_names[i]);
 
 	m_rows = m_par.Runs.size();
+
+	// set m_valid_runs according to data that is read in
+	for (size_t i = 0; i < m_rows; i++)
+		m_valid_run.push_back(true);
 }
 
 void ParametricGridData::UpdateSetup()
