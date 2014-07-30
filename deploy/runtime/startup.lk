@@ -16,9 +16,9 @@ addconfig( 'Generic System', ['Residential', 'Commercial', 'Commercial PPA', 'In
 //addconfig( 'Wind BOS', [ 'None' ] );
 
 
-configopt( 'Flat Plate PV',               { 'long_name'='Photovoltaics (Detailed)',               'short_name'='Photovoltaic',     'description'='Photovoltaic system using detailed photovoltaic model with separate module and inverter component models' } );
-configopt( 'PVWatts',                     { 'long_name'='Photovoltaics (PVWatts)',                'short_name'='PVWatts',          'description'='Photovoltaic system using basic NREL PVWatts V5 algorithm' } );
-configopt( 'High-X Concentrating PV',     { 'long_name'='High-X concentrating photovoltaics',     'short_name'='HCPV',             'description'='Concentrating photovoltaic system with a high-X concentrating module model and separate inverter model' } );
+configopt( 'Flat Plate PV',               { 'long_name'='Photovoltaic (Detailed)',                'short_name'='Photovoltaic',     'description'='Photovoltaic system using detailed photovoltaic model with separate module and inverter component models' } );
+configopt( 'PVWatts',                     { 'long_name'='Photovoltaic (PVWatts)',                 'short_name'='PVWatts',          'description'='Photovoltaic system using basic NREL PVWatts V5 algorithm' } );
+configopt( 'High-X Concentrating PV',     { 'long_name'='High-X concentrating photovoltaic',      'short_name'='HCPV',             'description'='Concentrating photovoltaic system with a high-X concentrating module model and separate inverter model' } );
 configopt( 'Solar Water Heating',         { 'long_name'='Solar water heating',                    'short_name'='Solar water',      'description'='Solar water heating model for residential and commercial building applications' } );
 configopt( 'Wind Power',                  { 'long_name'='Wind power',                             'short_name'='Wind',             'description'='Small or large wind power system' } );
 configopt( 'Biopower',                    { 'long_name'='Biomass combustion',                     'short_name'='Biopower',         'description'='Biomass combustion for electricity generation' } );
@@ -47,7 +47,7 @@ function setup_pvwatts_pages()
 
 function setup_flat_plate_pv_pages()
 {
-	addpage( [[ 'Solar Resource Data', {'name'='PV Albedo and Radiation', 'collapsible'=true, 'collapsible_var'='pv.radmode.is_shown'} ]], { 'sidebar'='Location and Resource' } );
+	addpage( [[ 'Solar Resource Data', {'name'='PV Albedo and Radiation', 'collapsible'=true, 'collapsible_var'='pv.radmode.is_shown'} ]], { 'sidebar'='Location and Resource', 'help'='PV Location and Resource' } );
 	
 	
 	addpage( [ ['Simple Efficiency Module Model'],
@@ -55,10 +55,10 @@ function setup_flat_plate_pv_pages()
 				['CEC Performance Model with Module Database'],
 				['CEC Performance Model with User Entered Specifications'], 
 				['Sandia PV Array Performance Model with Module Database'] ], 				
-			{ 'sidebar'='Module', 'help'='Module', 'exclusive_var'='module_model' } );
+			{ 'sidebar'='Module', 'help'='PV Module', 'exclusive_var'='module_model' } );
 			
 	addpage( [ ['Inverter CEC Database'], ['Inverter Datasheet'], ['Inverter Part Load Curve'] ], 
-			{ 'sidebar'='Inverter', 'help'='Inverter', 'exclusive_var'='inverter_model' } );
+			{ 'sidebar'='Inverter', 'help'='PV Inverter', 'exclusive_var'='inverter_model' } );
 	addpage( [ ['PV System Design'] ], { 'sidebar'='System Design' } );
 	addpage( [ ['PV Shading'] ], { 'sidebar'='Shading' } );
 	addpage( [ ['PV Losses'] ], { 'sidebar'='Losses' } );
@@ -259,7 +259,7 @@ function setup_solar_water_heating_pages()
 
 function setup_csp_physical_trough_pages()
 {
-	addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource' } );
+	addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource', 'help'='troughphysical_location_and_resource' } );
 	addpage( [[ 'Physical Trough Solar Field' ]], { 'sidebar'='Solar Field' } );
 	addpage( [[ 'Physical Trough Collector Header',
 	 {'name'='Physical Trough Collector Type 1', 'caption'='Collector Type 1', 'collapsible'=false, 'collapsible_var'='sca_1_is_shown'},
@@ -372,55 +372,55 @@ setmodules( ['pvsamv1'] );
 setconfig( 'Flat Plate PV', 'Residential' );
 setmodules( ['pvsamv1', 'utilityrate3', 'cashloan']);
 setup_flat_plate_pv_pages();
-addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs' } );
+addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='PV System Costs' } );
 setup_residential_pages();
 
 setconfig( 'Flat Plate PV', 'Commercial' );
 setmodules( ['pvsamv1', 'utilityrate3', 'cashloan']);
 setup_flat_plate_pv_pages();
-addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs' } );
+addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='PV System Costs' } );
 setup_commercial_pages();
 
 setconfig( 'Flat Plate PV', 'Commercial PPA' );	
 setmodules( ['pvsamv1', 'ippppa']);
 setting( { 'analysis_period_var'='cf_length' } );
 setup_flat_plate_pv_pages();
-addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs' } );
+addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='PV System Costs' } );
 setup_commercial_ppa_pages();
 
 setconfig( 'Flat Plate PV', 'Independent Power Producer' );	
 setmodules( ['pvsamv1', 'ippppa']);
 setting( { 'analysis_period_var'='cf_length' } );
 setup_flat_plate_pv_pages();
-addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs' } );
+addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='PV System Costs' } );
 setup_independent_power_producer_pages();
 
 setconfig( 'Flat Plate PV', 'Leveraged Partnership Flip' );	
 setmodules( ['pvsamv1', 'levpartflip']);
 setting( { 'analysis_period_var'='cf_length' } );
 setup_flat_plate_pv_pages();
-addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs' } );
+addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='PV System Costs' } );
 setup_leveraged_partnership_flip_pages();
 
 setconfig( 'Flat Plate PV', 'All Equity Partnership Flip' );	
 setmodules( ['pvsamv1', 'equpartflip']);
 setting( { 'analysis_period_var'='cf_length' } );
 setup_flat_plate_pv_pages();
-addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs' } );
+addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='PV System Costs' } );
 setup_all_equity_partnership_flip_pages();
 
 setconfig( 'Flat Plate PV', 'Sale Leaseback' );	
 setmodules( ['pvsamv1', 'saleleaseback']);
 setting( { 'analysis_period_var'='cf_length' } );
 setup_flat_plate_pv_pages();
-addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs' } );
+addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='PV System Costs' } );
 setup_sale_leaseback_pages();
 
 setconfig( 'Flat Plate PV', 'Single Owner' );	
 setmodules( ['pvsamv1', 'singleowner']);
 setting( { 'analysis_period_var'='cf_length' } );
 setup_flat_plate_pv_pages();
-addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs' } );
+addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='PV System Costs' } );
 setup_single_owner_pages();
 
 
