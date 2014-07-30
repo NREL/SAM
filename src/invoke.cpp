@@ -1272,7 +1272,7 @@ void fcall_urdbsaverate(lk::invoke_t &cxt)
 	if ( !ci ) return;
 
 	wxCSVData csv;
-	int col = 0;
+	int row = 0;
 	for (VarInfoLookup::iterator it = ci->Variables.begin();
 		it != ci->Variables.end();	++it)
 	{
@@ -1288,9 +1288,10 @@ void fcall_urdbsaverate(lk::invoke_t &cxt)
 				// write out csv with first row var name and second row var values
 				wxString value = vv->AsString();
 				value.Replace("\n", ";;");
-				csv.Set(0, col, var_name);
-				csv.Set(1, col, value);
-				col++;
+				csv.Set(row, 0, var_name);
+				csv.Set(row, 1, value);
+				csv.Set(row, 2, vi.Label);
+				row++;
 			}
 		}
 	}
@@ -1306,19 +1307,19 @@ void fcall_urdbloadrate(lk::invoke_t &cxt)
 	if ( !c ) return;
 
 	wxCSVData csv;
-	int col = 0;
+	int row = 0;
 	bool ret_val = csv.ReadFile( cxt.arg(0).as_string() );
 	if (ret_val)
 	{
 		wxArrayString errors;
 		wxArrayString list;
-		for (col = 0; col < (int)csv.NumCols(); col++)
+		for (row = 0; row < (int)csv.NumRows(); row++)
 		{
-			wxString var_name = csv.Get(0,col);
+			wxString var_name = csv.Get(row,0);
 			// get value
 			if (VarValue *vv = c->Values().Get(var_name))
 			{
-				wxString value = csv.Get(1, col);
+				wxString value = csv.Get(row,1);
 				value.Replace(";;", "\n");
 				if ( !VarValue::Parse(vv->Type(), value, *vv) )
 				{
