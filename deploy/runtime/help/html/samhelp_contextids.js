@@ -12,10 +12,10 @@ function hmGetContextId(query) {
     else return "";
 }
 
+hmContextIds["41500"]="pv_module.htm";
+hmContextIds["41600"]="pv_inverter.htm";
+hmContextIds["41200"]="pv_system_design.htm";
 hmContextIds["41400"]="pv_shading.htm";
-hmContextIds["41500"]="pvfp_module.htm";
-hmContextIds["41600"]="pvfp_inverter.htm";
-hmContextIds["41200"]="pvfp_array.htm";
 hmContextIds["42000"]="parabolic_trough_empirical.htm";
 hmContextIds["42200"]="troughempirical_solar_field.htm";
 hmContextIds["42300"]="troughempirical_sca_hce.htm";
