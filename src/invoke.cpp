@@ -1221,21 +1221,21 @@ void fcall_openeilistutilities(lk::invoke_t &cxt)
 	}
 }
 
-// TODO finish implementation and test with script
 void fcall_openeilistrates(lk::invoke_t &cxt)
 {
-	wxString utility;
+	LK_DOC("openeilistrates", "Lists rates for utility argument from OpenEI.", "(utility) : string");
+	wxString utility = cxt.arg(0).as_string();
 
 	std::vector<OpenEI::RateInfo> ratelist;
 	OpenEI api;
 	if (api.QueryUtilityRates(utility, ratelist))
 	{
+		cxt.result().empty_vector();
 		for (int i = 0; i<(int)ratelist.size(); i++)
 		{
 			cxt.result().vec_append(ratelist[i].Name);
 			cxt.result().vec_append(ratelist[i].GUID);
 		}
-		cxt.result().assign(ratelist.size());
 	}
 	else
 		cxt.result().assign(-1);
