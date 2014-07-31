@@ -18,8 +18,8 @@ function ipp_metrics()
 	metric( 'actual_ppa_escalation', {'label'='PPA Price Escalation', 'mode'='f', 'post'=' %', 'deci'='2' } );
 	metric( 'lppa_nom', {'label'='Levelized PPA Price (Nominal)', 'mode'='f', 'post'=' \u0A2/kWh', 'deci'='2' } );
 	metric( 'lppa_real', {'label'='Levelized PPA Price (Real)', 'mode'='f', 'post'=' \u00A2/kWh', 'deci'='2' } );
-	metric( 'latcf_nom', {'label'='Levelized  ATCF (Nominal)', 'mode'='f', 'post'=' \u0A2/kWh', 'deci'='2' } );
-	metric( 'latcf_real', {'label'='Levelized ATCF Price (Real)', 'mode'='f', 'post'=' \u00A2/kWh', 'deci'='2' } );
+//	metric( 'latcf_nom', {'label'='Levelized  ATCF (Nominal)', 'mode'='f', 'post'=' \u0A2/kWh', 'deci'='2' } );
+//	metric( 'latcf_real', {'label'='Levelized ATCF Price (Real)', 'mode'='f', 'post'=' \u00A2/kWh', 'deci'='2' } );
 	metric( 'irr', {'label'='Internal Rate of Return', 'mode'='f', 'post'=' %', 'deci'='2' } );
 	metric( 'npv', {'label'='Net Present Value', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
 	metric( 'min_dscr', {'label'='Minimum DSCR', 'mode'='f', 'deci'='2' } );
@@ -137,6 +137,13 @@ function sl_metrics()
 	metric( 'size_of_equity', {'label'='Total Equity', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
 }
 
+function pvwatts_metrics() 
+{
+	metric( 'annual_energy', {'label'='Annual Energy', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh' } );
+	metric( 'capacity_factor', {'label'='Capacity Factor', 'mode'='f', 'deci'='1', 'thousep'='true', 'post'='%' } );
+	metric( 'kwh_per_kw', {'label'='First Year kWhAC/kWDC', 'mode'='f', 'deci'='0', 'thousep'='true' } );
+}
+
 function pv_metrics() 
 {
 	metric( 'annual_energy', {'label'='Annual Energy', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh' } );
@@ -209,7 +216,7 @@ function biopower_metrics()
 
 // Technology Metrics
 metrics{ 'Flat Plate PV' } = define() { pv_metrics(); };
-metrics{ 'PVWatts' } = define() {	pv_metrics(); };
+metrics{ 'PVWatts' } = define() {	pvwatts_metrics(); };
 metrics{ 'High-X Concentrating PV' } = define() { generic_hcpv_metrics(); };
 metrics{ 'Physical Trough' } = define() { physical_trough_metrics(); };
 metrics{ 'Empirical Trough' } = define() { empirical_trough_metrics(); };

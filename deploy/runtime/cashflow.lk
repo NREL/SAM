@@ -220,6 +220,7 @@ cashflow{ 'Independent Power Producer' } = define()
 	cfline( 'cf_after_tax_cash_flow');
 };
 
+//TODO - all DHF model updates to 2014.1.14 release
 cashflow{ 'Single Owner' } = define()
 {
 	cfline( 'cf_energy_net', 1); // use one digit
@@ -239,7 +240,7 @@ cashflow{ 'Single Owner' } = define()
 	cfline( 'cf_operating_expenses');
 	cfline( '' ); // spacer
 	
-	cfline( 'cf_operating_income');
+	cfline( 'cf_ebidta');
 	cfline( '' ); // spacer
 	
 	cfline( "Financing", 0 ); // header
