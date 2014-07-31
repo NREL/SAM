@@ -929,9 +929,12 @@ public:
 		int width, height;
 		GetClientSize( &width, &height );
 
-		//dc.SetBackground( wxBrush( wxMetroTheme::Colour( wxMT_ACCENT ) ) );
-		//dc.SetBackground( wxBrush( wxColour(220,14,158) ) );
-		dc.SetBackground( wxBrush( wxColour(15,79,34) ) );
+		
+		// dc.SetBackground( wxBrush( wxMetroTheme::Colour( wxMT_ACCENT ) ) ); // metro blue
+		dc.SetBackground( wxBrush( wxColour(219, 192, 4) ) ); // bright yellow/orange
+		// dc.SetBackground( wxBrush( wxColour(120, 67, 163) ) ); // violet
+		// dc.SetBackground( wxBrush( wxColour(191, 38, 96) ) ); // reddish pink
+		//dc.SetBackground( wxBrush( wxColour(15,79,34) ) ); // dark forest green
 		dc.Clear();
 
 		dc.SetBrush( *wxWHITE_BRUSH );
@@ -2014,6 +2017,7 @@ BEGIN_EVENT_TABLE(ConfigDialog, wxDialog)
 	EVT_LISTBOX( ID_TechTree, ConfigDialog::OnTechTree)
 	EVT_LISTBOX_DCLICK( ID_FinTree, ConfigDialog::OnDoubleClick )
 	EVT_BUTTON( wxID_HELP, ConfigDialog::OnHelp )
+	EVT_BUTTON( wxID_OK, ConfigDialog::OnOk )
 	EVT_MENU( wxID_HELP, ConfigDialog::OnHelp )
 END_EVENT_TABLE()
 
@@ -2087,13 +2091,12 @@ void ConfigDialog::ShowResetCheckbox(bool b)
 	m_pChkUseDefaults->Show(b);
 }
 
-bool ConfigDialog::GetConfiguration(wxString &t, wxString &f)
+void ConfigDialog::GetConfiguration(wxString &t, wxString &f)
 {
 	int tsel = m_pTech->GetSelection();
 	int fsel = m_pFin->GetSelection();
 	t = tsel >= 0 && tsel < (int)m_tnames.size() ? m_tnames[tsel] : wxEmptyString;
 	f = fsel >= 0 && fsel < (int)m_fnames.size() ? m_fnames[fsel] : wxEmptyString;
-	return true;
 }
 
 
@@ -2142,6 +2145,18 @@ void ConfigDialog::OnTechTree( wxCommandEvent &evt )
 void ConfigDialog::OnHelp(wxCommandEvent &evt)
 {
 	SamApp::ShowHelp("Technology Market");
+}
+
+void ConfigDialog::OnOk( wxCommandEvent & )
+{
+	wxString t, f;
+	GetConfiguration( t, f );
+	if ( t.IsEmpty() || f.IsEmpty() )
+	{
+		wxMessageBox( "Please select both a technology and a financing option.", "Notice", wxOK, this );
+		return;
+	}
+	EndModal( wxID_OK );
 }
 
 

@@ -302,7 +302,7 @@ public:
 	ConfigDialog( wxWindow *parent, const wxSize &size = wxSize(700,570) );
 
 	void SetConfiguration(const wxString &t, const wxString &f);
-	bool GetConfiguration(wxString &t, wxString &f);
+	void GetConfiguration(wxString &t, wxString &f);
 
 	void ShowResetCheckbox(bool b);
 	bool ResetToDefaults();
@@ -318,6 +318,7 @@ private:
 	wxMetroListBox *m_pTech, *m_pFin;
 	wxArrayString m_tnames, m_fnames;
 
+	void OnOk( wxCommandEvent & );
 	void OnHelp( wxCommandEvent & );
 
 	wxCheckBox *m_pChkUseDefaults;

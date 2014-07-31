@@ -20,6 +20,7 @@ OBJECTS = ide.o \
 	solarprospector.o \
 	registration.o \
 	gridsupport.o \
+	macro.o \
 	p50p90.o \
 	reports.o \
 	script.o \
