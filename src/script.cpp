@@ -315,7 +315,7 @@ class SamScriptCtrl : public wxLKScriptCtrl
 public:
 	SamScriptCtrl( wxWindow *parent, int id, ScriptWindow *scriptwin )
 		: wxLKScriptCtrl( parent, id, wxDefaultPosition, wxDefaultSize,
-			(wxLK_STDLIB_BASIC|wxLK_STDLIB_STRING|wxLK_STDLIB_MATH|wxLK_STDLIB_WXUI|wxLK_STDLIB_PLOT|wxLK_STDLIB_MISC|wxLK_STDLIB_BIOS) ),
+			(wxLK_STDLIB_BASIC|wxLK_STDLIB_STRING|wxLK_STDLIB_MATH|wxLK_STDLIB_WXUI|wxLK_STDLIB_PLOT|wxLK_STDLIB_MISC|wxLK_STDLIB_SOUT) ),
 		 m_scriptwin( scriptwin )
 	{
 		// register SAM-specific invoke functions here

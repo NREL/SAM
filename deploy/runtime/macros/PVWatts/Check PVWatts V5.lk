@@ -1,0 +1,12 @@
+/**
+This <font size=+3 color=#dedede>macro</font> will help you run PVWatts in an easy way.<br>
+
+<ol>
+<li> Step 1
+<li> Step 2
+<li> Step 3
+</ol>
+**/
+
+
+msgbox('Run pvwatts the easy way.');

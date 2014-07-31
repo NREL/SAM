@@ -27,6 +27,7 @@
 #include "parametric.h"
 #include "stochastic.h"
 #include "p50p90.h"
+#include "macro.h"
 
 #include "../resource/graph.cpng"
 
@@ -88,7 +89,7 @@ END_EVENT_TABLE()
 
 
 enum { ID_INPUTPAGELIST = wxID_HIGHEST + 142,
-	ID_SIMULATE, ID_RESULTSPAGE, ID_ADVANCED, ID_PARAMETRICS, ID_STOCHASTIC, ID_P50P90, ID_SCRIPTING,
+	ID_SIMULATE, ID_RESULTSPAGE, ID_ADVANCED, ID_PARAMETRICS, ID_STOCHASTIC, ID_P50P90, ID_MACRO,
 	ID_COLLAPSE,ID_EXCL_BUTTON, ID_EXCL_OPTION, ID_EXCL_OPTION_MAX=ID_EXCL_OPTION+25,
 	ID_PAGES, ID_BASECASE_PAGES };
 
@@ -99,11 +100,11 @@ BEGIN_EVENT_TABLE( CaseWindow, wxSplitterWindow )
 	EVT_BUTTON( ID_PARAMETRICS, CaseWindow::OnCommand )
 	EVT_BUTTON( ID_STOCHASTIC, CaseWindow::OnCommand )
 	EVT_BUTTON( ID_P50P90, CaseWindow::OnCommand )
-	EVT_BUTTON( ID_SCRIPTING, CaseWindow::OnCommand )
+	EVT_BUTTON( ID_MACRO, CaseWindow::OnCommand )
 	EVT_MENU( ID_PARAMETRICS, CaseWindow::OnCommand )
 	EVT_MENU( ID_STOCHASTIC, CaseWindow::OnCommand )
 	EVT_MENU( ID_P50P90, CaseWindow::OnCommand )
-	EVT_MENU( ID_SCRIPTING, CaseWindow::OnCommand )
+	EVT_MENU( ID_MACRO, CaseWindow::OnCommand )
 	EVT_LISTBOX( ID_INPUTPAGELIST, CaseWindow::OnCommand )
 	EVT_BUTTON( ID_EXCL_BUTTON, CaseWindow::OnCommand )
 	EVT_CHECKBOX( ID_COLLAPSE, CaseWindow::OnCommand )
@@ -152,7 +153,7 @@ CaseWindow::CaseWindow( wxWindow *parent, Case *c )
 	szsims->Add( new wxMetroButton( left_panel, ID_PARAMETRICS, "Parametrics" ), 0, wxALL|wxEXPAND, 0 );
 	szsims->Add( new wxMetroButton( left_panel, ID_STOCHASTIC, "Stochastic" ), 0, wxALL|wxEXPAND, 0 );
 	szsims->Add( new wxMetroButton( left_panel, ID_P50P90, "P50 / P90" ), 0, wxALL|wxEXPAND, 0 );
-	szsims->Add( new wxMetroButton( left_panel, ID_SCRIPTING, "Macros" ), 0, wxALL|wxEXPAND, 0 );
+	szsims->Add( new wxMetroButton( left_panel, ID_MACRO, "Macros" ), 0, wxALL|wxEXPAND, 0 );
 
 	wxBoxSizer *szvl = new wxBoxSizer( wxVERTICAL );
 	szvl->Add( m_configLabel, 0, wxALIGN_CENTER_VERTICAL|wxALIGN_CENTER|wxTOP|wxBOTTOM, 3 );
@@ -196,7 +197,8 @@ CaseWindow::CaseWindow( wxWindow *parent, Case *c )
 	m_p50p90 = new P50P90Form( m_pageFlipper, m_case );
 	m_pageFlipper->AddPage( m_p50p90, "P50/P90", false );
 
-	m_pageFlipper->AddPage( new wxPanel( m_pageFlipper ), "Scripting", false );
+	m_macros = new MacroPanel( m_pageFlipper, m_case );
+	m_pageFlipper->AddPage( m_macros, "Macros", false );
 
 	
 	SetMinimumPaneSize( 50 );
@@ -455,7 +457,7 @@ void CaseWindow::OnCommand( wxCommandEvent &evt )
 		menu.Append( ID_PARAMETRICS, "Parametrics" );
 		menu.Append( ID_STOCHASTIC, "Stochastic" );
 		menu.Append( ID_P50P90, "P50 / P90" );
-		menu.Append( ID_SCRIPTING, "Scripting" );
+		menu.Append( ID_MACRO, "Scripting" );
 		
 		menu.Popup( this, pos, wxBOTTOM|wxRIGHT );
 	}
@@ -474,7 +476,7 @@ void CaseWindow::OnCommand( wxCommandEvent &evt )
 		m_inputPageList->Select( -1 );
 		m_pageFlipper->SetSelection( 4 );
 	}
-	else if ( evt.GetId() == ID_SCRIPTING )
+	else if ( evt.GetId() == ID_MACRO )
 	{
 		m_inputPageList->Select( -1 );
 		m_pageFlipper->SetSelection( 5 );
@@ -634,6 +636,8 @@ void CaseWindow::OnCaseEvent( Case *, CaseEvent &evt )
 			SwitchToInputPage( m_pageGroups[0]->SideBarLabel );
 		
 		m_baseCaseResults->Clear();
+
+		m_macros->ConfigurationChanged();
 
 		SamApp::Project().SetModified( true );
 	}

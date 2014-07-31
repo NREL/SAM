@@ -26,7 +26,7 @@ class wxUIObject;
 class ParametricViewer;
 class StochasticPanel;
 class P50P90Form;
-
+class MacroPanel;
 struct InputPageGroup;
 
 class CaseWindow : public wxSplitterWindow, CaseEventListener
@@ -101,6 +101,7 @@ private:
 	ParametricViewer *m_parametrics;
 	StochasticPanel *m_stochastic;
 	P50P90Form *m_p50p90;
+	MacroPanel *m_macros;
 
 	PageNote *m_pageNote;
 	wxString m_lastPageNoteId;

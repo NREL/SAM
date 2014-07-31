@@ -1,0 +1,16 @@
+/**
+This macro will help you create something really neat, such as below:<br>
+<img src="$MACROPATH/tornado.gif">
+
+<ul>
+<li> Step 1
+<li> Step 2
+<li> Step 3
+</ul>
+**/
+
+
+msgbox('Lets create a tornado chart - SAMs macro system is great.');
+
+for( i=0;i<10000;i++ )
+	outln('hello ' + i );
