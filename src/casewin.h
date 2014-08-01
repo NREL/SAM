@@ -54,11 +54,7 @@ public:
 	void UpdateResults();
 
 	void GenerateReport();
-
-	bool ShowSelectVariableDialog( const wxString &title, 
-		const wxArrayString &names, const wxArrayString &labels, wxArrayString &list,
-		bool expand_all=false );
-
+	
 private:
 	Case *m_case;
 	
@@ -149,6 +145,11 @@ public:
 	wxArrayString GetCheckedNames();
 	void ShowAllItems();
 	void UpdateTree();
+
+	
+	static bool Run( const wxString &title, 
+		const wxArrayString &names, const wxArrayString &labels, wxArrayString &list,
+		bool expand_all=false );
 
 private:
 	void OnUncheckAll(wxCommandEvent &evt);

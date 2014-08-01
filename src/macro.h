@@ -10,6 +10,7 @@ class wxTextCtrl;
 class wxHtmlWindow;
 class wxPanel;
 class Case;
+class wxStaticText;
 
 
 class MacroEngine
@@ -48,9 +49,10 @@ private:
 	Case *m_case;
 	wxMetroListBox *m_listbox;
 	wxHtmlWindow *m_html;
+	wxString m_curMacroPath;
 	wxTextCtrl *m_output;
 	wxArrayString m_macroList;
-	wxMetroButton *m_run, *m_stop;
+	wxMetroButton *m_run, *m_stop, *m_code;
 	wxPanel *m_rightPanel;
 
 	DECLARE_EVENT_TABLE();
