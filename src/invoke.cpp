@@ -25,8 +25,7 @@
 #include "results.h"
 #include "solarprospector.h"
 #include "simplecurl.h"
-#include "openeiapi.h"
-#include "openeiutilityrateform.h"
+#include "urdb.h"
 #include "invoke.h"
 #include "s3tool.h"
 
@@ -1197,14 +1196,6 @@ void fcall_solarprospector(lk::invoke_t &cxt)
 	cxt.result().assign(filename);
 }
 
-/*
-tab->Add(OpenEIListUtilities, "OpenEIListUtilities", 0, "Returns a list of utility company names from OpenEI.org", "( NONE ):ARRAY");
-tab->Add(OpenEIListRates, "OpenEIListRates", 3, "Lists all rate schedules for a utility company.", "( STRING:Utility name, <ARRAY:Names>, <ARRAY:Guids> ):INTEGER");
-tab->Add(OpenEIApplyRate, "OpenEIApplyRate", 1, "Downloads and applies the specified rate schedule from OpenEI.", "( STRING:Guid ):BOOLEAN");
-
-tab->Add(URdbFileWrite, "URdbFileWrite", 1, "Writes a local URdb format file with the current case's utility rate information.", "( STRING:file ):BOOLEAN");
-tab->Add(URdbFileRead, "URdbFileRead", 1, "Reads a local URdb format file and overwrites the current case's utility rate information.", "( STRING:file ):BOOLEAN");
-*/
 
 /********** OPENEI capability ***********/
 
@@ -1451,58 +1442,6 @@ void fcall_urdb_get(lk::invoke_t &cxt)
 
 	}
 }
-/*
-DECL_INVOKEFCN(URdbFileWrite)
-{
-	Case *c = locate_case();
-	if (!c)
-	{
-		ivkobj.Messages.Add("URdbFileWrite: fail - no active case.");
-		return true;
-	}
-
-	wxString file, err;
-	IVKARG(0, file, "string");
-
-	if (URWriteFile(file, c->GetSymTab(), &err))
-	{
-		retval->Assign(true);
-	}
-	else
-	{
-		ivkobj.Messages.Add("URdbFileWrite: " + err);
-		retval->Assign(false);
-	}
-
-	return true;
-}
-
-DECL_INVOKEFCN(URdbFileRead)
-{
-	Case *c = locate_case();
-	if (!c)
-	{
-		ivkobj.Messages.Add("URdbFileRead: fail - no active case.");
-		return true;
-	}
-
-	wxString file, err;
-	IVKARG(0, file, "string");
-
-	if (URReadFile(file, c->GetSymTab(), &err))
-	{
-		c->AllInputsInvalidated();
-		retval->Assign(true);
-	}
-	else
-	{
-		ivkobj.Messages.Add("URdbFileRead: " + err);
-		retval->Assign(false);
-	}
-
-	return true;
-}
-*/
 
 void fcall_openeiutilityrateform(lk::invoke_t &cxt)
 {
