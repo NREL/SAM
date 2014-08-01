@@ -128,16 +128,13 @@
     <ClInclude Include="..\src\p50p90.h">
       <Filter>Source</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\openeiapi.h">
-      <Filter>Source</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\openeiutilityrateform.h">
-      <Filter>Source</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\stochastic.h">
       <Filter>Source</Filter>
     </ClInclude>
     <ClInclude Include="..\src\macro.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\urdb.h">
       <Filter>Source</Filter>
     </ClInclude>
   </ItemGroup>
@@ -256,16 +253,13 @@
     <ClCompile Include="..\src\p50p90.cpp">
       <Filter>Source</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\openeiapi.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\openeiutilityrateform.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\stochastic.cpp">
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="..\src\macro.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\urdb.cpp">
       <Filter>Source</Filter>
     </ClCompile>
   </ItemGroup>

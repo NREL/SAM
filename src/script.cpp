@@ -6,13 +6,13 @@
 #include <wex/metro.h>
 #include <wex/utils.h>
 
-#include "openeiapi.h"
 #include "casewin.h"
 #include "library.h"
 #include "main.h"
 #include "invoke.h"
 #include "simulation.h"
 #include "script.h"
+#include "urdb.h"
 
 static void fcall_open_project( lk::invoke_t &cxt )
 {
@@ -110,13 +110,9 @@ static void fcall_varinfo( lk::invoke_t &cxt )
 	}
 }
 
-//bool CaseWindow::ShowSelectVariableDialog( const wxString &title, 
-	//const wxArrayString &names, const wxArrayString &labels, wxArrayString &list,
-	//bool expand_all )
-
 static void fcall_selectinputs( lk::invoke_t &cxt )
 {
-	LK_DOC("select_inputs", "Shows the input variable selection dialog.", "(string:title, [<array:checked>]):boolean")
+	LK_DOC("select_inputs", "Shows the input variable selection dialog.", "(<array:checked>, [string:title]):boolean")
 		
 	cxt.result().assign( 0.0 );
 
@@ -153,11 +149,14 @@ static void fcall_selectinputs( lk::invoke_t &cxt )
 	wxSortByLabels(names, labels);
 
 	wxArrayString list;
-	lk::vardata_t &inlist = cxt.arg(1).deref();
+	lk::vardata_t &inlist = cxt.arg(0).deref();
 	for( size_t i=0;i<inlist.length();i++ )
 		list.Add( inlist.index(i)->as_string() );
 
-	if ( SelectVariableDialog::Run(cxt.arg(0).as_string(), names, labels, list) )
+	wxString title("Select input variables");
+	if (cxt.arg_count() > 1 ) title = cxt.arg(1).as_string();
+
+	if ( SelectVariableDialog::Run(title, names, labels, list) )
 	{
 		inlist.empty_vector();
 		for( size_t i=0;i<list.size();i++ )
