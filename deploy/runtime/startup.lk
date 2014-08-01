@@ -80,7 +80,8 @@ function setup_residential_pages()
               { 'name'='Financial Cash Incentives','caption'='Direct Cash Incentives','collapsible'=true,'collapsible_var'='show_cash_incentives', 'collapsed_by_default'=false } ]], 
            { 'sidebar'='Incentives','help'='Incentives' } );
   setup_utility_rate();
-  addpage( [[ 'Electric Load' ]] );
+  addpage( [ ['Electric Load'], [{'name'='Electric Building Load Calculator', 'caption'='Building Electric Load Profile Estimator'}], [{'name'='Electric Load Other', 'caption'='Hourly Electric Load Input'}] ], 
+			{ 'sidebar'='Electric Load', 'exclusive_var'='load_model' } );
 }
 
 function setup_commercial_pages()
