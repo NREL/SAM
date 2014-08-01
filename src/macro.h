@@ -4,6 +4,8 @@
 #include <wx/splitter.h>
 #include <wx/html/htmlwin.h>
 
+#include <wex/uiform.h>
+
 class wxMetroButton;
 class wxMetroListBox;
 class wxTextCtrl;
@@ -20,7 +22,9 @@ public:
 	MacroEngine();
 	virtual ~MacroEngine();
 
-	bool Run( const wxString &script );
+	// note: the args variable should be heap allocated with 'new'
+	// and will be owned and deleted by this Run method
+	bool Run( const wxString &script, lk::vardata_t *args = 0 );
 	void Stop();
 	virtual void Output( const wxString &text );
 	virtual void ClearOutput();
@@ -29,6 +33,7 @@ public:
 private:
 	bool m_stopFlag;
 };
+
 
 class MacroPanel : public wxSplitterWindow, public MacroEngine
 {
@@ -45,7 +50,7 @@ private:
 	void OnHtmlLink( wxHtmlLinkEvent & );
 	void UpdateHtml();
 	void ListScripts( const wxString &path, wxArrayString &list );
-
+	
 	Case *m_case;
 	wxMetroListBox *m_listbox;
 	wxHtmlWindow *m_html;
@@ -54,6 +59,19 @@ private:
 	wxArrayString m_macroList;
 	wxMetroButton *m_run, *m_stop, *m_code;
 	wxPanel *m_rightPanel;
+
+	struct ui_item {
+		wxString name;
+		wxStaticText *label;
+		wxWindow *window;
+	};
+
+	std::vector<ui_item> m_ui;
+	wxPanel *m_macroUI;
+	wxFlexGridSizer *m_macroUISizer;
+	void ClearUI();
+	void CreateUI( const wxString &buf );
+	lk::vardata_t *GetUIArgs();
 
 	DECLARE_EVENT_TABLE();
 

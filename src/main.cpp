@@ -702,7 +702,7 @@ CaseWindow *MainWindow::GetCaseWindow( Case *c )
 	return 0;
 }
 
-void MainWindow::SwitchToCaseWindow( const wxString &case_name )
+bool MainWindow::SwitchToCaseWindow( const wxString &case_name )
 {
 	if ( Case *c = m_project.GetCase( case_name ) )
 	{
@@ -725,7 +725,10 @@ void MainWindow::SwitchToCaseWindow( const wxString &case_name )
 		for( size_t i=0;i<m_caseNotebook->GetPageCount();i++ )
 			if ( CaseWindow *cw = dynamic_cast<CaseWindow*>( m_caseNotebook->GetPage(i) ) )
 				cw->UpdatePageNote();
+
+		return true;
 	}
+	else return false;
 }
 
 void MainWindow::OnCaseTabChange( wxCommandEvent &evt )
