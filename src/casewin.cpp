@@ -316,7 +316,7 @@ bool CaseWindow::RunBaseCase( bool silent, wxString *messages )
 	if ( nok == 1 )
 	{
 		UpdateResults();
-		m_pageFlipper->SetSelection( 1 );
+		if ( !silent ) m_pageFlipper->SetSelection( 1 );
 		return true;
 	}
 	else

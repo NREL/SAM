@@ -7,6 +7,15 @@ This <font size=+3 color=#dedede>macro</font> will help you run PVWatts in an ea
 <li> Step 3
 </ol>
 **/
-
+// Macro user interface widgets
+//@ name=val_tilt;type=number;label=Tilt;value=30
+//@ name=title;type=text;label=Report name;value=Enter the report's name
+//@ name=mode;type=combo;label=Select mode;value=Coupled,Decoupled,Sorted,Unsorted;sel=2
+//@ name=en_output;type=checkbox;label=Enable output;value=true
+//@ name=nruns;type=integer;label=Number of runs;value=10
+//@ name=inputs;type=inputs;label=Variables
 
 msgbox('Run pvwatts the easy way.');
+
+outln(typeof(macro));
+outln( macro );

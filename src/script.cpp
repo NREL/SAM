@@ -61,8 +61,7 @@ static void fcall_list_cases( lk::invoke_t &cxt )
 		cxt.result().vec_append( names[i] );
 }
 
-static wxString gs_curCaseName;
-static Case *CurrentCase() { return SamApp::Window()->Project().GetCase( gs_curCaseName ); }
+static Case *CurrentCase() { return SamApp::Window()->GetCurrentCase(); }
 
 static void fcall_active_case( lk::invoke_t &cxt )
 {
@@ -70,15 +69,7 @@ static void fcall_active_case( lk::invoke_t &cxt )
 	if (cxt.arg_count() == 0 )
 		cxt.result().assign( SamApp::Window()->Project().GetCaseName( CurrentCase() ) );
 	else
-	{
-		if ( SamApp::Window()->Project().GetCase( cxt.arg(0).as_string() ) != 0 )
-		{
-			gs_curCaseName = cxt.arg(0).as_string();
-			cxt.result().assign( 1.0 );
-		}
-		else
-			cxt.result().assign( 0.0 );
-	}
+		cxt.result().assign( SamApp::Window()->SwitchToCaseWindow( cxt.arg(0).as_string() ) ? 1.0 : 0.0 );	
 }
 
 static void fcall_varinfo( lk::invoke_t &cxt )

@@ -1,5 +1,5 @@
-#ifndef __openeiapi_h
-#define __openeiapi_h
+#ifndef __urdbopeneiapi_h
+#define __urdbopeneiapi_h
 
 #include <vector>
 

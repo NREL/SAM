@@ -8,9 +8,47 @@ This macro will help you create something really neat, such as below:<br>
 <li> Step 3
 </ul>
 **/
+// Macro user interface widgets
+//@ name=percent;type=number;label=+/- Percent to vary inputs;value=10
+//@ name=inputs;type=inputs;label=Input variables to adjust;only=numbers
+//@ name=output;type=svoutput;label=Output variable for plot
 
 
-msgbox('Lets create a tornado chart - SAMs macro system is great.');
+if ( typeof(macro) == 'unknown' ) {
+	msgbox('This macro must be run from within a case.');
+	exit;
+}
 
-for( i=0;i<10000;i++ )
-	outln('hello ' + i );
+outvar = macro.output;
+percent = macro.percent;
+vars = macro.inputs;
+if ( #vars == 0 )
+{
+	msgbox('No variables selected.');
+	exit;
+}
+
+
+// run base case simulation
+outln('Running base case simulation...');
+simulate();
+
+baseoutput = get(outvar);
+for( i=0;i<#vars;i++ )
+{
+	baseval = get( vars[i] );
+	
+	outln('Considering variable: ' + varinfo( vars[i] ).label + '...');
+	set( vars[i], (1-percent/100)*baseval );
+	simulate();
+	output1[i] = get(outvar);
+	outln("  -" + percent + " % : " + output1[i] );
+	set( vars[i], (1+percent/100)*baseval );
+	simulate();
+	output2[i] = get(outvar);
+	outln("  +" + percent + " % : " + output2[i] );
+	
+	set( vars[i], baseval ); // return to base case input value	
+}
+
+msgbox('Macro finished successfully.');
