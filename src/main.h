@@ -47,7 +47,7 @@ public:
 	CaseWindow *GetCaseWindow( Case *c );
 	CaseWindow *CreateCaseWindow( Case *c );
 	void DeleteCaseWindow( Case *c );
-	void SwitchToCaseWindow( const wxString &name );
+	bool SwitchToCaseWindow( const wxString &name );
 
 	bool LoadProject( const wxString &file );
 	bool SaveProject( const wxString &file );
