@@ -72,6 +72,10 @@ static void fcall_outln( lk::invoke_t &cxt )
 	lksc->Output( output );
 }
 
+extern lk::fcall_t *sam_functions();
+extern lk::fcall_t *invoke_general_funcs();
+extern lk::fcall_t *invoke_ssc_funcs();
+
 bool MacroEngine::Run( const wxString &script )
 {
 	lk::env_t env;
@@ -83,6 +87,9 @@ bool MacroEngine::Run( const wxString &script )
 	env.register_funcs( wxLKPlotFunctions(), this );
 	env.register_funcs( wxLKHttpFunctions(), this );
 	env.register_funcs( wxLKMiscFunctions(), this );
+	env.register_funcs( invoke_general_funcs() );
+	env.register_funcs( sam_functions() );
+	env.register_funcs( invoke_ssc_funcs() );
 	env.register_func( fcall_out, this );
 	env.register_func( fcall_outln, this );
 
@@ -177,41 +184,54 @@ void MacroEngine::ClearOutput()
 }
 
 enum { ID_MACRO_LIST = wxID_HIGHEST+895, ID_HTML,
-	ID_RUN_MACRO, ID_STOP_MACRO };
+	ID_RUN_MACRO, ID_STOP_MACRO,
+	ID_VIEW_CODE };
 
 BEGIN_EVENT_TABLE( MacroPanel, wxSplitterWindow )
 	EVT_LISTBOX( ID_MACRO_LIST, MacroPanel::OnCommand )
 	EVT_HTML_LINK_CLICKED( ID_HTML, MacroPanel::OnHtmlLink )
 	EVT_BUTTON( ID_RUN_MACRO, MacroPanel::OnCommand )
 	EVT_BUTTON( ID_STOP_MACRO, MacroPanel::OnCommand )
+	EVT_BUTTON( ID_VIEW_CODE, MacroPanel::OnCommand )
 END_EVENT_TABLE()
 
 MacroPanel::MacroPanel( wxWindow *parent, Case *cc )
 	: wxSplitterWindow( parent, wxID_ANY ), m_case(cc)
 {
-	m_listbox = new wxMetroListBox( this, ID_MACRO_LIST );
+	m_output = new wxTextCtrl( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxTE_MULTILINE|wxTE_READONLY|wxBORDER_NONE);
+	
+	wxSplitterWindow *vsplit = new wxSplitterWindow( this, wxID_ANY );
+	
+	m_listbox = new wxMetroListBox( vsplit, ID_MACRO_LIST );
+	m_rightPanel = new wxPanel( vsplit );
 
-	m_rightPanel = new wxPanel( this );
 	m_rightPanel->SetBackgroundColour( wxMetroTheme::Colour( wxMT_FOREGROUND ) );
+
 	m_html = new wxHtmlWindow( m_rightPanel, ID_HTML, wxDefaultPosition, wxDefaultSize, wxHW_DEFAULT_STYLE|wxBORDER_NONE );
-	m_output = new wxTextCtrl( m_rightPanel, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxTE_MULTILINE|wxTE_READONLY|wxBORDER_NONE);
 
 	m_run = new wxMetroButton( m_rightPanel, ID_RUN_MACRO, "Run macro", wxNullBitmap, wxDefaultPosition, wxDefaultSize, wxMB_RIGHTARROW );
 	m_stop = new wxMetroButton( m_rightPanel, ID_STOP_MACRO, "Stop" );
 	m_stop->Hide();
 
+	m_code = new wxMetroButton( m_rightPanel, ID_VIEW_CODE, "View code");
+	
 	wxBoxSizer *button_sizer = new wxBoxSizer( wxHORIZONTAL );
-	button_sizer->Add( m_run, 0, wxALL, 0 );
-	button_sizer->Add( m_stop, 0, wxALL, 0 );
+	button_sizer->Add( m_run, 0, wxALL|wxALIGN_CENTER_VERTICAL, 0 );
+	button_sizer->Add( m_stop, 0, wxALL|wxALIGN_CENTER_VERTICAL, 0 );
+	button_sizer->AddStretchSpacer();
+	button_sizer->Add( m_code, 0, wxALL|wxALIGN_CENTER_VERTICAL, 0 );
 
 	wxBoxSizer *right_sizer = new wxBoxSizer( wxVERTICAL );
-	right_sizer->Add( m_html, 3, wxALL|wxEXPAND, 0 );
 	right_sizer->Add( button_sizer, 0, wxALL|wxEXPAND, 0 );
-	right_sizer->Add( m_output, 1, wxALL|wxEXPAND, 0 );
+	right_sizer->Add( m_html, 3, wxALL|wxEXPAND, 0 );		
 	m_rightPanel->SetSizer( right_sizer );
 
+	vsplit->SplitVertically( m_listbox, m_rightPanel, 250 );
+	vsplit->SetMinimumPaneSize( 100 );
+
 	SetMinimumPaneSize( 100 );
-	SplitVertically( m_listbox, m_rightPanel, 300 );	
+	SetSashGravity( 1.0 );
+	SplitHorizontally( vsplit, m_output, -250 );	
 
 	ConfigurationChanged();
 }
@@ -236,22 +256,28 @@ void MacroPanel::UpdateHtml()
 {
 	if ( m_listbox->Count()  == 0 )
 	{
-		m_html->SetPage("<html><body><h3>No macros available for this project.</h3></body></html>");
+		m_html->SetPage( "<html><body><h3>No macros available for this project.</h3></body></html>" );
+		m_run->Hide();
+		m_code->Hide();
+		m_rightPanel->Layout();
 		return;
 	}
 
-	wxString file;
+	m_curMacroPath.clear();
 	int sel = m_listbox->GetSelection();
 	if ( sel >= 0 && sel < (int)m_macroList.size() )
-		file = m_macroList[sel];
-
-	if ( file.IsEmpty() )
+		m_curMacroPath = wxFileName(m_macroList[sel]).GetFullPath();;
+	
+	if ( m_curMacroPath.IsEmpty() )
 	{
-		m_html->SetPage("<html><body><h3>Please select a macro from the list for more information.</h3></body></html>");
+		m_html->SetPage( "<html><body><h3>Select a macro from the list.</h3></body></html>" );
+		m_run->Hide();
+		m_code->Hide();
+		m_rightPanel->Layout();
 		return;
 	}
 
-	wxFile fp( file );
+	wxFile fp( m_curMacroPath );
 	if ( fp.IsOpened() )
 	{
 		wxString buf;
@@ -261,22 +287,28 @@ void MacroPanel::UpdateHtml()
 		int pos2 = buf.Find("**/");
 		if ( pos1 >= 0 && pos2 >= 0 && pos2 > pos1+3 )
 		{
-			wxFileName fn(file);
+			wxFileName fn(m_curMacroPath);
 			fn.MakeAbsolute();	
 			wxString page( buf.Mid( pos1+3, pos2-pos1-3 ) );
 			page.Replace( "$MACROPATH", fn.GetPath( wxPATH_UNIX ) );
 			wxString script( buf.Mid(pos2+3) );		
-			m_html->SetPage( "<html><body><h3>" + wxFileName(file).GetName() 
-				+ "</h3><br><font size=-1 color=#eeeeee><a href=\"lk:" + fn.GetFullPath() + "\">" + fn.GetFullPath() + "</a></font><hr>\n"
-				+ page +
-				//"\n<br><hr>Code:<font size=-1 color=#999999><pre>" + script + "</pre></font>"
-				"</body></html>");
+			m_html->SetPage( "<html><body>\n<h3>" + fn.GetName() + "</h3>\n" + page + "\n</body></html>");
 		}
 		else
-			m_html->SetPage( "<html><body><h3>No description available for:</h3><br><br>" + file + "</body></html>" );
+			m_html->SetPage( "<html><body><h3>No description available for:</h3><br><br>" + m_curMacroPath + "</body></html>" );
+		
+		m_run->Show();
+		m_code->Show();
+		m_rightPanel->Layout();
 	}
 	else
-		m_html->SetPage("<html><body><h3>Could not open macro:</h3><br><br>" + file + "</body></html>" );
+	{
+		m_run->Hide();
+		m_code->Hide();
+		m_rightPanel->Layout();
+		m_html->SetPage("<html><body><h3>Could not open macro:</h3><br><br>" + m_curMacroPath + "</body></html>" );
+		return;
+	}
 
 }
 
@@ -286,10 +318,10 @@ void MacroPanel::ConfigurationChanged()
 	m_case->GetConfiguration( &tech, &fin );
 
 	m_macroList.clear();
-	ListScripts(  SamApp::GetRuntimePath() + "/macros", m_macroList );
+	ListScripts(  SamApp::GetRuntimePath() + "/macros/" + tech + "_" + fin, m_macroList );
 	ListScripts(  SamApp::GetRuntimePath() + "/macros/" + tech, m_macroList );
 	ListScripts(  SamApp::GetRuntimePath() + "/macros/" + fin, m_macroList );
-	ListScripts(  SamApp::GetRuntimePath() + "/macros/" + tech + "_" + fin, m_macroList );
+	ListScripts(  SamApp::GetRuntimePath() + "/macros", m_macroList );
 		
 	m_listbox->Clear();
 	for( size_t i=0;i<m_macroList.size();i++ )
@@ -301,23 +333,18 @@ void MacroPanel::ConfigurationChanged()
 }
 
 void MacroPanel::OnCommand( wxCommandEvent &evt )
-{
+{	
 	switch( evt.GetId() )
 	{
 	case ID_RUN_MACRO:
 		{
-			wxString file;
-			int sel = m_listbox->GetSelection();
-			if ( sel >= 0 && sel < (int)m_macroList.size() )
-				file = m_macroList[sel];
-
-			if ( file.IsEmpty() )
+			if ( m_curMacroPath.IsEmpty() )
 			{
 				wxMessageBox("No macro selected");
 				return;
 			}
 
-			wxFile fp( file );
+			wxFile fp( m_curMacroPath );
 			if ( fp.IsOpened() )
 			{
 				wxString buf;
@@ -335,7 +362,7 @@ void MacroPanel::OnCommand( wxCommandEvent &evt )
 				m_rightPanel->Layout();
 			}
 			else
-				wxMessageBox("Could not open macro file: " + file );
+				wxMessageBox("Could not open macro file: " + m_curMacroPath );
 		}
 		break;
 	case ID_STOP_MACRO:
@@ -344,22 +371,22 @@ void MacroPanel::OnCommand( wxCommandEvent &evt )
 	case ID_MACRO_LIST:
 		UpdateHtml();
 		break;
+	case ID_VIEW_CODE:		
+		if ( wxFileExists(m_curMacroPath) )
+		{
+			if ( ScriptWindow *sw = ScriptWindow::FindOpenFile( m_curMacroPath ) )
+				sw->Raise();
+			else if ( ScriptWindow *sw = ScriptWindow::CreateNewWindow() )
+				sw->Load( m_curMacroPath );
+		}
+		break;
 	}
 }
 
 void MacroPanel::OnHtmlLink( wxHtmlLinkEvent &evt )
 {
 	wxString url( evt.GetLinkInfo().GetHref() );
-	if ( url.Left(3) == "lk:" )
-	{
-		wxString file( url.Mid(3) );
-		if ( ScriptWindow *sw = ScriptWindow::FindOpenFile( file ) )
-			sw->Raise();
-		else if ( ScriptWindow *sw = ScriptWindow::CreateNewWindow() )
-			sw->Load( file );
-	}
-	else
-		wxLaunchDefaultBrowser( url );
+	wxLaunchDefaultBrowser( url );
 }
 
 void MacroPanel::Output( const wxString &text )

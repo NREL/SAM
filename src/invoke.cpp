@@ -1208,9 +1208,9 @@ tab->Add(URdbFileRead, "URdbFileRead", 1, "Reads a local URdb format file and ov
 
 /********** OPENEI capability ***********/
 
-void fcall_openeilistutilities(lk::invoke_t &cxt)
+void fcall_urdb_list_utilities(lk::invoke_t &cxt)
 {
-	LK_DOC("openeilistutilities", "Lists utility companies from OpenEI.", "(none) : string");
+	LK_DOC("urdb_list_utilities", "Lists utility companies from the OpenEI Utility Rate Database.", "(none) : string");
 	wxArrayString names;
 	OpenEI api;
 	if (api.QueryUtilityCompanies(names))
@@ -1221,9 +1221,9 @@ void fcall_openeilistutilities(lk::invoke_t &cxt)
 	}
 }
 
-void fcall_openeilistrates(lk::invoke_t &cxt)
+void fcall_urdb_list_rates(lk::invoke_t &cxt)
 {
-	LK_DOC("openeilistrates", "Lists rates for utility argument from OpenEI.", "(utility) : string");
+	LK_DOC("urdb_list_rates", "Lists rates for utility argument from OpenEI Utility Rate Database.", "(utility) : string");
 	wxString utility = cxt.arg(0).as_string();
 
 	std::vector<OpenEI::RateInfo> ratelist;
@@ -1261,9 +1261,9 @@ static bool applydiurnalschedule(lk::invoke_t &cxt, wxString sched_name, double 
 	return true;
 }
 
-void fcall_urdbsaverate(lk::invoke_t &cxt)
+void fcall_urdb_write(lk::invoke_t &cxt)
 {
-	LK_DOC("urdbsaverate", "Saves rate data from current case to a file.", "(STRING:filename) : BOOLEAN");
+	LK_DOC("urdb_write", "Writes rate data from current case to a file.", "(STRING:filename) : BOOLEAN");
 	
 	Case *c = SamApp::Window()->GetCurrentCase();
 	if ( !c ) return;
@@ -1299,9 +1299,9 @@ void fcall_urdbsaverate(lk::invoke_t &cxt)
 	cxt.result().assign( csv.WriteFile( cxt.arg(0).as_string() ) ? 1.0 : 0.0 );
 }
 
-void fcall_urdbloadrate(lk::invoke_t &cxt)
+void fcall_urdb_read(lk::invoke_t &cxt)
 {
-	LK_DOC("urdbloadrate", "Loads rate data from current case to a file.", "(STRING:filename) : BOOLEAN");
+	LK_DOC("urdb_read", "Reads rate data from a file case to the current case.", "(STRING:filename) : BOOLEAN");
 	
 	Case *c = SamApp::Window()->GetCurrentCase();
 	if ( !c ) return;
@@ -1339,9 +1339,9 @@ void fcall_urdbloadrate(lk::invoke_t &cxt)
 
 
 
-void fcall_openeiapplyrate(lk::invoke_t &cxt)
+void fcall_urdb_get(lk::invoke_t &cxt)
 {
-	LK_DOC("openeiapplyrate", "Downloads and applies the specified rate schedule from OpenEI.", "(STRING:Guid) : BOOLEAN");	
+	LK_DOC("urdb_get", "Returns data for the specified rate schedule from the OpenEI Utility Rate Database.", "(STRING:Guid) : BOOLEAN");	
 	wxString guid = cxt.arg(0).as_string();
 	if (guid.IsEmpty()) return;
 
@@ -1736,11 +1736,11 @@ lk::fcall_t* invoke_uicallback_funcs()
 		fcall_current_at_voltage_sandia,
 		fcall_solarprospector,
 		fcall_openeiutilityrateform,
-		fcall_openeiapplyrate,
-		fcall_urdbsaverate,
-		fcall_urdbloadrate,
-		fcall_openeilistutilities,
-		fcall_openeilistrates,
+		fcall_urdb_read,
+		fcall_urdb_write,
+		fcall_urdb_get,
+		fcall_urdb_list_utilities,
+		fcall_urdb_list_rates,
 		fcall_editscene3d,
 		0 };
 	return (lk::fcall_t*)vec;

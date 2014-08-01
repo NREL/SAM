@@ -339,7 +339,7 @@ public:
 		}
 
 		wxSortByLabels(names, labels);
-		return m_caseWin->ShowSelectVariableDialog("Choose Excel Exchange Variables", names, labels, list);
+		return SelectVariableDialog::Run("Choose Excel Exchange Variables", names, labels, list);
 	}
 
 	void OnAddVar(wxCommandEvent &evt)

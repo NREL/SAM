@@ -51,8 +51,8 @@ static wxArrayString g_appArgs;
 static MainWindow *g_mainWindow = 0;
 static wxConfig *g_config = 0;
 static const int g_verMajor = 2014;
-static const int g_verMinor = 7;
-static const int g_verMicro = 25;
+static const int g_verMinor = 8;
+static const int g_verMicro = 1;
 static ConfigDatabase g_cfgDatabase;
 static InputPageDatabase g_uiDatabase;
 static wxLogWindow *g_logWindow = 0;
@@ -1328,6 +1328,8 @@ void ConfigDatabase::RebuildCaches()
 								vv->Flags |= VF_COLLAPSIBLE_PANE;
 								vv->DefaultValue.Set( pi.CollapsedByDefault ? 0 : 1 );
 							}
+							else
+								wxLogStatus( "AutoVariable error: collapsible page variable already exists in configuration: " + pi.CollapsiblePageVar );
 
 							ci->Variables.Add( pi.CollapsiblePageVar, vv );
 						}
@@ -1348,6 +1350,8 @@ void ConfigDatabase::RebuildCaches()
 					vv->Flags |= VF_EXCLUSIVE_PAGES;
 					vv->DefaultValue.Set( 0 );
 				}
+				else
+					wxLogStatus( "AutoVariable error: exclusive page variable already exists in configuration: " + igrp->ExclusivePageVar );
 
 				ci->Variables.Add( igrp->ExclusivePageVar, vv );
 			}
