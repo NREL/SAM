@@ -561,6 +561,56 @@ BEGIN_EVENT_TABLE( RemapDialog, wxDialog )
 	EVT_BUTTON( wxID_REFRESH, RemapDialog::OnCommand )
 END_EVENT_TABLE()
 
+static bool ShowTableEditor( VarInfoLookup &vi )
+{
+	wxDialog dlg( NULL, wxID_ANY, "Edit labels", wxDefaultPosition, wxSize(600, 750), wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER );
+	wxExtGridCtrl *grid = new wxExtGridCtrl( &dlg, wxID_ANY );
+	grid->EnableCopyPaste( true );
+	grid->CreateGrid( vi.size(), 4 );
+	grid->SetColLabelValue( 0, "Variable" );
+	grid->SetColLabelValue( 1, "Label" );
+	grid->SetColLabelValue( 2, "Units" );
+	grid->SetColLabelValue( 3, "Group" );
+
+	wxArrayString list = vi.ListAll();
+	list.Sort();
+	for( size_t i=0;i<list.size();i++ )
+	{
+		grid->SetCellValue( i, 0, list[i] );
+		grid->SetCellBackgroundColour( i, 0, wxColour(230,230,230) );
+		grid->SetCellValue( i, 1, vi.Label( list[i] ) );
+		grid->SetCellValue( i, 2, vi.Units( list[i] ) );
+		grid->SetCellValue( i, 3, vi.Group( list[i] ) );
+	}
+
+	grid->SetColLabelSize( wxGRID_AUTOSIZE );
+	grid->AutoSize();
+
+	wxBoxSizer *sizer = new wxBoxSizer( wxVERTICAL );
+	sizer->Add( grid, 1, wxALL|wxEXPAND, 0 );
+	sizer->Add( dlg.CreateButtonSizer( wxOK|wxCANCEL ), 0, wxALL|wxEXPAND, 10 );
+	dlg.SetSizer( sizer );
+	
+	if ( wxID_OK == dlg.ShowModal() )
+	{
+		int nupd = 0;
+		for ( int i=0;i<grid->GetNumberRows(); i++ )
+		{
+			if ( VarInfo *pv = vi.Lookup( grid->GetCellValue( i, 0 ) ) )
+			{
+				pv->Label = grid->GetCellValue( i, 1 );
+				pv->Units = grid->GetCellValue( i, 2 );
+				pv->Group = grid->GetCellValue( i, 3 );
+				nupd++;
+			}
+		}
+		wxMessageBox( wxString::Format("%d variables updated", nupd) );
+		return true;
+	}
+	else
+		return false;
+}
+
 enum { 
 	ID_FORM_EDITOR = wxID_HIGHEST + 231,
 	ID_CALLBACK_EDITOR,
@@ -578,6 +628,7 @@ enum {
 	ID_VAR_ADD,
 	ID_VAR_DELETE,
 	ID_VAR_GROUP_MULTIPLE,
+	ID_VAR_TABLE_EDIT,
 
 	ID_VAR_LIST,
 	ID_VAR_NAME,
@@ -631,6 +682,7 @@ BEGIN_EVENT_TABLE( UIEditorPanel, wxPanel )
 	EVT_BUTTON( ID_VAR_ADD, UIEditorPanel::OnCommand )
 	EVT_BUTTON( ID_VAR_DELETE, UIEditorPanel::OnCommand )
 	EVT_BUTTON( ID_VAR_GROUP_MULTIPLE, UIEditorPanel::OnCommand )
+	EVT_BUTTON( ID_VAR_TABLE_EDIT, UIEditorPanel::OnCommand )
 
 	EVT_BUTTON( ID_VAR_CHECK_ALL, UIEditorPanel::OnCommand )
 	EVT_BUTTON( ID_VAR_CHECK_NONE, UIEditorPanel::OnCommand )
@@ -691,6 +743,7 @@ UIEditorPanel::UIEditorPanel( wxWindow *parent )
 	sz_form_tools->Add( new wxButton( this, ID_VAR_ADD, "Add", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL|wxEXPAND, 2 );
 	sz_form_tools->Add( new wxButton( this, ID_VAR_DELETE, "Delete", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL|wxEXPAND, 2 );
 	sz_form_tools->Add( new wxButton( this, ID_VAR_GROUP_MULTIPLE, "Set group...", wxDefaultPosition,wxDefaultSize, wxBU_EXACTFIT),0, wxALL|wxEXPAND, 2 );
+	sz_form_tools->Add( new wxButton( this, ID_VAR_TABLE_EDIT, "Table editor...", wxDefaultPosition,wxDefaultSize, wxBU_EXACTFIT),0, wxALL|wxEXPAND, 2 );
 	sz_form_tools->Add( new wxButton( this, ID_VAR_CHECK_ALL, "Chk all", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL|wxEXPAND, 2 );
 	sz_form_tools->Add( new wxButton( this, ID_VAR_CHECK_NONE, "Chk none", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL|wxEXPAND, 2 );
 	sz_form_tools->Add( new wxButton( this, ID_VAR_CHECK_SEL, "Chk sel", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL|wxEXPAND, 2 );
@@ -1165,6 +1218,10 @@ void UIEditorPanel::OnCommand( wxCommandEvent &evt )
 			}
 		}
 		break;
+	case ID_VAR_TABLE_EDIT:
+		if ( ShowTableEditor( m_ipd.Variables() ) )
+			VarInfoToForm( m_curVarName );
+		break;
 	case ID_VAR_GROUP_MULTIPLE:
 		{
 			wxArrayString checked;
@@ -1589,12 +1646,12 @@ IDEWindow::IDEWindow( wxWindow *parent )
 	
 	m_cashFlowPanel = new ScriptPanel( m_notebook, "cashflow.lk" );
 	m_cashFlowPanel->AddLibrary(invoke_casecallback_funcs(), "Case callbacks");
-	m_metricsPanel->AddLibrary( invoke_resultscallback_funcs(), "Results callbacks" );
+	m_cashFlowPanel->AddLibrary( invoke_resultscallback_funcs(), "Results callbacks" );
 	m_notebook->AddPage(m_cashFlowPanel, "Cashflows");
 
 	m_autoGraphPanel = new ScriptPanel( m_notebook, "autographs.lk" );
 	m_autoGraphPanel->AddLibrary( invoke_casecallback_funcs(), "Case callbacks" );
-	m_metricsPanel->AddLibrary( invoke_resultscallback_funcs(), "Results callbacks" );
+	m_autoGraphPanel->AddLibrary( invoke_resultscallback_funcs(), "Results callbacks" );
 	m_notebook->AddPage( m_autoGraphPanel, "Autographs" );
 
 	m_navigationPanel = new ScriptPanel( m_notebook, "navigation.lk" );
