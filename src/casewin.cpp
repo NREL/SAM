@@ -747,6 +747,12 @@ void CaseWindow::SetupActivePage()
 			m_exclPanel->Show( true );
 			active_pages = &( m_currentGroup->Pages[excl_idx] );
 		}
+		else
+		{
+			wxMessageBox("Exclusive page variable '" + m_currentGroup->ExclusivePageVar 
+				+ wxString::Format("' has invalid value: %d.  Only %d input pages exist.", 
+					(int)excl_idx, (int)m_currentGroup->Pages.size() ) );
+		}
 	}
 	else if ( m_currentGroup->Pages.size() == 1 )
 	{
@@ -994,44 +1000,6 @@ wxString CaseWindow::GetCurrentContext()
 	}
 
 	return id;
-}
-
-bool CaseWindow::ShowSelectVariableDialog( const wxString &title, 
-	const wxArrayString &names, const wxArrayString &labels, wxArrayString &list,
-	bool expand_all )
-{
-	SelectVariableDialog dlg(this, title);
-	dlg.SetItems( names, labels );
-	dlg.SetCheckedNames( list );
-	if (expand_all)
-		dlg.ShowAllItems();
-
-	if (dlg.ShowModal() == wxID_OK)
-	{
-		wxArrayString names = dlg.GetCheckedNames();
-		
-		// remove any from list
-		int i=0;
-		while (i<(int)list.Count())
-		{
-			if (names.Index( list[i] ) < 0)
-				list.RemoveAt(i);
-			else
-				i++;
-		}
-
-		// append any new ones
-		for (i=0;i<(int)names.Count();i++)
-		{
-			if (list.Index( names[i] ) < 0)
-				list.Add( names[i] );
-		}
-
-
-		return true;
-	}
-	else
-		return false;
 }
 
 /* ********* SAM Page Notes ************** */
@@ -1286,3 +1254,41 @@ void SelectVariableDialog::OnUncheckAll(wxCommandEvent &evt)
 	UpdateTree();
 }
 
+
+bool SelectVariableDialog::Run( const wxString &title, 
+	const wxArrayString &names, const wxArrayString &labels, wxArrayString &list,
+	bool expand_all )
+{
+	SelectVariableDialog dlg( SamApp::Window(), title );
+	dlg.SetItems( names, labels );
+	dlg.SetCheckedNames( list );
+	if (expand_all)
+		dlg.ShowAllItems();
+
+	if (dlg.ShowModal() == wxID_OK)
+	{
+		wxArrayString names = dlg.GetCheckedNames();
+		
+		// remove any from list
+		int i=0;
+		while (i<(int)list.Count())
+		{
+			if (names.Index( list[i] ) < 0)
+				list.RemoveAt(i);
+			else
+				i++;
+		}
+
+		// append any new ones
+		for (i=0;i<(int)names.Count();i++)
+		{
+			if (list.Index( names[i] ) < 0)
+				list.Add( names[i] );
+		}
+
+
+		return true;
+	}
+	else
+		return false;
+}

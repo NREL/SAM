@@ -81,6 +81,93 @@ static void fcall_active_case( lk::invoke_t &cxt )
 	}
 }
 
+static void fcall_varinfo( lk::invoke_t &cxt )
+{
+	LK_DOC("varinfo", "Gets meta data about an input or output variable.", "(string:var name):table");
+	wxString name = cxt.arg(0).as_string();
+	cxt.result().empty_hash();
+	if ( Case *c = CurrentCase() )
+	{
+		if (VarInfo *vi = c->Variables().Lookup( name ))
+		{
+			cxt.result().hash_item("label").assign( vi->Label );
+			cxt.result().hash_item("units").assign( vi->Units );
+			cxt.result().hash_item("group").assign( vi->Group );
+		}
+		else
+		{
+			wxArrayString names, labels, units, groups;
+			Simulation::ListAllOutputs( c->GetConfiguration(),
+				&names, &labels, &units, &groups );
+			int idx = names.Index( name );
+			if ( idx >=0 )
+			{
+				cxt.result().hash_item("label").assign( labels[idx] );
+				cxt.result().hash_item("units").assign( units[idx] );
+				cxt.result().hash_item("group").assign( groups[idx] );
+			}
+		}
+	}
+}
+
+//bool CaseWindow::ShowSelectVariableDialog( const wxString &title, 
+	//const wxArrayString &names, const wxArrayString &labels, wxArrayString &list,
+	//bool expand_all )
+
+static void fcall_selectinputs( lk::invoke_t &cxt )
+{
+	LK_DOC("select_inputs", "Shows the input variable selection dialog.", "(string:title, [<array:checked>]):boolean")
+		
+	cxt.result().assign( 0.0 );
+
+	Case *cc = CurrentCase();
+	if ( !cc ) return;
+
+	wxArrayString names;
+	wxArrayString labels;
+
+	for( VarInfoLookup::iterator it = cc->Variables().begin();
+		it != cc->Variables().end();
+		++it )
+	{
+		VarInfo &vi = *(it->second);
+
+		if ( !vi.Label.IsEmpty()
+			&& !(vi.Flags & VF_INDICATOR) 
+			&& !(vi.Flags & VF_CALCULATED) )
+		{
+			if ( vi.Type == VV_NUMBER && vi.IndexLabels.size() > 0 )
+				continue;
+
+			wxString label;
+			if ( !vi.Group.IsEmpty() )
+				label = vi.Group + "/" + vi.Label;
+			else
+				label = vi.Label;
+							
+			names.Add( it->first );
+			labels.Add( label );
+		}
+	}
+
+	wxSortByLabels(names, labels);
+
+	wxArrayString list;
+	lk::vardata_t &inlist = cxt.arg(1).deref();
+	for( size_t i=0;i<inlist.length();i++ )
+		list.Add( inlist.index(i)->as_string() );
+
+	if ( SelectVariableDialog::Run(cxt.arg(0).as_string(), names, labels, list) )
+	{
+		inlist.empty_vector();
+		for( size_t i=0;i<list.size();i++ )
+			inlist.vec_append( list[i] );
+
+		cxt.result().assign( 1.0 );
+	}
+}
+
+
 static void fcall_set( lk::invoke_t &cxt )
 {
 	LK_DOC( "set", "Set an input variable's value.", "(string:name, variant:value):boolean" );
@@ -266,22 +353,16 @@ static void fcall_library( lk::invoke_t &cxt )
 	tab->Add( STEPWISE_error, "STEPError", 1, "Returns any error code from STEPWISE.", "( INTEGER:stpref ):STRING" );
 	tab->Add( STEPWISE_result, "STEPResult", 2, "Returns R2 and SRC for a given input name.", "( INTEGER:stpref, STRING:name ):ARRAY");
 
-	tab->Add( OpenEIListUtilities, "OpenEIListUtilities", 0, "Returns a list of utility company names from OpenEI.org", "( NONE ):ARRAY");
-	tab->Add( OpenEIListRates, "OpenEIListRates", 3, "Lists all rate schedules for a utility company.", "( STRING:Utility name, <ARRAY:Names>, <ARRAY:Guids> ):INTEGER");
-	tab->Add( OpenEIApplyRate, "OpenEIApplyRate", 1, "Downloads and applies the specified rate schedule from OpenEI.", "( STRING:Guid ):BOOLEAN");
-
-	tab->Add( URdbFileWrite, "URdbFileWrite", 1, "Writes a local URdb format file with the current case's utility rate information.", "( STRING:file ):BOOLEAN");
-	tab->Add( URdbFileRead, "URdbFileRead", 1, "Reads a local URdb format file and overwrites the current case's utility rate information.", "( STRING:file ):BOOLEAN");
-
 	*/
 
 // external fcalls that are compatible with running in a script environment
-extern void fcall_urdbloadrate( lk::invoke_t & );
-extern void fcall_urdbsaverate( lk::invoke_t & );
-extern void fcall_openeilistutilities(lk::invoke_t & );
-extern void fcall_openeilistrates(lk::invoke_t & );
+extern void fcall_urdb_read( lk::invoke_t & );
+extern void fcall_urdb_write( lk::invoke_t & );
+extern void fcall_urdb_get( lk::invoke_t & );
+extern void fcall_urdb_list_utilities( lk::invoke_t & );
+extern void fcall_urdb_list_rates( lk::invoke_t & );
 
-static lk::fcall_t *sam_functions() {
+lk::fcall_t *sam_functions() {
 	
 	static const lk::fcall_t vec[] = {
 		fcall_open_project,
@@ -291,6 +372,8 @@ static lk::fcall_t *sam_functions() {
 		fcall_project_file,
 		fcall_list_cases,
 		fcall_active_case,
+		fcall_varinfo,
+		fcall_selectinputs,
 		fcall_set,
 		fcall_get,
 		fcall_simulate,
@@ -300,10 +383,11 @@ static lk::fcall_t *sam_functions() {
 		fcall_overwrite_defaults,
 		fcall_list_technologies,
 		fcall_list_financing,
-		fcall_urdbloadrate,
-		fcall_urdbsaverate,
-		fcall_openeilistutilities,
-		fcall_openeilistrates,
+		fcall_urdb_read,
+		fcall_urdb_write,
+		fcall_urdb_get,
+		fcall_urdb_list_utilities,
+		fcall_urdb_list_rates,
 		0 };
 	return (lk::fcall_t*)vec;
 
