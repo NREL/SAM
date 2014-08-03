@@ -362,38 +362,67 @@ static void fcall_agraph( lk::invoke_t &cxt )
 	}
 }
 
-static void fcall_cfline( lk::invoke_t &cxt )
+static void fcall_cfline(lk::invoke_t &cxt)
 {
-	LK_DOC("cfline", "Add one or more cashflow line items to the current configuration. Names can be comma-separated list. For spacer use name='', for header use digits=0, for generic format use digits=-1, for integer cast, use digits=-2.", "( string:names, [number:digits], [number:scale] ):none" );
-	
-	if ( ResultsCallbackContext *ci = static_cast<ResultsCallbackContext*>(cxt.user_data()) )
+	LK_DOC("cfline", "Add one or more cashflow line items to the current configuration. Names can be comma-separated list. For spacer use name='', for header use digits=0, for generic format use digits=-1, for integer cast, use digits=-2.", "( string:names, [number:digits], [number:scale] ):none");
+
+	if (ResultsCallbackContext *ci = static_cast<ResultsCallbackContext*>(cxt.user_data()))
 	{
 		wxString name = cxt.arg(0).as_string();
 
 		int type = CashFlowLine::VARIABLE;
 		int digit = 2;
 		float scale = 1.0f;
-		if ( cxt.arg_count() == 2 )
+		if (cxt.arg_count() == 2)
 			digit = cxt.arg(1).as_integer();
 
-		if ( cxt.arg_count() == 3 )
+		if (cxt.arg_count() == 3)
 			scale = (float)cxt.arg(2).as_number();
 
-		if ( name.IsEmpty() ) type = CashFlowLine::SPACER;
-		if ( digit == 0 ) type = CashFlowLine::HEADER;
-		
-		wxArrayString list = wxSplit(name, ',');
-		if ( list.size() == 0 ) list.Add( name ); // handle empty string
+		if (name.IsEmpty()) type = CashFlowLine::SPACER;
+		if (digit == 0) type = CashFlowLine::HEADER;
 
-		for( size_t i=0;i<list.Count();i++ )
+		wxArrayString list = wxSplit(name, ',');
+		if (list.size() == 0) list.Add(name); // handle empty string
+
+		for (size_t i = 0; i<list.Count(); i++)
 		{
 			CashFlowLine cl;
 			cl.type = type;
 			cl.digits = digit;
 			cl.name = list[i];
 			cl.scale = scale;
-			ci->GetResultsViewer()->AddCashFlowLine( cl );
+			ci->GetResultsViewer()->AddCashFlowLine(cl);
 		}
+	}
+}
+
+static void fcall_cfrow(lk::invoke_t &cxt)
+{
+	LK_DOC("cfrow", "Add one cash flow row with one or more cell items to the current configuration. Names can be comma-separated list. For spacer use name='', for header use digits=0, for generic format use digits=-1, for integer cast, use digits=-2.", "( string:names, [number:digits], [number:scale] ):none");
+
+	if (ResultsCallbackContext *ci = static_cast<ResultsCallbackContext*>(cxt.user_data()))
+	{
+		wxString name = cxt.arg(0).as_string();
+
+		int type = CashFlowLine::CELLVARIABLE;
+		int digit = 2;
+		float scale = 1.0f;
+		if (cxt.arg_count() == 2)
+			digit = cxt.arg(1).as_integer();
+
+		if (cxt.arg_count() == 3)
+			scale = (float)cxt.arg(2).as_number();
+
+		if (name.IsEmpty()) type = CashFlowLine::SPACER;
+		if (digit == 0) type = CashFlowLine::CELLHEADER;
+
+		CashFlowLine cl;
+		cl.type = type;
+		cl.digits = digit;
+		cl.name = name;
+		cl.scale = scale;
+		ci->GetResultsViewer()->AddCashFlowLine(cl);
 	}
 }
 
@@ -1653,6 +1682,7 @@ lk::fcall_t* invoke_resultscallback_funcs()
 	static const lk::fcall_t vec[] = {
 		fcall_metric,
 		fcall_cfline,
+		fcall_cfrow,
 		fcall_agraph,
 		0 };
 	return (lk::fcall_t*)vec;

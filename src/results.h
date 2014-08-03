@@ -76,7 +76,7 @@ struct MetricData {
 };
 	
 struct CashFlowLine {
-	enum { SPACER, HEADER, VARIABLE };
+	enum { SPACER, HEADER, VARIABLE, CELLHEADER, CELLVARIABLE };
 	CashFlowLine() : type(VARIABLE), digits(2), scale(1.0f) {  }
 
 	int type;

@@ -463,40 +463,92 @@ void ResultsViewer::Setup( Simulation *sim )
 				m_cashFlowTable->SetRowLabelValue( r, wxEmptyString );
 			else if ( cl.type == CashFlowLine::HEADER )
 				m_cashFlowTable->SetRowLabelValue( r, cl.name );
-			else if ( cl.type == CashFlowLine::VARIABLE )
+			else if (cl.type == CashFlowLine::VARIABLE)
 			{
-				wxString label = m_sim->GetLabel( cl.name );
-				wxString units = m_sim->GetUnits( cl.name );
-				if ( !units.IsEmpty() ) label += " (" + units + ")";
-				m_cashFlowTable->SetRowLabelValue( r, label );
+				wxString label = m_sim->GetLabel(cl.name);
+				wxString units = m_sim->GetUnits(cl.name);
+				if (!units.IsEmpty()) label += " (" + units + ")";
+				m_cashFlowTable->SetRowLabelValue(r, label);
 
-				if ( VarValue *vv = m_sim->GetValue( cl.name ) )
+				if (VarValue *vv = m_sim->GetValue(cl.name))
 				{
 					float _val = 0.0f;
 					float *p = &_val;
 					size_t n = 1;
 
-					if ( vv->Type() == VV_ARRAY ) p = vv->Array( &n );
-					else if ( vv->Type() == VV_NUMBER ) _val = vv->Value();
+					if (vv->Type() == VV_ARRAY) p = vv->Array(&n);
+					else if (vv->Type() == VV_NUMBER) _val = vv->Value();
 
-					for( size_t i=0;i<n && i<nyears;i++ )
+					for (size_t i = 0; i < n && i < nyears; i++)
 					{
-						float fval = p[i]*cl.scale;
+						float fval = p[i] * cl.scale;
 						wxString sval;
-						if ( cl.digits > 0 && fval != 0.0f )
-							sval = wxNumericCtrl::Format( fval,	wxNumericCtrl::REAL, cl.digits, true, wxEmptyString, wxEmptyString );
-						else if ( cl.digits == -2 )
-							sval = wxString::Format("%d", (int)fval );
+						if (cl.digits > 0 && fval != 0.0f)
+							sval = wxNumericCtrl::Format(fval, wxNumericCtrl::REAL, cl.digits, true, wxEmptyString, wxEmptyString);
+						else if (cl.digits == -2)
+							sval = wxString::Format("%d", (int)fval);
 						else
-							sval = wxString::Format("%g", fval );
+							sval = wxString::Format("%g", fval);
 
-						m_cashFlowTable->SetCellValue( sval, r, i );
+						m_cashFlowTable->SetCellValue(sval, r, i);
 					}
-					
+
 				}
-				else
-					m_cashFlowTable->SetCellValue( "'" + cl.name + "' not found.", r, 0 );
 			}
+			else if (cl.type == CashFlowLine::CELLHEADER)
+			{ // cl.name contains comma separated values for row
+				wxArrayString list = wxSplit(cl.name, ',');
+				size_t n = list.size();
+				if (n == 0)
+				{
+					list.Add(""); // handle empty string
+					n = 1;
+				}
+				m_cashFlowTable->SetRowLabelValue(r, list[0]);
+				for (size_t i = 1; i < n && i < nyears; i++)
+				{
+					m_cashFlowTable->SetCellValue(list[i], r, i-1);
+				}
+			}
+			else if (cl.type == CashFlowLine::CELLVARIABLE)
+			{
+				wxArrayString list = wxSplit(cl.name, ',');
+				size_t n = list.size();
+				if (n == 0)
+				{
+					list.Add(""); // handle empty string
+					n = 1;
+				}
+				m_cashFlowTable->SetRowLabelValue(r, list[0]);
+				for (size_t i = 1; i < n && i < nyears; i++)
+				{
+					if (VarValue *vv = m_sim->GetValue(list[i]))
+					{
+						float _val = 0.0f;
+						float *p = &_val;
+						size_t m = 1;
+
+						if (vv->Type() == VV_ARRAY) p = vv->Array(&n);
+						else if (vv->Type() == VV_NUMBER) _val = vv->Value();
+
+						wxString sval;
+						for (size_t j = 0; j < m && j < nyears; j++)
+						{
+							float fval = p[j] * cl.scale;
+							if (cl.digits > 0 && fval != 0.0f)
+								sval += wxNumericCtrl::Format(fval, wxNumericCtrl::REAL, cl.digits, true, wxEmptyString, wxEmptyString);
+							else if (cl.digits == -2)
+								sval += wxString::Format("%d", (int)fval);
+							else
+								sval += wxString::Format("%g", fval);
+							if (j < m-1) sval += ";";
+						}
+						m_cashFlowTable->SetCellValue(sval, r, i-1);
+					}
+				}
+			}
+			else
+				m_cashFlowTable->SetCellValue( "'" + cl.name + "' not found.", r, 0 );
 		}
 
 		
