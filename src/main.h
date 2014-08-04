@@ -319,6 +319,7 @@ private:
 	wxArrayString m_tnames, m_fnames;
 
 	void OnOk( wxCommandEvent & );
+	void OnCancel( wxCommandEvent & );
 	void OnHelp( wxCommandEvent & );
 
 	wxCheckBox *m_pChkUseDefaults;

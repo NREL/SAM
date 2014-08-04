@@ -957,7 +957,7 @@ END_EVENT_TABLE( )
 
 ThreadProgressDialog::ThreadProgressDialog(wxWindow *parent, int nthreads)
 	: wxDialog( parent, wxID_ANY, wxEmptyString, wxDefaultPosition, 
-	wxSize(625, 475), wxBORDER_NONE )
+	wxSize(625, 475), wxBORDER_NONE|wxSTAY_ON_TOP )
 {
 	SetBackgroundColour( *wxWHITE );
 	CenterOnParent();
@@ -1097,9 +1097,9 @@ SimulationDialog::SimulationDialog( const wxString &message, int nthread )
 	if ( nthread < 1 )
 		nthread = wxThread::GetCPUCount();
 
-	//m_transp = CreateTransparentOverlay( SamApp::Window() );
+	m_transp = CreateTransparentOverlay( SamApp::Window() );
 
-	m_tpd = new ThreadProgressDialog( SamApp::Window(), nthread );
+	m_tpd = new ThreadProgressDialog( m_transp, nthread );
 	m_tpd->Show();
 
 	if ( message.IsEmpty() )
@@ -1113,7 +1113,7 @@ SimulationDialog::SimulationDialog( const wxString &message, int nthread )
 SimulationDialog::~SimulationDialog()
 {
 	m_tpd->Destroy();
-//	m_transp->Destroy();
+	m_transp->Destroy();
 }
 
 void SimulationDialog::Finalize( const wxString &title )

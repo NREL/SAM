@@ -2025,15 +2025,16 @@ BEGIN_EVENT_TABLE(ConfigDialog, wxDialog)
 	EVT_LISTBOX_DCLICK( ID_FinTree, ConfigDialog::OnDoubleClick )
 	EVT_BUTTON( wxID_HELP, ConfigDialog::OnHelp )
 	EVT_BUTTON( wxID_OK, ConfigDialog::OnOk )
+	EVT_BUTTON( wxID_CANCEL, ConfigDialog::OnCancel )
 	EVT_MENU( wxID_HELP, ConfigDialog::OnHelp )
 END_EVENT_TABLE()
 
 ConfigDialog::ConfigDialog( wxWindow *parent, const wxSize &size )
-	: wxDialog( parent, wxID_ANY, wxEmptyString, wxDefaultPosition, size, wxBORDER_NONE )
+	: wxDialog( parent, wxID_ANY, wxEmptyString, wxDefaultPosition, size, wxBORDER_NONE|wxSTAY_ON_TOP )
 {
 	SetBackgroundColour( wxMetroTheme::Colour( wxMT_FOREGROUND ) );
 	CenterOnParent();
-	
+
 	m_pTech = new wxMetroListBox( this, ID_TechTree );
 	m_pFin = new wxMetroListBox( this, ID_FinTree );
 
@@ -2166,6 +2167,10 @@ void ConfigDialog::OnOk( wxCommandEvent & )
 	EndModal( wxID_OK );
 }
 
+void ConfigDialog::OnCancel( wxCommandEvent & )
+{
+	EndModal( wxID_CANCEL );
+}
 
 wxFrame *CreateTransparentOverlay( wxWindow *parent )
 {
