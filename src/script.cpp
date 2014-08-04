@@ -189,13 +189,17 @@ static void fcall_get( lk::invoke_t &cxt )
 
 static void fcall_simulate( lk::invoke_t &cxt )
 {
-	LK_DOC("simulate", "Run the base case simulation for the currently active case.  Errors and warnings are optionally returned in the first parameter.", "( [string:messages] ):boolean" );
+	LK_DOC("simulate", "Run the base case simulation for the currently active case.  Errors and warnings are optionally returned in the first parameter.  By default, the UI is not updated, but can be via the second parameter.", "( [string:messages], [boolean: update UI] ):boolean" );
 	if ( Case *c = CurrentCase() )
 	{
 		if ( CaseWindow *cw = SamApp::Window()->GetCaseWindow( c ) )
 		{
+			bool silent = true;
+			if ( cxt.arg_count() > 1 )
+				silent = !cxt.arg(0).as_boolean();
+
 			wxString msgs;
-			cxt.result().assign( cw->RunBaseCase( true, &msgs ) ? 1.0 : 0.0 );
+			cxt.result().assign( cw->RunBaseCase( silent, &msgs ) ? 1.0 : 0.0 );
 
 			if( cxt.arg_count() > 0 )
 				cxt.arg(0).assign( msgs );

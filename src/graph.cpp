@@ -266,7 +266,7 @@ static std::vector<wxColour> s_colours;
 		{
 			wxPLBarPlot *bar = new wxPLBarPlot(  plotdata[i], m_s->GetLabel(ynames[i]), s_colours[cidx] );
 			if ( m_g.Size != 0 )
-				bar->SetThickness( m_g.Size, false );
+				bar->SetThickness( m_g.Size );
 
 			if ( m_g.Type == Graph::STACKED )
 				bar->SetStackedOn( last_bar );
@@ -475,7 +475,7 @@ void GraphCtrl::Display(std::vector<Simulation *>sims, Graph &gi)
 		{
 			wxPLBarPlot *bar = new wxPLBarPlot(plotdata[i], ynames[i], s_colours[cidx]);
 			if (m_g.Size != 0)
-				bar->SetThickness(m_g.Size, false);
+				bar->SetThickness(m_g.Size);
 
 			if (m_g.Type == Graph::STACKED)
 				bar->SetStackedOn(last_bar);

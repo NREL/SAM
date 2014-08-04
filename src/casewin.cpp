@@ -312,11 +312,13 @@ bool CaseWindow::RunBaseCase( bool silent, wxString *messages )
 			: "Simulation finished with warnings." );
 	
 	if (messages) *messages = tpd.Dialog().GetMessages();
-
+	
 	if ( nok == 1 )
 	{
-		UpdateResults();
-		if ( !silent ) m_pageFlipper->SetSelection( 1 );
+		if ( !silent ) {
+			UpdateResults();
+			m_pageFlipper->SetSelection( 1 );
+		}
 		return true;
 	}
 	else

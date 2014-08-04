@@ -9,8 +9,8 @@ This macro will help you create something really neat, such as below:<br>
 </ul>
 **/
 // Macro user interface widgets
-//@ name=percent;type=number;label=+/- Percent to vary inputs;value=10
-//@ name=inputs;type=inputs;label=Input variables to adjust;only=numbers
+//@ name=percent;type=number;label=+/- Percent to vary inputs\n(ignored for variables\n with custom changes) ;value=10
+//@ name=inputs;type=inputs;label=Input variables to adjust\n\nPress Edit to specify custom changes.;only=numbers;meta=true;prompt=Specify custom variation for input (percentage, absolute, or independent up/down values ).\n\nExamples: 4.5%    0.05   1.2,1.7 
 //@ name=output;type=svoutput;label=Output variable for plot
 
 
@@ -24,7 +24,12 @@ percent = macro.percent;
 vars = macro.inputs;
 if ( #vars == 0 )
 {
-	msgbox('No variables selected.');
+	msgbox('No input variables selected.');
+	exit;
+}
+
+if ( outvar == '' ) {
+	msgbox('Please choose an output variable to plot.');
 	exit;
 }
 
@@ -32,23 +37,52 @@ if ( #vars == 0 )
 // run base case simulation
 outln('Running base case simulation...');
 simulate();
-
 baseoutput = get(outvar);
 for( i=0;i<#vars;i++ )
 {
-	baseval = get( vars[i] );
+	var = vars[i][0];
+	updown = vars[i][1];
 	
-	outln('Considering variable: ' + varinfo( vars[i] ).label + '...');
-	set( vars[i], (1-percent/100)*baseval );
-	simulate();
-	output1[i] = get(outvar);
-	outln("  -" + percent + " % : " + output1[i] );
-	set( vars[i], (1+percent/100)*baseval );
-	simulate();
-	output2[i] = get(outvar);
-	outln("  +" + percent + " % : " + output2[i] );
+	baseval = get( var );
+	vi = varinfo( var );
 	
-	set( vars[i], baseval ); // return to base case input value	
+	outln('Considering variable: ' + vi.label + '...');
+	set( var, (1-percent/100)*baseval );
+	simulate();
+	output_dn[i] = get(outvar);
+	outln("  -" + percent + " % : " + output_dn[i] );
+	set( var, (1+percent/100)*baseval );
+	simulate();
+	output_up[i] = get(outvar);
+	outln("  +" + percent + " % : " + output_up[i] );
+	
+	set( var, baseval ); // return to base case input value	
+	
+	yvals_dn[i] = (2*i)+0.75;
+	yvals_up[i] = (2*i)+1.25;
+	labels[i][0] = (2*i)+1;
+	labels[i][1] = vi.label;
 }
 
-msgbox('Macro finished successfully.');
+
+xmin = min( min(output_dn), min(output_up) );
+xmax = max( max(output_dn), max(output_up) );
+range = xmax-xmin;
+xmin = xmin-0.05*range;
+xmax = xmax+0.05*range;
+
+outln( xmin );
+outln( xmax );
+newplot( true );
+plot( output_dn, yvals_dn, {'type'='hbar', 'baseline'=baseoutput, 'color'=[140,140,140], 'series'='(--)'});
+plot( output_up, yvals_up, {'type'='hbar', 'baseline'=baseoutput, 'color'=[240,100,100], 'series'='(++)'});
+vi = varinfo(outvar);
+L = vi.label;
+if ( strlen(vi.units) > 0 ) L = L + ' (' + vi.units + ')';
+axis('x1', {'min'=xmin, 'max'=xmax, 'label'=L });
+
+outln(labels);
+axis('y1', { 'type'='label', 'labels'=labels, 'min'=0, 'max'=1+2*#vars} );
+plotopt({'legendpos'='bottom', 'title'='Tornado Chart'});
+
+msgbox('Tornado chart macro finished successfully.');
