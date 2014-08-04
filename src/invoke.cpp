@@ -416,6 +416,7 @@ static void fcall_cfrow(lk::invoke_t &cxt)
 
 		if (name.IsEmpty()) type = CashFlowLine::SPACER;
 		if (digit == 0) type = CashFlowLine::CELLHEADER;
+		if (digit == -1) type = CashFlowLine::CELLCOLHEADER;
 
 		CashFlowLine cl;
 		cl.type = type;
