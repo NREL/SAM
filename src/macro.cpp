@@ -232,7 +232,7 @@ MacroPanel::MacroPanel( wxWindow *parent, Case *cc )
 	
 	
 	m_macroUI = new wxPanel( m_rightPanel );
-	m_macroUI->SetBackgroundColour( *wxWHITE );
+	m_macroUI->SetBackgroundColour( wxColour(240,240,240) );
 	m_macroUISizer = new wxFlexGridSizer( 2 );
 	m_macroUISizer->AddGrowableCol( 1 );
 	m_macroUI->SetSizer( m_macroUISizer );
@@ -487,15 +487,17 @@ public:
 			Simulation::ListAllOutputs( cc->GetConfiguration(), 
 				&m_names, &labels, &units, &groups, true );
 
+			wxArrayString list;
 			for( size_t i=0;i<m_names.size();i++ )
 			{
-				wxString L(groups[i] );
-				if ( L.IsEmpty() ) L = "Miscellaneous";
-				L += "/" + labels[i];
+				wxString L(labels[i] );
 				if ( !units[i].IsEmpty() )
 					L += " (" + units[i] + ")";
-				Append( L );
+				list.Add( L );
 			}
+
+			wxSortByLabels( m_names, list );
+			Append( list );
 		}
 
 	}
@@ -601,6 +603,7 @@ void MacroPanel::CreateUI( const wxString &buf )
 			m_ui.push_back( x );
 		}
 	}
+
 
 	m_rightPanel->Layout();
 }
