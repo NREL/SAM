@@ -3,7 +3,13 @@
 
 #include <vector>
 #include <string>
+#ifdef _MSC_VER
 #include <unordered_map>
+using std::tr1::unordered_map;
+#else
+#include <tr1/unordered_map>
+using std::tr1::unordered_map;
+#endif
 
 namespace s3d {
 
@@ -182,7 +188,7 @@ public:
 class BSPTree
 {
 private:
-	std::unordered_map<int, float> m_id_minz;
+	unordered_map<int, float> m_id_minz;
 	std::vector<BSPNode*> m_nodes;
 	std::vector<BSPNode*> m_listnodes; // for deletion
 	BSPNode *m_root;
