@@ -13,12 +13,18 @@ CC = gcc
 CXX = g++
 CFLAGS = -g -DLK_USE_WXWIDGETS -I. -I$(SRCDIR) -I$(WEXDIR)/include -I$(LKDIR) -I$(SSCDIR) `wx-config-3 --cflags`
 CXXFLAGS = $(CFLAGS)
-LDFLAGS = `wx-config-3 --libs` `wx-config-3 --libs aui` `wx-config-3 --libs stc` `wx-config-3 --libs richtext` -lm $(LKLIB) $(WEXLIB) -lstdc++ -lcurl
+LDFLAGS = `wx-config-3 --libs` `wx-config-3 --libs aui` `wx-config-3 --libs stc` `wx-config-3 --libs propgrid` `wx-config-3 --libs richtext` -lm $(LKLIB) $(WEXLIB) -lstdc++ -lcurl
 
 OBJECTS = ide.o \
 	urdb.o \
 	macro.o \
+	s3clipper.o \
+	s3engine.o \
+	s3objects.o \
+	s3tool.o \
+	s3view.o \
 	stochastic.o \
+	urdb.o \
 	solarprospector.o \
 	registration.o \
 	gridsupport.o \
@@ -66,6 +72,7 @@ $(TARGET): $(OBJECTS) $(WEXLIB) $(LKLIB) $(SSCLIB)
 	mkdir -p $(TARGET).app/Contents/runtime
 	#cp -R ../deploy/runtime/* $(TARGET).app/Contents/runtime
 	python copy_runtime.py
+	cp lhs.bin $(TARGET).app/Contents/runtime/bin
 	cp $(TARGET) ./$(TARGET).app/Contents/MacOS
 	cp $(TARGET).icns ./$(TARGET).app/Contents/Resources
 	cp Info-$(TARGET).plist ./$(TARGET).app/Contents/Info.plist

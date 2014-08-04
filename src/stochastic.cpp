@@ -1548,7 +1548,7 @@ bool ComputeLHSInputVectors( StochasticData &sd, matrix_t<double> &table, wxArra
 
 		if (name_idx1 < 0 || name_idx2 < 0) continue;
 
-		lhs.Correlate( wxString((char)('a'+name_idx1)), wxString((char)('a'+name_idx2)), atof(corrinfo[2]) );
+		lhs.Correlate( wxString((char)('a'+name_idx1)), wxString((char)('a'+name_idx2)), wxAtof(corrinfo[2]) );
 	}
 
 	lhs.Points( sd.N );

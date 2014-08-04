@@ -1096,9 +1096,13 @@ SimulationDialog::SimulationDialog( const wxString &message, int nthread )
 		nthread = wxThread::GetCPUCount();
 
 	m_transp = CreateTransparentOverlay( SamApp::Window() );
+	m_transp->Show();
+	wxYield();
+
 	m_tpd = new ThreadProgressDialog( m_transp, nthread );
 	m_tpd->CenterOnParent();
 	m_tpd->Show();
+
 	if ( message.IsEmpty() )
 		m_tpd->Status( "Simulating...");
 	else
