@@ -66,7 +66,7 @@ cashflow{ 'Residential' } = define()
 	cfline( 'cf_debt_payment_interest');
 	cfline( 'cf_debt_payment_principal');
 	cfline( 'cf_debt_payment_total');
-	
+
 	// incentives
 	setup_incentives_cashflow();
 	
@@ -247,7 +247,14 @@ cashflow{ 'Independent Power Producer' } = define()
 //TODO - all DHF model updates to 2014.1.14 release
 cashflow{ 'Single Owner' } = define()
 {
-	cfline( "Partial Income Statement: Project", 0 ); // header	
+    tech = technology();
+
+    fueltech = ( tech != 'Flat Plate PV' && 
+                 tech != 'PVWatts' && 
+                 tech != 'High-X Concentrating PV' && 
+                 tech != 'Solar Water Heating' && 
+                 tech != 'Wind Power');
+    
 	cfline( 'cf_energy_net', 1); // use one digit
 	cfline( 'cf_energy_price');
 	cfline( 'cf_energy_value');
@@ -262,13 +269,16 @@ cashflow{ 'Single Owner' } = define()
 
 	cfline( '' ); // spacer
 
+	cfline( 'cf_property_tax_assessed_value');
+
+	cfline( '' ); // spacer
+
 	cfline( "Expenses", 0 ); // header	
 	if (value('system_use_recapitalization')) cfline ('capitalization');
-	cfline( 'cf_om_fixed_expense,cf_om_production_expense,cf_om_capacity_expense,cf_om_fuel_expense');
-	cfline( 'cf_om_opt_fuel_1_expense' );
-	cfline( 'cf_om_opt_fuel_2_expense' );
-	
-	cfline( 'cf_property_tax_assessed_value');
+	cfline( 'cf_om_fixed_expense,cf_om_production_expense,cf_om_capacity_expense');
+	if ( fueltech == true )cfline('cf_om_fuel_expense');
+	if ( fueltech == true )cfline( 'cf_om_opt_fuel_1_expense' );
+	if ( fueltech == true )cfline( 'cf_om_opt_fuel_2_expense' );
 	cfline( 'cf_property_tax_expense');
 	cfline( 'cf_insurance_expense');
 	cfline( 'cf_operating_expenses');
@@ -277,10 +287,7 @@ cashflow{ 'Single Owner' } = define()
 	cfline( 'cf_ebitda');
 	cfline( '' ); // spacer
 	
-	cfline( "Cash Flow: Project", 0 ); // header
-
 	cfline( "Cash Flows from Operating Activities", 0 ); // header
-	cfline( 'cf_ebitda');
 	cfline( 'cf_reserve_interest');
 	if (value('pbi_fed_for_ds')==0)	cfline( 'cf_pbi_total_fed');
 	if (value('pbi_sta_for_ds')==0)	cfline( 'cf_pbi_total_sta');
@@ -288,7 +295,6 @@ cashflow{ 'Single Owner' } = define()
 	if (value('pbi_oth_for_ds')==0)	cfline( 'cf_pbi_total_oth');
 	cfline('project_operating_activities');
 	cfline( '' ); // spacer
-
 
 	cfline( "Cash Flows from Investing Activities", 0);
 	cfline( 'sv.purchase_of_property');
