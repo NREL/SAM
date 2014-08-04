@@ -76,7 +76,7 @@ struct MetricData {
 };
 	
 struct CashFlowLine {
-	enum { SPACER, HEADER, VARIABLE, CELLHEADER, CELLVARIABLE };
+	enum { SPACER, HEADER, VARIABLE, CELLHEADER, CELLVARIABLE, CELLCOLHEADER };
 	CashFlowLine() : type(VARIABLE), digits(2), scale(1.0f) {  }
 
 	int type;
@@ -122,6 +122,7 @@ private:
 	MetricsTable *m_metricsTable;		
 	TabularBrowser *m_tables;
 	wxExtGridCtrl *m_cashFlowTable;
+	wxExtGridCtrl *m_depreciationTable;
 
 	GraphViewer *m_graphViewer;
 		
