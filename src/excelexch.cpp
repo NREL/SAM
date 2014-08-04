@@ -448,22 +448,16 @@ END_EVENT_TABLE()
 
 bool ExcelExchange::ShowExcelExchangeDialog( ExcelExchange &exch, CaseWindow *cw )
 {
-	//wxFrame *trans = CreateTransparentOverlay( SamApp::Window() );
-
 	ExcelExchDialog dialog(  SamApp::Window(), wxID_ANY );
 	dialog.CenterOnParent();
 	dialog.Set( cw, exch );
 	if ( wxID_OK == dialog.ShowModal() )
 	{
 		dialog.Get( exch );
-		//trans->Destroy();
 		return true;
 	}
 	else
-	{
-		//trans->Destroy();
 		return false;
-	}
 }
 
 
