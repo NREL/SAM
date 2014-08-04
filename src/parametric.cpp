@@ -218,7 +218,7 @@ ParametricViewer::ParametricViewer(wxWindow *parent, Case *cc) : wxPanel(parent,
 	m_current_graph = 0;
 
 	wxBoxSizer *main_sizer = new wxBoxSizer(wxHORIZONTAL);
-	wxSplitterWindow *splitter = new wxSplitterWindow(this, wxID_ANY);
+	wxSplitterWindow *splitter = new wxSplitterWindow(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxSP_NOBORDER|wxSP_LIVE_UPDATE);
 	main_sizer->Add(splitter, 1, wxBOTTOM | wxLEFT | wxEXPAND, 5);
 
 
