@@ -205,11 +205,11 @@ BEGIN_EVENT_TABLE( MacroPanel, wxSplitterWindow )
 END_EVENT_TABLE()
 
 MacroPanel::MacroPanel( wxWindow *parent, Case *cc )
-	: wxSplitterWindow( parent, wxID_ANY ), m_case(cc)
+	: wxSplitterWindow( parent, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxSP_NOBORDER|wxSP_LIVE_UPDATE ), m_case(cc)
 {
 	m_output = new wxTextCtrl( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxTE_MULTILINE|wxTE_READONLY|wxBORDER_NONE);
 	
-	wxSplitterWindow *vsplit = new wxSplitterWindow( this, wxID_ANY );
+	wxSplitterWindow *vsplit = new wxSplitterWindow( this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxSP_NOBORDER|wxSP_LIVE_UPDATE );
 	
 	m_listbox = new wxMetroListBox( vsplit, ID_MACRO_LIST );
 	m_rightPanel = new wxPanel( vsplit );
