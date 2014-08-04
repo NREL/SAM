@@ -2,7 +2,7 @@
 Tornado charts can be a helpful way to visualize sensitivities of a model to various inputs.  Creating a
 tornado chart involves running several simulations in which a set of input variables are decreased
 and increased independently to see how much a particular output metric changes.<br><br>
-Plotting the results can quickly identify which model inputs have the greatest impact on an output,:<br><br>
+This macro creates a tornado chart like this one based on input ranges you specify:<br><br>
 <img src="$MACROPATH/tornado.jpg"><br><br>
 
 <b>Instructions:</b>
@@ -111,6 +111,7 @@ for( i=0;i<#vars;i++ )
 	set( var, val_dn );
 	simulate();
 	output_dn[i] = get(outvar);
+
 	outln( '\t' + vi.label + '=' + val_dn  + ", " + outlabel + "=" + output_dn[i] );
 	
 	set( var,  val_up );
@@ -118,12 +119,12 @@ for( i=0;i<#vars;i++ )
 	output_up[i] = get(outvar);
 	outln( '\t' + vi.label + '=' + val_up  + ", " + outlabel + "=" + output_up[i] );
 	
+	set( var, baseval ); // return to base case input value	
+	
 	// calculate average absolute percent changes
 	dnpc = (abs(output_dn[i]-baseoutput))/baseoutput;
 	uppc = (abs(output_up[i]-baseoutput))/baseoutput;
 	avgchange[i] = max(dnpc,uppc);
-	
-	set( var, baseval ); // return to base case input value	
 	
 }
 
