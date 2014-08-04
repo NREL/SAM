@@ -2187,7 +2187,7 @@ bool ShowConfigurationDialog( wxWindow *parent, wxString *tech, wxString *fin, b
 
 	wxFrame *trans = CreateTransparentOverlay( parent );
 	
-	ConfigDialog *dlg = new ConfigDialog( parent );
+	ConfigDialog *dlg = new ConfigDialog( trans );
 	dlg->ShowResetCheckbox( *reset );
 	if ( !tech->IsEmpty() && !fin->IsEmpty() )
 		dlg->SetConfiguration( *tech, *fin );

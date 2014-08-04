@@ -82,6 +82,13 @@ $(TARGET): $(OBJECTS) $(WEXLIB) $(LKLIB) $(SSCLIB)
 	install_name_tool -id @executable_path/../Frameworks/ssc.dylib $(TARGET).app/Contents/Frameworks/ssc.dylib
 	install_name_tool -change ssc.dylib @executable_path/../Frameworks/ssc.dylib $(TARGET).app/Contents/MacOS/$(TARGET)
 	
+bin: $(OBJECTS) $(WEXLIB) $(LKLIB) $(SSCLIB)
+	$(CXX) -g -o $(TARGET) $^ $(LDFLAGS)
+	SetFile -a t $(TARGET) 
+	cp $(TARGET) ./$(TARGET).app/Contents/MacOS
+	install_name_tool -id @executable_path/../Frameworks/ssc.dylib $(TARGET).app/Contents/Frameworks/ssc.dylib
+	install_name_tool -change ssc.dylib @executable_path/../Frameworks/ssc.dylib $(TARGET).app/Contents/MacOS/$(TARGET)
+
 DEPENDS = $(OBJECTS:.o=.d)
 
 -include $(DEPENDS)
