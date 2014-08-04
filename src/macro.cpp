@@ -343,23 +343,35 @@ void MacroPanel::ClearUI()
 	m_rightPanel->Layout();
 }
 
-enum{ ID_SELECT_VARS = wxID_HIGHEST + 941 };
+enum{ ID_SELECT_VARS = wxID_HIGHEST + 941, ID_EDIT_META, ID_VARLIST };
 class VarListSelector : public wxPanel
 {
+	bool m_enableMeta;
+	wxString m_prompt;
 	bool m_onlyNumbers;
 	wxListBox *m_list;
 	wxArrayString m_names;
+	StringHash m_meta;
+
 public:
-	VarListSelector( wxWindow *parent, bool only_num=false )
-		: wxPanel( parent ), m_onlyNumbers( only_num )
+	VarListSelector( wxWindow *parent, bool only_num=false, bool en_meta=false, const wxString &prompt=wxEmptyString )
+		: wxPanel( parent ), m_onlyNumbers( only_num ), m_enableMeta(en_meta), m_prompt(prompt)
 	{
-		SetInitialSize( wxSize( 180, 130 ) );
+		SetMinClientSize( wxSize( 200, 130 ) );
 		wxBoxSizer *sizer = new wxBoxSizer( wxHORIZONTAL );
-		sizer->Add( m_list = new wxListBox( this, wxID_ANY ), 1, wxALL|wxEXPAND, 0 );
-		sizer->Add( new wxButton( this, ID_SELECT_VARS , "...", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT ), 0, wxALL|wxALIGN_TOP, 2 );
+		sizer->Add( m_list = new wxListBox( this, ID_VARLIST, wxDefaultPosition, wxDefaultSize, 0, 0, wxLB_HSCROLL ), 1, wxALL|wxEXPAND, 0 );
+
+		wxBoxSizer *vsizer = new wxBoxSizer( wxVERTICAL );
+		vsizer->Add( new wxButton( this, ID_SELECT_VARS , en_meta ? "Select..." : "...", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT ), 0, wxALL|wxEXPAND|wxALIGN_TOP, 2 );
+		if ( en_meta )
+			vsizer->Add( new wxButton( this, ID_EDIT_META, "Edit...", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT ), 0, wxALL|wxEXPAND|wxALIGN_TOP, 2 );
+		
+		sizer->Add( vsizer, 0, wxALL|wxALIGN_TOP, 0 );
 		SetSizer( sizer );
 	}
 	wxArrayString GetVars() { return m_names; }
+	StringHash &GetMeta() { return m_meta; }
+	bool IsMetaDataEnabled() { return m_enableMeta; }
 	void OnSelect( wxCommandEvent & )
 	{
 		wxArrayString nn, ll;
@@ -368,7 +380,6 @@ public:
 			wxMessageBox("Error: there must be an active case to select input variables." );
 			return;
 		}
-
 
 		for( VarInfoLookup::iterator it = cc->Variables().begin();
 			it != cc->Variables().end();
@@ -418,6 +429,21 @@ public:
 			UpdateList();
 	}
 
+	
+	void OnEditOrListBoxDClick(wxCommandEvent & )
+	{
+		int isel = m_list->GetSelection();
+		if ( isel < 0 ) {
+			wxMessageBox("Please select a variable to edit its data.");
+			return;
+		}
+		wxString L(m_prompt);
+		L.Replace( "@var", m_list->GetStringSelection() );
+		L.Replace( "\\n", "\n" );
+		m_meta[m_names[isel]] = wxGetTextFromUser( L, "Edit data for: " + m_list->GetStringSelection(), m_meta[m_names[isel]], this );
+		UpdateList();
+	}
+
 	void UpdateList()
 	{
 		m_list->Clear();
@@ -430,8 +456,13 @@ public:
 			if ( L.IsEmpty() ) L = "{ " + m_names[i] + " }";
 			if ( !cc->Variables().Units( m_names[i]).IsEmpty() )
 				L += " (" +cc->Variables().Units( m_names[i]) + ")";
+
+			if ( m_enableMeta && !m_meta[m_names[i]].IsEmpty())
+				L += ": " + m_meta[m_names[i]];
+
 			m_list->Append( L );
 		}
+
 	}
 
 	DECLARE_EVENT_TABLE()
@@ -439,6 +470,8 @@ public:
 
 BEGIN_EVENT_TABLE( VarListSelector, wxPanel )
 	EVT_BUTTON( ID_SELECT_VARS, VarListSelector::OnSelect )
+	EVT_LISTBOX_DCLICK( ID_VARLIST, VarListSelector::OnEditOrListBoxDClick )
+	EVT_BUTTON( ID_EDIT_META, VarListSelector::OnEditOrListBoxDClick )
 END_EVENT_TABLE()
 
 class SVOutputCtrl : public wxChoice 
@@ -497,6 +530,7 @@ void MacroPanel::CreateUI( const wxString &buf )
 			continue;
 		
 		wxWindow *win = 0;
+		bool expand_win = false;
 
 		if ( type == "text" )
 		{
@@ -534,22 +568,36 @@ void MacroPanel::CreateUI( const wxString &buf )
 			if ( tab.find("only") != tab.end() )
 				if ( tab["only"].Lower() == "numbers" )
 					only_num=true;
-			win = new VarListSelector( m_macroUI, only_num );
+
+			bool en_meta = false;
+			if ( tab.find("meta") != tab.end() )
+				if ( tab["meta"] == "true" )
+					en_meta = true;
+			wxString prompt;
+			if ( tab.find("prompt") != tab.end() )
+				prompt = tab["prompt"];
+
+			win = new VarListSelector( m_macroUI, only_num, en_meta, prompt );
+			expand_win = true;
 		}
 		else if ( type == "svoutput" )
 		{
 			win = new SVOutputCtrl( m_macroUI );
+			expand_win = true;
 		}
 
 		if ( win != 0 )
 		{
 			if (label.IsEmpty() ) label = "<empty label>";
+			label.Replace("\\n", "\n");
 			ui_item x;
 			x.name = name;
 			x.label = new wxStaticText( m_macroUI, wxID_ANY, label );
 			m_macroUISizer->Add( x.label, 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
 			x.window = win;
-			m_macroUISizer->Add( x.window, 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
+			int flags = wxALL|wxALIGN_CENTER_VERTICAL;
+			if ( expand_win ) flags |= wxEXPAND;
+			m_macroUISizer->Add( x.window, 0, flags, 5 );
 			m_ui.push_back( x );
 		}
 	}
@@ -586,7 +634,18 @@ lk::vardata_t *MacroPanel::GetUIArgs()
 			item.empty_vector();
 			wxArrayString list( vls->GetVars() );
 			for( size_t i=0;i<list.size();i++ )
-				item.vec_append( list[i] );
+			{
+				if ( vls->IsMetaDataEnabled() )
+				{
+					lk::vardata_t x;
+					x.empty_vector();
+					x.vec_append( list[i] );
+					x.vec_append( vls->GetMeta()[ list[i] ] );
+					item.vec()->push_back( x );
+				}
+				else
+					item.vec_append( list[i] );
+			}
 		}
 	}
 
