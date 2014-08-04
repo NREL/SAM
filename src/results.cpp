@@ -189,7 +189,17 @@ ResultsViewer::ResultsViewer( wxWindow *parent, int id )
 	
 	wxPanel *cf_panel = new wxPanel( this );
 	AddPage( cf_panel, "Cash flow" );
-	m_cashFlowTable = new wxExtGridCtrl( cf_panel, wxID_ANY );
+
+	wxBoxSizer *cf_main_sizer = new wxBoxSizer(wxHORIZONTAL);
+	wxSplitterWindow *cf_splitter = new wxSplitterWindow(cf_panel, wxID_ANY);
+	cf_main_sizer->Add(cf_splitter, 1, wxBOTTOM | wxLEFT | wxEXPAND, 5);
+
+
+	wxPanel *cf_top_panel = new wxPanel(cf_splitter);
+
+
+
+	m_cashFlowTable = new wxExtGridCtrl(cf_splitter, wxID_ANY);
 	m_cashFlowTable->SetFont( *wxNORMAL_FONT );
 	m_cashFlowTable->CreateGrid(1,1);
 	m_cashFlowTable->SetRowLabelAlignment(wxALIGN_RIGHT,wxALIGN_CENTRE);
@@ -203,15 +213,36 @@ ResultsViewer::ResultsViewer( wxWindow *parent, int id )
 	m_cashFlowTable->EnableEditing(false);
 	m_cashFlowTable->EnableCopyPaste(true);
 	m_cashFlowTable->EnablePasteEvent(false);
-	wxBoxSizer *cf_tools = new wxBoxSizer( wxHORIZONTAL );
-	cf_tools->Add(new wxButton(cf_panel, ID_CF_COPY, "Copy to clipboard"), 0, wxALL, 2);
-	cf_tools->Add( new wxButton( cf_panel, ID_CF_SAVECSV, "Save as CSV" ), 0, wxALL, 2 );
-	cf_tools->Add( new wxButton( cf_panel, ID_CF_SENDEXCEL, "Send to Excel" ), 0, wxALL, 2 );
-	cf_tools->Add( new wxButton( cf_panel, ID_CF_SENDEQNEXCEL, "Send to Excel with Equations" ), 0, wxALL, 2 );
-	wxBoxSizer *cf_sizer = new wxBoxSizer( wxVERTICAL );
-	cf_sizer->Add( cf_tools, 0, wxALL|wxEXPAND, 2 );
-	cf_sizer->Add( m_cashFlowTable, 1, wxALL|wxEXPAND, 0 );
-	cf_panel->SetSizer(cf_sizer);
+	m_depreciationTable = new wxExtGridCtrl(cf_top_panel, wxID_ANY);
+	m_depreciationTable->SetFont(*wxNORMAL_FONT);
+	m_depreciationTable->CreateGrid(1, 1);
+	m_depreciationTable->SetRowLabelAlignment(wxALIGN_RIGHT, wxALIGN_CENTRE);
+	m_depreciationTable->SetDefaultCellAlignment(wxALIGN_RIGHT, wxALIGN_CENTRE);
+	m_depreciationTable->DisableCellEditControl();
+	m_depreciationTable->DisableDragCell();
+	m_depreciationTable->DisableDragRowSize();
+	m_depreciationTable->DisableDragColMove();
+	m_depreciationTable->DisableDragGridSize();
+	m_depreciationTable->SetCellValue(0, 0, "No data.");
+	m_depreciationTable->EnableEditing(false);
+	m_depreciationTable->EnableCopyPaste(true);
+	m_depreciationTable->EnablePasteEvent(false);
+	wxBoxSizer *cf_tools = new wxBoxSizer(wxHORIZONTAL);
+	cf_tools->Add(new wxButton(cf_top_panel, ID_CF_COPY, "Copy to clipboard"), 0, wxALL, 2);
+	cf_tools->Add(new wxButton(cf_top_panel, ID_CF_SAVECSV, "Save as CSV"), 0, wxALL, 2);
+	cf_tools->Add(new wxButton(cf_top_panel, ID_CF_SENDEXCEL, "Send to Excel"), 0, wxALL, 2);
+	cf_tools->Add(new wxButton(cf_top_panel, ID_CF_SENDEQNEXCEL, "Send to Excel with Equations"), 0, wxALL, 2);
+	wxBoxSizer *cf_top_sizer = new wxBoxSizer( wxVERTICAL );
+	cf_top_sizer->Add(cf_tools, 0, wxALL | wxEXPAND, 2);
+	cf_top_sizer->Add(m_depreciationTable, 1, wxALL | wxEXPAND, 0);
+	cf_top_panel->SetSizer(cf_top_sizer);
+
+	cf_splitter->SetMinimumPaneSize(200);
+	cf_splitter->SplitHorizontally(cf_top_panel, m_cashFlowTable, 500);
+
+	cf_panel->SetSizer(cf_main_sizer);
+	cf_main_sizer->SetSizeHints(cf_panel);
+
 
 	m_hourlySeries = new wxDVTimeSeriesCtrl( this, wxID_ANY,  wxDV_RAW, wxDV_AVERAGE );
 	AddPage( m_hourlySeries, "Hourly" );
@@ -438,7 +469,12 @@ void ResultsViewer::Setup( Simulation *sim )
 	
 	m_cashFlowTable->Freeze();
 	m_cashFlowTable->ClearGrid();
-	
+	m_depreciationTable->Freeze();
+	m_depreciationTable->ClearGrid();
+
+	bool show_depreciationTable = false;
+	m_depreciationTable->ResizeGrid(20, 16);
+
 	m_cashflow.clear();
 	if ( lk::node_t *cfcb = SamApp::GlobalCallbacks().Lookup( "cashflow", cfg->Financing ))
 	{
@@ -451,24 +487,31 @@ void ResultsViewer::Setup( Simulation *sim )
 			nyears = (int)vv->Value();
 		if ( nyears < 16 ) nyears = 16;
 		if ( nyears > 100 ) nyears = 100;
-		m_cashFlowTable->ResizeGrid( 400, nyears );
-		for( size_t c=0;c<nyears;c++ )
+		m_cashFlowTable->ResizeGrid(400, nyears);
+		for (size_t c = 0; c<nyears; c++)
 			m_cashFlowTable->SetColLabelValue( c, wxString::Format("%d", (int)c) );
 
+		size_t cashflow_row = 0, depreciation_row = 0;
 		for( size_t r=0;r<m_cashflow.size() && r < 400;r++ )
 		{
 			CashFlowLine &cl = m_cashflow[r];
 
-			if ( cl.type == CashFlowLine::SPACER )
-				m_cashFlowTable->SetRowLabelValue( r, wxEmptyString );
-			else if ( cl.type == CashFlowLine::HEADER )
-				m_cashFlowTable->SetRowLabelValue( r, cl.name );
+			if (cl.type == CashFlowLine::SPACER)
+			{
+				m_cashFlowTable->SetRowLabelValue(cashflow_row, wxEmptyString);
+				cashflow_row++;
+			}
+			else if (cl.type == CashFlowLine::HEADER)
+			{
+				m_cashFlowTable->SetRowLabelValue(cashflow_row, cl.name);
+				cashflow_row++;
+			}
 			else if (cl.type == CashFlowLine::VARIABLE)
 			{
 				wxString label = m_sim->GetLabel(cl.name);
 				wxString units = m_sim->GetUnits(cl.name);
 				if (!units.IsEmpty()) label += " (" + units + ")";
-				m_cashFlowTable->SetRowLabelValue(r, label);
+				m_cashFlowTable->SetRowLabelValue(cashflow_row, label);
 
 				if (VarValue *vv = m_sim->GetValue(cl.name))
 				{
@@ -490,10 +533,10 @@ void ResultsViewer::Setup( Simulation *sim )
 						else
 							sval = wxString::Format("%g", fval);
 
-						m_cashFlowTable->SetCellValue(sval, r, i);
+						m_cashFlowTable->SetCellValue(sval, cashflow_row, i);
 					}
-
 				}
+				cashflow_row++;
 			}
 			else if (cl.type == CashFlowLine::CELLHEADER)
 			{ // cl.name contains comma separated values for row
@@ -504,11 +547,27 @@ void ResultsViewer::Setup( Simulation *sim )
 					list.Add(""); // handle empty string
 					n = 1;
 				}
-				m_cashFlowTable->SetRowLabelValue(r, list[0]);
+				m_depreciationTable->SetRowLabelValue(depreciation_row, list[0]);
 				for (size_t i = 1; i < n && i < nyears; i++)
 				{
-					m_cashFlowTable->SetCellValue(list[i], r, i-1);
+					m_depreciationTable->SetCellValue(list[i], depreciation_row, i - 1);
 				}
+				depreciation_row++;
+			}
+			else if (cl.type == CashFlowLine::CELLCOLHEADER)
+			{ // cl.name contains comma separated values for row
+				wxArrayString list = wxSplit(cl.name, ',');
+				size_t n = list.size();
+				if (n == 0)
+				{
+					list.Add(""); // handle empty string
+					n = 1;
+				}
+				for (size_t i = 0; i < n && i < nyears; i++)
+				{
+					m_depreciationTable->SetColLabelValue(i, list[i]);
+				}
+				//depreciation_row++;
 			}
 			else if (cl.type == CashFlowLine::CELLVARIABLE)
 			{
@@ -519,7 +578,7 @@ void ResultsViewer::Setup( Simulation *sim )
 					list.Add(""); // handle empty string
 					n = 1;
 				}
-				m_cashFlowTable->SetRowLabelValue(r, list[0]);
+				m_depreciationTable->SetRowLabelValue(depreciation_row, list[0]);
 				for (size_t i = 1; i < n && i < nyears; i++)
 				{
 					if (VarValue *vv = m_sim->GetValue(list[i]))
@@ -543,24 +602,46 @@ void ResultsViewer::Setup( Simulation *sim )
 								sval += wxString::Format("%g", fval);
 							if (j < m-1) sval += ";";
 						}
-						m_cashFlowTable->SetCellValue(sval, r, i-1);
+						m_depreciationTable->SetCellValue(sval, depreciation_row, i - 1);
 					}
 				}
+				depreciation_row++;
 			}
 			else
-				m_cashFlowTable->SetCellValue( "'" + cl.name + "' not found.", r, 0 );
+			{
+				m_cashFlowTable->SetCellValue("'" + cl.name + "' not found.", r, 0);
+				cashflow_row++;
+			}
 		}
-
-		
+		/*
 		m_cashFlowTable->SetRowLabelSize(wxGRID_AUTOSIZE);
 		m_cashFlowTable->SetColLabelSize(wxGRID_AUTOSIZE);
 		m_cashFlowTable->GetParent()->Layout();
 		m_cashFlowTable->Layout();
 		m_cashFlowTable->EnableCopyPaste(true);
-		m_cashFlowTable->ResizeGrid( m_cashflow.size(), nyears );
+		m_cashFlowTable->ResizeGrid(cashflow_row, nyears);
 
 		m_cashFlowTable->AutoSize();
-		m_cashFlowTable->Thaw();	
+		m_cashFlowTable->Thaw();
+		*/
+
+
+		m_cashFlowTable->SetRowLabelSize(wxGRID_AUTOSIZE);
+		m_cashFlowTable->SetColLabelSize(wxGRID_AUTOSIZE);
+		m_depreciationTable->SetRowLabelSize(wxGRID_AUTOSIZE);
+		m_depreciationTable->SetColLabelSize(wxGRID_AUTOSIZE);
+		m_cashFlowTable->AutoSize();
+		m_depreciationTable->AutoSize();
+		m_cashFlowTable->EnableCopyPaste(true);
+		m_cashFlowTable->ResizeGrid(cashflow_row, nyears);
+		m_depreciationTable->EnableCopyPaste(true);
+		m_depreciationTable->ResizeGrid(depreciation_row, 16);
+
+		m_cashFlowTable->Thaw();
+		m_depreciationTable->Thaw();
+
+		m_depreciationTable->Show(depreciation_row > 0);
+
 	}
 
 	CreateAutoGraphs();
@@ -592,9 +673,11 @@ void ResultsViewer::GetExportData(int data, matrix_t<wxString> &table)
 	{
 		int nrows = m_cashFlowTable->GetNumberRows();
 		int ncols = m_cashFlowTable->GetNumberCols();
+		int ndepr_rows = m_depreciationTable->GetNumberRows();
+		int ndepr_cols = m_depreciationTable->GetNumberCols();
 		int r, c;
 
-		table.resize(nrows + 1, ncols + 1);
+		table.resize(nrows + ndepr_rows + 2, ncols + ndepr_cols + 2);
 
 		for (c = 0; c<ncols; c++)
 			table.at(0, c + 1) = wxString::Format( "%d", c);
@@ -606,6 +689,15 @@ void ResultsViewer::GetExportData(int data, matrix_t<wxString> &table)
 				table.at(r + 1, c + 1) = m_cashFlowTable->GetCellValue(r, c);
 		}
 
+		for (c = 0; c<ndepr_cols; c++)
+			table.at(nrows, c + 1) = " ";
+
+		for (r = 0; r<ndepr_rows; r++)
+		{
+			table.at(nrows+r + 1, 0) = m_depreciationTable->GetRowLabelValue(r);
+			for (c = 0; c<ndepr_cols; c++)
+				table.at(nrows + r + 1, c + 1) = m_depreciationTable->GetCellValue(r, c);
+		}
 	}
 }
 
