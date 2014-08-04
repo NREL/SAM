@@ -956,10 +956,12 @@ BEGIN_EVENT_TABLE( ThreadProgressDialog, wxDialog )
 END_EVENT_TABLE( )
 
 ThreadProgressDialog::ThreadProgressDialog(wxWindow *parent, int nthreads)
-	: wxDialog( parent, wxID_ANY, wxString("Simulation Progress"), wxDefaultPosition, 
+	: wxDialog( parent, wxID_ANY, wxEmptyString, wxDefaultPosition, 
 	wxSize(625, 475), wxBORDER_NONE )
 {
 	SetBackgroundColour( *wxWHITE );
+	CenterOnParent();
+
 	m_canceled = false;
 	m_button = new wxMetroButton(this, wxID_CANCEL, "Cancel");//, wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT);
 	
@@ -1095,12 +1097,9 @@ SimulationDialog::SimulationDialog( const wxString &message, int nthread )
 	if ( nthread < 1 )
 		nthread = wxThread::GetCPUCount();
 
-	m_transp = CreateTransparentOverlay( SamApp::Window() );
-	m_transp->Show();
-	wxYield();
+	//m_transp = CreateTransparentOverlay( SamApp::Window() );
 
-	m_tpd = new ThreadProgressDialog( m_transp, nthread );
-	m_tpd->CenterOnParent();
+	m_tpd = new ThreadProgressDialog( SamApp::Window(), nthread );
 	m_tpd->Show();
 
 	if ( message.IsEmpty() )
@@ -1114,7 +1113,7 @@ SimulationDialog::SimulationDialog( const wxString &message, int nthread )
 SimulationDialog::~SimulationDialog()
 {
 	m_tpd->Destroy();
-	m_transp->Destroy();
+//	m_transp->Destroy();
 }
 
 void SimulationDialog::Finalize( const wxString &title )
