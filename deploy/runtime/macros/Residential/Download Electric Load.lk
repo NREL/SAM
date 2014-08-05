@@ -1,0 +1,6 @@
+/**
+Paul will write this macro to download building load data
+based on the sample file in SAM 2014.1.14.
+**/
+
+msgbox("This macro doesn't do anything yet.");
