@@ -796,7 +796,7 @@ GraphViewer::GraphViewer(wxWindow *parent) : wxPanel(parent, wxID_ANY)
 	m_current = 0;
 
 	wxBoxSizer *main_sizer = new wxBoxSizer(wxHORIZONTAL);
-	wxSplitterWindow *splitter = new wxSplitterWindow(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxSP_LIVE_UPDATE | wxSP_NOBORDER);
+	wxSplitterWindow *splitter = new wxSplitterWindow(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxSP_LIVE_UPDATE | wxSP_NOBORDER | wxSP_3DSASH );
 	main_sizer->Add(splitter, 1, wxBOTTOM | wxLEFT | wxEXPAND, 0);
 
 	wxPanel *lpanel = new wxPanel(splitter);

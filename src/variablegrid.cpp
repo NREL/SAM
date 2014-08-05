@@ -779,7 +779,7 @@ void VariableGridFrame::OnProjectFileEvent(ProjectFile* WXUNUSED(p), ProjectFile
 
 void VariableGridFrame::OnCaseEvent(Case* WXUNUSED(c), CaseEvent &evt)
 {
-	if (evt.GetType() == CaseEvent::VALUE_CHANGED)
+	if ( evt.GetType() == CaseEvent::VALUE_USER_INPUT )
 	{
 		// refresh when any case values change
 		UpdateGrid(); // for comparison views

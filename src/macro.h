@@ -34,7 +34,6 @@ private:
 	bool m_stopFlag;
 };
 
-
 class MacroPanel : public wxSplitterWindow, public MacroEngine
 {
 public:
@@ -44,7 +43,13 @@ public:
 	
 	virtual void Output( const wxString &text );
 	virtual void ClearOutput();
+	
+	lk::vardata_t *GetUIArgs();
+	void GetUIArgs( lk::vardata_t &table );
+	int SetUIArgs( lk::vardata_t &table );
 
+	int ReadUIData( const wxString &file );
+	bool WriteUIData( const wxString &file );
 private:
 	void OnCommand( wxCommandEvent & );
 	void OnHtmlLink( wxHtmlLinkEvent & );
@@ -71,7 +76,7 @@ private:
 	wxFlexGridSizer *m_macroUISizer;
 	void ClearUI();
 	void CreateUI( const wxString &buf );
-	lk::vardata_t *GetUIArgs();
+	ui_item *FindItem( const wxString &name );
 
 	DECLARE_EVENT_TABLE();
 

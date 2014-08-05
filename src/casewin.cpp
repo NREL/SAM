@@ -115,7 +115,7 @@ BEGIN_EVENT_TABLE( CaseWindow, wxSplitterWindow )
 END_EVENT_TABLE()
 
 CaseWindow::CaseWindow( wxWindow *parent, Case *c )
-	: wxSplitterWindow( parent, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxSP_NOBORDER | wxSP_LIVE_UPDATE ),
+	: wxSplitterWindow( parent, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxSP_NOBORDER | wxSP_LIVE_UPDATE | wxSP_3DSASH ),
 	m_case( c )
 {
 	m_case->AddListener( this );
@@ -625,10 +625,7 @@ void CaseWindow::OnCaseEvent( Case *, CaseEvent &evt )
 				}
 			}
 		}
-
-		// update side bar
-		m_inputPageList->Refresh();
-
+		
 		SamApp::Project().SetModified( true );
 	}
 	else if ( evt.GetType() == CaseEvent::CONFIG_CHANGED )
