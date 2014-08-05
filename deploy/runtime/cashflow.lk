@@ -2,7 +2,7 @@
 // setup cashflow tables////////////////////////////////////////////////////////
 function state_federal_depreciation_tables()
 {
-	cfrow("% of Total Depreciable Basis,Gross Amount Allocated,Reduction: IBI,Reduction: CBI,Depreciable Basis Prior to ITC,ITC Qualifying Costs,% of ITC Qualifying Costs,ITC Amount,ITC Basis Disallowance,ITC Amount	,ITC Basis Disallowance,ITC Reduction: State,ITC Reduction: Federal,Depreciable Basis After ITC Reduction,First Year Bonus Depreciation,Depreciable Basis After Bonus Reduction",-1);
+	cfrow("% of Total\nDepreciable Basis,Gross Amount\nAllocated,IBI\nReduction,CBI\nReduction,Depreciable Basis\nPrior to ITC,ITC Qualifying\nCosts,% of ITC\nQualifying Costs,ITC\nAmount,ITC Basis\nDisallowance,ITC\nAmount,ITC Basis\nDisallowance,State ITC\nReduction,Federal ITC\nReduction,Depreciable Basis\nAfter ITC Reduction,First Year Bonus\nDepreciation,Depreciable Basis\nAfter Bonus Reduction",-1);
 	
 	cfrow("State Depreciation & ITC",0);
 	cfrow("5-yr MACRS,depr_stabas_percent_macrs_5,depr_alloc_macrs_5,depr_stabas_ibi_reduc_macrs_5,depr_stabas_cbi_reduc_macrs_5,depr_stabas_prior_itc_macrs_5,itc_sta_qual_macrs_5,depr_stabas_percent_qual_macrs_5,depr_stabas_percent_amount_macrs_5,itc_disallow_sta_percent_macrs_5,depr_stabas_fixed_amount_macrs_5,itc_disallow_sta_fixed_macrs_5,depr_stabas_itc_sta_reduction_macrs_5,depr_stabas_itc_fed_reduction_macrs_5,depr_stabas_after_itc_macrs_5,depr_stabas_first_year_bonus_macrs_5,depr_stabas_macrs_5");

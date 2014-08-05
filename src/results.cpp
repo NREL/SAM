@@ -191,15 +191,15 @@ ResultsViewer::ResultsViewer( wxWindow *parent, int id )
 	AddPage( cf_panel, "Cash flow" );
 
 	wxBoxSizer *cf_main_sizer = new wxBoxSizer(wxHORIZONTAL);
-	wxSplitterWindow *cf_splitter = new wxSplitterWindow(cf_panel, wxID_ANY);
-	cf_main_sizer->Add(cf_splitter, 1, wxBOTTOM | wxLEFT | wxEXPAND, 5);
+	m_cf_splitter = new wxSplitterWindow(cf_panel, wxID_ANY);
+	cf_main_sizer->Add(m_cf_splitter, 1, wxBOTTOM | wxLEFT | wxEXPAND, 5);
 
 
-	wxPanel *cf_top_panel = new wxPanel(cf_splitter);
+	m_cf_top_panel = new wxPanel(m_cf_splitter);
 
 
 
-	m_cashFlowTable = new wxExtGridCtrl(cf_splitter, wxID_ANY);
+	m_cashFlowTable = new wxExtGridCtrl(m_cf_top_panel, wxID_ANY);
 	m_cashFlowTable->SetFont( *wxNORMAL_FONT );
 	m_cashFlowTable->CreateGrid(1,1);
 	m_cashFlowTable->SetRowLabelAlignment(wxALIGN_RIGHT,wxALIGN_CENTRE);
@@ -213,7 +213,7 @@ ResultsViewer::ResultsViewer( wxWindow *parent, int id )
 	m_cashFlowTable->EnableEditing(false);
 	m_cashFlowTable->EnableCopyPaste(true);
 	m_cashFlowTable->EnablePasteEvent(false);
-	m_depreciationTable = new wxExtGridCtrl(cf_top_panel, wxID_ANY);
+	m_depreciationTable = new wxExtGridCtrl(m_cf_splitter, wxID_ANY);
 	m_depreciationTable->SetFont(*wxNORMAL_FONT);
 	m_depreciationTable->CreateGrid(1, 1);
 	m_depreciationTable->SetRowLabelAlignment(wxALIGN_RIGHT, wxALIGN_CENTRE);
@@ -228,17 +228,18 @@ ResultsViewer::ResultsViewer( wxWindow *parent, int id )
 	m_depreciationTable->EnableCopyPaste(true);
 	m_depreciationTable->EnablePasteEvent(false);
 	wxBoxSizer *cf_tools = new wxBoxSizer(wxHORIZONTAL);
-	cf_tools->Add(new wxButton(cf_top_panel, ID_CF_COPY, "Copy to clipboard"), 0, wxALL, 2);
-	cf_tools->Add(new wxButton(cf_top_panel, ID_CF_SAVECSV, "Save as CSV"), 0, wxALL, 2);
-	cf_tools->Add(new wxButton(cf_top_panel, ID_CF_SENDEXCEL, "Send to Excel"), 0, wxALL, 2);
-	cf_tools->Add(new wxButton(cf_top_panel, ID_CF_SENDEQNEXCEL, "Send to Excel with Equations"), 0, wxALL, 2);
+	cf_tools->Add(new wxButton(m_cf_top_panel, ID_CF_COPY, "Copy to clipboard"), 0, wxALL, 2);
+	cf_tools->Add(new wxButton(m_cf_top_panel, ID_CF_SAVECSV, "Save as CSV"), 0, wxALL, 2);
+	cf_tools->Add(new wxButton(m_cf_top_panel, ID_CF_SENDEXCEL, "Send to Excel"), 0, wxALL, 2);
+	cf_tools->Add(new wxButton(m_cf_top_panel, ID_CF_SENDEQNEXCEL, "Send to Excel with Equations"), 0, wxALL, 2);
 	wxBoxSizer *cf_top_sizer = new wxBoxSizer( wxVERTICAL );
 	cf_top_sizer->Add(cf_tools, 0, wxALL | wxEXPAND, 2);
-	cf_top_sizer->Add(m_depreciationTable, 1, wxALL | wxEXPAND, 0);
-	cf_top_panel->SetSizer(cf_top_sizer);
+	cf_top_sizer->Add(m_cashFlowTable, 1, wxALL | wxEXPAND, 0);
+	m_cf_top_panel->SetSizer(cf_top_sizer);
 
-	cf_splitter->SetMinimumPaneSize(200);
-	cf_splitter->SplitHorizontally(cf_top_panel, m_cashFlowTable, 500);
+	m_cf_splitter->SetMinimumPaneSize(100);
+	m_cf_splitter->SetSashGravity(1.0);
+	m_cf_splitter->SplitHorizontally(m_cf_top_panel, m_depreciationTable, -200);
 
 	cf_panel->SetSizer(cf_main_sizer);
 	cf_main_sizer->SetSizeHints(cf_panel);
@@ -472,7 +473,6 @@ void ResultsViewer::Setup( Simulation *sim )
 	m_depreciationTable->Freeze();
 	m_depreciationTable->ClearGrid();
 
-	bool show_depreciationTable = false;
 	m_depreciationTable->ResizeGrid(20, 16);
 
 	m_cashflow.clear();
@@ -613,18 +613,6 @@ void ResultsViewer::Setup( Simulation *sim )
 				cashflow_row++;
 			}
 		}
-		/*
-		m_cashFlowTable->SetRowLabelSize(wxGRID_AUTOSIZE);
-		m_cashFlowTable->SetColLabelSize(wxGRID_AUTOSIZE);
-		m_cashFlowTable->GetParent()->Layout();
-		m_cashFlowTable->Layout();
-		m_cashFlowTable->EnableCopyPaste(true);
-		m_cashFlowTable->ResizeGrid(cashflow_row, nyears);
-
-		m_cashFlowTable->AutoSize();
-		m_cashFlowTable->Thaw();
-		*/
-
 
 		m_cashFlowTable->SetRowLabelSize(wxGRID_AUTOSIZE);
 		m_cashFlowTable->SetColLabelSize(wxGRID_AUTOSIZE);
@@ -641,6 +629,10 @@ void ResultsViewer::Setup( Simulation *sim )
 		m_depreciationTable->Thaw();
 
 		m_depreciationTable->Show(depreciation_row > 0);
+		if (!m_depreciationTable->IsShown())
+		{
+			m_cf_splitter->Unsplit();
+		}
 
 	}
 
