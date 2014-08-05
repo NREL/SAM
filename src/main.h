@@ -321,6 +321,7 @@ private:
 	void OnOk( wxCommandEvent & );
 	void OnCancel( wxCommandEvent & );
 	void OnHelp( wxCommandEvent & );
+	void OnCharHook( wxKeyEvent & );
 
 	wxCheckBox *m_pChkUseDefaults;
 	DECLARE_EVENT_TABLE();

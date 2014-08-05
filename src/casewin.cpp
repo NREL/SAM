@@ -569,7 +569,17 @@ void CaseWindow::OnCaseEvent( Case *, CaseEvent &evt )
 			wxUIObject *obj = FindActiveObject( list[i], &ipage );
 			VarValue *vv = m_case->Values().Get( list[i] );
 			if ( ipage && obj && vv )
+			{
 				ipage->DataExchange( obj, *vv, ActiveInputPage::VAR_TO_OBJ );
+			
+				// lookup and run any callback functions.
+				if ( lk::node_t *root = m_case->QueryCallback( "on_change", obj->GetName() ) )
+				{
+					UICallbackContext cbcxt( ipage, obj->GetName() + "->on_change" );
+					if ( cbcxt.Invoke( root, &m_case->CallbackEnvironment() ) )
+						wxLogStatus("callback script " + obj->GetName() + "->on_change succeeded");
+				}
+			}
 
 
 			// update views if the variable controls an
