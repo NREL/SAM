@@ -123,6 +123,8 @@ private:
 	TabularBrowser *m_tables;
 	wxExtGridCtrl *m_cashFlowTable;
 	wxExtGridCtrl *m_depreciationTable;
+	wxSplitterWindow *m_cf_splitter;
+	wxPanel *m_cf_top_panel;
 
 	GraphViewer *m_graphViewer;
 		
