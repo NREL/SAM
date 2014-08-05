@@ -217,29 +217,6 @@ EqnFastLookup &ActiveInputPage::GetEquations() { return m_case->Equations(); }
 VarTable &ActiveInputPage::GetValues() { return m_case->Values(); }
 Case *ActiveInputPage::GetCase() { return m_case; }
 CaseWindow *ActiveInputPage::GetCaseWindow() { return m_cwin; }
-
-void ActiveInputPage::OnUserInputChanged( wxUIObject *obj )
-{
-	// transfer the data from the UI object to the variable (DDX) 
-	// then notify the case that the variable was changed
-	// within the case, the calculations will be redone as needed
-	// and then the casewindow will be notified by event that
-	// other UI objects (calculated ones) need to be updated
-	if( VarValue *vval = GetValues().Get( obj->GetName() ) )
-	{
-		if ( DataExchange( obj, *vval, OBJ_TO_VAR ) )
-		{
-			wxLogStatus( "Variable " + obj->GetName() + " changed by user interaction, case notified." );
-			m_case->Recalculate( obj->GetName() );
-			// send value changed whenever recalculate is called to update other windows
-			// for example the VariableGrid
-			m_case->SendEvent(CaseEvent(CaseEvent::VALUE_CHANGED));
-		}
-		else
-			wxMessageBox("ActiveInputPage >> data exchange fail: " + obj->GetName() );
-	}
-}
-
 void ActiveInputPage::OnErase( wxEraseEvent & )
 {
 	/* nothing to do */
@@ -320,18 +297,34 @@ void ActiveInputPage::OnNativeEvent( wxCommandEvent &evt )
 	// to the properties stored in the wxUIObject base.
 	obj->OnNativeEvent(); 
 
-	// allow subclasses to handle interaction with variables
-	// with the provided Get/Set value methods
-	OnUserInputChanged( obj );
-
-	// lookup and run any callback functions.
-	if ( lk::node_t *root = m_case->QueryCallback( "on_change", obj->GetName() ) )
+	// transfer the data from the UI object to the variable (DDX) 
+	// then notify the case that the variable was changed
+	// within the case, the calculations will be redone as needed
+	// and then the casewindow will be notified by event that
+	// other UI objects (calculated ones) need to be updated
+	if( VarValue *vval = GetValues().Get( obj->GetName() ) )
 	{
-		UICallbackContext cbcxt( this, obj->GetName() + "->on_change" );
-		if ( cbcxt.Invoke( root, &m_case->CallbackEnvironment() ) )
-			wxLogStatus("callback script " + obj->GetName() + "->on_change succeeded");
-	}
-	
+		if ( DataExchange( obj, *vval, OBJ_TO_VAR ) )
+		{
+			wxLogStatus( "Variable " + obj->GetName() + " changed by user interaction, case notified." );
+			
+			m_case->Recalculate( obj->GetName() );
+
+			// lookup and run any callback functions.
+			if ( lk::node_t *root = m_case->QueryCallback( "on_change", obj->GetName() ) )
+			{
+				UICallbackContext cbcxt( this, obj->GetName() + "->on_change" );
+				if ( cbcxt.Invoke( root, &m_case->CallbackEnvironment() ) )
+					wxLogStatus("callback script " + obj->GetName() + "->on_change succeeded");
+			}
+
+			// send value changed whenever recalculate is called to update other windows
+			// for example the VariableGrid
+			m_case->SendEvent(CaseEvent(CaseEvent::VALUE_USER_INPUT, obj->GetName()));
+		}
+		else
+			wxMessageBox("ActiveInputPage >> data exchange fail: " + obj->GetName() );
+	}	
 }
 
 bool ActiveInputPage::DataExchange( wxUIObject *obj, VarValue &val, DdxDir dir )

@@ -1076,7 +1076,7 @@ int VarInfoLookup::Type( const wxString &name )
 wxString VarInfoLookup::Label( const wxString &name )
 {
 	if ( VarInfo *v = Lookup(name) ) return v->Label;
-	else return "<not found>";
+	else return "<not found: '" + name + "'>";
 }
 
 wxString VarInfoLookup::Group( const wxString &name )
