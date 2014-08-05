@@ -212,13 +212,13 @@ END_EVENT_TABLE()
 
 
 
-ParametricViewer::ParametricViewer(wxWindow *parent, Case *cc) : wxPanel(parent, wxID_ANY), m_case(cc)
-//: wxSplitterWindow(parent, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxSP_LIVE_UPDATE | wxSP_NOBORDER), m_case(cc)
+ParametricViewer::ParametricViewer(wxWindow *parent, Case *cc)
+	: wxPanel(parent, wxID_ANY), m_case(cc)
 {
 	m_current_graph = 0;
 
 	wxBoxSizer *main_sizer = new wxBoxSizer(wxHORIZONTAL);
-	wxSplitterWindow *splitter = new wxSplitterWindow(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxSP_NOBORDER|wxSP_LIVE_UPDATE);
+	wxSplitterWindow *splitter = new wxSplitterWindow(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxSP_NOBORDER|wxSP_LIVE_UPDATE | wxSP_3DSASH);
 	main_sizer->Add(splitter, 1, wxBOTTOM | wxLEFT | wxEXPAND, 5);
 
 

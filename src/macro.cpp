@@ -5,6 +5,7 @@
 #include <wx/dir.h>
 #include <wx/file.h>
 #include <wx/tokenzr.h>
+#include <wx/wfstream.h>
 
 #include <wex/metro.h>
 #include <wex/utils.h>
@@ -194,7 +195,7 @@ void MacroEngine::ClearOutput()
 
 enum { ID_MACRO_LIST = wxID_HIGHEST+895, ID_HTML,
 	ID_RUN_MACRO, ID_STOP_MACRO,
-	ID_VIEW_CODE };
+	ID_VIEW_CODE, ID_SAVE_UIDATA, ID_LOAD_UIDATA };
 
 BEGIN_EVENT_TABLE( MacroPanel, wxSplitterWindow )
 	EVT_LISTBOX( ID_MACRO_LIST, MacroPanel::OnCommand )
@@ -202,14 +203,16 @@ BEGIN_EVENT_TABLE( MacroPanel, wxSplitterWindow )
 	EVT_BUTTON( ID_RUN_MACRO, MacroPanel::OnCommand )
 	EVT_BUTTON( ID_STOP_MACRO, MacroPanel::OnCommand )
 	EVT_BUTTON( ID_VIEW_CODE, MacroPanel::OnCommand )
+	EVT_BUTTON( ID_SAVE_UIDATA, MacroPanel::OnCommand )
+	EVT_BUTTON( ID_LOAD_UIDATA, MacroPanel::OnCommand )
 END_EVENT_TABLE()
 
 MacroPanel::MacroPanel( wxWindow *parent, Case *cc )
-	: wxSplitterWindow( parent, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxSP_NOBORDER|wxSP_LIVE_UPDATE ), m_case(cc)
+	: wxSplitterWindow( parent, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxSP_NOBORDER|wxSP_LIVE_UPDATE | wxSP_3DSASH ), m_case(cc)
 {
 	m_output = new wxTextCtrl( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxTE_MULTILINE|wxTE_READONLY|wxBORDER_NONE);
 	
-	wxSplitterWindow *vsplit = new wxSplitterWindow( this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxSP_NOBORDER|wxSP_LIVE_UPDATE );
+	wxSplitterWindow *vsplit = new wxSplitterWindow( this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxSP_NOBORDER|wxSP_LIVE_UPDATE | wxSP_3DSASH );
 	
 	m_listbox = new wxMetroListBox( vsplit, ID_MACRO_LIST );
 	m_rightPanel = new wxPanel( vsplit );
@@ -217,6 +220,7 @@ MacroPanel::MacroPanel( wxWindow *parent, Case *cc )
 	m_rightPanel->SetBackgroundColour( wxMetroTheme::Colour( wxMT_FOREGROUND ) );
 
 	m_html = new wxHtmlWindow( m_rightPanel, ID_HTML, wxDefaultPosition, wxDefaultSize, wxHW_DEFAULT_STYLE|wxBORDER_NONE );
+	m_html->SetMinClientSize( wxSize( 300, 300 ) );
 
 	m_run = new wxMetroButton( m_rightPanel, ID_RUN_MACRO, "Run macro", wxNullBitmap, wxDefaultPosition, wxDefaultSize, wxMB_RIGHTARROW );
 	m_stop = new wxMetroButton( m_rightPanel, ID_STOP_MACRO, "Stop" );
@@ -369,7 +373,7 @@ public:
 		sizer->Add( vsizer, 0, wxALL|wxALIGN_TOP, 0 );
 		SetSizer( sizer );
 	}
-	wxArrayString GetVars() { return m_names; }
+	wxArrayString &GetVars() { return m_names; }
 	StringHash &GetMeta() { return m_meta; }
 	bool IsMetaDataEnabled() { return m_enableMeta; }
 	void OnSelect( wxCommandEvent & )
@@ -507,6 +511,17 @@ public:
 		if ( sel >= 0  && sel < m_names.size() ) return m_names[sel];
 		else return wxEmptyString;
 	}
+
+	bool SetOutputVar( const wxString &var ) {
+		int isel = m_names.Index( var );
+		if ( isel >= 0 && isel < (int)GetCount() )
+		{
+			SetSelection( isel );
+			return true;
+		}
+		else
+			return false;
+	}
 };
 
 void MacroPanel::CreateUI( const wxString &buf )
@@ -604,9 +619,19 @@ void MacroPanel::CreateUI( const wxString &buf )
 		}
 	}
 
+	if(  m_ui.size() > 0 )
+	{
+		m_macroUISizer->Add( new wxStaticText( m_macroUI, wxID_ANY, "Macro data:" ), 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
+		wxBoxSizer *sz = new wxBoxSizer( wxHORIZONTAL );
+		sz->Add( new wxButton( m_macroUI, ID_SAVE_UIDATA, "Save...", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT ), 0, wxALL, 2 );
+		sz->Add( new wxButton( m_macroUI, ID_LOAD_UIDATA, "Load...", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT ), 0, wxALL, 2 );
+		m_macroUISizer->Add( sz, 0, wxALL, 5 );
+	}
 
 	m_rightPanel->Layout();
 }
+
+
 
 lk::vardata_t *MacroPanel::GetUIArgs()
 {
@@ -614,12 +639,18 @@ lk::vardata_t *MacroPanel::GetUIArgs()
 		return 0;
 
 	lk::vardata_t *tab = new lk::vardata_t;
-	tab->empty_hash();
+	GetUIArgs( *tab );
+	return tab;
+}
+
+void MacroPanel::GetUIArgs( lk::vardata_t &table )
+{
+	table.empty_hash();
 
 	for( size_t i=0;i<m_ui.size();i++ )
 	{
 		ui_item &x = m_ui[i];
-		lk::vardata_t &item = tab->hash_item( x.name );
+		lk::vardata_t &item = table.hash_item( x.name );
 		
 		// note: numeric ctrl must be tested before textctrl, b/c numeric extends textctrl
 		if ( wxNumericCtrl *num = dynamic_cast<wxNumericCtrl*>( x.window ) )
@@ -651,10 +682,207 @@ lk::vardata_t *MacroPanel::GetUIArgs()
 			}
 		}
 	}
-
-	return tab;
 }
 
+MacroPanel::ui_item *MacroPanel::FindItem( const wxString &name )
+{
+	for( size_t i=0;i<m_ui.size();i++)
+		 if ( m_ui[i].name == name )
+			 return &m_ui[i];
+
+	return 0;
+}
+
+
+int MacroPanel::SetUIArgs( lk::vardata_t &table )
+{
+	if ( table.deref().type() != lk::vardata_t::HASH ) return 0;
+	int iset = 0;
+	lk::varhash_t &vh = *table.deref().hash();
+	for ( lk::varhash_t::iterator it = vh.begin();
+		it != vh.end();
+		++it )
+	{
+		if( ui_item *ui = FindItem( it->first ) )
+		{
+			lk::vardata_t &item = (*(it->second)).deref();
+		
+			// note: numeric ctrl must be tested before textctrl, b/c numeric extends textctrl
+			if ( wxNumericCtrl *num = dynamic_cast<wxNumericCtrl*>( ui->window ) )
+			{
+				num->SetValue( item.as_number() );
+				iset++;
+			}
+			else if ( wxTextCtrl *txt = dynamic_cast<wxTextCtrl*>( ui->window ) )
+			{
+				txt->ChangeValue( item.as_string() );
+				iset++;
+			}
+			else if ( wxCheckBox *chk = dynamic_cast<wxCheckBox*>( ui->window ) )
+			{
+				chk->SetValue( item.as_number() != 0.0 );
+				iset++;
+			}
+			else if ( SVOutputCtrl *svo = dynamic_cast<SVOutputCtrl*>( ui->window ) ) // SVOutput must be before wxCHoice since it extends it
+			{
+				if ( svo->SetOutputVar( item.as_string() ) )
+					iset++;
+			}
+			else if ( wxChoice *cho = dynamic_cast<wxChoice*>( ui->window ) )
+			{
+				cho->SetStringSelection( item.as_string() );
+				iset++;
+			}
+			else if ( VarListSelector *vls = dynamic_cast<VarListSelector*>(ui->window) )
+			{
+				wxArrayString &list = vls->GetVars();
+				list.clear();
+				if ( item.type() == lk::vardata_t::VECTOR )
+				{
+					for( size_t i=0;i<item.length();i++ )
+					{
+						lk::vardata_t *xx = item.index(i);
+						if( vls->IsMetaDataEnabled() && xx->type() == lk::vardata_t::VECTOR && xx->length() == 2 )
+						{
+							wxString name( xx->index(0)->as_string() );
+							list.Add( name );
+							vls->GetMeta()[ name ] = xx->index(1)->as_string();
+						}
+						else
+						{
+							list.Add( xx->as_string() );
+						}
+					}
+
+				}
+				vls->UpdateList();
+				iset++;
+			}
+		}
+	}
+
+	return iset;
+}
+
+static void WriteLKData( wxOutputStream &out, lk::vardata_t &data )
+{
+	wxDataOutputStream os(out);
+	os.Write16( data.type() );
+	switch( data.type() )
+	{
+	case lk::vardata_t::NUMBER:
+		os.WriteDouble( data.as_number() );
+		break;
+	case lk::vardata_t::STRING:
+		os.WriteString( data.as_string() );
+		break;
+	case lk::vardata_t::VECTOR:
+		os.Write32( data.length() );
+		for( size_t i=0;i<data.length();i++ )
+			WriteLKData( out, *data.index(i) );
+		break;
+	case lk::vardata_t::HASH:
+		os.Write32( data.hash()->size() );
+		for( lk::varhash_t::iterator it = data.hash()->begin();
+			it != data.hash()->end();
+			++it )
+		{
+			os.WriteString( it->first );
+			WriteLKData( out, *(it->second) );
+		}
+		break;
+	case lk::vardata_t::NULLVAL:
+		// nothing to write for a null value
+		break;
+	}
+}
+
+static bool ReadLKData( wxInputStream &in, lk::vardata_t &data )
+{
+	wxUint32 len, i;
+	wxDataInputStream is(in);
+	wxUint16 type = is.Read16();
+	switch( type )
+	{
+	case lk::vardata_t::NUMBER:
+		data.assign( is.ReadDouble() );
+		return true;
+	case lk::vardata_t::STRING:
+		data.assign( is.ReadString() );
+		return true;
+	case lk::vardata_t::VECTOR:
+		len = is.Read32();
+		data.empty_vector();
+		if( len > 0 )
+		{
+			bool ok = true;
+			data.vec()->resize( len );
+			for( i=0;i<len;i++ )
+			{
+				lk::vardata_t item;
+				ok = ok && ReadLKData( in, (*data.vec())[i] );
+			}
+			if (!ok) return false;
+		}
+		return true;
+	case lk::vardata_t::HASH:
+		len = is.Read32();
+		data.empty_hash();
+		if ( len > 0 )
+		{
+			bool ok = true;
+			for( i=0;i<len;i++ )
+			{
+				wxString key( is.ReadString() );
+				ok = ok && ReadLKData( in, data.hash_item(key) );
+			}
+			if (!ok) return false;
+		}
+	case lk::vardata_t::NULLVAL:
+		return true;
+	default:
+		return false;
+	}
+}
+
+
+int MacroPanel::ReadUIData( const wxString &file )
+{
+	wxFFileInputStream in( file );
+	if ( in.IsOk() )
+	{
+		wxDataInputStream is(in);
+		wxUint16 code = is.Read16();
+		is.Read8();
+
+		lk::vardata_t lkvalue;
+		if (!ReadLKData( in, lkvalue )) return 0;
+		if (is.Read16() != code) return 0;		
+		return SetUIArgs( lkvalue );
+	}
+	else
+		return 0;
+}
+
+bool MacroPanel::WriteUIData( const wxString &file )
+{
+	wxFFileOutputStream out( file );
+	if ( out.IsOk() )
+	{
+		wxDataOutputStream ds(out);
+		ds.Write16( 0x3415 );
+		ds.Write8( 1 );
+
+		lk::vardata_t lkvalue;
+		GetUIArgs( lkvalue );
+		WriteLKData( out, lkvalue );
+
+		ds.Write16( 0x3415 );
+		return true;
+	}
+	else
+		return false;
+}
 
 
 void MacroPanel::ConfigurationChanged()
@@ -724,6 +952,31 @@ void MacroPanel::OnCommand( wxCommandEvent &evt )
 			else if ( ScriptWindow *sw = ScriptWindow::CreateNewWindow() )
 				sw->Load( m_curMacroPath );
 		}
+		break;
+	case ID_SAVE_UIDATA:
+	{
+		wxFileDialog dlg( this, "Save macro data", wxEmptyString, wxEmptyString, "SAM Macro Data Files (*.macro)|*.macro", wxFD_SAVE|wxFD_OVERWRITE_PROMPT );
+		if ( dlg.ShowModal() == wxID_OK )
+			if ( !WriteUIData( dlg.GetPath() ) )
+				wxMessageBox("Error writing macro data to file:\n\n" + dlg.GetPath() );
+	}
+		break;
+	case ID_LOAD_UIDATA:
+	{
+		wxFileDialog dlg( this, "Load macro data", wxEmptyString, wxEmptyString, "SAM Macro Data Files (*.macro)|*.macro", wxFD_OPEN );
+		if ( dlg.ShowModal() == wxID_OK )
+		{
+			int ivals = ReadUIData( dlg.GetPath() );
+			if ( ivals == 0 )
+			{
+				wxMessageBox("Error loading macro data file:\n\n" + dlg.GetPath() );
+			}
+			else if ( ivals < m_ui.size() )
+			{
+				wxMessageBox("Only some of the loaded macro data was applicable to the currently selected macro.");
+			}
+		}
+	}
 		break;
 	}
 }

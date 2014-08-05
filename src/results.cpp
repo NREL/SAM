@@ -191,7 +191,7 @@ ResultsViewer::ResultsViewer( wxWindow *parent, int id )
 	AddPage( cf_panel, "Cash flow" );
 
 	wxBoxSizer *cf_main_sizer = new wxBoxSizer(wxHORIZONTAL);
-	m_cf_splitter = new wxSplitterWindow(cf_panel, wxID_ANY);
+	m_cf_splitter = new wxSplitterWindow(cf_panel, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxSP_NOBORDER|wxSP_LIVE_UPDATE|wxSP_3DSASH);
 	cf_main_sizer->Add(m_cf_splitter, 1, wxBOTTOM | wxLEFT | wxEXPAND, 5);
 
 
