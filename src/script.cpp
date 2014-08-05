@@ -187,23 +187,69 @@ static void fcall_get( lk::invoke_t &cxt )
 	}
 }
 
+
+static bool sg_scriptSimCancel;
+class ScriptSimulationHandler : public ISimulationHandler
+{
+public:
+	ScriptSimulationHandler() {
+		sg_scriptSimCancel = false;
+	}
+	
+	virtual ~ScriptSimulationHandler() {
+	}
+
+	virtual void Update( float percent, const wxString &text )
+	{
+		wxGetApp().Yield( true );
+	}
+
+	virtual bool IsCancelled()
+	{
+		return sg_scriptSimCancel;
+	}
+
+	static void Cancel() { sg_scriptSimCancel = true; }
+};
+
+
+void ScriptWindow::CancelRunningSimulations()
+{
+	ScriptSimulationHandler::Cancel();
+}
+
 static void fcall_simulate( lk::invoke_t &cxt )
 {
-	LK_DOC("simulate", "Run the base case simulation for the currently active case.  Errors and warnings are optionally returned in the first parameter.  By default, the UI is not updated, but can be via the second parameter.", "( [string:messages], [boolean: update UI] ):boolean" );
+	LK_DOC("simulate", "Run the base case simulation for the currently active case.  Errors and warnings are optionally returned in the first parameter.  The results in the user interface are not updated by default, but can be via the second parameter.", "( [string:messages], [boolean: update UI] ):boolean" );
+	cxt.result().assign( 0.0 );
 	if ( Case *c = CurrentCase() )
 	{
-		if ( CaseWindow *cw = SamApp::Window()->GetCaseWindow( c ) )
+		Simulation &bcsim = c->BaseCase();		
+		bcsim.Clear();
+
+		ExcelExchange &ex = c->ExcelExch();
+		if ( ex.Enabled )
+			ExcelExchange::RunExcelExchange( ex, c->Values(), &bcsim );
+
+		if ( !bcsim.Prepare() )
 		{
-			bool silent = true;
-			if ( cxt.arg_count() > 1 )
-				silent = !cxt.arg(0).as_boolean();
-
-			wxString msgs;
-			cxt.result().assign( cw->RunBaseCase( silent, &msgs ) ? 1.0 : 0.0 );
-
+			cxt.result().assign( 0.0 );
+			
 			if( cxt.arg_count() > 0 )
-				cxt.arg(0).assign( msgs );
+				cxt.arg(0).assign(  wxJoin( c->BaseCase().GetAllMessages(), '\n' ) );
+
+			return;
 		}
+		
+		ScriptSimulationHandler ssh;		
+		cxt.result().assign( bcsim.InvokeWithHandler( &ssh ) ? 1.0 : 0.0 );
+
+		if( cxt.arg_count() > 0 )
+			cxt.arg(0).assign(  wxJoin( c->BaseCase().GetAllMessages(), '\n' ) );
+
+		if ( cxt.arg_count() > 1 && cxt.arg(1).as_boolean() )
+			if ( CaseWindow *cw = SamApp::Window()->GetCaseWindow( c ) )
+					cw->UpdateResults();
 	}
 }
 
@@ -398,8 +444,8 @@ public:
 	{
 		// register SAM-specific invoke functions here
 		RegisterLibrary( invoke_general_funcs(), "General Functions" );
-		RegisterLibrary( sam_functions(), "SAM Functions" );
 		RegisterLibrary( invoke_ssc_funcs(), "Direct Access To SSC" );
+		RegisterLibrary( sam_functions(), "SAM Functions");
 	}
 	
 	virtual bool OnEval( int line )
@@ -811,6 +857,10 @@ void ScriptWindow::OnCommand( wxCommandEvent &evt )
 		break;
 		
 	case wxID_STOP:
+		// first cancel any simulations that
+		// might be running that were invoked 
+		// from a script
+		ScriptWindow::CancelRunningSimulations();
 		m_script->Stop();
 		break;
 

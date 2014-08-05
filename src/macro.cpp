@@ -88,21 +88,20 @@ bool MacroEngine::Run( const wxString &script, lk::vardata_t *args )
 	else
 		env.assign( "macro", new lk::vardata_t ); // assign null to macro variable
 
-	env.register_funcs( lk::stdlib_basic(), this );
-	env.register_funcs( lk::stdlib_string(), this );
-	env.register_funcs( lk::stdlib_math(), this );
-	env.register_funcs( lk::stdlib_wxui(), this );
-	env.register_funcs( lk::stdlib_basic(), this );
-	env.register_funcs( wxLKPlotFunctions(), this );
-	env.register_funcs( wxLKHttpFunctions(), this );
-	env.register_funcs( wxLKMiscFunctions(), this );
+	env.register_funcs( lk::stdlib_basic() );
+	env.register_funcs( lk::stdlib_string() );
+	env.register_funcs( lk::stdlib_math() );
+	env.register_funcs( lk::stdlib_wxui() );
+	env.register_funcs( lk::stdlib_basic() );
+	env.register_funcs( wxLKPlotFunctions() );
+	env.register_funcs( wxLKHttpFunctions() );
+	env.register_funcs( wxLKMiscFunctions() );
 	env.register_funcs( invoke_general_funcs() );
-	env.register_funcs( sam_functions() );
 	env.register_funcs( invoke_ssc_funcs() );
+	env.register_funcs( sam_functions() );
 	env.register_func( fcall_out, this );
 	env.register_func( fcall_outln, this );
-
-
+	
 	ClearOutput();
 	
 	lk::input_string p( script );
@@ -120,6 +119,7 @@ bool MacroEngine::Run( const wxString &script, lk::vardata_t *args )
 	}
 	else
 	{
+		
 		wxLKSetToplevelParent( SamApp::Window() );
 		wxLKSetPlotTarget( NULL );
 
@@ -147,6 +147,10 @@ bool MacroEngine::Run( const wxString &script, lk::vardata_t *args )
 
 void MacroEngine::Stop()
 {
+	// first cancel any simulations that
+	// might be running that were invoked 
+	// from a script
+	ScriptWindow::CancelRunningSimulations();
 	m_stopFlag = true;
 }
 
@@ -310,8 +314,8 @@ void MacroPanel::UpdateHtml()
 		wxString buf;
 		fp.ReadAll( &buf );
 
-		int pos1 = buf.Find("/**");
-		int pos2 = buf.Find("**/");
+		int pos1 = buf.Find("/*@");
+		int pos2 = buf.Find("@*/");
 		if ( pos1 >= 0 && pos2 >= 0 && pos2 > pos1+3 )
 		{
 			wxFileName fn(m_curMacroPath);

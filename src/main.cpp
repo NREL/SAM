@@ -349,8 +349,9 @@ void MainWindow::OnInternalCommand( wxCommandEvent &evt )
 	case ID_INTERNAL_INVOKE_SSC_DEBUG:
 		if ( Case *cc = GetCurrentCase() )
 		{
+			cc->BaseCase().Clear();
 			if (!cc->BaseCase().Invoke())
-				wxShowTextMessageDialog( wxJoin( cc->BaseCase().GetErrors(), '\n') );
+				wxShowTextMessageDialog( wxJoin( cc->BaseCase().GetAllMessages(), '\n') );
 		}
 		break;
 	case ID_INTERNAL_IDE:
