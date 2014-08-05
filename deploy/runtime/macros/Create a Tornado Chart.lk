@@ -1,4 +1,4 @@
-/**
+/*@
 Tornado charts can be a helpful way to visualize sensitivities of a model to various inputs.  Creating a
 tornado chart involves running several simulations in which a set of input variables are decreased
 and increased independently to see how much a particular output metric changes.<br><br>
@@ -21,7 +21,7 @@ In the popup dialog, you may enter:
 <li> Press 'Run macro' to perform the simulations and create the tornado chart.
 <li> You can right click on the plot window that pops up to export the data or figure.
 </ol>
-**/
+@*/
 // Macro user interface widgets
 //@ name=inputs;type=inputs;label=Input variables\nto consider:;only=numbers;meta=true;prompt=Specify custom variation for input (percentage, absolute, or independent up/down values ).\n\nExamples: 4.5%    0.05   1.2,1.7 
 //@ name=output;type=svoutput;label=Output metric:

@@ -1,4 +1,4 @@
-/**
+/*@
 This <font size=+3 color=#dedede>macro</font> will help you run PVWatts in an easy way.<br>
 
 <ol>
@@ -6,7 +6,7 @@ This <font size=+3 color=#dedede>macro</font> will help you run PVWatts in an ea
 <li> Step 2
 <li> Step 3
 </ol>
-**/
+@*/
 // Macro user interface widgets
 //@ name=val_tilt;type=number;label=Tilt;value=30
 //@ name=title;type=text;label=Report name;value=Enter the report's name

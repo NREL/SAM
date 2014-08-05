@@ -148,7 +148,7 @@ bool ParametricData::Read( wxInputStream &_I )
 	ClearRuns();
 	for( size_t i=0;i<n;i++ )
 	{
-		Simulation *sim = new Simulation( m_case, "Parametric Run" );
+		Simulation *sim = new Simulation( m_case, wxString::Format("Parametric #%d",(int)(i+1)) );
 		sim->Read( _I );
 		Runs.push_back( sim );
 	}
@@ -221,7 +221,6 @@ ParametricViewer::ParametricViewer(wxWindow *parent, Case *cc)
 	wxSplitterWindow *splitter = new wxSplitterWindow(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxSP_NOBORDER|wxSP_LIVE_UPDATE | wxSP_3DSASH);
 	main_sizer->Add(splitter, 1, wxBOTTOM | wxLEFT | wxEXPAND, 5);
 
-
 	wxPanel *top_panel = new wxPanel(splitter);
 
 	wxBoxSizer *tool_sizer = new wxBoxSizer(wxHORIZONTAL);
@@ -234,7 +233,7 @@ ParametricViewer::ParametricViewer(wxWindow *parent, Case *cc)
 	tool_sizer->Add(new wxButton(top_panel, ID_RUN, "Run parametric simulations"), 0, wxALL | wxEXPAND, 2);
 	m_run_multithreaded = new wxCheckBox(top_panel, wxID_ANY, "Run multi-threaded?", wxDefaultPosition, wxDefaultSize, wxALIGN_RIGHT);
 	m_run_multithreaded->SetValue(true);
-	m_run_multithreaded->Hide();
+	//m_run_multithreaded->Hide();
 	tool_sizer->Add(m_run_multithreaded, 0, wxALIGN_CENTER_VERTICAL, 1);
 	tool_sizer->AddStretchSpacer();
 	tool_sizer->Add(new wxButton(top_panel, ID_CLEAR, "Clear results"), 0, wxALL | wxEXPAND, 2);
@@ -1471,13 +1470,14 @@ void ParametricGridData::UpdateNumberRows(int rows)
 		{
 			for (int num_run = m_par.Runs.size(); num_run < rows; num_run++)
 			{
-				Simulation *s = new Simulation(m_case, wxString::Format("Run %d", num_run));
-				s->Copy(m_case->BaseCase());
+				Simulation *s = new Simulation(m_case, wxString::Format("Parametric #%d", (int)(num_run+1)));
+				//s->Copy(m_case->BaseCase());
 				m_par.Runs.push_back(s);
 			}
 		}
 		else if (m_par.Runs.size() > rows)
 		{
+			//apd note on 8/5/2014: is this a memory leak??
 			while (m_par.Runs.size() > rows)
 				m_par.Runs.pop_back();
 		}
@@ -1718,6 +1718,8 @@ bool ParametricGridData::RunSimulations_multi()
 
 			tpd.Update(0, (float)i / (float)total_runs * 100.0f, wxString::Format("%d of %d", (int)(i + 1), (int)total_runs));
 		}
+
+		m_par.Runs[i]->SetName( wxString::Format("Parametric #%d", (int)(i+1) ) );
 		sims.push_back(m_par.Runs[i]);
 	}
 
@@ -1813,7 +1815,7 @@ bool ParametricGridData::RunSimulations_single()
 
 			// invoke simulation
 			//update results in grid - send message to grid to update
-			if (m_par.Runs[i]->Invoke(true))
+			if (m_par.Runs[i]->Invoke())
 			{
 				// update outputs
 				for (int col = 0; col < m_cols; col++)

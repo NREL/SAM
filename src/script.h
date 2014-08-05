@@ -18,7 +18,10 @@ public:
 	static void OpenFiles( ScriptWindow *current = 0);
 	static std::vector<ScriptWindow*> GetWindows();
 	static ScriptWindow *FindOpenFile( const wxString &file );
-	static bool CloseAll();
+	static bool CloseAll();	
+
+	 // cancel any SAM simulations started from a script in fcall_simulate()
+	static void CancelRunningSimulations();
 
 	void AddOutput( const wxString &out );
 	void ClearOutput();
