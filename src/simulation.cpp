@@ -277,24 +277,14 @@ wxString Simulation::GetUnits( const wxString &var )
 
 class SingleThreadHandler : public ISimulationHandler
 {
-	wxArrayString errors, warnings;
 	wxProgressDialog *progdlg;
 public:
 	SingleThreadHandler() {
 		progdlg = 0;
 	};
 
-	virtual int GetErrorCount() { return errors.size(); }
 	void SetProgressDialog( wxProgressDialog *d ) { progdlg = d; }
-	virtual wxArrayString GetErrors() { return errors; }
-	virtual wxArrayString GetWarnings() { return warnings; }
-	
-	virtual void Warn( const wxString &s ) { 
-		warnings.Add( s );
-	}
-	virtual void Error( const wxString &s ) { 
-		errors.Add( s );
-	}
+
 	virtual void Update( float percent, const wxString &s ) {
 		if( progdlg) progdlg->Update( (int)percent, s );
 	}
@@ -446,7 +436,6 @@ bool Simulation::Prepare()
 	m_outputUnits.clear();
 
 	// transfer all the values except for ones that have been 'overriden'
-
 	for( VarTableBase::const_iterator it = m_case->Values().begin();
 		it != m_case->Values().end();
 		++it )
@@ -454,7 +443,6 @@ bool Simulation::Prepare()
 			m_inputs.Set( it->first, *(it->second) );
 
 	// recalculate all the equations
-
 	CaseEvaluator eval( m_case, m_inputs, m_case->Equations() );
 	int n = eval.CalculateAll();
 
@@ -474,17 +462,19 @@ bool Simulation::Prepare()
 
 bool Simulation::InvokeWithHandler( ISimulationHandler *ih )
 {
+	assert( 0 != ih );
+
 	ssc_data_t p_data = ssc_data_create();
 
 	if ( m_simlist.size() == 0 )
-		m_errors.Add("No simulation compute modules defined for this configuration.");
+		ih->Error("No simulation compute modules defined for this configuration.");
 	
 	for( size_t kk=0;kk<m_simlist.size();kk++ )
 	{
 		ssc_module_t p_mod = ssc_module_create( m_simlist[kk].c_str() );
 		if ( !p_mod )
 		{
-			m_errors.Add( "could not create ssc module: " + m_simlist[kk] );
+			ih->Error( "could not create ssc module: " + m_simlist[kk] );
 			continue;
 		}
 
@@ -513,9 +503,9 @@ bool Simulation::InvokeWithHandler( ISimulationHandler *ih )
 				{
 					int existing_type = ssc_data_query( p_data, ssc_info_name( p_inf ) );
 					if ( existing_type == SSC_INVALID )
-						m_errors.Add( "SSC requires input '" + name + "', but was not found in the SAM UI or from previous simulations" );
+						ih->Error( "SSC requires input '" + name + "', but was not found in the SAM UI or from previous simulations" );
 					else if ( existing_type != data_type )
-						m_errors.Add( "SSC requires input '" + name + "', but variable from a previous simulation had an incompatible data type");
+						ih->Error( "SSC requires input '" + name + "', but variable from a previous simulation had an incompatible data type");
 				}
 				else if ( vv != 0 )
 				{
@@ -523,7 +513,7 @@ bool Simulation::InvokeWithHandler( ISimulationHandler *ih )
 					if ( !field.IsEmpty() )
 					{
 						if ( vv->Type() != VV_TABLE )
-							m_errors.Add( "SSC variable has table:field specification, but '" + name + "' is not a table in SAM" );
+							ih->Error( "SSC variable has table:field specification, but '" + name + "' is not a table in SAM" );
 
 						bool do_copy_var = false;
 						if ( reqd.Left(1) == "?" )
@@ -540,40 +530,29 @@ bool Simulation::InvokeWithHandler( ISimulationHandler *ih )
 							if ( VarValue *vv_field = vv->Table().Get( field ) )
 							{
 								if ( !VarValueToSSC( vv_field, p_data, name + ":" + field ) )
-									m_errors.Add( "Error translating table:field variable from SAM UI to SSC for '" + name + "':" + field );
+									ih->Error( "Error translating table:field variable from SAM UI to SSC for '" + name + "':" + field );
 							}
 						}
 						
 					}
 
 					if ( !VarValueToSSC( vv, p_data, name ))
-						m_errors.Add( "Error translating data from SAM UI to SSC for " + name );
+						ih->Error( "Error translating data from SAM UI to SSC for " + name );
 					
 				}
 			}
 		}
 
-		// write a debug input file if using a single threaded
+		// optionally write a debug input file if the ISimulationHandler defines it
 		ih->WriteDebugFile( m_simlist[kk], p_mod, p_data );
 		
 		ssc_bool_t ok = ssc_module_exec_with_handler( p_mod, p_data, ssc_invoke_handler, ih );
 
 		
-		// copy over warnings and errors from the simulation
-		wxArrayString list = ih->GetErrors();
-		for( size_t k=0;k<list.size();k++ )
-			m_errors.Add( list[k] );
-
-		list = ih->GetWarnings();
-		for( size_t k=0;k<list.size();k++ )
-			m_warnings.Add( list[k] );
 
 		if ( !ok )
 		{
-			m_errors.Add( "Simulation " + m_simlist[kk] + " failed." );
-			if ( m_warnings.Count() > 0)
-				for (size_t i=0; i<m_warnings.Count();i++)
-					m_errors.Add(wxString::Format("Warning %d: %s", (int)(i+1), (const char*)m_warnings[i].c_str() ));
+			ih->Error( "Simulation " + m_simlist[kk] + " failed." );
 		}
 		else
 		{
@@ -624,7 +603,12 @@ bool Simulation::InvokeWithHandler( ISimulationHandler *ih )
 	}
 
 	ssc_data_free( p_data );
-		
+	
+	// copy over warnings and errors from the simulation
+	// for to enable retrieval after the simulation handler has gone away
+	m_errors = ih->GetErrors();
+	m_warnings = ih->GetWarnings();
+	
 	return m_errors.size() == 0;
 
 }
@@ -645,6 +629,17 @@ void Simulation::ListByCount( size_t n, wxArrayString &list )
 		if ( len == n )
 			list.Add( it->first );
 	}
+}
+
+
+wxArrayString Simulation::GetAllMessages()
+{
+	wxArrayString list;
+	for( size_t i=0;i<m_errors.size();i++ )
+		list.Add( "Error: " + m_errors[i] );
+	for( size_t i=0;i<m_warnings.size();i++ )
+		list.Add( "Warning: " + m_warnings[i] );
+	return list;
 }
 
 void Simulation::GetVariableLengths( std::vector<size_t> &varlengths )
@@ -729,7 +724,6 @@ class SimulationThread : public wxThread, ISimulationHandler
 	wxString m_curName;
 	float m_percent;
 	int m_threadId;
-	wxArrayString m_errors, m_warnings;
 public:
 
 	SimulationThread( int id )
@@ -758,9 +752,14 @@ public:
 
 		if ( ns == 0 ) return 0.0f;
 
-		float each = 100/ns;
-		float overall = cur*each + 0.01*curper*each;
-		return overall;
+		if ( cur < ns )
+		{
+			float each = 100/ns;
+			float overall = cur*each + 0.01*curper*each;
+			return overall;
+		}
+		else
+			return 100.0f;
 	}
 
 	void Cancel()
@@ -774,10 +773,6 @@ public:
 		return m_nok;
 	}
 	
-	virtual wxArrayString GetErrors() { return m_errors; }
-	virtual wxArrayString GetWarnings() { return m_warnings; }
-	virtual int GetErrorCount() { return m_errors.size(); }
-
 	void Message( const wxString &text )
 	{
 		wxMutexLocker _lock(m_logLock);
@@ -788,13 +783,13 @@ public:
 
 	virtual void Warn( const wxString &text )
 	{
-		m_warnings.Add( text );
+		ISimulationHandler::Warn( text );
 		Message( text );
 	}
 
 	virtual void Error( const wxString &text )
 	{
-		m_errors.Add( text );		
+		ISimulationHandler::Error( text );
 		Message( text );
 	}
 
@@ -809,13 +804,6 @@ public:
 	virtual bool IsCancelled() {
 		wxMutexLocker _lock(m_cancelLock);
 		return m_canceled;
-	}
-
-	virtual bool WriteDebugFile( const wxString &, ssc_module_t, ssc_data_t )
-	{
-		// don't write a debug file here... although we could
-		// write to different files given the simulation ID #?
-		return false;
 	}
 	
 	wxArrayString GetNewMessages()
@@ -832,8 +820,9 @@ public:
 		for( size_t i=0;i<m_list.size();i++ )
 		{
 			m_curName = m_list[i]->GetName();
-			m_errors.Clear();
-			m_warnings.Clear();
+
+			// clear any saved messages from the previous simulation
+			ClearSavedMessages();
 			if ( m_list[i]->InvokeWithHandler( this ) )
 			{
 				wxMutexLocker _lock(m_nokLock);

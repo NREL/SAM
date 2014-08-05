@@ -4,6 +4,7 @@
 #include <wx/splitter.h>
 #include <wx/html/htmlwin.h>
 
+#include <wex/lkscript.h>
 #include <wex/uiform.h>
 
 class wxMetroButton;

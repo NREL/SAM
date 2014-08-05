@@ -16,18 +16,30 @@ class ConfigInfo;
 
 class ISimulationHandler
 {
+private:
+	wxArrayString m_savedErrors, m_savedWarnings;
 public:
 	ISimulationHandler() { }
 	virtual ~ISimulationHandler() { }
-	virtual void Error( const wxString & ) = 0;
-	virtual void Warn( const wxString & ) = 0;
+
 	virtual void Update( float percent, const wxString & ) = 0;
 	virtual bool IsCancelled() = 0;
-	virtual bool WriteDebugFile( const wxString &, ssc_module_t, ssc_data_t ) = 0;
+	
+	// override Error and Warn to enable real-time
+	// update of simulation messages elsewhere
+	virtual void Error( const wxString &s ) { m_savedErrors.Add( s ); }
+	virtual void Warn( const wxString &s ) { m_savedWarnings.Add( s ); }
 
-	virtual int GetErrorCount() = 0;
-	virtual wxArrayString GetErrors() = 0;
-	virtual wxArrayString GetWarnings() = 0;
+	// handle saved messages
+	virtual wxArrayString GetErrors() { return m_savedErrors; }
+	virtual wxArrayString GetWarnings() { return m_savedWarnings; }
+	virtual void ClearSavedMessages() { m_savedErrors.clear(); m_savedWarnings.clear(); }
+	
+	// optionally output a debug file before the SSC module is run
+	virtual bool WriteDebugFile( 
+		const wxString &sim, 
+		ssc_module_t, 
+		ssc_data_t ) { return false; }
 };
 
 class ThreadProgressDialog;
@@ -77,6 +89,7 @@ public:
 	bool Ok();
 	wxArrayString &GetErrors();
 	wxArrayString &GetWarnings();
+	wxArrayString GetAllMessages();
 		
 	static bool ListAllOutputs( ConfigInfo *cfg, 
 		wxArrayString *names, 
