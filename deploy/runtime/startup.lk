@@ -365,13 +365,13 @@ setup_all_equity_partnership_flip_pages();
 
 
 
-// Flat Plat PV ////////////////////////////////////////////////////////////////
+// Flat Plate PV ////////////////////////////////////////////////////////////////
 setconfig( 'Flat Plate PV', 'None' );
 setup_flat_plate_pv_pages();
 setmodules( ['pvsamv1'] );
 
 setconfig( 'Flat Plate PV', 'Residential' );
-setmodules( ['pvsamv1', 'utilityrate3', 'cashloan']);
+setmodules( ['pvsamv1', 'belpe', 'utilityrate3', 'cashloan']);
 setup_flat_plate_pv_pages();
 addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='PV System Costs' } );
 setup_residential_pages();
