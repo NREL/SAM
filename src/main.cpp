@@ -788,15 +788,12 @@ void MainWindow::OnCaseMenu( wxCommandEvent &evt )
 	{
 	case ID_CASE_CONFIG:
 		{
-			bool reset = true;
 			wxString tech, fin;
 			c->GetConfiguration( &tech, &fin );
 			wxString t2(tech), f2(fin);
-			if( ShowConfigurationDialog( this, &t2, &f2, &reset ) 
+			if( ShowConfigurationDialog( this, &t2, &f2, NULL ) 
 				&& (t2 != tech || f2 != fin) )
-			{
 				c->SetConfiguration( t2, f2 ); // this will cause case window to update accordingly
-			}
 		}
 		break;
 	case ID_CASE_RENAME:
@@ -2027,6 +2024,7 @@ BEGIN_EVENT_TABLE(ConfigDialog, wxDialog)
 	EVT_BUTTON( wxID_OK, ConfigDialog::OnOk )
 	EVT_BUTTON( wxID_CANCEL, ConfigDialog::OnCancel )
 	EVT_MENU( wxID_HELP, ConfigDialog::OnHelp )
+	EVT_CHAR_HOOK( ConfigDialog::OnCharHook )
 END_EVENT_TABLE()
 
 ConfigDialog::ConfigDialog( wxWindow *parent, const wxSize &size )
@@ -2170,6 +2168,17 @@ void ConfigDialog::OnOk( wxCommandEvent & )
 void ConfigDialog::OnCancel( wxCommandEvent & )
 {
 	EndModal( wxID_CANCEL );
+}
+
+void ConfigDialog::OnCharHook( wxKeyEvent &evt )
+{
+	if ( evt.GetKeyCode() == WXK_ESCAPE )
+		EndModal( wxID_CANCEL );
+	else if ( evt.GetKeyCode() == WXK_RETURN )
+	{
+		wxCommandEvent _evt;
+		OnOk( _evt );
+	}
 }
 
 wxFrame *CreateTransparentOverlay( wxWindow *parent )
