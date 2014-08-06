@@ -303,8 +303,13 @@ bool Case::Read( wxInputStream &_i )
 	bool ok = LoadValuesFromExternalSource( _i, &di );
 
 	if ( !ok || di.not_found.size() > 0 || di.wrong_type.size() > 0 || di.nread != m_vals.size() )
+	{
 		wxLogStatus("discrepancy reading in values from project file: %d not found, %d wrong type, %d read != %d in config",
 			(int)di.not_found.size(), (int)di.wrong_type.size(), (int)di.nread, (int)m_vals.size() );
+		
+		if ( di.not_found.size() > 0 ) wxLogStatus("\not found: " + wxJoin(di.not_found, ',') );
+		if ( di.wrong_type.size() > 0 ) wxLogStatus("\twrong type: " + wxJoin(di.wrong_type, ',') );
+	}
 	
 	if ( ver <= 1 )
 	{
@@ -398,7 +403,7 @@ bool Case::LoadValuesFromExternalSource( wxInputStream &in,
 				vv->Copy( *(it->second) );
 			else
 			{
-				if ( di ) di->wrong_type.Add( it->first );
+				if ( di ) di->wrong_type.Add( it->first + wxString::Format(": expected:%d got:%d", vv->Type(), it->second->Type()) );
 				ok = false;
 			}
 		}
