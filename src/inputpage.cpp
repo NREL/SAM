@@ -310,21 +310,21 @@ void ActiveInputPage::OnNativeEvent( wxCommandEvent &evt )
 			
 			m_case->Recalculate( obj->GetName() );
 
-			// lookup and run any callback functions.
-			if ( lk::node_t *root = m_case->QueryCallback( "on_change", obj->GetName() ) )
-			{
-				UICallbackContext cbcxt( this, obj->GetName() + "->on_change" );
-				if ( cbcxt.Invoke( root, &m_case->CallbackEnvironment() ) )
-					wxLogStatus("callback script " + obj->GetName() + "->on_change succeeded");
-			}
-
 			// send value changed whenever recalculate is called to update other windows
 			// for example the VariableGrid
 			m_case->SendEvent(CaseEvent(CaseEvent::VALUE_USER_INPUT, obj->GetName()));
 		}
 		else
 			wxMessageBox("ActiveInputPage >> data exchange fail: " + obj->GetName() );
-	}	
+	}
+
+	// lookup and run any callback functions, even if no data was exchanged.
+	if ( lk::node_t *root = m_case->QueryCallback( "on_change", obj->GetName() ) )
+	{
+		UICallbackContext cbcxt( this, obj->GetName() + "->on_change" );
+		if ( cbcxt.Invoke( root, &m_case->CallbackEnvironment() ) )
+			wxLogStatus("callback script " + obj->GetName() + "->on_change succeeded");
+	}
 }
 
 bool ActiveInputPage::DataExchange( wxUIObject *obj, VarValue &val, DdxDir dir )

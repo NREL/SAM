@@ -1,9 +1,6 @@
 #ifndef __simulation_h
 #define __simulation_h
 
-// to enable lk script generation, uncomment following line
-//#define __LK_DEBUG_FILE__
-
 #include <wx/string.h>
 #include <wx/stream.h>
 #include <wx/dialog.h>
