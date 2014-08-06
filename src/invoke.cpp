@@ -1518,7 +1518,8 @@ void fcall_editscene3d( lk::invoke_t &cxt )
 	
 	cxt.result().empty_hash();
 
-	VarValue *vv = cc.GetCase().Values().Get( cxt.arg(0).as_string() );
+	wxString name( cxt.arg(0).as_string() );
+	VarValue *vv = cc.GetCase().Values().Get( name );
 	if ( !vv )
 	{
 		cxt.result().hash_item("ierr").assign( 1.0 );
@@ -1526,8 +1527,12 @@ void fcall_editscene3d( lk::invoke_t &cxt )
 		return;
 	}
 	
-	vv->SetType( VV_BINARY );
+
+	if ( VV_BINARY != vv->Type() )
+		vv->SetType( VV_BINARY );
 	wxMemoryBuffer &bin = vv->Binary();
+
+	wxLogStatus("EDIT SCENE (%s): loaded %d bytes", (const char*)name, (int)bin.GetDataLen() );
 
 	wxDialog dlg( SamApp::Window(), wxID_ANY, "Edit 3D Shading Scene", wxDefaultPosition, wxSize(800,600), wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER );
 	ShadeTool *st = new ShadeTool( &dlg, wxID_ANY );
