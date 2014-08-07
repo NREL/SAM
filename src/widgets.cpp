@@ -27,6 +27,7 @@ END_EVENT_TABLE()
 AFSchedNumeric::AFSchedNumeric( wxWindow *parent, int id, const wxPoint &pos, const wxSize &size)
 	: wxWindow(parent, id, pos, size, wxCLIP_CHILDREN)
 {
+	m_fixedLen = -1;
 	SetBackgroundStyle(wxBG_STYLE_CUSTOM);
 
 	for (double i=0;i<50;i++)
@@ -44,6 +45,13 @@ bool AFSchedNumeric::UseSchedule()
 {
 	return bUseSchedule;
 }
+void AFSchedNumeric::SetFixedLen( int len )
+{
+	m_fixedLen = len;
+	if ( len > 0 )
+		mSchedValues.resize( len );
+}
+
 void AFSchedNumeric::UseSchedule(bool b)
 {	
 	mFixedValue->Show( !b);
@@ -199,18 +207,24 @@ class SchedNumericDialog : public wxDialog
 	wxNumericCtrl *m_numVals;
 
 public:
-	SchedNumericDialog( wxWindow *parent, const wxString &title, const wxString &label )
+	SchedNumericDialog( wxWindow *parent, const wxString &title, const wxString &label, bool with_resize_options )
 		: wxDialog( parent, wxID_ANY, title, wxDefaultPosition, wxSize(470,400), wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER )
 	{
+
 		m_grid = new wxExtGridCtrl( this, wxID_ANY );
-		m_grid->CreateGrid(50,1);
+		m_grid->CreateGrid( 50, 1);
 		m_grid->SetColLabelValue( 0, label );
 		m_grid->SetColumnWidth( 0, wxGRID_AUTOSIZE );
 		m_grid->SetColLabelAlignment( wxALIGN_LEFT, wxALIGN_CENTER );
 		
 		wxBoxSizer *tools = new wxBoxSizer( wxVERTICAL );
-		tools->Add( new wxStaticText( this, wxID_ANY, "# of values:"), 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
-		tools->Add( m_numVals = new wxNumericCtrl( this, ID_numValueCount, 50, wxNumericCtrl::INTEGER ), 0, wxALL, 3 );
+		m_numVals = 0;
+		if ( with_resize_options )
+		{
+			tools->Add( new wxStaticText( this, wxID_ANY, "# of values:"), 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
+			tools->Add( m_numVals = new wxNumericCtrl( this, ID_numValueCount, 50, wxNumericCtrl::INTEGER ), 0, wxALL, 3 );
+		}
+		
 		tools->Add( new wxButton( this, ID_btnCopyData, "Copy" ), 0, wxALL, 3 );
 		tools->Add( new wxButton( this, ID_btnPasteData, "Paste" ), 0, wxALL, 3 );
 		tools->AddStretchSpacer();
@@ -294,17 +308,22 @@ END_EVENT_TABLE()
 
 void AFSchedNumeric::OnEditSchedule(wxCommandEvent &evt)
 {
-	SchedNumericDialog dlg(this, "Edit Schedule", GetLabel());
+	SchedNumericDialog dlg(this, "Edit Schedule", GetLabel(), m_fixedLen < 1 );
 	wxExtGridCtrl *grid = dlg.GetGrid();
-	size_t i, nrows = mSchedValues.size();
 
+	if ( m_fixedLen > 0 )
+		mSchedValues.resize( m_fixedLen );
+	else
+		dlg.GetNumeric()->SetValue( mSchedValues.size() );
+	
+	size_t i, nrows = mSchedValues.size();
 	grid->ResizeGrid( nrows, 1 );
 	for (i=0;i<nrows;i++)
 	{
 		grid->SetRowLabelValue(i,wxString::Format("%d", (int)(i+1)));
 		grid->SetCellValue(i,0, wxString::Format("%lg", mSchedValues[i] ));
 	}	
-	dlg.GetNumeric()->SetValue( grid->GetNumberRows() );
+
 
 	if (dlg.ShowModal() == wxID_OK)
 	{
