@@ -1877,32 +1877,18 @@ END_EVENT_TABLE()
 
 void SamApp::ShowHelp( const wxString &context )
 {	
-	static StringHash _map;
-		
-	if ( _map.size() == 0 )
-		if ( !_map.ReadKeyValueFile( SamApp::GetRuntimePath() + "/help/contextmap.txt" ) || _map.size() == 0)
-			wxMessageBox( "failed to read help/contextmap.txt or there were no entries" );
-
-	wxString url = SamApp::GetRuntimePath() + "/help/html/";
-	wxFileName fn( url );
-	fn.MakeAbsolute();
-	url = fn.GetFullPath( wxPATH_NATIVE );
+	wxString url; 
 	if ( context.Left(1) == ":" )
-	{
-		url = context;
-	}
+		url = context; // for things like :about, etc
 	else
 	{
-		if ( _map.find( context.Lower() ) == _map.end() )
-			url += "index.html";
-		else
-			url += "" + _map[context.Lower()];
-		
-		url = "file:///" + url;
+		wxFileName fn( SamApp::GetRuntimePath() + "/help/html/" );
+		fn.MakeAbsolute();
+		url = "file:///" + fn.GetFullPath( wxPATH_NATIVE ) + "index.html";
+		if ( ! context.IsEmpty() )
+			url += "?" + context + ".htm";		
 	}
 	
-	//wxShowTextMessageDialog( url + "\n\n" + _map[context.Lower()] );
-
 	wxWindow *modal_active = 0;
 	wxWindow *nonmodal_tlw = 0;
 	for( wxWindowList::iterator wl = wxTopLevelWindows.begin();
@@ -2029,7 +2015,11 @@ BEGIN_EVENT_TABLE(ConfigDialog, wxDialog)
 END_EVENT_TABLE()
 
 ConfigDialog::ConfigDialog( wxWindow *parent, const wxSize &size )
-	: wxDialog( parent, wxID_ANY, wxEmptyString, wxDefaultPosition, size, wxBORDER_NONE|wxSTAY_ON_TOP )
+	: wxDialog( parent, wxID_ANY, wxEmptyString, wxDefaultPosition, size, wxBORDER_NONE
+#ifdef __WXOSX__
+	| wxSTAY_ON_TOP  // on OSX for some reason, we need this for the dialog show up on top of the transparent pane which is the parent
+#endif
+	)
 {
 	SetBackgroundColour( wxMetroTheme::Colour( wxMT_FOREGROUND ) );
 	CenterOnParent();
@@ -2151,7 +2141,7 @@ void ConfigDialog::OnTechTree( wxCommandEvent &evt )
 
 void ConfigDialog::OnHelp(wxCommandEvent &evt)
 {
-	SamApp::ShowHelp("Technology Market");
+	SamApp::ShowHelp( "window_technology_market" );
 }
 
 void ConfigDialog::OnOk( wxCommandEvent & )

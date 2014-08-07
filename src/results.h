@@ -110,6 +110,8 @@ public:
 	void AddCashFlowLine( CashFlowLine &cl ) { m_cashflow.push_back(cl); }
 	void AddAutoGraph( AutoGraph &ag ) { m_autographs.push_back(ag); }
 
+
+	wxString GetCurrentContext() const;
 	
 private:	
 	Simulation *m_sim;
