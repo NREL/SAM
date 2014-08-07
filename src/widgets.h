@@ -38,6 +38,7 @@ public:
 	void SetSchedule(const std::vector<double> &s);
 	void SetSchedule( const std::vector<float> &s );
 	void SetSchedLen(int len);
+	void SetFixedLen(int len=-1);
 
 private:
 	void OnResize(wxSizeEvent &evt);
@@ -54,6 +55,7 @@ private:
 	wxNumericCtrl *mFixedValue;
 	std::vector<double> mSchedValues;
 	wxString m_label;
+	int m_fixedLen;
 
 	DECLARE_EVENT_TABLE();
 };
