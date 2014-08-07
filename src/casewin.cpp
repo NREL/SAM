@@ -986,25 +986,25 @@ wxString CaseWindow::GetCurrentContext()
 	{
 	case 0: // inputs page
 		if ( m_currentGroup ) id = m_currentGroup->HelpContext;
-		else id = "Inputs";
+		else id = "inputs";
 		break;
 	case 1: // base case results
-		id = "Base Case ";// + m_baseCaseResults->GetSelectionText();
+		id = m_baseCaseResults->GetCurrentContext();
 		break;
 	case 2: // parametrics
-		id = "Parametrics";
+		id = "parametrics";
 		break;
 	case 3:
-		id = "Stochastic";
+		id = "stochastic";
 		break;
 	case 4:
-		id = "P50/P90";
+		id = "p50p90";
 		break;
 	case 5:
-		id = "Scripting";
+		id = "macros";
 		break;
 	default:
-		id = "Results";
+		id = "results";
 		break;
 	}
 
@@ -1019,7 +1019,7 @@ END_EVENT_TABLE()
 
 PageNote::PageNote(CaseWindow *cwin)
 	: wxMiniFrame(cwin, -1, "Notes", wxDefaultPosition, wxDefaultSize,
-			  wxCLOSE_BOX|wxSYSTEM_MENU|wxCAPTION/*|wxSTAY_ON_TOP*/|wxRESIZE_BORDER)
+			  wxCLOSE_BOX|wxSYSTEM_MENU|wxCAPTION|wxRESIZE_BORDER)
 {
 	m_text = new wxTextCtrl(this,
 		wxID_ANY, wxEmptyString, wxDefaultPosition ,wxDefaultSize,
