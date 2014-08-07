@@ -38,6 +38,20 @@ configopt( 'Leveraged Partnership Flip',  { 'long_name'='PPA partnership flip wi
 configopt( 'All Equity Partnership Flip', { 'long_name'='PPA partnership flip without debt',      'short_name'='Flip (no debt)',   'description'='Developer/investor partnership flip PPA structure without debt' } );
 configopt( 'Sale Leaseback',              { 'long_name'='PPA sale leaseback',                     'short_name'='Sale leaseback',   'description'='Sale leaseback partnership PPA structure' } );
 
+
+function setup_elec_load_page(i) //i is 1 for technologies that HAVE the building load calculator (for now just PV, CSP, Biopower, and Generic Solar- MUST HAVE SOLAR RESOURCE DATA), and 0 for technologies that don't
+{
+	if (i == 1) //with building load calculator
+	{
+		addpage( [ [{'name' ='Electric Load', 'caption' = 'No Load Data'}], [{'name'='Electric Load Other', 'caption'='Input Hourly Load Data'}], [{'name'='Electric Building Load Calculator', 'caption'='Calculate Load Data'}] ], 
+			{ 'sidebar'='Electric Load', 'exclusive_var'='load_model' } );
+	}
+	else //without building load calculator
+	{
+		addpage( [ [{'name' ='Electric Load', 'caption' = 'No Load Data'}], [{'name'='Electric Load Other', 'caption'='Input Hourly Load Data'}] ], 
+			{ 'sidebar'='Electric Load', 'exclusive_var'='load_model' } );
+	}
+}
 function setup_pvwatts_pages()
 {
 	addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource' } );
@@ -66,7 +80,7 @@ function setup_flat_plate_pv_pages()
 
 //// Financial input pages /////////////////////////////////////////////////////
 
-function setup_residential_pages()
+function setup_residential_pages(i) //i determines whether or not the building load calculator is included (see function:setup_elec_load_page)
 {
   addpage( [[ 'Financial Degradation']],
            {  'sidebar'='Degradation','help'='Degradation' } );
@@ -80,11 +94,10 @@ function setup_residential_pages()
               { 'name'='Financial Cash Incentives','caption'='Direct Cash Incentives','collapsible'=true,'collapsible_var'='show_cash_incentives', 'collapsed_by_default'=false } ]], 
            { 'sidebar'='Incentives','help'='Incentives' } );
   setup_utility_rate();
-  addpage( [ ['Electric Load'], [{'name'='Electric Building Load Calculator', 'caption'='Building Electric Load Profile Estimator'}], [{'name'='Electric Load Other', 'caption'='Hourly Electric Load Input'}] ], 
-			{ 'sidebar'='Electric Load', 'exclusive_var'='load_model' } );
+  setup_elec_load_page(i);
 }
 
-function setup_commercial_pages()
+function setup_commercial_pages(i) //i determines whether or not the building load calculator is included (see function:setup_elec_load_page)
 {
   addpage( [[ 'Financial Degradation' ]],
            { 'sidebar'='Degradation','help'='Degradation' }  );
@@ -98,9 +111,8 @@ function setup_commercial_pages()
               { 'name'='Financial Tax Credits','caption'='Tax Credits','collapsible'=true,'collapsible_var'='show_tax_credits', 'collapsed_by_default'=false },
               { 'name'='Financial Cash Incentives','caption'='Direct Cash Incentives','collapsible'=true,'collapsible_var'='show_cash_incentives', 'collapsed_by_default'=false } ]],
 		   { 'sidebar'='Incentives', 'help'='Incentives' } );
-	setup_utility_rate();
-   addpage( [ ['Electric Load'], [{'name'='Electric Building Load Calculator', 'caption'='Building Electric Load Profile Estimator'}], [{'name'='Electric Load Other', 'caption'='Hourly Electric Load Input'}] ], 
-			{ 'sidebar'='Electric Load', 'exclusive_var'='load_model' } );
+  setup_utility_rate();
+  setup_elec_load_page(i);
 }
 
 function setup_utility_rate()
@@ -315,10 +327,10 @@ setmodules( ['tcstrough_empirical']);
 setup_csp_empirical_trough_pages();
 
 setconfig( 'Empirical Trough', 'Commercial' );
-setmodules( ['tcstrough_empirical', 'utilityrate3', 'cashloan']);
+setmodules( ['tcstrough_empirical', 'belpe', 'utilityrate3', 'cashloan']);
 setup_csp_empirical_trough_pages();
 addpage( [[ 'Empirical Trough Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs' } );
-setup_commercial_pages();
+setup_commercial_pages(1); //includes building load calculator
 
 setconfig( 'Empirical Trough', 'Commercial PPA' );
 setmodules( ['tcstrough_empirical', 'ippppa']);
@@ -375,13 +387,13 @@ setconfig( 'Flat Plate PV', 'Residential' );
 setmodules( ['pvsamv1', 'belpe', 'utilityrate3', 'cashloan']);
 setup_flat_plate_pv_pages();
 addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='PV System Costs' } );
-setup_residential_pages();
+setup_residential_pages(1); //includes building load calculator
 
 setconfig( 'Flat Plate PV', 'Commercial' );
-setmodules( ['pvsamv1', 'utilityrate3', 'cashloan']);
+setmodules( ['pvsamv1', 'belpe', 'utilityrate3', 'cashloan']);
 setup_flat_plate_pv_pages();
 addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='PV System Costs' } );
-setup_commercial_pages();
+setup_commercial_pages(1); //includes building load calculator
 
 setconfig( 'Flat Plate PV', 'Commercial PPA' );	
 setmodules( ['pvsamv1', 'ippppa']);
@@ -478,18 +490,18 @@ setmodules( ['pvwattsv5']);
 setup_pvwatts_pages();
 
 setconfig( 'PVWatts', 'Residential' );	
-setmodules( ['pvwattsv5',  'utilityrate3', 'cashloan']);
+setmodules( ['pvwattsv5', 'belpe',  'utilityrate3', 'cashloan']);
 setting( { 'analysis_period_var'='cf_length' } );
 setup_pvwatts_pages();
 addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs' } );
-setup_residential_pages();
+setup_residential_pages(1); //includes building load calculator
 
 setconfig( 'PVWatts', 'Commercial' );	
-setmodules( ['pvwattsv5',  'utilityrate3', 'cashloan']);
+setmodules( ['pvwattsv5', 'belpe',  'utilityrate3', 'cashloan']);
 setting( { 'analysis_period_var'='cf_length' } );
 setup_pvwatts_pages();
 addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs' } );
-setup_commercial_pages();
+setup_commercial_pages(1); //includes building load calculator
 
 setconfig( 'PVWatts', 'Commercial PPA' );	
 setmodules( ['pvwattsv5', 'ippppa']);
@@ -541,7 +553,7 @@ setup_windpower_pages();
 addpage( [[ 'Wind Farm Capital Costs','O and M Costs',
 		{ 'name'='Wind BOS',   'caption'='Balance of System Costs', 'collapsible'=true, 'collapsible_var'='wind_detailed_bos_results_shown'} ]],
 		{ 'sidebar'='System Costs' } );
-setup_residential_pages();
+setup_residential_pages(0); //does not include building load calculator
 
 //-----------------------------------------------------
 setconfig( 'Wind Power', 'Commercial' );	
@@ -551,7 +563,7 @@ setup_windpower_pages();
 addpage( [[ 'Wind Farm Capital Costs','O and M Costs',
 		{ 'name'='Wind BOS',   'caption'='Balance of System Costs', 'collapsible'=true, 'collapsible_var'='wind_detailed_bos_results_shown'} ]],
 		{ 'sidebar'='System Costs' } );
-setup_commercial_pages();
+setup_commercial_pages(0); //does not include building load calculator
 
 //-----------------------------------------------------
 setconfig( 'Wind Power', 'Commercial PPA' );	
@@ -628,13 +640,13 @@ setconfig( 'Solar Water Heating', 'Residential');
 setmodules( ['swh',  'utilityrate3', 'cashloan'] );
 setup_solar_water_heating_pages();
 addpage( [[ 'Solar Water Heating Costs','O and M Costs' ]], { 'sidebar'='System Costs' } );
-setup_residential_pages();
+setup_residential_pages(0); //does not include building load calculator
 
 setconfig( 'Solar Water Heating', 'Commercial');
 setmodules( ['swh',  'utilityrate3', 'cashloan'] );
 setup_solar_water_heating_pages();
 addpage( [[ 'Solar Water Heating Costs','O and M Costs' ]], { 'sidebar'='System Costs' } );
-setup_commercial_pages();
+setup_commercial_pages(0); //does not include building load calculator
 
 // Geothermal Power ////////////////////////////////////////////////////////////
 setconfig( 'Geothermal Power', 'Independent Power Producer' );
@@ -691,7 +703,7 @@ setmodules( ['generic_system',  'utilityrate3', 'cashloan']);
 setting( { 'analysis_period_var'='cf_length' } );
 setup_generic_system_pages();
 addpage( [[ 'Generic System Costs','O and M Costs']],{ 'sidebar'='System Costs' } );
-setup_residential_pages();
+setup_residential_pages(0); //does not include building load calculator
 
 //-----------------------------------------------------
 setconfig( 'Generic System', 'Commercial' );	
@@ -699,7 +711,7 @@ setmodules( ['generic_system',  'utilityrate3', 'cashloan']);
 setting( { 'analysis_period_var'='cf_length' } );
 setup_generic_system_pages();
 addpage( [[ 'Generic System Costs','O and M Costs']],{ 'sidebar'='System Costs' } );
-setup_commercial_pages();
+setup_commercial_pages(0); //does not include building load calculator
 
 //-----------------------------------------------------
 setconfig( 'Generic System', 'Commercial PPA' );	
@@ -766,11 +778,11 @@ function setup_generic_csp_pages()
 
 //-----------------------------------------------------
 setconfig( 'Generic CSP System', 'Commercial' );	
-setmodules( ['tcsgeneric_solar',  'utilityrate3', 'cashloan']);
+setmodules( ['tcsgeneric_solar', 'belpe', 'utilityrate3', 'cashloan']);
 setting( { 'analysis_period_var'='cf_length' } );
 setup_generic_csp_pages();
 addpage( [[ 'Generic CSP System Costs','O and M Costs']],{ 'sidebar'='System Costs' } );
-setup_commercial_pages();
+setup_commercial_pages(1); //includes building load calculator
 
 //-----------------------------------------------------
 setconfig( 'Generic CSP System', 'Commercial PPA' );	
@@ -893,11 +905,11 @@ function setup_dish_stirling_pages()
 
 //-----------------------------------------------------
 setconfig( 'Dish Stirling', 'Commercial' );	
-setmodules( ['tcsdish',  'utilityrate3', 'cashloan']);
+setmodules( ['tcsdish', 'belpe', 'utilityrate3', 'cashloan']);
 setting( { 'analysis_period_var'='cf_length' } );
 setup_dish_stirling_pages();
 addpage( [[ 'Dish Capital Costs','O and M Costs']],{ 'sidebar'='System Costs' } );
-setup_commercial_pages();
+setup_commercial_pages(1); //includes building load calculator
 
 //-----------------------------------------------------
 setconfig( 'Dish Stirling', 'Commercial PPA' );	
@@ -963,12 +975,12 @@ function setup_biopower_pages()
 
 //-----------------------------------------------------
 setconfig( 'Biopower', 'Commercial' );	
-setmodules( ['biomass',  'utilityrate3', 'cashloan']);
+setmodules( ['biomass', 'belpe', 'utilityrate3', 'cashloan']);
 setting( { 'analysis_period_var'='cf_length' } );
 setup_biopower_pages();
 addpage( [[ 'Biopower System Cost','O and M Costs']],{ 'sidebar'='System Costs' } );
 addpage( [[ 'Biopower Feedstock Costs' ]], { 'sidebar'='Feedstock Costs' } );
-setup_commercial_pages();
+setup_commercial_pages(1); //includes building load calculator
 
 //-----------------------------------------------------
 setconfig( 'Biopower', 'Commercial PPA' );	
