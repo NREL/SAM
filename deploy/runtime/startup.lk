@@ -39,13 +39,15 @@ configopt( 'All Equity Partnership Flip', { 'long_name'='PPA partnership flip wi
 configopt( 'Sale Leaseback',              { 'long_name'='PPA sale leaseback',                     'short_name'='Sale leaseback',   'description'='Sale leaseback partnership PPA structure' } );
 
 
-function setup_elec_load_page(i) //i is 1 for technologies that HAVE the building load calculator (for now just PV, CSP, Biopower, and Generic Solar- MUST HAVE SOLAR RESOURCE DATA), and 0 for technologies that don't
+function setup_elec_load_page(i) //i is 1 for technologies that HAVE the building load calculator (for now just PV, CSP, Biopower, and Generic Solar- MUST HAVE SOLAR RESOURCE DATA), 2 for techs without ANY load pages (SWH), and 0 for technologies that don't
 {
 	if (i == 1) //with building load calculator
 	{
 		addpage( [ [{'name' ='Electric Load', 'caption' = 'No Load Data'}], [{'name'='Electric Load Other', 'caption'='Input Hourly Load Data'}], [{'name'='Electric Building Load Calculator', 'caption'='Calculate Load Data'}] ], 
 			{ 'sidebar'='Electric Load', 'exclusive_var'='load_model' } );
 	}
+	else if (i == 2) //no load pages at all
+		return;
 	else //without building load calculator
 	{
 		addpage( [ [{'name' ='Electric Load', 'caption' = 'No Load Data'}], [{'name'='Electric Load Other', 'caption'='Input Hourly Load Data'}] ], 
@@ -640,13 +642,13 @@ setconfig( 'Solar Water Heating', 'Residential');
 setmodules( ['swh',  'utilityrate3', 'cashloan'] );
 setup_solar_water_heating_pages();
 addpage( [[ 'Solar Water Heating Costs','O and M Costs' ]], { 'sidebar'='System Costs' } );
-setup_residential_pages(0); //does not include building load calculator
+setup_residential_pages(2); //no load pages at all
 
 setconfig( 'Solar Water Heating', 'Commercial');
 setmodules( ['swh',  'utilityrate3', 'cashloan'] );
 setup_solar_water_heating_pages();
 addpage( [[ 'Solar Water Heating Costs','O and M Costs' ]], { 'sidebar'='System Costs' } );
-setup_commercial_pages(0); //does not include building load calculator
+setup_commercial_pages(2); //no load pages at all
 
 // Geothermal Power ////////////////////////////////////////////////////////////
 setconfig( 'Geothermal Power', 'Independent Power Producer' );
