@@ -48,8 +48,6 @@ bool AFSchedNumeric::UseSchedule()
 void AFSchedNumeric::SetFixedLen( int len )
 {
 	m_fixedLen = len;
-	if ( len > 0 )
-		mSchedValues.resize( len );
 }
 
 void AFSchedNumeric::UseSchedule(bool b)
