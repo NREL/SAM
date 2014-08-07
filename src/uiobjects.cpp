@@ -38,6 +38,8 @@ public:
 	virtual wxWindow *CreateNative( wxWindow *parent ) {
 		AFSchedNumeric *sn = new AFSchedNumeric( parent, wxID_ANY ) ;
 		sn->SetLabel( Property("Label").GetString() );
+		sn->UseSchedule( Property("UseSchedule").GetBoolean() );
+		sn->ScheduleOnly( Property("ScheduleOnly").GetBoolean() );
 		sn->SetFixedLen( Property("FixedLength").GetInteger() );
 		return AssignNative( sn );
 	}
