@@ -28,6 +28,7 @@ public:
 		AddProperty( "Label", new wxUIProperty("Value") );
 		AddProperty( "UseSchedule", new wxUIProperty( true ) );
 		AddProperty( "ScheduleOnly", new wxUIProperty( false ) );
+		AddProperty( "FixedLength", new wxUIProperty( (int)-1 ) );
 		AddProperty( "TabOrder", new wxUIProperty( -1 ) );
 	}
 	virtual wxString GetTypeName() { return "SchedNumeric"; }
@@ -37,6 +38,7 @@ public:
 	virtual wxWindow *CreateNative( wxWindow *parent ) {
 		AFSchedNumeric *sn = new AFSchedNumeric( parent, wxID_ANY ) ;
 		sn->SetLabel( Property("Label").GetString() );
+		sn->SetFixedLen( Property("FixedLength").GetInteger() );
 		return AssignNative( sn );
 	}
 	virtual void OnPropertyChanged( const wxString &id, wxUIProperty *p )
@@ -46,6 +48,7 @@ public:
 			if ( id == "Label" ) sn->SetLabel( p->GetString() );
 			else if ( id == "UseSchedule" ) sn->UseSchedule( p->GetBoolean() );
 			else if ( id == "ScheduleOnly" ) sn->ScheduleOnly( p->GetBoolean() );
+			else if ( id == "FixedLength" ) sn->SetFixedLen( p->GetInteger() );
 		}
 	}
 	
