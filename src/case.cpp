@@ -293,13 +293,10 @@ bool Case::Read( wxInputStream &_i )
 	wxString fin = in.ReadString();
 
 	if ( !SetConfiguration( tech, fin ) )
-	{
-		wxMessageBox( "Failed to set configuration when reading project file: " + tech + "/" + fin );
-		return false;
-	}
+		wxMessageBox( "Notice: errors occurred while setting configuration during project file read.  Continuing...\n\n" + tech + "/" + fin );
 
 	// read in the variable table
-	DefaultStatus di;
+	LoadStatus di;
 	bool ok = LoadValuesFromExternalSource( _i, &di );
 
 	if ( !ok || di.not_found.size() > 0 || di.wrong_type.size() > 0 || di.nread != m_vals.size() )
@@ -377,7 +374,7 @@ bool Case::SaveDefaults( bool quiet )
 }
 
 bool Case::LoadValuesFromExternalSource( wxInputStream &in, 
-		DefaultStatus *di )
+		LoadStatus *di )
 {
 	VarTable vt;
 	if (!vt.Read(in))
@@ -432,7 +429,7 @@ bool Case::LoadDefaults( wxString *pmsg )
 	wxString file = SamApp::GetRuntimePath() + "/defaults/" 
 		+ m_config->Technology + "_" + m_config->Financing;
 	
-	DefaultStatus di;
+	LoadStatus di;
 	wxString message;
 	bool ok = false;
 	if ( wxFileExists(file) )
@@ -534,6 +531,10 @@ bool Case::SetConfiguration( const wxString &tech, const wxString &fin, bool sil
 	// set up any remaining new variables with default values
 	for( VarInfoLookup::iterator it = vars.begin(); it != vars.end(); ++it )
 	{
+		// issue a notice if there's a variable table discrepancy in data types for the default value
+		if ( it->second->Type != it->second->DefaultValue.Type() )
+			notices.Add("internal variable table type mismatch for " + it->first );
+
 		// find the default value for this variable.  first priority is externally saved default,
 		// then as a fallback use the internal default value
 		VarValue *val_default = vt_defaults.Get( it->first );
@@ -542,9 +543,13 @@ bool Case::SetConfiguration( const wxString &tech, const wxString &fin, bool sil
 			notices.Add( "No default value found for '" + it->first + "' in external file (" + tech + "/" + fin + ")" );
 			val_default = &( it->second->DefaultValue );
 		}
-
-		if ( it->second->Type != it->second->DefaultValue.Type() )
-			notices.Add("internal variable table type mismatch for " + it->first );
+		else if ( val_default->Type() != it->second->DefaultValue.Type()
+			|| val_default->Type() != it->second->Type )
+		{	
+			notices.Add("externally loaded default value differs in type from interally specified type for: " + it->first );
+			notices.Add("  --> resolving by changing " + it->first + wxString::Format(" to type %d", it->second->Type ) );
+			val_default->SetType( it->second->Type );
+		}
 
 		VarValue *vv = m_vals.Get( it->first );
 		if ( 0 == vv )
