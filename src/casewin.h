@@ -175,4 +175,19 @@ protected:
 	DECLARE_EVENT_TABLE()
 };
 
+
+
+
+class VarSelectDialog : public SelectVariableDialog
+{
+	wxChoice *m_cfglist;
+public:
+	VarSelectDialog( wxWindow *parent, const wxString &title );
+	void UpdateVariables();
+	void SetConfiguration( const wxString &tech, const wxString &fin );
+
+protected:
+	void OnConfig( wxCommandEvent &evt );
+	DECLARE_EVENT_TABLE()
+};
 #endif
