@@ -30,6 +30,7 @@
 #include "invoke.h"
 #include "widgets.h"
 #include "reports.h"
+#include "defmgr.h"
 
 enum { ID_STARTUP_EDITOR = wxID_HIGHEST+124,
 	ID_STARTUP_SAVE,
@@ -1660,6 +1661,9 @@ IDEWindow::IDEWindow( wxWindow *parent )
 
 	m_reportEditorPanel = new SamReportWindow( m_notebook );
 	m_notebook->AddPage( m_reportEditorPanel, "Reports" );
+
+	m_defaultsMgr = new DefaultsManager( m_notebook );
+	m_notebook->AddPage( m_defaultsMgr, "Defaults manager" );
 
 	m_notebook->Refresh();
 }

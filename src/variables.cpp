@@ -137,6 +137,14 @@ bool VarTable::Rename( const wxString &old_name, const wxString &new_name )
 	return true;
 }
 
+bool VarTable::Write( const wxString &file, size_t maxdim )
+{
+	wxFFileOutputStream out(file);
+	if ( !out.IsOk() ) return false;
+	Write( out, maxdim );
+	return true;
+}
+
 void VarTable::Write( wxOutputStream &_O, size_t maxdim )
 {
 	wxDataOutputStream out(_O);
@@ -197,6 +205,13 @@ void VarTable::Write( wxOutputStream &_O, size_t maxdim )
 	}
 
 	out.Write8( 0xf9 );
+}
+
+bool VarTable::Read( const wxString &file )
+{
+	wxFFileInputStream in( file );
+	if ( !in.IsOk() ) return false;
+	else return Read( in );
 }
 
 bool VarTable::Read( wxInputStream &_I )
@@ -847,7 +862,15 @@ wxString VarValue::AsString( wxChar arrsep, wxChar tabsep )
 		return buf;
 	}
 	case VV_BINARY:
-		return wxString::Format("binary<%d>", (int)m_bin.GetDataLen());
+	{
+		wxString xdat;
+		size_t len = m_bin.GetDataLen();
+		char *data = (char*)m_bin.GetData();
+		for( size_t i=0;i<len;i++ )
+			xdat += wxString::Format("%02X ", (unsigned int)data[i]);
+		
+		return wxString::Format("binary<%d>", (int)len) + xdat;
+	}
 	}
 
 	return "<no value found>";
