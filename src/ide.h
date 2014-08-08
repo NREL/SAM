@@ -117,6 +117,8 @@ private:
 	DECLARE_EVENT_TABLE();
 };
 
+class DefaultsManager;
+
 class IDEWindow : public wxFrame
 {
 public:
@@ -135,6 +137,7 @@ private:
 	ScriptPanel *m_autoGraphPanel;
 	ScriptPanel *m_navigationPanel;
 	SamReportWindow *m_reportEditorPanel;
+	DefaultsManager *m_defaultsMgr;
 
 	//SimulationScriptPanel *m_simPanel;
 
