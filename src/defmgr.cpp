@@ -22,10 +22,11 @@ static wxString strtypes[] = { "invalid", "number", "array", "matrix", "string",
 		return "unknown type";
 }
 
-enum { ID_QUERY = wxID_HIGHEST+392, ID_LOOKUP_VAR, ID_DELETE };
+enum { ID_QUERY = wxID_HIGHEST+392, ID_LOOKUP_VAR, ID_DELETE, ID_MODIFY };
 
 BEGIN_EVENT_TABLE( DefaultsManager, wxPanel )
 	EVT_BUTTON( ID_QUERY, DefaultsManager::OnQuery )
+	EVT_BUTTON( ID_MODIFY, DefaultsManager::OnModify )
 	EVT_BUTTON( ID_LOOKUP_VAR, DefaultsManager::OnLookupVar )
 	EVT_BUTTON( ID_DELETE, DefaultsManager::OnDeleteVar )
 END_EVENT_TABLE()
@@ -35,6 +36,14 @@ DefaultsManager::DefaultsManager( wxWindow *parent )
 	: wxPanel( parent )
 {
 	m_varName = new wxTextCtrl( this, wxID_ANY, wxEmptyString );
+	
+	m_value = new wxTextCtrl( this, wxID_ANY, wxEmptyString );
+	m_dataType = new wxChoice( this, wxID_ANY );
+	m_dataType->Append( "Don't change type" );
+	for( size_t i=1;i<=VV_BINARY;i++ )
+		m_dataType->Append( "Change to " + GetTypeStr(i) );
+	m_dataType->SetSelection( 0 );
+	m_enableAdd = new wxCheckBox( this, wxID_ANY, "Add variable?" );
 	
 	m_output = new wxTextCtrl( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxTE_MULTILINE|wxBORDER_NONE );
 	m_output->SetForegroundColour( *wxLIGHT_GREY );
@@ -51,9 +60,17 @@ DefaultsManager::DefaultsManager( wxWindow *parent )
 	button_sizer1->Add( new wxButton( this, ID_LOOKUP_VAR, "Lookup" ), 0, wxALL, 2 );
 	button_sizer1->Add( new wxButton( this, ID_QUERY, "Query" ), 0, wxALL, 2 );	
 	button_sizer1->Add( new wxButton( this, ID_DELETE, "Delete" ), 0, wxALL, 2 );	
+	
+	wxBoxSizer *button_sizer2 = new wxBoxSizer( wxHORIZONTAL );
+	button_sizer2->Add( new wxStaticText( this, wxID_ANY, "Variable value (number, string, or binhex):"), 0, wxALL|wxALIGN_CENTER_VERTICAL, 4);
+	button_sizer2->Add( m_value, 1, wxALL|wxEXPAND, 4 );
+	button_sizer2->Add( m_dataType, 0, wxALL|wxALIGN_CENTER_VERTICAL, 0 );
+	button_sizer2->Add( m_enableAdd, 0, wxALL|wxALIGN_CENTER_VERTICAL, 2 );
+	button_sizer2->Add( new wxButton(this, ID_MODIFY, "Modify"), 0, wxALL, 2 );
 
 	wxBoxSizer *right_sizer = new wxBoxSizer( wxVERTICAL );
 	right_sizer->Add( button_sizer1, 0, wxALL|wxEXPAND, 4 );
+	right_sizer->Add( button_sizer2, 0, wxALL|wxEXPAND, 4 );
 	right_sizer->Add( m_output, 1, wxALL|wxEXPAND, 0 );
 	
 	wxBoxSizer *sizer = new wxBoxSizer( wxHORIZONTAL );
@@ -119,6 +136,67 @@ void DefaultsManager::OnQuery(wxCommandEvent &evt)
 		
 		if ( VarValue *vv = tab.Get( name ) )
 			Log("'" + name + "' in " + m_techList[i] + ", " + m_finList[i] + " (" + GetTypeStr( vv->Type() ) + ") = " + vv->AsString() );
+	}
+}
+
+void DefaultsManager::OnModify( wxCommandEvent & )
+{
+	ClearLog();
+	
+	wxString value = m_value->GetValue();
+	int datatype = m_dataType->GetSelection();
+
+	for (int i=0;i<(int)m_configList->GetCount();i++)
+	{
+		if (!m_configList->IsChecked(i)) continue;
+				
+		wxString file(GetDefaultsFile(m_techList[i], m_finList[i]));
+		VarTable tab;
+		if ( !tab.Read( file ))			
+		{
+			Log("file read error: " + file);
+			continue;
+		}
+
+		wxString name( m_varName->GetValue() );
+		bool needs_write = false;
+		if ( VarValue *vv = tab.Get( name ) )
+		{
+			if ( datatype > 0 && vv->Type() != datatype )
+			{
+				needs_write = true;
+				vv->SetType( datatype );
+				Log("Changed data type to " + GetTypeStr(datatype) + " for '" + name + "' in " + m_techList[i] + ", " + m_finList[i]);
+			}
+
+			if ( vv->Type() == VV_NUMBER 
+				|| vv->Type() == VV_STRING 
+				|| vv->Type() == VV_BINARY )
+			{
+				if ( VarValue::Parse( vv->Type(), value, *vv ) )
+				{
+					needs_write = true;
+					Log("Set '" + name + "' in " + m_techList[i] + ", " + m_finList[i]  + " (" + GetTypeStr( vv->Type() ) + ") = " + vv->AsString() );
+				}
+				else
+					Log("Error setting '" + name + "' in " + m_techList[i] + ", " + m_finList[i]  + " to " + value );
+			}
+
+		} 
+		else if ( m_enableAdd->GetValue() )
+		{
+			VarValue *vv = tab.Create( name, datatype );
+			VarValue::Parse( vv->Type(), value, *vv );
+			Log("Created '" + name + "' in " + m_techList[i] + ", " + m_finList[i]  + " (" + GetTypeStr( vv->Type() ) + ") = " + vv->AsString() );
+			needs_write = true;
+		}
+
+		if ( needs_write )
+		{
+			if ( !tab.Write( file ) )
+				Log("file write error: " + file );
+		}
+
 	}
 }
 
