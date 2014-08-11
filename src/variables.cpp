@@ -745,6 +745,52 @@ bool VarValue::Write( lk::vardata_t &val )
 	return m_type != VV_INVALID;
 }
 
+static inline char nibble_to_hex( unsigned char nibble )
+{
+	return nibble <= 9 ? ( '0'+nibble ) : ( 'A' + nibble-10 );
+}
+
+static inline unsigned char hex_to_nibble( char hex )
+{
+	unsigned char bin = 0;
+	if ( hex >= '0' && hex <= '9' ) bin = hex-'0';
+	else if (hex >= 'A' && hex <= 'F') bin =  hex-'A'+10;
+	else if (hex >= 'a' && hex <= 'f') bin =  hex-'a'+10;	
+	return bin;
+}
+
+wxString bintohexstr( char *data, int len )
+{
+	wxString str( len*2, '0' );
+	int i;
+	wxString::iterator it = str.begin();
+	for( i=0;i<len;i++ )
+	{
+		unsigned char byte = data[i];
+		unsigned char upper = (byte >> 4);
+		unsigned char lower = (byte & 0x0f);
+		*it++ = nibble_to_hex(upper);
+		*it++ = nibble_to_hex(lower);
+	}
+	return str;
+}
+
+void hexstrtobin( const wxString &str, char *data, int len )
+{
+	int slen = str.Len();
+	int idx = 0;
+	wxString::const_iterator it = str.begin();
+	while ( it != str.end() )
+	{
+		unsigned char upper = hex_to_nibble( *it++ );
+		if ( it == str.end() ) return;
+
+		unsigned char lower = hex_to_nibble( *it++ );
+		if ( idx < len ) data[idx++] = (upper << 4) | lower;
+	}
+}
+
+
 bool VarValue::Parse( int type, const wxString &str, VarValue &value )
 {
 	switch(type)
@@ -812,6 +858,18 @@ bool VarValue::Parse( int type, const wxString &str, VarValue &value )
 			value.m_tab = vt;
 		return true;
 		}
+	case VV_BINARY:
+		value.m_type == VV_BINARY;
+		value.m_bin.Clear();
+		if ( str.Len() > 0 )
+		{
+			int nbytes = str.Len()/2;
+			if ( nbytes*2 != str.Len() ) return false;
+			char *data = (char*)value.m_bin.GetWriteBuf( nbytes );
+			hexstrtobin( str, data, nbytes );
+			value.m_bin.UngetWriteBuf( nbytes );
+		}
+		return true;
 	}
 	
 	return false;
@@ -862,15 +920,7 @@ wxString VarValue::AsString( wxChar arrsep, wxChar tabsep )
 		return buf;
 	}
 	case VV_BINARY:
-	{
-		wxString xdat;
-		size_t len = m_bin.GetDataLen();
-		char *data = (char*)m_bin.GetData();
-		for( size_t i=0;i<len;i++ )
-			xdat += wxString::Format("%02X ", (unsigned int)data[i]);
-		
-		return wxString::Format("binary<%d>", (int)len) + xdat;
-	}
+		return bintohexstr( (char*)m_bin.GetData(), m_bin.GetDataLen() );
 	}
 
 	return "<no value found>";
