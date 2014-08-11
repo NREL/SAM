@@ -13,6 +13,7 @@ addconfig( 'Physical Trough', ['Commercial','Single Owner', 'Leveraged Partnersh
 addconfig( 'Dish Stirling', ['Commercial','Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'None']);
 addconfig( 'Generic CSP System', ['Commercial','Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'None']);
 addconfig( 'Generic System', ['Residential', 'Commercial', 'Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'None']);
+addconfig( 'MSPT', ['Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'None']);
 //addconfig( 'Wind BOS', [ 'None' ] );
 
 
@@ -22,6 +23,7 @@ configopt( 'High-X Concentrating PV',     { 'long_name'='High-X concentrating ph
 configopt( 'Solar Water Heating',         { 'long_name'='Solar water heating',                    'short_name'='Solar water',      'description'='Solar water heating model for residential and commercial building applications' } );
 configopt( 'Wind Power',                  { 'long_name'='Wind power',                             'short_name'='Wind',             'description'='Small or large wind power system' } );
 configopt( 'Biopower',                    { 'long_name'='Biomass combustion',                     'short_name'='Biopower',         'description'='Biomass combustion for electricity generation' } );
+configopt( 'MSPT',     	                  { 'long_name'='Molten Salt Power Tower',           	  'short_name'='Tower (salt)',     'description'='CSP molten salt power tower system using heat transfer and thermodynamic component models' } );
 configopt( 'Empirical Trough',            { 'long_name'='Parabolic trough (empirical)',           'short_name'='Trough (empr.)',   'description'='CSP parabolic trough system using model with empirically-derived coefficients and equations' } );
 configopt( 'Physical Trough',             { 'long_name'='Parabolic trough (physical)',            'short_name'='Trough (phys.)',   'description'='CSP parabolic trough system using heat transfer and thermodynamic component models' } );
 configopt( 'Dish Stirling',               { 'long_name'='Dish Stirling',                          'short_name'='Dish Stirling',    'description'='Dish Stirling model with parameters for SES and WGA-ADDS systems' } );
@@ -1042,4 +1044,53 @@ setup_single_owner_pages();
 setconfig( 'Biopower', 'None' );
 setmodules( ['biomass']);
 setup_biopower_pages();
+
+// Molten Salt Power Tower ////////////////////////////////////////////////////////////////////
+function setup_MSPT_pages()
+{
+	addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Ambient Conditions' } );
+	addpage( [[ 'Molten Salt Tower Solar Field' ]], { 'sidebar'='Heliostat Field' } );
+	addpage( [[ 'Molten Salt Tower Receiver' ]], { 'sidebar'='Tower and Receiver' } );
+	addpage( [[ 'Molten Salt Tower Power Block' ]], { 'sidebar'='Power Cycle' } );
+	addpage( [[ 'Molten Salt Tower Storage' ]], { 'sidebar'='Thermal Storage' } );
+	addpage( [[ 'Molten Salt Tower Parasitics' ]], { 'sidebar'='Parasitics' } );
+}
+
+
+//-----------------------------------------------------
+setconfig( 'MSPT', 'Leveraged Partnership Flip' );
+setmodules( ['tcsmolten_salt', 'levpartflip']);
+setting( { 'analysis_period_var'='cf_length' } );
+setup_MSPT_pages();
+addpage( [[ 'Molten Salt Tower Capital Costs','O and M Costs']],{ 'sidebar'='System Costs' } );
+setup_leveraged_partnership_flip_pages();
+
+//-----------------------------------------------------
+setconfig( 'MSPT', 'All Equity Partnership Flip' );
+setmodules( ['tcsmolten_salt', 'equpartflip']);
+setting( { 'analysis_period_var'='cf_length' } );
+setup_MSPT_pages();
+addpage( [[ 'Molten Salt Tower Capital Costs','O and M Costs']],{ 'sidebar'='System Costs' } );
+setup_all_equity_partnership_flip_pages();
+
+//-----------------------------------------------------
+setconfig( 'MSPT', 'Sale Leaseback' );
+setmodules( ['tcsmolten_salt', 'saleleaseback']);
+setting( { 'analysis_period_var'='cf_length' } );
+setup_MSPT_pages();
+addpage( [[ 'Molten Salt Tower Capital Costs','O and M Costs']],{ 'sidebar'='System Costs' } );
+setup_sale_leaseback_pages();
+
+//-----------------------------------------------------
+setconfig( 'MSPT', 'Single Owner' );
+setmodules( ['tcsmolten_salt', 'singleowner']);
+setting( { 'analysis_period_var'='cf_length' } );
+setup_MSPT_pages();
+addpage( [[ 'Molten Salt Tower Capital Costs','O and M Costs']],{ 'sidebar'='System Costs' } );
+setup_single_owner_pages();
+
+//-----------------------------------------------------
+setconfig( 'MSPT', 'None' );
+setmodules( ['tcsmolten_salt']);
+setup_MSPT_pages();
 
