@@ -3,6 +3,7 @@
 #include <wx/checklst.h>
 #include <wx/wfstream.h>
 
+#include "widgets.h"
 #include "main.h"
 #include "casewin.h"
 #include "defmgr.h"
@@ -22,11 +23,229 @@ static wxString strtypes[] = { "invalid", "number", "array", "matrix", "string",
 		return "unknown type";
 }
 
-enum { ID_QUERY = wxID_HIGHEST+392, ID_LOOKUP_VAR, ID_DELETE, ID_MODIFY };
+
+enum{ __idfirst = wxID_HIGHEST+491,
+	ID_TYPE, ID_ADD_FIELD, ID_REMOVE_FIELD, ID_CLEAR_TABLE, ID_EDIT_FIELD, ID_FIELDS, ID_VALUE, ID_MATRIX };
+
+BEGIN_EVENT_TABLE( ValueEditor, wxPanel )
+	EVT_CHOICE( ID_TYPE, ValueEditor::OnCommand )
+	EVT_TEXT( ID_VALUE, ValueEditor::OnCommand )
+	EVT_DATAMATRIX( ID_MATRIX, ValueEditor::OnCommand )
+	EVT_LISTBOX_DCLICK( ID_FIELDS, ValueEditor::OnEditField )
+	EVT_BUTTON( ID_ADD_FIELD, ValueEditor::OnCommand )
+	EVT_BUTTON( ID_REMOVE_FIELD, ValueEditor::OnCommand )
+	EVT_BUTTON( ID_EDIT_FIELD, ValueEditor::OnEditField )
+	EVT_BUTTON( ID_CLEAR_TABLE, ValueEditor::OnCommand )
+END_EVENT_TABLE()
+
+ValueEditor::ValueEditor( wxWindow *parent )
+	: wxPanel( parent )
+{
+	m_type = new wxChoice( this, ID_TYPE );
+	for( size_t i=0;i<=VV_BINARY;i++ )
+		m_type->Append( GetTypeStr(i) );
+
+
+	m_text = new wxTextCtrl( this, ID_VALUE, wxEmptyString );
+	m_matrix = new AFDataMatrixCtrl( this, ID_MATRIX, wxDefaultPosition, wxDefaultSize, true );
+	m_matrix->ShadeR0C0( false );
+	m_matrix->ShowLabels( true );
+
+	m_fields = new wxListBox( this, ID_FIELDS );
+	
+	wxBoxSizer *sizer_top = new wxBoxSizer( wxHORIZONTAL );
+	sizer_top->Add( new wxStaticText(this, wxID_ANY, "Data type:"), 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
+	sizer_top->Add( m_type, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3 );
+	sizer_top->Add( m_valLabel = new wxStaticText(this, wxID_ANY, "Numeric, string, or hexbin value:"), 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
+	sizer_top->Add( m_text, 1, wxALL|wxALIGN_CENTER_VERTICAL, 3 );
+
+	wxBoxSizer *sizer_tab_buttons = new wxBoxSizer( wxVERTICAL );
+	sizer_tab_buttons->Add( m_tabLabel = new wxStaticText(this, wxID_ANY, "Table editing:"), 0, wxALL, 2 );
+	sizer_tab_buttons->Add( m_addField = new wxButton( this, ID_ADD_FIELD, "Add..." ), 0, wxALL, 2 );
+	sizer_tab_buttons->Add( m_removeField = new wxButton( this, ID_REMOVE_FIELD, "Remove" ), 0, wxALL, 2 );
+	sizer_tab_buttons->Add( m_editField = new wxButton( this, ID_EDIT_FIELD, "Edit..." ), 0, wxALL, 2 );
+	sizer_tab_buttons->Add( m_clearTable = new wxButton( this, ID_CLEAR_TABLE, "Clear" ), 0, wxALL, 2 );
+
+	wxBoxSizer *sizer_tab = new wxBoxSizer( wxHORIZONTAL );
+	sizer_tab->Add( sizer_tab_buttons, 0, wxALL, 3 );
+	sizer_tab->Add( m_fields, 1, wxALL|wxEXPAND, 2 );
+
+	wxBoxSizer *sizer_bot = new wxBoxSizer( wxHORIZONTAL );
+	sizer_bot->Add( m_matrix, 1, wxALL|wxEXPAND, 2 );
+	sizer_bot->Add( sizer_tab, 1, wxALL|wxEXPAND, 2 );
+	
+	wxBoxSizer *sizer = new wxBoxSizer( wxVERTICAL );
+	sizer->Add( sizer_top, 0, wxALL|wxEXPAND, 0 );
+	sizer->Add( sizer_bot, 1, wxALL|wxEXPAND, 0 );
+	SetSizer( sizer );
+	
+	VarValue nil;
+	Set( nil );
+}
+
+int ValueEditor::GetType() { return m_type->GetSelection(); }
+void ValueEditor::Set( const VarValue &vv )
+{
+	m_val.Copy( vv );
+	ValueToForm();
+	UpdateFormUI();
+}
+void ValueEditor::ValueToForm()
+{
+	matrix_t<float> mat;
+	m_type->SetSelection( m_val.Type() );
+	switch( m_val.Type() )
+	{
+	case VV_NUMBER:
+	case VV_STRING:
+	case VV_BINARY:
+		m_text->ChangeValue( m_val.AsString() );
+		break;
+	case VV_ARRAY:
+		if ( m_val.Length() > 0 )
+		{
+			size_t nn;
+			float *p = m_val.Array( &nn );
+			mat.resize_fill( nn, 0.0f );
+			for( size_t i=0;i<nn;i++ )
+				mat.at(i) = p[i];
+		}
+		m_matrix->SetData( mat );
+		break;
+	case VV_MATRIX:
+		m_matrix->SetData( m_val.Matrix() );
+		break;
+	case VV_TABLE:
+		m_fields->Clear();
+		for( VarTable::iterator it = m_val.Table().begin();
+			it != m_val.Table().end();
+			++ it )
+		{
+			m_fields->Append( it->first );
+		}
+		break;
+	}
+}
+
+VarValue ValueEditor::Get()
+{
+	return m_val;
+}
+
+void ValueEditor::UpdateFormUI()
+{
+	int ty = GetType();
+	m_text->Show( ty == VV_STRING || ty == VV_NUMBER || ty == VV_BINARY );
+	m_valLabel->Show( ty == VV_STRING || ty == VV_NUMBER || ty == VV_BINARY );
+	if ( ty == VV_STRING ) m_valLabel->SetLabel( "Enter string value: " );
+	if ( ty == VV_NUMBER ) m_valLabel->SetLabel( "Enter numeric value: " );
+	if ( ty == VV_BINARY ) m_valLabel->SetLabel( "Enter hexadecimal binary data: " );
+	m_matrix->Show( ty == VV_ARRAY || ty == VV_MATRIX );
+	m_tabLabel->Show( ty == VV_TABLE );
+	m_fields->Show( ty == VV_TABLE );
+	m_addField->Show( ty == VV_TABLE );
+	m_removeField->Show( ty == VV_TABLE );
+	m_editField->Show( ty == VV_TABLE );
+	m_clearTable->Show( ty == VV_TABLE );
+	Layout();
+	Refresh();
+}
+
+void ValueEditor::OnCommand( wxCommandEvent &evt )
+{
+	switch( evt.GetId() )
+	{
+	case ID_TYPE:
+		m_val.SetType( m_type->GetSelection() );
+		UpdateFormUI();
+		ValueToForm();
+		break;
+	case ID_VALUE:		
+		if ( !VarValue::Parse( m_val.Type(), m_text->GetValue(), m_val ) )
+			m_text->SetForegroundColour( *wxRED );
+		else if ( m_text->GetForegroundColour() != *wxBLACK ) 
+			m_text->SetForegroundColour( *wxBLACK );
+		break;
+	case ID_MATRIX:
+		if ( m_val.Type() == VV_ARRAY )
+		{
+			matrix_t<float> mat;
+			m_matrix->GetData( mat );
+			int arrlen = mat.nrows();
+			if ( arrlen > 0 )
+			{
+				float *arr = new float[arrlen];
+				for( size_t i=0;i<arrlen;i++ )
+					arr[i] = mat(i,0);
+
+				m_val.Set( arr, arrlen );
+				delete [] arr;
+			}
+			else
+				m_val.Set( std::vector<float>() ); // empty array
+		}
+		else if ( m_val.Type() == VV_MATRIX )
+		{
+			matrix_t<float> mat;
+			m_matrix->GetData( mat );
+			m_val.Set( mat );
+		}
+		break;
+	case ID_ADD_FIELD:
+	{
+		wxString name = wxGetTextFromUser( "Enter table field name:");
+		if ( name.IsEmpty() ) return;
+		if ( m_val.Table().Get( name ) != 0 ) return;
+		m_val.Table().Create( name, VV_NUMBER );
+		m_fields->Append( name );
+	}
+		break;
+	case ID_REMOVE_FIELD:
+	{
+		wxString name = m_fields->GetStringSelection();
+		if ( !name.IsEmpty() && m_val.Table().Get(name) != 0 )
+		{
+			m_val.Table().Delete( name );
+			m_fields->Delete( m_fields->GetSelection() );
+		}
+	}
+	case ID_CLEAR_TABLE:
+		m_val.Table().clear();
+		m_fields->Clear();
+		break;
+	}
+}
+
+void ValueEditor::OnEditField( wxCommandEvent & )
+{
+	wxString name = m_fields->GetStringSelection();
+	if ( name.IsEmpty() ) return;
+	
+	VarValue *vv = m_val.Table().Get(name);
+	if ( !vv )
+	{
+		wxMessageBox("Could not locate field in table: " + name );
+		return;
+	}
+	
+	wxDialog dlg( this, wxID_ANY, "Edit field: " + name, wxDefaultPosition, wxSize(600,400), wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER );
+	ValueEditor *ve = new ValueEditor( &dlg );
+	ve->Set( *vv );
+	wxBoxSizer *sizer = new wxBoxSizer( wxVERTICAL );
+	sizer->Add( ve, 1, wxALL|wxEXPAND, 0 );
+	sizer->Add( dlg.CreateButtonSizer( wxOK|wxCANCEL ), 0, wxALL|wxEXPAND, 5 );
+	dlg.SetSizer( sizer );
+	if ( wxID_OK == dlg.ShowModal() )
+		vv->Copy( ve->Get() );
+}
+
+
+enum { ID_QUERY = wxID_HIGHEST+392, ID_LOOKUP_VAR, ID_DELETE, ID_MODIFY, ID_LOAD };
 
 BEGIN_EVENT_TABLE( DefaultsManager, wxPanel )
 	EVT_BUTTON( ID_QUERY, DefaultsManager::OnQuery )
 	EVT_BUTTON( ID_MODIFY, DefaultsManager::OnModify )
+	EVT_BUTTON( ID_LOAD, DefaultsManager::OnLoad )
 	EVT_BUTTON( ID_LOOKUP_VAR, DefaultsManager::OnLookupVar )
 	EVT_BUTTON( ID_DELETE, DefaultsManager::OnDeleteVar )
 END_EVENT_TABLE()
@@ -37,12 +256,9 @@ DefaultsManager::DefaultsManager( wxWindow *parent )
 {
 	m_varName = new wxTextCtrl( this, wxID_ANY, wxEmptyString );
 	
-	m_value = new wxTextCtrl( this, wxID_ANY, wxEmptyString );
-	m_dataType = new wxChoice( this, wxID_ANY );
-	m_dataType->Append( "Don't change type" );
-	for( size_t i=1;i<=VV_BINARY;i++ )
-		m_dataType->Append( "Change to " + GetTypeStr(i) );
-	m_dataType->SetSelection( 0 );
+	m_value = new ValueEditor( this );
+
+	m_changeType = new wxCheckBox( this, wxID_ANY, "Change data type?" );
 	m_enableAdd = new wxCheckBox( this, wxID_ANY, "Add variable?" );
 	
 	m_output = new wxTextCtrl( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxTE_MULTILINE|wxBORDER_NONE );
@@ -51,7 +267,7 @@ DefaultsManager::DefaultsManager( wxWindow *parent )
 	m_output->SetFont( wxFont(11, wxFONTFAMILY_MODERN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, "consolas") );
 
 	m_configList = new wxCheckListBox( this, wxID_ANY );
-
+	
 	// layout
 
 	wxBoxSizer *button_sizer1 = new wxBoxSizer( wxHORIZONTAL );
@@ -60,18 +276,15 @@ DefaultsManager::DefaultsManager( wxWindow *parent )
 	button_sizer1->Add( new wxButton( this, ID_LOOKUP_VAR, "Lookup" ), 0, wxALL, 2 );
 	button_sizer1->Add( new wxButton( this, ID_QUERY, "Query" ), 0, wxALL, 2 );	
 	button_sizer1->Add( new wxButton( this, ID_DELETE, "Delete" ), 0, wxALL, 2 );	
+	button_sizer1->Add( m_changeType, 0, wxALL|wxALIGN_CENTER_VERTICAL, 0 );
+	button_sizer1->Add( m_enableAdd, 0, wxALL|wxALIGN_CENTER_VERTICAL, 2 );
+	button_sizer1->Add( new wxButton(this, ID_MODIFY, "Modify"), 0, wxALL, 2 );
+	button_sizer1->Add( new wxButton(this, ID_LOAD, "Load"), 0, wxALL, 2 );
 	
-	wxBoxSizer *button_sizer2 = new wxBoxSizer( wxHORIZONTAL );
-	button_sizer2->Add( new wxStaticText( this, wxID_ANY, "Variable value (number, string, or binhex):"), 0, wxALL|wxALIGN_CENTER_VERTICAL, 4);
-	button_sizer2->Add( m_value, 1, wxALL|wxEXPAND, 4 );
-	button_sizer2->Add( m_dataType, 0, wxALL|wxALIGN_CENTER_VERTICAL, 0 );
-	button_sizer2->Add( m_enableAdd, 0, wxALL|wxALIGN_CENTER_VERTICAL, 2 );
-	button_sizer2->Add( new wxButton(this, ID_MODIFY, "Modify"), 0, wxALL, 2 );
-
 	wxBoxSizer *right_sizer = new wxBoxSizer( wxVERTICAL );
 	right_sizer->Add( button_sizer1, 0, wxALL|wxEXPAND, 4 );
-	right_sizer->Add( button_sizer2, 0, wxALL|wxEXPAND, 4 );
-	right_sizer->Add( m_output, 1, wxALL|wxEXPAND, 0 );
+	right_sizer->Add( m_value, 1, wxALL|wxEXPAND, 0 );
+	right_sizer->Add( m_output, 2, wxALL|wxEXPAND, 0 );
 	
 	wxBoxSizer *sizer = new wxBoxSizer( wxHORIZONTAL );
 	sizer->Add( m_configList, 0, wxALL|wxEXPAND, 0 );
@@ -139,12 +352,41 @@ void DefaultsManager::OnQuery(wxCommandEvent &evt)
 	}
 }
 
+void DefaultsManager::OnLoad( wxCommandEvent & )
+{
+	ClearLog();
+	int i=0;
+	for (i=0;i<(int)m_configList->GetCount();i++)
+		if (m_configList->IsChecked(i)) break;
+
+	if ( i == m_configList->GetCount() ) return;
+
+	wxString file(GetDefaultsFile(m_techList[i], m_finList[i]));
+	VarTable tab;
+	if ( !tab.Read( file ))			
+	{
+		Log("file read error: " + file);
+		return;
+	}
+
+	wxString name( m_varName->GetValue() );		
+	if( VarValue *vv = tab.Get( name ) )
+	{
+		m_value->Set( *vv );
+		Log("Loaded '" + name + "' from " + m_techList[i] + ", " + m_finList[i]  + " (" + GetTypeStr( vv->Type() ) + ")" );
+	}
+	else
+		Log("Variable '" + name + "' not found in " + m_techList[i] + ", " + m_finList[i]);
+}
+
 void DefaultsManager::OnModify( wxCommandEvent & )
 {
 	ClearLog();
 	
-	wxString value = m_value->GetValue();
-	int datatype = m_dataType->GetSelection();
+
+	bool en_change = m_changeType->GetValue();
+	int datatype = m_value->GetType();
+	VarValue value = m_value->Get();
 
 	for (int i=0;i<(int)m_configList->GetCount();i++)
 	{
@@ -160,35 +402,58 @@ void DefaultsManager::OnModify( wxCommandEvent & )
 
 		wxString name( m_varName->GetValue() );
 		bool needs_write = false;
-		if ( VarValue *vv = tab.Get( name ) )
+		
+		VarValue *vv = tab.Get( name );
+
+		if ( !vv && m_enableAdd->GetValue() )
 		{
-			if ( datatype > 0 && vv->Type() != datatype )
-			{
-				needs_write = true;
-				vv->SetType( datatype );
-				Log("Changed data type to " + GetTypeStr(datatype) + " for '" + name + "' in " + m_techList[i] + ", " + m_finList[i]);
-			}
+			vv = tab.Create( name, datatype );
+			Log("Created '" + name + "' in " + m_techList[i] + ", " + m_finList[i]  + " (" + GetTypeStr( vv->Type() ) + ") = " + vv->AsString() );
+			needs_write = true;
+		}
+
+
+		if ( !vv ) 
+			continue;
+
+		if ( en_change && vv->Type() != datatype )
+		{
+			needs_write = true;
+			vv->SetType( datatype );
+			Log("Changed data type to " + GetTypeStr(datatype) + " for '" + name + "' in " + m_techList[i] + ", " + m_finList[i]);
+		}
+
+		if ( vv->Type() == value.Type() )
+		{
+			vv->Copy( value );
+			needs_write = true;
 
 			if ( vv->Type() == VV_NUMBER 
 				|| vv->Type() == VV_STRING 
+				|| vv->Type() == VV_MATRIX 
+				|| vv->Type() == VV_TABLE 
 				|| vv->Type() == VV_BINARY )
 			{
-				if ( VarValue::Parse( vv->Type(), value, *vv ) )
+				Log("Set '" + name + "' in " + m_techList[i] + ", " + m_finList[i]  + " (" + GetTypeStr( vv->Type() ) + ") = " + vv->AsString() );
+			}
+			else if ( vv->Type() == VV_ARRAY )
+			{	
+				size_t arrlen;
+				float *arr = value.Array( & arrlen );
+				wxString s("Set '" + name + "' in " + m_techList[i] + ", " + m_finList[i]  + " (" + GetTypeStr( vv->Type() ) + ") = ");
+				if ( arrlen > 25 )
 				{
-					needs_write = true;
-					Log("Set '" + name + "' in " + m_techList[i] + ", " + m_finList[i]  + " (" + GetTypeStr( vv->Type() ) + ") = " + vv->AsString() );
+					s += wxString::Format("[%d]: ", (int)arrlen);
+					for( size_t j=0;j<10;j++ )
+						s += wxString::Format("%g%c", (float)arr[j], j<9?',':' ');
+					s += "...";
 				}
 				else
-					Log("Error setting '" + name + "' in " + m_techList[i] + ", " + m_finList[i]  + " to " + value );
-			}
+					s += vv->AsString();	
+			
+				Log("Set '" + name + "' in " + m_techList[i] + ", " + m_finList[i]  + " (" + GetTypeStr( vv->Type() ) + ") = " + s );
 
-		} 
-		else if ( m_enableAdd->GetValue() )
-		{
-			VarValue *vv = tab.Create( name, datatype );
-			VarValue::Parse( vv->Type(), value, *vv );
-			Log("Created '" + name + "' in " + m_techList[i] + ", " + m_finList[i]  + " (" + GetTypeStr( vv->Type() ) + ") = " + vv->AsString() );
-			needs_write = true;
+			}
 		}
 
 		if ( needs_write )
@@ -196,8 +461,8 @@ void DefaultsManager::OnModify( wxCommandEvent & )
 			if ( !tab.Write( file ) )
 				Log("file write error: " + file );
 		}
-
 	}
+	
 }
 
 void DefaultsManager::OnDeleteVar(wxCommandEvent &)
@@ -228,7 +493,7 @@ void DefaultsManager::OnDeleteVar(wxCommandEvent &)
 			if (!tab.Write( file ) )
 				Log("Error writing: " + file );
 			else
-				Log("Removed '" + name + "' from " + m_techList[i] + ", " + m_finList[i]);
+				Log("Deleted '" + name + "' from " + m_techList[i] + ", " + m_finList[i]);
 		}
 		else
 			Log("Variable '" + name + "' not found in " + m_techList[i] + ", " + m_finList[i]);
