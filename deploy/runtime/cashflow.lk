@@ -917,6 +917,34 @@ function cashflow_to_excel_incentives(xl)
 	xl_set( xl, (${cbi_oth_deprbas_sta}?'x':''), 'inOtherCBIITCBasisState');
 } 
 
+cashflow_to_excel{ 'Single Owner' } = define() 
+{
+	source = runtimedir() + 'spreadsheets/single_owner.xlsm';
+	destination = userlocaldatadir() + "/"+ case_name() + '.xlsm';
+	
+	destination = copy_file( source, destination );
+	
+	xl = xl_create( destination );
+	xl_set( xl, ${analysis_period}, 'analysis_period' );
+	// annual energy for degradation to be applied in spreadsheet
+	ae = alloc(${analysis_period});
+	for(i=0;i<#ae;i++)	{
+		ae[i] = output('annual_energy');	}
+	xl_set( xl, ae[0], 'annual_energy_yr1' );
+//	xl_set( xl, output('cf_energy_net'), 'inSystemOutput' );
+	//xl_set( xl, output('cf_energy_value'), 'inEnergyValue' );
+	
+	// for single value or schedule items
+	degrad = ${degradation};
+//	xl_set( xl, degrad, 'inDegradation' );
+	xl_set( xl, ((#degrad == 1) ? degrad[0]/100 : 1), 'degradation' );
+	//xl_set( xl, ((#degrad == 1) ? 0 : output('cf_degradation')), 'inDegradationSched' );
+	
+	//cashflow_to_excel_incentives(xl);
+
+	xl_free( xl );
+};
+
 cashflow_to_excel{ 'Independent Power Producer' } = define() 
 {
 	source = runtimedir() + 'spreadsheets/utility_ipp.xls';
