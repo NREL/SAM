@@ -1052,7 +1052,9 @@ function setup_MSPT_pages()
 	addpage( [[ 'Molten Salt Tower Solar Field' ]], { 'sidebar'='Heliostat Field' } );
 	addpage( [[ 'Molten Salt Tower Receiver' ]], { 'sidebar'='Tower and Receiver' } );
 	addpage( [[ 'Molten Salt Tower Power Block' ]], { 'sidebar'='Power Cycle' } );
-	addpage( [[ 'Molten Salt Tower Storage' ]], { 'sidebar'='Thermal Storage' } );
+	addpage( [[ 'Molten Salt Tower Storage' ,
+	  {'name' = 'CSP Dispatch Control', 'caption'='Dispatch Control', 'collapsible'=false, 'collapsible_var'='csp_dispatch_is_shown'} ]], 
+	  { 'sidebar'='Thermal Storage' } );
 	addpage( [[ 'Molten Salt Tower Parasitics' ]], { 'sidebar'='Parasitics' } );
 }
 
