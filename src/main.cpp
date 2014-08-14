@@ -2193,7 +2193,10 @@ bool ShowConfigurationDialog( wxWindow *parent, wxString *tech, wxString *fin, b
 	wxFrame *trans = CreateTransparentOverlay( parent );
 	
 	ConfigDialog *dlg = new ConfigDialog( trans );
-	dlg->ShowResetCheckbox( *reset );
+	
+	if ( reset != 0 ) dlg->ShowResetCheckbox( *reset );
+	else dlg->ShowResetCheckbox( false );
+
 	if ( !tech->IsEmpty() && !fin->IsEmpty() )
 		dlg->SetConfiguration( *tech, *fin );
     	
@@ -2201,7 +2204,9 @@ bool ShowConfigurationDialog( wxWindow *parent, wxString *tech, wxString *fin, b
 	if ( dlg->ShowModal() == wxID_OK )
 	{
 		dlg->GetConfiguration( *tech, *fin );
-		*reset = dlg->ResetToDefaults();
+
+		if ( reset != 0 ) *reset = dlg->ResetToDefaults();
+
 		result = true;
 	}
 
