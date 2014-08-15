@@ -52,7 +52,7 @@ static MainWindow *g_mainWindow = 0;
 static wxConfig *g_config = 0;
 static const int g_verMajor = 2014;
 static const int g_verMinor = 8;
-static const int g_verMicro = 8;
+static const int g_verMicro = 15;
 static ConfigDatabase g_cfgDatabase;
 static InputPageDatabase g_uiDatabase;
 static wxLogWindow *g_logWindow = 0;
@@ -1450,7 +1450,8 @@ extern void RegisterReportObjectTypes();
 	g_config = new wxConfig( "SAMnt", "NREL" );
 	
 	
-	wxLogStatus( "startup with SSC version %d, %s", ssc_version(), ssc_build_info() );
+	wxLogStatus( "startup version %d.%d.%d with SSC version %d, %s", 
+		g_verMajor, g_verMinor, g_verMicro,ssc_version(), ssc_build_info() );
 	
 	SplashScreen splash;
 	splash.CenterOnScreen();

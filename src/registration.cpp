@@ -1045,7 +1045,7 @@ wxString SamRegistration::GetKey()
 	return key;
 }
 
-#define MAX_ATTEMPTS 10
+#define MAX_ATTEMPTS 15
 
 bool SamRegistration::CanStart()
 {
@@ -1114,10 +1114,7 @@ bool SamRegistration::CheckInWithServer( int *usage_count )
 	wxString url = SamApp::WebApi("registration") + wxString::Format("/usage?api_key=%s", sam_api_key );
 	wxString post = wxString::Format("sam_key=%s&app_code=desktop&sam_version=%s&count=%d", 
 		(const char*)key.c_str(), (const char*) GetVersionAndPlatform().c_str(), count );
-		
-	wxLogStatus( url );
-	wxLogStatus( post );
-
+	
 	curl.SetPostData( post );
 	curl.Start( url, true );
 	
@@ -1126,9 +1123,21 @@ bool SamRegistration::CheckInWithServer( int *usage_count )
 	wxJSONValue root;
 	wxJSONReader reader;
 	wxString raw( curl.GetDataAsString() );
+
+#ifdef REGISTRATION_DEBUG
+	wxLogStatus("SamRegistration::CheckInWithServer");
+	wxLogStatus("\turl: " + url );
+	wxLogStatus("\tresponse: " + raw );
+#endif
+
 	if ( reader.Parse( raw, &root ) == 0 )
 	{
 		int code = root.Item("status").AsInt();
+		
+#ifdef REGISTRATION_DEBUG
+		wxLogStatus("\tcode: %d", code);
+#endif
+
 		if (code == 200)
 		{
 			SamApp::Settings().Write("count-since-last-verify-" + GetVersionAndPlatform(), 0 );
@@ -1271,8 +1280,16 @@ void SamRegistration::OnRegister( wxCommandEvent & )
 		wxString url = SamApp::WebApi("registration") + "/resend_key?api_key=" + wxString(sam_api_key) + "&email=" + email;
 		curl.Start( url, true );
 		
-		if ( reader.Parse( curl.GetDataAsString(), &root ) == 0 )
+		wxString raw( curl.GetDataAsString() );
+		if ( reader.Parse( raw, &root ) == 0 )
 			code = root.Item("status").AsInt();
+		
+#ifdef REGISTRATION_DEBUG
+		wxLogStatus("SamRegistration::OnRegister (Resend key)");
+		wxLogStatus("\turl: " + url);
+		wxLogStatus("\tresponse: " + raw );
+		wxLogStatus("\tcode: %d", code);
+#endif
 		
 		if ( code == 404 ) m_output->SetValue("No user exists with that email address." );
 		else if ( code == 200 ) m_output->SetValue("An email with your registration key has been sent to " + email + ". Paste the key from the email into the box above and click 'Confirm' to register.");
@@ -1290,15 +1307,19 @@ void SamRegistration::OnRegister( wxCommandEvent & )
 		"&count=" + wxString::Format("%d", count) + 
 		"&sam_version=" + GetVersionAndPlatform();
 		
-	wxLogStatus( url );
-	wxLogStatus( post );
-
 	curl.SetPostData( post );
-	curl.Start( url, true );
-		
-	if ( reader.Parse( curl.GetDataAsString(), &root ) == 0 )
-		code = root.Item("status").AsInt();
+	curl.Start( url, true );		
 
+	wxString raw( curl.GetDataAsString() );
+	if ( reader.Parse( raw, &root ) == 0 )
+		code = root.Item("status").AsInt();
+		
+#ifdef REGISTRATION_DEBUG
+	wxLogStatus("SamRegistration::OnRegister (Resend key)");
+	wxLogStatus("\turl: " + url);
+	wxLogStatus("\tpost: " + post );
+	wxLogStatus("\tcode: %d", code);
+#endif
 
 	if ( code == 200 ) m_output->SetValue( "Registration successful!  You have been sent an email with a registration key.");
 	else if ( code == 409 ) 
@@ -1321,7 +1342,10 @@ void SamRegistration::OnConfirm( wxCommandEvent & )
 {
 	m_output->SetForegroundColour( wxMetroTheme::Colour( wxMT_TEXT ) );
 	wxBusyCursor curs;
+	wxString email = m_email->GetValue();
 	wxString key = m_key->GetValue();
+	
+	SamApp::Settings().Write("user-email-" + GetVersionAndPlatform(), email );
 	SamApp::Settings().Write("user-key-" + GetVersionAndPlatform(), key );
 
 	int total_usage = 0;

@@ -199,7 +199,7 @@ void WelcomeScreen::OnPaint(wxPaintEvent &)
 	wxAutoBufferedPaintDC dc(this);
 	wxSize sz = GetClientSize();
 
-	wxColour grey(180, 180, 180);
+	wxColour grey(200, 200, 200);
 
 	dc.SetBackground( wxBrush( *wxWHITE ) );
 	dc.Clear();
