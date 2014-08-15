@@ -4,6 +4,7 @@
 #include <wx/datstrm.h>
 #include <wex/metro.h>
 
+#include <wex/dview/dvplotctrlsettings.h>
 #include <wex/plot/plplotctrl.h>
 
 #include "object.h"
@@ -110,6 +111,8 @@ public:
 	void AddCashFlowLine( CashFlowLine &cl ) { m_cashflow.push_back(cl); }
 	void AddAutoGraph( AutoGraph &ag ) { m_autographs.push_back(ag); }
 
+	wxDVPlotCtrlSettings GetDViewState();
+	void SetDViewState( wxDVPlotCtrlSettings &settings );
 
 	wxString GetCurrentContext() const;
 	
