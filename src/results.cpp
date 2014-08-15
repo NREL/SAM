@@ -13,10 +13,11 @@
 #include <wex/extgrid.h>
 #include <wex/metro.h>
 #include <wex/dview/dvplotctrl.h>
+#include <wex/dview/dvselectionlist.h>
+#include <wex/dview/dvcolourmap.h>
 #include <wex/plot/plplotctrl.h>
 #include <wex/plot/plaxis.h>
 #include <wex/plot/pllineplot.h>
-#include <wex/dview/dvselectionlist.h>
 #include <wex/numeric.h>
 #include <wex/ole/excelauto.h>
 #include <wex/csv.h>
@@ -267,6 +268,166 @@ ResultsViewer::ResultsViewer( wxWindow *parent, int id )
 	AddPage( m_durationCurve, "Duration curve" );
 }
 
+wxDVPlotCtrlSettings ResultsViewer::GetDViewState()
+{
+	wxDVPlotCtrlSettings settings;
+
+	settings.SetProperty(wxT("tabIndex"), GetSelection());
+
+	//***TimeSeries Properties***
+	settings.SetProperty(wxT("tsAxisMin"), m_hourlySeries->GetViewMin());
+	settings.SetProperty(wxT("tsAxisMax"), m_hourlySeries->GetViewMax());	
+	settings.SetProperty(wxT("tsTopSelectedNames"), m_hourlySeries->GetDataSelectionList()->GetSelectedNamesInCol(0));
+	settings.SetProperty(wxT("tsBottomSelectedNames"), m_hourlySeries->GetDataSelectionList()->GetSelectedNamesInCol(1));
+	
+	settings.SetProperty(wxT("tsDailyAxisMin"), m_dailySeries->GetViewMin());
+	settings.SetProperty(wxT("tsDailyAxisMax"), m_dailySeries->GetViewMax());	
+	settings.SetProperty(wxT("tsDailyTopSelectedNames"), m_dailySeries->GetDataSelectionList()->GetSelectedNamesInCol(0));
+	settings.SetProperty(wxT("tsDailyBottomSelectedNames"), m_dailySeries->GetDataSelectionList()->GetSelectedNamesInCol(1));
+
+	//***DMap Tap Properties***
+	settings.SetProperty(wxT("dmapCurrentName"), m_dMap->GetCurrentDataName());
+	settings.SetProperty(wxT("dmapZMin"), m_dMap->GetZMin());
+	settings.SetProperty(wxT("dmapZMax"), m_dMap->GetZMax());
+	settings.SetProperty(wxT("dmapXMin"), m_dMap->GetXMin());
+	settings.SetProperty(wxT("dmapXMax"), m_dMap->GetXMax());
+	settings.SetProperty(wxT("dmapYMin"), m_dMap->GetYMin());
+	settings.SetProperty(wxT("dmapYMax"), m_dMap->GetYMax());
+	settings.SetProperty(wxT("dmapColourMap"), m_dMap->GetCurrentColourMap()->GetName());
+	//Add link to ts
+
+	//***Monthly Profile Properties***
+	settings.SetProperty(wxT("profileJanSelected"), m_profilePlots->IsMonthIndexSelected(0));
+	settings.SetProperty(wxT("profileFebSelected"), m_profilePlots->IsMonthIndexSelected(1));
+	settings.SetProperty(wxT("profileMarSelected"), m_profilePlots->IsMonthIndexSelected(2));
+	settings.SetProperty(wxT("profileAprSelected"), m_profilePlots->IsMonthIndexSelected(3));
+	settings.SetProperty(wxT("profileMaySelected"), m_profilePlots->IsMonthIndexSelected(4));
+	settings.SetProperty(wxT("profileJunSelected"), m_profilePlots->IsMonthIndexSelected(5));
+	settings.SetProperty(wxT("profileJulSelected"), m_profilePlots->IsMonthIndexSelected(6));
+	settings.SetProperty(wxT("profileAugSelected"), m_profilePlots->IsMonthIndexSelected(7));
+	settings.SetProperty(wxT("profileSepSelected"), m_profilePlots->IsMonthIndexSelected(8));
+	settings.SetProperty(wxT("profileOctSelected"), m_profilePlots->IsMonthIndexSelected(9));
+	settings.SetProperty(wxT("profileNovSelected"), m_profilePlots->IsMonthIndexSelected(10));
+	settings.SetProperty(wxT("profileDecSelected"), m_profilePlots->IsMonthIndexSelected(11));
+	settings.SetProperty(wxT("profileAnnualSelected"), m_profilePlots->IsMonthIndexSelected(12));
+
+	settings.SetProperty(wxT("profileSelectedNames"), m_profilePlots->GetDataSelectionList()->GetSelectedNamesInCol(0));
+
+	//***Statistics Table Properties:  None
+
+	//***PDF CDF Tab Properties***
+	settings.SetProperty(wxT("pnCdfCurrentName"), m_pnCdf->GetCurrentDataName());
+	settings.SetProperty(wxT("pnCdfNormalize"), int(m_pnCdf->GetNormalizeType()));
+	settings.SetProperty(wxT("pnCdfBinSelectionIndex"), m_pnCdf->GetBinSelectionIndex());
+	settings.SetProperty(wxT("pnCdfBins"), m_pnCdf->GetNumberOfBins());
+	settings.SetProperty(wxT("pnCdfYMax"), m_pnCdf->GetYMax());
+
+
+	//*** DURATION CURVE PROPERTIES*** 
+	settings.SetProperty(wxT("dcSelectedNames"), m_durationCurve->GetDataSelectionList()->GetSelectedNamesInCol(0));
+
+
+	//*** SCATTER PLOT PROPERTIES ***
+	settings.SetProperty(wxT("scatterXDataName"), m_scatterPlot->GetScatterSelectionList()->GetSelectedNamesInCol(0));
+	settings.SetProperty(wxT("scatterYDataNames"), m_scatterPlot->GetScatterSelectionList()->GetSelectedNamesInCol(1));
+
+
+	return settings;
+}
+
+void ResultsViewer::SetDViewState( wxDVPlotCtrlSettings &settings )
+{
+	long i;
+	settings.GetProperty(wxT("tabIndex")).ToLong(&i);
+	SetSelection(i);
+
+	//***TimeSeries Properties***
+	m_hourlySeries->SetTopSelectedNames(settings.GetProperty(wxT("tsTopSelectedNames")));
+	m_hourlySeries->SetBottomSelectedNames(settings.GetProperty(wxT("tsBottomSelectedNames")));
+
+	//Set min/max after setting plots to make sure there is an axis to set.
+	double min, max;
+	settings.GetProperty(wxT("tsAxisMin")).ToDouble(&min);
+	settings.GetProperty(wxT("tsAxisMax")).ToDouble(&max);
+	m_hourlySeries->SetViewMin(min);
+	m_hourlySeries->SetViewMax(max);
+
+	
+	m_dailySeries->SetTopSelectedNames(settings.GetProperty(wxT("tsDailyTopSelectedNames")));
+	m_dailySeries->SetBottomSelectedNames(settings.GetProperty(wxT("tsDailyBottomSelectedNames")));
+	
+	settings.GetProperty(wxT("tsDailyAxisMin")).ToDouble(&min);
+	settings.GetProperty(wxT("tsDailyAxisMax")).ToDouble(&max);
+	m_dailySeries->SetViewMin(min);
+	m_dailySeries->SetViewMax(max);
+	
+
+	//***DMap Tab Properties***
+	m_dMap->SetCurrentDataName(settings.GetProperty(wxT("dmapCurrentName")));
+	m_dMap->SetColourMapName(settings.GetProperty(wxT("dmapColourMap"))); //Do this before setting z min/max.
+
+	settings.GetProperty(wxT("dmapZMin")).ToDouble(&min);
+	settings.GetProperty(wxT("dmapZMax")).ToDouble(&max);
+	m_dMap->SetZMin(min);
+	m_dMap->SetZMax(max);
+	settings.GetProperty(wxT("dmapXMin")).ToDouble(&min);
+	settings.GetProperty(wxT("dmapXMax")).ToDouble(&max);
+	m_dMap->SetXMin(min);
+	m_dMap->SetXMax(max);
+	settings.GetProperty(wxT("dmapYMin")).ToDouble(&min);
+	settings.GetProperty(wxT("dmapYMax")).ToDouble(&max);
+	m_dMap->SetYMin(min);
+	m_dMap->SetYMax(max);
+
+
+	//***Monthly Profile Properties***
+	m_profilePlots->SetMonthIndexSelected(0, settings.GetProperty(wxT("profileJanSelected")) == wxT("1"));
+	m_profilePlots->SetMonthIndexSelected(1, settings.GetProperty(wxT("profileFebSelected")) == wxT("1"));
+	m_profilePlots->SetMonthIndexSelected(2, settings.GetProperty(wxT("profileMarSelected")) == wxT("1"));
+	m_profilePlots->SetMonthIndexSelected(3, settings.GetProperty(wxT("profileAprSelected")) == wxT("1"));
+	m_profilePlots->SetMonthIndexSelected(4, settings.GetProperty(wxT("profileMaySelected")) == wxT("1"));
+	m_profilePlots->SetMonthIndexSelected(5, settings.GetProperty(wxT("profileJunSelected")) == wxT("1"));
+	m_profilePlots->SetMonthIndexSelected(6, settings.GetProperty(wxT("profileJulSelected")) == wxT("1"));
+	m_profilePlots->SetMonthIndexSelected(7, settings.GetProperty(wxT("profileAugSelected")) == wxT("1"));
+	m_profilePlots->SetMonthIndexSelected(8, settings.GetProperty(wxT("profileSepSelected")) == wxT("1"));
+	m_profilePlots->SetMonthIndexSelected(9, settings.GetProperty(wxT("profileOctSelected")) == wxT("1"));
+	m_profilePlots->SetMonthIndexSelected(10, settings.GetProperty(wxT("profileNovSelected")) == wxT("1"));
+	m_profilePlots->SetMonthIndexSelected(11, settings.GetProperty(wxT("profileDecSelected")) == wxT("1"));
+	m_profilePlots->SetMonthIndexSelected(12, settings.GetProperty(wxT("profileAnnualSelected")) == wxT("1"));
+
+	m_profilePlots->SetSelectedNames(settings.GetProperty(wxT("profileSelectedNames")));
+
+	//***Statistics Table Properties:  None
+
+	//***PDF CDF Tab Properties***
+	long normalize;
+	settings.GetProperty(wxT("pnCdfNormalize")).ToLong(&normalize);
+	m_pnCdf->SetNormalizeType( wxPLHistogramPlot::NormalizeType(normalize));
+	long binIndex;
+	settings.GetProperty(wxT("pnCdfBinSelectionIndex")).ToLong(&binIndex);
+	m_pnCdf->SetBinSelectionIndex(binIndex);
+	long bins;
+	settings.GetProperty(wxT("pnCdfBins")).ToLong(&bins);
+	m_pnCdf->SetNumberOfBins(bins);
+	m_pnCdf->SetCurrentDataName(settings.GetProperty(wxT("pnCdfCurrentName")), true);
+	double yMax;
+	settings.GetProperty(wxT("pnCdfYMax")).ToDouble(&yMax);
+	m_pnCdf->SetYMax(yMax);
+
+
+	//*** DURATION CURVE PROPERTIES ***
+	m_durationCurve->SetSelectedNames(settings.GetProperty(wxT("dcSelectedNames")), true);
+	
+	
+	//*** SCATTER PLOT PROPERTIES ***
+	m_scatterPlot->SetXSelectedName(settings.GetProperty(wxT("scatterXDataName")));
+	m_scatterPlot->SetYSelectedNames(settings.GetProperty(wxT("scatterYDataNames")));
+		
+
+	Refresh();
+	Update();
+}
+
 	
 wxString ResultsViewer::GetCurrentContext() const
 {
@@ -464,6 +625,7 @@ void ResultsViewer::Setup( Simulation *sim )
 
 
 	// setup time series datasets
+	wxDVPlotCtrlSettings viewstate = GetDViewState();
 	RemoveAllDataSets();
 	wxArrayString vars = m_sim->ListOutputs();
 	for( size_t i=0;i<vars.size();i++ )
@@ -480,6 +642,8 @@ void ResultsViewer::Setup( Simulation *sim )
 			}
 		}
 	}
+
+	SetDViewState( viewstate );
 
 	// setup graphs
 	m_graphViewer->Setup( m_sim );
