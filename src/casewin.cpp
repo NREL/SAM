@@ -496,14 +496,15 @@ void CaseWindow::OnCommand( wxCommandEvent &evt )
 			if ( !vv ) return;
 			int sel = vv->Integer();
 			
-			wxMenu menu;
+			wxMetroPopupMenu menu;
+			menu.SetFont( m_exclPageButton->GetFont() );
 			for( size_t i=0;i<m_currentGroup->Pages.size();i++)
 				if ( m_currentGroup->Pages[i].size() > 0 )
-					menu.AppendCheckItem( ID_EXCL_OPTION+i, m_currentGroup->Pages[i][0].Caption );
+					menu.AppendCheckItem( ID_EXCL_OPTION+i, m_currentGroup->Pages[i][0].Caption, i == (int)sel );
 
-			menu.Check( ID_EXCL_OPTION+sel, true );
-
-			PopupMenu( &menu );
+			wxPoint pos( 0, m_exclPageButton->GetClientSize().GetHeight() );
+			pos = m_exclPageButton->ClientToScreen( pos );
+			menu.Popup( this, pos, wxTOP|wxLEFT );
 		}
 	}
 	else if ( evt.GetId() == ID_COLLAPSE )
