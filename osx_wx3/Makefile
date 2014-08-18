@@ -16,6 +16,7 @@ CXXFLAGS = $(CFLAGS)
 LDFLAGS = `wx-config-3 --libs` `wx-config-3 --libs aui` `wx-config-3 --libs stc` `wx-config-3 --libs propgrid` `wx-config-3 --libs richtext` -lm $(LKLIB) $(WEXLIB) -lstdc++ -lcurl
 
 OBJECTS = ide.o \
+	defmgr.o \
 	urdb.o \
 	macro.o \
 	s3clipper.o \
