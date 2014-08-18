@@ -1032,7 +1032,7 @@ void fcall_substance_userhtf(lk::invoke_t &cxt)
 
 	double res = 0.0;
 	size_t rows = vec->size();
-	wxLogStatus(wxString::Format("user htf, vec size: %d", rows));
+//	wxLogStatus(wxString::Format("user htf, vec size: %d", rows));
 	if (rows > 1)
 	{
 		double xmin = 0, xmax = 0, ymin = 0, ymax = 0, percent = 0;
@@ -1040,10 +1040,10 @@ void fcall_substance_userhtf(lk::invoke_t &cxt)
 		{
 			std::vector<lk::vardata_t> *col_vec_prev = vec->at(i - 1).vec();
 			std::vector<lk::vardata_t> *col_vec = vec->at(i).vec();
-			wxLogStatus(wxString::Format("user htf, prev col vec size: %d, col vec size: %d", col_vec_prev->size(), col_vec->size()));
+//			wxLogStatus(wxString::Format("user htf, prev col vec size: %d, col vec size: %d", col_vec_prev->size(), col_vec->size()));
 			if ((col_vec_prev->size() != 7) || (col_vec->size() != 7)) break;
 
-			wxLogStatus(wxString::Format("tempC=%lg,col,prev_col_vec->at(0).as_number()=%lg,col_vec->at(0).as_number()=%lg", tempC, col_vec_prev->at(0).as_number(), col_vec->at(0).as_number()));
+//			wxLogStatus(wxString::Format("tempC=%lg,col,prev_col_vec->at(0).as_number()=%lg,col_vec->at(0).as_number()=%lg", tempC, col_vec_prev->at(0).as_number(), col_vec->at(0).as_number()));
 			if (col_vec->at(0).as_number() >= tempC)
 			{
 				/* interp and return */
@@ -1061,7 +1061,7 @@ void fcall_substance_userhtf(lk::invoke_t &cxt)
 				else
 					percent = 1;
 				res = ymin + percent*(ymax - ymin);
-				wxLogStatus(wxString::Format("xmin=%lg,xmax=%lg,ymin=%lg,ymax=%lg,percent=%lg,res=%lg", xmin, xmax, ymin, ymax, percent, res));
+//				wxLogStatus(wxString::Format("xmin=%lg,xmax=%lg,ymin=%lg,ymax=%lg,percent=%lg,res=%lg", xmin, xmax, ymin, ymax, percent, res));
 
 				break;
 			}
