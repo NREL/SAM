@@ -1009,6 +1009,67 @@ void fcall_substance_density(lk::invoke_t &cxt)
 	cxt.result().assign(substance_dens(substanceID, tempC));
 }
 
+void fcall_substance_userhtf(lk::invoke_t &cxt)
+{
+	LK_DOC("substance_userhtf", "Return the user htf density or specific heat given a user htf matrix  and temperature in C and either density or specific heat request", "(variant:user_matrix, variant:tempC):variant, string::type(density or specific heat)");
+	std::vector<lk::vardata_t> *vec = cxt.arg(0).vec();
+	double tempC = cxt.arg(1).as_number();
+	wxString type = cxt.arg(2).as_string();
+	// form is seven columns by 2 or more rows
+	int col = 1; // specific heat - can add others
+	if (type.Lower() == "density")
+		col = 2;
+	else if (type.Lower() == "viscosity")
+		col = 3;
+	else if (type.Lower() == "kinematic viscosity")
+		col = 4;
+	else if (type.Lower() == "conductivity")
+		col = 5;
+	else if (type.Lower() == "enthalpy")
+		col = 6;
+	else
+		col = 1; // specific heat default or error out
+
+	double res = 0.0;
+	size_t rows = vec->size();
+	wxLogStatus(wxString::Format("user htf, vec size: %d", rows));
+	if (rows > 1)
+	{
+		double xmin = 0, xmax = 0, ymin = 0, ymax = 0, percent = 0;
+		for (size_t i = 1; i < rows; i++)
+		{
+			std::vector<lk::vardata_t> *col_vec_prev = vec->at(i - 1).vec();
+			std::vector<lk::vardata_t> *col_vec = vec->at(i).vec();
+			wxLogStatus(wxString::Format("user htf, prev col vec size: %d, col vec size: %d", col_vec_prev->size(), col_vec->size()));
+			if ((col_vec_prev->size() != 7) || (col_vec->size() != 7)) break;
+
+			wxLogStatus(wxString::Format("tempC=%lg,col,prev_col_vec->at(0).as_number()=%lg,col_vec->at(0).as_number()=%lg", tempC, col_vec_prev->at(0).as_number(), col_vec->at(0).as_number()));
+			if (col_vec->at(0).as_number() >= tempC)
+			{
+				/* interp and return */
+				xmin = col_vec_prev->at(0).as_number();
+				xmax = col_vec->at(0).as_number();
+				ymin = col_vec_prev->at(col).as_number();
+				ymax = col_vec->at(col).as_number();
+				if (xmax <= xmin)
+				{
+					res = 1.0;
+					break;
+				}
+				if (xmax > xmin)
+					percent = (tempC - xmin) / (xmax - xmin);
+				else
+					percent = 1;
+				res = ymin + percent*(ymax - ymin);
+				wxLogStatus(wxString::Format("xmin=%lg,xmax=%lg,ymin=%lg,ymax=%lg,percent=%lg,res=%lg", xmin, xmax, ymin, ymax, percent, res));
+
+				break;
+			}
+		}
+	}
+	cxt.result().assign(res);
+}
+
 void fcall_substance_specific_heat(lk::invoke_t &cxt)
 {
 	LK_DOC("substance_specific_heat", "Return the specific heat given a substance ID and temperature in C", "(variant:substanceID, variant:tempC):variant");
@@ -1664,6 +1725,7 @@ lk::fcall_t* invoke_equation_funcs()
 {
 	static const lk::fcall_t vec[] = {
 		fcall_substance_density,
+		fcall_substance_userhtf,
 		fcall_substance_specific_heat,
 		fcall_snlinverter,
 		fcall_current_at_voltage_cec,
@@ -1705,6 +1767,7 @@ lk::fcall_t* invoke_uicallback_funcs()
 		fcall_refresh,
 		fcall_dview,
 		fcall_substance_density,
+		fcall_substance_userhtf,
 		fcall_substance_specific_heat,
 		fcall_snlinverter,
 		fcall_current_at_voltage_cec,
