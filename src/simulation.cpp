@@ -497,48 +497,44 @@ bool Simulation::InvokeWithHandler( ISimulationHandler *ih )
 					field = name.Mid(pos+1);
 					name = name.Left(pos);
 				}
-
-				VarValue *vv = GetInput(name);
-				if ( !vv && reqd == "*" )
+				
+				int existing_type = ssc_data_query( p_data, ssc_info_name( p_inf ) );
+				if ( existing_type != data_type )
 				{
-					int existing_type = ssc_data_query( p_data, ssc_info_name( p_inf ) );
-					if ( existing_type == SSC_INVALID )
-						ih->Error( "SSC requires input '" + name + "', but was not found in the SAM UI or from previous simulations" );
-					else if ( existing_type != data_type )
-						ih->Error( "SSC requires input '" + name + "', but variable from a previous simulation had an incompatible data type");
-				}
-				else if ( vv != 0 )
-				{
-
-					if ( !field.IsEmpty() )
+					if (VarValue *vv = GetInput(name) )
 					{
-						if ( vv->Type() != VV_TABLE )
-							ih->Error( "SSC variable has table:field specification, but '" + name + "' is not a table in SAM" );
+						if ( !field.IsEmpty() )
+						{
+							if ( vv->Type() != VV_TABLE )
+								ih->Error( "SSC variable has table:field specification, but '" + name + "' is not a table in SAM" );
 
-						bool do_copy_var = false;
-						if ( reqd.Left(1) == "?" )
-						{
-							// if the SSC variable is optional, check for the 'en_<field>' element in the table
-							if ( VarValue *en_flag = vv->Table().Get( "en_" + field ) )
-								if ( en_flag->Boolean() )
-									do_copy_var = true;
-						}
-						else do_copy_var = true;
-						
-						if ( do_copy_var )
-						{
-							if ( VarValue *vv_field = vv->Table().Get( field ) )
+							bool do_copy_var = false;
+							if ( reqd.Left(1) == "?" )
 							{
-								if ( !VarValueToSSC( vv_field, p_data, name + ":" + field ) )
-									ih->Error( "Error translating table:field variable from SAM UI to SSC for '" + name + "':" + field );
+								// if the SSC variable is optional, check for the 'en_<field>' element in the table
+								if ( VarValue *en_flag = vv->Table().Get( "en_" + field ) )
+									if ( en_flag->Boolean() )
+										do_copy_var = true;
 							}
-						}
+							else do_copy_var = true;
 						
-					}
+							if ( do_copy_var )
+							{
+								if ( VarValue *vv_field = vv->Table().Get( field ) )
+								{
+									if ( !VarValueToSSC( vv_field, p_data, name + ":" + field ) )
+										ih->Error( "Error translating table:field variable from SAM UI to SSC for '" + name + "':" + field );
+								}
+							}
+						
+						}
 
-					if ( !VarValueToSSC( vv, p_data, name ))
-						ih->Error( "Error translating data from SAM UI to SSC for " + name );
+						if ( !VarValueToSSC( vv, p_data, name ) )
+							ih->Error( "Error translating data from SAM UI to SSC for " + name );
 					
+					}
+					else if ( reqd == "*" )
+						ih->Error( "SSC requires input '" + name + "', but was not found in the SAM UI or from previous simulations" );
 				}
 			}
 		}
