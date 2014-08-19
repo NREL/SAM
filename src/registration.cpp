@@ -1224,8 +1224,11 @@ SamRegistration::SamRegistration( wxWindow *parent )
 	m_output->SetInitialSize( wxSize(550, 150 ) );
 	m_output->SetFont( font );
 	m_output->SetValue("To register SAM:\n"
-		"1.  Enter your email address and click Register. You will be sent an email with a registration key.\n"
-		"2.  Enter the registration key and click Confirm." );
+		"1. Type your email address and click Register.\n"
+		"    You should receive an email with a registration key.\n"
+		"2. Copy and paste the key from the email and click Confirm.\n"
+        "\n"
+        "If you are already registered but cannot find your key, type your email address and click Register." );
 	
 
 	sizer->Add( panel, 0, wxALL|wxEXPAND, 0 );
