@@ -531,7 +531,7 @@ void CaseWindow::OnCommand( wxCommandEvent &evt )
 
 		VarValue *vv = m_case->Values().Get( m_currentGroup->ExclusivePageVar );
 		int sel = evt.GetId() - ID_EXCL_OPTION;
-		if ( sel != vv->Integer() )
+		if ( vv != 0 && sel != vv->Integer() )
 		{
 			wxBusyCursor wait;			
 			vv->Set( sel );
