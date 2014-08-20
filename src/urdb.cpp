@@ -153,6 +153,9 @@ bool OpenEI::QueryUtilityRates(const wxString &name, std::vector<RateInfo> &rate
 		return false;
 	}
 
+	json_data.Replace("(\"", "(");
+	json_data.Replace("\")", ")");
+
 	wxJSONReader reader;
 	wxJSONValue root;
 	if (reader.Parse( json_data, &root )!=0)
