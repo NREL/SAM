@@ -48,11 +48,7 @@ clipped_power = get('annual_inv_cliploss'); //total Watts AC that were clipped
 if (clipped_power == 0)
 	clipped_percent = 'N/A';
 else
-	clipped_percent = clipped_power / (clipped_power + get('annual_ac_gross') * 1000); //clipped power over the total AC power that would have been produced had the inverters not been clipping, convert annual_ac_gross from kWh-AC to W-AC
-	
-ac_gross = get('annual_ac_gross');
-dc_gross = get('annual_dc_gross');
-msgbox( ac_gross + " dc=" + dc_gross);
+	clipped_percent = (clipped_power / (clipped_power + get('annual_ac_gross') * 1000))*100; //clipped power over the total AC power that would have been produced had the inverters not been clipping, convert annual_ac_gross from kWh-AC to W-AC
 
 //Inverter MPPT performance
 inv_mppt_low = get('mppt_low_inverter'); //Volts
@@ -94,65 +90,23 @@ str = str + '<tr><td bgcolor=#dddddd>% of DC Power lost </td><td>' + clipped_per
 str = str + '</table><br><br>';
 
 //Inverter MPPT Performance
-red = '#ff0000';
-orange = '#ff9933';
-black = '#000000';
+red = ' bgcolor=#ff0000>';
+orange = ' bgcolor=#ff9933>';
+normal = '>';
 str = str + '<h5>Inverter MPPT Performance</h5><br>';
 str = str + 'System performance is reduced if the inverter is not operating within its MPPT range. Additionally, if the maximum voltage of the inverter is exceeded, this could damage the inverter and/or void the warranty.<br><br>';
 str = str + '<table bgcolor=#f0f0f0>';
-if (actual_voltage_low[0] <= inv_mppt_low) textcolor = orange;
-else textcolor = black;
-str = str + '<tr><td bgcolor=#dddddd>MPPT Voltage Minimum </td><td> ' + inv_mppt_low + ' </td><td bgcolor=#dddddd>Actual Voltage Minimum </td><td><font color=' + textcolor + '>' + actual_voltage_low[0] + '</font></td></tr>';
-if (actual_voltage_hi[0] >= inv_mppt_hi) textcolor = orange;
-else textcolor = black;
-str = str + '<tr><td bgcolor=#dddddd>MPPT Voltage Maximum </td><td> ' + inv_mppt_hi + ' </td><td bgcolor=#dddddd>Actual Voltage Maximum </td><td fontcolor=' + textcolor + '>' + actual_voltage_hi[0] + '</td></tr>';
-if (actual_voltage_hi[0] >= inv_voltage_max) textcolor = red;
-else textcolor = black;
-str = str + '<tr><td bgcolor=#dddddd>Maximum Allowable Voltage </td><td> ' + inv_voltage_max + ' </td><td bgcolor=#dddddd>Actual Maximum Voltage </td><td fontcolor=' + textcolor + '>' + actual_voltage_hi[0] + '</td></tr>';
+if (actual_voltage_low[0] <= inv_mppt_low) fillcolor = orange;
+else fillcolor = normal;
+str = str + '<tr><td bgcolor=#dddddd>MPPT Voltage Minimum </td><td> ' + inv_mppt_low + ' </td><td bgcolor=#dddddd>Actual Voltage Minimum </td><td' + fillcolor + actual_voltage_low[0] + '</font></td></tr>';
+if (actual_voltage_hi[0] >= inv_mppt_hi) fillcolor = orange;
+else fillcolor = normal;
+str = str + '<tr><td bgcolor=#dddddd>MPPT Voltage Maximum </td><td> ' + inv_mppt_hi + ' </td><td bgcolor=#dddddd>Actual Voltage Maximum </td><td' + fillcolor + actual_voltage_hi[0] + '</td></tr>';
+if (actual_voltage_hi[0] >= inv_voltage_max) fillcolor = red;
+else fillcolor = normal;
+str = str + '<tr><td bgcolor=#dddddd>Maximum Allowable Voltage </td><td> ' + inv_voltage_max + ' </td><td bgcolor=#dddddd>Actual Maximum Voltage </td><td' + fillcolor + actual_voltage_hi[0] + '</td></tr>';
 str = str + '</table><br><br>';
 
 str = str + '</body></html>';
 html_dialog(str, 'Inverter Sizing Results', [1000, 800]); 
 //html_dialog(str, 'Results', [ 10, 10, 600, 700 ]); // custom title, window position and size
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
