@@ -262,7 +262,7 @@ function setup_windpower_pages()
 	addpage( [[ 'Wind Resource File'], 
 	          [ 'Wind Speed Weibull Distribution']], 
 	         { 'sidebar'='Wind Resource', 'exclusive_var'='wind_resource_model_choice' } );
-	addpage( [[ 'Wind Siting Considerations' ]], { 'sidebar'='Siting Considerations' } );
+	//addpage( [[ 'Wind Siting Considerations' ]], { 'sidebar'='Siting Considerations' } );
 	addpage( [[ 'Wind Turbine Design' ]], { 'sidebar'='Wind Turbine' } );
 	addpage( [[ 'Wind Farm Specifications' ]], { 'sidebar'='Wind Farm' } );
 
