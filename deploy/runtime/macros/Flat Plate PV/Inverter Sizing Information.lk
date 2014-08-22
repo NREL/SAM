@@ -54,18 +54,36 @@ else
 inv_mppt_low = get('mppt_low_inverter'); //Volts
 inv_mppt_hi = get('mppt_hi_inverter'); //Volts
 inv_voltage_max = get('vdcmax_inverter'); //Volts
-actual_voltage_low = [-999, -999, -999, -999]; //initialize arrays to store information
-actual_voltage_hi = [-999, -999, -999, -999];
-for (i=0; i<4; i++) //loop through subarrays
+
+subarrays = [1, 0, 0, 0]; //subarray1 is always enabled
+actual_voltage_hi = [-999, -999, -999, -999]; //initialize arrays for each subarray
+actual_voltage_low = [999, 999, 999, 999];
+sunup = get('hourly_sunup');
+
+for (j=0; j<4; j++) //loop through subarrays
 {
-	if (i > 0) //first subarray is always enabled
-		if (('subarray' + i + '_enable') != 1)
-			continue; //skip over any disabled subarrays
-	actual_voltage_low[i] = min(get('hourly_subarray1_dc_voltage')); //Volts
-	actual_voltage_hi[i] = max(get('hourly_subarray1_dc_voltage')); //Volts
+	if(j>0) //subarray 1 is always enabled
+	{
+		if (get(('subarray' + (j+1) + '_enable')) == 0) //skip over disabled subarrays
+			continue;
+		else
+			subarrays[j] = 1;
+	}
+	string = 'hourly_subarray' + to_string(j+1) + '_dc_voltage';
+	dc_voltage = get(string); //Volts
+	actual_voltage_hi[j] = max(dc_voltage); //Volts
+	for(i=0; i<8760;i++)
+	{
+		if(sunup[i] == 1)
+			if(dc_voltage[i] < actual_voltage_low[j]) //lowest voltage seen when the sun is up (system is operating)
+				actual_voltage_low[j] = dc_voltage[i]; //Volts
+	}
 }
 
 // Create HTML Output Window******************************************************************************************************************************************************
+red = ' bgcolor=#ff0000>';
+orange = ' bgcolor=#ff9933>';
+normal = '>';
 str = '<html><body><h4>Inverter Sizing Information</h4>';
 
 //DC-AC Ratio Information
@@ -81,32 +99,64 @@ str = str + '</table><br><br>';
 
 //Inverter Clipping Information
 str = str + '<h5>First Year Inverter Clipping</h5><br>';
-str = str + 'There are multiple ways to reduce inverter clipping. You can choose a larger capacity inverter, reduce the number of modules, or reduce the number of modules per string. ';
-str = str + 'Some inverter clipping may be financially worthwhile in order to avoid the additional cost of increasing your inverter size, or to produce more power in the rest of the hours of the year.<br><br>';
+str = str + 'There are multiple ways to reduce inverter clipping. You can choose a larger capacity inverter, increase the number of inverters, reduce the number of modules, or reduce the number of modules per string. ';
+str = str + 'Some inverter clipping may be financially worthwhile in order to avoid the additional cost of increasing your inverter size, or to produce more power with the same inverter in the rest of the hours of the year.<br><br>';
 str = str + '<table bgcolor=#f0f0f0>';
-str = str + '<tr><td bgcolor=#dddddd>Number of Hours Clipped </td><td>' + clipped_hours + '</td></tr>';
+fillcolor = normal;
+if (clipped_hours > 438) fillcolor = orange; //clipping more than 5% of the time
+if (clipped_hours > 876) fillcolor = red; //clipping more than 10% of the time
+str = str + '<tr><td bgcolor=#dddddd>Number of Hours Clipped </td><td' + fillcolor + clipped_hours + '</td></tr>';
 str = str + '<tr><td bgcolor=#dddddd>Total kWh (AC) lost </td><td>' + (clipped_power/1000) + '</td></tr>';
-str = str + '<tr><td bgcolor=#dddddd>% of DC Power lost </td><td>' + clipped_percent + '</td></tr>';
+fillcolor = normal;
+if (clipped_percent > 20) fillcolor = orange; //clipping more than 20% of the power
+if (clipped_percent > 50) fillcolor = red; //clipping more than 50% of the power
+str = str + '<tr><td bgcolor=#dddddd>% of DC Power lost </td><td' + fillcolor + clipped_percent + '</td></tr>';
 str = str + '</table><br><br>';
 
 //Inverter MPPT Performance
-red = ' bgcolor=#ff0000>';
-orange = ' bgcolor=#ff9933>';
-normal = '>';
-str = str + '<h5>Inverter MPPT Performance</h5><br>';
-str = str + 'System performance is reduced if the inverter is not operating within its MPPT range. Additionally, if the maximum voltage of the inverter is exceeded, this could damage the inverter and/or void the warranty.<br><br>';
-str = str + '<table bgcolor=#f0f0f0>';
-if (actual_voltage_low[0] <= inv_mppt_low) fillcolor = orange;
-else fillcolor = normal;
-str = str + '<tr><td bgcolor=#dddddd>MPPT Voltage Minimum </td><td> ' + inv_mppt_low + ' </td><td bgcolor=#dddddd>Actual Voltage Minimum </td><td' + fillcolor + actual_voltage_low[0] + '</font></td></tr>';
-if (actual_voltage_hi[0] >= inv_mppt_hi) fillcolor = orange;
-else fillcolor = normal;
-str = str + '<tr><td bgcolor=#dddddd>MPPT Voltage Maximum </td><td> ' + inv_mppt_hi + ' </td><td bgcolor=#dddddd>Actual Voltage Maximum </td><td' + fillcolor + actual_voltage_hi[0] + '</td></tr>';
-if (actual_voltage_hi[0] >= inv_voltage_max) fillcolor = red;
-else fillcolor = normal;
-str = str + '<tr><td bgcolor=#dddddd>Maximum Allowable Voltage </td><td> ' + inv_voltage_max + ' </td><td bgcolor=#dddddd>Actual Maximum Voltage </td><td' + fillcolor + actual_voltage_hi[0] + '</td></tr>';
-str = str + '</table><br><br>';
 
+str = str + '<h5>Inverter MPPT Performance</h5><br>';
+str = str + 'System performance is reduced if the inverter is not operating within its MPPT range. Additionally, if the maximum voltage of the inverter is exceeded, this could damage the inverter and/or void the warranty. ';
+str = str + 'Exceeding voltage limits may be mitigated by selecting an inverter with different voltage limits, selecting a different size module, or reducing the number of modules per string.<br><br>';
+str = str + '<table bgcolor=#f0f0f0>';
+//first row
+str = str + '<tr><td>Inverter Specifications</td><td> V </td><td>Actual System Voltages</td>';
+for(i=0; i<4; i++)
+	if(subarrays[i] == 1)
+		str = str + '<td>Subarray ' + (i+1) + '</td>';
+str = str + '</tr>';
+//second row
+str = str + '<tr><td bgcolor=#dddddd>MPPT Voltage Minimum </td><td> ' + inv_mppt_low + ' </td><td bgcolor=#dddddd>Actual Voltage Minimum </td>';
+for(i=0; i<4; i++)
+	if(subarrays[i] == 1)
+	{	
+		if (actual_voltage_low[i] <= inv_mppt_low) fillcolor = orange;
+		else fillcolor = normal;
+		str = str + '<td' + fillcolor + actual_voltage_low[i] + '</font></td>';
+	}
+str = str + '</tr>';
+//third row
+str = str + '<tr><td bgcolor=#dddddd>MPPT Voltage Maximum </td><td> ' + inv_mppt_hi + ' </td><td bgcolor=#dddddd>Actual Voltage Maximum </td>';
+for(i=0; i<4; i++)
+	if(subarrays[i] == 1)
+	{	
+		if (actual_voltage_hi[i] >= inv_mppt_hi) fillcolor = orange;
+		else fillcolor = normal;
+		str = str + '<td' + fillcolor + actual_voltage_hi[i] + '</font></td>';
+	}
+str = str + '</tr>';
+//fourth row
+str = str + '<tr><td bgcolor=#dddddd>Maximum Allowable Voltage </td><td> ' + inv_voltage_max + ' </td><td bgcolor=#dddddd>Actual Maximum Voltage </td>';
+for(i=0; i<4; i++)
+	if(subarrays[i] == 1)
+	{	
+		if (actual_voltage_hi[i] >= inv_voltage_max) fillcolor = red;
+		else fillcolor = normal;
+		str = str + '<td' + fillcolor + actual_voltage_hi[i] + '</font></td>';
+	}
+str = str + '</tr>';
+//end table
+str = str + '</table><br><br>';
 str = str + '</body></html>';
-html_dialog(str, 'Inverter Sizing Results', [1000, 800]); 
-//html_dialog(str, 'Results', [ 10, 10, 600, 700 ]); // custom title, window position and size
+html_dialog(str, 'Inverter Sizing Results', [1000, 800]); //custom window title and size
+//html_dialog(str, 'Inverter Sizing Results', [ 10, 10, 1000, 800 ]); // custom title, window position and size
