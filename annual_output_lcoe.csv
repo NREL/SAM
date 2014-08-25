@@ -1,10 +1,10 @@
-TECHNOLOGY,FINANCING,ANNUAL_OUTPUT,LCOE_NOM
+TECHNOLOGY,FINANCING,ANNUAL_OUTPUT,LCOE_NOM,LCOE_REAL,MESSAGES
 Flat Plate PV,Residential,6776.79,11.2331,8.65496,; 
-Flat Plate PV,Commercial,50981.4,7.19884,5.58792,; Warning: Inverter oversized: The maximum inverter output was 74.94% of the rated value 36 kWac.
-Flat Plate PV,Single Owner,50981.4,32.9463,25.5738,; Warning: Inverter oversized: The maximum inverter output was 74.94% of the rated value 36 kWac.
-Flat Plate PV,Leveraged Partnership Flip,50981.4,32.9249,25.5572,; Warning: Inverter oversized: The maximum inverter output was 74.94% of the rated value 36 kWac.
-Flat Plate PV,All Equity Partnership Flip,50981.4,33.6356,26.1089,; Warning: Inverter oversized: The maximum inverter output was 74.94% of the rated value 36 kWac.
-Flat Plate PV,Sale Leaseback,50981.4,33.3532,25.8896,; Warning: Inverter oversized: The maximum inverter output was 74.94% of the rated value 36 kWac.
+Flat Plate PV,Commercial,63943.4,6.72569,5.22065,; 
+Flat Plate PV,Single Owner,63943.4,30.5917,23.746,; 
+Flat Plate PV,Leveraged Partnership Flip,63943.4,30.5718,23.7307,; 
+Flat Plate PV,All Equity Partnership Flip,63943.4,31.23,24.2416,; 
+Flat Plate PV,Sale Leaseback,63943.4,31.0194,24.078,; 
 Flat Plate PV,None,6776.79,NA,NA,; 
 PVWatts,Residential,6973.16,9.52663,7.72246,; 
 PVWatts,Commercial,348658,10.3503,7.91439,; 
@@ -45,7 +45,7 @@ Empirical Trough,Leveraged Partnership Flip,344773056,48.5639,39.2426,;
 Empirical Trough,All Equity Partnership Flip,347697568,51.6975,40.129,; 
 Empirical Trough,Sale Leaseback,344773056,49.2513,39.7979,; 
 Empirical Trough,None,347697568,NA,NA,; 
-Physical Trough,Commercial,fail,fail,fail
+Physical Trough,Commercial,353207552,14.4181,11.1917,; 
 Physical Trough,Single Owner,353207552,47.5715,36.9263,; 
 Physical Trough,Leveraged Partnership Flip,353207552,47.5407,36.9024,; 
 Physical Trough,All Equity Partnership Flip,353207552,48.6034,37.7272,; 
@@ -70,12 +70,4 @@ Generic System,Leveraged Partnership Flip,7971600,1.18778,0.921989,;
 Generic System,All Equity Partnership Flip,7971600,1.19734,0.929408,; 
 Generic System,Sale Leaseback,7971600,1.6649,1.29234,; 
 Generic System,None,7971600,NA,NA,; 
-MSPT,Single Owner,OVERWRITE	
-MSPT,Single Owner,fail,fail,fail
-MSPT,Leveraged Partnership Flip,OVERWRITE	
-MSPT,Leveraged Partnership Flip,fail,fail,fail
-MSPT,All Equity Partnership Flip,OVERWRITE	
-MSPT,All Equity Partnership Flip,fail,fail,fail
-MSPT,Sale Leaseback,OVERWRITE	
-MSPT,Sale Leaseback,fail,fail,fail
 MSPT,None,-10934541,NA,NA,; 
