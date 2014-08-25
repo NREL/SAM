@@ -13,7 +13,8 @@ addconfig( 'Physical Trough', ['Commercial','Single Owner', 'Leveraged Partnersh
 addconfig( 'Dish Stirling', ['Commercial','Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'None']);
 addconfig( 'Generic CSP System', ['Commercial','Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'None']);
 addconfig( 'Generic System', ['Residential', 'Commercial', 'Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'None']);
-addconfig( 'MSPT', ['Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'None']);
+addconfig( 'MSPT', ['None']);
+//addconfig( 'MSPT', ['Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'None']);
 //addconfig( 'Wind BOS', [ 'None' ] );
 
 
@@ -1067,7 +1068,7 @@ function setup_MSPT_pages()
 	addpage( [[ 'Molten Salt Tower Parasitics' ]], { 'sidebar'='Parasitics' } );
 }
 
-
+/*
 //-----------------------------------------------------
 setconfig( 'MSPT', 'Leveraged Partnership Flip' );
 setmodules( ['tcsmolten_salt', 'levpartflip']);
@@ -1099,7 +1100,7 @@ setting( { 'analysis_period_var'='cf_length' } );
 setup_MSPT_pages();
 addpage( [[ 'Molten Salt Tower Capital Costs','O and M Costs']],{ 'sidebar'='System Costs' } );
 setup_single_owner_pages();
-
+*/
 //-----------------------------------------------------
 setconfig( 'MSPT', 'None' );
 setmodules( ['tcsmolten_salt']);

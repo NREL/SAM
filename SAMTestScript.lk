@@ -8,10 +8,10 @@ file_num = open(output_file, "w");
 
 outln( 'TECHNOLOGY\tFINANCING\tDEFAULT\tANNUAL_OUTPUT\tLCOE_NOM\tLCOE_REAL\tMESSAGES');
 write_line(file_num,"TECHNOLOGY,FINANCING,ANNUAL_OUTPUT,LCOE_NOM,LCOE_REAL,MESSAGES");
-noquery = true; // ask user whether to overwrite each configuration that has a defaults error
+noquery = false; // ask user whether to overwrite each configuration that has a defaults error
 //Close any open projects and create a case to run
 close_project();
-create_case( 'PVWatts', 'Residential', 'test_case');
+create_case( 'Flat Plate PV', 'Residential', 'test_case');
 
 //Keep track of the number of configurations
 configs = 0;
