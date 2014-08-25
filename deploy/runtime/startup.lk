@@ -447,6 +447,15 @@ setconfig( 'Physical Trough', 'None' );
 setmodules( ['tcstrough_physical']);
 setup_csp_physical_trough_pages();
 
+
+setconfig( 'Physical Trough', 'Commercial' );
+setmodules( ['tcstrough_physical', 'utilityrate3', 'cashloan']);
+setting( { 'analysis_period_var'='cf_length' } );
+setup_csp_physical_trough_pages();
+addpage( [[ 'Physical Trough Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs' } );
+setup_commercial_pages(0); //does not include building load calculator
+
+
 //-----------------------------------------------------
 setconfig( 'Physical Trough', 'Independent Power Producer' );
 setmodules( ['tcstrough_physical', 'ippppa']);

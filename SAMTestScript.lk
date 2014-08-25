@@ -1,4 +1,13 @@
+folder = appdir() + "/../..";
+outln(folder);
+
+output_file = folder + "/annual_output_lcoe.csv";
+file_num = open(output_file, "w");
+
+
+
 outln( 'TECHNOLOGY\tFINANCING\tDEFAULT\tANNUAL_OUTPUT\tLCOE_NOM\tLCOE_REAL\tMESSAGES');
+write_line(file_num,"TECHNOLOGY,FINANCING,ANNUAL_OUTPUT,LCOE_NOM,LCOE_REAL,MESSAGES");
 noquery = true; // ask user whether to overwrite each configuration that has a defaults error
 //Close any open projects and create a case to run
 close_project();
@@ -31,6 +40,7 @@ for (t=0; t<#technologies; t++)
 				if(!overwrite_defaults())
 				{
 					outln('Defaults could not be overwritten...');
+					write_line(file_num,technologies[t] + "," + financing[f] + ", Defaults could not be overwritten...");
 					continue;
 					msg = 'OVRERR';
 				}
@@ -39,6 +49,7 @@ for (t=0; t<#technologies; t++)
 			}
 			
 			out( msg + '\t');
+			write_line(file_num, technologies[t] + "," + financing[f] + "," + msg + '\t');
 		}
 		else out('OK\t');
 		
@@ -48,6 +59,7 @@ for (t=0; t<#technologies; t++)
 		if(!simulate(message2))
 		{
 			outln( 'fail\tfail\tfail' );
+			write_line(file_num, technologies[t] + "," + financing[f] + ",fail,fail,fail" );
 			continue;
 		}
 				
@@ -64,6 +76,7 @@ for (t=0; t<#technologies; t++)
 		
 		str = replace( message + '; ' + message2, '\n', ' ' );
 		outln( annual_energy + '\t' + lcoe_nom + '\t' + lcoe_real + '\t' + str);
+		write_line(file_num,technologies[t] + "," + financing[f] + "," + annual_energy + ',' + lcoe_nom + ',' + lcoe_real + ',' + str);
 	}
 }
 

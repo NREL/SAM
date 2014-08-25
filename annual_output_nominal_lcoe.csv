@@ -1,0 +1,81 @@
+TECHNOLOGY,FINANCING,ANNUAL_OUTPUT,LCOE_NOM
+Flat Plate PV,Residential,6776.79,11.2331,8.65496,; 
+Flat Plate PV,Commercial,50981.4,7.19884,5.58792,; Warning: Inverter oversized: The maximum inverter output was 74.94% of the rated value 36 kWac.
+Flat Plate PV,Single Owner,50981.4,32.9463,25.5738,; Warning: Inverter oversized: The maximum inverter output was 74.94% of the rated value 36 kWac.
+Flat Plate PV,Leveraged Partnership Flip,50981.4,32.9249,25.5572,; Warning: Inverter oversized: The maximum inverter output was 74.94% of the rated value 36 kWac.
+Flat Plate PV,All Equity Partnership Flip,50981.4,33.6356,26.1089,; Warning: Inverter oversized: The maximum inverter output was 74.94% of the rated value 36 kWac.
+Flat Plate PV,Sale Leaseback,50981.4,33.3532,25.8896,; Warning: Inverter oversized: The maximum inverter output was 74.94% of the rated value 36 kWac.
+Flat Plate PV,None,6776.79,NA,NA,; 
+PVWatts,Residential,6973.16,9.52663,7.72246,; 
+PVWatts,Commercial,348658,10.3503,7.91439,; 
+PVWatts,Single Owner,35265488,11.87,9.63966,; 
+PVWatts,Leveraged Partnership Flip,35265488,12.0734,9.80483,; 
+PVWatts,All Equity Partnership Flip,35265488,21.0698,17.1108,; 
+PVWatts,Sale Leaseback,35265488,20.28,16.4694,; 
+PVWatts,None,7053.1,NA,NA,; 
+High-X Concentrating PV,Single Owner,2.2296e+006,25.4468,20.6654,; 
+High-X Concentrating PV,Leveraged Partnership Flip,2.2296e+006,27.0792,21.9911,; 
+High-X Concentrating PV,All Equity Partnership Flip,2.2296e+006,36.902,29.9682,; 
+High-X Concentrating PV,Sale Leaseback,2.2296e+006,33.0404,26.8321,; 
+High-X Concentrating PV,None,2.2296e+006,NA,NA,; 
+Solar Water Heating,Residential,1258.9,71.8128,54.912,; 
+Solar Water Heating,Commercial,1258.9,44.9718,34.3879,; 
+Solar Water Heating,None,1732.24,NA,NA,; 
+Wind Power,Residential,26707.5,7.92676,6.15296,; 
+Wind Power,Commercial,26707.5,4.24579,3.2957,; 
+Wind Power,Single Owner,254902848,6.02895,4.87175,; 
+Wind Power,Leveraged Partnership Flip,254902848,6.02895,4.87175,; 
+Wind Power,All Equity Partnership Flip,254902848,6.25894,5.0576,; 
+Wind Power,Sale Leaseback,254902848,6.83607,5.52395,; 
+Wind Power,None,254902848,NA,NA,; 
+Biopower,Commercial,70450568,0.572225,0.437555,; 
+Biopower,Single Owner,353982400,0.818191,0.664454,; 
+Biopower,Leveraged Partnership Flip,353982400,0.826665,0.671335,; 
+Biopower,All Equity Partnership Flip,353982400,0.890155,0.722896,; 
+Biopower,Sale Leaseback,353982400,0.919998,0.747131,; 
+Biopower,None,353982400,NA,NA,; 
+Geothermal Power,Single Owner,NA,8.83403,6.78048,; 
+Geothermal Power,Leveraged Partnership Flip,NA,8.83403,6.78048,; 
+Geothermal Power,All Equity Partnership Flip,NA,9.03151,6.93205,; 
+Geothermal Power,Sale Leaseback,NA,8.75276,6.7181,; 
+Geothermal Power,None,NA,NA,NA,; 
+Empirical Trough,Commercial,347697568,16.0787,12.4807,; 
+Empirical Trough,Single Owner,344773056,25.6158,20.6991,; 
+Empirical Trough,Leveraged Partnership Flip,344773056,48.5639,39.2426,; 
+Empirical Trough,All Equity Partnership Flip,347697568,51.6975,40.129,; 
+Empirical Trough,Sale Leaseback,344773056,49.2513,39.7979,; 
+Empirical Trough,None,347697568,NA,NA,; 
+Physical Trough,Commercial,fail,fail,fail
+Physical Trough,Single Owner,353207552,47.5715,36.9263,; 
+Physical Trough,Leveraged Partnership Flip,353207552,47.5407,36.9024,; 
+Physical Trough,All Equity Partnership Flip,353207552,48.6034,37.7272,; 
+Physical Trough,Sale Leaseback,353207552,47.1022,36.562,; 
+Physical Trough,None,353207552,NA,NA,; 
+Dish Stirling,Commercial,76295280,154059,117802,; 
+Dish Stirling,Single Owner,76295280,1105.4,897.694,; 
+Dish Stirling,Leveraged Partnership Flip,76295280,1100.43,893.664,; 
+Dish Stirling,All Equity Partnership Flip,76295280,1100.43,893.664,; 
+Dish Stirling,Sale Leaseback,76295280,1100.43,893.664,; 
+Dish Stirling,None,76295280,NA,NA,; 
+Generic CSP System,Commercial,443609120,4.23036,3.23477,; 
+Generic CSP System,Single Owner,443609120,13.1373,10.6688,; 
+Generic CSP System,Leveraged Partnership Flip,443609120,13.534,10.991,; 
+Generic CSP System,All Equity Partnership Flip,443609120,18.6539,15.1489,; 
+Generic CSP System,Sale Leaseback,443609120,17.5494,14.2519,; 
+Generic CSP System,None,443609120,NA,NA,; 
+Generic System,Residential,7971600,0.963276,0.74772,; 
+Generic System,Commercial,7971600,0.611827,0.474916,; 
+Generic System,Single Owner,7971600,1.18855,0.922587,; 
+Generic System,Leveraged Partnership Flip,7971600,1.18778,0.921989,; 
+Generic System,All Equity Partnership Flip,7971600,1.19734,0.929408,; 
+Generic System,Sale Leaseback,7971600,1.6649,1.29234,; 
+Generic System,None,7971600,NA,NA,; 
+MSPT,Single Owner,OVERWRITE	
+MSPT,Single Owner,fail,fail,fail
+MSPT,Leveraged Partnership Flip,OVERWRITE	
+MSPT,Leveraged Partnership Flip,fail,fail,fail
+MSPT,All Equity Partnership Flip,OVERWRITE	
+MSPT,All Equity Partnership Flip,fail,fail,fail
+MSPT,Sale Leaseback,OVERWRITE	
+MSPT,Sale Leaseback,fail,fail,fail
+MSPT,None,-10934541,NA,NA,; 
