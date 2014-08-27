@@ -7,35 +7,21 @@
 #include <wx/sizer.h>
 //#include <limits>
 //
-#include "solarprospector.h"
+#include "windtoolkit.h"
 #include "main.h"
-
-static const char *help_text = 
-	"Notes:\n\n"
-	"The TMY ('Typical Meteorological Year') data set uses the standard TMY weighting factors.\n\n"
-	
-	"The TGY ('Typical Global Year') data set uses only the global horizontal irradiance to determine typical months.\n\n"
-
-	"The TDY ('Typical DNI Year') data set uses only the beam irradiance to determine typical months.\n\n"
-	
-	"The yearly data includes unweighted actual year solar and meteorological data, "
-	"and are suitable for all system types.\n\n"
-	
-	"Please review the SAM Help system for more detailed guidance.";
-
 
 enum {
 	ID_radAddress, ID_radLatLon, ID_cboYears,
 	ID_txtAddress, ID_txtLat, ID_txtLon
 };
 
-BEGIN_EVENT_TABLE( SolarProspectorDialog, wxDialog )
-	EVT_RADIOBUTTON( ID_radAddress, SolarProspectorDialog::OnEvt )
-	EVT_RADIOBUTTON( ID_radLatLon, SolarProspectorDialog::OnEvt )
-	EVT_BUTTON( wxID_HELP, SolarProspectorDialog::OnEvt )
+BEGIN_EVENT_TABLE( WindToolkitDialog, wxDialog )
+	EVT_RADIOBUTTON( ID_radAddress, WindToolkitDialog::OnEvt )
+	EVT_RADIOBUTTON( ID_radLatLon, WindToolkitDialog::OnEvt )
+	EVT_BUTTON( wxID_HELP, WindToolkitDialog::OnEvt )
 END_EVENT_TABLE()
 
-SolarProspectorDialog::SolarProspectorDialog(wxWindow *parent, const wxString &title)
+WindToolkitDialog::WindToolkitDialog(wxWindow *parent, const wxString &title)
 	 : wxDialog( parent, wxID_ANY, title,  wxDefaultPosition, wxDefaultSize, wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER )
 {
 	radAddress = new wxRadioButton( this, ID_radAddress, "Enter street address or zip code:" );
@@ -46,23 +32,14 @@ SolarProspectorDialog::SolarProspectorDialog(wxWindow *parent, const wxString &t
 	txtLon = new wxTextCtrl(this, ID_txtLon, "-116", wxDefaultPosition, wxDefaultSize, 0, ::wxTextValidator(wxFILTER_NUMERIC) );
 
 	wxArrayString years;
-	years.Add("TMY");
-	years.Add("TDY");
-	years.Add("TGY");
-	years.Add("1998");
-	years.Add("1999");
-	years.Add("2000");
-	years.Add("2001");
-	years.Add("2002");
-	years.Add("2003");
-	years.Add("2004");
-	years.Add("2005");
-	years.Add("2006");
 	years.Add("2007");
 	years.Add("2008");
 	years.Add("2009");
+	years.Add("2010");
+	years.Add("2011");
+	years.Add("2012");
 
-	wxString InitialValue = "TMY";
+	wxString InitialValue = "2012";
 	cboYears = new wxComboBox(this, ID_cboYears, InitialValue, wxDefaultPosition, wxDefaultSize, years, wxCB_READONLY);
 
 	wxBoxSizer *szll = new wxBoxSizer( wxHORIZONTAL );
@@ -86,12 +63,6 @@ SolarProspectorDialog::SolarProspectorDialog(wxWindow *parent, const wxString &t
 	szmain->Add( szgrid, 0, wxLEFT|wxRIGHT|wxTOP, 10 );
 	szmain->Add( szyr, 0, wxLEFT|wxRIGHT, 10 );
 
-
-	wxStaticText *note = new wxStaticText(this, wxID_ANY, help_text);
-	note->Wrap( 550 );
-	szmain->Add( note , 0, wxLEFT|wxRIGHT|wxALIGN_CENTER, 10 );
-
-
 	szmain->Add( CreateButtonSizer( wxHELP|wxOK|wxCANCEL ), 0, wxALL|wxEXPAND, 10 );
 
 	SetSizer( szmain );
@@ -104,14 +75,14 @@ SolarProspectorDialog::SolarProspectorDialog(wxWindow *parent, const wxString &t
 	txtLon->Enable( false );
 }
 
-void SolarProspectorDialog::OnEvt( wxCommandEvent &e )
+void WindToolkitDialog::OnEvt( wxCommandEvent &e )
 {
 //extern void helpcontext( const wxString & ); // defined in sammdi.h
 
 	switch( e.GetId() )
 	{
 	case wxID_HELP:
-		SamApp::ShowHelp("Solar Download File");
+		SamApp::ShowHelp("Wind Download File");
 		break;
 	case ID_radAddress:
 	case ID_radLatLon:
@@ -125,31 +96,31 @@ void SolarProspectorDialog::OnEvt( wxCommandEvent &e )
 	}
 }
 
-bool SolarProspectorDialog::IsAddressMode()
+bool WindToolkitDialog::IsAddressMode()
 {
 	return radAddress->GetValue();
 }
 
-wxString SolarProspectorDialog::GetAddress()
+wxString WindToolkitDialog::GetAddress()
 {
 	return txtAddress->GetValue();
 }
 
-double SolarProspectorDialog::GetLatitude()
+double WindToolkitDialog::GetLatitude()
 {
 	double num = std::numeric_limits<double>::quiet_NaN();
 	txtLat->GetValue().ToDouble(&num);
 	return num;
 }
 
-double SolarProspectorDialog::GetLongitude()
+double WindToolkitDialog::GetLongitude()
 {
 	double num = std::numeric_limits<double>::quiet_NaN();
 	txtLon->GetValue().ToDouble(&num);
 	return num;
 }
 
-wxString SolarProspectorDialog::GetYear()
+wxString WindToolkitDialog::GetYear()
 {
 	return cboYears->GetStringSelection();
 }

@@ -74,7 +74,7 @@ void P50P90Form::OnSimulate( wxCommandEvent & )
 
 		wxString file = wxFileNameFromPath(list[i]);
 		wxString ext = wxFileName(file).GetExt().Lower();
-		if (ext != "tm2" && ext != "tm3" && ext != "csv" && ext != "smw" && ext != "smw" )
+		if (ext != "tm2" && ext != "tm3" && ext != "csv" && ext != "smw" && ext != "srw" )
 			continue; 
 
 		long yrval = -1;
@@ -90,6 +90,11 @@ void P50P90Form::OnSimulate( wxCommandEvent & )
 		}
 	}
 	
+	if (years.size() < 13) {
+		wxMessageBox("Insufficient number of years of weather data found: at least 13 required for P50/P90 analysis.");
+		return;
+	}
+
 	// sort years and files together
 	int count = (int)years.size();
 	for (int i=0;i<count-1;i++)
@@ -111,12 +116,6 @@ void P50P90Form::OnSimulate( wxCommandEvent & )
 
 	}
 
-	
-	if (years.size() < 13) {
-		wxMessageBox( "Insufficient number of years of weather data found: at least 13 required for P50/P90 analysis.");
-		return;
-	}
-
 
 	// all single value outputs
 	wxArrayString output_vars, output_labels, output_units;
@@ -136,6 +135,8 @@ void P50P90Form::OnSimulate( wxCommandEvent & )
 
 		sim->Override( "use_specific_weather_file", VarValue(true) );
 		sim->Override( "user_specified_weather_file", VarValue(weatherFile) );
+		sim->Override("use_specific_wf_wind", VarValue(true));
+		sim->Override("user_specified_wf_wind", VarValue(weatherFile));
 
 		if ( !sim->Prepare() )
 			wxMessageBox( wxString::Format("internal error preparing simulation %d for P50 / P90", (int)(n+1)) );
