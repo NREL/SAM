@@ -1,11 +1,11 @@
 TECHNOLOGY,FINANCING,ANNUAL_OUTPUT,LCOE_NOM,LCOE_REAL,MESSAGES
-Flat Plate PV,Residential,6776.79,11.2331,8.65496,; 
-Flat Plate PV,Commercial,63943.4,6.72569,5.22065,; 
-Flat Plate PV,Single Owner,63943.4,30.5917,23.746,; 
-Flat Plate PV,Leveraged Partnership Flip,63943.4,30.5718,23.7307,; 
-Flat Plate PV,All Equity Partnership Flip,63943.4,31.23,24.2416,; 
-Flat Plate PV,Sale Leaseback,63943.4,31.0194,24.078,; 
-Flat Plate PV,None,6776.79,NA,NA,; 
+Flat Plate PV,Residential,6776.78,11.2331,8.65497,; 
+Flat Plate PV,Commercial,306177,19.0154,14.7603,; 
+Flat Plate PV,Single Owner,314380,82.3222,63.9007,; 
+Flat Plate PV,Leveraged Partnership Flip,314380,82.2689,63.8593,; 
+Flat Plate PV,All Equity Partnership Flip,314380,84.0226,65.2205,; 
+Flat Plate PV,Sale Leaseback,314380,83.9805,65.1878,; 
+Flat Plate PV,None,7052.65,NA,NA,; 
 PVWatts,Residential,6973.16,9.52663,7.72246,; 
 PVWatts,Commercial,348658,10.3503,7.91439,; 
 PVWatts,Single Owner,35265488,11.87,9.63966,; 
@@ -13,21 +13,21 @@ PVWatts,Leveraged Partnership Flip,35265488,12.0734,9.80483,;
 PVWatts,All Equity Partnership Flip,35265488,21.0698,17.1108,; 
 PVWatts,Sale Leaseback,35265488,20.28,16.4694,; 
 PVWatts,None,7053.1,NA,NA,; 
-High-X Concentrating PV,Single Owner,2.2296e+006,25.4468,20.6654,; 
-High-X Concentrating PV,Leveraged Partnership Flip,2.2296e+006,27.0792,21.9911,; 
-High-X Concentrating PV,All Equity Partnership Flip,2.2296e+006,36.902,29.9682,; 
-High-X Concentrating PV,Sale Leaseback,2.2296e+006,33.0404,26.8321,; 
+High-X Concentrating PV,Single Owner,2.2296e+006,25.4469,20.6655,; 
+High-X Concentrating PV,Leveraged Partnership Flip,2.2296e+006,27.0793,21.9912,; 
+High-X Concentrating PV,All Equity Partnership Flip,2.2296e+006,36.9022,29.9683,; 
+High-X Concentrating PV,Sale Leaseback,2.2296e+006,33.0405,26.8322,; 
 High-X Concentrating PV,None,2.2296e+006,NA,NA,; 
 Solar Water Heating,Residential,1258.9,71.8128,54.912,; 
 Solar Water Heating,Commercial,1258.9,44.9718,34.3879,; 
 Solar Water Heating,None,1732.24,NA,NA,; 
 Wind Power,Residential,26707.5,7.92676,6.15296,; 
 Wind Power,Commercial,26707.5,4.24579,3.2957,; 
-Wind Power,Single Owner,254902848,6.02895,4.87175,; 
-Wind Power,Leveraged Partnership Flip,254902848,6.02895,4.87175,; 
-Wind Power,All Equity Partnership Flip,254902848,6.25894,5.0576,; 
-Wind Power,Sale Leaseback,254902848,6.83607,5.52395,; 
-Wind Power,None,254902848,NA,NA,; 
+Wind Power,Single Owner,254882160,6.02968,4.87234,; 
+Wind Power,Leveraged Partnership Flip,254882160,6.02968,4.87234,; 
+Wind Power,All Equity Partnership Flip,254882160,6.25969,5.0582,; 
+Wind Power,Sale Leaseback,254882160,6.83687,5.5246,; 
+Wind Power,None,254882160,NA,NA,; 
 Biopower,Commercial,70450568,0.572225,0.437555,; 
 Biopower,Single Owner,353982400,0.818191,0.664454,; 
 Biopower,Leveraged Partnership Flip,353982400,0.826665,0.671335,; 
@@ -70,4 +70,13 @@ Generic System,Leveraged Partnership Flip,7971600,1.18778,0.921989,;
 Generic System,All Equity Partnership Flip,7971600,1.19734,0.929408,; 
 Generic System,Sale Leaseback,7971600,1.6649,1.29234,; 
 Generic System,None,7971600,NA,NA,; 
-MSPT,None,-10934541,NA,NA,; 
+MSPT,Single Owner,LOADERR	
+MSPT,Single Owner,fail,fail,fail
+MSPT,Leveraged Partnership Flip,LOADERR	
+MSPT,Leveraged Partnership Flip,fail,fail,fail
+MSPT,All Equity Partnership Flip,LOADERR	
+MSPT,All Equity Partnership Flip,fail,fail,fail
+MSPT,Sale Leaseback,LOADERR	
+MSPT,Sale Leaseback,fail,fail,fail
+MSPT,None,LOADERR	
+MSPT,None,-10934541,NA,NA,Defaults file is likely out of date: MSPT_None  Variables: 1 loaded but not in configuration, 0 wrong type, defaults file has 314, config has 314  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later)  Loaded but don't exist in config: csp.pt.sf.radial_step_size; 
