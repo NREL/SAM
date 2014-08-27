@@ -140,6 +140,9 @@
     <ClInclude Include="..\src\defmgr.h">
       <Filter>Source</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\windtoolkit.h">
+      <Filter>Source</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\welcome.cpp">
@@ -266,6 +269,9 @@
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="..\src\defmgr.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\windtoolkit.cpp">
       <Filter>Source</Filter>
     </ClCompile>
   </ItemGroup>

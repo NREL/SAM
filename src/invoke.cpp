@@ -24,6 +24,7 @@
 #include "materials.h"
 #include "results.h"
 #include "solarprospector.h"
+#include "windtoolkit.h"
 #include "simplecurl.h"
 #include "urdb.h"
 #include "invoke.h"
@@ -1287,6 +1288,84 @@ void fcall_solarprospector(lk::invoke_t &cxt)
 	cxt.result().assign(filename);
 }
 
+void fcall_windtoolkit(lk::invoke_t &cxt)
+{
+	LK_DOC("windtoolkit", "Creates the wind data download dialog box, downloads, decompresses, converts, and returns local file name for weather file", "(none) : string");
+
+	//Create the wind data object
+	WindToolkitDialog spd(SamApp::Window(), "Location Lookup");
+	spd.CenterOnParent();
+	int code = spd.ShowModal(); //shows the dialog and makes it so you can't interact with other parts until window is closed
+
+	//Return an empty string if the window was dismissed
+	if (code == wxID_CANCEL)
+	{
+		cxt.result().assign(wxEmptyString);
+		return;
+	}
+
+	//Get parameters from the dialog box for weather file download
+	wxString year;
+	year = spd.GetYear();
+	double lat, lon;
+	if (spd.IsAddressMode() == true)	//entered an address instead of a lat/long
+	{
+		if (!wxSimpleCurl::GeoCode(spd.GetAddress(), &lat, &lon))
+		{
+			wxMessageBox("Failed to geocode address");
+			return;
+		}
+	}
+	else
+	{
+		lat = spd.GetLatitude();
+		lon = spd.GetLongitude();
+	}
+
+	//Create URL for weather file download
+	wxString url;
+	url = SamApp::WebApi("windtoolkit");
+	url.Replace("<YEAR>", spd.GetYear(), 1);
+	url.Replace("<LAT>", wxString::Format(wxT("%f"),lat), 1);
+	url.Replace("<LON>", wxString::Format(wxT("%f"), lon), 1);
+
+	//Download the weather file
+	wxSimpleCurl curl;
+	curl.Start(url, true);	//true won't let it return to code unless it's done downloading
+	// would like to put some code here to tell it not to download and to give an error if hits 404 Not Found
+
+	wxString local_file;
+	::wxGetTempFileName("samwf", local_file);
+
+	if (!curl.WriteDataToFile(local_file))
+	{
+		wxMessageBox("Failed to download the closest WIND toolkit weather file from NREL for your location.");
+		return;
+	}
+
+	//Create a folder to put the weather file in
+	wxString wfdir;
+	SamApp::Settings().Read("weather_file_dir", &wfdir);
+	if (wfdir.IsEmpty()) wfdir = ::wxGetHomeDir() + "/SAM Downloaded Weather Files";
+	if (!wxDirExists(wfdir)) wxFileName::Mkdir(wfdir, 511, ::wxPATH_MKDIR_FULL);
+
+	//Create the filename
+	wxString location;
+	location.Printf("lat%.2lf_lon%.2lf_", lat, lon);
+	location = location + year;
+	wxString filename = wfdir + "/" + location + ".srw";
+
+	//Decompress weather file and put it in the folder
+	if (!wxUnzipFile(local_file, filename))
+	{
+		wxMessageBox("Failed to unzip downloaded weather data.");
+		return;
+	}
+
+	//Return the downloaded filename
+	cxt.result().assign(filename);
+}
+
 
 /********** OPENEI capability ***********/
 
@@ -1773,6 +1852,7 @@ lk::fcall_t* invoke_uicallback_funcs()
 		fcall_current_at_voltage_cec,
 		fcall_current_at_voltage_sandia,
 		fcall_solarprospector,
+		fcall_windtoolkit,
 		fcall_openeiutilityrateform,
 		fcall_urdb_read,
 		fcall_urdb_write,
