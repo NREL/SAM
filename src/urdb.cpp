@@ -144,8 +144,9 @@ bool OpenEI::QueryUtilityRates(const wxString &name, std::vector<RateInfo> &rate
 	wxString utlnm = name;
 	utlnm.Replace("&", "%26");
 	// production http://dev.openei.org/services/doc/rest/util_rates?version=3
-	wxString url = "http://en.openei.org/services/rest/utility_rates?version=3&detail=minimal&format=json_plain&ratesforutility=" + utlnm;
-	
+//	wxString url = "http://en.openei.org/services/rest/utility_rates?version=3&detail=minimal&format=json_plain&ratesforutility=" + utlnm;
+	wxString url = "http://en.openei.org/services/rest/utility_rates?version=3&detail=minimal&format=json&ratesforutility=" + utlnm;
+
 	wxString json_data = MyGet(url);
 	if (json_data.IsEmpty())
 	{
@@ -154,7 +155,7 @@ bool OpenEI::QueryUtilityRates(const wxString &name, std::vector<RateInfo> &rate
 	}
 
 	wxJSONReader reader;
-	reader.SetSkipStringDoubleQuotes(true);
+//	reader.SetSkipStringDoubleQuotes(true);
 	wxJSONValue root;
 	if (reader.Parse( json_data, &root )!=0)
 	{
@@ -208,7 +209,8 @@ bool OpenEI::RetrieveUtilityRateData(const wxString &guid, RateData &rate, wxStr
 	// version 2
 //	wxString url = "http://en.openei.org/services/rest/utility_rates?version=2&format=json_plain&detail=full&getpage=Data:" + guid;
 	// version 3
-	wxString url = "http://en.openei.org/services/rest/utility_rates?version=3&format=json_plain&detail=full&getpage=" + guid;
+//	wxString url = "http://en.openei.org/services/rest/utility_rates?version=3&format=json_plain&detail=full&getpage=" + guid;
+	wxString url = "http://en.openei.org/services/rest/utility_rates?version=3&format=json&detail=full&getpage=" + guid;
 
 	if (json_url) *json_url = url;
 
@@ -220,7 +222,7 @@ bool OpenEI::RetrieveUtilityRateData(const wxString &guid, RateData &rate, wxStr
 	}
 
 	wxJSONReader reader;
-	reader.SetSkipStringDoubleQuotes(true);
+//	reader.SetSkipStringDoubleQuotes(true);
 	wxJSONValue root;
 	if (reader.Parse( json_data, &root )!=0)
 	{
