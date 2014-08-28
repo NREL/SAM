@@ -23,11 +23,11 @@ Solar Water Heating,Commercial,1258.9,44.9718,34.3879,;
 Solar Water Heating,None,1732.24,NA,NA,; 
 Wind Power,Residential,26707.5,7.92676,6.15296,; 
 Wind Power,Commercial,26707.5,4.24579,3.2957,; 
-Wind Power,Single Owner,254882160,6.02968,4.87234,; 
-Wind Power,Leveraged Partnership Flip,254882160,6.02968,4.87234,; 
-Wind Power,All Equity Partnership Flip,254882160,6.25969,5.0582,; 
-Wind Power,Sale Leaseback,254882160,6.83687,5.5246,; 
-Wind Power,None,254882160,NA,NA,; 
+Wind Power,Single Owner,26707.5,24.6981,19.1713,; 
+Wind Power,Leveraged Partnership Flip,26707.5,24.6821,19.1589,; 
+Wind Power,All Equity Partnership Flip,26707.5,25.1846,19.5489,; 
+Wind Power,Sale Leaseback,26707.5,25.9143,20.1154,; 
+Wind Power,None,26707.5,NA,NA,; 
 Biopower,Commercial,70450568,0.572225,0.437555,; 
 Biopower,Single Owner,353982400,0.818191,0.664454,; 
 Biopower,Leveraged Partnership Flip,353982400,0.826665,0.671335,; 
@@ -70,13 +70,8 @@ Generic System,Leveraged Partnership Flip,7971600,1.18778,0.921989,;
 Generic System,All Equity Partnership Flip,7971600,1.19734,0.929408,; 
 Generic System,Sale Leaseback,7971600,1.6649,1.29234,; 
 Generic System,None,7971600,NA,NA,; 
-MSPT,Single Owner,LOADERR	
-MSPT,Single Owner,fail,fail,fail
-MSPT,Leveraged Partnership Flip,LOADERR	
-MSPT,Leveraged Partnership Flip,fail,fail,fail
-MSPT,All Equity Partnership Flip,LOADERR	
-MSPT,All Equity Partnership Flip,fail,fail,fail
-MSPT,Sale Leaseback,LOADERR	
-MSPT,Sale Leaseback,fail,fail,fail
-MSPT,None,LOADERR	
-MSPT,None,-10934541,NA,NA,Defaults file is likely out of date: MSPT_None  Variables: 1 loaded but not in configuration, 0 wrong type, defaults file has 314, config has 314  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later)  Loaded but don't exist in config: csp.pt.sf.radial_step_size; 
+MSPT,Single Owner,545845568,28.1682,21.8649,; 
+MSPT,Leveraged Partnership Flip,545845568,28.15,21.8508,; 
+MSPT,All Equity Partnership Flip,545845568,28.7792,22.3392,; 
+MSPT,Sale Leaseback,545845568,27.8904,21.6493,; 
+MSPT,None,545845568,NA,NA,; 
