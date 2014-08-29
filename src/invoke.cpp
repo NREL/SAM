@@ -1458,7 +1458,7 @@ void fcall_windtoolkit(lk::invoke_t &cxt)
 
 void fcall_urdb_list_utilities(lk::invoke_t &cxt)
 {
-	LK_DOC("urdb_list_utilities", "Lists utility companies from the OpenEI Utility Rate Database.", "(none) : string");
+	LK_DOC("urdb_list_utilities", "Lists utility companies from the OpenEI Utility Rate Database.", "(none):string");
 	wxArrayString names;
 	OpenEI api;
 	if (api.QueryUtilityCompanies(names))
@@ -1471,7 +1471,7 @@ void fcall_urdb_list_utilities(lk::invoke_t &cxt)
 
 void fcall_urdb_list_rates(lk::invoke_t &cxt)
 {
-	LK_DOC("urdb_list_rates", "Lists rates for utility argument from OpenEI Utility Rate Database.", "(utility) : string");
+	LK_DOC("urdb_list_rates", "Lists rates for utility argument from OpenEI Utility Rate Database.", "(string:utility):string");
 	wxString utility = cxt.arg(0).as_string();
 
 	std::vector<OpenEI::RateInfo> ratelist;
@@ -1511,7 +1511,7 @@ static bool applydiurnalschedule(lk::invoke_t &cxt, wxString sched_name, double 
 
 void fcall_urdb_write(lk::invoke_t &cxt)
 {
-	LK_DOC("urdb_write", "Writes rate data from current case to a file.", "(STRING:filename) : BOOLEAN");
+	LK_DOC("urdb_write", "Writes rate data from current case to a file.", "(string:filename):boolean");
 	
 	Case *c = SamApp::Window()->GetCurrentCase();
 	if ( !c ) return;
@@ -1549,7 +1549,7 @@ void fcall_urdb_write(lk::invoke_t &cxt)
 
 void fcall_urdb_read(lk::invoke_t &cxt)
 {
-	LK_DOC("urdb_read", "Reads rate data from a file case to the current case.", "(STRING:filename) : BOOLEAN");
+	LK_DOC("urdb_read", "Reads rate data from a file case to the current case.", "(string:filename):boolean");
 	
 	Case *c = SamApp::Window()->GetCurrentCase();
 	if ( !c ) return;
@@ -1589,7 +1589,7 @@ void fcall_urdb_read(lk::invoke_t &cxt)
 
 void fcall_urdb_get(lk::invoke_t &cxt)
 {
-	LK_DOC("urdb_get", "Returns data for the specified rate schedule from the OpenEI Utility Rate Database.", "(STRING:Guid) : BOOLEAN");	
+	LK_DOC("urdb_get", "Returns data for the specified rate schedule from the OpenEI Utility Rate Database.", "(string:guid):boolean");	
 	wxString guid = cxt.arg(0).as_string();
 	if (guid.IsEmpty()) return;
 
