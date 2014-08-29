@@ -64,7 +64,9 @@ private:
 	wxArrayString m_errors;
 };
 
+bool ShowSolarResourceDataSettings();
 bool ScanSolarResourceData( const wxString &db_file );
+bool ShowWindResourceDataSettings();
 bool ScanWindResourceData( const wxString &db_file );
 
 class LibraryCtrl;
@@ -95,6 +97,7 @@ public:
 	void SetLabel( const wxString &label );
 
 	void SetLibrary( const wxString &name, const wxString &fields );
+	wxString GetLibrary() { return m_library; }
 	void ReloadLibrary();
 
 	bool SetEntrySelection( const wxString &entry );

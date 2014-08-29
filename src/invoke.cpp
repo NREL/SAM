@@ -4,6 +4,7 @@
 #include <wx/filename.h>
 #include <wx/buffer.h>
 #include <wx/mstream.h>
+#include <wx/busyinfo.h>
 
 #include <wex/plot/plplotctrl.h>
 #include <wex/lkscript.h>
@@ -79,6 +80,83 @@ static void fcall_dview(lk::invoke_t &cxt)
 	}
 
 	dview->SelectDataIndex(0);
+
+	frame->Show();
+}
+
+struct wfvec {
+	char *name;
+	char *label;
+	char *units;
+};
+
+static void fcall_dview_solar_data_file( lk::invoke_t &cxt )
+{
+	LK_DOC("dview_solar", "Read a solar weather data file on disk (*.tm2,*.tm3,*.epw,*.smw) and popup a frame with a data viewer.", "(string:filename):boolean");
+
+	wxString file( cxt.arg(0).as_string() );
+	if ( !wxFileExists( file ) ) {
+		cxt.result().assign( 0.0 );
+		return;
+	}
+
+	
+	ssc_data_t pdata = ssc_data_create();
+	ssc_data_set_string(pdata, "file_name", (const char*)file.c_str());
+	ssc_data_set_number(pdata, "header_only", 0);
+
+	if ( const char *err = ssc_module_exec_simple_nothread( "wfreader", pdata ) )
+	{
+		wxLogStatus("error scanning '" + file + "'");
+		cxt.result().assign(0.0);
+		return;
+	}
+
+	wxFrame *frame = new wxFrame( SamApp::Window(), wxID_ANY, "Data Viewer: " + file, wxDefaultPosition, wxSize(1100,700),
+		(wxCAPTION | wxCLOSE_BOX | wxCLIP_CHILDREN | wxRESIZE_BORDER | wxFRAME_TOOL_WINDOW | wxFRAME_FLOAT_ON_PARENT) );
+	wxDVPlotCtrl *dview = new wxDVPlotCtrl(frame, wxID_ANY);
+
+	// this information is consistent with the variable definitions in the wfreader module
+	wfvec vars[] = {
+		{ "global", "Global irradiance - GHI", "W/m2" },
+		{ "beam", "Beam irradiance - DNI", "W/m2" },
+		{ "diffuse","Diffuse irradiance - DHI", "W/m2" },
+		{ "wspd", "Wind speed", "m/s" },
+		{ "wdir", "Wind direction", "deg" },
+		{ "tdry", "Dry bulb temp", "C" },
+		{ "twet", "Wet bulb temp", "C" },
+		{ "tdew", "Dew point temp", "C" },
+		{ "rhum", "Relative humidity", "%" },
+		{ "pres", "Pressure", "millibar" },
+		{ "snow", "Snow depth", "cm" },
+		{ "albedo", "Albedo", "fraction" },
+		{ 0, 0, 0 } };
+
+	ssc_number_t start, step; // start & step in seconds, then convert to hours
+	ssc_data_get_number( pdata, "start", &start ); start /= 3600;
+	ssc_data_get_number( pdata, "step", &step ); step /= 3600;
+
+	size_t i=0;
+	while( vars[i].name != 0 )
+	{
+		int len;
+		ssc_number_t *p = ssc_data_get_array( pdata, vars[i].name, &len );
+		if ( p != 0 && len > 2 )
+		{
+			std::vector<double> plot_data(len);
+			for (int j = 0; j < len; j++)
+				plot_data[j] = p[j];
+
+			dview->AddDataSet( new wxDVArrayDataSet( vars[i].label, vars[i].units, start, step, plot_data ) );
+		}
+
+		i++;
+	}
+
+	ssc_data_free( pdata );
+
+	if ( i > 0 )
+		dview->SelectDataIndex(0);
 
 	frame->Show();
 }
@@ -1189,18 +1267,25 @@ void fcall_solarprospector(lk::invoke_t &cxt)
 	wxString year;
 	year = spd.GetYear();
 	double lat, lon;
+	wxString locname;
 	if (spd.IsAddressMode() == true)	//entered an address instead of a lat/long
 	{
-		if (!wxSimpleCurl::GeoCode(spd.GetAddress(), &lat, &lon))
+		wxString addr( spd.GetAddress() );
+		if (!wxSimpleCurl::GeoCode(addr, &lat, &lon))
 		{
 			wxMessageBox("Failed to geocode address");
 			return;
 		}
+		
+		for (int i=0;i<(int)addr.Len();i++)
+			if (isalpha(addr[i]) || isdigit(addr[i]) || addr[i] == ' ' || addr[i] == '_')
+				locname += addr[i];
 	}
 	else
 	{
 		lat = spd.GetLatitude();
-		lon = spd.GetLongitude();		
+		lon = spd.GetLongitude();	
+		locname.Printf("lat%.3lf_lon%.3lf", lat, lon);	
 	}
 
 	//Create URL for weather file download
@@ -1264,15 +1349,11 @@ void fcall_solarprospector(lk::invoke_t &cxt)
 
 	//Create a folder to put the weather file in
 	wxString wfdir;
-	SamApp::Settings().Read("weather_file_dir", &wfdir);
+	SamApp::Settings().Read("solar_download_path", &wfdir);
 	if (wfdir.IsEmpty()) wfdir = ::wxGetHomeDir() + "/SAM Downloaded Weather Files";
 	if (!wxDirExists(wfdir)) wxFileName::Mkdir(wfdir, 511, ::wxPATH_MKDIR_FULL);
 
-	//Create the filename
-	wxString location;
-	location.Printf("lat%.2lf_lon%.2lf_", lat, lon);
-	location = location + year;
-	wxString filename = wfdir + "/" + location + ".csv";
+	wxString filename = wfdir + "/" + locname + "_" + year + ".csv";
 	ssc_data_set_string(data, "output_file", filename.c_str());
 
 	//Convert the file
@@ -1284,8 +1365,14 @@ void fcall_solarprospector(lk::invoke_t &cxt)
 		return;
 	}
 
+	wxFileName ff(filename);
+	ff.Normalize();
+	wxString libkey( ff.GetName() );
+
 	//Return the converted filename
-	cxt.result().assign(filename);
+	cxt.result().empty_hash();
+	cxt.result().hash_item( "filename" ).assign( filename );
+	cxt.result().hash_item( "libkey" ).assign( libkey );
 }
 
 void fcall_windtoolkit(lk::invoke_t &cxt)
@@ -1702,6 +1789,23 @@ void fcall_editscene3d( lk::invoke_t &cxt )
 		if (!st->Read( in ))
 			wxMessageBox("Error loading stored 3D scene data.");
 	}
+
+	double lat, lon, tz;
+	st->GetLocationSetup()->GetLocation( &lat, &lon, &tz );
+	if ( lat != cxt.arg(1).as_number()
+		|| lon != cxt.arg(2).as_number()
+		|| tz != cxt.arg(3).as_number() )
+	{
+		if( wxYES==wxMessageBox( "The location information in the shading tool does not match the currently selected weather file.\n\nDo you want to update your location settings in the shading tool to match?", "Query", wxYES_NO ) )
+		{
+			lat = cxt.arg(1).as_number();
+			lon = cxt.arg(2).as_number();
+			tz = cxt.arg(3).as_number();
+			wxString addr = cxt.arg(4).as_string();
+			st->GetLocationSetup()->SetLocation( addr, lat, lon, tz );
+		}
+	}
+
 	dlg.ShowModal();
 	wxMemoryOutputStream out;
 	st->Write( out );
@@ -1750,6 +1854,46 @@ void fcall_editscene3d( lk::invoke_t &cxt )
 }
 
 
+void fcall_showsettings( lk::invoke_t &cxt )
+{
+	LK_DOC("showsettings", "Show the settings dialog for either 'solar' or 'wind' data files.", "(string:type):boolean");
+	wxString type( cxt.arg(0).as_string().Lower() );
+	if ( type == "solar" ) cxt.result().assign( ShowSolarResourceDataSettings() ? 1.0 : 0.0 );
+	else if ( type == "wind" ) cxt.result().assign( ShowWindResourceDataSettings() ? 1.0 : 0.0 );
+}
+
+void fcall_rescanlibrary( lk::invoke_t &cxt )
+{
+	LK_DOC("rescanlibrary", "Rescan the indicated resource data library ('solar' or 'wind') and update any library widgets.", "(string:type):boolean");
+	UICallbackContext &cc = *(UICallbackContext*)cxt.user_data();
+
+	wxString type(cxt.arg(0).as_string().Lower());
+	wxBusyInfo info("Scanning folders for " + type + " data files..." );
+
+	Library *reloaded = 0;
+
+	if ( type == "solar" )
+	{
+		wxString solar_resource_db = SamApp::GetUserLocalDataDir() + "/SolarResourceData.csv";
+		ScanSolarResourceData( solar_resource_db );
+		reloaded = Library::Load( solar_resource_db );
+	}
+	else if ( type == "wind" )
+	{
+		wxString wind_resource_db  = SamApp::GetUserLocalDataDir() + "/WindResourceData.csv";
+		ScanWindResourceData( wind_resource_db );
+		reloaded = Library::Load( wind_resource_db );
+	}
+
+	if ( reloaded != 0 )
+	{
+		std::vector<wxUIObject*> objs = cc.InputPage()->GetObjects();
+		for( size_t i=0;i<objs.size();i++ )
+			if ( LibraryCtrl *lc = objs[i]->GetNative<LibraryCtrl>() )
+				lc->ReloadLibrary();
+	}
+}
+
 lk::fcall_t* invoke_general_funcs()
 {
 	static const lk::fcall_t vec[] = {
@@ -1763,6 +1907,8 @@ lk::fcall_t* invoke_general_funcs()
 		fcall_userlocaldatadir,
 		fcall_copy_file,
 		fcall_case_name,
+		fcall_dview,
+		fcall_dview_solar_data_file,
 #ifdef __WXMSW__
 		fcall_xl_create,
 		fcall_xl_free,
@@ -1844,7 +1990,6 @@ lk::fcall_t* invoke_uicallback_funcs()
 		fcall_show,
 		fcall_property,
 		fcall_refresh,
-		fcall_dview,
 		fcall_substance_density,
 		fcall_substance_userhtf,
 		fcall_substance_specific_heat,
@@ -1860,6 +2005,8 @@ lk::fcall_t* invoke_uicallback_funcs()
 		fcall_urdb_list_utilities,
 		fcall_urdb_list_rates,
 		fcall_editscene3d,
+		fcall_showsettings,
+		fcall_rescanlibrary,
 		0 };
 	return (lk::fcall_t*)vec;
 }
