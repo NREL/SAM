@@ -1736,7 +1736,7 @@ wxArrayString SamApp::RecentFiles()
 class HelpWin;
 static HelpWin *gs_helpWin = 0;
 
-enum { ID_BACK = wxID_HIGHEST+439, ID_BROWSER, ID_HOME, ID_EMAIL_SUPPORT, ID_WEBSITE, ID_FORUM, ID_RELEASE_NOTES };
+enum { ID_BACK = wxID_HIGHEST+439, ID_BROWSER, ID_HOME, ID_EMAIL_SUPPORT, ID_WEBSITE, ID_FORUM, ID_RELEASE_NOTES, ID_SCRIPT_REFERENCE };
 
 
 class HelpWin : public wxFrame
@@ -1764,6 +1764,7 @@ public:
 		tools->Add( new wxMetroButton( this, ID_FORUM, "Forum" ), 0, wxALL|wxEXPAND, 0 );
 		tools->Add( new wxMetroButton( this, ID_EMAIL_SUPPORT, "Email support" ), 0, wxALL|wxEXPAND, 0 );
 		tools->Add( new wxMetroButton( this, ID_RELEASE_NOTES, "Release notes" ), 0, wxALL|wxEXPAND, 0 );
+		tools->Add( new wxMetroButton( this, ID_SCRIPT_REFERENCE, "Scripting reference" ), 0, wxALL|wxEXPAND, 0 );
 		tools->AddStretchSpacer();
 		tools->Add( new wxMetroButton( this, wxID_ABOUT, "About" ), 0, wxALL|wxEXPAND, 0 ); 
 		tools->Add( new wxMetroButton( this, wxID_CLOSE, "Close" ), 0, wxALL|wxEXPAND, 0 ); 
@@ -1807,6 +1808,13 @@ public:
 			wxLaunchDefaultBrowser( SamApp::WebApi("support_email") );
 			return;
 		}
+		else if ( url == ":script_ref" )
+		{
+			wxFileName file( SamApp::GetRuntimePath() + "/help/lk_guide.pdf" );
+			file.Normalize();
+			wxLaunchDefaultBrowser( file.GetFullPath() );
+			return;
+		}
 		else if ( url == ":forum" )
 			url = SamApp::WebApi( "forum" );
 		else if ( url == ":website" )
@@ -1840,6 +1848,9 @@ public:
 		case ID_RELEASE_NOTES:
 			LoadPage( ":release_notes" );
 			break;
+		case ID_SCRIPT_REFERENCE:
+			LoadPage( ":script_ref" );
+			break;
 		case ID_HOME:
 		{
 			wxFileName fn( SamApp::GetRuntimePath() + "/help/html/index.html" );
@@ -1870,6 +1881,7 @@ BEGIN_EVENT_TABLE( HelpWin, wxFrame )
 	EVT_BUTTON( ID_WEBSITE, HelpWin::OnCommand )
 	EVT_BUTTON( ID_FORUM, HelpWin::OnCommand )
 	EVT_BUTTON( ID_RELEASE_NOTES, HelpWin::OnCommand )
+	EVT_BUTTON( ID_SCRIPT_REFERENCE, HelpWin::OnCommand )
 	EVT_BUTTON( ID_EMAIL_SUPPORT, HelpWin::OnCommand )
 	EVT_BUTTON( wxID_CLOSE, HelpWin::OnCommand )
 	EVT_BUTTON( wxID_ABOUT, HelpWin::OnCommand )
