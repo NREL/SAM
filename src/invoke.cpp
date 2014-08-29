@@ -48,19 +48,10 @@ static void fcall_dview(lk::invoke_t &cxt)
 	size_t ndx = 3;
 	if ((4 * num_datasets + ndx) != cxt.arg_count()) return;
 
-	wxDialog *frame;
-	wxDVPlotCtrl *dview;
-	if (wxWindow::FindWindowByLabel(win_name))
-	{
-		frame = (wxDialog*)wxWindow::FindWindowByLabel(win_name);
-		dview = (wxDVPlotCtrl *)frame->FindWindowByName("DVIEW_" + win_name);
-	}
-	else
-	{
-		frame = new wxDialog(wxTheApp->GetTopWindow(), wxID_ANY, win_name, wxDefaultPosition, wxSize(900, 700));
-		dview = new wxDVPlotCtrl(frame, wxID_ANY);
-		dview->SetName("DVIEW_" + win_name);
-	}
+	wxFrame *frame = new wxFrame( SamApp::Window(), wxID_ANY, "Data Viewer: " + win_name, wxDefaultPosition, wxSize(1100,700),
+		(wxCAPTION | wxCLOSE_BOX | wxCLIP_CHILDREN | wxRESIZE_BORDER | wxFRAME_TOOL_WINDOW | wxFRAME_FLOAT_ON_PARENT) );
+	wxDVPlotCtrl *dview = new wxDVPlotCtrl(frame, wxID_ANY);
+
 	// reset data - an compare each dataset if changed instead
 	dview->RemoveAllDataSets();
 
