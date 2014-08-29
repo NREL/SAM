@@ -27,6 +27,7 @@ OBJECTS = ide.o \
 	stochastic.o \
 	urdb.o \
 	solarprospector.o \
+	windtoolkit.o \
 	registration.o \
 	gridsupport.o \
 	macro.o \
