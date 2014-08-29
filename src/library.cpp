@@ -4,12 +4,111 @@
 #include <wx/wx.h>
 #include <wx/filename.h>
 #include <wx/dir.h>
+#include <wx/tokenzr.h>
 
 #include <ssc/sscapi.h>
 
 #include "library.h"
 #include "object.h"
 #include "main.h"
+
+
+
+enum { ID_ADD_FOLDER = wxID_HIGHEST + 1553,
+		ID_REMOVE_FOLDER,
+		ID_SELECT_FOLDER };
+
+class SettingsDialog : public wxDialog
+{
+private:
+	wxListBox *m_pathListBox;
+	wxTextCtrl *m_downloadPath;
+public:
+	SettingsDialog( wxWindow *parent, const wxString &title, const wxString &data_file_name = "Weather File" )
+		: wxDialog( parent, wxID_ANY, title, wxDefaultPosition, wxSize(400,450), wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER)
+	{
+		wxSizer *szmain = new wxBoxSizer( wxVERTICAL );
+		wxSizer *sizer_wfpaths = new wxStaticBoxSizer( wxVERTICAL, this, data_file_name+" Folders" );
+		wxSizer *sizer_dnfolder = new wxStaticBoxSizer(wxHORIZONTAL, this, "Folder for Downloaded " + data_file_name + "s");
+
+		m_pathListBox = new wxListBox( this, wxID_ANY, wxDefaultPosition, wxDefaultSize, 0, 0, wxLB_SINGLE );
+		sizer_wfpaths->Add( m_pathListBox, 1, wxALL|wxEXPAND, 4 );
+		wxBoxSizer *szbuttons1 = new wxBoxSizer(wxHORIZONTAL);
+		szbuttons1->AddStretchSpacer();
+		szbuttons1->Add( new wxButton(this, ID_ADD_FOLDER, "Add" ), 0, wxALL|wxEXPAND, 4 );
+		szbuttons1->Add( new wxButton(this, ID_REMOVE_FOLDER, "Remove" ), 0, wxALL|wxEXPAND, 4 );
+		sizer_wfpaths->Add( szbuttons1, 0, wxALL|wxEXPAND, 4 );
+
+		m_downloadPath = new wxTextCtrl( this, wxID_ANY, wxEmptyString );
+		sizer_dnfolder->Add( m_downloadPath, 1, wxALL|wxEXPAND, 4 );
+		sizer_dnfolder->Add( new wxButton(this, ID_SELECT_FOLDER, " ... ", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL|wxEXPAND, 4 );
+
+		szmain->Add( sizer_wfpaths, 1, wxALL|wxEXPAND, 8 );
+		szmain->Add( sizer_dnfolder, 0, wxALL|wxEXPAND, 8 );
+		szmain->Add( CreateButtonSizer( wxOK|wxCANCEL|wxHELP ), 0, wxALL|wxEXPAND, 10 );
+
+		SetSizer( szmain );		
+	}
+
+	void OnCommand( wxCommandEvent &evt )
+	{
+		wxString dir;
+		switch( evt.GetId() )
+		{
+		case ID_ADD_FOLDER:
+			dir = wxDirSelector("Choose a folder");
+			if ( !dir.IsEmpty() && m_pathListBox->FindString( dir ) < 0 )
+					m_pathListBox->Append( dir );
+			break;
+
+		case ID_REMOVE_FOLDER:
+			if ( m_pathListBox->GetSelection() >= 0)
+				m_pathListBox->Delete( m_pathListBox->GetSelection() );
+			break;
+
+		case ID_SELECT_FOLDER:			
+			dir = wxDirSelector("Choose folder for downloaded weather files", m_downloadPath->GetValue());
+			if (!dir.empty())
+				m_downloadPath->SetValue(dir);
+			break;
+
+		case wxID_HELP:			
+			SamApp::ShowHelp("Weather Data Settings");
+			break;
+		}
+	}
+
+	void SetLibraryPaths( const wxArrayString &list )
+	{
+		m_pathListBox->Clear();
+		m_pathListBox->Append( list );
+	}
+
+	wxArrayString GetLibraryPaths()
+	{
+		return m_pathListBox->GetStrings();
+	}
+
+	void SetDownloadPath( const wxString &path )
+	{
+		m_downloadPath->ChangeValue( path );
+	}
+
+	wxString GetDownloadPath()
+	{
+		return m_downloadPath->GetValue();
+	}
+
+	DECLARE_EVENT_TABLE();
+};
+
+BEGIN_EVENT_TABLE( SettingsDialog, wxDialog )
+	EVT_BUTTON( ID_ADD_FOLDER, SettingsDialog::OnCommand )
+	EVT_BUTTON( ID_REMOVE_FOLDER, SettingsDialog::OnCommand )
+	EVT_BUTTON( ID_SELECT_FOLDER, SettingsDialog::OnCommand )
+	EVT_BUTTON( wxID_HELP, SettingsDialog::OnCommand )
+END_EVENT_TABLE( )
+
 
 class LibManager {
 public:
@@ -34,6 +133,18 @@ Library *Library::Load( const wxString &file )
 	Library *l = new Library;
 	if ( l->Read( file ) )
 	{
+		// replace an old library if the new
+		// one has the same name
+		if ( Library *old = Find( l->GetName() ) )
+		{
+			std::vector<Library*>::iterator it = std::find( gs_libs.m_libs.begin(), gs_libs.m_libs.end(), old );
+			if ( it != gs_libs.m_libs.end() )
+			{
+				gs_libs.m_libs.erase( it );
+				delete old;
+			}
+		}
+
 		gs_libs.m_libs.push_back( l );
 		return l;
 	}
@@ -385,6 +496,7 @@ void LibraryCtrl::ReloadLibrary()
 {
 	if( Library *lib = Library::Find( m_library ) )
 	{
+		wxString item = GetEntrySelection();
 		wxString tarsel = m_target->GetStringSelection();
 		m_target->Clear();
 		
@@ -405,10 +517,10 @@ void LibraryCtrl::ReloadLibrary()
 		UpdateList();
 
 		m_list->SetColumnWidth( 0, 350 );
-		
+		if ( !item.IsEmpty() ) SetEntrySelection( item );		
 	}
 	else
-		wxLogStatus( "LibraryCtrl: could not find library " + m_library );
+		wxMessageBox( "Could not find library: " + m_library );
 }
 
 void LibraryCtrl::UpdateList()
@@ -524,13 +636,58 @@ void LibraryCtrl::SetLabel( const wxString &text )
 	Layout();
 }
 
+bool ShowSolarResourceDataSettings()
+{
+	wxString dnpath;
+	if ( !SamApp::Settings().Read( "solar_download_path", &dnpath ) )
+	{
+		dnpath = ::wxGetHomeDir() + "/SAM Downloaded Weather Files";
+		SamApp::Settings().Write( "solar_download_path", dnpath );
+	}
+
+	wxString buf;
+	wxArrayString paths;
+	if ( SamApp::Settings().Read( "solar_data_paths", &buf ) )
+		paths = wxStringTokenize( buf, ";" );
+
+	SettingsDialog dialog( SamApp::Window(), "Solar Resource Data Folder Settings", "Solar Data File" );
+	dialog.CenterOnParent();
+	dialog.SetLibraryPaths( paths );
+	dialog.SetDownloadPath( dnpath );
+	if ( dialog.ShowModal() == wxID_OK )
+	{
+		SamApp::Settings().Write("solar_download_path", dialog.GetDownloadPath() );
+		SamApp::Settings().Write("solar_data_paths", wxJoin(dialog.GetLibraryPaths(),';') );
+		return true;
+	}
+	else return false;
+}
+
+bool ShowWindResourceDataSettings()
+{
+	wxMessageBox("Wind data settings not supported yet.");
+	return false;
+}
 
 bool ScanSolarResourceData( const wxString &db_file )
 {
-	wxString path = SamApp::GetRuntimePath() + "../solar_resource/";
-	wxDir dir( path );
-	if( !dir.IsOpened() ) return false;
+	wxArrayString paths;
+	paths.Add( SamApp::GetRuntimePath() + "../solar_resource/" );
 
+	wxString dnpath;
+	if ( SamApp::Settings().Read("solar_download_path", &dnpath) 
+		&& wxDirExists( dnpath ) )
+		paths.Add( dnpath );
+
+	wxString slist;
+	if ( SamApp::Settings().Read("solar_data_paths", &slist ) )
+	{
+		wxArrayString ll = wxStringTokenize(slist, ";");
+		for( size_t i=0;i<ll.size();i++ )
+			if ( wxDirExists( ll[i] ) )
+				paths.Add( ll[i] );
+	}
+	
 	wxCSVData csv;
 	csv(0,0) = "Name";
 	csv(2,0) = "[0]";
@@ -568,69 +725,88 @@ bool ScanSolarResourceData( const wxString &db_file )
 
 	csv(0,10) = "File name";
 	csv(2,10) = "solar_data_file_name";
-
+	
 	int row = 3;
-	wxString file;
-	bool has_more = dir.GetFirst( &file, "*.csv", wxDIR_FILES );
-	while( has_more )
+	wxArrayString errors;
+	for( size_t i=0;i<paths.size();i++ )
 	{
-		// process file
-		wxString wf = path + "/" + file;
+		wxString path(paths[i]);
+		wxDir dir( path );
+		if( !dir.IsOpened() )
+		{
+			wxLogStatus("ScanSolarResourceData: could not open folder " + path );
+			continue;
+		}
+
+		wxString file;
+		bool has_more = dir.GetFirst( &file, wxEmptyString, wxDIR_FILES );
+		while( has_more )
+		{
+			// process file
+			wxString wf = paths[i] + "/" + file;
+			wxFileName fnn(wf);
+			wxString ext = fnn.GetExt().Lower();
+			if ( ext != "csv"
+				&& ext != "tm2"
+				&& ext != "tm3"
+				&& ext != "epw"
+				&& ext != "smw" ) continue;
 		
-		ssc_data_t pdata = ssc_data_create();
-		ssc_data_set_string( pdata, "file_name", (const char*)wf.c_str() );
-		ssc_data_set_number( pdata, "header_only", 1 );
+			ssc_data_t pdata = ssc_data_create();
+			ssc_data_set_string( pdata, "file_name", (const char*)wf.c_str() );
+			ssc_data_set_number( pdata, "header_only", 1 );
 
-		if ( const char *err = ssc_module_exec_simple_nothread( "wfreader", pdata ) )
-		{
-			wxLogStatus("error scanning '" + wf + "'");
-			wxLogStatus("\t%s", err );
-		}
-		else
-		{
-			ssc_number_t val;
-			const char *str;
+			if ( const char *err = ssc_module_exec_simple_nothread( "wfreader", pdata ) )
+			{
+				wxLogStatus("error scanning '" + wf + "'");
+				wxLogStatus("\t%s", err );
+			}
+			else
+			{
+				ssc_number_t val;
+				const char *str;
 
-			wxFileName ff(wf);
-			ff.Normalize();
+				wxFileName ff(wf);
+				ff.Normalize();
 
-			csv(row,0) = ff.GetName();
+				csv(row,0) = ff.GetName();
 
-			if ( str = ssc_data_get_string( pdata, "city" ) )
-				csv(row,1) = wxString(str);
+				if ( str = ssc_data_get_string( pdata, "city" ) )
+					csv(row,1) = wxString(str);
 
-			if ( str = ssc_data_get_string( pdata, "state" ) )
-				csv(row,2) = wxString(str);
+				if ( str = ssc_data_get_string( pdata, "state" ) )
+					csv(row,2) = wxString(str);
 
-			if ( str = ssc_data_get_string( pdata, "country" ) )
-				csv(row,3) = wxString(str);
+				if ( str = ssc_data_get_string( pdata, "country" ) )
+					csv(row,3) = wxString(str);
 			
-			if ( ssc_data_get_number( pdata, "lat", &val ) )
-				csv(row,4) = wxString::Format("%g", val);
+				if ( ssc_data_get_number( pdata, "lat", &val ) )
+					csv(row,4) = wxString::Format("%g", val);
 			
-			if ( ssc_data_get_number( pdata, "lon", &val ) )
-				csv(row,5) = wxString::Format("%g", val);
+				if ( ssc_data_get_number( pdata, "lon", &val ) )
+					csv(row,5) = wxString::Format("%g", val);
 			
-			if ( ssc_data_get_number( pdata, "tz", &val ) )
-				csv(row,6) = wxString::Format("%g", val);
+				if ( ssc_data_get_number( pdata, "tz", &val ) )
+					csv(row,6) = wxString::Format("%g", val);
 			
-			if ( ssc_data_get_number( pdata, "elev", &val ) )
-				csv(row,7) = wxString::Format("%g", val);
+				if ( ssc_data_get_number( pdata, "elev", &val ) )
+					csv(row,7) = wxString::Format("%g", val);
 
-			if ( str = ssc_data_get_string( pdata, "location" ) )
-				csv(row,8) = wxString(str);
+				if ( str = ssc_data_get_string( pdata, "location" ) )
+					csv(row,8) = wxString(str);
 			
-			if ( str = ssc_data_get_string( pdata, "source" ) )
-				csv(row,9) = wxString(str);
+				if ( str = ssc_data_get_string( pdata, "source" ) )
+					csv(row,9) = wxString(str);
 					
-			csv(row,10) = ff.GetFullPath();
+				csv(row,10) = ff.GetFullPath();
 
-			row++;
+				row++;
+			}
+
+			ssc_data_free( pdata );
+
+			has_more = dir.GetNext( &file );
 		}
-
-		ssc_data_free( pdata );
-
-		has_more = dir.GetNext( &file );
 	}
 
 	return csv.WriteFile( db_file );
