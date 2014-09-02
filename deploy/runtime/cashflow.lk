@@ -964,6 +964,9 @@ cashflow_to_excel{ 'Single Owner' } = define()
 	  degradsched = degrad;  
     xl_set( xlsm, degradsched, 'Degradation' );
 	
+	price = output('ppa_price');
+	xl_set( xlsm, price, 'PPAPrice' );
+	
 	send_excel(       xlsm, 'analysis_period');
 	send_excel(       xlsm, 'cbi_fed_amount');
 	send_excel_yesno( xlsm, 'cbi_fed_deprbas_fed');
