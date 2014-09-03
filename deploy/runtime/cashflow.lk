@@ -28,15 +28,15 @@ function state_federal_depreciation_tables()
 
 function setup_incentives_cashflow()
 {
-	cfline( "ibi_total_fed,ibi_total_sta,ibi_total_uti,ibi_total_oth,ibi_total", -1 ); // -1 = use generic format
+	cfline( 'ibi_total_fed,ibi_total_sta,ibi_total_uti,ibi_total_oth,ibi_total' );
 	cfline( '' ); // spacer 
-	cfline( "cbi_total_fed,cbi_total_sta,cbi_total_uti,cbi_total_oth,cbi_total", -1 );
+	cfline( 'cbi_total_fed,cbi_total_sta,cbi_total_uti,cbi_total_oth,cbi_total');
 	cfline( '' ); // spacer 
-	cfline( "cf_pbi_total_fed,cf_pbi_total_sta,cf_pbi_total_uti,cf_pbi_total_oth,cf_pbi_total", -1 );
+	cfline( 'cf_pbi_total_fed,cf_pbi_total_sta,cf_pbi_total_uti,cf_pbi_total_oth,cf_pbi_total');
 	cfline( '' ); // spacer 
-	cfline( "cf_ptc_fed,cf_ptc_sta,cf_ptc_total", -1 );
+	cfline( 'cf_ptc_fed,cf_ptc_sta,cf_ptc_total' );
 	cfline( '' ); // spacer 
-	cfline( "itc_fed_total,itc_sta_total,itc_total", -1 );
+	cfline( 'itc_total_fed,itc_total_sta,itc_total' );
 	cfline( '' ); // spacer 
 }
 
@@ -254,114 +254,147 @@ cashflow{ 'Single Owner' } = define()
                  tech != 'Solar Water Heating' && 
                  tech != 'Wind Power');
     
+	cfline( "PRODUCTION (AC KWH)",0);
+	cfline( 'cf_degradation');
 	cfline( 'cf_energy_net', 1); // use one digit
-	cfline( 'cf_energy_price');
+
+	cfline( '' );
+	cfline( "REVENUES",0);
+	cfline( 'cf_ppa_price');
 	cfline( 'cf_energy_value');
+	//cfline( "PBI if available for debt service",0);
 	// optional values used for pbi for debt service
 	if (value('pbi_fed_for_ds')==1)	cfline( 'cf_pbi_total_fed');
 	if (value('pbi_sta_for_ds')==1)	cfline( 'cf_pbi_total_sta');
 	if (value('pbi_uti_for_ds')==1)	cfline( 'cf_pbi_total_uti');
 	if (value('pbi_oth_for_ds')==1)	cfline( 'cf_pbi_total_oth');
-
 	cfline( 'cf_net_salvage_value');
 	cfline( 'cf_total_revenue');
 
 	cfline( '' ); // spacer
-
 	cfline( 'cf_property_tax_assessed_value');
 
 	cfline( '' ); // spacer
-
-	cfline( "Expenses", 0 ); // header	
+	cfline( "EXPENSES", 0 ); // header	
 	if (value('system_use_recapitalization')) cfline ('capitalization');
-	cfline( 'cf_om_fixed_expense,cf_om_production_expense,cf_om_capacity_expense');
+	cfline( 'cf_om_fixed_expense,cf_om_capacity_expense,cf_om_production_expense');
 	if ( fueltech == true )cfline('cf_om_fuel_expense');
-	if ( fueltech == true )cfline( 'cf_om_opt_fuel_1_expense' );
-	if ( fueltech == true )cfline( 'cf_om_opt_fuel_2_expense' );
+	if ( fueltech == true )cfline( 'cf_om_opt_fuel_1_expense');
+	if ( fueltech == true )cfline( 'cf_om_opt_fuel_2_expense');
 	cfline( 'cf_property_tax_expense');
 	cfline( 'cf_insurance_expense');
 	cfline( 'cf_operating_expenses');
+
 	cfline( '' ); // spacer
-	
 	cfline( 'cf_ebitda');
+
 	cfline( '' ); // spacer
-	
-	cfline( "Cash Flows from Operating Activities", 0 ); // header
+	cfline( "CASH FLOWS FROM OPERATING ACTIVITIES", 0 ); // header
 	cfline( 'cf_reserve_interest');
 	if (value('pbi_fed_for_ds')==0)	cfline( 'cf_pbi_total_fed');
 	if (value('pbi_sta_for_ds')==0)	cfline( 'cf_pbi_total_sta');
 	if (value('pbi_uti_for_ds')==0)	cfline( 'cf_pbi_total_uti');
 	if (value('pbi_oth_for_ds')==0)	cfline( 'cf_pbi_total_oth');
-	cfline('project_operating_activities');
+	cfline('cf_project_operating_activities');
 	cfline( '' ); // spacer
 
-	cfline( "Cash Flows from Investing Activities", 0);
-	cfline( 'sv.purchase_of_property');
-	cfline( '' ); // spacer
-	cfline( 'cf.project_wcra');
+	cfline( "CASH FLOWS FROM INVESTING ACTIVITIES", 0);
+	cfline('purchase_of_property');
+	cfline('cf_project_dsra');
+	cfline('cf_project_wcra');
 	cfline('cf_project_me1ra');
 	cfline('cf_project_me2ra');
 	cfline('cf_project_me3ra');
-	cfline('cf_project_ra');
-	cfline( '' ); // spacer
 	cfline('cf_project_me1cs');
 	cfline('cf_project_me2cs');
 	cfline('cf_project_me3cs');
-	cfline('cf_project_mecs');
-	cfline( '' ); // spacer
 	cfline('cf_project_investing_activities');
+	
 	cfline( '' ); // spacer
-
-	cfline( 'sv.TotalIBI');
-	cfline( 'sv.TotalCBI');
-	cfline( 'sv.issuance_of_equity');
+	cfline("CASH FLOWS FROM FINANCING ACTIVITIES",0);
+	cfline( 'ibi_total');
+	cfline( 'cbi_total');
+	cfline( 'issuance_of_equity');
+	cfline('cf_debt_payment_principal');
 	cfline('cf_project_financing_activities');
-	cfline( '' ); // spacer
+	
+	cfline('');
 	cfline('cf_pretax_cashflow');
-	cfline( '' ); // spacer
 
-	cfline( 'Total Project Returns');
-	cfline( 'Pre-Tax');
+	cfline( '' ); // spacer
+	cfline( "PRE-TAX PROJECT RETURNS",0);
 	cfline('cf_project_return_pretax');
+	cfline('');
 	cfline('cf_project_return_pretax_irr');
 	cfline('cf_project_return_pretax_npv');
-	cfline( '' ); // spacer
-	cfline( 'After-Tax');
-	cfline('cf_project_return_aftertax_cash');
+
+	cfline('');
+	cfline("AFTER-TAX PROJECT RETURNS",0);
+	cfline( "Note: ITC applies in Year 1",0 );
+	cfline('itc_total_fed');
+	cfline('cf_ptc_fed');
+	cfline('cf_fedtax');
+	cfline('itc_total_sta');
+	cfline('cf_ptc_sta');
+	cfline('cf_statax');
 	cfline('cf_project_return_aftertax');
+	cfline('');
 	cfline('cf_project_return_aftertax_irr');
 	cfline('cf_project_return_aftertax_npv');
-	cfline( '' ); // spacer
-	cfline( '' ); // spacer
 
-// LCOE
-	cfline( 'LCOE');
-	cfline('cf_energy_value');
-	cfline('cf_energy');
-	cfline( 'npv_ppa_revenue');
-	cfline( 'npv_energy_nom');
-	cfline( 'lcoe_nom');
-	cfline( 'npv_energy_real');
-	cfline( 'lcoe_real');
+	cfline('');
+	cfline("STATE INCOME TAXES",0);
+	cfline("plus:",0);
+	cfline('cf_ebitda');           // ebitda
+	cfline('cf_reserve_interest'); // interest on reserves
+	cfline('ibi_statax_total');    // taxable state ibi
+	cfline('cbi_statax_total');    // taxable state cbi
+	cfline('cf_pbi_statax_total'); // taxalbe state pbi
+	cfline("minus:",0);
+	cfline('cf_debt_payment_interest'); // debt interest
+	cfline('cf_stadepr_total');         // federal depreciation amount
+	cfline("equals:",0);
+	cfline('cf_statax_income_with_incentives'); // state taxable income
+	cfline('');
+	cfline('cf_statax'); // statetax amount
+
+	cfline('');
+	cfline("FEDERAL INCOME TAXES",0);
+	cfline("plus:",0);
+	cfline('cf_ebitda');           // ebitda
+	cfline('cf_reserve_interest'); // interest on reserves
+	cfline('cf_statax');           // state tax amount
+	cfline('itc_total_sta');       // state itc
+	cfline('cf_ptc_sta');          // state ptc
+	cfline('ibi_fedtax_total');    // fed taxable fed ibi
+	cfline('cbi_fedtax_total');    // fed taxable fed cbi
+	cfline('cf_pbi_fedtax_total'); // fed taxable fed pbi
+	cfline("minus:",0);
+	cfline('cf_debt_payment_interest'); // debt interest
+	cfline('cf_feddepr_total');         // federal depreciation amount
+	cfline("equals:",0);
+	cfline('cf_fedtax_income_with_incentives'); // federal taxable income
+	cfline('');
+	cfline('cf_fedtax'); // federal tax amount
+
 	cfline( '' ); // spacer
-
-
-	// incentives
-	cfline( 'Incentives');
+	cfline( "INCENTIVES",0);
 	setup_incentives_cashflow();
 	cfline( '' ); // spacer
 
 	// debt
-	cfline( 'Debt');
-	cfline( 'sv.total_debt');
-	cfline('cf_debt_payment_principal');
+	cfline( "DEBT REPAYMENT",0);
 	cfline('cf_debt_balance');
-	cfline( '' ); // spacer
 	cfline('cf_debt_payment_principal');
 	cfline('cf_debt_payment_interest');
 	cfline('cf_debt_payment_total');
 	cfline( '' ); // spacer
 	
+	cfline( "DEBT SIZING (CONSTANT DSCR)",0);
+	cfline('cf_cash_for_ds');
+	cfline('cf_pv_cash_for_ds');
+	cfline('cf_debt_size');
+	cfline('dscr');
 
 	// reserve accounts
 	cfline( 'Reserve Accounts');
@@ -1104,7 +1137,6 @@ cashflow_to_excel{ 'Single Owner' } = define()
 	send_excel_yesno( xlsm, 'itc_sta_percent_deprbas_sta');
 	send_excel(       xlsm, 'itc_sta_percent_maxvalue');
 	send_excel(       xlsm, 'months_working_reserve');
-	send_excel(       xlsm, 'NominalDiscountRate');
 	send_excel(       xlsm, 'om_capacity');
 	send_excel(       xlsm, 'om_capacity_escal');
 	send_excel(       xlsm, 'om_fixed');
