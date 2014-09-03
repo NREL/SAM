@@ -203,7 +203,7 @@ ResultsViewer::ResultsViewer( wxWindow *parent, int id )
 	m_cashFlowTable = new wxExtGridCtrl(m_cf_top_panel, wxID_ANY);
 	m_cashFlowTable->SetFont( *wxNORMAL_FONT );
 	m_cashFlowTable->CreateGrid(1,1);
-	m_cashFlowTable->SetRowLabelAlignment(wxALIGN_RIGHT,wxALIGN_CENTRE);
+	m_cashFlowTable->SetRowLabelAlignment(wxALIGN_LEFT,wxALIGN_CENTRE);
 	m_cashFlowTable->SetDefaultCellAlignment(wxALIGN_RIGHT,wxALIGN_CENTRE);
 	m_cashFlowTable->DisableCellEditControl();
 	m_cashFlowTable->DisableDragCell();
@@ -217,7 +217,7 @@ ResultsViewer::ResultsViewer( wxWindow *parent, int id )
 	m_depreciationTable = new wxExtGridCtrl(m_cf_splitter, wxID_ANY);
 	m_depreciationTable->SetFont(*wxNORMAL_FONT);
 	m_depreciationTable->CreateGrid(1, 1);
-	m_depreciationTable->SetRowLabelAlignment(wxALIGN_RIGHT, wxALIGN_CENTRE);
+	m_depreciationTable->SetRowLabelAlignment(wxALIGN_LEFT, wxALIGN_CENTRE);
 	m_depreciationTable->SetDefaultCellAlignment(wxALIGN_RIGHT, wxALIGN_CENTRE);
 	m_depreciationTable->DisableCellEditControl();
 	m_depreciationTable->DisableDragCell();
