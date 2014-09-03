@@ -34,7 +34,7 @@ function setup_incentives_cashflow()
 	cfline( '' ); // spacer 
 	cfline( 'cf_pbi_total_fed,cf_pbi_total_sta,cf_pbi_total_uti,cf_pbi_total_oth,cf_pbi_total');
 	cfline( '' ); // spacer 
-	cfline( 'cf_ptc_fed,cf_ptc_sta,cf_ptc_total' );
+	cfline( 'cf_ptc_fed,cf_ptc_sta' );
 	cfline( '' ); // spacer 
 	cfline( 'itc_total_fed,itc_total_sta,itc_total' );
 	cfline( '' ); // spacer 
@@ -262,8 +262,7 @@ cashflow{ 'Single Owner' } = define()
 	cfline( "REVENUES",0);
 	cfline( 'cf_ppa_price');
 	cfline( 'cf_energy_value');
-	//cfline( "PBI if available for debt service",0);
-	// optional values used for pbi for debt service
+	cfline("plus PBI if available for debt service:",0);
 	if (value('pbi_fed_for_ds')==1)	cfline( 'cf_pbi_total_fed');
 	if (value('pbi_sta_for_ds')==1)	cfline( 'cf_pbi_total_sta');
 	if (value('pbi_uti_for_ds')==1)	cfline( 'cf_pbi_total_uti');
@@ -275,7 +274,7 @@ cashflow{ 'Single Owner' } = define()
 	cfline( 'cf_property_tax_assessed_value');
 
 	cfline( '' ); // spacer
-	cfline( "EXPENSES", 0 ); // header	
+	cfline( "OPERATING EXPENSES", 0 ); // header	
 	if (value('system_use_recapitalization')) cfline ('capitalization');
 	cfline( 'cf_om_fixed_expense,cf_om_capacity_expense,cf_om_production_expense');
 	if ( fueltech == true )cfline('cf_om_fuel_expense');
@@ -284,17 +283,22 @@ cashflow{ 'Single Owner' } = define()
 	cfline( 'cf_property_tax_expense');
 	cfline( 'cf_insurance_expense');
 	cfline( 'cf_operating_expenses');
-
 	cfline( '' ); // spacer
 	cfline( 'cf_ebitda');
 
 	cfline( '' ); // spacer
 	cfline( "CASH FLOWS FROM OPERATING ACTIVITIES", 0 ); // header
+	cfline("plus:",0);
+	cfline( 'cf_ebitda');
 	cfline( 'cf_reserve_interest');
+	cfline("plus PBI if not available for debt service:",0);
 	if (value('pbi_fed_for_ds')==0)	cfline( 'cf_pbi_total_fed');
 	if (value('pbi_sta_for_ds')==0)	cfline( 'cf_pbi_total_sta');
 	if (value('pbi_uti_for_ds')==0)	cfline( 'cf_pbi_total_uti');
 	if (value('pbi_oth_for_ds')==0)	cfline( 'cf_pbi_total_oth');
+	cfline("minus:",0);
+	cfline('cf_debt_payment_interest');
+	cfline("equals:",0);
 	cfline('cf_project_operating_activities');
 	cfline( '' ); // spacer
 
@@ -380,7 +384,6 @@ cashflow{ 'Single Owner' } = define()
 	cfline( '' ); // spacer
 	cfline( "INCENTIVES",0);
 	setup_incentives_cashflow();
-	cfline( '' ); // spacer
 
 	// debt
 	cfline( "DEBT REPAYMENT",0);
@@ -397,6 +400,7 @@ cashflow{ 'Single Owner' } = define()
 	cfline('dscr');
 
 	// reserve accounts
+	cfline("RESERVE ACCOUNTS",0);
 	cfline( 'Reserve Accounts');
 	cfline('cf_reserve_debtservice');
 	cfline('cf_reserve_om');
