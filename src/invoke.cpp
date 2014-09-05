@@ -67,9 +67,10 @@ static void fcall_dview(lk::invoke_t &cxt)
 		for (size_t i = 0; i < 8760; i++)
 			plot_data[i] = mult * data.index(i)->as_number();
 
-		dview->AddDataSet(new wxDVArrayDataSet(data_name, data_units, timestep, plot_data));
+		dview->AddDataSet(new wxDVArrayDataSet(data_name, data_units, timestep, plot_data), win_name );
 	}
 
+	dview->GetStatisticsTable()->RebuildDataViewCtrl();
 	dview->SelectDataIndex(0);
 
 	frame->Show();
@@ -138,14 +139,16 @@ static void fcall_dview_solar_data_file( lk::invoke_t &cxt )
 			for (int j = 0; j < len; j++)
 				plot_data[j] = p[j];
 
-			dview->AddDataSet( new wxDVArrayDataSet( vars[i].label, vars[i].units, start, step, plot_data ) );
+			dview->AddDataSet( new wxDVArrayDataSet( vars[i].label, vars[i].units, start, step, plot_data ), 
+				wxFileNameFromPath( file ) );
 		}
 
 		i++;
 	}
 
 	ssc_data_free( pdata );
-
+	
+	dview->GetStatisticsTable()->RebuildDataViewCtrl();
 	if ( i > 0 )
 		dview->SelectDataIndex(0);
 

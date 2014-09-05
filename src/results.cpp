@@ -15,6 +15,7 @@
 #include <wex/dview/dvplotctrl.h>
 #include <wex/dview/dvselectionlist.h>
 #include <wex/dview/dvcolourmap.h>
+#include <wex/dview/dvstatisticstablectrl.h>
 #include <wex/plot/plplotctrl.h>
 #include <wex/plot/plaxis.h>
 #include <wex/plot/pllineplot.h>
@@ -254,6 +255,9 @@ ResultsViewer::ResultsViewer( wxWindow *parent, int id )
 		
 	m_profilePlots = new wxDVProfileCtrl( this, wxID_ANY );
 	AddPage( m_profilePlots, "Profiles" );
+
+	m_statTable = new wxDVStatisticsTableCtrl( this, wxID_ANY );
+	AddPage( m_statTable, "Statistics" );
 
 	m_dMap = new wxDVDMapCtrl( this, wxID_ANY );
 	AddPage( m_dMap, "Heat map" );
@@ -638,11 +642,12 @@ void ResultsViewer::Setup( Simulation *sim )
 				float *p = vv->Array( &n );
 				
 				if ( n == 8760 )
-					AddDataSet( new TimeSeries8760( p, m_sim->GetLabel(vars[i]), m_sim->GetUnits(vars[i])) );
+					AddDataSet( new TimeSeries8760( p, m_sim->GetLabel(vars[i]), m_sim->GetUnits(vars[i])), "Hourly Outputs" );
 			}
 		}
 	}
 
+	m_statTable->RebuildDataViewCtrl();
 	SetDViewState( viewstate );
 
 	// setup graphs
@@ -846,6 +851,7 @@ void ResultsViewer::AddDataSet(wxDVTimeSeriesDataSet *d, const wxString& group, 
 	m_dailySeries->AddDataSet(d, group, update_ui);
 	m_dMap->AddDataSet(d, group, update_ui);
 	m_profilePlots->AddDataSet(d, group, update_ui);
+	m_statTable->AddDataSet(d, group);
 	m_pnCdf->AddDataSet(d, group, update_ui); 
 	m_durationCurve->AddDataSet(d, group, update_ui);
 	m_scatterPlot->AddDataSet(d, group, update_ui);
@@ -1099,6 +1105,7 @@ void ResultsViewer::RemoveAllDataSets()
 	m_dailySeries->RemoveAllDataSets();
 	m_dMap->RemoveAllDataSets();
 	m_profilePlots->RemoveAllDataSets();
+	m_statTable->RemoveAllDataSets();
 	m_pnCdf->RemoveAllDataSets();
 	m_durationCurve->RemoveAllDataSets();
 	m_scatterPlot->RemoveAllDataSets();
