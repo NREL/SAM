@@ -688,6 +688,12 @@ void ResultsViewer::Setup( Simulation *sim )
 			else if (cl.type == CashFlowLine::HEADER)
 			{
 				m_cashFlowTable->SetRowLabelValue(cashflow_row, cl.name);
+				if ( cl.scale == 1.0 )
+				{
+					wxColour bgcol( m_cashFlowTable->GetGridRowLabelWindow()->GetBackgroundColour() );
+					for( size_t c=0;c<nyears;c++ )
+						m_cashFlowTable->SetCellBackgroundColour( cashflow_row, c, bgcol );
+				}
 				cashflow_row++;
 			}
 			else if (cl.type == CashFlowLine::VARIABLE)
@@ -696,6 +702,9 @@ void ResultsViewer::Setup( Simulation *sim )
 				wxString units = m_sim->GetUnits(cl.name);
 				if (!units.IsEmpty()) label += " (" + units + ")";
 				m_cashFlowTable->SetRowLabelValue(cashflow_row, label);
+
+//				if( cl.coloff != 0 )
+//					wxLogStatus("colloffset nonzero in cashflow");
 
 				if (VarValue *vv = m_sim->GetValue(cl.name))
 				{
@@ -706,18 +715,18 @@ void ResultsViewer::Setup( Simulation *sim )
 					if (vv->Type() == VV_ARRAY) p = vv->Array(&n);
 					else if (vv->Type() == VV_NUMBER) _val = vv->Value();
 
-					for (size_t i = 0; i < n && i < nyears; i++)
+					for (size_t i = 0; i < n && i+cl.coloff < nyears; i++)
 					{
 						float fval = p[i] * cl.scale;
 						wxString sval;
-						if (cl.digits > 0 && fval != 0.0f)
+						if (cl.digits >= 0 && fval != 0.0f)
 							sval = wxNumericCtrl::Format(fval, wxNumericCtrl::REAL, cl.digits, true, wxEmptyString, wxEmptyString);
-						else if (cl.digits == -2)
+						else if (cl.digits == -3) // integer cast
 							sval = wxString::Format("%d", (int)fval);
-						else
+						else // cl.digits == -2 // generic format
 							sval = wxString::Format("%g", fval);
 
-						m_cashFlowTable->SetCellValue(sval, cashflow_row, i);
+						m_cashFlowTable->SetCellValue(sval, cashflow_row, cl.coloff+i);
 					}
 				}
 				cashflow_row++;
