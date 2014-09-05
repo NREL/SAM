@@ -267,12 +267,18 @@ VarValue *Simulation::GetValue( const wxString &name )
 
 wxString Simulation::GetLabel( const wxString &var )
 {
-	return m_outputLabels[ var ];
+	if ( m_outputLabels.find( var ) != m_outputLabels.end() )
+		return m_outputLabels[ var ];
+	else
+		return m_case->Variables().Label( var );
 }
 
 wxString Simulation::GetUnits( const wxString &var )
 {
-	return m_outputUnits[ var ];
+	if ( m_outputUnits.find( var ) != m_outputUnits.end() )
+		return m_outputUnits[ var ];
+	else
+		return m_case->Variables().Units( var );
 }
 
 class SingleThreadHandler : public ISimulationHandler

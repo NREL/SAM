@@ -78,12 +78,13 @@ struct MetricData {
 	
 struct CashFlowLine {
 	enum { SPACER, HEADER, VARIABLE, CELLHEADER, CELLVARIABLE, CELLCOLHEADER };
-	CashFlowLine() : type(VARIABLE), digits(2), scale(1.0f) {  }
+	CashFlowLine() : type(VARIABLE), digits(2), scale(1.0f), coloff(0) {  }
 
 	int type;
 	wxString name;
 	int digits;
 	float scale;
+	size_t coloff;
 };
 
 struct AutoGraph {
