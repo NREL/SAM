@@ -21,6 +21,7 @@ class wxDVProfileCtrl;
 class wxDVPnCdfCtrl;
 class wxDVDCCtrl;
 class wxDVScatterPlotCtrl;
+class wxDVStatisticsTableCtrl;
 class wxPLPlotCtrl;
 class wxTextCtrl;
 class wxListBox;
@@ -139,6 +140,7 @@ private:
 	wxDVTimeSeriesCtrl *m_dailySeries;
 	wxDVDMapCtrl *m_dMap;
 	wxDVProfileCtrl *m_profilePlots;
+	wxDVStatisticsTableCtrl *m_statTable;
 	wxDVPnCdfCtrl *m_pnCdf;
 	wxDVDCCtrl *m_durationCurve;
 	wxDVScatterPlotCtrl *m_scatterPlot;
