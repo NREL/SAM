@@ -21,7 +21,6 @@ span.f_CHEquationVariable /* CH Equation Variable */
 }
 span.f_CHFileName /* CH File Name */
 {
- font-family: Verdana;
  font-style: italic;
 }
 span.f_CHInterfaceElement /* CH Interface Element */
@@ -44,7 +43,6 @@ span.f_CHVariableSubscript /* CH Variable Subscript */
 }
 span.f_Character /* Character */
 {
- font-family: Verdana;
 }
 span.f_CodeExample /* Code Example */
 {
@@ -68,7 +66,6 @@ span.f_Description /* Description */
 }
 span.f_Emphasis /* Emphasis */
 {
- font-family: Verdana;
  font-style: italic;
 }
 span.f_Equation /* Equation */
@@ -150,7 +147,6 @@ span.f_StepNoNumber /* Step No Number */
 span.f_Superscript /* Superscript */
 {
  font-size: 8pt;
- font-family: Verdana;
  vertical-align: super;
 }
 span.f_Table /* Table */
@@ -158,33 +154,26 @@ span.f_Table /* Table */
 }
 span.f_TableEquationNumber /* Table Equation Number */
 {
- font-family: Verdana;
 }
 span.f_TableHeadColumn /* Table Head Column */
 {
- font-family: Verdana;
  font-weight: bold;
 }
 span.f_TableHeadRow /* Table Head Row */
 {
- font-family: Verdana;
  font-weight: bold;
 }
 span.f_TableText /* Table Text */
 {
- font-family: Verdana;
 }
 span.f_TableTextCenter /* Table Text Center */
 {
- font-family: Verdana;
 }
 span.f_TableTextLeft /* Table Text Left */
 {
- font-family: Verdana;
 }
 span.f_TableTextRight /* Table Text Right */
 {
- font-family: Verdana;
 }
 span.f_Term /* Term */
 {
@@ -232,6 +221,12 @@ span.f_VariableDescription /* Variable Description */
 }
 span.f_VariableName /* Variable Name */
 {
+ font-weight: bold;
+}
+span.f_VideoLibraryTitle /* Video Library Title */
+{
+ font-size: 12pt;
+ font-family: Arial;
  font-weight: bold;
 }
 /* Paragraph styles */
@@ -474,6 +469,9 @@ p /* Normal */
 .p_VariableName /* Variable Name */
 {
  margin: 0px 0px 6px 12px;
+}
+.p_VideoLibraryTitle /* Video Library Title */
+{
 }
 
 
