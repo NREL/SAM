@@ -434,7 +434,7 @@ static void fcall_agraph( lk::invoke_t &cxt )
 
 static void fcall_cfline(lk::invoke_t &cxt)
 {
-	LK_DOC("cfline", "Add one or more cashflow line items to the current configuration. Names can be comma-separated list. For spacer use name='', for header use digits=0, for generic format use digits=-1, for integer cast, use digits=-2.", "( string:names, [number:digits], [number:scale] ):none");
+	LK_DOC("cfline", "Add one or more cashflow line items to the current configuration. Names can be comma-separated list. For spacer use name='', for header use digits=-1, for generic format use digits=-2, for integer cast use digits=-3.", "( string:names, [number:digits], [number:scale], [number:column offset] ):none");
 
 	if (ResultsCallbackContext *ci = static_cast<ResultsCallbackContext*>(cxt.user_data()))
 	{
@@ -443,14 +443,18 @@ static void fcall_cfline(lk::invoke_t &cxt)
 		int type = CashFlowLine::VARIABLE;
 		int digit = 2;
 		float scale = 1.0f;
-		if (cxt.arg_count() == 2)
+		size_t coloff = 0;
+		if (cxt.arg_count() >= 2)
 			digit = cxt.arg(1).as_integer();
 
-		if (cxt.arg_count() == 3)
+		if (cxt.arg_count() >= 3)
 			scale = (float)cxt.arg(2).as_number();
 
+		if (cxt.arg_count() >= 4)
+			coloff = cxt.arg(3).as_unsigned();
+
 		if (name.IsEmpty()) type = CashFlowLine::SPACER;
-		if (digit == 0) type = CashFlowLine::HEADER;
+		if (digit == -1) type = CashFlowLine::HEADER;
 
 		wxArrayString list = wxSplit(name, ',');
 		if (list.size() == 0) list.Add(name); // handle empty string
@@ -462,6 +466,7 @@ static void fcall_cfline(lk::invoke_t &cxt)
 			cl.digits = digit;
 			cl.name = list[i];
 			cl.scale = scale;
+			cl.coloff = coloff;
 			ci->GetResultsViewer()->AddCashFlowLine(cl);
 		}
 	}
@@ -469,7 +474,10 @@ static void fcall_cfline(lk::invoke_t &cxt)
 
 static void fcall_cfrow(lk::invoke_t &cxt)
 {
-	LK_DOC("cfrow", "Add one cash flow row with one or more cell items to the current configuration. Names can be comma-separated list. For spacer use name='', for header use digits=0, for generic format use digits=-1, for integer cast, use digits=-2.", "( string:names, [number:digits], [number:scale] ):none");
+	LK_DOC("cfrow", "Add one cash flow row with one or more cell items to the current configuration. "
+		"Names can be comma-separated list. "
+		"For spacer use name='', for cell header use digits=-1, for cell col header use digits=-2",
+		"( string:names, [number:digits], [number:scale] ):none");
 
 	if (ResultsCallbackContext *ci = static_cast<ResultsCallbackContext*>(cxt.user_data()))
 	{
@@ -485,8 +493,8 @@ static void fcall_cfrow(lk::invoke_t &cxt)
 			scale = (float)cxt.arg(2).as_number();
 
 		if (name.IsEmpty()) type = CashFlowLine::SPACER;
-		if (digit == 0) type = CashFlowLine::CELLHEADER;
-		if (digit == -1) type = CashFlowLine::CELLCOLHEADER;
+		if (digit == -1) type = CashFlowLine::CELLHEADER;
+		if (digit == -2) type = CashFlowLine::CELLCOLHEADER;
 
 		CashFlowLine cl;
 		cl.type = type;

@@ -2,9 +2,9 @@
 // setup cashflow tables////////////////////////////////////////////////////////
 function state_federal_depreciation_tables()
 {
-	cfrow("% of Total\nDepreciable Basis,Gross Amount\nAllocated,IBI\nReduction,CBI\nReduction,Depreciable Basis\nPrior to ITC,ITC Qualifying\nCosts,% of ITC\nQualifying Costs,ITC\nAmount,ITC Basis\nDisallowance,ITC\nAmount,ITC Basis\nDisallowance,State ITC\nReduction,Federal ITC\nReduction,Depreciable Basis\nAfter ITC Reduction,First Year Bonus\nDepreciation,Depreciable Basis\nAfter Bonus Reduction",-1);
+	cfrow("% of Total\nDepreciable Basis,Gross Amount\nAllocated,IBI\nReduction,CBI\nReduction,Depreciable Basis\nPrior to ITC,ITC Qualifying\nCosts,% of ITC\nQualifying Costs,ITC\nAmount,ITC Basis\nDisallowance,ITC\nAmount,ITC Basis\nDisallowance,State ITC\nReduction,Federal ITC\nReduction,Depreciable Basis\nAfter ITC Reduction,First Year Bonus\nDepreciation,Depreciable Basis\nAfter Bonus Reduction",-2);
 	
-	cfrow("State Depreciation & ITC",0);
+	cfrow("State Depreciation & ITC", -1);
 	cfrow("5-yr MACRS,depr_stabas_percent_macrs_5,depr_alloc_macrs_5,depr_stabas_ibi_reduc_macrs_5,depr_stabas_cbi_reduc_macrs_5,depr_stabas_prior_itc_macrs_5,itc_sta_qual_macrs_5,depr_stabas_percent_qual_macrs_5,depr_stabas_percent_amount_macrs_5,itc_disallow_sta_percent_macrs_5,depr_stabas_fixed_amount_macrs_5,itc_disallow_sta_fixed_macrs_5,depr_stabas_itc_sta_reduction_macrs_5,depr_stabas_itc_fed_reduction_macrs_5,depr_stabas_after_itc_macrs_5,depr_stabas_first_year_bonus_macrs_5,depr_stabas_macrs_5");
 	cfrow("15-yr MACRS,depr_stabas_percent_macrs_15,depr_alloc_macrs_15,depr_stabas_ibi_reduc_macrs_15,depr_stabas_cbi_reduc_macrs_15,depr_stabas_prior_itc_macrs_15,itc_sta_qual_macrs_15,depr_stabas_percent_qual_macrs_15,depr_stabas_percent_amount_macrs_15,itc_disallow_sta_percent_macrs_15,depr_stabas_fixed_amount_macrs_15,itc_disallow_sta_fixed_macrs_15,depr_stabas_itc_sta_reduction_macrs_15,depr_stabas_itc_fed_reduction_macrs_15,depr_stabas_after_itc_macrs_15,depr_stabas_first_year_bonus_macrs_15,depr_stabas_macrs_15");
 	cfrow("5-yr Straight Line,depr_stabas_percent_sl_5,depr_alloc_sl_5,depr_stabas_ibi_reduc_sl_5,depr_stabas_cbi_reduc_sl_5,depr_stabas_prior_itc_sl_5,itc_sta_qual_sl_5,depr_stabas_percent_qual_sl_5,depr_stabas_percent_amount_sl_5,itc_disallow_sta_percent_sl_5,depr_stabas_fixed_amount_sl_5,itc_disallow_sta_fixed_sl_5,depr_stabas_itc_sta_reduction_sl_5,depr_stabas_itc_fed_reduction_sl_5,depr_stabas_after_itc_sl_5,depr_stabas_first_year_bonus_sl_5,depr_stabas_sl_5");
@@ -14,7 +14,7 @@ function state_federal_depreciation_tables()
 	cfrow("Custom,depr_stabas_percent_custom,depr_alloc_custom,depr_stabas_ibi_reduc_custom,depr_stabas_cbi_reduc_custom,depr_stabas_prior_itc_custom,itc_sta_qual_custom,depr_stabas_percent_qual_custom,depr_stabas_percent_amount_custom,itc_disallow_sta_percent_custom,depr_stabas_fixed_amount_custom,itc_disallow_sta_fixed_custom,depr_stabas_itc_sta_reduction_custom,depr_stabas_itc_fed_reduction_custom,depr_stabas_after_itc_custom,depr_stabas_first_year_bonus_custom,depr_stabas_custom");
 	cfrow("Total,depr_stabas_percent_total,depr_alloc_total,depr_stabas_ibi_reduc_total,depr_stabas_cbi_reduc_total,depr_stabas_prior_itc_total,itc_sta_qual_total,depr_stabas_percent_qual_total,depr_stabas_percent_amount_total,itc_disallow_sta_percent_total,depr_stabas_fixed_amount_total,itc_disallow_sta_fixed_total,depr_stabas_itc_sta_reduction_total,depr_stabas_itc_fed_reduction_total,depr_stabas_after_itc_total,depr_stabas_first_year_bonus_total,depr_stabas_total");
 	
-	cfrow("Federal Depreciation & ITC",0);
+	cfrow("Federal Depreciation & ITC", -1);
 	cfrow("5-yr MACRS,depr_fedbas_percent_macrs_5,depr_alloc_macrs_5,depr_fedbas_ibi_reduc_macrs_5,depr_fedbas_cbi_reduc_macrs_5,depr_fedbas_prior_itc_macrs_5,itc_fed_qual_macrs_5,depr_fedbas_percent_qual_macrs_5,depr_fedbas_percent_amount_macrs_5,itc_disallow_fed_percent_macrs_5,depr_fedbas_fixed_amount_macrs_5,itc_disallow_fed_fixed_macrs_5,depr_fedbas_itc_fed_reduction_macrs_5,depr_fedbas_itc_fed_reduction_macrs_5,depr_fedbas_after_itc_macrs_5,depr_fedbas_first_year_bonus_macrs_5,depr_fedbas_macrs_5");
 	cfrow("15-yr MACRS,depr_fedbas_percent_macrs_15,depr_alloc_macrs_15,depr_fedbas_ibi_reduc_macrs_15,depr_fedbas_cbi_reduc_macrs_15,depr_fedbas_prior_itc_macrs_15,itc_fed_qual_macrs_15,depr_fedbas_percent_qual_macrs_15,depr_fedbas_percent_amount_macrs_15,itc_disallow_fed_percent_macrs_15,depr_fedbas_fixed_amount_macrs_15,itc_disallow_fed_fixed_macrs_15,depr_fedbas_itc_fed_reduction_macrs_15,depr_fedbas_itc_fed_reduction_macrs_15,depr_fedbas_after_itc_macrs_15,depr_fedbas_first_year_bonus_macrs_15,depr_fedbas_macrs_15");
 	cfrow("5-yr Straight Line,depr_fedbas_percent_sl_5,depr_alloc_sl_5,depr_fedbas_ibi_reduc_sl_5,depr_fedbas_cbi_reduc_sl_5,depr_fedbas_prior_itc_sl_5,itc_fed_qual_sl_5,depr_fedbas_percent_qual_sl_5,depr_fedbas_percent_amount_sl_5,itc_disallow_fed_percent_sl_5,depr_fedbas_fixed_amount_sl_5,itc_disallow_fed_fixed_sl_5,depr_fedbas_itc_fed_reduction_sl_5,depr_fedbas_itc_fed_reduction_sl_5,depr_fedbas_after_itc_sl_5,depr_fedbas_first_year_bonus_sl_5,depr_fedbas_sl_5");
@@ -42,11 +42,11 @@ function setup_incentives_cashflow()
 
 cashflow{ 'Residential' } = define()
 {
-	cfline( 'cf_energy_net', 1); // use one digit
-	cfline( 'cf_energy_value');
+	cfline( 'cf_energy_net', 1 ); // use one digit
+	cfline( 'cf_energy_value'); 
 	cfline( '' ); // spacer
 
-	cfline( "Operating Expenses", 0 ); // header	
+	cfline( "Operating Expenses", -1 ); // header	
 	cfline( 'cf_om_fixed_expense,cf_om_production_expense,cf_om_capacity_expense,cf_om_fuel_expense');
 	cfline( 'cf_om_opt_fuel_1_expense' );
 	cfline( 'cf_om_opt_fuel_2_expense' );
@@ -61,7 +61,7 @@ cashflow{ 'Residential' } = define()
 	cfline( 'cf_deductible_expenses');
 	cfline( '' ); // spacer
 	
-	cfline( "Financing", 0 ); // header
+	cfline( "Financing", -1 ); // header
 	cfline( 'cf_debt_balance');
 	cfline( 'cf_debt_payment_interest');
 	cfline( 'cf_debt_payment_principal');
@@ -70,7 +70,7 @@ cashflow{ 'Residential' } = define()
 	// incentives
 	setup_incentives_cashflow();
 	
-	cfline( "Tax Effect on Equity (State)", 0 ); // header
+	cfline( "Tax Effect on Equity (State)", -1 ); // header
 	cfline( 'cf_sta_depr_sched');
 	cfline( 'cf_sta_depreciation');
 	cfline( 'cf_sta_incentive_income_less_deductions');
@@ -78,7 +78,7 @@ cashflow{ 'Residential' } = define()
 	cfline( 'cf_sta_tax_savings');
 	cfline( '' ); // spacer
 	
-	cfline( "Tax Effect on Equity (Federal)", 0 ); // header
+	cfline( "Tax Effect on Equity (Federal)", -1 ); // header
 	cfline( 'cf_fed_depr_sched' );
 	cfline( 'cf_fed_depreciation');
 	cfline( 'cf_fed_incentive_income_less_deductions');
@@ -96,7 +96,7 @@ cashflow{ 'Commercial' } = define()
 	cfline( 'cf_energy_value');
 	cfline( '' ); // spacer
 
-	cfline( "Operating Expenses", 0 ); // header	
+	cfline( "Operating Expenses", -1 ); // header	
 	cfline( 'cf_om_fixed_expense,cf_om_production_expense,cf_om_capacity_expense,cf_om_fuel_expense');
 	cfline( 'cf_om_opt_fuel_1_expense' );
 	cfline( 'cf_om_opt_fuel_2_expense' );
@@ -111,7 +111,7 @@ cashflow{ 'Commercial' } = define()
 	cfline( 'cf_deductible_expenses');
 	cfline( '' ); // spacer
 	
-	cfline( "Financing", 0 ); // header
+	cfline( "Financing", -1 ); // header
 	cfline( 'cf_debt_balance');
 	cfline( 'cf_debt_payment_interest');
 	cfline( 'cf_debt_payment_principal');
@@ -120,7 +120,7 @@ cashflow{ 'Commercial' } = define()
 	// incentives
 	setup_incentives_cashflow();
 	
-	cfline( "Tax Effect on Equity (State)", 0 ); // header
+	cfline( "Tax Effect on Equity (State)", -1 ); // header
 	cfline( 'cf_sta_depr_sched');
 	cfline( 'cf_sta_depreciation');
 	cfline( 'cf_sta_incentive_income_less_deductions');
@@ -128,7 +128,7 @@ cashflow{ 'Commercial' } = define()
 	cfline( 'cf_sta_tax_savings');
 	cfline( '' ); // spacer
 	
-	cfline( "Tax Effect on Equity (Federal)", 0 ); // header
+	cfline( "Tax Effect on Equity (Federal)", -1 ); // header
 	cfline( 'cf_fed_depr_sched' );
 	cfline( 'cf_fed_depreciation');
 	cfline( 'cf_fed_incentive_income_less_deductions');
@@ -148,7 +148,7 @@ cashflow{ 'Commercial PPA' } = define()
 	cfline( 'cf_energy_value');
 	cfline( '' ); // spacer
 
-	cfline( "Operating Expenses", 0 ); // header	
+	cfline( "Operating Expenses", -1 ); // header	
 	cfline( 'cf_om_fixed_expense,cf_om_production_expense,cf_om_capacity_expense,cf_om_fuel_expense');
 	cfline( 'cf_om_opt_fuel_1_expense' );
 	cfline( 'cf_om_opt_fuel_2_expense' );
@@ -163,7 +163,7 @@ cashflow{ 'Commercial PPA' } = define()
 	cfline( 'cf_operating_income');
 	cfline( '' ); // spacer
 	
-	cfline( "Financing", 0 ); // header
+	cfline( "Financing", -1 ); // header
 	cfline( 'cf_debt_balance');
 	cfline( 'cf_debt_payment_interest');
 	cfline( 'cf_debt_payment_principal');
@@ -172,7 +172,7 @@ cashflow{ 'Commercial PPA' } = define()
 	// incentives
 	setup_incentives_cashflow();
 	
-	cfline( "Tax Effect on Equity (State)", 0 ); // header
+	cfline( "Tax Effect on Equity (State)", -1 ); // header
 	cfline( 'cf_sta_depr_sched');
 	cfline( 'cf_sta_depreciation');
 	cfline( 'cf_sta_incentive_income_less_deductions');
@@ -180,7 +180,7 @@ cashflow{ 'Commercial PPA' } = define()
 	cfline( 'cf_sta_tax_savings');
 	cfline( '' ); // spacer
 	
-	cfline( "Tax Effect on Equity (Federal)", 0 ); // header
+	cfline( "Tax Effect on Equity (Federal)", -1 ); // header
 	cfline( 'cf_fed_depr_sched' );
 	cfline( 'cf_fed_depreciation');
 	cfline( 'cf_fed_incentive_income_less_deductions');
@@ -199,7 +199,7 @@ cashflow{ 'Independent Power Producer' } = define()
 	cfline( 'cf_energy_value');
 	cfline( '' ); // spacer
 
-	cfline( "Operating Expenses", 0 ); // header	
+	cfline( "Operating Expenses", -1 ); // header	
 	cfline( 'cf_om_fixed_expense,cf_om_production_expense,cf_om_capacity_expense,cf_om_fuel_expense');
 	cfline( 'cf_om_opt_fuel_1_expense' );
 	cfline( 'cf_om_opt_fuel_2_expense' );
@@ -214,7 +214,7 @@ cashflow{ 'Independent Power Producer' } = define()
 	cfline( 'cf_operating_income');
 	cfline( '' ); // spacer
 	
-	cfline( "Financing", 0 ); // header
+	cfline( "Financing", -1 ); // header
 	cfline( 'cf_debt_balance');
 	cfline( 'cf_debt_payment_interest');
 	cfline( 'cf_debt_payment_principal');
@@ -223,7 +223,7 @@ cashflow{ 'Independent Power Producer' } = define()
 	// incentives
 	setup_incentives_cashflow();
 	
-	cfline( "Tax Effect on Equity (State)", 0 ); // header
+	cfline( "Tax Effect on Equity (State)", -1 ); // header
 	cfline( 'cf_sta_depr_sched');
 	cfline( 'cf_sta_depreciation');
 	cfline( 'cf_sta_incentive_income_less_deductions');
@@ -231,7 +231,7 @@ cashflow{ 'Independent Power Producer' } = define()
 	cfline( 'cf_sta_tax_savings');
 	cfline( '' ); // spacer
 	
-	cfline( "Tax Effect on Equity (Federal)", 0 ); // header
+	cfline( "Tax Effect on Equity (Federal)", -1 ); // header
 	cfline( 'cf_fed_depr_sched' );
 	cfline( 'cf_fed_depreciation');
 	cfline( 'cf_fed_incentive_income_less_deductions');
@@ -254,15 +254,15 @@ cashflow{ 'Single Owner' } = define()
                  tech != 'Solar Water Heating' && 
                  tech != 'Wind Power');
     
-	cfline( "PRODUCTION (AC KWH)",0);
+	cfline( "PRODUCTION (AC KWH)", -1);
 	cfline( 'cf_degradation');
 	cfline( 'cf_energy_net', 1); // use one digit
 
 	cfline( '' );
-	cfline( "REVENUES",0);
+	cfline( "REVENUES", -1);
 	cfline( 'cf_ppa_price');
 	cfline( 'cf_energy_value');
-	cfline("plus PBI if available for debt service:",0);
+	cfline("plus PBI if available for debt service:", -1);
 	if (value('pbi_fed_for_ds')==1)	cfline( 'cf_pbi_total_fed');
 	if (value('pbi_sta_for_ds')==1)	cfline( 'cf_pbi_total_sta');
 	if (value('pbi_uti_for_ds')==1)	cfline( 'cf_pbi_total_uti');
@@ -274,7 +274,7 @@ cashflow{ 'Single Owner' } = define()
 	cfline( 'cf_property_tax_assessed_value');
 
 	cfline( '' ); // spacer
-	cfline( "OPERATING EXPENSES", 0 ); // header	
+	cfline( "OPERATING EXPENSES", -1 ); // header	
 	if (value('system_use_recapitalization')) cfline ('capitalization');
 	cfline( 'cf_om_fixed_expense,cf_om_capacity_expense,cf_om_production_expense');
 	if ( fueltech == true )cfline('cf_om_fuel_expense');
@@ -287,22 +287,22 @@ cashflow{ 'Single Owner' } = define()
 	cfline( 'cf_ebitda');
 
 	cfline( '' ); // spacer
-	cfline( "CASH FLOWS FROM OPERATING ACTIVITIES", 0 ); // header
-	cfline("plus:",0);
+	cfline( "CASH FLOWS FROM OPERATING ACTIVITIES", -1 ); // header
+	cfline("plus:", -1, 0.0 );
 	cfline( 'cf_ebitda');
 	cfline( 'cf_reserve_interest');
-	cfline("plus PBI if not available for debt service:",0);
+	cfline("plus PBI if not available for debt service:", -1);
 	if (value('pbi_fed_for_ds')==0)	cfline( 'cf_pbi_total_fed');
 	if (value('pbi_sta_for_ds')==0)	cfline( 'cf_pbi_total_sta');
 	if (value('pbi_uti_for_ds')==0)	cfline( 'cf_pbi_total_uti');
 	if (value('pbi_oth_for_ds')==0)	cfline( 'cf_pbi_total_oth');
-	cfline("minus:",0);
+	cfline("minus:", -1, 0.0);
 	cfline('cf_debt_payment_interest');
-	cfline("equals:",0);
+	cfline("equals:", -1);
 	cfline('cf_project_operating_activities');
 	cfline( '' ); // spacer
 
-	cfline( "CASH FLOWS FROM INVESTING ACTIVITIES", 0);
+	cfline( "CASH FLOWS FROM INVESTING ACTIVITIES", -1);
 	cfline('purchase_of_property');
 	cfline('cf_project_dsra');
 	cfline('cf_project_wcra');
@@ -315,7 +315,7 @@ cashflow{ 'Single Owner' } = define()
 	cfline('cf_project_investing_activities');
 	
 	cfline( '' ); // spacer
-	cfline("CASH FLOWS FROM FINANCING ACTIVITIES",0);
+	cfline("CASH FLOWS FROM FINANCING ACTIVITIES", -1);
 	cfline( 'ibi_total');
 	cfline( 'cbi_total');
 	cfline( 'issuance_of_equity');
@@ -326,16 +326,16 @@ cashflow{ 'Single Owner' } = define()
 	cfline('cf_pretax_cashflow');
 
 	cfline( '' ); // spacer
-	cfline( "PRE-TAX PROJECT RETURNS",0);
+	cfline( "PRE-TAX PROJECT RETURNS", -1);
 	cfline('cf_project_return_pretax');
 	cfline('');
 	cfline('cf_project_return_pretax_irr');
 	cfline('cf_project_return_pretax_npv');
 
 	cfline('');
-	cfline("AFTER-TAX PROJECT RETURNS",0);
-	cfline( "Note: ITC applies in Year 1",0 );
-	cfline('itc_total_fed');
+	cfline("AFTER-TAX PROJECT RETURNS", -1);
+	cfline( "Note: ITC applies in Year 1", -1, 0 );
+	cfline('itc_total_fed', 2, 1.0, 1 ); // offset column to year 1
 	cfline('cf_ptc_fed');
 	cfline('cf_fedtax');
 	cfline('itc_total_sta');
@@ -347,24 +347,24 @@ cashflow{ 'Single Owner' } = define()
 	cfline('cf_project_return_aftertax_npv');
 
 	cfline('');
-	cfline("STATE INCOME TAXES",0);
-	cfline("plus:",0);
+	cfline("STATE INCOME TAXES", -1);
+	cfline("plus:", -1, 0.0);
 	cfline('cf_ebitda');           // ebitda
 	cfline('cf_reserve_interest'); // interest on reserves
 	cfline('ibi_statax_total');    // taxable state ibi
 	cfline('cbi_statax_total');    // taxable state cbi
 	cfline('cf_pbi_statax_total'); // taxalbe state pbi
-	cfline("minus:",0);
+	cfline("minus:", -1, 0.0);
 	cfline('cf_debt_payment_interest'); // debt interest
 	cfline('cf_stadepr_total');         // federal depreciation amount
-	cfline("equals:",0);
+	cfline("equals:", -1);
 	cfline('cf_statax_income_with_incentives'); // state taxable income
 	cfline('');
 	cfline('cf_statax'); // statetax amount
 
 	cfline('');
-	cfline("FEDERAL INCOME TAXES",0);
-	cfline("plus:",0);
+	cfline("FEDERAL INCOME TAXES", -1);
+	cfline("plus:", -1, 0.0);
 	cfline('cf_ebitda');           // ebitda
 	cfline('cf_reserve_interest'); // interest on reserves
 	cfline('cf_statax');           // state tax amount
@@ -373,34 +373,34 @@ cashflow{ 'Single Owner' } = define()
 	cfline('ibi_fedtax_total');    // fed taxable fed ibi
 	cfline('cbi_fedtax_total');    // fed taxable fed cbi
 	cfline('cf_pbi_fedtax_total'); // fed taxable fed pbi
-	cfline("minus:",0);
+	cfline("minus:", -1, 0.0);
 	cfline('cf_debt_payment_interest'); // debt interest
 	cfline('cf_feddepr_total');         // federal depreciation amount
-	cfline("equals:",0);
+	cfline("equals:", -1);
 	cfline('cf_fedtax_income_with_incentives'); // federal taxable income
 	cfline('');
 	cfline('cf_fedtax'); // federal tax amount
 
 	cfline( '' ); // spacer
-	cfline( "INCENTIVES",0);
+	cfline( "INCENTIVES", -1);
 	setup_incentives_cashflow();
 
 	// debt
-	cfline( "DEBT REPAYMENT",0);
+	cfline( "DEBT REPAYMENT", -1);
 	cfline('cf_debt_balance');
 	cfline('cf_debt_payment_principal');
 	cfline('cf_debt_payment_interest');
 	cfline('cf_debt_payment_total');
 	cfline( '' ); // spacer
 	
-	cfline( "DEBT SIZING (CONSTANT DSCR)",0);
+	cfline( "DEBT SIZING (CONSTANT DSCR)", -1);
 	cfline('cf_cash_for_ds');
 	cfline('cf_pv_cash_for_ds');
 	cfline('cf_debt_size');
 	cfline('dscr');
 
 	// reserve accounts
-	cfline("RESERVE ACCOUNTS",0);
+	cfline("RESERVE ACCOUNTS", -1);
 	cfline( 'Reserve Accounts');
 	cfline('cf_reserve_debtservice');
 	cfline('cf_reserve_om');
@@ -417,7 +417,7 @@ cashflow{ 'Single Owner' } = define()
 
 cashflow{ 'All Equity Partnership Flip' } = define()
 {
-	cfline('Partial Income Statement: Project',0);
+	cfline('Partial Income Statement: Project', -1);
 
     	tech = technology();
 
@@ -440,7 +440,7 @@ cashflow{ 'All Equity Partnership Flip' } = define()
 
 	cfline( '' ); // spacer
 
-	cfline( "Expenses", 0 ); // header	
+	cfline( "Expenses", -1 ); // header	
 	if (value('system_use_recapitalization')) cfline ('capitalization');
 	cfline( 'cf_om_fixed_expense,cf_om_production_expense,cf_om_capacity_expense');
 	if ( fueltech == true )cfline('cf_om_fuel_expense');
@@ -454,13 +454,13 @@ cashflow{ 'All Equity Partnership Flip' } = define()
 	cfline( 'cf_ebitda');
 	cfline( '' ); // spacer
 
-	cfline('Cash Flow: Project',0);
-	cfline('Cash Flows from Operating Activities',0);
+	cfline('Cash Flow: Project', -1);
+	cfline('Cash Flows from Operating Activities', -1);
 	cfline( 'cf_ebitda');
 	cfline( 'cf_reserve_interest');
 	cfline('project_operating_activities');
 	cfline( '' ); // spacer
-	cfline( "Cash Flows from Investing Activities", 0);
+	cfline( "Cash Flows from Investing Activities", -1);
 	cfline( 'sv.purchase_of_property');
 	cfline( '' ); // spacer
 	cfline( 'cf.project_wcra');
@@ -476,7 +476,7 @@ cashflow{ 'All Equity Partnership Flip' } = define()
 	cfline( '' ); // spacer
 	cfline('cf_project_investing_activities');
 	cfline( '' ); // spacer
-	cfline( "Project Cash Flows From Financing Activities",0);
+	cfline( "Project Cash Flows From Financing Activities", -1);
 	cfline( 'sv.TotalIBI');
 	cfline( 'sv.TotalCBI');
 	cfline( 'sv.issuance_of_equity');
@@ -499,7 +499,7 @@ cashflow{ 'All Equity Partnership Flip' } = define()
 	cfline( '' ); // spacer
 
 // LCOE
-	cfline( 'LCOE',0);
+	cfline( 'LCOE', -1);
 	cfline('cf_energy_value');
 	cfline('cf_energy');
 	cfline( 'npv_ppa_revenue');
@@ -510,13 +510,13 @@ cashflow{ 'All Equity Partnership Flip' } = define()
 	cfline( '' ); // spacer
 
 
-	cfline('Partners Returns',0);
-	cfline( 'Tax Invester Pre-tax Returns',0);
+	cfline('Partners Returns', -1);
+	cfline( 'Tax Invester Pre-tax Returns', -1);
 	cfline('cf_tax_investor_pretax');//"Total tax investor pre-tax returns");
 	cfline('cf_tax_investor_pretax_irr');//"Tax investor cumulative IRR");
 	cfline('cf_tax_investor_pretax_npv');//"Tax investor cumulative NPV");
 	cfline( '' ); // spacer
-	cfline( 'Tax Invester After-tax Returns',0);
+	cfline( 'Tax Invester After-tax Returns', -1);
 	cfline('cf_tax_investor_aftertax_cash');//"Tax investor cash (total pre-tax returns)");
 	cfline('cf_tax_investor_aftertax_itc');//"ITC");
 	cfline('cf_tax_investor_aftertax_ptc');//"PTC");
@@ -528,11 +528,11 @@ cashflow{ 'All Equity Partnership Flip' } = define()
 	cfline( '' ); // spacer
 
 
-	cfline('Developer Capital Recovery',0);
+	cfline('Developer Capital Recovery', -1);
 	cfline('cf_sponsor_capital_recovery_cash');
 	cfline('cf_sponsor_capital_recovery_balance');
 	cfline( '' ); // spacer
-	cfline('Developer Pre-tax Returns',0);
+	cfline('Developer Pre-tax Returns', -1);
 	cfline('sponsor_pretax_equity');//"Developer Pre-tax Returns");
 	cfline('sponsor_pretax_development');//"Pre-tax development fee");
 	cfline('cf_sponsor_pretax');//"Total developer pre-tax returns");
@@ -541,7 +541,7 @@ cashflow{ 'All Equity Partnership Flip' } = define()
 	cfline('sponsor_pretax_irr');//"Developer pre-tax IRR");
 	cfline('sponsor_pretax_npv');//"Developer pre-tax NPV");
 	cfline( '' ); // spacer
-	cfline( 'Developer After-tax Returns',0);
+	cfline( 'Developer After-tax Returns', -1);
 	cfline('sponsor_aftertax_equity');//"Equity Investment");
 	cfline('sponsor_aftertax_development');//"Development Fee");
 	cfline('cf_sponsor_aftertax_cash');//"Cash");
@@ -577,7 +577,7 @@ cashflow{ 'All Equity Partnership Flip' } = define()
 
 cashflow{ 'Leveraged Partnership Flip' } = define()
 {
-	cfline("Project Revenue",0);
+	cfline("Project Revenue", -1);
 
     	tech = technology();
 
@@ -605,7 +605,7 @@ cashflow{ 'Leveraged Partnership Flip' } = define()
 
 	cfline( '' ); // spacer
 
-	cfline("Project Expenses",0);
+	cfline("Project Expenses", -1);
 
 	if (value('system_use_recapitalization')) cfline ('capitalization');
 	cfline( 'cf_om_fixed_expense,cf_om_production_expense,cf_om_capacity_expense');
@@ -621,8 +621,8 @@ cashflow{ 'Leveraged Partnership Flip' } = define()
 	cfline( '' ); // spacer
 
 
-	cfline("Project Cash Flow",0);
-	cfline("Project Cash Flow from Operating Activities",0);
+	cfline("Project Cash Flow", -1);
+	cfline("Project Cash Flow from Operating Activities", -1);
 	cfline( 'cf_ebitda');
 	cfline( 'cf_reserve_interest');
 	if (value('pbi_fed_for_ds')==0)	cfline( 'cf_pbi_total_fed');
@@ -631,7 +631,7 @@ cashflow{ 'Leveraged Partnership Flip' } = define()
 	if (value('pbi_oth_for_ds')==0)	cfline( 'cf_pbi_total_oth');
 	cfline('project_operating_activities');
 	cfline( '' ); // spacer
-	cfline( "Cash Flows from Investing Activities", 0);
+	cfline( "Cash Flows from Investing Activities", -1);
 	cfline( 'sv.purchase_of_property');
 	cfline( '' ); // spacer
 	cfline( 'cf.project_wcra');
@@ -647,7 +647,7 @@ cashflow{ 'Leveraged Partnership Flip' } = define()
 	cfline( '' ); // spacer
 	cfline('cf_project_investing_activities');
 	cfline( '' ); // spacer
-	cfline( "Project Cash Flows From Financing Activities",0);
+	cfline( "Project Cash Flows From Financing Activities", -1);
 	cfline( 'TotalIBI');
 	cfline( 'TotalCBI');
 	cfline( 'issuance_of_equity');
@@ -670,7 +670,7 @@ cashflow{ 'Leveraged Partnership Flip' } = define()
 	cfline( '' ); // spacer
 
 // LCOE
-	cfline( 'LCOE',0);
+	cfline( 'LCOE', -1);
 	cfline('cf_energy_value');
 	cfline('cf_energy');
 	cfline( 'npv_ppa_revenue');
@@ -681,12 +681,12 @@ cashflow{ 'Leveraged Partnership Flip' } = define()
 	cfline( '' ); // spacer
 
 
-	cfline( 'Tax Invester Pre-tax Returns',0);
+	cfline( 'Tax Invester Pre-tax Returns', -1);
 	cfline('cf_tax_investor_pretax');//"Total tax investor pre-tax returns");
 	cfline('cf_tax_investor_pretax_irr');//"Tax investor cumulative IRR");
 	cfline('cf_tax_investor_pretax_npv');//"Tax investor cumulative NPV");
 	cfline( '' ); // spacer
-	cfline( 'Tax Invester After-tax Returns',0);
+	cfline( 'Tax Invester After-tax Returns', -1);
 	cfline('cf_tax_investor_aftertax_cash');//"Tax investor cash (total pre-tax returns)");
 	cfline('cf_tax_investor_aftertax_itc');//"ITC");
 	cfline('cf_tax_investor_aftertax_ptc');//"PTC");
@@ -697,7 +697,7 @@ cashflow{ 'Leveraged Partnership Flip' } = define()
 	cfline('cf_tax_investor_aftertax_max_irr');//Tax investor maximum IRR");
 	cfline( '' ); // spacer
 
-	cfline('Developer Pre-tax Returns',0);
+	cfline('Developer Pre-tax Returns', -1);
 	cfline('sponsor_pretax_equity');//"Developer Pre-tax Returns");
 	cfline('sponsor_pretax_development');//"Pre-tax development fee");
 	cfline('cf_sponsor_pretax');//"Total developer pre-tax returns");
@@ -706,7 +706,7 @@ cashflow{ 'Leveraged Partnership Flip' } = define()
 	cfline('sponsor_pretax_irr');//"Developer pre-tax IRR");
 	cfline('sponsor_pretax_npv');//"Developer pre-tax NPV");
 	cfline( '' ); // spacer
-	cfline( 'Developer After-tax Returns',0);
+	cfline( 'Developer After-tax Returns', -1);
 	cfline('sponsor_aftertax_equity');//"Equity Investment");
 	cfline('sponsor_aftertax_development');//"Development Fee");
 	cfline('cf_sponsor_aftertax_cash');//"Cash");
@@ -755,7 +755,7 @@ cashflow{ 'Leveraged Partnership Flip' } = define()
 
 cashflow{ 'Sale Leaseback' } = define()
 {
-	cfline('Partial Income Statement: Project',0);
+	cfline('Partial Income Statement: Project', -1);
    	tech = technology();
 
     	fueltech = ( tech != 'Flat Plate PV' && 
@@ -777,7 +777,7 @@ cashflow{ 'Sale Leaseback' } = define()
 
 	cfline( '' ); // spacer
 
-	cfline( "Expenses", 0 ); // header	
+	cfline( "Expenses", -1 ); // header	
 	if (value('system_use_recapitalization')) cfline ('capitalization');
 	cfline( 'cf_om_fixed_expense,cf_om_production_expense,cf_om_capacity_expense');
 	if ( fueltech == true )cfline('cf_om_fuel_expense');
@@ -792,13 +792,13 @@ cashflow{ 'Sale Leaseback' } = define()
 	cfline('');
 
 
-	cfline('Cash Flow: Developer (Lessee LLC)',0);
-	cfline('Cash Flows from Operating Activities',0);
+	cfline('Cash Flow: Developer (Lessee LLC)', -1);
+	cfline('Cash Flows from Operating Activities', -1);
 	cfline('cf_sponsor_operating_margin');
 	cfline('cf_reserve_interest');
 	cfline('cf_sponsor_operating_activities');
 	cfline('');
-	cfline('Cash Flows from Investing Activities',0);
+	cfline('Cash Flows from Investing Activities', -1);
 	cfline('sale_of_property');
 	cfline('purchase_of_plant');
 	cfline('distribution_of_development_fee');
@@ -817,7 +817,7 @@ cashflow{ 'Sale Leaseback' } = define()
 	cfline('');
 	cfline('cf_sponsor_investing_activities');
 	cfline('');
-	cfline('Cash Flows from Financing Activities',0);
+	cfline('Cash Flows from Financing Activities', -1);
 	cfline('sponsor_equity_in_lessee_llc');
 	cfline('cf_sponsor_financing_activities');
 	cfline('cf_pretax_cashflow');
@@ -825,17 +825,17 @@ cashflow{ 'Sale Leaseback' } = define()
 	cfline('cf_pretax_operating_cashflow');
 	cfline('');
 
-	cfline('Cash Flow: Tax Investor (Lessor)',0);
-	cfline('Cash Flows from Operating Activities',0);
+	cfline('Cash Flow: Tax Investor (Lessor)', -1);
+	cfline('Cash Flows from Operating Activities', -1);
 	cfline('cf_pretax_operating_cashflow');
 	cfline('cf_tax_investor_operating_activities');
 	cfline('');
-	cfline('Cash Flows from Investing Activities',0);
-	cfline('sale_of_property', -1, -1.0);
+	cfline('Cash Flows from Investing Activities', -1);
+	cfline('sale_of_property', -2, -1.0);
 	cfline('cf_net_salvage_value');
 	cfline('cf_tax_investor_investing_activities');
 	cfline('');
-	cfline('Cash Flows from Financing Activities',0);
+	cfline('Cash Flows from Financing Activities', -1);
 	cfline('issuance_of_equity');
 	cfline('TotalIBI');
 	cfline('TotalCBI');
@@ -846,7 +846,7 @@ cashflow{ 'Sale Leaseback' } = define()
 	cfline('');
 
 // LCOE
-	cfline('LCOE',0);
+	cfline('LCOE', -1);
 	cfline('cf_energy_value');
 	cfline('cf_energy');
 	cfline('npv_ppa_revenue');
@@ -856,10 +856,10 @@ cashflow{ 'Sale Leaseback' } = define()
 	cfline('lcoe_real');
 	cfline('');
 
-	cfline('Party Returns',0);
-	cfline('Tax Investor (Lessor)',0);
-	cfline('Pre-Tax',0);
-	cfline('sale_of_property',-1, -1.0);
+	cfline('Party Returns', -1);
+	cfline('Tax Investor (Lessor)', -1);
+	cfline('Pre-Tax', -1);
+	cfline('sale_of_property',-2, -1.0);
 	cfline('TotalIBI');
 	cfline('TotalCBI');
 	cfline('cf_net_salvage_value');
@@ -868,9 +868,9 @@ cashflow{ 'Sale Leaseback' } = define()
 	cfline('cf_tax_investor_pretax_irr');
 	cfline('cf_tax_investor_pretax_npv');
 	cfline('');
-	cfline('After-Tax',0);
-	cfline('Cash',0);
-	cfline('sale_of_property',-1, -1.0);
+	cfline('After-Tax', -1);
+	cfline('Cash', -1);
+	cfline('sale_of_property',-2, -1.0);
 	cfline('TotalIBI');
 	cfline('TotalCBI');
 	cfline('cf_net_salvage_value');
@@ -885,8 +885,8 @@ cashflow{ 'Sale Leaseback' } = define()
 	cfline('cf_tax_investor_aftertax_max_irr');
 	cfline('');
 
-	cfline('Developer (Lessee LLC)',0);
-	cfline('Pre-Tax',0);
+	cfline('Developer (Lessee LLC)', -1);
+	cfline('Pre-Tax', -1);
 	cfline('sponsor_equity_in_lessee_llc');
 	cfline('distribution_of_development_fee');
 	cfline('cf_disbursement_merr');
@@ -898,10 +898,10 @@ cashflow{ 'Sale Leaseback' } = define()
 	cfline('cf_sponsor_pretax_irr');
 	cfline('cf_sponsor_pretax_npv');
 	cfline('sponsor_pretax_irr');
-	cfline('sponsor_pretax_npv", dp, r++, 0,"NPV',0);
+	cfline('sponsor_pretax_npv');
 	cfline('');
-	cfline('After-Tax',0);
-	cfline('Cash',0);
+	cfline('After-Tax', -1);
+	cfline('Cash', -1);
 	cfline('sponsor_equity_in_lessee_llc');
 	cfline('distribution_of_development_fee');
 	cfline('cf_disbursement_merr');
