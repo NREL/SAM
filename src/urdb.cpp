@@ -60,7 +60,8 @@ void OpenEI::RateData::Reset()
 		for (j = 0; j < 6; j++)
 		{
 			EnergyBuy[i][j] = EnergyAdj[i][j] = EnergySell[i][j] = 0.0;
-			EnergyMax[i][j] = 1e99;
+			// SAMnt limited to float max = 3.4e38
+			EnergyMax[i][j] = 1e38;
 			EnergyMaxUnit[i][j] = "kWh Daily"; // TODO implement max unit
 		}
 		for (int k = 0; k < 24; k++)
@@ -84,9 +85,11 @@ void OpenEI::RateData::Reset()
 		for (j = 0; j < 6; j++)
 		{
 			FlatDemandCharge[i][j] = FlatDemandAdj[i][j] = 0.0;
-			FlatDemandMax[i][j] = 1e99;
+			// SAMnt limited to float max = 3.4e38
+			FlatDemandMax[i][j] = 1e38;
 			DemandCharge[i][j] = DemandAdj[i][j] = 0.0;
-			DemandMax[i][j] = 1e99;
+			// SAMnt limited to float max = 3.4e38
+			DemandMax[i][j] = 1e38;
 		}
 		for (int k = 0; k < 24; k++)
 		{
@@ -287,24 +290,26 @@ bool OpenEI::RetrieveUtilityRateData(const wxString &guid, RateData &rate, wxStr
 	{
 		if (ers_periods.Size() > 12) return false;
 		for (int period = 0; period < ers_periods.Size(); period++)
-		{	
+		{
 			wxJSONValue ers_tier = ers_periods[period];
 			if (ers_tier.IsArray())
 			{
 				if (ers_tier.Size() > 6) return false;
 				for (int tier = 0; tier < ers_tier.Size(); tier++)
 				{
-					rate.EnergyMax[period][tier] = json_double(ers_tier[tier].Item("max"), 1e99, &rate.HasEnergyCharge);
+					//					rate.EnergyMax[period][tier] = json_double(ers_tier[tier].Item("max"), 1e99, &rate.HasEnergyCharge);
+					// SAMnt limited to float max = 3.4e38
+					rate.EnergyMax[period][tier] = json_double(ers_tier[tier].Item("max"), 1e38, &rate.HasEnergyCharge);
+
 					rate.EnergyBuy[period][tier] = json_double(ers_tier[tier].Item("rate"), 0.0, &rate.HasEnergyCharge);
 					rate.EnergySell[period][tier] = json_double(ers_tier[tier].Item("sell"), 0.0, &rate.HasEnergyCharge);
 					rate.EnergyAdj[period][tier] = json_double(ers_tier[tier].Item("adj"), 0.0, &rate.HasEnergyCharge);
 					rate.EnergyMaxUnit[period][tier] = json_string(ers_tier[tier].Item("unit"));
-
+					//
 				}
 			}
 		}
 	}
-
 	/*
 	for (int period=0;period<12;period++)
 		for (int tier=0; tier<6; tier++)
@@ -351,7 +356,9 @@ bool OpenEI::RetrieveUtilityRateData(const wxString &guid, RateData &rate, wxStr
 				if (fds_tier.Size() > 6) return false;
 				for (int tier = 0; tier < fds_tier.Size(); tier++)
 				{
-					rate.FlatDemandMax[period][tier] = json_double(fds_tier[tier].Item("max"), 1e99, &rate.HasDemandCharge);
+//					rate.FlatDemandMax[period][tier] = json_double(fds_tier[tier].Item("max"), 1e99, &rate.HasDemandCharge);
+					// SAMnt limited to float max = 3.4e38
+					rate.FlatDemandMax[period][tier] = json_double(fds_tier[tier].Item("max"), 1e38, &rate.HasDemandCharge);
 					rate.FlatDemandCharge[period][tier] = json_double(fds_tier[tier].Item("rate"), 0.0, &rate.HasDemandCharge);
 					rate.FlatDemandAdj[period][tier] = json_double(fds_tier[tier].Item("adj"), 0.0, &rate.HasDemandCharge);
 				}
@@ -373,7 +380,9 @@ bool OpenEI::RetrieveUtilityRateData(const wxString &guid, RateData &rate, wxStr
 				if (drs_tier.Size() > 6) return false;
 				for (int tier = 0; tier < drs_tier.Size(); tier++)
 				{
-					rate.DemandMax[period][tier] = json_double(drs_tier[tier].Item("max"), 1e99, &rate.HasDemandCharge);
+//					rate.DemandMax[period][tier] = json_double(drs_tier[tier].Item("max"), 1e99, &rate.HasDemandCharge);
+					// SAMnt limited to float max = 3.4e38
+					rate.DemandMax[period][tier] = json_double(drs_tier[tier].Item("max"), 1e38, &rate.HasDemandCharge);
 					rate.DemandCharge[period][tier] = json_double(drs_tier[tier].Item("rate"), 0.0, &rate.HasDemandCharge);
 					rate.DemandAdj[period][tier] = json_double(drs_tier[tier].Item("adj"), 0.0, &rate.HasDemandCharge);
 				}
