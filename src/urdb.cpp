@@ -258,7 +258,11 @@ bool OpenEI::RetrieveUtilityRateData(const wxString &guid, RateData &rate, wxStr
 	rate.StartDate = json_string(val.Item("startdate"));
 	rate.EndDate = json_string(val.Item("enddate"));
 
-	rate.NetMetering = val.Item("usenetmetering").AsBool();
+	// update to handle null return values (debug assert error)
+	bool net_metering = true;
+	if (val.Item("usenetmetering").GetType() == wxJSONTYPE_BOOL)
+		net_metering = val.Item("usenetmetering").AsBool();
+	rate.NetMetering = net_metering;
 
 	// Applicability
 	rate.Applicability.peakkwcapacityhistory = json_double(val.Item("peakkwcapacityhistory"));
