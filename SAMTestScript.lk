@@ -8,7 +8,7 @@ file_num = open(output_file, "w");
 
 outln( 'TECHNOLOGY\tFINANCING\tDEFAULT\tANNUAL_OUTPUT\tLCOE_NOM\tLCOE_REAL\tMESSAGES');
 //write_line(file_num,"TECHNOLOGY,FINANCING,ANNUAL_OUTPUT,LCOE_NOM,LCOE_REAL,MESSAGES");
-write_line(file_num,"TECHNOLOGY,FINANCING,ANNUAL_OUTPUT,LPPA_NOM,MESSAGES");
+write_line(file_num,"TECHNOLOGY,FINANCING,ANNUAL_OUTPUT,LCOE_NOM,LPPA_NOM,MESSAGES");
 noquery = false; // ask user whether to overwrite each configuration that has a defaults error
 //Close any open projects and create a case to run
 close_project();
@@ -80,7 +80,7 @@ for (t=0; t<#technologies; t++)
 		str = replace( message + '; ' + message2, '\n', ' ' );
 		outln( annual_energy + '\t' + lcoe_nom + '\t' + lcoe_real + '\t' + str);
 //		write_line(file_num,technologies[t] + "," + financing[f] + "," + annual_energy + ',' + lcoe_nom + ',' + lcoe_real + ',' + str);
-		write_line(file_num,technologies[t] + "," + financing[f] + "," + annual_energy + ',' + lppa_nom + ',' + str);
+		write_line(file_num,technologies[t] + "," + financing[f] + "," + annual_energy + ',' + lcoe_nom + ',' + lppa_nom + ',' + str);
 	}
 }
 
