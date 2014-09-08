@@ -1,4 +1,19 @@
-#include<set>
+#define __BETARELEASE__ 1  // comment this line out to disable beta option
+#define __BETAWILLEXPIRE__ 1 // comment this line out to disable expiration of beta
+#define __BETAEXPIRE_DAY__ 10
+#define __BETAEXPIRE_MONTH__ wxDateTime::Oct
+#define __BETAEXPIRE_YEAR__ 2014
+
+static const char *beta_disclaimer =
+"Notice: Beta versions of SAM are provided as-is and may change without notice."
+	"  Beta software may not work in the same way as a final version, and features and functionality may be changed, enhanced, or removed without notice."
+	"  The software is considered generally stable and useful but may produce incorrect results, crash, or behave otherwise unexpectedly."
+	"  There is no guarantee that files opened, saved, or created with this beta software will be usable with other versions of SAM."
+	"  This notice appears in addition to the full disclaimer of warranty, accessible in Help/About."
+	"\n\nThank you for trying SAM Beta.  We look forward to your feedback.";
+
+
+#include <set>
 
 #include <wx/wx.h>
 #include <wx/frame.h>
@@ -52,7 +67,7 @@ static MainWindow *g_mainWindow = 0;
 static wxConfig *g_config = 0;
 static const int g_verMajor = 2014;
 static const int g_verMinor = 9;
-static const int g_verMicro = 3;
+static const int g_verMicro = 8;
 static ConfigDatabase g_cfgDatabase;
 static InputPageDatabase g_uiDatabase;
 static wxLogWindow *g_logWindow = 0;
@@ -1461,6 +1476,34 @@ extern void RegisterReportObjectTypes();
 	splash.Update();
 	Yield(true);
 
+
+	
+#if defined(__BETAWILLEXPIRE__)&&defined(__BETARELEASE__)
+	wxDateTime now = wxDateTime::Now();
+	wxDateTime BetaEndDate( __BETAEXPIRE_DAY__, __BETAEXPIRE_MONTH__, __BETAEXPIRE_YEAR__ );
+	if (now.IsEarlierThan(BetaEndDate))
+	{
+		int ndays = BetaEndDate.Subtract(now).GetDays()+1;
+		wxString datestr = BetaEndDate.Format("%A, %d %B %Y");
+
+		wxString expire_text = wxString::Format( "This beta software will expire %d days from now, on ",ndays) +  datestr + ".";
+		if ( ndays == 1 )
+			expire_text = "This beta software will expire tomorrow!";
+
+		wxMessageBox(wxString::Format("Thank you for using SAM Beta Version %d.%d.%d.\n\n",
+			SamApp::VersionMajor(), SamApp::VersionMinor(), SamApp::VersionMicro()) + expire_text + "\n\n" + wxString(beta_disclaimer));
+	}
+	else if (!wxFileExists( SamApp::GetRuntimePath() + "/expireoverride.txt" ))
+	{
+		if (wxYES==wxMessageBox("The SAM beta software has expired.  Please download the latest release from the SAM website.\n\nWould you like to visit the SAM website now?", "Notice", wxYES_NO))
+		{
+			wxString url = SamApp::WebApi("samwebsite");
+			if (url.IsEmpty()) url = "http://sam.nrel.gov";
+			wxLaunchDefaultBrowser( url );
+		}
+		return false;
+	}
+#endif
 	
 	wxString devoverride;
 	SamApp::Settings().Read( "developer-registration", &devoverride );
@@ -1569,11 +1612,55 @@ extern void RegisterReportObjectTypes();
 	return true;
 }
 
+
+#ifdef __BETARELEASE__
+
+class SurveyDialog : public wxDialog
+{
+public:
+	SurveyDialog( wxWindow *parent, const wxString &title )
+		: wxDialog( parent, wxID_ANY, title, wxDefaultPosition, wxDefaultSize, wxDEFAULT_DIALOG_STYLE )
+	{
+		wxStaticText *text = new wxStaticText( this, wxID_ANY, 
+			"Thank you for using this beta release of SAM.  "
+			"The SAM development team would greatly appreciate any feedback you might provide.  "
+			"Please click on the link below to help us improve future versions of SAM.  ");
+		text->Wrap( 500 );
+		
+	/*	wxHyperlinkCtrl *hyp1 = new wxHyperlinkCtrl( this, wxID_ANY, 
+			"Click to fill out the SAM Beta online survey... (recommended)",  
+			"https://www.surveymonkey.com/s/sam-beta-survey" );*/
+
+		wxHyperlinkCtrl *hyp2 = new wxHyperlinkCtrl( this, wxID_ANY,
+			"Email feedback directly to the SAM team...",
+			"mailto:sam.support@nrel.gov?subject=SAM Beta Feedback" );
+
+		wxBoxSizer *sizer = new wxBoxSizer( wxVERTICAL );
+		sizer->Add( text, 0, wxALIGN_CENTER|wxALL, 10 );
+		//sizer->Add( hyp1, 0, wxALIGN_CENTER|wxALL, 10 );
+		sizer->Add( hyp2, 0, wxALIGN_CENTER|wxALL, 10 );
+		sizer->Add( CreateButtonSizer( wxOK ), 0, wxEXPAND|wxALL, 10 );
+
+		SetSizer( sizer );
+		Fit();
+	}
+};
+
+#endif
+
 int SamApp::OnExit()
 {
 	FileHistory().Save( Settings() );
 
 	if ( g_config != 0 ) delete g_config;
+
+	
+#ifdef __BETARELEASE__
+	SurveyDialog dlg( 0, "Feedback" );
+	dlg.CenterOnScreen();
+	dlg.ShowModal();
+#endif
+	
 
 	wxSimpleCurl::Shutdown();
 	
