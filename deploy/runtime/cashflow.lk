@@ -305,7 +305,7 @@ cashflow{ 'Single Owner' } = define()
 	//debt_closing = output('cost_debt_closing')+value('cost_debt_fee_frac')/100*output('size_of_debt');
 	//cfline('debt_closing',0);
 	cfline('cost_other_financing',0);
-	cfline('constr_total_financing',0);
+	cfline('construction_financing_cost',0);
 	cfline('purchase_of_property', 0);
 	cfline('cf_project_dsra', 0);
 	cfline('cf_project_wcra', 0);
@@ -990,7 +990,7 @@ cashflow_to_excel{ 'Single Owner' } = define()
 	destination = copy_file( source, destination );
 	
 	xlsm = xl_create( destination );
-
+	
 	// need year 1 energy to calculate out year energy from degradation in workbook
 	ae = alloc(${analysis_period}); //array of length analysis_period
 	for(i=0;i<#ae;i++)	{
@@ -1001,7 +1001,7 @@ cashflow_to_excel{ 'Single Owner' } = define()
 	xl_set( xlsm, price, 'PPAPrice' );
 	
 	send_excel( xlsm, 'const_per_percent1');
-	
+		
 	send_excel(       xlsm, 'analysis_period');
 	send_excel(       xlsm, 'cbi_fed_amount');
 	send_excel_yesno( xlsm, 'cbi_fed_deprbas_fed');
@@ -1031,7 +1031,8 @@ cashflow_to_excel{ 'Single Owner' } = define()
 	send_excel(       xlsm, 'cost_debt_closing');
 	send_excel(       xlsm, 'cost_debt_fee');
 	send_excel(       xlsm, 'cost_other_financing');
-	send_excel(       xlsm, 'degradation');
+	//send_excel(       xlsm, 'degradation');
+	
 	send_excel(       xlsm, 'depr_alloc_macrs_15_percent');
 	send_excel(       xlsm, 'depr_alloc_macrs_5_percent');
 	send_excel(       xlsm, 'depr_alloc_sl_15_percent');
@@ -1065,6 +1066,7 @@ cashflow_to_excel{ 'Single Owner' } = define()
 	send_excel_yesno( xlsm, 'depr_itc_sta_sl_39');
 	send_excel_yesno( xlsm, 'depr_itc_sta_sl_5');
 	send_excel_yesno( xlsm, 'DeprAllocNone');
+	
 	send_excel
 	(       xlsm, 'dscr');
 	send_excel(       xlsm, 'dscr_reserve_months');
@@ -1190,7 +1192,7 @@ cashflow_to_excel{ 'Single Owner' } = define()
 	send_excel(       xlsm, 'term_int_rate');
 	send_excel(       xlsm, 'term_tenor');
 	send_excel(       xlsm, 'total_installed_cost');
-
+	
 	xl_free( xlsm );
 };
 
