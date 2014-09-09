@@ -348,6 +348,21 @@ cashflow{ 'Single Owner' } = define()
 	cfline('cf_project_return_aftertax_irr', 2);
 	cfline('cf_project_return_aftertax_npv', 0);
 
+
+	cfline( '' );
+	cfline("Levelized COE and Power Purchase Price", -1);
+	cfline('cf_annual_costs', 0);
+	cfline('cf_total_revenue', 0);
+	cfline('cf_energy_net', 0); 
+	cfline( '' );
+	cfline('npv_annual_costs',0 );
+	cfline('npv_energy_nom', 0);
+	cfline('lcoe_nom',2);
+	cfline( '' );
+	cfline('npv_ppa_revenue',0 );
+	cfline('npv_energy_nom', 0);
+	cfline('lppa_nom',2);
+
 	cfline( '' );
 	cfline("STATE INCOME TAXES", -1);
 	cfline("plus:", -1, 0);
@@ -991,10 +1006,14 @@ cashflow_to_excel{ 'Single Owner' } = define()
 	
 	xlsm = xl_create( destination );
 	
-	// need year 1 energy to calculate out year energy from degradation in workbook
+	// need year 1 energy to calculate out year energy from degradation in workbook 
+	// include degradation in energy_net
 	ae = alloc(${analysis_period}); //array of length analysis_period
-	for(i=0;i<#ae;i++)	{
-		ae[i] = output('annual_energy');	}
+//	for(i=0;i<#ae;i++)	{
+//		ae[i] = output('annual_energy');	}
+	en = output('cf_energy_net');
+	for(i=1;i<#en;i++)	{
+		ae[i-1] = en[i];	}
 	xl_set( xlsm, ae, 'annual_energy' );
 	
 	price = output('ppa_price');
