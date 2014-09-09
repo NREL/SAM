@@ -28,29 +28,29 @@ function ipp_metrics()
 
 function so_metrics()
 {
-	metric( 'lcoe_nom', {'label'='LCOE (Nominal)', 'post'=' \u00A2/kWh', 'mode'='f', 'deci'='2' } );
-	metric( 'lcoe_real', {'label'='LCOE (Real)', 'post'=' \u00A2/kWh', 'mode'='f', 'deci'='2' } );
 	metric( 'ppa', {'label'='PPA Price (Year 1)', 'post'= ' \u00A2/kWh', 'mode'='f', 'deci'='2' } );
 	metric( 'ppa_escalation', {'label'='PPA Price Escalation', 'mode'='f', 'post'=' %', 'deci'='2' } );
-//	metric( 'lppa_nom', {'label'='Levelized PPA Price (Nominal)', 'mode'='f', 'post'=' \u0A2/kWh', 'deci'='2' } );
+	metric( 'lppa_nom', {'label'='LPPA Price (Nominal)', 'mode'='f', 'post'=' \u0A2/kWh', 'deci'='2' } );
 //	metric( 'lppa_real', {'label'='Levelized PPA Price (Real)', 'mode'='f', 'post'=' \u00A2/kWh', 'deci'='2' } );
+	metric( 'lcoe_nom', {'label'='LCOE (Nominal)', 'post'=' \u00A2/kWh', 'mode'='f', 'deci'='2' } );
+//	metric( 'lcoe_real', {'label'='LCOE (Real)', 'post'=' \u00A2/kWh', 'mode'='f', 'deci'='2' } );
 
-	metric( 'flip_target_year', {'label'='IRR Target Year'} );
-	metric( 'flip_target_irr', {'label'='IRR Target', 'mode'='f', 'post'=' %', 'deci'='2' } );
-	metric( 'flip_actual_year', {'label'='IRR Actual Year'} );
-	metric( 'flip_actual_irr', {'label'='IRR in Target Year', 'mode'='f', 'post'=' %', 'deci'='2' } );
+	metric( 'project_return_aftertax_npv', {'label'='NPV', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
 
-	metric( 'project_return_aftertax_irr', {'label'='After-tax IRR', 'mode'='f', 'post'=' %', 'deci'='2' } );
-	metric( 'project_return_aftertax_npv', {'label'='After-tax NPV', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
+//	metric( 'flip_target_year', {'label'='IRR Target Year'} );
+//	metric( 'flip_target_irr', {'label'='IRR Target', 'mode'='f', 'post'=' %', 'deci'='2' } );
+	metric( 'flip_actual_irr', {'label'='IRR', 'mode'='f', 'post'=' %', 'deci'='2' } );
+	metric( 'flip_actual_year', {'label'='IRR Year'} );
 
+	metric( 'project_return_aftertax_irr', {'label'='End of project IRR', 'mode'='f', 'post'=' %', 'deci'='2' } );
+	metric( 'cost_installed', {'label'='Project Cost', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
+	metric( 'size_of_debt', {'label'='Debt', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
+	metric( 'size_of_equity', {'label'='Equity', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
 	metric( 'debt_fraction', {'label'='Debt Fraction', 'post'=' %', 'mode'='f', 'deci'='2' } );
 
-	metric( 'direct_cost', {'label'='Direct Cost', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
-	metric( 'indirect_cost', {'label'='Indirect Cost', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
-	metric( 'financing_cost', {'label'='Financing Cost', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
-	metric( 'cost_installed', {'label'='Total Project Cost', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
-	metric( 'size_of_debt', {'label'='Total Debt', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
-	metric( 'size_of_equity', {'label'='Total Equity', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
+//	metric( 'direct_cost', {'label'='Direct Cost', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
+//	metric( 'indirect_cost', {'label'='Indirect Cost', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
+//	metric( 'financing_cost', {'label'='Financing Cost', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
 }
 
 function aepf_metrics()
