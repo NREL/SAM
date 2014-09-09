@@ -1014,9 +1014,29 @@ cashflow_to_excel{ 'Single Owner' } = define()
 	xl_set( xlsm, output('cf_energy_net'), "C136");
 	xl_set( xlsm, output('cf_ppa_price'), "C137");
 	
-	//placeholder to calculate construction costs in workbook
+	//show construction financing cost calculation in spreadsheet
+	//(ssc only uses total cost as input, so these are UI inputs from input form)
 	send_excel( xlsm, 'const_per_percent1');
-		
+	send_excel( xlsm, 'const_per_percent2');
+	send_excel( xlsm, 'const_per_percent3');
+	send_excel( xlsm, 'const_per_percent4');
+	send_excel( xlsm, 'const_per_percent5');
+	send_excel( xlsm, 'const_per_upfront_rate1');
+	send_excel( xlsm, 'const_per_upfront_rate2');
+	send_excel( xlsm, 'const_per_upfront_rate3');
+	send_excel( xlsm, 'const_per_upfront_rate4');
+	send_excel( xlsm, 'const_per_upfront_rate5');
+	send_excel( xlsm, 'const_per_months1');
+	send_excel( xlsm, 'const_per_months2');
+	send_excel( xlsm, 'const_per_months3');
+	send_excel( xlsm, 'const_per_months4');
+	send_excel( xlsm, 'const_per_months5');
+	send_excel( xlsm, 'const_per_interest_rate1');
+	send_excel( xlsm, 'const_per_interest_rate2');
+	send_excel( xlsm, 'const_per_interest_rate3');
+	send_excel( xlsm, 'const_per_interest_rate4');
+	send_excel( xlsm, 'const_per_interest_rate5');		
+
 	send_excel(       xlsm, 'analysis_period');
 	send_excel(       xlsm, 'cbi_fed_amount');
 	send_excel_yesno( xlsm, 'cbi_fed_deprbas_fed');
