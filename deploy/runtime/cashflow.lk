@@ -350,7 +350,7 @@ cashflow{ 'Single Owner' } = define()
 
 
 	cfline( '' );
-	cfline("Levelized COE and Power Purchase Price", -1);
+	cfline("LEVELIZED COE AND PPA PRICE", -1);
 	cfline('cf_annual_costs', 0);
 	cfline('cf_total_revenue', 0);
 	cfline('cf_energy_net', 0); 
@@ -999,26 +999,22 @@ function cashflow_to_excel_incentives(xl)
 
 cashflow_to_excel{ 'Single Owner' } = define() 
 {
+
 	source = runtimedir() + 'spreadsheets/single_owner.xlsm';
     destination = userlocaldatadir() + "/"+ case_name() + '.xlsm';
 
 	destination = copy_file( source, destination );
 	
 	xlsm = xl_create( destination );
+
+	N = value('analysis_period');
+	if ( N>40 ) msgbox("The Excel workbook only shows cash flow values for a 40-year analysis period or less. Your analysis is for " + N + " years.");
 	
-	// need year 1 energy to calculate out year energy from degradation in workbook 
-	// include degradation in energy_net
-	ae = alloc(${analysis_period}); //array of length analysis_period
-//	for(i=0;i<#ae;i++)	{
-//		ae[i] = output('annual_energy');	}
-	en = output('cf_energy_net');
-	for(i=1;i<#en;i++)	{
-		ae[i-1] = en[i];	}
-	xl_set( xlsm, ae, 'annual_energy' );
+	//export annual values to minimize rounding discrepancies between SAM and workbook
+	xl_set( xlsm, output('cf_energy_net'), "C136");
+	xl_set( xlsm, output('cf_ppa_price'), "C137");
 	
-	price = output('ppa_price');
-	xl_set( xlsm, price, 'PPAPrice' );
-	
+	//placeholder to calculate construction costs in workbook
 	send_excel( xlsm, 'const_per_percent1');
 		
 	send_excel(       xlsm, 'analysis_period');
@@ -1050,8 +1046,6 @@ cashflow_to_excel{ 'Single Owner' } = define()
 	send_excel(       xlsm, 'cost_debt_closing');
 	send_excel(       xlsm, 'cost_debt_fee');
 	send_excel(       xlsm, 'cost_other_financing');
-	//send_excel(       xlsm, 'degradation');
-	
 	send_excel(       xlsm, 'depr_alloc_macrs_15_percent');
 	send_excel(       xlsm, 'depr_alloc_macrs_5_percent');
 	send_excel(       xlsm, 'depr_alloc_sl_15_percent');
@@ -1084,10 +1078,7 @@ cashflow_to_excel{ 'Single Owner' } = define()
 	send_excel_yesno( xlsm, 'depr_itc_sta_sl_20');
 	send_excel_yesno( xlsm, 'depr_itc_sta_sl_39');
 	send_excel_yesno( xlsm, 'depr_itc_sta_sl_5');
-	send_excel_yesno( xlsm, 'DeprAllocNone');
-	
-	send_excel
-	(       xlsm, 'dscr');
+	send_excel(       xlsm, 'dscr'); //input
 	send_excel(       xlsm, 'dscr_reserve_months');
 	send_excel_depr(  xlsm, 'equip_reserve_depr_fed');
 	send_excel_depr(  xlsm, 'equip_reserve_depr_sta');
