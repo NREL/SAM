@@ -662,7 +662,7 @@ setup_commercial_pages(2); //no load pages at all
 setconfig( 'Geothermal Power', 'Independent Power Producer' );
 setmodules( ['geothermal',  'ippppa']);
 setup_geothermal_power_pages();
-addpage( [[ 'Geothermal Costs' ]], { 'sidebar'='System Costs' } );
+addpage( [[ 'Geothermal Costs','O and M Costs' ]], { 'sidebar'='System Costs' } );
 setup_independent_power_producer_pages();
 
 //-----------------------------------------------------
@@ -670,7 +670,7 @@ setconfig( 'Geothermal Power', 'Leveraged Partnership Flip' );
 setmodules( ['geothermal', 'levpartflip']);
 setting( { 'analysis_period_var'='cf_length' } );
 setup_geothermal_power_pages();
-addpage( [[ 'Geothermal Costs' ]], { 'sidebar'='System Costs' } );
+addpage( [[ 'Geothermal Costs','O and M Costs' ]], { 'sidebar'='System Costs' } );
 setup_leveraged_partnership_flip_pages();
 
 //-----------------------------------------------------
@@ -678,7 +678,7 @@ setconfig( 'Geothermal Power', 'All Equity Partnership Flip' );
 setmodules( ['geothermal', 'equpartflip']);
 setting( { 'analysis_period_var'='cf_length' } );
 setup_geothermal_power_pages();
-addpage( [[ 'Geothermal Costs' ]], { 'sidebar'='System Costs' } );
+addpage( [[ 'Geothermal Costs','O and M Costs' ]], { 'sidebar'='System Costs' } );
 setup_all_equity_partnership_flip_pages();
 
 //-----------------------------------------------------
@@ -686,7 +686,7 @@ setconfig( 'Geothermal Power', 'Sale Leaseback' );
 setmodules( ['geothermal', 'saleleaseback']);
 setting( { 'analysis_period_var'='cf_length' } );
 setup_geothermal_power_pages();
-addpage( [[ 'Geothermal Costs' ]], { 'sidebar'='System Costs' } );
+addpage( [[ 'Geothermal Costs','O and M Costs' ]], { 'sidebar'='System Costs' } );
 setup_sale_leaseback_pages();
 
 //-----------------------------------------------------
@@ -694,7 +694,7 @@ setconfig( 'Geothermal Power', 'Single Owner' );
 setmodules( ['geothermal', 'singleowner']);
 setting( { 'analysis_period_var'='cf_length' } );
 setup_geothermal_power_pages();
-addpage( [[ 'Geothermal Costs' ]], { 'sidebar'='System Costs' } );
+addpage( [[ 'Geothermal Costs','O and M Costs' ]], { 'sidebar'='System Costs' } );
 setup_single_owner_pages();
 
 //-----------------------------------------------------
