@@ -907,7 +907,7 @@ cashflow{ 'Sale Leaseback' } = define()
 	cfline('Pre-Tax', -1, 0);
 	cfline('sponsor_equity_in_lessee_llc', 0);
 	cfline('distribution_of_development_fee', 0);
-	cfline('Release of major equipment replacement reserves', 0); //was cf_disbursement_merr need to verify cpg 9/10/2014
+	cfline('cf_disbursement_merr', 0); //was cf_disbursement_merr need to verify cpg 9/10/2014
 	cfline('cf_disbursement_om', 0);
 	cfline('cf_disbursement_leasepayment', 0);
 	cfline('cf_reserve_leasepayment_interest', 0);
