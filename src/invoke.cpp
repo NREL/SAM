@@ -1423,15 +1423,6 @@ void fcall_windtoolkit(lk::invoke_t &cxt)
 	curl.Start(url, true);	//true won't let it return to code unless it's done downloading
 	// would like to put some code here to tell it not to download and to give an error if hits 404 Not Found
 
-	wxString local_file;
-	::wxGetTempFileName("samwf", local_file);
-
-	if (!curl.WriteDataToFile(local_file))
-	{
-		wxMessageBox("Failed to download the closest WIND toolkit weather file from NREL for your location.");
-		return;
-	}
-
 	//Create a folder to put the weather file in
 	wxString wfdir;
 	SamApp::Settings().Read("weather_file_dir", &wfdir);
@@ -1443,11 +1434,11 @@ void fcall_windtoolkit(lk::invoke_t &cxt)
 	location.Printf("lat%.2lf_lon%.2lf_", lat, lon);
 	location = location + year;
 	wxString filename = wfdir + "/" + location + ".srw";
-
-	//Decompress weather file and put it in the folder
-	if (!wxUnzipFile(local_file, filename))
+	
+	//write data to file
+	if (!curl.WriteDataToFile(filename))
 	{
-		wxMessageBox("Failed to unzip downloaded weather data.");
+		wxMessageBox("Failed to download the closest WIND toolkit weather file from NREL for your location.");
 		return;
 	}
 
