@@ -7,15 +7,15 @@
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
 PrivilegesRequired=none
 AppId={{8C4CE967-AC1F-4D46-A12D-54DE2F927AF4}
-AppName=System Advisor Alpha
+AppName=System Advisor Beta
 
 ; 64-bit installer extensions - remove if an issue
 ArchitecturesAllowed=x86 x64 ia64
 ArchitecturesInstallIn64BitMode=x64 ia64
 
 ; UPDATE THESE TO MATCH THE VERSION
-AppVerName=SAM 2014.9.3
-DefaultDirName={sd}\SAM\2014.9.3
+AppVerName=SAM 2014.9.10
+DefaultDirName={sd}\SAM\2014.9.10
 
 AppPublisher=National Renewable Energy Laboratory
 AppPublisherURL=http://sam.nrel.gov
@@ -59,7 +59,7 @@ Source: "dbghelp.dll"; DestDir: "{app}/x64"; Excludes: ".svn,*.map"; Flags: igno
 
 [Icons]
 ;Name: "{group}\System Advisor Beta (x64)"; Filename: "{app}\x64\sam.exe"
-Name: "{group}\System Advisor Alpha"; Filename: "{app}\win32\sam.exe"
+Name: "{group}\System Advisor Beta"; Filename: "{app}\win32\sam.exe"
 ;Name: "{group}\{cm:ProgramOnTheWeb,System Advisor Model}"; Filename: "http://sam.nrel.gov"
 ;Name: "{group}\{cm:UninstallProgram,System Advisor Model}"; Filename: "{uninstallexe}"
 ;Name: "{commondesktop}\System Advisor Beta (x64)"; Filename: "{app}\x64\sam.exe"; Tasks: desktopicon
