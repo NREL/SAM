@@ -302,11 +302,11 @@ cashflow{ 'Single Owner' } = define()
 
 	cfline( "CASH FLOWS FROM INVESTING ACTIVITIES", -1);
 	cfline('total_installed_cost',0);
-	//debt_closing = output('cost_debt_closing')+value('cost_debt_fee_frac')/100*output('size_of_debt');
-	//cfline('debt_closing',0);
+    cfline('cost_debt_closing_total', 0);
 	cfline('cost_other_financing',0);
 	cfline('construction_financing_cost',0);
 	cfline('purchase_of_property', 0);
+	cfline ( '' );
 	cfline('cf_project_dsra', 0);
 	cfline('cf_project_wcra', 0);
 	cfline('cf_project_me1ra', 0);
