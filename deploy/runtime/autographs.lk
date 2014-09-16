@@ -37,7 +37,7 @@ autographs{ 'Flat Plate PV' } = define()
 	agraph('monthly_dc_net,monthly_ac_net,monthly_energy', 'Monthly Energy Production', '', 'kWh' ); 
 	// initial waterfall (loss graph) place holder with missing values 
 	agraph('annual_poa_nom,annual_poa_shaded,annual_poa_eff', 'POA Energy Waterfall', '', 'kWh' ); 
-	agraph('annual_dc_nominal,annual_dc_gross,annual_dc_net,annual_ac_gross,annual_ac_net,annual_energy', 'Array Energy Waterfall', '1,2,3,4,5,6', 'kWh' ); 
+	agraph('annual_dc_nominal,annual_dc_gross,annual_dc_net,annual_ac_gross,annual_ac_net,annual_energy', 'Array Energy Waterfall', '', 'kWh' ); 
 
 };
 
