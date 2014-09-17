@@ -1413,6 +1413,10 @@ static unordered_map<wxString,ConfigOptions, wxStringHash, wxStringEqual> m_opts
 
 bool SamApp::OnInit()
 {
+	//extern void loss_diagram_test();
+	//loss_diagram_test();
+	//return true;
+
 	m_locale.Init(); // necessary for comma-formatting
 
 	SetAppName( "SAM" );
