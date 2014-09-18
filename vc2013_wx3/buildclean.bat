@@ -1,0 +1,36 @@
+cd\
+cd C:\Program Files\TortoiseSVN\bin\
+
+TortoiseProc.exe /command:update /path:"F:\sam_dev\lk" /closeonend:1
+TortoiseProc.exe /command:update /path:"F:\sam_dev\wex" /closeonend:1
+TortoiseProc.exe /command:update /path:"F:\sam_dev\ssc" /closeonend:1
+TortoiseProc.exe /command:update /path:"F:\sam_dev\SAMnt" /closeonend:1
+
+cd\
+cd C:\Program Files (x86)\Microsoft Visual Studio 12.0
+
+msbuild %LKDIR%\vc2013_wx3\lkvc13wx3.sln /p:Configuration=Debug;Platform=win32 /t:Clean;Build
+msbuild %LKDIR%\vc2013_wx3\lkvc13wx3.sln /p:Configuration=Release;Platform=win32 /t:Clean;Build
+msbuild %LKDIR%\vc2013_wx3\lkvc13wx3.sln /p:Configuration=Debug;Platform=x64 /t:Clean;Build
+msbuild %LKDIR%\vc2013_wx3\lkvc13wx3.sln /p:Configuration=Release;Platform=x64 /t:Clean;Build
+
+msbuild %WEXDIR%\vc2013_wx3\wexvc13wx3.sln /p:Configuration=Debug;Platform=win32 /t:Clean;Build
+msbuild %WEXDIR%\vc2013_wx3\wexvc13wx3.sln /p:Configuration=Release;Platform=win32 /t:Clean;Build
+msbuild %WEXDIR%\vc2013_wx3\wexvc13wx3.sln /p:Configuration=Debug;Platform=x64 /t:Clean;Build
+msbuild %WEXDIR%\vc2013_wx3\wexvc13wx3.sln /p:Configuration=Release;Platform=x64 /t:Clean;Build
+
+msbuild %SSCDIR%\build_vc2013\ssc_vc2013.sln /p:Configuration=Debug;Platform=win32 /t:Clean;Build
+msbuild %SSCDIR%\build_vc2013\ssc_vc2013.sln /p:Configuration=Release;Platform=win32 /t:Clean;Build
+msbuild %SSCDIR%\build_vc2013\ssc_vc2013.sln /p:Configuration=Debug;Platform=x64 /t:Clean;Build
+msbuild %SSCDIR%\build_vc2013\ssc_vc2013.sln /p:Configuration=Release;Platform=x64 /t:Clean;Build
+
+copy %SSCDIR%\build_vc2013\Win32\Release\ssc.dll F:\sam_dev\SAMnt\deploy\win32
+copy %SSCDIR%\build_vc2013\x64\Release\ssc.dll F:\sam_dev\SAMnt\deploy\x64
+
+msbuild %SAMNTDIR%\vc2013_wx3\SAMnt_vc2013.sln /p:Configuration=Debug;Platform=win32 /t:Clean;Build
+msbuild %SAMNTDIR%\vc2013_wx3\SAMnt_vc2013.sln /p:Configuration=Release;Platform=win32 /t:Clean;Build
+msbuild %SAMNTDIR%\vc2013_wx3\SAMnt_vc2013.sln /p:Configuration=Debug;Platform=x64 /t:Clean;Build
+msbuild %SAMNTDIR%\vc2013_wx3\SAMnt_vc2013.sln /p:Configuration=Release;Platform=x64 /t:Clean;Build
+
+cd\
+cd F:\sam_dev
