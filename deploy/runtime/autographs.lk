@@ -36,8 +36,8 @@ autographs{ 'Flat Plate PV' } = define()
 {	
 	agraph('monthly_dc_net,monthly_ac_net,monthly_energy', 'Monthly Energy Production', '', 'kWh' ); 
 	// initial waterfall (loss graph) place holder with missing values 
-	agraph('annual_poa_nom,annual_poa_shaded,annual_poa_eff', 'POA Energy Waterfall', '', 'kWh' ); 
-	agraph('annual_dc_nominal,annual_dc_gross,annual_dc_after_mismatch_loss,annual_dc_after_diodes_loss,annual_dc_after_wiring_loss,annual_dc_after_tracking_loss,annual_dc_after_nameplate_loss,annual_ac_after_inv_cliploss,annual_ac_after_inv_psoloss,annual_ac_after_inv_pntloss,annual_ac_after_wiring_loss,annual_ac_after_transformer_loss,annual_energy', 'Array Energy Waterfall', '', 'kWh' ); 
+	agraph('annual_poa_nom,annual_poa_shaded,annual_poa_eff', 'POA Energy Waterfall', '', 'kWh', 0, false, true, 'right'); 
+	agraph('annual_dc_nominal,annual_dc_gross,annual_dc_after_mismatch_loss,annual_dc_after_diodes_loss,annual_dc_after_wiring_loss,annual_dc_after_tracking_loss,annual_dc_after_nameplate_loss,annual_ac_after_inv_cliploss,annual_ac_after_inv_psoloss,annual_ac_after_inv_pntloss,annual_ac_after_wiring_loss,annual_ac_after_transformer_loss,annual_energy', 'Array Energy Waterfall', '', 'kWh', 3, false, true, 'right' ); 
 
 };
 

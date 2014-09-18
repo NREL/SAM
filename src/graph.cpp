@@ -297,29 +297,32 @@ static std::vector<wxColour> s_colours;
 			bar_group[i]->SetGroup( bar_group );
 
 	// create the axes
-	if ( ndata == 1 )
+
+	// x-axis
+	if (ndata == 1)
 	{
 		// single value axis
-		wxPLLabelAxis *x1 = new wxPLLabelAxis( -1, yvars.size(), m_g.XLabel );
-		for( size_t i=0;i<ynames.size();i++)
-			x1->Add( i, m_s->GetLabel( ynames[i] ) );
-		SetXAxis1( x1 );
+		wxPLLabelAxis *x1 = new wxPLLabelAxis(-1, yvars.size(), m_g.XLabel);
+		if (m_g.ShowXValues)
+		{
+			for (size_t i = 0; i < ynames.size(); i++)
+				x1->Add(i, m_s->GetLabel(ynames[i]));
+		}
+		SetXAxis1(x1);
 	}
-	else if ( ndata == 12 )
+	else if (ndata == 12)
 	{
 		// month axis
-		wxPLLabelAxis *x1 = new wxPLLabelAxis( -1, 12, m_g.XLabel );
-		for( size_t i=0;i<12;i++ )
-			x1->Add( i, s_monthNames[i] );
-		SetXAxis1( x1 );
+		wxPLLabelAxis *x1 = new wxPLLabelAxis(-1, 12, m_g.XLabel);
+		for (size_t i = 0; i < 12; i++)
+			x1->Add(i, s_monthNames[i]);
+		SetXAxis1(x1);
 	}
 	else
 	{
 		// linear axis
-		SetXAxis1( new wxPLLinearAxis( -1, ndata+1, m_g.XLabel ) );
+		SetXAxis1(new wxPLLinearAxis(-1, ndata + 1, m_g.XLabel));
 	}
-
-
 	// setup y axis
 
 	if ( GetPlotCount() > 0 )
@@ -349,7 +352,6 @@ static std::vector<wxColour> s_colours;
 		SetYAxis1( new wxPLLinearAxis( ymin, ymax, m_g.YLabel ) );
 	}
 
-	
 	Invalidate();
 	Refresh();
 }
