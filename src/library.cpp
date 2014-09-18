@@ -519,8 +519,10 @@ void LibraryCtrl::ReloadLibrary()
 		m_list->SetColumnWidth( 0, 350 );
 		if ( !item.IsEmpty() ) SetEntrySelection( item );		
 	}
-	else
-		wxMessageBox( "Could not find library: " + m_library );
+	// TODO - address this issue from Nate when using parametrics
+	//else
+	else if (m_library != "Library Name")
+		wxMessageBox("Could not find library: " + m_library);
 }
 
 void LibraryCtrl::UpdateList()
