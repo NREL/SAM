@@ -752,7 +752,11 @@ bool ScanSolarResourceData( const wxString &db_file )
 				&& ext != "tm2"
 				&& ext != "tm3"
 				&& ext != "epw"
-				&& ext != "smw" ) continue;
+				&& ext != "smw" ) {
+				
+				has_more = dir.GetNext( &file );
+				continue;
+			}
 		
 			ssc_data_t pdata = ssc_data_create();
 			ssc_data_set_string( pdata, "file_name", (const char*)wf.c_str() );
