@@ -1075,7 +1075,15 @@ void ResultsViewer::CreateAutoGraphs()
 		g.Title = m_autographs[i].title;
 		g.XLabel = m_autographs[i].xlabel;
 		g.YLabel = m_autographs[i].ylabel;
-		g.LegendPos = wxPLPlotCtrl::BOTTOM;
+		if (m_autographs[i].legend_pos.Lower() == "right")
+			g.LegendPos = wxPLPlotCtrl::RIGHT;
+		else if (m_autographs[i].legend_pos.Lower() == "floating")
+			g.LegendPos = wxPLPlotCtrl::FLOATING;
+		else
+			g.LegendPos = wxPLPlotCtrl::BOTTOM;
+		g.ShowXValues = m_autographs[i].show_xvalues;
+		g.ShowLegend = m_autographs[i].show_legend;
+		g.Size = m_autographs[i].size;
 		m_summaryLayout->Add( new AutoGraphCtrl( m_summaryLayout, m_sim, g ) );
 	}
 }

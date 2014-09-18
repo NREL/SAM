@@ -89,7 +89,9 @@ struct CashFlowLine {
 };
 
 struct AutoGraph {
-	wxString title, xlabel, ylabel, yvals;
+	wxString title, xlabel, ylabel, yvals, legend_pos;
+	int size;
+	bool show_legend, show_xvalues;
 };
 	
 class ResultsViewer : public wxMetroNotebook
