@@ -1136,6 +1136,7 @@ VariablePopupDialog::VariablePopupDialog(wxWindow *parent, wxUIObject *obj, wxSt
 {
 	if ((m_vv == 0) || (m_vi == 0) || (m_obj == 0)) return;
 
+	// causing "Library not found" message from parametrics
 	wxWindow *ctrl = m_obj->CreateNative(this);
 
 	wxString type = m_obj->GetTypeName();
