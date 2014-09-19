@@ -1267,7 +1267,7 @@ void fcall_solarprospector(lk::invoke_t &cxt)
 	LK_DOC("solarprospector", "Creates the solar prospector dialog box, downloads, decompresses, converts, and returns local file name for weather file", "(none) : string");
 
 	//Create the solar prospector object
-	SolarProspectorDialog spd( SamApp::Window(), "Location Lookup");
+	SolarProspectorDialog spd( SamApp::Window(), "Download Weather File");
 	spd.CenterOnParent();
 	int code = spd.ShowModal(); //shows the dialog and makes it so you can't interact with other parts until window is closed
 
@@ -1395,7 +1395,7 @@ void fcall_windtoolkit(lk::invoke_t &cxt)
 	LK_DOC("windtoolkit", "Creates the wind data download dialog box, downloads, decompresses, converts, and returns local file name for weather file", "(none) : string");
 
 	//Create the wind data object
-	WindToolkitDialog spd(SamApp::Window(), "Location Lookup");
+	WindToolkitDialog spd(SamApp::Window(), "Download Weather File");
 	spd.CenterOnParent();
 	int code = spd.ShowModal(); //shows the dialog and makes it so you can't interact with other parts until window is closed
 
@@ -1430,6 +1430,7 @@ void fcall_windtoolkit(lk::invoke_t &cxt)
 	url.Replace("<YEAR>", spd.GetYear(), 1);
 	url.Replace("<LAT>", wxString::Format(wxT("%f"),lat), 1);
 	url.Replace("<LON>", wxString::Format(wxT("%f"), lon), 1);
+	url.Replace("<KEY>", wxString::Format("SIWy1e6K6FHjlRnKY3RaJWJS9YMnMWqQ8mgLwLfZ")); // key for production server registered to janine.freeman@nrel.gov
 
 	//Download the weather file
 	wxSimpleCurl curl;
