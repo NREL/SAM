@@ -10,6 +10,12 @@
 #include "windtoolkit.h"
 #include "main.h"
 
+static const char *help_text =
+"Notes:\n"
+"You are about to download a single year of data near the location that you specify from the NREL Wind Integration National Dataset (WIND) toolkit.\n\n"
+"The WIND toolkit is only available for the continental United States.\n\n"
+"For more information, please see the documentation for this data at: http://www.nrel.gov/docs/fy14osti/60269.pdf ";
+
 enum {
 	ID_radAddress, ID_radLatLon, ID_cboYears,
 	ID_txtAddress, ID_txtLat, ID_txtLon
@@ -56,12 +62,16 @@ WindToolkitDialog::WindToolkitDialog(wxWindow *parent, const wxString &title)
 	szgrid->Add( szll, 0, wxALL|wxEXPAND|wxALIGN_CENTER_VERTICAL, 1 );
 
 	wxBoxSizer *szyr = new wxBoxSizer( wxHORIZONTAL );
-	szyr->Add( new wxStaticText( this, wxID_ANY, "Select data year"), wxALL|wxALIGN_CENTER_VERTICAL, 15 );
+	szyr->Add( new wxStaticText( this, wxID_ANY, "Select year"), wxALL|wxALIGN_CENTER_VERTICAL, 15 );
 	szyr->Add( cboYears, 0, wxALL, 5 );
 
 	wxBoxSizer *szmain = new wxBoxSizer( wxVERTICAL );
 	szmain->Add( szgrid, 0, wxLEFT|wxRIGHT|wxTOP, 10 );
 	szmain->Add( szyr, 0, wxLEFT|wxRIGHT, 10 );
+
+	wxStaticText *note = new wxStaticText(this, wxID_ANY, help_text);
+	note->Wrap(550);
+	szmain->Add(note, 0, wxLEFT | wxRIGHT | wxALIGN_CENTER, 10);
 
 	szmain->Add( CreateButtonSizer( wxHELP|wxOK|wxCANCEL ), 0, wxALL|wxEXPAND, 10 );
 
