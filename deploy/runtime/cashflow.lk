@@ -252,7 +252,6 @@ cashflow{ 'Single Owner' } = define()
                  tech != 'High-X Concentrating PV' && 
                  tech != 'Solar Water Heating' && 
                  tech != 'Wind Power');
-    fuelopttech = ( tech == 'Biopower');
     
 	cfline( "PRODUCTION (AC KWH)", -1);
 	cfline( 'cf_energy_net', 0); // no decimal places with thousands separator
@@ -276,9 +275,9 @@ cashflow{ 'Single Owner' } = define()
 	cfline( "OPERATING EXPENSES", -1 );
 	if (value('system_use_recapitalization')) cfline ('capitalization', 0);
 	cfline( 'cf_om_fixed_expense,cf_om_capacity_expense,cf_om_production_expense', 0);
-	if ( fueltech == true && fuelopttech == false )cfline('cf_om_fuel_expense', 0);
-	if ( fuelopttech == true )cfline( 'cf_om_opt_fuel_1_expense', 0);
-	if ( fuelopttech == true )cfline( 'cf_om_opt_fuel_2_expense', 0);
+	if ( fueltech == true )cfline('cf_om_fuel_expense', 0);
+	if ( fueltech == true )cfline( 'cf_om_opt_fuel_1_expense', 0);
+	if ( fueltech == true )cfline( 'cf_om_opt_fuel_2_expense', 0);
 	cfline( 'cf_property_tax_expense', 0);
 	cfline( 'cf_insurance_expense', 0);
 	cfline( 'cf_operating_expenses', 0);
@@ -303,11 +302,11 @@ cashflow{ 'Single Owner' } = define()
 
 	cfline( "CASH FLOWS FROM INVESTING ACTIVITIES", -1);
 	cfline('total_installed_cost',0);
-    cfline('cost_debt_closing_total', 0);
+	//debt_closing = output('cost_debt_closing')+value('cost_debt_fee_frac')/100*output('size_of_debt');
+	//cfline('debt_closing',0);
 	cfline('cost_other_financing',0);
 	cfline('construction_financing_cost',0);
 	cfline('purchase_of_property', 0);
-	cfline ( '' );
 	cfline('cf_project_dsra', 0);
 	cfline('cf_project_wcra', 0);
 	cfline('cf_project_me1ra', 0);
@@ -741,8 +740,6 @@ cashflow{ 'Leveraged Partnership Flip' } = define()
 	cfline('sponsor_aftertax_npv', 0);//"Developer after-tax NPV");
 	cfline( '' ); // spacer
 
-
-
 	// incentives
 	cfline( 'Incentives', -1);
 	setup_incentives_cashflow();
@@ -908,7 +905,7 @@ cashflow{ 'Sale Leaseback' } = define()
 	cfline('Pre-Tax', -1, 0);
 	cfline('sponsor_equity_in_lessee_llc', 0);
 	cfline('distribution_of_development_fee', 0);
-	cfline('cf_disbursement_merr', 0); //was cf_disbursement_merr need to verify cpg 9/10/2014
+	cfline('Release of major equipment replacement reserves', 0); //was cf_disbursement_merr need to verify cpg 9/10/2014
 	cfline('cf_disbursement_om', 0);
 	cfline('cf_disbursement_leasepayment', 0);
 	cfline('cf_reserve_leasepayment_interest', 0);
@@ -997,15 +994,52 @@ function cashflow_to_excel_incentives(xl)
 cashflow_to_excel{ 'Residential' } = define()
 {
 
-	msgbox("Send Cash Flow to Excel with Equations for the Residential financial model is not available in the Beta version of SAM. It will be implemented in the final release.");
+	source = runtimedir() + 'spreadsheets/residential_commercial.xlsx';
+    destination = userlocaldatadir() + "/"+ case_name() + '.xlsx';
+
+	destination = copy_file( source, destination );
+	
+	xlsx = xl_create( destination );
+
+	//Variables specific to residential model
+	xl_set( xlsx, (${mortgage}?"No":"Yes"), 'UseTaxDeductibleInterest');
+	xl_set( xlsx, "N/A", 'StateDepreciation');
+	xl_set( xlsx, "N/A", 'FederalDepreciation');
+			
+	send_excel(       xlsx, 'analysis_period');
+    xl_set( xlsx, output('cf_energy_net'), "C103");
+	xl_set( xlsx, output('cf_energy_value'), "C104");
 
 };
 
 cashflow_to_excel{ 'Commercial' } = define()
 {
 
-	msgbox("Send Cash Flow to Excel with Equations for the Commercial financial model is not available in the Beta version of SAM. It will be implemented in the final release.");
+	source = runtimedir() + 'spreadsheets/residential_commercial.xlsx';
+    destination = userlocaldatadir() + "/"+ case_name() + '.xlsx';
 
+	destination = copy_file( source, destination );
+
+	xlsx = xl_create( destination );
+	
+	//Variables specific to commercial model
+	xl_set( xlsx, "Yes", 'UseTaxDeductibleInterest');
+	s = value('depr_sta_type');
+	if (s == 0) state = "No Depreciation";
+	if (s == 1) state = "5-yr MACRS";
+	if (s == 2) state = "Straight Line" + value('depr_sta_sl_years') + " Years";
+	if (s == 3) state = "Custom (see cash flow)";
+	xl_set( xlsx, state, 'StateDepreciation'); //show depreciation type in inputs table for reference only
+	f = value('depr_fed_type'); //show depreciation percentages in cash flow for calculations
+	send_excel( xlsx, 'cf_sta_depr_sched');
+	if (f == 0) fed = "No Depreciation";
+	if (f == 1) fed = "5-yr MACRS";
+	if (f == 2) fed = "Straight Line" + value('depr_sta_sl_years') + " Years";
+	if (f == 3) fed = "Custom (see cash flow)";
+	xl_set( xlsx, fed, 'FederalDepreciation');
+	send_excel( xlsx, 'cf_fed_depr_sched');
+
+	send_excel(       xlsx, 'analysis_period');
 };
 
 cashflow_to_excel{ 'Single Owner' } = define() 
@@ -1125,47 +1159,47 @@ cashflow_to_excel{ 'Single Owner' } = define()
 	send_excel(       xlsm, 'ibi_fed_amount');
 	send_excel_yesno( xlsm, 'ibi_fed_amount_deprbas_fed');
 	send_excel_yesno( xlsm, 'ibi_fed_amount_deprbas_sta');
-	send_excel(       xlsm, 'ibi_fed_amount_tax_fed');
-	send_excel(       xlsm, 'ibi_fed_amount_tax_sta');
+	send_excel_yesno( xlsm, 'ibi_fed_amount_tax_fed');
+	send_excel_yesno( xlsm, 'ibi_fed_amount_tax_sta');
 	send_excel(       xlsm, 'ibi_fed_percent');
 	send_excel_yesno( xlsm, 'ibi_fed_percent_deprbas_fed');
 	send_excel_yesno( xlsm, 'ibi_fed_percent_deprbas_sta');
 	send_excel(       xlsm, 'ibi_fed_percent_maxvalue');
-	send_excel(       xlsm, 'ibi_fed_percent_tax_fed');
-	send_excel(       xlsm, 'ibi_fed_percent_tax_sta');
+	send_excel_yesno( xlsm, 'ibi_fed_percent_tax_fed');
+	send_excel_yesno( xlsm, 'ibi_fed_percent_tax_sta');
 	send_excel(       xlsm, 'ibi_oth_amount');
 	send_excel_yesno( xlsm, 'ibi_oth_amount_deprbas_fed');
 	send_excel_yesno( xlsm, 'ibi_oth_amount_deprbas_sta');
-	send_excel(       xlsm, 'ibi_oth_amount_tax_fed');
-	send_excel(       xlsm, 'ibi_oth_amount_tax_sta');
+	send_excel_yesno( xlsm, 'ibi_oth_amount_tax_fed');
+	send_excel_yesno( xlsm, 'ibi_oth_amount_tax_sta');
 	send_excel(       xlsm, 'ibi_oth_percent');
 	send_excel_yesno( xlsm, 'ibi_oth_percent_deprbas_fed');
 	send_excel_yesno( xlsm, 'ibi_oth_percent_deprbas_sta');
 	send_excel(       xlsm, 'ibi_oth_percent_maxvalue');
-	send_excel(       xlsm, 'ibi_oth_percent_tax_fed');
-	send_excel(       xlsm, 'ibi_oth_percent_tax_sta');
+	send_excel_yesno( xlsm, 'ibi_oth_percent_tax_fed');
+	send_excel_yesno( xlsm, 'ibi_oth_percent_tax_sta');
 	send_excel(       xlsm, 'ibi_sta_amount');
 	send_excel_yesno( xlsm, 'ibi_sta_amount_deprbas_fed');
 	send_excel_yesno( xlsm, 'ibi_sta_amount_deprbas_sta');
-	send_excel(       xlsm, 'ibi_sta_amount_tax_fed');
-	send_excel(       xlsm, 'ibi_sta_amount_tax_sta');
+	send_excel_yesno( xlsm, 'ibi_sta_amount_tax_fed');
+	send_excel_yesno( xlsm, 'ibi_sta_amount_tax_sta');
 	send_excel(       xlsm, 'ibi_sta_percent');
 	send_excel_yesno( xlsm, 'ibi_sta_percent_deprbas_fed');
 	send_excel_yesno( xlsm, 'ibi_sta_percent_deprbas_sta');
 	send_excel(       xlsm, 'ibi_sta_percent_maxvalue');
-	send_excel(       xlsm, 'ibi_sta_percent_tax_fed');
-	send_excel(       xlsm, 'ibi_sta_percent_tax_sta');
+	send_excel_yesno( xlsm, 'ibi_sta_percent_tax_fed');
+	send_excel_yesno( xlsm, 'ibi_sta_percent_tax_sta');
 	send_excel(       xlsm, 'ibi_uti_amount');
 	send_excel_yesno( xlsm, 'ibi_uti_amount_deprbas_fed');
 	send_excel_yesno( xlsm, 'ibi_uti_amount_deprbas_sta');
-	send_excel(       xlsm, 'ibi_uti_amount_tax_fed');
-	send_excel(       xlsm, 'ibi_uti_amount_tax_sta');
+	send_excel_yesno( xlsm, 'ibi_uti_amount_tax_fed');
+	send_excel_yesno( xlsm, 'ibi_uti_amount_tax_sta');
 	send_excel(       xlsm, 'ibi_uti_percent');
 	send_excel_yesno( xlsm, 'ibi_uti_percent_deprbas_fed');
 	send_excel_yesno( xlsm, 'ibi_uti_percent_deprbas_sta');
 	send_excel(       xlsm, 'ibi_uti_percent_maxvalue');
-	send_excel(       xlsm, 'ibi_uti_percent_tax_fed');
-	send_excel(       xlsm, 'ibi_uti_percent_tax_sta');
+	send_excel_yesno( xlsm, 'ibi_uti_percent_tax_fed');
+	send_excel_yesno( xlsm, 'ibi_uti_percent_tax_sta');
 	send_excel(       xlsm, 'inflation_rate');
 	send_excel(       xlsm, 'insurance_rate');
 	send_excel(       xlsm, 'itc_fed_amount');
@@ -1221,8 +1255,10 @@ cashflow_to_excel{ 'Single Owner' } = define()
 	send_excel(       xlsm, 'property_tax_rate');
 	send_excel(       xlsm, 'ptc_fed_amount');
 	send_excel(       xlsm, 'ptc_fed_term');
+	send_excel(       xlsm, 'ptc_fed_escal');
 	send_excel(       xlsm, 'ptc_sta_amount');
 	send_excel(       xlsm, 'ptc_sta_term');
+	send_excel(       xlsm, 'ptc_sta_escal');
 	send_excel(       xlsm, 'real_discount_rate');
 	send_excel(       xlsm, 'reserves_interest');
 	send_excel(       xlsm, 'sales_tax_rate');
