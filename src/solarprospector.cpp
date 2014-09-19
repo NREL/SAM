@@ -11,7 +11,7 @@
 #include "main.h"
 
 static const char *help_text = 
-	"Notes:\n\n"
+	"Notes:\n"
 	"The TMY ('Typical Meteorological Year') data set uses the standard TMY weighting factors.\n\n"
 	
 	"The TGY ('Typical Global Year') data set uses only the global horizontal irradiance to determine typical months.\n\n"
