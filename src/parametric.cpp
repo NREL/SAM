@@ -1070,7 +1070,7 @@ wxString ParametricGridData::GetColLabelValue(int col)
 				col_label = m_par.Runs[0]->GetLabel(m_var_names[col]);
 				col_units = m_par.Runs[0]->GetUnits(m_var_names[col]);
 			}
-			if (col_label.IsEmpty())
+			if (col_label.IsEmpty() || (col_label.Left(11) == "<not found:"))
 			{
 				wxArrayString names, labels, units, groups;
 				Simulation::ListAllOutputs(m_case->GetConfiguration(),
