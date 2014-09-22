@@ -1655,9 +1655,10 @@ IDEWindow::IDEWindow( wxWindow *parent )
 	m_autoGraphPanel->AddLibrary( invoke_resultscallback_funcs(), "Results callbacks" );
 	m_notebook->AddPage( m_autoGraphPanel, "Autographs" );
 
-	m_navigationPanel = new ScriptPanel( m_notebook, "navigation.lk" );
-	m_navigationPanel->AddLibrary( invoke_casecallback_funcs(), "Case callbacks" );
-	m_notebook->AddPage( m_navigationPanel, "Navigation" );
+	m_lossDiagramPanel = new ScriptPanel( m_notebook, "lossdiag.lk" );
+	m_lossDiagramPanel->AddLibrary( invoke_casecallback_funcs(), "Case callbacks" );
+	m_lossDiagramPanel->AddLibrary( invoke_lossdiag_funcs(), "Loss diagrams" );
+	m_notebook->AddPage( m_lossDiagramPanel, "Loss digrams" );
 
 	m_reportEditorPanel = new SamReportWindow( m_notebook );
 	m_notebook->AddPage( m_reportEditorPanel, "Reports" );

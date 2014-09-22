@@ -1413,11 +1413,15 @@ static unordered_map<wxString,ConfigOptions, wxStringHash, wxStringEqual> m_opts
 
 bool SamApp::OnInit()
 {
-//	extern void loss_diagram_test();
-//	loss_diagram_test();
-//	return true;
-
 	m_locale.Init(); // necessary for comma-formatting
+
+	/*
+	SamLogWindow::Setup();
+	extern void loss_diagram_test();
+	loss_diagram_test();
+	return true;
+	*/
+
 
 	SetAppName( "SAM" );
 	SetVendorName( "NREL" );
@@ -1741,8 +1745,8 @@ void SamApp::Restart()
 	if ( !g_globalCallbacks.LoadFile( SamApp::GetRuntimePath() + "/autographs.lk" ))
 		wxLogStatus( "error loading autographs.lk" );
 
-	if ( !g_globalCallbacks.LoadFile( SamApp::GetRuntimePath() + "/navigation.lk" ))
-		wxLogStatus( "error loading navigation.lk" );
+	if ( !g_globalCallbacks.LoadFile( SamApp::GetRuntimePath() + "/lossdiag.lk" ))
+		wxLogStatus( "error loading lossdiag.lk" );
 
 	wxString solar_resource_db = SamApp::GetUserLocalDataDir() + "/SolarResourceData.csv";
 	if ( !wxFileExists( solar_resource_db ) ) ScanSolarResourceData( solar_resource_db );

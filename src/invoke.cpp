@@ -30,7 +30,7 @@
 #include "urdb.h"
 #include "invoke.h"
 #include "s3tool.h"
-
+#include "lossdiag.h"
 
 static void fcall_dview(lk::invoke_t &cxt)
 {
@@ -417,6 +417,39 @@ static void fcall_metric( lk::invoke_t &cxt )
 		}
 
 		ci->GetResultsViewer()->AddMetric( md );
+	}
+}
+
+static void fcall_new_baseline( lk::invoke_t &cxt )
+{
+	LK_DOC("new_baseline", "Creates a new baseline section in the loss diagram.", "(string:variable name, string:text):none");
+
+	if ( LossDiagCallbackContext *ldcc = static_cast<LossDiagCallbackContext*>(cxt.user_data()) )
+	{
+		Simulation &sim = ldcc->GetSimulation();
+		LossDiagramObject &ld = ldcc->GetDiagram();
+
+		if ( VarValue *vv = sim.GetValue( cxt.arg(0).as_string() ) )
+		{
+			if ( vv->Type() == VV_NUMBER )
+				ld.NewBaseline( vv->Value(), cxt.arg(1).as_string() );
+		}
+	}
+}
+
+static void fcall_add_loss_term( lk::invoke_t &cxt )
+{
+	LK_DOC("add_loss_term", "Adds a loss to the loss diagram.", "(string:variable name, string:text):none" );
+	if ( LossDiagCallbackContext *ldcc = static_cast<LossDiagCallbackContext*>(cxt.user_data()) )
+	{
+		Simulation &sim = ldcc->GetSimulation();
+		LossDiagramObject &ld = ldcc->GetDiagram();
+		
+		if ( VarValue *vv = sim.GetValue( cxt.arg(0).as_string() ) )
+		{
+			if ( vv->Type() == VV_NUMBER )
+				ld.AddLossTerm( vv->Value(), cxt.arg(1).as_string() );
+		}
 	}
 }
 
@@ -1984,6 +2017,15 @@ lk::fcall_t* invoke_resultscallback_funcs()
 		fcall_cfline,
 		fcall_cfrow,
 		fcall_agraph,
+		0 };
+	return (lk::fcall_t*)vec;
+}
+
+lk::fcall_t* invoke_lossdiag_funcs()
+{
+	static const lk::fcall_t vec[] = {
+		fcall_new_baseline,
+		fcall_add_loss_term,
 		0 };
 	return (lk::fcall_t*)vec;
 }

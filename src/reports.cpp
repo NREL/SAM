@@ -14,6 +14,7 @@
 #include "reports.h"
 #include "graph.h"
 #include "casewin.h"
+#include "lossdiag.h"
 
 #include <wex/codeedit.h>
 #include <wex/pagelayout.h>
@@ -264,6 +265,7 @@ BEGIN_EVENT_TABLE( SamReportWindow, wxPanel )
 	EVT_LIST_ITEM_RIGHT_CLICK( IDR_PAGELIST, SamReportWindow::OnPageRClick )
 END_EVENT_TABLE()
 
+
 void RegisterReportObjectTypes()
 {
 	static bool first_load = true;
@@ -275,6 +277,7 @@ void RegisterReportObjectTypes()
 		wxPageObjectTypes::Register( new SamReportTableObject );
 		wxPageObjectTypes::Register( new SamReportScriptObject );
 		wxPageObjectTypes::Register( new wxPageImageObject );
+		wxPageObjectTypes::Register( new LossDiagramObject );
 		first_load = false;
 	}
 }

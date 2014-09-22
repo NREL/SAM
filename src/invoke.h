@@ -21,6 +21,9 @@ lk::fcall_t* invoke_casecallback_funcs();
 // these functions expect a ResultsCallbackContext* as user_data
 lk::fcall_t* invoke_resultscallback_funcs();
 
+// these functions expect a LossDiagCallbackContext* as user_data
+lk::fcall_t* invoke_lossdiag_funcs();
+
 // functions that can be called in equations
 lk::fcall_t* invoke_equation_funcs(); 
 

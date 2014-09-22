@@ -129,13 +129,12 @@ private:
 	void OnClose( wxCloseEvent & );
 	wxMetroNotebook *m_notebook;
 
-
 	ScriptPanel *m_startupPanel;
 	UIEditorPanel *m_uiPanel;
 	ScriptPanel *m_metricsPanel;
 	ScriptPanel *m_cashFlowPanel;
 	ScriptPanel *m_autoGraphPanel;
-	ScriptPanel *m_navigationPanel;
+	ScriptPanel *m_lossDiagramPanel;
 	SamReportWindow *m_reportEditorPanel;
 	DefaultsManager *m_defaultsMgr;
 
