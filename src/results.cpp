@@ -32,7 +32,7 @@
 #include "casewin.h"
 #include "graph.h"
 #include "invoke.h"
-
+#include "lossdiag.h"
 
 static wxString UnsplitCells(const matrix_t<wxString> &table, char colsep, char rowsep, bool quote_colsep)
 {
@@ -167,6 +167,19 @@ BEGIN_EVENT_TABLE( ResultsViewer, wxMetroNotebook )
 	EVT_BUTTON(ID_CF_SENDEQNEXCEL, ResultsViewer::OnCommand)
 END_EVENT_TABLE()
 
+enum { PAGE_SUMMARY,
+	PAGE_LOSS_DIAGRAM,
+	PAGE_GRAPHS,
+	PAGE_DATA,
+	PAGE_CASH_FLOW,
+	PAGE_HOURLY,
+	PAGE_DAILY,
+	PAGE_PROFILES,
+	PAGE_STATISTICS,
+	PAGE_HEAT_MAP,
+	PAGE_SCATTER,
+	PAGE_PDF_CDF,
+	PAGE_DURATION_CURVE };
 
 ResultsViewer::ResultsViewer( wxWindow *parent, int id )
 	: wxMetroNotebook( parent, id, wxDefaultPosition, wxDefaultSize, wxMT_LIGHTTHEME ),
@@ -181,6 +194,9 @@ ResultsViewer::ResultsViewer( wxWindow *parent, int id )
 	m_metricsTable->SetData( data );	
 	m_summaryLayout->Add( m_metricsTable );
 
+	m_lossDiagramScroller = new wxScrolledWindow( this );
+	m_lossDiagram = new LossDiagramCtrl( m_lossDiagramScroller );
+	AddPage( m_lossDiagramScroller, "Losses" );
 
 	m_graphViewer = new GraphViewer( this );
 	AddPage( m_graphViewer, "Graphs" );
@@ -628,6 +644,21 @@ void ResultsViewer::Setup( Simulation *sim )
 		m_summaryLayout->Add( new ExcelExchSummary( m_summaryLayout, sim ) );
 
 
+	// setup loss diagram
+	m_lossDiagram->GetDiagram().Clear();
+	m_lossDiagram->GetDiagram().SetCaseName( SamApp::Window()->Project().GetCaseName( m_sim->GetCase() ) );
+	if ( m_lossDiagram->GetDiagram().SetupFromCase() )
+	{
+		m_lossDiagram->InvalidateBestSize();
+		wxSize ldsz = m_lossDiagram->GetBestSize();
+		m_lossDiagram->SetSize( 0, 0, ldsz.x, ldsz.y);
+		m_lossDiagramScroller->SetScrollbars( 1, 1, ldsz.x, ldsz.y, 0, 0 );
+	}
+	if ( m_lossDiagram->GetDiagram().Size() > 0 )
+		ShowPage( PAGE_LOSS_DIAGRAM );
+	else
+		HidePage( PAGE_LOSS_DIAGRAM );
+		
 	// setup time series datasets
 	wxDVPlotCtrlSettings viewstate = GetDViewState();
 	RemoveAllDataSets();

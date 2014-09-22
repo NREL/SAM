@@ -1,11 +1,19 @@
 #include <wx/dcbuffer.h>
+#include <wx/numformatter.h>
+#include <wx/clipbrd.h>
+#include <wx/busyinfo.h>
 
+#include <wex/numeric.h>
+
+#include "invoke.h"
 #include "lossdiag.h"
+#include "main.h"
 
 
 
 LossDiagramObject::LossDiagramObject()
 {
+	m_createFromCase = false;
 }
 
 wxPageObject *LossDiagramObject::Duplicate()
@@ -29,8 +37,32 @@ bool LossDiagramObject::Copy( wxPageObject *obj )
 
 bool LossDiagramObject::EditObject( wxPageLayoutCtrl *layout_window )
 {
-	wxMessageBox("Editing feature not added yet for loss diagram" );
-	return true;
+	wxBusyInfo info("Updating loss diagram from current case." );
+	wxMilliSleep(200);
+	return SetupFromCase();
+}
+
+wxRealPoint LossDiagramObject::EstimateSize( double height_char ) const
+{
+	int nbaselines = 0;
+	int nlosses = 0;
+	double textwidth = 0;
+	for( size_t i=0;i<m_list.size();i++ )
+	{
+		double tw = m_list[i].text.Len() * height_char/2; // assume average character is half as wide as tall
+		if ( textwidth < tw ) textwidth = tw;
+
+		if ( m_list[i].baseline ) nbaselines++;
+		else nlosses++;
+	}
+	
+	return wxRealPoint( 300+textwidth, height_char*4*nbaselines + height_char*3*nlosses + height_char );
+}
+
+void LossDiagramObject::SetCaseName( const wxString &c )
+{
+	SamReportObject::SetCaseName( c );
+	SetupFromCase();
 }
 
 #define LD_BORDER_INCH 0.1 // inset border on loss diagram, inches (roughly 7 pixels)
@@ -45,6 +77,15 @@ void LossDiagramObject::Render( wxPageOutputDevice &dv )
 
 	dv.Font( face, points, true, false );
 
+	if ( m_list.size() == 0 )
+	{
+		float tw, th;
+		dv.Measure( "hy", &tw, &th );
+		dv.Text( x, y+th, "No loss diagram items specified." );
+		dv.Text( x, y+th+th, wxString("Current case: ") + ( GetCase() ? GetCaseName() : wxString("none") ) );
+		return;
+	}
+
 	x += LD_BORDER_INCH;
 	y += LD_BORDER_INCH;
 	width -= 2*LD_BORDER_INCH;
@@ -57,9 +98,7 @@ void LossDiagramObject::Render( wxPageOutputDevice &dv )
 		dv.Measure( m_list[i].text, &tw, &th );
 		if ( tw > twmax ) twmax = tw;
 	}
-
-	twmax += 0.2; // add some side buffer to max text size (0.2 inches)
-
+	
 	float cursize = width - twmax;
 	float textx = x+cursize+0.1;
 	
@@ -87,7 +126,8 @@ void LossDiagramObject::Render( wxPageOutputDevice &dv )
 			
 			dv.Font( face, points+2, true, false );
 			dv.Text( x+0.1f, y+0.05f, li.text );
-			dv.Text( x+0.1f, y+0.05f+th*1.2f, wxString::Format("%lg", li.value ) );
+			dv.Text( x+0.1f, y+0.05f+th*1.2f, 
+				wxNumberFormatter::ToString( li.value, 0, wxNumberFormatter::Style_WithThousandsSep ) );
 			dv.Font( face, points, false, false );
 			y += sec_height;
 		}
@@ -143,17 +183,45 @@ void LossDiagramObject::Configure( bool from_case )
 	m_createFromCase = from_case;
 }
 
-void LossDiagramObject::SetupFromCase()
+
+LossDiagCallbackContext::LossDiagCallbackContext( Case *c, Simulation *sim, LossDiagramObject *ld, const wxString &desc )
+	: CaseCallbackContext( c, desc ), m_sim( sim ), m_lossDiag( ld ) { }
+
+LossDiagramObject &LossDiagCallbackContext::GetDiagram() { return *m_lossDiag; }
+Simulation &LossDiagCallbackContext::GetSimulation() { return *m_sim; }
+	
+void LossDiagCallbackContext::SetupLibraries( lk::env_t *env )
 {
+	env->register_funcs( invoke_lossdiag_funcs(), this );
+}
+
+bool LossDiagramObject::SetupFromCase()
+{
+	Clear();
+
 	// todo: automatically generate based on stored case data
 	Case *c = GetCase();
-	if ( !c ) return;
-	Clear();
+	if ( !c ) return false;
+	
+	ConfigInfo *cfg = c->GetConfiguration();
+	if ( !cfg ) return false;
+
+
+	LossDiagCallbackContext context( c, &c->BaseCase(), this, "LossDiagramObject::SetupFromCase");
+	if ( lk::node_t *cb = SamApp::GlobalCallbacks().Lookup( "loss_diagram", cfg->Technology ))
+		return context.Invoke( cb, SamApp::GlobalCallbacks().GetEnv() );
+	else
+		return false;
 }
 
 void LossDiagramObject::Clear()
 {
 	m_list.clear();
+}
+
+size_t LossDiagramObject::Size() const
+{
+	return m_list.size();
 }
 
 void LossDiagramObject::NewBaseline( double value, const wxString &text )
@@ -174,14 +242,20 @@ void LossDiagramObject::AddLossTerm( double percent, const wxString &text )
 	m_list.push_back( x );
 }
 
+enum{ ID_COPY_IMAGE = wxID_HIGHEST+482 };
+
 BEGIN_EVENT_TABLE( LossDiagramCtrl, wxWindow )
 	EVT_SIZE( LossDiagramCtrl::OnSize )
 	EVT_PAINT( LossDiagramCtrl::OnPaint )
+	EVT_RIGHT_DOWN( LossDiagramCtrl::OnRightDown )
+	EVT_MENU( ID_COPY_IMAGE, LossDiagramCtrl::OnContextMenu )
 END_EVENT_TABLE()
 
 LossDiagramCtrl::LossDiagramCtrl( wxWindow *parent )
 	: wxWindow( parent, wxID_ANY )
 {	
+	SetBackgroundStyle( wxBG_STYLE_PAINT );
+
 	wxSize mm = wxGetDisplaySizeMM();
 	wxSize sz = wxGetDisplaySize();
 
@@ -230,21 +304,63 @@ void LossDiagramCtrl::ScreenToPage( int px, int py, float *x, float *y )
 	*y = (py)/m_ppi;
 }
 
+wxSize LossDiagramCtrl::DoGetBestSize() const
+{
+	wxClientDC dc( const_cast<LossDiagramCtrl*>( this ) );
+	dc.SetFont( *wxNORMAL_FONT );
+	wxRealPoint pt = m_lossDiagram.EstimateSize( (float) dc.GetCharHeight() );
+	return wxSize( (int)pt.x, (int)pt.y );
+}
+
+
+wxBitmap LossDiagramCtrl::GetBitmap()
+{
+	wxSize size( GetClientSize() );
+	wxBitmap bit( size.x, size.y );
+	wxMemoryDC dc( bit );	
+	dc.SetBackground( *wxWHITE_BRUSH );
+	dc.Clear();	
+	wxScreenOutputDevice scrn( this, dc );
+	m_lossDiagram.Render( scrn );
+	return bit;
+}
+
+void LossDiagramCtrl::OnRightDown( wxMouseEvent & )
+{
+	wxMenu menu;
+	menu.Append( ID_COPY_IMAGE, "Copy image" );
+	PopupMenu( &menu );
+}
+
+void LossDiagramCtrl::OnContextMenu( wxCommandEvent &evt )
+{
+	if ( evt.GetId() == ID_COPY_IMAGE )
+	{
+		if ( wxTheClipboard->Open() )
+		{
+			wxTheClipboard->SetData(new wxBitmapDataObject( GetBitmap() ));
+			wxTheClipboard->Close();
+		}
+	}
+}
 
 void loss_diagram_test()
 {
-	wxFrame *frame = new wxFrame( 0, wxID_ANY, "Loss Diagram Test", wxDefaultPosition, wxSize(600,750) );
+	wxFrame *frame = new wxFrame( 0, wxID_ANY, "Loss Diagram Test", wxDefaultPosition, wxSize(500,750) );
 	LossDiagramCtrl *ldc = new LossDiagramCtrl( frame );
 
 	LossDiagramObject &ld = ldc->GetDiagram();
 	ld.NewBaseline( 52595, "Nominal POA" );
+	
 	ld.AddLossTerm( 1.5, "Shading" );
 	ld.AddLossTerm( 4.9, "Soiling" );
+	
 	ld.NewBaseline( 8142, "DC kWh @ STC" );
 	ld.AddLossTerm( 13.64, "Module modeled loss" );
 	ld.AddLossTerm( 2.2, "Mismatch" );
 	ld.AddLossTerm( 0.5, "Connections" );
 	ld.AddLossTerm( 1, "Nameplate" );
+	
 	ld.NewBaseline( 7135, "Net DC output" );
 	ld.AddLossTerm( 1.8, "Clipping" );
 	ld.AddLossTerm( 2.9, "Inverter efficiency" );
@@ -252,6 +368,11 @@ void loss_diagram_test()
 	ld.AddLossTerm( 1.7, "Wiring" );
 	ld.AddLossTerm( 4.2, "Performance adjustment" );
 	ld.NewBaseline( 6777, "Energy to grid" );
+	
+
+	wxBoxSizer *sizer = new wxBoxSizer( wxVERTICAL );
+	sizer->Add( ldc, 1, wxALL|wxEXPAND, 5 );
+	frame->SetSizerAndFit( sizer );
 
 	frame->Show();
 }

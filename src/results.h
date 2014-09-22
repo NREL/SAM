@@ -39,6 +39,7 @@ class Case;
 class Simulation;
 class VarTable;
 class ResultsViewer;
+class LossDiagramCtrl;
 
 
 
@@ -128,7 +129,9 @@ private:
 	std::vector<AutoGraph> m_autographs;
 
 	wxSnapLayout *m_summaryLayout;
-	MetricsTable *m_metricsTable;		
+	MetricsTable *m_metricsTable;	
+	wxScrolledWindow *m_lossDiagramScroller;
+	LossDiagramCtrl *m_lossDiagram;
 	TabularBrowser *m_tables;
 	wxExtGridCtrl *m_cashFlowTable;
 	wxExtGridCtrl *m_depreciationTable;
