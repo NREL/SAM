@@ -1,0 +1,14 @@
+loss_diagram{'Flat Plate PV'} = define() {
+
+	new_baseline( 'annual_glob_horiz_rad', 'Global Horizontal (kWh/m2)' );
+	new_baseline( 'annual_poa_nom', 'Nominal POA (kWh)' );
+	add_loss_term( 'annual_poa_shading_loss_percent', 'Shading' );
+	add_loss_term( 'annual_poa_soiling_loss_percent', 'Soiling' );
+	new_baseline( 'annual_dc_nominal', 'Nominal DC energy (kWh)' );
+	add_loss_term( 'annual_dc_module_loss_percent', 'Module loss' );
+	add_loss_term( 'annual_dc_mismatch_loss_percent', 'Mismatch' );
+	add_loss_term( 'annual_dc_diodes_loss_percent', 'Connections' );	
+	new_baseline( 'annual_energy', 'Annual energy (kWh)' );
+};
+
+

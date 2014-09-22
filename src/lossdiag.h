@@ -2,13 +2,17 @@
 #define __lossdiag_h
 
 #include <wex/pagelayout.h>
-#include "reports.h"
 
+#include "reports.h"
+#include "case.h"
+
+class Case;
+class Simulation;
 
 class LossDiagramObject : public wxPageObject, public SamReportObject
 {
 public:
-	LossDiagramObject();	
+	LossDiagramObject();
 
 	virtual wxString TypeName() { return "SamLossDiagramObject"; }
 	virtual wxString Description()  { return "Loss Diagram"; }
@@ -19,11 +23,16 @@ public:
 	virtual bool ReadData( wxInputStream &is );
 	virtual bool WriteData( wxOutputStream &os );	
 	
+	virtual void SetCaseName( const wxString &c ); // also recreates the loss diagram from the case
+
 	void Configure( bool from_case );
-	void SetupFromCase();
+	bool SetupFromCase();
 	void Clear();
 	void NewBaseline( double value, const wxString &text );
 	void AddLossTerm( double percent, const wxString &text );
+	size_t Size() const;
+
+	wxRealPoint EstimateSize( double height_char ) const;
 
 protected:
 	struct ld_item {
@@ -35,6 +44,24 @@ protected:
 	bool m_createFromCase;
 	std::vector<ld_item> m_list;
 
+};
+
+class LossDiagCallbackContext : public CaseCallbackContext
+{
+private:
+	LossDiagramObject *m_lossDiag;
+	Simulation *m_sim;
+public:
+	LossDiagCallbackContext( Case *c, 
+		Simulation *sim, 
+		LossDiagramObject *ld, 
+		const wxString &desc );
+
+	LossDiagramObject &GetDiagram();
+	Simulation &GetSimulation();
+	
+protected:
+	virtual void SetupLibraries( lk::env_t *env );
 };
 
 
@@ -50,6 +77,12 @@ public:
 	virtual float GetPPI() { return m_ppi; }
 	virtual void PageToScreen( float x, float y, int *px, int *py );
 	virtual void ScreenToPage( int px, int py, float *x, float *y );
+	
+	virtual wxSize DoGetBestSize() const;
+	wxBitmap GetBitmap();
+
+	void OnRightDown( wxMouseEvent & );
+	void OnContextMenu( wxCommandEvent & );
 
 protected:
 	void OnSize( wxSizeEvent & );
