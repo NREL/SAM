@@ -13,6 +13,7 @@ class LossDiagramObject : public wxPageObject, public SamReportObject
 {
 public:
 	LossDiagramObject();
+	LossDiagramObject( bool from_case, bool set_scale );
 
 	virtual wxString TypeName() { return "SamLossDiagramObject"; }
 	virtual wxString Description()  { return "Loss Diagram"; }
@@ -25,7 +26,7 @@ public:
 	
 	virtual void SetCaseName( const wxString &c ); // also recreates the loss diagram from the case
 
-	void Configure( bool from_case );
+	void Configure( bool from_case, bool set_scale );
 	bool SetupFromCase();
 	void Clear();
 	void NewBaseline( double value, const wxString &text );
@@ -41,6 +42,7 @@ protected:
 		wxString text;
 	};
 
+	bool m_scaleToGeometry;
 	bool m_createFromCase;
 	std::vector<ld_item> m_list;
 
