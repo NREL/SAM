@@ -56,7 +56,8 @@ wxRealPoint LossDiagramObject::EstimateSize( double height_char ) const
 		else nlosses++;
 	}
 	
-	return wxRealPoint( 300+textwidth, height_char*4*nbaselines + height_char*3*nlosses + height_char );
+//	return wxRealPoint(300 + textwidth, height_char * 4 * nbaselines + height_char * 3 * nlosses + height_char);
+	return wxRealPoint(300 + textwidth, height_char * 5 * nbaselines + height_char * 5 * nlosses + height_char);
 }
 
 void LossDiagramObject::SetCaseName( const wxString &c )
@@ -70,8 +71,13 @@ void LossDiagramObject::SetCaseName( const wxString &c )
 void LossDiagramObject::Render( wxPageOutputDevice &dv )
 {
 	float x, y, width, height;
-	GetGeometry( &x, &y, &width, &height );
-	
+	GetGeometry(&x, &y, &width, &height);
+
+	x = m_x;
+	y = m_y;
+	width = m_width;
+	height = m_height;
+
 	int face = wxPageOutputDevice::SANSERIF;
 	int points = 10;
 
@@ -155,7 +161,8 @@ void LossDiagramObject::Render( wxPageOutputDevice &dv )
 			//dv.LineStyle( linewidth, wxPageOutputDevice::SOLID );
 
 			dv.Text( textx, tpy-th, li.text );
-			dv.Text( textx, tpy+0.1f*th, wxString::Format("-%lg %%", li.value ) );
+//			dv.Text(textx, tpy + 0.1f*th, wxString::Format("-%lg %%", li.value));
+			dv.Text(textx, tpy + 0.1f*th, wxString::Format("-%.2f %%", li.value));
 
 			cursize -= lw;
 			y += sec_height;
