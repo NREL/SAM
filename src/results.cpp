@@ -652,7 +652,7 @@ void ResultsViewer::Setup( Simulation *sim )
 		m_lossDiagram->InvalidateBestSize();
 		wxSize ldsz = m_lossDiagram->GetBestSize();
 		m_lossDiagram->SetSize( 0, 0, ldsz.x, ldsz.y);
-		m_lossDiagramScroller->SetScrollbars( 1, 1, ldsz.x, ldsz.y, 0, 0 );
+		m_lossDiagramScroller->SetScrollbars(1, 1, ldsz.x, ldsz.y, 0, 0);
 	}
 	if ( m_lossDiagram->GetDiagram().Size() > 0 )
 		ShowPage( PAGE_LOSS_DIAGRAM );
