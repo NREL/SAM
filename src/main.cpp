@@ -226,6 +226,8 @@ MainWindow::MainWindow()
 	entries.push_back( wxAcceleratorEntry( wxACCEL_CMD, 's', wxID_SAVE ) );
 	entries.push_back( wxAcceleratorEntry( wxACCEL_CMD, 'w', wxID_CLOSE ) );
 	entries.push_back( wxAcceleratorEntry( wxACCEL_NORMAL, WXK_F2, ID_CASE_RENAME ) );
+	entries.push_back( wxAcceleratorEntry( wxACCEL_NORMAL, WXK_F5, ID_CASE_SIMULATE ) );
+	entries.push_back( wxAcceleratorEntry( wxACCEL_NORMAL, WXK_F6, ID_CASE_REPORT ) );
 	entries.push_back( wxAcceleratorEntry( wxACCEL_NORMAL, WXK_F1, wxID_HELP ) );
 	SetAcceleratorTable( wxAcceleratorTable( entries.size(), &entries[0] ) );
 }
@@ -757,9 +759,10 @@ void MainWindow::OnCaseTabChange( wxCommandEvent &evt )
 void MainWindow::OnCaseTabButton( wxCommandEvent &evt )
 {
 	wxMetroPopupMenu menu;
-	
-	menu.Append( ID_CASE_CONFIG, "Select technology and market" );
-	menu.AppendSeparator();
+	menu.Append( ID_CASE_SIMULATE, "Simulate\tF5" );
+	menu.Append( ID_CASE_REPORT, "Create report\tF6" );
+	menu.Append( ID_CASE_CLEAR_RESULTS, "Clear all results" );
+	menu.AppendSeparator();	
 	menu.Append( ID_CASE_RENAME, "Rename\tF2" );
 	menu.Append( ID_CASE_DUPLICATE, "Duplicate" );
 	menu.Append( ID_CASE_DELETE, "Delete" );
@@ -767,14 +770,14 @@ void MainWindow::OnCaseTabButton( wxCommandEvent &evt )
 	menu.Append( ID_CASE_MOVE_LEFT, "Move left" );
 	menu.Append( ID_CASE_MOVE_RIGHT, "Move right" );
 	menu.AppendSeparator();
-	menu.Append( ID_CASE_SIMULATE, "Simulate" );
-	menu.Append( ID_CASE_CLEAR_RESULTS, "Clear all results" );
-	menu.Append( ID_CASE_REPORT, "Generate report" );
-	menu.Append( ID_CASE_EXCELEXCH, "Excel exchange...");
-	menu.AppendSeparator();
+	menu.Append( ID_CASE_CONFIG, "Select technology and market..." );
 	menu.Append( ID_CASE_RESET_DEFAULTS, "Reset inputs to default values" );
+#ifdef __WXMSW__
 	menu.AppendSeparator();
-	menu.Append( ID_CASE_IMPORT, "Import" );
+	menu.Append( ID_CASE_EXCELEXCH, "Setup Excel exchange...");
+#endif
+	//menu.AppendSeparator();
+	//menu.Append( ID_CASE_IMPORT, "Import" );
 
 	menu.Popup( this, m_caseTabList->GetPopupMenuPosition( m_caseTabList->GetSelection() ) );
 }
