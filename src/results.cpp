@@ -195,6 +195,7 @@ ResultsViewer::ResultsViewer( wxWindow *parent, int id )
 	m_summaryLayout->Add( m_metricsTable );
 
 	m_lossDiagramScroller = new wxScrolledWindow( this );
+	m_lossDiagramScroller->SetBackgroundColour( *wxWHITE );
 	m_lossDiagram = new LossDiagramCtrl( m_lossDiagramScroller );
 	AddPage( m_lossDiagramScroller, "Losses" );
 
@@ -651,8 +652,8 @@ void ResultsViewer::Setup( Simulation *sim )
 	{
 		m_lossDiagram->InvalidateBestSize();
 		wxSize ldsz = m_lossDiagram->GetBestSize();
-		m_lossDiagram->SetSize( 0, 0, ldsz.x, ldsz.y);
-		m_lossDiagramScroller->SetScrollbars(1, 1, ldsz.x, ldsz.y, 0, 0);
+		m_lossDiagram->SetSize( 20, 20, ldsz.x, ldsz.y);
+		m_lossDiagramScroller->SetScrollbars(1, 1, ldsz.x+40, ldsz.y+40, 0, 0);
 	}
 	if ( m_lossDiagram->GetDiagram().Size() > 0 )
 		ShowPage( PAGE_LOSS_DIAGRAM );

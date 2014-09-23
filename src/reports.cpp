@@ -277,7 +277,7 @@ void RegisterReportObjectTypes()
 		wxPageObjectTypes::Register( new SamReportTableObject );
 		wxPageObjectTypes::Register( new SamReportScriptObject );
 		wxPageObjectTypes::Register( new wxPageImageObject );
-		wxPageObjectTypes::Register( new LossDiagramObject );
+		wxPageObjectTypes::Register( new LossDiagramObject( true, true ) ); 
 		first_load = false;
 	}
 }

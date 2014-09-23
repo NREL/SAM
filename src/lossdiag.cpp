@@ -14,6 +14,13 @@
 LossDiagramObject::LossDiagramObject()
 {
 	m_createFromCase = false;
+	m_scaleToGeometry = false;
+}
+
+LossDiagramObject::LossDiagramObject( bool fromcase, bool scale )
+{
+	m_createFromCase = fromcase;
+	m_scaleToGeometry = scale;
 }
 
 wxPageObject *LossDiagramObject::Duplicate()
@@ -28,6 +35,7 @@ bool LossDiagramObject::Copy( wxPageObject *obj )
 	if ( LossDiagramObject *src = dynamic_cast<LossDiagramObject*>(obj) )
 	{
 		m_createFromCase = src->m_createFromCase;
+		m_scaleToGeometry = src->m_scaleToGeometry;
 		m_list = src->m_list;
 		return true;
 	}
@@ -55,9 +63,14 @@ wxRealPoint LossDiagramObject::EstimateSize( double height_char ) const
 		if ( m_list[i].baseline ) nbaselines++;
 		else nlosses++;
 	}
+
+	float sec_height = 3*height_char;
 	
-//	return wxRealPoint(300 + textwidth, height_char * 4 * nbaselines + height_char * 3 * nlosses + height_char);
-	return wxRealPoint(300 + textwidth, height_char * 5 * nbaselines + height_char * 5 * nlosses + height_char);
+	// assume a 10 pix char height x 20 --> 200 pix minimum width roughly
+	return wxRealPoint( height_char*20 + textwidth, 
+		sec_height*m_list.size() // section heights
+		+ nbaselines*height_char // space btw sections
+		+ height_char); //vertical border
 }
 
 void LossDiagramObject::SetCaseName( const wxString &c )
@@ -66,49 +79,55 @@ void LossDiagramObject::SetCaseName( const wxString &c )
 	SetupFromCase();
 }
 
-#define LD_BORDER_INCH 0.1 // inset border on loss diagram, inches (roughly 7 pixels)
 
 void LossDiagramObject::Render( wxPageOutputDevice &dv )
 {
 	float x, y, width, height;
 	GetGeometry(&x, &y, &width, &height);
-
-	x = m_x;
-	y = m_y;
-	width = m_width;
-	height = m_height;
-
+	
+	float tw, th;
 	int face = wxPageOutputDevice::SANSERIF;
 	int points = 10;
-
 	dv.Font( face, points, true, false );
+	dv.Measure( "hy", &th, &th );
+
+
+	if ( m_scaleToGeometry ) // not a true scaling, but squish down vertically to fit into available height
+	{
+		while( points > 5 && EstimateSize(th).y > height )
+		{
+			points--;
+			dv.Font( face, points, true, false );
+			dv.Measure( "hy", &th, &th );
+		}
+	}
 
 	if ( m_list.size() == 0 )
 	{
-		float tw, th;
-		dv.Measure( "hy", &tw, &th );
 		dv.Text( x, y+th, "No loss diagram items specified." );
 		dv.Text( x, y+th+th, wxString("Current case: ") + ( GetCase() ? GetCaseName() : wxString("none") ) );
 		return;
 	}
 
-	x += LD_BORDER_INCH;
-	y += LD_BORDER_INCH;
-	width -= 2*LD_BORDER_INCH;
-	height -= 2*LD_BORDER_INCH;
+	// borders
+	float border = th/2;
+	x += border;
+	y += border;
+	width -= 2*border;
+	height -= 2*border;
 
 	// find out longest text string
-	float tw = 0, th = 0, twmax = 0;
+	float twmax = 0;
 	for( size_t i=0;i<m_list.size();i++ )
 	{
-		dv.Measure( m_list[i].text, &tw, &th );
+		dv.Measure( m_list[i].text, &tw, 0 );
 		if ( tw > twmax ) twmax = tw;
 	}
 	
 	float cursize = width - twmax;
 	float textx = x+cursize+0.1;
 	
-	float sec_height = th*4; 
+	float sec_height = th*3; 
 	dv.Color( *wxBLACK );
 	float linewidth = 0.015;
 	dv.LineStyle( linewidth, wxPageOutputDevice::SOLID );
@@ -121,7 +140,7 @@ void LossDiagramObject::Render( wxPageOutputDevice &dv )
 			if ( i > 0 ) // close up previous section and move down
 			{
 				dv.Line( x, y, x+cursize, y ); // section top line
-				y += 0.3f; // spacing between sections
+				y += th; // spacing between sections
 			}
 
 			dv.Line( x, y, x+cursize, y ); // section top line
@@ -130,12 +149,11 @@ void LossDiagramObject::Render( wxPageOutputDevice &dv )
 			
 			textx = x + cursize + 0.2; // realign text
 			
-			dv.Font( face, points+2, true, false );
+			dv.Font( face, points+1, true, false );
 			dv.Text( x+0.1f, y+0.05f, li.text );
 			dv.Text( x+0.1f, y+0.05f+th*1.2f, 
 				wxNumberFormatter::ToString( li.value, 0, wxNumberFormatter::Style_WithThousandsSep ) );
 			dv.Font( face, points, false, false );
-			y += sec_height;
 		}
 		else
 		{
@@ -147,32 +165,33 @@ void LossDiagramObject::Render( wxPageOutputDevice &dv )
 			float tpx = textx-0.05;
 			float tpy = y+sec_height/2;
 
-			//dv.Line( x+cursize, y, x+cursize-lw/2, y+sec_height/2 );  // triangle line 1
-			//dv.Line( x+cursize-lw/2, y+sec_height/2, x+cursize-lw, y ); // triangle line 2
-
-			dv.Arc( x + cursize, y-sec_height/2, 2*(tpx-(x+cursize)), sec_height, 180, 270 );
-			dv.Arc( x + cursize-lw, y-sec_height/2, 2*(tpx-(x+cursize-lw)), sec_height, 180, 270);
-
-			//dv.Line( x+cursize, y, x+cursize, y+sec_height/2); // vertical line down on right
-			dv.Line( x+cursize-lw, y, x+cursize-lw, y+sec_height ); // vertical line down on left
-
-			//dv.LineStyle( linewidth, wxPageOutputDevice::DOTTED );
-			//dv.Line( x+cursize-lw/2, y+sec_height/2, textx-0.05, y+sec_height/2 ); // triangle point to text line
-			//dv.LineStyle( linewidth, wxPageOutputDevice::SOLID );
-
+			if( li.value >= 0 )
+			{
+				dv.Arc( x + cursize, y-sec_height/2, 2*(tpx-(x+cursize)), sec_height, 180, 270 );
+				dv.Arc( x + cursize-lw, y-sec_height/2, 2*(tpx-(x+cursize-lw)), sec_height, 180, 270);
+				dv.Line( x+cursize-lw, y, x+cursize-lw, y+sec_height ); // vertical line down on left
+			}
+			else
+			{
+				dv.Arc( x + cursize, y+sec_height/2, 2*(tpx-(x+cursize)), sec_height/2, 90, 180 );
+				dv.Arc( x + cursize-lw, y+sec_height/2, 2*(tpx-(x+cursize-lw)), sec_height/2, 90, 180);
+				dv.Line( x+cursize, y, x+cursize,y+0.75*sec_height );
+				dv.Line( x+cursize-lw, y+0.75f*sec_height, x+cursize-lw, y+sec_height);
+			}
+			
 			dv.Text( textx, tpy-th, li.text );
-//			dv.Text(textx, tpy + 0.1f*th, wxString::Format("-%lg %%", li.value));
 			dv.Text(textx, tpy + 0.1f*th, wxString::Format("-%.2f %%", li.value));
 
 			cursize -= lw;
-			y += sec_height;
-
 		}
+		
+		y += sec_height;
 	}
 
 	// close up with bottom point
 	dv.Line( x, y, x+cursize/2, y+th );
 	dv.Line( x+cursize/2, y+th, x+cursize, y );
+	
 }
 
 bool LossDiagramObject::ReadData( wxInputStream &is )
@@ -185,9 +204,10 @@ bool LossDiagramObject::WriteData( wxOutputStream &os )
 	return true;
 }
 
-void LossDiagramObject::Configure( bool from_case )
+void LossDiagramObject::Configure( bool from_case, bool scale )
 {
 	m_createFromCase = from_case;
+	m_scaleToGeometry = scale;
 }
 
 
@@ -287,13 +307,13 @@ void LossDiagramCtrl::OnPaint( wxPaintEvent & )
 
 	int width, height;
 	GetClientSize( &width, &height );
-	
+	/*
 	float ppi = 72.0f;
 	wxSize sz = pdc.GetPPI();
 	if (sz.x != sz.y) ppi = (float) (sz.x>sz.y)?sz.x:sz.y;
 	else ppi = (float)sz.x;
-
-	m_lossDiagram.SetGeometry( 0, 0, width/ppi, height/ppi );
+	*/
+	m_lossDiagram.SetGeometry( 0, 0, width/m_ppi, height/m_ppi );
 
 	wxScreenOutputDevice scrn( this, pdc );
 	m_lossDiagram.Render( scrn );
@@ -314,9 +334,12 @@ void LossDiagramCtrl::ScreenToPage( int px, int py, float *x, float *y )
 wxSize LossDiagramCtrl::DoGetBestSize() const
 {
 	wxClientDC dc( const_cast<LossDiagramCtrl*>( this ) );
-	dc.SetFont( *wxNORMAL_FONT );
-	wxRealPoint pt = m_lossDiagram.EstimateSize( (float) dc.GetCharHeight() );
-	return wxSize( (int)pt.x, (int)pt.y );
+	wxScreenOutputDevice dv( const_cast<LossDiagramCtrl*>( this ), dc );
+	dv.Font( wxScreenOutputDevice::SANSERIF, 10, false, false );
+	float tw, th;
+	dv.Measure( "hy", &tw, &th );
+	wxRealPoint pt = m_lossDiagram.EstimateSize( th );
+	return wxSize( (int)pt.x*m_ppi, (int)pt.y*m_ppi );
 }
 
 
@@ -353,10 +376,12 @@ void LossDiagramCtrl::OnContextMenu( wxCommandEvent &evt )
 
 void loss_diagram_test()
 {
-	wxFrame *frame = new wxFrame( 0, wxID_ANY, "Loss Diagram Test", wxDefaultPosition, wxSize(500,750) );
+	wxFrame *frame = new wxFrame( 0, wxID_ANY, "Loss Diagram Test", wxDefaultPosition, wxSize(100,300) );
 	LossDiagramCtrl *ldc = new LossDiagramCtrl( frame );
 
 	LossDiagramObject &ld = ldc->GetDiagram();
+	ld.Configure( false, true );
+
 	ld.NewBaseline( 52595, "Nominal POA" );
 	
 	ld.AddLossTerm( 1.5, "Shading" );
@@ -373,13 +398,14 @@ void loss_diagram_test()
 	ld.AddLossTerm( 2.9, "Inverter efficiency" );
 	ld.AddLossTerm( 0.0, "No loss" );
 	ld.AddLossTerm( 1.7, "Wiring" );
-	ld.AddLossTerm( 4.2, "Performance adjustment" );
+	ld.AddLossTerm( -4.2, "Performance adjustment" );
 	ld.NewBaseline( 6777, "Energy to grid" );
 	
 
 	wxBoxSizer *sizer = new wxBoxSizer( wxVERTICAL );
 	sizer->Add( ldc, 1, wxALL|wxEXPAND, 5 );
-	frame->SetSizerAndFit( sizer );
+	frame->SetSizer( sizer );
+	frame->Fit();
 
 	frame->Show();
 }
