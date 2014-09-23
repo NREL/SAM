@@ -118,7 +118,7 @@ class ExcelExchDialog : public wxDialog
 public:
 
 	ExcelExchDialog(wxWindow *parent, int id)
-		 : wxDialog( parent, id, "Configure Excel Exchange", wxDefaultPosition, wxSize(600,350),
+		 : wxDialog( parent, id, "Excel Exchange", wxDefaultPosition, wxSize(600,350),
 		 wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER)
 	{
 		//SetBackgroundColour( *wxWHITE );

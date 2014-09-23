@@ -689,16 +689,17 @@ void ResultsViewer::Setup( Simulation *sim )
 
 	// build cashflow
 	
-	m_cashFlowTable->Freeze();
-	m_cashFlowTable->ClearGrid();
-	m_depreciationTable->Freeze();
-	m_depreciationTable->ClearGrid();
-
-	m_depreciationTable->ResizeGrid(20, 16);
 
 	m_cashflow.clear();
 	if ( lk::node_t *cfcb = SamApp::GlobalCallbacks().Lookup( "cashflow", cfg->Financing ))
 	{
+		m_cashFlowTable->Freeze();
+		m_cashFlowTable->ClearGrid();
+		m_depreciationTable->Freeze();
+		m_depreciationTable->ClearGrid();
+
+		m_depreciationTable->ResizeGrid(20, 16);
+
 		ResultsCallbackContext cc( this, "Cashflow callback: " + cfg->Financing );
 		if ( !cc.Invoke( cfcb, SamApp::GlobalCallbacks().GetEnv() ) )
 			wxLogStatus( "error running cashflow script." );
@@ -863,8 +864,10 @@ void ResultsViewer::Setup( Simulation *sim )
 		{
 			m_cf_splitter->Unsplit();
 		}
-
 	}
+
+	if ( m_cashflow.size() > 0 ) ShowPage( PAGE_CASH_FLOW );
+	else HidePage( PAGE_CASH_FLOW );
 
 	CreateAutoGraphs();
 
