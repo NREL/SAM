@@ -504,7 +504,7 @@ static wxArrayString EnumerateAlphaIndex(const wxString &_start, const wxString 
 
 #ifdef __WXMSW__
 
-static bool ParseAndCaptureRange( const wxString &range, wxString &val, wxExcelAutomation &xl )
+bool ExcelExchange::ParseAndCaptureRange( const wxString &range, wxString &val, wxExcelAutomation &xl )
 {
 	val.Empty();
 
