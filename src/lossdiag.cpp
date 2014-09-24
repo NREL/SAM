@@ -2,7 +2,10 @@
 #include <wx/numformatter.h>
 #include <wx/clipbrd.h>
 #include <wx/busyinfo.h>
+#include <wx/ffile.h>
+#include <wx/wfstream.h>
 
+#include <wex/pdf/pdfdoc.h>
 #include <wex/numeric.h>
 
 #include "invoke.h"
@@ -70,7 +73,7 @@ wxRealPoint LossDiagramObject::EstimateSize( double height_char ) const
 	return wxRealPoint( height_char*20 + textwidth, 
 		sec_height*m_list.size() // section heights
 		+ nbaselines*height_char // space btw sections
-		+ 4*height_char); //vertical border
+		+ height_char); //vertical border
 }
 
 void LossDiagramObject::SetCaseName( const wxString &c )
@@ -88,16 +91,15 @@ void LossDiagramObject::Render( wxPageOutputDevice &dv )
 	float tw, th;
 	int face = wxPageOutputDevice::SANSERIF;
 	int points = 10;
-	dv.Font( face, points, true, false );
+	dv.Font( face, points, false, false );
 	dv.Measure( "hy", &th, &th );
-
-
+	
 	if ( m_scaleToGeometry ) // not a true scaling, but squish down vertically to fit into available height
 	{
 		while( points > 5 && EstimateSize(th).y > height )
 		{
 			points--;
-			dv.Font( face, points, true, false );
+			dv.Font( face, points, false, false );
 			dv.Measure( "hy", &th, &th );
 		}
 	}
@@ -115,6 +117,7 @@ void LossDiagramObject::Render( wxPageOutputDevice &dv )
 	y += border;
 	width -= 2*border;
 	height -= 2*border;
+	
 
 	// find out longest text string
 	float twmax = 0;
@@ -191,7 +194,6 @@ void LossDiagramObject::Render( wxPageOutputDevice &dv )
 	// close up with bottom point
 	dv.Line( x, y, x+cursize/2, y+th );
 	dv.Line( x+cursize/2, y+th, x+cursize, y );
-	
 }
 
 bool LossDiagramObject::ReadData( wxInputStream &is )
@@ -286,7 +288,7 @@ LossDiagramCtrl::LossDiagramCtrl( wxWindow *parent )
 	wxSize mm = wxGetDisplaySizeMM();
 	wxSize sz = wxGetDisplaySize();
 
-	float ppix = sz.x / (mm.x/25.4) ;
+	float ppix = sz.x / (mm.x/25.4);
 	float ppiy = sz.y / (mm.y/25.4);
 
 	if ( ppix == ppiy ) m_ppi = ppix;
@@ -306,15 +308,8 @@ void LossDiagramCtrl::OnPaint( wxPaintEvent & )
 	pdc.Clear();
 
 	int width, height;
-	GetClientSize( &width, &height );
-	/*
-	float ppi = 72.0f;
-	wxSize sz = pdc.GetPPI();
-	if (sz.x != sz.y) ppi = (float) (sz.x>sz.y)?sz.x:sz.y;
-	else ppi = (float)sz.x;
-	*/
+	GetClientSize( &width, &height );	
 	m_lossDiagram.SetGeometry( 0, 0, width/m_ppi, height/m_ppi );
-
 	wxScreenOutputDevice scrn( this, pdc );
 	m_lossDiagram.Render( scrn );
 }
@@ -339,7 +334,8 @@ wxSize LossDiagramCtrl::DoGetBestSize() const
 	float tw, th;
 	dv.Measure( "hy", &tw, &th );
 	wxRealPoint pt = m_lossDiagram.EstimateSize( th );
-	return wxSize( (int)pt.x*m_ppi, (int)pt.y*m_ppi );
+	//wxLogStatus("DoGetBestSize:  th=%f inches estsize(inches)=(%lg,%lg)  m_ppi=%f", th, pt.x, pt.y, m_ppi);
+	return wxSize( (int)(pt.x*m_ppi), (int)(pt.y*m_ppi) );
 }
 
 
@@ -380,7 +376,7 @@ void loss_diagram_test()
 	LossDiagramCtrl *ldc = new LossDiagramCtrl( frame );
 
 	LossDiagramObject &ld = ldc->GetDiagram();
-	ld.Configure( false, true );
+	ld.Configure( false, false );
 
 	ld.NewBaseline( 52595, "Nominal POA" );
 	
@@ -400,12 +396,30 @@ void loss_diagram_test()
 	ld.AddLossTerm( 1.7, "Wiring" );
 	ld.AddLossTerm( -4.2, "Performance adjustment" );
 	ld.NewBaseline( 6777, "Energy to grid" );
+
 	
+	wxPdfDocument pdf( wxPORTRAIT, wxT("in"), wxPAPER_LETTER );	
+	pdf.AddPage( wxPORTRAIT, wxPAPER_LETTER );
+	wxPdfOutputDevice dv( pdf );
+	ld.SetGeometry( 0.5, 0.5, 7.5, 10 );
+	ld.Render( dv );	
 
+	wxString pdf_file( "C:/Users/adobos/desktop/loss_diagram.pdf" );
+	const wxMemoryOutputStream &data = pdf.CloseAndGetBuffer();
+	wxFileOutputStream fp( pdf_file );
+	if (fp.IsOk()) 
+	{	
+		wxMemoryInputStream tmpis( data );
+		fp.Write( tmpis );
+		if ( fp.Close() )
+			wxLaunchDefaultBrowser( pdf_file );
+	}
+	else
+		wxMessageBox("Failed to write PDF output version.");
+	
+	
 	wxBoxSizer *sizer = new wxBoxSizer( wxVERTICAL );
-	sizer->Add( ldc, 1, wxALL|wxEXPAND, 5 );
-	frame->SetSizer( sizer );
-	frame->Fit();
-
+	sizer->Add( ldc, 1, wxALL|wxEXPAND, 0 );
+	frame->SetSizerAndFit( sizer );
 	frame->Show();
 }
