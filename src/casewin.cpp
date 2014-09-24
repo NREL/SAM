@@ -603,6 +603,7 @@ void CaseWindow::OnCaseEvent( Case *, CaseEvent &evt )
 									pds->ActivePage = new ActiveInputPage( m_inputPageScrollWin, pds->Form, this );
 									pds->ActivePage->Initialize();
 								}
+								pds->CollapseCheck->SetValue( true );
 							}
 							else
 							{
@@ -610,8 +611,9 @@ void CaseWindow::OnCaseEvent( Case *, CaseEvent &evt )
 									pds->ActivePage->Destroy();
 
 								pds->ActivePage = 0;
+								pds->CollapseCheck->SetValue( false );
 							}
-
+							
 							LayoutPage();
 							break;
 						}
