@@ -838,19 +838,33 @@ static void fcall_xl_free( lk::invoke_t &cxt )
 	LK_DOC("xl_free", "Frees up an Excel OLE automation object", "( xl-obj-ref:xl ):none" );
 	
 	if ( lkXLObject *xl = dynamic_cast<lkXLObject*>( cxt.env()->query_object( cxt.arg(0).as_integer() ) ) )
+	{
+		xl->Excel().QuitExcel();
 		cxt.env()->destroy_object( xl );
+	}
 }
 
 static void fcall_xl_open(lk::invoke_t &cxt)
 {
-	LK_DOC("xl_open", "Opens an Excel file on Windows platform.", "( xl-obj-ref:xl, string:file_name):none");
+	LK_DOC("xl_open", "Opens an Excel file for automation.", "( xl-obj-ref:xl, string:file_name, [boolean:show] ):none");
 
 	if ( lkXLObject *xl = dynamic_cast<lkXLObject*>( cxt.env()->query_object( cxt.arg(0).as_integer() ) ) )
 	{
 		xl->Excel().OpenFile( cxt.arg(1).as_string() );
-		xl->Excel().Show( true );
-		wxString file_name = cxt.arg(0).as_string();	
+		
+		bool show = true;
+		if ( cxt.arg_count() > 2 )
+			show = cxt.arg(2).as_boolean();
+		if ( show )
+			xl->Excel().Show( true );
 	}
+}
+
+static void fcall_xl_close( lk::invoke_t &cxt )
+{
+	LK_DOC("xl_close", "Close the current Excel files without saving changes.", "( xl-obj-ref:xl ):none" );
+	if ( lkXLObject *xl = dynamic_cast<lkXLObject*>( cxt.env()->query_object( cxt.arg(0).as_integer() ) ) )
+		cxt.result().assign( xl->Excel().CloseAllNoSave() ? 1.0 : 0.0 );
 }
 
 static void fcall_xl_autosizecols( lk::invoke_t &cxt )
@@ -908,7 +922,7 @@ static void fcall_xl_get( lk::invoke_t &cxt )
 	{	
 		wxString val;
 		if ( cxt.arg_count() == 2 )
-			xl->Excel().GetNamedRangeValue( cxt.arg(1).as_string(), val );
+			ExcelExchange::ParseAndCaptureRange( cxt.arg(1).as_string(), val, xl->Excel() );
 		else if ( cxt.arg_count() == 3 )
 			xl->Excel().GetCellValue( cxt.arg(1).as_integer(), cxt.arg(2).as_integer(), val );
 
@@ -1953,6 +1967,7 @@ lk::fcall_t* invoke_general_funcs()
 		fcall_xl_create,
 		fcall_xl_free,
 		fcall_xl_open,
+		fcall_xl_close,
 		fcall_xl_wkbook,
 		fcall_xl_sheet,
 		fcall_xl_set,

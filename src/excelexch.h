@@ -6,6 +6,8 @@
 #include <wx/string.h>
 #include <wx/stream.h>
 
+#include <wex/ole/excelauto.h>
+
 class Simulation;
 class CaseWindow;
 
@@ -41,6 +43,10 @@ public:
 
 	static bool ShowExcelExchangeDialog( ExcelExchange &exch, CaseWindow *cw );
 	static int RunExcelExchange( ExcelExchange &exch, VarTable &inputs, Simulation *sim );
+	
+#ifdef __WXMSW__
+	static bool ParseAndCaptureRange( const wxString &range, wxString &val, wxExcelAutomation &xl );
+#endif
 };
 
 
