@@ -786,7 +786,9 @@ ArrayPopupDialog::ArrayPopupDialog(wxWindow *parent, const wxString &title, cons
 	wxBoxSizer *cf_tools = new wxBoxSizer(wxHORIZONTAL);
 	cf_tools->Add(new wxButton(this, ID_APD_CLIPBOARD, "Copy to clipboard"), 0, wxALL, 2);
 	cf_tools->Add(new wxButton(this, ID_APD_CSV, "Save as CSV"), 0, wxALL, 2);
+#ifdef __WXMSW__
 	cf_tools->Add(new wxButton(this, ID_APD_EXCEL, "Send to Excel"), 0, wxALL, 2);
+#endif
 	cf_tools->AddStretchSpacer();
 
 	sizer->Add(cf_tools);
@@ -922,7 +924,9 @@ ArrayPopupDialog::ArrayPopupDialog(wxWindow *parent, const wxString &title, cons
 	wxBoxSizer *cf_tools = new wxBoxSizer(wxHORIZONTAL);
 	cf_tools->Add(new wxButton(this, ID_APD_CLIPBOARD, "Copy to clipboard"), 0, wxALL, 2);
 	cf_tools->Add(new wxButton(this, ID_APD_CSV, "Save as CSV"), 0, wxALL, 2);
+#ifdef __WXMSW__
 	cf_tools->Add(new wxButton(this, ID_APD_EXCEL, "Send to Excel"), 0, wxALL, 2);
+#endif
 	cf_tools->AddStretchSpacer();
 
 	sizer->Add(cf_tools);
