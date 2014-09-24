@@ -70,7 +70,7 @@ wxRealPoint LossDiagramObject::EstimateSize( double height_char ) const
 	return wxRealPoint( height_char*20 + textwidth, 
 		sec_height*m_list.size() // section heights
 		+ nbaselines*height_char // space btw sections
-		+ height_char); //vertical border
+		+ 4*height_char); //vertical border
 }
 
 void LossDiagramObject::SetCaseName( const wxString &c )
