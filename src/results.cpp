@@ -249,8 +249,10 @@ ResultsViewer::ResultsViewer( wxWindow *parent, int id )
 	wxBoxSizer *cf_tools = new wxBoxSizer(wxHORIZONTAL);
 	cf_tools->Add(new wxButton(m_cf_top_panel, ID_CF_COPY, "Copy to clipboard"), 0, wxALL, 2);
 	cf_tools->Add(new wxButton(m_cf_top_panel, ID_CF_SAVECSV, "Save as CSV"), 0, wxALL, 2);
+#ifdef __WXMSW__
 	cf_tools->Add(new wxButton(m_cf_top_panel, ID_CF_SENDEXCEL, "Send to Excel"), 0, wxALL, 2);
 	cf_tools->Add(new wxButton(m_cf_top_panel, ID_CF_SENDEQNEXCEL, "Send to Excel with Equations"), 0, wxALL, 2);
+#endif
 	wxBoxSizer *cf_top_sizer = new wxBoxSizer( wxVERTICAL );
 	cf_top_sizer->Add(cf_tools, 0, wxALL | wxEXPAND, 2);
 	cf_top_sizer->Add(m_cashFlowTable, 1, wxALL | wxEXPAND, 0);
