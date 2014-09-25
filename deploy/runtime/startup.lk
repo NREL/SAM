@@ -14,6 +14,7 @@ addconfig( 'Empirical Trough', ['Commercial','Single Owner', 'Leveraged Partners
 addconfig( 'Physical Trough', ['Commercial','Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'None']);
 addconfig( 'Dish Stirling', ['Commercial','Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'None']);
 addconfig( 'Generic CSP System', ['Commercial','Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'None']);
+addconfig( 'Linear Fresnel Steam', ['Commercial','Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'None']);
 
 
 configopt( 'Flat Plate PV',               { 'long_name'='Photovoltaic - Detailed',                'short_name'='Photovoltaic',     'description'='Photovoltaic system using detailed photovoltaic model with separate module and inverter component models' } );
@@ -1064,8 +1065,68 @@ function setup_MSPT_pages()
 	addpage( [[ 'Molten Salt Tower Parasitics' ]], { 'sidebar'='Parasitics' } );
 }
 
+// Linear Fresnel ////////////////////////////////////////////////////////////////////
+function setup_linear_fresnel_pages()
+{
+	addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource' } );
+	addpage( [[ 'Linear Fresnel Solar Field' ]], { 'sidebar'='Solar Field' } );
+
+	addpage( [[ 'Linear Fresnel Collector and Receiver Header',
+	 {'name'='Linear Fresnel Boiler Geometry', 'caption'='Boiler Geometry', 'collapsible'=true, 'collapsible_var'='boiler_is_shown'},
+	 {'name'='Linear Fresnel Superheater Geometry', 'caption'='Superheater Geometry', 'collapsible'=true, 'collapsible_var'='superheater_is_shown'} ]],
+	 { 'sidebar'='Collector and Receiver' } );
+
+	//addpage( [[ 'Linear Fresnel Boiler Geometry' ]], { 'sidebar'='Collector and Receiver 1' } );
+	//addpage( [[ 'Linear Fresnel Superheater Geometry' ]], { 'sidebar'='Collector and Receiver 2' } );
+	addpage( [[ 'PBNS Power Block' ]], { 'sidebar'='Power Cycle' } );
+	addpage( [[ 'Linear Fresnel Parasitics' ]], { 'sidebar'='Parasitics' } );
+}
 
 //-----------------------------------------------------
+setconfig( 'Linear Fresnel Steam', 'Commercial' );	
+setmodules( ['tcslinear_fresnel',  'utilityrate2', 'cashloan']);
+setting( { 'analysis_period_var'='cf_length' } );
+setup_linear_fresnel_pages();
+addpage( [[ 'Linear Fresnel Capital Costs','O and M Costs']], { 'sidebar'='System Costs' } );
+setup_commercial_pages();
+
+//-----------------------------------------------------
+//-----------------------------------------------------
+setconfig( 'Linear Fresnel Steam', 'Leveraged Partnership Flip' );
+setmodules( ['tcslinear_fresnel', 'levpartflip']);
+setting( { 'analysis_period_var'='cf_length' } );
+setup_linear_fresnel_pages();
+addpage( [[ 'Linear Fresnel Capital Costs','O and M Costs']], { 'sidebar'='System Costs' } );
+setup_leveraged_partnership_flip_pages();
+
+//-----------------------------------------------------
+setconfig( 'Linear Fresnel Steam', 'All Equity Partnership Flip' );
+setmodules( ['tcslinear_fresnel', 'equpartflip']);
+setting( { 'analysis_period_var'='cf_length' } );
+setup_linear_fresnel_pages();
+addpage( [[ 'Linear Fresnel Capital Costs','O and M Costs']], { 'sidebar'='System Costs' } );
+setup_all_equity_partnership_flip_pages();
+
+//-----------------------------------------------------
+setconfig( 'Linear Fresnel Steam', 'Sale Leaseback' );
+setmodules( ['tcslinear_fresnel', 'saleleaseback']);
+setting( { 'analysis_period_var'='cf_length' } );
+setup_linear_fresnel_pages();
+addpage( [[ 'Linear Fresnel Capital Costs','O and M Costs']], { 'sidebar'='System Costs' } );
+setup_sale_leaseback_pages();
+
+//-----------------------------------------------------
+setconfig( 'Linear Fresnel Steam', 'Single Owner' );
+setmodules( ['tcslinear_fresnel', 'singleowner']);
+setting( { 'analysis_period_var'='cf_length' } );
+setup_linear_fresnel_pages();
+addpage( [[ 'Linear Fresnel Capital Costs','O and M Costs']], { 'sidebar'='System Costs' } );
+setup_single_owner_pages();
+
+//-----------------------------------------------------
+setconfig( 'Linear Fresnel Steam', 'None' );
+setmodules( ['tcslinear_fresnel']);
+setup_linear_fresnel_pages();
 setconfig( 'MSPT', 'Leveraged Partnership Flip' );
 setmodules( ['tcsmolten_salt', 'levpartflip']);
 setting( { 'analysis_period_var'='cf_length' } );
