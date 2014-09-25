@@ -978,18 +978,172 @@ function send_excel_depr( xl, variable )
 	xl_set( xl, depr, variable );
 }
 
-function cashflow_to_excel_incentives(xl)
+function send_excel_fuel(xl)
 {
-	// incentives section 
-	xl_set( xl, (${cbi_fed_deprbas_fed}?'x':''), 'inFedCBIITCBasisFed');
-	xl_set( xl, (${cbi_fed_deprbas_sta}?'x':''), 'inFedCBIITCBasisState');
-	xl_set( xl, (${cbi_sta_deprbas_fed}?'x':''), 'inStateCBIITCBasisFed');
-	xl_set( xl, (${cbi_sta_deprbas_sta}?'x':''), 'inStateCBIITCBasisState');
-	xl_set( xl, (${cbi_uti_deprbas_fed}?'x':''), 'inUtilityCBIITCBasisFed');
-	xl_set( xl, (${cbi_uti_deprbas_sta}?'x':''), 'inUtilityCBIITCBasisState');
-	xl_set( xl, (${cbi_oth_deprbas_fed}?'x':''), 'inOtherCBIITCBasisFed');
-	xl_set( xl, (${cbi_oth_deprbas_sta}?'x':''), 'inOtherCBIITCBasisState');
+	if ( value('system_heat_rate') != null ) send_excel( xl, 'system_heat_rate' );
+	if ( value('annual_fuel_usage') != null )
+	{
+		send_excel( xl, 'annual_fuel_usage' );
+		send_excel( xl, 'om_fuel_cost' );
+		send_excel( xl, 'om_fuel_cost_escal' );
+	} 
+	if ( value('om_opt_fuel_1_usage') != null )
+	{
+		send_excel( xl, 'om_opt_fuel_1_usage' );
+		send_excel( xl, 'om_opt_fuel_1_cost' );
+		send_excel( xl, 'om_opt_fuel_1_cost_escal' );
+	} 
+	if ( value('om_opt_fuel_2_usage') != null )
+	{
+		send_excel( xl, 'om_opt_fuel_2_usage' );
+		send_excel( xl, 'om_opt_fuel_2_cost' );
+		send_excel( xl, 'om_opt_fuel_2_cost_escal' );
+	} 
+}
+
+function send_excel_incentives(xl)
+{
+	send_excel(       xl, 'ibi_fed_amount');
+	send_excel_yesno( xl, 'ibi_fed_amount_deprbas_fed');
+	send_excel_yesno( xl, 'ibi_fed_amount_deprbas_sta');
+	send_excel_yesno( xl, 'ibi_fed_amount_tax_fed');
+	send_excel_yesno( xl, 'ibi_fed_amount_tax_sta');
+	send_excel(       xl, 'ibi_fed_percent');
+	send_excel_yesno( xl, 'ibi_fed_percent_deprbas_fed');
+	send_excel_yesno( xl, 'ibi_fed_percent_deprbas_sta');
+	send_excel(       xl, 'ibi_fed_percent_maxvalue');
+	send_excel_yesno( xl, 'ibi_fed_percent_tax_fed');
+	send_excel_yesno( xl, 'ibi_fed_percent_tax_sta');
+	send_excel(       xl, 'ibi_sta_amount');
+	send_excel_yesno( xl, 'ibi_sta_amount_deprbas_fed');
+	send_excel_yesno( xl, 'ibi_sta_amount_deprbas_sta');
+	send_excel_yesno( xl, 'ibi_sta_amount_tax_fed');
+	send_excel_yesno( xl, 'ibi_sta_amount_tax_sta');
+	send_excel(       xl, 'ibi_sta_percent');
+	send_excel_yesno( xl, 'ibi_sta_percent_deprbas_fed');
+	send_excel_yesno( xl, 'ibi_sta_percent_deprbas_sta');
+	send_excel(       xl, 'ibi_sta_percent_maxvalue');
+	send_excel_yesno( xl, 'ibi_sta_percent_tax_fed');
+	send_excel_yesno( xl, 'ibi_sta_percent_tax_sta');
+	send_excel(       xl, 'ibi_uti_amount');
+	send_excel_yesno( xl, 'ibi_uti_amount_deprbas_fed');
+	send_excel_yesno( xl, 'ibi_uti_amount_deprbas_sta');
+	send_excel_yesno( xl, 'ibi_uti_amount_tax_fed');
+	send_excel_yesno( xl, 'ibi_uti_amount_tax_sta');
+	send_excel(       xl, 'ibi_uti_percent');
+	send_excel_yesno( xl, 'ibi_uti_percent_deprbas_fed');
+	send_excel_yesno( xl, 'ibi_uti_percent_deprbas_sta');
+	send_excel(       xl, 'ibi_uti_percent_maxvalue');
+	send_excel_yesno( xl, 'ibi_uti_percent_tax_fed');
+	send_excel_yesno( xl, 'ibi_uti_percent_tax_sta');
+	send_excel(       xl, 'ibi_oth_amount');
+	send_excel_yesno( xl, 'ibi_oth_amount_deprbas_fed');
+	send_excel_yesno( xl, 'ibi_oth_amount_deprbas_sta');
+	send_excel_yesno( xl, 'ibi_oth_amount_tax_fed');
+	send_excel_yesno( xl, 'ibi_oth_amount_tax_sta');
+	send_excel(       xl, 'ibi_oth_percent');
+	send_excel_yesno( xl, 'ibi_oth_percent_deprbas_fed');
+	send_excel_yesno( xl, 'ibi_oth_percent_deprbas_sta');
+	send_excel(       xl, 'ibi_oth_percent_maxvalue');
+	send_excel_yesno( xl, 'ibi_oth_percent_tax_fed');
+	send_excel_yesno( xl, 'ibi_oth_percent_tax_sta');
+	send_excel(       xl, 'cbi_fed_amount');
+	send_excel_yesno( xl, 'cbi_fed_deprbas_fed');
+	send_excel_yesno( xl, 'cbi_fed_deprbas_sta');
+	send_excel(       xl, 'cbi_fed_maxvalue');
+	send_excel_yesno( xl, 'cbi_fed_tax_fed');
+	send_excel_yesno( xl, 'cbi_fed_tax_sta');
+	send_excel(       xl, 'cbi_sta_amount');
+	send_excel_yesno( xl, 'cbi_sta_deprbas_fed');
+	send_excel_yesno( xl, 'cbi_sta_deprbas_sta');
+	send_excel(       xl, 'cbi_sta_maxvalue');
+	send_excel_yesno( xl, 'cbi_sta_tax_fed');
+	send_excel_yesno( xl, 'cbi_sta_tax_sta');
+	send_excel(       xl, 'cbi_uti_amount');
+	send_excel_yesno( xl, 'cbi_uti_deprbas_fed');
+	send_excel_yesno( xl, 'cbi_uti_deprbas_sta');
+	send_excel(       xl, 'cbi_uti_maxvalue');
+	send_excel_yesno( xl, 'cbi_uti_tax_fed');
+	send_excel_yesno( xl, 'cbi_uti_tax_sta');
+	send_excel(       xl, 'cbi_oth_amount');
+	send_excel_yesno( xl, 'cbi_oth_deprbas_fed');
+	send_excel_yesno( xl, 'cbi_oth_deprbas_sta');
+	send_excel(       xl, 'cbi_oth_maxvalue');
+	send_excel_yesno( xl, 'cbi_oth_tax_fed');
+	send_excel_yesno( xl, 'cbi_oth_tax_sta');
+	send_excel(       xl, 'pbi_fed_amount');
+	send_excel(       xl, 'pbi_fed_escal');
+	send_excel_yesno( xl, 'pbi_fed_tax_fed');
+	send_excel_yesno( xl, 'pbi_fed_tax_sta');
+	send_excel(       xl, 'pbi_fed_term');
+	send_excel(       xl, 'pbi_sta_amount');
+	send_excel(       xl, 'pbi_sta_escal');
+	send_excel_yesno( xl, 'pbi_sta_tax_fed');
+	send_excel_yesno( xl, 'pbi_sta_tax_sta');
+	send_excel(       xl, 'pbi_sta_term');
+	send_excel(       xl, 'pbi_uti_amount');
+	send_excel(       xl, 'pbi_uti_escal');
+	send_excel_yesno( xl, 'pbi_uti_tax_fed');
+	send_excel_yesno( xl, 'pbi_uti_tax_sta');
+	send_excel(       xl, 'pbi_uti_term');
+	send_excel(       xl, 'pbi_oth_amount');
+	send_excel(       xl, 'pbi_oth_escal');
+	send_excel_yesno( xl, 'pbi_oth_tax_fed');
+	send_excel_yesno( xl, 'pbi_oth_tax_sta');
+	send_excel(       xl, 'pbi_oth_term');
+
+	send_excel(       xl, 'itc_fed_amount');
+	send_excel_yesno( xl, 'itc_fed_amount_deprbas_fed');
+	send_excel_yesno( xl, 'itc_fed_amount_deprbas_sta');
+	send_excel(       xl, 'itc_fed_percent');
+	send_excel_yesno( xl, 'itc_fed_percent_deprbas_fed');
+	send_excel_yesno( xl, 'itc_fed_percent_deprbas_sta');
+	send_excel(       xl, 'itc_fed_percent_maxvalue');
+	send_excel(       xl, 'itc_sta_amount');
+	send_excel_yesno( xl, 'itc_sta_amount_deprbas_fed');
+	send_excel_yesno( xl, 'itc_sta_amount_deprbas_sta');
+	send_excel(       xl, 'itc_sta_percent');
+	send_excel_yesno( xl, 'itc_sta_percent_deprbas_fed');
+	send_excel_yesno( xl, 'itc_sta_percent_deprbas_sta');
+	send_excel(       xl, 'itc_sta_percent_maxvalue');
+	send_excel(       xl, 'ptc_fed_amount');
+	send_excel(       xl, 'ptc_fed_term');
+	send_excel(       xl, 'ptc_fed_escal');
+	send_excel(       xl, 'ptc_sta_amount');
+	send_excel(       xl, 'ptc_sta_term');
+	send_excel(       xl, 'ptc_sta_escal');
 } 
+
+function cashflow_to_excel_rescom(xl)
+{
+	send_excel(       xl, 'system_capacity');
+	send_excel(       xl, 'total_installed_cost');
+	send_excel(       xl, 'om_fixed');
+	send_excel(       xl, 'om_fixed_escal');
+	send_excel(       xl, 'om_capacity');
+	send_excel(       xl, 'om_capacity_escal');
+	send_excel(       xl, 'om_production');
+	send_excel(       xl, 'om_production_escal');
+	send_excel(       xl, 'debt_fraction');
+	send_excel(       xl, 'loan_term');
+	send_excel(       xl, 'loan_rate');
+	send_excel(       xl, 'analysis_period');
+	send_excel(       xl, 'inflation_rate');
+	send_excel(       xl, 'real_discount_rate');
+	send_excel(       xl, 'federal_tax_rate');
+	send_excel(       xl, 'state_tax_rate');
+	send_excel(       xl, 'sales_tax_rate');
+	send_excel(       xl, 'insurance_rate');
+	send_excel(       xl, 'prop_tax_assessed_decline');
+	send_excel(       xl, 'prop_tax_cost_assessed_percent');
+	send_excel(       xl, 'property_tax_rate');
+	send_excel(       xl, 'salvage_percentage');
+	
+	send_excel_incentives(xl);
+
+    xl_set ( xl, output('cf_energy_net'), "C96");
+	xl_set ( xl, output('cf_energy_value'), "C97");
+}
 
 cashflow_to_excel{ 'Residential' } = define()
 {
@@ -999,16 +1153,15 @@ cashflow_to_excel{ 'Residential' } = define()
 
 	destination = copy_file( source, destination );
 	
-	xlsx = xl_create( destination );
+	xl = xl_create( destination );
 
 	//Variables specific to residential model
-	xl_set( xlsx, (${mortgage}?"No":"Yes"), 'UseTaxDeductibleInterest');
-	xl_set( xlsx, "N/A", 'StateDepreciation');
-	xl_set( xlsx, "N/A", 'FederalDepreciation');
+	xl_set( xl, (${mortgage}?"Yes":"No"), 'UseTaxDeductibleInterest');
+	xl_set( xl, "N/A", 'StateDepreciation');
+	xl_set( xl, "N/A", 'FederalDepreciation');
 			
-	send_excel(       xlsx, 'analysis_period');
-    xl_set( xlsx, output('cf_energy_net'), "C103");
-	xl_set( xlsx, output('cf_energy_value'), "C104");
+	cashflow_to_excel_rescom(xl);
+	send_excel_fuel(xl);
 
 };
 
@@ -1020,26 +1173,27 @@ cashflow_to_excel{ 'Commercial' } = define()
 
 	destination = copy_file( source, destination );
 
-	xlsx = xl_create( destination );
+	xl = xl_create( destination );
 	
 	//Variables specific to commercial model
-	xl_set( xlsx, "Yes", 'UseTaxDeductibleInterest');
+	xl_set( xl, "Yes", 'UseTaxDeductibleInterest');
 	s = value('depr_sta_type');
 	if (s == 0) state = "No Depreciation";
 	if (s == 1) state = "5-yr MACRS";
 	if (s == 2) state = "Straight Line" + value('depr_sta_sl_years') + " Years";
 	if (s == 3) state = "Custom (see cash flow)";
-	xl_set( xlsx, state, 'StateDepreciation'); //show depreciation type in inputs table for reference only
+	xl_set( xl, state, 'StateDepreciation'); //show depreciation type in inputs table for reference only
 	f = value('depr_fed_type'); //show depreciation percentages in cash flow for calculations
-	send_excel( xlsx, 'cf_sta_depr_sched');
+	send_excel( xl, 'cf_sta_depr_sched');
 	if (f == 0) fed = "No Depreciation";
 	if (f == 1) fed = "5-yr MACRS";
 	if (f == 2) fed = "Straight Line" + value('depr_sta_sl_years') + " Years";
 	if (f == 3) fed = "Custom (see cash flow)";
-	xl_set( xlsx, fed, 'FederalDepreciation');
-	send_excel( xlsx, 'cf_fed_depr_sched');
+	xl_set( xl, fed, 'FederalDepreciation');
+	send_excel( xl, 'cf_fed_depr_sched');
 
-	send_excel(       xlsx, 'analysis_period');
+	cashflow_to_excel_rescom(xl);
+
 };
 
 cashflow_to_excel{ 'Single Owner' } = define() 
@@ -1050,274 +1204,245 @@ cashflow_to_excel{ 'Single Owner' } = define()
 
 	destination = copy_file( source, destination );
 	
-	xlsm = xl_create( destination );
+	xl = xl_create( destination );
 
 	N = value('analysis_period');
 	if ( N>40 ) msgbox("The Excel workbook only shows cash flow values for a 40-year analysis period or less. Your analysis is for " + N + " years.");
 	
 	//export annual values to minimize rounding discrepancies between SAM and workbook
-	xl_set( xlsm, output('cf_energy_net'), "C136");
-	xl_set( xlsm, output('cf_ppa_price'), "C137");
+	xl_set( xl, output('cf_energy_net'), "C136");
+	xl_set( xl, output('cf_ppa_price'), "C137");
 	
 	//show construction financing cost calculation in spreadsheet
 	//(ssc only uses total cost as input, so these are UI inputs from input form)
-	send_excel( xlsm, 'const_per_percent1');
-	send_excel( xlsm, 'const_per_percent2');
-	send_excel( xlsm, 'const_per_percent3');
-	send_excel( xlsm, 'const_per_percent4');
-	send_excel( xlsm, 'const_per_percent5');
-	send_excel( xlsm, 'const_per_upfront_rate1');
-	send_excel( xlsm, 'const_per_upfront_rate2');
-	send_excel( xlsm, 'const_per_upfront_rate3');
-	send_excel( xlsm, 'const_per_upfront_rate4');
-	send_excel( xlsm, 'const_per_upfront_rate5');
-	send_excel( xlsm, 'const_per_months1');
-	send_excel( xlsm, 'const_per_months2');
-	send_excel( xlsm, 'const_per_months3');
-	send_excel( xlsm, 'const_per_months4');
-	send_excel( xlsm, 'const_per_months5');
-	send_excel( xlsm, 'const_per_interest_rate1');
-	send_excel( xlsm, 'const_per_interest_rate2');
-	send_excel( xlsm, 'const_per_interest_rate3');
-	send_excel( xlsm, 'const_per_interest_rate4');
-	send_excel( xlsm, 'const_per_interest_rate5');		
+	send_excel( xl, 'const_per_percent1');
+	send_excel( xl, 'const_per_percent2');
+	send_excel( xl, 'const_per_percent3');
+	send_excel( xl, 'const_per_percent4');
+	send_excel( xl, 'const_per_percent5');
+	send_excel( xl, 'const_per_upfront_rate1');
+	send_excel( xl, 'const_per_upfront_rate2');
+	send_excel( xl, 'const_per_upfront_rate3');
+	send_excel( xl, 'const_per_upfront_rate4');
+	send_excel( xl, 'const_per_upfront_rate5');
+	send_excel( xl, 'const_per_months1');
+	send_excel( xl, 'const_per_months2');
+	send_excel( xl, 'const_per_months3');
+	send_excel( xl, 'const_per_months4');
+	send_excel( xl, 'const_per_months5');
+	send_excel( xl, 'const_per_interest_rate1');
+	send_excel( xl, 'const_per_interest_rate2');
+	send_excel( xl, 'const_per_interest_rate3');
+	send_excel( xl, 'const_per_interest_rate4');
+	send_excel( xl, 'const_per_interest_rate5');		
 
-	send_excel(       xlsm, 'analysis_period');
-	send_excel(       xlsm, 'cbi_fed_amount');
-	send_excel_yesno( xlsm, 'cbi_fed_deprbas_fed');
-	send_excel_yesno( xlsm, 'cbi_fed_deprbas_sta');
-	send_excel(       xlsm, 'cbi_fed_maxvalue');
-	send_excel_yesno( xlsm, 'cbi_fed_tax_fed');
-	send_excel_yesno( xlsm, 'cbi_fed_tax_sta');
-	send_excel(       xlsm, 'cbi_oth_amount');
-	send_excel_yesno( xlsm, 'cbi_oth_deprbas_fed');
-	send_excel_yesno( xlsm, 'cbi_oth_deprbas_sta');
-	send_excel(       xlsm, 'cbi_oth_maxvalue');
-	send_excel_yesno( xlsm, 'cbi_oth_tax_fed');
-	send_excel_yesno( xlsm, 'cbi_oth_tax_sta');
-	send_excel(       xlsm, 'cbi_sta_amount');
-	send_excel_yesno( xlsm, 'cbi_sta_deprbas_fed');
-	send_excel_yesno( xlsm, 'cbi_sta_deprbas_sta');
-	send_excel(       xlsm, 'cbi_sta_maxvalue');
-	send_excel_yesno( xlsm, 'cbi_sta_tax_fed');
-	send_excel_yesno( xlsm, 'cbi_sta_tax_sta');
-	send_excel(       xlsm, 'cbi_uti_amount');
-	send_excel_yesno( xlsm, 'cbi_uti_deprbas_fed');
-	send_excel_yesno( xlsm, 'cbi_uti_deprbas_sta');
-	send_excel(       xlsm, 'cbi_uti_maxvalue');
-	send_excel_yesno( xlsm, 'cbi_uti_tax_fed');
-	send_excel_yesno( xlsm, 'cbi_uti_tax_sta');
-	send_excel(       xlsm, 'construction_financing_cost');
-	send_excel(       xlsm, 'cost_debt_closing');
-	send_excel(       xlsm, 'cost_debt_fee');
-	send_excel(       xlsm, 'cost_other_financing');
-	send_excel(       xlsm, 'depr_alloc_macrs_15_percent');
-	send_excel(       xlsm, 'depr_alloc_macrs_5_percent');
-	send_excel(       xlsm, 'depr_alloc_sl_15_percent');
-	send_excel(       xlsm, 'depr_alloc_sl_20_percent');
-	send_excel(       xlsm, 'depr_alloc_sl_39_percent');
-	send_excel(       xlsm, 'depr_alloc_sl_5_percent');
-	send_excel(       xlsm, 'depr_bonus_fed');
-	send_excel_yesno( xlsm, 'depr_bonus_fed_macrs_15');
-	send_excel_yesno( xlsm, 'depr_bonus_fed_macrs_5');
-	send_excel_yesno( xlsm, 'depr_bonus_fed_sl_15');
-	send_excel_yesno( xlsm, 'depr_bonus_fed_sl_20');
-	send_excel_yesno( xlsm, 'depr_bonus_fed_sl_39');
-	send_excel_yesno( xlsm, 'depr_bonus_fed_sl_5');
-	send_excel(       xlsm, 'depr_bonus_sta');
-	send_excel_yesno( xlsm, 'depr_bonus_sta_macrs_15');
-	send_excel_yesno( xlsm, 'depr_bonus_sta_macrs_5');
-	send_excel_yesno( xlsm, 'depr_bonus_sta_sl_15');
-	send_excel_yesno( xlsm, 'depr_bonus_sta_sl_20');
-	send_excel_yesno( xlsm, 'depr_bonus_sta_sl_39');
-	send_excel_yesno( xlsm, 'depr_bonus_sta_sl_5');
-	send_excel_yesno( xlsm, 'depr_itc_fed_macrs_15');
-	send_excel_yesno( xlsm, 'depr_itc_fed_macrs_5');
-	send_excel_yesno( xlsm, 'depr_itc_fed_sl_15');
-	send_excel_yesno( xlsm, 'depr_itc_fed_sl_20');
-	send_excel_yesno( xlsm, 'depr_itc_fed_sl_39');
-	send_excel_yesno( xlsm, 'depr_itc_fed_sl_5');
-	send_excel_yesno( xlsm, 'depr_itc_sta_macrs_15');
-	send_excel_yesno( xlsm, 'depr_itc_sta_macrs_5');
-	send_excel_yesno( xlsm, 'depr_itc_sta_sl_15');
-	send_excel_yesno( xlsm, 'depr_itc_sta_sl_20');
-	send_excel_yesno( xlsm, 'depr_itc_sta_sl_39');
-	send_excel_yesno( xlsm, 'depr_itc_sta_sl_5');
-	send_excel(       xlsm, 'dscr'); //input
-	send_excel(       xlsm, 'dscr_reserve_months');
-	send_excel_depr(  xlsm, 'equip_reserve_depr_fed');
-	send_excel_depr(  xlsm, 'equip_reserve_depr_sta');
-	send_excel(       xlsm, 'equip1_reserve_cost');
-	send_excel(       xlsm, 'equip1_reserve_freq');
-	send_excel(       xlsm, 'equip2_reserve_cost');
-	send_excel(       xlsm, 'equip2_reserve_freq');
-	send_excel(       xlsm, 'equip3_reserve_cost');
-	send_excel(       xlsm, 'equip3_reserve_freq');
-	send_excel(       xlsm, 'federal_tax_rate');
-	send_excel(       xlsm, 'flip_target_percent');
-	send_excel(       xlsm, 'flip_target_year');
-	send_excel(       xlsm, 'ibi_fed_amount');
-	send_excel_yesno( xlsm, 'ibi_fed_amount_deprbas_fed');
-	send_excel_yesno( xlsm, 'ibi_fed_amount_deprbas_sta');
-	send_excel_yesno( xlsm, 'ibi_fed_amount_tax_fed');
-	send_excel_yesno( xlsm, 'ibi_fed_amount_tax_sta');
-	send_excel(       xlsm, 'ibi_fed_percent');
-	send_excel_yesno( xlsm, 'ibi_fed_percent_deprbas_fed');
-	send_excel_yesno( xlsm, 'ibi_fed_percent_deprbas_sta');
-	send_excel(       xlsm, 'ibi_fed_percent_maxvalue');
-	send_excel_yesno( xlsm, 'ibi_fed_percent_tax_fed');
-	send_excel_yesno( xlsm, 'ibi_fed_percent_tax_sta');
-	send_excel(       xlsm, 'ibi_oth_amount');
-	send_excel_yesno( xlsm, 'ibi_oth_amount_deprbas_fed');
-	send_excel_yesno( xlsm, 'ibi_oth_amount_deprbas_sta');
-	send_excel_yesno( xlsm, 'ibi_oth_amount_tax_fed');
-	send_excel_yesno( xlsm, 'ibi_oth_amount_tax_sta');
-	send_excel(       xlsm, 'ibi_oth_percent');
-	send_excel_yesno( xlsm, 'ibi_oth_percent_deprbas_fed');
-	send_excel_yesno( xlsm, 'ibi_oth_percent_deprbas_sta');
-	send_excel(       xlsm, 'ibi_oth_percent_maxvalue');
-	send_excel_yesno( xlsm, 'ibi_oth_percent_tax_fed');
-	send_excel_yesno( xlsm, 'ibi_oth_percent_tax_sta');
-	send_excel(       xlsm, 'ibi_sta_amount');
-	send_excel_yesno( xlsm, 'ibi_sta_amount_deprbas_fed');
-	send_excel_yesno( xlsm, 'ibi_sta_amount_deprbas_sta');
-	send_excel_yesno( xlsm, 'ibi_sta_amount_tax_fed');
-	send_excel_yesno( xlsm, 'ibi_sta_amount_tax_sta');
-	send_excel(       xlsm, 'ibi_sta_percent');
-	send_excel_yesno( xlsm, 'ibi_sta_percent_deprbas_fed');
-	send_excel_yesno( xlsm, 'ibi_sta_percent_deprbas_sta');
-	send_excel(       xlsm, 'ibi_sta_percent_maxvalue');
-	send_excel_yesno( xlsm, 'ibi_sta_percent_tax_fed');
-	send_excel_yesno( xlsm, 'ibi_sta_percent_tax_sta');
-	send_excel(       xlsm, 'ibi_uti_amount');
-	send_excel_yesno( xlsm, 'ibi_uti_amount_deprbas_fed');
-	send_excel_yesno( xlsm, 'ibi_uti_amount_deprbas_sta');
-	send_excel_yesno( xlsm, 'ibi_uti_amount_tax_fed');
-	send_excel_yesno( xlsm, 'ibi_uti_amount_tax_sta');
-	send_excel(       xlsm, 'ibi_uti_percent');
-	send_excel_yesno( xlsm, 'ibi_uti_percent_deprbas_fed');
-	send_excel_yesno( xlsm, 'ibi_uti_percent_deprbas_sta');
-	send_excel(       xlsm, 'ibi_uti_percent_maxvalue');
-	send_excel_yesno( xlsm, 'ibi_uti_percent_tax_fed');
-	send_excel_yesno( xlsm, 'ibi_uti_percent_tax_sta');
-	send_excel(       xlsm, 'inflation_rate');
-	send_excel(       xlsm, 'insurance_rate');
-	send_excel(       xlsm, 'itc_fed_amount');
-	send_excel_yesno( xlsm, 'itc_fed_amount_deprbas_fed');
-	send_excel_yesno( xlsm, 'itc_fed_amount_deprbas_sta');
-	send_excel(       xlsm, 'itc_fed_percent');
-	send_excel_yesno( xlsm, 'itc_fed_percent_deprbas_fed');
-	send_excel_yesno( xlsm, 'itc_fed_percent_deprbas_sta');
-	send_excel(       xlsm, 'itc_fed_percent_maxvalue');
-	send_excel(       xlsm, 'itc_sta_amount');
-	send_excel_yesno( xlsm, 'itc_sta_amount_deprbas_fed');
-	send_excel_yesno( xlsm, 'itc_sta_amount_deprbas_sta');
-	send_excel(       xlsm, 'itc_sta_percent');
-	send_excel_yesno( xlsm, 'itc_sta_percent_deprbas_fed');
-	send_excel_yesno( xlsm, 'itc_sta_percent_deprbas_sta');
-	send_excel(       xlsm, 'itc_sta_percent_maxvalue');
-	send_excel(       xlsm, 'months_working_reserve');
-	send_excel(       xlsm, 'om_capacity');
-	send_excel(       xlsm, 'om_capacity_escal');
-	send_excel(       xlsm, 'om_fixed');
-	send_excel(       xlsm, 'om_fixed_escal');
-	send_excel(       xlsm, 'om_fuel_cost');
-	send_excel(       xlsm, 'om_fuel_cost_escal');
-	send_excel(       xlsm, 'om_production');
-	send_excel(       xlsm, 'om_production_escal');
-	send_excel(       xlsm, 'pbi_fed_amount');
-	send_excel(       xlsm, 'pbi_fed_escal');
-	send_excel_yesno( xlsm, 'pbi_fed_for_ds');
-	send_excel_yesno( xlsm, 'pbi_fed_tax_fed');
-	send_excel_yesno( xlsm, 'pbi_fed_tax_sta');
-	send_excel(       xlsm, 'pbi_fed_term');
-	send_excel(       xlsm, 'pbi_oth_amount');
-	send_excel(       xlsm, 'pbi_oth_escal');
-	send_excel_yesno( xlsm, 'pbi_oth_for_ds');
-	send_excel_yesno( xlsm, 'pbi_oth_tax_fed');
-	send_excel_yesno( xlsm, 'pbi_oth_tax_sta');
-	send_excel(       xlsm, 'pbi_oth_term');
-	send_excel(       xlsm, 'pbi_sta_amount');
-	send_excel(       xlsm, 'pbi_sta_escal');
-	send_excel_yesno( xlsm, 'pbi_sta_for_ds');
-	send_excel_yesno( xlsm, 'pbi_sta_tax_fed');
-	send_excel_yesno( xlsm, 'pbi_sta_tax_sta');
-	send_excel(       xlsm, 'pbi_sta_term');
-	send_excel(       xlsm, 'pbi_uti_amount');
-	send_excel(       xlsm, 'pbi_uti_escal');
-	send_excel_yesno( xlsm, 'pbi_uti_for_ds');
-	send_excel_yesno( xlsm, 'pbi_uti_tax_fed');
-	send_excel_yesno( xlsm, 'pbi_uti_tax_sta');
-	send_excel(       xlsm, 'pbi_uti_term');
-	send_excel(       xlsm, 'ppa_escalation');
-	send_excel(       xlsm, 'prop_tax_assessed_decline');
-	send_excel(       xlsm, 'prop_tax_cost_assessed_percent');
-	send_excel(       xlsm, 'property_tax_rate');
-	send_excel(       xlsm, 'ptc_fed_amount');
-	send_excel(       xlsm, 'ptc_fed_term');
-	send_excel(       xlsm, 'ptc_fed_escal');
-	send_excel(       xlsm, 'ptc_sta_amount');
-	send_excel(       xlsm, 'ptc_sta_term');
-	send_excel(       xlsm, 'ptc_sta_escal');
-	send_excel(       xlsm, 'real_discount_rate');
-	send_excel(       xlsm, 'reserves_interest');
-	send_excel(       xlsm, 'sales_tax_rate');
-	send_excel(       xlsm, 'salvage_percentage');
-	send_excel(       xlsm, 'state_tax_rate');
-	send_excel(       xlsm, 'system_capacity');
-	send_excel(       xlsm, 'system_heat_rate');
-	send_excel(       xlsm, 'term_int_rate');
-	send_excel(       xlsm, 'term_tenor');
-	send_excel(       xlsm, 'total_installed_cost');
+	send_excel(       xl, 'analysis_period');
+	send_excel(       xl, 'cbi_fed_amount');
+	send_excel_yesno( xl, 'cbi_fed_deprbas_fed');
+	send_excel_yesno( xl, 'cbi_fed_deprbas_sta');
+	send_excel(       xl, 'cbi_fed_maxvalue');
+	send_excel_yesno( xl, 'cbi_fed_tax_fed');
+	send_excel_yesno( xl, 'cbi_fed_tax_sta');
+	send_excel(       xl, 'cbi_oth_amount');
+	send_excel_yesno( xl, 'cbi_oth_deprbas_fed');
+	send_excel_yesno( xl, 'cbi_oth_deprbas_sta');
+	send_excel(       xl, 'cbi_oth_maxvalue');
+	send_excel_yesno( xl, 'cbi_oth_tax_fed');
+	send_excel_yesno( xl, 'cbi_oth_tax_sta');
+	send_excel(       xl, 'cbi_sta_amount');
+	send_excel_yesno( xl, 'cbi_sta_deprbas_fed');
+	send_excel_yesno( xl, 'cbi_sta_deprbas_sta');
+	send_excel(       xl, 'cbi_sta_maxvalue');
+	send_excel_yesno( xl, 'cbi_sta_tax_fed');
+	send_excel_yesno( xl, 'cbi_sta_tax_sta');
+	send_excel(       xl, 'cbi_uti_amount');
+	send_excel_yesno( xl, 'cbi_uti_deprbas_fed');
+	send_excel_yesno( xl, 'cbi_uti_deprbas_sta');
+	send_excel(       xl, 'cbi_uti_maxvalue');
+	send_excel_yesno( xl, 'cbi_uti_tax_fed');
+	send_excel_yesno( xl, 'cbi_uti_tax_sta');
+	send_excel(       xl, 'construction_financing_cost');
+	send_excel(       xl, 'cost_debt_closing');
+	send_excel(       xl, 'cost_debt_fee');
+	send_excel(       xl, 'cost_other_financing');
+	send_excel(       xl, 'depr_alloc_macrs_15_percent');
+	send_excel(       xl, 'depr_alloc_macrs_5_percent');
+	send_excel(       xl, 'depr_alloc_sl_15_percent');
+	send_excel(       xl, 'depr_alloc_sl_20_percent');
+	send_excel(       xl, 'depr_alloc_sl_39_percent');
+	send_excel(       xl, 'depr_alloc_sl_5_percent');
+	send_excel(       xl, 'depr_bonus_fed');
+	send_excel_yesno( xl, 'depr_bonus_fed_macrs_15');
+	send_excel_yesno( xl, 'depr_bonus_fed_macrs_5');
+	send_excel_yesno( xl, 'depr_bonus_fed_sl_15');
+	send_excel_yesno( xl, 'depr_bonus_fed_sl_20');
+	send_excel_yesno( xl, 'depr_bonus_fed_sl_39');
+	send_excel_yesno( xl, 'depr_bonus_fed_sl_5');
+	send_excel(       xl, 'depr_bonus_sta');
+	send_excel_yesno( xl, 'depr_bonus_sta_macrs_15');
+	send_excel_yesno( xl, 'depr_bonus_sta_macrs_5');
+	send_excel_yesno( xl, 'depr_bonus_sta_sl_15');
+	send_excel_yesno( xl, 'depr_bonus_sta_sl_20');
+	send_excel_yesno( xl, 'depr_bonus_sta_sl_39');
+	send_excel_yesno( xl, 'depr_bonus_sta_sl_5');
+	send_excel_yesno( xl, 'depr_itc_fed_macrs_15');
+	send_excel_yesno( xl, 'depr_itc_fed_macrs_5');
+	send_excel_yesno( xl, 'depr_itc_fed_sl_15');
+	send_excel_yesno( xl, 'depr_itc_fed_sl_20');
+	send_excel_yesno( xl, 'depr_itc_fed_sl_39');
+	send_excel_yesno( xl, 'depr_itc_fed_sl_5');
+	send_excel_yesno( xl, 'depr_itc_sta_macrs_15');
+	send_excel_yesno( xl, 'depr_itc_sta_macrs_5');
+	send_excel_yesno( xl, 'depr_itc_sta_sl_15');
+	send_excel_yesno( xl, 'depr_itc_sta_sl_20');
+	send_excel_yesno( xl, 'depr_itc_sta_sl_39');
+	send_excel_yesno( xl, 'depr_itc_sta_sl_5');
+	send_excel(       xl, 'dscr'); //input
+	send_excel(       xl, 'dscr_reserve_months');
+	send_excel_depr(  xl, 'equip_reserve_depr_fed');
+	send_excel_depr(  xl, 'equip_reserve_depr_sta');
+	send_excel(       xl, 'equip1_reserve_cost');
+	send_excel(       xl, 'equip1_reserve_freq');
+	send_excel(       xl, 'equip2_reserve_cost');
+	send_excel(       xl, 'equip2_reserve_freq');
+	send_excel(       xl, 'equip3_reserve_cost');
+	send_excel(       xl, 'equip3_reserve_freq');
+	send_excel(       xl, 'federal_tax_rate');
+	send_excel(       xl, 'flip_target_percent');
+	send_excel(       xl, 'flip_target_year');
+	send_excel(       xl, 'ibi_fed_amount');
+	send_excel_yesno( xl, 'ibi_fed_amount_deprbas_fed');
+	send_excel_yesno( xl, 'ibi_fed_amount_deprbas_sta');
+	send_excel_yesno( xl, 'ibi_fed_amount_tax_fed');
+	send_excel_yesno( xl, 'ibi_fed_amount_tax_sta');
+	send_excel(       xl, 'ibi_fed_percent');
+	send_excel_yesno( xl, 'ibi_fed_percent_deprbas_fed');
+	send_excel_yesno( xl, 'ibi_fed_percent_deprbas_sta');
+	send_excel(       xl, 'ibi_fed_percent_maxvalue');
+	send_excel_yesno( xl, 'ibi_fed_percent_tax_fed');
+	send_excel_yesno( xl, 'ibi_fed_percent_tax_sta');
+	send_excel(       xl, 'ibi_oth_amount');
+	send_excel_yesno( xl, 'ibi_oth_amount_deprbas_fed');
+	send_excel_yesno( xl, 'ibi_oth_amount_deprbas_sta');
+	send_excel_yesno( xl, 'ibi_oth_amount_tax_fed');
+	send_excel_yesno( xl, 'ibi_oth_amount_tax_sta');
+	send_excel(       xl, 'ibi_oth_percent');
+	send_excel_yesno( xl, 'ibi_oth_percent_deprbas_fed');
+	send_excel_yesno( xl, 'ibi_oth_percent_deprbas_sta');
+	send_excel(       xl, 'ibi_oth_percent_maxvalue');
+	send_excel_yesno( xl, 'ibi_oth_percent_tax_fed');
+	send_excel_yesno( xl, 'ibi_oth_percent_tax_sta');
+	send_excel(       xl, 'ibi_sta_amount');
+	send_excel_yesno( xl, 'ibi_sta_amount_deprbas_fed');
+	send_excel_yesno( xl, 'ibi_sta_amount_deprbas_sta');
+	send_excel_yesno( xl, 'ibi_sta_amount_tax_fed');
+	send_excel_yesno( xl, 'ibi_sta_amount_tax_sta');
+	send_excel(       xl, 'ibi_sta_percent');
+	send_excel_yesno( xl, 'ibi_sta_percent_deprbas_fed');
+	send_excel_yesno( xl, 'ibi_sta_percent_deprbas_sta');
+	send_excel(       xl, 'ibi_sta_percent_maxvalue');
+	send_excel_yesno( xl, 'ibi_sta_percent_tax_fed');
+	send_excel_yesno( xl, 'ibi_sta_percent_tax_sta');
+	send_excel(       xl, 'ibi_uti_amount');
+	send_excel_yesno( xl, 'ibi_uti_amount_deprbas_fed');
+	send_excel_yesno( xl, 'ibi_uti_amount_deprbas_sta');
+	send_excel_yesno( xl, 'ibi_uti_amount_tax_fed');
+	send_excel_yesno( xl, 'ibi_uti_amount_tax_sta');
+	send_excel(       xl, 'ibi_uti_percent');
+	send_excel_yesno( xl, 'ibi_uti_percent_deprbas_fed');
+	send_excel_yesno( xl, 'ibi_uti_percent_deprbas_sta');
+	send_excel(       xl, 'ibi_uti_percent_maxvalue');
+	send_excel_yesno( xl, 'ibi_uti_percent_tax_fed');
+	send_excel_yesno( xl, 'ibi_uti_percent_tax_sta');
+	send_excel(       xl, 'inflation_rate');
+	send_excel(       xl, 'insurance_rate');
+	send_excel(       xl, 'itc_fed_amount');
+	send_excel_yesno( xl, 'itc_fed_amount_deprbas_fed');
+	send_excel_yesno( xl, 'itc_fed_amount_deprbas_sta');
+	send_excel(       xl, 'itc_fed_percent');
+	send_excel_yesno( xl, 'itc_fed_percent_deprbas_fed');
+	send_excel_yesno( xl, 'itc_fed_percent_deprbas_sta');
+	send_excel(       xl, 'itc_fed_percent_maxvalue');
+	send_excel(       xl, 'itc_sta_amount');
+	send_excel_yesno( xl, 'itc_sta_amount_deprbas_fed');
+	send_excel_yesno( xl, 'itc_sta_amount_deprbas_sta');
+	send_excel(       xl, 'itc_sta_percent');
+	send_excel_yesno( xl, 'itc_sta_percent_deprbas_fed');
+	send_excel_yesno( xl, 'itc_sta_percent_deprbas_sta');
+	send_excel(       xl, 'itc_sta_percent_maxvalue');
+	send_excel(       xl, 'months_working_reserve');
+	send_excel(       xl, 'om_capacity');
+	send_excel(       xl, 'om_capacity_escal');
+	send_excel(       xl, 'om_fixed');
+	send_excel(       xl, 'om_fixed_escal');
+	send_excel(       xl, 'om_fuel_cost');
+	send_excel(       xl, 'om_fuel_cost_escal');
+	send_excel(       xl, 'om_production');
+	send_excel(       xl, 'om_production_escal');
+	send_excel(       xl, 'pbi_fed_amount');
+	send_excel(       xl, 'pbi_fed_escal');
+	send_excel_yesno( xl, 'pbi_fed_for_ds');
+	send_excel_yesno( xl, 'pbi_fed_tax_fed');
+	send_excel_yesno( xl, 'pbi_fed_tax_sta');
+	send_excel(       xl, 'pbi_fed_term');
+	send_excel(       xl, 'pbi_oth_amount');
+	send_excel(       xl, 'pbi_oth_escal');
+	send_excel_yesno( xl, 'pbi_oth_for_ds');
+	send_excel_yesno( xl, 'pbi_oth_tax_fed');
+	send_excel_yesno( xl, 'pbi_oth_tax_sta');
+	send_excel(       xl, 'pbi_oth_term');
+	send_excel(       xl, 'pbi_sta_amount');
+	send_excel(       xl, 'pbi_sta_escal');
+	send_excel_yesno( xl, 'pbi_sta_for_ds');
+	send_excel_yesno( xl, 'pbi_sta_tax_fed');
+	send_excel_yesno( xl, 'pbi_sta_tax_sta');
+	send_excel(       xl, 'pbi_sta_term');
+	send_excel(       xl, 'pbi_uti_amount');
+	send_excel(       xl, 'pbi_uti_escal');
+	send_excel_yesno( xl, 'pbi_uti_for_ds');
+	send_excel_yesno( xl, 'pbi_uti_tax_fed');
+	send_excel_yesno( xl, 'pbi_uti_tax_sta');
+	send_excel(       xl, 'pbi_uti_term');
+	send_excel(       xl, 'ppa_escalation');
+	send_excel(       xl, 'prop_tax_assessed_decline');
+	send_excel(       xl, 'prop_tax_cost_assessed_percent');
+	send_excel(       xl, 'property_tax_rate');
+	send_excel(       xl, 'ptc_fed_amount');
+	send_excel(       xl, 'ptc_fed_term');
+	send_excel(       xl, 'ptc_fed_escal');
+	send_excel(       xl, 'ptc_sta_amount');
+	send_excel(       xl, 'ptc_sta_term');
+	send_excel(       xl, 'ptc_sta_escal');
+	send_excel(       xl, 'real_discount_rate');
+	send_excel(       xl, 'reserves_interest');
+	send_excel(       xl, 'sales_tax_rate');
+	send_excel(       xl, 'salvage_percentage');
+	send_excel(       xl, 'state_tax_rate');
+	send_excel(       xl, 'system_capacity');
+	send_excel(       xl, 'system_heat_rate');
+	send_excel(       xl, 'term_int_rate');
+	send_excel(       xl, 'term_tenor');
+	send_excel(       xl, 'total_installed_cost');
 	
-	xl_free( xlsm );
+	xl_free( xl );
 };
 
 cashflow_to_excel{ 'Leveraged Partnership Flip' } = define()
 {
-
 	msgbox("Send Cash Flow to Excel with Equations for the Leveraged Partnership Flip financial model is not available in the Beta version of SAM. It will be implemented in the final release.");
-
 };
 
 cashflow_to_excel{ 'All Equity Partnership Flip' } = define()
 {
-
 	msgbox("Send Cash Flow to Excel with Equations for the All Equity Partnership Flip financial model is not available in the Beta version of SAM. It will be implemented in the final release.");
-
 };
 
 cashflow_to_excel{ 'Sale Leaseback' } = define()
 {
-
 	msgbox("Send Cash Flow to Excel with Equations for the Sale Leaseback financial model is not available in the Beta version of SAM. It will be implemented in the final release.");
-
 };
 
 cashflow_to_excel{ 'Independent Power Producer' } = define() 
 {
-	source = runtimedir() + 'spreadsheets/utility_ipp.xls';
-	destination = userlocaldatadir() + "/"+ case_name() + '.xls';
-	
-	destination = copy_file( source, destination );
-	
-	xl = xl_create( destination );
-	xl_set( xl, ${analysis_period}, 'inAnalysisPeriod' );
-	// annual energy for degradation to be applied in spreadsheet
-	ae = alloc(${analysis_period});
-	for(i=0;i<#ae;i++)	{
-		ae[i] = output('annual_energy');	}
-	xl_set( xl, ae, 'inSystemOutput' );
-//	xl_set( xl, output('cf_energy_net'), 'inSystemOutput' );
-	xl_set( xl, output('cf_energy_value'), 'inEnergyValue' );
-	
-	// for single value or schedule items
-	degrad = ${degradation};
-//	xl_set( xl, degrad, 'inDegradation' );
-	xl_set( xl, ((#degrad == 1) ? degrad[0]/100 : 1), 'inDegradation' );
-	xl_set( xl, ((#degrad == 1) ? 0 : output('cf_degradation')), 'inDegradationSched' );
-	
-	cashflow_to_excel_incentives(xl);
-
-	xl_free( xl );
+	msgbox("Send Cash Flow to Excel with Equations for the Sale Leaseback financial model is not available in the Beta version of SAM. It will be implemented in the final release.");
 };
