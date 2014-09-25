@@ -97,6 +97,10 @@ void PopulateSelectionList( wxDVSelectionListCtrl *sel, wxArrayString *names, Si
 		if (list.Count() == 0)
 			continue;
 		
+		int steps_per_hour = varlengths[i]/8760;
+		if ( steps_per_hour*8760 != varlengths[i] )
+			steps_per_hour = -1;
+
 		wxString group;
 		if (varlengths[i] == 1)
 			group = "Single Values";
@@ -104,6 +108,8 @@ void PopulateSelectionList( wxDVSelectionListCtrl *sel, wxArrayString *names, Si
 			group = "Monthly Data";
 		else if (varlengths[i] == 8760)
 			group = "Hourly Data";
+		else if ( steps_per_hour >= 2 && steps_per_hour <= 60 )
+			group = wxString::Format("%d Minute Data",60/steps_per_hour);
 		else if (varlengths[i] == an_period)
 			group = "Annual Data";
 		else if (varlengths[i] == (an_period-1)*12)
@@ -266,8 +272,8 @@ ResultsViewer::ResultsViewer( wxWindow *parent, int id )
 	cf_main_sizer->SetSizeHints(cf_panel);
 
 
-	m_hourlySeries = new wxDVTimeSeriesCtrl( this, wxID_ANY,  wxDV_RAW, wxDV_AVERAGE );
-	AddPage( m_hourlySeries, "Hourly" );
+	m_timeSeries = new wxDVTimeSeriesCtrl( this, wxID_ANY,  wxDV_RAW, wxDV_AVERAGE );
+	AddPage( m_timeSeries, "Time series" );
 
 	m_dailySeries = new wxDVTimeSeriesCtrl(this, wxID_ANY, wxDV_DAILY, wxDV_AVERAGE);
 	AddPage( m_dailySeries, "Daily" );
@@ -298,10 +304,10 @@ wxDVPlotCtrlSettings ResultsViewer::GetDViewState()
 	settings.SetProperty(wxT("tabIndex"), GetSelection());
 
 	//***TimeSeries Properties***
-	settings.SetProperty(wxT("tsAxisMin"), m_hourlySeries->GetViewMin());
-	settings.SetProperty(wxT("tsAxisMax"), m_hourlySeries->GetViewMax());	
-	settings.SetProperty(wxT("tsTopSelectedNames"), m_hourlySeries->GetDataSelectionList()->GetSelectedNamesInCol(0));
-	settings.SetProperty(wxT("tsBottomSelectedNames"), m_hourlySeries->GetDataSelectionList()->GetSelectedNamesInCol(1));
+	settings.SetProperty(wxT("tsAxisMin"), m_timeSeries->GetViewMin());
+	settings.SetProperty(wxT("tsAxisMax"), m_timeSeries->GetViewMax());	
+	settings.SetProperty(wxT("tsTopSelectedNames"), m_timeSeries->GetDataSelectionList()->GetSelectedNamesInCol(0));
+	settings.SetProperty(wxT("tsBottomSelectedNames"), m_timeSeries->GetDataSelectionList()->GetSelectedNamesInCol(1));
 	
 	settings.SetProperty(wxT("tsDailyAxisMin"), m_dailySeries->GetViewMin());
 	settings.SetProperty(wxT("tsDailyAxisMax"), m_dailySeries->GetViewMax());	
@@ -365,15 +371,15 @@ void ResultsViewer::SetDViewState( wxDVPlotCtrlSettings &settings )
 	SetSelection(i);
 
 	//***TimeSeries Properties***
-	m_hourlySeries->SetTopSelectedNames(settings.GetProperty(wxT("tsTopSelectedNames")));
-	m_hourlySeries->SetBottomSelectedNames(settings.GetProperty(wxT("tsBottomSelectedNames")));
+	m_timeSeries->SetTopSelectedNames(settings.GetProperty(wxT("tsTopSelectedNames")));
+	m_timeSeries->SetBottomSelectedNames(settings.GetProperty(wxT("tsBottomSelectedNames")));
 
 	//Set min/max after setting plots to make sure there is an axis to set.
 	double min, max;
 	settings.GetProperty(wxT("tsAxisMin")).ToDouble(&min);
 	settings.GetProperty(wxT("tsAxisMax")).ToDouble(&max);
-	m_hourlySeries->SetViewMin(min);
-	m_hourlySeries->SetViewMax(max);
+	m_timeSeries->SetViewMin(min);
+	m_timeSeries->SetViewMax(max);
 
 	
 	m_dailySeries->SetTopSelectedNames(settings.GetProperty(wxT("tsDailyTopSelectedNames")));
@@ -477,20 +483,22 @@ ResultsViewer::~ResultsViewer()
 		delete m_tsDataSets[i];
 }
 
-class TimeSeries8760 : public wxDVTimeSeriesDataSet
+class TimeSeries : public wxDVTimeSeriesDataSet
 {
 	float *m_pdata;
+	size_t m_len;
+	double m_tsHour;
 	wxString m_label, m_units;
 public:
-	TimeSeries8760( float *p, const wxString &label, const wxString &units )
-		: wxDVTimeSeriesDataSet(), m_pdata(p), m_label(label), m_units(units) { }
+	TimeSeries( float *p, size_t len, double ts_hour, const wxString &label, const wxString &units )
+		: wxDVTimeSeriesDataSet(), m_pdata(p), m_len(len), m_tsHour(ts_hour), m_label(label), m_units(units) { }
 	virtual wxRealPoint At(size_t i) const
 	{
-		if ( i < 8760 ) return wxRealPoint(i, m_pdata[i]);
+		if ( i < m_len ) return wxRealPoint(i*m_tsHour, m_pdata[i]);
 		else return wxRealPoint(0,0);
 	}
-	virtual size_t Length() const { return 8760; }
-	virtual double GetTimeStep() const { return 1.0; }
+	virtual size_t Length() const { return m_len; }
+	virtual double GetTimeStep() const { return m_tsHour; }
 	virtual double GetOffset() const { return 0.0; }
 	virtual wxString GetSeriesTitle() const { return m_label; }
 	virtual wxString GetUnits() const { return m_units; }
@@ -675,8 +683,21 @@ void ResultsViewer::Setup( Simulation *sim )
 				size_t n = 0;
 				float *p = vv->Array( &n );
 				
-				if ( n == 8760 )
-					AddDataSet( new TimeSeries8760( p, m_sim->GetLabel(vars[i]), m_sim->GetUnits(vars[i])), "Hourly Outputs" );
+				size_t steps_per_hour = n/8760;
+				if ( steps_per_hour > 0 
+					&& steps_per_hour <= 60 
+					&& n == steps_per_hour*8760 )
+				{
+					wxString group( "Hourly Data" );
+					if ( steps_per_hour > 1 )
+						group = wxString::Format( "%lg Minute Data", 60.0/steps_per_hour );
+
+					wxLogStatus("Adding time series dataset: %d len, %lg time step", (int)n, 1.0/steps_per_hour );
+					AddDataSet( new TimeSeries( p, n, 1.0/steps_per_hour,
+						m_sim->GetLabel(vars[i]), 
+						m_sim->GetUnits(vars[i])), 
+						group );
+				}
 			}
 		}
 	}
@@ -884,7 +905,7 @@ void ResultsViewer::AddDataSet(wxDVTimeSeriesDataSet *d, const wxString& group, 
 	//Take ownership of the data Set.  We will delete it on destruction.
 	m_tsDataSets.push_back(d);
 	
-	m_hourlySeries->AddDataSet(d, group, update_ui);
+	m_timeSeries->AddDataSet(d, group, update_ui);
 	m_dailySeries->AddDataSet(d, group, update_ui);
 	m_dMap->AddDataSet(d, group, update_ui);
 	m_profilePlots->AddDataSet(d, group, update_ui);
@@ -1146,7 +1167,7 @@ void ResultsViewer::ExportEqnExcel()
 
 void ResultsViewer::RemoveAllDataSets()
 {
-	m_hourlySeries->RemoveAllDataSets();
+	m_timeSeries->RemoveAllDataSets();
 	m_dailySeries->RemoveAllDataSets();
 	m_dMap->RemoveAllDataSets();
 	m_profilePlots->RemoveAllDataSets();
