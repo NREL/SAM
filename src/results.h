@@ -141,7 +141,7 @@ private:
 	GraphViewer *m_graphViewer;
 		
 	std::vector<wxDVTimeSeriesDataSet*> m_tsDataSets;
-	wxDVTimeSeriesCtrl *m_hourlySeries;
+	wxDVTimeSeriesCtrl *m_timeSeries;
 	wxDVTimeSeriesCtrl *m_dailySeries;
 	wxDVDMapCtrl *m_dMap;
 	wxDVProfileCtrl *m_profilePlots;
