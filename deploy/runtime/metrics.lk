@@ -240,6 +240,13 @@ function biopower_metrics()
 	metric( 'kwh_per_kw', {'label'='First Year kWhAC/kWDC', 'mode'='f', 'deci'='0', 'thousep'='true' } );
 }
 
+
+function lf_steam_metrics() 
+{
+	metric( 'annual_energy', {'label'='Annual Energy', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh' } );
+}
+
+
 // Technology Metrics
 metrics{ 'Flat Plate PV' } = define() { pv_metrics(); };
 metrics{ 'PVWatts' } = define() {	pvwatts_metrics(); };
@@ -254,6 +261,7 @@ metrics{ 'Wind Power' } = define() { wind_power_metrics(); };
 metrics{ 'Geothermal Power' } = define() { geothermal_metrics(); };
 metrics{ 'Generic System' } = define() { generic_system_metrics(); };
 metrics{ 'Biopower' } = define() { biopower_metrics(); };
+metrics{ 'Linear Fresnel Steam' } = define() { lf_steam_metrics(); };
 
 // Financial Metrics
 metrics{ 'Residential' } = define() { rescom_metrics(); };
