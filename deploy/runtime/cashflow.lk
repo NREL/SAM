@@ -27,11 +27,11 @@ function state_federal_depreciation_tables()
 
 function cf_cash_incentives()
 {
-	cfline( 'ibi_total_fed,ibi_total_sta,ibi_total_uti,ibi_total_oth,ibi_total' );
+	cfline( 'ibi_total_fed,ibi_total_sta,ibi_total_uti,ibi_total_oth,ibi_total', 0);
 	cfline( '' ); // spacer 
-	cfline( 'cbi_total_fed,cbi_total_sta,cbi_total_uti,cbi_total_oth,cbi_total');
+	cfline( 'cbi_total_fed,cbi_total_sta,cbi_total_uti,cbi_total_oth,cbi_total', 0);
 	cfline( '' ); // spacer 
-	cfline( 'cf_pbi_total_fed,cf_pbi_total_sta,cf_pbi_total_uti,cf_pbi_total_oth,cf_pbi_total');
+	cfline( 'cf_pbi_total_fed,cf_pbi_total_sta,cf_pbi_total_uti,cf_pbi_total_oth,cf_pbi_total', 0);
 	cfline( '' ); // spacer 
 }
 
@@ -56,11 +56,11 @@ cashflow{ 'Residential' } = define()
 {
 
 	cfline( "PRODUCTION", -1);
-	cfline( 'cf_energy_net', 1 ); // use one digit
+	cfline( 'cf_energy_net', 0);
 	cfline( '' ); // spacer
 
 	cfline( "SAVINGS", -1);
-	cfline( 'cf_energy_value'); 
+	cfline( 'cf_energy_value', 0); 
 	cfline( '' );
 
 	cfline( "OPERATING EXPENSES", -1 ); // header	
@@ -68,23 +68,23 @@ cashflow{ 'Residential' } = define()
 	cf_fuel_expenses();
 	
 //	cfline( 'cf_property_tax_assessed_value');
-	cfline( 'cf_property_tax_expense');
-	cfline( 'cf_insurance_expense');
-	cfline( 'cf_net_salvage_value');
-	cfline( 'cf_operating_expenses');
+	cfline( 'cf_property_tax_expense', 0);
+	cfline( 'cf_insurance_expense', 0);
+	cfline( 'cf_net_salvage_value', 0);
+	cfline( 'cf_operating_expenses', 0);
 	cfline( '' ); // spacer
 	
-	cfline( 'cf_deductible_expenses');
+	cfline( 'cf_deductible_expenses', 0);
 	cfline( '' ); // spacer
 	
 	cfline( "PROJECT DEBT", -1 ); // header
-	cfline( 'cf_debt_balance');
-	cfline( 'cf_debt_payment_interest');
-	cfline( 'cf_debt_payment_principal');
-	cfline( 'cf_debt_payment_total');
+	cfline( 'cf_debt_balance', 0);
+	cfline( 'cf_debt_payment_interest', 0);
+	cfline( 'cf_debt_payment_principal', 0);
+	cfline( 'cf_debt_payment_total', 0);
 	cfline( '' );	
 	
-	cfline( "INCENTIVES", -1 ); // header
+	cfline( "DIRECT CASH INCENTIVES", -1 ); // header
 	// incentives
 	cf_cash_incentives();
 	
@@ -102,72 +102,74 @@ cashflow{ 'Residential' } = define()
 //	cfline( 'cf_fed_depr_sched' );
 //	cfline( 'cf_fed_depreciation');
 //	cfline( 'cf_fed_incentive_income_less_deductions');
-	cfline( 'cf_fed_taxable_income_less_deductions');	
+	cfline( 'cf_fed_taxable_income_less_deductions', 0);	
 	cfline( 'cf_ptc_fed', 0);
 	cfline( 'itc_total_fed', 0, 1, 1); // offset to year 1
-	cfline( 'cf_fed_tax_savings' );
+	cfline( 'cf_fed_tax_savings', 0);
 	cfline( '' ); // spacer
 	
-	cfline( 'cf_after_tax_net_equity_cost_flow');
-	cfline( 'cf_after_tax_cash_flow');
+	cfline( 'cf_after_tax_net_equity_cost_flow', 0);
+	cfline( 'cf_after_tax_cash_flow', 0);
 };
 
 cashflow{ 'Commercial' } = define()
 {
-	cfline( 'cf_energy_net', 1); // use one digit
-	cfline( 'cf_energy_value');
+	cfline( "PRODUCTION", -1);
+	cfline( 'cf_energy_net', 0);
 	cfline( '' ); // spacer
 
-	cfline( "Operating Expenses", -1 ); // header	
-	cfline( 'cf_om_fixed_expense,cf_om_production_expense,cf_om_capacity_expense,cf_om_fuel_expense');
-	cfline( 'cf_om_opt_fuel_1_expense' );
-	cfline( 'cf_om_opt_fuel_2_expense' );
+	cfline( "SAVINGS", -1);
+	cfline( 'cf_energy_value', 0); 
+	cfline( '' );
+
+	cfline( "OPERATING EXPENSES", -1 ); // header	
+	cfline( 'cf_om_fixed_expense,cf_om_production_expense,cf_om_capacity_expense', 0);
+	cf_fuel_expenses();
 	
 //	cfline( 'cf_property_tax_assessed_value');
-	cfline( 'cf_property_tax_expense');
-	cfline( 'cf_insurance_expense');
-	cfline( 'cf_net_salvage_value');
-	cfline( 'cf_operating_expenses');
+	cfline( 'cf_property_tax_expense', 0);
+	cfline( 'cf_insurance_expense', 0);
+	cfline( 'cf_net_salvage_value', 0);
+	cfline( 'cf_operating_expenses', 0);
 	cfline( '' ); // spacer
 	
-	cfline( 'cf_deductible_expenses');
+	cfline( 'cf_deductible_expenses', 0);
 	cfline( '' ); // spacer
 	
-	cfline( "Financing", -1 ); // header
-	cfline( 'cf_debt_balance');
-	cfline( 'cf_debt_payment_interest');
-	cfline( 'cf_debt_payment_principal');
-	cfline( 'cf_debt_payment_total');
+	cfline( "PROJECT DEBT", -1 ); // header
+	cfline( 'cf_debt_balance', 0);
+	cfline( 'cf_debt_payment_interest', 0);
+	cfline( 'cf_debt_payment_principal', 0);
+	cfline( 'cf_debt_payment_total', 0);
+	cfline( '' );	
 	
+	cfline( "DIRECT CASH INCENTIVES", -1 ); // header
 	// incentives
 	cf_cash_incentives();
-	cfline( 'cf_ptc_fed,cf_ptc_sta', 0);
-	cfline( '' );
-	cfline( 'itc_total_fed', 0, 1, 1); // offset to year 1
-	cfline( 'itc_total_sta', 0, 1, 1);
-	cfline( '' );
 	
-	cfline( "Tax Effect on Equity (State)", -1 ); // header
+	cfline( "STATE INCOME TAX", -1 ); // header
 	cfline( 'cf_sta_depr_sched');
-	cfline( 'cf_sta_depreciation');
-	cfline( 'cf_sta_incentive_income_less_deductions');
-	cfline( 'cf_sta_taxable_income_less_deductions');
-	cfline( 'cf_sta_tax_savings');
+	cfline( 'cf_sta_depreciation', 0);
+	cfline( 'cf_sta_taxable_income_less_deductions', 0);
+	cfline( 'cf_ptc_sta', 0);
+	cfline( 'itc_total_sta', 0, 1, 1); // offset to year 1
+	cfline( 'cf_sta_tax_savings', 0);
 	cfline( '' ); // spacer
 	
-	cfline( "Tax Effect on Equity (Federal)", -1 ); // header
-	cfline( 'cf_fed_depr_sched' );
-	cfline( 'cf_fed_depreciation');
-	cfline( 'cf_fed_incentive_income_less_deductions');
-	cfline( 'cf_fed_taxable_income_less_deductions');	
-	cfline( 'cf_fed_tax_savings' );
+	cfline( "FEDERAL INCOME TAX", -1 ); // header
+	cfline( 'cf_fed_depr_sched');
+	cfline( 'cf_fed_depreciation', 0);
+	cfline( 'cf_fed_taxable_income_less_deductions', 0);	
+	cfline( 'cf_ptc_fed', 0);
+	cfline( 'itc_total_fed', 0, 1, 1); // offset to year 1
+	cfline( 'cf_fed_tax_savings', 0);
 	cfline( '' ); // spacer
 	
-	cfline( 'cf_after_tax_net_equity_cost_flow');
-	cfline( 'cf_after_tax_cash_flow');
+	cfline( 'cf_after_tax_net_equity_cost_flow', 0);
+	cfline( 'cf_after_tax_cash_flow', 0);
 };
 
-
+/*
 cashflow{ 'Commercial PPA' } = define()
 {
 	cfline( 'cf_energy_net', 1); // use one digit
@@ -278,9 +280,7 @@ cashflow{ 'Independent Power Producer' } = define()
 	cfline( 'cf_after_tax_net_equity_cash_flow');
 	cfline( 'cf_after_tax_net_equity_cost_flow');
 	cfline( 'cf_after_tax_cash_flow');
-};
-
-
+};*/
 
 cashflow{ 'Single Owner' } = define()
 {
@@ -1166,6 +1166,10 @@ function send_excel_incentives(xl)
 
 function send_excel_rescom(xl)
 {
+
+	N = value('analysis_period');
+	if ( N>100 ) msgbox("The Excel workbook only shows cash flow values for a 100-year analysis period or less. Your analysis is for " + N + " years.");
+
 	send_excel(       xl, 'system_capacity');
 	send_excel(       xl, 'total_installed_cost');
 	send_excel(       xl, 'om_fixed');
@@ -1190,7 +1194,6 @@ function send_excel_rescom(xl)
 	send_excel(       xl, 'salvage_percentage');
 	
 	send_excel_incentives(xl);
-
 }
 
 cashflow_to_excel{ 'Residential' } = define()
@@ -1208,11 +1211,13 @@ cashflow_to_excel{ 'Residential' } = define()
 	xl_set( xl, "N/A", 'StateDepreciation');
 	xl_set( xl, "N/A", 'FederalDepreciation');
 
-	xl_set ( xl, output('cf_energy_net'), "C96");
-	xl_set ( xl, output('cf_energy_value'), "C97");
-			
 	send_excel_rescom(xl);
 	send_excel_fuel(xl);
+
+	xl_set ( xl, output('cf_energy_net'), "AnnualEnergy");
+	xl_set ( xl, output('cf_energy_value'), "EnergyValue");
+
+	xl_free( xl );
 
 };
 
@@ -1235,15 +1240,21 @@ cashflow_to_excel{ 'Commercial' } = define()
 	if (s == 3) state = "Custom (see cash flow)";
 	xl_set( xl, state, 'StateDepreciation'); //show depreciation type in inputs table for reference only
 	f = value('depr_fed_type'); //show depreciation percentages in cash flow for calculations
-	send_excel( xl, 'cf_sta_depr_sched');
 	if (f == 0) fed = "No Depreciation";
 	if (f == 1) fed = "5-yr MACRS";
 	if (f == 2) fed = "Straight Line" + value('depr_sta_sl_years') + " Years";
 	if (f == 3) fed = "Custom (see cash flow)";
 	xl_set( xl, fed, 'FederalDepreciation');
-	send_excel( xl, 'cf_fed_depr_sched');
 
 	send_excel_rescom(xl);
+	send_excel_fuel(xl);
+
+	xl_set ( xl, output('cf_energy_net'), "AnnualEnergy");
+	xl_set ( xl, output('cf_energy_value'), "EnergyValue");
+	xl_set ( xl, output('cf_sta_depr_sched'), "StateDepreciationSchedule");
+	xl_set ( xl, output('cf_fed_depr_sched'), "FederalDepreciationSchedule");
+
+	xl_free( xl );
 
 };
 
@@ -1261,8 +1272,8 @@ cashflow_to_excel{ 'Single Owner' } = define()
 	if ( N>40 ) msgbox("The Excel workbook only shows cash flow values for a 40-year analysis period or less. Your analysis is for " + N + " years.");
 	
 	//export annual values to minimize rounding discrepancies between SAM and workbook
-	xl_set( xl, output('cf_energy_net'), "C136");
-	xl_set( xl, output('cf_ppa_price'), "C137");
+	xl_set( xl, output('cf_energy_net'), "AnnualEnergy");
+	xl_set( xl, output('cf_ppa_price'), "AnnualPPAPrice");
 	
 	//show construction financing cost calculation in spreadsheet
 	//(ssc only uses total cost as input, so these are UI inputs from input form)
@@ -1287,31 +1298,21 @@ cashflow_to_excel{ 'Single Owner' } = define()
 	send_excel( xl, 'const_per_interest_rate4');
 	send_excel( xl, 'const_per_interest_rate5');		
 
+	send_excel_incentives(xl);
+	send_excel_yesno( xl, 'pbi_fed_for_ds');
+	send_excel_yesno( xl, 'pbi_sta_for_ds');
+	send_excel_yesno( xl, 'pbi_oth_for_ds');
+	send_excel_yesno( xl, 'pbi_uti_for_ds');
+	
+	send_excel(       xl, 'om_capacity');
+	send_excel(       xl, 'om_capacity_escal');
+	send_excel(       xl, 'om_fixed');
+	send_excel(       xl, 'om_fixed_escal');
+	send_excel(       xl, 'om_production');
+	send_excel(       xl, 'om_production_escal');
+	send_excel_fuel(xl);
+
 	send_excel(       xl, 'analysis_period');
-	send_excel(       xl, 'cbi_fed_amount');
-	send_excel_yesno( xl, 'cbi_fed_deprbas_fed');
-	send_excel_yesno( xl, 'cbi_fed_deprbas_sta');
-	send_excel(       xl, 'cbi_fed_maxvalue');
-	send_excel_yesno( xl, 'cbi_fed_tax_fed');
-	send_excel_yesno( xl, 'cbi_fed_tax_sta');
-	send_excel(       xl, 'cbi_oth_amount');
-	send_excel_yesno( xl, 'cbi_oth_deprbas_fed');
-	send_excel_yesno( xl, 'cbi_oth_deprbas_sta');
-	send_excel(       xl, 'cbi_oth_maxvalue');
-	send_excel_yesno( xl, 'cbi_oth_tax_fed');
-	send_excel_yesno( xl, 'cbi_oth_tax_sta');
-	send_excel(       xl, 'cbi_sta_amount');
-	send_excel_yesno( xl, 'cbi_sta_deprbas_fed');
-	send_excel_yesno( xl, 'cbi_sta_deprbas_sta');
-	send_excel(       xl, 'cbi_sta_maxvalue');
-	send_excel_yesno( xl, 'cbi_sta_tax_fed');
-	send_excel_yesno( xl, 'cbi_sta_tax_sta');
-	send_excel(       xl, 'cbi_uti_amount');
-	send_excel_yesno( xl, 'cbi_uti_deprbas_fed');
-	send_excel_yesno( xl, 'cbi_uti_deprbas_sta');
-	send_excel(       xl, 'cbi_uti_maxvalue');
-	send_excel_yesno( xl, 'cbi_uti_tax_fed');
-	send_excel_yesno( xl, 'cbi_uti_tax_sta');
 	send_excel(       xl, 'construction_financing_cost');
 	send_excel(       xl, 'cost_debt_closing');
 	send_excel(       xl, 'cost_debt_fee');
@@ -1361,116 +1362,19 @@ cashflow_to_excel{ 'Single Owner' } = define()
 	send_excel(       xl, 'federal_tax_rate');
 	send_excel(       xl, 'flip_target_percent');
 	send_excel(       xl, 'flip_target_year');
-	send_excel(       xl, 'ibi_fed_amount');
-	send_excel_yesno( xl, 'ibi_fed_amount_deprbas_fed');
-	send_excel_yesno( xl, 'ibi_fed_amount_deprbas_sta');
-	send_excel_yesno( xl, 'ibi_fed_amount_tax_fed');
-	send_excel_yesno( xl, 'ibi_fed_amount_tax_sta');
-	send_excel(       xl, 'ibi_fed_percent');
-	send_excel_yesno( xl, 'ibi_fed_percent_deprbas_fed');
-	send_excel_yesno( xl, 'ibi_fed_percent_deprbas_sta');
-	send_excel(       xl, 'ibi_fed_percent_maxvalue');
-	send_excel_yesno( xl, 'ibi_fed_percent_tax_fed');
-	send_excel_yesno( xl, 'ibi_fed_percent_tax_sta');
-	send_excel(       xl, 'ibi_oth_amount');
-	send_excel_yesno( xl, 'ibi_oth_amount_deprbas_fed');
-	send_excel_yesno( xl, 'ibi_oth_amount_deprbas_sta');
-	send_excel_yesno( xl, 'ibi_oth_amount_tax_fed');
-	send_excel_yesno( xl, 'ibi_oth_amount_tax_sta');
-	send_excel(       xl, 'ibi_oth_percent');
-	send_excel_yesno( xl, 'ibi_oth_percent_deprbas_fed');
-	send_excel_yesno( xl, 'ibi_oth_percent_deprbas_sta');
-	send_excel(       xl, 'ibi_oth_percent_maxvalue');
-	send_excel_yesno( xl, 'ibi_oth_percent_tax_fed');
-	send_excel_yesno( xl, 'ibi_oth_percent_tax_sta');
-	send_excel(       xl, 'ibi_sta_amount');
-	send_excel_yesno( xl, 'ibi_sta_amount_deprbas_fed');
-	send_excel_yesno( xl, 'ibi_sta_amount_deprbas_sta');
-	send_excel_yesno( xl, 'ibi_sta_amount_tax_fed');
-	send_excel_yesno( xl, 'ibi_sta_amount_tax_sta');
-	send_excel(       xl, 'ibi_sta_percent');
-	send_excel_yesno( xl, 'ibi_sta_percent_deprbas_fed');
-	send_excel_yesno( xl, 'ibi_sta_percent_deprbas_sta');
-	send_excel(       xl, 'ibi_sta_percent_maxvalue');
-	send_excel_yesno( xl, 'ibi_sta_percent_tax_fed');
-	send_excel_yesno( xl, 'ibi_sta_percent_tax_sta');
-	send_excel(       xl, 'ibi_uti_amount');
-	send_excel_yesno( xl, 'ibi_uti_amount_deprbas_fed');
-	send_excel_yesno( xl, 'ibi_uti_amount_deprbas_sta');
-	send_excel_yesno( xl, 'ibi_uti_amount_tax_fed');
-	send_excel_yesno( xl, 'ibi_uti_amount_tax_sta');
-	send_excel(       xl, 'ibi_uti_percent');
-	send_excel_yesno( xl, 'ibi_uti_percent_deprbas_fed');
-	send_excel_yesno( xl, 'ibi_uti_percent_deprbas_sta');
-	send_excel(       xl, 'ibi_uti_percent_maxvalue');
-	send_excel_yesno( xl, 'ibi_uti_percent_tax_fed');
-	send_excel_yesno( xl, 'ibi_uti_percent_tax_sta');
 	send_excel(       xl, 'inflation_rate');
 	send_excel(       xl, 'insurance_rate');
-	send_excel(       xl, 'itc_fed_amount');
-	send_excel_yesno( xl, 'itc_fed_amount_deprbas_fed');
-	send_excel_yesno( xl, 'itc_fed_amount_deprbas_sta');
-	send_excel(       xl, 'itc_fed_percent');
-	send_excel_yesno( xl, 'itc_fed_percent_deprbas_fed');
-	send_excel_yesno( xl, 'itc_fed_percent_deprbas_sta');
-	send_excel(       xl, 'itc_fed_percent_maxvalue');
-	send_excel(       xl, 'itc_sta_amount');
-	send_excel_yesno( xl, 'itc_sta_amount_deprbas_fed');
-	send_excel_yesno( xl, 'itc_sta_amount_deprbas_sta');
-	send_excel(       xl, 'itc_sta_percent');
-	send_excel_yesno( xl, 'itc_sta_percent_deprbas_fed');
-	send_excel_yesno( xl, 'itc_sta_percent_deprbas_sta');
-	send_excel(       xl, 'itc_sta_percent_maxvalue');
 	send_excel(       xl, 'months_working_reserve');
-	send_excel(       xl, 'om_capacity');
-	send_excel(       xl, 'om_capacity_escal');
-	send_excel(       xl, 'om_fixed');
-	send_excel(       xl, 'om_fixed_escal');
-	send_excel(       xl, 'om_fuel_cost');
-	send_excel(       xl, 'om_fuel_cost_escal');
-	send_excel(       xl, 'om_production');
-	send_excel(       xl, 'om_production_escal');
-	send_excel(       xl, 'pbi_fed_amount');
-	send_excel(       xl, 'pbi_fed_escal');
-	send_excel_yesno( xl, 'pbi_fed_for_ds');
-	send_excel_yesno( xl, 'pbi_fed_tax_fed');
-	send_excel_yesno( xl, 'pbi_fed_tax_sta');
-	send_excel(       xl, 'pbi_fed_term');
-	send_excel(       xl, 'pbi_oth_amount');
-	send_excel(       xl, 'pbi_oth_escal');
-	send_excel_yesno( xl, 'pbi_oth_for_ds');
-	send_excel_yesno( xl, 'pbi_oth_tax_fed');
-	send_excel_yesno( xl, 'pbi_oth_tax_sta');
-	send_excel(       xl, 'pbi_oth_term');
-	send_excel(       xl, 'pbi_sta_amount');
-	send_excel(       xl, 'pbi_sta_escal');
-	send_excel_yesno( xl, 'pbi_sta_for_ds');
-	send_excel_yesno( xl, 'pbi_sta_tax_fed');
-	send_excel_yesno( xl, 'pbi_sta_tax_sta');
-	send_excel(       xl, 'pbi_sta_term');
-	send_excel(       xl, 'pbi_uti_amount');
-	send_excel(       xl, 'pbi_uti_escal');
-	send_excel_yesno( xl, 'pbi_uti_for_ds');
-	send_excel_yesno( xl, 'pbi_uti_tax_fed');
-	send_excel_yesno( xl, 'pbi_uti_tax_sta');
-	send_excel(       xl, 'pbi_uti_term');
 	send_excel(       xl, 'ppa_escalation');
 	send_excel(       xl, 'prop_tax_assessed_decline');
 	send_excel(       xl, 'prop_tax_cost_assessed_percent');
 	send_excel(       xl, 'property_tax_rate');
-	send_excel(       xl, 'ptc_fed_amount');
-	send_excel(       xl, 'ptc_fed_term');
-	send_excel(       xl, 'ptc_fed_escal');
-	send_excel(       xl, 'ptc_sta_amount');
-	send_excel(       xl, 'ptc_sta_term');
-	send_excel(       xl, 'ptc_sta_escal');
 	send_excel(       xl, 'real_discount_rate');
 	send_excel(       xl, 'reserves_interest');
 	send_excel(       xl, 'sales_tax_rate');
 	send_excel(       xl, 'salvage_percentage');
 	send_excel(       xl, 'state_tax_rate');
 	send_excel(       xl, 'system_capacity');
-	send_excel(       xl, 'system_heat_rate');
 	send_excel(       xl, 'term_int_rate');
 	send_excel(       xl, 'term_tenor');
 	send_excel(       xl, 'total_installed_cost');
