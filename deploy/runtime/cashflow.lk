@@ -25,7 +25,7 @@ function state_federal_depreciation_tables()
 	cfrow("Total,depr_fedbas_percent_total,depr_alloc_total,depr_fedbas_ibi_reduc_total,depr_fedbas_cbi_reduc_total,depr_fedbas_prior_itc_total,itc_fed_qual_total,depr_fedbas_percent_qual_total,depr_fedbas_percent_amount_total,itc_disallow_fed_percent_total,depr_fedbas_fixed_amount_total,itc_disallow_fed_fixed_total,depr_fedbas_itc_fed_reduction_total,depr_fedbas_itc_fed_reduction_total,depr_fedbas_after_itc_total,depr_fedbas_first_year_bonus_total,depr_fedbas_total");
 }
 
-function setup_incentives_cashflow()
+function cf_cash_incentives()
 {
 	cfline( 'ibi_total_fed,ibi_total_sta,ibi_total_uti,ibi_total_oth,ibi_total' );
 	cfline( '' ); // spacer 
@@ -33,22 +33,39 @@ function setup_incentives_cashflow()
 	cfline( '' ); // spacer 
 	cfline( 'cf_pbi_total_fed,cf_pbi_total_sta,cf_pbi_total_uti,cf_pbi_total_oth,cf_pbi_total');
 	cfline( '' ); // spacer 
-	cfline( 'cf_ptc_fed,cf_ptc_sta' );
-	cfline( '' ); // spacer 
-	cfline( 'itc_total_fed,itc_total_sta', 0, 1, 1); // offset to year 1
-	cfline( '' ); // spacer 
+}
+
+function cf_fuel_expenses() {
+
+    tech = technology();
+
+    fueltech = ( tech != 'Flat Plate PV' && 
+                 tech != 'PVWatts' && 
+                 tech != 'High-X Concentrating PV' && 
+                 tech != 'Solar Water Heating' && 
+                 tech != 'Wind Power' &&
+                 tech != 'Biopower');
+	if ( fueltech == true )cfline('cf_om_fuel_expense', 0);
+	
+	if ( tech == 'Biopower' )cfline( 'cf_om_opt_fuel_1_expense', 0);
+	if ( tech == 'Biopower' )cfline( 'cf_om_opt_fuel_2_expense', 0);
+
 }
 
 cashflow{ 'Residential' } = define()
 {
+
+	cfline( "PRODUCTION", -1);
 	cfline( 'cf_energy_net', 1 ); // use one digit
-	cfline( 'cf_energy_value'); 
 	cfline( '' ); // spacer
 
-	cfline( "Operating Expenses", -1 ); // header	
-	cfline( 'cf_om_fixed_expense,cf_om_production_expense,cf_om_capacity_expense,cf_om_fuel_expense');
-	cfline( 'cf_om_opt_fuel_1_expense' );
-	cfline( 'cf_om_opt_fuel_2_expense' );
+	cfline( "SAVINGS", -1);
+	cfline( 'cf_energy_value'); 
+	cfline( '' );
+
+	cfline( "OPERATING EXPENSES", -1 ); // header	
+	cfline( 'cf_om_fixed_expense,cf_om_production_expense,cf_om_capacity_expense', 0);
+	cf_fuel_expenses();
 	
 //	cfline( 'cf_property_tax_assessed_value');
 	cfline( 'cf_property_tax_expense');
@@ -60,28 +77,34 @@ cashflow{ 'Residential' } = define()
 	cfline( 'cf_deductible_expenses');
 	cfline( '' ); // spacer
 	
-	cfline( "Financing", -1 ); // header
+	cfline( "PROJECT DEBT", -1 ); // header
 	cfline( 'cf_debt_balance');
 	cfline( 'cf_debt_payment_interest');
 	cfline( 'cf_debt_payment_principal');
 	cfline( 'cf_debt_payment_total');
-
-	// incentives
-	setup_incentives_cashflow();
+	cfline( '' );	
 	
-	cfline( "Tax Effect on Equity (State)", -1 ); // header
-	cfline( 'cf_sta_depr_sched');
-	cfline( 'cf_sta_depreciation');
-	cfline( 'cf_sta_incentive_income_less_deductions');
-	cfline( 'cf_sta_taxable_income_less_deductions');
-	cfline( 'cf_sta_tax_savings');
+	cfline( "INCENTIVES", -1 ); // header
+	// incentives
+	cf_cash_incentives();
+	
+	cfline( "STATE INCOME TAX", -1 ); // header
+//	cfline( 'cf_sta_depr_sched', 0);
+//	cfline( 'cf_sta_depreciation', 0);
+//	cfline( 'cf_sta_incentive_income_less_deductions', 0);
+	cfline( 'cf_sta_taxable_income_less_deductions', 0);
+	cfline( 'cf_ptc_sta', 0);
+	cfline( 'itc_total_sta', 0, 1, 1); // offset to year 1
+	cfline( 'cf_sta_tax_savings', 0);
 	cfline( '' ); // spacer
 	
-	cfline( "Tax Effect on Equity (Federal)", -1 ); // header
-	cfline( 'cf_fed_depr_sched' );
-	cfline( 'cf_fed_depreciation');
-	cfline( 'cf_fed_incentive_income_less_deductions');
+	cfline( "FEDERAL INCOME TAX", -1 ); // header
+//	cfline( 'cf_fed_depr_sched' );
+//	cfline( 'cf_fed_depreciation');
+//	cfline( 'cf_fed_incentive_income_less_deductions');
 	cfline( 'cf_fed_taxable_income_less_deductions');	
+	cfline( 'cf_ptc_fed', 0);
+	cfline( 'itc_total_fed', 0, 1, 1); // offset to year 1
 	cfline( 'cf_fed_tax_savings' );
 	cfline( '' ); // spacer
 	
@@ -117,7 +140,12 @@ cashflow{ 'Commercial' } = define()
 	cfline( 'cf_debt_payment_total');
 	
 	// incentives
-	setup_incentives_cashflow();
+	cf_cash_incentives();
+	cfline( 'cf_ptc_fed,cf_ptc_sta', 0);
+	cfline( '' );
+	cfline( 'itc_total_fed', 0, 1, 1); // offset to year 1
+	cfline( 'itc_total_sta', 0, 1, 1);
+	cfline( '' );
 	
 	cfline( "Tax Effect on Equity (State)", -1 ); // header
 	cfline( 'cf_sta_depr_sched');
@@ -169,7 +197,11 @@ cashflow{ 'Commercial PPA' } = define()
 	cfline( 'cf_debt_payment_total');
 	
 	// incentives
-	setup_incentives_cashflow();
+	cf_cash_incentives();
+	cfline( 'cf_ptc_fed,cf_ptc_sta' );
+	cfline( '' );
+	cfline( 'itc_total_fed,itc_total_sta', 0, 1, 1); // offset to year 1
+	cfline( '' );
 	
 	cfline( "Tax Effect on Equity (State)", -1 ); // header
 	cfline( 'cf_sta_depr_sched');
@@ -191,6 +223,7 @@ cashflow{ 'Commercial PPA' } = define()
 	cfline( 'cf_after_tax_net_equity_cost_flow');
 	cfline( 'cf_after_tax_cash_flow');
 };
+
 cashflow{ 'Independent Power Producer' } = define()
 {
 	cfline( 'cf_energy_net', 1); // use one digit
@@ -220,7 +253,11 @@ cashflow{ 'Independent Power Producer' } = define()
 	cfline( 'cf_debt_payment_total');
 	
 	// incentives
-	setup_incentives_cashflow();
+	cf_cash_incentives();
+	cfline( 'cf_ptc_fed,cf_ptc_sta' );
+	cfline( '' );
+	cfline( 'itc_total_fed,itc_total_sta', 0, 1, 1); // offset to year 1
+	cfline( '' );
 	
 	cfline( "Tax Effect on Equity (State)", -1 ); // header
 	cfline( 'cf_sta_depr_sched');
@@ -242,6 +279,8 @@ cashflow{ 'Independent Power Producer' } = define()
 	cfline( 'cf_after_tax_net_equity_cost_flow');
 	cfline( 'cf_after_tax_cash_flow');
 };
+
+
 
 cashflow{ 'Single Owner' } = define()
 {
@@ -275,9 +314,7 @@ cashflow{ 'Single Owner' } = define()
 	cfline( "OPERATING EXPENSES", -1 );
 	if (value('system_use_recapitalization')) cfline ('capitalization', 0);
 	cfline( 'cf_om_fixed_expense,cf_om_capacity_expense,cf_om_production_expense', 0);
-	if ( fueltech == true )cfline('cf_om_fuel_expense', 0);
-	if ( fueltech == true )cfline( 'cf_om_opt_fuel_1_expense', 0);
-	if ( fueltech == true )cfline( 'cf_om_opt_fuel_2_expense', 0);
+	cf_fuel_expenses();
 	cfline( 'cf_property_tax_expense', 0);
 	cfline( 'cf_insurance_expense', 0);
 	cfline( 'cf_operating_expenses', 0);
@@ -400,7 +437,12 @@ cashflow{ 'Single Owner' } = define()
 
 	cfline( '' );
 	cfline( "INCENTIVES", -1);
-	setup_incentives_cashflow();
+	cf_cash_incentives();
+	cfline( 'cf_ptc_fed,cf_ptc_sta' );
+	cfline( '' );
+	cfline( 'itc_total_fed,itc_total_sta', 0, 1, 1); // offset to year 1
+	cfline( '' );
+
 
 	cfline( "DEBT REPAYMENT", -1);
 	cfline('cf_debt_payment_total', 0);
@@ -576,11 +618,13 @@ cashflow{ 'All Equity Partnership Flip' } = define()
 	cfline('sponsor_aftertax_npv', 0);//"Developer after-tax NPV");
 	cfline( '' ); // spacer
 
-
 	// incentives
 	cfline( 'Incentives', -1);
-	setup_incentives_cashflow();
-	cfline( '' ); // spacer
+	cf_cash_incentives();
+	cfline( 'cf_ptc_fed,cf_ptc_sta' );
+	cfline( '' );
+	cfline( 'itc_total_fed,itc_total_sta', 0, 1, 1); // offset to year 1
+	cfline( '' );
 
 	// reserve accounts
 	cfline( 'Reserve Accounts', -1);
@@ -742,8 +786,11 @@ cashflow{ 'Leveraged Partnership Flip' } = define()
 
 	// incentives
 	cfline( 'Incentives', -1);
-	setup_incentives_cashflow();
-	cfline( '' ); // spacer
+	cf_cash_incentives();
+	cfline( 'cf_ptc_fed,cf_ptc_sta' );
+	cfline( '' );
+	cfline( 'itc_total_fed,itc_total_sta', 0, 1, 1); // offset to year 1
+	cfline( '' );
 
 	// debt
 	cfline( 'Debt', -1);
@@ -937,8 +984,11 @@ cashflow{ 'Sale Leaseback' } = define()
 
 	// incentives
 	cfline( 'Incentives', -1);
-	setup_incentives_cashflow();
-	cfline( '' ); // spacer
+	cf_cash_incentives();
+	cfline( 'cf_ptc_fed,cf_ptc_sta' );
+	cfline( '' );
+	cfline( 'itc_total_fed,itc_total_sta', 0, 1, 1); // offset to year 1
+	cfline( '' );
 
 	// reserve accounts
 	cfline( 'Reserve Accounts', -1);
@@ -1114,7 +1164,7 @@ function send_excel_incentives(xl)
 	send_excel(       xl, 'ptc_sta_escal');
 } 
 
-function cashflow_to_excel_rescom(xl)
+function send_excel_rescom(xl)
 {
 	send_excel(       xl, 'system_capacity');
 	send_excel(       xl, 'total_installed_cost');
@@ -1141,8 +1191,6 @@ function cashflow_to_excel_rescom(xl)
 	
 	send_excel_incentives(xl);
 
-    xl_set ( xl, output('cf_energy_net'), "C96");
-	xl_set ( xl, output('cf_energy_value'), "C97");
 }
 
 cashflow_to_excel{ 'Residential' } = define()
@@ -1159,8 +1207,11 @@ cashflow_to_excel{ 'Residential' } = define()
 	xl_set( xl, (${mortgage}?"Yes":"No"), 'UseTaxDeductibleInterest');
 	xl_set( xl, "N/A", 'StateDepreciation');
 	xl_set( xl, "N/A", 'FederalDepreciation');
+
+	xl_set ( xl, output('cf_energy_net'), "C96");
+	xl_set ( xl, output('cf_energy_value'), "C97");
 			
-	cashflow_to_excel_rescom(xl);
+	send_excel_rescom(xl);
 	send_excel_fuel(xl);
 
 };
@@ -1192,7 +1243,7 @@ cashflow_to_excel{ 'Commercial' } = define()
 	xl_set( xl, fed, 'FederalDepreciation');
 	send_excel( xl, 'cf_fed_depr_sched');
 
-	cashflow_to_excel_rescom(xl);
+	send_excel_rescom(xl);
 
 };
 
