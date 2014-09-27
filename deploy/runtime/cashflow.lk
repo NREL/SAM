@@ -1053,6 +1053,7 @@ function send_excel_fuel(xl)
 
 function send_excel_incentives(xl)
 {
+
 	send_excel(       xl, 'ibi_fed_amount');
 	send_excel_yesno( xl, 'ibi_fed_amount_deprbas_fed');
 	send_excel_yesno( xl, 'ibi_fed_amount_deprbas_sta');
@@ -1156,12 +1157,15 @@ function send_excel_incentives(xl)
 	send_excel_yesno( xl, 'itc_sta_percent_deprbas_fed');
 	send_excel_yesno( xl, 'itc_sta_percent_deprbas_sta');
 	send_excel(       xl, 'itc_sta_percent_maxvalue');
+	
 	send_excel(       xl, 'ptc_fed_amount');
 	send_excel(       xl, 'ptc_fed_term');
 	send_excel(       xl, 'ptc_fed_escal');
+	
 	send_excel(       xl, 'ptc_sta_amount');
 	send_excel(       xl, 'ptc_sta_term');
 	send_excel(       xl, 'ptc_sta_escal');
+	
 } 
 
 function send_excel_rescom(xl)
@@ -1217,7 +1221,7 @@ cashflow_to_excel{ 'Residential' } = define()
 	xl_set ( xl, output('cf_energy_net'), "AnnualEnergy");
 	xl_set ( xl, output('cf_energy_value'), "EnergyValue");
 
-	xl_free( xl );
+//	xl_free( xl ); // closes workbook
 
 };
 
@@ -1254,7 +1258,7 @@ cashflow_to_excel{ 'Commercial' } = define()
 	xl_set ( xl, output('cf_sta_depr_sched'), "StateDepreciationSchedule");
 	xl_set ( xl, output('cf_fed_depr_sched'), "FederalDepreciationSchedule");
 
-	xl_free( xl );
+//	xl_free( xl ); // closes workbook
 
 };
 
@@ -1303,7 +1307,7 @@ cashflow_to_excel{ 'Single Owner' } = define()
 	send_excel_yesno( xl, 'pbi_sta_for_ds');
 	send_excel_yesno( xl, 'pbi_oth_for_ds');
 	send_excel_yesno( xl, 'pbi_uti_for_ds');
-	
+
 	send_excel(       xl, 'om_capacity');
 	send_excel(       xl, 'om_capacity_escal');
 	send_excel(       xl, 'om_fixed');
@@ -1311,7 +1315,7 @@ cashflow_to_excel{ 'Single Owner' } = define()
 	send_excel(       xl, 'om_production');
 	send_excel(       xl, 'om_production_escal');
 	send_excel_fuel(xl);
-
+	
 	send_excel(       xl, 'analysis_period');
 	send_excel(       xl, 'construction_financing_cost');
 	send_excel(       xl, 'cost_debt_closing');
@@ -1349,6 +1353,7 @@ cashflow_to_excel{ 'Single Owner' } = define()
 	send_excel_yesno( xl, 'depr_itc_sta_sl_20');
 	send_excel_yesno( xl, 'depr_itc_sta_sl_39');
 	send_excel_yesno( xl, 'depr_itc_sta_sl_5');
+	
 	send_excel(       xl, 'dscr'); //input
 	send_excel(       xl, 'dscr_reserve_months');
 	send_excel_depr(  xl, 'equip_reserve_depr_fed');
@@ -1379,7 +1384,7 @@ cashflow_to_excel{ 'Single Owner' } = define()
 	send_excel(       xl, 'term_tenor');
 	send_excel(       xl, 'total_installed_cost');
 	
-	xl_free( xl );
+//	xl_free( xl ); // closes workbook
 };
 
 cashflow_to_excel{ 'Leveraged Partnership Flip' } = define()
