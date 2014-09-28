@@ -183,7 +183,10 @@ void LossDiagramObject::Render( wxPageOutputDevice &dv )
 			}
 			
 			dv.Text( textx, tpy-th, li.text );
-			dv.Text(textx, tpy + 0.1f*th, wxString::Format("-%.2f %%", li.value));
+			int ilv = li.value * 1000;
+			double lv = ilv / 1000.0;
+//			dv.Text(textx, tpy + 0.1f*th, wxString::Format("-%g %%", li.value));
+			dv.Text(textx, tpy + 0.1f*th, wxString::Format("-%g %%", lv));
 
 			cursize -= lw;
 		}
