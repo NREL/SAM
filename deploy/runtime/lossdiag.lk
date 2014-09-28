@@ -18,9 +18,9 @@ loss_diagram{'Flat Plate PV'} = define() {
 	add_loss_term( 'annual_ac_inv_clip_loss_percent', 'Inverter clipping' );	
 	add_loss_term( 'annual_ac_inv_pso_loss_percent', 'Inverter power' );	
 	add_loss_term( 'annual_ac_inv_pnt_loss_percent', 'Inverter night tare' );	
+	add_loss_term('annual_ac_inv_eff_loss_percent', 'Inverter effciency' );	
 	
 	new_baseline( 'annual_ac_gross', 'Gross AC energy (kWh)' );
-	add_loss_term('annual_ac_inv_eff_loss_percent', 'Inverter effciency' );	
 	add_loss_term('annual_ac_wiring_loss_percent', 'AC wiring' );	
 	add_loss_term('annual_ac_transformer_loss_percent', 'Step-up transformer' );	
 
