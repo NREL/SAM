@@ -148,7 +148,7 @@ function pv_metrics()
 	metric( 'annual_energy', {'label'='Annual Energy', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh' } );
 	metric( 'capacity_factor', {'label'='Capacity Factor', 'mode'='f', 'deci'='1', 'thousep'='true', 'post'='%' } );
 	metric( 'kwh_per_kw', {'label'='First Year kWhAC/kWDC', 'mode'='f', 'deci'='0', 'thousep'='true' } );
-	metric( 'annual_performance_factor', {'label'='Performance Factor', 'mode'='f', 'deci'='2', 'post'='%' } );
+	metric( 'performance_ratio', {'label'='Performance Ratio', 'mode'='f', 'deci'='3', 'post'='' } );
 	// where is the total land area metric?
 }
 
