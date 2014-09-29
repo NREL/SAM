@@ -73,7 +73,7 @@ public:
 			break;
 
 		case wxID_HELP:			
-			SamApp::ShowHelp("Weather Data Settings");
+			SamApp::ShowHelp("weather_manage_folders");
 			break;
 		}
 	}

@@ -526,7 +526,7 @@ void MainWindow::OnCommand( wxCommandEvent &evt )
 	switch( evt.GetId() )
 	{
 	case wxID_HELP:
-		SamApp::ShowHelp( cwin ? cwin->GetCurrentContext() : wxString("main") );
+		SamApp::ShowHelp( cwin ? cwin->GetCurrentContext() : wxString("welcome_page") );
 		break;
 	case ID_PAGE_NOTES:
 		if ( cwin != 0 )

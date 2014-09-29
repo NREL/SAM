@@ -111,7 +111,7 @@ void SolarProspectorDialog::OnEvt( wxCommandEvent &e )
 	switch( e.GetId() )
 	{
 	case wxID_HELP:
-		SamApp::ShowHelp("Solar Download File");
+		SamApp::ShowHelp("window_download_solar_resource");
 		break;
 	case ID_radAddress:
 	case ID_radLatLon:
