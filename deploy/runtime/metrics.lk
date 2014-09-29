@@ -225,9 +225,9 @@ function dish_stirling_metrics()
 function solar_water_metrics()
 {
 	metric( 'annual_energy', {'label'='Annual Energy Saved', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh' } );
+	metric( 'solar_fraction', {'label'='Solar Fraction', 'mode'='f', 'deci'='3', 'thousep'='false', 'post'='' } );
 	metric( 'annual_Q_aux', {'label'='Aux With Solar', 'mode'='f', 'deci'='1', 'thousep'='true', 'post'=' kWh' } );
 	metric( 'annual_Q_auxonly', {'label'='Aux Without Solar', 'mode'='f', 'deci'='1', 'thousep'='true', 'post'=' kWh' } );
-	metric( 'solar_fraction', {'label'='Annual Solar Fraction', 'mode'='f', 'deci'='3', 'thousep'='false' } );
 	metric( 'capacity_factor', {'label'='Capacity Factor', 'mode'='f', 'deci'='1', 'thousep'='true', 'post'='%' } );
 	metric( 'kwh_per_kw', {'label'='First Year kWhAC/kWDC', 'mode'='f', 'deci'='0', 'thousep'='true' } );
 }
