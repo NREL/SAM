@@ -1305,7 +1305,7 @@ void ShadeTool::OnCommand( wxCommandEvent &evt)
 #ifdef S3D_STANDALONE )
 		m_book->SetSelection( PG_HELP );
 #else
-		SamApp::ShowHelp( "3D Scene" );
+		SamApp::ShowHelp( "shade_calculator" );
 #endif
 		break;
 	}
