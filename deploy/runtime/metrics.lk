@@ -72,9 +72,9 @@ function aepf_metrics()
 	metric( 'sponsor_aftertax_irr', {'label'='After-tax Developer IRR', 'mode'='f', 'post'=' %', 'deci'='2' } );
 	metric( 'sponsor_aftertax_npv', {'label'='After-tax Developer NPV', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
 
-	metric( 'direct_cost', {'label'='Direct Cost', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
-	metric( 'indirect_cost', {'label'='Indirect Cost', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
-	metric( 'financing_cost', {'label'='Financing Cost', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
+//	metric( 'direct_cost', {'label'='Direct Cost', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
+//	metric( 'indirect_cost', {'label'='Indirect Cost', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
+//	metric( 'financing_cost', {'label'='Financing Cost', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
 	metric( 'cost_installed', {'label'='Total Project Cost', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
 	metric( 'size_of_equity', {'label'='Total Equity', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
 }
@@ -100,9 +100,9 @@ function lpf_metrics()
 
 	metric( 'debt_fraction', {'label'='Debt Fraction', 'post'=' %', 'mode'='f', 'deci'='2' } );
 
-	metric( 'direct_cost', {'label'='Direct Cost', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
-	metric( 'indirect_cost', {'label'='Indirect Cost', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
-	metric( 'financing_cost', {'label'='Financing Cost', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
+//	metric( 'direct_cost', {'label'='Direct Cost', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
+//	metric( 'indirect_cost', {'label'='Indirect Cost', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
+//	metric( 'financing_cost', {'label'='Financing Cost', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
 	metric( 'cost_installed', {'label'='Total Project Cost', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
 	metric( 'size_of_debt', {'label'='Total Debt', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
 	metric( 'size_of_equity', {'label'='Total Equity', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
@@ -129,9 +129,9 @@ function sl_metrics()
 	metric( 'sponsor_aftertax_npv', {'label'='After-tax Developer NPV', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
 
 
-	metric( 'direct_cost', {'label'='Direct Cost', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
-	metric( 'indirect_cost', {'label'='Indirect Cost', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
-	metric( 'financing_cost', {'label'='Financing Cost', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
+//	metric( 'direct_cost', {'label'='Direct Cost', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
+//	metric( 'indirect_cost', {'label'='Indirect Cost', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
+//	metric( 'financing_cost', {'label'='Financing Cost', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
 	metric( 'cost_installed', {'label'='Total Project Cost', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
 	metric( 'size_of_equity', {'label'='Total Equity', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
 }
