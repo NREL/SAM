@@ -54,33 +54,29 @@ Source: "libraries/*"; DestDir: "{app}/libraries"; Excludes: ".svn,*.map"; Flags
 Source: "runtime/*"; DestDir: "{app}/runtime"; Excludes: ".svn,*.map"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "solar_resource/*"; DestDir: "{app}/solar_resource"; Excludes: ".svn,*.map"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "wind_resource/*"; DestDir: "{app}/wind_resource"; Excludes: ".svn,*.map"; Flags: ignoreversion recursesubdirs createallsubdirs
-;32-bit
-Source: "win32/ssleay32.dll"; DestDir: "{app}/win32"; Excludes: ".svn,*.map"; Check: not Is64BitInstallMode; Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "win32/ssc.dll"; DestDir: "{app}/win32"; Excludes: ".svn,*.map"; Check: not Is64BitInstallMode;  Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "win32/msvcr120.dll"; DestDir: "{app}/win32"; Excludes: ".svn,*.map"; Check: not Is64BitInstallMode;  Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "win32/msvcp120.dll"; DestDir: "{app}/win32"; Excludes: ".svn,*.map"; Check: not Is64BitInstallMode;  Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "win32/libssh2.dll"; DestDir: "{app}/win32"; Excludes: ".svn,*.map"; Check: not Is64BitInstallMode;  Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "win32/libeay32.dll"; DestDir: "{app}/win32"; Excludes: ".svn,*.map"; Check: not Is64BitInstallMode;  Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "win32/libcurl.dll"; DestDir: "{app}/win32"; Excludes: ".svn,*.map"; Check: not Is64BitInstallMode;  Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "win32/sam.exe"; DestDir: "{app}/win32"; Excludes: ".svn,*.map"; Check: not Is64BitInstallMode;  Flags: ignoreversion recursesubdirs createallsubdirs
-; check inno setup dll version - should run on both 32 and 64 bit
-Source: "IssProc.dll"; DestDir: "{app}/win32"; Excludes: ".svn,*.map"; Check: not Is64BitInstallMode;  Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "dbghelp.dll"; DestDir: "{app}/win32"; Excludes: ".svn,*.map"; Check: not Is64BitInstallMode;  Flags: ignoreversion recursesubdirs createallsubdirs
-;64-bit
-Source: "win32/ssleay32.dll"; DestDir: "{app}/x64"; Excludes: ".svn,*.map"; Check: Is64BitInstallMode; Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "win32/ssc.dll"; DestDir: "{app}/x64"; Excludes: ".svn,*.map"; Check: Is64BitInstallMode;  Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "win32/msvcr120.dll"; DestDir: "{app}/x64"; Excludes: ".svn,*.map"; Check: Is64BitInstallMode;  Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "win32/msvcp120.dll"; DestDir: "{app}/x64"; Excludes: ".svn,*.map"; Check: Is64BitInstallMode;  Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "win32/libssh2.dll"; DestDir: "{app}/x64"; Excludes: ".svn,*.map"; Check: Is64BitInstallMode;  Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "win32/libeay32.dll"; DestDir: "{app}/x64"; Excludes: ".svn,*.map"; Check: Is64BitInstallMode;  Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "win32/libcurl.dll"; DestDir: "{app}/x64"; Excludes: ".svn,*.map"; Check: Is64BitInstallMode;  Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "win32/sam.exe"; DestDir: "{app}/x64"; Excludes: ".svn,*.map"; Check: Is64BitInstallMode;  Flags: ignoreversion recursesubdirs createallsubdirs
-; check inno setup dll version - should run on both 32 and 64 bit
-Source: "IssProc.dll"; DestDir: "{app}/x64"; Excludes: ".svn,*.map"; Check: Is64BitInstallMode;  Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "dbghelp.dll"; DestDir: "{app}/x64"; Excludes: ".svn,*.map"; Check: Is64BitInstallMode;  Flags: ignoreversion recursesubdirs createallsubdirs
+
+Source: "win32/ssleay32.dll"; DestDir: "{app}/win32"; Excludes: ".svn,*.map"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "win32/ssc.dll"; DestDir: "{app}/win32"; Excludes: ".svn,*.map";  Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "win32/msvcr120.dll"; DestDir: "{app}/win32"; Excludes: ".svn,*.map";  Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "win32/msvcp120.dll"; DestDir: "{app}/win32"; Excludes: ".svn,*.map";  Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "win32/libssh2.dll"; DestDir: "{app}/win32"; Excludes: ".svn,*.map";  Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "win32/libeay32.dll"; DestDir: "{app}/win32"; Excludes: ".svn,*.map";  Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "win32/libcurl.dll"; DestDir: "{app}/win32"; Excludes: ".svn,*.map";  Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "win32/sam.exe"; DestDir: "{app}/win32"; Excludes: ".svn,*.map";  Flags: ignoreversion recursesubdirs createallsubdirs
+
+Source: "x64/ssleay32.dll"; DestDir: "{app}/x64"; Excludes: ".svn,*.map"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "x64/ssc.dll"; DestDir: "{app}/x64"; Excludes: ".svn,*.map";  Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "x64/msvcr120.dll"; DestDir: "{app}/x64"; Excludes: ".svn,*.map";  Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "x64/msvcp120.dll"; DestDir: "{app}/x64"; Excludes: ".svn,*.map";  Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "x64/libssh2.dll"; DestDir: "{app}/x64"; Excludes: ".svn,*.map";  Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "x64/libeay32.dll"; DestDir: "{app}/x64"; Excludes: ".svn,*.map";  Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "x64/libcurl.dll"; DestDir: "{app}/x64"; Excludes: ".svn,*.map";  Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "x64/sam.exe"; DestDir: "{app}/x64"; Excludes: ".svn,*.map";  Flags: ignoreversion recursesubdirs createallsubdirs
+
+Source: "IssProc.dll"; DestDir: "{app}"; Excludes: ".svn,*.map";  Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "dbghelp.dll"; DestDir: "{app}"; Excludes: ".svn,*.map";  Flags: ignoreversion recursesubdirs createallsubdirs
 
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
-
 [Icons]
 ;Name: "{group}\System Advisor Beta (x64)"; Filename: "{app}\x64\sam.exe"
 Name: "{group}\System Advisor Beta"; Filename: "{app}\win32\sam.exe" ; Check: not Is64BitInstallMode
