@@ -356,8 +356,12 @@ cashflow{ 'Single Owner' } = define()
 	
 	cfline( '' );
 	cfline("CASH FLOWS FROM FINANCING ACTIVITIES", -1);
+	cfline('total_installed_cost',0);
+	cfline("minus:", -1, 0);
 	cfline( 'ibi_total', 0);
 	cfline( 'cbi_total', 0);
+	cfline( 'size_of_debt', 0);
+	cfline("equals:", -1, 0);
 	cfline( 'issuance_of_equity', 0);
 	cfline('cf_debt_payment_principal', 0);
 	cfline('cf_project_financing_activities', 0);
@@ -402,11 +406,10 @@ cashflow{ 'Single Owner' } = define()
 
 	cfline( '' );
 	cfline("STATE INCOME TAXES", -1);
-	cfline("plus:", -1, 0);
 	cfline('cf_ebitda', 0);
 	cfline('cf_reserve_interest', 0);
-	cfline('ibi_statax_total', 0);
-	cfline('cbi_statax_total', 0);
+	cfline('ibi_statax_total', 0, 1, 1);
+	cfline('cbi_statax_total', 0, 1, 1);
 	cfline('cf_pbi_statax_total', 0);
 	cfline("minus:", -1, 0);
 	cfline('cf_debt_payment_interest', 0);
@@ -418,14 +421,13 @@ cashflow{ 'Single Owner' } = define()
 
 	cfline( '' );
 	cfline("FEDERAL INCOME TAXES", -1);
-	cfline("plus:", -1, 0);
 	cfline('cf_ebitda', 0);
 	cfline('cf_reserve_interest', 0);
 	cfline('cf_statax', 0);
 	cfline('itc_total_sta', 0);
 	cfline('cf_ptc_sta', 0);
-	cfline('ibi_fedtax_total', 0);
-	cfline('cbi_fedtax_total', 0);
+	cfline('ibi_fedtax_total', 0, 1, 1);
+	cfline('cbi_fedtax_total', 0, 1, 1);
 	cfline('cf_pbi_fedtax_total', 0);
 	cfline("minus:", -1, 0);
 	cfline('cf_debt_payment_interest', 0);
