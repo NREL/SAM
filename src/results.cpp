@@ -1462,10 +1462,21 @@ public:
 		else return wxEmptyString;
 	}
 
+	bool IsTimeSeriesShown()
+	{
+		size_t steps_per_hour = MaxCount / 8760;
+		return ( MinCount == MaxCount 
+			&& steps_per_hour > 0
+			&& steps_per_hour <= 60
+			&& steps_per_hour*8760 == MaxCount );
+	}
+
 	virtual wxString GetRowLabelValue( int row )
 	{
-		if ( MinCount == MaxCount && MaxCount == 8760 )
-			return wxFormatTime( row );
+		if ( IsTimeSeriesShown() )
+			return wxFormatTime( ((double)row)/((double)(MaxCount/8760)), true );
+		else if ( MinCount == MaxCount && MaxCount == 12 )
+			return wxMonthName( row+1 );
 		else
 			return wxString::Format("%d",row+1);
 	}
@@ -1611,11 +1622,7 @@ void TabularBrowser::UpdateGrid()
 	m_gridTable->SetAttrProvider( new wxExtGridCellAttrProvider );
 	m_grid->SetTable(m_gridTable, true);
 
-	if ( m_gridTable->MinCount == m_gridTable->MaxCount
-		&& m_gridTable->MaxCount == 8760 )	
-		m_grid->SetRowLabelSize( 110 );
-	else
-		m_grid->SetRowLabelSize( 55 );
+	m_grid->SetRowLabelSize( m_gridTable->IsTimeSeriesShown() ? 115 : 55 );
 
 	wxClientDC cdc(this);
 	wxFont f = *wxNORMAL_FONT;
