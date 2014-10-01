@@ -1,5 +1,5 @@
-#define __BETARELEASE__ 1  // comment this line out to disable beta option
-#define __BETAWILLEXPIRE__ 1 // comment this line out to disable expiration of beta
+//#define __BETARELEASE__ 1  // comment this line out to disable beta option
+//#define __BETAWILLEXPIRE__ 1 // comment this line out to disable expiration of beta
 #define __BETAEXPIRE_DAY__ 26
 #define __BETAEXPIRE_MONTH__ wxDateTime::Nov
 #define __BETAEXPIRE_YEAR__ 2014
@@ -66,8 +66,8 @@ static wxArrayString g_appArgs;
 static MainWindow *g_mainWindow = 0;
 static wxConfig *g_config = 0;
 static const int g_verMajor = 2014;
-static const int g_verMinor = 9;
-static const int g_verMicro = 30;
+static const int g_verMinor = 10;
+static const int g_verMicro = 1;
 static ConfigDatabase g_cfgDatabase;
 static InputPageDatabase g_uiDatabase;
 static wxLogWindow *g_logWindow = 0;
