@@ -39,7 +39,7 @@ first_yr_dcac = get('system_capacity') * lid / get('total_inverter_capacity'); /
 last_yr_dcac = (get('system_capacity') * lid) * pow(panel_degrad, get('analysis_period')) / get('total_inverter_capacity'); //effective DC capacity at end of system lifetime after LID and panel degradation, over nameplate AC capacity (no inverter degradation)
 
 //First-year inverter clipping information
-hourly_cliploss = get('hourly_inv_cliploss');
+hourly_cliploss = get('inv_cliploss');
 clipped_hours = 0; //how many hours are clipped per year
 for (i=0; i<8760; i++)
 	if(hourly_cliploss[i]>0)
@@ -58,7 +58,7 @@ inv_voltage_max = get('vdcmax_inverter'); //Volts
 subarrays = [1, 0, 0, 0]; //subarray1 is always enabled
 actual_voltage_hi = [-999, -999, -999, -999]; //initialize arrays for each subarray
 actual_voltage_low = [999, 999, 999, 999];
-sunup = get('hourly_sunup');
+sunup = get('sunup');
 
 for (j=0; j<4; j++) //loop through subarrays
 {
@@ -69,7 +69,7 @@ for (j=0; j<4; j++) //loop through subarrays
 		else
 			subarrays[j] = 1;
 	}
-	string = 'hourly_subarray' + to_string(j+1) + '_dc_voltage';
+	string = 'subarray' + to_string(j+1) + '_dc_voltage';
 	dc_voltage = get(string); //Volts
 	actual_voltage_hi[j] = max(dc_voltage); //Volts
 	for(i=0; i<8760;i++)
