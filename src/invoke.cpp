@@ -1118,6 +1118,9 @@ void fcall_ssc_exec( lk::invoke_t &cxt )
 
 	cxt.result().assign( -999.0 );
 
+	wxString cm(cxt.arg(0).as_string().Lower());
+	wxBusyInfo info("Running compute module " + cm);
+
 	if ( ssc_module_t mod = ssc_module_create( cxt.arg(0).as_string().c_str() ) )
 	{
 		if( ssc_module_exec( mod, sg_sscData ) )
