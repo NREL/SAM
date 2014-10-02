@@ -15,14 +15,14 @@ function state_federal_depreciation_tables()
 	cfrow("Total,depr_stabas_percent_total,depr_alloc_total,depr_stabas_ibi_reduc_total,depr_stabas_cbi_reduc_total,depr_stabas_prior_itc_total,itc_sta_qual_total,depr_stabas_percent_qual_total,depr_stabas_percent_amount_total,itc_disallow_sta_percent_total,depr_stabas_fixed_amount_total,itc_disallow_sta_fixed_total,depr_stabas_itc_sta_reduction_total,depr_stabas_itc_fed_reduction_total,depr_stabas_after_itc_total,depr_stabas_first_year_bonus_total,depr_stabas_total");
 	
 	cfrow("Federal Depreciation & ITC", -1);
-	cfrow("5-yr MACRS,depr_fedbas_percent_macrs_5,depr_alloc_macrs_5,depr_fedbas_ibi_reduc_macrs_5,depr_fedbas_cbi_reduc_macrs_5,depr_fedbas_prior_itc_macrs_5,itc_fed_qual_macrs_5,depr_fedbas_percent_qual_macrs_5,depr_fedbas_percent_amount_macrs_5,itc_disallow_fed_percent_macrs_5,depr_fedbas_fixed_amount_macrs_5,itc_disallow_fed_fixed_macrs_5,depr_fedbas_itc_fed_reduction_macrs_5,depr_fedbas_itc_fed_reduction_macrs_5,depr_fedbas_after_itc_macrs_5,depr_fedbas_first_year_bonus_macrs_5,depr_fedbas_macrs_5");
-	cfrow("15-yr MACRS,depr_fedbas_percent_macrs_15,depr_alloc_macrs_15,depr_fedbas_ibi_reduc_macrs_15,depr_fedbas_cbi_reduc_macrs_15,depr_fedbas_prior_itc_macrs_15,itc_fed_qual_macrs_15,depr_fedbas_percent_qual_macrs_15,depr_fedbas_percent_amount_macrs_15,itc_disallow_fed_percent_macrs_15,depr_fedbas_fixed_amount_macrs_15,itc_disallow_fed_fixed_macrs_15,depr_fedbas_itc_fed_reduction_macrs_15,depr_fedbas_itc_fed_reduction_macrs_15,depr_fedbas_after_itc_macrs_15,depr_fedbas_first_year_bonus_macrs_15,depr_fedbas_macrs_15");
-	cfrow("5-yr Straight Line,depr_fedbas_percent_sl_5,depr_alloc_sl_5,depr_fedbas_ibi_reduc_sl_5,depr_fedbas_cbi_reduc_sl_5,depr_fedbas_prior_itc_sl_5,itc_fed_qual_sl_5,depr_fedbas_percent_qual_sl_5,depr_fedbas_percent_amount_sl_5,itc_disallow_fed_percent_sl_5,depr_fedbas_fixed_amount_sl_5,itc_disallow_fed_fixed_sl_5,depr_fedbas_itc_fed_reduction_sl_5,depr_fedbas_itc_fed_reduction_sl_5,depr_fedbas_after_itc_sl_5,depr_fedbas_first_year_bonus_sl_5,depr_fedbas_sl_5");
-	cfrow("15-yr Straight Line,depr_fedbas_percent_sl_15,depr_alloc_sl_15,depr_fedbas_ibi_reduc_sl_15,depr_fedbas_cbi_reduc_sl_15,depr_fedbas_prior_itc_sl_15,itc_fed_qual_sl_15,depr_fedbas_percent_qual_sl_15,depr_fedbas_percent_amount_sl_15,itc_disallow_fed_percent_sl_15,depr_fedbas_fixed_amount_sl_15,itc_disallow_fed_fixed_sl_15,depr_fedbas_itc_fed_reduction_sl_15,depr_fedbas_itc_fed_reduction_sl_15,depr_fedbas_after_itc_sl_15,depr_fedbas_first_year_bonus_sl_15,depr_fedbas_sl_15");
-	cfrow("20-yr Straight Line,depr_fedbas_percent_sl_20,depr_alloc_sl_20,depr_fedbas_ibi_reduc_sl_20,depr_fedbas_cbi_reduc_sl_20,depr_fedbas_prior_itc_sl_20,itc_fed_qual_sl_20,depr_fedbas_percent_qual_sl_20,depr_fedbas_percent_amount_sl_20,itc_disallow_fed_percent_sl_20,depr_fedbas_fixed_amount_sl_20,itc_disallow_fed_fixed_sl_20,depr_fedbas_itc_fed_reduction_sl_20,depr_fedbas_itc_fed_reduction_sl_20,depr_fedbas_after_itc_sl_20,depr_fedbas_first_year_bonus_sl_20,depr_fedbas_sl_20");
-	cfrow("39-yr Straight Line,depr_fedbas_percent_sl_39,depr_alloc_sl_39,depr_fedbas_ibi_reduc_sl_39,depr_fedbas_cbi_reduc_sl_39,depr_fedbas_prior_itc_sl_39,itc_fed_qual_sl_39,depr_fedbas_percent_qual_sl_39,depr_fedbas_percent_amount_sl_39,itc_disallow_fed_percent_sl_39,depr_fedbas_fixed_amount_sl_39,itc_disallow_fed_fixed_sl_39,depr_fedbas_itc_fed_reduction_sl_39,depr_fedbas_itc_fed_reduction_sl_39,depr_fedbas_after_itc_sl_39,depr_fedbas_first_year_bonus_sl_39,depr_fedbas_sl_39");
-	cfrow("Custom,depr_fedbas_percent_custom,depr_alloc_custom,depr_fedbas_ibi_reduc_custom,depr_fedbas_cbi_reduc_custom,depr_fedbas_prior_itc_custom,itc_fed_qual_custom,depr_fedbas_percent_qual_custom,depr_fedbas_percent_amount_custom,itc_disallow_fed_percent_custom,depr_fedbas_fixed_amount_custom,itc_disallow_fed_fixed_custom,depr_fedbas_itc_fed_reduction_custom,depr_fedbas_itc_fed_reduction_custom,depr_fedbas_after_itc_custom,depr_fedbas_first_year_bonus_custom,depr_fedbas_custom");
-	cfrow("Total,depr_fedbas_percent_total,depr_alloc_total,depr_fedbas_ibi_reduc_total,depr_fedbas_cbi_reduc_total,depr_fedbas_prior_itc_total,itc_fed_qual_total,depr_fedbas_percent_qual_total,depr_fedbas_percent_amount_total,itc_disallow_fed_percent_total,depr_fedbas_fixed_amount_total,itc_disallow_fed_fixed_total,depr_fedbas_itc_fed_reduction_total,depr_fedbas_itc_fed_reduction_total,depr_fedbas_after_itc_total,depr_fedbas_first_year_bonus_total,depr_fedbas_total");
+	cfrow("5-yr MACRS,depr_fedbas_percent_macrs_5,depr_alloc_macrs_5,depr_fedbas_ibi_reduc_macrs_5,depr_fedbas_cbi_reduc_macrs_5,depr_fedbas_prior_itc_macrs_5,itc_fed_qual_macrs_5,depr_fedbas_percent_qual_macrs_5,depr_fedbas_percent_amount_macrs_5,itc_disallow_fed_percent_macrs_5,depr_fedbas_fixed_amount_macrs_5,itc_disallow_fed_fixed_macrs_5,depr_fedbas_itc_sta_reduction_macrs_5,depr_fedbas_itc_fed_reduction_macrs_5,depr_fedbas_after_itc_macrs_5,depr_fedbas_first_year_bonus_macrs_5,depr_fedbas_macrs_5");
+	cfrow("15-yr MACRS,depr_fedbas_percent_macrs_15,depr_alloc_macrs_15,depr_fedbas_ibi_reduc_macrs_15,depr_fedbas_cbi_reduc_macrs_15,depr_fedbas_prior_itc_macrs_15,itc_fed_qual_macrs_15,depr_fedbas_percent_qual_macrs_15,depr_fedbas_percent_amount_macrs_15,itc_disallow_fed_percent_macrs_15,depr_fedbas_fixed_amount_macrs_15,itc_disallow_fed_fixed_macrs_15,depr_fedbas_itc_sta_reduction_macrs_15,depr_fedbas_itc_fed_reduction_macrs_15,depr_fedbas_after_itc_macrs_15,depr_fedbas_first_year_bonus_macrs_15,depr_fedbas_macrs_15");
+	cfrow("5-yr Straight Line,depr_fedbas_percent_sl_5,depr_alloc_sl_5,depr_fedbas_ibi_reduc_sl_5,depr_fedbas_cbi_reduc_sl_5,depr_fedbas_prior_itc_sl_5,itc_fed_qual_sl_5,depr_fedbas_percent_qual_sl_5,depr_fedbas_percent_amount_sl_5,itc_disallow_fed_percent_sl_5,depr_fedbas_fixed_amount_sl_5,itc_disallow_fed_fixed_sl_5,depr_fedbas_itc_fed_reduction_sl_5,depr_fedbas_itc_sta_reduction_sl_5,depr_fedbas_after_itc_sl_5,depr_fedbas_first_year_bonus_sl_5,depr_fedbas_sl_5");
+	cfrow("15-yr Straight Line,depr_fedbas_percent_sl_15,depr_alloc_sl_15,depr_fedbas_ibi_reduc_sl_15,depr_fedbas_cbi_reduc_sl_15,depr_fedbas_prior_itc_sl_15,itc_fed_qual_sl_15,depr_fedbas_percent_qual_sl_15,depr_fedbas_percent_amount_sl_15,itc_disallow_fed_percent_sl_15,depr_fedbas_fixed_amount_sl_15,itc_disallow_fed_fixed_sl_15,depr_fedbas_itc_fed_reduction_sl_15,depr_fedbas_itc_sta_reduction_sl_15,depr_fedbas_after_itc_sl_15,depr_fedbas_first_year_bonus_sl_15,depr_fedbas_sl_15");
+	cfrow("20-yr Straight Line,depr_fedbas_percent_sl_20,depr_alloc_sl_20,depr_fedbas_ibi_reduc_sl_20,depr_fedbas_cbi_reduc_sl_20,depr_fedbas_prior_itc_sl_20,itc_fed_qual_sl_20,depr_fedbas_percent_qual_sl_20,depr_fedbas_percent_amount_sl_20,itc_disallow_fed_percent_sl_20,depr_fedbas_fixed_amount_sl_20,itc_disallow_fed_fixed_sl_20,depr_fedbas_itc_fed_reduction_sl_20,depr_fedbas_itc_sta_reduction_sl_20,depr_fedbas_after_itc_sl_20,depr_fedbas_first_year_bonus_sl_20,depr_fedbas_sl_20");
+	cfrow("39-yr Straight Line,depr_fedbas_percent_sl_39,depr_alloc_sl_39,depr_fedbas_ibi_reduc_sl_39,depr_fedbas_cbi_reduc_sl_39,depr_fedbas_prior_itc_sl_39,itc_fed_qual_sl_39,depr_fedbas_percent_qual_sl_39,depr_fedbas_percent_amount_sl_39,itc_disallow_fed_percent_sl_39,depr_fedbas_fixed_amount_sl_39,itc_disallow_fed_fixed_sl_39,depr_fedbas_itc_fed_reduction_sl_39,depr_fedbas_itc_sta_reduction_sl_39,depr_fedbas_after_itc_sl_39,depr_fedbas_first_year_bonus_sl_39,depr_fedbas_sl_39");
+	cfrow("Custom,depr_fedbas_percent_custom,depr_alloc_custom,depr_fedbas_ibi_reduc_custom,depr_fedbas_cbi_reduc_custom,depr_fedbas_prior_itc_custom,itc_fed_qual_custom,depr_fedbas_percent_qual_custom,depr_fedbas_percent_amount_custom,itc_disallow_fed_percent_custom,depr_fedbas_fixed_amount_custom,itc_disallow_fed_fixed_custom,depr_fedbas_itc_fed_reduction_custom,depr_fedbas_itc_sta_reduction_custom,depr_fedbas_after_itc_custom,depr_fedbas_first_year_bonus_custom,depr_fedbas_custom");
+	cfrow("Total,depr_fedbas_percent_total,depr_alloc_total,depr_fedbas_ibi_reduc_total,depr_fedbas_cbi_reduc_total,depr_fedbas_prior_itc_total,itc_fed_qual_total,depr_fedbas_percent_qual_total,depr_fedbas_percent_amount_total,itc_disallow_fed_percent_total,depr_fedbas_fixed_amount_total,itc_disallow_fed_fixed_total,depr_fedbas_itc_fed_reduction_total,depr_fedbas_itc_sta_reduction_total,depr_fedbas_after_itc_total,depr_fedbas_first_year_bonus_total,depr_fedbas_total");
 }
 
 function cf_cash_incentives()
@@ -1281,6 +1281,21 @@ cashflow_to_excel{ 'Single Owner' } = define()
 	xl_set( xl, output('cf_energy_net'), "AnnualEnergy");
 	xl_set( xl, output('cf_ppa_price'), "AnnualPPAPrice");
 	
+	//determine whether to send ppa price and irr inputs or outputs depending on solution mode
+	send_excel( xl, 'ppa_escalation'); 	
+	if ( value('ppa_soln_mode') == 0 ) //IRR is input
+	{
+		xl_set ( xl, value('flip_target_percent'), "IRRTarget");
+		xl_set ( xl, value('flip_target_year'), "IRRTargetYear");
+		xl_set ( xl, "Calculated", "PPAPriceInput" ); 
+	}
+	else //PPA price is input
+	{
+		xl_set ( xl, "Calculated", "IRRTarget");
+		xl_set ( xl, "Calculated", "IRRTargetYear");
+		xl_set ( xl, value('ppa_price_input'), "PPAPriceInput" ); 
+	}
+	
 	//show construction financing cost calculation in spreadsheet
 	//(ssc only uses total cost as input, so these are UI inputs from input form)
 	send_excel( xl, 'const_per_percent1');
@@ -1367,12 +1382,9 @@ cashflow_to_excel{ 'Single Owner' } = define()
 	send_excel(       xl, 'equip3_reserve_cost');
 	send_excel(       xl, 'equip3_reserve_freq');
 	send_excel(       xl, 'federal_tax_rate');
-	send_excel(       xl, 'flip_target_percent');
-	send_excel(       xl, 'flip_target_year');
 	send_excel(       xl, 'inflation_rate');
 	send_excel(       xl, 'insurance_rate');
 	send_excel(       xl, 'months_working_reserve');
-	send_excel(       xl, 'ppa_escalation');
 	send_excel(       xl, 'prop_tax_assessed_decline');
 	send_excel(       xl, 'prop_tax_cost_assessed_percent');
 	send_excel(       xl, 'property_tax_rate');
