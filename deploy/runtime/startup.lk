@@ -9,7 +9,7 @@ addconfig( 'Biopower', ['Commercial', 'Single Owner', 'Leveraged Partnership Fli
 addconfig( 'Geothermal Power', ['Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'None']);
 addconfig( 'Solar Water Heating', ['Residential', 'Commercial', 'None']);
 addconfig( 'Generic System', ['Residential', 'Commercial', 'Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'None']);
-addconfig( 'MSPT', ['Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'None']);
+addconfig( 'MSPT', ['Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback']);
 addconfig( 'Empirical Trough', ['Commercial','Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'None']);
 addconfig( 'Physical Trough', ['Commercial','Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'None']);
 addconfig( 'Linear Fresnel Steam', ['Commercial','Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'None']);
