@@ -1059,7 +1059,7 @@ setup_biopower_pages();
 function setup_MSPT_pages()
 {
 	addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource', 'help'='tower_location_and_resource' } );
-	addpage( [[ 'Molten Salt Tower Solar Field' ]], { 'sidebar'='Heliostat Field', 'help'='towerms_heliostat_field' } );
+	addpage( [[ 'Tower Solar Field' ]], { 'sidebar'='Heliostat Field', 'help'='towerms_heliostat_field' } );
 	addpage( [[ 'Molten Salt Tower Receiver' ]], { 'sidebar'='Tower and Receiver', 'help'='towerms_tower_and_receiver' } );
 	addpage( [[ 'Molten Salt Tower Power Block' ]], { 'sidebar'='Power Cycle', 'help'='towerms_power_cycle' } );
 	addpage( [[ 'Molten Salt Tower Storage' ,
@@ -1075,7 +1075,7 @@ setconfig( 'MSPT', 'Leveraged Partnership Flip' );
 setmodules( ['tcsmolten_salt', 'levpartflip']);
 setting( { 'analysis_period_var'='cf_length' } );
 setup_MSPT_pages();
-addpage( [[ 'Molten Salt Tower Capital Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='towerms_system_costs' } );
+addpage( [[ 'Tower Capital Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='towerms_system_costs' } );
 setup_leveraged_partnership_flip_pages();
 
 //-----------------------------------------------------
@@ -1083,7 +1083,7 @@ setconfig( 'MSPT', 'All Equity Partnership Flip' );
 setmodules( ['tcsmolten_salt', 'equpartflip']);
 setting( { 'analysis_period_var'='cf_length' } );
 setup_MSPT_pages();
-addpage( [[ 'Molten Salt Tower Capital Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='towerms_system_costs' } );
+addpage( [[ 'Tower Capital Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='towerms_system_costs' } );
 setup_all_equity_partnership_flip_pages();
 
 //-----------------------------------------------------
@@ -1091,7 +1091,7 @@ setconfig( 'MSPT', 'Sale Leaseback' );
 setmodules( ['tcsmolten_salt', 'saleleaseback']);
 setting( { 'analysis_period_var'='cf_length' } );
 setup_MSPT_pages();
-addpage( [[ 'Molten Salt Tower Capital Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='towerms_system_costs' } );
+addpage( [[ 'Tower Capital Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='towerms_system_costs' } );
 setup_sale_leaseback_pages();
 
 //-----------------------------------------------------
@@ -1099,13 +1099,9 @@ setconfig( 'MSPT', 'Single Owner' );
 setmodules( ['tcsmolten_salt', 'singleowner']);
 setting( { 'analysis_period_var'='cf_length' } );
 setup_MSPT_pages();
-addpage( [[ 'Molten Salt Tower Capital Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='towerms_system_costs' } );
+addpage( [[ 'Tower Capital Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='towerms_system_costs' } );
 setup_single_owner_pages();
 
-//-----------------------------------------------------
-setconfig( 'MSPT', 'None' );
-setmodules( ['tcsmolten_salt']);
-setup_MSPT_pages();
 
 // Linear Fresnel ////////////////////////////////////////////////////////////////////
 function setup_linear_fresnel_pages()
