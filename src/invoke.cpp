@@ -1112,18 +1112,61 @@ void fcall_ssc_reset( lk::invoke_t &cxt )
 	ssc_data_clear( sg_sscData );
 }
 
+
+static ssc_bool_t ssc_exec_handler( ssc_module_t p_mod, ssc_handler_t p_handler,
+	int action_type, float f0, float f1, 
+	const char *s0, const char *s1,
+	void *user_data )
+{
+	ThreadProgressDialog *tpd = (ThreadProgressDialog*) user_data;
+	if (action_type == SSC_LOG)
+	{		
+		switch( (int)f0 )
+		{
+		case SSC_NOTICE:
+		case SSC_WARNING:
+		case SSC_ERROR:
+			tpd->Log( s0 );
+			break;
+		}
+		
+		wxGetApp().Yield( true );
+		return tpd->IsCanceled() ? 0 : 1;		
+	}
+	else if (action_type == SSC_UPDATE)
+	{
+		tpd->Update( 0, f0, s0 );
+		wxGetApp().Yield( true );
+		return tpd->IsCanceled() ? 0 : 1;
+	}
+	else
+		return 0;
+}
+
 void fcall_ssc_exec( lk::invoke_t &cxt )
 {
-	LK_DOC( "ssc_exec", "Run a compute module with the provided data context. returns zero if successful", "( string:module ):variant" );
-
+	LK_DOC( "ssc_exec", "Run a compute module with the provided data context. returns zero if successful", "( string:module, [boolean:show dialog] ):variant" );
 	cxt.result().assign( -999.0 );
-
 	wxString cm(cxt.arg(0).as_string().Lower());
-	wxBusyInfo info("Running compute module " + cm);
+
+	ThreadProgressDialog *tpd = 0;
+	if ( cxt.arg_count() > 1 && cxt.arg(1).as_boolean() )
+	{
+		tpd = new ThreadProgressDialog( SamApp::Window(), 1 );
+		tpd->CenterOnParent();
+		tpd->Show();
+		tpd->Status( "Calculating...");
+		tpd->ShowBars( 1 );
+		wxGetApp().Yield( true );
+	}
 
 	if ( ssc_module_t mod = ssc_module_create( cxt.arg(0).as_string().c_str() ) )
 	{
-		if( ssc_module_exec( mod, sg_sscData ) )
+		int result = tpd != 0
+			? ssc_module_exec_with_handler( mod, sg_sscData, ssc_exec_handler, tpd )
+			: ssc_module_exec( mod, sg_sscData );
+
+		if( result )
 		{
 			cxt.result().assign( 0.0 );
 		}
@@ -1143,6 +1186,9 @@ void fcall_ssc_exec( lk::invoke_t &cxt )
 
 		ssc_module_free( mod );
 	}
+
+	if ( tpd != 0 )
+		delete tpd;
 }
 
 void fcall_substance_density(lk::invoke_t &cxt)

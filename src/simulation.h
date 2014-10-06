@@ -125,7 +125,7 @@ class wxMetroButton;
 class ThreadProgressDialog : public wxDialog
 {
 public:
-	ThreadProgressDialog(wxWindow *parent, int nthreads);
+	ThreadProgressDialog(wxWindow *parent, int nthreads, bool border=false);
 		bool IsCanceled() { return m_canceled; }
 	void Log( const wxArrayString &list );
 	void Log( const wxString &text );
