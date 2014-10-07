@@ -948,7 +948,7 @@ END_EVENT_TABLE( )
 
 ThreadProgressDialog::ThreadProgressDialog(wxWindow *parent, int nthreads, bool border)
 	: wxDialog( parent, wxID_ANY, wxEmptyString, wxDefaultPosition, 
-	wxSize(625, 475), (border ? wxBORDER_NONE : wxBORDER_SIMPLE )
+	wxSize(625, 475), (border ? wxBORDER_SIMPLE : wxBORDER_NONE )
 #ifdef __WXOSX__
 	|wxSTAY_ON_TOP // on OSX for some reason, we need this for the dialog show up on top of the transparent pane which is the parent
 #endif
