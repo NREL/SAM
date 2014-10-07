@@ -1152,7 +1152,7 @@ void fcall_ssc_exec( lk::invoke_t &cxt )
 	ThreadProgressDialog *tpd = 0;
 	if ( cxt.arg_count() > 1 && cxt.arg(1).as_boolean() )
 	{
-		tpd = new ThreadProgressDialog( SamApp::Window(), 1 );
+		tpd = new ThreadProgressDialog( SamApp::Window(), 1, true );
 		tpd->CenterOnParent();
 		tpd->Show();
 		tpd->Status( "Calculating...");

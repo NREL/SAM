@@ -238,6 +238,8 @@ ResultsViewer::ResultsViewer( wxWindow *parent, int id )
 	m_cashFlowTable->EnableEditing(false);
 	m_cashFlowTable->EnableCopyPaste(true);
 	m_cashFlowTable->EnablePasteEvent(false);
+	m_cashFlowTable->SetRowLabelSize( 300 );
+
 	m_depreciationTable = new wxExtGridCtrl(m_cf_splitter, wxID_ANY);
 	m_depreciationTable->SetFont(*wxNORMAL_FONT);
 	m_depreciationTable->CreateGrid(1, 1);
@@ -252,6 +254,7 @@ ResultsViewer::ResultsViewer( wxWindow *parent, int id )
 	m_depreciationTable->EnableEditing(false);
 	m_depreciationTable->EnableCopyPaste(true);
 	m_depreciationTable->EnablePasteEvent(false);
+
 	wxBoxSizer *cf_tools = new wxBoxSizer(wxHORIZONTAL);
 	cf_tools->Add(new wxButton(m_cf_top_panel, ID_CF_COPY, "Copy to clipboard"), 0, wxALL, 2);
 	cf_tools->Add(new wxButton(m_cf_top_panel, ID_CF_SAVECSV, "Save as CSV"), 0, wxALL, 2);
@@ -867,22 +870,25 @@ void ResultsViewer::Setup( Simulation *sim )
 				cashflow_row++;
 			}
 		}
-
+		
+		m_cashFlowTable->ResizeGrid(cashflow_row, nyears);
 		m_cashFlowTable->SetRowLabelSize(wxGRID_AUTOSIZE);
 		m_cashFlowTable->SetColLabelSize(wxGRID_AUTOSIZE);
-		m_depreciationTable->SetRowLabelSize(wxGRID_AUTOSIZE);
-		m_depreciationTable->SetColLabelSize(wxGRID_AUTOSIZE);
-		m_cashFlowTable->AutoSize();
-		m_depreciationTable->AutoSize();
-		m_cashFlowTable->EnableCopyPaste(true);
-		m_cashFlowTable->ResizeGrid(cashflow_row, nyears);
-		m_depreciationTable->EnableCopyPaste(true);
-		m_depreciationTable->ResizeGrid(depreciation_row, 16);
-
 		m_cashFlowTable->Thaw();
-		m_depreciationTable->Thaw();
-
+				
 		m_depreciationTable->Show(depreciation_row > 0);
+		if ( depreciation_row > 0 )
+		{
+			m_depreciationTable->ResizeGrid(depreciation_row, 16);
+			m_depreciationTable->SetRowLabelSize(wxGRID_AUTOSIZE);
+			m_depreciationTable->SetColLabelSize(wxGRID_AUTOSIZE);
+			for( int i=0;i<m_depreciationTable->GetNumberCols();i++) 
+				m_depreciationTable->SetColSize( i, wxGRID_AUTOSIZE );
+
+			m_depreciationTable->Thaw();
+		}
+		
+
 		if (!m_depreciationTable->IsShown())
 		{
 			m_cf_splitter->Unsplit();
