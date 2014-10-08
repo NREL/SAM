@@ -133,13 +133,15 @@ public:
 	void Status( const wxString & );
 	void Reset();
 	void ShowBars( int n=-1 );
-	void OnCancel(wxCommandEvent &evt);
-	void OnClose( wxCommandEvent &evt );
-	void OnDialogClose(wxCloseEvent &evt);
 	void SetButtonText( const wxString &txt );
 	bool HasMessages();
 	wxString GetMessages();
+	void ShowSaveLogButton();
 
+	void OnCancel(wxCommandEvent &evt);
+	void OnClose( wxCommandEvent &evt );
+	void OnDialogClose(wxCloseEvent &evt);
+	void OnSaveLog( wxCommandEvent & );
 protected:
 	bool m_canceled;
 	std::vector<wxStaticText*> m_labels;
@@ -147,8 +149,9 @@ protected:
 	std::vector<wxTextCtrl*> m_percents;
 	wxStaticText *m_status;
 	wxTextCtrl *m_log;
-	wxMetroButton *m_button;
+	wxMetroButton *m_button, *m_saveLog;
 	wxFrame *m_transp;
+
 	
 	DECLARE_EVENT_TABLE()
 };

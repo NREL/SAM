@@ -6,6 +6,8 @@
 #include <wx/thread.h>
 #include <wx/statline.h>
 #include <wx/stattext.h>
+#include <wx/file.h>
+#include <wx/ffile.h>
 
 #include <wex/metro.h>
 
@@ -942,6 +944,7 @@ int Simulation::DispatchThreads( ThreadProgressDialog &tpd,
 
 
 BEGIN_EVENT_TABLE( ThreadProgressDialog, wxDialog )
+	EVT_BUTTON( wxID_SAVE, ThreadProgressDialog::OnSaveLog )
 	EVT_BUTTON( wxID_CANCEL, ThreadProgressDialog::OnCancel )
 	EVT_CLOSE( ThreadProgressDialog::OnDialogClose )
 END_EVENT_TABLE( )
@@ -994,14 +997,30 @@ ThreadProgressDialog::ThreadProgressDialog(wxWindow *parent, int nthreads, bool 
 	m_log = new wxTextCtrl( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxTE_MULTILINE|wxBORDER_NONE );
 	m_log->SetForegroundColour( wxMetroTheme::Colour( wxMT_TEXT ) );		
 	szv->Add( m_log, 1, wxALL|wxEXPAND, 10 );
+
 	szv->Add( m_button, 0, wxALIGN_CENTER_VERTICAL|wxCENTER|wxLEFT|wxRIGHT|wxBOTTOM, 10);
 
+	
+	// not in a sizer.  will be manually positioned when ShowSaveLogButton is called.
+	m_saveLog = new wxMetroButton(this, wxID_SAVE, "Save log");
+	m_saveLog->Hide();
+	
 	SetSizer(szv);
 }
 
 void ThreadProgressDialog::SetButtonText( const wxString &text )
 {
 	m_button->SetLabel( text );
+	Layout();
+	wxYield();
+}
+
+void ThreadProgressDialog::ShowSaveLogButton()
+{
+	wxSize client( GetClientSize() );
+	wxSize best( m_saveLog->GetBestSize() );
+	m_saveLog->SetSize( 10, client.y - best.y - 10, best.x, best.y );
+	m_saveLog->Show();
 	Layout();
 	wxYield();
 }
@@ -1072,6 +1091,18 @@ void ThreadProgressDialog::Update(int ThreadNum, float percent, const wxString &
 	}
 }
 
+void ThreadProgressDialog::OnSaveLog( wxCommandEvent & )
+{
+	wxFileDialog dialog( this, "Save simulation messages", wxEmptyString, "log.txt", "Text files (*.txt)|*.txt", wxFD_SAVE|wxFD_OVERWRITE_PROMPT );
+	if ( wxID_OK == dialog.ShowModal() )
+	{
+		wxFile fp( dialog.GetPath(), wxFile::write );
+		if ( fp.IsOpened() )
+			fp.Write( m_log->GetValue() );
+		else
+			wxMessageBox("Could not write to file:\n\n" + dialog.GetPath() );
+	}
+}
 	
 void ThreadProgressDialog::OnCancel(wxCommandEvent &evt)
 {
@@ -1120,6 +1151,7 @@ void SimulationDialog::Finalize( const wxString &title )
 
 		m_tpd->ShowBars( 0 );
 		m_tpd->SetButtonText( "Close" );
+		m_tpd->ShowSaveLogButton();
 		m_tpd->Hide();
 		m_tpd->ShowModal();
 	}
