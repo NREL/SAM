@@ -1227,7 +1227,7 @@ function setup_MSLF_pages()
 	 { 'sidebar'='Collector and Receiver', 'help'='mslf_collector_and_receiver' } );
 
 	addpage( [[ 'Molten Salt Tower Power Block' ]], { 'sidebar'='Power Cycle', 'help'='towerms_power_cycle' } );
-	addpage( [[ 'Molten Salt Tower Storage' ,
+	addpage( [[ 'Molten Salt Linear Fresnel Storage' ,
 	  {'name' = 'CSP Dispatch Control', 'caption'='Dispatch Control', 'collapsible'=false, 'collapsible_var'='csp_dispatch_is_shown'} ]], 
 	  { 'sidebar'='Thermal Storage', 'help'='towerms_thermal_storage' } );
 	addpage( [[ 'Molten Salt Linear Fresnel Parasitics' ]], { 'sidebar'='Parasitics', 'help'='towerms_parasitics' } );
