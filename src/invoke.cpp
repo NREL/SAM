@@ -193,7 +193,10 @@ static void fcall_curl( lk::invoke_t &cxt )
 	if( cxt.arg_count() > 1 )
 		curl.SetPostData( cxt.arg(1).as_string() );
 	
-	if ( !curl.Start( cxt.arg(0).as_string(), true ) )
+	wxString url(cxt.arg(0).as_string());
+	url.Replace( "<SAMAPIKEY:WIND_BARRIERS>", "bd36882a2551ce65f1326626dcd110785ae967e2" );
+
+	if ( !curl.Start( url, true ) )
 	{
 		cxt.result().assign( 0.0 );
 		return;
