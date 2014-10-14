@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+   <title>Time Convention and Sun Position</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="" />
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+   
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+   <style type="text/css">
+     body { margin: 0px; background: #FFFFFF; }
+   </style>
+   <script type="text/javascript" src="jquery.js"></script>
+   <script type="text/javascript" src="helpman_settings.js"></script>
+   <script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <script type="text/javascript">
+     HMSyncTOC("index.html", "weather_time_convention.htm");
+   </script>
+   <script type="text/javascript" src="highlight.js"></script>
+   <script type="text/javascript">
+     $(document).ready(function(){highlight();});
+   </script>
+</head>
+<body>
+
+
+<table style="width:100%; border:none; border-spacing:0px; padding:5px; background:#FFFFFF; color:#0072C6;">
+  <tr style="vertical-align:middle">
+    <td style="text-align:left">
+      <h1 class="p_Heading1"><span class="f_Heading1">Time Convention and Sun Position</span></h1>
+
+    </td>
+  </tr>
+</table>
+
+
+<!-- Placeholder for topic body. -->
+<table style="width:100%;border:none;border-spacing:0px"><tr style="vertical-align:top"><td style="text-align:left;padding:5px">
+<p class="p_Text"><span class="f_Text">The time convention of the weather data file determines the time convention of SAM's simulations. For example, a weather file with hourly data will cause SAM to run 8,760 hourly simulations to calculate the system's output over a single year. A weather file with 15-minute weather data will cause SAM to run 30,640 hourly simulations.</span></p>
+<p class="p_Note"><span class="f_CHNote">Note.</span><span class="f_Note"> SAM's detailed photovoltaic, PVWatts, solar water heating, and physical trough performance models have been tested with sub-hourly weather data. The other models may not work with sub-hourly weather data.</span></p>
+<p class="p_Text"><span class="f_Text">SAM assumes that the first row of data in the weather file is for the time step beginning at 12 a.m. (midnight) on January 1, local standard time. For hourly data, the first row is for the hour ending at 1 a.m. on January 1. For 15-minute data, the first row is for the quarter hour ending at 1:15 a.m. on January 1.</span></p>
+<p class="p_Text"><span class="f_Text">For solar resource data, the weather file's time step depends on the number of weather data rows (not including the header rows) in the weather file. An hourly weather file should have 8,760 rows of data. A 15-minute weather file should have 35,640 rows.</span></p>
+<p class="p_Text"><span class="f_Text">For wind resource data, the last two columns of the first header row indicate the time step in hours (1=hourly, 0.25=15-minute, etc.), and number of time steps (8,760 for hourly, 36,640 for 15-minute, etc.). The values in the header must match the number of rows.</span></p>
+<p class="p_Text"><span class="f_Text">For solar radiation data, solar radiation values represent the total energy received during the number of minutes in the preceding time step. For example, for an hourly weather file, the global horizontal radiation in the first row represents the total radiation incident on a horizontal surface between midnight and 1:00 am of the first day of the year.</span></p>
+<p class="p_Text"><span class="f_Text">SAM weather files do not account for leap years or for daylight savings time. </span></p>
+<p class="p_Text"><span class="f_Text">For solar resource data, SAM assumes that the solar angle at the middle of the time step (at 30 minutes past the hour for hourly data) applies to the entire time step. For the sunrise time step, the sun position is at the midpoint between sunrise time and the end of the time step. Similarly, for the sunset hour, the sun position is the midpoint between the beginning of the time step and sunset time. The air mass calculation uses the site elevation value from the weather file header and the solar zenith angle calculated for each time step.</span></p>
+<p class="p_Text"><span class="f_Text">Wind speed, ambient temperature, atmospheric pressure, and humidity values are instantaneous values at the end of the hour.</span></p>
+<p class="p_Text"><span class="f_Text">For financial model time-dependent calculations, SAM assumes that the weather file starts at 12 a.m. (midnight) on Monday, January 1. Weekdays are Monday through Friday. Weekends are Saturday and Sunday.</span></p>
+
+</td></tr></table>
+
+</body>
+</html>
