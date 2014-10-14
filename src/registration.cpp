@@ -1257,8 +1257,43 @@ SamRegistration::SamRegistration( wxWindow *parent )
 	m_close->SetFocus();
 }
 
+bool SamRegistration::ShowNotice()
+{
+	wxString text( "Information about registration:\n\n"
+		"Registration of the free SAM is required for its continued use. "
+		"NREL collects information on who uses SAM and how frequently it is used to "
+		"justify requests for continued project funding from the Department of Energy "
+		"so that we can provide you with new features, bug fixes, and direct user support. "
+		"Your email address, registration key, computer's IP address, and the number of "
+		"times you have started each version of the SAM software is recorded in a "
+		"secure database on NREL's servers.  We do not collect any information on which models "
+		"you are using, or what input values you have entered. "
+		"Although we share your privacy concerns, "
+		"this information is essential to demonstrate SAM's positive impact on the community "
+		"to our sponsors.  We appreciate your understanding.\n\n"
+		"If you feel unable to agree to these terms, press Cancel, and please contact user support "
+		"at sam.support@nrel.gov so that we may learn more about your specific situation.");
+
+	wxDialog dlg( NULL, wxID_ANY, "Notice" );
+	dlg.SetBackgroundColour( *wxWHITE );
+	wxStaticText *tt = new wxStaticText( &dlg, wxID_ANY, text );
+	tt->SetFont( wxMetroTheme::Font( wxMT_NORMAL, 12 ) );
+	tt->SetForegroundColour( wxColour(120,120,120) );
+	tt->Wrap( 400 );
+	wxBoxSizer *sizer = new wxBoxSizer( wxVERTICAL );
+	sizer->Add( tt, 0, wxALL|wxEXPAND, 15 );
+	sizer->Add( dlg.CreateButtonSizer( wxOK|wxCANCEL ), 0, wxALL|wxCENTER, 15 );
+	dlg.SetSizerAndFit( sizer );
+	dlg.Show();
+	dlg.CenterOnScreen();
+	return dlg.ShowModal() == wxID_OK;		
+}
+
 void SamRegistration::OnRegister( wxCommandEvent & )
 {
+	if( !ShowNotice() )
+		return;
+
 	wxString email = m_email->GetValue();
 	if ( email.IsEmpty() || email.Find("@")==wxNOT_FOUND || email.Find(".")==wxNOT_FOUND )
 	{
@@ -1343,6 +1378,8 @@ void SamRegistration::OnRegister( wxCommandEvent & )
 
 void SamRegistration::OnConfirm( wxCommandEvent & )
 {
+	if ( !ShowNotice() ) return;
+
 	m_output->SetForegroundColour( wxMetroTheme::Colour( wxMT_TEXT ) );
 	wxBusyCursor curs;
 	wxString email = m_email->GetValue();

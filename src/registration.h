@@ -21,6 +21,7 @@ public:
 	static bool CanStart();
 	static int AllowedStartsRemaining();
 	static bool ShowDialog( const wxString &msg = wxEmptyString, const wxString &btn = wxEmptyString ); // returns false on cancel
+	static bool ShowNotice();
 
 private:
 
