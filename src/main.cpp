@@ -770,11 +770,11 @@ void MainWindow::OnCaseTabButton( wxCommandEvent &evt )
 	menu.Append( ID_CASE_MOVE_LEFT, "Move left" );
 	menu.Append( ID_CASE_MOVE_RIGHT, "Move right" );
 	menu.AppendSeparator();
-	menu.Append( ID_CASE_CONFIG, "Select technology and market..." );
+	menu.Append( ID_CASE_CONFIG, "Change model..." );
 	menu.Append( ID_CASE_RESET_DEFAULTS, "Reset inputs to default values" );
 #ifdef __WXMSW__
 	menu.AppendSeparator();
-	menu.Append( ID_CASE_EXCELEXCH, "Setup Excel exchange...");
+	menu.Append( ID_CASE_EXCELEXCH, "Set up Excel exchange...");
 #endif
 	//menu.AppendSeparator();
 	//menu.Append( ID_CASE_IMPORT, "Import" );
