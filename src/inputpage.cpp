@@ -250,7 +250,7 @@ void ActiveInputPage::OnPaint( wxPaintEvent & )
 				int sw, sh;
 				dc.SetFont(*wxNORMAL_FONT);
 				wxColour colour( *wxBLACK );
-				if ( vv->Flags & VF_INDICATOR ) colour = *wxLIGHT_GREY;
+				//if ( vv->Flags & VF_INDICATOR ) colour = *wxLIGHT_GREY;
 				//else if ( vv->Flags & VF_CALCULATED ) colour = *wxBLUE;
 				dc.SetTextForeground( colour );
 				rct = objs[i]->GetGeometry();
