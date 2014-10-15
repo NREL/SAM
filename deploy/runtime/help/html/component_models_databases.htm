@@ -45,23 +45,23 @@
 <tr style="text-align:left;vertical-align:top;">
 <th style="vertical-align:top; padding:2px;"><p class="p_TableHeadColumn"><span class="f_TableHeadColumn">Model Name</span></p>
 </th>
-<th style="vertical-align:top; padding:2px;"><p class="p_TableHeadColumn"><span class="f_TableHeadColumn">Partner (if any)</span></p>
+<th style="vertical-align:top; padding:2px;"><p class="p_TableHeadColumn"><span class="f_TableHeadColumn">NREL Partner (if any)</span></p>
 </th>
 </tr>
 <tr style="text-align:left;vertical-align:top;">
-<td style="vertical-align:top; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Flat Plate PV</span></p>
+<td style="vertical-align:top; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Detailed Photovoltaic</span></p>
 </td>
 <td style="vertical-align:top; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Component models from Sandia National Laboratories and the University of Wisconsin</span></p>
 </td>
 </tr>
 <tr style="text-align:left;vertical-align:top;">
-<td style="vertical-align:top; background-color:#c0c0c0; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">High-X Concentrating PV</span></p>
+<td style="vertical-align:top; background-color:#c0c0c0; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Concentrating PV</span></p>
 </td>
 <td style="vertical-align:top; background-color:#c0c0c0; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">&nbsp;</span></p>
 </td>
 </tr>
 <tr style="text-align:left;vertical-align:top;">
-<td style="vertical-align:top; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">PVWatts System Model</span></p>
+<td style="vertical-align:top; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">PVWatts</span></p>
 </td>
 <td style="vertical-align:top; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">&nbsp;</span></p>
 </td>
@@ -133,21 +133,15 @@
 </td>
 </tr>
 <tr style="text-align:left;vertical-align:top;">
-<td style="vertical-align:top; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Geothermal Co-production</span></p>
+<td style="vertical-align:top; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Biomass Power</span></p>
 </td>
 <td style="vertical-align:top; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">&nbsp;</span></p>
-</td>
-</tr>
-<tr style="text-align:left;vertical-align:top;">
-<td style="vertical-align:top; background-color:#c0c0c0; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Biomass Power</span></p>
-</td>
-<td style="vertical-align:top; background-color:#c0c0c0; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">&nbsp;</span></p>
 </td>
 </tr>
 </table>
 </div>
 <h3 class="p_Heading3_atocs_" style="border-top: none; border-right: none; border-left: none;"><a id="componentperformance"></a><span class="f_Heading3_atocs_">Component Performance Models</span></h3>
-<p class="p_Text"><span class="f_Text">The Flat Plate PV and Wind Power model include options for choosing a component performance model to represent part of the system.</span></p>
+<p class="p_Text"><span class="f_Text">The detailed photovoltaic and wind power models include options for choosing a component performance model to represent part of the system.</span></p>
 <div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 0px 0px;"><table class="DefaultNoBorder" style="width:100%; border:none; border-spacing:0px;">
 <tr style="text-align:left;vertical-align:top;">
 <th style="vertical-align:top; padding:2px;"><p class="p_TableHeadColumn"><span class="f_TableHeadColumn">Model Name</span></p>
@@ -272,7 +266,7 @@
 </th>
 </tr>
 <tr style="text-align:left;vertical-align:top;">
-<td style="vertical-align:top; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft"><a href="http://en.openei.org/wiki/Gateway:Utilities" target="_blank" class="weblink" title="http://en.openei.org/wiki/Gateway:Utilities">OpenEI Utilities Gateway</a></span></p>
+<td style="vertical-align:top; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft"><a href="http://en.openei.org/wiki/Utility_Rate_Database" target="_blank" class="weblink" title="http://en.openei.org/wiki/Utility_Rate_Database">OpenEI U.S. Utility Rate Database</a></span></p>
 </td>
 <td style="vertical-align:top; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Retail electricity prices and rate structures</span></p>
 </td>
@@ -343,7 +337,10 @@
 </table>
 </div>
 <p class="p_Text"><span class="f_Text">&nbsp;</span></p>
-<p class="p_Text"><span class="f_Text">SAM also comes with a complete set of TMY2 files (1961-1990) from the <a href="http://rredc.nrel.gov/solar/old_data/nsrdb/" target="_blank" class="weblink" title="http://rredc.nrel.gov/solar/old_data/nsrdb/">National Solar Radiation Database (NSRDB)</a>. It can read NSRDB TMY3 files, and EPW files developed for the Department of Energy's EnergyPlus building simulation model.</span></p>
+<h3 class="p_Heading3_atocs_" style="border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Solar and Wind Resource Files</span></h3>
+<p class="p_Text"><span class="f_Text">SAM comes with a of weather files for the solar and wind performance models.</span></p>
+<p class="p_Text"><span class="f_Text">The solar resource files are in the SAM CSV format and contain data from:</span></p>
+<div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 3px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:24px"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;">&#8226;</span></td><td style="border:none"><span class="f_List"><a href="http://rredc.nrel.gov/solar/old_data/nsrdb/" target="_blank" class="weblink" title="http://rredc.nrel.gov/solar/old_data/nsrdb/">National Solar Resource Database (NSRDB)</a>: TMY3 (1991-2005) and TMY2 (1961-1990)</span></td></tr></table></div><div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 3px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:24px"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;">&#8226;</span></td><td style="border:none"><span class="f_List"><a href="http://maps.nrel.gov/SWERA" target="_blank" class="weblink" title="http://maps.nrel.gov/SWERA">Solar and Wind Energy Resource Assessment Programme (SWERA)</a></span></td></tr></table></div><div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 3px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:24px"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;">&#8226;</span></td><td style="border:none"><span class="f_List"><a href="https://www.ashrae.org/resources--publications/bookstore/climate-data-center" target="_blank" class="weblink" title="https://www.ashrae.org/resources--publications/bookstore/climate-data-center">The ASHRAE International Weather for Energy Calculations Version 1.1 (IWEC)</a></span></td></tr></table></div><div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 6px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:24px"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;">&#8226;</span></td><td style="border:none"><span class="f_ListLast"><a href="http://climate.weather.gc.ca/prods_servs/engineering_e.html" target="_blank" class="weblink" title="http://climate.weather.gc.ca/prods_servs/engineering_e.html">Canadian Weather for Energy Calculations (CWEC)</a></span></td></tr></table></div><p class="p_Text"><span class="f_Text">The wind resource files are in the SRW format and </span><span class="f_List">contains representative typical weather files for some locations around the United States developed by NREL and AWS TruePower.</span></p>
 
 </td></tr></table>
 
