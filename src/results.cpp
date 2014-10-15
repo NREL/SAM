@@ -497,7 +497,15 @@ public:
 		: wxDVTimeSeriesDataSet(), m_pdata(p), m_len(len), m_tsHour(ts_hour), m_label(label), m_units(units) { }
 	virtual wxRealPoint At(size_t i) const
 	{
-		if ( i < m_len ) return wxRealPoint(i*m_tsHour, m_pdata[i]);
+		// SAM convention is that for hourly simulation, 
+		// the sun position is calculated at the midpoint of the hour.
+		// For subhourly simulation, the sun position is calculated at the instantaneous
+		// time specified for the data record in the weather file
+
+		double time = i*m_tsHour;
+		if ( m_tsHour == 1.0 ) time += m_tsHour/2.0;
+
+		if ( i < m_len ) return wxRealPoint( time, m_pdata[i] );
 		else return wxRealPoint(0,0);
 	}
 	virtual size_t Length() const { return m_len; }
