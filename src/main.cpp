@@ -2273,6 +2273,24 @@ void ConfigDialog::OnCancel( wxCommandEvent & )
 	EndModal( wxID_CANCEL );
 }
 
+int ConfigDialog::ShowModal()
+{
+	ShowWithEffect( wxSHOW_EFFECT_SLIDE_TO_RIGHT );
+	wxYield();
+	Refresh();
+	SetFocus();
+	return wxDialog::ShowModal();
+}
+
+void ConfigDialog::EndModal( int ret )
+{
+	HideWithEffect( wxSHOW_EFFECT_SLIDE_TO_LEFT );
+	 // kludge to make hide with effect work for closing the modal dialog below
+	Show();  // happens so fast it's not really visible
+
+	wxDialog::EndModal( ret );
+}
+
 void ConfigDialog::OnCharHook( wxKeyEvent &evt )
 {
 	if ( evt.GetKeyCode() == WXK_ESCAPE )
@@ -2303,8 +2321,12 @@ bool ShowConfigurationDialog( wxWindow *parent, wxString *tech, wxString *fin, b
 	if ( parent == 0 ) return false;
 
 	wxFrame *trans = CreateTransparentOverlay( parent );
+	wxPoint pt( trans->GetPosition() );
+	wxSize size( trans->GetClientSize() );
 	
 	ConfigDialog *dlg = new ConfigDialog( trans );
+	dlg->SetPosition( pt );
+	dlg->SetClientSize( 700, size.y );
 	
 	if ( reset != 0 ) dlg->ShowResetCheckbox( *reset );
 	else dlg->ShowResetCheckbox( false );
