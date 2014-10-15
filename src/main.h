@@ -307,6 +307,9 @@ public:
 	void ShowResetCheckbox(bool b);
 	bool ResetToDefaults();
 
+	virtual int ShowModal();
+	virtual void EndModal( int retCode );
+
 private:
 	void PopulateTech();
 	bool ValidateSelections();
