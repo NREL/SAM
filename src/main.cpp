@@ -602,8 +602,8 @@ void MainWindow::OnCommand( wxCommandEvent &evt )
 		m_project.SetSaveHourlyData( false );
 		break;
 	case wxID_CLOSE:
-		CloseProject();
-		m_topBook->SetSelection( 0 );
+		if ( CloseProject() )
+			m_topBook->SetSelection( 0 );
 		break;
 	case wxID_EXIT:
 		Close();
