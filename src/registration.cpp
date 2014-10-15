@@ -1260,8 +1260,10 @@ SamRegistration::SamRegistration( wxWindow *parent )
 bool SamRegistration::ShowNotice()
 {
 	wxString text( "Information about registration:\n\n"
-		"Registration of the free SAM is required for its continued use. "
-		"NREL collects information on who uses SAM and how frequently it is used to "
+		"Registration is required for continued use of the free SAM software. It's important "
+		"for NREL to have an up-to-date email address so that we can contact "
+		"you regarding important updates to the software as they become available.\n\n"
+		"In addition, NREL collects information on who uses SAM and how frequently it is used to "
 		"justify requests for continued project funding from the Department of Energy "
 		"so that we can provide you with new features, bug fixes, and direct user support. "
 		"Your email address, registration key, computer's IP address, and the number of "
@@ -1277,9 +1279,9 @@ bool SamRegistration::ShowNotice()
 	wxDialog dlg( NULL, wxID_ANY, "Notice" );
 	dlg.SetBackgroundColour( *wxWHITE );
 	wxStaticText *tt = new wxStaticText( &dlg, wxID_ANY, text );
-	tt->SetFont( wxMetroTheme::Font( wxMT_NORMAL, 12 ) );
+	tt->SetFont( wxMetroTheme::Font( wxMT_NORMAL, 11 ) );
 	tt->SetForegroundColour( wxColour(120,120,120) );
-	tt->Wrap( 400 );
+	tt->Wrap( 450 );
 	wxBoxSizer *sizer = new wxBoxSizer( wxVERTICAL );
 	sizer->Add( tt, 0, wxALL|wxEXPAND, 15 );
 	sizer->Add( dlg.CreateButtonSizer( wxOK|wxCANCEL ), 0, wxALL|wxCENTER, 15 );
