@@ -38,7 +38,42 @@
 
 <!-- Placeholder for topic body. -->
 <table style="width:100%;border:none;border-spacing:0px"><tr style="vertical-align:top"><td style="text-align:left;padding:5px">
-<p>Enter topic text here.</p>
+<p class="p_Text"><span class="f_Text">The performance model inputs describe the physical characteristics of the system. They include basic parameters like the system's nameplate capacity and more detailed ones like absorber tube thickness for parabolic troughs, and cell temperature coefficients for photovoltaic modules. They also describe how the components of the system are configured, such as number of modules per string and strings in parallel for photovoltaic arrays, and distribution of heliostats in the solar field for power tower systems.</span></p>
+<p class="p_Text"><span class="f_Text">The following is a list of inputs for each performance model you can change when you get started using SAM. You can use default values for the other inputs. As you become more familiar with the model and start work on your actual analysis, you should refer to the detailed documentation for each model to understand all of the inputs and make sure they are appropriate for your assumptions.</span></p>
+<p class="p_Note"><span class="f_CHNote">Note.</span><span class="f_Note"> The results you get from the basic assumptions listed below are suitable for learning how the model works, but not for specific analysis scenarios.</span></p>
+<h3 class="p_Heading3_atocs_" style="border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Detailed photovoltaic</span></h3>
+<p class="p_Text"><span class="f_Text">Location and Resource: Choose a location at or near your project site from the solar resource library.</span></p>
+<p class="p_Text"><span class="f_Text">Module: From the CEC Performance Model with Module Database library, choose a module with a maximum power rating (Pmp) similar to the one your plan to use in your system.</span></p>
+<p class="p_Text"><span class="f_Text">Inverter: From the Inverter CEC Database library, choose an inverter will a maximum AC power rating similar to the one your plan to use for your system.</span></p>
+<p class="p_Text"><span class="f_Text">System Design: Use the Specify desired array size option, and type the value for Desired array size for your system. Under Tracking and configuration, for Subarray 1, choose a tracking option (typically fixed for roof-mounted systems, and fixed or one-axis for large-scale ground-mounted systems), and type a value for Tilt.</span></p>
+<p class="p_Text"><span class="f_Text">Shading: Ignore these inputs at first. By default, SAM models a system with no shading losses.</span></p>
+<p class="p_Text"><span class="f_Text">Losses: Review these inputs, but you do not need to change them for a first analysis.</span></p>
+<h3 class="p_Heading3_atocs_" style="border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">PVWatts</span></h3>
+<p class="p_Text"><span class="f_Text">Location and Resource: Choose a location at or near your project site from the solar resource library.</span></p>
+<p class="p_Text"><span class="f_Text">System Design: Type a value for System nameplate size and for Tilt.</span></p>
+<h3 class="p_Heading3_atocs_" style="border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Concentrating photovoltaic</span></h3>
+<p class="p_Text"><span class="f_Text">Location and Resource: Choose a location at or near your project site from the solar resource library.</span></p>
+<p class="p_Text"><span class="f_Text">Module: Type values for Single cell area, Number of cells, and Concentration ratio. These values should be available from the module manufacturer.</span></p>
+<p class="p_Text"><span class="f_Text">Inverter: From the Inverter CEC Database library, choose an inverter will a maximum AC power rating similar to the one your plan to use for your system.</span></p>
+<p class="p_Text"><span class="f_Text">Array: Type values for Number of trackers and Modules on each tracker.</span></p>
+<h3 class="p_Heading3_atocs_" style="border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Wind</span></h3>
+<p class="p_Text"><span class="f_Text">Wind Resource: Choose a representative typical file for a location similar to the project site.</span></p>
+<h3 class="p_Heading3_atocs_" style="border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Parabolic trough (physical model)</span></h3>
+<p class="p_Text"><span class="f_Text">&nbsp;</span></p>
+<h3 class="p_Heading3_atocs_" style="border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Parabolic trough (empirical model)</span></h3>
+<h3 class="p_Heading3_atocs_" style="border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">&nbsp;</span></h3>
+<h3 class="p_Heading3_atocs_" style="border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Biomass combustion</span></h3>
+<h3 class="p_Heading3_atocs_" style="border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Solar water heating</span></h3>
+<h3 class="p_Heading3_atocs_" style="border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Generic system</span></h3>
+<h3 class="p_Heading3_atocs_" style="border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">CSP power tower - molten salt</span></h3>
+<h3 class="p_Heading3_atocs_" style="border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">CSP power tower - direct steam</span></h3>
+<h3 class="p_Heading3_atocs_" style="border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">CSP parabolic trough (physical model)</span></h3>
+<h3 class="p_Heading3_atocs_" style="border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">CSP parabolic trough (empirical model)</span></h3>
+<h3 class="p_Heading3_atocs_" style="border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">CSP linear Fresnel - molten salt</span></h3>
+<h3 class="p_Heading3_atocs_" style="border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">CSP linear Fresnel - direct steam</span></h3>
+<h3 class="p_Heading3_atocs_" style="border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">CSP dish Stirling</span></h3>
+<h3 class="p_Heading3_atocs_" style="border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">CSP generic model</span></h3>
+<h3 class="p_Heading3_atocs_" style="border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">&nbsp;</span></h3>
 
 </td></tr></table>
 
