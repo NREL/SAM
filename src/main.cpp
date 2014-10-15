@@ -2253,7 +2253,7 @@ void ConfigDialog::OnTechTree( wxCommandEvent &evt )
 
 void ConfigDialog::OnHelp(wxCommandEvent &evt)
 {
-	SamApp::ShowHelp( "window_technology_market" );
+	SamApp::ShowHelp( "choose_performance_financial" );
 }
 
 void ConfigDialog::OnOk( wxCommandEvent & )
