@@ -2275,19 +2275,22 @@ void ConfigDialog::OnCancel( wxCommandEvent & )
 
 int ConfigDialog::ShowModal()
 {
+#ifdef __WXMSW__
 	ShowWithEffect( wxSHOW_EFFECT_SLIDE_TO_RIGHT );
 	wxYield();
 	Refresh();
 	SetFocus();
+#endif
 	return wxDialog::ShowModal();
 }
 
 void ConfigDialog::EndModal( int ret )
 {
+#ifdef __WXMSW__
 	HideWithEffect( wxSHOW_EFFECT_SLIDE_TO_LEFT );
 	 // kludge to make hide with effect work for closing the modal dialog below
 	Show();  // happens so fast it's not really visible
-
+#endif
 	wxDialog::EndModal( ret );
 }
 
