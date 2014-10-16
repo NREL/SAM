@@ -10,16 +10,16 @@ You may visit the Wind Prospector site directly at: <a href="http://maps.nrel.go
 <b>Please note that this information is available for U.S. locations only.</b><br> 
 The macro will still run for locations outside of the U.S., but it will not return any information.<br><br>
 
-<b>Instructions:</b>
+<h5>Instructions:</h5>
 <ol>
 <li> Using the interface at the right, select a location to look up. You may:
 <ul>
 <li> Use the location from the weather file, if applicable.
 <li> Enter a latitude and longitude using the inputs at the right.
-<li> Enter an address in a pop-up window.
+<li> Enter an address or city (a pop-up window will appear after you click "Run macro"). <br>
 </ul>
-<li> Enter the radius around the specified location for which you would like to see siting considerations.
-<li> Press 'Run macro' to access the Wind Prospector web service and view a table of possible considerations for your project site.
+<li> Enter the radius around the specified location for which you would like to see siting considerations. <br>
+<li> Click 'Run macro' to access the Wind Prospector web service and view a table of possible considerations for your project site.
 </ol>
 @*/
 
@@ -42,7 +42,7 @@ lon = '';
 //set latitude and longitude******************************************************************************************************
 if(macro.location_choice == '')
 {
-	msgbox('Please select which location should be used.');
+	msgbox('Please select which type of location to look up.');
 	exit;
 }
 if(macro.location_choice == 'Use location from weather file')//use location from weather file
