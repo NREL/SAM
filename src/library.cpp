@@ -591,9 +591,20 @@ void LibraryCtrl::OnSelected( wxListEvent &evt )
 
 bool LibraryCtrl::viewable_compare::operator() ( const viewable &lhs, const viewable &rhs )
 {
-	if ( dir && col[lhs.index] < col[rhs.index] ) return true;
-	else if ( !dir && col[lhs.index] > col[rhs.index] ) return true;
-	else return false;
+	wxString l(col[lhs.index]), r(col[rhs.index]);
+	double ln, rn;
+	if ( l.ToCDouble( &ln ) && r.ToCDouble( &rn ) )
+	{
+		if ( dir && ln < rn ) return true;
+		else if ( !dir && ln > rn ) return true;
+		else return false;
+	}
+	else
+	{
+		if ( dir && l < r ) return true;
+		else if ( !dir && l > r ) return true;
+		else return false;
+	}
 }
 
 void LibraryCtrl::OnColClick( wxListEvent &evt )
