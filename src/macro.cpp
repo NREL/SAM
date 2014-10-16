@@ -625,10 +625,10 @@ void MacroPanel::CreateUI( const wxString &buf )
 
 	if(  m_ui.size() > 0 )
 	{
-		m_macroUISizer->Add( new wxStaticText( m_macroUI, wxID_ANY, "Macro data:" ), 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
+		m_macroUISizer->Add( new wxStaticText( m_macroUI, wxID_ANY, "Input values:" ), 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
 		wxBoxSizer *sz = new wxBoxSizer( wxHORIZONTAL );
 		sz->Add( new wxButton( m_macroUI, ID_SAVE_UIDATA, "Save...", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT ), 0, wxALL, 2 );
-		sz->Add( new wxButton( m_macroUI, ID_LOAD_UIDATA, "Load...", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT ), 0, wxALL, 2 );
+		sz->Add( new wxButton( m_macroUI, ID_LOAD_UIDATA, "Open...", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT ), 0, wxALL, 2 );
 		m_macroUISizer->Add( sz, 0, wxALL, 5 );
 	}
 
