@@ -9,10 +9,10 @@ addconfig( 'Biopower', ['Commercial', 'Single Owner', 'Leveraged Partnership Fli
 addconfig( 'Geothermal Power', ['Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'None']);
 addconfig( 'Solar Water Heating', ['Residential', 'Commercial', 'None']);
 addconfig( 'Generic System', ['Residential', 'Commercial', 'Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'None']);
+addconfig( 'Physical Trough', ['Commercial','Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'None']);
+addconfig( 'Empirical Trough', ['Commercial','Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'None']);
 addconfig( 'MSPT', ['Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback']);
 addconfig( 'DSPT', ['Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback']);
-addconfig( 'Empirical Trough', ['Commercial','Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'None']);
-addconfig( 'Physical Trough', ['Commercial','Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'None']);
 addconfig( 'MSLF', ['Commercial','Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'None']);
 addconfig( 'DSLF', ['Commercial','Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'None']);
 addconfig( 'Dish Stirling', ['Commercial','Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'None']);
@@ -1062,14 +1062,14 @@ setup_biopower_pages();
 // Molten Salt Power Tower ////////////////////////////////////////////////////////////////////
 function setup_MSPT_pages()
 {
-	addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource', 'help'='tower_location_and_resource' } );
-	addpage( [[ 'Tower Solar Field' ]], { 'sidebar'='Heliostat Field', 'help'='towerms_heliostat_field' } );
-	addpage( [[ 'Molten Salt Tower Receiver' ]], { 'sidebar'='Tower and Receiver', 'help'='towerms_tower_and_receiver' } );
-	addpage( [[ 'Molten Salt Tower Power Block' ]], { 'sidebar'='Power Cycle', 'help'='towerms_power_cycle' } );
+	addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource', 'help'='pt_location_and_resource' } );
+	addpage( [[ 'Tower Solar Field' ]], { 'sidebar'='Heliostat Field', 'help'='mspt_heliostat_field' } );
+	addpage( [[ 'Molten Salt Tower Receiver' ]], { 'sidebar'='Tower and Receiver', 'help'='mspt_tower_and_receiver' } );
+	addpage( [[ 'Molten Salt Tower Power Block' ]], { 'sidebar'='Power Cycle', 'help'='mspt_power_cycle' } );
 	addpage( [[ 'Molten Salt Tower Storage' ,
 	  {'name' = 'CSP Dispatch Control', 'caption'='Dispatch Control', 'collapsible'=false, 'collapsible_var'='csp_dispatch_is_shown'} ]], 
-	  { 'sidebar'='Thermal Storage', 'help'='towerms_thermal_storage' } );
-	addpage( [[ 'Molten Salt Tower Parasitics' ]], { 'sidebar'='Parasitics', 'help'='towerms_parasitics' } );
+	  { 'sidebar'='Thermal Storage', 'help'='mspt_thermal_storage' } );
+	addpage( [[ 'Molten Salt Tower Parasitics' ]], { 'sidebar'='Parasitics', 'help'='mspt_parasitics' } );
 }
 
 //-----------------------------------------------------
@@ -1079,7 +1079,7 @@ setconfig( 'MSPT', 'Leveraged Partnership Flip' );
 setmodules( ['tcsmolten_salt', 'levpartflip']);
 setting( { 'analysis_period_var'='cf_length' } );
 setup_MSPT_pages();
-addpage( [[ 'Tower Capital Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='towerms_system_costs' } );
+addpage( [[ 'Tower Capital Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='pt_system_costs' } );
 setup_leveraged_partnership_flip_pages();
 
 //-----------------------------------------------------
@@ -1087,7 +1087,7 @@ setconfig( 'MSPT', 'All Equity Partnership Flip' );
 setmodules( ['tcsmolten_salt', 'equpartflip']);
 setting( { 'analysis_period_var'='cf_length' } );
 setup_MSPT_pages();
-addpage( [[ 'Tower Capital Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='towerms_system_costs' } );
+addpage( [[ 'Tower Capital Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='pt_system_costs' } );
 setup_all_equity_partnership_flip_pages();
 
 //-----------------------------------------------------
@@ -1095,7 +1095,7 @@ setconfig( 'MSPT', 'Sale Leaseback' );
 setmodules( ['tcsmolten_salt', 'saleleaseback']);
 setting( { 'analysis_period_var'='cf_length' } );
 setup_MSPT_pages();
-addpage( [[ 'Tower Capital Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='towerms_system_costs' } );
+addpage( [[ 'Tower Capital Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='pt_system_costs' } );
 setup_sale_leaseback_pages();
 
 //-----------------------------------------------------
@@ -1103,7 +1103,7 @@ setconfig( 'MSPT', 'Single Owner' );
 setmodules( ['tcsmolten_salt', 'singleowner']);
 setting( { 'analysis_period_var'='cf_length' } );
 setup_MSPT_pages();
-addpage( [[ 'Tower Capital Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='towerms_system_costs' } );
+addpage( [[ 'Tower Capital Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='pt_system_costs' } );
 setup_single_owner_pages();
 
 
@@ -1111,17 +1111,17 @@ setup_single_owner_pages();
 function setup_DSLF_pages()
 {
 	addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource', 'help'='lf_location_and_resource' } );
-	addpage( [[ 'Linear Fresnel Solar Field' ]], { 'sidebar'='Solar Field', 'help'='lf_solar_field' } );
+	addpage( [[ 'Linear Fresnel Solar Field' ]], { 'sidebar'='Solar Field', 'help'='dslf_solar_field' } );
 
 	addpage( [[ 'Linear Fresnel Collector and Receiver Header',
 	 {'name'='Linear Fresnel Boiler Geometry', 'caption'='Boiler Geometry', 'collapsible'=true, 'collapsible_var'='boiler_is_shown'},
 	 {'name'='Linear Fresnel Superheater Geometry', 'caption'='Superheater Geometry', 'collapsible'=true, 'collapsible_var'='superheater_is_shown'} ]],
-	 { 'sidebar'='Collector and Receiver', 'help'='lf_collector_and_receiver' } );
+	 { 'sidebar'='Collector and Receiver', 'help'='dslf_collector_and_receiver' } );
 
 	//addpage( [[ 'Linear Fresnel Boiler Geometry' ]], { 'sidebar'='Collector and Receiver 1' } );
 	//addpage( [[ 'Linear Fresnel Superheater Geometry' ]], { 'sidebar'='Collector and Receiver 2' } );
-	addpage( [[ 'PBNS Power Block' ]], { 'sidebar'='Power Cycle', 'help'='lf_power_cycle' } );
-	addpage( [[ 'Linear Fresnel Parasitics' ]], { 'sidebar'='Parasitics', 'help'='lf_parasitics' } );
+	addpage( [[ 'PBNS Power Block' ]], { 'sidebar'='Power Cycle', 'help'='dslf_power_cycle' } );
+	addpage( [[ 'Linear Fresnel Parasitics' ]], { 'sidebar'='Parasitics', 'help'='dslf_parasitics' } );
 }
 
 setconfig( 'DSLF', 'None' );
@@ -1175,11 +1175,11 @@ setup_single_owner_pages();
 // Direct Steam Power Tower ////////////////////////////////////////////////////////////////////
 function setup_DSPT_pages()
 {
-	addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource', 'help'='tower_location_and_resource' } );
-	addpage( [[ 'Tower Solar Field' ]], { 'sidebar'='Heliostat Field', 'help'='towerds_heliostat_field' } );
-	addpage( [[ 'Direct Steam Tower Receiver' ]], { 'sidebar'='Tower and Receiver', 'help'='towerds_tower_and_receiver' } );
-	addpage( [[ 'PBNS Power Block' ]], { 'sidebar'='Power Cycle', 'help'='lf_power_cycle' } );
-	addpage( [[ 'Direct Steam Tower Parasitics' ]], { 'sidebar'='Parasitics', 'help'='towerds_parasitics' } );
+	addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource', 'help'='pt_location_and_resource' } );
+	addpage( [[ 'Tower Solar Field' ]], { 'sidebar'='Heliostat Field', 'help'='dspt_heliostat_field' } );
+	addpage( [[ 'Direct Steam Tower Receiver' ]], { 'sidebar'='Tower and Receiver', 'help'='dspt_tower_and_receiver' } );
+	addpage( [[ 'PBNS Power Block' ]], { 'sidebar'='Power Cycle', 'help'='dspt_power_cycle' } );
+	addpage( [[ 'Direct Steam Tower Parasitics' ]], { 'sidebar'='Parasitics', 'help'='dspt_parasitics' } );
 }
 
 //-----------------------------------------------------
@@ -1189,7 +1189,7 @@ setconfig( 'DSPT', 'Leveraged Partnership Flip' );
 setmodules( ['tcsdirect_steam', 'levpartflip']);
 setting( { 'analysis_period_var'='cf_length' } );
 setup_DSPT_pages();
-addpage( [[ 'Tower Capital Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='towerms_system_costs' } );
+addpage( [[ 'Tower Capital Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='pt_system_costs' } );
 setup_leveraged_partnership_flip_pages();
 
 //-----------------------------------------------------
@@ -1197,7 +1197,7 @@ setconfig( 'DSPT', 'All Equity Partnership Flip' );
 setmodules( ['tcsdirect_steam', 'equpartflip']);
 setting( { 'analysis_period_var'='cf_length' } );
 setup_DSPT_pages();
-addpage( [[ 'Tower Capital Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='towerms_system_costs' } );
+addpage( [[ 'Tower Capital Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='pt_system_costs' } );
 setup_all_equity_partnership_flip_pages();
 
 //-----------------------------------------------------
@@ -1205,7 +1205,7 @@ setconfig( 'DSPT', 'Sale Leaseback' );
 setmodules( ['tcsdirect_steam', 'saleleaseback']);
 setting( { 'analysis_period_var'='cf_length' } );
 setup_DSPT_pages();
-addpage( [[ 'Tower Capital Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='towerms_system_costs' } );
+addpage( [[ 'Tower Capital Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='pt_system_costs' } );
 setup_sale_leaseback_pages();
 
 //-----------------------------------------------------
@@ -1213,7 +1213,7 @@ setconfig( 'DSPT', 'Single Owner' );
 setmodules( ['tcsdirect_steam', 'singleowner']);
 setting( { 'analysis_period_var'='cf_length' } );
 setup_DSPT_pages();
-addpage( [[ 'Tower Capital Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='towerms_system_costs' } );
+addpage( [[ 'Tower Capital Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='pt_system_costs' } );
 setup_single_owner_pages();
 
 
@@ -1226,11 +1226,11 @@ function setup_MSLF_pages()
 	addpage( [[ 'Molten Salt Linear Fresnel Collector and Receiver' ]],
 	 { 'sidebar'='Collector and Receiver', 'help'='mslf_collector_and_receiver' } );
 
-	addpage( [[ 'Molten Salt Linear Fresnel Power Cycle' ]], { 'sidebar'='Power Cycle', 'help'='towerms_power_cycle' } );
+	addpage( [[ 'Molten Salt Linear Fresnel Power Cycle' ]], { 'sidebar'='Power Cycle', 'help'='mslf_power_cycle' } );
 	addpage( [[ 'Molten Salt Linear Fresnel Storage' ,
 	  {'name' = 'CSP Dispatch Control', 'caption'='Dispatch Control', 'collapsible'=false, 'collapsible_var'='csp_dispatch_is_shown'} ]], 
-	  { 'sidebar'='Thermal Storage', 'help'='towerms_thermal_storage' } );
-	addpage( [[ 'Molten Salt Linear Fresnel Parasitics' ]], { 'sidebar'='Parasitics', 'help'='towerms_parasitics' } );
+	  { 'sidebar'='Thermal Storage', 'help'='mslf_thermal_storage' } );
+	addpage( [[ 'Molten Salt Linear Fresnel Parasitics' ]], { 'sidebar'='Parasitics', 'help'='mslf_parasitics' } );
 }
 
 setconfig( 'MSLF', 'None' );
@@ -1243,7 +1243,7 @@ setconfig( 'MSLF', 'Commercial' );
 setmodules( ['tcsMSLF',  'utilityrate3', 'cashloan']);
 setting( { 'analysis_period_var'='cf_length' } );
 setup_MSLF_pages();
-addpage( [[ 'Molten Salt Linear Fresnel Capital Costs','O and M Costs']], { 'sidebar'='System Costs', 'help'='mslf_system_costs' } );
+addpage( [[ 'Molten Salt Linear Fresnel Capital Costs','O and M Costs']], { 'sidebar'='System Costs', 'help'='lf_system_costs' } );
 setup_commercial_pages(1); //includes building load calculator
 
 //-----------------------------------------------------
@@ -1252,7 +1252,7 @@ setconfig( 'MSLF', 'Leveraged Partnership Flip' );
 setmodules( ['tcsMSLF', 'levpartflip']);
 setting( { 'analysis_period_var'='cf_length' } );
 setup_MSLF_pages();
-addpage( [[ 'Molten Salt Linear Fresnel Capital Costs','O and M Costs']], { 'sidebar'='System Costs', 'help'='mslf_system_costs' } );
+addpage( [[ 'Molten Salt Linear Fresnel Capital Costs','O and M Costs']], { 'sidebar'='System Costs', 'help'='lf_system_costs' } );
 setup_leveraged_partnership_flip_pages();
 
 //-----------------------------------------------------
@@ -1260,7 +1260,7 @@ setconfig( 'MSLF', 'All Equity Partnership Flip' );
 setmodules( ['tcsMSLF', 'equpartflip']);
 setting( { 'analysis_period_var'='cf_length' } );
 setup_MSLF_pages();
-addpage( [[ 'Molten Salt Linear Fresnel Capital Costs','O and M Costs']], { 'sidebar'='System Costs', 'help'='mslf_system_costs' } );
+addpage( [[ 'Molten Salt Linear Fresnel Capital Costs','O and M Costs']], { 'sidebar'='System Costs', 'help'='lf_system_costs' } );
 setup_all_equity_partnership_flip_pages();
 
 //-----------------------------------------------------
@@ -1268,7 +1268,7 @@ setconfig( 'MSLF', 'Sale Leaseback' );
 setmodules( ['tcsMSLF', 'saleleaseback']);
 setting( { 'analysis_period_var'='cf_length' } );
 setup_MSLF_pages();
-addpage( [[ 'Molten Salt Linear Fresnel Capital Costs','O and M Costs']], { 'sidebar'='System Costs', 'help'='mslf_system_costs' } );
+addpage( [[ 'Molten Salt Linear Fresnel Capital Costs','O and M Costs']], { 'sidebar'='System Costs', 'help'='lf_system_costs' } );
 setup_sale_leaseback_pages();
 
 //-----------------------------------------------------
@@ -1276,7 +1276,7 @@ setconfig( 'MSLF', 'Single Owner' );
 setmodules( ['tcsMSLF', 'singleowner']);
 setting( { 'analysis_period_var'='cf_length' } );
 setup_MSLF_pages();
-addpage( [[ 'Molten Salt Linear Fresnel Capital Costs','O and M Costs']], { 'sidebar'='System Costs', 'help'='mslf_system_costs' } );
+addpage( [[ 'Molten Salt Linear Fresnel Capital Costs','O and M Costs']], { 'sidebar'='System Costs', 'help'='lf_system_costs' } );
 setup_single_owner_pages();
 
 //-----------------------------------------------------
