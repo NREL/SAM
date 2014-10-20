@@ -476,6 +476,16 @@ void ShadingButtonCtrl::OnPressed(wxCommandEvent &evt)
 
 bool ImportPVsystNearShading( ShadingInputData &dat, wxWindow *parent )
 {
+	//ask about version of PVsyst (5 versus 6) due to change in shading convention
+	bool new_version = true;
+	wxString msg = "Is this shading file from PVsyst version 6 or newer?";
+	msg += "\n\nPVsyst changed their shading convention starting in Version 6 and later such that 0 now equals no shade and 1 equals full shade. ";
+	msg += "To import a file from PVsyst versions 6 or newer, click Yes below. However, you may still import a file from versions 5 and older by selecting No below.";
+	int ret = wxMessageBox(msg, "Important Notice", wxICON_EXCLAMATION | wxYES_NO, parent);
+	if (ret == wxNO)
+		new_version = false;
+
+	//read in the file
 	wxString buf;
 	double diffuse = 0.0;
 	int i;
@@ -532,9 +542,16 @@ bool ImportPVsystNearShading( ShadingInputData &dat, wxWindow *parent )
 			{
 				for (i = 0; i<20; i++) // read in Altitude in column zero
 				{
-					if (lnp.Item(i) == "Behind") azaltvals.at(j,i) = 0;
 					if (i == 0) azaltvals.at(j, i) = (float)wxAtof(lnp[i]);		//do not change azimuth values
-					else azaltvals.at(j,i) = (1- (float)wxAtof(lnp[i])) *100;	//convert from factor to loss
+					else
+					{
+						if (lnp.Item(i) == "Behind")
+							azaltvals.at(j, i) = 100;	//"Behind" means it is fully behind another obstruction
+						else if (new_version) //PVsyst versions 6 and newer: 0 means no shade, 1 means full shade
+							azaltvals.at(j, i) = (float)wxAtof(lnp[i]) * 100; //convert to percentage
+						else //PVsyst versions 5 and older: 1 means no shade, 0 means full shade
+							azaltvals.at(j, i) = (1 - (float)wxAtof(lnp[i])) * 100;	//convert from factor to loss
+					}
 				}
 			}
 		}
@@ -542,7 +559,10 @@ bool ImportPVsystNearShading( ShadingInputData &dat, wxWindow *parent )
 		{
 			if (lnp.Count()== 3)
 			{
-				diffuse = (1- (float)wxAtof(lnp[1])) *100; //convert from factor to loss
+				if (new_version) //PVsyst versions 6 and newer: 0 means no shade, 1 means full shade
+					diffuse = (float)wxAtof(lnp[1]) * 100; //convert to percentage
+				else //PVsyst versions 5 and older: 1 means no shade, 0 means full shade
+					diffuse = (1 - (float)wxAtof(lnp[1])) * 100; //convert from factor to loss
 			}
 			else
 			{
@@ -636,13 +656,11 @@ bool ImportSunEyeHourly( ShadingInputData &dat, wxWindow *parent )
 	int start_hour=0;
 	int end_minute=0;
 	int end_hour=0;
-	int read_offset=0; // which position to start reading
-	int hour_duration=0; // how many hours with :30 dat in SunEye Annual Shading file
+	int hour_duration=0; // how many hours (including incomplete hours) in the Suneye file
 	double beam[8760];
 	for (i=0;i<8760;i++) beam[i]=0.0;
 
 	buf = tf.GetFirstLine();
-// data at half hour is recorded for hour in 8760 shading file - e.g. Jan-1 5:30 data recoded at hour 5
 	while( !tf.Eof() )
 	{
 		wxArrayString lnp = wxStringTokenize(buf, ",", wxTOKEN_RET_EMPTY_ALL);
@@ -673,42 +691,7 @@ bool ImportSunEyeHourly( ShadingInputData &dat, wxWindow *parent )
 						readdata=false;
 						break;
 					}
-					switch (start_minute)
-					{
-						case 0:
-							read_offset=2;
-							break;
-						case 15:
-							read_offset=1;
-							break;
-						case 30:
-							read_offset=0;
-							break;
-						case 45:
-							start_hour++;
-							read_offset=3;
-							break;
-						default:
-							readdata=false;
-							break;
-					}
-					read_offset++; // add one for date column
-					switch (end_minute)
-					{
-						case 0:
-						case 15:
-							end_hour--;
-							break;
-						case 30:
-						case 45:
-							break;
-						default:
-							readdata=false;
-							break;
-					}
 					hour_duration = end_hour - start_hour + 1;
-
-
 				}
 			}
 		}
@@ -716,45 +699,40 @@ bool ImportSunEyeHourly( ShadingInputData &dat, wxWindow *parent )
 		{
 			// shj update 5/25/11 - read in begin data and to end - no fixed count
 			// assume that 15 minute intervals and use start and end time and adjust to hour
+			// JMF update 10/17/2014- average all values for an hour instead of taking the midpoint of the hour
+			int index = 1; //keep track of where you are in the row- starts at 1 because of the date column.
 			for (i=0;i<hour_duration;i++)
 			{
+				//compute which hour to enter the shading factor into
 				int x = day*24+start_hour+i;
-
 				if (x >= 8760)
 				{
 					readok = false;
 					break;
 				}
-				else if (lnp.Item(4*i+read_offset).IsEmpty()) beam[x] = 0;
-				else beam[x] = (1- wxAtof(lnp.Item(4*i+read_offset))) *100;	//convert to a loss instead of a factor
-			}
-			day++;
-/*			if (lnp.Count() != 60)
-			{
-				colok = false;
-				readok = false;
-				break;
-			}
 
-			// Text Input
-			//begin data,5:00,5:15,5:30,5:45,6:00,6:15,6:30,6:45,7:00,7:15,7:30,7:45,8:00,8:15,8:30,8:45,9:00,9:15,9:30,9:45,10:00,10:15,10:30,10:45,11:00,11:15,11:30,11:45,12:00,12:15,12:30,12:45,13:00,13:15,13:30,13:45,14:00,14:15,14:30,14:45,15:00,15:15,15:30,15:45,16:00,16:15,16:30,16:45,17:00,17:15,17:30,17:45,18:00,18:15,18:30,18:45,19:00,19:15,19:30
-			//Jan 1,,,,,,,,,,,,0.00,0.00,0.00,0.00,0.17,0.17,0.17,0.17,0.17,0.33,0.50,0.67,0.67,0.67,0.67,0.50,0.67,0.50,0.50,0.50,0.33,0.17,0.50,0.50,0.17,0.17,0.17,0.17,0.00,0.17,0.00,0.17,0.17,0.17,0.00,0.00,0.00,,,,,,,,,,,
-			records value at half hours to be consistent with weather file.
+				//how many 15-min entries are in this hour?
+				int count = 0;
+				if (i == 0) //first hour
+					count = (60 - start_minute) / 15;
+				else if (i == hour_duration - 1) //last hour
+					count = end_minute / 15 + 1;
+				else //whole hours in between
+					count = 4;
 
-			for (i=0;i<15;i++)
-			{
-				int x = day*24+5+i;
-
-				if (x >= 8760)
+				//loop through the correct number of 15-minute entries and to calculate an average shading value
+				double total = 0;
+				for (int j = 0; j < count; j++)
 				{
-					readok = false;
-					break;
+					if (lnp.Item(index).IsEmpty()) total += 0;
+					else total += wxAtof(lnp.Item(index));
+					index++; //don't forget to increment the index so that you read the next cell
 				}
-				else if (lnp.Item(4*i+3).IsEmpty()) beam[x] = 1;
-				else beam[x] = wxAtof(lnp.Item(4*i+3));
+				
+				//compute average and assign it to the appropriate hour
+				beam[x] = (1 - (total / count)) * 100; //don't forget to convert it to a loss factor
 			}
 			day++;
-*/
 		}
 
 		buf = tf.GetNextLine();
