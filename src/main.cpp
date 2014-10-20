@@ -2279,6 +2279,7 @@ int ConfigDialog::ShowModal()
 	wxYield();
 	Refresh();
 	SetFocus();
+	return wxDialog::ShowModal();
 }
 
 void ConfigDialog::EndModal( int ret )
