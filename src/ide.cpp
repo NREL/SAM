@@ -962,8 +962,8 @@ bool ExFormData::GetMetaData( const wxString &name,
 
 		*label = vv->Label;
 		*units = vv->Units;
-		if ( vv->Flags & VF_INDICATOR ) *colour = wxColour(90,90,90);
-		else if ( vv->Flags & VF_CALCULATED ) *colour = *wxBLUE;
+		if ( vv->Flags & VF_CALCULATED 
+			|| vv->Flags & VF_INDICATOR ) *colour = *wxBLUE;
 		else *colour = *wxBLACK;
 
 		return true;

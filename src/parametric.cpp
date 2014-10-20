@@ -813,8 +813,6 @@ void ParametricViewer::SelectInputs()
 		wxString name = it->first;
 		VarInfo &vi = *(it->second);
 
-		// skip calculated and indicator values
-		//if (vi.Flags & VF_CALCULATED || vi.Flags & VF_INDICATOR) continue;
 		// update to select only "Parametric" variables
 		if (vi.Flags & VF_PARAMETRIC)
 		{

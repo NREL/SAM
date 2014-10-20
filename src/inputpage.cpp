@@ -162,16 +162,17 @@ void ActiveInputPage::Initialize()
 			if ( tc != 0 && (vv->Flags & VF_CALCULATED || vv->Flags & VF_INDICATOR ) )
 			{
 				tc->SetEditable( false );
-				if ( vv->Flags & VF_CALCULATED )
-				{
+				/*if ( vv->Flags & VF_CALCULATED )
+				{*/
 					tc->SetForegroundColour(UIColorCalculatedFore);
 					tc->SetBackgroundColour(UIColorCalculatedBack);
+					/*
 				}
 				else 
 				{
 					tc->SetForegroundColour(UIColorIndicatorFore);
 					tc->SetBackgroundColour(UIColorIndicatorBack);
-				}
+				}*/
 			}
 
 			if ( vv->Type == VV_STRING && vv->Flags & VF_LIBRARY 
@@ -250,8 +251,6 @@ void ActiveInputPage::OnPaint( wxPaintEvent & )
 				int sw, sh;
 				dc.SetFont(*wxNORMAL_FONT);
 				wxColour colour( *wxBLACK );
-				//if ( vv->Flags & VF_INDICATOR ) colour = *wxLIGHT_GREY;
-				//else if ( vv->Flags & VF_CALCULATED ) colour = *wxBLUE;
 				dc.SetTextForeground( colour );
 				rct = objs[i]->GetGeometry();
 
