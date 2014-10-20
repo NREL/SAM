@@ -893,7 +893,6 @@ void ResultsViewer::Setup( Simulation *sim )
 			for( int i=0;i<m_depreciationTable->GetNumberCols();i++) 
 				m_depreciationTable->SetColSize( i, wxGRID_AUTOSIZE );
 
-			m_depreciationTable->Thaw();
 		}
 		
 
@@ -901,6 +900,8 @@ void ResultsViewer::Setup( Simulation *sim )
 		{
 			m_cf_splitter->Unsplit();
 		}
+
+		m_depreciationTable->Thaw();
 	}
 
 	if ( m_cashflow.size() > 0 ) ShowPage( PAGE_CASH_FLOW );
