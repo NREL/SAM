@@ -72,6 +72,7 @@ static void fcall_dview(lk::invoke_t &cxt)
 
 	dview->GetStatisticsTable()->RebuildDataViewCtrl();
 	dview->SelectDataIndex(0);
+	dview->DisplayTabs();
 
 	frame->Show();
 }
@@ -151,6 +152,8 @@ static void fcall_dview_solar_data_file( lk::invoke_t &cxt )
 	dview->GetStatisticsTable()->RebuildDataViewCtrl();
 	if ( i > 0 )
 		dview->SelectDataIndex(0);
+
+	dview->DisplayTabs();
 
 	frame->Show();
 }
