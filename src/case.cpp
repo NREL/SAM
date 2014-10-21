@@ -142,7 +142,7 @@ int CaseEvaluator::Changed( const wxArrayString &vars )
 	}
 	
 	int nevals = EqnEvaluator::Changed( trigger_list );
-	if ( nevals >= 0 ) nevals += nlibchanges;
+	if ( nevals > 0 ) nevals += nlibchanges;
 
 	return nevals;
 }

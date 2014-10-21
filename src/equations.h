@@ -51,6 +51,11 @@ class EqnFastLookup
 {	
 	std::vector<EqnDatabase*> m_dbs;
 public:
+	
+	typedef unordered_map< wxString, EqnData*, wxStringHash, wxStringEqual > eqndata_hash_t;
+	typedef unordered_map< wxString, size_t, wxStringHash, wxStringEqual > eqnindex_hash_t;
+	typedef unordered_map< wxString, bool, wxStringHash, wxStringEqual > eqnmark_hash_t;
+
 	EqnFastLookup();
 	EqnFastLookup( EqnDatabase *db );
 
@@ -60,15 +65,13 @@ public:
 	void Add( const std::vector<EqnData*> &list );
 	void Clear();
 	
-	size_t GetAffectedVariables( const wxString &var, wxArrayString &list );
+	size_t GetAffectedVariables( const wxString &var, wxArrayString &list, eqnmark_hash_t &ignore );
 	lk::node_t *GetEquation( const wxString &var, wxArrayString *inputs, wxArrayString *outputs );
 	std::vector<EqnData*> GetEquations() { return m_eqnList; }
 	EqnData *GetEquationData( const wxString &var );
 	int GetEquationIndex( const wxString &var );
 
 private:
-	typedef unordered_map< wxString, EqnData*, wxStringHash, wxStringEqual > eqndata_hash_t;
-	typedef unordered_map< wxString, size_t, wxStringHash, wxStringEqual > eqnindex_hash_t;
 	
 	std::vector<EqnData*> m_eqnList;
 	eqndata_hash_t m_eqnLookup;
@@ -82,6 +85,7 @@ protected:
 	static const int INVALID = 0;
 	static const int OK = 1;
 
+
 	VarTable &m_vars;
 	EqnFastLookup &m_efl;
 	std::vector<EqnData*> m_eqns;
@@ -89,7 +93,7 @@ protected:
 	wxArrayString m_errors;
 	wxArrayString m_updated;
 	int Calculate( );
-	size_t MarkAffectedEquations( const wxString &var );
+	size_t MarkAffectedEquations( const wxString &var, EqnFastLookup::eqnmark_hash_t &affected );
 
 public:
 	EqnEvaluator( VarTable &vars, EqnFastLookup &efl );
