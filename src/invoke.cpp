@@ -34,7 +34,7 @@
 
 static void fcall_dview(lk::invoke_t &cxt)
 {
-	LK_DOC("dview", "Creates a separate dview viewer for viewing specified data.", "( number:num_datasets, , number:timestep, string:window name, string:data_name1, string:data_units1, number:multiplier1, variant:data1, [ string:data_name2, string:data_units2, number:multiplier2, variant:data2], ...):none");
+	LK_DOC("dview", "Creates a separate dview viewer for viewing specified data.", "( number:num_datasets, number:timestep, string:window name, string:data_name1, string:data_units1, number:multiplier1, variant:data1, [ string:data_name2, string:data_units2, number:multiplier2, variant:data2], ...):none");
 
 
 	int num_datasets = (int)cxt.arg(0).as_number();
@@ -51,21 +51,18 @@ static void fcall_dview(lk::invoke_t &cxt)
 	wxFrame *frame = new wxFrame( SamApp::Window(), wxID_ANY, "Data Viewer: " + win_name, wxDefaultPosition, wxSize(1100,700),
 		(wxCAPTION | wxCLOSE_BOX | wxCLIP_CHILDREN | wxRESIZE_BORDER | wxFRAME_TOOL_WINDOW | wxFRAME_FLOAT_ON_PARENT) );
 	wxDVPlotCtrl *dview = new wxDVPlotCtrl(frame, wxID_ANY);
-
-	// reset data - an compare each dataset if changed instead
-	dview->RemoveAllDataSets();
-
+	
 	while (ndx < cxt.arg_count())
 	{ 
 		wxString data_name = cxt.arg(ndx++).as_string();
 		wxString data_units = cxt.arg(ndx++).as_string();
-		double mult = cxt.arg(ndx++).as_number();
+		double scale = cxt.arg(ndx++).as_number();
 		lk::vardata_t &data = cxt.arg(ndx++);
 		if (data.length() != data_length) return;
 
-		std::vector<double> plot_data(8760);
-		for (size_t i = 0; i < 8760; i++)
-			plot_data[i] = mult * data.index(i)->as_number();
+		std::vector<double> plot_data( data_length );
+		for (size_t i = 0; i < data_length; i++)
+			plot_data[i] = scale * data.index(i)->as_number();
 
 		dview->AddDataSet(new wxDVArrayDataSet(data_name, data_units, timestep, plot_data), win_name );
 	}
