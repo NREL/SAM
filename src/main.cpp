@@ -415,13 +415,13 @@ void MainWindow::CaseVarGrid(std::vector<Case*> &cases)
 			col_hdrs.push_back("Label");
 			wxString case_name = m_project.GetCaseName(cases[0]);
 			col_hdrs.push_back(case_name);
-			title = "Current Case Values: " + case_name;
+			title = "Inputs Browser"; //: " + case_name;
 			var_table_vec.push_back(cases[0]->Values());
 			var_info_lookup_vec.push_back(cases[0]->Variables());
 		}
 		else
 		{
-			title = "Case comparison";
+			title = "Inputs Browser"; //Case comparison";
 			col_hdrs = m_project.GetCaseNames();
 			col_hdrs.Insert("Label", 0);
 			col_hdrs.Insert("Variable", 0);

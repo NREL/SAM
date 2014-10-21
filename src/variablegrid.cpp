@@ -581,9 +581,9 @@ VariableGridFrame::VariableGridFrame(wxWindow *parent, ProjectFile *pf, Case *c,
 		if (title.IsEmpty())
 		{
 			if (m_cases.size() == 1)
-				title = "Current Case Values: " + m_pf->GetCaseName(m_cases[0]);
+				title = "Inputs Browser"; //Current Case Values: " + m_pf->GetCaseName(m_cases[0]);
 			else
-				title = "Case comparison";
+				title = "Inputs Browser"; //Case comparison";
 		}
 
 		SetTitle(title);
@@ -626,7 +626,7 @@ VariableGridFrame::VariableGridFrame(wxWindow *parent, ProjectFile *pf, Case *c,
 
 
 		wxBoxSizer *tools = new wxBoxSizer(wxHORIZONTAL);
-		tools->Add(new wxMetroButton(this, ID_SHOW_DIFFERENT, "Show differences"), wxALL | wxEXPAND, 0);
+		tools->Add(new wxMetroButton(this, ID_SHOW_DIFFERENT, "Show different values"), wxALL | wxEXPAND, 0);
 		tools->Add(new wxMetroButton(this, ID_SHOW_SAME, "Show equal values"), wxALL | wxEXPAND, 0);
 		tools->Add(new wxMetroButton(this, ID_SHOW_ALL, "Show all"), wxALL | wxEXPAND, 0);
 
