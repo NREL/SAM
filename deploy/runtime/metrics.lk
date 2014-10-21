@@ -183,6 +183,27 @@ function MSPT_metrics()
 	metric( 'kwh_per_kw', {'label'='First Year kWhAC/kWDC', 'mode'='f', 'deci'='0', 'thousep'='true' } );
 }
 
+function DSPT_metrics() 
+{
+	metric( 'annual_energy', {'label'='Annual Energy', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh' } );
+	metric( 'capacity_factor', {'label'='Capacity Factor', 'mode'='f', 'deci'='1', 'thousep'='true', 'post'='%' } );
+	metric( 'kwh_per_kw', {'label'='First Year kWhAC/kWDC', 'mode'='f', 'deci'='0', 'thousep'='true' } );
+}
+
+function MSLF_metrics() 
+{
+	metric( 'annual_energy', {'label'='Annual Energy', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh' } );
+	metric( 'capacity_factor', {'label'='Capacity Factor', 'mode'='f', 'deci'='1', 'thousep'='true', 'post'='%' } );
+	metric( 'kwh_per_kw', {'label'='First Year kWhAC/kWDC', 'mode'='f', 'deci'='0', 'thousep'='true' } );
+}
+
+function DSLF_metrics() 
+{
+	metric( 'annual_energy', {'label'='Annual Energy', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh' } );
+	metric( 'capacity_factor', {'label'='Capacity Factor', 'mode'='f', 'deci'='1', 'thousep'='true', 'post'='%' } );
+	metric( 'kwh_per_kw', {'label'='First Year kWhAC/kWDC', 'mode'='f', 'deci'='0', 'thousep'='true' } );
+}
+
 
 function geothermal_metrics() 
 {
@@ -241,10 +262,6 @@ function biopower_metrics()
 }
 
 
-function lf_steam_metrics() 
-{
-	metric( 'annual_energy', {'label'='Annual Energy', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh' } );
-}
 
 
 // Technology Metrics
@@ -253,6 +270,9 @@ metrics{ 'PVWatts' } = define() {	pvwatts_metrics(); };
 metrics{ 'High-X Concentrating PV' } = define() { generic_hcpv_metrics(); };
 metrics{ 'Physical Trough' } = define() { physical_trough_metrics(); };
 metrics{ 'MSPT' } = define() { MSPT_metrics(); };
+metrics{ 'DSPT' } = define() { DSPT_metrics(); };
+metrics{ 'MSLF' } = define() { MSLF_metrics(); };
+metrics{ 'DSLF' } = define() { DSLF_metrics(); };
 metrics{ 'Empirical Trough' } = define() { empirical_trough_metrics(); };
 metrics{ 'Dish Stirling' } = define() { dish_stirling_metrics(); };
 metrics{ 'Generic CSP System' } = define() { generic_csp_metrics(); };
@@ -261,7 +281,6 @@ metrics{ 'Wind Power' } = define() { wind_power_metrics(); };
 metrics{ 'Geothermal Power' } = define() { geothermal_metrics(); };
 metrics{ 'Generic System' } = define() { generic_system_metrics(); };
 metrics{ 'Biopower' } = define() { biopower_metrics(); };
-metrics{ 'Linear Fresnel Steam' } = define() { lf_steam_metrics(); };
 
 // Financial Metrics
 metrics{ 'Residential' } = define() { rescom_metrics(); };
