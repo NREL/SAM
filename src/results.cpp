@@ -466,16 +466,18 @@ wxString ResultsViewer::GetCurrentContext() const
 	switch( GetSelection() )
 	{
 	case 0: return "summary";
-	case 1: return "graphs";
-	case 2: return "data";
-	case 3: return "cashflow";
-	case 4: return "dview_hourly";
-	case 5: return "dview_daily";
-	case 6: return "dview_profiles";
-	case 7: return "dview_heatmap";
-	case 8: return "dview_scatter";
-	case 9: return "dview_pdfcdf";
-	case 10: return "dview_durationcurve";
+	case 1: return "losses";
+	case 2: return "graphs";
+	case 3: return "data";
+	case 4: return "cashflow";
+	case 5: return "dview_timeseries";
+	case 6: return "dview_daily";
+	case 7: return "dview_profiles";
+	case 8: return "dview_statistics";
+	case 9: return "dview_heatmap";
+	case 10: return "dview_scatter";
+	case 11: return "dview_pdfcdf";
+	case 12: return "dview_durationcurve";
 	default: return "results";
 	}
 }
