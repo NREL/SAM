@@ -298,16 +298,21 @@ void EqnFastLookup::Clear()
 	
 }
 
-size_t EqnFastLookup::GetAffectedVariables( const wxString &var, wxArrayString &list )
+size_t EqnFastLookup::GetAffectedVariables( const wxString &var, wxArrayString &list, eqnmark_hash_t &ignore )
 {
 	size_t n = 0;
 	for( size_t i=0;i<m_dbs.size();i++ )
 	{
 		if( wxArrayString *ll = m_dbs[i]->GetAffectedVariables( var ) )
 		{
-			n += ll->Count();
 			for( size_t k=0;k<ll->Count();k++ )
-				list.Add( ll->Item(k) );
+			{
+				if ( ignore.find( ll->Item(k) ) == ignore.end() )
+				{
+					list.Add( ll->Item(k) );
+					n++;
+				}
+			}
 		}
 	}
 
@@ -375,6 +380,8 @@ int EqnEvaluator::Calculate( )
 	size_t ncalculated; // count all equations processed in current interation
 	size_t niterations = 0;
 	size_t nevals = 0; // number of equations evaluated
+
+//	wxLogStatus("Calculating equations...");
 	
 	do
 	{
@@ -492,19 +499,21 @@ int EqnEvaluator::Calculate( )
 	return nevals;
 }
 
-size_t EqnEvaluator::MarkAffectedEquations( const wxString &var )
+size_t EqnEvaluator::MarkAffectedEquations( const wxString &var, EqnFastLookup::eqnmark_hash_t &marked )
 {
-	wxArrayString affectlist;
-	int naffected = m_efl.GetAffectedVariables( var, affectlist );	
+	wxArrayString affected;
+	int naffected = m_efl.GetAffectedVariables( var, affected, marked );	
 	if ( naffected == 0 ) return 0;
 
-	for (size_t i=0;i<affectlist.size();i++)
+	for (size_t i=0;i<affected.size();i++)
 	{
-		int index = m_efl.GetEquationIndex( affectlist[i] );
+		int index = m_efl.GetEquationIndex( affected[i] );
 		if ( index >= 0 && index < (int)m_status.size() )
 			m_status[ index ] = INVALID;
 
-		naffected += MarkAffectedEquations( affectlist[i] );
+		marked[ affected[i] ] = true;
+
+		naffected += MarkAffectedEquations( affected[i], marked );
 	}
 	return naffected;
 }
@@ -515,12 +524,17 @@ int EqnEvaluator::Changed( const wxArrayString &vars )
 	for (size_t i=0;i<m_status.size();i++)
 		m_status[i] = OK;
 	
+//	wxLogStatus(" Marking equations... %d triggers", (int)vars.size() );
+
 	// recursively mark all affected equations by this variable as INVALID
+	EqnFastLookup::eqnmark_hash_t marked;
 	size_t naffected = 0;
 	for( size_t i=0;i<vars.size();i++ )
-		naffected += MarkAffectedEquations( vars[i] );
+		naffected += MarkAffectedEquations( vars[i], marked );
 
 	if (naffected == 0) return 0;
+
+//	wxLogStatus(" %d affected variables marked.", (int)naffected );
 	
 	return Calculate( );
 }
