@@ -560,7 +560,7 @@ void MainWindow::OnCommand( wxCommandEvent &evt )
 			menu.Append( wxID_SAVEAS, "Save as..." );
 			menu.Append( ID_SAVE_HOURLY, "Save with hourly results");
 			menu.AppendSeparator();
-			menu.Append( ID_BROWSE_INPUTS, "Browse case inputs...");
+			menu.Append( ID_BROWSE_INPUTS, "Inputs browser...");
 			menu.AppendSeparator();
 			menu.Append( wxID_CLOSE, "Close\tCtrl-W" );
 			menu.Append( wxID_EXIT, "Quit" );
@@ -774,7 +774,7 @@ void MainWindow::OnCaseTabButton( wxCommandEvent &evt )
 	menu.Append( ID_CASE_RESET_DEFAULTS, "Reset inputs to default values" );
 #ifdef __WXMSW__
 	menu.AppendSeparator();
-	menu.Append( ID_CASE_EXCELEXCH, "Set up Excel exchange...");
+	menu.Append( ID_CASE_EXCELEXCH, "Excel exchange...");
 #endif
 	//menu.AppendSeparator();
 	//menu.Append( ID_CASE_IMPORT, "Import" );
