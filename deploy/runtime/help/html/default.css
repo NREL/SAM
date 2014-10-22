@@ -90,12 +90,14 @@ span.f_Heading2_atoc_ /* Heading2_atoc_ */
  font-size: 16pt;
  font-family: Arial;
  font-weight: bold;
+ color: #0072c6;
 }
 span.f_Heading3_atocs_ /* Heading3_atocs_ */
 {
  font-size: 14pt;
  font-family: Arial;
  font-weight: bold;
+ color: #0072c6;
 }
 span.f_Heading4 /* Heading4 */
 {
@@ -296,7 +298,7 @@ p /* Normal */
  font-weight: normal;
  text-align: left;
  text-indent: -19px;
- border-color: #000000;
+ border-color: #0072c6;
  border-style: solid;
  border-width: 1px;
  background: #ebebeb;
@@ -309,7 +311,7 @@ p /* Normal */
  font-weight: normal;
  text-align: left;
  text-indent: 0px;
- border-color: #000000;
+ border-color: #0072c6;
  border-style: solid;
  border-width: 2px;
  border-top: none;
