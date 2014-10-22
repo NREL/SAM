@@ -11,7 +11,7 @@
 #include "main.h"
 
 static const char *help_text =
-"NREL Wind Toolkit data is only available for locations in the United States. Each weather file contains wind resource data for a single year.\n\n"
+"NREL WIND Toolkit data is only available for locations in the continental United States. Each weather file contains wind resource data for a single year.\n\n"
 "See Help for details.";
 
 enum {
