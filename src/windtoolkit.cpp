@@ -11,10 +11,8 @@
 #include "main.h"
 
 static const char *help_text =
-"Notes:\n"
-"You are about to download a single year of data near the location that you specify from the NREL Wind Integration National Dataset (WIND) toolkit.\n\n"
-"The WIND toolkit is only available for the continental United States.\n\n"
-"For more information, please see the documentation for this data at: http://www.nrel.gov/docs/fy14osti/60269.pdf ";
+"NREL Wind Toolkit data is only available for locations in the United States. Each weather file contains wind resource data for a single year.\n\n"
+"See Help for details.";
 
 enum {
 	ID_radAddress, ID_radLatLon, ID_cboYears,
@@ -92,7 +90,7 @@ void WindToolkitDialog::OnEvt( wxCommandEvent &e )
 	switch( e.GetId() )
 	{
 	case wxID_HELP:
-		SamApp::ShowHelp("window_download_wind_resource");
+		SamApp::ShowHelp("download_weather_file");
 		break;
 	case ID_radAddress:
 	case ID_radLatLon:
