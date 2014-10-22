@@ -494,7 +494,7 @@ bool Simulation::InvokeWithHandler( ISimulationHandler *ih )
 			wxString name( ssc_info_name( p_inf ) ); // assumed to be non-null
 			wxString reqd( ssc_info_required( p_inf ) );
 
-			if ( var_type == SSC_INPUT )
+			if ( var_type == SSC_INPUT || var_type == SSC_INOUT )
 			{
 				// handle ssc variable names
 				// that are explicit field accesses"shading:mxh"
@@ -552,7 +552,6 @@ bool Simulation::InvokeWithHandler( ISimulationHandler *ih )
 		
 		ssc_bool_t ok = ssc_module_exec_with_handler( p_mod, p_data, ssc_invoke_handler, ih );
 
-		
 
 		if ( !ok )
 		{
@@ -569,7 +568,7 @@ bool Simulation::InvokeWithHandler( ISimulationHandler *ih )
 				wxString label( ssc_info_label( p_inf ) );
 				wxString units( ssc_info_units( p_inf ) );
 				
-				if ( var_type == SSC_OUTPUT && data_type == SSC_NUMBER )
+				if ( (var_type == SSC_OUTPUT || var_type == SSC_INOUT ) && data_type == SSC_NUMBER )
 				{
 					ssc_number_t vval;
 					if ( ssc_data_get_number( p_data, name, &vval ) )
@@ -582,7 +581,7 @@ bool Simulation::InvokeWithHandler( ISimulationHandler *ih )
 						m_outputUnits[ name ] = units;
 					}
 				}
-				else if ( var_type == SSC_OUTPUT && data_type == SSC_ARRAY )
+				else if ( ( var_type == SSC_OUTPUT || var_type == SSC_INOUT ) && data_type == SSC_ARRAY )
 				{
 					int len;
 					if ( ssc_number_t *varr = ssc_data_get_array( p_data, name, &len ) )
