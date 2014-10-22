@@ -1,0 +1,43 @@
+/*@
+
+This macro allows you convert a TMY2, TMY3, or EPW weather file to the SAM CSV format that you can use directly in Microsoft Excel.
+
+Although TMY3 and EPW weather files are in .csv format already, they contain lots of data about uncertainties and other values 
+that are not used by SAM simulations, and so you may still want to have a "stripped" down weather file with only the relevant data.
+
+<i> Click 'Run macro' above to select a weather file to convert.</i>
+<br><br>
+
+@*/
+
+// Macro user interface widgets
+// @ name=location_choice;type=combo;value=Use location from weather file,Enter latitude and longitude,Enter address or city;label=Location to look up
+// @ name=radius;type=number;label=Radius (miles);value=10
+// @ name=input_lat;type=number;label=Latitude input;value=40
+// @ name=input_lon;type=number;label=Longitude input;value=-105
+
+
+wf = choose_file( '', 'Select weather file to convert', 'Weather Files (*.csv;*.tm2;*.tm3;*.epw)|*.csv;*.tm2;*.tm3;*.epw' );
+if ( wf == '' ) return;
+
+ssc_reset();
+ssc_var( 'input_file', wf );
+result = ssc_exec( 'wfcsvconv', true );
+if ( result == 0 )
+{
+	output = ssc_var('output_file');
+	if ( file_exists(output) )
+	{
+		if ( yesno('Weather file successfully converted.  Open it?\n\n' + output) )
+		{
+			browse( path_only(output) ); // pop up folder where file exists
+			browse( output ); // load in Excel
+		}
+	}
+	else
+	{
+		msgbox('An error occurred and the file could not be converted.');
+	}
+}
+else
+	msgbox( 'Error:\n\n' + result );
