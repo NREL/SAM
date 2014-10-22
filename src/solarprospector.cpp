@@ -11,18 +11,13 @@
 #include "main.h"
 
 static const char *help_text = 
-	"Notes:\n"
-	"The TMY ('Typical Meteorological Year') data set uses the standard TMY weighting factors.\n\n"
+	"TMY is typical meteorological year with typical months chosen using NREL TMY weighting factors.\n"
+	"TGY is typical global year data with typical months based only on global horizontal irradiance.\n"
+	"TDY is typical DNI year with months based only on direct normal (beam) irradiance.\n\n"
 	
-	"The TGY ('Typical Global Year') data set uses only the global horizontal irradiance to determine typical months.\n\n"
-
-	"The TDY ('Typical DNI Year') data set uses only the beam irradiance to determine typical months.\n\n"
+	"Year numbers are for single year data files with data for the given year.\n\n"
 	
-	"The yearly data includes unweighted actual year solar and meteorological data, "
-	"and are suitable for all system types.\n\n"
-	
-	"Please review the SAM Help system for more detailed guidance.";
-
+	"See Help for details.";
 
 enum {
 	ID_radAddress, ID_radLatLon, ID_cboYears,
@@ -111,7 +106,7 @@ void SolarProspectorDialog::OnEvt( wxCommandEvent &e )
 	switch( e.GetId() )
 	{
 	case wxID_HELP:
-		SamApp::ShowHelp("window_download_solar_resource");
+		SamApp::ShowHelp("download_weather_file");
 		break;
 	case ID_radAddress:
 	case ID_radLatLon:
