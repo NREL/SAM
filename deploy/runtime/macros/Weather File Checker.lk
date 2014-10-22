@@ -1,0 +1,36 @@
+/*@
+
+This macro allows you test a weather file to see if has any problems.
+
+@*/
+
+// Macro user interface widgets
+// @ name=location_choice;type=combo;value=Use location from weather file,Enter latitude and longitude,Enter address or city;label=Location to look up
+// @ name=radius;type=number;label=Radius (miles);value=10
+// @ name=input_lat;type=number;label=Latitude input;value=40
+// @ name=input_lon;type=number;label=Longitude input;value=-105
+
+
+wf = choose_file( '', 'Select weather file', 'Weather Files (*.csv;*.tm2;*.tm3;*.epw)|*.csv;*.tm2;*.tm3;*.epw' );
+if ( wf == '' ) return;
+
+ssc_reset();
+ssc_var( 'input_file', wf );
+result = ssc_exec( 'wfcheck', true );
+if ( result == 0 )
+{
+	n = ssc_var('nwarnings');
+	if ( n == 0 ) msgbox('No issues detected in weather file.\n\n' + wf);
+	else
+	{
+		str = '<h3>Report for: ' + wf + '</h3>\n<ul>';
+		for( i=0;i<n;i++ )
+		{
+			str += '<li>' + ssc_var( 'warning' + to_string(i) ) + '\n';
+		}
+		str += '</ul>';
+		html_dialog( str, 'Weather file report', [ 500, 400 ] );
+	}
+}
+else
+	msgbox( 'Error:\n\n' + result );
