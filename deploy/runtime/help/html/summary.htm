@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+   <title>Summary</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="" />
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+   
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+   <style type="text/css">
+     body { margin: 0px; background: #FFFFFF; }
+   </style>
+   <script type="text/javascript" src="jquery.js"></script>
+   <script type="text/javascript" src="helpman_settings.js"></script>
+   <script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <script type="text/javascript">
+     HMSyncTOC("index.html", "summary.htm");
+   </script>
+   <script type="text/javascript" src="highlight.js"></script>
+   <script type="text/javascript">
+     $(document).ready(function(){highlight();});
+   </script>
+</head>
+<body>
+
+
+<table style="width:100%; border:none; border-spacing:0px; padding:5px; background:#FFFFFF; color:#0072C6;">
+  <tr style="vertical-align:middle">
+    <td style="text-align:left">
+      <h1 class="p_Heading1"><span class="f_Heading1">Summary</span></h1>
+
+    </td>
+  </tr>
+</table>
+
+
+<!-- Placeholder for topic body. -->
+<table style="width:100%;border:none;border-spacing:0px"><tr style="vertical-align:top"><td style="text-align:left;padding:5px">
+<p class="p_Text"><span class="f_Text">The Metrics table on the <a href="results_page.htm" class="topiclink">Results page</a> displays a selected set of results variables for each case in the project file.</span></p>
+<p class="p_Text"><span class="f_Text">For a list and descriptions of the variables in the Metrics table, see</span></p>
+<div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 3px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:24px"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;">&#8226;</span></td><td style="border:none"><span class="f_List"><a href="mtf_overview.htm" class="topiclink">Financial Metrics Overview</a> for metrics from the financial models, such as <a href="mtf_lcoe.htm" class="topiclink">LCOE</a>, <a href="mtf_payback.htm" class="topiclink">payback period</a>, <a href="mtf_irr.htm" class="topiclink">IRR</a>, etc..</span></td></tr></table></div><div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 6px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:24px"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;">&#8226;</span></td><td style="border:none"><span class="f_ListLast"><a href="mtp_overview.htm" class="topiclink">Performance Metrics Overview</a> for metrics from the performance models, such as <a href="mtp_annual_energy.htm" class="topiclink">annual energy</a>, <a href="mt_capacity_factor.htm" class="topiclink">capacity factor</a>, etc.</span></td></tr></table></div><p class="p_Text"><span class="f_Text">SAM displays the Metrics table under the navigation menu when results are available for a case. The variables that appear in the metrics table depend on the technology and financing options.</span></p>
+<p class="p_Note"><span class="f_CHNote">Note.</span><span class="f_Note"> Values like </span><span class="f_Emphasis">sv.npv</span><span class="f_Note"> or </span><span class="f_Emphasis">[not found]</span><span class="f_Note"> indicate that there are no results to display. Try <a href="run_simulations.htm" class="topiclink">running simulations</a> to display the values.</span></p>
+<p class="p_Text"><span class="f_Text">The Metrics table shows financial model results from the <a href="cashflow.htm" class="topiclink">cash flow</a> table and <a href="pm_overview.htm" class="topiclink">performance model results</a>. For example, this Metrics table shows results for a residential PV system:</span></p>
+<p class="p_Text"><img src="ss_metricstable.gif" width="228" height="325" alt="SS_MetricsTable" style="border:none" /></p>
+<p class="p_Text"><span class="f_Text">For certain simulation configurations, SAM displays two columns of values for each output variable:</span></p>
+<div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 3px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:24px"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;">&#8226;</span></td><td style="border:none"><span class="f_List">For model runs involving the <a href="multiple_systems.htm" class="topiclink">Multiple Systems</a> simulation configuration, SAM displays output variables for the active case in the Base column of the Metrics table, and output variables for the combined system in the Combined column.</span></td></tr></table></div><div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 6px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:24px"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;">&#8226;</span></td><td style="border:none"><span class="f_ListLast">For model runs involving the <a href="statistical.htm" class="topiclink">Statistical</a> simulation configuration, the values of mu, sigma are displayed in the second column of the Metrics table.</span></td></tr></table></div><p class="p_Text"><span class="f_Text">You can export data from the Metrics table by right-clicking it and choosing an option, </span><span class="f_CHInterfaceElement">Copy table</span><span class="f_Text"> to copy the data to your computer's clipboard, or </span><span class="f_CHInterfaceElement">Copy as CSV</span><span class="f_Text"> to export it to a comma-separated text file:</span></p>
+<p class="p_Text"><img src="ss_metricstablerightclick.gif" width="351" height="325" alt="SS_MetricsTableRightClick" style="border:none" /></p>
+<h3 class="p_Heading3_atocs_" style="border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Metrics in Tables</span></h3>
+<p class="p_Text"><span class="f_Text">You can also display the variables from the Metrics table in the <a href="data.htm" class="topiclink">Tables</a>. This option allows you to choose a subset of the metrics variables, and to export the values. For example, this data table shows some of the metrics from the Metrics table above:</span></p>
+<p class="p_Text"><img src="ss_results-datatablemetrics.gif" width="675" height="331" alt="SS_Results-DataTableMetrics" style="border:none" /></p>
+<h3 class="p_Heading3_atocs_" style="border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Metrics in Graphs</span></h3>
+<p class="p_Text"><span class="f_ImageCaption">To display Metrics in <a href="graphs.htm" class="topiclink">Graphs</a>, in the <a href="window_edit_graph.htm" class="topiclink">Edit Graph</a> window, choose </span><span class="f_CHInterfaceElement">Single Value</span><span class="f_ImageCaption"> for the </span><span class="f_CHInterfaceElement">X Value</span><span class="f_ImageCaption"> option:</span></p>
+<p class="p_Text"><img src="ss_editgraph-singlevalue.gif" width="324" height="334" alt="SS_EditGraph-SingleValue" style="border:none" /></p>
+<p class="p_Text"><span class="f_Text">&nbsp;</span></p>
+
+</td></tr></table>
+
+</body>
+</html>
