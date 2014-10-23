@@ -1,0 +1,761 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+   <title>Module</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="" />
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+   
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+   <style type="text/css">
+     body { margin: 0px; background: #FFFFFF; }
+   </style>
+   <script type="text/javascript" src="jquery.js"></script>
+   <script type="text/javascript" src="helpman_settings.js"></script>
+   <script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <script type="text/javascript">
+     HMSyncTOC("index.html", "dpv_module.htm");
+   </script>
+   <script type="text/javascript" src="highlight.js"></script>
+   <script type="text/javascript">
+     $(document).ready(function(){highlight();});
+   </script>
+</head>
+<body>
+
+
+<table style="width:100%; border:none; border-spacing:0px; padding:5px; background:#FFFFFF; color:#0072C6;">
+  <tr style="vertical-align:middle">
+    <td style="text-align:left">
+      <h1 class="p_Heading1"><span class="f_Heading1">Module</span></h1>
+
+    </td>
+  </tr>
+</table>
+
+
+<!-- Placeholder for topic body. -->
+<table style="width:100%;border:none;border-spacing:0px"><tr style="vertical-align:top"><td style="text-align:left;padding:5px">
+<p class="p_Text"><span class="f_Text">The Module page allows you to choose a photovoltaic module performance model and either choose a module from a list, specify module parameters from a module manufacturer's data sheet, or specify basic module efficiency parameters. SAM can only model a photovoltaic system with a single type of module.</span></p>
+<p class="p_Text"><span class="f_Text">Specify the number of modules in the system on the <a href="dpv_system_design.htm" class="topiclink">Array</a> page, and orientation, tracking, shading, and other parameters on the <a href="dpv_losses.htm" class="topiclink">PV Subarrays</a> page.</span></p>
+<p class="p_Text"><span class="f_Text">SAM displays the name of the active module model at the top of the Module page. Click </span><span class="f_CHInterfaceElement">Change</span><span class="f_Text"> to choose a different model.</span></p>
+<p class="p_Text"><img src="ss_pvmodule-choosemodel.gif" width="535" height="304" alt="SS_PVModule-ChooseModel" style="border:none" /></p>
+<p class="p_Text"><span class="f_Text">You can choose from four different module performance models:</span></p>
+<div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 3px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:24px"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;">&#8226;</span></td><td style="border:none"><span class="f_List"><a href="dpv_module.htm#sandia" class="topiclink">Sandia PV Array Performance Model with Module Database</a> calculates hourly efficiency values based on data measured from modules and arrays in realistic outdoor operating conditions. The database includes modules with different cell types, including crystalline silicon, and various thin film technologies.</span></td></tr></table></div><div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 3px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:24px"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;">&#8226;</span></td><td style="border:none"><span class="f_List"><a href="dpv_module.htm#cec" class="topiclink">California Energy Commission (CEC) Performance Model with Module Database</a> predicts module performance based on a database of module characteristics determined from module ratings. Like the Sandia model, the CEC model calculates hourly efficiency values, and allows you to choose from a list of a commercially-available modules. The CEC module database tends to be more up-to-date than the Sandia database.</span></td></tr></table></div><div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 3px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:24px"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;">&#8226;</span></td><td style="border:none"><span class="f_List"><a href="dpv_module.htm#cecparam" class="topiclink">CEC Performance Model with User Entered Specifications</a> uses the same algorithms as the CEC model with Module Database, but allows you to enter your own module specifications from a manufacturer's data sheet instead of relying on parameters provided by the California Energy Commission.</span></td></tr></table></div><div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 3px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:24px"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;">&#8226;</span></td><td style="border:none"><span class="f_List"><a href="dpv_module.htm#simpleefficiency" class="topiclink">Simple Efficiency Module Model</a> is a simple representation of module performance that requires you to provide the module area, a set of conversion efficiency values, and temperature correction parameters. The simple efficiency model is the least accurate of the three models for predicting the performance of specific modules. It is useful for preliminary performance predictions before you have selected a specific module, and allows you to specify a module efficiency and temperature performance parameters, which is useful for analyses involving sensitivity or parametric analysis.</span></td></tr></table></div><p class="p_Note"><span class="f_CHNote">Note.</span><span class="f_Note"> You can also model a photovoltaic system using the simpler <a href="pvwatts.htm" class="topiclink">PVWatts model</a>, or concentrating photovoltaic system using the <a href="pvhcpv_high-x_concentrating_pv_hcpv.htm" class="topiclink">High-X Concentrating PV (HCPV) model</a>. To use these options you must choose the appropriate option in the <a href="choose_performance_financial.htm" class="topiclink">Technology and Market window</a> when you create a new file or case.</span></p>
+<div style="text-align: left; text-indent: 0px; border-color: #0072c6; border-style: solid; border-width: 1px; background: #ebebeb; padding: 2px 2px 2px 2px; margin: 3px 0px 3px 0px;"><table style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr style="vertical-align:baseline"><td style="border:none;padding:0;width:19px"><a id="overview"></a><img id="TOGGLE0186A1_ICON" class="dropdown-toggle-icon" src="ico-minus-16x16.gif" width="16" height="16" alt="Click to expand or collapse" title="Click to expand or collapse" style="border:none" /></td><td style="border:none;padding:0"><span class="f_Heading2_atoc_"><a class="dropdown-toggle" style="font-size: 16pt; font-family: Arial; font-style: normal; font-weight: bold; color: #0072c6; background-color: transparent; text-decoration: none;" title="Click to expand or collapse" href="javascript:HMToggle('toggle','TOGGLE0186A1','TOGGLE0186A1_ICON')">Guidelines for Choosing a Module Performance Model</a></span></td></tr></table></div><div id="TOGGLE0186A1" style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 6px 0px;"><table class="ToggleContentTable" style="width:100%; border:none; border-spacing:0px;">
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; padding:0px;"><p class="p_Text"><span class="f_Text">The module performance model calculates the hourly DC electrical output of a single module based on the module's specifications on the Module page, and the hourly incident solar radiation (plane-of-array irradiance) calculated from data in the weather file specified on the <a href="climate_solar.htm" class="topiclink">Location and Resource page</a>. SAM assumes that the system consists of an array of identical modules, and uses the array orientation and tracking information from the <a href="dpv_system_design.htm" class="topiclink">Array page</a> to determine the module's orientation with respect to the sun.</span></p>
+<p class="p_Text"><span class="f_Text">The photovoltaic array's electric output depends on the number and configuration of modules in the array, and the soiling and pre-inverter derate factors that you specify on the <a href="dpv_system_design.htm" class="topiclink">Array page</a>. The array's electrical output is fed to one or more inverters, whose characteristics appear on the <a href="dpv_inverter.htm" class="topiclink">Inverter page</a>. </span></p>
+<p class="p_Note"><span class="f_CHNote">Note.</span><span class="f_Note"> SAM assumes that the array operates at its maximum power point. During simulations, SAM does not track changes in voltage and current levels in the system.</span></p>
+<p class="p_Text"><span class="f_Text">Each of the module performance models uses a different algorithm to predict module performance. In general, if you are modeling a system that uses a particular brand and type of flat-plate PV module, you should first look for the module in the Sandia database, and then in the CEC database. If you do not find the module in either database, you can either choose a similar module from one of the databases, or use the CEC Performance Model with User Entered Specifications.</span></p>
+<p class="p_Text"><span class="f_Text">The Flat Plate Simple Efficiency Model is ideal for analyses involving explorations of the relationship between module efficiency and the system's performance and cost of energy because it allows you to specify the module efficiency as an input. The Sandia and CEC models with module databases do not allow you to modify module parameters such as efficiency.</span></p>
+<div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 3px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:24px"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;">&#8226;</span></td><td style="border:none"><span class="f_List">The <a href="dpv_module.htm#sandia" class="topiclink">Sandia PV Array Performance Model with Module Database</a> calculates hourly efficiency values based on data measured from modules and arrays in realistic outdoor operating conditions. The database includes modules with different cell types, including crystalline silicon, and various thin film technologies.</span></td></tr></table></div><div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 3px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:24px"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;">&#8226;</span></td><td style="border:none"><span class="f_List">The <a href="dpv_module.htm#cec" class="topiclink">California Energy Commission (CEC) Performance Model with Module Database</a> predicts module performance based on a database of module characteristics determined from module ratings. Like the Sandia model, the CEC model calculates hourly efficiency values, and allows you to choose from a list of a commercially-available modules. The CEC module database tends to be more up-to-date than the Sandia database.</span></td></tr></table></div><div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 3px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:24px"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;">&#8226;</span></td><td style="border:none"><span class="f_List">The <a href="dpv_module.htm#cecparam" class="topiclink">CEC Performance Model with User Entered Specifications</a> uses the same algorithms as the CEC model with Module Database, but allows you to enter your own module specifications from a manufacturer's data sheet instead of relying on parameters provided by the California Energy Commission.</span></td></tr></table></div><div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 3px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:24px"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;">&#8226;</span></td><td style="border:none"><span class="f_List">The <a href="dpv_module.htm#simpleefficiency" class="topiclink">Simple Efficiency Module Model</a> is a simple representation of module performance that requires you to provide the module area, a set of conversion efficiency values, and temperature correction parameters. The simple efficiency model is the least accurate of the three models for predicting the performance of specific modules. It is useful for preliminary performance predictions before you have selected a specific module, and allows you to specify a module efficiency and temperature performance parameters, which is useful for analyses involving sensitivity or parametric analysis.</span></td></tr></table></div><p class="p_TitleTable"><span class="f_TitleTable">Table 3. Guidelines for choosing a photovoltaic module performance model.</span></p>
+<div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 0px 0px;"><table style="border:none; border-spacing:0px;">
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; padding:0px;"><p class="p_TableHeadColumn"><span style="font-family: Verdana; font-weight: bold;">Use this model...</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableHeadColumn"><span style="font-family: Verdana; font-weight: bold;">...if your analysis involves...</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableHeadColumn"><span style="font-family: Verdana; font-weight: bold;">Comments</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Sandia with Module Database</span></p>
+<p class="p_TableTextLeft" style="margin: 0px 0px 0px 16px;"><span class="f_TableTextLeft" style="font-style: italic;">Model based on field test data.</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">estimates of module performance for crystalline or thin-film modules.</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">If your module is in both the Sandia and CEC lists, use the Sandia model.</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">CEC with Module Database</span></p>
+<p class="p_TableTextLeft" style="margin: 0px 0px 0px 15px;"><span class="f_TableTextLeft" style="font-style: italic;">Model based on module ratings.</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">estimates of module performance for crystalline-silicon modules or for new modules recently available on the market.</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">The CEC model may not accurately model thin film modules.</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">CEC with User Entered Specifications</span></p>
+<p class="p_TableTextLeft" style="margin: 0px 0px 0px 15px;"><span class="f_TableTextLeft" style="font-style: italic;">Model based on module ratings.</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">estimates of module performance for crystalline-silicon modules not available in the Sandia or CEC database.</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">You can find module parameters on the module manufacturer's data sheet.</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Simple Efficiency Module Model</span></p>
+<p class="p_TableTextLeft" style="margin: 0px 0px 0px 17px;"><span class="f_TableTextLeft" style="font-style: italic;">Simple efficiency curve with temperature correction.</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">sensitivity or parametric studies on module efficiency or temperature coefficients, or for preliminary analyses before you have chosen a specific module.</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">&nbsp;</span></p>
+</td>
+</tr>
+</table>
+</div>
+<h3 class="p_Heading3_atocs_" style="border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">&nbsp;</span></h3>
+</td>
+</tr>
+</table>
+</div>
+<div style="text-align: left; text-indent: 0px; border-color: #0072c6; border-style: solid; border-width: 1px; background: #ebebeb; padding: 2px 2px 2px 2px; margin: 3px 0px 3px 0px;"><table style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr style="vertical-align:baseline"><td style="border:none;padding:0;width:19px"><a id="thinfilms"></a><img id="TOGGLE0186A2_ICON" class="dropdown-toggle-icon" src="ico-minus-16x16.gif" width="16" height="16" alt="Click to expand or collapse" title="Click to expand or collapse" style="border:none" /></td><td style="border:none;padding:0"><span class="f_Heading2_atoc_"><a class="dropdown-toggle" style="font-size: 16pt; font-family: Arial; font-style: normal; font-weight: bold; color: #0072c6; background-color: transparent; text-decoration: none;" title="Click to expand or collapse" href="javascript:HMToggle('toggle','TOGGLE0186A2','TOGGLE0186A2_ICON')">Modeling Thin-film Modules</a></span></td></tr></table></div><div id="TOGGLE0186A2" style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 6px 0px;"><table class="ToggleContentTable" style="width:100%; border:none; border-spacing:0px;">
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; padding:0px;"><p class="p_Text"><span class="f_Text">For modules based on thin-film cell technology, including amorphous silicon, copper indium diselenide (CIS), cadmium telluride (CdTe), and heterojunction with intrinsic thin layer (HIT), the Sandia model may provide more accurate results than the CEC and simple efficiency models, which do not adequately represent module performance at low-light levels. For best results, if you are modeling a thin-film module, look for the module in the Sandia database. If the module is not available in the Sandia database, you may want to use a module from the database with similar characteristics to the one you are modeling. Use the table below to help identify the thin-film modules in the Sandia database.</span></p>
+<p class="p_TitleTable"><span class="f_TitleTable">Table 4. Thin-film module manufacturers and model numbers available in the Sandia module database.</span></p>
+<div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 0px 0px;"><table style="border:none; border-spacing:0px;">
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; padding:0px;"><p class="p_TableHeadColumn"><span class="f_TableHeadColumn">Cell Type</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableHeadColumn"><span class="f_TableHeadColumn">Manufacturer</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableHeadColumn"><span class="f_TableHeadColumn">Model Series or Number</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td rowspan="2" style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">amorphous tandem junction (2-a-Si)</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">Solarex</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">MST</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">EPV Solar</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">EPV-40</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">amorphous silicon triple junction (3-a-Si)</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">Uni-Solar</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">PVL, SHR, US, USF</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td rowspan="2" style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">cadmium telluride (CdTe)</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">BP Solar</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">BP980, BP990</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">First Solar</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">FS</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td rowspan="2" style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">copper indium diselenide (CIS)</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">Shell Solar</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">ST</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">Siemens Solar</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">ST</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">amorphous silicon heterojunction (HIT-Si)</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">Sanyo</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">HIP</span></p>
+</td>
+</tr>
+</table>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div style="text-align: left; text-indent: 0px; border-color: #0072c6; border-style: solid; border-width: 1px; background: #ebebeb; padding: 2px 2px 2px 2px; margin: 3px 0px 3px 0px;"><table style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr style="vertical-align:baseline"><td style="border:none;padding:0;width:19px"><a id="sandia"></a><img id="TOGGLE0186A3_ICON" class="dropdown-toggle-icon" src="ico-minus-16x16.gif" width="16" height="16" alt="Click to expand or collapse" title="Click to expand or collapse" style="border:none" /></td><td style="border:none;padding:0"><span class="f_Heading2_atoc_"><a class="dropdown-toggle" style="font-size: 16pt; font-family: Arial; font-style: normal; font-weight: bold; color: #0072c6; background-color: transparent; text-decoration: none;" title="Click to expand or collapse" href="javascript:HMToggle('toggle','TOGGLE0186A3','TOGGLE0186A3_ICON')">Sandia PV Array Performance Model with Module Database</a></span></td></tr></table></div><div id="TOGGLE0186A3" style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 6px 0px;"><table class="ToggleContentTable" style="width:100%; border:none; border-spacing:0px;">
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; padding:0px;"><p class="p_Text"><span class="f_Text">The Sandia PV Array Performance model consists of a set of equations that provide values for five points on a module's I-V curve and a database of coefficients for the equations whose values are stored in the Sandia Modules library. The coefficients have been empirically determined based on a set of manufacturer specifications and measurements taken from modules installed outdoors in real, operating photovoltaic systems.</span></p>
+<p class="p_Note"><span class="f_CHNote">Note.</span><span class="f_Note"> SAM's Sandia module library contains parameters for modules involved in Sandia's Test and Evaluation program, <a href="http://energy.sandia.gov/?page_id=279" target="_blank" class="weblink">http://energy.sandia.gov/?page_id=279</a>.</span><br />
+<span class="f_Note">&nbsp;</span><br />
+<span class="f_Note">If you are a module manufacturer and would like to add your module to the Sandia database, you should contact Sandia National Laboratories directly. See <a href="http://energy.sandia.gov/?page_id=2772" target="_blank" class="weblink">http://energy.sandia.gov/?page_id=2772</a> for the PV Testing and Evaluation contact.</span></p>
+<p class="p_Text"><span class="f_Text">The Sandia model is described in King et al, 2004. Photovoltaic Array Performance Model. Sandia National Laboratories. SAND2004-3535. <a href="http://prod.sandia.gov/techlib/access-control.cgi/2004/043535.pdf" target="_blank" class="weblink">http://prod.sandia.gov/techlib/access-control.cgi/2004/043535.pdf</a>. Also see the Sandia PV Modeling and Analysis website at <a href="http://energy.sandia.gov/?page_id=2493" target="_blank" class="weblink">http://energy.sandia.gov/?page_id=2493</a> for more on PV system performance modeling.</span></p>
+<p class="p_TitleProcedure"><span class="f_TitleProcedure">To use the Sandia photovoltaic model:</span></p>
+<div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 3px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:24px"><span style="font-size:10pt; font-family: 'Segoe UI';color:#000000;">1.</span></td><td style="border:none"><span class="f_ProcedureStep">On the Module page, choose </span><span class="f_CHInterfaceElement">Sandia PV Array Performance Model</span><span class="f_ProcedureStep">.</span></td></tr></table></div><div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 3px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:24px"><span style="font-size:10pt; font-family: 'Segoe UI';color:#000000;">2.</span></td><td style="border:none"><span class="f_ProcedureStep">Choose a module from the list of available modules. SAM displays the module's characteristics and model coefficients.</span></td></tr></table></div><p class="p_ProcedureStepNoNumber"><span class="f_ProcedureStepNoNumber">When you choose a module from the list, SAM displays the module characteristics at reference conditions on the Module page. Internally, the model applies a set of coefficients from the Sandia Modules <a href="libraries.htm" class="topiclink">library</a> to the simulation equations.</span></p>
+<div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 6px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:24px"><span style="font-size:10pt; font-family: 'Segoe UI';color:#000000;">3.</span></td><td style="border:none"><span class="f_ProcedureStepLast">Choose a module structure from the three available options (displayed as front material / cell / back material). See <a href="dpv_module.htm#sandiatempcorr" class="topiclink">Temperature Correction</a> for details. Module manufacturers typically include a description of the front material, and frame or back material in a mechanical characteristics section of module specification sheets.</span></td></tr></table></div><p class="p_Note"><span class="f_CHNote">Notes.</span><span class="f_Note"> </span><br />
+<span class="f_Note">&nbsp;</span><br />
+<span class="f_Note">The current version of the Sandia database contains a single concentrating PV module, listed as Entech 22X Concentrator [1994].</span><br />
+<span class="f_Note">&nbsp;</span><br />
+<span class="f_Text">The first several items in the module list are arrays instead of single modules. The arrays are indicated by the word &quot;Array&quot; in the name. The array coefficients account for some losses not accounted for in the single module parameters, including module mismatch, diodes and connections, and DC wiring losses. When you use an array from the database, you should be sure that the Pre-Inverter derate factor on the <a href="dpv_system_design.htm" class="topiclink">Array page</a> does not include these losses.</span></p>
+<h3 class="p_Heading3_atocs_" style="border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Module Characteristics at Reference Conditions</span></h3>
+<p class="p_Text"><span class="f_Text">SAM displays the module characteristics so that you can compare modules in the database to manufacturer specifications or to different modules in the database.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Reference Conditions</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The reference conditions describe the incident solar radiation, air mass, ambient temperature, and wind speed that apply to the module characteristics. The module efficiency, power, current, voltage, and temperature coefficients values are those for the module operating at the reference conditions.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Efficiency (%)</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The module's rated efficiency at reference conditions. SAM displays this value for reference only. During simulations, the model calculates an efficiency value for each hour, which you can see in the <a href="dpv_results.htm" class="topiclink">time series output data</a> in the <a href="data.htm" class="topiclink">Tables</a> on the <a href="results_page.htm" class="topiclink">Results page</a>.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Maximum Power (Pmp), Wdc</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The module rated power in DC Watts. Equal to the product of the maximum power voltage and maximum power current.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Maximum Power Voltage (Vmp), Vdc</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Maximum power voltage in DC Volts under reference conditions.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Maximum Power Current (Imp), Adc</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Maximum power current in DC Amps under reference conditions. Defines the maximum power point on the module's I-V curve.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Open Circuit Voltage (Voc), Vdc</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Open circuit voltage under reference conditions. Defines the open circuit point on the module's I-V curve.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Short Circuit Current (Isc), Adc</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Short circuit current under reference conditions. Defines the short circuit point on the module's I-V curve.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Temperature Coefficients</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">SAM displays the temperature coefficients in %/°C and W/°C at the different points on the power curve.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Module Structure and Mounting</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">This option determines the coefficients that SAM uses to calculate the cell temperature in each hour of the simulation. The default option is </span><span class="f_CHInterfaceElement">User Database Values</span><span class="f_VariableDescription">, which displays the coefficients from the measured data at reference conditions. See <a href="power_tower_molten_salt.htm" class="topiclink">Temperature Correction</a> for details.</span></p>
+<h3 class="p_Heading3_atocs_" style="border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Physical Characteristics</span></h3>
+<p class="p_VariableName"><span class="f_VariableName">Material</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">A description of the semiconductor technology used in the photovoltaic cells.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">2-a-Si: dual-junction amorphous silicon</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">3-a-Si: triple-junction amorphous silicon</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">CdTe: cadmium telluride</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">CIS: copper indium diselenide</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">HIT-Si: amorphous silicon heterojunction</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">c-Si: single-crystal silicon</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">mc-Si: multi-crystalline silicon</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Vintage</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The year that module coefficients were added to the database. </span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The letter &quot;E&quot; indicates that the coefficients were estimated from a combination of published manufacturer specifications and data from the outdoor testing of a similar module. Entries without an &quot;E&quot; are for modules whose coefficients were derived entirely from outdoor tests involving one more or more modules of that type.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Because the tested modules (listed without an &quot;E&quot;) may have had different average power ratings than production versions of the same module, the database typically also includes an &quot;E&quot; entry for each of the tested modules that represents the average power rating specified by the manufacturer.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Module Area, m2</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The total area of the module, including spaces between cells and the frame.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Number of Cells</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Total number of cells in the module, equal to the product of the number of cells in series and number of cell strings in parallel.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Number of Cells in Series</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Number of cells connected in series per cell string.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Number of Cell Strings in Parallel</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Number of cell strings connected in parallel per module.</span></p>
+<h3 class="p_Heading3_atocs_" style="border-top: none; border-right: none; border-left: none;"><a id="sandiatempcorr"></a><span class="f_Heading3_atocs_">Sandia Temperature Correction</span></h3>
+<p class="p_Text"><span class="f_Text">The Sandia temperature correction algorithm calculates a temperature correction factor that accounts for efficiency losses due to heating of the module during the day when the sun is shining. The algorithm calculates an hourly module temperature as a function of the solar radiation, ambient temperature, and wind speed in a given hour, and a set of properties describing the thermal characteristics of the cell and module.</span></p>
+<p class="p_Text"><span class="f_Text">For more details about the algorithm, see King et al, 2004. </span><span class="f_Emphasis">Photovoltaic Array Performance Model</span><span class="f_Text">. Sandia National Laboratories. SAND2004-3535. <a href="http://prod.sandia.gov/techlib/access-control.cgi/2004/043535.pdf" target="_blank" class="weblink">http://prod.sandia.gov/techlib/access-control.cgi/2004/043535.pdf</a></span></p>
+<p class="p_Note"><span class="f_CHNote">Note</span><span class="f_Note">. The SAM temperature correction algorithms do not account for cooling strategies used in some innovative photovoltaic systems.</span></p>
+<h4 class="p_Heading4"><span class="f_Heading4">Guidelines for choosing the Module Structure - Mounting (a, b, dT) parameters</span></h4>
+<p class="p_Text"><span class="f_Text">The </span><span class="f_Emphasis">a</span><span class="f_Text">, </span><span class="f_Emphasis">b</span><span class="f_Text">, and </span><span class="f_Emphasis">dT</span><span class="f_Text"> parameters determine the relationship between ambient temperature and module temperature. See the <a href="dpv_module.htm#sandiatempcorrequations" class="topiclink">equations</a> below for details. </span></p>
+<p class="p_Text"><span class="f_Text">SAM allows you to choose from a set of pre-determined values of the parameters for different module mounting options, or specify your own values for the parameters. For the Concentrating PV model, you can assign a set values to the parameters, or specify your own. </span></p>
+<div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 3px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:24px"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;">&#8226;</span></td><td style="border:none"><span class="f_List">For most analyses involving flat-plate modules mounted on open racks, choose </span><span class="f_CHInterfaceElement">Use Database Values</span><span class="f_List">. These are the values determined empirically during testing of the module. Most of the modules in the database were tested on open racks.</span></td></tr></table></div><div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 3px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:24px"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;">&#8226;</span></td><td style="border:none"><span class="f_List">To see how a flat-plate module might perform under different mounting conditions, choose an appropriate option from the list. Be sure to choose an option that is consistent with the module you are modeling. You may need to refer to the module's specification sheet for information about its structure.</span></td></tr></table></div><div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 3px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:24px"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;">&#8226;</span></td><td style="border:none"><span class="f_List">For the Concentrating PV model, use the default values (click </span><span class="f_CHInterfaceElement">Default Temperature Inputs</span><span class="f_List">) unless you have a set of </span><span class="f_Emphasis">a</span><span class="f_List">, </span><span class="f_Emphasis">b</span><span class="f_List">, and </span><span class="f_Emphasis">dT</span><span class="f_List"> values for your module. </span><span class="f_Text">See the <a href="dpv_module.htm#sandiatempcorrequations" class="topiclink">equations</a> below for details.</span></td></tr></table></div><div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 6px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:24px"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;">&#8226;</span></td><td style="border:none"><span class="f_ListLast">If you understand the Sandia model well enough to generate your own temperature correction coefficients, choose </span><span class="f_CHInterfaceElement">User Defined</span><span class="f_ListLast">, and type your own values for </span><span class="f_Emphasis">a</span><span class="f_ListLast">, </span><span class="f_Emphasis">b</span><span class="f_ListLast">, and </span><span class="f_Emphasis">dT</span><span class="f_ListLast">. </span><span class="f_Text">See the <a href="dpv_module.htm#sandiatempcorrequations" class="topiclink">equations</a> below for details.</span></td></tr></table></div><p class="p_TitleTable"><span class="f_TitleTable">Table 5. Description of the module structure and mounting options.</span></p>
+<div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 0px 0px;"><table style="border:none; border-spacing:0px;">
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; width:185px; padding:0px;"><p class="p_TableHeadColumn"><span class="f_TableHeadColumn">Module Structure</span><br />
+<span class="f_TableHeadColumn">and Mounting</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableHeadColumn"><span class="f_TableHeadColumn">Description</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:middle; width:185px; padding:0px;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">Glass/Cell/Polymer Sheet</span><br />
+<span class="f_TableTextCenter">Open Rack</span></p>
+</td>
+<td style="vertical-align:middle; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Solar cells are between a glass front and polymer back, and the module is mounted on an open rack allowing air to circulate freely around the module.</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:middle; width:185px; padding:0px;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">Glass/Cell/Glass </span><br />
+<span class="f_TableTextCenter">Open Rack</span></p>
+</td>
+<td style="vertical-align:middle; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Solar cells are between a glass front and glass back, and the module is mounted on an open rack allowing air to circulate freely around the module.</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:middle; width:185px; padding:0px;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">Polymer/Thin Film/Steel</span><br />
+<span class="f_TableTextCenter">Open Rack </span></p>
+</td>
+<td style="vertical-align:middle; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Solar cells are between a transparent polymer front and steel back, and the module is mounted on an open rack allowing air to circulate freely around the module.</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:middle; width:185px; padding:0px;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">Glass/Cell/Polymer Sheet</span><br />
+<span class="f_TableTextCenter">Insulated Back</span></p>
+</td>
+<td style="vertical-align:middle; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Solar cells are between a glass front and polymer back, and the module is mounted directly to a building surface in a building-integrated PV (BIPV) application preventing air from flowing over the module back.</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:middle; width:185px; padding:0px;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">Glass/Cell/Glass</span><br />
+<span class="f_TableTextCenter">Close Roof Mount</span></p>
+</td>
+<td style="vertical-align:middle; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Solar cells are between a glass front and glass back, and the module is mounted on a rack with little clearance between the building surface and module back allowing little air to flow over the module back.</span></p>
+</td>
+</tr>
+</table>
+</div>
+<h4 class="p_Heading4"><span class="f_Heading4">Sandia Temperature Correction Method</span></h4>
+<p class="p_Text"><span class="f_Text">SAM uses the Sandia temperature correction method to calculate a module and cell temperature and temperature correction factor for the Sandia, <a href="dpv_module.htm#simpleefficiency" class="topiclink">Simple Efficiency</a> and <a href="hcpv_module.htm" class="topiclink">High-X Concentrating PV (HCPV)</a> models. The model uses the temperature correction factor to adjust each hour's module efficiency value: The higher the module's temperature in a given hour, the lower the module's efficiency in that hour.</span></p>
+<p class="p_Text"><span class="f_Text">You can explore temperature effects on the array's performance in the <a href="dpv_results.htm" class="topiclink">time series output data</a>. The data shows the hourly cell temperature, along with the solar radiation, wind speed, and ambient temperature.</span></p>
+<p class="p_Text"><span class="f_Text">The temperature correction equations use the following input values from the Module page:</span></p>
+<div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 3px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:24px"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;">&#8226;</span></td><td style="border:none"><span class="f_List">Temperature coefficients. The Sandia model uses the four values listed in the Temperature Coefficients column. The Simple Efficiency and Concentrating PV models use the single temperature coefficient of power value.</span></td></tr></table></div><div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 6px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:24px"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;">&#8226;</span></td><td style="border:none"><span class="f_ListLast">Temperature correction coefficients: </span><span class="f_CHEquationVariable">a</span><span class="f_ListLast">, </span><span class="f_CHEquationVariable">b</span><span class="f_ListLast">, and </span><span class="f_CHEquationVariable">dT</span><span class="f_ListLast">. For the Sandia and Simple Efficiency models, the three values appear under the Module Structure - Mounting option. For the Concentrating PV model, the values appear below the temperature coefficient variable.</span></td></tr></table></div><p class="p_Text"><span class="f_Text">The equations use four hourly data sets from the weather file. You can see the hourly data by either viewing the weather data from the <a href="climate_solar.htm" class="topiclink">Location and Resource page</a>, or viewing the <a href="dpv_results.htm" class="topiclink">time series results</a> data after running simulations:</span></p>
+<div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 3px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:24px"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;">&#8226;</span></td><td style="border:none"><span class="f_List">Incident direct normal radiation</span></td></tr></table></div><div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 3px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:24px"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;">&#8226;</span></td><td style="border:none"><span class="f_List">Incident diffuse radiation</span></td></tr></table></div><div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 3px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:24px"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;">&#8226;</span></td><td style="border:none"><span class="f_List">Ambient temperature</span></td></tr></table></div><div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 6px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:24px"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;">&#8226;</span></td><td style="border:none"><span class="f_ListLast">Wind speed</span></td></tr></table></div><p class="p_TitleTable"><span class="f_TitleTable">Table 6. Empirically-determined coefficients from the Sandia database for each of the module structure and mounting options available on the Module page.</span></p>
+<div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 0px 0px;"><table style="border:none; border-spacing:0px;">
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; padding:0px;"><p class="p_TableHeadColumn"><span class="f_TableHeadColumn">Module Structure</span><br />
+<span class="f_TableHeadColumn">and Mounting</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableHeadColumn"><span class="f_TableHeadColumn">&nbsp;</span><br />
+<span class="f_TableHeadColumn">a </span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableHeadColumn"><span class="f_TableHeadColumn">&nbsp;</span><br />
+<span class="f_TableHeadColumn">b </span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableHeadColumn"><span class="f_TableHeadColumn">dT</span></p>
+<p class="p_TableHeadColumn"><span class="f_TableHeadColumn">ºC</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:middle; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Glass/Cell/Polymer Sheet</span><br />
+<span class="f_TableTextLeft">Open Rack</span></p>
+</td>
+<td style="vertical-align:middle; padding:0px;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">-3.56</span></p>
+</td>
+<td style="vertical-align:middle; padding:0px;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">-0.0750</span></p>
+</td>
+<td style="vertical-align:middle; padding:0px;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">3</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:middle; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Glass/Cell/Glass </span><br />
+<span class="f_TableTextLeft">Open Rack</span></p>
+</td>
+<td style="vertical-align:middle; padding:0px;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">-3.47</span></p>
+</td>
+<td style="vertical-align:middle; padding:0px;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">-0.0594</span></p>
+</td>
+<td style="vertical-align:middle; padding:0px;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">3</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:middle; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Polymer/Thin Film/Steel</span><br />
+<span class="f_TableTextLeft">Open Rack </span></p>
+</td>
+<td style="vertical-align:middle; padding:0px;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">-3.58</span></p>
+</td>
+<td style="vertical-align:middle; padding:0px;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">-0.113</span></p>
+</td>
+<td style="vertical-align:middle; padding:0px;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">3</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:middle; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Glass/Cell/Polymer Sheet</span><br />
+<span class="f_TableTextLeft">Insulated Back</span></p>
+</td>
+<td style="vertical-align:middle; padding:0px;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">-2.81</span></p>
+</td>
+<td style="vertical-align:middle; padding:0px;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">-0.0455</span></p>
+</td>
+<td style="vertical-align:middle; padding:0px;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">0</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:middle; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Glass/Cell/Glass</span><br />
+<span class="f_TableTextLeft">Close Roof Mount</span></p>
+</td>
+<td style="vertical-align:middle; padding:0px;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">-2.98</span></p>
+</td>
+<td style="vertical-align:middle; padding:0px;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">-0.0471</span></p>
+</td>
+<td style="vertical-align:middle; padding:0px;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">1</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:middle; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Concentrating PV Module</span></p>
+</td>
+<td style="vertical-align:middle; padding:0px;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">-3.2</span></p>
+</td>
+<td style="vertical-align:middle; padding:0px;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">-0.09</span></p>
+</td>
+<td style="vertical-align:middle; padding:0px;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">17</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:middle; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">User Defined</span></p>
+</td>
+<td style="vertical-align:middle; padding:0px;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">-99</span></p>
+</td>
+<td style="vertical-align:middle; padding:0px;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">0</span></p>
+</td>
+<td style="vertical-align:middle; padding:0px;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">0</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="p_Text"><span class="f_Text">&nbsp;</span></p>
+<p class="p_Note"><span class="f_CHNote">Note.</span><span class="f_Note"> The default values for the User Defined option effectively remove temperature correction from the model so that the cell temperature is equal to the ambient temperature.</span></p>
+<p class="p_TitleTable"><span class="f_TitleTable">Table 7. Sample temperature coefficient values for different cell types based on an informal survey of manufacturer module specifications.</span></p>
+<div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 6px 0px;"><table style="border:none; border-spacing:0px;">
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; padding:0px;"><p class="p_TableHeadColumn"><span class="f_TableHeadColumn">Cell Type</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableHeadColumn"><span class="f_TableHeadColumn">Maximum Power Temperature Coefficient (%/°C)</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Monocrystalline Silicon</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">-0.49</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Polycrystalline Silicon</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">-0.49</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Amorphous Silicon</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">-0.24</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Amorphous Silicon Triple Junction</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">-0.21</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Copper Indium Gallium DiSelenide (CIGS)</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">-0.45</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Cadmium Telluride (CdTe)</span></p>
+</td>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">-0.25</span></p>
+</td>
+</tr>
+</table>
+</div>
+<h4 class="p_Heading4"><a id="sandiatempcorrequations"></a><span class="f_Heading4">Sandia Temperature Correction Equations</span></h4>
+<p class="p_Text"><span class="f_Text">The temperature correction algorithm first calculates the module back temperature based on the incident solar radiation, </span><span class="f_Emphasis">a</span><span class="f_Text"> and </span><span class="f_Emphasis">b</span><span class="f_Text"> coefficients, and the ambient temperature and wind speed:</span></p>
+<p class="p_Equation"><img src="eq_pvmodule-tback.gif" width="259" height="19" alt="EQ_PVModule-TBack" style="border:none" /></p>
+<p class="p_Note"><span class="f_CHNote">Note.</span><span class="f_Note"> SAM assumes that the ambient temperature and wind speed data in the weather file are mid-hour values and that the radiation values are end-of-hour values. SAM interpolates temperature and wind speed values by averaging the current hour value with the previous hour value.</span></p>
+<p class="p_Text"><span class="f_Text">Next, the cell temperature is calculated based on the module back temperature, incident radiation, and dT:</span></p>
+<p class="p_Equation"><img src="eq_pvmodule-tcell.gif" width="189" height="40" alt="EQ_PVModule-TCell" style="border:none" /></p>
+<p class="p_Text"><span class="f_Text">The temperature correction factor </span><span class="f_CHEquationVariable">F</span><span class="f_CHVariableSubscript">TempCorr</span><span class="f_Text"> is:</span></p>
+<p class="p_Equation"><img src="eq_pvmodule-ftempcorr.gif" width="226" height="18" alt="EQ_PVModule-FTempCorr" style="border:none" /></p>
+<p class="p_Text"><span class="f_Text">In general, the temperature corrected module power is the product of the power calculated by the module model and the temperature correction factor. Each module model (Sandia, Simple Efficiency, Concentrating PV) uses a different algorithm to calculate the module power before temperature correction:</span></p>
+<p class="p_Equation"><img src="eq_pvmodule-ptempcorr.gif" width="256" height="18" alt="EQ_PVModule-PTempCorr" style="border:none" /></p>
+<p class="p_Text"><span class="f_Text">&nbsp;</span></p>
+<p class="p_Text"><span class="f_Text">Where,</span></p>
+<div style="text-align: center; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 6px 0px;"><table class="WhereTable" style="margin:0 auto; border:none; border-spacing:0px;">
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; width:133px; padding:2px;"><p class="p_TableTextLeft"><span class="f_CHEquationVariable">E</span><span class="f_CHVariableSubscript">Incident</span><span class="f_TableTextLeft"> (</span><span class="f_TableTextCenter">W/m</span><span class="f_TableTextCenter" style="font-size: 7pt; vertical-align: super;">2</span><span class="f_TableTextLeft">)</span></p>
+</td>
+<td style="vertical-align:top; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">The sum of the direct normal and diffuse radiation for the current hour in the weather data. SAM determines this value based on the data in the weather file.</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; width:133px; padding:2px;"><p class="p_TableTextLeft"><span class="f_CHEquationVariable">E</span><span class="f_CHVariableSubscript">0</span><span class="f_TableTextLeft"> (</span><span class="f_TableTextCenter">W/m</span><span class="f_TableTextCenter" style="font-size: 7pt; vertical-align: super;">2</span><span class="f_TableTextLeft">)</span></p>
+</td>
+<td style="vertical-align:top; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">The reference total incident radiation, equal to 1000 W/m</span><span class="f_TableTextLeft" style="font-size: 7pt; vertical-align: super;">2</span><span class="f_TableTextLeft">.</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; width:133px; padding:2px;"><p class="p_TableTextLeft"><span class="f_CHEquationVariable">T</span><span class="f_CHVariableSubscript">ref</span><span class="f_TableTextLeft"> (</span><span class="f_TableTextCenter">°C</span><span class="f_TableTextLeft">)</span></p>
+</td>
+<td style="vertical-align:top; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">The reference temperature in degrees Celsius, equal to 25</span><span class="f_TableTextCenter">°C</span><span class="f_TableTextLeft">.</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; width:133px; padding:2px;"><p class="p_TableTextLeft"><span class="f_CHEquationVariable">gamma</span><span class="f_TableTextLeft"> (</span><span class="f_TableTextCenter">%/°C</span><span class="f_TableTextLeft">)</span></p>
+</td>
+<td style="vertical-align:top; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">The maximum power temperature coefficient from Module page.</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; width:133px; padding:2px;"><p class="p_TableTextLeft"><span class="f_CHEquationVariable">a, b</span></p>
+</td>
+<td style="vertical-align:top; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Values from the Module page. They are empirically-determined coefficients accounting for the effect of wind on the module temperature: </span><span class="f_CHEquationVariable">a</span><span class="f_TableTextLeft"> defines the module temperature upper limit (at low wind speed and high solar radiation levels), and </span><span class="f_CHEquationVariable">b</span><span class="f_TableTextLeft"> defines the rate at which module temperature decreases as wind speed increases. The values depend on the module's construction, which determines its ability to absorb and shed heat. See the table above for typical values.</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; width:133px; padding:2px;"><p class="p_TableTextLeft"><span class="f_CHEquationVariable">dT</span></p>
+</td>
+<td style="vertical-align:top; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Value from the Module page. The temperature difference between the cell and module back surface at the reference incident radiation of 1000 W/m</span><span class="f_TableTextLeft" style="font-size: 7pt; vertical-align: super;">2</span><span class="f_TableTextLeft">. The value depends on how the module is mounted in the system, which determines how much air comes into contact with the module back surface. See the table above for typical values.</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; width:133px; padding:2px;"><p class="p_TableTextLeft"><span class="f_CHEquationVariable">v</span><span class="f_CHVariableSubscript">Wind</span><span class="f_TableTextLeft"> (</span><span class="f_TableTextCenter">m/s</span><span class="f_TableTextLeft">)</span></p>
+</td>
+<td style="vertical-align:top; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Wind speed from the weather file in meters per second.</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; width:133px; padding:2px;"><p class="p_TableTextLeft"><span class="f_CHEquationVariable">T</span><span class="f_CHVariableSubscript">Ambient</span><span class="f_TableTextLeft"> (</span><span class="f_TableTextCenter">°C</span><span class="f_TableTextLeft">)</span></p>
+</td>
+<td style="vertical-align:top; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Ambient temperature from weather file.</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; width:133px; padding:2px;"><p class="p_TableTextLeft"><span class="f_CHEquationVariable">F</span><span class="f_CHVariableSubscript">TempCorr</span></p>
+</td>
+<td style="vertical-align:top; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Temperature correction factor</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; width:133px; padding:2px;"><p class="p_TableTextLeft"><span class="f_CHEquationVariable">P</span><span class="f_CHVariableSubscript">BeforeTempCorr</span></p>
+</td>
+<td style="vertical-align:top; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Module power before temperature correction</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; width:133px; padding:2px;"><p class="p_TableTextLeft"><span class="f_CHEquationVariable">P</span><span class="f_CHVariableSubscript">TempCorr</span></p>
+</td>
+<td style="vertical-align:top; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Temperature-corrected module power</span></p>
+</td>
+</tr>
+</table>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div style="text-align: left; text-indent: 0px; border-color: #0072c6; border-style: solid; border-width: 1px; background: #ebebeb; padding: 2px 2px 2px 2px; margin: 3px 0px 3px 0px;"><table style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr style="vertical-align:baseline"><td style="border:none;padding:0;width:19px"><a id="cec"></a><img id="TOGGLE0186A4_ICON" class="dropdown-toggle-icon" src="ico-minus-16x16.gif" width="16" height="16" alt="Click to expand or collapse" title="Click to expand or collapse" style="border:none" /></td><td style="border:none;padding:0"><span class="f_Heading2_atoc_"><a class="dropdown-toggle" style="font-size: 16pt; font-family: Arial; font-style: normal; font-weight: bold; color: #0072c6; background-color: transparent; text-decoration: none;" title="Click to expand or collapse" href="javascript:HMToggle('toggle','TOGGLE0186A4','TOGGLE0186A4_ICON')">CEC Performance Model with Module Database</a></span></td></tr></table></div><div id="TOGGLE0186A4" style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 6px 0px;"><table class="ToggleContentTable" style="width:100%; border:none; border-spacing:0px;">
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; padding:0px;"><p class="p_Text"><span class="f_Text">The California Energy Commission (CEC) Performance Model uses the University of Wisconsin-Madison Solar Energy Laboratory's five-parameter model with a database </span><span class="f_Note">of module parameters for modules from the database of eligible photovoltaic modules</span><span class="f_Text"> maintained by the California Energy Commission (CEC) for the California Solar Initiative.</span></p>
+<p class="p_Text"><span class="f_Text">The five-parameter model calculates a module's current and voltage under a range of solar resource conditions (represented by an I-V curve) using an equivalent electrical circuit whose electrical properties can be determined from a set of five reference parameters. These five parameters, in turn, are determined from standard reference condition data provided by either the module manufacturer or an independent testing laboratory, such as the Arizona State University Photovoltaic Testing Laboratory. </span></p>
+<p class="p_Note"><span class="f_CHNote">Note.</span><span class="f_Note"> SAM's CEC module library contains parameters for the modules in the List of Eligible SB1 Guidelines Compliant Photovoltaic Modules at <a href="http://www.gosolarcalifornia.org/equipment/pv_modules.php" target="_blank" class="weblink">http://www.gosolarcalifornia.org/equipment/pv_modules.php</a>. We try to keep the library as current as possible, but there may be periods when SAM's library is out of date. If the library appears to be out of date, you can check for updates by clicking the link on the Help menu to see if we have prepared a new module library.</span><br />
+<span class="f_Note">&nbsp;</span><br />
+<span class="f_Note">If you are a module manufacturer and would like to add your module to the CEC database, you should contact the CEC directly. See <a href="http://www.gosolarcalifornia.ca.gov/equipment/add.php" target="_blank" class="weblink">http://www.gosolarcalifornia.ca.gov/equipment/add.php</a>.</span></p>
+<p class="p_Text"><span class="f_Text">The five-parameter model is described in De Soto 2004, Improvement and Validation of a Model for Photovoltaic Array Performance, Master of Science Thesis, University of Wisconsin-Madison. <a href="http://minds.wisconsin.edu/handle/1793/7602" target="_blank" class="weblink">http://minds.wisconsin.edu/handle/1793/7602</a>.</span></p>
+<p class="p_TitleProcedure"><span class="f_TitleProcedure">To use the CEC photovoltaic model:</span></p>
+<div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 3px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:24px"><span style="font-size:10pt; font-family: 'Segoe UI';color:#000000;">1.</span></td><td style="border:none"><span class="f_ProcedureStep">On the Module page, choose </span><span class="f_CHInterfaceElement">CEC Performance Model</span><span class="f_ProcedureStep">.</span></td></tr></table></div><div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 6px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:24px"><span style="font-size:10pt; font-family: 'Segoe UI';color:#000000;">2.</span></td><td style="border:none"><span class="f_ProcedureStepLast">Choose a module from the list of available modules. SAM displays the model's characteristics and model coefficients.</span></td></tr></table></div><p class="p_ProcedureStepNoNumber"><span class="f_ProcedureStepNoNumber">When you select a module from the CEC database on the Module page, SAM displays module's parameters. You can see the complete set of parameters in the Module library by using SAM's <a href="libraries.htm" class="topiclink">library editor</a>.</span></p>
+<h3 class="p_Heading3_atocs_" style="border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Module Characteristics at Reference Conditions</span></h3>
+<p class="p_VariableName"><span class="f_VariableName">Efficiency, %</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The module's rated efficiency at reference conditions. SAM displays this value for reference only. During simulations, the model calculates an efficiency value for each hour, which you can see in the <a href="dpv_results.htm" class="topiclink">time series output</a> data.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Maximum Power (Pmp), Wdc</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The module rated power. Equal to the product of the maximum power voltage and maximum power current.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Maximum Power Voltage (Vmp), Vdc</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Reference maximum power voltage at the reference conditions.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Maximum Power Current (Imp), Adc</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Reference maximum power current at the reference conditions.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Open Circuit Voltage (Voc), Vdc</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Reference open circuit voltage at the reference conditions.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Short Circuit Current (Isc), Adc</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Reference short circuit current at the reference conditions.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Temperature Coefficients</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">SAM displays the temperature coefficients in %/°C and W/°C at maximum power, open circuit, and short circuit.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The temperature coefficients are based on data collected from laboratory test results and may not match coefficients provided by the manufacturer on the module's data sheet.</span></p>
+<h3 class="p_Heading3_atocs_" style="border-top: none; border-right: none; border-left: none;"><a id="cectempcorr"></a><span class="f_Heading3_atocs_">CEC Temperature Correction</span></h3>
+<p class="p_Text"><span class="f_Text">The CEC model provides two modes for modeling the effect of cell temperature on module performance:</span></p>
+<div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 3px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:24px"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;">&#8226;</span></td><td style="border:none"><span class="f_List">The NOCT method determines the cell temperature based on the nominal operating cell temperature (NOCT) specified in the module parameters. In SAM 2010.11.9 and earlier versions, this was the only available temperature correction option for the CEC mode. For a description, see De Soto 2004, Improvement and Validation of a Model for Photovoltaic Array Performance, Master of Science Thesis, University of Wisconsin-Madison. <a href="http://minds.wisconsin.edu/handle/1793/7602" target="_blank" class="weblink">http://minds.wisconsin.edu/handle/1793/7602</a>.</span></td></tr></table></div><div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 6px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:24px"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;">&#8226;</span></td><td style="border:none"><span class="f_ListLast">The mounting-specific method uses a steady state heat transfer model to calculate cell temperatures, and is described in Neises T, 2011. Development and Validation of a Model to Predict the Temperature of a Photovoltaic Cell. Master of Science Thesis. University of Wisconsin-Madison. <a href="http://sel.me.wisc.edu/publications/theses/neises11.zip" target="_blank" class="weblink">http://sel.me.wisc.edu/publications/theses/neises11.zip</a>.</span></td></tr></table></div><p class="p_Note"><span class="f_CHNote">Notes.</span><span class="f_Note"> </span><br />
+<span class="f_Note">&nbsp;</span><br />
+<span class="f_Note">The temperature correction algorithms use wind speed and ambient temperature data from the weather file. SAM assumes that the ambient temperature and wind speed data in the weather file are mid-hour values and that the radiation values are end-of-hour values. SAM interpolates temperature and wind speed values by averaging the current hour value with the previous hour value.</span><br />
+<span class="f_Note">&nbsp;</span><br />
+<span class="f_Note">When you specify a vertical or horizontal mounting structure option, SAM also uses wind direction data in the cell temperature calculation. Note that for the NREL TMY weather data files, the degree of uncertainty in the wind direction data is high.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Temperature Correction Mode</span></p>
+<div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 6px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:13px"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;">&#8226;</span></td><td style="border:none"><span class="f_CHInterfaceElement">NOCT cell temp model.</span><span class="f_VariableDescription"> Choose this option to use the nominal operating cell temperature (NOCT) method from the original five-parameter model. </span></td></tr></table></div><div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 6px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:13px"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;">&#8226;</span></td><td style="border:none"><span class="f_CHInterfaceElement">Mounting specific cell temp model.</span><span class="f_VariableDescription"> Choose this option to use the steady state heat transfer model for calculating the cell temperature, and when you want to model different module mounting options.</span></td></tr></table></div><p class="p_VariableName"><span class="f_VariableName">Nominal operating cell temperature (NOCT) parameters</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The NOCT parameters are active in NOCT Cell Temp Model mode.</span></p>
+<div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 6px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:13px"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;">&#8226;</span></td><td style="border:none"><span class="f_CHInterfaceElement">Mounting standoff</span><span class="f_VariableDescription"> Choose the option that best describes how the module is mounted: Ground or rack mounted when there is a when there is a lot of space between the module back and the ground or roof surface; For roof-mounted modules, choose a distance between the module back and roof in inches; or choose building-integrated for a module that is part of the building structure.</span><br />
+<span class="f_VariableDescription">&nbsp;</span><br />
+<span class="f_VariableDescription">For standoff heights less than 0.5 inches, and between 0.5 inches and 3.5 inches, SAM increases the NOCT value by several degrees as the standoff height decreases to account for reduced airflow between the module and roof surface. This is the same approach as is used in the CECPV Calculator Spreadsheet, available at <a href="http://gosolarcalifornia.ca.gov/tools/nshpcalculator/index.php" target="_blank" class="weblink">http://gosolarcalifornia.ca.gov/tools/nshpcalculator/index.php</a>.</span></td></tr></table></div><div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 6px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:13px"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;">&#8226;</span></td><td style="border:none"><span class="f_CHInterfaceElement">Array height</span><span class="f_VariableDescription"> Choose the option that best describes the height of the array from the ground.</span></td></tr></table></div><p class="p_VariableName"><span class="f_VariableName">Mounting configuration heat transfer cell temperature model</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">These parameters are active in Mounting Specific Cell Temp Model mode.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The mounting configuration affects the movement of air around the module and the transfer of heat between the module and the building surface or ground. SAM assumes that all modules in the array use the same mounting configuration.</span></p>
+<div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 6px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:13px"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;">&#8226;</span></td><td style="border:none"><span class="f_CHInterfaceElement">Mounting Configuration</span><span class="f_VariableDescription"> Choose the option that best describes how the modules are mounted: Rack when modules are mounted on open racks that allow ambient air to flow freely over the front and back of the modules; Flush when modules are in direct contact with a roof or wall, preventing air from flowing over the back of the module; Integrated when modules form part of the roof or wall so that the back of the module is in contact with the indoor air (when you specify integrated mounting, you must also specify the temperature behind the module); Gap for modules that are mounted with a space between the module and building surface that allows limited air flow over the back of each module (when you specify gap mounting, you must also specify the mounting structure orientation and gap spacing).</span></td></tr></table></div><div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 6px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:13px"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;">&#8226;</span></td><td style="border:none"><span class="f_CHInterfaceElement">Heat Transfer Dimensions</span><span class="f_VariableDescription"> Choose whether you want SAM to calculate the cell temperature based on the module or array dimensions. The Array Dimensions option assumes that modules in the array are in direct contact with each other and results in a higher calculated cell temperatures than the Module Dimensions option. Use the Array Dimensions option for more conservative array output estimates.</span></td></tr></table></div><div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 6px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:13px"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;">&#8226;</span></td><td style="border:none"><span class="f_CHInterfaceElement">Mounting Structure Orientation</span><span class="f_VariableDescription"> (gap mounting configuration only) Choose how the mounting structure interferes with airflow under the modules for the gap mounting configuration: None if the mounting structure does not impede air flow over the back of the modules; vertical supporting structures if the mounting structures on module back are perpendicular to the roof ridge and impede air flow parallel to the ridge; or horizontal supporting structures if the mounting structures are parallel to the roof ridge and impede air flow perpendicular to the ridge.</span></td></tr></table></div><p class="p_VariableName"><span class="f_VariableName">Module Width</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Length of side of module parallel to the ground.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Module Height</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">SAM calculates this value by dividing the module area from the parameter library by the module width that you specify.</span></p>
+<p class="p_EquationExcel"><span class="f_EquationExcel">Module Height (m) = Module Area (m²) ÷ Module Width</span></p>
+<p class="p_Text"><span class="f_Text">When you choose array dimensions for the heat transfer dimensions, you must also specify how modules are physically configured in the array.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Rows of modules in array (array heat transfer dimensions only)</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Assuming a rectangular array, the number of rows of modules, where a row is parallel to the line defined by the Module Width variable.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Columns of modules in array (array heat transfer dimensions only)</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Assuming a rectangular array, the number of modules along the side perpendicular to the line defined by the module width variable.</span></p>
+<p class="p_Note"><span class="f_CHNote">Note.</span><span class="f_Note"> The rows and columns of modules variables are independent of the similar variables on the <a href="dpv_system_design.htm" class="topiclink">Array</a> page and <a href="dpv_shading.htm" class="topiclink">Shading</a> page. Before running simulations, verify that the values on the different pages are consistent.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Temperature behind the module (integrated mounting configuration only)</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The indoor air temperature for the integrated mounting configuration option. SAM assumes a constant indoor air temperature.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Gap spacing (gap mounting configuration only)</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The distance between the back of the modules and the roof or wall surface for the gap mounting configuration option.</span></p>
+<h3 class="p_Heading3_atocs_" style="border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Physical Characteristics</span></h3>
+<p class="p_VariableName"><span class="f_VariableName">Material</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">A description of the semiconductor technology used in the photovoltaic cells.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">1-a-Si: single-junction amorphous silicon</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">2-a-Si: dual-junction amorphous silicon</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">3-a-Si: triple-junction amorphous silicon</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">a-Si/nc: amorphous silicon - microcrystalline silicon tandem module</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">CdTe: cadmium telluride</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">CIGS: copper indium gallium sulfide</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">CIS: copper indium diselenide</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">HIT-Si: amorphous silicon heterojunction</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Mono-c-Si: single-crystal silicon</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Multi-c-Si: multi-crystalline silicon</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Module Area</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The total area of the module, including spaces between cells and the frame.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Number of Cells</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Number of cells per module.</span></p>
+<h3 class="p_Heading3_atocs_" style="border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Additional Parameters</span></h3>
+<p class="p_VariableName"><span class="f_VariableName">T_noct</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Nominal operating cell temperature</span></p>
+<p class="p_VariableName"><span class="f_VariableName">A_ref</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Modified ideality factor at reference conditions</span></p>
+<p class="p_VariableName"><span class="f_VariableName">I_L_ref</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Photocurrent at reference conditions </span></p>
+<p class="p_VariableName"><span class="f_VariableName">I_o_ref</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Reverse saturation current at reference conditions </span></p>
+<p class="p_VariableName"><span class="f_VariableName">R_s </span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Series resistance (constant)</span></p>
+<p class="p_VariableName"><span class="f_VariableName">R_sh_ref</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Shunt resistance at reference conditions</span></p>
+</td>
+</tr>
+</table>
+</div>
+<div style="text-align: left; text-indent: 0px; border-color: #0072c6; border-style: solid; border-width: 1px; background: #ebebeb; padding: 2px 2px 2px 2px; margin: 3px 0px 3px 0px;"><table style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr style="vertical-align:baseline"><td style="border:none;padding:0;width:19px"><a id="simpleefficiency"></a><img id="TOGGLE0186A5_ICON" class="dropdown-toggle-icon" src="ico-minus-16x16.gif" width="16" height="16" alt="Click to expand or collapse" title="Click to expand or collapse" style="border:none" /></td><td style="border:none;padding:0"><span class="f_Heading2_atoc_"><a class="dropdown-toggle" style="font-size: 16pt; font-family: Arial; font-style: normal; font-weight: bold; color: #0072c6; background-color: transparent; text-decoration: none;" title="Click to expand or collapse" href="javascript:HMToggle('toggle','TOGGLE0186A5','TOGGLE0186A5_ICON')">Simple Efficiency Module Model</a></span></td></tr></table></div><div id="TOGGLE0186A5" style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 6px 0px;"><table class="ToggleContentTable" style="width:100%; border:none; border-spacing:0px;">
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; padding:0px;"><p class="p_Text"><span class="f_Text">The flat-plate photovoltaic simple efficiency module model calculates the module's hourly DC output assuming that the module efficiency varies with radiation incident on the module as defined by the radiation level and efficiency table. The model makes an adjustment for cell temperature using the <a href="dpv_module.htm#sandiatempcorr" class="topiclink">Sandia temperature correction algorithm</a>.</span></p>
+<p class="p_TitleProcedure"><span class="f_TitleProcedure">To use the simple efficiency module model:</span></p>
+<div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 3px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:24px"><span style="font-size:10pt; font-family: 'Segoe UI';color:#000000;">1.</span></td><td style="border:none"><span class="f_ProcedureStep">On the Module page, choose </span><span class="f_CHInterfaceElement">Simple Efficiency Module Model</span><span class="f_ProcedureStep">.</span></td></tr></table></div><div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 0px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:24px"><span style="font-size:10pt; font-family: 'Segoe UI';color:#000000;">2.</span></td><td style="border:none"><span class="f_ProcedureStep">Enter a temperature coefficient. </span><span class="f_ProcedureStepNoNumber">This is the number typically reported on manufacturer specification sheets as the maximum power coefficient.</span><span class="f_TableTextLeft"> See <a href="dpv_module.htm#sandiatempcorr" class="topiclink">Sandia Temperature Correction</a> for suggested values</span><span class="f_ProcedureStepNoNumber">.</span></td></tr></table></div><div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 3px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:24px"><span style="font-size:10pt; font-family: 'Segoe UI';color:#000000;">3.</span></td><td style="border:none"><span class="f_ProcedureStep">Enter the module's total cell area in square meters, equivalent to the product of the cell area and number of cells.</span></td></tr></table></div><div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 3px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:24px"><span style="font-size:10pt; font-family: 'Segoe UI';color:#000000;">4.</span></td><td style="border:none"><span class="f_ProcedureStep">Type values for the module's maximum power and open circuit voltages. SAM uses these values for array sizing on the <a href="dpv_system_design.htm" class="topiclink">Array</a> page.</span></td></tr></table></div><div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 3px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:24px"><span style="font-size:10pt; font-family: 'Segoe UI';color:#000000;">5.</span></td><td style="border:none"><span class="f_ProcedureStep">Choose a module structure from the three available options (displayed as front material / cell / back material). See <a href="dpv_module.htm#sandiatempcorr" class="topiclink">Sandia Temperature Correction</a> for details.</span></td></tr></table></div><p class="p_ProcedureStepNoNumber"><span class="f_ProcedureStepNoNumber">Module manufacturers typically include a description of the front material, and frame or back material in a mechanical characteristics section of module specification sheets.</span></p>
+<div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 3px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:24px"><span style="font-size:10pt; font-family: 'Segoe UI';color:#000000;">6.</span></td><td style="border:none"><span class="f_ProcedureStep">In the Radiation Level and Efficiency Table, enter an efficiency value for each of the five incident global radiation reference values in increasing order. If you are defining the efficiency curve with fewer than five efficiency values, </span><span class="f_Emphasis">you must include five radiation values</span><span class="f_ProcedureStep">, but you can assign the same efficiency value to more than one radiation value. For example, to represent a module with 13.5% constant efficiency, you would assign the value 13.5 to each of the five radiation values 200, 400, 600, 850, 1000.</span></td></tr></table></div><div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 3px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:24px"><span style="font-size:10pt; font-family: 'Segoe UI';color:#000000;">7.</span></td><td style="border:none"><span class="f_ProcedureStep">Choose the radiation level that represents the reference value, often 1000 W/m</span><span class="f_ProcedureStep" style="font-size: 7pt; vertical-align: super;">2</span><span class="f_ProcedureStep"> for flat-plate modules.</span></td></tr></table></div><p class="p_ProcedureStepNoNumber"><span class="f_ProcedureStepNoNumber">SAM uses the reference value to calculate the module's rated power, displayed as the Power variable on the Module page.</span></p>
+<h3 class="p_Heading3_atocs_" style="border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Characteristics</span></h3>
+<p class="p_Text"><span class="f_Text">The module characteristics define the module's capacity, efficiency, and thermal characteristics.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Maximum Power (Pmp), Wdc</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The module's rated maximum DC power at the reference radiation indicated in the radiation level and efficiency table. SAM uses this value to calculate the array cost on the PV System Costs page, but not in simulation calculations. The module power is the product of the reference radiation, reference efficiency, and area.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Temperature Coefficient (Pmp), %/C</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The rated maximum-power temperature coefficient as specified in the module's technical specifications. </span><span class="f_ProcedureStep">See <a href="dpv_module.htm#sandiatempcorr" class="topiclink">Sandia Temperature Correction</a> for details.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Area, m2</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The module collector area in square meters. To calculate the area for a given module power rating at a given reference radiation level, divide the power rating by the module efficiency and radiation level. For example, a module with a 100 W rating and 13.5% efficiency at 1000 W/m</span><span class="f_VariableDescription" style="font-size: 7pt; vertical-align: super;">2</span><span class="f_VariableDescription"> would requires an area of 100 W / (0.135 × 1000 W/m</span><span class="f_VariableDescription" style="font-size: 7pt; vertical-align: super;">2</span><span class="f_VariableDescription">) = 0.74074 m</span><span class="f_VariableDescription" style="font-size: 7pt; vertical-align: super;">2</span><span class="f_VariableDescription">.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Maximum Power Voltage (Vmp)</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The voltage at the module's maximum power point. SAM uses this value for <a href="dpv_system_design.htm" class="topiclink">Array</a> sizing.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Open Circuit Voltage (Voc)</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The module's open circuit voltage. SAM uses this value for <a href="dpv_system_design.htm" class="topiclink">Array</a> sizing.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Module Structure and Mounting</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The module's front and back materials (front material/cell/back material) used in the <a href="dpv_module.htm#sandiatempcorr" class="topiclink">Sandia temperature correction algorithm</a></span><span class="f_ProcedureStep">.</span></p>
+<h3 class="p_Heading3_atocs_" style="border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Radiation Level and Efficiency Table</span></h3>
+<p class="p_VariableName"><span class="f_VariableName">Radiation (W/m2)</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The incident global (beam and diffuse) radiation level at which the given efficiency value applies.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Efficiency (%)</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The module conversion efficiency at a given incident global radiation level. SAM calculates an efficiency value for each hour in the simulation using linear extrapolation to determine the value based on radiation data from the weather file. The efficiency values represent the efficiency of conversion from incident global radiation to DC electrical output.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Reference</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Indicates the value to use for the reference calculations. SAM uses the reference values to calculate the module's rated power on which module costs are based.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Diffuse utilization factor</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">This advanced input allows you to adjust the diffuse component of the radiation incident on the module. For most applications, you should use the default value of 1. For modules that do not use all of the diffuse radiation, such as low-x concentrator, you can use a value less than one.</span></p>
+<p class="p_Text"><span class="f_Text">For each hour of the year, the flat-plate single-point efficiency model calculates the module DC output as the product of the total incident global radiation, module area, and temperature correction factor:</span></p>
+<p class="p_Equation"><img src="eq_pvmodule-pmpmodule.gif" width="370" height="18" alt="EQ_PVModule-PmpModule" style="border:none" /></p>
+<p class="p_Text"><span class="f_Text">Where,</span></p>
+<div style="text-align: center; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 6px 0px;"><table class="WhereTable" style="margin:0 auto; border:none; border-spacing:0px;">
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; width:140px; padding:2px;"><p class="p_TableTextLeft"><span class="f_CHEquationVariable">E</span><span class="f_CHVariableSubscript">TotalIncident</span><span class="f_TableTextLeft"> (</span><span class="f_TableTextCenter">W/m</span><span class="f_TableTextCenter" style="font-size: 7pt; vertical-align: super;">2</span><span class="f_TableTextLeft">)</span></p>
+</td>
+<td style="vertical-align:top; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Total incident radiation from the weather data processor.</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; width:140px; padding:2px;"><p class="p_TableTextLeft"><span class="f_CHEquationVariable">A</span><span class="f_CHVariableSubscript">Module</span><span class="f_TableTextLeft"> (</span><span class="f_TableTextCenter">m</span><span class="f_TableTextCenter" style="font-size: 7pt; vertical-align: super;">2</span><span class="f_TableTextLeft">)</span></p>
+</td>
+<td style="vertical-align:top; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">The module area in square meters.</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; width:140px; padding:2px;"><p class="p_TableTextLeft"><span class="f_CHEquationVariable">n</span><span class="f_CHVariableSubscript">Module</span></p>
+</td>
+<td style="vertical-align:top; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Module efficiency at a given incident global radiation level, calculated by extrapolating values from the Radiation Level and Efficiency Table.</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; width:140px; padding:2px;"><p class="p_TableTextLeft"><span class="f_CHEquationVariable">F</span><span class="f_CHVariableSubscript">TempCorr</span></p>
+</td>
+<td style="vertical-align:top; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Temperature correction factor. See <a href="dpv_module.htm#sandiatempcorr" class="topiclink">Sandia Temperature Correction</a> for details.</span></p>
+</td>
+</tr>
+</table>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div style="text-align: left; text-indent: 0px; border-color: #0072c6; border-style: solid; border-width: 1px; background: #ebebeb; padding: 2px 2px 2px 2px; margin: 3px 0px 3px 0px;"><table style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr style="vertical-align:baseline"><td style="border:none;padding:0;width:19px"><a id="cecparam"></a><img id="TOGGLE0186A6_ICON" class="dropdown-toggle-icon" src="ico-minus-16x16.gif" width="16" height="16" alt="Click to expand or collapse" title="Click to expand or collapse" style="border:none" /></td><td style="border:none;padding:0"><span class="f_Heading2_atoc_"><a class="dropdown-toggle" style="font-size: 16pt; font-family: Arial; font-style: normal; font-weight: bold; color: #0072c6; background-color: transparent; text-decoration: none;" title="Click to expand or collapse" href="javascript:HMToggle('toggle','TOGGLE0186A6','TOGGLE0186A6_ICON')">CEC Performance Model with User Entered Specifications</a></span></td></tr></table></div><div id="TOGGLE0186A6" style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 6px 0px;"><table class="ToggleContentTable" style="width:100%; border:none; border-spacing:0px;">
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; padding:0px;"><p class="p_Text"><span class="f_Text">The CEC Performance Model with User Entered Specifications allows you to run the CEC module model with module specifications from test data supplied by the module manufacturer or an independent testing laboratory, or data from a manufacturer's module data sheet.</span></p>
+<p class="p_Text"><span class="f_Text">When you use the model, you first enter a set of specifications to generate a set of coefficients for the module on the Module page, and then run simulations of the PV system after specifying the rest of the system on the <a href="dpv_system_design.htm" class="topiclink">Array</a>, <a href="dpv_inverter.htm" class="topiclink">Inverter</a>, and other input pages.</span></p>
+<p class="p_Text"><span class="f_Text">SAM uses the module specifications you provide to calculate a set of parameters at reference conditions for the equivalent electrical circuit in the CEC module model. During simulations, the model adjusts temperature and incident irradiance coefficients to calculate the module efficiency at operating conditions other than STC. Note that the model does not account for all non-linear effects in the relationship of module power and irradiance.</span></p>
+<p class="p_Text"><span class="f_Text">The calculations involve a combination of empirical regressions and heuristic methods to automatically solve a multidimensional set of non-linear equations. An error checking algorithm ensures that the model can find solutions for most modules.</span></p>
+<p class="p_Note"><span class="f_CHNote">Note.</span><span class="f_Note"> SAM stores the calculated parameters with the case in your zsam file. It does not store them in a library that you can use in other files or cases. To use a module in a different file or case, either save a copy of the file, or duplicate the case. If you plan to enter parameters for many modules for use with different SAM files, you can create your own library of modules, see <a href="libraries.htm" class="topiclink">Libraries</a> for details.</span></p>
+<p class="p_Text"><span class="f_Text">If you use specifications from a manufacturer's data sheet for a module that exists in the CEC Performance Model with Module Database, SAM may calculate a different set of parameters than those in the CEC library. That is because the specifications used to generate parameters in the CEC library are based on specifications provided by third party testing facilities, which may differ from data on the manufacturer data sheet.</span></p>
+<p class="p_TitleProcedure"><span class="f_TitleProcedure">To use the CEC Performance Model with User Entered Specifications:</span></p>
+<div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 3px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:24px"><span style="font-size:10pt; font-family: 'Segoe UI';color:#000000;">1.</span></td><td style="border:none"><span class="f_ProcedureStep">On the Module page, choose </span><span class="f_CHInterfaceElement">CEC Performance Model with User Entered Specifications</span><span class="f_ProcedureStep">.</span></td></tr></table></div><div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 3px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:24px"><span style="font-size:10pt; font-family: 'Segoe UI';color:#000000;">2.</span></td><td style="border:none"><span class="f_ProcedureStep">Enter the required module specifications.</span></td></tr></table></div><p class="p_ProcedureStepNoNumber"><span class="f_CHInterfaceElement">Module description</span><span class="f_ProcedureStep"> is an optional field you can use for the module name or other description.</span></p>
+<div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 3px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:24px"><span style="font-size:10pt; font-family: 'Segoe UI';color:#000000;">3.</span></td><td style="border:none"><span class="f_ProcedureStep">Click </span><span class="f_CHInterfaceElement">Calculate and plot</span><span class="f_ProcedureStep">.</span></td></tr></table></div><p class="p_ProcedureStepNoNumber"><span class="f_ProcedureStepNoNumber">After solving the module model equations, SAM displays a current-voltage (I-V) curve at STC.</span></p>
+<p class="p_Note"><span class="f_CHNote">Note.</span><span class="f_Note"> In some rare cases, SAM may not be able to find a solution for the set of specifications you provide. (It performs a series of internal checks that should ensure that it finds a solution in most cases.) If SAM displays an error message, first verify that the specifications you entered are correct. If the specifications are correct, you may be able to generate an I-V curve by making small adjustments to the specifications, such as slightly increasing the Isc value.</span></p>
+<div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 6px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:24px"><span style="font-size:10pt; font-family: 'Segoe UI';color:#000000;">4.</span></td><td style="border:none"><span class="f_ProcedureStepLast">Under </span><span class="f_CHInterfaceElement">Mounting Configuration</span><span class="f_ProcedureStepLast">, choose the standoff height and array's height above ground.</span></td></tr></table></div><p class="p_Note"><span class="f_CHNote">Note.</span><span style="font-size: 11pt; font-family: Calibri;"> </span><span class="f_Note">SAM's scripting language, <a href="scripting.htm" class="topiclink">SamUL</a>, includes a function called Coeffgen6par() that you can use to automate the process of generating model coefficients from module specifications. For example, </span><br />
+<span class="f_Note">&nbsp;</span><br />
+<span class="f_CHCode">result = coeffgen6par(&quot;monoSi&quot;, 30, 6, 36, 7, -0.43, 0.001, -0.1, 60)</span><br />
+<span class="f_CHCode">OutLn( result )</span><br />
+<span class="f_CHCode">&nbsp;</span><br />
+<span class="f_Note">Would display an array containing the six parameters a, Il, Io, Rs, Rsh, and Adjust, or the string &quot;false&quot; if the solution failed.</span></p>
+<h3 class="p_Heading3_atocs_" style="border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">General Information</span></h3>
+<p class="p_VariableName"><span class="f_VariableName">Module description</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">An optional string describing the module.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Cell type</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">A description of the semiconductor technology used in the photovoltaic cells. </span><span class="f_Text">This parameter is used to guide the solution of normalized module coefficients, but is not directly used for power calculations once the coefficients are determined.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">monoSi: Single-crystal silicon</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">multiSi: Multi-crystalline silicon</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">CdTe: Cadmium telluride</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">CIS: Copper indium diselenide</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">CIGS: Copper indium gallium sulfide</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">amorphous: Amorphous silicon</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Module area, m²</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The surface area of the entire module.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Nominal operating cell temperature, °C</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The nominal operating cell temperature (NOCT) of the module is the measured cell temperature of the module at NOCT test conditions: 800 W/m² incident irradiance, 20 degrees Celsius ambient temperature, and 1 m/s wind speed. The mounting configuration under test conditions is typically open rack, except building-integrated (BIPV) modules which are tested in a building-integrated configuration.</span></p>
+<h3 class="p_Heading3_atocs_" style="border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Electrical Specifications</span></h3>
+<p class="p_VariableName"><span class="f_VariableName">Maximum power point voltage (Vmp), V</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The reference maximum power point voltage at STC.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Maximum power point current (Imp), A</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The reference maximum power point current at STC.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Open circuit voltage (Voc), V</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The open circuit voltage at STC.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Short circuit current (Isc), A</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The short circuit current at STC.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Temperature dependence of Voc, V/°C or %/°C</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The absolute change in Voc per degree change in temperature, also called alpha.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Temperature dependence of Isc, A/°C or %/°C</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription"> The absolute change in Isc per degree change in temperature, also called beta.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Temperature dependence of Pmp, %/°C</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription"> The percentage change in the maximum power point Pmp per degree change in temperature, also called gamma. To convert units from W/ºC to %/ºC, divide the %/ºC value by Pmp.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Number of cells in series</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The number of cells wired together in series inside the module.</span></p>
+<h3 class="p_Heading3_atocs_" style="border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Mounting Configuration</span></h3>
+<p class="p_Text"><span class="f_Text">SAM's CEC Performance Model with User Entered Specifications uses the <a href="dpv_module.htm#cectempcorr" class="topiclink">NOCT Cell Temperature model</a> from the CEC Performance Model with Module Database model.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Standoff height</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The standoff height is the distance between the back of the module and surface of the roof for roof-mounted modules. For modules integrated with the building (BIPV), or for ground mounted modules, choose the appropriate option.</span></p>
+<p class="p_Note"><span class="f_CHNote">Note.</span><span class="f_Note"> SAM does not make NOCT adjustments for the </span><span class="f_CHInterfaceElement">Building integrated</span><span class="f_Note">, </span><span class="f_CHInterfaceElement">Greater than 3.5 in</span><span class="f_Note">, or </span><span class="f_CHInterfaceElement">Ground or rack mounted</span><span class="f_Note"> options. For these options, the </span><span class="f_CHInterfaceElement">Nominal operating cell temperature</span><span class="f_Note"> value you provide should be at conditions appropriate for those types of installations.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Approximate installation height</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">SAM uses the installation height option to make an adjustment to the effect of wind speed on the cell temperature calculation. SAM assumes that an array with an installation height of one story or lower experiences lower wind speeds than those in the weather file because of the effect of nearby trees and structures. For the two story building or higher option, the wind is less impeded.</span></p>
+<h4 class="p_Heading4"><span class="f_Heading4">Nominal Maximum Power Ratings at STC</span></h4>
+<p class="p_VariableName"><span class="f_VariableName">Power, Wdc</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription"> The module’s rated maximum power point power at STC. This is equal to the product of the maximum power point voltage and maximum power point current.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Efficiency, %</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The module’s rated efficiency at STC 1000 W/m² irradiance. SAM displays this value for reference only. During simulations, the model calculates an efficiency value for each hour, which you can see in the <a href="data.htm" class="topiclink">Tables</a> on the <a href="results_page.htm" class="topiclink">Results</a> page.</span></p>
+</td>
+</tr>
+</table>
+</div>
+
+</td></tr></table>
+
+<script type="text/javascript">
+HMInitToggle('TOGGLE0186A1_ICON','hm.type','dropdown','hm.state','0','hm.src0','ico-plus-16x16.gif','hm.src1','ico-minus-16x16.gif','onclick','HMToggle(\'toggle\',\'TOGGLE0186A1\',\'TOGGLE0186A1_ICON\')');
+HMInitToggle('TOGGLE0186A1','hm.type','dropdown','hm.state','0');
+HMInitToggle('TOGGLE0186A2_ICON','hm.type','dropdown','hm.state','0','hm.src0','ico-plus-16x16.gif','hm.src1','ico-minus-16x16.gif','onclick','HMToggle(\'toggle\',\'TOGGLE0186A2\',\'TOGGLE0186A2_ICON\')');
+HMInitToggle('TOGGLE0186A2','hm.type','dropdown','hm.state','0');
+HMInitToggle('TOGGLE0186A3_ICON','hm.type','dropdown','hm.state','0','hm.src0','ico-plus-16x16.gif','hm.src1','ico-minus-16x16.gif','onclick','HMToggle(\'toggle\',\'TOGGLE0186A3\',\'TOGGLE0186A3_ICON\')');
+HMInitToggle('TOGGLE0186A3','hm.type','dropdown','hm.state','0');
+HMInitToggle('TOGGLE0186A4_ICON','hm.type','dropdown','hm.state','0','hm.src0','ico-plus-16x16.gif','hm.src1','ico-minus-16x16.gif','onclick','HMToggle(\'toggle\',\'TOGGLE0186A4\',\'TOGGLE0186A4_ICON\')');
+HMInitToggle('TOGGLE0186A4','hm.type','dropdown','hm.state','0');
+HMInitToggle('TOGGLE0186A5_ICON','hm.type','dropdown','hm.state','0','hm.src0','ico-plus-16x16.gif','hm.src1','ico-minus-16x16.gif','onclick','HMToggle(\'toggle\',\'TOGGLE0186A5\',\'TOGGLE0186A5_ICON\')');
+HMInitToggle('TOGGLE0186A5','hm.type','dropdown','hm.state','0');
+HMInitToggle('TOGGLE0186A6_ICON','hm.type','dropdown','hm.state','0','hm.src0','ico-plus-16x16.gif','hm.src1','ico-minus-16x16.gif','onclick','HMToggle(\'toggle\',\'TOGGLE0186A6\',\'TOGGLE0186A6_ICON\')');
+HMInitToggle('TOGGLE0186A6','hm.type','dropdown','hm.state','0');
+</script>
+</body>
+</html>
