@@ -29,8 +29,8 @@ configopt( 'Solar Water Heating',         { 'long_name'='Solar water heating',  
 configopt( 'Generic System',              { 'long_name'='Generic system',                         'short_name'='Generic',          'description'='Basic power system model using either capacity, capacity factor, and heat rate, or an hourly power generation profile as input' } );
 configopt( 'MSPT',     	                  { 'long_name'='CSP power tower molten salt',            'short_name'='Tower (salt)',     'description'='CSP molten salt power tower system using heat transfer and thermodynamic component models' } );
 configopt( 'DSPT',     	                  { 'long_name'='CSP power tower direct steam',           'short_name'='Tower (steam)',    'description'='CSP direct steam power tower system using heat transfer and thermodynamic component models' } );
-configopt( 'Physical Trough',             { 'long_name'='CSP parabolic trough (physical)',        'short_name'='Trough (phys.)',   'description'='CSP parabolic trough system using heat transfer and thermodynamic component models' } );
-configopt( 'Empirical Trough',            { 'long_name'='CSP parabolic trough (empirical)',       'short_name'='Trough (empr.)',   'description'='CSP parabolic trough system using model with empirically-derived coefficients and equations' } );
+configopt( 'Physical Trough',             { 'long_name'='CSP parabolic trough (physical)',        'short_name'='Trough (phys)',   'description'='CSP parabolic trough system using heat transfer and thermodynamic component models' } );
+configopt( 'Empirical Trough',            { 'long_name'='CSP parabolic trough (empirical)',       'short_name'='Trough (empr)',   'description'='CSP parabolic trough system using model with empirically-derived coefficients and equations' } );
 configopt( 'Dish Stirling',               { 'long_name'='CSP dish Stirling',                      'short_name'='Dish Stirling',    'description'='Dish Stirling model with parameters for SES and WGA-ADDS systems' } );
 configopt( 'Generic CSP System',          { 'long_name'='CSP generic model',                      'short_name'='Generic CSP',      'description'='CSP power system with solar field modeled using a table of optical efficiency values' } );
 configopt( 'DSLF',        				  { 'long_name'='CSP linear Fresnel direct steam',        'short_name'='Fresnel (steam)',    'description'='CSP power system that uses long small mirrors to line focus sunlight on fixed receiver tubes mounted above them.' } );
@@ -44,6 +44,7 @@ configopt( 'Single Owner',                { 'long_name'='PPA single owner (utili
 configopt( 'Leveraged Partnership Flip',  { 'long_name'='PPA partnership flip with debt (utility)',         'short_name'='Flip (debt)',      'description'='Developer/investor partnership flip PPA structure with debt' } );
 configopt( 'All Equity Partnership Flip', { 'long_name'='PPA partnership flip without debt (utility)',      'short_name'='Flip (no debt)',   'description'='Developer/investor partnership flip PPA structure without debt' } );
 configopt( 'Sale Leaseback',              { 'long_name'='PPA sale leaseback (utility)',                     'short_name'='Sale leaseback',   'description'='Sale leaseback partnership PPA structure' } );
+configopt( 'None',                        { 'long_name'='No financial model',                               'short_name'='No financial',     'description'='Run the performance model with no financial model' } );
 
 enum { LOAD_SIMPLE, LOAD_BELPE, NO_LOAD };
 
