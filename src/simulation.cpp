@@ -747,11 +747,14 @@ public:
 		wxMutexLocker _lock( m_currentLock );
 		return m_current;
 	}
-	float GetPercent() {
+	float GetPercent( wxString *update = 0) {
 		size_t ns = Size();
 		size_t cur = Current();
 		wxMutexLocker _lock(m_percentLock);
 		float curper = m_percent;
+
+		if ( update != 0 )
+			*update = m_update;
 
 		if ( ns == 0 ) return 0.0f;
 
@@ -896,8 +899,9 @@ int Simulation::DispatchThreads( ThreadProgressDialog &tpd,
 		// threads still running so update interface
 		for (i=0;i<threads.size();i++)
 		{
-			float per = threads[i]->GetPercent();
-			tpd.Update(i, per);
+			wxString update;
+			float per = threads[i]->GetPercent(&update);
+			tpd.Update(i, per, update);
 			wxArrayString msgs = threads[i]->GetNewMessages();
 			tpd.Log( msgs );
 		}
@@ -1086,6 +1090,13 @@ void ThreadProgressDialog::Update(int ThreadNum, float percent, const wxString &
 		{
 			m_labels[ThreadNum]->SetLabel( text );
 			Layout();
+		} else {
+			wxString label( wxString::Format("Process %d", ThreadNum+1) );
+			if ( m_labels[ThreadNum]->GetLabel() != label )
+			{
+				m_labels[ThreadNum]->SetLabel( label );
+				Layout();
+			}
 		}
 	}
 }
@@ -1143,6 +1154,8 @@ SimulationDialog::~SimulationDialog()
 
 void SimulationDialog::Finalize( const wxString &title )
 {			
+	wxYield(); // allow status bars to show full update
+
 	if ( m_tpd->HasMessages() )
 	{
 		if ( title.IsEmpty() ) m_tpd->Status( "Simulations finished with notices." );
