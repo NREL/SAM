@@ -1,5 +1,5 @@
 loc_id,city??,KS,USA,year??,lat??,lon??,549,1,8760
-NREL AWS TruePower Data: representative of central KS - flat lands
+Central KS - flat lands  (NREL AWS Truepower representative file)
 Temperature,Pressure,Direction,Speed,Temperature,Pressure,Direction,Speed,Temperature,Pressure,Direction,Speed,Temperature,Pressure,Direction,Speed
 C,atm,degrees,m/s,C,atm,degrees,m/s,C,atm,degrees,m/s,C,atm,degrees,m/s
 50,50,50,50,80,80,80,80,110,110,110,110,140,140,140,140

@@ -1,5 +1,5 @@
 loc_id,city??,WA,USA,year??,lat??,lon??,945,1,8760
-NREL AWS TruePower Data: representative of central WA - rolling hills
+Central WA - rolling hills (NREL AWS Truepower representative file)
 Temperature,Pressure,Direction,Speed,Temperature,Pressure,Direction,Speed,Temperature,Pressure,Direction,Speed,Temperature,Pressure,Direction,Speed
 C,atm,degrees,m/s,C,atm,degrees,m/s,C,atm,degrees,m/s,C,atm,degrees,m/s
 50,50,50,50,80,80,80,80,110,110,110,110,140,140,140,140
