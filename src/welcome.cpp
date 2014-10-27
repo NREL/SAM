@@ -26,7 +26,7 @@
 #include "welcome.h"
 
 enum { ID_CREATE_PROJECT=wxID_HIGHEST+556, ID_OPEN_EXISTING, ID_RECENT_FILES,
-	ID_MESSAGES_HTML, ID_MESSAGE_THREAD, ID_DOWNLOAD_TIMER,
+	ID_MESSAGES_HTML, ID_MESSAGE_THREAD, ID_DOWNLOAD_TIMER, ID_GET_STARTED,
 ID_NEW_SCRIPT, ID_OPEN_SCRIPT, ID_REGISTRATION };
 
 BEGIN_EVENT_TABLE(WelcomeScreen, wxPanel)
@@ -40,6 +40,7 @@ BEGIN_EVENT_TABLE(WelcomeScreen, wxPanel)
 	EVT_BUTTON( wxID_ABOUT, WelcomeScreen::OnCommand )
 	EVT_BUTTON( wxID_HELP, WelcomeScreen::OnCommand )
 	EVT_BUTTON( wxID_EXIT, WelcomeScreen::OnCommand )
+	EVT_BUTTON( ID_GET_STARTED, WelcomeScreen::OnCommand )
 	EVT_BUTTON( ID_REGISTRATION, WelcomeScreen::OnCommand )
 
 	EVT_LISTBOX_DCLICK( ID_RECENT_FILES, WelcomeScreen::OnCommand )
@@ -81,7 +82,8 @@ WelcomeScreen::WelcomeScreen(wxWindow *parent)
 	m_newScript = new wxMetroButton( this, ID_NEW_SCRIPT, "New script" );
 	
 	m_btnRegistration = new wxMetroButton( this, ID_REGISTRATION, "Registration" );
-	m_btnHelp = new wxMetroButton( this, wxID_HELP, "Help" );
+	m_btnGetStarted = new wxMetroButton( this, ID_GET_STARTED, "Getting started for new users", wxNullBitmap, wxDefaultPosition, wxDefaultSize, wxMB_RIGHTARROW);
+	m_btnHelp = new wxMetroButton( this, wxID_HELP, "Help contents" );
 	m_btnAbout = new wxMetroButton( this, wxID_ABOUT, "About" );
 	m_btnQuit = new wxMetroButton( this, wxID_EXIT, "Quit" );
 	
@@ -185,7 +187,8 @@ void WelcomeScreen::LayoutWidgets()
 	wxSize size3 = m_newScript->GetBestSize();
 	m_newScript->SetSize( BORDER, y, LEFTWIDTH/2, size3.GetHeight() );
 	m_openScript->SetSize( BORDER + LEFTWIDTH/2, y, LEFTWIDTH/2, size3.GetHeight() );
-
+	
+	m_btnGetStarted->SetSize( BORDER, top+ch-3*size3.y, LEFTWIDTH, size3.GetHeight() );
 	m_btnHelp->SetSize( BORDER, top+ch-2*size3.y, LEFTWIDTH, size3.GetHeight() );
 	m_btnRegistration->SetSize( BORDER, top+ch-size3.y, LEFTWIDTH/3, size3.y );
 	m_btnAbout->SetSize( BORDER+ LEFTWIDTH/3, top+ch-size3.y, LEFTWIDTH/3, size3.y );
@@ -244,6 +247,9 @@ void WelcomeScreen::OnCommand( wxCommandEvent &evt )
 	{
 	case ID_NEW_SCRIPT:
 		ScriptWindow::CreateNewWindow();
+		break;
+	case ID_GET_STARTED:
+		SamApp::ShowHelp( "getting_started");
 		break;
 	case ID_OPEN_SCRIPT:
 		ScriptWindow::OpenFiles();

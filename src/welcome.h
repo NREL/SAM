@@ -38,7 +38,7 @@ private:
 
 	wxMetroButton *m_createCase;
 	wxMetroButton *m_openExisting;
-	wxMetroButton *m_openScript, *m_newScript, *m_btnAbout, *m_btnHelp, *m_btnQuit, *m_btnRegistration;
+	wxMetroButton *m_openScript, *m_newScript, *m_btnAbout, *m_btnHelp, *m_btnGetStarted, *m_btnQuit, *m_btnRegistration;
 	wxMetroButton *m_onlineForum;
 	wxMetroButton *m_helpSystem;
 	wxMetroListBox *m_recent;
