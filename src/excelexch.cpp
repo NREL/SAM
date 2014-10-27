@@ -172,7 +172,7 @@ public:
 		sizer->Add( sz1, 0, wxALL|wxEXPAND, 5 );
 		sizer->Add( sz2, 1, wxALL|wxEXPAND, 5 );
 		sizer->Add( notes, 0, wxLEFT|wxRIGHT|wxEXPAND, 10 );
-		sizer->Add( CreateButtonSizer( wxOK|wxCANCEL ), 0, wxALL|wxEXPAND, 10 );
+		sizer->Add( CreateButtonSizer( wxHELP|wxOK|wxCANCEL ), 0, wxALL|wxEXPAND, 10 );
 		SetSizerAndFit( sizer );
 	}
 	
@@ -431,6 +431,11 @@ public:
 		}
 	}
 
+	void OnHelp( wxCommandEvent & )
+	{
+		SamApp::ShowHelp( "excel_exchange");
+	}
+
 	DECLARE_EVENT_TABLE();
 };
 
@@ -444,6 +449,7 @@ BEGIN_EVENT_TABLE( ExcelExchDialog, wxDialog )
 	EVT_TEXT( ID_txtExcelFile, ExcelExchDialog::OnDataChange)
 	EVT_RADIOBUTTON( ID_rbgToFrom, ExcelExchDialog::OnDataChange)
 	EVT_CHECKBOX( ID_chkEnableExch, ExcelExchDialog::OnDataChange )
+	EVT_BUTTON( wxID_HELP, ExcelExchDialog::OnHelp )
 END_EVENT_TABLE()
 
 bool ExcelExchange::ShowExcelExchangeDialog( ExcelExchange &exch, CaseWindow *cw )
