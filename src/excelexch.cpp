@@ -160,11 +160,11 @@ public:
 		sz2->Add( szvvr, 0, wxALL|wxEXPAND, 2 );
 
 		wxStaticText *notes = new wxStaticText( this, wxID_ANY, 
-			"The Excel range can be a cell reference (such as C7) or a named range.\n\n"
-			"To exchange values with an annual schedule variable, use a reference (A1:12, B:G1) rather than a named range.\n\n"
-			"If you specify an Excel file with no path, SAM looks in the folder containing the current SAM project file.\n\n" );
+			"The Excel range can be a cell reference (such as C7) or a named range, except for annual schedule variables,\n"
+			"which require a cell reference (A1:A12, B10:G10) rather than a named range.\n"
+			"You can specify an Excel file with no path if the workbook is in the same folder as the SAM file." );
 		notes->Wrap( 590 );
-		notes->SetForegroundColour( wxColour(255,128,0) );
+		notes->SetForegroundColour( wxColour(0,0,0) );
 		
 		wxBoxSizer *sizer = new wxBoxSizer( wxVERTICAL );
 		sizer->Add( chkEnableExch, 0, wxALL|wxEXPAND, 10 );
