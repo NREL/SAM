@@ -454,8 +454,7 @@ void ResultsViewer::SetDViewState( wxDVPlotCtrlSettings &settings )
 	//*** SCATTER PLOT PROPERTIES ***
 	m_scatterPlot->SetXSelectedName(settings.GetProperty(wxT("scatterXDataName")));
 	m_scatterPlot->SetYSelectedNames(settings.GetProperty(wxT("scatterYDataNames")));
-		
-
+	
 	Refresh();
 	Update();
 }
@@ -1455,6 +1454,8 @@ public:
 
     virtual bool IsEmptyCell( int row, int col )
 	{
+		if ( Table.size() == 0 && row == 0 && col == 0 ) return false;
+
 		return (col < 0 || col >= Table.size()
 			|| row >= Table[col]->N || row < 0);
 	}
@@ -1462,9 +1463,7 @@ public:
     virtual wxString GetValue( int row, int col )
 	{
 		if ( col >= 0 && col < Table.size() && row >= 0 && row < Table[col]->N )
-		{
 			return wxString::Format("%g", Table[col]->Values[row]);
-		}
 		else return wxEmptyString;
 	}
 
@@ -1490,6 +1489,7 @@ public:
 
 	virtual wxString GetRowLabelValue( int row )
 	{
+		if ( Table.size() == 0 ) return wxEmptyString;
 		if ( IsTimeSeriesShown() )
 			return wxFormatTime( ((double)row)/((double)(MaxCount/8760)), true );
 		else if ( MinCount == MaxCount && MaxCount == 12 )
@@ -1625,10 +1625,11 @@ void TabularBrowser::UpdateGrid()
 {
 	if ( !m_sim )
 	{
-		m_grid->ResizeGrid(1,1);
-		m_grid->SetCellValue(0,0,"No data");
+		m_grid->Hide();
 		return;
 	}
+	else
+		m_grid->Show();
 
 	m_grid->Freeze();
 
@@ -1640,30 +1641,32 @@ void TabularBrowser::UpdateGrid()
 	m_grid->SetTable(m_gridTable, true);
 
 	m_grid->SetRowLabelSize( m_gridTable->IsTimeSeriesShown() ? 115 : 55 );
-
-	wxClientDC cdc(this);
-	wxFont f = *wxNORMAL_FONT;
-	f.SetWeight( wxFONTWEIGHT_BOLD );
-	cdc.SetFont( f );
-
-	for (int i=0;i<m_gridTable->Table.size();i++)
+	
+	if ( m_selectedVars.size() > 0 )
 	{
-		wxArrayString lines = wxSplit(m_gridTable->Table[i]->Label, '\n');
-		int w = 40;
-		for( size_t k=0;k<lines.size();k++ )
-		{
-			int cw = cdc.GetTextExtent( lines[k] ).x;
-			if ( cw > w )
-				w = cw;
-		}
+		wxClientDC cdc(this);
+		wxFont f = *wxNORMAL_FONT;
+		f.SetWeight( wxFONTWEIGHT_BOLD );
+		cdc.SetFont( f );
 
-		m_grid->SetColSize(i, w+6);
+		for (int i=0;i<m_gridTable->Table.size();i++)
+		{
+			wxArrayString lines = wxSplit(m_gridTable->Table[i]->Label, '\n');
+			int w = 40;
+			for( size_t k=0;k<lines.size();k++ )
+			{
+				int cw = cdc.GetTextExtent( lines[k] ).x;
+				if ( cw > w )
+					w = cw;
+			}
+
+			m_grid->SetColSize(i, w+6);
+		}
 	}
 
 	m_grid->SetColLabelSize( wxGRID_AUTOSIZE );
 	m_grid->Thaw();
-
-
+	
 	m_grid->Layout();
 	m_grid->GetParent()->Layout();
 	m_grid->ForceRefresh();
