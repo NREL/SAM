@@ -801,28 +801,32 @@ GraphViewer::GraphViewer(wxWindow *parent) : wxPanel(parent, wxID_ANY)
 	wxSplitterWindow *splitter = new wxSplitterWindow(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxSP_LIVE_UPDATE | wxSP_NOBORDER | wxSP_3DSASH );
 	main_sizer->Add(splitter, 1, wxBOTTOM | wxLEFT | wxEXPAND, 0);
 
-	wxPanel *lpanel = new wxPanel(splitter);
+	m_lpanel = new wxPanel(splitter);
 	wxBoxSizer *sizer_tools = new wxBoxSizer( wxHORIZONTAL );
-	sizer_tools->Add( new wxButton( lpanel, ID_CREATE_GRAPH, "Create graph" ), 0, wxALL|wxEXPAND, 2 );
-	sizer_tools->Add( new wxButton( lpanel, ID_DELETE_GRAPH, "Delete graph" ), 0, wxALL|wxEXPAND, 2 );
+	sizer_tools->Add( new wxButton( m_lpanel, ID_CREATE_GRAPH, "Create graph" ), 1, wxALL|wxEXPAND, 2 );
+	sizer_tools->Add( m_delButton = new wxButton( m_lpanel, ID_DELETE_GRAPH, "Delete graph" ), 0, wxALL|wxEXPAND, 2 );
 		
-	m_props = new GraphProperties( lpanel, ID_GRAPH_PROPS );
+	m_props = new GraphProperties( m_lpanel, ID_GRAPH_PROPS );
 
 	wxBoxSizer *sizer_left = new wxBoxSizer( wxVERTICAL );
 	sizer_left->Add( sizer_tools, 0, wxALL|wxEXPAND, 0 );
 	sizer_left->Add( m_props, 1, wxALL|wxEXPAND, 0 );
 
-	lpanel->SetSizer( sizer_left );
+
+	m_lpanel->SetSizer( sizer_left );
 
 	m_layout = new wxSnapLayout(splitter, wxID_ANY);
 	m_layout->SetShowSizing( true );
 
 	splitter->SetMinimumPaneSize( 50 );
-	splitter->SplitVertically( lpanel, m_layout, 260 );
+	splitter->SplitVertically( m_lpanel, m_layout, 260 );
 
 	SetSizer(main_sizer);
 	main_sizer->SetSizeHints(this);
-
+	
+	m_delButton->Hide();
+	m_props->Hide();
+	m_lpanel->Layout();
 }
 
 GraphCtrl *GraphViewer::CreateNewGraph()
@@ -916,8 +920,19 @@ void GraphViewer::UpdateGraph()
 
 void GraphViewer::UpdateProperties()
 {
-	if ( m_current ) m_props->Set( m_current->GetGraph() );
-	else m_props->Clear();
+	if ( m_current ) {
+		m_props->Set( m_current->GetGraph() );
+		m_props->Show();
+		m_delButton->Show();
+	}
+	else {
+		m_props->Clear();
+		m_props->Hide();
+		m_delButton->Hide();
+	}
+
+	Layout();
+	m_lpanel->Layout();
 }
 
 void GraphViewer::OnCommand( wxCommandEvent &evt )
