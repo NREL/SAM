@@ -1824,6 +1824,8 @@ void TabularBrowser::GetTextData(wxString &dat, char sep)
 
 	size_t c;
 
+	dat += sep;
+
 	for (c=0;c<m_gridTable->Table.size();c++)
 	{
 		wxString label = m_gridTable->Table[c]->Label;
@@ -1842,6 +1844,12 @@ void TabularBrowser::GetTextData(wxString &dat, char sep)
 
 	for (size_t r=0;r<m_gridTable->MaxCount;r++)
 	{
+		wxString ord(m_gridTable->GetRowLabelValue(r));
+		if ( ord.Find(sep) != wxNOT_FOUND )
+			ord = '"' + ord + '"';
+
+		dat += ord + sep;
+
 		for (c=0;c<m_gridTable->Table.size();c++)
 		{
 			if (r < m_gridTable->Table[c]->N)
