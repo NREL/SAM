@@ -26,8 +26,8 @@ ArchitecturesInstallIn64BitMode=x64
 
 
 ; UPDATE THESE TO MATCH THE VERSION
-AppVerName=SAM 2014.9.30
-DefaultDirName={sd}\SAM\2014.9.30
+AppVerName=SAM 2014.10.1
+DefaultDirName={sd}\SAM\2014.10.1
 
 AppPublisher=National Renewable Energy Laboratory
 AppPublisherURL=http://sam.nrel.gov
