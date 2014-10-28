@@ -135,8 +135,8 @@ private:
 	wxHyperlinkCtrl *hypOpenEILink;
 	wxHyperlinkCtrl *hypJSONLink;
 	wxTextCtrl *txtRateDescription;
-	wxExtTextCtrl *txtRateEndDate;
-	wxExtTextCtrl *txtRateStartDate;
+//	wxExtTextCtrl *txtRateEndDate;
+//	wxExtTextCtrl *txtRateStartDate;
 	wxExtTextCtrl *txtRateName;
 	wxListBox *lstRates;
 	wxListBox *lstUtilities;
