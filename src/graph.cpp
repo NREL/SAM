@@ -824,9 +824,7 @@ GraphViewer::GraphViewer(wxWindow *parent) : wxPanel(parent, wxID_ANY)
 	SetSizer(main_sizer);
 	main_sizer->SetSizeHints(this);
 	
-	m_delButton->Hide();
-	m_props->Hide();
-	m_lpanel->Layout();
+	UpdateProperties();
 }
 
 GraphCtrl *GraphViewer::CreateNewGraph()
@@ -924,11 +922,13 @@ void GraphViewer::UpdateProperties()
 		m_props->Set( m_current->GetGraph() );
 		m_props->Show();
 		m_delButton->Show();
+		m_layout->SetBackgroundText( wxEmptyString );
 	}
 	else {
 		m_props->Clear();
 		m_props->Hide();
 		m_delButton->Hide();
+		m_layout->SetBackgroundText( "Click Create Graph to begin" );
 	}
 
 	Layout();
