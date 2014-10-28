@@ -529,6 +529,7 @@ OpenEIUtilityRateDialog::OpenEIUtilityRateDialog(wxWindow *parent, const wxStrin
 	txtRateName->SetForegroundColour( wxColour(0, 0, 0) );
 	txtRateName->SetBackgroundColour( wxColour(255, 255, 255) );
 
+	/*
 	txtRateStartDate = new wxExtTextCtrl(this, ID_txtRateStartDate, "", wxPoint(375,399), wxSize(253,21));
 	txtRateStartDate->SetEditable( false );
 	txtRateStartDate->SetForegroundColour( wxColour(0, 128, 192) );
@@ -538,9 +539,9 @@ OpenEIUtilityRateDialog::OpenEIUtilityRateDialog(wxWindow *parent, const wxStrin
 	txtRateEndDate->SetEditable( false );
 	txtRateEndDate->SetForegroundColour( wxColour(0, 128, 192) );
 	txtRateEndDate->SetBackgroundColour( wxColour(255, 255, 255) );
-
+	*/
 //	txtRateDescription = new wxTextCtrl(this, ID_txtRateDescription, "", wxPoint(375, 225), wxSize(252, 168), wxTE_MULTILINE | wxTE_DONTWRAP | wxTE_PROCESS_TAB);
-	txtRateDescription = new wxTextCtrl(this, ID_txtRateDescription, "", wxPoint(375, 225), wxSize(252, 215), wxTE_MULTILINE | wxTE_DONTWRAP | wxTE_PROCESS_TAB);
+	txtRateDescription = new wxTextCtrl(this, ID_txtRateDescription, "", wxPoint(375, 225), wxSize(252, 255), wxTE_MULTILINE | wxTE_WORDWRAP | wxTE_PROCESS_TAB);
 	txtRateDescription->SetFont(wxFont(10, wxFONTFAMILY_MODERN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, "courier"));
 	txtRateDescription->ChangeValue("");
 	txtRateDescription->SetEditable( false );
@@ -571,13 +572,13 @@ OpenEIUtilityRateDialog::OpenEIUtilityRateDialog(wxWindow *parent, const wxStrin
 	sz_right_grid->AddGrowableCol(1);
 	sz_right_grid->Add( new wxStaticText(this, wxID_ANY, "Name"), 0, wxALL|wxALIGN_CENTER_VERTICAL, 2 );
 	sz_right_grid->Add( txtRateName, 1, wxALL|wxEXPAND, 2 );	
-//	sz_right_grid->Add(new wxStaticText(this, wxID_ANY, "Description"), 0, wxALL | wxALIGN_CENTER_VERTICAL, 2);
-	sz_right_grid->Add(new wxStaticText(this, wxID_ANY, "Applicability"), 0, wxALL | wxALIGN_CENTER_VERTICAL, 2);
+	sz_right_grid->Add(new wxStaticText(this, wxID_ANY, "Description"), 0, wxALL | wxALIGN_CENTER_VERTICAL, 2);
+//	sz_right_grid->Add(new wxStaticText(this, wxID_ANY, "Applicability"), 0, wxALL | wxALIGN_CENTER_VERTICAL, 2);
 	sz_right_grid->Add(txtRateDescription, 1, wxALL | wxEXPAND, 2);
-	sz_right_grid->Add( new wxStaticText(this, wxID_ANY, "Start"), 0, wxALL|wxALIGN_CENTER_VERTICAL, 2 );
-	sz_right_grid->Add( txtRateStartDate, 1, wxALL|wxEXPAND, 2 );	
-	sz_right_grid->Add( new wxStaticText(this, wxID_ANY, "End"), 0, wxALL|wxALIGN_CENTER_VERTICAL, 2 );
-	sz_right_grid->Add( txtRateEndDate, 1, wxALL|wxEXPAND, 2 );
+//	sz_right_grid->Add( new wxStaticText(this, wxID_ANY, "Start"), 0, wxALL|wxALIGN_CENTER_VERTICAL, 2 );
+//	sz_right_grid->Add( txtRateStartDate, 1, wxALL|wxEXPAND, 2 );	
+//	sz_right_grid->Add( new wxStaticText(this, wxID_ANY, "End"), 0, wxALL|wxALIGN_CENTER_VERTICAL, 2 );
+//	sz_right_grid->Add( txtRateEndDate, 1, wxALL|wxEXPAND, 2 );
 	
 	wxBoxSizer *sz_right = new wxBoxSizer(wxVERTICAL);
 	sz_right->Add( sz_right_top, 0, wxALL|wxEXPAND );
@@ -731,8 +732,8 @@ void OpenEIUtilityRateDialog::UpdateRateData()
 	{
 		txtRateName->SetValue(wxEmptyString);
 		txtRateDescription->SetValue(wxEmptyString);
-		txtRateStartDate->SetValue(wxEmptyString);
-		txtRateEndDate->SetValue(wxEmptyString);
+//		txtRateStartDate->SetValue(wxEmptyString);
+//		txtRateEndDate->SetValue(wxEmptyString);
 //		hypOpenEILink->SetURL("http://en.openei.org/wiki/Gateway:Utilities");
 		hypOpenEILink->SetURL("http://en.openei.org/wiki/Utility_Rate_Database");
 	}
@@ -747,9 +748,11 @@ void OpenEIUtilityRateDialog::UpdateRateData()
 		{
 			
 			txtRateName->SetValue( mRateData.Header.Utility + ": " + mRateData.Header.Name );
-			txtRateStartDate->SetValue( mRateData.StartDate );
-			txtRateEndDate->SetValue( mRateData.EndDate );
-			
+			//txtRateStartDate->SetValue( mRateData.StartDate );
+			//txtRateEndDate->SetValue( mRateData.EndDate );
+
+			wxString desc = mRateData.Header.Description;
+
 			/*
 			wxString desc = mRateData.Header.Description + "\n\n";
 
@@ -757,8 +760,8 @@ void OpenEIUtilityRateDialog::UpdateRateData()
 			desc += wxString::Format("Has Demand Charges? %s\n", mRateData.HasDemandCharge?"yes":"no");
 			desc += wxString::Format("\nGUID: '%s'\n", mRateData.Header.GUID.c_str() );
 			desc += wxString::Format("\nEnergy comments: '%s'\n", mRateData.Header.EnergyComments.c_str());
-			desc += wxString::Format("\nDeamand comments: '%s'\n", mRateData.Header.DemandComments.c_str());
-			*/
+			desc += wxString::Format("\nDemand comments: '%s'\n", mRateData.Header.DemandComments.c_str());
+			
 			wxString desc = "";
 			desc += "Deamnd\n";
 			desc += wxString::Format("\tMinimum %lg kW\n", mRateData.Applicability.peakkwcapacitymin);
@@ -774,7 +777,7 @@ void OpenEIUtilityRateDialog::UpdateRateData()
 			desc += "Character of Service\n";
 			desc += wxString::Format("\tVoltage Category %s\n", mRateData.Applicability.voltagecategory.c_str());
 			desc += wxString::Format("\tPhase Wiring %s\n", mRateData.Applicability.phasewiring.c_str());
-
+			*/
 			txtRateDescription->SetValue( desc );
 			
 			wxString rate_url = "http://en.openei.org/apps/USURDB/rate/view/" + guid;
