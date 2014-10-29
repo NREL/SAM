@@ -12,6 +12,7 @@
 #include <wex/extgrid.h>
 
 #include "widgets.h"
+#include "main.h"
 
 /******************************* AFSchedNumeric **********************************/
 enum { IDAFSN_NUMERIC=wxID_HIGHEST + 321, IDAFSN_SBUTTON };
@@ -205,10 +206,9 @@ class SchedNumericDialog : public wxDialog
 	wxNumericCtrl *m_numVals;
 
 public:
-	SchedNumericDialog( wxWindow *parent, const wxString &title, const wxString &label, bool with_resize_options )
+	SchedNumericDialog( wxWindow *parent, const wxString &title, const wxString &label, const wxString &desc, bool with_resize_options )
 		: wxDialog( parent, wxID_ANY, title, wxDefaultPosition, wxSize(470,400), wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER )
 	{
-
 		m_grid = new wxExtGridCtrl( this, wxID_ANY );
 		m_grid->CreateGrid( 50, 1);
 		m_grid->SetColLabelValue( 0, label );
@@ -233,7 +233,14 @@ public:
 
 		wxBoxSizer *sizer = new wxBoxSizer( wxVERTICAL );
 		sizer->Add( center, 1, wxALL|wxEXPAND, 0 );
-		sizer->Add( CreateButtonSizer(wxOK|wxCANCEL), 0, wxALL|wxEXPAND, 5 );
+		if ( !desc.IsEmpty() )
+		{
+			wxStaticText *st = new wxStaticText( this, wxID_ANY, desc );
+			st->Wrap(400);
+			sizer->Add( st, 0, wxALL|wxCENTER, 5 );
+		}
+
+		sizer->Add( CreateButtonSizer( wxOK|wxCANCEL|wxHELP ), 0, wxALL|wxEXPAND, 5 );
 		SetSizer( sizer );
 	}
 
@@ -292,6 +299,11 @@ public:
 		m_numVals->SetValue( m_grid->GetNumberRows() );
 	}
 
+	void OnHelp( wxCommandEvent & )
+	{
+		SamApp::ShowHelp( "annual_schedules" );
+	}
+
 	wxExtGridCtrl *GetGrid() { return m_grid; }
 	wxNumericCtrl *GetNumeric() { return m_numVals; }
 
@@ -302,11 +314,12 @@ BEGIN_EVENT_TABLE( SchedNumericDialog, wxDialog )
 	EVT_BUTTON( ID_btnCopyData, SchedNumericDialog::OnCopyData)
 	EVT_BUTTON( ID_btnPasteData, SchedNumericDialog::OnPasteData)
 	EVT_TEXT_ENTER( ID_numValueCount, SchedNumericDialog::OnValueCount)
+	EVT_BUTTON( wxID_HELP, SchedNumericDialog::OnHelp )
 END_EVENT_TABLE()
 
 void AFSchedNumeric::OnEditSchedule(wxCommandEvent &evt)
 {
-	SchedNumericDialog dlg(this, "Edit Schedule", GetLabel(), m_fixedLen < 1 );
+	SchedNumericDialog dlg(this, "Edit Schedule", GetLabel(), GetDescription(), m_fixedLen < 1 );
 	wxExtGridCtrl *grid = dlg.GetGrid();
 
 	if ( m_fixedLen > 0 )

@@ -29,6 +29,8 @@ public:
 	void ScheduleOnly(bool b);
 	void SetLabel( const wxString &s ) { m_label = s; }
 	wxString GetLabel() { return m_label; }
+	void SetDescription( const wxString &desc ) { m_desc = desc; }
+	wxString GetDescription() { return m_desc; }
 	double GetValue();
 	void SetValue(double d);
 	void SetFormat( int deci, bool thousep, const wxString &pre, const wxString &post );
@@ -56,6 +58,7 @@ private:
 	std::vector<double> mSchedValues;
 	wxString m_label;
 	int m_fixedLen;
+	wxString m_desc;
 
 	DECLARE_EVENT_TABLE();
 };
