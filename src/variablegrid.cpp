@@ -5,6 +5,9 @@
 #include <wx/bitmap.h>
 #include <wx/msgdlg.h>
 #include <wx/tokenzr.h>
+#include <wx/clipbrd.h>
+#include <wx/filename.h>
+#include <wx/busyinfo.h>
 
 #include <wex/metro.h>
 
@@ -16,6 +19,7 @@
 #define COMPARE_SHOW_ALL 0
 #define COMPARE_SHOW_DIFFERENT 1
 #define COMPARE_SHOW_SAME 2
+
 
 VariableGridData::VariableGridData(ProjectFile *pf, Case *c, VarTable *vt) : m_pf(pf), m_vt(vt)
 {
@@ -219,6 +223,25 @@ bool VariableGridData::CanSetValueAs(int row, int col, const wxString &typeName)
 		return (typeName == wxGRID_VALUE_NUMBER);
 }
 */
+
+wxString VariableGridData::GetChoice(int row, int col)
+{
+	wxString ret_str = wxEmptyString;
+	if ((col>-1) && (col < m_cols))
+	{
+		if (VarInfo *vi = GetVarInfo(row, col))
+		{
+			wxArrayString as = vi->IndexLabels;
+			int ndx = -1;
+			double val;
+			if (GetValue(row, col).ToDouble(&val)) ndx = int(val);
+			if ((as.Count() > 0) && (ndx >= 0) && (ndx < as.Count()))
+				ret_str = as[ndx];
+		}
+	}
+	return ret_str;
+}
+
 
 wxString VariableGridData::GetChoices(int row, int col)
 {
@@ -542,13 +565,18 @@ void VariableGrid::OnLeftClick(wxGridEvent &evt)
 
 enum {
 	__idFirst = wxID_HIGHEST + 992,
-	ID_SHOW_DIFFERENT, ID_SHOW_SAME, ID_SHOW_ALL
+	ID_SHOW_DIFFERENT, ID_SHOW_SAME, ID_SHOW_ALL, ID_EXP_CLIPBOARD, ID_EXP_CSV, ID_EXP_EXCEL, ID_HELP, ID_EXP_BTN
 };
 
 BEGIN_EVENT_TABLE(VariableGridFrame, wxFrame)
 	EVT_BUTTON(ID_SHOW_DIFFERENT, VariableGridFrame::OnCommand)
 	EVT_BUTTON(ID_SHOW_SAME, VariableGridFrame::OnCommand)
 	EVT_BUTTON(ID_SHOW_ALL, VariableGridFrame::OnCommand)
+	EVT_BUTTON(ID_HELP, VariableGridFrame::OnCommand)
+	EVT_MENU(ID_EXP_CLIPBOARD, VariableGridFrame::OnCommand)
+	EVT_MENU(ID_EXP_CSV, VariableGridFrame::OnCommand)
+	EVT_MENU(ID_EXP_EXCEL, VariableGridFrame::OnCommand)
+	EVT_BUTTON(ID_EXP_BTN, VariableGridFrame::OnExport)
 	EVT_GRID_COL_SORT(VariableGridFrame::OnGridColSort)
 END_EVENT_TABLE()
 
@@ -625,11 +653,19 @@ VariableGridFrame::VariableGridFrame(wxWindow *parent, ProjectFile *pf, Case *c,
 		UpdateGrid();
 
 
-		wxBoxSizer *tools = new wxBoxSizer(wxHORIZONTAL);
-		tools->Add(new wxMetroButton(this, ID_SHOW_DIFFERENT, "Show different values"), wxALL | wxEXPAND, 0);
-		tools->Add(new wxMetroButton(this, ID_SHOW_SAME, "Show equal values"), wxALL | wxEXPAND, 0);
-		tools->Add(new wxMetroButton(this, ID_SHOW_ALL, "Show all"), wxALL | wxEXPAND, 0);
+		wxBoxSizer *comparetools = new wxBoxSizer(wxHORIZONTAL);
+		comparetools->Add(new wxMetroButton(this, ID_SHOW_DIFFERENT, "Show different values"), wxALL | wxEXPAND, 0);
+		comparetools->Add(new wxMetroButton(this, ID_SHOW_SAME, "Show equal values"), wxALL | wxEXPAND, 0);
+		comparetools->Add(new wxMetroButton(this, ID_SHOW_ALL, "Show all"), wxALL | wxEXPAND, 0);
 
+		wxBoxSizer *tools = new wxBoxSizer(wxHORIZONTAL);
+		m_btn_export = new wxMetroButton(this, ID_EXP_BTN, "Export");
+		tools->Add(m_btn_export, wxALL | wxEXPAND, 0);
+		if (m_cases.size() < 2)
+			tools->AddStretchSpacer();
+		else
+			tools->Add(comparetools);
+		tools->Add(new wxMetroButton(this, ID_HELP, "Help"), wxALL | wxEXPAND, 0);
 
 		wxBoxSizer *sizer = new wxBoxSizer(wxVERTICAL);
 		sizer->Add(tools, 0, wxALL | wxEXPAND, 0);
@@ -638,8 +674,6 @@ VariableGridFrame::VariableGridFrame(wxWindow *parent, ProjectFile *pf, Case *c,
 
 		m_compare_show_type = COMPARE_SHOW_ALL;
 
-		if (m_cases.size() < 2)
-			tools->Show(false);
 	}
 #ifdef __WXMSW__
 	SetIcon(wxICON(appicon));
@@ -661,6 +695,141 @@ VariableGridFrame::~VariableGridFrame()
 	if (m_pf) m_pf->RemoveListener(this);
 	
 }
+
+
+void VariableGridFrame::OnExport(wxCommandEvent &evt)
+{
+	wxMetroPopupMenu menu;
+	menu.Append(ID_EXP_CLIPBOARD, "Copy to clipboard");
+	menu.Append(ID_EXP_CSV, "Save as CSV");
+#ifdef __WXMSW__
+	menu.Append(ID_EXP_EXCEL, "Send to Excel");
+#endif
+	menu.Popup( m_btn_export);
+}
+
+void VariableGridFrame::GetTextData(wxString &dat, char sep)
+{
+	dat = wxEmptyString;
+	if (!m_grid)
+		return;
+
+	size_t approxbytes = m_griddata->GetNumberRows() * 15 * m_griddata->GetNumberCols();
+	dat.Alloc(approxbytes);
+
+	size_t c;
+
+	for (c = 0; c<m_griddata->GetNumberCols(); c++)
+	{
+		wxString label = m_griddata->GetColLabelValue(c);
+		label.Replace('\n', " | ");
+
+		if (sep == ',')
+			dat += '"' + label + '"';
+		else
+			dat += label;
+
+		if (c < m_griddata->GetNumberCols() - 1)
+			dat += sep;
+		else
+			dat += '\n';
+	}
+
+	for (size_t r = 0; r<m_griddata->GetNumberRows(); r++)
+	{
+		if (m_grid->IsRowShown(r))
+		{
+			for (c = 0; c < m_griddata->GetNumberCols(); c++)
+			{
+				// choice values - can handle hourly and monthly similarly
+				if (m_griddata->GetTypeName(r, c) == "GridCellChoice")
+
+					dat += m_griddata->GetChoice(r, c);
+				else
+					dat += m_griddata->GetValue(r, c);
+
+				if (c < m_griddata->GetNumberCols() - 1)
+					dat += sep;
+				else
+					dat += '\n';
+			}
+		}
+	}
+}
+
+
+void VariableGridFrame::CopyToClipboard()
+{
+	wxBusyInfo busy("Processing data table... please wait");
+	wxString dat;
+	GetTextData(dat, '\t');
+
+	// strip commas per request from Paul 5/23/12 meeting
+	dat.Replace(",", "");
+
+	if (wxTheClipboard->Open())
+	{
+		wxTheClipboard->SetData(new wxTextDataObject(dat));
+		wxTheClipboard->Close();
+	}
+}
+
+void VariableGridFrame::SaveToCSV()
+{
+	wxFileDialog fdlg(this, "Save as CSV", wxEmptyString, "results.csv", "Comma-separated values (*.csv)|*.csv", wxFD_SAVE | wxFD_OVERWRITE_PROMPT);
+	if (fdlg.ShowModal() != wxID_OK) return;
+
+	FILE *fp = fopen(fdlg.GetPath().c_str(), "w");
+	if (!fp)
+	{
+		wxMessageBox("Could not open file for write:\n\n" + fdlg.GetPath());
+		return;
+	}
+
+	wxBusyInfo busy("Writing CSV file... please wait");
+
+	wxString dat;
+	GetTextData(dat, ',');
+	fputs(dat.c_str(), fp);
+	fclose(fp);
+
+}
+
+void VariableGridFrame::SendToExcel()
+{
+	wxBusyInfo busy("Processing data table... please wait");
+	wxString dat;
+	GetTextData(dat, '\t');
+
+	// strip commas per request from Paul 5/23/12 meeting
+	dat.Replace(",", "");
+
+#ifdef __WXMSW__
+	wxExcelAutomation xl;
+	if (!xl.StartExcel())
+	{
+		wxMessageBox("Could not start Excel.");
+		return;
+	}
+
+	xl.Show(true);
+
+	if (!xl.NewWorkbook())
+	{
+		wxMessageBox("Could not create a new Excel worksheet.");
+		return;
+	}
+	if (wxTheClipboard->Open())
+	{
+		wxTheClipboard->SetData(new wxTextDataObject(dat));
+		wxTheClipboard->Close();
+		xl.PasteClipboard();
+	}
+#endif
+}
+
+
+
 
 void VariableGridFrame::OnGridColSort(wxGridEvent& event)
 {
@@ -727,6 +896,18 @@ void VariableGridFrame::OnCommand(wxCommandEvent &evt)
 	case ID_SHOW_ALL:
 		m_compare_show_type = COMPARE_SHOW_ALL;
 		UpdateGrid();
+		break;
+	case ID_EXP_CLIPBOARD:
+		CopyToClipboard();
+		break;
+	case ID_EXP_CSV:
+		SaveToCSV();
+		break;
+	case ID_EXP_EXCEL:
+		SendToExcel();
+		break;
+	case ID_HELP:
+		wxMessageBox("Cool help content from Paul!");
 		break;
 	}
 
