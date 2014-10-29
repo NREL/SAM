@@ -32,12 +32,17 @@ public:
 	bool Write( const wxString &file );
 	wxString GetFileName();
 
+	bool Find( const wxString &text, bool match_case, bool whole_word, bool at_beginning,
+		int *pos, int *line, wxString *line_text );
+
 private:
 	SamScriptCtrl *m_script;
 	wxTextCtrl *m_output;
 	wxMetroButton *m_runBtn, *m_stopBtn;
 	wxString m_fileName;
 	wxString m_lastTitle;
+
+	int m_lastFindPos;
 
 	void UpdateWindowTitle();
 	void OnCommand( wxCommandEvent & );

@@ -1,6 +1,7 @@
 #include <wx/splitter.h>
 #include <wx/textctrl.h>
 #include <wx/busyinfo.h>
+#include <wx/progdlg.h>
 
 #include <wex/lkscript.h>
 #include <wex/metro.h>
@@ -442,10 +443,48 @@ public:
 			(wxLK_STDLIB_BASIC|wxLK_STDLIB_STRING|wxLK_STDLIB_MATH|wxLK_STDLIB_WXUI|wxLK_STDLIB_PLOT|wxLK_STDLIB_MISC|wxLK_STDLIB_SOUT) ),
 		 m_scriptwin( scriptwin )
 	{
+		ShowFindInFilesButton( true );
+
 		// register SAM-specific invoke functions here
 		RegisterLibrary( invoke_general_funcs(), "General Functions" );
 		RegisterLibrary( invoke_ssc_funcs(), "Direct Access To SSC" );
 		RegisterLibrary( sam_functions(), "SAM Functions");
+	}
+
+	virtual bool OnFindInFiles( const wxString &text, bool match_case, bool whole_word )
+	{;
+		std::vector<ScriptWindow*> windows = m_scriptwin->GetWindows();
+		
+		wxProgressDialog dialog( "Find in files", "Searching for " + text, (int)windows.size(), m_scriptwin,
+			wxPD_SMOOTH|wxPD_CAN_ABORT );
+		dialog.SetClientSize( wxSize(350,100) );
+		dialog.CenterOnParent();
+		dialog.Show();
+
+		m_scriptwin->ClearOutput();
+		int noccur = 0;
+		for( size_t i=0;i<windows.size();i++ )
+		{
+			ScriptWindow *sw = windows[i];
+
+			int iter = 0;
+			int pos, line_num;
+			wxString line_text;
+			while( sw->Find( text, match_case, whole_word,
+				iter == 0, &pos, &line_num, &line_text ) )
+			{
+				m_scriptwin->AddOutput( sw->GetTitle() + "  (" + wxString::Format("%d):  ", line_num) + line_text );
+				noccur++;
+				iter++;
+			}
+
+			if ( !dialog.Update( i ) )
+				break;
+		}
+
+		m_scriptwin->AddOutput( wxString::Format("\n%d files searched, %d occurences found.", (int)windows.size(), noccur) );
+
+		return true;
 	}
 	
 	virtual bool OnEval( int line )
@@ -461,7 +500,7 @@ public:
 };
 
 enum { ID_SCRIPT = wxID_HIGHEST+494 ,
-	ID_VARIABLES, ID_FUNCTIONS };
+	ID_VARIABLES, ID_FUNCTIONS, ID_OUTPUT_TEXT };
 
 BEGIN_EVENT_TABLE( ScriptWindow, wxFrame )
 	EVT_BUTTON( wxID_NEW, ScriptWindow::OnCommand )
@@ -492,6 +531,8 @@ END_EVENT_TABLE()
 ScriptWindow::ScriptWindow( wxWindow *parent, int id, const wxPoint &pos, const wxSize &size )
 	: wxFrame( parent, id, wxT("untitled"), pos, size ) 
 {
+	m_lastFindPos = 0;
+
 #ifdef __WXMSW__
 	SetIcon( wxICON( appicon ) );
 #endif	
@@ -512,9 +553,7 @@ ScriptWindow::ScriptWindow( wxWindow *parent, int id, const wxPoint &pos, const 
 	wxMenuBar *menuBar = new wxMenuBar;
 	menuBar->Append( file, wxT("&File") );
 	SetMenuBar( menuBar );
-#endif
-
-	
+#endif	
 
 	wxBoxSizer *toolbar = new wxBoxSizer( wxHORIZONTAL );
 	toolbar->Add( new wxMetroButton( this, wxID_NEW, "New" ), 0, wxALL|wxEXPAND, 0 );
@@ -536,7 +575,7 @@ ScriptWindow::ScriptWindow( wxWindow *parent, int id, const wxPoint &pos, const 
 
 	m_script = new SamScriptCtrl( split, ID_SCRIPT, this );
 
-	m_output = new wxTextCtrl( split, wxID_ANY, wxT("Ready."), wxDefaultPosition, wxDefaultSize, wxTE_MULTILINE|wxTE_READONLY|wxBORDER_NONE );
+	m_output = new wxTextCtrl( split, ID_OUTPUT_TEXT, wxT("Ready."), wxDefaultPosition, wxDefaultSize, wxTE_MULTILINE|wxTE_READONLY|wxBORDER_NONE );
 	
 	wxBoxSizer *sizer = new wxBoxSizer( wxVERTICAL );
 	sizer->Add( toolbar, 0, wxALL|wxEXPAND, 0 );
@@ -790,6 +829,34 @@ void ScriptWindow::OnCommand( wxCommandEvent &evt )
 		break;
 
 	};
+}
+
+bool ScriptWindow::Find( const wxString &text, 
+	bool match_case, bool whole_word, bool at_beginning,
+	int *pos, int *line, wxString *line_text )
+{
+	if ( text.Len() == 0 ) return false;
+
+	int flags = 0;	
+	if ( whole_word ) flags |= wxSTC_FIND_WHOLEWORD;	
+	if ( match_case ) flags |= wxSTC_FIND_MATCHCASE;
+
+	if ( at_beginning )
+		m_lastFindPos = 0;
+
+	m_lastFindPos = m_script->FindText( m_lastFindPos, 
+		m_script->GetLength(), text, flags );
+
+	if ( m_lastFindPos >= 0 )
+	{
+		*pos = m_lastFindPos;
+		*line = m_script->LineFromPosition( m_lastFindPos );
+		*line_text = m_script->GetLine( *line );
+		m_lastFindPos += text.Len();
+		return true;
+	}
+	else
+		return false;
 }
 
 void ScriptWindow::OnModified( wxStyledTextEvent & )
