@@ -53,6 +53,7 @@ public:
 	void Sort(int col, bool ascending);
 
 	// for choice controls
+	wxString GetChoice(int row, int col);
 	wxString GetChoices(int row, int col);
 	wxString GetVarName(int row, int col);
 
@@ -104,6 +105,13 @@ private:
 	VariableGridData *m_griddata;
 	std::vector<Case*> m_cases;
 	int m_compare_show_type;
+	wxMetroButton *m_btn_export;
+	
+	void OnExport(wxCommandEvent &evt);
+	void GetTextData(wxString &dat, char sep);
+	void CopyToClipboard();
+	void SaveToCSV();
+	void SendToExcel();
 
 	void OnGridColSort(wxGridEvent& event);
 	void SizeColumns();
