@@ -473,7 +473,7 @@ public:
 			while( sw->Find( text, match_case, whole_word,
 				iter == 0, &pos, &line_num, &line_text ) )
 			{
-				m_scriptwin->AddOutput( sw->GetTitle() + "  (" + wxString::Format("%d):  ", line_num) + line_text );
+				m_scriptwin->AddOutput( sw->GetTitle() + " (" + wxString::Format("%d):  ", line_num+1) + line_text );
 				noccur++;
 				iter++;
 			}
