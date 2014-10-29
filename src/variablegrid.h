@@ -105,9 +105,9 @@ private:
 	VariableGridData *m_griddata;
 	std::vector<Case*> m_cases;
 	int m_compare_show_type;
-	wxMetroButton *m_btn_export;
+	wxMetroButton *m_btn_export, *m_btn_view;
+	wxTextCtrl *m_filter;
 	
-	void OnExport(wxCommandEvent &evt);
 	void GetTextData(wxString &dat, char sep);
 	void CopyToClipboard();
 	void SaveToCSV();

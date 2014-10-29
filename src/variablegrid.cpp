@@ -15,6 +15,7 @@
 #include "widgets.h"
 #include "inputpage.h"
 #include "object.h"
+#include "main.h"
 
 #define COMPARE_SHOW_ALL 0
 #define COMPARE_SHOW_DIFFERENT 1
@@ -565,24 +566,28 @@ void VariableGrid::OnLeftClick(wxGridEvent &evt)
 
 enum {
 	__idFirst = wxID_HIGHEST + 992,
-	ID_SHOW_DIFFERENT, ID_SHOW_SAME, ID_SHOW_ALL, ID_EXP_CLIPBOARD, ID_EXP_CSV, ID_EXP_EXCEL, ID_HELP, ID_EXP_BTN
+	ID_SHOW_DIFFERENT, ID_SHOW_SAME, ID_SHOW_ALL, ID_EXP_CLIPBOARD, ID_EXP_CSV, ID_EXP_EXCEL, ID_EXP_BTN, ID_VIEW_BTN, ID_FILTER
 };
 
 BEGIN_EVENT_TABLE(VariableGridFrame, wxFrame)
-	EVT_BUTTON(ID_SHOW_DIFFERENT, VariableGridFrame::OnCommand)
-	EVT_BUTTON(ID_SHOW_SAME, VariableGridFrame::OnCommand)
-	EVT_BUTTON(ID_SHOW_ALL, VariableGridFrame::OnCommand)
-	EVT_BUTTON(ID_HELP, VariableGridFrame::OnCommand)
+	EVT_MENU(ID_SHOW_DIFFERENT, VariableGridFrame::OnCommand)
+	EVT_MENU(ID_SHOW_SAME, VariableGridFrame::OnCommand)
+	EVT_MENU(ID_SHOW_ALL, VariableGridFrame::OnCommand)
 	EVT_MENU(ID_EXP_CLIPBOARD, VariableGridFrame::OnCommand)
 	EVT_MENU(ID_EXP_CSV, VariableGridFrame::OnCommand)
 	EVT_MENU(ID_EXP_EXCEL, VariableGridFrame::OnCommand)
-	EVT_BUTTON(ID_EXP_BTN, VariableGridFrame::OnExport)
+	EVT_BUTTON(ID_EXP_BTN, VariableGridFrame::OnCommand)
+	EVT_BUTTON(ID_VIEW_BTN, VariableGridFrame::OnCommand)
+	EVT_BUTTON(wxID_HELP, VariableGridFrame::OnCommand)
+	EVT_TEXT( ID_FILTER, VariableGridFrame::OnCommand)
 	EVT_GRID_COL_SORT(VariableGridFrame::OnGridColSort)
 END_EVENT_TABLE()
 
-VariableGridFrame::VariableGridFrame(wxWindow *parent, ProjectFile *pf, Case *c, VarTable *vt, wxString frame_title) : wxFrame(parent, wxID_ANY, "Variable Grid", wxDefaultPosition, wxSize(800, 700)), m_pf(pf)
+VariableGridFrame::VariableGridFrame(wxWindow *parent, ProjectFile *pf, Case *c, VarTable *vt, wxString frame_title) 
+	: wxFrame(parent, wxID_ANY, "Variable Grid", wxDefaultPosition, wxSize(800, 700)), m_pf(pf)
 {
-	
+	SetBackgroundColour( wxMetroTheme::Colour( wxMT_FOREGROUND ) );
+
 	if (!m_pf) return;
 
 	if (!vt) m_pf->AddListener(this); // no listeners when using parametric var tables
@@ -597,6 +602,7 @@ VariableGridFrame::VariableGridFrame(wxWindow *parent, ProjectFile *pf, Case *c,
 		m_cases = m_pf->GetCases();
 		m_input_list = false;
 	}
+
 	if (m_cases.size() > 0)
 	{
 		if (!vt)
@@ -649,30 +655,38 @@ VariableGridFrame::VariableGridFrame(wxWindow *parent, ProjectFile *pf, Case *c,
 			}
 		}
 		*/
-		SizeColumns();
-		UpdateGrid();
-
-
+		
 		wxBoxSizer *comparetools = new wxBoxSizer(wxHORIZONTAL);
-		comparetools->Add(new wxMetroButton(this, ID_SHOW_DIFFERENT, "Show different values"), wxALL | wxEXPAND, 0);
-		comparetools->Add(new wxMetroButton(this, ID_SHOW_SAME, "Show equal values"), wxALL | wxEXPAND, 0);
-		comparetools->Add(new wxMetroButton(this, ID_SHOW_ALL, "Show all"), wxALL | wxEXPAND, 0);
 
 		wxBoxSizer *tools = new wxBoxSizer(wxHORIZONTAL);
-		m_btn_export = new wxMetroButton(this, ID_EXP_BTN, "Export");
-		tools->Add(m_btn_export, wxALL | wxEXPAND, 0);
-		if (m_cases.size() < 2)
-			tools->AddStretchSpacer();
-		else
-			tools->Add(comparetools);
-		tools->Add(new wxMetroButton(this, ID_HELP, "Help"), wxALL | wxEXPAND, 0);
+		m_btn_export = new wxMetroButton(this, ID_EXP_BTN, "Export", wxNullBitmap, wxDefaultPosition, wxDefaultSize, wxMB_DOWNARROW);
+		tools->Add(m_btn_export, 0, wxALL | wxEXPAND, 0);
+		if (m_cases.size() >= 2)
+		{
+			m_btn_view = new wxMetroButton(this, ID_VIEW_BTN, "View", wxNullBitmap, wxDefaultPosition, wxDefaultSize, wxMB_DOWNARROW);
+			tools->Add( m_btn_view, 0, wxALL|wxEXPAND, 0 );
+		}		
+
+		tools->AddSpacer(5);
+		m_filter = new wxTextCtrl( this, ID_FILTER );
+		wxStaticText *lblfilter = new wxStaticText( this, wxID_ANY, "Search:" );
+		lblfilter->SetForegroundColour( *wxWHITE );
+		lblfilter->SetFont( wxMetroTheme::Font( wxMT_NORMAL ) );
+		tools->Add( lblfilter, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3 );
+		tools->Add( m_filter, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3 );
+		tools->AddStretchSpacer();
+		tools->Add(new wxMetroButton(this, wxID_HELP, "Help"), 0, wxALL | wxEXPAND, 0);
 
 		wxBoxSizer *sizer = new wxBoxSizer(wxVERTICAL);
 		sizer->Add(tools, 0, wxALL | wxEXPAND, 0);
 		sizer->Add(m_grid, 1, wxALL | wxEXPAND, 0);
 		SetSizer(sizer);
 
-		m_compare_show_type = COMPARE_SHOW_ALL;
+		SizeColumns();
+
+		m_compare_show_type = m_cases.size() > 1 ? COMPARE_SHOW_DIFFERENT : COMPARE_SHOW_ALL;
+		UpdateGrid();
+
 
 	}
 #ifdef __WXMSW__
@@ -694,18 +708,6 @@ VariableGridFrame::~VariableGridFrame()
 			
 	if (m_pf) m_pf->RemoveListener(this);
 	
-}
-
-
-void VariableGridFrame::OnExport(wxCommandEvent &evt)
-{
-	wxMetroPopupMenu menu;
-	menu.Append(ID_EXP_CLIPBOARD, "Copy to clipboard");
-	menu.Append(ID_EXP_CSV, "Save as CSV");
-#ifdef __WXMSW__
-	menu.Append(ID_EXP_EXCEL, "Send to Excel");
-#endif
-	menu.Popup( m_btn_export);
 }
 
 void VariableGridFrame::GetTextData(wxString &dat, char sep)
@@ -776,7 +778,7 @@ void VariableGridFrame::CopyToClipboard()
 
 void VariableGridFrame::SaveToCSV()
 {
-	wxFileDialog fdlg(this, "Save as CSV", wxEmptyString, "results.csv", "Comma-separated values (*.csv)|*.csv", wxFD_SAVE | wxFD_OVERWRITE_PROMPT);
+	wxFileDialog fdlg(this, "Save as CSV", wxEmptyString, "inputs.csv", "Comma-separated values (*.csv)|*.csv", wxFD_SAVE | wxFD_OVERWRITE_PROMPT);
 	if (fdlg.ShowModal() != wxID_OK) return;
 
 	FILE *fp = fopen(fdlg.GetPath().c_str(), "w");
@@ -870,10 +872,19 @@ void VariableGridFrame::SizeColumns()
 
 void VariableGridFrame::UpdateGrid()
 {
+	wxString filter(m_filter->GetValue().Lower());
 	m_grid->Freeze();
 	for (int row = 0; row < m_grid->GetNumberRows(); row++)
 	{
-		if (m_griddata->ShowRow(row, m_compare_show_type))
+		bool show = true;
+		if ( !filter.IsEmpty() )
+		{
+			wxString target( m_griddata->GetValue( row, 0 ).Lower() + " " + m_griddata->GetValue( row, 1 ).Lower() );
+			show = (filter.Len() <= 2 && target.Left( filter.Len() ).Lower() == filter)
+				|| (target.Lower().Find( filter ) >= 0);
+		}
+
+		if (show && m_griddata->ShowRow(row, m_compare_show_type))
 			m_grid->ShowRow(row);
 		else
 			m_grid->HideRow(row);
@@ -885,6 +896,29 @@ void VariableGridFrame::OnCommand(wxCommandEvent &evt)
 {
 	switch (evt.GetId())
 	{
+	case ID_VIEW_BTN:
+		{
+			wxMetroPopupMenu menu;
+			menu.AppendCheckItem(ID_SHOW_DIFFERENT, "Show different values", m_compare_show_type == COMPARE_SHOW_DIFFERENT);
+			menu.AppendCheckItem(ID_SHOW_SAME, "Show equal values", m_compare_show_type == COMPARE_SHOW_SAME);
+			menu.AppendCheckItem(ID_SHOW_ALL, "Show all values", m_compare_show_type == COMPARE_SHOW_ALL);		
+			wxPoint p = m_btn_view->ClientToScreen( wxPoint( 0, m_btn_view->GetClientSize().y ) );
+			menu.Popup( m_btn_view, p, wxTOP|wxLEFT );
+		}
+		break;
+	case ID_EXP_BTN:
+		{				   
+			wxMetroPopupMenu menu;
+			menu.Append(ID_EXP_CLIPBOARD, "Copy to clipboard");
+			menu.Append(ID_EXP_CSV, "Save as CSV");
+		#ifdef __WXMSW__
+			menu.Append(ID_EXP_EXCEL, "Send to Excel");
+		#endif
+
+			wxPoint p = m_btn_export->ClientToScreen( wxPoint( 0, m_btn_export->GetClientSize().y ) );
+			menu.Popup( m_btn_export, p, wxTOP|wxLEFT );
+		}
+		break;
 	case ID_SHOW_DIFFERENT:
 		m_compare_show_type = COMPARE_SHOW_DIFFERENT;
 		UpdateGrid();
@@ -906,8 +940,11 @@ void VariableGridFrame::OnCommand(wxCommandEvent &evt)
 	case ID_EXP_EXCEL:
 		SendToExcel();
 		break;
-	case ID_HELP:
-		wxMessageBox("Cool help content from Paul!");
+	case wxID_HELP:
+		SamApp::ShowHelp( "inputs_browser" );
+		break;
+	case ID_FILTER:
+		UpdateGrid();
 		break;
 	}
 
