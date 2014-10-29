@@ -24,6 +24,27 @@ void CaseCallbackContext::SetupLibraries( lk::env_t * )
 {
 	/* nothing here - for descendents like UICallbackContext or ResultsCallbackContext */
 }
+
+class CaseScriptInterpreter : public VarTableScriptInterpreter
+{
+	Case *m_case;
+public:	
+	CaseScriptInterpreter( lk::node_t *tree, lk::env_t *env, VarTable *vt, Case *cc )
+		: VarTableScriptInterpreter( tree, env, vt ), m_case( cc )
+	{
+	}
+	virtual ~CaseScriptInterpreter( ) { /* nothing to do */ };
+	virtual bool special_set( const lk_string &name, lk::vardata_t &val )
+	{
+		if ( VarTableScriptInterpreter::special_set( name, val ) )
+		{
+			m_case->VariableChanged( name );
+			return true;
+		}
+		else
+			return false;
+	}
+};
 	
 bool CaseCallbackContext::Invoke( lk::node_t *root, lk::env_t *parent_env )
 {
@@ -42,7 +63,7 @@ bool CaseCallbackContext::Invoke( lk::node_t *root, lk::env_t *parent_env )
 
 	try {
 
-		VarTableScriptInterpreter e( root, &local_env, &GetValues() );
+		CaseScriptInterpreter e( root, &local_env, &GetValues(), m_case );
 		if ( !e.run() )
 		{
 			wxString text = "Could not evaluate callback function:" +  m_desc + "\n";
