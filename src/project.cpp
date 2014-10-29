@@ -21,6 +21,7 @@ ProjectFile::~ProjectFile()
 
 void ProjectFile::Clear()
 {
+	SendEvent(ProjectFileEvent::PROJECTFILE_DELETED);
 	m_cases.Clear();
 	m_objects.Clear();
 	m_properties.clear();
