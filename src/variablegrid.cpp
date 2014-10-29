@@ -702,12 +702,17 @@ VariableGridFrame::~VariableGridFrame()
 	/*The following code caused AV when exiting with input list open*/
 	/*No issue running in debug mode or outside of VS2013*/
 	
-	if (m_cases.size() > 0)
-		for (size_t i = 0; i < m_cases.size(); i++)
-			if (m_cases[i]) m_cases[i]->RemoveListener(this);
-			
-	if (m_pf) m_pf->RemoveListener(this);
+	std::vector<Case*> pfcases;
 	
+	if ( m_pf != 0 )
+	{
+		pfcases = m_pf->GetCases();
+		m_pf->RemoveListener(this);
+	}
+
+	for (size_t i = 0; i < m_cases.size(); i++)
+		if ( std::find( pfcases.begin(), pfcases.end(), m_cases[i] ) != pfcases.end() )
+			m_cases[i]->RemoveListener(this);
 }
 
 void VariableGridFrame::GetTextData(wxString &dat, char sep)
@@ -959,7 +964,11 @@ void VariableGridFrame::OnProjectFileEvent(ProjectFile* WXUNUSED(p), ProjectFile
 		if (it != m_cases.end())
 		{
 			m_cases.erase(it);
-			if (m_cases.size() == 0) Close(); // AV when closeing main window protection
+			if (m_cases.size() == 0) 
+			{
+				Close(); // AV when closeing main window protection
+				return;
+			}
 			m_griddata->DeleteCase(c);
 			m_grid->Refresh();
 			UpdateGrid();
