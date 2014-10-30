@@ -31,6 +31,7 @@
     <ClCompile Include="..\src\macro.cpp" />
     <ClCompile Include="..\src\p50p90.cpp" />
     <ClCompile Include="..\src\parametric.cpp" />
+    <ClCompile Include="..\src\parametric_qs.cpp" />
     <ClCompile Include="..\src\registration.cpp" />
     <ClCompile Include="..\src\reports.cpp" />
     <ClCompile Include="..\src\results.cpp" />
@@ -77,6 +78,7 @@
     <ClInclude Include="..\src\macro.h" />
     <ClInclude Include="..\src\p50p90.h" />
     <ClInclude Include="..\src\parametric.h" />
+    <ClInclude Include="..\src\parametric_qs.h" />
     <ClInclude Include="..\src\registration.h" />
     <ClInclude Include="..\src\reports.h" />
     <ClInclude Include="..\src\results.h" />
