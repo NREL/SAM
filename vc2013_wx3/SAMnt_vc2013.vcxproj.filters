@@ -146,6 +146,9 @@
     <ClInclude Include="..\src\lossdiag.h">
       <Filter>Source</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\parametric_qs.h">
+      <Filter>Source</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\welcome.cpp">
@@ -278,6 +281,9 @@
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="..\src\lossdiag.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\parametric_qs.cpp">
       <Filter>Source</Filter>
     </ClCompile>
   </ItemGroup>

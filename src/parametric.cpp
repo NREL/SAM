@@ -14,6 +14,7 @@
 #include <wex/ole/excelauto.h>
 
 #include "parametric.h"
+#include "parametric_qs.h"
 #include "main.h"
 #include "casewin.h"
 #include "variablegrid.h"
@@ -184,7 +185,7 @@ void ParametricGrid::OnLeftClick(wxGridEvent &evt)
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
-enum { ID_SELECT_INPUTS, ID_SELECT_OUTPUTS, ID_NUMRUNS, ID_RUN, ID_CLEAR, ID_GRID, ID_INPUTMENU_FILL_DOWN_SEQUENCE, ID_INPUTMENU_FILL_DOWN_ONE_VALUE, ID_INPUTMENU_FILL_DOWN_EVENLY, ID_OUTPUTMENU_ADD_PLOT, ID_OUTPUTMENU_REMOVE_PLOT, ID_OUTPUTMENU_SHOW_DATA, ID_OUTPUTMENU_CLIPBOARD, ID_OUTPUTMENU_CSV, ID_OUTPUTMENU_EXCEL, ID_SHOW_ALL_INPUTS };
+enum { ID_SELECT_INPUTS, ID_SELECT_OUTPUTS, ID_NUMRUNS, ID_RUN, ID_CLEAR, ID_GRID, ID_INPUTMENU_FILL_DOWN_SEQUENCE, ID_INPUTMENU_FILL_DOWN_ONE_VALUE, ID_INPUTMENU_FILL_DOWN_EVENLY, ID_OUTPUTMENU_ADD_PLOT, ID_OUTPUTMENU_REMOVE_PLOT, ID_OUTPUTMENU_SHOW_DATA, ID_OUTPUTMENU_CLIPBOARD, ID_OUTPUTMENU_CSV, ID_OUTPUTMENU_EXCEL, ID_SHOW_ALL_INPUTS, ID_QUICK_SETUP };
 
 
 
@@ -194,6 +195,7 @@ EVT_BUTTON(ID_SELECT_OUTPUTS, ParametricViewer::OnCommand)
 EVT_NUMERIC(ID_NUMRUNS, ParametricViewer::OnCommand)
 EVT_BUTTON(ID_RUN, ParametricViewer::OnCommand)
 EVT_BUTTON(ID_CLEAR, ParametricViewer::OnCommand)
+EVT_BUTTON(ID_QUICK_SETUP, ParametricViewer::OnCommand)
 EVT_BUTTON(ID_OUTPUTMENU_CLIPBOARD, ParametricViewer::OnMenuItem)
 EVT_BUTTON(ID_OUTPUTMENU_CSV, ParametricViewer::OnMenuItem)
 EVT_BUTTON(ID_OUTPUTMENU_EXCEL, ParametricViewer::OnMenuItem)
@@ -233,13 +235,15 @@ ParametricViewer::ParametricViewer(wxWindow *parent, Case *cc)
 	tool_sizer->Add(new wxButton(top_panel, ID_RUN, "Run parametric simulations"), 0, wxALL | wxEXPAND, 2);
 	m_run_multithreaded = new wxCheckBox(top_panel, wxID_ANY, "Run multi-threaded?", wxDefaultPosition, wxDefaultSize, wxALIGN_RIGHT);
 	m_run_multithreaded->SetValue(true);
-	//m_run_multithreaded->Hide();
-	tool_sizer->Add(m_run_multithreaded, 0, wxALIGN_CENTER_VERTICAL, 1);
+	m_run_multithreaded->Hide();
+	//tool_sizer->Add(m_run_multithreaded, 0, wxALIGN_CENTER_VERTICAL, 1);
 	tool_sizer->AddStretchSpacer();
 	tool_sizer->Add(new wxButton(top_panel, ID_CLEAR, "Clear results"), 0, wxALL | wxEXPAND, 2);
 
 	// main grid menu (also available as right click in upper left of grid)
 	wxBoxSizer *grid_menu_sizer = new wxBoxSizer(wxHORIZONTAL);
+	grid_menu_sizer->Add(new wxButton(top_panel, ID_QUICK_SETUP, "Quick Setup"), 0, wxALIGN_CENTER_VERTICAL, 2);
+	grid_menu_sizer->AddStretchSpacer();
 	grid_menu_sizer->Add(new wxButton(top_panel, ID_OUTPUTMENU_CLIPBOARD, "Copy to clipboard"), 0, wxALIGN_CENTER_VERTICAL, 2);
 	grid_menu_sizer->Add(new wxButton(top_panel, ID_OUTPUTMENU_CSV, "Save as CSV"), 0, wxALL | wxEXPAND, 2);
 #ifdef __WXMSW__
@@ -388,6 +392,12 @@ void ParametricViewer::OnCommand(wxCommandEvent &evt)
 	case ID_CLEAR:
 		ClearResults();
 		UpdateGrid();
+		break;
+	case ID_QUICK_SETUP:
+		Parametric_QSDialog *pqs = new Parametric_QSDialog(this, "Parametric Quick Setup", m_case);
+		if (pqs->ShowModal() == wxID_OK)
+			// TODO set m_par
+			int a = 0;
 		break;
 	}
 }
