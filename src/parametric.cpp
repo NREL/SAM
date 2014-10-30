@@ -1691,6 +1691,9 @@ bool ParametricGridData::RunSimulations_multi()
 	std::vector<Simulation*> sims;
 	for (size_t i = 0; i < m_par.Runs.size(); i++)
 	{
+		// reset all simulation objects to copy over latest value if changed on input page (no listeners)
+		m_valid_run[i] = false;
+
 		if (!m_valid_run[i])
 		{
 			m_par.Runs[i]->Clear();
@@ -1791,6 +1794,9 @@ bool ParametricGridData::RunSimulations_single()
 {
 	for (size_t i = 0; i < m_par.Runs.size(); i++)
 	{
+		// reset all simulation objects to copy over latest value if changed on input page (no listeners)
+		m_valid_run[i] = false;
+
 		if (!m_valid_run[i])
 		{
 			m_par.Runs[i]->Clear();
