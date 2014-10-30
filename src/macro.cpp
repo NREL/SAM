@@ -534,13 +534,21 @@ void MacroPanel::CreateUI( const wxString &buf )
 
 	wxArrayString lines = wxStringTokenize(buf, "\n");
 
+	bool show_save_load = false;
+
 	for( size_t i=0;i<lines.size();i++ )
 	{
 		wxString line( lines[i] );
 		if ( line.Left(3) != "//@" ) continue;
-
+		
 		StringHash tab;
 		tab.Split( line.Mid(3).Trim().Trim(false), ';', '=' );
+
+		if ( tab["show_save_load_buttons"].Lower() == "true" )
+		{
+			show_save_load = true;
+			continue;
+		}
 		
 		wxString type( tab["type"] ),
 			name( tab["name"] ),
@@ -623,7 +631,7 @@ void MacroPanel::CreateUI( const wxString &buf )
 		}
 	}
 
-	if(  m_ui.size() > 0 )
+	if(  m_ui.size() > 0 && show_save_load )
 	{
 		m_macroUISizer->Add( new wxStaticText( m_macroUI, wxID_ANY, "Input values:" ), 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
 		wxBoxSizer *sz = new wxBoxSizer( wxHORIZONTAL );
