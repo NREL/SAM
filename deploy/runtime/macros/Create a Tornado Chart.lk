@@ -26,6 +26,7 @@ In the popup dialog, you may enter:
 //@ name=inputs;type=inputs;label=Input variables\nto consider:;only=numbers;meta=true;prompt=Specify custom variation for input (percentage, absolute, or independent up/down values ).\n\nExamples: 4.5%    0.05   1.2,1.7 
 //@ name=output;type=svoutput;label=Output metric:
 //@ name=percent;type=number;label=% adjustment:;value=10
+//@ show_save_load_buttons=true
 
 
 if ( typeof(macro) == 'unknown' ) {
