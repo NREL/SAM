@@ -154,11 +154,15 @@ for(i=0; i<#land; i++)
 	if(land[i].intersected_area > 0)
 	{
 		list[count].name = land[i].sma_code;
-		list[count].detail = land[i].sma_name;
+		list[count].detail = '';
+		if (land[i].sma_name != null)
+			list[count].detail += land[i].sma_name;
 		if(land[i].label1 != null)
 			list[count].detail += ': ' + land[i].label1;
 		if(land[i].label2 != null)
 			list[count].detail += ': ' + land[i].label2;
+		if(list[count].detail == '')
+			list[count].detail = null;
 		list[count].overlap = land[i].intersected_area / total_area * 100;
 		count++;
 	}
