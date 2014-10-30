@@ -373,44 +373,58 @@ void ResultsViewer::SetDViewState( wxDVPlotCtrlSettings &settings )
 	settings.GetProperty(wxT("tabIndex")).ToLong(&i);
 	SetSelection(i);
 
+	int energy_index = -1, irrad_index = -1;
+	for( size_t i=0;i<m_tsDataSets.size();i++ )
+	{
+		if ( m_tsDataSets[i]->GetMetaData() == "hourly_energy" )
+			energy_index = i;
+		if ( m_tsDataSets[i]->GetMetaData() == "gh" )
+			irrad_index = i;
+	}
+
 	//***TimeSeries Properties***
 	m_timeSeries->SetTopSelectedNames(settings.GetProperty(wxT("tsTopSelectedNames")));
 	m_timeSeries->SetBottomSelectedNames(settings.GetProperty(wxT("tsBottomSelectedNames")));
 
+	// select something by default
+	if ( m_timeSeries->GetNumberOfSelections() == 0 )
+		m_timeSeries->SelectDataSetAtIndex( energy_index );
+
 	//Set min/max after setting plots to make sure there is an axis to set.
 	double min, max;
-	settings.GetProperty(wxT("tsAxisMin")).ToDouble(&min);
-	settings.GetProperty(wxT("tsAxisMax")).ToDouble(&max);
-	m_timeSeries->SetViewMin(min);
-	m_timeSeries->SetViewMax(max);
+	if ( settings.GetProperty(wxT("tsAxisMin")).ToDouble(&min) )
+		m_timeSeries->SetViewMin(min);
+	if ( settings.GetProperty(wxT("tsAxisMax")).ToDouble(&max) )
+		m_timeSeries->SetViewMax(max);
 
-	
 	m_dailySeries->SetTopSelectedNames(settings.GetProperty(wxT("tsDailyTopSelectedNames")));
 	m_dailySeries->SetBottomSelectedNames(settings.GetProperty(wxT("tsDailyBottomSelectedNames")));
 	
-	settings.GetProperty(wxT("tsDailyAxisMin")).ToDouble(&min);
-	settings.GetProperty(wxT("tsDailyAxisMax")).ToDouble(&max);
-	m_dailySeries->SetViewMin(min);
-	m_dailySeries->SetViewMax(max);
-	
+	if ( settings.GetProperty(wxT("tsDailyAxisMin")).ToDouble(&min) )
+		m_dailySeries->SetViewMin(min);
+	if ( settings.GetProperty(wxT("tsDailyAxisMax")).ToDouble(&max) )
+		m_dailySeries->SetViewMax(max);
 
+	if ( m_dailySeries->GetNumberOfSelections() == 0 )
+		m_dailySeries->SelectDataSetAtIndex( energy_index );	
+
+
+	if ( settings.GetProperty(wxT("dmapZMin")).ToDouble(&min) ) m_dMap->SetZMin(min);
+	if ( settings.GetProperty(wxT("dmapZMax")).ToDouble(&max) ) m_dMap->SetZMax(max);
+		
+	if ( settings.GetProperty(wxT("dmapXMin")).ToDouble(&min) ) m_dMap->SetXMin(min);
+	if ( settings.GetProperty(wxT("dmapXMax")).ToDouble(&max) ) m_dMap->SetXMax(max);
+	
+	if ( settings.GetProperty(wxT("dmapYMin")).ToDouble(&min) ) m_dMap->SetYMin(min);
+	if ( settings.GetProperty(wxT("dmapYMax")).ToDouble(&max) ) m_dMap->SetYMax(max);
+	
 	//***DMap Tab Properties***
 	m_dMap->SetCurrentDataName(settings.GetProperty(wxT("dmapCurrentName")));
 	m_dMap->SetColourMapName(settings.GetProperty(wxT("dmapColourMap"))); //Do this before setting z min/max.
-
-	settings.GetProperty(wxT("dmapZMin")).ToDouble(&min);
-	settings.GetProperty(wxT("dmapZMax")).ToDouble(&max);
-	m_dMap->SetZMin(min);
-	m_dMap->SetZMax(max);
-	settings.GetProperty(wxT("dmapXMin")).ToDouble(&min);
-	settings.GetProperty(wxT("dmapXMax")).ToDouble(&max);
-	m_dMap->SetXMin(min);
-	m_dMap->SetXMax(max);
-	settings.GetProperty(wxT("dmapYMin")).ToDouble(&min);
-	settings.GetProperty(wxT("dmapYMax")).ToDouble(&max);
-	m_dMap->SetYMin(min);
-	m_dMap->SetYMax(max);
-
+	if ( m_dMap->GetNumberOfSelections() == 0 )
+	{
+		m_dMap->SelectDataSetAtIndex( energy_index );
+	}
 
 	//***Monthly Profile Properties***
 	m_profilePlots->SetMonthIndexSelected(0, settings.GetProperty(wxT("profileJanSelected")) == wxT("1"));
@@ -429,6 +443,9 @@ void ResultsViewer::SetDViewState( wxDVPlotCtrlSettings &settings )
 
 	m_profilePlots->SetSelectedNames(settings.GetProperty(wxT("profileSelectedNames")));
 
+	if ( m_profilePlots->GetNumberOfSelections() == 0 )
+		m_profilePlots->SelectDataSetAtIndex( energy_index );
+
 	//***Statistics Table Properties:  None
 
 	//***PDF CDF Tab Properties***
@@ -446,17 +463,25 @@ void ResultsViewer::SetDViewState( wxDVPlotCtrlSettings &settings )
 	settings.GetProperty(wxT("pnCdfYMax")).ToDouble(&yMax);
 	m_pnCdf->SetYMax(yMax);
 
+	if ( m_pnCdf->GetNumberOfSelections() == 0 )
+		m_pnCdf->SelectDataSetAtIndex( energy_index );
+
 
 	//*** DURATION CURVE PROPERTIES ***
 	m_durationCurve->SetSelectedNames(settings.GetProperty(wxT("dcSelectedNames")), true);
+	if ( m_durationCurve->GetNumberOfSelections() == 0 )
+		m_durationCurve->SelectDataSetAtIndex( energy_index );
 	
-	
+
 	//*** SCATTER PLOT PROPERTIES ***
 	m_scatterPlot->SetXSelectedName(settings.GetProperty(wxT("scatterXDataName")));
 	m_scatterPlot->SetYSelectedNames(settings.GetProperty(wxT("scatterYDataNames")));
+	if ( !m_scatterPlot->IsAnythingSelected() && irrad_index >= 0 )
+	{
+		m_scatterPlot->SelectXDataAtIndex( irrad_index );
+		m_scatterPlot->SelectYDataAtIndex( energy_index );
+	}
 	
-	Refresh();
-	Update();
 }
 
 	
@@ -705,10 +730,11 @@ void ResultsViewer::Setup( Simulation *sim )
 						group = wxString::Format( "%lg Minute Data", 60.0/steps_per_hour );
 
 					wxLogStatus("Adding time series dataset: %d len, %lg time step", (int)n, 1.0/steps_per_hour );
-					AddDataSet( new TimeSeries( p, n, 1.0/steps_per_hour,
+					TimeSeries *tsd = new TimeSeries( p, n, 1.0/steps_per_hour,
 						m_sim->GetLabel(vars[i]), 
-						m_sim->GetUnits(vars[i])), 
-						group );
+						m_sim->GetUnits(vars[i]));
+					tsd->SetMetaData( vars[i] ); // save the variable name in the meta field for easy lookup later
+					AddDataSet( tsd, group );
 				}
 			}
 		}
