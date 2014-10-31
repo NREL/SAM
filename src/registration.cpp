@@ -1259,24 +1259,35 @@ SamRegistration::SamRegistration( wxWindow *parent )
 
 bool SamRegistration::ShowNotice()
 {
-	wxString text( "Information about registration:\n\n"
-		"Registration is required for continued use of the free SAM software. It's important "
-		"for NREL to have an up-to-date email address so that we can contact "
-		"you regarding important updates to the software as they become available.\n\n"
-		"In addition, NREL collects information on who uses SAM and how frequently it is used to "
-		"justify requests for continued project funding from the Department of Energy "
-		"so that we can provide you with new features, bug fixes, and direct user support. "
-		"Your email address, registration key, computer's IP address, and the number of "
-		"times you have started each version of the SAM software is recorded in a "
-		"secure database on NREL's servers.  We do not collect any information on which models "
-		"you are using, or what input values you have entered. "
-		"Although we share your privacy concerns, "
-		"this information is essential to demonstrate SAM's positive impact on the community "
-		"to our sponsors.  We appreciate your understanding.\n\n"
-		"If you feel unable to agree to these terms, press Cancel, and please contact user support "
-		"at sam.support@nrel.gov so that we may learn more about your specific situation.");
+	wxString text( "To use SAM, you must register your " 
+	"copy of the software by providing NREL with a valid "
+	"email address and requesting a registration key. " 
+	"After registering, each time you start SAM, it " 
+	"verifies your  key and sends the data described " 
+	"below to an NREL database. NREL uses a secure " 
+	"connection (https) and servers to send and store "
+	"the information.\n\n" 
+    "NREL uses this data to determine the number of "
+	"people using the model, and approximately where they "
+    "are using it. This information helps the laboratory "
+	"demonstrate SAM's value to the U.S. Department of " 
+	"Energy and other sponsors who fund its development " 
+	"and make it possible for you to use the model for "
+	"free.\n\n"
+    "NREL sends announcements to your email address "
+	"about software updates a few times per year, and "
+	"stores the following data about your use of SAM:\n"
+    " • Your computer's public IP address for location information\n"
+    " • SAM version number and your operating system \n"
+    " • Date and time you registered and last started SAM \n"
+    " • Number of times you start SAM\n\n"
+    "You can run SAM up to 15 times without verifying your key.\n\n"
+    "If you do not want to share this information with NREL, "
+	"click Cancel to stop the registration process. "
+    "You can email SAM support at sam.support@nrel.gov "
+	"with comments or questions.");
 
-	wxDialog dlg( NULL, wxID_ANY, "Notice" );
+	wxDialog dlg( NULL, wxID_ANY, "Registration Information" );
 	dlg.SetBackgroundColour( *wxWHITE );
 	wxStaticText *tt = new wxStaticText( &dlg, wxID_ANY, text );
 	tt->SetFont( wxMetroTheme::Font( wxMT_NORMAL, 11 ) );
