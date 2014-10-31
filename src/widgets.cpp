@@ -219,7 +219,7 @@ public:
 		m_numVals = 0;
 		if ( with_resize_options )
 		{
-			tools->Add( new wxStaticText( this, wxID_ANY, "# of values:"), 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
+			tools->Add( new wxStaticText( this, wxID_ANY, "Number of values:"), 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
 			tools->Add( m_numVals = new wxNumericCtrl( this, ID_numValueCount, 50, wxNumericCtrl::INTEGER ), 0, wxALL, 3 );
 		}
 		
@@ -301,7 +301,7 @@ public:
 
 	void OnHelp( wxCommandEvent & )
 	{
-		SamApp::ShowHelp( "annual_schedules" );
+		SamApp::ShowHelp( "edit_schedule" );
 	}
 
 	wxExtGridCtrl *GetGrid() { return m_grid; }
