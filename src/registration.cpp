@@ -1272,7 +1272,7 @@ bool SamRegistration::ShowNotice()
     "are using it. This information helps the laboratory "
 	"demonstrate SAM's value to the U.S. Department of " 
 	"Energy and other sponsors who fund its development " 
-	"and make it possible for you to use the it for free.\n\n"
+	"and make it possible for you to use it for free.\n\n"
     "NREL sends announcements to your email address "
 	"about software updates a few times per year, and "
 	"stores the following data about your use of SAM:\n"
