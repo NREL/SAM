@@ -78,8 +78,9 @@ void P50P90Form::OnSimulate( wxCommandEvent & )
 			continue; 
 
 		long yrval = -1;
-		int pos1 = file.Find('_');
+		//int pos1 = file.Find('_');
 		int pos2 = file.Find('.');
+		int pos1 = pos2 - 5;
 		if (pos1 != wxNOT_FOUND && pos2 != wxNOT_FOUND
 			&& pos2 > pos1
 			&& file.Mid( pos1+1, pos2-pos1-1 ).ToLong(&yrval)
