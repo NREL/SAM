@@ -1,16 +1,15 @@
 #include "parametric_qs.h"
 #include "parametric.h"
-#include "case.h"
+#include "main.h"
 #include "casewin.h"
+
+#include <wex/utils.h>
 
 
 enum {
   ID_GroupBox1,
   ID_Label3,
   ID_grpOutline,
-  ID_btnMoveDown,
-  ID_btnMoveUp,
-  ID_btnLinkages,
   ID_lstValues,
   ID_lstVariables,
   ID_Label1,
@@ -27,48 +26,51 @@ BEGIN_EVENT_TABLE( Parametric_QS, wxPanel )
 	EVT_LISTBOX( ID_lstVariables, Parametric_QS::OnVariableSelect )
 	EVT_LISTBOX_DCLICK( ID_lstVariables, Parametric_QS::OnVarDblClick)
 	EVT_BUTTON( ID_btnEditValues, Parametric_QS::OnEditValues )
-	EVT_BUTTON( ID_btnLinkages, Parametric_QS::OnEditLinkages)
-	EVT_BUTTON( ID_btnMoveUp, Parametric_QS::OnMoveUpDown)
-	EVT_BUTTON( ID_btnMoveDown, Parametric_QS::OnMoveUpDown)
 	EVT_LISTBOX_DCLICK( ID_lstValues, Parametric_QS::OnValueDblClick)
-	EVT_LISTBOX( ID_lstValues, Parametric_QS::OnValueSelection)
 END_EVENT_TABLE()
 
-Parametric_QS::Parametric_QS(wxWindow *parent, ParametricData &par, int id)
-: wxPanel(parent, id), m_par(par)
+Parametric_QS::Parametric_QS(wxWindow *parent, Case *c)
+: wxPanel(parent), m_case(c)
 {
-	mCase = NULL;
-//	SetClientSize(787, 272);
-	SetClientSize(600, 272);
-	grpOutline = new wxStaticBox(this, ID_grpOutline, "Parametric Simulation Setup", wxPoint(6, 6), wxSize(578, 260));
-	btnAddVar = new wxButton(this, ID_btnAddVar, "Add", wxPoint(105, 27), wxSize(80, 21));
-	btnRemoveVar = new wxButton(this, ID_btnRemoveVar, "Remove", wxPoint(189, 27), wxSize(80, 21));
-	btnEditValues = new wxButton(this, ID_btnEditValues, "Edit", wxPoint(492, 27), wxSize(80, 21));
+	btnAddVar = new wxButton(this, ID_btnAddVar, "Add");
+	btnRemoveVar = new wxButton(this, ID_btnRemoveVar, "Remove");
+	btnEditValues = new wxButton(this, ID_btnEditValues, "Edit");
 	wxArrayString _data_lstVariables;
 
-	lstVariables = new wxListBox(this, ID_lstVariables, wxPoint(15, 54), wxSize(275, 114), _data_lstVariables, wxLB_SINGLE);
+	lstVariables = new wxListBox(this, ID_lstVariables, wxPoint(-1, -1), wxSize(-1, -1), _data_lstVariables, wxLB_SINGLE);
 	wxArrayString _data_lstValues;
-	lstValues = new wxListBox(this, ID_lstValues, wxPoint(297, 54), wxSize(275, 114), _data_lstValues, wxLB_SINGLE);
-	btnLinkages = new wxButton(this, ID_btnLinkages, "Setup Linkages...", wxPoint(15, 174), wxSize(152, 21));
-	btnMoveUp = new wxButton(this, ID_btnMoveUp, "Up", wxPoint(456, 174), wxSize(56, 21));
-	btnMoveDown = new wxButton(this, ID_btnMoveDown, "Down", wxPoint(516, 174), wxSize(56, 21));
+	lstValues = new wxListBox(this, ID_lstValues, wxPoint(-1, -1), wxSize(-1, -1), _data_lstValues, wxLB_SINGLE);
+
+	Label1 = new wxStaticText(this, ID_Label1, "Variables:");
+	Label2 = new wxStaticText(this, ID_Label2, "Selected Variable Values:");
 
 
-	Label1 = new wxStaticText(this, ID_Label1, "Variables:", wxPoint(15, 27), wxSize(86, 21));
-	Label2 = new wxStaticText(this, ID_Label2, "Selected Variable Values:", wxPoint(297, 27), wxSize(167, 21));
-	mCaseWin = NULL;
-	mCase = NULL;
-	m_par = NULL;
-	btnMoveUp->Enable(false);
-	btnMoveDown->Enable(false);
+	wxFlexGridSizer *fgs = new wxFlexGridSizer(2, 2, 5, 25);
+
+	wxBoxSizer *bsvars = new wxBoxSizer(wxHORIZONTAL);
+	bsvars->Add(Label1, 0, wxALIGN_CENTER, 0);
+	bsvars->AddStretchSpacer();
+	bsvars->Add(btnAddVar, 0);
+	bsvars->Add(btnRemoveVar, 0);
+
+	wxBoxSizer *bsvals = new wxBoxSizer(wxHORIZONTAL);
+	bsvals->Add(Label2, 0, wxALIGN_CENTER, 0);
+	bsvals->AddStretchSpacer();
+	bsvals->Add(btnEditValues, 0);
+
+	fgs->Add(bsvars, 3, wxEXPAND | wxALL, 0);
+	fgs->Add(bsvals, 3, wxEXPAND | wxALL, 0);
+	fgs->Add(lstVariables, 3, wxEXPAND | wxALL, 0);
+	fgs->Add(lstValues, 3, wxEXPAND | wxALL, 0);
+
+	fgs->AddGrowableCol(0, 1);
+	fgs->AddGrowableCol(1, 1);
+	fgs->AddGrowableRow(1, 1);
+
+	SetSizer(fgs);
+
 }
 
-void Parametric_QS::InitForm( CaseWindow *cwin, ParametricData &par)
-{
-	mCaseWin = cwin;
-	mCase = cwin? cwin->GetCase() : NULL;
-	m_par = par;
-}
 
 void Parametric_QS::UpdateFromParametricData()
 {
@@ -76,14 +78,10 @@ void Parametric_QS::UpdateFromParametricData()
 	RefreshValuesList();
 }
 
-ParametricData &Parametric_QS::GetParametricData()
-{
-	return m_par;
-}
 
 void Parametric_QS::OnEditValues(wxCommandEvent &evt)
 {
-	if (!mCaseWin || !mCase)// || m_par.)
+	if ( !m_case)
 		return;
 
 	int idx = lstVariables->GetSelection();
@@ -93,10 +91,10 @@ void Parametric_QS::OnEditValues(wxCommandEvent &evt)
 	{
 		/*
 		wxArrayString values = m_par.Variables[idx].VarValues;
-		VarInfo *varinfo = mCase->GetSymTab()->Lookup( m_par->Variables[idx].VarName );
+		VarInfo *varinfo = m_case->GetSymTab()->Lookup( m_par->Variables[idx].VarName );
 		if (varinfo)
 		{
-			if (mCaseWin->ShowEditValuesDialog(
+			if (m_caseWin->ShowEditValuesDialog(
 					"Edit Parametric Values for '" + varinfo->GetLabel() +
 					((varinfo->GetUnits()!="") ? (" ("+varinfo->GetUnits()+")'") :"'"),
 					values, varinfo) )
@@ -109,103 +107,17 @@ void Parametric_QS::OnEditValues(wxCommandEvent &evt)
 	}
 }
 
-void Parametric_QS::OnEditLinkages(wxCommandEvent &evt)
-{
-	if (!mCase)// || !m_par)
-		return;
 
-	wxArrayString names;
-	wxArrayString labels;
-
-	/*
-	for (int i=0;i<m_par->Variables.count();i++)
-	{
-		names.Add( m_par->Variables[i].VarName );
-
-		VarInfo *v = mCase->GetSymTab()->Lookup( names[i] );
-		if (!v)
-		{
-			labels.Add("<<Label Lookup Error>>");
-			continue;
-		}
-		if (v->GetContext() != "")
-			labels.Add( v->GetContext() + "/" + v->GetLabel() );
-		else
-			labels.Add( v->GetLabel() );
-	}
-
-	mCaseWin->ShowSelectVariableDialog("Choose Linked Parametric Variables",
-		names, labels, m_par->Linkages, true);
-
-	if (m_par->Linkages.Count() < 2)
-		m_par->Linkages.Clear();
-*/
-
-	RefreshVariableList();
-	RefreshValuesList();
-
-}
-
-void Parametric_QS::OnMoveUpDown(wxCommandEvent &evt)
-{
-	if (!mCaseWin || !mCase )//|| !m_par)
-		return;
-
-	int n_vsel = lstVariables->GetSelection();
-	if (n_vsel < 0)
-		return;
-	/*
-	VarValueList &list = m_par->Variables[n_vsel];
-
-	if (evt.GetId() == ID_btnMoveUp)
-	{
-		if (lstValues->GetCount() >= 2)
-		{
-			int isel = lstValues->GetSelection();
-			if (isel >= 1)
-			{
-				wxString tmp = list.VarValues[isel - 1];
-				list.VarValues[isel - 1] = list.VarValues[isel];
-				list.VarValues[isel] = tmp;
-
-				RefreshValuesList();
-				lstValues->SetSelection( isel - 1 );
-			}
-		}
-	}
-	else // move down
-	{
-		if (lstValues->GetCount() >= 2)
-		{
-			int isel = lstValues->GetSelection();
-			if (isel <= (int)lstValues->GetCount() - 2 && isel >= 0)
-			{
-				wxString tmp = list.VarValues[ isel + 1 ];
-				list.VarValues[isel + 1] = list.VarValues[isel];
-				list.VarValues[isel] = tmp;
-
-				RefreshValuesList();
-				lstValues->SetSelection( isel + 1 );
-			}
-		}
-	}
-	*/
-}
 
 void Parametric_QS::OnValueDblClick(wxCommandEvent &evt)
 {
 	OnEditValues(evt);
 }
 
-void Parametric_QS::OnValueSelection(wxCommandEvent &evt)
-{
-	btnMoveUp->Enable( lstValues->GetSelection() >= 0 );
-	btnMoveDown->Enable( lstValues->GetSelection() >= 0 );
-}
 
 void Parametric_QS::OnRemoveVariable(wxCommandEvent &evt)
 {
-	if (!mCaseWin || !mCase)// || !m_par)
+	if ( !m_case)
 		return;
 
 	int idx = lstVariables->GetSelection();
@@ -225,7 +137,7 @@ void Parametric_QS::OnRemoveVariable(wxCommandEvent &evt)
 		*/
 	}
 
-	//mCaseWin->GetMDIParent()->FileModified();
+	//m_caseWin->GetMDIParent()->FileModified();
 	//UpdateFromSimInfo();
 
 	if (lstVariables->GetCount() > 0)
@@ -234,60 +146,45 @@ void Parametric_QS::OnRemoveVariable(wxCommandEvent &evt)
 
 void Parametric_QS::OnAddVariable(wxCommandEvent &evt)
 {
-	if (!mCaseWin || !mCase )//|| !m_par)
+	if ( !m_case )
 		return;
 
-	int i=0;
-	wxArrayString varlist;
+	wxArrayString names, labels;
+	wxString case_name(SamApp::Project().GetCaseName(m_case));
 
-/*	for (i=0;i<m_par->Variables.count();i++)
-		varlist.Add( m_par->Variables[i].VarName );
+	ConfigInfo *ci = m_case->GetConfiguration();
+	VarInfoLookup &vil = ci->Variables;
 
-	if (mCaseWin->ChooseParametricsDialog( varlist ))
+	for (VarInfoLookup::iterator it = vil.begin(); it != vil.end(); ++it)
 	{
-		// remove any parametrics in paramsiminfo that are no longer in list
-		while (i<m_par->Variables.count())
+		wxString name = it->first;
+		VarInfo &vi = *(it->second);
+
+		// update to select only "Parametric" variables
+		if (vi.Flags & VF_PARAMETRIC)
 		{
-			if ( varlist.Index( m_par->Variables[i].VarName ) < 0 )
-				m_par->Variables.remove(i);// remove, do not increment i
-			else
-				i++;
-		}
+			wxString label = vi.Label;
+			if (label.IsEmpty())
+				label = "{ " + name + " }";
+			if (!vi.Units.IsEmpty())
+				label += " (" + vi.Units + ")";
+			if (!vi.Group.IsEmpty())
+				label = vi.Group + "/" + label;
 
-		bool v_added = false;
-		// add any parametrics not already in paramsimlist
-		for (i=0;i<(int)varlist.Count();i++)
-		{
-			bool found = false;
-			for (int j=0;j<m_par->Variables.count();j++)
-				if ( m_par->Variables[j].VarName == varlist[i] )
-					found = true;
-
-			if (!found)
-			{
-				VarValueList x;
-				x.VarName = varlist[i];
-				VarInfo *vptr = mCase->GetSymTab()->Lookup( varlist[i] );
-				if (!vptr)
-					continue;
-
-				x.VarValues.Add( vptr->ValToString() );
-
-				m_par->Variables.append( x );
-				v_added = true;
-			}
-		}
-
-		mCaseWin->GetMDIParent()->FileModified();
-		RefreshVariableList();
-
-		if (v_added)
-		{
-			lstVariables->Select( lstVariables->GetCount()-1 );
-			RefreshValuesList();
+			labels.Add(label);
+			names.Add(name);
 		}
 	}
-	*/
+
+	wxSortByLabels(names, labels);
+	SelectVariableDialog dlg(this, "Select Inputs");
+	dlg.SetItems(names, labels);
+	dlg.SetCheckedNames(m_input_names);
+	if (dlg.ShowModal() == wxID_OK)
+	{
+		m_input_names = dlg.GetCheckedNames();
+		RefreshVariableList();
+	}
 }
 
 
@@ -305,7 +202,7 @@ void Parametric_QS::OnVarDblClick(wxCommandEvent &evt)
 
 void Parametric_QS::RefreshValuesList()
 {
-	if (!mCase)// || !m_par)
+	if (!m_case)
 		return;
 
 
@@ -347,72 +244,45 @@ void Parametric_QS::RefreshValuesList()
 wxArrayString Parametric_QS::GetValuesList(const wxString &varname)
 {
 	wxArrayString list;
-	int i;
-	/*
-	VarValueList *item = NULL;
-	for (i=0;i<(int)m_par->Variables.count();i++)
-		if (m_par->Variables[i].VarName == varname)
-			item = & m_par->Variables[i];
-
-	if (!item)
-		return list;
-
-	VarInfo *v = mCase->GetSymTab()->Lookup( item->VarName );
-
-	if (v)
+	for (int i = 0; i < m_input_values.size(); i++)
 	{
-		if (v->GetType() == VAR_INTEGER && v->GetExpression() != "")
+		if (m_input_values[i].Count() > 0 && m_input_values[i].Item(0) == varname)
 		{
-			wxArrayString items = Split(v->GetExpression(), ",");
-			for (i=0;i<(int)item->VarValues.Count();i++)
-			{
-				int item_i = atoi( item->VarValues[i].c_str() );
-				if (item_i >= 0 && item_i < (int)items.Count())
-					list.Add( items[item_i] );
-				else
-					list.Add( item->VarValues[i] );
-			}
-		}
-		else
-		{
-			list = item->VarValues;
+			for (int j = 1; j < m_input_values[i].Count(); j++)
+				list.Add(m_input_values[i].Item(j));
+			break;
 		}
 	}
-	*/
 	return list;
 }
 
 void Parametric_QS::RefreshVariableList()
 {
-	if (!mCase)// || !m_par)
+	if (!m_case)
 		return;
 
 	lstVariables->Freeze();
 	lstVariables->Clear();
-	/*
-	for (int i=0;i<m_par->Variables.count();i++)
+	
+	for (int i=0;i<m_input_names.Count();i++)
 	{
-		VarInfo *v = mCase->GetSymTab()->Lookup( m_par->Variables[i].VarName );
-		if (!v)
+		VarInfo *vi = m_case->Variables().Lookup(m_input_names[i]);
+		if (!vi)
 		{
 			lstVariables->Append("<<Label Lookup Error>>");
 			continue;
 		}
 		wxString suffix = "";
 
-		if (v->GetUnits() != "")
-			suffix += " (" + v->GetUnits() + ") ";
+		if (!vi->Units.IsEmpty())
+			suffix += " (" + vi->Units + ") ";
 
-		if (m_par->Linkages.Index( m_par->Variables[i].VarName ) >= 0)
-			suffix = " [Linked]";
-
-		if (v->GetContext() != "")
-			lstVariables->Append( v->GetContext() + "/" + v->GetLabel() + suffix );
+		if (!vi->Group.IsEmpty())
+			lstVariables->Append(vi->Group + "/" + vi->Label + suffix);
 		else
-			lstVariables->Append( v->GetLabel() + suffix);
+			lstVariables->Append( vi->Label + suffix);
 	}
-	*/
-	btnLinkages->Enable( lstVariables->GetCount() > 1 );
+	
 
 	lstVariables->Thaw();
 
@@ -427,21 +297,18 @@ BEGIN_EVENT_TABLE( Parametric_QSDialog, wxDialog )
 	EVT_BUTTON(ID_Cancel, Parametric_QSDialog::OnCommand)
 	END_EVENT_TABLE()
 
-Parametric_QSDialog::Parametric_QSDialog(wxWindow *parent, const wxString &title, Case *c)
-	 : wxDialog( parent, -1, title
-	)
+	Parametric_QSDialog::Parametric_QSDialog(wxWindow *parent, const wxString &title, Case *c)
+	: wxDialog(parent, -1, title, wxDefaultPosition, wxDefaultSize, wxRESIZE_BORDER | wxDEFAULT_DIALOG_STYLE)
 {
-	ParametricData par(c);// set par based on case
-	mPanel = new Parametric_QS(this,par);
-//	wxSize _sz = mPanel->GetClientSize();
-//	SetClientSize(_sz.GetWidth(), _sz.GetHeight());
+//	ParametricData par(c);// set par based on case
+	mPanel = new Parametric_QS(this, c);
 	wxBoxSizer *button_sizer = new wxBoxSizer(wxHORIZONTAL);
 	button_sizer->AddStretchSpacer();
-	button_sizer->Add(new wxButton(this, ID_OK, "OK"), 0, wxALIGN_RIGHT, 2);
-	button_sizer->Add(new wxButton(this, ID_Cancel, "Cancel"), 0, wxALIGN_RIGHT, 2);
+	button_sizer->Add(new wxButton(this, ID_OK, "OK"));
+	button_sizer->Add(new wxButton(this, ID_Cancel, "Cancel"));
 	wxBoxSizer *main_sizer = new wxBoxSizer(wxVERTICAL);
-	main_sizer->Add(mPanel);
-	main_sizer->Add(button_sizer);
+	main_sizer->Add(mPanel, 2, wxALL | wxEXPAND, 10);
+	main_sizer->Add(button_sizer, 0, wxALIGN_RIGHT | wxRIGHT | wxBOTTOM, 10);
 	SetSizerAndFit(main_sizer);
 }
 

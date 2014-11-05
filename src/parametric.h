@@ -6,7 +6,6 @@
 #include <wx/grid.h>
 
 #include <wex/numeric.h>
-//#include <wex/extgrid.h>
 
 #include "simulation.h"
 #include "object.h"
