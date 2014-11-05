@@ -802,12 +802,6 @@ void ParametricViewer::ClearResults()
 {
 	RemoveAllPlots();
 	m_grid_data->ClearResults();
-	//m_input_names.Clear();
-	//m_output_names.Clear();
-	//m_grid_data->UpdateInputs(m_input_names);
-	//m_grid_data->UpdateOutputs(m_output_names);
-	//m_grid_data->UpdateNumberRows(0);
-	//UpdateNumRuns();
 }
 
 void ParametricViewer::SelectInputs()
@@ -848,7 +842,6 @@ void ParametricViewer::SelectInputs()
 		RemoveAllPlots();
 		m_input_names = dlg.GetCheckedNames();
 		m_grid_data->UpdateInputs(m_input_names);
-		//RunSimulations();
 	}
 }
 

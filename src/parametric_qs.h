@@ -3,24 +3,14 @@
 
 #include <wx/wx.h>
 #include <wex/numeric.h>
-
-class Case;
-class CaseWindow;
-class ParametricData;
+#include <vector>
+#include "case.h"
 
 class Parametric_QS : public wxPanel
 {
 public:
-	Parametric_QS(wxWindow *parent, ParametricData &par, int id = -1);
-//	virtual ~Parametric_QS();
+	Parametric_QS(wxWindow *parent, Case *c);
 
-	wxStaticBox *GroupBox1;
-	wxNumericCtrl *numMaxCpus;
-	wxStaticText *Label3;
-	wxStaticBox *grpOutline;
-	wxButton *btnMoveDown;
-	wxButton *btnMoveUp;
-	wxButton *btnLinkages;
 	wxListBox *lstValues;
 	wxListBox *lstVariables;
 	wxCheckBox *chkEnable;
@@ -37,17 +27,12 @@ public:
 	ParametricData &GetParametricData();
 
 	void OnEnableChange(wxCommandEvent &evt);
-//	void OnRemoveSim(wxCommandEvent &evt);
 	void OnRemoveVariable(wxCommandEvent &evt);
 	void OnAddVariable(wxCommandEvent &evt);
 	void OnVariableSelect(wxCommandEvent &evt);
 	void OnVarDblClick(wxCommandEvent &evt);
 	void OnEditValues(wxCommandEvent &evt);
-	void OnEditLinkages(wxCommandEvent &evt);
-	void OnMoveUpDown(wxCommandEvent &evt);
 	void OnValueDblClick(wxCommandEvent &evt);
-	void OnValueSelection(wxCommandEvent &evt);
-//	void OnNumCpusChange( wxCommandEvent &evt);
 
 	void RefreshVariableList();
 	void RefreshValuesList();
@@ -55,10 +40,9 @@ public:
 	wxArrayString GetValuesList(const wxString &varname);
 
 private:
-	CaseWindow *mCaseWin;
-	Case *mCase;
-	ParametricData &m_par;
-
+	Case *m_case;
+	wxArrayString m_input_names;
+	std::vector<wxArrayString> m_input_values;
 	DECLARE_EVENT_TABLE()
 };
 
