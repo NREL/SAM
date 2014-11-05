@@ -91,8 +91,8 @@ void P50P90Form::OnSimulate( wxCommandEvent & )
 		}
 	}
 	
-	if (years.size() < 13) {
-		wxMessageBox("Insufficient number of years of weather data found: at least 13 required for P50/P90 analysis.");
+	if (years.size() < 10) {
+		wxMessageBox("It is not possible to empirically determine the P90 value with less than 10 years of weather data.");
 		return;
 	}
 
