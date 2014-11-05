@@ -1,5 +1,4 @@
 #include <wx/dcbuffer.h>
-#include <wx/numformatter.h>
 #include <wx/clipbrd.h>
 #include <wx/busyinfo.h>
 #include <wx/ffile.h>
@@ -154,8 +153,7 @@ void LossDiagramObject::Render( wxPageOutputDevice &dv )
 			
 			dv.Font( face, points+1, true, false );
 			dv.Text( x+0.1f, y+0.05f, li.text );
-			dv.Text( x+0.1f, y+0.05f+th*1.2f, 
-				wxNumberFormatter::ToString( li.value, 0, wxNumberFormatter::Style_WithThousandsSep ) );
+			dv.Text( x+0.1f, y+0.05f+th*1.2f, wxNumericCtrl::Format( li.value, wxNumericCtrl::REAL, 0, true, wxEmptyString, wxEmptyString ) );
 			dv.Font( face, points, false, false );
 		}
 		else

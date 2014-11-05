@@ -259,7 +259,6 @@ private:
 
 class SamApp : public wxApp
 {
-	wxLocale m_locale;
 public:
 	virtual bool OnInit();
 	virtual int OnExit();

@@ -1415,16 +1415,7 @@ static unordered_map<wxString,ConfigOptions, wxStringHash, wxStringEqual> m_opts
 }
 
 bool SamApp::OnInit()
-{
-	m_locale.Init(); // necessary for comma-formatting
-
-	/*
-	SamLogWindow::Setup();
-	extern void loss_diagram_test();
-	loss_diagram_test();
-	return true;
-	*/
-	
+{	
 	SetAppName( "SAM" );
 	SetVendorName( "NREL" );
 
