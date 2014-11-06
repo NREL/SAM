@@ -2,7 +2,7 @@
 #include "parametric.h"
 #include "main.h"
 #include "casewin.h"
-
+#include "numericvareditform.h"
 #include <wex/utils.h>
 
 
@@ -85,28 +85,160 @@ void Parametric_QS::OnEditValues(wxCommandEvent &evt)
 		return;
 
 	int idx = lstVariables->GetSelection();
-	if (idx < 0)
+	if (idx < 0 || idx > m_input_names.Count())
 		wxMessageBox("No variable selected!");
 	else
 	{
-		/*
-		wxArrayString values = m_par.Variables[idx].VarValues;
-		VarInfo *varinfo = m_case->GetSymTab()->Lookup( m_par->Variables[idx].VarName );
+		wxString name = m_input_names[idx];
+		wxArrayString values = GetValuesList(name);
+		VarInfo *varinfo = m_case->Variables().Lookup(name);
 		if (varinfo)
 		{
-			if (m_caseWin->ShowEditValuesDialog(
-					"Edit Parametric Values for '" + varinfo->GetLabel() +
-					((varinfo->GetUnits()!="") ? (" ("+varinfo->GetUnits()+")'") :"'"),
-					values, varinfo) )
+			if (ShowEditValuesDialog(
+					"Edit Parametric Values for '" + varinfo->Label +
+					((varinfo->Units !="") ? (" ("+ varinfo->Units +")'") :"'"),
+					values, name) )
 			{
-				m_par->Variables[idx].VarValues = values;
+				SetValuesList(name, values);
 				RefreshValuesList();
 			}
 		}
-		*/
+		
 	}
 }
 
+bool Parametric_QS::ShowFixedDomainDialog(const wxString &title,
+	const wxArrayString &names, const wxArrayString &labels, wxArrayString &list,
+	bool expand_all)
+{
+	SelectVariableDialog dlg(this, title);
+	dlg.SetItems(names, labels);
+	dlg.SetCheckedNames(list);
+	if (expand_all)
+		dlg.ShowAllItems();
+
+	if (dlg.ShowModal() == wxID_OK)
+	{
+		wxArrayString names = dlg.GetCheckedNames();
+
+		// remove any from list
+		int i = 0;
+		while (i<(int)list.Count())
+		{
+			if (names.Index(list[i]) < 0)
+				list.RemoveAt(i);
+			else
+				i++;
+		}
+
+		// append any new ones
+		for (i = 0; i<(int)names.Count(); i++)
+		{
+			if (list.Index(names[i]) < 0)
+				list.Add(names[i]);
+		}
+
+
+		return true;
+	}
+	else
+		return false;
+}
+
+
+bool Parametric_QS::ShowEditValuesDialog(const wxString &title,
+	wxArrayString &values, const wxString &varname)
+{
+
+	VarInfo *vi = m_case->Variables().Lookup(varname);
+	if (!vi)
+		return false;
+	VarValue *vv = m_case->Values().Get(varname);
+	if (!vv)
+		return false;
+
+	int i;
+	int vvtype = vv->Type();
+	int vitype = vi->Type;
+
+
+	if (vvtype == VV_NUMBER
+		&& vi->IndexLabels.Count() > 0)
+	{
+		// fixed domain selection (combo box, list, radio choice etc)
+		wxArrayString fixed_items = vi->IndexLabels;
+		wxArrayString cur_items;
+		for (i = 0; i<(int)values.Count(); i++)
+		{
+			int item_i = atoi(values[i].c_str());
+			if (item_i >= 0 && item_i < (int)fixed_items.Count())
+				cur_items.Add(fixed_items[item_i]);
+		}
+
+		if (ShowFixedDomainDialog(title, fixed_items, fixed_items, cur_items, true))
+		{
+			// translate back to integer values
+			values.Clear();
+			for (int i = 0; i<(int)cur_items.Count(); i++)
+				values.Add(wxString::Format("%d", fixed_items.Index(cur_items[i])));
+
+			return true;
+		}
+		else
+			return false;
+	}
+	else if (vitype == VF_LIBRARY)
+	{
+		// get lib item list (climate or lib list)
+		wxArrayString fixed_items;
+		/*
+		if (v->GetExpression() == "climates")
+			fixed_items = LibGetClimateList(mCase->GetSamFile());
+		else if (v->GetExpression() == "wind_files")
+		{
+			wxArrayString ext;
+			ext.Add("srw");
+			fixed_items = LibGetClimateList(mCase->GetSamFile(), ext);
+		}
+		else if (v->GetExpression().Left(7) == "liblist")
+			fixed_items = LibGetEntriesForLibraryType(v->GetExpression().Mid(8));
+
+		return ShowFixedDomainDialog(title, fixed_items, values);
+		*/
+	}
+	else if (vvtype == VV_NUMBER)
+	{
+		return ShowNumericValuesDialog(title, values);
+	}
+	/*
+	else if (vtype == VAR_STRING && v->GetDataSource() == ::VDSRC_INPUT && v->GetExpression() != "")
+	{
+		// STRING combo box
+		wxArrayString fixed_items = Split(v->GetExpression(), ",");
+		return ShowFixedDomainDialog(title, fixed_items, values);
+	}
+	*/
+
+	wxMessageBox("Could not edit values for \"" + vi->Label + "\" (domain type error)");
+	return false;
+}
+
+
+bool Parametric_QS::ShowNumericValuesDialog(const wxString &title,
+	wxArrayString &values)
+{
+	NumericVarEditFormDialog dlg(this, title);
+	NumericVarEditForm *frm = dlg.GetPanel();
+	frm->SetValues(values, false);
+
+	if (dlg.ShowModal() == wxID_OK)
+	{
+		values = frm->lstValues->GetStrings();
+		return true;
+	}
+	else
+		return false;
+}
 
 
 void Parametric_QS::OnValueDblClick(wxCommandEvent &evt)
@@ -125,23 +257,30 @@ void Parametric_QS::OnRemoveVariable(wxCommandEvent &evt)
 		wxMessageBox("No variable selected!");
 	else
 	{
-		/*
-		wxString name = m_par->Variables[idx].VarName;
-		if (m_par->Linkages.Index(name)>=0)
-			m_par->Linkages.Remove(name);
+		wxString name = "";
+		if ((idx > 0) && (idx < m_input_names.Count()))
+			name = m_input_names[idx];
 
-		if (m_par->Linkages.Count() < 2)
-			m_par->Linkages.Clear();
+		for (std::vector<wxArrayString>::iterator it = m_input_values.begin();
+			it != m_input_values.end(); ++it)
+		{
+			if ((*it).Item(0) == name)
+			{
+				m_input_values.erase(it);
+				break;
+			}
+		}
 
-		m_par->Variables.remove( idx );
-		*/
+		m_input_names.RemoveAt(idx);
 	}
 
-	//m_caseWin->GetMDIParent()->FileModified();
-	//UpdateFromSimInfo();
+	RefreshVariableList();
 
 	if (lstVariables->GetCount() > 0)
 		lstVariables->Select(idx-1 >= 0 ? idx-1 : idx );
+
+	RefreshValuesList();
+
 }
 
 void Parametric_QS::OnAddVariable(wxCommandEvent &evt)
@@ -209,37 +348,38 @@ void Parametric_QS::RefreshValuesList()
 	wxArrayString items;
 
 	int idx = lstVariables->GetSelection();
-	/*
-	if (idx >= 0 && idx < m_par->Variables.count())
+	
+	if (idx >= 0 && idx < m_input_names.Count())
 	{
-		items = GetValuesList( m_par->Variables[idx].VarName );
-
-		if (m_par->Linkages.Index( m_par->Variables[idx].VarName ) >= 0)
+		wxString name = m_input_names[idx];
+		items = GetValuesList( name );
+		if (items.Count() == 0) // add base case value
 		{
-			// append to items values of other linkages
-			for (int i=0;i<(int)m_par->Linkages.Count();i++)
-			{
-				if (m_par->Linkages[i] == m_par->Variables[idx].VarName)
-					continue;
-
-				wxArrayString linkitems = GetValuesList( m_par->Linkages[i] );
-
-				for (int k=0;k<(int)items.Count();k++)
-				{
-					if (k < (int)linkitems.Count())
-						items[k] += " [" + linkitems[k] + "]";
-					else
-						items[k] += " [?]";
-				}
-			}
+			wxArrayString values;
+			values.Add(name);
+			wxString val = GetBaseCaseValue(name);
+			values.Add(val);
+			items.Add(val);
+			m_input_values.push_back(values);
 		}
 	}
-	*/
+	
 	lstValues->Freeze();
 	lstValues->Clear();
 	lstValues->Append(items);
 	lstValues->Thaw();
 }
+
+
+wxString Parametric_QS::GetBaseCaseValue(const wxString &varname)
+{
+	wxString val;
+	VarValue *vv = m_case->Values().Get(varname);
+	if (vv)
+		val = vv->AsString();
+	return val;
+}
+
 
 wxArrayString Parametric_QS::GetValuesList(const wxString &varname)
 {
@@ -255,6 +395,81 @@ wxArrayString Parametric_QS::GetValuesList(const wxString &varname)
 	}
 	return list;
 }
+
+void Parametric_QS::SetValuesList(const wxString &varname, const wxArrayString &values)
+{
+	int idx = -1;
+	if (values.Count() <= 0) return;
+	for (int i = 0; i < m_input_values.size(); i++)
+	{
+		if (m_input_values[i].Count() > 0 && m_input_values[i].Item(0) == varname)
+		{
+			idx = i;
+			break;
+		}
+	}
+	wxArrayString vals;
+	vals.Add(varname);
+	for (int i = 0; i < values.Count(); i++)
+		vals.Add(values[i]);
+	if (idx > -1)
+		m_input_values[idx] = vals;
+	else
+		m_input_values.push_back(vals);
+}
+
+void Parametric_QS::UpdateCaseParametricData()
+{
+	ParametricData &par = m_case->Parametric();
+	par.ClearRuns();
+	par.Setup.clear();
+	int num_runs = 1;
+	for (int i = 0; i < m_input_values.size(); i++)
+	{
+		num_runs *= m_input_values[i].Count() - 1;
+	}
+	for (int i = 0; i < m_input_names.Count(); i++)
+	{
+		std::vector<VarValue> vvv;
+		ParametricData::Var pv;
+		for (int num_run = 0; num_run < num_runs; num_run++)
+		{ // add values for inputs only
+			if (VarValue *vv = m_case->Values().Get(m_input_names[i]))
+				vvv.push_back(*vv);
+		}
+		pv.Name = m_input_names[i];
+		pv.Values = vvv;
+		par.Setup.push_back(pv);
+	}
+	for (int num_run =0; num_run < num_runs; num_run++)
+	{
+		Simulation *s = new Simulation(m_case, wxString::Format("Parametric #%d", (int)(num_run + 1)));
+		par.Runs.push_back(s);
+	}
+	// set values - can do this once and set num_runs
+	int repeat = 1;
+	for (int col = 0; col < m_input_names.Count(); col++)
+	{
+		int row = 0;
+		wxArrayString vals = GetValuesList(m_input_names[col]);
+		while (row < num_runs - 1)
+		{
+			for (int j = 0; j < vals.Count(); j++)
+			{
+				for (int k = 0; k < repeat; k++)
+				{
+					wxString value = vals[j];
+					VarValue *vv = &par.Setup[col].Values[row];
+					VarValue::Parse(vv->Type(), value, *vv);
+					row++;
+				}
+			}
+		}
+		repeat *= vals.Count();
+	}
+}
+	
+
 
 void Parametric_QS::RefreshVariableList()
 {
@@ -322,6 +537,7 @@ void Parametric_QSDialog::OnCommand(wxCommandEvent &evt)
 		Destroy();
 		break;
 	case ID_OK:
+		mPanel->UpdateCaseParametricData();
 		EndModal(wxID_OK);
 		Destroy();
 		break;
