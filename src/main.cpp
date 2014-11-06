@@ -1536,11 +1536,11 @@ extern void RegisterReportObjectTypes();
 			}
 			else 
 			{
-				wxString text = ("SAM was not able to verify your registration key with NREL servers.\n"
-					"This can be caused by your internet connection being unavailable, or an invalid proxy. See help for more information.\n\n" );
+				wxString text = ("SAM did not connect to NREL servers to verify your registration key.\n"
+					"This might be caused by a problem with your internet connection. Click Help for details.\n\n" );
 				int nstarts = SamRegistration::AllowedStartsRemaining();
-				if ( nstarts == 1 )	text += "This is the last time you may run SAM without your registration being verified.\n\n";
-				else text += wxString::Format( "You may run SAM %d more times without your registration being verified.\n\n", nstarts );
+				if ( nstarts == 1 )	text += "This is the last time you may run SAM without verifying your registration.\n\n";
+				else text += wxString::Format( "You may run SAM %d more times without your verifying your registration.\n\n", nstarts );
 
 				if ( !SamRegistration::ShowDialog( text, wxString::Format("Skip for now (%d left)", nstarts) ) )
 				{
