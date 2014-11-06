@@ -8,6 +8,8 @@
 
 #include <wex/jsonreader.h>
 
+class AFSearchListBox;
+
 class OpenEI
 {
 public:
@@ -118,7 +120,6 @@ public:
 	void OnEvent(wxCommandEvent &evt);
 	void OnTimer(wxTimerEvent &evt);
 	void UpdateRateList();
-	void UpdateUtilityList();
 	void UpdateRateData();
 
 	void OnCommand( wxCommandEvent & );
@@ -135,15 +136,12 @@ private:
 	wxHyperlinkCtrl *hypOpenEILink;
 	wxHyperlinkCtrl *hypJSONLink;
 	wxTextCtrl *txtRateDescription;
-//	wxExtTextCtrl *txtRateEndDate;
-//	wxExtTextCtrl *txtRateStartDate;
 	wxExtTextCtrl *txtRateName;
-	wxListBox *lstRates;
-	wxListBox *lstUtilities;
+	AFSearchListBox *lstRates;
+	AFSearchListBox *lstUtilities;
 	wxButton *btnClose;
-	wxExtTextCtrl *txtUtilitySearch;
 	wxButton *btnQueryAgain;
-	wxComboBox *cboResCom;
+	wxChoice *cboResCom;
 
 	wxArrayString mUtilityCompanies;
 	std::vector<OpenEI::RateInfo> mUtilityRates;
