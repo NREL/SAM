@@ -1031,17 +1031,53 @@ static bool IsOverride( const char *key )
 	return false;
 }
 
+
+static bool GetFileRegistration( wxString *email, wxString *key )
+{
+static bool s_filereg = false;
+static wxString s_email, s_key;
+static bool first_run = true;
+
+	if ( first_run )
+	{
+		first_run = false;
+
+		wxString regfile( SamApp::GetRuntimePath() + "/registration.txt" );
+		if ( FILE *f = fopen( regfile.c_str(), "r" ) )
+		{
+			char buf[256];
+			fgets( buf, 255, f );
+			s_email = wxString( buf ).Trim().Trim(true);
+			fgets( buf, 255, f );
+			s_key = wxString( buf ).Trim().Trim(true);
+			fclose( f );
+
+			s_filereg = s_email.Find("@")!=wxNOT_FOUND && s_key.Find("-")!=wxNOT_FOUND;
+		}
+	}
+
+	if ( s_filereg )
+	{
+		if ( email ) *email = s_email;
+		if ( key ) *key = s_key;
+	}
+
+	return s_filereg;
+}
+
 wxString SamRegistration::GetEmail()
 {
 	wxString email;
-	SamApp::Settings().Read( "user-email-" + GetVersionAndPlatform(), &email );
+	if ( !GetFileRegistration( &email, 0 ) )
+		SamApp::Settings().Read( "user-email-" + GetVersionAndPlatform(), &email );
 	return email;
 }
 
 wxString SamRegistration::GetKey()
 {
 	wxString key;
-	SamApp::Settings().Read( "user-key-" + GetVersionAndPlatform(), &key );
+	if ( !GetFileRegistration( 0, &key ) )
+		SamApp::Settings().Read( "user-key-" + GetVersionAndPlatform(), &key );
 	return key;
 }
 
@@ -1249,9 +1285,20 @@ SamRegistration::SamRegistration( wxWindow *parent )
 
 	m_email->SetValue( GetEmail() );
 	m_email->SelectNone();
-
+	
 	m_key->SetValue( GetKey() );
 	m_email->SelectNone();
+
+	if ( GetFileRegistration( 0, 0 ) )
+	{
+		m_email->SetForegroundColour( *wxLIGHT_GREY );
+		m_key->SetForegroundColour( *wxLIGHT_GREY );
+		m_email->Enable( false );
+		m_key->Enable( false );
+		m_output->SetValue( "Email and key loaded from registration.txt\n\n"
+			"Edit this file manually to change the email address and key associated with this installation of SAM, "
+			"or delete the file to enable this registration page." );
+	}
 
 	m_close->SetFocus();
 }
