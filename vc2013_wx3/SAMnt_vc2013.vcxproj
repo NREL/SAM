@@ -29,6 +29,7 @@
     <ClCompile Include="..\src\gridsupport.cpp" />
     <ClCompile Include="..\src\lossdiag.cpp" />
     <ClCompile Include="..\src\macro.cpp" />
+    <ClCompile Include="..\src\numericvareditform.cpp" />
     <ClCompile Include="..\src\p50p90.cpp" />
     <ClCompile Include="..\src\parametric.cpp" />
     <ClCompile Include="..\src\parametric_qs.cpp" />
@@ -76,6 +77,7 @@
     <ClInclude Include="..\src\gridsupport.h" />
     <ClInclude Include="..\src\lossdiag.h" />
     <ClInclude Include="..\src\macro.h" />
+    <ClInclude Include="..\src\numericvareditform.h" />
     <ClInclude Include="..\src\p50p90.h" />
     <ClInclude Include="..\src\parametric.h" />
     <ClInclude Include="..\src\parametric_qs.h" />

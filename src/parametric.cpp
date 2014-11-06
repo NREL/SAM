@@ -396,8 +396,17 @@ void ParametricViewer::OnCommand(wxCommandEvent &evt)
 	case ID_QUICK_SETUP:
 		Parametric_QSDialog *pqs = new Parametric_QSDialog(this, "Parametric Quick Setup", m_case);
 		if (pqs->ShowModal() == wxID_OK)
-			// TODO set m_par
-			int a = 0;
+		{
+			m_grid_data->Init();
+			m_num_runs_ctrl->SetValue(m_grid_data->GetNumberRows());
+			m_input_names = m_grid_data->GetInputNames();
+			m_output_names = m_grid_data->GetOutputNames();
+			m_grid_data->UpdateInputs(m_input_names);
+			m_grid_data->UpdateOutputs(m_output_names);
+			m_grid->SetTable(m_grid_data);
+			UpdateNumRuns();
+			UpdateGrid();
+		}
 		break;
 	}
 }
