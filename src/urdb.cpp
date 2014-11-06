@@ -5,7 +5,7 @@
 
 #include "urdb.h"
 #include "simplecurl.h"
-
+#include "widgets.h"
 
 
 static wxString MyGet(const wxString &url)
@@ -482,7 +482,7 @@ enum {
 BEGIN_EVENT_TABLE( OpenEIUtilityRateDialog, wxDialog )
 	EVT_TIMER( wxID_ANY, OpenEIUtilityRateDialog::OnTimer )
 	EVT_BUTTON( ID_btnQueryAgain, OpenEIUtilityRateDialog::OnEvent )
-	EVT_COMBOBOX( ID_cboResCom, OpenEIUtilityRateDialog::OnEvent )
+	EVT_CHOICE( ID_cboResCom, OpenEIUtilityRateDialog::OnEvent )
 	EVT_LISTBOX( ID_lstUtilities, OpenEIUtilityRateDialog::OnEvent )
 	EVT_LISTBOX( ID_lstRates, OpenEIUtilityRateDialog::OnEvent )
 	EVT_TEXT( ID_txtUtilitySearch, OpenEIUtilityRateDialog::OnEvent )
@@ -494,74 +494,48 @@ END_EVENT_TABLE()
 OpenEIUtilityRateDialog::OpenEIUtilityRateDialog(wxWindow *parent, const wxString &title, const wxString &market)
 	 : wxDialog( parent, wxID_ANY, title, wxDefaultPosition, wxSize(800,600), wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER)
 {
-	wxArrayString _data_cboResCom;
-	_data_cboResCom.Add("All Schedules");
-	_data_cboResCom.Add("Residential Only");
-	_data_cboResCom.Add("Commercial Only");
-	_data_cboResCom.Add("Lighting Only");
-	cboResCom = new wxComboBox(this, ID_cboResCom, "All Schedules", wxPoint(513,6), wxSize(127,21), _data_cboResCom, wxCB_READONLY);
+	cboResCom = new wxChoice(this, ID_cboResCom);
+	cboResCom->Append("All Schedules");
+	cboResCom->Append("Residential Only");
+	cboResCom->Append("Commercial Only");
+	cboResCom->Append("Lighting Only");
 
 	int cbo_ndx=0;
-	for (int i=0; i<(int)_data_cboResCom.Count(); i++)
-		if (_data_cboResCom[i].First(market) != wxNOT_FOUND)
+	for (int i=0; i<(int)cboResCom->GetCount(); i++)
+	{
+		if (cboResCom->GetString(i).First(market) != wxNOT_FOUND)
 		{
 			cbo_ndx = i;
 			break;
 		}
+	}
 	cboResCom->SetSelection(cbo_ndx);
 
 
-	btnQueryAgain = new wxButton(this, ID_btnQueryAgain, "Refresh", wxPoint(210,6), wxSize(65,21));
+	btnQueryAgain = new wxButton(this, ID_btnQueryAgain, "Refresh list");
 
-	txtUtilitySearch = new wxExtTextCtrl(this, ID_txtUtilitySearch, "", wxPoint(120,6), wxSize(88,21));
-	txtUtilitySearch->SetForegroundColour( wxColour(0, 0, 0) );
-	txtUtilitySearch->SetBackgroundColour( wxColour(255, 255, 255) );
+	lstUtilities = new AFSearchListBox(this, ID_lstUtilities, wxPoint(9,30), wxSize(266,450));
 
+	lstRates = new AFSearchListBox(this, ID_lstRates, wxPoint(288,30), wxSize(353,144));
 
-	wxArrayString _data_lstUtilities;
-	lstUtilities = new wxListBox(this, ID_lstUtilities, wxPoint(9,30), wxSize(266,450), _data_lstUtilities, wxLB_SINGLE|wxLB_HSCROLL);
-
-	wxArrayString _data_lstRates;
-	lstRates = new wxListBox(this, ID_lstRates, wxPoint(288,30), wxSize(353,144), _data_lstRates, wxLB_SINGLE|wxLB_HSCROLL);
-
-	txtRateName = new wxExtTextCtrl(this, ID_txtRateName,"", wxPoint(375,201), wxSize(253,21));
+	txtRateName = new wxExtTextCtrl(this, ID_txtRateName);
 	txtRateName->SetEditable( false );
 	txtRateName->SetForegroundColour( wxColour(0, 0, 0) );
 	txtRateName->SetBackgroundColour( wxColour(255, 255, 255) );
 
-	/*
-	txtRateStartDate = new wxExtTextCtrl(this, ID_txtRateStartDate, "", wxPoint(375,399), wxSize(253,21));
-	txtRateStartDate->SetEditable( false );
-	txtRateStartDate->SetForegroundColour( wxColour(0, 128, 192) );
-	txtRateStartDate->SetBackgroundColour( wxColour(255, 255, 255) );
-
-	txtRateEndDate = new wxExtTextCtrl(this, ID_txtRateEndDate, "", wxPoint(375,423), wxSize(253,21));
-	txtRateEndDate->SetEditable( false );
-	txtRateEndDate->SetForegroundColour( wxColour(0, 128, 192) );
-	txtRateEndDate->SetBackgroundColour( wxColour(255, 255, 255) );
-	*/
-//	txtRateDescription = new wxTextCtrl(this, ID_txtRateDescription, "", wxPoint(375, 225), wxSize(252, 168), wxTE_MULTILINE | wxTE_DONTWRAP | wxTE_PROCESS_TAB);
-	txtRateDescription = new wxTextCtrl(this, ID_txtRateDescription, "", wxPoint(375, 225), wxSize(252, 255), wxTE_MULTILINE | wxTE_WORDWRAP | wxTE_PROCESS_TAB);
-	txtRateDescription->SetFont(wxFont(10, wxFONTFAMILY_MODERN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, "courier"));
-	txtRateDescription->ChangeValue("");
-	txtRateDescription->SetEditable( false );
-
+	txtRateDescription = new wxTextCtrl(this, ID_txtRateDescription, "", wxPoint(375, 225), wxSize(252, 255), wxTE_MULTILINE | wxTE_WORDWRAP | wxTE_PROCESS_TAB | wxTE_READONLY );
+	
 	hypOpenEILink = new wxHyperlinkCtrl(this, ID_hypOpenEILink, "Go to rate page on OpenEI.org...", "http://en.openei.org/wiki/Gateway:Utilities", wxPoint(294, 450), wxSize(281, 21));
 	hypJSONLink = new wxHyperlinkCtrl(this, ID_hypOpenEILink, "Rate JSON data page...", "http://en.openei.org/wiki/Gateway:Utilities", wxPoint(594, 450), wxSize(281, 21));
 
 	lblStatus = new wxStaticText(this, ID_lblStatus, "", wxPoint(9,486), wxSize(302,21));
 	
-	btnApply = new wxButton(this, ID_btnApply, "Download and apply utility rate", wxPoint(318,486), wxSize(236,21));
-	btnClose = new wxButton(this, ID_btnClose, "Close", wxPoint(558,486), wxSize(80,21));
-	
-	wxBoxSizer *sz_left_top = new wxBoxSizer( wxHORIZONTAL );
-	sz_left_top->Add( new wxStaticText( this, wxID_ANY, "  Search:"), 0, wxALL|wxALIGN_CENTER_VERTICAL, 4 );
-	sz_left_top->Add( txtUtilitySearch, 1, wxALL|wxEXPAND, 4 );
-	sz_left_top->Add( btnQueryAgain, 0, wxALL|wxEXPAND, 4 );
+	btnApply = new wxButton(this, ID_btnApply, "Download and apply utility rate");
+	btnClose = new wxButton(this, ID_btnClose, "Close");
 
 	wxBoxSizer *sz_left = new wxBoxSizer( wxVERTICAL );
-	sz_left->Add( sz_left_top, 0, wxALL|wxEXPAND, 0 );
 	sz_left->Add( lstUtilities, 1, wxALL|wxEXPAND, 0 );
+	sz_left->Add( btnQueryAgain, 0, wxALL, 4 );
 
 
 	wxBoxSizer *sz_right_top = new wxBoxSizer( wxHORIZONTAL );
@@ -626,10 +600,13 @@ void OpenEIUtilityRateDialog::QueryUtilities()
 		return;
 	}
 
-	txtUtilitySearch->SetValue(wxEmptyString);
-	UpdateUtilityList();
+	lstUtilities->Freeze();
+	lstUtilities->Clear();
+	lstUtilities->Append( mUtilityCompanies );
+	lstUtilities->Thaw();
+
 	lblStatus->SetLabel("Ready.");
-	txtUtilitySearch->SetFocus();
+	lstUtilities->SetFocus();
 }
 
 int OpenEIUtilityRateDialog::ShowModal()
@@ -655,37 +632,6 @@ void OpenEIUtilityRateDialog::QueryRates(const wxString &utility_name)
 		lblStatus->SetLabel("Ready.");
 
 	UpdateRateList();
-}
-
-void OpenEIUtilityRateDialog::UpdateUtilityList()
-{
-	
-	lstUtilities->Freeze();
-	lstUtilities->Clear();
-
-	wxString filter = txtUtilitySearch->GetValue().Lower();
-	if (filter.IsEmpty())
-	{
-		lstUtilities->Append( mUtilityCompanies );
-	}
-	else if (filter.Len() <= 2)
-	{
-		for (int i=0;i<(int)mUtilityCompanies.Count();i++)
-		{
-			if (mUtilityCompanies[i].Left( filter.Len() ).Lower() == filter)
-				lstUtilities->Append( mUtilityCompanies[i] );
-		}
-	}
-	else
-	{
-		for (int i = 0; i<(int)mUtilityCompanies.Count(); i++)
-		{
-			if (mUtilityCompanies[i].Lower().Find(filter) >= 0)
-				lstUtilities->Append( mUtilityCompanies[i] );
-		}
-	}
-
-	lstUtilities->Thaw();
 }
 
 void OpenEIUtilityRateDialog::UpdateRateList()
@@ -816,9 +762,6 @@ void OpenEIUtilityRateDialog::OnEvent(wxCommandEvent &evt)
 		break;
 	case ID_btnQueryAgain:
 		QueryUtilities();
-		break;
-	case ID_txtUtilitySearch:
-		UpdateUtilityList();
 		break;
 	}
 }
