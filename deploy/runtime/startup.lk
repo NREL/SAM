@@ -21,7 +21,7 @@ addconfig( 'Generic CSP System', ['Commercial','Single Owner', 'Leveraged Partne
 
 configopt( 'Flat Plate PV',               { 'long_name'='Photovoltaic (detailed)',                'short_name'='Photovoltaic',     'description'='Photovoltaic system using detailed photovoltaic model with separate module and inverter component models' } );
 configopt( 'PVWatts',                     { 'long_name'='Photovoltaic (PVWatts)',                 'short_name'='PVWatts',          'description'='Photovoltaic system using basic NREL PVWatts V5 algorithm' } );
-configopt( 'High-X Concentrating PV',     { 'long_name'='Concentrating photovoltaic',             'short_name'='HCPV',             'description'='Concentrating photovoltaic system with a high-X concentrating module model and separate inverter model' } );
+configopt( 'High-X Concentrating PV',     { 'long_name'='High concentration PV',             'short_name'='HCPV',             'description'='Concentrating photovoltaic system with a high concentration photovoltaic module model and separate inverter model' } );
 configopt( 'Wind Power',                  { 'long_name'='Wind',                                   'short_name'='Wind',             'description'='Small or large wind power system' } );
 configopt( 'Biopower',                    { 'long_name'='Biomass combustion',                     'short_name'='Biopower',         'description'='Biomass combustion for electricity generation' } );
 configopt( 'Geothermal Power',            { 'long_name'='Geothermal',                             'short_name'='Geothermal',       'description'='Geothermal power model for hydrothermal and EGS systems with flash or binary conversion' } );
