@@ -137,6 +137,7 @@ private:
 	wxExtGridCtrl *m_depreciationTable;
 	wxSplitterWindow *m_cf_splitter;
 	wxPanel *m_cf_top_panel;
+	wxPanel *m_cf_bottom_panel;
 
 	GraphViewer *m_graphViewer;
 		
