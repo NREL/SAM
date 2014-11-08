@@ -265,12 +265,12 @@ public:
 		m_hourly = new AFDataArrayButton( m_scrollWin, wxID_ANY );
 		m_hourly->SetMode( DATA_ARRAY_8760_ONLY );
 
-		m_enablePeriods = new wxCheckBox( m_scrollWin, ID_ENABLE_PERIODS, "Enable custom factor periods" );
+		m_enablePeriods = new wxCheckBox( m_scrollWin, ID_ENABLE_PERIODS, "Enable hourly factors with custom periods" );
 		m_periods = new PeriodFactorCtrl( m_scrollWin );
 
 		wxSizer *scroll = new wxBoxSizer( wxVERTICAL );
 		
-		scroll->Add( new wxStaticText( m_scrollWin, wxID_ANY, "Constant adjustment factor (0..1)"), 0, wxALL|wxEXPAND, 5 );
+		scroll->Add( new wxStaticText( m_scrollWin, wxID_ANY, "Annual factor (0..1)"), 0, wxALL|wxEXPAND, 5 );
 		scroll->Add( m_factor, 0, wxALL, 5 );
 		scroll->Add( new wxStaticLine( m_scrollWin ), 0, wxALL|wxEXPAND );
 		
