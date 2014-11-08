@@ -240,7 +240,10 @@ ResultsViewer::ResultsViewer( wxWindow *parent, int id )
 	m_cashFlowTable->EnablePasteEvent(false);
 	m_cashFlowTable->SetRowLabelSize( 300 );
 
-	m_depreciationTable = new wxExtGridCtrl(m_cf_splitter, wxID_ANY);
+	m_cf_bottom_panel = new wxPanel(m_cf_splitter);
+
+//	m_depreciationTable = new wxExtGridCtrl(m_cf_splitter, wxID_ANY);
+	m_depreciationTable = new wxExtGridCtrl(m_cf_bottom_panel, wxID_ANY);
 	m_depreciationTable->SetFont(*wxNORMAL_FONT);
 	m_depreciationTable->CreateGrid(1, 1);
 	m_depreciationTable->SetRowLabelAlignment(wxALIGN_LEFT, wxALIGN_CENTRE);
@@ -267,9 +270,14 @@ ResultsViewer::ResultsViewer( wxWindow *parent, int id )
 	cf_top_sizer->Add(m_cashFlowTable, 1, wxALL | wxEXPAND, 0);
 	m_cf_top_panel->SetSizer(cf_top_sizer);
 
+	wxBoxSizer *cf_bottom_sizer = new wxBoxSizer(wxVERTICAL);
+	cf_bottom_sizer->Add(m_depreciationTable, 1, wxALL | wxEXPAND, 0);
+	m_cf_bottom_panel->SetSizer(cf_bottom_sizer);
+
 	m_cf_splitter->SetMinimumPaneSize(100);
 	m_cf_splitter->SetSashGravity(1.0);
-	m_cf_splitter->SplitHorizontally(m_cf_top_panel, m_depreciationTable, -200);
+//	m_cf_splitter->SplitHorizontally(m_cf_top_panel, m_depreciationTable, -200);
+	m_cf_splitter->SplitHorizontally(m_cf_top_panel, m_cf_bottom_panel, -200);
 
 	cf_panel->SetSizer(cf_main_sizer);
 	cf_main_sizer->SetSizeHints(cf_panel);
