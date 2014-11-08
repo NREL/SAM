@@ -649,6 +649,8 @@ void ParametricViewer::ShowAllData()
 
 void ParametricViewer::FillDown(int rows)
 {
+	// saves current editor value
+	m_grid->SaveEditControlValue();
 	// get first two values in column and fill down
 	int col = m_selected_grid_col;
 	if (rows<0)
