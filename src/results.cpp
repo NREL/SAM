@@ -101,6 +101,10 @@ void PopulateSelectionList( wxDVSelectionListCtrl *sel, wxArrayString *names, Si
 		if ( steps_per_hour*8760 != varlengths[i] )
 			steps_per_hour = -1;
 
+		if ( VarValue *lftm = sim->GetValue("system_use_lifetime_output") )
+			if ( lftm->Value() != 0.0f )
+				steps_per_hour = -1; // don't report geothermal system output as minute data depending on analysis period
+
 		wxString group;
 		if (varlengths[i] == 1)
 			group = "Single Values";
@@ -719,6 +723,12 @@ void ResultsViewer::Setup( Simulation *sim )
 	wxDVPlotCtrlSettings viewstate = GetDViewState();
 	RemoveAllDataSets();
 	wxArrayString vars = m_sim->ListOutputs();
+	
+	bool use_lifetime = false;
+	if ( VarValue *lftm = sim->GetValue("system_use_lifetime_output") )
+		if ( lftm->Value() != 0.0f )
+			use_lifetime = true;
+
 	for( size_t i=0;i<vars.size();i++ )
 	{
 		if ( VarValue *vv = m_sim->GetValue( vars[i] ) )
@@ -733,8 +743,11 @@ void ResultsViewer::Setup( Simulation *sim )
 					&& steps_per_hour <= 60 
 					&& n == steps_per_hour*8760 )
 				{
+					if ( use_lifetime )
+						steps_per_hour = 1;
+
 					wxString group( "Hourly Data" );
-					if ( steps_per_hour > 1 )
+					if ( steps_per_hour > 1 && !use_lifetime )
 						group = wxString::Format( "%lg Minute Data", 60.0/steps_per_hour );
 
 					wxLogStatus("Adding time series dataset: %d len, %lg time step", (int)n, 1.0/steps_per_hour );
@@ -1460,6 +1473,7 @@ public:
 		size_t N;
 	};
 
+	bool UseLifetime;
 	size_t MaxCount;
 	size_t MinCount;
 	std::vector<ColData*> Table;
@@ -1467,6 +1481,7 @@ public:
 
 	ResultsTable()
 	{
+		UseLifetime = false;
 		MinCount = 0;
 		MaxCount = 0;
 	}
@@ -1515,7 +1530,8 @@ public:
 	bool IsTimeSeriesShown()
 	{
 		size_t steps_per_hour = MaxCount / 8760;
-		return ( MinCount == MaxCount 
+		return ( !UseLifetime 
+			&& MinCount == MaxCount 
 			&& steps_per_hour > 0
 			&& steps_per_hour <= 60
 			&& steps_per_hour*8760 == MaxCount );
@@ -1542,8 +1558,15 @@ public:
 		MaxCount = 0;
 		MinCount = 0;
 		Table.clear();
-
+		
 		if ( vars.size() == 0 ) return;
+
+		// don't report geothermal system output as minute data depending on analysis period
+		UseLifetime = false;
+		if ( VarValue *lftm = results->GetValue("system_use_lifetime_output") )
+			if ( lftm->Value() != 0.0f )
+				UseLifetime = true;
+
 
 		MinCount = 10000000;
 		
