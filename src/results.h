@@ -151,6 +151,8 @@ private:
 	wxDVDCCtrl *m_durationCurve;
 	wxDVScatterPlotCtrl *m_scatterPlot;
 
+	wxTextCtrl *m_messages;
+
 	void AddDataSet( wxDVTimeSeriesDataSet *ds, const wxString &group = wxEmptyString, bool update_ui = true );
 	void RemoveAllDataSets();
 	void Export(int data, int mechanism);

@@ -101,6 +101,8 @@ static bool VarValueToSSC( VarValue *vv, ssc_data_t pdata, const wxString &sscna
 Simulation::Simulation( Case *cc, const wxString &name )
 	: m_case( cc ), m_name( name )
 {
+	m_totalElapsedMsec = 0;
+	m_sscElapsedMsec = 0;
 }
 
 
@@ -123,7 +125,7 @@ void Simulation::Write( wxOutputStream &os )
 {
 	wxDataOutputStream out( os );
 	out.Write8( 0x9c );
-	out.Write8( 1 ); // version
+	out.Write8( 2 ); // version
 
 	out.WriteString( m_name );
 
@@ -134,6 +136,7 @@ void Simulation::Write( wxOutputStream &os )
 	
 	write_array_string( out, m_errors );
 	write_array_string( out, m_warnings );
+	write_array_string( out, m_notices );
 
 	m_outputLabels.Write( os );
 	m_outputUnits.Write( os );
@@ -147,7 +150,7 @@ bool Simulation::Read( wxInputStream &is )
 	wxDataInputStream in( is );
 
 	wxUint8 code = in.Read8(); // code
-	in.Read8(); // ver
+	wxUint8 ver = in.Read8(); // ver
 
 	m_name = in.ReadString();
 
@@ -158,6 +161,7 @@ bool Simulation::Read( wxInputStream &is )
 
 	read_array_string( in, m_errors );
 	read_array_string( in, m_warnings );
+	if ( ver > 1 ) read_array_string( in, m_notices );
 		
 	m_outputLabels.Read( is );
 	m_outputUnits.Read( is );
@@ -175,6 +179,7 @@ void Simulation::Copy( const Simulation &rh )
 	m_outputs = rh.m_outputs;
 	m_errors = rh.m_errors;
 	m_warnings = rh.m_warnings;
+	m_notices = rh.m_notices;
 	m_outputLabels = rh.m_outputLabels;
 	m_outputUnits = rh.m_outputUnits;
 }
@@ -187,6 +192,7 @@ void Simulation::Clear()
 	m_outputs.clear();
 	m_errors.clear();
 	m_warnings.clear();
+	m_notices.clear();
 	m_outputLabels.clear();
 	m_outputUnits.clear();
 }
@@ -244,6 +250,11 @@ wxArrayString &Simulation::GetErrors()
 wxArrayString &Simulation::GetWarnings()
 {
 	return m_warnings;
+}
+
+wxArrayString &Simulation::GetNotices()
+{
+	return m_notices;
 }
 
 VarTable &Simulation::Outputs()
@@ -385,6 +396,8 @@ static ssc_bool_t ssc_invoke_handler( ssc_module_t p_mod, ssc_handler_t p_handle
 		switch( (int)f0 )
 		{
 		case SSC_NOTICE:
+			hh->Notice( s0 );
+			break;
 		case SSC_WARNING:
 			hh->Warn( s0 );
 			break;
@@ -472,6 +485,10 @@ bool Simulation::InvokeWithHandler( ISimulationHandler *ih )
 {
 	assert( 0 != ih );
 
+	m_totalElapsedMsec = 0;
+	m_sscElapsedMsec = 0;
+	wxStopWatch sw;
+
 	ssc_data_t p_data = ssc_data_create();
 
 	if ( m_simlist.size() == 0 )
@@ -550,8 +567,9 @@ bool Simulation::InvokeWithHandler( ISimulationHandler *ih )
 		// optionally write a debug input file if the ISimulationHandler defines it
 		ih->WriteDebugFile( m_simlist[kk], p_mod, p_data );
 		
+		wxStopWatch ssctime;
 		ssc_bool_t ok = ssc_module_exec_with_handler( p_mod, p_data, ssc_invoke_handler, ih );
-
+		m_sscElapsedMsec += (int)ssctime.Time();
 
 		if ( !ok )
 		{
@@ -611,7 +629,10 @@ bool Simulation::InvokeWithHandler( ISimulationHandler *ih )
 	// for to enable retrieval after the simulation handler has gone away
 	m_errors = ih->GetErrors();
 	m_warnings = ih->GetWarnings();
+	m_notices = ih->GetNotices();
 	
+	m_totalElapsedMsec = (int) sw.Time();
+
 	return m_errors.size() == 0;
 
 }
@@ -642,6 +663,8 @@ wxArrayString Simulation::GetAllMessages()
 		list.Add( "Error: " + m_errors[i] );
 	for( size_t i=0;i<m_warnings.size();i++ )
 		list.Add( "Warning: " + m_warnings[i] );
+	for( size_t i=0;i<m_notices.size();i++ )
+		list.Add( "Notice: " + m_notices[i] );
 	return list;
 }
 
@@ -786,7 +809,7 @@ public:
 		if ( !L.IsEmpty() ) L += ": ";
 		m_messages.Add( L + text );
 	}
-
+	
 	virtual void Warn( const wxString &text )
 	{
 		ISimulationHandler::Warn( text );
