@@ -352,15 +352,15 @@ void Parametric_QS::RefreshValuesList()
 	if (idx >= 0 && idx < m_input_names.Count())
 	{
 		wxString name = m_input_names[idx];
-		items = GetValuesList( name );
+		items = GetValuesDisplayList( name );
 		if (items.Count() == 0) // add base case value
 		{
 			wxArrayString values;
 			values.Add(name);
 			wxString val = GetBaseCaseValue(name);
 			values.Add(val);
-			items.Add(val);
 			m_input_values.push_back(values);
+			items = GetValuesDisplayList(name);
 		}
 	}
 	
@@ -391,6 +391,56 @@ wxArrayString Parametric_QS::GetValuesList(const wxString &varname)
 			for (int j = 1; j < m_input_values[i].Count(); j++)
 				list.Add(m_input_values[i].Item(j));
 			break;
+		}
+	}
+	return list;
+}
+
+wxArrayString Parametric_QS::GetValuesDisplayList(const wxString &varname)
+{
+	wxArrayString list;
+
+	VarInfo *vi = m_case->Variables().Lookup(varname);
+	if (!vi)
+		return list;
+	VarValue *vv = m_case->Values().Get(varname);
+	if (!vv)
+		return list;
+
+	int i;
+	int vvtype = vv->Type();
+	int vitype = vi->Type;
+
+
+	if (vvtype == VV_NUMBER
+		&& vi->IndexLabels.Count() > 0)
+	{
+		// fixed domain selection (combo box, list, radio choice etc)
+		wxArrayString fixed_items = vi->IndexLabels;
+		for (int i = 0; i < m_input_values.size(); i++)
+		{
+			if (m_input_values[i].Count() > 0 && m_input_values[i].Item(0) == varname)
+			{
+				for (int j = 1; j < m_input_values[i].Count(); j++)
+				{
+					int item_i = atoi(m_input_values[i].Item(j).c_str());
+					if (item_i >= 0 && item_i < (int)fixed_items.Count())
+						list.Add(fixed_items[item_i]);
+				}
+				break;
+			}
+		}
+	}
+	else
+	{
+		for (int i = 0; i < m_input_values.size(); i++)
+		{
+			if (m_input_values[i].Count() > 0 && m_input_values[i].Item(0) == varname)
+			{
+				for (int j = 1; j < m_input_values[i].Count(); j++)
+					list.Add(m_input_values[i].Item(j));
+				break;
+			}
 		}
 	}
 	return list;

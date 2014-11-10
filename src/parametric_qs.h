@@ -39,6 +39,7 @@ public:
 
 	wxString GetBaseCaseValue(const wxString &varname);
 	wxArrayString GetValuesList(const wxString &varname);
+	wxArrayString GetValuesDisplayList(const wxString &varname);
 	void SetValuesList(const wxString &varname, const wxArrayString &values);
 
 	bool ShowEditValuesDialog(const wxString &title,
