@@ -17,7 +17,7 @@ class ConfigInfo;
 class ISimulationHandler
 {
 private:
-	wxArrayString m_savedErrors, m_savedWarnings;
+	wxArrayString m_savedErrors, m_savedWarnings, m_savedNotices;
 public:
 	ISimulationHandler() { }
 	virtual ~ISimulationHandler() { }
@@ -29,10 +29,12 @@ public:
 	// update of simulation messages elsewhere
 	virtual void Error( const wxString &s ) { m_savedErrors.Add( s ); }
 	virtual void Warn( const wxString &s ) { m_savedWarnings.Add( s ); }
+	virtual void Notice( const wxString &s ) { m_savedNotices.Add( s ); }
 
 	// handle saved messages
 	virtual wxArrayString GetErrors() { return m_savedErrors; }
 	virtual wxArrayString GetWarnings() { return m_savedWarnings; }
+	virtual wxArrayString GetNotices() { return m_savedNotices; }
 	virtual void ClearSavedMessages() { m_savedErrors.clear(); m_savedWarnings.clear(); }
 	
 	// optionally output a debug file before the SSC module is run
@@ -83,12 +85,13 @@ public:
 	bool Invoke(bool silent=false, bool prepare=true);
 	
 	bool Prepare(); // not threadable, but must be called before below
-	bool InvokeWithHandler( ISimulationHandler *ih );
+	bool InvokeWithHandler( ISimulationHandler *ih ); // updates elapsed time
 
 	// results and messages if it succeeded
 	bool Ok();
 	wxArrayString &GetErrors();
 	wxArrayString &GetWarnings();
+	wxArrayString &GetNotices();
 	wxArrayString GetAllMessages();
 		
 	static bool ListAllOutputs( ConfigInfo *cfg, 
@@ -105,6 +108,13 @@ public:
 		std::vector<Simulation*> &sims, 
 		int nthread );
 
+	// total time for creating data container, model, setting inputs, running simulation
+	int GetTotalElapsedTime() { return m_totalElapsedMsec; }
+	// SSC compute module execution time only
+	int GetSSCElapsedTime() { return m_sscElapsedMsec; }
+
+	wxArrayString GetModels() { return m_simlist; }
+
 protected:
 	Case *m_case;
 	wxArrayString m_simlist;
@@ -113,8 +123,10 @@ protected:
 	VarTable m_inputs;
 	wxArrayString m_outputList;
 	VarTable m_outputs;
-	wxArrayString m_errors, m_warnings;
+	wxArrayString m_errors, m_warnings, m_notices;
 	StringHash m_outputLabels, m_outputUnits;
+	int m_sscElapsedMsec;
+	int m_totalElapsedMsec;
 };
 
 class wxGauge;
