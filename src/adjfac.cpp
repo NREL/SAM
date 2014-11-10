@@ -10,6 +10,7 @@
 #include <wex/numeric.h>
 #include <wex/utils.h>
 
+#include "main.h"
 #include "widgets.h"
 #include "adjfac.h"
 #include "variables.h"
@@ -286,7 +287,7 @@ public:
 
 		wxSizer *box = new wxBoxSizer(wxVERTICAL);
 		box->Add( m_scrollWin, 1, wxALL|wxEXPAND );
-		box->Add( CreateButtonSizer( wxOK|wxCANCEL ), 0, wxALL|wxEXPAND, 5 );
+		box->Add( CreateButtonSizer( wxOK|wxCANCEL|wxHELP ), 0, wxALL|wxEXPAND, 5 );
 		SetSizer( box );
 
 		UpdateVisibility();
@@ -326,6 +327,9 @@ public:
 	{
 		switch( e.GetId() )
 		{
+		case wxID_HELP:
+			SamApp::ShowHelp("hourly_factors");
+			break;
 		case ID_ENABLE_HOURLY:
 		case ID_ENABLE_PERIODS:
 			UpdateVisibility();
@@ -346,6 +350,7 @@ BEGIN_EVENT_TABLE( HourlyFactorDialog, wxDialog )
 	EVT_CLOSE( HourlyFactorDialog::OnClose )
 	EVT_CHECKBOX( ID_ENABLE_HOURLY, HourlyFactorDialog::OnCommand )
 	EVT_CHECKBOX( ID_ENABLE_PERIODS, HourlyFactorDialog::OnCommand )
+	EVT_BUTTON( wxID_HELP, HourlyFactorDialog::OnCommand )
 END_EVENT_TABLE()
 
 
