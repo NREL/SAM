@@ -182,33 +182,36 @@ for(i=0; i<#species; i++)
 }
 
 //format the results********************************************************************************************************************************************
-for (i=0; i < #list; i++)
-{	
-	list[i].name = replace(list[i].name, 'BIA', 'Bureau of Indian Affairs');
-	list[i].name = replace(list[i].name, 'BLM MON', 'Bureau of Land Management: National Monument');
-	list[i].name = replace(list[i].name, 'BLM NCA', 'Bureau of Land Management: National Conservation Area');
-	list[i].name = replace(list[i].name, 'BLM WA', 'Bureau of Land Management: Wilderness Area');
-	list[i].name = replace(list[i].name, 'BLM', 'Bureau of Land Management');
-	list[i].name = replace(list[i].name, 'BOR', 'Bureau of Reclamation');
-	list[i].name = replace(list[i].name, 'DOD', 'Department of Defense');
-	list[i].name = replace(list[i].name, 'FWS RNA', 'Fish and Wildlife Service: Research Natural Area');
-	list[i].name = replace(list[i].name, 'FWS WA', 'Fish and Wildlife Service: Wildnerness Area');
-	list[i].name = replace(list[i].name, 'FWS', 'Fish and Wildlife Service');
-	list[i].name = replace(list[i].name, 'LOCAL', 'Locally-Owned Land');
-	list[i].name = replace(list[i].name, 'NFS', 'National Forest Service');
-	list[i].name = replace(list[i].name, 'NPS', 'National Park Service');
-	list[i].name = replace(list[i].name, 'STATE', 'State-Owned Land');
-	list[i].name = replace(list[i].name, 'USFS WA', 'U.S. Forest Service: Wilderness Area');
-	list[i].name = replace(list[i].name, 'USFS', 'U.S. Forest Service');
-	list[i].name = replace(list[i].name, 'OTHER', 'Other');
-	list[i].name = replace(list[i].name, 'species_', 'Species Present: ');
-	list[i].name = replace(list[i].name, '_', ' ');
+if (count > 0)
+{
+	for (i=0; i < #list; i++)
+	{	
+		list[i].name = replace(list[i].name, 'BIA', 'Bureau of Indian Affairs');
+		list[i].name = replace(list[i].name, 'BLM MON', 'Bureau of Land Management: National Monument');
+		list[i].name = replace(list[i].name, 'BLM NCA', 'Bureau of Land Management: National Conservation Area');
+		list[i].name = replace(list[i].name, 'BLM WA', 'Bureau of Land Management: Wilderness Area');
+		list[i].name = replace(list[i].name, 'BLM', 'Bureau of Land Management');
+		list[i].name = replace(list[i].name, 'BOR', 'Bureau of Reclamation');
+		list[i].name = replace(list[i].name, 'DOD', 'Department of Defense');
+		list[i].name = replace(list[i].name, 'FWS RNA', 'Fish and Wildlife Service: Research Natural Area');
+		list[i].name = replace(list[i].name, 'FWS WA', 'Fish and Wildlife Service: Wildnerness Area');
+		list[i].name = replace(list[i].name, 'FWS', 'Fish and Wildlife Service');
+		list[i].name = replace(list[i].name, 'LOCAL', 'Locally-Owned Land');
+		list[i].name = replace(list[i].name, 'NFS', 'National Forest Service');
+		list[i].name = replace(list[i].name, 'NPS', 'National Park Service');
+		list[i].name = replace(list[i].name, 'STATE', 'State-Owned Land');
+		list[i].name = replace(list[i].name, 'USFS WA', 'U.S. Forest Service: Wilderness Area');
+		list[i].name = replace(list[i].name, 'USFS', 'U.S. Forest Service');
+		list[i].name = replace(list[i].name, 'OTHER', 'Other');
+		list[i].name = replace(list[i].name, 'species_', 'Species Present: ');
+		list[i].name = replace(list[i].name, '_', ' ');
+	}
 }
 
 //HTML window to display results*******************************************************************************************************************************
 str = '<html><body><h4>Siting Considerations</h4>';
 
-if ( #list == 0) //list is empty
+if ( count <= 0) //list is empty
 	str += 'No siting considerations found for this site.';
 else
 {
