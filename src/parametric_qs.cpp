@@ -2,6 +2,7 @@
 #include "parametric.h"
 #include "main.h"
 #include "casewin.h"
+#include "library.h"
 #include "numericvareditform.h"
 #include <wex/utils.h>
 
@@ -160,6 +161,7 @@ bool Parametric_QS::ShowEditValuesDialog(const wxString &title,
 	int i;
 	int vvtype = vv->Type();
 	int vitype = vi->Type;
+	unsigned long vf = vi->Flags;
 
 
 	if (vvtype == VV_NUMBER
@@ -187,24 +189,20 @@ bool Parametric_QS::ShowEditValuesDialog(const wxString &title,
 		else
 			return false;
 	}
-	else if (vitype == VF_LIBRARY)
+	else if (vf & VF_LIBRARY)
 	{
 		// get lib item list (climate or lib list)
 		wxArrayString fixed_items;
-		/*
-		if (v->GetExpression() == "climates")
-			fixed_items = LibGetClimateList(mCase->GetSamFile());
-		else if (v->GetExpression() == "wind_files")
+		wxArrayString lib_fields = vi->IndexLabels;
+		if (lib_fields.Count() > 0)
 		{
-			wxArrayString ext;
-			ext.Add("srw");
-			fixed_items = LibGetClimateList(mCase->GetSamFile(), ext);
+			wxString name = lib_fields[0];
+			if (Library *lib = Library::Find( name ))
+				{
+				fixed_items = lib->ListEntries();
+				return ShowFixedDomainDialog(title, fixed_items, fixed_items, values, true);
+			}
 		}
-		else if (v->GetExpression().Left(7) == "liblist")
-			fixed_items = LibGetEntriesForLibraryType(v->GetExpression().Mid(8));
-
-		return ShowFixedDomainDialog(title, fixed_items, values);
-		*/
 	}
 	else if (vvtype == VV_NUMBER)
 	{
