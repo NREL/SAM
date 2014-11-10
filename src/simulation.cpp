@@ -1162,7 +1162,7 @@ void SimulationDialog::Finalize( const wxString &title )
 		else m_tpd->Status( title );
 
 		m_tpd->ShowBars( 0 );
-		m_tpd->SetButtonText( "Close" );
+		m_tpd->SetButtonText( "Continue" );
 		m_tpd->ShowSaveLogButton();
 		m_tpd->Hide();
 		m_tpd->ShowModal();
