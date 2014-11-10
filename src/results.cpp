@@ -189,7 +189,8 @@ enum { PAGE_SUMMARY,
 	PAGE_HEAT_MAP,
 	PAGE_SCATTER,
 	PAGE_PDF_CDF,
-	PAGE_DURATION_CURVE };
+	PAGE_DURATION_CURVE,
+	PAGE_MESSAGES };
 
 ResultsViewer::ResultsViewer( wxWindow *parent, int id )
 	: wxMetroNotebook( parent, id, wxDefaultPosition, wxDefaultSize, wxMT_LIGHTTHEME ),
@@ -310,6 +311,9 @@ ResultsViewer::ResultsViewer( wxWindow *parent, int id )
 	
 	m_durationCurve = new wxDVDCCtrl( this, wxID_ANY );
 	AddPage( m_durationCurve, "Duration curve" );
+
+	m_messages = new wxTextCtrl( this, wxID_ANY, "Detailed simulation report will appear here.", wxDefaultPosition, wxDefaultSize, wxTE_MULTILINE|wxTE_READONLY|wxBORDER_NONE );
+	AddPage( m_messages, "Messages" );
 }
 
 wxDVPlotCtrlSettings ResultsViewer::GetDViewState()
@@ -961,6 +965,41 @@ void ResultsViewer::Setup( Simulation *sim )
 	
 	// load the formerly saved perspective
 	LoadPerspective( viewinfo );
+
+
+	// update messages
+	wxString text( wxString::Format("---------- Simulation report ----------\n\nTotal time: %d ms\nSSC time: %d ms\n\n", 
+		m_sim->GetTotalElapsedTime(), m_sim->GetSSCElapsedTime() ) );
+	
+	text += wxString::Format("SSC version: %d (%s)\n",ssc_version(), ssc_build_info() );
+
+	wxArrayString models = m_sim->GetModels();
+	text += wxString::Format("Models (%d): ", (int)models.size() );
+	for( size_t i=0;i<models.size();i++ )
+		text += models[i] + " ";
+
+	text += '\n';
+
+	wxArrayString &err = m_sim->GetErrors();
+	wxArrayString &warn = m_sim->GetWarnings();
+	wxArrayString &log = m_sim->GetNotices();
+
+	text += wxString::Format("\n---------- %d errors ----------\n", (int)err.size() );
+	for( size_t i=0;i<err.size();i++ )
+		text += err[i] + "\n";
+
+	
+	text += wxString::Format("\n---------- %d warnings ----------\n", (int)warn.size() );
+	for( size_t i=0;i<warn.size();i++ )
+		text += warn[i] + "\n";
+
+	
+	text += wxString::Format("\n---------- %d notices ----------\n", (int)log.size() );
+	for( size_t i=0;i<log.size();i++ )
+		text += log[i] + "\n";
+
+
+	m_messages->ChangeValue( text );
 }
 
 void ResultsViewer::AddDataSet(wxDVTimeSeriesDataSet *d, const wxString& group, bool update_ui)
