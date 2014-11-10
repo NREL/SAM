@@ -1,6 +1,7 @@
 #ifndef __invoke_h
 #define __invoke_h
 
+#include <wx/string.h>
 #include <lk_env.h>
 
 // general functions like logging
@@ -26,5 +27,11 @@ lk::fcall_t* invoke_lossdiag_funcs();
 
 // functions that can be called in equations
 lk::fcall_t* invoke_equation_funcs(); 
+
+
+
+// helper function
+class Case;
+void invoke_get_var_info( Case *c, const wxString &name, lk::vardata_t &result );
 
 #endif

@@ -195,6 +195,9 @@ static void fcall_curl( lk::invoke_t &cxt )
 	
 	wxString url(cxt.arg(0).as_string());
 	url.Replace( "<SAMAPIKEY:WIND_BARRIERS>", "bd36882a2551ce65f1326626dcd110785ae967e2" );
+	url.Replace( "<SAMAPIKEY:ENERGY_CROP>",   "bb4a09f7833f115ccba081b4a9e028ca904643df" );
+
+	wxLogStatus( "curl: " + url );
 
 	if ( !curl.Start( url, true ) )
 	{
@@ -566,6 +569,37 @@ static void fcall_output(lk::invoke_t &cxt)
 			vv->Write( cxt.result() );
 }
 
+void invoke_get_var_info( Case *c, const wxString &name, lk::vardata_t &result )
+{
+	if (VarInfo *vi = c->Variables().Lookup( name ))
+	{
+		result.hash_item("label").assign( vi->Label );
+		result.hash_item("units").assign( vi->Units );
+		result.hash_item("group").assign( vi->Group );
+	}
+	else
+	{
+		wxArrayString names, labels, units, groups;
+		Simulation::ListAllOutputs( c->GetConfiguration(),
+			&names, &labels, &units, &groups );
+		int idx = names.Index( name );
+		if ( idx >=0 )
+		{
+			result.hash_item("label").assign( labels[idx] );
+			result.hash_item("units").assign( units[idx] );
+			result.hash_item("group").assign( groups[idx] );
+		}
+	}
+}
+
+static void fcall_varinfo( lk::invoke_t &cxt )
+{
+	LK_DOC("varinfo", "Gets meta data about an input or output variable.", "(string:var name):table");
+	wxString name = cxt.arg(0).as_string();
+	cxt.result().empty_hash();
+	if ( CaseCallbackContext *ci = static_cast<CaseCallbackContext*>(cxt.user_data()) )
+		invoke_get_var_info( &ci->GetCase(), name, cxt.result() );
+}
 
 void fcall_value( lk::invoke_t &cxt )
 {
@@ -2070,6 +2104,7 @@ lk::fcall_t* invoke_casecallback_funcs()
 {
 	static const lk::fcall_t vec[] = {
 		fcall_value,
+		fcall_varinfo,
 		fcall_output,
 		fcall_technology,
 		fcall_financing,

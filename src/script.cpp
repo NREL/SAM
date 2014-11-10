@@ -79,27 +79,7 @@ static void fcall_varinfo( lk::invoke_t &cxt )
 	wxString name = cxt.arg(0).as_string();
 	cxt.result().empty_hash();
 	if ( Case *c = CurrentCase() )
-	{
-		if (VarInfo *vi = c->Variables().Lookup( name ))
-		{
-			cxt.result().hash_item("label").assign( vi->Label );
-			cxt.result().hash_item("units").assign( vi->Units );
-			cxt.result().hash_item("group").assign( vi->Group );
-		}
-		else
-		{
-			wxArrayString names, labels, units, groups;
-			Simulation::ListAllOutputs( c->GetConfiguration(),
-				&names, &labels, &units, &groups );
-			int idx = names.Index( name );
-			if ( idx >=0 )
-			{
-				cxt.result().hash_item("label").assign( labels[idx] );
-				cxt.result().hash_item("units").assign( units[idx] );
-				cxt.result().hash_item("group").assign( groups[idx] );
-			}
-		}
-	}
+		invoke_get_var_info( c, name, cxt.result() );
 }
 
 static void fcall_selectinputs( lk::invoke_t &cxt )
