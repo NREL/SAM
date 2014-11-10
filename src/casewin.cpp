@@ -1401,3 +1401,298 @@ void VarSelectDialog::OnConfig( wxCommandEvent &evt )
 	}
 }
 
+
+
+
+
+enum {
+  ID_cmdUpdateValues = wxID_HIGHEST+495,
+  ID_cmdMoveDown,
+  ID_values,
+  ID_cmdRemove,
+  ID_cmdAddBefore,
+  ID_cmdAddAfter,
+  ID_cmdMoveUp,
+  ID_numIncr,
+  ID_numEnd,
+  ID_numStart };
+
+BEGIN_EVENT_TABLE( NumericRangeDialog, wxDialog )
+	EVT_BUTTON( wxID_HELP, NumericRangeDialog::OnCommand )
+	EVT_BUTTON( ID_cmdAddAfter, NumericRangeDialog::OnCommand)
+	EVT_BUTTON( ID_cmdAddBefore, NumericRangeDialog::OnCommand)
+	EVT_BUTTON( ID_cmdMoveUp, NumericRangeDialog::OnCommand)
+	EVT_BUTTON( ID_cmdMoveDown, NumericRangeDialog::OnCommand)
+	EVT_BUTTON( ID_cmdRemove, NumericRangeDialog::OnCommand)
+	EVT_BUTTON( ID_cmdUpdateValues, NumericRangeDialog::OnCommand)
+	EVT_NUMERIC( ID_numStart, NumericRangeDialog::OnCommand)
+	EVT_NUMERIC( ID_numEnd, NumericRangeDialog::OnCommand)
+	EVT_NUMERIC( ID_numIncr, NumericRangeDialog::OnCommand)
+	EVT_LISTBOX_DCLICK( ID_values, NumericRangeDialog::OnCommand)
+END_EVENT_TABLE()
+
+NumericRangeDialog::NumericRangeDialog( wxWindow *parent, const wxString &title )
+	 : wxDialog( parent, wxID_ANY, title, wxDefaultPosition, wxSize(500, 325), wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER )
+{
+	m_intOnly = false;
+
+
+	wxStaticBoxSizer *values_sizer = new wxStaticBoxSizer(wxVERTICAL, this, "Variable values");
+	values_sizer->Add( m_values = new wxListBox( values_sizer->GetStaticBox(), ID_values ), 1, wxALL|wxEXPAND, 4 );
+
+	wxBoxSizer *button_sizer = new wxBoxSizer( wxHORIZONTAL );
+	button_sizer->Add( new wxButton( values_sizer->GetStaticBox(), ID_cmdAddBefore, "Add before", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT ), 0, wxALL, 2 );
+	button_sizer->Add( new wxButton( values_sizer->GetStaticBox(), ID_cmdAddAfter, "Add after", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT ), 0, wxALL, 2 );
+	button_sizer->Add( new wxButton( values_sizer->GetStaticBox(), ID_cmdMoveUp, "Up", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT ), 0, wxALL, 2 );
+	button_sizer->Add( new wxButton( values_sizer->GetStaticBox(), ID_cmdMoveDown, "Down", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT ), 0, wxALL, 2 );
+	button_sizer->Add( new wxButton( values_sizer->GetStaticBox(), ID_cmdRemove, "Remove", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT ), 0, wxALL, 2 );
+
+	values_sizer->Add( button_sizer, 0, wxALL, 2 );
+
+	
+	wxStaticBoxSizer *range_sizer_box = new wxStaticBoxSizer( wxVERTICAL, this, "Define range" );
+
+	wxFlexGridSizer *range_sizer = new wxFlexGridSizer( 2 );
+	range_sizer->Add( new wxStaticText( range_sizer_box->GetStaticBox(), wxID_ANY, "Start value:" ), 0, wxALL|wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL, 4 );
+	range_sizer->Add( m_numStart = new wxNumericCtrl( range_sizer_box->GetStaticBox(), ID_numStart, 0, wxNumericCtrl::REAL ), 0, wxALL, 4 );
+	range_sizer->Add( new wxStaticText( range_sizer_box->GetStaticBox(), wxID_ANY, "End value:" ), 0, wxALL|wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL, 4 );
+	range_sizer->Add( m_numEnd = new wxNumericCtrl( range_sizer_box->GetStaticBox(), ID_numEnd, 0, wxNumericCtrl::REAL ), 0, wxALL, 4 );
+	range_sizer->Add( new wxStaticText( range_sizer_box->GetStaticBox(), wxID_ANY, "Increment:" ), 0, wxALL|wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL, 4 );
+	range_sizer->Add( m_numIncr = new wxNumericCtrl( range_sizer_box->GetStaticBox(), ID_numIncr, 0, wxNumericCtrl::REAL ), 0, wxALL, 4 );
+	range_sizer->AddStretchSpacer(); 
+	range_sizer->Add( new wxButton(range_sizer_box->GetStaticBox(), ID_cmdUpdateValues, "Update", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL, 4 );
+	
+	range_sizer_box->Add( range_sizer, 1, wxALL|wxEXPAND, 4 );
+	range_sizer_box->Add( m_notification = new wxStaticText( range_sizer_box->GetStaticBox(), wxID_ANY, wxEmptyString ), 0, wxALL|wxALIGN_CENTER|wxALIGN_CENTER_VERTICAL, 4 );
+	
+	wxBoxSizer *hor_sizer = new wxBoxSizer( wxHORIZONTAL );
+	hor_sizer->Add( values_sizer, 1, wxALL|wxEXPAND, 4 );
+	hor_sizer->Add( range_sizer_box, 0, wxALL, 4 );
+
+	wxBoxSizer *main_sizer = new wxBoxSizer( wxVERTICAL );
+	main_sizer->Add( hor_sizer, 1, wxALL|wxEXPAND, 10 );
+	main_sizer->Add( CreateButtonSizer( wxOK|wxCANCEL|wxHELP ), 0, wxALL|wxEXPAND, 10 );
+	SetSizerAndFit( main_sizer );
+}
+
+wxArrayString NumericRangeDialog::GetValues() 
+{
+	return m_values->GetStrings();
+}
+
+void NumericRangeDialog::SetValues(const wxArrayString &values, bool int_only)
+{
+	m_intOnly = int_only;
+
+	m_values->Clear();
+	m_values->Freeze();
+	
+	double min = 1e100, max=-1e100;
+
+	for (int i=0;i<(int)values.Count();i++)
+	{
+		if (m_intOnly)
+		{
+			long x=0;
+			values[i].ToLong(&x);
+			m_values->Append( wxString::Format("%d", x ));
+			if ( x < min)
+				min = x;
+			if (x > max)
+				max = x;
+		}
+		else
+		{
+			double x=0;
+			values[i].ToDouble(&x);
+			m_values->Append( wxString::Format("%lg", x));
+			if ( x < min)
+				min = x;
+			if (x > max)
+				max = x;
+		}
+	}
+	
+	m_values->Thaw();
+
+	m_numStart->SetValue(min);
+	m_numEnd->SetValue(max);
+	if (values.Count() > 1)
+		m_numIncr->SetValue((max-min)/(double)(values.Count()-1));
+	CheckRanges();
+}
+
+void NumericRangeDialog::OnCommand(wxCommandEvent &evt)
+{
+	int nsel = 0;
+	switch(evt.GetId())
+	{
+	case wxID_HELP:
+		SamApp::ShowHelp("Numeric edit");
+		break;
+
+	case ID_values:
+		{
+			nsel = m_values->GetSelection();
+			if (nsel < 0)
+				return;
+
+			wxString item = m_values->GetString(nsel);
+			item = wxGetTextFromUser("Change value:", "Edit", item);
+			if (item != wxEmptyString)
+			{
+				if (m_intOnly) m_values->SetString(nsel, wxString::Format("%d", (atoi(item.c_str()))));
+				else m_values->SetString(nsel, wxString::Format("%lg",( atof( item.c_str() ) ) ));
+			}
+
+		}
+		break;
+	case ID_cmdAddAfter:
+	case ID_cmdAddBefore:
+		{
+			nsel = m_values->GetSelection();
+			if (nsel < 0)
+				nsel = 0;
+
+			wxString item = "1.0";
+			if (nsel < (int) m_values->GetCount())
+				item = m_values->GetString( nsel );
+
+			wxString str = wxGetTextFromUser("Enter new value:", 
+				evt.GetId() == ID_cmdAddAfter ? "Add Number After Selection" : "Add Number Before Selection",
+				item);
+			if (str != wxEmptyString)
+			{
+				int idxincr = (evt.GetId() == ID_cmdAddAfter && m_values->GetCount()>0 )? 1 : 0;
+				
+				if (m_intOnly) m_values->Insert(wxString::Format("%d", (atoi(str.c_str()))), nsel + idxincr);
+				else m_values->Insert(wxString::Format("%lg", (atof(str.c_str()))), nsel + idxincr);
+			}
+		}
+
+		break;
+
+	case ID_cmdRemove:
+		if ( (nsel=m_values->GetSelection()) >= 0)
+		{
+			m_values->Delete( m_values->GetSelection() );
+			if (nsel >= (int)m_values->GetCount())
+				nsel = m_values->GetCount() - 1;
+			if (nsel >= 0)
+				m_values->SetSelection(nsel);
+		}
+		break;
+	case ID_cmdMoveUp:
+		if (m_values->GetCount() >= 2)
+		{
+			int isel = m_values->GetSelection();
+			if (isel >= 1)
+			{
+				wxString tmp = m_values->GetString( isel - 1 );
+				m_values->SetString(isel - 1, m_values->GetString(isel) );
+				m_values->SetString(isel, tmp);
+				m_values->SetSelection( isel - 1 );
+			}
+		}
+		break;
+
+	case ID_cmdMoveDown:
+		if (m_values->GetCount() >= 2)
+		{
+			int isel = m_values->GetSelection();
+			if (isel <= (int)m_values->GetCount() - 2 && isel >= 0)
+			{
+				wxString tmp = m_values->GetString( isel + 1 );
+				m_values->SetString(isel + 1, m_values->GetString(isel) );
+				m_values->SetString(isel, tmp);
+				m_values->SetSelection( isel + 1 );
+			}
+		}
+		break;
+
+	case ID_cmdUpdateValues:
+	case ID_numStart:
+	case ID_numEnd:
+	case ID_numIncr:
+		GenerateValues();
+		break;
+	}
+}
+
+bool NumericRangeDialog::CheckRanges()
+{
+	double start, end, incr;
+
+	start = m_numStart->Value();
+	end = m_numEnd->Value();
+	incr = m_numIncr->Value();
+
+	m_notification->SetLabel( wxEmptyString );
+
+	if (incr == 0)
+		m_notification->SetLabel("Increment is 0");
+
+	if (end <= start && incr > 0)
+		m_notification->SetLabel("End < start");
+
+	if (start < end && incr < 0)
+		m_notification->SetLabel("Start < end");
+	
+	m_notification->Refresh();
+
+	return m_notification->GetLabel().IsEmpty();
+}
+
+void NumericRangeDialog::GenerateValues()
+{
+	if (!CheckRanges())
+		return;
+
+	double start, end, incr;
+
+	start = m_numStart->Value();
+	end = m_numEnd->Value();
+	incr = m_numIncr->Value();
+
+	double curval = start;
+	wxString endvalstr = m_intOnly?
+		wxString::Format("%d", (int) end ) :
+		wxString::Format("%lg", end );
+
+#define NMAXVALS 200
+
+	wxArrayString vals;
+	int nadded = 0;
+	while ( (incr > 0 && curval <= end)
+			|| (incr < 0 && curval >= end ) )
+	{
+		if (vals.Index( endvalstr ) >= 0)
+			break;
+
+		if (nadded > NMAXVALS)
+			break;
+
+		nadded++;
+
+		if (incr > 0 && curval > 1.001*end)
+			break;
+
+		if (incr < 0 && curval < 0.999*end)
+			break;
+
+		vals.Add( m_intOnly?
+			wxString::Format("%d", (int) curval ) :
+			wxString::Format("%lg", curval ) );
+			
+		curval += incr;
+	}
+
+	if (vals.Index(endvalstr) < 0 && nadded <= NMAXVALS)
+		vals.Add(endvalstr);
+
+
+	m_values->Freeze();
+	m_values->Clear();
+	m_values->Append(vals);
+	m_values->Thaw();
+}

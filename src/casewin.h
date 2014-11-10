@@ -190,4 +190,30 @@ protected:
 	void OnConfig( wxCommandEvent &evt );
 	DECLARE_EVENT_TABLE()
 };
+
+
+
+class NumericRangeDialog : public wxDialog
+{
+public:
+	NumericRangeDialog( wxWindow *parent, const wxString &title );
+	
+	void SetValues( const wxArrayString &values, bool int_only=false );
+	wxArrayString GetValues();
+	void GenerateValues();
+	bool CheckRanges();
+	
+private:	
+	void OnCommand(wxCommandEvent &evt);
+
+	bool m_intOnly;	
+	wxStaticText *m_notification;
+	wxListBox *m_values;
+	wxNumericCtrl *m_numIncr;
+	wxNumericCtrl *m_numEnd;
+	wxNumericCtrl *m_numStart;
+
+	DECLARE_EVENT_TABLE()
+};
+
 #endif

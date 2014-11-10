@@ -3,7 +3,6 @@
 #include "main.h"
 #include "casewin.h"
 #include "library.h"
-#include "numericvareditform.h"
 #include <wex/utils.h>
 
 
@@ -225,13 +224,12 @@ bool Parametric_QS::ShowEditValuesDialog(const wxString &title,
 bool Parametric_QS::ShowNumericValuesDialog(const wxString &title,
 	wxArrayString &values)
 {
-	NumericVarEditFormDialog dlg(this, title);
-	NumericVarEditForm *frm = dlg.GetPanel();
-	frm->SetValues(values, false);
+	NumericRangeDialog dlg( this, title );
+	dlg.SetValues(values, false);
 
 	if (dlg.ShowModal() == wxID_OK)
 	{
-		values = frm->lstValues->GetStrings();
+		values = dlg.GetValues();
 		return true;
 	}
 	else
