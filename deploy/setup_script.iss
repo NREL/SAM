@@ -6,8 +6,8 @@
 ; Do not use the same AppId value in installers for other applications.
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
 PrivilegesRequired=none
-AppId={{8C4CE967-AC1F-4D46-A12D-54DE2F927AF4}
-AppName=System Advisor Beta
+AppId={{4A0EDADE-6CE6-4CB4-907E-1401911B4D6D}
+AppName=System Advisor Model
 
 ; 64-bit installer extensions - remove if an issue
 ;ArchitecturesAllowed=x86 x64 ia64
@@ -35,7 +35,7 @@ AppSupportURL=http://sam.nrel.gov
 AppUpdatesURL=http://sam.nrel.gov
 DefaultGroupName=System Advisor Model
 OutputDir=.
-OutputBaseFilename=sam-beta-install
+OutputBaseFilename=sam-install
 Compression=lzma
 SolidCompression=yes
 ChangesAssociations=yes
@@ -73,33 +73,31 @@ Source: "x64/libeay32.dll"; DestDir: "{app}/x64"; Excludes: ".svn,*.map";  Flags
 Source: "x64/libcurl.dll"; DestDir: "{app}/x64"; Excludes: ".svn,*.map";  Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "x64/sam.exe"; DestDir: "{app}/x64"; Excludes: ".svn,*.map";  Flags: ignoreversion recursesubdirs createallsubdirs
 
-;Source: "IssProc.dll"; DestDir: "{app}"; Excludes: ".svn,*.map";  Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "dbghelp.dll"; DestDir: "{app}"; Excludes: ".svn,*.map";  Flags: ignoreversion recursesubdirs createallsubdirs
 
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 [Icons]
-;Name: "{group}\System Advisor Beta (x64)"; Filename: "{app}\x64\sam.exe"
-Name: "{group}\System Advisor Beta"; Filename: "{app}\win32\sam.exe" ; Check: not Is64BitInstallMode
-Name: "{group}\System Advisor Beta"; Filename: "{app}\x64\sam.exe"  ; Check: Is64BitInstallMode
+;Name: "{group}\System Advisor Model (x64)"; Filename: "{app}\x64\sam.exe"
+Name: "{group}\System Advisor Model"; Filename: "{app}\win32\sam.exe" ; Check: not Is64BitInstallMode
+Name: "{group}\System Advisor Model"; Filename: "{app}\x64\sam.exe"  ; Check: Is64BitInstallMode
 ;Name: "{group}\{cm:ProgramOnTheWeb,System Advisor Model}"; Filename: "http://sam.nrel.gov"
 ;Name: "{group}\{cm:UninstallProgram,System Advisor Model}"; Filename: "{uninstallexe}"
-;Name: "{commondesktop}\System Advisor Beta (x64)"; Filename: "{app}\x64\sam.exe"; Tasks: desktopicon
+;Name: "{commondesktop}\System Advisor Model (x64)"; Filename: "{app}\x64\sam.exe"; Tasks: desktopicon
 
-;[Registry]
+[Registry]
 ; 12/4/08 - delete left over entry to prevent issue reported by Paul - opening with earlier version when new verions installed
-;Root: HKCR; Subkey: "Applications\sam.exe"; ValueType: none; ValueName: ; ValueData: SAM; Flags: deletekey; Check: IsAdminLoggedOn
+Root: HKCR; Subkey: "Applications\sam.exe"; ValueType: none; ValueName: ; ValueData: SAM; Flags: deletekey; Check: IsAdminLoggedOn
 
 ; 12/4/08 for admin privileges -see Documentation\InnoSetup\AdminPrivileges
-;Root: HKCR; Subkey: ".zsam"; ValueType: string; ValueName: ; ValueData: "NREL.SAM"; Flags: uninsdeletevalue; Check: IsAdminLoggedOn
-;Root: HKCR; Subkey: "NREL.SAM"; ValueType: string; ValueName: ; ValueData: "System Advisor Model File"; Flags: uninsdeletekey; Check: IsAdminLoggedOn
-;Root: HKCR; Subkey: "NREL.SAM\DefaultIcon"; ValueType: string; ValueName: ; ValueData: "{app}\sam.exe,0"; Check: IsAdminLoggedOn
-;Root: HKCR; Subkey: "NREL.SAM\shell\open\command"; ValueType: string; ValueName: ; ValueData: """{app}\sam.exe"" ""%1"""; Check: IsAdminLoggedOn
+Root: HKCR; Subkey: ".sam"; ValueType: string; ValueName: ; ValueData: "NREL.SAM"; Flags: uninsdeletevalue; Check: IsAdminLoggedOn
+Root: HKCR; Subkey: "NREL.SAM"; ValueType: string; ValueName: ; ValueData: "System Advisor Model Project File"; Flags: uninsdeletekey; Check: IsAdminLoggedOn
+Root: HKCR; Subkey: "NREL.SAM\DefaultIcon"; ValueType: string; ValueName: ; ValueData: "{app}\sam.exe,0"; Check: IsAdminLoggedOn
+Root: HKCR; Subkey: "NREL.SAM\shell\open\command"; ValueType: string; ValueName: ; ValueData: """{app}\sam.exe"" ""%1"""; Check: IsAdminLoggedOn
 
 ; 12/4/08 for non-admin privileges -see Documentation\InnoSetup\AdminPrivileges
-;Root: HKCU; Subkey: "Software\Classes\.zsam"; ValueType: string; ValueName: ; ValueData: "NREL.SAM"; Flags: uninsdeletevalue; Check: not IsAdminLoggedOn
-;Root: HKCU; Subkey: "Software\Classes\NREL.SAM"; ValueType: string; ValueName: ; ValueData: "System Advisor Model File"; Flags: uninsdeletekey; Check: not IsAdminLoggedOn
-;Root: HKCU; Subkey: "Software\Classes\NREL.SAM\DefaultIcon"; ValueType: string; ValueName: ; ValueData: "{app}\sam.exe,0"; Check: not IsAdminLoggedOn
-;Root: HKCU; Subkey: "Software\Classes\NREL.SAM\shell\open\command"; ValueType: string; ValueName: ; ValueData: """{app}\sam.exe"" ""%1"""; Check: not IsAdminLoggedOn
+Root: HKCU; Subkey: "Software\Classes\.sam"; ValueType: string; ValueName: ; ValueData: "NREL.SAM"; Flags: uninsdeletevalue; Check: not IsAdminLoggedOn
+Root: HKCU; Subkey: "Software\Classes\NREL.SAM"; ValueType: string; ValueName: ; ValueData: "System Advisor Model Project File"; Flags: uninsdeletekey; Check: not IsAdminLoggedOn
+Root: HKCU; Subkey: "Software\Classes\NREL.SAM\DefaultIcon"; ValueType: string; ValueName: ; ValueData: "{app}\sam.exe,0"; Check: not IsAdminLoggedOn
+Root: HKCU; Subkey: "Software\Classes\NREL.SAM\shell\open\command"; ValueType: string; ValueName: ; ValueData: """{app}\sam.exe"" ""%1"""; Check: not IsAdminLoggedOn
 
 
 [Run]
@@ -114,7 +112,7 @@ Filename: "{app}\x64\sam.exe"; Check: Is64BitInstallMode; Description: "{cm:Laun
 function InitializeUninstall(): boolean;
 
 begin
-   MsgBox('Please close any running instances of SAM before continuing', mbConfirmation, MB_OK);
+   MsgBox('Please close any running instances of SAM before continuing.', mbConfirmation, MB_OK);
    Result := true;
 end;
 

@@ -6,21 +6,10 @@
 #include <vector>
 #include "case.h"
 
-class Parametric_QS : public wxPanel
+class Parametric_QS : public wxDialog
 {
 public:
 	Parametric_QS(wxWindow *parent, Case *c);
-
-	wxListBox *lstValues;
-	wxListBox *lstVariables;
-	wxCheckBox *chkEnable;
-	wxButton *btnRemove;
-	wxStaticText *Label1;
-	wxButton *btnEditValues;
-	wxStaticText *Label2;
-	wxButton *btnRemoveVar;
-	wxButton *btnAddVar;
-
 
 	void InitForm(CaseWindow *cwin, ParametricData &par);
 	void UpdateFromParametricData();
@@ -51,23 +40,16 @@ public:
 
 	void UpdateCaseParametricData();
 
+	void OnCommand( wxCommandEvent &evt );
+
 private:
+	wxListBox *lstValues;
+	wxListBox *lstVariables;
+
 	Case *m_case;
 	wxArrayString m_input_names;
 	std::vector<wxArrayString> m_input_values;
-	DECLARE_EVENT_TABLE()
-};
 
-class Parametric_QSDialog : public wxDialog
-{
-public:
-	Parametric_QSDialog(wxWindow *parent, const wxString &title, Case *c);
-
-	Parametric_QS *GetPanel() { return mPanel; }
-	void OnCommand(wxCommandEvent &evt);
-	void OnClose(wxCloseEvent &evt);
-private:
-	Parametric_QS *mPanel;
 	DECLARE_EVENT_TABLE()
 };
 
