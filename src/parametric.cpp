@@ -16,32 +16,9 @@
 #include "parametric.h"
 #include "parametric_qs.h"
 #include "main.h"
+#include "results.h"
 #include "casewin.h"
 #include "variablegrid.h"
-
-
-// TODO repeated from Results.cpp - need to combine into common location
-class TimeSeries8760 : public wxDVTimeSeriesDataSet
-{
-	float *m_pdata;
-	wxString m_label, m_units;
-public:
-	TimeSeries8760(float *p, const wxString &label, const wxString &units)
-		: wxDVTimeSeriesDataSet(), m_pdata(p), m_label(label), m_units(units) { }
-	virtual wxRealPoint At(size_t i) const
-	{
-		if (i < 8760) return wxRealPoint(i, m_pdata[i]);
-		else return wxRealPoint(0, 0);
-	}
-	virtual size_t Length() const { return 8760; }
-	virtual double GetTimeStep() const { return 1.0; }
-	virtual double GetOffset() const { return 0.0; }
-	virtual wxString GetSeriesTitle() const { return m_label; }
-	virtual wxString GetUnits() const { return m_units; }
-	virtual void SetDataValue(size_t i, double newYValue) { /* nothing to do */ }
-};
-
-
 
 
 ParametricData::ParametricData( Case *c )
@@ -185,31 +162,46 @@ void ParametricGrid::OnLeftClick(wxGridEvent &evt)
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
-enum { ID_SELECT_INPUTS, ID_SELECT_OUTPUTS, ID_NUMRUNS, ID_RUN, ID_CLEAR, ID_GRID, ID_INPUTMENU_FILL_DOWN_SEQUENCE, ID_INPUTMENU_FILL_DOWN_ONE_VALUE, ID_INPUTMENU_FILL_DOWN_EVENLY, ID_OUTPUTMENU_ADD_PLOT, ID_OUTPUTMENU_REMOVE_PLOT, ID_OUTPUTMENU_SHOW_DATA, ID_OUTPUTMENU_CLIPBOARD, ID_OUTPUTMENU_CSV, ID_OUTPUTMENU_EXCEL, ID_SHOW_ALL_INPUTS, ID_QUICK_SETUP };
+enum { ID_SELECT_INPUTS = wxID_HIGHEST+494, ID_SELECT_OUTPUTS, ID_NUMRUNS, 
+	ID_RUN, ID_CLEAR, ID_GRID, ID_INPUTMENU_FILL_DOWN_SEQUENCE, 
+	ID_INPUTMENU_FILL_DOWN_ONE_VALUE, ID_INPUTMENU_FILL_DOWN_EVENLY, 
+	ID_OUTPUTMENU_ADD_PLOT, ID_OUTPUTMENU_REMOVE_PLOT, 
+	ID_OUTPUTMENU_SHOW_DATA, ID_OUTPUTMENU_CLIPBOARD, 
+	ID_OUTPUTMENU_CSV, ID_OUTPUTMENU_EXCEL, 
+	ID_SHOW_ALL_INPUTS, ID_QUICK_SETUP, ID_RESULTS_MENU };
 
 
 
 BEGIN_EVENT_TABLE(ParametricViewer, wxPanel)
-EVT_BUTTON(ID_SELECT_INPUTS, ParametricViewer::OnCommand)
-EVT_BUTTON(ID_SELECT_OUTPUTS, ParametricViewer::OnCommand)
-EVT_NUMERIC(ID_NUMRUNS, ParametricViewer::OnCommand)
-EVT_BUTTON(ID_RUN, ParametricViewer::OnCommand)
-EVT_BUTTON(ID_CLEAR, ParametricViewer::OnCommand)
-EVT_BUTTON(ID_QUICK_SETUP, ParametricViewer::OnCommand)
-EVT_BUTTON(ID_OUTPUTMENU_CLIPBOARD, ParametricViewer::OnMenuItem)
-EVT_BUTTON(ID_OUTPUTMENU_CSV, ParametricViewer::OnMenuItem)
-EVT_BUTTON(ID_OUTPUTMENU_EXCEL, ParametricViewer::OnMenuItem)
-EVT_GRID_CMD_LABEL_RIGHT_CLICK(ID_GRID, ParametricViewer::OnGridColLabelRightClick)
-EVT_MENU(ID_OUTPUTMENU_ADD_PLOT, ParametricViewer::OnMenuItem)
-EVT_MENU(ID_OUTPUTMENU_REMOVE_PLOT, ParametricViewer::OnMenuItem)
-EVT_MENU(ID_OUTPUTMENU_SHOW_DATA, ParametricViewer::OnMenuItem)
-EVT_MENU(ID_OUTPUTMENU_CLIPBOARD, ParametricViewer::OnMenuItem)
-EVT_MENU(ID_OUTPUTMENU_CSV, ParametricViewer::OnMenuItem)
-EVT_MENU(ID_OUTPUTMENU_EXCEL, ParametricViewer::OnMenuItem)
-EVT_MENU(ID_INPUTMENU_FILL_DOWN_ONE_VALUE, ParametricViewer::OnMenuItem)
-EVT_MENU(ID_INPUTMENU_FILL_DOWN_SEQUENCE, ParametricViewer::OnMenuItem)
-EVT_MENU(ID_INPUTMENU_FILL_DOWN_EVENLY, ParametricViewer::OnMenuItem)
-EVT_MENU(ID_SHOW_ALL_INPUTS, ParametricViewer::OnMenuItem)
+	EVT_BUTTON(ID_SELECT_INPUTS, ParametricViewer::OnCommand)
+	EVT_BUTTON(ID_SELECT_OUTPUTS, ParametricViewer::OnCommand)
+	EVT_NUMERIC(ID_NUMRUNS, ParametricViewer::OnCommand)
+	EVT_BUTTON(ID_RUN, ParametricViewer::OnCommand)
+	EVT_BUTTON(ID_QUICK_SETUP, ParametricViewer::OnCommand)
+	
+	EVT_BUTTON(ID_RESULTS_MENU, ParametricViewer::OnCommand)
+	
+	EVT_BUTTON(ID_OUTPUTMENU_CLIPBOARD, ParametricViewer::OnMenuItem)
+	EVT_BUTTON(ID_OUTPUTMENU_CSV, ParametricViewer::OnMenuItem)
+	EVT_BUTTON(ID_OUTPUTMENU_EXCEL, ParametricViewer::OnMenuItem)
+	EVT_BUTTON(ID_CLEAR, ParametricViewer::OnCommand)
+	
+	EVT_MENU(ID_OUTPUTMENU_CLIPBOARD, ParametricViewer::OnMenuItem)
+	EVT_MENU(ID_OUTPUTMENU_CSV, ParametricViewer::OnMenuItem)
+	EVT_MENU(ID_OUTPUTMENU_EXCEL, ParametricViewer::OnMenuItem)
+	EVT_MENU(ID_CLEAR, ParametricViewer::OnCommand)
+
+	EVT_GRID_CMD_LABEL_RIGHT_CLICK(ID_GRID, ParametricViewer::OnGridColLabelRightClick)
+	EVT_MENU(ID_OUTPUTMENU_ADD_PLOT, ParametricViewer::OnMenuItem)
+	EVT_MENU(ID_OUTPUTMENU_REMOVE_PLOT, ParametricViewer::OnMenuItem)
+	EVT_MENU(ID_OUTPUTMENU_SHOW_DATA, ParametricViewer::OnMenuItem)
+	EVT_MENU(ID_OUTPUTMENU_CLIPBOARD, ParametricViewer::OnMenuItem)
+	EVT_MENU(ID_OUTPUTMENU_CSV, ParametricViewer::OnMenuItem)
+	EVT_MENU(ID_OUTPUTMENU_EXCEL, ParametricViewer::OnMenuItem)
+	EVT_MENU(ID_INPUTMENU_FILL_DOWN_ONE_VALUE, ParametricViewer::OnMenuItem)
+	EVT_MENU(ID_INPUTMENU_FILL_DOWN_SEQUENCE, ParametricViewer::OnMenuItem)
+	EVT_MENU(ID_INPUTMENU_FILL_DOWN_EVENLY, ParametricViewer::OnMenuItem)
+	EVT_MENU(ID_SHOW_ALL_INPUTS, ParametricViewer::OnMenuItem)
 END_EVENT_TABLE()
 
 
@@ -224,31 +216,43 @@ ParametricViewer::ParametricViewer(wxWindow *parent, Case *cc)
 	main_sizer->Add(splitter, 1, wxBOTTOM | wxLEFT | wxEXPAND, 5);
 
 	wxPanel *top_panel = new wxPanel(splitter);
+	top_panel->SetBackgroundColour( wxMetroTheme::Colour( wxMT_FOREGROUND ) );
 
 	wxBoxSizer *tool_sizer = new wxBoxSizer(wxHORIZONTAL);
-	tool_sizer->Add(new wxStaticText(top_panel, wxID_ANY, "Parametric simulations:"), 0, wxALIGN_CENTER_VERTICAL, 2);
-	tool_sizer->Add(new wxButton(top_panel, ID_SELECT_INPUTS, "Input parameters..."), 0, wxALL | wxEXPAND, 2);
-	tool_sizer->Add(new wxButton(top_panel, ID_SELECT_OUTPUTS, "Output metrics..."), 0, wxALL | wxEXPAND, 2);
-	tool_sizer->Add(new wxStaticText(top_panel, wxID_ANY, "Number of runs:"), 0, wxALIGN_CENTER_VERTICAL, 2);
-	m_num_runs_ctrl = new wxNumericCtrl(top_panel, ID_NUMRUNS, 0, wxNumericCtrl::INTEGER, wxDefaultPosition, wxSize(50, 24));
-	tool_sizer->Add(m_num_runs_ctrl, 0, wxALL, 2);
-	tool_sizer->Add(new wxButton(top_panel, ID_RUN, "Run parametric simulations"), 0, wxALL | wxEXPAND, 2);
+	//tool_sizer->Add(new wxStaticText(top_panel, wxID_ANY, "Parametrics:"), 0, wxALIGN_CENTER_VERTICAL|wxRIGHT, 5);
+	tool_sizer->Add(new wxMetroButton(top_panel, ID_QUICK_SETUP, "Quick setup..."), 0, wxALIGN_CENTER_VERTICAL, 0);
+	tool_sizer->Add(new wxMetroButton(top_panel, ID_SELECT_INPUTS, "Inputs..."), 0, wxALL | wxEXPAND, 0);
+	tool_sizer->Add(new wxMetroButton(top_panel, ID_SELECT_OUTPUTS, "Outputs..."), 0, wxALL | wxEXPAND, 0);
+	tool_sizer->Add(new wxMetroButton(top_panel, ID_RUN, "Run simulations", wxNullBitmap, wxDefaultPosition, wxDefaultSize, wxMB_RIGHTARROW), 0, wxALL | wxEXPAND, 0);
+	tool_sizer->AddStretchSpacer();
+	wxStaticText *lblruns = new wxStaticText(top_panel, wxID_ANY, "Number of runs:");
+	lblruns->SetForegroundColour( *wxWHITE );
+	tool_sizer->Add( lblruns, 0, wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT, 3);
+	m_num_runs_ctrl = new wxNumericCtrl(top_panel, ID_NUMRUNS, 0, wxNumericCtrl::INTEGER);
+	wxSize bestsz( m_num_runs_ctrl->GetBestSize() );
+	m_num_runs_ctrl->SetInitialSize( wxSize( bestsz.x/2, bestsz.y ) );
+	tool_sizer->Add(m_num_runs_ctrl, 0, wxALL|wxALIGN_CENTER_VERTICAL, 0);
 	m_run_multithreaded = new wxCheckBox(top_panel, wxID_ANY, "Run multi-threaded?", wxDefaultPosition, wxDefaultSize, wxALIGN_RIGHT);
 	m_run_multithreaded->SetValue(true);
 	m_run_multithreaded->Hide();
+
 	//tool_sizer->Add(m_run_multithreaded, 0, wxALIGN_CENTER_VERTICAL, 1);
 	tool_sizer->AddStretchSpacer();
-	tool_sizer->Add(new wxButton(top_panel, ID_CLEAR, "Clear results"), 0, wxALL | wxEXPAND, 2);
+	tool_sizer->Add(new wxMetroButton(top_panel, ID_RESULTS_MENU, "Results", wxNullBitmap, wxDefaultPosition, wxDefaultSize, wxMB_DOWNARROW), 0, wxALL | wxEXPAND, 0);
 
+
+
+	/*
 	// main grid menu (also available as right click in upper left of grid)
 	wxBoxSizer *grid_menu_sizer = new wxBoxSizer(wxHORIZONTAL);
-	grid_menu_sizer->Add(new wxButton(top_panel, ID_QUICK_SETUP, "Quick Setup"), 0, wxALIGN_CENTER_VERTICAL, 2);
-	grid_menu_sizer->AddStretchSpacer();
-	grid_menu_sizer->Add(new wxButton(top_panel, ID_OUTPUTMENU_CLIPBOARD, "Copy to clipboard"), 0, wxALIGN_CENTER_VERTICAL, 2);
-	grid_menu_sizer->Add(new wxButton(top_panel, ID_OUTPUTMENU_CSV, "Save as CSV"), 0, wxALL | wxEXPAND, 2);
+	grid_menu_sizer->Add(new wxButton(top_panel, ID_OUTPUTMENU_CLIPBOARD, "Copy to clipboard", wxDefaultPosition,wxDefaultSize,wxBU_EXACTFIT), 0, wxALIGN_CENTER_VERTICAL, 2);
+	grid_menu_sizer->Add(new wxButton(top_panel, ID_OUTPUTMENU_CSV, "Save as CSV", wxDefaultPosition,wxDefaultSize,wxBU_EXACTFIT), 0, wxALL | wxEXPAND, 2);
 #ifdef __WXMSW__
-	grid_menu_sizer->Add(new wxButton(top_panel, ID_OUTPUTMENU_EXCEL, "Send to Excel"), 0, wxALL | wxEXPAND, 2);
+	grid_menu_sizer->Add(new wxButton(top_panel, ID_OUTPUTMENU_EXCEL, "Send to Excel", wxDefaultPosition,wxDefaultSize,wxBU_EXACTFIT), 0, wxALL | wxEXPAND, 2);
 #endif
+	grid_menu_sizer->AddStretchSpacer();
+	grid_menu_sizer->Add(new wxButton(top_panel, ID_CLEAR, "Clear results", wxDefaultPosition,wxDefaultSize,wxBU_EXACTFIT), 0, wxALL | wxEXPAND, 2);
+	*/
 
 	m_grid = new ParametricGrid(top_panel, ID_GRID);
 
@@ -264,8 +268,8 @@ ParametricViewer::ParametricViewer(wxWindow *parent, Case *cc)
 	m_output_names = m_grid_data->GetOutputNames();
 
 	wxBoxSizer *par_sizer = new wxBoxSizer(wxVERTICAL);
-	par_sizer->Add(tool_sizer, 0, wxALL | wxEXPAND, 2);
-	par_sizer->Add(grid_menu_sizer, 0, wxALL | wxEXPAND, 2);
+	par_sizer->Add(tool_sizer, 0, wxALL | wxEXPAND, 0);
+	//par_sizer->Add(grid_menu_sizer, 0, wxALL | wxEXPAND, 2);
 	par_sizer->Add(m_grid, 1, wxALL | wxEXPAND, 0);
 
 	UpdateGrid();
@@ -373,6 +377,26 @@ void ParametricViewer::OnCommand(wxCommandEvent &evt)
 {
 	switch (evt.GetId())
 	{
+	case ID_RESULTS_MENU:
+		{
+			wxMetroPopupMenu menu;
+			menu.Append(ID_OUTPUTMENU_CLIPBOARD, "Copy to clipboard");
+			menu.Append(ID_OUTPUTMENU_CSV, "Save as CSV");
+			menu.Append(ID_OUTPUTMENU_EXCEL, "Send to Excel");	
+			menu.AppendSeparator();
+			menu.Append(ID_CLEAR, "Clear all");		
+			
+			wxPoint p(wxDefaultPosition);
+			wxWindow *btn = dynamic_cast<wxWindow*>( evt.GetEventObject() );
+			if ( btn )
+			{
+				wxSize cs( btn->GetClientSize() );
+				p = btn->ClientToScreen( wxPoint( cs.x, cs.y ) );
+			}
+			
+			menu.Popup( btn ? btn : this, p, wxTOP|wxRIGHT );
+		}
+		break;
 	case ID_SELECT_INPUTS:
 		SelectInputs();
 		UpdateGrid();
@@ -394,18 +418,21 @@ void ParametricViewer::OnCommand(wxCommandEvent &evt)
 		UpdateGrid();
 		break;
 	case ID_QUICK_SETUP:
-		Parametric_QSDialog *pqs = new Parametric_QSDialog(this, "Parametric Quick Setup", m_case);
-		if (pqs->ShowModal() == wxID_OK)
 		{
-			m_grid_data->Init();
-			m_num_runs_ctrl->SetValue(m_grid_data->GetNumberRows());
-			m_input_names = m_grid_data->GetInputNames();
-			m_output_names = m_grid_data->GetOutputNames();
-			m_grid_data->UpdateInputs(m_input_names);
-			m_grid_data->UpdateOutputs(m_output_names);
-			m_grid->SetTable(m_grid_data);
-			UpdateNumRuns();
-			UpdateGrid();
+			Parametric_QS pqs(this, m_case);
+			pqs.CenterOnParent();
+			if (pqs.ShowModal() == wxID_OK)
+			{
+				m_grid_data->Init();
+				m_num_runs_ctrl->SetValue(m_grid_data->GetNumberRows());
+				m_input_names = m_grid_data->GetInputNames();
+				m_output_names = m_grid_data->GetOutputNames();
+				m_grid_data->UpdateInputs(m_input_names);
+				m_grid_data->UpdateOutputs(m_output_names);
+				m_grid->SetTable(m_grid_data);
+				UpdateNumRuns();
+				UpdateGrid();
+			}
 		}
 		break;
 	}
@@ -760,9 +787,16 @@ void ParametricViewer::AddPlot(const wxString &output_name)
 					{
 						size_t n;
 						float *y = m_grid_data->GetArray(row, col, &n);
-						//if (n == 8760)
-						dv->AddDataSet(new TimeSeries8760(y, m_grid_data->GetColLabelValue(col) + wxString::Format(" : run(%d)", row + 1), m_grid_data->GetUnits(col)), wxEmptyString, true);
-						dv->SelectDataSetAtIndex(row);
+						size_t steps_per_hour = n/8760;
+						if ( steps_per_hour > 0 
+							&& steps_per_hour <= 60 
+							&& n == steps_per_hour*8760 )
+						{
+							dv->AddDataSet(new TimeSeriesData(y, n, 1.0/steps_per_hour, 
+									m_grid_data->GetColLabelValue(col) + wxString::Format(" : run(%d)", row + 1), 
+									m_grid_data->GetUnits(col)), wxEmptyString, true );
+							dv->SelectDataSetAtIndex(row);
+						}
 					}
 					m_graphs.push_back(dv);
 					// TODO - good way to size dview control

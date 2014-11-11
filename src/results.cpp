@@ -528,35 +528,25 @@ ResultsViewer::~ResultsViewer()
 		delete m_tsDataSets[i];
 }
 
-class TimeSeries : public wxDVTimeSeriesDataSet
+TimeSeriesData::TimeSeriesData( float *p, size_t len, double ts_hour, const wxString &label, const wxString &units )
+	: wxDVTimeSeriesDataSet(), m_pdata(p), m_len(len), m_tsHour(ts_hour), m_label(label), m_units(units)
 {
-	float *m_pdata;
-	size_t m_len;
-	double m_tsHour;
-	wxString m_label, m_units;
-public:
-	TimeSeries( float *p, size_t len, double ts_hour, const wxString &label, const wxString &units )
-		: wxDVTimeSeriesDataSet(), m_pdata(p), m_len(len), m_tsHour(ts_hour), m_label(label), m_units(units) { }
-	virtual wxRealPoint At(size_t i) const
-	{
-		// SAM convention is that for hourly simulation, 
-		// the sun position is calculated at the midpoint of the hour.
-		// For subhourly simulation, the sun position is calculated at the instantaneous
-		// time specified for the data record in the weather file
+	/* nothing to do */
+}
 
-		double time = i*m_tsHour;
-		if ( m_tsHour == 1.0 ) time += m_tsHour/2.0;
+wxRealPoint TimeSeriesData::At(size_t i) const
+{
+	// SAM convention is that for hourly simulation, 
+	// the sun position is calculated at the midpoint of the hour.
+	// For subhourly simulation, the sun position is calculated at the instantaneous
+	// time specified for the data record in the weather file
 
-		if ( i < m_len ) return wxRealPoint( time, m_pdata[i] );
-		else return wxRealPoint(0,0);
-	}
-	virtual size_t Length() const { return m_len; }
-	virtual double GetTimeStep() const { return m_tsHour; }
-	virtual double GetOffset() const { return 0.0; }
-	virtual wxString GetSeriesTitle() const { return m_label; }
-	virtual wxString GetUnits() const { return m_units; }
-	virtual void SetDataValue(size_t i, double newYValue) { /* nothing to do */ }
-};
+	double time = i*m_tsHour;
+	if ( m_tsHour == 1.0 ) time += m_tsHour/2.0;
+
+	if ( i < m_len ) return wxRealPoint( time, m_pdata[i] );
+	else return wxRealPoint(0,0);
+}
 
 class ExcelExchSummary : public MetricsTable
 {
@@ -755,7 +745,7 @@ void ResultsViewer::Setup( Simulation *sim )
 						group = wxString::Format( "%lg Minute Data", 60.0/steps_per_hour );
 
 					wxLogStatus("Adding time series dataset: %d len, %lg time step", (int)n, 1.0/steps_per_hour );
-					TimeSeries *tsd = new TimeSeries( p, n, 1.0/steps_per_hour,
+					TimeSeriesData *tsd = new TimeSeriesData( p, n, 1.0/steps_per_hour,
 						m_sim->GetLabel(vars[i]), 
 						m_sim->GetUnits(vars[i]));
 					tsd->SetMetaData( vars[i] ); // save the variable name in the meta field for easy lookup later

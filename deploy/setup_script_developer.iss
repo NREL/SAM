@@ -26,8 +26,8 @@ ArchitecturesInstallIn64BitMode=x64
 
 
 ; UPDATE THESE TO MATCH THE VERSION
-AppVerName=SAM 2014.11.6
-DefaultDirName={sd}\SAM\2014.11.6
+AppVerName=SAM 2014.11.11
+DefaultDirName={sd}\SAM\2014.11.11
 
 AppPublisher=National Renewable Energy Laboratory
 AppPublisherURL=http://sam.nrel.gov
@@ -73,8 +73,6 @@ Source: "x64/libeay32.dll"; DestDir: "{app}/x64"; Excludes: ".svn,*.map";  Flags
 Source: "x64/libcurl.dll"; DestDir: "{app}/x64"; Excludes: ".svn,*.map";  Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "x64/sam.exe"; DestDir: "{app}/x64"; Excludes: ".svn,*.map";  Flags: ignoreversion recursesubdirs createallsubdirs
 
-Source: "IssProc.dll"; DestDir: "{app}"; Excludes: ".svn,*.map";  Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "dbghelp.dll"; DestDir: "{app}"; Excludes: ".svn,*.map";  Flags: ignoreversion recursesubdirs createallsubdirs
 
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 [Icons]
@@ -110,53 +108,12 @@ Filename: "{app}\x64\sam.exe"; Check: Is64BitInstallMode; Description: "{cm:Laun
 
 ; added 9/19/07 to check for running instances on install and uninstall
 [Code]
-// IssFindModule called on install
-function IssFindModule(hWnd: Integer; Modulename: PChar; Language: PChar; Silent: Boolean; CanIgnore: Boolean ): Integer;
-external 'IssFindModule@files:IssProc.dll stdcall setuponly';
 
-// IssFindModule called on uninstall
-function IssFindModuleU(hWnd: Integer; Modulename: PChar; Language: PChar; Silent: Boolean; CanIgnore: Boolean ): Integer;
-external 'IssFindModule@{app}\IssProc.dll stdcall uninstallonly';
-
-//********************************************************************************************************************************************
-// IssFindModule function returns: 0 if no module found; 1 if cancel pressed; 2 if ignore pressed; -1 if an error occured
-//
-//  hWnd        = main wizard window handle.
-//
-//  Modulename  = module name(s) to check. You can use a full path to a DLL/EXE/OCX or wildcard file name/path. Separate multiple modules with semicolon.
-//                 Example1 : Modulename='*mymodule.dll';     -  will search in any path for mymodule.dll
-//                 Example2 : Modulename=ExpandConstant('{app}\mymodule.dll');     -  will search for mymodule.dll only in {app} folder (the application directory)
-//                 Example3 : Modulename=ExpandConstant('{app}\mymodule.dll;*myApp.exe');   - just like Example2 + search for myApp.exe regardless of his path.
-//
-//  Language    = files in use language dialog. Set this value to empty '' and default english will be used
-//                ( see and include IssProcLanguage.ini if you need custom text or other language)
-//
-//  Silent      = silent mode : set this var to true if you don't want to display the files in use dialog.
-//                When Silent is true IssFindModule will return 1 if it founds the Modulename or 0 if nothing found
-//
-//  CanIgnore   = set this var to false to Disable the Ignore button forcing the user to close those applications before continuing
-//                set this var to true to Enable the Ignore button allowing the user to continue without closing those applications
-//******************************************************************************************************************************************
-
-
-function InitializeUninstall(): Boolean;
-var
-  sModuleName: String;
-  nCode: Integer;  {IssFindModule returns: 0 if no module found; 1 if cancel pressed; 2 if ignore pressed; -1 if an error occured }
+function InitializeUninstall(): boolean;
 
 begin
-    Result := false;
-      sModuleName := ExpandConstant('*sam.exe;');    { searched module. Tip: separate multiple modules with semicolon Ex: '*mymodule.dll;*mymodule2.dll;*myapp.exe'}
-
-     nCode:=IssFindModuleU(0,sModuleName,'enu',false,false); { search for module and display files-in-use window if found  }
-
-     if (nCode=0) or (nCode=2) then begin                    { no module found or ignored pressed}
-          Result := true;                                    { continue setup  }
-     end;
-
-    // Unload the extension, otherwise it will not be deleted by the uninstaller
-    UnloadDLL(ExpandConstant('{app}\IssProc.dll'));
-
+   MsgBox('Please close any running instances of SAM before continuing', mbConfirmation, MB_OK);
+   Result := true;
 end;
 
 // 12/08/08 - added to select appropriate installation path that is writeable by the user
