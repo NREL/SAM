@@ -4,6 +4,7 @@
 #include <wx/datstrm.h>
 #include <wex/metro.h>
 
+#include <wex/dview/dvtimeseriesdataset.h>
 #include <wex/dview/dvplotctrlsettings.h>
 #include <wex/plot/plplotctrl.h>
 
@@ -215,6 +216,24 @@ private:
 	wxArrayString m_selectedVars;
 	
 	DECLARE_EVENT_TABLE()
+};
+
+
+class TimeSeriesData : public wxDVTimeSeriesDataSet
+{
+	float *m_pdata;
+	size_t m_len;
+	double m_tsHour;
+	wxString m_label, m_units;
+public:
+	TimeSeriesData( float *p, size_t len, double ts_hour, const wxString &label, const wxString &units );
+	virtual wxRealPoint At(size_t i) const;
+	virtual size_t Length() const { return m_len; }
+	virtual double GetTimeStep() const { return m_tsHour; }
+	virtual double GetOffset() const { return 0.0; }
+	virtual wxString GetSeriesTitle() const { return m_label; }
+	virtual wxString GetUnits() const { return m_units; }
+	virtual void SetDataValue(size_t i, double newYValue) { /* nothing to do */ }
 };
 
 #endif

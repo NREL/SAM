@@ -6,71 +6,72 @@
 #include <wex/utils.h>
 
 
-enum {
-  ID_GroupBox1,
-  ID_Label3,
-  ID_grpOutline,
-  ID_lstValues,
+enum { ID_lstValues = wxID_HIGHEST+495,
   ID_lstVariables,
-  ID_Label1,
   ID_btnEditValues,
-  ID_Label2,
-  ID_Cancel,
-  ID_OK,
   ID_btnRemoveVar,
   ID_btnAddVar };
 
-BEGIN_EVENT_TABLE( Parametric_QS, wxPanel )
+BEGIN_EVENT_TABLE( Parametric_QS, wxDialog )
 	EVT_BUTTON( ID_btnAddVar, Parametric_QS::OnAddVariable )
 	EVT_BUTTON( ID_btnRemoveVar, Parametric_QS::OnRemoveVariable )
 	EVT_LISTBOX( ID_lstVariables, Parametric_QS::OnVariableSelect )
 	EVT_LISTBOX_DCLICK( ID_lstVariables, Parametric_QS::OnVarDblClick)
 	EVT_BUTTON( ID_btnEditValues, Parametric_QS::OnEditValues )
 	EVT_LISTBOX_DCLICK( ID_lstValues, Parametric_QS::OnValueDblClick)
+	EVT_BUTTON( wxID_OK, Parametric_QS::OnCommand )
+	EVT_BUTTON( wxID_HELP, Parametric_QS::OnCommand )
 END_EVENT_TABLE()
 
 Parametric_QS::Parametric_QS(wxWindow *parent, Case *c)
-: wxPanel(parent), m_case(c)
+	: wxDialog(parent, wxID_ANY, "Parametric Quick Setup", wxDefaultPosition, wxSize(550,350), wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER ), 
+	m_case(c)
 {
-	btnAddVar = new wxButton(this, ID_btnAddVar, "Add");
-	btnRemoveVar = new wxButton(this, ID_btnRemoveVar, "Remove");
-	btnEditValues = new wxButton(this, ID_btnEditValues, "Edit");
-	wxArrayString _data_lstVariables;
-
-	lstVariables = new wxListBox(this, ID_lstVariables, wxPoint(-1, -1), wxSize(-1, -1), _data_lstVariables, wxLB_SINGLE);
-	wxArrayString _data_lstValues;
-	lstValues = new wxListBox(this, ID_lstValues, wxPoint(-1, -1), wxSize(-1, -1), _data_lstValues, wxLB_SINGLE);
-
-	Label1 = new wxStaticText(this, ID_Label1, "Variables:");
-	Label2 = new wxStaticText(this, ID_Label2, "Selected Variable Values:");
-
-
-	wxFlexGridSizer *fgs = new wxFlexGridSizer(2, 2, 5, 25);
+	lstVariables = new wxListBox(this, ID_lstVariables);
+	lstValues = new wxListBox(this, ID_lstValues);
+		
 
 	wxBoxSizer *bsvars = new wxBoxSizer(wxHORIZONTAL);
-	bsvars->Add(Label1, 0, wxALIGN_CENTER, 0);
+	bsvars->Add( new wxStaticText(this, wxID_ANY, "Variables:"), 0, wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxALL, 3);
 	bsvars->AddStretchSpacer();
-	bsvars->Add(btnAddVar, 0);
-	bsvars->Add(btnRemoveVar, 0);
+	bsvars->Add( new wxButton(this, ID_btnAddVar, "Add", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL, 3);
+	bsvars->Add( new wxButton(this, ID_btnRemoveVar, "Remove", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL, 3);
 
 	wxBoxSizer *bsvals = new wxBoxSizer(wxHORIZONTAL);
-	bsvals->Add(Label2, 0, wxALIGN_CENTER, 0);
+	bsvals->Add( new wxStaticText(this, wxID_ANY, "Selected variable values:"), 0, wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxALL, 3);
 	bsvals->AddStretchSpacer();
-	bsvals->Add(btnEditValues, 0);
+	bsvals->Add( new wxButton(this, ID_btnEditValues, "Edit", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL, 3);
+	
+	wxFlexGridSizer *fgs = new wxFlexGridSizer(2, 2, 5, 25);
 
-	fgs->Add(bsvars, 3, wxEXPAND | wxALL, 0);
-	fgs->Add(bsvals, 3, wxEXPAND | wxALL, 0);
-	fgs->Add(lstVariables, 3, wxEXPAND | wxALL, 0);
-	fgs->Add(lstValues, 3, wxEXPAND | wxALL, 0);
+	fgs->Add(bsvars, 3, wxEXPAND | wxALL, 3);
+	fgs->Add(bsvals, 3, wxEXPAND | wxALL, 3);
+	fgs->Add(lstVariables, 3, wxEXPAND | wxALL, 3);
+	fgs->Add(lstValues, 3, wxEXPAND | wxALL, 3);
 
 	fgs->AddGrowableCol(0, 1);
 	fgs->AddGrowableCol(1, 1);
 	fgs->AddGrowableRow(1, 1);
 
-	SetSizer(fgs);
-
+	wxBoxSizer *main_sizer = new wxBoxSizer( wxVERTICAL );
+	main_sizer->Add( fgs, 1, wxALL|wxEXPAND, 5 );
+	main_sizer->Add( CreateButtonSizer( wxOK|wxCANCEL|wxHELP ), 0, wxALL|wxEXPAND, 5 );
+	SetSizer(main_sizer);
 }
 
+
+void Parametric_QS::OnCommand( wxCommandEvent &evt )
+{
+	if ( evt.GetId() == wxID_OK )
+	{
+		if (wxYES == wxMessageBox("Overwrite parametric table inputs with quick setup inputs?", "Overwrite table", wxYES_NO))
+			UpdateCaseParametricData();
+
+		EndModal( wxID_OK );
+	}
+	else if ( evt.GetId() == wxID_HELP )
+		SamApp::ShowHelp( "parametric_quick_setup" );
+}
 
 void Parametric_QS::UpdateFromParametricData()
 {
@@ -579,52 +580,4 @@ void Parametric_QS::RefreshVariableList()
 
 	lstValues->Clear();
 }
-
-
-
-BEGIN_EVENT_TABLE( Parametric_QSDialog, wxDialog )
-	EVT_CLOSE(Parametric_QSDialog::OnClose)
-	EVT_BUTTON(ID_OK, Parametric_QSDialog::OnCommand)
-	EVT_BUTTON(ID_Cancel, Parametric_QSDialog::OnCommand)
-	END_EVENT_TABLE()
-
-	Parametric_QSDialog::Parametric_QSDialog(wxWindow *parent, const wxString &title, Case *c)
-	: wxDialog(parent, -1, title, wxDefaultPosition, wxDefaultSize, wxRESIZE_BORDER | wxDEFAULT_DIALOG_STYLE)
-{
-//	ParametricData par(c);// set par based on case
-	mPanel = new Parametric_QS(this, c);
-	wxBoxSizer *button_sizer = new wxBoxSizer(wxHORIZONTAL);
-	button_sizer->AddStretchSpacer();
-	button_sizer->Add(new wxButton(this, ID_OK, "OK"));
-	button_sizer->Add(new wxButton(this, ID_Cancel, "Cancel"));
-	wxBoxSizer *main_sizer = new wxBoxSizer(wxVERTICAL);
-	main_sizer->Add(mPanel, 2, wxALL | wxEXPAND, 10);
-	main_sizer->Add(button_sizer, 0, wxALIGN_RIGHT | wxRIGHT | wxBOTTOM, 10);
-	SetSizerAndFit(main_sizer);
-}
-
-
-void Parametric_QSDialog::OnCommand(wxCommandEvent &evt)
-{
-	switch (evt.GetId())
-	{
-	case ID_Cancel:
-		EndModal(wxID_CANCEL);
-		Destroy();
-		break;
-	case ID_OK:
-		if (wxYES == wxMessageBox("Overwrite parametric table inputs with quick setup inputs?", "Overwrite table", wxYES_NO))
-			mPanel->UpdateCaseParametricData();
-		EndModal(wxID_OK);
-		Destroy();
-		break;
-	}
-}
-
-void Parametric_QSDialog::OnClose(wxCloseEvent &evt)
-{
-	EndModal(wxID_CANCEL);
-	Destroy();
-}
-
 
