@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+   <title>Curtailment and Availability</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="" />
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+   
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+   <style type="text/css">
+     body { margin: 0px; background: #FFFFFF; }
+   </style>
+   <script type="text/javascript" src="jquery.js"></script>
+   <script type="text/javascript" src="helpman_settings.js"></script>
+   <script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <script type="text/javascript">
+     HMSyncTOC("index.html", "hourly_factors.htm");
+   </script>
+   <script type="text/javascript" src="highlight.js"></script>
+   <script type="text/javascript">
+     $(document).ready(function(){highlight();});
+   </script>
+</head>
+<body>
+
+
+<table style="width:100%; border:none; border-spacing:0px; padding:5px; background:#FFFFFF; color:#0072C6;">
+  <tr style="vertical-align:middle">
+    <td style="text-align:left">
+      <h1 class="p_Heading1"><span class="f_Heading1">Curtailment and Availability</span></h1>
+
+    </td>
+  </tr>
+</table>
+
+
+<!-- Placeholder for topic body. -->
+<table style="width:100%;border:none;border-spacing:0px"><tr style="vertical-align:top"><td style="text-align:left;padding:5px">
+<p class="p_Text"><span class="f_Text">The Edit Hourly Factors window allows you to specify hourly factors that adjust the system's hourly energy value calculated by the performance model. You can use these factors to model a system's downtime for maintenance (availability) or shutdowns required by the system operator (curtailment). For a description of modeling applications for the hourly factors, see <a href="degradation_outages.htm" class="topiclink">Degradation and Outages</a>.</span></p>
+<p class="p_Text"><span class="f_Text">SAM multiplies the system's hourly electricity output by the factor you specify: A factor of one would result in no adjustment, a factor of 0.95 would reduce the output by 5%, and a factor of 1.05 would increase the output value by 5%.</span></p>
+<p class="p_Text"><img src="ss_hourly_factors.gif" width="612" height="324" alt="SS_Hourly_Factors" style="border:none" /></p>
+<p class="p_VariableName"><span class="f_VariableName">Annual Factor</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">SAM multiplies the net electricity output value for each time step by the factor you specify, which effectively applies the factor to the system's total annual output.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">For example, a value of 0.95 for a system with a net annual output of 100,000 kWh results in a delivered electrical output of 95,000 kWh.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Enable hourly factors</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Check the box when you have a table of 8,760 adjustment factors. Click </span><span class="f_CHInterfaceElement">Edit data</span><span class="f_VariableDescription">, and either cut and paste a column of 8,760 values into the table, or import a text file with a header row (column label) in the first row followed by 8,760 rows of factors. The first row of data applies to the hour beginning at 12 a.m. on January 1.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Enable hourly factors with custom periods</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Check the box when you want to apply adjustment factors to specific time periods. Choose a month, date, and time for the start time and end time, and specify a factor for that period. Click </span><span class="f_CHInterfaceElement">Add period</span><span class="f_VariableDescription"> to specify more than one time period.</span></p>
+<p class="p_Note"><span class="f_CHNote">Note.</span><span class="f_VariableDescription"> </span><span class="f_Note">If you use combinations of performance adjustment values, SAM multiplies the factors. For example, if you specify an annual factor of 0.95 and hourly factors of 0.75 for the first seven days in February, SAM reduces the net electrical output for the hours in that week by 0.95 × 0.75 = 0.7125.</span></p>
+
+</td></tr></table>
+
+</body>
+</html>
