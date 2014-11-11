@@ -67,7 +67,7 @@ static MainWindow *g_mainWindow = 0;
 static wxConfig *g_config = 0;
 static const int g_verMajor = 2014;
 static const int g_verMinor = 11;
-static const int g_verMicro = 6;
+static const int g_verMicro = 11;
 static ConfigDatabase g_cfgDatabase;
 static InputPageDatabase g_uiDatabase;
 static wxLogWindow *g_logWindow = 0;
