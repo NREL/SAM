@@ -467,13 +467,25 @@ void Parametric_QS::SetValuesList(const wxString &varname, const wxArrayString &
 void Parametric_QS::UpdateCaseParametricData()
 {
 	ParametricData &par = m_case->Parametric();
+
+	// save original outputs
+	wxArrayString outputs;
+	for (size_t i = 0; i < par.Setup.size(); i++)
+	{
+		if (VarValue *vv = m_case->Values().Get(par.Setup[i].Name))
+			continue;
+		outputs.Add(par.Setup[i].Name);
+	}
+
+
 	par.ClearRuns();
 	par.Setup.clear();
+	
+	// combinations
 	int num_runs = 1;
 	for (int i = 0; i < m_input_values.size(); i++)
-	{
 		num_runs *= m_input_values[i].Count() - 1;
-	}
+	// create new inputs
 	for (int i = 0; i < m_input_names.Count(); i++)
 	{
 		std::vector<VarValue> vvv;
@@ -513,6 +525,24 @@ void Parametric_QS::UpdateCaseParametricData()
 		}
 		repeat *= vals.Count();
 	}
+
+
+
+	// add original outputs back 
+	for (int i = 0; i < outputs.Count(); i++)
+	{
+		std::vector<VarValue> vvv;
+		ParametricData::Var pv;
+		for (int num_run = 0; num_run < num_runs; num_run++)
+		{ // add values for inputs only
+			if (VarValue *vv = m_case->Values().Get(outputs[i]))
+				vvv.push_back(*vv);
+		}
+		pv.Name = outputs[i];
+		pv.Values = vvv;
+		par.Setup.push_back(pv);
+	}
+
 }
 	
 
@@ -583,7 +613,8 @@ void Parametric_QSDialog::OnCommand(wxCommandEvent &evt)
 		Destroy();
 		break;
 	case ID_OK:
-		mPanel->UpdateCaseParametricData();
+		if (wxYES == wxMessageBox("Overwrite parametric table inputs with quick setup inputs?", "Overwrite table", wxYES_NO))
+			mPanel->UpdateCaseParametricData();
 		EndModal(wxID_OK);
 		Destroy();
 		break;
