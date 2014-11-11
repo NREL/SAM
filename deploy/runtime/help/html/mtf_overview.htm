@@ -41,19 +41,19 @@
 <p class="p_Text"><span class="f_Text">The financial metrics are selected single-value results from the financial models and performance models.</span></p>
 <p class="p_Text"><span class="f_Text">After running simulations, SAM displays the financial metrics on the <a href="results_page.htm" class="topiclink">Results</a> page:</span></p>
 <div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 3px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:24px"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;">&#8226;</span></td><td style="border:none"><span class="f_List"><a href="summary.htm" class="topiclink">Metrics table</a></span></td></tr></table></div><div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 3px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:24px"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;">&#8226;</span></td><td style="border:none"><span class="f_List"><a href="data.htm" class="topiclink">Tables</a>, under </span><span class="f_CHInterfaceElement">Metrics</span><span class="f_List"> (with additional variables under </span><span class="f_CHInterfaceElement">Single Value</span><span class="f_List">)</span></td></tr></table></div><div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 6px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:24px"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;">&#8226;</span></td><td style="border:none"><span class="f_ListLast"><a href="graphs.htm" class="topiclink">Graphs</a>, with the </span><span class="f_CHInterfaceElement">Single Value</span><span class="f_ListLast"> option for </span><span class="f_CHInterfaceElement">X Value</span><span class="f_ListLast">, or with <a href="parametric.htm" class="topiclink">parametric</a> or other <a href="simulation_options.htm" class="topiclink">analysis options</a> that involve input variables with multiple values.</span></td></tr></table></div><h3 class="p_Heading3_atocs_" style="border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Financial Metrics</span></h3>
-<p class="p_Text"><span class="f_Text">SAM displays different metrics depending on the financing option that you specify on the <a href="choose_models.htm" class="topiclink">Technology and Market window</a>. For example, SAM displays the payback period for the residential and commercial financing option, but &nbsp;not for the utility options.</span></p>
+<p class="p_Text"><span class="f_Text">SAM displays different metrics depending on the financial model that you specify on the <a href="choose_models.htm" class="topiclink">Technology and Market window</a>. For example, SAM displays the payback period for the residential and commercial financial model, but &nbsp;not for the PPA models.</span></p>
 <p class="p_Note"><span class="f_CHNote">Note. </span><span class="f_Note">SAM displays financial metrics even when they indicate a financially non-feasible project because the software cannot tell when such results indicate an infeasible project, or when they indicate a mistake in the inputs.</span><br />
 <span class="f_Note">&nbsp;</span><br />
 <span class="f_Note">When you see metrics that do not make sense, check your assumptions to make sure you did not make a mistake. Some examples of financial metrics that may indicate a problem with your assumptions are:</span><br />
 <span class="f_Note">&nbsp;</span><br />
-<span class="f_Note" style="font-weight: bold;">A very high NPV with negative LCOE values</span><span class="f_Note"> for residential or commercial financing may indicate that Year Zero incentives are greater than the project total installed cost: Check that you correctly specified the incentives on the <a href="incentives.htm" class="topiclink">Incentives</a> page.</span><br />
+<span class="f_Note" style="font-weight: bold;">A very high NPV with negative LCOE values</span><span class="f_Note"> for a residential or commercial project may indicate that Year Zero incentives are greater than the project total installed cost: Check that you correctly specified the incentives on the <a href="incentives.htm" class="topiclink">Incentives</a> page.</span><br />
 <span class="f_Note">&nbsp;</span><br />
-<span class="f_Note" style="font-weight: bold;">A negative IRR with negative NPV</span><span class="f_Note"> for commercial PPA or utility financing may indicate that project cash flows are insufficient to cover the Year Zero investment cost: Check that the costs on the <a href="system_costs.htm" class="topiclink">System Costs</a> page are not too high.</span><br />
+<span class="f_Note" style="font-weight: bold;">A negative IRR with negative NPV</span><span class="f_Note"> for a PPA project may indicate that project cash flows are insufficient to cover the Year Zero investment cost: Check that the costs on the <a href="system_costs.htm" class="topiclink">System Costs</a> page are not too high.</span><br />
 <span class="f_Note">&nbsp;</span><br />
-<span class="f_Note" style="font-weight: bold;">An IRR of zero with positive NPV and debt fraction greater than 100%</span><span class="f_Note"> for one of the advanced utility financing options may indicate that the debt funding amount is greater than the project total installed cost: Check that the debt interest rate on the <a href="financing_models.htm" class="topiclink">Financing</a> page is not too low.</span><br />
+<span class="f_Note" style="font-weight: bold;">An IRR of zero with positive NPV and debt fraction greater than 100%</span><span class="f_Note"> for one of the PPA financial models may indicate that the debt funding amount is greater than the project total installed cost: Check that the debt interest rate on the <a href="financial_parameters.htm" class="topiclink">Financial Parameters</a> page is not too low.</span><br />
 <span class="f_Note">&nbsp;</span></p>
-<p class="p_Text"><span class="f_Text">The following table shows the financial metrics and options. The table uses the following abbreviations for the financing options:</span></p>
-<div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 3px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:24px"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;">&#8226;</span></td><td style="border:none"><span class="f_List">Res: Residential</span></td></tr></table></div><div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 3px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:24px"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;">&#8226;</span></td><td style="border:none"><span class="f_List">Com: Commercial</span></td></tr></table></div><div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 3px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:24px"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;">&#8226;</span></td><td style="border:none"><span class="f_List">Com PPA: Commercial PPA</span></td></tr></table></div><div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 3px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:24px"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;">&#8226;</span></td><td style="border:none"><span class="f_List">IPP: Utility Independent Power Producer</span></td></tr></table></div><div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 3px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:24px"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;">&#8226;</span></td><td style="border:none"><span class="f_List">LPF: Utility Leveraged Partnership Flip</span></td></tr></table></div><div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 3px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:24px"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;">&#8226;</span></td><td style="border:none"><span class="f_List">AEPF: Utility All Equity Partnership Flip</span></td></tr></table></div><div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 3px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:24px"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;">&#8226;</span></td><td style="border:none"><span class="f_List">SL: Utility Sale Leaseback</span></td></tr></table></div><div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 6px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:24px"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;">&#8226;</span></td><td style="border:none"><span class="f_ListLast">SO: Utility Single Owner</span></td></tr></table></div><p class="p_TitleTable"><span class="f_TitleTable">Table 17. Financial model results in the Metrics table for different financing types.</span></p>
+<p class="p_Text"><span class="f_Text">The following table shows the financial metrics and options. The table uses the following abbreviations for the financial models:</span></p>
+<div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 3px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:24px"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;">&#8226;</span></td><td style="border:none"><span class="f_List">Res: Residential</span></td></tr></table></div><div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 3px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:24px"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;">&#8226;</span></td><td style="border:none"><span class="f_List">Com: Commercial</span></td></tr></table></div><div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 3px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:24px"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;">&#8226;</span></td><td style="border:none"><span class="f_List">LPF: Leveraged Partnership Flip</span></td></tr></table></div><div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 3px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:24px"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;">&#8226;</span></td><td style="border:none"><span class="f_List">AEPF: All Equity Partnership Flip</span></td></tr></table></div><div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 3px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:24px"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;">&#8226;</span></td><td style="border:none"><span class="f_List">SL: Sale Leaseback</span></td></tr></table></div><div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 6px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:24px"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;">&#8226;</span></td><td style="border:none"><span class="f_ListLast">SO: Single Owner</span></td></tr></table></div><p class="p_TitleTable"><span class="f_TitleTable">Table 17. Financial model results in the Metrics table for different financial models.</span></p>
 <div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 0px 0px;"><table id="fin_metrics_srt_" class="MetricsTable" style="width:100%; border:none; border-spacing:0px; border-collapse:collapse;">
 <tr style="text-align:left;vertical-align:top;">
 <th style="vertical-align:top; background-color:#808080; padding:0px; border:solid 1px #000000;"><p class="p_TableHeadColumn"><a id="_defaultsort_"></a><span class="f_TableHeadColumn">Metric</span></p>
@@ -61,10 +61,6 @@
 <th style="vertical-align:top; width:57px; background-color:#808080; padding:0px; border:solid 1px #000000;"><p class="p_TableHeadColumn"><a id="_sortable_"></a><span class="f_TableHeadColumn">Res</span></p>
 </th>
 <th style="vertical-align:top; width:57px; background-color:#808080; padding:0px; border:solid 1px #000000;"><p class="p_TableHeadColumn"><a id="_sortable_"></a><span class="f_TableHeadColumn">Com</span></p>
-</th>
-<th style="vertical-align:top; width:57px; background-color:#808080; padding:0px; border:solid 1px #000000;"><p class="p_TableHeadColumn"><a id="_sortable_"></a><span class="f_TableHeadColumn">Com PPA</span></p>
-</th>
-<th style="vertical-align:top; width:57px; background-color:#808080; padding:0px; border:solid 1px #000000;"><p class="p_TableHeadColumn"><a id="_sortable_"></a><span class="f_TableHeadColumn">IPP</span></p>
 </th>
 <th style="vertical-align:top; width:57px; background-color:#808080; padding:0px; border:solid 1px #000000;"><p class="p_TableHeadColumn"><a id="_sortable_"></a><span class="f_TableHeadColumn">LPF</span></p>
 </th>
@@ -77,10 +73,6 @@
 </tr>
 <tr style="text-align:left;vertical-align:top;">
 <td style="vertical-align:top; padding:0px; border:solid 1px #000000;"><p class="p_TableTextLeft"><span class="f_TableTextLeft"><a href="mtp_annual_energy.htm" class="topiclink">Net Annual Energy</a> (Annual Energy Saved)</span></p>
-</td>
-<td style="vertical-align:top; width:57px; padding:0px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">•</span></p>
-</td>
-<td style="vertical-align:top; width:57px; padding:0px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">•</span></p>
 </td>
 <td style="vertical-align:top; width:57px; padding:0px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">•</span></p>
 </td>
@@ -110,17 +102,9 @@
 </td>
 <td style="vertical-align:top; width:57px; background-color:#c0c0c0; padding:0px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">•</span></p>
 </td>
-<td style="vertical-align:top; width:57px; background-color:#c0c0c0; padding:0px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">•</span></p>
-</td>
-<td style="vertical-align:top; width:57px; background-color:#c0c0c0; padding:0px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">•</span></p>
-</td>
 </tr>
 <tr style="text-align:left;vertical-align:top;">
 <td style="vertical-align:top; padding:0px; border:solid 1px #000000;"><p class="p_TableTextLeft"><span class="f_TableTextLeft"><a href="mtf_lcoe.htm" class="topiclink">LCOE Nominal</a></span></p>
-</td>
-<td style="vertical-align:top; width:57px; padding:0px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">•</span></p>
-</td>
-<td style="vertical-align:top; width:57px; padding:0px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">•</span></p>
 </td>
 <td style="vertical-align:top; width:57px; padding:0px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">•</span></p>
 </td>
@@ -137,10 +121,6 @@
 </tr>
 <tr style="text-align:left;vertical-align:top;">
 <td style="vertical-align:top; background-color:#c0c0c0; padding:0px; border:solid 1px #000000;"><p class="p_TableTextLeft"><span class="f_TableTextLeft"><a href="mtf_lcoe.htm" class="topiclink">LCOE Real</a></span></p>
-</td>
-<td style="vertical-align:top; width:57px; background-color:#c0c0c0; padding:0px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">•</span></p>
-</td>
-<td style="vertical-align:top; width:57px; background-color:#c0c0c0; padding:0px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">•</span></p>
 </td>
 <td style="vertical-align:top; width:57px; background-color:#c0c0c0; padding:0px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">•</span></p>
 </td>
@@ -170,10 +150,6 @@
 </td>
 <td style="vertical-align:top; width:57px; padding:0px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">&nbsp;</span></p>
 </td>
-<td style="vertical-align:top; width:57px; padding:0px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">&nbsp;</span></p>
-</td>
-<td style="vertical-align:top; width:57px; padding:0px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">&nbsp;</span></p>
-</td>
 </tr>
 <tr style="text-align:left;vertical-align:top;">
 <td style="vertical-align:top; background-color:#c0c0c0; padding:0px; border:solid 1px #000000;"><p class="p_TableTextLeft"><span class="f_TableTextLeft"><a href="mtf_revenues.htm" class="topiclink">Electricity cost with system</a></span></p>
@@ -181,10 +157,6 @@
 <td style="vertical-align:top; width:57px; background-color:#c0c0c0; padding:0px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">•</span></p>
 </td>
 <td style="vertical-align:top; width:57px; background-color:#c0c0c0; padding:0px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">•</span></p>
-</td>
-<td style="vertical-align:top; width:57px; background-color:#c0c0c0; padding:0px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">&nbsp;</span></p>
-</td>
-<td style="vertical-align:top; width:57px; background-color:#c0c0c0; padding:0px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">&nbsp;</span></p>
 </td>
 <td style="vertical-align:top; width:57px; background-color:#c0c0c0; padding:0px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">&nbsp;</span></p>
 </td>
@@ -210,10 +182,6 @@
 </td>
 <td style="vertical-align:top; width:57px; padding:0px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">&nbsp;</span></p>
 </td>
-<td style="vertical-align:top; width:57px; padding:0px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">&nbsp;</span></p>
-</td>
-<td style="vertical-align:top; width:57px; padding:0px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">&nbsp;</span></p>
-</td>
 </tr>
 <tr style="text-align:left;vertical-align:top;">
 <td style="vertical-align:top; background-color:#c0c0c0; padding:0px; border:solid 1px #000000;"><p class="p_TableTextLeft"><span class="f_TableTextLeft"><a href="mtf_irr.htm" class="topiclink">After-tax IRR</a></span></p>
@@ -221,10 +189,6 @@
 <td style="vertical-align:top; width:57px; background-color:#c0c0c0; padding:0px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">&nbsp;</span></p>
 </td>
 <td style="vertical-align:top; width:57px; background-color:#c0c0c0; padding:0px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">&nbsp;</span></p>
-</td>
-<td style="vertical-align:top; width:57px; background-color:#c0c0c0; padding:0px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">•</span></p>
-</td>
-<td style="vertical-align:top; width:57px; background-color:#c0c0c0; padding:0px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">•</span></p>
 </td>
 <td style="vertical-align:top; width:57px; background-color:#c0c0c0; padding:0px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">&nbsp;</span></p>
 </td>
@@ -242,10 +206,6 @@
 </td>
 <td style="vertical-align:top; width:57px; padding:0px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">&nbsp;</span></p>
 </td>
-<td style="vertical-align:top; width:57px; padding:0px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">•</span></p>
-</td>
-<td style="vertical-align:top; width:57px; padding:0px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">•</span></p>
-</td>
 <td style="vertical-align:top; width:57px; padding:0px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">&nbsp;</span></p>
 </td>
 <td style="vertical-align:top; width:57px; padding:0px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">&nbsp;</span></p>
@@ -257,10 +217,6 @@
 </tr>
 <tr style="text-align:left;vertical-align:top;">
 <td style="vertical-align:top; background-color:#c0c0c0; padding:0px; border:solid 1px #000000;"><p class="p_TableTextLeft"><span class="f_TableTextLeft"><a href="mtf_npv.htm" class="topiclink">After-tax NPV</a></span></p>
-</td>
-<td style="vertical-align:top; width:57px; background-color:#c0c0c0; padding:0px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">•</span></p>
-</td>
-<td style="vertical-align:top; width:57px; background-color:#c0c0c0; padding:0px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">•</span></p>
 </td>
 <td style="vertical-align:top; width:57px; background-color:#c0c0c0; padding:0px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">•</span></p>
 </td>
@@ -290,10 +246,6 @@
 </td>
 <td style="vertical-align:top; width:57px; padding:0px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">&nbsp;</span></p>
 </td>
-<td style="vertical-align:top; width:57px; padding:0px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">&nbsp;</span></p>
-</td>
-<td style="vertical-align:top; width:57px; padding:0px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">&nbsp;</span></p>
-</td>
 </tr>
 <tr style="text-align:left;vertical-align:top;">
 <td style="vertical-align:top; background-color:#c0c0c0; padding:0px; border:solid 1px #000000;"><p class="p_TableTextLeft"><span class="f_TableTextLeft"><a href="mtf_ppa_escalation.htm" class="topiclink">PPA price escalation</a></span></p>
@@ -301,10 +253,6 @@
 <td style="vertical-align:top; width:57px; background-color:#c0c0c0; padding:0px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">&nbsp;</span></p>
 </td>
 <td style="vertical-align:top; width:57px; background-color:#c0c0c0; padding:0px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">&nbsp;</span></p>
-</td>
-<td style="vertical-align:top; width:57px; background-color:#c0c0c0; padding:0px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">•</span></p>
-</td>
-<td style="vertical-align:top; width:57px; background-color:#c0c0c0; padding:0px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">•</span></p>
 </td>
 <td style="vertical-align:top; width:57px; background-color:#c0c0c0; padding:0px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">•</span></p>
 </td>
@@ -322,10 +270,6 @@
 </td>
 <td style="vertical-align:top; width:57px; padding:0px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">&nbsp;</span></p>
 </td>
-<td style="vertical-align:top; width:57px; padding:0px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">•</span></p>
-</td>
-<td style="vertical-align:top; width:57px; padding:0px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">•</span></p>
-</td>
 <td style="vertical-align:top; width:57px; padding:0px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">&nbsp;</span></p>
 </td>
 <td style="vertical-align:top; width:57px; padding:0px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">&nbsp;</span></p>
@@ -337,10 +281,6 @@
 </tr>
 <tr style="text-align:left;vertical-align:top;">
 <td style="vertical-align:top; background-color:#c0c0c0; padding:0px; border:solid 1px #000000;"><p class="p_TableTextLeft"><span class="f_TableTextLeft"><a href="mtf_irr.htm" class="topiclink">IRR target year</a></span></p>
-</td>
-<td style="vertical-align:top; width:57px; background-color:#c0c0c0; padding:0px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">&nbsp;</span></p>
-</td>
-<td style="vertical-align:top; width:57px; background-color:#c0c0c0; padding:0px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">&nbsp;</span></p>
 </td>
 <td style="vertical-align:top; width:57px; background-color:#c0c0c0; padding:0px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">&nbsp;</span></p>
 </td>
@@ -362,10 +302,6 @@
 </td>
 <td style="vertical-align:top; width:57px; padding:0px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">&nbsp;</span></p>
 </td>
-<td style="vertical-align:top; width:57px; padding:0px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">&nbsp;</span></p>
-</td>
-<td style="vertical-align:top; width:57px; padding:0px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">&nbsp;</span></p>
-</td>
 <td style="vertical-align:top; width:57px; padding:0px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">•</span></p>
 </td>
 <td style="vertical-align:top; width:57px; padding:0px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">•</span></p>
@@ -377,10 +313,6 @@
 </tr>
 <tr style="text-align:left;vertical-align:top;">
 <td style="vertical-align:top; background-color:#c0c0c0; padding:0px; border:solid 1px #000000;"><p class="p_TableTextLeft"><span class="f_TableTextLeft"><a href="mtf_irr.htm" class="topiclink">IRR actual year</a></span></p>
-</td>
-<td style="vertical-align:top; width:57px; background-color:#c0c0c0; padding:0px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">&nbsp;</span></p>
-</td>
-<td style="vertical-align:top; width:57px; background-color:#c0c0c0; padding:0px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">&nbsp;</span></p>
 </td>
 <td style="vertical-align:top; width:57px; background-color:#c0c0c0; padding:0px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">&nbsp;</span></p>
 </td>
@@ -402,10 +334,6 @@
 </td>
 <td style="vertical-align:top; width:57px; padding:0px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">&nbsp;</span></p>
 </td>
-<td style="vertical-align:top; width:57px; padding:0px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">&nbsp;</span></p>
-</td>
-<td style="vertical-align:top; width:57px; padding:0px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">&nbsp;</span></p>
-</td>
 <td style="vertical-align:top; width:57px; padding:0px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">•</span></p>
 </td>
 <td style="vertical-align:top; width:57px; padding:0px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">•</span></p>
@@ -417,10 +345,6 @@
 </tr>
 <tr style="text-align:left;vertical-align:top;">
 <td style="vertical-align:top; background-color:#c0c0c0; padding:0px; border:solid 1px #000000;"><p class="p_TableTextLeft"><span class="f_TableTextLeft"><a href="mtf_irr.htm" class="topiclink">After-tax tax investor IRR</a></span></p>
-</td>
-<td style="vertical-align:top; width:57px; background-color:#c0c0c0; padding:0px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">&nbsp;</span></p>
-</td>
-<td style="vertical-align:top; width:57px; background-color:#c0c0c0; padding:0px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">&nbsp;</span></p>
 </td>
 <td style="vertical-align:top; width:57px; background-color:#c0c0c0; padding:0px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">&nbsp;</span></p>
 </td>
@@ -442,10 +366,6 @@
 </td>
 <td style="vertical-align:top; width:57px; padding:0px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">&nbsp;</span></p>
 </td>
-<td style="vertical-align:top; width:57px; padding:0px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">&nbsp;</span></p>
-</td>
-<td style="vertical-align:top; width:57px; padding:0px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">&nbsp;</span></p>
-</td>
 <td style="vertical-align:top; width:57px; padding:0px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">•</span></p>
 </td>
 <td style="vertical-align:top; width:57px; padding:0px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">•</span></p>
@@ -457,10 +377,6 @@
 </tr>
 <tr style="text-align:left;vertical-align:top;">
 <td style="vertical-align:top; background-color:#c0c0c0; padding:0px; border:solid 1px #000000;"><p class="p_TableTextLeft"><span class="f_TableTextLeft"><a href="mtf_irr.htm" class="topiclink">After-tax developer IRR</a></span></p>
-</td>
-<td style="vertical-align:top; width:57px; background-color:#c0c0c0; padding:0px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">&nbsp;</span></p>
-</td>
-<td style="vertical-align:top; width:57px; background-color:#c0c0c0; padding:0px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">&nbsp;</span></p>
 </td>
 <td style="vertical-align:top; width:57px; background-color:#c0c0c0; padding:0px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">&nbsp;</span></p>
 </td>
@@ -482,10 +398,6 @@
 </td>
 <td style="vertical-align:top; width:57px; padding:0px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">&nbsp;</span></p>
 </td>
-<td style="vertical-align:top; width:57px; padding:0px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">&nbsp;</span></p>
-</td>
-<td style="vertical-align:top; width:57px; padding:0px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">&nbsp;</span></p>
-</td>
 <td style="vertical-align:top; width:57px; padding:0px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">•</span></p>
 </td>
 <td style="vertical-align:top; width:57px; padding:0px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">•</span></p>
@@ -497,10 +409,6 @@
 </tr>
 <tr style="text-align:left;vertical-align:top;">
 <td style="vertical-align:top; background-color:#c0c0c0; padding:0px; border:solid 1px #000000;"><p class="p_TableTextLeft"><span class="f_TableTextLeft"><a href="mtf_costs.htm" class="topiclink">Direct Cost</a></span></p>
-</td>
-<td style="vertical-align:top; width:57px; background-color:#c0c0c0; padding:0px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">&nbsp;</span></p>
-</td>
-<td style="vertical-align:top; width:57px; background-color:#c0c0c0; padding:0px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">&nbsp;</span></p>
 </td>
 <td style="vertical-align:top; width:57px; background-color:#c0c0c0; padding:0px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">&nbsp;</span></p>
 </td>
@@ -522,10 +430,6 @@
 </td>
 <td style="vertical-align:top; width:57px; padding:0px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">&nbsp;</span></p>
 </td>
-<td style="vertical-align:top; width:57px; padding:0px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">&nbsp;</span></p>
-</td>
-<td style="vertical-align:top; width:57px; padding:0px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">&nbsp;</span></p>
-</td>
 <td style="vertical-align:top; width:57px; padding:0px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">•</span></p>
 </td>
 <td style="vertical-align:top; width:57px; padding:0px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">•</span></p>
@@ -537,10 +441,6 @@
 </tr>
 <tr style="text-align:left;vertical-align:top;">
 <td style="vertical-align:top; background-color:#c0c0c0; padding:0px; border:solid 1px #000000;"><p class="p_TableTextLeft"><span class="f_TableTextLeft"><a href="mtf_financing_cost.htm" class="topiclink">Financing Cost</a></span></p>
-</td>
-<td style="vertical-align:top; width:57px; background-color:#c0c0c0; padding:0px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">&nbsp;</span></p>
-</td>
-<td style="vertical-align:top; width:57px; background-color:#c0c0c0; padding:0px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">&nbsp;</span></p>
 </td>
 <td style="vertical-align:top; width:57px; background-color:#c0c0c0; padding:0px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">&nbsp;</span></p>
 </td>
@@ -562,10 +462,6 @@
 </td>
 <td style="vertical-align:top; width:57px; padding:0px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">&nbsp;</span></p>
 </td>
-<td style="vertical-align:top; width:57px; padding:0px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">&nbsp;</span></p>
-</td>
-<td style="vertical-align:top; width:57px; padding:0px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">&nbsp;</span></p>
-</td>
 <td style="vertical-align:top; width:57px; padding:0px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">•</span></p>
 </td>
 <td style="vertical-align:top; width:57px; padding:0px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">•</span></p>
@@ -577,10 +473,6 @@
 </tr>
 <tr style="text-align:left;vertical-align:top;">
 <td style="vertical-align:top; background-color:#c0c0c0; padding:0px; border:solid 1px #000000;"><p class="p_TableTextLeft"><span class="f_TableTextLeft"><a href="mtf_debt_and_equity.htm" class="topiclink">Total debt</a></span></p>
-</td>
-<td style="vertical-align:top; width:57px; background-color:#c0c0c0; padding:0px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">&nbsp;</span></p>
-</td>
-<td style="vertical-align:top; width:57px; background-color:#c0c0c0; padding:0px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">&nbsp;</span></p>
 </td>
 <td style="vertical-align:top; width:57px; background-color:#c0c0c0; padding:0px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">&nbsp;</span></p>
 </td>
@@ -602,10 +494,6 @@
 </td>
 <td style="vertical-align:top; width:57px; padding:0px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">&nbsp;</span></p>
 </td>
-<td style="vertical-align:top; width:57px; padding:0px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">&nbsp;</span></p>
-</td>
-<td style="vertical-align:top; width:57px; padding:0px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">&nbsp;</span></p>
-</td>
 <td style="vertical-align:top; width:57px; padding:0px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">•</span></p>
 </td>
 <td style="vertical-align:top; width:57px; padding:0px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">•</span></p>
@@ -621,10 +509,6 @@
 <td style="vertical-align:top; width:57px; background-color:#c0c0c0; padding:0px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">•</span></p>
 </td>
 <td style="vertical-align:top; width:57px; background-color:#c0c0c0; padding:0px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">•</span></p>
-</td>
-<td style="vertical-align:top; width:57px; background-color:#c0c0c0; padding:0px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">&nbsp;</span></p>
-</td>
-<td style="vertical-align:top; width:57px; background-color:#c0c0c0; padding:0px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">&nbsp;</span></p>
 </td>
 <td style="vertical-align:top; width:57px; background-color:#c0c0c0; padding:0px; border:solid 1px #000000;"><p class="p_TableTextCenter"><span class="f_TableTextCenter">&nbsp;</span></p>
 </td>
