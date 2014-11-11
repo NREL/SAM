@@ -29,12 +29,18 @@ END_EVENT_TABLE()
 P50P90Form::P50P90Form( wxWindow *parent, Case *cc )
 	: wxPanel( parent ), m_case(cc)
 {
+	SetBackgroundColour( wxMetroTheme::Colour(wxMT_FOREGROUND) );
+
 	wxBoxSizer *sizer_top = new wxBoxSizer( wxHORIZONTAL );
-	sizer_top->Add( new wxHyperlinkCtrl( this, wxID_ANY, "Download historical weather data", SamApp::WebApi("historical_nsrdb") ), 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
-	sizer_top->Add( new wxStaticText( this, wxID_ANY, "Select weather file folder:" ), 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
-	sizer_top->Add( m_folder = new wxTextCtrl( this, wxID_ANY ), 1, wxALL|wxALIGN_CENTER_VERTICAL, 4 );
-	sizer_top->Add( new wxButton( this, ID_SELECT_FOLDER, "...", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT ), 0, wxALL|wxALIGN_CENTER_VERTICAL, 3 );
-	sizer_top->Add( new wxButton( this, ID_SIMULATE, "Simulate P50/P90", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT ), 0, wxALL|wxALIGN_CENTER_VERTICAL, 3 );
+	sizer_top->Add( new wxMetroButton( this, ID_SIMULATE, "Run P50/P90 analysis", wxNullBitmap,wxDefaultPosition, wxDefaultSize, wxMB_RIGHTARROW ), 0, wxALL|wxALIGN_CENTER_VERTICAL, 0 );
+	sizer_top->AddSpacer( 150 );
+
+	//sizer_top->Add( new wxHyperlinkCtrl( this, wxID_ANY, "Download historical weather data", SamApp::WebApi("historical_nsrdb") ), 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
+	wxStaticText *label = new wxStaticText( this, wxID_ANY, "Select weather file folder:" );
+	label->SetForegroundColour( *wxWHITE );
+	sizer_top->Add( label , 0, wxLEFT|wxRIGHT|wxALIGN_CENTER_VERTICAL, 0 );
+	sizer_top->Add( m_folder = new wxTextCtrl( this, wxID_ANY ), 1, wxLEFT|wxRIGHT|wxALIGN_CENTER_VERTICAL, 3 );
+	sizer_top->Add( new wxMetroButton( this, ID_SELECT_FOLDER, "..." ), 0, wxALL|wxALIGN_CENTER_VERTICAL, 0 );
 
 	m_grid = new wxExtGridCtrl( this, wxID_ANY );
 	m_grid->CreateGrid( 1, 1 );
@@ -51,22 +57,31 @@ P50P90Form::P50P90Form( wxWindow *parent, Case *cc )
 	m_grid->EnablePasteEvent(false);
 		
 	wxBoxSizer *sizer_main = new wxBoxSizer( wxVERTICAL );
-	sizer_main->Add( sizer_top, 0, wxALL|wxEXPAND, 5 );
-	sizer_main->Add( m_grid, 1, wxALL|wxEXPAND, 5 );
+	sizer_main->Add( sizer_top, 0, wxALL|wxEXPAND, 0 );
+	sizer_main->Add( m_grid, 1, wxALL|wxEXPAND, 0 );
 	SetSizer( sizer_main );
 }
 
 void P50P90Form::OnSimulate( wxCommandEvent & )
 {
-	int nthread = wxThread::GetCPUCount();
-
-	SimulationDialog tpd( "Scanning...", nthread );
-
+	
 	std::vector<unsigned short> years;
 	wxArrayString folder_files; 
 	wxArrayString list;
-		
 	wxDir::GetAllFiles( m_folder->GetValue(), &list );
+
+	if ( m_folder->GetValue().IsEmpty()
+		|| !wxDirExists( m_folder->GetValue() ) 
+		|| list.size() < 10 )
+	{
+		wxMessageBox("Please select a folder with at least 10 weather data files.\n\nSee Help for more information.", "Notice", wxOK, this );
+		return;
+	}
+
+	int nthread = wxThread::GetCPUCount();
+
+	SimulationDialog tpd( "Scanning...", nthread );
+		
 	for (int i=0;i<list.Count();i++)
 	{
 		tpd.Update( 0, (float)i/ (float)list.size() * 100.0f, wxString::Format("%d of %d", (int)(i+1), (int)list.size()  ) );
@@ -91,7 +106,8 @@ void P50P90Form::OnSimulate( wxCommandEvent & )
 		}
 	}
 	
-	if (years.size() < 10) {
+	if (years.size() < 10)
+	{
 		wxMessageBox("It is not possible to empirically determine the P90 value with less than 10 years of weather data.");
 		return;
 	}
