@@ -168,7 +168,7 @@ enum { ID_SELECT_INPUTS = wxID_HIGHEST+494, ID_SELECT_OUTPUTS, ID_NUMRUNS,
 	ID_OUTPUTMENU_ADD_PLOT, ID_OUTPUTMENU_REMOVE_PLOT, 
 	ID_OUTPUTMENU_SHOW_DATA, ID_OUTPUTMENU_CLIPBOARD, 
 	ID_OUTPUTMENU_CSV, ID_OUTPUTMENU_EXCEL, 
-	ID_SHOW_ALL_INPUTS, ID_QUICK_SETUP, ID_RESULTS_MENU };
+	ID_SHOW_ALL_INPUTS, ID_QUICK_SETUP, ID_EXPORT_MENU };
 
 
 
@@ -179,7 +179,7 @@ BEGIN_EVENT_TABLE(ParametricViewer, wxPanel)
 	EVT_BUTTON(ID_RUN, ParametricViewer::OnCommand)
 	EVT_BUTTON(ID_QUICK_SETUP, ParametricViewer::OnCommand)
 	
-	EVT_BUTTON(ID_RESULTS_MENU, ParametricViewer::OnCommand)
+	EVT_BUTTON(ID_EXPORT_MENU, ParametricViewer::OnCommand)
 	
 	EVT_BUTTON(ID_OUTPUTMENU_CLIPBOARD, ParametricViewer::OnMenuItem)
 	EVT_BUTTON(ID_OUTPUTMENU_CSV, ParametricViewer::OnMenuItem)
@@ -211,9 +211,7 @@ ParametricViewer::ParametricViewer(wxWindow *parent, Case *cc)
 {
 	m_current_graph = 0;
 
-	wxBoxSizer *main_sizer = new wxBoxSizer(wxHORIZONTAL);
 	wxSplitterWindow *splitter = new wxSplitterWindow(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxSP_NOBORDER|wxSP_LIVE_UPDATE | wxSP_3DSASH);
-	main_sizer->Add(splitter, 1, wxBOTTOM | wxLEFT | wxEXPAND, 5);
 
 	wxPanel *top_panel = new wxPanel(splitter);
 	top_panel->SetBackgroundColour( wxMetroTheme::Colour( wxMT_FOREGROUND ) );
@@ -238,7 +236,7 @@ ParametricViewer::ParametricViewer(wxWindow *parent, Case *cc)
 
 	//tool_sizer->Add(m_run_multithreaded, 0, wxALIGN_CENTER_VERTICAL, 1);
 	tool_sizer->AddStretchSpacer();
-	tool_sizer->Add(new wxMetroButton(top_panel, ID_RESULTS_MENU, "Results", wxNullBitmap, wxDefaultPosition, wxDefaultSize, wxMB_DOWNARROW), 0, wxALL | wxEXPAND, 0);
+	tool_sizer->Add(new wxMetroButton(top_panel, ID_EXPORT_MENU, "Export", wxNullBitmap, wxDefaultPosition, wxDefaultSize, wxMB_DOWNARROW), 0, wxALL | wxEXPAND, 0);
 
 
 
@@ -278,15 +276,13 @@ ParametricViewer::ParametricViewer(wxWindow *parent, Case *cc)
 	m_layout = new wxSnapLayout(splitter, wxID_ANY);
 
 	splitter->SetMinimumPaneSize(200);
-	splitter->SplitHorizontally(top_panel, m_layout, 500);
-
+	splitter->SplitHorizontally(top_panel, m_layout, 550);
+	
+	wxBoxSizer *main_sizer = new wxBoxSizer(wxHORIZONTAL);
+	main_sizer->Add(splitter, 1, wxALL|wxEXPAND, 0);
 	SetSizer(main_sizer);
 	main_sizer->SetSizeHints(this);
-
-	// check that base case is run and if not run 
-//	if ((!m_case->BaseCase().Ok()) || (m_case->BaseCase().ListOutputs().Count() <= 0))
-//		m_case->BaseCase().Invoke(true);
-
+	
 	if (m_grid_data->GetNumberRows() <= 0)
 	{
 		m_num_runs_ctrl->SetValue(5); // default to 5 runs
@@ -377,14 +373,14 @@ void ParametricViewer::OnCommand(wxCommandEvent &evt)
 {
 	switch (evt.GetId())
 	{
-	case ID_RESULTS_MENU:
+	case ID_EXPORT_MENU:
 		{
 			wxMetroPopupMenu menu;
 			menu.Append(ID_OUTPUTMENU_CLIPBOARD, "Copy to clipboard");
 			menu.Append(ID_OUTPUTMENU_CSV, "Save as CSV");
+#ifdef __WXMSW__
 			menu.Append(ID_OUTPUTMENU_EXCEL, "Send to Excel");	
-			menu.AppendSeparator();
-			menu.Append(ID_CLEAR, "Clear all");		
+#endif
 			
 			wxPoint p(wxDefaultPosition);
 			wxWindow *btn = dynamic_cast<wxWindow*>( evt.GetEventObject() );
