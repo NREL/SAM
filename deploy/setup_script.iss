@@ -89,15 +89,19 @@ Root: HKCR; Subkey: "Applications\sam.exe"; ValueType: none; ValueName: ; ValueD
 
 ; 12/4/08 for admin privileges -see Documentation\InnoSetup\AdminPrivileges
 Root: HKCR; Subkey: ".sam"; ValueType: string; ValueName: ; ValueData: "NREL.SAM"; Flags: uninsdeletevalue; Check: IsAdminLoggedOn
-Root: HKCR; Subkey: "NREL.SAM"; ValueType: string; ValueName: ; ValueData: "System Advisor Model Project File"; Flags: uninsdeletekey; Check: IsAdminLoggedOn
-Root: HKCR; Subkey: "NREL.SAM\DefaultIcon"; ValueType: string; ValueName: ; ValueData: "{app}\sam.exe,0"; Check: IsAdminLoggedOn
-Root: HKCR; Subkey: "NREL.SAM\shell\open\command"; ValueType: string; ValueName: ; ValueData: """{app}\sam.exe"" ""%1"""; Check: IsAdminLoggedOn
+Root: HKCR; Subkey: "NREL.SAM"; ValueType: string; ValueName: ; ValueData: "System Advisor Model Project File"; Flags: uninsdeletekey; Check: IsAdminLoggedOn         
+Root: HKCR; Subkey: "NREL.SAM\DefaultIcon"; ValueType: string; ValueName: ; ValueData: "{app}\win32\sam.exe,0"; Check: IsAdminLoggedOn and not Is64BitInstallMode
+Root: HKCR; Subkey: "NREL.SAM\shell\open\command"; ValueType: string; ValueName: ; ValueData: """{app}\win32\sam.exe"" ""%1"""; Check: IsAdminLoggedOn and not Is64BitInstallMode
+Root: HKCR; Subkey: "NREL.SAM\DefaultIcon"; ValueType: string; ValueName: ; ValueData: "{app}\x64\sam.exe,0"; Check: IsAdminLoggedOn  and Is64BitInstallMode
+Root: HKCR; Subkey: "NREL.SAM\shell\open\command"; ValueType: string; ValueName: ; ValueData: """{app}\x64\sam.exe"" ""%1"""; Check: IsAdminLoggedOn  and Is64BitInstallMode
 
 ; 12/4/08 for non-admin privileges -see Documentation\InnoSetup\AdminPrivileges
 Root: HKCU; Subkey: "Software\Classes\.sam"; ValueType: string; ValueName: ; ValueData: "NREL.SAM"; Flags: uninsdeletevalue; Check: not IsAdminLoggedOn
-Root: HKCU; Subkey: "Software\Classes\NREL.SAM"; ValueType: string; ValueName: ; ValueData: "System Advisor Model Project File"; Flags: uninsdeletekey; Check: not IsAdminLoggedOn
-Root: HKCU; Subkey: "Software\Classes\NREL.SAM\DefaultIcon"; ValueType: string; ValueName: ; ValueData: "{app}\sam.exe,0"; Check: not IsAdminLoggedOn
-Root: HKCU; Subkey: "Software\Classes\NREL.SAM\shell\open\command"; ValueType: string; ValueName: ; ValueData: """{app}\sam.exe"" ""%1"""; Check: not IsAdminLoggedOn
+Root: HKCU; Subkey: "Software\Classes\NREL.SAM"; ValueType: string; ValueName: ; ValueData: "System Advisor Model Project File"; Flags: uninsdeletekey; Check: not IsAdminLoggedOn            
+Root: HKCU; Subkey: "Software\Classes\NREL.SAM\DefaultIcon"; ValueType: string; ValueName: ; ValueData: "{app}\win32\sam.exe,0"; Check: not IsAdminLoggedOn  and not Is64BitInstallMode
+Root: HKCU; Subkey: "Software\Classes\NREL.SAM\shell\open\command"; ValueType: string; ValueName: ; ValueData: """{app}\win32\sam.exe"" ""%1"""; Check: not IsAdminLoggedOn  and not Is64BitInstallMode
+Root: HKCU; Subkey: "Software\Classes\NREL.SAM\DefaultIcon"; ValueType: string; ValueName: ; ValueData: "{app}\x64\sam.exe,0"; Check: not IsAdminLoggedOn  and Is64BitInstallMode
+Root: HKCU; Subkey: "Software\Classes\NREL.SAM\shell\open\command"; ValueType: string; ValueName: ; ValueData: """{app}\x64\sam.exe"" ""%1"""; Check: not IsAdminLoggedOn  and Is64BitInstallMode
 
 
 [Run]
