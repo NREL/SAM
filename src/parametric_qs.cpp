@@ -200,7 +200,6 @@ bool Parametric_QS::ShowEditValuesDialog(const wxString &title,
 	}
 	else if (vf & VF_LIBRARY)
 	{
-		// get lib item list (climate or lib list)
 		wxArrayString fixed_items;
 		wxArrayString lib_fields = vi->IndexLabels;
 		if (lib_fields.Count() > 0)
@@ -213,18 +212,15 @@ bool Parametric_QS::ShowEditValuesDialog(const wxString &title,
 			}
 		}
 	}
+	// for single value schedules, e.g. degradation and o and m costs
+	else if ((vvtype == VV_ARRAY) && (vv->Array().size()==1))
+	{
+		return ShowNumericValuesDialog(title, values);
+	}
 	else if (vvtype == VV_NUMBER)
 	{
 		return ShowNumericValuesDialog(title, values);
 	}
-	/*
-	else if (vtype == VAR_STRING && v->GetDataSource() == ::VDSRC_INPUT && v->GetExpression() != "")
-	{
-		// STRING combo box
-		wxArrayString fixed_items = Split(v->GetExpression(), ",");
-		return ShowFixedDomainDialog(title, fixed_items, values);
-	}
-	*/
 
 	wxMessageBox("Could not edit values for \"" + vi->Label + "\" (domain type error)");
 	return false;
