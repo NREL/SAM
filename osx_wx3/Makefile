@@ -55,7 +55,6 @@ OBJECTS = ide.o \
 	object.o \
 	simplecurl.o \
 	variablegrid.o \
-	parametric_qs.o \
 	parametric.o \
 	welcome.o \
 	ptlayoutctrl.o \
