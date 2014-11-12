@@ -708,13 +708,20 @@ wxGridCellEditor *GridCellArrayEditor::Clone() const
 enum { ID_APD_CLIPBOARD, ID_APD_CSV, ID_APD_EXCEL};
 
 BEGIN_EVENT_TABLE(ArrayPopupDialog, wxDialog)
-EVT_BUTTON(ID_APD_CLIPBOARD, ArrayPopupDialog::OnCommand)
-EVT_BUTTON(ID_APD_CSV, ArrayPopupDialog::OnCommand)
-EVT_BUTTON(ID_APD_EXCEL, ArrayPopupDialog::OnCommand)
+	EVT_BUTTON(ID_APD_CLIPBOARD, ArrayPopupDialog::OnCommand)
+	EVT_BUTTON(ID_APD_CSV, ArrayPopupDialog::OnCommand)
+	EVT_BUTTON(ID_APD_EXCEL, ArrayPopupDialog::OnCommand)
 END_EVENT_TABLE()
 
-ArrayPopupDialog::ArrayPopupDialog(wxWindow *parent, const wxString &title, const wxString &label, VarValue *vv ) : wxDialog(parent, wxID_ANY, "Array Viewer", wxDefaultPosition, wxDefaultSize, wxRESIZE_BORDER | wxDEFAULT_DIALOG_STYLE), m_vv(vv)
+ArrayPopupDialog::ArrayPopupDialog(wxWindow *parent, const wxString &title, const wxString &label, VarValue *vv ) 
+	: wxDialog(parent, wxID_ANY, title, wxDefaultPosition, wxSize(600, 500), wxRESIZE_BORDER | wxDEFAULT_DIALOG_STYLE), m_vv(vv)
 {
+	
+#ifdef __WXMSW__
+	SetIcon(wxICON(appicon));
+#endif	
+	SetBackgroundColour( wxMetroTheme::Colour( wxMT_FOREGROUND ) );
+
 	if (!m_vv)  return;
 
 	if (vv->Type() != VV_ARRAY) return;
@@ -773,59 +780,42 @@ ArrayPopupDialog::ArrayPopupDialog(wxWindow *parent, const wxString &title, cons
 	wxSize sz = GetTextExtent(title);
 	wxString spacer = " ";
 	spacer.Pad(sz.GetWidth(), ' ', false);
-
 	sz = GetTextExtent(spacer);
 	int width = sz.GetWidth() - 20 ; // subtract scrollbar width
 
 	m_grid->SetColumnWidth(0, (int)(width / 2.0));
 	m_grid->SetColumnWidth(1, width - (int)(width / 2.0));
-
-
-	sizer->Add(new wxStaticText(this, wxID_ANY, spacer), 0, wxEXPAND | wxALL, 0);
-
+	
 	wxBoxSizer *cf_tools = new wxBoxSizer(wxHORIZONTAL);
-	cf_tools->Add(new wxButton(this, ID_APD_CLIPBOARD, "Copy to clipboard"), 0, wxALL, 2);
-	cf_tools->Add(new wxButton(this, ID_APD_CSV, "Save as CSV"), 0, wxALL, 2);
+	cf_tools->Add(new wxMetroButton(this, ID_APD_CLIPBOARD, "Copy to clipboard"), 0, wxALL, 0);
+	cf_tools->Add(new wxMetroButton(this, ID_APD_CSV, "Save as CSV"), 0, wxALL, 0);
 #ifdef __WXMSW__
-	cf_tools->Add(new wxButton(this, ID_APD_EXCEL, "Send to Excel"), 0, wxALL, 2);
+	cf_tools->Add(new wxMetroButton(this, ID_APD_EXCEL, "Send to Excel"), 0, wxALL, 0);
 #endif
 	cf_tools->AddStretchSpacer();
+	cf_tools->Add(new wxMetroButton(this, wxID_OK, "Close"), 0, wxALL, 0);
 
-	sizer->Add(cf_tools);
+	sizer->Add(cf_tools, 0, wxALL|wxEXPAND, 0 );
 
 	sizer->Add(m_grid,
-		0,            // make vertically stretchable
+		1,            // make vertically stretchable
 		wxEXPAND |    // make horizontally stretchable
 		wxALL,        //   and make border all around
 		0);         // set border width to 10
 
-	
-
-	wxBoxSizer *button_sizer = new wxBoxSizer(wxHORIZONTAL);
-	button_sizer->Add(
-		new wxButton(this, wxID_OK, "OK"),
-		0,           // make horizontally unstretchable
-		wxALL,       // make border all around (implicit top alignment)
-		0);        // set border width to 10
-
-	sizer->Add(
-		button_sizer,
-		wxSizerFlags(0).Right());
-
-
-	
-	SetTitle(title);
-#ifdef __WXMSW__
-	SetIcon(wxICON(appicon));
-#endif	
-	CenterOnParent();
-	SetSizerAndFit(sizer); // use the sizer for layout and set size and hints
+	SetSizer(sizer); // use the sizer for layout and set size and hints
 }
 
 
 
-ArrayPopupDialog::ArrayPopupDialog(wxWindow *parent, const wxString &title, const wxArrayString &labels, std::vector<std::vector<float> > &values_vec) : wxDialog(parent, wxID_ANY, "Array Viewer", wxDefaultPosition, wxDefaultSize, wxRESIZE_BORDER | wxDEFAULT_DIALOG_STYLE)
+ArrayPopupDialog::ArrayPopupDialog(wxWindow *parent, const wxString &title, const wxArrayString &labels, std::vector<std::vector<float> > &values_vec) 
+: wxDialog(parent, wxID_ANY, title, wxDefaultPosition, wxSize(600, 500), wxRESIZE_BORDER | wxDEFAULT_DIALOG_STYLE)
 {
+#ifdef __WXMSW__
+	SetIcon(wxICON(appicon));
+#endif	
+	SetBackgroundColour( wxMetroTheme::Colour( wxMT_FOREGROUND ) );
+
 	// check that all vectors the same size
 	int values_vec_size = values_vec.size();
 	if (values_vec_size <= 0) return;
@@ -898,7 +888,6 @@ ArrayPopupDialog::ArrayPopupDialog(wxWindow *parent, const wxString &title, cons
 
 
 	wxBoxSizer *sizer = new wxBoxSizer(wxVERTICAL);
-
 	
 	// for scroll bars for hourly values.
 	// TODO want text extent of title bar title - should not have to resize for scollbars!!
@@ -917,46 +906,25 @@ ArrayPopupDialog::ArrayPopupDialog(wxWindow *parent, const wxString &title, cons
 		tot_width += col_width;
 	}
 	m_grid->SetColumnWidth(0, width - tot_width);
-
-
-	sizer->Add(new wxStaticText(this, wxID_ANY, spacer), 0, wxEXPAND | wxALL, 0);
-
+	
 	wxBoxSizer *cf_tools = new wxBoxSizer(wxHORIZONTAL);
-	cf_tools->Add(new wxButton(this, ID_APD_CLIPBOARD, "Copy to clipboard"), 0, wxALL, 2);
-	cf_tools->Add(new wxButton(this, ID_APD_CSV, "Save as CSV"), 0, wxALL, 2);
+	cf_tools->Add(new wxMetroButton(this, ID_APD_CLIPBOARD, "Copy to clipboard"), 0, wxALL, 2);
+	cf_tools->Add(new wxMetroButton(this, ID_APD_CSV, "Save as CSV"), 0, wxALL, 2);
 #ifdef __WXMSW__
-	cf_tools->Add(new wxButton(this, ID_APD_EXCEL, "Send to Excel"), 0, wxALL, 2);
+	cf_tools->Add(new wxMetroButton(this, ID_APD_EXCEL, "Send to Excel"), 0, wxALL, 2);
 #endif
 	cf_tools->AddStretchSpacer();
+	cf_tools->Add(new wxMetroButton(this, wxID_OK, "Close"), 0, wxALL, 2);
 
-	sizer->Add(cf_tools);
+	sizer->Add(cf_tools, 0, wxALL|wxEXPAND, 0);
 
 	sizer->Add(m_grid,
-		0,            // make vertically stretchable
+		1,            // make vertically stretchable
 		wxEXPAND |    // make horizontally stretchable
 		wxALL,        //   and make border all around
 		0);         // set border width to 10
-
-
-
-	wxBoxSizer *button_sizer = new wxBoxSizer(wxHORIZONTAL);
-	button_sizer->Add(
-		new wxButton(this, wxID_OK, "OK"),
-		0,           // make horizontally unstretchable
-		wxALL,       // make border all around (implicit top alignment)
-		0);        // set border width to 10
-
-	sizer->Add(
-		button_sizer,
-		wxSizerFlags(0).Right());
-
-
-	SetTitle(title);
-#ifdef __WXMSW__
-	SetIcon(wxICON(appicon));
-#endif	
-	CenterOnParent();
-	SetSizerAndFit(sizer); // use the sizer for layout and set size and hints
+	
+	SetSizer(sizer); // use the sizer for layout and set size and hints
 }
 
 void ArrayPopupDialog::OnCommand(wxCommandEvent &evt)
@@ -1088,10 +1056,6 @@ void ArrayPopupDialog::SendToExcel()
 		xl.PasteClipboard();
 	}
 #endif
-}
-
-ArrayPopupDialog::~ArrayPopupDialog()
-{
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////
