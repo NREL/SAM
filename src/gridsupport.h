@@ -132,7 +132,6 @@ class ArrayPopupDialog : public wxDialog
 public:
 	ArrayPopupDialog(wxWindow *parent, const wxString &title, const wxString &label, VarValue *vv);
 	ArrayPopupDialog(wxWindow *parent, const wxString &title, const wxArrayString &labels, std::vector<std::vector<float> > &values_vec);
-	~ArrayPopupDialog();
 
 private:
 	void OnCommand(wxCommandEvent &evt);
@@ -141,6 +140,8 @@ private:
 	void SaveToCSV();
 	void SendToExcel();
 	void GetTextData(wxString &dat, char sep);
+
+	void CreateUI();
 
 	VarValue *m_vv;
 	wxGrid *m_grid;
