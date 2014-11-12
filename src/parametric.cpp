@@ -96,6 +96,14 @@ void ParametricData::Write( wxOutputStream &_O )
 	for( size_t i=0;i<Runs.size();i++ )
 		Runs[i]->Write( _O );
 
+	out.Write32(QuickSetup.size());
+	for (size_t i = 0; i < QuickSetup.size(); i++)
+	{
+		out.Write32(QuickSetup[i].Count());
+		for (size_t k = 0; k < QuickSetup[i].Count(); k++)
+			out.WriteString(QuickSetup[i].Item(k));
+	}
+
 	out.Write8( 0x2b );
 }
 
@@ -129,6 +137,17 @@ bool ParametricData::Read( wxInputStream &_I )
 		Simulation *sim = new Simulation( m_case, wxString::Format("Parametric #%d",(int)(i+1)) );
 		sim->Read( _I );
 		Runs.push_back( sim );
+	}
+
+	n = in.Read32();
+	QuickSetup.clear();
+	for (size_t i = 0; i < n; i++)
+	{
+		wxArrayString vals;
+		size_t m = in.Read32();
+		for (size_t k = 0; k < m; k++)
+			vals.Add(in.ReadString());
+		QuickSetup.push_back(vals);
 	}
 
 	return in.Read8() == code;

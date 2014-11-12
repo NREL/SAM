@@ -57,6 +57,8 @@ Parametric_QS::Parametric_QS(wxWindow *parent, Case *c)
 	main_sizer->Add( fgs, 1, wxALL|wxEXPAND, 5 );
 	main_sizer->Add( CreateButtonSizer( wxOK|wxCANCEL|wxHELP ), 0, wxALL|wxEXPAND, 5 );
 	SetSizer(main_sizer);
+
+	UpdateFromParametricData();
 }
 
 
@@ -75,6 +77,13 @@ void Parametric_QS::OnCommand( wxCommandEvent &evt )
 
 void Parametric_QS::UpdateFromParametricData()
 {
+	ParametricData &par = m_case->Parametric();
+	m_input_values = par.QuickSetup;
+	for (size_t i = 0; i < m_input_values.size(); i++)
+	{
+		if (m_input_values[i].Count() > 0)
+			m_input_names.Add(m_input_values[i].Item(0));
+	}
 	RefreshVariableList();
 	RefreshValuesList();
 }
@@ -543,6 +552,9 @@ void Parametric_QS::UpdateCaseParametricData()
 		pv.Values = vvv;
 		par.Setup.push_back(pv);
 	}
+
+	// save current quick setup to be reloaded
+	par.QuickSetup = m_input_values;
 
 }
 	
