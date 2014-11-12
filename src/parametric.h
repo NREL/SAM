@@ -29,6 +29,8 @@ public:
 	std::vector<Var> Setup;
 	std::vector<Simulation*> Runs;
 
+	std::vector<wxArrayString> QuickSetup;
+
 	int FindSetup(wxString &name);
 	bool RemoveSetup(wxString &name);
 
