@@ -943,9 +943,14 @@ void ParametricViewer::SelectOutputs()
 void ParametricViewer::UpdateGrid()
 {
 	// update grid data with m_par updates from configure and number of runs
-	//m_grid->SetTable(m_grid_data);
+	// cancel editing of cell
+	//m_grid->HideCellEditControl();
+	//m_grid->SaveEditControlValue();
+
+//	m_grid->SetTable(m_grid_data);
 	//m_grid->ForceRefresh();
 	// setting with attr in table base
+	
 	for (int col = 0; col < m_grid_data->GetNumberCols(); col++)
 	{
 		for (int row = 0; row < m_grid_data->GetNumberRows(); row++)
@@ -954,13 +959,14 @@ void ParametricViewer::UpdateGrid()
 				m_grid->SetReadOnly(row, col, false);
 			else
 			{
-	//			bool readonly = (m_grid_data->GetTypeName(row, col) == wxGRID_VALUE_STRING);
-	//			m_grid->SetReadOnly(row, col, readonly);
+//				bool readonly = (m_grid_data->GetTypeName(row, col) == wxGRID_VALUE_STRING);
+//				m_grid->SetReadOnly(row, col, readonly);
 			}
 		}
 	}
-	m_grid->AutoSizeColumns();
 	
+	m_grid->AutoSizeColumns();
+
 }
 
 
@@ -2010,9 +2016,10 @@ void ParametricGridData::ClearResults(int row)
 	}
 }
 
+
 wxGridCellAttr *ParametricGridData::GetAttr(int row, int col, wxGridCellAttr::wxAttrKind kind)
 {
-
+	
 	wxGridCellAttr *attr = NULL;
 	if (GetAttrProvider())
 	{
@@ -2044,6 +2051,7 @@ wxGridCellAttr *ParametricGridData::GetAttr(int row, int col, wxGridCellAttr::wx
 		}
 	}
 	return attr;
+	
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////
