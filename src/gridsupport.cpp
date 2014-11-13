@@ -632,14 +632,14 @@ void GridCellArrayEditor::BeginEdit(int row, int col, wxGrid *pGrid)
 
 	GridChoiceData *vgd = static_cast<GridChoiceData *>(pGrid->GetTable());
 	VarValue *vv = vgd->GetVarValue(row, col);
-	wxString title = vgd->GetColLabelValue(col) + wxString::Format(" for run %d", row);
+	wxString title = vgd->GetColLabelValue(col) + wxString::Format(" for run %d", row + 1);
 	wxString label = vgd->GetColLabelValue(col);
 
 	DisplayEditor( title, label, pGrid, vv);
 
 	m_new_cell_value = m_cell_value;
 	m_text->SetLabel(m_new_cell_value);
-	pGrid->SaveEditControlValue();
+//	pGrid->SaveEditControlValue();
 }
 
 wxString GridCellArrayEditor::GetString(int row, int col, const wxGrid *grid)
