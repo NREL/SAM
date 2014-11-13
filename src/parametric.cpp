@@ -847,7 +847,13 @@ void ParametricViewer::UpdateNumRuns()
 
 void ParametricViewer::RunSimulations()
 {
-	//wxBusyInfo busy("Running simulations... please wait");
+	// check that inputs and outputs are selected
+	if ((m_input_names.Count() <= 0) || (m_output_names.Count() <= 0))
+	{
+		wxMessageBox("You must set up parametric inputs and outputs before runing parametric simulations.", "Incomplete parametric setup");
+		return;
+	}
+
 	RemoveAllPlots();
 	if (m_run_multithreaded->GetValue())
 		m_grid_data->RunSimulations_multi();
