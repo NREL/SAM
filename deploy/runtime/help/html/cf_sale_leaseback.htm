@@ -62,8 +62,8 @@
 <p class="p_VariableName"><span class="f_VariableName">PPA price (cents/kWh)</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The PPA price in Year One is either the value you specify on the <a href="financial_parameters.htm" class="topiclink">Financial Parameters</a> page, or the value calculated by SAM to meet the IRR target you specify on the Financial Parameters page. The PPA price in Year One is the PPA price:</span></p>
 <p class="p_EquationExcel"><span class="f_EquationExcel">PPA Price in Year One = Adjusted PPA Price</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription">For analyses that do not involve <a href="td_variables_overview.htm" class="topiclink">time-dependent pricing</a>, </span><span class="f_Emphasis">Adjusted PPA Price</span><span class="f_VariableDescription"> is equal to the <a href="mtf_ppa_price.htm" class="topiclink">PPA Price</a> reported on the <a href="summary.htm" class="topiclink">Metrics table</a>. </span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription">For analyses that do involve <a href="td_variables_overview.htm" class="topiclink">time-dependent pricing</a>, for each hour of the year, SAM multiplies the <a href="mtf_ppa_price.htm" class="topiclink">PPA price</a> shown in the <a href="summary.htm" class="topiclink">Metrics table</a> (equivalent to the bid price) by the TOD factor for that hour to calculate a set of hourly energy prices for Year one. The </span><span class="f_Emphasis">Adjusted PPA Price</span><span class="f_VariableDescription"> is the average of the 8,760 hourly values.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">For analyses that do not involve time-dependent pricing, </span><span class="f_Emphasis">Adjusted PPA Price</span><span class="f_VariableDescription"> is equal to the <a href="mtf_ppa_price.htm" class="topiclink">PPA Price</a> reported on the <a href="summary.htm" class="topiclink">Metrics table</a>. </span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">For analyses that do involve time-dependent pricing, for each hour of the year, SAM multiplies the <a href="mtf_ppa_price.htm" class="topiclink">PPA price</a> shown in the <a href="summary.htm" class="topiclink">Metrics table</a> (equivalent to the bid price) by the TOD factor for that hour to calculate a set of hourly energy prices for Year one. The </span><span class="f_Emphasis">Adjusted PPA Price</span><span class="f_VariableDescription"> is the average of the 8,760 hourly values.</span></p>
 <p class="p_Note"><span class="f_CHNote">Notes.</span><br />
 <span class="f_CHNote">&nbsp;</span><br />
 <span class="f_Text">When you choose </span><span class="f_CHInterfaceElement">Specify PPA Price</span><span class="f_Text"> for </span><span class="f_CHInterfaceElement">Solution Mode</span><span class="f_Text"> on the Financial Parameters page, the <a href="mtf_ppa_price.htm" class="topiclink">PPA Price</a> in the <a href="summary.htm" class="topiclink">Metrics table</a> is equal to the price you specify. When you choose </span><span class="f_CHInterfaceElement">Specify IRR Target</span><span class="f_Text">, SAM calculates the PPA price required to meet the IRR target that you specify.</span><br />
@@ -205,35 +205,27 @@
 </td>
 </tr>
 <tr style="text-align:left;vertical-align:top;">
-<td style="vertical-align:top; background-color:#c0c0c0; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Geothermal Co-Production</span></p>
+<td style="vertical-align:top; background-color:#c0c0c0; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">BeOpt/TRNSYS Solar Water Heating Model (Thermal)</span></p>
 </td>
-<td style="vertical-align:top; background-color:#c0c0c0; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Actual Expected Plant Output (kWe)</span></p>
+<td style="vertical-align:top; background-color:#c0c0c0; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Nameplate Capacity (kWt)</span></p>
 </td>
-<td style="vertical-align:top; background-color:#c0c0c0; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft"><a href="resource_and_power_generation.htm" class="topiclink">Resource and Power Generation</a></span></p>
-</td>
-</tr>
-<tr style="text-align:left;vertical-align:top;">
-<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">BeOpt/TRNSYS Solar Water Heating Model (Thermal)</span></p>
-</td>
-<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Nameplate Capacity (kWt)</span></p>
-</td>
-<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft"><a href="shw_system.htm" class="topiclink">SWH System</a></span></p>
+<td style="vertical-align:top; background-color:#c0c0c0; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft"><a href="shw_system.htm" class="topiclink">SWH System</a></span></p>
 </td>
 </tr>
 <tr style="text-align:left;vertical-align:top;">
-<td style="vertical-align:top; background-color:#c0c0c0; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Wind Power (AC)</span></p>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Wind Power (AC)</span></p>
 </td>
-<td style="vertical-align:top; background-color:#c0c0c0; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">System Nameplate Capacity (kWe)</span></p>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">System Nameplate Capacity (kWe)</span></p>
 </td>
-<td style="vertical-align:top; background-color:#c0c0c0; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft"><a href="wind_farm.htm" class="topiclink">Wind Farm</a></span></p>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft"><a href="wind_farm.htm" class="topiclink">Wind Farm</a></span></p>
 </td>
 </tr>
 <tr style="text-align:left;vertical-align:top;">
-<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Biopower (AC)</span></p>
+<td style="vertical-align:top; background-color:#c0c0c0; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Biopower (AC)</span></p>
 </td>
-<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Nameplate Capacity, Gross (kWe)</span></p>
+<td style="vertical-align:top; background-color:#c0c0c0; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Nameplate Capacity, Gross (kWe)</span></p>
 </td>
-<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft"><a href="biopower_plant_specs.htm" class="topiclink">Plant Specs</a></span></p>
+<td style="vertical-align:top; background-color:#c0c0c0; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft"><a href="biopower_plant_specs.htm" class="topiclink">Plant Specs</a></span></p>
 </td>
 </tr>
 </table>
@@ -553,35 +545,27 @@
 </td>
 </tr>
 <tr style="text-align:left;vertical-align:top;">
-<td style="vertical-align:top; background-color:#c0c0c0; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Geothermal Co-Production</span></p>
+<td style="vertical-align:top; background-color:#c0c0c0; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">BeOpt/TRNSYS Solar Water Heating Model (Thermal)</span></p>
 </td>
-<td style="vertical-align:top; background-color:#c0c0c0; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Actual Expected Plant Output (kWe)</span></p>
+<td style="vertical-align:top; background-color:#c0c0c0; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Nameplate Capacity (kWt)</span></p>
 </td>
-<td style="vertical-align:top; background-color:#c0c0c0; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft"><a href="resource_and_power_generation.htm" class="topiclink">Resource and Power Generation</a></span></p>
-</td>
-</tr>
-<tr style="text-align:left;vertical-align:top;">
-<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">BeOpt/TRNSYS Solar Water Heating Model (Thermal)</span></p>
-</td>
-<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Nameplate Capacity (kWt)</span></p>
-</td>
-<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft"><a href="shw_system.htm" class="topiclink">SWH System</a></span></p>
+<td style="vertical-align:top; background-color:#c0c0c0; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft"><a href="shw_system.htm" class="topiclink">SWH System</a></span></p>
 </td>
 </tr>
 <tr style="text-align:left;vertical-align:top;">
-<td style="vertical-align:top; background-color:#c0c0c0; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Wind Power (AC)</span></p>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Wind Power (AC)</span></p>
 </td>
-<td style="vertical-align:top; background-color:#c0c0c0; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">System Nameplate Capacity (kWe)</span></p>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">System Nameplate Capacity (kWe)</span></p>
 </td>
-<td style="vertical-align:top; background-color:#c0c0c0; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft"><a href="wind_farm.htm" class="topiclink">Wind Farm</a></span></p>
+<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft"><a href="wind_farm.htm" class="topiclink">Wind Farm</a></span></p>
 </td>
 </tr>
 <tr style="text-align:left;vertical-align:top;">
-<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Biopower (AC)</span></p>
+<td style="vertical-align:top; background-color:#c0c0c0; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Biopower (AC)</span></p>
 </td>
-<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Nameplate Capacity, Gross (kWe)</span></p>
+<td style="vertical-align:top; background-color:#c0c0c0; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Nameplate Capacity, Gross (kWe)</span></p>
 </td>
-<td style="vertical-align:top; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft"><a href="biopower_plant_specs.htm" class="topiclink">Plant Specs</a></span></p>
+<td style="vertical-align:top; background-color:#c0c0c0; padding:0px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft"><a href="biopower_plant_specs.htm" class="topiclink">Plant Specs</a></span></p>
 </td>
 </tr>
 </table>
