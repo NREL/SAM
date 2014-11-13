@@ -438,8 +438,6 @@ void GridCellVarValueEditor::ApplyEdit(int row, int col, wxGrid *grid)
 	grid->GetTable()->SetValue(row, col, m_cell_value);
 	m_cell_value.clear();
 	m_new_cell_value.clear();
-//	VariableGridFrame *vgf = static_cast<VariableGridFrame *>(grid->GetParent());
-//	vgf->UpdateGrid(); // for comparison views
 	grid->Refresh();
 }
 
