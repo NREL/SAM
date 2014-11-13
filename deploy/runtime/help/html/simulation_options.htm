@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-   <title>Simulations</title>
+   <title>Simulation</title>
    <meta name="generator" content="Help &amp; Manual" />
    <meta name="keywords" content="" />
    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -29,7 +29,7 @@
 <table style="width:100%; border:none; border-spacing:0px; padding:5px; background:#FFFFFF; color:#0072C6;">
   <tr style="vertical-align:middle">
     <td style="text-align:left">
-      <h1 class="p_Heading1"><span class="f_Heading1">Simulations</span></h1>
+      <h1 class="p_Heading1"><span class="f_Heading1">Simulation</span></h1>
 
     </td>
   </tr>
@@ -38,7 +38,12 @@
 
 <!-- Placeholder for topic body. -->
 <table style="width:100%;border:none;border-spacing:0px"><tr style="vertical-align:top"><td style="text-align:left;padding:5px">
-<p class="p_Text"><span class="f_Text">Describe what happens when you click Simulate, and provide and overview of parametric, stochastic, P50/P90 simulations.</span></p>
+<p class="p_Text"><span class="f_Text">A simulation is the set of calculations made by the performance and financial models to calculate <a href="results.htm" class="topiclink">results</a>. The performance model makes a one set of calculations for each time step in the <a href="weather_data.htm" class="topiclink">weather file</a> (8,760 time steps for an hourly weather file), and the financial model makes another set of calculations for each year in the analysis period that you specify on the <a href="financial_parameters.htm" class="topiclink">Financial Parameters</a> page. </span></p>
+<p class="p_Text"><span class="f_Text">You can <a href="run_simulations.htm" class="topiclink">run simulations</a> from SAM, or from a <a href="scripting.htm" class="topiclink">macro or script</a>.</span></p>
+<h3 class="p_Heading3_atocs_" style="border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Multiple Simulations</span></h3>
+<p class="p_Text"><span class="f_Text">Some analysis scenarios require more than one simulation. For example, a parametric analysis requires running simulations for a range of values for one or more input variables. SAM offers three options for multiple simulations:</span></p>
+<div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 3px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:24px"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;">&#8226;</span></td><td style="border:none"><span class="f_List">A <a href="parametrics.htm" class="topiclink">parametric</a> simulation allows you to assign multiple values to one or more input variables and create graphs showing the dependence of a result on those variables. For example, you can use a parametric analysis to create a graph of a photovoltaic system's annual electricity output versus the array tilt and azimuth angles, or, for a parabolic trough system, you can create a graph of levelized cost of energy versus solar multiple to determine the optimal solar field size.</span></td></tr></table></div><div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 3px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:24px"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;">&#8226;</span></td><td style="border:none"><span class="f_List">A <a href="stochastic.htm" class="topiclink">stochastic</a> analysis is similar to a parametric analysis, except that SAM automatically generates values of input variables over a range and probability distribution that you specify. </span></td></tr></table></div><div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 6px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:24px"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;">&#8226;</span></td><td style="border:none"><span class="f_ListLast">A <a href="p50p90.htm" class="topiclink">P50/P90</a> analysis involves running a simulation for a set ten or more single-year weather files for consecutive years, and then sorting the annual electrical output and other metrics in order of increasing occurrence over the time period. You can use that information to estimate the certainty of SAM's output predictions given your assumptions.</span></td></tr></table></div><p class="p_Text"><span class="f_Text">You can use SAM to optimize the value of one or more inputs using one of the simulation tools listed above as described in <a href="optimization.htm" class="topiclink">Optimization</a>.</span></p>
+<p class="p_Text"><span class="f_Text">You can also design your own models that require multiple simulations by writing a <a href="scripting.htm" class="topiclink">script</a> in SAM, or you can call the SAM simulation core (SSC) outside of SAM with the <a href="sdk.htm" class="topiclink">software development kit</a>.</span></p>
 
 </td></tr></table>
 
