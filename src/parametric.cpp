@@ -2369,6 +2369,9 @@ void Parametric_QS::OnAddVariable(wxCommandEvent &evt)
 	{
 		m_input_names = dlg.GetCheckedNames();
 		RefreshVariableList();
+		if (m_input_names.Count() > 0)
+			lstVariables->SetSelection(0);
+		RefreshValuesList();
 	}
 }
 
@@ -2625,6 +2628,31 @@ void Parametric_QS::RefreshVariableList()
 			lstVariables->Append(vi->Group + "/" + vi->Label + suffix);
 		else
 			lstVariables->Append(vi->Label + suffix);
+
+		// update m_input_values if necessary
+		// add items
+		wxString name = m_input_names[i];
+		wxArrayString items = GetValuesDisplayList(name);
+		if (items.Count() == 0) // add base case value
+		{
+			wxArrayString values;
+			values.Add(name);
+			wxString val = GetBaseCaseValue(name);
+			values.Add(val);
+			m_input_values.push_back(values);
+		}
+		// remove items
+		std::vector<size_t>  to_remove;
+		for (size_t i = 0; i < m_input_values.size(); i++)
+		{	
+			if (m_input_values[i].Count() <= 0)
+				to_remove.push_back(i);
+			else if (m_input_names.Index(m_input_values[i].Item(0)) == wxNOT_FOUND)
+				to_remove.push_back(i);
+		}
+		for (size_t i = to_remove.size(); i > 0; i--)
+			m_input_values.erase(m_input_values.begin() + to_remove[i]);
+
 	}
 
 
