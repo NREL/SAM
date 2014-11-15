@@ -80,7 +80,7 @@ void ParametricData::Write( wxOutputStream &_O )
 	wxDataOutputStream out( _O );
 
 	out.Write8( 0x2b );
-	out.Write8( 1 );
+	out.Write8( 2 );
 
 	out.Write32( Setup.size() );
 	for( size_t i=0;i<Setup.size();i++ )
@@ -138,17 +138,19 @@ bool ParametricData::Read( wxInputStream &_I )
 		Runs.push_back( sim );
 	}
 
-	n = in.Read32();
-	QuickSetup.clear();
-	for (size_t i = 0; i < n; i++)
+	if (ver > 1)
 	{
-		wxArrayString vals;
-		size_t m = in.Read32();
-		for (size_t k = 0; k < m; k++)
-			vals.Add(in.ReadString());
-		QuickSetup.push_back(vals);
+		n = in.Read32();
+		QuickSetup.clear();
+		for (size_t i = 0; i < n; i++)
+		{
+			wxArrayString vals;
+			size_t m = in.Read32();
+			for (size_t k = 0; k < m; k++)
+				vals.Add(in.ReadString());
+			QuickSetup.push_back(vals);
+		}
 	}
-
 	return in.Read8() == code;
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////
