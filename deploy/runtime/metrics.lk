@@ -7,6 +7,7 @@ function rescom_metrics()
 	metric( 'savings_year1',{'label'='Net savings with system', 'pre'='$', 'post'=' ', 'thousep'='true', 'mode'='f', 'deci'='2' } );
 	metric( 'npv', {'label'='Net present value', 'mode'='f', 'deci'='2', 'thousep'='true', 'pre'='$', 'post'=' ' } );
 	metric( 'payback', {'label'='Payback period', 'mode'='f', 'deci'='4', 'thousep'='true', 'post'=' years' } );
+	metric( 'adjusted_installed_cost', {'label'='Project cost', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
 }
 
 function ipp_metrics()
@@ -31,109 +32,60 @@ function so_metrics()
 	metric( 'ppa', {'label'='PPA price (Year 1)', 'post'= ' \u00A2/kWh', 'mode'='f', 'deci'='2' } );
 	metric( 'ppa_escalation', {'label'='PPA price escalation', 'mode'='f', 'post'=' %', 'deci'='2' } );
 	metric( 'lppa_nom', {'label'='Levelized PPA price (nominal)', 'mode'='f', 'post'=' \u0A2/kWh', 'deci'='2' } );
-//	metric( 'lppa_real', {'label'='Levelized PPA Price (Real)', 'mode'='f', 'post'=' \u00A2/kWh', 'deci'='2' } );
 	metric( 'lcoe_nom', {'label'='Levelized COE (nominal)', 'post'=' \u00A2/kWh', 'mode'='f', 'deci'='2' } );
-//	metric( 'lcoe_real', {'label'='LCOE (Real)', 'post'=' \u00A2/kWh', 'mode'='f', 'deci'='2' } );
-
 	metric( 'project_return_aftertax_npv', {'label'='Net present value', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
-
-//	metric( 'flip_target_year', {'label'='IRR Target Year'} );
-//	metric( 'flip_target_irr', {'label'='IRR Target', 'mode'='f', 'post'=' %', 'deci'='2' } );
 	metric( 'flip_actual_irr', {'label'='Internal rate of return (IRR)', 'mode'='f', 'post'=' %', 'deci'='2' } );
 	metric( 'flip_actual_year', {'label'='Year IRR is achieved'} );
-
-	metric( 'project_return_aftertax_irr', {'label'='IRR at end of project', 'mode'='f', 'post'=' %', 'deci'='2' } );
+	metric( 'project_return_aftertax_irr', {'label'='IRR at end of analysis period', 'mode'='f', 'post'=' %', 'deci'='2' } );
 	metric( 'cost_installed', {'label'='Project cost', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
 	metric( 'size_of_debt', {'label'='Debt amount', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
 	metric( 'size_of_equity', {'label'='Equity amount', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
 	metric( 'debt_fraction', {'label'='Debt fraction', 'post'=' %', 'mode'='f', 'deci'='2' } );
-
-//	metric( 'direct_cost', {'label'='Direct Cost', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
-//	metric( 'indirect_cost', {'label'='Indirect Cost', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
-//	metric( 'financing_cost', {'label'='Financing Cost', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
 }
 
 function aepf_metrics()
 {
-	metric( 'lcoe_nom', {'label'='LCOE (Nominal)', 'post'=' \u00A2/kWh', 'mode'='f', 'deci'='2' } );
-	metric( 'lcoe_real', {'label'='LCOE (Real)', 'post'=' \u00A2/kWh', 'mode'='f', 'deci'='2' } );
-	metric( 'ppa', {'label'='PPA Price (Year 1)', 'post'= ' \u00A2/kWh', 'mode'='f', 'deci'='2' } );
+	metric( 'ppa', {'label'='PPA price (year 1)', 'post'= ' \u00A2/kWh', 'mode'='f', 'deci'='2' } );
 	metric( 'ppa_escalation', {'label'='PPA Price Escalation', 'mode'='f', 'post'=' %', 'deci'='2' } );
-//	metric( 'lppa_nom', {'label'='Levelized PPA Price (Nominal)', 'mode'='f', 'post'=' \u0A2/kWh', 'deci'='2' } );
-//	metric( 'lppa_real', {'label'='Levelized PPA Price (Real)', 'mode'='f', 'post'=' \u00A2/kWh', 'deci'='2' } );
-
-	metric( 'flip_target_year', {'label'='IRR Target Year'} );
-	metric( 'flip_target_irr', {'label'='IRR Target', 'mode'='f', 'post'=' %', 'deci'='2' } );
-	metric( 'flip_actual_year', {'label'='IRR Actual Year'} );
-	metric( 'flip_actual_irr', {'label'='IRR in Target Year', 'mode'='f', 'post'=' %', 'deci'='2' } );
-
-	metric( 'tax_investor_aftertax_irr', {'label'='After-tax Tax Investor IRR', 'mode'='f', 'post'=' %', 'deci'='2' } );
-	metric( 'tax_investor_aftertax_npv', {'label'='After-tax Tax Investor NPV', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
-	metric( 'sponsor_aftertax_irr', {'label'='After-tax Developer IRR', 'mode'='f', 'post'=' %', 'deci'='2' } );
-	metric( 'sponsor_aftertax_npv', {'label'='After-tax Developer NPV', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
-
-//	metric( 'direct_cost', {'label'='Direct Cost', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
-//	metric( 'indirect_cost', {'label'='Indirect Cost', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
-//	metric( 'financing_cost', {'label'='Financing Cost', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
-	metric( 'cost_installed', {'label'='Total Project Cost', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
-	metric( 'size_of_equity', {'label'='Total Equity', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
+	metric( 'lppa_nom', {'label'='Levelized PPA Price (nominal)', 'mode'='f', 'post'=' \u0A2/kWh', 'deci'='2' } );
+	metric( 'lcoe_nom', {'label'='Levelized COE (nominal)', 'post'=' \u00A2/kWh', 'mode'='f', 'deci'='2' } );
+	metric( 'tax_investor_aftertax_irr', {'label'='Investor IRR (after-tax)', 'mode'='f', 'post'=' %', 'deci'='2' } );
+	metric( 'flip_actual_year', {'label'='Year investor IRR acheived'} );
+	metric( 'tax_investor_aftertax_npv', {'label'='Investor NPV (after-tax)', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
+	metric( 'sponsor_aftertax_irr', {'label'='Developer IRR (after-tax)', 'mode'='f', 'post'=' %', 'deci'='2' } );
+	metric( 'sponsor_aftertax_npv', {'label'='Developer NPV (after-tax)', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
+	metric( 'cost_installed', {'label'='Total project cost', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
 }
 
 function lpf_metrics()
 {
-	metric( 'lcoe_nom', {'label'='LCOE (Nominal)', 'post'=' \u00A2/kWh', 'mode'='f', 'deci'='2' } );
-	metric( 'lcoe_real', {'label'='LCOE (Real)', 'post'=' \u00A2/kWh', 'mode'='f', 'deci'='2' } );
-	metric( 'ppa', {'label'='PPA Price (Year 1)', 'post'= ' \u00A2/kWh', 'mode'='f', 'deci'='2' } );
+	metric( 'ppa', {'label'='PPA price (year 1)', 'post'= ' \u00A2/kWh', 'mode'='f', 'deci'='2' } );
 	metric( 'ppa_escalation', {'label'='PPA Price Escalation', 'mode'='f', 'post'=' %', 'deci'='2' } );
-//	metric( 'lppa_nom', {'label'='Levelized PPA Price (Nominal)', 'mode'='f', 'post'=' \u0A2/kWh', 'deci'='2' } );
-//	metric( 'lppa_real', {'label'='Levelized PPA Price (Real)', 'mode'='f', 'post'=' \u00A2/kWh', 'deci'='2' } );
-
-	metric( 'flip_target_year', {'label'='IRR Target Year'} );
-	metric( 'flip_target_irr', {'label'='IRR Target', 'mode'='f', 'post'=' %', 'deci'='2' } );
-	metric( 'flip_actual_year', {'label'='IRR Actual Year'} );
-	metric( 'flip_actual_irr', {'label'='IRR in Target Year', 'mode'='f', 'post'=' %', 'deci'='2' } );
-
-	metric( 'tax_investor_aftertax_irr', {'label'='After-tax Tax Investor IRR', 'mode'='f', 'post'=' %', 'deci'='2' } );
-	metric( 'tax_investor_aftertax_npv', {'label'='After-tax Tax Investor NPV', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
-	metric( 'sponsor_aftertax_irr', {'label'='After-tax Developer IRR', 'mode'='f', 'post'=' %', 'deci'='2' } );
-	metric( 'sponsor_aftertax_npv', {'label'='After-tax Developer NPV', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
-
-	metric( 'debt_fraction', {'label'='Debt Fraction', 'post'=' %', 'mode'='f', 'deci'='2' } );
-
-//	metric( 'direct_cost', {'label'='Direct Cost', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
-//	metric( 'indirect_cost', {'label'='Indirect Cost', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
-//	metric( 'financing_cost', {'label'='Financing Cost', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
-	metric( 'cost_installed', {'label'='Total Project Cost', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
-	metric( 'size_of_debt', {'label'='Total Debt', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
-	metric( 'size_of_equity', {'label'='Total Equity', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
+	metric( 'lppa_nom', {'label'='Levelized PPA Price (nominal)', 'mode'='f', 'post'=' \u0A2/kWh', 'deci'='2' } );
+	metric( 'lcoe_nom', {'label'='Levelized COE (nominal)', 'post'=' \u00A2/kWh', 'mode'='f', 'deci'='2' } );
+	metric( 'tax_investor_aftertax_irr', {'label'='Investor IRR (after-tax)', 'mode'='f', 'post'=' %', 'deci'='2' } );
+	metric( 'flip_actual_year', {'label'='Year investor IRR acheived'} );
+	metric( 'tax_investor_aftertax_npv', {'label'='Investor NPV (after-tax)', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
+	metric( 'sponsor_aftertax_irr', {'label'='Developer IRR (after-tax)', 'mode'='f', 'post'=' %', 'deci'='2' } );
+	metric( 'sponsor_aftertax_npv', {'label'='Developer NPV (after-tax)', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
+	metric( 'debt_fraction', {'label'='Debt fraction', 'post'=' %', 'mode'='f', 'deci'='2' } );
+	metric( 'size_of_debt', {'label'='Debt', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
+	metric( 'size_of_equity', {'label'='Equity', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
 }
 
 
 function sl_metrics()
 {
-	metric( 'lcoe_nom', {'label'='LCOE (Nominal)', 'post'=' \u00A2/kWh', 'mode'='f', 'deci'='2' } );
-	metric( 'lcoe_real', {'label'='LCOE (Real)', 'post'=' \u00A2/kWh', 'mode'='f', 'deci'='2' } );
-	metric( 'ppa', {'label'='PPA Price (Year 1)', 'post'= ' \u00A2/kWh', 'mode'='f', 'deci'='2' } );
+	metric( 'ppa', {'label'='PPA price (year 1)', 'post'= ' \u00A2/kWh', 'mode'='f', 'deci'='2' } );
 	metric( 'ppa_escalation', {'label'='PPA Price Escalation', 'mode'='f', 'post'=' %', 'deci'='2' } );
-//	metric( 'lppa_nom', {'label'='Levelized PPA Price (Nominal)', 'mode'='f', 'post'=' \u0A2/kWh', 'deci'='2' } );
-//	metric( 'lppa_real', {'label'='Levelized PPA Price (Real)', 'mode'='f', 'post'=' \u00A2/kWh', 'deci'='2' } );
-
-	metric( 'flip_target_year', {'label'='IRR Target Year'} );
-	metric( 'flip_target_irr', {'label'='IRR Target', 'mode'='f', 'post'=' %', 'deci'='2' } );
-	metric( 'flip_actual_year', {'label'='IRR Actual Year'} );
-	metric( 'flip_actual_irr', {'label'='IRR in Target Year', 'mode'='f', 'post'=' %', 'deci'='2' } );
-
-	metric( 'tax_investor_aftertax_irr', {'label'='After-tax Tax Investor IRR', 'mode'='f', 'post'=' %', 'deci'='2' } );
-	metric( 'tax_investor_aftertax_npv', {'label'='After-tax Tax Investor NPV', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
-	metric( 'sponsor_aftertax_irr', {'label'='After-tax Developer IRR', 'mode'='f', 'post'=' %', 'deci'='2' } );
-	metric( 'sponsor_aftertax_npv', {'label'='After-tax Developer NPV', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
-
-
-//	metric( 'direct_cost', {'label'='Direct Cost', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
-//	metric( 'indirect_cost', {'label'='Indirect Cost', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
-//	metric( 'financing_cost', {'label'='Financing Cost', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
-	metric( 'cost_installed', {'label'='Total Project Cost', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
-	metric( 'size_of_equity', {'label'='Total Equity', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
+	metric( 'lppa_nom', {'label'='Levelized PPA Price (nominal)', 'mode'='f', 'post'=' \u0A2/kWh', 'deci'='2' } );
+	metric( 'lcoe_nom', {'label'='Levelized COE (nominal)', 'post'=' \u00A2/kWh', 'mode'='f', 'deci'='2' } );
+	metric( 'tax_investor_aftertax_irr', {'label'='Investor IRR (after-tax)', 'mode'='f', 'post'=' %', 'deci'='2' } );
+	metric( 'flip_actual_year', {'label'='Year investor IRR acheived'} );
+	metric( 'tax_investor_aftertax_npv', {'label'='Investor NPV (after-tax)', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
+	metric( 'sponsor_aftertax_irr', {'label'='Developer IRR (after-tax)', 'mode'='f', 'post'=' %', 'deci'='2' } );
+	metric( 'sponsor_aftertax_npv', {'label'='Developer NPV (after-tax)', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
+	metric( 'cost_installed', {'label'='Total project cost', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
 }
 
 function pvwatts_metrics() 
