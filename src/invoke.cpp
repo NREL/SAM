@@ -1042,6 +1042,8 @@ static bool lkvar_to_sscvar( ssc_data_t p_dat, const char *name, lk::vardata_t &
 
 static void sscvar_to_lkvar( lk::vardata_t &out, const char *name, ssc_data_t p_dat )
 {
+	out.nullify();
+
 	int ty = ssc_data_query( p_dat, name );
 	switch( ty )
 	{
@@ -1058,9 +1060,8 @@ static void sscvar_to_lkvar( lk::vardata_t &out, const char *name, ssc_data_t p_
 		break;
 	case SSC_ARRAY:
 	{
-		ssc_number_t *vv;
 		int n = 0;
-		vv = ssc_data_get_array( p_dat, name, &n );
+		ssc_number_t *vv = ssc_data_get_array( p_dat, name, &n );
 		if ( vv && n > 0 )
 		{
 			out.empty_vector();
@@ -1072,9 +1073,8 @@ static void sscvar_to_lkvar( lk::vardata_t &out, const char *name, ssc_data_t p_
 		break;
 	case SSC_MATRIX:
 	{
-		ssc_number_t *mat;
-		int nr, nc;
-		mat = ssc_data_get_matrix( p_dat, name, &nr, &nc );
+		int nr = 0, nc = 0;
+		ssc_number_t *mat = ssc_data_get_matrix( p_dat, name, &nr, &nc );
 		if ( mat && nr > 0 && nc > 0 )
 		{
 			out.empty_vector();
@@ -1108,7 +1108,7 @@ static void sscvar_to_lkvar( lk::vardata_t &out, const char *name, ssc_data_t p_
 
 
 
-class lkSSCdataObj
+class lkSSCdataObj : public lk::objref_t
 {
 	ssc_data_t m_data;
 public:
@@ -1117,36 +1117,66 @@ public:
 		m_data = ssc_data_create();
 	}
 	
-	~lkSSCdataObj() {
+	virtual ~lkSSCdataObj() {
 		ssc_data_free( m_data );
 	}
+
+	virtual lk_string type_name() { return "ssc-data-object"; }
 	
 	operator ssc_data_t() { 
 		return m_data;
 	}
 };
 
-static lkSSCdataObj sg_sscData;
-
-
 void fcall_ssc_var( lk::invoke_t &cxt )
 {
 	LK_DOC2( "ssc_var", "Sets or gets a variable value in the SSC data set.", 
-		"Set a variable value.", "(string:name, variant:value):none", 
-		"Get a variable value", "(string:name):variant" );
+		"Set a variable value.", "(ssc-obj-ref:data, string:name, variant:value):none", 
+		"Get a variable value", "(ssc-obj-ref:data, string:name):variant" );
 
-	wxString name = cxt.arg(0).as_string();
-	if (cxt.arg_count() == 1)
-		
-		sscvar_to_lkvar( cxt.result(), (const char*)name.ToUTF8(), sg_sscData );
-	else if (cxt.arg_count() == 2)
-		lkvar_to_sscvar( sg_sscData, (const char*)name.ToUTF8(), cxt.arg(1).deref() );
+	if ( lkSSCdataObj *ssc = dynamic_cast<lkSSCdataObj*>( cxt.env()->query_object( cxt.arg(0).as_integer() ) ) )
+	{
+		wxString name = cxt.arg(1).as_string();
+		if (cxt.arg_count() == 2)		
+			sscvar_to_lkvar( cxt.result(), (const char*)name.ToUTF8(), *ssc );
+		else if (cxt.arg_count() == 3)
+			lkvar_to_sscvar( *ssc, (const char*)name.ToUTF8(), cxt.arg(2).deref() );
+	}
 }
-void fcall_ssc_reset( lk::invoke_t &cxt )
-{
-	LK_DOC( "ssc_reset", "Reset the SSC variables", "( none ):none" );
 
-	ssc_data_clear( sg_sscData );
+void fcall_ssc_create( lk::invoke_t &cxt )
+{
+	LK_DOC( "ssc_create", "Create a new empty SSC data container object.", "(none):ssc-obj-ref" );	
+	cxt.result().assign( cxt.env()->insert_object( new lkSSCdataObj ) );
+
+}
+
+void fcall_ssc_free( lk::invoke_t &cxt )
+{
+	LK_DOC( "ssc_free", "Frees up an SSC data object.", "(ssc-obj-ref:data):none" );
+	
+	if ( lkSSCdataObj *ssc = dynamic_cast<lkSSCdataObj*>( cxt.env()->query_object( cxt.arg(0).as_integer() ) ) )
+		cxt.env()->destroy_object( ssc );
+}
+
+void fcall_ssc_clear( lk::invoke_t &cxt )
+{
+	LK_DOC( "ssc_clear", "Clears all variables in an SSC data object", "( ssc-obj-ref:data ):none" );
+	
+	if ( lkSSCdataObj *ssc = dynamic_cast<lkSSCdataObj*>( cxt.env()->query_object( cxt.arg(0).as_integer() ) ) )
+		ssc_data_clear( *ssc );
+}
+
+void fcall_ssc_dump( lk::invoke_t &cxt )
+{
+	LK_DOC( "ssc_dump", "Dump the contents of an SSC data object to a text file.", "(ssc-obj-ref:data, string:file):boolean" );
+	if ( lkSSCdataObj *ssc = dynamic_cast<lkSSCdataObj*>( cxt.env()->query_object( cxt.arg(0).as_integer() ) ) )
+	{
+		bool ok = Simulation::WriteDebugFile( cxt.arg(1).as_string(), *ssc );
+		cxt.result().assign( (double)( ok ? 1.0 : 0.0 ) );
+	}
+	else
+		cxt.result().assign( (double)0.0 );
 }
 
 
@@ -1182,12 +1212,38 @@ static ssc_bool_t ssc_exec_handler( ssc_module_t p_mod, ssc_handler_t p_handler,
 
 void fcall_ssc_exec( lk::invoke_t &cxt )
 {
-	LK_DOC( "ssc_exec", "Run a compute module with the provided data context. returns zero if successful", "( string:module, [boolean:show dialog] ):variant" );
+	LK_DOC( "ssc_exec", "Run a compute module with the provided data context. returns zero if successful. Options include: show_dialog, hold_dialog, debug_file, dialog_title", "( ssc-obj-ref:data, string:module, [table:options] ):variant" );
 	cxt.result().assign( -999.0 );
-	wxString cm(cxt.arg(0).as_string().Lower());
+	
+	lkSSCdataObj *ssc = dynamic_cast<lkSSCdataObj*>( cxt.env()->query_object( cxt.arg(0).as_integer() ) );
+	if ( !ssc ) return;
+	
+	wxString cm(cxt.arg(1).as_string().Lower());
+
+	bool show_dialog = false;
+	bool hold_dialog = false;
+	wxString debug_file;
+	wxString dialog_title;
+
+	if ( cxt.arg_count() > 2 && cxt.arg(2).deref().type() == lk::vardata_t::HASH )
+	{
+		lk::vardata_t &opts = cxt.arg(2).deref();
+		if ( lk::vardata_t *o = opts.lookup("show_dialog") )
+			show_dialog = o->as_boolean();
+
+		if ( lk::vardata_t *o = opts.lookup("hold_dialog") )
+			hold_dialog = o->as_boolean();
+
+		if ( lk::vardata_t *o = opts.lookup("debug_file") )
+			debug_file = o->as_string();
+
+		if ( lk::vardata_t *o = opts.lookup("dialog_title") )
+			dialog_title = o->as_string();
+	}
+
 
 	ThreadProgressDialog *tpd = 0;
-	if ( cxt.arg_count() > 1 && cxt.arg(1).as_boolean() )
+	if ( show_dialog )
 	{
 		tpd = new ThreadProgressDialog( SamApp::Window(), 1, true );
 		tpd->CenterOnParent();
@@ -1197,11 +1253,14 @@ void fcall_ssc_exec( lk::invoke_t &cxt )
 		wxGetApp().Yield( true );
 	}
 
-	if ( ssc_module_t mod = ssc_module_create( cxt.arg(0).as_string().c_str() ) )
+	if ( ssc_module_t mod = ssc_module_create( cm.c_str() ) )
 	{
+		if ( !debug_file.IsEmpty() )
+			Simulation::WriteDebugFile( debug_file, mod, *ssc );
+
 		int result = tpd != 0
-			? ssc_module_exec_with_handler( mod, sg_sscData, ssc_exec_handler, tpd )
-			: ssc_module_exec( mod, sg_sscData );
+			? ssc_module_exec_with_handler( mod, *ssc, ssc_exec_handler, tpd )
+			: ssc_module_exec( mod, *ssc );
 
 		if( result )
 		{
@@ -1225,7 +1284,12 @@ void fcall_ssc_exec( lk::invoke_t &cxt )
 	}
 
 	if ( tpd != 0 )
+	{
+		if ( hold_dialog )
+			tpd->Finalize( dialog_title ); // returns right away if no messages were displayed
+
 		delete tpd;
+	}
 }
 
 void fcall_substance_density(lk::invoke_t &cxt)
@@ -2067,7 +2131,10 @@ lk::fcall_t* invoke_general_funcs()
 lk::fcall_t* invoke_ssc_funcs()
 {
 	static const lk::fcall_t vec[] = {
-		fcall_ssc_reset,
+		fcall_ssc_create,
+		fcall_ssc_free,
+		fcall_ssc_clear,
+		fcall_ssc_dump,
 		fcall_ssc_var,
 		fcall_ssc_exec,
 		0 };
