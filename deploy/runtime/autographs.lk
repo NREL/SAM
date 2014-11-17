@@ -4,17 +4,18 @@ function base_technology_graphs()
 	agraph( 'monthly_energy', 'Monthly Energy Production', '', 'kWh' );
 }
 
-//**************Two categories of graphs for financials- simple or advanced***************************
-function simple_financial_graphs()
+//**************Two categories of graphs for financials**************************
+function rescom_financial_graphs()
 {
-	agraph( 'cf_energy_net', 'Annual Energy Production- System Lifetime', '', 'kWh' );
+	agraph( 'cf_energy_net', 'Annual Energy Production', 'Year', 'kWh', 10, true, false,'bottom' );
 	agraph( 'cf_after_tax_cash_flow', 'After Tax Cash Flow- System Lifetime', '', '$' );
+	agraph( 'monthly_energy,year1_monthly_load,year1_monthly_cumulative_excess_generation', 'Net Metering Credits', '', 'kWh', 5, true, true, 'right'  );
 }
 
-function advanced_financial_graphs()
+function ppa_financial_graphs()
 {
-	agraph( 'cf_energy_net', 'Annual Energy Production- System Lifetime', '', 'kWh' );
-	agraph( 'cf_tax_investor_aftertax_cash', 'Tax Investor After Tax Cash Flow- System Lifetime', '', '$' );
+	agraph( 'cf_energy_net', 'Annual Energy Production', 'Year', 'kWh', 10, true, false,'bottom' );
+	agraph( 'cf_project_return_aftertax', 'Project After-tax Cash Flow', '', '$' );
 }
 
 //**************Technologies***************************
@@ -34,7 +35,7 @@ autographs{ 'PVWatts'} = define()
 
 autographs{ 'Flat Plate PV' } = define()
 {	
-	agraph('monthly_dc_net,monthly_ac_net,monthly_energy', 'Monthly Energy Production', '', 'kWh' ); 
+	agraph('monthly_dc_net,monthly_ac_net', 'Monthly Array and System Production', '', 'kWh' ); 
 	// initial waterfall (loss graph) place holder with missing values 
 	//agraph('annual_poa_nom,annual_poa_shaded,annual_poa_eff', 'POA Energy Waterfall', '', 'kWh', 0, false, true, 'right'); 
 	//agraph('annual_dc_nominal,annual_dc_gross,annual_dc_after_mismatch_loss,annual_dc_after_diodes_loss,annual_dc_after_wiring_loss,annual_dc_after_tracking_loss,annual_dc_after_nameplate_loss,annual_ac_after_inv_cliploss,annual_ac_after_inv_psoloss,annual_ac_after_inv_pntloss,annual_ac_after_wiring_loss,annual_ac_after_transformer_loss,annual_energy', 'Array Energy Waterfall', '', 'kWh', 3, false, true, 'right' ); 
@@ -55,17 +56,11 @@ autographs{ 'Geothermal Power' } = define()
 };
 
 //**************Financials***************************
-autographs{ 'Residential' } = define() { simple_financial_graphs(); };
-autographs{ 'Commercial' } = define() { simple_financial_graphs(); };
-autographs{ 'Commercial PPA' } = define() { simple_financial_graphs(); };
-autographs{ 'Independent Power Producer' } = define() { simple_financial_graphs(); };
-autographs{ 'All Equity Partnership Flip' } = define() { advanced_financial_graphs(); };
-autographs{ 'Leveraged Partnership Flip' } = define() { advanced_financial_graphs(); };
-autographs{ 'Sale Leaseback' } = define() { advanced_financial_graphs(); };
-
-//**************Financials with unique graphs***************************
-autographs{ 'Single Owner'} = define() 
-{	
-	agraph( 'cf_energy_net', 'Annual Energy Production- System Lifetime', '', 'kWh' );
-	agraph( 'cf_project_return_aftertax_cash', 'After Tax Cash Flow- System Lifetime', '', '$' );
-};
+autographs{ 'Residential' } = define() { rescom_financial_graphs(); };
+autographs{ 'Commercial' } = define() { rescom_financial_graphs(); };
+//autographs{ 'Commercial PPA' } = define() { simple_financial_graphs(); };
+//autographs{ 'Independent Power Producer' } = define() { simple_financial_graphs(); };
+autographs{ 'Single Owner' } = define() { ppa_financial_graphs(); };
+autographs{ 'All Equity Partnership Flip' } = define() { ppa_financial_graphs(); };
+autographs{ 'Leveraged Partnership Flip' } = define() { ppa_financial_graphs(); };
+autographs{ 'Sale Leaseback' } = define() { ppa_financial_graphs(); };
