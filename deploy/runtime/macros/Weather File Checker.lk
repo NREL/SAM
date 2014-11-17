@@ -39,19 +39,19 @@ If more that 99 warnings are detected, the checker stops.
 wf = choose_file( '', 'Select weather file', 'Weather Files (*.csv;*.tm2;*.tm3;*.epw)|*.csv;*.tm2;*.tm3;*.epw' );
 if ( wf == '' ) return;
 
-ssc_reset();
-ssc_var( 'input_file', wf );
-result = ssc_exec( 'wfcheck', true );
+obj = ssc_create();
+ssc_var( obj, 'input_file', wf );
+result = ssc_exec( obj, 'wfcheck', {'show_dialog'=true, 'dialog_title'='Processing'} );
 if ( result == 0 )
 {
-	n = ssc_var('nwarnings');
+	n = ssc_var( obj, 'nwarnings');
 	if ( n == 0 ) msgbox('No issues detected in weather file.\n\n' + wf);
 	else
 	{
 		str = '<h3>Report for: ' + wf + '</h3>\n<ul>';
 		for( i=0;i<n;i++ )
 		{
-			str += '<li>' + ssc_var( 'warning' + to_string(i) ) + '\n';
+			str += '<li>' + ssc_var( obj, 'warning' + to_string(i) ) + '\n';
 		}
 		str += '</ul>';
 		html_dialog( str, 'Weather file report', [ 750, 550 ] );
@@ -59,3 +59,5 @@ if ( result == 0 )
 }
 else
 	msgbox( 'Error:\n\n' + result );
+	
+ssc_free( obj );

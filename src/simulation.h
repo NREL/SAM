@@ -58,6 +58,9 @@ public:
 
 	void Clear();
 
+	static bool WriteDebugFile( const wxString &file, ssc_module_t p_mod, ssc_data_t p_data );
+	static bool WriteDebugFile( const wxString &file, ssc_data_t p_data );
+
 	// setting up the simulation
 	void Override( const wxString &name, const VarValue &val );
 	wxString GetOverridesLabel( bool with_labels = true );
@@ -149,6 +152,8 @@ public:
 	bool HasMessages();
 	wxString GetMessages();
 	void ShowSaveLogButton();
+
+	void Finalize( const wxString &title = wxEmptyString ); // if messages shown, switch to modal view
 
 	void OnCancel(wxCommandEvent &evt);
 	void OnClose( wxCommandEvent &evt );
