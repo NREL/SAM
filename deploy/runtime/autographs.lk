@@ -9,7 +9,7 @@ function rescom_financial_graphs()
 {
 	agraph( 'cf_energy_net', 'Annual Energy Production', 'Year', 'kWh', 10, true, false,'bottom' );
 	agraph( 'cf_after_tax_cash_flow', 'After Tax Cash Flow- System Lifetime', '', '$' );
-	agraph( 'monthly_energy,year1_monthly_load,year1_monthly_cumulative_excess_generation', 'Net Metering Credits', '', 'kWh', 5, true, true, 'right'  );
+	agraph( 'monthly_energy,year1_monthly_load,year1_monthly_cumulative_excess_generation', 'Monthly Energy and Load', '', 'kWh', 5, true, true, 'right'  );
 }
 
 function ppa_financial_graphs()
