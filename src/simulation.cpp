@@ -315,70 +315,7 @@ public:
 	virtual bool WriteDebugFile( const wxString &sim, ssc_module_t p_mod, ssc_data_t p_data )
 	{
 		wxString dbgfile( wxGetHomeDir() + "/ssc-" + sim + ".lk" );
-		if( FILE *fp = fopen( dbgfile.c_str(), "w" ) )
-		{
-			ssc_number_t value;
-			ssc_number_t *p;
-			int len, nr, nc;
-			int pidx = 0;
-			wxString str_value;
-			double dbl_value;
-			int dbgidx = 0;
-			while( const ssc_info_t p_inf = ssc_module_var_info( p_mod, dbgidx++ ) )
-			{
-				const char *name = ::ssc_info_name( p_inf );
-				const char *desc = ::ssc_info_label( p_inf );
-				const char *units = ::ssc_info_units( p_inf );
-				int type = ::ssc_data_query( p_data, name );
-				switch( type )
-				{
-				case SSC_STRING:
-					str_value = wxString::FromUTF8(::ssc_data_get_string( p_data, name ));
-					str_value.Replace("\\", "/" );
-					fprintf(fp, "var( '%s', '%s' );\n", name, (const char*)str_value.c_str() );
-					break;
-				case SSC_NUMBER:
-					::ssc_data_get_number( p_data, name, &value );
-					dbl_value = (double)value;
-					if ( dbl_value > 1e38 ) dbl_value = 1e38;
-					fprintf(fp, "var( '%s', %lg );\n", name, dbl_value );
-					break;
-				case SSC_ARRAY:
-					p = ::ssc_data_get_array( p_data, name, &len );
-					fprintf(fp, "var( '%s', [", name);
-					for ( int i=0;i<(len-1);i++ )
-					{
-						dbl_value = (double)p[i];
-						if ( dbl_value > 1e38 ) dbl_value = 1e38;
-						fprintf(fp, " %lg,", dbl_value );
-					}
-					dbl_value = (double)p[len-1];
-					if ( dbl_value > 1e38 ) dbl_value = 1e38;
-					fprintf(fp, " %lg ] );\n", dbl_value );
-					break;
-				case SSC_MATRIX:
-					p = ::ssc_data_get_matrix( p_data, name, &nr, &nc );
-					len = nr*nc;
-					fprintf( fp, "var( '%s', \n[ [", name );					
-					for (int k=0;k<(len-1);k++)
-					{
-						dbl_value = (double)p[k];
-						if ( dbl_value > 1e38 ) dbl_value = 1e38;
-						if ( (k+1)%nc == 0 ) 
-							fprintf(fp, " %lg ], \n[", dbl_value);
-						else
-							fprintf(fp, " %lg,", dbl_value);
-					}
-					dbl_value = (double)p[len-1];
-					if ( dbl_value > 1e38 ) dbl_value = 1e38;
-					fprintf(fp, " %lg ] ] );\n", dbl_value);
-				}
-			}
-			fclose( fp );
-			return true;
-		}
-		else
-			return false;
+		return Simulation::WriteDebugFile( dbgfile, p_mod, p_data );
 	}
 
 };
@@ -479,6 +416,94 @@ bool Simulation::Prepare()
 	//wxLogStatus("Simulation preparation time: %d copy, %d eval", (int)time_copy, (int)time_eval);
 
 	return true;
+}
+
+static void dump_variable( FILE *fp, ssc_data_t p_data, const char *name )
+{
+	ssc_number_t value;
+	ssc_number_t *p;
+	int len, nr, nc;
+	int pidx = 0;
+	wxString str_value;
+	double dbl_value;
+	int type = ::ssc_data_query( p_data, name );
+	switch( type )
+	{
+	case SSC_STRING:
+		str_value = wxString::FromUTF8(::ssc_data_get_string( p_data, name ));
+		str_value.Replace("\\", "/" );
+		fprintf(fp, "var( '%s', '%s' );\n", name, (const char*)str_value.c_str() );
+		break;
+	case SSC_NUMBER:
+		::ssc_data_get_number( p_data, name, &value );
+		dbl_value = (double)value;
+		if ( dbl_value > 1e38 ) dbl_value = 1e38;
+		fprintf(fp, "var( '%s', %lg );\n", name, dbl_value );
+		break;
+	case SSC_ARRAY:
+		p = ::ssc_data_get_array( p_data, name, &len );
+		fprintf(fp, "var( '%s', [", name);
+		for ( int i=0;i<(len-1);i++ )
+		{
+			dbl_value = (double)p[i];
+			if ( dbl_value > 1e38 ) dbl_value = 1e38;
+			fprintf(fp, " %lg,", dbl_value );
+		}
+		dbl_value = (double)p[len-1];
+		if ( dbl_value > 1e38 ) dbl_value = 1e38;
+		fprintf(fp, " %lg ] );\n", dbl_value );
+		break;
+	case SSC_MATRIX:
+		p = ::ssc_data_get_matrix( p_data, name, &nr, &nc );
+		len = nr*nc;
+		fprintf( fp, "var( '%s', \n[ [", name );					
+		for (int k=0;k<(len-1);k++)
+		{
+			dbl_value = (double)p[k];
+			if ( dbl_value > 1e38 ) dbl_value = 1e38;
+			if ( (k+1)%nc == 0 ) 
+				fprintf(fp, " %lg ], \n[", dbl_value);
+			else
+				fprintf(fp, " %lg,", dbl_value);
+		}
+		dbl_value = (double)p[len-1];
+		if ( dbl_value > 1e38 ) dbl_value = 1e38;
+		fprintf(fp, " %lg ] ] );\n", dbl_value);
+	}
+}
+
+bool Simulation::WriteDebugFile( const wxString &file, ssc_module_t p_mod, ssc_data_t p_data )
+{
+	if( FILE *fp = fopen( file.c_str(), "w" ) )
+	{
+		int dbgidx = 0;
+		while( const ssc_info_t p_inf = ssc_module_var_info( p_mod, dbgidx++ ) )
+		{
+			const char *name = ::ssc_info_name( p_inf );
+			dump_variable( fp, p_data, name );
+		}
+		fclose( fp );
+		return true;
+	}
+	else
+		return false;
+}
+
+bool Simulation::WriteDebugFile( const wxString &file, ssc_data_t p_data )
+{
+	if( FILE *fp = fopen( file.c_str(), "w" ) )
+	{
+		const char *name = ssc_data_first( p_data );
+		while( name )
+		{
+			dump_variable( fp, p_data, name );
+			name = ssc_data_next( p_data );
+		}
+		fclose( fp );
+		return true;
+	}
+	else
+		return false;
 }
 
 bool Simulation::InvokeWithHandler( ISimulationHandler *ih )
@@ -1136,6 +1161,21 @@ void ThreadProgressDialog::OnSaveLog( wxCommandEvent & )
 			wxMessageBox("Could not write to file:\n\n" + dialog.GetPath() );
 	}
 }
+
+void ThreadProgressDialog::Finalize( const wxString &title )
+{
+	if ( HasMessages() )
+	{
+		if ( title.IsEmpty() ) Status( "Simulations finished with notices." );
+		else Status( title );
+
+		ShowBars( 0 );
+		SetButtonText( "Continue" );
+		ShowSaveLogButton();
+		Hide();
+		ShowModal();
+	}
+}
 	
 void ThreadProgressDialog::OnCancel(wxCommandEvent &evt)
 {
@@ -1178,18 +1218,7 @@ SimulationDialog::~SimulationDialog()
 void SimulationDialog::Finalize( const wxString &title )
 {			
 	wxYield(); // allow status bars to show full update
-
-	if ( m_tpd->HasMessages() )
-	{
-		if ( title.IsEmpty() ) m_tpd->Status( "Simulations finished with notices." );
-		else m_tpd->Status( title );
-
-		m_tpd->ShowBars( 0 );
-		m_tpd->SetButtonText( "Continue" );
-		m_tpd->ShowSaveLogButton();
-		m_tpd->Hide();
-		m_tpd->ShowModal();
-	}
+	m_tpd->Finalize();
 }
 
 void SimulationDialog::Update(int ThreadNum, float percent, const wxString &label )

@@ -20,12 +20,12 @@ that are not used by SAM simulations, and so you may still want to have a "strip
 wf = choose_file( '', 'Select weather file to convert', 'Weather Files (*.csv;*.tm2;*.tm3;*.epw)|*.csv;*.tm2;*.tm3;*.epw' );
 if ( wf == '' ) return;
 
-ssc_reset();
-ssc_var( 'input_file', wf );
-result = ssc_exec( 'wfcsvconv', true );
+obj = ssc_create();
+ssc_var( obj, 'input_file', wf );
+result = ssc_exec( obj, 'wfcsvconv', true );
 if ( result == 0 )
 {
-	output = ssc_var('output_file');
+	output = ssc_var( obj, 'output_file');
 	if ( file_exists(output) )
 	{
 		if ( yesno('Weather file successfully converted.  Open it?\n\n' + output) )
@@ -41,3 +41,5 @@ if ( result == 0 )
 }
 else
 	msgbox( 'Error:\n\n' + result );
+	
+ssc_free( obj );
