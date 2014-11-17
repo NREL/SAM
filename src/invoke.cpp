@@ -879,6 +879,8 @@ static void fcall_xl_free( lk::invoke_t &cxt )
 		xl->Excel().QuitExcel();
 		cxt.env()->destroy_object( xl );
 	}
+	else
+		cxt.error( "invalid xl-obj-ref" );
 }
 
 static void fcall_xl_open(lk::invoke_t &cxt)
@@ -895,13 +897,17 @@ static void fcall_xl_open(lk::invoke_t &cxt)
 		if ( show )
 			xl->Excel().Show( true );
 	}
+	else
+		cxt.error( "invalid xl-obj-ref" );
 }
 
 static void fcall_xl_close( lk::invoke_t &cxt )
 {
 	LK_DOC("xl_close", "Close the current Excel files without saving changes.", "( xl-obj-ref:xl ):none" );
 	if ( lkXLObject *xl = dynamic_cast<lkXLObject*>( cxt.env()->query_object( cxt.arg(0).as_integer() ) ) )
-		cxt.result().assign( xl->Excel().CloseAllNoSave() ? 1.0 : 0.0 );
+		cxt.result().assign( xl->Excel().CloseAllNoSave() ? 1.0 : 0.0 );	
+	else
+		cxt.error( "invalid xl-obj-ref" );
 }
 
 static void fcall_xl_autosizecols( lk::invoke_t &cxt )
@@ -909,7 +915,9 @@ static void fcall_xl_autosizecols( lk::invoke_t &cxt )
 	LK_DOC( "xl_autosizecols", "Automatically size columns in the current Excel file", "( xl-obj-ref:xl ):none" );
 	
 	if ( lkXLObject *xl = dynamic_cast<lkXLObject*>( cxt.env()->query_object( cxt.arg(0).as_integer() ) ) )
-		xl->Excel().AutoFitColumns();
+		xl->Excel().AutoFitColumns();	
+	else
+		cxt.error( "invalid xl-obj-ref" );
 }
 
 static void fcall_xl_wkbook( lk::invoke_t &cxt )
@@ -918,6 +926,8 @@ static void fcall_xl_wkbook( lk::invoke_t &cxt )
 	
 	if ( lkXLObject *xl = dynamic_cast<lkXLObject*>( cxt.env()->query_object( cxt.arg(0).as_integer() ) ) )
 		xl->Excel().NewWorkbook();
+	else
+		cxt.error( "invalid xl-obj-ref" );
 }
 
 static void fcall_xl_sheet( lk::invoke_t &cxt )
@@ -929,6 +939,8 @@ static void fcall_xl_sheet( lk::invoke_t &cxt )
 		if ( xl->Excel().AddWorksheet() && cxt.arg_count() == 2 )
 			xl->Excel().SetWorksheetName( cxt.arg(1).as_string() );
 	}
+	else
+		cxt.error( "invalid xl-obj-ref" );
 }
 
 static void fcall_xl_set( lk::invoke_t &cxt )
@@ -949,6 +961,8 @@ static void fcall_xl_set( lk::invoke_t &cxt )
 		else if ( cxt.arg_count() == 3 )
 			xl->Excel().SetNamedRangeValue( cxt.arg(2).as_string(), cxt.arg(1).as_string() );
 	}
+	else
+		cxt.error( "invalid xl-obj-ref" );
 }
 
 static void fcall_xl_get( lk::invoke_t &cxt )
@@ -965,6 +979,8 @@ static void fcall_xl_get( lk::invoke_t &cxt )
 
 		cxt.result().assign( val );
 	}
+	else
+		cxt.error( "invalid xl-obj-ref" );
 }
 
 #endif
@@ -1142,13 +1158,14 @@ void fcall_ssc_var( lk::invoke_t &cxt )
 		else if (cxt.arg_count() == 3)
 			lkvar_to_sscvar( *ssc, (const char*)name.ToUTF8(), cxt.arg(2).deref() );
 	}
+	else
+		cxt.error( "invalid ssc-obj-ref" );
 }
 
 void fcall_ssc_create( lk::invoke_t &cxt )
 {
 	LK_DOC( "ssc_create", "Create a new empty SSC data container object.", "(none):ssc-obj-ref" );	
 	cxt.result().assign( cxt.env()->insert_object( new lkSSCdataObj ) );
-
 }
 
 void fcall_ssc_free( lk::invoke_t &cxt )
@@ -1157,14 +1174,8 @@ void fcall_ssc_free( lk::invoke_t &cxt )
 	
 	if ( lkSSCdataObj *ssc = dynamic_cast<lkSSCdataObj*>( cxt.env()->query_object( cxt.arg(0).as_integer() ) ) )
 		cxt.env()->destroy_object( ssc );
-}
-
-void fcall_ssc_clear( lk::invoke_t &cxt )
-{
-	LK_DOC( "ssc_clear", "Clears all variables in an SSC data object", "( ssc-obj-ref:data ):none" );
-	
-	if ( lkSSCdataObj *ssc = dynamic_cast<lkSSCdataObj*>( cxt.env()->query_object( cxt.arg(0).as_integer() ) ) )
-		ssc_data_clear( *ssc );
+	else
+		cxt.error( "invalid ssc-obj-ref" );
 }
 
 void fcall_ssc_dump( lk::invoke_t &cxt )
@@ -1176,7 +1187,7 @@ void fcall_ssc_dump( lk::invoke_t &cxt )
 		cxt.result().assign( (double)( ok ? 1.0 : 0.0 ) );
 	}
 	else
-		cxt.result().assign( (double)0.0 );
+		cxt.error( "invalid ssc-obj-ref" );
 }
 
 
@@ -1216,7 +1227,10 @@ void fcall_ssc_exec( lk::invoke_t &cxt )
 	cxt.result().assign( -999.0 );
 	
 	lkSSCdataObj *ssc = dynamic_cast<lkSSCdataObj*>( cxt.env()->query_object( cxt.arg(0).as_integer() ) );
-	if ( !ssc ) return;
+	if ( !ssc ) {
+		cxt.error( "invalid ssc-obj-ref" );
+		return;
+	}
 	
 	wxString cm(cxt.arg(1).as_string().Lower());
 
@@ -2133,7 +2147,6 @@ lk::fcall_t* invoke_ssc_funcs()
 	static const lk::fcall_t vec[] = {
 		fcall_ssc_create,
 		fcall_ssc_free,
-		fcall_ssc_clear,
 		fcall_ssc_dump,
 		fcall_ssc_var,
 		fcall_ssc_exec,
