@@ -366,18 +366,18 @@ cashflow{ 'Single Owner' } = define()
 	cfline('cf_debt_payment_principal', 0);
 	cfline('cf_project_financing_activities', 0);
 	
-	cfline( '' );
-	cfline('cf_pretax_cashflow', 0);
+//	cfline( '' );
+//	cfline('cf_pretax_cashflow', 0);
 
 	cfline( '' );
-	cfline( "PRE-TAX PROJECT RETURNS", -1);
+	cfline( "PRE-TAX PROJECT CASH FLOWS", -1);
 	cfline('cf_project_return_pretax', 0);
 	cfline( '' );
 	cfline('cf_project_return_pretax_irr', 2);
 	cfline('cf_project_return_pretax_npv', 0);
 
 	cfline( '' );
-	cfline("AFTER-TAX PROJECT RETURNS", -1);
+	cfline("AFTER-TAX PROJECT CASH FLOWS", -1);
 	cfline('itc_total_fed', 0, 1, 1 ); // offset column to year 1
 	cfline('cf_ptc_fed', 0);
 	cfline('cf_fedtax', 0);
