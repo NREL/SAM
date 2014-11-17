@@ -1536,8 +1536,8 @@ extern void RegisterReportObjectTypes();
 			}
 			else 
 			{
-				wxString text = ("SAM did not connect to NREL servers to verify your registration key.\n"
-					"This might be caused by a problem with your internet connection. Click Help for details.\n\n" );
+				wxString text = ("SAM could not connect to NREL servers to verify your registration key.\n"
+					"This might be caused by a problem with your internet connection. Click Confirm to try again or Skip for now to continue without registering.\n\n" );
 				int nstarts = SamRegistration::AllowedStartsRemaining();
 				if ( nstarts == 1 )	text += "This is the last time you may run SAM without verifying your registration.\n\n";
 				else text += wxString::Format( "You may run SAM %d more times without your verifying your registration.\n\n", nstarts );
@@ -1553,7 +1553,7 @@ extern void RegisterReportObjectTypes();
 	}
 	
 	splash.Show();
-	splash.SetMessage( "Starting up... please wait" );
+	splash.SetMessage( "Starting up...Splease wait" );
 
 	//wxMessageBox( wxString::Format("sizeof(VarValue)=%d, sizeof(wxMemoryBuffer)=%d, sizeof(matrix_t<float>)=%d, sizeof(VarTable)=%d, sizeof(wxString)=%d", 
 	//	sizeof(VarValue), sizeof(wxMemoryBuffer), sizeof(matrix_t<float>), sizeof(VarTable), sizeof(wxString) ) );
