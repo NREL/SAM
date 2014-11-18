@@ -928,7 +928,7 @@ public:
 
 	SplashScreen()
 		: wxDialog( 0, wxID_ANY, wxEmptyString, wxDefaultPosition, wxSize(515,385), wxBORDER_NONE ),
-		m_message( "Starting up... please wait" )
+		m_message( "Starting up...please wait" )
 	{
 		m_nrelLogo = wxBITMAP_PNG_FROM_DATA( nrel_small );
 	}
@@ -1553,7 +1553,7 @@ extern void RegisterReportObjectTypes();
 	}
 	
 	splash.Show();
-	splash.SetMessage( "Starting up...Splease wait" );
+	splash.SetMessage( "Starting up...please wait" );
 
 	//wxMessageBox( wxString::Format("sizeof(VarValue)=%d, sizeof(wxMemoryBuffer)=%d, sizeof(matrix_t<float>)=%d, sizeof(VarTable)=%d, sizeof(wxString)=%d", 
 	//	sizeof(VarValue), sizeof(wxMemoryBuffer), sizeof(matrix_t<float>), sizeof(VarTable), sizeof(wxString) ) );
