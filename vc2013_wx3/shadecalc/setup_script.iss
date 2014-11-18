@@ -14,8 +14,8 @@ ArchitecturesAllowed=x86 x64 ia64
 ArchitecturesInstallIn64BitMode=x64 ia64
 
 ; UPDATE THESE TO MATCH THE VERSION
-AppVerName=SAM Shade Calculator - Beta (2014.5.1)
-DefaultDirName={sd}\SAM\ShadeCalculator-beta-2014.5.1
+AppVerName=SAM Shade Calculator 2014.11.18
+DefaultDirName={sd}\SAM\ShadeCalculator-2014.11.18
 
 AppPublisher=National Renewable Energy Laboratory
 AppPublisherURL=http://sam.nrel.gov
@@ -38,14 +38,15 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 
 [Files]
 Source: "shade.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "ivanhoe.s3d"; DestDir: "{app}"; Flags: ignoreversion
+Source: "ivanhoe.s3d"; DestDir: "{app}"; Flags: ignoreversion   
+Source: "strings.s3d"; DestDir: "{app}"; Flags: ignoreversion
+Source: "sections.s3d"; DestDir: "{app}"; Flags: ignoreversion
 Source: "msvcr120.dll"; DestDir: "{app}"; Flags: ignoreversion
 Source: "msvcp120.dll"; DestDir: "{app}"; Flags: ignoreversion
 Source: "libssh2.dll"; DestDir: "{app}"; Flags: ignoreversion
 Source: "libcurl.dll"; DestDir: "{app}"; Flags: ignoreversion
 Source: "libeay32.dll"; DestDir: "{app}"; Flags: ignoreversion
 Source: "ssleay32.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "IssProc.dll"; DestDir: "{app}"; Flags: ignoreversion
 Source: "help/*"; DestDir: "{app}/help"; Excludes: ".svn,*.map"; Flags: ignoreversion recursesubdirs createallsubdirs
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
@@ -73,73 +74,3 @@ Root: HKCU; Subkey: "Software\Classes\NREL.SAMShadeCalculator\shell\open\command
 
 [Run]
 Filename: "{app}\shade.exe"; Description: "{cm:LaunchProgram,SAM Shade Calculator}"; Flags: postinstall
-
-
-
-; added 9/19/07 to check for running instances on install and uninstall
-[Code]
-// IssFindModule called on install
-function IssFindModule(hWnd: Integer; Modulename: PChar; Language: PChar; Silent: Boolean; CanIgnore: Boolean ): Integer;
-external 'IssFindModule@files:IssProc.dll stdcall setuponly';
-
-// IssFindModule called on uninstall
-function IssFindModuleU(hWnd: Integer; Modulename: PChar; Language: PChar; Silent: Boolean; CanIgnore: Boolean ): Integer;
-external 'IssFindModule@{app}\IssProc.dll stdcall uninstallonly';
-
-//********************************************************************************************************************************************
-// IssFindModule function returns: 0 if no module found; 1 if cancel pressed; 2 if ignore pressed; -1 if an error occured
-//
-//  hWnd        = main wizard window handle.
-//
-//  Modulename  = module name(s) to check. You can use a full path to a DLL/EXE/OCX or wildcard file name/path. Separate multiple modules with semicolon.
-//                 Example1 : Modulename='*mymodule.dll';     -  will search in any path for mymodule.dll
-//                 Example2 : Modulename=ExpandConstant('{app}\mymodule.dll');     -  will search for mymodule.dll only in {app} folder (the application directory)
-//                 Example3 : Modulename=ExpandConstant('{app}\mymodule.dll;*myApp.exe');   - just like Example2 + search for myApp.exe regardless of his path.
-//
-//  Language    = files in use language dialog. Set this value to empty '' and default english will be used
-//                ( see and include IssProcLanguage.ini if you need custom text or other language)
-//
-//  Silent      = silent mode : set this var to true if you don't want to display the files in use dialog.
-//                When Silent is true IssFindModule will return 1 if it founds the Modulename or 0 if nothing found
-//
-//  CanIgnore   = set this var to false to Disable the Ignore button forcing the user to close those applications before continuing
-//                set this var to true to Enable the Ignore button allowing the user to continue without closing those applications
-//******************************************************************************************************************************************
-
-
-function InitializeUninstall(): Boolean;
-var
-  sModuleName: String;
-  nCode: Integer;  {IssFindModule returns: 0 if no module found; 1 if cancel pressed; 2 if ignore pressed; -1 if an error occured }
-
-begin
-    Result := false;
-      sModuleName := ExpandConstant('*shade.exe;');    { searched module. Tip: separate multiple modules with semicolon Ex: '*mymodule.dll;*mymodule2.dll;*myapp.exe'}
-
-     nCode:=IssFindModuleU(0,sModuleName,'enu',false,false); { search for module and display files-in-use window if found  }
-
-     if (nCode=0) or (nCode=2) then begin                    { no module found or ignored pressed}
-          Result := true;                                    { continue setup  }
-     end;
-
-    // Unload the extension, otherwise it will not be deleted by the uninstaller
-    UnloadDLL(ExpandConstant('{app}\IssProc.dll'));
-
-end;
-
-// 12/08/08 - added to select appropriate installation path that is writeable by the user
-function IsRegularUser(): Boolean;
-begin
-  Result := not (IsAdminLoggedOn or IsPowerUserLoggedOn);
-end;
-
-// 4/14/09 - modify to install in localappdata always - avoids UAC issue reported by Paul
-function DefDirRoot(Param: String): String;
-begin
-//  if IsRegularUser then
-    Result := ExpandConstant('{localappdata}')
-//  else
-//    Result := ExpandConstant('{pf}')
-end;
-
-
