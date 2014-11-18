@@ -98,7 +98,7 @@
 <p class="p_EquationExcel"><span class="f_EquationExcel">O&amp;M Capacity-based Expense in Year n = Fixed Cost by Capacity ($/kW-yr) × System Rated Capacity × (1 + Inflation Rate + Escalation Rate)^(n-1)</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">Where </span><span class="f_Emphasis">Fixed Cost by Capacity</span><span class="f_VariableDescription"> is from the <a href="system_costs.htm" class="topiclink">System Costs</a> page, and </span><span class="f_Emphasis">Inflation Rate</span><span class="f_VariableDescription"> and </span><span class="f_Emphasis">Escalation Rate</span><span class="f_VariableDescription"> are from the <a href="financial_parameters.htm" class="topiclink">Financial Parameters</a> page.</span></p>
 <p class="p_Text"><span class="f_Text">The system nameplate capacity depends on technology being modeled. SAM converts the capacity value to the appropriate units (MW, kW, or W) before using it in calculations. For the photovoltaic models, the capacity is a DC power rating, and for the others it is an AC power rating. For the BeOpt/TRNSYS Solar Water Heating Model, the capacity is a thermal rating, while for the others it is an electric rating.</span></p>
-<p class="p_TitleTable"><span class="f_TitleTable">Table 29. Nameplate system capacity values for each technology.</span></p>
+<p class="p_TitleTable"><span class="f_TitleTable">Table 28. Nameplate system capacity values for each technology.</span></p>
 <div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 6px 0px;"><table style="border:none; border-spacing:0px;">
 <tr style="text-align:left;vertical-align:top;">
 <td style="vertical-align:top; padding:0px;"><p class="p_TableHeadColumn"><span class="f_TableHeadColumn">Performance Model</span></p>
@@ -355,13 +355,13 @@
 <p class="p_VariableDescription"><span class="f_VariableDescription">Where </span><span class="f_CHEquationVariable">R</span><span class="f_CHVariableSubscript">PPA,n</span><span class="f_VariableDescription"> is the revenue from electricity sales-tax cash flow described above, and </span><span class="f_CHEquationVariable">d</span><span class="f_CHVariableSubscript">nominal</span><span class="f_VariableDescription"> is the nominal discount rate from the <a href="financial_parameters.htm" class="topiclink">Financial Parameters</a> page.</span></p>
 <p class="p_VariableName"><span class="f_VariableName">NPV of net annual energy (nominal)</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The LCOE calculation requires a discounted energy term in the denominator. The value discounted using the nominal discount rate is for the nominal LCOE equation.</span></p>
-<p class="p_VariableDescription"><img src="eq_npvenergynominal.gif" width="309" height="54" alt="EQ_NPVEnergyNominal" style="border:none" /></p>
+<p class="p_VariableDescription"><img src="eq_npvenergynominal.gif" width="309" height="54" alt="EQ_NPVEnergyNominal" style="width:309px;height:54px;border:none" /></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">Where </span><span class="f_CHEquationVariable">Q</span><span class="f_CHVariableSubscript">n</span><span class="f_VariableDescription"> is the annual energy value described above, and </span><span class="f_CHEquationVariable">d</span><span class="f_CHVariableSubscript">nominal</span><span class="f_VariableDescription"> is the nominal discount rate from the <a href="financial_parameters.htm" class="topiclink">Financial Parameters</a> page.</span></p>
 <p class="p_VariableName"><span class="f_VariableName">Nominal LCOE</span></p>
 <p class="p_EquationExcel"><span class="f_EquationExcel">Nominal LCOE = NPV (Revenue) / NPV(Energy Nominal)</span></p>
 <p class="p_VariableName"><span class="f_VariableName">NPV of net annual energy (real)</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The LCOE calculation requires a discounted energy term in the denominator. The value discounted using the real discount rate is for the real LCOE equation.</span></p>
-<p class="p_VariableDescription"><img src="eq_npvenergyreal.gif" width="257" height="54" alt="EQ_NPVEnergyReal" style="border:none" /></p>
+<p class="p_VariableDescription"><img src="eq_npvenergyreal.gif" width="257" height="54" alt="EQ_NPVEnergyReal" style="width:257px;height:54px;border:none" /></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">Where </span><span class="f_CHEquationVariable">Q</span><span class="f_CHVariableSubscript">n</span><span class="f_VariableDescription"> is the annual energy value described above, and </span><span class="f_CHEquationVariable">d</span><span class="f_CHVariableSubscript">real</span><span class="f_VariableDescription"> is the nominal discount rate from the <a href="financial_parameters.htm" class="topiclink">Financial Parameters</a> page.</span></p>
 <p class="p_VariableName"><span class="f_VariableName">Real LCOE</span></p>
 <p class="p_EquationExcel"><span class="f_EquationExcel">Real LCOE = NPV (Revenue) / NPV(Energy Real)</span></p>
@@ -438,7 +438,7 @@
 <p class="p_VariableDescription"><span class="f_VariableDescription">Where System Capacity is the rated capacity of the system, and </span><span class="f_Emphasis">Amount</span><span class="f_VariableDescription"> and </span><span class="f_Emphasis">Maximum</span><span class="f_VariableDescription"> are the values you specify on the <a href="incentives.htm" class="topiclink">Incentives</a> page.</span></p>
 <p class="p_VariableDescription"><span class="f_Emphasis">Total CBI</span><span class="f_VariableDescription"> is the sum of the four CBI values (federal, state, utility, other).</span></p>
 <p class="p_Text"><span class="f_Text">The system nameplate capacity depends on technology being modeled. SAM converts the capacity value to the appropriate units (MW, kW, or W) before using it in calculations. For the photovoltaic models, the capacity is a DC power rating, and for the others it is an AC power rating. For the BeOpt/TRNSYS Solar Water Heating Model, the capacity is a thermal rating, while for the others it is an electric rating.</span></p>
-<p class="p_TitleTable"><span class="f_TitleTable">Table 30. Nameplate system capacity values for each technology.</span></p>
+<p class="p_TitleTable"><span class="f_TitleTable">Table 29. Nameplate system capacity values for each technology.</span></p>
 <div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 6px 0px;"><table style="border:none; border-spacing:0px;">
 <tr style="text-align:left;vertical-align:top;">
 <td style="vertical-align:top; padding:0px;"><p class="p_TableHeadColumn"><span class="f_TableHeadColumn">Performance Model</span></p>
@@ -687,7 +687,7 @@
 <p class="p_Text"><span class="f_Text">The depreciable basis after IBI, CBI, ITC and bonus depreciation reduction is the basis to which the depreciation percentages defined by the depreciation class apply.</span></p>
 <p class="p_EquationExcel"><span class="f_EquationExcel">Depreciable Basis after Bonus Reduction = Depreciable Basis after ITC Reduction - First Year Bonus Depreciation</span></p>
 <p class="p_Text"><span class="f_Text">The following table shows the depreciation percentage by year for each depreciation class. For each depreciation class, the percentage is applied to the depreciable basis amount for the given year in the cash flow:</span></p>
-<p class="p_Text"><img src="tbl_depreciationclasses.gif" width="544" height="344" alt="TBL_DepreciationClasses" style="border:none" /></p>
+<p class="p_Text"><img src="tbl_depreciationclasses.gif" width="544" height="344" alt="TBL_DepreciationClasses" style="width:544px;height:344px;border:none" /></p>
 
 </td></tr></table>
 
