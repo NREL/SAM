@@ -168,8 +168,16 @@ MainWindow::MainWindow()
 	m_fileMenu->Append( wxID_EXIT, "Quit SAM");
 
 	m_caseMenu = new wxMenu;
+	m_caseMenu->Append( ID_CASE_SIMULATE, "Simulate" );
+	m_caseMenu->Append( ID_CASE_REPORT, "Generate report" );
+	m_caseMenu->AppendSeparator();
+	m_caseMenu->Append( ID_CASE_RENAME, "Rename" );
+	m_caseMenu->Append( ID_CASE_DUPLICATE, "Duplicate" );
+	m_caseMenu->AppendSeparator();
+	m_caseMenu->Append( ID_CASE_DELETE, "Delete" );
 
 	m_toolsMenu = new wxMenu;
+	m_toolsMenu->Append( ID_BROWSE_INPUTS, "Inputs browser...");
 
 	m_helpMenu = new wxMenu;
 	m_helpMenu->Append( wxID_HELP );
