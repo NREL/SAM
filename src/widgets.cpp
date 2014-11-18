@@ -11,8 +11,11 @@
 #include <wex/utils.h>
 #include <wex/extgrid.h>
 
-#include "widgets.h"
+#ifndef S3D_STANDALONE
 #include "main.h"
+#endif
+
+#include "widgets.h"
 
 /******************************* AFSchedNumeric **********************************/
 enum { IDAFSN_NUMERIC=wxID_HIGHEST + 321, IDAFSN_SBUTTON };
@@ -301,7 +304,9 @@ public:
 
 	void OnHelp( wxCommandEvent & )
 	{
+#ifndef S3D_STANDALONE
 		SamApp::ShowHelp( "edit_schedule" );
+#endif
 	}
 
 	wxExtGridCtrl *GetGrid() { return m_grid; }
