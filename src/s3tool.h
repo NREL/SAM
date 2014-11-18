@@ -8,6 +8,7 @@
 
 #include <wex/lkscript.h>
 
+#include "object.h"
 #include "simplecurl.h"
 
 class View3D;
@@ -27,6 +28,7 @@ class wxGenericStaticBitmap;
 class ShadeTool;
 class AFMonthByHourFactorCtrl;
 class wxMetroButton;
+class VActiveSurfaceObject;
 
 class LocationSetup : public wxPanel
 {
@@ -122,6 +124,37 @@ public:
 	void GetDiurnal( size_t i, matrix_t<float> *mxh, wxString *name );
 
 private:
+	
+	struct surfshade
+	{
+		enum { DIURNAL, HOURLY };
+		surfshade( int mode, const wxString &grpname )
+		{
+			group = grpname;
+
+			if ( mode == DIURNAL )
+			{
+				sfac.resize_fill( 12, 24, 1 );
+				shaded.resize_fill( 12, 24, 0 );
+				active.resize_fill( 12, 24, 0 );
+			}
+			else
+			{
+				sfac.resize_fill( 8760, 1 );
+				shaded.resize_fill( 8760, 0 );
+				active.resize_fill( 8760, 0 );
+			}
+		}
+	
+		wxString group;
+		matrix_t<float> sfac;
+		matrix_t<double> shaded, active;
+		std::vector<VActiveSurfaceObject*> surfaces;
+		std::vector<int> ids;
+	};
+
+	void InitializeSections( int mode, std::vector<surfshade> &shade );
+
 	ShadeTool *m_shadeTool;
 	
 	wxScrolledWindow *m_scroll;

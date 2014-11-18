@@ -718,7 +718,7 @@ ShadeAnalysis::ShadeAnalysis( wxWindow *parent, ShadeTool *st )
 	wxBoxSizer *tools = new wxBoxSizer( wxHORIZONTAL );
 
 	tools->Add( new wxButton(this, ID_GENERATE_DIURNAL, "Diurnal analysis" ), 0, wxALL, 2 );
-	tools->Add( new wxButton(this, ID_GENERATE_HOURLY, "Hourly analysis (entire array)" ), 0, wxALL, 2 );
+	tools->Add( new wxButton(this, ID_GENERATE_HOURLY, "Hourly analysis" ), 0, wxALL, 2 );
 
 	tools->AddStretchSpacer();
 
@@ -749,8 +749,8 @@ void ShadeAnalysis::OnGenerateHourly( wxCommandEvent & )
 	const int *ndays = ::wxNDay;
 	size_t m, d, h, c = 0;
 
-	std::vector<double> shade_fraction;
-	shade_fraction.reserve(8760);
+	std::vector<surfshade> shade;
+	InitializeSections( surfshade::HOURLY, shade );
 
 	s3d::transform tr;
 	tr.set_scale( SF_ANALYSIS_SCALE );
@@ -784,15 +784,45 @@ void ShadeAnalysis::OnGenerateHourly( wxCommandEvent & )
 				// for nighttime full shading (fraction=1 and factor=0)
 				// consistent with SAM shading factor of zero for night time
 				//	double sf = 0;
-				double sf = 1; 
+				double scene_sf = 1; 
 				if (alt > 0)
 				{
 					tr.rotate_azal( azi, alt );
 					sc.build( tr );
-					sf = sc.shade( shresult );
+					
+					std::vector<s3d::shade_result> shresult;
+					scene_sf = sc.shade( shresult );
+
+					for ( size_t k=0;k<shresult.size();k++ )
+					{
+						int id = shresult[k].id;
+						// find the correct shade group for this 'id'
+						// and accumulate the total shaded and active areas
+						for( size_t n=1;n<shade.size();n++ )
+						{
+							std::vector<int> &ids = shade[n].ids;
+							if ( std::find( ids.begin(), ids.end(), id ) != ids.end() )
+							{
+								shade[n].shaded[c] += shresult[k].shade_area;
+								shade[n].active[c] += shresult[k].active_area;
+							}
+						}
+					}
+				}
+			
+				// store overall array shading factor
+				shade[0].sfac[c] =  100.0f * scene_sf;
+
+				// compute each group's shading factor from the overall areas
+				for( size_t n=1;n<shade.size();n++ )
+				{
+					double sf = 1;
+					if ( shade[n].active[c] != 0.0 )
+						sf = shade[n].shaded[c] / shade[n].active[c];
+
+					shade[n].sfac[c] =  100.0f * sf;
 				}
 
-				shade_fraction.push_back(sf);
 				c++;
 			}
 		}
@@ -803,48 +833,78 @@ void ShadeAnalysis::OnGenerateHourly( wxCommandEvent & )
 	{
 		if ( FILE *fp = fopen( (const char*)dlg.GetPath().c_str(), "w" ) )
 		{
-			fprintf( fp, "Shade Loss (%%),Shading Derate\n");
-			for( size_t i=0;i<shade_fraction.size();i++ )
-				fprintf( fp, "%.3lf,%.3lf\n", 100.0f*shade_fraction[i], 1.0-shade_fraction[i] );
+			for( size_t i=0;i<shade.size();i++ )
+				fprintf( fp, "%s %%%c", (const char*)shade[i].group.c_str(), i+1 < shade.size() ? ',' : '\n' );
+
+			for( size_t i=0;i<8760;i++ )
+				for( size_t j=0;j<shade.size();j++ )
+					fprintf( fp, "%.3lf%c", shade[j].sfac[i], j+1 < shade.size() ? ',' : '\n' );
 
 			fclose(fp);
 		}
 		else
 			wxMessageBox( "Could not write to file:\n\n" + dlg.GetPath() );
 	}
-	
-	/*
-	wxFrame *frame = new wxFrame( 0, wxID_ANY, 
-		wxString::Format("Shade fractions (computation in %d ms)", sw.Time()), 
-		wxDefaultPosition, wxSize(900,700) );
 
-	wxDVPlotCtrl *dview = new wxDVPlotCtrl( frame );
-	dview->AddDataSet(new wxDVArrayDataSet("Shade fraction", shade_fraction));
-	dview->AddDataSet(new wxDVArrayDataSet("Shade factor", shade_factor));
-	dview->SelectDataOnBlankTabs();
-	frame->Show(); 
-	*/
+	if (wxYES == wxMessageBox("View hourly shading factor results?", "Query", wxYES_NO, this ))
+	{	
+		wxFrame *frame = new wxFrame( 0, wxID_ANY, 
+			wxString::Format("Shade fractions (computation in %d ms)", sw.Time()), 
+			wxDefaultPosition, wxSize(900,700) );
+
+		wxDVPlotCtrl *dview = new wxDVPlotCtrl( frame );	
+		std::vector<double> data(8760);
+		for( size_t j=0;j<shade.size();j++ )
+		{
+			for( size_t i=0;i<8760;i++ )
+				data[i] = shade[j].sfac[i];
+			dview->AddDataSet(new wxDVArrayDataSet(shade[j].group, "% Shaded", 1.0, data));
+		}
+		dview->SelectDataOnBlankTabs();
+		frame->Show(); 
+	}
+	
 }
 
 
-struct surfshade
-{
-	surfshade()
-		: group("Entire Array"), sfac( 12, 24, 1 ), shaded(12,24,0), active(12,24,0)
-	{
-	}
-	
-	wxString group;
-	matrix_t<float> sfac;
-	matrix_t<double> shaded, active;
-	std::vector<VActiveSurfaceObject*> surfaces;
-	std::vector<int> ids;
-};
 
 
 void ShadeAnalysis::OnGenerateDiurnal( wxCommandEvent & )
 {
 	SimulateDiurnal();
+}
+
+void ShadeAnalysis::InitializeSections( int mode, std::vector<surfshade> &shade )
+{
+	shade.clear();
+	shade.push_back( surfshade(mode, "Entire Array") ); // overall system shade
+
+	// setup shading result storage for each group
+	std::vector<VObject*> objs = m_shadeTool->GetView()->GetObjects();
+	for( size_t i=0;i<objs.size();i++ )
+	{
+		if ( VActiveSurfaceObject *surf = dynamic_cast<VActiveSurfaceObject*>( objs[i] ) )
+		{
+			wxString grp = surf->Property("Group").GetString();
+			if ( grp.IsEmpty() ) continue;
+
+			int index = -1;
+			for( int k=0;k<shade.size();k++ )
+				if ( shade[k].group == grp )
+					index = k;
+
+			if ( index < 0 )
+			{
+				shade.push_back( surfshade( mode, grp ) );
+				index = shade.size()-1;
+			}
+
+			surfshade &ss = shade[index];
+			ss.surfaces.push_back( surf );
+			if ( std::find( ss.ids.begin(), ss.ids.end(), surf->GetId() ) == ss.ids.end() )
+				ss.ids.push_back( surf->GetId() );
+		}
+	}
 }
 
 bool ShadeAnalysis::SimulateDiurnal()
@@ -864,36 +924,8 @@ bool ShadeAnalysis::SimulateDiurnal()
 	double azi, zen, alt;
 	size_t m, d, h;
 
-	std::vector<surfshade> shade;
-	shade.push_back( surfshade() ); // overall system shade
-
-	// setup shading result storage for each group
-	std::vector<VObject*> objs = m_shadeTool->GetView()->GetObjects();
-	for( size_t i=0;i<objs.size();i++ )
-	{
-		if ( VActiveSurfaceObject *surf = dynamic_cast<VActiveSurfaceObject*>( objs[i] ) )
-		{
-			wxString grp = surf->Property("Group").GetString();
-			if ( grp.IsEmpty() ) continue;
-
-			int index = -1;
-			for( int k=0;k<shade.size();k++ )
-				if ( shade[k].group == grp )
-					index = k;
-
-			if ( index < 0 )
-			{
-				shade.push_back( surfshade() );
-				index = shade.size()-1;
-			}
-
-			surfshade &ss = shade[index];
-			ss.surfaces.push_back( surf );
-			ss.group = grp;
-			if ( std::find( ss.ids.begin(), ss.ids.end(), surf->GetId() ) == ss.ids.end() )
-				ss.ids.push_back( surf->GetId() );
-		}
-	}
+	std::vector<surfshade> shade;	
+	InitializeSections( surfshade::DIURNAL, shade );
 	
 	s3d::transform tr;
 	tr.set_scale( SF_ANALYSIS_SCALE );
@@ -929,7 +961,6 @@ bool ShadeAnalysis::SimulateDiurnal()
 				for ( size_t k=0;k<shresult.size();k++ )
 				{
 					int id = shresult[k].id;
-					double sf = shresult[k].shade_fraction;
 
 					// find the correct shade group for this 'id'
 					// and accumulate the total shaded and active areas

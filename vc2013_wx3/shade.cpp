@@ -16,7 +16,7 @@ class MyFrame : public wxFrame
 public:
 	ShadeTool *m_shade;
 
-	MyFrame() : wxFrame( 0, wxID_ANY, "SAM Shade Calculator - Beta (2014.05.01)", wxDefaultPosition, 
+	MyFrame() : wxFrame( 0, wxID_ANY, "SAM Shade Calculator (2014.11.18)", wxDefaultPosition, 
 		wxSize(1100,700) )
 	{
 		SetIcon( wxICON( appicon ) );
@@ -64,7 +64,7 @@ public:
 	bool OnInit()
 	{
 		wxInitAllImageHandlers();
-		wxSimpleCurlInit();
+		wxSimpleCurl::Init();
 		
 		m_locale.Init();
 
@@ -92,7 +92,7 @@ public:
 				char buf[512];
 				fgets( buf, 511, fp );
 				fclose(fp);
-				wxSimpleCurlSetupProxy( wxString::FromAscii( buf ) );
+				wxSimpleCurl::SetupProxy( wxString::FromAscii( buf ) );
 			}
 		}
 
