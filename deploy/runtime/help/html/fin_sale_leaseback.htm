@@ -79,7 +79,7 @@
 <p class="p_VariableName"><span class="f_VariableName">Lessor Required Lease Payment Reserve</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The size of the lease payment reserve account in months. (In some cases, the tax investor may require that the developer fund a reserve account.) </span></p>
 <p class="p_EquationExcel"><span class="f_EquationExcel">Lease Reserve Amount ($) = Lessor Required Lease Payment Reserve (months) / 12 (months/yr) × Year 1 Pre-tax Operating Cash Flow ($/yr)</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription">The lease reserve amount is part of the project <a href="mtf_financing_cost.htm" class="topiclink">Financing Cost</a> reported on the Metrics table, which is included in the issuance of equity value in the <a href="cashflow.htm" class="topiclink">cash flow</a>.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The lease reserve amount is one of the fees included in the <a href="mtf_costs.htm" class="topiclink">initial cost</a> value reported on the Metrics table, which is included in the issuance of equity value in the <a href="cashflow.htm" class="topiclink">cash flow</a>.</span></p>
 <p class="p_VariableName"><span class="f_VariableName">Amount</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">This amount of the developer's margin.</span></p>
 <p class="p_EquationExcel"><span class="f_EquationExcel">Amount ($) = Lessee Operating Margin ($/kW) × System Nameplate Capacity (kW)</span></p>
@@ -272,8 +272,7 @@
 <p class="p_Text"><span class="f_Text">SAM allows you to specify parameters for up to five construction loans to approximate interest during construction (IDC) that SAM considers to be a cost to the project.</span></p>
 <p class="p_Text"><span class="f_Text">SAM assumes that 100% of the construction balance is outstanding for half of the construction period, which is equivalent to an even monthly draw schedule with an average loan life of half of the construction period. To approximate a different draw schedule, you could adjust the loan's interest rate accordingly.</span></p>
 <p class="p_Note"><span class="f_CHNote">Note.</span><span class="f_Note"> To model a project with no construction period loans, set the </span><span class="f_CHInterfaceElement">Percent of Installed Costs</span><span class="f_Note"> value for each of the five loans to zero.</span></p>
-<p class="p_Text"><span class="f_Text">For the Commercial PPA and Independent Power Producer options, SAM includes the total construction financing cost in the project loan principal amount shown on the Financial Parameters page.</span></p>
-<p class="p_Text"><span class="f_Text">For the partnership flip, sale leaseback, and single owner options, SAM includes the total construction financing cost in the <a href="mtf_financing_cost.htm" class="topiclink">Financing Cost</a> reported in the Metrics table. The financing cost, in turn, is part of issuance of equity value reported in the project <a href="cashflow.htm" class="topiclink">cash flow</a>.</span></p>
+<p class="p_Text"><span class="f_Text">SAM includes the total construction financing cost in the <a href="mtf_costs.htm" class="topiclink">initial cost</a> value in the Metrics table.</span></p>
 <p class="p_VariableName"><span class="f_VariableName">Construction Loans</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">SAM allows you to specify up to five construction loans. You can type a name describing each loan or use the default names.</span></p>
 <p class="p_VariableName"><span class="f_VariableName">Percent of Installed Costs</span></p>
@@ -306,8 +305,6 @@
 <p class="p_VariableDescription"><span class="f_VariableDescription">A dollar amount representing costs associated with securing participation of a tax investor, such as consultants and legal fees.</span></p>
 <p class="p_VariableName"><span class="f_VariableName">Other Financing Costs (All options except Single Owner)</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">A dollar amount for financing costs not included in the equity closing cost or development fee.</span></p>
-<p class="p_VariableName"><span class="f_VariableName">&nbsp;</span></p>
-<p class="p_Text"><span class="f_Text">SAM calculates the project's total cost of financing and reports it as the <a href="mtf_financing_cost.htm" class="topiclink">Financing Cost</a> in the Metrics table, which is part of the issuance of equity value reported in the <a href="cashflow.htm" class="topiclink">cash flow</a>.</span></p>
 <h3 class="p_Heading3_atocs_" style="border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Reserve Accounts</span></h3>
 <p class="p_VariableName"><span class="f_VariableName">Interest on Reserves</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">Annual interest rate earned on funds in reserve accounts. The different financial models have different reserve accounts, and the interest on reserves rate applies to all of the accounts available for a given option: </span></p>

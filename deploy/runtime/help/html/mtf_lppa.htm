@@ -38,13 +38,14 @@
 
 <!-- Placeholder for topic body. -->
 <table style="width:100%;border:none;border-spacing:0px"><tr style="vertical-align:top"><td style="text-align:left;padding:5px">
-<p class="p_Text"><span class="f_Text">SAM's PPA financial models calculate the levelized PPA price, which represents the amount that the project must receive for each unit of electricity it sells to cover financing, installation, and operating costs, and to meet internal rate of return requirements, accounting for salvage value and incentives.</span></p>
-<p class="p_Text"><span class="f_Text">SAM assumes that these projects are power generation projects installed on the utility side of consumer power meters. The projects sell electricity at a price negotiated by the project and electricity purchaser.</span></p>
+<p class="p_Text"><span class="f_Text">SAM's PPA financial models calculate the levelized PPA price, which represents the amount that the project must receive for each unit of electricity it sells to cover financing, installation, and operating costs, and to meet internal rate of return requirements, accounting for salvage value, incentives, and tax liability or benefits.</span></p>
+<p class="p_Text"><span class="f_Text">SAM assumes that these projects are power generation projects installed on the utility side of consumer power meters. The projects sell electricity at a price negotiated by the project and electricity purchaser through a power purchase agreement (PPA).</span></p>
 <p class="p_Text"><span class="f_Text">SAM uses the real and nominal discount rates from the <a href="financial_parameters.htm" class="topiclink">Financial Parameters</a> page to calculate the present worth of future costs. The real discount rate accounts for the time value of money and the relative degree of risk for alternative investments.</span></p>
+<p class="p_Note"><span class="f_CHNote">Note.</span><span class="f_Note"> The energy term in the denominator appears to be discounted because of the algebraic solution of the definition of the levelized price. See <a href="mtf_lcoe.htm#lcoedefinition" class="topiclink">levelized cost of energy</a> for details.</span></p>
 <p class="p_Text"><span class="f_Text">For the real levelized PPA price, the real discount rate appears in the denominator's total energy output term:</span></p>
-<p class="p_Equation"><img src="eq_lcoe-real-utility.gif" width="221" height="89" alt="EQ_LCOE-real-utility" style="border:none" /></p>
+<p class="p_ImageCaption"><img src="eq_lppa-real.gif" width="243" height="78" alt="EQ_LPPA-real" style="margin:0px auto 0px auto;width:243px;height:78px;border:none" /></p>
 <p class="p_Text"><span class="f_Text">Similarly, for the nominal levelized PPA price, the nominal discount rate appears in the total energy output term:</span></p>
-<p class="p_Equation"><img src="eq_lcoe-nominal-utility.gif" width="245" height="89" alt="EQ_LCOE-nominal-utility" style="border:none" /></p>
+<p class="p_ImageCaption"><img src="eq_lppa-nominal.gif" width="271" height="78" alt="EQ_LPPA-nominal" style="margin:0px auto 0px auto;width:271px;height:78px;border:none" /></p>
 <p class="p_Text"><span class="f_Text">Where,</span></p>
 <div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 6px 0px;"><table class="WhereTable" style="border:none; border-spacing:0px;">
 <tr style="text-align:left;vertical-align:top;">
@@ -79,6 +80,7 @@
 </tr>
 </table>
 </div>
+<p class="p_Note"><span class="f_Note">&nbsp;</span></p>
 
 </td></tr></table>
 

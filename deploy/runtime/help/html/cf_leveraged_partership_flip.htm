@@ -100,7 +100,7 @@
 <p class="p_EquationExcel"><span class="f_EquationExcel">O&amp;M Capacity-based Expense in Year n = Fixed Cost by Capacity ($/kW-yr) × System Rated Capacity × (1 + Inflation Rate + Escalation Rate)^(n-1)</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">Where </span><span class="f_Emphasis">Fixed Cost by Capacity</span><span class="f_VariableDescription"> is from the <a href="system_costs.htm" class="topiclink">System Costs</a> page, and </span><span class="f_Emphasis">Inflation Rate</span><span class="f_VariableDescription"> and </span><span class="f_Emphasis">Escalation Rate</span><span class="f_VariableDescription"> are from the <a href="financial_parameters.htm" class="topiclink">Financial Parameters</a> page.</span></p>
 <p class="p_Text"><span class="f_Text">The system nameplate capacity depends on technology being modeled. SAM converts the capacity value to the appropriate units (MW, kW, or W) before using it in calculations. For the photovoltaic models, the capacity is a DC power rating, and for the others it is an AC power rating. For the BeOpt/TRNSYS Solar Water Heating Model, the capacity is a thermal rating, while for the others it is an electric rating.</span></p>
-<p class="p_TitleTable"><span class="f_TitleTable">Table 27. Nameplate system capacity values for each technology.</span></p>
+<p class="p_TitleTable"><span class="f_TitleTable">Table 26. Nameplate system capacity values for each technology.</span></p>
 <div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 6px 0px;"><table style="border:none; border-spacing:0px;">
 <tr style="text-align:left;vertical-align:top;">
 <td style="vertical-align:top; padding:0px;"><p class="p_TableHeadColumn"><span class="f_TableHeadColumn">Performance Model</span></p>
@@ -323,7 +323,7 @@
 <p class="p_VariableName"><span class="f_VariableName">Equity Capital</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The equity capital invested in the project.</span></p>
 <p class="p_EquationExcel"><span class="f_EquationExcel">Issuance of Equity in Year Zero = Total Installed Cost + Financing Cost - ( Debt Funding + Total IBI + Total CBI )</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription">Where </span><span class="f_Emphasis">Total Installed Cost</span><span class="f_VariableDescription"> is the project capital cost from the <a href="system_costs.htm" class="topiclink">System Costs</a> page, </span><span class="f_Emphasis"><a href="mtf_financing_cost.htm" class="topiclink">Financing Cost</a></span><span class="f_VariableDescription"> is from the Metrics table, </span><span class="f_Emphasis">Debt</span><span class="f_VariableDescription"> (Single Owner and Leveraged Partnership Flip only) is the debt funding amount described below, and </span><span class="f_Emphasis">Total IBI</span><span class="f_VariableDescription"> and </span><span class="f_Emphasis">Total CBI</span><span class="f_VariableDescription"> are the investment-based incentive and capacity based incentive amounts described below.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Where </span><span class="f_Emphasis">Total Installed Cost</span><span class="f_VariableDescription"> is the project capital cost from the <a href="system_costs.htm" class="topiclink">System Costs</a> page, </span><span class="f_Emphasis">Financing Cost</span><span class="f_VariableDescription"> is the total debt costs and development fees, </span><span class="f_Emphasis">Debt</span><span class="f_VariableDescription"> (Single Owner and Leveraged Partnership Flip only) is the debt funding amount described below, and </span><span class="f_Emphasis">Total IBI</span><span class="f_VariableDescription"> and </span><span class="f_Emphasis">Total CBI</span><span class="f_VariableDescription"> are the investment-based incentive and capacity based incentive amounts described below.</span></p>
 <p class="p_VariableName"><span class="f_VariableName">Total project cash flow from financing activities</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The total cash flow from financing activities is the sum of equity capital, incentive payments, and debt capital.</span></p>
 <p class="p_EquationExcel"><span class="f_EquationExcel">Total in Year Zero = Issuance of Equity + Total IBI + Total CBI + Debt Funding</span></p>
@@ -343,11 +343,11 @@
 <p class="p_EquationExcel"><span class="f_EquationExcel">Pre-tax Cash Flow in Year n&gt;0 = Total Cash Flows from Operating Activities + Total Cash Flows from Investing Activities + Total Incentives</span></p>
 <p class="p_VariableName"><span class="f_VariableName">Project pre-tax cumulative IRR</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">SAM calculates the cumulative IRR for each year N of the cash flow. The cumulative IRR in a given Year N is the discount rate that results in a value of zero for the present value of the discounted pre-tax cash flows up to Year N:</span></p>
-<p class="p_VariableDescription"><img src="eq_irrpretax.gif" width="188" height="54" alt="EQ_IRRPreTax" style="border:none" /></p>
+<p class="p_VariableDescription"><img src="eq_irrpretax.gif" width="188" height="54" alt="EQ_IRRPreTax" style="width:188px;height:54px;border:none" /></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">Where </span><span class="f_CHEquationVariable">C</span><span class="f_CHVariableSubscript">PreTax,n</span><span class="f_VariableDescription"> is the pre-tax cash flow described above.</span></p>
 <p class="p_VariableName"><span class="f_VariableName">Project pre-tax cumulative NPV</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The cumulative net present value in a given Year N is the sum of the present values of the pre-tax cash flows up to Year N:</span></p>
-<p class="p_VariableDescription"><img src="eq_npvpretax.gif" width="188" height="54" alt="EQ_NPVPreTax" style="border:none" /></p>
+<p class="p_VariableDescription"><img src="eq_npvpretax.gif" width="188" height="54" alt="EQ_NPVPreTax" style="width:188px;height:54px;border:none" /></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">Where </span><span class="f_CHEquationVariable">C</span><span class="f_CHVariableSubscript">PreTax,n</span><span class="f_VariableDescription"> is the pre-tax cash flow described above, </span><span class="f_CHEquationVariable">d</span><span class="f_CHVariableSubscript">nominal</span><span class="f_VariableDescription"> is the nominal discount rate from the <a href="financial_parameters.htm" class="topiclink">Financial Parameters</a> page.</span></p>
 <h4 class="p_Heading4"><span class="f_Heading4">Project after-tax returns</span></h4>
 <p class="p_VariableName"><span class="f_VariableName">Cash</span></p>
@@ -359,11 +359,11 @@
 <p class="p_EquationExcel"><span class="f_EquationExcel">After-tax Cash Flow in Year n&gt;1 = Pre-tax Cash Flow in Year n + Total PTC + Project Tax Benefit</span></p>
 <p class="p_VariableName"><span class="f_VariableName">Project after-tax cumulative IRR</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">SAM calculates the cumulative IRR for each year N of the cash flow. The cumulative IRR in a given Year N is the discount rate that results in a value of zero for the present value of the discounted pre-tax cash flows up to Year N:</span></p>
-<p class="p_VariableDescription"><img src="eq_irr.gif" width="188" height="54" alt="EQ_IRR" style="border:none" /></p>
+<p class="p_VariableDescription"><img src="eq_irr.gif" width="188" height="54" alt="EQ_IRR" style="width:188px;height:54px;border:none" /></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">Where </span><span class="f_CHEquationVariable">C</span><span class="f_CHVariableSubscript">AfterTax,n</span><span class="f_VariableDescription"> is the after-tax cash flow described above.</span></p>
 <p class="p_VariableName"><span class="f_VariableName">Project after-tax cumulative NPV</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The cumulative net present value in a given Year N is the sum of the present values of the pre-tax cash flows up to Year N:</span></p>
-<p class="p_VariableDescription"><img src="eq_npvaftertax.gif" width="188" height="54" alt="EQ_NPVAfterTax" style="border:none" /></p>
+<p class="p_VariableDescription"><img src="eq_npvaftertax.gif" width="188" height="54" alt="EQ_NPVAfterTax" style="width:188px;height:54px;border:none" /></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">Where </span><span class="f_CHEquationVariable">C</span><span class="f_CHVariableSubscript">AfterTax,n</span><span class="f_VariableDescription"> is the after-tax cash flow described above, and </span><span class="f_CHEquationVariable">d</span><span class="f_CHVariableSubscript">nominal</span><span class="f_VariableDescription"> is the nominal discount rate from the <a href="financial_parameters.htm" class="topiclink">Financial Parameters</a> page.</span></p>
 <h4 class="p_Heading4"><span class="f_Heading4">Project LCOE</span></h4>
 <p class="p_Text"><span class="f_Text">SAM reports quantities used in the LCOE calculation in the cash flow table for reference. For a description of the LCOE see <a href="mtf_lcoe.htm" class="topiclink">Levelized Cost of Energy (LCOE)</a>.</span></p>
@@ -378,13 +378,13 @@
 <p class="p_VariableDescription"><span class="f_VariableDescription">Where </span><span class="f_CHEquationVariable">R</span><span class="f_CHVariableSubscript">PPA,n</span><span class="f_VariableDescription"> is the revenue from electricity sales-tax cash flow described above, and </span><span class="f_CHEquationVariable">d</span><span class="f_CHVariableSubscript">nominal</span><span class="f_VariableDescription"> is the nominal discount rate from the <a href="financial_parameters.htm" class="topiclink">Financial Parameters</a> page.</span></p>
 <p class="p_VariableName"><span class="f_VariableName">NPV of net annual energy (nominal)</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The LCOE calculation requires a discounted energy term in the denominator. The value discounted using the nominal discount rate is for the nominal LCOE equation.</span></p>
-<p class="p_VariableDescription"><img src="eq_npvenergynominal.gif" width="309" height="54" alt="EQ_NPVEnergyNominal" style="border:none" /></p>
+<p class="p_VariableDescription"><img src="eq_npvenergynominal.gif" width="309" height="54" alt="EQ_NPVEnergyNominal" style="width:309px;height:54px;border:none" /></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">Where </span><span class="f_CHEquationVariable">Q</span><span class="f_CHVariableSubscript">n</span><span class="f_VariableDescription"> is the annual energy value described above, and </span><span class="f_CHEquationVariable">d</span><span class="f_CHVariableSubscript">nominal</span><span class="f_VariableDescription"> is the nominal discount rate from the <a href="financial_parameters.htm" class="topiclink">Financial Parameters</a> page.</span></p>
 <p class="p_VariableName"><span class="f_VariableName">Project Nominal LCOE</span></p>
 <p class="p_EquationExcel"><span class="f_EquationExcel">Project Nominal LCOE = NPV(Revenue) / NPV(Energy Nominal)</span></p>
 <p class="p_VariableName"><span class="f_VariableName">NPV of net annual energy (real)</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The LCOE calculation requires a discounted energy term in the denominator. The value discounted using the real discount rate is for the real LCOE equation.</span></p>
-<p class="p_VariableDescription"><img src="eq_npvenergyreal.gif" width="257" height="54" alt="EQ_NPVEnergyReal" style="border:none" /></p>
+<p class="p_VariableDescription"><img src="eq_npvenergyreal.gif" width="257" height="54" alt="EQ_NPVEnergyReal" style="width:257px;height:54px;border:none" /></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">Where </span><span class="f_CHEquationVariable">Q</span><span class="f_CHVariableSubscript">n</span><span class="f_VariableDescription"> is the annual energy value described above, and </span><span class="f_CHEquationVariable">d</span><span class="f_CHVariableSubscript">real</span><span class="f_VariableDescription"> is the nominal discount rate from the <a href="financial_parameters.htm" class="topiclink">Financial Parameters</a> page.</span></p>
 <p class="p_VariableName"><span class="f_VariableName">Project Real LCOE</span></p>
 <p class="p_EquationExcel"><span class="f_EquationExcel">Project Real LCOE = NPV(Revenue) / NPV(Energy Real)</span></p>
@@ -404,12 +404,12 @@
 <p class="p_VariableDescription"><span class="f_VariableDescription">Where the pre- and post-flip share of project cash percentages are from the <a href="financial_parameters.htm" class="topiclink">Financial Parameters</a> page.</span></p>
 <p class="p_VariableName"><span class="f_VariableName">Tax investor cumulative IRR</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">Cumulative pre-tax IRR from the tax investor perspective for each year N of the cash flow. The cumulative IRR in a given Year N is the discount rate that results in a value of zero for the present value of the discounted pre-tax cash flows up to Year N:</span></p>
-<p class="p_VariableDescription"><img src="eq_irrpretax.gif" width="188" height="54" alt="EQ_IRRPreTax" style="border:none" /></p>
+<p class="p_VariableDescription"><img src="eq_irrpretax.gif" width="188" height="54" alt="EQ_IRRPreTax" style="width:188px;height:54px;border:none" /></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">Where </span><span class="f_CHEquationVariable">C</span><span class="f_CHVariableSubscript">PreTax,n</span><span class="f_VariableDescription"> is the tax investor pre-tax cash flow described above.</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">For years when there is no mathematical solution, SAM reports a value of zero.</span></p>
 <p class="p_VariableName"><span class="f_VariableName">Tax investor cumulative NPV</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">Cumulative pre-tax net present value from the tax investor perspective in a given Year N is the sum of the present values of the pre-tax cash flows up to Year N:</span></p>
-<p class="p_VariableDescription"><img src="eq_npvpretax.gif" width="188" height="54" alt="EQ_NPVPreTax" style="border:none" /></p>
+<p class="p_VariableDescription"><img src="eq_npvpretax.gif" width="188" height="54" alt="EQ_NPVPreTax" style="width:188px;height:54px;border:none" /></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">Where </span><span class="f_CHEquationVariable">C</span><span class="f_CHVariableSubscript">PreTax,n</span><span class="f_VariableDescription"> is the tax investor pre-tax cash flow described above, </span><span class="f_CHEquationVariable">d</span><span class="f_CHVariableSubscript">nominal</span><span class="f_VariableDescription"> is the nominal discount rate from the <a href="financial_parameters.htm" class="topiclink">Financial Parameters</a> page.</span></p>
 <h4 class="p_Heading4"><span class="f_Heading4">Tax Investor After-Tax Returns</span></h4>
 <p class="p_VariableName"><span class="f_VariableName">Tax investor cash (total pre-tax returns)</span></p>
@@ -437,12 +437,12 @@
 <p class="p_EquationExcel"><span class="f_EquationExcel">Total = Cash + Investment Tax Credit + Production Tax Credit + Share of Project Tax Benefit/(Liability)</span></p>
 <p class="p_VariableName"><span class="f_VariableName">Tax investor cumulative IRR</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">Cumulative after-tax IRR from the tax investor perspective for each year N of the cash flow. The cumulative IRR in a given Year N is the discount rate that results in a value of zero for the present value of the discounted pre-tax cash flows up to Year N:</span></p>
-<p class="p_VariableDescription"><img src="eq_irr.gif" width="188" height="54" alt="EQ_IRR" style="border:none" /></p>
+<p class="p_VariableDescription"><img src="eq_irr.gif" width="188" height="54" alt="EQ_IRR" style="width:188px;height:54px;border:none" /></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">Where </span><span class="f_CHEquationVariable">C</span><span class="f_CHVariableSubscript">PreTax,n</span><span class="f_VariableDescription"> is the tax investor after-tax cash flow described above.</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">For years when there is no mathematical solution, SAM reports a value of zero.</span></p>
 <p class="p_VariableName"><span class="f_VariableName">Tax investor cumulative NPV</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">Cumulative after-tax net present value from the tax investor perspective in a given Year N is the sum of the present values of the pre-tax cash flows up to Year N:</span></p>
-<p class="p_VariableDescription"><img src="eq_npvaftertax.gif" width="188" height="54" alt="EQ_NPVAfterTax" style="border:none" /></p>
+<p class="p_VariableDescription"><img src="eq_npvaftertax.gif" width="188" height="54" alt="EQ_NPVAfterTax" style="width:188px;height:54px;border:none" /></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">Where </span><span class="f_CHEquationVariable">C</span><span class="f_CHVariableSubscript">PreTax,n</span><span class="f_VariableDescription"> is the tax investor after-tax cash flow described above, </span><span class="f_CHEquationVariable">d</span><span class="f_CHVariableSubscript">nominal</span><span class="f_VariableDescription"> is the nominal discount rate from the <a href="financial_parameters.htm" class="topiclink">Financial Parameters</a> page.</span></p>
 <p class="p_VariableName"><span class="f_VariableName">Tax investor maximum IRR</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The greater of the Year One Cumulative IRR and the Year n Cumulative IRR.</span></p>
@@ -459,12 +459,12 @@
 <p class="p_EquationExcel"><span class="f_EquationExcel">Developer Pre-tax Cash Flow in Year n&gt;0 = Total Project After-tax Cash Flow - Tax Investor Pre-tax Cash Flow</span></p>
 <p class="p_VariableName"><span class="f_VariableName">Developer pre-tax cumulative IRR</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">Cumulative pre-tax IRR from the developer perspective for each year N of the cash flow. The cumulative IRR in a given Year N is the discount rate that results in a value of zero for the present value of the discounted pre-tax cash flows up to Year N:</span></p>
-<p class="p_VariableDescription"><img src="eq_irrpretax.gif" width="188" height="54" alt="EQ_IRRPreTax" style="border:none" /></p>
+<p class="p_VariableDescription"><img src="eq_irrpretax.gif" width="188" height="54" alt="EQ_IRRPreTax" style="width:188px;height:54px;border:none" /></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">Where </span><span class="f_CHEquationVariable">C</span><span class="f_CHVariableSubscript">PreTax,n</span><span class="f_VariableDescription"> is the tax investor after-tax cash flow described above.</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">For years when there is no mathematical solution, SAM reports a value of zero.</span></p>
 <p class="p_VariableName"><span class="f_VariableName">Developer pre-tax cumulative NPV</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">Cumulative pre-tax net present value from the developer perspective in a given Year N is the sum of the present values of the pre-tax cash flows up to Year N:</span></p>
-<p class="p_VariableDescription"><img src="eq_npvpretax.gif" width="188" height="54" alt="EQ_NPVPreTax" style="border:none" /></p>
+<p class="p_VariableDescription"><img src="eq_npvpretax.gif" width="188" height="54" alt="EQ_NPVPreTax" style="width:188px;height:54px;border:none" /></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">Where </span><span class="f_CHEquationVariable">C</span><span class="f_CHVariableSubscript">PreTax,n</span><span class="f_VariableDescription"> is the tax investor after-tax cash flow described above, </span><span class="f_CHEquationVariable">d</span><span class="f_CHVariableSubscript">nominal</span><span class="f_VariableDescription"> is the nominal discount rate from the <a href="financial_parameters.htm" class="topiclink">Financial Parameters</a> page.</span></p>
 <p class="p_VariableName"><span class="f_VariableName">Developer pre-tax IRR</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The cumulative tax investor pre-tax IRR in the flip year defined on the <a href="financial_parameters.htm" class="topiclink">Financial Parameters</a> page.</span></p>
@@ -506,12 +506,12 @@
 <p class="p_EquationExcel"><span class="f_EquationExcel">Total Developer After-tax Returns = Cash + Investment Tax Credit + Production Tax Credit + Share of Project Tax Benefit/(Liability)</span></p>
 <p class="p_VariableName"><span class="f_VariableName">Developer after-tax cumulative IRR</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">Cumulative after-tax IRR from the developer perspective for each year n of the cash flow. The cumulative IRR in a given Year n is the discount rate that results in a value of zero for the present value of the discounted pre-tax cash flows up to Year N:</span></p>
-<p class="p_VariableDescription"><img src="eq_irr.gif" width="188" height="54" alt="EQ_IRR" style="border:none" /></p>
+<p class="p_VariableDescription"><img src="eq_irr.gif" width="188" height="54" alt="EQ_IRR" style="width:188px;height:54px;border:none" /></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">Where </span><span class="f_CHEquationVariable">C</span><span class="f_CHVariableSubscript">PreTax,n</span><span class="f_VariableDescription"> is the developer after-tax cash flow described above.</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">For years when there is no mathematical solution, SAM reports a value of zero.</span></p>
 <p class="p_VariableName"><span class="f_VariableName">Developer after-tax cumulative NPV</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">Cumulative after-tax net present value from the developer perspective in a given Year n is the sum of the present values of the pre-tax cash flows up to Year N:</span></p>
-<p class="p_VariableDescription"><img src="eq_npvaftertax.gif" width="188" height="54" alt="EQ_NPVAfterTax" style="border:none" /></p>
+<p class="p_VariableDescription"><img src="eq_npvaftertax.gif" width="188" height="54" alt="EQ_NPVAfterTax" style="width:188px;height:54px;border:none" /></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">Where </span><span class="f_CHEquationVariable">C</span><span class="f_CHVariableSubscript">PreTax,n</span><span class="f_VariableDescription"> is the developer after-tax cash flow described above, </span><span class="f_CHEquationVariable">d</span><span class="f_CHVariableSubscript">nominal</span><span class="f_VariableDescription"> is the nominal discount rate from the <a href="financial_parameters.htm" class="topiclink">Financial Parameters</a> page.</span></p>
 <p class="p_VariableName"><span class="f_VariableName">Developer after-tax IRR</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The cumulative developer pre-tax IRR in the flip year defined on the <a href="financial_parameters.htm" class="topiclink">Financial Parameters</a> page.</span></p>
@@ -535,7 +535,7 @@
 <p class="p_VariableDescription"><span class="f_VariableDescription">Where System Capacity is the rated capacity of the system, and </span><span class="f_Emphasis">Amount</span><span class="f_VariableDescription"> and </span><span class="f_Emphasis">Maximum</span><span class="f_VariableDescription"> are the values you specify on the <a href="incentives.htm" class="topiclink">Incentives</a> page.</span></p>
 <p class="p_VariableDescription"><span class="f_Emphasis">Total CBI</span><span class="f_VariableDescription"> is the sum of the four CBI values (federal, state, utility, other).</span></p>
 <p class="p_Text"><span class="f_Text">The system nameplate capacity depends on technology being modeled. SAM converts the capacity value to the appropriate units (MW, kW, or W) before using it in calculations. For the photovoltaic models, the capacity is a DC power rating, and for the others it is an AC power rating. For the BeOpt/TRNSYS Solar Water Heating Model, the capacity is a thermal rating, while for the others it is an electric rating.</span></p>
-<p class="p_TitleTable"><span class="f_TitleTable">Table 28. Nameplate system capacity values for each technology.</span></p>
+<p class="p_TitleTable"><span class="f_TitleTable">Table 27. Nameplate system capacity values for each technology.</span></p>
 <div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 6px 0px;"><table style="border:none; border-spacing:0px;">
 <tr style="text-align:left;vertical-align:top;">
 <td style="vertical-align:top; padding:0px;"><p class="p_TableHeadColumn"><span class="f_TableHeadColumn">Performance Model</span></p>
@@ -694,7 +694,7 @@
 <p class="p_Text"><span class="f_Text">The debt amounts depend on the following inputs from the <a href="financial_parameters.htm" class="topiclink">Financial Parameters</a> page:</span></p>
 <div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 3px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:24px"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;">&#8226;</span></td><td style="border:none"><span class="f_List">Debt Rate</span></td></tr></table></div><div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 3px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:24px"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;">&#8226;</span></td><td style="border:none"><span class="f_List">DSCR</span></td></tr></table></div><p class="p_VariableName"><span class="f_VariableName">Funding</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The funding amount applies in Year Zero, and is the size of debt assuming the constant DSCR specified on the Financial Parameters page:</span></p>
-<p class="p_EquationExcel"><img src="eq_cf-debtfunding.gif" width="230" height="62" alt="EQ_CF-DebtFunding" style="border:none" /></p>
+<p class="p_EquationExcel"><img src="eq_cf-debtfunding.gif" width="230" height="62" alt="EQ_CF-DebtFunding" style="width:230px;height:62px;border:none" /></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">Where </span><span class="f_CHEquationVariable">CAFDS</span><span class="f_CHVariableSubscript">n</span><span class="f_VariableDescription"> is the cash available for debt service in Year n, and </span><span class="f_Emphasis">Debt Rate</span><span class="f_VariableDescription"> and </span><span class="f_Emphasis">DSCR</span><span class="f_VariableDescription"> are from the Financial Parameters page.</span></p>
 <p class="p_EquationExcel"><span class="f_EquationExcel">CAFDS in Year n= EBIDTA in Year n - Sum of Major Equipment Replacement Reserves in Year n</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">Where EBIDTA and Major Equipment Reserves &nbsp;are described above and below, respectively.</span></p>
@@ -814,7 +814,7 @@
 <p class="p_Text"><span class="f_Text">The depreciable basis after IBI, CBI, ITC and bonus depreciation reduction is the basis to which the depreciation percentages defined by the depreciation class apply.</span></p>
 <p class="p_EquationExcel"><span class="f_EquationExcel">Depreciable Basis after Bonus Reduction = Depreciable Basis after ITC Reduction - First Year Bonus Depreciation</span></p>
 <p class="p_Text"><span class="f_Text">The following table shows the depreciation percentage by year for each depreciation class. For each depreciation class, the percentage is applied to the depreciable basis amount for the given year in the cash flow:</span></p>
-<p class="p_Text"><img src="tbl_depreciationclasses.gif" width="544" height="344" alt="TBL_DepreciationClasses" style="border:none" /></p>
+<p class="p_Text"><img src="tbl_depreciationclasses.gif" width="544" height="344" alt="TBL_DepreciationClasses" style="width:544px;height:344px;border:none" /></p>
 
 </td></tr></table>
 
