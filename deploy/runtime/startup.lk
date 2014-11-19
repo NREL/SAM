@@ -1145,10 +1145,7 @@ function setup_DSLF_pages()
 	 {'name'='Linear Fresnel Boiler Geometry', 'caption'='Boiler Geometry', 'collapsible'=true, 'collapsible_var'='boiler_is_shown'},
 	 {'name'='Linear Fresnel Superheater Geometry', 'caption'='Superheater Geometry', 'collapsible'=true, 'collapsible_var'='superheater_is_shown'} ]],
 	 { 'sidebar'='Collector and Receiver', 'help'='dslf_collector_and_receiver' } );
-
-	//addpage( [[ 'Linear Fresnel Boiler Geometry' ]], { 'sidebar'='Collector and Receiver 1' } );
-	//addpage( [[ 'Linear Fresnel Superheater Geometry' ]], { 'sidebar'='Collector and Receiver 2' } );
-	addpage( [[ 'PBNS Power Block' ]], { 'sidebar'='Power Cycle', 'help'='dslf_power_cycle' } );
+	addpage( [[ 'PBNS Power Block', {'name' = 'CSP PBNS Dispatch Control', 'caption'='Dispatch Control', 'collapsible'=false, 'collapsible_var'='csp_dispatch_is_shown'}  ]], { 'sidebar'='Power Cycle', 'help'='dslf_power_cycle' } );
 	addpage( [[ 'Linear Fresnel Parasitics' ]], { 'sidebar'='Parasitics', 'help'='dslf_parasitics' } );
 }
 
@@ -1206,7 +1203,7 @@ function setup_DSPT_pages()
 	addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource', 'help'='pt_location_and_resource' } );
 	addpage( [[ 'Tower Solar Field' ]], { 'sidebar'='Heliostat Field', 'help'='dspt_heliostat_field' } );
 	addpage( [[ 'Direct Steam Tower Receiver' ]], { 'sidebar'='Tower and Receiver', 'help'='dspt_tower_and_receiver' } );
-	addpage( [[ 'PBNS Power Block' ]], { 'sidebar'='Power Cycle', 'help'='dspt_power_cycle' } );
+	addpage( [[ 'PBNS Power Block', {'name' = 'CSP PBNS Dispatch Control', 'caption'='Dispatch Control', 'collapsible'=false, 'collapsible_var'='csp_dispatch_is_shown'}  ]], { 'sidebar'='Power Cycle', 'help'='dspt_power_cycle' } );
 	addpage( [[ 'Direct Steam Tower Parasitics' ]], { 'sidebar'='Parasitics', 'help'='dspt_parasitics' } );
 }
 
