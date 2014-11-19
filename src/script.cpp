@@ -770,7 +770,7 @@ void ScriptWindow::OnCommand( wxCommandEvent &evt )
 		break;
 
 	case wxID_HELP:
-		SamApp::ShowHelp( "scripting" );
+		SamApp::ShowHelp( "macros" );
 		break;
 		
 	case wxID_STOP:
