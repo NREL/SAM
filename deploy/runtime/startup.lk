@@ -478,7 +478,7 @@ setup_csp_physical_trough_pages();
 
 
 setconfig( 'Physical Trough', 'Commercial' );
-setmodules( ['tcstrough_physical', 'utilityrate3', 'cashloan']);
+setmodules( ['tcstrough_physical', 'belpe', 'utilityrate3', 'cashloan']);
 setting( { 'analysis_period_var'='cf_length' } );
 setup_csp_physical_trough_pages();
 addpage( [[ 'Physical Trough Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='trough_system_costs' } );
@@ -683,16 +683,16 @@ setmodules( ['swh'] );
 setup_solar_water_heating_pages();
 
 setconfig( 'Solar Water Heating', 'Residential');
-setmodules( ['swh',  'utilityrate3', 'cashloan'] );
+setmodules( ['swh',  'belpe', 'utilityrate3', 'cashloan'] );
 setup_solar_water_heating_pages();
 addpage( [[ 'Solar Water Heating Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='shw_system_costs' } );
-setup_residential_pages( LOAD_SIMPLE, true ); //no belpe
+setup_residential_pages( LOAD_BELPE, true ); //yes belpe
 
 setconfig( 'Solar Water Heating', 'Commercial');
-setmodules( ['swh',  'utilityrate3', 'cashloan'] );
+setmodules( ['swh',  'belpe', 'utilityrate3', 'cashloan'] );
 setup_solar_water_heating_pages();
 addpage( [[ 'Solar Water Heating Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='shw_system_costs' } );
-setup_commercial_pages( LOAD_SIMPLE, true ); //no belpe
+setup_commercial_pages( LOAD_BELPE, true ); //yes belpe
 
 // Geothermal Power ////////////////////////////////////////////////////////////
 setconfig( 'Geothermal Power', 'Independent Power Producer' );
@@ -1156,7 +1156,7 @@ setup_DSLF_pages();
 
 //-----------------------------------------------------
 setconfig( 'DSLF', 'Commercial' );	
-setmodules( ['tcslinear_fresnel',  'utilityrate3', 'cashloan']);
+setmodules( ['tcslinear_fresnel', 'belpe', 'utilityrate3', 'cashloan']);
 setting( { 'analysis_period_var'='cf_length' } );
 setup_DSLF_pages();
 addpage( [[ 'Linear Fresnel Capital Costs','O and M Costs']], { 'sidebar'='System Costs', 'help'='lf_system_costs' } );
@@ -1265,7 +1265,7 @@ setup_MSLF_pages();
 
 //-----------------------------------------------------
 setconfig( 'MSLF', 'Commercial' );	
-setmodules( ['tcsMSLF',  'utilityrate3', 'cashloan']);
+setmodules( ['tcsMSLF',  'belpe', 'utilityrate3', 'cashloan']);
 setting( { 'analysis_period_var'='cf_length' } );
 setup_MSLF_pages();
 addpage( [[ 'Linear Fresnel Capital Costs','O and M Costs']], { 'sidebar'='System Costs', 'help'='lf_system_costs' } );
