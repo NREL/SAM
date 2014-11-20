@@ -1,13 +1,14 @@
 TECHNOLOGY,FINANCING,ANNUAL_OUTPUT,LCOE_NOM,LPPA_NOM,MESSAGES
 Flat Plate PV,Residential,6856.65,8.23065,NA,; 
-Flat Plate PV,Commercial,358876,7.00246,NA,; 
+Flat Plate PV,Commercial,fail,fail,fail
 Flat Plate PV,Single Owner,37211888,7.22988,11.087,; 
 Flat Plate PV,Leveraged Partnership Flip,37211888,7.18199,11.1774,; 
 Flat Plate PV,All Equity Partnership Flip,37211888,9.01366,15.6665,; 
 Flat Plate PV,Sale Leaseback,37211888,10.2151,13.7197,; 
 Flat Plate PV,None,6856.65,NA,NA,; 
 PVWatts,Residential,6620.15,12.0307,NA,; 
-PVWatts,Commercial,341305,5.55717,NA,; 
+PVWatts,Commercial,OVERWRITE	
+PVWatts,Commercial,fail,fail,fail
 PVWatts,Single Owner,35151256,7.65431,11.7379,; 
 PVWatts,Leveraged Partnership Flip,35151256,7.60365,11.8335,; 
 PVWatts,All Equity Partnership Flip,35151256,9.54281,16.5862,; 
@@ -17,16 +18,17 @@ High-X Concentrating PV,Single Owner,2.22613e+006,23.9826,25.4866,;
 High-X Concentrating PV,Leveraged Partnership Flip,2.22613e+006,23.7646,25.8533,; 
 High-X Concentrating PV,All Equity Partnership Flip,2.22613e+006,28.4566,32.2778,; 
 High-X Concentrating PV,Sale Leaseback,2.22613e+006,31.8761,31.7751,; 
-High-X Concentrating PV,None,OVERWRITE	
-High-X Concentrating PV,None,2.17767e+006,NA,NA,Defaults file is likely out of date: High-X Concentrating PV_None  Variables: 1 loaded but not in configuration, 0 wrong type, defaults file has 103, config has 102  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later)  Loaded but don't exist in config: analysis_period_warning; 
-Wind Power,Residential,7843.43,18.4612,NA,; 
+High-X Concentrating PV,None,2.17767e+006,NA,NA,; 
+Wind Power,Residential,OVERWRITE	
+Wind Power,Residential,7843.43,18.4612,NA,Defaults file is likely out of date: Wind Power_Residential  Variables: 2 loaded but not in configuration, 0 wrong type, defaults file has 902, config has 900  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later)  Loaded but don't exist in config: Occ_Schedule,T_Sched; 
 Wind Power,Commercial,39645.6,11.5484,NA,; 
 Wind Power,Single Owner,256785664,1.53301,5.37837,; 
 Wind Power,Leveraged Partnership Flip,256785664,1.62681,5.37837,; 
 Wind Power,All Equity Partnership Flip,256785664,2.98547,5.37837,; 
 Wind Power,Sale Leaseback,256785664,1.95736,6.61384,; 
 Wind Power,None,256785664,NA,NA,; 
-Biopower,Commercial,58766588,10.6835,NA,; 
+Biopower,Commercial,OVERWRITE	
+Biopower,Commercial,fail,fail,fail
 Biopower,Single Owner,300885056,-9.39887,18.1635,; 
 Biopower,Leveraged Partnership Flip,300885056,-9.13601,18.1635,; 
 Biopower,All Equity Partnership Flip,300885056,-7.62783,20.2872,; 
@@ -36,79 +38,68 @@ Geothermal Power,Single Owner,NA,1.46514,6.24524,;
 Geothermal Power,Leveraged Partnership Flip,NA,1.49381,6.24524,; 
 Geothermal Power,All Equity Partnership Flip,NA,1.91148,9.08419,; 
 Geothermal Power,Sale Leaseback,NA,1.68675,8.98302,; 
-Geothermal Power,None,OVERWRITE	
-Geothermal Power,None,NA,NA,NA,Defaults file is likely out of date: Geothermal Power_None  Variables: 1 loaded but not in configuration, 0 wrong type, defaults file has 126, config has 126  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later)  Loaded but don't exist in config: analysis_period_warning; 
+Geothermal Power,None,NA,NA,NA,; 
 Solar Water Heating,Residential,1630.3,36.6832,NA,; 
-Solar Water Heating,Commercial,2973.89,30.0036,NA,; 
-Solar Water Heating,None,OVERWRITE	
-Solar Water Heating,None,1630.3,NA,NA,Defaults file is likely out of date: Solar Water Heating_None  Variables: 1 loaded but not in configuration, 0 wrong type, defaults file has 80, config has 79  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later)  Loaded but don't exist in config: analysis_period_warning; 
+Solar Water Heating,Commercial,OVERWRITE	
+Solar Water Heating,Commercial,fail,fail,fail
+Solar Water Heating,None,1630.3,NA,NA,; 
 Generic System,Residential,6527.4,1397.86,NA,; 
 Generic System,Commercial,6527.4,629.845,NA,; 
 Generic System,Single Owner,366658560,0.973307,36.474,; 
 Generic System,Leveraged Partnership Flip,366658560,1.2053,36.474,; 
 Generic System,All Equity Partnership Flip,366658560,6.68874,46.5751,; 
 Generic System,Sale Leaseback,366658560,6.1029,45.4813,; 
-Generic System,None,OVERWRITE	
-Generic System,None,366658560,NA,NA,Defaults file is likely out of date: Generic System_None  Variables: 1 loaded but not in configuration, 0 wrong type, defaults file has 10, config has 9  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later)  Loaded but don't exist in config: analysis_period_warning; 
-Physical Trough,Commercial,350621120,6.92923,NA,; Notice: time 30474000.00 { Controller 3 }:\ 	After 21 iterations, the controller convergence error of 1.00989 could not resolve below the tolerance of 0.001. Check that results at this timestep are not unreasonably biasing annual metrics. Notice: time 30474000.00 { Controller 3 }:\ 	After 21 iterations, the controller convergence error of 1.00981 could not resolve below the tolerance of 0.001. Check that results at this timestep are not unreasonably biasing annual metrics.
-Physical Trough,Single Owner,336596256,14.5912,20.1633,; Notice: time 30474000.00 { Controller 3 }:\ 	After 21 iterations, the controller convergence error of 1.00989 could not resolve below the tolerance of 0.001. Check that results at this timestep are not unreasonably biasing annual metrics. Notice: time 30474000.00 { Controller 3 }:\ 	After 21 iterations, the controller convergence error of 1.00981 could not resolve below the tolerance of 0.001. Check that results at this timestep are not unreasonably biasing annual metrics.
-Physical Trough,Leveraged Partnership Flip,OVERWRITE	
-Physical Trough,Leveraged Partnership Flip,336596256,14.6935,20.1627,Defaults file is likely out of date: Physical Trough_Leveraged Partnership Flip  Variables: 11 loaded but not in configuration, 0 wrong type, defaults file has 1106, config has 1096  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later)  Loaded but don't exist in config: ui_disp_8_todf,ui_disp_2_todf,ui_disp_1_todf,ui_disp_3_todf,lab_tod1,ui_disp_5_todf,ui_disp_4_todf,ui_disp_6_todf,ui_disp_9_todf,lab_tod2,ui_disp_7_todf; Notice: time 30474000.00 { Controller 3 }:\ 	After 21 iterations, the controller convergence error of 1.00989 could not resolve below the tolerance of 0.001. Check that results at this timestep are not unreasonably biasing annual metrics. Notice: time 30474000.00 { Controller 3 }:\ 	After 21 iterations, the controller convergence error of 1.00981 could not resolve below the tolerance of 0.001. Check that results at this timestep are not unreasonably biasing annual metrics.
-Physical Trough,All Equity Partnership Flip,OVERWRITE	
-Physical Trough,All Equity Partnership Flip,350621120,18.9138,24.5679,Defaults file is likely out of date: Physical Trough_All Equity Partnership Flip  Variables: 11 loaded but not in configuration, 0 wrong type, defaults file has 1103, config has 1092  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later)  Loaded but don't exist in config: ui_disp_8_todf,ui_disp_2_todf,ui_disp_1_todf,ui_disp_3_todf,lab_tod1,ui_disp_5_todf,ui_disp_4_todf,ui_disp_6_todf,ui_disp_9_todf,lab_tod2,ui_disp_7_todf; Notice: time 30474000.00 { Controller 3 }:\ 	After 21 iterations, the controller convergence error of 1.00989 could not resolve below the tolerance of 0.001. Check that results at this timestep are not unreasonably biasing annual metrics. Notice: time 30474000.00 { Controller 3 }:\ 	After 21 iterations, the controller convergence error of 1.00981 could not resolve below the tolerance of 0.001. Check that results at this timestep are not unreasonably biasing annual metrics.
-Physical Trough,Sale Leaseback,OVERWRITE	
-Physical Trough,Sale Leaseback,336596256,20.8537,24.7033,Defaults file is likely out of date: Physical Trough_Sale Leaseback  Variables: 11 loaded but not in configuration, 0 wrong type, defaults file has 1095, config has 1084  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later)  Loaded but don't exist in config: ui_disp_8_todf,ui_disp_2_todf,ui_disp_1_todf,ui_disp_3_todf,lab_tod1,ui_disp_5_todf,ui_disp_4_todf,ui_disp_6_todf,ui_disp_9_todf,lab_tod2,ui_disp_7_todf; Notice: time 30474000.00 { Controller 3 }:\ 	After 21 iterations, the controller convergence error of 1.00989 could not resolve below the tolerance of 0.001. Check that results at this timestep are not unreasonably biasing annual metrics. Notice: time 30474000.00 { Controller 3 }:\ 	After 21 iterations, the controller convergence error of 1.00981 could not resolve below the tolerance of 0.001. Check that results at this timestep are not unreasonably biasing annual metrics.
-Physical Trough,None,OVERWRITE	
-Physical Trough,None,336596256,NA,NA,Defaults file is likely out of date: Physical Trough_None  Variables: 2 loaded but not in configuration, 0 wrong type, defaults file has 763, config has 761  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later)  Loaded but don't exist in config: analysis_period_warning,direct_subtotal; Notice: time 30474000.00 { Controller 3 }:\ 	After 21 iterations, the controller convergence error of 1.00989 could not resolve below the tolerance of 0.001. Check that results at this timestep are not unreasonably biasing annual metrics. Notice: time 30474000.00 { Controller 3 }:\ 	After 21 iterations, the controller convergence error of 1.00981 could not resolve below the tolerance of 0.001. Check that results at this timestep are not unreasonably biasing annual metrics.
-Empirical Trough,Commercial,349179904,7.01513,NA,; Warning: time 20415600.00 { Test Trough 2 }:\ 	Warning - Empirical trough (805) model exceeded interal iteration limit
-Empirical Trough,Single Owner,335212704,15.0202,20.1184,; Warning: time 20415600.00 { Test Trough 2 }:\ 	Warning - Empirical trough (805) model exceeded interal iteration limit
-Empirical Trough,Leveraged Partnership Flip,335212704,16.3977,21.7243,; Warning: time 20415600.00 { Test Trough 2 }:\ 	Warning - Empirical trough (805) model exceeded interal iteration limit
-Empirical Trough,All Equity Partnership Flip,OVERWRITE	
-Empirical Trough,All Equity Partnership Flip,335212704,21.9382,27.527,Defaults file is likely out of date: Empirical Trough_All Equity Partnership Flip  Variables: 11 loaded but not in configuration, 0 wrong type, defaults file has 759, config has 748  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later)  Loaded but don't exist in config: ui_disp_9_todf,ui_disp_1_todf,ui_disp_8_todf,ui_disp_6_todf,ui_disp_7_todf,lab_tod2,ui_disp_4_todf,ui_disp_2_todf,lab_tod1,ui_disp_5_todf,ui_disp_3_todf; Warning: time 20415600.00 { Test Trough 2 }:\ 	Warning - Empirical trough (805) model exceeded interal iteration limit
-Empirical Trough,Sale Leaseback,OVERWRITE	
-Empirical Trough,Sale Leaseback,335212704,23.1527,26.6952,Defaults file is likely out of date: Empirical Trough_Sale Leaseback  Variables: 11 loaded but not in configuration, 0 wrong type, defaults file has 751, config has 740  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later)  Loaded but don't exist in config: ui_disp_9_todf,ui_disp_1_todf,ui_disp_8_todf,ui_disp_6_todf,ui_disp_7_todf,lab_tod2,ui_disp_4_todf,ui_disp_2_todf,lab_tod1,ui_disp_5_todf,ui_disp_3_todf; Warning: time 20415600.00 { Test Trough 2 }:\ 	Warning - Empirical trough (805) model exceeded interal iteration limit
-Empirical Trough,None,OVERWRITE	
-Empirical Trough,None,335212704,NA,NA,Defaults file is likely out of date: Empirical Trough_None  Variables: 1 loaded but not in configuration, 0 wrong type, defaults file has 421, config has 420  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later)  Loaded but don't exist in config: analysis_period_warning; Warning: time 20415600.00 { Test Trough 2 }:\ 	Warning - Empirical trough (805) model exceeded interal iteration limit
-MSPT,Single Owner,523471424,9.94657,13.4634,; 
+Generic System,None,366658560,NA,NA,; 
+Physical Trough,Commercial,OVERWRITE	
+Physical Trough,Commercial,fail,fail,fail
+Physical Trough,Single Owner,350446976,13.9957,19.3861,; Notice: time 27622800.00 { Controller 3 }:\ 	After 21 iterations, the controller convergence error of 1.04434 could not resolve below the tolerance of 0.001. Check that results at this timestep are not unreasonably biasing annual metrics. Notice: time 27622800.00 { Controller 3 }:\ 	After 21 iterations, the controller convergence error of 1.04441 could not resolve below the tolerance of 0.001. Check that results at this timestep are not unreasonably biasing annual metrics.
+Physical Trough,Leveraged Partnership Flip,350446976,14.0943,19.3855,; Notice: time 27622800.00 { Controller 3 }:\ 	After 21 iterations, the controller convergence error of 1.04434 could not resolve below the tolerance of 0.001. Check that results at this timestep are not unreasonably biasing annual metrics. Notice: time 27622800.00 { Controller 3 }:\ 	After 21 iterations, the controller convergence error of 1.04441 could not resolve below the tolerance of 0.001. Check that results at this timestep are not unreasonably biasing annual metrics.
+Physical Trough,All Equity Partnership Flip,365048928,18.1479,23.6174,; Notice: time 27622800.00 { Controller 3 }:\ 	After 21 iterations, the controller convergence error of 1.04434 could not resolve below the tolerance of 0.001. Check that results at this timestep are not unreasonably biasing annual metrics. Notice: time 27622800.00 { Controller 3 }:\ 	After 21 iterations, the controller convergence error of 1.04441 could not resolve below the tolerance of 0.001. Check that results at this timestep are not unreasonably biasing annual metrics.
+Physical Trough,Sale Leaseback,350446976,20.0107,23.7459,; Notice: time 27622800.00 { Controller 3 }:\ 	After 21 iterations, the controller convergence error of 1.04434 could not resolve below the tolerance of 0.001. Check that results at this timestep are not unreasonably biasing annual metrics. Notice: time 27622800.00 { Controller 3 }:\ 	After 21 iterations, the controller convergence error of 1.04441 could not resolve below the tolerance of 0.001. Check that results at this timestep are not unreasonably biasing annual metrics.
+Physical Trough,None,350446976,NA,NA,; Notice: time 27622800.00 { Controller 3 }:\ 	After 21 iterations, the controller convergence error of 1.04434 could not resolve below the tolerance of 0.001. Check that results at this timestep are not unreasonably biasing annual metrics. Notice: time 27622800.00 { Controller 3 }:\ 	After 21 iterations, the controller convergence error of 1.04441 could not resolve below the tolerance of 0.001. Check that results at this timestep are not unreasonably biasing annual metrics.
+Empirical Trough,Commercial,OVERWRITE	
+Empirical Trough,Commercial,fail,fail,fail
+Empirical Trough,Single Owner,344411680,14.6063,19.5945,; 
+Empirical Trough,Leveraged Partnership Flip,344411680,15.9471,21.1574,; 
+Empirical Trough,All Equity Partnership Flip,344411680,21.3398,26.8057,; 
+Empirical Trough,Sale Leaseback,344411680,22.5216,25.9951,; 
+Empirical Trough,None,344411680,NA,NA,; 
+MSPT,Single Owner,525231488,9.93653,13.4419,; 
 MSPT,Leveraged Partnership Flip,OVERWRITE	
-MSPT,Leveraged Partnership Flip,520342752,11.8171,13.8236,Defaults file is likely out of date: MSPT_Leveraged Partnership Flip  Variables: 30 loaded but not in configuration, 0 wrong type, defaults file has 666, config has 646  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later)  Loaded but don't exist in config: csp.pt.opt.max_tower_height,csp.pt.sf.flux_file,csp.pt.sf.user.file.eff_array,csp.pt.opt.max_cav_ap_hw_ratio,csp.pt.sf.eff_file,ui_disp_1_todf,csp.pt.opt.min_receiver_diameter,csp.pt.opt.min_rec_htd_ratio,csp.pt.opt.min_cav_ap_width,csp.pt.sf.max_realized_radius,csp.pt.opt.min_tower_height,csp.pt.opt.nopt_receiver_diameter,csp.pt.sf.use_round_heliostats,ui_disp_7_todf,csp.pt.opt.max_receiver_diameter,csp.pt.opt.min_cav_ap_hw_ratio,csp.pt.opt.max_rec_htd_ratio,ui_disp_2_todf,csp.pt.opt.nopt_tower_height,csp.pt.opt.max_cav_ap_width,csp.pt.opt.nopt_rec_htd_ratio,csp.pt.sf.user.file.flux_map,lab_tod1,ui_disp_5_todf,ui_disp_4_todf,ui_disp_6_todf,ui_disp_3_todf,ui_disp_9_todf,lab_tod2,ui_disp_8_todf; 
+MSPT,Leveraged Partnership Flip,520342752,11.8171,13.8236,Defaults file is likely out of date: MSPT_Leveraged Partnership Flip  Variables: 5 loaded but not in configuration, 0 wrong type, defaults file has 646, config has 654  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later)  Loaded but don't exist in config: csp.pt.sf.min_dist_from_tower,csp.pt.sf.max_hel_dist_tower_ratio,csp.pt.sf.ratio_reflective_to_profile,csp.pt.sf.max_dist_from_tower,csp.pt.sf.min_hel_dist_tower_ratio; 
 MSPT,All Equity Partnership Flip,OVERWRITE	
-MSPT,All Equity Partnership Flip,520342752,11.3239,27.3336,Defaults file is likely out of date: MSPT_All Equity Partnership Flip  Variables: 30 loaded but not in configuration, 0 wrong type, defaults file has 662, config has 642  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later)  Loaded but don't exist in config: csp.pt.opt.max_tower_height,csp.pt.sf.flux_file,csp.pt.sf.user.file.eff_array,csp.pt.opt.max_cav_ap_hw_ratio,csp.pt.sf.eff_file,ui_disp_1_todf,csp.pt.opt.min_receiver_diameter,csp.pt.opt.min_rec_htd_ratio,csp.pt.opt.min_cav_ap_width,csp.pt.sf.max_realized_radius,csp.pt.opt.min_tower_height,csp.pt.opt.nopt_receiver_diameter,csp.pt.sf.use_round_heliostats,ui_disp_7_todf,csp.pt.opt.max_receiver_diameter,csp.pt.opt.min_cav_ap_hw_ratio,csp.pt.opt.max_rec_htd_ratio,ui_disp_2_todf,csp.pt.opt.nopt_tower_height,csp.pt.opt.max_cav_ap_width,csp.pt.opt.nopt_rec_htd_ratio,csp.pt.sf.user.file.flux_map,lab_tod1,ui_disp_5_todf,ui_disp_4_todf,ui_disp_6_todf,ui_disp_3_todf,ui_disp_9_todf,lab_tod2,ui_disp_8_todf; 
+MSPT,All Equity Partnership Flip,520342752,11.3239,27.3336,Defaults file is likely out of date: MSPT_All Equity Partnership Flip  Variables: 5 loaded but not in configuration, 0 wrong type, defaults file has 642, config has 650  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later)  Loaded but don't exist in config: csp.pt.sf.min_dist_from_tower,csp.pt.sf.max_hel_dist_tower_ratio,csp.pt.sf.ratio_reflective_to_profile,csp.pt.sf.max_dist_from_tower,csp.pt.sf.min_hel_dist_tower_ratio; 
 MSPT,Sale Leaseback,OVERWRITE	
-MSPT,Sale Leaseback,520342752,15.5493,18.0132,Defaults file is likely out of date: MSPT_Sale Leaseback  Variables: 30 loaded but not in configuration, 0 wrong type, defaults file has 654, config has 634  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later)  Loaded but don't exist in config: csp.pt.opt.max_tower_height,csp.pt.sf.flux_file,csp.pt.sf.user.file.eff_array,csp.pt.opt.max_cav_ap_hw_ratio,csp.pt.sf.eff_file,ui_disp_1_todf,csp.pt.opt.min_receiver_diameter,csp.pt.opt.min_rec_htd_ratio,csp.pt.opt.min_cav_ap_width,csp.pt.sf.max_realized_radius,csp.pt.opt.min_tower_height,csp.pt.opt.nopt_receiver_diameter,csp.pt.sf.use_round_heliostats,ui_disp_7_todf,csp.pt.opt.max_receiver_diameter,csp.pt.opt.min_cav_ap_hw_ratio,csp.pt.opt.max_rec_htd_ratio,ui_disp_2_todf,csp.pt.opt.nopt_tower_height,csp.pt.opt.max_cav_ap_width,csp.pt.opt.nopt_rec_htd_ratio,csp.pt.sf.user.file.flux_map,lab_tod1,ui_disp_5_todf,ui_disp_4_todf,ui_disp_6_todf,ui_disp_3_todf,ui_disp_9_todf,lab_tod2,ui_disp_8_todf; 
-DSPT,Single Owner,264398336,0.749012,32.7576,; 
-DSPT,Leveraged Partnership Flip,OVERWRITE	
-DSPT,Leveraged Partnership Flip,264398336,0.918574,32.7576,Defaults file does not exist; 
-DSPT,All Equity Partnership Flip,OVERWRITE	
-DSPT,All Equity Partnership Flip,264398336,0.686294,33.4302,Defaults file does not exist; 
-DSPT,Sale Leaseback,OVERWRITE	
-DSPT,Sale Leaseback,264398336,-0.705138,33.8447,Defaults file does not exist; 
-MSLF,Commercial,198848912,25.7555,NA,; 
-MSLF,Single Owner,198848912,6.75126,85.791,; 
-MSLF,Leveraged Partnership Flip,198848912,7.15861,85.791,; 
-MSLF,All Equity Partnership Flip,198848912,6.51891,87.6433,; 
-MSLF,Sale Leaseback,198848912,4.9308,86.8928,; 
-MSLF,None,190894960,NA,NA,; 
-DSLF,Commercial,234129536,8.20913,NA,; 
-DSLF,Single Owner,235789968,20.2269,21.4305,; 
-DSLF,Leveraged Partnership Flip,OVERWRITE	
-DSLF,Leveraged Partnership Flip,235789968,18.2906,23.607,Defaults file is likely out of date: DSLF_Leveraged Partnership Flip  Variables: 4 loaded but not in configuration, 0 wrong type, defaults file has 741, config has 739  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later)  Loaded but don't exist in config: tech_type,csp.pbns.nameplate_capacity,is_rh,T_rh_hot_ref; 
-DSLF,All Equity Partnership Flip,OVERWRITE	
-DSLF,All Equity Partnership Flip,235789968,24.2092,30.3575,Defaults file is likely out of date: DSLF_All Equity Partnership Flip  Variables: 4 loaded but not in configuration, 0 wrong type, defaults file has 737, config has 735  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later)  Loaded but don't exist in config: tech_type,csp.pbns.nameplate_capacity,is_rh,T_rh_hot_ref; 
-DSLF,Sale Leaseback,OVERWRITE	
-DSLF,Sale Leaseback,235789968,27.4469,27.3347,Defaults file is likely out of date: DSLF_Sale Leaseback  Variables: 4 loaded but not in configuration, 0 wrong type, defaults file has 729, config has 727  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later)  Loaded but don't exist in config: tech_type,csp.pbns.nameplate_capacity,is_rh,T_rh_hot_ref; 
-DSLF,None,241626272,NA,NA,; 
-Dish Stirling,Commercial,199656128,5.11506,NA,; Notice: kernel exceeded maximum iterations of 100, at time 10778400.000000 Notice: kernel exceeded maximum iterations of 100, at time 29070000.000000
-Dish Stirling,Single Owner,188473424,7.1738,19.0302,; 
-Dish Stirling,Leveraged Partnership Flip,188473424,7.82795,19.2099,; 
-Dish Stirling,All Equity Partnership Flip,188473424,10.4114,26.2226,; 
-Dish Stirling,Sale Leaseback,188473424,9.98029,26.1236,; 
-Dish Stirling,None,OVERWRITE	
-Dish Stirling,None,188473424,NA,NA,Defaults file is likely out of date: Dish Stirling_None  Variables: 1 loaded but not in configuration, 0 wrong type, defaults file has 110, config has 109  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later)  Loaded but don't exist in config: analysis_period_warning; 
-Generic CSP System,Commercial,443609120,5.13427,NA,; 
+MSPT,Sale Leaseback,520342752,15.5493,18.0132,Defaults file is likely out of date: MSPT_Sale Leaseback  Variables: 5 loaded but not in configuration, 0 wrong type, defaults file has 634, config has 642  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later)  Loaded but don't exist in config: csp.pt.sf.min_dist_from_tower,csp.pt.sf.max_hel_dist_tower_ratio,csp.pt.sf.ratio_reflective_to_profile,csp.pt.sf.max_dist_from_tower,csp.pt.sf.min_hel_dist_tower_ratio; 
+DSPT,Single Owner,261717776,9.77148,15.7856,; 
+DSPT,Leveraged Partnership Flip,261717776,9.84773,15.7856,; 
+DSPT,All Equity Partnership Flip,261717776,12.118,22.9773,; 
+DSPT,Sale Leaseback,261717776,12.0778,22.3271,; 
+MSLF,Commercial,OVERWRITE	
+MSLF,Commercial,fail,fail,fail
+MSLF,Single Owner,314128896,4.27366,54.3072,; Notice: kernel exceeded maximum iterations of 30, at time 17085600.000000 Notice: time 24418800.00 { type 251 controller 3 }:\ 	After 21 iterations, the controller convergence error of 0.00724891 could not resolve below the tolerance of 0.001. Check that results at this timestep are not unreasonably biasing annual metrics.
+MSLF,Leveraged Partnership Flip,314128896,4.53152,54.3072,; Notice: kernel exceeded maximum iterations of 30, at time 17085600.000000 Notice: time 24418800.00 { type 251 controller 3 }:\ 	After 21 iterations, the controller convergence error of 0.00724891 could not resolve below the tolerance of 0.001. Check that results at this timestep are not unreasonably biasing annual metrics.
+MSLF,All Equity Partnership Flip,314128896,4.12658,55.4797,; Notice: kernel exceeded maximum iterations of 30, at time 17085600.000000 Notice: time 24418800.00 { type 251 controller 3 }:\ 	After 21 iterations, the controller convergence error of 0.00724891 could not resolve below the tolerance of 0.001. Check that results at this timestep are not unreasonably biasing annual metrics.
+MSLF,Sale Leaseback,314128896,3.12128,55.0046,; Notice: kernel exceeded maximum iterations of 30, at time 17085600.000000 Notice: time 24418800.00 { type 251 controller 3 }:\ 	After 21 iterations, the controller convergence error of 0.00724891 could not resolve below the tolerance of 0.001. Check that results at this timestep are not unreasonably biasing annual metrics.
+MSLF,None,314128896,NA,NA,; Notice: kernel exceeded maximum iterations of 30, at time 17085600.000000 Notice: time 24418800.00 { type 251 controller 3 }:\ 	After 21 iterations, the controller convergence error of 0.00724891 could not resolve below the tolerance of 0.001. Check that results at this timestep are not unreasonably biasing annual metrics.
+DSLF,Commercial,OVERWRITE	
+DSLF,Commercial,fail,fail,fail
+DSLF,Single Owner,231961216,20.5607,21.7842,; 
+DSLF,Leveraged Partnership Flip,231961216,18.5925,23.9967,; 
+DSLF,All Equity Partnership Flip,231961216,24.6088,30.8585,; 
+DSLF,Sale Leaseback,231961216,27.8999,27.7859,; 
+DSLF,None,231961216,NA,NA,; 
+Dish Stirling,Commercial,OVERWRITE	
+Dish Stirling,Commercial,fail,fail,fail
+Dish Stirling,Single Owner,189246720,7.14254,18.9545,; Notice: kernel exceeded maximum iterations of 100, at time 1958400.000000 Notice: kernel exceeded maximum iterations of 100, at time 4266000.000000 Notice: kernel exceeded maximum iterations of 100, at time 29667600.000000
+Dish Stirling,Leveraged Partnership Flip,189246720,7.79403,19.1334,; Notice: kernel exceeded maximum iterations of 100, at time 1958400.000000 Notice: kernel exceeded maximum iterations of 100, at time 4266000.000000 Notice: kernel exceeded maximum iterations of 100, at time 29667600.000000
+Dish Stirling,All Equity Partnership Flip,189246720,10.367,26.1175,; Notice: kernel exceeded maximum iterations of 100, at time 1958400.000000 Notice: kernel exceeded maximum iterations of 100, at time 4266000.000000 Notice: kernel exceeded maximum iterations of 100, at time 29667600.000000
+Dish Stirling,Sale Leaseback,189246720,9.93757,26.0188,; Notice: kernel exceeded maximum iterations of 100, at time 1958400.000000 Notice: kernel exceeded maximum iterations of 100, at time 4266000.000000 Notice: kernel exceeded maximum iterations of 100, at time 29667600.000000
+Dish Stirling,None,189246720,NA,NA,; Notice: kernel exceeded maximum iterations of 100, at time 1958400.000000 Notice: kernel exceeded maximum iterations of 100, at time 4266000.000000 Notice: kernel exceeded maximum iterations of 100, at time 29667600.000000
+Generic CSP System,Commercial,OVERWRITE	
+Generic CSP System,Commercial,fail,fail,fail
 Generic CSP System,Single Owner,425864736,11.7297,15.9593,; 
 Generic CSP System,Leveraged Partnership Flip,425864736,12.2113,16.3759,; 
 Generic CSP System,All Equity Partnership Flip,425864736,15.5406,22.4719,; 
 Generic CSP System,Sale Leaseback,425864736,16.0574,20.535,; 
-Generic CSP System,None,OVERWRITE	
-Generic CSP System,None,425864736,NA,NA,Defaults file is likely out of date: Generic CSP System_None  Variables: 1 loaded but not in configuration, 0 wrong type, defaults file has 177, config has 176  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later)  Loaded but don't exist in config: analysis_period_warning; 
+Generic CSP System,None,425864736,NA,NA,; 
