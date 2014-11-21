@@ -64,19 +64,26 @@ sector_type = "COMMERCIAL_LOAD_DATA";
 //USE NREL DEVELOPER TO TRANSLATE LAT AND LON TO TMY3 ID
 url = "http://developer.nrel.gov/api/solar/data_query/v1.json?api_key=DEMO_KEY&lat=" + lat + "&lon=" + lon;
 json = curl(url);
+results = jsonparse(json);
+
+//CHECK FOR ERRORS
 if ( json == "" ) {
-  msgbox("Failed to translate latitude and longitude to a TMY3 ID. Click OK to exit macro.");
+  msgbox("Failed to translate latitude and longitude to a TMY3 ID.\n\nClick OK to exit macro.");
+  exit;
+}
+
+errors = results.errors;
+if( #errors !=0 ) {
+  msgbox("Error message from OpenEI:\n\n" + errors + "\n\nClick OK to exit macro.");
+  exit;
+}
+
+if ( results == null ) { //no tmy3 data at that lat lon
+  msgbox("Load data is not available for the latitude and longitude in your weather file or that you specified.\n\nClick OK to exit the macro.");
   exit;
 }
 
 //PARSE THROUGH JSON TO FIND TMY3 USAF ID THAT MATCHES LAT LON
-results = jsonparse(json);
-
-if ( #results.outputs == 0 ) { //no tmy3 data at that lat lon
-  msgbox("Load data is not available for the latitude and longitude in your weather file or that you specified. Click OK to exit the macro.");
-  exit;
-}
-  
 tmy3_usaf = mid( json, strpos( json, "\"id\":\"1-" ) + 8, 6 );
 outln ( "TMY3 ID: " + tmy3_usaf );
 
