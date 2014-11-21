@@ -362,7 +362,7 @@ setmodules( ['tcstrough_empirical']);
 setup_csp_empirical_trough_pages();
 
 setconfig( 'Empirical Trough', 'Commercial' );
-setmodules( ['tcstrough_empirical', 'belpe', 'utilityrate3', 'cashloan']);
+setmodules( ['tcstrough_empirical', 'utilityrate3', 'cashloan']);
 setup_csp_empirical_trough_pages();
 addpage( [[ 'Empirical Trough Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='trough_system_costs' } );
 setup_commercial_pages(0,true); //belpe not valid for commercial
@@ -423,7 +423,7 @@ addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', '
 setup_residential_pages( LOAD_BELPE, true ); //includes building load calculator
 
 setconfig( 'Flat Plate PV', 'Commercial' );
-setmodules( ['pvsamv1', 'belpe', 'utilityrate3', 'cashloan']);
+setmodules( ['pvsamv1', 'utilityrate3', 'cashloan']);
 setup_flat_plate_pv_pages();
 addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
 setup_commercial_pages(0,true); //belpe not valid for commercial
@@ -478,7 +478,7 @@ setup_csp_physical_trough_pages();
 
 
 setconfig( 'Physical Trough', 'Commercial' );
-setmodules( ['tcstrough_physical', 'belpe', 'utilityrate3', 'cashloan']);
+setmodules( ['tcstrough_physical', 'utilityrate3', 'cashloan']);
 setting( { 'analysis_period_var'='cf_length' } );
 setup_csp_physical_trough_pages();
 addpage( [[ 'Physical Trough Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='trough_system_costs' } );
@@ -539,7 +539,7 @@ addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', '
 setup_residential_pages( LOAD_BELPE, true ); //includes building load calculator
 
 setconfig( 'PVWatts', 'Commercial' );	
-setmodules( ['pvwattsv5', 'belpe',  'utilityrate3', 'cashloan']);
+setmodules( ['pvwattsv5',  'utilityrate3', 'cashloan']);
 setting( { 'analysis_period_var'='cf_length' } );
 setup_pvwatts_pages();
 addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
@@ -689,7 +689,7 @@ addpage( [[ 'Solar Water Heating Costs','O and M Costs' ]], { 'sidebar'='System 
 setup_residential_pages( LOAD_BELPE, true ); //yes belpe
 
 setconfig( 'Solar Water Heating', 'Commercial');
-setmodules( ['swh',  'belpe', 'utilityrate3', 'cashloan'] );
+setmodules( ['swh', 'utilityrate3', 'cashloan'] );
 setup_solar_water_heating_pages();
 addpage( [[ 'Solar Water Heating Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='shw_system_costs' } );
 setup_commercial_pages(0,true); //belpe not valid for commercial
@@ -824,7 +824,7 @@ function setup_generic_csp_pages()
 
 //-----------------------------------------------------
 setconfig( 'Generic CSP System', 'Commercial' );	
-setmodules( ['tcsgeneric_solar', 'belpe', 'utilityrate3', 'cashloan']);
+setmodules( ['tcsgeneric_solar', 'utilityrate3', 'cashloan']);
 setting( { 'analysis_period_var'='cf_length' } );
 setup_generic_csp_pages();
 addpage( [[ 'Generic CSP System Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='gss_system_costs' } );
@@ -951,7 +951,7 @@ function setup_dish_stirling_pages()
 
 //-----------------------------------------------------
 setconfig( 'Dish Stirling', 'Commercial' );	
-setmodules( ['tcsdish', 'belpe', 'utilityrate3', 'cashloan']);
+setmodules( ['tcsdish', 'utilityrate3', 'cashloan']);
 setting( { 'analysis_period_var'='cf_length' } );
 setup_dish_stirling_pages();
 addpage( [[ 'Dish Capital Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='dish_system_costs' } );
@@ -1021,7 +1021,7 @@ function setup_biopower_pages()
 
 //-----------------------------------------------------
 setconfig( 'Biopower', 'Commercial' );	
-setmodules( ['biomass', 'belpe', 'utilityrate3', 'cashloan']);
+setmodules( ['biomass', 'utilityrate3', 'cashloan']);
 setting( { 'analysis_period_var'='cf_length' } );
 setup_biopower_pages();
 addpage( [[ 'Biopower System Cost','O and M Costs']],{ 'sidebar'='System Costs', 'help'='biopower_system_costs' } );
@@ -1156,7 +1156,7 @@ setup_DSLF_pages();
 
 //-----------------------------------------------------
 setconfig( 'DSLF', 'Commercial' );	
-setmodules( ['tcslinear_fresnel', 'belpe', 'utilityrate3', 'cashloan']);
+setmodules( ['tcslinear_fresnel', 'utilityrate3', 'cashloan']);
 setting( { 'analysis_period_var'='cf_length' } );
 setup_DSLF_pages();
 addpage( [[ 'Linear Fresnel Capital Costs','O and M Costs']], { 'sidebar'='System Costs', 'help'='lf_system_costs' } );
@@ -1265,7 +1265,7 @@ setup_MSLF_pages();
 
 //-----------------------------------------------------
 setconfig( 'MSLF', 'Commercial' );	
-setmodules( ['tcsMSLF',  'belpe', 'utilityrate3', 'cashloan']);
+setmodules( ['tcsMSLF', 'utilityrate3', 'cashloan']);
 setting( { 'analysis_period_var'='cf_length' } );
 setup_MSLF_pages();
 addpage( [[ 'Linear Fresnel Capital Costs','O and M Costs']], { 'sidebar'='System Costs', 'help'='lf_system_costs' } );
