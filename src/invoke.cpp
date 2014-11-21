@@ -1663,7 +1663,7 @@ void fcall_windtoolkit(lk::invoke_t &cxt)
 	//write data to file
 	if (!curl.WriteDataToFile(filename))
 	{
-		wxMessageBox("Failed to download the closest WIND toolkit weather file from NREL for your location.");
+		wxMessageBox("Failed to download the closest WIND toolkit weather file from NREL for your location. The NREL service might be down- please try again later.");
 		return;
 	}
 
