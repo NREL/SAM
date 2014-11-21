@@ -18,6 +18,12 @@ function ppa_financial_graphs()
 	agraph( 'cf_project_return_aftertax', 'Project After-tax Cash Flow', '', '$' );
 }
 
+function sale_leaseback_graphs()
+{
+		agraph( 'cf_sponsor_aftertax_cash,cf_tax_investor_aftertax_cash', 'Project After-tax Cash Flow', '', '$' );
+}
+
+
 //**************Technologies***************************
 autographs{ 'High-X Concentrating PV' } = define() { base_technology_graphs(); };
 autographs{ 'Concentrating Solar Power = Physical Trough' } = define() { base_technology_graphs(); };
@@ -63,4 +69,4 @@ autographs{ 'Commercial' } = define() { rescom_financial_graphs(); };
 autographs{ 'Single Owner' } = define() { ppa_financial_graphs(); };
 autographs{ 'All Equity Partnership Flip' } = define() { ppa_financial_graphs(); };
 autographs{ 'Leveraged Partnership Flip' } = define() { ppa_financial_graphs(); };
-autographs{ 'Sale Leaseback' } = define() { ppa_financial_graphs(); };
+autographs{ 'Sale Leaseback' } = define() { sale_leaseback_graphs(); };
