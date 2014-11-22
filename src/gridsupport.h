@@ -167,7 +167,6 @@ class GridCellArrayEditor : public wxEvtHandler, public wxGridCellEditor
 {
 public:
 	GridCellArrayEditor();
-	virtual ~GridCellArrayEditor(void);
 
 	virtual void PaintBackground(wxDC& dc,
 		const wxRect& rectCell,
@@ -186,7 +185,8 @@ public:
 private:
 	wxString m_cell_value;
 	wxString m_new_cell_value;
-	wxStaticText *m_text;
+//	wxStaticText *m_text;
+	wxTextCtrl *Text() const { return (wxTextCtrl *)m_control; }
 	VarInfo *m_var_info;
 	VarValue *m_var_value;
 	wxWindow *m_parent;
@@ -228,7 +228,7 @@ class GridCellChoiceEditor : public wxGridCellEditor
 {
 public:
 	GridCellChoiceEditor();
-	virtual ~GridCellChoiceEditor() {}
+//	virtual ~GridCellChoiceEditor() {}
 
 	virtual void Create(wxWindow* parent,
 		wxWindowID id,

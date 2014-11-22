@@ -908,6 +908,7 @@ void ParametricViewer::SelectInputs()
 	{
 		RemoveAllPlots();
 		m_input_names = dlg.GetCheckedNames();
+
 		m_grid_data->UpdateInputs(m_input_names);
 	}
 }
@@ -937,8 +938,8 @@ void ParametricViewer::SelectOutputs()
 	{
 		RemoveAllPlots();
 		m_output_names = dlg.GetCheckedNames();
+
 		m_grid_data->UpdateOutputs(m_output_names);
-		//RunSimulations();
 	}
 }
 
@@ -1043,6 +1044,7 @@ void ParametricGridData::UpdateSetup()
 		if (ndx < 0)
 		{
 			// throw error?
+			wxMessageBox("Not here input");
 			return;
 		}
 		sorted_setup.push_back(m_par.Setup[ndx]);
@@ -1054,6 +1056,7 @@ void ParametricGridData::UpdateSetup()
 		if (ndx < 0)
 		{
 			// throw error?
+			wxMessageBox("Not here output");
 			return;
 		}
 		sorted_setup.push_back(m_par.Setup[ndx]);
