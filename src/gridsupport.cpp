@@ -1317,36 +1317,21 @@ void GridCellChoiceEditor::Create(wxWindow* parent, wxWindowID id, wxEvtHandler*
 	int style = wxTE_PROCESS_ENTER |
 		wxTE_PROCESS_TAB | wxCB_READONLY |
 		wxBORDER_NONE;
-	m_control = new wxComboBox(parent, id, wxEmptyString,
+	wxComboBox* cbo = new wxComboBox(parent, id, wxEmptyString,
 		wxDefaultPosition, wxDefaultSize, m_choices, style);
-
+	m_control = cbo;
 	wxGridCellEditor::Create(parent, id, evtHandler);
 }
 
 
 void GridCellChoiceEditor::UpdateComboBox()
-{ // original combo box in Create method of ancestor 
-//	create and destroy to support sorting and populating with current selections
-	int style = wxTE_PROCESS_ENTER |
-		wxTE_PROCESS_TAB | wxCB_READONLY |
-		wxBORDER_NONE;
+{ 
+	Combo()->Clear();
 
-	wxWindow *p = m_control->GetParent();
-	wxWindowID id = m_control->GetId();
-	wxPoint pt = m_control->GetPosition();
-	wxSize sz = m_control->GetSize();
+	Combo()->Append(m_choices);
 
-	// debug assert errors, release mode runs without error
-	m_control->Destroy();
-	m_control = new wxComboBox(p, id, wxEmptyString, pt, sz, m_choices,	style);
-	// blank dropdown without following line
-	//Combo()->Destroy();
-	//m_control = new wxComboBox(p, id, wxEmptyString, pt, sz, m_choices,	style);
-	// documentation incorrect
-	//m_control->Create(p, id, wxEmptyString, pt, sz, m_choices, style);
-	// fails to update
-	//for (int i = 0; i < m_choices.Count(); i++)
-	//	Combo()->SetString(i, m_choices[i]);
+	Combo()->Refresh();
+	Combo()->Update();
 }
 
 void GridCellChoiceEditor::SetSize(const wxRect& rect)

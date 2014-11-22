@@ -228,7 +228,6 @@ class GridCellChoiceEditor : public wxGridCellEditor
 {
 public:
 	GridCellChoiceEditor();
-//	virtual ~GridCellChoiceEditor() {}
 
 	virtual void Create(wxWindow* parent,
 		wxWindowID id,
