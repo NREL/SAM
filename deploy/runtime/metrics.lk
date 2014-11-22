@@ -2,11 +2,11 @@ function rescom_metrics()
 {
 	metric( 'lcoe_nom',{'label'='Levelized COE (nominal)', 'post'=' \u00A2/kWh', 'mode'='f', 'deci'='2' } );
 	metric( 'lcoe_real',{'label'='Levelized COE (real)', 'post'=' \u00A2/kWh', 'mode'='f', 'deci'='2' } );
-	metric( 'elec_cost_without_system_year1',{'label'='Electricity cost without system', 'pre'='$', 'post'=' ', 'thousep'='true', 'mode'='f', 'deci'='2' } );
-	metric( 'elec_cost_with_system_year1',{'label'='Electricity cost with system', 'pre'='$', 'post'=' ', 'thousep'='true', 'mode'='f', 'deci'='2' } );
+	metric( 'elec_cost_without_system_year1',{'label'='Electricity cost without system', 'pre'='$', 'post'=' ', 'thousep'='true', 'mode'='f', 'deci'='0' } );
+	metric( 'elec_cost_with_system_year1',{'label'='Electricity cost with system', 'pre'='$', 'post'=' ', 'thousep'='true', 'mode'='f', 'deci'='0' } );
 	metric( 'savings_year1',{'label'='Net savings with system', 'pre'='$', 'post'=' ', 'thousep'='true', 'mode'='f', 'deci'='2' } );
-	metric( 'npv', {'label'='Net present value', 'mode'='f', 'deci'='2', 'thousep'='true', 'pre'='$', 'post'=' ' } );
-	metric( 'payback', {'label'='Payback period', 'mode'='f', 'deci'='4', 'thousep'='true', 'post'=' years' } );
+	metric( 'npv', {'label'='Net present value', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
+	metric( 'payback', {'label'='Payback period', 'mode'='f', 'deci'='1', 'thousep'='true', 'post'=' years' } );
 	metric( 'total_cost', {'label'='Initial cost', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
 	metric( 'adjusted_installed_cost', {'label'='Initial cost less cash incentives', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
 	metric( 'first_cost', {'label'='Equity', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
@@ -108,7 +108,7 @@ function pv_metrics()
 	metric( 'annual_energy', {'label'='Annual energy', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh' } );
 	metric( 'capacity_factor', {'label'='Capacity factor', 'mode'='f', 'deci'='1', 'thousep'='true', 'post'='%' } );
 	metric( 'kwh_per_kw', {'label'='First year kWhAC/kWDC', 'mode'='f', 'deci'='0', 'thousep'='true' } );
-	metric( 'performance_ratio', {'label'='Performance ratio', 'mode'='f', 'deci'='3', 'post'='' } );
+	metric( 'performance_ratio', {'label'='Performance ratio', 'mode'='f', 'deci'='2', 'post'='' } );
 	// where is the total land area metric?
 }
 
@@ -206,11 +206,10 @@ function dish_stirling_metrics()
 function solar_water_metrics()
 {
 	metric( 'annual_energy', {'label'='Annual energy Saved', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh' } );
-	metric( 'solar_fraction', {'label'='Solar Fraction', 'mode'='f', 'deci'='3', 'thousep'='false', 'post'='' } );
+	metric( 'solar_fraction', {'label'='Solar Fraction', 'mode'='f', 'deci'='2', 'thousep'='false', 'post'='' } );
 	metric( 'annual_Q_aux', {'label'='Aux With Solar', 'mode'='f', 'deci'='1', 'thousep'='true', 'post'=' kWh' } );
 	metric( 'annual_Q_auxonly', {'label'='Aux Without Solar', 'mode'='f', 'deci'='1', 'thousep'='true', 'post'=' kWh' } );
 	metric( 'capacity_factor', {'label'='Capacity factor', 'mode'='f', 'deci'='1', 'thousep'='true', 'post'='%' } );
-	metric( 'kwh_per_kw', {'label'='First year kWhAC/kWDC', 'mode'='f', 'deci'='0', 'thousep'='true' } );
 }
 
 function biopower_metrics() 
@@ -220,9 +219,6 @@ function biopower_metrics()
 	metric( 'capacity_factor', {'label'='Capacity factor', 'mode'='f', 'deci'='1', 'thousep'='true', 'post'='%' } );
 	metric( 'kwh_per_kw', {'label'='First year kWhAC/kWDC', 'mode'='f', 'deci'='0', 'thousep'='true' } );
 }
-
-
-
 
 // Technology Metrics
 metrics{ 'Flat Plate PV' } = define() { pv_metrics(); };
