@@ -363,8 +363,10 @@ bool GridCellVarValueEditor::DisplayEditor(wxUIObject *obj, wxString &name, wxGr
 		if (vpe.ShowModal() == wxID_OK)
 			ActiveInputPage::DataExchange(vpe.GetUIObject(), *vv, ActiveInputPage::OBJ_TO_VAR);
 	}
-
 	else return false; // object data exch not handled for this type
+
+	// necessary for correct event processing to call HideCellEditor in wxGrid base class
+	m_text->SetFocus();
 
 	return true;  // all ok!
 }
@@ -525,21 +527,26 @@ GridCellArrayEditor::GridCellArrayEditor()
 {
 }
 
-GridCellArrayEditor::~GridCellArrayEditor(void)
-{
-}
 
 void GridCellArrayEditor::Create(wxWindow *parent, wxWindowID id, wxEvtHandler* pEvtHandler)
 {
 	m_parent = parent;
-	m_text = new wxStaticText(parent, id, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxST_NO_AUTORESIZE | wxST_ELLIPSIZE_END);
-	SetControl(m_text);
+//	m_text = new wxStaticText(parent, id, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxST_NO_AUTORESIZE | wxST_ELLIPSIZE_END);
+//	SetControl(m_text);
+	long style = wxTE_PROCESS_ENTER | wxTE_PROCESS_TAB | wxNO_BORDER;
+
+	wxTextCtrl* const text = new wxTextCtrl(parent, id, wxEmptyString,
+		wxDefaultPosition, wxDefaultSize,	style);
+	text->SetMargins(0, 0);
+	m_control = text;
+	SetControl(m_control);
 	wxGridCellEditor::Create(parent, id, pEvtHandler);
 }
 
 void GridCellArrayEditor::Reset()
 {
-	m_text->SetLabel(m_cell_value);
+//	m_text->SetLabel(m_cell_value);
+	Text()->SetValue(m_cell_value);
 }
 
 
@@ -623,6 +630,10 @@ bool GridCellArrayEditor::DisplayEditor(wxString &title, wxString &label, wxGrid
 	ArrayPopupDialog apd(grid, title, label, vv);
 	// read only - no updating
 	apd.ShowModal();
+
+	// fixes parametric bug from Aron 11/12/14
+	// necessary for correct event processing to call HideCellEditor in wxGrid base class
+	Text()->SetFocus();
 	return true;  // all ok!
 }
 
@@ -630,7 +641,8 @@ void GridCellArrayEditor::BeginEdit(int row, int col, wxGrid *pGrid)
 {
 	/* event values are not preserved*/
 	m_cell_value = GetString(row, col, pGrid);
-	m_text->SetLabel(m_cell_value);
+//	m_text->SetLabel(m_cell_value);
+	Text()->SetValue(m_cell_value);
 
 	GridChoiceData *vgd = static_cast<GridChoiceData *>(pGrid->GetTable());
 	VarValue *vv = vgd->GetVarValue(row, col);
@@ -640,8 +652,9 @@ void GridCellArrayEditor::BeginEdit(int row, int col, wxGrid *pGrid)
 	DisplayEditor( title, label, pGrid, vv);
 
 	m_new_cell_value = m_cell_value;
-	m_text->SetLabel(m_new_cell_value);
-//	pGrid->SaveEditControlValue();
+//	m_text->SetLabel(m_new_cell_value);
+	Text()->SetValue(m_cell_value);
+	//	pGrid->SaveEditControlValue();
 }
 
 wxString GridCellArrayEditor::GetString(int row, int col, const wxGrid *grid)
@@ -683,13 +696,16 @@ bool GridCellArrayEditor::EndEdit(int row, int col, const wxGrid *grid, const wx
 	if (newval)
 		*newval = m_cell_value;
 
-	m_text->SetLabel(m_cell_value);
+//	m_text->SetLabel(m_cell_value);
+	Text()->SetValue(m_cell_value);
+
 	return true;
 }
 
 void GridCellArrayEditor::ApplyEdit(int row, int col, wxGrid *grid)
 {
 // read only display
+	m_cell_value.clear();
 }
 
 
