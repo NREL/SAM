@@ -25,6 +25,13 @@ for (t=0; t<#technologies; t++)
 	financing = list_financing(technologies[t]);
 	for(f=0; f<#financing; f++)
 	{	
+
+//if ( technologies[t] != "Dish Stirling" )
+//{
+//	continue;
+//}
+
+
 		//Write the technology and financing configuration to the file
 		out( technologies[t] + '\t' + financing[f] + '\t' );
 		configs++;
@@ -33,6 +40,8 @@ for (t=0; t<#technologies; t++)
 		active_case( 'test_case' );
 		configuration( technologies[t], financing[f]) ;
 		message = '';
+		
+		
 		if( !load_defaults(message) )
 		{
 			msg = 'LOADERR';
