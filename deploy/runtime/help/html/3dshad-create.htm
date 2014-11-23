@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+   <title>Create Active Surface</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="" />
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+   
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+   <style type="text/css">
+     body { margin: 0px; background: #FFFFFF; }
+   </style>
+   <script type="text/javascript" src="jquery.js"></script>
+   <script type="text/javascript" src="helpman_settings.js"></script>
+   <script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <script type="text/javascript">
+     HMSyncTOC("index.html", "3dshad-create.htm");
+   </script>
+   <script type="text/javascript" src="highlight.js"></script>
+   <script type="text/javascript">
+     $(document).ready(function(){highlight();});
+   </script>
+</head>
+<body>
+
+
+<table style="width:100%; border:none; border-spacing:0px; padding:5px; background:#FFFFFF; color:#0072C6;">
+  <tr style="vertical-align:middle">
+    <td style="text-align:left">
+      <h1 class="p_Heading1"><span class="f_Heading1">Create Active Surface</span></h1>
+
+    </td>
+  </tr>
+</table>
+
+
+<!-- Placeholder for topic body. -->
+<table style="width:100%;border:none;border-spacing:0px"><tr style="vertical-align:top"><td style="text-align:left;padding:5px">
+<p class="p_Text"><span class="f_Text">An active surface is a surface that is shaded by the shading objects. For photovoltaic systems, the active surface is the photovoltaic array. Active surfaces can be rectangular or triangular in shape.</span></p>
+<p class="p_Note"><span class="f_CHNote">Note.</span><span class="f_Note"> If your system consists of more than one subarray, use the <a href="3dshad-create.htm#group" class="topiclink">Group</a> name to assign each active surface to a subarray. </span></p>
+<p class="p_ImageCaption"><span class="f_ImageCaption">A Building with Two Rectangular Active Surfaces in 3D Scene View </span><br />
+<span class="f_ImageCaption">and Properties of the South Facing Surface</span></p>
+<p class="p_ImageCaption"><img src="ss-properties-active-surface.gif" width="446" height="216" alt="ss-properties-active-surface" style="margin:0px auto 0px auto;width:446px;height:216px;border:none" /></p>
+<p class="p_VariableName"><span class="f_VariableName">Name</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Descriptive name for the active surface to help you identify it. Does not affect shade analysis.</span></p>
+<p class="p_VariableName"><a id="group"></a><span class="f_VariableName">Group</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">For scenes with more than one active surface, the shade analysis will calculate a diurnal table for each named group. For scenes with a single active surface, the group name can be empty. See <a href="3dshad-generate-data.htm" class="topiclink">Generating shade data</a> for details.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">For example, for the scene above, the south subarray's group name is subarray 1 (shown), and the east subarray's group name is subarray 2, and it consists of two active surfaces that both have the group name subarray 2: The top triangle and the bottom rectangle. <a href="3dshad-generate-data.htm" class="topiclink">Running a shade analysis</a> on this scene would result in three diurnal shade loss tables: One for the entire array (both subarrays), one for the south subarray, and one for the east subarray. This is designed to work with the subarray inputs in SAM.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">X, Y, Z</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The X, Y, and Z coordinates of the bottom left corner of the active surface.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Width</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The length of the active surface in the X dimension when the azimuth angle is 180 degrees.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Length</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The length of the active surface in the Y dimension when the azimuth angle is 180 degrees.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Azimuth</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The angle formed by a line in the X-Y plane perpendicular to the bottom of the array and the X axis. An active surface facing due South has an azimuth angle of 180 degrees.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Shape</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Rectangle or triangle. The triangle shape has a base equal to Width and a height equal to Length.</span></p>
+<h4 class="p_Heading4"><span class="f_Heading4">&nbsp;</span></h4>
+
+</td></tr></table>
+
+</body>
+</html>
