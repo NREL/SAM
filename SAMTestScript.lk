@@ -26,7 +26,11 @@ for (t=0; t<#technologies; t++)
 	for(f=0; f<#financing; f++)
 	{	
 
-//if ( technologies[t] != "Dish Stirling" )
+//if ( technologies[t] != "MSLF" )
+//{
+//	continue;
+//}
+//if ( financing[f] != "None" )
 //{
 //	continue;
 //}
