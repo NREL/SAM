@@ -66,12 +66,12 @@ DSPT,Single Owner,261717776,9.77148,15.7856,;
 DSPT,Leveraged Partnership Flip,261717776,9.84773,15.7856,; 
 DSPT,All Equity Partnership Flip,261717776,12.118,22.9773,; 
 DSPT,Sale Leaseback,261717776,12.0778,22.3271,; 
-MSLF,Commercial,314128896,16.3037,NA,; Notice: kernel exceeded maximum iterations of 30, at time 17085600.000000 Notice: time 24418800.00 { type 251 controller 3 }:\ 	After 21 iterations, the controller convergence error of 0.00724891 could not resolve below the tolerance of 0.001. Check that results at this timestep are not unreasonably biasing annual metrics.
-MSLF,Single Owner,314128896,4.27366,54.3072,; Notice: kernel exceeded maximum iterations of 30, at time 17085600.000000 Notice: time 24418800.00 { type 251 controller 3 }:\ 	After 21 iterations, the controller convergence error of 0.00724891 could not resolve below the tolerance of 0.001. Check that results at this timestep are not unreasonably biasing annual metrics.
-MSLF,Leveraged Partnership Flip,314128896,4.53152,54.3072,; Notice: kernel exceeded maximum iterations of 30, at time 17085600.000000 Notice: time 24418800.00 { type 251 controller 3 }:\ 	After 21 iterations, the controller convergence error of 0.00724891 could not resolve below the tolerance of 0.001. Check that results at this timestep are not unreasonably biasing annual metrics.
-MSLF,All Equity Partnership Flip,314128896,4.12658,55.4797,; Notice: kernel exceeded maximum iterations of 30, at time 17085600.000000 Notice: time 24418800.00 { type 251 controller 3 }:\ 	After 21 iterations, the controller convergence error of 0.00724891 could not resolve below the tolerance of 0.001. Check that results at this timestep are not unreasonably biasing annual metrics.
-MSLF,Sale Leaseback,314128896,3.12128,55.0046,; Notice: kernel exceeded maximum iterations of 30, at time 17085600.000000 Notice: time 24418800.00 { type 251 controller 3 }:\ 	After 21 iterations, the controller convergence error of 0.00724891 could not resolve below the tolerance of 0.001. Check that results at this timestep are not unreasonably biasing annual metrics.
-MSLF,None,314128896,NA,NA,; Notice: kernel exceeded maximum iterations of 30, at time 17085600.000000 Notice: time 24418800.00 { type 251 controller 3 }:\ 	After 21 iterations, the controller convergence error of 0.00724891 could not resolve below the tolerance of 0.001. Check that results at this timestep are not unreasonably biasing annual metrics.
+MSLF,Commercial,306199296,16.7259,NA,; 
+MSLF,Single Owner,306199296,4.38433,55.7136,; 
+MSLF,Leveraged Partnership Flip,306199296,4.64887,55.7136,; 
+MSLF,All Equity Partnership Flip,306199296,4.23344,56.9165,; 
+MSLF,Sale Leaseback,306199296,3.20211,56.4291,; 
+MSLF,None,306199296,NA,NA,; 
 DSLF,Commercial,231961216,8.28587,NA,; 
 DSLF,Single Owner,231961216,20.5607,21.7842,; 
 DSLF,Leveraged Partnership Flip,231961216,18.5925,23.9967,; 
