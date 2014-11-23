@@ -155,12 +155,12 @@ bool ShadingInputData::read( VarValue *root )
 
 
 static const char *hourly_text = "The Hourly 8760 option is appropriate if you have a set of hourly beam shading losses for each of the 8,760 hours in a year. ";
-static const char *mxh_text = "The Month by Hour option allows you to specify a set of 288 (12 months x 24hours) beam shading losses that apply to the 24 hours of the day for each month of the year. Select a cell or group of cells and type a number between 0% and 100% to assign values to the table by hand. Click Import to import a table of values from a properly formatted text file. ";
+static const char *mxh_text = "The Month by Hour option allows you to specify a set of 288 (12 months x 24 hours) beam shading losses that apply to the 24 hours of the day for each month of the year. Select a cell or group of cells and type a number between 0% and 100% to assign values to the table by hand. Click Import to import a table of values from a properly formatted text file. ";
 static const char *azal_text = "The Azimuth by Altitude option allows you to specify a set of beam shading losses for different sun positions.\n"
   "1. Define the size of the table by entering values for the number of rows and columns.\n"
   "2. Enter solar azimuth values from 0 to 360 degrees in the first row of the table, where 0 = north, 90 = east, 180 = south, and 270 = west.\n"
   "3. Enter solar altitude values from 0 to 90 degrees in the first column of the table, where zero is on the horizon.\n"
-  "4. Enter shading factors as the shaded percentage of the beam component of the incident radiation in the remaining table cells.\n"
+  "4. Enter shading losses as the shaded percentage of the beam component of the incident radiation in the remaining table cells.\n"
   "Click Paste to populate the table from your computer\'s clipboard, or click Import to import a table of values from a properly formatted text file.  ";
 static const char *diff_text = "The constant sky diffuse shading loss reduces the overall diffuse irradiance available by the specified loss.  Valid values are between 0% and 100%.";
 
@@ -206,15 +206,15 @@ public:
 		m_scrollWin = new wxScrolledWindow( this, wxID_ANY );
 		m_scrollWin->SetScrollRate( 50, 50 );
 
-		m_enableHourly = new wxCheckBox( m_scrollWin, ID_ENABLE_HOURLY, "Enable hourly beam irradiance shading factors" );
+		m_enableHourly = new wxCheckBox( m_scrollWin, ID_ENABLE_HOURLY, "Enable hourly beam irradiance shading losses" );
 		m_hourly = new AFDataArrayButton( m_scrollWin, wxID_ANY );
 		m_hourly->SetMode( DATA_ARRAY_8760_ONLY );
 
-		m_enableMxH = new wxCheckBox( m_scrollWin, ID_ENABLE_MXH, "Enable month by hour beam irradiance shading factors" );
+		m_enableMxH = new wxCheckBox( m_scrollWin, ID_ENABLE_MXH, "Enable month by hour beam irradiance shading losses" );
 		m_mxh = new AFMonthByHourFactorCtrl( m_scrollWin, wxID_ANY );
 		m_mxh->SetInitialSize( wxSize(900,330) );
 
-		m_enableAzal = new wxCheckBox( m_scrollWin, ID_ENABLE_AZAL, "Enable solar azimuth by altitude beam irradiance shading factor table" );
+		m_enableAzal = new wxCheckBox( m_scrollWin, ID_ENABLE_AZAL, "Enable solar azimuth by altitude beam irradiance shading loss table" );
 		m_azal = new AFDataMatrixCtrl( m_scrollWin, wxID_ANY );
 		m_azal->SetInitialSize( wxSize(900,280) );
 		m_azal->ShowLabels( false );
@@ -226,7 +226,7 @@ public:
 			data.at(r, 0) = r*10;
 		m_azal->SetData( data );
 		
-		m_enableDiffuse = new wxCheckBox( m_scrollWin, ID_ENABLE_DIFF, "Enable sky diffuse shading factor (constant)" );
+		m_enableDiffuse = new wxCheckBox( m_scrollWin, ID_ENABLE_DIFF, "Enable sky diffuse shading loss (constant)" );
 		m_diffuseFrac = new wxNumericCtrl( m_scrollWin, wxID_ANY, 0.0 );
 		
 		wxSizer *import_tools = new wxStaticBoxSizer( wxHORIZONTAL, m_scrollWin, "Import shading data from external tools");
@@ -373,14 +373,14 @@ public:
 		{
 			m_enableHourly->SetValue( sh.en_hourly );
 			m_hourly->Set( sh.hourly );
-			stat += "Updated hourly beam shading factors.\n";
+			stat += "Updated hourly beam shading losses.\n";
 		}
 
 		if ( all || sh.en_mxh )
 		{
 			m_enableMxH->SetValue( sh.en_mxh );
 			m_mxh->SetData( sh.mxh );
-			stat += "Updated month-by-hour beam shading factor table.\n";
+			stat += "Updated month-by-hour beam shading loss table.\n";
 		}
 
 		if ( all || sh.en_azal )
