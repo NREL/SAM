@@ -76,6 +76,7 @@ $(TARGET): $(OBJECTS) $(WEXLIB) $(LKLIB) $(SSCLIB)
 	#cp -R ../deploy/runtime/* $(TARGET).app/Contents/runtime
 	python copy_runtime.py
 	cp lhs.bin $(TARGET).app/Contents/runtime/bin
+	cp stepwise.bin $(TARGET).app/Contents/runtime/bin
 	cp $(TARGET) ./$(TARGET).app/Contents/MacOS
 	cp $(TARGET).icns ./$(TARGET).app/Contents/Resources
 	cp Info-$(TARGET).plist ./$(TARGET).app/Contents/Info.plist
