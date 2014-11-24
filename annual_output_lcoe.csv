@@ -1,5 +1,5 @@
 TECHNOLOGY,FINANCING,ANNUAL_OUTPUT,LCOE_NOM,LPPA_NOM,MESSAGES
-Flat Plate PV,Residential,6776.78,8.32766,NA,; 
+Flat Plate PV,Residential,6856.65,8.23065,NA,; 
 Flat Plate PV,Commercial,358876,7.00246,NA,; 
 Flat Plate PV,Single Owner,37211888,7.22988,11.087,; 
 Flat Plate PV,Leveraged Partnership Flip,37211888,7.46264,11.5208,; 
@@ -13,10 +13,10 @@ PVWatts,Leveraged Partnership Flip,35151256,7.90077,12.1971,;
 PVWatts,All Equity Partnership Flip,35151256,10.0211,16.9575,; 
 PVWatts,Sale Leaseback,35151256,10.8148,14.5252,; 
 PVWatts,None,6834.58,NA,NA,; 
-High-X Concentrating PV,Single Owner,2.22613e+006,23.9826,25.4866,; 
-High-X Concentrating PV,Leveraged Partnership Flip,2.22613e+006,25.5396,27.5742,; 
-High-X Concentrating PV,All Equity Partnership Flip,2.22613e+006,30.9839,34.2394,; 
-High-X Concentrating PV,Sale Leaseback,2.22613e+006,31.8761,31.7751,; 
+High-X Concentrating PV,Single Owner,2.17767e+006,24.5163,26.0538,; 
+High-X Concentrating PV,Leveraged Partnership Flip,2.17767e+006,26.1079,28.1878,; 
+High-X Concentrating PV,All Equity Partnership Flip,2.17767e+006,31.6734,35.0014,; 
+High-X Concentrating PV,Sale Leaseback,2.17767e+006,32.5854,32.4822,; 
 High-X Concentrating PV,None,2.17767e+006,NA,NA,; 
 Wind Power,Residential,7843.43,20.7068,NA,; 
 Wind Power,Commercial,236186,11.6364,NA,; 
@@ -39,20 +39,20 @@ Geothermal Power,None,NA,NA,NA,;
 Solar Water Heating,Residential,1630.3,36.6832,NA,; 
 Solar Water Heating,Commercial,2973.89,30.0036,NA,; 
 Solar Water Heating,None,1630.3,NA,NA,; 
-Generic System,Residential,6527.4,13.5834,NA,; 
-Generic System,Commercial,6527.4,9.25948,NA,; 
+Generic System,Residential,6266.31,24.8516,NA,; 
+Generic System,Commercial,6266.31,13.0964,NA,; 
 Generic System,Single Owner,366658560,2.37172,32.8566,; 
 Generic System,Leveraged Partnership Flip,366658560,2.69843,33.7776,; 
 Generic System,All Equity Partnership Flip,366658560,5.33754,52.7199,; 
 Generic System,Sale Leaseback,366658560,9.91422,39.5613,; 
 Generic System,None,366658560,NA,NA,; 
-Physical Trough,Commercial,365048928,6.65537,NA,; Notice: time 27622800.00 { Controller 3 }:\ 	After 21 iterations, the controller convergence error of 1.04434 could not resolve below the tolerance of 0.001. Check that results at this timestep are not unreasonably biasing annual metrics. Notice: time 27622800.00 { Controller 3 }:\ 	After 21 iterations, the controller convergence error of 1.04441 could not resolve below the tolerance of 0.001. Check that results at this timestep are not unreasonably biasing annual metrics.
+Physical Trough,Commercial,350446976,6.93268,NA,; Notice: time 27622800.00 { Controller 3 }:\ 	After 21 iterations, the controller convergence error of 1.04434 could not resolve below the tolerance of 0.001. Check that results at this timestep are not unreasonably biasing annual metrics. Notice: time 27622800.00 { Controller 3 }:\ 	After 21 iterations, the controller convergence error of 1.04441 could not resolve below the tolerance of 0.001. Check that results at this timestep are not unreasonably biasing annual metrics.
 Physical Trough,Single Owner,350446976,14.2054,19.141,; Notice: time 27622800.00 { Controller 3 }:\ 	After 21 iterations, the controller convergence error of 1.04434 could not resolve below the tolerance of 0.001. Check that results at this timestep are not unreasonably biasing annual metrics. Notice: time 27622800.00 { Controller 3 }:\ 	After 21 iterations, the controller convergence error of 1.04441 could not resolve below the tolerance of 0.001. Check that results at this timestep are not unreasonably biasing annual metrics.
 Physical Trough,Leveraged Partnership Flip,350446976,14.5161,19.9302,; Notice: time 27622800.00 { Controller 3 }:\ 	After 21 iterations, the controller convergence error of 1.04434 could not resolve below the tolerance of 0.001. Check that results at this timestep are not unreasonably biasing annual metrics. Notice: time 27622800.00 { Controller 3 }:\ 	After 21 iterations, the controller convergence error of 1.04441 could not resolve below the tolerance of 0.001. Check that results at this timestep are not unreasonably biasing annual metrics.
-Physical Trough,All Equity Partnership Flip,365048928,18.821,24.1348,; Notice: time 27622800.00 { Controller 3 }:\ 	After 21 iterations, the controller convergence error of 1.04434 could not resolve below the tolerance of 0.001. Check that results at this timestep are not unreasonably biasing annual metrics. Notice: time 27622800.00 { Controller 3 }:\ 	After 21 iterations, the controller convergence error of 1.04441 could not resolve below the tolerance of 0.001. Check that results at this timestep are not unreasonably biasing annual metrics.
+Physical Trough,All Equity Partnership Flip,350446976,19.6246,25.1188,; Notice: time 27622800.00 { Controller 3 }:\ 	After 21 iterations, the controller convergence error of 1.04434 could not resolve below the tolerance of 0.001. Check that results at this timestep are not unreasonably biasing annual metrics. Notice: time 27622800.00 { Controller 3 }:\ 	After 21 iterations, the controller convergence error of 1.04441 could not resolve below the tolerance of 0.001. Check that results at this timestep are not unreasonably biasing annual metrics.
 Physical Trough,Sale Leaseback,350446976,20.0107,23.7459,; Notice: time 27622800.00 { Controller 3 }:\ 	After 21 iterations, the controller convergence error of 1.04434 could not resolve below the tolerance of 0.001. Check that results at this timestep are not unreasonably biasing annual metrics. Notice: time 27622800.00 { Controller 3 }:\ 	After 21 iterations, the controller convergence error of 1.04441 could not resolve below the tolerance of 0.001. Check that results at this timestep are not unreasonably biasing annual metrics.
 Physical Trough,None,350446976,NA,NA,; Notice: time 27622800.00 { Controller 3 }:\ 	After 21 iterations, the controller convergence error of 1.04434 could not resolve below the tolerance of 0.001. Check that results at this timestep are not unreasonably biasing annual metrics. Notice: time 27622800.00 { Controller 3 }:\ 	After 21 iterations, the controller convergence error of 1.04441 could not resolve below the tolerance of 0.001. Check that results at this timestep are not unreasonably biasing annual metrics.
-Empirical Trough,Commercial,358762144,6.82776,NA,; 
+Empirical Trough,Commercial,344411680,7.11225,NA,; 
 Empirical Trough,Single Owner,344411680,14.6063,19.5945,; 
 Empirical Trough,Leveraged Partnership Flip,344411680,16.4118,21.7654,; 
 Empirical Trough,All Equity Partnership Flip,344411680,22.1176,27.4035,; 
@@ -84,7 +84,7 @@ Dish Stirling,Leveraged Partnership Flip,188473424,7.4719,19.6068,;
 Dish Stirling,All Equity Partnership Flip,188473424,10.9529,25.04,; 
 Dish Stirling,Sale Leaseback,188473424,11.5359,22.6109,; 
 Dish Stirling,None,188473424,NA,NA,; 
-Generic CSP System,Commercial,443609120,5.13427,NA,; 
+Generic CSP System,Commercial,425864736,5.3482,NA,; 
 Generic CSP System,Single Owner,425864736,11.7297,15.9593,; 
 Generic CSP System,Leveraged Partnership Flip,425864736,11.9888,16.6143,; 
 Generic CSP System,All Equity Partnership Flip,425864736,16.2338,20.9186,; 
