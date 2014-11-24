@@ -1437,7 +1437,7 @@ void StochasticPanel::Simulate()
 					&m_regressions(i,j).beta );
 		}
 		else
-			tpd.Log( "Error running stepwise regression for: " + output_labels[i]);
+			tpd.Log( "Error running stepwise regression for '" + output_labels[i] + "': " + stw.ErrorMessage());
 	}
 
 	// update results
