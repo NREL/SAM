@@ -482,51 +482,116 @@ BEGIN_EVENT_TABLE( VarListSelector, wxPanel )
 	EVT_BUTTON( ID_EDIT_META, VarListSelector::OnEditOrListBoxDClick )
 END_EVENT_TABLE()
 
-class SVOutputCtrl : public wxChoice 
+class SearchListDialog : public wxDialog
 {
-	wxArrayString m_names;
+	AFSearchListBox *m_slb;
+public:
+	SearchListDialog( wxWindow *parent, const wxString &title, const wxArrayString &list )
+		: wxDialog( parent, wxID_ANY, title, wxDefaultPosition, 
+			wxSize(500, 400), wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER )
+	{
+		m_slb = new AFSearchListBox( this, wxID_ANY );
+		m_slb->Append( list );
+
+		wxBoxSizer *sizer = new wxBoxSizer(wxVERTICAL );
+		sizer->Add( m_slb, 1, wxALL|wxEXPAND, 5 );
+		sizer->Add( CreateButtonSizer( wxOK|wxCANCEL ), 0, wxALL|wxEXPAND, 5 );
+		SetSizer( sizer );
+	}
+
+	void SetSelection( int sel )
+	{
+		m_slb->SetSelection( sel );
+	}
+
+	int GetSelection()
+	{
+		return m_slb->GetSelection();
+	}
+};
+
+
+enum { ID_SELECT_OUTPUT = wxID_HIGHEST+439 };
+
+class SVOutputCtrl : public wxPanel 
+{
+	wxTextCtrl *m_text;
+	wxArrayString m_names, m_labels;
+	wxString m_curName;
 public:
 	SVOutputCtrl( wxWindow *parent )
-		: wxChoice( parent, wxID_ANY )
+		: wxPanel( parent, wxID_ANY )
 	{
+
+		m_text = new wxTextCtrl( this, wxID_ANY, "<none selected>", wxDefaultPosition, wxDefaultSize, wxTE_READONLY|wxBORDER_NONE );
+		m_text->SetForegroundColour( *wxBLUE );
+
+		wxBoxSizer *sizer = new wxBoxSizer( wxHORIZONTAL );
+		sizer->Add( m_text, 1, wxALL|wxALIGN_CENTER_VERTICAL, 2 );
+		sizer->Add( new wxButton( this, ID_SELECT_OUTPUT, "...", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT ), 0, wxALL|wxALIGN_CENTER_VERTICAL, 2 );
+		SetSizer( sizer );
+		
 		if ( Case *cc = SamApp::Window()->GetCurrentCase() )
 		{
 			wxArrayString labels, units, groups;
 			Simulation::ListAllOutputs( cc->GetConfiguration(), 
 				&m_names, &labels, &units, &groups, true );
 
-			wxArrayString list;
 			for( size_t i=0;i<m_names.size();i++ )
 			{
 				wxString L(labels[i] );
 				if ( !units[i].IsEmpty() )
 					L += " (" + units[i] + ")";
-				list.Add( L );
+				
+				m_labels.Add( L );
 			}
 
-			wxSortByLabels( m_names, list );
-			Append( list );
+			wxSortByLabels( m_names, m_labels );
 		}
 
 	}
 
 	wxString GetOutputVar() {
-		int sel = GetSelection();
-		if ( sel >= 0  && sel < m_names.size() ) return m_names[sel];
-		else return wxEmptyString;
+		return m_curName;
 	}
 
 	bool SetOutputVar( const wxString &var ) {
 		int isel = m_names.Index( var );
-		if ( isel >= 0 && isel < (int)GetCount() )
+		if ( isel >= 0 && isel < (int)m_labels.size() )
 		{
-			SetSelection( isel );
+			m_curName = m_names[isel];
+			m_text->ChangeValue( m_labels[isel] );
 			return true;
 		}
 		else
 			return false;
 	}
+
+	void OnSelect( wxCommandEvent & )
+	{
+		SearchListDialog sld( this, "Select Output Variable", m_labels );
+		sld.CenterOnScreen();
+		if ( !m_curName.IsEmpty() )
+			sld.SetSelection( m_names.Index( m_curName ) );
+
+		if ( sld.ShowModal() == wxID_OK )
+		{
+			int isel = sld.GetSelection();
+			if ( isel >= 0 && isel < m_names.size() )
+			{
+				m_curName = m_names[isel];
+				m_text->ChangeValue( m_labels[isel] );
+			}
+		}
+	}
+
+	DECLARE_EVENT_TABLE();
 };
+
+
+BEGIN_EVENT_TABLE( SVOutputCtrl, wxPanel )
+	EVT_BUTTON( ID_SELECT_OUTPUT, SVOutputCtrl::OnSelect )
+END_EVENT_TABLE()
 
 void MacroPanel::CreateUI( const wxString &buf )
 {

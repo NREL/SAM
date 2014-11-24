@@ -1614,7 +1614,12 @@ static IDEWindow *g_ideWin=0;
 void ShowIDEWindow()
 {
 	if ( !g_ideWin )
+	{
+		if ( "09332s" != ::wxGetPasswordFromUser( "Enter passcode:", "Developer", wxEmptyString, SamApp::Window() ) )
+			return;
+
 		g_ideWin = new IDEWindow( SamApp::Window() );
+	}
 
 	g_ideWin->Show();
 	g_ideWin->Raise();
