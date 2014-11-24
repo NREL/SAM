@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+   <title>PDF / CDF</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="" />
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+   
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+   <style type="text/css">
+     body { margin: 0px; background: #FFFFFF; }
+   </style>
+   <script type="text/javascript" src="jquery.js"></script>
+   <script type="text/javascript" src="helpman_settings.js"></script>
+   <script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <script type="text/javascript">
+     HMSyncTOC("index.html", "dview_pdfcdf.htm");
+   </script>
+   <script type="text/javascript" src="highlight.js"></script>
+   <script type="text/javascript">
+     $(document).ready(function(){highlight();});
+   </script>
+</head>
+<body>
+
+
+<table style="width:100%; border:none; border-spacing:0px; padding:5px; background:#FFFFFF; color:#0072C6;">
+  <tr style="vertical-align:middle">
+    <td style="text-align:left">
+      <h1 class="p_Heading1"><span class="f_Heading1">PDF / CDF</span></h1>
+
+    </td>
+  </tr>
+</table>
+
+
+<!-- Placeholder for topic body. -->
+<table style="width:100%;border:none;border-spacing:0px"><tr style="vertical-align:top"><td style="text-align:left;padding:5px">
+<p class="p_Text"><span class="f_Text">The PDF/CDF tab shows the probability density function and cumulative distribution function for a single variable.</span></p>
+<p class="p_Text"><span class="f_Text">The probability density function is displayed as a histogram because it is calculated by dividing the data into a number of bins. Changing the number of bins may reveal different properties about the data. The default number of bins is determined by Sturge’s formula. Sturge’s formula says that for n data points, we use log2(n) + 1 bins. The default behavior in Excel is to use the square root of the number of data points to determine the number of bins. This is provided as an option in the combo-box in the top right corner. You may also enter into the combo box any integer value you would like to use.</span></p>
+<p class="p_Text"><span class="f_Text">In addition to specifying the number of bins, you can also specify how the histogram should be scaled. Scaling the histogram differently will not change its shape, but it will change the units on the y-axis. The default is a scaled histogram, which means that bar heights are treated as percentages, and the sum of the bar heights must be 100%. If the histogram is scaled by bin width, it is scaled so that the total area of the bars is equal to one. This is the best approximation of the probability density function since the area under a PDF curve must be equal to one. You can also choose to not scale the histogram, in which case the y-axis displays the number of data points in each bin as a traditional histogram does. For any choice of scale, you can change the y maximum in the upper left hand corner to get a better view of the smaller bars.</span></p>
+<p class="p_Text"><span class="f_Text">The cumulative distribution function shows the percentage of data points at or below a certain value. The displayed cumulative distribution function is an empirical CDF. This means that it is a step function that increases at each data point, and is flat in-between. For a large number of data points, this is a very good approximation to the true CDF. The CDF will always start at 0 and increase to 100%.</span></p>
+
+</td></tr></table>
+
+</body>
+</html>
