@@ -26,7 +26,7 @@ for (t=0; t<#technologies; t++)
 	for(f=0; f<#financing; f++)
 	{	
 
-//if ( technologies[t] != "MSLF" )
+//if ( technologies[t] != "Biopower" )
 //{
 //	continue;
 //}
