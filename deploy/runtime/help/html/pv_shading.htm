@@ -150,6 +150,10 @@
 <p class="p_Text"><span class="f_Text">&nbsp;</span></p>
 <p class="p_Text"><span class="f_ImageCaption">  <img src="img_selfshad-definitions.png" width="403" height="153" alt="IMG_SelfShad-definitions" style="width:403px;height:153px;border:none" /></span></p>
 <p class="p_Text"><span class="f_Text">&nbsp;</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Shading mode</span></p>
+<p class="p_VariableDescription"><span class="f_CHInterfaceElement">Self-shaded</span><span class="f_VariableDescription"> estimates losses from self-shading caused by shading of modules in one row by modules in neighboring rows based on the GCR value you specify.</span></p>
+<p class="p_Note"><span class="f_CHNote">Note.</span><span class="f_Note"> You specify whether the tracking algorithm uses backtracking on the <a href="pv_system_design.htm#backtracking" class="topiclink">System Design</a> page.</span></p>
+<p class="p_VariableDescription"><span class="f_CHInterfaceElement">None</span><span class="f_VariableDescription"> uses the approach of versions of SAM before SAM 2014.1.14. Because this option does not account for any self-shading, it tends to overestimate the array's production. We included this option to allow for comparison between the different options to see the effect of the self-shaded and backtracking options, and for comparison between results from this version and older versions of SAM.</span></p>
 <p class="p_VariableName"><span class="f_VariableName">Module Orientation</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The module orientation determines whether the short or long side of the module is parallel to the ground, assuming that all modules in the array are mounted at a fixed angle from the horizontal equal to the tilt angle specified on the <a href="pv_system_design.htm" class="topiclink">Array</a> page.</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">Portrait orientation means the short end of the module is parallel to the ground, or at the bottom of the module.</span></p>
