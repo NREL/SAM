@@ -1,0 +1,44 @@
+
+ver = '2014.11.24';
+url = 'https://developer.nrel.gov/api/sam/v1/tracker/user_stats?api_key=rJzFOTOJhNHcLOnPmW2TNCLV8I4HHLgKddAycGpn';
+file = homedir() + '/sam_users.csv';
+outln( 'downloading... >> ' + file );
+curl( url, '', file );
+x = csvread( file );
+remove_file( file );
+
+// column indices in CSV file download
+enum { user_email,
+	user_created_at,
+	user_updated_at,
+	sam_app_name,
+	sam_version,
+	usage_count,
+	tracker_created_at,
+	tracker_updated_at,
+	ip_address,
+	ip_city,
+	ip_region_code,
+	ip_region_name,
+	ip_country_code,
+	ip_country_name,
+	ip_latitude,
+	ip_longitude };
+
+nusers = 0;
+nusage = 0;
+
+outln('reading database...');
+
+N = #x;
+for( i=1;i<N;i++ )
+{
+	 if ( strpos( x[i][ sam_version ], ver ) >= 0 )
+	 {
+		nusers++;
+		nusage += to_int(x[i][ usage_count ]);
+	 }
+}
+
+outln( 'number of users registered for version ' + ver + ': ' + nusers );
+outln( 'total usage count for version ' + ver + ': ' + nusage );

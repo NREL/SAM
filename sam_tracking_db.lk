@@ -1,0 +1,58 @@
+url = 'https://developer.nrel.gov/api/sam/v1/tracker/usage_totals.csv?api_key=rJzFOTOJhNHcLOnPmW2TNCLV8I4HHLgKddAycGpn';
+file = homedir() + '/sam_tracking.csv';
+outln( 'downloading... >> ' + file );
+curl( url, '', file );
+x = csvread( file );
+remove_file( file );
+
+ver = '2014.11.24';
+
+
+// column indices in CSV file download
+enum { log_date,
+	sam_version,
+	ip_city,
+	ip_region_code,
+	ip_country_name,
+	usage_count,
+	user_count };
+
+outln('reading database...');
+
+
+date_list = [];
+xcoord = [];
+usage_list = [];
+nuser_list = [];
+cur_date = '';
+
+N = #x;
+for( i=1;i<N;i++ )
+{
+	if ( cur_date != x[i][ log_date ] )
+	{
+		cur_date = x[i][log_date];
+		date_list[#date_list] = cur_date; // append to list
+		usage_list[#usage_list] = 0;
+		nuser_list[#nuser_list] = 0;
+		xcoord[#xcoord] = #xcoord;
+	}
+	
+	if( strpos(x[i][sam_version], ver) >= 0 )
+	{
+		usage_list[#usage_list-1] += x[i][usage_count];	
+		nuser_list[#nuser_list-1] += x[i][user_count];
+	}
+}
+
+outln(date_list);
+plot(xcoord, usage_list, {'series'='# of starts', 'thick'=2});
+plot(xcoord, nuser_list, {'series'='# of users', 'yap'='right', 'color'='magenta', 'thick'=2});
+
+for( i=0;i<#date_list;i++) 
+	labels[i] = [ i, date_list[i] ];
+	
+axis( 'x1', {'type'='label', 'labels'=labels});
+axis( 'y1', {'label'='Cumulative number of times SAM was started'});
+axis( 'y2', {'label'='Number of users'});
+plotopt({'title'='SAM ' + ver + ' usage over time', 'legendpos'='bottom'});
