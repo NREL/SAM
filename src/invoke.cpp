@@ -2257,6 +2257,93 @@ void fcall_lhs_vector( lk::invoke_t &cxt )
 		cxt.error("invalid lhs-obj-ref");
 }
 
+
+class lkSTEPobject : public lk::objref_t, public Stepwise
+{
+public:
+	lkSTEPobject() {	}
+	virtual ~lkSTEPobject() { }
+	virtual lk_string type_name() { return "stepwise-object"; }
+};
+
+
+void fcall_step_create( lk::invoke_t &cxt )
+{
+	LK_DOC( "step_create", "Create a new stepwise regression object.", "(none):step-obj-ref");
+	cxt.result().assign( cxt.env()->insert_object( new lkSTEPobject ) );
+}
+
+
+#define GETSTEP lkSTEPobject *step = dynamic_cast<lkSTEPobject*>( cxt.env()->query_object( cxt.arg(0).as_integer() ) )
+
+void fcall_step_free( lk::invoke_t &cxt )
+{
+	LK_DOC( "step_free", "Free an stepwise regression object", "(step-obj-ref):none");	
+	if ( GETSTEP )
+		cxt.env()->destroy_object( step );
+	else
+		cxt.error( "invalid step-obj-ref" );
+}
+
+void fcall_step_vector( lk::invoke_t &cxt )
+{
+	LK_DOC("step_vector", "Sets a stepwise input vector", "(step-obj-ref, string:name, array:values):none");
+	if ( GETSTEP )
+	{
+		std::vector<double> values;
+		lk::vardata_t &p = cxt.arg(2).deref();
+		for( size_t i=0;i<p.length();i++ )
+			values.push_back( p.index(i)->as_number() );
+		step->SetInputVector( cxt.arg(1).as_string(), values );
+	}
+	else
+		cxt.error( "invalid step-obj-ref");
+}
+
+void fcall_step_run( lk::invoke_t &cxt )
+{
+	LK_DOC("step_run", "Runs the stepwise regression analysis with the given output vector", "(step-obj-ref, array:values):boolean" );
+	if ( GETSTEP )
+	{
+		std::vector<double> values;
+		lk::vardata_t &p = cxt.arg(1).deref();
+		for( size_t i=0;i<p.length();i++ )
+			values.push_back( p.index(i)->as_number() );
+
+		step->SetOutputVector( values );
+		cxt.result().assign( step->Exec() ? 1.0 : 0.0 );
+	}
+	else
+		cxt.error("invalid step-obj-ref");
+}
+
+void fcall_step_error( lk::invoke_t &cxt )
+{
+	LK_DOC("step_error", "Returns any error messages from the stepwise regression algorithm", "(step-obj-ref):string");
+	if ( GETSTEP )
+		cxt.result().assign( step->ErrorMessage() );
+	else
+		cxt.error("invalid step-obj-ref");
+}
+
+void fcall_step_result( lk::invoke_t &cxt )
+{
+	LK_DOC("step_result", "Returns R^2 (coeff. of determination), delta R^2 (incremental contribution), and beta (standard rank regression coefficient) for a given input vector", "(step-obj-ref, string:name):array");
+	if ( GETSTEP )
+	{
+		cxt.result().empty_vector();
+		double R2, deltaR2, beta;
+		if ( step->GetStatistics( cxt.arg(1).as_string(), &R2, &deltaR2, &beta ) )
+		{
+			cxt.result().vec_append( R2 );
+			cxt.result().vec_append( deltaR2 );
+			cxt.result().vec_append( beta );
+		}
+	}
+	else
+		cxt.error("invalid step-obj-ref");
+}
+
 lk::fcall_t* invoke_general_funcs()
 {
 	static const lk::fcall_t vec[] = {
@@ -2291,6 +2378,12 @@ lk::fcall_t* invoke_general_funcs()
 		fcall_lhs_run,
 		fcall_lhs_error,
 		fcall_lhs_vector,
+		fcall_step_create,
+		fcall_step_free,
+		fcall_step_vector,
+		fcall_step_run,
+		fcall_step_error,
+		fcall_step_result,
 		0 };
 	return (lk::fcall_t*)vec;
 }
