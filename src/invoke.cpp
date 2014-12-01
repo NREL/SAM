@@ -31,6 +31,7 @@
 #include "invoke.h"
 #include "s3tool.h"
 #include "lossdiag.h"
+#include "stochastic.h"
 
 static void fcall_dview(lk::invoke_t &cxt)
 {
@@ -2112,6 +2113,150 @@ void fcall_rescanlibrary( lk::invoke_t &cxt )
 	}
 }
 
+class lkLHSobject : public lk::objref_t, public LHS
+{
+public:
+	lkLHSobject() {	}
+	virtual ~lkLHSobject() { }
+	virtual lk_string type_name() { return "lhs-object"; }
+};
+
+
+void fcall_lhs_create( lk::invoke_t &cxt )
+{
+	LK_DOC( "lhs_create", "Create a new Latin Hypercube Sampling object.", "(none):lhs-obj-ref");
+	cxt.result().assign( cxt.env()->insert_object( new lkLHSobject ) );
+}
+
+
+#define GETLHS lkLHSobject *lhs = dynamic_cast<lkLHSobject*>( cxt.env()->query_object( cxt.arg(0).as_integer() ) )
+
+void fcall_lhs_free( lk::invoke_t &cxt )
+{
+	LK_DOC( "lhs_free", "Free an LHS object", "(lhs-obj-ref):none");	
+	if ( GETLHS )
+		cxt.env()->destroy_object( lhs );
+	else
+		cxt.error( "invalid lhs-obj-ref" );
+}
+
+void fcall_lhs_dist( lk::invoke_t &cxt )
+{
+	LK_DOC("lhs_dist", "Adds a variable and configures its distribution.", "(lhs-obj-ref, string:variable name, string:distribution, array:parameters, [array:cdfvalues] ):boolean" );
+	if ( GETLHS )
+	{
+		wxString name( cxt.arg(1).as_string() );
+		wxString dist( cxt.arg(2).as_string().Lower() );
+		
+		int idist = -1;
+		for (int i=0;i<LHS_NUMDISTS;i++)
+		{
+			wxArrayString distinfo( wxStringTokenize( lhs_dist_names[i], "," ) );
+			if ( distinfo.size() > 0 && dist.CmpNoCase( distinfo[0] ) == 0 )
+				idist = i;
+		}
+
+		if (idist < 0)
+		{
+			cxt.error("invalid LHS distribution name: " + dist);
+			return;
+		}
+
+		std::vector<double> params;
+		if ( cxt.arg_count() == 4 && cxt.arg(3).type() == lk::vardata_t::VECTOR )
+		{
+			lk::vardata_t &p = cxt.arg(3).deref();
+			for( size_t i=0;i<p.length();i++ )
+				params.push_back( p.index(i)->as_number() );
+		}
+		else if ( cxt.arg_count() == 5 
+			&& cxt.arg(3).type() == lk::vardata_t::VECTOR
+			&& cxt.arg(4).type() == lk::vardata_t::VECTOR 
+			&& cxt.arg(3).length() == cxt.arg(4).length()
+			&& idist == LHS_USERCDF )
+		{
+			size_t len = cxt.arg(3).length();
+			params.push_back( len );
+			for( size_t i=0;i<len;i++ )
+			{
+				params.push_back( cxt.arg(3).index(i)->as_number() );
+				params.push_back( cxt.arg(4).index(i)->as_number() );
+			}
+		}
+
+		lhs->Distribution( idist, name, params );
+		cxt.result().assign( 1.0 );
+	}
+	else
+		cxt.error("invalid lhs-obj-ref");
+}
+
+void fcall_lhs_corr( lk::invoke_t &cxt )
+{
+	LK_DOC( "lhs_corr", "Set up a correlation between two variables", "(lhs-obj-ref, string:variable 1, string:variable 2, number:correlation):none");
+	if ( GETLHS )
+		lhs->Correlate( cxt.arg(1).as_string(), cxt.arg(2).as_string(), cxt.arg(3).as_number() );
+	else
+		cxt.error("invalid lhs-obj-ref");
+}
+
+void fcall_lhs_reset( lk::invoke_t &cxt )
+{
+	LK_DOC( "lhs_reset", "Reset the LHS object", "(lhs-obj-ref):none");
+	if ( GETLHS )
+		lhs->Reset();
+	else
+		cxt.error("invalid lhs-obj-ref");
+}
+
+void fcall_lhs_run( lk::invoke_t &cxt )
+{
+	LK_DOC( "lhs_run", "Run the LHS sampling algorithm to produce the sample vectors", "(lhs-obj-ref, number:samples, [number:seed]):boolean");
+
+	if ( GETLHS )
+	{
+		lhs->Points( cxt.arg(1).as_number() );
+
+		int seed = -1;
+		if ( cxt.arg_count() > 2 )
+			seed = cxt.arg(2).as_number();
+
+		lhs->SeedVal( seed );
+
+		cxt.result().assign( lhs->Exec() ? 1.0 : 0.0 );
+	}
+	else
+		cxt.error("invalid lhs-obj-ref");
+}
+
+void fcall_lhs_error( lk::invoke_t &cxt )
+{
+	LK_DOC("lhs_error", "Return any error messages from the LHS algorithm", "(lhs-obj-ref):string");
+	if ( GETLHS )
+		cxt.result().assign( lhs->ErrorMessage() );
+	else
+		cxt.error("invalid lhs-obj-ref");
+}
+
+void fcall_lhs_vector( lk::invoke_t &cxt )
+{
+	LK_DOC("lhs_vector", "Returns the sampled values for a variable", "(lhs-obj-ref, string:variable):array");
+	if ( GETLHS )
+	{
+		std::vector<double> samples;
+		lhs->Retrieve( cxt.arg(1).as_string(), samples );
+		cxt.result().empty_vector();
+		if ( samples.size() > 0 )
+		{
+			cxt.result().resize( samples.size() );
+			for( size_t i=0;i<samples.size();i++ )
+				cxt.result().index(i)->assign( samples[i] );
+		}
+	}
+	else
+		cxt.error("invalid lhs-obj-ref");
+}
+
 lk::fcall_t* invoke_general_funcs()
 {
 	static const lk::fcall_t vec[] = {
@@ -2138,6 +2283,14 @@ lk::fcall_t* invoke_general_funcs()
 		fcall_xl_get,
 		fcall_xl_autosizecols,
 #endif
+		fcall_lhs_create,
+		fcall_lhs_free,
+		fcall_lhs_reset,
+		fcall_lhs_dist,
+		fcall_lhs_corr,
+		fcall_lhs_run,
+		fcall_lhs_error,
+		fcall_lhs_vector,
 		0 };
 	return (lk::fcall_t*)vec;
 }
