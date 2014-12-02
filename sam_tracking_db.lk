@@ -25,6 +25,7 @@ xcoord = [];
 usage_list = [];
 nuser_list = [];
 cur_date = '';
+index=-1;
 
 N = #x;
 for( i=1;i<N;i++ )
@@ -32,16 +33,18 @@ for( i=1;i<N;i++ )
 	if ( cur_date != x[i][ log_date ] )
 	{
 		cur_date = x[i][log_date];
-		date_list[#date_list] = cur_date; // append to list
-		usage_list[#usage_list] = 0;
-		nuser_list[#nuser_list] = 0;
-		xcoord[#xcoord] = #xcoord;
+		date_list += cur_date; // append to array
+		usage_list += 0;
+		nuser_list += 0;
+		xcoord += #xcoord;
+		index++;
 	}
 	
 	if( strpos(x[i][sam_version], ver) >= 0 )
 	{
-		usage_list[#usage_list-1] += x[i][usage_count];	
-		nuser_list[#nuser_list-1] += x[i][user_count];
+		//outln( typeof( usage_list ) + ' ' + typeof( usage_list[index] ) );
+		usage_list[index] += to_int( x[i][usage_count] );	
+		nuser_list[index] += to_int( x[i][user_count] );
 	}
 }
 
