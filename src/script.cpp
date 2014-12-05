@@ -320,61 +320,122 @@ static void fcall_library( lk::invoke_t &cxt )
 		cxt.result().vec_append( list[i] );
 }
 
-/* 
-	tab->Add( ChangeConfig, "ChangeConfig", 2, "Changes the current case's configuration. Application must be '*'.", "( STRING:Technology, STRING:Financing ):BOOLEAN");
-	tab->Add( ReloadDefaults, "ReloadDefaults", 0, "Reloads all default values for the active case.", "( NONE ):NONE");
-	tab->Add( ListTechnologies, "ListTechnologies", 0, "Returns an array of all the technologies in SAM.", "( NONE ):ARRAY");
-	tab->Add( ListFinancing, "ListFinancing", 1, "Lists all financing options in SAM for a given technology.", "( STRING:Technology ):ARRAY");
-	pptab->Add( OverwriteDefaults, "OverwriteDefaults", 1, "Overwrites the existing defaults file with the current case inputs for the specified case.", "( STRING:Case name ):BOOLEAN");
-	tab->Add( ListCases, "ListCases", 0, "Lists all the cases in the project.", "( NONE ):ARRAY");
-	tab->Add( TechnologyType, "TechnologyType", 0, "Returns the active case technology type.", "( NONE ):STRING");
-	tab->Add( FinancingType, "FinancingType", 0, "Returns the active case financing type.", "( NONE ):STRING");
+class lkParSimList : public std::vector<Simulation*>
+{
+public:
+	lkParSimList() : std::vector<Simulation*>() { }
+	virtual ~lkParSimList()
+	{ 
+		delete_sims();
+	}
 
-	// remaining
+	void delete_sims()
+	{
+		for( iterator it = begin();
+			it != end();
+			++it )
+			delete *it;
+		clear();
+	}
+};
 
-	pptab->Add( CurrentCaseName, "CurrentCaseName", 0, "Returns the currently selected case's name.", "( NONE ):STRING");
-	pptab->Add( RerunCase, "RerunCase", 1, "Resimulates all setups for the specified case.", "( STRING:Case name ):BOOLEAN");
-	tab->Add( ResetOutputSource, "ResetOutputSource", -1, "Resets the output data source to default BASE case, or changes it to a different simulation and run number.", "( NONE or STRING:Simulation name, INTEGER:Run number ):NONE");
-	tab->Add( ClearSimResults, "ClearSimResults", 1, "Clears all results for the specific simulation name.", "( STRING:Simulation name ):NONE");
-	tab->Add( SwitchToCase, "SwitchToCase", 0, "Switches to the active case tab in the interface.", "( NONE ):NONE");
-	tab->Add( SamDir, "SamDir", 0, "Returns the SAM installation folder on the local computer.", "( NONE ):STRING");
-	tab->Add( MPSimulate, "MPSimulate", 2, "Runs many simulations using multiple processors.", "( STRING:Simulation name, ARRAY[ARRAY]:Variable name/value table NRUNS+1 x NVARS with top row having var names ):BOOLEAN" );
-	tab->Add( WriteResults, "WriteResults", 2, "Write a comma-separated-value file, with each column specified by a string of comma-separated output names.", "( STRING:File name, STRING:Comma-separated output variable names):BOOLEAN");
-	tab->Add( ClearResults, "ClearResults", 0, "Clear the active case's results from memory.", "( NONE ):NONE");
-	tab->Add( ClearCache, "ClearCache", 0, "Clear the memory cache of previously run simulations.", "( NONE ):NONE");
-	tab->Add( DeleteTempFiles, "DeleteTempFiles", 0, "Delete any lingering simulation temporary files.", "( NONE ):NONE");
-	tab->Add( SetTimestep, "SetTimestep", 1, "Sets the TRNSYS timestep for the active case.", "( STRING:Timestep with units ):NONE");
-	tab->Add( ActiveVariables, "ActiveVariables", -1, "List all active variables for the current case or technology/market name.", "( [STRING:Technology, STRING:Financing] ):ARRAY");
-	tab->Add( FlDensity, "FluidDensity", 2, "Returns density at temperature Tc for a given fluid number (pressure assumed 1Pa).", "( INTEGER:Fluid number, DOUBLE:Temp 'C ):DOUBLE");
-	tab->Add( FlSpecificHeat, "FluidSpecificHeat", 2, "Returns specific heat at temperature Tc for a given fluid number (pressure assumed 1Pa).", "( INTEGER:Fluid number, DOUBLE:Temp 'C ):DOUBLE");
-	tab->Add( FlName, "FluidName", 1, "Returns fluid name for a given fluid number.", "( INTEGER:Fluid number ):STRING");
-	tab->Add( PtOptimize, "PtOptimize", 0, "Optimizes the power tower heliostat field, tower height, receiver height, and receiver diameter.  Returns whether the optimization succeeded.", "( NONE ):BOOLEAN");
-	tab->Add( PtGetOutput, "PtGetOutput", 0, "Returns any output or error messages from the PTGen solar field optimization routine.", "(NONE):STRING");
-	tab->Add( Coeffgen6par, "Coeffgen6par", 9, "Calculates the 6 parameters for the CEC 6 parameter model", "(STRING:cell type, DOUBLE:Vmp, DOUBLE:Imp, DOUBLE:Voc, DOUBLE:Isc, DOUBLE:beta, DOUBLE:alpha, DOUBLE:gamma, INTEGER:nser):ARRAY[a,Io,Il,Rs,Rsh,Adj] or false on failure");
-	tab->Add( SetTrnsysOutputFolder, "SetTrnsysOutputFolder", 1, "Sets the output folder for hourly TRNSYS output data and files.", "(STRING:path):NONE");
-	tab->Add( Library, "Library", -1, "Obtain a list of library types (no arguments), or all entries for a particular type (1 argument).", "([STRING:type]):ARRAY");
-	tab->Add( Pearson, "Pearson", -1, "Calculates the linear (pearson) correlation coefficient between two arrays of the same length.", "(ARRAY:x, ARRAY:y):DOUBLE");
+static lkParSimList sg_parSims;
 
-	tab->Add( LHS_create, "LHSCreate", 0, "Creates a new Latin Hypercube Sampling object.", "( NONE ):INTEGER");
-	tab->Add( LHS_free, "LHSFree", 1, "Frees an LHS object.", "( INTEGER:lhsref ):NONE");
-	tab->Add( LHS_reset, "LHSReset", 1, "Erases all distributions and correlations in an LHS object.", "( INTEGER:lhsref ):NONE");
-	tab->Add( LHS_seed, "LHSSeed", 2, "Sets the seed value for the LHS object.", "( INTEGER:seed ):NONE");
-	tab->Add( LHS_points, "LHSPoints", 2, "Sets the number of samples desired.", "( INTEGER:lhsref, INTEGER:number of points ):NONE");
-	tab->Add( LHS_dist, "LHSDist", -1, "Sets up a distribution for a variable.", "( INTEGER:lhsref, STRING:distribution name, STRING: variable name, [DOUBLE:param1, DOUBLE:param2, DOUBLE:param3, DOUBLE:param4] ): NONE");
-	tab->Add( LHS_corr, "LHSCorr", 4, "Sets up correlation between two variables.", "( INTEGER:lhsref, STRING:variable 1, STRING:variable 2, DOUBLE:corr val ):NONE");
-	tab->Add( LHS_run, "LHSRun", 1, "Runs the LHS sampling program.", "( INTEGER:lhsref ):BOOLEAN");
-	tab->Add( LHS_error, "LHSError", 1, "Returns an error message if any.", "( INTEGER:lhsref ):STRING");
-	tab->Add( LHS_vector, "LHSVector", 2, "Returns the sampled values for a variable.", "( INTEGER:lhsref, STRING:variable ):ARRAY");
+static void fcall_parsim( lk::invoke_t &cxt )
+{
+	LK_DOC( "parsim", "Run a set of simulations in parallel. Options include 'nthreads'.  Returns the number of successful runs.", "( array-of-tables:runs, [table:options] ):number" );
 
-	tab->Add( STEPWISE_create, "STEPCreate", 0, "Create a new STEPWISE regression analysis object.", "( NONE ):INTEGER");
-	tab->Add( STEPWISE_free, "STEPFree", 1, "Frees a STEPWISE object.", "( INTEGER:stpref ):NONE" );
-	tab->Add( STEPWISE_input, "STEPInput", 3, "Sets a STEPWISE input vector.", "( INTEGER:stpref, STRING:name, ARRAY:values ):NONE");
-	tab->Add( STEPWISE_output, "STEPOutput", 2, "Sets a STEPWISE output vector.", "( INTEGER:stpref, ARRAY:values ):NONE");
-	tab->Add( STEPWISE_run, "STEPRun", 1, "Runs the STEPWISE analysis.", "( INTEGER:stpref ):NONE" );
-	tab->Add( STEPWISE_error, "STEPError", 1, "Returns any error code from STEPWISE.", "( INTEGER:stpref ):STRING" );
-	tab->Add( STEPWISE_result, "STEPResult", 2, "Returns R2 and SRC for a given input name.", "( INTEGER:stpref, STRING:name ):ARRAY");
+	sg_parSims.delete_sims();
 
-	*/
+	Case *cc = CurrentCase();
+	if ( !cc )
+	{
+		cxt.error("parsim() can only be called in the context of a valid active case");
+		return;
+	}
+
+	int nthreads = wxThread::GetCPUCount();
+	if ( cxt.arg_count() > 1  && cxt.arg(1).type() == lk::vardata_t::HASH )
+	{
+		if ( lk::vardata_t *x = cxt.arg(1).lookup("nthreads") )
+			nthreads = x->as_integer();
+	}
+	
+	lk::vardata_t &runs = cxt.arg(0);
+	if ( runs.type() != lk::vardata_t::VECTOR )
+	{
+		cxt.error("first parameter to parsim() must be an array of tables");
+		return;
+	}
+	
+	SimulationDialog tpd( "Preparing simulations...", nthreads );
+
+	for( size_t i=0;i<runs.length();i++ )
+	{
+		lk::vardata_t &run = runs.index(i)->deref();
+		if ( run.type() != lk::vardata_t::HASH )
+		{
+			cxt.error(wxString::Format("run[%d] is not a valid table of name->value pairs",(int)i) );
+			return;
+		}
+
+		Simulation *sim = new Simulation( cc, wxString::Format("run %d", (int)i+1 ) );
+		sg_parSims.push_back( sim );
+
+		for( lk::varhash_t::iterator it = run.hash()->begin();
+			it != run.hash()->end();
+			++it )
+		{
+			wxString name( it->first );
+			VarValue value;
+			if ( !value.Read( it->second->deref(), true ) )
+			{
+				cxt.error("error translating value for '" + name + wxString::Format("' in run [%d]", (int)i ) );
+				return;
+			}
+			sim->Override( name, value );
+		}
+
+		if ( !sim->Prepare() )
+		{
+			cxt.error( wxString::Format("internal error preparing run %d in parsim()", (int)(i+1)) );
+			return;
+		}
+
+		tpd.Update( 0, (float)i / (float)runs.length() * 100.0f, wxString::Format("%d of %d", (int)(i+1), (int)runs.length()  ) );
+		
+		if ( tpd.Canceled() )
+			return;
+	}	
+
+	if ( nthreads > sg_parSims.size() ) nthreads = sg_parSims.size();
+	tpd.NewStage("Calculating...", nthreads);
+
+	int nok = Simulation::DispatchThreads( tpd, sg_parSims, nthreads );
+	cxt.result().assign( (double)nok );
+}
+
+void fcall_parout( lk::invoke_t &cxt )
+{
+	LK_DOC( "parout", "Obtain an output from a parallel run, or retrieve information about the run as a table when no variable name is passed.", "( integer:run number, [string:variable] ):variant" );
+
+	size_t idx = cxt.arg(0).as_unsigned();
+	if ( idx >= sg_parSims.size() ) return;
+	Simulation &sim = *(sg_parSims[idx]);
+
+	if ( cxt.arg_count() == 1 )
+	{
+		cxt.result().empty_hash();
+		cxt.result().hash_item( "ok", sim.Ok() ? 1.0 : 0.0 );
+		cxt.result().hash_item( "time", (double)sim.GetTotalElapsedTime() );
+		cxt.result().hash_item( "errors", wxJoin(sim.GetErrors(), ';') );
+		cxt.result().hash_item( "warnings", wxJoin(sim.GetWarnings(), ';') );
+		cxt.result().hash_item( "notices", wxJoin(sim.GetNotices(), ';') );
+	}
+	else if ( VarValue *vv = sim.GetValue( cxt.arg(1).as_string() ) )
+		vv->Write( cxt.result() );
+}
+
 
 // external fcalls that are compatible with running in a script environment
 extern void fcall_urdb_read( lk::invoke_t & );
@@ -409,6 +470,8 @@ lk::fcall_t *sam_functions() {
 		fcall_urdb_get,
 		fcall_urdb_list_utilities,
 		fcall_urdb_list_rates,
+		fcall_parsim,
+		fcall_parout,
 		0 };
 	return (lk::fcall_t*)vec;
 
