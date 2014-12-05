@@ -328,9 +328,14 @@ void wxSimpleCurl::Abort()
 	}
 }
 
-void wxSimpleCurl::SetupProxy( const wxString &proxy )
+void wxSimpleCurl::SetProxy( const wxString &proxy )
 {
 	gs_curlProxyAddress = proxy;
+}
+
+wxString wxSimpleCurl::GetProxy()
+{
+	return gs_curlProxyAddress;
 }
 
 void wxSimpleCurl::Init()

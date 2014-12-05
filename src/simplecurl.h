@@ -57,9 +57,10 @@ class wxSimpleCurl : public wxObject
 {
 public:
 	// app-wide init and shutdown calls for underlying libcurl initialization
-	static void SetupProxy( const wxString &proxy );
 	static void Init();
 	static void Shutdown();
+	static void SetProxy( const wxString &proxy );
+	static wxString GetProxy();
 
 	// geocoding function using google APIs.
 	// call is synchronous.  Optionally determine time 
