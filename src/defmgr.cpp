@@ -16,9 +16,8 @@ static wxString GetDefaultsFile( const wxString &t, const wxString &f )
 
 static wxString GetTypeStr( int type )
 {	
-static wxString strtypes[] = { "invalid", "number", "array", "matrix", "string", "table", "binary" };
 	if ( type <= VV_BINARY && type >=0  )
-		return strtypes[type];
+		return vv_strtypes[type];
 	else
 		return "unknown type";
 }
