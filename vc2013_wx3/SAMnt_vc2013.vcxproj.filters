@@ -280,5 +280,8 @@
     <ClCompile Include="..\src\lossdiag.cpp">
       <Filter>Source</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\mswfatal.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
