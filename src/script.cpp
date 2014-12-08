@@ -80,6 +80,8 @@ static void fcall_varinfo( lk::invoke_t &cxt )
 	cxt.result().empty_hash();
 	if ( Case *c = CurrentCase() )
 		invoke_get_var_info( c, name, cxt.result() );
+	else cxt.error("no active case");
+
 }
 
 static void fcall_selectinputs( lk::invoke_t &cxt )
@@ -89,7 +91,11 @@ static void fcall_selectinputs( lk::invoke_t &cxt )
 	cxt.result().assign( 0.0 );
 
 	Case *cc = CurrentCase();
-	if ( !cc ) return;
+	if ( !cc ) 
+	{
+		cxt.error("no active case");;
+		return;
+	}
 
 	wxArrayString names;
 	wxArrayString labels;
@@ -141,18 +147,22 @@ static void fcall_selectinputs( lk::invoke_t &cxt )
 
 static void fcall_set( lk::invoke_t &cxt )
 {
-	LK_DOC( "set", "Set an input variable's value.", "(string:name, variant:value):boolean" );
+	LK_DOC( "set", "Set an input variable's value. Issues a script error if the variable doesn't exist or there is data type error.", "(string:name, variant:value):none" );
 	cxt.result().assign( 0.0 );
 	wxString name = cxt.arg(0).as_string();
 	if ( Case *c = CurrentCase() )
 	{
 		if ( VarValue *vv = c->Values().Get( name ) )
 		{
-			bool ok = vv->Read( cxt.arg(1) );
-			c->VariableChanged( name );		
-			cxt.result().assign( ok ? 1.0 : 0.0 );
+			if ( vv->Read( cxt.arg(1), false ) )
+				c->VariableChanged( name );
+			else
+				cxt.error( "data type mismatch attempting to set '" + name + "' (" + vv_strtypes[vv->Type()] + ") to " + cxt.arg(1).as_string() + " ("+ wxString(cxt.arg(1).typestr()) + ")"  );
 		}
+		else
+			cxt.error("variable '" + name + "' does not exist in the current case" );
 	}
+	else cxt.error("no active case");
 }
 
 static void fcall_get( lk::invoke_t &cxt )
@@ -166,6 +176,7 @@ static void fcall_get( lk::invoke_t &cxt )
 		else if ( VarValue *vv = c->Values().Get( name ) )
 			vv->Write( cxt.result() );
 	}
+	else cxt.error("no active case");
 }
 
 
@@ -232,11 +243,19 @@ static void fcall_simulate( lk::invoke_t &cxt )
 			if ( CaseWindow *cw = SamApp::Window()->GetCaseWindow( c ) )
 					cw->UpdateResults();
 	}
+	else cxt.error("no active case");
 }
 
 static void fcall_configuration( lk::invoke_t &cxt )
 {
 	LK_DOC( "configuration", "Change the current active case's technology/market configuration, or return the current configuration.", "(string:technology, string:financing):boolean or (none):array");
+
+	Case *cc = CurrentCase();
+	if ( !cc )
+	{
+		cxt.error("no active case");
+		return;
+	}
 
 	if ( cxt.arg_count() == 2 )
 	{
@@ -249,14 +268,13 @@ static void fcall_configuration( lk::invoke_t &cxt )
 		wxArrayString finlist = SamApp::Config().GetFinancingForTech( tech );
 		if ( finlist.Index( fin ) == wxNOT_FOUND ) return;
 
-		if ( Case *c = CurrentCase() )
-			cxt.result().assign( c->SetConfiguration( tech, fin, true, 0 ) ? 1.0 : 0.0 ); // invoke silently - do not show error messages
+		cxt.result().assign( cc->SetConfiguration( tech, fin, true, 0 ) ? 1.0 : 0.0 ); // invoke silently - do not show error messages
 	}
-	else if ( Case *c = CurrentCase() )
+	else
 	{
 		cxt.result().empty_vector();
-		cxt.result().vec_append( c->GetTechnology() );
-		cxt.result().vec_append( c->GetFinancing() );
+		cxt.result().vec_append( cc->GetTechnology() );
+		cxt.result().vec_append( cc->GetFinancing() );
 	}
 }
 
@@ -276,8 +294,7 @@ static void fcall_load_defaults( lk::invoke_t &cxt )
 			cxt.result().assign( 0.0 );
 		}
 	}
-	else
-		cxt.result().assign( 0.0 );
+	else cxt.error("no active case");
 }
 
 static void fcall_overwrite_defaults( lk::invoke_t &cxt )
@@ -285,6 +302,7 @@ static void fcall_overwrite_defaults( lk::invoke_t &cxt )
 	LK_DOC( "overwrite_defaults", "Overwrite SAM default values file for the current configuration with current values.", "(none):boolean");
 	if ( Case *c = CurrentCase() )
 		cxt.result().assign( c->SaveDefaults( true ) );
+	else cxt.error("no active case");
 }
 
 static void fcall_list_technologies( lk::invoke_t &cxt )
@@ -350,7 +368,7 @@ static void fcall_parsim( lk::invoke_t &cxt )
 	Case *cc = CurrentCase();
 	if ( !cc )
 	{
-		cxt.error("parsim() can only be called in the context of a valid active case");
+		cxt.error("no active case");
 		return;
 	}
 

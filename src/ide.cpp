@@ -763,8 +763,7 @@ UIEditorPanel::UIEditorPanel( wxWindow *parent )
 	
 	m_varList = new wxCheckListBox( this, ID_VAR_LIST, wxDefaultPosition, wxDefaultSize, 0, 0, wxLB_SINGLE|wxBORDER_NONE );
 	m_varName = new wxExtTextCtrl( this, ID_VAR_NAME, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxTE_PROCESS_ENTER );
-	wxString strtypes[] = { "Invalid", "Number", "Array", "Matrix", "String", "Table", "Binary" };
-	m_varType = new wxChoice( this, ID_VAR_TYPE, wxDefaultPosition, wxDefaultSize, 7, strtypes );
+	m_varType = new wxChoice( this, ID_VAR_TYPE, wxDefaultPosition, wxDefaultSize, 7, vv_strtypes );
 	m_varLabel = new wxExtTextCtrl( this, ID_VAR_LABEL, wxEmptyString );
 	m_varUnits = new wxExtTextCtrl( this, ID_VAR_UNITS, wxEmptyString );
 	m_varGroup = new wxExtTextCtrl( this, ID_VAR_GROUP, wxEmptyString );
