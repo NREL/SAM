@@ -311,9 +311,16 @@ public:
 		body += "User name: " + wxGetUserName() + "\n";
 		body += "Home dir: " + wxGetHomeDir() + "\n";
 		body += "OS: " + wxGetOsDescription() + "\n";
-		body += "Little endian? " + wxString::Format("%s",wxIsPlatformLittleEndian()?"Yes":"No") + "\n";
 		body += "64-bit platform? " + wxString::Format("%s",wxIsPlatform64Bit()?"Yes":"No") + "\n";
 		body += "Free memory: " + wxString::Format( "%d MB", (int)(wxGetFreeMemory().ToDouble()/1000000) ) + "\n";
+	
+		wxSize disp = ::wxGetDisplaySize();
+		body += wxString::Format("Display resolution: %dx%d, %d bit depth\n", disp.x, disp.y, ::wxDisplayDepth() );
+		
+		wxClientDC dc(this);
+		wxSize ppi1 = dc.GetPPI();
+		wxSize ppi2 = ::wxGetDisplayPPI();
+		body += wxString::Format("PPI: graphics device: %dx%d  display reporting: %dx%d\n", ppi1.x, ppi1.y, ppi2.x, ppi2.y );
 		
 		m_txtctrl = new wxTextCtrl(this, -1, text + "\n" + body, 
 			wxDefaultPosition, wxDefaultSize, wxTE_MULTILINE|wxTE_READONLY);
