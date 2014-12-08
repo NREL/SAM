@@ -240,7 +240,7 @@ void WelcomeScreen::OnResize(wxSizeEvent &)
 	LayoutWidgets();
 	Refresh();
 }
-
+extern void foo(int);
 void WelcomeScreen::OnCommand( wxCommandEvent &evt )	
 {
 	switch( evt.GetId() )

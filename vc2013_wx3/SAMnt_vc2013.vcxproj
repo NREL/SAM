@@ -29,6 +29,7 @@
     <ClCompile Include="..\src\gridsupport.cpp" />
     <ClCompile Include="..\src\lossdiag.cpp" />
     <ClCompile Include="..\src\macro.cpp" />
+    <ClCompile Include="..\src\mswfatal.cpp" />
     <ClCompile Include="..\src\p50p90.cpp" />
     <ClCompile Include="..\src\parametric.cpp" />
     <ClCompile Include="..\src\registration.cpp" />
@@ -222,7 +223,7 @@
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <AdditionalLibraryDirectories>$(ProjectDir)\libcurl_ssl_win32\lib;$(LKDIR);$(WEXDIR);$(WXMSW3)\lib\vc_lib;$(SSCDIR)\build_vc2013\$(Platform)\$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <ProgramDatabaseFile>$(ProjectDir)\build\$(Configuration)\$(Platform)\$(TargetName).pdb</ProgramDatabaseFile>
+      <ProgramDatabaseFile>$(TargetDir)\$(TargetName).pdb</ProgramDatabaseFile>
       <SubSystem>Windows</SubSystem>
       <TargetMachine>MachineX86</TargetMachine>
     </Link>
@@ -264,7 +265,7 @@
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <AdditionalLibraryDirectories>$(ProjectDir)\libcurl_ssl_x64\lib;$(LKDIR);$(WEXDIR);$(WXMSW3)\lib\vc_x64_lib;$(SSCDIR)\build_vc2013\$(Platform)\$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <ProgramDatabaseFile>$(ProjectDir)\build\$(Configuration)\$(Platform)\$(TargetName).pdb</ProgramDatabaseFile>
+      <ProgramDatabaseFile>$(TargetDir)\$(TargetName).pdb</ProgramDatabaseFile>
       <SubSystem>Windows</SubSystem>
     </Link>
     <Bscmake>
@@ -303,7 +304,7 @@
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <AdditionalLibraryDirectories>$(ProjectDir)\libcurl_ssl_win32\lib;$(LKDIR);$(WEXDIR);$(WXMSW3)\lib\vc_lib;$(SSCDIR)\build_vc2013\$(Platform)\$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <ProgramDatabaseFile>$(ProjectDir)\build\$(Configuration)\$(Platform)\$(TargetName).pdb</ProgramDatabaseFile>
+      <ProgramDatabaseFile>$(TargetDir)\$(TargetName).pdb</ProgramDatabaseFile>
       <SubSystem>Windows</SubSystem>
       <TargetMachine>MachineX86</TargetMachine>
       <OptimizeReferences>true</OptimizeReferences>
@@ -345,7 +346,7 @@
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <AdditionalLibraryDirectories>$(ProjectDir)\libcurl_ssl_x64\lib;$(LKDIR);$(WEXDIR);$(WXMSW3)\lib\vc_x64_lib;$(SSCDIR)\build_vc2013\$(Platform)\$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <ProgramDatabaseFile>$(ProjectDir)\build\$(Configuration)\$(Platform)\$(TargetName).pdb</ProgramDatabaseFile>
+      <ProgramDatabaseFile>$(TargetDir)\$(TargetName).pdb</ProgramDatabaseFile>
       <SubSystem>Windows</SubSystem>
       <OptimizeReferences>true</OptimizeReferences>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>

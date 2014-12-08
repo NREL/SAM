@@ -117,7 +117,7 @@ enum { __idFirst = wxID_HIGHEST+592,
 	ID_CASE_MOVE_RIGHT,
 	__idCaseMenuLast,
 	__idInternalFirst,
-		ID_INTERNAL_IDE, ID_INTERNAL_RESTART, ID_INTERNAL_SHOWLOG, 
+		ID_INTERNAL_IDE, ID_INTERNAL_RESTART, ID_INTERNAL_SHOWLOG, ID_INTERNAL_SEGFAULT,
 		ID_INTERNAL_DATAFOLDER, ID_INTERNAL_CASE_VALUES, ID_SAVE_CASE_DEFAULTS, ID_INTERNAL_INVOKE_SSC_DEBUG,
 	__idInternalLast
 };
@@ -237,6 +237,7 @@ MainWindow::MainWindow()
 	entries.push_back( wxAcceleratorEntry( wxACCEL_NORMAL, WXK_F5, ID_CASE_SIMULATE ) );
 	entries.push_back( wxAcceleratorEntry( wxACCEL_NORMAL, WXK_F6, ID_CASE_REPORT ) );
 	entries.push_back( wxAcceleratorEntry( wxACCEL_NORMAL, WXK_F1, wxID_HELP ) );
+	entries.push_back( wxAcceleratorEntry( wxACCEL_CTRL, WXK_F1,  ID_INTERNAL_SEGFAULT ) ) ;
 	SetAcceleratorTable( wxAcceleratorTable( entries.size(), &entries[0] ) );
 }
 
@@ -367,10 +368,43 @@ void MainWindow::DeleteCaseWindow( Case *c )
 
 extern void ShowIDEWindow();
 
+// just some functions to get a slightly deeper stack trace
+void bar(const char *p)
+{
+    char *pc = 0;
+    *pc = *p;
+
+    printf("bar: %s\n", p);
+}
+
+void baz(const wxString& s)
+{
+    printf("baz: %s\n", (const char*)s.c_str());
+}
+
+void foo(int n)
+{
+    if ( n % 2 )
+        baz("odd");
+    else
+        bar("even");
+}
+
 void MainWindow::OnInternalCommand( wxCommandEvent &evt )
 {
 	switch (evt.GetId())
 	{
+	case ID_INTERNAL_SEGFAULT:
+	{
+// note:
+// https://social.msdn.microsoft.com/Forums/vstudio/en-US/0caf88f7-e22b-49be-a7e9-8504c0312cb8/exception-no-more-propagated-within-few-win32-function-call?forum=vcgeneral
+// https://forums.wxwidgets.org/viewtopic.php?t=18742&p=81165
+// seems that Menu event behaves as timer.  if issued from a button event, crash occurs as expected
+		wxMessageBox("Crash");
+		foo(32);
+		foo(17);
+	}
+		break;
 	case ID_INTERNAL_INVOKE_SSC_DEBUG:
 		if ( Case *cc = GetCurrentCase() )
 		{
@@ -1422,8 +1456,22 @@ static unordered_map<wxString,ConfigOptions, wxStringHash, wxStringEqual> m_opts
 	return m_opts[name];
 }
 
+SamApp::SamApp()
+{
+#ifdef __WXMSW__
+extern LONG __stdcall MSW_CrashHandlerExceptionFilter( EXCEPTION_POINTERS * );
+	::SetUnhandledExceptionFilter( MSW_CrashHandlerExceptionFilter );
+	
+	wxHandleFatalExceptions( true );
+#endif
+}
+
 bool SamApp::OnInit()
 {	
+	if ( !wxApp::OnInit() )
+		return false;
+
+
 	SetAppName( "SAM" );
 	SetVendorName( "NREL" );
 
@@ -1468,9 +1516,9 @@ extern void RegisterReportObjectTypes();
 	}
 
 
-#ifdef _DEBUG
-	SamLogWindow::Setup();
-#endif
+//#ifdef _DEBUG
+//	SamLogWindow::Setup();
+//#endif
 
 	
 	g_config = new wxConfig( "SAMnt", "NREL" );
@@ -1624,6 +1672,14 @@ extern void RegisterReportObjectTypes();
 	return true;
 }
 
+void SamApp::OnFatalException()
+{
+#ifdef __WXMSW__
+extern void MSW_HandleFatalException(); // defined in mswfatal.cpp
+	MSW_HandleFatalException();
+#endif
+}
+
 
 #ifdef __BETARELEASE__
 
@@ -1678,12 +1734,6 @@ int SamApp::OnExit()
 	
 	wxLog::SetActiveTarget( 0 );
 	return 0;
-}
-
-bool SamApp::OnExceptionInMainLoop()
-{
-	wxMessageBox("SAM unhandled exception occurred.");
-	return false;
 }
 
 void SamApp::Restart()
