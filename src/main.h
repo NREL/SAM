@@ -260,9 +260,10 @@ private:
 class SamApp : public wxApp
 {
 public:
+	SamApp();
 	virtual bool OnInit();
 	virtual int OnExit();
-	virtual bool OnExceptionInMainLoop();
+	virtual void OnFatalException();
 
 	static void Restart();
 	static wxString WebApi( const wxString &name );
