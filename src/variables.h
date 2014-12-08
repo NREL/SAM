@@ -16,6 +16,7 @@
 class VarValue;
 class VarDatabase;
 
+
 #define VV_INVALID 0
 #define VV_NUMBER 1
 #define VV_ARRAY 2
@@ -23,6 +24,8 @@ class VarDatabase;
 #define VV_STRING 4
 #define VV_TABLE 5
 #define VV_BINARY 6
+
+extern wxString vv_strtypes[7];
 
 typedef unordered_map<wxString, VarValue*, wxStringHash, wxStringEqual> VarTableBase;
 

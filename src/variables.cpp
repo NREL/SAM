@@ -12,7 +12,7 @@
 
 #include "variables.h"
 
-
+wxString vv_strtypes[7] = { "invalid", "number", "array", "matrix", "string", "table", "binary" };
 
 VarTable::VarTable()
 {
@@ -609,13 +609,22 @@ wxMemoryBuffer &VarValue::Binary()
 
 bool VarValue::Read( const lk::vardata_t &val, bool change_type )
 {
+	bool ok = false;
 	switch (val.type())
 	{
 	case lk::vardata_t::NUMBER:
-		if ( Type() == VV_NUMBER || change_type ) Set( (float) val.as_number() );
+		if ( Type() == VV_NUMBER || change_type )
+		{
+			Set( (float) val.as_number() );
+			ok = true;
+		}
 		break;
 	case lk::vardata_t::STRING:
-		if ( Type() == VV_STRING || change_type ) Set( val.as_string() );
+		if ( Type() == VV_STRING || change_type )
+		{
+			Set( val.as_string() );
+			ok = true;
+		}
 		break;
 	case lk::vardata_t::VECTOR:
 		{
@@ -635,9 +644,15 @@ bool VarValue::Read( const lk::vardata_t &val, bool change_type )
 
 
 				if ( Type() == VV_ARRAY || change_type )
+				{
 					Set( vec, dim1 );
+					ok = true;
+				}
 				else if ( Type() == VV_MATRIX )
+				{
 					Set( vec, dim1, 1 );
+					ok = true;
+				}
 
 				delete [] vec;
 			}
@@ -660,6 +675,8 @@ bool VarValue::Read( const lk::vardata_t &val, bool change_type )
 							m_val.at(i,j) = x;
 						}
 					}
+
+					ok = true;
 				}
 			}
 		}
@@ -678,12 +695,14 @@ bool VarValue::Read( const lk::vardata_t &val, bool change_type )
 					VarValue *item = Table().Set( (*it).first, vv_inval );
 					item->Read( *(*it).second, true );
 				}
+
+				ok = true;
 			}
 		}
 		break;
 	}
 
-	return true;
+	return ok;
 }
 
 bool VarValue::Write( lk::vardata_t &val )
