@@ -1,10 +1,22 @@
 #include <stdio.h>
+#include <string>
 #include <Windows.h>
 #include <Psapi.h>
+
 #include "../vc2013_wx3/dbghelp-latest.h"
 
 
-static HMODULE myDbgHelp = 0;
+#include <wx/wx.h>
+#include <wex/metro.h>
+#include <wex/utils.h>
+#include <wx/busyinfo.h>
+#include <wx/clipbrd.h>
+
+#include <ssc/sscapi.h>
+
+#include "../resource/exception.cpng"
+
+static HMODULE myDbgHelpDll = 0;
 
 static BOOL  ( __stdcall *mySymGetModuleInfo64)(
     _In_ HANDLE hProcess,
@@ -22,35 +34,28 @@ static BOOL ( __stdcall *myStackWalk64)(
     _In_opt_ PGET_MODULE_BASE_ROUTINE64 GetModuleBaseRoutine,
     _In_opt_ PTRANSLATE_ADDRESS_ROUTINE64 TranslateAddress
     ) = 0;
-
 static DWORD ( __stdcall *mySymSetOptions)(
     _In_ DWORD   SymOptions
     ) = 0;
-
 static DWORD ( __stdcall *mySymGetOptions) (
     VOID
     ) = 0;
-
 static BOOL ( __stdcall *mySymInitialize)(
     _In_ HANDLE hProcess,
     _In_opt_ PCSTR UserSearchPath,
     _In_ BOOL fInvadeProcess
     ) = 0;
-
 static BOOL ( __stdcall *mySymCleanup)(
     _In_ HANDLE hProcess
     ) = 0;
-
 static DWORD64 ( __stdcall *mySymGetModuleBase64)(
     _In_ HANDLE hProcess,
     _In_ DWORD64 qwAddr
     ) = 0;
-
 static PVOID ( __stdcall *mySymFunctionTableAccess64)(
     _In_ HANDLE hProcess,
     _In_ DWORD64 AddrBase
     ) = 0;
-
 static BOOL ( __stdcall *mySymGetLineFromAddr64)(
     _In_ HANDLE hProcess,
     _In_ DWORD64 qwAddr,
@@ -63,7 +68,6 @@ static BOOL ( __stdcall *mySymGetSymFromAddr64)(
     _Out_opt_ PDWORD64 pdwDisplacement,
     _Inout_ PIMAGEHLP_SYMBOL64  Symbol
     ) = 0;
-
 static DWORD64 ( __stdcall *mySymLoadModule64)(
     _In_ HANDLE hProcess,
     _In_opt_ HANDLE hFile,
@@ -73,30 +77,42 @@ static DWORD64 ( __stdcall *mySymLoadModule64)(
     _In_ DWORD SizeOfDll
     ) = 0;
 
-static char sg_dbgHelpPath[256];
+// global storage for debugging message generation
+static char sg_dbgHelpPath[MAX_PATH];
+static std::string sg_message;
+static char sg_buf[512];
 
-static int load_dbghelp( char *image_file )
+static void writemsg( const char *fmt, ... )
 {
-	strcpy( sg_dbgHelpPath, image_file );
+	va_list ap;
+	va_start(ap, fmt);
+	_vsnprintf(sg_buf, 511, fmt, ap);
+	va_end(ap);
+	sg_message += std::string(sg_buf);
+}
+
+static int load_dbghelp_dll( const char *image_file )
+{
+	strncpy( sg_dbgHelpPath, image_file, MAX_PATH-12 ); // make sure there's room for 'dbghelp.dll'
 	char *plast = strrchr( sg_dbgHelpPath, '\\' );
-	strcpy( plast+1, "dbghelp.dll" );
+	if ( plast > sg_dbgHelpPath ) strcpy( plast+1, "dbghelp.dll" );
 	
-	if ( myDbgHelp = LoadLibraryA( sg_dbgHelpPath ) )
+	if ( myDbgHelpDll = LoadLibraryA( sg_dbgHelpPath ) )
 	{
-		mySymGetModuleInfo64 = ( BOOL (__stdcall *)(HANDLE, DWORD64, PIMAGEHLP_MODULE64) ) GetProcAddress( myDbgHelp, "SymGetModuleInfo64" );
-		myStackWalk64 = ( BOOL (__stdcall *)(DWORD, HANDLE, HANDLE, LPSTACKFRAME64, PVOID, PREAD_PROCESS_MEMORY_ROUTINE64, PFUNCTION_TABLE_ACCESS_ROUTINE64, PGET_MODULE_BASE_ROUTINE64, PTRANSLATE_ADDRESS_ROUTINE64 ) ) GetProcAddress( myDbgHelp, "StackWalk64" );
-		mySymSetOptions = ( DWORD (__stdcall *)( DWORD ) ) GetProcAddress( myDbgHelp, "SymSetOptions" );
-		mySymGetOptions = ( DWORD (__stdcall *)( VOID ) ) GetProcAddress( myDbgHelp, "SymGetOptions" );
-		mySymInitialize = ( BOOL (__stdcall *)( HANDLE, PCSTR, BOOL ) ) GetProcAddress( myDbgHelp, "SymInitialize" );
-		mySymCleanup = ( BOOL (__stdcall *)( HANDLE ) ) GetProcAddress( myDbgHelp, "SymCleanup" );
-		mySymGetModuleBase64 = ( DWORD64 (__stdcall *)( HANDLE, DWORD64 ) ) GetProcAddress( myDbgHelp, "SymGetModuleBase64" );
-		mySymFunctionTableAccess64 = ( PVOID (__stdcall *)( HANDLE, DWORD64 ) ) GetProcAddress( myDbgHelp, "SymFunctionTableAccess64" );
-		mySymGetLineFromAddr64 = ( BOOL (__stdcall *)( HANDLE, DWORD64, PDWORD, PIMAGEHLP_LINE64 ) ) GetProcAddress( myDbgHelp, "SymGetLineFromAddr64" );
-		mySymGetSymFromAddr64 = ( BOOL (__stdcall *)( HANDLE, DWORD64, PDWORD64, PIMAGEHLP_SYMBOL64 ) ) GetProcAddress( myDbgHelp, "SymGetSymFromAddr64" );
-		mySymLoadModule64 = ( DWORD64 (__stdcall *)( HANDLE, HANDLE, PCSTR, PCSTR, DWORD64, DWORD ) ) GetProcAddress( myDbgHelp, "SymLoadModule64" );
+		mySymGetModuleInfo64 = ( BOOL (__stdcall *)(HANDLE, DWORD64, PIMAGEHLP_MODULE64) ) GetProcAddress( myDbgHelpDll, "SymGetModuleInfo64" );
+		myStackWalk64 = ( BOOL (__stdcall *)(DWORD, HANDLE, HANDLE, LPSTACKFRAME64, PVOID, PREAD_PROCESS_MEMORY_ROUTINE64, PFUNCTION_TABLE_ACCESS_ROUTINE64, PGET_MODULE_BASE_ROUTINE64, PTRANSLATE_ADDRESS_ROUTINE64 ) ) GetProcAddress( myDbgHelpDll, "StackWalk64" );
+		mySymSetOptions = ( DWORD (__stdcall *)( DWORD ) ) GetProcAddress( myDbgHelpDll, "SymSetOptions" );
+		mySymGetOptions = ( DWORD (__stdcall *)( VOID ) ) GetProcAddress( myDbgHelpDll, "SymGetOptions" );
+		mySymInitialize = ( BOOL (__stdcall *)( HANDLE, PCSTR, BOOL ) ) GetProcAddress( myDbgHelpDll, "SymInitialize" );
+		mySymCleanup = ( BOOL (__stdcall *)( HANDLE ) ) GetProcAddress( myDbgHelpDll, "SymCleanup" );
+		mySymGetModuleBase64 = ( DWORD64 (__stdcall *)( HANDLE, DWORD64 ) ) GetProcAddress( myDbgHelpDll, "SymGetModuleBase64" );
+		mySymFunctionTableAccess64 = ( PVOID (__stdcall *)( HANDLE, DWORD64 ) ) GetProcAddress( myDbgHelpDll, "SymFunctionTableAccess64" );
+		mySymGetLineFromAddr64 = ( BOOL (__stdcall *)( HANDLE, DWORD64, PDWORD, PIMAGEHLP_LINE64 ) ) GetProcAddress( myDbgHelpDll, "SymGetLineFromAddr64" );
+		mySymGetSymFromAddr64 = ( BOOL (__stdcall *)( HANDLE, DWORD64, PDWORD64, PIMAGEHLP_SYMBOL64 ) ) GetProcAddress( myDbgHelpDll, "SymGetSymFromAddr64" );
+		mySymLoadModule64 = ( DWORD64 (__stdcall *)( HANDLE, HANDLE, PCSTR, PCSTR, DWORD64, DWORD ) ) GetProcAddress( myDbgHelpDll, "SymLoadModule64" );
 	}
 
-	return ( myDbgHelp != 0
+	return ( myDbgHelpDll != 0
 		&& mySymGetModuleInfo64 != 0 
 		&& myStackWalk64 != 0
 		&& mySymSetOptions != 0
@@ -110,235 +126,390 @@ static int load_dbghelp( char *image_file )
 		&& mySymLoadModule64 != 0 );
 }
 
-static int get_module_info( char *msg, int ichr, const char *lpFilename, DWORD64 ModBase )
-{
-	ichr+=sprintf(msg+ichr,"module: %s\n", lpFilename);
-			
+static int write_module_info( const char *lpFilename, DWORD64 ModBase )
+{			
 	IMAGEHLP_MODULE64 ModuleInfo; 
 	memset(&ModuleInfo, 0, sizeof(ModuleInfo) ); 
 	ModuleInfo.SizeOfStruct = sizeof(ModuleInfo);
 	BOOL bRet = mySymGetModuleInfo64( GetCurrentProcess(), ModBase, &ModuleInfo ); 	
+	
+	writemsg("Loaded %s @ 0x%08x:", lpFilename, (DWORD)ModBase );
 
 	if( !bRet ) 
 	{
-		ichr+=sprintf(msg+ichr, ("Error: SymGetModuleInfo64() failed. Error code: %u \n"), ::GetLastError());
+		writemsg( ("error %d: SymGetModuleInfo64('%s')\n"), (int)::GetLastError(), lpFilename);
+		return 0;
 	}
 	else
 	{
-		ichr+=sprintf(msg+ichr,"Module base: 0x%08x\n", (DWORD)ModBase);
-		ichr+=sprintf(msg+ichr,"Base of image: 0x%08x\n", (DWORD)ModuleInfo.BaseOfImage);
-		ichr+=sprintf(msg+ichr,"Size of image: 0x%08x (%d)\n",(DWORD)( ModuleInfo.ImageSize  ));
-		ichr+=sprintf(msg+ichr,"Address range 0x%08x - 0x%08x\n",(DWORD)ModBase, (DWORD)( ModBase+ModuleInfo.ImageSize  ));
-
-	
-		// Display information about symbols 
-
-			// Kind of symbols 
-
+		/*
+		writemsg("Module base: 0x%08x\n", (DWORD)ModBase);
+		writemsg("Base of image: 0x%08x\n", (DWORD)ModuleInfo.BaseOfImage);
+		writemsg("Size of image: 0x%08x (%d)\n",(DWORD)( ModuleInfo.ImageSize  ));
+		*/
 		switch( ModuleInfo.SymType ) 
 		{
-			case SymNone: 
-				ichr+=sprintf(msg+ichr, ("No symbols available for the module.\n") ); 
-				break; 
-
-			case SymExport: 
-				ichr+=sprintf(msg+ichr, ("Loaded symbols: Exports\n") ); 
-				break; 
-
-			case SymCoff: 
-				ichr+=sprintf(msg+ichr, ("Loaded symbols: COFF\n") ); 
-				break; 
-
-			case SymCv: 
-				ichr+=sprintf(msg+ichr, ("Loaded symbols: CodeView\n") ); 
-				break; 
-
-			case SymSym: 
-				ichr+=sprintf(msg+ichr, ("Loaded symbols: SYM\n") ); 
-				break; 
-
-			case SymVirtual: 
-				ichr+=sprintf(msg+ichr, ("Loaded symbols: Virtual\n") ); 
-				break; 
-
-			case SymPdb: 
-				ichr+=sprintf(msg+ichr, ("Loaded symbols: PDB\n") ); 
-				break; 
-
-			case SymDia: 
-				ichr+=sprintf(msg+ichr, ("Loaded symbols: DIA\n") ); 
-				break; 
-
-			case SymDeferred: 
-				ichr+=sprintf(msg+ichr, ("Loaded symbols: Deferred\n") ); // not actually loaded 
-				break; 
-
-			default: 
-				ichr+=sprintf(msg+ichr, ("Loaded symbols: Unknown format.\n") ); 
-				break; 
+		case SymNone: writemsg( ("  No symbols available for the module.\n") ); break; 
+		case SymExport: writemsg( ("  Loaded symbols: Exports\n") ); break; 
+		case SymCoff: writemsg( ("  Loaded symbols: COFF\n") ); break; 
+		case SymCv: writemsg( ("  Loaded symbols: CodeView\n") ); break; 
+		case SymSym: writemsg( ("  Loaded symbols: SYM\n") ); break; 
+		case SymVirtual: writemsg( ("  Loaded symbols: Virtual\n") ); break; 
+		case SymPdb: writemsg( ("  Loaded symbols: PDB\n") ); break; 
+		case SymDia: writemsg( ("  Loaded symbols: DIA\n") ); break; 
+		case SymDeferred: writemsg( ("  Loaded symbols: Deferred\n") ); break; 
+		default: writemsg( ("  Loaded symbols: Unknown format.\n") ); break; 
 		}
 
-			// Image name 
-
-		if( strlen( ModuleInfo.ImageName ) > 0 ) 
-		{
-			ichr+=sprintf(msg+ichr, ("Image name: %s \n"), ModuleInfo.ImageName ); 
-		}
-
-			// Loaded image name 
-
-		if( strlen( ModuleInfo.LoadedImageName ) > 0 ) 
-		{
-			ichr+=sprintf(msg+ichr, ("Loaded image name: %s \n"), ModuleInfo.LoadedImageName ); 
-		}
-
-			// Loaded PDB name 
+		//if( strlen( ModuleInfo.ImageName ) > 0 ) 
+		//	writemsg( ("Image name: %s \n"), ModuleInfo.ImageName ); 
+		
+		//if( strlen( ModuleInfo.LoadedImageName ) > 0 ) 
+		//	writemsg( ("Loaded image name: %s \n"), ModuleInfo.LoadedImageName ); 
 
 		if( strlen( ModuleInfo.LoadedPdbName ) > 0 ) 
 		{
-			ichr+=sprintf(msg+ichr, ("PDB file name: %s \n"), ModuleInfo.LoadedPdbName ); 
-		}
+			writemsg( ("\tPDB file: %s \n"), ModuleInfo.LoadedPdbName ); 
 
 			// Is debug information unmatched ? 
 			// (It can only happen if the debug information is contained 
-			// in a separate file (.DBG or .PDB) 
+			// in a separate file (.DBG or .PDB)
+			if( ModuleInfo.PdbUnmatched || ModuleInfo.DbgUnmatched ) 
+				writemsg( ("\tWarning: Unmatched symbols. \n") ); 
 
-		if( ModuleInfo.PdbUnmatched || ModuleInfo.DbgUnmatched ) 
-		{
-			ichr+=sprintf(msg+ichr, ("Warning: Unmatched symbols. \n") ); 
+			writemsg( ("\tLine numbers: %s \n"), ModuleInfo.LineNumbers ? ("Available") : ("Not available") ); 
+			writemsg( ("\tGlobal symbols: %s \n"), ModuleInfo.GlobalSymbols ? ("Available") : ("Not available") ); 
+			writemsg( ("\tType information: %s \n"), ModuleInfo.TypeInfo ? ("Available") : ("Not available") ); 
+			writemsg( ("\tPublic symbols: %s \n"), ModuleInfo.Publics ? ("Available") : ("Not available") ); 
 		}
-
-			// Contents 
-
-				// Line numbers available ? 
-
-		ichr+=sprintf(msg+ichr, ("Line numbers: %s \n"), ModuleInfo.LineNumbers ? ("Available") : ("Not available") ); 
-
-				// Global symbols available ? 
-
-		ichr+=sprintf(msg+ichr, ("Global symbols: %s \n"), ModuleInfo.GlobalSymbols ? ("Available") : ("Not available") ); 
-
-				// Type information available ? 
-
-		ichr+=sprintf(msg+ichr, ("Type information: %s \n"), ModuleInfo.TypeInfo ? ("Available") : ("Not available") ); 
-
-				// Source indexing available ? 
-
-		ichr+=sprintf(msg+ichr, ("Source indexing: %s \n"), ModuleInfo.SourceIndexed ? ("Yes") : ("No") ); 
-
-				// Public symbols available ? 
-
-		ichr+=sprintf(msg+ichr, ("Public symbols: %s \n"), ModuleInfo.Publics ? ("Available") : ("Not available") ); 
-
 	}
 
-	return ichr;
+	return 1;
 }
 
-static void handle_fatal_from_ep( char *msg, EXCEPTION_POINTERS *pExPtrs )
+const char *ConvertSimpleException ( DWORD dwExcept )
 {
+    switch ( dwExcept )
+    {
+    case EXCEPTION_ACCESS_VIOLATION         :
+        return "EXCEPTION_ACCESS_VIOLATION";
+    break ;
 
-	  const HANDLE hProcess = ::GetCurrentProcess();
+    case EXCEPTION_DATATYPE_MISALIGNMENT    :
+        return "EXCEPTION_DATATYPE_MISALIGNMENT";
+    break ;
 
-		char lpFilename[512];
-		GetModuleFileNameExA(
-		  hProcess,
-		  NULL,
-		  lpFilename,
-		  511
-		);
+    case EXCEPTION_BREAKPOINT               :
+        return "EXCEPTION_BREAKPOINT";
+    break ;
 
+    case EXCEPTION_SINGLE_STEP              :
+        return "EXCEPTION_SINGLE_STEP";
+    break ;
 
-	if ( !load_dbghelp( lpFilename ) )
+    case EXCEPTION_ARRAY_BOUNDS_EXCEEDED    :
+        return "EXCEPTION_ARRAY_BOUNDS_EXCEEDED";
+    break ;
+
+    case EXCEPTION_FLT_DENORMAL_OPERAND     :
+        return "EXCEPTION_FLT_DENORMAL_OPERAND";
+    break ;
+
+    case EXCEPTION_FLT_DIVIDE_BY_ZERO       :
+        return "EXCEPTION_FLT_DIVIDE_BY_ZERO";
+    break ;
+
+    case EXCEPTION_FLT_INEXACT_RESULT       :
+        return "EXCEPTION_FLT_INEXACT_RESULT";
+    break ;
+
+    case EXCEPTION_FLT_INVALID_OPERATION    :
+        return "EXCEPTION_FLT_INVALID_OPERATION";
+    break ;
+
+    case EXCEPTION_FLT_OVERFLOW             :
+        return "EXCEPTION_FLT_OVERFLOW";
+    break ;
+
+    case EXCEPTION_FLT_STACK_CHECK          :
+        return "EXCEPTION_FLT_STACK_CHECK";
+    break ;
+
+    case EXCEPTION_FLT_UNDERFLOW            :
+        return "EXCEPTION_FLT_UNDERFLOW";
+    break ;
+
+    case EXCEPTION_INT_DIVIDE_BY_ZERO       :
+        return "EXCEPTION_INT_DIVIDE_BY_ZERO";
+    break ;
+
+    case EXCEPTION_INT_OVERFLOW             :
+        return "EXCEPTION_INT_OVERFLOW";
+    break ;
+
+    case EXCEPTION_PRIV_INSTRUCTION         :
+        return "EXCEPTION_PRIV_INSTRUCTION";
+    break ;
+
+    case EXCEPTION_IN_PAGE_ERROR            :
+        return "EXCEPTION_IN_PAGE_ERROR";
+    break ;
+
+    case EXCEPTION_ILLEGAL_INSTRUCTION      :
+        return "EXCEPTION_ILLEGAL_INSTRUCTION";
+    break ;
+
+    case EXCEPTION_NONCONTINUABLE_EXCEPTION :
+        return "EXCEPTION_NONCONTINUABLE_EXCEPTION";
+    break ;
+
+    case EXCEPTION_STACK_OVERFLOW           :
+        return "EXCEPTION_STACK_OVERFLOW";
+    break ;
+
+    case EXCEPTION_INVALID_DISPOSITION      :
+        return "EXCEPTION_INVALID_DISPOSITION";
+    break ;
+
+    case EXCEPTION_GUARD_PAGE               :
+        return "EXCEPTION_GUARD_PAGE";
+    break ;
+
+    case EXCEPTION_INVALID_HANDLE           :
+        return "EXCEPTION_INVALID_HANDLE";
+    break ;
+
+    default :
+        return ( "UNKNOWN EXCEPTION CODE" ) ;
+    break ;
+    }
+}
+
+extern int g_verMajor;
+extern int g_verMinor;
+extern int g_verMicro;
+int ssc_version();
+
+class ExceptionDialog : public wxDialog
+{
+	wxTextCtrl *m_txtctrl;
+public:
+	ExceptionDialog(const wxString &text, const wxString &title,const wxSize &size)
+		: wxDialog( 0, wxID_ANY, title, wxDefaultPosition, size, 
+			wxRESIZE_BORDER|wxDEFAULT_DIALOG_STYLE )
 	{
-		sprintf(msg, "failed to load %s", sg_dbgHelpPath );
-		return;
+		SetBackgroundColour( *wxWHITE );
+		
+		wxBitmap excbit( wxBITMAP_PNG_FROM_DATA( exception ) );
+		wxStaticBitmap *bitmap = new wxStaticBitmap( this, wxID_ANY, excbit );
+				
+		wxString body;		
+		int nbit = (sizeof(void*) == 8) ? 64 : 32;
+		body += "Context information:\n\n";
+		body += wxString::Format("SAM %d.%d.%d, %d bit using SSC %d and wxWidgets %d.%d.%d\n", 
+			g_verMajor, g_verMinor, g_verMicro, nbit, ssc_version(), wxMAJOR_VERSION, wxMINOR_VERSION, wxRELEASE_NUMBER );
+		body += "User name: " + wxGetUserName() + "\n";
+		body += "Home dir: " + wxGetHomeDir() + "\n";
+		body += "OS: " + wxGetOsDescription() + "\n";
+		body += "Little endian? " + wxString::Format("%s",wxIsPlatformLittleEndian()?"Yes":"No") + "\n";
+		body += "64-bit platform? " + wxString::Format("%s",wxIsPlatform64Bit()?"Yes":"No") + "\n";
+		body += "Free memory: " + wxString::Format( "%d MB", (int)(wxGetFreeMemory().ToDouble()/1000000) ) + "\n";
+		
+		m_txtctrl = new wxTextCtrl(this, -1, text + "\n" + body, 
+			wxDefaultPosition, wxDefaultSize, wxTE_MULTILINE|wxTE_READONLY);
+		//txtctrl->SetFont( wxFont(10, wxMODERN, wxNORMAL, wxNORMAL) );
+		
+		wxStaticText *label = new wxStaticText( this, wxID_ANY, "We're very sorry that SAM crashed." );
+		label->SetFont( wxMetroTheme::Font( wxMT_LIGHT, 22 ) );
+		label->SetForegroundColour( wxColour(90,90,90) );
+
+		
+		wxStaticText *label2 = new wxStaticText( this, wxID_ANY, "Please send this crash report to sam.support@nrel.gov by copying it into an email or attaching a saved version of the report." );
+		label2->SetFont( wxMetroTheme::Font( wxMT_NORMAL, 11 ) );
+		label2->SetForegroundColour( wxColour(90,90,90) );
+		label2->Wrap( 450 );
+
+
+
+		wxBoxSizer *topsizer = new wxBoxSizer( wxHORIZONTAL );
+		topsizer->Add( bitmap, 0, wxALL|wxALIGN_CENTER_VERTICAL, 10 );
+		topsizer->Add( label, 0, wxALL|wxALIGN_CENTER_VERTICAL, 10 );
+
+		wxPanel *bpanel = new wxPanel( this );
+		bpanel->SetBackgroundColour( wxMetroTheme::Colour( wxMT_FOREGROUND ) );
+
+		wxBoxSizer *butsizer = new wxBoxSizer( wxHORIZONTAL );
+		butsizer->Add( new wxMetroButton( bpanel, wxID_COPY, "Copy to clipboard" ), 0, wxALL|wxEXPAND, 0 );
+		butsizer->Add( new wxMetroButton( bpanel, wxID_SAVE, "Save to file..." ), 0, wxALL|wxEXPAND, 0 );
+		butsizer->AddStretchSpacer();
+		butsizer->Add( new wxMetroButton( bpanel, wxID_CANCEL, "Close" ), 0, wxALL|wxEXPAND, 0 );
+		bpanel->SetSizer( butsizer );
+
+		wxBoxSizer *sizer = new wxBoxSizer(wxVERTICAL);
+		sizer->Add( topsizer, 0, wxALL, 10 );
+		sizer->Add( label2, 0, wxCENTER|wxALL, 5 );
+		sizer->Add( m_txtctrl, 1, wxALL|wxEXPAND, 10 );
+		sizer->Add( bpanel, 0, wxALL|wxEXPAND, 0 );
+		SetSizer( sizer );
+
+		SetEscapeId( wxID_CANCEL );
 	}
 
-
-	  *msg = 0;
-	  int ichr = 0;
-
-	  ichr += sprintf(msg+ichr, "dbghelp: %s\n", sg_dbgHelpPath );
-
-	  BOOL fInvadeProcess = FALSE;
-
-	  
-	mySymSetOptions( SYMOPT_LOAD_LINES | SYMOPT_UNDNAME );
-
-    if ( FALSE == mySymInitialize(
-                            hProcess,
-                            NULL,   // use default symbol search path
-                            fInvadeProcess    // load symbols for all loaded modules?
-                        ) )
-    {
-        ichr+=sprintf(msg+ichr,"SymInitialize error %d\n", (int)GetLastError());
-        return;
-    }
-
-	DWORD64 ModBase = 0;
-	
-	if ( !fInvadeProcess )
+	void OnCommand( wxCommandEvent &evt )
 	{
-	//	int len = strlen(lpFilename);
-	//	strcpy( &lpFilename[len-3], "pdb" );
-
-	//	size_t size = get_file_size( lpFilename );
-
-		DWORD nmod = 0, dwTotal;
-		EnumProcessModules( hProcess, NULL, 0, &nmod );
-		HMODULE *Modules = new HMODULE[nmod];
-		EnumProcessModules( hProcess, Modules, nmod*sizeof(HMODULE), &dwTotal );
-		ichr+=sprintf(msg+ichr, "EnumProcessModules: %d\n", dwTotal );
-
-		for ( size_t i=0;i<nmod;i++ )
+		switch( evt.GetId() )
 		{
-			GetModuleFileNameA( Modules[i], lpFilename, sizeof(lpFilename) );
-				
-			// In order to get the symbol engine to work outside a
-			// debugger, it needs a handle to the image.  Yes, this
-			// will leak but the OS will close it down when the process
-			// ends.
-			HANDLE hFile = CreateFileA ( lpFilename       ,
-										GENERIC_READ    ,
-										FILE_SHARE_READ ,
-										NULL            ,
-										OPEN_EXISTING   ,
-										0               ,
-										0                ) ;
-
-
-			ModBase = mySymLoadModule64(hProcess,    // target process 
-							hFile,        // handle to image - not used
-							lpFilename, // name of image file
-							NULL,        // name of module - not required
-							(DWORD64)Modules[i], //0x10000000,  // base address
-							0 //size,           // size of image - not required
-							);
-							
-			if ( !ModBase )          // flags - not required
+		case wxID_COPY: 			
+			if (wxTheClipboard->Open())
 			{
-			//	ichr+=sprintf(msg+ichr,"SymLoadModule returned error : %d  (%s)\n", (int)GetLastError(), lpFilename);
-			//	mySymCleanup( hProcess );
-			//	return;
+				wxBusyInfo info("Copying crash report to clipboard...");
+				wxMilliSleep( 300 );
+				wxTheClipboard->SetData(new wxTextDataObject(m_txtctrl->GetValue()));
+				wxTheClipboard->Close();
 			}
-			else
+			break;
+		case wxID_SAVE:
+		{
+			wxFileDialog dialog( this, "Save crash report", wxEmptyString, "crash.txt", "Text Files (*.txt)|*.txt", wxFD_SAVE|wxFD_OVERWRITE_PROMPT );
+			if ( wxID_OK == dialog.ShowModal() )
 			{
-				ichr += sprintf(msg+ichr, "Loaded %s @ 0x%08x\n", lpFilename, (DWORD)Modules[i] );
-				if ( i== 0 )
-					ichr = get_module_info(msg, ichr, lpFilename, ModBase);
+				if ( FILE *fp = fopen( dialog.GetPath().c_str(), "w" ) )
+				{
+					fputs( (const char*)m_txtctrl->GetValue().c_str(), fp );
+					fclose( fp );
+				}
+				else
+					wxMessageBox("Could not save crash report to " + dialog.GetPath() );				
 			}
+		}
+			break;
+		case wxID_CANCEL: default:
+			EndModal( wxCANCEL ); break;
 		}
 	}
 
+	DECLARE_EVENT_TABLE();
+};
+
+BEGIN_EVENT_TABLE( ExceptionDialog, wxDialog )
+	EVT_BUTTON( wxID_OK, ExceptionDialog::OnCommand )
+	EVT_BUTTON( wxID_CLOSE, ExceptionDialog::OnCommand )
+	EVT_BUTTON( wxID_SAVE, ExceptionDialog::OnCommand )
+	EVT_BUTTON( wxID_COPY, ExceptionDialog::OnCommand )
+END_EVENT_TABLE()
+
+LONG __stdcall MSW_CrashHandlerExceptionFilter( EXCEPTION_POINTERS *pExPtrs )
+{
+	LONG lRet = EXCEPTION_CONTINUE_SEARCH;
+
+	// really can't do much in the case of a stack overflow since the
+	// rest of this handler code probably won't execute, 
+	// but just try somehow to alert the user
+	if ( EXCEPTION_STACK_OVERFLOW == pExPtrs->ExceptionRecord->ExceptionCode )
+	{
+		::MessageBoxA( 0, "EXCEPTION_STACK_OVERFLOW occurred!\n", "Unresolvable", 0 );
+		::OutputDebugStringA( "EXCEPTION_STACK_OVERFLOW occurred!\n" );
+		writemsg( "EXCEPTION_STACK_OVERFLOW occurred!\n" );
+	}
+
+	wxBusyInfo *busyinfo = new wxBusyInfo("Unhandled exception, generating report...");
+	
 	// must create a local copy because StackWalk() modifies cxt
 	// at each call
     CONTEXT ctx = *(pExPtrs->ContextRecord);
 
-	ichr+=sprintf(msg+ichr, "Exception Code: 0x%08x\nException Address: 0x%08x\n", 
-		pExPtrs->ExceptionRecord->ExceptionCode,
+	writemsg( "Exception Code: 0x%08x (%s)\nException Address: 0x%08x\n\n", 
+		pExPtrs->ExceptionRecord->ExceptionCode, 
+		ConvertSimpleException( pExPtrs->ExceptionRecord->ExceptionCode ),
 		pExPtrs->ExceptionRecord->ExceptionAddress );
+
+
+	const HANDLE hProcess = ::GetCurrentProcess();
+
+	char lpFilename[512];
+	GetModuleFileNameExA(
+			hProcess,
+			NULL,
+			lpFilename,
+			511 );
 	
+	if ( !load_dbghelp_dll( lpFilename ) )
+	{
+		writemsg( "failed to load %s", sg_dbgHelpPath );
+		return lRet;
+	}
+	else
+		writemsg( "Using %s\n", sg_dbgHelpPath );
+
+	mySymSetOptions( SYMOPT_LOAD_LINES | SYMOPT_UNDNAME );
+
+	// for some unknown reason, SymInitialize seems to fail if the
+	// third parameter (fInvadeProcess) is TRUE and the stack
+	// cannot be properly walked.  If the modules are explicitly
+	// enumerated and symbols loaded, it the trace appears to work.
+    if ( FALSE == mySymInitialize( hProcess, NULL, FALSE  ) )
+    {
+        writemsg("SymInitialize error %d\n", (int)GetLastError());
+        return lRet;
+    }
+
+	DWORD nModules = 0, dwTotal;
+	if ( FALSE == EnumProcessModules( hProcess, NULL, 0, &nModules ) )
+	{
+		writemsg( "EnumProcessModules failed with code %d\n", (int)GetLastError() );
+		return lRet;
+	}
+
+	// allocate space for HMODULES - don't worry about
+	// freeing this memory later since the process will exit anyways
+	// when the exception handler finishes
+	HMODULE *Modules = new HMODULE[nModules];
+	if ( Modules == 0 || FALSE == EnumProcessModules( hProcess, Modules, nModules*sizeof(HMODULE), &dwTotal ) )
+	{
+		writemsg( "EnumProcessModules failed with code %d\n", (int)GetLastError() );
+		return lRet;
+	}
+
+	writemsg( "\nProcess modules:\n\n" );
+
+	for ( size_t i=0;i<nModules;i++ )
+	{
+		if ( Modules[i] == 0 )
+			continue;
+
+		if ( FALSE == GetModuleFileNameA( Modules[i], lpFilename, sizeof(lpFilename) ) )
+			continue;
+				
+		// In order to get the symbol engine to work outside a
+		// debugger, it needs a handle to the image.  Yes, this
+		// will leak but the OS will close it down when the process
+		// ends.
+		HANDLE hFile = CreateFileA ( lpFilename       ,
+									GENERIC_READ    ,
+									FILE_SHARE_READ ,
+									NULL            ,
+									OPEN_EXISTING   ,
+									0               ,
+									0                ) ;
+
+		DWORD64 ModBase = mySymLoadModule64(hProcess,    // target process 
+						hFile,        // handle to image - not used
+						lpFilename, // name of image file
+						NULL,        // name of module - not required
+						(DWORD64)Modules[i], //0x10000000,  // base address
+						0 //size,           // size of image - not required
+						);
+							
+		if ( !ModBase )          // flags - not required
+		{
+			writemsg("Failed to load module '%s' @ 0x%08x with code %d\n", lpFilename, (DWORD)Modules[i], (int)GetLastError());
+			continue;
+		}
+		else
+		{
+			 write_module_info( lpFilename, ModBase );
+		}
+	}
 
     // initialize the initial frame: currently we can do it for x86 only
     STACKFRAME64 sf;
@@ -346,11 +517,11 @@ static void handle_fatal_from_ep( char *msg, EXCEPTION_POINTERS *pExPtrs )
     DWORD64 dwMachineType;
 
 #if defined(_M_AMD64)
-    sf.AddrPC.Offset       = ctx->Rip;
+    sf.AddrPC.Offset       = ctx.Rip;
     sf.AddrPC.Mode         = AddrModeFlat;
-    sf.AddrStack.Offset    = ctx->Rsp;
+    sf.AddrStack.Offset    = ctx.Rsp;
     sf.AddrStack.Mode      = AddrModeFlat;
-    sf.AddrFrame.Offset    = ctx->Rbp;
+    sf.AddrFrame.Offset    = ctx.Rbp;
     sf.AddrFrame.Mode      = AddrModeFlat;
 
     dwMachineType = IMAGE_FILE_MACHINE_AMD64;
@@ -367,8 +538,7 @@ static void handle_fatal_from_ep( char *msg, EXCEPTION_POINTERS *pExPtrs )
     #error "Need to initialize STACKFRAME on non x86"
 #endif // _M_IX86
 	
-	
-	ichr+=sprintf(msg+ichr, "\nep.PC.offset=0x%08x\nep.SP.Offset=0x%08x\nep.FR.Offset=0x%08x\n\n", (DWORD)sf.AddrPC.Offset, (DWORD)sf.AddrStack.Offset, (DWORD)sf.AddrFrame.Offset );	
+	writemsg( "\nStack trace:\n\n" );
 
     // iterate over all stack frames
     for ( size_t nLevel = 0; nLevel < 50; nLevel++ )
@@ -392,7 +562,7 @@ static void handle_fatal_from_ep( char *msg, EXCEPTION_POINTERS *pExPtrs )
 		DWORD64 dwModBase = mySymGetModuleBase64( hProcess, sf.AddrPC.Offset );
 		if ( dwModBase == 0 )
 		{
-			ichr+=sprintf(msg+ichr,"PC offset address 0x%08x returned by StackWalk does not exist in module (err %d).", sf.AddrPC.Offset, (int)GetLastError() );	
+			writemsg("PC offset address 0x%08x returned by StackWalk does not exist in module (err %d).", sf.AddrPC.Offset, (int)GetLastError() );	
 			break;
 		}
 
@@ -410,7 +580,7 @@ static void handle_fatal_from_ep( char *msg, EXCEPTION_POINTERS *pExPtrs )
 
 		if ( FALSE == mySymGetSymFromAddr64( hProcess, sf.AddrPC.Offset, &symDisplacement, pSymbol ) )
 		{
-			ichr+=sprintf( msg+ichr, "SymFromAddr error %d for address 0x%08x\n", (int)GetLastError(), (unsigned int)sf.AddrPC.Offset );
+			writemsg("SymFromAddr error %d for address 0x%08x\n", (int)GetLastError(), (unsigned int)sf.AddrPC.Offset );
 		}
 		else
 		{
@@ -431,12 +601,11 @@ static void handle_fatal_from_ep( char *msg, EXCEPTION_POINTERS *pExPtrs )
 			{
 				// it is normal that we don't have source info for some symbols,
 				// notably all the ones from the system DLLs...
-				ichr+=sprintf(msg+ichr,"%d [0x%08x] %s() : <?>\n", nLevel, (unsigned int)sf.AddrPC.Offset, symname );
-				
+				writemsg("%d [0x%08x] %s()\n", nLevel, (unsigned int)sf.AddrPC.Offset, symname );				
 			}
 			else			
 			{
-				ichr+=sprintf(msg+ichr,"%d [0x%08x] %s() : at line %d in\n\t%s\n", 
+				writemsg("%d [0x%08x] %s() : at line %d in\n\t%s\n", 
 					nLevel, 
 					(unsigned int) sf.AddrPC.Offset, 
 					symname,
@@ -448,31 +617,13 @@ static void handle_fatal_from_ep( char *msg, EXCEPTION_POINTERS *pExPtrs )
     }
     
     if ( !mySymCleanup(hProcess) )
-    {
-        ichr+=sprintf(msg+ichr,"SymCleanup error %d", (int)GetLastError());
-    }
-}
+        writemsg("SymCleanup error %d", (int)GetLastError());
 
-static char sg_fatalMessageBuffer[16000];
-
-
-#include <wx/wx.h>
-#include <wex/utils.h>
-
-LONG __stdcall MSW_CrashHandlerExceptionFilter( EXCEPTION_POINTERS *pExPtrs )
-{
-	LONG lRet = EXCEPTION_CONTINUE_SEARCH;
-
-	if ( EXCEPTION_STACK_OVERFLOW == pExPtrs->ExceptionRecord->ExceptionCode )
-	{
-		::MessageBoxA( 0, "EXCEPTION_STACK_OVERFLOW occurred!\n", "Unresolvable", 0 );
-		::OutputDebugStringA( "EXCEPTION_STACK_OVERFLOW occurred!\n" );
-	}
-		
-	handle_fatal_from_ep( sg_fatalMessageBuffer, pExPtrs );
-	//::MessageBoxA( 0, sg_fatalMessageBuffer, "Notice", 0 );
-	::wxShowTextMessageDialog( sg_fatalMessageBuffer );
-
+	delete busyinfo; // hide the busy info dialog before proceeding
+	
+	ExceptionDialog dialog( sg_message.c_str(), "Unhandled Fatal Exception", wxSize(650, 550) );
+	dialog.CenterOnScreen();
+	dialog.ShowModal();
 	return lRet;
 }
 

@@ -27,7 +27,7 @@
 
 enum { ID_CREATE_PROJECT=wxID_HIGHEST+556, ID_OPEN_EXISTING, ID_RECENT_FILES,
 	ID_MESSAGES_HTML, ID_MESSAGE_THREAD, ID_DOWNLOAD_TIMER, ID_GET_STARTED,
-ID_NEW_SCRIPT, ID_OPEN_SCRIPT, ID_REGISTRATION };
+ID_NEW_SCRIPT, ID_OPEN_SCRIPT, ID_REGISTRATION, ID_TEST_SEGFAULT };
 
 BEGIN_EVENT_TABLE(WelcomeScreen, wxPanel)
 	EVT_PAINT(WelcomeScreen::OnPaint)
@@ -42,6 +42,7 @@ BEGIN_EVENT_TABLE(WelcomeScreen, wxPanel)
 	EVT_BUTTON( wxID_EXIT, WelcomeScreen::OnCommand )
 	EVT_BUTTON( ID_GET_STARTED, WelcomeScreen::OnCommand )
 	EVT_BUTTON( ID_REGISTRATION, WelcomeScreen::OnCommand )
+	EVT_BUTTON( ID_TEST_SEGFAULT, WelcomeScreen::OnCommand )
 
 	EVT_LISTBOX_DCLICK( ID_RECENT_FILES, WelcomeScreen::OnCommand )
 	
@@ -60,6 +61,10 @@ WelcomeScreen::WelcomeScreen(wxWindow *parent)
 {
 	SetBackgroundStyle(wxBG_STYLE_CUSTOM);
 	SetBackgroundColour( *wxWHITE );
+
+#ifdef _DEBUG
+	new wxButton( this, ID_TEST_SEGFAULT, "!!!", wxPoint(0,0), wxSize(22,22) );
+#endif
 
 	m_messageStatus = DOWNLOADING;
 
@@ -245,6 +250,10 @@ void WelcomeScreen::OnCommand( wxCommandEvent &evt )
 {
 	switch( evt.GetId() )
 	{
+	case ID_TEST_SEGFAULT:
+		foo(32);
+		foo(17);
+		break;
 	case ID_NEW_SCRIPT:
 		ScriptWindow::CreateNewWindow();
 		break;
