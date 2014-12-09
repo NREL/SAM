@@ -43,6 +43,8 @@ public:
 	wxArrayString GetInputPages();
 	wxUIObject *FindActiveObject( const wxString &name, ActiveInputPage **page = 0 );
 
+	bool SwitchToPage( const wxString &name ); // can navigate to results, parametrics, as well as input pages
+
 	wxString GetCurrentContext();
 	void UpdatePageNote();
 	bool HasPageNote( const wxString &id );

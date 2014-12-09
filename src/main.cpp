@@ -231,6 +231,7 @@ MainWindow::MainWindow()
 	entries.push_back(wxAcceleratorEntry(wxACCEL_SHIFT, WXK_F11, ID_RUN_ALL_CASES));
 	entries.push_back(wxAcceleratorEntry(wxACCEL_SHIFT, WXK_F10, ID_SAVE_CASE_DEFAULTS));
 	entries.push_back(wxAcceleratorEntry(wxACCEL_SHIFT, WXK_F9, ID_INTERNAL_DATAFOLDER));
+	entries.push_back( wxAcceleratorEntry( wxACCEL_CTRL | wxACCEL_SHIFT, 'n', ID_NEW_SCRIPT ) );
 	entries.push_back( wxAcceleratorEntry( wxACCEL_CTRL, 'o', wxID_OPEN ) );
 	entries.push_back( wxAcceleratorEntry( wxACCEL_CTRL | wxACCEL_SHIFT, 'o', ID_OPEN_SCRIPT ) );
 	entries.push_back( wxAcceleratorEntry( wxACCEL_CTRL, 's', wxID_SAVE ) );
