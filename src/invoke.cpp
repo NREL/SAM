@@ -572,8 +572,10 @@ static void fcall_output(lk::invoke_t &cxt)
 
 void invoke_get_var_info( Case *c, const wxString &name, lk::vardata_t &result )
 {
+	result.nullify();
 	if (VarInfo *vi = c->Variables().Lookup( name ))
 	{
+		result.empty_hash();
 		result.hash_item("label").assign( vi->Label );
 		result.hash_item("units").assign( vi->Units );
 		result.hash_item("group").assign( vi->Group );
@@ -586,6 +588,7 @@ void invoke_get_var_info( Case *c, const wxString &name, lk::vardata_t &result )
 		int idx = names.Index( name );
 		if ( idx >=0 )
 		{
+			result.empty_hash();
 			result.hash_item("label").assign( labels[idx] );
 			result.hash_item("units").assign( units[idx] );
 			result.hash_item("group").assign( groups[idx] );
@@ -595,11 +598,9 @@ void invoke_get_var_info( Case *c, const wxString &name, lk::vardata_t &result )
 
 static void fcall_varinfo( lk::invoke_t &cxt )
 {
-	LK_DOC("varinfo", "Gets meta data about an input or output variable.", "(string:var name):table");
-	wxString name = cxt.arg(0).as_string();
-	cxt.result().empty_hash();
+	LK_DOC("varinfo", "Gets meta data about an input or output variable. Returns null if the variable does not exist.", "(string:var name):table");
 	if ( CaseCallbackContext *ci = static_cast<CaseCallbackContext*>(cxt.user_data()) )
-		invoke_get_var_info( &ci->GetCase(), name, cxt.result() );
+		invoke_get_var_info( &ci->GetCase(), cxt.arg(0).as_string(), cxt.result() );
 }
 
 void fcall_value( lk::invoke_t &cxt )
@@ -612,14 +613,16 @@ void fcall_value( lk::invoke_t &cxt )
 	{
 		if ( cxt.arg_count() == 2 )
 		{
-			vv->Read( cxt.arg(1) );
-			cc.GetCase().VariableChanged( name );		
+			if ( vv->Read( cxt.arg(1), false ) )
+				cc.GetCase().VariableChanged( name );
+			else
+				cxt.error( "data type mismatch attempting to set '" + name + "' (" + vv_strtypes[vv->Type()] + ") to " + cxt.arg(1).as_string() + " ("+ wxString(cxt.arg(1).typestr()) + ")"  );
 		}
 		else
-		{
 			vv->Write( cxt.result() );
-		}
 	}
+	else
+		cxt.error("variable '" + name + "' does not exist in this context" );
 }
 
 	
