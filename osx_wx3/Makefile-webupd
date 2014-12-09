@@ -1,0 +1,26 @@
+VPATH = ../webupd:../src
+
+WEXDIR = ../../wex
+WEXLIB = $(WEXDIR)/wexosxwx3.a
+LKDIR = ../../lk
+LKLIB = $(LKDIR)/lkosxwx3.a
+
+CC = gcc
+CXX = g++
+CFLAGS = -g -I. -I$(WEXDIR)/include -I$(LKDIR) -I../tcs -DLK_USE_WXWIDGETS `wx-config-3 --cflags`
+CXXFLAGS = $(CFLAGS)
+LDFLAGS = $(WEXLIB) $(LKLIB) `wx-config-3 --libs` `wx-config-3 --libs aui` `wx-config-3 --libs stc` -lm -lstdc++ -lcurl
+
+OBJECTS  = webupd.o \
+	pkgdlg.o \
+	simplecurl.o
+	
+TARGET = webupd
+
+$(TARGET): $(OBJECTS) $(WEXLIB) 
+	$(CXX) -g -o $@ $^ $(LDFLAGS)
+	SetFile -a t $@
+	cp $@ SAM.app/Contents/MacOS
+	
+clean:
+	rm -f $(TARGET) $(OBJECTS)
