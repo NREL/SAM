@@ -411,6 +411,7 @@ bool wxSimpleCurl::GeoCode( const wxString &address, double *lat, double *lon, d
 		else
 			return false;
 	}
+	else return false;
 
 }
 
