@@ -329,6 +329,8 @@ class wxUIDataArrayObject : public wxUIObject
 public:
 	wxUIDataArrayObject() {
 		AddProperty("Mode", new wxUIProperty( 0, "Fixed 8760 Values,Multiples of 8760 Values,Variable Length"));
+		AddProperty("Label", new wxUIProperty( wxString("") ) );
+		AddProperty("Description", new wxUIProperty( wxString("") ) );
 		AddProperty("TabOrder", new wxUIProperty( (int)-1 ) );
 	}
 	virtual wxString GetTypeName() { return "DataArray"; }
@@ -338,6 +340,8 @@ public:
 	virtual wxWindow *CreateNative( wxWindow *parent ) {
 		AFDataArrayButton *da = new AFDataArrayButton( parent, wxID_ANY );
 		da->SetMode( Property("Mode").GetInteger() );
+		da->SetDescription( Property("Description").GetString() );
+		da->SetDataLabel( Property("Label").GetString() );
 		return AssignNative( da );
 	}
 	virtual void Draw( wxWindow *win, wxDC &dc, const wxRect &geom )
@@ -353,7 +357,11 @@ public:
 	virtual void OnPropertyChanged( const wxString &id, wxUIProperty *p )
 	{
 		if ( AFDataArrayButton *da = GetNative<AFDataArrayButton>() )
+		{
 			if ( id == "Mode" ) da->SetMode( p->GetInteger() );
+			if ( id == "Label" ) da->SetDataLabel( p->GetString() );
+			if ( id == "Description" ) da->SetDescription( p->GetString() );
+		}
 	}
 
 };
