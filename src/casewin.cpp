@@ -114,6 +114,8 @@ BEGIN_EVENT_TABLE( CaseWindow, wxSplitterWindow )
 	EVT_NOTEBOOK_PAGE_CHANGED( ID_BASECASE_PAGES, CaseWindow::OnSubNotebookPageChanged )
 END_EVENT_TABLE()
 
+enum { PG_INPUTS, PG_RESULTS, PG_PARAMETRICS, PG_STOCHASTIC, PG_P50P90, PG_MACROS };
+
 CaseWindow::CaseWindow( wxWindow *parent, Case *c )
 	: wxSplitterWindow( parent, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxSP_NOBORDER | wxSP_LIVE_UPDATE | wxSP_3DSASH ),
 	m_case( c )
@@ -726,6 +728,45 @@ bool CaseWindow::SwitchToInputPage( const wxString &name )
 
 	if ( m_inputPageList->GetStringSelection() != name )
 		m_inputPageList->Select( m_inputPageList->Find( name ) );
+
+	return true;
+}
+
+bool CaseWindow::SwitchToPage( const wxString &name )
+{
+	wxString ln( name.Lower() );
+	if ( ln.Left(7) == "results" )
+	{
+		m_pageFlipper->SetSelection( PG_RESULTS );
+		int ipos = ln.Find(':');
+		if ( ipos > 0 )
+		{
+			wxString page = ln.Mid( ipos+1 ).Lower();
+			for( size_t i=0;i<m_baseCaseResults->GetPageCount();i++ )
+			{
+				if ( m_baseCaseResults->GetText(i).Lower() == page )
+				{
+					m_baseCaseResults->SetSelection( i );
+					return true;
+				}
+			}
+
+			return false;
+		}
+	}
+	else if ( ln == "parametrics" )
+		m_pageFlipper->SetSelection( PG_PARAMETRICS );
+	else if ( ln == "p50p90" )
+		m_pageFlipper->SetSelection( PG_P50P90 );
+	else if ( ln == "macros" )
+		m_pageFlipper->SetSelection( PG_MACROS );
+	else if ( ln == "stochastic" )
+		m_pageFlipper->SetSelection( PG_STOCHASTIC );
+	else
+	{
+		m_pageFlipper->SetSelection( PG_INPUTS );
+		return SwitchToInputPage( name );
+	}
 
 	return true;
 }
