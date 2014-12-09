@@ -140,6 +140,9 @@ public:
 	void SetDataLabel(const wxString &s);
 	wxString GetDataLabel();
 
+	void SetDescription( const wxString &s ) { m_description = s; }
+	wxString GetDescription() { return m_description; }
+
 	void SetMode(int mode);
 	int GetMode();
 
@@ -148,6 +151,7 @@ private:
 	wxString mDataLabel;
 	int mMode;
 	std::vector<float> mData;
+	wxString m_description;
 
 	DECLARE_EVENT_TABLE();
 };

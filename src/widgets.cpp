@@ -881,13 +881,15 @@ private:
 	wxExtGridCtrl *Grid;
 	AFFloatArrayTable *GridTable;
 	wxStaticText *ModeLabel;
+	wxStaticText *Description;
 	wxButton *ButtonChangeRows;
 
 public:
-	AFDataArrayDialog(wxWindow *parent, const wxString &title)
+	AFDataArrayDialog(wxWindow *parent, const wxString &title, const wxString &desc, const wxString &collabel)
 		: wxDialog(parent, wxID_ANY, title, wxDefaultPosition, wxSize(430,510), 
 			wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER )
 	{
+		mLabel = collabel;
 
 		GridTable = NULL;
 		mMode = DATA_ARRAY_8760_MULTIPLES;
@@ -921,10 +923,17 @@ public:
 		szh_top2->AddStretchSpacer();
 	
 		wxBoxSizer *szv_main = new wxBoxSizer(wxVERTICAL);
-		szv_main->Add(szh_top1, 0, wxALL|wxEXPAND, 1);
-		szv_main->Add(szh_top2, 0, wxALL|wxEXPAND, 1);	
-		szv_main->Add(Grid, 1, wxALL|wxEXPAND, 1);
-		szv_main->Add( CreateButtonSizer( wxOK|wxCANCEL ), 0, wxALL|wxEXPAND, 1);
+		szv_main->Add(szh_top1, 0, wxALL|wxEXPAND, 4);
+		szv_main->Add(szh_top2, 0, wxALL|wxEXPAND, 4);	
+		szv_main->Add(Grid, 1, wxALL|wxEXPAND, 4);
+		Description = 0;
+		if ( !desc.IsEmpty() )
+		{
+			Description = new wxStaticText( this, wxID_ANY, desc );
+			Description->Wrap( 350 );
+			szv_main->Add( Description, 0, wxALL, 10 );
+		}
+		szv_main->Add( CreateButtonSizer( wxOK|wxCANCEL ), 0, wxALL|wxEXPAND, 10);
 			
 		SetMode(DATA_ARRAY_8760_MULTIPLES);
 		
@@ -1172,7 +1181,7 @@ int AFDataArrayButton::GetMode()
 
 void AFDataArrayButton::OnPressed(wxCommandEvent &evt)
 {
-	AFDataArrayDialog dlg( this, "Edit Data" );
+	AFDataArrayDialog dlg( this, "Edit Data", m_description, mDataLabel );
 	
 	dlg.SetDataLabel( mDataLabel );
 	dlg.SetMode(mMode);
