@@ -75,11 +75,9 @@ static void fcall_active_case( lk::invoke_t &cxt )
 
 static void fcall_varinfo( lk::invoke_t &cxt )
 {
-	LK_DOC("varinfo", "Gets meta data about an input or output variable.", "(string:var name):table");
-	wxString name = cxt.arg(0).as_string();
-	cxt.result().empty_hash();
+	LK_DOC("varinfo", "Gets meta data about an input or output variable. Returns null if the variable does not exist.", "(string:var name):table");
 	if ( Case *c = CurrentCase() )
-		invoke_get_var_info( c, name, cxt.result() );
+		invoke_get_var_info( c, cxt.arg(0).as_string(), cxt.result() );
 	else cxt.error("no active case");
 
 }
@@ -175,9 +173,13 @@ static void fcall_get( lk::invoke_t &cxt )
 			vv->Write( cxt.result() );
 		else if ( VarValue *vv = c->Values().Get( name ) )
 			vv->Write( cxt.result() );
+		else
+			cxt.error("variable '" + name + "' does not exist in this context" );
+
 	}
 	else cxt.error("no active case");
 }
+
 
 
 static bool sg_scriptSimCancel;
@@ -648,12 +650,12 @@ ScriptWindow::ScriptWindow( wxWindow *parent, int id, const wxPoint &pos, const 
 	split->SetSashGravity( 1.0 );
 		
 	std::vector<wxAcceleratorEntry> entries;
-	entries.push_back( wxAcceleratorEntry( wxACCEL_CMD, 'n', wxID_NEW ) );
-	entries.push_back( wxAcceleratorEntry( wxACCEL_CMD, 'o', wxID_OPEN ) );
-	entries.push_back( wxAcceleratorEntry( wxACCEL_CMD, 's', wxID_SAVE ) );
-	entries.push_back( wxAcceleratorEntry( wxACCEL_CMD, 'f', wxID_FIND ) );
-	entries.push_back( wxAcceleratorEntry( wxACCEL_CMD, 'w', wxID_CLOSE ) );
-	entries.push_back( wxAcceleratorEntry( wxACCEL_CMD, 'i', wxID_CLOSE ) );
+	entries.push_back( wxAcceleratorEntry( wxACCEL_CTRL, 'n', wxID_NEW ) );
+	entries.push_back( wxAcceleratorEntry( wxACCEL_CTRL, 'o', wxID_OPEN ) );
+	entries.push_back( wxAcceleratorEntry( wxACCEL_CTRL, 's', wxID_SAVE ) );
+	entries.push_back( wxAcceleratorEntry( wxACCEL_CTRL, 'f', wxID_FIND ) );
+	entries.push_back( wxAcceleratorEntry( wxACCEL_CTRL, 'w', wxID_CLOSE ) );
+	entries.push_back( wxAcceleratorEntry( wxACCEL_CTRL, 'i', wxID_CLOSE ) );
 	entries.push_back( wxAcceleratorEntry( wxACCEL_NORMAL, WXK_F1, wxID_HELP ) );
 	entries.push_back( wxAcceleratorEntry( wxACCEL_NORMAL, WXK_F5, wxID_EXECUTE ) );
 	SetAcceleratorTable( wxAcceleratorTable( entries.size(), &entries[0] ) );
