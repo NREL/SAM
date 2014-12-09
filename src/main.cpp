@@ -1471,9 +1471,9 @@ extern LONG __stdcall MSW_CrashHandlerExceptionFilter( EXCEPTION_POINTERS * );
 
 bool SamApp::OnInit()
 {	
-	if ( !wxApp::OnInit() )
-		return false;
-
+	// note: DO NOT CALL wxApp::Init() here, because
+	// we want to do our own handling of command line
+	// arguments.
 
 	SetAppName( "SAM" );
 	SetVendorName( "NREL" );
