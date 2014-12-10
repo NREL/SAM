@@ -1033,20 +1033,20 @@ function send_excel_depr( xl, variable )
 
 function send_excel_fuel(xl)
 {
-	if ( value('system_heat_rate') != null ) send_excel( xl, 'system_heat_rate' );
-	if ( value('annual_fuel_usage') != null )
+	if ( varinfo('system_heat_rate') != null ) send_excel( xl, 'system_heat_rate' );
+	if ( varinfo('annual_fuel_usage') != null )
 	{
 		send_excel( xl, 'annual_fuel_usage' );
 		send_excel( xl, 'om_fuel_cost' );
 		send_excel( xl, 'om_fuel_cost_escal' );
 	} 
-	if ( value('om_opt_fuel_1_usage') != null )
+	if ( varinfo('om_opt_fuel_1_usage') != null )
 	{
 		send_excel( xl, 'om_opt_fuel_1_usage' );
 		send_excel( xl, 'om_opt_fuel_1_cost' );
 		send_excel( xl, 'om_opt_fuel_1_cost_escal' );
 	} 
-	if ( value('om_opt_fuel_2_usage') != null )
+	if ( varinfo('om_opt_fuel_2_usage') != null )
 	{
 		send_excel( xl, 'om_opt_fuel_2_usage' );
 		send_excel( xl, 'om_opt_fuel_2_cost' );
