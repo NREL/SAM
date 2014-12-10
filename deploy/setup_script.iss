@@ -66,6 +66,7 @@ Source: "win32/libeay32.dll"; DestDir: "{app}/win32"; Excludes: ".svn,*.map";  F
 Source: "win32/libcurl.dll"; DestDir: "{app}/win32"; Excludes: ".svn,*.map";  Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "win32/sam.exe"; DestDir: "{app}/win32"; Excludes: ".svn,*.map";  Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "win32/sam.pdb"; DestDir: "{app}/win32"; Excludes: ".svn,*.map";  Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "win32/webupd.exe"; DestDir: "{app}/win32"; Excludes: ".svn,*.map";  Flags: ignoreversion recursesubdirs createallsubdirs
 
 Source: "x64/ssleay32.dll"; DestDir: "{app}/x64"; Excludes: ".svn,*.map"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "x64/ssc.dll"; DestDir: "{app}/x64"; Excludes: ".svn,*.map";  Flags: ignoreversion recursesubdirs createallsubdirs
@@ -78,6 +79,7 @@ Source: "x64/libeay32.dll"; DestDir: "{app}/x64"; Excludes: ".svn,*.map";  Flags
 Source: "x64/libcurl.dll"; DestDir: "{app}/x64"; Excludes: ".svn,*.map";  Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "x64/sam.exe"; DestDir: "{app}/x64"; Excludes: ".svn,*.map";  Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "x64/sam.pdb"; DestDir: "{app}/x64"; Excludes: ".svn,*.map";  Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "x64/webupd.exe"; DestDir: "{app}/x64"; Excludes: ".svn,*.map";  Flags: ignoreversion recursesubdirs createallsubdirs
 
 
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files

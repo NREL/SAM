@@ -61,8 +61,7 @@ public:
 	Case *GetCurrentCase();
 	CaseWindow *GetCurrentCaseWindow();
 	void CaseVarGrid(std::vector<Case*> &cases);
-
-
+	
 protected:
 	void OnClose( wxCloseEvent & );
 	void OnCommand( wxCommandEvent & );
@@ -280,7 +279,8 @@ public:
 	static int VersionMajor();
 	static int VersionMinor();
 	static int VersionMicro();
-	static wxWindow *CurrentActiveWindow();
+	static wxWindow *CurrentActiveWindow();	
+	static void CheckForUpdates( bool quiet );
 
 	static ConfigDatabase &Config();
 	static InputPageDatabase &InputPages();
