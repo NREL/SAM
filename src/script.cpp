@@ -456,6 +456,23 @@ void fcall_parout( lk::invoke_t &cxt )
 		vv->Write( cxt.result() );
 }
 
+void fcall_show_page(lk::invoke_t &cxt)
+{
+	LK_DOC("show_page", "Show a specific page in the user interface for the active case", "( [string:page name] ):boolean");
+	wxString page_name = cxt.arg(0).as_string();
+	if (Case *active_case = CurrentCase())
+	{
+		CaseWindow *case_window = SamApp::Window()->GetCaseWindow(active_case);
+		bool success = case_window->SwitchToPage(page_name);
+		if (success)
+		{
+			cxt.result().assign(true);
+			return;
+		}
+	}
+	else cxt.error("no active case");
+	return;
+}
 
 // external fcalls that are compatible with running in a script environment
 extern void fcall_urdb_read( lk::invoke_t & );
@@ -479,6 +496,7 @@ lk::fcall_t *sam_functions() {
 		fcall_set,
 		fcall_get,
 		fcall_simulate,
+		fcall_show_page,
 		fcall_configuration,
 		fcall_library,
 		fcall_load_defaults,
