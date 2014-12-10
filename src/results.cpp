@@ -783,8 +783,9 @@ void ResultsViewer::Setup( Simulation *sim )
 		int nyears = 0;
 		if ( VarValue *vv = m_sim->GetValue( cfg->Settings[ "analysis_period_var" ] ) )
 			nyears = (int)vv->Value();
-		if ( nyears < 16 ) nyears = 16;
-		if ( nyears > 100 ) nyears = 100;
+//		if (nyears < 16) nyears = 16;
+		if (nyears < 1) nyears = 1; // grid resizing for analysis periods less than 15 years
+		if (nyears > 100) nyears = 100;
 		m_cashFlowTable->ResizeGrid(400, nyears);
 		for (size_t c = 0; c<nyears; c++)
 			m_cashFlowTable->SetColLabelValue( c, wxString::Format("%d", (int)c) );
