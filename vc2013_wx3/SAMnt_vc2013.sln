@@ -5,6 +5,8 @@ VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SAMnt", "SAMnt_vc2013.vcxproj", "{9A9D38AE-B137-4FDB-9715-F356B0844B27}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "webupd", "webupd.vcxproj", "{681B4BE8-60E0-4C65-8AE5-0C11479C0344}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -21,6 +23,14 @@ Global
 		{9A9D38AE-B137-4FDB-9715-F356B0844B27}.Release|Win32.Build.0 = Release|Win32
 		{9A9D38AE-B137-4FDB-9715-F356B0844B27}.Release|x64.ActiveCfg = Release|x64
 		{9A9D38AE-B137-4FDB-9715-F356B0844B27}.Release|x64.Build.0 = Release|x64
+		{681B4BE8-60E0-4C65-8AE5-0C11479C0344}.Debug|Win32.ActiveCfg = Debug|Win32
+		{681B4BE8-60E0-4C65-8AE5-0C11479C0344}.Debug|Win32.Build.0 = Debug|Win32
+		{681B4BE8-60E0-4C65-8AE5-0C11479C0344}.Debug|x64.ActiveCfg = Debug|x64
+		{681B4BE8-60E0-4C65-8AE5-0C11479C0344}.Debug|x64.Build.0 = Debug|x64
+		{681B4BE8-60E0-4C65-8AE5-0C11479C0344}.Release|Win32.ActiveCfg = Release|Win32
+		{681B4BE8-60E0-4C65-8AE5-0C11479C0344}.Release|Win32.Build.0 = Release|Win32
+		{681B4BE8-60E0-4C65-8AE5-0C11479C0344}.Release|x64.ActiveCfg = Release|x64
+		{681B4BE8-60E0-4C65-8AE5-0C11479C0344}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
