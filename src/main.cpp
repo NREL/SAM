@@ -1635,7 +1635,7 @@ extern void RegisterReportObjectTypes();
 		Settings().Write(fl_key, false);
 
 		// enable web update app 
-		wxConfig cfg("SamUpdate", "NREL");
+		wxConfig cfg("SamUpdate3", "NREL");
 		cfg.Write("allow_web_updates", true);
 				
 		// after installing a new version, always show the reminders again until the user turns them off
@@ -1671,6 +1671,18 @@ extern void RegisterReportObjectTypes();
 
 	if ( argc > 1 )
 		g_mainWindow->LoadProject( argv[1] );
+
+	
+	
+	bool allow = true;
+	if (wxConfig *cfg = new wxConfig("SamUpdate3", "NREL")) 
+	{
+		cfg->Read("allow_web_updates", &allow);
+		delete cfg;
+	}
+
+	if (allow)
+		CheckForUpdates( true );
 
 	return true;
 }
@@ -1834,12 +1846,18 @@ static StringHash s_apis;
 
 wxString SamApp::GetAppPath()
 {
-	return wxPathOnly( g_appArgs[0] );
+	wxFileName path( g_appArgs[0] );
+	if ( !path.IsAbsolute() )
+		path.MakeAbsolute();
+
+	return wxPathOnly( path.GetFullPath() );
 }
 
 wxString SamApp::GetRuntimePath()
 {
-	return GetAppPath() + "/../runtime/";
+	wxFileName path( GetAppPath() + "/../runtime/" );
+	path.Normalize();
+	return path.GetFullPath();
 }
 
 wxString SamApp::GetUserLocalDataDir()
@@ -1884,6 +1902,39 @@ wxArrayString SamApp::RecentFiles()
 
 	return files;
 }
+
+void SamApp::CheckForUpdates( bool quiet )
+{
+#ifdef __WXMSW__
+	wxString webupd( "webupd.exe" );
+#else
+	wxString webupd( "webupd" );
+#endif
+	
+	wxFileName norm( SamApp::GetAppPath() + "/" + webupd );
+	norm.Normalize();
+	webupd = norm.GetFullPath();
+
+	if ( !wxFileExists( webupd ) )
+	{
+		if ( !quiet ) 
+			wxMessageBox("The SAM Web Update application could not be located.  Please try reinstalling SAM.\n\n" + webupd);
+		
+		return;
+	}
+
+	if ( webupd.Find( '"' ) != wxNOT_FOUND )
+		webupd = '"' + webupd + '"';
+		
+	if ( quiet )
+		webupd += " -quiet";
+
+	long pid = wxExecute( webupd, wxEXEC_ASYNC );
+	if( 0 == pid && !quiet )
+		wxMessageBox("Failed to launch SAM Web Update process.\n\n" + webupd );
+}
+
+
 
 class HelpWin;
 static HelpWin *gs_helpWin = 0;

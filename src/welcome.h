@@ -41,6 +41,7 @@ private:
 	wxMetroButton *m_openScript, *m_newScript, *m_btnAbout, *m_btnHelp, *m_btnGetStarted, *m_btnQuit, *m_btnRegistration;
 	wxMetroButton *m_onlineForum;
 	wxMetroButton *m_helpSystem;
+	wxMetroButton *m_btnCheckForUpdates;
 	wxMetroListBox *m_recent;
 		
 	wxTimer m_downloadTimer;
