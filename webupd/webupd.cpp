@@ -517,7 +517,9 @@ public:
 			sam_exe = g_appPath + "/MacOS/SAM";
 			binaries.Add( sam_exe );
 #endif
-			
+
+#ifdef __WXMSW__
+			// check whether application is running on Windows.  Not sure how to do this on OSX.			
 			while (1)
 			{
 				bool all_ok = true;
@@ -536,6 +538,10 @@ public:
 				if (wxCANCEL == wxMessageBox("Close all instances of SAM and then click OK to continue with the update.\n\nSAM Web Update will not work if SAM is running.  This window will stay open until you click OK or Cancel.", "SAM Web Update", wxOK|wxCANCEL))
 					return false;
 			}
+#else
+			// on OSX, kindly ask the user to quit SAM before proceeding with the update
+			wxMessageBox("Please quit SAM before proceeding with the web update.  The update may fail if SAM is still running.  Click OK to continue once SAM is closed.");
+#endif
 						
 			UpdateDialog upd(url);
 			upd.CenterOnScreen();
