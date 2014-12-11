@@ -162,25 +162,14 @@ public:
 				}
 					
 				m_text->AppendText("MD5: " + md5 + " ok.\n");
-					
-#ifdef __WXMSW__
-				bool ok = UnzipFile( patchArchive, g_appPath + "/" );
-#else 
-				// Mac extraction point is SAM.app/Contents
-				// Updated 3/3/13 so that ssc.dylib can be updated
-				// Allows for updating of Frameworks, MacOS and Resources folder in SAM.app
-				// g_appPath is location of application and is SAM.app/Contents/MacOS
-				wxFileName ffnorm( g_appPath + "/../" );
-				ffnorm.Normalize();
-				bool ok = UnzipFile( patchArchive, ffnorm.GetFullPath() );
-#endif
-				wxRemoveFile( patchArchive );
-
-				if (!ok)
+				
+				if ( !UnzipFile( patchArchive, g_appPath + "/" ) )
 				{
 					wxMessageBox("Failed to process archive.", "SAM Web Update");
 					return false;
 				}
+				
+				wxRemoveFile( patchArchive );
 
 				if (!RecordPatch( ipatch, pi->desc ))
 				{
@@ -525,7 +514,7 @@ public:
 #endif
 
 #else
-			sam_exe = g_appPath + "/SAM";
+			sam_exe = g_appPath + "/MacOS/SAM";
 			binaries.Add( sam_exe );
 #endif
 			
