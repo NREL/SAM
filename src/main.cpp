@@ -1991,10 +1991,28 @@ public:
 		else
 			proxy = "proxy: " + proxy;
 
+		
+		int patch = 0;
+#ifdef __WXMSW__
+		wxString path = SamApp::GetRuntimePath() + "/patches/patch_msw.txt";
+#else
+		wxString path = SamApp::GetRuntimePath() + "/patches/patch_osx.txt";
+#endif
+		if ( FILE *fp = fopen( (const char*)path.c_str(), "r" ) )
+		{
+			char buf[32];
+			fgets( buf, 31, fp );
+			fclose(fp);
+			patch = atoi( buf );
+		}
+		wxString patchStr;
+		if ( patch > 0 )
+			patchStr.Printf( ", updated from the web to revision %d", patch );
+
 		int nbit = (sizeof(void*) == 8) ? 64 : 32;
 		m_aboutHtml = "<html><body bgcolor=#ffffff>"
 			"<font color=#a9a9a9 face=\"Segoe UI Light\" size=10>System Advisor Model</font><br>"
-				"<font color=#a9a9a9 face=\"Segoe UI Light\" size=5>Version " + SamApp::VersionStr() + wxString::Format(", %d bit</font><br><br>", nbit )
+				"<font color=#a9a9a9 face=\"Segoe UI Light\" size=5>Version " + SamApp::VersionStr() + wxString::Format(", %d bit%s</font><br><br>", nbit, (const char*)patchStr.c_str() )
 				+ "<font color=#999999 face=\"Segoe UI Light\" size=3>" 
 				+ wxString::Format("SSC Version %d:  %s", ssc_version(), ssc_build_info() ) + "<br>"
 				+ wxString::Format("wxWidgets %d.%d.%d", wxMAJOR_VERSION, wxMINOR_VERSION, wxRELEASE_NUMBER )  + " on " + wxGetOsDescription() + "<br><br>Internet connection method: " + proxy + "<br><br>"				
