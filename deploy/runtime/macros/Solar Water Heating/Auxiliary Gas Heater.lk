@@ -54,12 +54,12 @@ P_pump = get('P_pump'); //Pump losses
 
 time_steps = #Q_saved;
 
-//Energy from gas calculations
+//Energy from gas calculations (converted from W to kW)
 for ( i = 0; i < time_steps; i++ )
 {
-  Q_gas_saved[i] = Q_saved[i] / Eta_burn;
-  Q_gas_no_solar[i] = Q_aux_only[i] / EF_gas_tank;
-  Q_gas_with_solar[i] = Q_gas_no_solar[i] - Q_gas_saved[i] + P_pump[i];
+  Q_gas_saved[i] = Q_saved[i] / Eta_burn / 1000;
+  Q_gas_no_solar[i] = Q_aux_only[i] / EF_gas_tank / 1000;
+  Q_gas_with_solar[i] = ( Q_gas_no_solar[i] - Q_gas_saved[i] + P_pump[i] ) / 1000;
 }
 
 //Calculate hourly solar fraction
