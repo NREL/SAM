@@ -781,7 +781,11 @@ function setup_generic_csp_pages()
 	addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource', 'help'='gss_location_and_resource' } );
 	addpage( [[ 'Generic CSP Solar Field' ]], { 'sidebar'='Solar Field', 'help'='gss_solar_field' } );
 	addpage( [[ 'Generic CSP Power Block' ]], { 'sidebar'='Power Block', 'help'='gss_power_block' } );
-	addpage( [[ 'Generic CSP Thermal Storage' ]], { 'sidebar'='Thermal Storage', 'help'='gss_thermal_storage' } );
+//	addpage( [[ 'Generic CSP Thermal Storage' ]], { 'sidebar'='Thermal Storage', 'help'='gss_thermal_storage' } );
+	addpage( [[ 'Generic CSP Thermal Storage' ,
+	  {'name' = 'CSP Dispatch Control', 'caption'='Dispatch Control', 'collapsible'=false, 'collapsible_var'='csp_dispatch_is_shown'} ]], 
+	  { 'sidebar'='Thermal Storage', 'help'='gss_thermal_storage' } );
+
 }
 
 //-----------------------------------------------------
