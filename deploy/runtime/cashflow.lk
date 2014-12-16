@@ -507,7 +507,7 @@ cashflow{ 'All Equity Partnership Flip' } = define()
 	cfline( '' ); // spacer
 
 	cfline( "Expenses", -1 ); // header	
-	if (value('system_use_recapitalization')) cfline ('capitalization', 0);
+//	if (value('system_use_recapitalization')) cfline ('capitalization', 0);
 	cfline( 'cf_om_fixed_expense,cf_om_production_expense,cf_om_capacity_expense', 0);
 	if ( fueltech == true )cfline('cf_om_fuel_expense', 0);
 	if ( fueltech == true )cfline('cf_om_opt_fuel_1_expense', 0);
@@ -675,7 +675,7 @@ cashflow{ 'Leveraged Partnership Flip' } = define()
 
 	cfline("Project Expenses", -1);
 
-	if (value('system_use_recapitalization')) cfline ('capitalization', 0);
+//	if (value('system_use_recapitalization')) cfline ('capitalization', 0);
 	cfline( 'cf_om_fixed_expense,cf_om_production_expense,cf_om_capacity_expense', 0);
 	if ( fueltech == true )cfline('cf_om_fuel_expense', 0);
 	if ( fueltech == true )cfline( 'cf_om_opt_fuel_1_expense', 0);
@@ -846,7 +846,7 @@ cashflow{ 'Sale Leaseback' } = define()
 	cfline( '' ); // spacer
 
 	cfline( "Expenses", -1 ); // header	
-	if (value('system_use_recapitalization')) cfline ('capitalization', 0);
+//	if (value('system_use_recapitalization')) cfline ('capitalization', 0);
 	cfline( 'cf_om_fixed_expense,cf_om_production_expense,cf_om_capacity_expense', 0);
 	if ( fueltech == true )cfline('cf_om_fuel_expense', 0);
 	if ( fueltech == true )cfline('cf_om_opt_fuel_1_expense', 0);
