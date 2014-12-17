@@ -410,8 +410,8 @@ bool wxSimpleCurl::GeoCode( const wxString &address, double *lat, double *lon, d
 		}
 		else
 			return false;
-	}
-	else return false;
+	} // if no tz argument given then return true
+	else return true;
 
 }
 
