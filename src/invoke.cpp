@@ -1582,6 +1582,10 @@ void fcall_solarprospector(lk::invoke_t &cxt)
 	SamApp::Settings().Read("solar_download_path", &wfdir);
 	if (wfdir.IsEmpty()) wfdir = ::wxGetHomeDir() + "/SAM Downloaded Weather Files";
 	if (!wxDirExists(wfdir)) wxFileName::Mkdir(wfdir, 511, ::wxPATH_MKDIR_FULL);
+	// save to settings (addresses user support issue 69194 12/11/14)
+	SamApp::Settings().Write("solar_download_path", wfdir);
+
+
 
 	wxString filename = wfdir + "/" + locname + "_" + year + ".csv";
 	ssc_data_set_string(data, "output_file", filename.c_str());

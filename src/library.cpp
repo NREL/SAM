@@ -652,10 +652,18 @@ void LibraryCtrl::SetLabel( const wxString &text )
 bool ShowSolarResourceDataSettings()
 {
 	wxString dnpath;
-	if ( !SamApp::Settings().Read( "solar_download_path", &dnpath ) )
+	if ( !SamApp::Settings().Read( "solar_download_path", &dnpath ) || dnpath.IsEmpty() )
 	{
 		dnpath = ::wxGetHomeDir() + "/SAM Downloaded Weather Files";
 		SamApp::Settings().Write( "solar_download_path", dnpath );
+	}
+
+	if (!wxDirExists(dnpath))
+	{
+		if (wxFileName::Mkdir(dnpath, 511, ::wxPATH_MKDIR_FULL))
+			SamApp::Settings().Write("solar_download_path", dnpath);
+		else
+			wxMessageBox("Please select a Solar \"Resource Data Folder\" in the following dialog.");
 	}
 
 	wxString buf;
