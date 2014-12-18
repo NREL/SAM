@@ -1033,24 +1033,25 @@ function send_excel_depr( xl, variable )
 
 function send_excel_fuel(xl)
 {
-	if ( varinfo('system_heat_rate') != null ) send_excel( xl, 'system_heat_rate' );
-	if ( varinfo('annual_fuel_usage') != null )
+	tech = technology();
+	if ( varinfo('system_heat_rate') != null ) xl_set( xl, output('system_heat_rate'),'system_heat_rate' );
+	if ( varinfo('annual_fuel_usage') != null && tech != "Biopower" ) //biopower annual_fuel_usage is total energy in thermal kWh
 	{
-		send_excel( xl, 'annual_fuel_usage' );
-		send_excel( xl, 'om_fuel_cost' );
-		send_excel( xl, 'om_fuel_cost_escal' );
+		xl_set( xl, output('annual_fuel_usage'), 'annual_fuel_usage');
+		xl_set( xl, value('om_fuel_cost'),'om_fuel_cost');
+		xl_set( xl, value('om_fuel_cost_escal'), 'om_fuel_cost_escal');
 	} 
 	if ( varinfo('om_opt_fuel_1_usage') != null )
 	{
-		send_excel( xl, 'om_opt_fuel_1_usage' );
-		send_excel( xl, 'om_opt_fuel_1_cost' );
-		send_excel( xl, 'om_opt_fuel_1_cost_escal' );
+		xl_set( xl, value('om_opt_fuel_1_usage'), 'om_opt_fuel_1_usage');
+		xl_set( xl, value('om_opt_fuel_1_cost'), 'om_opt_fuel_1_cost');
+		xl_set( xl, value('om_opt_fuel_1_cost_escal'), 'om_opt_fuel_1_cost_escal');
 	} 
 	if ( varinfo('om_opt_fuel_2_usage') != null )
 	{
-		send_excel( xl, 'om_opt_fuel_2_usage' );
-		send_excel( xl, 'om_opt_fuel_2_cost' );
-		send_excel( xl, 'om_opt_fuel_2_cost_escal' );
+		xl_set( xl, value('om_opt_fuel_2_usage'), 'om_opt_fuel_2_usage');
+		xl_set( xl, value('om_opt_fuel_2_cost'), 'om_opt_fuel_2_cost');
+		xl_set( xl, value('om_opt_fuel_2_cost_escal'), 'om_opt_fuel_2_cost_escal');
 	} 
 }
 
@@ -1281,7 +1282,8 @@ cashflow_to_excel{ 'Single Owner' } = define()
 	//export annual values to minimize rounding discrepancies between SAM and workbook
 	xl_set( xl, output('cf_energy_net'), "AnnualEnergy");
 	xl_set( xl, output('cf_ppa_price'), "AnnualPPAPrice");
-	
+	xl_set( xl, output('cf_energy_value'), "AnnualPPARevenue");
+		
 	//determine whether to send ppa price and irr inputs or outputs depending on solution mode
 	send_excel( xl, 'ppa_escalation'); 	
 	if ( value('ppa_soln_mode') == 0 ) //IRR is input
