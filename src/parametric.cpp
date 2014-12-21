@@ -1002,7 +1002,7 @@ ParametricGridData::~ParametricGridData()
 
 void ParametricGridData::Init()
 { // assumes m_par has been read in and is sorted properly..
-	if (m_par.Setup.size()<1) return;
+	if (m_par.Setup.size()<0) return;
 	m_col_hdrs.Clear();
 	m_input_names.Clear();
 	m_output_names.Clear();
@@ -2317,7 +2317,7 @@ void Parametric_QS::OnRemoveVariable(wxCommandEvent &evt)
 	else
 	{
 		wxString name = "";
-		if ((idx > 0) && (idx < m_input_names.Count()))
+		if ((idx >= 0) && (idx < m_input_names.Count()))
 			name = m_input_names[idx];
 
 		for (std::vector<wxArrayString>::iterator it = m_input_values.begin();
@@ -2384,6 +2384,8 @@ void Parametric_QS::OnAddVariable(wxCommandEvent &evt)
 		RefreshVariableList();
 		if (m_input_names.Count() > 0)
 			lstVariables->SetSelection(0);
+		else
+			m_input_values.clear();
 		RefreshValuesList();
 	}
 }
@@ -2549,6 +2551,7 @@ void Parametric_QS::UpdateCaseParametricData()
 
 	// combinations
 	int num_runs = 1;
+	if (m_input_values.size() <= 0) num_runs = 0;
 	for (int i = 0; i < m_input_values.size(); i++)
 		num_runs *= m_input_values[i].Count() - 1;
 	// create new inputs
@@ -2663,8 +2666,11 @@ void Parametric_QS::RefreshVariableList()
 			else if (m_input_names.Index(m_input_values[i].Item(0)) == wxNOT_FOUND)
 				to_remove.push_back(i);
 		}
-		for (size_t i = to_remove.size(); i > 0; i--)
-			m_input_values.erase(m_input_values.begin() + to_remove[i]);
+		if (to_remove.size() > 0)
+		{
+			for (int i = (int)to_remove.size() - 1; i >= 0; i--)
+				m_input_values.erase(m_input_values.begin() + (int)to_remove[i]);
+		}
 
 	}
 
