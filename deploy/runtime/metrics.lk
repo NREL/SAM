@@ -79,6 +79,7 @@ function lpf_metrics()
 	metric( 'size_of_equity', {'label'='Equity', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
 	metric( 'size_of_debt', {'label'='Debt', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
 	metric( 'debt_fraction', {'label'='Debt fraction', 'post'=' %', 'mode'='f', 'deci'='2' } );
+	metric( 'min_dscr', {'label'='Minimum DSCR','mode'='f', 'deci'='2' } );
 }
 
 
