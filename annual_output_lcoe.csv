@@ -12,8 +12,7 @@ PVWatts,Single Owner,35151256,20.9636,11.7379,;
 PVWatts,Leveraged Partnership Flip,35151256,4.04823,16.6953,; 
 PVWatts,All Equity Partnership Flip,35151256,4.6007,30.7959,; 
 PVWatts,Sale Leaseback,35151256,10.8148,14.5252,; 
-PVWatts,None,OVERWRITE	
-PVWatts,None,6834.58,NA,NA,Defaults file is likely out of date: PVWatts_None  Variables: 1 loaded but not in configuration, 0 wrong type, defaults file has 46, config has 45  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later)  Loaded but don't exist in config: system_use_lifetime_output; 
+PVWatts,None,6834.58,NA,NA,; 
 High-X Concentrating PV,Single Owner,2.17767e+006,53.3905,26.0538,; 
 High-X Concentrating PV,Leveraged Partnership Flip,2.17767e+006,15.1238,41.0128,; 
 High-X Concentrating PV,All Equity Partnership Flip,2.17767e+006,15.4003,76.547,; 
@@ -34,63 +33,15 @@ Biopower,Sale Leaseback,300885056,-4.3089,18.035,;
 Biopower,None,59882984,NA,NA,; 
 Geothermal Power,Single Owner,NA,12.0814,8.23883,; 
 Geothermal Power,Leveraged Partnership Flip,NA,-1.97657,9.70563,; 
-Geothermal Power,All Equity Partnership Flip,OVERWRITE	
-Geothermal Power,All Equity Partnership Flip,NA,-0.544409,12.431,Defaults file is likely out of date: Geothermal Power_All Equity Partnership Flip  Variables: 2 loaded but not in configuration, 0 wrong type, defaults file has 503, config has 503  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later)  Loaded but don't exist in config: geotherm.recapitalization_cost,geotherm.recapitalization_escalation; 
-Geothermal Power,Sale Leaseback,OVERWRITE	
-Geothermal Power,Sale Leaseback,NA,0.987457,8.42025,Defaults file is likely out of date: Geothermal Power_Sale Leaseback  Variables: 2 loaded but not in configuration, 0 wrong type, defaults file has 495, config has 495  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later)  Loaded but don't exist in config: geotherm.recapitalization_cost,geotherm.recapitalization_escalation; 
+Geothermal Power,All Equity Partnership Flip,NA,-0.544409,12.431,; 
+Geothermal Power,Sale Leaseback,NA,0.987457,8.42025,; 
 Geothermal Power,None,NA,NA,NA,; 
 Solar Water Heating,Residential,1630.3,36.6832,NA,; 
 Solar Water Heating,Commercial,2973.89,30.0036,NA,; 
-Solar Water Heating,None,OVERWRITE	
-Solar Water Heating,None,1630.3,NA,NA,Defaults file is likely out of date: Solar Water Heating_None  Variables: 1 loaded but not in configuration, 0 wrong type, defaults file has 79, config has 78  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later)  Loaded but don't exist in config: system_use_lifetime_output; 
+Solar Water Heating,None,1630.3,NA,NA,; 
 Generic System,Residential,6266.31,24.8516,NA,; 
 Generic System,Commercial,6266.31,13.0964,NA,; 
 Generic System,Single Owner,366658560,50.2113,32.8566,; 
 Generic System,Leveraged Partnership Flip,366658560,1.0877,35.6751,; 
 Generic System,All Equity Partnership Flip,366658560,-3.27858,74.7357,; 
 Generic System,Sale Leaseback,366658560,9.91422,39.5613,; 
-Generic System,None,366658560,NA,NA,; 
-Physical Trough,Commercial,350446976,6.93268,NA,; Notice: time 27622800.00 { Controller 3 }:\ 	After 21 iterations, the controller convergence error of 1.04434 could not resolve below the tolerance of 0.001. Check that results at this timestep are not unreasonably biasing annual metrics. Notice: time 27622800.00 { Controller 3 }:\ 	After 21 iterations, the controller convergence error of 1.04441 could not resolve below the tolerance of 0.001. Check that results at this timestep are not unreasonably biasing annual metrics.
-Physical Trough,Single Owner,350446976,36.8746,18.1056,; Notice: time 27622800.00 { Controller 3 }:\ 	After 21 iterations, the controller convergence error of 1.04434 could not resolve below the tolerance of 0.001. Check that results at this timestep are not unreasonably biasing annual metrics. Notice: time 27622800.00 { Controller 3 }:\ 	After 21 iterations, the controller convergence error of 1.04441 could not resolve below the tolerance of 0.001. Check that results at this timestep are not unreasonably biasing annual metrics.
-Physical Trough,Leveraged Partnership Flip,350446976,7.93339,27.1096,; Notice: time 27622800.00 { Controller 3 }:\ 	After 21 iterations, the controller convergence error of 1.04434 could not resolve below the tolerance of 0.001. Check that results at this timestep are not unreasonably biasing annual metrics. Notice: time 27622800.00 { Controller 3 }:\ 	After 21 iterations, the controller convergence error of 1.04441 could not resolve below the tolerance of 0.001. Check that results at this timestep are not unreasonably biasing annual metrics.
-Physical Trough,All Equity Partnership Flip,350446976,8.21069,54.0515,; Notice: time 27622800.00 { Controller 3 }:\ 	After 21 iterations, the controller convergence error of 1.04434 could not resolve below the tolerance of 0.001. Check that results at this timestep are not unreasonably biasing annual metrics. Notice: time 27622800.00 { Controller 3 }:\ 	After 21 iterations, the controller convergence error of 1.04441 could not resolve below the tolerance of 0.001. Check that results at this timestep are not unreasonably biasing annual metrics.
-Physical Trough,Sale Leaseback,350446976,19.8154,23.1721,; Notice: time 27622800.00 { Controller 3 }:\ 	After 21 iterations, the controller convergence error of 1.04434 could not resolve below the tolerance of 0.001. Check that results at this timestep are not unreasonably biasing annual metrics. Notice: time 27622800.00 { Controller 3 }:\ 	After 21 iterations, the controller convergence error of 1.04441 could not resolve below the tolerance of 0.001. Check that results at this timestep are not unreasonably biasing annual metrics.
-Physical Trough,None,350446976,NA,NA,; Notice: time 27622800.00 { Controller 3 }:\ 	After 21 iterations, the controller convergence error of 1.04434 could not resolve below the tolerance of 0.001. Check that results at this timestep are not unreasonably biasing annual metrics. Notice: time 27622800.00 { Controller 3 }:\ 	After 21 iterations, the controller convergence error of 1.04441 could not resolve below the tolerance of 0.001. Check that results at this timestep are not unreasonably biasing annual metrics.
-Empirical Trough,Commercial,344411680,7.11225,NA,; 
-Empirical Trough,Single Owner,344411680,37.7926,18.5409,; 
-Empirical Trough,Leveraged Partnership Flip,344411680,9.06663,29.8305,; 
-Empirical Trough,All Equity Partnership Flip,344411680,9.36631,59.7494,; 
-Empirical Trough,Sale Leaseback,344411680,22.3229,25.4112,; 
-Empirical Trough,None,344411680,NA,NA,; 
-MSPT,Single Owner,546110912,26.4388,12.9519,; 
-MSPT,Leveraged Partnership Flip,524608320,5.62156,19.382,; 
-MSPT,All Equity Partnership Flip,524608320,5.82319,38.5996,; 
-MSPT,Sale Leaseback,524608320,14.1283,16.5421,; 
-DSPT,Single Owner,261477504,28.6604,14.4395,; 
-DSPT,Leveraged Partnership Flip,250378512,5.27835,21.6193,; 
-DSPT,All Equity Partnership Flip,250378512,5.53484,42.1924,; 
-DSPT,Sale Leaseback,250378512,13.9566,18.9739,; 
-MSLF,Commercial,306199296,16.7259,NA,; 
-MSLF,Single Owner,306199296,45.7408,23.0552,; 
-MSLF,Leveraged Partnership Flip,306199296,11.3721,32.3596,; 
-MSLF,All Equity Partnership Flip,306199296,11.611,66.1455,; 
-MSLF,Sale Leaseback,306199296,26.2607,27.4886,; 
-MSLF,None,306199296,NA,NA,; 
-DSLF,Commercial,231961216,8.28587,NA,; 
-DSLF,Single Owner,231961216,43.8528,20.2093,; 
-DSLF,Leveraged Partnership Flip,231961216,12.6927,31.6121,; 
-DSLF,All Equity Partnership Flip,231961216,12.9158,65.8722,; 
-DSLF,Sale Leaseback,231961216,27.6029,26.9132,; 
-DSLF,None,231961216,NA,NA,; 
-Dish Stirling,Commercial,188473424,5.41855,NA,; 
-Dish Stirling,Single Owner,188473424,31.5812,17.103,; 
-Dish Stirling,Leveraged Partnership Flip,188473424,2.86916,23.9866,; 
-Dish Stirling,All Equity Partnership Flip,188473424,3.2378,44.3219,; 
-Dish Stirling,Sale Leaseback,188473424,11.1724,21.5429,; 
-Dish Stirling,None,188473424,NA,NA,; 
-Generic CSP System,Commercial,427387552,5.32914,NA,; 
-Generic CSP System,Single Owner,427387552,30.5875,15.0535,; 
-Generic CSP System,Leveraged Partnership Flip,427387552,6.4947,22.504,; 
-Generic CSP System,All Equity Partnership Flip,427387552,6.73695,44.7697,; 
-Generic CSP System,Sale Leaseback,427387552,16.3297,19.2389,; 
-Generic CSP System,None,427387552,NA,NA,; 
