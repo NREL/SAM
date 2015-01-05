@@ -1,31 +1,32 @@
 /*@
 This macro allows you to add the energy output of two different cases together prior to running them through a single financial model.
-This may be helpful for a variety of scenarios, including:
+This may be helpful for modeling a variety of scenarios, including:
 <ul>
-<li>Modeling systems that include two different types of renewable technologies (wind and PV, etc.)
-<li>Modeling systems containing multiple equipment models (different inverters, different wind turbines, etc.)
-<li>Modeling systems that exceed the maximum number of subarrays allowed in PV systems
+<li>Systems that include two different types of renewable technologies (wind and PV, etc.)
+<li>Systems containing multiple equipment models (different inverters, different wind turbines, etc.)
+<li>Systems that exceed the maximum number of subarrays allowed in PV systems
 </ul>
+<br><br>
+<img src="$MACROPATH/combine_cases.jpg">
 <br><br>
 <b>Instructions:</b>
 <ol>
 <li>Create the cases that you wish to combine. These cases may be any technology option, paired with any financial model; however, the financial model will not be used in these cases.
-<li>Complete the system design/specification pages for all the cases that you wish to combine.
-<li>Complete the System Costs page for the systems that you wish to combine; you may complete other financial pages in those cases, but only the information on the System Costs page will be used.
-<li>Create a Generic system case with the financial model that you wish to use for the combined system. Note that this can be the "No financial model" option.
-<li> Fill in all of the financial pages for the Generic system that you wish to use as the combined model, EXCEPT the System Costs page. Costs will be combined and applied from the individual cases being combined, as applicable.
-<li>Select the cases that you wish to combine (including the Generic system case that will be used for the combined model) using the inputs at the right.
+<li>Complete the system design/specification and system costs pages for all the cases that you wish to combine. If you complete other financial pages, only the information on the system costs page will be used.
+<li>Create a Generic System case with the financial model that you wish to use for the combined system. Note that this can be the "No financial model" option.
+<li> Fill in all of the financial pages for the Generic system that you wish to use as the combined model, EXCEPT the system costs page. Costs will be combined and applied from the individual cases being combined, as applicable.
+<li>Select the cases that you wish to combine (including the Generic System case that will be used for the combined model) using the inputs at the right.
 <ul>
 <li>You may choose all of the cases in the current project to be combined, OR
-<li>You may choose which cases to combine by typing their names into the input box, separated by ONLY a comma (no space). Be sure to include the name of the Generic system that you wish to use as the combined model.
+<li>You may choose which cases to combine by typing their names into the input box, separated by ONLY a comma (no space). Be sure to include the name of the Generic System that you wish to use as the combined model.
 </ul>
 <li>Click 'Run macro' at the top of the screen.
-<li>When prompted, confirm the Generic system case to be used as the combined model.
-<li>When the macro is complete, view combined system results in the Generic system case that you designated to be used as the combined model.
+<li>When prompted, confirm the cases that will be combined.
+<li>When the macro is complete, view combined system results in the Generic System case that you designated to be used as the combined model.
 </ol>
 <br><br>Notes:
 <ul>
-<li>This macro requires that all cases contain the same degradation rate, including the Generic system to be used as the combined model.
+<li>This macro requires that all cases contain the same degradation rate, including the Generic System to be used as the combined model.
 <li>If one of the systems that you wish to combine is a geothermal system, ONLY first-year energy is used in the combined system model; the first-year energy is repeated for the lifetime of the system.
 <li>The energy predictions of the individual systems may not add up to exactly the energy prediction of the combined system due to differences in rounding at an hourly level.
 <li>Running the subsystems independently and then adding financial results may not yield the same financial results as running the combined system, due to different financial inputs.
@@ -97,19 +98,38 @@ for (i=0; i<num_cases; i++)
 }
 
 //Which generic case to use for the financial model
-if (count <=0)
+if (count <=0) //no generic cases
 {
 	msgbox('This macro requires a generic system set up with the financial configuration that you wish to use to model the combined system. Please include a generic system and try again.');
 	exit;
 }
-financial = choose_from_list(generic, 'Please choose which generic system to use as the financial configuration for the combined system.', 'Select financial case', 0);
+if (#generic > 1) //more than one generic case
+	financial = choose_from_list(generic, 'Please choose which generic system to use as the financial configuration for the combined system.', 'Select financial case', 0);
+else //exactly one generic case
+	financial = generic[0];
 outln('Case to use for financial configuration is: ' + financial);
+
+//Verify the configuration before running it
+msg = 'This macro will combine the performance and costs of cases:';
+for (i=0; i<num_cases; i++)
+{
+	if (cases[i] == financial)
+		continue;
+	msg += '\n' + cases[i];
+}
+msg += '\nand run the combined performance results through the financial model specified in:\n' + financial + '\nDo you wish to continue?';
+verify = yesno(msg);
+if (!verify)
+	exit;
 
 //All degradation rates must be the same- different degradation of individual sub-systems is not yet possible for the out-years
 constant = true;
 for(i=0; i<num_cases; i++)
 {
 	active_case(cases[i]);
+	config = configuration();
+	if (config[1] == 'None')
+		continue;
 	degradation_this = get('degradation');
 	if (i>0)
 	{
@@ -141,10 +161,12 @@ if (!constant)
 	}
 	for (i=0; i<#degrad; i++)
 		degrad[i] = to_real(degrad[i]);
-	outln('degrad ' + degrad + ' ' + typeof(degrad));
 	for (i=0; i<num_cases; i++)
 	{
 		active_case(cases[i]);
+		config = configuration();
+		if (config[1] == 'None')
+			continue;
 		set('degradation', degrad);
 	}
 }	
@@ -183,8 +205,11 @@ for (i=0; i < num_cases; i++)
 	active_case(cases[i]);
 	config = configuration();
 	outln('Simulating: ' + cases[i]);
-	inflation_old = get('inflation_rate'); //save the old inflation rate so that the input can be reset, avoiding confusion
-	set('inflation_rate', inflation); //use the inflation rate from the generic system where it should have been defined- it will affect the out-years O&M costs
+	if (config[1] != 'None')
+	{
+		inflation_old = get('inflation_rate'); //save the old inflation rate so that the input can be reset, avoiding confusion
+		set('inflation_rate', inflation); //use the inflation rate from the generic system where it should have been defined- it will affect the out-years O&M costs
+	}
 	messages = null;
 	successful = simulate(messages, false); //don't update the UI results because it could cause user confusion RE: inflation rate in the cash flow.
 	//check that the case ran
@@ -231,7 +256,8 @@ for (i=0; i < num_cases; i++)
 	}
 	
 	//put inflation rate back to input in case user wants to run subsystem separately with his originally specified financial parameters
-	set('inflation_rate', inflation_old);
+	if (config[1] != 'None')
+		set('inflation_rate', inflation_old);
 }
 
 //For user benefit, change the fixed O&M schedule back to a single value if all entries are the same
