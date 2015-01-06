@@ -64,7 +64,9 @@ private:
 	wxTextCtrl *m_output;
 	wxArrayString m_macroList;
 	wxMetroButton *m_run, *m_stop, *m_code;
+	wxPanel *m_leftPanel;
 	wxPanel *m_rightPanel;
+	wxSplitterWindow *vsplit;
 
 	struct ui_item {
 		wxString name;
