@@ -216,10 +216,7 @@ MacroPanel::MacroPanel( wxWindow *parent, Case *cc )
 {
 	m_output = new wxTextCtrl( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxTE_MULTILINE|wxTE_READONLY|wxBORDER_NONE);
 	
-//	wxSplitterWindow *vsplit = new wxSplitterWindow(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxSP_NOBORDER | wxSP_LIVE_UPDATE | wxSP_3DSASH);
-	vsplit = new wxSplitterWindow(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxSP_NOBORDER | wxSP_LIVE_UPDATE | wxSP_3DSASH);
-
-//	m_listbox = new wxMetroListBox( vsplit, ID_MACRO_LIST );
+	wxSplitterWindow *vsplit = new wxSplitterWindow(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxSP_NOBORDER | wxSP_LIVE_UPDATE | wxSP_3DSASH);
 	m_leftPanel = new wxPanel(vsplit);
 	m_rightPanel = new wxPanel(vsplit);
 	m_listbox = new wxMetroListBox(m_leftPanel, ID_MACRO_LIST);
@@ -262,7 +259,6 @@ MacroPanel::MacroPanel( wxWindow *parent, Case *cc )
 
 	m_rightPanel->SetSizer( vsizer );
 
-//	vsplit->SplitVertically(m_listbox, m_rightPanel, 250);
 	vsplit->SplitVertically(m_leftPanel, m_rightPanel, 250);
 	vsplit->SetMinimumPaneSize(100);
 
@@ -989,12 +985,6 @@ void MacroPanel::ConfigurationChanged()
 
 	UpdateHtml();
 
-//	vsplit->Refresh();
-//	vsplit->SplitVertically(m_listbox, m_rightPanel, 250);
-//	vsplit->SetMinimumPaneSize(100);
-
-	//	m_listbox->SetSize(m_listbox->GetBestSize());
-//	m_listbox->SetSize(vsplit->GetWindow1()->GetSize());
 	m_leftPanel->Layout();
 
 }
