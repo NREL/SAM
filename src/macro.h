@@ -66,7 +66,6 @@ private:
 	wxMetroButton *m_run, *m_stop, *m_code;
 	wxPanel *m_leftPanel;
 	wxPanel *m_rightPanel;
-	wxSplitterWindow *vsplit;
 
 	struct ui_item {
 		wxString name;
