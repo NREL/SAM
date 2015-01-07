@@ -900,7 +900,13 @@ wxString VarValue::AsString( wxChar arrsep, wxChar tabsep )
 	{
 	case VV_INVALID: return "<invalid>";
 	case VV_STRING: return m_str;
-	case VV_NUMBER: return wxString::Format("%g", (float)m_val );
+	case VV_NUMBER:
+	{
+		if (isnan(m_val))
+			return "NaN";
+		else
+			return wxString::Format("%g", (float)m_val);
+	}
 	case VV_ARRAY:
 	{
 		wxString buf="";
