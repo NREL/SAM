@@ -253,10 +253,20 @@ static std::vector<wxColour> s_colours;
 
 			plotdata[i].reserve( ndata );
 			for( size_t k=0;k<n;k++ )
-				plotdata[i].push_back( wxRealPoint( k, p[k] ) );
+			{
+				if (isnan(p[k]))
+					plotdata[i].push_back(wxRealPoint(k, 0));
+				else
+					plotdata[i].push_back(wxRealPoint(k, p[k]));
+			}
 		}
 		else
-			plotdata[i].push_back( wxRealPoint( i, yvars[i]->Value() ) ); 
+		{
+			if (isnan(yvars[i]->Value()))
+				plotdata[i].push_back(wxRealPoint(i, 0));
+			else
+				plotdata[i].push_back(wxRealPoint(i, yvars[i]->Value()));
+		}
 
 		wxPLPlottable *plot = 0;
 		if ( m_g.Type == Graph::LINE )
@@ -463,11 +473,21 @@ void GraphCtrl::Display(std::vector<Simulation *>sims, Graph &gi)
 			float *p = yvars[i]->Array(&n);
 
 			plotdata[i].reserve(ndata);
-			for (size_t k = 0; k<n; k++)
-				plotdata[i].push_back(wxRealPoint(k, p[k]));
+			for (size_t k = 0; k < n; k++)
+			{
+				if (isnan(p[k]))
+					plotdata[i].push_back(wxRealPoint(k, 0));
+				else
+					plotdata[i].push_back(wxRealPoint(k, p[k]));
+			}
 		}
 		else
-			plotdata[i].push_back(wxRealPoint(i, yvars[i]->Value()));
+		{
+			if (isnan(yvars[i]->Value()))
+				plotdata[i].push_back(wxRealPoint(i, 0));
+			else
+				plotdata[i].push_back(wxRealPoint(i, yvars[i]->Value()));
+		}
 
 		wxPLPlottable *plot = 0;
 		if (m_g.Type == Graph::LINE)
