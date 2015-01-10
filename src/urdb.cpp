@@ -142,6 +142,50 @@ bool OpenEI::QueryUtilityCompanies(wxArrayString &names, wxString *err)
 
 }
 
+
+bool OpenEI::ResolveUtilityName(const wxString &name, wxString *urdb_name, wxString *err)
+{
+
+	wxString utlnm = name;
+	utlnm.Replace("&", "%26");
+	// production http://dev.openei.org/services/doc/rest/util_rates?version=3
+
+	wxString url = "http://en.openei.org/w/index.php?title=Special%3AAsk&q=%5B%5BCategory%3AUtility+Companies%5D%5D%5B%5BEiaUtilityId%3A%3A%2B%5D%5D%5B%5B" + utlnm + "%5D%5D&po=%3FEiaUtilityId%0D%0A%0D%0A&p%5Bformat%5D=json";
+
+	wxString json_data = MyGet(url);
+	if (json_data.IsEmpty())
+	{
+		if (err) *err = "Could not retrieve rate information for " + name;
+		return false;
+	}
+
+	wxJSONReader reader;
+	//	reader.SetSkipStringDoubleQuotes(true);
+	wxJSONValue root;
+	if (reader.Parse(json_data, &root) != 0)
+	{
+		if (err) *err = "Could not process returned JSON data for utility rates for " + name;
+		return false;
+	}
+
+	wxString urdbname = "";
+	wxJSONValue item_list = root.Item("items");
+	int count = item_list.Size();
+	for (int i = 0; i<count; i++)
+	{
+
+		RateInfo x;
+		//		x.GUID = json_string(item_list[i].Item("label")).Mid(5);
+		urdbname = json_string(item_list[i].Item("label"));
+	}
+	if (urdb_name) *urdb_name = urdbname;
+
+	if (err) *err = wxEmptyString;
+
+	return true;
+}
+
+
 bool OpenEI::QueryUtilityRates(const wxString &name, std::vector<RateInfo> &rates, wxString *err)
 {
 	wxString utlnm = name;
@@ -620,7 +664,19 @@ void OpenEIUtilityRateDialog::QueryRates(const wxString &utility_name)
 	lblStatus->SetLabel("Loading rates for " + utility_name + "...");
 	wxString err;
 	//wxBusyInfo busy("Communicating with OpenEI.org... please wait", this);
-	if (!api.QueryUtilityRates( utility_name, mUtilityRates, &err ))
+
+	wxString urdb_utility_name = "";
+	// first resolve aliases
+	if (!api.ResolveUtilityName(utility_name, &urdb_utility_name, &err))
+	{
+		wxMessageBox("Error:\n\n" + err);
+		return;
+	}
+
+
+	// get any rates
+	//if (!api.QueryUtilityRates(utility_name, mUtilityRates, &err))
+	if (!api.QueryUtilityRates(urdb_utility_name, mUtilityRates, &err))
 	{
 		wxMessageBox("Error:\n\n" + err);
 		return;

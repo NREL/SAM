@@ -1702,7 +1702,16 @@ void fcall_urdb_list_rates(lk::invoke_t &cxt)
 
 	std::vector<OpenEI::RateInfo> ratelist;
 	OpenEI api;
-	if (api.QueryUtilityRates(utility, ratelist))
+
+	wxString urdb_utility_name = "";
+	// first resolve aliases
+	if (!api.ResolveUtilityName(utility, &urdb_utility_name))
+	{
+		cxt.result().assign(-1);
+		return;
+	}
+
+	if (api.QueryUtilityRates(urdb_utility_name, ratelist))
 	{
 		cxt.result().empty_vector();
 		for (int i = 0; i<(int)ratelist.size(); i++)

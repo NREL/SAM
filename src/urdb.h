@@ -96,6 +96,8 @@ public:
 	};
 
 	bool QueryUtilityCompanies(wxArrayString &names, wxString *err=NULL);
+	// resolve aliases in database per email from Jay Huggins 1/9/15
+	bool ResolveUtilityName(const wxString &name, wxString *urdb_name, wxString *err=NULL);
 	bool QueryUtilityRates(const wxString &name, std::vector<RateInfo> &rates, wxString *err=NULL);
 	int UtilityCompanyRateCount(const wxString &name);
 	bool RetrieveUtilityRateData(const wxString &guid, RateData &rate, wxString *json_url=NULL, wxString *err=NULL);
