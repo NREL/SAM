@@ -1695,6 +1695,20 @@ void fcall_urdb_list_utilities(lk::invoke_t &cxt)
 	}
 }
 
+void fcall_urdb_list_utilities_by_zip_code(lk::invoke_t &cxt)
+{
+	LK_DOC("urdb_list_utilities_by_zip_code", "Lists utility companies from the OpenEI Utility Rate Database for zip code.", "(string:zip_code):string");
+	wxString zip_code = cxt.arg(0).as_string();
+	wxArrayString names;
+	OpenEI api;
+	if (api.QueryUtilityCompaniesbyZipcode(zip_code, names))
+	{
+		cxt.result().empty_vector();
+		for (size_t i = 0; i<names.size(); i++)
+			cxt.result().vec_append(names[i]);
+	}
+}
+
 void fcall_urdb_list_rates(lk::invoke_t &cxt)
 {
 	LK_DOC("urdb_list_rates", "Lists rates for utility argument from OpenEI Utility Rate Database.", "(string:utility):string");
@@ -2496,6 +2510,7 @@ lk::fcall_t* invoke_uicallback_funcs()
 		fcall_urdb_write,
 		fcall_urdb_get,
 		fcall_urdb_list_utilities,
+		fcall_urdb_list_utilities_by_zip_code,
 		fcall_urdb_list_rates,
 		fcall_editscene3d,
 		fcall_showsettings,

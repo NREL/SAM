@@ -96,6 +96,8 @@ public:
 	};
 
 	bool QueryUtilityCompanies(wxArrayString &names, wxString *err=NULL);
+	// search by zip code per email from Jay Huggins 1/9/15
+	bool QueryUtilityCompaniesbyZipcode(const wxString &zipcode, wxArrayString &names, wxString *err=NULL);
 	// resolve aliases in database per email from Jay Huggins 1/9/15
 	bool ResolveUtilityName(const wxString &name, wxString *urdb_name, wxString *err=NULL);
 	bool QueryUtilityRates(const wxString &name, std::vector<RateInfo> &rates, wxString *err=NULL);
@@ -118,6 +120,7 @@ public:
 
 	void StartHttp();
 	void QueryUtilities();
+	void QueryUtilitiesByZipCode();
 	void QueryRates(const wxString &utility_name);
 	void OnEvent(wxCommandEvent &evt);
 	void OnTimer(wxTimerEvent &evt);
@@ -144,6 +147,9 @@ private:
 	wxButton *btnClose;
 	wxButton *btnQueryAgain;
 	wxChoice *cboResCom;
+
+	wxButton *btnQueryZipCode;
+	wxTextCtrl *txtZipCode;
 
 	wxArrayString mUtilityCompanies;
 	std::vector<OpenEI::RateInfo> mUtilityRates;
