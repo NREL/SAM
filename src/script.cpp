@@ -470,8 +470,9 @@ void fcall_show_page(lk::invoke_t &cxt)
 extern void fcall_urdb_read( lk::invoke_t & );
 extern void fcall_urdb_write( lk::invoke_t & );
 extern void fcall_urdb_get( lk::invoke_t & );
-extern void fcall_urdb_list_utilities( lk::invoke_t & );
-extern void fcall_urdb_list_rates( lk::invoke_t & );
+extern void fcall_urdb_list_utilities(lk::invoke_t &);
+extern void fcall_urdb_list_utilities_by_zip_code(lk::invoke_t &);
+extern void fcall_urdb_list_rates(lk::invoke_t &);
 
 lk::fcall_t *sam_functions() {
 	
@@ -499,6 +500,7 @@ lk::fcall_t *sam_functions() {
 		fcall_urdb_write,
 		fcall_urdb_get,
 		fcall_urdb_list_utilities,
+		fcall_urdb_list_utilities_by_zip_code,
 		fcall_urdb_list_rates,
 		fcall_parsim,
 		fcall_parout,

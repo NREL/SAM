@@ -143,6 +143,73 @@ bool OpenEI::QueryUtilityCompanies(wxArrayString &names, wxString *err)
 }
 
 
+
+bool OpenEI::QueryUtilityCompaniesbyZipcode(const wxString &zipcode, wxArrayString &names, wxString *err)
+{
+
+	//  based on email from Jay Huggins 7/8/14 - use latest format - still at version 2
+	wxString url = "http://developer.nrel.gov/api/utility_rates/v3.json?api_key=rJzFOTOJhNHcLOnPmW2TNCLV8I4HHLgKddAycGpn&address=" + zipcode;
+
+	wxString json_data = MyGet(url);
+	if (json_data.IsEmpty())
+	{
+		if (err) *err = "Could not retrieve JSON data for zip=" + zipcode + ".";
+		return false;
+	}
+
+	wxJSONReader reader;
+	wxJSONValue root;
+	if (reader.Parse(json_data, &root) != 0)
+	{
+		if (err) *err = "Could not process returned JSON data for zip=" + zipcode + ".";
+		return false;
+	}
+
+	wxJSONValue item_list = root.Item("outputs");
+	// does not resolve to OpenEI names only EIA names
+	//wxString buf = item_list.Item("utility_name").AsString();
+	wxString company_id = item_list.Item("company_id").AsString();
+	if (company_id.IsEmpty())
+	{
+		if (err) *err = "Could not process returned JSON companies for zip=" + zipcode + ".";
+		return false;
+	}
+
+	company_id.Replace("|", "%7C%7C"); // urlencode
+	url = "http://en.openei.org/w/index.php?title=Special%3AAsk&q=%5B%5BCategory%3AUtility+Companies%5D%5D%5B%5BEiaUtilityId%3A%3A" + company_id + "%5D%5D&po=%3FEiaUtilityId%0D%0A&eq=yes&p%5Bformat%5D=json";
+
+	json_data = MyGet(url);
+	if (json_data.IsEmpty())
+	{
+		if (err) *err = "Could not retrieve JSON EIA name for zip=" + zipcode + ".";
+		return false;
+	}
+
+	if (reader.Parse(json_data, &root) != 0)
+	{
+		if (err) *err = "Could not process returned JSON EIA name for zip=" + zipcode + ".";
+		return false;
+	}
+
+	names.Clear();
+	item_list = root.Item("items");
+	int count = item_list.Size();
+	for (int i = 0; i<count; i++)
+	{
+		wxString buf = item_list[i].Item("label").AsString();
+		buf.Replace("&amp;", "&");
+		names.Add(buf);
+	}
+
+	if (err) *err = wxEmptyString;
+
+	return true;
+
+}
+
+
+
+
 bool OpenEI::ResolveUtilityName(const wxString &name, wxString *urdb_name, wxString *err)
 {
 
@@ -521,12 +588,15 @@ enum {
   ID_btnClose,
   ID_txtUtilitySearch,
   ID_btnQueryAgain,
-  ID_cboResCom };
+  ID_cboResCom, 
+  ID_btnQueryZipCode
+};
 
 BEGIN_EVENT_TABLE( OpenEIUtilityRateDialog, wxDialog )
 	EVT_TIMER( wxID_ANY, OpenEIUtilityRateDialog::OnTimer )
-	EVT_BUTTON( ID_btnQueryAgain, OpenEIUtilityRateDialog::OnEvent )
-	EVT_CHOICE( ID_cboResCom, OpenEIUtilityRateDialog::OnEvent )
+	EVT_BUTTON(ID_btnQueryAgain, OpenEIUtilityRateDialog::OnEvent)
+	EVT_BUTTON(ID_btnQueryZipCode, OpenEIUtilityRateDialog::OnEvent)
+	EVT_CHOICE(ID_cboResCom, OpenEIUtilityRateDialog::OnEvent)
 	EVT_LISTBOX( ID_lstUtilities, OpenEIUtilityRateDialog::OnEvent )
 	EVT_LISTBOX( ID_lstRates, OpenEIUtilityRateDialog::OnEvent )
 	EVT_TEXT( ID_txtUtilitySearch, OpenEIUtilityRateDialog::OnEvent )
@@ -556,7 +626,7 @@ OpenEIUtilityRateDialog::OpenEIUtilityRateDialog(wxWindow *parent, const wxStrin
 	cboResCom->SetSelection(cbo_ndx);
 
 
-	btnQueryAgain = new wxButton(this, ID_btnQueryAgain, "Refresh list");
+	btnQueryAgain = new wxButton(this, ID_btnQueryAgain, "List all utilities");
 
 	lstUtilities = new AFSearchListBox(this, ID_lstUtilities, wxPoint(9,30), wxSize(266,450));
 
@@ -577,7 +647,18 @@ OpenEIUtilityRateDialog::OpenEIUtilityRateDialog(wxWindow *parent, const wxStrin
 	btnApply = new wxButton(this, ID_btnApply, "Download and apply utility rate");
 	btnClose = new wxButton(this, ID_btnClose, "Close");
 
+
+	txtZipCode = new wxExtTextCtrl(this);
+	btnQueryZipCode = new wxButton(this, ID_btnQueryZipCode, "Utilities by zip code");
+
+	wxBoxSizer *sz_zipcode = new wxBoxSizer(wxHORIZONTAL);
+	sz_zipcode->Add(new wxStaticText(this, wxID_ANY, "Zip code:"), 0, wxALL | wxALIGN_CENTER_VERTICAL, 2);
+	sz_zipcode->Add(txtZipCode, 0, wxALL | wxALIGN_CENTER_VERTICAL, 2);
+	sz_zipcode->AddStretchSpacer();
+	sz_zipcode->Add(btnQueryZipCode, 0, wxALL, 4);
+
 	wxBoxSizer *sz_left = new wxBoxSizer( wxVERTICAL );
+	sz_left->Add(sz_zipcode);
 	sz_left->Add( lstUtilities, 1, wxALL|wxEXPAND, 0 );
 	sz_left->Add( btnQueryAgain, 0, wxALL, 4 );
 
@@ -640,13 +721,38 @@ void OpenEIUtilityRateDialog::QueryUtilities()
 	wxBusyInfo busy("Communicating with OpenEI.org... please wait", this);
 	if (!api.QueryUtilityCompanies(mUtilityCompanies, &err))
 	{
+		busy.~wxBusyInfo();
+		lstUtilities->Clear();
 		wxMessageBox("Error:\n\n" + err);
 		return;
 	}
 
 	lstUtilities->Freeze();
 	lstUtilities->Clear();
-	lstUtilities->Append( mUtilityCompanies );
+	lstUtilities->Append(mUtilityCompanies);
+	lstUtilities->Thaw();
+
+	lblStatus->SetLabel("Ready.");
+	lstUtilities->SetFocus();
+}
+
+void OpenEIUtilityRateDialog::QueryUtilitiesByZipCode()
+{
+	lblStatus->SetLabel("Loading utility companies...");
+	wxString err;
+	wxBusyInfo busy("Communicating with OpenEI.org... please wait", this);
+	wxString zip_code = txtZipCode->GetValue();
+	if (!api.QueryUtilityCompaniesbyZipcode(zip_code, mUtilityCompanies, &err))
+	{
+		busy.~wxBusyInfo();
+		lstUtilities->Clear();
+		wxMessageBox("Error:\n\n" + err);
+		return;
+	}
+
+	lstUtilities->Freeze();
+	lstUtilities->Clear();
+	lstUtilities->Append(mUtilityCompanies);
 	lstUtilities->Thaw();
 
 	lblStatus->SetLabel("Ready.");
@@ -817,7 +923,11 @@ void OpenEIUtilityRateDialog::OnEvent(wxCommandEvent &evt)
 		UpdateRateData();
 		break;
 	case ID_btnQueryAgain:
+		txtZipCode->Clear();
 		QueryUtilities();
+		break;
+	case ID_btnQueryZipCode:
+		QueryUtilitiesByZipCode();
 		break;
 	}
 }
