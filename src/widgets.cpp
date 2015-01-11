@@ -599,6 +599,7 @@ wxString AFSearchListBox::GetItem( size_t i )
 
 void AFSearchListBox::Clear()
 {
+	m_txtFilter->Clear();
 	m_list->Clear();
 	m_items.clear();
 }
