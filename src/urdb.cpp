@@ -6,7 +6,7 @@
 #include "urdb.h"
 #include "simplecurl.h"
 #include "widgets.h"
-
+#include "main.h"
 
 static wxString MyGet(const wxString &url)
 {
@@ -148,7 +148,8 @@ bool OpenEI::QueryUtilityCompaniesbyZipcode(const wxString &zipcode, wxArrayStri
 {
 
 	//  based on email from Jay Huggins 7/8/14 - use latest format - still at version 2
-	wxString url = "http://developer.nrel.gov/api/utility_rates/v3.json?api_key=rJzFOTOJhNHcLOnPmW2TNCLV8I4HHLgKddAycGpn&address=" + zipcode;
+//	wxString url = "http://developer.nrel.gov/api/utility_rates/v3.json?api_key=rJzFOTOJhNHcLOnPmW2TNCLV8I4HHLgKddAycGpn&address=" + zipcode;
+	wxString url = "http://developer.nrel.gov/api/utility_rates/v3.json?api_key=" + wxString(sam_api_key) + "&address=" + zipcode;
 
 	wxString json_data = MyGet(url);
 	if (json_data.IsEmpty())

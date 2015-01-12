@@ -12,6 +12,13 @@
 #include "inputpage.h"
 #include "project.h"
 
+
+static const char *sam_api_key =
+"rJzFOTOJhNHcLOnPmW2TNCLV8I4HHLgKddAycGpn" // production (sam.support@nrel.gov)
+//"yXv3dcb6f5piO0abUMrrTuQvLDFgWvnBz52TJmDJ" // staging (aron.dobos@nrel.gov)
+;
+
+
 class wxSimplebook;
 class wxPanel;
 class wxMetroButton;

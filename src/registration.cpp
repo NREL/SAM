@@ -12,10 +12,10 @@
 #include "simplecurl.h"
 #include "registration.h"
 
-static const char *sam_api_key = 
-  "rJzFOTOJhNHcLOnPmW2TNCLV8I4HHLgKddAycGpn" // production (sam.support@nrel.gov)
+//static const char *sam_api_key = 
+ // "rJzFOTOJhNHcLOnPmW2TNCLV8I4HHLgKddAycGpn" // production (sam.support@nrel.gov)
 //"yXv3dcb6f5piO0abUMrrTuQvLDFgWvnBz52TJmDJ" // staging (aron.dobos@nrel.gov)
-;
+//;
 const char *override_list[] = {
 	"09332s",
 	"CB18B612-F85E-47C9-AB54-AFBCD468BB4B",
