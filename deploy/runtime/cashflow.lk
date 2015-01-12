@@ -452,21 +452,37 @@ cashflow{ 'Single Owner' } = define()
 	cfline('cf_debt_payment_interest', 0);
 	cfline('cf_debt_payment_principal', 0);
 	cfline('cf_debt_balance', 0);
+	
+	if ( value('debt_option') == 0 ) {
+	  cfline( '' );
+	  cfline( "DSCR (CONSTANT DEBT PAYMENTS)", -1);
+	  cfline('cf_ebitda', 0);
+	  cfline("minus:", -1, 0);
+	  cfline('cf_reserve_equip1', 0);
+	  cfline('cf_reserve_equip2', 0);
+	  cfline('cf_reserve_equip3', 0);
+	  cfline("equals:", -1, 0);
+  	  cfline('cf_cash_for_ds', 0);
+      cfline('cf_debt_payment_total', 0);
+      cfline('cf_pretax_dscr', 2);
+	}
 
-	cfline( '' );
-	cfline( "DEBT SIZING (CONSTANT DSCR)", -1);
-	cfline('cf_ebitda', 0);
-	cfline("minus:", -1, 0);
-	cfline('cf_reserve_equip1', 0);
-	cfline('cf_reserve_equip2', 0);
-	cfline('cf_reserve_equip3', 0);
-	cfline("equals:", -1, 0);
-	cfline('cf_cash_for_ds', 0);
-	cfline('cf_pv_interest_factor', 2);
-	cfline('cf_pv_cash_for_ds', 0);
-	cfline('dscr', 2);
-	cfline('cf_debt_size', 0);
-
+    if ( value('debt_option') == 1 ) {
+	  cfline( '' );
+	  cfline( "DEBT SIZING (CONSTANT DSCR)", -1);
+	  cfline('cf_ebitda', 0);
+	  cfline("minus:", -1, 0);
+	  cfline('cf_reserve_equip1', 0);
+	  cfline('cf_reserve_equip2', 0);
+	  cfline('cf_reserve_equip3', 0);
+	  cfline("equals:", -1, 0);
+	  cfline('cf_cash_for_ds', 0);
+	  cfline('cf_pv_interest_factor', 2);
+	  cfline('cf_pv_cash_for_ds', 0);
+      cfline('cf_pretax_dscr', 2);
+	  cfline('cf_debt_size', 0);
+    }
+    
 	cfline( '' );
 	cfline("RESERVE ACCOUNTS", -1);
 	cfline('cf_reserve_debtservice', 0);
