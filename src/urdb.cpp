@@ -17,6 +17,17 @@ static wxString MyGet(const wxString &url)
 	return curl.GetDataAsString();
 }
 
+
+static int SortStringCaseInsensitive(const wxString& first, const wxString& second)
+{
+	if (first.Lower() < second.Lower())
+		return -1;
+	else if (first.Lower() > second.Lower())
+		return 1;
+	else
+		return 0;
+}
+
 OpenEI::RateData::RateData()
 {
 	Reset();
@@ -106,38 +117,48 @@ bool OpenEI::QueryUtilityCompanies(wxArrayString &names, wxString *err)
 	//  based on emails from Paul and Jay Huggins 3/24/14
 //	wxString url = "http://en.openei.org/services/rest/utility_companies?version=2&format=json_plain&callback=callback";
 	//  based on email from Jay Huggins 7/8/14 - use latest format - still at version 2
-	wxString url = "http://en.openei.org/services/rest/utility_companies?version=latest&format=json_plain&callback=callback";
+//	wxString url = "http://en.openei.org/services/rest/utility_companies?version=latest&format=json_plain&callback=callback";
+	int offset = 0, limit=5000;
+	wxString url = "http://en.openei.org/w/index.php?title=Special%3AAsk&q=%5B%5BCategory%3AEIA+Utility+Companies+and+Aliases%5D%5D%5B%5BEiaUtilityId%3A%3A%2B%5D%5D&po=&p%5Bformat%5D=json&p%5Blimit%5D=" + wxString::Format("%d", limit) + "&p%5Boffset%5D=" + wxString::Format("%d", offset);
 
 //	wxString json_data = wxWebHttpGet(url);
-	wxString json_data = MyGet(url);
-	if (json_data.IsEmpty())
+	wxJSONReader reader;
+	wxJSONValue root;
+	wxString json_data;
+	names.Clear();
+
+	json_data = MyGet(url);
+	if (!json_data.IsEmpty())
+	while (!json_data.IsEmpty())
+	{
+
+		if (reader.Parse(json_data, &root) != 0)
+		{
+			if (err) *err = "Could not process returned JSON data for utility rate companies.";
+			return false;
+		}
+
+		wxJSONValue item_list = root.Item("items");
+		int count = item_list.Size();
+		for (int i = 0; i < count; i++)
+		{
+			wxString buf = item_list[i].Item("label").AsString();
+			buf.Replace("&amp;", "&");
+			if (names.Index(buf) == wxNOT_FOUND)
+				names.Add(buf);
+		}
+		offset += limit;
+		url = "http://en.openei.org/w/index.php?title=Special%3AAsk&q=%5B%5BCategory%3AEIA+Utility+Companies+and+Aliases%5D%5D%5B%5BEiaUtilityId%3A%3A%2B%5D%5D&po=&p%5Bformat%5D=json&p%5Blimit%5D=" + wxString::Format("%d", limit) + "&p%5Boffset%5D=" + wxString::Format("%d", offset);
+		json_data = MyGet(url);
+	}
+
+	if (names.Count() <= 0)
 	{
 		if (err) *err = "Could not retrieve JSON data for utility rate companies.";
 		return false;
 	}
-
-	wxJSONReader reader;
-	wxJSONValue root;
-	if (reader.Parse( json_data, &root )!=0)
-	{
-		if (err) *err = "Could not process returned JSON data for utility rate companies.";
-		return false;
-	}
-
-	names.Clear();
-	wxJSONValue item_list = root.Item("items");
-	int count = item_list.Size();
-	for (int i=0;i<count;i++)
-	{
-		wxString buf = item_list[i].Item("label").AsString();
-		buf.Replace("&amp;", "&");
-		// version 3 not handling aliases 7/9/14 - EXTREMELY SLOW!!
-		//if (UtilityCompanyRateCount(buf) > 0)
-			names.Add( buf );
-	}
-
+	names.Sort(SortStringCaseInsensitive);
 	if (err) *err = wxEmptyString;
-
 	return true;
 
 }
@@ -628,6 +649,7 @@ OpenEIUtilityRateDialog::OpenEIUtilityRateDialog(wxWindow *parent, const wxStrin
 
 
 	btnQueryAgain = new wxButton(this, ID_btnQueryAgain, "List all utilities");
+	lblUtilityCount = new wxStaticText(this, ID_lblStatus, "");
 
 	lstUtilities = new AFSearchListBox(this, ID_lstUtilities, wxPoint(9,30), wxSize(266,450));
 
@@ -640,8 +662,8 @@ OpenEIUtilityRateDialog::OpenEIUtilityRateDialog(wxWindow *parent, const wxStrin
 
 	txtRateDescription = new wxTextCtrl(this, ID_txtRateDescription, "", wxPoint(375, 225), wxSize(252, 255), wxTE_MULTILINE | wxTE_WORDWRAP | wxTE_PROCESS_TAB | wxTE_READONLY );
 	
-	hypOpenEILink = new wxHyperlinkCtrl(this, ID_hypOpenEILink, "Go to rate page on OpenEI.org...", "http://en.openei.org/wiki/Gateway:Utilities", wxPoint(294, 450), wxSize(281, 21));
-	hypJSONLink = new wxHyperlinkCtrl(this, ID_hypOpenEILink, "Rate JSON data page...", "http://en.openei.org/wiki/Gateway:Utilities", wxPoint(594, 450), wxSize(281, 21));
+	hypOpenEILink = new wxHyperlinkCtrl(this, ID_hypOpenEILink, "Go to rate page on OpenEI.org...", "http://en.openei.org/wiki/Utility_Rate_Database", wxPoint(294, 450), wxSize(281, 21));
+	hypJSONLink = new wxHyperlinkCtrl(this, ID_hypOpenEILink, "Rate JSON data page...", "http://en.openei.org/wiki/Utility_Rate_Database", wxPoint(594, 450), wxSize(281, 21));
 
 	lblStatus = new wxStaticText(this, ID_lblStatus, "", wxPoint(9,486), wxSize(302,21));
 	
@@ -658,10 +680,14 @@ OpenEIUtilityRateDialog::OpenEIUtilityRateDialog(wxWindow *parent, const wxStrin
 	sz_zipcode->AddStretchSpacer();
 	sz_zipcode->Add(btnQueryZipCode, 0, wxALL, 4);
 
+	wxBoxSizer *sz_utilitites = new wxBoxSizer(wxHORIZONTAL);
+	sz_utilitites->Add(btnQueryAgain, 0, wxALL, 4);
+	sz_utilitites->Add(lblUtilityCount, 1, wxALL | wxALIGN_CENTER_VERTICAL, 2);
+
 	wxBoxSizer *sz_left = new wxBoxSizer( wxVERTICAL );
 	sz_left->Add(sz_zipcode);
 	sz_left->Add( lstUtilities, 1, wxALL|wxEXPAND, 0 );
-	sz_left->Add( btnQueryAgain, 0, wxALL, 4 );
+	sz_left->Add( sz_utilitites);
 
 
 	wxBoxSizer *sz_right_top = new wxBoxSizer( wxHORIZONTAL );
@@ -734,6 +760,7 @@ void OpenEIUtilityRateDialog::QueryUtilities()
 	lstUtilities->Thaw();
 
 	lblStatus->SetLabel("Ready.");
+	lblUtilityCount->SetLabel(wxString::Format("%d utilities", lstUtilities->Count()));
 	lstUtilities->SetFocus();
 }
 
@@ -757,6 +784,7 @@ void OpenEIUtilityRateDialog::QueryUtilitiesByZipCode()
 	lstUtilities->Thaw();
 
 	lblStatus->SetLabel("Ready.");
+	lblUtilityCount->SetLabel(wxString::Format("%d utilities", lstUtilities->Count()));
 	lstUtilities->SetFocus();
 }
 
@@ -919,6 +947,7 @@ void OpenEIUtilityRateDialog::OnEvent(wxCommandEvent &evt)
 		break;
 	case ID_lstUtilities:
 		QueryRates( lstUtilities->GetStringSelection() );
+		lblUtilityCount->SetLabel(wxString::Format("%d utilities", lstUtilities->Count()));
 		break;
 	case ID_lstRates:
 		UpdateRateData();

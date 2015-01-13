@@ -138,6 +138,7 @@ private:
 
 	wxButton *btnApply;
 	wxStaticText *lblStatus;
+	wxStaticText *lblUtilityCount;
 	wxHyperlinkCtrl *hypOpenEILink;
 	wxHyperlinkCtrl *hypJSONLink;
 	wxTextCtrl *txtRateDescription;
