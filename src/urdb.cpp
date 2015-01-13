@@ -17,17 +17,6 @@ static wxString MyGet(const wxString &url)
 	return curl.GetDataAsString();
 }
 
-
-static int SortStringCaseInsensitive(const wxString& first, const wxString& second)
-{
-	if (first.Lower() < second.Lower())
-		return -1;
-	else if (first.Lower() > second.Lower())
-		return 1;
-	else
-		return 0;
-}
-
 OpenEI::RateData::RateData()
 {
 	Reset();
@@ -117,47 +106,36 @@ bool OpenEI::QueryUtilityCompanies(wxArrayString &names, wxString *err)
 	//  based on emails from Paul and Jay Huggins 3/24/14
 //	wxString url = "http://en.openei.org/services/rest/utility_companies?version=2&format=json_plain&callback=callback";
 	//  based on email from Jay Huggins 7/8/14 - use latest format - still at version 2
-//	wxString url = "http://en.openei.org/services/rest/utility_companies?version=latest&format=json_plain&callback=callback";
-	int offset = 0, limit=5000;
-	wxString url = "http://en.openei.org/w/index.php?title=Special%3AAsk&q=%5B%5BCategory%3AEIA+Utility+Companies+and+Aliases%5D%5D%5B%5BEiaUtilityId%3A%3A%2B%5D%5D&po=&p%5Bformat%5D=json&p%5Blimit%5D=" + wxString::Format("%d", limit) + "&p%5Boffset%5D=" + wxString::Format("%d", offset);
+	wxString url = "http://en.openei.org/services/rest/utility_companies?version=latest&format=json_plain&callback=callback";
 
 //	wxString json_data = wxWebHttpGet(url);
-	wxJSONReader reader;
-	wxJSONValue root;
-	wxString json_data;
-	names.Clear();
-
-	json_data = MyGet(url);
-	if (!json_data.IsEmpty())
-	while (!json_data.IsEmpty())
-	{
-
-		if (reader.Parse(json_data, &root) != 0)
-		{
-			if (err) *err = "Could not process returned JSON data for utility rate companies.";
-			return false;
-		}
-
-		wxJSONValue item_list = root.Item("items");
-		int count = item_list.Size();
-		for (int i = 0; i < count; i++)
-		{
-			wxString buf = item_list[i].Item("label").AsString();
-			buf.Replace("&amp;", "&");
-			if (names.Index(buf) == wxNOT_FOUND)
-				names.Add(buf);
-		}
-		offset += limit;
-		url = "http://en.openei.org/w/index.php?title=Special%3AAsk&q=%5B%5BCategory%3AEIA+Utility+Companies+and+Aliases%5D%5D%5B%5BEiaUtilityId%3A%3A%2B%5D%5D&po=&p%5Bformat%5D=json&p%5Blimit%5D=" + wxString::Format("%d", limit) + "&p%5Boffset%5D=" + wxString::Format("%d", offset);
-		json_data = MyGet(url);
-	}
-
-	if (names.Count() <= 0)
+	wxString json_data = MyGet(url);
+	if (json_data.IsEmpty())
 	{
 		if (err) *err = "Could not retrieve JSON data for utility rate companies.";
 		return false;
 	}
-	names.Sort(SortStringCaseInsensitive);
+
+	wxJSONReader reader;
+	wxJSONValue root;
+	if (reader.Parse( json_data, &root )!=0)
+	{
+		if (err) *err = "Could not process returned JSON data for utility rate companies.";
+		return false;
+	}
+
+	names.Clear();
+	wxJSONValue item_list = root.Item("items");
+	int count = item_list.Size();
+	for (int i=0;i<count;i++)
+	{
+		wxString buf = item_list[i].Item("label").AsString();
+		buf.Replace("&amp;", "&");
+		// version 3 not handling aliases 7/9/14 - EXTREMELY SLOW!!
+		//if (UtilityCompanyRateCount(buf) > 0)
+			names.Add( buf );
+	}
+
 	if (err) *err = wxEmptyString;
 	return true;
 
