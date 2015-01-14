@@ -630,7 +630,7 @@ OpenEIUtilityRateDialog::OpenEIUtilityRateDialog(wxWindow *parent, const wxStrin
 	cboResCom->SetSelection(cbo_ndx);
 
 
-	btnQueryAgain = new wxButton(this, ID_btnQueryAgain, "List all utilities");
+	btnQueryAgain = new wxButton(this, ID_btnQueryAgain, "Show all");
 	lblUtilityCount = new wxStaticText(this, ID_lblStatus, "");
 
 	lstUtilities = new AFSearchListBox(this, ID_lstUtilities, wxPoint(9,30), wxSize(266,450));
@@ -647,14 +647,14 @@ OpenEIUtilityRateDialog::OpenEIUtilityRateDialog(wxWindow *parent, const wxStrin
 	hypOpenEILink = new wxHyperlinkCtrl(this, ID_hypOpenEILink, "Go to rate page on OpenEI.org...", "http://en.openei.org/wiki/Utility_Rate_Database", wxPoint(294, 450), wxSize(281, 21));
 	hypJSONLink = new wxHyperlinkCtrl(this, ID_hypOpenEILink, "Rate JSON data page...", "http://en.openei.org/wiki/Utility_Rate_Database", wxPoint(594, 450), wxSize(281, 21));
 
-	lblStatus = new wxStaticText(this, ID_lblStatus, "", wxPoint(9,486), wxSize(302,21));
+	lblStatus = new wxStaticText(this, ID_lblStatus, "", wxPoint(9,486), wxSize(400,21));
 	
 	btnApply = new wxButton(this, ID_btnApply, "Download and apply utility rate");
 	btnClose = new wxButton(this, ID_btnClose, "Close");
 
 
 	txtZipCode = new wxExtTextCtrl(this);
-	btnQueryZipCode = new wxButton(this, ID_btnQueryZipCode, "Utilities by zip code");
+	btnQueryZipCode = new wxButton(this, ID_btnQueryZipCode, "Search by zip code");
 
 	wxBoxSizer *sz_zipcode = new wxBoxSizer(wxHORIZONTAL);
 	sz_zipcode->Add(new wxStaticText(this, wxID_ANY, "Zip code:"), 0, wxALL | wxALIGN_CENTER_VERTICAL, 2);
