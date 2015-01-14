@@ -106,7 +106,10 @@ bool OpenEI::QueryUtilityCompanies(wxArrayString &names, wxString *err)
 	//  based on emails from Paul and Jay Huggins 3/24/14
 //	wxString url = "http://en.openei.org/services/rest/utility_companies?version=2&format=json_plain&callback=callback";
 	//  based on email from Jay Huggins 7/8/14 - use latest format - still at version 2
-	wxString url = "http://en.openei.org/services/rest/utility_companies?version=latest&format=json_plain&callback=callback";
+	//wxString url = "http://en.openei.org/services/rest/utility_companies?version=latest&format=json_plain&callback=callback";
+
+	wxString url = "http://en.openei.org/w/api.php?cmtitle=Category%3AEIA%20Utility%20Companies%20and%20Aliases&action=query&list=categorymembers&cmprop=title&cmnamespace=0&cmlimit=10000&format=json";
+
 
 //	wxString json_data = wxWebHttpGet(url);
 	wxString json_data = MyGet(url);
@@ -125,14 +128,15 @@ bool OpenEI::QueryUtilityCompanies(wxArrayString &names, wxString *err)
 	}
 
 	names.Clear();
-	wxJSONValue item_list = root.Item("items");
+//	wxJSONValue item_list = root.Item("items");
+	wxJSONValue query = root.Item("query");
+	wxJSONValue item_list = query.Item("categorymembers");
 	int count = item_list.Size();
 	for (int i=0;i<count;i++)
 	{
-		wxString buf = item_list[i].Item("label").AsString();
+//		wxString buf = item_list[i].Item("label").AsString();
+		wxString buf = item_list[i].Item("title").AsString();
 		buf.Replace("&amp;", "&");
-		// version 3 not handling aliases 7/9/14 - EXTREMELY SLOW!!
-		//if (UtilityCompanyRateCount(buf) > 0)
 			names.Add( buf );
 	}
 
