@@ -1955,7 +1955,7 @@ void fcall_openeiutilityrateform(lk::invoke_t &cxt)
 	CaseCallbackContext &cc = *static_cast<CaseCallbackContext*>(cxt.user_data());
 	wxString market = cc.GetCase().GetFinancing();
 
-	OpenEIUtilityRateDialog openei(SamApp::Window(), "URDB", market);
+	OpenEIUtilityRateDialog openei(SamApp::Window(), "OpenEI U.S. Utility Rate Database", market);
 	openei.CenterOnParent();
 	int code = openei.ShowModal(); //shows the dialog and makes it so you can't interact with other parts until window is closed
 
