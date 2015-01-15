@@ -530,13 +530,16 @@ AFSearchListBox::AFSearchListBox(wxWindow *parent, int id, const wxPoint &pos, c
 {
 	m_label = new wxStaticText( this, -1, " Filter:  ");
 
-	m_notifyLabel = new wxStaticText( this, -1, wxEmptyString );
-	m_notifyLabel->SetForegroundColour( *wxRED );
+	
+//		m_notifyLabel = new wxStaticText(this, -1, wxEmptyString);
+	m_notifyLabel = new wxStaticText(this, -1, "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
+	m_notifyLabel->SetForegroundColour(*wxRED);
 
 	m_txtFilter = new wxTextCtrl( this, IDSLB_FILTER );
 	wxSize szbest = m_txtFilter->GetBestSize();
-	szbest.SetWidth( 2*szbest.GetWidth() );
-	m_txtFilter->SetInitialSize( szbest );
+//	szbest.SetWidth(2 * szbest.GetWidth());
+	szbest.SetWidth(1.5 * szbest.GetWidth());
+	m_txtFilter->SetInitialSize(szbest);
 
 	m_list = new wxListBox( this, IDSLB_LIST, wxDefaultPosition, wxDefaultSize,
 			0, 0,
@@ -545,12 +548,13 @@ AFSearchListBox::AFSearchListBox(wxWindow *parent, int id, const wxPoint &pos, c
 	wxBoxSizer *szh = new wxBoxSizer(wxHORIZONTAL);
 	szh->Add( m_label, 0, wxALL|wxEXPAND|wxALIGN_CENTER_VERTICAL, 5  );
 	szh->Add( m_txtFilter, 0, wxALL|wxEXPAND, 2 );
-	szh->Add( m_notifyLabel, 0, wxALL|wxEXPAND|wxALIGN_CENTER_VERTICAL, 5 );
+	szh->Add( m_notifyLabel, 1, wxALL|wxEXPAND|wxALIGN_CENTER_VERTICAL, 5 );
 
 	wxBoxSizer *szmain = new wxBoxSizer(wxVERTICAL);
 	szmain->Add( szh, 0, wxALL|wxEXPAND, 2 );
 	szmain->Add( m_list, 1, wxALL|wxEXPAND, 2);
 	SetSizer(szmain);
+	m_notifyLabel->SetLabel(wxEmptyString);
 }
 
 void AFSearchListBox::SetPromptText( const wxString &s )
@@ -670,13 +674,19 @@ void AFSearchListBox::OnFilter( wxCommandEvent & )
 				count++;
 			}
 			else if (m_items[i].str == sel)
+			{
 				m_items[i].shown = true;
+				count++;
+			}
 			else
 				m_items[i].shown = false;
 		}
 
 		if (count == 0)
-			m_notifyLabel->SetLabel( "No matches. (selected item shown)" );
+			m_notifyLabel->SetLabel("No matches.");
+//		m_notifyLabel->SetLabel("No matches. (selected item shown)");
+		else
+			m_notifyLabel->SetLabel(wxString::Format("%d filtered.", count));
 	}
 
 	UpdateView();
