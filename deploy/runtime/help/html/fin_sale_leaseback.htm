@@ -84,7 +84,7 @@
 <p class="p_VariableDescription"><span class="f_VariableDescription">This amount of the developer's margin.</span></p>
 <p class="p_EquationExcel"><span class="f_EquationExcel">Amount ($) = Lessee Operating Margin ($/kW) × System Nameplate Capacity (kW)</span></p>
 <p class="p_Text"><span class="f_Text">The system nameplate capacity depends on technology being modeled. SAM converts the capacity value to the appropriate units (MW, kW, or W) before using it in calculations. For the photovoltaic models, the capacity is a DC power rating, and for the others it is an AC power rating. For the BeOpt/TRNSYS Solar Water Heating Model, the capacity is a thermal rating, while for the others it is an electric rating.</span></p>
-<p class="p_TitleTable"><span class="f_TitleTable">Table 16. Nameplate system capacity values for each technology.</span></p>
+<p class="p_TitleTable"><span class="f_TitleTable">Table 15. Nameplate system capacity values for each technology.</span></p>
 <div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 6px 0px;"><table style="border:none; border-spacing:0px;">
 <tr style="text-align:left;vertical-align:top;">
 <td style="vertical-align:top; padding:0px;"><p class="p_TableHeadColumn"><span class="f_TableHeadColumn">Performance Model</span></p>
@@ -290,7 +290,7 @@
 <p class="p_EquationExcel"><span class="f_EquationExcel">Principal Amount ($) = Total Installed Cost ($) × Percent of Installed Costs (%)</span></p>
 <p class="p_VariableName"><span class="f_VariableName">Interest</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The total interest payment due for each construction period loan, assuming </span><span class="f_Text">that 100% of the construction balance is outstanding for half of the construction period</span><span class="f_VariableDescription">.</span></p>
-<p class="p_EquationExcel"><span class="f_EquationExcel">Interest ($) = Principal Amount ($) × Loan Rate (%/yr) / 12 (mos/yr) × 0.5</span></p>
+<p class="p_EquationExcel"><span class="f_EquationExcel">Interest ($) = Principal Amount ($) × Loan Rate (%/yr) ÷ 12 (mos/yr) × Months prior to operation ÷ 2</span></p>
 <p class="p_VariableName"><span class="f_VariableName">Total Construction Financing Cost</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">SAM includes the total construction financing cost in the project cost.</span></p>
 <p class="p_EquationExcel"><span class="f_EquationExcel">Total Construction Financing Cost = Interest + Up-front Fee Amount</span></p>
