@@ -254,7 +254,7 @@ static std::vector<wxColour> s_colours;
 			plotdata[i].reserve( ndata );
 			for( size_t k=0;k<n;k++ )
 			{
-				if (isnan(p[k]))
+				if (std::isnan(p[k]))
 					plotdata[i].push_back(wxRealPoint(k, 0));
 				else
 					plotdata[i].push_back(wxRealPoint(k, p[k]));
@@ -262,7 +262,7 @@ static std::vector<wxColour> s_colours;
 		}
 		else
 		{
-			if (isnan(yvars[i]->Value()))
+			if (std::isnan(yvars[i]->Value()))
 				plotdata[i].push_back(wxRealPoint(i, 0));
 			else
 				plotdata[i].push_back(wxRealPoint(i, yvars[i]->Value()));
@@ -475,7 +475,7 @@ void GraphCtrl::Display(std::vector<Simulation *>sims, Graph &gi)
 			plotdata[i].reserve(ndata);
 			for (size_t k = 0; k < n; k++)
 			{
-				if (isnan(p[k]))
+				if (std::isnan(p[k]))
 					plotdata[i].push_back(wxRealPoint(k, 0));
 				else
 					plotdata[i].push_back(wxRealPoint(k, p[k]));
@@ -483,7 +483,7 @@ void GraphCtrl::Display(std::vector<Simulation *>sims, Graph &gi)
 		}
 		else
 		{
-			if (isnan(yvars[i]->Value()))
+			if (std::isnan(yvars[i]->Value()))
 				plotdata[i].push_back(wxRealPoint(i, 0));
 			else
 				plotdata[i].push_back(wxRealPoint(i, yvars[i]->Value()));

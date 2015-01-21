@@ -1543,7 +1543,7 @@ public:
 	{
 		if (col >= 0 && col < Table.size() && row >= 0 && row < Table[col]->N)
 		{
-			if (isnan(Table[col]->Values[row]))
+			if (std::isnan(Table[col]->Values[row]))
 				return "NaN";
 			else
 				return wxString::Format("%g", Table[col]->Values[row]);
