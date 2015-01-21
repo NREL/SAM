@@ -902,7 +902,7 @@ wxString VarValue::AsString( wxChar arrsep, wxChar tabsep )
 	case VV_STRING: return m_str;
 	case VV_NUMBER:
 	{
-		if (isnan(m_val))
+		if (std::isnan(m_val))
 			return "NaN";
 		else
 			return wxString::Format("%g", (float)m_val);
