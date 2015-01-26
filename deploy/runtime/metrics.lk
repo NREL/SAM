@@ -1,7 +1,7 @@
 function rescom_metrics()
 {
-	metric( 'lcoe_nom',{'label'='Levelized COE (nominal)', 'post'=' \u00A2/kWh', 'mode'='f', 'deci'='2' } );
-	metric( 'lcoe_real',{'label'='Levelized COE (real)', 'post'=' \u00A2/kWh', 'mode'='f', 'deci'='2' } );
+	metric( 'lcoe_nom',{'label'='Levelized cost (nominal)', 'post'=' \u00A2/kWh', 'mode'='f', 'deci'='2' } );
+	metric( 'lcoe_real',{'label'='Levelized cost (real)', 'post'=' \u00A2/kWh', 'mode'='f', 'deci'='2' } );
 	metric( 'elec_cost_without_system_year1',{'label'='Electricity cost without system', 'pre'='$', 'post'=' ', 'thousep'='true', 'mode'='f', 'deci'='0' } );
 	metric( 'elec_cost_with_system_year1',{'label'='Electricity cost with system', 'pre'='$', 'post'=' ', 'thousep'='true', 'mode'='f', 'deci'='0' } );
 	metric( 'savings_year1',{'label'='Net savings with system', 'pre'='$', 'post'=' ', 'thousep'='true', 'mode'='f', 'deci'='0' } );
@@ -15,12 +15,12 @@ function rescom_metrics()
 
 function ipp_metrics()
 {
-	metric( 'lcoe_nom', {'label'='LCOE (Nominal)', 'post'=' \u00A2/kWh', 'mode'='f', 'deci'='2' } );
-	metric( 'lcoe_real', {'label'='LCOE (Real)', 'post'=' \u00A2/kWh', 'mode'='f', 'deci'='2' } );
+	metric( 'lcoe_nom', {'label'='Levelized cost (Nominal)', 'post'=' \u00A2/kWh', 'mode'='f', 'deci'='2' } );
+	metric( 'lcoe_real', {'label'='Levelized cost (Real)', 'post'=' \u00A2/kWh', 'mode'='f', 'deci'='2' } );
 	metric( 'ppa', {'label'='PPA Price (Year 1)', 'post'= ' \u00A2/kWh', 'mode'='f', 'deci'='2' } );
 	metric( 'actual_ppa_escalation', {'label'='PPA Price Escalation', 'mode'='f', 'post'=' %', 'deci'='2' } );
-	metric( 'lppa_nom', {'label'='Levelized revenue (Nominal)', 'mode'='f', 'post'=' \u0A2/kWh', 'deci'='2' } );
-	metric( 'lppa_real', {'label'='Levelized revenue (Real)', 'mode'='f', 'post'=' \u00A2/kWh', 'deci'='2' } );
+	metric( 'lppa_nom', {'label'='Levelized PPA price (Nominal)', 'mode'='f', 'post'=' \u0A2/kWh', 'deci'='2' } );
+	metric( 'lppa_real', {'label'='Levelized PPA price (Real)', 'mode'='f', 'post'=' \u00A2/kWh', 'deci'='2' } );
 //	metric( 'latcf_nom', {'label'='Levelized  ATCF (Nominal)', 'mode'='f', 'post'=' \u0A2/kWh', 'deci'='2' } );
 //	metric( 'latcf_real', {'label'='Levelized ATCF Price (Real)', 'mode'='f', 'post'=' \u00A2/kWh', 'deci'='2' } );
 	metric( 'irr', {'label'='Internal Rate of Return', 'mode'='f', 'post'=' %', 'deci'='2' } );
@@ -34,7 +34,7 @@ function so_metrics()
 {
 	metric( 'ppa', {'label'='PPA price (Year 1)', 'post'= ' \u00A2/kWh', 'mode'='f', 'deci'='2' } );
 	metric( 'ppa_escalation', {'label'='PPA price escalation', 'mode'='f', 'post'=' %', 'deci'='2' } );
-	metric( 'lppa_nom', {'label'='Levelized revenue (nominal)', 'mode'='f', 'post'=' \u00A2/kWh', 'deci'='2' } );
+	metric( 'lppa_nom', {'label'='Levelized PPA price (nominal)', 'mode'='f', 'post'=' \u00A2/kWh', 'deci'='2' } );
 	metric( 'lcoe_nom', {'label'='Levelized cost (nominal)', 'post'=' \u00A2/kWh', 'mode'='f', 'deci'='2' } );
 	metric( 'project_return_aftertax_npv', {'label'='Net present value', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
 	metric( 'flip_actual_irr', {'label'='Internal rate of return (IRR)', 'mode'='f', 'post'=' %', 'deci'='2' } );
@@ -52,7 +52,7 @@ function aepf_metrics()
 {
 	metric( 'ppa', {'label'='PPA price (year 1)', 'post'= ' \u00A2/kWh', 'mode'='f', 'deci'='2' } );
 	metric( 'ppa_escalation', {'label'='PPA price escalation', 'mode'='f', 'post'=' %', 'deci'='2' } );
-	metric( 'lppa_nom', {'label'='Levelized revenue (nominal)', 'mode'='f', 'post'=' \u0A2/kWh', 'deci'='2' } );
+	metric( 'lppa_nom', {'label'='Levelized PPA price (nominal)', 'mode'='f', 'post'=' \u0A2/kWh', 'deci'='2' } );
 	metric( 'lcoe_nom', {'label'='Levelized cost (nominal)', 'post'=' \u00A2/kWh', 'mode'='f', 'deci'='2' } );
 	metric( 'tax_investor_aftertax_irr', {'label'='Investor IRR (after-tax)', 'mode'='f', 'post'=' %', 'deci'='2' } );
 	metric( 'flip_actual_year', {'label'='Year investor IRR acheived'} );
@@ -67,7 +67,7 @@ function lpf_metrics()
 {
 	metric( 'ppa', {'label'='PPA price (year 1)', 'post'= ' \u00A2/kWh', 'mode'='f', 'deci'='2' } );
 	metric( 'ppa_escalation', {'label'='PPA Price Escalation', 'mode'='f', 'post'=' %', 'deci'='2' } );
-	metric( 'lppa_nom', {'label'='Levelized revenue (nominal)', 'mode'='f', 'post'=' \u0A2/kWh', 'deci'='2' } );
+	metric( 'lppa_nom', {'label'='Levelized PPA price (nominal)', 'mode'='f', 'post'=' \u0A2/kWh', 'deci'='2' } );
 	metric( 'lcoe_nom', {'label'='Levelized cost (nominal)', 'post'=' \u00A2/kWh', 'mode'='f', 'deci'='2' } );
 	metric( 'tax_investor_aftertax_irr', {'label'='Investor IRR (after-tax)', 'mode'='f', 'post'=' %', 'deci'='2' } );
 	metric( 'flip_actual_year', {'label'='Year investor IRR acheived'} );
@@ -87,7 +87,7 @@ function sl_metrics()
 {
 	metric( 'ppa', {'label'='PPA price (year 1)', 'post'= ' \u00A2/kWh', 'mode'='f', 'deci'='2' } );
 	metric( 'ppa_escalation', {'label'='PPA Price Escalation', 'mode'='f', 'post'=' %', 'deci'='2' } );
-	metric( 'lppa_nom', {'label'='Levelized revenue (nominal)', 'mode'='f', 'post'=' \u0A2/kWh', 'deci'='2' } );
+	metric( 'lppa_nom', {'label'='Levelized PPA price (nominal)', 'mode'='f', 'post'=' \u0A2/kWh', 'deci'='2' } );
 	metric( 'lcoe_nom', {'label'='Levelized cost (nominal)', 'post'=' \u00A2/kWh', 'mode'='f', 'deci'='2' } );
 	metric( 'tax_investor_aftertax_irr', {'label'='Investor IRR (after-tax)', 'mode'='f', 'post'=' %', 'deci'='2' } );
 	metric( 'flip_actual_year', {'label'='Year investor IRR acheived'} );

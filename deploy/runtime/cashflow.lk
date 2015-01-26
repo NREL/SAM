@@ -578,18 +578,21 @@ cashflow{ 'All Equity Partnership Flip' } = define()
 	cfline('cf_project_return_aftertax_irr', 2);
 	cfline('cf_project_return_aftertax_npv', 0);
 	cfline( '' ); // spacer
-	cfline( '' ); // spacer
 
 // LCOE
-	cfline( 'LCOE', -1);
-	cfline('cf_energy_value', 0);
-	cfline('cf_energy_net', 0);
-	cfline( 'npv_ppa_revenue', 0);
-	cfline( 'npv_energy_nom', 0);
-	cfline( 'lcoe_nom', 2);
-	cfline( 'npv_energy_real', 0);
-	cfline( 'lcoe_real', 2);
-	cfline( '' ); // spacer
+	cfline("LEVELIZED COE AND PPA PRICE", -1);
+	cfline('cf_annual_costs', 0);
+	cfline('cf_total_revenue', 0);
+	cfline('cf_energy_net', 0); 
+	cfline( '' );
+	cfline('npv_annual_costs',0 );
+	cfline('npv_energy_nom', 0);
+	cfline('lcoe_nom',2);
+	cfline( '' );
+	cfline('npv_ppa_revenue', 0);
+	cfline('npv_energy_nom', 0);
+	cfline('lppa_nom',2);
+	cfline( '' );
 
 
 	cfline('Partners Returns', -1);
@@ -753,16 +756,19 @@ cashflow{ 'Leveraged Partnership Flip' } = define()
 	cfline( '' ); // spacer
 
 // LCOE
-	cfline( 'LCOE', -1);
-	cfline('cf_energy_value', 0);
-	cfline('cf_energy_net', 0);
-	cfline( 'npv_ppa_revenue', 0);
-	cfline( 'npv_energy_nom', 0);
-	cfline( 'lcoe_nom', 0);
-	cfline( 'npv_energy_real', 0);
-	cfline( 'lcoe_real', 0);
-	cfline( '' ); // spacer
-
+	cfline("LEVELIZED COE AND PPA PRICE", -1);
+	cfline('cf_annual_costs', 0);
+	cfline('cf_total_revenue', 0);
+	cfline('cf_energy_net', 0); 
+	cfline( '' );
+	cfline('npv_annual_costs',0 );
+	cfline('npv_energy_nom', 0);
+	cfline('lcoe_nom',2);
+	cfline( '' );
+	cfline('npv_ppa_revenue', 0);
+	cfline('npv_energy_nom', 0);
+	cfline('lppa_nom',2);
+	cfline( '' );
 
 	cfline( 'Tax Invester Pre-tax Returns', -1);
 	cfline('cf_tax_investor_pretax', 0);//"Total tax investor pre-tax returns");
@@ -930,14 +936,18 @@ cashflow{ 'Sale Leaseback' } = define()
 	cfline( '' );
 
 // LCOE
-	cfline('LCOE', -1);
-	cfline('cf_energy_value', 0);
-	cfline('cf_energy_net', 0);
+	cfline("LEVELIZED COE AND PPA PRICE", -1);
+	cfline('cf_annual_costs', 0);
+	cfline('cf_total_revenue', 0);
+	cfline('cf_energy_net', 0); 
+	cfline( '' );
+	cfline('npv_annual_costs',0 );
+	cfline('npv_energy_nom', 0);
+	cfline('lcoe_nom',2);
+	cfline( '' );
 	cfline('npv_ppa_revenue', 0);
 	cfline('npv_energy_nom', 0);
-	cfline('lcoe_nom', 2);
-	cfline('npv_energy_real', 0);
-	cfline('lcoe_real', 2);
+	cfline('lppa_nom',2);
 	cfline( '' );
 
 	cfline('Tax Investor (Lessor) Returns', -1);
