@@ -52,7 +52,8 @@ class LossDiagramCtrl;
 #define EXP_SAVE_CSV          0x02
 #define EXP_SEND_EXCEL        0x04
 
-void PopulateSelectionList( wxDVSelectionListCtrl *sel, wxArrayString *names, Simulation *results );
+void PopulateSelectionList(wxDVSelectionListCtrl *sel, wxArrayString *names, Simulation *results);
+void UpdateSelectionList(wxDVSelectionListCtrl *sel, wxArrayString *names, Simulation *results, wxString srch, wxArrayString &selected);
 
 
 class ResultsCallbackContext  : public CaseCallbackContext
@@ -198,6 +199,7 @@ public:
 
 	void Setup( Simulation *sim );
 	void UpdateAll();
+	void UpdateDisplayed(wxString &srch);
 	void GetTextData(wxString &dat, char sep);
 	
 
@@ -211,6 +213,7 @@ private:
 	wxExtGridCtrl *m_grid;
 	ResultsTable *m_gridTable;
 	wxDVSelectionListCtrl *m_varSel;
+	wxTextCtrl *m_varSearch;
 	
 	wxArrayString m_names;
 	wxArrayString m_selectedVars;
