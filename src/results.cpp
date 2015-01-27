@@ -137,14 +137,105 @@ void PopulateSelectionList( wxDVSelectionListCtrl *sel, wxArrayString *names, Si
 
 		for (size_t j=0;j<list.Count();j++)
 		{
-			if (!labels[j].IsEmpty())
+			if (!labels[j].IsEmpty()) 
 			{
-				sel->Append( labels[j], group );
+				sel->Append(labels[j], group);
 				names->Add(list[j]);
 			}
 		}
 	}
 }
+
+
+void UpdateSelectionList(wxDVSelectionListCtrl *sel, wxArrayString *names, Simulation *sim, wxString srch, wxArrayString &selected)
+{
+	if (srch.IsEmpty()) return;
+
+	int an_period = -1;
+	ConfigInfo *config = sim->GetCase()->GetConfiguration();
+	if (config != 0)
+	{
+		wxString an_var = config->Settings["analysis_period_var"];
+		if (!an_var.IsEmpty())
+		{
+			if (VarValue *vv = sim->GetValue(an_var))
+				if (vv->Type() == VV_NUMBER)
+					an_period = (int)vv->Value();
+		}
+	}
+
+	std::vector<size_t> varlengths;
+	sim->GetVariableLengths(varlengths);
+
+	names->Clear();
+
+	for (size_t i = 0; i<varlengths.size(); i++)
+	{
+		wxArrayString list;
+		sim->ListByCount(varlengths[i], list);
+
+		if (list.Count() == 0)
+			continue;
+
+		int steps_per_hour = varlengths[i] / 8760;
+		if (steps_per_hour * 8760 != varlengths[i])
+			steps_per_hour = -1;
+
+		if (VarValue *lftm = sim->GetValue("system_use_lifetime_output"))
+			if (lftm->Value() != 0.0f)
+				steps_per_hour = -1; // don't report geothermal system output as minute data depending on analysis period
+
+		wxString group;
+		if (varlengths[i] == 1)
+			group = "Single Values";
+		else if (varlengths[i] == 12)
+			group = "Monthly Data";
+		else if (varlengths[i] == 8760)
+			group = "Hourly Data";
+		else if (steps_per_hour >= 2 && steps_per_hour <= 60)
+			group = wxString::Format("%d Minute Data", 60 / steps_per_hour);
+		else if (varlengths[i] == an_period)
+			group = "Annual Data";
+		else if (varlengths[i] == (an_period - 1) * 12)
+			group = "Lifetime Monthly Data";
+		else if (varlengths[i] == (an_period - 1) * 8760)
+			group = "Lifetime Hourly Data";
+		else
+			group.Printf("Data: %d values", (int)varlengths[i]);
+
+		wxArrayString labels;
+		for (size_t j = 0; j<list.Count(); j++)
+		{
+			wxString label(sim->GetLabel(list[j]));
+			wxString units(sim->GetUnits(list[j]));
+			if (!units.IsEmpty())
+				label += " (" + units + ")";
+			labels.Add(label);
+		}
+
+		wxSortByLabels(list, labels);
+
+		for (size_t j = 0; j<list.Count(); j++)
+		{
+			if (!labels[j].IsEmpty())
+			{
+				if (selected.Index(list[j]) != wxNOT_FOUND)
+				{
+					sel->Append(labels[j], group);
+					names->Add(list[j]);
+				}
+				else if (labels[j].Lower().Find(srch.Lower()) != wxNOT_FOUND)
+				{
+					sel->Append(labels[j], group);
+					names->Add(list[j]);
+				}
+			}
+		}
+	}
+}
+
+
+
 
 
 ResultsCallbackContext::ResultsCallbackContext( ResultsViewer *rv, const wxString &desc )
@@ -1655,7 +1746,7 @@ public:
 
 enum { IDOB_COPYCLIPBOARD=wxID_HIGHEST+494, 
 	IDOB_SAVECSV, IDOB_SENDEXCEL, IDOB_EXPORTMODE, IDOB_CLEAR_ALL, 
-	IDOB_VARSEL, IDOB_GRID };
+	IDOB_VARSEL, IDOB_GRID, IDOB_SEARCH };
 
 
 BEGIN_EVENT_TABLE( TabularBrowser, wxPanel )
@@ -1663,6 +1754,7 @@ BEGIN_EVENT_TABLE( TabularBrowser, wxPanel )
 	EVT_BUTTON( IDOB_SAVECSV,  TabularBrowser::OnCommand )
 	EVT_BUTTON( IDOB_SENDEXCEL, TabularBrowser::OnCommand )
 	EVT_BUTTON( IDOB_CLEAR_ALL, TabularBrowser::OnCommand )
+	EVT_TEXT(IDOB_SEARCH, TabularBrowser::OnCommand)
 	EVT_DVSELECTIONLIST(IDOB_VARSEL, TabularBrowser::OnVarSel)
 END_EVENT_TABLE()
 
@@ -1685,11 +1777,19 @@ TabularBrowser::TabularBrowser( wxWindow *parent )
 		wxDefaultPosition, wxDefaultSize, wxSP_LIVE_UPDATE ); 
 	splitwin->SetMinimumPaneSize(210);
 
+	wxPanel *lhs = new wxPanel(splitwin);
+	m_varSearch = new wxTextCtrl(lhs, IDOB_SEARCH);
+//	m_varSel = new wxDVSelectionListCtrl(splitwin, IDOB_VARSEL, 1, wxDefaultPosition, wxDefaultSize,
+//		wxDVSEL_NO_COLOURS);
+	m_varSel = new wxDVSelectionListCtrl(lhs, IDOB_VARSEL, 1, wxDefaultPosition, wxDefaultSize,
+		wxDVSEL_NO_COLOURS);
+	m_varSel->SetBackgroundColour(*wxWHITE);
 
-	m_varSel = new wxDVSelectionListCtrl(splitwin, IDOB_VARSEL, 1, wxDefaultPosition, wxDefaultSize,
-		wxDVSEL_NO_COLOURS );
-	m_varSel->SetBackgroundColour( *wxWHITE );
+	wxBoxSizer *lbs = new wxBoxSizer(wxVERTICAL);
+	lbs->Add(m_varSearch, 0, wxEXPAND, 1);
+	lbs->Add(m_varSel, 1, wxEXPAND|wxALL, 1);
 
+	lhs->SetSizer(lbs);
 
 	m_grid = new wxExtGridCtrl(splitwin, IDOB_GRID);
 	m_grid->EnableEditing(false);
@@ -1701,7 +1801,8 @@ TabularBrowser::TabularBrowser( wxWindow *parent )
 	m_grid->SetRowLabelAlignment( wxALIGN_LEFT, wxALIGN_CENTER );
 
 	splitwin->SetMinimumPaneSize( 170 );
-	splitwin->SplitVertically(m_varSel, m_grid, 210);
+//	splitwin->SplitVertically(m_varSel, m_grid, 210);
+	splitwin->SplitVertically(lhs, m_grid, 210);
 
 
 	wxBoxSizer *szv_main = new wxBoxSizer(wxVERTICAL);
@@ -1779,29 +1880,63 @@ void TabularBrowser::UpdateAll()
 	m_names.Clear();
 
 	int vsx, vsy;
-	m_varSel->GetViewStart( &vsx, &vsy );
+	m_varSel->GetViewStart(&vsx, &vsy);
 	m_varSel->RemoveAll();
 
-	if ( !m_sim ) return;
+	if (!m_sim) return;
 
 	m_varSel->Freeze();
-	PopulateSelectionList( m_varSel, &m_names, m_sim );
+	PopulateSelectionList(m_varSel, &m_names, m_sim);
 
-	size_t i=0;
+	size_t i = 0;
 	while (i<m_selectedVars.Count())
 	{
-		int idx = m_names.Index( m_selectedVars[i] );
+		int idx = m_names.Index(m_selectedVars[i]);
 		if (idx < 0)
 			m_selectedVars.RemoveAt(i);
 		else
 		{
-			m_varSel->SelectRowInCol( idx );
+			m_varSel->SelectRowInCol(idx);
 			i++;
 		}
 	}
 
 	m_varSel->ExpandSelections();
-	m_varSel->Scroll( vsx, vsy );
+	m_varSel->Scroll(vsx, vsy);
+	m_varSel->Thaw();
+
+	UpdateGrid();
+}
+
+void TabularBrowser::UpdateDisplayed(wxString& srch)
+{
+	if (srch.IsEmpty()) return;
+	m_names.Clear();
+
+	int vsx, vsy;
+	m_varSel->GetViewStart(&vsx, &vsy);
+	m_varSel->RemoveAll();
+
+	if (!m_sim) return;
+
+	m_varSel->Freeze();
+	UpdateSelectionList(m_varSel, &m_names, m_sim, srch,m_selectedVars);
+
+	size_t i = 0;
+	while (i<m_selectedVars.Count())
+	{
+		int idx = m_names.Index(m_selectedVars[i]);
+		if (idx < 0)
+			m_selectedVars.RemoveAt(i);
+		else
+		{
+			m_varSel->SelectRowInCol(idx);
+			i++;
+		}
+	}
+
+	m_varSel->ExpandSelections();
+	m_varSel->Scroll(vsx, vsy);
 	m_varSel->Thaw();
 
 	UpdateGrid();
@@ -1815,6 +1950,7 @@ void TabularBrowser::OnCommand(wxCommandEvent &evt)
 	case IDOB_CLEAR_ALL:
 		{
 			m_selectedVars.Clear();
+			m_varSearch->Clear();
 			UpdateAll();
 		}
 		break;
@@ -1882,6 +2018,12 @@ void TabularBrowser::OnCommand(wxCommandEvent &evt)
 			GetTextData(dat, ',');
 			fputs( dat.c_str(), fp );
 			fclose(fp);
+		}
+		break;
+	case IDOB_SEARCH:
+		{
+			wxString srch = m_varSearch->GetValue();
+			UpdateDisplayed(srch);
 		}
 		break;
 	}
