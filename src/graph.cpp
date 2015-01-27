@@ -602,14 +602,15 @@ void GraphCtrl::OnLeftDown( wxMouseEvent &evt )
 DEFINE_EVENT_TYPE( wxEVT_GRAPH_PROPERTY_CHANGE )
 
 enum { ID_Y = wxID_HIGHEST+495, ID_TYPE, ID_TITLE, ID_XLABEL, ID_YLABEL, ID_SHOW_LEGEND, ID_LEGENDPOS, 
-	ID_SCALE, ID_SIZE, ID_COARSE, ID_FINE, ID_FONT_FACE };
+	ID_SCALE, ID_SIZE, ID_COARSE, ID_FINE, ID_FONT_FACE, ID_SRCH };
 
 BEGIN_EVENT_TABLE( GraphProperties, wxPanel )
 	EVT_DVSELECTIONLIST( ID_Y, GraphProperties::OnEdit )
 	EVT_TEXT( ID_TITLE, GraphProperties::OnEdit )
 	EVT_TEXT( ID_XLABEL, GraphProperties::OnEdit )
-	EVT_TEXT( ID_YLABEL, GraphProperties::OnEdit )
-	EVT_RADIOBUTTON( ID_TYPE, GraphProperties::OnEdit )
+	EVT_TEXT(ID_YLABEL, GraphProperties::OnEdit)
+	EVT_TEXT(ID_SRCH, GraphProperties::OnSearch)
+	EVT_RADIOBUTTON(ID_TYPE, GraphProperties::OnEdit)
 	EVT_COMMAND_SCROLL( ID_SCALE, GraphProperties::OnSlider )
 	EVT_COMMAND_SCROLL( ID_SIZE, GraphProperties::OnSlider )
 	EVT_CHECKBOX( ID_COARSE, GraphProperties::OnEdit )
@@ -623,6 +624,8 @@ END_EVENT_TABLE()
 GraphProperties::GraphProperties( wxWindow *parent, int id )
 	: wxPanel( parent, id )
 {
+	m_srch = new wxTextCtrl(this, ID_SRCH);
+
 	m_Y = new wxDVSelectionListCtrl( this, ID_Y, 1, wxDefaultPosition, wxDefaultSize, wxDVSEL_NO_COLOURS );
 	m_Y->SetBackgroundColour( *wxWHITE );
 
@@ -693,8 +696,9 @@ GraphProperties::GraphProperties( wxWindow *parent, int id )
 	sizer->Add( m_type, 0, wxALL|wxEXPAND, 4 );
 	sizer->Add( prop_sizer, 0, wxALL|wxEXPAND, 4 );
 	sizer->Add( chk_sizer, 0, wxALL|wxEXPAND, 4 );
-	sizer->Add( m_Y, 1, wxALL|wxEXPAND, 0 );
-	SetSizer( sizer );
+	sizer->Add(m_srch, 0,  wxEXPAND, 1);
+	sizer->Add(m_Y, 1, wxALL | wxEXPAND, 0);
+	SetSizer(sizer);
 	
 	Enable( false );
 }
@@ -706,8 +710,10 @@ void GraphProperties::SetupVariables( Simulation *sim )
 	Clear();
 
 	if ( !sim ) return;
-
+	m_sim = sim;
 	m_names.Clear();
+	m_selected.Clear();
+	m_srch->Clear();
 
 	int vsx, vsy;
 	m_Y->GetViewStart( &vsx, &vsy );	
@@ -736,6 +742,23 @@ void GraphProperties::Clear()
 
 void GraphProperties::Set( const Graph &g )
 {
+
+	m_names.Clear();
+	m_selected.Clear();
+	m_srch->Clear();
+
+	int vsx, vsy;
+	m_Y->GetViewStart(&vsx, &vsy);
+	m_Y->Freeze();
+	m_Y->RemoveAll();
+
+	PopulateSelectionList(m_Y, &m_names, m_sim);
+
+	m_Y->ExpandSelections();
+	m_Y->Scroll(vsx, vsy);
+	m_Y->Thaw();
+
+
 	for( size_t i=0;i<m_names.size();i++ )
 		m_Y->SelectRowInCol( i, 0, g.Y.Index( m_names[i] ) != wxNOT_FOUND );
 
@@ -780,6 +803,47 @@ void GraphProperties::Get( Graph &g )
 	g.LegendPos = m_legendPos->GetSelection();
 }
 
+void GraphProperties::UpdateDisplayed(wxString& srch)
+{
+	if (srch.IsEmpty()) return;
+
+	int vsx, vsy;
+	m_Y->GetViewStart(&vsx, &vsy);
+
+	m_selected.Clear();
+
+	for (size_t i = 0; i < m_names.size(); i++)
+	{
+		if (m_Y->IsRowSelected(i, 0))
+			m_selected.Add(m_names[i]);
+	}
+
+	m_names.Clear();
+	m_Y->RemoveAll();
+
+	if (!m_sim) return;
+
+	m_Y->Freeze();
+	UpdateSelectionList(m_Y, &m_names, m_sim, srch, m_selected);
+
+	size_t i = 0;
+	while (i<m_selected.Count())
+	{
+		int idx = m_names.Index(m_selected[i]);
+		if (idx < 0)
+			m_selected.RemoveAt(i);
+		else
+		{
+			m_Y->SelectRowInCol(idx);
+			i++;
+		}
+	}
+
+	m_Y->ExpandSelections();
+	m_Y->Scroll(vsx, vsy);
+	m_Y->Thaw();
+
+}
 
 void GraphProperties::SendChangeEvent()
 {
@@ -788,10 +852,16 @@ void GraphProperties::SendChangeEvent()
 	GetEventHandler()->ProcessEvent( e );
 }
 
-void GraphProperties::OnEdit( wxCommandEvent &evt )
-{	
+void GraphProperties::OnEdit(wxCommandEvent &evt)
+{
 	SendChangeEvent();
-	m_legendPos->Enable( m_showLegend->GetValue() );
+	m_legendPos->Enable(m_showLegend->GetValue());
+}
+
+void GraphProperties::OnSearch(wxCommandEvent &evt)
+{
+	wxString srch = m_srch->GetValue();
+	UpdateDisplayed(srch);
 }
 
 void GraphProperties::OnSlider( wxScrollEvent & )

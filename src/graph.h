@@ -100,13 +100,19 @@ public:
 
 	void Set( const Graph &g );
 	void Get( Graph &g );
+	void UpdateDisplayed(wxString& srch);
 
 private:
 	wxArrayString m_names;
+	wxArrayString m_selected;
+	Simulation *m_sim;
 
 	wxRadioChoice *m_type;
 	wxExtTextCtrl *m_title;
 	wxDVSelectionListCtrl *m_Y;
+
+	wxTextCtrl *m_srch;
+
 	wxExtTextCtrl *m_xlabel;
 	wxExtTextCtrl *m_ylabel;
 	wxSlider *m_scale;
@@ -116,8 +122,9 @@ private:
 	wxChoice *m_legendPos;
 	wxChoice *m_font;
 	
-	void OnEdit( wxCommandEvent & );
-	void OnSlider( wxScrollEvent & );
+	void OnEdit(wxCommandEvent &);
+	void OnSearch(wxCommandEvent &);
+	void OnSlider(wxScrollEvent &);
 	void SendChangeEvent();
 
 	DECLARE_EVENT_TABLE();
