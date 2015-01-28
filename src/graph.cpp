@@ -339,15 +339,19 @@ static std::vector<wxColour> s_colours;
 	{
 		double ymin, ymax;
 		GetPlot(0)->GetMinMax( 0, 0, &ymin, &ymax );
-		for( size_t i=1;i<GetPlotCount();i++ )
+		wxMessageBox(wxString::Format("after get min max - ymin=%lg, ymax=%lg", ymin, ymax));
+		for (size_t i = 1; i<GetPlotCount(); i++)
 			GetPlot(i)->ExtendMinMax( 0, 0, &ymin, &ymax );
+
+		wxMessageBox(wxString::Format("after extend - ymin=%lg, ymax=%lg", ymin, ymax));
 
 		if ( m_g.Type == Graph::STACKED || m_g.Type == Graph::BAR )
 		{ // forcibly include the zero line for bar plots
 			if ( ymin > 0 ) ymin = 0;
 			if ( ymax < 0 ) ymax = 0;
 		}
-		
+		wxMessageBox(wxString::Format("after force - ymin=%lg, ymax=%lg", ymin, ymax));
+
 		double yadj = (ymax-ymin)*0.05;
 		
 		if (ymin != 0) ymin -= yadj;
