@@ -1910,7 +1910,11 @@ void TabularBrowser::UpdateAll()
 
 void TabularBrowser::UpdateDisplayed(wxString& srch)
 {
-	if (srch.IsEmpty()) return;
+	if (srch.IsEmpty())
+	{
+		UpdateAll();
+		return;
+	}
 	m_names.Clear();
 
 	int vsx, vsy;
