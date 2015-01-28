@@ -805,7 +805,6 @@ void GraphProperties::Get( Graph &g )
 
 void GraphProperties::UpdateDisplayed(wxString& srch)
 {
-	if (srch.IsEmpty()) return;
 
 	int vsx, vsy;
 	m_Y->GetViewStart(&vsx, &vsy);
@@ -824,7 +823,11 @@ void GraphProperties::UpdateDisplayed(wxString& srch)
 	if (!m_sim) return;
 
 	m_Y->Freeze();
-	UpdateSelectionList(m_Y, &m_names, m_sim, srch, m_selected);
+
+	if (srch.IsEmpty())
+		PopulateSelectionList(m_Y, &m_names, m_sim);
+	else
+		UpdateSelectionList(m_Y, &m_names, m_sim, srch, m_selected);
 
 	size_t i = 0;
 	while (i<m_selected.Count())
