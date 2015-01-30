@@ -32,7 +32,7 @@ P50P90Form::P50P90Form( wxWindow *parent, Case *cc )
 	SetBackgroundColour( wxMetroTheme::Colour(wxMT_FOREGROUND) );
 
 	wxBoxSizer *sizer_top = new wxBoxSizer( wxHORIZONTAL );
-	sizer_top->Add( new wxMetroButton( this, ID_SIMULATE, "Run P50/P90 analysis", wxNullBitmap,wxDefaultPosition, wxDefaultSize, wxMB_RIGHTARROW ), 0, wxALL|wxALIGN_CENTER_VERTICAL, 0 );
+	sizer_top->Add( new wxMetroButton( this, ID_SIMULATE, "Run P50/P90 simulations", wxNullBitmap,wxDefaultPosition, wxDefaultSize, wxMB_RIGHTARROW ), 0, wxALL|wxALIGN_CENTER_VERTICAL, 0 );
 	sizer_top->AddSpacer( 150 );
 
 	//sizer_top->Add( new wxHyperlinkCtrl( this, wxID_ANY, "Download historical weather data", SamApp::WebApi("historical_nsrdb") ), 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
@@ -74,7 +74,7 @@ void P50P90Form::OnSimulate( wxCommandEvent & )
 		|| !wxDirExists( m_folder->GetValue() ) 
 		|| list.size() < 10 )
 	{
-		wxMessageBox("Please select a folder with at least 10 weather data files.\n\nSee Help for more information.", "Notice", wxOK, this );
+		wxMessageBox("Please select a folder with at least 10 weather data files.\n\nSee Help for details and a link to NSRDB historical data.", "P50/P90 Simulations", wxOK, this );
 		return;
 	}
 
