@@ -122,6 +122,12 @@ span.f_ListLast /* List Last */
 span.f_ListNoNumber /* List No Number */
 {
 }
+span.f_NewStyle /* New Style */
+{
+ font-family: Verdana;
+ color: #ffffff;
+ background-color: #ff0000;
+}
 span.f_Note /* Note */
 {
 }
@@ -224,6 +230,9 @@ span.f_VariableDescription /* Variable Description */
 span.f_VariableName /* Variable Name */
 {
  font-weight: bold;
+}
+span.f_Video /* Video */
+{
 }
 span.f_VideoLibraryTitle /* Video Library Title */
 {
@@ -352,6 +361,11 @@ p /* Normal */
  text-indent: -24px;
  margin: 0px 0px 3px 72px;
 }
+.p_NewStyle /* New Style */
+{
+ text-align: center;
+ margin: 12px 0px 12px 0px;
+}
 .p_Note /* Note */
 {
  border-color: #000000;
@@ -472,8 +486,14 @@ p /* Normal */
 {
  margin: 0px 0px 6px 12px;
 }
+.p_Video /* Video */
+{
+ text-align: center;
+ margin: 12px 0px 12px 0px;
+}
 .p_VideoLibraryTitle /* Video Library Title */
 {
+ margin: 0px 0px 12px 0px;
 }
 
 
