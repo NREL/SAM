@@ -1,319 +1,228 @@
 <html>
   <head>
-    <meta name="generator"
-    content="HTML Tidy for HTML5 (experimental) for Windows https://github.com/w3c/tidy-html5/tree/c63cc39" />
     <title>System Advisor Model (SAM) Release Notes</title>
     <style>
       h1 {background-color: #0072C6;
           color: white;
-          font-family: 'Segoe UI',sans-serif;
+          font-family: Segoe UI,sans-serif;
           font-weight: normal;
-          font-size: 14pt;
+          font-size: 16pt;
           padding: 10px;}
-      h2 {font-family: 'Segoe UI',sans-serif;
+      h2 {font-family: Segoe UI,sans-serif;
           background-color: #B8CCE4;
           color: #0072C6;
           font-weight: normal;
-          font-size: 12pt;
+          font-size: 14pt;
           padding: 5px;}
-      p {font-family: 'Segoe UI',sans-serif;
-         font-size: 10pt;
+      p,li {font-family: Segoe UI,sans-serif;
+         font-size: 11pt;
          margin-left: 20px;
          margin-right: 20px;} 
-  </style>
+	  	 
+</style>
   </head>
   <body>
-	<h1>Version 2014.11.24  November 2014</h1>
-	<p>This is a major update to the SAM software product that is rebuilt from the ground up.  It adds several major new capabilities:
-	</p>
-
-<p>
-- Completely revamped and significantly simplified user interface<br>
-- Updated LCOE and PPA calculations for utility-scale systems<br>
-- Simplified financial model options<br>
-- Integrated 3D shading calculator for photovoltaic and solar water heating systems<br>
-- New CSV-based weather file format and included database of 1600 locations<br>
-- Redesigned results browser and parametrics user interface<br>
-- Parallel processing for parametric and stochastic simulations<br>
-- New scripting engine with a syntax-aware editor and support for user Macros<br>
-- Brand new CSP model engine is faster, added a molten salt linear Fresnel CSP model<br>
-- Updated to use the latest PVWatts Version 5 algorithms<br>
-- Support for the OpenEI Utility Rate Database Version 3<br>
-- New building electric load estimator algorithm<br>
-- New SAM project file format reduces project sizes (not backwards compatible)<br>
-</p>
-
-<p>Numerous other features and bug fixes are included.  Free online registration of your copy of SAM is required using your email address when you first start the software.  A registration key is then emailed to you and used to verify registration each time you start SAM.</p>
-
-
-
-<h2>Photovoltaic (detailed)</h2>
-
-<p>New 3D shading calculator will estimate
-linear beam shading factors based on a 3D scene entered by the user.</p>
-
-<p>Added support for subhourly simulations (1, 5, 10, 15, 20,
-30 minute, and 1 hour)</p>
-
-<p>Added an inverter sizing macro to give
-additional information about system sizing by analyzing simulation results.</p>
-
-<p>Self-shading calculator for large arrays is
-now enabled for all four PV sub-arrays, and inputs are simplified for easier
-use.</p>
-
-<p>Reorganized input pages for easier use by separating Array
-and PV Subarrays pages into System Design, Shading, and Losses pages </p>
-
-<p>Transitioned from derates to losses to be more intuitive and
-consistent with industry practice</p>
-
-<p>Self-shading for one-axis tracking systems now uses the same
-algorithm as self-shading for fixed tilt systems for consistency and more
-accurate self-shading calculation including estimated nonlinear losses</p>
-
-<p>Changed the calculation method for auto-sized systems to get
-closer to the desired DC-AC ratio.</p>
-
-<p>Clipping losses, nighttime tare losses, and inverter power
-consumption losses now reported correctly.  Previous versions reported losses
-for one inverter, not the total number of inverters in the system.</p>
-
-<p>Added a $/Wdc option for inverter pricing and changed to
-this unit by default.</p>
-
-<p>Cost assumptions have been updated to match the latest PV
-cost data.</p>
-
-
-<h2>Photovoltaic (PVWatts)</h2>
-
-<p>Revised algorithms according to the
-PVWatts version 5 update, including an updated inverter performance model,
-self-shading or backtracking for 1 axis trackers, module models for
-standard/premium/thin-film types, updated system loss assumptions.</p>
-
-<p>Added support for subhourly simulations (1, 5, 10, 15, 20,
-30 minute, and 1 hour)</p>
-
-<p>Cost assumptions have been updated to match the latest PV
-cost data.</p>
-
-<h2>High Concentration PV</h2>
-
-<p>The cell efficiency table is now interpolated based on
-incident DNI, rather than cell POA.</p>
-
-<p>Updated the thermal model to use incident DNI rather than
-cell POA – now consistent with the Sandia model. </p>
-
-<h2>Wind</h2>
-
-<p>Access to NREL’s new WIND Toolkit data through the SAM user
-interface</p>
-
-<p>Auto-layout capability for farms by entering a desired farm
-size</p>
-
-<p>Turbine spacing in a farm is now entered in units of rotor
-diameters instead of meters.</p>
-
-<p>Hub height was not previously accounted for in the air
-density calculations to compute the power curve when inputting turbine
-parameters and using a Weibull resource distribution</p>
-
-<p>The air density equation used to compute the power curve
-when inputting turbine parameters has been updated with more accurate
-constants:</p>
-
-<p>Siting considerations page has now become a macro</p>
-
-<p>NREL’s new Land-Based Balance of System cost model has been
-integrated into the user interface</p>
-
-<p>Default turbine spacing assumptions have changed.</p>
-
-<p>Cost assumptions have been updated to match the latest wind
-cost data.</p>
-
-<h2>Parabolic Trough (Physical)</h2>
-
-<p>Fixed bracket heat loss calculations to match empirical
-correlations in the Physical Trough Manual. The result is slightly reduced
-bracket losses. </p>
-
-<p>Improved the convergence of the first-principles heat loss
-model.</p>
-
-<h2>Parabolic Trough (Empirical)</h2>
-
-<p>Fixed a problem with calculation of the time zone</p>
-
-<p>Updated user interface with simplified selection of
-components from the libraries </p>
-
-<h2>Power Tower Technologies (Molten Salt, Direct Steam)</h2>
-
-<p>Replaced heliostat field simulation model to better support
-data formats provided by SolarPILOT and to automate field geometry
-characterization. The new model incorporates layout, flux, and efficiency
-characterization simulations directly. In the previous model, heliostat field
-optical efficiency was evaluated on a regularly spaced azimuthal/elevation sun
-position grid, and values were interpolated with a simple bilinear algorithm.
-The new model evaluates efficiency at the same sun positions as the flux maps,
-and efficiency is evaluated using Gauss-Markov estimation, which amounts to
-linear interpolation among irregularly spaced data points. </p>
-
-<p>Added the ability to specify the number of flux maps used in
-field characterization. These settings are available on the Tower and Receiver
-technology pages. The user may also specify the resolution of the flux map. </p>
-
-<p>Previously, the receiver flux distribution was determined
-during simulation by choosing the pre-generated flux map closest in sun
-position to the current point. This was updated to allow interpolation among
-several nearby flux maps with a weighting approach.</p>
-
-<p>The previous DELSOL3-based field layout and characterization
-algorithm is replaced with NREL’s SolarPILOT software. The new approach
-emphasizes full layout and position-based simulation rather than DELSOL’s zonal
-approach. </p>
-
-<p>Improved accuracy of heliostat field characterization given
-x-y position layout. This was poorly supported under DELSOL3, but is a point of
-emphasis with the new SolarPILOT algorithms. </p>
-
-<p>Added support for heliostat optical parameters, including
-heliostat canting (individual mirror facets) in the horizontal and vertical
-direction, ideal vs. flat (no) focusing, and options for specifying facet
-aiming (canting). </p>
-
-<p>Updated heliostat field optimization algorithms. Please
-note that documentation is still under development for these algorithms. The
-user may refer to <a
-href="http://ab-initio.mit.edu/wiki/index.php/NLopt_Algorithms">http://ab-initio.mit.edu/wiki/index.php/NLopt_Algorithms</a>
-for an overview of the methods.</p>
-
-<p>&nbsp;</p>
-
-<h2>Power Tower (Molten Salt)</h2>
-
-<p>Support for automatic re-layout of the heliostat field in
-parametric or stochastic simulations</p>
-
-<p>Removed cavity receiver option until model can be integrated
-with new system level model</p>
-
-<p>Fixed an error that occurred when the number of receiver
-panels was less than the number of flux points.</p>
-
-<p>Updated the user interface to simplify inputs.</p>
-
-<h2>Power Tower (Direct Steam)</h2>
-
-<p>Replaced ‘estimated receiver thermal efficiencies’ in UI
-with ‘estimated receiver heat loss’. The heat loss is typically less dependent
-on flux, so specifying this value allows the thermal efficiency to
-automatically vary with flux. </p>
-
-<p>Solar field modeling changes detailed for the Molten Salt
-Power Tower.</p>
-
-<p>Automatic optimization of the receiver during simulation
-runs is still under development and is not yet available. However, optimization
-within the interface on the Solar Field page is available.</p>
-
-<h2>Linear Fresnel (Molten Salt)</h2>
-
-<p>None</p>
-
-<h2>Molten Salt Technologies (Physical Trough, Power Tower, Linear Fresnel)</h2>
-
-<p>The field-to-storage HX sizing for the controller previously
-specified that the HX duty should be (solar multiple – 1 ) * (power block
-design thermal power). This makes the size adequate if the field always deploys
-to the power block first, then only balance is sent to storage. This is not
-desired behavior, especially for “peaker” type plants. The HX sizing is now
-simply the solar field design power (solar multiple) * (power block design
-thermal power). Additionally, the off-design heat exchanger model has been
-updated to maintain physical performance when the load is near the design load.</p>
-
-<h2>Linear Fresnel (Direct Steam)</h2>
-
-<p>None</p>
-
-<h2>Dish-Stirling</h2>
-
-<p>None</p>
-
-<h2>Generic model for CSP</h2>
-
-<p>None</p>
-
-<h2>Biomass Combustion</h2>
-
-<p>No changes.</p>
-
-<h2>Geothermal</h2>
-
-<p>Removed resource temperature and depth lookup via NREL web
-service in accordance with a recommendation from NREL geothermal technology
-experts.</p>
-
-<h2>Solar Water Heating</h2>
-
-<p>Updated algorithm to use a triple-mode solar water tank
-model that more accurately models actual system behavior.</p>
-
-<p>Added support for subhourly simulations (1, 5, 10, 15, 20,
-30 minute, and 1 hour)</p>
-
-<p>Added electric load input option for economic analysis.</p>
-
-<h2>Residential and Commercial Financial Models</h2>
-
-<p>Added a new building load estimator for the residential and
-commercial financial models that generates an hourly electric load profile
-based on information you provide about the building size and electric
-appliances. Requires monthly electric load data to scale normalized profile to
-actual energy usage.</p>
-
-<p>Removed the Commercial PPA and Independent Power Producer
-financial models because they were redundant with each other, and with the more
-representative Single Owner model, which is now the only option for modeling
-PPA projects with a single owner.</p>
-
-<p>Improvements to the utility rate database (URDB) inputs for
-the residential and commercial financial models and calculations to work with
-Version 3 of the OpenEI database.</p>
-
-<h2>Utility-scale Models</h2>
-
-<p>New financial metrics for the Power Purchase Agreement
-financial models: SAM now reports both the levelized cost of energy metric
-based only on project costs after taxes and incentives but without the
-developer's return on investment, and the levelized PPA price, which accounts for
-both costs and the developer's return</p>
-
-<p>Major update to the Send to Excel with Equations feature.</p>
-
-<h2>Scripting</h2>
-
-<p>Scripts are no longer embedded in project files.</p>
-
-<p>Scripting language is the new LK language which is much
-faster and more powerful.</p>
-
-<p>New functions in standard library to create and export plots
-of data, reading/writing CSV files, HTML dialogs, web access and geocoding, new
-graphical user interface commands, Excel automation (Windows only), and direct
-access to the underlying simulation engine (SSC).</p>
-
-<p>Added a script-based Macro system to support integrated
-extensions to SAM.</p>
-
-
-  
-  
+    <h1>Version 2015.1.30 January 2015</h1>
+    <p>This is a maintenance update to SAM 2014.11.24 that addresses several important bugs and adds new features:</p>
+    <ul>
+      <li>Fixed bugs in the PPA financial model calculations of levelized cost and levelized PPA price metrics</li>
+      <li>Added an option to the PPA financial models with debt (Single Owner and Leveraged Partnership Flip) that makes it
+      possible to specify the size of debt as a percent of installed cost with fixed annual payments in addition to the current
+      option to size debt with a debt fraction based on cash available for debt service</li>
+      <li>Added a Combine Cases macro to model a project that combines a single financial model with two or more performance models</li>
+      <li>For the residential and commercial financial model electric load input pages, added an option to scale hourly data to
+      monthly utility bill data</li>
+      <li>Added support for subhourly simulations for the physical trough model</li>
+      <li>Fixed a file association issue that caused SAM to associate the old .zsam file name extension with SAM</li>
+      <li>Updated the CEC inverter and physical trough collector libraries</li>
+      <li>Updated default values for cost and financial parameters</li>
+    </ul>
+    <h2>General</h2>
+    <p>Updated user documentation</p>
+    <p>Updated default PPA prices, internal rate of return, and real discount rate inputs to be more representative of current
+    market conditions</p>
+    <p>Removed duplicate annual energy outputs</p>
+    <p>Fixed bug in which cash flow display was not displaying all years of analysis period</p>
+    <p>Fixed bug with rendering of macro list when changing models</p>
+    <p>Updated cashflow send-to-excel to handle fuel costs and TOD price factors</p>
+    <p>Changed availability and curtailment inputs from factors with values between 0 and 1 to losses with values between 0 and
+    100%</p>
+    <p>Added a search box to results data table list to filter variables by name</p>
+    <p>Fixed a problem with rendering of unicode characters in PDF reports in OS X</p>
+    <h2>Residential and Commercial Financial Models</h2>
+    <p>Electricity rate search box can now resolve duplicate names for the same utility</p>
+    <p>Electricity rate lookup by zip code</p>
+    <p>Electricity rates with flat buy and sell rates without net metering now &quot;trued up&quot; on an hourly basis instead of
+    monthly basis</p>
+    <p>Updated diurnal demand charge TOU schedule requirement for rates that have only a flat monthly demand charge</p>
+    <h2>PPA Financial Models</h2>
+    <p>In specify target IRR mode, changed initial guess in PPA price search algorithm to 0 instead of using value of disabled PPA
+    price input</p>
+    <p>Fixed recapitalization bug</p>
+    <p>Improved reporting of invalide results</p>
+    <p>Fixed algorithm to correctly handle a target IRR input value of zero</p>
+    <h2>Detailed Photovoltaic</h2>
+    <p>Bug fix in azimuth x altitude shading table input</p>
+    <p>Fixed bugs with module I-V plots on the CEC Performance model with user entered specifications</p>
+    <p>Fixed unit conversion bug for temperature coefficients in CEC Performance model with User Entered Specifications</p>
+    <p>Total module area on System Design page now updates appropriately</p>
+    <p>GCR limit increased to 3 to be consistent with PVWatts</p>
+    <h2>Concentrating Solar Power (CSP)</h2>
+    <p>Fixed bug in auxiliary gas heater macro</p>
+    <p>Generic CSP- updated thermal storage to work with dispatch factors</p>
+    <p>Molten salt linear Fresnel: Added option for electric or fossil storage freeze protection</p>
+    <p>Fixed bug when thermal energy storage is set to 0</p>
+    <p>Fixed problems occuring with user-defined heat transfer fluids</p>
+    <p>Updated Linear Fresnel and CSP Tower cost defaults</p>
+    <p>Rearranged inputs on Molten Salt Power Tower- Tower and Receiver input page</p>
+    <h2>Wind</h2>
+    <p>Updated wind defaults to not include the ITC</p>
+    <h2>LK Scripting</h2>
+    <p>Additional error messages for variable handling in scripts</p>
+    <p>Added LK functions for running simulations in parallel within a script</p>
+    <p>Added new stepwise regression and Latin Hypercube Sampling LK script functions</p>
+    <h1>Version 2014.11.24  November 2014</h1>
+    <p>This is a major reworking of the SAM software with a completely rebuilt software structure and user interface. It adds
+    several major new capabilities:</p>
+    <ul>
+      <li>Completely revamped and significantly simplified user interface</li>
+      <li>Updated LCOE and PPA calculations for utility-scale systems</li>
+      <li>Simplified financial model options</li>
+      <li>Integrated 3D shading calculator for photovoltaic and solar water heating systems</li>
+      <li>New CSV-based weather file format and included database of 1600 locations</li>
+      <li>Redesigned results browser and parametrics user interface</li>
+      <li>Parallel processing for parametric and stochastic simulations</li>
+      <li>New scripting engine with a syntax-aware editor and support for user Macros</li>
+      <li>Brand new CSP model engine is faster, added a molten salt linear Fresnel CSP model</li>
+      <li>Updated to use the latest PVWatts Version 5 algorithms</li>
+      <li>Support for the OpenEI Utility Rate Database Version 3</li>
+      <li>New building electric load estimator algorithm</li>
+      <li>New SAM project file format reduces project sizes (not backwards compatible)</li>
+    </ul>
+    <p>Numerous other features and bug fixes are included. Free online registration of your copy of SAM is required using your
+    email address when you first start the software. A registration key is then emailed to you and used to verify registration each
+    time you start SAM.</p>
+    <h2>Photovoltaic (detailed)</h2>
+    <p>New 3D shading calculator will estimate linear beam shading factors based on a 3D scene entered by the user.</p>
+    <p>Added support for subhourly simulations (1, 5, 10, 15, 20, 30 minute, and 1 hour)</p>
+    <p>Added an inverter sizing macro to give additional information about system sizing by analyzing simulation results.</p>
+    <p>Self-shading calculator for large arrays is now enabled for all four PV sub-arrays, and inputs are simplified for easier
+    use.</p>
+    <p>Reorganized input pages for easier use by separating Array and PV Subarrays pages into System Design, Shading, and Losses
+    pages</p>
+    <p>Transitioned from derates to losses to be more intuitive and consistent with industry practice</p>
+    <p>Self-shading for one-axis tracking systems now uses the same algorithm as self-shading for fixed tilt systems for
+    consistency and more accurate self-shading calculation including estimated nonlinear losses</p>
+    <p>Changed the calculation method for auto-sized systems to get closer to the desired DC-AC ratio.</p>
+    <p>Clipping losses, nighttime tare losses, and inverter power consumption losses now reported correctly.  Previous versions
+    reported losses for one inverter, not the total number of inverters in the system.</p>
+    <p>Added a $/Wdc option for inverter pricing and changed to this unit by default.</p>
+    <p>Cost assumptions have been updated to match the latest PV cost data.</p>
+    <h2>Photovoltaic (PVWatts)</h2>
+    <p>Revised algorithms according to the PVWatts version 5 update, including an updated inverter performance model, self-shading
+    or backtracking for 1 axis trackers, module models for standard/premium/thin-film types, updated system loss assumptions.</p>
+    <p>Added support for subhourly simulations (1, 5, 10, 15, 20, 30 minute, and 1 hour)</p>
+    <p>Cost assumptions have been updated to match the latest PV cost data.</p>
+    <h2>High Concentration PV</h2>
+    <p>The cell efficiency table is now interpolated based on incident DNI, rather than cell POA.</p>
+    <p>Updated the thermal model to use incident DNI rather than cell POA – now consistent with the Sandia model.</p>
+    <h2>Wind</h2>
+    <p>Access to NREL’s new WIND Toolkit data through the SAM user interface</p>
+    <p>Auto-layout capability for farms by entering a desired farm size</p>
+    <p>Turbine spacing in a farm is now entered in units of rotor diameters instead of meters.</p>
+    <p>Hub height was not previously accounted for in the air density calculations to compute the power curve when inputting
+    turbine parameters and using a Weibull resource distribution</p>
+    <p>The air density equation used to compute the power curve when inputting turbine parameters has been updated with more
+    accurate constants:</p>
+    <p>Siting considerations page has now become a macro</p>
+    <p>NREL’s new Land-Based Balance of System cost model has been integrated into the user interface</p>
+    <p>Default turbine spacing assumptions have changed.</p>
+    <p>Cost assumptions have been updated to match the latest wind cost data.</p>
+    <h2>Parabolic Trough (Physical)</h2>
+    <p>Fixed bracket heat loss calculations to match empirical correlations in the Physical Trough Manual. The result is slightly
+    reduced bracket losses.</p>
+    <p>Improved the convergence of the first-principles heat loss model.</p>
+    <h2>Parabolic Trough (Empirical)</h2>
+    <p>Fixed a problem with calculation of the time zone</p>
+    <p>Updated user interface with simplified selection of components from the libraries</p>
+    <h2>Power Tower Technologies (Molten Salt, Direct Steam)</h2>
+    <p>Replaced heliostat field simulation model to better support data formats provided by SolarPILOT and to automate field
+    geometry characterization. The new model incorporates layout, flux, and efficiency characterization simulations directly. In
+    the previous model, heliostat field optical efficiency was evaluated on a regularly spaced azimuthal/elevation sun position
+    grid, and values were interpolated with a simple bilinear algorithm. The new model evaluates efficiency at the same sun
+    positions as the flux maps, and efficiency is evaluated using Gauss-Markov estimation, which amounts to linear interpolation
+    among irregularly spaced data points.</p>
+    <p>Added the ability to specify the number of flux maps used in field characterization. These settings are available on the
+    Tower and Receiver technology pages. The user may also specify the resolution of the flux map.</p>
+    <p>Previously, the receiver flux distribution was determined during simulation by choosing the pre-generated flux map closest
+    in sun position to the current point. This was updated to allow interpolation among several nearby flux maps with a weighting
+    approach.</p>
+    <p>The previous DELSOL3-based field layout and characterization algorithm is replaced with NREL’s SolarPILOT software. The new
+    approach emphasizes full layout and position-based simulation rather than DELSOL’s zonal approach.</p>
+    <p>Improved accuracy of heliostat field characterization given x-y position layout. This was poorly supported under DELSOL3,
+    but is a point of emphasis with the new SolarPILOT algorithms.</p>
+    <p>Added support for heliostat optical parameters, including heliostat canting (individual mirror facets) in the horizontal and
+    vertical direction, ideal vs. flat (no) focusing, and options for specifying facet aiming (canting).</p>
+    <p>Updated heliostat field optimization algorithms. Please note that documentation is still under development for these
+    algorithms. The user may refer to 
+    <a href="http://ab-initio.mit.edu/wiki/index.php/NLopt_Algorithms">http://ab-initio.mit.edu/wiki/index.php/NLopt_Algorithms</a>
+    for an overview of the methods.</p>
+    <p> </p>
+    <h2>Power Tower (Molten Salt)</h2>
+    <p>Support for automatic re-layout of the heliostat field in parametric or stochastic simulations</p>
+    <p>Removed cavity receiver option until model can be integrated with new system level model</p>
+    <p>Fixed an error that occurred when the number of receiver panels was less than the number of flux points.</p>
+    <p>Updated the user interface to simplify inputs.</p>
+    <h2>Power Tower (Direct Steam)</h2>
+    <p>Replaced ‘estimated receiver thermal efficiencies’ in UI with ‘estimated receiver heat loss’. The heat loss is typically
+    less dependent on flux, so specifying this value allows the thermal efficiency to automatically vary with flux.</p>
+    <p>Solar field modeling changes detailed for the Molten Salt Power Tower.</p>
+    <p>Automatic optimization of the receiver during simulation runs is still under development and is not yet available. However,
+    optimization within the interface on the Solar Field page is available.</p>
+    <h2>Linear Fresnel (Molten Salt)</h2>
+    <p>None</p>
+    <h2>Molten Salt Technologies (Physical Trough, Power Tower, Linear Fresnel)</h2>
+    <p>The field-to-storage HX sizing for the controller previously specified that the HX duty should be (solar multiple – 1 ) *
+    (power block design thermal power). This makes the size adequate if the field always deploys to the power block first, then
+    only balance is sent to storage. This is not desired behavior, especially for “peaker” type plants. The HX sizing is now simply
+    the solar field design power (solar multiple) * (power block design thermal power). Additionally, the off-design heat exchanger
+    model has been updated to maintain physical performance when the load is near the design load.</p>
+    <h2>Linear Fresnel (Direct Steam)</h2>
+    <p>None</p>
+    <h2>Dish-Stirling</h2>
+    <p>None</p>
+    <h2>Generic model for CSP</h2>
+    <p>None</p>
+    <h2>Biomass Combustion</h2>
+    <p>No changes.</p>
+    <h2>Geothermal</h2>
+    <p>Removed resource temperature and depth lookup via NREL web service in accordance with a recommendation from NREL geothermal
+    technology experts.</p>
+    <h2>Solar Water Heating</h2>
+    <p>Updated algorithm to use a triple-mode solar water tank model that more accurately models actual system behavior.</p>
+    <p>Added support for subhourly simulations (1, 5, 10, 15, 20, 30 minute, and 1 hour)</p>
+    <p>Added electric load input option for economic analysis.</p>
+    <h2>Residential and Commercial Financial Models</h2>
+    <p>Added a new building load estimator for the residential and commercial financial models that generates an hourly electric
+    load profile based on information you provide about the building size and electric appliances. Requires monthly electric load
+    data to scale normalized profile to actual energy usage.</p>
+    <p>Removed the Commercial PPA and Independent Power Producer financial models because they were redundant with each other, and
+    with the more representative Single Owner model, which is now the only option for modeling PPA projects with a single
+    owner.</p>
+    <p>Improvements to the utility rate database (URDB) inputs for the residential and commercial financial models and calculations
+    to work with Version 3 of the OpenEI database.</p>
+    <h2>Utility-scale Models</h2>
+    <p>New financial metrics for the Power Purchase Agreement financial models: SAM now reports both the levelized cost of energy
+    metric based only on project costs after taxes and incentives but without the developer&#39;s return on investment, and the
+    levelized PPA price, which accounts for both costs and the developer&#39;s return</p>
+    <p>Major update to the Send to Excel with Equations feature.</p>
+    <h2>Scripting</h2>
+    <p>Scripts are no longer embedded in project files.</p>
+    <p>Scripting language is the new LK language which is much faster and more powerful.</p>
+    <p>New functions in standard library to create and export plots of data, reading/writing CSV files, HTML dialogs, web access
+    and geocoding, new graphical user interface commands, Excel automation (Windows only), and direct access to the underlying
+    simulation engine (SSC).</p>
+    <p>Added a script-based Macro system to support integrated extensions to SAM.</p>
     <h1>Version 2014.1.14 January 2014 (Update)</h1>
     <p>This is a maintenance update to SAM 2013.9.20 that addresses several bugs and other issues It does not add any new
     features.</p>
@@ -437,8 +346,8 @@ extensions to SAM.</p>
     <p>Created the ability to import a user defined turbine layout for a wind farm.</p>
     <p>Added the ability to model wind wake effects using the Eddy-Viscosity model.</p>
     <p>Added the ability to model wind wake effects using the Park model.</p>
-    <p>Worked with Mistaya Inc to develop the capability for Windographer software to export data in SAM’s .srw wind resource
-    file format.</p>
+    <p>Worked with Mistaya Inc to develop the capability for Windographer software to export data in SAM’s .srw wind resource file
+    format.</p>
     <p>Increased the maximum number of turbines that can be analyzed in a wind farm from 250 to 300.</p>
     <p>Added a capability to display information about siting considerations for a particular location.  SAM communicates with the
     NREL Wind Prospector online tool to obtain the information.</p>
@@ -530,14 +439,14 @@ extensions to SAM.</p>
     documentation for more details. The calculation method does not change the results.</p>
     <p>Enhancement: DC and AC derate factors are specified as fractions, not percentages. This makes the derate convention
     consistent with PVWatts. SAM automatically updates values in files created with older versions with percentage values.</p>
-    <p>Bug fix: The single point efficiency (SPE) inverter occasionally produced nameplate power with zero incident irradiance. 
-    An example is shown in the plot below, for a 4 kW SPE inverter.</p>
+    <p>Bug fix: The single point efficiency (SPE) inverter occasionally produced nameplate power with zero incident irradiance.  An
+    example is shown in the plot below, for a 4 kW SPE inverter.</p>
     <p>In the default residential PV system with a 4 kW SPE inverter, this fix reduces the annual AC kWh by approximately 1.8
     %.</p>
     <p>Bug fix: The Sandia PV module model did not correctly use the database-specified temperature coefficients. The temperature
-    coefficients used were A = -3.56, B=-0.075, dT=3 when the ‘Use database values’ option was selected in the user interface.
-    For the default utility scale system in SAM, the fix increases the annual output using the default Sandia module by
-    approximately 0.3 %.</p>
+    coefficients used were A = -3.56, B=-0.075, dT=3 when the ‘Use database values’ option was selected in the user interface. For
+    the default utility scale system in SAM, the fix increases the annual output using the default Sandia module by approximately
+    0.3 %.</p>
     <p>Bug fix: The Sandia PV module model now reports the module temperature as the ambient temperature under zero irradiance
     conditions. The previous version of SAM reported 0 deg C under some zero irradiance conditions. This does not change the
     results.</p>
@@ -615,24 +524,24 @@ extensions to SAM.</p>
     run through different modules in one of the PV module libraries.</p>
     <h2>Biomass Power</h2>
     <p>Some Input pages rearranged and streamlined for clarity.</p>
-    <p>Changed “Emissions Comparison” page to “Life-Cycle Impacts” page. The new page allows users to see the emission
-    effects of transportation fuel, transportation mode, and pre-processing method. The overall greenhouse gas emissions results
-    are displayed graphically, broken into general categories such as transportation, collection, combustion, and biomass uptake.
-    This page does not affect the performance or cost model in any way. It is purely informational.</p>
+    <p>Changed “Emissions Comparison” page to “Life-Cycle Impacts” page. The new page allows users to see the emission effects of
+    transportation fuel, transportation mode, and pre-processing method. The overall greenhouse gas emissions results are displayed
+    graphically, broken into general categories such as transportation, collection, combustion, and biomass uptake. This page does
+    not affect the performance or cost model in any way. It is purely informational.</p>
     <p>Removed the option to specify biomass power plant capacity. This option was confusing to users, since intuitively, this
     option would back-calculate the amount of biomass used to achieve a plant of the specified size and the corresponding
     collection radius. The back-calculation of feedstock radius is not a current capability of SAM Biopower.</p>
     <h2>Concentrating Solar Power (CSP) Models</h2>
-    <p>Fixed stow angle bug in empirical trough model.  Should not affect results unless stow angles were set to an angle much
-    less than 180º.</p>
+    <p>Fixed stow angle bug in empirical trough model.  Should not affect results unless stow angles were set to an angle much less
+    than 180º.</p>
     <p>Thermal storage tank heater efficiency was not being applied to tank heater parasitic losses. This should have minimal
     impact on results for most cases because tank heater is typically not frequently used and default heater efficiency is
     0.99.</p>
     <p>Fixed thermal storage tank freeze protection calculations. Impact on annual performance results should be negligible.</p>
     <p>Optical efficiency did not include cosine effects.  Modified version will significantly change optical efficiency results.
     Annual energy is not affected.</p>
-    <p>Fix field defocus calculation for physical trough and molten salt power tower models.  Impact on gross and net annual
-    energy is negligible.  May have larger impact (~5%) on the energy from the field in some cases.</p>
+    <p>Fix field defocus calculation for physical trough and molten salt power tower models.  Impact on gross and net annual energy
+    is negligible.  May have larger impact (~5%) on the energy from the field in some cases.</p>
     <p>Fix bug in empirical trough model that allowed storage to over-discharge under some conditions. Impact on annual energy
     should be negligible.</p>
     <p>Fix bug in freeze protection calculations for the physical trough model. Impact should be negligible for systems with low
@@ -715,9 +624,9 @@ extensions to SAM.</p>
     <p>Improved the iterative solution algorithm for solar field mass flow rate. The previous release used the
     successive-substitution method for determining convergence of the HTF mass flow rate in the solar field. While generally
     successful, this method is prone to error in situations where the initial guess values do not closely resemble the final
-    converged solution. This release uses the “hybrid false-position” iterative method which has proved to be significantly
-    more robust and stable than the previous method in solving for the solar field mass flow rate. The modified solver algorithm
-    also allowed us to place thermal inertia and heat loss calculations inside of the primary iteration loop, thus improving the
+    converged solution. This release uses the “hybrid false-position” iterative method which has proved to be significantly more
+    robust and stable than the previous method in solving for the solar field mass flow rate. The modified solver algorithm also
+    allowed us to place thermal inertia and heat loss calculations inside of the primary iteration loop, thus improving the
     accuracy of the solar field calculations and reducing solver time. Potential impacts include: This is the most significant
     modification to the solar field algorithm in this release. The more accurate solver ensures energy/mass/temperature balance in
     a wider range of operating conditions, and thus impacts the annual and hourly energy production. The net impact was shown to
@@ -729,8 +638,8 @@ extensions to SAM.</p>
     is also used to size the piping and header diameters. This change leads to potentially slightly larger diameter piping,
     increasing the thermal inertia of the modeled plant, increasing the piping thermal losses, and decreasing the pumping parasitic
     through the headers.</p>
-    <p>Updated pipe diameter sizing algorithm to correctly handle systems where the number of SCA’s in the loop is 1 or 2 (8 is
-    the default value). Potential impacts include: Addresses a bug causing the simulation to crash in this scenario.</p>
+    <p>Updated pipe diameter sizing algorithm to correctly handle systems where the number of SCA’s in the loop is 1 or 2 (8 is the
+    default value). Potential impacts include: Addresses a bug causing the simulation to crash in this scenario.</p>
     <p>Correction to header piping length calculation. Potential impacts include: The piping length was calculated to be
     artificially low. This fix correctly calculates the header length, thus impacting the thermal inertia of the solar field and
     piping thermal heat losses. The net effect of this changed was observed to decrease the annual energy production for the
@@ -874,11 +783,11 @@ extensions to SAM.</p>
     system.</p>
     <h1>Version 2011.5.4 May 2011</h1>
     <p>This version adds many new features in addition to fixing bugs in existing models. It adds several new utility scale
-    financing models that more accurately represent some common financial structures used for renewable energy projects than
-    SAM’s original Utility-IPP model. Other improvements include a generic system model that can accept hourly energy input from
-    other models, enhanced temperature correction algorithms for the CEC PV module model for various mounting options, more
-    detailed accounting for PV cost details, a new model for calculating geothermal co-production in conjunction with an oil or gas
-    well, and a utility scale wind model that can directly access a large database of hourly wind data at various hub heights.</p>
+    financing models that more accurately represent some common financial structures used for renewable energy projects than SAM’s
+    original Utility-IPP model. Other improvements include a generic system model that can accept hourly energy input from other
+    models, enhanced temperature correction algorithms for the CEC PV module model for various mounting options, more detailed
+    accounting for PV cost details, a new model for calculating geothermal co-production in conjunction with an oil or gas well,
+    and a utility scale wind model that can directly access a large database of hourly wind data at various hub heights.</p>
     <h2>General New Features</h2>
     <p>Improved welcome screen with news feed to show updates about upcoming versions, bug fixes, webinars, and other SAM-related
     information</p>
@@ -887,31 +796,31 @@ extensions to SAM.</p>
     <p>New sample file for showing scripting (SamUL) capabilities</p>
     <p>Updated reference manual for scripting (SamUL)</p>
     <h2>Financial Models</h2>
-    <p>Added an “All Equity Partnership Flip” financing structure that represents a power generation project with a tax
-    investor and developer and no debt. You specify a target IRR and year or target PPA price with the allocation of cash and tax
-    benefits to each partner before and after the target year. SAM calculates the project PPA price and the NPV and IRR for each
+    <p>Added an “All Equity Partnership Flip” financing structure that represents a power generation project with a tax investor
+    and developer and no debt. You specify a target IRR and year or target PPA price with the allocation of cash and tax benefits
+    to each partner before and after the target year. SAM calculates the project PPA price and the NPV and IRR for each
     partner.</p>
-    <p>Added a “Leveraged Partnership Flip” financing structure that represents a power generation project with a tax investor
-    and developer and debt. You specify a target IRR and year or target PPA price with the allocation of cash and tax benefits to
-    each partner before and after the target year. SAM calculates the project PPA price and the NPV and IRR for each partner.</p>
-    <p>Added a “Sale Leaseback” financing structure that represents a power generation project with two partners. The tax
-    investor purchases the project from the developer and leases it back to the developer. The tax investor receives lease payments
-    from the developer along with tax benefits and incentives. The developer keeps any excess cash flow after operating costs and
-    lease payments are made. You specify a target IRR and year or target PPA price and lease terms. SAM calculates the project PPA
-    price and the NPV and IRR for each partner.</p>
-    <p>Added a “Single Owner” financing structure that represents a power generation project with one owner. The owner receives
-    all of the cash and tax benefits from the project. The owner may be the original project developer or a third party investor if
-    the developer is unable to use the tax benefits or lacks sufficient capital to construct the project. You specify debt terms,
-    and a target IRR and year or target PPA price. SAM calculates the project PPA price, IRR and NPV.</p>
-    <p>Merged “Residential Cash” and “Residential Loan/Mortgage” financing options into single “Residential” model. To
-    model cash financing, set the debt fraction to zero.</p>
-    <p>Merged “Commercial Cash” and “Commercial Loan” financing options into a single “Commercial” model. To model cash
+    <p>Added a “Leveraged Partnership Flip” financing structure that represents a power generation project with a tax investor and
+    developer and debt. You specify a target IRR and year or target PPA price with the allocation of cash and tax benefits to each
+    partner before and after the target year. SAM calculates the project PPA price and the NPV and IRR for each partner.</p>
+    <p>Added a “Sale Leaseback” financing structure that represents a power generation project with two partners. The tax investor
+    purchases the project from the developer and leases it back to the developer. The tax investor receives lease payments from the
+    developer along with tax benefits and incentives. The developer keeps any excess cash flow after operating costs and lease
+    payments are made. You specify a target IRR and year or target PPA price and lease terms. SAM calculates the project PPA price
+    and the NPV and IRR for each partner.</p>
+    <p>Added a “Single Owner” financing structure that represents a power generation project with one owner. The owner receives all
+    of the cash and tax benefits from the project. The owner may be the original project developer or a third party investor if the
+    developer is unable to use the tax benefits or lacks sufficient capital to construct the project. You specify debt terms, and a
+    target IRR and year or target PPA price. SAM calculates the project PPA price, IRR and NPV.</p>
+    <p>Merged “Residential Cash” and “Residential Loan/Mortgage” financing options into single “Residential” model. To model cash
     financing, set the debt fraction to zero.</p>
-    <p>Renamed “Third Party Ownership” to “Commercial PPA” to better reflect calculations. User can now specify either the
-    IRR target or the First Year PPA price and solve for the other.</p>
-    <p>Merged “Utility IPP”, “Utility Dispatch”, and “Utility Bid Price” options into single “Independent Power
-    Producer” option that handles all three cases. The user can specify the IRR target or the First Year PPA price, along with
-    time-dependent valuation factors (dispatch).</p>
+    <p>Merged “Commercial Cash” and “Commercial Loan” financing options into a single “Commercial” model. To model cash financing,
+    set the debt fraction to zero.</p>
+    <p>Renamed “Third Party Ownership” to “Commercial PPA” to better reflect calculations. User can now specify either the IRR
+    target or the First Year PPA price and solve for the other.</p>
+    <p>Merged “Utility IPP”, “Utility Dispatch”, and “Utility Bid Price” options into single “Independent Power Producer” option
+    that handles all three cases. The user can specify the IRR target or the First Year PPA price, along with time-dependent
+    valuation factors (dispatch).</p>
     <p>Simplified inputs for tax credits and incentives to remove unnecessary complexity.</p>
     <p>Handling of property tax fixed. Previous versions overemphasized the valuation of property taxes, and an improved method is
     implemented.</p>
@@ -970,11 +879,11 @@ extensions to SAM.</p>
     included. The Supplemental operation mode allows fossil backup to provide thermal energy to the system in addition to thermal
     energy provided by the solar field or TES. The maximum rate of energy delivery is the fraction of design point power specified
     in the Fossil Fill Fraction inputs under the Thermal Storage Dispatch Control group, and the total fossil contribution plus the
-    energy from the field and TES can’t exceed the corresponding Turbine Output Fraction value. Potential impacts include: None
-    for Minimum backup level. For supplemental operation – modified fossil backup control</p>
+    energy from the field and TES can’t exceed the corresponding Turbine Output Fraction value. Potential impacts include: None for
+    Minimum backup level. For supplemental operation – modified fossil backup control</p>
     <p>The solar field defocusing algorithm was modified to more accurately model field defocusing during over-design operation.
-    Modifications improved the model’s ability to avoid excessive defocusing and reduce dumped energy during over-design
-    operation. These changes are most prominent in systems where frequent defocusing is required. Potential impacts include: Annual
+    Modifications improved the model’s ability to avoid excessive defocusing and reduce dumped energy during over-design operation.
+    These changes are most prominent in systems where frequent defocusing is required. Potential impacts include: Annual
     electricity output, solar field performance during over-design operation, dumped thermal energy, model convergence issues</p>
     <p>The measure for power cycle over-design operation within the model was changed from total thermal energy input to HTF mass
     flow rate. This change reduces instances of excessive HTF mass flow rate through the power cycle and more accurately simulates
@@ -986,10 +895,10 @@ extensions to SAM.</p>
     cool down behavior. Potential impacts include: Observed field inlet/outlet temperature during nighttime operation for systems
     with thermal storage or auxiliary fossil backup, required solar field startup energy</p>
     <p>The field configuration option on the Solar Field page was modified to allow the user to specify the number of subfields
-    rather than the configurations “I” or “H”. This change improves the model’s ability to capture the piping performance
-    of a wider range of field layouts. Along with this change, internal piping layout algorithms were updated to accommodate the
-    range of subfield selections. Potential impacts include: Piping thermal loss, piping pressure drop and parasitic power
-    requirement, solar field thermal inertia (from modified piping HTF volume calculation)</p>
+    rather than the configurations “I” or “H”. This change improves the model’s ability to capture the piping performance of a
+    wider range of field layouts. Along with this change, internal piping layout algorithms were updated to accommodate the range
+    of subfield selections. Potential impacts include: Piping thermal loss, piping pressure drop and parasitic power requirement,
+    solar field thermal inertia (from modified piping HTF volume calculation)</p>
     <h2>Parabolic Trough (Empirical)</h2>
     <p>The startup criteria in the plant control algorithm incorrectly restricted startup to conditions above the power cycle
     dispatch requirement, when startup should have been allowed above the minimum power block operation level. This problem was
@@ -1001,9 +910,9 @@ extensions to SAM.</p>
     models, the previous control algorithm was replaced by the algorithm developed for the Physical Trough model. This switch has
     significant benefits in ensuring the quality of the results over a wide input variable space, and provides improved results
     especially in simulation cases where solar multiple, thermal storage sizing, or auxiliary fossil backup sizing deviate
-    significantly from the optimal. This modification applies to both the “external” and “cavity” receiver models.
-    Potential impacts include: Improved solar field defocusing control, improved plant startup behavior, improved thermal storage
-    or auxiliary fossil backup dispatch control, increased annual electricity output especially for systems with no storage</p>
+    significantly from the optimal. This modification applies to both the “external” and “cavity” receiver models. Potential
+    impacts include: Improved solar field defocusing control, improved plant startup behavior, improved thermal storage or
+    auxiliary fossil backup dispatch control, increased annual electricity output especially for systems with no storage</p>
     <p>Added fossil dispatch control scheme option on the Thermal Storage page. Refer to the Physical Trough release notes</p>
     <p>The pumping power requirement for HTF passing through the power block was previously calculated on a thermal power basis –
     meaning the total thermal power passing through the pump was used to calculate an estimated electrical pumping power
