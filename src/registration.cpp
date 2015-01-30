@@ -1349,8 +1349,8 @@ bool SamRegistration::ShowNotice()
 
 void SamRegistration::OnRegister( wxCommandEvent & )
 {
-	if( !ShowNotice() )
-		return;
+//	if( !ShowNotice() )
+//		return;
 
 	wxString email = m_email->GetValue();
 	if ( email.IsEmpty() || email.Find("@")==wxNOT_FOUND || email.Find(".")==wxNOT_FOUND )
