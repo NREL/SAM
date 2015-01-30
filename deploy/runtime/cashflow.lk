@@ -1305,6 +1305,10 @@ cashflow_to_excel{ 'Single Owner' } = define()
 	N = value('analysis_period');
 	if ( N>40 ) msgbox("The Excel workbook only shows cash flow values for a 40-year analysis period or less. Your analysis is for " + N + " years.");
 	
+	debt_fraction_mode = false;
+	debt_fraction_mode = value('debt_option') == 0;
+	if ( debt_fraction_mode == true ) msgbox("In this version of SAM, the Send-to-Excel with Equations workbook does not correctly replicate SAM's debt sizing calculations for the debt fraction (constant debt payments) option that you chose on the Financial Parameters page. If you click OK, SAM will create an Excel file with formulas, but the debt-related inputs and cash flows will be incorrect. Contact SAM support with questions.");
+	
 	//export annual values to minimize rounding discrepancies between SAM and workbook
 	xl_set( xl, output('cf_energy_net'), "AnnualEnergy");
 	xl_set( xl, output('cf_ppa_price'), "AnnualPPAPrice");
