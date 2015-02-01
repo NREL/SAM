@@ -9,6 +9,9 @@
 #include <wx/file.h>
 #include <wx/ffile.h>
 
+#include <wx/filedlg.h>
+#include <wx/filefn.h>
+
 #include <wex/metro.h>
 
 #include <lk_absyn.h>
@@ -297,9 +300,11 @@ wxString Simulation::GetUnits( const wxString &var )
 class SingleThreadHandler : public ISimulationHandler
 {
 	wxProgressDialog *progdlg;
+	wxString save_folder;
 public:
 	SingleThreadHandler() {
 		progdlg = 0;
+		save_folder = wxGetHomeDir();
 	};
 
 	void SetProgressDialog( wxProgressDialog *d ) { progdlg = d; }
@@ -314,8 +319,21 @@ public:
 
 	virtual bool WriteDebugFile( const wxString &sim, ssc_module_t p_mod, ssc_data_t p_data )
 	{
-		wxString dbgfile( wxGetHomeDir() + "/ssc-" + sim + ".lk" );
-		return Simulation::WriteDebugFile( dbgfile, p_mod, p_data );
+		// folder prompting
+//		wxString dbgfile( wxGetHomeDir() + "/ssc-" + sim + ".lk" );
+//		return Simulation::WriteDebugFile(dbgfile, p_mod, p_data);
+		wxString fn = "ssc-" + sim + ".lk";
+		wxFileDialog dlg(SamApp::Window(), "Save inputs as...",
+			save_folder,
+			fn,
+			"SAM Script Files (*.lk)|*.lk", wxFD_SAVE | wxFD_OVERWRITE_PROMPT);
+		if (dlg.ShowModal() == wxID_OK)
+		{
+			save_folder = wxPathOnly(dlg.GetPath());
+			return Simulation::WriteDebugFile(dlg.GetPath(), p_mod, p_data);
+		}
+		else
+			return false;
 	}
 
 };
