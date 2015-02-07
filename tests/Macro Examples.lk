@@ -1,5 +1,5 @@
 /*@
-This <font size=+3 color=#dedede>macro</font> will help you run PVWatts in an easy way.<br>
+This <font size=+3 color=#dedede>macro</font> will show you how cool macros are.<br>
 
 <ol>
 <li> Step 1
@@ -14,8 +14,13 @@ This <font size=+3 color=#dedede>macro</font> will help you run PVWatts in an ea
 //@ name=en_output;type=checkbox;label=Enable output;value=true
 //@ name=nruns;type=integer;label=Number of runs;value=10
 //@ name=inputs;type=inputs;label=Variables
+//@ name=output;type=svoutput;label=Output metric:
 
-msgbox('Run pvwatts the easy way.');
+
+msgbox('Macros are so cool!');
+
+str="<p>Hello! This is some HTML.</p><table><tr><th>Word</th><th>Number</th></tr><tr><td>One</td><td>1</td></tr><tr><td>Two</td><td>2</td></tr></table>";
+html_dialog(str, 'HTML Window', [400,300]);
 
 outln(typeof(macro));
 outln( macro );
