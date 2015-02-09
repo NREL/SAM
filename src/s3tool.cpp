@@ -700,14 +700,15 @@ void ObjectEditor::OnObjectCheckList( wxCommandEvent &evt )
 
 enum {  
 		
-	ID_GENERATE_DIURNAL = wxID_HIGHEST+321, ID_GENERATE_HOURLY 
+	ID_GENERATE_DIURNAL = wxID_HIGHEST+321, ID_GENERATE_HOURLY, ID_GENERATE_DIFFUSE 
 };
 
 
 BEGIN_EVENT_TABLE( ShadeAnalysis, wxPanel )	
 	EVT_BUTTON( ID_GENERATE_DIURNAL, ShadeAnalysis::OnGenerateDiurnal )
-	EVT_BUTTON( ID_GENERATE_HOURLY, ShadeAnalysis::OnGenerateHourly )
-END_EVENT_TABLE()
+	EVT_BUTTON(ID_GENERATE_HOURLY, ShadeAnalysis::OnGenerateHourly)
+	EVT_BUTTON(ID_GENERATE_DIFFUSE, ShadeAnalysis::OnGenerateDiffuse)
+	END_EVENT_TABLE()
 
 ShadeAnalysis::ShadeAnalysis( wxWindow *parent, ShadeTool *st )
 	: wxPanel( parent, wxID_ANY ),
@@ -718,7 +719,8 @@ ShadeAnalysis::ShadeAnalysis( wxWindow *parent, ShadeTool *st )
 	wxBoxSizer *tools = new wxBoxSizer( wxHORIZONTAL );
 
 	tools->Add( new wxButton(this, ID_GENERATE_DIURNAL, "Diurnal analysis" ), 0, wxALL, 2 );
-	tools->Add( new wxButton(this, ID_GENERATE_HOURLY, "Hourly analysis" ), 0, wxALL, 2 );
+	tools->Add(new wxButton(this, ID_GENERATE_HOURLY, "Hourly analysis"), 0, wxALL, 2);
+	tools->Add(new wxButton(this, ID_GENERATE_DIFFUSE, "Diffuse analysis"), 0, wxALL, 2);
 
 	tools->AddStretchSpacer();
 
@@ -731,6 +733,142 @@ ShadeAnalysis::ShadeAnalysis( wxWindow *parent, ShadeTool *st )
 	SetSizer( sizer );
 	
 }
+
+
+void ShadeAnalysis::OnGenerateDiffuse(wxCommandEvent &)
+{
+	wxProgressDialog pdlg("Shade calculation", "Computing...", 100, m_shadeTool,
+		wxPD_SMOOTH | wxPD_CAN_ABORT | wxPD_APP_MODAL | wxPD_AUTO_HIDE);
+#ifdef __WXMSW__
+	pdlg.SetIcon(wxICON(appicon));
+#endif
+
+	pdlg.Show();
+
+	double lat, lon, tz;
+	m_shadeTool->GetLocationSetup()->GetLocation(&lat, &lon, &tz);
+
+	double azi, alt;
+	const int *ndays = ::wxNDay;
+	size_t i_azi, i_alt, c = 0;
+
+	std::vector<surfshade> shade;
+	InitializeSections(surfshade::HOURLY, shade);
+
+	s3d::transform tr;
+	tr.set_scale(SF_ANALYSIS_SCALE);
+
+	s3d::scene sc(m_shadeTool->GetView()->GetScene());
+	std::vector<s3d::shade_result> shresult;
+
+	wxStopWatch sw;
+	bool stopped = false;
+	for (i_azi = 0; i_azi<360 && !stopped; i_azi++)
+	{
+		for (i_alt = 0; i_alt < 90 && !stopped; i_alt++)
+		{
+			azi = i_azi;
+			alt = i_alt;
+			if (c % 400 == 0)
+			{
+				int percent = (int)(100.0*c / 8760.0);
+				if (!pdlg.Update(percent))
+				{
+					stopped = true;
+					break;
+				}
+				else
+					wxYieldIfNeeded();
+			}
+
+
+			// for nighttime full shading (fraction=1 and factor=0)
+			// consistent with SAM shading factor of zero for night time
+			//	double sf = 0;
+			double scene_sf = 1;
+			tr.rotate_azal(azi, alt);
+			sc.build(tr);
+
+			std::vector<s3d::shade_result> shresult;
+			scene_sf = sc.shade(shresult);
+
+			for (size_t k = 0; k<shresult.size(); k++)
+			{
+				int id = shresult[k].id;
+				// find the correct shade group for this 'id'
+				// and accumulate the total shaded and active areas
+				for (size_t n = 1; n<shade.size(); n++)
+				{
+					std::vector<int> &ids = shade[n].ids;
+					if (std::find(ids.begin(), ids.end(), id) != ids.end())
+					{
+						shade[n].shaded[c] += shresult[k].shade_area;
+						shade[n].active[c] += shresult[k].active_area;
+					}
+				}
+			}
+
+			// store overall array shading factor
+			shade[0].sfac[c] = 100.0f * scene_sf;
+
+			// compute each group's shading factor from the overall areas
+			for (size_t n = 1; n<shade.size(); n++)
+			{
+				double sf = 1;
+				if (shade[n].active[c] != 0.0)
+					sf = shade[n].shaded[c] / shade[n].active[c];
+
+				shade[n].sfac[c] = 100.0f * sf;
+			}
+			c++;
+		}
+	}
+
+	wxFileDialog dlg(this, "Diffuse Shading File Export", wxEmptyString, "diffuse_shade.csv", "*.*", wxFD_SAVE | wxFD_OVERWRITE_PROMPT);
+	if (wxID_OK == dlg.ShowModal())
+	{
+		if (FILE *fp = fopen((const char*)dlg.GetPath().c_str(), "w"))
+		{
+			for (size_t i = 0; i<shade.size(); i++)
+				fprintf(fp, "%s %%%c", (const char*)shade[i].group.c_str(), i + 1 < shade.size() ? ',' : '\n');
+
+			for (size_t i = 0; i<8760; i++)
+				for (size_t j = 0; j<shade.size(); j++)
+					fprintf(fp, "%.3lf%c", shade[j].sfac[i], j + 1 < shade.size() ? ',' : '\n');
+
+			fclose(fp);
+		}
+		else
+			wxMessageBox("Could not write to file:\n\n" + dlg.GetPath());
+	}
+
+	if (wxYES == wxMessageBox("View hourly shading factor results?", "Query", wxYES_NO, this))
+	{
+		wxFrame *frame = new wxFrame(0, wxID_ANY,
+			wxString::Format("Shade fractions (computation in %d ms)", sw.Time()),
+			wxDefaultPosition, wxSize(900, 700));
+
+		wxDVPlotCtrl *dview = new wxDVPlotCtrl(frame);
+		std::vector<double> data(8760);
+		for (size_t j = 0; j<shade.size(); j++)
+		{
+			for (size_t i = 0; i<8760; i++)
+				data[i] = shade[j].sfac[i];
+			dview->AddDataSet(new wxDVArrayDataSet(shade[j].group, "% Shaded", 1.0, data));
+		}
+		dview->SelectDataOnBlankTabs();
+		frame->Show();
+	}
+
+}
+
+
+
+
+
+
+
+
 
 void ShadeAnalysis::OnGenerateHourly( wxCommandEvent & )
 {
@@ -1333,7 +1471,7 @@ void ShadeTool::OnCommand( wxCommandEvent &evt)
 		wxLaunchDefaultBrowser( "mailto://sam.support@nrel.gov?subject=Shade Calculator - Beta Feedback" );
 		break;
 	case wxID_HELP:
-#ifdef S3D_STANDALONE )
+#ifdef S3D_STANDALONE
 		m_book->SetSelection( PG_HELP );
 #else
 		SamApp::ShowHelp( "shade_calculator" );
