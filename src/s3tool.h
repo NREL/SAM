@@ -161,7 +161,8 @@ private:
 	std::vector<AFMonthByHourFactorCtrl*> m_mxhList;
 	
 	void OnGenerateHourly( wxCommandEvent & );
-	void OnGenerateDiurnal( wxCommandEvent & );
+	void OnGenerateDiurnal(wxCommandEvent &);
+	void OnGenerateDiffuse(wxCommandEvent &);
 
 	DECLARE_EVENT_TABLE();
 };
