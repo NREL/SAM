@@ -127,7 +127,7 @@ private:
 	
 	struct surfshade
 	{
-		enum { DIURNAL, HOURLY };
+		enum { DIURNAL, HOURLY, DIFFUSE };
 		surfshade( int mode, const wxString &grpname )
 		{
 			group = grpname;
@@ -138,11 +138,17 @@ private:
 				shaded.resize_fill( 12, 24, 0 );
 				active.resize_fill( 12, 24, 0 );
 			}
-			else
+			else if (mode == HOURLY)
 			{
-				sfac.resize_fill( 8760, 1 );
-				shaded.resize_fill( 8760, 0 );
-				active.resize_fill( 8760, 0 );
+				sfac.resize_fill(8760, 1);
+				shaded.resize_fill(8760, 0);
+				active.resize_fill(8760, 0);
+			}
+			else // testing average over sky dome with 360 * 90 values
+			{
+				sfac.resize_fill(32400, 1);
+				shaded.resize_fill(32400, 0);
+				active.resize_fill(32400, 0);
 			}
 		}
 	

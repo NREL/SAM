@@ -753,7 +753,7 @@ void ShadeAnalysis::OnGenerateDiffuse(wxCommandEvent &)
 	size_t i_azi, i_alt, c = 0;
 
 	std::vector<surfshade> shade;
-	InitializeSections(surfshade::HOURLY, shade);
+	InitializeSections(surfshade::DIFFUSE, shade);
 
 	s3d::transform tr;
 	tr.set_scale(SF_ANALYSIS_SCALE);
@@ -832,7 +832,7 @@ void ShadeAnalysis::OnGenerateDiffuse(wxCommandEvent &)
 			for (size_t i = 0; i<shade.size(); i++)
 				fprintf(fp, "%s %%%c", (const char*)shade[i].group.c_str(), i + 1 < shade.size() ? ',' : '\n');
 
-			for (size_t i = 0; i<8760; i++)
+			for (size_t i = 0; i<32400; i++)
 				for (size_t j = 0; j<shade.size(); j++)
 					fprintf(fp, "%.3lf%c", shade[j].sfac[i], j + 1 < shade.size() ? ',' : '\n');
 
@@ -842,23 +842,36 @@ void ShadeAnalysis::OnGenerateDiffuse(wxCommandEvent &)
 			wxMessageBox("Could not write to file:\n\n" + dlg.GetPath());
 	}
 
-	if (wxYES == wxMessageBox("View hourly shading factor results?", "Query", wxYES_NO, this))
-	{
-		wxFrame *frame = new wxFrame(0, wxID_ANY,
-			wxString::Format("Shade fractions (computation in %d ms)", sw.Time()),
-			wxDefaultPosition, wxSize(900, 700));
 
-		wxDVPlotCtrl *dview = new wxDVPlotCtrl(frame);
-		std::vector<double> data(8760);
-		for (size_t j = 0; j<shade.size(); j++)
-		{
-			for (size_t i = 0; i<8760; i++)
-				data[i] = shade[j].sfac[i];
-			dview->AddDataSet(new wxDVArrayDataSet(shade[j].group, "% Shaded", 1.0, data));
-		}
-		dview->SelectDataOnBlankTabs();
-		frame->Show();
+	// average shading factor over skydome
+	std:vector<double> data(shade.size());
+	for (size_t j = 0; j < shade.size(); j++)
+	{
+		data[j] = 0;
+		for (size_t i = 0; i < 32400; i++)
+			data[j] += shade[j].sfac[i];
+		data[j] /= 32400;
+		wxStaticText *st = new wxStaticText(m_scroll, wxID_ANY, wxString::Format("id %d: diffuse shade fraction = %lg %%", j, data[j]));
 	}
+
+
+	//if (wxYES == wxMessageBox("View hourly shading factor results?", "Query", wxYES_NO, this))
+	//{
+	//	wxFrame *frame = new wxFrame(0, wxID_ANY,
+	//		wxString::Format("Shade fractions (computation in %d ms)", sw.Time()),
+	//		wxDefaultPosition, wxSize(900, 700));
+
+	//	wxDVPlotCtrl *dview = new wxDVPlotCtrl(frame);
+	//	std::vector<double> data(8760);
+	//	for (size_t j = 0; j<shade.size(); j++)
+	//	{
+	//		for (size_t i = 0; i<8760; i++)
+	//			data[i] = shade[j].sfac[i];
+	//		dview->AddDataSet(new wxDVArrayDataSet(shade[j].group, "% Shaded", 1.0, data));
+	//	}
+	//	dview->SelectDataOnBlankTabs();
+	//	frame->Show();
+	//}
 
 }
 
