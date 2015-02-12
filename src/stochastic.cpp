@@ -52,9 +52,8 @@ void LHS::SeedVal(int sv)
 
 bool LHS::Exec()
 {
-//	wxString workdir(wxFileName::GetTempDir());
-	wxString workdir(SamApp::GetRuntimePath() );
-
+	wxString workdir( wxFileName::GetTempDir() );
+	
 	wxString lhsexe( SamApp::GetRuntimePath() + "/bin/" + wxString(LHSBINARY) );
 
 	if (!wxFileExists(lhsexe))
@@ -392,9 +391,8 @@ void Stepwise::Reset()
 
 bool Stepwise::Exec( )
 {
-//	wxString workdir(wxFileName::GetTempDir());
-	wxString workdir(SamApp::GetRuntimePath());
-
+	wxString workdir( wxFileName::GetTempDir() );
+	
 	wxString exe( SamApp::GetRuntimePath() + "/bin/" + STWBINARY );
 	if (!wxFileExists(exe))
 	{
