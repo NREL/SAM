@@ -163,6 +163,7 @@ private:
 
 	ShadeTool *m_shadeTool;
 	
+	wxScrolledWindow *m_scroll_diffuse;
 	wxScrolledWindow *m_scroll;
 	std::vector<AFMonthByHourFactorCtrl*> m_mxhList;
 	

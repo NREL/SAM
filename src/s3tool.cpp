@@ -724,11 +724,13 @@ ShadeAnalysis::ShadeAnalysis( wxWindow *parent, ShadeTool *st )
 
 	tools->AddStretchSpacer();
 
-	m_scroll = new wxScrolledWindow( this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxScrolledWindowStyle|wxBORDER_NONE );
-	
+	m_scroll_diffuse = new wxScrolledWindow(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxScrolledWindowStyle | wxBORDER_NONE);
+	m_scroll = new wxScrolledWindow(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxScrolledWindowStyle | wxBORDER_NONE);
+
 	wxBoxSizer *sizer = new wxBoxSizer( wxVERTICAL );	
 	sizer->Add( tools, 0, wxALL|wxEXPAND, 2 );
-	sizer->Add( m_scroll, 1, wxALL|wxEXPAND, 0 );	
+	sizer->Add(m_scroll_diffuse, 1, wxALL | wxEXPAND, 0);
+	sizer->Add(m_scroll, 4, wxALL | wxEXPAND, 0);
 
 	SetSizer( sizer );
 	
@@ -765,7 +767,7 @@ void ShadeAnalysis::OnGenerateDiffuse(wxCommandEvent &)
 	bool stopped = false;
 	for (i_azi = 0; i_azi<360 && !stopped; i_azi++)
 	{
-		for (i_alt = 0; i_alt < 90 && !stopped; i_alt++)
+		for (i_alt = 1; i_alt <= 90 && !stopped; i_alt++)
 		{
 			azi = i_azi;
 			alt = i_alt;
@@ -842,7 +844,7 @@ void ShadeAnalysis::OnGenerateDiffuse(wxCommandEvent &)
 			wxMessageBox("Could not write to file:\n\n" + dlg.GetPath());
 	}
 
-
+	int y = 0;
 	// average shading factor over skydome
 	std::vector<double> data(shade.size());
 	for (size_t j = 0; j < shade.size(); j++)
@@ -851,8 +853,11 @@ void ShadeAnalysis::OnGenerateDiffuse(wxCommandEvent &)
 		for (size_t i = 0; i < 32400; i++)
 			data[j] += shade[j].sfac[i];
 		data[j] /= 32400;
-		wxStaticText *st = new wxStaticText(m_scroll, wxID_ANY, wxString::Format("id %d: diffuse shade fraction = %lg %%", j, data[j]));
+		wxStaticText *st = new wxStaticText(m_scroll_diffuse, wxID_ANY, wxString::Format("%s: diffuse shade fraction = %lg %%", shade[j].group.c_str(), data[j]));
+		st->SetSize(10, y, 1300, 30);
+		y += 30;
 	}
+	m_scroll_diffuse->SetScrollbars(1, 1, 1100, y);
 
 
 	//if (wxYES == wxMessageBox("View hourly shading factor results?", "Query", wxYES_NO, this))

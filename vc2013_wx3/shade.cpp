@@ -16,7 +16,7 @@ class MyFrame : public wxFrame
 public:
 	ShadeTool *m_shade;
 
-	MyFrame() : wxFrame( 0, wxID_ANY, "SAM Shade Calculator (2014.11.18)", wxDefaultPosition, 
+	MyFrame() : wxFrame( 0, wxID_ANY, "SAM Shade Calculator (2015.2.12)", wxDefaultPosition, 
 		wxSize(1100,700) )
 	{
 		SetIcon( wxICON( appicon ) );
