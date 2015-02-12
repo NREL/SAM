@@ -1,4 +1,4 @@
-
+#include <vector>
 #include <stdio.h>
 #include <math.h>
 
@@ -844,7 +844,7 @@ void ShadeAnalysis::OnGenerateDiffuse(wxCommandEvent &)
 
 
 	// average shading factor over skydome
-	std:vector<double> data(shade.size());
+	std::vector<double> data(shade.size());
 	for (size_t j = 0; j < shade.size(); j++)
 	{
 		data[j] = 0;
