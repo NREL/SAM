@@ -818,7 +818,8 @@ void ResultsViewer::Setup( Simulation *sim )
 	{
 		if ( VarValue *vv = m_sim->GetValue( vars[i] ) )
 		{
-			if ( vv->Type() == VV_ARRAY )
+//			if (vv->Type() == VV_ARRAY)
+			if ((vv->Type() == VV_ARRAY) && (!m_sim->GetLabel(vars[i]).IsEmpty()))
 			{
 				size_t n = 0;
 				float *p = vv->Array( &n );
