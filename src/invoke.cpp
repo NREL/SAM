@@ -2073,26 +2073,50 @@ void fcall_editscene3d( lk::invoke_t &cxt )
 		// overall losses for the system are always in table 0
 		lk::vardata_t &v = cxt.result().hash_item( "losses" );
 		copy_mxh( v, diurnal[0].mxh );
-		
 		// now copy over all the subarray sections
 		// the user must label them as 'Subarray 1', 'Subarray 2', etc for them to
 		// get placed in the right section
 		// here, skip table 0 (loop start at i=1) since it's always copied above
+
+
+
 		for( size_t i=1;i<diurnal.size();i++ )
 		{
 			if ( diurnal[i].mxh.nrows() == 12 && diurnal[i].mxh.ncols() == 24 )
 			{
-				wxString name = diurnal[i].name.Lower();
-				name.Replace(" ", "");
-				if ( name.IsEmpty() )
-					name.Printf("section%d", (int)i);
+				//wxString name = diurnal[i].name.Lower();
+				//name.Replace(" ", "");
+				//if ( name.IsEmpty() )
+				//	name.Printf("section%d", (int)i);
+				wxString name;
+				name.Printf("subarray%d", (int)i);
 
 				lk::vardata_t &sec = cxt.result().hash_item( name );
 				copy_mxh( sec, diurnal[i].mxh );
 			}
 		}
 
-		cxt.result().hash_item("ierr").assign( 0.0 );
+
+		std::vector<ShadeTool::diffuse> diffuse;
+		if (st->SimulateDiffuse(diffuse) && diffuse.size() > 0)
+		{
+			// overall losses for the system are always in table 0
+			lk::vardata_t &ds = cxt.result().hash_item("diffuse");
+			ds.empty_vector();
+			ds.vec()->reserve(diffuse.size());
+
+
+			for (size_t i = 0; i < diffuse.size(); i++)
+			{
+				ds.vec_append(diffuse[i].shade_percent);
+			}
+		}
+		else
+		{
+			cxt.result().hash_item("ierr").assign(2.0);
+			cxt.result().hash_item("message").assign(wxString("Error in simulation of diffuse shading factors."));
+		}
+		cxt.result().hash_item("ierr").assign(0.0);
 		cxt.result().hash_item("nsubarrays").assign( (double)( diurnal.size()-1 ));
 	}
 	else
