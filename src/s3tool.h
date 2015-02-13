@@ -122,6 +122,9 @@ public:
 	bool SimulateDiurnal();
 	size_t GetDiurnalCount();
 	void GetDiurnal( size_t i, matrix_t<float> *mxh, wxString *name );
+	bool SimulateDiffuse(bool save=false);
+	size_t GetDiffuseCount();
+	void GetDiffuse(size_t i, double *shade_percent, wxString *name);
 
 private:
 	
@@ -166,7 +169,9 @@ private:
 	wxScrolledWindow *m_scroll_diffuse;
 	wxScrolledWindow *m_scroll;
 	std::vector<AFMonthByHourFactorCtrl*> m_mxhList;
-	
+	std::vector<double> m_diffuse_shade_percent;
+	wxArrayString m_diffuse_name;
+
 	void OnGenerateHourly( wxCommandEvent & );
 	void OnGenerateDiurnal(wxCommandEvent &);
 	void OnGenerateDiffuse(wxCommandEvent &);
@@ -201,8 +206,13 @@ public:
 		wxString name;
 		matrix_t<float> mxh;
 	};
+	struct diffuse {
+		wxString name;
+		double shade_percent;
+	};
 
-	bool SimulateDiurnal( std::vector<diurnal> &result );
+	bool SimulateDiurnal(std::vector<diurnal> &result);
+	bool SimulateDiffuse(std::vector<diffuse> &result);
 
 private:
 	wxString m_fileName;

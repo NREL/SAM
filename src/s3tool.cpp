@@ -739,7 +739,14 @@ ShadeAnalysis::ShadeAnalysis( wxWindow *parent, ShadeTool *st )
 
 void ShadeAnalysis::OnGenerateDiffuse(wxCommandEvent &)
 {
-	wxProgressDialog pdlg("Shade calculation", "Computing...", 100, m_shadeTool,
+	SimulateDiffuse(true);
+}
+
+bool ShadeAnalysis::SimulateDiffuse(bool save)
+	{
+		bool success = false;
+
+		wxProgressDialog pdlg("Shade calculation", "Computing...", 100, m_shadeTool,
 		wxPD_SMOOTH | wxPD_CAN_ABORT | wxPD_APP_MODAL | wxPD_AUTO_HIDE);
 #ifdef __WXMSW__
 	pdlg.SetIcon(wxICON(appicon));
@@ -826,58 +833,49 @@ void ShadeAnalysis::OnGenerateDiffuse(wxCommandEvent &)
 		}
 	}
 
-	wxFileDialog dlg(this, "Diffuse Shading File Export", wxEmptyString, "diffuse_shade.csv", "*.*", wxFD_SAVE | wxFD_OVERWRITE_PROMPT);
-	if (wxID_OK == dlg.ShowModal())
+	if (save)
 	{
-		if (FILE *fp = fopen((const char*)dlg.GetPath().c_str(), "w"))
+		wxFileDialog dlg(this, "Diffuse Shading File Export", wxEmptyString, "diffuse_shade.csv", "*.*", wxFD_SAVE | wxFD_OVERWRITE_PROMPT);
+		if (wxID_OK == dlg.ShowModal())
 		{
-			for (size_t i = 0; i<shade.size(); i++)
-				fprintf(fp, "%s %%%c", (const char*)shade[i].group.c_str(), i + 1 < shade.size() ? ',' : '\n');
+			if (FILE *fp = fopen((const char*)dlg.GetPath().c_str(), "w"))
+			{
+				for (size_t i = 0; i < shade.size(); i++)
+					fprintf(fp, "%s %%%c", (const char*)shade[i].group.c_str(), i + 1 < shade.size() ? ',' : '\n');
 
-			for (size_t i = 0; i<32400; i++)
-				for (size_t j = 0; j<shade.size(); j++)
-					fprintf(fp, "%.3lf%c", shade[j].sfac[i], j + 1 < shade.size() ? ',' : '\n');
+				for (size_t i = 0; i < 32400; i++)
+					for (size_t j = 0; j < shade.size(); j++)
+						fprintf(fp, "%.3lf%c", shade[j].sfac[i], j + 1 < shade.size() ? ',' : '\n');
 
-			fclose(fp);
+				fclose(fp);
+			}
+			else
+				wxMessageBox("Could not write to file:\n\n" + dlg.GetPath());
 		}
-		else
-			wxMessageBox("Could not write to file:\n\n" + dlg.GetPath());
 	}
 
 	int y = 0;
 	// average shading factor over skydome
 	std::vector<double> data(shade.size());
+	m_diffuse_shade_percent.clear();
+	m_diffuse_name.Clear();
 	for (size_t j = 0; j < shade.size(); j++)
 	{
 		data[j] = 0;
 		for (size_t i = 0; i < 32400; i++)
 			data[j] += shade[j].sfac[i];
 		data[j] /= 32400;
-		wxStaticText *st = new wxStaticText(m_scroll_diffuse, wxID_ANY, wxString::Format("%s: diffuse shade fraction = %lg %%", shade[j].group.c_str(), data[j]));
+		m_diffuse_shade_percent.push_back(data[j]);
+		m_diffuse_name.push_back(shade[j].group);
+		wxStaticText *st = new wxStaticText(m_scroll_diffuse, wxID_ANY, wxString::Format("%s: diffuse shade fraction = %lg %%", m_diffuse_name[j].c_str(), m_diffuse_shade_percent[j]));
 		st->SetSize(10, y, 1300, 30);
 		y += 30;
 	}
 	m_scroll_diffuse->SetScrollbars(1, 1, 1100, y);
 
+	success = true;
 
-	//if (wxYES == wxMessageBox("View hourly shading factor results?", "Query", wxYES_NO, this))
-	//{
-	//	wxFrame *frame = new wxFrame(0, wxID_ANY,
-	//		wxString::Format("Shade fractions (computation in %d ms)", sw.Time()),
-	//		wxDefaultPosition, wxSize(900, 700));
-
-	//	wxDVPlotCtrl *dview = new wxDVPlotCtrl(frame);
-	//	std::vector<double> data(8760);
-	//	for (size_t j = 0; j<shade.size(); j++)
-	//	{
-	//		for (size_t i = 0; i<8760; i++)
-	//			data[i] = shade[j].sfac[i];
-	//		dview->AddDataSet(new wxDVArrayDataSet(shade[j].group, "% Shaded", 1.0, data));
-	//	}
-	//	dview->SelectDataOnBlankTabs();
-	//	frame->Show();
-	//}
-
+	return success;
 }
 
 
@@ -1065,6 +1063,7 @@ void ShadeAnalysis::InitializeSections( int mode, std::vector<surfshade> &shade 
 
 bool ShadeAnalysis::SimulateDiurnal()
 {	
+	bool success = false;
 	wxProgressDialog pdlg( "Shade calculation", "Computing...", 288, m_shadeTool,
 		wxPD_SMOOTH|wxPD_CAN_ABORT|wxPD_APP_MODAL|wxPD_AUTO_HIDE );
 #ifdef __WXMSW__
@@ -1172,8 +1171,8 @@ bool ShadeAnalysis::SimulateDiurnal()
 	}
 
 	m_scroll->SetScrollbars( 1, 1, 1100, y );
-
-	return true;
+	success = true;
+	return success;
 }
 
 size_t ShadeAnalysis::GetDiurnalCount()
@@ -1181,13 +1180,27 @@ size_t ShadeAnalysis::GetDiurnalCount()
 	return m_mxhList.size();
 }
 
-void ShadeAnalysis::GetDiurnal( size_t i, matrix_t<float> *mxh, wxString *name )
+size_t ShadeAnalysis::GetDiffuseCount()
 {
-	if ( i < m_mxhList.size() )
+	return m_diffuse_shade_percent.size();
+}
+
+void ShadeAnalysis::GetDiurnal(size_t i, matrix_t<float> *mxh, wxString *name)
+{
+	if (i < m_mxhList.size())
 	{
 		AFMonthByHourFactorCtrl *c = m_mxhList[i];
 		(*mxh) = c->GetData();
 		(*name) = c->GetTitle();
+	}
+}
+
+void ShadeAnalysis::GetDiffuse(size_t i, double *shade_percent, wxString *name)
+{
+	if ((i < m_diffuse_shade_percent.size()) && (i<m_diffuse_name.Count()))
+	{
+		(*shade_percent) = m_diffuse_shade_percent[i];
+		(*name) = m_diffuse_name[i];
 	}
 }
 
@@ -1415,17 +1428,35 @@ bool ShadeTool::Read( wxInputStream &is )
 	return in.Read8() == code && ok1 && ok2;
 }
 
-bool ShadeTool::SimulateDiurnal( std::vector<diurnal> &result )
+bool ShadeTool::SimulateDiurnal(std::vector<diurnal> &result)
 {
 	result.clear();
-	if ( m_analysis->SimulateDiurnal() )
+	if (m_analysis->SimulateDiurnal())
 	{
 		size_t n = m_analysis->GetDiurnalCount();
-		for( size_t i=0;i<n;i++ )
+		for (size_t i = 0; i<n; i++)
 		{
-			result.push_back( diurnal() );
-			diurnal &d = result[ result.size()-1 ];
-			m_analysis->GetDiurnal( i, &d.mxh, &d.name );
+			result.push_back(diurnal());
+			diurnal &d = result[result.size() - 1];
+			m_analysis->GetDiurnal(i, &d.mxh, &d.name);
+		}
+		return true;
+	}
+	else
+		return false;
+}
+
+bool ShadeTool::SimulateDiffuse(std::vector<diffuse> &result)
+{
+	result.clear();
+	if (m_analysis->SimulateDiffuse())
+	{
+		size_t n = m_analysis->GetDiffuseCount();
+		for (size_t i = 0; i<n; i++)
+		{
+			result.push_back(diffuse());
+			diffuse &d = result[result.size() - 1];
+			m_analysis->GetDiffuse(i, &d.shade_percent, &d.name);
 		}
 		return true;
 	}
