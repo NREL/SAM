@@ -17,7 +17,7 @@ addconfig( 'MSLF', ['Commercial','Single Owner', 'Leveraged Partnership Flip', '
 addconfig( 'DSLF', ['Commercial','Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'None']);
 addconfig( 'Dish Stirling', ['Commercial','Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'None']);
 addconfig( 'Generic CSP System', ['Commercial','Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'None']);
-//addconfig( 'ISCC', ['Single Owner']);
+addconfig( 'ISCC', ['Single Owner']);
 
 
 configopt( 'Flat Plate PV',               { 'long_name'='Photovoltaic (detailed)',                'short_name'='Photovoltaic',     'description'='Photovoltaic system using detailed photovoltaic model with separate module and inverter component models' } );
@@ -36,7 +36,7 @@ configopt( 'Dish Stirling',               { 'long_name'='CSP dish Stirling',    
 configopt( 'Generic CSP System',          { 'long_name'='CSP generic model',                      'short_name'='Generic CSP',      'description'='CSP power system with solar field modeled using a table of optical efficiency values' } );
 configopt( 'DSLF',        				  { 'long_name'='CSP linear Fresnel direct steam',        'short_name'='Fresnel (steam)',    'description'='CSP power system that uses long small mirrors to line focus sunlight on fixed receiver tubes mounted above them.' } );
 configopt( 'MSLF',        				  { 'long_name'='CSP linear Fresnel molten salt',         'short_name'='Fresnel (salt)',    'description'='CSP power system that uses long small mirrors to line focus sunlight on fixed receiver tubes mounted above them.' } );
-//configopt( 'ISCC',                        { 'long_name'='CSP Integrated Solar Combined Cycle',    'short_name'='Tower (salt-ISCC)', 'description'='A triple pressure NGCC cycle connected to a molten salt power tower solar field/receiver' } );
+configopt( 'ISCC',                        { 'long_name'='CSP Integrated Solar Combined Cycle',    'short_name'='Tower (salt-ISCC)', 'description'='A triple pressure NGCC cycle connected to a molten salt power tower solar field/receiver' } );
 
 configopt( 'Residential',                 { 'long_name'='Residential (distributed)',           	  'short_name'='Residential',      'description'='Renewable energy system displaces residential home electric load' } );
 configopt( 'Commercial',                  { 'long_name'='Commercial (distributed)',        		  'short_name'='Commercial',       'description'='Renewable energy system displaces commercial building electric load' } );
@@ -1075,21 +1075,21 @@ addpage( [[ 'Tower Capital Costs','O and M Costs']],{ 'sidebar'='System Costs', 
 setup_single_owner_pages(true);
 
 // ISCC Molten Salt Power Tower //////////////////////////////////////////////////////
-//function setup_ISCC_pages()
-//{
-//		addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource', 'help'='pt_location_and_resource' } );
-//		addpage( [[ 'Tower Solar Field' ]], { 'sidebar'='Heliostat Field', 'help'='mspt_heliostat_field' } );
-//		addpage( [[ 'Molten Salt Tower Receiver',{'name' = 'ISCC Receiver and Powerblock', 'caption'='DESIGN POINT Integration with Natural Gas Combined Cycle',
-//		'collapsible'=false,'collapsible_var'='iscc_is_shown'}]], { 'sidebar'='Tower and Receiver', 'help'='mspt_tower_and_receiver' } );
-//		addpage( [[ 'ISCC Parasitics' ]], { 'sidebar'='Parasitics', 'help'='mspt_parasitics' } );
-//}
+function setup_ISCC_pages()
+{
+		addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource', 'help'='pt_location_and_resource' } );
+		addpage( [[ 'Tower Solar Field' ]], { 'sidebar'='Heliostat Field', 'help'='mspt_heliostat_field' } );
+		addpage( [[ 'Molten Salt Tower Receiver',{'name' = 'ISCC Receiver and Powerblock', 'caption'='DESIGN POINT Integration with Natural Gas Combined Cycle',
+		'collapsible'=false,'collapsible_var'='iscc_is_shown'}]], { 'sidebar'='Tower and Receiver', 'help'='mspt_tower_and_receiver' } );
+		addpage( [[ 'ISCC Parasitics' ]], { 'sidebar'='Parasitics', 'help'='mspt_parasitics' } );
+}
 
 //-----------------------------------------------------
-//setconfig( 'ISCC', 'Single Owner' );
-//setmodules( ['tcsiscc', 'singleowner']);
-//setup_ISCC_pages();
-//addpage( [[ 'Tower Capital Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='pt_system_costs' } );
-//setup_single_owner_pages(true);
+setconfig( 'ISCC', 'Single Owner' );
+setmodules( ['tcsiscc', 'singleowner']);
+setup_ISCC_pages();
+addpage( [[ 'Tower Capital Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='pt_system_costs' } );
+setup_single_owner_pages(true);
 
 
 // Direct Steam Linear Fresnel ////////////////////////////////////////////////////////////////////
@@ -1215,7 +1215,7 @@ setup_MSLF_pages();
 setconfig( 'MSLF', 'Commercial' );	
 setmodules( ['tcsMSLF', 'utilityrate3', 'cashloan']);
 setup_MSLF_pages();
-addpage( [[ 'Molten Salt Linear Fresnel Capital Costs','O and M Costs']], { 'sidebar'='System Costs', 'help'='lf_system_costs' } );
+addpage( [[ 'Linear Fresnel Capital Costs','O and M Costs']], { 'sidebar'='System Costs', 'help'='lf_system_costs' } );
 setup_commercial_pages(0,true); //belpe not valid for commercial
 
 //-----------------------------------------------------
@@ -1223,28 +1223,28 @@ setup_commercial_pages(0,true); //belpe not valid for commercial
 setconfig( 'MSLF', 'Leveraged Partnership Flip' );
 setmodules( ['tcsMSLF', 'levpartflip']);
 setup_MSLF_pages();
-addpage( [[ 'Molten Salt Linear Fresnel Capital Costs','O and M Costs']], { 'sidebar'='System Costs', 'help'='lf_system_costs' } );
+addpage( [[ 'Linear Fresnel Capital Costs','O and M Costs']], { 'sidebar'='System Costs', 'help'='lf_system_costs' } );
 setup_leveraged_partnership_flip_pages(true);
 
 //-----------------------------------------------------
 setconfig( 'MSLF', 'All Equity Partnership Flip' );
 setmodules( ['tcsMSLF', 'equpartflip']);
 setup_MSLF_pages();
-addpage( [[ 'Molten Salt Linear Fresnel Capital Costs','O and M Costs']], { 'sidebar'='System Costs', 'help'='lf_system_costs' } );
+addpage( [[ 'Linear Fresnel Capital Costs','O and M Costs']], { 'sidebar'='System Costs', 'help'='lf_system_costs' } );
 setup_all_equity_partnership_flip_pages(true);
 
 //-----------------------------------------------------
 setconfig( 'MSLF', 'Sale Leaseback' );
 setmodules( ['tcsMSLF', 'saleleaseback']);
 setup_MSLF_pages();
-addpage( [[ 'Molten Salt Linear Fresnel Capital Costs','O and M Costs']], { 'sidebar'='System Costs', 'help'='lf_system_costs' } );
+addpage( [[ 'Linear Fresnel Capital Costs','O and M Costs']], { 'sidebar'='System Costs', 'help'='lf_system_costs' } );
 setup_sale_leaseback_pages(true);
 
 //-----------------------------------------------------
 setconfig( 'MSLF', 'Single Owner' );
 setmodules( ['tcsMSLF', 'singleowner']);
 setup_MSLF_pages();
-addpage( [[ 'Molten Salt Linear Fresnel Capital Costs','O and M Costs']], { 'sidebar'='System Costs', 'help'='lf_system_costs' } );
+addpage( [[ 'Linear Fresnel Capital Costs','O and M Costs']], { 'sidebar'='System Costs', 'help'='lf_system_costs' } );
 setup_single_owner_pages(true);
 
 //-----------------------------------------------------
