@@ -2078,7 +2078,35 @@ void fcall_editscene3d( lk::invoke_t &cxt )
 		// get placed in the right section
 		// here, skip table 0 (loop start at i=1) since it's always copied above
 
-
+		// return in order of subarray 1, subarray 2, subarray 3, subarray 4 for application in ui
+		wxArrayInt order;
+		for (size_t i = 0; i < diurnal.size(); i++)
+			order.push_back(i);
+		if (diurnal.size() > 1)
+		{
+			// check group names and reorder if necessary
+			// group names assumed to have 1,2,...diurnal.size() if reorder is necessary.
+			wxArrayInt tmp_order;
+			int j = 1;
+			while (j < (int)diurnal.size())
+			{
+				for (size_t i = 0; i < diurnal.size(); i++)
+				{
+					wxString name = diurnal[i].name.Lower();
+					if (name.Find(wxString::Format("%d", j)) != wxNOT_FOUND)
+					{
+						if (tmp_order.Index(i) == wxNOT_FOUND)
+							tmp_order.push_back(i);
+					}
+				}
+				j++;
+			}
+			if (tmp_order.Count() == diurnal.size() - 1)
+			{
+				for (size_t i = 1; i < diurnal.size(); i++)
+					order[i] = tmp_order[i-1];
+			}
+		}
 
 		for( size_t i=1;i<diurnal.size();i++ )
 		{
@@ -2092,7 +2120,7 @@ void fcall_editscene3d( lk::invoke_t &cxt )
 				name.Printf("subarray%d", (int)i);
 
 				lk::vardata_t &sec = cxt.result().hash_item( name );
-				copy_mxh( sec, diurnal[i].mxh );
+				copy_mxh( sec, diurnal[order[i]].mxh );
 			}
 		}
 
@@ -2100,20 +2128,28 @@ void fcall_editscene3d( lk::invoke_t &cxt )
 		std::vector<ShadeTool::diffuse> diffuse;
 		if (st->SimulateDiffuse(diffuse) && diffuse.size() > 0)
 		{
-			// overall losses for the system are always in table 0
-			lk::vardata_t &ds = cxt.result().hash_item("diffuse");
-			ds.empty_vector();
-			ds.vec()->reserve(diffuse.size());
-
-
-			for (size_t i = 0; i < diffuse.size(); i++)
+			if (diffuse.size() != diurnal.size())
 			{
-				ds.vec_append(diffuse[i].shade_percent);
+				cxt.result().hash_item("ierr").assign(4.0);
+				cxt.result().hash_item("message").assign(wxString("Error in simulation of diffuse shading factors not equal to diurnal mxh count."));
+			}
+			else
+			{
+				// overall losses for the system are always in table 0
+				lk::vardata_t &ds = cxt.result().hash_item("diffuse");
+				ds.empty_vector();
+				ds.vec()->reserve(diffuse.size());
+
+
+				for (size_t i = 0; i < diffuse.size(); i++)
+				{
+					ds.vec_append(diffuse[order[i]].shade_percent);
+				}
 			}
 		}
 		else
 		{
-			cxt.result().hash_item("ierr").assign(2.0);
+			cxt.result().hash_item("ierr").assign(3.0);
 			cxt.result().hash_item("message").assign(wxString("Error in simulation of diffuse shading factors."));
 		}
 		cxt.result().hash_item("ierr").assign(0.0);

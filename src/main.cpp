@@ -1,5 +1,5 @@
-#define __BETARELEASE__ 1  // comment this line out to disable beta option
-#define __BETAWILLEXPIRE__ 1 // comment this line out to disable expiration of beta
+//#define __BETARELEASE__ 1  // comment this line out to disable beta option
+//#define __BETAWILLEXPIRE__ 1 // comment this line out to disable expiration of beta
 #define __BETAEXPIRE_DAY__ 17
 #define __BETAEXPIRE_MONTH__ wxDateTime::Mar
 #define __BETAEXPIRE_YEAR__ 2015
@@ -31,6 +31,8 @@ static const char *beta_disclaimer =
 #include <wx/txtstrm.h>
 #include <wx/buffer.h>
 #include <wx/display.h>
+#include <wx/utils.h>
+#include <wx/platform.h>
 
 #include <wex/metro.h>
 #include <wex/icons/cirplus.cpng>
@@ -1690,8 +1692,14 @@ extern void RegisterReportObjectTypes();
 void SamApp::OnFatalException()
 {
 #ifdef __WXMSW__
-extern void MSW_HandleFatalException(); // defined in mswfatal.cpp
-	MSW_HandleFatalException();
+//	int major, minor;
+//	major = wxPlatformInfo::Get().GetOSMajorVersion();
+//	minor = wxPlatformInfo::Get().GetOSMinorVersion();
+//	if (major >= 6 && minor >= 1)  // windows 7 or higher
+//	{
+		extern void MSW_HandleFatalException(); // defined in mswfatal.cpp
+		MSW_HandleFatalException();
+//	}
 #endif
 }
 
