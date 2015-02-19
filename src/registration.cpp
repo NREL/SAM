@@ -1332,7 +1332,7 @@ bool SamRegistration::ShowNotice()
     "You can email SAM support at sam.support@nrel.gov "
 	"with comments or questions.");
 
-	wxDialog dlg( NULL, wxID_ANY, "Registration Information" );
+	wxDialog dlg(NULL, wxID_ANY, "Registration Information", wxDefaultPosition, wxDefaultSize, wxRESIZE_BORDER);
 	dlg.SetBackgroundColour( *wxWHITE );
 	wxStaticText *tt = new wxStaticText( &dlg, wxID_ANY, text );
 	tt->SetFont( wxMetroTheme::Font( wxMT_NORMAL, 11 ) );
@@ -1341,7 +1341,9 @@ bool SamRegistration::ShowNotice()
 	wxBoxSizer *sizer = new wxBoxSizer( wxVERTICAL );
 	sizer->Add( tt, 0, wxALL|wxEXPAND, 15 );
 	sizer->Add( dlg.CreateButtonSizer( wxOK|wxCANCEL ), 0, wxALL|wxCENTER, 15 );
-	dlg.SetSizerAndFit( sizer );
+//	dlg.SetSizerAndFit(sizer);
+	dlg.SetSizer(sizer);
+	dlg.Fit();
 	dlg.Show();
 	dlg.CenterOnScreen();
 	return dlg.ShowModal() == wxID_OK;		
