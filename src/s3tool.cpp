@@ -871,6 +871,26 @@ bool ShadeAnalysis::SimulateDiffuse(bool save)
 		st->SetSize(10, y, 1300, 30);
 		y += 30;
 	}
+
+	/* Note that Chris Deline email 2/19/15 suggest to take minimum string value as 
+	diffuse view factor for array. So, for single value will use minimum of the active 
+	surfaces as suggested. If the active surfaces have group names, then the respective
+	diffuse view factor will be applied to each subarray which is expected value 
+	since, in SAM, the subarrays are assumed to be connected in parallel. So, the assumption 
+	is that if not named, the active surfaces are referring to string connected arrays 
+	and the minimum view factor or maximum shading percentage value will be used as follows: */
+	if (shade.size() > 1)
+	{
+		for (size_t j = 1; j < shade.size(); j++)
+		{
+			if (m_diffuse_shade_percent[j] > m_diffuse_shade_percent[0])
+				m_diffuse_shade_percent[0] = m_diffuse_shade_percent[j];
+		}
+		wxStaticText *st = new wxStaticText(m_scroll_diffuse, wxID_ANY, wxString::Format("%s: diffuse shade fraction = %lg %%", m_diffuse_name[0].c_str(), m_diffuse_shade_percent[0]));
+		st->SetSize(10, y, 1300, 30);
+		y += 30;
+	}
+
 	m_scroll_diffuse->SetScrollbars(1, 1, 1100, y);
 
 	success = true;
