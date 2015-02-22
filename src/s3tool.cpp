@@ -840,13 +840,18 @@ bool ShadeAnalysis::SimulateDiffuse(bool save)
 		{
 			if (FILE *fp = fopen((const char*)dlg.GetPath().c_str(), "w"))
 			{
+				fprintf(fp, "azimuth,altitude,");
 				for (size_t i = 0; i < shade.size(); i++)
-					fprintf(fp, "%s %%%c", (const char*)shade[i].group.c_str(), i + 1 < shade.size() ? ',' : '\n');
+					fprintf(fp, "%s %c", (const char*)shade[i].group.c_str(), i + 1 < shade.size() ? ',' : '\n');
 
-				for (size_t i = 0; i < 32400; i++)
-					for (size_t j = 0; j < shade.size(); j++)
-						fprintf(fp, "%.3lf%c", shade[j].sfac[i], j + 1 < shade.size() ? ',' : '\n');
-
+				for (i_azi = 0; i_azi<360 ; i_azi++)
+					for (i_alt = 1; i_alt <= 90 ; i_alt++)
+					{
+						fprintf(fp, "%d,%d,", i_azi, i_alt);
+						size_t i = i_azi * 90 + i_alt-1;
+						for (size_t j = 0; j < shade.size(); j++)
+							fprintf(fp, "%.3lf%c", shade[j].sfac[i], j + 1 < shade.size() ? ',' : '\n');
+					}
 				fclose(fp);
 			}
 			else
@@ -867,9 +872,12 @@ bool ShadeAnalysis::SimulateDiffuse(bool save)
 		data[j] /= 32400;
 		m_diffuse_shade_percent.push_back(data[j]);
 		m_diffuse_name.push_back(shade[j].group);
-		wxStaticText *st = new wxStaticText(m_scroll_diffuse, wxID_ANY, wxString::Format("%s: diffuse shade fraction = %lg %%", m_diffuse_name[j].c_str(), m_diffuse_shade_percent[j]));
-		st->SetSize(10, y, 1300, 30);
-		y += 30;
+		if (j > 0) // j=0 taken to be minimum value as shown below
+		{
+			wxStaticText *st = new wxStaticText(m_scroll_diffuse, wxID_ANY, wxString::Format("%s: diffuse shade fraction = %lg %%", m_diffuse_name[j].c_str(), m_diffuse_shade_percent[j]));
+			st->SetSize(10, y, 1300, 30);
+			y += 30;
+		}
 	}
 
 	/* Note that Chris Deline email 2/19/15 suggest to take minimum string value as 
