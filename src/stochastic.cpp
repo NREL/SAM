@@ -4,6 +4,7 @@
 #include <wx/utils.h>
 #include <wx/filename.h>
 #include <wx/progdlg.h>
+#include <wx/dir.h>
 
 #include <wex/metro.h>
 #include <wex/utils.h>
@@ -140,6 +141,24 @@ bool LHS::Exec()
 		case LHS_USERCDF:
 			ncdfpairs = (int) m_dist[i].params[0];
 			fprintf(fp, "%s DISCRETE CUMULATIVE %d #\n", (const char*)m_dist[i].name.c_str(), ncdfpairs);
+			// update for uniform discrete distributions initially
+			if (ncdfpairs <= 0)
+			{
+				m_errmsg.Printf("user defined CDF error: too few [value,cdf] pairs in list: %d pairs should exist.", ncdfpairs);
+				fclose(fp);
+				return false;
+			}
+			for (int j = 0; j<ncdfpairs; j++)
+			{
+				double cdf = (j + 1);
+				cdf /= (double)ncdfpairs;
+				if (cdf > 1.0) cdf = 1.0;
+				fprintf(fp, "  %d %lg", j, cdf);
+				if (j == ncdfpairs - 1) fprintf(fp, "\n");
+				else fprintf(fp, " #\n");
+			}
+
+			/*
 			for (int j=0;j<ncdfpairs;j++)
 			{
 				if (2+2*j >= (int)m_dist[i].params.size())
@@ -153,6 +172,7 @@ bool LHS::Exec()
 				if (j==ncdfpairs-1) fprintf(fp, "\n");
 				else fprintf(fp, " #\n");
 			}
+			*/
 			break;
 		}
 	}
@@ -691,8 +711,9 @@ public:
 	{
 		cboDistribution = new wxChoice(this, ID_cboDistribution);
 				
-		for (int i=0;i<LHS_NUMDISTS && i < LHS_USERCDF;i++)
-			cboDistribution->Append( wxString(::lhs_dist_names[i]).BeforeFirst(',') );
+		//for (int i = 0; i<LHS_NUMDISTS && i < LHS_USERCDF; i++)
+		for (int i = 0; i<LHS_NUMDISTS ; i++)
+				cboDistribution->Append(wxString(::lhs_dist_names[i]).BeforeFirst(','));
 
 		cboDistribution->Select(LHS_NORMAL);
 
@@ -793,7 +814,8 @@ enum {
   ID_m_N,
   ID_btnComputeSamples,
   ID_btnEditInput,
-  ID_Simulate
+  ID_Simulate,
+  ID_Select_Folder
 };
 
 BEGIN_EVENT_TABLE( StochasticPanel, wxPanel )
@@ -815,6 +837,8 @@ BEGIN_EVENT_TABLE( StochasticPanel, wxPanel )
 	EVT_BUTTON( ID_btnComputeSamples, StochasticPanel::OnComputeSamples)
 
 	EVT_BUTTON( ID_Simulate, StochasticPanel::OnSimulate )
+
+	EVT_BUTTON(ID_Select_Folder, StochasticPanel::OnSelectFolder)
 END_EVENT_TABLE()
 
 StochasticPanel::StochasticPanel(wxWindow *parent, Case *cc)
@@ -874,12 +898,22 @@ StochasticPanel::StochasticPanel(wxWindow *parent, Case *cc)
 	sizer_corr->Add( new wxButton(szbox->GetStaticBox(), ID_btnAddCorr, "Add...", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL|wxALIGN_CENTER_VERTICAL, 2 );
 	sizer_corr->Add( new wxButton(szbox->GetStaticBox(), ID_btnEditCorr, "Edit...", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL|wxALIGN_CENTER_VERTICAL, 2 );
 	sizer_corr->Add( new wxButton(szbox->GetStaticBox(), ID_btnRemoveCorr, "Remove", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL|wxALIGN_CENTER_VERTICAL, 2 );	
-	
+	// weather file option
+	wxBoxSizer *sizer_wf = new wxBoxSizer(wxHORIZONTAL);
+	wxStaticText *label = new wxStaticText(szbox->GetStaticBox(), wxID_ANY, "Select weather file folder:");
+	sizer_wf->Add(label, 0, wxLEFT | wxRIGHT | wxALIGN_CENTER_VERTICAL, 0);
+	sizer_wf->Add(m_folder = new wxTextCtrl(szbox->GetStaticBox(), wxID_ANY), 2, wxALL | wxALIGN_CENTER_VERTICAL, 3);
+	sizer_wf->Add(new wxButton(szbox->GetStaticBox(), ID_Select_Folder, "...", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxRIGHT | wxALIGN_CENTER_VERTICAL, 0);
+
+
+
 	wxBoxSizer *sizer_corr_v = new wxBoxSizer( wxVERTICAL );
 	sizer_corr_v->Add( sizer_corr, 0, wxALL|wxEXPAND, 3 );
 	m_corrList = new wxListBox(szbox->GetStaticBox(), ID_m_corrList);
-	m_corrList->SetInitialSize( wxSize( 300, 100 ) );	
-	sizer_corr_v->Add( m_corrList, 0, wxALL|wxEXPAND, 5 );
+//	m_corrList->SetInitialSize(wxSize(300, 100));
+	m_corrList->SetInitialSize(wxSize(300, 50));
+	sizer_corr_v->Add(m_corrList, 0, wxALL | wxEXPAND, 5);
+	sizer_corr_v->Add(sizer_wf, 0, wxALL | wxEXPAND, 3);
 
 	wxBoxSizer *sizer_out = new wxBoxSizer( wxHORIZONTAL );
 	sizer_out->Add( new wxStaticText(szbox->GetStaticBox(), wxID_ANY, "Outputs:"), 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
@@ -916,6 +950,14 @@ StochasticPanel::StochasticPanel(wxWindow *parent, Case *cc)
 	
 
 	UpdateFromSimInfo();	
+}
+
+
+void StochasticPanel::OnSelectFolder(wxCommandEvent &)
+{
+	wxString dir = wxDirSelector("Choose weather file folder", m_folder->GetValue());
+	if (!dir.IsEmpty())
+		m_folder->ChangeValue(dir);
 }
 
 void StochasticPanel::UpdateFromSimInfo()
@@ -1293,13 +1335,19 @@ void StochasticPanel::Simulate()
 
 	wxArrayString errors;
 	matrix_t<double> input_data;
-	if ( !ComputeLHSInputVectors( m_sd, input_data, &errors ) )
-	{
+
+// weather files
+	wxArrayString wf_list;
+	wxDir::GetAllFiles(m_folder->GetValue(), &wf_list);
+
+//	if (!ComputeLHSInputVectors(m_sd, input_data, &errors))
+	if ((!ComputeLHSInputVectors(m_sd, input_data, &errors)) && (wf_list.Count() <=0))
+		{
 		wxShowTextMessageDialog("An error occured while computing the samples using LHS:\n\n" + wxJoin(errors,'\n'));
 		return;
 	}
 
-	if ( m_sd.Outputs.size() == 0 )
+	if (m_sd.Outputs.size() == 0)
 	{
 		wxMessageBox("please select one or more output variables to analyze first.");
 		return;
@@ -1322,10 +1370,16 @@ void StochasticPanel::Simulate()
 		}	
 	}
 
+
+	int num_sims = 1;
+	if (m_sd.N > 0) num_sims *= m_sd.N;
+	if (wf_list.Count() > 0) num_sims *= wf_list.Count();
+
 	// all single value output data for each run
 	matrix_t<double> output_data;
-	output_data.resize_fill( m_sd.N, output_vars.size(), 0.0);
-	
+//	output_data.resize_fill(m_sd.N, output_vars.size(), 0.0);
+	output_data.resize_fill(num_sims, output_vars.size(), 0.0);
+
 	wxStopWatch sw;
 
 	int nthread = wxThread::GetCPUCount();
@@ -1333,30 +1387,38 @@ void StochasticPanel::Simulate()
 	SimulationDialog tpd( "Preparing simulations...", nthread );
 
 	std::vector<Simulation*> sims;
-	for( size_t i=0;i<m_sd.N;i++ )
-	{
-		Simulation *s = new Simulation( m_case, wxString::Format("Stochastic #%d", (int)(i+1)) );
-		sims.push_back( s );
 
-		for( size_t j=0;j<m_sd.InputDistributions.size();j++ )
+	int count_sims = 1;
+
+//	for (size_t i_wf = 0; i_wf < wf_list.Count(); i_wf++)
+//	{
+
+		for (size_t i = 0; i < m_sd.N; i++)
 		{
-			wxString iname( m_sd.InputDistributions[j].BeforeFirst(':') );
-			s->Override( iname, VarValue( (float)input_data(i,j) ) );
+			Simulation *s = new Simulation(m_case, wxString::Format("Stochastic #%d", (int)(i + 1)));
+			sims.push_back(s);
+
+			for (size_t j = 0; j < m_sd.InputDistributions.size(); j++)
+			{
+				wxString iname(m_sd.InputDistributions[j].BeforeFirst(':'));
+				s->Override(iname, VarValue((float)input_data(i, j)));
+			}
+
+			if (!s->Prepare())
+				wxMessageBox(wxString::Format("internal error preparing simulation %d for stochastic", (int)(i + 1)));
+
+			tpd.Update(0, (float)i / (float)m_sd.N * 100.0f, wxString::Format("%d of %d", (int)(i + 1), (int)m_sd.N));
+
+			if (tpd.Canceled())
+			{
+				for (size_t i = 0; i<sims.size(); i++)
+					delete sims[i];
+				return;
+			}
+			count_sims++;
 		}
 
-		if ( !s->Prepare() )
-			wxMessageBox( wxString::Format("internal error preparing simulation %d for stochastic", (int)(i+1)) );
-
-		tpd.Update( 0, (float)i / (float)m_sd.N * 100.0f, wxString::Format("%d of %d", (int)(i+1), (int)m_sd.N  ) );
-		
-		if ( tpd.Canceled() )
-		{
-			for( size_t i=0;i<sims.size();i++ )
-				delete sims[i];
-			return;
-		}
-	}
-
+//	}
 	int time_prep = sw.Time();
 	sw.Start();
 	
