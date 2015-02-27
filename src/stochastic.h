@@ -146,9 +146,13 @@ public:
 
 	void Simulate();
 
+	void OnSelectFolder(wxCommandEvent &);
+
 private:
 	Case *m_case;
 	StochasticData &m_sd;
+
+	wxTextCtrl *m_folder;
 
 	wxListBox *m_corrList;
 	wxListBox *m_inputList;
