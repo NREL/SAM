@@ -1296,6 +1296,7 @@ void StochasticPanel::OnComputeSamples(wxCommandEvent &evt)
 {
 	wxArrayString errors;
 	matrix_t<double> table;
+
 	if (!ComputeLHSInputVectors( m_sd, table, &errors))
 	{
 		wxShowTextMessageDialog("An error occured while computing the samples using LHS:\n\n" + wxJoin(errors,'\n'));
@@ -1312,9 +1313,35 @@ void StochasticPanel::OnComputeSamples(wxCommandEvent &evt)
 	grid->EnableCopyPaste( true );
 	grid->CreateGrid( table.nrows(), table.ncols() );
 	grid->Freeze();
-	for( size_t i=0;i<table.nrows();i++ )
-		for( size_t j=0;j<table.ncols();j++ )
-			grid->SetCellValue( i, j, wxString::Format("%lg", table(i,j)) );
+	// for string value variables - show string values (e.g. lists - array type, weather files,...)
+//	for( size_t i=0;i<table.nrows();i++ )
+//		for (size_t j = 0; j < table.ncols(); j++)
+//			grid->SetCellValue(i, j, wxString::Format("%lg", table(i, j)));
+	for (size_t j = 0; j < table.ncols(); j++)
+	{
+		wxString var = m_sd.InputDistributions[j];
+		wxArrayString parts = wxStringTokenize(var, ":");
+		if (parts.Count() < 6) return;
+		if (wxAtoi(parts[1]) == LHS_USERCDF)
+		{
+			VarInfo *vi = m_case->GetConfiguration()->Variables.Lookup(parts[0]);
+			if (vi && vi->IndexLabels.Count() > 0)
+			{
+				for (size_t i = 0; i < table.nrows(); i++)
+				{
+					int ndx = int(table(i, j));
+					if ((ndx >= 0) && (ndx < vi->IndexLabels.Count()))
+						grid->SetCellValue(i, j, vi->IndexLabels[ndx]);
+				}
+			}
+		}
+		else
+		{
+			for (size_t i = 0; i < table.nrows(); i++)
+				grid->SetCellValue(i, j, wxString::Format("%lg", table(i, j)));
+		}
+	}
+
 
 	for( size_t i=0;i<table.ncols();i++ )
 		grid->SetColLabelValue( i, collabels[i] );
