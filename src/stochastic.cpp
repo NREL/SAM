@@ -148,6 +148,7 @@ bool LHS::Exec()
 				fclose(fp);
 				return false;
 			}
+			/*
 			for (int j = 0; j<ncdfpairs; j++)
 			{
 				double cdf = (j + 1);
@@ -157,8 +158,8 @@ bool LHS::Exec()
 				if (j == ncdfpairs - 1) fprintf(fp, "\n");
 				else fprintf(fp, " #\n");
 			}
-
-			/*
+			*/
+			
 			for (int j=0;j<ncdfpairs;j++)
 			{
 				if (2+2*j >= (int)m_dist[i].params.size())
@@ -172,7 +173,7 @@ bool LHS::Exec()
 				if (j==ncdfpairs-1) fprintf(fp, "\n");
 				else fprintf(fp, " #\n");
 			}
-			*/
+			
 			break;
 		}
 	}
@@ -705,6 +706,9 @@ public:
 	wxStaticText *lblVarValue;
 	wxStaticText *lbls[4];
 	wxNumericCtrl *nums[4];
+	wxFlexGridSizer *grid;
+	wxExtGridCtrl *cdf_grid;
+	int m_disttype;
 
 	InputDistDialog(wxWindow *parent, const wxString &title)
 		: wxDialog( parent, wxID_ANY, title, wxDefaultPosition, wxSize(450,350), wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER )
@@ -720,8 +724,9 @@ public:
 		lblVarName = new wxStaticText(this, wxID_ANY, "VarName");
 		lblVarValue = new wxStaticText(this, wxID_ANY, "VarValue");
 
-		wxFlexGridSizer *grid = new wxFlexGridSizer(2);
-		grid->Add( new wxStaticText( this, wxID_ANY, "Variable name:" ), 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
+//		wxFlexGridSizer *grid = new wxFlexGridSizer(2);
+		grid = new wxFlexGridSizer(2);
+		grid->Add(new wxStaticText(this, wxID_ANY, "Variable name:"), 0, wxALL | wxALIGN_CENTER_VERTICAL, 5);
 		grid->Add( lblVarName, 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
 		grid->Add( new wxStaticText( this, wxID_ANY, "Variable value:" ), 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
 		grid->Add( lblVarValue, 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
@@ -735,10 +740,15 @@ public:
 
 		}
 
+		cdf_grid = new wxExtGridCtrl(this, wxID_ANY);
+		cdf_grid->CreateGrid(5, 2);
+		cdf_grid->SetEditable(true);
+
 		wxBoxSizer *sizer = new wxBoxSizer( wxVERTICAL );
 		sizer->Add( cboDistribution, 0, wxALL|wxEXPAND, 5 );
-		sizer->Add( grid, 1, wxALL|wxEXPAND, 0 );
-		sizer->Add( CreateButtonSizer( wxOK|wxCANCEL ), 0, wxALL|wxEXPAND, 10 );
+		sizer->Add(grid, 1, wxALL | wxEXPAND, 0);
+		sizer->Add(cdf_grid, 1, wxALL | wxEXPAND, 0);
+		sizer->Add(CreateButtonSizer(wxOK | wxCANCEL), 0, wxALL | wxEXPAND, 10);
 		SetSizer( sizer );
 
 		
@@ -747,15 +757,45 @@ public:
 	}
 	
 	void Setup(const wxString &name, const wxString &value,
-			int DistType, double p0, double p1, double p2, double p3)
+		int DistType, double p0, double p1, double p2, double p3)
 	{
 		lblVarName->SetLabel(name);
 		lblVarValue->SetLabel(value);
+		m_disttype = DistType;
 		cboDistribution->SetSelection(DistType);
 		nums[0]->SetValue(p0);
 		nums[1]->SetValue(p1);
 		nums[2]->SetValue(p2);
 		nums[3]->SetValue(p3);
+		UpdateLabels();
+	}
+
+	void Setup(const wxString &name, const wxString &value,
+		int DistType, wxArrayString listValues, wxArrayString cdf_values)
+	{
+		lblVarName->SetLabel(name);
+		lblVarValue->SetLabel(value);
+		m_disttype = DistType;
+		cboDistribution->SetSelection(DistType);
+		cdf_grid->ClearGrid();
+		int num_rows = listValues.Count();
+		if ((num_rows == 0) || (cdf_values.Count() != num_rows))
+		{
+			wxMessageBox("Error setting up user CDF");
+			return;
+		}
+		cdf_grid->Freeze();
+		cdf_grid->ResizeGrid(num_rows, 2);
+		cdf_grid->HideRowLabels();
+		cdf_grid->SetColLabelValue(0, "Value");
+		cdf_grid->SetColLabelValue(1, "CDF");
+		for (int i = 0; i < num_rows; i++)
+		{
+			cdf_grid->SetCellValue(i, 0, listValues[i]);
+			cdf_grid->SetReadOnly(i, 0, true);
+			cdf_grid->SetCellValue(i, 1, cdf_values[i]);
+		}
+		cdf_grid->Thaw();
 		UpdateLabels();
 	}
 
@@ -770,13 +810,22 @@ public:
 			nums[i]->Hide();
 		}
 
-		for (i=1;i<(int)parts.Count();i++)
+		if (m_disttype == LHS_USERCDF)
 		{
-			lbls[i-1]->SetLabel( parts[i] + ":");
-			lbls[i-1]->Show();
-			nums[i-1]->Show();
+			cdf_grid->Show(true);
+			grid->Show(false);
 		}
-
+		else
+		{
+			cdf_grid->Show(false);
+			grid->Show(true);
+			for (i = 1; i < (int)parts.Count(); i++)
+			{
+				lbls[i - 1]->SetLabel(parts[i] + ":");
+				lbls[i - 1]->Show();
+				nums[i - 1]->Show();
+			}
+		}
 		Layout();
 		Refresh();
 	}
@@ -994,8 +1043,9 @@ void StochasticPanel::UpdateFromSimInfo()
 		wxString item = parts[0];
 		item = m_case->GetConfiguration()->Variables.Label( item );
 		
-		if (parts.Count() == 6)
-		{
+//		if (parts.Count() == 6)
+		if (parts.Count() >= 6)
+			{
 			int disttype  = atoi(parts[1].c_str());
 			if (disttype < 0) disttype = 0;
 			if (disttype >= LHS_NUMDISTS) disttype = LHS_NUMDISTS-1;
@@ -1107,14 +1157,34 @@ void StochasticPanel::OnAddInput(wxCommandEvent &evt)
 
 			if (!found)
 			{
-				VarValue *vv = m_case->Values().Get( varlist[i] );
+				wxString var_name = varlist[i];
+				VarValue *vv = m_case->Values().Get(var_name);
 				if (!vv)
 					continue;
 
-				// default to normal distribution
-				m_sd.InputDistributions.Add( 
-					varlist[i] + wxString::Format(":1:%lg:%lg:0:0", 
-					(double)vv->Value(), (double)0.15*vv->Value() ));
+				VarInfo *vi = m_case->GetConfiguration()->Variables.Lookup(var_name);
+				if (!vi)
+					continue;
+				if (vi->IndexLabels.Count() > 0) // list value
+				{ // default to user cdf with uniform values
+					int dist_type = LHS_USERCDF;
+					int ncdfpairs = vi->IndexLabels.Count();
+					wxString input_distribution = var_name + wxString::Format(":%d:%d", dist_type, ncdfpairs);
+					for (int j = 0; j<ncdfpairs; j++)
+					{
+						double cdf = (j + 1);
+						cdf /= (double)ncdfpairs;
+						if (cdf > 1.0) cdf = 1.0;
+						input_distribution += wxString::Format(":%d:%lg", j, cdf);
+					}
+					m_sd.InputDistributions.Add(input_distribution);
+				}
+				else
+				{ // default to normal distribution (for numeric values)
+					m_sd.InputDistributions.Add(
+						var_name + wxString::Format(":1:%lg:%lg:0:0",
+						(double)vv->Value(), (double)0.15*vv->Value()));
+				}
 			}
 		}
 
@@ -1133,22 +1203,57 @@ void StochasticPanel::OnEditInput(wxCommandEvent &evt)
 	if (parts.Count() < 6) return;
 
 	ConfigInfo *ci = m_case->GetConfiguration();
-	VarValue *vptr = m_case->Values().Get(parts[0]);
+
+	wxString var_name = parts[0];
+
+	VarValue *vptr = m_case->Values().Get(var_name);
 	if (!vptr) return;
 
-	InputDistDialog dlg(this, "Edit " + ci->Variables.Label( parts[0] ) + " Distribution");
+	InputDistDialog dlg(this, "Edit " + ci->Variables.Label(var_name) + " Distribution");
 
-	dlg.Setup( ci->Variables.Label( parts[0] ), wxString::Format("%g", vptr->Value()),
-		wxAtoi(parts[1]), wxAtof(parts[2]), wxAtof(parts[3]), wxAtof(parts[4]), wxAtof(parts[5]) );
+	VarInfo *vi = ci->Variables.Lookup(var_name);
+	if (!vi)
+		return;
+	if (vi->IndexLabels.Count() > 0) // list value
+	{
+		int dist_type = wxAtoi(parts[1]);
+		int num_values = wxAtoi(parts[2]);
+		wxArrayString list_values = vi->IndexLabels;
+		int ndx = (int)vptr->Value();
+		wxString var_value = wxString::Format("%g", vptr->Value());
+		if ((ndx >= 0) && (ndx < list_values.Count()))
+			var_value = list_values[ndx];
+		wxArrayString cdf_values;
+		for (int j = 4; j < parts.Count(); j += 2)
+			cdf_values.Add(parts[j]);
+		dlg.Setup(ci->Variables.Label(var_name), var_value, dist_type, list_values, cdf_values);
+	}
+	else
+	{
+		dlg.Setup(ci->Variables.Label(var_name), wxString::Format("%g", vptr->Value()),
+			wxAtoi(parts[1]), wxAtof(parts[2]), wxAtof(parts[3]), wxAtof(parts[4]), wxAtof(parts[5]));
+	}
 
 	if (dlg.ShowModal()==wxID_OK)
 	{
-		m_sd.InputDistributions[idx] = parts[0] + ":"
-			+ wxString::Format("%d",  dlg.cboDistribution->GetSelection() ) + ":"
-			+ wxString::Format("%lg", dlg.nums[0]->Value() ) + ":"
-			+ wxString::Format("%lg", dlg.nums[1]->Value() ) + ":"
-			+ wxString::Format("%lg", dlg.nums[2]->Value() ) + ":"
-			+ wxString::Format("%lg", dlg.nums[3]->Value() );
+		int dist_type = dlg.cboDistribution->GetSelection();
+		if (dist_type == LHS_USERCDF) // list value
+		{
+			int num_values = dlg.cdf_grid->GetNumberRows();
+			wxString input_dist = var_name + wxString::Format(":%d:%d", dist_type, num_values);
+			for (int j = 0; j < num_values; j++)
+				input_dist += wxString::Format(":%d:", j) + dlg.cdf_grid->GetCellValue(j, 1);
+			m_sd.InputDistributions[idx] = input_dist;
+		}
+		else
+		{
+			m_sd.InputDistributions[idx] = var_name + ":"
+				+ wxString::Format("%d", dist_type) + ":"
+				+ wxString::Format("%lg", dlg.nums[0]->Value()) + ":"
+				+ wxString::Format("%lg", dlg.nums[1]->Value()) + ":"
+				+ wxString::Format("%lg", dlg.nums[2]->Value()) + ":"
+				+ wxString::Format("%lg", dlg.nums[3]->Value());
+		}
 
 		UpdateFromSimInfo();
 	}
@@ -1622,11 +1727,20 @@ bool ComputeLHSInputVectors( StochasticData &sd, matrix_t<double> &table, wxArra
 		wxArrayString distinfo = wxStringTokenize(sd.InputDistributions[i],":");
 		if (distinfo.Count() < 6) continue;
 		std::vector<double> params;
-		params.push_back( wxAtof(distinfo[2]) );
-		params.push_back( wxAtof(distinfo[3]) );
-		params.push_back( wxAtof(distinfo[4]) );
-		params.push_back( wxAtof(distinfo[5]) );
-		lhs.Distribution( wxAtoi(distinfo[1]), wxString((char)('a' + i)), params);
+		int dist_type = wxAtoi(distinfo[1]);
+		if (dist_type == LHS_USERCDF)
+		{
+			for (int j = 2; j < distinfo.Count();j++)
+				params.push_back(wxAtof(distinfo[j]));
+		}
+		else
+		{
+			params.push_back(wxAtof(distinfo[2]));
+			params.push_back(wxAtof(distinfo[3]));
+			params.push_back(wxAtof(distinfo[4]));
+			params.push_back(wxAtof(distinfo[5]));
+		}
+		lhs.Distribution(dist_type, wxString((char)('a' + i)), params);
 	}
 
 	for (i=0;i<(int)sd.Correlations.Count();i++)
