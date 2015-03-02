@@ -152,7 +152,11 @@ private:
 	Case *m_case;
 	StochasticData &m_sd;
 
+	// weather file folder control - persisted with stochastic_weather_folder=folder name as string.
 	wxTextCtrl *m_folder;
+	wxArrayString m_weather_files;
+	wxString m_weather_folder_varname;
+	wxString m_weather_folder_displayname;
 
 	wxListBox *m_corrList;
 	wxListBox *m_inputList;
