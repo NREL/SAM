@@ -770,11 +770,12 @@ public:
 		UpdateLabels();
 	}
 
-	void Setup(const wxString &name, const wxString &value,
-		int DistType, wxArrayString listValues, wxArrayString cdf_values)
+//	void Setup(const wxString &name, const wxString &value,
+//		int DistType, wxArrayString listValues, wxArrayString cdf_values)
+	void Setup(	int DistType, wxArrayString listValues, wxArrayString cdf_values)
 	{
-		lblVarName->SetLabel(name);
-		lblVarValue->SetLabel(value);
+		//lblVarName->SetLabel(name);
+		//lblVarValue->SetLabel(value);
 		m_disttype = DistType;
 		cboDistribution->SetSelection(DistType);
 		cdf_grid->ClearGrid();
@@ -996,9 +997,15 @@ StochasticPanel::StochasticPanel(wxWindow *parent, Case *cc)
 	sizer_main->Add( sizer_grids, 1, wxALL|wxEXPAND, 0 );
 
 	SetSizer( sizer_main );
-	
+
+
+	// do not change unless persistence is changed.
+	m_weather_folder_varname = "stochastic_weather_folder";
+	m_weather_folder_displayname = "Weather Files";
+
 
 	UpdateFromSimInfo();	
+
 }
 
 
@@ -1041,7 +1048,21 @@ void StochasticPanel::UpdateFromSimInfo()
 			continue;
 
 		wxString item = parts[0];
-		item = m_case->GetConfiguration()->Variables.Label( item );
+		if (item.Left(m_weather_folder_varname.size()) == m_weather_folder_varname)
+		{
+			wxArrayString wff = wxStringTokenize(item, "=");
+			if (wff.Count() == 2)
+			{
+				wxString path = wff[1];
+				path.Replace(";", ":");
+				m_folder->SetValue(path);
+				//m_weather_files
+			}
+		}
+		else
+		{
+			item = m_case->GetConfiguration()->Variables.Label(item);
+		}
 		
 //		if (parts.Count() == 6)
 		if (parts.Count() >= 6)
@@ -1108,6 +1129,9 @@ void StochasticPanel::OnAddInput(wxCommandEvent &evt)
 	ConfigInfo *ci = m_case->GetConfiguration();
 	VarInfoLookup &vil = ci->Variables;
 
+	names.Add(m_weather_folder_varname);
+	labels.Add(m_weather_folder_displayname);
+
 	for (VarInfoLookup::iterator it = vil.begin(); it != vil.end(); ++it)
 	{
 		wxString name = it->first;
@@ -1137,38 +1161,57 @@ void StochasticPanel::OnAddInput(wxCommandEvent &evt)
 	{
 		varlist = dlg.GetCheckedNames();
 
-		i=0;
+		i = 0;
 		// remove any input variables in StochasticData that are no longer in list
-		while (i<(int)m_sd.InputDistributions.Count())
+		while (i < (int)m_sd.InputDistributions.Count())
 		{
-			if ( varlist.Index( m_sd.InputDistributions[i].BeforeFirst(':') ) < 0 )
+			if (varlist.Index(m_sd.InputDistributions[i].BeforeFirst(':')) < 0)
 				m_sd.InputDistributions.RemoveAt(i);// remove, do not increment i
 			else
 				i++;
 		}
 
 		// add any inputs not already in StatSimList
-		for (i=0;i<(int)varlist.Count();i++)
+		for (i = 0; i < (int)varlist.Count(); i++)
 		{
 			bool found = false;
-			for (int j=0;j<(int)m_sd.InputDistributions.Count();j++)
-				if ( m_sd.InputDistributions[j].BeforeFirst(':') == varlist[i] )
+			for (int j = 0; j < (int)m_sd.InputDistributions.Count(); j++)
+				if ((m_sd.InputDistributions[j].BeforeFirst(':') == varlist[i])
+					|| (m_sd.InputDistributions[j].BeforeFirst('=') == varlist[i])) // weather file folder
+				//if (m_sd.InputDistributions[j].BeforeFirst(':') == varlist[i])
 					found = true;
 
 			if (!found)
 			{
 				wxString var_name = varlist[i];
-				VarValue *vv = m_case->Values().Get(var_name);
-				if (!vv)
-					continue;
+				VarValue *vv=NULL;
+				wxArrayString val_list;
 
-				VarInfo *vi = m_case->GetConfiguration()->Variables.Lookup(var_name);
-				if (!vi)
-					continue;
-				if (vi->IndexLabels.Count() > 0) // list value
+				if (var_name == m_weather_folder_varname)
+				{
+					wxString path = m_folder->GetValue();
+					wxDir::GetAllFiles(path, &val_list);
+					m_weather_files.Clear();
+					for (int j = 0; j < val_list.Count();j++)
+						m_weather_files.Add(wxFileNameFromPath(val_list[i]));
+					
+					path.Replace(":", ";"); // to store in Input distribution collection without issue with ":" delimiter
+					var_name += "=" + path;
+				}
+				else
+				{
+					vv = m_case->Values().Get(var_name);
+					if (!vv)
+						continue;
+					VarInfo *vi = m_case->GetConfiguration()->Variables.Lookup(var_name);
+					if (!vi)
+						continue;
+					val_list = vi->IndexLabels;
+				}
+				if (val_list.Count() > 0) // list value
 				{ // default to user cdf with uniform values
 					int dist_type = LHS_USERCDF;
-					int ncdfpairs = vi->IndexLabels.Count();
+					int ncdfpairs = val_list.Count();
 					wxString input_distribution = var_name + wxString::Format(":%d:%d", dist_type, ncdfpairs);
 					for (int j = 0; j<ncdfpairs; j++)
 					{
@@ -1205,32 +1248,56 @@ void StochasticPanel::OnEditInput(wxCommandEvent &evt)
 	ConfigInfo *ci = m_case->GetConfiguration();
 
 	wxString var_name = parts[0];
+	if (var_name.Left(m_weather_folder_varname.size()) == m_weather_folder_varname)
+		var_name = m_weather_folder_varname;
 
-	VarValue *vptr = m_case->Values().Get(var_name);
-	if (!vptr) return;
-
-	InputDistDialog dlg(this, "Edit " + ci->Variables.Label(var_name) + " Distribution");
-
-	VarInfo *vi = ci->Variables.Lookup(var_name);
-	if (!vi)
-		return;
-	if (vi->IndexLabels.Count() > 0) // list value
+	wxArrayString val_list;
+	wxString label;
+	wxString value;
+	if (var_name == m_weather_folder_varname)
+	{
+		wxString path = m_folder->GetValue();
+		wxDir::GetAllFiles(path, &val_list);
+		m_weather_files.Clear();
+		for (int j = 0; j < val_list.Count(); j++)
+			m_weather_files.Add(wxFileNameFromPath(val_list[j]));
+		path.Replace(":", ";"); // to store in Input distribution collection without issue with ":" delimiter
+		var_name += "=" + path;
+		val_list = m_weather_files;
+		label = m_weather_folder_displayname;
+	}
+	else
+	{
+		VarValue *vptr = m_case->Values().Get(var_name);
+		if (!vptr) return;
+		value = wxString::Format("%g", vptr->Value());
+		VarInfo *vi = ci->Variables.Lookup(var_name);
+		if (!vi)
+			return;
+		val_list = vi->IndexLabels;
+		label = ci->Variables.Label(var_name);
+	}
+	InputDistDialog dlg(this, "Edit " + label + " Distribution");
+	if (val_list.Count() > 0) // list value
 	{
 		int dist_type = wxAtoi(parts[1]);
 		int num_values = wxAtoi(parts[2]);
+		/*
 		wxArrayString list_values = vi->IndexLabels;
 		int ndx = (int)vptr->Value();
 		wxString var_value = wxString::Format("%g", vptr->Value());
 		if ((ndx >= 0) && (ndx < list_values.Count()))
 			var_value = list_values[ndx];
+			*/
 		wxArrayString cdf_values;
 		for (int j = 4; j < parts.Count(); j += 2)
 			cdf_values.Add(parts[j]);
-		dlg.Setup(ci->Variables.Label(var_name), var_value, dist_type, list_values, cdf_values);
+//		dlg.Setup(ci->Variables.Label(var_name), var_value, dist_type, val_list, cdf_values);
+		dlg.Setup(dist_type, val_list, cdf_values);
 	}
 	else
 	{
-		dlg.Setup(ci->Variables.Label(var_name), wxString::Format("%g", vptr->Value()),
+		dlg.Setup(ci->Variables.Label(var_name), value,
 			wxAtoi(parts[1]), wxAtof(parts[2]), wxAtof(parts[3]), wxAtof(parts[4]), wxAtof(parts[5]));
 	}
 
@@ -1409,9 +1476,17 @@ void StochasticPanel::OnComputeSamples(wxCommandEvent &evt)
 	}
 
 	wxArrayString collabels;
-	for (int i=0;i<m_sd.InputDistributions.Count();i++)
-		collabels.Add( m_case->GetConfiguration()->Variables.Label( m_sd.InputDistributions[i].BeforeFirst(':') ) );
+	for (int i = 0; i < m_sd.InputDistributions.Count(); i++)
+	{
+		wxString item = m_sd.InputDistributions[i].BeforeFirst(':');
+		wxString label;
+		if (item.Left(m_weather_folder_varname.size()) == m_weather_folder_varname)
+			label = m_weather_folder_displayname;
+		else
+			label = m_case->GetConfiguration()->Variables.Label(item);
 
+		collabels.Add(label);
+	}
 	
 	wxDialog *dlg = new wxDialog( this, wxID_ANY, "Data Vectors", wxDefaultPosition, wxSize(400,600), wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER);
 	wxExtGridCtrl *grid = new wxExtGridCtrl( dlg, wxID_ANY );
@@ -1429,14 +1504,23 @@ void StochasticPanel::OnComputeSamples(wxCommandEvent &evt)
 		if (parts.Count() < 6) return;
 		if (wxAtoi(parts[1]) == LHS_USERCDF)
 		{
-			VarInfo *vi = m_case->GetConfiguration()->Variables.Lookup(parts[0]);
-			if (vi && vi->IndexLabels.Count() > 0)
+			wxString item = parts[0];
+			wxArrayString values;
+			if (item.Left(m_weather_folder_varname.size()) == m_weather_folder_varname)
+				values = m_weather_files;
+			else
+			{
+				VarInfo *vi = m_case->GetConfiguration()->Variables.Lookup(parts[0]);
+				if (!vi) continue;
+				values = vi->IndexLabels;
+			}
+			if (values.Count() > 0)
 			{
 				for (size_t i = 0; i < table.nrows(); i++)
 				{
 					int ndx = int(table(i, j));
-					if ((ndx >= 0) && (ndx < vi->IndexLabels.Count()))
-						grid->SetCellValue(i, j, vi->IndexLabels[ndx]);
+					if ((ndx >= 0) && (ndx < values.Count()))
+						grid->SetCellValue(i, j, values[ndx]);
 				}
 			}
 		}
@@ -1468,12 +1552,8 @@ void StochasticPanel::Simulate()
 	wxArrayString errors;
 	matrix_t<double> input_data;
 
-// weather files
-	wxArrayString wf_list;
-	wxDir::GetAllFiles(m_folder->GetValue(), &wf_list);
 
-//	if (!ComputeLHSInputVectors(m_sd, input_data, &errors))
-	if ((!ComputeLHSInputVectors(m_sd, input_data, &errors)) && (wf_list.Count() <=0))
+	if (!ComputeLHSInputVectors(m_sd, input_data, &errors))
 		{
 		wxShowTextMessageDialog("An error occured while computing the samples using LHS:\n\n" + wxJoin(errors,'\n'));
 		return;
@@ -1503,14 +1583,10 @@ void StochasticPanel::Simulate()
 	}
 
 
-	int num_sims = 1;
-	if (m_sd.N > 0) num_sims *= m_sd.N;
-	if (wf_list.Count() > 0) num_sims *= wf_list.Count();
 
 	// all single value output data for each run
 	matrix_t<double> output_data;
-//	output_data.resize_fill(m_sd.N, output_vars.size(), 0.0);
-	output_data.resize_fill(num_sims, output_vars.size(), 0.0);
+	output_data.resize_fill(m_sd.N, output_vars.size(), 0.0);
 
 	wxStopWatch sw;
 
@@ -1522,35 +1598,44 @@ void StochasticPanel::Simulate()
 
 	int count_sims = 1;
 
-//	for (size_t i_wf = 0; i_wf < wf_list.Count(); i_wf++)
-//	{
+	for (size_t i = 0; i < m_sd.N; i++)
+	{
+		Simulation *s = new Simulation(m_case, wxString::Format("Stochastic #%d", (int)(i + 1)));
+		sims.push_back(s);
 
-		for (size_t i = 0; i < m_sd.N; i++)
+		for (size_t j = 0; j < m_sd.InputDistributions.size(); j++)
 		{
-			Simulation *s = new Simulation(m_case, wxString::Format("Stochastic #%d", (int)(i + 1)));
-			sims.push_back(s);
+			wxString iname(m_sd.InputDistributions[j].BeforeFirst(':'));
 
-			for (size_t j = 0; j < m_sd.InputDistributions.size(); j++)
+			if (iname.Left(m_weather_folder_varname.size()) == m_weather_folder_varname)
 			{
-				wxString iname(m_sd.InputDistributions[j].BeforeFirst(':'));
+				int ndx = (int)input_data(i, j);
+				if ((ndx < 0) || (ndx >= m_weather_files.Count()))
+					continue;
+				wxString weatherFile = m_folder->GetValue() + "/" + m_weather_files[ndx];
+				s->Override("use_specific_weather_file", VarValue(true));
+				s->Override("user_specified_weather_file", VarValue(weatherFile));
+				s->Override("use_specific_wf_wind", VarValue(true));
+				s->Override("user_specified_wf_wind", VarValue(weatherFile));
+			}
+			else
 				s->Override(iname, VarValue((float)input_data(i, j)));
-			}
-
-			if (!s->Prepare())
-				wxMessageBox(wxString::Format("internal error preparing simulation %d for stochastic", (int)(i + 1)));
-
-			tpd.Update(0, (float)i / (float)m_sd.N * 100.0f, wxString::Format("%d of %d", (int)(i + 1), (int)m_sd.N));
-
-			if (tpd.Canceled())
-			{
-				for (size_t i = 0; i<sims.size(); i++)
-					delete sims[i];
-				return;
-			}
-			count_sims++;
 		}
 
-//	}
+		if (!s->Prepare())
+			wxMessageBox(wxString::Format("internal error preparing simulation %d for stochastic", (int)(i + 1)));
+
+		tpd.Update(0, (float)i / (float)m_sd.N * 100.0f, wxString::Format("%d of %d", (int)(i + 1), (int)m_sd.N));
+
+		if (tpd.Canceled())
+		{
+			for (size_t i = 0; i<sims.size(); i++)
+				delete sims[i];
+			return;
+		}
+		count_sims++;
+	}
+
 	int time_prep = sw.Time();
 	sw.Start();
 	
@@ -1671,8 +1756,17 @@ void StochasticPanel::Simulate()
 	for( size_t i=0;i<m_sd.InputDistributions.size();i++ )
 	{
 		wxString var( m_sd.InputDistributions[i].BeforeFirst(':') );
-		wxString L( m_case->GetConfiguration()->Variables.Label( var ) );
-		wxString u( m_case->GetConfiguration()->Variables.Units( var ) );
+		wxString L, u;
+		if (var.Left(m_weather_folder_varname.size()) == m_weather_folder_varname)
+		{
+			L = m_weather_folder_displayname;
+			u = "";
+		}
+		else
+		{
+			L= m_case->GetConfiguration()->Variables.Label(var);
+			u = m_case->GetConfiguration()->Variables.Units(var);
+		}
 		if ( !u.IsEmpty() )
 			L += " (" + u + ")";
 
