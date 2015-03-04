@@ -148,6 +148,7 @@ public:
 
 	void OnSelectFolder(wxCommandEvent &);
 
+
 private:
 	Case *m_case;
 	StochasticData &m_sd;
@@ -178,6 +179,7 @@ private:
 	DECLARE_EVENT_TABLE()
 };
 
+wxString GetVarNameFromInputDistribution(const wxString &input_distribution);
 
 bool ComputeLHSInputVectors( StochasticData &sd, matrix_t<double> &table, wxArrayString *errors);
 
