@@ -66,7 +66,7 @@ static const char *beta_disclaimer =
 // application globals
 int g_verMajor = 2015;
 int g_verMinor = 3;
-int g_verMicro = 4;
+int g_verMicro = 5;
 
 static wxArrayString g_appArgs;
 static MainWindow *g_mainWindow = 0;

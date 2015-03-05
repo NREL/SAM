@@ -22,7 +22,7 @@ char *lhs_dist_names[LHS_NUMDISTS] = {
 	"Poisson,Lambda",
 	"Binomial,P,N",
 	"Exponential,Lambda",
-	"UserCDF,N,[val,cdf]*"
+	"UserCDF,N"
 };
 
 LHS::LHS()
@@ -802,16 +802,24 @@ public:
 
 	void UpdateLabels()
 	{
-		wxArrayString parts = wxStringTokenize(::lhs_dist_names[ cboDistribution->GetSelection() ], ",");
+		int cur_selection = cboDistribution->GetSelection();
+		wxArrayString parts = wxStringTokenize(::lhs_dist_names[cur_selection], ",");
 	
 		int i;
 		if (m_disttype == LHS_USERCDF)
 		{
 			cdf_grid->Show(true);
 			grid->Show(false);
+			cboDistribution->SetSelection(LHS_USERCDF);
 		}
 		else
 		{
+			if (cur_selection == LHS_USERCDF)
+			{
+				cur_selection = LHS_NORMAL;
+				cboDistribution->SetSelection(LHS_NORMAL);
+				parts = wxStringTokenize(::lhs_dist_names[cur_selection], ",");
+			}
 			cdf_grid->Show(false);
 			grid->Show(true);
 			for (i = 0; i<4; i++)
@@ -950,20 +958,21 @@ StochasticPanel::StochasticPanel(wxWindow *parent, Case *cc)
 	sizer_corr->Add( new wxButton(szbox->GetStaticBox(), ID_btnRemoveCorr, "Remove", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL|wxALIGN_CENTER_VERTICAL, 2 );	
 	// weather file option
 	wxBoxSizer *sizer_wf = new wxBoxSizer(wxHORIZONTAL);
-	wxStaticText *label = new wxStaticText(szbox->GetStaticBox(), wxID_ANY, "Select weather file folder:");
+	wxStaticText *label = new wxStaticText(this, wxID_ANY, "Select weather file folder:");
 	sizer_wf->Add(label, 0, wxLEFT | wxRIGHT | wxALIGN_CENTER_VERTICAL, 0);
-	sizer_wf->Add(m_folder = new wxTextCtrl(szbox->GetStaticBox(), wxID_ANY), 2, wxALL | wxALIGN_CENTER_VERTICAL, 3);
-	sizer_wf->Add(new wxButton(szbox->GetStaticBox(), ID_Select_Folder, "...", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxRIGHT | wxALIGN_CENTER_VERTICAL, 0);
+	sizer_wf->Add(m_folder = new wxTextCtrl(this, wxID_ANY), 2, wxALL | wxALIGN_CENTER_VERTICAL, 3);
+	m_folder->SetEditable(false);
+	sizer_wf->Add(new wxButton(this, ID_Select_Folder, "...", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxRIGHT | wxALIGN_CENTER_VERTICAL, 0);
 
 
 
 	wxBoxSizer *sizer_corr_v = new wxBoxSizer( wxVERTICAL );
 	sizer_corr_v->Add( sizer_corr, 0, wxALL|wxEXPAND, 3 );
 	m_corrList = new wxListBox(szbox->GetStaticBox(), ID_m_corrList);
-//	m_corrList->SetInitialSize(wxSize(300, 100));
-	m_corrList->SetInitialSize(wxSize(300, 50));
+	m_corrList->SetInitialSize(wxSize(300, 100));
+//	m_corrList->SetInitialSize(wxSize(300, 50));
 	sizer_corr_v->Add(m_corrList, 0, wxALL | wxEXPAND, 5);
-	sizer_corr_v->Add(sizer_wf, 0, wxALL | wxEXPAND, 3);
+//	sizer_corr_v->Add(sizer_wf, 0, wxALL | wxEXPAND, 3);
 
 	wxBoxSizer *sizer_out = new wxBoxSizer( wxHORIZONTAL );
 	sizer_out->Add( new wxStaticText(szbox->GetStaticBox(), wxID_ANY, "Outputs:"), 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
@@ -982,6 +991,9 @@ StochasticPanel::StochasticPanel(wxWindow *parent, Case *cc)
 	
 	sizer_main->Add( szbox, 0, wxALL, 5 );
 	
+	sizer_main->Add(sizer_wf, 0, wxALL | wxEXPAND, 3);
+
+
 	m_dataGrid = new wxExtGridCtrl( this, wxID_ANY );
 	m_dataGrid->CreateGrid( 1, 1 );
 	m_dataGrid->SetCellValue(0, 0, "No results.");
@@ -1008,13 +1020,39 @@ StochasticPanel::StochasticPanel(wxWindow *parent, Case *cc)
 
 }
 
+void StochasticPanel::UpdateWeatherFileList()
+{
+	m_weather_files.Clear();
+	wxArrayString val_list;
+	wxDir::GetAllFiles(m_folder->GetValue(), &val_list);
+	for (int j = 0; j < val_list.Count(); j++)
+		m_weather_files.Add(wxFileNameFromPath(val_list[j]));
+}
+
 
 void StochasticPanel::OnSelectFolder(wxCommandEvent &)
 {
 	wxString dir = wxDirSelector("Choose weather file folder", m_folder->GetValue());
 	if (!dir.IsEmpty())
+	{
 		m_folder->ChangeValue(dir);
+		UpdateWeatherFileList();
+		UpdateFromSimInfo();
+	}
 }
+
+
+wxString StochasticPanel::GetLabelFromVarName(const wxString &var_name)
+{
+	wxString label;
+	if (var_name == m_weather_folder_varname)
+		label = m_weather_folder_displayname;
+	else
+		label = m_case->GetConfiguration()->Variables.Label(var_name);
+	return label;
+}
+
+
 
 void StochasticPanel::UpdateFromSimInfo()
 {	
@@ -1047,18 +1085,27 @@ void StochasticPanel::UpdateFromSimInfo()
 		if ( parts.Count() < 2 )
 			continue;
 
-		wxString item = parts[0];
+		wxString item = GetVarNameFromInputDistribution(parts[0]);
 		int disttype = atoi(parts[1].c_str());
 		if (disttype < 0) disttype = 0;
 		if (disttype >= LHS_NUMDISTS) disttype = LHS_NUMDISTS - 1;
-		if (item.Left(m_weather_folder_varname.size()) == m_weather_folder_varname)
+		if (item == m_weather_folder_varname)
 		{
-			wxArrayString wff = wxStringTokenize(item, "=");
+			wxArrayString wff = wxStringTokenize(parts[0], "=");
 			if (wff.Count() == 2)
 			{
 				wxString path = wff[1];
 				path.Replace(";", ":");
-				m_folder->SetValue(path);
+				if (m_folder->GetValue().IsEmpty())
+					m_folder->SetValue(path);
+				if (path.Lower() != m_folder->GetValue().Lower())
+				{
+					wxString fld = m_folder->GetValue();
+					fld.Replace(":", ";");
+					wff[1] = fld;
+					parts[0] = wff[0] + "=" + wff[1];
+					UpdateWeatherFileList();
+				}
 				item = m_weather_folder_displayname;
 				//check weather file distribution for changes in number of files
 				// parts[0]=varname
@@ -1067,15 +1114,11 @@ void StochasticPanel::UpdateFromSimInfo()
 				// parts[3], parts[4] are index=cdfvalue pairs
 				// up to parts[3+2N-2], parts[3+2N-1]
 				// repopulate weather file list and check count
-				m_weather_files.Clear();
-				wxArrayString val_list;
-				wxDir::GetAllFiles(path, &val_list);
-				for (int j = 0; j < val_list.Count(); j++)
-					m_weather_files.Add(wxFileNameFromPath(val_list[j]));
 				// check distribution and if count does not match - repopulate uniformly
 				int N = (int)m_weather_files.Count();
 				if ((N>0)&&(parts.Count() != (3 + 2 * N)))
 				{
+					parts[2] = wxString::Format("%d",N);
 					//update to uniform distributed cdf function over weahter file list
 					wxString input_distribution = parts[0] +
 						wxString::Format(":%d:%d", LHS_USERCDF, N);
@@ -1123,9 +1166,10 @@ void StochasticPanel::UpdateFromSimInfo()
 	{
 		wxArrayString parts = wxStringTokenize( m_sd.Correlations[i], ":" );
 		if (parts.Count() < 3) continue;
-		
-		wxString l1 = m_case->GetConfiguration()->Variables.Label( parts[0] );
-		wxString l2 = m_case->GetConfiguration()->Variables.Label( parts[1] );
+	
+
+		wxString l1 = GetLabelFromVarName( parts[0] );
+		wxString l2 = GetLabelFromVarName(parts[1]);
 		
 		if ( l1.IsEmpty() || l2.IsEmpty() ) continue;
 
@@ -1216,13 +1260,10 @@ void StochasticPanel::OnAddInput(wxCommandEvent &evt)
 				if (var_name == m_weather_folder_varname)
 				{
 					wxString path = m_folder->GetValue();
-					wxDir::GetAllFiles(path, &val_list);
-					m_weather_files.Clear();
-					for (int j = 0; j < val_list.Count();j++)
-						m_weather_files.Add(wxFileNameFromPath(val_list[j]));
-					
 					path.Replace(":", ";"); // to store in Input distribution collection without issue with ":" delimiter
 					var_name += "=" + path;
+					UpdateWeatherFileList();
+					val_list = m_weather_files;
 				}
 				else
 				{
@@ -1414,7 +1455,7 @@ void StochasticPanel::OnAddCorr(wxCommandEvent &evt)
 		}
 		else
 		{
-			VarInfo *v = m_case->GetConfiguration()->Variables.Lookup(names[i]);
+			VarInfo *v = m_case->GetConfiguration()->Variables.Lookup(var_name);
 			if (!v)
 			{
 				labels.Add("<<Label Lookup Error>>");
@@ -1470,7 +1511,9 @@ void StochasticPanel::OnEditCorr(wxCommandEvent &evt)
 		double corr = atof( result.c_str() );
 		if (corr <= -1) corr = -0.999;
 		if (corr >= 1) corr = 0.999;
-		m_sd.Correlations[idx] = parts[0] + ":" + parts[1] + ":" + wxString::Format("%lg", corr );
+		wxString var_name0 = GetVarNameFromInputDistribution(parts[0]);
+		wxString var_name1 = GetVarNameFromInputDistribution(parts[1]);
+		m_sd.Correlations[idx] = var_name0 + ":" + var_name1 + ":" + wxString::Format("%lg", corr);
 		UpdateFromSimInfo();
 	}
 }
@@ -1535,7 +1578,7 @@ void StochasticPanel::OnComputeSamples(wxCommandEvent &evt)
 				values = m_weather_files;
 			else
 			{
-				VarInfo *vi = m_case->GetConfiguration()->Variables.Lookup(parts[0]);
+				VarInfo *vi = m_case->GetConfiguration()->Variables.Lookup(item);
 				if (!vi) continue;
 				values = vi->IndexLabels;
 			}
@@ -1832,11 +1875,9 @@ wxString GetVarNameFromInputDistribution(const wxString &input_distribution)
 {
 	// return varname for use in lists adding inputs, etc
 	wxString var_name = input_distribution.BeforeFirst(':');
-	var_name = input_distribution.BeforeFirst('='); // weather files
+	var_name = var_name.BeforeFirst('='); // weather files
 	return var_name;
 }
-
-
 
 
 bool ComputeLHSInputVectors( StochasticData &sd, matrix_t<double> &table, wxArrayString *errors)
