@@ -26,8 +26,8 @@ ArchitecturesInstallIn64BitMode=x64
 
 
 ; UPDATE THESE TO MATCH THE VERSION
-AppVerName=SAM 2015.2.12
-DefaultDirName={sd}\SAM\2015.2.12
+AppVerName=SAM 2015.3.5
+DefaultDirName={sd}\SAM\2015.3.5
 
 AppPublisher=National Renewable Energy Laboratory
 AppPublisherURL=http://sam.nrel.gov
@@ -89,6 +89,8 @@ Name: "{group}\System Advisor Beta"; Filename: "{app}\x64\sam.exe"  ; Check: Is6
 ;Name: "{group}\{cm:ProgramOnTheWeb,System Advisor Model}"; Filename: "http://sam.nrel.gov"
 ;Name: "{group}\{cm:UninstallProgram,System Advisor Model}"; Filename: "{uninstallexe}"
 ;Name: "{commondesktop}\System Advisor Beta (x64)"; Filename: "{app}\x64\sam.exe"; Tasks: desktopicon
+Name: "{commondesktop}\System Advisor Beta (win32)"; Filename: "{app}\win32\sam.exe"; Tasks: desktopicon ; Check: not Is64BitInstallMode
+Name: "{commondesktop}\System Advisor Beta (x64)"; Filename: "{app}\x64\sam.exe"; Tasks: desktopicon; Check: Is64BitInstallMode
 
 ;[Registry]
 ; 12/4/08 - delete left over entry to prevent issue reported by Paul - opening with earlier version when new verions installed

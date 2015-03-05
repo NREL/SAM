@@ -147,7 +147,8 @@ public:
 	void Simulate();
 
 	void OnSelectFolder(wxCommandEvent &);
-
+	wxString GetLabelFromVarName(const wxString &var_name);
+	void UpdateWeatherFileList();
 
 private:
 	Case *m_case;
