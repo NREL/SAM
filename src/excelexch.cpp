@@ -419,7 +419,7 @@ public:
 	{
 		if (!m_case) return;
 
-		wxFileDialog dlg( this, "Choose an Excel File", "", "", "Excel Files (*.xls *.xlsx)|*.xls;*.xlsx");
+		wxFileDialog dlg(this, "Choose an Excel File", "", "", "Excel Files (*.xls *.xlm *.xlsx *.xlsm)|*.xls;*.xlm;*.xlsx;*.xlsm");
 		if (dlg.ShowModal() == wxID_OK)
 		{
 			wxString fn = dlg.GetPath();
@@ -683,6 +683,14 @@ int ExcelExchange::RunExcelExchange( ExcelExchange &ex, VarTable &inputs, Simula
 		{
 			// override the variable value in the simulation object
 			sim->Override( ex.Vars[i].Name, vval );
+
+			// update ui input value per Paul 3/6/15
+			Case *c = sim->GetCase();
+			if (VarValue *vv = c->Values().Get(ex.Vars[i].Name))
+			{
+				vv->Copy(vval);
+				c->VariableChanged(ex.Vars[i].Name);
+			}
 
 			// log successful exchange transaction
 			// will be shown in results summary window
