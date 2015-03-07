@@ -1106,6 +1106,8 @@ void StochasticPanel::UpdateFromSimInfo()
 					parts[0] = wff[0] + "=" + wff[1];
 					UpdateWeatherFileList();
 				}
+				if (m_weather_files.Count() == 0)
+					UpdateWeatherFileList();
 				item = m_weather_folder_displayname;
 				//check weather file distribution for changes in number of files
 				// parts[0]=varname
