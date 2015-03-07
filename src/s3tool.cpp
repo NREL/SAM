@@ -894,10 +894,10 @@ bool ShadeAnalysis::SimulateDiffuse(bool save)
 			if (m_diffuse_shade_percent[j] > m_diffuse_shade_percent[0])
 				m_diffuse_shade_percent[0] = m_diffuse_shade_percent[j];
 		}
-		wxStaticText *st = new wxStaticText(m_scroll_diffuse, wxID_ANY, wxString::Format("%s: diffuse shade fraction = %lg %%", m_diffuse_name[0].c_str(), m_diffuse_shade_percent[0]));
-		st->SetSize(10, y, 1300, 30);
-		y += 30;
 	}
+	wxStaticText *st = new wxStaticText(m_scroll_diffuse, wxID_ANY, wxString::Format("%s: diffuse shade fraction = %lg %%", m_diffuse_name[0].c_str(), m_diffuse_shade_percent[0]));
+	st->SetSize(10, y, 1300, 30);
+	y += 30;
 
 	m_scroll_diffuse->SetScrollbars(1, 1, 1100, y);
 
