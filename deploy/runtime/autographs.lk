@@ -38,6 +38,10 @@ autographs{ 'PVWatts'} = define()
 {	
 	agraph( 'dc_monthly,ac_monthly', 'Monthly Energy Production', '', 'kWh' ); 
 };
+autographs{ 'PVWatts_battery'} = define() 
+{	
+	agraph( 'dc_monthly,ac_monthly', 'Monthly Energy Production', '', 'kWh' ); 
+};
 
 autographs{ 'Flat Plate PV' } = define()
 {	
