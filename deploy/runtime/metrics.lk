@@ -237,6 +237,7 @@ function biopower_metrics()
 // Technology Metrics
 metrics{ 'Flat Plate PV' } = define() { pv_metrics(); };
 metrics{ 'PVWatts' } = define() {	pvwatts_metrics(); };
+metrics{ 'PVWatts_battery' } = define() {	pvwatts_metrics(); };
 metrics{ 'High-X Concentrating PV' } = define() { generic_hcpv_metrics(); };
 metrics{ 'Physical Trough' } = define() { physical_trough_metrics(); };
 metrics{ 'MSPT' } = define() { MSPT_metrics(); };
