@@ -54,6 +54,15 @@ autographs{ 'Flat Plate PV' } = define()
 
 };
 
+autographs{ 'PV_battery' } = define()
+{	
+	agraph('monthly_dc_net,monthly_ac_net', 'Monthly Array and System Production', '', 'kWh' ); 
+	agraph('annual_poa_shading_loss_percent,annual_poa_soiling_loss_percent,annual_dc_module_loss_percent,annual_dc_mismatch_loss_percent,annual_dc_diodes_loss_percent,annual_dc_wiring_loss_percent,annual_dc_tracking_loss_percent,annual_dc_nameplate_loss_percent,annual_ac_inv_clip_loss_percent,annual_ac_inv_pso_loss_percent,annual_ac_inv_pnt_loss_percent,annual_ac_inv_eff_loss_percent,annual_ac_wiring_loss_percent,annual_ac_transformer_loss_percent,annual_ac_perf_adj_loss_percent', 'Energy Loss', '', '%', 10, false, true, 'right'); 
+
+};
+
+
+
 autographs{ 'Empirical Trough' } = define() 
 {	
 	//agraph( 'monthly_energy', 'Energy', '', 'kWh' );

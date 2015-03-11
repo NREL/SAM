@@ -3,7 +3,8 @@
 // define all the configurations
 addconfig( 'Flat Plate PV', ['Residential', 'Commercial', 'Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'None'] );
 addconfig( 'PVWatts', [ 'Residential', 'Commercial', 'Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'None' ] );
-addconfig( 'PVWatts_battery', [ 'Residential'] );
+addconfig( 'PVWatts_battery', [ 'Residential', 'Commercial'] );
+addconfig( 'PV_battery', [ 'Residential', 'Commercial'] );
 addconfig( 'High-X Concentrating PV', ['Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'None']);
 addconfig( 'Wind Power', [ 'Residential', 'Commercial', 'Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'None'] );
 addconfig( 'Biopower', ['Commercial', 'Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'None']);
@@ -23,7 +24,8 @@ addconfig( 'ISCC', ['Single Owner']);
 
 configopt( 'Flat Plate PV',               { 'long_name'='Photovoltaic (detailed)',                'short_name'='Photovoltaic',     'description'='Photovoltaic system using detailed photovoltaic model with separate module and inverter component models' } );
 configopt( 'PVWatts',                     { 'long_name'='Photovoltaic (PVWatts)',                 'short_name'='PVWatts',          'description'='Photovoltaic system using basic NREL PVWatts V5 algorithm' } );
-configopt( 'PVWatts_battery',           { 'long_name'='PV battery (PVWatts)',                 'short_name'='PVWatts_battery',          'description'='Photovoltaic system using basic NREL PVWatts V5 algorithm' } );
+configopt( 'PVWatts_battery',             { 'long_name'='PV battery (PVWatts)',                 'short_name'='PVWatts_battery',          'description'='Photovoltaic system using basic NREL PVWatts V5 algorithm with grid battery storage' } );
+configopt( 'PV_battery',                  { 'long_name'='PV battery (detailed)',                 'short_name'='PV_battery',          'description'='Photovoltaic system using detailed photovoltaic model with separate module and inverter component models with grid battery storage' } );
 configopt( 'High-X Concentrating PV',     { 'long_name'='High concentration PV',             'short_name'='HCPV',             'description'='Concentrating photovoltaic system with a high concentration photovoltaic module model and separate inverter model' } );
 configopt( 'Wind Power',                  { 'long_name'='Wind',                                   'short_name'='Wind',             'description'='Small or large wind power system' } );
 configopt( 'Biopower',                    { 'long_name'='Biomass combustion',                     'short_name'='Biopower',         'description'='Biomass combustion for electricity generation' } );
@@ -436,6 +438,19 @@ setup_flat_plate_pv_pages();
 addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
 setup_commercial_pages(0,true); //belpe not valid for commercial
 
+setconfig( 'PV_battery', 'Residential' );
+setmodules( ['pvsamv1', 'belpe', /*'battery', */'gridnet', 'utilityrate3b', 'cashloan']);
+setup_flat_plate_pv_pages();
+addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
+setup_residential_pages( LOAD_BELPE, true ); //includes building load calculator
+
+setconfig( 'PV_battery', 'Commercial' );
+setmodules( ['pvsamv1', /*'battery', */'gridnet', 'utilityrate3b', 'cashloan']);
+setup_flat_plate_pv_pages();
+addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
+setup_commercial_pages(0,true); //belpe not valid for commercial
+
+
 setconfig( 'Flat Plate PV', 'Commercial PPA' );	
 setmodules( ['pvsamv1', 'ippppa']);
 setup_flat_plate_pv_pages();
@@ -533,19 +548,28 @@ setup_pvwatts_pages();
 addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
 setup_residential_pages( LOAD_BELPE, true ); //includes building load calculator
 
-
-setconfig( 'PVWatts_battery', 'Residential' );	
-setmodules( ['pvwattsv5', 'belpe', 'gridnet', 'utilityrate3b', 'cashloan']);
-setup_pvwatts_pages();
-addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
-setup_residential_pages( LOAD_BELPE, true ); //includes building load calculator
-
-
 setconfig( 'PVWatts', 'Commercial' );	
 setmodules( ['pvwattsv5',  'utilityrate3', 'cashloan']);
 setup_pvwatts_pages();
 addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
 setup_commercial_pages(0,true); //belpe not valid for commercial
+
+
+
+setconfig( 'PVWatts_battery', 'Residential' );	
+setmodules( ['pvwattsv5', 'belpe',  /*battery, */'gridnet', 'utilityrate3b', 'cashloan']);
+setup_pvwatts_pages();
+addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
+setup_residential_pages( LOAD_BELPE, true ); //includes building load calculator
+
+
+setconfig( 'PVWatts_battery', 'Commercial' );	
+setmodules( ['pvwattsv5', /*battery, */'gridnet', 'utilityrate3b', 'cashloan']);
+setup_pvwatts_pages();
+addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
+setup_commercial_pages(0,true); //belpe not valid for commercial
+
+
 
 setconfig( 'PVWatts', 'Commercial PPA' );	
 setmodules( ['pvwattsv5', 'ippppa']);
