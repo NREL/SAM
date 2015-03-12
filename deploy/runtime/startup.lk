@@ -69,11 +69,17 @@ function setup_elec_load_page( mode ) //i is 1 for technologies that HAVE the bu
 	}
 	else return;
 }
+function setup_battery_pages()
+{
+	addpage( [[ 'Battery Model']], { 'sidebar' = 'Battery Model', 'help'='pvwatts_system_design'} );
+	addpage( [[ 'Storage Dispatch']], { 'sidebar' = 'Storage Dispatch', 'help'='pvwatts_system_design'} );
+}
+
+
 function setup_pvwatts_pages()
 {
 	addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource', 'help'='pv_location_and_resource' } );
 	addpage( [[ 'PVWatts' ]], { 'sidebar'='System Design', 'help'='pvwatts_system_design' } );
-	
 }
 
 function setup_flat_plate_pv_pages()
@@ -439,14 +445,16 @@ addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', '
 setup_commercial_pages(0,true); //belpe not valid for commercial
 
 setconfig( 'PV_battery', 'Residential' );
-setmodules( ['pvsamv1', 'belpe', /*'battery', */'gridnet', 'utilityrate3b', 'cashloan']);
+setmodules( ['pvsamv1', 'belpe', 'battery', 'gridnet', 'utilityrate3b', 'cashloan']);
 setup_flat_plate_pv_pages();
+setup_battery_pages();
 addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
 setup_residential_pages( LOAD_BELPE, true ); //includes building load calculator
 
 setconfig( 'PV_battery', 'Commercial' );
-setmodules( ['pvsamv1', /*'battery', */'gridnet', 'utilityrate3b', 'cashloan']);
+setmodules( ['pvsamv1', 'battery', 'gridnet', 'utilityrate3b', 'cashloan']);
 setup_flat_plate_pv_pages();
+setup_battery_pages();
 addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
 setup_commercial_pages(0,true); //belpe not valid for commercial
 
@@ -557,15 +565,17 @@ setup_commercial_pages(0,true); //belpe not valid for commercial
 
 
 setconfig( 'PVWatts_battery', 'Residential' );	
-setmodules( ['pvwattsv5', 'belpe',  /*battery, */'gridnet', 'utilityrate3b', 'cashloan']);
+setmodules( ['pvwattsv5', 'belpe',  'battery', 'gridnet', 'utilityrate3b', 'cashloan']);
 setup_pvwatts_pages();
+setup_battery_pages();
 addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
 setup_residential_pages( LOAD_BELPE, true ); //includes building load calculator
 
 
 setconfig( 'PVWatts_battery', 'Commercial' );	
-setmodules( ['pvwattsv5', /*battery, */'gridnet', 'utilityrate3b', 'cashloan']);
+setmodules( ['pvwattsv5', 'battery', 'gridnet', 'utilityrate3b', 'cashloan']);
 setup_pvwatts_pages();
+setup_battery_pages();
 addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
 setup_commercial_pages(0,true); //belpe not valid for commercial
 
