@@ -2,7 +2,7 @@
 
 // define all the configurations
 addconfig( 'Flat Plate PV', ['Residential', 'Commercial', 'Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'None'] );
-addconfig( 'PVWatts', [ 'Residential', 'Commercial', 'Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'None' ] );
+addconfig( 'PVWatts', [ 'Residential', 'Commercial', 'Third Party', 'Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'None' ] );
 addconfig( 'PVWatts_battery', [ 'Residential', 'Commercial'] );
 addconfig( 'PV_battery', [ 'Residential', 'Commercial'] );
 addconfig( 'High-X Concentrating PV', ['Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'None']);
@@ -43,6 +43,7 @@ configopt( 'MSLF',        				  { 'long_name'='CSP linear Fresnel molten salt', 
 configopt( 'ISCC',                        { 'long_name'='CSP Integrated Solar Combined Cycle',    'short_name'='Tower (salt-ISCC)', 'description'='A triple pressure NGCC cycle connected to a molten salt power tower solar field/receiver' } );
 
 configopt( 'Residential',                 { 'long_name'='Residential (distributed)',           	  'short_name'='Residential',      'description'='Renewable energy system displaces residential home electric load' } );
+configopt( 'Third Party',                 { 'long_name'='Third Party Ownership',           	      'short_name'='Third Party',      'description'='Renewable energy system owned by a third party displacing electric load' } );
 configopt( 'Commercial',                  { 'long_name'='Commercial (distributed)',        		  'short_name'='Commercial',       'description'='Renewable energy system displaces commercial building electric load' } );
 configopt( 'Commercial PPA',              { 'long_name'='PPA single owner debt fraction',         'short_name'='SO debt fraction', 'description'='Single owner PPA with debt fraction and analysis period IRR, and financial constraints and optimization' } );
 configopt( 'Independent Power Producer',  { 'long_name'='PPA single owner financial constraints', 'short_name'='SO constraints',   'description'='Single owner PPA with debt fraction and analysis period IRR, and financial optimization' } );
@@ -127,6 +128,17 @@ function setup_residential_pages( mode, degradation ) // mode determines whether
            { 'sidebar'='Incentives','help'='incentives' } );
   setup_utility_rate();
   setup_elec_load_page( mode );
+}
+
+function setup_thirdparty_pages() // FOR NOW, THIRD PARTY OWNERSHIP MODEL IS ONLY VALID FOR PVWATTS AND PV DETAILED!!
+{
+  setting( { 'analysis_period_var'='cf_length' } );
+  addpage( [[ 'Financial Degradation']],
+           {  'sidebar'='Degradation','help'='degradation' } );
+  addpage( [[ 'Financial Third Party Ownership']],
+           { 'sidebar'='Financial Parameters', 'help'='fin_thirdparty'} );
+  setup_utility_rate();
+  setup_elec_load_page( LOAD_BELPE ); // BELPE IS VALID FOR BOTH PVWATTS AND PV DETAILED
 }
 
 function setup_commercial_pages( mode, degradation ) // mode determines whether or not the building load calculator is included (see function:setup_elec_load_page)
@@ -560,6 +572,11 @@ setmodules( ['pvwattsv5', 'belpe',  'utilityrate3', 'cashloan']);
 setup_pvwatts_pages();
 addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
 setup_residential_pages( LOAD_BELPE, true ); //includes building load calculator
+
+setconfig( 'PVWatts', 'Third Party' );	
+setmodules( ['pvwattsv5', 'belpe',  'thirdparty']); //	THIS NEEDS TO BE UPDATED WITH THE REAL NAME OF THE THIRD PARTY OWNERSHIP COMPUTE MODULE*****************************************************************************!!!!!!!!!!!!!!!!!!!!!!!!
+setup_pvwatts_pages();
+setup_thirdparty_pages(); //includes building load calculator by default in this function
 
 setconfig( 'PVWatts', 'Commercial' );	
 setmodules( ['pvwattsv5',  'utilityrate3', 'cashloan']);
