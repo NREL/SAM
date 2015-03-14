@@ -76,9 +76,10 @@ void VariableGridData::Init()
 		{
 			wxArrayString as = (*it)->ListAll();
 			for (size_t i = 0; i < as.Count(); i++)
-				if ((!((*it)->Lookup(as[i])->Flags  & VF_CALCULATED)) && 
-					(!((*it)->Lookup(as[i])->Flags  & VF_INDICATOR)) )
-					var_names.insert(as[i]);
+//				if ((!((*it)->Lookup(as[i])->Flags  & VF_CALCULATED)) &&
+//					(!((*it)->Lookup(as[i])->Flags  & VF_INDICATOR)))
+				if (!((*it)->Lookup(as[i])->Flags  & VF_INDICATOR))
+						var_names.insert(as[i]);
 		}
 /*		all
 		for (std::vector<VarTable*>::iterator it = m_var_table_vec.begin(); it != m_var_table_vec.end(); ++it)
