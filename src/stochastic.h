@@ -147,8 +147,12 @@ public:
 	void Simulate();
 
 	void OnSelectFolder(wxCommandEvent &);
+	void OnCheckWeather(wxCommandEvent &);
+	void OnComboWeather(wxCommandEvent &);
 	wxString GetLabelFromVarName(const wxString &var_name);
 	void UpdateWeatherFileList();
+	void UpdateWeatherFileControls();
+	void UpdateWeatherFileCDF();
 
 private:
 	Case *m_case;
@@ -156,6 +160,8 @@ private:
 
 	// weather file folder control - persisted with stochastic_weather_folder=folder name as string.
 	wxTextCtrl *m_folder;
+	wxCheckBox *m_chk_weather_files;
+	wxComboBox *m_cbo_weather_files;
 	wxArrayString m_weather_files;
 	wxString m_weather_folder_varname;
 	wxString m_weather_folder_displayname;

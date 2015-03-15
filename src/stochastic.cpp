@@ -873,7 +873,9 @@ enum {
   ID_btnComputeSamples,
   ID_btnEditInput,
   ID_Simulate,
-  ID_Select_Folder
+  ID_Select_Folder,
+  ID_Check_Weather,
+  ID_Combo_Weather
 };
 
 BEGIN_EVENT_TABLE( StochasticPanel, wxPanel )
@@ -897,6 +899,8 @@ BEGIN_EVENT_TABLE( StochasticPanel, wxPanel )
 	EVT_BUTTON( ID_Simulate, StochasticPanel::OnSimulate )
 
 	EVT_BUTTON(ID_Select_Folder, StochasticPanel::OnSelectFolder)
+	EVT_CHECKBOX(ID_Check_Weather, StochasticPanel::OnCheckWeather)
+	EVT_COMBOBOX(ID_Combo_Weather, StochasticPanel::OnComboWeather)
 END_EVENT_TABLE()
 
 StochasticPanel::StochasticPanel(wxWindow *parent, Case *cc)
@@ -958,12 +962,21 @@ StochasticPanel::StochasticPanel(wxWindow *parent, Case *cc)
 	sizer_corr->Add( new wxButton(szbox->GetStaticBox(), ID_btnRemoveCorr, "Remove", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL|wxALIGN_CENTER_VERTICAL, 2 );	
 	// weather file option
 	wxBoxSizer *sizer_wf = new wxBoxSizer(wxHORIZONTAL);
-	wxStaticText *label = new wxStaticText(this, wxID_ANY, "Select weather file folder:");
-	sizer_wf->Add(label, 0, wxLEFT | wxRIGHT | wxALIGN_CENTER_VERTICAL, 0);
+	m_chk_weather_files = new wxCheckBox(this, ID_Check_Weather, "Enable weather file analysis");
+	sizer_wf->Add(m_chk_weather_files, 0, wxLEFT | wxRIGHT | wxALIGN_CENTER_VERTICAL, 0);
+
+	wxArrayString weather_file_columns;
+	weather_file_columns.Add("DNI");
+	weather_file_columns.Add("GHI");
+	wxString InitialValue = "DNI";
+	m_cbo_weather_files = new wxComboBox(this, ID_Combo_Weather, InitialValue, wxDefaultPosition, wxDefaultSize, weather_file_columns, wxCB_READONLY);
+	sizer_wf->Add(m_cbo_weather_files, 0, wxLEFT | wxRIGHT | wxALIGN_CENTER_VERTICAL, 10);
+
+	wxStaticText *label = new wxStaticText(this, wxID_ANY, "Select folder:");
+	sizer_wf->Add(label, 0,  wxRIGHT | wxALIGN_CENTER_VERTICAL, 2);
 	sizer_wf->Add(m_folder = new wxTextCtrl(this, wxID_ANY), 2, wxALL | wxALIGN_CENTER_VERTICAL, 3);
 	m_folder->SetEditable(false);
 	sizer_wf->Add(new wxButton(this, ID_Select_Folder, "...", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxRIGHT | wxALIGN_CENTER_VERTICAL, 0);
-
 
 
 	wxBoxSizer *sizer_corr_v = new wxBoxSizer( wxVERTICAL );
@@ -1029,6 +1042,64 @@ void StochasticPanel::UpdateWeatherFileList()
 		m_weather_files.Add(wxFileNameFromPath(val_list[j]));
 }
 
+void StochasticPanel::UpdateWeatherFileControls()
+{
+	// find weather file distribution
+	// update check box 
+	// update folder list
+	// update combo box
+	m_weather_files.Clear();
+	wxArrayString val_list;
+	wxDir::GetAllFiles(m_folder->GetValue(), &val_list);
+	for (int j = 0; j < val_list.Count(); j++)
+		m_weather_files.Add(wxFileNameFromPath(val_list[j]));
+}
+
+void StochasticPanel::UpdateWeatherFileCDF()
+{
+	// sort weather file list based on combo box selection
+	// create CDF values as sum value
+	/* for example (from SolarPACES paper)
+	w DISCRETE CUMULATIVE 30 #
+	2.17768e+006 0.0333333 #
+	2.18536e+006 0.0666667 #
+	2.27818e+006 0.1 #
+	2.33181e+006 0.133333 #
+	2.37158e+006 0.166667 #
+	2.45144e+006 0.2 #
+	2.52132e+006 0.233333 #
+	2.52851e+006 0.266667 #
+	2.5429e+006 0.3 #
+	2.5451e+006 0.333333 #
+	2.55828e+006 0.366667 #
+	2.57009e+006 0.4 #
+	2.58152e+006 0.433333 #
+	2.58213e+006 0.466667 #
+	2.62372e+006 0.5 #
+	2.62435e+006 0.533333 #
+	2.63079e+006 0.566667 #
+	2.64441e+006 0.6 #
+	2.64566e+006 0.633333 #
+	2.65612e+006 0.666667 #
+	2.66647e+006 0.7 #
+	2.67841e+006 0.733333 #
+	2.69885e+006 0.766667 #
+	2.70346e+006 0.8 #
+	2.71064e+006 0.833333 #
+	2.71747e+006 0.866667 #
+	2.72253e+006 0.9 #
+	2.74622e+006 0.933333 #
+	2.76209e+006 0.966667 #
+	2.79734e+006 1
+	*/
+	// write out csv file for verification or show to user in window
+	m_weather_files.Clear();
+	wxArrayString val_list;
+	wxDir::GetAllFiles(m_folder->GetValue(), &val_list);
+	for (int j = 0; j < val_list.Count(); j++)
+		m_weather_files.Add(wxFileNameFromPath(val_list[j]));
+}
+
 
 void StochasticPanel::OnSelectFolder(wxCommandEvent &)
 {
@@ -1041,13 +1112,23 @@ void StochasticPanel::OnSelectFolder(wxCommandEvent &)
 	}
 }
 
+void StochasticPanel::OnCheckWeather(wxCommandEvent &)
+{
+	// update input distribution 
+}
+
+void StochasticPanel::OnComboWeather(wxCommandEvent &)
+{
+	// update input distribution
+}
+
 
 wxString StochasticPanel::GetLabelFromVarName(const wxString &var_name)
 {
 	wxString label;
-	if (var_name == m_weather_folder_varname)
-		label = m_weather_folder_displayname;
-	else
+//	if (var_name == m_weather_folder_varname)
+//		label = m_weather_folder_displayname;
+//	else
 		label = m_case->GetConfiguration()->Variables.Label(var_name);
 	return label;
 }
@@ -1089,8 +1170,11 @@ void StochasticPanel::UpdateFromSimInfo()
 		int disttype = atoi(parts[1].c_str());
 		if (disttype < 0) disttype = 0;
 		if (disttype >= LHS_NUMDISTS) disttype = LHS_NUMDISTS - 1;
+		
 		if (item == m_weather_folder_varname)
 		{
+			continue;
+			/*
 			wxArrayString wff = wxStringTokenize(parts[0], "=");
 			if (wff.Count() == 2)
 			{
@@ -1134,9 +1218,11 @@ void StochasticPanel::UpdateFromSimInfo()
 					m_sd.InputDistributions[i]=input_distribution;
 				}
 			}
+			*/
 		}
 		else
 		{
+		
 			item = m_case->GetConfiguration()->Variables.Label(item);
 		}
 		
@@ -1203,8 +1289,8 @@ void StochasticPanel::OnAddInput(wxCommandEvent &evt)
 	ConfigInfo *ci = m_case->GetConfiguration();
 	VarInfoLookup &vil = ci->Variables;
 
-	names.Add(m_weather_folder_varname);
-	labels.Add("User weather file folder/" + m_weather_folder_displayname);
+//	names.Add(m_weather_folder_varname);
+//	labels.Add("User weather file folder/" + m_weather_folder_displayname);
 
 	for (VarInfoLookup::iterator it = vil.begin(); it != vil.end(); ++it)
 	{
@@ -1258,14 +1344,17 @@ void StochasticPanel::OnAddInput(wxCommandEvent &evt)
 				wxString var_name = varlist[i];
 				VarValue *vv=NULL;
 				wxArrayString val_list;
-
+				
 				if (var_name == m_weather_folder_varname)
 				{
+					continue;
+					/*
 					wxString path = m_folder->GetValue();
 					path.Replace(":", ";"); // to store in Input distribution collection without issue with ":" delimiter
 					var_name += "=" + path;
 					UpdateWeatherFileList();
 					val_list = m_weather_files;
+					*/
 				}
 				else
 				{
@@ -1323,7 +1412,7 @@ void StochasticPanel::OnEditInput(wxCommandEvent &evt)
 	wxArrayString val_list;
 	wxString label;
 	wxString value;
-	if (var_name == m_weather_folder_varname)
+/*	if (var_name == m_weather_folder_varname)
 	{
 		wxString path = m_folder->GetValue();
 		wxDir::GetAllFiles(path, &val_list);
@@ -1337,6 +1426,7 @@ void StochasticPanel::OnEditInput(wxCommandEvent &evt)
 	}
 	else
 	{
+	*/
 		VarValue *vptr = m_case->Values().Get(var_name);
 		if (!vptr) return;
 		value = wxString::Format("%g", vptr->Value());
@@ -1345,7 +1435,7 @@ void StochasticPanel::OnEditInput(wxCommandEvent &evt)
 			return;
 		val_list = vi->IndexLabels;
 		label = ci->Variables.Label(var_name);
-	}
+//	}
 	InputDistDialog dlg(this, "Edit " + label + " Distribution");
 	if (val_list.Count() > 0) // list value
 	{
@@ -1449,14 +1539,15 @@ void StochasticPanel::OnAddCorr(wxCommandEvent &evt)
 	for (int i=0;i<m_sd.InputDistributions.Count();i++)
 	{
 		wxString var_name = GetVarNameFromInputDistribution(m_sd.InputDistributions[i]);
+		if (var_name == m_weather_folder_varname) continue;
 		names.Add( var_name );
 
-		if (var_name == m_weather_folder_varname)
+/*		if (var_name == m_weather_folder_varname)
 		{
 			labels.Add("User weather file folder/" + m_weather_folder_displayname);
 		}
 		else
-		{
+		{*/
 			VarInfo *v = m_case->GetConfiguration()->Variables.Lookup(var_name);
 			if (!v)
 			{
@@ -1467,7 +1558,7 @@ void StochasticPanel::OnAddCorr(wxCommandEvent &evt)
 				labels.Add(v->Group + "/" + v->Label);
 			else
 				labels.Add(v->Label);
-		}
+//		}
 	}
 
 	wxArrayString list;
@@ -1551,9 +1642,9 @@ void StochasticPanel::OnComputeSamples(wxCommandEvent &evt)
 	{
 		wxString item = GetVarNameFromInputDistribution(m_sd.InputDistributions[i]);
 		wxString label;
-		if (item == m_weather_folder_varname)
+/*		if (item == m_weather_folder_varname)
 			label = m_weather_folder_displayname;
-		else
+		else*/
 			label = m_case->GetConfiguration()->Variables.Label(item);
 
 		collabels.Add(label);
