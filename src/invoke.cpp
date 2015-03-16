@@ -195,8 +195,9 @@ static void fcall_curl( lk::invoke_t &cxt )
 		curl.SetPostData( cxt.arg(1).as_string() );
 	
 	wxString url(cxt.arg(0).as_string());
-	url.Replace( "<SAMAPIKEY:WIND_BARRIERS>", "bd36882a2551ce65f1326626dcd110785ae967e2" );
-	url.Replace( "<SAMAPIKEY:ENERGY_CROP>",   "bb4a09f7833f115ccba081b4a9e028ca904643df" );
+	url.Replace( "<SAMAPIKEY>", "bd36882a2551ce65f1326626dcd110785ae967e2" );
+	//	url.Replace( "<SAMAPIKEY:WIND_BARRIERS>", "bd36882a2551ce65f1326626dcd110785ae967e2" );
+	//	url.Replace( "<SAMAPIKEY:ENERGY_CROP>",   "bb4a09f7833f115ccba081b4a9e028ca904643df" );
 
 	wxLogStatus( "curl: " + url );
 
