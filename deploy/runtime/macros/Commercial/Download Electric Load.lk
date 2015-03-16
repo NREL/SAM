@@ -62,7 +62,7 @@ if ( lat == null || lon == null ) {
 sector_type = "COMMERCIAL_LOAD_DATA";
 
 //USE NREL DEVELOPER TO TRANSLATE LAT AND LON TO TMY3 ID
-url = "http://developer.nrel.gov/api/solar/data_query/v1.json?api_key=<SAMAPIKEY:WIND_BARRIERS>&lat=" + lat + "&lon=" + lon;
+url = "http://developer.nrel.gov/api/solar/data_query/v1.json?api_key=<SAMAPIKEY>&lat=" + lat + "&lon=" + lon;
 json = curl(url);
 results = jsonparse(json);
 
