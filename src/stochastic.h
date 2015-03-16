@@ -153,6 +153,10 @@ public:
 	void UpdateWeatherFileList();
 	void UpdateWeatherFileControls();
 	void UpdateWeatherFileCDF();
+	int GetWeatherFileDistributionIndex();
+	void UpdateWeatherFileInputDistribution();
+	void UpdateWeatherFileSums();
+	void UpdateWeatherFileSort();
 
 private:
 	Case *m_case;
@@ -165,6 +169,8 @@ private:
 	wxArrayString m_weather_files;
 	wxString m_weather_folder_varname;
 	wxString m_weather_folder_displayname;
+	std::vector<size_t> m_weather_file_sorted_index;
+	std::vector<double> m_weather_file_sums;
 
 	wxListBox *m_corrList;
 	wxListBox *m_inputList;
