@@ -158,7 +158,6 @@ public:
 	void UpdateWeatherFileSums();
 	void UpdateWeatherFileSort();
 	bool GetWeatherFileForSum(const double sum, wxString *wf);
-	bool IsWeatherFileEnabled();
 
 private:
 	Case *m_case;
