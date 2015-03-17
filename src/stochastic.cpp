@@ -1061,13 +1061,13 @@ int StochasticPanel::GetWeatherFileDistributionIndex()
 void StochasticPanel::UpdateWeatherFileControls()
 {
 	// find weather file distribution
-	// format varname=folder=combo index=checkbox state 0=unchecked and 1=checked
+	// format varname=folder=combo index
 	int ndx = GetWeatherFileDistributionIndex();
 	if (ndx >= 0)
 	{
 		wxArrayString parts = wxStringTokenize(m_sd.InputDistributions[ndx], ":");
 		wxArrayString control_values = wxStringTokenize(parts[0], "=");
-		if (control_values.Count() != 4)
+		if (control_values.Count() != 3)
 		{
 			m_sd.InputDistributions.RemoveAt(ndx);
 			return;
@@ -1078,8 +1078,7 @@ void StochasticPanel::UpdateWeatherFileControls()
 		// update combo box
 		m_cbo_weather_files->SetSelection(wxAtoi(control_values[2]));
 		// update check box
-		int checked = wxAtoi(control_values[3]);
-		m_chk_weather_files->SetValue(checked == 1);
+		m_chk_weather_files->SetValue(true);
 	}
 	else
 	{
@@ -1096,31 +1095,39 @@ void StochasticPanel::UpdateWeatherFileControls()
 void StochasticPanel::UpdateWeatherFileInputDistribution()
 {
 	// find weather file distribution
-	// format varname=folder=combo index=checkbox state 0=unchecked and 1=checked
+	// format varname=folder=combo index
 	int ndx = GetWeatherFileDistributionIndex();
 	wxString fld = m_folder->GetValue();
 	fld.Replace(":", ";");
-	int checked = m_chk_weather_files->GetValue() ? 1 : 0;
+	bool checked = m_chk_weather_files->GetValue();
 	wxString input_distribution = m_weather_folder_varname + "=" + fld + "="
-		+ wxString::Format("%d=%d", m_cbo_weather_files->GetSelection(), checked);
+		+ wxString::Format("%d", m_cbo_weather_files->GetSelection());
 
 	if (ndx >= 0)
 	{
-		wxArrayString parts = wxStringTokenize(m_sd.InputDistributions[ndx], ":");
-		wxArrayString control_values = wxStringTokenize(parts[0], "=");
-		if (control_values.Count() != 4)
+		if (checked)
 		{
-			m_sd.InputDistributions.RemoveAt(ndx);
-			return;
+			wxArrayString parts = wxStringTokenize(m_sd.InputDistributions[ndx], ":");
+			wxArrayString control_values = wxStringTokenize(parts[0], "=");
+			if (control_values.Count() != 3)
+			{
+				m_sd.InputDistributions.RemoveAt(ndx);
+				return;
+			}
+			parts[0] = input_distribution;
+			m_sd.InputDistributions[ndx] = parts[0];
+			for (int i = 1; i < parts.Count(); i++)
+				m_sd.InputDistributions[ndx] += ":" + parts[i];
 		}
-		parts[0] = input_distribution;
-		m_sd.InputDistributions[ndx] = parts[0];
-		for (int i = 1; i < parts.Count(); i++)
-			m_sd.InputDistributions[ndx] += ":" + parts[i];
+		else 
+		{ // not enabled so remove for later vector processing.
+			m_sd.InputDistributions.RemoveAt(ndx);
+		}
 	}
 	else
 	{
-		m_sd.InputDistributions.Add(input_distribution);
+		if (checked)
+			m_sd.InputDistributions.Add(input_distribution);
 	}
 }
 
@@ -1185,19 +1192,6 @@ bool StochasticPanel::GetWeatherFileForSum(const double sum, wxString *wf)
 }
 
 
-bool StochasticPanel::IsWeatherFileEnabled()
-{
-	bool enabled = false;
-	int ndx = GetWeatherFileDistributionIndex();
-	if ((m_weather_files.Count() == m_weather_file_sums.size()) && (m_weather_files.Count() > 0) && (ndx > -1))
-	{
-		wxArrayString parts = wxStringTokenize(m_sd.InputDistributions[ndx], ":");
-		wxArrayString control_values = wxStringTokenize(parts[0], "=");
-		if (control_values.Count() == 4)
-			enabled = (wxAtoi(control_values[3])==1);
-	}
-	return enabled;
-}
 
 
 void StochasticPanel::UpdateWeatherFileSums()
@@ -1574,7 +1568,8 @@ void StochasticPanel::OnAddInput(wxCommandEvent &evt)
 		// remove any input variables in StochasticData that are no longer in list
 		while (i < (int)m_sd.InputDistributions.Count())
 		{
-			if (varlist.Index(GetVarNameFromInputDistribution(m_sd.InputDistributions[i])) < 0) 
+			wxString var_name = GetVarNameFromInputDistribution(m_sd.InputDistributions[i]);
+			if ((varlist.Index(var_name) < 0) && (var_name != m_weather_folder_varname))
 					m_sd.InputDistributions.RemoveAt(i);// remove, do not increment i
 			else
 				i++;
@@ -1877,7 +1872,7 @@ void StochasticPanel::OnRemoveCorr(wxCommandEvent &evt)
 
 void StochasticPanel::OnComputeSamples(wxCommandEvent &evt)
 {
-	if (IsWeatherFileEnabled())
+	if (m_chk_weather_files->GetValue())
 		UpdateWeatherFileCDF();
 
 	wxArrayString errors;
@@ -1894,8 +1889,6 @@ void StochasticPanel::OnComputeSamples(wxCommandEvent &evt)
 	{
 		wxString item = GetVarNameFromInputDistribution(m_sd.InputDistributions[i]);
 		wxString label = GetLabelFromVarName(item);
-		if ((item == m_weather_folder_varname) && (!IsWeatherFileEnabled()))
-			continue;
 		collabels.Add(label);
 	}
 	
