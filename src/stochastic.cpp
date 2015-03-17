@@ -1151,14 +1151,54 @@ void StochasticPanel::UpdateWeatherFileSort()
 		m_weather_files[i] = m_weather_files[smallest];
 		m_weather_files[smallest] = s_temp;
 	}
-
+	/*
 	wxString sums;
 	for (size_t i = 0; i < m_weather_files.Count(); i++)
 		sums += m_weather_files[i] + ", " 
 		+ wxString::Format("=%lg\n", m_weather_file_sums[i]);
 	wxMessageBox("Sorted\n" + sums);
-
+	*/
 }
+
+bool StochasticPanel::GetWeatherFileForSum(const double sum, wxString *wf)
+{
+	bool found = false;
+	if ((m_weather_files.Count() == m_weather_file_sums.size()) && (m_weather_files.Count() > 0))
+	{
+		// find nearest sum and return full weather file path for simulation
+		double mindist = 1e99;
+		int	minidx = -1;
+		for (size_t i = 0; i < m_weather_file_sums.size(); i++)
+		{
+			double d = fabs(m_weather_file_sums[i] - sum);
+			if (d < mindist)
+			{
+				mindist = d;
+				minidx = i;
+			}
+		}
+		// can put "closeness" criteria here
+		found = (minidx > -1);
+		*wf = m_folder->GetValue() + "/" + m_weather_files[minidx];
+	}
+	return found;
+}
+
+
+bool StochasticPanel::IsWeatherFileEnabled()
+{
+	bool enabled = false;
+	int ndx = GetWeatherFileDistributionIndex();
+	if ((m_weather_files.Count() == m_weather_file_sums.size()) && (m_weather_files.Count() > 0) && (ndx > -1))
+	{
+		wxArrayString parts = wxStringTokenize(m_sd.InputDistributions[ndx], ":");
+		wxArrayString control_values = wxStringTokenize(parts[0], "=");
+		if (control_values.Count() == 4)
+			enabled = (wxAtoi(control_values[3])==1);
+	}
+	return enabled;
+}
+
 
 void StochasticPanel::UpdateWeatherFileSums()
 {
@@ -1206,6 +1246,7 @@ void StochasticPanel::UpdateWeatherFileSums()
 		m_weather_file_sums.clear();
 		wxMessageBox("Error with annual " + selection);
 	}
+	/*
 	else
 	{
 		wxString sums;
@@ -1214,12 +1255,14 @@ void StochasticPanel::UpdateWeatherFileSums()
 			+ wxString::Format("=%lg\n", m_weather_file_sums[i]);
 		wxMessageBox("Success\n" + sums);
 	}
-
+	*/
 }
 
 void StochasticPanel::UpdateWeatherFileCDF()
 {
-		// sort weather file list based on combo box selection
+	// sort weather file list based on combo box selection
+	UpdateWeatherFileSums();
+	UpdateWeatherFileSort();
 	// create CDF values as sum value
 	/* for example (from SolarPACES paper)
 	w DISCRETE CUMULATIVE 30 #
@@ -1254,12 +1297,54 @@ void StochasticPanel::UpdateWeatherFileCDF()
 	2.76209e+006 0.966667 #
 	2.79734e+006 1
 	*/
+	int ndx = GetWeatherFileDistributionIndex();
+	if (ndx < 0)
+	{
+		wxMessageBox("Error retrieving weather file intput distribution");
+		return;
+	}
+	wxArrayString parts = wxStringTokenize(m_sd.InputDistributions[ndx], ":");
+	if (parts.Count() < 1)
+	{
+		wxMessageBox("Error with weather file intput distribution count");
+		return;
+	}
+	wxString input_distribution = parts[0];
+	// set distribution type and number of value,cdf pairs
+	int dist_type = LHS_USERCDF;
+	int N = (int)m_weather_file_sums.size();
+	input_distribution += wxString::Format(":%d:%d", dist_type, N);
+	// set value,cdf pairs
+	// parts[0]=varname
+	// parts[1]=distribution type
+	// parts[2]=number of element for user cdf N
+	// parts[3], parts[4] are index=cdfvalue pairs
+	// up to parts[3+2N-2], parts[3+2N-1]
+	// repopulate weather file list and check count
+	// check distribution and if count does not match - repopulate uniformly
+	//	if ((N>0) && (parts.Count() != (3 + 2 * N)))
+	//	{
+	for (int j = 0; j<N; j++)
+	{
+		double cdf = (j + 1);
+		cdf /= (double)N;
+		if (cdf > 1.0) cdf = 1.0;
+		input_distribution += wxString::Format(":%lg:%lg", m_weather_file_sums[j], cdf);
+	}
+	m_sd.InputDistributions[ndx] = input_distribution;
+	//	}
+	// optional
 	// write out csv file for verification or show to user in window
-	m_weather_files.Clear();
-	wxArrayString val_list;
-	wxDir::GetAllFiles(m_folder->GetValue(), &val_list);
-	for (int j = 0; j < val_list.Count(); j++)
-		m_weather_files.Add(wxFileNameFromPath(val_list[j]));
+	wxString cdf = "Weather file sum cdf\n";
+	parts = wxStringTokenize(m_sd.InputDistributions[ndx], ":");
+	if (parts.Count() > 3)
+	{
+		for (int j = 3; j < parts.Count(); j = j + 2)
+		{
+			cdf += parts[j] + "  " + parts[j + 1] + "\n";
+		}
+		wxMessageBox(cdf);
+	}
 }
 
 
@@ -1269,7 +1354,6 @@ void StochasticPanel::OnSelectFolder(wxCommandEvent &)
 	if (!dir.IsEmpty())
 	{
 		m_folder->ChangeValue(dir);
-		UpdateWeatherFileList();
 		UpdateWeatherFileInputDistribution();
 	}
 }
@@ -1291,9 +1375,9 @@ void StochasticPanel::OnComboWeather(wxCommandEvent &)
 wxString StochasticPanel::GetLabelFromVarName(const wxString &var_name)
 {
 	wxString label;
-//	if (var_name == m_weather_folder_varname)
-//		label = m_weather_folder_displayname;
-//	else
+	if (var_name == m_weather_folder_varname)
+		label = m_weather_folder_displayname;
+	else
 		label = m_case->GetConfiguration()->Variables.Label(var_name);
 	return label;
 }
@@ -1793,9 +1877,8 @@ void StochasticPanel::OnRemoveCorr(wxCommandEvent &evt)
 
 void StochasticPanel::OnComputeSamples(wxCommandEvent &evt)
 {
-	UpdateWeatherFileSums();
-	UpdateWeatherFileSort();
-	return;
+	if (IsWeatherFileEnabled())
+		UpdateWeatherFileCDF();
 
 	wxArrayString errors;
 	matrix_t<double> table;
@@ -1810,12 +1893,9 @@ void StochasticPanel::OnComputeSamples(wxCommandEvent &evt)
 	for (int i = 0; i < m_sd.InputDistributions.Count(); i++)
 	{
 		wxString item = GetVarNameFromInputDistribution(m_sd.InputDistributions[i]);
-		wxString label;
-/*		if (item == m_weather_folder_varname)
-			label = m_weather_folder_displayname;
-		else*/
-			label = m_case->GetConfiguration()->Variables.Label(item);
-
+		wxString label = GetLabelFromVarName(item);
+		if ((item == m_weather_folder_varname) && (!IsWeatherFileEnabled()))
+			continue;
 		collabels.Add(label);
 	}
 	
@@ -1837,7 +1917,11 @@ void StochasticPanel::OnComputeSamples(wxCommandEvent &evt)
 			wxString item = GetVarNameFromInputDistribution(parts[0]);
 			wxArrayString values;
 			if (item == m_weather_folder_varname)
-				values = m_weather_files;
+			{
+				//values = m_weather_files;
+				for (size_t i = 0; i < table.nrows(); i++)
+					grid->SetCellValue(i, j, wxString::Format("%lg", table(i, j)));
+			}
 			else
 			{
 				VarInfo *vi = m_case->GetConfiguration()->Variables.Lookup(item);
@@ -1882,6 +1966,8 @@ void StochasticPanel::Simulate()
 	wxArrayString errors;
 	matrix_t<double> input_data;
 
+	if (m_chk_weather_files->GetValue())
+		UpdateWeatherFileCDF();
 
 	if (!ComputeLHSInputVectors(m_sd, input_data, &errors))
 		{
@@ -1928,6 +2014,8 @@ void StochasticPanel::Simulate()
 
 	int count_sims = 1;
 
+
+
 	for (size_t i = 0; i < m_sd.N; i++)
 	{
 		Simulation *s = new Simulation(m_case, wxString::Format("Stochastic #%d", (int)(i + 1)));
@@ -1939,14 +2027,18 @@ void StochasticPanel::Simulate()
 
 			if (iname == m_weather_folder_varname)
 			{
-				int ndx = (int)input_data(i, j);
-				if ((ndx < 0) || (ndx >= m_weather_files.Count()))
+				// find nearest weather file to input vector sum value
+//				int ndx = (int)input_data(i, j);
+//				if ((ndx < 0) || (ndx >= m_weather_files.Count()))
+//					continue;
+//				wxString weatherFile = m_folder->GetValue() + "/" + m_weather_files[ndx];
+				wxString weather_file;
+				if (!GetWeatherFileForSum(input_data(i, j), &weather_file))
 					continue;
-				wxString weatherFile = m_folder->GetValue() + "/" + m_weather_files[ndx];
 				s->Override("use_specific_weather_file", VarValue(true));
-				s->Override("user_specified_weather_file", VarValue(weatherFile));
+				s->Override("user_specified_weather_file", VarValue(weather_file));
 				s->Override("use_specific_wf_wind", VarValue(true));
-				s->Override("user_specified_wf_wind", VarValue(weatherFile));
+				s->Override("user_specified_wf_wind", VarValue(weather_file));
 			}
 			else
 				s->Override(iname, VarValue((float)input_data(i, j)));
