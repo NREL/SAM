@@ -149,6 +149,8 @@ public:
 	void OnSelectFolder(wxCommandEvent &);
 	void OnCheckWeather(wxCommandEvent &);
 	void OnComboWeather(wxCommandEvent &);
+	void OnShowWeatherCDF(wxCommandEvent &);
+
 	wxString GetLabelFromVarName(const wxString &var_name);
 	void UpdateWeatherFileList();
 	void UpdateWeatherFileControls();
@@ -158,6 +160,7 @@ public:
 	void UpdateWeatherFileSums();
 	void UpdateWeatherFileSort();
 	bool GetWeatherFileForSum(const double sum, wxString *wf);
+	int GetInputDistributionIndex(int idx);
 
 private:
 	Case *m_case;
