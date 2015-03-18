@@ -76,7 +76,7 @@ function setup_battery_pages()
 				'Battery Lifetime Rainflow',
 			   'Battery Thermal',
 			   'Battery Capacity KiBam',
-				'Battery Capacity LiIon']], 
+				'Battery Lithium Ion']], 
 			  { 'sidebar' = 'Battery Model', 'help'='pvwatts_system_design'} );
 	addpage( [['Battery Dispatch']], {'sidebar'='Battery Dispatch'});
 }
