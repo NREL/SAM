@@ -72,7 +72,8 @@ function setup_elec_load_page( mode ) //i is 1 for technologies that HAVE the bu
 }
 function setup_battery_pages()
 {
-	addpage( [['Battery Lifetime Rainflow',
+	addpage( [[ 'Battery Non-Chemistry Specific',
+				'Battery Lifetime Rainflow',
 			   'Battery Thermal',
 			   'Battery Capacity KiBam',
 				'Battery Capacity LiIon']], 
