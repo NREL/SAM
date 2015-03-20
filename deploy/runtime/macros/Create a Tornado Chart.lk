@@ -23,7 +23,7 @@ In the popup dialog, you may enter:
 </ol>
 @*/
 // Macro user interface widgets
-//@ name=inputs;type=inputs;label=Input variables\nto consider:;only=numbers;meta=true;prompt=Specify custom variation for input (percentage, absolute, or independent up/down values ).\n\nExamples: 4.5%    0.05   1.2,1.7 
+//@ name=inputs;type=inputs;label=Input variables\nto consider:;meta=true;prompt=Specify custom variation for input (percentage, absolute, or independent up/down values ).\n\nExamples: 4.5%    0.05   1.2,1.7 
 //@ name=output;type=svoutput;label=Output metric:
 //@ name=percent;type=number;label=% adjustment:;value=10
 //@ show_save_load_buttons=true
@@ -59,12 +59,31 @@ baseoutput = get(outvar);
 for( i=0;i<#vars;i++ )
 {
 	var = vars[i][0];
+	
+	
+	vi = varinfo( var );
+
+	L = vi.label;
+	
 	updown = vars[i][1];
 	
 	baseval = get( var );
-	vi = varinfo( var );
 	
-	L = vi.label;
+	type = typeof(baseval);
+	arrconv = false;
+	if(type == 'array'
+		&& #baseval == 1) {
+		arrconv = true;
+		baseval = to_real( baseval[0] );
+	}
+	elseif( type == 'number') {
+		baseval = to_real(baseval);
+	}
+	else
+		{
+			msgbox('Error with input variable: ' + L + '\n\nMust be a number.');
+		}
+	
 	
 	if ( strlen(vi.units) > 0 ) L = L + ' (' + vi.units + ')';
 	
@@ -109,18 +128,19 @@ for( i=0;i<#vars;i++ )
 	labels[i][1] = L;
 	
 	outln('Considering variable: ' + vi.label + '...');
-	set( var, val_dn );
+	
+	set( var, arrconv ? [val_dn] : val_dn );
 	simulate();
 	output_dn[i] = get(outvar);
 
 	outln( '\t' + vi.label + '=' + val_dn  + ", " + outlabel + "=" + output_dn[i] );
 	
-	set( var,  val_up );
+	set( var,  arrconv ? [val_up] : val_up );
 	simulate();
 	output_up[i] = get(outvar);
 	outln( '\t' + vi.label + '=' + val_up  + ", " + outlabel + "=" + output_up[i] );
 	
-	set( var, baseval ); // return to base case input value	
+	set( var, arrconv ? [baseval] : baseval ); // return to base case input value	
 	
 	// calculate average absolute percent changes
 	dnpc = (abs(output_dn[i]-baseoutput))/baseoutput;
