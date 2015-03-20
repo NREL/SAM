@@ -1,5 +1,5 @@
-Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
-TMY3,723656,Sata Fe County Municipal Ap,NM,USA,35.617000,-106.083000,-7,1934
+Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation,,,,,
+TMY3,723656,Santa Fe County Municipal Ap,NM,USA,35.617,-106.083,-7,1934,,,,,
 Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
 2002,1,1,0,0,0,0,-4,-5,92,802,2.4,110,0.19
 2002,1,1,1,0,0,0,-4,-5,92,802,2.5,100,0.19
