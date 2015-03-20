@@ -1,0 +1,77 @@
+/*  ********************************************************
+	This script helps merge new modules in a CEC update
+	into the SAM library.
+	
+	Instructions:
+	
+	1.  Go to the CEC NSHP program website: 
+		http://www.gosolarcalifornia.org/tools/nshpcalculator/download_calculator.php
+		
+	2.  Download the newest Module/Inverter update for CECPV Calculator Version 5.0
+	
+		for the January 16, 2015 update, this was the file:
+		http://www.gosolarcalifornia.org/tools/nshpcalculator/archive5-0/Mod5-0e-Inv5-0e.zip
+		
+	3.  Unzip the file, and extract PVModules.lkt
+	4.  Start the Engineering Equation Solver (EES) program
+	5.  From the 'Tables' menu, select 'Open Lookup Table', and open the PVModules.lkt file
+	6.  From the 'Edit' menu, click 'Select All'
+	7.  From the 'Edit' menu, click 'Copy Table with Headers'
+	8.  Start Microsoft Excel
+	9.  Highlight the first cell, and click Paste
+	10. Delete column D, labeled 'Time'
+	11. Delete column W, labeled 'Sort Order'
+	12. Save the file as ceclatest.csv on your disk in CSV format.  
+		This is the file to select when prompted by the script.
+	
+	
+*/
+
+
+
+if (!yesno( 'CEC module database merge\n\nThis script assumes you have downloaded the CEC module database file from'
+ + ' the CEC website, opened the LKT file with EES, and copied the data in to Excel and '
+ + ' created a CSV version.  For instructions, see the comments in the script.\n\nAre you ready to continue?' )) exit;
+
+file1 = choose_file('', 'Select current SAM CEC module database library file', 'CSV Files|*.csv');
+if ( file1 == '' ) exit;
+file2 = choose_file('', 'Select newest LKT-converted CEC module database file', 'CSV Files|*.csv');
+if ( file2 == '' ) exit;
+
+outln('Loading module databases...');
+db1 = csvread( file1 );
+outln( 'Number of modules in current SAM DB: ' + (#db1-3) );
+db2 = csvread( file2, {'skip'=2} );
+outln( 'Number of modules in newest CEC DB: ' + #db2 );
+
+// catalogue current SAM database
+outln('Cataloguing SAM database into internal lookup table...');
+C = {};
+for( i=3;i<#db1;i++ )
+	C{db1[i][0]} = db1[i];
+
+nadded = 0;
+for( i=0;i<#db2;i++ )
+{
+	name = db2[i][0];
+	if ( !(C ?@ name) )
+	{
+		outln( 'adding ' + name);
+		//outln( '     ' + db2[i] );
+		db1[#db1] = db2[i];
+		nadded++;
+	}
+}
+
+outln( nadded + ' modules added to the SAM database' );
+outln( 'new size is ' + #db1 );
+
+
+file3 = path_only(file1) + '/CEC Modules Updated.csv';
+csvwrite( file3, db1 );
+msgbox('Wrote updated module database file:\n\n' + file3 + '\n\n'
++ 'Please open in Excel, verify, and sort by module name (keep first 3 lines unchanged)');
+
+
+
+
