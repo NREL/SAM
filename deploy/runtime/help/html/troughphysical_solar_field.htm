@@ -73,7 +73,9 @@
 <h3 class="p_Heading3_atocs_" style="border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Heat Transfer Fluid</span></h3>
 <p class="p_VariableName"><span class="f_VariableName">Field HTF fluid</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The heat transfer fluid (HTF) used in the heat collection elements and headers of the solar field. SAM includes the following options in the HTF library: Solar salt, Caloria, Hitec XL, Therminol VP-1, Hitec salt, Dowtherm Q, Dowtherm RP, Therminol 59, and Therminol 66. You can also define your own HTF using the user-defined HTF fluid option.</span></p>
-<p class="p_Note"><span class="f_CHNote">Note.</span><span class="f_Note"> During the simulation, SAM counts the number of instances that the HTF temperature falls outside of the operating temperature limits in the table below. If the number of instances exceeds 50, it displays a simulation <a href="simulation_messages.htm" class="topiclink">warning</a> with the HTF temperature and time step number for the 50th instance.</span></p>
+<p class="p_Note"><span class="f_CHNote">Note.</span><span class="f_Note"> During the simulation, SAM counts the number of instances that the HTF temperature falls outside of the operating temperature limits in the table below. If the number of instances exceeds 50, it displays a simulation <a href="simulation_messages.htm" class="topiclink">message</a> with the HTF temperature and time step number for the 50th instance.</span><br />
+<span class="f_Note">&nbsp;</span><br />
+<span class="f_Note">If you define a custom fluid, SAM disables the minimum and maximum operating temperature variables and displays zero because it does not have information about the operating limits for the fluid you defined. You can check the time series temperature data in the results to ensure that they do not exceed the limits for your custom fluid.</span></p>
 <p class="p_TitleTable"><span class="f_TitleTable">Heat transfer fluids on the Field HTF Fluid list.</span></p>
 <div style="text-align: center; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 12px 0px;"><table id="tbl_HeatTransferFluidProperties" class="DefaultNoBorder" style="width:100%; border:none; border-spacing:0px;">
 <tr style="text-align:left;vertical-align:bottom;">
@@ -235,6 +237,11 @@
 <p class="p_VariableName"><span class="f_VariableName">Field HTF max operating temp (ºC)</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The minimum HTF operating temperature recommended by the HTF manufacturer.</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">Operation at temperatures above this value may result in degradation of the HTF and be unsafe. To avoid this, you may want to include a safety margin and use a maximum operating temperature value slightly lower than the recommended value.</span></p>
+<p class="p_Note"><span class="f_CHNote">Notes.</span><span class="f_Note"> </span><br />
+<span class="f_Note">&nbsp;</span><br />
+<span class="f_Note">SAM displays the operating temperature limits for your reference so you can compare them to the field temperatures reported in the results to ensure that they do not exceed the limits. SAM does not adjust the system's performance to avoid exceeding these operating limits.</span><br />
+<span class="f_Note">&nbsp;</span><br />
+<span class="f_Note">SAM only displays these limits for fluids that are in SAM's library. If you use a custom HTF instead of one from the SAM library, SAM disables the HTF operating temperature limits. In this case, you should use data from the fluid manufacturer specifications.</span></p>
 <p class="p_VariableName"><span class="f_VariableName">Design loop inlet temp (ºC)</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The temperature of HTF at the loop inlet under design conditions. The actual temperature during operation may differ from this value. SAM sets the power cycle's design outlet temperature equal to this value.</span></p>
 <p class="p_VariableName"><span class="f_VariableName">Design loop outlet temp (ºC)</span></p>
