@@ -934,9 +934,10 @@ public:
 		szh_top2->AddStretchSpacer();
 	
 		wxBoxSizer *szv_main = new wxBoxSizer(wxVERTICAL);
-		szv_main->Add(szh_top1, 0, wxALL|wxEXPAND, 4);
+		// reverse order per Paul email 2/10/15
 		szv_main->Add(szh_top2, 0, wxALL|wxEXPAND, 4);	
-		szv_main->Add(Grid, 1, wxALL|wxEXPAND, 4);
+		szv_main->Add(szh_top1, 0, wxALL | wxEXPAND, 4);
+		szv_main->Add(Grid, 1, wxALL | wxEXPAND, 4);
 		Description = 0;
 		if ( !desc.IsEmpty() )
 		{
