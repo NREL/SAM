@@ -1,7 +1,7 @@
 // SAM startup script.
 
 // define all the configurations
-addconfig( 'Flat Plate PV', ['Residential', 'Commercial', 'Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'None'] );
+addconfig( 'Flat Plate PV', ['Residential', 'Commercial', 'Third Party', 'Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'None'] );
 addconfig( 'PVWatts', [ 'Residential', 'Commercial', 'Third Party', 'Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'None' ] );
 addconfig( 'PVWatts_battery', [ 'Residential', 'Commercial'] );
 addconfig( 'PV_battery', [ 'Residential', 'Commercial'] );
@@ -454,6 +454,12 @@ setup_flat_plate_pv_pages();
 addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
 setup_residential_pages( LOAD_BELPE, true ); //includes building load calculator
 
+setconfig( 'Flat Plate PV', 'Third Party' );
+setmodules( ['pvsamv1', 'belpe', 'utilityrate3', 'thirdpartyownership']);
+setup_flat_plate_pv_pages();
+setup_thirdparty_pages(); //includes building load calculator by default in this function
+
+
 setconfig( 'Flat Plate PV', 'Commercial' );
 setmodules( ['pvsamv1', 'utilityrate3', 'cashloan']);
 setup_flat_plate_pv_pages();
@@ -573,7 +579,7 @@ addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', '
 setup_residential_pages( LOAD_BELPE, true ); //includes building load calculator
 
 setconfig( 'PVWatts', 'Third Party' );	
-setmodules( ['pvwattsv5', 'belpe',  'thirdparty']); //	THIS NEEDS TO BE UPDATED WITH THE REAL NAME OF THE THIRD PARTY OWNERSHIP COMPUTE MODULE*****************************************************************************!!!!!!!!!!!!!!!!!!!!!!!!
+setmodules( ['pvwattsv5', 'belpe', 'utilityrate3', 'thirdpartyownership']);
 setup_pvwatts_pages();
 setup_thirdparty_pages(); //includes building load calculator by default in this function
 
