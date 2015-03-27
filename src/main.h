@@ -272,6 +272,8 @@ public:
 	virtual void OnFatalException();
 
 	static void Restart();
+	static wxString ReadProxyFile();
+	static bool WriteProxyFile( const wxString & );
 	static wxString WebApi( const wxString &name );
 	static wxString GetAppPath();
 	static wxString GetRuntimePath();
