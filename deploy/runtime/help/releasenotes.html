@@ -17,22 +17,61 @@
       p,li {font-family: Segoe UI,sans-serif;
          font-size: 11pt;
          margin-left: 20px;
-         margin-right: 20px;}
+         margin-right: 20px;} 
+	  	 
 </style>
   </head>
   <body>
-    <p style="font-family:Segoe UI,sans-serif;font-size:20pt;text-align:center;color:#0072C6;">System Advisor Model (SAM) Release
-    Notes</p>
+      <p style="font-family:Segoe UI,sans-serif;font-size:20pt;text-align:center;color:#0072C6;">System Advisor Model (SAM) Release Notes</p>
+<h1>Version 2015.3.30 March 2015</h1>
+<p>This is a maintenance update to SAM 2015.1.30 that fixes critical issues with the Molten Salt Linear Fresnel and Physical Trough models and several other smaller bugs as listed below.</p>
+<h2>General</h2>
+<ul>
+<li>Save files from the Electricity Rates input page uses the "Save" dialog instead of "Open" to resolve issue in OS X.</li>
+<li>Stochastic simulations work in OS X.</li>
+<li>SAM runs on Windows Vista.</li>
+<li>Registration window can be resized on computers with small screens to make OK and Cancel buttons visible.</li>
+<li>Running a simulation with a custom weather file that has no data generates a simulation message.</li>
+<li>Download Electric Load macro does not limit number of downloads.</li>
+<li>Santa Fe, NM appears in solar resource library search results (fixed a typo in the location name).</li>
+<li>Excel Exchange works with .xlsm files.</li>
+</ul>
+<h2>Detailed Photovoltaic Model</h2>
+<ul>
+<li>New CEC inverter and module libraries.</li>
+<li>PDF report template displays parameters for modules with user-defined specifications, radiation values for weather files with no GHI data, and Vmp value.</li>
+<li>System Design page displays a message for Specify System Size option with inverters in the library that have no voltage limits to indicate that auto-sizing algorithm will set modules per string to one.</li>
+<li>Inverter sizing macro works for systems without a financial model and reports inverter clipping losses in correct units.</li>
+</ul>
+<h2>Residential and Commercial Financial Models</h2>
+<ul>
+<li>Year one sales and purchases value includes demand charges.</li>
+<li>Send-to-Excel workbook calculates correct Property Assessed Value. This issue did not affect the cash flow in the workbook or SAM results.</li>
+</ul>
+<h2>Concentrating Solar Power Models</h2>
+<ul>
+<li>Models work with custom solar field and thermal energy storage heat transfer fluids. (The models will calculate incorrect results with a custom fluid for both the field and storage. This issue will be resolved in the next version of SAM.)</li>
+<li>Molten Salt Linear Fresnel correctly calculates thermal energy storage tank diameter.</li>
+<li>Molten Salt Linear Fresnel applies correct solar field inlet temperature and calculates freeze protection energy.</li>
+<li>Physcial Trough receiver library entry for Royal Tech has correct Variation 1 Annulus Pressure value.</li>
+</ul>
+<h2>Generic System Model</h2> 
+<ul>
+<li>Make cost input variables available for parametric simulations, and group them properly in variable lists.</li>
+</ul>
+<h2>Wind</h2>
+<ul>
+<li>Correct errors in the annual energy calculation for Weibull speed distributions with both user-defined and library turbines.</li>
+<li>Wind resource file chooser displays only *.srw files instead of solar resource files.</li>
+</ul>
     <h1>Version 2015.1.30 January 2015</h1>
-    <p>This is a maintenance update to SAM 2014.11.24 that fixes several bugs and adds new features:</p>
+    <p>This is a maintenance update to SAM 2014.11.24 that addresses several important bugs and adds new features:</p>
     <ul>
       <li>Fixed bugs in the PPA financial model calculations of levelized cost and levelized PPA price metrics</li>
-	  <li>Fixed s time series data viewer bug for computers with time zone setting greater than GMT+8</li>
       <li>Added an option to the PPA financial models with debt (Single Owner and Leveraged Partnership Flip) that makes it
       possible to specify the size of debt as a percent of installed cost with fixed annual payments in addition to the current
       option to size debt with a debt fraction based on cash available for debt service</li>
-      <li>Added a Combine Cases macro to model a project that combines a single financial model with two or more performance
-      models</li>
+      <li>Added a Combine Cases macro to model a project that combines a single financial model with two or more performance models</li>
       <li>For the residential and commercial financial model electric load input pages, added an option to scale hourly data to
       monthly utility bill data</li>
       <li>Added support for subhourly simulations for the physical trough model</li>
@@ -70,7 +109,6 @@
     <p>Fixed unit conversion bug for temperature coefficients in CEC Performance model with User Entered Specifications</p>
     <p>Total module area on System Design page now updates appropriately</p>
     <p>GCR limit increased to 3 to be consistent with PVWatts</p>
-	<p>Fixed inverter cost when units are in $/Wac to calculate cost based on inverter AC capacity</p>
     <h2>Concentrating Solar Power (CSP)</h2>
     <p>Fixed bug in auxiliary gas heater macro</p>
     <p>Generic CSP- updated thermal storage to work with dispatch factors</p>
@@ -85,9 +123,9 @@
     <p>Additional error messages for variable handling in scripts</p>
     <p>Added LK functions for running simulations in parallel within a script</p>
     <p>Added new stepwise regression and Latin Hypercube Sampling LK script functions</p>
-    <h1>Version 2014.11.14 November 2014</h1>
-    <p>This is a major update to the SAM software product that is rebuilt from the ground up. It adds several major new
-    capabilities:</p>
+    <h1>Version 2014.11.24  November 2014</h1>
+    <p>This is a major reworking of the SAM software with a completely rebuilt software structure and user interface. It adds
+    several major new capabilities:</p>
     <ul>
       <li>Completely revamped and significantly simplified user interface</li>
       <li>Updated LCOE and PPA calculations for utility-scale systems</li>
