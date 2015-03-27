@@ -24,7 +24,7 @@
   <body>
       <p style="font-family:Segoe UI,sans-serif;font-size:20pt;text-align:center;color:#0072C6;">System Advisor Model (SAM) Release Notes</p>
 <h1>Version 2015.3.30 March 2015</h1>
-<p>This is a maintenance update to SAM 2015.1.30 that fixes several bugs.</p>
+<p>This is a maintenance update to SAM 2015.1.30 that fixes critical issues with the Molten Salt Linear Fresnel and Physical Trough models and several other smaller bugs as listed below.</p>
 <h2>General</h2>
 <ul>
 <li>Save files from the Electricity Rates input page uses the "Save" dialog instead of "Open" to resolve issue in OS X.</li>
@@ -41,7 +41,7 @@
 <li>New CEC inverter and module libraries.</li>
 <li>PDF report template displays parameters for modules with user-defined specifications, radiation values for weather files with no GHI data, and Vmp value.</li>
 <li>System Design page displays a message for Specify System Size option with inverters in the library that have no voltage limits to indicate that auto-sizing algorithm will set modules per string to one.</li>
-<li>Inverter sizing macro uses kWh instead of Wh for clipping loss.</li>
+<li>Inverter sizing macro works for systems without a financial model and reports inverter clipping losses in correct units.</li>
 </ul>
 <h2>Residential and Commercial Financial Models</h2>
 <ul>
@@ -61,7 +61,7 @@
 </ul>
 <h2>Wind</h2>
 <ul>
-<li>Correct errors in Define Turbine Characteristics wind turbine model option.</li>
+<li>Correct errors in the annual energy calculation for Weibull speed distributions with both user-defined and library turbines.</li>
 <li>Wind resource file chooser displays only *.srw files instead of solar resource files.</li>
 </ul>
     <h1>Version 2015.1.30 January 2015</h1>
