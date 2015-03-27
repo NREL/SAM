@@ -13,6 +13,11 @@ function rescom_metrics()
 	metric( 'loan_amount', {'label'='Debt', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
 }
 
+function third_party_metrics()
+{
+	metric( 'npv', {'label'='Net present value', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
+}
+
 function ipp_metrics()
 {
 	metric( 'lcoe_nom', {'label'='LCOE (Nominal)', 'post'=' \u00A2/kWh', 'mode'='f', 'deci'='2' } );
@@ -259,6 +264,7 @@ metrics{ 'Biopower' } = define() { biopower_metrics(); };
 metrics{ 'Residential' } = define() { rescom_metrics(); };
 metrics{ 'Commercial' } = define() { rescom_metrics(); };
 metrics{ 'Commercial PPA' } = define() { ipp_metrics(); };
+metrics{ 'Third Party' } = define() { third_party_metrics(); };
 metrics{ 'Independent Power Producer' } = define() { ipp_metrics(); };
 metrics{ 'Single Owner' } = define() { so_metrics(); };
 metrics{ 'All Equity Partnership Flip' } = define() { aepf_metrics(); };

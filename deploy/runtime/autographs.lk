@@ -4,12 +4,17 @@ function base_technology_graphs()
 	agraph( 'monthly_energy', 'Monthly Energy Production', '', 'kWh' );
 }
 
-//**************Two categories of graphs for financials**************************
+//**************Categories of graphs for financials**************************
 function rescom_financial_graphs()
 {
 	agraph( 'cf_energy_net', 'Annual Energy Production', 'Year', 'kWh', 10, true, false,'bottom' );
 	agraph( 'cf_after_tax_cash_flow', 'After Tax Cash Flow- System Lifetime', '', '$' );
 	agraph( 'monthly_energy,year1_monthly_load,year1_monthly_cumulative_excess_generation', 'Monthly Energy and Load', '', 'kWh', 10, true, true, 'bottom'  );
+}
+
+function third_party_graphs()
+{
+	agraph( 'cf_agreement_cost,cf_energy_value', 'Annual Agreement Cost and Electricity Savings', '', '$' );
 }
 
 function ppa_financial_graphs()
@@ -77,6 +82,7 @@ autographs{ 'Geothermal Power' } = define()
 //**************Financials***************************
 autographs{ 'Residential' } = define() { rescom_financial_graphs(); };
 autographs{ 'Commercial' } = define() { rescom_financial_graphs(); };
+autographs{ 'Third Party' } = define() { third_party_graphs(); };
 //autographs{ 'Commercial PPA' } = define() { simple_financial_graphs(); };
 //autographs{ 'Independent Power Producer' } = define() { simple_financial_graphs(); };
 autographs{ 'Single Owner' } = define() { ppa_financial_graphs(); };
