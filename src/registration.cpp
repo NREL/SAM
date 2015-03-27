@@ -1203,7 +1203,7 @@ wxString SamRegistration::GetVersionAndPlatform()
 	return SamApp::VersionStr() + "-" + platform;
 }
 
-enum { ID_REGISTER = wxID_HIGHEST+134, ID_CONFIRM, ID_EMAIL };
+enum { ID_REGISTER = wxID_HIGHEST+134, ID_CONFIRM, ID_EMAIL, ID_PROXYSETUP };
 
 #define SPACE 15
 
@@ -1211,6 +1211,7 @@ BEGIN_EVENT_TABLE( SamRegistration, wxDialog )
 	EVT_BUTTON( ID_REGISTER, SamRegistration::OnRegister )
 	EVT_BUTTON( ID_CONFIRM, SamRegistration::OnConfirm )
 	EVT_BUTTON( wxID_HELP, SamRegistration::OnHelp )
+	EVT_BUTTON( ID_PROXYSETUP, SamRegistration::OnProxySetup )
 	EVT_TEXT( ID_EMAIL, SamRegistration::OnEmail )
 END_EVENT_TABLE()
 
@@ -1274,6 +1275,7 @@ SamRegistration::SamRegistration( wxWindow *parent )
 
 	wxSizer *tools = new wxBoxSizer( wxHORIZONTAL );
 	tools->Add( new wxMetroButton( this, wxID_HELP, "Help" ), 0 );
+	tools->Add( new wxMetroButton( this, ID_PROXYSETUP, "Proxies..." ), 0 );
 	tools->AddStretchSpacer();
 	tools->Add( m_close, 0 );
 
@@ -1467,5 +1469,33 @@ void SamRegistration::OnEmail( wxCommandEvent & )
 		m_register->SetLabel( "Register" );
 		m_register->Refresh();
 		Layout();
+	}
+}
+
+void SamRegistration::OnProxySetup( wxCommandEvent & )
+{
+	wxString proxy( SamApp::ReadProxyFile() );
+
+	wxDialog dlg( this, wxID_ANY, "Configure Proxy", wxDefaultPosition, wxDefaultSize, wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER );
+	wxTextCtrl *text = new wxTextCtrl( &dlg, wxID_ANY, proxy );
+	
+	wxString label( "Enter proxy address (leave empty for direct internet connection):\n\n"
+	"  Example:               proxy-server.myorganization.org\n"
+    "  With a custom port:    proxy-server.myorganization.org:9142\n");
+
+	wxBoxSizer *sizer = new wxBoxSizer( wxVERTICAL );
+	sizer->Add( new wxStaticText( &dlg, wxID_ANY, label), 0, wxALL|wxALIGN_CENTER_VERTICAL, 10 );
+	
+	sizer->Add( text, 0, wxALL|wxEXPAND, 10 );
+	sizer->Add( dlg.CreateButtonSizer( wxOK|wxCANCEL ), 0, wxALL|wxEXPAND, 10 );
+	dlg.SetSizerAndFit( sizer );
+	dlg.CenterOnParent();
+
+	if ( dlg.ShowModal() == wxID_OK )
+	{
+		proxy = text->GetValue();
+		wxSimpleCurl::SetProxy( proxy );
+		if ( ! SamApp::WriteProxyFile( proxy ) )
+			wxMessageBox("Could not save proxy configuration to SAM installation folder.\n\nPlease ensure that you have write permissions to the SAM installation folder.");
 	}
 }

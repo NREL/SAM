@@ -1508,18 +1508,9 @@ extern void RegisterReportObjectTypes();
 		return false;
 	}
 	
-	wxString proxy_file = wxPathOnly(g_appArgs[0]) + "/proxy.txt";
-	if (wxFileExists(proxy_file))
-	{
-		if (FILE *fp = fopen(proxy_file.c_str(), "r"))
-		{
-			char buf[512];
-			fgets(buf, 511, fp);
-			fclose(fp);
-			wxSimpleCurl::SetProxy(wxString::FromAscii(buf));
-		}
-	}
-
+	wxString proxy = SamApp::ReadProxyFile();
+	if ( ! proxy.IsEmpty() )
+		wxSimpleCurl::SetProxy( proxy );
 
 //#ifdef _DEBUG
 //	SamLogWindow::Setup();
@@ -2196,6 +2187,37 @@ wxWindow *SamApp::CurrentActiveWindow()
 				return tlw;
 
 	return 0;
+}
+
+
+wxString SamApp::ReadProxyFile()
+{
+	wxString proxy_file = SamApp::GetAppPath() + "/proxy.txt";
+	if ( wxFileExists( proxy_file ) )
+	{
+		if ( FILE *f = fopen(proxy_file.c_str(), "r") )
+		{
+			char buf[512];
+			fgets(buf,511,f);
+			fclose(f);
+			return wxString::FromAscii(buf).Trim();
+		}
+	}
+
+	return wxEmptyString;
+}
+
+bool SamApp::WriteProxyFile( const wxString &proxy )
+{
+	wxString proxy_file = SamApp::GetAppPath() + "/proxy.txt";
+	if ( FILE *f = fopen(proxy_file.c_str(), "w") )
+	{
+		fprintf(f, "%s\n", (const char*)proxy.ToAscii() );
+		fclose(f);
+		return true;
+	}
+	else
+		return false;
 }
 
 ConfigDatabase &SamApp::Config() { return g_cfgDatabase; }

@@ -34,6 +34,7 @@ private:
 	void OnConfirm( wxCommandEvent & );
 	void OnHelp( wxCommandEvent & );
 	void OnEmail( wxCommandEvent & );
+	void OnProxySetup( wxCommandEvent & );
 
 	DECLARE_EVENT_TABLE();
 };
