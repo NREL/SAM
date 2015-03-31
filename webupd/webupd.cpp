@@ -463,7 +463,7 @@ public:
 				wxDefaultPosition, wxSize(650,550), wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER);
 			dlg.SetBackgroundColour( wxMetroTheme::Colour( wxMT_FOREGROUND ) );
 			MyHtmlWindow *html = new MyHtmlWindow( &dlg, wxID_ANY );
-			wxString h="An update is available for SAM " + g_samVerIdStr + ". To install the update, click <b>Update</b>. To ignore the update and start SAM, click <b>Cancel</b>. You can update later by clicking <b>Check for Updates</b> on SAM's Help menu.<br><br>";
+			wxString h="An update is available for SAM " + g_samVerIdStr + ". To install the update, click <b>Update</b>. To ignore the update and start SAM, click <b>Cancel</b>. You can update later by clicking <b>Check for Updates</b> on SAM's Start page.<br><br>";
 			for (int i=((int)pdat.size())-1;i>=0;i--)
 			{
 				if ( pdat[i].level > curver )
