@@ -772,15 +772,28 @@ bool ShadeAnalysis::SimulateDiffuse(bool save)
 
 	wxStopWatch sw;
 	bool stopped = false;
-	for (i_azi = 0; i_azi<360 && !stopped; i_azi++)
+
+	size_t azi_min, azi_max, azi_step;
+	size_t alt_min, alt_max, alt_step;
+	azi_min = 0;
+	azi_max = 360;
+	alt_min = 1;
+	alt_max = 90;
+	azi_step = 9;
+	alt_step = 1;
+
+	size_t num_alt = (alt_max - alt_min+1) / alt_step;
+	size_t num_scenes = ((azi_max - azi_min+1) / azi_step) * num_alt;
+
+	for (i_azi = 0; i_azi<azi_max && !stopped; i_azi += azi_step)
 	{
-		for (i_alt = 1; i_alt <= 90 && !stopped; i_alt++)
+		for (i_alt = 1; i_alt <= alt_max && !stopped; i_alt += alt_step)
 		{
 			azi = i_azi;
 			alt = i_alt;
 			if (c % 400 == 0)
 			{
-				int percent = (int)(100.0*c / 8760.0);
+				int percent = (int)(100.0*c / num_scenes);
 				if (!pdlg.Update(percent))
 				{
 					stopped = true;
@@ -833,6 +846,7 @@ bool ShadeAnalysis::SimulateDiffuse(bool save)
 		}
 	}
 
+//	wxMessageBox(wxString::Format("Diffuse shading (%d (%d) scenes in %d ms)", c, num_scenes,sw.Time()));
 	if (save)
 	{
 		wxFileDialog dlg(this, "Diffuse Shading File Export", wxEmptyString, "diffuse_shade.csv", "*.*", wxFD_SAVE | wxFD_OVERWRITE_PROMPT);
@@ -844,11 +858,11 @@ bool ShadeAnalysis::SimulateDiffuse(bool save)
 				for (size_t i = 0; i < shade.size(); i++)
 					fprintf(fp, "%s %c", (const char*)shade[i].group.c_str(), i + 1 < shade.size() ? ',' : '\n');
 
-				for (i_azi = 0; i_azi<360 ; i_azi++)
-					for (i_alt = 1; i_alt <= 90 ; i_alt++)
+				for (i_azi = 0; i_azi<azi_max ; i_azi+= azi_step)
+					for (i_alt = 1; i_alt <= alt_max ; i_alt+= alt_step)
 					{
 						fprintf(fp, "%d,%d,", i_azi, i_alt);
-						size_t i = i_azi * 90 + i_alt-1;
+						size_t i = i_azi * num_alt + i_alt-1;
 						for (size_t j = 0; j < shade.size(); j++)
 							fprintf(fp, "%.3lf%c", shade[j].sfac[i], j + 1 < shade.size() ? ',' : '\n');
 					}
@@ -867,9 +881,9 @@ bool ShadeAnalysis::SimulateDiffuse(bool save)
 	for (size_t j = 0; j < shade.size(); j++)
 	{
 		data[j] = 0;
-		for (size_t i = 0; i < 32400; i++)
+		for (size_t i = 0; i < c; i++)
 			data[j] += shade[j].sfac[i];
-		data[j] /= 32400;
+		data[j] /= c;
 		m_diffuse_shade_percent.push_back(data[j]);
 		m_diffuse_name.push_back(shade[j].group);
 		if (j > 0) // j=0 taken to be minimum value as shown below
@@ -1009,6 +1023,8 @@ void ShadeAnalysis::OnGenerateHourly( wxCommandEvent & )
 			}
 		}
 	}
+
+//	wxMessageBox(wxString::Format("Hourly shading (8760 scenes in %d ms)", sw.Time()));
 
 	wxFileDialog dlg( this, "Hourly Shading File Export", wxEmptyString, "shade.csv", "*.*", wxFD_SAVE|wxFD_OVERWRITE_PROMPT );
 	if ( wxID_OK == dlg.ShowModal() )
