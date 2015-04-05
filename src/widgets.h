@@ -17,6 +17,10 @@ class wxStaticText;
 class wxListBox;
 class wxExtGridCtrl;
 
+static wxColour UIColorIndicatorFore(60, 60, 60);
+static wxColour UIColorIndicatorBack(230, 230, 230);
+static wxColour UIColorCalculatedFore(29, 80, 173);
+static wxColour UIColorCalculatedBack(222, 233, 244);
 
 class AFSchedNumeric : public wxWindow
 {
