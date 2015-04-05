@@ -24,6 +24,9 @@
 
 VariableGridData::VariableGridData(ProjectFile *pf, Case *c, VarTable *vt) : m_pf(pf), m_vt(vt)
 {
+	m_attr_for_calculated = new wxGridCellAttr;
+	m_attr_for_calculated->SetBackgroundColour(UIColorCalculatedBack);
+	m_attr_for_calculated->SetTextColour(UIColorCalculatedFore);
 	m_sorted = false;
 	if (c)
 		m_cases.push_back(c);
@@ -31,6 +34,13 @@ VariableGridData::VariableGridData(ProjectFile *pf, Case *c, VarTable *vt) : m_p
 		m_cases = m_pf->GetCases();
 	Init();
 }
+
+VariableGridData::~VariableGridData()
+{
+	m_attr_for_calculated->DecRef();
+}
+
+
 
 void VariableGridData::Init()
 {
@@ -343,6 +353,36 @@ void VariableGridData::Sort(int col, bool ascending)
 }
 
 
+wxGridCellAttr *VariableGridData::GetAttr(int row, int col, wxGridCellAttr::wxAttrKind kind)
+{
+
+	wxGridCellAttr *attr = NULL;
+	if (GetAttrProvider())
+	{
+		attr = GetAttrProvider()->GetAttr(row, col, kind);
+
+		if (GetTypeName(row, col) == "GridCellCalculated")
+		{
+			if (!attr)
+			{
+				attr = m_attr_for_calculated;
+				attr->IncRef();
+			}
+			else if (!attr->HasBackgroundColour())
+			{
+					wxGridCellAttr *attrNew = attr->Clone();
+					attr->DecRef();
+					attr = attrNew;
+					attr->SetTextColour(UIColorCalculatedFore);
+					attr->SetBackgroundColour(UIColorCalculatedBack);
+			}
+		}
+	}
+	return attr;
+
+}
+
+
 wxString VariableGridData::GetTypeName(int row, int col)
 {
 	if ((col > -1) && (col < 2))
@@ -354,7 +394,10 @@ wxString VariableGridData::GetTypeName(int row, int col)
 		if (VarInfo *var_info = m_var_info_lookup_vec[col - 2]->Lookup(m_var_names[lookup_row]))
 		{ // TODO - better control list maintenance here and in UIEditorPanel
 			wxString type = var_info->UIObject;
-			if (type == "Numeric")
+			bool calculated = var_info->Flags   & VF_CALCULATED;
+			if (calculated)
+				return "GridCellCalculated";
+			else if (type == "Numeric")
 				return wxGRID_VALUE_STRING;
 			else if (type == "Choice")
 				return "GridCellChoice";
@@ -631,6 +674,8 @@ VariableGridFrame::VariableGridFrame(wxWindow *parent, ProjectFile *pf, Case *c,
 		m_grid->RegisterDataType("GridCellChoice", new GridCellChoiceRenderer, new GridCellChoiceEditor);
 		m_grid->RegisterDataType("GridCellVarValue", new GridCellVarValueRenderer, new GridCellVarValueEditor);
 
+		m_grid->RegisterDataType("GridCellCalculated", new GridCellCalculatedRenderer, new GridCellCalculatedEditor);
+
 		m_grid->HideRowLabels();
 
 		m_grid->SetTable(m_griddata, true, wxGrid::wxGridSelectRows);
@@ -879,7 +924,7 @@ void VariableGridFrame::SizeColumns()
 void VariableGridFrame::UpdateGrid()
 {
 	wxString filter(m_filter->GetValue().Lower());
-	m_grid->Freeze();
+//	m_grid->Freeze();
 	for (int row = 0; row < m_grid->GetNumberRows(); row++)
 	{
 		bool show = true;
@@ -895,7 +940,8 @@ void VariableGridFrame::UpdateGrid()
 		else
 			m_grid->HideRow(row);
 	}
-	m_grid->Thaw();
+//	m_grid->Thaw();
+	
 }
 
 void VariableGridFrame::OnCommand(wxCommandEvent &evt)

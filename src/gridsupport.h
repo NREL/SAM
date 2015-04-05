@@ -162,7 +162,6 @@ private:
 	wxGridCellAttr *m_attr_to_align_right;
 };
 
-
 class GridCellArrayEditor : public wxEvtHandler, public wxGridCellEditor
 {
 public:
@@ -196,6 +195,81 @@ private:
 
 	DECLARE_NO_COPY_CLASS(GridCellArrayEditor)
 };
+
+
+
+// renders a text string using calculated values from the corresponding VarValue
+// based on wxGridCellStringRenderer
+class GridCellCalculatedRenderer : public wxGridCellStringRenderer
+{
+public:
+
+	virtual void Draw(wxGrid& grid,
+		wxGridCellAttr& attr,
+		wxDC& dc,
+		const wxRect& rect,
+		int row, int col,
+		bool isSelected);
+	virtual wxSize GetBestSize(wxGrid& grid,
+		wxGridCellAttr& attr,
+		wxDC& dc,
+		int row, int col);
+	virtual wxGridCellRenderer *Clone() const;
+
+protected:
+	wxString GetString(const wxGrid& grid, int row, int col);
+
+};
+
+class CalculatedGridCellAttrProvider : public wxGridCellAttrProvider
+{
+public:
+	CalculatedGridCellAttrProvider();
+	virtual ~CalculatedGridCellAttrProvider();
+
+	virtual wxGridCellAttr *GetAttr(int row, int col,
+		wxGridCellAttr::wxAttrKind  kind) const;
+
+private:
+	wxGridCellAttr *m_attr_to_calculated;
+};
+
+
+class GridCellCalculatedEditor : public wxEvtHandler, public wxGridCellEditor
+{
+public:
+	GridCellCalculatedEditor();
+
+	virtual void PaintBackground(wxDC& dc,
+		const wxRect& rectCell,
+		const wxGridCellAttr& attr);
+
+	virtual void Create(wxWindow *parent, wxWindowID id, wxEvtHandler* pEvtHandler);
+	virtual bool IsAcceptedKey(wxKeyEvent& event);
+	virtual void SetSize(const wxRect &rect_orig);
+	virtual void BeginEdit(int row, int col, wxGrid *pGrid);
+	virtual bool EndEdit(int row, int col, const wxGrid *grid, const wxString &oldval, wxString *newval);
+	virtual void ApplyEdit(int row, int col, wxGrid *grid);
+	virtual void Reset();
+	virtual wxString GetValue() const;
+	virtual wxGridCellEditor *Clone() const;
+
+private:
+	wxString m_cell_value;
+	wxString m_new_cell_value;
+	//	wxStaticText *m_text;
+	wxTextCtrl *Text() const { return (wxTextCtrl *)m_control; }
+	VarInfo *m_var_info;
+	VarValue *m_var_value;
+	wxWindow *m_parent;
+	VariablePopupDialog *m_vpe;
+	bool DisplayEditor(wxString &title, wxString &label, wxGrid *grid, VarValue *vv);
+	wxString GetString(int row, int col, const wxGrid *grid);
+
+	DECLARE_NO_COPY_CLASS(GridCellCalculatedEditor)
+};
+
+
 
 
 // renders a text string using the corresponding VarInfo in GridTableBase for wxUIObject Choice

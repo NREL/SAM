@@ -721,6 +721,222 @@ wxGridCellEditor *GridCellArrayEditor::Clone() const
 
 ////////////////////////////////////////////////////////////////////////////////////////
 
+
+
+wxGridCellRenderer *GridCellCalculatedRenderer::Clone() const
+{
+	GridCellCalculatedRenderer *renderer = new GridCellCalculatedRenderer;
+	return renderer;
+}
+
+wxString GridCellCalculatedRenderer::GetString(const wxGrid& grid, int row, int col)
+{
+	if (GridChoiceData *vgd = (GridChoiceData *)grid.GetTable())
+	{
+		wxString text = wxEmptyString;
+		if (VarValue *vv = vgd->GetVarValue(row, col))
+		{
+			text = vv->AsString();
+		}
+		return text;
+	}
+	else
+		return wxEmptyString;
+}
+
+void GridCellCalculatedRenderer::Draw(wxGrid& grid,
+	wxGridCellAttr& attr,
+	wxDC& dc,
+	const wxRect& rectCell,
+	int row, int col,
+	bool isSelected)
+{
+	wxGridCellRenderer::Draw(grid, attr, dc, rectCell, row, col, isSelected);
+
+	SetTextColoursAndFont(grid, attr, dc, isSelected);
+
+	// draw the text left aligned by default
+	int hAlign = wxALIGN_LEFT,
+		vAlign = wxALIGN_INVALID;
+	attr.GetNonDefaultAlignment(&hAlign, &vAlign);
+
+	wxRect rect = rectCell;
+	rect.Inflate(-1);
+
+	grid.DrawTextRectangle(dc, GetString(grid, row, col), rect, hAlign, vAlign);
+
+}
+
+wxSize GridCellCalculatedRenderer::GetBestSize(wxGrid& grid,
+	wxGridCellAttr& attr,
+	wxDC& dc,
+	int row, int col)
+{
+	return DoGetBestSize(attr, dc, GetString(grid, row, col));
+}
+
+
+
+GridCellCalculatedEditor::GridCellCalculatedEditor()
+{
+}
+
+
+void GridCellCalculatedEditor::Create(wxWindow *parent, wxWindowID id, wxEvtHandler* pEvtHandler)
+{
+	m_parent = parent;
+	long style = wxTE_READONLY | wxNO_BORDER;
+
+	wxTextCtrl* const text = new wxTextCtrl(parent, id, wxEmptyString,
+		wxDefaultPosition, wxDefaultSize, style);
+	text->SetMargins(0, 0);
+	m_control = text;
+	SetControl(m_control);
+	wxGridCellEditor::Create(parent, id, pEvtHandler);
+}
+
+void GridCellCalculatedEditor::Reset()
+{
+	//	m_text->SetLabel(m_cell_value);
+	Text()->SetValue(m_cell_value);
+}
+
+
+void GridCellCalculatedEditor::SetSize(const wxRect &rect_orig)
+{	// similar to wxGridCellTextEditor
+	wxRect rect(rect_orig);
+
+	// Make the edit control large enough to allow for internal margins
+	//
+	// TODO: remove this if the text ctrl sizing is improved esp. for unix
+	//
+#if defined(__WXGTK__)
+	if (rect.x != 0)
+	{
+		rect.x += 1;
+		rect.y += 1;
+		rect.width -= 1;
+		rect.height -= 1;
+	}
+#elif defined(__WXMSW__)
+	if (rect.x == 0)
+		rect.x += 2;
+	else
+		rect.x += 3;
+
+	if (rect.y == 0)
+		rect.y += 2;
+	else
+		rect.y += 3;
+
+	rect.width -= 2;
+	rect.height -= 2;
+#elif defined(__WXOSX__)
+	rect.x += 1;
+	rect.y += 1;
+
+	rect.width -= 1;
+	rect.height -= 1;
+#else
+	int extra_x = (rect.x > 2) ? 2 : 1;
+	int extra_y = (rect.y > 2) ? 2 : 1;
+
+#if defined(__WXMOTIF__)
+	extra_x *= 2;
+	extra_y *= 2;
+#endif
+
+	rect.SetLeft(wxMax(0, rect.x - extra_x));
+	rect.SetTop(wxMax(0, rect.y - extra_y));
+	rect.SetRight(rect.GetRight() + 2 * extra_x);
+	rect.SetBottom(rect.GetBottom() + 2 * extra_y);
+#endif
+
+	wxGridCellEditor::SetSize(rect);
+}
+
+void GridCellCalculatedEditor::PaintBackground(wxDC& WXUNUSED(dc),
+	const wxRect& WXUNUSED(rectCell),
+	const wxGridCellAttr& WXUNUSED(attr))
+{
+}
+
+bool GridCellCalculatedEditor::IsAcceptedKey(wxKeyEvent& event)
+{
+		return wxGridCellEditor::IsAcceptedKey(event);
+}
+
+
+bool GridCellCalculatedEditor::DisplayEditor(wxString &title, wxString &label, wxGrid *grid, VarValue *vv)
+{
+//	Text()->SetFocus();
+
+	return true;  // all ok!
+}
+
+void GridCellCalculatedEditor::BeginEdit(int row, int col, wxGrid *pGrid)
+{
+	m_cell_value = GetString(row, col, pGrid);
+	Text()->SetValue(m_cell_value);
+
+	m_new_cell_value = m_cell_value;
+	Text()->SetValue(m_cell_value);
+}
+
+wxString GridCellCalculatedEditor::GetString(int row, int col, const wxGrid *grid)
+{
+	if (GridChoiceData *vgd = (GridChoiceData *)grid->GetTable())
+	{
+		wxString text = wxEmptyString;
+		if (VarValue *vv = vgd->GetVarValue(row, col))
+		{
+			text = vv->AsString();
+		}
+		return text;
+	}
+	else
+		return wxEmptyString;
+}
+
+
+
+bool GridCellCalculatedEditor::EndEdit(int row, int col, const wxGrid *grid, const wxString& WXUNUSED(oldval), wxString *newval)
+{
+	wxString new_cell_value = m_new_cell_value;
+	if (new_cell_value == m_cell_value)
+		return false; // no change
+
+	m_cell_value = new_cell_value;
+
+	if (newval)
+		*newval = m_cell_value;
+
+	Text()->SetValue(m_cell_value);
+
+	return true;
+}
+
+void GridCellCalculatedEditor::ApplyEdit(int row, int col, wxGrid *grid)
+{
+	// read only display
+	m_cell_value.clear();
+}
+
+
+wxString GridCellCalculatedEditor::GetValue() const
+{
+	return m_cell_value;
+}
+
+wxGridCellEditor *GridCellCalculatedEditor::Clone() const
+{
+	return new GridCellCalculatedEditor();
+}
+
+////////////////////////////////////////////////////////////////////////////////////////
+
+
+
 enum { ID_APD_CLIPBOARD, ID_APD_CSV, ID_APD_EXCEL};
 
 BEGIN_EVENT_TABLE(ArrayPopupDialog, wxDialog)
