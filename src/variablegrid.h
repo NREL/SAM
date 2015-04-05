@@ -36,6 +36,7 @@ class VariableGridData : public GridChoiceData
 {
 public:
 	VariableGridData(ProjectFile *pf, Case *c = NULL, VarTable *vt = NULL);
+	~VariableGridData();
 	virtual int GetNumberRows();
 	virtual int GetNumberCols();
 	virtual bool IsEmptyCell(int row, int col);
@@ -46,6 +47,10 @@ public:
 	virtual wxString GetTypeName(int row, int col);
 	virtual bool DeleteCols(size_t pos = 0, size_t	numCols = 1);
 	virtual bool AppendCols(size_t numCols = 1);
+	// set cell background based on input and output status
+	virtual wxGridCellAttr *GetAttr(int row, int col, wxGridCellAttr::wxAttrKind kind);
+
+
 	bool DeleteCase(Case *c);
 	bool AddCase(Case *c);
 	bool RenameCase(const wxString &old_name, const wxString &new_name);
@@ -62,6 +67,8 @@ public:
 	VarValue* GetVarValue(int row, int col);
 	void SetVarValue(int row, int col, VarValue *vv);
 
+
+
 private:
 	void Init();
 	int m_rows;
@@ -70,6 +77,7 @@ private:
 	ProjectFile *m_pf;
 	wxArrayInt m_sorted_index;
 	std::vector<Case*> m_cases;
+	wxGridCellAttr *m_attr_for_calculated;
 	wxArrayString m_col_hdrs;
 	wxArrayString m_var_names;
 	wxArrayString m_var_labels;
