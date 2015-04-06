@@ -54,7 +54,7 @@ public:
 	bool DeleteCase(Case *c);
 	bool AddCase(Case *c);
 	bool RenameCase(const wxString &old_name, const wxString &new_name);
-	bool ShowRow(int row, int comparison_type);
+	bool ShowRow(int row, int comparison_type, bool show_calculated);
 	void Sort(int col, bool ascending);
 
 	// for choice controls
@@ -115,7 +115,9 @@ private:
 	int m_compare_show_type;
 	wxMetroButton *m_btn_export, *m_btn_view;
 	wxTextCtrl *m_filter;
-	
+	wxBoxSizer *m_sizer;
+	wxCheckBox *m_show_calculated;
+
 	void GetTextData(wxString &dat, char sep);
 	void CopyToClipboard();
 	void SaveToCSV();
@@ -124,6 +126,9 @@ private:
 	void OnGridColSort(wxGridEvent& event);
 	void SizeColumns();
 	void OnCommand(wxCommandEvent &evt);
+
+	// override OnShow to force grid attribute refresh
+	void OnShow(wxShowEvent& evt);
 
 	// update data when values in case change
 	virtual void OnCaseEvent(Case *c, CaseEvent &evt);

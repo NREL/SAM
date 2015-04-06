@@ -379,7 +379,6 @@ wxGridCellAttr *VariableGridData::GetAttr(int row, int col, wxGridCellAttr::wxAt
 		}
 	}
 	return attr;
-
 }
 
 
@@ -453,7 +452,7 @@ wxString VariableGridData::GetTypeName(int row, int col)
 		return wxGRID_VALUE_STRING;
 }
 
-bool VariableGridData::ShowRow(int row, int comparison_type)
+bool VariableGridData::ShowRow(int row, int comparison_type, bool show_calculated)
 {
 	bool show = true;
 	if (m_cases.size() > 1) // comparison
@@ -500,6 +499,20 @@ bool VariableGridData::ShowRow(int row, int comparison_type)
 		case COMPARE_SHOW_ALL:
 		default:
 			break;
+		}
+	}
+	// check for calculated inputs
+	if (show)
+	{
+		bool calculated = false;
+		int lookup_row = row;
+		if (m_sorted) lookup_row = m_sorted_index[row];
+		if (m_var_info_lookup_vec[0]->Lookup(m_var_names[lookup_row]))
+		{
+			VarInfo *vi = m_var_info_lookup_vec[0]->Lookup(m_var_names[lookup_row]);
+			if (vi)
+				calculated = vi->Flags & VF_CALCULATED;
+			if (calculated) show = show && show_calculated;
 		}
 	}
 	return show;
@@ -610,7 +623,7 @@ void VariableGrid::OnLeftClick(wxGridEvent &evt)
 
 enum {
 	__idFirst = wxID_HIGHEST + 992,
-	ID_SHOW_DIFFERENT, ID_SHOW_SAME, ID_SHOW_ALL, ID_EXP_CLIPBOARD, ID_EXP_CSV, ID_EXP_EXCEL, ID_EXP_BTN, ID_VIEW_BTN, ID_FILTER
+	ID_SHOW_DIFFERENT, ID_SHOW_SAME, ID_SHOW_ALL, ID_EXP_CLIPBOARD, ID_EXP_CSV, ID_EXP_EXCEL, ID_EXP_BTN, ID_VIEW_BTN, ID_FILTER, ID_SHOW_CALCULATED
 };
 
 BEGIN_EVENT_TABLE(VariableGridFrame, wxFrame)
@@ -624,7 +637,9 @@ BEGIN_EVENT_TABLE(VariableGridFrame, wxFrame)
 	EVT_BUTTON(ID_VIEW_BTN, VariableGridFrame::OnCommand)
 	EVT_BUTTON(wxID_HELP, VariableGridFrame::OnCommand)
 	EVT_TEXT( ID_FILTER, VariableGridFrame::OnCommand)
+	EVT_CHECKBOX( ID_SHOW_CALCULATED, VariableGridFrame::OnCommand)
 	EVT_GRID_COL_SORT(VariableGridFrame::OnGridColSort)
+//	EVT_SHOW(VariableGridFrame::OnShow)
 END_EVENT_TABLE()
 
 VariableGridFrame::VariableGridFrame(wxWindow *parent, ProjectFile *pf, Case *c, VarTable *vt, wxString frame_title) 
@@ -681,26 +696,6 @@ VariableGridFrame::VariableGridFrame(wxWindow *parent, ProjectFile *pf, Case *c,
 		m_grid->SetTable(m_griddata, true, wxGrid::wxGridSelectRows);
 
 
-		/*
-		// TODO - radio button group for show all, same, different
-		// go through all rows for case comparison and only show unequal values
-		// skip same values or all empty strings
-		if (m_cases.size() > 1)
-		{
-			for (int row = 0; row < m_grid->GetNumberRows(); row++)
-			{
-				wxString str_val = m_grid->GetCellValue(row, 2);
-				bool same_val = true;
-				bool empty_val = (m_grid->GetCellValue(row, 2) == wxEmptyString);
-				for (int col = 3; col < m_grid->GetNumberCols(); col++)
-				{
-					same_val = same_val && (str_val == m_grid->GetCellValue(row, col));
-					empty_val = empty_val || (m_grid->GetCellValue(row, col) == wxEmptyString);
-				}
-				if (same_val || empty_val) m_grid->HideRow(row);
-			}
-		}
-		*/
 		
 		wxBoxSizer *comparetools = new wxBoxSizer(wxHORIZONTAL);
 
@@ -720,19 +715,22 @@ VariableGridFrame::VariableGridFrame(wxWindow *parent, ProjectFile *pf, Case *c,
 		lblfilter->SetFont( wxMetroTheme::Font( wxMT_NORMAL ) );
 		tools->Add( lblfilter, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3 );
 		tools->Add( m_filter, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3 );
+		m_show_calculated = new wxCheckBox(this, ID_SHOW_CALCULATED, "Show calculated inputs");
+		m_show_calculated->SetForegroundColour(*wxWHITE);
+		tools->Add(m_show_calculated, 0, wxALL | wxALIGN_CENTER_VERTICAL, 3);
 		tools->AddStretchSpacer();
 		tools->Add(new wxMetroButton(this, wxID_HELP, "Help"), 0, wxALL | wxEXPAND, 0);
 
-		wxBoxSizer *sizer = new wxBoxSizer(wxVERTICAL);
-		sizer->Add(tools, 0, wxALL | wxEXPAND, 0);
-		sizer->Add(m_grid, 1, wxALL | wxEXPAND, 0);
-		SetSizer(sizer);
+		m_sizer = new wxBoxSizer(wxVERTICAL);
+		m_sizer->Add(tools, 0, wxALL | wxEXPAND, 0);
+		m_sizer->Add(m_grid, 1, wxALL | wxEXPAND, 0);
+		SetSizer(m_sizer);
 
 		SizeColumns();
 
 		m_compare_show_type = m_cases.size() > 1 ? COMPARE_SHOW_DIFFERENT : COMPARE_SHOW_ALL;
-		UpdateGrid();
 
+		UpdateGrid();
 
 	}
 #ifdef __WXMSW__
@@ -740,7 +738,16 @@ VariableGridFrame::VariableGridFrame(wxWindow *parent, ProjectFile *pf, Case *c,
 #endif	
 	CenterOnParent();
 	Show();
+
 }
+
+void VariableGridFrame::OnShow(wxShowEvent& evt)
+{
+	m_griddata->Sort(0, !(m_grid->IsSortingBy(0) &&
+		m_grid->IsSortOrderAscending()));
+	UpdateGrid();
+}
+
 
 VariableGridFrame::~VariableGridFrame()
 {
@@ -902,7 +909,7 @@ void VariableGridFrame::SizeColumns()
 	std::vector<int> col_width(m_grid->GetNumberCols(), 60);
 	for (row = 0; row< m_grid->GetNumberRows(); row++)
 	{
-		if (m_griddata->ShowRow(row, m_compare_show_type))
+		if (m_griddata->ShowRow(row, m_compare_show_type, m_show_calculated->GetValue()))
 		{
 			for (col = 0; col < m_grid->GetNumberCols(); col++)
 			{
@@ -924,7 +931,7 @@ void VariableGridFrame::SizeColumns()
 void VariableGridFrame::UpdateGrid()
 {
 	wxString filter(m_filter->GetValue().Lower());
-//	m_grid->Freeze();
+	m_grid->Freeze();
 	for (int row = 0; row < m_grid->GetNumberRows(); row++)
 	{
 		bool show = true;
@@ -935,13 +942,15 @@ void VariableGridFrame::UpdateGrid()
 				|| (target.Lower().Find( filter ) >= 0);
 		}
 
-		if (show && m_griddata->ShowRow(row, m_compare_show_type))
+		if (show && m_griddata->ShowRow(row, m_compare_show_type, m_show_calculated->GetValue()))
+		{
 			m_grid->ShowRow(row);
+		}
 		else
 			m_grid->HideRow(row);
 	}
-//	m_grid->Thaw();
-	
+	m_grid->Thaw();
+	m_grid->ForceRefresh();
 }
 
 void VariableGridFrame::OnCommand(wxCommandEvent &evt)
@@ -996,6 +1005,9 @@ void VariableGridFrame::OnCommand(wxCommandEvent &evt)
 		SamApp::ShowHelp( "inputs_browser" );
 		break;
 	case ID_FILTER:
+		UpdateGrid();
+		break;
+	case ID_SHOW_CALCULATED:
 		UpdateGrid();
 		break;
 	}

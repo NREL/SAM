@@ -751,9 +751,12 @@ void GridCellCalculatedRenderer::Draw(wxGrid& grid,
 	int row, int col,
 	bool isSelected)
 {
+//	grid.RefreshAttr(row, col);
 	wxGridCellRenderer::Draw(grid, attr, dc, rectCell, row, col, isSelected);
+//	grid.RefreshAttr(row, col);
 
 	SetTextColoursAndFont(grid, attr, dc, isSelected);
+//	grid.RefreshAttr(row, col);
 
 	// draw the text left aligned by default
 	int hAlign = wxALIGN_LEFT,
@@ -764,7 +767,7 @@ void GridCellCalculatedRenderer::Draw(wxGrid& grid,
 	rect.Inflate(-1);
 
 	grid.DrawTextRectangle(dc, GetString(grid, row, col), rect, hAlign, vAlign);
-
+//	grid.RefreshAttr(row, col);
 }
 
 wxSize GridCellCalculatedRenderer::GetBestSize(wxGrid& grid,
