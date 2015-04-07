@@ -14,7 +14,9 @@ function rescom_financial_graphs()
 
 function third_party_graphs()
 {
-	agraph( 'cf_agreement_cost,cf_energy_value', 'Annual Agreement Cost and Electricity Savings', '', '$' );
+	agraph( 'cf_agreement_cost,cf_energy_value', 'Annual Agreement Cost and Electricity Savings', 'Year', '$' );
+	agraph( 'monthly_energy,year1_monthly_load', 'Year 1 Monthly Solar Energy Production and Electric Load', '', 'kWh' );
+
 }
 
 function ppa_financial_graphs()
