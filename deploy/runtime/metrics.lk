@@ -15,7 +15,7 @@ function rescom_metrics()
 
 function third_party_metrics()
 {
-	metric( 'npv', {'label'='Net present value', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
+	metric( 'npv', {'label'='Net savings over agreement term*', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
 }
 
 function ipp_metrics()
