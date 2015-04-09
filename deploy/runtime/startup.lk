@@ -72,6 +72,7 @@ function setup_battery_pages()
 {
 	addpage( [['Battery Enable',
 			   'Battery Model',
+			   'Battery Lifetime',
 			   'Battery Dispatch',
 			   'Battery Thermal']], 
 			  { 'sidebar' = 'Battery Storage', 'help'='battery_model'} );
