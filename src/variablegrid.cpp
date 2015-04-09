@@ -630,14 +630,14 @@ BEGIN_EVENT_TABLE(VariableGridFrame, wxFrame)
 	EVT_MENU(ID_SHOW_DIFFERENT, VariableGridFrame::OnCommand)
 	EVT_MENU(ID_SHOW_SAME, VariableGridFrame::OnCommand)
 	EVT_MENU(ID_SHOW_ALL, VariableGridFrame::OnCommand)
+	EVT_MENU(ID_SHOW_CALCULATED, VariableGridFrame::OnCommand)
 	EVT_MENU(ID_EXP_CLIPBOARD, VariableGridFrame::OnCommand)
 	EVT_MENU(ID_EXP_CSV, VariableGridFrame::OnCommand)
 	EVT_MENU(ID_EXP_EXCEL, VariableGridFrame::OnCommand)
 	EVT_BUTTON(ID_EXP_BTN, VariableGridFrame::OnCommand)
 	EVT_BUTTON(ID_VIEW_BTN, VariableGridFrame::OnCommand)
 	EVT_BUTTON(wxID_HELP, VariableGridFrame::OnCommand)
-	EVT_TEXT( ID_FILTER, VariableGridFrame::OnCommand)
-	EVT_CHECKBOX( ID_SHOW_CALCULATED, VariableGridFrame::OnCommand)
+	EVT_TEXT( ID_FILTER, VariableGridFrame::OnCommand)	
 	EVT_GRID_COL_SORT(VariableGridFrame::OnGridColSort)
 //	EVT_SHOW(VariableGridFrame::OnShow)
 END_EVENT_TABLE()
@@ -645,6 +645,7 @@ END_EVENT_TABLE()
 VariableGridFrame::VariableGridFrame(wxWindow *parent, ProjectFile *pf, Case *c, VarTable *vt, wxString frame_title) 
 	: wxFrame(parent, wxID_ANY, "Variable Grid", wxDefaultPosition, wxSize(800, 700)), m_pf(pf)
 {
+	m_show_calculated = false;
 	SetBackgroundColour( wxMetroTheme::Colour( wxMT_FOREGROUND ) );
 
 	if (!m_pf) return;
@@ -702,12 +703,10 @@ VariableGridFrame::VariableGridFrame(wxWindow *parent, ProjectFile *pf, Case *c,
 		wxBoxSizer *tools = new wxBoxSizer(wxHORIZONTAL);
 		m_btn_export = new wxMetroButton(this, ID_EXP_BTN, "Export", wxNullBitmap, wxDefaultPosition, wxDefaultSize, wxMB_DOWNARROW);
 		tools->Add(m_btn_export, 0, wxALL | wxEXPAND, 0);
-		if (m_cases.size() >= 2)
-		{
-			m_btn_view = new wxMetroButton(this, ID_VIEW_BTN, "View", wxNullBitmap, wxDefaultPosition, wxDefaultSize, wxMB_DOWNARROW);
-			tools->Add( m_btn_view, 0, wxALL|wxEXPAND, 0 );
-		}		
-
+		
+		m_btn_view = new wxMetroButton(this, ID_VIEW_BTN, "View", wxNullBitmap, wxDefaultPosition, wxDefaultSize, wxMB_DOWNARROW);
+		tools->Add( m_btn_view, 0, wxALL|wxEXPAND, 0 );
+		
 		tools->AddSpacer(5);
 		m_filter = new wxTextCtrl( this, ID_FILTER );
 		wxStaticText *lblfilter = new wxStaticText( this, wxID_ANY, "Search:" );
@@ -715,9 +714,6 @@ VariableGridFrame::VariableGridFrame(wxWindow *parent, ProjectFile *pf, Case *c,
 		lblfilter->SetFont( wxMetroTheme::Font( wxMT_NORMAL ) );
 		tools->Add( lblfilter, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3 );
 		tools->Add( m_filter, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3 );
-		m_show_calculated = new wxCheckBox(this, ID_SHOW_CALCULATED, "Show calculated inputs");
-		m_show_calculated->SetForegroundColour(*wxWHITE);
-		tools->Add(m_show_calculated, 0, wxALL | wxALIGN_CENTER_VERTICAL, 3);
 		tools->AddStretchSpacer();
 		tools->Add(new wxMetroButton(this, wxID_HELP, "Help"), 0, wxALL | wxEXPAND, 0);
 
@@ -909,7 +905,7 @@ void VariableGridFrame::SizeColumns()
 	std::vector<int> col_width(m_grid->GetNumberCols(), 60);
 	for (row = 0; row< m_grid->GetNumberRows(); row++)
 	{
-		if (m_griddata->ShowRow(row, m_compare_show_type, m_show_calculated->GetValue()))
+		if (m_griddata->ShowRow(row, m_compare_show_type, m_show_calculated))
 		{
 			for (col = 0; col < m_grid->GetNumberCols(); col++)
 			{
@@ -942,7 +938,7 @@ void VariableGridFrame::UpdateGrid()
 				|| (target.Lower().Find( filter ) >= 0);
 		}
 
-		if (show && m_griddata->ShowRow(row, m_compare_show_type, m_show_calculated->GetValue()))
+		if (show && m_griddata->ShowRow(row, m_compare_show_type, m_show_calculated))
 		{
 			m_grid->ShowRow(row);
 		}
@@ -960,9 +956,14 @@ void VariableGridFrame::OnCommand(wxCommandEvent &evt)
 	case ID_VIEW_BTN:
 		{
 			wxMetroPopupMenu menu;
-			menu.AppendCheckItem(ID_SHOW_DIFFERENT, "Show different values", m_compare_show_type == COMPARE_SHOW_DIFFERENT);
-			menu.AppendCheckItem(ID_SHOW_SAME, "Show equal values", m_compare_show_type == COMPARE_SHOW_SAME);
-			menu.AppendCheckItem(ID_SHOW_ALL, "Show all values", m_compare_show_type == COMPARE_SHOW_ALL);		
+			if ( m_cases.size() >= 2 )
+			{
+				menu.AppendCheckItem(ID_SHOW_DIFFERENT, "Show different values", m_compare_show_type == COMPARE_SHOW_DIFFERENT);
+				menu.AppendCheckItem(ID_SHOW_SAME, "Show equal values", m_compare_show_type == COMPARE_SHOW_SAME);
+				menu.AppendCheckItem(ID_SHOW_ALL, "Show all values", m_compare_show_type == COMPARE_SHOW_ALL);		
+				menu.AppendSeparator();
+			}
+			menu.AppendCheckItem(ID_SHOW_CALCULATED, "Show calculated values", m_show_calculated );
 			wxPoint p = m_btn_view->ClientToScreen( wxPoint( 0, m_btn_view->GetClientSize().y ) );
 			menu.Popup( m_btn_view, p, wxTOP|wxLEFT );
 		}
@@ -1008,6 +1009,7 @@ void VariableGridFrame::OnCommand(wxCommandEvent &evt)
 		UpdateGrid();
 		break;
 	case ID_SHOW_CALCULATED:
+		m_show_calculated = !m_show_calculated;
 		UpdateGrid();
 		break;
 	}

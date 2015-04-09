@@ -116,7 +116,7 @@ private:
 	wxMetroButton *m_btn_export, *m_btn_view;
 	wxTextCtrl *m_filter;
 	wxBoxSizer *m_sizer;
-	wxCheckBox *m_show_calculated;
+	bool m_show_calculated;
 
 	void GetTextData(wxString &dat, char sep);
 	void CopyToClipboard();
