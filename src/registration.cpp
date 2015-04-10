@@ -1438,8 +1438,8 @@ void SamRegistration::OnConfirm( wxCommandEvent & )
 
 	m_output->SetForegroundColour( wxMetroTheme::Colour( wxMT_TEXT ) );
 	wxBusyCursor curs;
-	wxString email = m_email->GetValue();
-	wxString key = m_key->GetValue();
+	wxString email = m_email->GetValue().Trim().Trim(false);
+	wxString key = m_key->GetValue().Trim().Trim(false);
 	
 	SamApp::Settings().Write("user-email-" + GetVersionAndPlatform(), email );
 	SamApp::Settings().Write("user-key-" + GetVersionAndPlatform(), key );
