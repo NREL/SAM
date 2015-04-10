@@ -83,7 +83,7 @@ struct wfvec {
 
 static void fcall_dview_solar_data_file( lk::invoke_t &cxt )
 {
-	LK_DOC("dview_solar", "Read a solar weather data file on disk (*.tm2,*.tm3,*.epw,*.smw) and popup a frame with a data viewer.", "(string:filename):boolean");
+	LK_DOC("dview_solar", "Read a solar weather data file on disk (*.csv,*.tm2,*.tm3,*.epw,*.smw) and popup a frame with a data viewer.", "(string:filename):boolean");
 
 	wxString file( cxt.arg(0).as_string() );
 	if ( !wxFileExists( file ) ) {
