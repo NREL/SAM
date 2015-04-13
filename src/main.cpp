@@ -64,9 +64,11 @@ static const char *beta_disclaimer =
 #include "script.h"
 
 // application globals
-int g_verMajor = 2015;
-int g_verMinor = 4;
-int g_verMicro = 10;
+static SamApp::ver releases[] = {
+	{ 2015,  4, 10 },
+	{ 2015,  1, 30 },
+	{ 2014, 11, 24 },
+	{    0,  0,  0 } };
 
 static wxArrayString g_appArgs;
 static MainWindow *g_mainWindow = 0;
@@ -692,45 +694,100 @@ bool MainWindow::LoadProject( const wxString &file )
 	if ( file.IsEmpty() || !wxFileExists( file ) )
 		return false;
 
-	m_project.Clear();
-	if ( m_project.ReadArchive( file ) )
+	ProjectFile pf;
+	if ( !pf.ReadArchive( file ) )
+		return false;
+	 
+	int major, minor, micro;
+	size_t file_ver = pf.GetVersionInfo( &major, &minor, &micro );
+	
+	int sammajor, samminor, sammicro;
+	size_t sam_ver = SamApp::Version( &sammajor, &samminor, &sammicro );
+	
+	if ( file_ver > sam_ver )
 	{
-		m_topBook->SetSelection( 1 );
-		std::vector<Case*> cases = m_project.GetCases();
-		for( size_t i=0;i<cases.size();i++ )
-			CreateCaseWindow( cases[i] );
+		wxMessageBox( wxString::Format("The file '%s' was last saved using SAM version %d.%d.%d.\n"
+				"You are currently running SAM version %d.%d.%d.\n\n"
+				"Please upgrade to the latest version of SAM to open this file.",
+				(const char*)wxFileNameFromPath(file).c_str(), 
+				major, minor, micro, 
+				sammajor, samminor, sammicro ),
+				"Version Error", wxICON_ERROR );
 
-		// restore UI view properties
-		wxArrayString ordered_tabs = wxSplit( m_project.GetProperty( "ui.case_tab_order" ), '|' );
-		wxArrayString tabs = m_caseTabList->GetLabels();
-		
-		// re-add tabs in order that they were saved
-		m_caseTabList->Clear();
-		for( size_t i=0;i<ordered_tabs.size();i++ )
+		return false;
+	}
+
+
+	if ( file_ver < sam_ver )
+	{
+		if ( wxNO == wxMessageBox( wxString::Format("The file '%s' was created using SAM version %d.%d.%d.\n"
+				"You are currently running SAM version %d.%d.%d.\n\n"
+				"Do you wish to upgrade your project to the current version of SAM?  Once saved, you will not be able to open this file in the old version of SAM.",
+				(const char*)wxFileNameFromPath(file).c_str(), 
+				major, minor, micro, 
+				sammajor, samminor, sammicro ),
+				"Upgrade Project", wxYES_NO ) )
 		{
-			if ( tabs.Index( ordered_tabs[i] ) >= 0 ) 
-			{ // only add a tab from the ordered list if it actually is a case
-				m_caseTabList->Append( ordered_tabs[i] );
-				tabs.Remove( ordered_tabs[i] );
-			}
+			return false;
 		}
 
-		// add any tabs originally in the case list that the ordered list
-		// did not have for some strange reason
-		for( size_t i=0;i<tabs.size();i++)
-			m_caseTabList->Append( tabs[i] );
+		wxBusyInfo info( "Upgrading project file to current SAM version..." );
+		
+		VersionUpgrade upgd;
+		upgd.Run( pf );
 
-		SwitchToCaseWindow( m_project.GetProperty( "ui.selected_case") );
+		// show HTML dialog upgrade report		
+		wxFrame *frm = new wxFrame( SamApp::Window(), wxID_ANY, "Project File Upgrade Report", wxDefaultPosition, wxSize(800,700), 
+			(wxCAPTION | wxCLOSE_BOX | wxCLIP_CHILDREN | wxRESIZE_BORDER | wxFRAME_TOOL_WINDOW | wxFRAME_FLOAT_ON_PARENT) );
+		wxHtmlWindow *html = new wxHtmlWindow( frm, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxHW_DEFAULT_STYLE|wxBORDER_NONE );
+		html->SetPage( upgd.CreateHtmlReport() );
+		frm->CenterOnParent();
+		frm->Show();
 
-		m_caseTabList->Refresh();
-
-		m_projectFileName = file;
-		UpdateFrameTitle();
-		SamApp::FileHistory().AddFileToHistory( file );
-		m_welcomeScreen->UpdateRecentList();
-		return true;
+		
+		// update version information in project to current SAM
+		m_project.SetVersionInfo( sammajor, samminor, sammicro );
 	}
-	else return false;
+
+	// copy over project file data,
+	// but don't copy PF event listeners
+	m_project.Copy( pf, false );
+		
+	m_topBook->SetSelection( 1 );
+	std::vector<Case*> cases = m_project.GetCases();
+	for( size_t i=0;i<cases.size();i++ )
+		CreateCaseWindow( cases[i] );
+
+	// restore UI view properties
+	wxArrayString ordered_tabs = wxSplit( m_project.GetProperty( "ui.case_tab_order" ), '|' );
+	wxArrayString tabs = m_caseTabList->GetLabels();
+		
+	// re-add tabs in order that they were saved
+	m_caseTabList->Clear();
+	for( size_t i=0;i<ordered_tabs.size();i++ )
+	{
+		if ( tabs.Index( ordered_tabs[i] ) >= 0 ) 
+		{ // only add a tab from the ordered list if it actually is a case
+			m_caseTabList->Append( ordered_tabs[i] );
+			tabs.Remove( ordered_tabs[i] );
+		}
+	}
+
+	// add any tabs originally in the case list that the ordered list
+	// did not have for some strange reason
+	for( size_t i=0;i<tabs.size();i++)
+		m_caseTabList->Append( tabs[i] );
+
+	SwitchToCaseWindow( m_project.GetProperty( "ui.selected_case") );
+
+	m_caseTabList->Refresh();
+
+	m_projectFileName = file;
+	UpdateFrameTitle();
+	SamApp::FileHistory().AddFileToHistory( file );
+	m_welcomeScreen->UpdateRecentList();
+
+	return true;	
 }
 
 bool MainWindow::SaveProject( const wxString &file )
@@ -1521,7 +1578,11 @@ extern void RegisterReportObjectTypes();
 	
 	
 	wxLogStatus( "startup version %d.%d.%d with SSC version %d, %s", 
-		g_verMajor, g_verMinor, g_verMicro,ssc_version(), ssc_build_info() );
+		releases[0].major,
+		releases[0].minor,
+		releases[0].micro,
+		ssc_version(),
+		ssc_build_info() );
 	
 	SplashScreen splash;
 	splash.CenterOnScreen();
@@ -2174,9 +2235,29 @@ void SamApp::ShowHelp( const wxString &context )
 }
 
 wxString SamApp::VersionStr() { return wxString::Format("%d.%d.%d", VersionMajor(), VersionMinor(), VersionMicro());};
-int SamApp::VersionMajor() { return g_verMajor; }
-int SamApp::VersionMinor() { return g_verMinor; }
-int SamApp::VersionMicro() { return g_verMicro; }
+int SamApp::VersionMajor() { return releases[0].major; }
+int SamApp::VersionMinor() { return releases[0].minor; }
+int SamApp::VersionMicro() { return releases[0].micro; }
+size_t SamApp::Version( int *maj, int *min, int *mic, int nr )
+{
+	if ( nr >= NumReleases() ) return 0;
+	if( maj ) *maj = releases[nr].major;
+	if( min ) *min = releases[nr].minor;
+	if( mic ) *mic = releases[nr].micro;
+	return VERSION_VALUE( releases[nr].major, releases[nr].minor, releases[nr].micro );
+}
+
+size_t sam_version( int *maj, int *min, int *mic )
+{
+	return SamApp::Version( maj, min, mic, 0 );
+}
+
+int SamApp::NumReleases()
+{
+	int n=0;
+	while( releases[n++].major != 0 );
+	return n;
+}
 
 wxWindow *SamApp::CurrentActiveWindow()
 {

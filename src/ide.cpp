@@ -1670,6 +1670,10 @@ IDEWindow::IDEWindow( wxWindow *parent )
 	m_defaultsMgr = new DefaultsManager( m_notebook );
 	m_notebook->AddPage( m_defaultsMgr, "Defaults manager" );
 
+	m_versionPanel = new ScriptPanel( m_notebook, "versions.lk" );
+	m_versionPanel->AddLibrary( VersionUpgrade::invoke_functions(), "Version Upgrade" );
+	m_notebook->AddPage( m_versionPanel, "Version upgrade" );
+
 	m_notebook->Refresh();
 }
 

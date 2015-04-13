@@ -2,11 +2,14 @@
 #define __project_h
 
 #include <vector>
+#include <lk_env.h>
 
 #include "object.h"
 
 class Case;
 class ProjectFile;
+
+#define VERSION_VALUE( maj, min, mic )  ( ((size_t)(maj)) * 10000 + ((size_t)(min))*1000 + ((size_t)(mic)) )
 
 class ProjectFileEvent
 {
@@ -36,8 +39,10 @@ class ProjectFile
 {
 public:
 	ProjectFile();
+	ProjectFile( const ProjectFile &cpy );
 	virtual ~ProjectFile();
 
+	void Copy( const ProjectFile &rhs, bool listeners_too = true );
 	void Clear();
 	
 	// managing cases
@@ -81,6 +86,9 @@ public:
 	void SetSaveHourlyData( bool b ) { m_saveHourlyData = b; }
 	bool GetSaveHourlyData() { return m_saveHourlyData; }
 
+	void SetVersionInfo( int maj, int min, int mic );
+	size_t GetVersionInfo( int *maj=0, int *min=0, int *mic=0 );
+
 private:
 	ObjectCollection m_cases;
 	ObjectCollection m_objects;
@@ -89,7 +97,51 @@ private:
 	bool m_saveHourlyData;
 	bool m_modified;
 	std::vector<ProjectFileEventListener*> m_listeners;
+	int m_verMajor, m_verMinor, m_verMicro;
 };
+
+
+class VersionUpgrade 
+{
+public:
+	enum { FAIL, WARNING, NOTICE, CONFIG_CHANGE, VAR_ADDED, VAR_CHANGED };
+	
+	struct log {
+		log() { type = FAIL; }
+		log( int ty, const wxString &m )
+			: type(ty), message(m) {};
+
+		int type;
+		wxString message;
+	};
+
+	typedef unordered_map< wxString, std::vector<log>, wxStringHash, wxStringEqual > LogInfo;
+
+
+public:
+	VersionUpgrade();
+	bool Run( ProjectFile &pf );
+		
+	std::vector<log> &GetLog( const wxString &casename = wxEmptyString );
+
+	Case *GetCase() { return m_case; }
+	wxString GetName() { return m_name; }
+
+	wxString CreateHtmlReport();
+
+	static lk::fcall_t* invoke_functions();
+private:
+	LogInfo m_log;
+	Case *m_case;
+	wxString m_name;
+	lk::env_t m_env;	
+	std::vector<log> m_generalLog;
+
+	void WriteHtml( const wxString &section, const std::vector<log> &log, wxString &html );
+
+	bool Invoke( Case *c, const wxString &name, lk::node_t *root );
+};
+
 
 
 #endif
