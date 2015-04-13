@@ -37,12 +37,26 @@ ObjectCollection::ObjectCollection()
 {
 }
 
+ObjectCollection::ObjectCollection( const ObjectCollection &rhs )
+{
+	Copy( rhs );
+}
+
 ObjectCollection::~ObjectCollection()
 {
 	for ( iterator it = begin();
 		it != end();
 		++it )
 		delete it->second;
+}
+
+void ObjectCollection::Copy( const ObjectCollection &rhs )
+{
+	Clear();
+	for( ObjectCollection::const_iterator it = rhs.begin();
+		it != rhs.end();
+		++it )
+		Add( it->first, it->second->Duplicate() );
 }
 
 void ObjectCollection::Clear()

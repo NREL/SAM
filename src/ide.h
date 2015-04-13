@@ -137,6 +137,7 @@ private:
 	ScriptPanel *m_lossDiagramPanel;
 	SamReportWindow *m_reportEditorPanel;
 	DefaultsManager *m_defaultsMgr;
+	ScriptPanel *m_versionPanel;
 
 	//SimulationScriptPanel *m_simPanel;
 

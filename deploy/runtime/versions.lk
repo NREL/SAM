@@ -1,0 +1,31 @@
+
+version_upgrade{'2015.4.10'} = define() {
+	message('upgrading project to version 2015.4.30');	
+};
+
+version_upgrade{'2015.1.30'} = define() {
+	const cfg = config();
+	
+	message('upgrading project to version 2015.1.30');
+	
+	// handle changes in the PVwatts model, all configurations	
+	if ( cfg.tech == 'PVWatts' )
+	{
+		value( 'loss_derate', 1-value('dc_ac_ratio')*0.01 );
+		value( 'new_variable', 23.49 );
+		value( 'dc_ac_ratio', 1.12 );
+		message('Overwrote your old DC/AC ratio!', 'warning');
+	}
+	
+	if ( cfg.fin == 'Single Owner' )
+	{
+		message('Dont use this financial model anymore - beware!', 'error');
+	}
+	
+};
+
+
+
+version_upgrade{'2014.11.24'} = define() {
+	message( 'version upgrade for 2014.11.24: nothing to do!', 'notice');
+};
