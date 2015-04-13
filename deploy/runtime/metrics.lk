@@ -18,6 +18,11 @@ function third_party_metrics()
 	metric( 'npv', {'label'='Net savings over agreement term*', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
 }
 
+function lcoefcr_metrics()
+{
+	metric( 'lcoe', {'label'='Levelized cost of energy', 'mode'='f', 'deci'='2', 'post'='\u00A2/kWh' , 'scale'='100'} );
+}
+
 function ipp_metrics()
 {
 	metric( 'lcoe_nom', {'label'='LCOE (Nominal)', 'post'=' \u00A2/kWh', 'mode'='f', 'deci'='2' } );
@@ -265,6 +270,7 @@ metrics{ 'Residential' } = define() { rescom_metrics(); };
 metrics{ 'Commercial' } = define() { rescom_metrics(); };
 metrics{ 'Commercial PPA' } = define() { ipp_metrics(); };
 metrics{ 'Third Party' } = define() { third_party_metrics(); };
+metrics{ 'LCOE Calculator' } = define() { lcoefcr_metrics(); };
 metrics{ 'Independent Power Producer' } = define() { ipp_metrics(); };
 metrics{ 'Single Owner' } = define() { so_metrics(); };
 metrics{ 'All Equity Partnership Flip' } = define() { aepf_metrics(); };
