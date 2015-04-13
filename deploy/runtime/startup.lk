@@ -1,23 +1,23 @@
 // SAM startup script.
 
 // define all the configurations
-addconfig( 'Flat Plate PV', ['Residential', 'Commercial', 'Third Party', 'Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'None'] );
-addconfig( 'PVWatts', [ 'Residential', 'Commercial', 'Third Party', 'Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'None' ] );
+addconfig( 'Flat Plate PV', ['Residential', 'Commercial', 'Third Party', 'Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None'] );
+addconfig( 'PVWatts', [ 'Residential', 'Commercial', 'Third Party', 'Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None' ] );
 //addconfig( 'PVWatts_battery', [ 'Residential', 'Commercial'] );
-addconfig( 'High-X Concentrating PV', ['Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'None']);
-addconfig( 'Wind Power', [ 'Residential', 'Commercial', 'Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'None'] );
-addconfig( 'Biopower', ['Commercial', 'Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'None']);
-addconfig( 'Geothermal Power', ['Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'None']);
-addconfig( 'Solar Water Heating', ['Residential', 'Commercial', 'None']);
-addconfig( 'Generic System', ['Residential', 'Commercial', 'Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'None']);
-addconfig( 'Physical Trough', ['Commercial','Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'None']);
-addconfig( 'Empirical Trough', ['Commercial','Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'None']);
+addconfig( 'High-X Concentrating PV', ['Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
+addconfig( 'Wind Power', [ 'Residential', 'Commercial', 'Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None'] );
+addconfig( 'Biopower', ['Commercial', 'Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
+addconfig( 'Geothermal Power', ['Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
+addconfig( 'Solar Water Heating', ['Residential', 'Commercial', 'LCOE Calculator', 'None']);
+addconfig( 'Generic System', ['Residential', 'Commercial', 'Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
+addconfig( 'Physical Trough', ['Commercial','Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
+addconfig( 'Empirical Trough', ['Commercial','Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
 addconfig( 'MSPT', ['Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback']);
 addconfig( 'DSPT', ['Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback']);
-addconfig( 'MSLF', ['Commercial','Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'None']);
-addconfig( 'DSLF', ['Commercial','Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'None']);
-addconfig( 'Dish Stirling', ['Commercial','Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'None']);
-addconfig( 'Generic CSP System', ['Commercial','Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'None']);
+addconfig( 'MSLF', ['Commercial','Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
+addconfig( 'DSLF', ['Commercial','Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
+addconfig( 'Dish Stirling', ['Commercial','Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
+addconfig( 'Generic CSP System', ['Commercial','Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
 addconfig( 'ISCC', ['Single Owner']);
 
 
@@ -40,8 +40,9 @@ configopt( 'DSLF',        				  { 'long_name'='CSP linear Fresnel direct steam',
 configopt( 'MSLF',        				  { 'long_name'='CSP linear Fresnel molten salt',         'short_name'='Fresnel (salt)',    'description'='CSP power system that uses long small mirrors to line focus sunlight on fixed receiver tubes mounted above them.' } );
 configopt( 'ISCC',                        { 'long_name'='CSP Integrated Solar Combined Cycle',    'short_name'='Tower (salt-ISCC)', 'description'='A triple pressure NGCC cycle connected to a molten salt power tower solar field/receiver' } );
 
+configopt( 'LCOE Calculator',             { 'long_name'='LCOE calculator (FCR method)',           'short_name'='LCOE Calculator',  'description'='Calculate LCOE using fixed charge rate method' } );
 configopt( 'Residential',                 { 'long_name'='Residential (distributed)',           	  'short_name'='Residential',      'description'='Renewable energy system displaces residential home electric load' } );
-configopt( 'Third Party',                 { 'long_name'='Third Party Ownership',           	      'short_name'='Third Party',      'description'='Renewable energy system owned by a third party displacing electric load' } );
+configopt( 'Third Party',                 { 'long_name'='Third party ownership',           	      'short_name'='Third Party',      'description'='Renewable energy system owned by a third party displacing electric load' } );
 configopt( 'Commercial',                  { 'long_name'='Commercial (distributed)',        		  'short_name'='Commercial',       'description'='Renewable energy system displaces commercial building electric load' } );
 configopt( 'Commercial PPA',              { 'long_name'='PPA single owner debt fraction',         'short_name'='SO debt fraction', 'description'='Single owner PPA with debt fraction and analysis period IRR, and financial constraints and optimization' } );
 configopt( 'Independent Power Producer',  { 'long_name'='PPA single owner financial constraints', 'short_name'='SO constraints',   'description'='Single owner PPA with debt fraction and analysis period IRR, and financial optimization' } );
@@ -136,6 +137,12 @@ function setup_thirdparty_pages() // FOR NOW, THIRD PARTY OWNERSHIP MODEL IS ONL
            { 'sidebar'='Financial Parameters', 'help'='fin_thirdparty'} );
   setup_utility_rate();
   setup_elec_load_page( LOAD_BELPE ); // BELPE IS VALID FOR BOTH PVWATTS AND PV DETAILED
+}
+
+function setup_lcoefcr_pages() // LCOE calculator will not work with tower models because cost inputs required for solar pilot
+{
+  addpage( [[ 'Financial LCOE Calculator']],
+           { 'sidebar'='Financial Parameters', 'help'='fin_lcoefcr'} );
 }
 
 function setup_commercial_pages( mode, degradation ) // mode determines whether or not the building load calculator is included (see function:setup_elec_load_page)
@@ -393,6 +400,10 @@ function setup_geothermal_power_pages()
 
 
 // CSP - Empirical Trough ///////////////////////////////////////////////////////
+setconfig( 'Empirical Trough', 'LCOE Calculator' );
+setmodules( ['tcstrough_empirical']);
+setup_csp_empirical_trough_pages();
+
 setconfig( 'Empirical Trough', 'None' );
 setmodules( ['tcstrough_empirical']);
 setup_csp_empirical_trough_pages();
@@ -442,6 +453,11 @@ setup_all_equity_partnership_flip_pages(true);
 
 
 // Flat Plate PV ////////////////////////////////////////////////////////////////
+setconfig( 'Flat Plate PV', 'LCOE Calculator' );
+setup_flat_plate_pv_pages();
+setmodules( ['pvsamv1', 'lcoefcr'] );
+setup_lcoefcr_pages();
+
 setconfig( 'Flat Plate PV', 'None' );
 setup_flat_plate_pv_pages();
 setmodules( ['pvsamv1'] );
@@ -465,7 +481,6 @@ setup_flat_plate_pv_pages();
 addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
 setup_commercial_pages(0,true); //belpe not valid for commercial
 setup_battery_pages();
-
 
 setconfig( 'Flat Plate PV', 'Commercial PPA' );	
 setmodules( ['pvsamv1', 'ippppa']);
@@ -505,10 +520,13 @@ setup_single_owner_pages(true);
 
 
 // CSP - Physical Trough ///////////////////////////////////////////////////////
-setconfig( 'Physical Trough', 'None' );
+setconfig( 'Physical Trough', 'LCOE Calculator' );
 setmodules( ['tcstrough_physical']);
 setup_csp_physical_trough_pages();
 
+setconfig( 'Physical Trough', 'None' );
+setmodules( ['tcstrough_physical']);
+setup_csp_physical_trough_pages();
 
 setconfig( 'Physical Trough', 'Commercial' );
 setmodules( ['tcstrough_physical', 'utilityrate3', 'cashloan']);
@@ -554,6 +572,11 @@ setup_single_owner_pages(true);
 
 
 // PVWatts /////////////////////////////////////////////////////////////////////
+setconfig( 'PVWatts', 'LCOE Calculator' );
+setmodules( ['pvwattsv5']);
+setup_pvwatts_pages();
+setup_lcoefcr_pages();
+
 setconfig( 'PVWatts', 'None' );
 setmodules( ['pvwattsv5']);
 setup_pvwatts_pages();
@@ -632,6 +655,8 @@ addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', '
 setup_single_owner_pages(true);
 
 // Wind Power //////////////////////////////////////////////////////////////////
+
+//-----------------------------------------------------
 setconfig( 'Wind Power', 'Residential' );	
 setmodules( ['windpower',  'utilityrate3', 'cashloan']);
 setup_windpower_pages();
@@ -703,6 +728,12 @@ addpage( [['Wind Farm Costs','O and M Costs',
 		{ 'sidebar'='System Costs', 'help'='wind_system_costs' } );
 setup_single_owner_pages(true);
 
+//-----------------------------------------------------
+setconfig( 'Wind Power', 'LCOE Calculator' );	
+setmodules( ['windpower',  'lcoefcr']);
+setup_windpower_pages();
+setup_lcoefcr_pages();		
+
  /*addpage( [[ 'Financial DSIRE Download',
               { 'name'='Financial Tax Credits','caption'='Tax Credits','collapsible'=true,'collapsible_var'='show_tax_credits', 'collapsed_by_default'=false },
               { 'name'='Financial Cash Incentives','caption'='Direct Cash Incentives','collapsible'=true,'collapsible_var'='show_cash_incentives', 'collapsed_by_default'=false } ]], 
@@ -714,6 +745,11 @@ setup_windpower_pages();
 
 
 // Solar Water Heating /////////////////////////////////////////////////////////
+setconfig( 'Solar Water Heating', 'LCOE Calculator');
+setmodules( ['swh',  'lcoefcr'] );
+setup_solar_water_heating_pages();
+setup_lcoefcr_pages();
+
 setconfig( 'Solar Water Heating', 'None');
 setmodules( ['swh'] );
 setup_solar_water_heating_pages();
@@ -764,6 +800,12 @@ setmodules( ['geothermal', 'singleowner']);
 setup_geothermal_power_pages();
 addpage( [[ 'Geothermal Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='shw_system_costs' } );
 setup_single_owner_pages(false);
+
+//-----------------------------------------------------
+setconfig( 'Geothermal Power', 'LCOE Calculator' );
+setmodules( ['geothermal',  'lcoefcr']);
+setup_geothermal_power_pages();
+setup_lcoefcr_pages();	
 
 //-----------------------------------------------------
 setconfig( 'Geothermal Power', 'None' );
@@ -830,6 +872,12 @@ setmodules( ['generic_system', 'singleowner']);
 setup_generic_system_pages();
 addpage( [[ 'Generic System Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='generic_system_costs' } );
 setup_single_owner_pages(true);
+
+//-----------------------------------------------------
+setconfig( 'Generic System', 'LCOE Calculator' );
+setmodules( ['generic_system',  'lcoefcr']);
+setup_generic_system_pages();
+setup_lcoefcr_pages();	
 
 //-----------------------------------------------------
 setconfig( 'Generic System', 'None' );
@@ -900,6 +948,12 @@ addpage( [[ 'Generic CSP System Costs','O and M Costs']],{ 'sidebar'='System Cos
 setup_single_owner_pages(true);
 
 //-----------------------------------------------------
+setconfig( 'Generic CSP System', 'LCOE Calculator' );
+setmodules( ['tcsgeneric_solar',  'lcoefcr']);
+setup_generic_csp_pages();
+setup_lcoefcr_pages();	
+
+//-----------------------------------------------------
 setconfig( 'Generic CSP System', 'None' );
 setmodules( ['tcsgeneric_solar']);
 setup_generic_csp_pages();
@@ -947,6 +1001,12 @@ setmodules( ['hcpv', 'singleowner']);
 setup_hcpv_pages();
 addpage( [[ 'HCPV Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='pv_system_costs' } );
 setup_single_owner_pages(true);
+
+//-----------------------------------------------------
+setconfig( 'High-X Concentrating PV', 'LCOE Calculator' );
+setmodules( ['hcpv',  'lcoefcr']);
+setup_hcpv_pages();
+setup_lcoefcr_pages();
 
 //-----------------------------------------------------
 setconfig( 'High-X Concentrating PV', 'None' );
@@ -1013,6 +1073,12 @@ setmodules( ['tcsdish', 'singleowner']);
 setup_dish_stirling_pages();
 addpage( [[ 'Dish Capital Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='dish_system_costs' } );
 setup_single_owner_pages(true);
+
+//-----------------------------------------------------
+setconfig( 'Dish Stirling', 'LCOE Calculator' );
+setmodules( ['tcsdish',  'lcoefcr']);
+setup_dish_stirling_pages();
+setup_lcoefcr_pages();	
 
 //-----------------------------------------------------
 setconfig( 'Dish Stirling', 'None' );
@@ -1085,6 +1151,12 @@ addpage( [[ 'Biopower Feedstock Costs' ]], { 'sidebar'='Feedstock Costs', 'help'
 setup_single_owner_pages(true);
 
 //-----------------------------------------------------
+setconfig( 'Biopower', 'LCOE Calculator' );
+setmodules( ['biomass',  'lcoefcr']);
+setup_biopower_pages();
+setup_lcoefcr_pages();	
+
+//-----------------------------------------------------
 setconfig( 'Biopower', 'None' );
 setmodules( ['biomass']);
 setup_biopower_pages();
@@ -1103,8 +1175,6 @@ function setup_MSPT_pages()
 }
 
 //-----------------------------------------------------
-
-
 setconfig( 'MSPT', 'Leveraged Partnership Flip' );
 setmodules( ['tcsmolten_salt', 'levpartflip']);
 setup_MSPT_pages();
@@ -1164,10 +1234,16 @@ function setup_DSLF_pages()
 	addpage( [[ 'Linear Fresnel Parasitics' ]], { 'sidebar'='Parasitics', 'help'='dslf_parasitics' } );
 }
 
+//-----------------------------------------------------
+setconfig( 'DSLF', 'LCOE Calculator' );
+setmodules( ['tcslinear_fresnel',  'lcoefcr']);
+setup_DSLF_pages();
+setup_lcoefcr_pages();	
+
+//-----------------------------------------------------
 setconfig( 'DSLF', 'None' );
 setmodules( ['tcslinear_fresnel']);
 setup_DSLF_pages();
-
 
 //-----------------------------------------------------
 setconfig( 'DSLF', 'Commercial' );	
@@ -1176,7 +1252,6 @@ setup_DSLF_pages();
 addpage( [[ 'Linear Fresnel Capital Costs','O and M Costs']], { 'sidebar'='System Costs', 'help'='lf_system_costs' } );
 setup_commercial_pages(0,true); //belpe not valid for commercial
 
-//-----------------------------------------------------
 //-----------------------------------------------------
 setconfig( 'DSLF', 'Leveraged Partnership Flip' );
 setmodules( ['tcslinear_fresnel', 'levpartflip']);
@@ -1218,8 +1293,6 @@ function setup_DSPT_pages()
 }
 
 //-----------------------------------------------------
-
-
 setconfig( 'DSPT', 'Leveraged Partnership Flip' );
 setmodules( ['tcsdirect_steam', 'levpartflip']);
 setup_DSPT_pages();
@@ -1264,10 +1337,16 @@ function setup_MSLF_pages()
 	addpage( [[ 'Molten Salt Linear Fresnel Parasitics' ]], { 'sidebar'='Parasitics', 'help'='mslf_parasitics' } );
 }
 
+//-----------------------------------------------------
+setconfig( 'MSLF', 'LCOE Calculator' );
+setmodules( ['tcsMSLF',  'lcoefcr']);
+setup_MSLF_pages();
+setup_lcoefcr_pages();	
+
+//-----------------------------------------------------
 setconfig( 'MSLF', 'None' );
 setmodules( ['tcsMSLF']);
 setup_MSLF_pages();
-
 
 //-----------------------------------------------------
 setconfig( 'MSLF', 'Commercial' );	
@@ -1304,5 +1383,3 @@ setmodules( ['tcsMSLF', 'singleowner']);
 setup_MSLF_pages();
 addpage( [[ 'Linear Fresnel Capital Costs','O and M Costs']], { 'sidebar'='System Costs', 'help'='lf_system_costs' } );
 setup_single_owner_pages(true);
-
-//-----------------------------------------------------
