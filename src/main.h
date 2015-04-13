@@ -266,6 +266,9 @@ private:
 class SamApp : public wxApp
 {
 public:
+
+	struct ver { int major, minor, micro; };
+
 	SamApp();
 	virtual bool OnInit();
 	virtual int OnExit();
@@ -288,6 +291,9 @@ public:
 	static int VersionMajor();
 	static int VersionMinor();
 	static int VersionMicro();
+	static size_t Version( int *maj=0, int *min=0, int *mic=0, int nrelease=0 );
+	static int NumReleases();
+
 	static wxWindow *CurrentActiveWindow();	
 	static void CheckForUpdates( bool quiet );
 
@@ -297,6 +303,9 @@ public:
 
 	static bool LoadAndRunScriptFile( const wxString &script_file, wxArrayString *errors = 0 );
 };
+
+// provide global function version for use in mswfatal.cpp
+size_t sam_version( int *maj=0, int *min=0, int *mic=0 );
 
 DECLARE_APP( SamApp );
 

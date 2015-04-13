@@ -22,12 +22,15 @@ class ConfigInfo;
 class CaseCallbackContext
 {
 	Case *m_case;
-	wxString m_desc;
+	wxString m_name;
 public:
-	CaseCallbackContext( Case *cc, const wxString &desc );
+	CaseCallbackContext( Case *cc, const wxString &name );
+
+	void SetCase( Case *cc, const wxString &name );
 
 	VarTable &GetValues();
 	Case &GetCase();
+	wxString GetName();
 
 	bool Invoke( lk::node_t *root, lk::env_t *parent );
 

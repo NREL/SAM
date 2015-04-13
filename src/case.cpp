@@ -11,12 +11,19 @@
 #include <lk_stdlib.h>
 
 
-CaseCallbackContext::CaseCallbackContext( Case *cc, const wxString &desc )
-	: m_case(cc), m_desc(desc)
+CaseCallbackContext::CaseCallbackContext( Case *cc, const wxString &name )
+	: m_case(cc), m_name(name)
 {	
 	// nothing to do
 }
 
+void CaseCallbackContext::SetCase( Case *cc, const wxString &name )
+{
+	m_case = cc;
+	m_name = name;
+}
+
+wxString CaseCallbackContext::GetName() { return m_name; }
 VarTable &CaseCallbackContext::GetValues() { return GetCase().Values(); }
 Case &CaseCallbackContext::GetCase() { return *m_case; }
 
@@ -66,7 +73,7 @@ bool CaseCallbackContext::Invoke( lk::node_t *root, lk::env_t *parent_env )
 		CaseScriptInterpreter e( root, &local_env, &GetValues(), m_case );
 		if ( !e.run() )
 		{
-			wxString text = "Could not evaluate callback function:" +  m_desc + "\n";
+			wxString text = "Could not evaluate callback function:" +  m_name + "\n";
 			for (size_t i=0;i<e.error_count();i++)
 				text += e.get_error(i);
 
@@ -74,7 +81,7 @@ bool CaseCallbackContext::Invoke( lk::node_t *root, lk::env_t *parent_env )
 		}
 		
 	} catch(std::exception &e ){
-		wxShowTextMessageDialog( "Could not evaluate callback function: " + m_desc + wxString("\n\n") + e.what());
+		wxShowTextMessageDialog( "Could not evaluate callback function: " + m_name + wxString("\n\n") + e.what());
 		return false;
 	}
 
@@ -314,7 +321,7 @@ bool Case::Read( wxInputStream &_i )
 	wxString fin = in.ReadString();
 
 	if ( !SetConfiguration( tech, fin ) )
-		wxMessageBox( "Notice: errors occurred while setting configuration during project file read.  Continuing...\n\n" + tech + "/" + fin );
+		wxLogStatus( "Notice: errors occurred while setting configuration during project file read.  Continuing...\n\n" + tech + "/" + fin );
 
 	// read in the variable table
 	LoadStatus di;

@@ -42,8 +42,10 @@ class ObjectCollection : public ObjectCollectionBase
 {
 public:
 	ObjectCollection();
+	ObjectCollection( const ObjectCollection &rhs );
 	virtual ~ObjectCollection();
 	
+	void Copy( const ObjectCollection &rhs );
 	void Clear();
 	virtual void clear() { this->Clear(); }
 	void Add( const wxString &name, Object * );

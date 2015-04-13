@@ -285,9 +285,8 @@ const char *ConvertSimpleException ( DWORD dwExcept )
     }
 }
 
-extern int g_verMajor;
-extern int g_verMinor;
-extern int g_verMicro;
+
+size_t sam_version( int *maj=0, int *min=0, int *mic=0 );
 int ssc_version();
 
 class ExceptionDialog : public wxDialog
@@ -303,11 +302,13 @@ public:
 		wxBitmap excbit( wxBITMAP_PNG_FROM_DATA( exception ) );
 		wxStaticBitmap *bitmap = new wxStaticBitmap( this, wxID_ANY, excbit );
 				
+		int major, minor, micro;
+		sam_version( &major, &minor, &micro );
 		wxString body;		
 		int nbit = (sizeof(void*) == 8) ? 64 : 32;
 		body += "Context information:\n\n";
 		body += wxString::Format("SAM %d.%d.%d, %d bit using SSC %d and wxWidgets %d.%d.%d\n", 
-			g_verMajor, g_verMinor, g_verMicro, nbit, ssc_version(), wxMAJOR_VERSION, wxMINOR_VERSION, wxRELEASE_NUMBER );
+			major, minor, micro, nbit, ssc_version(), wxMAJOR_VERSION, wxMINOR_VERSION, wxRELEASE_NUMBER );
 		body += "User name: " + wxGetUserName() + "\n";
 		body += "Home dir: " + wxGetHomeDir() + "\n";
 		body += "OS: " + wxGetOsDescription() + "\n";
