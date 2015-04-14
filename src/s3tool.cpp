@@ -779,8 +779,7 @@ bool ShadeAnalysis::SimulateDiffuse(bool save)
 	azi_max = 360;
 	alt_min = 1;
 	alt_max = 90;
-	// works best for Ivanhoe azi_step=9, alt_step=1
-	azi_step = 9;
+	azi_step = 10;
 	alt_step = 1;
 
 	size_t num_alt = (alt_max - alt_min+1) / alt_step;
