@@ -104,15 +104,16 @@ private:
 class VersionUpgrade 
 {
 public:
-	enum { FAIL, WARNING, NOTICE, CONFIG_CHANGE, VAR_ADDED, VAR_CHANGED };
+	enum { FAIL, WARNING, NOTICE, CONFIG_CHANGE, VAR_ADDED, VAR_CHANGED, VAR_DELETED };
 	
 	struct log {
 		log() { type = FAIL; }
-		log( int ty, const wxString &m )
-			: type(ty), message(m) {};
+		log( int ty, const wxString &m, const wxString &r=wxEmptyString )
+			: type(ty), message(m), reason(r) {};
 
 		int type;
 		wxString message;
+		wxString reason;
 	};
 
 	typedef unordered_map< wxString, std::vector<log>, wxStringHash, wxStringEqual > LogInfo;
@@ -127,7 +128,8 @@ public:
 	Case *GetCase() { return m_case; }
 	wxString GetName() { return m_name; }
 
-	wxString CreateHtmlReport();
+	void ShowReportDialog( const wxString &file );
+	wxString CreateHtmlReport( const wxString &file );
 
 	static lk::fcall_t* invoke_functions();
 private:

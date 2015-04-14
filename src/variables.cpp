@@ -55,20 +55,27 @@ void VarTable::clear()
 	VarTableBase::clear();
 }
 
-void VarTable::Delete( const wxString &name )
+bool VarTable::Delete( const wxString &name )
 {
 	iterator it = find(name);
 	if ( it != end() )
 	{
 		delete it->second;
 		erase( it );
+		return true;
 	}
+	else
+		return false;
 }
 
-void VarTable::Delete( const wxArrayString &names )
+int VarTable::Delete( const wxArrayString &names )
 {
+	int ndel = 0;
 	for( size_t i=0;i<names.size();i++ )
-		Delete( names[i] );
+		if ( Delete( names[i] ) )
+			ndel++;
+
+	return ndel;
 }
 
 wxArrayString VarTable::ListAll( std::vector<VarValue*> *vals )
