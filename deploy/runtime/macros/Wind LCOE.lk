@@ -1,0 +1,181 @@
+/*@
+<p>This macro replicates the LCOE method described in the NREL <em>2010 Cost of 
+Wind Energy Review</em>, which uses equations from Short et al. (1995) <em>A 
+Manual for Economic Evaluation of Energy Efficiency and Renewable Energy 
+Technologies</em>. This "FCR method" calculates the LCOE using four basic inputs:</p>
+<ul>
+<li>Initial capital cost (ICC)</li>
+<li>Annual operating expenses (AOE)</li>
+<li>Fixed charge rate (FCR)</li>
+<li>Net annual energy production (AEP)</li>
+</ul>
+<p>The macro compares the LCOE from the FCR method to the LCOE from SAM's cash 
+flow method, and also calculates the uniform capital recovery factor reported 
+as a metric in the <em>Review</em>.</p>
+<p>The macro inputs to the right are the basic inputs for the FCR method. The 
+inputs for the SAM "Generic System Model" case in <em>Wind LCOE Calibration.sam</em> 
+are set to be equivalent to the macro inputs in the following table, which are 
+the assumptions for the 2010 land-based scenario shown in Tables 1 and B-1
+in the <em>Review</em>. See the notes on the SAM input pages for details about
+the SAM inputs.</p>
+<div align=center><table bgcolor=#eeeeee width=60%>
+<tr><th>Input</th><th>Value</th></tr>
+<tr bgcolor=#ffffff><td>Installed Capital Cost ($/kW)</td><td>2,155</td></tr>
+<tr><td>Annual Operating Expenses ($/kW/yr</td><td>34</td></tr>
+<tr bgcolor=#ffffff><td>Nominal Fixed Charge Rate (%)</td><td>11.4</td></tr>
+<tr><td>Real Fixed Charge Rate (%)</td><td>9.5</td></tr>
+<tr bgcolor=#ffffff><td>Net Annual Energy Production (MWh/MW/yr)</td><td>3,345</td></tr>
+</table></div>
+<p>The inflation rate on the SAM input page was calculated from the assumptions 
+for real and nominal discount rates in Table B-1 (8% and 5.7%, respectively). 
+The number of significant digits in the macro inputs for FCR and SAM input for 
+inflation rate contribute to the discrpancy between the FCR method and SAM cash 
+flow results.</p>
+<p>Click <strong>Run macro</strong> above display tables comparing results from 
+SAM with results from the FCR method.</p>
+@*/
+// Macro user interface widgets
+//@ name=icc;type=number;label=Installed Capital Cost ($/kW);value=2155
+//@ name=aoe;type=number;label=Annual Operating Expenses ($/kW/yr);value=34
+//@ name=fcr_n;type=number;label=Nominal Fixed Charge Rate (%);value=11.4087
+//@ name=fcr_r;type=number;label=Real Fixed Charge Rate (%);value=9.52924
+//@ name=aep;type=number;label=Net Annual Energy Production (MWh/MW/yr);value=3345
+
+//Check that this macro was run from within a case
+if ( typeof(macro) == 'unknown' ) {
+	msgbox('This macro must be run from within a case.');
+	exit;
+}
+
+//functions for wind metrics
+// units
+//   d: fraction
+//   L: years
+//   Teff: fraction
+//   PVD: $
+//   fcr: fraction
+//   icc: $/kW
+//   aoe: $/kW/yr
+//   aep: MWh/MW/yr
+UCRF = define (d,L) { //UCRF p 21
+  return d/(1-(1/(1+d))^L);
+};
+FCR = define (d,L,Teff,PVD) { //FCR p 22
+  return d/(1-(1/(1+d))^L)*(1-(Teff*PVD))/(1-Teff);
+};
+LCOE = define (fcr,icc,aoe,aep) { //cents/kWh
+  return (fcr*icc + aoe)/aep *100;
+};
+
+PV = define (d,C) {
+  arr=alloc(#C);
+  for (n=0;n<#C;n++) arr[n]=C[n]/((1+d)^(n+1));
+  return sum(arr);
+};
+
+//get macro inputs
+m_fcr_n = macro.fcr_n/100;
+m_fcr_r = macro.fcr_r/100;
+m_icc = macro.icc;
+m_aoe = macro.aoe;
+m_aep = macro.aep;
+
+//get performance and financial model names from SAM case
+config = configuration();
+
+//macro LCOE
+LCOEmacro_n = LCOE(m_fcr_n,m_icc,m_aoe,m_aep);
+LCOEmacro_r = LCOE(m_fcr_r,m_icc,m_aoe,m_aep);
+CFmacro = m_aep/8760;
+
+if (config[1] == 'Simple LCOE' ) {
+sam_fcr_n = 0;
+sam_fcr_r = 0;
+sam_icc = 0;
+sam_aoe = 0;
+sam_aep = 0;
+sam_cf = 0;
+LCOEsam_fcr_n = 0;
+LCOEsam_fcr_r = 0;
+LPPA_n = 0;
+LPPA_r = 0;
+UCRF_n = 0;
+UCRF_r = 0;
+}
+else {
+//get SAM inputs
+d_n = get('nominal_discount_rate');
+d_r = get('real_discount_rate')/100;
+N = get('analysis_period');
+T = get('federal_tax_rate')/100; //effective tax rate
+OM = get('om_capacity'); //$/kW-yr
+//total installed cost by capacity variable different for different performance models
+//only checks for wind, generic system, otherwise assumes pv **NEEDS UPDATING**
+if ( config[0] == 'Generic System' ) C = get('genericsys.cost.installed_per_capacity')*1000;
+elseif ( config[0] == 'Wind Power')  C = get('total_installed_cost_per_kw'); //$/kW
+else C = get('installed_per_capacity')*1000;
+P=get('system_capacity'); //kW
+
+//get SAM outputs
+cases = list_cases();
+case = choose_from_list(cases,"Choose a case","Available Cases",0);
+active_case( case );
+simulate();
+Q = get('cf_energy_net'); //get('annual_energy');
+Q -@ 0; // remove Year 0 value, Q[0]=0
+CF = get('capacity_factor');
+LPPA_n=get('lppa_nom');
+LPPA_r=get('lppa_real');
+
+//wind metrics from SAM inputs
+UCRF_n = UCRF(d_n,N)*100;
+UCRF_r = UCRF(d_r,N)*100;
+V = alloc(6);
+V = [20,32,19.2,11.52,11.52,5.76]; //IRS 5-yr MACRS schedule percentages
+PVdep=PV(d_n,V); //Short p 24 says must use nominal discount rate
+FCR_n = FCR(d_n,N,T,PVdep/100)*100;
+FCR_r = FCR(d_r,N,T,PVdep/100)*100;
+
+//FCR method with SAM inputs
+sam_fcr_n = FCR_n/100;
+sam_fcr_r = FCR_r/100;
+sam_icc = C;
+sam_aoe = OM[0];
+sam_aep = Q[0]/P;
+sam_cf = CF;
+LCOEsam_fcr_n = LCOE(sam_fcr_n,sam_icc,sam_aoe,sam_aep);
+LCOEsam_fcr_r = LCOE(sam_fcr_r,sam_icc,sam_aoe,sam_aep);
+
+outln("Macro Capacity Factor (%) = "+CFmacro*100);
+outln("SAM Capacity Factor (%) = "+sam_cf);
+}
+
+str_html = '<html><body>' + 
+           '<h3>Inputs</h3>' + 
+           '<table bgcolor=#eeeeee width=100%>' + 
+           '<tr><th>Description</th><th>SAM*</th><th>Macro</th></tr>' + 
+           '<tr bgcolor=#ffffff><td>ICC ($/kW) </td><td>' + sam_icc + '</td><td>' + m_icc + '</td></tr>' +
+           '<tr><td>AOE ($/kW-yr) </td><td>' + sam_aoe + '</td><td>' + m_aoe + '</td></tr>' +             
+           '<tr bgcolor=#ffffff><td>Nominal FCR</td><td>' + sam_fcr_n + '</td><td>' + m_fcr_n + '</td></tr>' +             
+           '<tr><td>Real FCR</td><td>' + sam_fcr_r + '</td><td>' + m_fcr_r + '</td></tr>' +             
+           '<tr bgcolor=#ffffff><td>AEP (MWh/MW/yr)</td><td>' + sam_aep + '</td><td>' + m_aep + '</td></tr>' +             
+           '</table>' +
+           '<div>*The SAM "inputs" are calculated from the inputs in the ' + active_case() + ' case.</div>' +
+           '<p align=center>LCOE in cents/kWh = ( FCR * ICC + AOE ) / AEP * 100 </p>' +
+           '<h3>Nominal LCOE</h3>' + 
+           '<table bgcolor=#eeeeee border=0 width=100%>' + 
+           '<tr><th>Description</th><th>LCOE (cents/kWh)</th><th>FCR (%)</th><th>UCRF (%)</th></tr>' + 
+           '<tr bgcolor=#ffffff><td>FCR method with macro inputs</td><td>' + LCOEmacro_n + '</td><td>' + '(input)' + '</td><td>' + 'N/A' + '</td></tr>' +             
+           '<tr><td>FCR method with SAM inputs</td><td>' + LCOEsam_fcr_n + '</td><td>' + sam_fcr_n*100 + '</td><td>' + UCRF_n + '</td></tr>' +             
+           '<tr bgcolor=#ffffff><td>SAM cash flow method</td><td>' + LPPA_n + '</td><td>' + 'N/A' + '</td><td>' + 'N/A' + '</td></tr>' +             
+           '</table>' +
+           '<h3>Real LCOE</h3>' + 
+           '<table bgcolor=#eeeeee border=0 width=100%>' + 
+           '<tr><th>Description</th><th>LCOE (cents/kWh)</th><th>FCR (%)</th><th>UCRF (%)</th></tr>' + 
+           '<tr bgcolor=#ffffff><td>FCR method with macro inputs</td><td>' + LCOEmacro_r + '</td><td>' + '(input)' + '</td><td>' + 'N/A' + '</td></tr>' +             
+           '<tr><td>FCR method with SAM inputs</td><td>' + LCOEsam_fcr_r + '</td><td>' + sam_fcr_r*100 + '</td><td>' + UCRF_r + '</td></tr>' +             
+           '<tr bgcolor=#ffffff><td>SAM cash flow method</td><td>' + LPPA_r + '</td><td>' + 'N/A' + '</td><td>' + 'N/A' + '</td></tr>' +             
+           '</table>' +
+           '</body></html>';
+
+html_dialog ( str_html , "Comparison of FCR and SAM Cash Flow Methods for Calculating LCOE" , [300,300,600,600]);
