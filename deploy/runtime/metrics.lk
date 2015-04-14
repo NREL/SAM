@@ -121,6 +121,7 @@ function pv_metrics()
 	metric( 'capacity_factor', {'label'='Capacity factor', 'mode'='f', 'deci'='1', 'thousep'='true', 'post'='%' } );
 	metric( 'kwh_per_kw', {'label'='First year kWhAC/kWDC', 'mode'='f', 'deci'='0', 'thousep'='true' } );
 	metric( 'performance_ratio', {'label'='Performance ratio', 'mode'='f', 'deci'='2', 'post'='' } );
+	metric( 'average_cycle_efficiency', {'label'='Battery efficiency', 'mode'='f', 'deci'='2', 'post'='%' } );
 	// where is the total land area metric?
 }
 
