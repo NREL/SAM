@@ -91,7 +91,8 @@ private:
 
 	ProjectFile m_project;
 	wxString m_projectFileName;
-	
+
+	bool CheckVersionBeforeSaving( const wxString &file );
 	void UpdateFrameTitle();
 	
 	DECLARE_EVENT_TABLE();

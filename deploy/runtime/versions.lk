@@ -1,6 +1,7 @@
 
 version_upgrade{'2015.4.10'} = define() {
-	message('upgrading project to version 2015.4.30');	
+	message('upgrading project to version 2015.4.30');
+	delvar( 'new_variable,loss_derate', 'These variables is no longer needed for a proper simulation.');	
 };
 
 version_upgrade{'2015.1.30'} = define() {
@@ -11,9 +12,9 @@ version_upgrade{'2015.1.30'} = define() {
 	// handle changes in the PVwatts model, all configurations	
 	if ( cfg.tech == 'PVWatts' )
 	{
-		value( 'loss_derate', 1-value('dc_ac_ratio')*0.01 );
-		value( 'new_variable', 23.49 );
-		value( 'dc_ac_ratio', 1.12 );
+		value( 'loss_derate', 1-value('dc_ac_ratio')*0.01, 'A necessary change to the internal units used in SAM' );
+		value( 'new_variable', 23.49, "This is a new variable that will help you define special things about your system." );
+		value( 'dc_ac_ratio', 1.12, "All new systems use this exact DC/AC ratio, so you should too." );
 		message('Overwrote your old DC/AC ratio!', 'warning');
 	}
 	

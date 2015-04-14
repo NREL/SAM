@@ -39,8 +39,8 @@ public:
 	VarTable &operator=( const VarTable &rhs );
 	void Copy( const VarTable &rhs );
 	
-	void Delete( const wxString &name );
-	void Delete( const wxArrayString &names );
+	bool Delete( const wxString &name );
+	int Delete( const wxArrayString &names );
 	virtual void clear();
 	wxArrayString ListAll( std::vector<VarValue*> *vals = 0 );
 	VarValue *Create( const wxString &name, int type = VV_INVALID );
