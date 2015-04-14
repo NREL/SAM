@@ -660,12 +660,28 @@ void MainWindow::OnCommand( wxCommandEvent &evt )
 	}
 }
 
+bool MainWindow::CheckVersionBeforeSaving( const wxString &file )
+{
+	int major, minor, micro;
+	if ( m_project.GetVersionInfo(&major,&minor,&micro) < SamApp::Version() && wxFileExists(file) )
+		return wxYES == wxMessageBox( wxString::Format(
+				"This project was originally created with a previous version of SAM, version %d.%d.%d.\n\n"
+				"After saving, you will not be able to open this project in the previous version of SAM.\n\n", major, minor, micro )
+				+ "Overwrite " + file + "?",
+			"Query", wxYES_NO|wxICON_WARNING, this );
+	else
+		return true;
+}
 
 void MainWindow::Save()
 {
 	if ( m_projectFileName.IsEmpty() )
 	{
 		SaveAs();
+		return;
+	}
+	else if ( !CheckVersionBeforeSaving( m_projectFileName ) )
+	{
 		return;
 	}
 
@@ -677,10 +693,14 @@ void MainWindow::Save()
 
 void MainWindow::SaveAs()
 {
-
-	wxFileDialog dlg( this, "Save SAM file as", wxEmptyString, wxEmptyString, "SAM Project File (*.sam)|*.sam", wxFD_SAVE|wxFD_OVERWRITE_PROMPT );
+	wxFileDialog dlg( this, "Save SAM file as", wxEmptyString, wxEmptyString, "SAM Project File (*.sam)|*.sam", 
+		wxFD_SAVE|wxFD_OVERWRITE_PROMPT );
 	if ( dlg.ShowModal() == wxID_OK )
 	{
+		if ( m_projectFileName == dlg.GetPath()
+			&& !CheckVersionBeforeSaving( dlg.GetPath() ) )
+			return;
+
 		m_projectFileName = dlg.GetPath();
 		Save();
 	}
@@ -720,33 +740,18 @@ bool MainWindow::LoadProject( const wxString &file )
 
 	if ( file_ver < sam_ver )
 	{
-		if ( wxNO == wxMessageBox( wxString::Format("The file '%s' was created using SAM version %d.%d.%d.\n"
-				"You are currently running SAM version %d.%d.%d.\n\n"
-				"Do you wish to upgrade your project to the current version of SAM?  Once saved, you will not be able to open this file in the old version of SAM.",
-				(const char*)wxFileNameFromPath(file).c_str(), 
-				major, minor, micro, 
-				sammajor, samminor, sammicro ),
-				"Upgrade Project", wxYES_NO ) )
-		{
-			return false;
-		}
-
+		wxMessageBox( wxString::Format("The file you are opening (%s) was created with a previous version of SAM, version %d.%d.%d.\n\n"
+			"Improvements to SAM may change the results relative to previous versions. Care should be taken when making comparisons (external to SAM) "
+			"between results calculated for one design option using this version of SAM and results calculated for another design option using a "
+			"previous version of SAM.  All options should be analyzed with a single version of SAM.\n\n",
+			(const char*)wxFileNameFromPath(file).c_str(), major, minor, micro),
+			"Notice", wxICON_INFORMATION, this);
+		
 		wxBusyInfo info( "Upgrading project file to current SAM version..." );
 		
 		VersionUpgrade upgd;
-		upgd.Run( pf );
-
-		// show HTML dialog upgrade report		
-		wxFrame *frm = new wxFrame( SamApp::Window(), wxID_ANY, "Project File Upgrade Report", wxDefaultPosition, wxSize(800,700), 
-			(wxCAPTION | wxCLOSE_BOX | wxCLIP_CHILDREN | wxRESIZE_BORDER | wxFRAME_TOOL_WINDOW | wxFRAME_FLOAT_ON_PARENT) );
-		wxHtmlWindow *html = new wxHtmlWindow( frm, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxHW_DEFAULT_STYLE|wxBORDER_NONE );
-		html->SetPage( upgd.CreateHtmlReport() );
-		frm->CenterOnParent();
-		frm->Show();
-
-		
-		// update version information in project to current SAM
-		m_project.SetVersionInfo( sammajor, samminor, sammicro );
+		upgd.Run( pf );		
+		upgd.ShowReportDialog( file );
 	}
 
 	// copy over project file data,
@@ -804,6 +809,12 @@ bool MainWindow::SaveProject( const wxString &file )
 	for( size_t i=0;i<m_caseNotebook->GetPageCount();i++ )
 		if ( CaseWindow *cw = dynamic_cast<CaseWindow*>(m_caseNotebook->GetPage(i)) )
 			cw->SaveCurrentViewProperties();
+
+	
+	// update version information in project to current SAM
+	int major, minor, micro;
+	SamApp::Version( &major, &minor, &micro );
+	m_project.SetVersionInfo( major, minor, micro );
 
 	bool ok = m_project.WriteArchive( file );
 	if ( ok ) m_project.SetModified( false );

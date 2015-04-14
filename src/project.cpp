@@ -1,12 +1,20 @@
 #include <wx/datstrm.h>
 #include <wx/wfstream.h>
 #include <wx/zstream.h>
+#include <wx/tokenzr.h>
+
+#include <wx/window.h>
+#include <wx/html/htmlwin.h>
+
+#include <wex/metro.h>
+
+#include <lk_stdlib.h>
 
 #include "project.h"
 #include "case.h"
 #include "main.h"
 #include "invoke.h"
-#include <lk_stdlib.h>
+
 
 ProjectFile::ProjectFile()
 {
@@ -325,7 +333,7 @@ static void fcall_vuc_case_name( lk::invoke_t &cxt )
 
 static void fcall_vuc_config( lk::invoke_t &cxt )
 {
-	LK_DOC( "config", "Set or get the current case's configuration", "(string:tech, string:fin):boolean or (none):table");
+	LK_DOC( "config", "Set or get the current case's configuration", "(string:tech, string:fin, [string:reason]):boolean or (none):table");
 	if ( VersionUpgrade *vuc = static_cast<VersionUpgrade*>(cxt.user_data()) )
 	{
 		wxString tech( vuc->GetCase()->GetTechnology() );
@@ -341,8 +349,10 @@ static void fcall_vuc_config( lk::invoke_t &cxt )
 		{
 			wxString tech1( cxt.arg(0).as_string() );
 			wxString fin1( cxt.arg(1).as_string() );
+			wxString reason;
+			if ( cxt.arg_count() > 2 ) reason = cxt.arg(2).as_string();
 			vuc->GetLog( vuc->GetName() ).push_back( VersionUpgrade::log( 
-				VersionUpgrade::CONFIG_CHANGE, "Updated internal configuration name from " + tech + "/" + fin + " to " + tech1 + "/" + fin1 + "." ) );
+				VersionUpgrade::CONFIG_CHANGE, "Updated internal configuration name from " + tech + "/" + fin + " to " + tech1 + "/" + fin1 + ".", reason ) );
 			cxt.result().assign( vuc->GetCase()->SetConfiguration( tech1, fin1 ) );
 		}
 	}
@@ -351,7 +361,7 @@ static void fcall_vuc_config( lk::invoke_t &cxt )
 
 static void fcall_vuc_value( lk::invoke_t &cxt )
 {
-	LK_DOC("value", "Set or get a variable's value. New variables may be created.", "(string:name, [variant:value]):variant");
+	LK_DOC("value", "Set or get a variable's value. New variables may be created.", "(string:name, [variant:value], [string:reason]):variant");
 	if ( VersionUpgrade *vuc = static_cast<VersionUpgrade*>(cxt.user_data()) )
 	{
 		wxString name( cxt.arg(0).as_string() );
@@ -375,6 +385,9 @@ static void fcall_vuc_value( lk::invoke_t &cxt )
 			vv->Read( cxt.arg(1), true );
 			ty1 = vv->Type();
 
+			wxString reason;
+			if ( cxt.arg_count() > 2 ) reason = cxt.arg(2).as_string();
+
 			wxString label( name );
 			if ( 0 != vuc->GetCase()->Variables().Lookup( name ) )
 				label = vuc->GetCase()->Variables().Label(name);
@@ -383,22 +396,46 @@ static void fcall_vuc_value( lk::invoke_t &cxt )
 			{
 				vuc->GetLog( vuc->GetName() ).push_back( 
 					VersionUpgrade::log( VersionUpgrade::VAR_ADDED, 
-						"Added new variable '" + label + "' (" + vv_strtypes[ty1] + ") = " + vv->AsString( ',', '|' ) ) );
+						"Added '" + label + "', " + vv_strtypes[ty1] + ": " + vv->AsString( ',', '|' ), reason ) );
 			}
 			else if ( ty0 != ty1 )
 			{
 				vuc->GetLog( vuc->GetName() ).push_back( 
 					VersionUpgrade::log( VersionUpgrade::VAR_CHANGED, 
-						"Updated variable '" + label + "' to data type " + vv_strtypes[ty1] + ", value: " + vv->AsString( ',', '|' ) ) );
+						"Updated '" + label + "' to " + vv_strtypes[ty1] + ": " + vv->AsString( ',', '|' ), reason ) );
 			}
 			else
 			{
 				vuc->GetLog( vuc->GetName() ).push_back( 
 					VersionUpgrade::log( VersionUpgrade::VAR_CHANGED, 
-						"Changed variable '" + label + "' value to: " + vv->AsString( ',', '|' ) ) );
+						"Changed value of '" + label + "' to: " + vv->AsString( ',', '|' ), reason ) );
 			}
 		}
 	}
+}
+
+static void fcall_vuc_delvar( lk::invoke_t &cxt )
+{
+	LK_DOC("delvar", "Delete variable(s) from the current case.  Returns number of variables successfully deleted.", "(string:comma-separated list of names to delete, [string:reason]):integer");
+	if ( VersionUpgrade *vuc = static_cast<VersionUpgrade*>(cxt.user_data()) )
+	{
+		int ndel = 0;
+		wxArrayString vars = wxStringTokenize( cxt.arg(0).as_string(), ",");
+		for( size_t i=0;i<vars.size();i++ )
+			if ( vuc->GetCase()->Values().Delete( vars[i].Trim(false).Trim() ) )
+				ndel++;
+
+			
+		wxString reason;
+		if ( cxt.arg_count() > 1 ) reason = cxt.arg(1).as_string();
+
+		vuc->GetLog( vuc->GetName() ).push_back( 
+			VersionUpgrade::log( VersionUpgrade::VAR_DELETED, 
+				"Deleted variable(s): " + cxt.arg(0).as_string(), reason ) );
+
+		cxt.result().assign( (double)ndel );
+	}
+
 }
 
 static void fcall_vuc_varinfo( lk::invoke_t &cxt )
@@ -445,6 +482,7 @@ lk::fcall_t* VersionUpgrade::invoke_functions()
 	static const lk::fcall_t vec[] = {
 		fcall_vuc_value,
 		fcall_vuc_varinfo,
+		fcall_vuc_delvar,
 		fcall_vuc_case_name,
 		fcall_vuc_config,
 		fcall_vuc_message,
@@ -542,11 +580,11 @@ std::vector<VersionUpgrade::log> &VersionUpgrade::GetLog( const wxString &name )
 	return m_log[name];
 }
 
-wxString VersionUpgrade::CreateHtmlReport()
+wxString VersionUpgrade::CreateHtmlReport( const wxString &file )
 {
-	wxString html( "<html><body>\n<h3>Project file version upgrade to " + SamApp::VersionStr() + " report.</h3>\n<br>\n" );
+	wxString html( "<html><body>\n<h3>Project Version Upgrade Report</h3>\n"
+		"<p><font color=#7a7a7a>File:" + file + "<br>Using SAM Version " + SamApp::VersionStr() + ", " + wxNow() + "</font></p><br>\n" );
 
-	
 	if ( m_generalLog.size() > 0 )
 		WriteHtml( "General", m_generalLog, html );
 
@@ -565,23 +603,89 @@ wxString VersionUpgrade::CreateHtmlReport()
 
 void VersionUpgrade::WriteHtml( const wxString &section, const std::vector<log> &LL, wxString &html )
 {
-	html += "<table bgcolor=#999999 width=100% cellspacing=1 cellpadding=0><tr width=100%><td><font size=+1 color=#ffffff><b>" + section + "</b></font></td></tr>\n";
+	html += "<table bgcolor=#545454 width=100% cellspacing=1 cellpadding=3><tr width=100%><td><font size=+1 color=#ffffff><b>" + section + "</b></font></td></tr>\n";
 
-	for( int i=LL.size()-1;i>=0;i-- )
+	for( int i=0;i<LL.size();i++ )
 	{
-		wxString bgcolor("#ffffff");
+		wxString bgcolor("#EFEFEF");
 		switch( LL[i].type )
 		{
-		case FAIL: bgcolor="#ff0000"; break;
-		case WARNING: bgcolor="#ff9933"; break;
-		case CONFIG_CHANGE: bgcolor="#f7d1ff"; break;
+		case FAIL: bgcolor="#FDB3B3"; break;
+		case WARNING: bgcolor="#FFDAA8"; break;
+		case CONFIG_CHANGE: bgcolor="#e8d3a7"; break;
 		case VAR_CHANGED: bgcolor="#d1eba9"; break;
-		case VAR_ADDED: bgcolor="#e8d3a7"; break;
+		case VAR_ADDED: bgcolor="#cce1e6"; break;
+		case VAR_DELETED: bgcolor="#e0ced7"; break;
 		}
 
-		html += "<tr width=100% bgcolor=" + bgcolor + "><td>" + LL[i].message + "</td></tr>\n";
+		wxString reason;
+		if ( !LL[i].reason.IsEmpty())
+			reason = "<br><b>" + LL[i].reason + "</b>";
+
+		html += "<tr width=100% bgcolor=" + bgcolor + "><td>" + LL[i].message + reason + "</td></tr>\n";
 	}
 
 	html += "</table><br>\n";
 
+}
+
+class UpgradeReportDialog : public wxFrame
+{
+	wxString m_htmlSrc;
+public:
+	UpgradeReportDialog( const wxString &src ) : wxFrame( SamApp::Window(), wxID_ANY, "Project File Upgrade Report", wxDefaultPosition, wxSize(800,700), 
+		(wxCAPTION | wxCLOSE_BOX | wxCLIP_CHILDREN | wxRESIZE_BORDER | wxFRAME_TOOL_WINDOW | wxFRAME_FLOAT_ON_PARENT) ),
+		m_htmlSrc( src )
+	{
+		SetBackgroundColour( wxMetroTheme::Colour( wxMT_FOREGROUND ) );
+
+		wxHtmlWindow *html = new wxHtmlWindow( this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxHW_DEFAULT_STYLE|wxBORDER_NONE );
+		html->SetPage( m_htmlSrc );
+		html->Show();
+
+		wxBoxSizer *buttons = new wxBoxSizer( wxHORIZONTAL );
+		buttons->Add( new wxMetroButton( this, wxID_SAVE, "Save report..." ), 0, wxALL, 0 );
+		buttons->AddStretchSpacer();
+		buttons->Add( new wxMetroButton( this, wxID_CLOSE, "Close" ), 0, wxALL, 0 );
+
+		wxBoxSizer *sizer = new wxBoxSizer( wxVERTICAL );
+		sizer->Add( html, 1, wxALL|wxEXPAND, 0 );
+		sizer->Add( buttons, 0, wxALL|wxEXPAND, 0 );
+		SetSizer( sizer );
+	}
+
+	void OnCommand( wxCommandEvent &evt )
+	{
+		if ( evt.GetId() == wxID_SAVE )
+		{
+			wxFileDialog dlg( this, "Save upgrade report file", wxEmptyString, "report.html", "HTML Files (*.html)|*.html", wxFD_SAVE|wxFD_OVERWRITE_PROMPT );
+			if ( wxID_OK == dlg.ShowModal() )
+			{
+				if ( FILE *fp = fopen( (const char*) dlg.GetPath().c_str(), "w" ) )
+				{
+					fputs( (const char*)m_htmlSrc.c_str(), fp );
+					fclose( fp );
+				}
+				else
+					wxMessageBox("Could not open " + dlg.GetPath() + " for writing.");
+			}
+		}
+		else if ( evt.GetId() == wxID_CLOSE )
+			Close();
+	}
+
+	DECLARE_EVENT_TABLE();
+};
+
+BEGIN_EVENT_TABLE( UpgradeReportDialog, wxFrame )
+	EVT_BUTTON( wxID_SAVE, UpgradeReportDialog::OnCommand )
+	EVT_BUTTON( wxID_CLOSE, UpgradeReportDialog::OnCommand )
+END_EVENT_TABLE()
+
+void VersionUpgrade::ShowReportDialog( const wxString &file )
+{
+	// show HTML dialog upgrade report		
+	wxFrame *frm = new UpgradeReportDialog( CreateHtmlReport( file ) );
+	frm->CenterOnParent();
+	frm->Show();
 }
