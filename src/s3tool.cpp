@@ -785,6 +785,20 @@ bool ShadeAnalysis::SimulateDiffuse(bool save)
 	size_t num_alt = (alt_max - alt_min+1) / alt_step;
 	size_t num_scenes = ((azi_max - azi_min+1) / azi_step) * num_alt;
 
+
+	
+	wxFileDialog dlg(this, "Diffuse Shading File Export", wxEmptyString, "diffuse_shade.csv", "*.*", wxFD_SAVE | wxFD_OVERWRITE_PROMPT);
+	if (wxID_OK == dlg.ShowModal())
+	{
+		if (FILE *fp = fopen((const char*)dlg.GetPath().c_str(), "w"))
+		{
+			fprintf(fp, "azimuth,altitude,");
+			for (size_t i = 0; i < shade.size(); i++)
+				fprintf(fp, "%s %c", (const char*)shade[i].group.c_str(), i + 1 < shade.size() ? ',' : '\n');
+
+				
+
+
 	for (i_azi = 0; i_azi<azi_max && !stopped; i_azi += azi_step)
 	{
 		for (i_alt = 1; i_alt <= alt_max && !stopped; i_alt += alt_step)
@@ -833,6 +847,11 @@ bool ShadeAnalysis::SimulateDiffuse(bool save)
 			// store overall array shading factor
 			shade[0].sfac[c] = 100.0f * scene_sf;
 
+
+			fprintf(fp, "%lg,%lg,%lg\n", azi, alt, shade[0].sfac[c]);
+
+
+
 			// compute each group's shading factor from the overall areas
 			for (size_t n = 1; n<shade.size(); n++)
 			{
@@ -846,6 +865,23 @@ bool ShadeAnalysis::SimulateDiffuse(bool save)
 		}
 	}
 
+
+
+	
+
+	fclose(fp);
+		}
+		else
+			wxMessageBox("Could not write to file:\n\n" + dlg.GetPath());
+	}
+
+	
+
+
+
+	num_scenes = c;
+
+	
 //	wxMessageBox(wxString::Format("Diffuse shading (%d (%d) scenes in %d ms)", c, num_scenes,sw.Time()));
 	if (save)
 	{
@@ -858,13 +894,17 @@ bool ShadeAnalysis::SimulateDiffuse(bool save)
 				for (size_t i = 0; i < shade.size(); i++)
 					fprintf(fp, "%s %c", (const char*)shade[i].group.c_str(), i + 1 < shade.size() ? ',' : '\n');
 
+				c = 0;
 				for (i_azi = 0; i_azi<azi_max ; i_azi+= azi_step)
 					for (i_alt = 1; i_alt <= alt_max ; i_alt+= alt_step)
 					{
 						fprintf(fp, "%d,%d,", i_azi, i_alt);
-						size_t i = i_azi * num_alt + i_alt-1;
+						//size_t i = i_azi * num_alt + i_alt-1;
+//						for (size_t j = 0; j < shade.size(); j++)
+							//fprintf(fp, "%.3lf%c", shade[j].sfac[i], j + 1 < shade.size() ? ',' : '\n');
 						for (size_t j = 0; j < shade.size(); j++)
-							fprintf(fp, "%.3lf%c", shade[j].sfac[i], j + 1 < shade.size() ? ',' : '\n');
+							fprintf(fp, "%lg%c", shade[j].sfac[c], j + 1 < shade.size() ? ',' : '\n');
+						c++;
 					}
 				fclose(fp);
 			}
@@ -872,7 +912,7 @@ bool ShadeAnalysis::SimulateDiffuse(bool save)
 				wxMessageBox("Could not write to file:\n\n" + dlg.GetPath());
 		}
 	}
-
+	
 	int y = 0;
 	// average shading factor over skydome
 	std::vector<double> data(shade.size());
@@ -881,9 +921,9 @@ bool ShadeAnalysis::SimulateDiffuse(bool save)
 	for (size_t j = 0; j < shade.size(); j++)
 	{
 		data[j] = 0;
-		for (size_t i = 0; i < c; i++)
+		for (size_t i = 0; i < num_scenes; i++)
 			data[j] += shade[j].sfac[i];
-		data[j] /= c;
+		data[j] /= num_scenes;
 		m_diffuse_shade_percent.push_back(data[j]);
 		m_diffuse_name.push_back(shade[j].group);
 		if (j > 0) // j=0 taken to be minimum value as shown below
