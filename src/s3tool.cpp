@@ -777,17 +777,32 @@ bool ShadeAnalysis::SimulateDiffuse(bool save)
 	size_t alt_min, alt_max, alt_step;
 	azi_min = 0;
 	azi_max = 360;
+	// alt= 1 to keep flat plates from having shading percent
 	alt_min = 1;
 	alt_max = 90;
-	azi_step = 10;
-	alt_step = 1;
+	// best compromise speed and accuracy
+	azi_step = 1;
+	alt_step = 10;
+	// closest to PVSyst
+//	azi_step = 20;
+//	alt_step = 10;
 
-	size_t num_alt = (alt_max - alt_min+1) / alt_step;
-	size_t num_scenes = ((azi_max - azi_min+1) / azi_step) * num_alt;
+//	std::vector<double> alt = { 2, 10, 20, 30, 40, 50, 60, 70, 80, 89 };
+//	std::vector<double> azi = { 0, 20, 40,60, 80, 100, 120, 140, 160, 180, 200,220, 240, 260, 280, 300, 320, 340 };
 
-	for (i_azi = 0; i_azi<azi_max && !stopped; i_azi += azi_step)
+
+	size_t num_alt = (alt_max - alt_min + 1) / alt_step;
+	size_t num_scenes = ((azi_max - azi_min + 1) / azi_step) * num_alt;
+//	size_t num_alt = alt.size();
+//	size_t num_azi = azi.size();
+//	size_t num_scenes = num_azi * num_alt;
+
+	for (i_azi = azi_min; i_azi<azi_max && !stopped; i_azi += azi_step)
 	{
-		for (i_alt = 1; i_alt <= alt_max && !stopped; i_alt += alt_step)
+		for (i_alt = alt_min; i_alt < alt_max && !stopped; i_alt += alt_step)
+//	for (i_azi = 0; i_azi<num_azi && !stopped; i_azi++)
+//	{
+//		for (i_alt = 0; i_alt < num_alt && !stopped; i_alt++)
 		{
 			azi = i_azi;
 			alt = i_alt;
@@ -809,6 +824,7 @@ bool ShadeAnalysis::SimulateDiffuse(bool save)
 			//	double sf = 0;
 			double scene_sf = 1;
 			tr.rotate_azal(azi, alt);
+//			tr.rotate_azal(azi[i_azi], alt[i_alt]);
 			sc.build(tr);
 
 			std::vector<s3d::shade_result> shresult;
@@ -863,11 +879,15 @@ bool ShadeAnalysis::SimulateDiffuse(bool save)
 					fprintf(fp, "%s %c", (const char*)shade[i].group.c_str(), i + 1 < shade.size() ? ',' : '\n');
 
 				c = 0;
-				for (i_azi = 0; i_azi<azi_max ; i_azi+= azi_step)
-					for (i_alt = 1; i_alt <= alt_max ; i_alt+= alt_step)
+				for (i_azi = azi_min; i_azi<azi_max; i_azi += azi_step)
+					for (i_alt = alt_min; i_alt < alt_max; i_alt += alt_step)
 					{
-						fprintf(fp, "%d,%d,", i_azi, i_alt);
-						for (size_t j = 0; j < shade.size(); j++)
+					fprintf(fp, "%d,%d,", i_azi, i_alt);
+//				for (i_azi = 0; i_azi<num_azi ; i_azi++)
+//					for (i_alt = 0; i_alt < num_alt; i_alt++)
+//					{
+//					fprintf(fp, "%d,%d,", azi[i_azi], alt[i_alt]);
+					for (size_t j = 0; j < shade.size(); j++)
 							fprintf(fp, "%lg%c", shade[j].sfac[c], j + 1 < shade.size() ? ',' : '\n');
 						c++;
 					}
