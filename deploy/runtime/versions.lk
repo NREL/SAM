@@ -1,7 +1,8 @@
 
 version_upgrade{'2015.4.10'} = define() {
 	message('upgrading project to version 2015.4.30');
-	delvar( 'new_variable,loss_derate', 'These variables is no longer needed for a proper simulation.');	
+	delvar( 'new_variable,loss_derate', 'These variables is no longer needed for a proper simulation.');
+	value('dc_power_opt_loss', 0, 'New variable to represent DC power optimizer losses.');	//THIS IS A REAL VARIABLE ADDED BY JANINE. PLEASE DON'T DELETE. :)
 };
 
 version_upgrade{'2015.1.30'} = define() {

@@ -13,7 +13,8 @@ loss_diagram{'Flat Plate PV'} = define() {
 	add_loss_term( 'annual_dc_diodes_loss_percent', 'Mismatch' );
 	add_loss_term( 'annual_dc_wiring_loss_percent', 'DC wiring' );	
 	add_loss_term( 'annual_dc_tracking_loss_percent', 'Tracking' );	
-	add_loss_term( 'annual_dc_nameplate_loss_percent', 'Nameplate' );	
+	add_loss_term( 'annual_dc_nameplate_loss_percent', 'Nameplate' );
+	add_loss_term( 'annual_dc_optimizer_loss_percent', 'DC optimizer' );	
 	
 	new_baseline( 'annual_dc_net', 'Net DC energy (kWh)' );
 	add_loss_term( 'annual_ac_inv_clip_loss_percent', 'Inverter clipping' );	
