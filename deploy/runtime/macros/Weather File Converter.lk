@@ -11,35 +11,44 @@ that are not used by SAM simulations, and so you may still want to have a "strip
 @*/
 
 // Macro user interface widgets
-// @ name=location_choice;type=combo;value=Use location from weather file,Enter latitude and longitude,Enter address or city;label=Location to look up
-// @ name=radius;type=number;label=Radius (miles);value=10
-// @ name=input_lat;type=number;label=Latitude input;value=40
-// @ name=input_lon;type=number;label=Longitude input;value=-105
+//@ name=type;type=combo;value=TMY2,TMY3,EPW,SolarAnywhere;label=Input format
 
+if ( typeof(macro) == 'unknown' ) {
+	msgbox('This macro must be run from within a case.');
+	exit;
+}
+
+format = macro.type;
+if ( format == '' ) {
+  msgbox('Please choose an input format \nand then run the macro again.');
+  exit;
+}  
 
 wf = choose_file( '', 'Select weather file to convert', 'Weather Files (*.csv;*.tm2;*.tm3;*.epw)|*.csv;*.tm2;*.tm3;*.epw' );
 if ( wf == '' ) return;
 
-obj = ssc_create();
-ssc_var( obj, 'input_file', wf );
-result = ssc_exec( obj, 'wfcsvconv', true );
-if ( result == 0 )
-{
-	output = ssc_var( obj, 'output_file');
-	if ( file_exists(output) )
+if (format != 'SolarAnywhere' ) {
+	obj = ssc_create();
+	ssc_var( obj, 'input_file', wf );
+	result = ssc_exec( obj, 'wfcsvconv', true );
+	if ( result == 0 )
 	{
-		if ( yesno('Weather file successfully converted.  Open it?\n\n' + output) )
+		output = ssc_var( obj, 'output_file');
+		if ( file_exists(output) )
 		{
-			browse( path_only(output) ); // pop up folder where file exists
-			browse( output ); // load in Excel
+			if ( yesno('Weather file successfully converted.  Open it?\n\n' + output) )
+			{
+				browse( path_only(output) ); // pop up folder where file exists
+				browse( output ); // load in Excel
+			}
+		}
+		else
+		{
+			msgbox('An error occurred and the file could not be converted.');
 		}
 	}
 	else
-	{
-		msgbox('An error occurred and the file could not be converted.');
-	}
+		msgbox( 'Error:\n\n' + result );
+	ssc_free( obj );
 }
-else
-	msgbox( 'Error:\n\n' + result );
-	
-ssc_free( obj );
+else outln('solaranywhere');
