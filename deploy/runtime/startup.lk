@@ -92,7 +92,8 @@ function setup_flat_plate_pv_pages()
 //				['CEC Performance Model with Module Database', { 'name'='Test 1', 'collapsible'=true, 'collapsible_var'='pv.module.test_1.is_shown' }],
 				['CEC Performance Model with Module Database'],
 				['CEC Performance Model with User Entered Specifications'], 
-				['Sandia PV Array Performance Model with Module Database'] ], 				
+				['Sandia PV Array Performance Model with Module Database'],
+				['IEC61853 Single Diode Model'] ], 				
 			{ 'sidebar'='Module', 'help'='pv_module', 'exclusive_var'='module_model' } );
 			
 	addpage( [ ['Inverter CEC Database'], ['Inverter Datasheet'], ['Inverter Part Load Curve'] ], 
