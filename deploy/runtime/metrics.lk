@@ -20,7 +20,7 @@ function third_party_metrics()
 
 function lcoefcr_metrics()
 {
-	metric( 'lcoe', {'label'='Levelized cost of energy', 'mode'='f', 'deci'='2', 'post'='\u00A2/kWh' , 'scale'='100'} );
+	metric( 'lcoe_fcr', {'label'='Levelized cost of energy', 'mode'='f', 'deci'='2', 'post'='\u00A2/kWh' , 'scale'='100'} );
 }
 
 function ipp_metrics()
