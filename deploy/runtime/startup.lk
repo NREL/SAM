@@ -399,8 +399,9 @@ function setup_geothermal_power_pages()
 
 // CSP - Empirical Trough ///////////////////////////////////////////////////////
 setconfig( 'Empirical Trough', 'LCOE Calculator' );
-setmodules( ['tcstrough_empirical']);
+setmodules( ['tcstrough_empirical', 'lcoefcr']);
 setup_csp_empirical_trough_pages();
+setup_lcoefcr_pages();
 
 setconfig( 'Empirical Trough', 'None' );
 setmodules( ['tcstrough_empirical']);
@@ -519,8 +520,9 @@ setup_single_owner_pages(true);
 
 // CSP - Physical Trough ///////////////////////////////////////////////////////
 setconfig( 'Physical Trough', 'LCOE Calculator' );
-setmodules( ['tcstrough_physical']);
+setmodules( ['tcstrough_physical', 'lcoefcr']);
 setup_csp_physical_trough_pages();
+setup_lcoefcr_pages();
 
 setconfig( 'Physical Trough', 'None' );
 setmodules( ['tcstrough_physical']);
@@ -571,7 +573,7 @@ setup_single_owner_pages(true);
 
 // PVWatts /////////////////////////////////////////////////////////////////////
 setconfig( 'PVWatts', 'LCOE Calculator' );
-setmodules( ['pvwattsv5']);
+setmodules( ['pvwattsv5', 'lcoefcr']);
 setup_pvwatts_pages();
 setup_lcoefcr_pages();
 
