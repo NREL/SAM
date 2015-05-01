@@ -439,6 +439,7 @@ void ParametricViewer::OnCommand(wxCommandEvent &evt)
 			pqs.CenterOnParent();
 			if (pqs.ShowModal() == wxID_OK)
 			{
+				m_grid->Freeze();
 				m_grid_data->Init();
 				m_num_runs_ctrl->SetValue(m_grid_data->GetNumberRows());
 				m_input_names = m_grid_data->GetInputNames();
@@ -448,6 +449,7 @@ void ParametricViewer::OnCommand(wxCommandEvent &evt)
 				m_grid->SetTable(m_grid_data);
 				UpdateNumRuns();
 				UpdateGrid();
+				m_grid->Thaw();
 			}
 		}
 		break;
@@ -2550,40 +2552,42 @@ void Parametric_QS::UpdateCaseParametricData()
 	par.Setup.clear();
 
 	// combinations
-	int num_runs = 1;
+	size_t num_runs = 1;
 	if (m_input_values.size() <= 0) num_runs = 0;
-	for (int i = 0; i < m_input_values.size(); i++)
+	for (size_t i = 0; i < m_input_values.size(); i++)
 		num_runs *= m_input_values[i].Count() - 1;
 	// create new inputs
-	for (int i = 0; i < m_input_names.Count(); i++)
+	for (size_t i = 0; i < m_input_names.Count(); i++)
 	{
 		std::vector<VarValue> vvv;
 		ParametricData::Var pv;
-		for (int num_run = 0; num_run < num_runs; num_run++)
-		{ // add values for inputs only
-			if (VarValue *vv = m_case->Values().Get(m_input_names[i]))
+		if (VarValue *vv = m_case->Values().Get(m_input_names[i]))
+		{
+			for (size_t num_run = 0; num_run < num_runs; num_run++)
+			{ // add values for inputs only
 				vvv.push_back(*vv);
+			}
 		}
 		pv.Name = m_input_names[i];
 		pv.Values = vvv;
 		par.Setup.push_back(pv);
 	}
-	for (int num_run = 0; num_run < num_runs; num_run++)
+	for (size_t num_run = 0; num_run < num_runs; num_run++)
 	{
-		Simulation *s = new Simulation(m_case, wxString::Format("Parametric #%d", (int)(num_run + 1)));
+		Simulation *s = new Simulation(m_case, wxString::Format("Parametric #%d", (num_run + 1)));
 		par.Runs.push_back(s);
 	}
 	// set values - can do this once and set num_runs
-	int repeat = 1;
-	for (int col = 0; col < m_input_names.Count(); col++)
+	size_t repeat = 1;
+	for (size_t col = 0; col < m_input_names.Count(); col++)
 	{
-		int row = 0;
+		size_t row = 0;
 		wxArrayString vals = GetValuesList(m_input_names[col]);
 		while (row < num_runs - 1)
 		{
-			for (int j = 0; j < vals.Count(); j++)
+			for (size_t j = 0; j < vals.Count(); j++)
 			{
-				for (int k = 0; k < repeat; k++)
+				for (size_t k = 0; k < repeat; k++)
 				{
 					wxString value = vals[j];
 					VarValue *vv = &par.Setup[col].Values[row];
@@ -2598,14 +2602,16 @@ void Parametric_QS::UpdateCaseParametricData()
 
 
 	// add original outputs back 
-	for (int i = 0; i < outputs.Count(); i++)
+	for (size_t i = 0; i < outputs.Count(); i++)
 	{
 		std::vector<VarValue> vvv;
 		ParametricData::Var pv;
-		for (int num_run = 0; num_run < num_runs; num_run++)
-		{ // add values for inputs only
-			if (VarValue *vv = m_case->Values().Get(outputs[i]))
+		if (VarValue *vv = m_case->Values().Get(outputs[i]))
+		{
+			for (size_t num_run = 0; num_run < num_runs; num_run++)
+			{ // add values for inputs only
 				vvv.push_back(*vv);
+			}
 		}
 		pv.Name = outputs[i];
 		pv.Values = vvv;
@@ -2627,7 +2633,7 @@ void Parametric_QS::RefreshVariableList()
 	lstVariables->Freeze();
 	lstVariables->Clear();
 
-	for (int i = 0; i<m_input_names.Count(); i++)
+	for (size_t i = 0; i<m_input_names.Count(); i++)
 	{
 		VarInfo *vi = m_case->Variables().Lookup(m_input_names[i]);
 		if (!vi)
@@ -2668,8 +2674,8 @@ void Parametric_QS::RefreshVariableList()
 		}
 		if (to_remove.size() > 0)
 		{
-			for (int i = (int)to_remove.size() - 1; i >= 0; i--)
-				m_input_values.erase(m_input_values.begin() + (int)to_remove[i]);
+			for (size_t i = to_remove.size() - 1; i >= 0; i--)
+				m_input_values.erase(m_input_values.begin() + to_remove[i]);
 		}
 
 	}
