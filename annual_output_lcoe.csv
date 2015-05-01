@@ -8,20 +8,21 @@ Flat Plate PV,All Equity Partnership Flip,37211992,19.0838,29.3768,;
 Flat Plate PV,Sale Leaseback,37211992,12.9092,13.8614,; 
 Flat Plate PV,LCOE Calculator,37587872,NA,NA,; 
 Flat Plate PV,None,6856.66,NA,NA,; 
-PVWatts,Residential,6834.58,11.8778,NA,; 
-PVWatts,Commercial,341305,5.3804,NA,; 
-PVWatts,Third Party,6834.58,NA,NA,; 
-PVWatts,Single Owner,35151256,11.094,11.8597,; 
-PVWatts,Leveraged Partnership Flip,35151256,12.4145,16.8671,; 
-PVWatts,All Equity Partnership Flip,35151256,20.208,31.1111,; 
-PVWatts,Sale Leaseback,35151256,13.6671,14.6752,; 
-PVWatts,LCOE Calculator,35151256,NA,NA,; 
-PVWatts,None,6834.58,NA,NA,; 
+PVWatts,Residential,6830.73,11.8845,NA,; 
+PVWatts,Commercial,341113,5.38343,NA,; 
+PVWatts,Third Party,6830.73,NA,NA,; 
+PVWatts,Single Owner,35133184,11.0997,11.8658,; 
+PVWatts,Leveraged Partnership Flip,35133184,12.4209,16.8758,; 
+PVWatts,All Equity Partnership Flip,35133184,20.2161,31.1213,; 
+PVWatts,Sale Leaseback,35133184,13.6741,14.6827,; 
+PVWatts,LCOE Calculator,35133184,NA,NA,; 
+PVWatts,None,6830.73,NA,NA,; 
 High-X Concentrating PV,Single Owner,2.17767e+006,24.2595,26.3242,; 
 High-X Concentrating PV,Leveraged Partnership Flip,2.17767e+006,28.7104,41.4376,; 
 High-X Concentrating PV,All Equity Partnership Flip,2.17767e+006,48.1418,77.3552,; 
 High-X Concentrating PV,Sale Leaseback,2.17767e+006,30.189,32.8176,; 
-High-X Concentrating PV,LCOE Calculator,2.22613e+006,NA,NA,; 
+High-X Concentrating PV,LCOE Calculator,OVERWRITE	
+High-X Concentrating PV,LCOE Calculator,2.22613e+006,NA,NA,Defaults file is likely out of date: High-X Concentrating PV_LCOE Calculator  Variables: 3 loaded but not in configuration, 0 wrong type, defaults file has 111, config has 128  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later)  Loaded but don't exist in config: ui_capacity,input_option,operating_cost; 
 High-X Concentrating PV,None,2.17767e+006,NA,NA,; 
 Wind Power,Residential,7843.43,20.3768,NA,; 
 Wind Power,Commercial,236186,7.50501,NA,; 
@@ -29,14 +30,16 @@ Wind Power,Single Owner,256785664,3.5249,3.90705,;
 Wind Power,Leveraged Partnership Flip,256785664,3.80096,4.75496,; 
 Wind Power,All Equity Partnership Flip,256785664,3.93302,4.02071,; 
 Wind Power,Sale Leaseback,256785664,4.04894,4.33348,; 
-Wind Power,LCOE Calculator,6.60942e+006,NA,NA,; 
+Wind Power,LCOE Calculator,OVERWRITE	
+Wind Power,LCOE Calculator,6.60942e+006,NA,NA,Defaults file is likely out of date: Wind Power_LCOE Calculator  Variables: 3 loaded but not in configuration, 0 wrong type, defaults file has 96, config has 113  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later)  Loaded but don't exist in config: ui_capacity,input_option,operating_cost; 
 Wind Power,None,256785664,NA,NA,; 
 Biopower,Commercial,59882984,10.4903,NA,; 
 Biopower,Single Owner,300885056,17.2627,17.6689,; 
 Biopower,Leveraged Partnership Flip,300885056,17.5107,20.0506,; 
 Biopower,All Equity Partnership Flip,300885056,21.9231,28.0795,; 
 Biopower,Sale Leaseback,300885056,17.7038,18.2259,; 
-Biopower,LCOE Calculator,300885056,NA,NA,; 
+Biopower,LCOE Calculator,OVERWRITE	
+Biopower,LCOE Calculator,300885056,NA,NA,Defaults file is likely out of date: Biopower_LCOE Calculator  Variables: 3 loaded but not in configuration, 0 wrong type, defaults file has 326, config has 343  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later)  Loaded but don't exist in config: ui_capacity,input_option,operating_cost; 
 Biopower,None,59882984,NA,NA,; 
 Geothermal Power,Single Owner,NA,7.86209,8.32378,; 
 Geothermal Power,Leveraged Partnership Flip,NA,7.92675,9.8057,; 
@@ -47,6 +50,7 @@ Geothermal Power,LCOE Calculator,fail,fail,fail
 Geothermal Power,None,NA,NA,NA,; 
 Solar Water Heating,Residential,1630.3,36.3024,NA,; 
 Solar Water Heating,Commercial,2973.89,29.693,NA,; 
+Solar Water Heating,LCOE Calculator,OVERWRITE	
 Solar Water Heating,LCOE Calculator,fail,fail,fail
 Solar Water Heating,None,1630.3,NA,NA,; 
 Generic System,Residential,6266.31,25.3692,NA,; 
@@ -55,21 +59,22 @@ Generic System,Single Owner,366658560,31.5162,33.2042,;
 Generic System,Leveraged Partnership Flip,366658560,32.5904,36.0519,; 
 Generic System,All Equity Partnership Flip,366658560,51.9637,75.5279,; 
 Generic System,Sale Leaseback,366658560,37.4629,39.9799,; 
-Generic System,LCOE Calculator,366658560,NA,NA,; 
+Generic System,LCOE Calculator,OVERWRITE	
+Generic System,LCOE Calculator,366658560,NA,NA,Defaults file is likely out of date: Generic System_LCOE Calculator  Variables: 3 loaded but not in configuration, 0 wrong type, defaults file has 18, config has 35  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later)  Loaded but don't exist in config: ui_capacity,input_option,operating_cost; 
 Generic System,None,366658560,NA,NA,; 
 Physical Trough,Commercial,346360224,3.77424,NA,; Notice: kernel exceeded maximum iterations of 100, at time 208800.000000 Notice: time 27622800.00 { Controller 3 }:\ 	After 21 iterations, the controller convergence error of 1.02662 could not resolve below the tolerance of 0.001. Check that results at this timestep are not unreasonably biasing annual metrics. Notice: time 27622800.00 { Controller 3 }:\ 	After 21 iterations, the controller convergence error of 1.02661 could not resolve below the tolerance of 0.001. Check that results at this timestep are not unreasonably biasing annual metrics.
 Physical Trough,Single Owner,346360224,17.468,18.928,; Notice: kernel exceeded maximum iterations of 100, at time 208800.000000 Notice: time 27622800.00 { Controller 3 }:\ 	After 21 iterations, the controller convergence error of 1.02662 could not resolve below the tolerance of 0.001. Check that results at this timestep are not unreasonably biasing annual metrics. Notice: time 27622800.00 { Controller 3 }:\ 	After 21 iterations, the controller convergence error of 1.02661 could not resolve below the tolerance of 0.001. Check that results at this timestep are not unreasonably biasing annual metrics.
 Physical Trough,Leveraged Partnership Flip,346360224,19.8582,28.3418,; Notice: kernel exceeded maximum iterations of 100, at time 208800.000000 Notice: time 27622800.00 { Controller 3 }:\ 	After 21 iterations, the controller convergence error of 1.02662 could not resolve below the tolerance of 0.001. Check that results at this timestep are not unreasonably biasing annual metrics. Notice: time 27622800.00 { Controller 3 }:\ 	After 21 iterations, the controller convergence error of 1.02661 could not resolve below the tolerance of 0.001. Check that results at this timestep are not unreasonably biasing annual metrics.
 Physical Trough,All Equity Partnership Flip,346360224,35.164,56.7115,; Notice: kernel exceeded maximum iterations of 100, at time 208800.000000 Notice: time 27622800.00 { Controller 3 }:\ 	After 21 iterations, the controller convergence error of 1.02662 could not resolve below the tolerance of 0.001. Check that results at this timestep are not unreasonably biasing annual metrics. Notice: time 27622800.00 { Controller 3 }:\ 	After 21 iterations, the controller convergence error of 1.02661 could not resolve below the tolerance of 0.001. Check that results at this timestep are not unreasonably biasing annual metrics.
 Physical Trough,Sale Leaseback,346360224,22.3459,24.2304,; Notice: kernel exceeded maximum iterations of 100, at time 208800.000000 Notice: time 27622800.00 { Controller 3 }:\ 	After 21 iterations, the controller convergence error of 1.02662 could not resolve below the tolerance of 0.001. Check that results at this timestep are not unreasonably biasing annual metrics. Notice: time 27622800.00 { Controller 3 }:\ 	After 21 iterations, the controller convergence error of 1.02661 could not resolve below the tolerance of 0.001. Check that results at this timestep are not unreasonably biasing annual metrics.
-Physical Trough,LCOE Calculator,346360224,NA,NA,; Notice: kernel exceeded maximum iterations of 100, at time 208800.000000 Notice: time 27622800.00 { Controller 3 }:\ 	After 21 iterations, the controller convergence error of 1.02662 could not resolve below the tolerance of 0.001. Check that results at this timestep are not unreasonably biasing annual metrics. Notice: time 27622800.00 { Controller 3 }:\ 	After 21 iterations, the controller convergence error of 1.02661 could not resolve below the tolerance of 0.001. Check that results at this timestep are not unreasonably biasing annual metrics.
+Physical Trough,LCOE Calculator,fail,fail,fail
 Physical Trough,None,346360224,NA,NA,; Notice: kernel exceeded maximum iterations of 100, at time 208800.000000 Notice: time 27622800.00 { Controller 3 }:\ 	After 21 iterations, the controller convergence error of 1.02662 could not resolve below the tolerance of 0.001. Check that results at this timestep are not unreasonably biasing annual metrics. Notice: time 27622800.00 { Controller 3 }:\ 	After 21 iterations, the controller convergence error of 1.02661 could not resolve below the tolerance of 0.001. Check that results at this timestep are not unreasonably biasing annual metrics.
 Empirical Trough,Commercial,344411680,3.82489,NA,; 
 Empirical Trough,Single Owner,344411680,17.6835,19.1639,; 
 Empirical Trough,Leveraged Partnership Flip,344411680,21.5359,30.8821,; 
 Empirical Trough,All Equity Partnership Flip,344411680,38.3322,61.9919,; 
 Empirical Trough,Sale Leaseback,344411680,24.2054,26.2756,; 
-Empirical Trough,LCOE Calculator,344411680,NA,NA,; 
+Empirical Trough,LCOE Calculator,fail,fail,fail
 Empirical Trough,None,344411680,NA,NA,; 
 MSPT,Single Owner,546498752,11.8077,12.7878,; 
 MSPT,Leveraged Partnership Flip,524436224,13.7577,19.6136,; 
@@ -84,27 +89,31 @@ MSLF,Single Owner,317980512,19.8597,21.6003,;
 MSLF,Leveraged Partnership Flip,317980512,22.7131,32.847,; 
 MSLF,All Equity Partnership Flip,317980512,40.9356,66.6059,; 
 MSLF,Sale Leaseback,317980512,25.6337,27.8819,; 
-MSLF,LCOE Calculator,317980512,NA,NA,; 
+MSLF,LCOE Calculator,OVERWRITE	
+MSLF,LCOE Calculator,317980512,NA,NA,Defaults file is likely out of date: MSLF_LCOE Calculator  Variables: 3 loaded but not in configuration, 0 wrong type, defaults file has 407, config has 424  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later)  Loaded but don't exist in config: input_option,ui_capacity,operating_cost; 
 MSLF,None,317980512,NA,NA,; 
 DSLF,Commercial,231961216,5.14016,NA,; 
 DSLF,Single Owner,231961216,14.723,15.8683,; 
 DSLF,Leveraged Partnership Flip,231961216,16.6157,23.3186,; 
 DSLF,All Equity Partnership Flip,231961216,28.6171,45.5282,; 
 DSLF,Sale Leaseback,231961216,19.006,20.4781,; 
-DSLF,LCOE Calculator,231961216,NA,NA,; 
+DSLF,LCOE Calculator,OVERWRITE	
+DSLF,LCOE Calculator,231961216,NA,NA,Defaults file is likely out of date: DSLF_LCOE Calculator  Variables: 3 loaded but not in configuration, 0 wrong type, defaults file has 405, config has 422  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later)  Loaded but don't exist in config: ui_capacity,input_option,operating_cost; 
 DSLF,None,231961216,NA,NA,; 
 Dish Stirling,Commercial,188473424,3.16811,NA,; 
 Dish Stirling,Single Owner,188473424,16.5125,17.6,; 
 Dish Stirling,Leveraged Partnership Flip,188473424,18.3286,24.745,; 
 Dish Stirling,All Equity Partnership Flip,188473424,29.7695,45.8901,; 
 Dish Stirling,Sale Leaseback,188473424,20.7857,22.1782,; 
-Dish Stirling,LCOE Calculator,188473424,NA,NA,; 
+Dish Stirling,LCOE Calculator,OVERWRITE	
+Dish Stirling,LCOE Calculator,188473424,NA,NA,Defaults file is likely out of date: Dish Stirling_LCOE Calculator  Variables: 3 loaded but not in configuration, 0 wrong type, defaults file has 114, config has 131  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later)  Loaded but don't exist in config: ui_capacity,input_option,operating_cost; 
 Dish Stirling,None,188473424,NA,NA,; 
 Generic CSP System,Commercial,427387552,2.8798,NA,; 
 Generic CSP System,Single Owner,427387552,14.3633,15.5571,; 
 Generic CSP System,Leveraged Partnership Flip,427387552,16.3255,23.2904,; 
 Generic CSP System,All Equity Partnership Flip,427387552,28.8268,46.4356,; 
 Generic CSP System,Sale Leaseback,427387552,18.3454,19.8861,; 
-Generic CSP System,LCOE Calculator,427387552,NA,NA,; 
+Generic CSP System,LCOE Calculator,OVERWRITE	
+Generic CSP System,LCOE Calculator,427387552,NA,NA,Defaults file is likely out of date: Generic CSP System_LCOE Calculator  Variables: 3 loaded but not in configuration, 0 wrong type, defaults file has 183, config has 200  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later)  Loaded but don't exist in config: operating_cost,input_option,ui_capacity; 
 Generic CSP System,None,427387552,NA,NA,; 
 ISCC,Single Owner,132130176,12.3378,12.6338,; 
