@@ -1,33 +1,57 @@
 
 version_upgrade{'2015.4.10'} = define() {
-	message('upgrading project to version 2015.4.30');
-	delvar( 'new_variable,loss_derate', 'These variables is no longer needed for a proper simulation.');
-	value('dc_power_opt_loss', 0, 'New variable to represent DC power optimizer losses.');	//THIS IS A REAL VARIABLE ADDED BY JANINE. PLEASE DON'T DELETE. :)
-};
-
-version_upgrade{'2015.1.30'} = define() {
+	message('upgrading project to version 2015.4.10');
+	
+	//get the configuration
 	const cfg = config();
 	
+	//changes to the Flat Plate PV model, all financial configurations
+	if (cfg.tech == 'Flat Plate PV')
+	{
+		value('dc_power_opt_loss', 0, 'New variable to represent DC power optimizer losses.');
+		value('activate_snow_model', 0, 'New variable to activate the new PV snow losses model.');
+	}
+};
+
+//***********************************************************************************************************************************************************
+
+version_upgrade{'2015.1.30'} = define() {
 	message('upgrading project to version 2015.1.30');
 	
-	// handle changes in the PVwatts model, all configurations	
-	if ( cfg.tech == 'PVWatts' )
+	//get the configuration
+	const cfg = config();
+	
+	//changes to the "Input Electric Load Data" page
+	//this page is found in all Res/Comm configs except SWH
+	if ((cfg.fin == 'Residential' || cfg.fin == 'Commercial') && cfg.tech != 'Solar Water Heating')
 	{
-		value( 'loss_derate', 1-value('dc_ac_ratio')*0.01, 'A necessary change to the internal units used in SAM' );
-		value( 'new_variable', 23.49, "This is a new variable that will help you define special things about your system." );
-		value( 'dc_ac_ratio', 1.12, "All new systems use this exact DC/AC ratio, so you should too." );
-		message('Overwrote your old DC/AC ratio!', 'warning');
+		delvar('p_scale_f,p_offset_value', 'Deleting unused variables on the Input Electric Load page.');
 	}
 	
-	if ( cfg.fin == 'Single Owner' )
-	{
-		message('Dont use this financial model anymore - beware!', 'error');
-	}
+	//Availability and Curtailment (all three components) changed from factor to loss for ALL configurations
+	//Annual loss
+	factor_old = value('adjust').factor;
+	message('factor_old = ' + factor_old);
+	message('type of factor old: ' + typeof(factor_old));
+	factor_new = (1 - factor_old) * 100;
+	message('factor_new = ' + factor_new);
+	message('type of factor_new: ' + typeof(factor_new));
+	value('adjust', {'factor' = factor_new}, 'Changed Availability and Curtailment variable from factor to loss.');
+	//WHY ISN'T THIS WORKING???
+	//Hourly losses
+	
+	//Custom periods
 	
 };
 
-
+//***********************************************************************************************************************************************************
 
 version_upgrade{'2014.11.24'} = define() {
 	message( 'version upgrade for 2014.11.24: nothing to do!', 'notice');
 };
+
+//EXAMPLES
+//value( 'new_variable', 23.49, "This is a new variable that will help you define special things about your system." );
+//message('Dont use this financial model anymore - beware!', 'error');
+//message('Overwrote your old DC/AC ratio!', 'warning');
+//value( 'loss_derate', 1-value('dc_ac_ratio')*0.01, 'A necessary change to the internal units used in SAM' );
