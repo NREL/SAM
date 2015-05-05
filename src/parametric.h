@@ -6,6 +6,7 @@
 #include <wx/grid.h>
 
 #include <wex/numeric.h>
+#include <wex/radiochoice.h>
 
 #include "simulation.h"
 #include "object.h"
@@ -245,6 +246,8 @@ public:
 private:
 	wxListBox *lstValues;
 	wxListBox *lstVariables;
+	wxRadioChoice *rchSetupOption;
+	wxNumericCtrl *numberRuns;
 
 	Case *m_case;
 	wxArrayString m_input_names;

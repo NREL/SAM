@@ -2068,7 +2068,9 @@ enum {
 	ID_lstVariables,
 	ID_btnEditValues,
 	ID_btnRemoveVar,
-	ID_btnAddVar
+	ID_btnAddVar,
+	ID_setupOption,
+	ID_numberRuns
 };
 
 BEGIN_EVENT_TABLE(Parametric_QS, wxDialog)
@@ -2112,9 +2114,36 @@ m_case(c)
 	fgs->AddGrowableCol(1, 1);
 	fgs->AddGrowableRow(1, 1);
 
+	rchSetupOption = new wxRadioChoice(this, ID_setupOption);
+	rchSetupOption->Add("All combinations");
+	rchSetupOption->Add("Independent");
+	rchSetupOption->Add("Linked");
+	//rchSetupOption->ShowCaptions(true);
+	//rchSetupOption->Rearrange();
+	rchSetupOption->SetHorizontal(true);
+	//wxArrayString choices;
+	//choices.Add("All combinations");
+	//choices.Add("Independent");
+	//choices.Add("Linked");
+	//rchSetupOption->Add(choices);
+	wxBoxSizer *choice_sizer = new wxBoxSizer(wxHORIZONTAL);
+	choice_sizer->Add(rchSetupOption, 2, wxEXPAND | wxALL, 2);
+
+	numberRuns = new wxNumericCtrl(this, ID_numberRuns, 0, wxNumericCtrl::INTEGER);
+	wxBoxSizer *numrun_sizer = new wxBoxSizer(wxHORIZONTAL);
+	numrun_sizer->Add(new wxStaticText(this, wxID_ANY, "Number of simulations:"), 0, wxALIGN_LEFT | wxALIGN_CENTER_VERTICAL | wxALL, 3);
+	numrun_sizer->Add(numberRuns, 0, wxALIGN_LEFT | wxALIGN_CENTER_VERTICAL | wxALL, 3);
+
+	wxBoxSizer *button_sizer = new wxBoxSizer(wxHORIZONTAL);
+	button_sizer->Add(numrun_sizer);
+	button_sizer->AddStretchSpacer();
+	button_sizer->Add(CreateButtonSizer(wxOK | wxCANCEL | wxHELP), 0, wxALL | wxEXPAND | wxALIGN_RIGHT, 5);
+
+
 	wxBoxSizer *main_sizer = new wxBoxSizer(wxVERTICAL);
+	main_sizer->Add(choice_sizer, 0, wxEXPAND | wxALL, 2);
 	main_sizer->Add(fgs, 1, wxALL | wxEXPAND, 5);
-	main_sizer->Add(CreateButtonSizer(wxOK | wxCANCEL | wxHELP), 0, wxALL | wxEXPAND, 5);
+	main_sizer->Add(button_sizer, 0, wxEXPAND | wxALL,2);
 	SetSizer(main_sizer);
 
 	UpdateFromParametricData();
