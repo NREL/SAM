@@ -2019,7 +2019,7 @@ class HelpWin : public wxFrame
 	wxString m_aboutHtml;
 public:
 	HelpWin( wxWindow *parent )
-		: wxFrame( parent, wxID_ANY, "System Advisor Model Help", wxDefaultPosition, wxSize(800,600) )
+		: wxFrame( parent, wxID_ANY, "System Advisor Model Help", wxDefaultPosition, wxSize(1024,600) )
 	{
 		CreateAboutHtml();
 
@@ -2505,7 +2505,7 @@ void ConfigDialog::OnTechTree( wxCommandEvent &evt )
 
 void ConfigDialog::OnHelp(wxCommandEvent &evt)
 {
-	SamApp::ShowHelp( "choose_performance_financial" );
+	SamApp::ShowHelp( "choose_models" );
 }
 
 void ConfigDialog::OnOk( wxCommandEvent & )
