@@ -1614,8 +1614,11 @@ void ShowIDEWindow()
 {
 	if ( !g_ideWin )
 	{
-		if ( "09332s" != ::wxGetPasswordFromUser( "Enter passcode:", "Developer", wxEmptyString, SamApp::Window() ) )
+		if ("09332s" != ::wxGetPasswordFromUser("Enter passcode:", "Developer", wxEmptyString, SamApp::Window()))
+		{
+			wxMessageBox("Password failed");
 			return;
+		}
 
 		g_ideWin = new IDEWindow( SamApp::Window() );
 	}
