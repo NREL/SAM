@@ -243,6 +243,8 @@ public:
 
 	void OnCommand(wxCommandEvent &evt);
 
+	bool UpdateNumberRuns();
+
 private:
 	wxListBox *lstValues;
 	wxListBox *lstVariables;

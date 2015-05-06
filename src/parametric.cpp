@@ -1634,7 +1634,7 @@ std::vector<float> ParametricGridData::GetArray(int row, int col)
 
 float *ParametricGridData::GetArray(int row, int col, size_t *n)
 {
-	float *ret_val;
+	float *ret_val=NULL;
 	if (VarValue *vv = GetVarValue(row, col))
 	{
 		if (vv->Type() == VV_ARRAY)
@@ -2082,6 +2082,7 @@ EVT_BUTTON(ID_btnEditValues, Parametric_QS::OnEditValues)
 EVT_LISTBOX_DCLICK(ID_lstValues, Parametric_QS::OnValueDblClick)
 EVT_BUTTON(wxID_OK, Parametric_QS::OnCommand)
 EVT_BUTTON(wxID_HELP, Parametric_QS::OnCommand)
+EVT_RADIOBUTTON(ID_setupOption, Parametric_QS::OnCommand)
 END_EVENT_TABLE()
 
 Parametric_QS::Parametric_QS(wxWindow *parent, Case *c)
@@ -2118,18 +2119,14 @@ m_case(c)
 	rchSetupOption->Add("All combinations");
 	rchSetupOption->Add("Independent");
 	rchSetupOption->Add("Linked");
-	//rchSetupOption->ShowCaptions(true);
-	//rchSetupOption->Rearrange();
 	rchSetupOption->SetHorizontal(true);
-	//wxArrayString choices;
-	//choices.Add("All combinations");
-	//choices.Add("Independent");
-	//choices.Add("Linked");
-	//rchSetupOption->Add(choices);
+	rchSetupOption->SetSelection(0);
 	wxBoxSizer *choice_sizer = new wxBoxSizer(wxHORIZONTAL);
+	choice_sizer->Add(new wxStaticText(this, wxID_ANY, "Setup mode:"), 0, wxALIGN_LEFT | wxALIGN_CENTER_VERTICAL | wxALL, 3);
 	choice_sizer->Add(rchSetupOption, 2, wxEXPAND | wxALL, 2);
 
 	numberRuns = new wxNumericCtrl(this, ID_numberRuns, 0, wxNumericCtrl::INTEGER);
+	numberRuns->SetFormat(0, true);
 	wxBoxSizer *numrun_sizer = new wxBoxSizer(wxHORIZONTAL);
 	numrun_sizer->Add(new wxStaticText(this, wxID_ANY, "Number of simulations:"), 0, wxALIGN_LEFT | wxALIGN_CENTER_VERTICAL | wxALL, 3);
 	numrun_sizer->Add(numberRuns, 0, wxALIGN_LEFT | wxALIGN_CENTER_VERTICAL | wxALL, 3);
@@ -2137,7 +2134,7 @@ m_case(c)
 	wxBoxSizer *button_sizer = new wxBoxSizer(wxHORIZONTAL);
 	button_sizer->Add(numrun_sizer);
 	button_sizer->AddStretchSpacer();
-	button_sizer->Add(CreateButtonSizer(wxOK | wxCANCEL | wxHELP), 0, wxALL | wxEXPAND | wxALIGN_RIGHT, 5);
+	button_sizer->Add(CreateButtonSizer(wxOK | wxCANCEL | wxHELP), 1, wxALL | wxALIGN_CENTER_VERTICAL | wxEXPAND | wxALIGN_RIGHT, 5);
 
 
 	wxBoxSizer *main_sizer = new wxBoxSizer(wxVERTICAL);
@@ -2150,17 +2147,81 @@ m_case(c)
 }
 
 
+bool Parametric_QS::UpdateNumberRuns()
+{
+	size_t num_runs = 0;
+	if (m_input_values.size() > 0)
+	{
+		int sel_mode = rchSetupOption->GetSelection();
+		switch (sel_mode)
+		{
+			// Note: count-1 is used since forst value is variable name and not a input value
+			case 0:
+			{
+				// all combinations
+				num_runs = 1;
+				for (size_t i = 0; i < m_input_values.size(); i++)
+					num_runs *= m_input_values[i].Count() - 1;
+				break;
+			}
+			case 1:
+			{
+				// independent
+				for (size_t i = 0; i < m_input_values.size(); i++)
+					num_runs += m_input_values[i].Count() - 1;
+				break;
+			}
+			case 2:
+			{
+				// linked - initially max number of values and other inputs set to base case values if less than max number of values
+				for (size_t i = 0; i < m_input_values.size(); i++)
+				{
+					if ((m_input_values[i].Count() - 1) > num_runs)
+						num_runs = m_input_values[i].Count() - 1;
+				}
+				break;
+			}
+		}
+	}
+	numberRuns->SetValue((double)num_runs);
+	return (num_runs < 100000); // max number of runs capped at 100,000
+}
+
 void Parametric_QS::OnCommand(wxCommandEvent &evt)
 {
-	if (evt.GetId() == wxID_OK)
+	switch (evt.GetId())
 	{
-		if (wxYES == wxMessageBox("Overwrite parametric table inputs with quick setup inputs?", "Overwrite table", wxYES_NO))
-			UpdateCaseParametricData();
-
-		EndModal(wxID_OK);
+		case wxID_OK:
+		{
+			if (UpdateNumberRuns())
+			{
+				if (wxYES == wxMessageBox("Overwrite parametric table inputs with quick setup inputs?", "Overwrite table", wxYES_NO))
+				{
+					UpdateCaseParametricData();
+					EndModal(wxID_OK);
+				}
+			}
+			else
+			{
+				wxMessageBox("Please reduce the total number of runs to less than 100,000.", "Quick Setup Error");
+			}
+			break;
+		}
+		case wxID_HELP:
+		{
+			SamApp::ShowHelp("parametric_quick_setup");
+			break;
+		}
+		case  ID_setupOption:
+		{
+			UpdateNumberRuns();
+			break;
+		}
+		default:
+		{
+			EndModal(wxID_OK);
+		}
 	}
-	else if (evt.GetId() == wxID_HELP)
-		SamApp::ShowHelp("parametric_quick_setup");
 }
 
 void Parametric_QS::UpdateFromParametricData()
@@ -2257,7 +2318,6 @@ bool Parametric_QS::ShowEditValuesDialog(const wxString &title,
 
 	int i;
 	int vvtype = vv->Type();
-	int vitype = vi->Type;
 	unsigned long vf = vi->Flags;
 
 
@@ -2463,6 +2523,7 @@ void Parametric_QS::RefreshValuesList()
 	lstValues->Clear();
 	lstValues->Append(items);
 	lstValues->Thaw();
+	UpdateNumberRuns();
 }
 
 
@@ -2502,9 +2563,7 @@ wxArrayString Parametric_QS::GetValuesDisplayList(const wxString &varname)
 	if (!vv)
 		return list;
 
-	int i;
 	int vvtype = vv->Type();
-	int vitype = vi->Type;
 
 
 	if (vvtype == VV_NUMBER
@@ -2512,11 +2571,11 @@ wxArrayString Parametric_QS::GetValuesDisplayList(const wxString &varname)
 	{
 		// fixed domain selection (combo box, list, radio choice etc)
 		wxArrayString fixed_items = vi->IndexLabels;
-		for (int i = 0; i < m_input_values.size(); i++)
+		for (size_t i = 0; i < m_input_values.size(); i++)
 		{
 			if (m_input_values[i].Count() > 0 && m_input_values[i].Item(0) == varname)
 			{
-				for (int j = 1; j < m_input_values[i].Count(); j++)
+				for (size_t j = 1; j < m_input_values[i].Count(); j++)
 				{
 					int item_i = atoi(m_input_values[i].Item(j).c_str());
 					if (item_i >= 0 && item_i < (int)fixed_items.Count())
@@ -2567,89 +2626,125 @@ void Parametric_QS::UpdateCaseParametricData()
 {
 	ParametricData &par = m_case->Parametric();
 
-	// save original outputs
-	wxArrayString outputs;
-	for (size_t i = 0; i < par.Setup.size(); i++)
+	if (UpdateNumberRuns())
 	{
-		if (VarValue *vv = m_case->Values().Get(par.Setup[i].Name))
-			continue;
-		outputs.Add(par.Setup[i].Name);
-	}
+		size_t num_runs = (size_t)numberRuns->Value();
+		if (num_runs <= 0) return; // or error message
 
-
-	par.ClearRuns();
-	par.Setup.clear();
-
-	// combinations
-	size_t num_runs = 1;
-	if (m_input_values.size() <= 0) num_runs = 0;
-	for (size_t i = 0; i < m_input_values.size(); i++)
-		num_runs *= m_input_values[i].Count() - 1;
-	// create new inputs
-	for (size_t i = 0; i < m_input_names.Count(); i++)
-	{
-		std::vector<VarValue> vvv;
-		ParametricData::Var pv;
-		if (VarValue *vv = m_case->Values().Get(m_input_names[i]))
+		// save original outputs
+		wxArrayString outputs;
+		for (size_t i = 0; i < par.Setup.size(); i++)
 		{
-			for (size_t num_run = 0; num_run < num_runs; num_run++)
-			{ // add values for inputs only
-				vvv.push_back(*vv);
-			}
+			if (VarValue *vv = m_case->Values().Get(par.Setup[i].Name))
+				continue;
+			outputs.Add(par.Setup[i].Name);
 		}
-		pv.Name = m_input_names[i];
-		pv.Values = vvv;
-		par.Setup.push_back(pv);
-	}
-	for (size_t num_run = 0; num_run < num_runs; num_run++)
-	{
-		Simulation *s = new Simulation(m_case, wxString::Format("Parametric #%d", (num_run + 1)));
-		par.Runs.push_back(s);
-	}
-	// set values - can do this once and set num_runs
-	size_t repeat = 1;
-	for (size_t col = 0; col < m_input_names.Count(); col++)
-	{
-		size_t row = 0;
-		wxArrayString vals = GetValuesList(m_input_names[col]);
-		while (row < num_runs - 1)
+
+
+		par.ClearRuns();
+		par.Setup.clear();
+
+		// create new inputs
+		for (size_t i = 0; i < m_input_names.Count(); i++)
 		{
-			for (size_t j = 0; j < vals.Count(); j++)
+			std::vector<VarValue> vvv;
+			ParametricData::Var pv;
+			if (VarValue *vv = m_case->Values().Get(m_input_names[i]))
 			{
-				for (size_t k = 0; k < repeat; k++)
-				{
-					wxString value = vals[j];
-					VarValue *vv = &par.Setup[col].Values[row];
-					VarValue::Parse(vv->Type(), value, *vv);
-					row++;
+				for (size_t num_run = 0; num_run < num_runs; num_run++)
+				{ // add values for inputs only
+					vvv.push_back(*vv);
 				}
 			}
+			pv.Name = m_input_names[i];
+			pv.Values = vvv;
+			par.Setup.push_back(pv);
 		}
-		repeat *= vals.Count();
-	}
-
-
-
-	// add original outputs back 
-	for (size_t i = 0; i < outputs.Count(); i++)
-	{
-		std::vector<VarValue> vvv;
-		ParametricData::Var pv;
-		if (VarValue *vv = m_case->Values().Get(outputs[i]))
+		for (size_t num_run = 0; num_run < num_runs; num_run++)
 		{
-			for (size_t num_run = 0; num_run < num_runs; num_run++)
-			{ // add values for inputs only
-				vvv.push_back(*vv);
+			Simulation *s = new Simulation(m_case, wxString::Format("Parametric #%d", (num_run + 1)));
+			par.Runs.push_back(s);
+		}
+		
+		// set values - can do this once and set num_runs
+		switch (rchSetupOption->GetSelection())
+		{
+			case 0: // all combinations
+			{
+				size_t repeat = 1;
+				for (size_t col = 0; col < m_input_names.Count(); col++)
+				{
+					size_t row = 0;
+					wxArrayString vals = GetValuesList(m_input_names[col]);
+					while (row < num_runs - 1)
+					{
+						for (size_t j = 0; j < vals.Count(); j++)
+						{
+							for (size_t k = 0; k < repeat; k++)
+							{
+								wxString value = vals[j];
+								VarValue *vv = &par.Setup[col].Values[row];
+								VarValue::Parse(vv->Type(), value, *vv);
+								row++;
+							}
+						}
+					}
+					repeat *= vals.Count();
+				}
+				break;
+			}
+			case 1: // independent
+			{
+				size_t row = 0;
+				for (size_t col = 0; col < m_input_names.Count(); col++)
+				{
+					wxArrayString vals = GetValuesList(m_input_names[col]);
+					for (size_t j = 0; j < vals.Count(); j++)
+					{
+							wxString value = vals[j];
+							VarValue *vv = &par.Setup[col].Values[row];
+							VarValue::Parse(vv->Type(), value, *vv);
+							row++;
+					}
+				}
+				break;
+			}
+			case 2: // linked - first cut is values and if < num_rows base value
+			{
+				for (size_t col = 0; col < m_input_names.Count(); col++)
+				{
+					wxArrayString vals = GetValuesList(m_input_names[col]);
+					for (size_t j = 0; j < vals.Count(); j++)
+					{
+						wxString value = vals[j];
+						VarValue *vv = &par.Setup[col].Values[j];
+						VarValue::Parse(vv->Type(), value, *vv);
+					}
+				}
+				break;
 			}
 		}
-		pv.Name = outputs[i];
-		pv.Values = vvv;
-		par.Setup.push_back(pv);
+
+		// add original outputs back 
+		for (size_t i = 0; i < outputs.Count(); i++)
+		{
+			std::vector<VarValue> vvv;
+			ParametricData::Var pv;
+			if (VarValue *vv = m_case->Values().Get(outputs[i]))
+			{
+				for (size_t num_run = 0; num_run < num_runs; num_run++)
+				{ // add values for inputs only
+					vvv.push_back(*vv);
+				}
+			}
+			pv.Name = outputs[i];
+			pv.Values = vvv;
+			par.Setup.push_back(pv);
+		}
+
+		// save current quick setup to be reloaded
+		par.QuickSetup = m_input_values;
 	}
-
-	// save current quick setup to be reloaded
-	par.QuickSetup = m_input_values;
-
 }
 
 
