@@ -39,6 +39,11 @@ void ParametricData::Copy(ParametricData &rhs)
 		Simulation *s = new Simulation(m_case, rhs.Runs[i]->GetName());
 		Runs.push_back(s);
 	}
+	for (size_t i = 0; i < rhs.QuickSetup.size(); i++)
+	{
+		QuickSetup.push_back(rhs.QuickSetup[i]);
+	}
+	QuickSetupMode = rhs.QuickSetupMode;
 }
 
 void ParametricData::ClearRuns()
@@ -48,6 +53,7 @@ void ParametricData::ClearRuns()
 	Runs.clear();
 }
 
+// limits number of inputs to 65,536 on 32bit...
 int ParametricData::FindSetup(wxString &name)
 {
 	int ndx = -1;
@@ -80,7 +86,7 @@ void ParametricData::Write( wxOutputStream &_O )
 	wxDataOutputStream out( _O );
 
 	out.Write8( 0x2b );
-	out.Write8( 2 );
+	out.Write8( 3 ); // version
 
 	out.Write32( Setup.size() );
 	for( size_t i=0;i<Setup.size();i++ )
@@ -102,6 +108,7 @@ void ParametricData::Write( wxOutputStream &_O )
 		for (size_t k = 0; k < QuickSetup[i].Count(); k++)
 			out.WriteString(QuickSetup[i].Item(k));
 	}
+	out.Write32(QuickSetupMode);
 
 	out.Write8( 0x2b );
 }
@@ -151,6 +158,12 @@ bool ParametricData::Read( wxInputStream &_I )
 			QuickSetup.push_back(vals);
 		}
 	}
+	
+	if (ver > 2)
+		QuickSetupMode = in.Read32();
+	else
+		QuickSetupMode = 0;
+	
 	return in.Read8() == code;
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1313,7 +1326,7 @@ void ParametricGridData::SetValue(int row, int col, const wxString& value)
 				ClearResults(row);
 			}
 			else // should not happen!
-				m_valid_run.push_back(row);
+				m_valid_run.push_back(false);
 			// set for simulation (repeated in run simulation below for copying
 			//m_par.Runs[row]->Override(m_var_names[col], *vv);
 		}
@@ -2233,6 +2246,7 @@ void Parametric_QS::UpdateFromParametricData()
 		if (m_input_values[i].Count() > 0)
 			m_input_names.Add(m_input_values[i].Item(0));
 	}
+	rchSetupOption->SetSelection((int)par.QuickSetupMode);
 	RefreshVariableList();
 	RefreshValuesList();
 }
@@ -2744,6 +2758,7 @@ void Parametric_QS::UpdateCaseParametricData()
 
 		// save current quick setup to be reloaded
 		par.QuickSetup = m_input_values;
+		par.QuickSetupMode = rchSetupOption->GetSelection();
 	}
 }
 
