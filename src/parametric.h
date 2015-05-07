@@ -31,6 +31,7 @@ public:
 	std::vector<Simulation*> Runs;
 
 	std::vector<wxArrayString> QuickSetup;
+	size_t QuickSetupMode;
 
 	int FindSetup(wxString &name);
 	bool RemoveSetup(wxString &name);
