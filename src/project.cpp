@@ -506,12 +506,12 @@ bool VersionUpgrade::Invoke( Case *c, const wxString &name, lk::node_t *root )
 			for (size_t i=0;i<e.error_count();i++)
 				text += e.get_error(i);
 
-			GetLog(name).push_back( log(ERROR, text) );
+			GetLog(name).push_back( log(VersionUpgrade::FAIL, text) );
 			return false;
 		}
 		
 	} catch(std::exception &e ){
-		GetLog(name).push_back( log(ERROR, "Version upgrade function error: " + wxString("\n") + e.what()) );
+		GetLog(name).push_back( log(VersionUpgrade::FAIL, "Version upgrade function error: " + wxString("\n") + e.what()) );
 		return false;
 	}
 	
