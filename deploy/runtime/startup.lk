@@ -127,6 +127,26 @@ function setup_residential_pages( mode, degradation ) // mode determines whether
   setup_elec_load_page( mode );
 }
 
+function setup_pv_residential_pages( mode ) // mode determines whether or not the building load calculator is included (see function:setup_elec_load_page)
+{
+  setting( { 'analysis_period_var'='cf_length' } );
+  
+  addpage( [[ {'name'='Financial Degradation', 'caption'='PV simulation for first year only'}],
+			[ {'name'='Financial Degradation PV Lifetime', 'caption'='PV simulation over entire analysis period' }],],
+           {  'sidebar'='Degradation','help'='degradation', 'exclusive_var'='pv_lifetime_simulation' } );
+  addpage( [[ 'Financial Debt Residential',
+              'Financial Analysis Parameters',
+              'Financial Tax and Insurance Rates',
+              'Financial Salvage Value' ]],
+           { 'sidebar'='Financial Parameters', 'help'='fin_residential'} );
+  addpage( [[ 'Financial DSIRE Download',
+              { 'name'='Financial Tax Credits','caption'='Tax Credits','collapsible'=true,'collapsible_var'='show_tax_credits', 'collapsed_by_default'=false },
+              { 'name'='Financial Cash Incentives','caption'='Direct Cash Incentives','collapsible'=true,'collapsible_var'='show_cash_incentives', 'collapsed_by_default'=false } ]], 
+           { 'sidebar'='Incentives','help'='incentives' } );
+  setup_utility_rate();
+  setup_elec_load_page( mode );
+}
+
 function setup_thirdparty_pages() // FOR NOW, THIRD PARTY OWNERSHIP MODEL IS ONLY VALID FOR PVWATTS AND PV DETAILED!!
 {
   setting( { 'analysis_period_var'='cf_length' } );
@@ -467,7 +487,8 @@ setmodules( ['belpe', 'pvsamv1', 'utilityrate3', 'cashloan']);
 setup_flat_plate_pv_pages();
 setup_battery_pages();
 addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
-setup_residential_pages( LOAD_BELPE, true ); //includes building load calculator
+//setup_residential_pages( LOAD_BELPE, true ); //includes building load calculator
+setup_pv_residential_pages( LOAD_BELPE ); //includes building load calculator
 
 
 setconfig( 'Flat Plate PV', 'Third Party' );
