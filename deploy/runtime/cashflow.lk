@@ -1305,9 +1305,17 @@ cashflow_to_excel{ 'Single Owner' } = define()
 	N = value('analysis_period');
 	if ( N>40 ) msgbox("The Excel workbook only shows cash flow values for a 40-year analysis period or less. Your analysis is for " + N + " years.");
 	
-	debt_fraction_mode = false;
-	debt_fraction_mode = value('debt_option') == 0;
-	if ( debt_fraction_mode == true ) msgbox("In this version of SAM, the Send-to-Excel with Equations workbook does not correctly replicate SAM's debt sizing calculations for the debt fraction (constant debt payments) option that you chose on the Financial Parameters page. If you click OK, SAM will create an Excel file with formulas, but the debt-related inputs and cash flows will be incorrect. Contact SAM support with questions.");
+	//send DSCR or debt fraction depending on debt sizing mode
+	if ( value('debt_option') == 0 ) // debt fraction input mode (constant payments)
+	{
+		xl_set( xl, value('debt_percent'), "DebtPercent");
+		xl_set( xl, "Calculated", "DebtServiceCoverageRatio");
+	}
+	else // dscr input mode (sculpted debt payments, constant DSCR)
+	{
+		xl_set( xl, value('dscr'), "DebtServiceCoverageRatio");
+		xl_set( xl, "Calculated", "DebtPercent");
+	}
 	
 	//export annual values to minimize rounding discrepancies between SAM and workbook
 	xl_set( xl, output('cf_energy_net'), "AnnualEnergy");
@@ -1318,17 +1326,17 @@ cashflow_to_excel{ 'Single Owner' } = define()
 	send_excel( xl, 'ppa_escalation'); 	
 	if ( value('ppa_soln_mode') == 0 ) //IRR is input
 	{
-		xl_set ( xl, value('flip_target_percent'), "IRRTarget");
-		xl_set ( xl, value('flip_target_year'), "IRRTargetYear");
-		xl_set ( xl, "Calculated", "PPAPriceInput" ); 
+		xl_set( xl, value('flip_target_percent'), "IRRTarget");
+		xl_set( xl, value('flip_target_year'), "IRRTargetYear");
+		xl_set( xl, "Calculated", "PPAPriceInput" ); 
 	}
 	else //PPA price is input
 	{
-		xl_set ( xl, "Calculated", "IRRTarget");
-		xl_set ( xl, "Calculated", "IRRTargetYear");
-		xl_set ( xl, value('ppa_price_input'), "PPAPriceInput" ); 
+		xl_set( xl, "Calculated", "IRRTarget");
+		xl_set( xl, "Calculated", "IRRTargetYear");
+		xl_set( xl, value('ppa_price_input'), "PPAPriceInput" ); 
 	}
-	
+		
 	//show construction financing cost calculation in spreadsheet
 	//(ssc only uses total cost as input, so these are UI inputs from input form)
 	send_excel( xl, 'const_per_percent1');
@@ -1404,7 +1412,7 @@ cashflow_to_excel{ 'Single Owner' } = define()
 	send_excel_yesno( xl, 'depr_itc_sta_sl_39');
 	send_excel_yesno( xl, 'depr_itc_sta_sl_5');
 	
-	send_excel(       xl, 'dscr'); //input
+//	send_excel(       xl, 'dscr'); //input
 	send_excel(       xl, 'dscr_reserve_months');
 	send_excel_depr(  xl, 'equip_reserve_depr_fed');
 	send_excel_depr(  xl, 'equip_reserve_depr_sta');
