@@ -896,8 +896,8 @@ GraphViewer::GraphViewer(wxWindow *parent) : wxPanel(parent, wxID_ANY)
 
 	m_lpanel = new wxPanel(splitter);
 	wxBoxSizer *sizer_tools = new wxBoxSizer( wxHORIZONTAL );
-	sizer_tools->Add( new wxButton( m_lpanel, ID_CREATE_GRAPH, "Create graph" ), 1, wxALL|wxEXPAND, 2 );
-	sizer_tools->Add( m_delButton = new wxButton( m_lpanel, ID_DELETE_GRAPH, "Delete graph" ), 0, wxALL|wxEXPAND, 2 );
+	sizer_tools->Add( new wxMetroButton( m_lpanel, ID_CREATE_GRAPH, "Create graph" ), 1, wxALL|wxEXPAND, 0 );
+	sizer_tools->Add( m_delButton = new wxMetroButton( m_lpanel, ID_DELETE_GRAPH, "Delete" ), 0, wxALL|wxEXPAND, 0 );
 		
 	m_props = new GraphProperties( m_lpanel, ID_GRAPH_PROPS );
 
