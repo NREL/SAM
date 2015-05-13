@@ -259,7 +259,7 @@ void ResultsCallbackContext::SetupLibraries( lk::env_t *env )
 }
 
 
-enum { ID_CF_COPY = wxID_ANY , ID_CF_SAVECSV, ID_CF_SENDEXCEL, ID_CF_SENDEQNEXCEL };
+enum { ID_CF_COPY = wxID_HIGHEST+490 , ID_CF_SAVECSV, ID_CF_SENDEXCEL, ID_CF_SENDEQNEXCEL };
 
 BEGIN_EVENT_TABLE( ResultsViewer, wxMetroNotebook )	
 	EVT_BUTTON(ID_CF_COPY, ResultsViewer::OnCommand)
@@ -313,12 +313,11 @@ ResultsViewer::ResultsViewer( wxWindow *parent, int id )
 
 	wxBoxSizer *cf_main_sizer = new wxBoxSizer(wxHORIZONTAL);
 	m_cf_splitter = new wxSplitterWindow(cf_panel, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxSP_NOBORDER|wxSP_LIVE_UPDATE|wxSP_3DSASH);
-	cf_main_sizer->Add(m_cf_splitter, 1, wxBOTTOM | wxLEFT | wxEXPAND, 5);
+	cf_main_sizer->Add(m_cf_splitter, 1, wxALL|wxEXPAND, 0);
 
 
 	m_cf_top_panel = new wxPanel(m_cf_splitter);
-
-
+	m_cf_top_panel->SetBackgroundColour( wxMetroTheme::Colour( wxMT_FOREGROUND ) );
 
 	m_cashFlowTable = new wxExtGridCtrl(m_cf_top_panel, wxID_ANY);
 	m_cashFlowTable->SetFont( *wxNORMAL_FONT );
@@ -355,14 +354,14 @@ ResultsViewer::ResultsViewer( wxWindow *parent, int id )
 	m_depreciationTable->EnablePasteEvent(false);
 
 	wxBoxSizer *cf_tools = new wxBoxSizer(wxHORIZONTAL);
-	cf_tools->Add(new wxButton(m_cf_top_panel, ID_CF_COPY, "Copy to clipboard"), 0, wxALL, 2);
-	cf_tools->Add(new wxButton(m_cf_top_panel, ID_CF_SAVECSV, "Save as CSV"), 0, wxALL, 2);
+	cf_tools->Add(new wxMetroButton(m_cf_top_panel, ID_CF_COPY, "Copy to clipboard"), 0, wxALL, 0);
+	cf_tools->Add(new wxMetroButton(m_cf_top_panel, ID_CF_SAVECSV, "Save as CSV"), 0, wxALL, 0);
 #ifdef __WXMSW__
-	cf_tools->Add(new wxButton(m_cf_top_panel, ID_CF_SENDEXCEL, "Send to Excel"), 0, wxALL, 2);
-	cf_tools->Add(new wxButton(m_cf_top_panel, ID_CF_SENDEQNEXCEL, "Send to Excel with Equations"), 0, wxALL, 2);
+	cf_tools->Add(new wxMetroButton(m_cf_top_panel, ID_CF_SENDEXCEL, "Send to Excel"), 0, wxALL, 0);
+	cf_tools->Add(new wxMetroButton(m_cf_top_panel, ID_CF_SENDEQNEXCEL, "Send to Excel with Equations"), 0, wxALL, 0);
 #endif
 	wxBoxSizer *cf_top_sizer = new wxBoxSizer( wxVERTICAL );
-	cf_top_sizer->Add(cf_tools, 0, wxALL | wxEXPAND, 2);
+	cf_top_sizer->Add(cf_tools, 0, wxALL | wxEXPAND, 0);
 	cf_top_sizer->Add(m_cashFlowTable, 1, wxALL | wxEXPAND, 0);
 	m_cf_top_panel->SetSizer(cf_top_sizer);
 
@@ -1155,12 +1154,12 @@ void ResultsViewer::Export(int data, int mechanism)
 	{
 		if (wxTheClipboard->Open())
 		{
+			wxBusyInfo info("Copying to clipboard...");
 			wxString tab_data = UnsplitCells(table, '\t', '\n', false);
 			// remove commas per request from Paul 5/23/12 meeting
 			tab_data.Replace(",", "");
 
-			wxTheClipboard->SetData(new wxTextDataObject(
-				tab_data));
+			wxTheClipboard->SetData(new wxTextDataObject(tab_data));
 			wxTheClipboard->Close();
 		}
 	}
@@ -1764,13 +1763,15 @@ TabularBrowser::TabularBrowser( wxWindow *parent )
 {
 	m_gridTable = NULL;
 
+	SetBackgroundColour( wxMetroTheme::Colour( wxMT_FOREGROUND ) );
+
 
 	wxBoxSizer *tb_sizer = new wxBoxSizer(wxHORIZONTAL);	
-	tb_sizer->Add( new wxButton( this, IDOB_CLEAR_ALL, "Clear all selections "), 0, wxEXPAND|wxALL, 2);
-	tb_sizer->Add( new wxButton( this, IDOB_COPYCLIPBOARD, "Copy to clipboard"), 0, wxEXPAND|wxALL, 2);
-	tb_sizer->Add( new wxButton( this, IDOB_SAVECSV, "Save as CSV..."), 0, wxEXPAND|wxALL, 2);
+	tb_sizer->Add( new wxMetroButton( this, IDOB_CLEAR_ALL, "Clear all selections "), 0, wxEXPAND|wxALL, 0);
+	tb_sizer->Add( new wxMetroButton( this, IDOB_COPYCLIPBOARD, "Copy to clipboard"), 0, wxEXPAND|wxALL, 0);
+	tb_sizer->Add( new wxMetroButton( this, IDOB_SAVECSV, "Save as CSV..."), 0, wxEXPAND|wxALL, 0);
 #ifdef __WXMSW__
-	tb_sizer->Add( new wxButton( this, IDOB_SENDEXCEL, "Send to Excel"), 0, wxEXPAND|wxALL, 2);
+	tb_sizer->Add( new wxMetroButton( this, IDOB_SENDEXCEL, "Send to Excel"), 0, wxEXPAND|wxALL, 0);
 #endif
 	tb_sizer->AddStretchSpacer(1);
 
@@ -1807,9 +1808,9 @@ TabularBrowser::TabularBrowser( wxWindow *parent )
 
 
 	wxBoxSizer *szv_main = new wxBoxSizer(wxVERTICAL);
-	szv_main->Add( tb_sizer, 0, wxALL|wxEXPAND, 1 );
+	szv_main->Add( tb_sizer, 0, wxALL|wxEXPAND, 0 );
 	//szv_main->Add( new wxStaticLine( this ), 0, wxALL|wxEXPAND);
-	szv_main->Add( splitwin, 1, wxALL|wxEXPAND, 1 );
+	szv_main->Add( splitwin, 1, wxALL|wxEXPAND, 0 );
 
 	SetSizer( szv_main );
 
