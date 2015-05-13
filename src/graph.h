@@ -9,6 +9,7 @@
 #include <wex/plot/plplotctrl.h>
 
 // forwards
+class wxMetroButton;
 class wxRadioChoice;
 class wxScrolledWindow;
 class wxExtTextCtrl;
@@ -157,7 +158,7 @@ private:
 	GraphProperties *m_props;
 	wxSnapLayout *m_layout;
 	std::vector<GraphCtrl*> m_graphs;
-	wxButton *m_delButton;
+	wxMetroButton *m_delButton;
 	wxPanel *m_lpanel;
 
 	Simulation *m_sim;
