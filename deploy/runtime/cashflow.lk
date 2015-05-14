@@ -65,6 +65,13 @@ cashflow{ 'Residential' } = define()
 
 	cfline( "OPERATING EXPENSES", -1 ); // header	
 	cfline( 'cf_om_fixed_expense,cf_om_production_expense,cf_om_capacity_expense', 0);
+	
+    tech = technology();
+    if ( tech == 'Flat Plate PV' )
+    {
+		cfline( 'cf_battery_replacement_cost', 0);
+    }
+	
 	cf_fuel_expenses();
 	
 //	cfline( 'cf_property_tax_assessed_value');
@@ -124,6 +131,13 @@ cashflow{ 'Commercial' } = define()
 
 	cfline( "OPERATING EXPENSES", -1 ); // header	
 	cfline( 'cf_om_fixed_expense,cf_om_production_expense,cf_om_capacity_expense', 0);
+
+    tech = technology();
+    if ( tech == 'Flat Plate PV' )
+    {
+		cfline( 'cf_battery_replacement_cost', 0);
+    }
+
 	cf_fuel_expenses();
 	
 //	cfline( 'cf_property_tax_assessed_value');
