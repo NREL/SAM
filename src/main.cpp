@@ -42,7 +42,8 @@ static const char *beta_disclaimer =
 #include <ssc/sscapi.h>
 
 #include "../resource/nrel_small.cpng"
-#include "../resource/main_menu.cpng"
+//#include "../resource/main_menu.cpng"
+#include "../resource/menu.cpng"
 #include "../resource/notes_white.cpng"
 
 #include <lk_absyn.h>
@@ -209,7 +210,7 @@ MainWindow::MainWindow()
 	wxMetroButton *metbut = 0;
 
 	wxBoxSizer *tools = new wxBoxSizer( wxHORIZONTAL );
-	tools->Add( m_mainMenuButton = new wxMetroButton( m_caseTabPanel, ID_MAIN_MENU, wxEmptyString, wxBITMAP_PNG_FROM_DATA( main_menu ), wxDefaultPosition, wxDefaultSize /*, wxMB_DOWNARROW */), 0, wxALL|wxEXPAND, 0 );
+	tools->Add( m_mainMenuButton = new wxMetroButton( m_caseTabPanel, ID_MAIN_MENU, wxEmptyString, wxBITMAP_PNG_FROM_DATA( menu ), wxDefaultPosition, wxDefaultSize /*, wxMB_DOWNARROW */), 0, wxALL|wxEXPAND, 0 );
 	tools->Add( new wxMetroButton( m_caseTabPanel, ID_CASE_CREATE, "New", wxBITMAP_PNG_FROM_DATA( cirplus ), wxDefaultPosition, wxDefaultSize), 0, wxALL|wxEXPAND, 0 );
 	m_caseTabList = new wxMetroTabList( m_caseTabPanel, ID_CASE_TABS, wxDefaultPosition, wxDefaultSize, wxMT_MENUBUTTONS );
 	tools->Add( m_caseTabList, 1, wxALL|wxEXPAND, 0 );		
@@ -1580,9 +1581,9 @@ extern void RegisterReportObjectTypes();
 	if ( ! proxy.IsEmpty() )
 		wxSimpleCurl::SetProxy( proxy );
 
-//#ifdef _DEBUG
-//	SamLogWindow::Setup();
-//#endif
+#ifdef _DEBUG
+	SamLogWindow::Setup();
+#endif
 
 	
 	g_config = new wxConfig( "SAMnt", "NREL" );
