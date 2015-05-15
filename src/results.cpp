@@ -381,8 +381,8 @@ ResultsViewer::ResultsViewer( wxWindow *parent, int id )
 	m_timeSeries = new wxDVTimeSeriesCtrl( this, wxID_ANY,  wxDV_RAW, wxDV_AVERAGE );
 	AddPage( m_timeSeries, "Time series" );
 
-	m_dailySeries = new wxDVTimeSeriesCtrl(this, wxID_ANY, wxDV_DAILY, wxDV_AVERAGE);
-	AddPage( m_dailySeries, "Daily" );
+	//m_dailySeries = new wxDVTimeSeriesCtrl(this, wxID_ANY, wxDV_DAILY, wxDV_AVERAGE);
+	//AddPage( m_dailySeries, "Daily" );
 		
 	m_profilePlots = new wxDVProfileCtrl( this, wxID_ANY );
 	AddPage( m_profilePlots, "Profiles" );
@@ -393,17 +393,17 @@ ResultsViewer::ResultsViewer( wxWindow *parent, int id )
 	m_dMap = new wxDVDMapCtrl( this, wxID_ANY );
 	AddPage( m_dMap, "Heat map" );
 		
-	m_scatterPlot = new wxDVScatterPlotCtrl( this, wxID_ANY );
-	AddPage( m_scatterPlot, "Scatter" );
+	//m_scatterPlot = new wxDVScatterPlotCtrl( this, wxID_ANY );
+	//AddPage( m_scatterPlot, "Scatter" );
 
 	m_pnCdf = new wxDVPnCdfCtrl( this, wxID_ANY );
 	AddPage( m_pnCdf, "PDF / CDF" );
 	
-	m_durationCurve = new wxDVDCCtrl( this, wxID_ANY );
-	AddPage( m_durationCurve, "Duration curve" );
+	//m_durationCurve = new wxDVDCCtrl( this, wxID_ANY );
+	//AddPage( m_durationCurve, "Duration curve" );
 
 	m_messages = new wxTextCtrl( this, wxID_ANY, "Detailed simulation report will appear here.", wxDefaultPosition, wxDefaultSize, wxTE_MULTILINE|wxTE_READONLY|wxBORDER_NONE );
-	AddPage( m_messages, "Messages" );
+	AddPage( m_messages, "Notices" );
 }
 
 wxDVPlotCtrlSettings ResultsViewer::GetDViewState()
@@ -418,10 +418,10 @@ wxDVPlotCtrlSettings ResultsViewer::GetDViewState()
 	settings.SetProperty(wxT("tsTopSelectedNames"), m_timeSeries->GetDataSelectionList()->GetSelectedNamesInCol(0));
 	settings.SetProperty(wxT("tsBottomSelectedNames"), m_timeSeries->GetDataSelectionList()->GetSelectedNamesInCol(1));
 	
-	settings.SetProperty(wxT("tsDailyAxisMin"), m_dailySeries->GetViewMin());
-	settings.SetProperty(wxT("tsDailyAxisMax"), m_dailySeries->GetViewMax());	
-	settings.SetProperty(wxT("tsDailyTopSelectedNames"), m_dailySeries->GetDataSelectionList()->GetSelectedNamesInCol(0));
-	settings.SetProperty(wxT("tsDailyBottomSelectedNames"), m_dailySeries->GetDataSelectionList()->GetSelectedNamesInCol(1));
+	//settings.SetProperty(wxT("tsDailyAxisMin"), m_dailySeries->GetViewMin());
+	//settings.SetProperty(wxT("tsDailyAxisMax"), m_dailySeries->GetViewMax());	
+	//settings.SetProperty(wxT("tsDailyTopSelectedNames"), m_dailySeries->GetDataSelectionList()->GetSelectedNamesInCol(0));
+	//settings.SetProperty(wxT("tsDailyBottomSelectedNames"), m_dailySeries->GetDataSelectionList()->GetSelectedNamesInCol(1));
 
 	//***DMap Tap Properties***
 	settings.SetProperty(wxT("dmapCurrentName"), m_dMap->GetCurrentDataName());
@@ -462,12 +462,12 @@ wxDVPlotCtrlSettings ResultsViewer::GetDViewState()
 
 
 	//*** DURATION CURVE PROPERTIES*** 
-	settings.SetProperty(wxT("dcSelectedNames"), m_durationCurve->GetDataSelectionList()->GetSelectedNamesInCol(0));
+//	settings.SetProperty(wxT("dcSelectedNames"), m_durationCurve->GetDataSelectionList()->GetSelectedNamesInCol(0));
 
 
 	//*** SCATTER PLOT PROPERTIES ***
-	settings.SetProperty(wxT("scatterXDataName"), m_scatterPlot->GetScatterSelectionList()->GetSelectedNamesInCol(0));
-	settings.SetProperty(wxT("scatterYDataNames"), m_scatterPlot->GetScatterSelectionList()->GetSelectedNamesInCol(1));
+	//settings.SetProperty(wxT("scatterXDataName"), m_scatterPlot->GetScatterSelectionList()->GetSelectedNamesInCol(0));
+	//settings.SetProperty(wxT("scatterYDataNames"), m_scatterPlot->GetScatterSelectionList()->GetSelectedNamesInCol(1));
 
 
 	return settings;
@@ -503,16 +503,16 @@ void ResultsViewer::SetDViewState( wxDVPlotCtrlSettings &settings )
 	if ( settings.GetProperty(wxT("tsAxisMax")).ToDouble(&max) )
 		m_timeSeries->SetViewMax(max);
 
-	m_dailySeries->SetTopSelectedNames(settings.GetProperty(wxT("tsDailyTopSelectedNames")));
-	m_dailySeries->SetBottomSelectedNames(settings.GetProperty(wxT("tsDailyBottomSelectedNames")));
+//	m_dailySeries->SetTopSelectedNames(settings.GetProperty(wxT("tsDailyTopSelectedNames")));
+//	m_dailySeries->SetBottomSelectedNames(settings.GetProperty(wxT("tsDailyBottomSelectedNames")));
 	
-	if ( settings.GetProperty(wxT("tsDailyAxisMin")).ToDouble(&min) )
-		m_dailySeries->SetViewMin(min);
-	if ( settings.GetProperty(wxT("tsDailyAxisMax")).ToDouble(&max) )
-		m_dailySeries->SetViewMax(max);
+//	if ( settings.GetProperty(wxT("tsDailyAxisMin")).ToDouble(&min) )
+		//m_dailySeries->SetViewMin(min);
+	//if ( settings.GetProperty(wxT("tsDailyAxisMax")).ToDouble(&max) )
+//		m_dailySeries->SetViewMax(max);
 
-	if ( m_dailySeries->GetNumberOfSelections() == 0 )
-		m_dailySeries->SelectDataSetAtIndex( energy_index );	
+	//if ( m_dailySeries->GetNumberOfSelections() == 0 )
+		//m_dailySeries->SelectDataSetAtIndex( energy_index );	
 
 
 	if ( settings.GetProperty(wxT("dmapZMin")).ToDouble(&min) ) m_dMap->SetZMin(min);
@@ -574,12 +574,13 @@ void ResultsViewer::SetDViewState( wxDVPlotCtrlSettings &settings )
 
 
 	//*** DURATION CURVE PROPERTIES ***
-	m_durationCurve->SetSelectedNames(settings.GetProperty(wxT("dcSelectedNames")), true);
-	if ( m_durationCurve->GetNumberOfSelections() == 0 )
-		m_durationCurve->SelectDataSetAtIndex( energy_index );
+//	m_durationCurve->SetSelectedNames(settings.GetProperty(wxT("dcSelectedNames")), true);
+//	if ( m_durationCurve->GetNumberOfSelections() == 0 )
+//		m_durationCurve->SelectDataSetAtIndex( energy_index );
 	
 
 	//*** SCATTER PLOT PROPERTIES ***
+	/*
 	m_scatterPlot->SetXSelectedName(settings.GetProperty(wxT("scatterXDataName")));
 	m_scatterPlot->SetYSelectedNames(settings.GetProperty(wxT("scatterYDataNames")));
 	if ( !m_scatterPlot->IsAnythingSelected() && irrad_index >= 0 )
@@ -587,6 +588,7 @@ void ResultsViewer::SetDViewState( wxDVPlotCtrlSettings &settings )
 		m_scatterPlot->SelectXDataAtIndex( irrad_index );
 		m_scatterPlot->SelectYDataAtIndex( energy_index );
 	}
+	*/
 	
 }
 
@@ -1090,13 +1092,13 @@ void ResultsViewer::AddDataSet(wxDVTimeSeriesDataSet *d, const wxString& group, 
 	m_tsDataSets.push_back(d);
 	
 	m_timeSeries->AddDataSet(d, group, update_ui);
-	m_dailySeries->AddDataSet(d, group, update_ui);
+//	m_dailySeries->AddDataSet(d, group, update_ui);
 	m_dMap->AddDataSet(d, group, update_ui);
 	m_profilePlots->AddDataSet(d, group, update_ui);
 	m_statTable->AddDataSet(d, group);
 	m_pnCdf->AddDataSet(d, group, update_ui); 
-	m_durationCurve->AddDataSet(d, group, update_ui);
-	m_scatterPlot->AddDataSet(d, group, update_ui);
+//	m_durationCurve->AddDataSet(d, group, update_ui);
+	//m_scatterPlot->AddDataSet(d, group, update_ui);
 }
 
 
@@ -1352,13 +1354,13 @@ void ResultsViewer::ExportEqnExcel()
 void ResultsViewer::RemoveAllDataSets()
 {
 	m_timeSeries->RemoveAllDataSets();
-	m_dailySeries->RemoveAllDataSets();
+	//m_dailySeries->RemoveAllDataSets();
 	m_dMap->RemoveAllDataSets();
 	m_profilePlots->RemoveAllDataSets();
 	m_statTable->RemoveAllDataSets();
 	m_pnCdf->RemoveAllDataSets();
-	m_durationCurve->RemoveAllDataSets();
-	m_scatterPlot->RemoveAllDataSets();
+	//m_durationCurve->RemoveAllDataSets();
+	//m_scatterPlot->RemoveAllDataSets();
 	
 	for (int i=0; i<m_tsDataSets.size(); i++)
 		delete m_tsDataSets[i];

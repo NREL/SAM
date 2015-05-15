@@ -145,13 +145,13 @@ private:
 		
 	std::vector<wxDVTimeSeriesDataSet*> m_tsDataSets;
 	wxDVTimeSeriesCtrl *m_timeSeries;
-	wxDVTimeSeriesCtrl *m_dailySeries;
+	//wxDVTimeSeriesCtrl *m_dailySeries;
 	wxDVDMapCtrl *m_dMap;
 	wxDVProfileCtrl *m_profilePlots;
 	wxDVStatisticsTableCtrl *m_statTable;
 	wxDVPnCdfCtrl *m_pnCdf;
-	wxDVDCCtrl *m_durationCurve;
-	wxDVScatterPlotCtrl *m_scatterPlot;
+	//wxDVDCCtrl *m_durationCurve;
+	//wxDVScatterPlotCtrl *m_scatterPlot;
 
 	wxTextCtrl *m_messages;
 
