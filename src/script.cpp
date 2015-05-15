@@ -572,6 +572,14 @@ public:
 	{
 		m_scriptwin->AddOutput( out );
 	}
+
+	virtual void OnSyntaxCheck( int line, const wxString &errstr )
+	{
+		/* nothing to do - just disable auto showing of error annotations */
+
+		m_scriptwin->ClearOutput();
+		m_scriptwin->AddOutput( errstr );
+	}
 };
 
 enum { ID_SCRIPT = wxID_HIGHEST+494 ,
