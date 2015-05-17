@@ -32,7 +32,7 @@ configopt( 'MSPT',     	                  { 'long_name'='CSP power tower molten 
 configopt( 'DSPT',     	                  { 'long_name'='CSP power tower direct steam',           'short_name'='Tower (steam)',    'description'='CSP direct steam power tower system using heat transfer and thermodynamic component models' } );
 configopt( 'Physical Trough',             { 'long_name'='CSP parabolic trough (physical)',        'short_name'='Trough (phys)',   'description'='CSP parabolic trough system using heat transfer and thermodynamic component models' } );
 configopt( 'Empirical Trough',            { 'long_name'='CSP parabolic trough (empirical)',       'short_name'='Trough (empr)',   'description'='CSP parabolic trough system using model with empirically-derived coefficients and equations' } );
-configopt( 'Dish Stirling',               { 'long_name'='CSP dish Stirling',                      'short_name'='Dish Stirling',    'description'='Dish Stirling model with parameters for SES and WGA-ADDS systems' } );
+configopt( 'Dish Stirling',            	  { 'long_name'='CSP dish Stirling',                      'short_name'='Dish Stirling',    'description'='Dish Stirling model with parameters for SES and WGA-ADDS systems' } );
 configopt( 'Generic CSP System',          { 'long_name'='CSP generic model',                      'short_name'='Generic CSP',      'description'='CSP power system with solar field modeled using a table of optical efficiency values' } );
 configopt( 'DSLF',        				  { 'long_name'='CSP linear Fresnel direct steam',        'short_name'='Fresnel (steam)',    'description'='CSP power system that uses long small mirrors to line focus sunlight on fixed receiver tubes mounted above them.' } );
 configopt( 'MSLF',        				  { 'long_name'='CSP linear Fresnel molten salt',         'short_name'='Fresnel (salt)',    'description'='CSP power system that uses long small mirrors to line focus sunlight on fixed receiver tubes mounted above them.' } );
@@ -112,7 +112,7 @@ function setup_residential_pages( mode, degradation ) // mode determines whether
   if (degradation)
   {	
 	addpage( [[ 'Financial Degradation']],
-           {  'sidebar'='Degradation','help'='degradation' } );
+           {  'sidebar'='Lifetime','help'='degradation' } );
   }
   addpage( [[ 'Financial Debt Residential',
               'Financial Analysis Parameters',
@@ -133,7 +133,7 @@ function setup_pv_residential_pages( mode ) // mode determines whether or not th
   
   addpage( [[ {'name'='Financial Degradation', 'caption'='PV simulation for first year only'}],
 			[ {'name'='Financial Degradation PV Lifetime', 'caption'='PV simulation over entire analysis period' }],],
-           {  'sidebar'='Degradation','help'='degradation', 'exclusive_var'='pv_lifetime_simulation' } );
+           {  'sidebar'='Lifetime','help'='degradation', 'exclusive_var'='pv_lifetime_simulation' } );
   addpage( [[ 'Financial Debt Residential',
               'Financial Analysis Parameters',
               'Financial Tax and Insurance Rates',
@@ -151,7 +151,7 @@ function setup_thirdparty_pages() // FOR NOW, THIRD PARTY OWNERSHIP MODEL IS ONL
 {
   setting( { 'analysis_period_var'='cf_length' } );
   addpage( [[ 'Financial Degradation']],
-           {  'sidebar'='Degradation','help'='degradation' } );
+           {  'sidebar'='Lifetime','help'='degradation' } );
   addpage( [[ 'Financial Third Party Ownership']],
            { 'sidebar'='Financial Parameters', 'help'='fin_thirdparty'} );
   setup_utility_rate();
@@ -170,7 +170,7 @@ function setup_commercial_pages( mode, degradation ) // mode determines whether 
   if (degradation)
   {	
 	addpage( [[ 'Financial Degradation']],
-           {  'sidebar'='Degradation','help'='degradation' } );
+           {  'sidebar'='Lifetime','help'='degradation' } );
   }
   addpage( [[ 'Financial Debt Min DSCR',
               'Financial Analysis Parameters',
@@ -185,6 +185,27 @@ function setup_commercial_pages( mode, degradation ) // mode determines whether 
   setup_utility_rate();
   setup_elec_load_page( mode );
 }
+
+function setup_pv_commercial_pages( mode ) // mode determines whether or not the building load calculator is included (see function:setup_elec_load_page)
+{
+  setting( { 'analysis_period_var'='cf_length' } );
+  addpage( [[ {'name'='Financial Degradation', 'caption'='PV simulation for first year only'}],
+			[ {'name'='Financial Degradation PV Lifetime', 'caption'='PV simulation over entire analysis period' }],],
+           {  'sidebar'='Lifetime','help'='degradation', 'exclusive_var'='pv_lifetime_simulation' } );
+  addpage( [[ 'Financial Debt Min DSCR',
+              'Financial Analysis Parameters',
+		      'Financial Tax and Insurance Rates',
+		      'Financial Salvage Value',
+              'Financial Depreciation Simple', ]],
+           { 'sidebar'='Financial Parameters','help'='fin_commercial'} );
+  addpage( [[ 'Financial DSIRE Download',
+              { 'name'='Financial Tax Credits','caption'='Tax Credits','collapsible'=true,'collapsible_var'='show_tax_credits', 'collapsed_by_default'=false },
+              { 'name'='Financial Cash Incentives','caption'='Direct Cash Incentives','collapsible'=true,'collapsible_var'='show_cash_incentives', 'collapsed_by_default'=false } ]],
+		   { 'sidebar'='Incentives', 'help'='incentives' } );
+  setup_utility_rate();
+  setup_elec_load_page( mode );
+}
+
 
 function setup_utility_rate()
 {
@@ -201,7 +222,7 @@ function setup_commercial_ppa_pages(degradation)
   if (degradation)
   {	
 	addpage( [[ 'Financial Degradation']],
-           {  'sidebar'='Degradation','help'='degradation' } );
+           {  'sidebar'='Lifetime','help'='degradation' } );
   }
   addpage( [[ 'Financial Solution Mode Commercial PPA',
 		      'Financial Debt Min DSCR',
@@ -224,7 +245,7 @@ function setup_independent_power_producer_pages(degradation)
   if (degradation)
   {	
 	addpage( [[ 'Financial Degradation']],
-           {  'sidebar'='Degradation','help'='degradation' } );
+           {  'sidebar'='Lifetime','help'='degradation' } );
   }
   addpage( [[ 'Financial Solution Mode Independent Power Producer',
 		      'Financial Debt Min DSCR',
@@ -248,7 +269,7 @@ function setup_single_owner_pages(degradation)
   if (degradation)
   {	
 	addpage( [[ 'Financial Degradation']],
-           {  'sidebar'='Degradation','help'='degradation' } );
+           {  'sidebar'='Lifetime','help'='degradation' } );
   }
   addpage( [[ 'Financial Solution Mode Single Owner',
               'Financial Analysis Parameters',
@@ -274,7 +295,7 @@ function setup_leveraged_partnership_flip_pages(degradation)
   if (degradation)
   {	
 	addpage( [[ 'Financial Degradation']],
-           {  'sidebar'='Degradation','help'='degradation' } );
+           {  'sidebar'='Lifetime','help'='degradation' } );
   }
   addpage( [[ 'Financial Solution Mode Flip Leaseback',
               'Financial Equity Flip Structure', 
@@ -302,7 +323,7 @@ function setup_all_equity_partnership_flip_pages(degradation)
   if (degradation)
   {	
 	addpage( [[ 'Financial Degradation']],
-           {  'sidebar'='Degradation','help'='degradation' } );
+           {  'sidebar'='Lifetime','help'='degradation' } );
   }
   addpage( [[ 'Financial Solution Mode Flip Leaseback',
               'Financial Equity Flip Structure', 
@@ -329,7 +350,7 @@ function setup_sale_leaseback_pages(degradation)
   if (degradation)
   {	
 	addpage( [[ 'Financial Degradation']],
-           {  'sidebar'='Degradation','help'='degradation' } );
+           {  'sidebar'='Lifetime','help'='degradation' } );
   }
   addpage( [[ 'Financial Solution Mode Flip Leaseback',
               'Financial Sale Leaseback', 
@@ -502,7 +523,8 @@ setmodules( ['pvsamv1', 'utilityrate3', 'cashloan']);
 setup_flat_plate_pv_pages();
 setup_battery_pages();
 addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
-setup_commercial_pages(0,true); //belpe not valid for commercial
+//setup_commercial_pages(0,true); //belpe not valid for commercial
+setup_pv_commercial_pages(0); //belpe not valid for commercial
 
 setconfig( 'Flat Plate PV', 'Commercial PPA' );	
 setmodules( ['pvsamv1', 'ippppa']);
