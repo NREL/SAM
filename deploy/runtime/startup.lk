@@ -73,6 +73,7 @@ function setup_battery_pages()
 			  [{'name'='Battery Configuration', 'caption'='Enable Battery'},
 			   'Battery Model',
 			   'Battery Lifetime',
+			   'Battery Replacements',
 			   'Battery Dispatch',
 			   'Battery Thermal'] ],
 			  { 'sidebar'='Battery Storage', 'help'='battery_model', 'exclusive_var'='en_batt'} );
