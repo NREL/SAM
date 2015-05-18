@@ -1,6 +1,6 @@
 
 version_upgrade{'2015.4.10'} = define() {
-	message('upgrading project to version 2015.4.10');
+	message('Upgrading project to version 2015.4.10');
 	
 	//get the configuration
 	const cfg = config();
@@ -9,14 +9,14 @@ version_upgrade{'2015.4.10'} = define() {
 	if (cfg.tech == 'Flat Plate PV')
 	{
 		value('dc_power_opt_loss', 0, 'New variable to represent DC power optimizer losses.');
-		value('activate_snow_model', 0, 'New variable to activate the new PV snow losses model.');
+		value('en_snow_model', 0, 'New variable to activate the new PV snow losses model.');
 	}
 };
 
 //***********************************************************************************************************************************************************
 
 version_upgrade{'2015.1.30'} = define() {
-	message('upgrading project to version 2015.1.30');
+	message('Upgrading project to version 2015.1.30');
 	
 	//get the configuration
 	const cfg = config();
@@ -28,20 +28,28 @@ version_upgrade{'2015.1.30'} = define() {
 		delvar('p_scale_f,p_offset_value', 'Deleting unused variables on the Input Electric Load page.');
 	}
 	
-	//Availability and Curtailment (all three components) changed from factor to loss for ALL configurations
-	//Annual loss
-	factor_old = value('adjust').factor;
-	message('factor_old = ' + factor_old);
-	message('type of factor old: ' + typeof(factor_old));
-	factor_new = (1 - factor_old) * 100;
-	message('factor_new = ' + factor_new);
-	message('type of factor_new: ' + typeof(factor_new));
-	value('adjust', {'factor' = factor_new}, 'Changed Availability and Curtailment variable from factor to loss.');
-	//WHY ISN'T THIS WORKING???
-	//Hourly losses
+	//Availability and Curtailment (all three components) changed from factor to loss for ALL configurations	
+	adj = value('adjust');
+	adj.factor = (1 - adj.factor) * 100.0;
+	if (adj.en_hourly)
+		for(i=0; i<8760; i++)
+			adj.hourly[i] = (1 - adj.hourly[i]) * 100;
+	if(adj.en_periods)
+		for (i=0; i<#adj.periods; i++)
+			adj.periods[i][2] = (1 - adj.periods[i][2]) * 100;
+	value('adjust', adj, 'Availability and curtailment numbers were changed from factors to losses.');
 	
-	//Custom periods
-	
+	//Address fixed bug in the CEC User Entered Module page
+	if (cfg.tech == 'Flat Plate PV')
+	{
+		if (value('module_model') == 2)
+		{
+			if (value('6par_aisc_units') == 1)
+				message('Version 2014.11.24 of SAM had a bug with the units of the ISC Temperature Coefficient. Please double check this input.', 'warning');
+			if (value('6par_bvoc_units') == 1)
+				message('Version 2104.11.24 of SAM had a bug with the units of the VOC Temperature Coefficient. Please double check this input.', 'warning');
+		}
+	}
 };
 
 //***********************************************************************************************************************************************************
