@@ -1,4 +1,6 @@
 #include <algorithm>
+#include <cmath>
+#include <numeric>
 
 #include <wx/panel.h>
 #include <wx/clipbrd.h>
