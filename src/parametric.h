@@ -244,7 +244,8 @@ public:
 
 	void OnCommand(wxCommandEvent &evt);
 
-	bool UpdateNumberRuns();
+	size_t UpdateNumberRuns();
+	bool UpdateLinkedEnabled();
 
 private:
 	wxListBox *lstValues;

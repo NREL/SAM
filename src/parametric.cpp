@@ -262,6 +262,7 @@ ParametricViewer::ParametricViewer(wxWindow *parent, Case *cc)
 	m_num_runs_ctrl = new wxNumericCtrl(top_panel, ID_NUMRUNS, 0, wxNumericCtrl::INTEGER);
 	wxSize bestsz( m_num_runs_ctrl->GetBestSize() );
 	m_num_runs_ctrl->SetInitialSize( wxSize( bestsz.x/2, bestsz.y ) );
+	m_num_runs_ctrl->SetEditable(false);
 	tool_sizer->Add(m_num_runs_ctrl, 0, wxALL|wxALIGN_CENTER_VERTICAL, 0);
 	m_run_multithreaded = new wxCheckBox(top_panel, wxID_ANY, "Run multi-threaded?", wxDefaultPosition, wxDefaultSize, wxALIGN_RIGHT);
 	m_run_multithreaded->SetValue(true);
@@ -2140,6 +2141,7 @@ m_case(c)
 
 	numberRuns = new wxNumericCtrl(this, ID_numberRuns, 0, wxNumericCtrl::INTEGER);
 	numberRuns->SetFormat(0, true);
+	numberRuns->SetEditable(false);
 	wxBoxSizer *numrun_sizer = new wxBoxSizer(wxHORIZONTAL);
 	numrun_sizer->Add(new wxStaticText(this, wxID_ANY, "Number of simulations:"), 0, wxALIGN_LEFT | wxALIGN_CENTER_VERTICAL | wxALL, 3);
 	numrun_sizer->Add(numberRuns, 0, wxALIGN_LEFT | wxALIGN_CENTER_VERTICAL | wxALL, 3);
@@ -2159,8 +2161,27 @@ m_case(c)
 	UpdateFromParametricData();
 }
 
+bool Parametric_QS::UpdateLinkedEnabled()
+{
+	size_t num_runs = 0;
+	bool enable_linked = true;
+	if (m_input_values.size() > 0)
+	{
+		num_runs = m_input_values[0].Count() - 1;
+		for (size_t i = 1; i < m_input_values.size(); i++)
+		{
+			if ((m_input_values[i].Count() - 1) != num_runs)
+			{
+				enable_linked = false;
+				break;
+			}
+		}
+		rchSetupOption->Enable(2, enable_linked);
+	}
+	return enable_linked;
+}
 
-bool Parametric_QS::UpdateNumberRuns()
+size_t Parametric_QS::UpdateNumberRuns()
 {
 	size_t num_runs = 0;
 	if (m_input_values.size() > 0)
@@ -2187,17 +2208,20 @@ bool Parametric_QS::UpdateNumberRuns()
 			case 2:
 			{
 				// linked - initially max number of values and other inputs set to base case values if less than max number of values
-				for (size_t i = 0; i < m_input_values.size(); i++)
-				{
-					if ((m_input_values[i].Count() - 1) > num_runs)
-						num_runs = m_input_values[i].Count() - 1;
-				}
+				// 5/14/15 meeting - update to only if all inputs have same number of values.
+				num_runs = m_input_values[0].Count() -1;
 				break;
 			}
 		}
+		numberRuns->SetValue((double)num_runs);
+		if (!UpdateLinkedEnabled() && (sel_mode == 2))
+		{
+			wxMessageBox("All inputs must have samed number of values to be linked.", "Linked disabled");
+			rchSetupOption->SetSelection(0);
+			numberRuns->SetValue((double)UpdateNumberRuns());
+		}
 	}
-	numberRuns->SetValue((double)num_runs);
-	return (num_runs < 100000); // max number of runs capped at 100,000
+	return num_runs;
 }
 
 void Parametric_QS::OnCommand(wxCommandEvent &evt)
@@ -2206,12 +2230,23 @@ void Parametric_QS::OnCommand(wxCommandEvent &evt)
 	{
 		case wxID_OK:
 		{
-			if (UpdateNumberRuns())
+			if (UpdateNumberRuns() < 10000)
 			{
 				if (wxYES == wxMessageBox("Overwrite parametric table inputs with quick setup inputs?", "Overwrite table", wxYES_NO))
 				{
 					UpdateCaseParametricData();
 					EndModal(wxID_OK);
+				}
+			}
+			else if(UpdateNumberRuns() < 100000)
+			{
+				if (wxYES == wxMessageBox("Are you sure you want to setup more than 10,000 simulaitons?", "Confirm simulations", wxYES_NO))
+				{
+					if (wxYES == wxMessageBox("Overwrite parametric table inputs with quick setup inputs?", "Overwrite table", wxYES_NO))
+					{
+						UpdateCaseParametricData();
+						EndModal(wxID_OK);
+					}
 				}
 			}
 			else
