@@ -10,77 +10,7 @@ version_upgrade{'2015.4.10'} = define() {
 	{
 		value('dc_power_opt_loss', 0, 'New variable to represent DC power optimizer losses.');
 		value('en_snow_model', 0, 'New variable to activate the new PV snow losses model.');
-		
-		// battery configuration page
 		value('en_batt',0,'New variable defining whether battery is enabled');
-		value('batt_ac_or_dc',1,'New variable to allow selection of PV+Battery configuration.');
-		value('batt_ac_dc_efficiency',99,'New variable to define conversion efficiency for AC-connected battery.');
-		value('batt_dc_ac_efficiency',99,'New variable to define conversion efficiency for AC-connected battery.');
-		value('batt_dc_dc_efficiency',99,'New variable to define conversion efficiency for DC-connected battery.');
-		// battery model page
-		value('LeadAcid_q10',93,'New variable to define 10-hour discharge capacity of lead-acid battery as % of max capacity');
-		value('LeadAcid_q20',100,'New variable to define 20-hour discharge capacity of lead-acid battery as % of max capacity');
-		value('LeadAcid_qn',60,'New variable to define 1-hour discharge capacity of lead-acid battery as % of max capacity');
-		value('LeadAcid_tn',1,'New variable to define 1-hour');
-		value('batt_C_rate',0.1,'New variable to define C-rate of discharge curve');
-		value('batt_C_rate_max_charge',1,'New variable to define max C-rate of charge');
-		value('batt_C_rate_max_discharge',1,'New variable to define max C-rate of discharge');
-		value('batt_Qexp_percent',1,'New variable to define ercent of charge removed at the end of the exponential zone');
-		value('batt_Qnom_percent',95,'New variable to define percent of charge removed at the end of the nominal zone');
-		value('batt_Qfull',5,'New variable to define cell capacity');
-		value('batt_Vfull',2.2,'New variable to define fully charged cell voltage');
-		value('batt_Vexp',2.05,'New variable to define cell voltage at the end of the exponential zone');
-		value('batt_Vnom',2.04,'New variable to define cell voltage at the end of the nominal zone');
-		value('batt_Vnom_default',2,'New variable to define nominal cell voltage used for sizing system');
-		value('batt_bank_ncells_parallel',0,'New variable to define number of battery cells in parallel');
-		value('batt_bank_ncells_serial',3,'New variable to define number of battery cells in series');
-		value('batt_bank_size',3,'New variable to define desired battery bank size');
-		value('batt_bank_voltage',12,'New variable to define desired battery bank voltage');
-		value('batt_chem',0,'New variable to define desired battery chemistry');
-		value('batt_lead_type',0,'New variable to define specific type of lead acid battery');
-		value('batt_lithium_type',0,'New variable to define specific type of lithium ion battery');
-		value('batt_size_choice',0,'New variable to size battery by cells or desired size');
-		value('batt_type',0,'New variable to define dropdown menu selection of battery chemistry');
-		// battery lifetime page
-		value('batt_lifetime_matrix', [[30,0,100],[30,1100,90],[30,1200,50],[50,0,100],[50,400,90],[50,500,50],[100,0,100],[100,100,90],[100,150,50]], 'New variable to define battery capacity fade with cycles at an average depth-of-discharge');
-		// battery discharge page
-		value('batt_discharge_percent_1',25,'New variable to define percent of original capacity to discharge over this period');
-		value('batt_discharge_percent_2',25,'New variable to define percent of original capacity to discharge over this period');
-		value('batt_discharge_percent_3',25,'New variable to define percent of original capacity to discharge over this period');
-		value('batt_discharge_percent_4',25,'New variable to define percent of original capacity to discharge over this period');
-		value('batt_minimum_SOC',30,'New variable to define minimum state-of-charge desired for battery');
-		value('batt_minimum_modetime',10,'New variable to define minimum amount of time to remain charging or discharging before switching modes)');
-		value('pv.storage.p1.charge',1,'New variable to define allow battery charging from PV during this period?');
-		value('pv.storage.p2.charge',1,'New variable to define allow battery charging from PV during this period?');
-		value('pv.storage.p3.charge',1,'New variable to define allow battery charging from PV during this period?');
-		value('pv.storage.p4.charge',0,'New variable to define allow battery charging from PV during this period?');
-		value('pv.storage.p1.discharge',0,'New variable to define allow battery discharging during this period?');
-		value('pv.storage.p2.discharge',0,'New variable to define allow battery discharging during this period?');
-		value('pv.storage.p3.discharge',1,'New variable to define allow battery discharging during this period?');
-		value('pv.storage.p4.discharge',0,'New variable to define allow battery discharging during this period?');
-		value('pv.storage.p1.gridcharge',0,'New variable to define allow battery charging from grid during this period?');
-		value('pv.storage.p2.gridcharge',1,'New variable to define allow battery charging from grid during this period?');
-		value('pv.storage.p3.gridcharge',0,'New variable to define allow battery charging from grid during this period?');
-		value('pv.storage.p4.gridcharge',0,'New variable to define allow battery charging from grid during this period?');
-		// battery thermal page
-		value('T_room',20,'New variable to define temperature of room battery stored in');
-		value('batt_Cp', 4183,'New variable to define specific heat capacity of battery');
-		value('batt_area_density', 0.250,'New variable to define surface area to energy density of battery');
-		value('batt_energy_density', 25,'New variable to define mass to energy density of battery');
-		value('batt_h_to_ambient', 500,'New variable to define heat transfer coefficient between battery and room');
-		value('cap_vs_temp', [[-15,65],[0,85],[25,100],[40,104]],'New variable to define battery capacity versus temperature');
-		// battery replacement page
-		value('batt_replacement_capacity', 20, 'New variable to define percent of current max capacity relative to original at which to replace battery bank');
-		value('batt_replacement_cost', 600, 'New variable to define battery bank replacement cost');
-		value('batt_replacement_cost_escal', 0, 'New variable to define battery bank escalation');
-		value('batt_replacement_option', 0, 'New variable to replace batteries based on capacity degradation or user defined schedule');
-		value('batt_replacement_schedule', 0, 'New variable to define schedule at which to replace batteries');
-		// Lifetime page
-		value('dc_degradation', 0, 'New variable to define module degradation for lifetime simulation');
-		value('pv_lifetime_simulation', 0, 'New variable to allow PV+battery lifetime simulation');
-		// PV Capital costs page
-		value('battery_per_kWh', 600, 'New variable defining cost of battery per kWH');
-		
 	}
 };
 
