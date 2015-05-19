@@ -1,3 +1,6 @@
+#include <cmath>
+#include <numeric>
+
 #include <wx/wx.h>
 #include <wx/gbsizer.h>
 
