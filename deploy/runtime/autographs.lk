@@ -22,12 +22,17 @@ function third_party_graphs()
 function ppa_financial_graphs()
 {
 	agraph( 'cf_energy_net', 'Annual Energy Production', 'Year', 'kWh', 10, true, false,'bottom' );
-	agraph( 'cf_project_return_aftertax', 'Project After-tax Cash Flow', '', '$' );
+	agraph( 'cf_project_return_aftertax', 'Project After-tax Cash Flow', 'Year', '$', 10, true, false, 'bottom' );
 }
 
-function sale_leaseback_graphs()
+function ppa_sale_leaseback_graphs() 
 {
-		agraph( 'cf_sponsor_aftertax_cash,cf_tax_investor_aftertax_cash', 'Project After-tax Cash Flow', '', '$' );
+	agraph( 'cf_energy_net', 'Annual Energy Production', 'Year', 'kWh', 10, true, false,'bottom' );
+}
+
+function ppa_partnership_graphs()
+{
+		agraph( 'cf_sponsor_aftertax_cash,cf_tax_investor_aftertax_cash', 'Partner After-tax Cash Flows', 'Year', '$', 5, true, true, 'bottom' );
 }
 
 
@@ -88,6 +93,6 @@ autographs{ 'Third Party' } = define() { third_party_graphs(); };
 //autographs{ 'Commercial PPA' } = define() { simple_financial_graphs(); };
 //autographs{ 'Independent Power Producer' } = define() { simple_financial_graphs(); };
 autographs{ 'Single Owner' } = define() { ppa_financial_graphs(); };
-autographs{ 'All Equity Partnership Flip' } = define() { ppa_financial_graphs(); };
-autographs{ 'Leveraged Partnership Flip' } = define() { ppa_financial_graphs(); };
-autographs{ 'Sale Leaseback' } = define() { sale_leaseback_graphs(); };
+autographs{ 'All Equity Partnership Flip' } = define() { ppa_financial_graphs(); ppa_partnership_graphs(); };
+autographs{ 'Leveraged Partnership Flip' } = define() { ppa_financial_graphs(); ppa_partnership_graphs(); };
+autographs{ 'Sale Leaseback' } = define() { ppa_sale_leaseback_graphs(); ppa_partnership_graphs(); };
