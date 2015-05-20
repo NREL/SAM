@@ -1,3 +1,6 @@
+#include <cmath>
+#include <numeric>
+
 #include <wx/datstrm.h>
 #include <wx/wfstream.h>
 #include <wx/zstream.h>
