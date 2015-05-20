@@ -66,8 +66,9 @@ static const char *beta_disclaimer =
 
 // application globals
 static SamApp::ver releases[] = {
-	{ 2015,  4, 10 },
-	{ 2015,  1, 30 },
+		{ 2015, 5, 20 },
+		{ 2015, 4, 10 },
+		{ 2015, 1, 30 },
 	{ 2014, 11, 24 },
 	{    0,  0,  0 } };
 
