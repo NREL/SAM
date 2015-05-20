@@ -7,13 +7,13 @@ SSCDIR = ../../ssc
 
 WEXLIB = $(WEXDIR)/wexuxwx3.a
 LKLIB = $(LKDIR)/lkuxwx3.a
-SSCLIB = $(SSCDIR)/build_linux/ssc.so
+SSCLIB = ssc.so
 
 CC = gcc
 CXX = g++
 CFLAGS = -g -DLK_USE_WXWIDGETS -I. -I$(SRCDIR) -I$(WEXDIR)/include -I$(LKDIR) -I$(SSCDIR) `wx-config-3 --cflags`
 CXXFLAGS = $(CFLAGS)
-LDFLAGS = `wx-config-3 --libs` `wx-config-3 --libs aui` `wx-config-3 --libs stc` `wx-config-3 --libs propgrid` `wx-config-3 --libs richtext` -lm $(LKLIB) $(WEXLIB) -lstdc++ -lcurl
+LDFLAGS = `wx-config-3 --libs propgrid` `wx-config-3 --libs aui` `wx-config-3 --libs stc` `wx-config-3 --libs richtext` `wx-config-3 --libs` -lm $(LKLIB) $(WEXLIB) -lstdc++ -lcurl
 
 OBJECTS = ide.o \
 	lossdiag.o \
