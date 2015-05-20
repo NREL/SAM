@@ -99,13 +99,25 @@ void PopulateSelectionList( wxDVSelectionListCtrl *sel, wxArrayString *names, Si
 		if (list.Count() == 0)
 			continue;
 		
-		int steps_per_hour = varlengths[i]/8760;
-		if ( steps_per_hour*8760 != varlengths[i] )
+		bool lifetime = false;
+		int steps_per_hour = varlengths[i] / 8760;
+		if (steps_per_hour * 8760 != varlengths[i])
 			steps_per_hour = -1;
 
-		if ( VarValue *lftm = sim->GetValue("system_use_lifetime_output") )
-			if ( lftm->Value() != 0.0f )
-				steps_per_hour = -1; // don't report geothermal system output as minute data depending on analysis period
+		if (VarValue *lftm = sim->GetValue("system_use_lifetime_output"))
+		{
+			if (lftm->Value() != 0.0f) // lifetime output - update steps per hour
+			{
+				steps_per_hour = steps_per_hour / (an_period - 1);
+				lifetime = true;
+				if (steps_per_hour * 8760 *(an_period -1) != varlengths[i])
+					steps_per_hour = -1;
+			}
+		}
+
+		// I know we do not want to start this again but wanted lifetime subhourly output
+		if (sim->GetCase()->GetTechnology() == "Geothermal")
+			steps_per_hour = -1; // don't report geothermal system output as minute data depending on analysis period
 
 		wxString group;
 		if (varlengths[i] == 1)
@@ -114,14 +126,16 @@ void PopulateSelectionList( wxDVSelectionListCtrl *sel, wxArrayString *names, Si
 			group = "Monthly Data";
 		else if (varlengths[i] == 8760)
 			group = "Hourly Data";
-		else if ( steps_per_hour >= 2 && steps_per_hour <= 60 )
-			group = wxString::Format("%d Minute Data",60/steps_per_hour);
+		else if ((steps_per_hour >= 2 && steps_per_hour <= 60) && (!lifetime))
+			group = wxString::Format("%d Minute Data", 60 / steps_per_hour);
 		else if (varlengths[i] == an_period)
 			group = "Annual Data";
-		else if (varlengths[i] == (an_period-1)*12)
+		else if ((varlengths[i] == (an_period - 1) * 12) && (lifetime))
 			group = "Lifetime Monthly Data";
-		else if (varlengths[i] == (an_period-1)*8760)
+		else if ((varlengths[i] == (an_period - 1) * 8760) && (lifetime))
 			group = "Lifetime Hourly Data";
+		else if ((steps_per_hour >= 2 && steps_per_hour <= 60) && (lifetime))
+			group = wxString::Format("Lifetime %d Minute Data", 60 / (steps_per_hour));
 		else
 			group.Printf("Data: %d values", (int)varlengths[i]);
 		
@@ -179,12 +193,25 @@ void UpdateSelectionList(wxDVSelectionListCtrl *sel, wxArrayString *names, Simul
 		if (list.Count() == 0)
 			continue;
 
+		bool lifetime = false;
 		int steps_per_hour = varlengths[i] / 8760;
 		if (steps_per_hour * 8760 != varlengths[i])
 			steps_per_hour = -1;
 
 		if (VarValue *lftm = sim->GetValue("system_use_lifetime_output"))
-			if (lftm->Value() != 0.0f)
+		{
+			if (lftm->Value() != 0.0f) // lifetime output - update steps per hour
+			{
+				steps_per_hour = steps_per_hour / (an_period - 1);
+				lifetime = true;
+				if (steps_per_hour * 8760 * (an_period - 11) != varlengths[i])
+					steps_per_hour = -1;
+			}
+		}
+
+
+		// I know we do not want to start this again but wanted lifetime subhourly output
+		if (sim->GetCase()->GetTechnology() == "Geothermal")
 				steps_per_hour = -1; // don't report geothermal system output as minute data depending on analysis period
 
 		wxString group;
@@ -194,14 +221,16 @@ void UpdateSelectionList(wxDVSelectionListCtrl *sel, wxArrayString *names, Simul
 			group = "Monthly Data";
 		else if (varlengths[i] == 8760)
 			group = "Hourly Data";
-		else if (steps_per_hour >= 2 && steps_per_hour <= 60)
+		else if ((steps_per_hour >= 2 && steps_per_hour <= 60) && (!lifetime))
 			group = wxString::Format("%d Minute Data", 60 / steps_per_hour);
 		else if (varlengths[i] == an_period)
 			group = "Annual Data";
-		else if (varlengths[i] == (an_period - 1) * 12)
+		else if ((varlengths[i] == (an_period - 1) * 12) && (lifetime))
 			group = "Lifetime Monthly Data";
-		else if (varlengths[i] == (an_period - 1) * 8760)
+		else if ((varlengths[i] == (an_period - 1) * 8760) && (lifetime))
 			group = "Lifetime Hourly Data";
+		else if ((steps_per_hour >= 2 && steps_per_hour <= 60) && (lifetime))
+			group = wxString::Format("Lifetime %d Minute Data", 60 / (steps_per_hour ));
 		else
 			group.Printf("Data: %d values", (int)varlengths[i]);
 
