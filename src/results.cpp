@@ -845,6 +845,14 @@ void ResultsViewer::Setup( Simulation *sim )
 	if ( VarValue *lftm = sim->GetValue("system_use_lifetime_output") )
 		if ( lftm->Value() != 0.0f )
 			use_lifetime = true;
+	int an_period = -1;
+	wxString an_var = cfg->Settings["analysis_period_var"];
+	if (!an_var.IsEmpty())
+	{
+		if (VarValue *vv = sim->GetValue(an_var))
+			if (vv->Type() == VV_NUMBER)
+				an_period = (int)vv->Value();
+	}
 
 	for( size_t i=0;i<vars.size();i++ )
 	{
@@ -857,15 +865,16 @@ void ResultsViewer::Setup( Simulation *sim )
 				float *p = vv->Array( &n );
 				
 				size_t steps_per_hour = n/8760;
+				if (use_lifetime)
+					steps_per_hour = steps_per_hour / (an_period - 1);
+
 				if ( steps_per_hour > 0 
 					&& steps_per_hour <= 60 
-					&& n == steps_per_hour*8760 )
+					&& ((n == steps_per_hour * 8760) 
+						|| (n == steps_per_hour * 8760 * (an_period -1))) )
 				{
-					if ( use_lifetime )
-						steps_per_hour = 1;
-
 					wxString group( "Hourly Data" );
-					if ( steps_per_hour > 1 && !use_lifetime )
+					if ( steps_per_hour > 1 )
 						group = wxString::Format( "%lg Minute Data", 60.0/steps_per_hour );
 
 					wxLogStatus("Adding time series dataset: %d len, %lg time step", (int)n, 1.0/steps_per_hour );
