@@ -117,42 +117,32 @@ private:
 class ShadeAnalysis : public wxPanel
 {
 public:
-	ShadeAnalysis( wxWindow *parent, ShadeTool *st );
 
-	bool SimulateDiurnal();
-	size_t GetDiurnalCount();
-	void GetDiurnal( size_t i, matrix_t<float> *mxh, wxString *name );
-	bool SimulateDiffuse(bool save=false);
-	size_t GetDiffuseCount();
-	void GetDiffuse(size_t i, double *shade_percent, wxString *name);
-
-private:
-	
 	struct surfshade
 	{
-		enum { DIURNAL, HOURLY, DIFFUSE };
-		surfshade( int mode, const wxString &grpname )
+		static const int DIURNAL = -1;
+
+		surfshade( int size, const wxString &grpname )
 		{
 			group = grpname;
 
-			if ( mode == DIURNAL )
+			if ( size == DIURNAL )
 			{
 				sfac.resize_fill( 12, 24, 1 );
 				shaded.resize_fill( 12, 24, 0 );
 				active.resize_fill( 12, 24, 0 );
 			}
-			else if (mode == HOURLY)
+			else if (size > 0)
 			{
-				sfac.resize_fill(8760, 1);
-				shaded.resize_fill(8760, 0);
-				active.resize_fill(8760, 0);
+				sfac.resize_fill( size, 1);
+				shaded.resize_fill(size, 0);
+				active.resize_fill(size, 0);
 			}
-			else // testing average over sky dome with 360 * 90 values
-			{
-				sfac.resize_fill(32400, 1);
-				shaded.resize_fill(32400, 0);
-				active.resize_fill(32400, 0);
-			}
+		}
+
+		static int nvalues( int minute_step )
+		{
+			return 8760*(60/minute_step);
 		}
 	
 		wxString group;
@@ -162,7 +152,20 @@ private:
 		std::vector<int> ids;
 	};
 
+
+	ShadeAnalysis( wxWindow *parent, ShadeTool *st );
+
+	bool SimulateDiurnal();
+	size_t GetDiurnalCount();
+	void GetDiurnal( size_t i, matrix_t<float> *mxh, wxString *name );
+	bool SimulateDiffuse(bool save=false);
+	size_t GetDiffuseCount();
+	void GetDiffuse(size_t i, double *shade_percent, wxString *name);
+	bool SimulateTimeseries( int minute_step, std::vector<surfshade> &shade );
+
 	void InitializeSections( int mode, std::vector<surfshade> &shade );
+
+private:
 
 	ShadeTool *m_shadeTool;
 	
@@ -172,7 +175,7 @@ private:
 	std::vector<double> m_diffuse_shade_percent;
 	wxArrayString m_diffuse_name;
 
-	void OnGenerateHourly( wxCommandEvent & );
+	void OnGenerateTimeSeries( wxCommandEvent & );
 	void OnGenerateDiurnal(wxCommandEvent &);
 	void OnGenerateDiffuse(wxCommandEvent &);
 
@@ -192,6 +195,7 @@ public:
 	LocationSetup *GetLocationSetup();
 	View3D *GetView();
 	void SwitchTo( int page );
+	wxString GetFileName() { return m_fileName; }
 
 	bool Load();
 	void Save();
