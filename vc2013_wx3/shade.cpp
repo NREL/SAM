@@ -9,14 +9,15 @@
 #include "../src/s3tool.h"
 #include "../src/s3view.h"
 
-static wxArrayString g_appArgs;
+wxArrayString g_appArgs;
+wxString g_appTitle( "SAM Shade Calculator (2015.5.21)" );
 
 class MyFrame : public wxFrame
 {
 public:
 	ShadeTool *m_shade;
 
-	MyFrame() : wxFrame( 0, wxID_ANY, "SAM Shade Calculator (2015.2.12)", wxDefaultPosition, 
+	MyFrame() : wxFrame( 0, wxID_ANY, g_appTitle , wxDefaultPosition, 
 		wxSize(1100,700) )
 	{
 		SetIcon( wxICON( appicon ) );
