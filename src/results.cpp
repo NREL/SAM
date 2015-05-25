@@ -1983,7 +1983,7 @@ void TabularBrowser::UpdateDisplayed(wxString& srch)
 		}
 	}
 
-	m_varSel->ExpandSelections();
+	m_varSel->ExpandAll();
 	m_varSel->Scroll(vsx, vsy);
 	m_varSel->Thaw();
 
