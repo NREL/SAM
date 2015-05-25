@@ -845,7 +845,7 @@ void GraphProperties::UpdateDisplayed(wxString& srch)
 		}
 	}
 
-	m_Y->ExpandSelections();
+	m_Y->ExpandAll();
 	m_Y->Scroll(vsx, vsy);
 	m_Y->Thaw();
 
