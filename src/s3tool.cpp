@@ -1071,8 +1071,11 @@ void ShadeAnalysis::OnGenerateTimeSeries( wxCommandEvent & )
 	std::vector<surfshade> shade;
 
 	wxStopWatch sw;
-
-	int min = atof(wxGetTextFromUser("Enter time step in minutes:\n\nAllowed values: 1, 5, 10, 15, 20, 30, 60", "Time series calculation", "60"));
+	wxString sNewValue = wxGetTextFromUser("Enter time step in minutes:\n\nAllowed values: 1, 5, 10, 15, 20, 30, 60", "Time series calculation", "60");
+	double * dMin;
+	sNewValue.ToDouble(dMin);
+	int min = (int)(*dMin);
+	
 	if ( !SimulateTimeseries( min, shade ) )
 	{
 		wxMessageBox("Error or cancellation in time series shade calculation");
