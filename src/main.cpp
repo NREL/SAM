@@ -1,7 +1,7 @@
-//#define __BETARELEASE__ 1  // comment this line out to disable beta option
-//#define __BETAWILLEXPIRE__ 1 // comment this line out to disable expiration of beta
+#define __BETARELEASE__ 1  // comment this line out to disable beta option
+#define __BETAWILLEXPIRE__ 1 // comment this line out to disable expiration of beta
 #define __BETAEXPIRE_DAY__ 17
-#define __BETAEXPIRE_MONTH__ wxDateTime::Mar
+#define __BETAEXPIRE_MONTH__ wxDateTime::Jul
 #define __BETAEXPIRE_YEAR__ 2015
 
 static const char *beta_disclaimer =
@@ -66,7 +66,7 @@ static const char *beta_disclaimer =
 
 // application globals
 static SamApp::ver releases[] = {
-		{ 2015, 5, 20 },
+		{ 2015, 5, 27 },
 		{ 2015, 4, 10 },
 		{ 2015, 1, 30 },
 	{ 2014, 11, 24 },
