@@ -38,16 +38,15 @@ Biopower,All Equity Partnership Flip,300885056,21.9231,28.0795,;
 Biopower,Sale Leaseback,300885056,17.7038,18.2259,; 
 Biopower,LCOE Calculator,300885056,NA,NA,; 
 Biopower,None,59882984,NA,NA,; 
-Geothermal Power,Single Owner,NA,7.86209,8.32378,; 
-Geothermal Power,Leveraged Partnership Flip,NA,7.92675,9.8057,; 
-Geothermal Power,All Equity Partnership Flip,NA,9.751,12.5581,; 
-Geothermal Power,Sale Leaseback,NA,8.0466,8.50707,; 
-Geothermal Power,LCOE Calculator,OVERWRITE	
-Geothermal Power,LCOE Calculator,fail,fail,fail
-Geothermal Power,None,NA,NA,NA,; 
+Geothermal Power,Single Owner,152318608,7.86209,8.32378,; 
+Geothermal Power,Leveraged Partnership Flip,152318608,7.92675,9.8057,; 
+Geothermal Power,All Equity Partnership Flip,152318608,9.751,12.5581,; 
+Geothermal Power,Sale Leaseback,152318608,8.0466,8.50707,; 
+Geothermal Power,LCOE Calculator,153110704,NA,NA,; 
+Geothermal Power,None,153110704,NA,NA,; 
 Solar Water Heating,Residential,1659.11,35.672,NA,; 
 Solar Water Heating,Commercial,2990.62,29.5269,NA,; 
-Solar Water Heating,LCOE Calculator,fail,fail,fail
+Solar Water Heating,LCOE Calculator,1659.11,NA,NA,; 
 Solar Water Heating,None,1659.11,NA,NA,; 
 Generic System,Residential,6266.31,25.3692,NA,; 
 Generic System,Commercial,6266.31,14.4953,NA,; 
