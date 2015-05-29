@@ -67,7 +67,7 @@ if( sf_headerLines < 1 ){
   return;
 }
 
-sf_unit = choose_from_list(['cm','in','mm','feet','meters','yards','hands','fathoms','kilometers','miles','lightyears','weather man'], 'Please select unit used for the snow deoth data', 'Snow Depth Unit', 0);
+sf_unit = choose_from_list(['cm','in','mm','feet','meters'], 'Please select unit used for the snow depth data', 'Snow Depth Unit', 0);
 
 
 ///////////////////////////////////////////////////////////////
@@ -132,13 +132,6 @@ if( sf_unit == 'inch' ) conversion = 2.54;
 if( sf_unit == 'mm' ) conversion = 0.1;
 if( sf_unit == 'feet' ) conversion = 30.48;
 if( sf_unit == 'meters' ) conversion = 100.0;
-if( sf_unit == 'yards' ) conversion = 91.44;
-if( sf_unit == 'hands' ) conversion = 10.16;
-if( sf_unit == 'fathoms' ) conversion = 182.88;
-if( sf_unit == 'kilometers' ) conversion = 1e5;
-if( sf_unit == 'miles' ) conversion = 1.61e5;
-if( sf_unit == 'lightyears' ) conversion = 9.46e17;
-if( sf_unit == 'weather man' ) conversion = 10*rand();
 
 rawSnowData = csvread(sf, {'skip'=sf_headerLines-1, 'table'=true});
 
