@@ -561,8 +561,9 @@ bool VersionUpgrade::Run( ProjectFile &pf )
 	
 	m_env.set_parent( sd.GetEnv() );
 	
-	for( nr = nr-1; nr >= 0; nr-- )
-	{
+//	for (nr = nr - 1; nr >= 0; nr--) - this was upgrading file version to file version
+	for (nr = nr - 2; nr >= 0; nr--)
+		{
 		sam_ver = SamApp::Version( &sammajor, &samminor, &sammicro, nr );
 		if ( lk::node_t *cb = sd.Lookup( "version_upgrade", 
 				wxString::Format("%d.%d.%d", sammajor, samminor, sammicro) ) )
