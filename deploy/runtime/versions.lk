@@ -1,4 +1,12 @@
 
+version_upgrade{'2015.5.27'} = define() {
+	message( 'version upgrade for 2015.5.27: nothing to do!', 'notice');
+	// nothing to do since 2015.4.10 - everyone please check.
+};
+
+//***********************************************************************************************************************************************************
+
+
 version_upgrade{'2015.4.10'} = define() {
 	message('Upgrading project to version 2015.4.10');
 	

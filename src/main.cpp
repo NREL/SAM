@@ -1,5 +1,5 @@
-//#define __BETARELEASE__ 1  // comment this line out to disable beta option
-//#define __BETAWILLEXPIRE__ 1 // comment this line out to disable expiration of beta
+#define __BETARELEASE__ 1  // comment this line out to disable beta option
+#define __BETAWILLEXPIRE__ 1 // comment this line out to disable expiration of beta
 #define __BETAEXPIRE_DAY__ 17
 #define __BETAEXPIRE_MONTH__ wxDateTime::Jul
 #define __BETAEXPIRE_YEAR__ 2015
