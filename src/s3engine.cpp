@@ -489,6 +489,7 @@ typedef unsigned long ulong;
    OutputDebugStringW( os_.str().c_str() );  \
 }
 
+/*
 // debugging for memory leaks
 #ifdef __WXMSW__
     #include <wx/msw/msvcrt.h>      // redefines the new() operator 
@@ -497,6 +498,7 @@ typedef unsigned long ulong;
 #if !defined(_INC_CRTDBG) || !defined(_CRTDBG_MAP_ALLOC)
 //    #error Debug CRT functions have not been included!
 #endif
+*/
 
 static void debug_out( char* prefix, point3d point)
 {
