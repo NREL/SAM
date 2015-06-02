@@ -62,13 +62,14 @@ OBJECTS = ide.o \
 	shadingfactors.o \
 	materials.o
 
-TARGET = SAM
+TARGET = sam.linux64.bin
 
 
 $(TARGET): $(OBJECTS) $(WEXLIB) $(LKLIB) $(SSCLIB)
 	$(CXX) -g -o $@ $^ $(LDFLAGS)
 	mkdir -p ../deploy/linux_64
-	cp SAM ../deploy/linux_64
+	cp $(TARGET) ../deploy/linux_64
+	cp $(SSCLIB) ../deploy/linux_64
 	
 DEPENDS = $(OBJECTS:.o=.d)
 
@@ -82,4 +83,4 @@ DEPENDS = $(OBJECTS:.o=.d)
 	@rm -f $*.d.tmp
 
 clean:
-	rm -rf $(OBJECTS) $(TARGET) $(TARGET).app
+	rm -rf $(OBJECTS) $(TARGET)

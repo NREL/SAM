@@ -1,0 +1,11 @@
+# download wxWidgets 3.0.2 to ~
+bunzip2 -d wxWidgets-3.0.2.tar.bz2
+tar xvzf wxWidgets-3.0.2.tar
+cd wxWidgets-3.0.2
+# edit wxconfigure.linux64 script below to use your home directory rather than
+# 'adobos'
+cat ~/Projects/SAMnt/linux_wx3/wxconfigure.linux64 | bash
+make -j6
+make install
+mkdir ~/local/bin
+ln -s ~/local/wx-3.0.2/bin/wx-config ~/local/bin/wx-config-3
