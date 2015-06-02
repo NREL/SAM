@@ -349,9 +349,7 @@ private:
 	DECLARE_EVENT_TABLE();
 };
 
-#ifndef __WXGTK__
 wxFrame *CreateTransparentOverlay( wxWindow *parent );
-#endif
 
 bool ShowConfigurationDialog( wxWindow *parent, wxString *tech, wxString *fin, bool *reset );
 
