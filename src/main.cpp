@@ -2559,7 +2559,6 @@ void ConfigDialog::OnCharHook( wxKeyEvent &evt )
 	}
 }
 
-#ifndef __WXGTK__
 wxFrame *CreateTransparentOverlay( wxWindow *parent )
 {
 	wxPoint pos = parent->ClientToScreen( wxPoint(0,0) );
@@ -2573,18 +2572,13 @@ wxFrame *CreateTransparentOverlay( wxWindow *parent )
 
 	return trans;
 }
-#endif
 
 bool ShowConfigurationDialog( wxWindow *parent, wxString *tech, wxString *fin, bool *reset )
 {
 	if ( parent == 0 ) return false;
 
-	wxFrame *trans = 
-#ifndef __WXGTK__
-		parent;
-#else
+	wxWindow *trans = 
 		CreateTransparentOverlay( parent );
-#endif
 	wxPoint pt( trans->GetPosition() );
 	wxSize size( trans->GetClientSize() );
 	
@@ -2609,9 +2603,7 @@ bool ShowConfigurationDialog( wxWindow *parent, wxString *tech, wxString *fin, b
 	}
 
 	dlg->Destroy();
-#ifndef __WXGTK__
 	trans->Destroy();
-#endif
 	return result;
 }
 
