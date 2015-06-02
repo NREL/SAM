@@ -1214,7 +1214,11 @@ SimulationDialog::SimulationDialog( const wxString &message, int nthread )
 	if ( nthread < 1 )
 		nthread = wxThread::GetCPUCount();
 
+#ifndef __WXGTK__
 	m_transp = CreateTransparentOverlay( SamApp::Window() );
+#else
+	m_transp = SamApp::Window();
+#endif
 
 	m_tpd = new ThreadProgressDialog( m_transp, nthread );
 	m_tpd->Show();
@@ -1230,7 +1234,9 @@ SimulationDialog::SimulationDialog( const wxString &message, int nthread )
 SimulationDialog::~SimulationDialog()
 {
 	m_tpd->Destroy();
+#ifndef __WXGTK__
 	m_transp->Destroy();
+#endif
 }
 
 void SimulationDialog::Finalize( const wxString &title )

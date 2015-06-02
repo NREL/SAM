@@ -1193,10 +1193,14 @@ bool SamRegistration::CheckInWithServer( int *usage_count )
 
 wxString SamRegistration::GetVersionAndPlatform()
 {
-#ifdef __WXMSW__
+#if defined(__WXMSW__)
 	wxString platform("win");
-#else
+#elif defined(__WXOSX__)
 	wxString platform("osx");
+#elif defined(__WXGTK__)
+	wxString platform("lnx");
+#else
+#error "invalid platform"
 #endif
 	bool is64 = (sizeof(void*) == 8);
 	platform += is64 ? "64" : "32";

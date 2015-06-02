@@ -36,10 +36,14 @@ static wxString g_samVerIdStr("2015.5.27");
 static wxString g_appPath;
 static wxString g_icmStr; // internet connection method string
 
-#ifdef __WXMSW__
+#if defined(__WXMSW__)
 static const char *g_platStr = "msw";
-#else
+#elif defined(__WXOSX__)
 static const char *g_platStr = "osx";
+#elif defined(__WXGTK__)
+static const char *g_platStr = "lnx";
+#else
+#error "invalid platform"
 #endif
 
 #define NRWBUFBYTES 4096
@@ -503,19 +507,24 @@ public:
 			// make sure SAM is not running while we patch it
 			wxArrayString binaries;
 			wxString sam_exe;
-#ifdef __WXMSW__
+#if defined(__WXMSW__)
 			binaries.Add( g_appPath + "/win32/sam.exe" );
 			binaries.Add( g_appPath + "/x64/sam.exe" );
 
-#ifdef _WIN64
+	#ifdef _WIN64
 			sam_exe = g_appPath + "/x64/sam.exe";
-#else
+	#else
 			sam_exe = g_appPath + "/win32/sam.exe";
-#endif
+	#endif
 
-#else
+#elif defined(__WXOSX__)
 			sam_exe = g_appPath + "/MacOS/SAM";
 			binaries.Add( sam_exe );
+#elif defined(__WXGTK__)
+			sam_exe = g_appPath + "linux_x64/SAM";
+			binaries.Add( sam_exe );
+#else
+	#error "invalid platform"
 #endif
 
 #ifdef __WXMSW__
@@ -539,7 +548,7 @@ public:
 					return false;
 			}
 #else
-			// on OSX, kindly ask the user to quit SAM before proceeding with the update
+			// on OSX and linux, kindly ask the user to quit SAM before proceeding with the update
 			wxMessageBox("Please quit SAM before proceeding with the web update.  The update may fail if SAM is still running.  Click OK to continue once SAM is closed.");
 #endif
 						

@@ -2529,18 +2529,22 @@ void ConfigDialog::OnCancel( wxCommandEvent & )
 
 int ConfigDialog::ShowModal()
 {
+#ifndef __WXGTK__
 	ShowWithEffect( wxSHOW_EFFECT_SLIDE_TO_RIGHT );
 	wxYield();
 	Refresh();
 	SetFocus();
+#endif
 	return wxDialog::ShowModal();
 }
 
 void ConfigDialog::EndModal( int ret )
 {
+#ifndef __WXGTK__
 	HideWithEffect( wxSHOW_EFFECT_SLIDE_TO_LEFT );
 	 // kludge to make hide with effect work for closing the modal dialog below
 	Show();  // happens so fast it's not really visible
+#endif
 	wxDialog::EndModal( ret );
 }
 
@@ -2555,6 +2559,7 @@ void ConfigDialog::OnCharHook( wxKeyEvent &evt )
 	}
 }
 
+#ifndef __WXGTK__
 wxFrame *CreateTransparentOverlay( wxWindow *parent )
 {
 	wxPoint pos = parent->ClientToScreen( wxPoint(0,0) );
@@ -2568,12 +2573,18 @@ wxFrame *CreateTransparentOverlay( wxWindow *parent )
 
 	return trans;
 }
+#endif
 
 bool ShowConfigurationDialog( wxWindow *parent, wxString *tech, wxString *fin, bool *reset )
 {
 	if ( parent == 0 ) return false;
 
-	wxFrame *trans = CreateTransparentOverlay( parent );
+	wxFrame *trans = 
+#ifndef __WXGTK__
+		parent;
+#else
+		CreateTransparentOverlay( parent );
+#endif
 	wxPoint pt( trans->GetPosition() );
 	wxSize size( trans->GetClientSize() );
 	
@@ -2598,7 +2609,9 @@ bool ShowConfigurationDialog( wxWindow *parent, wxString *tech, wxString *fin, b
 	}
 
 	dlg->Destroy();
+#ifndef __WXGTK__
 	trans->Destroy();
+#endif
 	return result;
 }
 
