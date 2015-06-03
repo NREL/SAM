@@ -20,7 +20,9 @@ public:
 	MyFrame() : wxFrame( 0, wxID_ANY, g_appTitle , wxDefaultPosition, 
 		wxSize(1100,700) )
 	{
+#ifdef __WXMSW__
 		SetIcon( wxICON( appicon ) );
+#endif
 		m_shade = new ShadeTool( this, wxID_ANY, wxPathOnly( g_appArgs[0] ) );
 		
 		std::vector<wxAcceleratorEntry> entries;

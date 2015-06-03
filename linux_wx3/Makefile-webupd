@@ -1,0 +1,41 @@
+SRCDIR = ../src:../webupd
+VPATH = $(SRCDIR)
+
+WEXDIR = ../../wex
+LKDIR = ../../lk
+
+WEXLIB = $(WEXDIR)/wexuxwx3.a
+LKLIB = $(LKDIR)/lkuxwx3.a
+
+CC = gcc
+CXX = g++
+CFLAGS = -g -DLK_USE_WXWIDGETS -I. -I$(SRCDIR) -I$(WEXDIR)/include -I$(LKDIR) `wx-config-3 --cflags`
+CXXFLAGS = $(CFLAGS)
+LDFLAGS = `wx-config-3 --libs propgrid` `wx-config-3 --libs aui` `wx-config-3 --libs stc` `wx-config-3 --libs richtext` `wx-config-3 --libs` -lm $(LKLIB) $(WEXLIB) -lstdc++ -lcurl
+
+OBJECTS =  \
+	webupd.o \
+	pkgdlg.o \
+	simplecurl.o
+
+TARGET = webupd.bin
+
+
+$(TARGET): $(OBJECTS) $(WEXLIB) $(LKLIB)
+	$(CXX) -g -o $@ $^ $(LDFLAGS)
+	mkdir -p ../deploy/linux_64
+	cp $(TARGET) ../deploy/linux_64
+	
+DEPENDS = $(OBJECTS:.o=.d)
+
+-include $(DEPENDS)
+
+%.d: %.cpp
+	$(CXX) -MM $(CFLAGS) $^ > $*.d
+	@cp -f $*.d $*.d.tmp
+	@sed -e 's/.*://' -e 's/\\$$//' < $*.d.tmp | fmt -1 | \
+	  sed -e 's/^ *//' -e 's/$$/:/' >> $*.d
+	@rm -f $*.d.tmp
+
+clean:
+	rm -rf $(OBJECTS) $(TARGET)
