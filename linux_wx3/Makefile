@@ -1,4 +1,5 @@
 SAMVER=2015.5.27
+SAMVERDASH=$(subst .,-,$(SAMVER))
 SRCDIR = ../src
 VPATH = $(SRCDIR)
 
@@ -63,7 +64,7 @@ OBJECTS = ide.o \
 	shadingfactors.o \
 	materials.o
 
-TARGET = sam.linux64.bin
+TARGET = sam.bin
 
 
 $(TARGET): $(OBJECTS) $(WEXLIB) $(LKLIB) $(SSCLIB)
@@ -73,8 +74,10 @@ $(TARGET): $(OBJECTS) $(WEXLIB) $(LKLIB) $(SSCLIB)
 	cp $(SSCLIB) ../deploy/linux_64
 	cp ../../lhs/src/lhs.bin ../deploy/runtime/bin
 	cp ../../stepwise/stepwise.bin ../deploy/runtime/bin
+	make -f Makefile-webupd
+	cp webupd.bin ../deploy/linux_64
 
-PKGFILE = sam.$(SAMVER).linux64.install.run
+PKGFILE = sam-linux64-$(SAMVERDASH)-install.run
 
 
 package:
@@ -89,7 +92,8 @@ package:
 	rm -rfv `find ./sam.deploy -type f -name "*.iss"`
 	rm -rfv `find ./sam.deploy -type f -name "*.exe"`
 	echo "stripping binaries..."
-	strip -v ./sam.deploy/linux_64/sam.linux64.bin
+	strip -v ./sam.deploy/linux_64/sam.bin
+	strip -v ./sam.deploy/linux_64/webupd.bin
 	strip -v ./sam.deploy/linux_64/ssc.so
 	strip -v ./sam.deploy/runtime/bin/lhs.bin
 	strip -v ./sam.deploy/runtime/bin/stepwise.bin
@@ -116,4 +120,4 @@ DEPENDS = $(OBJECTS:.o=.d)
 	@rm -f $*.d.tmp
 
 clean:
-	rm -rf $(OBJECTS) $(TARGET)
+	rm -rf $(OBJECTS) $(TARGET) *.d

@@ -58,7 +58,7 @@ echo "writing startup script..."
 text="#!/bin/sh
 cd $INSTALLDIR
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$INSTALLDIR/linux_64
-exec ./linux_64/sam.linux64.bin
+exec ./linux_64/sam.bin
 "
 echo "$text" > $INSTALLDIR/SAM
 chmod a+x $INSTALLDIR/SAM

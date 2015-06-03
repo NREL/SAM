@@ -4,7 +4,7 @@ SAMDIR="/opt/sam/$SAMVER"
 if [ -d $SAMDIR ]; then
 	cd $SAMDIR
 	export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:`pwd`
-	exec ./sam.linux64.bin
+	exec ./sam.bin
 else
 	echo "path to SAM folder needs to be updated in the ./SAM script."
 	echo "$SAMDIR does not exist"
