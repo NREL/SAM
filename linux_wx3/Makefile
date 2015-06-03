@@ -1,3 +1,4 @@
+SAMVER=2015.5.27
 SRCDIR = ../src
 VPATH = $(SRCDIR)
 
@@ -70,6 +71,38 @@ $(TARGET): $(OBJECTS) $(WEXLIB) $(LKLIB) $(SSCLIB)
 	mkdir -p ../deploy/linux_64
 	cp $(TARGET) ../deploy/linux_64
 	cp $(SSCLIB) ../deploy/linux_64
+	cp ../../lhs/src/lhs.bin ../deploy/runtime/bin
+	cp ../../stepwise/stepwise.bin ../deploy/runtime/bin
+
+PKGFILE = sam.$(SAMVER).linux64.install.run
+
+
+package:
+	rm -rf ./sam.deploy sam.deploy.tar.gz
+	cp -Rv ../deploy ./sam.deploy
+	echo "cleaning up install package folder..."
+	rm -rf ./sam.deploy/win32
+	rm -rf ./sam.deploy/x64
+	rm -rfv ./sam.deploy/linux_64/SAM
+	rm -rfv ./sam.deploy/linux_64/SAM~
+	rm -rfv `find ./sam.deploy -type d -name .svn`
+	rm -rfv `find ./sam.deploy -type f -name "*.iss"`
+	rm -rfv `find ./sam.deploy -type f -name "*.exe"`
+	echo "stripping binaries..."
+	strip -v ./sam.deploy/linux_64/sam.linux64.bin
+	strip -v ./sam.deploy/linux_64/ssc.so
+	strip -v ./sam.deploy/runtime/bin/lhs.bin
+	strip -v ./sam.deploy/runtime/bin/stepwise.bin
+	echo "assembling archive..."
+	tar cvzf sam.deploy.tar.gz ./sam.deploy
+	rm -rf sam.deploy
+	make installer
+
+installer:
+	echo "#!/bin/sh" > install0
+	echo "SAMVER=$(SAMVER)" >> install0
+	cat install0 install.sh sam.deploy.tar.gz > $(PKGFILE) 
+	chmod a+x $(PKGFILE)
 	
 DEPENDS = $(OBJECTS:.o=.d)
 
