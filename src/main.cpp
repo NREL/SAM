@@ -1978,10 +1978,14 @@ wxArrayString SamApp::RecentFiles()
 
 void SamApp::CheckForUpdates( bool quiet )
 {
-#ifdef __WXMSW__
+#if defined(__WXMSW__)
 	wxString webupd( "webupd.exe" );
-#else
+#elif defined(__WXOSX__)
 	wxString webupd( "webupd" );
+#elif defined(__WXGTK__)
+	wxString webupd( "webupd.linux64.bin" );
+#else
+	#error "invalid platform"
 #endif
 	
 	wxFileName norm( SamApp::GetAppPath() + "/" + webupd );
