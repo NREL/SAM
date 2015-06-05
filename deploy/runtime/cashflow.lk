@@ -353,12 +353,16 @@ cashflow{ 'Single Owner' } = define()
 	cfline( '' );
 
 	cfline( "CASH FLOWS FROM INVESTING ACTIVITIES", -1);
-	cfline('total_installed_cost',0);
-	//debt_closing = output('cost_debt_closing')+value('cost_debt_fee_frac')/100*output('size_of_debt');
-	//cfline('debt_closing',0);
-	cfline('cost_other_financing',0);
-	cfline('construction_financing_cost',0);
+	cfline('cost_prefinancing',0,-1,0);
+	cfline('cost_debt_closing',0,-1,0);
+	cfline('cost_debt_upfront',0,-1,0);
+	cfline('cost_other_financing',0,-1,0);
+	cfline('construction_financing_cost',0,-1,0);
+	cfline( 'ibi_total', 0);
+	cfline( 'cbi_total', 0);
+	cfline("equals:", -1, 0);
 	cfline('purchase_of_property', 0);
+	cfline("plus:", -1, 0);
 	cfline('cf_project_dsra', 0);
 	cfline('cf_project_wcra', 0);
 	cfline('cf_project_me1ra', 0);
@@ -367,17 +371,17 @@ cashflow{ 'Single Owner' } = define()
 	cfline('cf_project_me1cs', 0);
 	cfline('cf_project_me2cs', 0);
 	cfline('cf_project_me3cs', 0);
+	cfline("equals:", -1, 0);	
 	cfline('cf_project_investing_activities', 0);
 	
 	cfline( '' );
 	cfline("CASH FLOWS FROM FINANCING ACTIVITIES", -1);
-	cfline('total_installed_cost',0);
-	cfline("minus:", -1, 0);
+	cfline('total_installed_cost',0,-1,0);
 	cfline( 'ibi_total', 0);
 	cfline( 'cbi_total', 0);
 	cfline( 'size_of_debt', 0);
 	cfline("equals:", -1, 0);
-	cfline( 'issuance_of_equity', 0);
+	cfline( 'issuance_of_equity',0,-1,0);
 	cfline('cf_debt_payment_principal', 0);
 	cfline('cf_project_financing_activities', 0);
 	
@@ -1392,6 +1396,7 @@ cashflow_to_excel{ 'Single Owner' } = define()
 	send_excel(       xl, 'construction_financing_cost');
 	send_excel(       xl, 'cost_debt_closing');
 	send_excel(       xl, 'cost_debt_fee');
+	xl_set( xl, output('cost_debt_upfront'), 'CostDebtUpfront' );
 	send_excel(       xl, 'cost_other_financing');
 	send_excel(       xl, 'depr_alloc_macrs_15_percent');
 	send_excel(       xl, 'depr_alloc_macrs_5_percent');
@@ -1458,20 +1463,20 @@ cashflow_to_excel{ 'Single Owner' } = define()
 
 cashflow_to_excel{ 'Leveraged Partnership Flip' } = define()
 {
-	msgbox("Send Cash Flow to Excel with Equations for the Leveraged Partnership Flip financial model is not available in the Beta version of SAM. It will be implemented in the final release.");
+	msgbox("Send Cash Flow to Excel with Equations for the Leveraged Partnership Flip financial model is not available in this version of SAM.");
 };
 
 cashflow_to_excel{ 'All Equity Partnership Flip' } = define()
 {
-	msgbox("Send Cash Flow to Excel with Equations for the All Equity Partnership Flip financial model is not available in the Beta version of SAM. It will be implemented in the final release.");
+	msgbox("Send Cash Flow to Excel with Equations for the All Equity Partnership Flip financial model is not available in this version of SAM.");
 };
 
 cashflow_to_excel{ 'Sale Leaseback' } = define()
 {
-	msgbox("Send Cash Flow to Excel with Equations for the Sale Leaseback financial model is not available in the Beta version of SAM. It will be implemented in the final release.");
+	msgbox("Send Cash Flow to Excel with Equations for the Sale Leaseback financial model is not available in this version of SAM.");
 };
 
 cashflow_to_excel{ 'Independent Power Producer' } = define() 
 {
-	msgbox("Send Cash Flow to Excel with Equations for the Sale Leaseback financial model is not available in the Beta version of SAM. It will be implemented in the final release.");
+	msgbox("Send Cash Flow to Excel with Equations for the Sale Leaseback financial model is not available in this version of SAM.");
 };
