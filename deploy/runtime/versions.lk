@@ -1,3 +1,19 @@
+/*
+
+PLEASE READ THIS FIRST!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+This script controls upgrading files that were created with previous versions of SAM. This only works with .sam files, not .zsam files.
+PLEASE NOTE THAT EACH FUNCTION UPDATES A FILE ***TO*** THE VERSION NUMBER IN THE TITLE OF THE FUNCTION, FROM THE PREVIOUS VERSION.
+
+For example, if you create a file in version 2015.1.30 and open it with version 2015.4.10, ONLY THE 2015.4.10 FUNCTION WILL RUN.
+Any variables that changed between 2015.1.30 and 2015.4.10 should be changed IN THE 2015.4.10 FUNCTION.
+
+Please test your changes before you commit them! Thank you!
+
+*/
+
+//***********************************************************************************************************************************************************
+
 
 version_upgrade{'2015.5.27'} = define() {
 	message( 'version upgrade for 2015.5.27: nothing to do!', 'notice');
