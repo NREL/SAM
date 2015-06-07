@@ -26,10 +26,10 @@ for (t=0; t<#technologies; t++)
 	for(f=0; f<#financing; f++)
 	{	
 
-if ( technologies[t] == "Geothermal Power" )
-{
-	continue;
-}
+//if ( technologies[t] == "Geothermal Power" )
+//{
+//	continue;
+//}
 //if ( financing[f] != "None" )
 //{
 //	continue;
