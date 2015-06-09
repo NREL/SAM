@@ -420,6 +420,8 @@ void MainWindow::OnInternalCommand( wxCommandEvent &evt )
 			cc->BaseCase().Clear();
 			if (!cc->BaseCase().Invoke())
 				wxShowTextMessageDialog( wxJoin( cc->BaseCase().GetAllMessages(), '\n') );
+			if (CaseWindow *cw = GetCaseWindow(cc))
+				cw->UpdateResults();
 		}
 		break;
 	case ID_INTERNAL_IDE:
