@@ -1170,8 +1170,16 @@ void ResultsViewer::GetExportData(int data, matrix_t<wxString> &table)
 		for (r = 0; r<ndepr_rows; r++)
 		{
 			table.at(nrows+r + 1, 0) = m_depreciationTable->GetRowLabelValue(r);
-			for (c = 0; c<ndepr_cols; c++)
-				table.at(nrows + r + 1, c + 1) = m_depreciationTable->GetCellValue(r, c);
+			for (c = 0; c < ndepr_cols; c++)
+			{
+				if (r == 0)
+				{
+					table.at(nrows + r + 1, c + 1) = m_depreciationTable->GetColLabelValue(c);
+					table.at(nrows + r + 1, c + 1).Replace("\n", " ");
+				}
+				else
+					table.at(nrows + r + 1, c + 1) = m_depreciationTable->GetCellValue(r, c);
+			}
 		}
 	}
 }
