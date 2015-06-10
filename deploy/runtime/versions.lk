@@ -10,6 +10,41 @@ Any variables that changed between 2015.1.30 and 2015.4.10 should be changed IN 
 
 Please test your changes before you commit them! Thank you!
 
+Some more notes on how to use this:
+
+When an old project file is loaded, only variables that have the same name and data type as in the current version's configuration for
+that case are read in and can be accessed by the value() function.  For variables that no longer exist in the current version, or whose
+data types have changed, the values can be accessed using the oldvalue() function.
+
+The value() function cannot change the data type of a variable, as that is set by the current version's configuration.  
+
+To upgrade an old variable that no longer exists:
+
+	x = oldvalue('derate1');
+	value( 'loss1', 100*(1-x) );
+
+To upgrade an old variable that has a new datatype:
+
+	x = oldvalue('derate1');
+	value( 'derate1', [ x ] ); // derate is now an array to support schedules
+	
+To upgrade just the value of an old variable (same name and datatype), such as when the units have changed:
+
+	x = value('loss1');
+	value( 'loss1', 100*x ); // units changed from fraction to percent
+	
+You don't need to delete any variables.  Old variables are discarded when a project is saved, and only the currently valid values
+are saved in the project file.
+
+Some more examples:
+
+	value( 'new_variable', 23.49, "This is a new variable that will help you define special things about your system." );
+	
+	message('Dont use this financial model anymore - beware!', 'error');
+	
+	message('Overwrote your old DC/AC ratio!', 'warning');
+	
+	value( 'loss_derate', 1-value('dc_ac_ratio')*0.01, 'A necessary change to the internal units used in SAM' );
 */
 
 //***********************************************************************************************************************************************************
@@ -45,14 +80,7 @@ version_upgrade{'2015.1.30'} = define() {
 	
 	//get the configuration
 	const cfg = config();
-	
-	//changes to the "Input Electric Load Data" page
-	//this page is found in all Res/Comm configs except SWH
-	if ((cfg.fin == 'Residential' || cfg.fin == 'Commercial') && cfg.tech != 'Solar Water Heating')
-	{
-		delvar('p_scale_f,p_offset_value', 'Deleting unused variables on the Input Electric Load page.');
-	}
-	
+		
 	//Availability and Curtailment (all three components) changed from factor to loss for ALL configurations	
 	adj = value('adjust');
 	adj.factor = (1 - adj.factor) * 100.0;
@@ -82,9 +110,3 @@ version_upgrade{'2015.1.30'} = define() {
 version_upgrade{'2014.11.24'} = define() {
 	message( 'version upgrade for 2014.11.24: nothing to do!', 'notice');
 };
-
-//EXAMPLES
-//value( 'new_variable', 23.49, "This is a new variable that will help you define special things about your system." );
-//message('Dont use this financial model anymore - beware!', 'error');
-//message('Overwrote your old DC/AC ratio!', 'warning');
-//value( 'loss_derate', 1-value('dc_ac_ratio')*0.01, 'A necessary change to the internal units used in SAM' );

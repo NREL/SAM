@@ -86,7 +86,7 @@ public:
 	};
 
 	bool LoadValuesFromExternalSource( wxInputStream &in, 
-		LoadStatus *di = 0 );
+		LoadStatus *di = 0, VarTable *invalids = 0 );
 
 	bool LoadDefaults( wxString *error_msg = 0 );
 	bool SaveDefaults( bool quiet = false );
@@ -95,6 +95,7 @@ public:
 	void GetConfiguration( wxString *tech, wxString *fin );	
 	ConfigInfo *GetConfiguration() { return m_config; }
 	VarTable &Values() { return m_vals; }
+	VarTable &OldValues() { return m_oldVals; }
 	VarInfoLookup &Variables();
 	EqnFastLookup &Equations();
 	wxString GetTechnology() const;
@@ -146,9 +147,16 @@ public:
 private:
 	std::vector<CaseEventListener*> m_listeners;
 
-	/* case data */
 	ConfigInfo *m_config;
+	
+	// current variable values
 	VarTable m_vals;
+	// variables that were read in from an old project file made
+	// with a previous version of SAM that either don't exist in
+	// in the current version configuration, or are of the wrong data
+	// type
+	VarTable m_oldVals;
+	
 	lk::env_t m_cbEnv;
 	Simulation m_baseCase;
 	StringHash m_properties;
