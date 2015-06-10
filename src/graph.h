@@ -19,6 +19,7 @@ class wxDVSelectionListCtrl;
 class wxSlider;
 class wxCheckBox;
 class wxChoice;
+class wxSearchCtrl;
 
 class Case;
 class Simulation;
@@ -101,7 +102,6 @@ public:
 
 	void Set( const Graph &g );
 	void Get( Graph &g );
-	void UpdateDisplayed(wxString& srch);
 
 private:
 	wxArrayString m_names;
@@ -112,7 +112,7 @@ private:
 	wxExtTextCtrl *m_title;
 	wxDVSelectionListCtrl *m_Y;
 
-	wxTextCtrl *m_srch;
+	wxSearchCtrl *m_srch;
 
 	wxExtTextCtrl *m_xlabel;
 	wxExtTextCtrl *m_ylabel;

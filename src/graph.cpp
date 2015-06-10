@@ -3,6 +3,7 @@
 
 #include <wx/wx.h>
 #include <wx/gbsizer.h>
+#include <wx/srchctrl.h>
 
 #include <wex/plot/plaxis.h>
 #include <wex/plot/plbarplot.h>
@@ -627,7 +628,7 @@ END_EVENT_TABLE()
 GraphProperties::GraphProperties( wxWindow *parent, int id )
 	: wxPanel( parent, id )
 {
-	m_srch = new wxTextCtrl(this, ID_SRCH);
+	m_srch = new wxSearchCtrl(this, ID_SRCH);
 
 	m_Y = new wxDVSelectionListCtrl( this, ID_Y, 1, wxDefaultPosition, wxDefaultSize, wxDVSEL_NO_COLOURS );
 	m_Y->SetBackgroundColour( *wxWHITE );
@@ -682,7 +683,7 @@ GraphProperties::GraphProperties( wxWindow *parent, int id )
 	prop_sizer->Add( new wxStaticText( this, wxID_ANY, "Text:" ), 0, wxALL|wxALIGN_CENTER_VERTICAL, 2 );
 	
 	wxBoxSizer *text_sizer = new wxBoxSizer( wxHORIZONTAL );
-	text_sizer->Add( m_scale, 0, wxALL|wxEXPAND, 1 );
+	text_sizer->Add( m_scale, 1, wxALL|wxEXPAND, 1 );
 	text_sizer->Add( m_font, 0, wxALL, 1 );
 	prop_sizer->Add( text_sizer, 0, wxALL|wxEXPAND, 1 );
 
@@ -699,7 +700,7 @@ GraphProperties::GraphProperties( wxWindow *parent, int id )
 	sizer->Add( m_type, 0, wxALL|wxEXPAND, 4 );
 	sizer->Add( prop_sizer, 0, wxALL|wxEXPAND, 4 );
 	sizer->Add( chk_sizer, 0, wxALL|wxEXPAND, 4 );
-	sizer->Add(m_srch, 0,  wxEXPAND, 1);
+	sizer->Add(m_srch, 0,  wxEXPAND|wxALL, 1);
 	sizer->Add(m_Y, 1, wxALL | wxEXPAND, 0);
 	SetSizer(sizer);
 	
@@ -806,51 +807,6 @@ void GraphProperties::Get( Graph &g )
 	g.LegendPos = m_legendPos->GetSelection();
 }
 
-void GraphProperties::UpdateDisplayed(wxString& srch)
-{
-
-	int vsx, vsy;
-	m_Y->GetViewStart(&vsx, &vsy);
-
-	m_selected.Clear();
-
-	for (size_t i = 0; i < m_names.size(); i++)
-	{
-		if (m_Y->IsRowSelected(i, 0))
-			m_selected.Add(m_names[i]);
-	}
-
-	m_names.Clear();
-	m_Y->RemoveAll();
-
-	if (!m_sim) return;
-
-	m_Y->Freeze();
-
-	if (srch.IsEmpty())
-		PopulateSelectionList(m_Y, &m_names, m_sim);
-	else
-		UpdateSelectionList(m_Y, &m_names, m_sim, srch, m_selected);
-
-	size_t i = 0;
-	while (i<m_selected.Count())
-	{
-		int idx = m_names.Index(m_selected[i]);
-		if (idx < 0)
-			m_selected.RemoveAt(i);
-		else
-		{
-			m_Y->SelectRowInCol(idx);
-			i++;
-		}
-	}
-
-	m_Y->ExpandAll();
-	m_Y->Scroll(vsx, vsy);
-	m_Y->Thaw();
-
-}
-
 void GraphProperties::SendChangeEvent()
 {
 	wxCommandEvent e( wxEVT_GRAPH_PROPERTY_CHANGE, GetId() );
@@ -866,8 +822,8 @@ void GraphProperties::OnEdit(wxCommandEvent &evt)
 
 void GraphProperties::OnSearch(wxCommandEvent &evt)
 {
-	wxString srch = m_srch->GetValue();
-	UpdateDisplayed(srch);
+	m_Y->Filter( m_srch->GetValue() );
+	m_Y->ExpandAll();
 }
 
 void GraphProperties::OnSlider( wxScrollEvent & )
