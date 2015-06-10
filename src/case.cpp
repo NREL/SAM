@@ -324,8 +324,9 @@ bool Case::Read( wxInputStream &_i )
 		wxLogStatus( "Notice: errors occurred while setting configuration during project file read.  Continuing...\n\n" + tech + "/" + fin );
 
 	// read in the variable table
+	m_oldVals.clear();
 	LoadStatus di;
-	bool ok = LoadValuesFromExternalSource( _i, &di );
+	bool ok = LoadValuesFromExternalSource( _i, &di, &m_oldVals );
 
 	if ( !ok || di.not_found.size() > 0 || di.wrong_type.size() > 0 || di.nread != m_vals.size() )
 	{
@@ -402,7 +403,7 @@ bool Case::SaveDefaults( bool quiet )
 }
 
 bool Case::LoadValuesFromExternalSource( wxInputStream &in, 
-		LoadStatus *di )
+		LoadStatus *di, VarTable *oldvals )
 {
 	VarTable vt;
 	if (!vt.Read(in))
@@ -429,12 +430,14 @@ bool Case::LoadValuesFromExternalSource( wxInputStream &in,
 			else
 			{
 				if ( di ) di->wrong_type.Add( it->first + wxString::Format(": expected:%d got:%d", vv->Type(), it->second->Type()) );
+				if ( oldvals ) oldvals->Set( it->first, *(it->second) );
 				ok = false;
 			}
 		}
 		else
 		{
 			if ( di ) di->not_found.Add( it->first );
+			if ( oldvals ) oldvals->Set( it->first, *(it->second) );				
 			ok = false;
 		}
 	}
