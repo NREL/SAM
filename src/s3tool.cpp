@@ -1642,7 +1642,6 @@ void ShadeTool::OnCommand( wxCommandEvent &evt)
 		break;
 	case ID_CREATE:
 	{
-		m_book->SetSelection( PG_SCENE );
 		wxMetroPopupMenu menu;
 		wxArrayString types = m_view->GetRegisteredTypes();
 		for (size_t i = 0; i < types.size(); i++)
@@ -1680,9 +1679,12 @@ void ShadeTool::OnCreateObject( wxCommandEvent &evt )
 	wxArrayString types = m_view->GetRegisteredTypes();
 	if ( idx < types.Count() )
 	{
+		if ( m_book->GetSelection() != PG_SCENE )
+			m_book->SetSelection( PG_SCENE );
+
 		m_view->CreateObject( types[idx] );
 		m_view->Render();
-		m_view->Refresh();
+		m_view->Refresh();		
 	}
 }
 

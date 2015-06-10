@@ -30,7 +30,7 @@
     <ClCompile Include="..\src\s3view.cpp" />
     <ClCompile Include="..\src\simplecurl.cpp" />
     <ClCompile Include="..\src\widgets.cpp" />
-    <ClCompile Include="shade.cpp" />
+    <ClCompile Include="..\shadecalc\shade.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\object.h" />
