@@ -1642,10 +1642,18 @@ void ShadeTool::OnCommand( wxCommandEvent &evt)
 		break;
 	case ID_CREATE:
 	{
+#ifdef __WXGTK__
+		wxMenu menu;
+#else
 		wxMetroPopupMenu menu;
+#endif
 		wxArrayString types = m_view->GetRegisteredTypes();
 		for (size_t i = 0; i < types.size(); i++)
 			menu.Append( ID_OBJECT_ID + i, types[i] );
+
+#ifdef __WXGTK__
+		this->PopupMenu( &menu );
+#else
 		
 		wxPoint pos(wxDefaultPosition);
 		if ( wxWindow *win = dynamic_cast<wxWindow*>(evt.GetEventObject()) )
@@ -1654,6 +1662,7 @@ void ShadeTool::OnCommand( wxCommandEvent &evt)
 			pos.y += win->GetClientSize().y;
 		}
 		menu.Popup( this, pos/*, wxBOTTOM|wxRIGHT*/ );
+#endif
 		break;
 	}
 
