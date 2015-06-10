@@ -11,6 +11,7 @@
 #include "object.h"
 #include "case.h"
 
+class wxSearchCtrl;
 class wxDVSelectionListCtrl;
 class CaseWindow;
 class Case;
@@ -213,7 +214,7 @@ private:
 	wxExtGridCtrl *m_grid;
 	ResultsTable *m_gridTable;
 	wxDVSelectionListCtrl *m_varSel;
-	wxTextCtrl *m_varSearch;
+	wxSearchCtrl *m_varSearch;
 	
 	wxArrayString m_names;
 	wxArrayString m_selectedVars;
