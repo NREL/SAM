@@ -169,7 +169,7 @@ private:
 
 	ShadeTool *m_shadeTool;
 	
-	wxScrolledWindow *m_scroll_diffuse;
+	wxTextCtrl *m_diffuseResults;
 	wxScrolledWindow *m_scroll;
 	std::vector<AFMonthByHourFactorCtrl*> m_mxhList;
 	std::vector<double> m_diffuse_shade_percent;

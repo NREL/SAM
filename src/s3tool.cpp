@@ -715,25 +715,22 @@ ShadeAnalysis::ShadeAnalysis( wxWindow *parent, ShadeTool *st )
 	m_shadeTool( st )
 {
 	SetBackgroundColour( *wxWHITE );
+	
+	m_diffuseResults = new wxTextCtrl(this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize,wxTE_READONLY|wxBORDER_NONE);
+	m_diffuseResults->SetBackgroundColour( *wxWHITE );
 
-	wxBoxSizer *tools = new wxBoxSizer( wxHORIZONTAL );
-
-	tools->Add( new wxButton(this, ID_GENERATE_DIURNAL, "Diurnal analysis" ), 0, wxALL, 2 );
-	tools->Add(new wxButton(this, ID_GENERATE_TIMESERIES, "Time series analysis"), 0, wxALL, 2);
-	tools->Add(new wxButton(this, ID_GENERATE_DIFFUSE, "Diffuse analysis"), 0, wxALL, 2);
-
-	tools->AddStretchSpacer();
-
-	m_scroll_diffuse = new wxScrolledWindow(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxScrolledWindowStyle | wxBORDER_NONE);
+	wxBoxSizer *tools = new wxBoxSizer( wxHORIZONTAL );	
+	tools->Add( new wxButton(this, ID_GENERATE_DIURNAL, "Diurnal analysis" ),       0, wxALL|wxALIGN_CENTER_VERTICAL, 2 );
+	tools->Add( new wxButton(this, ID_GENERATE_TIMESERIES, "Time series analysis"), 0, wxALL|wxALIGN_CENTER_VERTICAL, 2 );
+	tools->Add( new wxButton(this, ID_GENERATE_DIFFUSE, "Diffuse analysis"),        0, wxALL|wxALIGN_CENTER_VERTICAL, 2 );
+	tools->Add( m_diffuseResults, 1, wxALL|wxALIGN_CENTER_VERTICAL, 1 );
+	
 	m_scroll = new wxScrolledWindow(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxScrolledWindowStyle | wxBORDER_NONE);
 
 	wxBoxSizer *sizer = new wxBoxSizer( wxVERTICAL );	
 	sizer->Add( tools, 0, wxALL|wxEXPAND, 2 );
-	sizer->Add(m_scroll_diffuse, 1, wxALL | wxEXPAND, 0);
-	sizer->Add(m_scroll, 4, wxALL | wxEXPAND, 0);
-
-	SetSizer( sizer );
-	
+	sizer->Add(m_scroll, 1, wxALL | wxEXPAND, 0);
+	SetSizer( sizer );	
 }
 
 
@@ -743,10 +740,10 @@ void ShadeAnalysis::OnGenerateDiffuse(wxCommandEvent &)
 }
 
 bool ShadeAnalysis::SimulateDiffuse(bool save)
-	{
-		bool success = false;
+{
+	m_diffuseResults->Clear();
 
-		wxProgressDialog pdlg("Shade calculation", "Computing...", 100, m_shadeTool,
+	wxProgressDialog pdlg("Diffuse shade calculation", "Computing...", 100, m_shadeTool,
 		wxPD_SMOOTH | wxPD_CAN_ABORT | wxPD_APP_MODAL | wxPD_AUTO_HIDE);
 #ifdef __WXMSW__
 	pdlg.SetIcon(wxICON(appicon));
@@ -791,9 +788,7 @@ bool ShadeAnalysis::SimulateDiffuse(bool save)
 	size_t num_alt = 1 + (alt_max - alt_min)/alt_step;
 	size_t num_azi = 1 + (azi_max - azi_min)/azi_step;
 	size_t num_scenes =  num_alt * num_azi;
-
-	wxMessageBox(wxString::Format("Diffuse scense: %d\n", (int)num_scenes));
-	
+		
 	std::vector<surfshade> shade;
 	InitializeSections( num_scenes, shade );
 
@@ -857,10 +852,45 @@ bool ShadeAnalysis::SimulateDiffuse(bool save)
 			c++;
 		}
 	}
-
-	wxMessageBox( wxString::Format("c=%ld\n", (int)c ) );
-
+	
 	num_scenes = c;
+	
+	int y = 0;
+	// average shading factor over skydome
+	std::vector<double> data(shade.size());
+	m_diffuse_shade_percent.clear();
+	m_diffuse_name.Clear();
+	for (size_t j = 0; j < shade.size(); j++)
+	{
+		data[j] = 0;
+		for (size_t i = 0; i < num_scenes; i++)
+			data[j] += shade[j].sfac[i];
+		data[j] /= num_scenes;
+		m_diffuse_shade_percent.push_back(data[j]);
+		m_diffuse_name.push_back(shade[j].group);
+	}
+
+	/* Note that Chris Deline email 2/19/15 suggest to take minimum string value as 
+	diffuse view factor for array. So, for single value will use minimum of the active 
+	surfaces as suggested. If the active surfaces have group names, then the respective
+	diffuse view factor will be applied to each subarray which is expected value 
+	since, in SAM, the subarrays are assumed to be connected in parallel. So, the assumption 
+	is that if not named, the active surfaces are referring to string connected arrays 
+	and the minimum view factor or maximum shading percentage value will be used as follows: */
+	if (shade.size() > 1)
+	{
+		for (size_t j = 1; j < shade.size(); j++)
+		{
+			if (m_diffuse_shade_percent[j] > m_diffuse_shade_percent[0])
+				m_diffuse_shade_percent[0] = m_diffuse_shade_percent[j];
+		}
+	}
+	
+	wxString difftext = wxString::Format("Diffuse shading: Entire array: %.1lf %%", m_diffuse_shade_percent[0]);
+	for( size_t i=1;i<m_diffuse_shade_percent.size();i++ )
+		difftext += ",  " + m_diffuse_name[i] + wxString::Format(": %.1lf %%", m_diffuse_shade_percent[i]);	
+	m_diffuseResults->ChangeValue( difftext );
+
 
 	
 //	wxMessageBox(wxString::Format("Diffuse shading (%d (%d) scenes in %d ms)", c, num_scenes,sw.Time()));
@@ -890,52 +920,8 @@ bool ShadeAnalysis::SimulateDiffuse(bool save)
 				wxMessageBox("Could not write to file:\n\n" + dlg.GetPath());
 		}
 	}
-	
-	int y = 0;
-	// average shading factor over skydome
-	std::vector<double> data(shade.size());
-	m_diffuse_shade_percent.clear();
-	m_diffuse_name.Clear();
-	for (size_t j = 0; j < shade.size(); j++)
-	{
-		data[j] = 0;
-		for (size_t i = 0; i < num_scenes; i++)
-			data[j] += shade[j].sfac[i];
-		data[j] /= num_scenes;
-		m_diffuse_shade_percent.push_back(data[j]);
-		m_diffuse_name.push_back(shade[j].group);
-		if (j > 0) // j=0 taken to be minimum value as shown below
-		{
-			wxStaticText *st = new wxStaticText(m_scroll_diffuse, wxID_ANY, wxString::Format("%s: diffuse shade fraction = %lg %%", m_diffuse_name[j].c_str(), m_diffuse_shade_percent[j]));
-			st->SetSize(10, y, 1300, 30);
-			y += 30;
-		}
-	}
 
-	/* Note that Chris Deline email 2/19/15 suggest to take minimum string value as 
-	diffuse view factor for array. So, for single value will use minimum of the active 
-	surfaces as suggested. If the active surfaces have group names, then the respective
-	diffuse view factor will be applied to each subarray which is expected value 
-	since, in SAM, the subarrays are assumed to be connected in parallel. So, the assumption 
-	is that if not named, the active surfaces are referring to string connected arrays 
-	and the minimum view factor or maximum shading percentage value will be used as follows: */
-	if (shade.size() > 1)
-	{
-		for (size_t j = 1; j < shade.size(); j++)
-		{
-			if (m_diffuse_shade_percent[j] > m_diffuse_shade_percent[0])
-				m_diffuse_shade_percent[0] = m_diffuse_shade_percent[j];
-		}
-	}
-	wxStaticText *st = new wxStaticText(m_scroll_diffuse, wxID_ANY, wxString::Format("%s: diffuse shade fraction = %lg %%", m_diffuse_name[0].c_str(), m_diffuse_shade_percent[0]));
-	st->SetSize(10, y, 1300, 30);
-	y += 30;
-
-	m_scroll_diffuse->SetScrollbars(1, 1, 1100, y);
-
-	success = true;
-
-	return success;
+	return true;
 }
 
 
@@ -1071,10 +1057,7 @@ void ShadeAnalysis::OnGenerateTimeSeries( wxCommandEvent & )
 	std::vector<surfshade> shade;
 
 	wxStopWatch sw;
-	wxString sNewValue = wxGetTextFromUser("Enter time step in minutes:\n\nAllowed values: 1, 5, 10, 15, 20, 30, 60", "Time series calculation", "60");
-	double * dMin;
-	sNewValue.ToDouble(dMin);
-	int min = (int)(*dMin);
+	int min = atoi( wxGetTextFromUser("Enter time step in minutes:\n\nAllowed values: 1, 5, 10, 15, 20, 30, 60", "Time series calculation", "60").c_str() );
 	
 	if ( !SimulateTimeseries( min, shade ) )
 	{
