@@ -51,8 +51,24 @@ Some more examples:
 
 
 version_upgrade{'2015.5.27'} = define() {
-	message( 'version upgrade for 2015.5.27: nothing to do!', 'notice');
-	// nothing to do since 2015.4.10 - everyone please check.
+		
+	//get the configuration
+	const cfg = config();
+	
+	// changes to the Molten Salt Power Tower model
+	if( cfg.tech == 'MSPT' )
+	{
+		message('Upgrading project to version 2015.5.27');
+		
+		// Changed names of hot and cold tank max heat variables
+		value('hot_tank_max_heat',oldvalue('tank_max_heat'));
+		value('cold_tank_max_heat',oldvalue('csp.pt.tes.cold_heater_max_load'));
+	}
+	else
+	{
+		message( 'version upgrade for 2015.5.27: nothing to do!', 'notice');
+		// nothing to do since 2015.4.10 - everyone please check.
+	}
 };
 
 //***********************************************************************************************************************************************************
@@ -71,6 +87,43 @@ version_upgrade{'2015.4.10'} = define() {
 		value('en_snow_model', 0, 'New variable to activate the new PV snow losses model.');
 		value('en_batt',0,'New variable defining whether battery is enabled');
 	}
+	
+	//changes to the Physical Trough model
+	if( cfg.tech == 'Physical Trough' )
+	{
+		// 2015.1.30 version stored IAM coefficients as single values. 2015.4.10 version stores IAM coefficients as arrays (for each collector)
+		IAMs_1[0] = oldvalue('csp_dtr_sca_iam0_1');
+		IAMs_1[1] = oldvalue('csp_dtr_sca_iam1_1');
+		IAMs_1[2] = oldvalue('csp_dtr_sca_iam2_1');
+		
+		IAMs_2[0] = oldvalue('csp_dtr_sca_iam0_2');
+		IAMs_2[1] = oldvalue('csp_dtr_sca_iam1_2');
+		IAMs_2[2] = oldvalue('csp_dtr_sca_iam2_2');
+		
+		IAMs_3[0] = oldvalue('csp_dtr_sca_iam0_3');
+		IAMs_3[1] = oldvalue('csp_dtr_sca_iam1_3');
+		IAMs_3[2] = oldvalue('csp_dtr_sca_iam2_3');
+		
+		IAMs_4[0] = oldvalue('csp_dtr_sca_iam0_4');
+		IAMs_4[1] = oldvalue('csp_dtr_sca_iam1_4');
+		IAMs_4[2] = oldvalue('csp_dtr_sca_iam2_4');
+		
+		value('IAMs_1', IAMs_1, 'Represent IAM coefficients for Collector 1 in variable size array.');
+		value('IAMs_2', IAMs_2, 'Represent IAM coefficients for Collector 2 in variable size array.');
+		value('IAMs_3', IAMs_3, 'Represent IAM coefficients for Collector 3 in variable size array.');
+		value('IAMs_4', IAMs_4, 'Represent IAM coefficients for Collector 4 in variable size array.');
+		
+		// User defined field and storage HTF properties variable (matrix) name changed between versions
+		value('field_fl_props',oldvalue('user_defined_htf_array'));
+		value('store_fl_props',oldvalue('csp.dtr.tes.user_htf'));
+	}
+	
+	// changes to the Molten Salt Linear Fresnel model
+	if( cfg.tech == 'MSLF' )
+	{
+		value('store_fl_props',oldvalue('user_fluid'));
+	}
+
 };
 
 //***********************************************************************************************************************************************************
