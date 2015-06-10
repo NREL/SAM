@@ -1,4 +1,4 @@
-SRCDIR = ../src:../vc2013_wx3
+SRCDIR = ../src:../shadecalc
 VPATH = $(SRCDIR)
 
 WEXDIR = ../../wex
