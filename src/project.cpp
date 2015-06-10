@@ -376,17 +376,16 @@ static void fcall_vuc_value( lk::invoke_t &cxt )
 		}
 		else
 		{
-			int ty0, ty1, bnew = 0;
+			bool bnew = false;
 			VarValue *vv = vt.Get( name );
 			if ( !vv )
 			{
 				vv = vt.Create( name );
-				bnew = 1;
+				bnew = true;
 			}
 
-			ty0 = vv->Type();
-			vv->Read( cxt.arg(1), true );
-			ty1 = vv->Type();
+			int type = vv->Type();
+			bool ok = vv->Read( cxt.arg(1) );
 
 			wxString reason;
 			if ( cxt.arg_count() > 2 ) reason = cxt.arg(2).as_string();
@@ -399,13 +398,7 @@ static void fcall_vuc_value( lk::invoke_t &cxt )
 			{
 				vuc->GetLog( vuc->GetName() ).push_back( 
 					VersionUpgrade::log( VersionUpgrade::VAR_ADDED, 
-						"Added '" + label + "', " + vv_strtypes[ty1] + ": " + vv->AsString( ',', '|' ), reason ) );
-			}
-			else if ( ty0 != ty1 )
-			{
-				vuc->GetLog( vuc->GetName() ).push_back( 
-					VersionUpgrade::log( VersionUpgrade::VAR_CHANGED, 
-						"Updated '" + label + "' to " + vv_strtypes[ty1] + ": " + vv->AsString( ',', '|' ), reason ) );
+						"Added '" + label + "', " + vv_strtypes[type] + ": " + vv->AsString( ',', '|' ), reason ) );
 			}
 			else
 			{
@@ -413,32 +406,21 @@ static void fcall_vuc_value( lk::invoke_t &cxt )
 					VersionUpgrade::log( VersionUpgrade::VAR_CHANGED, 
 						"Changed value of '" + label + "' to: " + vv->AsString( ',', '|' ), reason ) );
 			}
+
+			cxt.result().assign( ok ? 1.0 : 0.0 );
 		}
 	}
 }
 
-static void fcall_vuc_delvar( lk::invoke_t &cxt )
+static void fcall_vuc_oldvalue( lk::invoke_t &cxt )
 {
-	LK_DOC("delvar", "Delete variable(s) from the current case.  Returns number of variables successfully deleted.", "(string:comma-separated list of names to delete, [string:reason]):integer");
+	LK_DOC( "oldvalue", "Retrieve a variable value from the project file that is no longer valid in the current case configuration, either due to wrong type or name change.", "(string:name):variant" );
 	if ( VersionUpgrade *vuc = static_cast<VersionUpgrade*>(cxt.user_data()) )
 	{
-		int ndel = 0;
-		wxArrayString vars = wxStringTokenize( cxt.arg(0).as_string(), ",");
-		for( size_t i=0;i<vars.size();i++ )
-			if ( vuc->GetCase()->Values().Delete( vars[i].Trim(false).Trim() ) )
-				ndel++;
-
-			
-		wxString reason;
-		if ( cxt.arg_count() > 1 ) reason = cxt.arg(1).as_string();
-
-		vuc->GetLog( vuc->GetName() ).push_back( 
-			VersionUpgrade::log( VersionUpgrade::VAR_DELETED, 
-				"Deleted variable(s): " + cxt.arg(0).as_string(), reason ) );
-
-		cxt.result().assign( (double)ndel );
+		VarTable &vt = vuc->GetCase()->OldValues();
+		if ( VarValue *vv = vt.Get( cxt.arg(0).as_string() ) )
+			vv->Write( cxt.result() );
 	}
-
 }
 
 static void fcall_vuc_varinfo( lk::invoke_t &cxt )
@@ -484,8 +466,8 @@ lk::fcall_t* VersionUpgrade::invoke_functions()
 {
 	static const lk::fcall_t vec[] = {
 		fcall_vuc_value,
+		fcall_vuc_oldvalue,
 		fcall_vuc_varinfo,
-		fcall_vuc_delvar,
 		fcall_vuc_case_name,
 		fcall_vuc_config,
 		fcall_vuc_message,
