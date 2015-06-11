@@ -1,0 +1,92 @@
+/*@
+<p>This macro reports the financial impacts of a battery installation, including
+electricity costs with the battery+PV, PV, or no system.  The macro also reports
+lifetime battery costs, which are used with lifetime electricity costs to determine if battery
+installation is cost effective.</p>
+
+<p> Outputs </p>
+<ul><li>Total Electricity Cost ($) - Total cost of electricity charges over analysis period</li>
+	<li>Demand Charge (Fixed) ($) - Total cost of fixed demand charges over analysis period </li>
+	<li>Demand Charge (TOU) ($) - Total cost of time-of-use demand charges over analysis period </li>
+	<li>Energy Charge ($) - Total cost of energy consumption charges over analysis period </li>
+	<li>Capital & Replacement ($) - Total cost of system and replacements (no financing costs) </li>
+	<li>System & Electricity Cost ($) - Cost of system plus total electricity cost </li>
+</ul>
+<p>
+A system which offsets more electricity costs than the introduced capital & replacement costs may be considered beneficial.  
+The column with the lowest "System & Electricity Cost" results in the lowest costs over the analysis period.
+@*/
+
+function get_months()
+{
+	months = ['jan','feb','mar','apr','may','jun','jul','aug','sep','oct','nov','dec'];
+	return months;
+}
+
+function get_costs(prefix)
+{
+	months = get_months();
+	costs = 0;
+	for (i=0; i < #months; i++)
+	{
+		var = prefix + months[i];
+		costs += sum(get(var));
+	}
+	return costs;
+}
+
+//Check that this macro was run from within a case
+if ( typeof(macro) == 'unknown' ) {
+	msgbox('This macro must be run from within a case.');
+	exit;
+}
+
+// PV Only
+set('en_batt',0);
+simulate('',true);
+pv_electricity_cost = sum(get('elec_cost_with_system'));
+pv_dc_fixed = get_costs("charge_dc_fixed_");
+pv_dc_tou = get_costs("charge_dc_tou_");
+pv_ec = get_costs("charge_ec_");
+pv_costs = get('total_installed_cost');
+pv_total = pv_electricity_cost + pv_costs;
+
+
+// PV+Battery
+set('en_batt',1);
+simulate('',true);
+batt_electricity_cost = sum(get('elec_cost_with_system'));
+batt_dc_fixed = get_costs("charge_dc_fixed_");
+batt_dc_tou = get_costs("charge_dc_tou_");
+batt_ec = get_costs("charge_ec_");
+
+system_initial_cost = get('total_installed_cost');
+batt_replacement_costs = sum(get('cf_battery_replacement_cost'));
+batt_costs = system_initial_cost + batt_replacement_costs;
+batt_total = batt_costs + batt_electricity_cost;
+
+// No PV or Battery
+none_electricity_cost = sum(get('elec_cost_without_system'));
+analysis_period = get('analysis_period');
+none_dc_fixed = analysis_period*sum(get('year1_monthly_dc_fixed_without_system'));
+none_dc_tou = analysis_period*sum(get('year1_monthly_dc_tou_without_system'));
+none_ec = analysis_period*sum(get('year1_monthly_ec_charge_without_system'));
+none_costs = 0;
+none_total = none_electricity_cost + none_costs;
+
+// HTML Output
+str_html = '<html><body>' + 
+           '<h3>Costs: ' + analysis_period + ' years </h3>' + 
+           '<table bgcolor=#eeeeee width=100%>' + 
+           '<tr><th>Description</th><th>No System</th><th>PV Only</th><th>PV+Battery</th></tr>' + 
+           '<tr bgcolor=#ffffff><td>Total Electricity Cost ($) </td><td>' + none_electricity_cost + '</td><td>' + pv_electricity_cost + '</td><td>' + batt_electricity_cost + '</td></tr>' +
+           '<tr><td>Demand Charge (Fixed) ($) </td><td>' + none_dc_fixed + '</td><td>' + pv_dc_fixed + '</td><td>' + batt_dc_fixed + '</td></tr>' +             
+           '<tr bgcolor=#ffffff><td>Demand Charge (TOU) ($)</td><td>' + none_dc_tou + '</td><td>' +pv_dc_tou + '</td><td>' +batt_dc_tou + '</td></tr>' +             
+           '<tr><td>Energy Charge ($)</td><td>' + none_ec + '</td><td>' + pv_ec + '</td><td>' + batt_ec + '</td></tr>' +             
+           '<tr bgcolor=#ffffff><td>Capital & Replacement ($)</td><td>' + none_costs + '</td><td>' +pv_costs + '</td><td>' +batt_costs + '</td></tr>' + 
+			'<tr><td><b>System & Electricity Cost ($)</b></td><td><b>' + none_total + '</b></td><td><b>' + pv_total + '</b></td><td><b>' + batt_total + '<b></td></tr>' +             
+           '</table>' +
+           '</body></html>';
+
+html_dialog ( str_html , "Battery Financial Evaluation" , [300,300,600,600]);
+
