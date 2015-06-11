@@ -99,6 +99,7 @@ void PopulateSelectionList( wxDVSelectionListCtrl *sel, wxArrayString *names, Si
 			continue;
 		
 		bool lifetime = false;
+		int steps_per_hour_lt = -1;
 		int steps_per_hour = varlengths[i] / 8760;
 		if (steps_per_hour * 8760 != varlengths[i])
 			steps_per_hour = -1;
@@ -107,10 +108,10 @@ void PopulateSelectionList( wxDVSelectionListCtrl *sel, wxArrayString *names, Si
 		{
 			if (lftm->Value() != 0.0f) // lifetime output - update steps per hour
 			{
-				steps_per_hour = steps_per_hour / (an_period - 1);
+				steps_per_hour_lt = steps_per_hour / (an_period - 1);
 				lifetime = true;
-				if (steps_per_hour * 8760 *(an_period -1) != varlengths[i])
-					steps_per_hour = -1;
+				if (steps_per_hour_lt * 8760 *(an_period -1) != varlengths[i])
+					steps_per_hour_lt = -1;
 			}
 		}
 
@@ -125,16 +126,16 @@ void PopulateSelectionList( wxDVSelectionListCtrl *sel, wxArrayString *names, Si
 			group = "Monthly Data";
 		else if (varlengths[i] == 8760)
 			group = "Hourly Data";
-		else if ((steps_per_hour >= 2 && steps_per_hour <= 60) && (!lifetime))
-			group = wxString::Format("%d Minute Data", 60 / steps_per_hour);
 		else if (varlengths[i] == an_period)
 			group = "Annual Data";
 		else if ((varlengths[i] == (an_period - 1) * 12) && (lifetime))
 			group = "Lifetime Monthly Data";
 		else if ((varlengths[i] == (an_period - 1) * 8760) && (lifetime))
 			group = "Lifetime Hourly Data";
-		else if ((steps_per_hour >= 2 && steps_per_hour <= 60) && (lifetime))
-			group = wxString::Format("Lifetime %d Minute Data", 60 / (steps_per_hour));
+		else if ((steps_per_hour_lt >= 2 && steps_per_hour_lt <= 60) && (lifetime))
+			group = wxString::Format("Lifetime %d Minute Data", 60 / (steps_per_hour_lt));
+		else if ((steps_per_hour >= 2 && steps_per_hour <= 60))
+			group = wxString::Format("%d Minute Data", 60 / steps_per_hour);
 		else
 			group.Printf("Data: %d values", (int)varlengths[i]);
 		
@@ -760,26 +761,87 @@ void ResultsViewer::Setup( Simulation *sim )
 				size_t n = 0;
 				float *p = vv->Array( &n );
 				
-				size_t steps_per_hour = n/8760;
+				size_t steps_per_hour = n / 8760; 
+				if (steps_per_hour * 8760 != n)
+					steps_per_hour = -1;
+				size_t steps_per_hour_lt = 0;
 				if (use_lifetime)
-					steps_per_hour = steps_per_hour / (an_period - 1);
-
-				if ( steps_per_hour > 0 
-					&& steps_per_hour <= 60 
-					&& ((n == steps_per_hour * 8760) 
-						|| (n == steps_per_hour * 8760 * (an_period -1))) )
 				{
-					wxString group( "Hourly Data" );
-					if ( steps_per_hour > 1 )
-						group = wxString::Format( "%lg Minute Data", 60.0/steps_per_hour );
-
-					wxLogStatus("Adding time series dataset: %d len, %lg time step", (int)n, 1.0/steps_per_hour );
-					TimeSeriesData *tsd = new TimeSeriesData( p, n, 1.0/steps_per_hour,
-						m_sim->GetLabel(vars[i]), 
-						m_sim->GetUnits(vars[i]));
-					tsd->SetMetaData( vars[i] ); // save the variable name in the meta field for easy lookup later
-					AddDataSet( tsd, group );
+					steps_per_hour_lt = steps_per_hour / (an_period - 1);
+					if (steps_per_hour_lt * 8760 * (an_period - 1) != n)
+							steps_per_hour_lt = -1;
 				}
+
+				wxString group("Hourly Data");
+				double time_step = -1;
+
+				if (n == 8760)
+				{
+					group = "Hourly Data";
+					time_step = 1;
+				}
+				else if ((n == (an_period - 1) * 8760) && (use_lifetime))
+				{
+					group = "Lifetime Hourly Data";
+					time_step = 1;
+				}
+				else if ((steps_per_hour_lt >= 2 && steps_per_hour_lt <= 60) && (use_lifetime))
+				{
+					group = wxString::Format("Lifetime %d Minute Data", 60 / (steps_per_hour_lt));
+					time_step = 1.0 / steps_per_hour_lt;
+				}
+				else if ((steps_per_hour >= 2 && steps_per_hour <= 60))
+				{
+					group = wxString::Format("%d Minute Data", 60 / steps_per_hour);
+					time_step = 1.0 / steps_per_hour;
+				}
+
+				if (time_step > 0)
+				{
+					wxLogStatus("Adding time series dataset: %d len, %lg time step", (int)n, 1.0 / steps_per_hour_lt);
+					TimeSeriesData *tsd = new TimeSeriesData(p, n, time_step,
+						m_sim->GetLabel(vars[i]),
+						m_sim->GetUnits(vars[i]));
+					tsd->SetMetaData(vars[i]); // save the variable name in the meta field for easy lookup later
+					AddDataSet(tsd, group);
+				}
+
+				/*
+				if (steps_per_hour > 0
+					&& steps_per_hour <= 60
+					&& ((n == steps_per_hour * 8760) // sub hourly
+					|| (n == 8760) // hourly
+					|| (n == steps_per_hour_lt * 8760 * (an_period - 1)) // sub hourly lifetime
+					|| (n == 8760 * (an_period - 1)))) // hourly lifetime
+				{
+					wxString group("Hourly Data");
+					if (steps_per_hour > 1)
+						group = wxString::Format("%lg Minute Data", 60.0 / steps_per_hour);
+					if (use_lifetime)
+					{
+						group = "Lifetime Hourly Data";
+						if (steps_per_hour_lt > 1)
+						{
+							group = wxString::Format("Lifetime %lg Minute Data", 60.0 / steps_per_hour_lt);
+							wxLogStatus("Adding time series dataset: %d len, %lg time step", (int)n, 1.0 / steps_per_hour_lt);
+							TimeSeriesData *tsd = new TimeSeriesData(p, n, 1.0 / steps_per_hour_lt,
+								m_sim->GetLabel(vars[i]),
+								m_sim->GetUnits(vars[i]));
+							tsd->SetMetaData(vars[i]); // save the variable name in the meta field for easy lookup later
+							AddDataSet(tsd, group);
+						}
+					}
+					else
+					{
+						wxLogStatus("Adding time series dataset: %d len, %lg time step", (int)n, 1.0 / steps_per_hour);
+						TimeSeriesData *tsd = new TimeSeriesData(p, n, 1.0 / steps_per_hour,
+							m_sim->GetLabel(vars[i]),
+							m_sim->GetUnits(vars[i]));
+						tsd->SetMetaData(vars[i]); // save the variable name in the meta field for easy lookup later
+						AddDataSet(tsd, group);
+					}
+				}
+				*/
 			}
 		}
 	}
