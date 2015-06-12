@@ -750,6 +750,7 @@ cashflow{ 'Leveraged Partnership Flip' } = define()
 	cfline( "Cash Flows from Investing Activities", -1);
 	cfline( 'purchase_of_property', 0);
 	cfline( '' ); // spacer
+	cfline('cf_project_dsra', 0);
 	cfline( 'cf_project_wcra', 0);
 	cfline('cf_project_me1ra', 0);
 	cfline('cf_project_me2ra', 0);
