@@ -1339,7 +1339,7 @@ cashflow_to_excel{ 'Single Owner' } = define()
 	{
 		xl_set( xl, value('debt_percent'), "DebtPercent");
 		xl_set( xl, "Calculated", "DebtServiceCoverageRatio");
-		xl_set( xl, value('size_of_debt'), "MortgageSizeOfDebt");
+		xl_set( xl, output('size_of_debt'), "MortgageSizeOfDebt");
 	}
 	else // dscr input mode (sculpted debt payments, constant DSCR)
 	{
