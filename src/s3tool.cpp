@@ -806,8 +806,8 @@ bool ShadeAnalysis::SimulateDiffuse(bool save)
 					stopped = true;
 					break;
 				}
-				else
-					wxYieldIfNeeded();
+
+				wxYieldIfNeeded();
 			}
 
 
@@ -858,37 +858,21 @@ bool ShadeAnalysis::SimulateDiffuse(bool save)
 	int y = 0;
 	// average shading factor over skydome
 	std::vector<double> data(shade.size());
-	m_diffuse_shade_percent.clear();
-	m_diffuse_name.Clear();
+	m_diffuseShadePercent.clear();
+	m_diffuseName.Clear();
 	for (size_t j = 0; j < shade.size(); j++)
 	{
 		data[j] = 0;
 		for (size_t i = 0; i < num_scenes; i++)
 			data[j] += shade[j].sfac[i];
 		data[j] /= num_scenes;
-		m_diffuse_shade_percent.push_back(data[j]);
-		m_diffuse_name.push_back(shade[j].group);
+		m_diffuseShadePercent.push_back(data[j]);
+		m_diffuseName.push_back(shade[j].group);
 	}
-
-	/* Note that Chris Deline email 2/19/15 suggest to take minimum string value as 
-	diffuse view factor for array. So, for single value will use minimum of the active 
-	surfaces as suggested. If the active surfaces have group names, then the respective
-	diffuse view factor will be applied to each subarray which is expected value 
-	since, in SAM, the subarrays are assumed to be connected in parallel. So, the assumption 
-	is that if not named, the active surfaces are referring to string connected arrays 
-	and the minimum view factor or maximum shading percentage value will be used as follows: */
-	if (shade.size() > 1)
-	{
-		for (size_t j = 1; j < shade.size(); j++)
-		{
-			if (m_diffuse_shade_percent[j] > m_diffuse_shade_percent[0])
-				m_diffuse_shade_percent[0] = m_diffuse_shade_percent[j];
-		}
-	}
-	
-	wxString difftext = wxString::Format("Diffuse shading: Entire array: %.1lf %%", m_diffuse_shade_percent[0]);
-	for( size_t i=1;i<m_diffuse_shade_percent.size();i++ )
-		difftext += ",  " + m_diffuse_name[i] + wxString::Format(": %.1lf %%", m_diffuse_shade_percent[i]);	
+		
+	wxString difftext = wxString::Format("Diffuse shading: Entire array: %.1lf %%", m_diffuseShadePercent[0]);
+	for( size_t i=1;i<m_diffuseShadePercent.size();i++ )
+		difftext += ",  " + m_diffuseName[i] + wxString::Format(": %.1lf %%", m_diffuseShadePercent[i]);	
 	m_diffuseResults->ChangeValue( difftext );
 
 
@@ -923,12 +907,6 @@ bool ShadeAnalysis::SimulateDiffuse(bool save)
 
 	return true;
 }
-
-
-
-
-
-
 
 bool ShadeAnalysis::SimulateTimeseries( int minute_step, std::vector<surfshade> &shade )
 {
@@ -1310,7 +1288,7 @@ size_t ShadeAnalysis::GetDiurnalCount()
 
 size_t ShadeAnalysis::GetDiffuseCount()
 {
-	return m_diffuse_shade_percent.size();
+	return m_diffuseShadePercent.size();
 }
 
 void ShadeAnalysis::GetDiurnal(size_t i, matrix_t<float> *mxh, wxString *name)
@@ -1325,10 +1303,10 @@ void ShadeAnalysis::GetDiurnal(size_t i, matrix_t<float> *mxh, wxString *name)
 
 void ShadeAnalysis::GetDiffuse(size_t i, double *shade_percent, wxString *name)
 {
-	if ((i < m_diffuse_shade_percent.size()) && (i<m_diffuse_name.Count()))
+	if ((i < m_diffuseShadePercent.size()) && (i<m_diffuseName.Count()))
 	{
-		(*shade_percent) = m_diffuse_shade_percent[i];
-		(*name) = m_diffuse_name[i];
+		(*shade_percent) = m_diffuseShadePercent[i];
+		(*name) = m_diffuseName[i];
 	}
 }
 
