@@ -172,8 +172,8 @@ private:
 	wxTextCtrl *m_diffuseResults;
 	wxScrolledWindow *m_scroll;
 	std::vector<AFMonthByHourFactorCtrl*> m_mxhList;
-	std::vector<double> m_diffuse_shade_percent;
-	wxArrayString m_diffuse_name;
+	std::vector<double> m_diffuseShadePercent;
+	wxArrayString m_diffuseName;
 
 	void OnGenerateTimeSeries( wxCommandEvent & );
 	void OnGenerateDiurnal(wxCommandEvent &);
