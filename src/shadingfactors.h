@@ -66,7 +66,6 @@ bool ImportPVsystNearShading( ShadingInputData &dat, wxWindow *parent = 0 );
 bool ImportSunEyeHourly( ShadingInputData &dat, wxWindow *parent = 0 );
 bool ImportSunEyeObstructions( ShadingInputData &dat, wxWindow *parent = 0 );
 bool ImportSolPathMonthByHour( ShadingInputData &dat, wxWindow *parent = 0 );
-bool ImportSolPathObstructions( ShadingInputData &dat, wxWindow *parent = 0 );
 
 #endif
 
