@@ -2,22 +2,28 @@
 <p>This macro reports the financial impacts of a battery installation, including
 electricity costs with the battery+PV, PV, or no system.  The macro also reports
 lifetime battery costs, which are used with lifetime electricity costs to determine if battery
-installation is cost effective.  A simulation over the entire analysis period will be conducted regardless of whether this option is selected</p>
+installation is cost effective. Fixed monthly and minimum energy charges are not considered, as they are the same across all system options. 
+A simulation over the entire analysis period will be conducted regardless of whether this option is selected</p>
 
 <p> Outputs </p>
 <ul><li>Demand Charge (Fixed) ($) - Total cost of fixed demand charges over analysis period </li>
 	<li>Demand Charge (TOU) ($) - Total cost of time-of-use demand charges over analysis period </li>
 	<li>Energy Charge ($) - Total cost of energy consumption charges over analysis period </li>
+	<li>Fixed Monthly Charges ($) - Total cost of fixed monthly charges analysis period </li>
+	<li>Minimum Monthly Charges ($) - Total cost of imposed minimum monthly charges over analysis period </li>
+	<li>Minimum Annual Charges ($) - Total cost of imposed minimum annual charges over analysis period </li>
+
 	<li>Total Electricity Cost ($) - Total cost of electricity charges over analysis period.  This is the sum of the Demand Charges (Fixed+TOU) and Energy Charges.</li>
 	<li>Capital & Replacement ($) - Total cost of system and replacements (no financing costs) </li>
 	<li>System & Electricity Cost ($) - The sum of Total Electricity Cost and Capital & Replacement costs </li>
 	<li>Present Value Electricity Costs ($) - The Net Present Value of the Total Electricity Cost </li>
-	<li>System & Electricity Cost ($) - The Net Present Value of the Capital and Replacment Costs </li>
-	<li>System & Electricity Cost ($) - The Net Present Value of System & Electricity Costs </li>
+	<li>Present Value of Capital & Costs ($) - The Net Present Value of the Capital and Replacment Costs </li>
+	<li>Present Value of Total Costs ($) - The Net Present Value of System & Electricity Costs </li>
 </ul>
 <p>
 A system which offsets more electricity costs than the introduced capital & replacement costs may be considered beneficial.  
 The column with the lowest "System & Electricity Cost" results in the lowest costs over the analysis period.
+Negative values indicate credits to the system owner while positive values indicate payments from the system owner.
 @*/
 
 function get_months()
@@ -26,7 +32,7 @@ function get_months()
 	return months;
 }
 
-function get_costs(prefix)
+function get_annual_costs(prefix)
 {
 	months = get_months();
 	costs = 0;
@@ -37,6 +43,23 @@ function get_costs(prefix)
 	}
 	return costs;
 }
+function get_monthly_usage_costs(with_system, month, year)
+{	
+	if (with_system)
+		prefix = 'charge_w_sys_';
+	else
+		prefix = 'charge_wo_sys_';
+
+	dc_fixed = get(prefix+'dc_fixed_'+month);
+	dc_tou = get(prefix+'dc_tou_'+month);
+	ec = get(prefix+'ec_'+month);
+	if (ec[year] > 0)
+		total = dc_fixed[year]+dc_tou[year]+ec[year];
+	else
+		total = dc_fixed[year]+dc_tou[year];
+	return total;
+}
+
 function npv(annual_data, discount_rate)
 {
 	total = 0;
@@ -48,6 +71,92 @@ function npv(annual_data, discount_rate)
 	}
 	return total;
 }
+function compute_fixed_monthly(analysis_period, inflation_rate, escalation_rate, monthly_charge)
+{
+	total = 0;
+	yearly = monthly_charge*12;
+	escalation = 0;
+	
+	annual_escalation = false;
+	if (#escalation_rate == analysis_period)
+		annual_escalation = true;
+	
+	for (i=0;i<analysis_period;i++)
+	{
+		if (annual_escalation)
+			rate = 1+(0.01*escalation_rate[i]);
+		else
+			rate = (1+(0.01*(escalation_rate[0]+inflation_rate)))^(i);
+		total+= yearly*rate;
+	}
+	return total;
+}
+function compute_minimum_monthly(analysis_period, inflation_rate, escalation_rate, minimum_monthly, with_system)
+{
+	total = 0;
+	months = get_months();
+	monthly_fixed = get('ur_monthly_fixed_charge');
+	annual_escalation = false;
+	annual_out = [];
+	
+	if (#escalation_rate == analysis_period)
+		annual_escalation = true;
+	
+	for (i=1;i<=analysis_period;i++)
+	{
+		if (annual_escalation)
+			rate = 1+(0.01*escalation_rate[i-1]);
+		else
+			rate = (1+(0.01*(escalation_rate[0]+inflation_rate)))^(i-1);
+
+		for (j=0;j<#months;j++)
+		{
+			// usage is already escalated/inflated, just escalate fixed & monthly
+			usage = get_monthly_usage_costs(with_system, months[j],i);
+			fixed = monthly_fixed*rate;
+			charge = usage+fixed;
+			min_monthly = minimum_monthly*rate;
+			
+			if (charge < min_monthly)
+				total+= (min_monthly-charge);
+		}
+		annual_out[i-1] = total;
+		total = 0;
+	}
+	return annual_out;
+}
+function compute_minimum_annual(analysis_period, inflation_rate, escalation_rate, minimum_annual, with_system)
+{
+    minimum_monthly = get('ur_monthly_min_charge');
+	months = get_months();
+	
+	annual_escalation = false;	
+	if (#escalation_rate == analysis_period)
+		annual_escalation = true;
+	
+	total = 0;
+	for (i=1;i<=analysis_period;i++)
+	{
+		annual_total = 0;
+		if (annual_escalation)
+			rate = 1+(0.01*escalation_rate[i-1]);
+		else
+			rate = (1+(0.01*(escalation_rate[0]+inflation_rate)))^(i-1);
+
+		for (j=0;j<#months;j++)
+		{
+			// usage is already escalated/inflated, just escalate fixed & monthly
+			// usage = get_monthly_usage_costs(with_system, months[j],i);
+			usage = 0;
+			annual_total += usage;
+		}
+		min_annual = minimum_annual*rate;
+		if (annual_total < min_annual)
+			total+=(min_annual-annual_total);
+	}
+	return total;
+}
+
 //Check that this macro was run from within a case
 if ( typeof(macro) == 'unknown' ) {
 	msgbox('This macro must be run from within a case.');
@@ -55,53 +164,71 @@ if ( typeof(macro) == 'unknown' ) {
 }
 
 // only allowed for lifetime simulations
+set('pv_lifetime_simulation',true);
+
+// Common charges
 analysis_period = get('analysis_period');
 discount_rate = get('nominal_discount_rate');
-set('pv_lifetime_simulation',true);
+inflation_rate = get('inflation_rate');
+fixed_monthly = get('ur_monthly_fixed_charge');
+minimum_monthly = get('ur_monthly_min_charge');
+minimum_annual = get('ur_annual_min_charge');
+escalation_rate = get('rate_escalation');
+
+common_fixed_charges = round(compute_fixed_monthly(analysis_period, inflation_rate,escalation_rate,fixed_monthly));
+
 
 // PV Only
 set('en_batt',0);
 simulate('',true);
-pv_electricity_cost = round(sum(get('elec_cost_with_system')));
-pv_dc_fixed = round(sum(get("charge_w_sys_dc_fixed")));
-pv_dc_tou = round(sum(get("charge_w_sys_dc_tou")));
-pv_ec = round(sum(get("charge_w_sys_ec")));
-pv_costs = round(get('total_installed_cost'));
+pv_electricity_cost = (sum(get('elec_cost_with_system')));
+pv_dc_fixed = (sum(get("charge_w_sys_dc_fixed")));
+pv_dc_tou = (sum(get("charge_w_sys_dc_tou")));
+pv_ec = (sum(get("charge_w_sys_ec")));
+pv_min_month = (sum(compute_minimum_monthly(analysis_period, inflation_rate, escalation_rate, minimum_monthly, true)));
+pv_min_annual = (compute_minimum_annual(analysis_period, inflation_rate, escalation_rate, minimum_annual, true));
+
+pv_costs = (get('total_installed_cost'));
 pv_total = pv_electricity_cost + pv_costs;
 
-pv_npv_electric = round(npv(get('elec_cost_with_system'),discount_rate));
+pv_npv_electric = (npv(get('elec_cost_with_system'),discount_rate));
 pv_npv_costs = pv_costs; 
 pv_npv_total = pv_npv_electric + pv_npv_costs;
 
 // PV+Battery
 set('en_batt',1);
 simulate('',true);
-batt_electricity_cost = round(sum(get('elec_cost_with_system')));
-batt_dc_fixed = round(sum(get("charge_w_sys_dc_fixed")));
-batt_dc_tou = round(sum(get("charge_w_sys_dc_tou")));
-batt_ec = round(sum(get("charge_w_sys_ec")));
+batt_electricity_cost = (sum(get('elec_cost_with_system')));
+batt_dc_fixed = (sum(get("charge_w_sys_dc_fixed")));
+batt_dc_tou = (sum(get("charge_w_sys_dc_tou")));
+batt_ec = (sum(get("charge_w_sys_ec")));
+batt_min_month = (sum(compute_minimum_monthly(analysis_period, inflation_rate, escalation_rate, minimum_monthly, true)));
+batt_min_annual = (compute_minimum_annual(analysis_period, inflation_rate, escalation_rate, minimum_annual, true));
 
-system_initial_cost = round(get('total_installed_cost'));
-batt_replacement_costs = round(sum(get('cf_battery_replacement_cost')));
+system_initial_cost = (get('total_installed_cost'));
+batt_replacement_costs = (sum(get('cf_battery_replacement_cost')));
 batt_costs = system_initial_cost + batt_replacement_costs;
 batt_total = batt_costs + batt_electricity_cost;
 
-batt_npv_electric = round(npv(get('elec_cost_with_system'),discount_rate));
-batt_npv_costs = round(npv(get('cf_battery_replacement_cost'),discount_rate) + system_initial_cost);
-batt_npv_total = round(batt_npv_electric + batt_npv_costs);
+batt_npv_electric = (npv(get('elec_cost_with_system'),discount_rate));
+batt_npv_costs = (npv(get('cf_battery_replacement_cost'),discount_rate) + system_initial_cost);
+batt_npv_total = (batt_npv_electric + batt_npv_costs);
 
 
 
 // No PV or Battery
-none_electricity_cost = round(sum(get('elec_cost_without_system')));
-none_dc_fixed = round(sum(get('charge_wo_sys_dc_fixed')));
-none_dc_tou = round(sum(get('charge_wo_sys_dc_tou')));
-none_ec = round(sum(get('charge_wo_sys_ec')));
+none_electricity_cost = (sum(get('elec_cost_without_system')));
+none_dc_fixed = (sum(get('charge_wo_sys_dc_fixed')));
+none_dc_tou = (sum(get('charge_wo_sys_dc_tou')));
+none_ec = (sum(get('charge_wo_sys_ec')));
+none_min_month = (sum(compute_minimum_monthly(analysis_period, inflation_rate, escalation_rate, minimum_monthly, false)));
+none_min_annual = (compute_minimum_annual(analysis_period, inflation_rate, escalation_rate, minimum_annual, false));
+
 
 none_costs = 0;
 none_total = none_electricity_cost + none_costs;
 
-none_npv_electric = round(npv(get('elec_cost_without_system'),discount_rate));
+none_npv_electric = (npv(get('elec_cost_without_system'),discount_rate));
 none_npv_costs = none_costs;
 none_npv_total = none_npv_electric + none_npv_costs;
 
@@ -111,15 +238,18 @@ str_html = '<html><body>' +
            '<h3>Costs: ' + analysis_period + ' years </h3>' + 
            '<table bgcolor=#eeeeee width=100%>' + 
            '<tr><th>Description</th><th>No System</th><th>PV Only</th><th>PV+Battery</th></tr>' + 
-           '<tr bgcolor=#ffffff><td>Demand Charge (Fixed) ($) </td><td>' + none_dc_fixed + '</td><td>' + pv_dc_fixed + '</td><td>' + batt_dc_fixed + '</td></tr>' +             
-           '<tr><td>Demand Charge (TOU) ($)</td><td>' + none_dc_tou + '</td><td>' +pv_dc_tou + '</td><td>' +batt_dc_tou + '</td></tr>' +             
-           '<tr bgcolor=#ffffff><td>Energy Charge ($)</td><td>' + none_ec + '</td><td>' + pv_ec + '</td><td>' + batt_ec + '</td></tr>' +             
-           '<tr><td><b>Total Electricity Cost ($) </b></td><td><b>' + none_electricity_cost + '</b></td><td><b>' + pv_electricity_cost + '</b></td><td><b>' + batt_electricity_cost + '</b></td></tr>' +
-           '<tr bgcolor=#ffffff><td>Total Capital & Replacement Costs($)</td><td>' + none_costs + '</td><td>' +pv_costs + '</td><td>' +batt_costs + '</td></tr>' + 
-		   '<tr><td><b>System & Electricity Cost ($)</b></td><td><b>' + none_total + '</b></td><td><b>' + pv_total + '</b></td><td><b>' + batt_total + '<b></td></tr>' +             
-           '<tr bgcolor=#ffffff><td>Present Value Electricity Costs ($) </td><td>' + none_npv_electric + '</td><td>' +pv_npv_electric + '</td><td>' + batt_npv_electric + '</td></tr>' +             
-           '<tr><td>Present Value Capital & Replacement Costs ($)</td><td>' + none_npv_costs + '</td><td>' +pv_npv_costs + '</td><td>' +batt_npv_costs + '</td></tr>' +             
-           '<tr bgcolor=#ffffff><td><b>Present Value Total System Costs ($)</b></td><td><b>' + none_npv_total + '</b></td><td><b>' + pv_npv_total + '</b></td><td><b>' + batt_npv_total + '</b></td></tr>' +                     
+           '<tr bgcolor=#ffffff><td>Demand Charge (Fixed) ($) </td><td>' + round(none_dc_fixed) + '</td><td>' + round(pv_dc_fixed) + '</td><td>' + round(batt_dc_fixed) + '</td></tr>' +             
+           '<tr><td>Demand Charge (TOU) ($)</td><td>' + round(none_dc_tou) + '</td><td>' +round(pv_dc_tou) + '</td><td>' +round(batt_dc_tou) + '</td></tr>' +             
+           '<tr bgcolor=#ffffff><td>Energy Charge ($)</td><td>' + round(none_ec) + '</td><td>' + round(pv_ec) + '</td><td>' + round(batt_ec) + '</td></tr>' +             
+           '<tr><td>Fixed Monthly Charges ($)</td><td>' + round(common_fixed_charges) + '</td><td>' + round(common_fixed_charges) + '</td><td>' + round(common_fixed_charges) + '</td></tr>' +             
+           '<tr bgcolor=#ffffff><td>Minimum Monthly Charges ($)</td><td>' + round(none_min_month) + '</td><td>' + round(pv_min_month) + '</td><td>' + round(batt_min_month) + '</td></tr>' +             
+		   '<tr><td>Minimum Annual Charges ($)</td><td>' + round(none_min_annual) + '</td><td>' + round(pv_min_annual) + '</td><td>' + round(batt_min_annual) + '</td></tr>' +             
+           '<tr><td><b>Total Electricity Cost ($) </b></td><td><b>' + round(none_electricity_cost) + '</b></td><td><b>' + round(pv_electricity_cost) + '</b></td><td><b>' + round(batt_electricity_cost) + '</b></td></tr>' +
+           '<tr bgcolor=#ffffff><td>Total Capital & Replacement Costs($)</td><td>' + round(none_costs) + '</td><td>' +round(pv_costs) + '</td><td>' +round(batt_costs) + '</td></tr>' + 
+		   '<tr><td><b>System & Electricity Cost ($)</b></td><td><b>' + round(none_total) + '</b></td><td><b>' + round(pv_total) + '</b></td><td><b>' + round(batt_total) + '<b></td></tr>' +             
+           '<tr bgcolor=#ffffff><td>Present Value Electricity Costs ($) </td><td>' + round(none_npv_electric) + '</td><td>' +round(pv_npv_electric) + '</td><td>' + round(batt_npv_electric) + '</td></tr>' +             
+           '<tr><td>Present Value Capital & Replacement Costs ($)</td><td>' + round(none_npv_costs) + '</td><td>' +round(pv_npv_costs) + '</td><td>' +round(batt_npv_costs) + '</td></tr>' +             
+           '<tr bgcolor=#ffffff><td><b>Present Value Total System Costs ($)</b></td><td><b>' + round(none_npv_total) + '</b></td><td><b>' + round(pv_npv_total) + '</b></td><td><b>' + round(batt_npv_total) + '</b></td></tr>' +                     
            '</table>' +
            '</body></html>';
 
