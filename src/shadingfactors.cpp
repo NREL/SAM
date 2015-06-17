@@ -896,9 +896,6 @@ bool ImportSunEyeObstructions( ShadingInputData &dat, wxWindow *parent )
 
 bool ImportSolPathMonthByHour( ShadingInputData &dat, wxWindow *parent )
 {
-	std::fstream fs;
-	fs.open("C:\\Users\\dryberg\\Desktop\\SAM\\weekly\\150608\\solar_path_finder\\output.txt", std::fstream::out);
-
 	wxFileDialog fdlg(parent, "Import Solar Pathfinder Month By Hour Shading File");
 	if (fdlg.ShowModal() != wxID_OK) return false;
 	wxString file = fdlg.GetPath();
@@ -930,7 +927,6 @@ bool ImportSolPathMonthByHour( ShadingInputData &dat, wxWindow *parent )
 // data at half hour is recorded for hour in 8760 shading file - e.g. Jan-1 5:30 data recoded at hour 5
 	while( !tf.Eof() )
 	{
-		fs << buf << std::endl;
 		wxArrayString lnp = wxStringTokenize(buf, ",", wxTOKEN_RET_EMPTY_ALL);
 		if (readdata == false)
 		{
@@ -955,7 +951,6 @@ bool ImportSolPathMonthByHour( ShadingInputData &dat, wxWindow *parent )
 				if (ndex > 289) 
 				{
 					readok=false;
-					fs << "blah blah blah\n";
 					break;
 				}
 				// average hour and half hour values starting at midnight (skip row label)
@@ -969,7 +964,6 @@ bool ImportSolPathMonthByHour( ShadingInputData &dat, wxWindow *parent )
 	if (readdata == false)
 	{
 		readok = false;
-		fs << "meowmix!\n";
 		headingok = false;
 	}
 
@@ -985,127 +979,9 @@ bool ImportSolPathMonthByHour( ShadingInputData &dat, wxWindow *parent )
 	}
 	else
 	{
-		//wxString m = "Invalid file format.\n\n";
-		wxString m = "I'm a little tea pot\n\n";
-		wxMessageBox(m);
-		return false;
-	}
-
-	fs.close();
-}
-
-/*bool ImportSolPathObstructions( ShadingInputData &dat, wxWindow *parent )
-{
-	wxFileDialog fdlg(parent, "Import Solar Pathfinder Obstruction Elevations File");
-	if (fdlg.ShowModal() != wxID_OK) return false;
-	wxString file = fdlg.GetPath();
-	wxTextFile tf;
-	if (!tf.Open( file ))
-	{
-		wxMessageBox("Could not open file for read:\n\n" + file);
-		return false;
-	}
-
-
-	//-125 to 125 in 5 degree increments (51 values + header = 52 columns)
-
-	wxString buf;
-	bool readdata = false;
-	bool readok = true;
-	bool headingok = true;
-	bool colok = true;
-	int linesok = 0;
-	double azi[51];
-	double alt[51];
-
-	matrix_t<float> azaltvals;
-	azaltvals.resize_fill(91,52, 0.0);	
-	azaltvals.at(0,0) = 0.;
-
-	int j=0;
-	readdata = true;
-	buf = tf.GetFirstLine();
-	while( !tf.Eof() ) // start at line 1
-	{
-		wxArrayString lnp = wxStringTokenize( buf, " " ); // space delimited
-		if (lnp.Count() != 2)
-		{
-			colok = false;
-			readok = false;
-			break;
-		}
-		else
-		{
-			if ( j < 51 )  // prevent butter overrun 2/12/12	// <- when SAM comments are confusing to new staff. I'm glad we were not overrun by butter. -jmf 7/9/14
-			{
-				azi[j] = wxAtof(lnp[0]);
-				alt[j] = wxAtof(lnp[1]);
-			}
-			else
-			{
-				colok = false;
-				readok = false;
-				break;
-			}
-		}
-		j++;
-
-		buf = tf.GetNextLine();
-	}
-
-	if (j < 51)
-	{
-		readok = false;
-		linesok = -1;
-	}
-	else if (j > 51)
-	{
-		readok = false;
-		linesok = 1;
-	}
-	if (readdata != true)
-	{
-		readok = false;
-		headingok = false;
-	}
-
-	if (readok)
-	{
-		for (int i=1;i<52;i++)
-			azaltvals.at(0,i) = azi[i-1]+180; // add 180 degrees to account for new azimuth convention (180=south) 4/2/2012, apd
-
-		for (int i=1;i<91;i++)
-			azaltvals.at(i,0) = i;
-
-		for (int j=0;j<52;j++)
-		{
-			if (alt[j]<0 && alt[j]>90)	//SAME QUESTION
-			{
-				wxMessageBox("Error: Elevations Must be less than 90 degrees and greater than 0 degrees");
-				return false;
-			}
-			else
-			{
-				for (int i=90;i>90-alt[j];i--)
-					azaltvals.at(i,j+1) = 100;	//IS THIS RIGHT?
-			}
-		}
-
-		dat.clear();
-		dat.en_azal = true;
-		dat.azal = azaltvals;
-
-		return true;
-	}
-	else
-	{
 		wxString m = "Invalid file format.\n\n";
-		if (!headingok)	m.Append("Invalid heading format.\n");
-		if (!colok) m.Append("Invalid number of columns.\n");
-		if (linesok == -1) m.Append("File contains fewer lines than expected.\n");
-		if (linesok == 1) m.Append("File contains more lines than expected.\n");
+		//wxString m = "I'm a little tea pot\n\n";
 		wxMessageBox(m);
-
 		return false;
 	}
-}*/
+}
