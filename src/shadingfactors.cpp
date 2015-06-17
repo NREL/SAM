@@ -14,6 +14,8 @@
 #include "variables.h"
 #include "shadingfactors.h"
 
+#include <fstream>
+
 /*********  SHADING BUTTON CTRL ************/
 
 ShadingInputData::ShadingInputData()
@@ -169,8 +171,7 @@ enum { ID_ENABLE_HOURLY = ::wxID_HIGHEST+999,
 	ID_IMPORT_PVSYST_NEAR_SHADING,
 	ID_IMPORT_SUNEYE_HOURLY,
 	ID_IMPORT_SUNEYE_OBSTRUCTIONS,
-	ID_IMPORT_SOLPATH_MXH,
-	ID_IMPORT_SOLPATH_OBSTRUCTIONS	  };
+	ID_IMPORT_SOLPATH_MXH};
 
 class ShadingDialog : public wxDialog
 {
@@ -234,7 +235,6 @@ public:
 		import_tools->Add( new wxButton( m_scrollWin, ID_IMPORT_SUNEYE_HOURLY, "SunEye hourly shading..." ), 0, wxALL, 3 );
 		import_tools->Add( new wxButton( m_scrollWin, ID_IMPORT_SUNEYE_OBSTRUCTIONS, "SunEye obstructions table..." ), 0, wxALL, 3 );
 		import_tools->Add( new wxButton( m_scrollWin, ID_IMPORT_SOLPATH_MXH, "SolarPathfinder month by hour shading..." ), 0, wxALL, 3 );
-		import_tools->Add( new wxButton( m_scrollWin, ID_IMPORT_SOLPATH_OBSTRUCTIONS, "SolarPathfinder obstructions..." ), 0, wxALL, 3 );
 
 		wxColour text_color( 0, 128, 192 );
 		int wrap_width = 700;
@@ -336,13 +336,6 @@ public:
 				UpdateVisibility();
 			}
 			break;
-		case ID_IMPORT_SOLPATH_OBSTRUCTIONS:
-			if ( ImportSolPathObstructions( dat, this ) )
-			{
-				wxMessageBox( Load( dat, false ) );
-				UpdateVisibility();
-			}
-			break;
 		}
 	}
 	
@@ -431,7 +424,6 @@ BEGIN_EVENT_TABLE( ShadingDialog, wxDialog )
 	EVT_BUTTON( ID_IMPORT_SUNEYE_HOURLY, ShadingDialog::ImportData )
 	EVT_BUTTON( ID_IMPORT_SUNEYE_OBSTRUCTIONS, ShadingDialog::ImportData )
 	EVT_BUTTON( ID_IMPORT_SOLPATH_MXH, ShadingDialog::ImportData )
-	EVT_BUTTON( ID_IMPORT_SOLPATH_OBSTRUCTIONS, ShadingDialog::ImportData )
 END_EVENT_TABLE()
 
 
@@ -776,6 +768,8 @@ bool ImportSunEyeHourly( ShadingInputData &dat, wxWindow *parent )
 	
 bool ImportSunEyeObstructions( ShadingInputData &dat, wxWindow *parent )
 {
+
+
 	wxFileDialog fdlg(parent, "Import SunEye Obstruction Elevations File");
 	if (fdlg.ShowModal() != wxID_OK) return false;
 	wxString file = fdlg.GetPath();
@@ -902,6 +896,9 @@ bool ImportSunEyeObstructions( ShadingInputData &dat, wxWindow *parent )
 
 bool ImportSolPathMonthByHour( ShadingInputData &dat, wxWindow *parent )
 {
+	std::fstream fs;
+	fs.open("C:\\Users\\dryberg\\Desktop\\SAM\\weekly\\150608\\solar_path_finder\\output.txt", std::fstream::out);
+
 	wxFileDialog fdlg(parent, "Import Solar Pathfinder Month By Hour Shading File");
 	if (fdlg.ShowModal() != wxID_OK) return false;
 	wxString file = fdlg.GetPath();
@@ -933,6 +930,7 @@ bool ImportSolPathMonthByHour( ShadingInputData &dat, wxWindow *parent )
 // data at half hour is recorded for hour in 8760 shading file - e.g. Jan-1 5:30 data recoded at hour 5
 	while( !tf.Eof() )
 	{
+		fs << buf << std::endl;
 		wxArrayString lnp = wxStringTokenize(buf, ",", wxTOKEN_RET_EMPTY_ALL);
 		if (readdata == false)
 		{
@@ -957,6 +955,7 @@ bool ImportSolPathMonthByHour( ShadingInputData &dat, wxWindow *parent )
 				if (ndex > 289) 
 				{
 					readok=false;
+					fs << "blah blah blah\n";
 					break;
 				}
 				// average hour and half hour values starting at midnight (skip row label)
@@ -970,6 +969,7 @@ bool ImportSolPathMonthByHour( ShadingInputData &dat, wxWindow *parent )
 	if (readdata == false)
 	{
 		readok = false;
+		fs << "meowmix!\n";
 		headingok = false;
 	}
 
@@ -985,14 +985,16 @@ bool ImportSolPathMonthByHour( ShadingInputData &dat, wxWindow *parent )
 	}
 	else
 	{
-		wxString m = "Invalid file format.\n\n";
+		//wxString m = "Invalid file format.\n\n";
+		wxString m = "I'm a little tea pot\n\n";
 		wxMessageBox(m);
 		return false;
 	}
 
+	fs.close();
 }
 
-bool ImportSolPathObstructions( ShadingInputData &dat, wxWindow *parent )
+/*bool ImportSolPathObstructions( ShadingInputData &dat, wxWindow *parent )
 {
 	wxFileDialog fdlg(parent, "Import Solar Pathfinder Obstruction Elevations File");
 	if (fdlg.ShowModal() != wxID_OK) return false;
@@ -1106,4 +1108,4 @@ bool ImportSolPathObstructions( ShadingInputData &dat, wxWindow *parent )
 
 		return false;
 	}
-}
+}*/
