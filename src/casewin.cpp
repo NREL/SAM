@@ -173,6 +173,7 @@ CaseWindow::CaseWindow( wxWindow *parent, Case *c )
 	m_inputPageScrollWin->SetBackgroundColour( *wxWHITE );
 	
 	m_exclPanel = new wxPanel( m_inputPagePanel );
+	m_exclPanel->SetBackgroundColour( *wxWHITE );
 	m_exclPageButton = new wxMetroButton( m_exclPanel, ID_EXCL_BUTTON, "Change...", wxNullBitmap, wxDefaultPosition, wxDefaultSize, wxMB_DOWNARROW );
 	wxBoxSizer *excl_horiz = new wxBoxSizer( wxHORIZONTAL );
 	excl_horiz->Add( m_exclPageButton, 0, wxALL|wxALIGN_CENTER_VERTICAL, 2 );
