@@ -825,7 +825,7 @@ bool ImportSunEyeObstructions( ShadingInputData &dat, wxWindow *parent )
 				}
 				else
 				{
-					azi[j] = wxAtof(lnp[1]);
+					azi[j] = wxAtof(lnp[0]); //first column contains compass heading azimuth values (0=north, 90=east)
 					alt[j] = wxAtof(lnp[2]);
 				}
 				j++;
@@ -854,23 +854,28 @@ bool ImportSunEyeObstructions( ShadingInputData &dat, wxWindow *parent )
 
 	if (readok)
 	{
+		//copy azimuth/compass values into the first row
 		for (int i=1;i<362;i++)
-			azaltvals.at(0,i) = azi[i-1]+180;  // add 180 degrees to account for new azimuth convention (180=south) 4/2/2012, apd
+			azaltvals.at(0,i) = azi[i-1];
 
+		//elevation always goes from 1-90 degrees
 		for (int i=1;i<91;i++)
 			azaltvals.at(i,0) = i;
 
+		//loop through all azimuth values
 		for (int j=0;j<362;j++)
 		{
-			if (alt[j]<0 && alt[j]>90)	//SHOULDN'T THIS BE AN "OR"?
+			//check for a valid elevation value
+			if (alt[j]<0 || alt[j]>90) //changed from && to || 6/18/15 jmf
 			{
 				wxMessageBox("Error: Elevations Must be less than 90 degrees and greater than 0 degrees");
 				return false;
 			}
 			else
 			{
-				for (int i=90;i>90-alt[j];i--)
-					azaltvals.at(i,j+1) = 100;	//NEED TO CHECK THIS
+				//changed jmf 6/18/15- values UP TO the altitude value should be fully shaded.
+				for (int i = 1; i <= alt[j]; i++)
+					azaltvals.at(i, j + 1) = 100;
 			}
 		}
 
