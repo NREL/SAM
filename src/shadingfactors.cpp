@@ -8,6 +8,7 @@
 #include <wx/textfile.h>
 
 #include <wex/csv.h>
+#include <regex>
 
 #include "widgets.h"
 
@@ -901,6 +902,9 @@ bool ImportSunEyeObstructions( ShadingInputData &dat, wxWindow *parent )
 
 bool ImportSolPathMonthByHour( ShadingInputData &dat, wxWindow *parent )
 {
+//	std::fstream fs;
+//	fs.open("C:\\Users\\dryberg\\Desktop\\SAM\\weekly\\150615\\solarpathfinder\\output.txt", std::fstream::out);
+
 	wxFileDialog fdlg(parent, "Import Solar Pathfinder Month By Hour Shading File");
 	if (fdlg.ShowModal() != wxID_OK) return false;
 	wxString file = fdlg.GetPath();
@@ -918,7 +922,7 @@ bool ImportSolPathMonthByHour( ShadingInputData &dat, wxWindow *parent )
 	// double array 12rowsx24columns Solar pathfinder percentages to fractions
 
 	wxString buf;
-	int i;
+	int i, imageCount = 0;
 	bool readdata = false;
 	bool readok = true;
 	bool headingok = true;
@@ -929,6 +933,7 @@ bool ImportSolPathMonthByHour( ShadingInputData &dat, wxWindow *parent )
 	beam[1]=24;
 
 	buf = tf.GetFirstLine();
+
 // data at half hour is recorded for hour in 8760 shading file - e.g. Jan-1 5:30 data recoded at hour 5
 	while( !tf.Eof() )
 	{
@@ -937,8 +942,10 @@ bool ImportSolPathMonthByHour( ShadingInputData &dat, wxWindow *parent )
 		{
 			if (lnp.Count() > 0)
 			{
-				if (lnp.Item(0) == "Image Layout Number 1")
+				if (std::regex_match( (std::string)lnp.Item(0), std::regex("Image Layout Number [0-9]") ) )
 				{
+					imageCount++;
+					month = 0;
 					buf = tf.GetNextLine();
 					readdata = true;
 				}
@@ -946,9 +953,9 @@ bool ImportSolPathMonthByHour( ShadingInputData &dat, wxWindow *parent )
 		}
 		else
 		{
-			if (month>11)
+			if (month==11)
 			{
-				break;
+				readdata = false;
 			}
 			for (i=0;i<24;i++)
 			{
@@ -959,14 +966,19 @@ bool ImportSolPathMonthByHour( ShadingInputData &dat, wxWindow *parent )
 					break;
 				}
 				// average hour and half hour values starting at midnight (skip row label)
-				beam[ndex] = 100- (wxAtof(lnp.Item(2*i+1))+wxAtof(lnp.Item(2*i+1+1)))/2.0;	//convert from a factor to a loss
+				if (imageCount==1){
+					beam[ndex] = 100- (wxAtof(lnp.Item(2*i+1))+wxAtof(lnp.Item(2*i+1+1)))/2.0;	//convert from a factor to a loss
+				} else {
+					beam[ndex] += 100- (wxAtof(lnp.Item(2*i+1))+wxAtof(lnp.Item(2*i+1+1)))/2.0;	//convert from a factor to a loss
+				}
 			}
 			month++;
 		}
 		buf = tf.GetNextLine();
+		if (tf.Eof() ) readdata = true;
 	}
 
-	if (readdata == false)
+	if (readdata == false || imageCount == 0)
 	{
 		readok = false;
 		headingok = false;
@@ -979,14 +991,14 @@ bool ImportSolPathMonthByHour( ShadingInputData &dat, wxWindow *parent )
 		dat.mxh.resize_fill(12,24, 0.0);
 		for (int r=0;r<12;r++)
 			for (int c=0;c<24;c++)
-				dat.mxh.at(r,c) = beam[ 24*r+c+2 ];
+				dat.mxh.at(r,c) = beam[ 24*r+c+2 ] / imageCount;
 		return true;
 	}
 	else
 	{
 		wxString m = "Invalid file format.\n\n";
-		//wxString m = "I'm a little tea pot\n\n";
 		wxMessageBox(m);
 		return false;
 	}
+
 }
