@@ -271,7 +271,7 @@ public:
 
 		wxSizer *scroll = new wxBoxSizer( wxVERTICAL );
 		
-		scroll->Add( new wxStaticText( m_scrollWin, wxID_ANY, "Annual loss (%)"), 0, wxALL|wxEXPAND, 5 );
+		scroll->Add( new wxStaticText( m_scrollWin, wxID_ANY, "Constant loss (%)"), 0, wxALL|wxEXPAND, 5 );
 		scroll->Add( m_factor, 0, wxALL, 5 );
 		scroll->Add( new wxStaticLine( m_scrollWin ), 0, wxALL|wxEXPAND );
 		
@@ -379,7 +379,7 @@ AFHourlyFactorCtrl::AFHourlyFactorCtrl( wxWindow *parent, int id,
 
 void AFHourlyFactorCtrl::UpdateText()
 {
-	wxString txt( wxString::Format( "Annual loss: %.1f %%", m_data.factor ) );
+	wxString txt( wxString::Format( "Constant loss: %.1f %%", m_data.factor ) );
 	
 	float avg = 0;
 	for( size_t i=0;i<m_data.hourly.size();i++ ) avg += m_data.hourly[i];
