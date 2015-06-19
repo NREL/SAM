@@ -12,12 +12,13 @@ A simulation over the entire analysis period will be conducted regardless of whe
 	<li>Fixed Monthly Charges ($) - Total cost of fixed monthly charges analysis period </li>
 	<li>Minimum Monthly Charges ($) - Total cost of imposed minimum monthly charges over analysis period </li>
 	<li>Minimum Annual Charges ($) - Total cost of imposed minimum annual charges over analysis period </li>
-
 	<li>Total Electricity Cost ($) - Total cost of electricity charges over analysis period.  This is the sum of the Demand Charges (Fixed+TOU) and Energy Charges.</li>
-	<li>Capital & Replacement ($) - Total cost of system and replacements (no financing costs) </li>
+	<li>Capital & Replacement ($) - Total cost of system and replacements</li>
+	<li>Operation & Maintenance ($) - Total cost of operation and maintenance</li>
 	<li>System & Electricity Cost ($) - The sum of Total Electricity Cost and Capital & Replacement costs </li>
 	<li>Present Value Electricity Costs ($) - The Net Present Value of the Total Electricity Cost </li>
-	<li>Present Value of Capital & Costs ($) - The Net Present Value of the Capital and Replacment Costs </li>
+	<li>Present Value of Capital & Replacement Costs ($) - The Net Present Value of the Capital and Replacment Costs </li>
+	<li>Present Value of Operation & Maintenance Costs($) - The Net Present Value of the O&M Costs </li>
 	<li>Present Value of Total Costs ($) - The Net Present Value of System & Electricity Costs </li>
 </ul>
 <p>
@@ -247,7 +248,7 @@ none_npv_total = none_npv_electric + none_npv_costs+none_npv_om;
 str_html = '<html><body>' + 
            '<h3>Costs: ' + analysis_period + ' years </h3>' + 
            '<table bgcolor=#eeeeee width=100%>' + 
-           '<tr><th>Description</th><th>No System</th><th>PV Only</th><th>PV+Battery</th></tr>' + 
+           '<tr><th>Specific costs</th><th>No System</th><th>PV Only</th><th>PV+Battery</th></tr>' + 
            '<tr bgcolor=#ffffff><td>Demand Charge (Fixed) ($) </td><td>' + round(none_dc_fixed) + '</td><td>' + round(pv_dc_fixed) + '</td><td>' + round(batt_dc_fixed) + '</td></tr>' +             
            '<tr><td>Demand Charge (TOU) ($)</td><td>' + round(none_dc_tou) + '</td><td>' +round(pv_dc_tou) + '</td><td>' +round(batt_dc_tou) + '</td></tr>' +             
            '<tr bgcolor=#ffffff><td>Energy Charge ($)</td><td>' + round(none_ec) + '</td><td>' + round(pv_ec) + '</td><td>' + round(batt_ec) + '</td></tr>' +             
@@ -258,6 +259,10 @@ str_html = '<html><body>' +
            '<tr><td>Total Capital & Replacement Costs($)</td><td>' + round(none_costs) + '</td><td>' +round(pv_costs) + '</td><td>' +round(batt_costs) + '</td></tr>' + 
            '<tr bgcolor=#ffffff><td>Total Operation & Maintenance Costs($)</td><td>' + round(none_om) + '</td><td>' +round(pv_om) + '</td><td>' +round(batt_om) + '</td></tr>' + 
 		   '<tr><td><b>System & Electricity Cost ($)</b></td><td><b>' + round(none_total) + '</b></td><td><b>' + round(pv_total) + '</b></td><td><b>' + round(batt_total) + '<b></td></tr>' +             
+		   '</table>' +
+		   '<br><br><br>' +
+		   '<table bgcolor=#eeeeee width=100%>' +
+			'<tr><th>Net Present Values</th><th>No System</th><th>PV Only</th><th>PV+Battery</th></tr>' + 
            '<tr bgcolor=#ffffff><td>Present Value Electricity Costs ($) </td><td>' + round(none_npv_electric) + '</td><td>' +round(pv_npv_electric) + '</td><td>' + round(batt_npv_electric) + '</td></tr>' +             
            '<tr><td>Present Value Capital & Replacement Costs ($)</td><td>' + round(none_npv_costs) + '</td><td>' +round(pv_npv_costs) + '</td><td>' +round(batt_npv_costs) + '</td></tr>' +             
            '<tr bgcolor=#ffffff><td>Present Value Operation & Maintenance Costs ($)</td><td>' + round(none_npv_om) + '</td><td>' +round(pv_npv_om) + '</td><td>' +round(batt_npv_om) + '</td></tr>' +             
