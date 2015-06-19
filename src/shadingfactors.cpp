@@ -942,7 +942,7 @@ bool ImportSolPathMonthByHour( ShadingInputData &dat, wxWindow *parent )
 		{
 			if (lnp.Count() > 0)
 			{
-				if (std::regex_match( (std::string)lnp.Item(0), std::regex("Image Layout Number [0-9]") ) )
+				if (std::regex_match( (std::string)lnp.Item(0), std::regex("Image Layout Number [0-9]+") ) )
 				{
 					imageCount++;
 					month = 0;
