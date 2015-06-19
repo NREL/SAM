@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-   <title>Degradation and Outages</title>
+   <title>Lifetime and Degradation</title>
    <meta name="generator" content="Help &amp; Manual" />
    <meta name="keywords" content="" />
    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -29,7 +29,7 @@
 <table style="width:100%; border:none; border-spacing:0px; padding:5px; background:#FFFFFF; color:#0072C6;">
   <tr style="vertical-align:middle">
     <td style="text-align:left">
-      <h1 class="p_Heading1"><span class="f_Heading1">Degradation and Outages</span></h1>
+      <h1 class="p_Heading1"><span class="f_Heading1">Lifetime and Degradation</span></h1>
 
     </td>
   </tr>
@@ -41,7 +41,7 @@
 <p class="p_Text"><span class="f_Text">SAM's performance model calculates the system's hourly our subhourly electricity output for a single year. You can use the curtailment and availability factors and degradation rate described below to model system outages or a year-to-year decline in the system's output.</span></p>
 <p class="p_Note"><span class="f_CHNote">Note.</span><span class="f_Note"> SAM allows you to specify curtailment and availability factors greater than one, and negative degradation rates, so you can use the factors to adjust the system output upward or downward. You can also specify negative values for the curtailment and availability factors, although you should avoid doing so unless you have a reason to model negative electrical output.</span></p>
 <h4 class="p_Heading4"><span class="f_Heading4">Curtailment and Availability</span></h4>
-<p class="p_Text"><span class="f_Text">The <a href="hourly_factors.htm" class="topiclink">curtailment and availability</a> factors allow you to adjust the annual our hourly output values that SAM's performance model calculates. The factors make it possible to model reductions in the system's output due to maintenance down times (availability), system shutdowns required by the grid operator (curtailment), or any other reason that might &nbsp;cause the energy delivered to the grid to be different than predicted by the model.</span></p>
+<p class="p_Text"><span class="f_Text">The <a href="snip_hourly_losses.htm" class="topiclink">curtailment and availability</a> factors allow you to adjust the annual our hourly output values that SAM's performance model calculates. The factors make it possible to model reductions in the system's output due to maintenance down times (availability), system shutdowns required by the grid operator (curtailment), or any other reason that might &nbsp;cause the energy delivered to the grid to be different than predicted by the model.</span></p>
 <p class="p_Text"><span class="f_Text">Here are some examples of applications of the curtailment and availability factors:</span></p>
 <div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 3px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:24px"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;">&#8226;</span></td><td style="border:none"><span class="f_List">Unscheduled maintenance results in a 96% annual availability factor for the system: Specify an annual factor of 0.96.</span></td></tr></table></div><div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 3px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:24px"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;">&#8226;</span></td><td style="border:none"><span class="f_List">The system is scheduled to be completely shut down for maintenance on October 1 through 7 between 8 am and noon: Use hourly factors with custom periods to specify a start time of October 1 at 12 a.m., end time of October 7 at 11 p.m., and a factor of 0.</span></td></tr></table></div><h4 class="p_Heading4"><span class="f_Heading4">Degradation </span></h4>
 <p class="p_Text"><span class="f_Text">The <a href="degradation.htm" class="topiclink">degradation</a> rate is a year-to-year reduction in the system's AC electrical output. The following are examples of applications for the degradation rate:</span></p>

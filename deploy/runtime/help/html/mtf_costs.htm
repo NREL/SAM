@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-   <title>Initial Cost</title>
+   <title>Total Capital Cost</title>
    <meta name="generator" content="Help &amp; Manual" />
    <meta name="keywords" content="" />
    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -29,7 +29,7 @@
 <table style="width:100%; border:none; border-spacing:0px; padding:5px; background:#FFFFFF; color:#0072C6;">
   <tr style="vertical-align:middle">
     <td style="text-align:left">
-      <h1 class="p_Heading1"><span class="f_Heading1">Initial Cost</span></h1>
+      <h1 class="p_Heading1"><span class="f_Heading1">Total Capital Cost</span></h1>
 
     </td>
   </tr>
@@ -40,41 +40,33 @@
 <table style="width:100%;border:none;border-spacing:0px"><tr style="vertical-align:top"><td style="text-align:left;padding:5px">
 <p class="p_Text"><span class="f_Text">The initial cost is total installed cost from the <a href="system_costs.htm" class="topiclink">System Costs</a> page less any cash investment-based and capacity-based incentives from the <a href="incentives.htm" class="topiclink">Incentives</a> page and plus any additional costs and fees from the <a href="financial_parameters.htm" class="topiclink">Financial Parameters</a> page. The exact equation depends on the financial model as described below.</span></p>
 <p class="p_Note"><span class="f_CHNote">Note.</span><span class="f_Note"> The initial cash outlay (Year zero cost in the cash flow) is the <a href="mtf_debt_and_equity.htm#equity" class="topiclink">Equity</a> value in the Metrics table.</span></p>
-<h3 class="p_Heading3_atocs_" style="border-top: none; border-right: none; border-left: none;"><a id="lessincentives"></a><span class="f_Heading3_atocs_">Initial Cost Less Cash Incentives</span></h3>
-<p class="p_Text"><span class="f_Text">SAM reports the initial cost (described below for each financial model) and initial cost less any cash incentives from the <a href="incentives.htm" class="topiclink">Incentives</a> page:</span></p>
-<p class="p_EquationExcel"><span class="f_EquationExcel">Initial cost less cash incentives = Initial cost - cash incentives</span></p>
-<p class="p_Text"><span class="f_Text">The cash incentives are the investment-based incentives (IBI) and capacity-based incentives (CBI). Cash incentives is the sum of all cash incentives:</span></p>
-<p class="p_EquationExcel" style="text-indent: -89px; margin: 0px 0px 6px 137px;"><span class="f_EquationExcel">Cash incentives = federal IBI amount</span><br />
-<span class="f_EquationExcel">+ state IBI amount</span><br />
-<span class="f_EquationExcel">+ utility IBI amount</span><br />
-<span class="f_EquationExcel">+ other IBI amount</span><br />
-<span class="f_EquationExcel">+ federal IBI percentage × total installed cost</span><br />
-<span class="f_EquationExcel">+ state IBI percentage × total installed cost</span><br />
-<span class="f_EquationExcel">+ utility IBI percentage × total installed cost</span><br />
-<span class="f_EquationExcel">+ other IBI percentage × total installed cost</span><br />
-<span class="f_EquationExcel">+ federal CBI rate × system nameplate capacity</span><br />
-<span class="f_EquationExcel">+ state CBI rate × system nameplate capacity</span><br />
-<span class="f_EquationExcel">+ utility CBI rate × system nameplate capacity</span><br />
-<span class="f_EquationExcel">+ other CBI rate × system nameplate capacity</span></p>
-<h3 class="p_Heading3_atocs_" style="border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Initial Cost: Residential and Commercial</span></h3>
-<p class="p_Text"><span class="f_Text">For the residential and commercial models, initial cost is the total installed cost from the System Costs page:</span></p>
-<p class="p_EquationExcel"><span class="f_EquationExcel">Initial cost = total installed cost</span></p>
-<h3 class="p_Heading3_atocs_" style="border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Initial Cost: PPA Models</span></h3>
-<p class="p_Text"><span class="f_Text">For the PPA financial models, the initial cost is the sum of the total installed cost and total financing costs and development fees:</span></p>
-<p class="p_EquationExcel"><span class="f_EquationExcel">Initial cost = total installed cost + total costs and fees</span></p>
+<h3 class="p_Heading3_atocs_" style="border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Residential and Commercial</span></h3>
+<p class="p_Text"><span class="f_Text">For the residential and commercial models, the total capital cost is the total installed cost from the System Costs page:</span></p>
+<p class="p_EquationExcel" style="text-indent: -111px; margin: 0px 0px 6px 161px;"><span class="f_EquationExcel">Total capital cost = total installed cost</span><br />
+<span class="f_EquationExcel">- total IBI</span><br />
+<span class="f_EquationExcel">- total CBI</span></p>
+<h3 class="p_Heading3_atocs_" style="border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">PPA Models</span></h3>
+<p class="p_Text"><span class="f_Text">For the PPA financial models, the total capital cost is the sum of the total installed cost, financing costs and development fees, and debt service and working capital reserve account funding less investment-based incentives:</span></p>
+<p class="p_EquationExcel" style="text-indent: -110px; margin: 0px 0px 6px 159px;"><span class="f_EquationExcel">Total capital cost = total installed cost </span><br />
+<span class="f_EquationExcel">+ financing costs and fees </span><br />
+<span class="f_EquationExcel">+ debt service reserve funding </span><br />
+<span class="f_EquationExcel">+ working capital reserve funding</span><br />
+<span class="f_EquationExcel">- total IBI</span><br />
+<span class="f_EquationExcel">- total CBI</span></p>
 <h4 class="p_Heading4"><span class="f_Heading4">Costs and Fees</span></h4>
 <p class="p_Text"><span class="f_Text">Costs and fees are initial costs that you specify on the Financial Parameters page. SAM adds these costs to the total installed cost on the System Costs page to calculate the initial cost for the PPA financial models:</span></p>
 <p class="p_VariableName"><span class="f_VariableName">Single Owner</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">For the single owner model, costs and fees include debt costs, construction financing cost, and debt and equipment replacement reserves.</span></p>
-<p class="p_EquationExcel" style="text-indent: -107px; margin: 0px 0px 6px 155px;"><span class="f_EquationExcel">Total cost and fees = debt closing cost </span><br />
+<p class="p_EquationExcel" style="text-indent: -153px; margin: 0px 0px 6px 203px;"><span class="f_EquationExcel">Financing costs and fees = debt closing cost </span><br />
 <span class="f_EquationExcel">+ debt up-front fee percentage × debt</span><br />
-<span class="f_EquationExcel">+ other financing cost</span><br />
-<span class="f_EquationExcel">+ debt service reserve</span><br />
+<span class="f_EquationExcel">+ financing cost</span><br />
+<span class="f_EquationExcel">+ debt service reserve funding</span><br />
 <span class="f_EquationExcel">+ construction financing cost</span><br />
 <span class="f_EquationExcel">+ major equipment replacement reserve</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">You can see these values in the <a href="cashflow.htm" class="topiclink">cash flow</a> under &quot;Cash Flows from Investing Activities.&quot;</span></p>
 <p class="p_VariableName"><span class="f_VariableName">Leveraged Partnership Flip</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">For the leveraged (with debt) partnership flip model, costs and fees include debt costs, construction financing cost, debt and equipment replacement reserves, and development and equity costs.</span></p>
-<p class="p_EquationExcel" style="text-indent: -107px; margin: 0px 0px 6px 155px;"><span class="f_EquationExcel">Total cost and fees = debt closing cost </span><br />
+<p class="p_EquationExcel" style="text-indent: -150px; margin: 0px 0px 6px 200px;"><span class="f_EquationExcel">Financing costs and fees = debt closing cost </span><br />
 <span class="f_EquationExcel">+ debt up-front fee percentage × debt</span><br />
 <span class="f_EquationExcel">+ other financing cost</span><br />
 <span class="f_EquationExcel">+ debt service reserve</span><br />
@@ -84,14 +76,14 @@
 <span class="f_EquationExcel">+ equity closing cost</span></p>
 <p class="p_VariableName"><span class="f_VariableName">All Equity Partnership Flip</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">For the all equity (without debt) leveraged partnership flip model, costs and fees include construction financing cost, debt and equipment replacement reserves, and development and equity costs.</span></p>
-<p class="p_EquationExcel" style="text-indent: -107px; margin: 0px 0px 6px 155px;"><span class="f_EquationExcel">Total cost and fees = other financing cost</span><br />
+<p class="p_EquationExcel" style="text-indent: -148px; margin: 0px 0px 6px 198px;"><span class="f_EquationExcel">Financing costs and fees = other financing cost</span><br />
 <span class="f_EquationExcel">+ construction financing cost</span><br />
 <span class="f_EquationExcel">+ major equipment replacement reserve</span><br />
 <span class="f_EquationExcel">+ development fee percentage × total installed cost</span><br />
 <span class="f_EquationExcel">+ equity closing cost</span></p>
 <p class="p_VariableName"><span class="f_VariableName">Sale Leaseback</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">For the all sale leaseback model, costs and fees include construction financing cost, debt and equipment replacement reserves, development and equity costs, and the lease payment reserve.</span></p>
-<p class="p_EquationExcel" style="text-indent: -107px; margin: 0px 0px 6px 155px;"><span class="f_EquationExcel">Total cost and fees = other financing cost</span><br />
+<p class="p_EquationExcel" style="text-indent: -149px; margin: 0px 0px 6px 199px;"><span class="f_EquationExcel">Financing costs and fees = other financing cost</span><br />
 <span class="f_EquationExcel">+ construction financing cost</span><br />
 <span class="f_EquationExcel">+ major equipment replacement reserve</span><br />
 <span class="f_EquationExcel">+ development fee percentage × total installed cost</span><br />

@@ -41,17 +41,17 @@
 <p class="p_Text"><span class="f_Text">The debt and equity metrics show the amount borrowed and initial cash investment amount for financial models with project term debt. The all equity partnership flip and sale leaseback models do not include debt.</span></p>
 <h3 class="p_Heading3_atocs_" style="border-top: none; border-right: none; border-left: none;"><a id="equity"></a><span class="f_Heading3_atocs_">Equity</span></h3>
 <p class="p_Text"><span class="f_Text">For projects with term debt, equity is the amount of cash invested by the project owner or investor:</span></p>
-<p class="p_EquationExcel"><span class="f_EquationExcel">Total equity ($) = <a href="mtf_costs.htm" class="topiclink">Initial cost less cash incentives</a> ($) - Debt ($)</span></p>
+<p class="p_EquationExcel"><span class="f_EquationExcel">Equity ($) = <a href="mtf_costs.htm" class="topiclink">Total capital cost</a> ($) - Debt ($)</span></p>
 <h3 class="p_Heading3_atocs_" style="border-top: none; border-right: none; border-left: none;"><a id="debt"></a><span class="f_Heading3_atocs_">Debt</span></h3>
 <p class="p_Text"><span class="f_Text">For projects with term debt, debt is the amount borrowed by the project. How SAM calculates the debt amount depends on the financial model.</span></p>
 <h4 class="p_Heading4"><span class="f_Heading4">Residential and Commercial</span></h4>
-<p class="p_Text"><span class="f_Text">For the residential and commercial financial models, size of debt depends on the debt percent, and the <a href="mtf_costs.htm#lessincentives" class="topiclink">initial cost less cash incentives</a>:</span></p>
-<p class="p_EquationExcel"><span class="f_EquationExcel">Debt = Debt percent (%) × initial cost less cash incentives ($)</span></p>
+<p class="p_Text"><span class="f_Text">For the residential and commercial financial models, size of debt depends on the debt percent, <a href="mtf_costs.htm" class="topiclink">total capital cost</a>, and any cash incentives::</span></p>
+<p class="p_EquationExcel"><span class="f_EquationExcel">Debt = Debt percent (%) × total capital cost ($) less cash incentives</span></p>
 <p class="p_Text"><span class="f_Text">Where the debt percent is from the Financial Parameters page. </span></p>
 <h4 class="p_Heading4"><span class="f_Heading4">Single Owner and Leveraged Partnership Flip</span></h4>
 <p class="p_Text"><span class="f_Text">For the single owner and leveraged partnership flip financial models, on the <a href="financial_parameters.htm" class="topiclink">Financial Parameters</a> page, you can either specify the debt size as a fraction of installed cost, or specify a debt-service coverage ratio.</span></p>
 <p class="p_Text"><span class="f_Text">When you specify the debt percent as an input, SAM assumes constant debt payments, and reports the debt size and the smallest annual debt service coverage ratio from the cash flow:</span></p>
-<p class="p_EquationExcel"><span class="f_EquationExcel">Debt = Debt percent (%) × <a href="mtf_costs.htm" class="topiclink">initial cost</a> less cash incentives ($)</span></p>
+<p class="p_EquationExcel"><span class="f_EquationExcel">Debt = Debt percent (%) × <a href="mtf_costs.htm" class="topiclink">total capital cost</a> less cash incentives ($)</span></p>
 <p class="p_Text"><span class="f_Text">When you specify the DSCR as an input, SAM calculates annual debt payments sized as appropriate for the project's annual revenue and expenses assuming a constant annual DSCR. SAM calculates the debt funding amount from the cash available for debt service (</span><span class="f_CHEquationVariable">CAFDS</span><span class="f_Text">) in the <a href="cash_flow_variables.htm" class="topiclink">cash flow</a>, and the term debt interest rate </span><span class="f_CHEquationVariable">r</span><span class="f_Text"> and constant </span><span class="f_CHEquationVariable">DSCR</span><span class="f_Text"> from the Financial Parameters page:</span></p>
 <p class="p_VariableDescription"><img src="eq_debt-so-lpf.gif" width="143" height="62" alt="EQ_Debt-so-lpf" style="width:143px;height:62px;border:none" /></p>
 <p class="p_Text"><span class="f_CHEquationVariable">CAFDS</span><span class="f_CHVariableSubscript">n</span><span class="f_Text"> is the cash available for debt service in Year n:</span></p>
