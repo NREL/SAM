@@ -243,7 +243,8 @@ enum { ID_ENABLE_HOURLY = ::wxID_HIGHEST+999 , ID_ENABLE_PERIODS };
 class HourlyFactorDialog : public wxDialog
 {
 	wxScrolledWindow *m_scrollWin;
-	wxNumericCtrl *m_factor;
+//	wxNumericCtrl *m_factor;
+	wxNumericCtrl *m_constant;
 
 	wxCheckBox *m_enableHourly;
 	AFDataArrayButton *m_hourly;
@@ -260,8 +261,9 @@ public:
 		m_scrollWin->SetBackgroundColour( *wxWHITE );
 		m_scrollWin->SetScrollRate( 50, 50 );
 		
-		m_factor = new wxNumericCtrl( m_scrollWin, wxID_ANY );
-		
+//		m_factor = new wxNumericCtrl(m_scrollWin, wxID_ANY);
+		m_constant = new wxNumericCtrl(m_scrollWin, wxID_ANY);
+
 		m_enableHourly = new wxCheckBox( m_scrollWin, ID_ENABLE_HOURLY, "Enable hourly losses (%)" );
 		m_hourly = new AFDataArrayButton( m_scrollWin, wxID_ANY );
 		m_hourly->SetMode( DATA_ARRAY_8760_ONLY );
@@ -272,8 +274,9 @@ public:
 		wxSizer *scroll = new wxBoxSizer( wxVERTICAL );
 		
 		scroll->Add( new wxStaticText( m_scrollWin, wxID_ANY, "Constant loss (%)"), 0, wxALL|wxEXPAND, 5 );
-		scroll->Add( m_factor, 0, wxALL, 5 );
-		scroll->Add( new wxStaticLine( m_scrollWin ), 0, wxALL|wxEXPAND );
+//		scroll->Add(m_factor, 0, wxALL, 5);
+		scroll->Add(m_constant, 0, wxALL, 5);
+		scroll->Add(new wxStaticLine(m_scrollWin), 0, wxALL | wxEXPAND);
 		
 		scroll->Add( m_enableHourly, 0, wxALL|wxEXPAND, 5 );
 		scroll->Add( m_hourly, 0, wxALL, 5 );
@@ -306,8 +309,9 @@ public:
 
 	void Set( const AFHourlyFactorCtrl::FactorData &data )
 	{
-		m_factor->SetValue( data.factor );
-		m_enableHourly->SetValue( data.en_hourly );
+//		m_factor->SetValue(data.factor);
+		m_constant->SetValue(data.constant);
+		m_enableHourly->SetValue(data.en_hourly);
 		m_hourly->Set( data.hourly );
 		m_enablePeriods->SetValue( data.en_periods );
 		m_periods->Set( data.periods );
@@ -316,7 +320,8 @@ public:
 
 	void Get( AFHourlyFactorCtrl::FactorData &data )
 	{
-		data.factor = (float)m_factor->Value();
+//		data.factor = (float)m_factor->Value();
+		data.constant = (float)m_constant->Value();
 		data.en_hourly = m_enableHourly->GetValue();
 		data.hourly = m_hourly->Get();
 		data.en_periods = m_enablePeriods->GetValue();
@@ -369,7 +374,8 @@ AFHourlyFactorCtrl::AFHourlyFactorCtrl( wxWindow *parent, int id,
 	
 	SetSizer( sizer );
 
-	m_data.factor = 1.0f;
+//	m_data.factor = 1.0f;
+	m_data.constant = 0.0f;
 	m_data.en_hourly = false;
 	m_data.hourly.resize( 8760, 1.0f );
 	m_data.en_periods = false;
@@ -379,8 +385,9 @@ AFHourlyFactorCtrl::AFHourlyFactorCtrl( wxWindow *parent, int id,
 
 void AFHourlyFactorCtrl::UpdateText()
 {
-	wxString txt( wxString::Format( "Constant loss: %.1f %%", m_data.factor ) );
-	
+//	wxString txt(wxString::Format("Constant loss: %.1f %%", m_data.factor));
+	wxString txt(wxString::Format("Constant loss: %.1f %%", m_data.constant));
+
 	float avg = 0;
 	for( size_t i=0;i<m_data.hourly.size();i++ ) avg += m_data.hourly[i];
 	if ( m_data.hourly.size() > 0 ) avg /= m_data.hourly.size();
@@ -396,11 +403,15 @@ void AFHourlyFactorCtrl::Write( VarValue *vv )
 	vv->SetType( VV_TABLE );
 	VarTable &tab = vv->Table();
 
-	tab.Set( "factor", VarValue( m_data.factor ) );
-	tab.Set( "en_hourly", VarValue( (bool)m_data.en_hourly ) );
+//	tab.Set("factor", VarValue(m_data.factor));
+	tab.Set("constant", VarValue(m_data.constant));
+	tab.Set("en_hourly", VarValue((bool)m_data.en_hourly));
 	tab.Set( "hourly", VarValue( m_data.hourly ) );
 	tab.Set( "en_periods", VarValue( (bool)m_data.en_periods ) );
 	tab.Set( "periods", VarValue( m_data.periods ) );
+
+	// add version to handle change from "factor" to "constant" 6/19/15
+	tab.Set("version", VarValue(1));
 }
 
 bool AFHourlyFactorCtrl::Read( VarValue *root )
@@ -408,8 +419,16 @@ bool AFHourlyFactorCtrl::Read( VarValue *root )
 	if ( root->Type() == VV_TABLE )
 	{
 		VarTable &tab = root->Table();
-		if ( VarValue *vv = tab.Get("factor") ) m_data.factor = vv->Value();
-		if ( VarValue *vv = tab.Get("en_hourly") ) m_data.en_hourly = vv->Boolean();
+//		if (VarValue *vv = tab.Get("factor")) m_data.factor = vv->Value();
+		if (VarValue *vv = tab.Get("version")) // version 1 or greater 
+		{
+			if (VarValue *vv = tab.Get("constant")) m_data.constant = vv->Value();
+		}
+		else
+		{
+			if (VarValue *vv = tab.Get("factor")) m_data.constant = vv->Value();
+		}
+		if (VarValue *vv = tab.Get("en_hourly")) m_data.en_hourly = vv->Boolean();
 		if ( VarValue *vv = tab.Get("hourly") ) m_data.hourly = vv->Array();
 		if ( VarValue *vv = tab.Get("en_periods") ) m_data.en_periods = vv->Boolean();
 		if ( VarValue *vv = tab.Get("periods") ) m_data.periods = vv->Matrix();
