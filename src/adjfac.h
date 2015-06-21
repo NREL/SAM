@@ -38,7 +38,8 @@ public:
 
 	struct FactorData
 	{
-		float factor;
+//		float factor;
+		float constant; // updated from "factor" to "constant" 6/19/15
 
 		bool en_hourly;
 		std::vector<float> hourly;
