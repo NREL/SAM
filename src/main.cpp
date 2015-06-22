@@ -1,8 +1,12 @@
 //#define __BETARELEASE__ 1  // comment this line out to disable beta option
 //#define __BETAWILLEXPIRE__ 1 // comment this line out to disable expiration of beta
-#define __BETAEXPIRE_DAY__ 17
-#define __BETAEXPIRE_MONTH__ wxDateTime::Jul
+#define __BETAEXPIRE_DAY__ 30
+#define __BETAEXPIRE_MONTH__ wxDateTime::Sep
 #define __BETAEXPIRE_YEAR__ 2015
+
+// can be used to indicate specialized releases for particular testers, i.e. 'iscc-ge'
+// by default, should be NULL
+static const char *version_label = 0; //"iscc-ge"; 
 
 static const char *beta_disclaimer =
 "Notice: Beta versions of SAM are provided as-is and may change without notice."
@@ -70,8 +74,8 @@ static SamApp::ver releases[] = {
 		{ 2015, 5, 27 },
 		{ 2015, 4, 10 },
 		{ 2015, 1, 30 },
-	{ 2014, 11, 24 },
-	{    0,  0,  0 } };
+		{ 2014, 11, 24 },
+		{    0,  0,  0 } };
 
 static wxArrayString g_appArgs;
 static MainWindow *g_mainWindow = 0;
@@ -2254,7 +2258,14 @@ void SamApp::ShowHelp( const wxString &context )
 	//gs_helpWin->SetTitle( "System Advisor Model Help {" + context + " --> " + url + "}" );
 }
 
-wxString SamApp::VersionStr() { return wxString::Format("%d.%d.%d", VersionMajor(), VersionMinor(), VersionMicro());};
+wxString SamApp::VersionStr() 
+{
+	wxString vs( wxString::Format("%d.%d.%d", VersionMajor(), VersionMinor(), VersionMicro()) );
+	if ( version_label != 0 && strlen(version_label) > 0 )
+		vs += "-" + wxString(version_label);
+	return vs;
+}
+
 int SamApp::VersionMajor() { return releases[0].major; }
 int SamApp::VersionMinor() { return releases[0].minor; }
 int SamApp::VersionMicro() { return releases[0].micro; }
