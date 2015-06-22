@@ -1434,7 +1434,7 @@ void fcall_current_at_voltage_cec(lk::invoke_t &cxt)
 	double Iold = 0.0;
 	double Inew = I_mp_ref;
 
-	while (abs(Inew - Iold) > 1.0e-4)
+	while (fabs(Inew - Iold) > 1.0e-4)
 	{
 		Iold = Inew;
 
