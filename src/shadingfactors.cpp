@@ -8,14 +8,11 @@
 #include <wx/textfile.h>
 
 #include <wex/csv.h>
-#include <regex>
 
 #include "widgets.h"
 
 #include "variables.h"
 #include "shadingfactors.h"
-
-#include <fstream>
 
 /*********  SHADING BUTTON CTRL ************/
 
@@ -902,9 +899,6 @@ bool ImportSunEyeObstructions( ShadingInputData &dat, wxWindow *parent )
 
 bool ImportSolPathMonthByHour( ShadingInputData &dat, wxWindow *parent )
 {
-//	std::fstream fs;
-//	fs.open("C:\\Users\\dryberg\\Desktop\\SAM\\weekly\\150615\\solarpathfinder\\output.txt", std::fstream::out);
-
 	wxFileDialog fdlg(parent, "Import Solar Pathfinder Month By Hour Shading File");
 	if (fdlg.ShowModal() != wxID_OK) return false;
 	wxString file = fdlg.GetPath();
@@ -942,7 +936,7 @@ bool ImportSolPathMonthByHour( ShadingInputData &dat, wxWindow *parent )
 		{
 			if (lnp.Count() > 0)
 			{
-				if (std::regex_match( (std::string)lnp.Item(0), std::regex("Image Layout Number [0-9]+") ) )
+				if ( ((std::string)(lnp.Item(0))).find("Image Layout Number ")==0 )
 				{
 					imageCount++;
 					month = 0;
@@ -1000,5 +994,4 @@ bool ImportSolPathMonthByHour( ShadingInputData &dat, wxWindow *parent )
 		wxMessageBox(m);
 		return false;
 	}
-
 }
