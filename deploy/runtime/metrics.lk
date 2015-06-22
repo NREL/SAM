@@ -7,7 +7,7 @@ function rescom_metrics()
 	metric( 'savings_year1',{'label'='Net savings with system', 'pre'='$', 'post'=' ', 'thousep'='true', 'mode'='f', 'deci'='0' } );
 	metric( 'npv', {'label'='Net present value', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
 	metric( 'payback', {'label'='Payback period', 'mode'='f', 'deci'='1', 'thousep'='true', 'post'=' years' } );
-	metric( 'adjusted_installed_cost', {'label'='Total capital cost', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
+	metric( 'adjusted_installed_cost', {'label'='Net capital cost', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
 	metric( 'first_cost', {'label'='Equity', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
 	metric( 'loan_amount', {'label'='Debt', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
 }
@@ -49,7 +49,7 @@ function so_metrics()
 	metric( 'flip_actual_irr', {'label'='Internal rate of return (IRR)', 'mode'='f', 'post'=' %', 'deci'='2' } );
 	metric( 'flip_actual_year', {'label'='Year IRR is achieved', 'post'=' '} );
 	metric( 'project_return_aftertax_irr', {'label'='IRR at end of analysis period', 'mode'='f', 'post'=' %', 'deci'='2' } );
-	metric( 'cost_installed', {'label'='Total capital cost', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
+	metric( 'cost_installed', {'label'='Net capital cost', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
 	metric( 'size_of_equity', {'label'='Equity', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
 	metric( 'size_of_debt', {'label'='Size of debt', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
 	if ( value('debt_option')==0 ) metric( 'min_dscr', {'label'='Minimum DSCR','mode'='f', 'deci'='2' } );
@@ -66,8 +66,8 @@ function aepf_metrics()
 	metric( 'tax_investor_aftertax_npv', {'label'='Investor NPV (after-tax)', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
 	metric( 'sponsor_aftertax_irr', {'label'='Developer IRR (after-tax)', 'mode'='f', 'post'=' %', 'deci'='2' } );
 	metric( 'sponsor_aftertax_npv', {'label'='Developer NPV (after-tax)', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
-	metric( 'cost_installed', {'label'='Total capital cost', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
-    metric( 'adjusted_installed_cost', {'label'='Initial cost less cash incentives', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } ); 
+	//metric( 'cost_installed', {'label'='Initial cost', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
+    metric( 'adjusted_installed_cost', {'label'='Net capital cost', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } ); 
 }
 
 function lpf_metrics()
@@ -81,7 +81,7 @@ function lpf_metrics()
 	metric( 'tax_investor_aftertax_npv', {'label'='Investor NPV (after-tax)', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
 	metric( 'sponsor_aftertax_irr', {'label'='Developer IRR (after-tax)', 'mode'='f', 'post'=' %', 'deci'='2' } );
 	metric( 'sponsor_aftertax_npv', {'label'='Developer NPV (after-tax)', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
-	metric( 'cost_installed', {'label'='Total capital cost', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
+	metric( 'cost_installed', {'label'='Net capital cost', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
 	metric( 'size_of_equity', {'label'='Equity', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
 	metric( 'size_of_debt', {'label'='Debt', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
 	metric( 'min_dscr', {'label'='Minimum DSCR','mode'='f', 'deci'='2' } );
@@ -99,7 +99,7 @@ function sl_metrics()
 	metric( 'tax_investor_aftertax_npv', {'label'='Investor NPV (after-tax)', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
 	metric( 'sponsor_aftertax_irr', {'label'='Developer IRR (after-tax)', 'mode'='f', 'post'=' %', 'deci'='2' } );
 	metric( 'sponsor_aftertax_npv', {'label'='Developer NPV (after-tax)', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
-	metric( 'cost_installed', {'label'='Total capital cost', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
+	metric( 'cost_installed', {'label'='Net capital cost', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
 }
 
 function pvwatts_metrics() 
