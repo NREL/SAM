@@ -470,10 +470,10 @@ bool ActiveInputPage::DataExchange( wxUIObject *obj, VarValue &val, DdxDir dir )
 		}
 		else val.Set( ll->GetEntrySelection() );
 	}
-	else if ( AFHourlyFactorCtrl *hf = obj->GetNative<AFHourlyFactorCtrl>() )
+	else if ( AFLossAdjustmentCtrl *la = obj->GetNative<AFLossAdjustmentCtrl>() )
 	{
-		if ( dir == VAR_TO_OBJ ) hf->Read( &val );
-		else hf->Write( &val );
+		if ( dir == VAR_TO_OBJ ) la->Read( &val );
+		else la->Write( &val );
 	}
 	else if ( wxDiurnalPeriodCtrl *dp = obj->GetNative<wxDiurnalPeriodCtrl>())
 	{
