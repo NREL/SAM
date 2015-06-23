@@ -103,8 +103,8 @@ function setup_flat_plate_pv_pages()
 	addpage( [ ['PV System Design', {'name'='PV Subarray Voltage Mismatch', 'collapsible'=true, 'collapsible_var' = 'mismatch_shown'}] ], { 'sidebar'='System Design', 'help'='pv_system_design' } );
 	addpage( [ ['PV Shading'] ], { 'sidebar'='Shading and Snow', 'help'='pv_shading' } );
 	addpage( [ ['PV Losses'] ], { 'sidebar'='Losses', 'help'='pv_losses' } );
-    addpage( [[ {'name'='Lifetime System', 'caption'='PV simulation for first year only'}],
-			[ {'name'='Lifetime PV', 'caption'='PV simulation over entire analysis period' }],],
+    addpage( [[ {'name'='Lifetime System', 'caption'='PV simulation over one year'}],
+			[ {'name'='Lifetime PV', 'caption'='PV simulation over analysis period' }],],
            {  'sidebar'='Lifetime','help'='lifetime', 'exclusive_var'='pv_lifetime_simulation' } );
 	
 }
@@ -190,27 +190,6 @@ function setup_commercial_pages( mode, degradation ) // mode determines whether 
   setup_utility_rate();
   setup_elec_load_page( mode );
 }
-/*
-function setup_pv_commercial_pages( mode ) // mode determines whether or not the building load calculator is included (see function:setup_elec_load_page)
-{
-  setting( { 'analysis_period_var'='cf_length' } );
-  addpage( [[ {'name'='Lifetime System', 'caption'='PV simulation for first year only'}],
-			[ {'name'='Lifetime PV', 'caption'='PV simulation over entire analysis period' }],],
-           {  'sidebar'='Lifetime','help'='lifetime', 'exclusive_var'='pv_lifetime_simulation' } );
-  addpage( [[ 'Financial Debt Min DSCR',
-              'Financial Analysis Parameters',
-		      'Financial Tax and Insurance Rates',
-		      'Financial Salvage Value',
-              'Financial Depreciation Simple', ]],
-           { 'sidebar'='Financial Parameters','help'='fin_commercial'} );
-  addpage( [[ 'Financial DSIRE Download',
-              { 'name'='Financial Tax Credits','caption'='Tax Credits','collapsible'=true,'collapsible_var'='show_tax_credits', 'collapsed_by_default'=false },
-              { 'name'='Financial Cash Incentives','caption'='Direct Cash Incentives','collapsible'=true,'collapsible_var'='show_cash_incentives', 'collapsed_by_default'=false } ]],
-		   { 'sidebar'='Incentives', 'help'='incentives' } );
-  setup_utility_rate();
-  setup_elec_load_page( mode );
-}
-*/
 
 function setup_utility_rate()
 {
