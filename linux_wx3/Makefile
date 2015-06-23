@@ -71,7 +71,7 @@ $(TARGET): $(OBJECTS) $(WEXLIB) $(LKLIB) $(SSCLIB)
 	$(CXX) -g -o $@ $^ $(LDFLAGS)
 	mkdir -p ../deploy/linux_64
 	cp $(TARGET) ../deploy/linux_64
-	cp $(SSCLIB) ../deploy/linux_64
+	cp ../../ssc/build_linux/$(SSCLIB) ../deploy/linux_64
 	cp ../../lhs/src/lhs.bin ../deploy/runtime/bin
 	cp ../../stepwise/stepwise.bin ../deploy/runtime/bin
 	make -f Makefile-webupd
