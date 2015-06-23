@@ -521,7 +521,7 @@ public:
 			sam_exe = g_appPath + "/MacOS/SAM";
 			binaries.Add( sam_exe );
 #elif defined(__WXGTK__)
-			sam_exe = g_appPath + "linux_x64/SAM";
+			sam_exe = g_appPath + "/linux_64/sam.bin";
 			binaries.Add( sam_exe );
 #else
 	#error "invalid platform"

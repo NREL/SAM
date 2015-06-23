@@ -1990,7 +1990,7 @@ void SamApp::CheckForUpdates( bool quiet )
 #elif defined(__WXOSX__)
 	wxString webupd( "webupd" );
 #elif defined(__WXGTK__)
-	wxString webupd( "webupd.linux64.bin" );
+	wxString webupd( "webupd.bin" );
 #else
 	#error "invalid platform"
 #endif

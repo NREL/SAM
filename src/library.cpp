@@ -368,6 +368,8 @@ END_EVENT_TABLE()
 LibraryCtrl::LibraryCtrl( wxWindow *parent, int id, const wxPoint &pos, const wxSize &size )
 	: wxPanel( parent, id, pos, size, wxTAB_TRAVERSAL )
 {
+	SetBackgroundColour( *wxWHITE );
+
 	m_sendEvents = true;
 
 	m_label = new wxStaticText( this, wxID_ANY, wxT("Search for:") );
