@@ -535,20 +535,20 @@ public:
 };
 
 
-class wxUIHourlyFactorCtrl : public wxUIObject 
+class wxUILossAdjustmentCtrl : public wxUIObject 
 {
 public:
-	wxUIHourlyFactorCtrl() {
+	wxUILossAdjustmentCtrl() {
 		AddProperty("TabOrder", new wxUIProperty( (int)-1 ) );
 		Property("Width").Set(270);
 		Property("Height").Set(70);
 	}
-	virtual wxString GetTypeName() { return "HourlyFactor"; }
-	virtual wxUIObject *Duplicate() { wxUIObject *o = new wxUIHourlyFactorCtrl; o->Copy( this ); return o; }
+	virtual wxString GetTypeName() { return "LossAdjustment"; }
+	virtual wxUIObject *Duplicate() { wxUIObject *o = new wxUILossAdjustmentCtrl; o->Copy( this ); return o; }
 	virtual bool IsNativeObject() { return true; }
 	virtual bool DrawDottedOutline() { return false; }
 	virtual wxWindow *CreateNative( wxWindow *parent ) {
-		return AssignNative( new AFHourlyFactorCtrl( parent, wxID_ANY ) );
+		return AssignNative( new AFLossAdjustmentCtrl( parent, wxID_ANY ) );
 	}
 	virtual void Draw( wxWindow *win, wxDC &dc, const wxRect &geom )
 	{
@@ -567,7 +567,7 @@ public:
 		dc.SetTextForeground( wxColour(29,80,173) );
 		dc.DrawText( "Constant loss: n.nn", geom.x+button.x+4, geom.y/*yc-y/2-dc.GetCharHeight()-2*/ );
 		dc.DrawText( "Hourly losses: Avg = n.nn", geom.x+button.x+4, geom.y+dc.GetCharHeight()/*yc-y/2*/ );
-		dc.DrawText("Custom periods: n", geom.x + button.x + 4, geom.y+2*dc.GetCharHeight()/*yc + y / 2 + 2*/);
+		dc.DrawText( "Custom periods: n", geom.x + button.x + 4, geom.y+2*dc.GetCharHeight()/*yc + y / 2 + 2*/);
 	}
 };
 
@@ -587,23 +587,5 @@ void RegisterUIObjectsForSAM()
 	wxUIObjectTypeProvider::Register( new wxUIValueMatrixObject );
 	wxUIObjectTypeProvider::Register( new wxUIMonthByHourFactorCtrl );
 	wxUIObjectTypeProvider::Register( new wxUILibraryCtrl );
-	wxUIObjectTypeProvider::Register( new wxUIHourlyFactorCtrl);
-	/* TODO LIST
-{ GUI_ADD_CONTROL_ID+26, "DataGridBtn",      "AFValueMatrixButton",         datagridbtn_xpm, CTRL_NATIVE,  10, 15, 100, 21,   props_AFValueMatrixButton,  NULL,       objinit_AFValueMatrixButton, objfree_AFValueMatrixButton, nativesetprop_AFValueMatrixButton, paint_AFValueMatrixButton, iswithin_default,   nativeevt_AFValueMatrixButton, vartoctrl_AFValueMatrixButton, ctrltovar_AFValueMatrixButton, false },
-{ GUI_ADD_CONTROL_ID+28, "AFDataArrayButton",  "AFDataArrayButton",        dataarraybtn_xpm,CTRL_NATIVE,  10, 15, 110, 21,   props_AFDataArrayButton, NULL,       objinit_AFDataArrayButton,objfree_AFDataArrayButton,nativesetprop_AFDataArrayButton,paint_AFDataArrayButton,iswithin_default,   nativeevt_AFDataArrayButton,vartoctrl_AFDataArrayButton,ctrltovar_AFDataArrayButton,false },
-{ GUI_ADD_CONTROL_ID+29, "AFDataMatrixCtrl", "AFDataMatrixCtrl",       dblmatctrl_xpm,  CTRL_NATIVE,  10, 15, 800, 400,  props_dblmatctrl,      NULL,       objinit_dblmatctrl,     objfree_dblmatctrl,     nativesetprop_dblmatctrl,     paint_dblmatctrl,     iswithin_default,   nativeevt_dblmatctrl,     vartoctrl_dblmatctrl,     ctrltovar_dblmatctrl,     false },
-{ GUI_ADD_CONTROL_ID+34, "ShadingButton",    "ShadingButtonCtrl",      shadingctrl_xpm, CTRL_NATIVE,  10, 15, 110, 21,   props_shadbtn,        NULL,        objinit_shadbtn,        objfree_shadbtn,        nativesetprop_shadbtn,        paint_shadbtn,        iswithin_default,   nativeevt_shadbtn,        vartoctrl_shadbtn,        ctrltovar_shadbtn,       false },
-{ GUI_ADD_CONTROL_ID+35, "DoubleMatrixSideButtonsCtrl", "DoubleMatrixSideButtonsCtrl",       dblmatctrl_xpm,  CTRL_NATIVE,  10, 15, 800, 400,  props_dblmatsbctrl,      NULL,       objinit_dblmatsbctrl,     objfree_dblmatsbctrl,     nativesetprop_dblmatsbctrl,     paint_dblmatsbctrl,     iswithin_default,   nativeevt_dblmatsbctrl,     vartoctrl_dblmatsbctrl,     ctrltovar_dblmatsbctrl,     false },
-
-// not ported??
-{ GUI_ADD_CONTROL_ID+27, "MonthlySchedule",  "AFMonthlyScheduleCtrl",  monsched_xpm,    CTRL_NATIVE,  10, 15, 110, 21,   props_monthlyschedule, NULL,       objinit_monthlyschedule,objfree_monthlyschedule,nativesetprop_monthlyschedule,paint_monthlyschedule,iswithin_default,   nativeevt_monthlyschedule,vartoctrl_monthlyschedule,ctrltovar_monthlyschedule,false },
-{ GUI_ADD_CONTROL_ID+21, "ShadingCtrl",      "ShadingCtrl",            shadingctrl_xpm, CTRL_NATIVE,  10, 15, 550, 300,  props_shadingctrl,     NULL,       objinit_shadingctrl,    objfree_shadingctrl,    nativesetprop_shadingctrl,    paint_shadingctrl,    iswithin_default,   nativeevt_shadingctrl,    vartoctrl_shadingctrl,    ctrltovar_shadingctrl,    false  },
-{ GUI_ADD_CONTROL_ID+15, "DataGrid",         "WFGridCtrl",             datagrid_xpm,    CTRL_NATIVE,  10, 10, 350, 180,  props_datagrid,        NULL,       objinit_datagrid,       objfree_datagrid,       nativesetprop_datagrid,       paint_datagrid,       iswithin_default,   NULL,                     NULL,                     NULL,                     false  },
-{ GUI_ADD_CONTROL_ID+17, "Gauge",            "wxGauge",                gauge_xpm,       CTRL_NATIVE,  10, 15, 110, 21,   props_gauge,           NULL,       objinit_gauge,          objfree_gauge,          nativesetprop_gauge,          paint_gauge,          iswithin_default,   NULL,                     vartoctrl_gauge,          ctrltovar_gauge,          false  },
-{ GUI_ADD_CONTROL_ID+18, "TreeView",         "AFTreeView",             treeview_xpm,    CTRL_NATIVE,  10, 15, 110, 120,  props_treeview,        NULL,       objinit_treeview,       objfree_treeview,       nativesetprop_treeview,       paint_treeview,       iswithin_default,   NULL,                     NULL,                     NULL,                     false  },
-{ GUI_ADD_CONTROL_ID+19, "HourlyData",       "AFHourlyDataCtrl",       hourlydata_xpm,  CTRL_NATIVE,  10, 15, 150, 33,   props_hourlydata,      NULL,       objinit_hourlydata,     objfree_hourlydata,     nativesetprop_hourlydata,     paint_hourlydata,     iswithin_default,   nativeevt_hourlydata,     vartoctrl_hourlydata,     ctrltovar_hourlydata,     false  },
-{ GUI_ADD_CONTROL_ID+12, "Editor",           "wxTextCtrl",             editor_xpm,      CTRL_NATIVE,  10, 15, 120, 120,  props_editor,          NULL,       objinit_editor,         objfree_editor,         nativesetprop_editor,         paint_editor,         iswithin_default,   NULL,                     NULL,                     NULL,                     false  },  
-{ GUI_ADD_CONTROL_ID+33, "TextEntryML",        "AFTextCtrl",             textctrl_xpm,    CTRL_NATIVE,  10, 15, 100, 21,   props_textentry,       NULL,       objinit_textentryml,      objfree_textentry,      nativesetprop_textentry,      paint_textentry,      iswithin_default,   nativeevt_textentry,      vartoctrl_textentry,      ctrltovar_textentry,      false  },
-
-*/
+	wxUIObjectTypeProvider::Register( new wxUILossAdjustmentCtrl );
 }

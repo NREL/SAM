@@ -27,10 +27,10 @@ class VarValue;
 
 #define EVT_HOURLYFACTORS(i,f) EVT_BUTTON(i,f)
 
-class AFHourlyFactorCtrl : public wxPanel
+class AFLossAdjustmentCtrl : public wxPanel
 {
 public:
-	AFHourlyFactorCtrl( wxWindow *parent, int id,
+	AFLossAdjustmentCtrl( wxWindow *parent, int id,
 		const wxPoint &pos=wxDefaultPosition, const wxSize &size=wxDefaultSize);
 
 	void Write( VarValue * );
@@ -38,7 +38,6 @@ public:
 
 	struct FactorData
 	{
-//		float factor;
 		float constant; // updated from "factor" to "constant" 6/19/15
 
 		bool en_hourly;

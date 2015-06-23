@@ -244,8 +244,8 @@ bool GridCellVarValueEditor::DisplayEditor(wxUIObject *obj, wxString &name, wxGr
 		obj->CreateNative(grid);
 		obj->Show(false); // hide label drawing on grid
 		ActiveInputPage::DataExchange(obj, *vv, ActiveInputPage::VAR_TO_OBJ);
-		AFHourlyFactorCtrl *hf = obj->GetNative<AFHourlyFactorCtrl>();
-		hf->DoEdit();
+		AFLossAdjustmentCtrl *la = obj->GetNative<AFLossAdjustmentCtrl>();
+		la->DoEdit();
 		ActiveInputPage::DataExchange(obj, *vv, ActiveInputPage::OBJ_TO_VAR);
 		obj->DestroyNative(); // remove display from grid
 	}
