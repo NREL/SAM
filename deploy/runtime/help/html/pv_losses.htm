@@ -38,7 +38,7 @@
 
 <!-- Placeholder for topic body. -->
 <table style="width:100%;border:none;border-spacing:0px"><tr style="vertical-align:top"><td style="text-align:left;padding:5px">
-<p class="p_Text"><span class="f_Text">The losses inputs account for soiling and electrical losses that the module and inverter models do not account for. After running a simulation, you can see the effect of these losses on  <a href="results_page.htm" class="topiclink">results</a> by displaying the results variables described below in <a href="data.htm" class="topiclink">data tables</a> and <a href="dview_timeseries.htm" class="topiclink">time series graphs</a>.</span></p>
+<p class="p_Text"><span class="f_Text">The losses inputs account for soiling and electrical losses that the module and inverter models do not account for. After running a simulation, you can see the effect of these losses on  <a href="results_page.htm" class="topiclink">results</a> by displaying the results variables described below in <a href="data.htm" class="topiclink">data tables</a> and <a href="timeseries.htm" class="topiclink">time series graphs</a>.</span></p>
 <h3 class="p_Heading3_atocs_" style="border-top: none; border-right: none; border-left: none;"><a id="dclosses"></a><span class="f_Heading3_atocs_">DC Losses</span></h3>
 <p class="p_Text"><span class="f_Text">The DC losses account for soiling and DC electrical losses on the DC side of the system that the module model does not calculate, such as electrical losses in the DC wiring that connects modules in the array.</span></p>
 <h4 class="p_Heading4"><span class="f_Heading4">Soiling</span></h4>
@@ -65,6 +65,8 @@
 <p class="p_VariableDescription"><span class="f_VariableDescription">Inaccuracies in the tracking mechanisms ability to keep the array oriented toward the sun. The default value of 100% assumes a fixed array with no tracking. Applies only to systems with one- or two-axis tracking arrays.</span></p>
 <p class="p_VariableName"><span class="f_VariableName">Nameplate</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">Accounts for accuracy of the manufacturer's nameplate rating, often for the performance degradation modules may experience after being exposed to light.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">DC power optimizer loss</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Accounts for power losses of any power conditioning equipment installed with the array. SAM does not explicitly model DC/DC conversion losses, but you can account for them here.</span></p>
 <p class="p_Text"><span class="f_Text">The total DC derate factor for each subarray represents the subarray's total DC electrical loss:</span></p>
 <p class="p_VariableName"><span class="f_VariableName">Total DC power loss</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The total DC power loss is the total loss that applies to each subarray:</span></p>
@@ -72,7 +74,17 @@
 <span class="f_EquationExcel">× ( 1 - Diodes and connections ÷ 100% )</span><br />
 <span class="f_EquationExcel">× ( 1 - DC wiring ÷ 100% )</span><br />
 <span class="f_EquationExcel">× ( 1 - Tracking error ÷ 100% )</span><br />
-<span class="f_EquationExcel">× ( 1 - Nameplate ÷ 100% ) ] }</span></p>
+<span class="f_EquationExcel">× ( 1 - Nameplate ÷ 100% ) </span><br />
+<span class="f_EquationExcel">× ( 1 - DC power optimizer loss ÷ 100% )] }</span></p>
+<h4 class="p_Heading4"><span class="f_Heading4">Apply Default Losses</span></h4>
+<p class="p_Text"><span class="f_Text">If you are not sure what values to use for the DC loss percentages, you can apply default losses appropriate for your system design.</span></p>
+<p class="p_Note"><span class="f_CHNote">Note.</span><span class="f_Note"> When you click one of the default loss buttons, SAM replaces the values of all six DC loss categories with default values.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">String Inverters</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Each string in the array is connected to an inverter.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">Microinverters</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Each module is connected to an inverter.</span></p>
+<p class="p_VariableName"><span class="f_VariableName">DC optimizers</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Power electronics minimize array losses.</span></p>
 <h3 class="p_Heading3_atocs_" style="border-top: none; border-right: none; border-left: none;"><a id="aclosses"></a><span class="f_Heading3_atocs_">AC Losses</span></h3>
 <p class="p_Text"><span class="f_Text">The AC losses account for electrical losses on the AC side of the system that the inverter model does not account for. During simulations, SAM uses the total AC loss to </span><span class="f_ListLast">reduce the inverter AC electric output calculated by the inverter model</span><span class="f_Text">. You can see the effect of the interconnection derate factors in the hourly results:</span></p>
 <p class="p_EquationExcel" style="text-indent: -146px; margin: 0px 0px 6px 194px;"><span class="f_EquationExcel">Net AC power = Gross AC power × ( 1 - Total AC loss ÷ 100% )</span></p>
