@@ -72,8 +72,6 @@ $(TARGET): $(OBJECTS) $(WEXLIB) $(LKLIB) $(SSCLIB)
 	mkdir -p ../deploy/linux_64
 	cp $(TARGET) ../deploy/linux_64
 	cp $(SSCLIB) ../deploy/linux_64
-	cp libwebkitgtk-1.0.so.0 ../deploy/linux_64
-	cp libjavascriptcoregtk-1.0.so.0 ../deploy/linux_64
 	cp ../../lhs/src/lhs.bin ../deploy/runtime/bin
 	cp ../../stepwise/stepwise.bin ../deploy/runtime/bin
 	make -f Makefile-webupd
