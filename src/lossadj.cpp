@@ -359,6 +359,8 @@ AFLossAdjustmentCtrl::AFLossAdjustmentCtrl( wxWindow *parent, int id,
 	const wxPoint &pos, const wxSize &size)
 	: wxPanel( parent, id, pos, size )
 {
+	SetBackgroundColour( *wxWHITE );
+
 	m_button = new wxButton( this, wxID_ANY, "Edit losses...", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT );
 	m_label = new wxStaticText( this, wxID_ANY, wxEmptyString );
 	m_label->SetForegroundColour( wxColour(29,80,173) );
