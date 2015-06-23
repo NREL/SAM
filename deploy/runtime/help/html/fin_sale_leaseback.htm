@@ -70,7 +70,7 @@
 <p class="p_VariableName"><span class="f_VariableName">Lessor Required Lease Payment Reserve</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The size of the lease payment reserve account in months. (In some cases, the tax investor may require that the developer fund a reserve account.) </span></p>
 <p class="p_EquationExcel"><span class="f_EquationExcel">Lease Reserve Amount ($) = Lessor Required Lease Payment Reserve (months) / 12 (months/yr) × Year 1 Pre-tax Operating Cash Flow ($/yr)</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription">The lease reserve amount is one of the fees included in the <a href="mtf_costs.htm" class="topiclink">initial cost</a> value reported on the Metrics table, which is included in the issuance of equity value in the <a href="cashflow.htm" class="topiclink">cash flow</a>.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The lease reserve amount is one of the fees included in the <a href="mtf_costs.htm" class="topiclink">net capital cost</a> value reported on the Metrics table, which is included in the issuance of equity value in the <a href="cashflow.htm" class="topiclink">cash flow</a>.</span></p>
 <p class="p_VariableName"><span class="f_VariableName">Amount</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">This amount of the developer's margin.</span></p>
 <p class="p_EquationExcel"><span class="f_EquationExcel">Amount ($) = Lessee Operating Margin ($/kW) × System Nameplate Capacity (kW)</span></p>
@@ -264,7 +264,7 @@
 <p class="p_Text"><span class="f_Text">SAM allows you to specify parameters for up to five construction loans to approximate interest during construction (IDC) that SAM considers to be a cost to the project.</span></p>
 <p class="p_Text"><span class="f_Text">SAM assumes that 100% of the construction balance is outstanding for half of the construction period, which is equivalent to an even monthly draw schedule with an average loan life of half of the construction period. To approximate a different draw schedule, you could adjust the loan's interest rate accordingly.</span></p>
 <p class="p_Note"><span class="f_CHNote">Note.</span><span class="f_Note"> To model a project with no construction period loans, set the </span><span class="f_CHInterfaceElement">Percent of Installed Costs</span><span class="f_Note"> value for each of the five loans to zero.</span></p>
-<p class="p_Text"><span class="f_Text">The construction financing cost is part of the project's the <a href="mtf_costs.htm" class="topiclink">initial cost</a>. SAM includes the construction financing cost in the basis for calculating the basis for depreciation and the investment tax credit (ITC). </span></p>
+<p class="p_Text"><span class="f_Text">The construction financing cost is part of the project's <a href="mtf_costs.htm" class="topiclink">net capital cost</a>. SAM includes the construction financing cost in the basis for calculating the basis for depreciation and the investment tax credit (ITC). </span></p>
 <p class="p_VariableName"><span class="f_VariableName">Construction Loans</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">SAM allows you to specify up to five construction loans. You can type a name describing each loan or use the default names.</span></p>
 <p class="p_VariableName"><span class="f_VariableName">Percent of Installed Costs</span></p>
@@ -284,7 +284,7 @@
 <p class="p_VariableDescription"><span class="f_VariableDescription">The total interest payment due for each construction period loan, assuming </span><span class="f_Text">that 100% of the construction balance is outstanding for half of the construction period</span><span class="f_VariableDescription">.</span></p>
 <p class="p_EquationExcel"><span class="f_EquationExcel">Interest ($) = Principal Amount ($) × Loan Rate (%/yr) ÷ 12 (mos/yr) × Months prior to operation ÷ 2</span></p>
 <p class="p_VariableName"><span class="f_VariableName">Total Construction Financing Cost</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription">The total construction financing cost is part of the project's capital costs included </span><span class="f_Text">in the <a href="mtf_costs.htm" class="topiclink">initial cost</a> value in the Metrics table.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The total construction financing cost is part of the project's capital costs included </span><span class="f_Text">in the <a href="mtf_costs.htm" class="topiclink">net capital cost</a> value in the Metrics table.</span></p>
 <p class="p_EquationExcel"><span class="f_EquationExcel">Total Construction Financing Cost = Interest + Up-front Fee Amount</span></p>
 <h3 class="p_Heading3_atocs_" style="border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Cost of Acquiring Financing</span></h3>
 <p class="p_Text"><span class="f_Text">The Cost of Acquiring Financing input values represent the cost of securing debt or the participation of tax investors. SAM includes the financing cost and development fees in the project's capital cost.</span></p>
