@@ -15,7 +15,7 @@
 #include "troughloop.h"
 #include "shadingfactors.h"
 #include "library.h"
-#include "adjfac.h"
+#include "lossadj.h"
 #include "widgets.h"
 #include "uiobjects.h"
 
