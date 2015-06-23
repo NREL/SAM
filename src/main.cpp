@@ -1858,7 +1858,7 @@ void SamApp::Restart()
 	wxLogStatus("loading startup script: " + startup_script );
 	wxArrayString errors;
 	if ( !LoadAndRunScriptFile( startup_script, &errors ) )
-		wxLogStatus( wxJoin( errors, '\n' ) );
+		wxShowTextMessageDialog( "error during startup:\n\n" + wxJoin( errors, '\n' ) );
 
 
 	wxLogStatus("rebuilding caches for each configuration's variables and equations");
