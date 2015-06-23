@@ -26,7 +26,7 @@ if [ -d "$INSTALLDIR" ] ; then
 	fi
 fi
 
-rm -rf $INSTALLDER
+rm -rf $INSTALLDIR
 mkdir -p $INSTALLDIR
 
 if [ ! -w "$INSTALLDIR" ] ; then
