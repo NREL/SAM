@@ -22,7 +22,7 @@
     <ResourceCompile Include="SAM.rc" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\src\adjfac.cpp" />
+    <ClCompile Include="..\src\lossadj.cpp" />
     <ClCompile Include="..\src\defmgr.cpp" />
     <ClCompile Include="..\src\excelexch.cpp" />
     <ClCompile Include="..\src\graph.cpp" />
@@ -69,7 +69,7 @@
     <ClCompile Include="..\src\windtoolkit.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\src\adjfac.h" />
+    <ClInclude Include="..\src\lossadj.h" />
     <ClInclude Include="..\src\defmgr.h" />
     <ClInclude Include="..\src\excelexch.h" />
     <ClInclude Include="..\src\graph.h" />

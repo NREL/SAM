@@ -64,6 +64,8 @@ private:
 	void OnLoad(wxCommandEvent &evt);
 	void OnLookupVar( wxCommandEvent &evt );
 	void OnDeleteVar( wxCommandEvent &evt );
+	void OnPopupMenu( wxCommandEvent &evt );
+	void OnListRightClick( wxMouseEvent &evt );
 
 	wxString LookupVariable();
 

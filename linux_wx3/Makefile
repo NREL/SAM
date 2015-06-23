@@ -50,7 +50,7 @@ OBJECTS = ide.o \
 	equations.o \
 	inputpage.o \
 	uiobjects.o \
-	adjfac.o \
+	lossadj.o \
 	widgets.o \
 	variables.o \
 	project.o \

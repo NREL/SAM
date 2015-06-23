@@ -24,7 +24,7 @@
 
 // UI widgets
 #include "widgets.h"
-#include "adjfac.h"
+#include "lossadj.h"
 #include "ptlayoutctrl.h"
 #include "troughloop.h"
 #include "materials.h"
