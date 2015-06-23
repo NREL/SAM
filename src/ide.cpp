@@ -1018,6 +1018,7 @@ void UIEditorPanel::OnTextFind( wxCommandEvent & )
 		wxUIObject **objs = form.GetObjects( &n );
 		for( size_t i=0;i<n;i++ )
 		{
+			SEARCH( objs[i]->GetTypeName(), "form object: " + name + ".object{" + objs[i]->GetName() +"} = " + objs[i]->GetTypeName() );
 			SEARCH( objs[i]->GetName(), "form object: " + name + ".object{" + objs[i]->GetName() +"}");
 			wxArrayString props = objs[i]->Properties();
 			for( size_t k=0;k<props.size();k++ )

@@ -240,10 +240,9 @@ END_EVENT_TABLE( )
 
 enum { ID_ENABLE_HOURLY = ::wxID_HIGHEST+999 , ID_ENABLE_PERIODS };
 
-class HourlyFactorDialog : public wxDialog
+class LossAdjustmentDialog : public wxDialog
 {
 	wxScrolledWindow *m_scrollWin;
-//	wxNumericCtrl *m_factor;
 	wxNumericCtrl *m_constant;
 
 	wxCheckBox *m_enableHourly;
@@ -252,7 +251,7 @@ class HourlyFactorDialog : public wxDialog
 	wxCheckBox *m_enablePeriods;
 	PeriodFactorCtrl *m_periods; 
 public:
-	HourlyFactorDialog( wxWindow *parent )
+	LossAdjustmentDialog( wxWindow *parent )
 		: wxDialog( parent, wxID_ANY, "Edit Losses", wxDefaultPosition, wxSize(850,450), wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER )
 	{
 		SetEscapeId( wxID_CANCEL );
@@ -261,7 +260,6 @@ public:
 		m_scrollWin->SetBackgroundColour( *wxWHITE );
 		m_scrollWin->SetScrollRate( 50, 50 );
 		
-//		m_factor = new wxNumericCtrl(m_scrollWin, wxID_ANY);
 		m_constant = new wxNumericCtrl(m_scrollWin, wxID_ANY);
 
 		m_enableHourly = new wxCheckBox( m_scrollWin, ID_ENABLE_HOURLY, "Enable hourly losses (%)" );
@@ -274,7 +272,6 @@ public:
 		wxSizer *scroll = new wxBoxSizer( wxVERTICAL );
 		
 		scroll->Add( new wxStaticText( m_scrollWin, wxID_ANY, "Constant loss (%)"), 0, wxALL|wxEXPAND, 5 );
-//		scroll->Add(m_factor, 0, wxALL, 5);
 		scroll->Add(m_constant, 0, wxALL, 5);
 		scroll->Add(new wxStaticLine(m_scrollWin), 0, wxALL | wxEXPAND);
 		
@@ -307,9 +304,8 @@ public:
 		m_scrollWin->Refresh();
 	}
 
-	void Set( const AFHourlyFactorCtrl::FactorData &data )
+	void Set( const AFLossAdjustmentCtrl::FactorData &data )
 	{
-//		m_factor->SetValue(data.factor);
 		m_constant->SetValue(data.constant);
 		m_enableHourly->SetValue(data.en_hourly);
 		m_hourly->Set( data.hourly );
@@ -318,9 +314,8 @@ public:
 		UpdateVisibility();
 	}
 
-	void Get( AFHourlyFactorCtrl::FactorData &data )
+	void Get( AFLossAdjustmentCtrl::FactorData &data )
 	{
-//		data.factor = (float)m_factor->Value();
 		data.constant = (float)m_constant->Value();
 		data.en_hourly = m_enableHourly->GetValue();
 		data.hourly = m_hourly->Get();
@@ -351,16 +346,16 @@ public:
 	DECLARE_EVENT_TABLE();
 };
 
-BEGIN_EVENT_TABLE( HourlyFactorDialog, wxDialog )
-	EVT_CLOSE( HourlyFactorDialog::OnClose )
-	EVT_CHECKBOX( ID_ENABLE_HOURLY, HourlyFactorDialog::OnCommand )
-	EVT_CHECKBOX( ID_ENABLE_PERIODS, HourlyFactorDialog::OnCommand )
-	EVT_BUTTON( wxID_HELP, HourlyFactorDialog::OnCommand )
+BEGIN_EVENT_TABLE( LossAdjustmentDialog, wxDialog )
+	EVT_CLOSE( LossAdjustmentDialog::OnClose )
+	EVT_CHECKBOX( ID_ENABLE_HOURLY, LossAdjustmentDialog::OnCommand )
+	EVT_CHECKBOX( ID_ENABLE_PERIODS, LossAdjustmentDialog::OnCommand )
+	EVT_BUTTON( wxID_HELP, LossAdjustmentDialog::OnCommand )
 END_EVENT_TABLE()
 
 
 
-AFHourlyFactorCtrl::AFHourlyFactorCtrl( wxWindow *parent, int id,
+AFLossAdjustmentCtrl::AFLossAdjustmentCtrl( wxWindow *parent, int id,
 	const wxPoint &pos, const wxSize &size)
 	: wxPanel( parent, id, pos, size )
 {
@@ -374,18 +369,16 @@ AFHourlyFactorCtrl::AFHourlyFactorCtrl( wxWindow *parent, int id,
 	
 	SetSizer( sizer );
 
-//	m_data.factor = 1.0f;
 	m_data.constant = 0.0f;
 	m_data.en_hourly = false;
-	m_data.hourly.resize( 8760, 1.0f );
+	m_data.hourly.resize( 8760, 0.0f );
 	m_data.en_periods = false;
-	m_data.periods.resize_fill( 1, 3, 1.0f );
+	m_data.periods.resize_fill( 1, 3, 0.0f );
 	UpdateText();
 }
 
-void AFHourlyFactorCtrl::UpdateText()
+void AFLossAdjustmentCtrl::UpdateText()
 {
-//	wxString txt(wxString::Format("Constant loss: %.1f %%", m_data.factor));
 	wxString txt(wxString::Format("Constant loss: %.1f %%", m_data.constant));
 
 	float avg = 0;
@@ -398,40 +391,29 @@ void AFHourlyFactorCtrl::UpdateText()
 	m_label->SetLabel( txt );
 }
 
-void AFHourlyFactorCtrl::Write( VarValue *vv )
+void AFLossAdjustmentCtrl::Write( VarValue *vv )
 {
 	vv->SetType( VV_TABLE );
 	VarTable &tab = vv->Table();
 
-//	tab.Set("factor", VarValue(m_data.factor));
-	tab.Set("constant", VarValue(m_data.constant));
-	tab.Set("en_hourly", VarValue((bool)m_data.en_hourly));
+	tab.Set( "constant", VarValue( m_data.constant ));
+	tab.Set( "en_hourly", VarValue( m_data.en_hourly ));
 	tab.Set( "hourly", VarValue( m_data.hourly ) );
-	tab.Set( "en_periods", VarValue( (bool)m_data.en_periods ) );
+	tab.Set( "en_periods", VarValue( m_data.en_periods ) );
 	tab.Set( "periods", VarValue( m_data.periods ) );
-
-	// add version to handle change from "factor" to "constant" 6/19/15
-	tab.Set("version", VarValue(1));
 }
 
-bool AFHourlyFactorCtrl::Read( VarValue *root )
+bool AFLossAdjustmentCtrl::Read( VarValue *root )
 {
 	if ( root->Type() == VV_TABLE )
 	{
 		VarTable &tab = root->Table();
-//		if (VarValue *vv = tab.Get("factor")) m_data.factor = vv->Value();
-		if (VarValue *vv = tab.Get("version")) // version 1 or greater 
-		{
-			if (VarValue *vv = tab.Get("constant")) m_data.constant = vv->Value();
-		}
-		else
-		{
-			if (VarValue *vv = tab.Get("factor")) m_data.constant = vv->Value();
-		}
-		if (VarValue *vv = tab.Get("en_hourly")) m_data.en_hourly = vv->Boolean();
+		if ( VarValue *vv = tab.Get("constant") ) m_data.constant = vv->Value();
+		if ( VarValue *vv = tab.Get("en_hourly") ) m_data.en_hourly = vv->Boolean();
 		if ( VarValue *vv = tab.Get("hourly") ) m_data.hourly = vv->Array();
 		if ( VarValue *vv = tab.Get("en_periods") ) m_data.en_periods = vv->Boolean();
 		if ( VarValue *vv = tab.Get("periods") ) m_data.periods = vv->Matrix();
+
 		UpdateText();
 		return true;
 	}
@@ -439,9 +421,9 @@ bool AFHourlyFactorCtrl::Read( VarValue *root )
 		return false;
 }
 
-bool AFHourlyFactorCtrl::DoEdit()
+bool AFLossAdjustmentCtrl::DoEdit()
 {
-	HourlyFactorDialog dlg( this );
+	LossAdjustmentDialog dlg( this );
 	dlg.Set( m_data );
 	if ( dlg.ShowModal() == wxID_OK )
 	{
@@ -453,7 +435,7 @@ bool AFHourlyFactorCtrl::DoEdit()
 	return false;
 }
 
-void AFHourlyFactorCtrl::OnPressed( wxCommandEvent &evt )
+void AFLossAdjustmentCtrl::OnPressed( wxCommandEvent &evt )
 {
 	if ( evt.GetEventObject() == m_button )
 		if ( DoEdit() )
@@ -463,7 +445,7 @@ void AFHourlyFactorCtrl::OnPressed( wxCommandEvent &evt )
 		}
 }
 
-BEGIN_EVENT_TABLE( AFHourlyFactorCtrl, wxPanel )
-	EVT_BUTTON( wxID_ANY, AFHourlyFactorCtrl::OnPressed )
+BEGIN_EVENT_TABLE( AFLossAdjustmentCtrl, wxPanel )
+	EVT_BUTTON( wxID_ANY, AFLossAdjustmentCtrl::OnPressed )
 END_EVENT_TABLE()
 
