@@ -1383,7 +1383,7 @@ wxString ParametricGridData::GetTypeName(int row, int col)
 				return "GridCellVarValue";
 			else if (type == "Library")
 				return "GridCellVarValue";
-			else if (type == "HourlyFactor")
+			else if (type == "LossAdjustment")
 				return "GridCellVarValue";
 			else if (type == "DiurnalPeriod")
 				return "GridCellVarValue";

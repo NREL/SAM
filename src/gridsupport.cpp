@@ -239,7 +239,7 @@ bool GridCellVarValueEditor::IsAcceptedKey(wxKeyEvent& event)
 bool GridCellVarValueEditor::DisplayEditor(wxUIObject *obj, wxString &name, wxGrid *grid, VarValue *vv, VarInfo *vi)
 {
 	wxString type = obj->GetTypeName();
-	if (type == "HourlyFactor")
+	if (type == "LossAdjustment")
 	{
 		obj->CreateNative(grid);
 		obj->Show(false); // hide label drawing on grid

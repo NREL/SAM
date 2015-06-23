@@ -83,9 +83,6 @@
     <ClInclude Include="..\src\widgets.h">
       <Filter>Source</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\adjfac.h">
-      <Filter>Source</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\variablegrid.h">
       <Filter>Source</Filter>
     </ClInclude>
@@ -144,6 +141,9 @@
       <Filter>Source</Filter>
     </ClInclude>
     <ClInclude Include="..\src\lossdiag.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\lossadj.h">
       <Filter>Source</Filter>
     </ClInclude>
   </ItemGroup>
@@ -217,9 +217,6 @@
     <ClCompile Include="..\src\widgets.cpp">
       <Filter>Source</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\adjfac.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\variablegrid.cpp">
       <Filter>Source</Filter>
     </ClCompile>
@@ -281,6 +278,9 @@
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="..\src\mswfatal.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\lossadj.cpp">
       <Filter>Source</Filter>
     </ClCompile>
   </ItemGroup>

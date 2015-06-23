@@ -1185,7 +1185,7 @@ void UIEditorPanel::OnCommand( wxCommandEvent &evt )
 						vi = m_ipd.Variables().Create(name, VV_MATRIX);
 					else if ( type == "MonthByHourFactors" )
 						vi = m_ipd.Variables().Create(name, VV_MATRIX);
-					else if ( type == "HourlyFactor" )
+					else if ( type == "LossAdjustment" )
 						vi = m_ipd.Variables().Create(name, VV_TABLE);
 					else if (type == "DiurnalPeriod")
 						vi = m_ipd.Variables().Create(name, VV_MATRIX);

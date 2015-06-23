@@ -12,7 +12,7 @@
 
 #include "main.h"
 #include "widgets.h"
-#include "adjfac.h"
+#include "lossadj.h"
 #include "variables.h"
 
 /* hour: 0 = jan 1st 12am-1am, returns 1-12 */

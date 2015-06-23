@@ -239,7 +239,8 @@ void ValueEditor::OnEditField( wxCommandEvent & )
 }
 
 
-enum { ID_QUERY = wxID_HIGHEST+392, ID_LOOKUP_VAR, ID_DELETE, ID_MODIFY, ID_LOAD };
+enum { ID_QUERY = wxID_HIGHEST+392, ID_LOOKUP_VAR, ID_DELETE, ID_MODIFY, ID_LOAD, ID_CONFIGS, 
+	ID_POPUP_first, ID_CHECK_ALL, ID_UNCHECK_ALL, ID_CHECK_SELECTED, ID_UNCHECK_SELECTED, ID_POPUP_last };
 
 BEGIN_EVENT_TABLE( DefaultsManager, wxPanel )
 	EVT_BUTTON( ID_QUERY, DefaultsManager::OnQuery )
@@ -247,6 +248,7 @@ BEGIN_EVENT_TABLE( DefaultsManager, wxPanel )
 	EVT_BUTTON( ID_LOAD, DefaultsManager::OnLoad )
 	EVT_BUTTON( ID_LOOKUP_VAR, DefaultsManager::OnLookupVar )
 	EVT_BUTTON( ID_DELETE, DefaultsManager::OnDeleteVar )
+	EVT_MENU_RANGE( ID_POPUP_first, ID_POPUP_last, DefaultsManager::OnPopupMenu )
 END_EVENT_TABLE()
 
 
@@ -265,10 +267,11 @@ DefaultsManager::DefaultsManager( wxWindow *parent )
 	m_output->SetBackgroundColour( "NAVY" );
 	m_output->SetFont( wxFont(11, wxFONTFAMILY_MODERN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, "consolas") );
 
-	m_configList = new wxCheckListBox( this, wxID_ANY );
-	
-	// layout
+	m_configList = new wxCheckListBox( this, ID_CONFIGS, wxDefaultPosition, wxDefaultSize, 0, 0, wxLB_EXTENDED );
+	m_configList->Connect( ID_CONFIGS, wxEVT_RIGHT_UP,
+		wxMouseEventHandler(DefaultsManager::OnListRightClick), NULL, this );
 
+	// layout
 	wxBoxSizer *button_sizer1 = new wxBoxSizer( wxHORIZONTAL );
 	button_sizer1->Add( new wxStaticText( this, wxID_ANY, "Variable name:"), 0, wxALL|wxALIGN_CENTER_VERTICAL, 4);
 	button_sizer1->Add( m_varName, 1, wxALL|wxEXPAND, 4 );
@@ -317,6 +320,34 @@ DefaultsManager::DefaultsManager( wxWindow *parent )
 					(int) m_configList->GetCount(), (int) m_configList->GetCount()-num_defaults) );
 }
 
+void DefaultsManager::OnPopupMenu( wxCommandEvent &evt )
+{
+	switch( evt.GetId() )
+	{
+	case ID_CHECK_ALL:
+	case ID_UNCHECK_ALL:
+		for( size_t i=0;i<m_configList->GetCount();i++ )
+			m_configList->Check( i, evt.GetId() == ID_CHECK_ALL );
+		break;
+	case ID_CHECK_SELECTED:
+	case ID_UNCHECK_SELECTED:
+		for( size_t i=0;i<m_configList->GetCount();i++ )
+			if ( m_configList->IsSelected(i) )
+				m_configList->Check( i, evt.GetId() == ID_CHECK_SELECTED );
+		break;
+	}
+}
+
+void DefaultsManager::OnListRightClick( wxMouseEvent &evt )
+{
+	wxMenu menu;
+	menu.Append( ID_CHECK_SELECTED, "Check selected" );
+	menu.Append( ID_UNCHECK_SELECTED, "Uncheck selected" );
+	menu.AppendSeparator();
+	menu.Append( ID_CHECK_ALL, "Check all" );
+	menu.Append( ID_UNCHECK_ALL, "Uncheck all" );
+	PopupMenu( &menu );
+}
 
 void DefaultsManager::ClearLog()
 {
