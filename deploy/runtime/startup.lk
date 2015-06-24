@@ -512,7 +512,7 @@ addpage( [ ['PV Losses'] ], { 'sidebar'='Losses', 'help'='pv_losses' } );
 setmodules( ['pvsamv1'] );
 
 setconfig( 'Flat Plate PV', 'Residential' );
-setmodules( ['belpe', 'pvsamv1', 'utilityrate3_monthly', 'cashloan']);
+setmodules( ['belpe', 'pvsamv1', 'utilityrate3', 'cashloan']);
 setup_flat_plate_pv_pages();
 setup_battery_pages();
 addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
@@ -644,7 +644,7 @@ setup_pvwatts_pages();
 setup_thirdparty_pages(LIFETIME_SYSTEM); //includes building load calculator by default in this function
 
 setconfig( 'PVWatts', 'Commercial' );	
-setmodules( ['pvwattsv5',  'utilityrate3_monthly', 'cashloan']);
+setmodules( ['pvwattsv5',  'utilityrate3', 'cashloan']);
 setup_pvwatts_pages();
 addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
 setup_commercial_pages(LOAD_SIMPLE,LIFETIME_SYSTEM); //belpe not valid for commercial
