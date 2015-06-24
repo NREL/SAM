@@ -547,13 +547,7 @@
 <div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 3px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:24px"><span style="font-size:10pt; font-family: 'Segoe UI';color:#000000;">1.</span></td><td style="border:none"><span class="f_ProcedureStep">On the Module page, choose </span><span class="f_CHInterfaceElement">CEC Performance Model with User Entered Specifications</span><span class="f_ProcedureStep">.</span></td></tr></table></div><div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 3px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:24px"><span style="font-size:10pt; font-family: 'Segoe UI';color:#000000;">2.</span></td><td style="border:none"><span class="f_ProcedureStep">Enter the required module specifications.</span></td></tr></table></div><p class="p_ProcedureStepNoNumber"><span class="f_CHInterfaceElement">Module description</span><span class="f_ProcedureStep"> is an optional field you can use for the module name or other description.</span></p>
 <div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 3px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:24px"><span style="font-size:10pt; font-family: 'Segoe UI';color:#000000;">3.</span></td><td style="border:none"><span class="f_ProcedureStep">Click </span><span class="f_CHInterfaceElement">Calculate and plot</span><span class="f_ProcedureStep">.</span></td></tr></table></div><p class="p_ProcedureStepNoNumber"><span class="f_ProcedureStepNoNumber">After solving the module model equations, SAM displays a current-voltage (I-V) curve at STC.</span></p>
 <p class="p_Note"><span class="f_CHNote">Note.</span><span class="f_Note"> In some rare cases, SAM may not be able to find a solution for the set of specifications you provide. (It performs a series of internal checks that should ensure that it finds a solution in most cases.) If SAM displays an error message, first verify that the specifications you entered are correct. If the specifications are correct, you may be able to generate an I-V curve by making small adjustments to the specifications, such as slightly increasing the Isc value.</span></p>
-<div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 6px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:24px"><span style="font-size:10pt; font-family: 'Segoe UI';color:#000000;">4.</span></td><td style="border:none"><span class="f_ProcedureStepLast">Under </span><span class="f_CHInterfaceElement">Mounting Configuration</span><span class="f_ProcedureStepLast">, choose the standoff height and array's height above ground.</span></td></tr></table></div><p class="p_Note"><span class="f_CHNote">Note.</span><span style="font-size: 11pt; font-family: Calibri;"> </span><span class="f_Note">SAM's scripting language, <a href="macros.htm" class="topiclink">SamUL</a>, includes a function called Coeffgen6par() that you can use to automate the process of generating model coefficients from module specifications. For example, </span><br />
-<span class="f_Note">&nbsp;</span><br />
-<span class="f_CHCode">result = coeffgen6par(&quot;monoSi&quot;, 30, 6, 36, 7, -0.43, 0.001, -0.1, 60)</span><br />
-<span class="f_CHCode">OutLn( result )</span><br />
-<span class="f_CHCode">&nbsp;</span><br />
-<span class="f_Note">Would display an array containing the six parameters a, Il, Io, Rs, Rsh, and Adjust, or the string &quot;false&quot; if the solution failed.</span></p>
-<h3 class="p_Heading3_atocs_" style="border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">General Information</span></h3>
+<div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 3px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:24px"><span style="font-size:10pt; font-family: 'Segoe UI';color:#000000;">4.</span></td><td style="border:none"><span class="f_ProcedureStep">Under </span><span class="f_CHInterfaceElement">Mounting Configuration</span><span class="f_ProcedureStep">, choose the standoff height and array's height above ground.</span></td></tr></table></div><h3 class="p_Heading3_atocs_" style="border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">General Information</span></h3>
 <p class="p_VariableName"><span class="f_VariableName">Module description</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">An optional string describing the module.</span></p>
 <p class="p_VariableName"><span class="f_VariableName">Cell type</span></p>
@@ -603,8 +597,116 @@
 </div>
 <div style="text-align: left; text-indent: 0px; border-color: #0072c6; border-style: solid; border-width: 1px; background: #ebebeb; padding: 2px 2px 2px 2px; margin: 3px 0px 3px 0px;"><table style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr style="vertical-align:baseline"><td style="border:none;padding:0;width:19px"><a id="iec68153"></a><img id="TOGGLE0186A5_ICON" class="dropdown-toggle-icon" src="ico-minus-16x16.gif" width="16" height="16" alt="Click to expand or collapse" title="Click to expand or collapse" style="width:16px;height:16px;border:none" /></td><td style="border:none;padding:0"><span class="f_Heading2_atoc_"><a class="dropdown-toggle" style="font-style: normal; font-weight: bold; color: #0072c6; background-color: transparent; text-decoration: none;" title="Click to expand or collapse" href="javascript:HMToggle('toggle','TOGGLE0186A5','TOGGLE0186A5_ICON')">IEC 68153 Single Diode Model</a></span></td></tr></table></div><div id="TOGGLE0186A5" style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 6px 0px;"><table class="ToggleContentTable" style="width:100%; border:none; border-spacing:0px;">
 <tr style="text-align:left;vertical-align:top;">
-<td style="vertical-align:top; padding:0px;"><p>The IEC 68153 Single Diode Model <span class="f_List">calculates the module conversion efficiency from a set of detailed parameters describing the module's characteristics, consistent with the International Electrotechnical Commission (IEC) power and rating standard, <a href="http://www.solarabcs.org/about/publications/reports/pv-mod-power-rating/" target="_blank" class="weblink" title="http://www.solarabcs.org/about/publications/reports/pv-mod-power-rating/">IEC 61853</a>, </span><span class="f_List" style="font-style: italic;">Irradiance and Temperature Performance Measurements and Power Rating</span><span class="f_List">.</span></p>
+<td style="vertical-align:top; padding:0px;"><p class="p_Text"><span class="f_Text">The IEC-61853 Single Diode model is a detailed method for predicting the performance of flat plate photovoltaic modules. &nbsp;The model uses data from modules tested according to the International Electrotechnical Commission (IEC) power and rating standard, <a href="http://www.solarabcs.org/about/publications/reports/pv-mod-power-rating/" target="_blank" class="weblink" title="http://www.solarabcs.org/about/publications/reports/pv-mod-power-rating/">IEC 61853</a>, </span><span class="f_Text" style="font-style: italic;">Irradiance and Temperature Performance Measurements and Power Rating</span><span class="f_Text">. The standard describes requirements for testing PV module performance at maximum power operation for a set of 23 operational conditions, denoted by a * in the table below.</span></p>
+<div style="text-align: center; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 0px 0px;"><table style="margin:0 auto; border:none; border-spacing:0px;">
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; width:111px; padding:0px;"><p class="p_TableHeadColumn"><span class="f_TableHeadColumn">Irradiance (W/m2)</span></p>
 </td>
+<td style="vertical-align:top; width:111px; padding:0px;"><p class="p_TableHeadColumn"><span class="f_TableHeadColumn">Tmodule = 15 ºC</span></p>
+</td>
+<td style="vertical-align:top; width:111px; padding:0px;"><p class="p_TableHeadColumn"><span class="f_TableHeadColumn">Tmodule= 25 ºC</span></p>
+</td>
+<td style="vertical-align:top; width:111px; padding:0px;"><p class="p_TableHeadColumn"><span class="f_TableHeadColumn">Tmodule = 50 ºC</span></p>
+</td>
+<td style="vertical-align:top; width:111px; padding:0px;"><p class="p_TableHeadColumn"><span class="f_TableHeadColumn">Tmodule = 75 ºC</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; width:111px; padding:0px;"><p style="text-align: center;"><span style="font-size: 11pt; font-family: Calibri;">1100</span></p>
+</td>
+<td style="vertical-align:top; width:111px; padding:0px;"><p style="text-align: center;"><span style="font-size: 11pt; font-family: Calibri;">N/A</span></p>
+</td>
+<td style="vertical-align:top; width:111px; padding:0px;"><p style="text-align: center;"><span style="font-size: 11pt; font-family: Calibri;">*</span></p>
+</td>
+<td style="vertical-align:top; width:111px; padding:0px;"><p style="text-align: center;"><span style="font-size: 11pt; font-family: Calibri;">*</span></p>
+</td>
+<td style="vertical-align:top; width:111px; padding:0px;"><p style="text-align: center;"><span style="font-size: 11pt; font-family: Calibri;">*</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; width:111px; padding:0px;"><p style="text-align: center;"><span style="font-size: 11pt; font-family: Calibri;">1000</span></p>
+</td>
+<td style="vertical-align:top; width:111px; padding:0px;"><p style="text-align: center;"><span style="font-size: 11pt; font-family: Calibri;">*</span></p>
+</td>
+<td style="vertical-align:top; width:111px; padding:0px;"><p style="text-align: center;"><span style="font-size: 11pt; font-family: Calibri;">*</span></p>
+</td>
+<td style="vertical-align:top; width:111px; padding:0px;"><p style="text-align: center;"><span style="font-size: 11pt; font-family: Calibri;">*</span></p>
+</td>
+<td style="vertical-align:top; width:111px; padding:0px;"><p style="text-align: center;"><span style="font-size: 11pt; font-family: Calibri;">*</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; width:111px; padding:0px;"><p style="text-align: center;"><span style="font-size: 11pt; font-family: Calibri;">800</span></p>
+</td>
+<td style="vertical-align:top; width:111px; padding:0px;"><p style="text-align: center;"><span style="font-size: 11pt; font-family: Calibri;">*</span></p>
+</td>
+<td style="vertical-align:top; width:111px; padding:0px;"><p style="text-align: center;"><span style="font-size: 11pt; font-family: Calibri;">*</span></p>
+</td>
+<td style="vertical-align:top; width:111px; padding:0px;"><p style="text-align: center;"><span style="font-size: 11pt; font-family: Calibri;">*</span></p>
+</td>
+<td style="vertical-align:top; width:111px; padding:0px;"><p style="text-align: center;"><span style="font-size: 11pt; font-family: Calibri;">*</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; width:111px; padding:0px;"><p style="text-align: center;"><span style="font-size: 11pt; font-family: Calibri;">600</span></p>
+</td>
+<td style="vertical-align:top; width:111px; padding:0px;"><p style="text-align: center;"><span style="font-size: 11pt; font-family: Calibri;">*</span></p>
+</td>
+<td style="vertical-align:top; width:111px; padding:0px;"><p style="text-align: center;"><span style="font-size: 11pt; font-family: Calibri;">*</span></p>
+</td>
+<td style="vertical-align:top; width:111px; padding:0px;"><p style="text-align: center;"><span style="font-size: 11pt; font-family: Calibri;">*</span></p>
+</td>
+<td style="vertical-align:top; width:111px; padding:0px;"><p style="text-align: center;"><span style="font-size: 11pt; font-family: Calibri;">*</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; width:111px; padding:0px;"><p style="text-align: center;"><span style="font-size: 11pt; font-family: Calibri;">400</span></p>
+</td>
+<td style="vertical-align:top; width:111px; padding:0px;"><p style="text-align: center;"><span style="font-size: 11pt; font-family: Calibri;">*</span></p>
+</td>
+<td style="vertical-align:top; width:111px; padding:0px;"><p style="text-align: center;"><span style="font-size: 11pt; font-family: Calibri;">*</span></p>
+</td>
+<td style="vertical-align:top; width:111px; padding:0px;"><p style="text-align: center;"><span style="font-size: 11pt; font-family: Calibri;">*</span></p>
+</td>
+<td style="vertical-align:top; width:111px; padding:0px;"><p style="text-align: center;"><span style="font-size: 11pt; font-family: Calibri;">N/A</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; width:111px; padding:0px;"><p style="text-align: center;"><span style="font-size: 11pt; font-family: Calibri;">200</span></p>
+</td>
+<td style="vertical-align:top; width:111px; padding:0px;"><p style="text-align: center;"><span style="font-size: 11pt; font-family: Calibri;">*</span></p>
+</td>
+<td style="vertical-align:top; width:111px; padding:0px;"><p style="text-align: center;"><span style="font-size: 11pt; font-family: Calibri;">*</span></p>
+</td>
+<td style="vertical-align:top; width:111px; padding:0px;"><p style="text-align: center;"><span style="font-size: 11pt; font-family: Calibri;">*</span></p>
+</td>
+<td style="vertical-align:top; width:111px; padding:0px;"><p style="text-align: center;"><span style="font-size: 11pt; font-family: Calibri;">N/A</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; width:111px; padding:0px;"><p style="text-align: center;"><span style="font-size: 11pt; font-family: Calibri;">100</span></p>
+</td>
+<td style="vertical-align:top; width:111px; padding:0px;"><p style="text-align: center;"><span style="font-size: 11pt; font-family: Calibri;">*</span></p>
+</td>
+<td style="vertical-align:top; width:111px; padding:0px;"><p style="text-align: center;"><span style="font-size: 11pt; font-family: Calibri;">*</span></p>
+</td>
+<td style="vertical-align:top; width:111px; padding:0px;"><p style="text-align: center;"><span style="font-size: 11pt; font-family: Calibri;">N/A</span></p>
+</td>
+<td style="vertical-align:top; width:111px; padding:0px;"><p style="text-align: center;"><span style="font-size: 11pt; font-family: Calibri;">N/A</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="p_Text"><span class="f_Text">&nbsp;</span></p>
+<p class="p_Text"><span class="f_Text">At each test condition, the module’s Pmp, Vmp, Voc, and Isc are measured. &nbsp;SAM uses this data to calibrate parameters for an extended single diode model that is used to predict the module’s performance at any operating condition. &nbsp;The details of the underlying model and parameter extraction method are detailed in </span><span style="font-size: 11pt; font-family: Calibri;">Dobos, A.; MacAlpine, S. (2014). <a href="http://ieeexplore.ieee.org/xpl/login.jsp?tp=&amp;arnumber=6925525&amp;url=http%3A%2F%2Fieeexplore.ieee.org%2Fxpls%2Fabs_all.jsp%3Farnumber%3D6925525" target="_blank" class="weblink" title="http://ieeexplore.ieee.org/xpl/login.jsp?tp=&amp;arnumber=6925525&amp;url=http%3A%2F%2Fieeexplore.ieee.org%2Fxpls%2Fabs_all.jsp%3Farnumber%3D6925525">Procedure for Applying IEC-61853 Test Data to a Single Diode Model</a>. Proc. IEEE 40th PVSC Conf. Denver CO</span><span class="f_Text">.</span></p>
+<p class="p_Text"><span class="f_Text"> In addition to the test data, the module area (m2), nominal operating cell temperature (NOCT) (C), number of cells in series, and cell type are required inputs.</span></p>
+<p class="p_Text"><span class="f_Text">Thermal and optical behavior of the module is predicted using the CEC NOCT cell temperature model described in De Soto, W.L. (M.S. 2004). &quot;Improvement and Validation of a Model for Photovoltaic Array Performance.&quot; University of Wisconsin-Madison. (<a href="http://sel.me.wisc.edu/publications/theses/desoto04.zip" class="weblink">ZIP 1.8 MB</a>). </span></p>
+<p class="p_Text"><span class="f_Text">The module cover uses the PVWatts Version 5 model to predict the relative performance of standard glass versus antireflective coatings described in Dobos, A. (2014). &quot;PVWatts Version 5 Manual.&quot; 20 pp.; NREL Report No. TP-6A20-62641. (<a href="http://www.nrel.gov/docs/fy14osti/62641.pdf" class="weblink">PDF 714 KB</a>).  </span></p>
+<p class="p_Text"><span class="f_Text">The spectral response is governed by the Sandia model polynomial for air mass described in King, D.L.; Gonzalez, S.; Galbraith, G.M.; and Boyson, W.E. (2007). &quot;Performance Model for Grid Connected Inverters.&quot; 47 pp.; Sandia Report No. 2007-5036. (<a href="http://infoserve.sandia.gov/sand_doc/2007/075036.pdf" class="weblink">PDF 1.3 MB</a>). </span></p>
+<p class="p_TitleProcedure"><span style="font-size: 11pt; font-family: Calibri; font-weight: bold;">To use the IEC 68153 Single Diode model:</span></p>
+<div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 3px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:24px"><span style="font-size:10pt; font-family: 'Segoe UI';color:#000000;">1.</span></td><td style="border:none"><span class="f_ProcedureStep">Obtain test data for your PV module from a testing laboratory or a manufacturer. SAM does not include a library of test result parameters for this model.</span></td></tr></table></div><div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 3px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:24px"><span style="font-size:10pt; font-family: 'Segoe UI';color:#000000;">2.</span></td><td style="border:none"><span class="f_ProcedureStep">Enter the data into SAM’s input table. &nbsp;The table structure is a little different from the matrix above. &nbsp;Each row in SAM’s table corresponds to a test condition. &nbsp;The columns are: irradiance (W/m2), module temperature (C), maximum power (W), maximum power voltage (V), open circuit voltage (V), and short circuit current (A).</span></td></tr></table></div><p class="p_Note"><span class="f_CHNote">Note.</span><span class="f_Note"> Some test labs are not able to test up to 75 degrees, as defined by the standard, and may provide measurements only at 60 or 65 degrees. &nbsp;In other cases, some test conditions may be missing. &nbsp;In this situation, enter all of the data that you have available, and SAM will do its best to extract model parameters. &nbsp;Data at standard test conditions (1000 W/m2, 25 C) is always required.</span></p>
+<div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 3px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:24px"><span style="font-size:10pt; font-family: 'Segoe UI';color:#000000;">3.</span></td><td style="border:none"><span class="f_ProcedureStep">Enter the number of cells in series, and select a cell type. &nbsp;The module area and NOCT cell temperature are also required.</span></td></tr></table></div><div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 3px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:24px"><span style="font-size:10pt; font-family: 'Segoe UI';color:#000000;">4.</span></td><td style="border:none"><span class="f_ProcedureStep">Click </span><span class="f_CHInterfaceElement">Calculate parameters</span><span class="f_ProcedureStep">.</span></td></tr></table></div><p class="p_ProcedureStepNoNumber"><span class="f_ProcedureStepNoNumber">SAM &nbsp;displays a message details about how it determines the STC, Rsh, Rs, and temperature coefficient parameters for the model.</span></p>
+<div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 3px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:24px"><span style="font-size:10pt; font-family: 'Segoe UI';color:#000000;">5.</span></td><td style="border:none"><span class="f_ProcedureStep">If the parameter estimation was successful, click </span><span class="f_CHInterfaceElement">OK</span><span class="f_ProcedureStep"> and the model parameter inputs will be filled in automatically, along with the I-V curves on the graph.</span></td></tr></table></div><div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 3px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:24px"><span style="font-size:10pt; font-family: 'Segoe UI';color:#000000;">6.</span></td><td style="border:none"><span class="f_ProcedureStep">Choose a mounting configuration, including a standoff height and an approximate mounting height.</span></td></tr></table></div><div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 3px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:24px"><span style="font-size:10pt; font-family: 'Segoe UI';color:#000000;">7.</span></td><td style="border:none"><span class="f_ProcedureStep">Choose the type of module cover: standard glass, or anti-reflective coating (AR) glass.</span></td></tr></table></div><div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 3px 24px;"><table border="0" cellpadding="0" cellspacing="0" style="border:none;border-spacing:0px;padding:0px;line-height: normal;"><tr valign="baseline" style="vertical-align:baseline"><td style="border:none;width:24px"><span style="font-size:10pt; font-family: 'Segoe UI';color:#000000;">8.</span></td><td style="border:none"><span class="f_ProcedureStep">If you have data available, you can change the spectral response by adjusting the air mass modifier polynomial coefficients. </span></td></tr></table></div></td>
 </tr>
 </table>
 </div>
