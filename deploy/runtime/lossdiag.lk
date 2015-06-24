@@ -27,7 +27,7 @@ loss_diagram{'Flat Plate PV'} = define() {
 	add_loss_term('annual_ac_transformer_loss_percent', 'Step-up transformer' );	
 
 	new_baseline( 'annual_ac_net', 'Net AC energy (kWh)' );
-	add_loss_term('annual_ac_perf_adj_loss_percent', 'Performance adjustment' );	
+	add_loss_term('annual_ac_perf_adj_loss_percent', 'Availability and curtailment' );	
 	
 	new_baseline( 'annual_energy', 'Annual energy (kWh)' );
 };
