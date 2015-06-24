@@ -7,6 +7,8 @@
 #include <wx/tokenzr.h>
 #include <wx/textfile.h>
 
+#include <fstream>
+
 #include <wex/csv.h>
 
 #include "widgets.h"
@@ -787,12 +789,16 @@ bool ImportSunEyeObstructions( ShadingInputData &dat, wxWindow *parent )
 	int linesok = 0;
 	double azi[361];
 	double alt[361];
+	int imageCount;
+	float obstructionStep;
+	double tmpVal;
 		
-	matrix_t<float> azaltvals;
+	matrix_t<float> azaltvals, obstructions;
 	azaltvals.resize_fill(91,362, 0.0);
 	azaltvals.at(0,0) = 0.;
 
 	buf = tf.GetFirstLine();
+
 	while( !tf.Eof() )
 	{
 		wxArrayString lnp = wxStringTokenize( buf, "," );
@@ -810,21 +816,30 @@ bool ImportSunEyeObstructions( ShadingInputData &dat, wxWindow *parent )
 		else if (readdata == true && j == -1) j++;
 		else
 		{
+			// Sev 150624: Check for number of images
+			if( j == 0)	{
+				imageCount = lnp.Count() - 4;
+				obstructions.resize_fill( 362, imageCount, 0.0);
+				obstructionStep = 100.0 / imageCount;
+			}
+
 			if (j <= 360)
 			{
 // Modify to read in ObstructionElevation.csv (average in column 3 and then max and then value for each skyline
 // Works with individual skyline obstrucitons (e.g. Sky01ObstrucitonElevations.csv) or with average.
 //				if (lnp.Count() != 3)
-				if (lnp.Count() < 3)
+				if (lnp.Count() < imageCount + 3)
 				{
 					colok = false;
 					readok = false;
 					break;
-				}
+				} 
 				else
 				{
 					azi[j] = wxAtof(lnp[0]); //first column contains compass heading azimuth values (0=north, 90=east)
 					alt[j] = wxAtof(lnp[2]);
+					for (int ii=0; ii<imageCount; ii++)
+						obstructions.at(j,ii) = wxAtof(lnp[ii+4]); 
 				}
 				j++;
 			}
@@ -832,6 +847,7 @@ bool ImportSunEyeObstructions( ShadingInputData &dat, wxWindow *parent )
 		}
 		buf = tf.GetNextLine();
 	}
+
 
 	if (j < 361)
 	{
@@ -849,7 +865,6 @@ bool ImportSunEyeObstructions( ShadingInputData &dat, wxWindow *parent )
 		headingok = false;
 	}
 
-
 	if (readok)
 	{
 		//copy azimuth/compass values into the first row
@@ -863,17 +878,17 @@ bool ImportSunEyeObstructions( ShadingInputData &dat, wxWindow *parent )
 		//loop through all azimuth values
 		for (int j=0;j<362;j++)
 		{
-			//check for a valid elevation value
-			if (alt[j]<0 || alt[j]>90) //changed from && to || 6/18/15 jmf
-			{
-				wxMessageBox("Error: Elevations Must be less than 90 degrees and greater than 0 degrees");
-				return false;
-			}
-			else
-			{
+			for(int k=0; k<imageCount;k++){  // Sev 150624: loop over images
+				
+				if (obstructions.at(j,k)<0 || obstructions.at(j,k)>90) //changed from && to || 6/18/15 jmf
+				{
+					wxMessageBox("Error: Elevations Must be less than 90 degrees and greater than 0 degrees");
+					return false;
+				}
+
 				//changed jmf 6/18/15- values UP TO the altitude value should be fully shaded.
-				for (int i = 1; i <= alt[j]; i++)
-					azaltvals.at(i, j + 1) = 100;
+				for (int i = 1; i <= obstructions.at(j,k); i++)
+					azaltvals.at(i, j + 1) += obstructionStep;		// Sev 150624: obstruction amount now increase incrementally instead of going straight from 0 to 100
 			}
 		}
 
@@ -892,7 +907,7 @@ bool ImportSunEyeObstructions( ShadingInputData &dat, wxWindow *parent )
 		if (linesok == -1) m.Append("File contains fewer lines than expected.\n");
 		if (linesok == 1) m.Append("File contains more lines than expected.\n");
 		wxMessageBox(m);
-
+		
 		return false;
 	}
 }
