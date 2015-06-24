@@ -248,6 +248,10 @@ bool Case::Copy( Object *obj )
 {
 	if ( Case *rhs = dynamic_cast<Case*>( obj ) )
 	{
+		m_config = 0;
+		if ( rhs->m_config )
+			SetConfiguration( rhs->m_config->Technology, rhs->m_config->Financing );
+
 		m_vals.Copy( rhs->m_vals );
 		m_baseCase.Copy( rhs->m_baseCase );
 		m_properties = rhs->m_properties;
@@ -255,10 +259,10 @@ bool Case::Copy( Object *obj )
 		m_parametric.Copy(rhs->m_parametric);
 		m_stochastic.Copy(rhs->m_stochastic);
 		
-		m_config = 0;
-		if ( rhs->m_config )
-			SetConfiguration( rhs->m_config->Technology, rhs->m_config->Financing );
-
+		m_graphs.clear();
+		for( size_t i=0;i<rhs->m_graphs.size();i++ )
+			m_graphs.push_back( rhs->m_graphs[i] );
+		
 		return true;
 	}
 	else
