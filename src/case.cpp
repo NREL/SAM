@@ -420,7 +420,7 @@ bool Case::LoadValuesFromExternalSource( wxInputStream &in,
 
 	if ( di ) di->nread = vt.size();
 
-	bool ok = true;
+	bool ok = (vt.size() == m_vals.size());
 	// copy over values for variables that already exist
 	// in the configuration
 	for( VarTable::iterator it = vt.begin();
@@ -575,7 +575,7 @@ bool Case::SetConfiguration( const wxString &tech, const wxString &fin, bool sil
 		VarValue *val_default = vt_defaults.Get( it->first );
 		if ( val_default == 0 )
 		{
-			notices.Add( "No default value found for '" + it->first + "' in external file (" + tech + "/" + fin + ")" );
+			notices.Add( "No default value found for '" + it->first + "' in external file (" + tech + "/" + fin + "), using internal default" );
 			val_default = &( it->second->DefaultValue );
 		}
 		else if ( val_default->Type() != it->second->DefaultValue.Type()
