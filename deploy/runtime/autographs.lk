@@ -9,7 +9,8 @@ function rescom_financial_graphs()
 {
 	agraph( 'cf_energy_net', 'Annual Energy Production', 'Year', 'kWh', 10, true, false,'bottom' );
 	agraph( 'cf_after_tax_cash_flow', 'After Tax Cash Flow- System Lifetime', '', '$' );
-	agraph( 'monthly_energy,year1_monthly_load,year1_monthly_cumulative_excess_generation', 'Monthly Energy and Load', '', 'kWh', 10, true, true, 'bottom'  );
+//	agraph( 'monthly_energy,year1_monthly_load,year1_monthly_cumulative_excess_generation', 'Monthly Energy and Load', '', 'kWh', 10, true, true, 'bottom'  );
+	agraph( 'year1_monthly_system_generation,year1_monthly_load,year1_monthly_cumulative_excess_generation', 'Monthly Energy and Load', '', 'kWh', 10, true, true, 'bottom'  );
 }
 
 function third_party_graphs()
@@ -57,7 +58,9 @@ autographs{ 'PVWatts_battery'} = define()
 
 autographs{ 'Flat Plate PV' } = define()
 {	
-	agraph( 'monthly_energy', 'Monthly Energy Production', '', 'kWh' , 10, true, false, 'bottom' ); 
+
+	agraph( 'year1_monthly_system_generation', 'Monthly Energy Production', '', 'kWh' , 10, true, false, 'bottom' ); 
+	// - no longer a pvsamv1 output agraph( 'monthly_energy', 'Monthly Energy Production', '', 'kWh' , 10, true, false, 'bottom' ); 
 	// initial waterfall (loss graph) place holder with missing values 
 	//agraph('annual_poa_nom,annual_poa_shaded,annual_poa_eff', 'POA Energy Waterfall', '', 'kWh', 0, false, true, 'right'); 
 	//agraph('annual_dc_nominal,annual_dc_gross,annual_dc_after_mismatch_loss,annual_dc_after_diodes_loss,annual_dc_after_wiring_loss,annual_dc_after_tracking_loss,annual_dc_after_nameplate_loss,annual_ac_after_inv_cliploss,annual_ac_after_inv_psoloss,annual_ac_after_inv_pntloss,annual_ac_after_wiring_loss,annual_ac_after_transformer_loss,annual_energy', 'Array Energy Waterfall', '', 'kWh', 3, false, true, 'right' ); 
