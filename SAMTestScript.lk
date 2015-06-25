@@ -4,12 +4,10 @@ outln(folder);
 output_file = folder + "/annual_output_lcoe.csv";
 file_num = open(output_file, "w");
 
-
-
 outln( 'TECHNOLOGY\tFINANCING\tDEFAULT\tANNUAL_OUTPUT\tLCOE_NOM\tLCOE_REAL\tMESSAGES');
 //write_line(file_num,"TECHNOLOGY,FINANCING,ANNUAL_OUTPUT,LCOE_NOM,LCOE_REAL,MESSAGES");
 write_line(file_num,"TECHNOLOGY,FINANCING,ANNUAL_OUTPUT,LCOE_NOM,LPPA_NOM,MESSAGES");
-noquery = false; // ask user whether to overwrite each configuration that has a defaults error
+query = true; // ask user whether to overwrite each configuration that has a defaults error
 //Close any open projects and create a case to run
 close_project();
 create_case( 'Flat Plate PV', 'Residential', 'test_case');
@@ -26,16 +24,6 @@ for (t=0; t<#technologies; t++)
 	for(f=0; f<#financing; f++)
 	{	
 
-//if ( technologies[t] == "Geothermal Power" )
-//{
-//	continue;
-//}
-//if ( financing[f] != "None" )
-//{
-//	continue;
-//}
-
-
 		//Write the technology and financing configuration to the file
 		out( technologies[t] + '\t' + financing[f] + '\t' );
 		configs++;
@@ -49,7 +37,7 @@ for (t=0; t<#technologies; t++)
 		if( !load_defaults(message) )
 		{
 			msg = 'LOADERR';
-			if ( noquery || yesno( 'Error with defaults for: ' + technologies[t] + '/' + financing[f] + '\n\n' + message + '\n\nOverwrite?'))
+			if ( query && yesno( 'Error with defaults for: ' + technologies[t] + '/' + financing[f] + '\n\n' + message + '\n\nOverwrite?'))
 			{
 				if(!overwrite_defaults())
 				{
