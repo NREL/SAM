@@ -99,7 +99,6 @@ package:
 	strip -v ./sam.deploy/runtime/bin/stepwise.bin
 	echo "assembling archive..."
 	tar cvzf sam.deploy.tar.gz ./sam.deploy
-	rm -rf sam.deploy
 	make installer
 
 installer:
