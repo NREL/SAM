@@ -22,6 +22,7 @@
 #include <wx/aui/aui.h>
 #include <wx/ffile.h>
 #include <wx/wfstream.h>
+#include <wx/splitter.h>
 #include <wx/progdlg.h>
 #include <wx/zipstrm.h>
 #include <wx/txtstrm.h>
@@ -64,13 +65,7 @@ PackageDialog::PackageDialog( wxWindow *parent, const wxString &title,
 		m_curDir->SetPath( dir );
 	if (cfg.Read("m_oldDir", &dir ))
 		m_oldDir->SetPath( dir );
-	
-	m_grid = new wxExtGridCtrl( this, ID_GRID );
-	m_grid->CreateGrid(1,1);
-	m_output = new wxTextCtrl( this, ID_OUTPUT, "Ready", wxDefaultPosition, wxDefaultSize, wxTE_MULTILINE|wxTE_DONTWRAP );
-	m_output->SetFont( wxFont(12, wxFONTFAMILY_MODERN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, "Consolas" ));
-	m_output->SetForegroundColour( "navy" );
-	
+		
 	wxBoxSizer *buttons = new wxBoxSizer( wxHORIZONTAL );
 	buttons->Add( new wxButton( this, wxID_CANCEL, "Close" ) );
 	buttons->Add( new wxButton( this, ID_DIFF, "Generate diff" ) );
@@ -91,12 +86,22 @@ PackageDialog::PackageDialog( wxWindow *parent, const wxString &title,
 	dirs->Add( m_curDir, 1, wxALL|wxEXPAND, 0 );
 	dirs->Add( new wxStaticText(this, wxID_ANY, "Old version:"), 0, wxALL|wxALIGN_CENTER_VERTICAL );
 	dirs->Add( m_oldDir, 1, wxALL|wxEXPAND, 0 );
+	
+	wxSplitterWindow *split = new wxSplitterWindow( this );
+	
+	m_grid = new wxExtGridCtrl( split, ID_GRID );
+	m_grid->CreateGrid(1,1);
+
+	m_output = new wxTextCtrl( split, ID_OUTPUT, "Ready", wxDefaultPosition, wxDefaultSize, wxTE_MULTILINE|wxTE_DONTWRAP );
+	m_output->SetFont( wxFont(12, wxFONTFAMILY_MODERN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, "Consolas" ));
+	m_output->SetForegroundColour( "navy" );
+
+	split->SplitHorizontally(m_grid, m_output, -300);
 
 	wxBoxSizer *sizer = new wxBoxSizer( wxVERTICAL );
 	sizer->Add( buttons, 0, wxALL|wxEXPAND, 3 );	
 	sizer->Add( dirs, 0, wxALL|wxEXPAND, 3 );
-	sizer->Add( m_grid, 5, wxALL|wxEXPAND, 0 );
-	sizer->Add( m_output, 2, wxALL|wxEXPAND, 0 );
+	sizer->Add( split, 1, wxALL|wxEXPAND, 0 );
 	SetSizer( sizer );
 }
 
