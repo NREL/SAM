@@ -903,7 +903,7 @@ setconfig( 'Generic System', 'Single Owner' );
 setmodules( ['generic_system', 'singleowner']);
 setup_generic_system_pages();
 addpage( [[ 'Generic System Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='generic_system_costs' } );
-setup_single_owner_pages(true);
+setup_single_owner_pages(LIFETIME_SYSTEM);
 
 //-----------------------------------------------------
 setconfig( 'Generic System', 'LCOE Calculator' );
