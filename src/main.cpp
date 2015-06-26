@@ -2077,10 +2077,12 @@ public:
 
 		
 		int patch = 0;
-#ifdef __WXMSW__
+#if defined(__WXMSW__)
 		wxString path = SamApp::GetRuntimePath() + "/patches/patch_msw.txt";
-#else
+#elif defined(__WXOSX__)
 		wxString path = SamApp::GetRuntimePath() + "/patches/patch_osx.txt";
+#else
+		wxString path = SamApp::GetRuntimePath() + "/patches/patch_lnx.txt";
 #endif
 		if ( FILE *fp = fopen( (const char*)path.c_str(), "r" ) )
 		{
