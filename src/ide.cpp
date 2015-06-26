@@ -896,8 +896,8 @@ UIEditorPanel::UIEditorPanel( wxWindow *parent )
 
 void UIEditorPanel::LoadFormList( const wxString &sel )
 {
-	m_formList->Freeze();
-	m_formList->Clear();
+	
+	wxArrayString list;
 
 	wxDir dir( SamApp::GetRuntimePath() + "/ui" );
 	if ( dir.IsOpened() )
@@ -907,12 +907,16 @@ void UIEditorPanel::LoadFormList( const wxString &sel )
 		while( has_more )
 		{
 			wxFileName fn( file );
-			m_formList->Append( fn.GetName() );
+			list.Add( fn.GetName() );
 			has_more = dir.GetNext( &file );
 		}
 	}
 
+	list.Sort();
 
+	m_formList->Freeze();
+	m_formList->Clear();
+	m_formList->Append( list );
 	m_formList->Thaw();
 	
 	if ( !sel.IsEmpty() )
