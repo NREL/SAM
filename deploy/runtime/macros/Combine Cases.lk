@@ -30,6 +30,7 @@ This may be helpful for modeling a variety of scenarios, including:
 <li>If one of the systems that you wish to combine is a geothermal system, ONLY first-year energy is used in the combined system model; the first-year energy is repeated for the lifetime of the system.
 <li>The energy predictions of the individual systems may not add up to exactly the energy prediction of the combined system due to differences in rounding at an hourly level.
 <li>Running the subsystems independently and then adding financial results may not yield the same financial results as running the combined system, due to different financial inputs.
+<li>Sub-hourly simulations and lifetime PV simulations are not currently enabled for this macro.
 </ul>
 @*/
 //Macro user interface widgets
@@ -205,11 +206,24 @@ for (i=0; i < num_cases; i++)
 	active_case(cases[i]);
 	config = configuration();
 	outln('Simulating: ' + cases[i]);
+	
+	//cannot simulate lifetime pv
+	if (config[0] == 'Flat Plate PV')
+	{
+		if (get('pv_lifetime_simulation') == 1)
+		{
+			msgbox('The combine cases macro cannot be used with lifetime PV simulations. Please change your selection to PV simulation over one year and try again.');
+			exit;
+		}
+	}
+	
+	//Deal with inflation
 	if (config[1] != 'None')
 	{
 		inflation_old = get('inflation_rate'); //save the old inflation rate so that the input can be reset, avoiding confusion
 		set('inflation_rate', inflation); //use the inflation rate from the generic system where it should have been defined- it will affect the out-years O&M costs
 	}
+	
 	messages = null;
 	successful = simulate(messages, false); //don't update the UI results because it could cause user confusion RE: inflation rate in the cash flow.
 	//check that the case ran
@@ -228,7 +242,14 @@ for (i=0; i < num_cases; i++)
 	
 	//Add the performance parameters of this case
 	nameplate += get('system_capacity');
-	hourly_energy_this = get('hourly_energy');
+	hourly_energy_this = get('gen');
+	//Check for sub-hourly
+	if (#hourly_energy_this != 8760)
+	{
+		msgbox('This macro is not currently enabled to combine sub-hourly cases. Please change to an hourly case or modify the code to run sub-hourly.');
+		exit;
+	}
+	
 	for (j=0; j<8760; j++)
 		hourly_energy[j] += hourly_energy_this[j];
 	annual_energy_this = ? (config[0] == 'Geothermal Power') [get('annual_energy'), get('first_year_output')];
