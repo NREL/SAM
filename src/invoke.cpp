@@ -1916,12 +1916,15 @@ void fcall_urdb_get(lk::invoke_t &cxt)
 		//flat demand structure, e.g. ur_dc_jan_t1_ub
 		wxString months[] = { "jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec" };
 
+		lk::vardata_t vd;
 		bool dc_enable = false;
 		for (int month = 0; month < 12; month++)
 		{
 			for (int tier = 0; tier < 6; tier++)
 			{
 				wxString period_tier = wxString::Format("ur_dc_%s_t%d_", months[month], tier + 1);
+				vd = cxt.result().hash_item(period_tier + "ub");
+//				if (vd.)
 				cxt.result().hash_item(period_tier + "ub").assign(rate.FlatDemandMax[rate.FlatDemandMonth[month]][tier]);
 				double charge = rate.FlatDemandCharge[rate.FlatDemandMonth[month]][tier] + rate.FlatDemandAdj[rate.FlatDemandMonth[month]][tier];
 				if (!dc_enable && (charge != 0)) dc_enable = true;
