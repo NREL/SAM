@@ -467,9 +467,20 @@ bool OpenEI::RetrieveUtilityRateData(const wxString &guid, RateData &rate, wxStr
 	wxJSONValue fdm_periods = val.Item("flatdemandmonths");
 	if (fdm_periods.IsArray())
 	{
+		// addresses issue from Pieter 6/26/15 for Upper Cumberland EMC GS3 rate with incorrect json - not an entry for every month.
+		int num_months = fdm_periods.Size();
 		if (fdm_periods.Size() > 12) return false;
-		for (int month = 0; month<12; month++)
-			rate.FlatDemandMonth[month] = fdm_periods[month].AsInt();
+		int json_fdm_period = 0;
+		for (int month = 0; month < 12; month++)
+		{
+			if (month < num_months)
+			{
+				json_fdm_period = fdm_periods[month].AsInt();
+				rate.FlatDemandMonth[month] = json_fdm_period;
+			}
+			else
+				rate.FlatDemandMonth[month] = json_fdm_period;
+		}
 	}
 
 	wxJSONValue fds_periods = val.Item("flatdemandstructure");
