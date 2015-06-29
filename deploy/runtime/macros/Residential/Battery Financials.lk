@@ -187,7 +187,7 @@ simulate('',true);
 pv_electricity_cost = (sum(get('elec_cost_with_system')));
 pv_dc_fixed = (sum(get("charge_w_sys_dc_fixed")));
 pv_dc_tou = (sum(get("charge_w_sys_dc_tou")));
-pv_ec = (sum(get("charge_w_sys_ec")));
+pv_ec = sum(get("charge_w_sys_ec")) + sum(get("charge_w_sys_ec_flat"));
 pv_min_month = (sum(compute_minimum_monthly(analysis_period, inflation_rate, escalation_rate, minimum_monthly, true)));
 pv_min_annual = (compute_minimum_annual(analysis_period, inflation_rate, escalation_rate, minimum_annual, true));
 
@@ -207,7 +207,7 @@ simulate('',true);
 batt_electricity_cost = (sum(get('elec_cost_with_system')));
 batt_dc_fixed = (sum(get("charge_w_sys_dc_fixed")));
 batt_dc_tou = (sum(get("charge_w_sys_dc_tou")));
-batt_ec = (sum(get("charge_w_sys_ec")));
+batt_ec = sum(get("charge_w_sys_ec")) + sum(get("charge_w_sys_ec_flat"));
 batt_min_month = (sum(compute_minimum_monthly(analysis_period, inflation_rate, escalation_rate, minimum_monthly, true)));
 batt_min_annual = (compute_minimum_annual(analysis_period, inflation_rate, escalation_rate, minimum_annual, true));
 
@@ -229,7 +229,7 @@ batt_npv_total = (batt_npv_electric + batt_npv_costs + batt_npv_om);
 none_electricity_cost = (sum(get('elec_cost_without_system')));
 none_dc_fixed = (sum(get('charge_wo_sys_dc_fixed')));
 none_dc_tou = (sum(get('charge_wo_sys_dc_tou')));
-none_ec = (sum(get('charge_wo_sys_ec')));
+none_ec = sum(get('charge_wo_sys_ec')) + sum(get('charge_wo_sys_ec_flat'));
 none_min_month = (sum(compute_minimum_monthly(analysis_period, inflation_rate, escalation_rate, minimum_monthly, false)));
 none_min_annual = (compute_minimum_annual(analysis_period, inflation_rate, escalation_rate, minimum_annual, false));
 
