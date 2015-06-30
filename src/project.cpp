@@ -394,17 +394,24 @@ static void fcall_vuc_value( lk::invoke_t &cxt )
 			if ( 0 != vuc->GetCase()->Variables().Lookup( name ) )
 				label = vuc->GetCase()->Variables().Label(name);
 
+			wxString valstr(  vv->AsString( ',', '|' ) );
+			if ( valstr.Len() > 100 )
+			{
+				valstr.Truncate( 100 );
+				valstr += "...";
+			}
+
 			if ( bnew )
 			{
 				vuc->GetLog( vuc->GetName() ).push_back( 
 					VersionUpgrade::log( VersionUpgrade::VAR_ADDED, 
-						"Added '" + label + "', " + vv_strtypes[type] + ": " + vv->AsString( ',', '|' ), reason ) );
+						"Added '" + label + "', " + vv_strtypes[type] + ": " + valstr, reason ) );
 			}
 			else
 			{
 				vuc->GetLog( vuc->GetName() ).push_back( 
 					VersionUpgrade::log( VersionUpgrade::VAR_CHANGED, 
-						"Changed value of '" + label + "' to: " + vv->AsString( ',', '|' ), reason ) );
+						"Changed '" + label + "' to: " + valstr, reason ) );
 			}
 
 			cxt.result().assign( ok ? 1.0 : 0.0 );
@@ -543,9 +550,8 @@ bool VersionUpgrade::Run( ProjectFile &pf )
 	
 	m_env.set_parent( sd.GetEnv() );
 	
-//	for (nr = nr - 1; nr >= 0; nr--) - this was upgrading file version to file version
 	for (nr = nr - 2; nr >= 0; nr--)
-		{
+	{
 		sam_ver = SamApp::Version( &sammajor, &samminor, &sammicro, nr );
 		if ( lk::node_t *cb = sd.Lookup( "version_upgrade", 
 				wxString::Format("%d.%d.%d", sammajor, samminor, sammicro) ) )

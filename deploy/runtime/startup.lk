@@ -72,11 +72,11 @@ function setup_elec_load_page( mode ) //i is 1 for technologies that HAVE the bu
 function setup_battery_pages()
 {
 	addpage([ [{'name'='Battery None','caption'='No Battery'}],
-			  [{'name'='Battery Configuration', 'caption'='Enable Battery'},
-			   'Battery Model',
+			  [{'name'='Battery Model', 'caption'='Enable Battery'},
+			   'Battery Configuration',
+			   'Battery Dispatch',
 			   'Battery Lifetime',
 			   'Battery Replacements',
-			   'Battery Dispatch',
 			   'Battery Thermal'] ],
 			  { 'sidebar'='Battery Storage', 'help'='battery_model', 'exclusive_var'='en_batt'} );
 }
