@@ -1,7 +1,8 @@
 TECHNOLOGY,FINANCING,ANNUAL_OUTPUT,LCOE_NOM,LPPA_NOM,MESSAGES
 Flat Plate PV,Residential,6856.66,8.23065,NA,; 
 Flat Plate PV,Commercial,358876,6.82912,NA,; 
-Flat Plate PV,Third Party,6856.66,NA,NA,; 
+Flat Plate PV,Third Party,OVERWRITE	
+Flat Plate PV,Third Party,6856.66,NA,NA,Defaults file is likely out of date: Flat Plate PV_Third Party  Variables: 2 loaded but not in configuration, 0 wrong type, defaults file has 1094, config has 1092  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later)  Loaded but don't exist in config: batt_ac_or_dc,batt_dc_dc_efficiency; 
 Flat Plate PV,Single Owner,37211992,10.4788,11.2021,; 
 Flat Plate PV,Leveraged Partnership Flip,37211992,11.4433,15.4977,; 
 Flat Plate PV,All Equity Partnership Flip,37211992,19.0838,29.3768,; 
@@ -74,7 +75,7 @@ MSPT,Single Owner,546498752,11.8077,12.7878,;
 MSPT,Leveraged Partnership Flip,524436224,13.4548,19.1463,; 
 MSPT,All Equity Partnership Flip,524436224,24.2762,39.092,; 
 MSPT,Sale Leaseback,524436224,15.441,16.7366,; 
-DSPT,Single Owner,261477504,14.5958,15.7615,; 
+DSPT,Single Owner,261477296,14.5958,15.7615,; 
 DSPT,Leveraged Partnership Flip,250378512,16.4988,23.2344,; 
 DSPT,All Equity Partnership Flip,250378512,29.2825,46.7853,; 
 DSPT,Sale Leaseback,250378512,19.2331,20.7586,; 

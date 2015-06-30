@@ -258,7 +258,7 @@ str_html = '<html><body>' +
            '<tr bgcolor=#ffffff><td><b>Total Electricity Cost ($) </b></td><td><b>' + round(none_electricity_cost) + '</b></td><td><b>' + round(pv_electricity_cost) + '</b></td><td><b>' + round(batt_electricity_cost) + '</b></td></tr>' +
            '<tr><td>Total Capital & Replacement Costs($)</td><td>' + round(none_costs) + '</td><td>' +round(pv_costs) + '</td><td>' +round(batt_costs) + '</td></tr>' + 
            '<tr bgcolor=#ffffff><td>Total Operation & Maintenance Costs($)</td><td>' + round(none_om) + '</td><td>' +round(pv_om) + '</td><td>' +round(batt_om) + '</td></tr>' + 
-		   '<tr><td><b>System & Electricity Cost ($)</b></td><td><b>' + round(none_total) + '</b></td><td><b>' + round(pv_total) + '</b></td><td><b>' + round(batt_total) + '<b></td></tr>' +             
+		   '<tr><td><b>System & Electricity Cost ($)</b></td><td><b>' + round(none_total) + '</b></td><td><b>' + round(pv_total) + '</b></td><td><b>' + round(batt_total) + '</b></td></tr>' +             
 		   '</table>' +
 		   '<br><br><br>' +
 		   '<table bgcolor=#eeeeee width=100%>' +
