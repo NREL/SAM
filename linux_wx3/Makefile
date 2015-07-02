@@ -92,9 +92,13 @@ package:
 	rm -rfv `find ./sam.deploy -type f -name "*.iss"`
 	rm -rfv `find ./sam.deploy -type f -name "*.exe"`
 	echo "stripping binaries..."
-	strip -v ./sam.deploy/linux_64/sam.bin
-	strip -v ./sam.deploy/linux_64/webupd.bin
-	strip -v ./sam.deploy/linux_64/ssc.so
+# for now, don't strip debugging information even though
+# the binaries are much bigger, because backtraces from crashes 
+# will be empty
+#
+#	strip -v ./sam.deploy/linux_64/sam.bin
+#	strip -v ./sam.deploy/linux_64/webupd.bin
+#	strip -v ./sam.deploy/linux_64/ssc.so
 	strip -v ./sam.deploy/runtime/bin/lhs.bin
 	strip -v ./sam.deploy/runtime/bin/stepwise.bin
 	echo "assembling archive..."
