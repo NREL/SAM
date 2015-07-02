@@ -17,6 +17,15 @@ using std::tr1::unordered_map;
 class wxDirPickerCtrl;
 class wxExtGridCtrl;
 
+#include <wx/html/htmlwin.h>
+
+class MyHtmlWindow : public wxHtmlWindow
+{
+public:
+	MyHtmlWindow( wxWindow *parent, int id );
+	void OnLinkClicked( wxHtmlLinkEvent &evt );
+	DECLARE_EVENT_TABLE();
+};
 
 struct FileInfo
 {
@@ -30,11 +39,13 @@ class PackageDialog : public wxDialog
 {
 public:
 	PackageDialog( wxWindow *parent, const wxString &title,
-		const wxString &ver, const wxString &basepath);
+		const wxString &ver, const wxString &basepath,
+		const wxString &plat);
 	virtual ~PackageDialog();
 
 	
 private:
+	void SaveStateToConfig();
 	void OnCommand( wxCommandEvent & );
 
 	wxExtGridCtrl *m_grid;
@@ -46,12 +57,18 @@ private:
 
 
 	void ClearMaps();
+	void ClearDiffs();
 
 	filemap m_curFiles;
 	filemap m_oldFiles;
 
+	wxString m_md5;
+	wxString m_patchLevel;
+	wxString m_archive;
+	wxString m_notes;
 	wxString m_verStr;
 	wxString m_appPath;
+	wxString m_platStr;
 		
 	void ScanCurrentFiles( const wxString &basepath, const wxString &path, int *count,
 		filemap *map );
@@ -69,7 +86,7 @@ private:
 		bool bindiff;
 	};
 
-	std::vector<DiffInfo> m_diffs;
+	std::vector<DiffInfo*> m_diffs;
 
 	void UpdateGrid();
 

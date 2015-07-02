@@ -35,29 +35,142 @@
 #include <wex/extgrid.h>
 
 
+BEGIN_EVENT_TABLE( MyHtmlWindow, wxHtmlWindow )
+	EVT_HTML_LINK_CLICKED( wxID_ANY, MyHtmlWindow::OnLinkClicked )
+END_EVENT_TABLE()
+
+
+MyHtmlWindow::MyHtmlWindow( wxWindow *parent, int id )
+	   : wxHtmlWindow( parent, id, wxDefaultPosition, wxDefaultSize, 
+	   		wxHW_DEFAULT_STYLE|wxBORDER_NONE )
+{
+}
+
+void MyHtmlWindow::OnLinkClicked( wxHtmlLinkEvent &evt )
+{
+   wxString url( evt.GetLinkInfo().GetHref() );
+   wxLaunchDefaultBrowser( url );
+}
+
+enum { ID_PATCH_NOTES = wxID_HIGHEST+494 };
+
+class PatchFileHelper : public wxDialog
+{
+	wxString m_archive, m_platStr, m_verStr, m_patchLevel, m_md5;
+	MyHtmlWindow *m_html;
+	wxTextCtrl *m_notes, *m_line;
+	public:
+		PatchFileHelper( wxWindow *parent, 
+				const wxString &archive,
+				const wxString &plat,
+				const wxString &ver,
+				const wxString &level ,
+				const wxString &md5  )
+			: wxDialog(parent, -1, "Create Patch File Line: patch_"+plat+".txt", 
+					wxDefaultPosition, wxSize(750,450), wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER),
+			m_archive(archive),
+			m_platStr(plat),
+			m_verStr(ver),
+			m_patchLevel( level ),
+			m_md5( md5 )
+		{
+			m_html = 0;
+			m_line = 0;
+
+			if ( m_patchLevel.IsEmpty()
+					|| m_md5.IsEmpty()
+					|| m_archive.IsEmpty() )
+				wxMessageBox("patch level, md5, or archive data doesn't exist. create a archive package first.  in the meantime you can still edit the notes html.");
+			
+			m_notes = new wxTextCtrl( this, ID_PATCH_NOTES, 
+				"<b>List of Changes:</b> <br><br>\n"
+				"<ol>\n"
+				" <li>\n"
+				" <li>\n"
+				"</ol><br><br>\n\n"
+				"<p>For more information, see the <a href=\"https://sam.nrel.gov/sites/sam.nrel.gov/files/content/updates/releasenotes.html\">release notes</a>.</p>",
+				wxDefaultPosition, wxDefaultSize, wxTE_MULTILINE);
+				
+			m_html = new MyHtmlWindow( this, wxID_ANY );
+			
+			wxBoxSizer *hsizer = new wxBoxSizer( wxHORIZONTAL );
+			hsizer->Add( m_notes, 1, wxALL|wxEXPAND, 0 );
+			hsizer->Add( m_html, 1, wxALL|wxEXPAND, 0 );
+			
+			m_line = new wxTextCtrl( this, wxID_ANY );
+			
+			wxBoxSizer *vsizer = new wxBoxSizer( wxVERTICAL );
+			vsizer->Add( hsizer, 1, wxALL|wxEXPAND, 4 );
+			vsizer->Add( m_line, 0, wxALL|wxEXPAND, 4 );
+			vsizer->Add( CreateButtonSizer( wxOK ), 0, wxALL, 4 );
+			
+			SetSizer( vsizer );
+		}
+		
+		void SetNotes( const wxString &n )
+		{
+			m_notes->SetValue( n );
+		}
+		wxString GetNotes()
+		{
+			return m_notes->GetValue();
+		}
+		
+		void OnNotesChange( wxCommandEvent & )
+		{
+			if ( !m_html || !m_line ) return;
+			
+			wxString nn( m_notes->GetValue() );
+			nn.Replace( "\t", "" );
+			nn.Replace( "\r", "" );
+			nn.Replace( "\n", "" );
+			
+			m_html->SetPage( nn );
+			
+			m_line->ChangeValue( m_patchLevel + "\t" 
+					+ wxDateTime::Now().FormatISODate() 
+					+ "\t" + nn + "\t" + wxFileNameFromPath(m_archive) + "\t" + m_md5 );
+		}
+		
+		DECLARE_EVENT_TABLE();
+		
+};
+
+BEGIN_EVENT_TABLE( PatchFileHelper, wxDialog )
+	EVT_TEXT( ID_PATCH_NOTES, PatchFileHelper::OnNotesChange )
+END_EVENT_TABLE()
+
+
 enum { ID_GRID = wxID_HIGHEST + 941,
 	ID_OUTPUT, 
 	ID_DIFF,
 	ID_PACKAGE,
-	ID_FILTER
+	ID_FILTER,
+	ID_DEFFILT,
+	ID_PATCHHELPER
 };
 
 BEGIN_EVENT_TABLE( PackageDialog, wxDialog )
 	EVT_BUTTON( ID_DIFF, PackageDialog::OnCommand )
 	EVT_BUTTON( ID_PACKAGE, PackageDialog::OnCommand )
 	EVT_BUTTON( ID_FILTER, PackageDialog::OnCommand )
+	EVT_BUTTON( ID_DEFFILT, PackageDialog::OnCommand )
+	EVT_BUTTON( ID_PATCHHELPER, PackageDialog::OnCommand )
 
 END_EVENT_TABLE()
 
+#define DEFAULT_FILTER "*d.exe;*.ilk;*.tlog;*d.pdb;*.log;*.lastbuildstate;*msvc*.dll;*lib*.lib;*webupd*;./SAM;*.iss"
+
 PackageDialog::PackageDialog( wxWindow *parent, const wxString &title,
-	const wxString &ver, const wxString &basepath)
+	const wxString &ver, const wxString &basepath, const wxString &plat)
 	: wxDialog( parent, wxID_ANY, title, wxDefaultPosition, wxSize(1100, 800), wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER)
 {
 	m_appPath = basepath;
 	m_verStr = ver;
+	m_platStr = plat;
 
-	m_curDir = new wxDirPickerCtrl( this, wxID_ANY, m_appPath );
-	m_oldDir = new wxDirPickerCtrl( this, wxID_ANY, m_appPath );
+	m_curDir = new wxDirPickerCtrl( this, wxID_ANY, m_appPath, "Choose current (new) path", wxDefaultPosition, wxDefaultSize, wxDIRP_DEFAULT_STYLE|wxDIRP_USE_TEXTCTRL|wxDIRP_SMALL );
+	m_oldDir = new wxDirPickerCtrl( this, wxID_ANY, m_appPath, "Choose old path", wxDefaultPosition, wxDefaultSize, wxDIRP_DEFAULT_STYLE|wxDIRP_USE_TEXTCTRL|wxDIRP_SMALL );
 	
 	wxString dir;
 	wxConfig cfg( "SamUpdate", "NREL");
@@ -67,13 +180,14 @@ PackageDialog::PackageDialog( wxWindow *parent, const wxString &title,
 		m_oldDir->SetPath( dir );
 		
 	wxBoxSizer *buttons = new wxBoxSizer( wxHORIZONTAL );
-	buttons->Add( new wxButton( this, wxID_CANCEL, "Close" ) );
-	buttons->Add( new wxButton( this, ID_DIFF, "Generate diff" ) );
-	buttons->Add( new wxButton( this, ID_PACKAGE, "Create package" ) );
-	buttons->Add( new wxButton( this, ID_FILTER, "Apply filters:" ) );
+	buttons->Add( new wxButton( this, wxID_CANCEL, "Close" ), 0, wxALL, 2 );
+	buttons->Add( new wxButton( this, ID_DIFF, "Generate diff" ), 0, wxALL, 2 );
+	buttons->Add( new wxButton( this, ID_PACKAGE, "Create package" ), 0, wxALL, 2 );
+	buttons->Add( new wxButton( this, ID_PATCHHELPER, "Patch line..." ), 0, wxALL, 2 );
+	buttons->Add( new wxButton( this, ID_DEFFILT, "Reset filters" ), 0, wxALL, 2 );
+	buttons->Add( new wxButton( this, ID_FILTER, "Apply filters:" ), 0, wxALL, 2 );
 	
-	m_filter = new wxTextCtrl( this, wxID_ANY, 
-		"*d.exe;*.ilk;*.tlog;*d.pdb;*.log;*.lastbuildstate;*msvc*.dll;*lib*.lib" );
+	m_filter = new wxTextCtrl( this, wxID_ANY, DEFAULT_FILTER ); 
 
 	wxString buf;
 	if (cfg.Read("m_filter", &buf ))
@@ -82,10 +196,10 @@ PackageDialog::PackageDialog( wxWindow *parent, const wxString &title,
 	buttons->Add( m_filter, 1, wxALL|wxEXPAND, 3 );
 
 	wxBoxSizer *dirs = new wxBoxSizer( wxHORIZONTAL );
-	dirs->Add( new wxStaticText(this, wxID_ANY, "Current version:"), 0, wxALL|wxALIGN_CENTER_VERTICAL );
-	dirs->Add( m_curDir, 1, wxALL|wxEXPAND, 0 );
-	dirs->Add( new wxStaticText(this, wxID_ANY, "Old version:"), 0, wxALL|wxALIGN_CENTER_VERTICAL );
-	dirs->Add( m_oldDir, 1, wxALL|wxEXPAND, 0 );
+	dirs->Add( new wxStaticText(this, wxID_ANY, "Current version:"), 0, wxALL|wxALIGN_CENTER_VERTICAL, 2 );
+	dirs->Add( m_curDir, 1, wxALL|wxEXPAND, 2 );
+	dirs->Add( new wxStaticText(this, wxID_ANY, "Old version:"), 0, wxALL|wxALIGN_CENTER_VERTICAL, 2 );
+	dirs->Add( m_oldDir, 1, wxALL|wxEXPAND, 2 );
 	
 	wxSplitterWindow *split = new wxSplitterWindow( this );
 	
@@ -107,19 +221,28 @@ PackageDialog::PackageDialog( wxWindow *parent, const wxString &title,
 
 PackageDialog::~PackageDialog()
 {
+	SaveStateToConfig();
+	ClearMaps();
+	ClearDiffs();
+}
+
+void PackageDialog::SaveStateToConfig()
+{
 	wxConfig cfg( "SamUpdate", "NREL");
 	cfg.Write( "m_curDir", m_curDir->GetPath() );
 	cfg.Write( "m_oldDir", m_oldDir->GetPath() );
 	cfg.Write( "m_filter", m_filter->GetValue() );
-	ClearMaps();
 }
 
 void PackageDialog::ScanCurrentFiles( const wxString &basepath, const wxString &path, 
 									 int *count, filemap *map )
 {
+	//printf("scanning files in %s...\n", (const char*)path.c_str());
+	
 	wxDir dir( path );
 
 	m_output->AppendText("scanning folder: " + path + "\n");
+	wxSafeYield( NULL, true );
 	
 	if (!dir.IsOpened())
 		return;
@@ -154,6 +277,14 @@ void PackageDialog::ScanCurrentFiles( const wxString &basepath, const wxString &
 
 		hasmore = dir.GetNext(&f);
 	}
+}
+
+void PackageDialog::ClearDiffs()
+{
+	for( size_t i=0;i<m_diffs.size();i++ )
+		delete m_diffs[i];
+
+	m_diffs.clear();
 }
 
 void PackageDialog::ClearMaps()
@@ -197,8 +328,15 @@ bool PackageDialog::Identical( const wxString &file1, const wxString &file2 )
 			break;
 		}
 
-		if ( c1 == EOF || c2 == EOF )
+		if ( c1 == EOF && c2 == EOF )
 			break;
+
+		if ( c1 == EOF && c2 != EOF 
+				|| c1 != EOF && c2 == EOF )
+		{
+			same = false;
+			break;
+		}
 	}
 
 
@@ -210,16 +348,30 @@ bool PackageDialog::Identical( const wxString &file1, const wxString &file2 )
 
 void PackageDialog::MakeDiff()
 {
+	SaveStateToConfig();
+
 	m_output->Clear();
 	int count1 = 0, count2 = 0;
+
+	wxString curpath( m_curDir->GetPath() );
+	wxString oldpath( m_oldDir->GetPath() );
+
+	if ( curpath == oldpath )
+	{
+		wxMessageBox("new and old versions have the same path... stopping");
+		return;
+	}
 	
 	ClearMaps();
-	ScanCurrentFiles( m_curDir->GetPath(), m_curDir->GetPath(), &count1, &m_curFiles );
-	ScanCurrentFiles( m_oldDir->GetPath(), m_oldDir->GetPath(), &count2, &m_oldFiles );
+	m_output->AppendText("Scanning current (new) path: " + curpath + "\n"); 
+	ScanCurrentFiles( curpath, curpath, &count1, &m_curFiles );
+	m_output->AppendText("\nScanning old path: " + oldpath + "\n"); 
+	ScanCurrentFiles( oldpath, oldpath, &count2, &m_oldFiles );
 	
 	m_output->AppendText( wxString::Format("Scanned: current ver = %d, old ver = %d\n", count1, count2 ) );
+	wxSafeYield( NULL, true );
 
-	m_diffs.clear();
+	ClearDiffs();
 
 	int ii=0;
 	for ( filemap::iterator cur = m_curFiles.begin();
@@ -230,45 +382,45 @@ void PackageDialog::MakeDiff()
 		filemap::iterator old = m_oldFiles.find( cur->first );
 		if ( old != m_oldFiles.end() )
 		{
-			if ( !Identical( m_curDir->GetPath() + "/" + cur->second->relpath,
+			if ( !Identical( curpath + "/" + cur->second->relpath,
 				m_oldDir->GetPath() + "/" + old->second->relpath ))
 			{
-				DiffInfo di;
-				di.cur = cur->second->relpath;
-				di.cur_time = cur->second->lastmod;
-				di.old = old->second->relpath;
-				di.old_time = old->second->lastmod;
-				di.bindiff = true;
+				DiffInfo *di = new DiffInfo;
+				di->cur = cur->second->relpath;
+				di->cur_time = cur->second->lastmod;
+				di->old = old->second->relpath;
+				di->old_time = old->second->lastmod;
+				di->bindiff = true;
 				m_diffs.push_back( di );
 			}
 			else
 			{
 				m_output->AppendText(wxString::Format("[%d of %d] ignore (no changes): ",ii, count1) + cur->second->relpath  + "\n");
+				wxSafeYield( NULL, true );
 			}
 		}
 		else
 		{
-			DiffInfo di;
-			di.cur = cur->second->relpath;
-			di.cur_time = cur->second->lastmod;
-			di.bindiff = false;
+			DiffInfo *di = new DiffInfo;
+			di->cur = cur->second->relpath;
+			di->cur_time = cur->second->lastmod;
+			di->bindiff = false;
 			m_diffs.push_back( di );
 		}
 	}
 
 	// sort the selections by file names
-	DiffInfo di;
-	size_t count = m_diffs.size();
-	for (size_t i=0;i<count-1;i++)
+	int count = m_diffs.size();
+	for (int i=0;i<count-1;i++)
 	{
 		int smallest = i;
 
 		for (size_t j=i+1;j<count;j++)
-			if ( m_diffs[j].cur < m_diffs[smallest].cur )
+			if ( m_diffs[j]->cur < m_diffs[smallest]->cur )
 				smallest = j;
 
 		// swap
-		di = m_diffs[i];
+		DiffInfo *di = m_diffs[i];
 		m_diffs[i] = m_diffs[smallest];
 		m_diffs[smallest] = di;		
 	}
@@ -292,10 +444,10 @@ void PackageDialog::UpdateGrid()
 
 	for( size_t i=0;i<m_diffs.size();i++ )
 	{
-		m_grid->SetCellValue( m_diffs[i].cur, i, 0 );
-		m_grid->SetCellValue( m_diffs[i].cur_time.FormatDate() + " " + m_diffs[i].cur_time.FormatTime(), i, 1 );
-		m_grid->SetCellValue( m_diffs[i].bindiff ? "UPDATED" : "NEW", i, 2 );		
-		m_grid->SetCellBackgroundColour(  m_diffs[i].bindiff ? "salmon" : "sea green", i, 2 );
+		m_grid->SetCellValue( m_diffs[i]->cur, i, 0 );
+		m_grid->SetCellValue( m_diffs[i]->cur_time.FormatDate() + " " + m_diffs[i]->cur_time.FormatTime(), i, 1 );
+		m_grid->SetCellValue( m_diffs[i]->bindiff ? "UPDATED" : "NEW", i, 2 );		
+		m_grid->SetCellBackgroundColour(  m_diffs[i]->bindiff ? "salmon" : "sea green", i, 2 );
 	}
 	m_grid->AutoSizeColumns();
 	m_grid->Thaw();
@@ -314,6 +466,19 @@ void PackageDialog::OnCommand( wxCommandEvent &evt )
 	case ID_FILTER:
 		FilterResults();
 		break;
+	case ID_DEFFILT:
+		m_filter->SetValue( DEFAULT_FILTER );
+		break;
+	case ID_PATCHHELPER:
+		{
+			PatchFileHelper pfh( this, m_archive, m_platStr, m_verStr, m_patchLevel, m_md5 );
+			if ( !m_notes.IsEmpty() )
+				pfh.SetNotes( m_notes );
+
+			pfh.ShowModal();
+			m_notes = pfh.GetNotes();
+		}
+		break;
 	}
 }
 
@@ -326,11 +491,14 @@ void PackageDialog::FilterResults()
 	{
 		bool remove = false;
 		for ( size_t j=0;j<filters.Count();j++ )
-			if ( wxMatchWild( filters[j], m_diffs[i].cur, false ) )
+			if ( wxMatchWild( filters[j], m_diffs[i]->cur, false ) )
 				remove = true;
 
 		if ( remove )
+		{
+			delete m_diffs[i];
 			m_diffs.erase( m_diffs.begin() + i );
+		}
 		else
 			i++;
 	}
@@ -350,6 +518,7 @@ void PackageDialog::MakePackage()
 	wxGetTempFileName("zzsam", temp );
 
 	m_output->AppendText("writing zip: " + temp + "\n");
+	wxSafeYield( NULL, true );
 
 	wxFFileOutputStream out( temp );
 	wxZipOutputStream zip( out );
@@ -358,16 +527,19 @@ void PackageDialog::MakePackage()
 		wxMessageBox("Could not create temporary file for zip output");
 		return;
 	}
+
+	wxString curpath( m_curDir->GetPath() );
 	
 #define NRWBUFBYTES 4096
 	char rwbuf[NRWBUFBYTES];
 
 	for (size_t i=0;i<m_diffs.size();i++)
 	{
-		zip.PutNextEntry( m_diffs[i].cur );
-		m_output->AppendText( wxString::Format("[%d of %d] zip: ", (int)i+1, (int)m_diffs.size()) + m_diffs[i].cur + "\n");
+		zip.PutNextEntry( m_diffs[i]->cur );
+		m_output->AppendText( wxString::Format("[%d of %d] zip: ", (int)i+1, (int)m_diffs.size()) + m_diffs[i]->cur + "\n");
+		wxSafeYield( NULL, true );
 
-		wxString fn = m_curDir->GetPath() + "/" + m_diffs[i].cur;
+		wxString fn = curpath+ "/" + m_diffs[i]->cur;
 		wxFFileInputStream fin( fn ); // file input
 
 		if (!fin.IsOk())
@@ -386,23 +558,46 @@ void PackageDialog::MakePackage()
 	zip.Close();
 	out.Close();
 
-	wxString md5 = wxMD5::GetFileMD5( temp );
-	m_output->AppendText("zip ok: md5=" + md5 + "\n");
+	m_md5 = wxMD5::GetFileMD5( temp );
+	m_output->AppendText("zip ok: md5=" + m_md5 + "\n");
+	wxSafeYield( NULL, true );
+
+	m_patchLevel = wxGetTextFromUser("Enter patch level number (1,2,3,...etc):" );
+
+	m_archive = 
+		m_platStr + "_" + m_verStr + "_patch" 
+		+ m_patchLevel
+		+ "_" + m_md5
+		+ ".zip";
+
+	
 	wxFileDialog dlg( this, "Save patch zip file", 
-		m_curDir->GetPath(), m_verStr + "_patch_" + md5 + ".zip", 
+		curpath, m_archive, 
 		"ZIP archive|*.zip", wxFD_SAVE|wxFD_OVERWRITE_PROMPT );
 	if (dlg.ShowModal() != wxID_OK)
 		return;
+	
+	m_archive = dlg.GetPath();
 
-	wxCopyFile( temp, dlg.GetPath() );
-	if ( wxMD5::GetFileMD5( dlg.GetPath() ) == md5 )
+	wxCopyFile( temp, m_archive );
+	if ( wxMD5::GetFileMD5( m_archive ) == m_md5 )
 	{
 		m_output->AppendText( "patch archive written to: " + dlg.GetPath() + "\n");
 		wxRemoveFile( temp );
 		m_output->AppendText( wxString::Format("size: %.1lf kb\n", wxFileName::GetSize( dlg.GetPath()).ToDouble()*0.001 ) );
+		wxSafeYield( NULL, true );
 	}
 	else
-		m_output->AppendText( "error copying patch file\n");
+		m_output->AppendText( "error copying patch file, md5 mismatch\n");
 
+
+	// help create the patchline to add to the patch file online
 	
+	PatchFileHelper pfh(this, m_archive, m_platStr, m_verStr, m_patchLevel, m_md5 );
+	if ( !m_notes.IsEmpty() )
+		pfh.SetNotes( m_notes );
+	pfh.ShowModal();
+	m_notes = pfh.GetNotes();
+
 }
+

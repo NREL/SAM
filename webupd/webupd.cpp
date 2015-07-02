@@ -295,25 +295,6 @@ BEGIN_EVENT_TABLE(UpdateDialog, wxDialog)
 	EVT_SIMPLECURL( ID_download, UpdateDialog::OnDownloadProgressEvent )
 END_EVENT_TABLE();
 
-class MyHtmlWindow : public wxHtmlWindow
-{
-public:
-	MyHtmlWindow( wxWindow *parent, int id )
-		: wxHtmlWindow( parent, id, wxDefaultPosition, wxDefaultSize, wxHW_DEFAULT_STYLE|wxBORDER_NONE )
-	{
-	}
-
-	void OnLinkClicked( wxHtmlLinkEvent &evt )
-	{
-		wxString url( evt.GetLinkInfo().GetHref() );
-		wxLaunchDefaultBrowser( url );
-	}
-
-	DECLARE_EVENT_TABLE();
-};
-BEGIN_EVENT_TABLE( MyHtmlWindow, wxHtmlWindow )
-	EVT_HTML_LINK_CLICKED( wxID_ANY, MyHtmlWindow::OnLinkClicked )
-END_EVENT_TABLE()
 
 
 class SamUpdateApp : public wxApp
@@ -366,7 +347,7 @@ public:
 				quiet = true;
 			else if ( arg == "-package" )
 			{
-				PackageDialog dlg( 0, "Create update package: " + g_samVerIdStr, g_samVerIdStr, g_appPath );
+				PackageDialog dlg( 0, "Create update package: " + g_samVerIdStr, g_samVerIdStr, g_appPath, g_platStr);
 				dlg.ShowModal();
 				return false;
 			}
