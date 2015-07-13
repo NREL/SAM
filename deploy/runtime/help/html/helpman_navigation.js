@@ -1,4 +1,4 @@
-/* ------------ Script copyright 2005-2013 EC Software -------------
+/* ------------ Script copyright 2005-2015 EC Software -------------
    This script was created by Help & Manual and is part of the      
    Webhelp export format. This script is designed for use in 
    combination with the output of Help & Manual and must not 
@@ -69,10 +69,14 @@ function hmNoAbsposResize(jdiv, w, h) {
 }	
 
 function hmNavigationFrame() {
-  for (var i=0;i<frames.length;i++) {
-  	if (frames[i].name=='hmnavigation') return frames[i];  
-  }   	  
-  return self;  	
+    var actFrames = new Array(
+        window.frames['hmnavigation'],
+        window.frames['hmcontent']
+    );
+    for (var i=0;i<actFrames.length;i++) {
+        if (actFrames[i].name=='hmnavigation') return actFrames[i];
+    }
+    return self;
 }
 
 function hmContentFrame() {
@@ -357,11 +361,9 @@ function hmPreloadIcons() {
     }
 }
 
-
 function hmCreateVSplitter(leftdiv, rightdiv) {
-
     var splitWidth = ($(rightdiv).offset().left - ($(leftdiv).offset().left+$(leftdiv).outerWidth()));
-    $('body').append('<div id="hmsplitter" style="border:none;margin:0;padding:0;position:absolute;cursor:col-resize;background-color:transparent;background:url(blank.gif);overflow:hidden;'+
+    $('body').append('<div id="hmsplitter" style="border:none;margin:0;padding:0;position:absolute;cursor:col-resize;background-color:transparent;overflow:hidden;'+
                      'height:'+$(leftdiv).outerHeight()+
                      'px;top:'+$(leftdiv).offset().top+
                      'px;left:'+($(leftdiv).offset().left+$(leftdiv).outerWidth())+
@@ -376,7 +378,7 @@ function hmCreateVSplitter(leftdiv, rightdiv) {
     var split = $('#hmsplitter');
 
 	$(window).resize(function() {  /* resize splitter when window changes */
-      split.css('height', $(leftdiv).outerHeight()+'px'); 
+      split.css({'height': $(leftdiv).outerHeight()+'px', 'left': ($(leftdiv).offset().left+$(leftdiv).outerWidth())+'px'}); 
 	}); 
 
     split.bind('mousedown', startDrag); 
@@ -389,7 +391,7 @@ function hmCreateVSplitter(leftdiv, rightdiv) {
 		oldWidth = $(rightdiv).outerWidth();
 		oldSplitL = split.offset().left;
 		
-        var bg = $('<div id="hmcurtain" style="border:none;padding:0;margin:0;position:absolute;cursor:col-resize;width:100%;height:100%;background-color:transparent;background:url(blank.gif)"></div>').appendTo('body');
+        var bg = $('<div id="hmcurtain" style="border:none;padding:0;margin:0;position:absolute;cursor:col-resize;width:100%;height:100%;background-color:transparent"></div>').appendTo('body');
 		bg.bind('mousemove', performDrag); 
 		bg.bind('mouseup', endDrag);
 		split.bind('mousemove', performDrag); 

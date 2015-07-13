@@ -3,7 +3,7 @@ hr { color: #000000}
 body, table, tr, th /* Normal */
 {
  font-size: 10pt;
- font-family: 'Segoe UI';
+ font-family: 'Segoe UI',Tahoma,Verdana,Arial,sans-serif;
  font-style: normal;
  font-weight: normal;
  color: #000000;
@@ -16,7 +16,7 @@ span.f_CHCode /* CH Code */
 span.f_CHEquationVariable /* CH Equation Variable */
 {
  font-size: 11pt;
- font-family: 'Times New Roman';
+ font-family: 'Times New Roman',Times,Georgia,serif;
  font-style: italic;
 }
 span.f_CHFileName /* CH File Name */
@@ -38,7 +38,7 @@ span.f_CHUIElement /* CH UI Element */
 span.f_CHVariableSubscript /* CH Variable Subscript */
 {
  font-size: 8pt;
- font-family: 'Times New Roman';
+ font-family: 'Times New Roman',Times,Georgia,serif;
  vertical-align: sub;
 }
 span.f_Character /* Character */
@@ -88,21 +88,21 @@ span.f_Heading2 /* Heading2 */
 span.f_Heading2_atoc_ /* Heading2_atoc_ */
 {
  font-size: 14pt;
- font-family: Arial;
+ font-family: Arial,Helvetica,sans-serif;
  font-weight: bold;
  color: #0072c6;
 }
 span.f_Heading3_atocs_ /* Heading3_atocs_ */
 {
  font-size: 14pt;
- font-family: Arial;
+ font-family: Arial,Helvetica,sans-serif;
  font-weight: bold;
  color: #0072c6;
 }
 span.f_Heading4 /* Heading4 */
 {
  font-size: 12pt;
- font-family: Arial;
+ font-family: Arial,Helvetica,sans-serif;
  font-weight: bold;
 }
 span.f_ImageCaption /* Image Caption */
@@ -124,7 +124,7 @@ span.f_ListNoNumber /* List No Number */
 }
 span.f_NewStyle /* New Style */
 {
- font-family: Verdana;
+ font-family: Verdana,Geneva,Arial,sans-serif;
  color: #ffffff;
  background-color: #ff0000;
 }
@@ -199,22 +199,22 @@ span.f_TextCode /* Text Code */
 }
 span.f_Title /* Title */
 {
- font-family: Arial;
+ font-family: Arial,Helvetica,sans-serif;
  font-weight: bold;
 }
 span.f_TitleFigure /* Title Figure */
 {
- font-family: Verdana;
+ font-family: Verdana,Geneva,Arial,sans-serif;
  font-weight: bold;
 }
 span.f_TitleProcedure /* Title Procedure */
 {
- font-family: Verdana;
+ font-family: Verdana,Geneva,Arial,sans-serif;
  font-weight: bold;
 }
 span.f_TitleTable /* Title Table */
 {
- font-family: Arial;
+ font-family: Arial,Helvetica,sans-serif;
  font-weight: bold;
 }
 span.f_TopicTOCHeading /* Topic TOC Heading */
@@ -237,7 +237,7 @@ span.f_Video /* Video */
 span.f_VideoLibraryTitle /* Video Library Title */
 {
  font-size: 12pt;
- font-family: Arial;
+ font-family: Arial,Helvetica,sans-serif;
  font-weight: bold;
 }
 /* Paragraph styles */
@@ -250,30 +250,38 @@ p /* Normal */
 }
 .p_CodeExample /* Code Example */
 {
+ font-size: 8pt;
  white-space: nowrap;
+ page-break-inside: avoid;
 }
 .p_Comment /* Comment */
 {
+ font-size: 10pt;
 }
 .p_Construction /* Construction */
 {
+ font-size: 16pt;
  text-align: center;
 }
 .p_Definition /* Definition */
 {
+ font-size: 10pt;
  margin: 0px 0px 6px 24px;
 }
 .p_Description /* Description */
 {
+ font-size: 10pt;
  margin: 3px 0px 6px 24px;
 }
 .p_Equation /* Equation */
 {
+ font-size: 10pt;
  text-align: center;
  margin: 0px 0px 6px 0px;
 }
 .p_EquationExcel /* Equation Excel */
 {
+ font-size: 10pt;
  text-indent: -24px;
  margin: 0px 0px 6px 72px;
 }
@@ -294,7 +302,7 @@ p /* Normal */
  text-indent: 0px;
  border-color: #0072c6;
  border-style: solid;
- border-width: 1px;
+ border-width: thin;
  border-top: none;
  border-right: none;
  border-left: none;
@@ -309,10 +317,10 @@ p /* Normal */
  text-indent: -19px;
  border-color: #0072c6;
  border-style: solid;
- border-width: 1px;
+ border-width: thin;
  background: #ebebeb;
  padding: 2px 2px 2px 2px;
- margin: 1px -2px 1px 17px;
+ margin: 1px 0px 1px 17px;
 }
 .p_Heading3_atocs_ /* Heading3_atocs_ */
 {
@@ -320,6 +328,8 @@ p /* Normal */
  font-weight: normal;
  text-align: left;
  text-indent: 0px;
+ page-break-inside: avoid;
+ page-break-after: avoid;
  border-color: #0072c6;
  border-style: solid;
  border-width: 2px;
@@ -327,7 +337,7 @@ p /* Normal */
  border-right: none;
  border-left: none;
  padding: 2px 2px 2px 2px;
- margin: 1px -2px 10px -2px;
+ margin: 1px 0px 10px 0px;
 }
 .p_Heading4 /* Heading4 */
 {
@@ -340,159 +350,214 @@ p /* Normal */
 }
 .p_ImageCaption /* Image Caption */
 {
+ font-size: 10pt;
  text-align: center;
  margin: 6px 0px 6px 0px;
 }
 .p_Item /* Item */
 {
+ font-size: 10pt;
 }
 .p_List /* List */
 {
+ font-size: 10pt;
  text-indent: -24px;
  margin: 0px 0px 3px 48px;
 }
 .p_ListLast /* List Last */
 {
+ font-size: 10pt;
  text-indent: -24px;
  margin: 0px 0px 6px 48px;
 }
 .p_ListNoNumber /* List No Number */
 {
+ font-size: 10pt;
  text-indent: -24px;
  margin: 0px 0px 3px 72px;
 }
 .p_NewStyle /* New Style */
 {
+ font-size: 10pt;
  text-align: center;
  margin: 12px 0px 12px 0px;
 }
 .p_Note /* Note */
 {
+ font-size: 10pt;
  border-color: #000000;
  border-style: solid;
- border-width: 1px;
+ border-width: thin;
  background: #ffffc4;
  padding: 5px 5px 5px 5px;
  margin: 1px 43px 7px 43px;
 }
 .p_Notes /* Notes */
 {
+ font-size: 10pt;
 }
 .p_ProcedureStep /* Procedure Step */
 {
+ font-size: 10pt;
  text-indent: -24px;
  margin: 0px 0px 3px 48px;
 }
 .p_ProcedureStepLast /* Procedure Step Last */
 {
+ font-size: 10pt;
  text-indent: -24px;
  margin: 0px 0px 6px 48px;
 }
 .p_ProcedureStepNoNumber /* Procedure Step No Number */
 {
+ font-size: 10pt;
  margin: 0px 0px 3px 48px;
 }
 .p_Step /* Step */
 {
+ font-size: 10pt;
  text-indent: -24px;
  margin: 3px 24px 3px 48px;
 }
 .p_StepLast /* Step Last */
 {
+ font-size: 10pt;
  text-indent: -24px;
  margin: 3px 24px 6px 48px;
 }
 .p_StepNoNumber /* Step No Number */
 {
+ font-size: 10pt;
  margin: 3px 0px 3px 48px;
 }
 .p_Table /* Table */
 {
+ font-size: 10pt;
  text-align: center;
  margin: 0px 0px 12px 0px;
 }
 .p_TableEquationNumber /* Table Equation Number */
 {
+ font-size: 10pt;
  text-align: right;
+ page-break-inside: avoid;
 }
 .p_TableHeadColumn /* Table Head Column */
 {
+ font-size: 10pt;
  text-align: center;
+ page-break-inside: avoid;
 }
 .p_TableHeadRow /* Table Head Row */
 {
+ font-size: 10pt;
+ page-break-inside: avoid;
 }
 .p_TableText /* Table Text */
 {
+ font-size: 10pt;
+ page-break-inside: avoid;
 }
 .p_TableTextCenter /* Table Text Center */
 {
+ font-size: 10pt;
  text-align: center;
+ page-break-inside: avoid;
 }
 .p_TableTextLeft /* Table Text Left */
 {
+ font-size: 10pt;
+ page-break-inside: avoid;
 }
 .p_TableTextRight /* Table Text Right */
 {
+ font-size: 10pt;
  text-align: right;
+ page-break-inside: avoid;
 }
 .p_Term /* Term */
 {
+ font-size: 10pt;
+ page-break-inside: avoid;
+ page-break-after: avoid;
  margin: 6px 0px 0px 0px;
 }
 .p_Text /* Text */
 {
+ font-size: 10pt;
  margin: 0px 0px 6px 0px;
 }
 .p_TextCenter /* Text Center */
 {
+ font-size: 10pt;
  text-align: center;
  margin: 0px 0px 6px 0px;
 }
 .p_TextCode /* Text Code */
 {
+ font-size: 10pt;
  margin: 0px 0px 6px 24px;
 }
 .p_Title /* Title */
 {
+ font-size: 10pt;
+ page-break-inside: avoid;
+ page-break-after: avoid;
  margin: 0px 0px 6px 0px;
 }
 .p_TitleFigure /* Title Figure */
 {
+ font-size: 10pt;
  text-align: center;
+ page-break-inside: avoid;
+ page-break-after: avoid;
  margin: 12px 0px 12px 0px;
 }
 .p_TitleProcedure /* Title Procedure */
 {
+ font-size: 10pt;
+ page-break-inside: avoid;
+ page-break-after: avoid;
  margin: 12px 0px 6px 0px;
 }
 .p_TitleTable /* Title Table */
 {
+ font-size: 10pt;
+ page-break-inside: avoid;
+ page-break-after: avoid;
  margin: 6px 0px 1px 0px;
 }
 .p_TopicTOCHeading /* Topic TOC Heading */
 {
+ font-size: 10pt;
  margin: 6px 0px 6px 5px;
 }
 .p_TopicTOClist /* Topic TOC list */
 {
+ font-size: 10pt;
  margin: 3px 43px 3px 19px;
 }
 .p_VariableDescription /* Variable Description */
 {
+ font-size: 10pt;
  margin: 0px 0px 6px 24px;
 }
 .p_VariableName /* Variable Name */
 {
+ font-size: 10pt;
+ page-break-inside: avoid;
+ page-break-after: avoid;
  margin: 0px 0px 6px 12px;
 }
 .p_Video /* Video */
 {
+ font-size: 10pt;
  text-align: center;
  margin: 12px 0px 12px 0px;
 }
 .p_VideoLibraryTitle /* Video Library Title */
 {
+ font-size: 12pt;
  margin: 0px 0px 12px 0px;
 }
 
@@ -520,3 +585,15 @@ img.dropdown-toggle-icon /* toggle icon */
 {
   cursor: pointer;
 }
+/* CSS for responsive image maps */
+
+.hmImageMap a.hmHotspotRect { display:block; position:absolute;
+                              border:none; background:#000; opacity:0.3; filter:alpha(opacity=30);
+            								   visibility:hidden }
+.hmImageMap a.hmHotspotEllipse { display:block; position:absolute; border-radius:50%;
+                                 border:none; background:#000; opacity:0.3; filter:alpha(opacity=30);
+                                 visibility:hidden }
+.hmImageMap:hover a.hmHotspotRect { visibility:visible }
+.hmImageMap:hover a.hmHotspotEllipse { visibility:visible }
+a.hmHotspotRect:hover { border:1px solid #000; background:#FFF }
+a.hmHotspotEllipse:hover { border:1px solid #000; background:#FFF }
