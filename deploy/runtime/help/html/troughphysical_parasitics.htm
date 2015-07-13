@@ -41,71 +41,71 @@
 <p class="p_Text"><span class="f_Text">To view the Parasitics page, click </span><span class="f_CHInterfaceElement">Parasitics</span><span class="f_Text"> on the main window's navigation menu. Note that for the physical trough input pages to be available, the technology option in the <a href="choose_models.htm" class="topiclink">Technology and Market</a> window must be Concentrating Solar Power - Physical Trough System.</span></p>
 <p class="p_Text"><span class="f_Text">The variables on the Parasitics page define electrical loads in the system. For each hour of the simulation, SAM calculates the parasitic load and subtracts it from the power cycle's gross electrical output to calculate the net electrical output.</span></p>
 <p class="p_Note"><span class="f_CHNote">Note.</span><span class="f_Note"> For a detailed explanation of the physical trough model, see Wagner, M. J.; Gilman, P. (2011). </span><span class="f_Emphasis">Technical Manual for the SAM Physical Trough Model</span><span class="f_Note">. 124 pp.; NREL Report No. TP-5500-51825. <a href="http://www.nrel.gov/docs/fy11osti/51825.pdf" target="_blank" class="weblink">http://www.nrel.gov/docs/fy11osti/51825.pdf</a> (3.7 MB)</span></p>
-<h3 class="p_Heading3_atocs_" style="border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Parasitics</span></h3>
-<p class="p_VariableName"><span class="f_VariableName">Piping thermal loss coefficient (W/m</span><span class="f_VariableName" style="font-size: 7pt; vertical-align: super;">2</span><span class="f_VariableName">-K)</span></p>
+<h3 class="p_Heading3_atocs_" style="page-break-inside: avoid; page-break-after: avoid; border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Parasitics</span></h3>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Piping thermal loss coefficient (W/m</span><span class="f_VariableName" style="font-size: 7pt; vertical-align: super;">2</span><span class="f_VariableName">-K)</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The thermal loss coefficient that is used to calculate thermal losses from piping between receivers, crossover piping, header piping, and runner piping. The coefficient specifies the number of thermal watts lost from the system as a function of the piping surface area, and the temperature difference between the fluid in the piping and the ambient air (dry bulb temperature). The length of crossover piping depends on the row spacing variable on the <a href="troughphysical_solar_field.htm" class="topiclink">Solar Field</a> page, and the piping distance between assemblies on the <a href="troughphysical_collectors_scas.htm" class="topiclink">Collectors</a> page.</span></p>
-<p class="p_VariableName"><span class="f_VariableName">Tracking power (W per collector)</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Tracking power (W per collector)</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The amount of electrical power consumed by a single collector tracking mechanism. SAM only calculates tracking losses during hours when collectors are actively tracking the sun. The total field tracking power is calculated by multiplying this value by the number of loops in the field and number of assemblies per loop specified on the <a href="troughphysical_solar_field.htm" class="topiclink">Solar Field</a> page.</span></p>
-<p class="p_VariableName"><span class="f_VariableName">Required pumping power for HTF through power block (kJ/kg)</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Required pumping power for HTF through power block (kJ/kg)</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">A coefficient used to calculate the electric power required to pump heat transfer fluid through the power cycle. SAM applies the coefficient to all heat transfer fluid flowing through the power cycle. The coefficient can alternatively be defined as the pumping power divided by the mass flow rate kW/kg-s, which is equivalent to the units kJ/kg.</span></p>
-<p class="p_VariableName"><span class="f_VariableName">Required pumping power for HTF through storage (kJ/kg)</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Required pumping power for HTF through storage (kJ/kg)</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">A coefficient used to calculate the electric power consumed by pumps to move heat transfer fluid through the storage heat exchanger on both the solar field side and the storage tank side (for cases where a heat exchanger exists, specified on the <a href="troughphysical_thermal_storage.htm" class="topiclink">Thermal Storage</a> page). This coefficient is applied separately to the solar field flow and the tank flow.</span></p>
-<p class="p_VariableName"><span class="f_VariableName">Fraction of rated gross power consumed at all times</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Fraction of rated gross power consumed at all times</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">A fixed electric load applied to all hours of the simulation, expressed as a fraction of rated gross power at design from the <a href="troughphysical_power_cycle.htm" class="topiclink">Power Cycle</a> page.</span></p>
-<p class="p_VariableName"><span class="f_VariableName">Balance of plant parasitic (MWe/MWcap)</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Balance of plant parasitic (MWe/MWcap)</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">A parasitic load that is applied as a function of the thermal input to the power cycle.</span></p>
-<p class="p_VariableName"><span class="f_VariableName">Aux heater, boiler parasitic (MWe/MWcap)</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Aux heater, boiler parasitic (MWe/MWcap)</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">A parasitic load that is applied as a function of the thermal output of the auxiliary fossil-fired heaters. Applies only when the system includes fossil backup. See <a href="troughphysical_power_cycle.htm#fossilbackup" class="topiclink">the fossil backup inputs on the Power Cycle page</a>.</span></p>
-<p class="p_VariableName"><span class="f_VariableName">Design Point Total Tracking (W)</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Design Point Total Tracking (W)</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">A value displayed for reference indicating what the total tracking parasitic load would be if all collectors in the field were actively tracking simultaneously.</span></p>
-<p class="p_VariableName"><span class="f_VariableName">Design Point Total Fixed (MWe)</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Design Point Total Fixed (MWe)</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The value of the fixed parasitic load applied at all times.</span></p>
 <p class="p_EquationExcel"><span class="f_EquationExcel">Fixed (MWe) = Fraction of Gross Power Consumed at All Times × Design Gross Output (MWe)</span></p>
-<p class="p_VariableName"><span class="f_VariableName">Design Point Total BOP (MWe)</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Design Point Total BOP (MWe)</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The value of the balance-of-plant parasitic load assuming design-point operation.</span></p>
-<p class="p_VariableName"><span class="f_VariableName">Design Point Total Aux (MWe)</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Design Point Total Aux (MWe)</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The value of the auxiliary heater (for the backup gas boiler) parasitic load assuming the auxiliary heater is providing 100% of the thermal load required for the power cycle.</span></p>
 <h4 class="p_Heading4"><span class="f_Heading4">Design Point Totals</span></h4>
 <p class="p_Text"><span class="f_Text">The design point total values represent the maximum limit of parasitic losses. SAM calculates actual parasitic losses during the simulation.</span></p>
-<div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 0px 0px;"><table class="DefaultNoBorder" style="width:100%; border:none; border-spacing:0px;">
+<div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 0px 0px;"><table class="Default No Border" style="width:100%; border:none; border-spacing:0px;">
 <tr style="text-align:left;vertical-align:top;">
-<td style="vertical-align:top; width:142px; padding:2px;"><p class="p_TableHeadColumn"><span class="f_TableHeadColumn">Variable</span></p>
+<td style="vertical-align:top; width:142px; padding:2px;"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">Variable</span></p>
 </td>
-<td style="vertical-align:top; width:316px; padding:2px;"><p class="p_TableHeadColumn"><span class="f_TableHeadColumn">Equation</span></p>
+<td style="vertical-align:top; width:316px; padding:2px;"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">Equation</span></p>
 </td>
-<td style="vertical-align:top; width:184px; padding:2px;"><p class="p_TableHeadColumn"><span class="f_TableHeadColumn">Note</span></p>
+<td style="vertical-align:top; width:184px; padding:2px;"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">Note</span></p>
 </td>
 </tr>
 <tr style="text-align:left;vertical-align:top;">
-<td style="vertical-align:top; width:142px; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Tracking</span></p>
+<td style="vertical-align:top; width:142px; padding:2px;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Tracking</span></p>
 </td>
-<td style="vertical-align:top; width:316px; padding:2px;"><p class="p_TableTextCenter"><img src="eq_trp-trackingpower.gif" width="147" height="20" alt="EQ_TRP-TrackingPower" style="margin:0px auto 0px auto;width:147px;height:20px;border:none" /></p>
+<td style="vertical-align:top; width:316px; padding:2px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><img alt="EQ_TRP-TrackingPower" width="147" height="20" style="margin:0px auto 0px auto;width:147px;height:20px;border:none" src="eq_trp-trackingpower.gif"/></p>
 </td>
-<td style="vertical-align:top; width:184px; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">&nbsp;</span></p>
-</td>
-</tr>
-<tr style="text-align:left;vertical-align:top;">
-<td style="vertical-align:top; width:142px; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Fixed</span></p>
-</td>
-<td style="vertical-align:top; width:316px; padding:2px;"><p class="p_TableTextCenter"><img src="eq_trp-fractionofratedgross.gif" width="114" height="20" alt="EQ_TRP-FractionofRatedGross" style="margin:0px auto 0px auto;width:114px;height:20px;border:none" /></p>
-</td>
-<td style="vertical-align:top; width:184px; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">&nbsp;</span></p>
+<td style="vertical-align:top; width:184px; padding:2px;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">&nbsp;</span></p>
 </td>
 </tr>
 <tr style="text-align:left;vertical-align:top;">
-<td style="vertical-align:top; width:142px; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">BOP</span></p>
+<td style="vertical-align:top; width:142px; padding:2px;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Fixed</span></p>
 </td>
-<td style="vertical-align:top; width:316px; padding:2px;"><p class="p_TableTextCenter"><img src="eq_trp-bopparasitic.gif" width="108" height="20" alt="EQ_TRP-BOPParasitic" style="margin:0px auto 0px auto;width:108px;height:20px;border:none" /></p>
+<td style="vertical-align:top; width:316px; padding:2px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><img alt="EQ_TRP-FractionofRatedGross" width="114" height="20" style="margin:0px auto 0px auto;width:114px;height:20px;border:none" src="eq_trp-fractionofratedgross.gif"/></p>
 </td>
-<td style="vertical-align:top; width:184px; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Only multiply gross power by the first coefficient</span></p>
+<td style="vertical-align:top; width:184px; padding:2px;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">&nbsp;</span></p>
 </td>
 </tr>
 <tr style="text-align:left;vertical-align:top;">
-<td style="vertical-align:top; width:142px; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Aux</span></p>
+<td style="vertical-align:top; width:142px; padding:2px;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">BOP</span></p>
 </td>
-<td style="vertical-align:top; width:316px; padding:2px;"><p class="p_TableTextCenter"><img src="eq_trp-auxheaterboiler.gif" width="106" height="20" alt="EQ_TRP-AuxHeaterBoiler" style="margin:0px auto 0px auto;width:106px;height:20px;border:none" /></p>
+<td style="vertical-align:top; width:316px; padding:2px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><img alt="EQ_TRP-BOPParasitic" width="108" height="20" style="margin:0px auto 0px auto;width:108px;height:20px;border:none" src="eq_trp-bopparasitic.gif"/></p>
 </td>
-<td style="vertical-align:top; width:184px; padding:2px;"><p class="p_TableTextLeft"><span class="f_TableTextLeft">Only multiply gross power by the first coefficient</span></p>
+<td style="vertical-align:top; width:184px; padding:2px;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Only multiply gross power by the first coefficient</span></p>
+</td>
+</tr>
+<tr style="text-align:left;vertical-align:top;">
+<td style="vertical-align:top; width:142px; padding:2px;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Aux</span></p>
+</td>
+<td style="vertical-align:top; width:316px; padding:2px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><img alt="EQ_TRP-AuxHeaterBoiler" width="106" height="20" style="margin:0px auto 0px auto;width:106px;height:20px;border:none" src="eq_trp-auxheaterboiler.gif"/></p>
+</td>
+<td style="vertical-align:top; width:184px; padding:2px;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Only multiply gross power by the first coefficient</span></p>
 </td>
 </tr>
 </table>

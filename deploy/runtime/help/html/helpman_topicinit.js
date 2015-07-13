@@ -137,8 +137,6 @@ var HMToggleExpandPicture = function(obj, value, animate) {
   }
   else { 
     obj.src = newSrc;
- 	$(obj).css('width', 'auto');
-    $(obj).css('height', 'auto');
   }
   var newTitle = (value ? obj.getAttribute("hm.title1") : obj.getAttribute("hm.title0"));
   if (newTitle != null) { obj.title = newTitle; }
