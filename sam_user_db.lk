@@ -1,14 +1,21 @@
+public_versions = ['2014.11.24', '2015.1.30', '2015.6.30'];
 
-ver = '2014.11.24';
-url = 'https://developer.nrel.gov/api/sam/v1/tracker/user_stats?api_key=rJzFOTOJhNHcLOnPmW2TNCLV8I4HHLgKddAycGpn';
+
 file = homedir() + '/sam_users.csv';
-outln( 'downloading... >> ' + file );
-curl( url, '', file );
+
+if ( yesno('download latest database file?') )
+{
+	url = 'https://developer.nrel.gov/api/sam/v1/tracker/user_stats?api_key=rJzFOTOJhNHcLOnPmW2TNCLV8I4HHLgKddAycGpn';
+	outln( 'downloading... >> ' + file );
+	curl( url, '', file );
+}
+
+outln('loading ' + file );
 x = csvread( file );
-remove_file( file );
 
 // column indices in CSV file download
 enum { user_email,
+	user_key,
 	user_created_at,
 	user_updated_at,
 	sam_app_name,
@@ -27,18 +34,111 @@ enum { user_email,
 
 nusers = 0;
 nusage = 0;
-
+outln(date_time());
 outln('reading database...');
+function approx_days_since( year, month, day )
+{
+	// Mon Jul 13 12:00:49 2015
+	date = split(date_time(), ' ');
+	cyear = to_int(date[4]);
+	cday = to_int(date[2]);
+	smonths = [ 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec' ];
+	for(cmonth=0;cmonth<12;cmonth++ )
+		if ( smonths[cmonth] == date[1] )
+			break;
+				
+	start = (year-1971)*365 + (month-1)*30 + day;
+	end = (cyear-1971)*365 + (cmonth)*30 + cday;
+	return end-start;
+}
 
+for( i=0;i<#public_versions;i++ )
+	nusers{public_versions[i]} = 0;
+
+platusers = {};
+platusage = {};
+ver_usage = {};
+total_usage = 0;
 N = #x;
 for( i=1;i<N;i++ )
 {
-	 if ( strpos( x[i][ sam_version ], ver ) >= 0 )
-	 {
-		nusers++;
-		nusage += to_int(x[i][ usage_count ]);
-	 }
+	sver = split(x[i][ sam_version ], '-');
+	samver = sver[0];
+	plat = sver[1];
+	if ( !( nusers ?@ samver )) continue;	
+	if ( !( ver_usage ?@ samver )) ver_usage{samver} = 0;
+	if ( !( platusers ?@ plat )) platusers{plat} = 0;
+	if ( !( platusage ?@ plat )) platusage{plat} = 0;
+	
+	nusers{samver}++;
+	usage = to_int( x[i][ usage_count ]);
+	platusers{plat}++;
+	platusage{plat} += usage;
+	ver_usage{samver} += usage;	
+	total_usage += usage;
 }
 
-outln( 'number of users registered for version ' + ver + ': ' + nusers );
-outln( 'total usage count for version ' + ver + ': ' + nusage );
+vers = @ver_usage;
+for( i=0;i<#vers;i++ )
+{
+	outln( 'number of users registered for version ' + vers[i] + ': ' + nusers{vers[i]} );
+	outln( 'total usage count for version ' + vers[i] + ': ' + ver_usage{vers[i]} );
+}
+
+outln( 'platforms (by registrations): ' + platusers );
+outln( 'platforms (by usage): ' + platusage );
+
+
+maxper=0;
+keys = @platusage;
+for(i=0;i<#keys;i++ )
+{
+	labels[i][0] = i;
+	labels[i][1] = keys[i];
+	xx[i] = i;
+	per = 100*platusage{keys[i]}/total_usage;
+	yy[i] = per;
+	if ( per > maxper ) maxper = per;
+}
+outln(xx);
+outln(yy);
+	
+newplot(true);
+plot(xx,yy, {'type'='bar'});
+axis('x1', {'type'='label', 'labels'=labels,'label'='Platform', 'min'=-1, 'max'=#keys});
+axis('y1', {'label'='Percentage (%)', 'max'=maxper*1.05, 'min'=0});
+plotopt({'legend'=false, 'title'='Usage by operating system as of ' + date_time()});
+
+
+xx = yy = labels = [];
+for( i=0;i<#public_versions;i++ )
+{
+	labels[i][0] = i;
+	labels[i][1] = public_versions[i];
+	
+	xx[i] = i;
+	yy[i] = ver_usage{public_versions[i]};
+	yy2[i] = nusers{public_versions[i]};
+}
+
+
+newplot(false);
+plot(xx,yy, {'type'='bar'});
+axis('x1', {'type'='label', 'labels'=labels,'label'='Version', 'min'=-1, 'max'=#public_versions});
+axis('y1', {'label'='Usage count', 'max'=max(yy)*1.05, 'min'=0});
+plotopt({'legend'=false, 'title'='Usage by version as of ' + date_time()});
+
+
+newplot(false);
+plot(xx,yy2, {'type'='bar'});
+axis('x1', {'type'='label', 'labels'=labels,'label'='Version', 'min'=-1, 'max'=#public_versions});
+axis('y1', {'label'='Registrations count', 'max'=max(yy2)*1.05, 'min'=0});
+plotopt({'legend'=false, 'title'='Registrations by version as of ' + date_time()});
+
+
+outln( '\ntotal number of users: ' + N );
+outln( 'total usage: ' + total_usage );
+outln( 'usage per person: ' + (total_usage/N) );
+ndays = approx_days_since( 2014, 11, 24 );
+outln( 'days since 2014/11/24: ' + ndays );
+outln( 'average usage per day: ' + (total_usage/ndays) );
