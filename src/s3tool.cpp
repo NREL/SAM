@@ -736,7 +736,7 @@ ShadeAnalysis::ShadeAnalysis( wxWindow *parent, ShadeTool *st )
 
 void ShadeAnalysis::OnGenerateDiffuse(wxCommandEvent &)
 {
-	SimulateDiffuse(true);
+	SimulateDiffuse(false);
 }
 
 bool ShadeAnalysis::SimulateDiffuse(bool save)
@@ -774,15 +774,10 @@ bool ShadeAnalysis::SimulateDiffuse(bool save)
 	azi_max = 359;
 	azi_step = 1;
 	
-	// alt= 1 to keep flat plates from having shading percent
 	alt_min = 1;
-	alt_max = 81;
-	alt_step = 10;
+	alt_max = 89;
+	alt_step = 1;
 	
-	// best compromise speed and accuracy
-	// closest to PVSyst
-//	azi_step = 20;
-//	alt_step = 10;
 
 
 	size_t num_alt = 1 + (alt_max - alt_min)/alt_step;
