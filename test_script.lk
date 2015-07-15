@@ -1,11 +1,16 @@
 folder = appdir() + "/../..";
 outln(folder);
 
-output_file = folder + "/annual_output_lcoe.csv";
+output_file = folder + "/test_results_" + ostype() + ".csv";
 file_num = open(output_file, "w");
+if ( !file_num ) {
+	outln("failed to open output file for writing:\n" + output_file );
+	exit;
+}
+
+outln('writing to output file: ' + output_file );
 
 outln( 'TECHNOLOGY\tFINANCING\tDEFAULT\tANNUAL_OUTPUT\tLCOE_NOM\tLCOE_REAL\tMESSAGES');
-//write_line(file_num,"TECHNOLOGY,FINANCING,ANNUAL_OUTPUT,LCOE_NOM,LCOE_REAL,MESSAGES");
 write_line(file_num,"TECHNOLOGY,FINANCING,ANNUAL_OUTPUT,LCOE_NOM,LPPA_NOM,MESSAGES");
 query = true; // ask user whether to overwrite each configuration that has a defaults error
 //Close any open projects and create a case to run
@@ -79,8 +84,9 @@ for (t=0; t<#technologies; t++)
 		}
 		
 		str = replace( message + '; ' + message2, '\n', ' ' );
+		str = replace( str, '\r', '' );
+		str = replace( str, '\t', ' ' );
 		outln( annual_energy + '\t' + lcoe_nom + '\t' + lcoe_real + '\t' + str);
-//		write_line(file_num,technologies[t] + "," + financing[f] + "," + annual_energy + ',' + lcoe_nom + ',' + lcoe_real + ',' + str);
 		write_line(file_num,technologies[t] + "," + financing[f] + "," + annual_energy + ',' + lcoe_nom + ',' + lppa_nom + ',' + str);
 	}
 }
