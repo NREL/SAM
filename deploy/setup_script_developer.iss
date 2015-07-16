@@ -108,14 +108,14 @@ Name: "{commondesktop}\System Advisor Beta (x64)"; Filename: "{app}\x64\sam.exe"
 ;Root: HKCU; Subkey: "Software\Classes\NREL.SAM\DefaultIcon"; ValueType: string; ValueName: ; ValueData: "{app}\sam.exe,0"; Check: not IsAdminLoggedOn
 ;Root: HKCU; Subkey: "Software\Classes\NREL.SAM\shell\open\command"; ValueType: string; ValueName: ; ValueData: """{app}\sam.exe"" ""%1"""; Check: not IsAdminLoggedOn
 
-
 [Run]
-Filename: "{app}\win32\sam.exe"; Check: not Is64BitInstallMode; Description: "{cm:LaunchProgram,System Advisor Model}"; Flags: postinstall
-Filename: "{app}\x64\sam.exe"; Check: Is64BitInstallMode; Description: "{cm:LaunchProgram,System Advisor Model}"; Flags: postinstall
+Filename: "{app}\win32\sam.exe"; Flags: postinstall skipifsilent; Description: "{cm:LaunchProgram,System Advisor Model}"; Check: not Is64BitInstallMode
+Filename: "{app}\x64\sam.exe"; Flags: postinstall skipifsilent; Description: "{cm:LaunchProgram,System Advisor Model}"; Check: Is64BitInstallMode
 
 
 
 ; added 9/19/07 to check for running instances on install and uninstall
+
 [Code]
 
 function InitializeUninstall(): boolean;
