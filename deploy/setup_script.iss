@@ -112,8 +112,8 @@ Root: HKCU; Subkey: "Software\Classes\NREL.SAM3\DefaultIcon"; ValueType: string;
 Root: HKCU; Subkey: "Software\Classes\NREL.SAM3\shell\open\command"; ValueType: string; ValueName: ; ValueData: """{app}\x64\sam.exe"" ""%1"""; Check: not IsAdminLoggedOn  and Is64BitInstallMode
 
 [Run]
-Filename: "{app}\win32\sam.exe"; Flags: postinstall skipifsilent; Description: "{cm:LaunchProgram,System Advisor Model}"; Check: not Is64BitInstallMode
-Filename: "{app}\x64\sam.exe"; Flags: postinstall skipifsilent; Description: "{cm:LaunchProgram,System Advisor Model}"; Check: Is64BitInstallMode
+Filename: "{app}\win32\sam.exe"; Flags: postinstall skipifsilent unchecked; Description: "{cm:LaunchProgram,System Advisor Model}"; Check: not Is64BitInstallMode
+Filename: "{app}\x64\sam.exe"; Flags: postinstall skipifsilent unchecked; Description: "{cm:LaunchProgram,System Advisor Model}"; Check: Is64BitInstallMode
 
 
 
