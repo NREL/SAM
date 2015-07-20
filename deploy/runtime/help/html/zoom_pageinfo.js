@@ -375,7 +375,7 @@ pagedata = [ ["./3dshad-3d-scene.htm","3D scene view","3D scene view The 3D scen
 ["./main_window.htm","Main Window","Main Window After you choose the models for your analysis , SAM displays the main window, which gives you access to the input pages for each case ...",""],
 ["./manage_cases.htm","Manage Cases","Manage Cases A case is a complete set of input data and results. A project file contains at least one case. SAM uses tabs to display each case in ...",""],
 ["./menus.htm","Start Menu","Start Menu SAM&#39;s start menu menus provides access to commands for managing projects and scripts, and opening the inputs browser. New project Creat...",""],
-["./molten_salt_linear_fresnel.htm","Molten Salt Linear Fresnel","Molten Salt Linear Fresnel For questions about the molten salt linear Fresnel model, contact SAM support . ",""],
+["./molten_salt_linear_fresnel.htm","Molten Salt Linear Fresnel","Molten Salt Linear Fresnel The molten salt linear Fresnel model simulates the performance of a linear Fresnel system that utilizes a sensible-heat...",""],
 ["./mslf_collector_and_receiver.htm","Collector and Receiver","Collector and Receiver Collector Geometry and Optical Performance Reflective aperture area of the collector, m² The total reflective aperture area...",""],
 ["./mslf_parasitics.htm","Parasitics","Parasitics The variables on the Parasitics page define electrical loads in the system. For each hour of the simulation, SAM calculates the parasit...",""],
 ["./mslf_power_cycle.htm","Power Cycle","Power Cycle The power cycle converts thermal energy to electric energy. The power cycle is assumed to consist of a superheated two-stage turbine w...",""],

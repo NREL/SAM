@@ -44,11 +44,11 @@
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Length of collector module, m</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The length of a collector module along the receiver axis. This value is used to calculate thermal losses that are expressed in units of W/m.</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Length of crossover piping in a loop, m</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription">&nbsp;</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The length of piping used to connect collector rows in a loop (if applicable). This piping contributes to thermal inertia and thermal loss effects.</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Piping distance between sequential modules, m</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription">&nbsp;</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The length of non-flux-absorbing piping between modules in a collector row. This piping contributes to thermal inertia and thermal loss effects.</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Collector azimuth angle, degrees</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription">&nbsp;</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The angle between the primary axis of the Linear Fresnel collector system and the North-South axis. If the collector system is rotated clockwise, the Collector azimuth angle is positive. If the collector system is rotated counterclockwise, the angle is negative.</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Tracking error derate</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">A fixed optical loss representing collector tracking error. This value multiplies the other fixed optical losses and the time-varying collector optical efficiency to determine the total optical efficiency.</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Geometry effects derate</span></p>
@@ -116,12 +116,14 @@
 <p class="p_VariableDescription"><span class="f_VariableDescription">SAM allows you to adjust the thermal loss coefficient calculated from the Steam temperature adjustment polynomial (</span><img alt="EQ_LF_FHLT" width="36" height="16" style="margin:0;width:36px;height:16px;border:none" src="eq_lf_fhlt.gif"/><span class="f_VariableDescription">). The resulting value from the wind velocity polynomial multiplies the steam temperature heat loss polynomial, as follows:</span></p>
 <p class="p_VariableDescription"><img alt="EQ_LF_F-hl-Vwind" width="363" height="16" style="margin:0;width:363px;height:16px;border:none" src="eq_lf_f-hl-vwind.gif"/></p>
 <p class="p_VariableDescription"><img alt="EQ_LF_F-hl-Total" width="162" height="17" style="margin:0;width:162px;height:17px;border:none" src="eq_lf_f-hl-total.gif"/></p>
-<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span style="font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">Pressure drop at design, bar</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription">&nbsp;</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Pressure drop at design, bar</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The decrease in HTF pressure across an SCA unit under design-point operating conditions. The total pressure loss is used to calculate pumping parasitic requirements. The pressure is scaled during simulation using the Part-load pressure loss adjustment coefficients (C0-C3), which are a function of normalized mass flow rate.</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Part-load pressure loss adjustment</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription">&nbsp;</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Polynomial coefficients describing how pressure loss varies as a function of normalized mass flow rate during simulation. The pressure loss in a single SCA is calculated as follows:</span></p>
+<p class="p_VariableDescription"><img alt="EQ_MSLF_Psca" width="349" height="40" style="margin:0;width:349px;height:40px;border:none" src="eq_mslf_psca.gif"/></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Where </span><img alt="EQ_MSLF_Mdot" width="14" height="15" style="margin:0;width:14px;height:15px;border:none" src="eq_mslf_mdot.gif"/><span class="f_VariableDescription"> is the mass flow rate at any given time step, </span><img alt="EQ_MSLF_Mdot-des" width="31" height="15" style="margin:0;width:31px;height:15px;border:none" src="eq_mslf_mdot-des.gif"/><span class="f_VariableDescription"> is the mass flow rate through the SCA at design, and </span><img alt="EQ_MSLF_deltaP-des" width="39" height="19" style="margin:0;width:39px;height:19px;border:none" src="eq_mslf_deltap-des.gif"/><span class="f_VariableDescription"> is the Pressure drop at design that you specify.</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Total loop pressure loss at design</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription">&nbsp;</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The total pressure loss through a solar field loop at design. This calculated value is equal to the design-point pressure multiplied by the Number of collector modules in a loop that you specify on the Solar Field page. The pressure loss during simulation is scaled according to the Part-load pressure loss adjustment equation.</span></p>
 <h4 class="p_Heading4"><span class="f_Heading4">Evacuated tube heat loss model</span></h4>
 <p class="p_Text"><span class="f_Text">These inputs are active for the evacuated tube receiver model.</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Absorber tube inner diameter (m)</span></p>
