@@ -262,8 +262,8 @@ ParametricViewer::ParametricViewer(wxWindow *parent, Case *cc)
 	m_num_runs_ctrl = new wxNumericCtrl(top_panel, ID_NUMRUNS, 0, wxNumericCtrl::INTEGER);
 	wxSize bestsz( m_num_runs_ctrl->GetBestSize() );
 	m_num_runs_ctrl->SetInitialSize( wxSize( bestsz.x/2, bestsz.y ) );
-	m_num_runs_ctrl->SetEditable(false);
-	tool_sizer->Add(m_num_runs_ctrl, 0, wxALL|wxALIGN_CENTER_VERTICAL, 0);
+	m_num_runs_ctrl->SetEditable(true);
+	tool_sizer->Add(m_num_runs_ctrl, 0, wxALL | wxALIGN_CENTER_VERTICAL, 0);
 	m_run_multithreaded = new wxCheckBox(top_panel, wxID_ANY, "Run multi-threaded?", wxDefaultPosition, wxDefaultSize, wxALIGN_RIGHT);
 	m_run_multithreaded->SetValue(true);
 	m_run_multithreaded->Hide();
