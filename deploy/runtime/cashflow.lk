@@ -314,10 +314,10 @@ cashflow{ 'Single Owner' } = define()
 	cfline( 'cf_ppa_price', 2);
 	cfline( 'cf_energy_value', 0);
 	cfline("plus PBI if available for debt service:", -1, 0); // label with no shading
-	if (value('pbi_fed_for_ds')==1)	cfline( 'cf_pbi_total_fed', 0);
-	if (value('pbi_sta_for_ds')==1)	cfline( 'cf_pbi_total_sta', 0);
-	if (value('pbi_uti_for_ds')==1)	cfline( 'cf_pbi_total_uti', 0);
-	if (value('pbi_oth_for_ds')==1)	cfline( 'cf_pbi_total_oth', 0);
+	if (value('pbi_fed_for_ds')==1)cfline('cf_pbi_total_fed',0);
+	if (value('pbi_sta_for_ds')==1)cfline('cf_pbi_total_sta',0);
+	if (value('pbi_uti_for_ds')==1)cfline( 'cf_pbi_total_uti',0);
+	if (value('pbi_oth_for_ds')==1)cfline('cf_pbi_total_oth',0);
 	cfline( 'cf_net_salvage_value', 0);
 	cfline( 'cf_total_revenue', 0);
 
@@ -327,7 +327,7 @@ cashflow{ 'Single Owner' } = define()
 	cfline( '' );
 	cfline( "OPERATING EXPENSES", -1 );
 // do not use recapitalization until geothermal issues resolved.	
-	if (value('system_use_recapitalization')) cfline ('cf_recapitalization', 0);
+	if (value('system_use_recapitalization'))cfline ('cf_recapitalization', 0);
 	cfline( 'cf_om_fixed_expense,cf_om_capacity_expense,cf_om_production_expense', 0);
 	cf_fuel_expenses();
 	cfline( 'cf_property_tax_expense', 0);
@@ -342,10 +342,10 @@ cashflow{ 'Single Owner' } = define()
 	cfline( 'cf_ebitda', 0);
 	cfline( 'cf_reserve_interest', 0);
 	cfline("plus PBI if not available for debt service:", -1, 0);
-	if (value('pbi_fed_for_ds')==0)	cfline( 'cf_pbi_total_fed', 0);
-	if (value('pbi_sta_for_ds')==0)	cfline( 'cf_pbi_total_sta', 0);
-	if (value('pbi_uti_for_ds')==0)	cfline( 'cf_pbi_total_uti', 0);
-	if (value('pbi_oth_for_ds')==0)	cfline( 'cf_pbi_total_oth', 0);
+	if (value('pbi_fed_for_ds')==0)cfline('cf_pbi_total_fed',0);
+	if (value('pbi_sta_for_ds')==0)cfline('cf_pbi_total_sta',0);
+	if (value('pbi_uti_for_ds')==0)cfline('cf_pbi_total_uti',0);
+	if (value('pbi_oth_for_ds')==0)cfline('cf_pbi_total_oth',0);
 	cfline("minus:", -1, 0);
 	cfline('cf_debt_payment_interest', 0);
 	cfline("equals:", -1, 0);
@@ -424,7 +424,7 @@ cashflow{ 'Single Owner' } = define()
 	cfline( '' );
 	cfline("LEVELIZED COE AND PPA PRICE (AFTER-TAX)", -1);
 	cfline('cf_annual_costs', 0);
-	cfline('cf_total_revenue', 0);
+	cfline('cf_energy_value', 0);
 	cfline('cf_energy_net', 0); 
 	cfline( '' );
 	cfline('npv_annual_costs',0 );
@@ -552,7 +552,7 @@ cashflow{ 'All Equity Partnership Flip' } = define()
 	cfline( '' ); // spacer
 
 	cfline( "Expenses", -1 ); // header	
-	if (value('system_use_recapitalization')) cfline ('cf_recapitalization', 0);
+	if (value('system_use_recapitalization'))cfline('cf_recapitalization', 0);
 	cfline( 'cf_om_fixed_expense,cf_om_production_expense,cf_om_capacity_expense', 0);
 	if ( fueltech == true )cfline('cf_om_fuel_expense', 0);
 	if ( fueltech == true )cfline('cf_om_opt_fuel_1_expense', 0);
@@ -611,7 +611,7 @@ cashflow{ 'All Equity Partnership Flip' } = define()
 // LCOE
 	cfline("LEVELIZED COE AND PPA PRICE", -1);
 	cfline('cf_annual_costs', 0);
-	cfline('cf_total_revenue', 0);
+	cfline('cf_energy_value', 0);
 	cfline('cf_energy_net', 0); 
 	cfline( '' );
 	cfline('npv_annual_costs',0 );
@@ -707,10 +707,10 @@ cashflow{ 'Leveraged Partnership Flip' } = define()
 	cfline( 'cf_ppa_price', 2);
 	cfline( 'cf_energy_value', 0);
 	// optional values used for pbi for debt service
-	if (value('pbi_fed_for_ds')==1)	cfline( 'cf_pbi_total_fed', 0);
-	if (value('pbi_sta_for_ds')==1)	cfline( 'cf_pbi_total_sta', 0);
-	if (value('pbi_uti_for_ds')==1)	cfline( 'cf_pbi_total_uti', 0);
-	if (value('pbi_oth_for_ds')==1)	cfline( 'cf_pbi_total_oth', 0);
+	if (value('pbi_fed_for_ds')==1)cfline( 'cf_pbi_total_fed', 0);
+	if (value('pbi_sta_for_ds')==1)cfline( 'cf_pbi_total_sta', 0);
+	if (value('pbi_uti_for_ds')==1)cfline( 'cf_pbi_total_uti', 0);
+	if (value('pbi_oth_for_ds')==1)cfline( 'cf_pbi_total_oth', 0);
 
 	cfline( 'cf_net_salvage_value', 0);
 	cfline( 'cf_total_revenue', 0);
@@ -723,7 +723,7 @@ cashflow{ 'Leveraged Partnership Flip' } = define()
 
 	cfline("Project Expenses", -1);
 
-	if (value('system_use_recapitalization')) cfline ('cf_recapitalization', 0);
+	if (value('system_use_recapitalization'))cfline ('cf_recapitalization', 0);
 	cfline( 'cf_om_fixed_expense,cf_om_production_expense,cf_om_capacity_expense', 0);
 	if ( fueltech == true )cfline('cf_om_fuel_expense', 0);
 	if ( fueltech == true )cfline( 'cf_om_opt_fuel_1_expense', 0);
@@ -741,10 +741,10 @@ cashflow{ 'Leveraged Partnership Flip' } = define()
 	cfline("Project Cash Flow from Operating Activities", -1, 0);
 	cfline( 'cf_ebitda', 0);
 	cfline( 'cf_reserve_interest', 0);
-	if (value('pbi_fed_for_ds')==0)	cfline( 'cf_pbi_total_fed', 0);
-	if (value('pbi_sta_for_ds')==0)	cfline( 'cf_pbi_total_sta', 0);
-	if (value('pbi_uti_for_ds')==0)	cfline( 'cf_pbi_total_uti', 0);
-	if (value('pbi_oth_for_ds')==0)	cfline( 'cf_pbi_total_oth', 0);
+	if (value('pbi_fed_for_ds')==0)cfline( 'cf_pbi_total_fed', 0);
+	if (value('pbi_sta_for_ds')==0)cfline( 'cf_pbi_total_sta', 0);
+	if (value('pbi_uti_for_ds')==0)cfline( 'cf_pbi_total_uti', 0);
+	if (value('pbi_oth_for_ds')==0)cfline( 'cf_pbi_total_oth', 0);
 	cfline('cf_project_operating_activities', 0);
 	cfline( '' ); // spacer
 	cfline( "Cash Flows from Investing Activities", -1);
@@ -788,7 +788,7 @@ cashflow{ 'Leveraged Partnership Flip' } = define()
 // LCOE
 	cfline("LEVELIZED COE AND PPA PRICE", -1);
 	cfline('cf_annual_costs', 0);
-	cfline('cf_total_revenue', 0);
+	cfline('cf_energy_value', 0);
 	cfline('cf_energy_net', 0); 
 	cfline( '' );
 	cfline('npv_annual_costs',0 );
@@ -898,7 +898,7 @@ cashflow{ 'Sale Leaseback' } = define()
 	cfline( '' ); // spacer
 
 	cfline( "Expenses", -1 ); // header	
-	if (value('system_use_recapitalization')) cfline ('cf_recapitalization', 0);
+	if (value('system_use_recapitalization'))cfline('cf_recapitalization', 0);
 	cfline( 'cf_om_fixed_expense,cf_om_production_expense,cf_om_capacity_expense', 0);
 	if ( fueltech == true )cfline('cf_om_fuel_expense', 0);
 	if ( fueltech == true )cfline('cf_om_opt_fuel_1_expense', 0);
@@ -968,7 +968,7 @@ cashflow{ 'Sale Leaseback' } = define()
 // LCOE
 	cfline("LEVELIZED COE AND PPA PRICE", -1);
 	cfline('cf_annual_costs', 0);
-	cfline('cf_total_revenue', 0);
+	cfline('cf_energy_value', 0);
 	cfline('cf_energy_net', 0); 
 	cfline( '' );
 	cfline('npv_annual_costs',0 );
