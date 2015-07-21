@@ -390,7 +390,7 @@ pagedata = [ ["./3dshad-3d-scene.htm","3D scene view","3D scene view The 3D scen
 ["./mtf_debt_and_equity.htm","Debt and Equity","Debt and Equity The debt and equity metrics show the amount borrowed and initial cash investment amount for financial models with project term deb...",""],
 ["./mtf_irr.htm","Internal Rate of Return ","Internal Rate of Return (IRR) The internal rate of return is the nominal discount rate that corresponds to a net present value of zero for the PPA...",""],
 ["./mtf_lcoe.htm","Levelized cost","Levelized cost The levelized cost represents the total project lifecycle costs. It is the present value of project costs expressed in cents per ki...",""],
-["./mtf_lppa.htm","Levelized PPA price","Levelized PPA price The levelized revenue represents the monetary value of the project over its life. It is the present value of the project&#39;s tot...",""],
+["./mtf_lppa.htm","Levelized PPA price","Levelized PPA price The levelized revenue represents the monetary value of the project over its life. It is the present value of the project&#39;s PPA...",""],
 ["./mtf_npv.htm","Net Present Value (NPV)","Net Present Value (NPV) A project&#39;s net present value (NPV) is a measure of a project&#39;s economic feasibility that includes both revenue (or saving...",""],
 ["./mtf_payback.htm","Payback Period","Payback Period The payback period is the time in years that it takes for project savings in years two and later of the cash flow described below t...",""],
 ["./mtf_ppa_escalation.htm","PPA Price Escalation","PPA Price Escalation The PPA escalation rate is an annual escalation rate that SAM uses to calculate the PPA price in Years Two and later of the c...",""],
