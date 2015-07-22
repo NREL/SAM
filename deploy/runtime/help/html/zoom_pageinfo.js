@@ -416,7 +416,7 @@ pagedata = [ ["./3dshad-3d-scene.htm","3D scene view","3D scene view The 3D scen
 ["./parabolic_trough_empirical.htm","Empirical Trough Model","Empirical Trough Model The empirical trough model models the same type of parabolic trough system as the physical trough model, but uses a set of ...",""],
 ["./parabolic_trough_physical.htm","Physical Trough Model","Physical Trough Model The physical trough model calculates the electricity delivered to the grid by a parabolic trough solar field that delivers t...",""],
 ["./parametrics.htm","Parametric Simulations","Parametric Simulations A parametric simulation involves assigning more than one value to one or more input variables to explore the dependence of ...",""],
-["./parametric_quick_setup.htm","Parametric Quick Setup","Parametric Quick Setup This is a reference for the Parametric Quick Setup window. See Parametric Simulations for details. The Parametric Simulatio...",""],
+["./parametric_quick_setup.htm","Parametric Quick Setup","Parametric Quick Setup This is a reference for the Parametric Quick Setup window. See Parametric Simulations for details. Quick Setup automates th...",""],
 ["./pdfcdf.htm","PDF / CDF","PDF / CDF The PDF/CDF tab shows the probability density function and cumulative distribution function for a single variable. The probability densi...",""],
 ["./performance_metrics.htm","Performance Metrics","Performance Metrics The performance metrics are values that SAM calculates from the hourly performance model results and, for some variables such ...",""],
 ["./performance_model_inputs.htm","Performance Model Inputs","Performance Model Inputs The performance model inputs describe the physical characteristics of the system. They include basic parameters like the ...",""],
