@@ -8,6 +8,7 @@
 #include <wx/statline.h>
 #include <wx/tokenzr.h>
 #include <wx/richtext/richtextsymboldlg.h>
+#include <wx/filesys.h>
 
 #include "main.h"
 #include "case.h"
@@ -533,6 +534,10 @@ void SamReportWindow::OnCommand( wxCommandEvent &evt )
 			if (dlg.ShowModal() == wxID_OK)
 			{
 				wxString file = dlg.GetPath();
+
+				// URL encode to address user support issue 7/20/15
+				file = wxFileSystem::FileNameToURL(file);
+
 				if (wxFileName(file).GetExt().Lower() != "pdf")
 					file += ".pdf";
 
@@ -544,7 +549,7 @@ void SamReportWindow::OnCommand( wxCommandEvent &evt )
 				if (!m_template.RenderPdf( file ))
 					wxMessageBox("Failed to render PDF report:\n\n" + file);
 				else
-					wxLaunchDefaultBrowser( file, wxBROWSER_NEW_WINDOW);
+					wxLaunchDefaultBrowser(file, wxBROWSER_NEW_WINDOW);
 			}
 		}
 		break;
