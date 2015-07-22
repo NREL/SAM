@@ -535,8 +535,6 @@ void SamReportWindow::OnCommand( wxCommandEvent &evt )
 			{
 				wxString file = dlg.GetPath();
 
-				// URL encode to address user support issue 7/20/15
-				file = wxFileSystem::FileNameToURL(file);
 
 				if (wxFileName(file).GetExt().Lower() != "pdf")
 					file += ".pdf";
@@ -549,7 +547,12 @@ void SamReportWindow::OnCommand( wxCommandEvent &evt )
 				if (!m_template.RenderPdf( file ))
 					wxMessageBox("Failed to render PDF report:\n\n" + file);
 				else
-					wxLaunchDefaultBrowser(file, wxBROWSER_NEW_WINDOW);
+				{
+				// URL encode to address user support issue 7/20/15
+					wxString new_file = wxFileSystem::FileNameToURL(file);
+					//wxMessageBox("new file=" + new_file);
+					wxLaunchDefaultBrowser(new_file, wxBROWSER_NEW_WINDOW);
+				}
 			}
 		}
 		break;

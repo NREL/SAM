@@ -434,7 +434,12 @@ void CaseWindow::GenerateReport( )
 		if (!templ.RenderPdf( pdffile, m_case ))
 			wxMessageBox("Failed to write to selected PDF file:\n\n" + pdffile);
 		else
-			::wxLaunchDefaultBrowser( pdffile );
+		{
+		// URL encode to address user support issue 7/20/15
+			wxString new_file = wxFileSystem::FileNameToURL(pdffile);
+		//	wxMessageBox("new file=" + new_file);
+			::wxLaunchDefaultBrowser(new_file, wxBROWSER_NEW_WINDOW);
+		}
 	}
 }
 
