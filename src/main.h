@@ -78,10 +78,6 @@ protected:
 	void OnInternalCommand( wxCommandEvent & );
 
 private:
-#ifdef __WXOSX__
-	wxMenuBar *m_menuBar;
-	wxMenu *m_fileMenu, *m_caseMenu, *m_toolsMenu, *m_helpMenu;
-#endif
 	wxSimplebook *m_topBook;
 	WelcomeScreen *m_welcomeScreen;
 	wxPanel *m_caseTabPanel;
