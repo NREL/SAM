@@ -136,6 +136,7 @@ enum { __idFirst = wxID_HIGHEST+592,
 
 BEGIN_EVENT_TABLE( MainWindow, wxFrame )
 	EVT_CLOSE( MainWindow::OnClose )
+	EVT_MENU( wxID_ABOUT, MainWindow::OnCommand )
 	EVT_MENU( wxID_HELP, MainWindow::OnCommand )
 	EVT_MENU( ID_SAVE_HOURLY, MainWindow::OnCommand )
 	EVT_MENU( wxID_NEW, MainWindow::OnCommand )
@@ -168,40 +169,46 @@ MainWindow::MainWindow()
 #endif	
 
 #ifdef __WXOSX__
-	m_fileMenu = new wxMenu;
-	m_fileMenu->Append( wxID_NEW );
-	m_fileMenu->AppendSeparator();
-	m_fileMenu->Append( wxID_OPEN );
-	m_fileMenu->Append( wxID_SAVE );
-	m_fileMenu->Append( wxID_SAVEAS );
-	m_fileMenu->AppendSeparator();
-	m_fileMenu->Append( wxID_CLOSE );
-	m_fileMenu->AppendSeparator();
-	m_fileMenu->Append( wxID_EXIT, "Quit SAM");
+	wxMenu *fileMenu = new wxMenu;
+	fileMenu->Append( wxID_NEW, "New project\tCtrl-N" );
+	fileMenu->Append( ID_NEW_SCRIPT, "New script" );
+	fileMenu->AppendSeparator();
+	fileMenu->Append( wxID_OPEN, "Open project\tCtrl-O" );
+	fileMenu->Append( ID_OPEN_SCRIPT, "Open script" );
+	fileMenu->AppendSeparator();
+	fileMenu->Append( wxID_SAVE, "Save\tCtrl-S" );
+	fileMenu->Append( wxID_SAVEAS, "Save as..." );
+	fileMenu->Append( ID_SAVE_HOURLY, "Save with hourly results");
+	fileMenu->AppendSeparator();
+	fileMenu->Append( ID_BROWSE_INPUTS, "Inputs browser...");
+	fileMenu->AppendSeparator();
+	fileMenu->Append( wxID_EXIT, "Quit SAM");
 
-	m_caseMenu = new wxMenu;
-	m_caseMenu->Append( ID_CASE_SIMULATE, "Simulate" );
-	m_caseMenu->Append( ID_CASE_REPORT, "Generate report" );
-	m_caseMenu->AppendSeparator();
-	m_caseMenu->Append( ID_CASE_RENAME, "Rename" );
-	m_caseMenu->Append( ID_CASE_DUPLICATE, "Duplicate" );
-	m_caseMenu->AppendSeparator();
-	m_caseMenu->Append( ID_CASE_DELETE, "Delete" );
+	wxMenu *caseMenu = new wxMenu;
+	caseMenu->Append( ID_CASE_SIMULATE, "Simulate\tF5" );
+	caseMenu->Append( ID_CASE_REPORT, "Create report\tF6" );
+	caseMenu->Append( ID_CASE_CLEAR_RESULTS, "Clear all results" );
+	caseMenu->AppendSeparator();	
+	caseMenu->Append( ID_CASE_RENAME, "Rename\tF2" );
+	caseMenu->Append( ID_CASE_DUPLICATE, "Duplicate" );
+	caseMenu->Append( ID_CASE_DELETE, "Delete" );
+	caseMenu->AppendSeparator();
+	caseMenu->Append( ID_CASE_MOVE_LEFT, "Move left" );
+	caseMenu->Append( ID_CASE_MOVE_RIGHT, "Move right" );
+	caseMenu->AppendSeparator();
+	caseMenu->Append( ID_CASE_CONFIG, "Change model..." );
+	caseMenu->Append( ID_CASE_RESET_DEFAULTS, "Reset inputs to default values" );
 
-	m_toolsMenu = new wxMenu;
-	m_toolsMenu->Append( ID_BROWSE_INPUTS, "Inputs browser...");
-
-	m_helpMenu = new wxMenu;
-	m_helpMenu->Append( wxID_HELP );
-	m_helpMenu->AppendSeparator();
-	m_helpMenu->Append( wxID_ABOUT );
+	wxMenu *helpMenu = new wxMenu;
+	helpMenu->Append( wxID_HELP );
+	helpMenu->AppendSeparator();
+	helpMenu->Append( wxID_ABOUT );
 		
-	m_menuBar = new wxMenuBar;
-	m_menuBar->Append( m_fileMenu, wxT("&File") );
-	m_menuBar->Append( m_caseMenu, wxT("&Case")  );
-	m_menuBar->Append( m_toolsMenu, wxT("&Tools")  );
-	m_menuBar->Append( m_helpMenu, wxT("&Help")  );
-	SetMenuBar( m_menuBar );
+	wxMenuBar *menuBar = new wxMenuBar;
+	menuBar->Append( fileMenu, wxT("&File") );
+	menuBar->Append( caseMenu, wxT("&Case")  );
+	menuBar->Append( helpMenu, wxT("&Help")  );
+	SetMenuBar( menuBar );
 #endif
 
 	m_topBook = new wxSimplebook( this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxBORDER_NONE );
@@ -219,11 +226,13 @@ MainWindow::MainWindow()
 	tools->Add( m_mainMenuButton = new wxMetroButton( m_caseTabPanel, ID_MAIN_MENU, wxEmptyString, wxBITMAP_PNG_FROM_DATA( menu ), wxDefaultPosition, wxDefaultSize /*, wxMB_DOWNARROW */), 0, wxALL|wxEXPAND, 0 );
 	tools->Add( new wxMetroButton( m_caseTabPanel, ID_CASE_CREATE, "New", wxBITMAP_PNG_FROM_DATA( cirplus ), wxDefaultPosition, wxDefaultSize), 0, wxALL|wxEXPAND, 0 );
 	m_caseTabList = new wxMetroTabList( m_caseTabPanel, ID_CASE_TABS, wxDefaultPosition, wxDefaultSize, wxMT_MENUBUTTONS );
+
 	tools->Add( m_caseTabList, 1, wxALL|wxEXPAND, 0 );		
 	tools->Add( metbut = new wxMetroButton( m_caseTabPanel, ID_PAGE_NOTES, wxEmptyString, wxBITMAP_PNG_FROM_DATA( notes_white ), wxDefaultPosition, wxDefaultSize), 0, wxALL|wxEXPAND, 0 );
 	metbut->SetToolTip( "Add a page note" );
-	tools->Add( new wxMetroButton( m_caseTabPanel, wxID_HELP, "Help",/* wxBITMAP_PNG_FROM_DATA(qmark) */ wxNullBitmap, wxDefaultPosition, wxDefaultSize), 0, wxALL|wxEXPAND, 0 );
 
+	tools->Add( new wxMetroButton( m_caseTabPanel, wxID_HELP, "Help",/* wxBITMAP_PNG_FROM_DATA(qmark) */ wxNullBitmap, wxDefaultPosition, wxDefaultSize), 0, wxALL|wxEXPAND, 0 );
+	
 	m_caseNotebook = new wxSimplebook( m_caseTabPanel, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxBORDER_NONE );
 		
 	wxBoxSizer *sizer = new wxBoxSizer( wxVERTICAL );
@@ -585,6 +594,9 @@ void MainWindow::OnCommand( wxCommandEvent &evt )
 	{
 	case wxID_HELP:
 		SamApp::ShowHelp( cwin ? cwin->GetCurrentContext() : wxString("welcome_page") );
+		break;
+	case wxID_ABOUT:
+		SamApp::ShowHelp( ":about" );
 		break;
 	case ID_PAGE_NOTES:
 		if ( cwin != 0 )
