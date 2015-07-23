@@ -1188,7 +1188,7 @@ void ThreadProgressDialog::Finalize( const wxString &title )
 		else Status( title );
 
 		ShowBars( 0 );
-		SetButtonText( "Continue" );
+		SetButtonText( "OK" );
 		ShowSaveLogButton();
 		Hide();
 		ShowModal();
