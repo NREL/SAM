@@ -328,7 +328,7 @@ public:
 		switch( e.GetId() )
 		{
 		case wxID_HELP:
-			SamApp::ShowHelp("hourly_factors");
+			SamApp::ShowHelp("edit_losses");
 			break;
 		case ID_ENABLE_HOURLY:
 		case ID_ENABLE_PERIODS:
