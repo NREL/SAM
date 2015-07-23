@@ -11,6 +11,7 @@
 
 #include <wex/csv.h>
 
+#include "main.h"
 #include "widgets.h"
 
 #include "variables.h"
@@ -276,6 +277,7 @@ public:
 		buttons->AddStretchSpacer(1);
 		buttons->Add( new wxButton(this, wxID_OK, "OK" ), 0, wxALL|wxEXPAND, 3 );
 		buttons->Add( new wxButton(this, wxID_CANCEL, "Cancel" ), 0, wxALL|wxEXPAND, 3  );
+		buttons->Add( new wxButton(this, wxID_HELP, "Help" ), 0, wxALL|wxEXPAND, 3  );
 
 		wxSizer *box = new wxBoxSizer(wxVERTICAL);
 		box->Add( m_scrollWin, 1, wxALL|wxEXPAND );
@@ -343,6 +345,9 @@ public:
 	{
 		switch( e.GetId() )
 		{
+		case wxID_HELP:
+			SamApp::ShowHelp("edit_shading_data");
+			break;
 		case ID_ENABLE_HOURLY:
 		case ID_ENABLE_MXH:
 		case ID_ENABLE_AZAL:
@@ -424,6 +429,9 @@ BEGIN_EVENT_TABLE( ShadingDialog, wxDialog )
 	EVT_BUTTON( ID_IMPORT_SUNEYE_HOURLY, ShadingDialog::ImportData )
 	EVT_BUTTON( ID_IMPORT_SUNEYE_OBSTRUCTIONS, ShadingDialog::ImportData )
 	EVT_BUTTON( ID_IMPORT_SOLPATH_MXH, ShadingDialog::ImportData )
+
+	EVT_BUTTON( wxID_HELP, ShadingDialog::OnCommand )
+
 END_EVENT_TABLE()
 
 
