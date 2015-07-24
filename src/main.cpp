@@ -2105,7 +2105,7 @@ public:
 		}
 		wxString patchStr;
 		if ( patch > 0 )
-			patchStr.Printf( ", updated from the web to revision %d", patch );
+			patchStr.Printf( ", updated to revision %d", patch );
 
 		int nbit = (sizeof(void*) == 8) ? 64 : 32;
 		m_aboutHtml = "<html><body bgcolor=#ffffff>"
