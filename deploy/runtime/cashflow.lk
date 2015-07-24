@@ -811,9 +811,9 @@ cashflow{ 'Leveraged Partnership Flip' } = define()
 	cfline('cf_tax_investor_aftertax_ptc', 0);//"PTC");
 	cfline('cf_tax_investor_aftertax_tax', 0);//Tax investor share of project tax");
 	cfline('cf_tax_investor_aftertax', 0);//Total tax investor after-tax returns");
-	cfline('cf_tax_investor_aftertax_irr', 0);//Tax investor cumulative IRR");
+	cfline('cf_tax_investor_aftertax_irr', 2);//Tax investor cumulative IRR");
 	cfline('cf_tax_investor_aftertax_npv', 0);//Tax investor cumulative NPV");
-	cfline('cf_tax_investor_aftertax_max_irr', 0);//Tax investor maximum IRR");
+	cfline('cf_tax_investor_aftertax_max_irr', 2);//Tax investor maximum IRR");
 	cfline( '' ); // spacer
 
 	cfline('Developer Pre-tax Returns', -1);
@@ -822,7 +822,7 @@ cashflow{ 'Leveraged Partnership Flip' } = define()
 	cfline('cf_sponsor_pretax', 0);//"Total developer pre-tax returns");
 	cfline('cf_sponsor_pretax_irr', 2);//"Developer pre-tax cumulative IRR");
 	cfline('cf_sponsor_pretax_npv', 0);//"Developer pre-tax cumulative NPV");
-	cfline('sponsor_pretax_irr', 0);//"Developer pre-tax IRR");
+	cfline('sponsor_pretax_irr', 2);//"Developer pre-tax IRR");
 	cfline('sponsor_pretax_npv', 0);//"Developer pre-tax NPV");
 	cfline( '' ); // spacer
 	cfline( 'Developer After-tax Returns', -1);
@@ -833,7 +833,7 @@ cashflow{ 'Leveraged Partnership Flip' } = define()
 	cfline('cf_sponsor_aftertax_ptc', 0);//"PTC");
 	cfline('cf_sponsor_aftertax_tax', 0);//"Developer share of project tax");
 	cfline('cf_sponsor_aftertax', 0);//"Total developer after-tax returns");
-	cfline('cf_sponsor_aftertax_irr', 0);//"Developer after-tax cumulative IRR");
+	cfline('cf_sponsor_aftertax_irr', 2);//"Developer after-tax cumulative IRR");
 	cfline('cf_sponsor_aftertax_npv', 0);//"Developer after-tax cumulative NPV");
 	cfline('sponsor_aftertax_irr', 2);//"Developer after-tax IRR");
 	cfline('sponsor_aftertax_npv', 0);//"Developer after-tax NPV");
