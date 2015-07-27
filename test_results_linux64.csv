@@ -1,13 +1,13 @@
 TECHNOLOGY,FINANCING,ANNUAL_OUTPUT,LCOE_NOM,LPPA_NOM,MESSAGES
-Flat Plate PV,Residential,6856.47,8.23088,NA,; 
-Flat Plate PV,Commercial,358863,6.82937,NA,; 
-Flat Plate PV,Third Party,6856.47,NA,NA,; 
+Flat Plate PV,Residential,6856.66,8.23065,NA,; 
+Flat Plate PV,Commercial,358873,6.82918,NA,; 
+Flat Plate PV,Third Party,6856.66,NA,NA,; 
 Flat Plate PV,Single Owner,37211968,10.4788,11.2021,; 
 Flat Plate PV,Leveraged Partnership Flip,37211968,11.4434,15.4983,; 
 Flat Plate PV,All Equity Partnership Flip,37211968,17.3553,25.0064,; 
 Flat Plate PV,Sale Leaseback,37211968,12.9092,13.8614,; 
 Flat Plate PV,LCOE Calculator,37277064,NA,NA,; 
-Flat Plate PV,None,6856.47,NA,NA,; 
+Flat Plate PV,None,6856.66,NA,NA,; 
 PVWatts,Residential,6829.09,11.8874,NA,; 
 PVWatts,Commercial,341031,5.38472,NA,; 
 PVWatts,Third Party,6829.09,NA,NA,; 
