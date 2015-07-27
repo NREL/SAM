@@ -6,8 +6,8 @@ VPATH = $(SRCDIR)
 WEXDIR = ../../wex
 LKDIR = ../../lk
 SSCDIR = ../../ssc
-LHSDIR = ../../lhsivf/src
-STEPWISEDIR = ../../stepwise_wipp
+LHSDIR = ../../lhs/src
+STEPWISEDIR = ../../stepwise
 
 WEXLIB = $(WEXDIR)/wexuxwx3.a
 LKLIB = $(LKDIR)/lkuxwx3.a
