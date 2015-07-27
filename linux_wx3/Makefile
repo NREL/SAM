@@ -6,6 +6,8 @@ VPATH = $(SRCDIR)
 WEXDIR = ../../wex
 LKDIR = ../../lk
 SSCDIR = ../../ssc
+LHSDIR = ../../lhsivf/src
+STEPWISEDIR = ../../stepwise_wipp
 
 WEXLIB = $(WEXDIR)/wexuxwx3.a
 LKLIB = $(LKDIR)/lkuxwx3.a
@@ -72,8 +74,8 @@ $(TARGET): $(OBJECTS) $(WEXLIB) $(LKLIB) $(SSCLIB)
 	mkdir -p ../deploy/linux_64
 	cp $(TARGET) ../deploy/linux_64
 	cp ../../ssc/build_linux/$(SSCLIB) ../deploy/linux_64
-	cp ../../lhs/src/lhs.bin ../deploy/runtime/bin
-	cp ../../stepwise/stepwise.bin ../deploy/runtime/bin
+	cp $(LHSDIR)/lhs.bin ../deploy/runtime/bin
+	cp $(STEPWISEDIR)/stepwise.bin ../deploy/runtime/bin
 	make -f Makefile-webupd
 	cp webupd.bin ../deploy/linux_64
 
