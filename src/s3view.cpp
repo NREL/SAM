@@ -36,7 +36,7 @@
 #include <wex/utils.h>
 #include <wex/jsonreader.h>
 
-#include <curl/curl.h>
+//#include <curl/curl.h>
 
 #include "simplecurl.h"
 #include "s3view.h"
