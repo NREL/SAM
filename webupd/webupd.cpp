@@ -339,6 +339,15 @@ public:
 
 		bool quiet = false;
 		wxString url = g_updateURL + g_samVerIdStr;
+
+		wxString binpath( binary.GetFullPath() + "/webupdurl.txt" );
+		if ( FILE *f = fopen(binpath.c_str(), "r") )
+		{
+			char buf[256];
+			fgets(buf, 255, f );
+			url = wxString(buf);
+			fclose( f );
+		}
 		
 		if ( argc > 1 )
 		{

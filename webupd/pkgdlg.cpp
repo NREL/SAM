@@ -102,7 +102,11 @@ class PatchFileHelper : public wxDialog
 			wxBoxSizer *vsizer = new wxBoxSizer( wxVERTICAL );
 			vsizer->Add( hsizer, 1, wxALL|wxEXPAND, 4 );
 			vsizer->Add( m_line, 0, wxALL|wxEXPAND, 4 );
-			vsizer->Add( CreateButtonSizer( wxOK ), 0, wxALL, 4 );
+
+			wxBoxSizer *hsizer2 = new wxBoxSizer( wxHORIZONTAL );
+			hsizer2->Add( new wxButton( this, wxID_OK ), 0, wxALL, 4 );
+			hsizer2->Add( new wxButton( this, wxID_SAVE ), 0, wxALL, 4 );
+			vsizer->Add( hsizer2, 0, wxALL, 1 );
 			
 			SetSizer( vsizer );
 		}
@@ -131,6 +135,21 @@ class PatchFileHelper : public wxDialog
 					+ wxDateTime::Now().FormatISODate() 
 					+ "\t" + nn + "\t" + wxFileNameFromPath(m_archive) + "\t" + m_md5 );
 		}
+
+		void OnSave( wxCommandEvent & )
+		{
+			wxFileDialog dlg( this, "Save patch file line", wxEmptyString, "patch_" + m_platStr + ".txt", "Text Files (*.txt)|*.txt", wxFD_SAVE|wxFD_OVERWRITE_PROMPT );
+			if ( dlg.ShowModal() == wxID_OK )
+			{
+				if ( FILE *f = fopen( dlg.GetPath().c_str(), "w" ) )
+				{
+					fputs( m_line->GetValue().c_str(), f );
+					fclose( f );
+				}
+				else
+					wxMessageBox("Could not write to file:\n\n" + dlg.GetPath());
+			}
+		}
 		
 		DECLARE_EVENT_TABLE();
 		
@@ -138,6 +157,7 @@ class PatchFileHelper : public wxDialog
 
 BEGIN_EVENT_TABLE( PatchFileHelper, wxDialog )
 	EVT_TEXT( ID_PATCH_NOTES, PatchFileHelper::OnNotesChange )
+	EVT_BUTTON( wxID_SAVE, PatchFileHelper::OnSave )
 END_EVENT_TABLE()
 
 
@@ -160,6 +180,12 @@ BEGIN_EVENT_TABLE( PackageDialog, wxDialog )
 END_EVENT_TABLE()
 
 #define DEFAULT_FILTER "*d.exe;*.ilk;*.tlog;*d.pdb;*.log;*.lastbuildstate;*msvc*.dll;*lib*.lib;*webupd*;./SAM;*.iss"
+
+static const char *help_text =
+
+"When building the installers, don't forget to enter the patch level in the /runtime/patches/patch_<plat>.txt file!\n"
+"On Windows and Linux, the folder path should be <path-to-sam-folder>, i.e. c:\\sam\\2015.6.30.  "
+"On OSX, the folder path should point to the 'Contents' folder in the bundle, i.e. /Users/xyz/SAM.app/Contents";
 
 PackageDialog::PackageDialog( wxWindow *parent, const wxString &title,
 	const wxString &ver, const wxString &basepath, const wxString &plat)
@@ -196,7 +222,7 @@ PackageDialog::PackageDialog( wxWindow *parent, const wxString &title,
 	buttons->Add( m_filter, 1, wxALL|wxEXPAND, 3 );
 
 	wxBoxSizer *dirs = new wxBoxSizer( wxHORIZONTAL );
-	dirs->Add( new wxStaticText(this, wxID_ANY, "Current version:"), 0, wxALL|wxALIGN_CENTER_VERTICAL, 2 );
+	dirs->Add( new wxStaticText(this, wxID_ANY, "New version:"), 0, wxALL|wxALIGN_CENTER_VERTICAL, 2 );
 	dirs->Add( m_curDir, 1, wxALL|wxEXPAND, 2 );
 	dirs->Add( new wxStaticText(this, wxID_ANY, "Old version:"), 0, wxALL|wxALIGN_CENTER_VERTICAL, 2 );
 	dirs->Add( m_oldDir, 1, wxALL|wxEXPAND, 2 );
@@ -215,6 +241,7 @@ PackageDialog::PackageDialog( wxWindow *parent, const wxString &title,
 	wxBoxSizer *sizer = new wxBoxSizer( wxVERTICAL );
 	sizer->Add( buttons, 0, wxALL|wxEXPAND, 3 );	
 	sizer->Add( dirs, 0, wxALL|wxEXPAND, 3 );
+	sizer->Add( new wxStaticText( this, wxID_ANY, help_text ), 0, wxALL|wxEXPAND, 3 );
 	sizer->Add( split, 1, wxALL|wxEXPAND, 0 );
 	SetSizer( sizer );
 }
@@ -447,7 +474,7 @@ void PackageDialog::UpdateGrid()
 		m_grid->SetCellValue( m_diffs[i]->cur, i, 0 );
 		m_grid->SetCellValue( m_diffs[i]->cur_time.FormatDate() + " " + m_diffs[i]->cur_time.FormatTime(), i, 1 );
 		m_grid->SetCellValue( m_diffs[i]->bindiff ? "UPDATED" : "NEW", i, 2 );		
-		m_grid->SetCellBackgroundColour(  m_diffs[i]->bindiff ? "salmon" : "sea green", i, 2 );
+		m_grid->SetCellBackgroundColour(  m_diffs[i]->bindiff ? "wheat" : "sea green", i, 2 );
 	}
 	m_grid->AutoSizeColumns();
 	m_grid->Thaw();
