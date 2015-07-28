@@ -340,12 +340,13 @@ public:
 		bool quiet = false;
 		wxString url = g_updateURL + g_samVerIdStr;
 
-		wxString binpath( binary.GetFullPath() + "/webupdurl.txt" );
+		wxString binpath( wxPathOnly(argv[0]) + "/webupdurl.txt" );
 		if ( FILE *f = fopen(binpath.c_str(), "r") )
 		{
 			char buf[256];
 			fgets(buf, 255, f );
 			url = wxString(buf);
+			wxMessageBox("loaded url for update source from 'webupdurl.txt':\n\n" + url + "\nlocal root: " + g_appPath);
 			fclose( f );
 		}
 		
