@@ -778,8 +778,6 @@ bool ShadeAnalysis::SimulateDiffuse(bool save)
 	alt_max = 89;
 	alt_step = 1;
 	
-
-
 	size_t num_alt = 1 + (alt_max - alt_min)/alt_step;
 	size_t num_azi = 1 + (azi_max - azi_min)/azi_step;
 	size_t num_scenes =  num_alt * num_azi;
@@ -808,42 +806,37 @@ bool ShadeAnalysis::SimulateDiffuse(bool save)
 
 			// for nighttime full shading (fraction=1 and factor=0)
 			// consistent with SAM shading factor of zero for night time
-			//	double sf = 0;
-			double scene_sf = 1;
 			tr.rotate_azal(azi, alt);
 			sc.build(tr);
 
 			std::vector<s3d::shade_result> shresult;
-			scene_sf = sc.shade(shresult);
+			sc.shade(shresult);
 
 			for (size_t k = 0; k<shresult.size(); k++)
 			{
 				int id = shresult[k].id;
 				// find the correct shade group for this 'id'
 				// and accumulate the total shaded and active areas
-				for (size_t n = 1; n<shade.size(); n++)
+				for (size_t n = 0; n<shade.size(); n++)
 				{
 					std::vector<int> &ids = shade[n].ids;
 					if (std::find(ids.begin(), ids.end(), id) != ids.end())
 					{
 						shade[n].shaded[c] += shresult[k].shade_area;
 						shade[n].active[c] += shresult[k].active_area;
+						shade[n].nsurf[c]++; // accumulate number of surfaces included - only include shaded portion if greater than zero 
 					}
 				}
 			}
-
-			// store overall array shading factor
-			shade[0].sfac[c] = 100.0f * scene_sf;
-
+			
 			// compute each group's shading factor from the overall areas
-			for (size_t n = 1; n<shade.size(); n++)
+			for (size_t n = 0; n<shade.size(); n++)
 			{
-				double sf = 1;
-				if (shade[n].active[c] != 0.0)
-					sf = shade[n].shaded[c] / shade[n].active[c];
-
-				shade[n].sfac[c] = 100.0f * sf;
+				shade[n].sfac[c] = 100.0;
+				if (shade[n].active[c] > 0.0)
+					shade[n].sfac[c] = 100.0 * shade[n].shaded[c] / shade[n].active[c];
 			}
+
 			c++;
 		}
 	}
@@ -857,17 +850,31 @@ bool ShadeAnalysis::SimulateDiffuse(bool save)
 	m_diffuseName.Clear();
 	for (size_t j = 0; j < shade.size(); j++)
 	{
+		size_t count = 0;
 		data[j] = 0;
 		for (size_t i = 0; i < num_scenes; i++)
-			data[j] += shade[j].sfac[i];
-		data[j] /= num_scenes;
+		{
+			if ( shade[j].nsurf[i] > 0 )
+			{
+				data[j] += shade[j].sfac[i];
+				count++;
+			}
+		}
+
+		if ( count > 0 ) data[j] /= count;
+		else data[j] = 0; // if there were no surfaces in this piece (i.e. facing away from sun), no diffuse blocking
+
 		m_diffuseShadePercent.push_back(data[j]);
 		m_diffuseName.push_back(shade[j].group);
 	}
 		
-	wxString difftext = wxString::Format("Diffuse shading: Entire array: %.1lf %%", m_diffuseShadePercent[0]);
-	for( size_t i=1;i<m_diffuseShadePercent.size();i++ )
-		difftext += ",  " + m_diffuseName[i] + wxString::Format(": %.1lf %%", m_diffuseShadePercent[i]);	
+	wxString difftext("Diffuse shading: ");
+	for( size_t i=0;i<m_diffuseShadePercent.size();i++ )
+	{
+		difftext += m_diffuseName[i] + wxString::Format(": %.2lf %%", m_diffuseShadePercent[i]);	
+		if ( i < m_diffuseShadePercent.size()-1 ) difftext += ", ";
+	}
+
 	m_diffuseResults->ChangeValue( difftext );
 
 
@@ -975,21 +982,20 @@ bool ShadeAnalysis::SimulateTimeseries( int minute_step, std::vector<surfshade> 
 					// for nighttime full shading (fraction=1 and factor=0)
 					// consistent with SAM shading factor of zero for night time
 					//	double sf = 0;
-					double scene_sf = 1; 
 					if (alt > 0)
 					{
 						tr.rotate_azal( azi, alt );
 						sc.build( tr );
 					
 						std::vector<s3d::shade_result> shresult;
-						scene_sf = sc.shade( shresult );
+						sc.shade( shresult );
 
 						for ( size_t k=0;k<shresult.size();k++ )
 						{
 							int id = shresult[k].id;
 							// find the correct shade group for this 'id'
 							// and accumulate the total shaded and active areas
-							for( size_t n=1;n<shade.size();n++ )
+							for( size_t n=0;n<shade.size();n++ )
 							{
 								std::vector<int> &ids = shade[n].ids;
 								if ( std::find( ids.begin(), ids.end(), id ) != ids.end() )
@@ -1001,11 +1007,8 @@ bool ShadeAnalysis::SimulateTimeseries( int minute_step, std::vector<surfshade> 
 						}
 					}
 			
-					// store overall array shading factor
-					shade[0].sfac[c] =  100.0f * scene_sf;
-
 					// compute each group's shading factor from the overall areas
-					for( size_t n=1;n<shade.size();n++ )
+					for( size_t n=0;n<shade.size();n++ )
 					{
 						double sf = 1;
 						if ( shade[n].active[c] != 0.0 )
@@ -1022,8 +1025,6 @@ bool ShadeAnalysis::SimulateTimeseries( int minute_step, std::vector<surfshade> 
 
 	return true;
 }
-
-
 
 void ShadeAnalysis::OnGenerateTimeSeries( wxCommandEvent & )
 {
@@ -1132,34 +1133,51 @@ void ShadeAnalysis::OnGenerateDiurnal( wxCommandEvent & )
 void ShadeAnalysis::InitializeSections( int mode, std::vector<surfshade> &shade )
 {
 	shade.clear();
-	shade.push_back( surfshade(mode, "Entire Array") ); // overall system shade
 
+	surfshade ungrouped(mode, wxEmptyString ); // for any ungrouped array sections
+	
 	// setup shading result storage for each group
 	std::vector<VObject*> objs = m_shadeTool->GetView()->GetObjects();
 	for( size_t i=0;i<objs.size();i++ )
 	{
 		if ( VActiveSurfaceObject *surf = dynamic_cast<VActiveSurfaceObject*>( objs[i] ) )
 		{
-			wxString grp = surf->Property("Group").GetString();
-			if ( grp.IsEmpty() ) continue;
+			wxString grp = surf->Property("Group").GetString().Trim().Trim(false);
+			surfshade *ss = 0;
 
-			int index = -1;
-			for( int k=0;k<shade.size();k++ )
-				if ( shade[k].group == grp )
-					index = k;
+			if ( !grp.IsEmpty() )
+			{			
+				int index = -1;
+				for( int k=0;k<shade.size();k++ )
+					if ( shade[k].group == grp ) 
+						index = k;
 
-			if ( index < 0 )
-			{
-				shade.push_back( surfshade( mode, grp ) );
-				index = shade.size()-1;
+				if ( index < 0 )
+				{
+					shade.push_back( surfshade( mode, grp ) );
+					index = shade.size()-1;
+				}
+
+				ss = &shade[index];
 			}
-
-			surfshade &ss = shade[index];
-			ss.surfaces.push_back( surf );
-			if ( std::find( ss.ids.begin(), ss.ids.end(), surf->GetId() ) == ss.ids.end() )
-				ss.ids.push_back( surf->GetId() );
+			else
+				ss = &ungrouped;
+			
+			ss->surfaces.push_back( surf );
+			if ( std::find( ss->ids.begin(), ss->ids.end(), surf->GetId() ) == ss->ids.end() )
+				ss->ids.push_back( surf->GetId() );
 		}
 	}
+	
+
+	if ( ungrouped.surfaces.size() > 0 )
+	{
+		if ( shade.size() > 0 )	ungrouped.group = "Ungrouped active surfaces"; // subarrays defined
+		else ungrouped.group = "Array"; // no subarrays defined
+
+		shade.push_back( ungrouped );
+	}
+
 }
 
 bool ShadeAnalysis::SimulateDiurnal()
@@ -1212,7 +1230,7 @@ bool ShadeAnalysis::SimulateDiurnal()
 				sc.build( tr );
 					
 				std::vector<s3d::shade_result> shresult;
-				scene_sf = sc.shade( shresult );
+				sc.shade( shresult );
 
 				for ( size_t k=0;k<shresult.size();k++ )
 				{
@@ -1220,7 +1238,7 @@ bool ShadeAnalysis::SimulateDiurnal()
 
 					// find the correct shade group for this 'id'
 					// and accumulate the total shaded and active areas
-					for( size_t n=1;n<shade.size();n++ )
+					for( size_t n=0;n<shade.size();n++ )
 					{
 						std::vector<int> &ids = shade[n].ids;
 						if ( std::find( ids.begin(), ids.end(), id ) != ids.end() )
@@ -1231,12 +1249,9 @@ bool ShadeAnalysis::SimulateDiurnal()
 					}
 				}
 			}
-			
-			// store overall array shading factor
-			shade[0].sfac( m, h ) =  100.0f * scene_sf;
 
 			// compute each group's shading factor from the overall areas
-			for( size_t n=1;n<shade.size();n++ )
+			for( size_t n=0;n<shade.size();n++ )
 			{
 				double sf = 1;
 				if ( shade[n].active(m,h) != 0.0 )
@@ -1319,7 +1334,10 @@ BEGIN_EVENT_TABLE( ShadeTool, wxPanel )
 	EVT_VIEW3D_UPDATE_OBJECTS( ID_GRAPHICS, ShadeTool::OnUpdateObjectList )
 	EVT_VIEW3D_UPDATE_PROPERTIES( ID_GRAPHICS, ShadeTool::OnUpdateProperties )
 	EVT_VIEW3D_UPDATE_SELECTION( ID_GRAPHICS, ShadeTool::OnUpdateSelection )
-
+	
+#ifdef S3D_STANDALONE
+	EVT_BUTTON( wxID_NEW, ShadeTool::OnCommand )
+#endif
 	EVT_BUTTON( wxID_OPEN, ShadeTool::OnCommand )
 	EVT_BUTTON( wxID_SAVE, ShadeTool::OnCommand )
 	EVT_BUTTON( ID_ANALYSIS, ShadeTool::OnCommand )
@@ -1351,6 +1369,7 @@ ShadeTool::ShadeTool( wxWindow *parent, int id, const wxString &data_path )
 
 	wxBoxSizer *sizer_tool = new wxBoxSizer( wxHORIZONTAL );
 #ifdef S3D_STANDALONE
+	sizer_tool->Add( new wxMetroButton( this, wxID_NEW, "New" ), 0, wxALL|wxEXPAND, 0 );
 	sizer_tool->Add( new wxMetroButton( this, wxID_OPEN, "Open" ), 0, wxALL|wxEXPAND, 0 );
 	sizer_tool->Add( new wxMetroButton( this, wxID_SAVE, "Save" ), 0, wxALL|wxEXPAND, 0 );
 #endif
@@ -1586,6 +1605,11 @@ void ShadeTool::OnCommand( wxCommandEvent &evt)
 
 	switch (evt.GetId())
 	{
+#ifdef S3D_STANDALONE
+	case wxID_NEW:
+		m_view->DeleteAll();
+		break;
+#endif
 	case wxID_SAVE: Save(); break;
 	case wxID_OPEN: 		
 		if( Load() ) m_book->SetSelection( PG_SCENE );

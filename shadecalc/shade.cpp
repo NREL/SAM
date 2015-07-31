@@ -10,7 +10,7 @@
 #include "../src/s3view.h"
 
 wxArrayString g_appArgs;
-wxString g_appTitle( "SAM Shade Calculator (2015.5.21)" );
+wxString g_appTitle( "SAM Shade Calculator (2015.7.31)" );
 
 class MyFrame : public wxFrame
 {
