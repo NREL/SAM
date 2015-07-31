@@ -131,12 +131,14 @@ public:
 				sfac.resize_fill( 12, 24, 1 );
 				shaded.resize_fill( 12, 24, 0 );
 				active.resize_fill( 12, 24, 0 );
+				nsurf.resize_fill( 12, 24, 0 );
 			}
 			else if (size > 0)
 			{
-				sfac.resize_fill( size, 1);
-				shaded.resize_fill(size, 0);
-				active.resize_fill(size, 0);
+				sfac.resize_fill( size, 1 );
+				shaded.resize_fill( size, 0 );
+				active.resize_fill( size, 0 );
+				nsurf.resize_fill( size, 0 );
 			}
 		}
 
@@ -145,11 +147,16 @@ public:
 			return 8760*(60/minute_step);
 		}
 	
+		// configuration
 		wxString group;
-		matrix_t<float> sfac;
-		matrix_t<double> shaded, active;
 		std::vector<VActiveSurfaceObject*> surfaces;
 		std::vector<int> ids;
+
+		// calculated
+		matrix_t<float> sfac;
+		matrix_t<double> shaded, active;
+		matrix_t<size_t> nsurf;
+
 	};
 
 

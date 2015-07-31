@@ -1708,7 +1708,7 @@ void scene::build( transform &tr )
 		{
 			m_sorted_culled.erase( m_sorted_culled.begin() + i );
 			if ( std::find( m_polygons.begin(), m_polygons.end(), pp ) == m_polygons.end() )
-				delete pp;
+				delete pp; // delete the polygon if it was generated in the BSP split
 		}
 		else
 			i++;
