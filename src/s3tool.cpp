@@ -754,10 +754,7 @@ bool ShadeAnalysis::SimulateDiffuse(bool save)
 	double lat, lon, tz;
 	m_shadeTool->GetLocationSetup()->GetLocation(&lat, &lon, &tz);
 
-	double azi, alt;
 	const int *ndays = ::wxNDay;
-	size_t i_azi, i_alt, c = 0;
-
 
 	s3d::transform tr;
 	tr.set_scale(SF_ANALYSIS_SCALE);
@@ -784,14 +781,13 @@ bool ShadeAnalysis::SimulateDiffuse(bool save)
 		
 	std::vector<surfshade> shade;
 	InitializeSections( num_scenes, shade );
-
-	for (i_azi = azi_min; i_azi<=azi_max && !stopped; i_azi += azi_step)
+	
+	size_t c = 0;
+	for ( size_t azi = azi_min; azi<=azi_max && !stopped; azi += azi_step )
 	{
-		for (i_alt = alt_min; i_alt <= alt_max && !stopped; i_alt += alt_step)
+		for ( size_t alt = alt_min; alt <= alt_max && !stopped; alt += alt_step )
 		{
-			azi = i_azi;
-			alt = i_alt;
-			if (c % 400 == 0)
+			if ( c % 1000 == 0 )
 			{
 				int percent = (int)(100.0*c / num_scenes);
 				if (!pdlg.Update(percent))
@@ -799,18 +795,14 @@ bool ShadeAnalysis::SimulateDiffuse(bool save)
 					stopped = true;
 					break;
 				}
-
 				wxYieldIfNeeded();
 			}
 
-
-			// for nighttime full shading (fraction=1 and factor=0)
-			// consistent with SAM shading factor of zero for night time
-			tr.rotate_azal(azi, alt);
+			tr.rotate_azal( (double)azi, (double)alt );
 			sc.build(tr);
 
 			std::vector<s3d::shade_result> shresult;
-			sc.shade(shresult);
+			sc.shade( shresult );
 
 			for (size_t k = 0; k<shresult.size(); k++)
 			{
@@ -824,17 +816,20 @@ bool ShadeAnalysis::SimulateDiffuse(bool save)
 					{
 						shade[n].shaded[c] += shresult[k].shade_area;
 						shade[n].active[c] += shresult[k].active_area;
-						shade[n].nsurf[c]++; // accumulate number of surfaces included - only include shaded portion if greater than zero 
+
+						// accumulate number of surfaces included - only include shaded portion if greater than zero 
+						shade[n].nsurf[c]++;
 					}
 				}
 			}
 			
 			// compute each group's shading factor from the overall areas
+			// solid angle for spherical integral has sin(theta) term - include here.
 			for (size_t n = 0; n<shade.size(); n++)
 			{
-				shade[n].sfac[c] = 100.0;
-				if (shade[n].active[c] > 0.0)
-					shade[n].sfac[c] = 100.0 * shade[n].shaded[c] / shade[n].active[c];
+				shade[n].sfac[c] = 0;
+				if ( shade[n].nsurf[c] > 0 && shade[n].active[c] > 0.0 )
+					shade[n].sfac[c] = 100.0 * shade[n].shaded[c] / shade[n].active[c] * sin( (90-alt)*M_PI/180 );
 			}
 
 			c++;
@@ -845,26 +840,25 @@ bool ShadeAnalysis::SimulateDiffuse(bool save)
 	
 	int y = 0;
 	// average shading factor over skydome
-	std::vector<double> data(shade.size());
 	m_diffuseShadePercent.clear();
 	m_diffuseName.Clear();
 	for (size_t j = 0; j < shade.size(); j++)
 	{
 		size_t count = 0;
-		data[j] = 0;
+		double average = 0;
 		for (size_t i = 0; i < num_scenes; i++)
 		{
 			if ( shade[j].nsurf[i] > 0 )
 			{
-				data[j] += shade[j].sfac[i];
+				average += shade[j].sfac[i];
 				count++;
 			}
 		}
 
-		if ( count > 0 ) data[j] /= count;
-		else data[j] = 0; // if there were no surfaces in this piece (i.e. facing away from sun), no diffuse blocking
+		if ( count > 0 ) average /= count;
+		else average = 0; // if there were no surfaces in this piece (i.e. facing away from sun), no diffuse blocking
 
-		m_diffuseShadePercent.push_back(data[j]);
+		m_diffuseShadePercent.push_back( average );
 		m_diffuseName.push_back(shade[j].group);
 	}
 		
@@ -892,14 +886,16 @@ bool ShadeAnalysis::SimulateDiffuse(bool save)
 					fprintf(fp, "%s %c", (const char*)shade[i].group.c_str(), i + 1 < shade.size() ? ',' : '\n');
 
 				c = 0;
-				for (i_azi = azi_min; i_azi<azi_max; i_azi += azi_step)
-					for (i_alt = alt_min; i_alt < alt_max; i_alt += alt_step)
+				for ( size_t azi = azi_min; azi<=azi_max; azi += azi_step)
+				{
+					for ( size_t alt = alt_min; alt<=alt_max; alt += alt_step)
 					{
-					fprintf(fp, "%d,%d,", i_azi, i_alt);
-					for (size_t j = 0; j < shade.size(); j++)
-							fprintf(fp, "%lg%c", shade[j].sfac[c], j + 1 < shade.size() ? ',' : '\n');
-						c++;
+						fprintf(fp, "%d,%d,", (int)azi, (int)alt);
+						for (size_t j = 0; j < shade.size(); j++)
+								fprintf(fp, "%lg%c", shade[j].sfac[c], j + 1 < shade.size() ? ',' : '\n');
+							c++;
 					}
+				}
 				fclose(fp);
 			}
 			else

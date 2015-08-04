@@ -1804,9 +1804,10 @@ double scene::shade( std::vector<shade_result> &results,
 
 	// determine shading results independently for each object (by 'id')
 	// first, allocate shading result structures for each
-	// active object
+	// active object whether or not it has any shading on it
 	for( size_t i=0;i<m_rendered.size();i++ )
 	{
+		// skip if it's not an active polygon or is degenerate
 		if ( m_rendered[i]->type != ACTIVE 
 			|| m_rendered[i]->points.size() < 3
 			|| m_rendered[i]->as_line )
@@ -1829,7 +1830,7 @@ double scene::shade( std::vector<shade_result> &results,
 		sr.id = id;
 		sr.active_area = 0.0;
 		sr.shade_area = 0.0;
-		sr.shade_fraction = 1.0; // initialize to fully shaded if active area = 0
+		sr.shade_fraction = 0.0; // assume no shading
 		sr.polygons.push_back( m_rendered[i] ); // store this polygon as an active part
 	}
 
@@ -1843,7 +1844,7 @@ double scene::shade( std::vector<shade_result> &results,
 		ClipperLib::Clipper cc;
 
 		// merge together all transformed polygons that are part of the
-		// current object whose shading results are in 'sr'
+		// current active object whose shading results are to be stored in 'sr'
 		for( std::vector<polygon3d*>::iterator ipoly = sr.polygons.begin();
 			ipoly != sr.polygons.end();
 			++ipoly )
@@ -1851,11 +1852,11 @@ double scene::shade( std::vector<shade_result> &results,
 			ClipperLib::Path active;
 			copy_poly( active, *(*ipoly) );
 			
-			double area = fabs(ClipperLib::Area( active ));
-			if ( fabs(area) < POLYEPS ) continue;
+			double area = fabs( ClipperLib::Area( active ) );
+			if ( area < POLYEPS ) continue;
 
 			sr.active_area += area;
-			cc.AddPath(active, ClipperLib::ptSubject, true );
+			cc.AddPath( active, ClipperLib::ptSubject, true );
 		}
 
 		size_t nobstruct=0;
@@ -1914,9 +1915,11 @@ double scene::shade( std::vector<shade_result> &results,
 		}
 	}
 
-	double sfscene = 1.0;
-	if ( scene_active != 0.0 )
+	double sfscene = 0.0;
+	if ( scene_active > 0.0 )
 		sfscene = scene_shade / scene_active;
+	else
+		sfscene = -1.0;
 
 	if ( total_active != 0 ) *total_active = scene_active;
 	if ( total_shade != 0 ) *total_shade = scene_shade;
