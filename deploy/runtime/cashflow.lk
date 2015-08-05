@@ -183,119 +183,6 @@ cashflow{ 'Commercial' } = define()
 	cfline( 'cf_after_tax_cash_flow', 0);
 };
 
-/*
-cashflow{ 'Commercial PPA' } = define()
-{
-	cfline( 'cf_energy_net', 1); // use one digit
-	cfline( 'cf_energy_price');
-	cfline( 'cf_energy_value');
-	cfline( '' ); // spacer
-
-	cfline( "Operating Expenses", -1 ); // header	
-	cfline( 'cf_om_fixed_expense,cf_om_production_expense,cf_om_capacity_expense,cf_om_fuel_expense');
-	cfline( 'cf_om_opt_fuel_1_expense' );
-	cfline( 'cf_om_opt_fuel_2_expense' );
-	
-//	cfline( 'cf_property_tax_assessed_value');
-	cfline( 'cf_property_tax_expense');
-	cfline( 'cf_insurance_expense');
-	cfline( 'cf_net_salvage_value');
-	cfline( 'cf_operating_expenses');
-	cfline( '' ); // spacer
-	
-	cfline( 'cf_operating_income');
-	cfline( '' ); // spacer
-	
-	cfline( "Financing", -1 ); // header
-	cfline( 'cf_debt_balance');
-	cfline( 'cf_debt_payment_interest');
-	cfline( 'cf_debt_payment_principal');
-	cfline( 'cf_debt_payment_total');
-	
-	// incentives
-	cf_cash_incentives();
-	cfline( 'cf_ptc_fed,cf_ptc_sta' );
-	cfline( '' );
-	cfline( 'itc_total_fed,itc_total_sta', 0, 1, 1); // offset to year 1
-	cfline( '' );
-	
-	cfline( "Tax Effect on Equity (State)", -1 ); // header
-	cfline( 'cf_sta_depr_sched');
-	cfline( 'cf_sta_depreciation');
-	cfline( 'cf_sta_incentive_income_less_deductions');
-	cfline( 'cf_sta_taxable_income_less_deductions');
-	cfline( 'cf_sta_tax_savings');
-	cfline( '' ); // spacer
-	
-	cfline( "Tax Effect on Equity (Federal)", -1 ); // header
-	cfline( 'cf_fed_depr_sched' );
-	cfline( 'cf_fed_depreciation');
-	cfline( 'cf_fed_incentive_income_less_deductions');
-	cfline( 'cf_fed_taxable_income_less_deductions');	
-	cfline( 'cf_fed_tax_savings' );
-	cfline( '' ); // spacer
-	
-	cfline( 'cf_after_tax_net_equity_cash_flow');
-	cfline( 'cf_after_tax_net_equity_cost_flow');
-	cfline( 'cf_after_tax_cash_flow');
-};
-
-cashflow{ 'Independent Power Producer' } = define()
-{
-	cfline( 'cf_energy_net', 1); // use one digit
-	cfline( 'cf_energy_price');
-	cfline( 'cf_energy_value');
-	cfline( '' ); // spacer
-
-	cfline( "Operating Expenses", -1 ); // header	
-	cfline( 'cf_om_fixed_expense,cf_om_production_expense,cf_om_capacity_expense,cf_om_fuel_expense');
-	cfline( 'cf_om_opt_fuel_1_expense' );
-	cfline( 'cf_om_opt_fuel_2_expense' );
-	
-//	cfline( 'cf_property_tax_assessed_value');
-	cfline( 'cf_property_tax_expense');
-	cfline( 'cf_insurance_expense');
-	cfline( 'cf_net_salvage_value');
-	cfline( 'cf_operating_expenses');
-	cfline( '' ); // spacer
-	
-	cfline( 'cf_operating_income');
-	cfline( '' ); // spacer
-	
-	cfline( "Financing", -1 ); // header
-	cfline( 'cf_debt_balance');
-	cfline( 'cf_debt_payment_interest');
-	cfline( 'cf_debt_payment_principal');
-	cfline( 'cf_debt_payment_total');
-	
-	// incentives
-	cf_cash_incentives();
-	cfline( 'cf_ptc_fed,cf_ptc_sta' );
-	cfline( '' );
-	cfline( 'itc_total_fed,itc_total_sta', 0, 1, 1); // offset to year 1
-	cfline( '' );
-	
-	cfline( "Tax Effect on Equity (State)", -1 ); // header
-	cfline( 'cf_sta_depr_sched');
-	cfline( 'cf_sta_depreciation');
-	cfline( 'cf_sta_incentive_income_less_deductions');
-	cfline( 'cf_sta_taxable_income_less_deductions');
-	cfline( 'cf_sta_tax_savings');
-	cfline( '' ); // spacer
-	
-	cfline( "Tax Effect on Equity (Federal)", -1 ); // header
-	cfline( 'cf_fed_depr_sched' );
-	cfline( 'cf_fed_depreciation');
-	cfline( 'cf_fed_incentive_income_less_deductions');
-	cfline( 'cf_fed_taxable_income_less_deductions');	
-	cfline( 'cf_fed_tax_savings' );
-	cfline( '' ); // spacer
-	
-	cfline( 'cf_after_tax_net_equity_cash_flow');
-	cfline( 'cf_after_tax_net_equity_cost_flow');
-	cfline( 'cf_after_tax_cash_flow');
-};*/
-
 cashflow{ 'Single Owner' } = define()
 {
     tech = technology();
@@ -735,7 +622,6 @@ cashflow{ 'Leveraged Partnership Flip' } = define()
 	
 	cfline( 'cf_ebitda', 0);
 	cfline( '' ); // spacer
-
 
 	cfline("Project Cash Flow", -1);
 	cfline("Project Cash Flow from Operating Activities", -1, 0);
@@ -1234,14 +1120,39 @@ function send_excel_rescom(xl)
 	N = value('analysis_period');
 	if ( N>100 ) msgbox("The Excel workbook only shows cash flow values for a 100-year analysis period or less. Your analysis is for " + N + " years.");
 
+	omf = value('om_fixed');
+	omc = value('om_capacity');
+	omp = value('om_production');
+	if ( #omf == 1 ) {
+		send_excel(       xl, 'om_fixed');
+		send_excel(       xl, 'om_fixed_escal');
+	}
+	else {
+		xl_set( xl, omf, 'AnnualOMFixed');
+		xl_set( xl, 'n/a', 'om_fixed');
+		xl_set( xl, 'n/a', 'om_fixed_escal');
+	}	
+	if ( #omc == 1 ) { 
+		send_excel(       xl, 'om_capacity');
+		send_excel(       xl, 'om_capacity_escal');
+	}
+	else {
+		xl_set( xl, omc, 'AnnualOMCapacity');
+		xl_set( xl, 'n/a', 'om_capacity');
+		xl_set( xl, 'n/a', 'om_capacity_escal');
+	}	
+	if ( #omp == 1 ) {	
+		send_excel(       xl, 'om_production');
+		send_excel(       xl, 'om_production_escal');
+	}
+	else {
+		xl_set( xl, omp, 'AnnualOMProduction');
+		xl_set( xl, 'n/a', 'om_production');
+		xl_set( xl, 'n/a', 'om_production_escal');
+	}	
+
 	send_excel(       xl, 'system_capacity');
 	send_excel(       xl, 'total_installed_cost');
-	send_excel(       xl, 'om_fixed');
-	send_excel(       xl, 'om_fixed_escal');
-	send_excel(       xl, 'om_capacity');
-	send_excel(       xl, 'om_capacity_escal');
-	send_excel(       xl, 'om_production');
-	send_excel(       xl, 'om_production_escal');
 	send_excel(       xl, 'debt_fraction');
 	send_excel(       xl, 'loan_term');
 	send_excel(       xl, 'loan_rate');
