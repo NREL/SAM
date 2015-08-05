@@ -1114,11 +1114,7 @@ function send_excel_incentives(xl)
 	
 } 
 
-function send_excel_rescom(xl)
-{
-
-	N = value('analysis_period');
-	if ( N>100 ) msgbox("The Excel workbook only shows cash flow values for a 100-year analysis period or less. Your analysis is for " + N + " years.");
+function send_excel_om(xl) {
 
 	omf = value('om_fixed');
 	omc = value('om_capacity');
@@ -1151,6 +1147,15 @@ function send_excel_rescom(xl)
 		xl_set( xl, 'n/a', 'om_production_escal');
 	}	
 
+}
+
+function send_excel_rescom(xl)
+{
+
+	N = value('analysis_period');
+	if ( N>100 ) msgbox("The Excel workbook only shows cash flow values for a 100-year analysis period or less. Your analysis is for " + N + " years.");
+
+
 	send_excel(       xl, 'system_capacity');
 	send_excel(       xl, 'total_installed_cost');
 	send_excel(       xl, 'debt_fraction');
@@ -1167,6 +1172,8 @@ function send_excel_rescom(xl)
 	send_excel(       xl, 'prop_tax_cost_assessed_percent');
 	send_excel(       xl, 'property_tax_rate');
 	send_excel(       xl, 'salvage_percentage');
+	
+	send_excel_om(xl);	
 	
 	send_excel_incentives(xl);
 }
@@ -1309,12 +1316,7 @@ cashflow_to_excel{ 'Single Owner' } = define()
 	send_excel_yesno( xl, 'pbi_oth_for_ds');
 	send_excel_yesno( xl, 'pbi_uti_for_ds');
 
-	send_excel(       xl, 'om_capacity');
-	send_excel(       xl, 'om_capacity_escal');
-	send_excel(       xl, 'om_fixed');
-	send_excel(       xl, 'om_fixed_escal');
-	send_excel(       xl, 'om_production');
-	send_excel(       xl, 'om_production_escal');
+	send_excel_om(xl);
 	send_excel_fuel(xl);
 	
 	send_excel(       xl, 'analysis_period');
