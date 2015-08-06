@@ -1615,7 +1615,35 @@ double polyareatr(const s3d::polygon3d &p)
 	return -a * 0.5;
 }
 
-void polynormal( const s3d::polygon3d &p, double *x, double *y, double *z )
+double angle_between( double A[3], double B[3] )
+{
+	double AA = sqrt( A[0]*A[0] + A[1]*A[1] + A[2]*A[2] );
+	double BB = sqrt( B[0]*B[0] + B[1]*B[1] + B[2]*B[2] );
+	return acos( (A[0]*B[0] + A[1]*B[1] + A[2]*B[2]) / (AA*BB) ) * 180/M_PI;
+}
+
+void polynormal( const s3d::polygon3d &p, double N[3] )
+{
+	double A = 0;
+	double B = 0;
+	double C = 0;
+	size_t i, j;
+	for ( i=0;i< p.points.size();i++ )
+	{
+		if ( i == p.points.size() - 1 ) j = 0;
+		else j = i+1;
+
+		A += ( p.points[i].y - p.points[j].y ) * ( p.points[i].z + p.points[j].z );
+		B += ( p.points[i].z - p.points[j].z ) * ( p.points[i].x + p.points[j].x );
+		C += ( p.points[i].x - p.points[j].x ) * ( p.points[i].y + p.points[j].y );
+	}
+
+	N[0] = A;
+	N[1] = B;
+	N[2] = C;
+}
+
+void polynormaltr( const s3d::polygon3d &p, double *x, double *y, double *z )
 {
 	double A = 0;
 	double B = 0;
@@ -1639,7 +1667,7 @@ void polynormal( const s3d::polygon3d &p, double *x, double *y, double *z )
 bool is_backface( const s3d::polygon3d &p )
 {	
 	double A,B,C;
-	polynormal(p, &A, &B, &C );
+	polynormaltr(p, &A, &B, &C );
 	return (C > 0);
 }
 
@@ -1756,6 +1784,8 @@ void scene::build( transform &tr )
 	for ( size_t i=0;i<m_labels.size();i++ )
 		tr( m_labels[i]->pos );
 
+	// save the view normal
+	tr.get_view_normal( &m_viewNormal[0], &m_viewNormal[1], &m_viewNormal[2] );
 
 }
 
@@ -1802,6 +1832,11 @@ double scene::shade( std::vector<shade_result> &results,
 {
 	results.clear();
 
+	double vn[3];
+	vn[0] = -m_viewNormal[0];
+	vn[1] = -m_viewNormal[1];
+	vn[2] = -m_viewNormal[2];
+
 	// determine shading results independently for each object (by 'id')
 	// first, allocate shading result structures for each
 	// active object whether or not it has any shading on it
@@ -1832,6 +1867,11 @@ double scene::shade( std::vector<shade_result> &results,
 		sr.shade_area = 0.0;
 		sr.shade_fraction = 0.0; // assume no shading
 		sr.polygons.push_back( m_rendered[i] ); // store this polygon as an active part
+
+		// calculate angle of incidence to view normal to polygon
+		double pn[3];
+		polynormal( *m_rendered[i], pn );
+		sr.aoi = angle_between( vn, pn );
 	}
 
 	// now for each object for which we are tracking shading results,
