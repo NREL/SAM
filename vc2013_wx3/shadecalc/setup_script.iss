@@ -39,7 +39,8 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 [Files]
 Source: "shade.exe"; DestDir: "{app}"; Flags: ignoreversion
 Source: "ivanhoe.s3d"; DestDir: "{app}"; Flags: ignoreversion   
-Source: "strings.s3d"; DestDir: "{app}"; Flags: ignoreversion
+Source: "nelson.s3d"; DestDir: "{app}"; Flags: ignoreversion
+Source: "strings.s3d"; DestDir: "{app}"; Flags: ignoreversion   
 Source: "sections.s3d"; DestDir: "{app}"; Flags: ignoreversion
 Source: "msvcr120.dll"; DestDir: "{app}"; Flags: ignoreversion
 Source: "msvcp120.dll"; DestDir: "{app}"; Flags: ignoreversion
