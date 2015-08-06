@@ -816,6 +816,7 @@ bool ShadeAnalysis::SimulateDiffuse(bool save)
 					{
 						shade[n].shaded[c] += shresult[k].shade_area;
 						shade[n].active[c] += shresult[k].active_area;
+						shade[n].aoisum[c] += shresult[k].aoi;
 
 						// accumulate number of surfaces included - only include shaded portion if greater than zero 
 						shade[n].nsurf[c]++;
@@ -829,7 +830,13 @@ bool ShadeAnalysis::SimulateDiffuse(bool save)
 			{
 				shade[n].sfac[c] = 0;
 				if ( shade[n].nsurf[c] > 0 && shade[n].active[c] > 0.0 )
-					shade[n].sfac[c] = 100.0 * shade[n].shaded[c] / shade[n].active[c] * sin( (90-alt)*M_PI/180 );
+				{
+					double aoi = shade[n].aoisum[c] / shade[n].nsurf[c]; // average AOI for surfaces in this group
+
+					shade[n].sfac[c] = 100.0 * shade[n].shaded[c] / shade[n].active[c] 
+						* sin( (90-alt)*M_PI/180 ) // differential when integrating over a sphere
+						* cos( aoi * M_PI/180 );  // directional dependence of diffuse
+				}
 			}
 
 			c++;
@@ -1424,7 +1431,7 @@ ShadeTool::ShadeTool( wxWindow *parent, int id, const wxString &data_path )
 	debug_sizer->Add(new wxButton(m_debugPanel, ID_TRI_TEST, "Triangle Test"), 0, wxALL | wxEXPAND, 0);
 	
 	m_debugPanel->SetSizer( debug_sizer );
-	m_debugPanel->Show( false );
+	m_debugPanel->Show( true );
 
 	m_analysis = new ShadeAnalysis( m_book, this );
 
