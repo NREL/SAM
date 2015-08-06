@@ -224,19 +224,22 @@ static const unsigned int SIDES = RIGHT|BACK|FRONT|LEFT;
 
 
 bool is_backface( const s3d::polygon3d &p );
-void polynormal( const s3d::polygon3d &p, double *x, double *y, double *z );
+void polynormal( const s3d::polygon3d &p, double N[3] );
+void polynormaltr( const s3d::polygon3d &p, double *x, double *y, double *z );
 double polyareatr( const s3d::polygon3d &p );
 bool zeroarea( const s3d::polygon3d &p );
+double angle_between( double A[3], double B[3] );
 
 
 class shade_result
 {
 public:
-	shade_result() : id(-1), active_area(0.0), shade_area(0.0), shade_fraction(0.0), backmost(0) {  }
+	shade_result() : id(-1), active_area(0.0), shade_area(0.0), shade_fraction(0.0), aoi(0.0), backmost(0) {  }
 	int id;
 	double active_area;
 	double shade_area;
 	double shade_fraction;
+	double aoi; // angle of incidence with view normal, degrees
 	std::vector<polygon3d> shadings;
 	std::vector<polygon3d*> polygons;
 	int backmost;
@@ -250,6 +253,7 @@ private:
 	
 	bool m_bspValid;
 	BSPTree m_bsp;
+	double m_viewNormal[3];
 	std::vector<polygon3d*> m_sorted_culled, m_rendered;
 
 	int m_polyType;

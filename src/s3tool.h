@@ -132,6 +132,7 @@ public:
 				shaded.resize_fill( 12, 24, 0 );
 				active.resize_fill( 12, 24, 0 );
 				nsurf.resize_fill( 12, 24, 0 );
+				aoisum.resize_fill( 12, 24, 0 );
 			}
 			else if (size > 0)
 			{
@@ -139,6 +140,7 @@ public:
 				shaded.resize_fill( size, 0 );
 				active.resize_fill( size, 0 );
 				nsurf.resize_fill( size, 0 );
+				aoisum.resize_fill( size, 0 );
 			}
 		}
 
@@ -156,6 +158,7 @@ public:
 		matrix_t<float> sfac;
 		matrix_t<double> shaded, active;
 		matrix_t<size_t> nsurf;
+		matrix_t<double> aoisum;
 
 	};
 

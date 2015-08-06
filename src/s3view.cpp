@@ -907,7 +907,7 @@ void View3D::OnPaint( wxPaintEvent & )
 			vy = vn._y;
 			vz = vn._z;
 
-			s3d::polynormal( p, &nx, &ny, &nz );
+			s3d::polynormaltr( p, &nx, &ny, &nz );
 			nx = 0-nx;
 			ny = 0-ny;
 			nz = 0-nz;
@@ -1016,12 +1016,18 @@ void View3D::OnPaint( wxPaintEvent & )
 
 	if ( m_mode == SPIN_VIEW )
 	{
+		wxString extra;
+		for( size_t i=0;i<m_shade.size();i++ )
+		{
+			extra += wxString::Format(" %d{aoi=%.1lf sf=%.3lf} ", m_shade[i].id, m_shade[i].aoi, m_shade[i].shade_fraction );
+		}
+
 		double azi, alt;
 		m_transform.get_azal( &azi, &alt );
 		dc.SetFont( *wxNORMAL_FONT );
 		dc.SetTextForeground( *wxBLACK );
-		dc.DrawText(wxString::Format("Azimuth: %.1lf   Altitude: %.1lf   Shade fraction: %0.3lf",
-			azi, alt, m_sf ),
+		dc.DrawText(wxString::Format("Azimuth: %.1lf   Altitude: %.1lf   Shade fraction: %0.3lf  [",
+			azi, alt, m_sf ) + extra + "]",
 			4, m_winHeight - dc.GetCharHeight() - 3);
 	}
 }
