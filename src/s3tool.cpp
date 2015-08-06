@@ -834,8 +834,8 @@ bool ShadeAnalysis::SimulateDiffuse(bool save)
 					double aoi = shade[n].aoisum[c] / shade[n].nsurf[c]; // average AOI for surfaces in this group
 
 					shade[n].sfac[c] = 100.0 * shade[n].shaded[c] / shade[n].active[c] 
-						* sin( (90-alt)*M_PI/180 ) // differential when integrating over a sphere
-						* cos( aoi * M_PI/180 );  // directional dependence of diffuse
+						* sin( (90-alt)*M_PI/180 ) ; // differential when integrating over a sphere
+						//* cos( aoi * M_PI/180 );  // directional dependence of diffuse
 				}
 			}
 
@@ -1431,7 +1431,7 @@ ShadeTool::ShadeTool( wxWindow *parent, int id, const wxString &data_path )
 	debug_sizer->Add(new wxButton(m_debugPanel, ID_TRI_TEST, "Triangle Test"), 0, wxALL | wxEXPAND, 0);
 	
 	m_debugPanel->SetSizer( debug_sizer );
-	m_debugPanel->Show( true );
+	m_debugPanel->Show( false );
 
 	m_analysis = new ShadeAnalysis( m_book, this );
 
