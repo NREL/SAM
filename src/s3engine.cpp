@@ -1480,10 +1480,10 @@ void scene::clear()
 	m_bspValid = false;
 	m_bsp.Reset();
 
-	for ( std::vector<polygon3d*>::iterator it = m_sorted_culled.begin(); it != m_sorted_culled.end(); ++it )
+	for ( std::vector<polygon3d*>::iterator it = m_sortedCulled.begin(); it != m_sortedCulled.end(); ++it )
 		if ( std::find( m_polygons.begin(), m_polygons.end(), *it) == m_polygons.end() )
 			delete *it;
-	m_sorted_culled.clear();
+	m_sortedCulled.clear();
 
 
 	for ( std::vector<polygon3d*>::iterator it = m_polygons.begin();
@@ -1516,12 +1516,12 @@ void scene::clear( int id )
 	}
 
 	i=0;
-	while( i < m_sorted_culled.size() )
+	while( i < m_sortedCulled.size() )
 	{
-		if (m_sorted_culled[i]->id == id)
+		if (m_sortedCulled[i]->id == id)
 		{
-			delete m_sorted_culled[i];
-			m_sorted_culled.erase( m_sorted_culled.begin() + i );
+			delete m_sortedCulled[i];
+			m_sortedCulled.erase( m_sortedCulled.begin() + i );
 		}
 		else i++;
 	}
@@ -1707,18 +1707,19 @@ void scene::build( transform &tr )
 		point3d cam(FARAWAY*vx,FARAWAY*vy,FARAWAY*vz);
 
 		// make sure all newly created "split" polygons are deleted
-		for ( std::vector<polygon3d*>::iterator it = m_sorted_culled.begin(); it != m_sorted_culled.end(); ++it )
+		for ( std::vector<polygon3d*>::iterator it = m_sortedCulled.begin(); it != m_sortedCulled.end(); ++it )
 			if ( std::find( m_polygons.begin(), m_polygons.end(), *it) == m_polygons.end() )
 				delete *it;
-		m_sorted_culled.clear();
+		m_sortedCulled.clear();
+		m_sortedCulled.reserve( m_bsp.NNodes() );
 
 		// traverse the tree	
-		m_bsp.Traverse( cam, m_sorted_culled );
+		m_bsp.Traverse( cam, m_sortedCulled );
 	
 		// transform all points
-		for ( size_t i=0;i<m_sorted_culled.size();i++ )
-			for ( size_t j=0;j<m_sorted_culled[i]->points.size();j++ )
-				tr( m_sorted_culled[i]->points[j] );
+		for ( size_t i=0;i<m_sortedCulled.size();i++ )
+			for ( size_t j=0;j<m_sortedCulled[i]->points.size();j++ )
+				tr( m_sortedCulled[i]->points[j] );
 	}
 	
 
@@ -1729,12 +1730,12 @@ void scene::build( transform &tr )
 		
 	// cull backfaces
 	i=0;
-	while( i < m_sorted_culled.size() )
+	while( i < m_sortedCulled.size() )
 	{
-		polygon3d *pp = m_sorted_culled[i];
+		polygon3d *pp = m_sortedCulled[i];
 		if ( !pp->as_line && !pp->no_cull && is_backface( *pp ) )
 		{
-			m_sorted_culled.erase( m_sorted_culled.begin() + i );
+			m_sortedCulled.erase( m_sortedCulled.begin() + i );
 			if ( std::find( m_polygons.begin(), m_polygons.end(), pp ) == m_polygons.end() )
 				delete pp; // delete the polygon if it was generated in the BSP split
 		}
@@ -1757,11 +1758,12 @@ void scene::build( transform &tr )
 
 	// accumulate all rendered polygons with nonzero area
 	m_rendered.clear();
+	m_rendered.reserve( background.size() + m_sortedCulled.size() );
 	for (i=0;i<background.size();i++)
 		m_rendered.push_back(background[i]);
 
-	for (i=0;i<m_sorted_culled.size();i++)
-		m_rendered.push_back(m_sorted_culled[i]);
+	for (i=0;i<m_sortedCulled.size();i++)
+		m_rendered.push_back(m_sortedCulled[i]);
 
 #else
 	
