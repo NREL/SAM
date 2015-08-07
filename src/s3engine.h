@@ -203,6 +203,7 @@ public:
 
 	void Traverse( point3d& CameraLoc, std::vector<s3d::polygon3d*>& polys );
 
+	size_t NNodes() { return m_nodes.size(); }
 	void Reset();
 	void ReadPolyList(const std::vector<s3d::polygon3d*>& polys );
 
@@ -254,7 +255,7 @@ private:
 	bool m_bspValid;
 	BSPTree m_bsp;
 	double m_viewNormal[3];
-	std::vector<polygon3d*> m_sorted_culled, m_rendered;
+	std::vector<polygon3d*> m_sortedCulled, m_rendered;
 
 	int m_polyType;
 	bool m_noCull;
