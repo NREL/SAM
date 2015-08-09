@@ -433,7 +433,19 @@ bool OpenEI::RetrieveUtilityRateData(const wxString &guid, RateData &rate, wxStr
 					rate.EnergySell[period][tier] = json_double(ers_tier[tier].Item("sell"), 0.0, &rate.HasEnergyCharge);
 					rate.EnergyAdj[period][tier] = json_double(ers_tier[tier].Item("adj"), 0.0, &rate.HasEnergyCharge);
 					rate.EnergyMaxUnit[period][tier] = json_string(ers_tier[tier].Item("unit"));
-					//
+					// update for kWh Daily units
+					// multiply max value by days of month
+					// TODO - fully implement Baseline rates - see UtilityRates\IRENA_2015.8.8
+					// emails from Pablo from IRENA 8/6/15
+					// have to implement on utility rate page as separate units
+					// then update comput module to compute monthly max values.
+					// Below is estimate for now...better to show daily value.
+					//if ((rate.EnergyMaxUnit[period][tier]).Lower() == "kwh daily")
+					//{
+					//	if (rate.EnergyMax[period][tier] < 1e38)
+					//		rate.EnergyMax[period][tier] *= 30;
+					//}
+					
 				}
 			}
 		}
