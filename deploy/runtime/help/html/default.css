@@ -248,6 +248,30 @@ p /* Normal */
  padding: 0px 0px 0px 0px;
  margin: 0px 0px 0px 0px;
 }
+.p_CHCode /* CH Code */
+{
+ font-size: 10pt;
+}
+.p_CHEquationVariable /* CH Equation Variable */
+{
+ font-size: 11pt;
+}
+.p_CHFileName /* CH File Name */
+{
+ font-size: 10pt;
+}
+.p_CHInterfaceElement /* CH Interface Element */
+{
+ font-size: 10pt;
+}
+.p_CHVariableSubscript /* CH Variable Subscript */
+{
+ font-size: 8pt;
+}
+.p_Character /* Character */
+{
+ font-size: 10pt;
+}
 .p_CodeExample /* Code Example */
 {
  font-size: 8pt;
@@ -272,6 +296,10 @@ p /* Normal */
 {
  font-size: 10pt;
  margin: 3px 0px 6px 24px;
+}
+.p_Emphasis /* Emphasis */
+{
+ font-size: 10pt;
 }
 .p_Equation /* Equation */
 {
@@ -429,6 +457,10 @@ p /* Normal */
 {
  font-size: 10pt;
  margin: 3px 0px 3px 48px;
+}
+.p_Superscript /* Superscript */
+{
+ font-size: 8pt;
 }
 .p_Table /* Table */
 {
