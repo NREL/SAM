@@ -340,14 +340,16 @@ public:
 		bool quiet = false;
 		wxString url = g_updateURL + g_samVerIdStr;
 
+		bool custom_url = false;
 		wxString binpath( wxPathOnly(argv[0]) + "/webupdurl.txt" );
 		if ( FILE *f = fopen(binpath.c_str(), "r") )
 		{
 			char buf[256];
 			fgets(buf, 255, f );
-			url = wxString(buf);
+			url = wxString(buf).Trim().Trim(false);
 			wxMessageBox("loaded url for update source from 'webupdurl.txt':\n\n" + url + "\nlocal root: " + g_appPath);
 			fclose( f );
+			custom_url = true;
 		}
 		
 		if ( argc > 1 )
@@ -406,9 +408,10 @@ public:
 			}
 		}
 
+		wxString patch_info_file( url + "/patch_" + wxString(g_platStr) + ".txt" );
 		// download current patch information for this platform
 		wxSimpleCurl dl;
-		if ( !dl.Start( url + "/patch_" + wxString(g_platStr) + ".txt", true ) )
+		if ( !dl.Start( patch_info_file, true ) )
 		{
 			if (!quiet) 
 				wxMessageBox("Could not obtain update information for SAM " + wxString(g_platStr) + ".\n\nInternet connection method: " + g_icmStr, "SAM Web Update");
@@ -451,6 +454,11 @@ public:
 			RecordPatch( 0, "Baseline SAM " + g_samVerIdStr + " Installation" );
 			curver = 0;
 		}
+
+
+		if ( custom_url )
+			wxShowTextMessageDialog(patch_info_file + "\n\n" + wxString::Format("latest version=%d current version=%d\nurl=%s lines=%d\n",
+			(int)latest_ver, (int)curver, (const char*)url.c_str(), (int)lines.Count() )+ "\n\n" + dl.GetDataAsString() );
 
 		if (latest_ver > curver)
 		{
