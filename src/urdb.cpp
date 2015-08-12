@@ -108,7 +108,10 @@ bool OpenEI::QueryUtilityCompanies(wxArrayString &names, wxString *err)
 	//  based on email from Jay Huggins 7/8/14 - use latest format - still at version 2
 	//wxString url = "http://en.openei.org/services/rest/utility_companies?version=latest&format=json_plain&callback=callback";
 
-	wxString url = "http://en.openei.org/w/api.php?cmtitle=Category%3AEIA%20Utility%20Companies%20and%20Aliases&action=query&list=categorymembers&cmprop=title&cmnamespace=0&cmlimit=10000&format=json";
+//	wxString url = "http://en.openei.org/w/api.php?cmtitle=Category%3AEIA%20Utility%20Companies%20and%20Aliases&action=query&list=categorymembers&cmprop=title&cmnamespace=0&cmlimit=10000&format=json";
+// Update from Jay 8/11/15 to include international rates
+	wxString url = "http://en.openei.org/w/api.php?cmtitle=Category%3AUtility%20Companies&action=query&list=categorymembers&cmprop=title&cmnamespace=0&cmlimit=10000&format=json";
+
 
 
 //	wxString json_data = wxWebHttpGet(url);
