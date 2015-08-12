@@ -1673,7 +1673,10 @@ public:
 	{
 		if ( Table.size() == 0 ) return wxEmptyString;
 		if ( IsTimeSeriesShown() )
-			return wxFormatTime( ((double)row)/((double)(MaxCount/8760)), true );
+		{
+			double steps_per_hour = MaxCount / 8760.0;
+			return wxFormatTime( row, steps_per_hour, true );
+		}
 		else if ( MinCount == MaxCount && MaxCount == 12 )
 			return wxMonthName( row+1 );
 		else
@@ -1787,11 +1790,7 @@ TabularBrowser::TabularBrowser( wxWindow *parent )
 
 	wxPanel *lhs = new wxPanel(splitwin);	
 	m_varSearch = new wxSearchCtrl( lhs, IDOB_SEARCH );
-//	m_varSearch->ShowCancelButton( false );
-	//m_varSearch->ShowSearchButton( false );
 
-//	m_varSel = new wxDVSelectionListCtrl(splitwin, IDOB_VARSEL, 1, wxDefaultPosition, wxDefaultSize,
-//		wxDVSEL_NO_COLOURS);
 	m_varSel = new wxDVSelectionListCtrl(lhs, IDOB_VARSEL, 1, wxDefaultPosition, wxDefaultSize,
 		wxDVSEL_NO_COLOURS);
 	m_varSel->SetBackgroundColour(*wxWHITE);
@@ -1811,13 +1810,11 @@ TabularBrowser::TabularBrowser( wxWindow *parent )
 	m_grid->SetRowLabelAlignment( wxALIGN_LEFT, wxALIGN_CENTER );
 
 	splitwin->SetMinimumPaneSize( 170 );
-//	splitwin->SplitVertically(m_varSel, m_grid, 210);
 	splitwin->SplitVertically(lhs, m_grid, 210);
 
 
 	wxBoxSizer *szv_main = new wxBoxSizer(wxVERTICAL);
 	szv_main->Add( tb_sizer, 0, wxALL|wxEXPAND, 0 );
-	//szv_main->Add( new wxStaticLine( this ), 0, wxALL|wxEXPAND);
 	szv_main->Add( splitwin, 1, wxALL|wxEXPAND, 0 );
 
 	SetSizer( szv_main );
