@@ -269,12 +269,15 @@ bool OpenEI::QueryUtilityRates(const wxString &name, std::vector<RateInfo> &rate
 	// rest service going away - update to api.openei.org per
 	// http://en.openei.org/services/doc/rest/util_rates?version=3
 //	wxString url = "http://en.openei.org/services/rest/utility_rates?version=3&detail=minimal&format=json&ratesforutility=" + utlnm;
-	wxString url = "http://api.openei.org/utility_rates?version=3&detail=minimal&format=json&ratesforutility=" + utlnm + "&api_key=" + wxString(sam_api_key);
+	//wxString url = "http://api.openei.org/utility_rates?version=3&detail=minimal&format=json&ratesforutility=" + utlnm + "&api_key=" + wxString(sam_api_key);
+
+	// dev server for international rates per Jay email 8/12/13
+	wxString url = "http://dev-api.openei.org/utility_rates?version=4&detail=minimal&format=json&ratesforutility=" + utlnm + "&api_key=" + wxString(sam_api_key);
 
 	wxString json_data = MyGet(url);
 	if (json_data.IsEmpty())
 	{
-		if (err) *err = "Could not retrieve rate information for " + name;
+		if (err) *err = "Could not retrieve rate information for " + name + " " + url;
 		return false;
 	}
 
@@ -340,7 +343,10 @@ bool OpenEI::RetrieveUtilityRateData(const wxString &guid, RateData &rate, wxStr
 //	wxString url = "http://en.openei.org/services/rest/utility_rates?version=3&format=json&detail=full&getpage=" + guid;
 	// rest service going away - update to api.openei.org per
 	// http://en.openei.org/services/doc/rest/util_rates?version=3
-	wxString url = "http://api.openei.org/utility_rates?version=3&format=json&detail=full&getpage=" + guid + "&api_key=" + wxString(sam_api_key);
+	//wxString url = "http://api.openei.org/utility_rates?version=3&format=json&detail=full&getpage=" + guid + "&api_key=" + wxString(sam_api_key);
+
+	// international rates
+	wxString url = "http://dev-api.openei.org/utility_rates?version=4&format=json&detail=full&getpage=" + guid + "&api_key=" + wxString(sam_api_key);
 
 	if (json_url) *json_url = url;
 
@@ -817,6 +823,9 @@ void OpenEIUtilityRateDialog::QueryRates(const wxString &utility_name)
 	wxString err;
 	//wxBusyInfo busy("Communicating with OpenEI.org... please wait", this);
 
+	wxString urdb_utility_name = utility_name;
+
+	/* skip fir international rates
 	wxString urdb_utility_name = "";
 	// first resolve aliases
 	if (!api.ResolveUtilityName(utility_name, &urdb_utility_name, &err))
@@ -824,7 +833,7 @@ void OpenEIUtilityRateDialog::QueryRates(const wxString &utility_name)
 		wxMessageBox("Error:\n\n" + err);
 		return;
 	}
-
+	*/
 
 	// get any rates
 	//if (!api.QueryUtilityRates(utility_name, mUtilityRates, &err))
