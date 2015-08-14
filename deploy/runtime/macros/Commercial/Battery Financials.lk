@@ -16,15 +16,14 @@ A simulation over the entire analysis period will be conducted regardless of whe
 	<li>Capital & Replacement ($) - Total cost of system and replacements</li>
 	<li>Operation & Maintenance ($) - Total cost of operation and maintenance</li>
 	<li>System & Electricity Cost ($) - The sum of Total Electricity Cost and Capital & Replacement costs </li>
-	<li>Present Value Electricity Costs ($) - The Net Present Value of the Total Electricity Cost </li>
-	<li>Present Value of Capital & Replacement Costs ($) - The Net Present Value of the Capital and Replacment Costs </li>
-	<li>Present Value of Operation & Maintenance Costs($) - The Net Present Value of the O&M Costs </li>
-	<li>Present Value of Total Costs ($) - The Net Present Value of System & Electricity Costs </li>
+	<li>Net Present Value ($) - The Net Present Value of the system, including electricity costs, taxs, and incentives </li>
 </ul>
 <p>
 A system which offsets more electricity costs than the introduced capital & replacement costs may be considered beneficial.  
-The column with the lowest "System & Electricity Cost" results in the lowest costs over the analysis period.
 Negative values indicate credits to the system owner while positive values indicate payments from the system owner.
+The column with the lowest "System & Electricity Cost" results in the lowest costs over the analysis period before considering net-present value (time value of money), taxes, and incentives.
+The Net Present Value (NPV) reflects a full cash flow analysis including the discount rate, inflation, taxes, and incentives.  The column with the highest NPV reflects the most financially beneficial option under the current simulation conditions. 
+A negative NPV implies that the project incurs a net loss over the analysis period.  The "No System" option always has an NPV of $0.
 @*/
 
 function get_months()
@@ -194,12 +193,7 @@ pv_min_annual = (compute_minimum_annual(analysis_period, inflation_rate, escalat
 pv_costs = (get('total_installed_cost'));
 pv_om = sum(compute_o_and_m());
 pv_total = pv_electricity_cost + pv_costs+pv_om;
-
-pv_npv_electric = (npv(get('elec_cost_with_system'),discount_rate));
-pv_npv_costs = pv_costs; 
-pv_npv_om = npv(compute_o_and_m(),discount_rate);
-
-pv_npv_total = pv_npv_electric + pv_npv_costs+pv_npv_om;
+pv_npv = get('npv');
 
 // PV+Battery
 set('en_batt',1);
@@ -217,13 +211,7 @@ batt_costs = system_initial_cost + batt_replacement_costs;
 batt_om = sum(compute_o_and_m());
 
 batt_total = batt_costs + batt_electricity_cost+batt_om;
-
-batt_npv_electric = (npv(get('elec_cost_with_system'),discount_rate));
-batt_npv_costs = (npv(get('cf_battery_replacement_cost'),discount_rate) + system_initial_cost);
-batt_npv_om = npv(compute_o_and_m(),discount_rate);
-batt_npv_total = (batt_npv_electric + batt_npv_costs + batt_npv_om);
-
-
+batt_npv = get('npv');
 
 // No PV or Battery
 none_electricity_cost = (sum(get('elec_cost_without_system')));
@@ -237,12 +225,7 @@ none_min_annual = (compute_minimum_annual(analysis_period, inflation_rate, escal
 none_costs = 0;
 none_om = 0;
 none_total = none_electricity_cost + none_costs + none_om;
-
-none_npv_electric = (npv(get('elec_cost_without_system'),discount_rate));
-none_npv_costs = none_costs;
-none_npv_om = none_om;
-none_npv_total = none_npv_electric + none_npv_costs+none_npv_om;
-
+none_npv = 0;
 
 // HTML Output
 str_html = '<html><body>' + 
@@ -262,12 +245,8 @@ str_html = '<html><body>' +
 		   '</table>' +
 		   '<br><br><br>' +
 		   '<table bgcolor=#eeeeee width=100%>' +
-			'<tr><th>Net Present Values</th><th>No System</th><th>PV Only</th><th>PV+Battery</th></tr>' + 
-           '<tr bgcolor=#ffffff><td>Present Value Electricity Costs ($) </td><td>' + round(none_npv_electric) + '</td><td>' +round(pv_npv_electric) + '</td><td>' + round(batt_npv_electric) + '</td></tr>' +             
-           '<tr><td>Present Value Capital & Replacement Costs ($)</td><td>' + round(none_npv_costs) + '</td><td>' +round(pv_npv_costs) + '</td><td>' +round(batt_npv_costs) + '</td></tr>' +             
-           '<tr bgcolor=#ffffff><td>Present Value Operation & Maintenance Costs ($)</td><td>' + round(none_npv_om) + '</td><td>' +round(pv_npv_om) + '</td><td>' +round(batt_npv_om) + '</td></tr>' +             
-           '<tr><td><b>Present Value Total System Costs ($)</b></td><td><b>' + round(none_npv_total) + '</b></td><td><b>' + round(pv_npv_total) + '</b></td><td><b>' + round(batt_npv_total) + '</b></td></tr>' +                     
-           '</table>' +
+		   '<tr><th>Net Present Value</th><th>No System</th><th>PV Only</th><th>PV+Battery</th></tr>' + 
+           '<tr bgcolor=#ffffff><td>Net Present Value ($) </td><td>' + none_npv + '</td><td>' + pv_npv + '</td><td>' + batt_npv + '</td></tr>' +    
            '</body></html>';
 
 html_dialog ( str_html , "Battery Financial Evaluation" , [300,300,600,600]);
