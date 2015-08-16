@@ -49,6 +49,21 @@ Some more examples:
 
 //***********************************************************************************************************************************************************
 
+version_upgrade{'2015.13.1'} = define() {
+	
+	const cfg = config();
+
+	if( cfg.tech == 'DSPT' )
+	{
+		message('Upgrading project to version 2015.13.01');
+		
+		// Tower piping length multiplier and constant addition need to be remapped
+		value('piping_length_mult',oldvalue('csp.pt.par.piping_length_const'));
+		value('piping_length_add',oldvalue('csp.pt.par.piping_length_mult')); 
+	}
+
+};
+
 version_upgrade{'2015.6.30'} = define() {
 	
 	// have to update adjust:factor to adjust:constant
