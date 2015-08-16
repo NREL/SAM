@@ -59,7 +59,10 @@ version_upgrade{'2015.13.1'} = define() {
 		
 		// Tower piping length multiplier and constant addition need to be remapped
 		value('piping_length_mult',oldvalue('csp.pt.par.piping_length_const'));
-		value('piping_length_add',oldvalue('csp.pt.par.piping_length_mult')); 
+		value('piping_length_add',oldvalue('csp.pt.par.piping_length_mult'));
+		
+		// Emissivity used for all three receivers, not just boiler...
+		value('rec_emis',oldvalue('emis_boiler')); 
 	}
 
 };
