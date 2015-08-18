@@ -1086,15 +1086,17 @@ void ResultsViewer::AddDataSet(wxDVTimeSeriesDataSet *d, const wxString& group, 
 {
 	//Take ownership of the data Set.  We will delete it on destruction.
 	m_tsDataSets.push_back(d);
+
+	d->SetGroupName( group );
 	
-	m_timeSeries->AddDataSet(d, group, update_ui);
-//	m_dailySeries->AddDataSet(d, group, update_ui);
-	m_dMap->AddDataSet(d, group, update_ui);
-	m_profilePlots->AddDataSet(d, group, update_ui);
-	m_statTable->AddDataSet(d, group);
-	m_pnCdf->AddDataSet(d, group, update_ui); 
-//	m_durationCurve->AddDataSet(d, group, update_ui);
-	//m_scatterPlot->AddDataSet(d, group, update_ui);
+	m_timeSeries->AddDataSet(d,  update_ui);
+//	m_dailySeries->AddDataSet(d, update_ui);
+	m_dMap->AddDataSet(d,  update_ui);
+	m_profilePlots->AddDataSet(d,  update_ui);
+	m_statTable->AddDataSet(d);
+	m_pnCdf->AddDataSet(d, update_ui); 
+//	m_durationCurve->AddDataSet(d, update_ui);
+	//m_scatterPlot->AddDataSet(d, update_ui);
 }
 
 
