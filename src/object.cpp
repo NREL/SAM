@@ -86,9 +86,11 @@ bool ObjectCollection::Rename( const wxString &old_name, const wxString &new_nam
 	iterator it = find( old_name );
 	if ( it == end() || Lookup( new_name ) != 0 ) return false;
 
-	(*this)[new_name] = it->second;
+	Object *obj = it->second;	
 
 	erase( it );
+
+	(*this)[new_name] = obj;
 
 	return true;
 }
