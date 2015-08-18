@@ -826,7 +826,7 @@ void ParametricViewer::AddPlot(const wxString &output_name)
 						{
 							dv->AddDataSet(new TimeSeriesData(y, n, 1.0/steps_per_hour, 
 									m_grid_data->GetColLabelValue(col) + wxString::Format(" : run(%d)", row + 1), 
-									m_grid_data->GetUnits(col)), wxEmptyString, true );
+									m_grid_data->GetUnits(col)), true );
 							dv->SelectDataSetAtIndex(row);
 						}
 					}
