@@ -110,8 +110,11 @@ bool OpenEI::QueryUtilityCompanies(wxArrayString &names, wxString *err)
 
 //	wxString url = "http://en.openei.org/w/api.php?cmtitle=Category%3AEIA%20Utility%20Companies%20and%20Aliases&action=query&list=categorymembers&cmprop=title&cmnamespace=0&cmlimit=10000&format=json";
 // Update from Jay 8/11/15 to include international rates
-	wxString url = "http://en.openei.org/w/api.php?cmtitle=Category%3AUtility%20Companies&action=query&list=categorymembers&cmprop=title&cmnamespace=0&cmlimit=10000&format=json";
+//	wxString url = "http://en.openei.org/w/api.php?cmtitle=Category%3AUtility%20Companies&action=query&list=categorymembers&cmprop=title&cmnamespace=0&cmlimit=10000&format=json";
 
+// update from Jay 8/18/15 for aliases interantional and national
+// "title" changed back to "label" and "query"->"categorymembers" changed to "items"
+	wxString url = "http://dev-api.openei.org/utility_companies?version=3&format=json&api_key=" + wxString(sam_api_key) + "&scope=international";
 
 
 //	wxString json_data = wxWebHttpGet(url);
@@ -131,14 +134,14 @@ bool OpenEI::QueryUtilityCompanies(wxArrayString &names, wxString *err)
 	}
 
 	names.Clear();
-//	wxJSONValue item_list = root.Item("items");
-	wxJSONValue query = root.Item("query");
-	wxJSONValue item_list = query.Item("categorymembers");
+	wxJSONValue item_list = root.Item("items");
+//	wxJSONValue query = root.Item("query");
+//	wxJSONValue item_list = query.Item("categorymembers");
 	int count = item_list.Size();
 	for (int i=0;i<count;i++)
 	{
-//		wxString buf = item_list[i].Item("label").AsString();
-		wxString buf = item_list[i].Item("title").AsString();
+		wxString buf = item_list[i].Item("label").AsString();
+//		wxString buf = item_list[i].Item("title").AsString();
 		buf.Replace("&amp;", "&");
 			names.Add( buf );
 	}
@@ -823,17 +826,19 @@ void OpenEIUtilityRateDialog::QueryRates(const wxString &utility_name)
 	wxString err;
 	//wxBusyInfo busy("Communicating with OpenEI.org... please wait", this);
 
-	wxString urdb_utility_name = utility_name;
+	//wxString urdb_utility_name = utility_name;
 
-	/* skip fir international rates
+	/* skip for international rates */
 	wxString urdb_utility_name = "";
 	// first resolve aliases
 	if (!api.ResolveUtilityName(utility_name, &urdb_utility_name, &err))
 	{
-		wxMessageBox("Error:\n\n" + err);
-		return;
+		// international rates - no resolving
+//		wxMessageBox("Error:\n\n" + err);
+//		return;
+		urdb_utility_name = utility_name;
 	}
-	*/
+
 
 	// get any rates
 	//if (!api.QueryUtilityRates(utility_name, mUtilityRates, &err))
