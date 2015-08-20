@@ -1056,7 +1056,6 @@ void MainWindow::UpdateFrameTitle()
 	SetTitle( title );
 }
 
-
 class SplashScreen : public wxDialog
 {
 	wxBitmap m_nrelLogo;
@@ -1088,11 +1087,15 @@ public:
 		
 		// dc.SetBackground( wxBrush( wxMetroTheme::Colour( wxMT_ACCENT ) ) ); // metro blue
 		// dc.SetBackground( wxBrush( wxColour(219, 192, 4) ) ); // bright yellow/orange
-		 dc.SetBackground( wxBrush( wxColour(2, 152, 152) ) ); // bright teal <- obviously not the best color ever.
+		// dc.SetBackground( wxBrush( wxColour(2, 152, 152) ) ); // bright teal <- obviously not the best color ever.
 		// dc.SetBackground( wxBrush( wxColour(120, 67, 163) ) ); // violet
 		// dc.SetBackground( wxBrush( wxColour(191, 38, 96) ) ); // reddish pink
-		// dc.SetBackground( wxBrush( wxColour(15,79,34) ) ); // dark forest green
-		//dc.SetBackground(wxBrush(wxColour(241, 47, 144))); // hot pink <- then how about this one?
+		//dc.SetBackground( wxBrush( wxColour(15,79,34) ) ); // dark forest green	
+
+		dc.SetBackground( wxBrush( wxColour(130,186,0) ) ); // pale lime green		
+
+		// dc.SetBackground(wxBrush(wxColour(241, 47, 144))); // hot pink <- then how about this one?
+
 		dc.Clear();
 
 		dc.SetBrush( *wxWHITE_BRUSH );
@@ -1561,11 +1564,41 @@ extern LONG __stdcall MSW_CrashHandlerExceptionFilter( EXCEPTION_POINTERS * );
 #endif
 }
 
+class SAMThemeProvider : public wxMetroThemeProvider
+{
+public:
+	virtual ~SAMThemeProvider() { }
+	virtual wxColour Colour( int id )
+	{
+		switch( id )
+		{
+		case wxMT_FOREGROUND: return wxColour( 130,186,0 );
+		case wxMT_HOVER: return wxColour( 0, 138, 23 );
+		case wxMT_DIMHOVER : return wxColour( 0, 102, 18 );
+		default:
+			return wxMetroThemeProvider::Colour( id );
+		/*
+		case wxMT_BACKGROUND:  return *wxWHITE;
+		case wxMT_HOVER: return wxColour( 0, 88, 153 );
+		case wxMT_DIMHOVER: return wxColour( 0, 107, 186 );
+		case wxMT_LIGHTHOVER: return wxColour( 231, 232, 238 );
+		case wxMT_ACCENT: return wxColour( 255, 143, 50 );
+		case wxMT_TEXT: return wxColour( 135, 135, 135 ); 
+		case wxMT_ACTIVE: return wxColour( 0, 114, 198 );
+		case wxMT_SELECT:  return wxColour(193,210,238);
+		case wxMT_HIGHLIGHT: return wxColour(224,232,246);
+		*/
+		}
+	}
+};
+
 bool SamApp::OnInit()
 {	
 	// note: DO NOT CALL wxApp::Init() here, because
 	// we want to do our own handling of command line
 	// arguments.
+
+//	wxMetroTheme::SetTheme( new SAMThemeProvider );
 
 	SetAppName( "SAM" );
 	SetVendorName( "NREL" );
