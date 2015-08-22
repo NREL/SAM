@@ -825,7 +825,7 @@ void ParametricViewer::AddPlot(const wxString &output_name)
 							&& n == steps_per_hour*8760 )
 						{
 							dv->AddDataSet(new TimeSeriesData(y, n, 1.0/steps_per_hour, 
-									m_grid_data->GetColLabelValue(col) + wxString::Format(" : run(%d)", row + 1), 
+									m_grid_data->GetColLabelValue(col) + wxString::Format(" : run(%d)", (int)(row + 1)), 
 									m_grid_data->GetUnits(col)), true );
 							dv->SelectDataSetAtIndex(row);
 						}
@@ -2675,10 +2675,10 @@ void Parametric_QS::UpdateCaseParametricData()
 {
 	ParametricData &par = m_case->Parametric();
 
-	if (UpdateNumberRuns())
-	{
+//	if (UpdateNumberRuns())
+//	{
 		size_t num_runs = (size_t)numberRuns->Value();
-		if (num_runs <= 0) return; // or error message
+//		if (num_runs <= 0) return; // or error message
 
 		// save original outputs
 		wxArrayString outputs;
@@ -2711,7 +2711,7 @@ void Parametric_QS::UpdateCaseParametricData()
 		}
 		for (size_t num_run = 0; num_run < num_runs; num_run++)
 		{
-			Simulation *s = new Simulation(m_case, wxString::Format("Parametric #%d", (num_run + 1)));
+			Simulation *s = new Simulation(m_case, wxString::Format("Parametric #%d", ((int)num_run + 1)));
 			par.Runs.push_back(s);
 		}
 		
@@ -2794,7 +2794,7 @@ void Parametric_QS::UpdateCaseParametricData()
 		// save current quick setup to be reloaded
 		par.QuickSetup = m_input_values;
 		par.QuickSetupMode = rchSetupOption->GetSelection();
-	}
+//	}
 }
 
 
@@ -2848,8 +2848,9 @@ void Parametric_QS::RefreshVariableList()
 		}
 		if (to_remove.size() > 0)
 		{
-			for (size_t i = to_remove.size() - 1; i >= 0; i--)
-				m_input_values.erase(m_input_values.begin() + to_remove[i]);
+			for (int i = to_remove.size() - 1; i >= 0; i--)
+				if (m_input_values.size() > to_remove[i])
+					m_input_values.erase(m_input_values.begin() + to_remove[i]);
 		}
 
 	}
