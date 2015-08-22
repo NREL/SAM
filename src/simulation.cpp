@@ -1103,8 +1103,8 @@ void ThreadProgressDialog::Reset()
 {
 	for( size_t i=0;i<m_progbars.size();i++ )
 	{
-		m_labels[i]->SetLabel( wxString::Format("Process %d", i+1) );
-		m_progbars[i]->SetValue( 0 );
+		m_labels[i]->SetLabel(wxString::Format("Process %d", (int)(i + 1)));
+		m_progbars[i]->SetValue(0);
 		m_percents[i]->ChangeValue( wxEmptyString );
 	}
 
