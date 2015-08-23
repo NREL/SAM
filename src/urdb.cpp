@@ -786,7 +786,7 @@ void OpenEIUtilityRateDialog::QueryUtilities()
 	lstUtilities->Thaw();
 
 	lblStatus->SetLabel("Ready.");
-	lblUtilityCount->SetLabel(wxString::Format("%d utilities", lstUtilities->Count()));
+	lblUtilityCount->SetLabel(wxString::Format("%d utilities", (int)lstUtilities->Count()));
 	lstUtilities->SetFocus();
 }
 
@@ -810,7 +810,7 @@ void OpenEIUtilityRateDialog::QueryUtilitiesByZipCode()
 	lstUtilities->Thaw();
 
 	lblStatus->SetLabel("Ready.");
-	lblUtilityCount->SetLabel(wxString::Format("%d utilities", lstUtilities->Count()));
+	lblUtilityCount->SetLabel(wxString::Format("%d utilities", (int)lstUtilities->Count()));
 	lstUtilities->SetFocus();
 }
 
@@ -978,7 +978,7 @@ void OpenEIUtilityRateDialog::OnEvent(wxCommandEvent &evt)
 		break;
 	case ID_lstUtilities:
 		QueryRates( lstUtilities->GetStringSelection() );
-		lblUtilityCount->SetLabel(wxString::Format("%d utilities", lstUtilities->Count()));
+		lblUtilityCount->SetLabel(wxString::Format("%d utilities", (int)lstUtilities->Count()));
 		break;
 	case ID_lstRates:
 		UpdateRateData();
