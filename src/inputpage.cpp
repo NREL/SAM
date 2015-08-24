@@ -79,6 +79,9 @@ ActiveInputPage::ActiveInputPage( wxWindow *parent, wxUIFormData *form, CaseWind
 	: wxPanel( parent, id, pos, size, wxTAB_TRAVERSAL|wxCLIP_CHILDREN ),
 	 m_cwin(cw), m_case(cw->GetCase()), m_formData( form )
 {
+	m_scaleX = m_scaleY = 1.0;
+	UpdateScale( NULL );
+
 	Show( false ); // by default form is not visible to hide the attach process
 
 	SetBackgroundColour( *wxWHITE );
@@ -93,7 +96,7 @@ ActiveInputPage::ActiveInputPage( wxWindow *parent, wxUIFormData *form, CaseWind
 	}
 
 	m_formData->Attach( this );
-	SetClientSize( m_formData->GetSize() );
+	SetClientSize( ScaleSize( m_formData->GetSize() ) );
 }
 
 ActiveInputPage::~ActiveInputPage()
@@ -108,6 +111,33 @@ ActiveInputPage::~ActiveInputPage()
 		delete m_formData;
 }
 
+
+wxRect ActiveInputPage::ScaleRect( const wxRect &r )
+{
+	return wxRect( (int)(r.x*m_scaleX), (int)(r.y*m_scaleY),
+		(int)(r.width*m_scaleX), (int)(r.height*m_scaleY));
+}
+
+wxSize ActiveInputPage::ScaleSize( const wxSize &s )
+{
+	return wxSize( (int)(s.x*m_scaleX), (int)(s.y*m_scaleY) );
+}
+
+void ActiveInputPage::UpdateScale( wxDC *dc )
+{
+	
+	wxSize dpi;
+	if ( NULL != dc )
+		dpi = dc->GetPPI();
+	else
+	{
+		wxClientDC dc(this);
+		dpi = dc.GetPPI();
+	}
+
+	wxDevicePPIToScale( dpi, &m_scaleX, &m_scaleY );
+}
+
 bool ActiveInputPage::LoadFile( const wxString &file )
 {
 	m_formData->Detach();
@@ -116,7 +146,7 @@ bool ActiveInputPage::LoadFile( const wxString &file )
 	if ( is.IsOk() && m_formData->Read( is ) )
 	{
 		m_formData->Attach( this );
-		SetClientSize( m_formData->GetSize() ); // resize self to specified form data
+		SetClientSize( ScaleSize(m_formData->GetSize()) ); // resize self to specified form data
 		return true;
 	}
 	return false;
@@ -225,7 +255,8 @@ void ActiveInputPage::OnErase( wxEraseEvent & )
 
 void ActiveInputPage::OnPaint( wxPaintEvent & )
 {
-	wxAutoBufferedPaintDC dc( this );
+	wxAutoBufferedPaintDC dc( this );	
+	UpdateScale( &dc );
 
 	dc.SetBackground( GetBackgroundColour() );
 	dc.Clear();
@@ -239,7 +270,7 @@ void ActiveInputPage::OnPaint( wxPaintEvent & )
 		// draw any non-native objects
 		if ( !objs[i]->IsNativeObject() )
 		{
-			rct = objs[i]->GetGeometry();					
+			rct = ScaleRect(objs[i]->GetGeometry());
 			objs[i]->Draw( this, dc, rct );
 			dc.DestroyClippingRegion();
 		}
@@ -252,7 +283,7 @@ void ActiveInputPage::OnPaint( wxPaintEvent & )
 				dc.SetFont(*wxNORMAL_FONT);
 				wxColour colour( *wxBLACK );
 				dc.SetTextForeground( colour );
-				rct = objs[i]->GetGeometry();
+				rct = ScaleRect(objs[i]->GetGeometry());
 
 				if ( vv->Label.Len() > 0 )
 				{

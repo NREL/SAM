@@ -203,9 +203,11 @@ CaseWindow::CaseWindow( wxWindow *parent, Case *c )
 	m_macros = new MacroPanel( m_pageFlipper, m_case );
 	m_pageFlipper->AddPage( m_macros, "Macros", false );
 
+	double xScale, yScale;
+	wxDevicePPIToScale( wxClientDC(this).GetPPI(), &xScale, &yScale );
 	
 	SetMinimumPaneSize( 50 );
-	SplitVertically( left_panel, m_pageFlipper, 210 );
+	SplitVertically( left_panel, m_pageFlipper, (int)(210*xScale) );
 	
 	
 	m_pageNote = new PageNote( this );
