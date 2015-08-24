@@ -26,6 +26,7 @@ static const char *beta_disclaimer =
 #include <wx/simplebook.h>
 #include <wx/panel.h>
 #include <wx/busyinfo.h>
+#include <wx/dynlib.h>
 #include <wx/dir.h>
 #include <wx/wfstream.h>
 #include <wx/datstrm.h>
@@ -1063,7 +1064,8 @@ class SplashScreen : public wxDialog
 public:
 
 	SplashScreen()
-		: wxDialog( 0, wxID_ANY, wxEmptyString, wxDefaultPosition, wxSize(515,385), wxBORDER_NONE ),
+		: wxDialog( 0, wxID_ANY, wxEmptyString, wxDefaultPosition, 
+		wxScaleSize( wxSize(515,385) ), wxBORDER_NONE ),
 		m_message( "Starting up...please wait" )
 	{
 		m_nrelLogo = wxBITMAP_PNG_FROM_DATA( nrel_small );
@@ -1098,24 +1100,27 @@ public:
 
 		dc.Clear();
 
+		double scaleX, scaleY;
+		wxDevicePPIToScale( dc.GetPPI(), &scaleX, &scaleY );
+
 		dc.SetBrush( *wxWHITE_BRUSH );
 		dc.SetPen( *wxWHITE_PEN );
-		dc.DrawRectangle( 0, height-50, width, 50 );
+		dc.DrawRectangle( 0, (int)(height-50*scaleY), width, (int)(50*scaleY) );
 
 		dc.SetTextForeground( *wxWHITE );
 		dc.SetFont( wxMetroTheme::Font( wxMT_LIGHT, 30 ) );
-		dc.DrawText( "System Advisor Model", 35, 65 );
-
+		dc.DrawText( "System Advisor Model", wxScalePoint( wxPoint(35, 65), scaleX, scaleY ) );
+		
 		dc.SetFont( wxMetroTheme::Font( wxMT_LIGHT, 18 ) );
-		dc.DrawText( "Version " + SamApp::VersionStr(), 35, 135 );
-		dc.DrawText( m_message, 35, 275 );
+		dc.DrawText( "Version " + SamApp::VersionStr(), wxScalePoint(wxPoint(35, 135),scaleX,scaleY));
+		dc.DrawText( m_message, wxScalePoint( wxPoint(35, 275), scaleX, scaleY) );
 
 		dc.SetTextForeground( wxMetroTheme::Colour( wxMT_TEXT ) );
 		dc.SetFont( wxMetroTheme::Font( wxMT_LIGHT, 10 ) );
 		dc.DrawText( wxString::Format("Copyright %d National Renewable Energy Laboratory", SamApp::VersionMajor()),
-			35, height-25-dc.GetCharHeight()/2 );
+			wxPoint( (int)(35*scaleX), height-((int)25*scaleY)-dc.GetCharHeight()/2) );
 
-		dc.DrawBitmap( m_nrelLogo, width-m_nrelLogo.GetWidth()-10, height-25-m_nrelLogo.GetHeight()/2 );
+		dc.DrawBitmap( m_nrelLogo, width-m_nrelLogo.GetWidth()-10, height-((int)25*scaleY)-m_nrelLogo.GetHeight()/2 );
 	}
 
 	void OnSize( wxSizeEvent & )
@@ -1592,8 +1597,23 @@ public:
 	}
 };
 
+
 bool SamApp::OnInit()
-{	
+{
+	// apd : On windows, make sure process is DPI aware, regardless
+	// of whether wxWidgets does this.  ref: http://trac.wxwidgets.org/ticket/16116
+	// We don't use built-in icons or AUI, and rather have clean lines and text
+	// rather than blurry look, now that UI pages can be made to scale (as of 8/24/2015)
+#ifdef __WXMSW__
+    typedef BOOL (WINAPI *SetProcessDPIAware_t)(void); 
+    wxDynamicLibrary dllUser32(wxT("user32.dll")); 
+    SetProcessDPIAware_t pfnSetProcessDPIAware = 
+        (SetProcessDPIAware_t)dllUser32.RawGetSymbol(wxT("SetProcessDPIAware")); 
+    if ( pfnSetProcessDPIAware ) 
+        pfnSetProcessDPIAware(); 
+#endif
+
+
 	// note: DO NOT CALL wxApp::Init() here, because
 	// we want to do our own handling of command line
 	// arguments.
@@ -2650,7 +2670,7 @@ bool ShowConfigurationDialog( wxWindow *parent, wxString *tech, wxString *fin, b
 	
 	ConfigDialog *dlg = new ConfigDialog( trans );
 	dlg->SetPosition( pt );
-	dlg->SetClientSize( 700, size.y );
+	dlg->SetClientSize( (int)(700*wxGetScreenHDScale()), size.y );
 	
 	if ( reset != 0 ) dlg->ShowResetCheckbox( *reset );
 	else dlg->ShowResetCheckbox( false );

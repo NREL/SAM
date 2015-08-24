@@ -16,7 +16,7 @@
 
 #include <wex/icons/time.cpng>
 #include <wex/metro.h>
-
+#include <wex/utils.h>
 
 #include "../resource/nrel.cpng"
 
@@ -165,16 +165,23 @@ void WelcomeScreen::UpdateRecentList()
 	m_recent->Refresh();
 }
 
-#define YSTART 100
+#define YSTART0 100
+#define LEFTWIDTH0 300
 #define SPACER 30
 #define BORDER 40
-#define LEFTWIDTH 300
 
 void WelcomeScreen::LayoutWidgets()
 {
+	double xScale, yScale;
+	wxDevicePPIToScale( wxClientDC(this).GetPPI(), &xScale, &yScale );
+
+	int YSTART = (int)(YSTART0*yScale);
+	int LEFTWIDTH = (int)(LEFTWIDTH0*xScale);
+
 	int cw,ch,top = YSTART;
 	GetClientSize(&cw,&ch);
 	ch -= top;
+	
 
 	int ht = 2*ch/3; // top section height
 	int hb = ch-ht; // bottom section height
@@ -208,24 +215,30 @@ void WelcomeScreen::OnPaint(wxPaintEvent &)
 	m_recent->Invalidate();  // TFF, Feb 10 2014: added this line to force m_recent control to redraw after user closes a file. Glitch in wxMetroListBox?
 
 	wxAutoBufferedPaintDC dc(this);
+	double xScale, yScale;
+	wxDevicePPIToScale( dc.GetPPI(), &xScale, &yScale );
+
 	wxSize sz = GetClientSize();
 
-	wxColour grey(200, 200, 200);
+	wxColour grey(210, 210, 210);
 
 	dc.SetBackground( wxBrush( *wxWHITE ) );
 	dc.Clear();
 	
+	int y = (int)(YSTART0*yScale);
+	
 	dc.SetFont( wxMetroTheme::Font( wxMT_LIGHT, 28 ) );	
 	dc.SetTextForeground( grey );
-	dc.DrawText( wxString::Format("System Advisor %d", SamApp::VersionMajor()), BORDER, 30 );
+	wxString title(wxString::Format("System Advisor %d", SamApp::VersionMajor() ));
+	wxSize tsz( dc.GetTextExtent( title ) );
+	dc.DrawText( title, BORDER, y/2-tsz.y/2 );
 
-	dc.DrawBitmap( m_nrelLogo, sz.GetWidth()-m_nrelLogo.GetWidth()-BORDER, 33 );
+	dc.DrawBitmap( m_nrelLogo, sz.GetWidth()-m_nrelLogo.GetWidth()-BORDER, y/2-m_nrelLogo.GetHeight()/2 );
 
-	int y = 100;
 		
 	dc.SetPen( *wxTRANSPARENT_PEN );
 	dc.SetBrush( wxBrush( grey ) );
-	dc.DrawRectangle( BORDER, y, LEFTWIDTH, sz.GetHeight() - y+1 );
+	dc.DrawRectangle( BORDER, y, ((int)LEFTWIDTH0*xScale), sz.GetHeight() - y+1 );
 
 	//dc.SetPen( wxPen(wxMetroTheme::Colour( wxMT_ACCENT ), 1) );
 	//dc.DrawLine( BORDER, y, sz.GetWidth()-BORDER, y );
