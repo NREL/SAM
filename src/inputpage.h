@@ -85,6 +85,11 @@ protected:
 	wxUIFormData *m_formData;
 	bool m_formDataOwned;
 
+	double m_scaleX, m_scaleY;
+	void UpdateScale( wxDC *dc );
+	wxSize ScaleSize( const wxSize &s );
+	wxRect ScaleRect( const wxRect &r );
+
 	CaseWindow *m_cwin;
 	Case *m_case;
 	
