@@ -17,7 +17,7 @@
 	<key>CFBundleExecutable</key>
 	<string>SAM</string>
 	<key>CFBundleIconFile</key>
-	<string>wxmac.icns</string>
+	<string>SAM.icns</string>
 	<key>CFBundleName</key>
 	<string>SAM</string>
 	<key>CFBundlePackageType</key>
