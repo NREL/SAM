@@ -249,8 +249,8 @@ void InputPageList::OnPaint(wxPaintEvent &evt)
 		{
 			int tx_w = dc.GetTextExtent( m_items[i].name ).GetWidth();
 			dc.DrawBitmap(g_notesBitmap, 
-				r.x + r.width - g_notesBitmap.GetWidth() - TXTXOFF,
-				r.y + r.height - g_notesBitmap.GetHeight()/2);
+				r.x + r.width - g_notesBitmap.GetWidth() - ((int)TXTXOFF*xScale),
+				r.y + r.height/2 - g_notesBitmap.GetHeight()/2);
 		}
 	}
 }
