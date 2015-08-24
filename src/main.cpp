@@ -2167,7 +2167,8 @@ public:
 				"<font color=#a9a9a9 face=\"Segoe UI Light\" size=5>Version " + SamApp::VersionStr() + wxString::Format(", %d bit%s</font><br><br>", nbit, (const char*)patchStr.c_str() )
 				+ "<font color=#999999 face=\"Segoe UI Light\" size=3>" 
 				+ wxString::Format("SSC Version %d:  %s", ssc_version(), ssc_build_info() ) + "<br>"
-				+ wxString::Format("wxWidgets %d.%d.%d", wxMAJOR_VERSION, wxMINOR_VERSION, wxRELEASE_NUMBER )  + " on " + wxGetOsDescription() + "<br><br>Internet connection method: " + proxy + "<br><br>"				
+				+ wxString::Format("wxWidgets %d.%d.%d", wxMAJOR_VERSION, wxMINOR_VERSION, wxRELEASE_NUMBER )  + " on " + wxGetOsDescription() + "<br>Internet connection method: " + proxy + "<br>"				
+				+ wxString::Format("Display: %d x %d, magnification %lgx<br><br>", wxGetDisplaySize().x, wxGetDisplaySize().y, wxGetScreenHDScale() )
 				+ wxString(s_samDisclaimerHtml) + "</font>"
 				"</body></html>";
 	}
