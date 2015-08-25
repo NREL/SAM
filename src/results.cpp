@@ -300,7 +300,7 @@ ResultsViewer::ResultsViewer( wxWindow *parent, int id )
 	m_cf_splitter->SetMinimumPaneSize(100);
 	m_cf_splitter->SetSashGravity(1.0);
 //	m_cf_splitter->SplitHorizontally(m_cf_top_panel, m_depreciationTable, -200);
-	m_cf_splitter->SplitHorizontally(m_cf_top_panel, m_cf_bottom_panel, -200);
+	m_cf_splitter->SplitHorizontally(m_cf_top_panel, m_cf_bottom_panel, (int)(-200*wxGetScreenHDScale()) );
 
 	cf_panel->SetSizer(cf_main_sizer);
 	cf_main_sizer->SetSizeHints(cf_panel);
@@ -1812,7 +1812,7 @@ TabularBrowser::TabularBrowser( wxWindow *parent )
 	m_grid->SetRowLabelAlignment( wxALIGN_LEFT, wxALIGN_CENTER );
 
 	splitwin->SetMinimumPaneSize( 170 );
-	splitwin->SplitVertically(lhs, m_grid, 210);
+	splitwin->SplitVertically(lhs, m_grid, (int)(210*wxGetScreenHDScale()));
 
 
 	wxBoxSizer *szv_main = new wxBoxSizer(wxVERTICAL);
