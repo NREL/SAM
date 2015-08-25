@@ -259,7 +259,7 @@ MacroPanel::MacroPanel( wxWindow *parent, Case *cc )
 
 	m_rightPanel->SetSizer( vsizer );
 
-	vsplit->SplitVertically(m_leftPanel, m_rightPanel, 250);
+	vsplit->SplitVertically(m_leftPanel, m_rightPanel, (int)(250*wxGetScreenHDScale()));
 	vsplit->SetMinimumPaneSize(100);
 
 	SetMinimumPaneSize( 100 );

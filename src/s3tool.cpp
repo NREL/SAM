@@ -1409,7 +1409,7 @@ ShadeTool::ShadeTool( wxWindow *parent, int id, const wxString &data_path )
 	m_view = new View3D( m_split, ID_GRAPHICS );
 	m_sceneParams = new ObjectEditor( m_split, wxID_ANY, m_view );	
 	m_split->SetMinimumPaneSize( 20 );
-	m_split->SplitVertically( m_sceneParams, m_view, 200 );	
+	m_split->SplitVertically( m_sceneParams, m_view, (int)(200*wxGetScreenHDScale()) );	
 	
 
 	// debugging tool panel

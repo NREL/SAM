@@ -666,7 +666,7 @@ ScriptWindow::ScriptWindow( wxWindow *parent, int id, const wxPoint &pos, const 
 	SetSizer( sizer );
 	
 	split->SetMinimumPaneSize( 100 );
-	split->SplitHorizontally( m_script, m_output, -150 );
+	split->SplitHorizontally( m_script, m_output, (int)(-150*wxGetScreenHDScale()) );
 	split->SetSashGravity( 1.0 );
 		
 	std::vector<wxAcceleratorEntry> entries;
