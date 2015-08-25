@@ -31,6 +31,9 @@ END_EVENT_TABLE()
 AFSchedNumeric::AFSchedNumeric( wxWindow *parent, int id, const wxPoint &pos, const wxSize &size)
 	: wxWindow(parent, id, pos, size, wxCLIP_CHILDREN)
 {
+	m_switchWidth = 26;
+	UpdateSwitchWidth();
+
 	m_fixedLen = -1;
 	SetBackgroundStyle(wxBG_STYLE_CUSTOM);
 
@@ -40,8 +43,8 @@ AFSchedNumeric::AFSchedNumeric( wxWindow *parent, int id, const wxPoint &pos, co
 	bUseSchedule = false;
 	bScheduleOnly = false;
 
-	mFixedValue = new wxNumericCtrl(this, IDAFSN_NUMERIC, 0.0, wxNumericCtrl::REAL, wxPoint(25,0), wxSize( size.GetWidth()-25, size.GetHeight()) );
-	mBtnEditSched = new wxButton(this, IDAFSN_SBUTTON, "Edit...", wxPoint(25,0), wxSize( size.GetWidth()-25, size.GetHeight()) );
+	mFixedValue = new wxNumericCtrl(this, IDAFSN_NUMERIC, 0.0, wxNumericCtrl::REAL, wxPoint(m_switchWidth,0), wxSize( size.GetWidth()-m_switchWidth, size.GetHeight()) );
+	mBtnEditSched = new wxButton(this, IDAFSN_SBUTTON, "Edit...", wxPoint(m_switchWidth,0), wxSize( size.GetWidth()-m_switchWidth, size.GetHeight()) );
 	mBtnEditSched->Show(false);
 }
 
@@ -80,7 +83,7 @@ void AFSchedNumeric::ScheduleOnly(bool b)
 	}
 	else
 	{
-		mBtnEditSched->SetSize(25,0,cw-25,ch);
+		mBtnEditSched->SetSize(m_switchWidth,0,cw-m_switchWidth,ch);
 	}
 	Refresh();
 }
@@ -130,6 +133,9 @@ void AFSchedNumeric::SetSchedLen(int len)
 	mSchedValues.resize(len, 0);
 }
 
+#define SCHEDNUM_FONT wxFont( 5, wxFONTFAMILY_SWISS, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD, false, "arial" )
+
+
 void AFSchedNumeric::OnResize(wxSizeEvent &evt)
 {
 	int cw, ch;
@@ -140,31 +146,41 @@ void AFSchedNumeric::OnResize(wxSizeEvent &evt)
 	}
 	else
 	{
-		mFixedValue->SetSize(25,0,cw-25,ch);
-		mBtnEditSched->SetSize(25,0,cw-25,ch);
+		mFixedValue->SetSize(m_switchWidth,0,cw-m_switchWidth,ch);
+		mBtnEditSched->SetSize(m_switchWidth,0,cw-m_switchWidth,ch);
 	}
 }
+
+void AFSchedNumeric::UpdateSwitchWidth()
+{
+	wxClientDC pdc(this);
+	pdc.SetFont( SCHEDNUM_FONT );
+	wxSize sz1( pdc.GetTextExtent( "Sched" ) );
+	wxSize sz2( pdc.GetTextExtent( "Value" ) );
+	m_switchWidth = 2 + ( sz1.x > sz2.x ? sz1.x : sz2.x );
+}
+
 void AFSchedNumeric::OnPaint(wxPaintEvent &evt)
 {
 	wxAutoBufferedPaintDC pdc(this);
 	if (!bScheduleOnly)
 	{
+		pdc.SetFont( SCHEDNUM_FONT );
+		wxSize sz1( pdc.GetTextExtent( "Sched" ) );
+		wxSize sz2( pdc.GetTextExtent( "Value" ) );
+		m_switchWidth = 2 + ( sz1.x > sz2.x ? sz1.x : sz2.x );
+
 		int cwidth, cheight;
 		GetClientSize(&cwidth,&cheight);
 
-		wxFont f = wxFont(4, wxFONTFAMILY_SWISS, wxFONTSTYLE_NORMAL, 
-		wxFONTWEIGHT_BOLD, false, "arial"); 
-		f.SetPointSize(5);
-
 		pdc.SetBrush(wxBrush(*wxLIGHT_GREY));
 		pdc.SetPen(wxPen(*wxLIGHT_GREY));
-		pdc.DrawRectangle(0, 0, 25, cheight);
+		pdc.DrawRectangle(0, 0, m_switchWidth, cheight);
 
 		pdc.SetBrush(wxBrush(*wxBLUE));
 		pdc.SetPen(wxPen(*wxBLUE));
-		pdc.DrawRectangle(0, bUseSchedule?cheight/2:0, 25, cheight/2);
+		pdc.DrawRectangle(0, bUseSchedule?cheight/2:0, m_switchWidth, cheight/2);
 
-		pdc.SetFont(f);
 		pdc.SetTextForeground(*wxWHITE);
 		pdc.DrawText(wxT("Value"), 1, 1);
 		pdc.DrawText(wxT("Sched"), 1, cheight/2+1);
@@ -176,7 +192,7 @@ void AFSchedNumeric::OnClick(wxMouseEvent &evt)
 	
 	if (!bScheduleOnly)
 	{		
-		if (evt.GetX() >= 25)
+		if (evt.GetX() >= m_switchWidth)
 			return;
 
 		UseSchedule( !bUseSchedule );
@@ -1799,15 +1815,26 @@ END_EVENT_TABLE()
 AFValueMatrixButton::AFValueMatrixButton(wxWindow *parent, int id, const wxPoint &pos, const wxSize &sz)
 	: wxWindow(parent, id, pos, sz, wxCLIP_CHILDREN)
 {
+	m_switchWidth = 26;
+	UpdateSwitchWidth();
 	SetBackgroundStyle(wxBG_STYLE_CUSTOM);
 
 	bUseTable = false;
 
-	mSingleValue = new wxNumericCtrl(this, IDDGB_NUMERIC, 0.0, wxNumericCtrl::REAL, wxPoint(25,0), wxSize( sz.GetWidth()-25, sz.GetHeight()) );
-	mBtnEditTable = new wxButton(this, IDDGB_BUTTON, "Table...", wxPoint(25,0), wxSize( sz.GetWidth()-25, sz.GetHeight()) );
+	mSingleValue = new wxNumericCtrl(this, IDDGB_NUMERIC, 0.0, wxNumericCtrl::REAL, wxPoint(m_switchWidth,0), wxSize( sz.GetWidth()-m_switchWidth, sz.GetHeight()) );
+	mBtnEditTable = new wxButton(this, IDDGB_BUTTON, "Table...", wxPoint(m_switchWidth,0), wxSize( sz.GetWidth()-m_switchWidth, sz.GetHeight()) );
 	mBtnEditTable->Show(false);
 
 	mTable.resize_fill(10,2, 0.0f);
+}
+
+void AFValueMatrixButton::UpdateSwitchWidth()
+{
+	wxClientDC pdc(this);
+	pdc.SetFont( SCHEDNUM_FONT );
+	wxSize sz1( pdc.GetTextExtent( "Sched" ) );
+	wxSize sz2( pdc.GetTextExtent( "Table" ) );
+	m_switchWidth = 2 + ( sz1.x > sz2.x ? sz1.x : sz2.x );
 }
 
 bool AFValueMatrixButton::UseTable()
@@ -1869,8 +1896,8 @@ void AFValueMatrixButton::OnResize(wxSizeEvent &evt)
 {
 	int cw, ch;
 	GetClientSize(&cw,&ch);
-	mSingleValue->SetSize(25,0,cw-25,ch);
-	mBtnEditTable->SetSize(25,0,cw-25,ch);
+	mSingleValue->SetSize(m_switchWidth,0,cw-m_switchWidth,ch);
+	mBtnEditTable->SetSize(m_switchWidth,0,cw-m_switchWidth,ch);
 }
 
 void AFValueMatrixButton::OnPaint(wxPaintEvent &evt)
@@ -1879,20 +1906,16 @@ void AFValueMatrixButton::OnPaint(wxPaintEvent &evt)
 
 	int cwidth, cheight;
 	GetClientSize(&cwidth,&cheight);
-
-	wxFont f = wxFont(4, wxFONTFAMILY_SWISS, wxFONTSTYLE_NORMAL, 
-	wxFONTWEIGHT_BOLD, false, "arial"); 
-	f.SetPointSize(5);
-
+	
 	pdc.SetBrush(wxBrush(*wxLIGHT_GREY));
 	pdc.SetPen(wxPen(*wxLIGHT_GREY));
-	pdc.DrawRectangle(0, 0, 25, cheight);
+	pdc.DrawRectangle(0, 0, m_switchWidth, cheight);
 
 	pdc.SetBrush(wxBrush(wxTheColourDatabase->Find("FOREST GREEN")));
 	pdc.SetPen(wxPen(wxTheColourDatabase->Find("FOREST GREEN")));
-	pdc.DrawRectangle(0, bUseTable?cheight/2:0, 25, cheight/2);
+	pdc.DrawRectangle(0, bUseTable?cheight/2:0, m_switchWidth, cheight/2);
 
-	pdc.SetFont(f);
+	pdc.SetFont( SCHEDNUM_FONT );
 	pdc.SetTextForeground(*wxWHITE);
 	pdc.DrawText(wxT("Value"), 1, 1);
 	pdc.DrawText(wxT("Table"), 1, cheight/2+1); 
@@ -1902,7 +1925,7 @@ void AFValueMatrixButton::OnClick(wxMouseEvent &evt)
 {
 	SetFocus();
 	
-	if (evt.GetX() >= 25)
+	if (evt.GetX() >= m_switchWidth)
 		return;
 
 	UseTable( !bUseTable );
