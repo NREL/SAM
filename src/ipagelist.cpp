@@ -162,7 +162,7 @@ wxString InputPageList::GetStringSelection()
 }
 
 
-#define MYFONT wxMetroTheme::Font( wxMT_SEMILIGHT, 13 )
+#define MYFONT wxMetroTheme::Font( wxMT_LIGHT, 13 )
 
 void InputPageList::Invalidate()
 {

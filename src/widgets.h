@@ -63,6 +63,9 @@ private:
 	wxString m_label;
 	int m_fixedLen;
 	wxString m_desc;
+	int m_switchWidth;
+
+	void UpdateSwitchWidth();
 
 	DECLARE_EVENT_TABLE();
 };
@@ -288,6 +291,9 @@ private:
 
 	matrix_t<float> mTable;
 	wxArrayString mColLabels;
+
+	int m_switchWidth;
+	void UpdateSwitchWidth();
 
 	DECLARE_EVENT_TABLE();
 };
