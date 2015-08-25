@@ -320,7 +320,7 @@ public:
 		
 		g_icmStr = wxSimpleCurl::GetProxy();
 		if ( !g_icmStr.IsEmpty() )	g_icmStr = "via proxy, url is " + g_icmStr;
-		else g_icmStr = "direct, no proxy";
+		else g_icmStr = "system default";
 
 
 		bool allow = true;

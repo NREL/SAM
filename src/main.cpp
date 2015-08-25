@@ -2137,7 +2137,7 @@ public:
 		
 		wxString proxy( wxSimpleCurl::GetProxy() );
 		if ( proxy.IsEmpty() )
-			proxy = "direct, no proxy";
+			proxy = "system default";
 		else
 			proxy = "proxy: " + proxy;
 
