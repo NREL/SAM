@@ -265,7 +265,6 @@ ResultsViewer::ResultsViewer( wxWindow *parent, int id )
 
 	m_cf_bottom_panel = new wxPanel(m_cf_splitter);
 
-//	m_depreciationTable = new wxExtGridCtrl(m_cf_splitter, wxID_ANY);
 	m_depreciationTable = new wxExtGridCtrl(m_cf_bottom_panel, wxID_ANY);
 	m_depreciationTable->SetFont(*wxNORMAL_FONT);
 	m_depreciationTable->CreateGrid(1, 1);
@@ -1106,10 +1105,16 @@ void ResultsViewer::GetExportData(int data, matrix_t<wxString> &table)
 	{
 		int nrows = m_cashFlowTable->GetNumberRows();
 		int ncols = m_cashFlowTable->GetNumberCols();
-		int ndepr_rows = m_depreciationTable->GetNumberRows();
-		int ndepr_cols = m_depreciationTable->GetNumberCols();
-		int r, c;
 
+		int ndepr_rows = 0;
+		int ndepr_cols = 0;
+		if ( m_depreciationTable->IsShown() )
+		{
+			ndepr_rows = m_depreciationTable->GetNumberRows();
+			ndepr_cols = m_depreciationTable->GetNumberCols();
+		}
+
+		int r, c;
 		table.resize(nrows + ndepr_rows + 2, ncols + ndepr_cols + 2);
 
 		for (c = 0; c<ncols; c++)
@@ -1125,18 +1130,21 @@ void ResultsViewer::GetExportData(int data, matrix_t<wxString> &table)
 		for (c = 0; c<ndepr_cols; c++)
 			table.at(nrows, c + 1) = " ";
 
-		for (r = 0; r<ndepr_rows; r++)
+		if ( m_depreciationTable->IsShown() )
 		{
-			table.at(nrows+r + 1, 0) = m_depreciationTable->GetRowLabelValue(r);
-			for (c = 0; c < ndepr_cols; c++)
+			for (r = 0; r<ndepr_rows; r++)
 			{
-				if (r == 0)
+				table.at(nrows+r + 1, 0) = m_depreciationTable->GetRowLabelValue(r);
+				for (c = 0; c < ndepr_cols; c++)
 				{
-					table.at(nrows + r + 1, c + 1) = m_depreciationTable->GetColLabelValue(c);
-					table.at(nrows + r + 1, c + 1).Replace("\n", " ");
+					if (r == 0)
+					{
+						table.at(nrows + r + 1, c + 1) = m_depreciationTable->GetColLabelValue(c);
+						table.at(nrows + r + 1, c + 1).Replace("\n", " ");
+					}
+					else
+						table.at(nrows + r + 1, c + 1) = m_depreciationTable->GetCellValue(r, c);
 				}
-				else
-					table.at(nrows + r + 1, c + 1) = m_depreciationTable->GetCellValue(r, c);
 			}
 		}
 	}
