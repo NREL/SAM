@@ -49,6 +49,24 @@ Some more examples:
 
 //***********************************************************************************************************************************************************
 
+version_upgrade{'2015.9.9'} = define() {
+	
+	const cfg = config();
+	if ( cfg.fin == 'Residential' || cfg.fin == 'Commercial' )
+	{
+		message('Upgrading project to version 2015.9.9');
+		
+		// net metering check box removed
+		nm = oldvalue('ur_enable_net_metering');
+		if (nm==1)
+			value('ur_metering_option',oldvalue('ur_excess_monthly_energy_or_dollars'));
+		else // non-net metering with monthly reconciliation
+			value('ur_metering_option',2);
+	}
+
+};
+
+
 version_upgrade{'2015.8.17'} = define() {
 	
 	const cfg = config();
