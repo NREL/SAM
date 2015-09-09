@@ -1390,20 +1390,15 @@ cashflow_to_excel{ 'Single Owner' } = define()
 
 cashflow_to_excel{ 'Leveraged Partnership Flip' } = define()
 {
-	msgbox("Send Cash Flow to Excel with Equations for the Leveraged Partnership Flip financial model is not available in this version of SAM.");
+	msgbox("Send Cash Flow to Excel with Equations for the Leveraged Partnership Flip financial model is not available in this version of SAM.\n\nSee the Financial Model Documentation page on the SAM website (sam.nrel.gov/financial) for spreadsheet versions of all of SAM's financial models.");
 };
 
 cashflow_to_excel{ 'All Equity Partnership Flip' } = define()
 {
-	msgbox("Send Cash Flow to Excel with Equations for the All Equity Partnership Flip financial model is not available in this version of SAM.");
+	msgbox("Send Cash Flow to Excel with Equations for the All Equity Partnership Flip financial model is not available in this version of SAM.\n\nSee the Financial Model Documentation page on the SAM website (sam.nrel.gov/financial) for spreadsheet versions of all of SAM's financial models.");
 };
 
 cashflow_to_excel{ 'Sale Leaseback' } = define()
 {
-	msgbox("Send Cash Flow to Excel with Equations for the Sale Leaseback financial model is not available in this version of SAM.");
-};
-
-cashflow_to_excel{ 'Independent Power Producer' } = define() 
-{
-	msgbox("Send Cash Flow to Excel with Equations for the Sale Leaseback financial model is not available in this version of SAM.");
+	msgbox("Send Cash Flow to Excel with Equations for the Sale Leaseback financial model is not available in this version of SAM.\n\nSee the Financial Model Documentation page on the SAM website (sam.nrel.gov/financial) for spreadsheet versions of all of SAM's financial models.");
 };
