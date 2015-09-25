@@ -806,6 +806,33 @@ static void fcall_case_name(lk::invoke_t &cxt)
 	cxt.result().assign(case_name);
 }
 
+static void fcall_pdfreport( lk::invoke_t &cxt )
+{
+	LK_DOC( "pdfreport", "Generates a PDF report for the current case. Options include 'template', 'metadata'.", "( string:file [, table:options] ):boolean" );
+
+	CaseWindow *c = SamApp::Window()->GetCurrentCaseWindow();
+	if ( !c ) cxt.result().assign( 0.0 );
+
+	wxString file(cxt.arg(0).as_string() );
+	wxString templ;
+	VarValue meta;
+
+	if ( cxt.arg_count() > 1 )
+	{
+		lk::vardata_t &hh = cxt.arg(1).deref();
+
+		if ( lk::vardata_t *x = hh.lookup("template") )
+			templ = x->as_string();
+
+		if ( lk::vardata_t *x = hh.lookup("metadata") )
+			meta.Read( x->deref(), true );
+	}
+
+	bool ok = c->GenerateReport( file, templ, &meta );
+
+	cxt.result().assign( ok ? 1.0 : 0.0 );
+}
+
 static void fcall_copy_file(lk::invoke_t &cxt)
 {
 	LK_DOC("copy_file", "Copy file source to destination. Use full path for source and destination. Overwrite true overwrites destination.", "( string: source file name, string: destination file name, bool: overwrite=false ):none");
@@ -2456,6 +2483,7 @@ lk::fcall_t* invoke_general_funcs()
 		fcall_case_name,
 		fcall_dview,
 		fcall_dview_solar_data_file,
+		fcall_pdfreport,
 #ifdef __WXMSW__
 		fcall_xl_create,
 		fcall_xl_free,
