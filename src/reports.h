@@ -20,6 +20,7 @@ class wxListCtrl;
 class VarTable;
 class wxExtTextCtrl;
 class wxStaticText;
+class VarValue;
 
 void RegisterReportObjectTypes();
 
@@ -31,6 +32,7 @@ public:
 
 	void Copy( SamReportTemplate *src );
 	void SetCaseName( const wxString &cn );
+	void SetMetaData( VarValue *data );
 
 	void AddPage( wxPageLayout *page );
 	void DeletePage( wxPageLayout *page );
@@ -51,8 +53,7 @@ public:
 	bool Write( const wxString &file );
 	bool Read( const wxString &file );
 
-	bool RenderPdf( const wxString &file, Case *c = 0 );
-
+	bool RenderPdf( const wxString &file, Case *c = 0, VarValue *meta = 0 );
 protected:
 
 	wxString EscapeHF( wxString hf );
@@ -117,16 +118,22 @@ class SamReportObject
 {
 private:
 	wxString m_caseName;
+	VarValue *m_metaData;
 public:
-	virtual void SetCaseName( const wxString &c ) { m_caseName = c; };
+	SamReportObject() { m_metaData = 0; }
+	virtual ~SamReportObject() { }
+
+	virtual void SetCaseName( const wxString &c ) { m_caseName = c; };	
 	wxString GetCaseName() { return m_caseName; }	
 	Case *GetCase();
+	void SetMetaData( VarValue *data ) { m_metaData = data; }
+	VarValue *GetMetaData() { return m_metaData; }
 };
 
 
 
 wxString SamReportFormatVariable( double value, const wxString &fmt );
-wxString SamReportEscapeString( const wxString &input, Case *c );
+wxString SamReportEscapeString( const wxString &input, Case *c, VarValue *meta );
 
 class SamReportTextObject : public wxPageTextObject, public SamReportObject
 {

@@ -55,7 +55,11 @@ public:
 	bool RunBaseCase( bool silent = false, wxString *messages = 0 );
 	void UpdateResults();
 
-	void GenerateReport();
+	bool GenerateReport( 
+		wxString pdffile = wxEmptyString, 
+		wxString templfile = wxEmptyString,
+		VarValue *metadata = 0
+		);
 	
 private:
 	Case *m_case;
