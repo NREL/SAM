@@ -223,14 +223,30 @@ void SamReportTemplate::SetCaseName( const wxString &cn )
 	}
 }
 
-bool SamReportTemplate::RenderPdf( const wxString &file, Case *c )
+void SamReportTemplate::SetMetaData( VarValue *meta )
+{
+	for (int i=0;i<m_pages.size();i++)
+	{
+		int count = 0;
+		wxPageObject **children = m_pages[i]->GetObjects( &count );
+		for (int j=0;j<count;j++)
+			if ( SamReportObject *sobj = dynamic_cast<SamReportObject*>( children[j] ) )
+				sobj->SetMetaData( meta );
+	}
+}
+
+bool SamReportTemplate::RenderPdf( const wxString &file, Case *c, VarValue *meta )
 {
 	if ( c != 0 ) SetCaseName( SamApp::Project().GetCaseName( c ) );
+	if ( meta != 0 ) SetMetaData( meta );
 	wxPagePdfRenderer pdf;
 	for (int i=0;i<m_pages.size();i++)
 		pdf.AddPage( m_pages[i], EscapeHF(m_header), EscapeHF(m_footer) );
 
-	return pdf.Render( file );
+
+	bool ok = pdf.Render( file );
+	SetMetaData( 0 ); // clear pointers
+	return ok;
 }
 
 wxString SamReportTemplate::EscapeHF( wxString hf )
@@ -851,7 +867,7 @@ public:
 
 */
 
-wxString SamReportEscapeString( const wxString &input, Case *c )
+wxString SamReportEscapeString( const wxString &input, Case *c, VarValue *meta )
 {
 	if ( !c ) return input;
 
@@ -900,107 +916,79 @@ wxString SamReportEscapeString( const wxString &input, Case *c )
 			if (args.find("label") != args.end()) labels = wxStringTokenize(args["label"], ",");
 			if (args.find("switch") != args.end()) swilist = wxStringTokenize(args["switch"], ",");
 
-			/*
-			if ( eqn_mode )
+			VarValue *v = c->Values().Get( var_name );
+			if ( !v && meta && meta->Type() == VV_TABLE )
+				v  = meta->Table().Get( var_name );
+
+			if ( v )
 			{
-				ReportValueProvider rvp( c->GetResults(simname), c->GetSymTab() );
-				wxArrayString deps;
-				wxString err;
-				Evaluator ev;
-				Evaluator::Expr *expr = ev.Parse( var_name, deps, err );
-				if (!expr || !err.IsEmpty() )
+				if (v->Type() == VV_NUMBER && labels.size() != 0)
 				{
-					text += "{" + err + '}';
+					size_t idx = (size_t)v->Integer();
+					if (idx < labels.size())
+						text += labels[idx];
+					else
+						text += "('" + v->AsString() + "')";
 				}
-				else
+				else if (v->Type() == VV_NUMBER && swilist.size() != 0)
 				{
-					double result;
-					if (ev.Evaluate( expr, &rvp, err, result ))
+					size_t idx = (size_t)v->Integer();
+					if (idx < swilist.size())
 					{
-						text += SamReportFormatVariable( result, format );
+						if (swilist[idx].Left(1) == "'"
+							&& swilist[idx].Right(1) == "'")
+						{
+							text += swilist[idx].Mid(1, swilist[idx].Len()-2);
+						}
+						else
+						{
+							VarValue *swvar = c->Values().Get( swilist[idx] );
+							if (swvar)
+								text += swvar->AsString();
+							else
+								text += "<?" + swilist[idx] + ">";
+						}
 					}
 					else
-					{
-						text += "{" + err + "}";
-					}
+						text += "{'" + v->AsString() + "'}";
 				}
-
-				if (expr != 0) delete expr;
+				else if (v->Type() == VV_NUMBER)
+					text += SamReportFormatVariable( v->Value()*scaling, format );
+				else
+					text += v->AsString();
 			}
 			else
 			{
-			*/
-				if ( VarValue *v = c->Values().Get( var_name ) )
+				Simulation &sim = c->BaseCase();
+				std::vector<float> vals;
+				if ( VarValue *var = sim.GetValue( var_name ) )
 				{
-					if (v->Type() == VV_NUMBER && labels.size() != 0)
+					if ( var->Type() == VV_ARRAY )
+						vals = var->Array();
+					else if ( var->Type() == VV_NUMBER )
+						vals.push_back( var->Value() );
+
+					if (args.find("index") != args.end())
 					{
-						size_t idx = (size_t)v->Integer();
-						if (idx < labels.size())
-							text += labels[idx];
-						else
-							text += "('" + v->AsString() + "')";
+						int idx = wxAtoi( args["index"] );
+						if (idx < 0) idx = 0;
+						if (idx >= vals.size()) idx = vals.size()-1;
+
+						text += SamReportFormatVariable( vals[idx]*scaling, format );
 					}
-					else if (v->Type() == VV_NUMBER && swilist.size() != 0)
-					{
-						size_t idx = (size_t)v->Integer();
-						if (idx < swilist.size())
-						{
-							if (swilist[idx].Left(1) == "'"
-								&& swilist[idx].Right(1) == "'")
-							{
-								text += swilist[idx].Mid(1, swilist[idx].Len()-2);
-							}
-							else
-							{
-								VarValue *swvar = c->Values().Get( swilist[idx] );
-								if (swvar)
-									text += swvar->AsString();
-								else
-									text += "<?" + swilist[idx] + ">";
-							}
-						}
-						else
-							text += "{'" + v->AsString() + "'}";
-					}
-					else if (v->Type() == VV_NUMBER)
-						text += SamReportFormatVariable( v->Value()*scaling, format );
 					else
-						text += v->AsString();
+					{
+						for (int k=0;k<vals.size();k++)
+						{
+							text += SamReportFormatVariable( vals[k]*scaling, format );
+							if (k < vals.size()-1) text+= ", ";
+						}
+					}
 				}
 				else
-				{
-					Simulation &sim = c->BaseCase();
-					std::vector<float> vals;
-					if ( VarValue *var = sim.GetValue( var_name ) )
-					{
-						if ( var->Type() == VV_ARRAY )
-							vals = var->Array();
-						else if ( var->Type() == VV_NUMBER )
-							vals.push_back( var->Value() );
-
-						if (args.find("index") != args.end())
-						{
-							int idx = wxAtoi( args["index"] );
-							if (idx < 0) idx = 0;
-							if (idx >= vals.size()) idx = vals.size()-1;
-
-							text += SamReportFormatVariable( vals[idx]*scaling, format );
-						}
-						else
-						{
-							for (int k=0;k<vals.size();k++)
-							{
-								text += SamReportFormatVariable( vals[k]*scaling, format );
-								if (k < vals.size()-1) text+= ", ";
-							}
-						}
-					}
-					else
-						text += "N/A";
-				}
+					text += "N/A";
+			}
 			
-			/*}*/
-
 			pos = pos2+1;
 		}
 		else
@@ -1018,7 +1006,7 @@ void SamReportTextObject::Render( wxPageOutputDevice &dv )
 	else
 	{
 		wxString save_text = m_text;
-		m_text = SamReportEscapeString( save_text, c );
+		m_text = SamReportEscapeString( save_text, c, GetMetaData() );
 		wxPageTextObject::Render(dv);
 		m_text = save_text;
 	}
@@ -1421,7 +1409,7 @@ void SamReportTableObject::Render( wxPageOutputDevice &dv )
 	matrix_t<wxString> T( m_table.nrows(), m_table.ncols(), wxEmptyString );
 	for (int r=0;r<(int)T.nrows();r++)
 		for (int c=0;c<(int)T.ncols();c++)
-			T.at(r,c) = SamReportEscapeString( m_table.at(r,c), GetCase() );
+			T.at(r,c) = SamReportEscapeString( m_table.at(r,c), GetCase(), GetMetaData() );
 
 	for (int c=0;c<(int)m_table.ncols();c++)
 	{

@@ -335,114 +335,132 @@ void CaseWindow::UpdateResults()
 	m_baseCaseResults->Setup( &m_case->BaseCase() );
 }
 
-
-void CaseWindow::GenerateReport( )
+static bool CheckValidTemplate( const wxString &fp, const wxString &tech, const wxString &fin )
 {
+	SamReportTemplate templ;
+	if ( templ.Read( fp ))
+	{
+		if ( templ.GetSpecificModelsOnly())
+		{
+			wxArrayString tt, tf;
+			templ.GetModels( &tt, &tf );
 
+			if (tt.Index(tech) != wxNOT_FOUND
+				&& tf.Index(fin) != wxNOT_FOUND)
+				return true;
+		}
+		else
+			return true;
+	}
+	
+	return false;
+}
+
+bool CaseWindow::GenerateReport( wxString pdffile, wxString templfile, VarValue *meta )
+{
 	// run base case automatically 
 	if ( !RunBaseCase() )
 	{
 		wxMessageBox( "Base case simulation did not succeed.  Please check your inputs before creating a report");
-		return;
+		return false;
 	}
 
-	wxString ct, cf;
+	wxString tech, fin;
 	if ( ConfigInfo *ci = m_case->GetConfiguration() )
 	{
-		ct = ci->Technology;
-		cf = ci->Financing;
+		tech = ci->Technology;
+		fin = ci->Financing;
 	}
 	else
 	{
-		wxMessageBox( "Internal error - invalid case configuration");
-		return;
+		wxMessageBox( "Internal error - invalid case configuration during report generation");
+		return false;
 	}
 
 	
-	int total = 0;
-	wxArrayString validfiles;
-	wxString path = SamApp::GetRuntimePath() + "/reports";
-	wxDir dir( path );
-	if ( dir.IsOpened() )
+	if ( templfile.IsEmpty() )
 	{
-		wxString file;
-		bool has_more = dir.GetFirst( &file, "*.samreport", wxDIR_FILES  );
-		while( has_more )
+		wxArrayString validfiles;
+		wxString path = SamApp::GetRuntimePath() + "/reports";
+		wxDir dir( path );
+		if ( dir.IsOpened() )
 		{
-			wxString fp( path + "/" + file );
-			SamReportTemplate templ;
-			if ( templ.Read( fp ))
+			wxString file;
+			bool has_more = dir.GetFirst( &file, "*.samreport", wxDIR_FILES  );
+			while( has_more )
 			{
-				total++;
-				if ( templ.GetSpecificModelsOnly())
-				{
-					wxArrayString tt, tf;
-					templ.GetModels( &tt, &tf );
-
-					if (tt.Index(ct) != wxNOT_FOUND && tf.Index(cf) != wxNOT_FOUND)
-						validfiles.Add( fp );
-				}
-				else
+				wxString fp( path + "/" + file );
+				if ( CheckValidTemplate( fp, tech, fin ) )					
 					validfiles.Add( fp );
+
+				has_more = dir.GetNext( &file );
 			}
-
-			has_more = dir.GetNext( &file );
 		}
-	}
-	dir.Close();
+		dir.Close();
 
-	if ( total == 0 )
-	{
-		wxMessageBox("SAM could not find any report templates.\n\nPlease contact SAM user support at sam.support@nrel.gov for more information.");
-		return;
-	}
-
-
-	if (validfiles.Count() == 0)
-	{
-		wxMessageBox( "SAM could not find any templates valid for the current technology and financing combination.\n\nPlease contact SAM user support at sam.support@nrel.gov for more information." );
-		return;
-	}
-
-	int index = 0;
-	SamReportTemplate templ;
-
-	// prompt when more than one report available
-	if ( validfiles.Count() > 1)
-	{
-		wxArrayString choices;
-		for (size_t i=0;i<validfiles.Count();i++)
-			choices.Add( wxFileNameFromPath( validfiles[i] ) );
-
-		index = ::wxGetSingleChoiceIndex( "Select a report template", "Report generation", choices, this );
-	}
-
-	if (index < 0)
-		return;
-
-	wxString casename = SamApp::Project().GetCaseName( m_case );
-	wxString folder = wxPathOnly( SamApp::Window()->GetProjectFileName() );
-
-	wxFileDialog fdlg( this, "Create PDF report for: " + casename, folder,
-		casename + ".pdf", "Portable Document Format (*.pdf)|*.pdf", wxFD_SAVE|wxFD_OVERWRITE_PROMPT );
-
-	if ( fdlg.ShowModal() != wxID_OK )
-		return;
-
-	wxString pdffile = fdlg.GetPath();
-
-	if (templ.Read( validfiles[index] ))
-	{
-		if (!templ.RenderPdf( pdffile, m_case ))
-			wxMessageBox("Failed to write to selected PDF file:\n\n" + pdffile);
-		else
+		
+		if (validfiles.Count() == 0)
 		{
-		// URL encode to address user support issue 7/20/15
-			wxString new_file = wxFileSystem::FileNameToURL(pdffile);
-		//	wxMessageBox("new file=" + new_file);
-			::wxLaunchDefaultBrowser(new_file, wxBROWSER_NEW_WINDOW);
+			wxMessageBox( "SAM could not find any templates valid for the current technology and financing combination.\n\nPlease contact SAM user support at sam.support@nrel.gov for more information." );
+			return false;
 		}
+
+		int index = 0;
+		SamReportTemplate templ;
+
+		// prompt when more than one report available
+		if ( validfiles.Count() > 1)
+		{
+			wxArrayString choices;
+			for (size_t i=0;i<validfiles.Count();i++)
+				choices.Add( wxFileNameFromPath( validfiles[i] ) );
+
+			index = ::wxGetSingleChoiceIndex( "Select a report template", "Report generation", choices, this );
+		}
+
+		if (index < 0)
+			return false;
+
+		templfile = validfiles[ index ] ;
 	}
+	else
+	{
+		if ( !CheckValidTemplate( templfile, tech, fin ) )
+			return false;
+	}
+
+
+	if ( pdffile.IsEmpty() )
+	{
+		wxString casename = SamApp::Project().GetCaseName( m_case );
+		wxString folder = wxPathOnly( SamApp::Window()->GetProjectFileName() );
+
+		wxFileDialog fdlg( this, "Create PDF report for: " + casename, folder,
+			casename + ".pdf", "Portable Document Format (*.pdf)|*.pdf", wxFD_SAVE|wxFD_OVERWRITE_PROMPT );
+
+		if ( fdlg.ShowModal() != wxID_OK )
+			return false;
+
+		 pdffile = fdlg.GetPath();
+	}
+
+	SamReportTemplate templ;
+	if ( templ.Read( templfile ))
+	{
+		if (templ.RenderPdf( pdffile, m_case, meta ))
+		{
+			if ( pdffile.IsEmpty() )
+			{
+				wxString new_file = wxFileSystem::FileNameToURL(pdffile);
+				::wxLaunchDefaultBrowser(new_file, wxBROWSER_NEW_WINDOW);
+			}
+			return true;
+		}
+		else
+			wxMessageBox("Failed to write to selected PDF file:\n\n" + pdffile);
+	}
+
+	return false;
 }
 
 void CaseWindow::OnCommand( wxCommandEvent &evt )
