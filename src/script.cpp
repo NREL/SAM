@@ -466,6 +466,45 @@ void fcall_show_page(lk::invoke_t &cxt)
 	else cxt.error("no active case");
 }
 
+void fcall_widgetpos( lk::invoke_t &cxt )
+{
+	LK_DOC("widgetpos", "Get geometry in pixels in toplevel coordinates of the widget associated with the specified variable.", "(string:name):array" );
+	
+	Case *active_case = CurrentCase();
+	if (CaseWindow *cw = SamApp::Window()->GetCaseWindow(active_case))
+	{
+		ActiveInputPage *aip = 0;
+		wxUIObject *obj = cw->FindActiveObject( cxt.arg(0).as_string(), &aip );
+		if (!obj || !aip) return;
+
+		wxRect rct( obj->GetGeometry() );
+		wxPoint pos = aip->ClientToScreen( wxPoint(rct.x, rct.y) );
+		
+		cxt.result().empty_vector();
+		cxt.result().vec_append( pos.x );
+		cxt.result().vec_append( pos.y );
+		cxt.result().vec_append( rct.width );
+		cxt.result().vec_append( rct.height );
+	}
+}
+
+void fcall_focusto( lk::invoke_t &cxt )
+{
+	LK_DOC("focusto", "Set focus and scroll to the specified input if it is visible on screen.", "(string:name):none" );
+	
+	Case *active_case = CurrentCase();
+	if (CaseWindow *cw = SamApp::Window()->GetCaseWindow(active_case))
+	{
+		ActiveInputPage *aip = 0;
+		wxUIObject *obj = cw->FindActiveObject( cxt.arg(0).as_string(), &aip );
+		if (!obj || !aip) return;
+
+		if ( wxWindow *native = obj->GetNative() )
+			if ( native->IsShownOnScreen() )
+				native->SetFocus();
+	}
+}
+	
 // external fcalls that are compatible with running in a script environment
 extern void fcall_urdb_read( lk::invoke_t & );
 extern void fcall_urdb_write( lk::invoke_t & );
@@ -490,6 +529,8 @@ lk::fcall_t *sam_functions() {
 		fcall_get,
 		fcall_simulate,
 		fcall_show_page,
+		fcall_widgetpos,
+		fcall_focusto,
 		fcall_configuration,
 		fcall_library,
 		fcall_load_defaults,
