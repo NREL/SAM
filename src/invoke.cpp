@@ -806,12 +806,30 @@ static void fcall_case_name(lk::invoke_t &cxt)
 	cxt.result().assign(case_name);
 }
 
+static void fcall_pagenote( lk::invoke_t &cxt )
+{
+	LK_DOC( "pagenote", "Set or get the page note for the current user interface page in the current case.", "( [string:note] ):string" );
+	
+	CaseWindow *cw = SamApp::Window()->GetCurrentCaseWindow();
+	if ( !cw ) return;
+
+	if ( cxt.arg_count() == 0 )	
+		cxt.result().assign( cw->GetCase()->RetrieveNote( cw->GetCurrentContext() ) );
+	else {
+		cw->SetPageNote( cxt.arg(0).as_string() );
+		SamApp::Project().SetModified( true );
+	}
+}
+
 static void fcall_pdfreport( lk::invoke_t &cxt )
 {
 	LK_DOC( "pdfreport", "Generates a PDF report for the current case. Options include 'template', 'metadata'.", "( string:file [, table:options] ):boolean" );
 
 	CaseWindow *c = SamApp::Window()->GetCurrentCaseWindow();
-	if ( !c ) cxt.result().assign( 0.0 );
+	if ( !c ) {
+		cxt.result().assign( 0.0 );
+		return;
+	}
 
 	wxString file(cxt.arg(0).as_string() );
 	wxString templ;
@@ -2484,6 +2502,7 @@ lk::fcall_t* invoke_general_funcs()
 		fcall_dview,
 		fcall_dview_solar_data_file,
 		fcall_pdfreport,
+		fcall_pagenote,
 #ifdef __WXMSW__
 		fcall_xl_create,
 		fcall_xl_free,
