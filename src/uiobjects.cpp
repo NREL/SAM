@@ -417,14 +417,15 @@ class wxUIShadingFactorsObject : public wxUIObject
 {
 public:
 	wxUIShadingFactorsObject() {
-		AddProperty("TabOrder", new wxUIProperty( (int)-1 ) );
+		AddProperty("ShowDBOptions", new wxUIProperty(false));
+		AddProperty("TabOrder", new wxUIProperty((int)-1));
 	}
 	virtual wxString GetTypeName() { return "ShadingFactors"; }
 	virtual wxUIObject *Duplicate() { wxUIObject *o = new wxUIShadingFactorsObject; o->Copy( this ); return o; }
 	virtual bool IsNativeObject() { return true; }
 	virtual bool DrawDottedOutline() { return false; }
 	virtual wxWindow *CreateNative( wxWindow *parent ) {
-		return AssignNative( new ShadingButtonCtrl( parent, wxID_ANY ) );
+		return AssignNative(new ShadingButtonCtrl(parent, wxID_ANY, Property("ShowDBOptions").GetBoolean()));
 	}
 	virtual void Draw( wxWindow *win, wxDC &dc, const wxRect &geom )
 	{

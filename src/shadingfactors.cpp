@@ -27,19 +27,21 @@ ShadingInputData::ShadingInputData()
 void ShadingInputData::save( std::vector<float> &data )
 {
 	data.clear();
-	data.push_back( 2.0 ); // version number of data format - allows for expansion of options in future.
+	data.push_back(3.0); // version number of data format - allows for expansion of options in future.
+//	data.push_back(2.0); // version number of data format - allows for expansion of options in future.
 
-	data.push_back( (en_hourly && hourly.size() == 8760) ? 1.0 : 0.0 );
-	data.push_back( (en_mxh && mxh.nrows() == 12 && mxh.ncols() == 24 ) ? 1.0 : 0.0 );
+//	data.push_back( (en_hourly && hourly.size() == 8760) ? 1.0 : 0.0 );
+	data.push_back((en_mxh && mxh.nrows() == 12 && mxh.ncols() == 24) ? 1.0 : 0.0);
 	data.push_back( en_azal ? 1.0 : 0.0 );
 	data.push_back( en_diff ? 1.0 : 0.0 );
 	data.push_back( -1.0 );
 	data.push_back( -1.0 );
 	data.push_back( -1.0 );
 
-	for (int i=0;i<8760;i++)
-		data.push_back( i < hourly.size() ? hourly[i] : 0.0 );
-	
+//	for (int i=0;i<8760;i++)
+//		data.push_back( i < hourly.size() ? hourly[i] : 0.0 );
+
+
 	if ( mxh.nrows() != 12 || mxh.ncols() != 24 )
 		mxh.resize_fill(12, 24, 0.0);
 
@@ -55,14 +57,28 @@ void ShadingInputData::save( std::vector<float> &data )
 	
 	data.push_back( diff );
 
+	// timestep at end for potential backwards compatibility
+	// timestep string shading fractions matrix added timestep x number of parallel strings
+	data.push_back((en_timestep && (timestep.nrows() % 8760 == 0)) ? 1.0 : 0.0);
+	data.push_back(timestep.nrows());
+	data.push_back(timestep.ncols());
+	for (size_t r = 0; r < timestep.nrows(); r++)
+		for (size_t c = 0; c < timestep.ncols(); c++)
+			data.push_back(timestep.at(r, c));
+
+	data.push_back((en_shading_db && (timestep.nrows() % 8760 == 0)) ? 1.0 : 0.0);
+
 	data.push_back( data.size() + 1 ); // verification flag that size is consistent
 }
 
 void ShadingInputData::clear()
 {
-	en_hourly = en_mxh = en_azal = en_diff = false;
+//	en_hourly = en_mxh = en_azal = en_diff = en_timestep = false;
+	en_mxh = en_azal = en_diff = en_timestep = en_shading_db = false;
 
-	hourly.resize( 8760, 0 );
+	timestep.resize(8760, 0);
+
+//	hourly.resize(8760, 0);
 
 	mxh.resize_fill(12,24, 0.0);
 
@@ -88,7 +104,8 @@ bool ShadingInputData::load( const std::vector<float> &data )
 	int ver = (int)data[idx++];	
 	if (ver == 2)
 	{
-		en_hourly = data[idx++] > 0 ? true : false;
+		//		en_hourly = data[idx++] > 0 ? true : false;
+		en_timestep = data[idx++] > 0 ? true : false;
 		en_mxh = data[idx++] > 0 ? true : false;
 		en_azal = data[idx++] > 0 ? true : false;
 		en_diff = data[idx++] > 0 ? true : false;
@@ -96,10 +113,14 @@ bool ShadingInputData::load( const std::vector<float> &data )
 		idx++; // skip unused -1
 		idx++; // skip unused -1
 
-		hourly.clear();
-		hourly.reserve(8760);
-		for (int i=0;i<8760;i++)
-			hourly.push_back( data[idx++] );
+//		hourly.clear();
+//		hourly.reserve(8760);
+//		for (int i=0;i<8760;i++)
+//			hourly.push_back( data[idx++] );
+		timestep.resize_fill(8760, 1, 0);
+		for (int r = 0; r<8760; r++)
+			timestep.at(r, 0) = data[idx++];
+
 
 		for (int r=0;r<12;r++)
 			for (int c=0;c<24;c++)
@@ -118,6 +139,44 @@ bool ShadingInputData::load( const std::vector<float> &data )
 
 		return idx == verify;
 	}
+	else if (ver == 3)
+	{
+		en_mxh = data[idx++] > 0 ? true : false;
+		en_azal = data[idx++] > 0 ? true : false;
+		en_diff = data[idx++] > 0 ? true : false;
+		idx++; // skip unused -1
+		idx++; // skip unused -1
+		idx++; // skip unused -1
+
+
+		for (int r = 0; r<12; r++)
+			for (int c = 0; c<24; c++)
+				mxh.at(r, c) = data[idx++];
+
+		int nr = (int)data[idx++];
+		int nc = (int)data[idx++];
+		azal.resize_fill(nr, nc, 1.0);
+		for (int r = 0; r<nr; r++)
+			for (int c = 0; c<nc; c++)
+				azal.at(r, c) = data[idx++];
+
+		diff = data[idx++];
+
+		en_timestep = data[idx++] > 0 ? true : false;
+		nr = (int)data[idx++];
+		nc = (int)data[idx++];
+		timestep.resize_fill(nr, nc, 0);
+		for (int r = 0; r<nr; r++)
+			for (int c = 0; c<nc; c++)
+				timestep.at(r, c) = data[idx++];
+
+		en_shading_db = data[idx++] > 0 ? true : false;
+
+		int verify = data[idx++];
+
+		return idx == verify;
+	}
+
 
 	return false;
 }
@@ -126,9 +185,15 @@ void ShadingInputData::write( VarValue *vv )
 {
 	vv->SetType( VV_TABLE );
 	VarTable &tab = vv->Table();
-	tab.Set( "en_hourly", VarValue( (bool)en_hourly ) );
-	tab.Set( "hourly", VarValue( hourly ) );
-	tab.Set( "en_mxh", VarValue( (bool)en_mxh ) );
+	// Version 2 - should be upgraded in project upgrader
+	//	tab.Set( "en_hourly", VarValue( (bool)en_hourly ) );
+	//	tab.Set( "hourly", VarValue( hourly ) );
+	tab.Set("en_shading_db_lookup", VarValue(true));
+	tab.Set("shading_db_lookup", VarValue((bool)en_shading_db));
+	tab.Set("en_timestep", VarValue((bool)en_timestep));
+	tab.Set("timestep", VarValue(timestep));
+
+	tab.Set("en_mxh", VarValue((bool)en_mxh));
 	tab.Set( "mxh", VarValue( mxh ) );
 	tab.Set( "en_azal", VarValue( (bool)en_azal ) );
 	tab.Set( "azal", VarValue( azal ) );
@@ -142,9 +207,13 @@ bool ShadingInputData::read( VarValue *root )
 	if ( root->Type() == VV_TABLE )
 	{
 		VarTable &tab = root->Table();
-		if ( VarValue *vv = tab.Get( "en_hourly" ) ) en_hourly = vv->Boolean();
-		if ( VarValue *vv = tab.Get("hourly") ) hourly = vv->Array();
-		if ( VarValue *vv = tab.Get("en_mxh") ) en_mxh = vv->Boolean();
+		// version 2 - should be upgraded in project upgrader
+		//if ( VarValue *vv = tab.Get( "en_hourly" ) ) en_hourly = vv->Boolean();
+		//if ( VarValue *vv = tab.Get("hourly") ) hourly = vv->Array();
+		if (VarValue *vv = tab.Get("shading_db_lookup")) en_shading_db = vv->Boolean();
+		if (VarValue *vv = tab.Get("en_timestep")) en_timestep = vv->Boolean();
+		if (VarValue *vv = tab.Get("timestep")) timestep = vv->Matrix();
+		if (VarValue *vv = tab.Get("en_mxh")) en_mxh = vv->Boolean();
 		if ( VarValue *vv = tab.Get("mxh") ) mxh = vv->Matrix();
 		if ( VarValue *vv = tab.Get("en_azal") ) en_azal = vv->Boolean();
 		if ( VarValue *vv = tab.Get("azal") ) azal = vv->Matrix();
@@ -157,7 +226,7 @@ bool ShadingInputData::read( VarValue *root )
 }
 
 
-static const char *hourly_text = "The Hourly 8760 option is appropriate if you have a set of hourly beam shading losses for each of the 8,760 hours in a year. ";
+static const char *hourly_text = "The timestep option is appropriate if you have a set of beam shading losses for each of the simulation timesteps in a single year. ";
 static const char *mxh_text = "The Month by Hour option allows you to specify a set of 288 (12 months x 24 hours) beam shading losses that apply to the 24 hours of the day for each month of the year. Select a cell or group of cells and type a number between 0% and 100% to assign values to the table by hand. Click Import to import a table of values from a properly formatted text file. ";
 static const char *azal_text = "The Azimuth by Altitude option allows you to specify a set of beam shading losses for different sun positions.\n"
   "1. Define the size of the table by entering values for the number of rows and columns.\n"
@@ -178,9 +247,9 @@ class ShadingDialog : public wxDialog
 {
 	wxScrolledWindow *m_scrollWin;
 
-	wxCheckBox *m_enableHourly;
-	AFDataArrayButton *m_hourly;
-	wxStaticText *m_textHourly;
+	wxCheckBox *m_enableTimestep;
+	wxShadingFactorsCtrl *m_timestep;
+	wxStaticText *m_textTimestep;
 	 
 	wxCheckBox *m_enableMxH;
 	AFMonthByHourFactorCtrl *m_mxh;
@@ -194,8 +263,10 @@ class ShadingDialog : public wxDialog
 	wxNumericCtrl *m_diffuseFrac;
 	wxStaticText *m_textDiffuse;
 
+	bool m_show_db_options;
+
 public:
-	ShadingDialog( wxWindow *parent, const wxString &descText )
+	ShadingDialog( wxWindow *parent, const wxString &descText, bool show_db_options = false )
 		: wxDialog( parent, wxID_ANY, 
 			wxString("Edit shading data") + wxString( (!descText.IsEmpty() ? ": " : "") ) + descText, 
 			wxDefaultPosition, wxDefaultSize, 
@@ -205,12 +276,23 @@ public:
 
 		SetClientSize( 870, 600 );
 
+		m_show_db_options = show_db_options;
+
 		m_scrollWin = new wxScrolledWindow( this, wxID_ANY );
 		m_scrollWin->SetScrollRate( 50, 50 );
 
-		m_enableHourly = new wxCheckBox( m_scrollWin, ID_ENABLE_HOURLY, "Enable hourly beam irradiance shading losses" );
-		m_hourly = new AFDataArrayButton( m_scrollWin, wxID_ANY );
-		m_hourly->SetMode( DATA_ARRAY_8760_ONLY );
+		m_enableTimestep = new wxCheckBox( m_scrollWin, ID_ENABLE_HOURLY, "Enable timestep beam irradiance shading losses" );
+		m_timestep = new wxShadingFactorsCtrl(m_scrollWin, wxID_ANY, wxDefaultPosition, wxDefaultSize, m_show_db_options);
+		m_timestep->SetInitialSize(wxSize(900, 200));
+		m_timestep->SetMinuteCaption("Time step in minutes:");
+		m_timestep->SetColCaption(wxString("Number of parallel strings:") + wxString((!descText.IsEmpty() ? " for " : "")) + descText);
+		int num_cols = 8;
+		matrix_t<float> ts_data(8760, num_cols, 0);
+		m_timestep->SetData(ts_data);
+		wxArrayString cl;
+		for (size_t i = 0; i < num_cols; i++)
+			cl.push_back(wxString::Format("String %d", i+1));
+		m_timestep->SetColLabels(cl);
 
 		m_enableMxH = new wxCheckBox( m_scrollWin, ID_ENABLE_MXH, "Enable month by hour beam irradiance shading losses" );
 		m_mxh = new AFMonthByHourFactorCtrl( m_scrollWin, wxID_ANY );
@@ -221,7 +303,7 @@ public:
 		m_azal->SetInitialSize( wxSize(900,280) );
 		m_azal->ShowLabels( false );
 
-		matrix_t<float> data(10, 18, 1.0);
+		matrix_t<float> data(10, 18, 0);
 		for ( int c=0;c<18;c++ )
 			data.at(0, c) = c*20;
 		for ( int r=0;r<10;r++ )
@@ -244,11 +326,11 @@ public:
 		scroll->Add( import_tools, 0, wxALL, 5 );
 		scroll->Add( new wxStaticLine( m_scrollWin ), 0, wxALL|wxEXPAND );
 
-		scroll->Add( m_enableHourly, 0, wxALL|wxEXPAND, 5 );
-		scroll->Add( m_textHourly = new wxStaticText( m_scrollWin, wxID_ANY, hourly_text ), 0, wxALL|wxEXPAND, 10 );
-		scroll->Add( m_hourly, 0, wxALL, 5 );
-		m_textHourly->Wrap( wrap_width );
-		m_textHourly->SetForegroundColour( text_color );
+		scroll->Add( m_enableTimestep, 0, wxALL|wxEXPAND, 5 );
+		scroll->Add( m_textTimestep = new wxStaticText( m_scrollWin, wxID_ANY, hourly_text ), 0, wxALL|wxEXPAND, 10 );
+		scroll->Add( m_timestep, 0, wxALL, 5 );
+		m_textTimestep->Wrap(wrap_width);
+		m_textTimestep->SetForegroundColour(text_color);
 		
 		scroll->Add( new wxStaticLine( m_scrollWin ), 0, wxALL|wxEXPAND );
 		scroll->Add( m_enableMxH, 0, wxALL|wxEXPAND, 5 );
@@ -289,8 +371,8 @@ public:
 
 	void UpdateVisibility()
 	{
-		m_hourly->Show( m_enableHourly->IsChecked() );
-		m_textHourly->Show( m_enableHourly->IsChecked() );
+		m_timestep->Show( m_enableTimestep->IsChecked() );
+		m_textTimestep->Show( m_enableTimestep->IsChecked() );
 		
 		m_mxh->Show( m_enableMxH->IsChecked() );
 		m_textMxH->Show( m_enableMxH->IsChecked() );
@@ -367,11 +449,29 @@ public:
 	{
 		wxString stat;
 
-		if ( all || sh.en_hourly )
+		//if ( all || sh.en_hourly )
+		//{
+		//	m_enableHourly->SetValue( sh.en_hourly );
+		//	stat += "Updated hourly beam shading losses.\n";
+		//}
+		if (all || sh.en_timestep)
 		{
-			m_enableHourly->SetValue( sh.en_hourly );
-			m_hourly->Set( sh.hourly );
-			stat += "Updated hourly beam shading losses.\n";
+			m_enableTimestep->SetValue(sh.en_timestep);
+			if (sh.timestep.nrows() < 8760)
+			{
+				sh.timestep.resize_fill(8760, 1, 0);
+			}
+			m_timestep->SetData(sh.timestep);
+			size_t ncols = sh.timestep.ncols();
+			m_timestep->SetNumCols(ncols);
+
+			size_t nminutes = 60;
+			if ((sh.timestep.nrows() / 8760) > 0)
+				nminutes /= (sh.timestep.nrows() / 8760);
+			m_timestep->SetNumMinutes(nminutes);
+			stat += "Updated timestep beam shading losses.\n";
+			bool en_shade_db = (sh.en_shading_db == 1);
+			m_timestep->SetEnableShadingDB(en_shade_db);
 		}
 
 		if ( all || sh.en_mxh )
@@ -402,8 +502,13 @@ public:
 
 	void Save( ShadingInputData &sh )
 	{
-		sh.en_hourly = m_enableHourly->IsChecked();
-		m_hourly->Get( sh.hourly );
+//		sh.en_hourly = m_enableTimestep->IsChecked();
+//		m_hourly->Get( sh.hourly ); 
+
+		sh.en_timestep = m_enableTimestep->IsChecked();
+		m_timestep->GetData(sh.timestep);
+
+		sh.en_shading_db = m_timestep->GetEnableShadingDB();
 
 		sh.en_mxh = m_enableMxH->IsChecked();
 		sh.mxh.copy( m_mxh->GetData() );
@@ -413,6 +518,8 @@ public:
 
 		sh.en_diff = m_enableDiffuse->IsChecked();
 		sh.diff = m_diffuseFrac->Value();
+
+		
 	}
 
 	DECLARE_EVENT_TABLE()
@@ -440,10 +547,11 @@ BEGIN_EVENT_TABLE(ShadingButtonCtrl, wxButton)
 EVT_BUTTON(wxID_ANY, ShadingButtonCtrl::OnPressed)
 END_EVENT_TABLE()
 
-ShadingButtonCtrl::ShadingButtonCtrl( wxWindow *parent, int id, 
+ShadingButtonCtrl::ShadingButtonCtrl(wxWindow *parent, int id, bool show_db_options,
 	const wxPoint &pos, const wxSize &size)
 	: wxButton( parent, id, "Edit shading...", pos, size )
 {
+	m_show_db_options = show_db_options;
 }
 
 void ShadingButtonCtrl::Write( VarValue *vv )
@@ -458,7 +566,7 @@ bool ShadingButtonCtrl::Read( VarValue *vv )
 
 void ShadingButtonCtrl::OnPressed(wxCommandEvent &evt)
 {
-	ShadingDialog dlg( this, m_descText );
+	ShadingDialog dlg( this, m_descText, m_show_db_options );
 	dlg.Load( m_shad );
 	
 	if (dlg.ShowModal()==wxID_OK)
@@ -652,9 +760,9 @@ bool ImportSunEyeHourly( ShadingInputData &dat, wxWindow *parent )
 	bool colok = true;
 	int linesok = 0;
 	int day = 0;
-	int start_minute=0;
+	int start_timestep=0;
 	int start_hour=0;
-	int end_minute=0;
+	int end_timestep=0;
 	int end_hour=0;
 	int hour_duration=0; // how many hours (including incomplete hours) in the Suneye file
 	double beam[8760];
@@ -676,13 +784,13 @@ bool ImportSunEyeHourly( ShadingInputData &dat, wxWindow *parent )
 					icolon = lnp.Item(1).find(":");
 					if (icolon>0) 
 					{
-						start_minute = wxAtoi(lnp.Item(1).substr(icolon+1,2));
+						start_timestep = wxAtoi(lnp.Item(1).substr(icolon+1,2));
 						start_hour = wxAtoi(lnp.Item(1).substr(0,icolon));
 					}
 					icolon = lnp.Item(iend).find(":");
 					if (icolon>0) 
 					{
-						end_minute = wxAtoi(lnp.Item(iend).substr(icolon+1,2));
+						end_timestep = wxAtoi(lnp.Item(iend).substr(icolon+1,2));
 						end_hour = wxAtoi(lnp.Item(iend).substr(0,icolon));
 					}
 					// check for valid duration
@@ -698,7 +806,7 @@ bool ImportSunEyeHourly( ShadingInputData &dat, wxWindow *parent )
 		else
 		{
 			// shj update 5/25/11 - read in begin data and to end - no fixed count
-			// assume that 15 minute intervals and use start and end time and adjust to hour
+			// assume that 15 timestep intervals and use start and end time and adjust to hour
 			// JMF update 10/17/2014- average all values for an hour instead of taking the midpoint of the hour
 			int index = 1; //keep track of where you are in the row- starts at 1 because of the date column.
 			for (i=0;i<hour_duration;i++)
@@ -714,13 +822,13 @@ bool ImportSunEyeHourly( ShadingInputData &dat, wxWindow *parent )
 				//how many 15-min entries are in this hour?
 				int count = 0;
 				if (i == 0) //first hour
-					count = (60 - start_minute) / 15;
+					count = (60 - start_timestep) / 15;
 				else if (i == hour_duration - 1) //last hour
-					count = end_minute / 15 + 1;
+					count = end_timestep / 15 + 1;
 				else //whole hours in between
 					count = 4;
 
-				//loop through the correct number of 15-minute entries and to calculate an average shading value
+				//loop through the correct number of 15-timestep entries and to calculate an average shading value
 				double total = 0;
 				for (int j = 0; j < count; j++)
 				{
@@ -754,11 +862,16 @@ bool ImportSunEyeHourly( ShadingInputData &dat, wxWindow *parent )
 	if (readok)
 	{
 		dat.clear();
-		dat.en_hourly = true;
-		dat.hourly.clear();
-		dat.hourly.reserve( 8760 );
-		for( size_t i=0;i<8760;i++ ) 
-			dat.hourly.push_back( beam[i] );
+		//dat.en_hourly = true;
+		//dat.hourly.clear();
+		//dat.hourly.reserve( 8760 );
+		//for( size_t i=0;i<8760;i++ ) 
+		//	dat.hourly.push_back( beam[i] );
+		dat.en_timestep = true;
+		dat.timestep.clear();
+		dat.timestep.resize_fill(8760,1,0);
+		for (size_t i = 0; i<8760; i++)
+			dat.timestep.at(i,0) = beam[i];
 		return true;
 	}
 	else
@@ -1017,4 +1130,368 @@ bool ImportSolPathMonthByHour( ShadingInputData &dat, wxWindow *parent )
 		wxMessageBox(m);
 		return false;
 	}
+}
+
+
+
+
+DEFINE_EVENT_TYPE(wxEVT_wxShadingFactorsCtrl_CHANGE)
+
+enum { ISFC_CHOICECOL = wxID_HIGHEST + 857, ISFC_CHOICEMINUTE, ISFC_GRID };
+
+BEGIN_EVENT_TABLE(wxShadingFactorsCtrl, wxPanel)
+EVT_GRID_CMD_CELL_CHANGE(ISFC_GRID, wxShadingFactorsCtrl::OnCellChange)
+EVT_CHOICE(ISFC_CHOICECOL, wxShadingFactorsCtrl::OnChoiceCol)
+EVT_CHOICE(ISFC_CHOICEMINUTE, wxShadingFactorsCtrl::OnChoiceMinute)
+END_EVENT_TABLE()
+
+wxShadingFactorsCtrl::wxShadingFactorsCtrl(wxWindow *parent, int id,
+const wxPoint &pos,
+const wxSize &sz,
+bool show_db_options,
+bool sidebuttons)
+: wxPanel(parent, id, pos, sz)
+{
+	m_default_val = 0;
+	m_num_minutes = 60;
+	m_col_header_use_format = false;
+	m_col_ary_str.Clear();
+	m_col_format_str = wxEmptyString;
+	m_col_arystrvals.Clear();
+	m_minute_arystrvals.Clear();
+
+	m_grid = new wxExtGridCtrl(this, ISFC_GRID);
+	m_grid->CreateGrid(8760, 8);
+	m_grid->EnableCopyPaste(true);
+	m_grid->EnablePasteEvent(true);
+	m_grid->DisableDragCell();
+	m_grid->DisableDragRowSize();
+	m_grid->DisableDragColMove();
+	m_grid->DisableDragGridSize();
+	m_grid->SetRowLabelAlignment(wxALIGN_LEFT, wxALIGN_CENTER);
+
+	m_en_shading_db = new wxCheckBox(this, wxID_ANY, "Use shading database lookup");
+
+	m_caption_col = new wxStaticText(this, wxID_ANY, "");
+	m_caption_col->SetFont(*wxNORMAL_FONT);
+
+	m_col_arystrvals.push_back("1");
+	m_col_arystrvals.push_back("2");
+	m_col_arystrvals.push_back("3");
+	m_col_arystrvals.push_back("4");
+	m_col_arystrvals.push_back("5");
+	m_col_arystrvals.push_back("6");
+	m_col_arystrvals.push_back("7");
+	m_col_arystrvals.push_back("8");
+	m_choice_col = new wxChoice(this, ISFC_CHOICECOL, wxDefaultPosition, wxDefaultSize, m_col_arystrvals);
+	m_choice_col->SetBackgroundColour(*wxWHITE);
+
+	m_caption_timestep = new wxStaticText(this, wxID_ANY, "");
+	m_caption_timestep->SetFont(*wxNORMAL_FONT);
+
+	m_minute_arystrvals.push_back("1");
+	m_minute_arystrvals.push_back("3");
+	m_minute_arystrvals.push_back("5");
+	m_minute_arystrvals.push_back("10");
+	m_minute_arystrvals.push_back("15");
+	m_minute_arystrvals.push_back("30");
+	m_minute_arystrvals.push_back("60");
+	m_choice_timestep = new wxChoice(this, ISFC_CHOICEMINUTE, wxDefaultPosition, wxDefaultSize, m_minute_arystrvals);
+	m_choice_timestep->SetBackgroundColour(*wxWHITE);
+
+	if (!show_db_options)
+	{
+		m_caption_col->Show(false);
+		m_choice_col->Show(false);
+		m_en_shading_db->Show(false);
+	}
+
+
+	if (sidebuttons)
+	{
+		// for side buttons layout
+		wxBoxSizer *v_tb_sizer = new wxBoxSizer(wxVERTICAL);
+		v_tb_sizer->Add(m_caption_timestep, 0, wxALL | wxEXPAND, 3);
+		v_tb_sizer->Add(m_choice_timestep, 0, wxALL | wxEXPAND, 3);
+		if (show_db_options)
+		{
+			v_tb_sizer->AddSpacer(5);
+			v_tb_sizer->Add(m_caption_col, 0, wxALL | wxEXPAND, 3);
+			v_tb_sizer->Add(m_choice_col, 0, wxALL | wxEXPAND, 3);
+			v_tb_sizer->AddSpacer(5);
+			v_tb_sizer->Add(m_en_shading_db, 0, wxALL | wxEXPAND, 3);
+			v_tb_sizer->AddStretchSpacer();
+		}
+	
+
+		wxBoxSizer *h_sizer = new wxBoxSizer(wxHORIZONTAL);
+		h_sizer->Add(v_tb_sizer, 0, wxALL | wxEXPAND, 1);
+		h_sizer->Add(m_grid, 1, wxALL | wxEXPAND, 1);
+
+		SetSizer(h_sizer);
+	}
+	else
+	{
+		// for top buttons layout (default)
+		wxBoxSizer *h_tb_sizer = new wxBoxSizer(wxHORIZONTAL);
+		h_tb_sizer->Add(m_caption_timestep, 0, wxALL | wxEXPAND | wxALIGN_CENTER_VERTICAL, 3);
+		h_tb_sizer->Add(m_choice_timestep, 0, wxALL | wxEXPAND | wxALIGN_CENTER_VERTICAL, 3);
+		if (show_db_options)
+		{
+			h_tb_sizer->AddSpacer(5);
+			h_tb_sizer->Add(m_caption_col, 0, wxALL | wxEXPAND | wxALIGN_CENTER_VERTICAL, 3);
+			h_tb_sizer->Add(m_choice_col, 0, wxALL | wxEXPAND | wxALIGN_CENTER_VERTICAL, 3);
+			h_tb_sizer->AddSpacer(5);
+			h_tb_sizer->Add(m_en_shading_db, 0, wxALL | wxEXPAND | wxALIGN_CENTER_VERTICAL, 3);
+			h_tb_sizer->AddStretchSpacer();
+		}
+
+		wxBoxSizer *v_sizer = new wxBoxSizer(wxVERTICAL);
+		v_sizer->Add(h_tb_sizer, 0, wxALL | wxEXPAND, 1);
+		v_sizer->Add(m_grid, 1, wxALL | wxEXPAND, 1);
+
+		SetSizer(v_sizer, false);
+	}
+
+	MatrixToGrid();
+}
+
+
+void wxShadingFactorsCtrl::UpdateNumberColumns(size_t &new_cols)
+{
+	// resize and preserve existing data and fill new data with default.
+	m_data.resize_preserve(m_num_rows, new_cols, m_default_val);
+	MatrixToGrid();
+}
+
+void wxShadingFactorsCtrl::UpdateNumberRows(size_t &new_rows)
+{
+	// resize and preserve existing data and fill new data with default.
+	m_data.resize_preserve(new_rows, m_num_cols, m_default_val);
+	MatrixToGrid();
+}
+
+void wxShadingFactorsCtrl::UpdateNumberMinutes(size_t &new_timesteps)
+{
+	// resize and preserve existing data and fill new data with default.
+	// multiple of 8760 timesteps to number of timesteps
+	if ((new_timesteps > 0) && (new_timesteps <= 60))
+	{
+		size_t new_rows = 60 / new_timesteps * 8760;
+		m_data.resize_preserve(new_rows, m_num_cols, m_default_val);
+		MatrixToGrid();
+	}
+}
+
+
+void wxShadingFactorsCtrl::UpdateColumnHeaders()
+{
+	if (m_col_header_use_format)
+	{
+		for (size_t i = 0; i < m_grid->GetNumberCols(); i++)
+		{
+			if (m_col_format_str.Find("%d") != wxNOT_FOUND)
+				m_grid->SetColLabelValue(i, wxString::Format(m_col_format_str, i));
+			else
+				m_grid->SetColLabelValue(i, m_col_format_str);
+		}
+	}
+	else
+	{
+		for (size_t i = 0; i < m_grid->GetNumberCols() && i < m_col_ary_str.Count(); i++)
+			m_grid->SetColLabelValue(i, m_col_ary_str[i]);
+	}
+}
+
+
+
+void wxShadingFactorsCtrl::SetColLabelFormatString(const wxString &col_format_str)
+{
+	if (col_format_str != m_col_format_str)
+		m_col_format_str = col_format_str;
+	m_col_header_use_format = false;
+	UpdateColumnHeaders();
+}
+
+
+
+void wxShadingFactorsCtrl::OnChoiceCol(wxCommandEvent  &evt)
+{
+	if ((m_choice_col->GetSelection() != wxNOT_FOUND) && (wxAtoi(m_choice_col->GetString(m_choice_col->GetSelection())) != m_num_cols))
+	{ 
+		size_t new_cols = wxAtoi(m_choice_col->GetString(m_choice_col->GetSelection()));
+		UpdateNumberColumns(new_cols);
+	}
+}
+
+void wxShadingFactorsCtrl::OnChoiceMinute(wxCommandEvent  &evt)
+{
+	if ((m_choice_timestep->GetSelection() != wxNOT_FOUND) && (wxAtoi(m_choice_timestep->GetString(m_choice_timestep->GetSelection())) != m_num_minutes))
+	{
+		m_num_minutes = wxAtoi(m_choice_timestep->GetString(m_choice_timestep->GetSelection()));
+		UpdateNumberMinutes(m_num_minutes);
+	}
+}
+
+void wxShadingFactorsCtrl::SetData(const matrix_t<float> &mat)
+{
+	m_data = mat;
+	MatrixToGrid();
+}
+
+void wxShadingFactorsCtrl::GetData(matrix_t<float> &mat)
+{
+	mat = m_data;
+}
+
+
+
+void wxShadingFactorsCtrl::OnCellChange(wxGridEvent &evt)
+{
+	int irow = evt.GetRow();
+	int icol = evt.GetCol();
+
+	if (irow == -1 && icol == -1) // paste event generated from base class
+	{
+		for (int ir = 0; ir < m_grid->GetNumberRows(); ir++)
+			for (int ic = 0; ic < m_grid->GetNumberCols(); ic++)
+			{
+				float val = (float)wxAtof(m_grid->GetCellValue(ir, ic).c_str());
+				m_data.at(ir, ic) = val;
+				m_grid->SetCellValue(ir, ic, wxString::Format("%g", val));
+			}
+	}
+	else
+	{
+		float val = (float)wxAtof(m_grid->GetCellValue(irow, icol).c_str());
+
+		if (irow < m_data.nrows() && icol < m_data.ncols()
+			&& irow >= 0 && icol >= 0)
+			m_data.at(irow, icol) = val;
+
+		m_grid->SetCellValue(irow, icol, wxString::Format("%g", val));
+	}
+	wxCommandEvent dmcevt(wxEVT_wxShadingFactorsCtrl_CHANGE, this->GetId());
+	dmcevt.SetEventObject(this);
+	GetEventHandler()->ProcessEvent(dmcevt);
+}
+
+
+
+void wxShadingFactorsCtrl::MatrixToGrid()
+{
+	int r, nr = m_data.nrows();
+	int c, nc = m_data.ncols();
+
+	m_num_cols = nc;
+	m_num_rows = nr;
+
+	m_grid->ResizeGrid(nr, nc);
+	for (r = 0; r<nr; r++)
+		for (c = 0; c<nc; c++)
+			m_grid->SetCellValue(r, c, wxString::Format("%g", m_data.at(r, c)));
+
+	UpdateColumnHeaders();
+	UpdateRowLabels();
+	if (m_num_cols > 1) // if not shading database then set to use
+		m_en_shading_db->SetValue(true);
+}
+
+
+void wxShadingFactorsCtrl::SetColCaption(const wxString &cap)
+{
+	m_caption_col->SetLabel(cap);
+	this->Layout();
+}
+
+wxString wxShadingFactorsCtrl::GetColCaption()
+{
+	return m_caption_col->GetLabel();
+}
+
+
+void wxShadingFactorsCtrl::SetMinuteCaption(const wxString &cap)
+{
+	m_caption_timestep->SetLabel(cap);
+	this->Layout();
+}
+
+wxString wxShadingFactorsCtrl::GetMinuteCaption()
+{
+	return m_caption_timestep->GetLabel();
+}
+
+
+void wxShadingFactorsCtrl::SetNumMinutes(size_t &minutes)
+{
+	int ndx = m_minute_arystrvals.Index(wxString::Format("%d", (int)minutes));
+	if (ndx >= 0)
+		m_choice_timestep->SetSelection(ndx);
+	UpdateNumberMinutes(minutes);
+}
+
+void wxShadingFactorsCtrl::SetNumCols(size_t &cols)
+{
+	int ndx = m_col_arystrvals.Index(wxString::Format("%d", (int)cols));
+	if (ndx >= 0)
+		m_choice_col->SetSelection(ndx);
+	UpdateNumberColumns(cols);
+}
+
+void wxShadingFactorsCtrl::SetNumRows(size_t &rows)
+{
+	UpdateNumberRows(rows);
+}
+
+void wxShadingFactorsCtrl::SetColLabels(const wxArrayString &colLabels)
+{
+	if (colLabels != m_col_ary_str)
+		m_col_ary_str = colLabels;
+	m_col_header_use_format = false;
+	UpdateColumnHeaders();
+}
+
+wxArrayString wxShadingFactorsCtrl::GetColLabels()
+{
+	wxArrayString ret;
+	for (size_t i = 0; i < m_grid->GetNumberCols(); i++)
+		ret.push_back(m_grid->GetColLabelValue(i));
+	return ret;
+}
+
+void  wxShadingFactorsCtrl::UpdateRowLabels()
+{ // can do with GridTableBase like AFFloatArrayTable in widgets.cpp
+	size_t num_rows = m_grid->GetNumberRows();
+	if (num_rows > 8760) // otherwise use default row numbering
+	{
+		int nmult = num_rows / 8760;
+		if (nmult != 0)
+		{
+			for (size_t row = 0; row < num_rows; row++)
+			{
+				double step = 1.0 / ((double)nmult);
+				double tm = step*(row + 1);
+				double frac = tm - ((double)(int)tm);
+				if (frac == 0.0)
+					m_grid->SetRowLabelValue(row, wxString::Format("%lg", tm));
+				else
+					m_grid->SetRowLabelValue(row, wxString::Format("   .%lg", frac * 60));
+			}
+		}
+	}
+	else
+	{
+		for (size_t row = 0; row < num_rows; row++)
+			m_grid->SetRowLabelValue(row, wxString::Format("%d", row+1));
+	}
+}
+
+void wxShadingFactorsCtrl::SetEnableShadingDB(bool &en_shading_db)
+{
+	m_en_shading_db->SetValue(en_shading_db);
+}
+
+bool wxShadingFactorsCtrl::GetEnableShadingDB()
+{
+	return m_en_shading_db->GetValue();
 }
