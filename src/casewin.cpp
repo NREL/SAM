@@ -1034,6 +1034,12 @@ void CaseWindow::ShowPageNote()
 	m_pageNote->GetTextCtrl()->SetFocus();
 }
 
+void CaseWindow::SetPageNote( const wxString &note )
+{
+	m_pageNote->GetTextCtrl()->ChangeValue( note );
+	UpdatePageNote();
+}
+
 bool CaseWindow::HasPageNote(const wxString &id)
 {
 	return !id.IsEmpty() && !m_case->RetrieveNote(id).IsEmpty();

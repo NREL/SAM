@@ -48,7 +48,8 @@ public:
 	wxString GetCurrentContext();
 	void UpdatePageNote();
 	bool HasPageNote( const wxString &id );
-	void ShowPageNote();
+	void ShowPageNote( );
+	void SetPageNote( const wxString &text );
 
 	void SaveCurrentViewProperties();
 
