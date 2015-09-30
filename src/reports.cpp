@@ -1913,22 +1913,30 @@ static void fcall_var( lk::invoke_t &cxt )
 {
 	LK_DOC("var", "Retrieve a variable value from the current SAM case.", "(string:name):value");
 	
+	wxString var_name( cxt.arg(0).as_string() );
+
 	SamReportScriptObject *so = (SamReportScriptObject*) cxt.user_data();
 	if (!so) return;
 	
 	VarTable *vt = so->GetSymbols();
 	if (!vt) return;
+	
+	VarValue *meta = so->GetMetaData();
 
-	if ( VarValue *vv = vt->Get( cxt.arg(0).as_string() ) )
-	{
-		vv->Write( cxt.result() );
-	}
-	else
+	VarValue *vv = vt->Get( var_name );
+	if ( !vv  && meta && meta->Type() == VV_TABLE )
+		vv = meta->Table().Get( var_name );
+
+	if ( !vv )
 	{
 		Simulation &sim = so->GetCase()->BaseCase();
-		if ( VarValue *vv = sim.GetOutput( cxt.arg(0).as_string() ) )
-			vv->Write( cxt.result() );
+		vv = sim.GetOutput( var_name );
 	}
+
+	if ( !vv )
+		return;
+
+	vv->Write( cxt.result() );
 }
 
 static void fcall_technology( lk::invoke_t &cxt )
