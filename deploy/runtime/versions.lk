@@ -63,6 +63,15 @@ version_upgrade{'2015.9.9'} = define() {
 		else // non-net metering with monthly reconciliation
 			value('ur_metering_option',2);
 	}
+	
+	if( cfg.tech == 'MSPT' )
+	{
+		message('Upgrading project to version 2015.9.9');
+		
+		value('piping_loss', oldvalue('Piping_loss'));
+		value('piping_length_const', oldvalue('csp.pt.par.piping_length_const'));
+		value('piping_length_mult', oldvalue('csp.pt.par.piping_length_mult'));
+	}
 
 };
 
