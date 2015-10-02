@@ -1205,7 +1205,7 @@ function setup_MSPT_pages()
 	addpage( [[ 'Molten Salt Tower Storage' ,
 	  {'name' = 'CSP Dispatch Control', 'caption'='Dispatch Control', 'collapsible'=false, 'collapsible_var'='csp_dispatch_is_shown'} ]], 
 	  { 'sidebar'='Thermal Storage', 'help'='mspt_thermal_storage' } );
-	addpage( [[ 'Molten Salt Tower Parasitics' ]], { 'sidebar'='Parasitics', 'help'='mspt_parasitics' } );
+	addpage( [[ 'MSPT System Control' ]], { 'sidebar'='System Control', 'help'='mspt_parasitics' } );
 }
 
 //-----------------------------------------------------
