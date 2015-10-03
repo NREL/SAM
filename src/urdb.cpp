@@ -103,18 +103,12 @@ void OpenEI::RateData::Reset()
 bool OpenEI::QueryUtilityCompanies(wxArrayString &names, wxString *err)
 {
 
-	//  based on emails from Paul and Jay Huggins 3/24/14
-//	wxString url = "http://en.openei.org/services/rest/utility_companies?version=2&format=json_plain&callback=callback";
-	//  based on email from Jay Huggins 7/8/14 - use latest format - still at version 2
-	//wxString url = "http://en.openei.org/services/rest/utility_companies?version=latest&format=json_plain&callback=callback";
-
-//	wxString url = "http://en.openei.org/w/api.php?cmtitle=Category%3AEIA%20Utility%20Companies%20and%20Aliases&action=query&list=categorymembers&cmprop=title&cmnamespace=0&cmlimit=10000&format=json";
-// Update from Jay 8/11/15 to include international rates
-//	wxString url = "http://en.openei.org/w/api.php?cmtitle=Category%3AUtility%20Companies&action=query&list=categorymembers&cmprop=title&cmnamespace=0&cmlimit=10000&format=json";
-
 // update from Jay 8/18/15 for aliases interantional and national
 // "title" changed back to "label" and "query"->"categorymembers" changed to "items"
-	wxString url = "http://dev-api.openei.org/utility_companies?version=3&format=json&api_key=" + wxString(sam_api_key) + "&scope=international";
+//	wxString url = "http://dev-api.openei.org/utility_companies?version=3&format=json&api_key=" + wxString(sam_api_key) + "&scope=international";
+
+// Pushed to production update from Jay 10/2/15
+	wxString url = "http://api.openei.org/utility_companies?version=3&format=json&api_key=" + wxString(sam_api_key) + "&scope=international";
 
 
 //	wxString json_data = wxWebHttpGet(url);
@@ -267,15 +261,12 @@ bool OpenEI::QueryUtilityRates(const wxString &name, std::vector<RateInfo> &rate
 {
 	wxString utlnm = name;
 	utlnm.Replace("&", "%26");
-	// production http://dev.openei.org/services/doc/rest/util_rates?version=3
-//	wxString url = "http://en.openei.org/services/rest/utility_rates?version=3&detail=minimal&format=json_plain&ratesforutility=" + utlnm;
-	// rest service going away - update to api.openei.org per
-	// http://en.openei.org/services/doc/rest/util_rates?version=3
-//	wxString url = "http://en.openei.org/services/rest/utility_rates?version=3&detail=minimal&format=json&ratesforutility=" + utlnm;
-	//wxString url = "http://api.openei.org/utility_rates?version=3&detail=minimal&format=json&ratesforutility=" + utlnm + "&api_key=" + wxString(sam_api_key);
 
 	// dev server for international rates per Jay email 8/12/13
-	wxString url = "http://dev-api.openei.org/utility_rates?version=4&detail=minimal&format=json&ratesforutility=" + utlnm + "&api_key=" + wxString(sam_api_key);
+//	wxString url = "http://dev-api.openei.org/utility_rates?version=4&detail=minimal&format=json&ratesforutility=" + utlnm + "&api_key=" + wxString(sam_api_key);
+
+	// pushed to production update from Jay 10/2/15
+	wxString url = "http://api.openei.org/utility_rates?version=4&detail=minimal&format=json&ratesforutility=" + utlnm + "&api_key=" + wxString(sam_api_key);
 
 	wxString json_data = MyGet(url);
 	if (json_data.IsEmpty())
@@ -338,18 +329,11 @@ int OpenEI::UtilityCompanyRateCount(const wxString &name)
 
 bool OpenEI::RetrieveUtilityRateData(const wxString &guid, RateData &rate, wxString *json_url, wxString *err)
 {
-	// production
-	// version 2
-//	wxString url = "http://en.openei.org/services/rest/utility_rates?version=2&format=json_plain&detail=full&getpage=Data:" + guid;
-	// version 3
-//	wxString url = "http://en.openei.org/services/rest/utility_rates?version=3&format=json_plain&detail=full&getpage=" + guid;
-//	wxString url = "http://en.openei.org/services/rest/utility_rates?version=3&format=json&detail=full&getpage=" + guid;
-	// rest service going away - update to api.openei.org per
-	// http://en.openei.org/services/doc/rest/util_rates?version=3
-	//wxString url = "http://api.openei.org/utility_rates?version=3&format=json&detail=full&getpage=" + guid + "&api_key=" + wxString(sam_api_key);
-
 	// international rates
-	wxString url = "http://dev-api.openei.org/utility_rates?version=4&format=json&detail=full&getpage=" + guid + "&api_key=" + wxString(sam_api_key);
+	//wxString url = "http://dev-api.openei.org/utility_rates?version=4&format=json&detail=full&getpage=" + guid + "&api_key=" + wxString(sam_api_key);
+
+	// pushed to production update from Jay 10/2/15
+	wxString url = "http://api.openei.org/utility_rates?version=4&format=json&detail=full&getpage=" + guid + "&api_key=" + wxString(sam_api_key);
 
 	if (json_url) *json_url = url;
 
