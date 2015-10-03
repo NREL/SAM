@@ -103,12 +103,12 @@ void OpenEI::RateData::Reset()
 bool OpenEI::QueryUtilityCompanies(wxArrayString &names, wxString *err)
 {
 
-	//  based on emails from Paul and Jay Huggins 3/24/14
-//	wxString url = "http://en.openei.org/services/rest/utility_companies?version=2&format=json_plain&callback=callback";
-	//  based on email from Jay Huggins 7/8/14 - use latest format - still at version 2
-	//wxString url = "http://en.openei.org/services/rest/utility_companies?version=latest&format=json_plain&callback=callback";
+// update from Jay 8/18/15 for aliases interantional and national
+// "title" changed back to "label" and "query"->"categorymembers" changed to "items"
+//	wxString url = "http://dev-api.openei.org/utility_companies?version=3&format=json&api_key=" + wxString(sam_api_key) + "&scope=international";
 
-	wxString url = "http://en.openei.org/w/api.php?cmtitle=Category%3AEIA%20Utility%20Companies%20and%20Aliases&action=query&list=categorymembers&cmprop=title&cmnamespace=0&cmlimit=10000&format=json";
+// Pushed to production update from Jay 10/2/15
+	wxString url = "http://api.openei.org/utility_companies?version=3&format=json&api_key=" + wxString(sam_api_key) + "&scope=international";
 
 
 //	wxString json_data = wxWebHttpGet(url);
@@ -128,14 +128,14 @@ bool OpenEI::QueryUtilityCompanies(wxArrayString &names, wxString *err)
 	}
 
 	names.Clear();
-//	wxJSONValue item_list = root.Item("items");
-	wxJSONValue query = root.Item("query");
-	wxJSONValue item_list = query.Item("categorymembers");
+	wxJSONValue item_list = root.Item("items");
+//	wxJSONValue query = root.Item("query");
+//	wxJSONValue item_list = query.Item("categorymembers");
 	int count = item_list.Size();
 	for (int i=0;i<count;i++)
 	{
-//		wxString buf = item_list[i].Item("label").AsString();
-		wxString buf = item_list[i].Item("title").AsString();
+		wxString buf = item_list[i].Item("label").AsString();
+//		wxString buf = item_list[i].Item("title").AsString();
 		buf.Replace("&amp;", "&");
 			names.Add( buf );
 	}
@@ -261,17 +261,17 @@ bool OpenEI::QueryUtilityRates(const wxString &name, std::vector<RateInfo> &rate
 {
 	wxString utlnm = name;
 	utlnm.Replace("&", "%26");
-	// production http://dev.openei.org/services/doc/rest/util_rates?version=3
-//	wxString url = "http://en.openei.org/services/rest/utility_rates?version=3&detail=minimal&format=json_plain&ratesforutility=" + utlnm;
-	// rest service going away - update to api.openei.org per
-	// http://en.openei.org/services/doc/rest/util_rates?version=3
-//	wxString url = "http://en.openei.org/services/rest/utility_rates?version=3&detail=minimal&format=json&ratesforutility=" + utlnm;
-	wxString url = "http://api.openei.org/utility_rates?version=3&detail=minimal&format=json&ratesforutility=" + utlnm + "&api_key=" + wxString(sam_api_key);
+
+	// dev server for international rates per Jay email 8/12/13
+//	wxString url = "http://dev-api.openei.org/utility_rates?version=4&detail=minimal&format=json&ratesforutility=" + utlnm + "&api_key=" + wxString(sam_api_key);
+
+	// pushed to production update from Jay 10/2/15
+	wxString url = "http://api.openei.org/utility_rates?version=4&detail=minimal&format=json&ratesforutility=" + utlnm + "&api_key=" + wxString(sam_api_key);
 
 	wxString json_data = MyGet(url);
 	if (json_data.IsEmpty())
 	{
-		if (err) *err = "Could not retrieve rate information for " + name;
+		if (err) *err = "Could not retrieve rate information for " + name + " " + url;
 		return false;
 	}
 
@@ -329,15 +329,11 @@ int OpenEI::UtilityCompanyRateCount(const wxString &name)
 
 bool OpenEI::RetrieveUtilityRateData(const wxString &guid, RateData &rate, wxString *json_url, wxString *err)
 {
-	// production
-	// version 2
-//	wxString url = "http://en.openei.org/services/rest/utility_rates?version=2&format=json_plain&detail=full&getpage=Data:" + guid;
-	// version 3
-//	wxString url = "http://en.openei.org/services/rest/utility_rates?version=3&format=json_plain&detail=full&getpage=" + guid;
-//	wxString url = "http://en.openei.org/services/rest/utility_rates?version=3&format=json&detail=full&getpage=" + guid;
-	// rest service going away - update to api.openei.org per
-	// http://en.openei.org/services/doc/rest/util_rates?version=3
-	wxString url = "http://api.openei.org/utility_rates?version=3&format=json&detail=full&getpage=" + guid + "&api_key=" + wxString(sam_api_key);
+	// international rates
+	//wxString url = "http://dev-api.openei.org/utility_rates?version=4&format=json&detail=full&getpage=" + guid + "&api_key=" + wxString(sam_api_key);
+
+	// pushed to production update from Jay 10/2/15
+	wxString url = "http://api.openei.org/utility_rates?version=4&format=json&detail=full&getpage=" + guid + "&api_key=" + wxString(sam_api_key);
 
 	if (json_url) *json_url = url;
 
@@ -774,7 +770,7 @@ void OpenEIUtilityRateDialog::QueryUtilities()
 	lstUtilities->Thaw();
 
 	lblStatus->SetLabel("Ready.");
-	lblUtilityCount->SetLabel(wxString::Format("%d utilities", lstUtilities->Count()));
+	lblUtilityCount->SetLabel(wxString::Format("%d utilities", (int)lstUtilities->Count()));
 	lstUtilities->SetFocus();
 }
 
@@ -798,7 +794,7 @@ void OpenEIUtilityRateDialog::QueryUtilitiesByZipCode()
 	lstUtilities->Thaw();
 
 	lblStatus->SetLabel("Ready.");
-	lblUtilityCount->SetLabel(wxString::Format("%d utilities", lstUtilities->Count()));
+	lblUtilityCount->SetLabel(wxString::Format("%d utilities", (int)lstUtilities->Count()));
 	lstUtilities->SetFocus();
 }
 
@@ -814,12 +810,17 @@ void OpenEIUtilityRateDialog::QueryRates(const wxString &utility_name)
 	wxString err;
 	//wxBusyInfo busy("Communicating with OpenEI.org... please wait", this);
 
+	//wxString urdb_utility_name = utility_name;
+
+	/* skip for international rates */
 	wxString urdb_utility_name = "";
 	// first resolve aliases
 	if (!api.ResolveUtilityName(utility_name, &urdb_utility_name, &err))
 	{
-		wxMessageBox("Error:\n\n" + err);
-		return;
+		// international rates - no resolving
+//		wxMessageBox("Error:\n\n" + err);
+//		return;
+		urdb_utility_name = utility_name;
 	}
 
 
@@ -961,7 +962,7 @@ void OpenEIUtilityRateDialog::OnEvent(wxCommandEvent &evt)
 		break;
 	case ID_lstUtilities:
 		QueryRates( lstUtilities->GetStringSelection() );
-		lblUtilityCount->SetLabel(wxString::Format("%d utilities", lstUtilities->Count()));
+		lblUtilityCount->SetLabel(wxString::Format("%d utilities", (int)lstUtilities->Count()));
 		break;
 	case ID_lstRates:
 		UpdateRateData();
