@@ -289,10 +289,10 @@ public:
 		int num_cols = 8;
 		matrix_t<float> ts_data(8760, num_cols, 0);
 		m_timestep->SetData(ts_data);
-		wxArrayString cl;
-		for (size_t i = 0; i < num_cols; i++)
-			cl.push_back(wxString::Format("String %d", i+1));
-		m_timestep->SetColLabels(cl);
+//		wxArrayString cl;
+//		for (size_t i = 0; i < num_cols; i++)
+//			cl.push_back(wxString::Format("String %d", i+1));
+//		m_timestep->SetColLabels(cl);
 
 		m_enableMxH = new wxCheckBox( m_scrollWin, ID_ENABLE_MXH, "Enable month by hour beam irradiance shading losses" );
 		m_mxh = new AFMonthByHourFactorCtrl( m_scrollWin, wxID_ANY );
@@ -457,7 +457,7 @@ public:
 		if (all || sh.en_timestep)
 		{
 			m_enableTimestep->SetValue(sh.en_timestep);
-			if (sh.timestep.nrows() < 8760)
+			if (sh.timestep.nrows() < 8760 || sh.timestep.ncols() > 8)
 			{
 				sh.timestep.resize_fill(8760, 1, 0);
 			}
@@ -1154,9 +1154,10 @@ bool sidebuttons)
 {
 	m_default_val = 0;
 	m_num_minutes = 60;
-	m_col_header_use_format = false;
-	m_col_ary_str.Clear();
-	m_col_format_str = wxEmptyString;
+	m_grid_data = NULL;
+//	m_col_header_use_format = false;
+//	m_col_ary_str.Clear();
+//	m_col_format_str = wxEmptyString;
 	m_col_arystrvals.Clear();
 	m_minute_arystrvals.Clear();
 
@@ -1253,22 +1254,24 @@ bool sidebuttons)
 		SetSizer(v_sizer, false);
 	}
 
-	MatrixToGrid();
+//	MatrixToGrid();
 }
 
 
 void wxShadingFactorsCtrl::UpdateNumberColumns(size_t &new_cols)
 {
 	// resize and preserve existing data and fill new data with default.
-	m_data.resize_preserve(m_num_rows, new_cols, m_default_val);
-	MatrixToGrid();
+	m_data.resize_preserve(m_data.nrows(), new_cols, m_default_val);
+	SetData(m_data);
+//	MatrixToGrid();
 }
 
 void wxShadingFactorsCtrl::UpdateNumberRows(size_t &new_rows)
 {
 	// resize and preserve existing data and fill new data with default.
-	m_data.resize_preserve(new_rows, m_num_cols, m_default_val);
-	MatrixToGrid();
+	m_data.resize_preserve(new_rows, m_data.ncols(), m_default_val);
+	SetData(m_data);
+//	MatrixToGrid();
 }
 
 void wxShadingFactorsCtrl::UpdateNumberMinutes(size_t &new_timesteps)
@@ -1278,12 +1281,13 @@ void wxShadingFactorsCtrl::UpdateNumberMinutes(size_t &new_timesteps)
 	if ((new_timesteps > 0) && (new_timesteps <= 60))
 	{
 		size_t new_rows = 60 / new_timesteps * 8760;
-		m_data.resize_preserve(new_rows, m_num_cols, m_default_val);
-		MatrixToGrid();
+		m_data.resize_preserve(new_rows, m_data.ncols(), m_default_val);
+		SetData(m_data);
+//		MatrixToGrid();
 	}
 }
 
-
+/*
 void wxShadingFactorsCtrl::UpdateColumnHeaders()
 {
 	if (m_col_header_use_format)
@@ -1312,12 +1316,12 @@ void wxShadingFactorsCtrl::SetColLabelFormatString(const wxString &col_format_st
 	m_col_header_use_format = false;
 	UpdateColumnHeaders();
 }
-
+*/
 
 
 void wxShadingFactorsCtrl::OnChoiceCol(wxCommandEvent  &evt)
 {
-	if ((m_choice_col->GetSelection() != wxNOT_FOUND) && (wxAtoi(m_choice_col->GetString(m_choice_col->GetSelection())) != m_num_cols))
+	if ((m_choice_col->GetSelection() != wxNOT_FOUND) && (wxAtoi(m_choice_col->GetString(m_choice_col->GetSelection())) != m_data.ncols()))
 	{ 
 		size_t new_cols = wxAtoi(m_choice_col->GetString(m_choice_col->GetSelection()));
 		UpdateNumberColumns(new_cols);
@@ -1336,7 +1340,19 @@ void wxShadingFactorsCtrl::OnChoiceMinute(wxCommandEvent  &evt)
 void wxShadingFactorsCtrl::SetData(const matrix_t<float> &mat)
 {
 	m_data = mat;
-	MatrixToGrid();
+
+	if (m_grid_data) m_grid_data->SetMatrix(NULL);
+	m_grid->SetTable(NULL);
+
+	m_grid_data = new wxShadingFactorsTable(&m_data,m_default_val);
+	m_grid_data->SetAttrProvider(new wxExtGridCellAttrProvider);
+
+	m_grid->SetTable(m_grid_data, true);
+	m_grid->SetColumnWidth(0, 130);
+
+	m_grid->Layout();
+	m_grid->Refresh();
+//	MatrixToGrid();
 }
 
 void wxShadingFactorsCtrl::GetData(matrix_t<float> &mat)
@@ -1377,7 +1393,7 @@ void wxShadingFactorsCtrl::OnCellChange(wxGridEvent &evt)
 }
 
 
-
+/*
 void wxShadingFactorsCtrl::MatrixToGrid()
 {
 	int r, nr = m_data.nrows();
@@ -1396,7 +1412,7 @@ void wxShadingFactorsCtrl::MatrixToGrid()
 	if (m_num_cols > 1) // if not shading database then set to use
 		m_en_shading_db->SetValue(true);
 }
-
+*/
 
 void wxShadingFactorsCtrl::SetColCaption(const wxString &cap)
 {
@@ -1437,7 +1453,7 @@ void wxShadingFactorsCtrl::SetNumCols(size_t &cols)
 		m_choice_col->SetSelection(ndx);
 	UpdateNumberColumns(cols);
 }
-
+/*
 void wxShadingFactorsCtrl::SetNumRows(size_t &rows)
 {
 	UpdateNumberRows(rows);
@@ -1460,7 +1476,7 @@ wxArrayString wxShadingFactorsCtrl::GetColLabels()
 }
 
 void  wxShadingFactorsCtrl::UpdateRowLabels()
-{ // can do with GridTableBase like AFFloatArrayTable in widgets.cpp
+{ // can do with GridTableBase like wxShadingFactorsTable in widgets.cpp
 	size_t num_rows = m_grid->GetNumberRows();
 	if (num_rows > 8760) // otherwise use default row numbering
 	{
@@ -1485,7 +1501,7 @@ void  wxShadingFactorsCtrl::UpdateRowLabels()
 			m_grid->SetRowLabelValue(row, wxString::Format("%d", row+1));
 	}
 }
-
+*/
 void wxShadingFactorsCtrl::SetEnableShadingDB(bool &en_shading_db)
 {
 	m_en_shading_db->SetValue(en_shading_db);
@@ -1495,3 +1511,258 @@ bool wxShadingFactorsCtrl::GetEnableShadingDB()
 {
 	return m_en_shading_db->GetValue();
 }
+
+
+wxShadingFactorsTable::wxShadingFactorsTable(matrix_t<float> *da, float _def_val, const wxString &_label)
+{
+	label = _label;
+	d_mat = da;
+	def_val = _def_val;
+}
+
+void wxShadingFactorsTable::SetMatrix(matrix_t<float> *da)
+{
+	d_mat = da;
+}
+
+int wxShadingFactorsTable::GetNumberRows()
+{
+	if (!d_mat) return 0;
+
+	return (int)d_mat->nrows();
+}
+
+int wxShadingFactorsTable::GetNumberCols()
+{
+	if (!d_mat) return 0;
+
+	return (int)d_mat->ncols();
+}
+
+bool wxShadingFactorsTable::IsEmptyCell(int row, int col)
+{
+	return false;
+}
+
+wxString wxShadingFactorsTable::GetValue(int row, int col)
+{
+	if (d_mat && row >= 0 && row < d_mat->nrows() && col >= 0 && col < d_mat->ncols())
+		return wxString::Format("%g", d_mat->at(row, col));
+	else
+		return "-0.0";
+}
+
+void wxShadingFactorsTable::SetValue(int row, int col, const wxString& value)
+{
+	if (d_mat && row >= 0 && row < d_mat->nrows() && col >= 0 && col < d_mat->ncols())
+		d_mat->at(row, col) = wxAtof(value);
+}
+
+wxString wxShadingFactorsTable::GetRowLabelValue(int row)
+{
+	if (d_mat )
+	{
+		int nmult = d_mat->nrows() / 8760;
+		if (nmult != 0)
+		{
+			double step = 1.0 / ((double)nmult);
+			double tm = step*(row + 1);
+			double frac = tm - ((double)(int)tm);
+			if (frac == 0.0)
+				return wxString::Format("%lg", tm);
+			else
+				return wxString::Format("   .%lg", frac * 60);
+		}
+	}
+
+	return wxString::Format("%d", row + 1);
+}
+
+wxString wxShadingFactorsTable::GetColLabelValue(int col)
+{
+	wxString col_label = label.IsEmpty() ? "Value" : label;
+	if (d_mat->ncols() > 1)
+		col_label = wxString::Format("String %d", col + 1);
+	return col_label;
+}
+
+wxString wxShadingFactorsTable::GetTypeName(int row, int col)
+{
+	return wxGRID_VALUE_STRING;
+}
+
+bool wxShadingFactorsTable::CanGetValueAs(int row, int col, const wxString& typeName)
+{
+	return typeName == wxGRID_VALUE_STRING;
+}
+
+bool wxShadingFactorsTable::CanSetValueAs(int row, int col, const wxString& typeName)
+{
+	return typeName == wxGRID_VALUE_STRING;
+}
+
+bool wxShadingFactorsTable::AppendRows(size_t nrows)
+{
+	if (d_mat && nrows > 0)
+	{
+		size_t new_rows = d_mat->nrows() + nrows;
+		d_mat->resize_preserve(new_rows, d_mat->ncols(), def_val);
+
+		if (GetView())
+		{
+			wxGridTableMessage msg(this,
+				wxGRIDTABLE_NOTIFY_ROWS_APPENDED,
+				nrows);
+
+			GetView()->ProcessTableMessage(msg);
+		}
+	}
+
+	return true;
+}
+
+bool wxShadingFactorsTable::InsertRows(size_t pos, size_t nrows)
+{
+
+	if (!d_mat) return true;
+
+	if (pos < 0) pos = 0;
+	if (pos > d_mat->nrows()) pos = d_mat->nrows();
+
+	size_t new_rows = d_mat->nrows() + nrows;
+	matrix_t<float> old(*d_mat);
+	d_mat->resize_fill(new_rows, d_mat->ncols(), def_val);
+
+	for (size_t r = 0; r < pos && r < old.nrows(); r++)
+		for (size_t c = 0; c < old.ncols(); c++)
+			d_mat->at(r, c) = old(r, c);
+
+	// r-nrows>=0 since pos>=0
+	for (size_t r = pos + nrows; r < new_rows && r - nrows < old.nrows(); r++)
+		for (size_t c = 0; c < old.ncols(); c++)
+			d_mat->at(r, c) = old(r - nrows, c);
+
+	if (GetView())
+	{
+		wxGridTableMessage msg(this,
+			wxGRIDTABLE_NOTIFY_ROWS_INSERTED,
+			pos,
+			nrows);
+
+		GetView()->ProcessTableMessage(msg);
+	}
+
+	return true;
+}
+
+bool wxShadingFactorsTable::DeleteRows(size_t pos, size_t nrows)
+{
+	if (!d_mat) return true;
+
+	if (nrows > d_mat->nrows() - pos)
+		nrows = d_mat->nrows() - pos;
+
+	size_t new_rows = d_mat->nrows() - nrows;
+	matrix_t<float> old(*d_mat);
+	d_mat->resize_preserve(new_rows, d_mat->ncols(), def_val);
+
+	for (size_t r = pos; r < new_rows && r + nrows < old.nrows(); r++)
+		for (size_t c = 0; c < old.ncols(); c++)
+			d_mat->at(r, c) = old(r + nrows, c);
+
+	if (GetView())
+	{
+		wxGridTableMessage msg(this,
+			wxGRIDTABLE_NOTIFY_ROWS_DELETED,
+			pos,
+			nrows);
+
+		GetView()->ProcessTableMessage(msg);
+	}
+
+	return true;
+}
+
+bool wxShadingFactorsTable::AppendCols(size_t ncols)
+{
+	if (d_mat && ncols > 0)
+	{
+		size_t new_cols = d_mat->ncols() + ncols;
+		d_mat->resize_preserve(d_mat->nrows(), new_cols, def_val);
+
+		if (GetView())
+		{
+			wxGridTableMessage msg(this,
+				wxGRIDTABLE_NOTIFY_COLS_APPENDED,
+				ncols);
+
+			GetView()->ProcessTableMessage(msg);
+		}
+	}
+
+	return true;
+}
+
+bool wxShadingFactorsTable::InsertCols(size_t pos, size_t ncols)
+{
+
+	if (!d_mat) return true;
+
+	if (pos < 0) pos = 0;
+	if (pos > d_mat->ncols()) pos = d_mat->ncols();
+
+	size_t new_cols = d_mat->ncols() + ncols;
+	matrix_t<float> old(*d_mat);
+	d_mat->resize_fill(d_mat->nrows(), new_cols, def_val);
+
+	for (size_t r = 0; r < old.nrows(); r++)
+		for (size_t c = 0; c < pos && c < old.ncols(); c++)
+			d_mat->at(r, c) = old(r, c);
+
+	// r-ncols>=0 since pos>=0
+	for (size_t r = 0; r < old.nrows(); r++)
+		for (size_t c = pos + ncols; c < new_cols && r - ncols < old.ncols(); c++)
+			d_mat->at(r, c) = old(r, c - ncols);
+
+	if (GetView())
+	{
+		wxGridTableMessage msg(this,
+			wxGRIDTABLE_NOTIFY_COLS_INSERTED,
+			pos,
+			ncols);
+
+		GetView()->ProcessTableMessage(msg);
+	}
+
+	return true;
+}
+
+bool wxShadingFactorsTable::DeleteCols(size_t pos, size_t ncols)
+{
+	if (!d_mat) return true;
+
+	if (ncols > d_mat->ncols() - pos)
+		ncols = d_mat->ncols() - pos;
+
+	size_t new_cols = d_mat->ncols() - ncols;
+	matrix_t<float> old(*d_mat);
+	d_mat->resize_preserve(d_mat->nrows(), new_cols, def_val);
+
+	for (size_t r = pos; r < old.nrows(); r++)
+		for (size_t c = pos; c < new_cols && c + ncols < old.nrows(); c++)
+			d_mat->at(r, c) = old(r, c + ncols);
+
+	if (GetView())
+	{
+		wxGridTableMessage msg(this,
+			wxGRIDTABLE_NOTIFY_COLS_DELETED,
+			pos,
+			ncols);
+
+		GetView()->ProcessTableMessage(msg);
+	}
+
+	return true;
+}
+
+
