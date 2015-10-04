@@ -68,6 +68,39 @@ private:
 };
 
 
+
+
+
+// based on AFFloatTable
+class wxShadingFactorsTable : public wxGridTableBase
+{
+	matrix_t<float> *d_mat;
+	wxString label;
+	float def_val;
+
+public:
+	wxShadingFactorsTable(matrix_t<float> *da, float _def_val = 0, const wxString &_label = "");
+	void SetMatrix(matrix_t<float> *da);
+	virtual int GetNumberRows();
+	virtual int GetNumberCols();
+	virtual bool IsEmptyCell(int row, int col);
+	virtual wxString GetValue(int row, int col);
+	virtual void SetValue(int row, int col, const wxString& value);
+	virtual wxString GetRowLabelValue(int row);
+	virtual wxString GetColLabelValue(int col);
+	virtual wxString GetTypeName(int row, int col);
+	virtual bool CanGetValueAs(int row, int col, const wxString& typeName);
+	virtual bool CanSetValueAs(int row, int col, const wxString& typeName);
+	virtual bool AppendRows(size_t nrows);
+	virtual bool InsertRows(size_t pos, size_t nrows);
+	virtual bool DeleteRows(size_t pos, size_t nrows);
+	virtual bool AppendCols(size_t ncols);
+	virtual bool InsertCols(size_t pos, size_t ncols);
+	virtual bool DeleteCols(size_t pos, size_t ncols);
+
+};
+
+
 /* custom control for shading fractions for each parallel string (up to 8) in each subarray (up to 4)  can move to widgets or wex if necessary */
 BEGIN_DECLARE_EVENT_TYPES()
 DECLARE_EVENT_TYPE(wxEVT_wxShadingFactorsCtrl_CHANGE, 0)
@@ -96,23 +129,23 @@ public:
 	wxString GetMinuteCaption();
 
 
-	void ShowCols(bool b);
-	bool ShowCols();
+//	void ShowCols(bool b);
+//	bool ShowCols();
 
-	void ShowColLabels(bool b);
-	bool ShowColLabels();
+//	void ShowColLabels(bool b);
+//	bool ShowColLabels();
 
-	void SetColLabels(const wxArrayString &colLabels);
-	wxArrayString GetColLabels();
+//	void SetColLabels(const wxArrayString &colLabels);
+//	wxArrayString GetColLabels();
 
-	void SetColLabelFormatString(const wxString &col_format_str);
-	wxString GetColLabelFormatString() { return m_col_format_str; }
+//	void SetColLabelFormatString(const wxString &col_format_str);
+	//wxString GetColLabelFormatString() { return m_col_format_str; }
 
-	size_t GetNumCols() { return m_num_cols; }
+	size_t GetNumCols() { return m_data.ncols(); }
 	void SetNumCols(size_t &cols);
 
-	size_t GetNumRows() { return m_num_rows; }
-	void SetNumRows(size_t &rows);
+//	size_t GetNumRows() { return m_num_rows; }
+//	void SetNumRows(size_t &rows);
 
 	size_t GetNumMinutes() { return m_num_minutes; }
 	void SetNumMinutes(size_t &minutes);
@@ -127,15 +160,16 @@ private:
 	void UpdateNumberColumns(size_t &new_cols);
 	void UpdateNumberRows(size_t &new_rows);
 	void UpdateNumberMinutes(size_t &new_timesteps);
-	void UpdateColumnHeaders();
-	void UpdateRowLabels();
+//	void UpdateColumnHeaders();
+//	void UpdateRowLabels();
 
-	bool m_col_header_use_format;
-	wxArrayString m_col_ary_str;
-	wxString m_col_format_str;
+//	bool m_col_header_use_format;
+//	wxArrayString m_col_ary_str;
+//	wxString m_col_format_str;
 	float m_default_val;
 	matrix_t<float> m_data;
 	wxExtGridCtrl *m_grid;
+	wxShadingFactorsTable *m_grid_data;
 	wxStaticText *m_caption_col;
 	wxChoice *m_choice_col;
 	wxStaticText *m_caption_timestep;
@@ -145,8 +179,8 @@ private:
 	wxArrayString m_minute_arystrvals;
 	wxArrayString m_col_arystrvals;
 
-	size_t m_num_cols;
-	size_t m_num_rows;
+//	size_t m_num_cols;
+//	size_t m_num_rows;
 	size_t m_num_minutes;
 
 	void OnCellChange(wxGridEvent &evt);
@@ -155,12 +189,10 @@ private:
 	void OnChoiceMinute(wxCommandEvent  &evt);
 
 
-	void MatrixToGrid();
+//	void MatrixToGrid();
 
 	DECLARE_EVENT_TABLE();
 };
-
-
 
 
 
