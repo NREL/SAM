@@ -1549,6 +1549,28 @@ static void fcall_outln( lk::invoke_t &cxt )
 	so->RenderText( dat );
 }
 
+static void fcall_image( lk::invoke_t &cxt )
+{
+	LK_DOC( "image", "Output an image from a file to the page render.", "(string:file, [number:width, number:height]):none");
+	SamReportScriptObject *so = (SamReportScriptObject*)cxt.user_data();
+	if (!so) return;
+
+	float width = -1, height = -1;
+
+	if ( cxt.arg_count() > 1 ) width = (float) cxt.arg(1).as_number();
+	if ( cxt.arg_count() > 2 ) height = (float) cxt.arg(2).as_number();
+
+	wxString file( cxt.arg(0).as_string() );
+
+	wxImage image;
+	if( image.LoadFile( file ) )
+	{
+		if ( width < 0 ) width = image.GetWidth() / 72.0f;
+		if ( height < 0 ) height = image.GetHeight() / 72.0f;
+		so->RenderImage( image, width, height );
+	}
+}
+
 static void fcall_table( lk::invoke_t &cxt )
 {
 	LK_DOC("table", "Render a table from the given 2x2 matrix of cells", "(matrix:cell data):none");
@@ -1972,7 +1994,7 @@ enum { IDT_SCRIPT=1495, IDT_BOLD, IDT_ITALIC, IDT_FACE, IDT_SIZE,
 
 static lk::fcall_t report_script_funcs[] = {
 	fcall_out, fcall_outln, fcall_style, fcall_move_to, fcall_line_to, fcall_cursor,
-	fcall_measure, fcall_table, fcall_graph, fcall_var, fcall_technology, fcall_financing,
+	fcall_measure, fcall_image, fcall_table, fcall_graph, fcall_var, fcall_technology, fcall_financing,
 	0 };
 
 class SamScriptObjectEditDialog : public wxDialog
@@ -2348,6 +2370,13 @@ void SamReportScriptObject::RenderText( const wxString &str )
 			m_curYPos += m_curLineHeight;
 		}
 	}
+}
+
+void SamReportScriptObject::RenderImage( const wxImage &img, float width, float height )
+{
+	if ( !m_curDevice ) return;
+	m_curDevice->Image( img, m_curXPos, m_curYPos, width, height );
+	m_curXPos += width;
 }
 
 struct cellgeom
