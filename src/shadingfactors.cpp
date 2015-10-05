@@ -66,7 +66,7 @@ void ShadingInputData::save( std::vector<float> &data )
 		for (size_t c = 0; c < timestep.ncols(); c++)
 			data.push_back(timestep.at(r, c));
 
-	data.push_back((en_shading_db && (timestep.nrows() % 8760 == 0)) ? 1.0 : 0.0);
+	data.push_back(((string_option >= 0) && (timestep.nrows() % 8760 == 0)) ? string_option : -1);
 
 	data.push_back( data.size() + 1 ); // verification flag that size is consistent
 }
@@ -74,7 +74,8 @@ void ShadingInputData::save( std::vector<float> &data )
 void ShadingInputData::clear()
 {
 //	en_hourly = en_mxh = en_azal = en_diff = en_timestep = false;
-	en_mxh = en_azal = en_diff = en_timestep = en_shading_db = false;
+//	en_mxh = en_azal = en_diff = en_timestep = en_shading_db = false;
+	en_mxh = en_azal = en_diff = en_timestep = false;
 
 	timestep.resize(8760, 0);
 
@@ -90,6 +91,7 @@ void ShadingInputData::clear()
 		azal.at(r, 0) = r*10;
 	
 	diff = 0.0;
+	string_option = 0;
 }
 
 bool ShadingInputData::load( const std::vector<float> &data )
@@ -170,7 +172,8 @@ bool ShadingInputData::load( const std::vector<float> &data )
 			for (int c = 0; c<nc; c++)
 				timestep.at(r, c) = data[idx++];
 
-		en_shading_db = data[idx++] > 0 ? true : false;
+//		en_shading_db = data[idx++] > 0 ? true : false;
+		string_option = data[idx++];
 
 		int verify = data[idx++];
 
@@ -188,8 +191,10 @@ void ShadingInputData::write( VarValue *vv )
 	// Version 2 - should be upgraded in project upgrader
 	//	tab.Set( "en_hourly", VarValue( (bool)en_hourly ) );
 	//	tab.Set( "hourly", VarValue( hourly ) );
-	tab.Set("en_shading_db_lookup", VarValue(true));
-	tab.Set("shading_db_lookup", VarValue((bool)en_shading_db));
+//	tab.Set("en_shading_db_lookup", VarValue(true)); // to enable optional values
+//	tab.Set("shading_db_lookup", VarValue((bool)en_shading_db));
+	tab.Set("en_string_option", VarValue(true)); // to enable optional values
+	tab.Set("string_option", VarValue((int)string_option));
 	tab.Set("en_timestep", VarValue((bool)en_timestep));
 	tab.Set("timestep", VarValue(timestep));
 
@@ -210,7 +215,8 @@ bool ShadingInputData::read( VarValue *root )
 		// version 2 - should be upgraded in project upgrader
 		//if ( VarValue *vv = tab.Get( "en_hourly" ) ) en_hourly = vv->Boolean();
 		//if ( VarValue *vv = tab.Get("hourly") ) hourly = vv->Array();
-		if (VarValue *vv = tab.Get("shading_db_lookup")) en_shading_db = vv->Boolean();
+//		if (VarValue *vv = tab.Get("shading_db_lookup")) en_shading_db = vv->Boolean();
+		if (VarValue *vv = tab.Get("string_option")) string_option = vv->Integer();
 		if (VarValue *vv = tab.Get("en_timestep")) en_timestep = vv->Boolean();
 		if (VarValue *vv = tab.Get("timestep")) timestep = vv->Matrix();
 		if (VarValue *vv = tab.Get("en_mxh")) en_mxh = vv->Boolean();
@@ -470,8 +476,9 @@ public:
 				nminutes /= (sh.timestep.nrows() / 8760);
 			m_timestep->SetNumMinutes(nminutes);
 			stat += "Updated timestep beam shading losses.\n";
-			bool en_shade_db = (sh.en_shading_db == 1);
-			m_timestep->SetEnableShadingDB(en_shade_db);
+//			bool en_shade_db = (sh.en_shading_db == 1);
+			int string_option = sh.string_option;
+			m_timestep->SetStringOption(string_option);
 		}
 
 		if ( all || sh.en_mxh )
@@ -508,7 +515,8 @@ public:
 		sh.en_timestep = m_enableTimestep->IsChecked();
 		m_timestep->GetData(sh.timestep);
 
-		sh.en_shading_db = m_timestep->GetEnableShadingDB();
+//		sh.en_shading_db = m_timestep->GetEnableShadingDB();
+		sh.string_option = m_timestep->GetStringOption();
 
 		sh.en_mxh = m_enableMxH->IsChecked();
 		sh.mxh.copy( m_mxh->GetData() );
@@ -1137,7 +1145,7 @@ bool ImportSolPathMonthByHour( ShadingInputData &dat, wxWindow *parent )
 
 DEFINE_EVENT_TYPE(wxEVT_wxShadingFactorsCtrl_CHANGE)
 
-enum { ISFC_CHOICECOL = wxID_HIGHEST + 857, ISFC_CHOICEMINUTE, ISFC_GRID };
+enum { ISFC_CHOICECOL = wxID_HIGHEST + 857, ISFC_CHOICEMINUTE, ISFC_CHOICESTRING, ISFC_GRID };
 
 BEGIN_EVENT_TABLE(wxShadingFactorsCtrl, wxPanel)
 EVT_GRID_CMD_CELL_CHANGE(ISFC_GRID, wxShadingFactorsCtrl::OnCellChange)
@@ -1160,6 +1168,7 @@ bool sidebuttons)
 //	m_col_format_str = wxEmptyString;
 	m_col_arystrvals.Clear();
 	m_minute_arystrvals.Clear();
+	m_string_arystrvals.Clear();
 
 	m_grid = new wxExtGridCtrl(this, ISFC_GRID);
 	m_grid->CreateGrid(8760, 8);
@@ -1171,7 +1180,15 @@ bool sidebuttons)
 	m_grid->DisableDragGridSize();
 	m_grid->SetRowLabelAlignment(wxALIGN_LEFT, wxALIGN_CENTER);
 
-	m_en_shading_db = new wxCheckBox(this, wxID_ANY, "Use shading database lookup");
+//	m_en_shading_db = new wxCheckBox(this, wxID_ANY, "Use shading database lookup");
+
+	m_string_arystrvals.push_back("Shading database lookup");
+	m_string_arystrvals.push_back("Average of string values");
+	m_string_arystrvals.push_back("Maximum of string values");
+	m_string_arystrvals.push_back("Minimum of string values");
+	m_choice_string_option = new wxChoice(this, ISFC_CHOICESTRING, wxDefaultPosition, wxDefaultSize, m_string_arystrvals);
+	m_choice_string_option->SetBackgroundColour(*wxWHITE);
+
 
 	m_caption_col = new wxStaticText(this, wxID_ANY, "");
 	m_caption_col->SetFont(*wxNORMAL_FONT);
@@ -1204,7 +1221,8 @@ bool sidebuttons)
 	{
 		m_caption_col->Show(false);
 		m_choice_col->Show(false);
-		m_en_shading_db->Show(false);
+//		m_en_shading_db->Show(false);
+		m_choice_string_option->Show(false);
 	}
 
 
@@ -1220,7 +1238,8 @@ bool sidebuttons)
 			v_tb_sizer->Add(m_caption_col, 0, wxALL | wxEXPAND, 3);
 			v_tb_sizer->Add(m_choice_col, 0, wxALL | wxEXPAND, 3);
 			v_tb_sizer->AddSpacer(5);
-			v_tb_sizer->Add(m_en_shading_db, 0, wxALL | wxEXPAND, 3);
+//			v_tb_sizer->Add(m_en_shading_db, 0, wxALL | wxEXPAND, 3);
+			v_tb_sizer->Add(m_choice_string_option, 0, wxALL | wxEXPAND, 3);
 			v_tb_sizer->AddStretchSpacer();
 		}
 	
@@ -1243,7 +1262,8 @@ bool sidebuttons)
 			h_tb_sizer->Add(m_caption_col, 0, wxALL | wxEXPAND | wxALIGN_CENTER_VERTICAL, 3);
 			h_tb_sizer->Add(m_choice_col, 0, wxALL | wxEXPAND | wxALIGN_CENTER_VERTICAL, 3);
 			h_tb_sizer->AddSpacer(5);
-			h_tb_sizer->Add(m_en_shading_db, 0, wxALL | wxEXPAND | wxALIGN_CENTER_VERTICAL, 3);
+//			h_tb_sizer->Add(m_en_shading_db, 0, wxALL | wxEXPAND | wxALIGN_CENTER_VERTICAL, 3);
+			h_tb_sizer->Add(m_choice_string_option, 0, wxALL | wxEXPAND | wxALIGN_CENTER_VERTICAL, 3);
 			h_tb_sizer->AddStretchSpacer();
 		}
 
@@ -1501,7 +1521,7 @@ void  wxShadingFactorsCtrl::UpdateRowLabels()
 			m_grid->SetRowLabelValue(row, wxString::Format("%d", row+1));
 	}
 }
-*/
+
 void wxShadingFactorsCtrl::SetEnableShadingDB(bool &en_shading_db)
 {
 	m_en_shading_db->SetValue(en_shading_db);
@@ -1510,6 +1530,20 @@ void wxShadingFactorsCtrl::SetEnableShadingDB(bool &en_shading_db)
 bool wxShadingFactorsCtrl::GetEnableShadingDB()
 {
 	return m_en_shading_db->GetValue();
+}
+*/
+void wxShadingFactorsCtrl::SetStringOption(int &string_option)
+{
+	if (string_option >= 0 && string_option < (int)m_string_arystrvals.Count())
+		m_choice_string_option->SetSelection(string_option);
+}
+
+int wxShadingFactorsCtrl::GetStringOption()
+{
+	if (m_choice_string_option->IsShown())
+		return m_choice_string_option->GetSelection();
+	else
+		return -1; // no string options
 }
 
 
