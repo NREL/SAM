@@ -25,7 +25,9 @@ struct ShadingInputData
 //	std::vector<float> hourly;
 
 	/* version 3 */
-	bool en_shading_db;
+	//bool en_shading_db;
+	// for more than one string and PV only
+	int string_option; // 0=shading db,1=average,2=max,3=min
 	bool en_timestep;
 	matrix_t<float> timestep;
 
@@ -129,23 +131,9 @@ public:
 	wxString GetMinuteCaption();
 
 
-//	void ShowCols(bool b);
-//	bool ShowCols();
-
-//	void ShowColLabels(bool b);
-//	bool ShowColLabels();
-
-//	void SetColLabels(const wxArrayString &colLabels);
-//	wxArrayString GetColLabels();
-
-//	void SetColLabelFormatString(const wxString &col_format_str);
-	//wxString GetColLabelFormatString() { return m_col_format_str; }
-
 	size_t GetNumCols() { return m_data.ncols(); }
 	void SetNumCols(size_t &cols);
 
-//	size_t GetNumRows() { return m_num_rows; }
-//	void SetNumRows(size_t &rows);
 
 	size_t GetNumMinutes() { return m_num_minutes; }
 	void SetNumMinutes(size_t &minutes);
@@ -153,19 +141,15 @@ public:
 	void SetDefaultValue(float &default_val) { m_default_val=default_val; }
 	float GetDefaultValue() { return m_default_val; }
 
-	void SetEnableShadingDB(bool &en_shading_db);
-	bool GetEnableShadingDB();
+//	void SetEnableShadingDB(bool &en_shading_db);
+//	bool GetEnableShadingDB();
+	void SetStringOption(int &string_option);
+	int GetStringOption();
 
 private:
 	void UpdateNumberColumns(size_t &new_cols);
 	void UpdateNumberRows(size_t &new_rows);
 	void UpdateNumberMinutes(size_t &new_timesteps);
-//	void UpdateColumnHeaders();
-//	void UpdateRowLabels();
-
-//	bool m_col_header_use_format;
-//	wxArrayString m_col_ary_str;
-//	wxString m_col_format_str;
 	float m_default_val;
 	matrix_t<float> m_data;
 	wxExtGridCtrl *m_grid;
@@ -174,13 +158,13 @@ private:
 	wxChoice *m_choice_col;
 	wxStaticText *m_caption_timestep;
 	wxChoice *m_choice_timestep;
-	wxCheckBox *m_en_shading_db;
+//	wxCheckBox *m_en_shading_db;
+	wxChoice *m_choice_string_option;
 
 	wxArrayString m_minute_arystrvals;
 	wxArrayString m_col_arystrvals;
+	wxArrayString m_string_arystrvals;
 
-//	size_t m_num_cols;
-//	size_t m_num_rows;
 	size_t m_num_minutes;
 
 	void OnCellChange(wxGridEvent &evt);
@@ -188,8 +172,6 @@ private:
 	void OnChoiceCol(wxCommandEvent  &evt);
 	void OnChoiceMinute(wxCommandEvent  &evt);
 
-
-//	void MatrixToGrid();
 
 	DECLARE_EVENT_TABLE();
 };
