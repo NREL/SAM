@@ -56,6 +56,10 @@ void EqnDatabase::ScanParseTree( lk::node_t *root, wxArrayString *inputs, wxArra
 
 		ScanParseTree(  n->right, inputs, outputs );
 	}
+	else if ( lk::ctlstmt_t *n = dynamic_cast<lk::ctlstmt_t*>( root ) )
+	{
+		ScanParseTree( n->rexpr, inputs, outputs );
+	}
 	else if ( lk::iden_t *n = dynamic_cast<lk::iden_t*>( root ) )
 	{
 		if ( n->special && !in_assign_lhs && inputs->Index( n->name ) == wxNOT_FOUND )
