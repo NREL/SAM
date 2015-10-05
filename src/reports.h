@@ -251,6 +251,7 @@ public:
 	void Measure( const wxString &s, float *w, float *h );
 
 	void RenderText( const wxString &s );
+	void RenderImage( const wxImage &img, float width, float height );
 	void RenderTable( const matrix_t<wxString> &tab );
 	void RenderBarGraph( const std::vector<double> &values, const wxArrayString & xlabels, const wxString &xlabel,
 		const wxString &ylabel, const wxString &title, bool show_values, float xsize, float ysize,
