@@ -477,7 +477,7 @@ void fcall_widgetpos( lk::invoke_t &cxt )
 		wxUIObject *obj = cw->FindActiveObject( cxt.arg(0).as_string(), &aip );
 		if (!obj || !aip) return;
 
-		wxRect rct( obj->GetGeometry() );
+		wxRect rct( wxScaleRect(obj->GetGeometry(), wxGetScreenHDScale() ) );
 		wxPoint pos = aip->ClientToScreen( wxPoint(rct.x, rct.y) );
 		
 		cxt.result().empty_vector();
