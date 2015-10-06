@@ -188,6 +188,7 @@ struct InputPageGroup
 	wxString HelpContext;
 	bool OrganizeAsExclusivePages;
 	wxString ExclusivePageVar;
+	std::vector< PageInfo > ExclusiveHeaderPages;
 };
 
 	
@@ -233,8 +234,11 @@ public:
 	ConfigInfo *CurrentConfig() { return m_curConfig; }
 	
 	void SetModules( const wxArrayString &list );
-	void AddInputPageGroup( const std::vector< std::vector<PageInfo> > &pages, const wxString &sidebar = wxEmptyString,
-		const wxString &hlpcxt = wxEmptyString, const wxString &exclvar = wxEmptyString );
+	void AddInputPageGroup( const std::vector< std::vector<PageInfo> > &pages, 
+		const wxString &sidebar,
+		const wxString &hlpcxt,
+		const wxString &exclvar,
+		const std::vector<PageInfo> &exclhdr_pages );
 
 	wxArrayString GetTechnologies();
 	wxArrayString GetFinancingForTech(const wxString &tech);
@@ -245,7 +249,7 @@ public:
 	EqnFastLookup &GetEquations( const wxString &tech, const wxString &financing );
 	InputPageDataHash &GetInputPages( const wxString &tech, const wxString &financing );
 */
-	
+	void CachePagesInConfiguration( std::vector<PageInfo> &Pages, ConfigInfo *ci );
 	void RebuildCaches();
 
 	ConfigInfo *Find( const wxString &t, const wxString &f );

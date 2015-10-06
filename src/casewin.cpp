@@ -797,59 +797,11 @@ bool CaseWindow::SwitchToPage( const wxString &name )
 	return true;
 }
 
-void CaseWindow::SetupActivePage()
+void CaseWindow::LoadPageList( const std::vector<PageInfo> &list, bool header )
 {
-	m_exclPanel->Show( false );
-
-	if ( !m_currentGroup ) return;
-	
-	std::vector<PageInfo> *active_pages = 0;
-	
-	if ( m_currentGroup->Pages.size() > 1 && !m_currentGroup->ExclusivePageVar.IsEmpty() )
+	for( size_t ii=0;ii<list.size();ii++ )
 	{
-		size_t excl_idx = 9999;
-		VarValue *vv = m_case->Values().Get( m_currentGroup->ExclusivePageVar );
-		if ( !vv )
-		{
-			wxMessageBox( "could not locate exclusive page variable " + m_currentGroup->ExclusivePageVar );
-			return;
-		}
-		else
-			excl_idx = vv->Integer();
-
-		if ( excl_idx < m_currentGroup->Pages.size() 
-			&& m_currentGroup->Pages[excl_idx].size() > 0 )
-		{
-			//m_exclPageLabel->SetLabel( m_currentGroup->Pages[excl_idx][0].Caption );
-			m_exclPageButton->SetLabel( m_currentGroup->Pages[excl_idx][0].Caption );
-			m_exclPanel->Layout();
-			m_exclPanel->Show( true );
-			active_pages = &( m_currentGroup->Pages[excl_idx] );
-		}
-		else
-		{
-			wxMessageBox("Exclusive page variable '" + m_currentGroup->ExclusivePageVar 
-				+ wxString::Format("' has invalid value: %d.  Only %d input pages exist.", 
-					(int)excl_idx, (int)m_currentGroup->Pages.size() ) );
-		}
-	}
-	else if ( m_currentGroup->Pages.size() == 1 )
-	{
-		active_pages = &( m_currentGroup->Pages[0] );
-	}
-	else
-	{
-		wxMessageBox( "ui engine error: invalid page configuration on " + m_currentGroup->SideBarLabel );
-		return;
-	}
-	
-	// setup active display states
-
-	if ( !active_pages ) return;
-
-	for( size_t ii=0;ii<active_pages->size();ii++ )
-	{
-		PageInfo &pi = (*active_pages)[ii];
+		const PageInfo &pi = list[ii];
 
 		PageDisplayState *pds = new PageDisplayState;
 
@@ -864,6 +816,7 @@ void CaseWindow::SetupActivePage()
 			wxMessageBox( "error locating form data " + pi.Name );
 
 		pds->Collapsible = pi.Collapsible;
+		pds->HeaderPage = header;
 
 		bool load_page = true;
 
@@ -888,6 +841,59 @@ void CaseWindow::SetupActivePage()
 		}
 
 	}
+}
+
+void CaseWindow::SetupActivePage()
+{
+	m_exclPanel->Show( false );
+
+	if ( !m_currentGroup ) return;
+	
+	std::vector<PageInfo> *active_headers = 0;
+	std::vector<PageInfo> *active_pages = 0;
+	
+	if ( m_currentGroup->Pages.size() > 1 && !m_currentGroup->ExclusivePageVar.IsEmpty() )
+	{
+		size_t excl_idx = 9999;
+		VarValue *vv = m_case->Values().Get( m_currentGroup->ExclusivePageVar );
+		if ( !vv )
+		{
+			wxMessageBox( "could not locate exclusive page variable " + m_currentGroup->ExclusivePageVar );
+			return;
+		}
+		else
+			excl_idx = vv->Integer();
+
+		if ( excl_idx < m_currentGroup->Pages.size() 
+			&& m_currentGroup->Pages[excl_idx].size() > 0 )
+		{
+			//m_exclPageLabel->SetLabel( m_currentGroup->Pages[excl_idx][0].Caption );
+			m_exclPageButton->SetLabel( m_currentGroup->Pages[excl_idx][0].Caption );
+			m_exclPanel->Layout();
+			m_exclPanel->Show( true );
+			active_pages = &( m_currentGroup->Pages[excl_idx] );
+			active_headers = &( m_currentGroup->ExclusiveHeaderPages );
+		}
+		else
+		{
+			wxMessageBox("Exclusive page variable '" + m_currentGroup->ExclusivePageVar 
+				+ wxString::Format("' has invalid value: %d.  Only %d input pages exist.", 
+					(int)excl_idx, (int)m_currentGroup->Pages.size() ) );
+		}
+	}
+	else if ( m_currentGroup->Pages.size() == 1 )
+	{
+		active_pages = &( m_currentGroup->Pages[0] );
+	}
+	else
+	{
+		wxMessageBox( "ui engine error: invalid page configuration on " + m_currentGroup->SideBarLabel );
+		return;
+	}
+	
+	// setup active display states	
+	if ( active_headers ) LoadPageList( *active_headers, true );
+	if ( active_pages ) LoadPageList( *active_pages, false );
 
 	LayoutPage();
 
@@ -953,6 +959,18 @@ void CaseWindow::LayoutPage()
 	m_inputPageScrollWin->SetScrollRate(15,15);
 }
 
+void CaseWindow::UpdatePageListForConfiguration( const std::vector<PageInfo> &pages, ConfigInfo *cfg )
+{
+	for (size_t j=0;j<pages.size();j++ )
+	{
+		InputPageDataHash::iterator it = cfg->InputPages.find( pages[j].Name );
+		if ( it != cfg->InputPages.end() )
+			m_forms.Add( pages[j].Name, it->second->Form().Duplicate() );
+		else
+			wxMessageBox("Could not locate form data for " + pages[j].Name );			
+	}
+}
+
 void CaseWindow::UpdateConfiguration()
 {
 	DetachCurrentInputPage();
@@ -982,17 +1000,9 @@ void CaseWindow::UpdateConfiguration()
 		InputPageGroup *group = m_pageGroups[i];
 
 		for( size_t kk=0;kk<group->Pages.size();kk++ )
-		{
-			std::vector<PageInfo> &pages = group->Pages[kk];
-			for (size_t j=0;j<pages.size();j++ )
-			{
-				InputPageDataHash::iterator it = cfg->InputPages.find( pages[j].Name );
-				if ( it != cfg->InputPages.end() )
-					m_forms.Add( pages[j].Name, it->second->Form().Duplicate() );
-				else
-					wxMessageBox("Could not locate form data for " + pages[j].Name );			
-			}
-		}
+			UpdatePageListForConfiguration( group->Pages[kk], cfg );
+
+		UpdatePageListForConfiguration( group->ExclusiveHeaderPages, cfg );
 
 		m_inputPageList->Add( m_pageGroups[i]->SideBarLabel, i == m_pageGroups.size()-1, m_pageGroups[i]->HelpContext );
 	}
