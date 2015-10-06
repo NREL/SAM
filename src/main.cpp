@@ -1426,7 +1426,8 @@ void ConfigDatabase::SetModules( const wxArrayString &list )
 }
 
 void ConfigDatabase::AddInputPageGroup( const std::vector< std::vector<PageInfo> > &pages, const wxString &sidebar, 
-	const wxString &hlpcxt, const wxString &exclvar )
+	const wxString &hlpcxt, const wxString &exclvar,
+	const std::vector<PageInfo> &exclhdr_pages )
 {
 	if ( m_curConfig == 0 ) return;
 
@@ -1436,8 +1437,56 @@ void ConfigDatabase::AddInputPageGroup( const std::vector< std::vector<PageInfo>
 	ip->HelpContext = hlpcxt;
 	ip->OrganizeAsExclusivePages = !exclvar.IsEmpty();
 	ip->ExclusivePageVar = exclvar;
+	ip->ExclusiveHeaderPages = exclhdr_pages;
 
 	m_curConfig->InputPageGroups.push_back( ip );
+}
+
+void ConfigDatabase::CachePagesInConfiguration( std::vector<PageInfo> &Pages, ConfigInfo *ci )
+{
+	for( size_t i=0;i<Pages.size();i++ )
+	{
+		PageInfo &pi = Pages[i];
+		if ( InputPageData *ipd = SamApp::InputPages().Lookup( pi.Name ) )
+		{
+			ci->InputPages[ pi.Name ] = ipd;
+						
+			ci->Equations.AddDatabase( &ipd->Equations() );
+			ci->Equations.Add( ipd->Equations().GetEquations() );
+					
+			VarDatabase &vars = ipd->Variables();
+			for( VarDatabase::iterator it = vars.begin();
+				it != vars.end();
+				++it )
+			{
+				if ( !ci->Variables.Add( it->first, it->second ) )
+				{
+					wxMessageBox("Internal error in configuration.\n\n" + ci->Technology + ", " + ci->Financing + "   [ " + pi.Name + " ]\n\n"
+						"An error occured when attempting to instantiate variable: '" + it->first + "'\n"
+						"Duplicate variables within a configuration are not allowed.", "sam-engine", wxICON_ERROR|wxOK );
+				}
+			}
+
+			if ( pi.Collapsible && !pi.CollapsiblePageVar.IsEmpty() )
+			{
+				VarInfo *vv = ci->AutoVariables.Lookup( pi.CollapsiblePageVar );
+				if( vv == 0 )
+				{
+					vv = ci->AutoVariables.Create( pi.CollapsiblePageVar, VV_NUMBER,
+						"Current selection for " + pi.Caption );
+
+					vv->Flags |= VF_COLLAPSIBLE_PANE;
+					vv->DefaultValue.Set( pi.CollapsedByDefault ? 0 : 1 );
+				}
+				else
+					wxLogStatus( "AutoVariable error: collapsible page variable already exists in configuration: " + pi.CollapsiblePageVar );
+
+				ci->Variables.Add( pi.CollapsiblePageVar, vv );
+			}
+		}
+		else
+			wxLogStatus("could not find data for referenced input page: " + pi.Name );
+	}
 }
 
 void ConfigDatabase::RebuildCaches()
@@ -1457,55 +1506,7 @@ void ConfigDatabase::RebuildCaches()
 		{
 			InputPageGroup *igrp = *it1;
 			for( size_t k=0;k<igrp->Pages.size();k++ )
-			{
-				size_t nstack = igrp->Pages[k].size();
-				for( size_t l=0;l<nstack;l++ )
-				{
-					PageInfo &pi = igrp->Pages[k][l];
-					if ( InputPageData *ipd = SamApp::InputPages().Lookup( pi.Name ) )
-					{
-						ci->InputPages[ pi.Name ] = ipd;
-						
-						ci->Equations.AddDatabase( &ipd->Equations() );
-						ci->Equations.Add( ipd->Equations().GetEquations() );
-					
-						VarDatabase &vars = ipd->Variables();
-						for( VarDatabase::iterator it = vars.begin();
-							it != vars.end();
-							++it )
-						{
-							if ( !ci->Variables.Add( it->first, it->second ) )
-							{
-								wxMessageBox("Internal error in configuration.\n\n" + ci->Technology + ", " + ci->Financing + "   [ " + pi.Name + " ]\n\n"
-									"An error occured when attempting to instantiate variable: '" + it->first + "'\n"
-									"Duplicate variables within a configuration are not allowed.", "sam-engine", wxICON_ERROR|wxOK );
-							}
-
-						//	if ( EqnData *ed = ipd->Equations()..GetEquationData( it->first ))
-//								ci->Equations.Add( ed );
-						}
-
-						if ( pi.Collapsible && !pi.CollapsiblePageVar.IsEmpty() )
-						{
-							VarInfo *vv = ci->AutoVariables.Lookup( pi.CollapsiblePageVar );
-							if( vv == 0 )
-							{
-								vv = ci->AutoVariables.Create( pi.CollapsiblePageVar, VV_NUMBER,
-									"Current selection for " + pi.Caption );
-
-								vv->Flags |= VF_COLLAPSIBLE_PANE;
-								vv->DefaultValue.Set( pi.CollapsedByDefault ? 0 : 1 );
-							}
-							else
-								wxLogStatus( "AutoVariable error: collapsible page variable already exists in configuration: " + pi.CollapsiblePageVar );
-
-							ci->Variables.Add( pi.CollapsiblePageVar, vv );
-						}
-					}
-					else
-						wxLogStatus("could not find data for referenced input page: " + pi.Name );
-				}
-			}
+				CachePagesInConfiguration( igrp->Pages[k], ci );
 
 			if ( igrp->OrganizeAsExclusivePages && !igrp->ExclusivePageVar.IsEmpty() )
 			{
@@ -1523,6 +1524,8 @@ void ConfigDatabase::RebuildCaches()
 
 				ci->Variables.Add( igrp->ExclusivePageVar, vv );
 			}
+
+			CachePagesInConfiguration( igrp->ExclusiveHeaderPages, ci );
 		}
 	}
 }

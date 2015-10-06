@@ -10,6 +10,7 @@
 
 #include "case.h"
 #include "inputpage.h"
+#include "main.h"
 
 class wxPanel;
 class wxMetroButton;
@@ -78,6 +79,7 @@ private:
 			ActivePage = 0;
 			CollapseCheck = 0;
 			Collapsible = false;
+			HeaderPage = false;
 		}
 
 		wxUIFormData *Form;
@@ -85,13 +87,15 @@ private:
 		bool Collapsible;
 		wxString CollapsibleVar;
 		CollapsePaneCtrl *CollapseCheck;
+		bool HeaderPage;
 	};
 
 	std::vector<PageDisplayState*> m_currentActivePages;
 	wxScrolledWindow *m_inputPageScrollWin;
 	wxPanel *m_exclPanel;
 	wxMetroButton *m_exclPageButton;
-
+	void UpdatePageListForConfiguration( const std::vector<PageInfo> &pages, ConfigInfo *cfg );
+	void LoadPageList( const std::vector<PageInfo> &list, bool header );
 	void SetupActivePage();
 	void LayoutPage();
 	void DetachCurrentInputPage();
