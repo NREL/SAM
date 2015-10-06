@@ -1551,6 +1551,31 @@ bool ShadeTool::Read( wxInputStream &is )
 	return in.Read8() == code && ok1 && ok2;
 }
 
+bool ShadeTool::SimulateTimeseries(int &minute_timestep, std::vector<shadets> &result)
+{
+	result.clear();
+	std::vector<ShadeAnalysis::surfshade> shade;
+	if (m_analysis->SimulateTimeseries(minute_timestep, shade))
+	{
+		size_t n = shade.size();
+		int nstep = ShadeAnalysis::surfshade::nvalues(minute_timestep);
+		for (size_t j = 0; j < n; j++)
+		{
+			result.push_back(shadets());
+			shadets &d = result[result.size() - 1];
+			d.name = shade[j].group;
+			std::vector<float> data(nstep);
+			for (size_t i = 0; i < nstep; i++)
+				data[i] = shade[j].sfac[i];
+			d.ts = data;
+		}
+		return true;
+	}
+	else
+		return false;
+}
+
+
 bool ShadeTool::SimulateDiurnal(std::vector<diurnal> &result)
 {
 	result.clear();
