@@ -172,6 +172,8 @@ public:
 	size_t GetDiffuseCount();
 	void GetDiffuse(size_t i, double *shade_percent, wxString *name);
 	bool SimulateTimeseries( int minute_step, std::vector<surfshade> &shade );
+	size_t GetTimeseriesCount();
+	void GetTimeseries(size_t i, std::vector<float> *ts, wxString *name);
 
 	void InitializeSections( int mode, std::vector<surfshade> &shade );
 
@@ -216,6 +218,10 @@ public:
 	void Write( wxOutputStream & );
 	bool Read( wxInputStream & );
 
+	struct shadets {
+		wxString name;
+		std::vector<float> ts;
+	};
 	struct diurnal {
 		wxString name;
 		matrix_t<float> mxh;
@@ -225,6 +231,7 @@ public:
 		double shade_percent;
 	};
 
+	bool SimulateTimeseries(int &minute_timestep, std::vector<shadets> &result);
 	bool SimulateDiurnal(std::vector<diurnal> &result);
 	bool SimulateDiffuse(std::vector<diffuse> &result);
 
