@@ -2119,6 +2119,9 @@ void fcall_editscene3d( lk::invoke_t &cxt )
 		SamApp::Window()->Project().SetModified( true );
 	}
 	
+
+
+	// Diurnal
 	std::vector<ShadeTool::diurnal> diurnal;
 	if ( st->SimulateDiurnal(diurnal) && diurnal.size() > 0 )
 	{
@@ -2175,7 +2178,7 @@ void fcall_editscene3d( lk::invoke_t &cxt )
 				copy_mxh( sec, diurnal[order[i]].mxh );
 			}
 		}
-
+		
 
 		std::vector<ShadeTool::diffuse> diffuse;
 		if (st->SimulateDiffuse(diffuse) && diffuse.size() > 0)
