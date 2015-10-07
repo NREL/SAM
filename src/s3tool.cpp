@@ -1551,7 +1551,7 @@ bool ShadeTool::Read( wxInputStream &is )
 	return in.Read8() == code && ok1 && ok2;
 }
 
-bool ShadeTool::SimulateTimeseries(int &minute_timestep, std::vector<shadets> &result)
+bool ShadeTool::SimulateTimeseries(int &minute_timestep, std::vector<shadets> &result, bool use_groups)
 {
 	result.clear();
 	std::vector<ShadeAnalysis::surfshade> shade;
@@ -1559,14 +1559,39 @@ bool ShadeTool::SimulateTimeseries(int &minute_timestep, std::vector<shadets> &r
 	{
 		size_t n = shade.size();
 		int nstep = ShadeAnalysis::surfshade::nvalues(minute_timestep);
-		for (size_t j = 0; j < n; j++)
+		if (use_groups)
+		{
+			for (size_t j = 0; j < n; j++)
+			{
+				result.push_back(shadets());
+				shadets &d = result[result.size() - 1];
+				d.name = shade[j].group;
+				std::vector<float> data(nstep);
+				for (size_t i = 0; i < nstep; i++)
+					data[i] = shade[j].sfac[i];
+				d.ts = data;
+			}
+		}
+		else // return single array with all active surfaces shading factors
 		{
 			result.push_back(shadets());
 			shadets &d = result[result.size() - 1];
-			d.name = shade[j].group;
+			d.name = "all active surfaces";
 			std::vector<float> data(nstep);
 			for (size_t i = 0; i < nstep; i++)
-				data[i] = shade[j].sfac[i];
+			{
+				double sf = 1;
+				double shaded = 0;
+				double active = 0;
+				for (size_t j = 0; j < n; j++)
+				{
+					shaded += shade[j].shaded[i];
+					active += shade[j].active[i];
+				}
+				if (active != 0.0)
+					sf = shaded / active;
+				data[i] = 100.0f *sf;
+			}
 			d.ts = data;
 		}
 		return true;
