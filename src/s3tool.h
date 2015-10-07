@@ -231,7 +231,7 @@ public:
 		double shade_percent;
 	};
 
-	bool SimulateTimeseries(int &minute_timestep, std::vector<shadets> &result);
+	bool SimulateTimeseries(int &minute_timestep, std::vector<shadets> &result, bool use_groups=false);
 	bool SimulateDiurnal(std::vector<diurnal> &result);
 	bool SimulateDiffuse(std::vector<diffuse> &result);
 
