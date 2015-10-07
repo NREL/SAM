@@ -5,6 +5,7 @@
 #include <wx/buffer.h>
 #include <wx/mstream.h>
 #include <wx/busyinfo.h>
+#include <wx/arrstr.h>
 
 #include <wex/plot/plplotctrl.h>
 #include <wex/lkscript.h>
@@ -2057,95 +2058,265 @@ static void copy_mxh( lk::vardata_t &val, matrix_t<float> &mxh )
 	}
 }
 
-void fcall_editscene3d( lk::invoke_t &cxt )
+static void copy_mat(lk::vardata_t &val, matrix_t<float> &mts)
 {
-	LK_DOC( "editscene3d", "Loads the 3D scene editor for a given 3D scene variable name.", "(string:variable, number:lat, number:lon, number:tz, string:location):table");
+	if (((mts.nrows() % 8760) == 0) && (mts.ncols() >0))
+	{
+		val.empty_vector();
+		size_t nrows = mts.nrows();
+		size_t ncols = mts.ncols();
+		val.resize(nrows);
+		for (size_t r = 0; r<nrows; r++)
+		{
+			lk::vardata_t *row = val.index(r);
+			row->empty_vector();
+			row->resize(ncols);
+			for (size_t c = 0; c<ncols; c++)
+				row->index(c)->assign(mts(r, c));
+		}
+	}
+}
+
+
+void fcall_editscene3d(lk::invoke_t &cxt)
+{
+	LK_DOC("editscene3d", "Loads the 3D scene editor for a given 3D scene variable name.", "(string:variable, number:lat, number:lon, number:tz, string:location, number:minute_step,[bool:use_groups]):table");
 	UICallbackContext &cc = *(UICallbackContext*)cxt.user_data();
-	
+
+	bool use_groups = false;
+	if (cxt.arg_count() > 6)
+		use_groups = cxt.arg(6).as_boolean();
+	int min_step = cxt.arg(5).as_integer();
+
 	cxt.result().empty_hash();
 
-	wxString name( cxt.arg(0).as_string() );
-	VarValue *vv = cc.GetCase().Values().Get( name );
-	if ( !vv )
+	wxString name(cxt.arg(0).as_string());
+	VarValue *vv = cc.GetCase().Values().Get(name);
+	if (!vv)
 	{
-		cxt.result().hash_item("ierr").assign( 1.0 );
-		cxt.result().hash_item("message").assign( wxString("no variable with that name") );
+		cxt.result().hash_item("ierr").assign(1.0);
+		cxt.result().hash_item("message").assign(wxString("no variable with that name"));
 		return;
 	}
-	
 
-	if ( VV_BINARY != vv->Type() )
-		vv->SetType( VV_BINARY );
+
+	if (VV_BINARY != vv->Type())
+		vv->SetType(VV_BINARY);
 	wxMemoryBuffer &bin = vv->Binary();
 
-	wxLogStatus("EDIT SCENE (%s): loaded %d bytes", (const char*)name.c_str(), (int)bin.GetDataLen() );
+	wxLogStatus("EDIT SCENE (%s): loaded %d bytes", (const char*)name.c_str(), (int)bin.GetDataLen());
 
-	wxDialog dlg( SamApp::Window(), wxID_ANY, "Edit 3D Shading Scene", wxDefaultPosition, wxSize(800,600), wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER );
-	ShadeTool *st = new ShadeTool( &dlg, wxID_ANY );
+	wxDialog dlg(SamApp::Window(), wxID_ANY, "Edit 3D Shading Scene", wxDefaultPosition, wxSize(800, 600), wxDEFAULT_DIALOG_STYLE | wxRESIZE_BORDER);
+	ShadeTool *st = new ShadeTool(&dlg, wxID_ANY);
 
-	if ( cxt.arg_count() > 1 && bin.GetDataLen() == 0 )
+	if (cxt.arg_count() > 1 && bin.GetDataLen() == 0)
 	{
 		// only update location on the first time
 		double lat = cxt.arg(1).as_number();
 		double lon = cxt.arg(2).as_number();
 		double tz = cxt.arg(3).as_number();
 		wxString addr = cxt.arg(4).as_string();
-		st->GetLocationSetup()->SetLocation( addr, lat, lon, tz );
+		st->GetLocationSetup()->SetLocation(addr, lat, lon, tz);
 
 		wxMessageBox("The 3D scene requires detailed information about your location to calculate shading losses.\n\n"
 			"By default, information about the location you selected in the weather file has been transferred.\n\n"
 			"If you update your weather file in the future, please manually ensure that the address, "
-			"latitude, longitude, and time zone in the 3D scene editor (Location tab) are updated as necessary.", "Notice", 
-			wxICON_INFORMATION|wxOK, SamApp::Window() );
+			"latitude, longitude, and time zone in the 3D scene editor (Location tab) are updated as necessary.", "Notice",
+			wxICON_INFORMATION | wxOK, SamApp::Window());
 	}
 
-	wxBoxSizer *sizer = new wxBoxSizer( wxVERTICAL );
-	sizer->Add( st, 1, wxALL|wxEXPAND, 0 );
-	dlg.SetSizer( sizer );
-	if (  bin.GetDataLen() > 0 )
+	wxBoxSizer *sizer = new wxBoxSizer(wxVERTICAL);
+	sizer->Add(st, 1, wxALL | wxEXPAND, 0);
+	dlg.SetSizer(sizer);
+	if (bin.GetDataLen() > 0)
 	{
-		wxMemoryInputStream in( bin.GetData(), bin.GetDataLen() );
-		if (!st->Read( in ))
+		wxMemoryInputStream in(bin.GetData(), bin.GetDataLen());
+		if (!st->Read(in))
 			wxMessageBox("Error loading stored 3D scene data.");
 	}
 
 	double lat, lon, tz;
-	st->GetLocationSetup()->GetLocation( &lat, &lon, &tz );
-	if ( lat != cxt.arg(1).as_number()
+	st->GetLocationSetup()->GetLocation(&lat, &lon, &tz);
+	if (lat != cxt.arg(1).as_number()
 		|| lon != cxt.arg(2).as_number()
-		|| tz != cxt.arg(3).as_number() )
+		|| tz != cxt.arg(3).as_number())
 	{
-		if( wxYES==wxMessageBox( "The location information in the shading tool does not match the currently selected weather file.\n\nDo you want to update your location settings in the shading tool to match?", "Query", wxYES_NO ) )
+		if (wxYES == wxMessageBox("The location information in the shading tool does not match the currently selected weather file.\n\nDo you want to update your location settings in the shading tool to match?", "Query", wxYES_NO))
 		{
 			lat = cxt.arg(1).as_number();
 			lon = cxt.arg(2).as_number();
 			tz = cxt.arg(3).as_number();
 			wxString addr = cxt.arg(4).as_string();
-			st->GetLocationSetup()->SetLocation( addr, lat, lon, tz );
+			st->GetLocationSetup()->SetLocation(addr, lat, lon, tz);
 		}
 	}
 
 	dlg.ShowModal();
 	wxMemoryOutputStream out;
-	st->Write( out );
+	st->Write(out);
 	size_t len = out.GetSize();
-	if ( len > 0 )
+	if (len > 0)
 	{
-		void *buf = bin.GetWriteBuf( len );
-		out.CopyTo( buf, len );
-		bin.UngetWriteBuf( len );
-		SamApp::Window()->Project().SetModified( true );
+		void *buf = bin.GetWriteBuf(len);
+		out.CopyTo(buf, len);
+		bin.UngetWriteBuf(len);
+		SamApp::Window()->Project().SetModified(true);
 	}
-	
 
 
+
+	// Timeseries
+
+
+	std::vector<ShadeTool::shadets> shadets;
+	if (st->SimulateTimeseries(min_step, shadets, use_groups) && shadets.size() > 0)
+	{
+		wxArrayInt order1;
+		if (!use_groups) // use overal shading factor
+		{
+			// overall losses for the system are always in table 0
+			lk::vardata_t &v = cxt.result().hash_item("losses");
+			matrix_t<float> mat_ts(shadets[0].ts.size(), 1);
+			for (size_t i = 0; i < shadets[0].ts.size(); i++)
+				mat_ts.at(i, 0) = shadets[0].ts[i];
+			copy_mat(v, mat_ts);
+			order1.push_back(0); // TODO - update for diffuse calculations.
+		}
+		else
+		{
+			// now copy over all the subarray sections
+			// the user must label them as 'Subarray1.string1', 'Subarraya.string2', etc for them to get placed in the right section
+
+			// return in order of subarray 1, subarray 2, subarray 3, subarray 4 for application in ui
+			// first parse and group first part of names
+			wxArrayString part1;
+			for (size_t i = 0; i < shadets.size(); i++)
+			{
+
+				wxString name = shadets[i].name.Lower();
+				wxArrayString p1p2 = wxSplit(name, '.');
+				if (p1p2.Count() > 0)
+					name = p1p2[0];
+
+				if (part1.Index(name) == wxNOT_FOUND)
+					part1.push_back(name);
+			}
+			// TODO: here can check for at most 4 subarrays
+			for (size_t i = 0; i < part1.Count(); i++)
+				order1.push_back(i);
+			// check group names and reorder if necessary
+			/* can reorder if necessary
+			wxArrayInt tmp_order;
+			int j = 1;
+			while (j < (int)part1.Count())
+			{
+			for (size_t i = 0; i < part1.size(); i++)
+			{
+			wxString name = part1[i];
+			if (name.Find(wxString::Format("%d", j)) != wxNOT_FOUND)
+			{
+			if (tmp_order.Index(i) == wxNOT_FOUND)
+			tmp_order.push_back(i);
+			}
+			}
+			j++;
+			}
+			if (tmp_order.Count() == part1.Count() - 1)
+			{
+			for (size_t i = 1; i < order1.size(); i++)
+			order1[i] = tmp_order[i - 1];
+			}
+			*/
+			// now have subarray 1 through 4 order
+			// look at parallel strings
+
+
+			// construct matrices for each
+			// initially do not worry about order "string1, string2...
+			for (size_t io1 = 0; io1 < order1.Count(); io1++)
+			{
+				wxArrayInt order2;
+				wxArrayString part2;
+				size_t nrows = 8760;
+				size_t ncols = 1;
+
+				for (size_t its = 0; its < shadets.size(); its++)
+				{
+					wxString name = shadets[its].name.Lower();
+					wxArrayString p1p2 = wxSplit(name, '.');
+					if (p1p2.Count() < 1) continue;
+					if (p1p2[0] == part1[order1[io1]])  // part of this sub array
+					{
+						order2.push_back(its); // save index
+						nrows = shadets[its].ts.size(); // number of rows for matrix should be 8760 * 60/ num_min;
+						// can save string names and reorder
+						if (p1p2.Count() > 1) // parallel strings
+							name = p1p2[1];
+						if (part2.Index(name) == wxNOT_FOUND)
+							part2.push_back(name);
+					}
+				}
+
+				ncols = order2.size();
+				matrix_t<float> mat_ts(nrows, ncols);
+				for (size_t c = 0; c < order2.Count(); c++)
+					for (size_t r = 0; r < shadets[order2[c]].ts.size(); r++)
+						mat_ts.at(r, c) = shadets[order2[c]].ts[r];
+
+
+				//	set names for subarray processing in callback
+				wxString name;
+				name.Printf("subarray%d", (int)(io1 + 1));
+
+				lk::vardata_t &sec = cxt.result().hash_item(name);
+				copy_mat(sec, mat_ts);
+			}
+		}
+		std::vector<ShadeTool::diffuse> diffuse;
+		if (st->SimulateDiffuse(diffuse) && diffuse.size() > 0)
+		{
+//			if (diffuse.size() != shadets.size()) // TODO how to combine diffuse for parallel strings
+//			{
+//				cxt.result().hash_item("ierr").assign(4.0);
+//				cxt.result().hash_item("message").assign(wxString("Error in simulation of diffuse shading factors not equal to diurnal timeseries count."));
+//			}
+//			else
+//			{
+				// overall losses for the system are always in table 0
+				lk::vardata_t &ds = cxt.result().hash_item("diffuse");
+				ds.empty_vector();
+				ds.vec()->reserve(diffuse.size());
+
+				// TODO fix this for proper fiffuse value for parallel strings
+				for (size_t i = 0; i < order1.Count(); i++)
+				{
+					ds.vec_append(diffuse[order1[i]].shade_percent);
+				}
+//			}
+		}
+		else
+		{
+			cxt.result().hash_item("ierr").assign(3.0);
+			cxt.result().hash_item("message").assign(wxString("Error in simulation of diffuse shading factors."));
+		}
+		cxt.result().hash_item("ierr").assign(0.0);
+		cxt.result().hash_item("nsubarrays").assign((double)(order1.Count()));
+	}
+	else
+	{
+		cxt.result().hash_item("ierr").assign(2.0);
+		cxt.result().hash_item("message").assign(wxString("Error in simulation of timeseries shading factors."));
+	}
+
+
+/*
 	// Diurnal
 	std::vector<ShadeTool::diurnal> diurnal;
-	if ( st->SimulateDiurnal(diurnal) && diurnal.size() > 0 )
+	if (st->SimulateDiurnal(diurnal) && diurnal.size() > 0)
 	{
 		// overall losses for the system are always in table 0
-		lk::vardata_t &v = cxt.result().hash_item( "losses" );
-		copy_mxh( v, diurnal[0].mxh );
+		lk::vardata_t &v = cxt.result().hash_item("losses");
+		copy_mxh(v, diurnal[0].mxh);
 		// now copy over all the subarray sections
 		// the user must label them as 'Subarray 1', 'Subarray 2', etc for them to
 		// get placed in the right section
@@ -2177,13 +2348,13 @@ void fcall_editscene3d( lk::invoke_t &cxt )
 			if (tmp_order.Count() == diurnal.size() - 1)
 			{
 				for (size_t i = 1; i < diurnal.size(); i++)
-					order[i] = tmp_order[i-1];
+					order[i] = tmp_order[i - 1];
 			}
 		}
 
-		for( size_t i=1;i<diurnal.size();i++ )
+		for (size_t i = 1; i<diurnal.size(); i++)
 		{
-			if ( diurnal[i].mxh.nrows() == 12 && diurnal[i].mxh.ncols() == 24 )
+			if (diurnal[i].mxh.nrows() == 12 && diurnal[i].mxh.ncols() == 24)
 			{
 				//wxString name = diurnal[i].name.Lower();
 				//name.Replace(" ", "");
@@ -2192,11 +2363,11 @@ void fcall_editscene3d( lk::invoke_t &cxt )
 				wxString name;
 				name.Printf("subarray%d", (int)i);
 
-				lk::vardata_t &sec = cxt.result().hash_item( name );
-				copy_mxh( sec, diurnal[order[i]].mxh );
+				lk::vardata_t &sec = cxt.result().hash_item(name);
+				copy_mxh(sec, diurnal[order[i]].mxh);
 			}
 		}
-		
+
 
 		std::vector<ShadeTool::diffuse> diffuse;
 		if (st->SimulateDiffuse(diffuse) && diffuse.size() > 0)
@@ -2226,13 +2397,16 @@ void fcall_editscene3d( lk::invoke_t &cxt )
 			cxt.result().hash_item("message").assign(wxString("Error in simulation of diffuse shading factors."));
 		}
 		cxt.result().hash_item("ierr").assign(0.0);
-		cxt.result().hash_item("nsubarrays").assign( (double)( diurnal.size()-1 ));
+		cxt.result().hash_item("nsubarrays").assign((double)(diurnal.size() - 1));
 	}
 	else
 	{
-		cxt.result().hash_item("ierr").assign( 2.0 );
-		cxt.result().hash_item("message").assign( wxString("Error in simulation of diurnal shading factors.") );
+		cxt.result().hash_item("ierr").assign(2.0);
+		cxt.result().hash_item("message").assign(wxString("Error in simulation of diurnal shading factors."));
 	}
+*/
+
+
 }
 
 
