@@ -1202,7 +1202,9 @@ function setup_MSPT_pages()
 	addpage( [[ 'MSPT System Design' ]], { 'sidebar'='System Design', 'help'='mspt_heliostat_field' } );
 	addpage( [[ 'Tower Solar Field' ]], { 'sidebar'='Heliostat Field', 'help'='mspt_heliostat_field' } );
 	addpage( [[ 'Molten Salt Tower Receiver' ]], { 'sidebar'='Tower and Receiver', 'help'='mspt_tower_and_receiver' } );
-	addpage( [[ 'Molten Salt Tower Power Block' ]], { 'sidebar'='Power Cycle', 'help'='mspt_power_cycle' } );
+	addpage( [[ 'Rankine Cycle' ], [ 'Inverter Datasheet' ]], 
+			{ 'sidebar'='Power Cycle', 'help'='mspt_power_cycle', 'exclusive_var' = 'pc_config',
+			  'exclusive_header_pages' = ['Molten Salt Tower Power Block Common']} );
 	addpage( [[ 'Molten Salt Tower Storage' ]], { 'sidebar'='Thermal Storage', 'help'='mspt_thermal_storage' } );
 	addpage( [[ 'MSPT System Control' ,
 	  {'name' = 'CSP Dispatch Control', 'caption'='Dispatch Control', 'collapsible'=false, 'collapsible_var'='csp_dispatch_is_shown'} ]], 
