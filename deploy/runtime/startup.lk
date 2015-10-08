@@ -1246,7 +1246,7 @@ if ( en_iscc ) {
 	{
 			addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource', 'help'='pt_location_and_resource' } );
 			addpage( [[ 'Tower Solar Field' ]], { 'sidebar'='Heliostat Field', 'help'='mspt_heliostat_field' } );
-			addpage( [[ 'Molten Salt Tower Receiver',{'name' = 'ISCC Receiver and Powerblock', 'caption'='DESIGN POINT Integration with Natural Gas Combined Cycle',
+			addpage( [[ 'ISCC Molten Salt Tower Receiver',{'name' = 'ISCC Receiver and Powerblock', 'caption'='DESIGN POINT Integration with Natural Gas Combined Cycle',
 			'collapsible'=false,'collapsible_var'='iscc_is_shown'}]], { 'sidebar'='Tower, Receiver & Power Cycle', 'help'='mspt_tower_and_receiver' } );
 			addpage( [[ 'ISCC Parasitics' ]], { 'sidebar'='Parasitics', 'help'='mspt_parasitics' } );
 	}
