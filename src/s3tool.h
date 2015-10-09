@@ -168,7 +168,7 @@ public:
 	bool SimulateDiurnal();
 	size_t GetDiurnalCount();
 	void GetDiurnal( size_t i, matrix_t<float> *mxh, wxString *name );
-	bool SimulateDiffuse(bool save=false);
+	bool SimulateDiffuse(std::vector<surfshade> &shade, bool save = false);
 	size_t GetDiffuseCount();
 	void GetDiffuse(size_t i, double *shade_percent, wxString *name);
 	bool SimulateTimeseries( int minute_step, std::vector<surfshade> &shade );
@@ -233,7 +233,7 @@ public:
 
 	bool SimulateTimeseries(int &minute_timestep, std::vector<shadets> &result, bool use_groups=false);
 	bool SimulateDiurnal(std::vector<diurnal> &result);
-	bool SimulateDiffuse(std::vector<diffuse> &result);
+	bool SimulateDiffuse(std::vector<diffuse> &result, bool use_groups = false);
 
 private:
 	wxString m_fileName;

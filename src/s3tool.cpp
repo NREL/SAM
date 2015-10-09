@@ -736,10 +736,11 @@ ShadeAnalysis::ShadeAnalysis( wxWindow *parent, ShadeTool *st )
 
 void ShadeAnalysis::OnGenerateDiffuse(wxCommandEvent &)
 {
-	SimulateDiffuse(false);
+	std::vector<surfshade> shade;
+	SimulateDiffuse(shade, false);
 }
 
-bool ShadeAnalysis::SimulateDiffuse(bool save)
+bool ShadeAnalysis::SimulateDiffuse(std::vector<surfshade> &shade, bool save)
 {
 	m_diffuseResults->Clear();
 
@@ -779,7 +780,6 @@ bool ShadeAnalysis::SimulateDiffuse(bool save)
 	size_t num_azi = 1 + (azi_max - azi_min)/azi_step;
 	size_t num_scenes =  num_alt * num_azi;
 		
-	std::vector<surfshade> shade;
 	InitializeSections( num_scenes, shade );
 	
 	size_t c = 0;
@@ -1619,17 +1619,39 @@ bool ShadeTool::SimulateDiurnal(std::vector<diurnal> &result)
 		return false;
 }
 
-bool ShadeTool::SimulateDiffuse(std::vector<diffuse> &result)
+bool ShadeTool::SimulateDiffuse(std::vector<diffuse> &result, bool use_groups)
 {
 	result.clear();
-	if (m_analysis->SimulateDiffuse())
+	std::vector<ShadeAnalysis::surfshade> shade;
+	if (m_analysis->SimulateDiffuse(shade))
 	{
 		size_t n = m_analysis->GetDiffuseCount();
-		for (size_t i = 0; i<n; i++)
+		std::vector<diffuse> diff_group;
+		for (size_t i = 0; i < n; i++)
+		{
+			diff_group.push_back(diffuse());
+			diffuse &d = diff_group[diff_group.size() - 1];
+			m_analysis->GetDiffuse(i, &d.shade_percent, &d.name);
+		}
+		if (use_groups)
+		{
+			result = diff_group;
+		}
+		else // single diffuse using all grouped values
 		{
 			result.push_back(diffuse());
 			diffuse &d = result[result.size() - 1];
-			m_analysis->GetDiffuse(i, &d.shade_percent, &d.name);
+			d.name = "all active surfaces";
+			d.shade_percent = 0;
+			double avg_percent = 0;
+			n = diff_group.size();
+			for (size_t i = 0; i < n; i++)
+				avg_percent += diff_group[i].shade_percent; // include sphere differential 
+			if (n > 0)
+			{
+				avg_percent /= n;
+				d.shade_percent = avg_percent;
+			}
 		}
 		return true;
 	}
