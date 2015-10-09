@@ -2273,15 +2273,15 @@ void fcall_editscene3d(lk::invoke_t &cxt)
 			}
 		}
 		std::vector<ShadeTool::diffuse> diffuse;
-		if (st->SimulateDiffuse(diffuse) && diffuse.size() > 0)
+		if (st->SimulateDiffuse(diffuse, use_groups) && diffuse.size() > 0)
 		{
-//			if (diffuse.size() != shadets.size()) // TODO how to combine diffuse for parallel strings
-//			{
-//				cxt.result().hash_item("ierr").assign(4.0);
-//				cxt.result().hash_item("message").assign(wxString("Error in simulation of diffuse shading factors not equal to diurnal timeseries count."));
-//			}
-//			else
-//			{
+			if (diffuse.size() != shadets.size()) // TODO how to combine diffuse for parallel strings
+			{
+				cxt.result().hash_item("ierr").assign(4.0);
+				cxt.result().hash_item("message").assign(wxString("Error in simulation of diffuse shading factors not equal to diurnal timeseries count."));
+			}
+			else
+			{
 				// overall losses for the system are always in table 0
 				lk::vardata_t &ds = cxt.result().hash_item("diffuse");
 				ds.empty_vector();
@@ -2292,7 +2292,7 @@ void fcall_editscene3d(lk::invoke_t &cxt)
 				{
 					ds.vec_append(diffuse[order1[i]].shade_percent);
 				}
-//			}
+			}
 		}
 		else
 		{
