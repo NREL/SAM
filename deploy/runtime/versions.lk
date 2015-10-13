@@ -73,6 +73,12 @@ version_upgrade{'2015.9.9'} = define() {
 		value('piping_length_mult', oldvalue('csp.pt.par.piping_length_mult'));
 		value('=gross_net_conversion_factor', oldvalue('csp.pt.pwrb.gross_net_conversion_factor'));
 	}
+	
+	//changes to the Physical Trough model
+	if( cfg.tech == 'Physical Trough' )
+	{
+		value('eta_lhv', oldvalue('csp.dtr.pwrb.boiler_lhv_eff'));
+	}
 
 };
 
