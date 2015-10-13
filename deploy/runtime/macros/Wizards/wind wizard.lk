@@ -1,6 +1,9 @@
 /*************************************/
 /**           Runtime Tools         **/
 
+// Save the current dir for later use
+curDir = userlocaldatadir();
+outln( curDir );
 
 // Determine screen size and set default pop-up positions
 scrn = scrnres();
@@ -24,7 +27,7 @@ function exitIf( exitCondition ){
 /**         Welcome the User        **/
 
 wS = [500,500];
-outln( msgbox("Welcome to the Wind Wizard!\n\n" +
+exitIf( !msgbox("Welcome to the Wind Wizard!\n\n" +
 	         "This tutorial will provide a series of pop-ups which will guide you through the use of the wind model.\n\n" +
 			 "Although you will interact with pop-up menus in this wizard, the relevant inputs will be highlighted in \n SAM so that you can find them later.\n\n" +
 			 "Also, there are a lot of options but we'll only focus on the most important ones.", 
@@ -52,9 +55,9 @@ if( newCase == false){
 	cnf =  configuration();
 	
 	if( !(strcmp(cnf[0], "Wind Power") == 0 && strcmp(cnf[1],"LCOE Calculator") == 0) ){
-		msgbox("The currently active case does not use the appropriate physical and/or financial model for this wizard.\n\nPlease create a new case.",
+		exitIf(! msgbox("The currently active case does not use the appropriate physical and/or financial model for this wizard.\n\nPlease create a new case.",
 			"WARNING",
-			[defaultX, defaultY, 500, 500]);
+			[defaultX, defaultY, 500, 500]));
 		newCase = true;
 	}
 } 
@@ -238,7 +241,7 @@ transp();
 /*************************************/
 /**            Set Losses           **/
 
-set('wind_farm_losses_percent', 0);
+set('wind_farm_losses_percent', 5);
 
 
 
@@ -257,7 +260,7 @@ geom[2] += 200;
 transp( geom, 'yellow', 70 );
 
 // Get noinal interest rate from user
-nominalInterest = in( "Almost there! Enter a nominal interest rate ( %/yr )", 
+nominalInterest = in( "Almost there! Enter an after-tax nominal interest rate ( %/yr )", 
 					  get('c_nominal_interest_rate'), 
 					  "Nominal Interest Rate",
 		              [defaultX, defaultY]);
@@ -283,7 +286,7 @@ geom = widgetpos('ui_capital_cost_capacity');
 transp( geom, 'yellow', 70 );
 
 // Get capital cost from user
-capitalCost = in( "Enter a capital cost ($)", 
+capitalCost = in( "Enter a total capital cost ($)", 
                   get('ui_capital_cost_capacity'), 
                   'Capital Cost',
                   [defaultX, defaultY]);
@@ -309,7 +312,7 @@ transp();
 
 // Ask user if they want to run the simulation
 //  if not, exit the wizard
-runSim = yesno("Great! You've completed the wind wizard! Do you want to run the simulation now?\n\n(select 'no' if you'd like to modify more inputs)",
+runSim = yesno("Great! You've completed the wind wizard! Do you want to run the simulation now?\n\n(selecting 'no' will exit the wizard and enter the regular SAM application)",
 				[defaultX, defaultY] );
 
 if( runSim ){
@@ -336,10 +339,10 @@ if (runTornado){
 	variation = 0.10;
 	outLabel = 'lcoe_fcr';
 	vars = ['wind_turbine_hub_ht',			
-			'wind_resource_turbulence_coeff',			
+			'wind_farm_losses_percent',			
 			'ui_capital_cost_capacity',			
 			'c_nominal_interest_rate',			
-			'wind_turbine_kw_rating'		
+			'ui_operating_cost_capacity'		
 		];
 	
 	baseVals = alloc( #vars );
@@ -435,33 +438,46 @@ if (runTornado){
 	axis('x1', {'min'=minVal-range*0.05, 'max'=maxVal+range*0.05, 'label'= varinfo(outLabel){'label'} });
 
 	axis('y1', { 'type'='label', 'labels'=labels, 'min'=0, 'max'=2*#vars} );
-	plotopt({'legendpos'='bottom', 'title'='LCOE Sensitivity'});
+	plotopt({'legendpos'='bottom', 'title'='LCOE Sensitivity (+/- 10%)'});
 	
-	plotout('C:/Users/dryberg/pictures/windWizardTornado.png');
+	plotLocation = tempfile('png');
+	plotout(plotLocation);
 }
 
 
 
 
-/*************************************/
+/***************************:w**********/
 /**        Report Generation        **/
 
 // Ask user if they would like to create a report based off this simulation
 //  if not, exit wizard
 
 if( yesno("Would you like to generate a report based off these results?",[defaultX, defaultY]) ){
-
+	
 	if( runTornado ){
+		newplot("");
 		data = {'plotTornado' = 1,
-				"parVars" = vars, 
-				'parPlus' = xvals_up,
-				'parMinus'= xvals_dn};
+				'plotLocation' = plotLocation};
 	} else {
-		data = {'plotTornado' = 0};
+		data = {'plotTornado' = 0,
+				'plotLocation' = ''};
 	}
 	
+	
 	// Create report
-	ok = pdfreport( choose_file( homedir(), "Output report file", 'PDF Files (*.pdf)|*.pdf'), 
+	if( yesno("This report will be saved to:\n" + homedir()+"\\windReport.pdf\n\nSelect 'Yes' to continue or 'No' to enter a different file path") ){
+		reportFile = homedir()+"\\windReport.pdf";
+	} else {
+		reportFile = choose_file( homedir(), "Output report file", 'PDF Files (*.pdf)|*.pdf');
+	}
+	
+	ok = pdfreport( reportFile, 
 					{'template'=runtimedir() + 'reports\\windwizard.samreport', 'metadata'=data });
+	
+	// Open Report
+	browse(reportFile);
+} 
 
-}
+// Delete temporary tornado plot
+remove_file( plotLocation );
