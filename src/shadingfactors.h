@@ -150,6 +150,10 @@ private:
 	void UpdateNumberColumns(size_t &new_cols);
 	void UpdateNumberRows(size_t &new_rows);
 	void UpdateNumberMinutes(size_t &new_timesteps);
+
+	bool Export(const wxString &file);
+	bool Import(const wxString &file);
+
 	float m_default_val;
 	matrix_t<float> m_data;
 	wxExtGridCtrl *m_grid;
@@ -160,6 +164,11 @@ private:
 	wxChoice *m_choice_timestep;
 //	wxCheckBox *m_en_shading_db;
 	wxChoice *m_choice_string_option;
+	wxButton *m_btn_copy;
+	wxButton *m_btn_paste;
+	wxButton *m_btn_import;
+	wxButton *m_btn_export;
+	bool m_show_db_options;
 
 	wxArrayString m_minute_arystrvals;
 	wxArrayString m_col_arystrvals;
