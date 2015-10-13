@@ -286,7 +286,7 @@ geom = widgetpos('ui_capital_cost_capacity');
 transp( geom, 'yellow', 70 );
 
 // Get capital cost from user
-capitalCost = in( "Enter a total capital cost ($)", 
+capitalCost = in( "Enter a total capital cost ($/kW)", 
                   get('ui_capital_cost_capacity'), 
                   'Capital Cost',
                   [defaultX, defaultY]);
