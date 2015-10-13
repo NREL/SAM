@@ -78,6 +78,7 @@ version_upgrade{'2015.9.9'} = define() {
 	if( cfg.tech == 'Physical Trough' )
 	{
 		value('eta_lhv', oldvalue('csp.dtr.pwrb.boiler_lhv_eff'));
+		value('eta_tes_htr', oldvalue('csp.dtr.tes.tank_heater_eff'));
 	}
 
 };
