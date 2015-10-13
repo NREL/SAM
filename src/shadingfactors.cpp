@@ -280,7 +280,8 @@ public:
 	{
 		SetEscapeId( wxID_CANCEL );
 
-		SetClientSize( 870, 600 );
+//		SetClientSize(870, 600);
+		SetClientSize(950, 600);
 
 		m_show_db_options = show_db_options;
 
@@ -1145,12 +1146,16 @@ bool ImportSolPathMonthByHour( ShadingInputData &dat, wxWindow *parent )
 
 DEFINE_EVENT_TYPE(wxEVT_wxShadingFactorsCtrl_CHANGE)
 
-enum { ISFC_CHOICECOL = wxID_HIGHEST + 857, ISFC_CHOICEMINUTE, ISFC_CHOICESTRING, ISFC_GRID };
+enum { ISFC_CHOICECOL = wxID_HIGHEST + 857, ISFC_CHOICEMINUTE, ISFC_CHOICESTRING, ISFC_GRID, ISFC_COPY, ISFC_PASTE, ISFC_IMPORT, ISFC_EXPORT };
 
 BEGIN_EVENT_TABLE(wxShadingFactorsCtrl, wxPanel)
 EVT_GRID_CMD_CELL_CHANGE(ISFC_GRID, wxShadingFactorsCtrl::OnCellChange)
 EVT_CHOICE(ISFC_CHOICECOL, wxShadingFactorsCtrl::OnChoiceCol)
 EVT_CHOICE(ISFC_CHOICEMINUTE, wxShadingFactorsCtrl::OnChoiceMinute)
+EVT_BUTTON(ISFC_COPY, wxShadingFactorsCtrl::OnCommand)
+EVT_BUTTON(ISFC_PASTE, wxShadingFactorsCtrl::OnCommand)
+EVT_BUTTON(ISFC_EXPORT, wxShadingFactorsCtrl::OnCommand)
+EVT_BUTTON(ISFC_IMPORT, wxShadingFactorsCtrl::OnCommand)
 END_EVENT_TABLE()
 
 wxShadingFactorsCtrl::wxShadingFactorsCtrl(wxWindow *parent, int id,
@@ -1163,6 +1168,7 @@ bool sidebuttons)
 	m_default_val = 0;
 	m_num_minutes = 60;
 	m_grid_data = NULL;
+	m_show_db_options = show_db_options;
 //	m_col_header_use_format = false;
 //	m_col_ary_str.Clear();
 //	m_col_format_str = wxEmptyString;
@@ -1217,6 +1223,13 @@ bool sidebuttons)
 	m_choice_timestep = new wxChoice(this, ISFC_CHOICEMINUTE, wxDefaultPosition, wxDefaultSize, m_minute_arystrvals);
 	m_choice_timestep->SetBackgroundColour(*wxWHITE);
 
+
+	m_btn_import = new wxButton(this, ISFC_IMPORT, "Import...");
+	m_btn_export = new wxButton(this, ISFC_EXPORT, "Export...");
+	m_btn_copy = new wxButton(this, ISFC_COPY, "Copy");
+	m_btn_paste = new wxButton(this, ISFC_PASTE, "Paste");
+
+
 	if (!show_db_options)
 	{
 		m_caption_col->Show(false);
@@ -1240,9 +1253,13 @@ bool sidebuttons)
 			v_tb_sizer->AddSpacer(5);
 //			v_tb_sizer->Add(m_en_shading_db, 0, wxALL | wxEXPAND, 3);
 			v_tb_sizer->Add(m_choice_string_option, 0, wxALL | wxEXPAND, 3);
-			v_tb_sizer->AddStretchSpacer();
 		}
-	
+		v_tb_sizer->AddSpacer(5);
+		v_tb_sizer->Add(m_btn_copy, 0, wxALL | wxEXPAND, 3);
+		v_tb_sizer->Add(m_btn_paste, 0, wxALL | wxEXPAND, 3);
+		v_tb_sizer->Add(m_btn_import, 0, wxALL | wxEXPAND, 3);
+		v_tb_sizer->Add(m_btn_export, 0, wxALL | wxEXPAND, 3);
+		v_tb_sizer->AddStretchSpacer();
 
 		wxBoxSizer *h_sizer = new wxBoxSizer(wxHORIZONTAL);
 		h_sizer->Add(v_tb_sizer, 0, wxALL | wxEXPAND, 1);
@@ -1264,8 +1281,14 @@ bool sidebuttons)
 			h_tb_sizer->AddSpacer(5);
 //			h_tb_sizer->Add(m_en_shading_db, 0, wxALL | wxEXPAND | wxALIGN_CENTER_VERTICAL, 3);
 			h_tb_sizer->Add(m_choice_string_option, 0, wxALL | wxEXPAND | wxALIGN_CENTER_VERTICAL, 3);
-			h_tb_sizer->AddStretchSpacer();
 		}
+		h_tb_sizer->AddSpacer(5);
+		h_tb_sizer->Add(m_btn_copy, 0, wxALL | wxEXPAND, 3);
+		h_tb_sizer->Add(m_btn_paste, 0, wxALL | wxEXPAND, 3);
+		h_tb_sizer->Add(m_btn_import, 0, wxALL | wxEXPAND, 3);
+		h_tb_sizer->Add(m_btn_export, 0, wxALL | wxEXPAND, 3);
+
+		h_tb_sizer->AddStretchSpacer();
 
 		wxBoxSizer *v_sizer = new wxBoxSizer(wxVERTICAL);
 		v_sizer->Add(h_tb_sizer, 0, wxALL | wxEXPAND, 1);
@@ -1338,6 +1361,135 @@ void wxShadingFactorsCtrl::SetColLabelFormatString(const wxString &col_format_st
 }
 */
 
+void wxShadingFactorsCtrl::OnCommand(wxCommandEvent &evt)
+{
+	switch (evt.GetId())
+	{
+		case ISFC_COPY:
+			m_grid->Copy(true);
+			break;
+		case ISFC_PASTE:
+		{
+			// resize rows per data pasted
+			if (wxTheClipboard->Open())
+			{
+				wxString data;
+				wxTextDataObject textobj;
+				if (wxTheClipboard->GetData(textobj))
+				{
+					data = textobj.GetText();
+					wxTheClipboard->Close();
+				}
+				if (data.IsEmpty()) return;
+
+#ifdef __WXMAC__
+				wxArrayString lines = wxStringTokenize(data, "\r", ::wxTOKEN_RET_EMPTY_ALL);
+#else
+				wxArrayString lines = wxStringTokenize(data, "\n", ::wxTOKEN_RET_EMPTY_ALL);
+#endif
+				int ncols = m_grid->GetNumberCols();
+
+				if (m_show_db_options && (lines.Count() > 0))
+				{
+					wxArrayString col_vals1 = wxStringTokenize(lines[0], "\t", ::wxTOKEN_RET_EMPTY_ALL);
+					ncols = col_vals1.Count();
+					if (ncols > m_col_arystrvals.Count())
+						ncols = m_col_arystrvals.Count();
+					int ndx = m_col_arystrvals.Index(wxString::Format("%d", ncols));
+					if (ndx >= 0)
+						m_choice_col->SetSelection(ndx);
+				}
+				int nrows = lines.Count() - 1;
+
+				if ((nrows == 0) || (nrows % 8760 != 0)) return;
+
+
+				int minutes = 60 / (nrows / 8760);
+
+				m_grid->ResizeGrid(nrows, ncols);
+				m_data.resize_preserve(nrows, ncols, 0.0);
+
+				m_grid->Paste(true);
+
+				for (int r = 0; r < m_data.nrows(); r++)
+					for (int c = 0; c < m_data.ncols(); c++)
+						m_data.at(r, c) = atof(m_grid->GetCellValue(r, c).c_str());
+				SetData(m_data);
+				int ndx = m_minute_arystrvals.Index(wxString::Format("%d", minutes));
+				if (ndx >= 0)
+					m_choice_timestep->SetSelection(ndx);
+
+			}
+
+		}
+		break;
+		case ISFC_IMPORT:
+		{
+			wxFileDialog dlg(this, "Select data matrix file to import");
+			if (dlg.ShowModal() == wxID_OK)
+				if (!Import(dlg.GetPath()))
+					wxMessageBox("Error import data file:\n\n" + dlg.GetPath());
+		}
+		break;
+		case ISFC_EXPORT:
+		{
+			wxFileDialog dlg(this, "Select file for data export", wxEmptyString, wxEmptyString, wxFileSelectorDefaultWildcardStr, wxFD_SAVE | wxFD_OVERWRITE_PROMPT);
+			if (dlg.ShowModal() == wxID_OK)
+				if (!Export(dlg.GetPath()))
+					wxMessageBox("Error exporting data to file:\n\n" + dlg.GetPath());
+		}
+		break;
+	}
+}
+
+
+bool wxShadingFactorsCtrl::Export(const wxString &file)
+{
+	wxCSVData csv;
+	for (int r = 0; r<m_data.nrows(); r++)
+		for (int c = 0; c<m_data.ncols(); c++)
+			csv(r, c) = wxString::Format("%g", m_data(r, c));
+
+	return csv.WriteFile(file);
+}
+
+bool wxShadingFactorsCtrl::Import(const wxString &file)
+{
+	wxCSVData csv;
+	if (!csv.ReadFile(file)) return false;
+
+	int nrows = csv.NumRows();
+	if ((nrows == 0) || (nrows % 8760 != 0)) return false;
+	int minutes = 60 / (nrows / 8760);
+
+	int ncols = m_grid->GetNumberCols();
+
+	if (m_show_db_options && (csv.NumCols() > 0))
+	{
+		ncols = csv.NumCols();
+		if (ncols > m_col_arystrvals.Count())
+			ncols = m_col_arystrvals.Count();
+		int ndx = m_col_arystrvals.Index(wxString::Format("%d", ncols));
+		if (ndx >= 0)
+			m_choice_col->SetSelection(ndx);
+	}
+
+	m_grid->ResizeGrid(nrows, ncols);
+	m_data.resize_preserve(nrows, ncols, 0.0f);
+
+
+	for (size_t r = 0; r<m_data.nrows(); r++)
+		for (size_t c = 0; c<m_data.ncols(); c++)
+			m_data.at(r, c) = (float)wxAtof(csv(r, c));
+
+	SetData(m_data);
+	int ndx = m_minute_arystrvals.Index(wxString::Format("%d", minutes));
+	if (ndx >= 0)
+		m_choice_timestep->SetSelection(ndx);
+
+	return true;
+}
+
 
 void wxShadingFactorsCtrl::OnChoiceCol(wxCommandEvent  &evt)
 {
@@ -1368,7 +1520,7 @@ void wxShadingFactorsCtrl::SetData(const matrix_t<float> &mat)
 	m_grid_data->SetAttrProvider(new wxExtGridCellAttrProvider);
 
 	m_grid->SetTable(m_grid_data, true);
-	m_grid->SetColumnWidth(0, 130);
+//	m_grid->SetColumnWidth(0, 130);
 
 	m_grid->Layout();
 	m_grid->Refresh();
