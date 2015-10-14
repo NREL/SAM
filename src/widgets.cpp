@@ -1344,6 +1344,7 @@ AFDataMatrixCtrl::AFDataMatrixCtrl( wxWindow *parent, int id,
 void AFDataMatrixCtrl::SetColLabels(const wxString &colLabels)
 {
 	m_colLabels = colLabels;
+	m_colLabels.Replace( "\\n", "\n" );
 	MatrixToGrid();
 }
 
@@ -1624,13 +1625,15 @@ void AFDataMatrixCtrl::MatrixToGrid()
 
 	if ( m_showColLabels )
 	{
-		m_grid->SetColLabelSize( 20 );
 		wxArrayString as = wxStringTokenize(m_colLabels, ",");
 		for (c=0; c<as.Count() && c < m_grid->GetNumberCols(); c++)
 		{
 			m_grid->SetColLabelValue(c, as[c]);
 			m_grid->AutoSizeColLabelSize( c ); 
 		}
+		
+		m_grid->SetColLabelSize( wxGRID_AUTOSIZE );
+
 //		m_grid->SetRowLabelSize( 1 );
 	}
 
@@ -1884,12 +1887,14 @@ void AFValueMatrixButton::GetTableSize(int *nr, int *nc)
 
 void AFValueMatrixButton::SetColLabels(const wxString &delimlist)
 {
-	mColLabels = wxStringTokenize(delimlist, ",");
+	SetColLabels(wxStringTokenize(delimlist, ",")); 
 }
 
 void AFValueMatrixButton::SetColLabels(const wxArrayString &labels)
 {
 	mColLabels = labels;
+	for( size_t i=0;i<mColLabels.size();i++ )
+		mColLabels[i].Replace("\\n", "\n");
 }
 
 void AFValueMatrixButton::OnResize(wxSizeEvent &evt)
