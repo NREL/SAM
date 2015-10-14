@@ -25,7 +25,6 @@ struct ShadingInputData
 //	std::vector<float> hourly;
 
 	/* version 3 */
-	//bool en_shading_db;
 	// for more than one string and PV only
 	int string_option; // 0=shading db,1=average,2=max,3=min
 	bool en_timestep;
@@ -141,8 +140,6 @@ public:
 	void SetDefaultValue(float &default_val) { m_default_val=default_val; }
 	float GetDefaultValue() { return m_default_val; }
 
-//	void SetEnableShadingDB(bool &en_shading_db);
-//	bool GetEnableShadingDB();
 	void SetStringOption(int &string_option);
 	int GetStringOption();
 
@@ -153,6 +150,7 @@ private:
 
 	bool Export(const wxString &file);
 	bool Import(const wxString &file);
+	bool IsValidMinutes(int &minutes);
 
 	float m_default_val;
 	matrix_t<float> m_data;
@@ -162,7 +160,6 @@ private:
 	wxChoice *m_choice_col;
 	wxStaticText *m_caption_timestep;
 	wxChoice *m_choice_timestep;
-//	wxCheckBox *m_en_shading_db;
 	wxChoice *m_choice_string_option;
 	wxButton *m_btn_copy;
 	wxButton *m_btn_paste;
