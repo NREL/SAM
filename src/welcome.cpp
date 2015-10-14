@@ -13,6 +13,7 @@
 #include <wx/html/htmlwin.h>
 #include <wx/hyperlink.h>
 #include <wx/stdpaths.h>
+#include <wx/dir.h>
 
 #include <wex/icons/time.cpng>
 #include <wex/metro.h>
@@ -24,10 +25,15 @@
 #include "registration.h"
 #include "script.h"
 #include "welcome.h"
+#include "macro.h"
+
+
+#define MAX_SCRIPTS 100
 
 enum { ID_CREATE_PROJECT=wxID_HIGHEST+556, ID_OPEN_EXISTING, ID_RECENT_FILES,
 	ID_MESSAGES_HTML, ID_MESSAGE_THREAD, ID_DOWNLOAD_TIMER, ID_GET_STARTED,
-ID_NEW_SCRIPT, ID_OPEN_SCRIPT, ID_REGISTRATION, ID_TEST_SEGFAULT, ID_CHECK_FOR_UPDATES };
+ID_NEW_SCRIPT, ID_OPEN_SCRIPT, ID_REGISTRATION, ID_TEST_SEGFAULT, ID_CHECK_FOR_UPDATES, 
+ID_QUICK_START, ID_QSTART_SCRIPTS, ID_QSTART_SCRIPTS_MAX=ID_QSTART_SCRIPTS+MAX_SCRIPTS };
 
 BEGIN_EVENT_TABLE(WelcomeScreen, wxPanel)
 	EVT_PAINT(WelcomeScreen::OnPaint)
@@ -40,10 +46,14 @@ BEGIN_EVENT_TABLE(WelcomeScreen, wxPanel)
 	EVT_BUTTON( wxID_ABOUT, WelcomeScreen::OnCommand )
 	EVT_BUTTON( wxID_HELP, WelcomeScreen::OnCommand )
 	EVT_BUTTON( wxID_EXIT, WelcomeScreen::OnCommand )
-	EVT_BUTTON( ID_GET_STARTED, WelcomeScreen::OnCommand )
 	EVT_BUTTON( ID_REGISTRATION, WelcomeScreen::OnCommand )
 	EVT_BUTTON( ID_CHECK_FOR_UPDATES, WelcomeScreen::OnCommand )
 	EVT_BUTTON( ID_TEST_SEGFAULT, WelcomeScreen::OnCommand )
+
+	
+	EVT_BUTTON( ID_QUICK_START, WelcomeScreen::OnCommand )
+	EVT_MENU( ID_GET_STARTED, WelcomeScreen::OnCommand )
+	EVT_MENU_RANGE( ID_QSTART_SCRIPTS, ID_QSTART_SCRIPTS_MAX, WelcomeScreen::OnQStartScript )
 
 	EVT_LISTBOX_DCLICK( ID_RECENT_FILES, WelcomeScreen::OnCommand )
 	
@@ -88,7 +98,7 @@ WelcomeScreen::WelcomeScreen(wxWindow *parent)
 	m_newScript = new wxMetroButton( this, ID_NEW_SCRIPT, "New script" );
 	
 	m_btnRegistration = new wxMetroButton( this, ID_REGISTRATION, "Registration" );
-	m_btnGetStarted = new wxMetroButton( this, ID_GET_STARTED, "Getting started for new users", wxNullBitmap, wxDefaultPosition, wxDefaultSize, wxMB_RIGHTARROW);
+	m_btnGetStarted = new wxMetroButton( this, ID_QUICK_START, "Quick start for new users", wxNullBitmap, wxDefaultPosition, wxDefaultSize, wxMB_RIGHTARROW);
 	m_btnCheckForUpdates = new wxMetroButton( this, ID_CHECK_FOR_UPDATES, "Check for updates...");
 	m_btnHelp = new wxMetroButton( this, wxID_HELP, "Help contents" );
 	m_btnAbout = new wxMetroButton( this, wxID_ABOUT, "About" );
@@ -276,6 +286,29 @@ void WelcomeScreen::OnCommand( wxCommandEvent &evt )
 	case ID_NEW_SCRIPT:
 		ScriptWindow::CreateNewWindow();
 		break;
+	case ID_QUICK_START:
+	{
+		wxPoint pos(wxDefaultPosition);
+		if ( wxWindow *win = dynamic_cast<wxWindow*>(evt.GetEventObject()) )
+		{
+			pos = win->GetScreenPosition();
+			pos.x += win->GetClientSize().x;
+		}
+
+		wxMetroPopupMenu menu;
+		menu.Append( ID_GET_STARTED, "Getting started guide..." );
+		
+		m_qstartScripts.clear();
+		wxDir::GetAllFiles( SamApp::GetRuntimePath() + "/quickstart", &m_qstartScripts, "*.lk" );
+		m_qstartScripts.Sort();
+
+		if (m_qstartScripts.size() > 0 ) menu.AppendSeparator();
+		for( size_t i=0;i<m_qstartScripts.size();i++ )
+			menu.Append( ID_QSTART_SCRIPTS+i, wxFileName(m_qstartScripts[i]).GetName() );
+		
+		menu.Popup( this, pos, wxTOP|wxLEFT );
+	}
+		break;
 	case ID_GET_STARTED:
 		SamApp::ShowHelp( "getting_started");
 		break;
@@ -334,4 +367,27 @@ void WelcomeScreen::OnCommand( wxCommandEvent &evt )
 		SamRegistration::ShowDialog();
 		break;
 	}
+}
+
+void WelcomeScreen::OnQStartScript( wxCommandEvent &evt )
+{
+	int iscript = evt.GetId() - ID_QSTART_SCRIPTS;
+	if ( iscript < 0 || iscript >= m_qstartScripts.size() )
+		return;
+
+	wxString file( m_qstartScripts[iscript] );
+
+	wxFile fp( file );
+	if ( fp.IsOpened() )
+	{
+		wxString buf;
+		fp.ReadAll( &buf );
+
+		MacroEngine me;
+		if ( !me.Run( buf ) )
+			wxMessageBox("Quick start script failed.\n\n", file);
+	}
+	else
+		wxMessageBox("Could not open quick start script.\n\n", file);
+	
 }

@@ -3,7 +3,7 @@
 
 // Save the current dir for later use
 curDir = userlocaldatadir();
-outln( curDir );
+//outln( curDir );
 
 // Determine screen size and set default pop-up positions
 scrn = scrnres();

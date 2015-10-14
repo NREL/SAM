@@ -25,6 +25,10 @@ public:
 private:
 	void LayoutWidgets();
 	
+
+	wxArrayString m_qstartScripts;
+	void OnQStartScript( wxCommandEvent & );
+
 	void OnCommand( wxCommandEvent & );
 	void OnPaint(wxPaintEvent &evt);
 	void OnResize(wxSizeEvent &evt);
