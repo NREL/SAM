@@ -1169,9 +1169,6 @@ bool sidebuttons)
 	m_num_minutes = 60;
 	m_grid_data = NULL;
 	m_show_db_options = show_db_options;
-//	m_col_header_use_format = false;
-//	m_col_ary_str.Clear();
-//	m_col_format_str = wxEmptyString;
 	m_col_arystrvals.Clear();
 	m_minute_arystrvals.Clear();
 	m_string_arystrvals.Clear();
@@ -1186,7 +1183,6 @@ bool sidebuttons)
 	m_grid->DisableDragGridSize();
 	m_grid->SetRowLabelAlignment(wxALIGN_LEFT, wxALIGN_CENTER);
 
-//	m_en_shading_db = new wxCheckBox(this, wxID_ANY, "Use shading database lookup");
 
 	m_string_arystrvals.push_back("Shading database lookup");
 	m_string_arystrvals.push_back("Average of string values");
@@ -1234,7 +1230,6 @@ bool sidebuttons)
 	{
 		m_caption_col->Show(false);
 		m_choice_col->Show(false);
-//		m_en_shading_db->Show(false);
 		m_choice_string_option->Show(false);
 	}
 
@@ -1251,7 +1246,6 @@ bool sidebuttons)
 			v_tb_sizer->Add(m_caption_col, 0, wxALL | wxEXPAND, 3);
 			v_tb_sizer->Add(m_choice_col, 0, wxALL | wxEXPAND, 3);
 			v_tb_sizer->AddSpacer(5);
-//			v_tb_sizer->Add(m_en_shading_db, 0, wxALL | wxEXPAND, 3);
 			v_tb_sizer->Add(m_choice_string_option, 0, wxALL | wxEXPAND, 3);
 		}
 		v_tb_sizer->AddSpacer(5);
@@ -1279,7 +1273,6 @@ bool sidebuttons)
 			h_tb_sizer->Add(m_caption_col, 0, wxALL | wxEXPAND | wxALIGN_CENTER_VERTICAL, 3);
 			h_tb_sizer->Add(m_choice_col, 0, wxALL | wxEXPAND | wxALIGN_CENTER_VERTICAL, 3);
 			h_tb_sizer->AddSpacer(5);
-//			h_tb_sizer->Add(m_en_shading_db, 0, wxALL | wxEXPAND | wxALIGN_CENTER_VERTICAL, 3);
 			h_tb_sizer->Add(m_choice_string_option, 0, wxALL | wxEXPAND | wxALIGN_CENTER_VERTICAL, 3);
 		}
 		h_tb_sizer->AddSpacer(5);
@@ -1297,7 +1290,6 @@ bool sidebuttons)
 		SetSizer(v_sizer, false);
 	}
 
-//	MatrixToGrid();
 }
 
 
@@ -1306,7 +1298,6 @@ void wxShadingFactorsCtrl::UpdateNumberColumns(size_t &new_cols)
 	// resize and preserve existing data and fill new data with default.
 	m_data.resize_preserve(m_data.nrows(), new_cols, m_default_val);
 	SetData(m_data);
-//	MatrixToGrid();
 }
 
 void wxShadingFactorsCtrl::UpdateNumberRows(size_t &new_rows)
@@ -1314,7 +1305,6 @@ void wxShadingFactorsCtrl::UpdateNumberRows(size_t &new_rows)
 	// resize and preserve existing data and fill new data with default.
 	m_data.resize_preserve(new_rows, m_data.ncols(), m_default_val);
 	SetData(m_data);
-//	MatrixToGrid();
 }
 
 void wxShadingFactorsCtrl::UpdateNumberMinutes(size_t &new_timesteps)
@@ -1326,40 +1316,8 @@ void wxShadingFactorsCtrl::UpdateNumberMinutes(size_t &new_timesteps)
 		size_t new_rows = 60 / new_timesteps * 8760;
 		m_data.resize_preserve(new_rows, m_data.ncols(), m_default_val);
 		SetData(m_data);
-//		MatrixToGrid();
 	}
 }
-
-/*
-void wxShadingFactorsCtrl::UpdateColumnHeaders()
-{
-	if (m_col_header_use_format)
-	{
-		for (size_t i = 0; i < m_grid->GetNumberCols(); i++)
-		{
-			if (m_col_format_str.Find("%d") != wxNOT_FOUND)
-				m_grid->SetColLabelValue(i, wxString::Format(m_col_format_str, i));
-			else
-				m_grid->SetColLabelValue(i, m_col_format_str);
-		}
-	}
-	else
-	{
-		for (size_t i = 0; i < m_grid->GetNumberCols() && i < m_col_ary_str.Count(); i++)
-			m_grid->SetColLabelValue(i, m_col_ary_str[i]);
-	}
-}
-
-
-
-void wxShadingFactorsCtrl::SetColLabelFormatString(const wxString &col_format_str)
-{
-	if (col_format_str != m_col_format_str)
-		m_col_format_str = col_format_str;
-	m_col_header_use_format = false;
-	UpdateColumnHeaders();
-}
-*/
 
 void wxShadingFactorsCtrl::OnCommand(wxCommandEvent &evt)
 {
@@ -1402,9 +1360,9 @@ void wxShadingFactorsCtrl::OnCommand(wxCommandEvent &evt)
 				int nrows = lines.Count() - 1;
 
 				if ((nrows == 0) || (nrows % 8760 != 0)) return;
-
-
 				int minutes = 60 / (nrows / 8760);
+				if (!IsValidMinutes(minutes)) return;
+
 
 				m_grid->ResizeGrid(nrows, ncols);
 				m_data.resize_preserve(nrows, ncols, 0.0);
@@ -1453,6 +1411,11 @@ bool wxShadingFactorsCtrl::Export(const wxString &file)
 	return csv.WriteFile(file);
 }
 
+bool wxShadingFactorsCtrl::IsValidMinutes(int &minutes)
+{
+	return (m_minute_arystrvals.Index(wxString::Format("%d", minutes)) != wxNOT_FOUND);
+}
+
 bool wxShadingFactorsCtrl::Import(const wxString &file)
 {
 	wxCSVData csv;
@@ -1461,6 +1424,8 @@ bool wxShadingFactorsCtrl::Import(const wxString &file)
 	int nrows = csv.NumRows();
 	if ((nrows == 0) || (nrows % 8760 != 0)) return false;
 	int minutes = 60 / (nrows / 8760);
+
+	if (!IsValidMinutes(minutes)) return false;
 
 	int ncols = m_grid->GetNumberCols();
 
@@ -1520,11 +1485,9 @@ void wxShadingFactorsCtrl::SetData(const matrix_t<float> &mat)
 	m_grid_data->SetAttrProvider(new wxExtGridCellAttrProvider);
 
 	m_grid->SetTable(m_grid_data, true);
-//	m_grid->SetColumnWidth(0, 130);
 
 	m_grid->Layout();
 	m_grid->Refresh();
-//	MatrixToGrid();
 }
 
 void wxShadingFactorsCtrl::GetData(matrix_t<float> &mat)
@@ -1565,27 +1528,6 @@ void wxShadingFactorsCtrl::OnCellChange(wxGridEvent &evt)
 }
 
 
-/*
-void wxShadingFactorsCtrl::MatrixToGrid()
-{
-	int r, nr = m_data.nrows();
-	int c, nc = m_data.ncols();
-
-	m_num_cols = nc;
-	m_num_rows = nr;
-
-	m_grid->ResizeGrid(nr, nc);
-	for (r = 0; r<nr; r++)
-		for (c = 0; c<nc; c++)
-			m_grid->SetCellValue(r, c, wxString::Format("%g", m_data.at(r, c)));
-
-	UpdateColumnHeaders();
-	UpdateRowLabels();
-	if (m_num_cols > 1) // if not shading database then set to use
-		m_en_shading_db->SetValue(true);
-}
-*/
-
 void wxShadingFactorsCtrl::SetColCaption(const wxString &cap)
 {
 	m_caption_col->SetLabel(cap);
@@ -1625,65 +1567,6 @@ void wxShadingFactorsCtrl::SetNumCols(size_t &cols)
 		m_choice_col->SetSelection(ndx);
 	UpdateNumberColumns(cols);
 }
-/*
-void wxShadingFactorsCtrl::SetNumRows(size_t &rows)
-{
-	UpdateNumberRows(rows);
-}
-
-void wxShadingFactorsCtrl::SetColLabels(const wxArrayString &colLabels)
-{
-	if (colLabels != m_col_ary_str)
-		m_col_ary_str = colLabels;
-	m_col_header_use_format = false;
-	UpdateColumnHeaders();
-}
-
-wxArrayString wxShadingFactorsCtrl::GetColLabels()
-{
-	wxArrayString ret;
-	for (size_t i = 0; i < m_grid->GetNumberCols(); i++)
-		ret.push_back(m_grid->GetColLabelValue(i));
-	return ret;
-}
-
-void  wxShadingFactorsCtrl::UpdateRowLabels()
-{ // can do with GridTableBase like wxShadingFactorsTable in widgets.cpp
-	size_t num_rows = m_grid->GetNumberRows();
-	if (num_rows > 8760) // otherwise use default row numbering
-	{
-		int nmult = num_rows / 8760;
-		if (nmult != 0)
-		{
-			for (size_t row = 0; row < num_rows; row++)
-			{
-				double step = 1.0 / ((double)nmult);
-				double tm = step*(row + 1);
-				double frac = tm - ((double)(int)tm);
-				if (frac == 0.0)
-					m_grid->SetRowLabelValue(row, wxString::Format("%lg", tm));
-				else
-					m_grid->SetRowLabelValue(row, wxString::Format("   .%lg", frac * 60));
-			}
-		}
-	}
-	else
-	{
-		for (size_t row = 0; row < num_rows; row++)
-			m_grid->SetRowLabelValue(row, wxString::Format("%d", row+1));
-	}
-}
-
-void wxShadingFactorsCtrl::SetEnableShadingDB(bool &en_shading_db)
-{
-	m_en_shading_db->SetValue(en_shading_db);
-}
-
-bool wxShadingFactorsCtrl::GetEnableShadingDB()
-{
-	return m_en_shading_db->GetValue();
-}
-*/
 void wxShadingFactorsCtrl::SetStringOption(int &string_option)
 {
 	if (string_option >= 0 && string_option < (int)m_string_arystrvals.Count())

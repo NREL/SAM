@@ -915,7 +915,7 @@ bool ShadeAnalysis::SimulateDiffuse(std::vector<surfshade> &shade, bool save)
 
 bool ShadeAnalysis::SimulateTimeseries( int minute_step, std::vector<surfshade> &shade )
 {
-	int allowed_steps[] = { 1, 5, 10, 15, 20, 30, 60, 0 };
+	int allowed_steps[] = { 1, 3, 5, 10, 15, 30, 60, 0 };
 	int ii=0;
 	bool tsok = false;
 	while( allowed_steps[ii] != 0 )
