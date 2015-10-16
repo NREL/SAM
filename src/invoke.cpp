@@ -2172,6 +2172,7 @@ void fcall_editscene3d(lk::invoke_t &cxt)
 	if (st->SimulateTimeseries(min_step, shadets, use_groups) && shadets.size() > 0)
 	{
 		wxArrayInt order1;
+		wxArrayString part1;
 		if (!use_groups) // use overal shading factor
 		{
 			// overall losses for the system are always in table 0
@@ -2180,7 +2181,7 @@ void fcall_editscene3d(lk::invoke_t &cxt)
 			for (size_t i = 0; i < shadets[0].ts.size(); i++)
 				mat_ts.at(i, 0) = shadets[0].ts[i];
 			copy_mat(v, mat_ts);
-			order1.push_back(0); // TODO - update for diffuse calculations.
+			order1.push_back(0);
 		}
 		else
 		{
@@ -2189,7 +2190,6 @@ void fcall_editscene3d(lk::invoke_t &cxt)
 
 			// return in order of subarray 1, subarray 2, subarray 3, subarray 4 for application in ui
 			// first parse and group first part of names
-			wxArrayString part1;
 			for (size_t i = 0; i < shadets.size(); i++)
 			{
 
@@ -2198,6 +2198,8 @@ void fcall_editscene3d(lk::invoke_t &cxt)
 				if (p1p2.Count() > 0)
 					name = p1p2[0];
 
+				if (part1.Count() < 1) part1.push_back(name);
+
 				if (part1.Index(name) == wxNOT_FOUND)
 					part1.push_back(name);
 			}
@@ -2205,40 +2207,41 @@ void fcall_editscene3d(lk::invoke_t &cxt)
 			for (size_t i = 0; i < part1.Count(); i++)
 				order1.push_back(i);
 			// check group names and reorder if necessary
-			/* can reorder if necessary
 			wxArrayInt tmp_order;
-			int j = 1;
-			while (j < (int)part1.Count())
+			int j = 0;
+			while ((tmp_order.Count() < order1.Count()) && (j < 100 )) // allow for double digit numbering
 			{
-			for (size_t i = 0; i < part1.size(); i++)
+				// Index does not work with null values,
+				for (size_t i = 0; i < part1.size(); i++)
+				{
+					wxString name = part1[i];
+					if (name.Find(wxString::Format("%d", j)) != wxNOT_FOUND)
+					{
+						if (tmp_order.Count() < 1) tmp_order.push_back(i);
+						if (tmp_order.Index(i) == wxNOT_FOUND)
+							tmp_order.push_back(i);
+					}
+				}
+				j++;
+			}
+			if (tmp_order.Count() == order1.Count())
 			{
-			wxString name = part1[i];
-			if (name.Find(wxString::Format("%d", j)) != wxNOT_FOUND)
-			{
-			if (tmp_order.Index(i) == wxNOT_FOUND)
-			tmp_order.push_back(i);
+				for (size_t i = 0; i < order1.size(); i++)
+					order1[i] = tmp_order[i];
 			}
-			}
-			j++;
-			}
-			if (tmp_order.Count() == part1.Count() - 1)
-			{
-			for (size_t i = 1; i < order1.size(); i++)
-			order1[i] = tmp_order[i - 1];
-			}
-			*/
-			// now have subarray 1 through 4 order
-			// look at parallel strings
+			// the callback only considers first four subarrays
+			
 
-
+			wxArrayInt order2;
+			wxArrayString part2;
+			wxArrayInt sort_order2;
 			// construct matrices for each
-			// initially do not worry about order "string1, string2...
 			for (size_t io1 = 0; io1 < order1.Count(); io1++)
 			{
-				wxArrayInt order2;
-				wxArrayString part2;
 				size_t nrows = 8760;
 				size_t ncols = 1;
+				order2.Clear();
+				part2.Clear();
 
 				for (size_t its = 0; its < shadets.size(); its++)
 				{
@@ -2252,19 +2255,48 @@ void fcall_editscene3d(lk::invoke_t &cxt)
 						// can save string names and reorder
 						if (p1p2.Count() > 1) // parallel strings
 							name = p1p2[1];
+						// null comparisons do not work using Index!
+						if (part2.Count() < 1) part2.push_back(name);
 						if (part2.Index(name) == wxNOT_FOUND)
 							part2.push_back(name);
 					}
 				}
 
+				
+				// check string names and reorder if necessary
+				// up to 8 parallel strings considered in callback
+				sort_order2.Clear();
+				int j = 0;
+				while ((sort_order2.Count() < order2.Count()) && (j < 100)) // allow for double digit numbering
+				{
+					for (size_t i = 0; i < part2.size(); i++)
+					{
+						wxString name = part2[i];
+						if (name.Find(wxString::Format("%d", j)) != wxNOT_FOUND)
+						{
+							if (sort_order2.Index(i) == wxNOT_FOUND)
+								sort_order2.push_back(i);
+						}
+					}
+					j++;
+				}
+				
+				if (sort_order2.Count() != order2.Count())
+				{
+					sort_order2.Clear();
+					for (size_t i = 0; i < order2.size(); i++)
+						sort_order2.push_back(i);
+				}
+				
+
 				ncols = order2.size();
 				matrix_t<float> mat_ts(nrows, ncols);
 				for (size_t c = 0; c < order2.Count(); c++)
-					for (size_t r = 0; r < shadets[order2[c]].ts.size(); r++)
-						mat_ts.at(r, c) = shadets[order2[c]].ts[r];
+					for (size_t r = 0; r < shadets[order2[sort_order2[c]]].ts.size(); r++)
+						mat_ts.at(r, c) = shadets[order2[sort_order2[c]]].ts[r];
 
 
-				//	set names for subarray processing in callback
+				//	set names for subarray processing in callback independent of what set in scene 3d but order is preserved.
 				wxString name;
 				name.Printf("subarray%d", (int)(io1 + 1));
 
@@ -2272,6 +2304,8 @@ void fcall_editscene3d(lk::invoke_t &cxt)
 				copy_mat(sec, mat_ts);
 			}
 		}
+
+		// diffuse
 		std::vector<ShadeTool::diffuse> diffuse;
 		if (st->SimulateDiffuse(diffuse, use_groups) && diffuse.size() > 0)
 		{
@@ -2282,15 +2316,51 @@ void fcall_editscene3d(lk::invoke_t &cxt)
 			}
 			else
 			{
-				// overall losses for the system are always in table 0
-				lk::vardata_t &ds = cxt.result().hash_item("diffuse");
-				ds.empty_vector();
-				ds.vec()->reserve(diffuse.size());
-
-				// TODO fix this for proper fiffuse value for parallel strings
-				for (size_t i = 0; i < order1.Count(); i++)
+				if (!use_groups)
 				{
-					ds.vec_append(diffuse[order1[i]].shade_percent);
+					if (diffuse.size() != 1 || order1.Count() != 1)
+					{
+						cxt.result().hash_item("ierr").assign(4.0);
+						cxt.result().hash_item("message").assign(wxString::Format("Error in simulation of diffuse shading factors %d not equal 1.", (int) diffuse.size()));
+					}
+					else
+					{
+						lk::vardata_t &ds = cxt.result().hash_item("diffuse");
+						ds.empty_vector();
+						ds.vec()->reserve(diffuse.size());
+						for (size_t i = 0; i < order1.Count(); i++)
+						{
+							ds.vec_append(diffuse[order1[i]].shade_percent);
+						}
+					}
+				}
+				else
+				{
+					lk::vardata_t &ds = cxt.result().hash_item("diffuse");
+					ds.empty_vector();
+					ds.vec()->reserve(diffuse.size());
+					// group and calculate for each subarray
+					for (size_t io1 = 0; io1 < order1.Count(); io1++)
+					{
+						double average = 0;
+						double count = 0;
+						for (size_t its = 0; its < diffuse.size(); its++)
+						{
+							wxString name = diffuse[its].name.Lower();
+							wxArrayString p1p2 = wxSplit(name, '.');
+							if (p1p2.Count() < 1) continue;
+							if (p1p2[0] == part1[order1[io1]])  // part of this sub array
+							{
+								average += diffuse[its].shade_factor;
+								count += diffuse[its].shade_count;
+							}
+						}
+						if (count > 0)
+							average /= count;
+						else
+							average = 0;
+						ds.vec_append(average);
+					}
 				}
 			}
 		}
