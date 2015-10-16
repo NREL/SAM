@@ -49,6 +49,13 @@ Some more examples:
 
 //***********************************************************************************************************************************************************
 
+version_upgrade{'2015.10.16'} = define() {
+	message('Upgrading project to version 2015.10.16');
+	// shading updates are taking care of when reading in the old shading value.
+	//const cfg = config();
+	
+};
+
 version_upgrade{'2015.9.9'} = define() {
 	
 	const cfg = config();
