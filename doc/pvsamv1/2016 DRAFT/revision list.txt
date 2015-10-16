@@ -1,0 +1,50 @@
+PV Reference Manual Revisions
+=============================
+
+Team Revisions
+--------------
+
+- 3D shading calculator chapter including diffuse loss (ARON, STEVE)
+
+- IEC module model (ARON)
+
+- short chapter on battery that refers to battery manual (NICK)
+
+- snow model (SEVERIN)
+
+Paul Revisions
+--------------
+
+- POA input options
+
+- irradiance components options 
+
+- backtracking correction? (does not run self-shading model)
+
+- curtailment and availability losses
+
+- New DC optimizer loss input
+
+- check the performance ratio formula now that we've fixed that bug?
+
+- module output voltage and inverter MPPT voltage clipping
+
+- revised output variables (no more ac gross/ac net)
+
+- change units from kWh to kW
+
+- Add units to variable definition tables
+
+- lifetime simulations and degradation
+
+Wish List
+---------
+
+- loss diagram calculations?
+
+Errors
+======
+
+p. 43 "The cell temperature Tc for the CEC model is calculated using either the NOCT cell temperature model or the heat transfer cell temperature model." That is only true for CEC with database -- for the CEC with user parameters, only the NOCT temp model is available.
+
+

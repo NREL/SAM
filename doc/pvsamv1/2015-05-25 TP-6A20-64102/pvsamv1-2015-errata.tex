@@ -1,0 +1,119 @@
+
+\documentclass[report]{nrel}
+
+\title{Errata for SAM Photovoltaic Model Technical Reference}
+\author{P. Gilman}
+\date{October 15, 2015}
+
+\usepackage{array}
+
+% -----------------------------------
+\begin{document}
+
+This document lists errors with corrections for the SAM photovoltaic reference manual available from the link at the bottom of this page or from the Performance Model Documentation page on the SAM website.
+
+Gilman, P.; (2015) ``SAM Photovoltaic Model Technical Reference." TP-6A20-64102. Golden, CO: National Renewable Energy Laboratory.
+
+\section*{Section 11.2: Sandia Inverter Submodel}
+
+\textbf{Equation 11.3} for Sandia inverter model parameters is missing closing parentheses.
+
+Incorrect:
+%lib_sandia.cpp 329
+\begin{align*}
+A &=P_{dc,0} \left[ 1+ C_1 ( V_{dc} - V_{dc,0}\right] \notag\\
+B &= P_{s,0}  \left[ 1+ C_2 ( V_{dc} - V_{dc,0}\right] \notag\\
+C &= C_0  \left[ 1+ C_3 ( V_{dc} - V_{dc,0}\right]
+\end{align*}
+
+Correct:
+\begin{align*}
+A &=P_{dc,0} \left[ 1+ C_1 ( V_{dc} - V_{dc,0} )\right] \notag\\
+B &= P_{s,0}  \left[ 1+ C_2 ( V_{dc} - V_{dc,0} )\right] \notag\\
+C &= C_0  \left[ 1+ C_3 ( V_{dc} - V_{dc,0} )\right]
+\end{align*}
+
+\section*{Section 8.6: Beam Self-shading DC Loss Factor}
+
+The symbol for the submodule \textbf{fill factor} variable is inconsistent. It should be $F_{fill}$ instead of $\mathit{FF}_0$.
+
+\textbf{Equation 8.23} uses $m_d$ for the number of bypass diodes instead of $d$. Note that the number of bypass diodes is fixed at $d=3$, as expained in Section 8.1.
+
+Correct:
+\begin{align*}
+F_{dc1} &= 1-C_1S^2-C_2S \notag\\ %eqn5
+F_{dc2} &= 
+\left\{
+   \begin{array}{ll}
+      \dfrac{X-S\left(1+0.5 d V^{-1}_{mp}\right)}{X} & \text{if $X>0$}\\
+      0 & \text{if $X=0$}\\
+   \end{array}
+\right. \notag\\ %eqn9
+F_{dc3} &= C_3\left(S-1\right)+R_{dt} %eqn10
+\end{align*}
+
+Incorrect:
+\begin{align*}
+F_{dc1} &= 1-C_1S^2-C_2S \notag\\ %eqn5
+F_{dc2} &= 
+\left\{
+   \begin{array}{ll}
+      \dfrac{X-S\left(1+0.5 m_d V^{-1}_{mp}\right)}{X} & \text{if $X>0$}\\
+      0 & \text{if $X=0$}\\
+   \end{array}
+\right. \notag\\ %eqn9
+F_{dc3} &= C_3\left(S-1\right)+R_{dt} %eqn10
+\end{align*}
+
+\section*{Section 9.4: Sandia Module Model}
+
+\textbf{Equation 9.5} for effective irradiance is missing brackets to show the correct order of multiplication and addition.
+
+Correct:
+\begin{equation*}
+E_e = \frac{I_{sc}}{I_{sc,ref} \left[1 + \alpha_{sc,ref} (T_c - 25)\right]}
+\end{equation*}
+
+Incorrect:
+\begin{equation*}
+E_e = \frac{I_{sc}}{I_{sc,ref}~1 + \alpha_{sc,ref} (T_c - 25)}
+\end{equation*}
+
+\textbf{Equation 9.6} is also missing brackets:
+
+Correct:
+\begin{equation*}
+I_{mp} = I_{mp,ref} (C_0 E_e + C_1 E_e^2) \left[1 + \alpha_{sc,ref} (T_c - 25)\right]
+\end{equation*}
+
+Incorrect:
+\begin{equation*}
+I_{mp} = I_{mp,ref} (C_0 E_e + C_1 E_e^2)~1 + \alpha_{sc,ref} (T_c - 25)
+\end{equation*}
+
+The equation for \textbf{open circuit voltage} is missing. It should be between Equations 9.7 and 9.8:
+
+\begin{equation*}
+V_{oc} = V_{oc,ref}+ s~\Delta T_c \ln(E_e)+ \beta_{oc} (T_c - 25)
+\end{equation*}
+
+\textbf{Equation 9.8} for voltage at maximum power uses $\log$ instead of $\ln$. The logarithms  should be natural logarithms.
+
+Correct:
+\begin{equation*}
+V_{mp} = V_{mp,ref} +
+ C_2~s~\Delta T_c~\ln(E_e) +
+ C_3~s~\left[\Delta T_c \ln(E_e)\right]^2 +
+ \beta_{mp} (T_c - 25)
+\end{equation*}
+
+Incorrect:
+\begin{equation*}
+V_{mp} = V_{mp,ref} +
+ C_2~s~\Delta T_c~\log(E_e) +
+ C_3~s~\left[\Delta T_c \log(E_e)\right]^2 +
+ \beta_{mp} (T_c - 25)
+\end{equation*}
+
+\end{document}
+
