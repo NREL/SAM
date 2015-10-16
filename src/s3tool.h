@@ -170,7 +170,7 @@ public:
 	void GetDiurnal( size_t i, matrix_t<float> *mxh, wxString *name );
 	bool SimulateDiffuse(std::vector<surfshade> &shade, bool save = false);
 	size_t GetDiffuseCount();
-	void GetDiffuse(size_t i, double *shade_percent, wxString *name);
+	void GetDiffuse(size_t i, double *shade_percent, double *shade_factor, double *shade_count, wxString *name);
 	bool SimulateTimeseries( int minute_step, std::vector<surfshade> &shade );
 	size_t GetTimeseriesCount();
 	void GetTimeseries(size_t i, std::vector<float> *ts, wxString *name);
@@ -185,6 +185,8 @@ private:
 	wxScrolledWindow *m_scroll;
 	std::vector<AFMonthByHourFactorCtrl*> m_mxhList;
 	std::vector<double> m_diffuseShadePercent;
+	std::vector<double> m_diffuseShadeFactor;
+	std::vector<double> m_diffuseShadeCount;
 	wxArrayString m_diffuseName;
 
 	void OnGenerateTimeSeries( wxCommandEvent & );
@@ -226,9 +228,13 @@ public:
 		wxString name;
 		matrix_t<float> mxh;
 	};
+	// for each group shade_percent = shade_factor / shade_count
+	// overall = sum (shade_factor) / sum (shade_count)
 	struct diffuse {
 		wxString name;
 		double shade_percent;
+		double shade_factor; 
+		double shade_count;
 	};
 
 	bool SimulateTimeseries(int &minute_timestep, std::vector<shadets> &result, bool use_groups=false);

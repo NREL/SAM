@@ -847,6 +847,8 @@ bool ShadeAnalysis::SimulateDiffuse(std::vector<surfshade> &shade, bool save)
 	
 	int y = 0;
 	// average shading factor over skydome
+	m_diffuseShadeCount.clear();
+	m_diffuseShadeFactor.clear();
 	m_diffuseShadePercent.clear();
 	m_diffuseName.Clear();
 	for (size_t j = 0; j < shade.size(); j++)
@@ -861,11 +863,12 @@ bool ShadeAnalysis::SimulateDiffuse(std::vector<surfshade> &shade, bool save)
 				count++;
 			}
 		}
-
-		if ( count > 0 ) average /= count;
+		m_diffuseShadeFactor.push_back(average);
+		m_diffuseShadeCount.push_back(count);
+		if (count > 0) average /= count;
 		else average = 0; // if there were no surfaces in this piece (i.e. facing away from sun), no diffuse blocking
 
-		m_diffuseShadePercent.push_back( average );
+		m_diffuseShadePercent.push_back(average);
 		m_diffuseName.push_back(shade[j].group);
 	}
 		
@@ -1314,11 +1317,13 @@ void ShadeAnalysis::GetDiurnal(size_t i, matrix_t<float> *mxh, wxString *name)
 	}
 }
 
-void ShadeAnalysis::GetDiffuse(size_t i, double *shade_percent, wxString *name)
+void ShadeAnalysis::GetDiffuse(size_t i, double *shade_percent, double *shade_factor, double *shade_count, wxString *name)
 {
-	if ((i < m_diffuseShadePercent.size()) && (i<m_diffuseName.Count()))
+	if ((i < m_diffuseShadePercent.size()) && (i < m_diffuseShadeFactor.size()) && (i < m_diffuseShadeCount.size()) && (i<m_diffuseName.Count()))
 	{
 		(*shade_percent) = m_diffuseShadePercent[i];
+		(*shade_factor) = m_diffuseShadeFactor[i];
+		(*shade_count) = m_diffuseShadeCount[i];
 		(*name) = m_diffuseName[i];
 	}
 }
@@ -1631,7 +1636,7 @@ bool ShadeTool::SimulateDiffuse(std::vector<diffuse> &result, bool use_groups)
 		{
 			diff_group.push_back(diffuse());
 			diffuse &d = diff_group[diff_group.size() - 1];
-			m_analysis->GetDiffuse(i, &d.shade_percent, &d.name);
+			m_analysis->GetDiffuse(i, &d.shade_percent, &d.shade_factor, &d.shade_count, &d.name);
 		}
 		if (use_groups)
 		{
@@ -1643,14 +1648,17 @@ bool ShadeTool::SimulateDiffuse(std::vector<diffuse> &result, bool use_groups)
 			diffuse &d = result[result.size() - 1];
 			d.name = "all active surfaces";
 			d.shade_percent = 0;
-			double avg_percent = 0;
+			d.shade_factor = 0;
+			d.shade_count = 0;
 			n = diff_group.size();
 			for (size_t i = 0; i < n; i++)
-				avg_percent += diff_group[i].shade_percent; // include sphere differential 
-			if (n > 0)
 			{
-				avg_percent /= n;
-				d.shade_percent = avg_percent;
+				d.shade_factor += diff_group[i].shade_factor;
+				d.shade_count += diff_group[i].shade_count;
+			}
+			if (d.shade_count > 0)
+			{
+				d.shade_percent = d.shade_factor / d.shade_count;
 			}
 		}
 		return true;
