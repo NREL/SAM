@@ -1422,7 +1422,7 @@ void SamRegistration::OnRegister( wxCommandEvent & )
 	if ( code == 200 ) m_output->SetValue( "Registration successful!  You have been sent an email with a registration key.");
 	else if ( code == 409 ) 
 	{
-		m_output->SetValue("You are already registered.  Please enter the registration key sent to you by email when you first registered.\n\nYou can click 'Resend key' above to have your key emailed to you again." );
+		m_output->SetValue("You are already registered.  Please enter the registration key sent to you by email when you first registered and click 'Confirm' above.\n\nYou can click 'Resend key' to have your key emailed to you again." );
 		m_register->SetLabel( "Resend key");
 		m_register->Refresh();
 		Layout();
