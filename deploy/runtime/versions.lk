@@ -52,8 +52,13 @@ Some more examples:
 version_upgrade{'2015.10.16'} = define() {
 	message('Upgrading project to version 2015.10.16');
 	// shading updates are taking care of when reading in the old shading value.
-	//const cfg = config();
-	
+	const cfg = config();
+	// update battery bank replacement cost from array to number
+	if( cfg.tech == 'Flat Plate PV' )
+	{
+		x = oldvalue('batt_replacement_cost');
+		value('batt_replacement_cost', x[0], 'Battery cost changed from schedule to single value. Please check results.' ); // derate is now an array to support schedules
+	}
 };
 
 version_upgrade{'2015.9.9'} = define() {
