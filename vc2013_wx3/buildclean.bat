@@ -33,7 +33,7 @@ msbuild %SSCDIR%\build_vc2013\ssc_vc2013.sln /p:Configuration=Debug;Platform=x64
 msbuild %SSCDIR%\build_vc2013\ssc_vc2013.sln /p:Configuration=Release;Platform=x64 /t:Clean;Build
 
 copy %SSCDIR%\build_vc2013\Win32\Release\ssc.dll %SAMNTDIR%\deploy\win32
-copy %SSCDIR%\build_vc2013\x64\Release\ssc.dll %SAMNTDIR%\SAMnt\deploy\x64
+copy %SSCDIR%\build_vc2013\x64\Release\ssc.dll %SAMNTDIR%\deploy\x64
 
 msbuild %SAMNTDIR%\vc2013_wx3\SAMnt_vc2013.sln /p:Configuration=Debug;Platform=win32 /t:Clean;Build
 msbuild %SAMNTDIR%\vc2013_wx3\SAMnt_vc2013.sln /p:Configuration=Release;Platform=win32 /t:Clean;Build
