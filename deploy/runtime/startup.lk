@@ -390,7 +390,14 @@ function setup_csp_physical_trough_pages()
 	 {'name'='Physical Trough Receiver Type 3', 'caption'='Receiver Type 3', 'collapsible'=true, 'collapsible_var'='hce_3_is_shown'},
 	 {'name'='Physical Trough Receiver Type 4', 'caption'='Receiver Type 4', 'collapsible'=true, 'collapsible_var'='hce_4_is_shown'} ]],
 	 { 'sidebar'='Receivers (HCEs)', 'help'='troughphysical_receivers_hces' } );
-	addpage( [[ 'Physical Trough Power Block' ]], { 'sidebar'='Power Cycle', 'help'='troughphysical_power_cycle' } );
+	addpage( [[ 'Rankine Cycle and Hybrid Cooling' ], [ 'User Defined Power Cycle' ]], 
+			{ 'sidebar'='Power Cycle', 'help'='mspt_power_cycle', 'exclusive_var' = 'pc_config',
+			  'exclusive_header_pages' = ['Physical Trough Power Block Common']} );
+	
+	//addpage( [[ 'Physical Trough Power Block Common' ,
+	  //{'name' = 'Physical Trough Rankine Cycle', 'caption' = 'Rankine Cycle', 'collapsible'=false, 'collapsible_var'='csp_dispatch_is_shown'} ]],
+	  //{ 'sidebar'='Power Cycle', 'help'='troughphysical_power_cycle' } );
+	//addpage( [[ 'Physical Trough Power Block' ]], { 'sidebar'='Power Cycle', 'help'='troughphysical_power_cycle' } );
 	addpage( [[ 'Physical Trough Thermal Storage' ,
 	  {'name' = 'CSP Dispatch Control', 'caption'='Dispatch Control', 'collapsible'=false, 'collapsible_var'='csp_dispatch_is_shown'} ]], 
 	  { 'sidebar'='Thermal Storage', 'help'='troughphysical_thermal_storage' } );
@@ -1369,8 +1376,17 @@ function setup_MSLF_pages()
 
 	addpage( [[ 'Molten Salt Linear Fresnel Collector and Receiver' ]],
 	 { 'sidebar'='Collector and Receiver', 'help'='mslf_collector_and_receiver' } );
-
-	addpage( [[ 'Molten Salt Linear Fresnel Power Cycle' ]], { 'sidebar'='Power Cycle', 'help'='mslf_power_cycle' } );
+	
+	//addpage( [['MSLF Power Cycle Common' ,
+	//	{ 'name' = 'Physical Trough Rankine Cycle', 'caption' = 'Rankine Cycle', 'collapsible'=false, 'collapsible_var'='csp_dispatch_is_shown'} ]],
+	//	{ 'sidebar'='Power Cycle', 'help'='mslf_power_cycle' } );
+	
+	addpage( [[ 'Rankine Cycle and Hybrid Cooling' ], [ 'User Defined Power Cycle' ]], 
+			{ 'sidebar'='Power Cycle', 'help'='mspt_power_cycle', 'exclusive_var' = 'pc_config',
+			  'exclusive_header_pages' = ['MSLF Power Cycle Common']} );
+	
+	//addpage( [[ 'Molten Salt Linear Fresnel Power Cycle' ]], { 'sidebar'='Power Cycle', 'help'='mslf_power_cycle' } );
+	
 	addpage( [[ 'Molten Salt Linear Fresnel Storage' ,
 	  {'name' = 'CSP Dispatch Control', 'caption'='Dispatch Control', 'collapsible'=false, 'collapsible_var'='csp_dispatch_is_shown'} ]], 
 	  { 'sidebar'='Thermal Storage', 'help'='mslf_thermal_storage' } );
