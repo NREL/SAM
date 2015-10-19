@@ -92,6 +92,33 @@ version_upgrade{'2015.9.9'} = define() {
 		value('eta_lhv', oldvalue('csp.dtr.pwrb.boiler_lhv_eff'));
 		value('eta_tes_htr', oldvalue('csp.dtr.tes.tank_heater_eff'));
 		value('n_pl_inc', oldvalue('csp.dtr.pwrb.hr_pl_nlev'));
+		value('P_ref', oldvalue('pb_rated_cap'));
+		value('hybrid_tou1', oldvalue('csp.dtr.pwrb.hc_ctl1'));
+		value('hybrid_tou2', oldvalue('csp.dtr.pwrb.hc_ctl2'));
+		value('hybrid_tou3', oldvalue('csp.dtr.pwrb.hc_ctl3'));
+		value('hybrid_tou4', oldvalue('csp.dtr.pwrb.hc_ctl4'));
+		value('hybrid_tou5', oldvalue('csp.dtr.pwrb.hc_ctl5'));
+		value('hybrid_tou6', oldvalue('csp.dtr.pwrb.hc_ctl6'));
+		value('hybrid_tou7', oldvalue('csp.dtr.pwrb.hc_ctl7'));
+		value('hybrid_tou8', oldvalue('csp.dtr.pwrb.hc_ctl8'));
+		value('hybrid_tou9', oldvalue('csp.dtr.pwrb.hc_ctl9'));
+		value('pressure_mode', oldvalue('csp.dtr.pwrb.pressure_mode'));
+	}
+	
+	//changes to the molten salt linear fresnel model
+	if( cfg.tech == 'MSLF' )
+	{
+		value('hybrid_tou1', oldvalue('csp.mslf.cycle.F_wc1'));
+		value('hybrid_tou2', oldvalue('csp.mslf.cycle.F_wc2'));
+		value('hybrid_tou3', oldvalue('csp.mslf.cycle.F_wc3'));
+		value('hybrid_tou4', oldvalue('csp.mslf.cycle.F_wc4'));
+		value('hybrid_tou5', oldvalue('csp.mslf.cycle.F_wc5'));
+		value('hybrid_tou6', oldvalue('csp.mslf.cycle.F_wc6'));
+		value('hybrid_tou7', oldvalue('csp.mslf.cycle.F_wc7'));
+		value('hybrid_tou8', oldvalue('csp.mslf.cycle.F_wc8'));
+		value('hybrid_tou9', oldvalue('csp.mslf.cycle.F_wc9'));
+		value('pressure_mode', oldvalue('csp.mslf.cycle.sliding_pres'));
+		value('combo_condenser_type', oldvalue('csp.mslf.cycle.CT'));
 	}
 
 };
