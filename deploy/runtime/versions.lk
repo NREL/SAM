@@ -84,6 +84,15 @@ version_upgrade{'2015.9.9'} = define() {
 		value('piping_length_const', oldvalue('csp.pt.par.piping_length_const'));
 		value('piping_length_mult', oldvalue('csp.pt.par.piping_length_mult'));
 		value('=gross_net_conversion_factor', oldvalue('csp.pt.pwrb.gross_net_conversion_factor'));
+		value('hybrid_tou1', oldvalue('csp.pt.pwrb.hc_ctl1'));
+		value('hybrid_tou2', oldvalue('csp.pt.pwrb.hc_ctl2'));
+		value('hybrid_tou3', oldvalue('csp.pt.pwrb.hc_ctl3'));
+		value('hybrid_tou4', oldvalue('csp.pt.pwrb.hc_ctl4'));
+		value('hybrid_tou5', oldvalue('csp.pt.pwrb.hc_ctl5'));
+		value('hybrid_tou6', oldvalue('csp.pt.pwrb.hc_ctl6'));
+		value('hybrid_tou7', oldvalue('csp.pt.pwrb.hc_ctl7'));
+		value('hybrid_tou8', oldvalue('csp.pt.pwrb.hc_ctl8'));
+		value('hybrid_tou9', oldvalue('csp.pt.pwrb.hc_ctl9'));
 	}
 	
 	//changes to the Physical Trough model
