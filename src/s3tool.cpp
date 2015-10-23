@@ -875,7 +875,8 @@ bool ShadeAnalysis::SimulateDiffuse(std::vector<surfshade> &shade, bool save)
 	wxString difftext("Diffuse shading: ");
 	for( size_t i=0;i<m_diffuseShadePercent.size();i++ )
 	{
-		difftext += m_diffuseName[i] + wxString::Format(": %.2lf %%", m_diffuseShadePercent[i]);	
+		difftext += m_diffuseName[i] + wxString::Format(": %.2lf %%", m_diffuseShadePercent[i]);
+		difftext += m_diffuseName[i] + wxString::Format(": %lg %%", m_diffuseShadePercent[i]);
 		if ( i < m_diffuseShadePercent.size()-1 ) difftext += ", ";
 	}
 
