@@ -2161,6 +2161,10 @@ void fcall_editscene3d(lk::invoke_t &cxt)
 		out.CopyTo(buf, len);
 		bin.UngetWriteBuf(len);
 		SamApp::Window()->Project().SetModified(true);
+		// refresh any changes - fixes issue of following analysis differences when updating scene
+		wxMemoryInputStream in(bin.GetData(), bin.GetDataLen());
+		if (!st->Read(in))
+			wxMessageBox("Error loading stored 3D scene data.");
 	}
 
 
