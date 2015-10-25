@@ -1104,7 +1104,23 @@ bool VBoxObject::IsWithin( double px, double pyz, VPlaneType plane )
 
 VActiveSurfaceObject::VActiveSurfaceObject()
 {
-	AddProperty( "Group", new VProperty( wxString("") ) );
+	wxArrayString subarrays;
+	subarrays.Add("1");
+	subarrays.Add("2");
+	subarrays.Add("3");
+	subarrays.Add("4");
+	AddProperty("Subarray", new VProperty(0, subarrays));
+	wxArrayString strings;
+	strings.Add("1");
+	strings.Add("2");
+	strings.Add("3");
+	strings.Add("4");
+	strings.Add("5");
+	strings.Add("6");
+	strings.Add("7");
+	strings.Add("8");
+	AddProperty("String", new VProperty(0, strings));
+	AddProperty("Group", new VProperty(wxString("")));
 	AddProperty( "X", new VProperty(0.0, LENGTH ) );
 	AddProperty( "Y", new VProperty(0.0, LENGTH ) );
 	AddProperty( "Z", new VProperty(0.0, LENGTH ) );
