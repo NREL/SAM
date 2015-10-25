@@ -1149,7 +1149,17 @@ void ShadeAnalysis::InitializeSections( int mode, std::vector<surfshade> &shade 
 	{
 		if ( VActiveSurfaceObject *surf = dynamic_cast<VActiveSurfaceObject*>( objs[i] ) )
 		{
-			wxString grp = surf->Property("Group").GetString().Trim().Trim(false);
+// update to use subarray and string dropdown property as requested by Chris
+			wxString grp = "";
+			if (surf->Property("Subarray").GetType() == VProperty::INTEGER)
+				grp = wxString::Format("%d", surf->Property("Subarray").GetInteger());
+			if (surf->Property("String").GetType() == VProperty::INTEGER)
+				grp += wxString::Format(".%d", surf->Property("String").GetInteger());
+
+			// keep backwards compatibility
+			if (grp.Len() < 1)
+				grp = surf->Property("Group").GetString().Trim().Trim(false);
+
 			surfshade *ss = 0;
 
 			if ( !grp.IsEmpty() )
