@@ -1,8 +1,8 @@
 //#define __BETARELEASE__ 1  // comment this line out to disable beta option
 //#define __BETAWILLEXPIRE__ 1 // comment this line out to disable expiration of beta
 //#define __BETAEXPIRE_DAY__ 30
-//#define __BETAEXPIRE_MONTH__ wxDateTime::Sep
-//#define __BETAEXPIRE_YEAR__ 2015
+//#define __BETAEXPIRE_MONTH__ wxDateTime::Jan
+//#define __BETAEXPIRE_YEAR__ 2016
 
 // can be used to indicate specialized releases for particular testers, i.e. 'iscc-ge'
 // by default, should be NULL
@@ -71,6 +71,7 @@ static const char *beta_disclaimer =
 
 // application globals
 static SamApp::ver releases[] = {
+	{ 2015, 10, 29 },
 	{ 2015, 10, 16 },
 	{ 2015, 9, 30 },
 	{ 2015, 9, 9 },
