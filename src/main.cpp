@@ -720,7 +720,8 @@ void MainWindow::Save()
 
 void MainWindow::SaveAs()
 {
-	wxFileDialog dlg( this, "Save SAM file as", wxEmptyString, wxEmptyString, "SAM Project File (*.sam)|*.sam", 
+	wxFileDialog dlg( this, "Save SAM file as", wxPathOnly(m_projectFileName), 
+		m_projectFileName, "SAM Project File (*.sam)|*.sam", 
 		wxFD_SAVE|wxFD_OVERWRITE_PROMPT );
 	if ( dlg.ShowModal() == wxID_OK )
 	{
