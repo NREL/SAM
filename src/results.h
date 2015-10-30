@@ -122,6 +122,8 @@ public:
 	wxDVPlotCtrlSettings GetDViewState();
 	void SetDViewState( wxDVPlotCtrlSettings &settings );
 
+	TabularBrowser *GetTabularBrowser() { return m_tables; }
+
 	wxString GetCurrentContext() const;
 	
 private:	
@@ -202,6 +204,9 @@ public:
 	void UpdateAll();
 	void UpdateDisplayed(wxString &srch);
 	void GetTextData(wxString &dat, char sep);
+
+	wxArrayString GetSelectedVariables();
+	void SelectVariables( const wxArrayString &list );
 	
 
 private:	
