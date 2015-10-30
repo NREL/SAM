@@ -1892,6 +1892,18 @@ void TabularBrowser::Setup( Simulation *data )
 	UpdateGrid();
 }
 
+wxArrayString TabularBrowser::GetSelectedVariables()
+{
+	return m_selectedVars;
+}
+
+void TabularBrowser::SelectVariables( const wxArrayString &list )
+{
+	m_selectedVars = list;
+	UpdateAll();
+}
+
+
 void TabularBrowser::UpdateAll()
 {
 	m_names.Clear();
