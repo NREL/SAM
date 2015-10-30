@@ -2,6 +2,7 @@
 #include <wx/splitter.h>
 #include <wx/simplebook.h>
 #include <wx/statline.h>
+#include <wx/tokenzr.h>
 #include <wx/dir.h>
 
 #include <wex/exttree.h>
@@ -285,6 +286,9 @@ void CaseWindow::SaveCurrentViewProperties()
 	m_case->SetProperty("NoteWindowYRel", wxString::Format("%d",  y ));
 	m_case->SetProperty("NoteWindowWidth", wxString::Format("%d", w ));
 	m_case->SetProperty("NoteWindowHeight", wxString::Format("%d", h ));
+
+	m_case->SetProperty( "DataBrowserVariables", 
+		wxJoin( m_baseCaseResults->GetTabularBrowser()->GetSelectedVariables(), ',') );
 }
 
 bool CaseWindow::RunBaseCase( bool silent, wxString *messages )
@@ -333,6 +337,8 @@ bool CaseWindow::RunBaseCase( bool silent, wxString *messages )
 void CaseWindow::UpdateResults()
 {
 	m_baseCaseResults->Setup( &m_case->BaseCase() );
+	m_baseCaseResults->GetTabularBrowser()->SelectVariables( 
+		wxStringTokenize(m_case->GetProperty("DataBrowserVariables"), ',') );
 }
 
 static bool CheckValidTemplate( const wxString &fp, const wxString &tech, const wxString &fin )
