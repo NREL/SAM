@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,722285,Gadsen Muni (awos),AL,USA,33.967000,-86.083000,-6,173
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2004,1,1,0,0,0,0,-1,-2,92,992,0,0,0.17
 2004,1,1,1,0,0,0,-2,-2,100,992,0,0,0.17
 2004,1,1,2,0,0,0,-2,-3,92,992,0,0,0.17

@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,726404,Minocqua Woodruff,WI,USA,45.933000,-89.733000,-6,496
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2005,1,1,0,0,0,0,-11,-12,91,955,2.1,340,0.16
 2005,1,1,1,0,0,0,-11,-13,84,955,2.1,190,0.16
 2005,1,1,2,0,0,0,-11,-12,91,955,0,0,0.16

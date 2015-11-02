@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,722583,Dallas Love Field,TX,USA,32.850000,-96.850000,-6,134
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2002,1,1,0,0,0,0,1.7,-8.3,44,1010,4.1,30,0.18
 2002,1,1,1,0,0,0,1.7,-8.3,44,1011,3.6,30,0.18
 2002,1,1,2,0,0,0,1.1,-8.3,46,1011,3.6,30,0.18

@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,722976,Fullerton Municipal,CA,USA,33.867000,-117.983000,-8,29
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2004,1,1,0,0,0,0,6,-1,60,1015,0,0,0.16
 2004,1,1,1,0,0,0,6,-1,60,1015,2.6,90,0.16
 2004,1,1,2,0,0,0,6,-1,60,1015,2.1,90,0.16

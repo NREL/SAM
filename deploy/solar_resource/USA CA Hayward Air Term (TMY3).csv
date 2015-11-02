@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,724935,Hayward Air Term,CA,USA,37.667000,-122.117000,-8,14
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1999,1,1,0,0,0,0,6.2,4.5,89,1022,0,0,0.16
 1999,1,1,1,0,0,0,6.4,4.9,90,1022,0,0,0.16
 1999,1,1,2,0,0,0,6.4,5.4,93,1022,0,0,0.16

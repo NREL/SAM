@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,726196,Millinocket Municipal Ap,ME,USA,45.650000,-68.683000,-5,124
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1998,1,1,0,0,0,0,-21,-26,61,1003,4.1,290,0.21
 1998,1,1,1,0,0,0,-21,-26,61,1004,5.1,310,0.21
 1998,1,1,2,0,0,0,-22,-27,61,1005,5.1,300,0.21

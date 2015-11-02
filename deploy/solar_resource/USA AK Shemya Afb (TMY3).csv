@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,704140,Shemya Afb,AK,USA,52.717000,174.117000,-10,31
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1991,1,1,0,0,0,0,2.2,-1,79,1000,3.6,10,0.22
 1991,1,1,1,0,0,0,2.2,-1.6,75,999,2.1,10,0.22
 1991,1,1,2,0,0,0,1.7,-1.6,77,999,3.6,20,0.22

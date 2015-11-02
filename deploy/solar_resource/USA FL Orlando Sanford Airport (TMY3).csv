@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,722057,Orlando Sanford Airport,FL,USA,28.783000,-81.250000,-5,17
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1999,1,1,0,0,0,0,11.9,8.3,79,1011,1.4,360,0.15
 1999,1,1,1,0,0,0,12,8,76,1011,2.1,360,0.15
 1999,1,1,2,0,0,0,11.9,8,77,1011,2.6,360,0.15

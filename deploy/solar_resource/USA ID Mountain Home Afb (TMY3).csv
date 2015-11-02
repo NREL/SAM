@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,726815,Mountain Home Afb,ID,USA,43.050000,-115.867000,-7,912
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1995,1,1,0,0,0,0,-7.9,-10.2,82,921,4,80,0.42
 1995,1,1,1,0,0,0,-6.9,-10.2,75,921,4.5,90,0.42
 1995,1,1,2,0,0,0,-6.9,-10.2,75,921,4.5,120,0.42

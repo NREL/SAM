@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,724288,Ohio State Universi,OH,USA,40.067000,-83.067000,-5,283
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1999,1,1,0,0,0,0,-12,-16,69,988,4.6,270,0.18
 1999,1,1,1,0,0,0,-12,-16,69,988,4.6,270,0.18
 1999,1,1,2,0,0,0,-13,-16,76,989,4.1,270,0.18

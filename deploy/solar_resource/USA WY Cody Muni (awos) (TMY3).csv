@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,726700,Cody Muni (awos),WY,USA,44.517000,-109.017000,-7,1553
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1995,1,1,0,0,0,0,-23.4,-28.9,57,843,1.5,180,0.54
 1995,1,1,1,0,0,0,-22.8,-28.4,57,843,0,0,0.54
 1995,1,1,2,0,0,0,-22.3,-24.5,80,843,2,180,0.54

@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,726626,Antigo Lang(awos),WI,USA,45.150000,-87.150000,-5,464
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1998,1,1,0,0,0,0,-9.6,-13.6,70,959,6,210,0.15
 1998,1,1,1,0,0,0,-9,-13,70,959,6.2,210,0.15
 1998,1,1,2,0,0,0,-9,-13,70,959,4.6,200,0.15

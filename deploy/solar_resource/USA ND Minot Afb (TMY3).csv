@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,727675,Minot Afb,ND,USA,48.417000,-101.350000,-6,497
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2002,1,1,0,0,0,0,-8.9,-8.9,100,960,5.6,260,0.4
 2002,1,1,1,0,0,0,-8.7,-8.7,100,960,6.1,270,0.4
 2002,1,1,2,0,0,0,-8.2,-8.3,99,959,7.2,260,0.4

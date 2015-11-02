@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,727645,Dickinson Municipal Ap,ND,USA,46.800000,-102.800000,-7,788
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2004,1,1,0,0,0,0,-16.1,-17.8,85,910,1.5,160,0.39
 2004,1,1,1,0,0,0,-15,-17.2,81,911,0,0,0.39
 2004,1,1,2,0,0,0,-12.2,-14.4,82,912,2.6,150,0.39

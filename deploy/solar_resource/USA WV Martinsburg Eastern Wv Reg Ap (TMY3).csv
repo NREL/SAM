@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,724177,Martinsburg Eastern Wv Reg Ap,WV,USA,39.400000,-77.983000,-5,162
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2005,1,1,0,0,0,0,10.6,5,68,1005,2.6,230,0.17
 2005,1,1,1,0,0,0,13.3,7.8,69,1005,4.1,260,0.17
 2005,1,1,2,0,0,0,12.2,7.2,71,1006,3.6,230,0.17

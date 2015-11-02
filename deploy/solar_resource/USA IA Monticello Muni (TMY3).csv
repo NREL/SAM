@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,725475,Monticello Muni,IA,USA,42.233000,-91.167000,-6,259
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2004,1,1,0,0,0,0,-6,-8,84,982,0.5,360,0.43
 2004,1,1,1,0,0,0,-4,-7,77,982,2.1,90,0.43
 2004,1,1,2,0,0,0,-4,-7,77,982,3.1,110,0.43

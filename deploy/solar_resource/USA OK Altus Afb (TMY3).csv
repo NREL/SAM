@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,723520,Altus Afb,OK,USA,34.650000,-99.267000,-6,414
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1997,1,1,0,0,0,0,12,11,94,970,0.5,220,0.19
 1997,1,1,1,0,0,0,12,12,100,970,1.5,180,0.19
 1997,1,1,2,0,0,0,12,12,100,970,1,150,0.19

@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,725065,New Bedford Rgnl,MA,USA,41.667000,-70.950000,-5,25
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2000,1,1,0,0,0,0,-7,-8,92,1019,0,0,0.15
 2000,1,1,1,0,0,0,-8,-9,92,1020,0,0,0.15
 2000,1,1,2,0,0,0,-7,-9,84,1020,0,0,0.15

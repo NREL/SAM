@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,725525,Hastings Municipal,NE,USA,40.600000,-98.433000,-6,596
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1999,1,1,0,0,0,0,-6,-11,64,945,4.1,120,0.21
 1999,1,1,1,0,0,0,-6,-11,64,944,5.7,120,0.21
 1999,1,1,2,0,0,0,-6,-12,59,944,7.2,120,0.21

@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,724468,Olathe Johnson Co.,KS,USA,38.850000,-94.733000,-6,334
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2002,1,1,0,0,0,0,-9,-16,53,985,2.1,330,0.18
 2002,1,1,1,0,0,0,-10,-17,53,986,3.6,340,0.18
 2002,1,1,2,0,0,0,-11,-17,58,986,2.1,320,0.18

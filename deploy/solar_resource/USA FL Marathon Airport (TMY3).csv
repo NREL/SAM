@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,722016,Marathon Airport,FL,USA,24.733000,-81.050000,-5,2
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1997,1,1,0,0,0,0,24.3,21.1,82,1013,3.3,60,0.13
 1997,1,1,1,0,0,0,24,21.1,84,1013,3.1,60,0.13
 1997,1,1,2,0,0,0,23.6,21.1,86,1013,2.9,60,0.13

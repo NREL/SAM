@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,723200,Rome R B Russell Ap,GA,USA,34.350000,-85.167000,-5,195
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2002,1,1,0,0,0,0,-2.2,-10.6,48,998,3.6,360,0.17
 2002,1,1,1,0,0,0,-3,-11,50,997,1.5,350,0.17
 2002,1,1,2,0,0,0,-3,-11,50,998,2.6,360,0.17

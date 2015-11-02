@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,722195,Fulton Co Arpt Brow,GA,USA,33.767000,-84.517000,-5,263
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1997,1,1,0,0,0,0,13,13,100,992,0,0,0.17
 1997,1,1,1,0,0,0,13,13,100,993,0,0,0.17
 1997,1,1,2,0,0,0,12,12,100,995,0,0,0.17

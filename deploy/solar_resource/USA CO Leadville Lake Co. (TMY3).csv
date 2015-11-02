@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,724673,Leadville Lake Co.,CO,USA,39.217000,-106.317000,-7,3026
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1999,1,1,0,0,0,0,-4,-7,77,689,2.6,60,0.33
 1999,1,1,1,0,0,0,-5,-7,84,689,1.5,10,0.33
 1999,1,1,2,0,0,0,-5,-6,92,688,2.1,10,0.33

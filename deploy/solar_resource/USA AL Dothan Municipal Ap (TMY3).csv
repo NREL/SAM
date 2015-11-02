@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,722268,Dothan Municipal Ap,AL,USA,31.233000,-85.433000,-6,98
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2003,1,1,0,0,0,0,13,12,94,992,5.1,200,0.16
 2003,1,1,1,0,0,0,13,11,88,992,3.1,220,0.16
 2003,1,1,2,0,0,0,12,11,94,992,3.6,200,0.16

@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,722689,Clovis Muni  (awos),NM,USA,34.433000,-103.083000,-7,1284
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2004,1,1,0,0,0,0,6,-14,19,870,4.6,250,0.19
 2004,1,1,1,0,0,0,8,-10,24,870,5.7,260,0.19
 2004,1,1,2,0,0,0,4,-9,35,870,4.6,220,0.19

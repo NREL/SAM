@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,725975,Sexton Summit,OR,USA,42.600000,-123.367000,-8,1168
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2005,1,1,0,0,0,0,0,-2.2,83,870,5.2,190,0.17
 2005,1,1,1,0,0,0,0,-2.2,83,870,4.1,190,0.17
 2005,1,1,2,0,0,0,0,-2.2,83,870,5.2,180,0.17

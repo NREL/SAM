@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,724635,La Junta Municipal Ap,CO,USA,38.050000,-103.533000,-7,1281
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1995,1,1,0,0,0,0,-9.5,-11.7,82,874,3,170,0.22
 1995,1,1,1,0,0,0,-10.7,-12.8,83,874,0,0,0.22
 1995,1,1,2,0,0,0,-11.7,-13.9,82,873,2,240,0.22

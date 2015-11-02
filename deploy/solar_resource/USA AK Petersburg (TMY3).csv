@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,703860,Petersburg,AK,USA,56.800000,-132.950000,-9,33
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2004,1,1,0,0,0,0,-4,-6,84,1009,0,0,0.26
 2004,1,1,1,0,0,0,-3,-3,100,1009,0,0,0.26
 2004,1,1,2,0,0,0,-3,-3,100,1009,1.5,230,0.26

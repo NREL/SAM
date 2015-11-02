@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,727827,Moses Lake Grant County Ap,WA,USA,47.200000,-119.317000,-8,364
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2000,1,1,0,0,0,0,-2,-3,92,967,2.1,120,0.49
 2000,1,1,1,0,0,0,-2,-3,92,967,2.1,140,0.49
 2000,1,1,2,0,0,0,-2,-3,92,966,0,0,0.49

@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,785350,Roosevelt Roads,PR,USA,18.250000,-65.633000,-4,12
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1991,1,1,0,0,0,0,25,18.9,69,1017,6.7,70,0.13
 1991,1,1,1,0,0,0,25.6,18.9,67,1017,6.7,70,0.13
 1991,1,1,2,0,0,0,25,18.9,69,1016,6.2,70,0.13

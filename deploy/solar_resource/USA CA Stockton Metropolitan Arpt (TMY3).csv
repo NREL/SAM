@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,724920,Stockton Metropolitan Arpt,CA,USA,37.900000,-121.233000,-8,7
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2004,1,1,0,0,0,0,9.4,8.3,93,1013,4.6,130,0.17
 2004,1,1,1,0,0,0,9.4,8.3,93,1014,6.7,140,0.17
 2004,1,1,2,0,0,0,9.4,8.3,93,1013,8.2,130,0.17

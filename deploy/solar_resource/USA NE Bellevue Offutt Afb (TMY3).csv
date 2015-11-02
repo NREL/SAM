@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,725540,Bellevue Offutt Afb,NE,USA,41.117000,-95.917000,-6,319
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1997,1,1,0,0,0,0,-1,-1,100,977,3.1,150,0.19
 1997,1,1,1,0,0,0,-1,-1,100,977,2.1,120,0.19
 1997,1,1,2,0,0,0,-1,-1,100,977,2.1,90,0.19

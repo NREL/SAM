@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,722356,Greenville Municipal,MS,USA,33.483000,-90.983000,-6,42
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2002,1,1,0,0,0,0,-2,-6,71,1022,2.4,360,0.17
 2002,1,1,1,0,0,0,-3,-5,84,1023,2.3,350,0.17
 2002,1,1,2,0,0,0,-3,-5,84,1023,2.1,350,0.17

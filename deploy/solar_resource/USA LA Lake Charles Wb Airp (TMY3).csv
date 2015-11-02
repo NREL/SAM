@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,722404,Lake Charles Wb Airp,LA,USA,30.217000,-93.167000,-6,5
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1997,1,1,0,0,0,0,14.8,14,95,1012,1.1,50,0.17
 1997,1,1,1,0,0,0,14.6,13.8,95,1012,1,50,0.17
 1997,1,1,2,0,0,0,14.4,13.6,95,1012,0.8,40,0.17

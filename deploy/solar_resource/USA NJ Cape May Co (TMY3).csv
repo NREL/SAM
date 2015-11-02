@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,745966,Cape May Co,NJ,USA,39.000000,-74.917000,-5,7
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2002,1,1,0,0,0,0,-4,-13,45,1012,2.6,350,0.14
 2002,1,1,1,0,0,0,-4.1,-12.9,46,1012,2.1,350,0.14
 2002,1,1,2,0,0,0,-4.1,-11.8,51,1012,2.1,340,0.14

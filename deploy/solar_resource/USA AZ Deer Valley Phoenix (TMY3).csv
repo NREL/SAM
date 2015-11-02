@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,722784,Deer Valley Phoenix,AZ,USA,33.683000,-112.083000,-7,450
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1998,1,1,0,0,0,0,13.9,0.5,40,963,2.6,50,0.21
 1998,1,1,1,0,0,0,13.3,0.9,43,964,2.6,40,0.21
 1998,1,1,2,0,0,0,12.8,1.2,45,963,2.6,40,0.21

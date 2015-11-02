@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,723865,Nellis Afb,NV,USA,36.250000,-115.033000,-8,573
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1997,1,1,0,0,0,0,10.8,3.5,61,943,2.1,300,0.23
 1997,1,1,1,0,0,0,7.6,3.1,73,944,2.7,330,0.23
 1997,1,1,2,0,0,0,7.9,2.8,70,944,2.2,320,0.23

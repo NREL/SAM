@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,722270,Marietta Dobbins Afb,GA,USA,33.917000,-84.517000,-5,330
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1994,1,1,0,0,0,0,-2.3,-6.7,69,986,1,150,0.17
 1994,1,1,1,0,0,0,-2.8,-7.8,65,987,1,120,0.17
 1994,1,1,2,0,0,0,-2.8,-10,54,986,1.5,120,0.17

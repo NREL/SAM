@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,726463,Wausau Municipal Arpt,WI,USA,44.917000,-89.633000,-6,366
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1995,1,1,0,0,0,0,-9.5,-15.6,58,974,2,310,0.16
 1995,1,1,1,0,0,0,-10,-16.2,57,974,0,0,0.16
 1995,1,1,2,0,0,0,-10.6,-15.6,63,974,0,0,0.16

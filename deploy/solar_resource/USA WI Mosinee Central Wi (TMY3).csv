@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,726465,Mosinee Central Wi,WI,USA,44.783000,-89.667000,-6,389
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1996,1,1,0,0,0,0,-2.8,-3.4,95,967,4.6,70,0.16
 1996,1,1,1,0,0,0,-2.8,-3.9,91,967,4.1,70,0.16
 1996,1,1,2,0,0,0,-2.8,-3.9,91,967,3.6,70,0.16

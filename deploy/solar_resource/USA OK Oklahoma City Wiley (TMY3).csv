@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,723544,Oklahoma City Wiley,OK,USA,35.533000,-97.650000,-6,396
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2005,1,1,0,0,0,0,14,13,94,971,6.7,160,0.19
 2005,1,1,1,0,0,0,14,13,94,970,6.7,160,0.19
 2005,1,1,2,0,0,0,15,14,94,971,7.2,170,0.19

@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,724463,Kansas City Downtown Ap,MO,USA,39.117000,-94.600000,-6,226
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2005,1,1,0,0,0,0,8,1,61,992,5.7,80,0.18
 2005,1,1,1,0,0,0,8,0,57,992,5.1,90,0.18
 2005,1,1,2,0,0,0,8,0,57,992,5.1,90,0.18

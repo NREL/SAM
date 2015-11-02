@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,724927,Livermore Municipal,CA,USA,37.700000,-121.817000,-8,121
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1991,1,1,0,0,0,0,-6,-6,100,985,0,0,0.17
 1991,1,1,1,0,0,0,-5.1,-5.1,100,986,0,0,0.17
 1991,1,1,2,0,0,0,-3.6,-3.6,100,988,0,0,0.17

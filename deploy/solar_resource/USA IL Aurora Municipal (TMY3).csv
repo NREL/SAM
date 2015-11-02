@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,744655,Aurora Municipal,IL,USA,41.767000,-88.467000,-6,215
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1996,1,1,0,0,0,0,-2.5,-4.2,87,988,2.2,30,0.17
 1996,1,1,1,0,0,0,-2.4,-4.1,87,988,2.3,30,0.17
 1996,1,1,2,0,0,0,-2.6,-4.4,86,988,2.3,30,0.17

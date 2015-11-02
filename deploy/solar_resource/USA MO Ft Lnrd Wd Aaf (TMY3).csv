@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,724457,Ft Lnrd Wd Aaf,MO,USA,37.750000,-92.150000,-6,351
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2005,1,1,0,0,0,0,16.9,13.8,82,981,3.6,170,0.18
 2005,1,1,1,0,0,0,16.9,14,83,981,3.6,180,0.18
 2005,1,1,2,0,0,0,16.9,14.2,84,981,3.6,180,0.18

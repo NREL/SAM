@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,725489,Orange City,IA,USA,42.983000,-96.067000,-6,431
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1999,1,1,0,0,0,0,-13.9,-18,68,963,2.1,80,0.2
 1999,1,1,1,0,0,0,-14,-18,69,963,2.1,80,0.2
 1999,1,1,2,0,0,0,-12,-17,63,963,5.1,80,0.2

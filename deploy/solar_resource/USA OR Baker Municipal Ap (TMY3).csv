@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,726886,Baker Municipal Ap,OR,USA,44.833000,-117.817000,-8,1027
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1999,1,1,0,0,0,0,-1.4,-4,80,902,4.3,310,0.41
 1999,1,1,1,0,0,0,-1.7,-4.1,82,903,3.4,250,0.41
 1999,1,1,2,0,0,0,-2,-4,85,904,2.6,200,0.41

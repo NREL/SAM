@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,725450,Cedar Rapids Municipal Ap,IA,USA,41.883000,-91.717000,-6,256
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1999,1,1,0,0,0,0,-18,-20,83,992,0,0,0.19
 1999,1,1,1,0,0,0,-18,-20,83,992,3.1,350,0.19
 1999,1,1,2,0,0,0,-19,-21,83,992,3.1,10,0.19

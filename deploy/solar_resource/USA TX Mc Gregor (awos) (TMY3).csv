@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,722563,Mc Gregor (awos),TX,USA,31.483000,-97.317000,-6,180
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1997,1,1,0,0,0,0,13,10.2,83,992,0,0,0.18
 1997,1,1,1,0,0,0,12.4,9.7,84,992,0,0,0.18
 1997,1,1,2,0,0,0,12.2,9.5,84,992,0,0,0.18

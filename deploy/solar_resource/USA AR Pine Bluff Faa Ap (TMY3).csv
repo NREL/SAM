@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,723417,Pine Bluff Faa Ap,AR,USA,34.167000,-91.933000,-6,63
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1994,1,1,0,0,0,0,7.7,0,58,1005,2.5,180,0.17
 1994,1,1,1,0,0,0,7.2,1.6,68,1005,2,170,0.17
 1994,1,1,2,0,0,0,7.2,2.7,73,1005,2.5,180,0.17

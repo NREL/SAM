@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,722484,Shreveport Downtown,LA,USA,32.533000,-93.750000,-6,55
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2001,1,1,0,0,0,0,-3,-3,100,1024,2.6,10,0.17
 2001,1,1,1,0,0,0,-3,-4,92,1025,2.6,40,0.17
 2001,1,1,2,0,0,0,-3,-4,92,1025,2.6,20,0.17

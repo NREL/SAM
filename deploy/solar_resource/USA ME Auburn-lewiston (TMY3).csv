@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,726184,Auburn-lewiston,ME,USA,44.050000,-70.283000,-5,88
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1995,1,1,0,0,0,0,-1.9,-7.8,60,1003,0,0,0.16
 1995,1,1,1,0,0,0,-1.9,-7.1,64,1003,2,160,0.16
 1995,1,1,2,0,0,0,-2.2,-6.8,68,1003,0,0,0.16

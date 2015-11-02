@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,911905,Lanai,HI,USA,20.783000,-156.950000,-10,409
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1991,1,1,0,0,0,0,16.5,13.2,81,965,6.2,50,0.13
 1991,1,1,1,0,0,0,16.5,13.2,81,965,6.2,50,0.13
 1991,1,1,2,0,0,0,16.2,13.1,82,965,6.2,50,0.13

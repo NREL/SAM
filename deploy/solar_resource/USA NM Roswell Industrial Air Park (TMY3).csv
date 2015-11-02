@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,722680,Roswell Industrial Air Park,NM,USA,33.300000,-104.533000,-7,1112
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1994,1,1,0,0,0,0,4.4,0,73,893,4.6,20,0.19
 1994,1,1,1,0,0,0,3.3,-2.8,63,895,3.1,360,0.19
 1994,1,1,2,0,0,0,0.6,-3.9,69,893,2.6,280,0.19

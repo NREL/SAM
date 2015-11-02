@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,725088,Beverly Muni,MA,USA,42.583000,-70.917000,-5,34
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2004,1,1,0,0,0,0,4,-3,59,1008,5.7,230,0.15
 2004,1,1,1,0,0,0,4,-4,54,1009,3.6,270,0.15
 2004,1,1,2,0,0,0,4,-6,45,1010,3.6,280,0.15

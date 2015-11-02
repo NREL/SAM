@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,726083,Northern Aroostook,ME,USA,47.283000,-68.317000,-5,309
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2001,1,1,0,0,0,0,-2,-3,92,957,5.7,340,0.34
 2001,1,1,1,0,0,0,-1.9,-2.8,93,958,7.5,340,0.34
 2001,1,1,2,0,0,0,-2,-3,92,959,9.3,340,0.34

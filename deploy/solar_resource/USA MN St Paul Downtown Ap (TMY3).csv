@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,726584,St Paul Downtown Ap,MN,USA,44.933000,-93.050000,-6,220
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1994,1,1,0,0,0,0,-1.2,-2.8,87,1005,4.1,30,0.42
 1994,1,1,1,0,0,0,-1.2,-3.4,83,1005,6.6,10,0.42
 1994,1,1,2,0,0,0,-1.2,-2.8,87,1006,6.6,10,0.42

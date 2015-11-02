@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,743945,Manchester Airport,NH,USA,42.933000,-71.433000,-5,69
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2005,1,1,0,0,0,0,6,2,75,1009,0,0,0.15
 2005,1,1,1,0,0,0,6,2,75,1009,2.6,180,0.15
 2005,1,1,2,0,0,0,5,2,81,1008,3.1,180,0.15

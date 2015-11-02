@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,726557,Alexandria Municipal Ap,MN,USA,45.883000,-95.400000,-6,433
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1995,1,1,0,0,0,0,-15.6,-17.8,81,968,4.6,300,0.41
 1995,1,1,1,0,0,0,-16.2,-18.4,81,968,4.6,300,0.41
 1995,1,1,2,0,0,0,-16.7,-18.9,81,967,4.1,300,0.41

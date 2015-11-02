@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,726575,Minneapolis Crystal,MN,USA,45.067000,-93.350000,-6,265
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1999,1,1,0,0,0,0,-20,-24,68,993,2.1,40,0.55
 1999,1,1,1,0,0,0,-21,-25,67,993,4.6,40,0.55
 1999,1,1,2,0,0,0,-21,-26,61,995,3.1,50,0.55

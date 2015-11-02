@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,724338,Belleville Scott Afb,IL,USA,38.550000,-89.850000,-6,135
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1999,1,1,0,0,0,0,-15,-15,100,1008,1.5,250,0.18
 1999,1,1,1,0,0,0,-16,-16,100,1009,1,290,0.18
 1999,1,1,2,0,0,0,-15,-15,100,1010,2.1,330,0.18

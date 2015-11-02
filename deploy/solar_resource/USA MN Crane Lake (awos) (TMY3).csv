@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,727473,Crane Lake (awos),MN,USA,46.267000,-92.567000,-6,350
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2004,1,1,0,0,0,0,-18,-19,91,972,0,0,0.59
 2004,1,1,1,0,0,0,-18,-20,83,972,0,0,0.59
 2004,1,1,2,0,0,0,-18,-20,83,972,0,0,0.59

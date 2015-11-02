@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,725453,Atlantic,IA,USA,41.400000,-95.050000,-6,360
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1998,1,1,0,0,0,0,2,-2,73,971,6.7,190,0.19
 1998,1,1,1,0,0,0,2,-2,73,971,7.7,190,0.19
 1998,1,1,2,0,0,0,2,-1,80,971,7.2,200,0.19

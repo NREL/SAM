@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,722904,Chula Vista Brown Field Naas,CA,USA,32.583000,-116.983000,-8,159
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2000,1,1,0,0,0,0,8,8,100,998,2.6,110,0.17
 2000,1,1,1,0,0,0,8,8,100,999,2.1,110,0.17
 2000,1,1,2,0,0,0,9,8,93,999,2.1,120,0.17

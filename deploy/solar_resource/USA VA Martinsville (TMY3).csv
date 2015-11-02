@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,745985,Martinsville,VA,USA,36.633000,-80.017000,-5,287
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2005,1,1,0,0,0,0,9,8,93,979,0,0,0.17
 2005,1,1,1,0,0,0,10,8,87,979,0,0,0.17
 2005,1,1,2,0,0,0,7,6,93,979,0,0,0.17

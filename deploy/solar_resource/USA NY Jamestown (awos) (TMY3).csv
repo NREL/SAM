@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,725235,Jamestown (awos),NY,USA,42.150000,-79.267000,-5,525
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1998,1,1,0,0,0,0,-11.3,-13.5,82,952,2.8,250,0.27
 1998,1,1,1,0,0,0,-11,-13,84,952,2.6,230,0.27
 1998,1,1,2,0,0,0,-10.9,-12.8,84,952,3,230,0.27

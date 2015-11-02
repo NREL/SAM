@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,722024,Miami Opa Locka,FL,USA,25.900000,-80.283000,-5,3
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2000,1,1,0,0,0,0,17,15,88,1021,0,0,0.15
 2000,1,1,1,0,0,0,18,15,83,1021,0,0,0.15
 2000,1,1,2,0,0,0,16,14,88,1020,0,0,0.15

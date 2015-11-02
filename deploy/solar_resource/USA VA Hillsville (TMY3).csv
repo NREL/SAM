@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,724107,Hillsville,VA,USA,36.767000,-80.817000,-5,834
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2000,1,1,0,0,0,0,5,-3,55,918,0,0,0.17
 2000,1,1,1,0,0,0,4,-3,59,918,0,0,0.17
 2000,1,1,2,0,0,0,4,-4,54,918,1.5,200,0.17

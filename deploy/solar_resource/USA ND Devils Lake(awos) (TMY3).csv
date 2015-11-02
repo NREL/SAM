@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,727573,Devils Lake(awos),ND,USA,48.117000,-98.917000,-6,443
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1999,1,1,0,0,0,0,-25,-31,54,961,6.7,130,0.62
 1999,1,1,1,0,0,0,-24.7,-30.8,54,961,6.9,130,0.62
 1999,1,1,2,0,0,0,-24.3,-30.5,53,961,7,140,0.62

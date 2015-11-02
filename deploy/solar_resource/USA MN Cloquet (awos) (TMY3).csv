@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,726558,Cloquet (awos),MN,USA,46.700000,-92.500000,-6,390
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1998,1,1,0,0,0,0,-6.1,-9.4,75,967,4.5,100,0.59
 1998,1,1,1,0,0,0,-5.9,-9.6,72,967,3.5,90,0.59
 1998,1,1,2,0,0,0,-7.4,-9.3,85,967,4.6,90,0.59

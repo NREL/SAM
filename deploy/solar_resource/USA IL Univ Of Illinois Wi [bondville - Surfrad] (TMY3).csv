@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,725315,Univ Of Illinois Wi [bondville - Surfrad],IL,USA,40.060000,-88.370000,-6,213
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2004,1,1,0,0,0,0,-1,-4,78,997,4.1,70,0.17
 2004,1,1,1,0,0,0,-1,-4,78,997,3.6,80,0.17
 2004,1,1,2,0,0,0,-1,-4,78,997,3.6,80,0.17

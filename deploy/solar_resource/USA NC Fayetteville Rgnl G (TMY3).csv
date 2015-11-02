@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,723035,Fayetteville Rgnl G,NC,USA,34.983000,-78.883000,-5,59
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1994,1,1,0,0,0,0,-3.9,-6.2,82,1019,1,250,0.14
 1994,1,1,1,0,0,0,-4.1,-6.1,84,1019,0.5,310,0.14
 1994,1,1,2,0,0,0,-4.5,-6.2,86,1019,0,0,0.14

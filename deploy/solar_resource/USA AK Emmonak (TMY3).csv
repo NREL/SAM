@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,702084,Emmonak,AK,USA,62.783000,-164.500000,-9,4
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1991,1,1,0,0,0,0,-15,-16.5,87,1013,6.7,50,0.56
 1991,1,1,1,0,0,0,-15,-16.5,87,1013,6.7,50,0.56
 1991,1,1,2,0,0,0,-14.6,-16.2,86,1013,6.7,50,0.56

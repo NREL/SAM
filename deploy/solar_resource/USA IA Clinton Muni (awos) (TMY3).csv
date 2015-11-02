@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,725473,Clinton Muni (awos),IA,USA,41.833000,-90.333000,-6,216
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1995,1,1,0,0,0,0,-5.6,-8.9,75,987,6.1,320,0.19
 1995,1,1,1,0,0,0,-6.2,-8.9,79,987,5.6,310,0.19
 1995,1,1,2,0,0,0,-6.7,-9.5,78,987,5.1,300,0.19

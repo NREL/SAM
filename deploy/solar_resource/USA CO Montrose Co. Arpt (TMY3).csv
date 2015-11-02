@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,724765,Montrose Co. Arpt,CO,USA,38.500000,-107.900000,-7,1755
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1996,1,1,0,0,0,0,-5,-6.2,90,817,0,0,0.33
 1996,1,1,1,0,0,0,-10,-11.2,90,815,0,0,0.33
 1996,1,1,2,0,0,0,-8.9,-10,91,816,4.1,160,0.33

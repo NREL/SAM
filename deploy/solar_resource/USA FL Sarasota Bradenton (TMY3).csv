@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,722115,Sarasota Bradenton,FL,USA,27.383000,-82.550000,-5,10
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2003,1,1,0,0,0,0,18,18,100,1010,5.1,200,0.14
 2003,1,1,1,0,0,0,18,18,100,1010,4.1,190,0.14
 2003,1,1,2,0,0,0,18,18,100,1009,5.1,190,0.14

@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,722576,Robert Gray Aaf,TX,USA,31.067000,-97.833000,-6,312
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1997,1,1,0,0,0,0,14,13,94,981,0.5,240,0.18
 1997,1,1,1,0,0,0,13,13,100,981,2.6,290,0.18
 1997,1,1,2,0,0,0,15,14,94,981,0.5,240,0.18

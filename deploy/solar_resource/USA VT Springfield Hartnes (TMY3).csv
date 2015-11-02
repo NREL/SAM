@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,726115,Springfield Hartnes,VT,USA,43.350000,-72.517000,-5,176
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1999,1,1,0,0,0,0,-17,-18,91,991,0,0,0.34
 1999,1,1,1,0,0,0,-17,-19,83,991,0,0,0.34
 1999,1,1,2,0,0,0,-17,-19,83,991,0,0,0.34

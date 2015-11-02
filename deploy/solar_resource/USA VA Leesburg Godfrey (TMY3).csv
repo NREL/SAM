@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,724055,Leesburg Godfrey,VA,USA,39.083000,-77.567000,-5,119
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2005,1,1,0,0,0,0,3,2,93,999,0,0,0.17
 2005,1,1,1,0,0,0,4,3,93,999,0,0,0.17
 2005,1,1,2,0,0,0,4,4,100,999,1.5,200,0.17

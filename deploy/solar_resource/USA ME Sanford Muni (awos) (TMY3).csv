@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,726064,Sanford Muni (awos),ME,USA,43.400000,-70.717000,-5,74
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1995,1,1,0,0,0,0,-1.2,-6.2,65,1004,0,0,0.16
 1995,1,1,1,0,0,0,-0.6,-4.5,72,1004,1.5,200,0.16
 1995,1,1,2,0,0,0,-1.2,-4.5,76,1004,0,0,0.16

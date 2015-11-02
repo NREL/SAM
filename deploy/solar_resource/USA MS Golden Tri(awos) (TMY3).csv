@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,723307,Golden Tri(awos),MS,USA,33.450000,-88.583000,-6,80
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1994,1,1,0,0,0,0,1.6,-7.3,48,1003,1.5,130,0.16
 1994,1,1,1,0,0,0,2.2,-6.2,51,1003,3,120,0.16
 1994,1,1,2,0,0,0,3.3,-6.7,45,1003,0,0,0.16

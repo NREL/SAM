@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,725384,St.clair County Int,MI,USA,42.917000,-82.533000,-5,198
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1996,1,1,0,0,0,0,0,-1.7,87,990,1.5,340,0.17
 1996,1,1,1,0,0,0,0,-1.7,87,990,1.5,350,0.17
 1996,1,1,2,0,0,0,0,-1.7,87,990,0,0,0.17

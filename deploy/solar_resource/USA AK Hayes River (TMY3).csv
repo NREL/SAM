@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,702495,Hayes River,AK,USA,61.983000,-152.083000,-9,305
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2005,1,1,0,0,0,0,-6.6,-10.4,72,977,0,0,0.61
 2005,1,1,1,0,0,0,-6.4,-10.1,72,977,0,0,0.61
 2005,1,1,2,0,0,0,-6.3,-9.8,74,977,0,0,0.61

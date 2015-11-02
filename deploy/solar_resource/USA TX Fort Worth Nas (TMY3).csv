@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,722595,Fort Worth Nas,TX,USA,32.767000,-97.450000,-6,185
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2002,1,1,0,0,0,0,1,-7,51,1004,3.1,30,0.18
 2002,1,1,1,0,0,0,1,-7,51,1005,2.6,30,0.18
 2002,1,1,2,0,0,0,6.1,-6.7,37,1005,2.6,20,0.18

@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,723086,Newport News,VA,USA,37.133000,-76.500000,-5,13
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2005,1,1,0,0,0,0,10,6,76,1025,3.1,240,0.16
 2005,1,1,1,0,0,0,9,6,81,1025,3.6,240,0.16
 2005,1,1,2,0,0,0,10,7,82,1025,3.6,240,0.16

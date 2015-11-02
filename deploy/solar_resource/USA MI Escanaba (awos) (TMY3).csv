@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,726480,Escanaba (awos),MI,USA,45.750000,-87.033000,-5,187
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2001,1,1,0,0,0,0,-5.2,-6.5,89,991,8,160,0.15
 2001,1,1,1,0,0,0,-5.9,-7.2,89,991,5.3,230,0.15
 2001,1,1,2,0,0,0,-6.6,-7.9,89,991,4.3,240,0.15

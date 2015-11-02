@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,725920,Redding Municipal Arpt,CA,USA,40.517000,-122.317000,-8,153
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2000,1,1,0,0,0,0,0.6,-0.6,91,999,1.5,310,0.18
 2000,1,1,1,0,0,0,1.1,-1.1,84,999,1.5,40,0.18
 2000,1,1,2,0,0,0,1.7,0,88,999,0,0,0.18

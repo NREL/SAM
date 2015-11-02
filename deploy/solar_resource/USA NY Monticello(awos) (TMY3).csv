@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,725145,Monticello(awos),NY,USA,41.700000,-74.800000,-5,428
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1997,1,1,0,0,0,0,-5.9,-9.2,75,963,2.2,310,0.16
 1997,1,1,1,0,0,0,-4.5,-7.7,76,963,2.1,300,0.16
 1997,1,1,2,0,0,0,-4.2,-7.3,77,963,3.6,110,0.16

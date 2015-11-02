@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,702075,Anvik,AK,USA,62.650000,-160.183000,-9,99
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2005,1,1,0,0,0,0,0,-3,78,1001,2.1,100,0.65
 2005,1,1,1,0,0,0,0,-3,78,1001,1.5,90,0.65
 2005,1,1,2,0,0,0,-1,-3,85,1001,2.1,90,0.65

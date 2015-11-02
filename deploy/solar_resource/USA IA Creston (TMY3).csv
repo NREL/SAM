@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,725474,Creston,IA,USA,41.017000,-94.367000,-6,394
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2003,1,1,0,0,0,0,-4.6,-12.5,50,967,4.2,330,0.19
 2003,1,1,1,0,0,0,-5.8,-12.6,55,967,4.1,320,0.19
 2003,1,1,2,0,0,0,-5.9,-12.7,55,967,4,330,0.19

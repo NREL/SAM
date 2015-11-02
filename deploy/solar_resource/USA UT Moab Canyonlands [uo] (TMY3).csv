@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,724776,Moab Canyonlands [uo],UT,USA,38.580000,-109.540000,-7,1000
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1999,1,1,0,0,0,0,-2,-2,100,852,0,0,0.33
 1999,1,1,1,0,0,0,-1,-2,92,853,2.6,40,0.33
 1999,1,1,2,0,0,0,-1,-2,92,853,0,0,0.33

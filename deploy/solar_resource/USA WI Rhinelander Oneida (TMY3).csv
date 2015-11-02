@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,727415,Rhinelander Oneida,WI,USA,45.633000,-89.467000,-6,507
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1995,1,1,0,0,0,0,-11.6,-20.4,44,954,2.2,30,0.16
 1995,1,1,1,0,0,0,-11.5,-21.5,39,954,2.2,360,0.16
 1995,1,1,2,0,0,0,-11.4,-16.6,62,954,2.4,350,0.16

@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,724117,Wise Lonesome Pine,VA,USA,36.983000,-82.533000,-5,817
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2002,1,1,0,0,0,0,8,7,93,920,2.1,310,0.17
 2002,1,1,1,0,0,0,8,7,93,920,1,340,0.17
 2002,1,1,2,0,0,0,7.7,6.6,93,920,0,0,0.17

@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,727535,Jamestown Municipal Arpt,ND,USA,46.917000,-98.683000,-6,455
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2004,1,1,0,0,0,0,-9.4,-11.1,86,957,6.2,130,0.42
 2004,1,1,1,0,0,0,-8.9,-10.6,86,956,5.2,120,0.42
 2004,1,1,2,0,0,0,-8.9,-10,91,956,4.6,120,0.42

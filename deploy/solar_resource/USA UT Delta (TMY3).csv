@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,724795,Delta,UT,USA,39.333000,-112.583000,-7,1414
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2000,1,1,0,0,0,0,-3.3,-7.6,69,850,0.3,20,0.3
 2000,1,1,1,0,0,0,-4,-8,71,849,0,0,0.3
 2000,1,1,2,0,0,0,-3.8,-8.1,69,849,0,0,0.3

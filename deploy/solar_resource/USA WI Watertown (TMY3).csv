@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,726464,Watertown,WI,USA,43.167000,-88.717000,-6,254
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1998,1,1,0,0,0,0,-8.2,-9.6,88,983,4.4,190,0.16
 1998,1,1,1,0,0,0,-8.1,-9.5,88,983,4.8,190,0.16
 1998,1,1,2,0,0,0,-7.1,-8.6,88,983,5.1,190,0.16

@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,727670,Williston Sloulin Intl Ap,ND,USA,48.200000,-103.650000,-6,580
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1995,1,1,0,0,0,0,-19.4,-20.6,89,956,1.5,180,0.39
 1995,1,1,1,0,0,0,-20,-21.7,85,955,1.5,160,0.39
 1995,1,1,2,0,0,0,-20.6,-22.2,86,954,3.1,210,0.39

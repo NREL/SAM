@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,725125,Dubois Faa Ap,PA,USA,41.183000,-78.900000,-5,553
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1995,1,1,0,0,0,0,1.6,0,89,949,0,0,0.18
 1995,1,1,1,0,0,0,2.2,0.5,89,949,1.5,130,0.18
 1995,1,1,2,0,0,0,2.7,1.1,89,949,1.5,160,0.18

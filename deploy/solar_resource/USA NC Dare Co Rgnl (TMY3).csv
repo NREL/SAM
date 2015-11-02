@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,723046,Dare Co Rgnl,NC,USA,35.917000,-75.700000,-5,4
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2000,1,1,0,0,0,0,7,7,100,1013,2.1,60,0.15
 2000,1,1,1,0,0,0,7,7,100,1013,1.5,70,0.15
 2000,1,1,2,0,0,0,6,6,100,1013,0,0,0.15

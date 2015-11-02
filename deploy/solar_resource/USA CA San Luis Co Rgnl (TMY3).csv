@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,722897,San Luis Co Rgnl,CA,USA,35.233000,-120.633000,-8,66
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1999,1,1,0,0,0,0,12,4,58,1012,1.5,120,0.16
 1999,1,1,1,0,0,0,9,4,71,1012,2.6,190,0.16
 1999,1,1,2,0,0,0,8,3,71,1012,2.1,160,0.16

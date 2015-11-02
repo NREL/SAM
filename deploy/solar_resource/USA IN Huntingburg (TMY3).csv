@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,724365,Huntingburg,IN,USA,38.250000,-86.950000,-5,161
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2002,1,1,0,0,0,0,3.4,-1.1,72,994,4.2,300,0.18
 2002,1,1,1,0,0,0,5,-1,64,994,3.1,220,0.18
 2002,1,1,2,0,0,0,4,-1,69,994,5.3,340,0.18

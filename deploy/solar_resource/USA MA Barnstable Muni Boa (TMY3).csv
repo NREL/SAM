@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,725067,Barnstable Muni Boa,MA,USA,41.667000,-70.283000,-5,17
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2002,1,1,0,0,0,0,-4,-12,50,1013,3.1,290,0.15
 2002,1,1,1,0,0,0,-4,-12,50,1013,3.6,300,0.15
 2002,1,1,2,0,0,0,-4,-12,50,1013,3.1,300,0.15

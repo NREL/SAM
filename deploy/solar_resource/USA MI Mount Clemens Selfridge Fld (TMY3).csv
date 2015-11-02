@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,725377,Mount Clemens Selfridge Fld,MI,USA,42.617000,-82.833000,-5,177
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1998,1,1,0,0,0,0,-7,-9,84,1004,4.1,220,0.17
 1998,1,1,1,0,0,0,-7,-9,84,1004,3.6,220,0.17
 1998,1,1,2,0,0,0,-6,-8,84,1004,4.1,200,0.17

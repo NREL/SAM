@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,726155,Laconia Muni (awos),NH,USA,43.567000,-71.417000,-5,166
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1995,1,1,0,0,0,0,-1.2,-7.3,60,993,1.5,270,0.16
 1995,1,1,1,0,0,0,-1.2,-6.2,65,993,1.5,270,0.16
 1995,1,1,2,0,0,0,-1.2,-4.5,76,993,0,0,0.16

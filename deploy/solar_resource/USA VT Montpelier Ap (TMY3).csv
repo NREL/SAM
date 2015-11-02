@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,726145,Montpelier Ap,VT,USA,44.200000,-72.567000,-5,343
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2002,1,1,0,0,0,0,-7.8,-12.2,68,970,2.6,270,0.34
 2002,1,1,1,0,0,0,-7.8,-14.4,55,970,2.6,240,0.34
 2002,1,1,2,0,0,0,-10.6,-14.4,71,970,1.5,250,0.34

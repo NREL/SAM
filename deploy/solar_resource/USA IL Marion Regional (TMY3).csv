@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,724339,Marion Regional,IL,USA,37.750000,-89.017000,-6,144
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1999,1,1,0,0,0,0,-7.1,-11,71,996,1.2,360,0.17
 1999,1,1,1,0,0,0,-7.2,-11.1,71,996,0.9,360,0.17
 1999,1,1,2,0,0,0,-7.5,-11.4,71,996,0.7,360,0.17

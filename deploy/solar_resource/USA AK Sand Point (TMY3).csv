@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,703165,Sand Point,AK,USA,55.317000,-160.517000,-9,7
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1997,1,1,0,0,0,0,4,3,93,1012,2.1,320,0.24
 1997,1,1,1,0,0,0,4,3,93,1012,0,0,0.24
 1997,1,1,2,0,0,0,5,3,87,1012,3.1,260,0.24

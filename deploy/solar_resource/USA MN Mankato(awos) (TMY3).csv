@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,726585,Mankato(awos),MN,USA,44.217000,-93.917000,-6,311
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1999,1,1,0,0,0,0,-2.3,-3.4,91,976,3.6,20,0.42
 1999,1,1,1,0,0,0,-2.3,-3.4,91,976,8.7,10,0.42
 1999,1,1,2,0,0,0,-2.3,-3.9,87,976,8.7,10,0.42

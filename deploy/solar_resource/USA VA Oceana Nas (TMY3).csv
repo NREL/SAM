@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,723075,Oceana Nas,VA,USA,36.817000,-76.033000,-5,8
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1997,1,1,0,0,0,0,5,2,81,1026,8.8,40,0.15
 1997,1,1,1,0,0,0,3.9,1,81,1026,6.2,40,0.15
 1997,1,1,2,0,0,0,3.9,1,81,1026,6.2,40,0.15

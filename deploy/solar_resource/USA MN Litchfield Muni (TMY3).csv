@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,726583,Litchfield Muni,MN,USA,45.100000,-94.500000,-6,347
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1999,1,1,0,0,0,0,-19.3,-25.7,53,972,4.8,60,0.55
 1999,1,1,1,0,0,0,-19.2,-24.8,58,972,4.2,80,0.55
 1999,1,1,2,0,0,0,-19.1,-23.9,63,972,3.7,90,0.55

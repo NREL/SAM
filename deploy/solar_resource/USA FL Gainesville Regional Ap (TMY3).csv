@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,722146,Gainesville Regional Ap,FL,USA,29.700000,-82.283000,-5,41
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1994,1,1,0,0,0,0,5,3.9,93,1020,2.1,360,0.14
 1994,1,1,1,0,0,0,5.6,3.9,89,1020,2.1,10,0.14
 1994,1,1,2,0,0,0,5.6,4.4,92,1019,2.1,20,0.14

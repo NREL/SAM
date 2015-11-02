@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,727033,Houlton Intl Arpt,ME,USA,46.117000,-67.800000,-5,150
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2003,1,1,0,0,0,0,1.7,1.7,100,988,1.5,220,0.19
 2003,1,1,1,0,0,0,1.1,1.1,100,988,2.1,210,0.19
 2003,1,1,2,0,0,0,1.1,0.6,96,988,3.6,220,0.19

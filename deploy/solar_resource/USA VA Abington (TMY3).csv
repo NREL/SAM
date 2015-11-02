@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,724058,Abington,VA,USA,36.683000,-82.033000,-5,631
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2005,1,1,0,0,0,0,11,8,82,940,0,0,0.17
 2005,1,1,1,0,0,0,12,8,76,940,1.5,240,0.17
 2005,1,1,2,0,0,0,12,8,76,940,0,0,0.17

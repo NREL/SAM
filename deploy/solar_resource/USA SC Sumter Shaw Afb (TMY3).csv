@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,747900,Sumter Shaw Afb,SC,USA,33.967000,-80.467000,-5,74
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1994,1,1,0,0,0,0,-3.9,-5.6,86,1020,1,50,0.17
 1994,1,1,1,0,0,0,-3.4,-5.6,83,1020,1.5,70,0.17
 1994,1,1,2,0,0,0,-3.4,-6.2,79,1020,1.5,40,0.17

@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,727445,Ironwood (awos),MI,USA,46.533000,-90.133000,-6,375
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2004,1,1,0,0,0,0,-15,-16,91,969,0,0,0.39
 2004,1,1,1,0,0,0,-15,-18,76,969,0,0,0.39
 2004,1,1,2,0,0,0,-13,-15,83,969,0,0,0.39

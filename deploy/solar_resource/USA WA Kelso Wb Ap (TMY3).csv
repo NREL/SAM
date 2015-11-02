@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,727924,Kelso Wb Ap,WA,USA,46.133000,-122.900000,-8,5
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1997,1,1,0,0,0,0,9.2,6.8,85,1012,5.3,170,0.3
 1997,1,1,1,0,0,0,9.6,6.8,83,1012,4.9,170,0.3
 1997,1,1,2,0,0,0,9.9,6.9,82,1012,4.4,160,0.3

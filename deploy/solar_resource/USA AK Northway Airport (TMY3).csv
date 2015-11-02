@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,702910,Northway Airport,AK,USA,62.967000,-141.933000,-9,522
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1991,1,1,0,0,0,0,-42.7,-42.7,100,970,0,0,0.59
 1991,1,1,1,0,0,0,-42.1,-42.1,100,971,1.5,210,0.59
 1991,1,1,2,0,0,0,-41.6,-41.6,100,971,1.5,180,0.59

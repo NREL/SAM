@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,725314,Cahokia St. Louis,IL,USA,38.567000,-90.150000,-6,126
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2005,1,1,0,0,0,0,13,12,94,1008,2.1,360,0.18
 2005,1,1,1,0,0,0,13,13,100,1008,1.5,350,0.18
 2005,1,1,2,0,0,0,13,12,94,1009,1.5,40,0.18

@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,722055,Ocala Muni (awos),FL,USA,29.167000,-82.217000,-5,27
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1999,1,1,0,0,0,0,6.2,2.7,78,1010,0,0,0.14
 1999,1,1,1,0,0,0,6,3,81,1010,0,0,0.14
 1999,1,1,2,0,0,0,5.8,2.8,81,1010,0,0,0.14

@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,724625,Durango La Plata Co,CO,USA,37.150000,-107.750000,-7,2038
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1997,1,1,0,0,0,0,5,-3,55,801,1.5,50,0.29
 1997,1,1,1,0,0,0,-1,-4,78,796,0,0,0.29
 1997,1,1,2,0,0,0,-1,-4,78,798,1.5,60,0.29

@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,723830,Sandberg,CA,USA,34.750000,-118.717000,-8,1377
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1999,1,1,0,0,0,0,4,-1,69,863,4.6,360,0.14
 1999,1,1,1,0,0,0,3,-1,74,863,5.1,350,0.14
 1999,1,1,2,0,0,0,2,-3,67,863,6.2,10,0.14

@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,722065,Jacksonville Nas,FL,USA,30.233000,-81.667000,-5,9
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2002,1,1,0,0,0,0,5.6,-1.1,61,1017,4.1,320,0.15
 2002,1,1,1,0,0,0,6,-2,55,1018,5.2,340,0.15
 2002,1,1,2,0,0,0,5.2,-2.2,58,1018,4.6,330,0.15

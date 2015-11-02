@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,723416,Stuttgart (awos),AR,USA,34.600000,-91.567000,-6,68
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1991,1,1,0,0,0,0,-6,-16.6,39,1005,2.1,170,0.17
 1991,1,1,1,0,0,0,-6.2,-14.2,49,1005,2,150,0.17
 1991,1,1,2,0,0,0,-4.3,-12.8,47,1005,2,130,0.17

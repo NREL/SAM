@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,722899,Chino Airport,CA,USA,33.967000,-117.633000,-8,198
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1999,1,1,0,0,0,0,7,7,100,992,0,0,0.16
 1999,1,1,1,0,0,0,4,4,100,992,0,0,0.16
 1999,1,1,2,0,0,0,4,4,100,992,0,0,0.16

@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,724105,Staunton Shenandoah,VA,USA,38.267000,-78.900000,-5,366
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2005,1,1,0,0,0,0,9,7,87,970,0,0,0.17
 2005,1,1,1,0,0,0,10,8,87,970,2.6,230,0.17
 2005,1,1,2,0,0,0,9.9,8.3,90,970,1.3,300,0.17

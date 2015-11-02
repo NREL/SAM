@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,727444,Two Harbors,MN,USA,47.050000,-91.750000,-6,328
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2000,1,1,0,0,0,0,-8,-9,92,974,2.1,310,0.3
 2000,1,1,1,0,0,0,-6,-8,84,974,2.6,300,0.3
 2000,1,1,2,0,0,0,-6,-8,84,974,2.1,310,0.3

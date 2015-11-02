@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,704540,Adak Nas,AK,USA,51.883000,-176.650000,-10,5
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1998,1,1,0,0,0,0,0.2,-3.6,73,1025,0,0,0.22
 1998,1,1,1,0,0,0,0.3,-2.8,78,1024,0,0,0.22
 1998,1,1,2,0,0,0,0.4,-1,89,1024,0,0,0.22

@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,726560,Fergus Falls(awos),MN,USA,46.283000,-96.150000,-6,361
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1998,1,1,0,0,0,0,2.8,-4.6,56,934,3.7,240,0.41
 1998,1,1,1,0,0,0,2.5,-5.3,54,934,3.8,250,0.41
 1998,1,1,2,0,0,0,2.1,-5.4,55,934,3.9,260,0.41

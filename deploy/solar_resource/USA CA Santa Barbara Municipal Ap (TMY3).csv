@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,723925,Santa Barbara Municipal Ap,CA,USA,34.433000,-119.850000,-8,3
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2005,1,1,0,0,0,0,4.4,3.3,93,1016,0,0,0.14
 2005,1,1,1,0,0,0,4.4,3.3,93,1016,0,0,0.14
 2005,1,1,2,0,0,0,5.6,4.4,92,1016,0,0,0.14

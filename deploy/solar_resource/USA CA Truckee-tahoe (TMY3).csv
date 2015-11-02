@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,725846,Truckee-tahoe,CA,USA,39.317000,-120.133000,-8,1798
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1997,1,1,0,0,0,0,9.3,8.3,93,819,14.9,200,0.19
 1997,1,1,1,0,0,0,9,9,100,819,14.4,190,0.19
 1997,1,1,2,0,0,0,9,9,100,819,15.9,190,0.19

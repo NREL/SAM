@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,725463,Charles City,IA,USA,43.067000,-92.617000,-6,343
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1998,1,1,0,0,0,0,-7,-9,84,973,8.7,170,0.65
 1998,1,1,1,0,0,0,-6,-9,77,973,6.7,170,0.65
 1998,1,1,2,0,0,0,-6,-8,84,973,4.6,160,0.65

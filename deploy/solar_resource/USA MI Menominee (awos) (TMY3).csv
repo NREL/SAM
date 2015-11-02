@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,726487,Menominee (awos),MI,USA,45.133000,-87.633000,-6,191
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1999,1,1,0,0,0,0,-20,-24,68,990,3.6,310,0.15
 1999,1,1,1,0,0,0,-20.3,-24.3,68,990,3.3,310,0.15
 1999,1,1,2,0,0,0,-20.7,-24.7,68,990,2.9,310,0.15

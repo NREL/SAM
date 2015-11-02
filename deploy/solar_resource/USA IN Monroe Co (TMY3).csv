@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,724375,Monroe Co,IN,USA,39.133000,-86.617000,-5,264
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2000,1,1,0,0,0,0,2,-2,73,987,3.1,140,0.18
 2000,1,1,1,0,0,0,2,-2,73,987,2.6,140,0.18
 2000,1,1,2,0,0,0,3,-2,68,987,3.1,150,0.18

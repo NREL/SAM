@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,724926,Modesto City-county Ap,CA,USA,37.633000,-120.950000,-8,30
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2004,1,1,0,0,0,0,9.4,7.8,90,1011,4.6,130,0.17
 2004,1,1,1,0,0,0,9.4,7.8,90,1012,5.2,130,0.17
 2004,1,1,2,0,0,0,10,7.8,86,1012,3.6,130,0.17

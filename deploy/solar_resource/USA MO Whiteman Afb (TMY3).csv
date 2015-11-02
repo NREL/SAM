@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,724467,Whiteman Afb,MO,USA,38.717000,-93.550000,-6,255
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1998,1,1,0,0,0,0,3,-4,58,990,8.7,190,0.18
 1998,1,1,1,0,0,0,3,-4,58,989,9.8,190,0.18
 1998,1,1,2,0,0,0,4,-4,54,991,9.8,190,0.18

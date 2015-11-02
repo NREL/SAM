@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,727934,Renton Muni,WA,USA,47.483000,-122.217000,-8,10
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2005,1,1,0,0,0,0,6,1,70,1001,2.1,240,0.35
 2005,1,1,1,0,0,0,5,2,81,1002,1.5,280,0.35
 2005,1,1,2,0,0,0,5,3,87,1002,0,0,0.35

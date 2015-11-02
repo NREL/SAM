@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,722686,Clovis Cannon Afb,NM,USA,34.383000,-103.317000,-7,1309
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1997,1,1,0,0,0,0,7,-3.2,47,872,5,30,0.19
 1997,1,1,1,0,0,0,5.9,-3,51,872,4.6,40,0.19
 1997,1,1,2,0,0,0,5.3,-3.4,52,871,5.2,30,0.19

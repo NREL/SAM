@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,725866,Joslin Fld Magic Va [twin Falls - Uo],ID,USA,42.550000,-114.350000,-7,1200
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1999,1,1,0,0,0,0,2,0,87,872,10.8,240,0.43
 1999,1,1,1,0,0,0,2,-1,80,873,7.7,250,0.43
 1999,1,1,2,0,0,0,2,-1,80,874,8.7,250,0.43

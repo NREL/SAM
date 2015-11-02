@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,725064,Plymouth Municipal,MA,USA,41.917000,-70.733000,-5,45
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1995,1,1,0,0,0,0,-2.8,-3.9,91,1008,0,0,0.15
 1995,1,1,1,0,0,0,-1.7,-3.4,87,1008,0,0,0.15
 1995,1,1,2,0,0,0,-2.3,-3.9,87,1008,0,0,0.15

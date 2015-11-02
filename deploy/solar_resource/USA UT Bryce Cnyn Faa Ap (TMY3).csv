@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,724756,Bryce Cnyn Faa Ap,UT,USA,37.700000,-112.150000,-7,2312
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2002,1,1,0,0,0,0,-12,-12,100,761,3.6,330,0.27
 2002,1,1,1,0,0,0,-12,-13,91,761,3.1,320,0.27
 2002,1,1,2,0,0,0,-9,-11,84,763,2.6,310,0.27

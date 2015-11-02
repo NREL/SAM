@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,726785,Butte Bert Mooney Arpt,MT,USA,45.950000,-112.500000,-7,1689
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2002,1,1,0,0,0,0,-17.2,-18.9,85,827,1.5,150,0.51
 2002,1,1,1,0,0,0,-18.3,-20.6,80,827,0,0,0.51
 2002,1,1,2,0,0,0,-18.9,-21.1,81,827,1.5,150,0.51

@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,725060,Otis Angb,MA,USA,41.650000,-70.517000,-5,40
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1995,1,1,0,0,0,0,3.8,2.7,93,1017,0,0,0.15
 1995,1,1,1,0,0,0,3.3,3.3,100,1016,0,0,0.15
 1995,1,1,2,0,0,0,3.3,3.3,100,1015,0,0,0.15

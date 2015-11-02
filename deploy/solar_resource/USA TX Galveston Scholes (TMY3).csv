@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,722420,Galveston Scholes,TX,USA,29.300000,-94.800000,-6,16
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1998,1,1,0,0,0,0,12,5,62,1030,4.6,100,0.12
 1998,1,1,1,0,0,0,12,7,71,1030,4.1,100,0.12
 1998,1,1,2,0,0,0,12,7,71,1029,5.7,90,0.12

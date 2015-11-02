@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,724695,Aurora Buckley Field Angb,CO,USA,39.717000,-104.750000,-7,1726
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2005,1,1,0,0,0,0,3,-8,41,811,3.6,190,0.22
 2005,1,1,1,0,0,0,-1,-7,60,809,2.6,200,0.22
 2005,1,1,2,0,0,0,-3,-4,92,809,2.6,300,0.22

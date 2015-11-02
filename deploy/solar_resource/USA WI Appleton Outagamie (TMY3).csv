@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,726457,Appleton Outagamie,WI,USA,44.250000,-88.517000,-6,280
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2001,1,1,0,0,0,0,-9.2,-10.9,86,980,3.6,310,0.16
 2001,1,1,1,0,0,0,-9.2,-10.9,86,980,3.6,320,0.16
 2001,1,1,2,0,0,0,-9.2,-10.9,86,980,3.6,320,0.16

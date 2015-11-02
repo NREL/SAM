@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,724035,Quantico Mcas,VA,USA,38.500000,-77.300000,-5,4
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1999,1,1,0,0,0,0,-8,-9,92,1020,3.1,290,0.17
 1999,1,1,1,0,0,0,-8,-9,92,1020,3.1,280,0.17
 1999,1,1,2,0,0,0,-8,-9,92,1021,3.1,290,0.17

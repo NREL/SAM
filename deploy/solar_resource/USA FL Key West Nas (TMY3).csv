@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,722015,Key West Nas,FL,USA,24.583000,-81.683000,-5,7
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2004,1,1,0,0,0,0,20.3,16.9,81,1022,3.1,80,0.13
 2004,1,1,1,0,0,0,19.5,17.8,90,1021,2.6,50,0.13
 2004,1,1,2,0,0,0,20,16.8,82,1020,4.1,70,0.13

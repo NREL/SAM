@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,727926,Toledo-winlock Mem,WA,USA,46.483000,-122.800000,-8,113
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1991,1,1,0,0,0,0,2.2,2.2,100,1012,1.5,200,0.3
 1991,1,1,1,0,0,0,1.9,1.9,100,1012,1.5,210,0.3
 1991,1,1,2,0,0,0,1.6,1.6,100,1012,1.5,210,0.3

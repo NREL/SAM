@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,701780,Tanana Ralph M Calhoun Mem Ap,AK,USA,65.167000,-152.100000,-9,71
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1991,1,1,0,0,0,0,-29.8,-33.2,70,1028,1.5,290,0.58
 1991,1,1,1,0,0,0,-29.8,-33.2,70,1026,1.5,290,0.58
 1991,1,1,2,0,0,0,-29.5,-33.2,68,1024,1.5,290,0.58

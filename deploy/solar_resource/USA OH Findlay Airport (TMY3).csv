@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,725366,Findlay Airport,OH,USA,41.017000,-83.667000,-5,244
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2001,1,1,0,0,0,0,-12.2,-13.3,91,993,2.1,270,0.18
 2001,1,1,1,0,0,0,-12.8,-14.4,86,993,2.1,280,0.18
 2001,1,1,2,0,0,0,-13.9,-15.6,86,994,2.1,270,0.18

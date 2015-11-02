@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,725305,W. Chicago Du Page,IL,USA,41.917000,-88.250000,-6,231
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2002,1,1,0,0,0,0,-12,-17,63,993,3.1,300,0.17
 2002,1,1,1,0,0,0,-13,-17,69,993,2.6,280,0.17
 2002,1,1,2,0,0,0,-13,-17,69,993,1.5,240,0.17

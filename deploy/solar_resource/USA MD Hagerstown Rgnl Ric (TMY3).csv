@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,724066,Hagerstown Rgnl Ric,MD,USA,39.700000,-77.733000,-5,220
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2005,1,1,0,0,0,0,8,4,76,999,2.6,150,0.17
 2005,1,1,1,0,0,0,9,5,76,999,2.6,180,0.17
 2005,1,1,2,0,0,0,10,6,76,999,3.1,190,0.17

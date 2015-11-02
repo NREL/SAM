@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,726165,Dillant Hopkins,NH,USA,42.900000,-72.267000,-5,153
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2000,1,1,0,0,0,0,-7,-11,70,995,1.5,170,0.24
 2000,1,1,1,0,0,0,-6,-9,77,995,0,0,0.24
 2000,1,1,2,0,0,0,-6,-8,84,995,0,0,0.24

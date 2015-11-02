@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,723125,Anderson County Ap,SC,USA,34.500000,-82.717000,-5,232
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1994,1,1,0,0,0,0,-4.5,-7.8,75,993,2,290,0.17
 1994,1,1,1,0,0,0,-5,-7.3,82,993,2.5,50,0.17
 1994,1,1,2,0,0,0,-4.5,-7.3,79,993,1.5,90,0.17

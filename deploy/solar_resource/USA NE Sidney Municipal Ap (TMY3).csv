@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,725610,Sidney Municipal Ap,NE,USA,41.100000,-102.983000,-7,1313
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2003,1,1,0,0,0,0,-1,-8.6,52,856,0,0,0.32
 2003,1,1,1,0,0,0,-0.9,-8,55,856,0,0,0.32
 2003,1,1,2,0,0,0,-0.9,-7.6,57,857,1.8,100,0.32

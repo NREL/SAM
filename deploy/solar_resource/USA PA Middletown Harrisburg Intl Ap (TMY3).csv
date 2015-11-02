@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,725115,Middletown Harrisburg Intl Ap,PA,USA,40.200000,-76.767000,-5,92
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1994,1,1,0,0,0,0,-3.9,-6.7,79,1015,4.1,130,0.18
 1994,1,1,1,0,0,0,-5,-7.2,83,1016,0,0,0.18
 1994,1,1,2,0,0,0,-6.1,-7.8,86,1016,2.6,190,0.18

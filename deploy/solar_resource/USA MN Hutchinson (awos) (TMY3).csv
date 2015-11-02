@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,726569,Hutchinson (awos),MN,USA,44.867000,-94.383000,-6,323
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2001,1,1,0,0,0,0,-17.4,-20,78,975,0.8,60,0.42
 2001,1,1,1,0,0,0,-18,-20.6,78,975,2,90,0.42
 2001,1,1,2,0,0,0,-18.8,-21.3,79,975,0,0,0.42

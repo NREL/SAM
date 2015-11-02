@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,723066,Goldsboro Seymour Johnson Afb,NC,USA,35.350000,-77.967000,-5,33
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1994,1,1,0,0,0,0,-3.4,-6.7,75,1026,2.5,70,0.16
 1994,1,1,1,0,0,0,-4.5,-6.7,83,1026,2,90,0.16
 1994,1,1,2,0,0,0,-3.9,-6.2,82,1026,1.5,100,0.16

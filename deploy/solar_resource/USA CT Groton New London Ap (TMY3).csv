@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,725046,Groton New London Ap,CT,USA,41.333000,-72.050000,-5,3
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1996,1,1,0,0,0,0,-2.5,-6.3,72,1021,0,0,0.15
 1996,1,1,1,0,0,0,-2.3,-6.3,71,1021,0,0,0.15
 1996,1,1,2,0,0,0,-2.4,-6.7,69,1021,0,0,0.15

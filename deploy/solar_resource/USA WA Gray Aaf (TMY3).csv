@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,742070,Gray Aaf,WA,USA,47.083000,-122.583000,-8,90
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1991,1,1,0,0,0,0,5,3.9,93,1013,3.1,200,0.35
 1991,1,1,1,0,0,0,5,3.3,89,1014,3.1,200,0.35
 1991,1,1,2,0,0,0,5,1.7,79,1014,3.6,200,0.35

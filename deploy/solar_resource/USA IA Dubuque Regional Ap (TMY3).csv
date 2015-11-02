@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,725470,Dubuque Regional Ap,IA,USA,42.400000,-90.700000,-6,322
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1996,1,1,0,0,0,0,-1.1,-2.2,91,973,3.6,50,0.43
 1996,1,1,1,0,0,0,-1.1,-1.7,95,973,2.1,30,0.43
 1996,1,1,2,0,0,0,-1.1,-1.7,95,974,0,0,0.43

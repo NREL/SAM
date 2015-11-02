@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,722329,Patterson Memorial,LA,USA,29.717000,-91.333000,-6,3
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2000,1,1,0,0,0,0,11,-2,39,1013,0,0,0.12
 2000,1,1,1,0,0,0,11,-2,39,1013,0,0,0.12
 2000,1,1,2,0,0,0,9,-2,45,1013,0,0,0.12

@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,725847,South Lake Tahoe,CA,USA,38.900000,-120.000000,-8,1909
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2005,1,1,0,0,0,0,-3.9,-4.4,96,795,5.7,200,0.19
 2005,1,1,1,0,0,0,-3,-7,71,796,5.1,210,0.19
 2005,1,1,2,0,0,0,-3.3,-6.7,75,796,9.8,210,0.19

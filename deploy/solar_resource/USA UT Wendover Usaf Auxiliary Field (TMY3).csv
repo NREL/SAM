@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,725810,Wendover Usaf Auxiliary Field,UT,USA,40.717000,-114.033000,-8,1291
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1996,1,1,0,0,0,0,2.7,-5.6,51,869,11.8,340,0.41
 1996,1,1,1,0,0,0,3.3,-6.2,47,869,7.7,320,0.41
 1996,1,1,2,0,0,0,3.3,-6.7,45,869,8.2,330,0.41

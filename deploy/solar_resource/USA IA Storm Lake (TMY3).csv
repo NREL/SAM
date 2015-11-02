@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,725496,Storm Lake,IA,USA,42.600000,-95.233000,-6,454
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1998,1,1,0,0,0,0,1,-2,79,960,8.2,210,0.2
 1998,1,1,1,0,0,0,1,-2,79,960,5.7,220,0.2
 1998,1,1,2,0,0,0,1,-2,79,960,5.7,200,0.2

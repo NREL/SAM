@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,725326,Sterling Rockfalls,IL,USA,41.750000,-89.667000,-6,197
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1994,1,1,0,0,0,0,2.7,-2.8,65,990,4.6,190,0.17
 1994,1,1,1,0,0,0,2.7,-2.8,65,990,4.6,190,0.17
 1994,1,1,2,0,0,0,2.7,-2.3,68,990,4.6,190,0.17

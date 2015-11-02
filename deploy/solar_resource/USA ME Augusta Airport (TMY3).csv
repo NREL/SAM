@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,726185,Augusta Airport,ME,USA,44.317000,-69.800000,-5,107
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1994,1,1,0,0,0,0,-7.8,-12.3,67,1008,4.1,170,0.15
 1994,1,1,1,0,0,0,-8.4,-12.3,71,1010,4.6,200,0.15
 1994,1,1,2,0,0,0,-7.3,-11.2,71,1010,2.5,230,0.15

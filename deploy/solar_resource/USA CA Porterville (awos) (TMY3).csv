@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,723895,Porterville (awos),CA,USA,36.033000,-119.067000,-8,135
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2000,1,1,0,0,0,0,2,-6,52,997,3.6,130,0.19
 2000,1,1,1,0,0,0,3,-4,58,997,4.1,140,0.19
 2000,1,1,2,0,0,0,3,-4,58,997,2.1,150,0.19

@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,727458,Grand Rapids(awos),MN,USA,47.217000,-93.517000,-6,413
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1998,1,1,0,0,0,0,-9.9,-16.7,54,965,9.2,20,0.54
 1998,1,1,1,0,0,0,-9.3,-15.9,55,965,8.9,350,0.54
 1998,1,1,2,0,0,0,-8.6,-15,56,965,8.6,360,0.54

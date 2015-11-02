@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,725197,Utica Oneida County Ap,NY,USA,43.150000,-75.383000,-5,217
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2001,1,1,0,0,0,0,-6,-7,92,988,3.6,280,0.37
 2001,1,1,1,0,0,0,-6,-7,92,989,3.6,290,0.37
 2001,1,1,2,0,0,0,-7,-9,84,990,4.1,300,0.37

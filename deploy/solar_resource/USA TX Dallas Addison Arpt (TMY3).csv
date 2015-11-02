@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,722598,Dallas Addison Arpt,TX,USA,32.967000,-96.833000,-6,196
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1997,1,1,0,0,0,0,13.9,13.9,100,990,2.3,100,0.18
 1997,1,1,1,0,0,0,13.9,13.9,100,990,2.4,110,0.18
 1997,1,1,2,0,0,0,14,14,100,990,2.4,110,0.18

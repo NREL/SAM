@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,727504,Aitkin Ndb(awos),MN,USA,46.550000,-93.683000,-6,367
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2000,1,1,0,0,0,0,-6,-7,92,970,4.1,300,0.55
 2000,1,1,1,0,0,0,-6,-8,84,970,2.6,300,0.55
 2000,1,1,2,0,0,0,-6,-7,92,970,0,0,0.55

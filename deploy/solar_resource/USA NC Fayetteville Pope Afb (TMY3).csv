@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,723030,Fayetteville Pope Afb,NC,USA,35.167000,-79.017000,-5,66
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1994,1,1,0,0,0,0,-4.5,-6.2,86,1022,1,50,0.18
 1994,1,1,1,0,0,0,-5.6,-6.7,91,1021,1,30,0.18
 1994,1,1,2,0,0,0,-3.9,-6.7,79,1021,1,330,0.18

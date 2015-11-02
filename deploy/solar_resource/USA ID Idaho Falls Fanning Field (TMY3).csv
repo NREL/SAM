@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,725785,Idaho Falls Fanning Field,ID,USA,43.517000,-112.067000,-7,1441
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2002,1,1,0,0,0,0,-5.6,-6.6,92,857,2.8,350,0.51
 2002,1,1,1,0,0,0,-6,-7,92,857,2.9,360,0.51
 2002,1,1,2,0,0,0,-6.6,-7.6,92,857,2.9,360,0.51

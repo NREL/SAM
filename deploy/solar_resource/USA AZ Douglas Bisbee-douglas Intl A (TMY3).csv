@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,722735,Douglas Bisbee-douglas Intl A,AZ,USA,31.467000,-109.600000,-7,1249
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1998,1,1,0,0,0,0,2.3,-2.3,70,874,1.5,70,0.19
 1998,1,1,1,0,0,0,1.6,-2.7,71,874,1.5,50,0.19
 1998,1,1,2,0,0,0,1,-3,72,874,1.5,30,0.19

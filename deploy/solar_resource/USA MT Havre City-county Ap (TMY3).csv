@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,727770,Havre City-county Ap,MT,USA,48.550000,-109.767000,-7,788
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2003,1,1,0,0,0,0,-2.2,-3.9,87,921,6.7,250,0.37
 2003,1,1,1,0,0,0,-5,-6.7,86,921,5.2,210,0.37
 2003,1,1,2,0,0,0,-4.4,-5,95,923,5.7,220,0.37
