@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,747685,Gulfport Biloxi Int,MS,USA,30.400000,-89.067000,-6,9
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2005,1,1,0,0,0,0,17.2,16.1,93,1025,3.1,70,0.16
 2005,1,1,1,0,0,0,17.2,16.1,93,1024,3.1,80,0.16
 2005,1,1,2,0,0,0,17.2,16.7,97,1024,3.1,70,0.16

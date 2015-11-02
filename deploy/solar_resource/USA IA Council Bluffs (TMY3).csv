@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,725497,Council Bluffs,IA,USA,41.267000,-95.767000,-6,382
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1998,1,1,0,0,0,0,3,-2,68,968,5.7,200,0.19
 1998,1,1,1,0,0,0,3,-2,68,968,7.2,210,0.19
 1998,1,1,2,0,0,0,3,-2,68,968,5.7,210,0.19

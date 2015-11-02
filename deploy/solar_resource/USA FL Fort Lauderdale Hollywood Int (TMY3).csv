@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,722025,Fort Lauderdale Hollywood Int,FL,USA,26.067000,-80.150000,-5,3
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2002,1,1,0,0,0,0,17.2,16.7,97,1016,5.2,320,0.15
 2002,1,1,1,0,0,0,16.7,16.7,100,1015,3.6,320,0.15
 2002,1,1,2,0,0,0,16.1,16.1,100,1015,3.6,320,0.15

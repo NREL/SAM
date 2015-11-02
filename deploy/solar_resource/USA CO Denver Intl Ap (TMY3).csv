@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,725650,Denver Intl Ap,CO,USA,39.833000,-104.650000,-7,1650
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1995,1,1,0,0,0,0,-18,-19.7,85,837,0,0,0.22
 1995,1,1,1,0,0,0,-16.6,-18.6,83,835,0,0,0.22
 1995,1,1,2,0,0,0,-15.3,-17.1,85,834,0,0,0.22

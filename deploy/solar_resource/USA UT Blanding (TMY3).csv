@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,724723,Blanding,UT,USA,37.617000,-109.483000,-7,1841
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2005,1,1,0,0,0,0,1.1,-1.7,80,809,2.9,130,0.33
 2005,1,1,1,0,0,0,0.6,-2.1,80,809,2.9,110,0.33
 2005,1,1,2,0,0,0,0.2,-2.5,80,809,2.8,80,0.33

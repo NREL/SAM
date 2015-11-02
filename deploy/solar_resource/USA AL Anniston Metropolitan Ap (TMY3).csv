@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,722287,Anniston Metropolitan Ap,AL,USA,33.583000,-85.850000,-6,186
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1991,1,1,0,0,0,0,0.6,-1.6,84,1005,4.1,80,0.17
 1991,1,1,1,0,0,0,0.6,-1,88,1005,3.6,90,0.17
 1991,1,1,2,0,0,0,1.1,-0.5,89,1005,4.1,70,0.17

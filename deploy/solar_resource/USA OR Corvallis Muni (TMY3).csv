@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,726945,Corvallis Muni,OR,USA,44.483000,-123.283000,-8,77
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2001,1,1,0,0,0,0,6,4,87,1004,0,0,0.18
 2001,1,1,1,0,0,0,6,4,87,1004,2.1,150,0.18
 2001,1,1,2,0,0,0,5,4,93,1004,0,0,0.18

@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,726676,Glendive(awos),MT,USA,47.133000,-104.800000,-7,749
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2003,1,1,0,0,0,0,-4,-7,77,927,2.1,320,0.38
 2003,1,1,1,0,0,0,-5,-7,84,927,1.5,300,0.38
 2003,1,1,2,0,0,0,-4,-7,77,927,1.5,300,0.38

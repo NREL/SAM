@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,725116,Lancaster,PA,USA,40.117000,-76.300000,-5,126
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2002,1,1,0,0,0,0,-9,-14,64,1004,2.6,260,0.18
 2002,1,1,1,0,0,0,-11,-14,76,1004,3.6,300,0.18
 2002,1,1,2,0,0,0,-10,-14,70,1004,3.6,270,0.18

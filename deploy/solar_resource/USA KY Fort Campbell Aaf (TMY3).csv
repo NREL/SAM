@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,746710,Fort Campbell Aaf,KY,USA,36.667000,-87.483000,-6,173
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1994,1,1,0,0,0,0,1.1,-5.6,58,1000,2.5,180,0.17
 1994,1,1,1,0,0,0,1.1,-6.2,55,999,3,160,0.17
 1994,1,1,2,0,0,0,0,-6.7,57,1000,3,170,0.17

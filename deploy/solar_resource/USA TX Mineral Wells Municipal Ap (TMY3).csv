@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,722597,Mineral Wells Municipal Ap,TX,USA,32.783000,-98.067000,-6,284
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1991,1,1,0,0,0,0,-3.3,-5.9,80,990,2.6,130,0.18
 1991,1,1,1,0,0,0,-3.3,-5.9,80,990,2.6,130,0.18
 1991,1,1,2,0,0,0,-3.4,-5.8,82,990,2.6,130,0.18

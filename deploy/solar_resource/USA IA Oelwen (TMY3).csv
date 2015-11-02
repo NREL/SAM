@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,725488,Oelwen,IA,USA,42.683000,-91.967000,-6,328
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1998,1,1,0,0,0,0,-7,-10,77,974,8.2,170,0.43
 1998,1,1,1,0,0,0,-6,-9,77,974,8.2,170,0.43
 1998,1,1,2,0,0,0,-6,-9,77,974,6.7,170,0.43

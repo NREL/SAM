@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,722405,Lafayette Regional Ap,LA,USA,30.200000,-91.983000,-6,12
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2005,1,1,0,0,0,0,18.3,16.1,87,1022,3.6,100,0.17
 2005,1,1,1,0,0,0,18,16,88,1022,3.1,110,0.17
 2005,1,1,2,0,0,0,17.8,16.1,90,1021,2.6,100,0.17

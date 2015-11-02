@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,725636,Chadron Municipal Ap,NE,USA,42.833000,-103.083000,-7,1011
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2000,1,1,0,0,0,0,-5.8,-11.7,60,899,2.9,340,0.39
 2000,1,1,1,0,0,0,-7,-12.4,62,899,2.9,320,0.39
 2000,1,1,2,0,0,0,-8.2,-13.1,65,899,2.9,310,0.39

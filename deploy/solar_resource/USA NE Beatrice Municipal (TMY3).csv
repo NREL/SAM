@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,725515,Beatrice Municipal,NE,USA,40.300000,-96.750000,-6,403
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2001,1,1,0,0,0,0,-17,-20,75,966,3.6,350,0.19
 2001,1,1,1,0,0,0,-19,-23,68,966,3.6,310,0.19
 2001,1,1,2,0,0,0,-19,-22,75,966,3.6,300,0.19

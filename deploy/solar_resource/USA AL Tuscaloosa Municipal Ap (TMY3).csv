@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,722286,Tuscaloosa Municipal Ap,AL,USA,33.217000,-87.617000,-6,51
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1991,1,1,0,0,0,0,-0.5,-2.7,83,1022,0,0,0.17
 1991,1,1,1,0,0,0,-0.5,-2.7,83,1022,0,0,0.17
 1991,1,1,2,0,0,0,-0.5,-2.1,88,1022,2.6,360,0.17

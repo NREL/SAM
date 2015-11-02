@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,727474,Eveleth Muni (awos),MN,USA,47.400000,-92.500000,-6,421
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1997,1,1,0,0,0,0,-5.5,-6.4,93,964,3.5,200,0.48
 1997,1,1,1,0,0,0,-5.1,-6.1,92,964,3,210,0.48
 1997,1,1,2,0,0,0,-5,-6,92,964,2.6,210,0.48

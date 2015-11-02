@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,726385,Manistee (awos),MI,USA,44.267000,-86.250000,-5,189
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1999,1,1,0,0,0,0,-11.7,-17,61,991,7,320,0.15
 1999,1,1,1,0,0,0,-12,-17,63,991,7.7,320,0.15
 1999,1,1,2,0,0,0,-11.9,-17,63,991,7.2,320,0.15

@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,722040,Melbourne Regional Ap,FL,USA,28.117000,-80.650000,-5,11
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1999,1,1,0,0,0,0,13,12,94,1019,1.5,290,0.15
 1999,1,1,1,0,0,0,13,12,94,1019,1.5,280,0.15
 1999,1,1,2,0,0,0,13,12,94,1018,1.5,300,0.15

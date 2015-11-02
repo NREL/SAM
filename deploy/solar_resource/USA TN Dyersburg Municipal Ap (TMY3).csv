@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,723347,Dyersburg Municipal Ap,TN,USA,36.017000,-89.400000,-6,103
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1997,1,1,0,0,0,0,11.3,11.3,100,1001,0,0,0.17
 1997,1,1,1,0,0,0,11.8,11.8,100,1001,0,0,0.17
 1997,1,1,2,0,0,0,12.3,12.3,100,1001,0.3,180,0.17

@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,726588,Winona Muni (awos),MN,USA,44.083000,-91.700000,-6,200
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2000,1,1,0,0,0,0,4,-1,69,989,3.1,260,0.67
 2000,1,1,1,0,0,0,3,-2,68,989,3.1,260,0.67
 2000,1,1,2,0,0,0,3,-3,63,989,3.6,270,0.67

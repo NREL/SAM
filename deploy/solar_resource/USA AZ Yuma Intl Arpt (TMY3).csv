@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,722800,Yuma Intl Arpt,AZ,USA,32.667000,-114.600000,-7,63
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2000,1,1,0,0,0,0,13,9,77,1014,1.5,340,0.19
 2000,1,1,1,0,0,0,13,9,77,1014,0,0,0.19
 2000,1,1,2,0,0,0,12,8,76,1014,1.5,40,0.19

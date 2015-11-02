@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,723449,Rogers (awos),AR,USA,36.367000,-94.100000,-6,415
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1997,1,1,0,0,0,0,4.6,4.6,100,964,2.6,100,0.17
 1997,1,1,1,0,0,0,4.7,4.7,100,964,2.1,120,0.17
 1997,1,1,2,0,0,0,4.8,4.8,100,964,2.6,140,0.17

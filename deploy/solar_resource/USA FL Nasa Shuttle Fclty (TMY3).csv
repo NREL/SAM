@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,747946,Nasa Shuttle Fclty,FL,USA,28.617000,-80.717000,-5,3
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2003,1,1,0,0,0,0,18,18,100,1012,1,190,0.15
 2003,1,1,1,0,0,0,18,18,100,1011,2.1,120,0.15
 2003,1,1,2,0,0,0,18,18,100,1010,4.6,150,0.15

@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,725465,Ottumwa Industrial Ap,IA,USA,41.100000,-92.450000,-6,257
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2000,1,1,0,0,0,0,2,-3,67,983,6.7,180,0.19
 2000,1,1,1,0,0,0,2,-3,67,983,6.4,180,0.19
 2000,1,1,2,0,0,0,2,-2.9,68,983,6,190,0.19

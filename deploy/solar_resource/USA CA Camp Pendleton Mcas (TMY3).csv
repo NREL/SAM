@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,722926,Camp Pendleton Mcas,CA,USA,33.300000,-117.350000,-8,23
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2004,1,1,0,0,0,0,5.6,1.7,76,1016,0,0,0.16
 2004,1,1,1,0,0,0,5,1.1,76,1016,1.5,60,0.16
 2004,1,1,2,0,0,0,5,1.7,79,1016,1.5,10,0.16

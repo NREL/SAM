@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,727478,Hallock,MN,USA,48.783000,-96.950000,-6,250
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2000,1,1,0,0,0,0,-11,-13,84,983,7.7,330,0.59
 2000,1,1,1,0,0,0,-13,-15,83,983,0.5,330,0.59
 2000,1,1,2,0,0,0,-14,-17,76,983,7.2,330,0.59

@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,725494,Red Oak,IA,USA,41.017000,-95.267000,-6,318
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2004,1,1,0,0,0,0,1,-6,56,976,2.6,130,0.19
 2004,1,1,1,0,0,0,1,-6,56,976,3.1,160,0.19
 2004,1,1,2,0,0,0,1,-5,61,976,3.1,150,0.19

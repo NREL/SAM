@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,724454,Farmington,MO,USA,37.767000,-90.400000,-6,274
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2005,1,1,0,0,0,0,16,14,88,981,3.6,210,0.17
 2005,1,1,1,0,0,0,15,14,94,981,2.6,210,0.17
 2005,1,1,2,0,0,0,15,14,94,981,2.6,200,0.17

@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,722215,Crestview Bob Sikes Ap,FL,USA,30.783000,-86.517000,-6,58
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2002,1,1,0,0,0,0,1.7,-3.9,64,1016,2.1,350,0.16
 2002,1,1,1,0,0,0,2.2,-4.4,59,1016,3.1,360,0.16
 2002,1,1,2,0,0,0,2.2,-5,56,1016,3.1,20,0.16

@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,724930,Oakland Metropolitan Arpt,CA,USA,37.717000,-122.217000,-8,2
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1999,1,1,0,0,0,0,9,7,87,1020,0,0,0.16
 1999,1,1,1,0,0,0,10,7,82,1020,2.6,130,0.16
 1999,1,1,2,0,0,0,10,7,82,1021,2.6,140,0.16

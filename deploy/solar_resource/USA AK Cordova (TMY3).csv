@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,702960,Cordova,AK,USA,60.500000,-145.500000,-9,12
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1997,1,1,0,0,0,0,-6,-7,92,982,2.6,150,0.4
 1997,1,1,1,0,0,0,-7.1,-9.1,84,982,1.5,160,0.4
 1997,1,1,2,0,0,0,-8,-11,77,982,1.5,160,0.4

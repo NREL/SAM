@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,702186,Hooper Bay,AK,USA,61.517000,-166.150000,-9,6
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2003,1,1,0,0,0,0,-18,-25,51,1012,6.2,50,0.66
 2003,1,1,1,0,0,0,-18,-24,56,1012,7.7,70,0.66
 2003,1,1,2,0,0,0,-18,-34,20,1012,7.2,80,0.66

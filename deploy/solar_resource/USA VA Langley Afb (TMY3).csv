@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,745980,Langley Afb,VA,USA,37.083000,-76.350000,-5,3
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2005,1,1,0,0,0,0,9,8,93,1027,2.1,220,0.16
 2005,1,1,1,0,0,0,9,8,93,1027,2.1,220,0.16
 2005,1,1,2,0,0,0,9,8,93,1027,3.1,220,0.16

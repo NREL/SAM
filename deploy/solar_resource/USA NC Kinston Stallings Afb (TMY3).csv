@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,723067,Kinston Stallings Afb,NC,USA,35.317000,-77.633000,-5,29
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1994,1,1,0,0,0,0,-4.9,-7.4,81,1010,0,0,0.16
 1994,1,1,1,0,0,0,-5.2,-7.6,81,1010,0,0,0.16
 1994,1,1,2,0,0,0,-5.4,-7.7,82,1010,0,0,0.16

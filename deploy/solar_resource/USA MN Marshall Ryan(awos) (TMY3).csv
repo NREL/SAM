@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,726559,Marshall Ryan(awos),MN,USA,44.450000,-95.817000,-6,359
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1998,1,1,0,0,0,0,-12.3,-16.2,70,971,11.5,230,0.21
 1998,1,1,1,0,0,0,-12.3,-16.7,67,971,11.7,240,0.21
 1998,1,1,2,0,0,0,-12.8,-16.7,70,971,11.9,250,0.21

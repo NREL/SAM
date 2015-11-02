@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,722570,Fort Hood,TX,USA,31.133000,-97.717000,-6,280
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1997,1,1,0,0,0,0,15.6,12.1,80,987,0.3,120,0.18
 1997,1,1,1,0,0,0,13.6,10.8,83,987,0.2,110,0.18
 1997,1,1,2,0,0,0,12.2,9.5,84,988,1.6,120,0.18

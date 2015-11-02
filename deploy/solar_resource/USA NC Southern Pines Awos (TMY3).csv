@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,723143,Southern Pines Awos,NC,USA,35.233000,-79.400000,-5,141
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2005,1,1,0,0,0,0,7,6,93,996,2.6,250,0.18
 2005,1,1,1,0,0,0,9,6,81,996,3.1,250,0.18
 2005,1,1,2,0,0,0,8,6,87,996,1.5,260,0.18

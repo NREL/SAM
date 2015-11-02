@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,726088,Bangor International Ap,ME,USA,44.800000,-68.817000,-5,56
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1997,1,1,0,0,0,0,-18,-26,46,1006,7.7,310,0.15
 1997,1,1,1,0,0,0,-18,-26,46,1006,7.7,300,0.15
 1997,1,1,2,0,0,0,-18,-24,56,1006,7.7,300,0.15

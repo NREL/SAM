@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,722895,Lompoc (awos),CA,USA,34.667000,-120.467000,-8,27
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2001,1,1,0,0,0,0,-0.3,-3.9,74,1010,5.4,160,0.12
 2001,1,1,1,0,0,0,-1.2,-3.9,80,1010,5.1,180,0.12
 2001,1,1,2,0,0,0,-0.1,-4,72,1010,4.7,170,0.12

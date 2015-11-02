@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,722555,Palacios Municipal Ap,TX,USA,28.717000,-96.250000,-6,5
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1997,1,1,0,0,0,0,18,17,94,1019,4.6,80,0.16
 1997,1,1,1,0,0,0,19,18,94,1018,4.6,100,0.16
 1997,1,1,2,0,0,0,19,18,94,1018,5.1,120,0.16

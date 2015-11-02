@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,726685,Mobridge,SD,USA,45.533000,-100.433000,-7,508
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2003,1,1,0,0,0,0,-2,-4,85,949,5.7,90,0.4
 2003,1,1,1,0,0,0,-2,-4,85,950,5.7,100,0.4
 2003,1,1,2,0,0,0,-2,-3,92,951,2.6,80,0.4

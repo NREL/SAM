@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,722284,Auburn-opelika Apt,AL,USA,32.616000,-85.433000,-6,236
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1994,1,1,0,0,0,0,2.7,-11.7,30,985,2.5,110,0.16
 1994,1,1,1,0,0,0,3.3,-11.7,29,985,2,110,0.16
 1994,1,1,2,0,0,0,3.8,-10.6,31,985,2,100,0.16

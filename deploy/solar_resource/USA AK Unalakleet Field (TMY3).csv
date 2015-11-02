@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,702070,Unalakleet Field,AK,USA,63.883000,-160.800000,-9,5
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1991,1,1,0,0,0,0,-9.9,-16.6,54,1028,11.8,90,0.64
 1991,1,1,1,0,0,0,-10,-15.8,59,1028,10.6,90,0.64
 1991,1,1,2,0,0,0,-10.1,-16,58,1028,12.5,90,0.64

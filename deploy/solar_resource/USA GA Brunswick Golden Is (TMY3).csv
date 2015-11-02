@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,722136,Brunswick Golden Is,GA,USA,31.250000,-81.467000,-5,8
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2003,1,1,0,0,0,0,16,16,100,1012,5.1,140,0.15
 2003,1,1,1,0,0,0,16,16,100,1012,3.1,170,0.15
 2003,1,1,2,0,0,0,16,16,100,1012,0,0,0.15

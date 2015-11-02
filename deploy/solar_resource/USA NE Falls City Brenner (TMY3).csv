@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,725533,Falls City Brenner,NE,USA,40.083000,-95.600000,-6,300
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1996,1,1,0,0,0,0,-0.8,-1.7,93,978,3.3,20,0.19
 1996,1,1,1,0,0,0,-0.9,-1.8,93,978,3.4,10,0.19
 1996,1,1,2,0,0,0,-0.9,-2.1,90,978,3.4,10,0.19

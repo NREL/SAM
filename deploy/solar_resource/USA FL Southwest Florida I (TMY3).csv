@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,722108,Southwest Florida I,FL,USA,26.533000,-81.750000,-5,9
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1994,1,1,0,0,0,0,15.5,13.8,90,1012,4.1,60,0.15
 1994,1,1,1,0,0,0,15,13.8,93,1011,4.1,70,0.15
 1994,1,1,2,0,0,0,15,13.8,93,1011,4.1,50,0.15

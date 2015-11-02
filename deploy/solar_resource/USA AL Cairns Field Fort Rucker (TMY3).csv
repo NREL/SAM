@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,722269,Cairns Field Fort Rucker,AL,USA,31.267000,-85.717000,-6,91
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2001,1,1,0,0,0,0,13.8,13.8,100,1023,1,330,0.16
 2001,1,1,1,0,0,0,13.8,13.8,100,1023,3.6,350,0.16
 2001,1,1,2,0,0,0,13.7,13.7,100,1023,1,360,0.16

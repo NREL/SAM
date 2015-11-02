@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,726500,Spencer,IA,USA,43.167000,-95.150000,-6,408
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1999,1,1,0,0,0,0,-19,-23,68,973,0,0,0.21
 1999,1,1,1,0,0,0,-17,-19,83,973,2.6,50,0.21
 1999,1,1,2,0,0,0,-14,-17,76,973,4.6,70,0.21

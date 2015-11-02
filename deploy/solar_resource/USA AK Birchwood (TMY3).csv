@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,702746,Birchwood,AK,USA,61.417000,-149.517000,-9,30
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2005,1,1,0,0,0,0,-6,-9,77,1009,0,0,0.55
 2005,1,1,1,0,0,0,-6,-10,70,1009,0,0,0.55
 2005,1,1,2,0,0,0,-7,-11,70,1009,0,0,0.55

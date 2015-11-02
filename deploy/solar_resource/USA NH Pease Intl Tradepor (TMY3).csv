@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,726055,Pease Intl Tradepor,NH,USA,43.083000,-70.817000,-5,31
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1995,1,1,0,0,0,0,0,-2.3,83,1016,4.1,240,0.16
 1995,1,1,1,0,0,0,0.5,-1.2,87,1015,1.5,190,0.16
 1995,1,1,2,0,0,0,0.5,-0.6,92,1014,1,80,0.16

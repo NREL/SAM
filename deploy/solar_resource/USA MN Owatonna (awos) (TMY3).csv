@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,726568,Owatonna (awos),MN,USA,44.117000,-93.250000,-6,350
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2000,1,1,0,0,0,0,2,-2,73,972,3.1,260,0.42
 2000,1,1,1,0,0,0,0,-3,78,972,3.6,280,0.42
 2000,1,1,2,0,0,0,-1,-3,85,972,2.1,260,0.42

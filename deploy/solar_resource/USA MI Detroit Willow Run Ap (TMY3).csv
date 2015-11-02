@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,725376,Detroit Willow Run Ap,MI,USA,42.233000,-83.533000,-5,218
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2000,1,1,0,0,0,0,-5,-6,92,993,0,0,0.17
 2000,1,1,1,0,0,0,-6,-7,92,993,1.5,200,0.17
 2000,1,1,2,0,0,0,-7,-7,100,993,0,0,0.17

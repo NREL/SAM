@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,725625,Mccook Municipal,NE,USA,40.200000,-100.583000,-6,786
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1998,1,1,0,0,0,0,2,-1,80,920,5.1,260,0.22
 1998,1,1,1,0,0,0,-1,-2,92,919,3.1,280,0.22
 1998,1,1,2,0,0,0,1,-2,79,919,3.1,260,0.22

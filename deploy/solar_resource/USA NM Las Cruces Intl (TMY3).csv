@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,722695,Las Cruces Intl,NM,USA,32.283000,-106.917000,-7,1393
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1997,1,1,0,0,0,0,7.1,-1.4,54,859,0.8,80,0.21
 1997,1,1,1,0,0,0,7,-1.7,53,859,0.8,80,0.21
 1997,1,1,2,0,0,0,6.7,-2.4,51,859,0.9,90,0.21

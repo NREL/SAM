@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,725287,Niagara Falls Af,NY,USA,43.100000,-78.950000,-5,180
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2002,1,1,0,0,0,0,-7.3,-10.8,73,996,5.7,260,0.37
 2002,1,1,1,0,0,0,-7.5,-10.8,75,996,6,260,0.37
 2002,1,1,2,0,0,0,-7.8,-10.8,77,997,6.4,260,0.37

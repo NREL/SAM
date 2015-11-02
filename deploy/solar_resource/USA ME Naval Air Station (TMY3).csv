@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,743920,Naval Air Station,ME,USA,43.900000,-69.933000,-5,21
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2001,1,1,0,0,0,0,-2,-7,65,999,8.2,290,0.15
 2001,1,1,1,0,0,0,-3,-8,65,1000,8.8,290,0.15
 2001,1,1,2,0,0,0,-3,-8,65,1001,5.7,290,0.15

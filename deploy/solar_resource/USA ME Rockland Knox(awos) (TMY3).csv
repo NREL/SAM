@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,726079,Rockland Knox(awos),ME,USA,44.067000,-69.100000,-5,17
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1995,1,1,0,0,0,0,2.2,-13.4,27,1011,3,260,0.15
 1995,1,1,1,0,0,0,1.6,-13.4,28,1011,0,0,0.15
 1995,1,1,2,0,0,0,1.1,-13.4,29,1011,0,0,0.15

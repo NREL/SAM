@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,702750,Valdez Wso,AK,USA,61.133000,-146.350000,-9,7
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1991,1,1,0,0,0,0,-12.2,-21.7,41,1031,7.7,70,0.4
 1991,1,1,1,0,0,0,-13.3,-21.1,48,1032,5.7,70,0.4
 1991,1,1,2,0,0,0,-13.3,-21.7,45,1032,6.7,60,0.4

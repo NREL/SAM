@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,725335,Grissom Arb,IN,USA,40.650000,-86.150000,-5,253
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1995,1,1,0,0,0,0,4.7,3,89,995,6.6,10,0.17
 1995,1,1,1,0,0,0,4.6,3.2,91,995,7,30,0.17
 1995,1,1,2,0,0,0,4.9,3.4,90,996,7.2,30,0.17

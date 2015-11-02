@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,725035,Islip Long Isl Macarthur Ap,NY,USA,40.783000,-73.100000,-5,26
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2000,1,1,0,0,0,0,-4.4,-5.6,90,1021,0,0,0.16
 2000,1,1,1,0,0,0,-3.9,-5.6,86,1021,0,0,0.16
 2000,1,1,2,0,0,0,-3.9,-5,91,1021,0,0,0.16

@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,725469,Chariton,IA,USA,41.033000,-93.367000,-6,320
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2003,1,1,0,0,0,0,-4,-9,65,975,3.6,30,0.19
 2003,1,1,1,0,0,0,-3,-8,65,975,4.1,50,0.19
 2003,1,1,2,0,0,0,-2,-8,60,975,4.6,70,0.19

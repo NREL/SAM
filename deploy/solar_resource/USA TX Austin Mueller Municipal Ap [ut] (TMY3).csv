@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,722540,Austin Mueller Municipal Ap [ut],TX,USA,30.290000,-97.740000,-6,213
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1994,1,1,0,0,0,0,11.7,8.9,83,997,3.1,170,0.18
 1994,1,1,1,0,0,0,12.2,8.9,80,996,2.6,180,0.18
 1994,1,1,2,0,0,0,12.2,8.9,80,996,2.6,160,0.18

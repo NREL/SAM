@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,747020,Lemoore Reeves Nas,CA,USA,36.333000,-119.950000,-8,73
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1999,1,1,0,0,0,0,5.7,4.5,92,1013,2.9,340,0.19
 1999,1,1,1,0,0,0,5.3,4.3,93,1013,2.8,330,0.19
 1999,1,1,2,0,0,0,4.9,4,94,1014,2.8,320,0.19

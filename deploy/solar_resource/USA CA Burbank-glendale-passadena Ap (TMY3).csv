@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,722880,Burbank-glendale-passadena Ap,CA,USA,34.200000,-118.350000,-8,226
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1999,1,1,0,0,0,0,8,7,93,986,0,0,0.14
 1999,1,1,1,0,0,0,7,6,93,987,1.5,350,0.14
 1999,1,1,2,0,0,0,7,6,93,987,0,0,0.14

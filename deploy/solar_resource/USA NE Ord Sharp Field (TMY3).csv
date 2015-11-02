@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,725524,Ord Sharp Field,NE,USA,41.617000,-98.950000,-6,631
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1995,1,1,0,0,0,0,-14.8,-17,82,940,4.5,300,0.21
 1995,1,1,1,0,0,0,-16.3,-19.1,77,940,4.4,300,0.21
 1995,1,1,2,0,0,0,-17.4,-20.3,76,940,4.1,280,0.21

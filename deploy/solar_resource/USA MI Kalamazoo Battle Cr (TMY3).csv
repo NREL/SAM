@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,726357,Kalamazoo Battle Cr,MI,USA,42.233000,-85.550000,-5,273
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2000,1,1,0,0,0,0,-2,-4,85,984,3.1,180,0.16
 2000,1,1,1,0,0,0,-2,-3,92,984,4.1,180,0.16
 2000,1,1,2,0,0,0,-2,-3,92,984,3.6,180,0.16

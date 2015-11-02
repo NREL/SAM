@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,726525,Chan Gurney Muni,SD,USA,42.917000,-97.383000,-6,408
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1999,1,1,0,0,0,0,-12.7,-14.3,86,965,4.9,240,0.21
 1999,1,1,1,0,0,0,-14,-14.9,92,965,6,260,0.21
 1999,1,1,2,0,0,0,-14.7,-15.7,91,965,6.6,280,0.21

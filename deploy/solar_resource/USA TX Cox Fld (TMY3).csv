@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,722587,Cox Fld,TX,USA,33.633000,-95.450000,-6,171
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1997,1,1,0,0,0,0,12.8,12.2,96,993,3.1,110,0.18
 1997,1,1,1,0,0,0,12.3,11.9,97,993,3.1,100,0.18
 1997,1,1,2,0,0,0,12.3,12,98,993,3.1,100,0.18

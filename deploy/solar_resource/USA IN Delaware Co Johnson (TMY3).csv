@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,725336,Delaware Co Johnson,IN,USA,40.233000,-85.400000,-5,293
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2005,1,1,0,0,0,0,11,11,100,989,2.1,280,0.17
 2005,1,1,1,0,0,0,10,9,93,990,3.6,320,0.17
 2005,1,1,2,0,0,0,8,6,87,990,3.6,340,0.17

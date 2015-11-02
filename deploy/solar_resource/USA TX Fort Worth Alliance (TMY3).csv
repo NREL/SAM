@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,722594,Fort Worth Alliance,TX,USA,32.983000,-97.317000,-6,226
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1994,1,1,0,0,0,0,8.1,0.7,60,990,5.1,180,0.18
 1994,1,1,1,0,0,0,8.3,-1.7,48,989,5.1,180,0.18
 1994,1,1,2,0,0,0,7.4,-0.3,58,988,4.6,190,0.18

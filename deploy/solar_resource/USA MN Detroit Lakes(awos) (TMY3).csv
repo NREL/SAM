@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,727457,Detroit Lakes(awos),MN,USA,46.833000,-95.883000,-6,426
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1995,1,1,0,0,0,0,-17.8,-19.5,85,963,3,330,0.41
 1995,1,1,1,0,0,0,-16.7,-18.9,81,963,5.6,310,0.41
 1995,1,1,2,0,0,0,-17.3,-19.5,81,963,4.6,320,0.41

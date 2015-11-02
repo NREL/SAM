@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,723926,Camarillo (awos),CA,USA,34.217000,-119.083000,-8,23
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2002,1,1,0,0,0,0,13,13,100,1018,1.5,110,0.14
 2002,1,1,1,0,0,0,13,13,100,1018,1.5,100,0.14
 2002,1,1,2,0,0,0,13,12,94,1017,2.1,60,0.14

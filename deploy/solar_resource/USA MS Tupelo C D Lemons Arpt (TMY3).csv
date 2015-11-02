@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,723320,Tupelo C D Lemons Arpt,MS,USA,34.267000,-88.767000,-6,110
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1996,1,1,0,0,0,0,9.4,9.4,100,992,1.5,10,0.16
 1996,1,1,1,0,0,0,9.4,9.4,100,992,1.5,10,0.16
 1996,1,1,2,0,0,0,10,10,100,992,2.1,10,0.16

@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,726379,Saginaw Tri City Intl Ap,MI,USA,43.533000,-84.083000,-5,201
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2004,1,1,0,0,0,0,-4,-6,84,1000,3.1,260,0.16
 2004,1,1,1,0,0,0,-4,-7,77,1001,2.6,250,0.16
 2004,1,1,2,0,0,0,-4,-8,71,1002,3.1,240,0.16

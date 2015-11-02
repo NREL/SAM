@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,727976,Bellingham Intl Ap,WA,USA,48.800000,-122.533000,-8,45
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2001,1,1,0,0,0,0,8,5,81,1020,1.5,200,0.39
 2001,1,1,1,0,0,0,7.2,5,86,1021,2.1,180,0.39
 2001,1,1,2,0,0,0,5.6,4.4,92,1021,2.6,160,0.39

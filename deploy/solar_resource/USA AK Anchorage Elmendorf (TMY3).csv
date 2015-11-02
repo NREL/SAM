@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,702720,Anchorage Elmendorf,AK,USA,61.250000,-149.800000,-9,59
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2001,1,1,0,0,0,0,0,-1,92,995,5.7,340,0.55
 2001,1,1,1,0,0,0,-1,-1,100,996,2.1,340,0.55
 2001,1,1,2,0,0,0,-4,-5,92,996,2.1,130,0.55

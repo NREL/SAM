@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,727885,William R Fairchild,WA,USA,48.117000,-123.500000,-8,91
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1998,1,1,0,0,0,0,5,4.1,94,1014,0,0,0.21
 1998,1,1,1,0,0,0,5.5,4.5,93,1014,0,0,0.21
 1998,1,1,2,0,0,0,6,5.2,95,1014,0,0,0.21

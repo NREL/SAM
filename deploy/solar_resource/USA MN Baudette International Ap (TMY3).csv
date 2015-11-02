@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,727476,Baudette International Ap,MN,USA,48.717000,-94.600000,-6,330
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2001,1,1,0,0,0,0,-27,-30,73,988,0,0,0.52
 2001,1,1,1,0,0,0,-26.7,-29.4,76,988,0,0,0.52
 2001,1,1,2,0,0,0,-27.8,-30.6,75,988,0,0,0.52

@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,723096,New River Mcaf,NC,USA,34.700000,-77.383000,-5,5
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2000,1,1,0,0,0,0,3,3,100,1022,0,0,0.14
 2000,1,1,1,0,0,0,3,2,93,1022,0,0,0.14
 2000,1,1,2,0,0,0,3,2,93,1023,0,0,0.14

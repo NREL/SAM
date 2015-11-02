@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,722524,Rockport Aransas Co,TX,USA,28.083000,-97.050000,-6,8
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1994,1,1,0,0,0,0,13.8,11.7,87,1012,0.7,220,0.17
 1994,1,1,1,0,0,0,13.8,11.8,88,1012,2.2,230,0.17
 1994,1,1,2,0,0,0,14.3,12.4,88,1012,1.6,240,0.17

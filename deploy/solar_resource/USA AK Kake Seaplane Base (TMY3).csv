@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,703855,Kake Seaplane Base,AK,USA,56.967000,-133.950000,-9,0
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2004,1,1,0,0,0,0,1,-6,56,1013,7.2,60,0.24
 2004,1,1,1,0,0,0,1,-6,56,1013,4.1,40,0.24
 2004,1,1,2,0,0,0,0,-7,55,1013,5.1,50,0.24

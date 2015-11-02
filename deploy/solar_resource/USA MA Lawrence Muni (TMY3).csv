@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,744904,Lawrence Muni,MA,USA,42.717000,-71.117000,-5,46
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2005,1,1,0,0,0,0,7,3,76,1013,3.6,210,0.15
 2005,1,1,1,0,0,0,7,3,76,1013,4.1,220,0.15
 2005,1,1,2,0,0,0,7,3,76,1013,3.6,200,0.15

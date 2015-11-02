@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,723095,New Bern Craven Co Regl Ap,NC,USA,35.067000,-77.050000,-5,5
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1999,1,1,0,0,0,0,-3,-4,92,1021,0,0,0.16
 1999,1,1,1,0,0,0,-3,-4,92,1021,0,0,0.16
 1999,1,1,2,0,0,0,-3,-4,92,1021,0,0,0.16

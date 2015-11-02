@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,726515,Brookings (awos),SD,USA,44.300000,-96.817000,-6,502
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2001,1,1,0,0,0,0,-2.3,-3.4,91,955,5.1,70,0.21
 2001,1,1,1,0,0,0,-2.3,-3.4,91,955,4.1,80,0.21
 2001,1,1,2,0,0,0,-2.3,-3.9,87,955,5.7,70,0.21

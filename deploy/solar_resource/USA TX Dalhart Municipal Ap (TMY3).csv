@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,722636,Dalhart Municipal Ap,TX,USA,36.017000,-102.550000,-6,1216
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1998,1,1,0,0,0,0,-3,-6,77,878,5.1,200,0.2
 1998,1,1,1,0,0,0,-3,-5,84,877,4.6,200,0.2
 1998,1,1,2,0,0,0,-2,-3,92,877,5.1,200,0.2

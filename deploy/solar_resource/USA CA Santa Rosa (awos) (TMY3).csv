@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,724957,Santa Rosa (awos),CA,USA,38.517000,-122.817000,-8,38
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2004,1,1,0,0,0,0,8.9,7.2,89,1007,4.1,140,0.17
 2004,1,1,1,0,0,0,8.9,7.8,93,1007,4.6,160,0.17
 2004,1,1,2,0,0,0,8.3,7.2,93,1007,5.2,150,0.17

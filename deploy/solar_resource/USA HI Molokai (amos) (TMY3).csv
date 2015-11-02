@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,911860,Molokai (amos),HI,USA,21.150000,-157.100000,-10,137
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1991,1,1,0,0,0,0,20,12.8,63,997,1.5,50,0.13
 1991,1,1,1,0,0,0,20,13.3,65,997,1,50,0.13
 1991,1,1,2,0,0,0,20,13.3,65,997,1,50,0.13

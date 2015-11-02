@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,724045,Salisbury Wicomico Co Ap,MD,USA,38.333000,-75.517000,-5,15
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2001,1,1,0,0,0,0,-1,-12,39,1018,3.6,260,0.17
 2001,1,1,1,0,0,0,-3,-11,50,1019,4.1,270,0.17
 2001,1,1,2,0,0,0,-4,-12,50,1019,3.6,240,0.17

@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,727507,Benson Muni,MN,USA,45.317000,-95.650000,-6,317
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1998,1,1,0,0,0,0,-1.6,-1.6,100,976,3.6,280,0.41
 1998,1,1,1,0,0,0,-1.7,-1.7,100,976,4.1,280,0.41
 1998,1,1,2,0,0,0,-1.8,-1.8,100,976,4.1,290,0.41

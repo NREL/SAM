@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,722470,Longview Gregg County Ap [overton - Ut],TX,USA,32.290000,-94.980000,-6,146
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1991,1,1,0,0,0,0,17.2,8.3,56,964,2.6,180,0.17
 1991,1,1,1,0,0,0,17.1,7.9,55,968,2.8,180,0.17
 1991,1,1,2,0,0,0,16,8.4,61,973,3,170,0.17

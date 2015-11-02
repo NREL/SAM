@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,727845,Pasco,WA,USA,46.267000,-119.117000,-8,136
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2000,1,1,0,0,0,0,-2,-2,100,997,0,0,0.4
 2000,1,1,1,0,0,0,-3,-3,100,997,3.1,20,0.4
 2000,1,1,2,0,0,0,-3,-3,100,997,1.5,80,0.4

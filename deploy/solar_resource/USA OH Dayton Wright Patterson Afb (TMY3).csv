@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,745700,Dayton Wright Patterson Afb,OH,USA,39.833000,-84.050000,-5,250
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2005,1,1,0,0,0,0,12,12,100,995,2.1,240,0.18
 2005,1,1,1,0,0,0,12,11,94,996,1,260,0.18
 2005,1,1,2,0,0,0,11,11,100,996,0,0,0.18

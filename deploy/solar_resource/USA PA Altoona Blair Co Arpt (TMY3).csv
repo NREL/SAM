@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,725126,Altoona Blair Co Arpt,PA,USA,40.300000,-78.317000,-5,451
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2001,1,1,0,0,0,0,-7.2,-10.6,74,964,7.2,310,0.18
 2001,1,1,1,0,0,0,-8,-11,77,964,3.1,260,0.18
 2001,1,1,2,0,0,0,-7.2,-10,78,965,5.2,280,0.18

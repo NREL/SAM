@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,702735,Anchorage Merrill Field,AK,USA,61.217000,-149.850000,-9,42
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2001,1,1,0,0,0,0,1,-1,86,998,1.5,70,0.55
 2001,1,1,1,0,0,0,-2,-3,92,999,0,0,0.55
 2001,1,1,2,0,0,0,-2,-2,100,999,2.1,330,0.55

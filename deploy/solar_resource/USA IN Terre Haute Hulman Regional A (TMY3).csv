@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,724373,Terre Haute Hulman Regional A,IN,USA,39.450000,-87.300000,-5,175
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1994,1,1,0,0,0,0,1.1,-2.8,73,992,6.6,170,0.18
 1994,1,1,1,0,0,0,2.7,-2.3,68,992,8.7,170,0.18
 1994,1,1,2,0,0,0,3.3,-3.4,59,992,10.2,170,0.18

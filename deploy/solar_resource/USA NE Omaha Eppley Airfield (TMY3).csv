@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,725500,Omaha Eppley Airfield,NE,USA,41.317000,-95.900000,-6,299
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1995,1,1,0,0,0,0,-12.8,-15.6,77,992,4.1,310,0.19
 1995,1,1,1,0,0,0,-13.9,-15.6,86,992,3.1,310,0.19
 1995,1,1,2,0,0,0,-13.3,-15.6,81,992,4.6,310,0.19

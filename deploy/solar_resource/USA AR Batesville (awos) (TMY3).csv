@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,723448,Batesville (awos),AR,USA,35.733000,-91.650000,-6,141
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1999,1,1,0,0,0,0,-3,-5,84,996,2.6,80,0.17
 1999,1,1,1,0,0,0,-3.3,-6,79,996,2.9,80,0.17
 1999,1,1,2,0,0,0,-3.3,-6.7,75,996,3.3,80,0.17

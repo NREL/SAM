@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,722436,Houston Ellington Afb [clear Lake - Ut],TX,USA,29.570000,-95.090000,-6,6
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1996,1,1,0,0,0,0,14.4,14.4,100,1012,1.5,130,0.16
 1996,1,1,1,0,0,0,15,14.4,96,1012,2,100,0.16
 1996,1,1,2,0,0,0,15,15,100,1012,2.5,90,0.16

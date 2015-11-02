@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,725626,Imperial Faa Ap,NE,USA,40.517000,-101.617000,-7,998
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2001,1,1,0,0,0,0,-14,-17,76,903,2.1,360,0.22
 2001,1,1,1,0,0,0,-16,-18,83,903,2.1,60,0.22
 2001,1,1,2,0,0,0,-15,-16.9,84,903,2.3,80,0.22

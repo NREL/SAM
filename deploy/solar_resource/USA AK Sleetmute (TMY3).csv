@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,703407,Sleetmute,AK,USA,61.717000,-157.150000,-9,54
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2000,1,1,0,0,0,0,-34,-34,100,1007,0,0,0.63
 2000,1,1,1,0,0,0,-31,-34,73,1007,0,0,0.63
 2000,1,1,2,0,0,0,-32,-34,81,1007,0,0,0.63

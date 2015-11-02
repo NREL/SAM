@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,725745,Rawlins Municipal Ap,WY,USA,41.800000,-107.200000,-7,2053
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2000,1,1,0,0,0,0,-2.3,-10.2,51,783,3.5,320,0.39
 2000,1,1,1,0,0,0,-2.2,-10.5,49,783,4.7,300,0.39
 2000,1,1,2,0,0,0,-2.1,-10.9,47,782,5.8,290,0.39

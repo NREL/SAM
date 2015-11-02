@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,702600,Nenana Municipal Ap,AK,USA,64.550000,-149.100000,-9,109
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2001,1,1,0,0,0,0,-14,-17,76,993,1.5,320,0.64
 2001,1,1,1,0,0,0,-17,-18,91,993,0,0,0.64
 2001,1,1,2,0,0,0,-18,-20,83,993,0,0,0.64

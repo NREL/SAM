@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,725700,Craig-moffat,CO,USA,40.500000,-107.533000,-7,1915
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2001,1,1,0,0,0,0,-14,-16,83,806,0,0,0.39
 2001,1,1,1,0,0,0,-12,-13,91,807,0,0,0.39
 2001,1,1,2,0,0,0,-11,-12,91,808,1.5,220,0.39

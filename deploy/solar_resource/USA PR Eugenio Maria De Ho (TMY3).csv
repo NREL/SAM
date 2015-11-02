@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,785145,Eugenio Maria De Ho,PR,USA,18.250000,-67.150000,-4,9
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1991,1,1,0,0,0,0,25,21.7,82,1012,6.2,70,0.13
 1991,1,1,1,0,0,0,24.6,21.4,82,1012,6.1,70,0.13
 1991,1,1,2,0,0,0,24.5,21.2,82,1012,6,70,0.13

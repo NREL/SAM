@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,727840,Hanford,WA,USA,46.567000,-119.600000,-8,223
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2005,1,1,0,0,0,0,0.4,0.4,100,979,3.8,170,0.4
 2005,1,1,1,0,0,0,0.2,0.2,100,979,4,190,0.4
 2005,1,1,2,0,0,0,0.1,0.1,100,979,4.1,210,0.4

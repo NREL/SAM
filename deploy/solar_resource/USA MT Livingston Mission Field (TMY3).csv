@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,726798,Livingston Mission Field,MT,USA,45.700000,-110.450000,-7,1418
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2004,1,1,0,0,0,0,-1.1,-5.6,68,845,3.1,300,0.5
 2004,1,1,1,0,0,0,-2.8,-6.7,72,845,4.6,270,0.5
 2004,1,1,2,0,0,0,-4.4,-7.8,75,845,4.6,320,0.5

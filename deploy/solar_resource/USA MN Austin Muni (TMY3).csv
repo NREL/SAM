@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,727566,Austin Muni,MN,USA,43.667000,-92.933000,-6,375
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1998,1,1,0,0,0,0,-9.7,-9.7,100,969,0.6,350,0.65
 1998,1,1,1,0,0,0,-10,-10,100,969,1.8,350,0.65
 1998,1,1,2,0,0,0,-9.3,-9.3,100,969,1.5,10,0.65

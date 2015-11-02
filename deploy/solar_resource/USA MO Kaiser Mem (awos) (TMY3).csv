@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,724459,Kaiser Mem (awos),MO,USA,38.100000,-92.550000,-6,265
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1991,1,1,0,0,0,0,-1.6,-2.1,96,982,0,0,0.18
 1991,1,1,1,0,0,0,-0.2,-0.8,95,982,0.5,20,0.18
 1991,1,1,2,0,0,0,0.2,0.2,100,982,1,10,0.18

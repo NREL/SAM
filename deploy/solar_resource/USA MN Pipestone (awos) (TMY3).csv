@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,726566,Pipestone (awos),MN,USA,43.983000,-96.317000,-6,529
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1999,1,1,0,0,0,0,-8.5,-8.5,100,951,9,160,0.21
 1999,1,1,1,0,0,0,-8.8,-8.8,100,951,11.6,150,0.21
 1999,1,1,2,0,0,0,-9.7,-9.7,100,951,9,150,0.21

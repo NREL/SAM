@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,742060,Tacoma Mcchord Afb,WA,USA,47.150000,-122.483000,-8,88
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1991,1,1,0,0,0,0,5.6,3.9,89,1013,4.1,200,0.35
 1991,1,1,1,0,0,0,5.6,3.9,89,1013,3.1,200,0.35
 1991,1,1,2,0,0,0,5.6,3.9,89,1013,3.1,200,0.35

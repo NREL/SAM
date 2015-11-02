@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,722314,New Iberia Naas,LA,USA,30.033000,-91.883000,-6,8
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2003,1,1,0,0,0,0,8,6,87,1009,4.6,300,0.17
 2003,1,1,1,0,0,0,7,6,93,1010,4.1,290,0.17
 2003,1,1,2,0,0,0,6,6,100,1010,2.6,280,0.17

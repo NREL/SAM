@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,722175,Warner Robins Afb,GA,USA,32.633000,-83.600000,-5,92
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2001,1,1,0,0,0,0,12.7,12.7,100,1010,1.3,130,0.17
 2001,1,1,1,0,0,0,13.3,12.7,96,1010,0.5,120,0.17
 2001,1,1,2,0,0,0,13.8,13.3,97,1010,0.5,110,0.17

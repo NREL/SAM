@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,690150,Twentynine Palms,CA,USA,34.300000,-116.167000,-8,626
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1998,1,1,0,0,0,0,5.7,-7.3,36,957,3.4,360,0.19
 1998,1,1,1,0,0,0,5.8,-8.2,33,957,2.3,360,0.19
 1998,1,1,2,0,0,0,5.9,-9.1,30,957,3.2,340,0.19

@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,723306,Columbus Afb,MS,USA,33.650000,-88.450000,-6,68
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2001,1,1,0,0,0,0,-1,-2,92,1012,2.6,130,0.16
 2001,1,1,1,0,0,0,-1,-2,92,1013,2.6,130,0.16
 2001,1,1,2,0,0,0,-2,-2,100,1013,2.1,120,0.16

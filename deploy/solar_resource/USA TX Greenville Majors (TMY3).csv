@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,722588,Greenville Majors,TX,USA,33.067000,-96.067000,-6,163
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1997,1,1,0,0,0,0,14,11,82,994,5.1,150,0.18
 1997,1,1,1,0,0,0,14,11,82,994,5.1,150,0.18
 1997,1,1,2,0,0,0,14,11,82,994,5.1,150,0.18

@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,746716,Bowling Green Warren Co Ap,KY,USA,36.983000,-86.433000,-6,161
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1994,1,1,0,0,0,0,-1.2,-6.2,65,1002,1.5,210,0.17
 1994,1,1,1,0,0,0,0,-5.6,62,1001,2.5,170,0.17
 1994,1,1,2,0,0,0,0.5,-5.6,60,1001,3,170,0.17

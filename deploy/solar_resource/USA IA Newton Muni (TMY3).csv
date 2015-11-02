@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,725464,Newton Muni,IA,USA,41.683000,-93.017000,-6,290
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1999,1,1,0,0,0,0,-14.8,-16.5,85,979,1.4,10,0.19
 1999,1,1,1,0,0,0,-15.1,-16.6,87,979,1.7,30,0.19
 1999,1,1,2,0,0,0,-16,-17,91,979,2.1,40,0.19

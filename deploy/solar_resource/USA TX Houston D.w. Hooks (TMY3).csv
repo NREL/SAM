@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,722429,Houston D.w. Hooks,TX,USA,30.067000,-95.550000,-6,46
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1995,1,1,0,0,0,0,11,10.6,97,1016,2,360,0.17
 1995,1,1,1,0,0,0,10.8,10.4,97,1015,2.6,360,0.17
 1995,1,1,2,0,0,0,10.4,10,97,1015,3.1,360,0.17

@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,725487,Muscatine,IA,USA,41.367000,-91.150000,-6,167
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2004,1,1,0,0,0,0,-2,-8,60,993,2.1,90,0.19
 2004,1,1,1,0,0,0,-2,-8,60,993,1,360,0.19
 2004,1,1,2,0,0,0,-2,-7,65,993,1,360,0.19

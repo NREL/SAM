@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,723445,Fayetteville Drake Field,AR,USA,36.000000,-94.167000,-6,381
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2004,1,1,0,0,0,0,10,6,76,976,2.6,180,0.17
 2004,1,1,1,0,0,0,11,6,71,976,4.1,190,0.17
 2004,1,1,2,0,0,0,11,6,71,976,5.1,200,0.17

@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,724094,Caldwell Essex Co.,NJ,USA,40.883000,-74.283000,-5,53
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2000,1,1,0,0,0,0,-1,-1,100,1017,0,0,0.16
 2000,1,1,1,0,0,0,-1,-2,92,1017,0,0,0.16
 2000,1,1,2,0,0,0,-1,-2,92,1018,0,0,0.16

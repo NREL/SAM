@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,725316,Decatur,IL,USA,39.833000,-88.867000,-6,213
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2005,1,1,0,0,0,0,4,-1,69,999,4.6,40,0.18
 2005,1,1,1,0,0,0,4,-2,64,999,5.1,40,0.18
 2005,1,1,2,0,0,0,3,-2,68,999,4.6,60,0.18

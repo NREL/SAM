@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,722599,Dallas Redbird Arpt,TX,USA,32.683000,-96.867000,-6,201
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2000,1,1,0,0,0,0,9,3,66,992,2.6,170,0.18
 2000,1,1,1,0,0,0,8,3,71,991,3.1,170,0.18
 2000,1,1,2,0,0,0,9,3,66,991,2.6,180,0.18

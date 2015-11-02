@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,725564,Fremont Muni Arpt,NE,USA,41.450000,-96.517000,-6,379
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1998,1,1,0,0,0,0,2.3,-2.1,71,969,4.7,190,0.19
 1998,1,1,1,0,0,0,2.7,-1.8,71,969,5.6,200,0.19
 1998,1,1,2,0,0,0,2.8,-2,69,969,6.4,200,0.19

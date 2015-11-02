@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,722267,Troy Af,AL,USA,31.867000,-86.017000,-6,120
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1994,1,1,0,0,0,0,12,11,94,1012,0,0,0.16
 1994,1,1,1,0,0,0,12,10,88,1014,1.5,60,0.16
 1994,1,1,2,0,0,0,10,9,93,1013,1.5,70,0.16

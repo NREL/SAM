@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,727533,Wheaton Ndb (awos),MN,USA,45.700000,-96.500000,-6,313
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2001,1,1,0,0,0,0,-10.8,-10.8,100,976,4.6,330,0.41
 2001,1,1,1,0,0,0,-11.3,-11.3,100,976,4.1,330,0.41
 2001,1,1,2,0,0,0,-11.2,-11.2,100,976,3.6,320,0.41

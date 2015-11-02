@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,725910,Red Bluff Municipal Arpt,CA,USA,40.150000,-122.250000,-8,106
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2005,1,1,0,0,0,0,6.7,5.6,93,997,4.6,160,0.18
 2005,1,1,1,0,0,0,6.1,5,93,997,2.1,220,0.18
 2005,1,1,2,0,0,0,5.6,4.4,92,998,3.6,150,0.18

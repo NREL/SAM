@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,723565,Bartlesville Philli,OK,USA,36.767000,-96.017000,-6,218
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2004,1,1,0,0,0,0,9,7,87,993,5.1,170,0.18
 2004,1,1,1,0,0,0,9,7,87,992,6.2,170,0.18
 2004,1,1,2,0,0,0,9,7,87,993,3.6,190,0.18

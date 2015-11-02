@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,724235,Louisville Bowman Field,KY,USA,38.233000,-85.667000,-5,165
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2004,1,1,0,0,0,0,1,-1,86,1006,0,0,0.18
 2004,1,1,1,0,0,0,1,-1,86,1006,0,0,0.18
 2004,1,1,2,0,0,0,1,-1,86,1006,0,0,0.18

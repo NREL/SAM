@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,722748,Casa Granda (awos),AZ,USA,32.950000,-111.767000,-7,446
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2003,1,1,0,0,0,0,3,-1,74,961,2.1,40,0.2
 2003,1,1,1,0,0,0,3,-1,74,961,2.6,40,0.2
 2003,1,1,2,0,0,0,3,-1,74,961,1.5,40,0.2

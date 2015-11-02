@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,725127,Johnstown Cambria County Ap,PA,USA,40.317000,-78.833000,-5,695
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1997,1,1,0,0,0,0,-2,-4,85,935,2.6,70,0.18
 1997,1,1,1,0,0,0,-2,-4,85,935,4.1,70,0.18
 1997,1,1,2,0,0,0,-2,-4,85,936,2.6,70,0.18

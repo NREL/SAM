@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,722506,Mcallen Miller Intl Ap [edinburg - Ut],TX,USA,26.310000,-98.170000,-6,30
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2002,1,1,0,0,0,0,7.8,1.1,63,1017,4.6,20,0.17
 2002,1,1,1,0,0,0,7.8,1.1,63,1017,5.7,360,0.17
 2002,1,1,2,0,0,0,6.1,3.9,86,1017,5.7,20,0.17

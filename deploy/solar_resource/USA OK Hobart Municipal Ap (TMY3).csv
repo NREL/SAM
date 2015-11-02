@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,723525,Hobart Municipal Ap,OK,USA,35.000000,-99.050000,-6,478
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1994,1,1,0,0,0,0,3.8,0.5,79,957,2.5,300,0.2
 1994,1,1,1,0,0,0,3.1,-0.3,78,958,3.3,320,0.2
 1994,1,1,2,0,0,0,2.2,-1.2,77,958,4.1,330,0.2

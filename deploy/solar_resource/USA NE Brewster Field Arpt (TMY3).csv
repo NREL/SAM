@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,725628,Brewster Field Arpt,NE,USA,40.450000,-99.333000,-6,704
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1996,1,1,0,0,0,0,-2,-8,60,932,0,0,0.21
 1996,1,1,1,0,0,0,-3,-8,65,932,0,0,0.21
 1996,1,1,2,0,0,0,-6,-10,70,932,3.1,120,0.21

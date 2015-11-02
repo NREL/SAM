@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,724754,Saint George (awos),UT,USA,37.083000,-113.600000,-7,896
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2002,1,1,0,0,0,0,5,-1.7,61,911,0,0,0.22
 2002,1,1,1,0,0,0,5,-2.8,55,911,0,0,0.22
 2002,1,1,2,0,0,0,4.4,-2.3,60,911,0,0,0.22

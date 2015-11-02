@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,724516,Liberal Muni,KS,USA,37.033000,-100.967000,-6,901
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2001,1,1,0,0,0,0,4,0.6,78,910,0,0,0.2
 2001,1,1,1,0,0,0,6,0.1,66,910,2,150,0.2
 2001,1,1,2,0,0,0,5,-0.4,68,910,3,140,0.2

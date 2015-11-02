@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,747540,England Afb,LA,USA,31.317000,-92.550000,-6,27
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2002,1,1,0,0,0,0,1,-3,72,1022,2.6,40,0.17
 2002,1,1,1,0,0,0,1,-3,72,1022,4.1,50,0.17
 2002,1,1,2,0,0,0,1,-4,67,1022,3.6,40,0.17

@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,727556,Silver Bay,MN,USA,47.200000,-91.400000,-6,331
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2003,1,1,0,0,0,0,-16,-21,62,974,1.5,330,0.3
 2003,1,1,1,0,0,0,-15,-21,57,974,1.5,40,0.3
 2003,1,1,2,0,0,0,-14,-19,63,974,1.5,30,0.3

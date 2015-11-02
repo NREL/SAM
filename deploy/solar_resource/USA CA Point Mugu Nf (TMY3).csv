@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,723910,Point Mugu Nf,CA,USA,34.117000,-119.117000,-8,3
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1999,1,1,0,0,0,0,8,5.8,86,1014,1,350,0.14
 1999,1,1,1,0,0,0,8,5.8,86,1014,0.3,280,0.14
 1999,1,1,2,0,0,0,7.9,5.8,87,1014,0.7,330,0.14

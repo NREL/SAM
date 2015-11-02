@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,723783,Grand Canyon Natl P,AZ,USA,35.950000,-112.150000,-7,2065
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1999,1,1,0,0,0,0,1,-7,51,791,2.6,340,0.25
 1999,1,1,1,0,0,0,0,-7,55,791,2.6,320,0.25
 1999,1,1,2,0,0,0,0,-6,60,791,3.6,310,0.25

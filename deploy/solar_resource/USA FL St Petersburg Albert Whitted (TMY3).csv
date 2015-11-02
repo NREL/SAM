@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,722104,St Petersburg Albert Whitted,FL,USA,27.767000,-82.633000,-5,2
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1994,1,1,0,0,0,0,15.1,11.7,80,1013,4.1,60,0.14
 1994,1,1,1,0,0,0,15,11.7,81,1013,3.8,60,0.14
 1994,1,1,2,0,0,0,14.8,11.7,82,1013,3.5,50,0.14

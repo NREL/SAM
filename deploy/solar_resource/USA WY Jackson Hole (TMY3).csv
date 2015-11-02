@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,725776,Jackson Hole,WY,USA,43.600000,-110.733000,-7,2016
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2003,1,1,0,0,0,0,-4,-6,84,798,2.1,230,0.59
 2003,1,1,1,0,0,0,-3,-5,84,798,2.6,240,0.59
 2003,1,1,2,0,0,0,-4,-6,84,798,2.6,360,0.59

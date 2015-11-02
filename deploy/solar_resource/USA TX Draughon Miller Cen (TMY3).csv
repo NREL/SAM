@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,722577,Draughon Miller Cen,TX,USA,31.150000,-97.400000,-6,213
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1997,1,1,0,0,0,0,13,12,94,988,0,0,0.18
 1997,1,1,1,0,0,0,12.2,11.3,94,988,0,0,0.18
 1997,1,1,2,0,0,0,12.5,11.1,91,988,0.7,20,0.18

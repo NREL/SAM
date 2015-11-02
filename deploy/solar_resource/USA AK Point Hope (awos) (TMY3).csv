@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,701043,Point Hope (awos),AK,USA,68.350000,-166.800000,-9,4
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2005,1,1,0,0,0,0,-3,-4,92,1013,13.9,140,0.66
 2005,1,1,1,0,0,0,-3,-4,92,1013,13.4,130,0.66
 2005,1,1,2,0,0,0,-3,-4,92,1013,15.4,140,0.66

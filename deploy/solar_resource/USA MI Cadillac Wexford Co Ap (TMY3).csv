@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,726384,Cadillac Wexford Co Ap,MI,USA,44.283000,-85.417000,-5,396
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2000,1,1,0,0,0,0,-2,-5,78,967,4.6,220,0.15
 2000,1,1,1,0,0,0,-2,-5,78,967,3.6,230,0.15
 2000,1,1,2,0,0,0,-2,-4,85,967,3.6,230,0.15

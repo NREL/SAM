@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,724555,Manhattan Rgnl,KS,USA,39.133000,-96.667000,-6,330
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2000,1,1,0,0,0,0,-1,-2,92,973,0,0,0.19
 2000,1,1,1,0,0,0,-3,-5,84,973,0,0,0.19
 2000,1,1,2,0,0,0,-3,-4,92,972,0,0,0.19

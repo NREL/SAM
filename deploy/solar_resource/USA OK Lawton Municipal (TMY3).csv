@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,723575,Lawton Municipal,OK,USA,34.567000,-98.417000,-6,338
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2000,1,1,0,0,0,0,-1,-3,85,973,0,0,0.19
 2000,1,1,1,0,0,0,-1,-2,92,973,0,0,0.19
 2000,1,1,2,0,0,0,2,-1,80,973,2.1,80,0.19

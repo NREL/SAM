@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,724036,Manassas Muni(awos),VA,USA,38.717000,-77.517000,-5,59
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1995,1,1,0,0,0,0,1.1,0,92,1006,2.5,350,0.17
 1995,1,1,1,0,0,0,1.1,0,92,1006,0,0,0.17
 1995,1,1,2,0,0,0,1.6,0.5,92,1006,0,0,0.17

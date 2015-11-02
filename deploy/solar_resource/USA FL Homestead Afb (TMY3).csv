@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,722026,Homestead Afb,FL,USA,25.483000,-80.383000,-5,5
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2001,1,1,0,0,0,0,4,-2,64,1026,2.6,330,0.15
 2001,1,1,1,0,0,0,4,-1,69,1026,2.6,330,0.15
 2001,1,1,2,0,0,0,4,-1,69,1025,3.1,330,0.15

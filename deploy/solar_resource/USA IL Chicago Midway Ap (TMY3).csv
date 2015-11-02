@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,725340,Chicago Midway Ap,IL,USA,41.783000,-87.750000,-6,186
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2004,1,1,0,0,0,0,-1,-8,55,1003,2.6,20,0.17
 2004,1,1,1,0,0,0,-1,-8,55,1003,0,0,0.17
 2004,1,1,2,0,0,0,-1,-7,60,1003,2.1,90,0.17

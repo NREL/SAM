@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,747750,Tyndall Afb,FL,USA,30.067000,-85.583000,-6,7
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2001,1,1,0,0,0,0,-1,-5,71,1027,0,0,0.16
 2001,1,1,1,0,0,0,-2,-5,78,1027,0.8,10,0.16
 2001,1,1,2,0,0,0,-2,-5,78,1028,1.5,20,0.16

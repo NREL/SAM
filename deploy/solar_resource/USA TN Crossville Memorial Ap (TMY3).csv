@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,723265,Crossville Memorial Ap,TN,USA,35.950000,-85.083000,-6,569
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1991,1,1,0,0,0,0,-6.6,-7.1,96,958,3.6,50,0.17
 1991,1,1,1,0,0,0,-6,-6.6,95,958,3.6,50,0.17
 1991,1,1,2,0,0,0,-6.6,-7.1,96,958,3.1,50,0.17

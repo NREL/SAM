@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,725715,Hayden Yampa (awos),CO,USA,40.483000,-107.217000,-7,2012
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2002,1,1,0,0,0,0,-6,-13,54,798,5.3,310,0.39
 2002,1,1,1,0,0,0,-3,-12,46,798,5.7,290,0.39
 2002,1,1,2,0,0,0,-1,-12,39,798,6.2,280,0.39

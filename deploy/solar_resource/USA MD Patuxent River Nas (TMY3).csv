@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,724040,Patuxent River Nas,MD,USA,38.300000,-76.417000,-5,14
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1998,1,1,0,0,0,0,-3.9,-13,45,1028,6.7,310,0.17
 1998,1,1,1,0,0,0,-3.9,-14,41,1030,6.7,310,0.17
 1998,1,1,2,0,0,0,-5,-15,41,1030,6.7,310,0.17

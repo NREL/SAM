@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,723545,Stillwater Rgnl,OK,USA,36.150000,-97.083000,-6,308
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1991,1,1,0,0,0,0,10.6,3.9,63,977,3.6,150,0.19
 1991,1,1,1,0,0,0,12.9,5.7,62,977,3.3,140,0.19
 1991,1,1,2,0,0,0,13.2,6.4,63,977,3,130,0.19

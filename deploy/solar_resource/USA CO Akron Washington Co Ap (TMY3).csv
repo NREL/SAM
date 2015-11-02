@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,724698,Akron Washington Co Ap,CO,USA,40.167000,-103.233000,-7,1421
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1991,1,1,0,0,0,0,-1.6,-7.1,63,854,5.1,240,0.41
 1991,1,1,1,0,0,0,1.7,-2.7,71,856,6.2,250,0.41
 1991,1,1,2,0,0,0,-0.5,-2.1,88,854,5.1,250,0.41

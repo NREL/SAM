@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,726986,Portland Hillsboro,OR,USA,45.533000,-122.950000,-8,62
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2002,1,1,0,0,0,0,6,1,70,1008,4.1,100,0.3
 2002,1,1,1,0,0,0,7,1,66,1007,3.1,110,0.3
 2002,1,1,2,0,0,0,7,1,66,1006,5.7,110,0.3

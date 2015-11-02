@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,724075,Millville Municipal Ap,NJ,USA,39.367000,-75.083000,-5,21
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1997,1,1,0,0,0,0,-4,-6,84,1027,3.6,40,0.17
 1997,1,1,1,0,0,0,-5,-8,77,1028,3.6,90,0.17
 1997,1,1,2,0,0,0,-6,-10,70,1028,3.6,50,0.17

@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,725075,North Adams,MA,USA,42.700000,-73.167000,-5,201
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2001,1,1,0,0,0,0,-6,-9,77,986,7.2,270,0.33
 2001,1,1,1,0,0,0,-6,-11,64,987,7.7,250,0.33
 2001,1,1,2,0,0,0,-6,-11,64,988,7.7,260,0.33

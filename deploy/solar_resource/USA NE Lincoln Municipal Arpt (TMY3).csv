@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,725510,Lincoln Municipal Arpt,NE,USA,40.833000,-96.767000,-6,357
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2003,1,1,0,0,0,0,0.6,-10,41,971,2.1,130,0.19
 2003,1,1,1,0,0,0,0,-10,43,970,3.6,130,0.19
 2003,1,1,2,0,0,0,0.6,-10,41,971,2.6,80,0.19

@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,724815,Merced Macready Fld,CA,USA,37.283000,-120.517000,-8,47
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1991,1,1,0,0,0,0,-2.3,-2.7,97,1007,0,0,0.17
 1991,1,1,1,0,0,0,-2.3,-3,94,1007,0,0,0.17
 1991,1,1,2,0,0,0,-2.1,-3.5,89,1007,0,0,0.17

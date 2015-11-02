@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,724456,Vichy Rolla Natl Arpt,MO,USA,38.133000,-91.767000,-6,336
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1997,1,1,0,0,0,0,6,4,87,978,2.6,160,0.18
 1997,1,1,1,0,0,0,7,-1,56,977,2.1,170,0.18
 1997,1,1,2,0,0,0,7.4,-1,55,977,2.6,190,0.18

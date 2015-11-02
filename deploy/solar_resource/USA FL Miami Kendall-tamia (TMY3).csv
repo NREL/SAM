@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,722029,Miami Kendall-tamia,FL,USA,25.650000,-80.433000,-5,3
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1995,1,1,0,0,0,0,18.3,17.7,96,1019,0.3,360,0.15
 1995,1,1,1,0,0,0,18.4,17.8,96,1019,0.6,360,0.15
 1995,1,1,2,0,0,0,18.4,17.8,96,1019,0.9,360,0.15

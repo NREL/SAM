@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,724335,Mount Vernon (awos),IL,USA,38.317000,-88.867000,-6,146
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1999,1,1,0,0,0,0,-16,-18,83,996,0,0,0.18
 1999,1,1,1,0,0,0,-16.2,-18.2,83,996,0.7,360,0.18
 1999,1,1,2,0,0,0,-16.2,-18.3,82,996,1.4,10,0.18

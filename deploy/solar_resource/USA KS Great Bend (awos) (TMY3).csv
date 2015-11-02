@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,724517,Great Bend (awos),KS,USA,38.350000,-98.867000,-6,575
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1991,1,1,0,0,0,0,21.7,15.6,68,946,7.7,170,0.21
 1991,1,1,1,0,0,0,20.2,13.5,65,946,7.3,150,0.21
 1991,1,1,2,0,0,0,17.8,12.3,70,946,6.9,150,0.21

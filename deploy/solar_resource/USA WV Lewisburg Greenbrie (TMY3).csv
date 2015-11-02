@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,724127,Lewisburg Greenbrie,WV,USA,37.867000,-80.400000,-5,702
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2005,1,1,0,0,0,0,8,8,100,932,3.1,240,0.17
 2005,1,1,1,0,0,0,8,8,100,932,2.1,230,0.17
 2005,1,1,2,0,0,0,8,8,100,932,2.6,230,0.17

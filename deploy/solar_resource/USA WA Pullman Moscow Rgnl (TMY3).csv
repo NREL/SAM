@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,727857,Pullman Moscow Rgnl,WA,USA,46.750000,-117.117000,-8,778
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2001,1,1,0,0,0,0,-1,-1,100,934,2.1,160,0.48
 2001,1,1,1,0,0,0,0,-1,92,935,2.1,120,0.48
 2001,1,1,2,0,0,0,-1,-1,100,934,3.1,110,0.48

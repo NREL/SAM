@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,724297,Cincinnati Municipal Ap Lunki,OH,USA,39.100000,-84.417000,-5,149
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2001,1,1,0,0,0,0,-3,-6,77,1009,1.5,240,0.18
 2001,1,1,1,0,0,0,-3.3,-6.1,79,1009,2.6,250,0.18
 2001,1,1,2,0,0,0,-3.3,-6.7,75,1009,2.1,280,0.18

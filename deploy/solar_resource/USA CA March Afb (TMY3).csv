@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,722860,March Afb,CA,USA,33.900000,-117.250000,-8,462
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2001,1,1,0,0,0,0,9,-4,38,963,0.8,170,0.16
 2001,1,1,1,0,0,0,8,-3,44,963,1,200,0.16
 2001,1,1,2,0,0,0,8,-4,41,963,1,200,0.16

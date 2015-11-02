@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,724286,Zanesville Municipal Ap,OH,USA,39.950000,-81.900000,-5,268
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1998,1,1,0,0,0,0,-11,-16,63,996,2.6,190,0.18
 1998,1,1,1,0,0,0,-10,-15,64,996,3.6,180,0.18
 1998,1,1,2,0,0,0,-10,-15,64,996,3.6,190,0.18

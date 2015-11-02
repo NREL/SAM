@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,724243,London-corbin Ap,KY,USA,37.083000,-84.083000,-5,362
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2003,1,1,0,0,0,0,10.6,10.6,100,962,2.1,30,0.17
 2003,1,1,1,0,0,0,10,10,100,962,1.5,60,0.17
 2003,1,1,2,0,0,0,9.4,9.4,100,961,1.5,10,0.17

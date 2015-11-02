@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,725495,Sheldon,IA,USA,43.217000,-95.833000,-6,432
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2005,1,1,0,0,0,0,-8,-13,64,962,7.7,70,0.21
 2005,1,1,1,0,0,0,-8,-13,64,962,8.2,60,0.21
 2005,1,1,2,0,0,0,-8,-13,64,962,7.7,70,0.21

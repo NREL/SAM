@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,722516,Kingsville,TX,USA,27.500000,-97.817000,-6,17
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1994,1,1,0,0,0,0,13.3,11.7,90,1016,0,0,0.16
 1994,1,1,1,0,0,0,12.8,10.6,86,1016,1,300,0.16
 1994,1,1,2,0,0,0,12.8,10.6,86,1016,2.6,340,0.16

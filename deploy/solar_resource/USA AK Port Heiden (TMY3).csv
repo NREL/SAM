@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,703330,Port Heiden,AK,USA,56.950000,-158.617000,-9,29
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2003,1,1,0,0,0,0,-19,-21,83,982,11.8,40,0.21
 2003,1,1,1,0,0,0,-19,-21,83,982,12.9,50,0.21
 2003,1,1,2,0,0,0,-20,-22,82,982,11.8,50,0.21

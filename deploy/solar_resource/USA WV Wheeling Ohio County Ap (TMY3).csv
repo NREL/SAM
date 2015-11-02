@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,724275,Wheeling Ohio County Ap,WV,USA,40.183000,-80.650000,-5,359
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2003,1,1,0,0,0,0,5.8,5.8,100,972,2.1,60,0.18
 2003,1,1,1,0,0,0,4.3,4.1,99,972,2.2,70,0.18
 2003,1,1,2,0,0,0,2.9,2.5,97,973,2.2,90,0.18

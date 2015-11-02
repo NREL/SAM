@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,723495,Joplin Municipal Ap,MO,USA,37.150000,-94.500000,-6,297
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1996,1,1,0,0,0,0,3.3,3.3,100,973,3.6,30,0.18
 1996,1,1,1,0,0,0,2.7,2.7,100,973,8.2,40,0.18
 1996,1,1,2,0,0,0,3.3,2.7,96,973,6.1,40,0.18
