@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,723415,Memorial Fld,AR,USA,34.467000,-93.100000,-6,169
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2004,1,1,0,0,0,0,8.6,3.6,71,1004,2.6,80,0.17
 2004,1,1,1,0,0,0,8,4,76,1004,2.6,90,0.17
 2004,1,1,2,0,0,0,10,4,66,1004,2.6,80,0.17

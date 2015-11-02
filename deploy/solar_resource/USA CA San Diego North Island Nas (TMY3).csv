@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,722906,San Diego North Island Nas,CA,USA,32.700000,-117.200000,-8,15
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2002,1,1,0,0,0,0,13.3,12.8,97,1017,0,0,0.15
 2002,1,1,1,0,0,0,13.1,12.6,97,1017,0.4,10,0.15
 2002,1,1,2,0,0,0,12.8,12.3,97,1017,0.9,20,0.15

@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,702647,Healy River Airport,AK,USA,63.883000,-149.017000,-9,396
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2001,1,1,0,0,0,0,-19,-19,100,967,0,0,0.64
 2001,1,1,1,0,0,0,-15.1,-15.1,100,967,0,0,0.64
 2001,1,1,2,0,0,0,-21.1,-21.1,100,967,0,0,0.64

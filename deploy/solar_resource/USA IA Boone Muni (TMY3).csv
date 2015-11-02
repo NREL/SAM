@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,725486,Boone Muni,IA,USA,42.050000,-93.850000,-6,354
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2001,1,1,0,0,0,0,-13,-16,76,971,6.7,340,0.3
 2001,1,1,1,0,0,0,-12,-16,69,971,6.7,350,0.3
 2001,1,1,2,0,0,0,-12.1,-15.8,71,971,7.2,360,0.3

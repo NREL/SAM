@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,724735,Hanksville,UT,USA,38.367000,-110.717000,-7,1313
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2000,1,1,0,0,0,0,-0.8,-5.3,68,867,0,0,0.37
 2000,1,1,1,0,0,0,-0.6,-4.8,70,867,0,0,0.37
 2000,1,1,2,0,0,0,-0.5,-4.4,72,867,0,0,0.37

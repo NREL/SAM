@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,723677,Las Vegas Municipal Arpt,NM,USA,35.650000,-105.150000,-7,2093
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1999,1,1,0,0,0,0,1,-4.9,62,785,7.5,220,0.19
 1999,1,1,1,0,0,0,0.8,-5,62,785,7.2,220,0.19
 1999,1,1,2,0,0,0,0.3,-5.2,63,785,6.8,230,0.19

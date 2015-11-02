@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,724505,Mcconnell Afb,KS,USA,37.617000,-97.267000,-6,414
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2005,1,1,0,0,0,0,15,15,100,967,4.1,170,0.19
 2005,1,1,1,0,0,0,15,15,100,967,5.1,170,0.19
 2005,1,1,2,0,0,0,14,14,100,967,6.2,170,0.19

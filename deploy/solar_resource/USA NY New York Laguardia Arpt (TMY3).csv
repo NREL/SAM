@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,725030,New York Laguardia Arpt,NY,USA,40.783000,-73.883000,-5,3
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1991,1,1,0,0,0,0,-2.2,-12.8,40,1035,4.6,330,0.16
 1991,1,1,1,0,0,0,-2.2,-12.8,40,1035,3.1,340,0.16
 1991,1,1,2,0,0,0,-2.2,-12.8,40,1036,3.6,330,0.16

@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,724016,Charlottesville Faa,VA,USA,38.133000,-78.450000,-5,190
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2000,1,1,0,0,0,0,0,-2,85,998,0,0,0.17
 2000,1,1,1,0,0,0,-1,-3,85,998,1.5,250,0.17
 2000,1,1,2,0,0,0,-1,-3,85,998,0,0,0.17

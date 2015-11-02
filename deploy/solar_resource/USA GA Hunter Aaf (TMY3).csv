@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,747804,Hunter Aaf,GA,USA,32.000000,-81.150000,-5,13
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2001,1,1,0,0,0,0,-3.3,-11.4,49,1024,2.6,160,0.16
 2001,1,1,1,0,0,0,-4.5,-12.4,50,1024,2.9,170,0.16
 2001,1,1,2,0,0,0,-3.6,-11.3,51,1024,2.9,170,0.16

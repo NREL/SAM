@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,724839,Sacramento Metropolitan Ap,CA,USA,38.700000,-121.583000,-8,7
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1994,1,1,0,0,0,0,6.6,6.1,97,1020,3,140,0.19
 1994,1,1,1,0,0,0,6.6,6.1,97,1020,3.6,180,0.19
 1994,1,1,2,0,0,0,6.1,5.5,96,1021,3.6,160,0.19

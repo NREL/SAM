@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,722927,Carlsbad Palomar,CA,USA,33.133000,-117.283000,-8,100
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2000,1,1,0,0,0,0,9,9,100,1005,1.5,110,0.16
 2000,1,1,1,0,0,0,9,8,93,1005,0,0,0.16
 2000,1,1,2,0,0,0,9,8,93,1006,2.6,110,0.16

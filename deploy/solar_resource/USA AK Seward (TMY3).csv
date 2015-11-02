@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,702770,Seward,AK,USA,60.117000,-149.450000,-9,18
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2003,1,1,0,0,0,0,-9,-13,70,985,7.2,10,0.55
 2003,1,1,1,0,0,0,-9,-14,64,986,5.7,10,0.55
 2003,1,1,2,0,0,0,-9,-14,64,986,7.2,10,0.55

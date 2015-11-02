@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,722903,San Diego Montgomer,CA,USA,32.817000,-117.133000,-8,129
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2000,1,1,0,0,0,0,9,-3,41,1002,2.6,50,0.15
 2000,1,1,1,0,0,0,7,-3,48,1002,2.6,120,0.15
 2000,1,1,2,0,0,0,7,0,61,1002,2.1,120,0.15

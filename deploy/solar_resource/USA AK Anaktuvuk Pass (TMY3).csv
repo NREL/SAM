@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,701625,Anaktuvuk Pass,AK,USA,68.133000,-151.733000,-9,657
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1997,1,1,0,0,0,0,-15.5,-18.5,75,937,10.1,190,0.65
 1997,1,1,1,0,0,0,-16,-19.1,75,937,7.9,210,0.65
 1997,1,1,2,0,0,0,-17,-20.2,74,937,8.8,170,0.65

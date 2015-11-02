@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,726563,Faribault Muni Awos,MN,USA,44.333000,-93.317000,-6,322
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2000,1,1,0,0,0,0,0,-4,72,975,3.6,270,0.42
 2000,1,1,1,0,0,0,0,-4,72,975,4.6,300,0.42
 2000,1,1,2,0,0,0,-1,-5,71,975,3.6,300,0.42

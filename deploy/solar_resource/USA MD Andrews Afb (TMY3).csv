@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,745940,Andrews Afb,MD,USA,38.817000,-76.867000,-5,86
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2005,1,1,0,0,0,0,10,5,71,1015,2.6,260,0.17
 2005,1,1,1,0,0,0,9,4,71,1015,3.6,250,0.17
 2005,1,1,2,0,0,0,6,3,81,1015,1.5,250,0.17

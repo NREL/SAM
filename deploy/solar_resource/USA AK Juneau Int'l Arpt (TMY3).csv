@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,703810,Juneau Int'l Arpt,AK,USA,58.350000,-134.583000,-9,4
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1991,1,1,0,0,0,0,-15.6,-18.9,73,973,2.6,10,0.46
 1991,1,1,1,0,0,0,-16.1,-18.9,77,978,2.1,10,0.46
 1991,1,1,2,0,0,0,-17.2,-19.4,81,982,0,0,0.46

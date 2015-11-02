@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,726467,Rice Lake Municipal,WI,USA,45.483000,-91.717000,-6,347
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2000,1,1,0,0,0,0,1,-3,72,972,2.6,270,0.39
 2000,1,1,1,0,0,0,-1,-3,85,972,4.1,290,0.39
 2000,1,1,2,0,0,0,-2,-4,85,972,3.1,290,0.39

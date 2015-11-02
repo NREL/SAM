@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,725565,Columbus Muni,NE,USA,41.450000,-97.333000,-6,451
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2005,1,1,0,0,0,0,-6,-13,54,960,5.7,70,0.2
 2005,1,1,1,0,0,0,-5,-13,49,960,6.7,70,0.2
 2005,1,1,2,0,0,0,-4,-13,45,960,8.2,90,0.2

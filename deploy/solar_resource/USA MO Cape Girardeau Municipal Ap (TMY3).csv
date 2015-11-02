@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,723489,Cape Girardeau Municipal Ap,MO,USA,37.233000,-89.567000,-6,103
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1997,1,1,0,0,0,0,6,6,100,1010,0,0,0.17
 1997,1,1,1,0,0,0,6,6,100,1010,3.6,50,0.17
 1997,1,1,2,0,0,0,6,6,100,1009,3.1,100,0.17

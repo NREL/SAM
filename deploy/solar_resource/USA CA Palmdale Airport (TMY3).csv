@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,723820,Palmdale Airport,CA,USA,34.633000,-118.083000,-8,769
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2004,1,1,0,0,0,0,9,-8,27,926,4.6,230,0.14
 2004,1,1,1,0,0,0,9,-10,23,927,5.7,220,0.14
 2004,1,1,2,0,0,0,8,-8,29,926,2.1,260,0.14

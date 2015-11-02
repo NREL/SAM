@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,702595,Soldotna,AK,USA,60.467000,-151.033000,-9,34
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2001,1,1,0,0,0,0,-1.7,-3.9,83,1009,0,0,0.62
 2001,1,1,1,0,0,0,-1.4,-3.6,83,1009,0,0,0.62
 2001,1,1,2,0,0,0,-1.9,-3.8,85,1009,0,0,0.62

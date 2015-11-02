@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,724490,St Joseph Rosecrans Memorial,MO,USA,39.767000,-94.900000,-6,247
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2003,1,1,0,0,0,0,-1.5,-11.8,41,983,5.3,160,0.18
 2003,1,1,1,0,0,0,-3.1,-12.7,43,983,7.5,150,0.18
 2003,1,1,2,0,0,0,-4.5,-13.5,45,983,6.7,150,0.18

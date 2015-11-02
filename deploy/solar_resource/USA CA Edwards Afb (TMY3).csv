@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,723810,Edwards Afb,CA,USA,34.900000,-117.867000,-8,706
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2000,1,1,0,0,0,0,5,1,75,931,6.7,220,0.16
 2000,1,1,1,0,0,0,4,0,75,931,6.7,230,0.16
 2000,1,1,2,0,0,0,6,0,65,932,7.7,260,0.16

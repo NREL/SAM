@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,722615,Del Rio Laughlin Afb,TX,USA,29.367000,-100.783000,-6,327
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2003,1,1,0,0,0,0,15,13.3,90,975,6.6,320,0.19
 2003,1,1,1,0,0,0,15,13.3,90,974,5.6,320,0.19
 2003,1,1,2,0,0,0,15,13.3,90,974,6.6,340,0.19

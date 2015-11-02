@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,727475,Mora Muni (awos),MN,USA,45.883000,-93.267000,-6,309
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1999,1,1,0,0,0,0,-18.2,-22.7,65,977,0,0,0.55
 1999,1,1,1,0,0,0,-19.8,-23.5,70,977,0,0,0.55
 1999,1,1,2,0,0,0,-20.2,-24.5,66,977,0,0,0.55

@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,724915,Monterey Naf,CA,USA,36.600000,-121.867000,-8,50
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1999,1,1,0,0,0,0,7,4,81,1013,4.6,120,0.16
 1999,1,1,1,0,0,0,7,4,81,1013,5.7,120,0.16
 1999,1,1,2,0,0,0,7,3,76,1013,4.6,120,0.16

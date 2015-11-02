@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,722930,San Diego Miramar Nas,CA,USA,32.867000,-117.133000,-8,140
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2004,1,1,0,0,0,0,8,1,61,1000,3.6,90,0.15
 2004,1,1,1,0,0,0,7,1,66,1001,2.6,60,0.15
 2004,1,1,2,0,0,0,7.1,0.6,63,1000,3.6,70,0.15

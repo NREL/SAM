@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,726904,Roseburg Regional Ap,OR,USA,43.233000,-123.350000,-8,160
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2002,1,1,0,0,0,0,8,8,100,994,2.1,230,0.18
 2002,1,1,1,0,0,0,8,8,100,993,1.8,210,0.18
 2002,1,1,2,0,0,0,8,8,100,992,1.6,180,0.18

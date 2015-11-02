@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,702606,Chulitna,AK,USA,62.883000,-149.833000,-9,381
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2001,1,1,0,0,0,0,-4,-7,77,968,0,0,0.59
 2001,1,1,1,0,0,0,-4,-7,77,968,0,0,0.59
 2001,1,1,2,0,0,0,-4,-7,77,968,0,0,0.59

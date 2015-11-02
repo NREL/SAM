@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,747185,Imperial,CA,USA,32.833000,-115.583000,-8,-17
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1999,1,1,0,0,0,0,8,4,76,1015,2.6,270,0.17
 1999,1,1,1,0,0,0,8,3,71,1016,2.6,280,0.17
 1999,1,1,2,0,0,0,8,2,66,1017,3.1,270,0.17

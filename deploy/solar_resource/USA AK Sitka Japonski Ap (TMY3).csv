@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,703710,Sitka Japonski Ap,AK,USA,57.050000,-135.367000,-9,4
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2004,1,1,0,0,0,0,2.8,-3.3,62,1009,0,0,0.37
 2004,1,1,1,0,0,0,1.7,-4.4,61,1010,3.6,120,0.37
 2004,1,1,2,0,0,0,1.7,-4.4,61,1010,2.1,80,0.37

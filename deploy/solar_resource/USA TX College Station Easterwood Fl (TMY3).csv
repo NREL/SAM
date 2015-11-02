@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,722445,College Station Easterwood Fl,TX,USA,30.583000,-96.367000,-6,96
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1996,1,1,0,0,0,0,15,15,100,989,4.6,190,0.17
 1996,1,1,1,0,0,0,14.4,14.4,100,989,5.6,180,0.17
 1996,1,1,2,0,0,0,14.4,14.4,100,989,4.1,180,0.17

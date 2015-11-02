@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,725185,Glens Falls Ap,NY,USA,43.350000,-73.617000,-5,98
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2000,1,1,0,0,0,0,-2,-8,60,1009,2.1,190,0.51
 2000,1,1,1,0,0,0,-2,-8,60,1009,2.1,70,0.51
 2000,1,1,2,0,0,0,-2,-10,50,1010,1.5,180,0.51

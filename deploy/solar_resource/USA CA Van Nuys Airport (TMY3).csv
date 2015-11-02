@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,722886,Van Nuys Airport,CA,USA,34.217000,-118.483000,-8,235
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1999,1,1,0,0,0,0,8,6,87,986,1.5,30,0.14
 1999,1,1,1,0,0,0,7,6,93,986,0,0,0.14
 1999,1,1,2,0,0,0,6,4,87,986,0,0,0.14

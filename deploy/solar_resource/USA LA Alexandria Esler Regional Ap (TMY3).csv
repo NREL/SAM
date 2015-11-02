@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,722487,Alexandria Esler Regional Ap,LA,USA,31.400000,-92.300000,-6,34
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2004,1,1,0,0,0,0,13.9,10.6,80,1021,0,0,0.17
 2004,1,1,1,0,0,0,15,11.7,81,1021,0,0,0.17
 2004,1,1,2,0,0,0,21,12,56,1021,2.1,120,0.17

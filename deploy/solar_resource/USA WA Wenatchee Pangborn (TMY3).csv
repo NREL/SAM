@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,727825,Wenatchee Pangborn,WA,USA,47.400000,-120.200000,-8,379
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1999,1,1,0,0,0,0,3.7,-2.8,61,977,5.3,310,0.49
 1999,1,1,1,0,0,0,3.3,-2.5,64,975,5,310,0.49
 1999,1,1,2,0,0,0,3,-2.3,67,975,5.2,310,0.49

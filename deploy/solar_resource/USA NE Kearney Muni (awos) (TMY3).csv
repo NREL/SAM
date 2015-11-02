@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,725526,Kearney Muni (awos),NE,USA,40.733000,-99.000000,-6,649
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2003,1,1,0,0,0,0,-3,-11,50,938,2.6,130,0.21
 2003,1,1,1,0,0,0,-3,-11,50,938,2.6,110,0.21
 2003,1,1,2,0,0,0,-4,-11,54,938,2.6,30,0.21

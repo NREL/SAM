@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,785430,Charlotte Amalie Harry S Trum,VI,USA,18.350000,-64.967000,-4,6
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2001,1,1,0,0,0,0,25.6,21.7,79,1019,4.6,100,0.13
 2001,1,1,1,0,0,0,25.6,21.7,79,1011,5.2,120,0.13
 2001,1,1,2,0,0,0,25,21.7,82,1018,4.6,100,0.13

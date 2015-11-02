@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,726797,Bozeman Gallatin Field,MT,USA,45.800000,-111.150000,-7,1349
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1998,1,1,0,0,0,0,-3,-6,77,856,4.1,60,0.5
 1998,1,1,1,0,0,0,-1,-5,71,857,4.1,50,0.5
 1998,1,1,2,0,0,0,-2,-6,71,856,2.6,50,0.5

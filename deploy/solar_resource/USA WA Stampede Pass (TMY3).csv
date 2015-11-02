@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,727815,Stampede Pass,WA,USA,47.283000,-121.333000,-8,1206
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2003,1,1,0,0,0,0,-2.8,-3.9,91,879,0,0,0.49
 2003,1,1,1,0,0,0,-2.8,-3.9,91,879,2.1,100,0.49
 2003,1,1,2,0,0,0,-2.8,-3.9,91,879,0,0,0.49

@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,724037,Davison Aaf,VA,USA,38.717000,-77.183000,-5,27
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2005,1,1,0,0,0,0,-3.2,-6.6,75,1012,1,50,0.17
 2005,1,1,1,0,0,0,-2.1,-6.6,68,1012,1,10,0.17
 2005,1,1,2,0,0,0,-1.6,-4.9,76,1013,1,100,0.17

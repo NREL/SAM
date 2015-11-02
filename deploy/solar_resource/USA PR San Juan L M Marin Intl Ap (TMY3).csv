@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,785263,San Juan L M Marin Intl Ap,PR,USA,18.433000,-66.000000,-4,3
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1996,1,1,0,0,0,0,24.4,21.1,82,1017,2.6,100,0.13
 1996,1,1,1,0,0,0,23.9,22.2,90,1016,1.5,110,0.13
 1996,1,1,2,0,0,0,23.9,21.7,88,1016,0,0,0.13

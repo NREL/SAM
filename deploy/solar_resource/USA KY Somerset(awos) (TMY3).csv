@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,724354,Somerset(awos),KY,USA,38.000000,-84.600000,-5,283
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2004,1,1,0,0,0,0,-1,-2,92,980,0,0,0.18
 2004,1,1,1,0,0,0,-1,-3,85,980,0,0,0.18
 2004,1,1,2,0,0,0,-1,-3,85,980,0,0,0.18

@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,725165,Rutland State,VT,USA,43.517000,-72.950000,-5,246
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2002,1,1,0,0,0,0,1.5,-3,70,984,0,0,0.34
 2002,1,1,1,0,0,0,-0.5,-4,75,984,0,0,0.34
 2002,1,1,2,0,0,0,-0.5,-4,75,984,1.5,320,0.34

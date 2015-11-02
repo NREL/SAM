@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,726355,Benton Harbor Ross,MI,USA,42.133000,-86.433000,-5,196
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2001,1,1,0,0,0,0,-5,-6,92,1001,0,0,0.16
 2001,1,1,1,0,0,0,-6,-6,100,1001,1.5,60,0.16
 2001,1,1,2,0,0,0,-6,-7,92,1002,0,0,0.16

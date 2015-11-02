@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,725476,Decorah,IA,USA,43.283000,-91.733000,-6,353
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2000,1,1,0,0,0,0,0.5,-4.2,68,972,4.3,350,0.67
 2000,1,1,1,0,0,0,0.1,-4.4,69,972,3.5,360,0.67
 2000,1,1,2,0,0,0,-0.2,-4.5,70,972,2.5,340,0.67

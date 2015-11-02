@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,725976,Lakeview (awos),OR,USA,42.167000,-120.400000,-8,1441
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1994,1,1,0,0,0,0,1.6,-3.4,67,854,6.6,170,0.28
 1994,1,1,1,0,0,0,0.5,-2.8,76,854,4.1,130,0.28
 1994,1,1,2,0,0,0,1.1,-2.8,73,854,3.6,150,0.28

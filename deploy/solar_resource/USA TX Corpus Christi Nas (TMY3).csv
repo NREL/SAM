@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,722515,Corpus Christi Nas,TX,USA,27.683000,-97.283000,-6,6
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2004,1,1,0,0,0,0,19.5,19.5,100,1021,3.6,120,0.16
 2004,1,1,1,0,0,0,20,20,100,1020,5.7,130,0.16
 2004,1,1,2,0,0,0,20,20,100,1020,3.6,140,0.16

@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,726415,Janesville Rock Co.,WI,USA,42.617000,-89.033000,-6,246
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2002,1,1,0,0,0,0,-9.3,-14,66,984,2.1,280,0.17
 2002,1,1,1,0,0,0,-9.5,-14,67,984,2.9,280,0.17
 2002,1,1,2,0,0,0,-9.3,-13.7,67,984,3.3,280,0.17

@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,727846,Walla Walla City County Ap,WA,USA,46.100000,-118.283000,-8,355
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2000,1,1,0,0,0,0,2.8,0.6,85,970,3.6,200,0.4
 2000,1,1,1,0,0,0,3.3,0.6,82,970,5.2,190,0.4
 2000,1,1,2,0,0,0,2.8,0,82,970,3.1,190,0.4

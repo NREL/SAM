@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,723300,Poplar Bluff(amos),MO,USA,36.767000,-90.467000,-6,146
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1997,1,1,0,0,0,0,-6.2,-10,72,1007,2,170,0.17
 1997,1,1,1,0,0,0,-6.7,-11.2,67,1007,4.6,160,0.17
 1997,1,1,2,0,0,0,-7.3,-11.2,71,1008,3.6,180,0.17

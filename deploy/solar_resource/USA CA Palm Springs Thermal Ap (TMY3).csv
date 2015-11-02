@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,747187,Palm Springs Thermal Ap,CA,USA,33.633000,-116.167000,-8,-34
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1998,1,1,0,0,0,0,6.2,2.5,77,1022,0.7,360,0.19
 1998,1,1,1,0,0,0,5,2,81,1022,0,0,0.19
 1998,1,1,2,0,0,0,5,2,81,1021,1.5,320,0.19

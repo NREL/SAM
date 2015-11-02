@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,726498,Fair Field,IA,USA,41.050000,-91.983000,-6,244
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2004,1,1,0,0,0,0,-1,-3,85,984,3.6,90,0.19
 2004,1,1,1,0,0,0,-1,-3,85,984,3.6,90,0.19
 2004,1,1,2,0,0,0,-1,-2,92,984,3.6,90,0.19

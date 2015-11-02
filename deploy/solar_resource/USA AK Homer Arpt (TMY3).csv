@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,703410,Homer Arpt,AK,USA,59.650000,-151.483000,-9,27
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1995,1,1,0,0,0,0,5,-0.6,67,1011,7.7,70,0.25
 1995,1,1,1,0,0,0,4.4,-0.6,70,1011,7.2,60,0.25
 1995,1,1,2,0,0,0,5.6,-1.1,61,1011,7.7,70,0.25

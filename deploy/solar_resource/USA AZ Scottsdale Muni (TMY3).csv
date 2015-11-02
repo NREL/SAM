@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,722789,Scottsdale Muni,AZ,USA,33.617000,-111.917000,-7,460
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1998,1,1,0,0,0,0,13,2.3,48,959,0,0,0.2
 1998,1,1,1,0,0,0,12.7,2.4,49,959,0,0,0.2
 1998,1,1,2,0,0,0,12.2,2.6,52,959,0,0,0.2

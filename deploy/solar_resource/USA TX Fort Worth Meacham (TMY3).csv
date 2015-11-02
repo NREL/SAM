@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,722596,Fort Worth Meacham,TX,USA,32.817000,-97.367000,-6,209
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1994,1,1,0,0,0,0,9.4,3.8,68,991,5.6,180,0.18
 1994,1,1,1,0,0,0,9.4,4.4,71,990,6.1,190,0.18
 1994,1,1,2,0,0,0,9.4,5.5,77,991,5.1,200,0.18

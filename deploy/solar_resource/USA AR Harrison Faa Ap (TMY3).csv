@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,723446,Harrison Faa Ap,AR,USA,36.267000,-93.150000,-6,419
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2000,1,1,0,0,0,0,2,-2,73,967,4.1,120,0.17
 2000,1,1,1,0,0,0,3,-3,63,967,4.6,130,0.17
 2000,1,1,2,0,0,0,1,-2,79,966,4.1,110,0.17

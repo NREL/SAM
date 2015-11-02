@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,724106,Danville Faa Ap,VA,USA,36.567000,-79.333000,-5,176
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1996,1,1,0,0,0,0,8.8,7.7,93,990,2.5,320,0.18
 1996,1,1,1,0,0,0,8.8,8.3,97,989,1.5,350,0.18
 1996,1,1,2,0,0,0,8.3,7.7,96,989,1.5,220,0.18

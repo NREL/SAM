@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,724936,Concord Concord-buchanan Fiel,CA,USA,38.000000,-122.050000,-8,7
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1994,1,1,0,0,0,0,7.2,7.2,100,1016,1.7,350,0.17
 1994,1,1,1,0,0,0,7.1,7.1,100,1016,1.4,350,0.17
 1994,1,1,2,0,0,0,7,7,100,1016,1.1,360,0.17

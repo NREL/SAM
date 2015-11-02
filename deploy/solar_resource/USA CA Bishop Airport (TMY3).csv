@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,724800,Bishop Airport,CA,USA,37.367000,-118.350000,-8,1250
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2000,1,1,0,0,0,0,-6.7,-16.7,41,865,3.1,310,0.25
 2000,1,1,1,0,0,0,-4.4,-15,39,867,4.1,300,0.25
 2000,1,1,2,0,0,0,-6.1,-15,45,866,2.6,330,0.25

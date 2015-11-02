@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,725865,Hailey Friedman Mem,ID,USA,43.500000,-114.300000,-7,1620
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1998,1,1,0,0,0,0,-4.7,-8.5,72,836,2.7,330,0.44
 1998,1,1,1,0,0,0,-4.6,-8.8,70,836,2.8,330,0.44
 1998,1,1,2,0,0,0,-4.3,-8.8,68,836,2.9,340,0.44

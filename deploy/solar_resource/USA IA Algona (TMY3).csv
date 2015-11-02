@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,725457,Algona,IA,USA,43.083000,-94.267000,-6,372
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1999,1,1,0,0,0,0,-18.6,-22.1,71,969,0,0,0.42
 1999,1,1,1,0,0,0,-17,-20,75,969,0,0,0.42
 1999,1,1,2,0,0,0,-16,-20,69,969,0,0,0.42

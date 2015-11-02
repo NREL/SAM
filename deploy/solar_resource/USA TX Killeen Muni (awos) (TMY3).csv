@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,722575,Killeen Muni (awos),TX,USA,31.083000,-97.683000,-6,258
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1997,1,1,0,0,0,0,11.3,8,80,983,0,0,0.18
 1997,1,1,1,0,0,0,10.1,7.4,83,983,0,0,0.18
 1997,1,1,2,0,0,0,9.1,7.3,88,983,2,50,0.18

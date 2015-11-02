@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,722348,Hattiesburg Laurel,MS,USA,31.467000,-89.333000,-6,93
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1994,1,1,0,0,0,0,2.7,-5,54,1002,0,0,0.16
 1994,1,1,1,0,0,0,3.8,-5,50,1002,1.5,120,0.16
 1994,1,1,2,0,0,0,5,-5,46,1002,0,0,0.16

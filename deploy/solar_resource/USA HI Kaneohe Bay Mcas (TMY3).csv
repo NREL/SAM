@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,911760,Kaneohe Bay Mcas,HI,USA,21.450000,-157.783000,-10,3
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1991,1,1,0,0,0,0,23.3,13.9,55,1018,3.6,340,0.13
 1991,1,1,1,0,0,0,22.3,13,56,1018,5,350,0.13
 1991,1,1,2,0,0,0,22.4,13.1,56,1018,6.4,350,0.13

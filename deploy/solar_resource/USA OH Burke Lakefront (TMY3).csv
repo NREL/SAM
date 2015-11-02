@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,725245,Burke Lakefront,OH,USA,41.517000,-81.683000,-5,182
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2003,1,1,0,0,0,0,1,0,93,994,1.5,40,0.18
 2003,1,1,1,0,0,0,1,-1,86,994,4.1,60,0.18
 2003,1,1,2,0,0,0,1,-1,86,995,5.7,40,0.18

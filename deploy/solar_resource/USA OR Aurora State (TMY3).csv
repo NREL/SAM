@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,726959,Aurora State,OR,USA,45.250000,-122.767000,-8,60
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2001,1,1,0,0,0,0,4,4,100,1018,0,0,0.3
 2001,1,1,1,0,0,0,5,4,93,1019,2.6,30,0.3
 2001,1,1,2,0,0,0,5,5,100,1020,2.1,50,0.3

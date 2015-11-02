@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,725036,Poughkeepsie Dutchess Co Ap,NY,USA,41.633000,-73.883000,-5,47
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2005,1,1,0,0,0,0,2,1,93,1014,0,0,0.16
 2005,1,1,1,0,0,0,1,0,93,1014,0,0,0.16
 2005,1,1,2,0,0,0,3,2,93,1014,2.6,200,0.16

@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,722066,Mayport Ns,FL,USA,30.400000,-81.417000,-5,5
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2004,1,1,0,0,0,0,14.4,12.8,90,1021,0,0,0.15
 2004,1,1,1,0,0,0,14.4,12.8,90,1020,0,0,0.15
 2004,1,1,2,0,0,0,14.4,12.8,90,1020,0,0,0.15

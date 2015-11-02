@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,724767,Cortez Montezuma Co,CO,USA,37.300000,-108.633000,-7,1803
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1998,1,1,0,0,0,0,-7,-8,92,818,3.1,70,0.33
 1998,1,1,1,0,0,0,-7,-8,92,818,2.6,40,0.33
 1998,1,1,2,0,0,0,-7,-8,92,817,2.6,90,0.33

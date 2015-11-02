@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,703430,Middleton Island Aut,AK,USA,59.467000,-146.317000,-9,14
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1997,1,1,0,0,0,0,-1.7,-4.8,77,1011,5.3,90,0.26
 1997,1,1,1,0,0,0,-1.4,-4.5,77,1011,4.7,100,0.26
 1997,1,1,2,0,0,0,-1.4,-4.2,79,1011,4.2,110,0.26

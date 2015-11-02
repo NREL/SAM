@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,726576,Willmar,MN,USA,45.117000,-95.083000,-6,345
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1999,1,1,0,0,0,0,-8.8,-11.2,81,972,3.4,140,0.41
 1999,1,1,1,0,0,0,-8.6,-10.9,82,972,3.4,130,0.41
 1999,1,1,2,0,0,0,-8.8,-11.8,77,972,3.3,110,0.41

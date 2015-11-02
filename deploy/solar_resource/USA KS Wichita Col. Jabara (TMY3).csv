@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,724504,Wichita Col. Jabara,KS,USA,37.750000,-97.217000,-6,433
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1998,1,1,0,0,0,0,5,-3,55,969,10.8,200,0.19
 1998,1,1,1,0,0,0,4,-4,54,968,10.3,200,0.19
 1998,1,1,2,0,0,0,4,-4,54,969,8.7,200,0.19

@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,703950,Ketchikan Intl Ap,AK,USA,55.367000,-131.717000,-9,23
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1998,1,1,0,0,0,0,-2,-5,78,1008,4.5,290,0.28
 1998,1,1,1,0,0,0,-2,-6.1,71,1008,5.3,290,0.28
 1998,1,1,2,0,0,0,-2,-7,65,1008,6.2,300,0.28

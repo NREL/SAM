@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,724273,Parkersburg Wood County Ap,WV,USA,39.350000,-81.433000,-5,253
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2003,1,1,0,0,0,0,8.3,8.3,100,983,2.6,30,0.18
 2003,1,1,1,0,0,0,8.3,8.3,100,982,2.1,20,0.18
 2003,1,1,2,0,0,0,8.3,8.3,100,980,5.2,40,0.18

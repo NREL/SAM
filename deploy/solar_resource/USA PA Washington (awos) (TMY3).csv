@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,725117,Washington (awos),PA,USA,40.133000,-80.283000,-5,361
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2001,1,1,0,0,0,0,2.7,0.5,85,971,0.3,90,0.18
 2001,1,1,1,0,0,0,2.7,-0.6,78,971,0.4,90,0.18
 2001,1,1,2,0,0,0,1.1,-2.8,73,971,2.6,90,0.18

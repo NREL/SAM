@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,722610,Del Rio [ut],TX,USA,29.380000,-100.910000,-6,308
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2004,1,1,0,0,0,0,15.6,10.6,72,984,2.6,150,0.19
 2004,1,1,1,0,0,0,16.1,8.9,62,982,5.7,110,0.19
 2004,1,1,2,0,0,0,16.1,10,67,982,4.1,110,0.19

@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,725493,Knoxville,IA,USA,41.300000,-93.117000,-6,283
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2000,1,1,0,0,0,0,6,-2,55,980,7.2,210,0.19
 2000,1,1,1,0,0,0,5,-3,55,980,5.1,220,0.19
 2000,1,1,2,0,0,0,5,-3,55,980,5.1,210,0.19

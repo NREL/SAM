@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,722499,Nacogdoches (awos),TX,USA,31.583000,-94.717000,-6,108
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1996,1,1,0,0,0,0,12.8,10.8,88,1000,2.5,150,0.17
 1996,1,1,1,0,0,0,12.8,11,89,1000,2,150,0.17
 1996,1,1,2,0,0,0,12.7,11.1,90,1000,2.5,120,0.17

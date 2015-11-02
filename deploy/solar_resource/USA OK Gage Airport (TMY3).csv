@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,723527,Gage Airport,OK,USA,36.300000,-99.767000,-6,668
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1994,1,1,0,0,0,0,1.6,-6.2,53,935,3,330,0.2
 1994,1,1,1,0,0,0,1.1,-5.6,58,936,3,340,0.2
 1994,1,1,2,0,0,0,0.5,-5.6,60,936,2.5,310,0.2

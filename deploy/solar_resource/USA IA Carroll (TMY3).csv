@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,725468,Carroll,IA,USA,42.050000,-94.783000,-6,375
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2005,1,1,0,0,0,0,-5,-11,59,969,5.7,60,0.3
 2005,1,1,1,0,0,0,-5,-11,59,969,4.6,70,0.3
 2005,1,1,2,0,0,0,-5.2,-10.6,62,969,6.1,80,0.3

@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,746943,Elizabeth City Coast Guard Ai [nrel],NC,USA,36.300000,-76.250000,-5,4
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1999,1,1,0,0,0,0,-4,-6,84,1021,0,0,0.15
 1999,1,1,1,0,0,0,-4,-6,84,1021,1.5,320,0.15
 1999,1,1,2,0,0,0,-3,-5,84,1021,0,0,0.15

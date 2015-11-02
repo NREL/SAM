@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,726865,Salmon Lemhi (awos),ID,USA,45.117000,-113.883000,-7,1233
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2002,1,1,0,0,0,0,-6.1,-9.8,72,875,0,0,0.52
 2002,1,1,1,0,0,0,-5.5,-10,68,875,0,0,0.52
 2002,1,1,2,0,0,0,-6.9,-11.2,68,875,0,0,0.52

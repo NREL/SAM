@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,722485,Barksdale Afb,LA,USA,32.500000,-93.667000,-6,54
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1997,1,1,0,0,0,0,14.6,14.6,100,1014,0,0,0.17
 1997,1,1,1,0,0,0,17,17,100,1014,0.9,50,0.17
 1997,1,1,2,0,0,0,17.2,17.2,100,1014,1.9,70,0.17

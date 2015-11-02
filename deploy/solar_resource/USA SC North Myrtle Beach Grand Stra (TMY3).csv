@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,747915,North Myrtle Beach Grand Stra,SC,USA,33.817000,-78.717000,-5,10
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2004,1,1,0,0,0,0,1,1,100,1026,0,0,0.14
 2004,1,1,1,0,0,0,0,0,100,1027,0,0,0.14
 2004,1,1,2,0,0,0,0,0,100,1027,0,0,0.14

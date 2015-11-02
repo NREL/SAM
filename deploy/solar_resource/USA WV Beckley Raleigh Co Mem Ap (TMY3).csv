@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,724120,Beckley Raleigh Co Mem Ap,WV,USA,37.800000,-81.117000,-5,763
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1991,1,1,0,0,0,0,-6.7,-7.8,91,940,1.5,140,0.17
 1991,1,1,1,0,0,0,-6.1,-7.8,86,940,2.1,140,0.17
 1991,1,1,2,0,0,0,-5.6,-7.8,83,940,3.6,140,0.17

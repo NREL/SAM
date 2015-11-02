@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,725058,Block Island State Arpt,RI,USA,41.167000,-71.583000,-5,34
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1995,1,1,0,0,0,0,4.4,3.3,93,1009,1.5,180,0.15
 1995,1,1,1,0,0,0,4.4,3.3,93,1009,0,0,0.15
 1995,1,1,2,0,0,0,5.5,3.8,89,1009,4.1,180,0.15

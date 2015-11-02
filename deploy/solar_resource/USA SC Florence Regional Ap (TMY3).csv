@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,723106,Florence Regional Ap,SC,USA,34.183000,-79.733000,-5,44
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1999,1,1,0,0,0,0,-2,-3,92,1008,0,0,0.14
 1999,1,1,1,0,0,0,-1,-3,85,1008,0,0,0.14
 1999,1,1,2,0,0,0,-1,-3,85,1008,0,0,0.14

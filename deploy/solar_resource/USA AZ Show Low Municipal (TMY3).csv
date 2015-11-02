@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,723747,Show Low Municipal,AZ,USA,34.267000,-110.000000,-7,1954
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1999,1,1,0,0,0,0,5.3,-3.6,51,804,7.2,220,0.2
 1999,1,1,1,0,0,0,5,-3.4,53,804,6.9,220,0.2
 1999,1,1,2,0,0,0,4.4,-3.4,55,804,6.5,220,0.2

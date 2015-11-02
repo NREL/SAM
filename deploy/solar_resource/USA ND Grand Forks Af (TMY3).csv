@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,727575,Grand Forks Af,ND,USA,47.967000,-97.400000,-6,276
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2002,1,1,0,0,0,0,-13,-13,100,995,6.7,350,0.61
 2002,1,1,1,0,0,0,-14,-14,100,995,5.7,350,0.61
 2002,1,1,2,0,0,0,-14,-14,100,996,6.2,340,0.61

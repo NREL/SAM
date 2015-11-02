@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,747810,Moody Afb Valdosta,GA,USA,30.967000,-83.200000,-5,71
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2003,1,1,0,0,0,0,13,12,94,1014,0,0,0.17
 2003,1,1,1,0,0,0,13,12,94,1013,0,0,0.17
 2003,1,1,2,0,0,0,13,12,94,1013,0,0,0.17

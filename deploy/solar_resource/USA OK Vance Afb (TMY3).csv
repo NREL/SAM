@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,723535,Vance Afb,OK,USA,36.333000,-97.917000,-6,408
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2005,1,1,0,0,0,0,-0.2,-0.5,98,977,2.5,280,0.19
 2005,1,1,1,0,0,0,0.7,-0.1,94,977,2,310,0.19
 2005,1,1,2,0,0,0,1.6,-0.2,88,976,3.6,310,0.19

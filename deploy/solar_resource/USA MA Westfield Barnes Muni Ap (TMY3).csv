@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,744915,Westfield Barnes Muni Ap,MA,USA,42.150000,-72.717000,-5,83
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2004,1,1,0,0,0,0,5,-4,50,1005,10.8,310,0.24
 2004,1,1,1,0,0,0,4,-7,42,1007,6.7,350,0.24
 2004,1,1,2,0,0,0,3,-7,45,1008,8.2,320,0.24

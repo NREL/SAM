@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,724017,Farmville,VA,USA,37.350000,-78.433000,-5,125
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1997,1,1,0,0,0,0,3.4,3.4,100,998,0,0,0.17
 1997,1,1,1,0,0,0,2.3,2.3,100,998,0,0,0.17
 1997,1,1,2,0,0,0,2.1,2.1,100,998,0,0,0.17

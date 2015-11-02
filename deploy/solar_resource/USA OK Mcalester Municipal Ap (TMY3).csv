@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,723566,Mcalester Municipal Ap,OK,USA,34.900000,-95.783000,-6,232
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1997,1,1,0,0,0,0,13,13,100,992,1.5,200,0.18
 1997,1,1,1,0,0,0,13,13,100,992,0,0,0.18
 1997,1,1,2,0,0,0,13,13,100,991,2.1,150,0.18

@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,726586,Fairmont Muni(awos),MN,USA,43.650000,-94.417000,-6,354
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2000,1,1,0,0,0,0,1,-5,61,971,5.7,330,0.42
 2000,1,1,1,0,0,0,0,-5,66,971,4.6,330,0.42
 2000,1,1,2,0,0,0,-1,-6,66,971,3.6,330,0.42

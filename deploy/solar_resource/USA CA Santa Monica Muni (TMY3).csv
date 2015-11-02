@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,722885,Santa Monica Muni,CA,USA,34.017000,-118.450000,-8,53
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1999,1,1,0,0,0,0,8.8,8.8,100,1012,2.7,30,0.14
 1999,1,1,1,0,0,0,8.5,8.5,100,1012,2.9,30,0.14
 1999,1,1,2,0,0,0,8.3,8.3,100,1013,3,30,0.14

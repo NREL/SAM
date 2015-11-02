@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,700637,Deadhorse,AK,USA,70.200000,-148.483000,-9,23
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2005,1,1,0,0,0,0,-16.7,-18.9,81,1016,4.6,240,0.69
 2005,1,1,1,0,0,0,-16.7,-19.4,77,1016,3.6,220,0.69
 2005,1,1,2,0,0,0,-16.7,-18.9,81,1016,3.1,240,0.69

@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,724050,Washington Dc Reagan Ap,VA,USA,38.867000,-77.033000,-5,3
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1997,1,1,0,0,0,0,1.9,-3,68,1026,6.2,60,0.17
 1997,1,1,1,0,0,0,1.2,-4.4,63,1026,5.2,60,0.17
 1997,1,1,2,0,0,0,0.6,-4.3,67,1027,5.2,60,0.17

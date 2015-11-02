@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,724955,Napa Co. Airport,CA,USA,38.217000,-122.283000,-8,10
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1999,1,1,0,0,0,0,2.8,1.9,94,1020,0,0,0.17
 1999,1,1,1,0,0,0,0.2,0.2,100,1021,0,0,0.17
 1999,1,1,2,0,0,0,-0.1,-0.6,96,1022,0,0,0.17

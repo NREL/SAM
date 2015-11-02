@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,701940,Fort Yukon,AK,USA,66.567000,-145.267000,-9,136
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1991,1,1,0,0,0,0,-39.3,-39.3,100,997,0,0,0.54
 1991,1,1,1,0,0,0,-38.7,-38.7,100,997,0,0,0.54
 1991,1,1,2,0,0,0,-38.8,-38.8,100,997,0,0,0.54

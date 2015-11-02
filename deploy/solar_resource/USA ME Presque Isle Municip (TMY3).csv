@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,727130,Presque Isle Municip,ME,USA,46.683000,-68.050000,-5,163
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1996,1,1,0,0,0,0,-25,-30.6,56,994,0,0,0.21
 1996,1,1,1,0,0,0,-26.7,-32.3,56,994,0,0,0.21
 1996,1,1,2,0,0,0,-27.8,-33.9,53,994,0,0,0.21

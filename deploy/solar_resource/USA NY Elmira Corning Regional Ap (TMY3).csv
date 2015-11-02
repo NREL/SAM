@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,725156,Elmira Corning Regional Ap,NY,USA,42.167000,-76.900000,-5,291
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2001,1,1,0,0,0,0,-6,-10,70,981,3.1,240,0.38
 2001,1,1,1,0,0,0,-6,-9,77,982,3.6,240,0.38
 2001,1,1,2,0,0,0,-6,-8,84,983,2.6,240,0.38

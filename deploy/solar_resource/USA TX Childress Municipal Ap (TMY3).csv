@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,723604,Childress Municipal Ap,TX,USA,34.433000,-100.283000,-6,595
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1999,1,1,0,0,0,0,2,-4,62,943,4.1,130,0.19
 1999,1,1,1,0,0,0,2,-4,62,941,3.6,130,0.19
 1999,1,1,2,0,0,0,2,-3,67,940,5.7,140,0.19

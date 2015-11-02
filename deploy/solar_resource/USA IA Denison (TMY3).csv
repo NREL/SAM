@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,725477,Denison,IA,USA,41.983000,-95.383000,-6,388
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2000,1,1,0,0,0,0,2,-2,73,968,0,0,0.19
 2000,1,1,1,0,0,0,1,-3,72,968,0,0,0.19
 2000,1,1,2,0,0,0,1,-3,72,968,0,0,0.19

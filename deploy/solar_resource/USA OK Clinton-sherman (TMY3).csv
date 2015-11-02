@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,723526,Clinton-sherman,OK,USA,35.333000,-99.200000,-6,586
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2005,1,1,0,0,0,0,11,9,87,948,5.7,180,0.2
 2005,1,1,1,0,0,0,11,9,87,948,5.1,170,0.2
 2005,1,1,2,0,0,0,11,9,87,948,5.7,170,0.2

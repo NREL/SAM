@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,722116,St Petersburg Clear,FL,USA,27.900000,-82.683000,-5,3
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2003,1,1,0,0,0,0,17,16,94,1010,4.6,200,0.14
 2003,1,1,1,0,0,0,17,11,68,1010,4.1,190,0.14
 2003,1,1,2,0,0,0,17,-2,27,1010,3.6,200,0.14

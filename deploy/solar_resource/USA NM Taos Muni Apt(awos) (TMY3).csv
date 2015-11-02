@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,723663,Taos Muni Apt(awos),NM,USA,36.450000,-105.667000,-7,2161
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1998,1,1,0,0,0,0,-5,-9.5,68,784,2.4,340,0.19
 1998,1,1,1,0,0,0,-6.2,-8.9,79,784,3.2,280,0.19
 1998,1,1,2,0,0,0,-6.2,-10,72,784,4.1,230,0.19

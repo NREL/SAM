@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,726545,Mitchell (awos),SD,USA,43.767000,-98.033000,-6,397
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2003,1,1,0,0,0,0,-1,-2,92,965,6.7,110,0.41
 2003,1,1,1,0,0,0,-1,-5,71,965,4.6,110,0.41
 2003,1,1,2,0,0,0,-1,-6,66,966,4.6,120,0.41

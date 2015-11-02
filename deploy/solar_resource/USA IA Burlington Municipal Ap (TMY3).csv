@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,725455,Burlington Municipal Ap,IA,USA,40.783000,-91.117000,-6,211
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1996,1,1,0,0,0,0,0.5,0,96,986,1.5,90,0.19
 1996,1,1,1,0,0,0,0.5,-0.6,92,986,1.5,50,0.19
 1996,1,1,2,0,0,0,0,-0.6,95,986,1.5,30,0.19

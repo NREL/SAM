@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,702185,Mekoryuk,AK,USA,60.367000,-166.267000,-9,15
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1991,1,1,0,0,0,0,-9.9,-11,91,1013,7.7,60,0.66
 1991,1,1,1,0,0,0,-10.6,-11.8,90,1013,5.7,320,0.66
 1991,1,1,2,0,0,0,-9.4,-10.5,91,1013,6.1,300,0.66

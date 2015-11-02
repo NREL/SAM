@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,724096,Mcguire Afb,NJ,USA,40.017000,-74.600000,-5,45
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2005,1,1,0,0,0,0,8,5,81,1019,1.5,240,0.16
 2005,1,1,1,0,0,0,6,5,93,1018,2.1,230,0.16
 2005,1,1,2,0,0,0,6,4,87,1018,1,210,0.16

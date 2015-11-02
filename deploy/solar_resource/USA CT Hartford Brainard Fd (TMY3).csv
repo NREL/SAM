@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,725087,Hartford Brainard Fd,CT,USA,41.733000,-72.650000,-5,6
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2005,1,1,0,0,0,0,8,4,76,1020,4.1,150,0.15
 2005,1,1,1,0,0,0,7,4,81,1019,4.6,170,0.15
 2005,1,1,2,0,0,0,7,3,76,1019,3.1,180,0.15

@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,724945,San Jose Intl Ap,CA,USA,37.367000,-121.933000,-8,16
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1999,1,1,0,0,0,0,6,5,93,1020,2.1,30,0.17
 1999,1,1,1,0,0,0,6,5,93,1020,0,0,0.17
 1999,1,1,2,0,0,0,5,4,93,1020,1.5,130,0.17

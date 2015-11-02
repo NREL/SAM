@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,725895,Klamath Falls Intl Ap [uo],OR,USA,42.220000,-121.740000,-8,1220
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2001,1,1,0,0,0,0,-4,-4,100,879,2.6,310,0.28
 2001,1,1,1,0,0,0,-3,-4,92,879,1.5,50,0.28
 2001,1,1,2,0,0,0,-4,-4,100,879,0,0,0.28

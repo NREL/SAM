@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,722526,Cotulla Faa Ap,TX,USA,28.450000,-99.217000,-6,141
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1998,1,1,0,0,0,0,9.2,1.7,59,1011,2.4,70,0.18
 1998,1,1,1,0,0,0,9.2,2.9,65,1011,2.3,70,0.18
 1998,1,1,2,0,0,0,9.2,4,70,1010,2.3,70,0.18

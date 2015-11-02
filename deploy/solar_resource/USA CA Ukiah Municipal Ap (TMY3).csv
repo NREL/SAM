@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,725905,Ukiah Municipal Ap,CA,USA,39.133000,-123.200000,-8,189
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2005,1,1,0,0,0,0,4,4,100,988,1.5,150,0.14
 2005,1,1,1,0,0,0,4,3,93,988,0,0,0.14
 2005,1,1,2,0,0,0,2,2,100,989,0,0,0.14

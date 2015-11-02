@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,702320,Aniak Airport,AK,USA,61.583000,-159.533000,-9,26
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1997,1,1,0,0,0,0,1,-8.3,46,1010,1.5,20,0.62
 1997,1,1,1,0,0,0,0.9,-8.1,47,1010,2,10,0.62
 1997,1,1,2,0,0,0,0.4,-8.1,49,1010,0,0,0.62

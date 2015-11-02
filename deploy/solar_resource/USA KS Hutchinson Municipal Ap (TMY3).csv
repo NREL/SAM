@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,724506,Hutchinson Municipal Ap,KS,USA,38.067000,-97.867000,-6,463
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2005,1,1,0,0,0,0,9,9,100,958,2.6,130,0.2
 2005,1,1,1,0,0,0,11,11,100,958,5.1,170,0.2
 2005,1,1,2,0,0,0,12,11,94,959,5.7,180,0.2

@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,744864,Republic,NY,USA,40.717000,-73.417000,-5,26
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1999,1,1,0,0,0,0,-5,-10,65,1015,3.6,250,0.16
 1999,1,1,1,0,0,0,-4,-10,59,1015,3.6,250,0.16
 1999,1,1,2,0,0,0,-4,-11,54,1015,3.6,250,0.16

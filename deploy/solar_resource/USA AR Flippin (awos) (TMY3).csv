@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,723447,Flippin (awos),AR,USA,36.300000,-92.467000,-6,350
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2004,1,1,0,0,0,0,7,-1,56,972,1.5,100,0.17
 2004,1,1,1,0,0,0,7,1,66,972,0,0,0.17
 2004,1,1,2,0,0,0,6,1,70,972,0,0,0.17

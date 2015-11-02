@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,722977,Santa Ana John Wayne Ap,CA,USA,33.683000,-117.867000,-8,16
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2003,1,1,0,0,0,0,8.6,8.4,99,1017,0,0,0.16
 2003,1,1,1,0,0,0,8,8,100,1018,0,0,0.16
 2003,1,1,2,0,0,0,7.6,7.4,99,1017,0,0,0.16

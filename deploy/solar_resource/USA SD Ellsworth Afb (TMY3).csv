@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,726625,Ellsworth Afb,SD,USA,44.150000,-103.100000,-7,980
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1997,1,1,0,0,0,0,6,0,65,896,1,360,0.37
 1997,1,1,1,0,0,0,5,0,70,895,1,200,0.37
 1997,1,1,2,0,0,0,3,-1,74,894,1.5,180,0.37

@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,725955,Montague Siskiyou County Ap,CA,USA,41.783000,-122.467000,-8,803
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2004,1,1,0,0,0,0,1,0,93,910,2.6,40,0.18
 2004,1,1,1,0,0,0,1,0,93,909,2.6,20,0.18
 2004,1,1,2,0,0,0,4,-1,69,909,14.4,150,0.18

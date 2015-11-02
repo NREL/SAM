@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,723346,Jackson Mckellar-sipes Regl A,TN,USA,35.600000,-88.917000,-6,132
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1997,1,1,0,0,0,0,11,9,87,1006,2.6,30,0.17
 1997,1,1,1,0,0,0,11,9,87,1006,2.1,20,0.17
 1997,1,1,2,0,0,0,11,9,87,1006,0,0,0.17

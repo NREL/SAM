@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,722119,Lakeland Linder Rgn,FL,USA,27.983000,-82.017000,-5,43
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2001,1,1,0,0,0,0,0.6,-1.7,83,1008,0,0,0.14
 2001,1,1,1,0,0,0,0.5,-2,82,1008,0,0,0.14
 2001,1,1,2,0,0,0,0.4,-2.2,81,1008,0,0,0.14

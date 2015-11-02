@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,722135,Alma Bacon County Ap,GA,USA,31.533000,-82.500000,-5,63
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2001,1,1,0,0,0,0,-3.9,-5,91,1019,0,0,0.16
 2001,1,1,1,0,0,0,-4.4,-5,95,1019,0,0,0.16
 2001,1,1,2,0,0,0,-5,-5.6,95,1018,0,0,0.16

@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,726565,Morris Muni (awos),MN,USA,45.567000,-95.967000,-6,344
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1995,1,1,0,0,0,0,-16.2,-17.8,86,973,3.6,310,0.41
 1995,1,1,1,0,0,0,-16.2,-16.7,95,973,4.6,310,0.41
 1995,1,1,2,0,0,0,-15.6,-17.3,85,973,5.1,30,0.41

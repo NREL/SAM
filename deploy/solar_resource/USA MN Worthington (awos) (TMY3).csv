@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,726587,Worthington (awos),MN,USA,43.650000,-95.583000,-6,480
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1999,1,1,0,0,0,0,-17.2,-18.6,88,957,5.2,60,0.21
 1999,1,1,1,0,0,0,-17,-18,91,957,5.7,70,0.21
 1999,1,1,2,0,0,0,-17.5,-18.2,94,957,4.4,50,0.21

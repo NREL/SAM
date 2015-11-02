@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,723805,Needles Airport,CA,USA,34.767000,-114.617000,-8,279
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1998,1,1,0,0,0,0,11.5,-0.1,45,983,0,0,0.21
 1998,1,1,1,0,0,0,10.9,0,47,983,0,0,0.21
 1998,1,1,2,0,0,0,10.4,0,48,983,0,0,0.21

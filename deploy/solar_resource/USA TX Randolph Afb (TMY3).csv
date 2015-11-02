@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,722536,Randolph Afb,TX,USA,29.533000,-98.283000,-6,232
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1997,1,1,0,0,0,0,17,16,94,991,2.6,100,0.18
 1997,1,1,1,0,0,0,17,16,94,991,1.5,50,0.18
 1997,1,1,2,0,0,0,17,17,100,991,2.1,40,0.18

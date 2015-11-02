@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,724556,Emporia Municipal Ap,KS,USA,38.333000,-96.183000,-6,368
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1996,1,1,0,0,0,0,1.4,0.5,94,966,4.7,30,0.19
 1996,1,1,1,0,0,0,0.9,0,94,967,4.9,20,0.19
 1996,1,1,2,0,0,0,0.6,-0.2,94,967,5,20,0.19

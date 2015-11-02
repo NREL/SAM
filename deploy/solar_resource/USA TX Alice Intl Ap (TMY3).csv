@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,722517,Alice Intl Ap,TX,USA,27.733000,-98.033000,-6,53
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2005,1,1,0,0,0,0,17,17,100,1012,3.1,110,0.18
 2005,1,1,1,0,0,0,17,17,100,1012,2.1,80,0.18
 2005,1,1,2,0,0,0,17,17,100,1011,2.1,90,0.18

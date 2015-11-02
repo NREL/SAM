@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,723443,Siloam Spring(awos),AR,USA,36.183000,-94.483000,-6,364
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2004,1,1,0,0,0,0,10,4,66,970,4.1,170,0.17
 2004,1,1,1,0,0,0,11,4,62,970,5.1,190,0.17
 2004,1,1,2,0,0,0,11,5,66,970,5.1,190,0.17

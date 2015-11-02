@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,725635,Alliance Municipal,NE,USA,42.050000,-102.800000,-7,1198
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2002,1,1,0,0,0,0,-18,-20,83,880,1.5,270,0.36
 2002,1,1,1,0,0,0,-19,-22,75,880,3.1,280,0.36
 2002,1,1,2,0,0,0,-20,-22,82,880,2.6,290,0.36

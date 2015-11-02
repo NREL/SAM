@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,725867,Burley Municipal Arpt,ID,USA,42.533000,-113.767000,-7,1267
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1996,1,1,0,0,0,0,-0.7,-2.9,83,877,6.1,250,0.43
 1996,1,1,1,0,0,0,-0.7,-2.8,84,877,6.1,250,0.43
 1996,1,1,2,0,0,0,-0.8,-2.8,85,877,6.1,250,0.43

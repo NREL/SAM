@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,724768,Greeley Weld (awos),CO,USA,40.433000,-104.633000,-7,1420
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2005,1,1,0,0,0,0,-3,-7,71,856,2.1,10,0.41
 2005,1,1,1,0,0,0,-4,-7,77,856,1.5,360,0.41
 2005,1,1,2,0,0,0,-5,-7,84,856,3.1,10,0.41

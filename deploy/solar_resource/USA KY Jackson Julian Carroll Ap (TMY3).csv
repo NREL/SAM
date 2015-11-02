@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,724236,Jackson Julian Carroll Ap,KY,USA,37.583000,-83.317000,-5,416
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1995,1,1,0,0,0,0,8.3,6.1,86,968,3.1,230,0.17
 1995,1,1,1,0,0,0,8.3,7.2,93,968,3.1,230,0.17
 1995,1,1,2,0,0,0,8.3,7.2,93,968,3.6,260,0.17

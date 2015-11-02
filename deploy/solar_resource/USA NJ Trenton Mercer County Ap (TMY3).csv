@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,724095,Trenton Mercer County Ap,NJ,USA,40.283000,-74.817000,-5,65
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1997,1,1,0,0,0,0,-6.9,-9.6,79,1008,2.6,10,0.16
 1997,1,1,1,0,0,0,-7.7,-10.4,79,1009,2.6,10,0.16
 1997,1,1,2,0,0,0,-8.5,-11.3,78,1009,2.6,20,0.16

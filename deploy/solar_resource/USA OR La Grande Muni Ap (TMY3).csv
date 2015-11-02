@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,726884,La Grande Muni Ap,OR,USA,45.283000,-118.000000,-8,827
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2003,1,1,0,0,0,0,1,-2.8,74,919,0.6,10,0.4
 2003,1,1,1,0,0,0,1.8,-2.8,70,919,0.6,20,0.4
 2003,1,1,2,0,0,0,2.5,-2.9,66,919,0.7,30,0.4

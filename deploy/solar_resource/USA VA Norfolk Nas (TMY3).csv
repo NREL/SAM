@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,723085,Norfolk Nas,VA,USA,36.950000,-76.283000,-5,10
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2005,1,1,0,0,0,0,10,6,76,1027,3.6,210,0.15
 2005,1,1,1,0,0,0,11,6,71,1027,3.6,210,0.15
 2005,1,1,2,0,0,0,11,6,71,1027,3.1,220,0.15

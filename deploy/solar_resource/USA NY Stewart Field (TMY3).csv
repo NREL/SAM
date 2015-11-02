@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,725038,Stewart Field,NY,USA,41.500000,-74.100000,-5,177
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2004,1,1,0,0,0,0,4,-5,49,992,7.2,260,0.16
 2004,1,1,1,0,0,0,4,-5,49,992,5.1,270,0.16
 2004,1,1,2,0,0,0,4,-6,45,992,6.2,280,0.16

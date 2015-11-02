@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,747880,Macdill Afb,FL,USA,27.850000,-82.517000,-5,8
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2001,1,1,0,0,0,0,17,14,82,1020,2.6,40,0.14
 2001,1,1,1,0,0,0,17,14,82,1020,3.1,50,0.14
 2001,1,1,2,0,0,0,17,14,82,1020,2.6,50,0.14

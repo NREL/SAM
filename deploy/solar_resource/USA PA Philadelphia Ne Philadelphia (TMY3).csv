@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,724085,Philadelphia Ne Philadelphia,PA,USA,40.083000,-75.017000,-5,30
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1994,1,1,0,0,0,0,-1.7,-6.7,65,1024,3,230,0.18
 1994,1,1,1,0,0,0,-1.7,-5,76,1025,2.5,230,0.18
 1994,1,1,2,0,0,0,-3.4,-6.7,75,1026,2,170,0.18

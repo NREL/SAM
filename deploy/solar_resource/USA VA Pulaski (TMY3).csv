@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,724116,Pulaski,VA,USA,37.133000,-80.683000,-5,642
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2005,1,1,0,0,0,0,8,7,93,939,3.1,230,0.17
 2005,1,1,1,0,0,0,8,6,87,939,4.1,230,0.17
 2005,1,1,2,0,0,0,9,7,87,939,2.6,230,0.17

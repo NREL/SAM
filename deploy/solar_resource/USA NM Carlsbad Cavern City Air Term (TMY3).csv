@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,722687,Carlsbad Cavern City Air Term,NM,USA,32.333000,-104.267000,-7,985
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2001,1,1,0,0,0,0,-1,-1,100,906,3.1,160,0.19
 2001,1,1,1,0,0,0,-0.6,-0.6,100,908,4.6,180,0.19
 2001,1,1,2,0,0,0,-0.6,-0.6,100,908,4.6,160,0.19

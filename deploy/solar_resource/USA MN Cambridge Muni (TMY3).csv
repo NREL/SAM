@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,727503,Cambridge Muni,MN,USA,45.567000,-93.267000,-6,287
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1996,1,1,0,0,0,0,-2.8,-3.4,95,979,0,0,0.55
 1996,1,1,1,0,0,0,-2.8,-3.9,91,979,0,0,0.55
 1996,1,1,2,0,0,0,-2.8,-3.4,95,979,1.5,30,0.55

@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,723816,Lancaster Gen Wm Fox Field,CA,USA,34.733000,-118.217000,-8,713
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2004,1,1,0,0,0,0,8.3,-5,37,934,4.6,240,0.14
 2004,1,1,1,0,0,0,6.1,-4.4,45,934,4.6,270,0.14
 2004,1,1,2,0,0,0,7.8,-3.9,42,934,6.2,250,0.14

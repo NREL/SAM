@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,725556,Ainsworth Municipal,NE,USA,42.583000,-100.000000,-6,789
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1999,1,1,0,0,0,0,-5.1,-8,78,923,6.3,140,0.32
 1999,1,1,1,0,0,0,-5.4,-8.3,78,923,6.6,140,0.32
 1999,1,1,2,0,0,0,-5.5,-8.5,77,923,6.9,140,0.32

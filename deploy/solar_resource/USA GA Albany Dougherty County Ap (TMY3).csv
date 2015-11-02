@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,722160,Albany Dougherty County Ap,GA,USA,31.533000,-84.183000,-5,58
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1998,1,1,0,0,0,0,-1,-5,71,1023,2.6,300,0.17
 1998,1,1,1,0,0,0,-2,-5,78,1023,2.6,340,0.17
 1998,1,1,2,0,0,0,-2,-5,78,1023,2.6,230,0.17

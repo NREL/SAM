@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,727855,Fairchild Afb,WA,USA,47.633000,-117.650000,-8,743
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2005,1,1,0,0,0,0,-1,-1,100,916,3.1,70,0.53
 2005,1,1,1,0,0,0,-1,-1,100,916,5.1,70,0.53
 2005,1,1,2,0,0,0,-1,-2,92,916,6.7,80,0.53

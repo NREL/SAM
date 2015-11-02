@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,722068,Jacksonville Craig,FL,USA,30.333000,-81.517000,-5,12
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2002,1,1,0,0,0,0,9,-2,45,1017,5.1,330,0.15
 2002,1,1,1,0,0,0,7,-2,52,1018,2.6,330,0.15
 2002,1,1,2,0,0,0,7,-3,48,1018,4.1,320,0.15

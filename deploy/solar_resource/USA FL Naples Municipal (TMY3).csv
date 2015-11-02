@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,722038,Naples Municipal,FL,USA,26.150000,-81.767000,-5,3
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2000,1,1,0,0,0,0,17,12,72,1013,0,0,0.15
 2000,1,1,1,0,0,0,16,11,72,1013,0,0,0.15
 2000,1,1,2,0,0,0,15,11,77,1013,0,0,0.15

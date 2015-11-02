@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,724585,Russell Municipal Ap,KS,USA,38.883000,-98.817000,-6,566
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2004,1,1,0,0,0,0,0.6,-5,63,945,2.1,150,0.21
 2004,1,1,1,0,0,0,1.1,-3.9,67,945,3.6,180,0.21
 2004,1,1,2,0,0,0,1.1,-3.3,70,944,4.1,170,0.21

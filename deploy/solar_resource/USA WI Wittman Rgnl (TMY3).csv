@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,726456,Wittman Rgnl,WI,USA,43.983000,-88.550000,-6,253
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1997,1,1,0,0,0,0,0,-1,92,987,7.2,200,0.16
 1997,1,1,1,0,0,0,-1,-1,100,986,8.7,200,0.16
 1997,1,1,2,0,0,0,-1,-1,100,985,7.2,220,0.16

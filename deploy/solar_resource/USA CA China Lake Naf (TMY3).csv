@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,746120,China Lake Naf,CA,USA,35.683000,-117.683000,-8,677
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2002,1,1,0,0,0,0,-0.7,-0.7,100,940,0.9,90,0.21
 2002,1,1,1,0,0,0,-1.8,-1.8,100,940,1.4,290,0.21
 2002,1,1,2,0,0,0,-3.5,-3.5,100,940,0.9,90,0.21

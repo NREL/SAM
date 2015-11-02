@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,727452,Crookston Muni Fld,MN,USA,47.850000,-96.617000,-6,273
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2002,1,1,0,0,0,0,-16.7,-18.4,85,981,1.5,290,0.5
 2002,1,1,1,0,0,0,-16.2,-18.4,81,981,0,0,0.5
 2002,1,1,2,0,0,0,-17.3,-18.9,86,981,2,210,0.5

@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,726590,Aberdeen Regional Arpt,SD,USA,45.450000,-98.417000,-6,398
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2005,1,1,0,0,0,0,-13.3,-16.7,73,979,5.7,50,0.42
 2005,1,1,1,0,0,0,-13.9,-17.2,74,978,5.7,50,0.42
 2005,1,1,2,0,0,0,-14.4,-17.2,77,978,6.7,60,0.42

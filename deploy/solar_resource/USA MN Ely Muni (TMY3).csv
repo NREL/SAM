@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,727459,Ely Muni,MN,USA,47.817000,-91.833000,-6,455
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1996,1,1,0,0,0,0,-8.9,-10.6,86,960,2,40,0.3
 1996,1,1,1,0,0,0,-9.5,-10.6,91,960,2.5,40,0.3
 1996,1,1,2,0,0,0,-9.5,-11.2,86,960,2.5,50,0.3

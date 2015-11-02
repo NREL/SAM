@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,727477,Roseau Muni (awos),MN,USA,48.850000,-95.700000,-6,323
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1998,1,1,0,0,0,0,-9.7,-10.3,95,975,11.1,180,0.59
 1998,1,1,1,0,0,0,-10.6,-12.1,87,975,12,170,0.59
 1998,1,1,2,0,0,0,-12.4,-12.9,96,975,11.3,170,0.59

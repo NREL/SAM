@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,722535,San Antonio Kelly Field Afb,TX,USA,29.383000,-98.583000,-6,208
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1997,1,1,0,0,0,0,17,16,94,993,2.1,100,0.18
 1997,1,1,1,0,0,0,18,17,94,993,1.5,60,0.18
 1997,1,1,2,0,0,0,17,17,100,992,1,60,0.18

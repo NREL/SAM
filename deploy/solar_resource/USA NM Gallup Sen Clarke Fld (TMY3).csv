@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,723627,Gallup Sen Clarke Fld,NM,USA,35.517000,-108.783000,-7,1971
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2000,1,1,0,0,0,0,4,2,87,799,3.1,200,0.33
 2000,1,1,1,0,0,0,3,1,87,798,2.6,190,0.33
 2000,1,1,2,0,0,0,1,0,93,798,1.5,190,0.33

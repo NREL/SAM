@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,725724,Provo Muni (awos),UT,USA,40.217000,-111.717000,-7,1369
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1999,1,1,0,0,0,0,0.3,-1.7,85,861,3.2,30,0.54
 1999,1,1,1,0,0,0,0.4,-1.6,85,861,3.5,280,0.54
 1999,1,1,2,0,0,0,1.5,-1.5,79,861,1.4,130,0.54

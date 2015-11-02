@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,703870,Wrangell,AK,USA,56.483000,-132.367000,-9,13
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2004,1,1,0,0,0,0,1,-4,67,1011,1.5,110,0.26
 2004,1,1,1,0,0,0,1,-4,67,1011,6.2,100,0.26
 2004,1,1,2,0,0,0,1,-6,56,1011,6.2,90,0.26

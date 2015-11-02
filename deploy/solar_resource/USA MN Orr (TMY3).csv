@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,726544,Orr,MN,USA,48.017000,-92.867000,-6,397
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1996,1,1,0,0,0,0,-8.4,-9.5,91,966,0,0,0.37
 1996,1,1,1,0,0,0,-8.9,-10,91,966,0,0,0.37
 1996,1,1,2,0,0,0,-8.9,-10,91,966,0,0,0.37

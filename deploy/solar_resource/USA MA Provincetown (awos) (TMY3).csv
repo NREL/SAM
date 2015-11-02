@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,725073,Provincetown (awos),MA,USA,42.067000,-70.217000,-5,2
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2000,1,1,0,0,0,0,0,-5,66,1013,4.1,260,0.15
 2000,1,1,1,0,0,0,0,-6,60,1013,3.6,260,0.15
 2000,1,1,2,0,0,0,0,-6,60,1013,3.6,250,0.15

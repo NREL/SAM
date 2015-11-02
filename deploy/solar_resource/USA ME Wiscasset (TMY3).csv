@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,727135,Wiscasset,ME,USA,43.967000,-69.717000,-5,21
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2002,1,1,0,0,0,0,-6,-9,77,1010,1.5,250,0.15
 2002,1,1,1,0,0,0,-7,-9,84,1010,0.8,250,0.15
 2002,1,1,2,0,0,0,-9,-10,92,1010,0.6,250,0.15

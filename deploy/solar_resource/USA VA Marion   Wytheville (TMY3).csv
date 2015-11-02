@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,724056,Marion   Wytheville,VA,USA,36.900000,-81.350000,-5,780
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2000,1,1,0,0,0,0,-1,-4,78,924,0,0,0.17
 2000,1,1,1,0,0,0,1,-2,79,924,0,0,0.17
 2000,1,1,2,0,0,0,3,-2,68,924,0,0,0.17

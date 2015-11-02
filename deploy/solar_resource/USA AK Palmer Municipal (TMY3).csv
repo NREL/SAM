@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,702740,Palmer Municipal,AK,USA,61.600000,-149.083000,-9,71
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2001,1,1,0,0,0,0,0,-3,78,995,5.1,10,0.55
 2001,1,1,1,0,0,0,-1,-4,78,995,5.1,360,0.55
 2001,1,1,2,0,0,0,-1,-4,78,995,5.1,360,0.55

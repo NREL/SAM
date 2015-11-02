@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,725705,Vernal,UT,USA,40.433000,-109.517000,-7,1608
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1999,1,1,0,0,0,0,-3,-4,92,829,1.5,90,0.4
 1999,1,1,1,0,0,0,-3,-4,92,830,0,0,0.4
 1999,1,1,2,0,0,0,-3,-4,92,831,0,0,0.4

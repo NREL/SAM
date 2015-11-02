@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,726985,Portland Troutdale,OR,USA,45.550000,-122.400000,-8,11
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2001,1,1,0,0,0,0,4,2,87,1024,5.7,70,0.3
 2001,1,1,1,0,0,0,4,2,87,1026,0,0,0.3
 2001,1,1,2,0,0,0,4,2,87,1026,2.1,50,0.3

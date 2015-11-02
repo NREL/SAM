@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,724666,Denver Centennial [golden - Nrel],CO,USA,39.742000,-105.179000,-7,1829
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1999,1,1,0,0,0,0,-3,-4,92,806,0,0,0.33
 1999,1,1,1,0,0,0,-3,-6,77,806,2.1,170,0.33
 1999,1,1,2,0,0,0,-4,-7,77,807,1.5,250,0.33

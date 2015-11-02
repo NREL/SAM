@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,727937,Snohomish Co,WA,USA,47.900000,-122.283000,-8,189
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2003,1,1,0,0,0,0,5,2,81,996,3.6,120,0.35
 2003,1,1,1,0,0,0,6,1,70,997,5.7,120,0.35
 2003,1,1,2,0,0,0,6,2,75,997,4.1,150,0.35

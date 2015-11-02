@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,722225,Pensacola Forest Sherman Nas,FL,USA,30.350000,-87.317000,-6,10
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2004,1,1,0,0,0,0,8,7,93,1027,1.5,30,0.16
 2004,1,1,1,0,0,0,5,4.5,97,1027,0.8,20,0.16
 2004,1,1,2,0,0,0,2,2,100,1026,0,0,0.16

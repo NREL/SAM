@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,727455,Hibbing Chisholm-hibbing Ap,MN,USA,47.383000,-92.850000,-6,411
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2005,1,1,0,0,0,0,-15,-17.2,81,977,3,230,0.48
 2005,1,1,1,0,0,0,-15,-17.2,81,978,3.6,210,0.48
 2005,1,1,2,0,0,0,-15,-17.2,81,980,3.9,210,0.48

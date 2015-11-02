@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,701718,Ambler,AK,USA,67.100000,-157.850000,-9,88
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1991,1,1,0,0,0,0,-31.2,-34.7,69,1003,0,0,0.63
 1991,1,1,1,0,0,0,-31.2,-34.7,69,1003,0,0,0.63
 1991,1,1,2,0,0,0,-31.3,-35.3,65,1003,0,0,0.63

@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,727923,Hoquiam Ap,WA,USA,46.983000,-123.933000,-8,4
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2004,1,1,0,0,0,0,0.6,0.6,100,1005,4.1,40,0.19
 2004,1,1,1,0,0,0,0.6,0.6,100,1005,3.6,60,0.19
 2004,1,1,2,0,0,0,1.1,1.1,100,1003,3.6,60,0.19

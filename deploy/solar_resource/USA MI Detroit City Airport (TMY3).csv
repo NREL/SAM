@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,725375,Detroit City Airport,MI,USA,42.400000,-83.000000,-5,190
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2005,1,1,0,0,0,0,5.6,-1.1,61,1000,3.6,290,0.17
 2005,1,1,1,0,0,0,3.9,-3.3,57,1001,4.1,290,0.17
 2005,1,1,2,0,0,0,2.2,-4.4,59,1002,3.6,320,0.17

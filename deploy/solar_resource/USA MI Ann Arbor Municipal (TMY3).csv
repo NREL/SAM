@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,725374,Ann Arbor Municipal,MI,USA,42.217000,-83.750000,-5,256
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1997,1,1,0,0,0,0,-6,-7,92,983,2.6,50,0.17
 1997,1,1,1,0,0,0,-6,-7,92,983,3.7,250,0.17
 1997,1,1,2,0,0,0,-7,-8,92,983,3.9,210,0.17

@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,724396,Quincy Muni Baldwin Fld,IL,USA,39.933000,-91.200000,-6,233
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2001,1,1,0,0,0,0,-14,-16,83,999,0,0,0.18
 2001,1,1,1,0,0,0,-13.3,-16.1,77,1000,2.1,190,0.18
 2001,1,1,2,0,0,0,-13.3,-15.6,81,1000,0,0,0.18

@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,722406,Houma-terrebonne,LA,USA,29.567000,-90.667000,-6,3
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2001,1,1,0,0,0,0,2.7,-0.7,78,1013,3.2,40,0.12
 2001,1,1,1,0,0,0,2.7,-0.7,78,1013,3.6,30,0.12
 2001,1,1,2,0,0,0,2.8,-0.8,77,1013,4,20,0.12

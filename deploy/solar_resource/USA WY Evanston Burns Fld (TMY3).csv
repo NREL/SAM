@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,725775,Evanston Burns Fld,WY,USA,41.283000,-111.033000,-7,2183
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2001,1,1,0,0,0,0,-6,-9,77,782,5.7,230,0.54
 2001,1,1,1,0,0,0,-7,-9,84,781,6.2,230,0.54
 2001,1,1,2,0,0,0,-7,-9,84,781,4.1,200,0.54

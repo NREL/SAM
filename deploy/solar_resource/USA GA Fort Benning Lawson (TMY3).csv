@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,722250,Fort Benning Lawson,GA,USA,32.350000,-85.000000,-6,88
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1994,1,1,0,0,0,0,-4.5,-5.6,91,1018,0,0,0.16
 1994,1,1,1,0,0,0,-2.8,-5,83,1018,0,0,0.16
 1994,1,1,2,0,0,0,-2.8,-3.9,91,1018,0.5,330,0.16

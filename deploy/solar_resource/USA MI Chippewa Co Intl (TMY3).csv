@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,727344,Chippewa Co Intl,MI,USA,46.250000,-84.467000,-5,250
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1997,1,1,0,0,0,0,-16.1,-20.8,64,983,2,230,0.19
 1997,1,1,1,0,0,0,-16.8,-21.4,65,983,1.6,280,0.19
 1997,1,1,2,0,0,0,-16.8,-21.4,65,983,1.8,340,0.19

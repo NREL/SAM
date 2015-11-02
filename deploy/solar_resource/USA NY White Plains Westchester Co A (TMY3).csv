@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,725037,White Plains Westchester Co A,NY,USA,41.067000,-73.717000,-5,122
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2003,1,1,0,0,0,0,7,2,70,997,2.6,300,0.16
 2003,1,1,1,0,0,0,7,2,70,999,2.1,280,0.16
 2003,1,1,2,0,0,0,7,2,70,999,2.1,280,0.16

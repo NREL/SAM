@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,725765,Riverton Municipl Ap,WY,USA,43.050000,-108.450000,-7,1663
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1998,1,1,0,0,0,0,-3,-7,71,826,4.6,240,0.54
 1998,1,1,1,0,0,0,-2,-8,60,826,3.1,190,0.54
 1998,1,1,2,0,0,0,-2,-7,65,826,6.7,260,0.54

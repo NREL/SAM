@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,722045,Vero Beach Municipal Arpt,FL,USA,27.650000,-80.417000,-5,7
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1998,1,1,0,0,0,0,9,-1,49,1030,4.6,320,0.15
 1998,1,1,1,0,0,0,8,0,57,1030,4.1,320,0.15
 1998,1,1,2,0,0,0,7,-2,52,1030,4.6,310,0.15

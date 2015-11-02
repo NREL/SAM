@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,724115,Hot Springs Ingalls,VA,USA,37.950000,-79.833000,-5,1156
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2005,1,1,0,0,0,0,8,8,100,883,6.7,280,0.17
 2005,1,1,1,0,0,0,8,8,100,883,7.2,270,0.17
 2005,1,1,2,0,0,0,8,8,100,883,6.7,280,0.17

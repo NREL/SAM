@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,726468,Phillips Price Co.,WI,USA,45.700000,-90.400000,-6,449
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2005,1,1,0,0,0,0,-11,-12,91,961,0,0,0.39
 2005,1,1,1,0,0,0,-11,-12,91,961,1.5,240,0.39
 2005,1,1,2,0,0,0,-12,-12,100,961,0,0,0.39

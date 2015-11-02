@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,747320,Holloman Afb,NM,USA,32.850000,-106.100000,-7,1248
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1997,1,1,0,0,0,0,6,-4,47,878,2.1,90,0.21
 1997,1,1,1,0,0,0,6,-4,47,877,2.1,50,0.21
 1997,1,1,2,0,0,0,5,-4,50,877,1.5,40,0.21

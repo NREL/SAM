@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,722053,Orlando Executive Ap,FL,USA,28.550000,-81.333000,-5,33
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2001,1,1,0,0,0,0,2,-3,67,1024,2.1,330,0.15
 2001,1,1,1,0,0,0,2,-4,62,1023,2.6,330,0.15
 2001,1,1,2,0,0,0,2,-5,57,1023,1.5,350,0.15

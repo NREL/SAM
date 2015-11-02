@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,723870,Mercury Desert Rock Ap [surfrad],NV,USA,36.630000,-116.020000,-8,935
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1998,1,1,0,0,0,0,8,-3,44,903,2.6,10,0.23
 1998,1,1,1,0,0,0,6,-3,51,904,2.6,20,0.23
 1998,1,1,2,0,0,0,5,-3,55,903,0,0,0.23

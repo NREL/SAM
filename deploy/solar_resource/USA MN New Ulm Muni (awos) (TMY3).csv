@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,726567,New Ulm Muni (awos),MN,USA,44.317000,-94.500000,-6,308
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1995,1,1,0,0,0,0,-14.5,-15.6,90,977,3,240,0.42
 1995,1,1,1,0,0,0,-16.2,-17.3,90,977,4.1,250,0.42
 1995,1,1,2,0,0,0,-14.5,-15.6,90,977,4.1,260,0.42

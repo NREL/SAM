@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,723546,Ponca City Municipal Ap [sgp - Arm],OK,USA,36.610000,-97.490000,-6,318
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2002,1,1,0,0,0,0,-6.1,-10,71,989,0,0,0.19
 2002,1,1,1,0,0,0,-6.7,-10.6,71,989,0,0,0.19
 2002,1,1,2,0,0,0,-7.8,-11.1,75,990,0,0,0.19

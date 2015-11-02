@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,727856,Felts Fld,WA,USA,47.683000,-117.317000,-8,610
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2002,1,1,0,0,0,0,-4,-6,84,953,2.8,360,0.53
 2002,1,1,1,0,0,0,-4,-6,84,953,2.7,340,0.53
 2002,1,1,2,0,0,0,-6,-7,92,953,2.5,310,0.53

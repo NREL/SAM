@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,723540,Oklahoma City Tinker Afb,OK,USA,35.417000,-97.383000,-6,384
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2005,1,1,0,0,0,0,15,15,100,971,4.6,160,0.19
 2005,1,1,1,0,0,0,16,16,100,971,6.7,160,0.19
 2005,1,1,2,0,0,0,16,16,100,972,5.7,170,0.19

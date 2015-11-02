@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,722448,Tyler Pounds Fld,TX,USA,32.350000,-95.400000,-6,166
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1995,1,1,0,0,0,0,6.2,5.4,95,991,2.8,340,0.18
 1995,1,1,1,0,0,0,5.7,4.8,94,991,3.3,340,0.18
 1995,1,1,2,0,0,0,5.3,4.4,94,990,3.9,330,0.18

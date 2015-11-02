@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,725124,Butler Co. (awos),PA,USA,40.783000,-79.950000,-5,380
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2005,1,1,0,0,0,0,11,9,87,968,2.6,240,0.18
 2005,1,1,1,0,0,0,11,9,87,968,4.1,250,0.18
 2005,1,1,2,0,0,0,11,8,82,968,2.6,250,0.18

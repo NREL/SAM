@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,722210,Valparaiso Elgin Afb,FL,USA,30.483000,-86.517000,-6,20
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2001,1,1,0,0,0,0,-2,-6,71,1024,2.1,350,0.16
 2001,1,1,1,0,0,0,-1,-6,66,1025,3.6,350,0.16
 2001,1,1,2,0,0,0,-1,-6,66,1025,4.6,340,0.16

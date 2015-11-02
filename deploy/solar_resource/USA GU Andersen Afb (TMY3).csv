@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,912180,Andersen Afb,GU,USA,13.567000,144.917000,10,162
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1991,1,1,0,0,0,0,25.6,22.2,82,995,6.7,60,0.13
 1991,1,1,1,0,0,0,24.8,21.9,84,995,6.4,60,0.13
 1991,1,1,2,0,0,0,24.6,21.8,84,995,6.4,60,0.13

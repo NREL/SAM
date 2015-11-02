@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,722547,Georgetown (awos),TX,USA,30.683000,-97.683000,-6,240
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1996,1,1,0,0,0,0,12.2,7.7,74,985,2,180,0.18
 1996,1,1,1,0,0,0,13.8,10,78,985,2.5,170,0.18
 1996,1,1,2,0,0,0,12.7,10.5,86,985,3.6,170,0.18

@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,703620,Skagway Airport,AK,USA,59.467000,-135.300000,-9,9
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2002,1,1,0,0,0,0,0.6,-8.3,47,1015,9.3,50,0.55
 2002,1,1,1,0,0,0,0.6,-8.9,45,1014,9.8,50,0.55
 2002,1,1,2,0,0,0,0.6,-8.9,45,1013,11.3,50,0.55

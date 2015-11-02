@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,701195,Shishmaref (awos),AK,USA,66.267000,-166.050000,-9,2
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 2003,1,1,0,0,0,0,-22,-25,74,1013,4.6,280,0.69
 2003,1,1,1,0,0,0,-21,-24,75,1013,5.1,290,0.69
 2003,1,1,2,0,0,0,-21,-24,75,1013,4.6,290,0.69

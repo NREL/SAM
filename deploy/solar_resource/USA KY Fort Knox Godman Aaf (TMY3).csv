@@ -1,6 +1,6 @@
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation
 TMY3,724240,Fort Knox Godman Aaf,KY,USA,37.900000,-85.967000,-5,239
-Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Twet,RH,Pres,Wspd,Wdir,Albedo
+Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo
 1999,1,1,0,0,0,0,-10,-12,84,996,1,290,0.18
 1999,1,1,1,0,0,0,-12,-13,91,996,1.5,310,0.18
 1999,1,1,2,0,0,0,-12,-13,91,996,1.5,40,0.18
