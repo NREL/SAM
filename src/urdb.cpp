@@ -373,7 +373,8 @@ bool OpenEI::RetrieveUtilityRateData(const wxString &guid, RateData &rate, wxStr
 	rate.Header.DemandComments = json_string(val.Item("demandcomments"));
 	rate.Header.BasicInformationComments = json_string(val.Item("demandcomments"));
 	rate.Header.JSONURL = url;
-	rate.Header.RateURL = "http://en.openei.org/apps/USURDB/rate/view/" + guid; 
+//	rate.Header.RateURL = "http://en.openei.org/apps/USURDB/rate/view/" + guid;
+	rate.Header.RateURL = "http://en.openei.org/apps/IURDB/rate/view/" + guid;
 
 	rate.StartDate = json_string(val.Item("startdate"));
 	rate.EndDate = json_string(val.Item("enddate"));
@@ -932,7 +933,8 @@ void OpenEIUtilityRateDialog::UpdateRateData()
 			*/
 			txtRateDescription->SetValue( desc );
 			
-			wxString rate_url = "http://en.openei.org/apps/USURDB/rate/view/" + guid;
+//			wxString rate_url = "http://en.openei.org/apps/USURDB/rate/view/" + guid;
+			wxString rate_url = "http://en.openei.org/apps/IURDB/rate/view/" + guid;
 
 			hypOpenEILink->SetURL(rate_url);
 			hypJSONLink->SetURL(json_url);
