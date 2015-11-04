@@ -1619,8 +1619,8 @@ void AFDataMatrixCtrl::MatrixToGrid()
 	}
 	else
 	{
-		m_grid->SetRowLabelSize( 0 );
-		m_grid->SetColLabelSize( 0 );
+		m_grid->SetRowLabelSize( 1 );
+		m_grid->SetColLabelSize( 1 );
 	}
 
 	if ( m_showColLabels )
