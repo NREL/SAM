@@ -660,6 +660,29 @@ bool Simulation::InvokeWithHandler( ISimulationHandler *ih )
 						m_outputUnits[ name ] = units;
 					}		
 				}
+				else if ((var_type == SSC_OUTPUT || var_type == SSC_INOUT) && data_type == SSC_MATRIX)
+				{
+					int nr, nc;
+					if (ssc_number_t *varr = ssc_data_get_matrix(p_data, name, &nr, &nc))
+					{
+						m_outputList.Add(name);
+						VarValue *vv = m_outputs.Create(name, VV_MATRIX);
+						matrix_t<float> ff(nr, nc);
+
+						int count = 0;
+						for (int i = 0; i < nr; i++)
+						{
+							for (int j = 0; j < nc; j++)
+							{
+								ff(i, j) = (float)(varr[count]);
+								count++;
+							}
+						}
+						vv->Set(ff);
+						m_outputLabels[name] = label;
+						m_outputUnits[name] = units;
+					}
+				}
 			}
 		}
 
@@ -680,20 +703,24 @@ bool Simulation::InvokeWithHandler( ISimulationHandler *ih )
 
 }
 
-void Simulation::ListByCount( size_t n, wxArrayString &list )
+void Simulation::ListByCount( size_t nr, size_t nc, wxArrayString &list )
 {
 	VarTable &vt = Outputs();
-	for ( VarTable::iterator it = vt.begin();
-		it != vt.end();
-		++it )
+	for ( VarTable::iterator it = vt.begin(); it != vt.end(); ++it )
 	{
-		size_t len = 0;
+		size_t nrows, ncols;
+		nrows = 1; ncols = 1;
 		if ( it->second->Type() == VV_NUMBER )
-			len = 1;
+			nrows = 1;
 		else if ( it->second->Type() == VV_ARRAY )
-			len = it->second->Length();
+			nrows = it->second->Length();
+		else if (it->second->Type() == VV_MATRIX)
+		{
+			nrows = it->second->Rows();
+			ncols = it->second->Columns();
+		}
 
-		if ( len == n )
+		if ( nr == nrows && nc == ncols )
 			list.Add( it->first );
 	}
 }
@@ -711,37 +738,46 @@ wxArrayString Simulation::GetAllMessages()
 	return list;
 }
 
-void Simulation::GetVariableLengths( std::vector<size_t> &varlengths )
+void Simulation::GetVariableLengths( std::vector<ArraySize> &sizes )
 {	
-	varlengths.clear();
+	sizes.clear();
 	
+
 	VarTable &vt = Outputs();
 	if( vt.size() == 0 ) return;
 	
 	bool has_single_value = false;
-	for ( VarTable::iterator it = vt.begin();
-		it != vt.end();
-		++it )
+	ArraySize tmp;
+
+	for (VarTable::iterator it = vt.begin(); it != vt.end(); ++it)
 	{
-		if ( it->second->Type() == VV_ARRAY )
+		if (it->second->Type() == VV_ARRAY)
 		{
 			size_t n = 0;
-			float *f = it->second->Array( &n );
-
-			if ( n > 1 && std::find( varlengths.begin(), varlengths.end(), n ) == varlengths.end() )
-				varlengths.push_back( n );
+			float *f = it->second->Array(&n);
+			tmp.n_rows = n; tmp.n_cols = 1;
+			if (n > 1 && std::find(sizes.begin(), sizes.end(), tmp) == sizes.end())
+				sizes.push_back(tmp);	
 		}
-		else if ( it->second->Type() == VV_NUMBER )
+		else if (it->second->Type() == VV_NUMBER)
 			has_single_value = true;
+		else if (it->second->Type() == VV_MATRIX)
+		{
+			float *f = it->second->Matrix(&tmp.n_rows, &tmp.n_cols);
+			if (tmp.n_rows > 1 && tmp.n_cols > 1 && std::find(sizes.begin(), sizes.end(), tmp) == sizes.end())
+				sizes.push_back(tmp);
+		}
 	}
 
-	if ( has_single_value ) 
-		varlengths.push_back( 1 );
-
+	if (has_single_value)
+	{
+		tmp.n_rows = tmp.n_cols = 1;
+		sizes.push_back(tmp);
+	}
+	
 	// sort variable lengths
-	std::stable_sort( varlengths.begin(), varlengths.end() );
+	std::stable_sort(sizes.begin(),sizes.end(), SortByRow());
 }
-
 
 bool Simulation::ListAllOutputs( ConfigInfo *cfg, 
 	wxArrayString *names, 

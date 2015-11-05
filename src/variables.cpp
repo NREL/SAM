@@ -547,7 +547,18 @@ size_t VarValue::Length()
 	if ( m_type == VV_ARRAY ) return m_val.length();
 	else return 0;
 }
-
+size_t VarValue::Rows()
+{
+	if (m_type == VV_ARRAY || m_type == VV_MATRIX) return m_val.nrows();
+	else if (m_type == VV_NUMBER) return 1;
+	else return 0;
+}
+size_t VarValue::Columns()
+{
+	if (m_type == VV_ARRAY || m_type == VV_MATRIX) return m_val.ncols();
+	else if (m_type == VV_NUMBER) return 1;
+	else return 0;
+}
 float *VarValue::Array( size_t *n )
 {
 	if ( m_type == VV_ARRAY )

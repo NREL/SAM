@@ -102,6 +102,8 @@ public:
 	float *Array( size_t *n );
 	std::vector<float> Array();
 	size_t Length();
+	size_t Rows(); 
+	size_t Columns();
 	std::vector<int> IntegerArray();
 	::matrix_t<float> &Matrix();
 	float *Matrix( size_t *nr, size_t *nc );
@@ -213,4 +215,36 @@ public:
 	virtual bool special_get( const lk_string &name, lk::vardata_t &val );
 };
 
+struct ArraySize
+{
+	size_t n_rows;
+	size_t n_cols;
+
+	bool operator==(const ArraySize& x) const{
+		return x.n_rows == n_rows && x.n_cols == n_cols;
+	}
+};
+struct SortByRow
+{
+	bool operator()(ArraySize const  &a, ArraySize const &b)
+	{
+		return a.n_rows < b.n_rows;
+	}
+};
+struct ArraySizeKey
+{
+	size_t n_rows;
+	size_t n_cols;
+	int key;
+
+	bool operator==(const ArraySizeKey& x) const{
+		return x.n_rows == n_rows && x.n_cols == n_cols && x.key == key;
+	}
+};
+struct ArraySizeKeyCompare
+{
+	bool operator()(const ArraySizeKey& x, const ArraySizeKey& y){
+		return std::tie(x.n_rows, x.n_cols, x.key) < std::tie(y.n_rows, y.n_cols, y.key);
+	}
+};
 #endif
