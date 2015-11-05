@@ -11,6 +11,10 @@
 #include "object.h"
 #include "case.h"
 
+#include <map>
+#include <vector>
+#include <tuple>
+
 class wxSearchCtrl;
 class wxDVSelectionListCtrl;
 class CaseWindow;
@@ -56,6 +60,7 @@ class LossDiagramCtrl;
 void PopulateSelectionList(wxDVSelectionListCtrl *sel, wxArrayString *names, Simulation *results);
 void UpdateSelectionList(wxDVSelectionListCtrl *sel, wxArrayString *names, Simulation *results, wxString srch, wxArrayString &selected);
 
+static std::map<wxString, wxString> group_by_name;
 
 class ResultsCallbackContext  : public CaseCallbackContext
 {
@@ -123,7 +128,6 @@ public:
 	void SetDViewState( wxDVPlotCtrlSettings &settings );
 
 	TabularBrowser *GetTabularBrowser() { return m_tables; }
-
 	wxString GetCurrentContext() const;
 	
 private:	
@@ -204,18 +208,29 @@ public:
 	void UpdateAll();
 	void UpdateDisplayed(wxString &srch);
 	void GetTextData(wxString &dat, char sep);
-
-	wxArrayString GetSelectedVariables();
-	void SelectVariables( const wxArrayString &list );
 	
+	wxArrayString GetSelectedVariables();
+	void SelectVariables(const wxArrayString &list);
 
 private:	
 	Simulation *m_sim;
 
 	void OnCommand(wxCommandEvent &evt);
 	void OnVarSel(wxCommandEvent &evt);
-	void UpdateGrid();
+	void OnPageChanged(wxBookCtrlEvent& event);
+	void UpdateNotebook();
+	void UpdateGridSpecific(wxExtGridCtrl*& grid, ResultsTable*& grid_table, wxArrayString selected_vars, bool show_grid);
 	
+	wxNotebook *m_notebook;
+	std::map<ArraySizeKey, wxExtGridCtrl*, ArraySizeKeyCompare> m_grid_map;
+	std::map<ArraySizeKey, ResultsTable*, ArraySizeKeyCompare> m_gridTable_map;
+	std::map<ArraySizeKey, wxArrayString, ArraySizeKeyCompare> m_selectedVars_map;
+	std::map<wxString, ArraySizeKey> m_selectedVarsWithSize;
+	std::map<ArraySizeKey, size_t, ArraySizeKeyCompare> m_pageBySize;
+
+	size_t m_lastPageSelected;
+	ArraySizeKey m_lastSize;
+
 	wxExtGridCtrl *m_grid;
 	ResultsTable *m_gridTable;
 	wxDVSelectionListCtrl *m_varSel;
@@ -224,6 +239,8 @@ private:
 	wxArrayString m_names;
 	wxArrayString m_selectedVars;
 	
+	int m_key;
+
 	DECLARE_EVENT_TABLE()
 };
 

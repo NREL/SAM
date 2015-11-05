@@ -81,9 +81,9 @@ public:
 
 	VarTable *GetInputVarTable() { return &m_inputs; }
 	
-	void ListByCount( size_t n, wxArrayString &list );
-	void GetVariableLengths( std::vector<size_t> &varlengths );
-	
+	void ListByCount( size_t nr, size_t nc, wxArrayString &list );
+	void GetVariableLengths( std::vector<ArraySize> & sizes );
+
 	// prepares and runs simulation
 	bool Invoke(bool silent=false, bool prepare=true);
 	
@@ -201,6 +201,4 @@ private:
 	ThreadProgressDialog *m_tpd;
 	wxFrame *m_transp;
 };
-
-
 #endif
