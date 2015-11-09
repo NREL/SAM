@@ -628,6 +628,7 @@ bool Simulation::InvokeWithHandler( ISimulationHandler *ih )
 				const char *name = ssc_info_name( p_inf ); // assumed to be non-null
 				wxString label( ssc_info_label( p_inf ) );
 				wxString units( ssc_info_units( p_inf ) );
+				wxString ui_hint(ssc_info_uihint(p_inf));
 				
 				if ( (var_type == SSC_OUTPUT || var_type == SSC_INOUT ) && data_type == SSC_NUMBER )
 				{
@@ -667,6 +668,10 @@ bool Simulation::InvokeWithHandler( ISimulationHandler *ih )
 					{
 						m_outputList.Add(name);
 						VarValue *vv = m_outputs.Create(name, VV_MATRIX);
+
+						if (!ui_hint.IsEmpty())
+							vv->SetUIHint(ui_hint);
+
 						matrix_t<float> ff(nr, nc);
 
 						int count = 0;

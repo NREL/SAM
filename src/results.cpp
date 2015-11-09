@@ -1624,7 +1624,6 @@ public:
 	bool IsMatrix;
 	std::vector<wxString> MatrixColLabels;
 	std::vector<wxString> MatrixRowLabels;
-	std::vector<wxString> HourTimeOfDay;
 
 	ResultsTable()
 	{
@@ -1632,12 +1631,6 @@ public:
 		MinCount = 0;
 		MaxCount = 0;
 		IsMatrix = false;
-
-		for (int i = 0; i != 2; i++)
-		{
-			for (int j = 0; j != 12; j++)
-				HourTimeOfDay.push_back(wxString::Format("%d%s", (j==0 ? 12 : j), (i == 0 ? "am" : "pm")));
-		}
 	}
 
 	virtual ~ResultsTable()
@@ -1815,17 +1808,23 @@ public:
 					size_t nr, nc;
 					nr = Matrix->nrows(); nc = Matrix->ncols();
 					MaxCount = MinCount = nr;
+					bool write_label = true;;
 
-					//VarInfo *vi = results->GetCase()->Variables().Lookup(vars[i]);
-
-					// assume is hourly output over 24 hours
-					if (nc == 24)
-						MatrixColLabels = HourTimeOfDay;
-					else
+					if (vv->GetUIHint())
+					{
+						std::map<wxString, wxString> hints = vv->GetUIHint()->GetHints();
+						if (hints.find("COL_LABEL") != hints.end())
+						{
+							MatrixColLabels = vv->GetUIHint()->GetLabels("COL_LABEL");
+							write_label = false;
+						}
+					}
+					if (write_label)
 					{
 						for (int jj = 0; jj != nc; jj++)
-							MatrixColLabels.push_back(wxString::Format("%d",jj));
+							MatrixColLabels.push_back(wxString::Format("%d", jj));
 					}
+
 				}
 			}
 		}
