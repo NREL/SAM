@@ -325,7 +325,7 @@ VarValue::VarValue( const wxMemoryBuffer &mb )
 
 VarValue::~VarValue()
 {
-	// nothing to do 
+	if (m_ui_hint){ delete m_ui_hint; }
 }
 
 VarValue &VarValue::operator=( const VarValue &rhs )
@@ -523,6 +523,9 @@ void VarValue::Set( const ::matrix_t<float> &mat ) { m_type = VV_MATRIX; m_val =
 void VarValue::Set( const wxString &str ) { m_type = VV_STRING; m_str = str; }
 void VarValue::Set( const VarTable &tab ) { m_type = VV_TABLE; m_tab.Copy( tab ); }
 void VarValue::Set( const wxMemoryBuffer &mb ) { m_type = VV_BINARY; m_bin = mb; }
+
+void VarValue::SetUIHint(wxString hint){ m_ui_hint = new UIHint(hint); }
+UIHint * VarValue::GetUIHint(){ return m_ui_hint; }
 
 int VarValue::Integer()
 {
@@ -1271,4 +1274,46 @@ bool VarTableScriptInterpreter::special_get( const lk_string &name, lk::vardata_
 //	wxLogStatus("vtsi->special_get( " + name + " ) " + wxString( ok?"ok":"fail") );
 	return ok;
 }
+
+UIHint::UIHint(wxString hints)
+{
+	wxArrayString hint_array;
+	wxString comma = ",";
+	wxString equals = "=";
+	bool process = true;
+
+	while (process)
+	{
+		int comma_ind = hints.Find(comma);
+		if (comma_ind == wxNOT_FOUND)
+		{
+			hint_array.Add(hints);
+			break;
+		}
+		else
+		{
+			hint_array.Add(hints.SubString(0, comma_ind - 1));
+			hints.Remove(0, comma_ind + 1);
+		}
+	}
+
+	for (size_t i = 0; i != hint_array.size(); i++)
+	{
+		int equal_ind = hint_array[i].Find(equals);
+		wxString key = hint_array[i].SubString(0, equal_ind - 1);
+		wxString value = hint_array[i].SubString(equal_ind + 1, hint_array[i].size() - 1);
+		m_hints[key] = value;
+	}
+}
+std::map<wxString, wxString> UIHint::GetHints(){ return m_hints; }
+const std::vector<wxString> UIHint::GetLabels(wxString key)
+{
+	wxString value = m_hints[key];
+	if (!value.compare("MONTHS")){ return UI_MONTHS; }
+	else if (!value.compare("HOURS_OF_DAY")){ return UI_HOUR_TIME_OF_DAY; }
+}
+
+
+const std::vector<wxString> UIHint::UI_HOUR_TIME_OF_DAY = { "12am", "1am", "2am", "3am", "4am", "5am", "6am", "7am", "8am", "9am", "10am", "11am", "12pm", "1pm", "2pm", "3pm", "4pm", "5pm", "6pm", "7pm", "8pm", "9pm", "10pm", "11pm" };
+const std::vector<wxString> UIHint::UI_MONTHS = { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" };
 

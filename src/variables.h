@@ -2,11 +2,15 @@
 #define __variable_h
 
 #include <vector>
+#include <map>
 
 #include <wx/string.h>
 #include <wx/arrstr.h>
 #include <wx/stream.h>
 #include <wx/buffer.h>
+#include <wx/utils.h>
+
+#include <wex/utils.h>
 
 #include <lk_absyn.h>
 #include <lk_eval.h>
@@ -54,6 +58,23 @@ public:
 	bool Read( const wxString &file );
 		
 };
+class UIHint
+{
+private:
+	std::map<wxString, wxString> m_hints;
+
+public:
+	UIHint();
+	UIHint(wxString hints);
+	std::map<wxString, wxString> GetHints();
+	wxString GetHint(wxString);
+	
+	const std::vector<wxString> GetLabels(wxString key);
+
+	// custom definitions for UI strings defined in variables.cpp
+	static const std::vector<wxString>  UI_HOUR_TIME_OF_DAY;
+	static const std::vector<wxString>  UI_MONTHS;			  
+};
 
 class VarValue
 {
@@ -96,6 +117,9 @@ public:
 	void Set( const VarTable &tab );
 	void Set( const wxMemoryBuffer &mb );
 
+	void SetUIHint(wxString hint);
+	UIHint * GetUIHint();
+
 	int Integer();
 	bool Boolean();
 	float Value();
@@ -124,6 +148,7 @@ private:
 	wxString m_str;
 	VarTable m_tab;
 	wxMemoryBuffer m_bin;
+	UIHint * m_ui_hint = 0;
 };
 
 #define VF_NONE                0x00
@@ -214,6 +239,9 @@ public:
 	virtual bool special_set( const lk_string &name, lk::vardata_t &val );
 	virtual bool special_get( const lk_string &name, lk::vardata_t &val );
 };
+
+
+
 
 struct ArraySize
 {
