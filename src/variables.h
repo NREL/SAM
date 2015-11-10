@@ -245,6 +245,8 @@ public:
 
 struct ArraySize
 {
+	ArraySize(){ n_rows = n_cols = 0; }
+
 	size_t n_rows;
 	size_t n_cols;
 
@@ -261,6 +263,7 @@ struct SortByRow
 };
 struct ArraySizeKey
 {
+	ArraySizeKey(){ n_rows = n_cols = key = 0; }
 	size_t n_rows;
 	size_t n_cols;
 	int key;
@@ -271,8 +274,12 @@ struct ArraySizeKey
 };
 struct ArraySizeKeyCompare
 {
-	bool operator()(const ArraySizeKey& x, const ArraySizeKey& y){
-		return std::tie(x.n_rows, x.n_cols, x.key) < std::tie(y.n_rows, y.n_cols, y.key);
+	bool operator()(const ArraySizeKey& x, const ArraySizeKey& y)
+	{
+		if (x.n_rows < y.n_rows && x.n_cols < y.n_cols && x.key < y.key)
+			return true;
+		else
+			return false;
 	}
 };
 #endif
