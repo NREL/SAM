@@ -1614,6 +1614,8 @@ public:
 		size_t N;
 	};
 
+	int Years;
+	int StepsPerHour;
 	bool UseLifetime;
 	size_t MaxCount;
 	size_t MinCount;
@@ -1712,12 +1714,17 @@ public:
 
 	bool IsTimeSeriesShown()
 	{
-		size_t steps_per_hour = MaxCount / 8760;
-		return ( !UseLifetime 
-			&& MinCount == MaxCount 
-			&& steps_per_hour > 0
-			&& steps_per_hour <= 60
-			&& steps_per_hour*8760 == MaxCount );
+		int N = Table[Table.size() - 1]->N;
+		bool lifetime_variable = false;
+
+		if (N == StepsPerHour*Years * 8760)
+			lifetime_variable = true;
+		
+		if (MinCount == MaxCount && MaxCount >= 8760 && MaxCount <= 8760 * Years * 60 && !lifetime_variable)
+			return true;
+		else
+			return false;
+	
 	}
 
 	virtual wxString GetRowLabelValue( int row )
@@ -1754,16 +1761,21 @@ public:
 		Table.clear();
 		MatrixColLabels.clear();
 		MatrixRowLabels.clear();
+		Years = 1;
+		StepsPerHour = 1;
 
 		if ( vars.size() == 0 ) return;
 
 		// don't report geothermal system output as minute data depending on analysis period
 		UseLifetime = false;
 		if ( VarValue *lftm = results->GetValue("system_use_lifetime_output") )
-			if ( lftm->Value() != 0.0f )
+			if (lftm->Value() != 0.0f)
+			{
 				UseLifetime = true;
-
-
+				if (VarValue *vv = results->GetValue("analysis_period"))
+					Years = (int)vv->Value();
+			}
+		
 		MinCount = 10000000;
 		
 		for (size_t i=0;i<vars.size();i++)
@@ -1799,7 +1811,8 @@ public:
 
 					if (cc.N < MinCount)
 						MinCount = cc.N;
-					
+		
+					StepsPerHour = cc.N / (8760 * Years);
 				}
 				else
 				{
