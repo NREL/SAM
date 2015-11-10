@@ -1621,9 +1621,11 @@ public:
 	size_t MinCount;
 	std::vector<ColData*> Table;
 
+	bool IsMatrix;
+	bool IsSingleValues;
+
 	// matrix specific
 	matrix_t<float> * Matrix;
-	bool IsMatrix;
 	std::vector<wxString> MatrixColLabels;
 	std::vector<wxString> MatrixRowLabels;
 
@@ -1633,6 +1635,7 @@ public:
 		MinCount = 0;
 		MaxCount = 0;
 		IsMatrix = false;
+		IsSingleValues = false;
 	}
 
 	virtual ~ResultsTable()
@@ -1647,15 +1650,17 @@ public:
 
     virtual int GetNumberCols()
 	{
-		if (!IsMatrix)
+		if (!IsMatrix && !IsSingleValues)
 			return Table.size();
+		else if (IsSingleValues)
+			return 1;
 		else
 			return Matrix->ncols();
 	}
 
     virtual bool IsEmptyCell( int row, int col )
 	{
-		if (!IsMatrix)
+		if (!IsMatrix && !IsSingleValues)
 		{
 			if (Table.size() == 0 && row == 0 && col == 0) return false;
 
@@ -1669,7 +1674,7 @@ public:
     virtual wxString GetValue( int row, int col )
 	{
 
-		if (!IsMatrix){
+		if (!IsMatrix && !IsSingleValues){
 			if (col >= 0 && col < Table.size() && row >= 0 && row < Table[col]->N)
 			{
 				if (std::isnan(Table[col]->Values[row]))
@@ -1677,9 +1682,8 @@ public:
 				else
 					return wxString::Format("%g", Table[col]->Values[row]);
 			}
-			else return wxEmptyString;
 		}
-		else
+		else if (IsMatrix)
 		{
 			if (col >= 0 && col < Matrix->ncols() && row >= 0 && row < Matrix->nrows())
 			{
@@ -1688,8 +1692,19 @@ public:
 				else
 					return wxString::Format("%g", Matrix->at(row, col));
 			}
-			else return wxEmptyString;
 		}
+		else if (IsSingleValues)
+		{
+			if (col == 0 && row >= 0 && row < Table.size())
+			{
+				if (std::isnan(Table[row]->SingleValue))
+					return "NaN";
+				else
+					return wxString::Format("%g", Table[row]->SingleValue);
+			}
+		}
+	
+		return wxEmptyString;
 	}
 
     virtual void SetValue( int row, int col, const wxString &)
@@ -1701,11 +1716,17 @@ public:
 	{
 		if (!IsMatrix)
 		{
-			if (col >= 0 && col < Table.size())	return Table[col]->Label;
-			else return wxEmptyString;
+			bool IsSingleValue = false;
+			if (Table[Table.size() - 1]->N == 1)
+				IsSingleValue = true;
+
+			if (!IsSingleValue)
+				if (col >= 0 && col < Table.size())	return Table[col]->Label;
+			
+			return wxEmptyString;
 		}
 		else
-		{
+		{			
 			if (col >= 0 && col < Matrix->ncols()) return MatrixColLabels[col];
 			else return wxEmptyString;
 		}
@@ -1714,17 +1735,20 @@ public:
 
 	bool IsTimeSeriesShown()
 	{
-		int N = Table[Table.size() - 1]->N;
-		bool lifetime_variable = false;
+		bool ret_code = false;
 
-		if (N == StepsPerHour*Years * 8760)
-			lifetime_variable = true;
-		
-		if (MinCount == MaxCount && MaxCount >= 8760 && MaxCount <= 8760 * Years * 60 && !lifetime_variable)
-			return true;
-		else
-			return false;
-	
+		if (!IsMatrix && !IsSingleValues)
+		{
+			int N = Table[Table.size() - 1]->N;
+			bool lifetime_variable = false;
+
+			if (N == StepsPerHour*Years * 8760 && UseLifetime)
+				lifetime_variable = true;
+
+			if (MinCount == MaxCount && MaxCount >= 8760 && MaxCount <= 8760 * Years * 60 && !lifetime_variable)
+				ret_code = true;
+		}
+		return ret_code;
 	}
 
 	virtual wxString GetRowLabelValue( int row )
@@ -1737,6 +1761,8 @@ public:
 				double steps_per_hour = MaxCount / 8760.0;
 				return wxFormatTime(row, steps_per_hour, true);
 			}
+			else if (IsSingleValues)
+				return (Table[row]->Label);
 		}
 		else
 		{
@@ -1787,13 +1813,6 @@ public:
 					Table.push_back(new ColData());
 					ColData &cc = *Table[Table.size() - 1];
 
-					cc.Label = vars[i];
-					wxString label = results->GetLabel(vars[i]);
-					if (!label.IsEmpty()) cc.Label = label;
-
-					wxString units = results->GetUnits(vars[i]);
-					if (!units.IsEmpty()) cc.Label += "\n(" + units + ")";
-
 					cc.Values = 0;
 					cc.N = 1;
 				
@@ -1804,6 +1823,9 @@ public:
 						cc.SingleValue = vv->Value();
 						cc.Values = &cc.SingleValue;
 						cc.N = 1;
+						IsSingleValues = true;
+						MaxCount++;
+						MinCount++;
 					}
 
 					if (cc.N > MaxCount)
@@ -1813,6 +1835,17 @@ public:
 						MinCount = cc.N;
 		
 					StepsPerHour = cc.N / (8760 * Years);
+
+					cc.Label = vars[i];
+					wxString label = results->GetLabel(vars[i]);
+					if (!label.IsEmpty()) cc.Label = label;
+
+					wxString units = results->GetUnits(vars[i]);
+					if (!units.IsEmpty())
+					{
+						if (!IsSingleValues) cc.Label += "\n(" + units + ")";
+						else cc.Label += " (" + units + ")";
+					}
 				}
 				else
 				{
@@ -2008,7 +2041,7 @@ void TabularBrowser::UpdateGridSpecific(wxExtGridCtrl*& grid, ResultsTable*& gri
 		f.SetWeight(wxFONTWEIGHT_BOLD);
 		cdc.SetFont(f);
 
-		if (!gridTable->IsMatrix)
+		if (!gridTable->IsMatrix && !gridTable->IsSingleValues)
 		{
 			for (int i = 0; i < gridTable->Table.size(); i++)
 			{
@@ -2024,7 +2057,7 @@ void TabularBrowser::UpdateGridSpecific(wxExtGridCtrl*& grid, ResultsTable*& gri
 				grid->SetColSize(i, w + 6);
 			}
 		}
-		else
+		else if (gridTable->IsMatrix)
 		{
 			for (int i = 0; i < gridTable->Matrix->ncols(); i++)
 			{
@@ -2039,10 +2072,16 @@ void TabularBrowser::UpdateGridSpecific(wxExtGridCtrl*& grid, ResultsTable*& gri
 				grid->SetColSize(i, w + 6);
 			}
 		}
-
 	}
 
-	grid->SetColLabelSize(wxGRID_AUTOSIZE);
+	if (gridTable->IsSingleValues)
+	{
+		grid->SetRowLabelSize(wxGRID_AUTOSIZE);
+		grid->HideColLabels();
+	}
+	else
+		grid->SetColLabelSize(wxGRID_AUTOSIZE);
+
 	grid->Thaw();
 
 	grid->Layout();
@@ -2249,6 +2288,8 @@ void TabularBrowser::GetTextData(wxString &dat, char sep)
 		return;
 
 	bool IsMatrix = m_gridTable->IsMatrix;
+	bool IsSingleValues = m_gridTable->IsSingleValues;
+
 	dat = wxEmptyString;
 
 	size_t columns = (IsMatrix ? m_gridTable->Matrix->ncols() : m_gridTable->Table.size());
@@ -2257,44 +2298,50 @@ void TabularBrowser::GetTextData(wxString &dat, char sep)
 
 	size_t c;
 
-	dat += sep;
+	if (!IsSingleValues)
+		dat += sep;
 
-	for (c=0;c<columns;c++)
+	if (!IsSingleValues)
 	{
-		wxString label;
-		label = (IsMatrix ? m_gridTable->MatrixColLabels[c] : m_gridTable->Table[c]->Label);
-		label.Replace( '\n', " | " );
+		for (c = 0; c < columns; c++)
+		{
+			wxString label;
+			label = (IsMatrix ? m_gridTable->MatrixColLabels[c] : m_gridTable->Table[c]->Label);
+			label.Replace('\n', " | ");
 
-		if (sep == ',')
-			dat += '"' + label + '"';
-		else
-			dat += label;
+			if (sep == ',')
+				dat += '"' + label + '"';
+			else
+				dat += label;
 
-		if (c < columns-1)
-			dat += sep;
-		else
-			dat += '\n';
+			if (c < columns - 1)
+				dat += sep;
+			else
+				dat += '\n';
+		}
 	}
-
 	for (size_t r=0;r<m_gridTable->MaxCount;r++)
 	{
 		wxString ord(m_gridTable->GetRowLabelValue(r));
 		if ( ord.Find(sep) != wxNOT_FOUND )
 			ord = '"' + ord + '"';
 
-		dat += ord + sep;
-
-		for (c=0;c<columns;c++)
+		if (IsSingleValues)
+			dat += ord + sep + wxString::Format("%g\n", m_gridTable->Table[r]->SingleValue);
+		else 
 		{
-			int N = (IsMatrix ? m_gridTable->Matrix->nrows() : m_gridTable->Table[c]->N);
-			float value = (IsMatrix ? m_gridTable->Matrix->at(r, c) : m_gridTable->Table[c]->Values[r]);
-			if (r < N)
-				dat += wxString::Format("%g", value );
-			
-			if (c < columns-1)
-				dat += sep;
-			else
-				dat += '\n';
+			for (c = 0; c < columns; c++)
+			{
+				int N = (IsMatrix ? m_gridTable->Matrix->nrows() : m_gridTable->Table[c]->N);
+				float value = (IsMatrix ? m_gridTable->Matrix->at(r, c) : m_gridTable->Table[c]->Values[r]);
+				if (r < N)
+					dat += wxString::Format("%g", value);
+
+				if (c < columns - 1)
+					dat += sep;
+				else
+					dat += '\n';
+			}
 		}
 	}
 }
