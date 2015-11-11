@@ -64,16 +64,15 @@ private:
 	std::map<wxString, wxString> m_hints;
 
 public:
-	UIHint();
 	UIHint(wxString hints);
 	std::map<wxString, wxString> GetHints();
 	wxString GetHint(wxString);
-	
 	const std::vector<wxString> GetLabels(wxString key);
 
 	// custom definitions for UI strings defined in variables.cpp
-	static const std::vector<wxString>  UI_HOUR_TIME_OF_DAY;
-	static const std::vector<wxString>  UI_MONTHS;			  
+	static std::vector<wxString> MakeTimeOfDay();
+
+	static std::vector<wxString>  UI_HOUR_TIME_OF_DAY;
 };
 
 class VarValue
