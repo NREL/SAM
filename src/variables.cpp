@@ -1274,9 +1274,9 @@ bool VarTableScriptInterpreter::special_get( const lk_string &name, lk::vardata_
 //	wxLogStatus("vtsi->special_get( " + name + " ) " + wxString( ok?"ok":"fail") );
 	return ok;
 }
-
 UIHint::UIHint(wxString hints)
 {
+	// Parse hints
 	wxArrayString hint_array;
 	wxString comma = ",";
 	wxString equals = "=";
@@ -1309,11 +1309,21 @@ std::map<wxString, wxString> UIHint::GetHints(){ return m_hints; }
 const std::vector<wxString> UIHint::GetLabels(wxString key)
 {
 	wxString value = m_hints[key];
-	if (!value.compare("MONTHS")){ return UI_MONTHS; }
-	else if (!value.compare("HOURS_OF_DAY")){ return UI_HOUR_TIME_OF_DAY; }
+	if (!value.compare("HOURS_OF_DAY")){ return UI_HOUR_TIME_OF_DAY; }
 }
-
-
-const std::vector<wxString> UIHint::UI_HOUR_TIME_OF_DAY = { "12am", "1am", "2am", "3am", "4am", "5am", "6am", "7am", "8am", "9am", "10am", "11am", "12pm", "1pm", "2pm", "3pm", "4pm", "5pm", "6pm", "7pm", "8pm", "9pm", "10pm", "11pm" };
-const std::vector<wxString> UIHint::UI_MONTHS = { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" };
+std::vector<wxString> UIHint::MakeTimeOfDay()
+{
+	std::vector<wxString> v;
+	if (UI_HOUR_TIME_OF_DAY.empty())
+	{
+		v.push_back("12am"); v.push_back("1am"); v.push_back("2am"); v.push_back("3am");
+		v.push_back("4am"); v.push_back("5am"); v.push_back("6am"); v.push_back("7am");
+		v.push_back("8am"); v.push_back("9am"); v.push_back("10am"); v.push_back("11am");
+		v.push_back("12pm"); v.push_back("1pm"); v.push_back("2pm"); v.push_back("3pm");
+		v.push_back("4pm"); v.push_back("5pm"); v.push_back("6pm"); v.push_back("7pm");
+		v.push_back("8pm"); v.push_back("9pm"); v.push_back("10pm"); v.push_back("11pm");
+	}
+	return v;
+}
+std::vector<wxString> UIHint::UI_HOUR_TIME_OF_DAY = UIHint::MakeTimeOfDay();
 
