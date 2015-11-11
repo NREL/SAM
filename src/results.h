@@ -13,7 +13,6 @@
 
 #include <map>
 #include <vector>
-#include <tuple>
 
 class wxSearchCtrl;
 class wxDVSelectionListCtrl;
