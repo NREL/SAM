@@ -210,6 +210,7 @@ public:
 	
 	wxArrayString GetSelectedVariables();
 	void SelectVariables(const wxArrayString &list);
+	void UpdateVariableSize(int index, ArraySizeKey &var_size);
 
 private:	
 	Simulation *m_sim;

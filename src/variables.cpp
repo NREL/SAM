@@ -1274,6 +1274,7 @@ bool VarTableScriptInterpreter::special_get( const lk_string &name, lk::vardata_
 //	wxLogStatus("vtsi->special_get( " + name + " ) " + wxString( ok?"ok":"fail") );
 	return ok;
 }
+
 UIHint::UIHint(wxString hints)
 {
 	// Parse hints
