@@ -1624,6 +1624,8 @@ public:
 	bool IsMatrix;
 	bool IsSingleValues;
 
+	std::vector<wxString> MakeTimeOfDay();
+
 	// matrix specific
 	matrix_t<float> * Matrix;
 	std::vector<wxString> MatrixColLabels;
@@ -1854,15 +1856,49 @@ public:
 					size_t nr, nc;
 					nr = Matrix->nrows(); nc = Matrix->ncols();
 					MaxCount = MinCount = nr;
-					bool write_label = true;;
-					
-					if (vv->GetUIHint())
+					bool write_label = true;
+					wxString ui_hint = results->GetUIHints(vars[i]);
+
+					if (!ui_hint.IsEmpty())
 					{
-						std::map<wxString, wxString> hints = vv->GetUIHint()->GetHints();
+						// Parse hints
+						std::map<wxString, wxString> hints;
+						wxArrayString hint_array;
+						wxString comma = ",";
+						wxString equals = "=";
+						bool process = true;
+
+						while (process)
+						{
+							int comma_ind = ui_hint.Find(comma);
+							if (comma_ind == wxNOT_FOUND)
+							{
+								hint_array.Add(ui_hint);
+								break;
+							}
+							else
+							{
+								hint_array.Add(ui_hint.SubString(0, comma_ind - 1));
+								ui_hint.Remove(0, comma_ind + 1);
+							}
+						}
+
+						for (size_t i = 0; i != hint_array.size(); i++)
+						{
+							int equal_ind = hint_array[i].Find(equals);
+							wxString key = hint_array[i].SubString(0, equal_ind - 1);
+							wxString value = hint_array[i].SubString(equal_ind + 1, hint_array[i].size() - 1);
+							hints[key] = value;
+						}
+
 						if (hints.find("COL_LABEL") != hints.end())
 						{
-							MatrixColLabels = vv->GetUIHint()->GetLabels("COL_LABEL");
-							write_label = false;
+							wxString value = hints["COL_LABEL"];
+							if (value.CmpNoCase("UI_HOUR_TIME_OF_DAY"))
+							{
+								write_label = false;
+								MatrixColLabels = MakeTimeOfDay();
+							}
 						}
 					}
 					
@@ -1887,6 +1923,20 @@ public:
 	}
 
 };
+std::vector<wxString> TabularBrowser::ResultsTable::MakeTimeOfDay()
+{
+	std::vector<wxString> v;
+	//if (UI_HOUR_TIME_OF_DAY.empty())
+	{
+		v.push_back("12am"); v.push_back("1am"); v.push_back("2am"); v.push_back("3am");
+		v.push_back("4am"); v.push_back("5am"); v.push_back("6am"); v.push_back("7am");
+		v.push_back("8am"); v.push_back("9am"); v.push_back("10am"); v.push_back("11am");
+		v.push_back("12pm"); v.push_back("1pm"); v.push_back("2pm"); v.push_back("3pm");
+		v.push_back("4pm"); v.push_back("5pm"); v.push_back("6pm"); v.push_back("7pm");
+		v.push_back("8pm"); v.push_back("9pm"); v.push_back("10pm"); v.push_back("11pm");
+	}
+	return v;
+}
 
 enum { IDOB_COPYCLIPBOARD=wxID_HIGHEST+494, 
 	IDOB_SAVECSV, IDOB_SENDEXCEL, IDOB_EXPORTMODE, IDOB_CLEAR_ALL, 
