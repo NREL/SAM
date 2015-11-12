@@ -1855,7 +1855,7 @@ public:
 					nr = Matrix->nrows(); nc = Matrix->ncols();
 					MaxCount = MinCount = nr;
 					bool write_label = true;;
-
+					
 					if (vv->GetUIHint())
 					{
 						std::map<wxString, wxString> hints = vv->GetUIHint()->GetHints();
@@ -1865,6 +1865,7 @@ public:
 							write_label = false;
 						}
 					}
+					
 					if (write_label)
 					{
 						for (int jj = 0; jj != nc; jj++)
@@ -1956,16 +1957,14 @@ void TabularBrowser::UpdateNotebook()
 	m_grid_map.clear();
 	m_gridTable_map.clear();
 	m_pageBySize.clear();
-
 	size_t page = 0;
-	int num_vars = m_selectedVars.size();
 
 	// create grids
 	for (int i = 0; i != m_selectedVars.size(); i++)
 	{
-		ArraySizeKey var_size = m_selectedVarsWithSize[m_selectedVars[i]];
-		m_lastSize = var_size;
-
+		ArraySizeKey var_size;
+		UpdateVariableSize(i, var_size);
+		
 		// no grid of this size exists
 		if (m_grid_map.find(var_size) == m_grid_map.end() || var_size.n_cols > 1)
 		{
@@ -1996,8 +1995,7 @@ void TabularBrowser::UpdateNotebook()
 			wxArrayString vars = m_selectedVars_map[var_size];
 			vars.Add(m_selectedVars[i]);
 			m_selectedVars_map[var_size] = vars;
-		}
-		
+		}	
 	}
 
 	for (auto it = m_grid_map.begin(); it != m_grid_map.end(); it++)
@@ -2105,6 +2103,21 @@ void TabularBrowser::SelectVariables(const wxArrayString &list)
 {
 	m_selectedVars = list;
 	UpdateAll();
+}
+void TabularBrowser::UpdateVariableSize(int index, ArraySizeKey &var_size)
+{
+	VarValue *vv = m_sim->GetValue(m_selectedVars[index]);
+	var_size.n_cols = vv->Rows();
+	var_size.n_rows = vv->Columns();
+	if (var_size.n_cols == 1)
+		var_size.key = -1;
+	else
+	{
+		var_size.key = m_key;
+		m_key++;
+	}
+	m_selectedVarsWithSize[m_selectedVars[index]] = var_size;
+	m_lastSize = var_size;
 }
 void TabularBrowser::UpdateAll()
 {
@@ -2240,21 +2253,8 @@ void TabularBrowser::OnVarSel( wxCommandEvent & )
 		VarValue *var_value = m_sim->GetOutput(name);
 
 		if (checked && m_selectedVars.Index(name) == wxNOT_FOUND)
-		{
 			m_selectedVars.Add(name);
-			ArraySizeKey varSize;
-			varSize.n_cols = var_value->Rows();
-			varSize.n_rows = var_value->Columns();
-			if (varSize.n_cols == 1)
-				varSize.key = -1;
-			else
-			{
-				varSize.key = m_key;
-				m_key++;
-			}
-
-			m_selectedVarsWithSize[name] = varSize;
-		}
+		
 		
 		if (!checked && m_selectedVars.Index(name) != wxNOT_FOUND)
 		{
