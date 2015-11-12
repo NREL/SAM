@@ -74,6 +74,7 @@ public:
 	virtual VarValue *GetOutput( const wxString &var );
 	virtual wxString GetLabel( const wxString &var );
 	virtual wxString GetUnits( const wxString &var );
+	virtual wxString GetUIHints(const wxString &var);
 	virtual VarTable &Outputs();
 
 	// returns an output or input, outputs have precedence
@@ -127,7 +128,7 @@ protected:
 	wxArrayString m_outputList;
 	VarTable m_outputs;
 	wxArrayString m_errors, m_warnings, m_notices;
-	StringHash m_outputLabels, m_outputUnits;
+	StringHash m_outputLabels, m_outputUnits, m_uiHints;
 	int m_sscElapsedMsec;
 	int m_totalElapsedMsec;
 };
