@@ -143,6 +143,7 @@ void Simulation::Write( wxOutputStream &os )
 
 	m_outputLabels.Write( os );
 	m_outputUnits.Write( os );
+	m_uiHints.Write(os);
 
 	out.Write8( 0x9c );
 }
@@ -169,6 +170,8 @@ bool Simulation::Read( wxInputStream &is )
 	m_outputLabels.Read( is );
 	m_outputUnits.Read( is );
 	
+	if (ver == 2)
+		m_uiHints.Read( is );
 	
 	return ( code == in.Read8() );	
 }
@@ -185,6 +188,7 @@ void Simulation::Copy( const Simulation &rh )
 	m_notices = rh.m_notices;
 	m_outputLabels = rh.m_outputLabels;
 	m_outputUnits = rh.m_outputUnits;
+	m_uiHints = rh.m_uiHints;
 }
 
 void Simulation::Clear()
@@ -198,6 +202,7 @@ void Simulation::Clear()
 	m_notices.clear();
 	m_outputLabels.clear();
 	m_outputUnits.clear();
+	m_uiHints.clear();
 }
 
 void Simulation::Override( const wxString &name, const VarValue &val )
@@ -296,7 +301,13 @@ wxString Simulation::GetUnits( const wxString &var )
 	else
 		return m_case->Variables().Units( var );
 }
-
+wxString Simulation::GetUIHints(const wxString &var)
+{
+	if (m_uiHints.find(var) != m_uiHints.end())
+		return m_uiHints[var];
+	else
+		return wxEmptyString;
+}
 class SingleThreadHandler : public ISimulationHandler
 {
 	wxProgressDialog *progdlg;
@@ -410,6 +421,7 @@ bool Simulation::Prepare()
 	m_outputList.clear();
 	m_outputLabels.clear();
 	m_outputUnits.clear();
+	m_uiHints.clear();
 
 	// transfer all the values except for ones that have been 'overriden'
 	for( VarTableBase::const_iterator it = m_case->Values().begin();
@@ -641,6 +653,7 @@ bool Simulation::InvokeWithHandler( ISimulationHandler *ih )
 						
 						m_outputLabels[ name ] = label;
 						m_outputUnits[ name ] = units;
+						if (!ui_hint.IsEmpty()) m_uiHints[name] = ui_hint;
 					}
 				}
 				else if ( ( var_type == SSC_OUTPUT || var_type == SSC_INOUT ) && data_type == SSC_ARRAY )
@@ -659,6 +672,8 @@ bool Simulation::InvokeWithHandler( ISimulationHandler *ih )
 						
 						m_outputLabels[ name ] = label;
 						m_outputUnits[ name ] = units;
+						if (!ui_hint.IsEmpty()) m_uiHints[name] = ui_hint;
+
 					}		
 				}
 				else if ((var_type == SSC_OUTPUT || var_type == SSC_INOUT) && data_type == SSC_MATRIX)
@@ -668,10 +683,6 @@ bool Simulation::InvokeWithHandler( ISimulationHandler *ih )
 					{
 						m_outputList.Add(name);
 						VarValue *vv = m_outputs.Create(name, VV_MATRIX);
-
-						if (!ui_hint.IsEmpty())
-							vv->SetUIHint(ui_hint);
-
 						matrix_t<float> ff(nr, nc);
 
 						int count = 0;
@@ -686,6 +697,7 @@ bool Simulation::InvokeWithHandler( ISimulationHandler *ih )
 						vv->Set(ff);
 						m_outputLabels[name] = label;
 						m_outputUnits[name] = units;
+						if (!ui_hint.IsEmpty()) m_uiHints[name] = ui_hint;
 					}
 				}
 			}
