@@ -58,6 +58,7 @@ public:
 	bool Read( const wxString &file );
 		
 };
+
 class UIHint
 {
 private:
