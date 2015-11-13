@@ -1248,6 +1248,7 @@ AFDataMatrixCtrl::AFDataMatrixCtrl( wxWindow *parent, int id,
 	m_showColLabels = false;
 	m_showLabels = false;
 	m_shadeR0C0 = true;
+	m_shadeC0 = true;
 	m_showcols = true;
 	m_rowY2 = m_rowY1 = m_rowY0 = 0.0;
 	m_colY2 = m_colY1 = m_colY0 = 0.0;
@@ -1281,7 +1282,7 @@ AFDataMatrixCtrl::AFDataMatrixCtrl( wxWindow *parent, int id,
 	m_grid->DisableDragColMove();
 	m_grid->DisableDragGridSize();
 	m_grid->SetRowLabelAlignment(wxALIGN_LEFT, wxALIGN_CENTER);
-	m_grid->GetTable()->SetAttrProvider( new wxExtGridCellAttrProvider(m_shadeR0C0,true) );
+	m_grid->GetTable()->SetAttrProvider( new wxExtGridCellAttrProvider(m_shadeR0C0,true, m_shadeC0) );
 
 	m_caption = new wxStaticText(this,wxID_ANY,"");
 	m_caption->SetFont(*wxNORMAL_FONT);
@@ -1344,13 +1345,35 @@ AFDataMatrixCtrl::AFDataMatrixCtrl( wxWindow *parent, int id,
 void AFDataMatrixCtrl::SetColLabels(const wxString &colLabels)
 {
 	m_colLabels = colLabels;
-	m_colLabels.Replace( "\\n", "\n" );
+	m_colLabels.Replace("\\n", "\n");
 	MatrixToGrid();
 }
 
 wxString AFDataMatrixCtrl::GetColLabels()
 {
 	return m_colLabels;
+}
+
+void AFDataMatrixCtrl::SetNumRowsLabel(const wxString &numRowsLabel)
+{
+	m_numRowsLabel = numRowsLabel;
+	MatrixToGrid();
+}
+
+wxString AFDataMatrixCtrl::GetNumRowsLabel()
+{
+	return m_numRowsLabel;
+}
+
+void AFDataMatrixCtrl::SetNumColsLabel(const wxString &numColsLabel)
+{
+	m_numColsLabel = numColsLabel;
+	MatrixToGrid();
+}
+
+wxString AFDataMatrixCtrl::GetNumColsLabel()
+{
+	return m_numColsLabel;
 }
 
 bool AFDataMatrixCtrl::PasteAppendRows()
@@ -1391,13 +1414,26 @@ bool AFDataMatrixCtrl::ShowCols()
 void AFDataMatrixCtrl::ShadeR0C0(bool b)
 {
 	m_shadeR0C0 = b;
-	m_grid->GetTable()->SetAttrProvider( new wxExtGridCellAttrProvider(b,m_shadeR0C0) );
+	m_grid->GetTable()->SetAttrProvider(new wxExtGridCellAttrProvider(b, m_shadeR0C0, b || m_shadeC0));
 	MatrixToGrid();
 }
 
 bool AFDataMatrixCtrl::ShadeR0C0()
 {
 	return m_shadeR0C0;
+}
+
+
+void AFDataMatrixCtrl::ShadeC0(bool b)
+{
+	m_shadeC0 = b;
+	m_grid->GetTable()->SetAttrProvider(new wxExtGridCellAttrProvider(m_shadeR0C0, m_shadeR0C0, b || m_shadeR0C0));
+	MatrixToGrid();
+}
+
+bool AFDataMatrixCtrl::ShadeC0()
+{
+	return m_shadeC0;
 }
 
 
@@ -1634,8 +1670,11 @@ void AFDataMatrixCtrl::MatrixToGrid()
 		
 		m_grid->SetColLabelSize( wxGRID_AUTOSIZE );
 
-//		m_grid->SetRowLabelSize( 1 );
 	}
+
+	m_labelRows->SetLabel(m_numRowsLabel);
+	m_labelCols->SetLabel(m_numColsLabel);
+	Layout();
 
 }
 
