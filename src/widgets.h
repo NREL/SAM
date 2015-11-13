@@ -202,6 +202,9 @@ public:
 	void ShadeR0C0(bool b);
 	bool ShadeR0C0();
 
+	void ShadeC0(bool b);
+	bool ShadeC0();
+
 	void ShowCols(bool b);
 	bool ShowCols();
 
@@ -210,6 +213,12 @@ public:
 
 	void SetColLabels(const wxString &colLabels);
 	wxString GetColLabels();
+
+	void SetNumRowsLabel(const wxString &numRowsLabel);
+	wxString GetNumRowsLabel();
+
+	void SetNumColsLabel(const wxString &numColsLabel);
+	wxString GetNumColsLabel();
 
 	void PasteAppendRows(bool b);
 	bool PasteAppendRows();
@@ -229,9 +238,12 @@ private:
 	wxButton *m_btnImport, *m_btnExport, *m_btnCopy, *m_btnPaste;
 	bool m_showLabels;
 	bool m_shadeR0C0;
+	bool m_shadeC0;
 	bool m_showcols;
 	bool m_showColLabels;
 	wxString m_colLabels;
+	wxString m_numRowsLabel;
+	wxString m_numColsLabel;
 	bool m_pasteappendrows;
 
 	void NormalizeToLimits();
