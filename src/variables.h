@@ -87,6 +87,7 @@ public:
 	bool Read( wxInputStream & );
 	
 	int Type() const;
+	void ChangeType(int type);
 	void SetType( int t );
 	void Set( int val );
 	void Set( float val );

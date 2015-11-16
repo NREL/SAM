@@ -493,6 +493,7 @@ bool VarValue::Read( wxInputStream &_I )
 }
 	
 int VarValue::Type() const { return m_type; }
+void VarValue::ChangeType(int type) { m_type = type; }
 void VarValue::SetType( int ty ) { m_type = ty; }
 void VarValue::Set( int val ) { m_type = VV_NUMBER; m_val = (float)val; }
 void VarValue::Set( float val ) { m_type = VV_NUMBER; m_val = val; }
