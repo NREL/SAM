@@ -148,7 +148,7 @@ private:
 	wxString m_str;
 	VarTable m_tab;
 	wxMemoryBuffer m_bin;
-	UIHint * m_ui_hint = 0;
+	UIHint *m_ui_hint;
 };
 
 #define VF_NONE                0x00
