@@ -262,6 +262,7 @@ VarValue::VarValue()
 VarValue::VarValue( const VarValue &vv )
 {
 	Copy( vv );
+	m_ui_hint = 0;
 }
 
 VarValue::VarValue( int i )
@@ -336,7 +337,7 @@ VarValue::VarValue( const wxMemoryBuffer &mb )
 
 VarValue::~VarValue()
 {
-	if (m_ui_hint){ delete m_ui_hint; }
+	if (m_ui_hint != 0){ delete m_ui_hint; }
 }
 
 VarValue &VarValue::operator=( const VarValue &rhs )
@@ -420,7 +421,7 @@ void VarValue::Copy( const VarValue &rhs )
 		m_val = rhs.m_val;
 		m_tab = rhs.m_tab;
 		m_bin = rhs.m_bin;
-		*m_ui_hint = *rhs.m_ui_hint;
+		// UI hints?
 	}
 }
 
