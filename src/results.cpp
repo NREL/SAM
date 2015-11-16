@@ -2048,7 +2048,7 @@ void TabularBrowser::UpdateNotebook()
 		}	
 	}
 
-	for (auto it = m_grid_map.begin(); it != m_grid_map.end(); it++)
+	for (std::map<ArraySizeKey, wxExtGridCtrl*, ArraySizeKeyCompare>::iterator it = m_grid_map.begin(); it != m_grid_map.end(); it++)
 		UpdateGridSpecific(m_grid_map[it->first], m_gridTable_map[it->first], m_selectedVars_map[it->first], it->first == m_lastSize);
 	
 	// set selection to tab of last variable selected
@@ -2318,7 +2318,7 @@ void TabularBrowser::OnPageChanged(wxBookCtrlEvent& event)
 {
 	m_lastPageSelected = m_notebook->GetSelection();
 	ArraySizeKey current_size;
-	for (auto it = m_pageBySize.begin(); it != m_pageBySize.end(); it++)
+	for (std::map<ArraySizeKey, size_t, ArraySizeKeyCompare>::iterator it = m_pageBySize.begin(); it != m_pageBySize.end(); it++)
 	{
 		if (it->second == m_lastPageSelected)
 		{
