@@ -74,7 +74,7 @@ public:
 	virtual VarValue *GetOutput( const wxString &var );
 	virtual wxString GetLabel( const wxString &var );
 	virtual wxString GetUnits( const wxString &var );
-	virtual wxString GetUIHints(const wxString &var);
+	virtual StringHash GetUIHints(const wxString &var);
 	virtual VarTable &Outputs();
 
 	// returns an output or input, outputs have precedence

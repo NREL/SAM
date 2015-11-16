@@ -1857,51 +1857,18 @@ public:
 					nr = Matrix->nrows(); nc = Matrix->ncols();
 					MaxCount = MinCount = nr;
 					bool write_label = true;
-					wxString ui_hint = results->GetUIHints(vars[i]);
-
-					if (!ui_hint.IsEmpty())
+					StringHash ui_hint = results->GetUIHints(vars[i]);
+					
+					if (ui_hint.find("COL_LABEL") != ui_hint.end())
 					{
-						// Parse hints
-						std::map<wxString, wxString> hints;
-						wxArrayString hint_array;
-						wxString comma = ",";
-						wxString equals = "=";
-						bool process = true;
-
-						while (process)
+						wxString value = ui_hint["COL_LABEL"];
+						if (!value.Cmp("HOURS_OF_DAY"))
 						{
-							int comma_ind = ui_hint.Find(comma);
-							if (comma_ind == wxNOT_FOUND)
-							{
-								hint_array.Add(ui_hint);
-								break;
-							}
-							else
-							{
-								hint_array.Add(ui_hint.SubString(0, comma_ind - 1));
-								ui_hint.Remove(0, comma_ind + 1);
-							}
-						}
-
-						for (size_t i = 0; i != hint_array.size(); i++)
-						{
-							int equal_ind = hint_array[i].Find(equals);
-							wxString key = hint_array[i].SubString(0, equal_ind - 1);
-							wxString value = hint_array[i].SubString(equal_ind + 1, hint_array[i].size() - 1);
-							hints[key] = value;
-						}
-
-						if (hints.find("COL_LABEL") != hints.end())
-						{
-							wxString value = hints["COL_LABEL"];
-							if (value.CmpNoCase("UI_HOUR_TIME_OF_DAY"))
-							{
-								write_label = false;
-								MatrixColLabels = MakeTimeOfDay();
-							}
+							write_label = false;
+							MatrixColLabels = MakeTimeOfDay();
 						}
 					}
-					
+
 					if (write_label)
 					{
 						for (int jj = 0; jj != nc; jj++)

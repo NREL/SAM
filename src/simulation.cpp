@@ -301,12 +301,17 @@ wxString Simulation::GetUnits( const wxString &var )
 	else
 		return m_case->Variables().Units( var );
 }
-wxString Simulation::GetUIHints(const wxString &var)
+StringHash Simulation::GetUIHints(const wxString &var)
 {
+	StringHash tmp;
 	if (m_uiHints.find(var) != m_uiHints.end())
-		return m_uiHints[var];
-	else
-		return wxEmptyString;
+	{
+		wxString value = m_uiHints[var];
+		value.UpperCase();
+		tmp.Split(value, ',', '=');
+	}
+	return tmp;
+	
 }
 class SingleThreadHandler : public ISimulationHandler
 {
