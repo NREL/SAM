@@ -1967,11 +1967,11 @@ TabularBrowser::TabularBrowser( wxWindow *parent )
 
 void TabularBrowser::UpdateNotebook()
 {
-	// clear notebook and repopulate
 	m_notebook->DeleteAllPages();
 	m_selectedVars_map.clear();
 	m_grid_map.clear();
 	m_gridTable_map.clear();
+	m_tabLabels_map.clear();
 	m_pageBySize.clear();
 	size_t page = 0;
 
@@ -1995,9 +1995,15 @@ void TabularBrowser::UpdateNotebook()
 
 			wxString group = group_by_name[m_selectedVars[i]];
 			if (var_size.n_cols == 1)
+			{
 				m_notebook->AddPage(m_grid_map[var_size], group, wxID_ANY);
+				m_tabLabels_map[var_size] = group;
+			}
 			else
+			{
 				m_notebook->AddPage(m_grid_map[var_size], m_sim->GetLabel(m_selectedVars[i]), wxID_ANY);
+				m_tabLabels_map[var_size] = m_sim->GetLabel(m_selectedVars[i]);
+			}
 
 			wxArrayString selected_vars;
 			selected_vars.Add(m_selectedVars[i]);
@@ -2184,39 +2190,62 @@ void TabularBrowser::OnCommand(wxCommandEvent &evt)
 		{
 			wxBusyInfo busy("Processing data table... please wait");
 			wxString dat;
-			GetTextData(dat, '\t');
-			
-			// strip commas per request from Paul 5/23/12 meeting
-			dat.Replace(",","");
 
 #ifdef __WXMSW__
 			if (evt.GetId() == IDOB_SENDEXCEL)
 			{
-							
+				ResultsTable * currentTable = m_gridTable;
+
 				wxExcelAutomation xl;
 				if (!xl.StartExcel())
 				{
 					wxMessageBox("Could not start Excel.");
 					return;
 				}
-
-				xl.Show(true);
-
+				
 				if (!xl.NewWorkbook())
 				{
 					wxMessageBox("Could not create a new Excel worksheet.");
 					return;
 				}
-				if (wxTheClipboard->Open())
+				int count = 1;
+				int size = m_gridTable_map.size();
+				for (auto it = m_gridTable_map.begin(); it != m_gridTable_map.end(); it++)
 				{
-					wxTheClipboard->SetData( new wxTextDataObject(dat) );
-					wxTheClipboard->Close();
-					xl.PasteClipboard();
+					m_gridTable = it->second;
+					dat.Clear();
+					GetTextData(dat, '\t');
+
+					// strip commas per request from Paul 5/23/12 meeting
+					dat.Replace(",", "");
+
+					if (wxTheClipboard->Open())
+					{
+						wxTheClipboard->SetData(new wxTextDataObject(dat));
+						wxTheClipboard->Close();
+
+						xl.PasteClipboard();
+						xl.SetWorksheetName(m_tabLabels_map[it->first]);
+
+						if (count < size)
+						{
+							xl.AddWorksheet();
+							count++;
+						}
+
+					}
 				}
+				xl.Show(true);
+				m_gridTable = currentTable;
 			}
 #endif
 			if (evt.GetId() == IDOB_COPYCLIPBOARD)
 			{
+				GetTextData(dat, '\t');
+
+				// strip commas per request from Paul 5/23/12 meeting
+				dat.Replace(",", "");
+
 				if (wxTheClipboard->Open())
 				{
 					wxTheClipboard->SetData( new wxTextDataObject(dat) );
@@ -2313,9 +2342,6 @@ void TabularBrowser::GetTextData(wxString &dat, char sep)
 	dat.Alloc(approxbytes);
 
 	size_t c;
-
-	if (!IsSingleValues)
-		dat += sep;
 
 	if (!IsSingleValues)
 	{
