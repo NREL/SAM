@@ -221,12 +221,10 @@ private:
 	void UpdateNotebook();
 	void UpdateGridSpecific(wxExtGridCtrl*& grid, ResultsTable*& grid_table, wxArrayString selected_vars, bool show_grid);
 	
-
-	// static std::vector<wxString>  UI_HOUR_TIME_OF_DAY;
-
 	wxNotebook *m_notebook;
 	std::map<ArraySizeKey, wxExtGridCtrl*, ArraySizeKeyCompare> m_grid_map;
 	std::map<ArraySizeKey, ResultsTable*, ArraySizeKeyCompare> m_gridTable_map;
+	std::map<ArraySizeKey, wxString, ArraySizeKeyCompare> m_tabLabels_map;
 	std::map<ArraySizeKey, wxArrayString, ArraySizeKeyCompare> m_selectedVars_map;
 	std::map<wxString, ArraySizeKey> m_selectedVarsWithSize;
 	std::map<ArraySizeKey, size_t, ArraySizeKeyCompare> m_pageBySize;
