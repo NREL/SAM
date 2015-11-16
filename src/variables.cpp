@@ -255,6 +255,7 @@ VarValue VarValue::Invalid; // declaration
 VarValue::VarValue()
 {
 	m_type = VV_INVALID;
+	m_ui_hint = 0;
 }
 
 
@@ -267,60 +268,70 @@ VarValue::VarValue( int i )
 {
 	m_type = VV_NUMBER;
 	m_val = (float)i;
+	m_ui_hint = 0;
 }
 
 VarValue::VarValue( float f )
 {
 	m_type = VV_NUMBER;
 	m_val = f;
+	m_ui_hint = 0;
 }
 
 VarValue::VarValue( bool b )
 {
 	m_type = VV_NUMBER;
 	m_val = b ? 1 : 0;
+	m_ui_hint = 0;
 }
 
 VarValue::VarValue( const std::vector<float> &f )
 {
 	m_type = VV_ARRAY;
 	if ( f.size() > 0 ) m_val.assign( &f[0], f.size() );
+	m_ui_hint = 0;
 }
 
 VarValue::VarValue( float *arr, size_t n )
 {
 	m_type = VV_ARRAY;
 	m_val.assign( arr, n );
+	m_ui_hint = 0;
 }
 
 VarValue::VarValue( float *mat, size_t r, size_t c )
 {
 	m_type = VV_MATRIX;
 	m_val.assign( mat, r, c );
+	m_ui_hint = 0;
 }
 
 VarValue::VarValue( const ::matrix_t<float> &m )
 {
 	m_type = VV_MATRIX;
 	m_val = m;
+	m_ui_hint = 0;
 }
 
 VarValue::VarValue( const wxString &s )
 {
 	m_type = VV_STRING;
 	m_str = s;
+	m_ui_hint = 0;
 }
 
 VarValue::VarValue( const VarTable &t )
 {
 	m_type = VV_TABLE;
 	m_tab.Copy( t );
+	m_ui_hint = 0;
 }
 
 VarValue::VarValue( const wxMemoryBuffer &mb )
 {
 	m_type = VV_BINARY;
 	m_bin = mb;
+	m_ui_hint = 0;
 }
 
 VarValue::~VarValue()
@@ -409,6 +420,7 @@ void VarValue::Copy( const VarValue &rhs )
 		m_val = rhs.m_val;
 		m_tab = rhs.m_tab;
 		m_bin = rhs.m_bin;
+		*m_ui_hint = *rhs.m_ui_hint;
 	}
 }
 
