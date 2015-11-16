@@ -255,89 +255,77 @@ VarValue VarValue::Invalid; // declaration
 VarValue::VarValue()
 {
 	m_type = VV_INVALID;
-	m_ui_hint = 0;
 }
 
 
 VarValue::VarValue( const VarValue &vv )
 {
 	Copy( vv );
-	m_ui_hint = 0;
 }
 
 VarValue::VarValue( int i )
 {
 	m_type = VV_NUMBER;
 	m_val = (float)i;
-	m_ui_hint = 0;
 }
 
 VarValue::VarValue( float f )
 {
 	m_type = VV_NUMBER;
 	m_val = f;
-	m_ui_hint = 0;
 }
 
 VarValue::VarValue( bool b )
 {
 	m_type = VV_NUMBER;
 	m_val = b ? 1 : 0;
-	m_ui_hint = 0;
 }
 
 VarValue::VarValue( const std::vector<float> &f )
 {
 	m_type = VV_ARRAY;
 	if ( f.size() > 0 ) m_val.assign( &f[0], f.size() );
-	m_ui_hint = 0;
 }
 
 VarValue::VarValue( float *arr, size_t n )
 {
 	m_type = VV_ARRAY;
 	m_val.assign( arr, n );
-	m_ui_hint = 0;
 }
 
 VarValue::VarValue( float *mat, size_t r, size_t c )
 {
 	m_type = VV_MATRIX;
 	m_val.assign( mat, r, c );
-	m_ui_hint = 0;
 }
 
 VarValue::VarValue( const ::matrix_t<float> &m )
 {
 	m_type = VV_MATRIX;
 	m_val = m;
-	m_ui_hint = 0;
 }
 
 VarValue::VarValue( const wxString &s )
 {
 	m_type = VV_STRING;
 	m_str = s;
-	m_ui_hint = 0;
 }
 
 VarValue::VarValue( const VarTable &t )
 {
 	m_type = VV_TABLE;
 	m_tab.Copy( t );
-	m_ui_hint = 0;
 }
 
 VarValue::VarValue( const wxMemoryBuffer &mb )
 {
 	m_type = VV_BINARY;
 	m_bin = mb;
-	m_ui_hint = 0;
 }
 
 VarValue::~VarValue()
 {
-	if (m_ui_hint != 0){ delete m_ui_hint; }
+	// Nothing to do
 }
 
 VarValue &VarValue::operator=( const VarValue &rhs )
@@ -536,9 +524,6 @@ void VarValue::Set( const ::matrix_t<float> &mat ) { m_type = VV_MATRIX; m_val =
 void VarValue::Set( const wxString &str ) { m_type = VV_STRING; m_str = str; }
 void VarValue::Set( const VarTable &tab ) { m_type = VV_TABLE; m_tab.Copy( tab ); }
 void VarValue::Set( const wxMemoryBuffer &mb ) { m_type = VV_BINARY; m_bin = mb; }
-
-void VarValue::SetUIHint(wxString hint){ m_ui_hint = new UIHint(hint); }
-UIHint * VarValue::GetUIHint(){ return m_ui_hint; }
 
 int VarValue::Integer()
 {
@@ -1287,57 +1272,4 @@ bool VarTableScriptInterpreter::special_get( const lk_string &name, lk::vardata_
 //	wxLogStatus("vtsi->special_get( " + name + " ) " + wxString( ok?"ok":"fail") );
 	return ok;
 }
-
-UIHint::UIHint(wxString hints)
-{
-	// Parse hints
-	wxArrayString hint_array;
-	wxString comma = ",";
-	wxString equals = "=";
-	bool process = true;
-
-	while (process)
-	{
-		int comma_ind = hints.Find(comma);
-		if (comma_ind == wxNOT_FOUND)
-		{
-			hint_array.Add(hints);
-			break;
-		}
-		else
-		{
-			hint_array.Add(hints.SubString(0, comma_ind - 1));
-			hints.Remove(0, comma_ind + 1);
-		}
-	}
-
-	for (size_t i = 0; i != hint_array.size(); i++)
-	{
-		int equal_ind = hint_array[i].Find(equals);
-		wxString key = hint_array[i].SubString(0, equal_ind - 1);
-		wxString value = hint_array[i].SubString(equal_ind + 1, hint_array[i].size() - 1);
-		m_hints[key] = value;
-	}
-}
-std::map<wxString, wxString> UIHint::GetHints(){ return m_hints; }
-const std::vector<wxString> UIHint::GetLabels(wxString key)
-{
-	wxString value = m_hints[key];
-	if (!value.compare("HOURS_OF_DAY")){ return UI_HOUR_TIME_OF_DAY; }
-}
-std::vector<wxString> UIHint::MakeTimeOfDay()
-{
-	std::vector<wxString> v;
-	if (UI_HOUR_TIME_OF_DAY.empty())
-	{
-		v.push_back("12am"); v.push_back("1am"); v.push_back("2am"); v.push_back("3am");
-		v.push_back("4am"); v.push_back("5am"); v.push_back("6am"); v.push_back("7am");
-		v.push_back("8am"); v.push_back("9am"); v.push_back("10am"); v.push_back("11am");
-		v.push_back("12pm"); v.push_back("1pm"); v.push_back("2pm"); v.push_back("3pm");
-		v.push_back("4pm"); v.push_back("5pm"); v.push_back("6pm"); v.push_back("7pm");
-		v.push_back("8pm"); v.push_back("9pm"); v.push_back("10pm"); v.push_back("11pm");
-	}
-	return v;
-}
-std::vector<wxString> UIHint::UI_HOUR_TIME_OF_DAY = UIHint::MakeTimeOfDay();
 

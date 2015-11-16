@@ -1926,15 +1926,14 @@ public:
 std::vector<wxString> TabularBrowser::ResultsTable::MakeTimeOfDay()
 {
 	std::vector<wxString> v;
-	//if (UI_HOUR_TIME_OF_DAY.empty())
-	{
-		v.push_back("12am"); v.push_back("1am"); v.push_back("2am"); v.push_back("3am");
-		v.push_back("4am"); v.push_back("5am"); v.push_back("6am"); v.push_back("7am");
-		v.push_back("8am"); v.push_back("9am"); v.push_back("10am"); v.push_back("11am");
-		v.push_back("12pm"); v.push_back("1pm"); v.push_back("2pm"); v.push_back("3pm");
-		v.push_back("4pm"); v.push_back("5pm"); v.push_back("6pm"); v.push_back("7pm");
-		v.push_back("8pm"); v.push_back("9pm"); v.push_back("10pm"); v.push_back("11pm");
-	}
+	
+	v.push_back("12am"); v.push_back("1am"); v.push_back("2am"); v.push_back("3am");
+	v.push_back("4am"); v.push_back("5am"); v.push_back("6am"); v.push_back("7am");
+	v.push_back("8am"); v.push_back("9am"); v.push_back("10am"); v.push_back("11am");
+	v.push_back("12pm"); v.push_back("1pm"); v.push_back("2pm"); v.push_back("3pm");
+	v.push_back("4pm"); v.push_back("5pm"); v.push_back("6pm"); v.push_back("7pm");
+	v.push_back("8pm"); v.push_back("9pm"); v.push_back("10pm"); v.push_back("11pm");
+	
 	return v;
 }
 
