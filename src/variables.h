@@ -59,23 +59,6 @@ public:
 		
 };
 
-class UIHint
-{
-private:
-	std::map<wxString, wxString> m_hints;
-
-public:
-	UIHint(wxString hints);
-	std::map<wxString, wxString> GetHints();
-	wxString GetHint(wxString);
-	const std::vector<wxString> GetLabels(wxString key);
-
-	// custom definitions for UI strings defined in variables.cpp
-	static std::vector<wxString> MakeTimeOfDay();
-
-	static std::vector<wxString>  UI_HOUR_TIME_OF_DAY;
-};
-
 class VarValue
 {
 public:
@@ -117,9 +100,6 @@ public:
 	void Set( const VarTable &tab );
 	void Set( const wxMemoryBuffer &mb );
 
-	void SetUIHint(wxString hint);
-	UIHint * GetUIHint();
-
 	int Integer();
 	bool Boolean();
 	float Value();
@@ -148,7 +128,6 @@ private:
 	wxString m_str;
 	VarTable m_tab;
 	wxMemoryBuffer m_bin;
-	UIHint *m_ui_hint;
 };
 
 #define VF_NONE                0x00
