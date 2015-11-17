@@ -2790,8 +2790,8 @@ SAM models the connection by assuming that the battery system is connnected on t
 
 Customizable profiles allow specification of when the batteries can be charged from the grid and excess PV generation, and discharged to meet a custom portion of the electric load.  Users may enter detailed  inputs for voltage, capacity, lifetime, and thermal properties, or may use defaults provided by SAM.   Battery costs and replacement criteria may also be entered to consider the full lifetime costs of installing a battery system. A technical reference is available for a complete description of the battery model, including information about the validation process \citep{diorio2015a}. An economic case-study  is available as an example for how the battery model may be used to do detailed financial analysis of potential battery systems considering specific utility rate structures, battery costs, and dispatch criteria \citep{diorio2015b}.
 
-\section{Battery Model Inputs and Outputsl}\label{sec-batterymodel-inputs}
-The battery model requires multiple inputs and provides multiple outputs.  Inputs are described in Table~\ref{tab-batteryinputs} and Table~\ref{tab-batteryinputs2} .  Battery outputs are described in Table~\ref{tab-batteryoutputs}.  For simulations involving lead-acid batteries, two additional outputs are available, shown in Table~\ref{tab-batteryoutputs-lead}
+\section{Battery Model Inputs and Outputs}\label{sec-batterymodel-inputs}
+The battery model requires multiple inputs and provides multiple outputs.  Inputs are described in Table~\ref{tab-batteryinputs} and Table~\ref{tab-batteryinputs2} .  Battery outputs are described in Table~\ref{tab-batteryoutputs}.  Variable length outputs will be a single value if a lifetime simulation is not run, and will be an array of values for lifetime simulations, listed under the "Annual" data dropdown.  For simulations involving lead-acid batteries, two additional outputs are available, shown in Table~\ref{tab-batteryoutputs-lead}.  
 
 \begin{table}
 \begin{center}
@@ -2947,6 +2947,12 @@ Description / \textbf{Name in SAM} & Name in SSC \\
 \label{tab-batteryoutputs-lead}
 \end{center}
 \end{table}
+
+\section{Battery With No PV System}\label{sec-batterymodel-nopv}
+There is often a desire to consider a standalone battery system.  To model this in SAM, begin a detailed Photovoltaic project with a Residential, Commercial, or Third-Party ownership financial model. On the losses page, within the "Curtailment and Availability" section, click on "Edit losses".  Make the "Contant loss (\%)" equal to 100\%.  This zeros out the contribution of PV production to the system analysis.  Next, it is important to zero out the PV system cost.  On the "System Costs" page, make the module "\$/Wdc"  and inverter "\$/Wdc fields equal to 0.  It is assumed that the cost of inverters required by the battery system to place power on the AC bus is included in the battery bank cost.
+
+\section{DC Connected Battery}\label{sec-batterymodel-dc}
+SAM currently assumes that the battery is placed on the AC bus, such that PV power has been inverted before being transferred to the battery.  Another popular configuration is to connect the battery to the DC side of the PV system such that DC/AC and AC/DC conversion losses can be avoided when charging the battery from excess PV generation.  To mimic a DC connection, the "AC to DC conversion efficiency" input can be increased, such that it is assumed no input conversion penalty is present.  Even in a DC connected system there is likely to be some loss through a charge controller.  The "DC to AC conversion efficiency" can be left alone, since power coming out of the battery will be inverted to place on the AC bus.  It is not currently possible to increase the PV system's DC-to-AC ratio and use excess DC power to charge the battery.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
