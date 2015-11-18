@@ -221,7 +221,7 @@ private:
 	void UpdateNotebook();
 	void UpdateGridSpecific(wxExtGridCtrl*& grid, ResultsTable*& grid_table, wxArrayString selected_vars, bool show_grid);
 	
-	wxNotebook *m_notebook;
+	wxAuiNotebook *m_notebook;
 	std::map<ArraySizeKey, wxExtGridCtrl*, ArraySizeKeyCompare> m_grid_map;
 	std::map<ArraySizeKey, ResultsTable*, ArraySizeKeyCompare> m_gridTable_map;
 	std::map<ArraySizeKey, wxString, ArraySizeKeyCompare> m_tabLabels_map;
