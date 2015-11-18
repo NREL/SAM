@@ -1955,7 +1955,7 @@ TabularBrowser::TabularBrowser( wxWindow *parent )
 	lbs->Add(m_varSel, 1, wxEXPAND, 0);
 	lhs->SetSizer(lbs);
 
-	m_notebook = new wxNotebook(splitwin, IDOB_PAGE_CHANGE, wxDefaultPosition, wxDefaultSize);
+	m_notebook = new wxAuiNotebook(splitwin, IDOB_PAGE_CHANGE, wxDefaultPosition, wxDefaultSize);
 
 	splitwin->SetMinimumPaneSize( 170 );
 	splitwin->SplitVertically(lhs, m_notebook, (int)(210*wxGetScreenHDScale()));
