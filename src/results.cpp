@@ -2214,7 +2214,8 @@ void TabularBrowser::OnCommand(wxCommandEvent &evt)
 				}
 				int count = 1;
 				int size = m_gridTable_map.size();
-				for (auto it = m_gridTable_map.begin(); it != m_gridTable_map.end(); it++)
+				std::map<ArraySizeKey, ResultsTable*, ArraySizeKeyCompare>::iterator it;
+				for (it = m_gridTable_map.begin(); it != m_gridTable_map.end(); it++)
 				{
 					m_gridTable = it->second;
 					dat.Clear();
