@@ -1625,6 +1625,8 @@ public:
 	bool IsSingleValues;
 
 	std::vector<wxString> MakeTimeOfDay();
+	std::vector<wxString> MakeURPeriods();
+	std::vector<wxString> MakeURTiers();
 
 	// matrix specific
 	matrix_t<float> * Matrix;
@@ -1729,7 +1731,9 @@ public:
 		}
 		else
 		{			
-			if (col >= 0 && col < Matrix->ncols()) return MatrixColLabels[col];
+			if (col >= 0 && col < Matrix->ncols() 
+				&& MatrixColLabels.size() > 0 && col < MatrixColLabels.size() )
+				return MatrixColLabels[col];
 			else return wxEmptyString;
 		}
 		
@@ -1768,7 +1772,10 @@ public:
 		}
 		else
 		{
-			if (Matrix->nrows() == 0) return wxEmptyString;
+			if (row >= 0 && row < Matrix->nrows()
+				&& MatrixRowLabels.size() > 0 && row < MatrixRowLabels.size())
+				return MatrixRowLabels[row];
+			else return wxEmptyString;
 		}
 
 		if (MinCount == MaxCount && MaxCount == 12)
@@ -1871,7 +1878,38 @@ public:
 							write_label = false;
 							MatrixColLabels = MakeTimeOfDay();
 						}
+						else if (!value.Cmp("UR_PERIODS"))
+						{
+							write_label = false;
+							MatrixColLabels = MakeURPeriods();
+						}
+						else if (!value.Cmp("UR_TIERS"))
+						{
+							write_label = false;
+							MatrixColLabels = MakeURTiers();
+						}
 					}
+
+					if (ui_hint.find("ROW_LABEL") != ui_hint.end())
+					{
+						wxString value = ui_hint["ROW_LABEL"];
+						if (!value.Cmp("HOURS_OF_DAY"))
+						{
+							write_label = false;
+							MatrixRowLabels = MakeTimeOfDay();
+						}
+						else if (!value.Cmp("UR_PERIODS"))
+						{
+							write_label = false;
+							MatrixRowLabels = MakeURPeriods();
+						}
+						else if (!value.Cmp("UR_TIERS"))
+						{
+							write_label = false;
+							MatrixRowLabels = MakeURTiers();
+						}
+					}
+
 
 					if (write_label)
 					{
@@ -1894,6 +1932,29 @@ public:
 	}
 
 };
+
+std::vector<wxString> TabularBrowser::ResultsTable::MakeURPeriods()
+{
+	std::vector<wxString> v;
+
+	v.push_back("Period 1"); v.push_back("Period 2"); v.push_back("Period 3"); 
+	v.push_back("Period 4"); v.push_back("Period 5"); v.push_back("Period 6");
+	v.push_back("Period 7"); v.push_back("Period 8"); v.push_back("Period 9");
+	v.push_back("Period 10"); v.push_back("Period 11"); v.push_back("Period 12");
+
+	return v;
+}
+
+std::vector<wxString> TabularBrowser::ResultsTable::MakeURTiers()
+{
+	std::vector<wxString> v;
+
+	v.push_back("Tier 1"); v.push_back("Tier 2"); v.push_back("Tier 3");
+	v.push_back("Tier 4"); v.push_back("Tier 5"); v.push_back("Tier 6");
+
+	return v;
+}
+
 std::vector<wxString> TabularBrowser::ResultsTable::MakeTimeOfDay()
 {
 	std::vector<wxString> v;
