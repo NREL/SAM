@@ -1632,6 +1632,7 @@ public:
 	matrix_t<float> * Matrix;
 	std::vector<wxString> MatrixColLabels;
 	std::vector<wxString> MatrixRowLabels;
+	wxString MatrixFormat; // can be general
 
 	ResultsTable()
 	{
@@ -1693,6 +1694,8 @@ public:
 			{
 				if (std::isnan(Matrix->at(row, col)))
 					return "NaN";
+				else if (MatrixFormat == "CURRENCY")
+					return	wxNumericCtrl::Format(Matrix->at(row, col), wxNumericCtrl::REAL, 2, true, wxEmptyString, wxEmptyString);
 				else
 					return wxString::Format("%g", Matrix->at(row, col));
 			}
@@ -1775,7 +1778,6 @@ public:
 			if (row >= 0 && row < Matrix->nrows()
 				&& MatrixRowLabels.size() > 0 && row < MatrixRowLabels.size())
 				return MatrixRowLabels[row];
-			else return wxEmptyString;
 		}
 
 		if (MinCount == MaxCount && MaxCount == 12)
@@ -1796,6 +1798,7 @@ public:
 		Table.clear();
 		MatrixColLabels.clear();
 		MatrixRowLabels.clear();
+		MatrixFormat = "%g";
 		Years = 1;
 		StepsPerHour = 1;
 
@@ -1910,6 +1913,10 @@ public:
 						}
 					}
 
+					if (ui_hint.find("FORMAT_SPEC") != ui_hint.end())
+					{
+						MatrixFormat = ui_hint["FORMAT_SPEC"];
+					}
 
 					if (write_label)
 					{
