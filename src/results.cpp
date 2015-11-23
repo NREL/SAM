@@ -158,9 +158,9 @@ void PopulateSelectionList( wxDVSelectionListCtrl *sel, wxArrayString *names, Si
 			if (ui_hint.find("GROUP") != ui_hint.end())
 			{
 				wxString grp = ui_hint["GROUP"];
-				if (grp == "UR_MTP")
+				if (grp == "UR_MTP") // monthly tier x period
 					gbn = "Utility Rate Data by Tier/Periods";
-				else if (grp == "UR_ATP")
+				else if (grp == "UR_AM") // annual monthly
 					gbn = "Utility Rate Data by Year";
 			}
 
@@ -1641,6 +1641,7 @@ public:
 	std::vector<wxString> MakeTimeOfDay();
 	std::vector<wxString> MakeURPeriods();
 	std::vector<wxString> MakeURTiers();
+	std::vector<wxString> MakeMonths();
 
 	// matrix specific
 	matrix_t<float> * Matrix;
@@ -1905,6 +1906,11 @@ public:
 							write_label = false;
 							MatrixColLabels = MakeURTiers();
 						}
+						else if (!value.Cmp("MONTHS"))
+						{
+							write_label = false;
+							MatrixColLabels = MakeMonths();
+						}
 					}
 
 					if (ui_hint.find("ROW_LABEL") != ui_hint.end())
@@ -1953,6 +1959,18 @@ public:
 	}
 
 };
+
+std::vector<wxString> TabularBrowser::ResultsTable::MakeMonths()
+{
+	std::vector<wxString> v;
+
+	v.push_back("Jan"); v.push_back("Feb"); v.push_back("Mar");
+	v.push_back("Apr"); v.push_back("May"); v.push_back("Jun");
+	v.push_back("Jul"); v.push_back("Aug"); v.push_back("Sep");
+	v.push_back("Oct"); v.push_back("Nov"); v.push_back("Dec");
+
+	return v;
+}
 
 std::vector<wxString> TabularBrowser::ResultsTable::MakeURPeriods()
 {
@@ -2186,7 +2204,8 @@ void TabularBrowser::UpdateGridSpecific(wxExtGridCtrl*& grid, ResultsTable*& gri
 		grid->HideColLabels();
 	}
 	else
-		grid->SetColLabelSize(wxGRID_AUTOSIZE);
+		grid->AutoSizeColumns();
+		//grid->SetColLabelSize(wxGRID_AUTOSIZE);
 
 	grid->Thaw();
 
