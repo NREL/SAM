@@ -159,7 +159,7 @@ void PopulateSelectionList( wxDVSelectionListCtrl *sel, wxArrayString *names, Si
 			{
 				wxString grp = ui_hint["GROUP"];
 				if (grp == "UR_MTP") // monthly tier x period
-					gbn = "Utility Rate Data by Tier/Periods";
+					gbn = "Utility Rate Data by Tier/Period";
 				else if (grp == "UR_AM") // annual monthly
 					gbn = "Utility Rate Data by Year";
 			}
@@ -1930,6 +1930,11 @@ public:
 						{
 							write_label = false;
 							MatrixRowLabels = MakeURTiers();
+						}
+						else if (!value.Cmp("MONTHS"))
+						{
+							write_label = false;
+							MatrixRowLabels = MakeMonths();
 						}
 					}
 
