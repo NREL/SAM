@@ -120,6 +120,7 @@ void PopulateSelectionList( wxDVSelectionListCtrl *sel, wxArrayString *names, Si
 		if (sim->GetCase()->GetTechnology() == "Geothermal")
 			steps_per_hour = -1; // don't report geothermal system output as minute data depending on analysis period
 
+
 		wxString group;
 		if (row_length == 1)
 			group = "Single Values";
@@ -151,7 +152,19 @@ void PopulateSelectionList( wxDVSelectionListCtrl *sel, wxArrayString *names, Si
 				label += " (" + units + ")";
 			labels.Add( label );
 
-			group_by_name[list[j]] = group;
+			// UIHINT groups
+			wxString gbn = group;
+			StringHash ui_hint = sim->GetUIHints(list[j]);
+			if (ui_hint.find("GROUP") != ui_hint.end())
+			{
+				wxString grp = ui_hint["GROUP"];
+				if (grp == "UR_MTP")
+					gbn = "Utility Rate Data by Tier/Periods";
+				else if (grp == "UR_ATP")
+					gbn = "Utility Rate Data by Year";
+			}
+
+			group_by_name[list[j]] = gbn;
 		}
 
 		wxSortByLabels( list, labels );
@@ -160,7 +173,8 @@ void PopulateSelectionList( wxDVSelectionListCtrl *sel, wxArrayString *names, Si
 		{
 			if (!labels[j].IsEmpty()) 
 			{
-				sel->AppendNoUpdate(labels[j], group);
+//				sel->AppendNoUpdate(labels[j], group);
+				sel->AppendNoUpdate(labels[j], group_by_name[list[j]]);
 				names->Add(list[j]);
 			}
 		}
