@@ -534,7 +534,6 @@ setup_flat_plate_pv_pages();
 setup_battery_pages();
 setup_thirdparty_pages( LIFETIME_PV ); //includes building load calculator by default in this function
 
-
 setconfig( 'Flat Plate PV', 'Commercial' );
 setmodules( ['pvsamv1', 'utilityrate3', 'cashloan']);
 setup_flat_plate_pv_pages();
