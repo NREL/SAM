@@ -255,7 +255,25 @@ struct ArraySizeKey
 struct ArraySizeKeyCompare
 {
 	bool operator()(const ArraySizeKey& x, const ArraySizeKey& y){
-		return memcmp(&x, &y, sizeof(ArraySizeKey)) < 0;
+
+		if (x.n_rows < y.n_rows)
+		{
+			return true;
+		}
+		else if (x.n_rows == y.n_rows)
+		{
+			if (x.n_cols < y.n_cols)
+			{
+				return true;
+			}
+			else if (x.n_cols== y.n_cols)
+			{
+				return x.key < y.key;
+			}
+		}
+
+		return false;
+
 	}
 };
 #endif
