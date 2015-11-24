@@ -203,6 +203,9 @@ public:
 
 	TabularBrowser( wxWindow *parent );
 
+	void ProcessRemoved(wxString);
+	void ProcessAdded(wxString, bool internal_add=true);
+	void SetLastSelection();
 	void Setup( Simulation *sim );
 	void UpdateAll();
 	void UpdateDisplayed(wxString &srch);
@@ -210,25 +213,32 @@ public:
 	
 	wxArrayString GetSelectedVariables();
 	void SelectVariables(const wxArrayString &list);
-	void UpdateVariableSize(int index, ArraySizeKey &var_size);
+	ArraySizeKey GetVariableSize(int index);
 
 private:	
 	Simulation *m_sim;
 
 	void OnCommand(wxCommandEvent &evt);
 	void OnVarSel(wxCommandEvent &evt);
-	void OnPageChanged(wxBookCtrlEvent& event);
-	void UpdateNotebook();
+	void OnPageChanged(wxAuiNotebookEvent& event);
+	void UpdateNotebook(ArraySizeKey grid_size, wxString name);
 	void UpdateGridSpecific(wxExtGridCtrl*& grid, ResultsTable*& grid_table, wxArrayString selected_vars, bool show_grid);
+	void UpdatePageNumbers(int removed_page);
+	void UpdateCase();
 	
+	typedef std::map<ArraySizeKey, wxArrayString, ArraySizeKeyCompare>::iterator ArrayIterator;
+	typedef std::map<ArraySizeKey, ResultsTable*, ArraySizeKeyCompare>::iterator ResultsIterator;
+	typedef std::map<ArraySizeKey, size_t, ArraySizeKeyCompare>::iterator PageIterator;
+
 	wxAuiNotebook *m_notebook;
 	std::map<ArraySizeKey, wxExtGridCtrl*, ArraySizeKeyCompare> m_grid_map;
 	std::map<ArraySizeKey, ResultsTable*, ArraySizeKeyCompare> m_gridTable_map;
 	std::map<ArraySizeKey, wxString, ArraySizeKeyCompare> m_tabLabels_map;
+	std::map<wxString, ArraySizeKey> m_selectedVarsBySizeMap;
 	std::map<ArraySizeKey, wxArrayString, ArraySizeKeyCompare> m_selectedVars_map;
-	std::map<wxString, ArraySizeKey> m_selectedVarsWithSize;
 	std::map<ArraySizeKey, size_t, ArraySizeKeyCompare> m_pageBySize;
 
+	size_t m_numberOfTabs;
 	size_t m_lastPageSelected;
 	ArraySizeKey m_lastSize;
 
