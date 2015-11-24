@@ -2096,8 +2096,12 @@ void TabularBrowser::UpdateNotebook(ArraySizeKey grid_size, wxString var_name)
 		}
 		else
 		{
-			m_notebook->AddPage(m_gridMap[grid_size], m_sim->GetLabel(var_name), wxID_ANY);
-			m_tabLabelsMap[grid_size] = m_sim->GetLabel(var_name);
+			wxString label = m_sim->GetLabel(var_name);
+			wxString units = m_sim->GetUnits(var_name);
+			if (!units.IsEmpty())
+				label = label + " (" + units + ")";
+			m_notebook->AddPage(m_gridMap[grid_size], label , wxID_ANY);
+			m_tabLabelsMap[grid_size] = label;
 		}
 		m_pageBySize[grid_size] = m_numberOfTabs;
 		m_numberOfTabs++;
