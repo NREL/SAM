@@ -120,7 +120,6 @@ void PopulateSelectionList( wxDVSelectionListCtrl *sel, wxArrayString *names, Si
 		if (sim->GetCase()->GetTechnology() == "Geothermal")
 			steps_per_hour = -1; // don't report geothermal system output as minute data depending on analysis period
 
-
 		wxString group;
 		if (row_length == 1)
 			group = "Single Values";
@@ -158,10 +157,10 @@ void PopulateSelectionList( wxDVSelectionListCtrl *sel, wxArrayString *names, Si
 			if (ui_hint.find("GROUP") != ui_hint.end())
 			{
 				wxString grp = ui_hint["GROUP"];
-				if (grp == "UR_MTP") // monthly tier x period
-					gbn = "Utility Rate Data by Tier/Period";
-				else if (grp == "UR_AM") // annual monthly
-					gbn = "Utility Rate Data by Year";
+				if (grp == "UR_MTP")
+					gbn = "Utility Rate Data by Tier/Period"; // monthly tier x period
+				else if (grp == "UR_ATP")
+					gbn = "Utility Rate Data by Year"; // annual monthly
 			}
 
 			group_by_name[list[j]] = gbn;
@@ -173,7 +172,7 @@ void PopulateSelectionList( wxDVSelectionListCtrl *sel, wxArrayString *names, Si
 		{
 			if (!labels[j].IsEmpty()) 
 			{
-//				sel->AppendNoUpdate(labels[j], group);
+				// sel->AppendNoUpdate(labels[j], group);
 				sel->AppendNoUpdate(labels[j], group_by_name[list[j]]);
 				names->Add(list[j]);
 			}
@@ -1749,8 +1748,8 @@ public:
 		}
 		else
 		{			
-			if (col >= 0 && col < Matrix->ncols() 
-				&& MatrixColLabels.size() > 0 && col < MatrixColLabels.size() )
+			if (col >= 0 && col < Matrix->ncols()
+				&& MatrixColLabels.size() > 0 && col < MatrixColLabels.size())
 				return MatrixColLabels[col];
 			else return wxEmptyString;
 		}
@@ -1793,6 +1792,7 @@ public:
 			if (row >= 0 && row < Matrix->nrows()
 				&& MatrixRowLabels.size() > 0 && row < MatrixRowLabels.size())
 				return MatrixRowLabels[row];
+			else return wxEmptyString;
 		}
 
 		if (MinCount == MaxCount && MaxCount == 12)
@@ -1839,7 +1839,6 @@ public:
 				{
 					Table.push_back(new ColData());
 					ColData &cc = *Table[Table.size() - 1];
-
 					cc.Values = 0;
 					cc.N = 1;
 
@@ -1964,24 +1963,24 @@ public:
 	}
 
 };
-
-std::vector<wxString> TabularBrowser::ResultsTable::MakeMonths()
+std::vector<wxString> TabularBrowser::ResultsTable::MakeTimeOfDay()
 {
 	std::vector<wxString> v;
-
-	v.push_back("Jan"); v.push_back("Feb"); v.push_back("Mar");
-	v.push_back("Apr"); v.push_back("May"); v.push_back("Jun");
-	v.push_back("Jul"); v.push_back("Aug"); v.push_back("Sep");
-	v.push_back("Oct"); v.push_back("Nov"); v.push_back("Dec");
-
+	
+	v.push_back("12am"); v.push_back("1am"); v.push_back("2am"); v.push_back("3am");
+	v.push_back("4am"); v.push_back("5am"); v.push_back("6am"); v.push_back("7am");
+	v.push_back("8am"); v.push_back("9am"); v.push_back("10am"); v.push_back("11am");
+	v.push_back("12pm"); v.push_back("1pm"); v.push_back("2pm"); v.push_back("3pm");
+	v.push_back("4pm"); v.push_back("5pm"); v.push_back("6pm"); v.push_back("7pm");
+	v.push_back("8pm"); v.push_back("9pm"); v.push_back("10pm"); v.push_back("11pm");
+	
 	return v;
 }
-
 std::vector<wxString> TabularBrowser::ResultsTable::MakeURPeriods()
 {
 	std::vector<wxString> v;
 
-	v.push_back("Period 1"); v.push_back("Period 2"); v.push_back("Period 3"); 
+	v.push_back("Period 1"); v.push_back("Period 2"); v.push_back("Period 3");
 	v.push_back("Period 4"); v.push_back("Period 5"); v.push_back("Period 6");
 	v.push_back("Period 7"); v.push_back("Period 8"); v.push_back("Period 9");
 	v.push_back("Period 10"); v.push_back("Period 11"); v.push_back("Period 12");
@@ -1998,24 +1997,22 @@ std::vector<wxString> TabularBrowser::ResultsTable::MakeURTiers()
 
 	return v;
 }
-
-std::vector<wxString> TabularBrowser::ResultsTable::MakeTimeOfDay()
+std::vector<wxString> TabularBrowser::ResultsTable::MakeMonths()
 {
 	std::vector<wxString> v;
-	
-	v.push_back("12am"); v.push_back("1am"); v.push_back("2am"); v.push_back("3am");
-	v.push_back("4am"); v.push_back("5am"); v.push_back("6am"); v.push_back("7am");
-	v.push_back("8am"); v.push_back("9am"); v.push_back("10am"); v.push_back("11am");
-	v.push_back("12pm"); v.push_back("1pm"); v.push_back("2pm"); v.push_back("3pm");
-	v.push_back("4pm"); v.push_back("5pm"); v.push_back("6pm"); v.push_back("7pm");
-	v.push_back("8pm"); v.push_back("9pm"); v.push_back("10pm"); v.push_back("11pm");
-	
+
+	v.push_back("Jan"); v.push_back("Feb"); v.push_back("Mar");
+	v.push_back("Apr"); v.push_back("May"); v.push_back("Jun");
+	v.push_back("Jul"); v.push_back("Aug"); v.push_back("Sep");
+	v.push_back("Oct"); v.push_back("Nov"); v.push_back("Dec");
+
 	return v;
 }
 
+
 enum { IDOB_COPYCLIPBOARD=wxID_HIGHEST+494, 
 	IDOB_SAVECSV, IDOB_SENDEXCEL, IDOB_EXPORTMODE, IDOB_CLEAR_ALL, 
-	IDOB_VARSEL, IDOB_GRID, IDOB_SEARCH, IDOB_PAGE_CHANGE };
+	IDOB_VARSEL, IDOB_GRID, IDOB_SEARCH, IDOB_PAGE_CHANGE , IDOB_PAGE_CLOSED };
 
 
 BEGIN_EVENT_TABLE( TabularBrowser, wxPanel )
@@ -2025,13 +2022,14 @@ BEGIN_EVENT_TABLE( TabularBrowser, wxPanel )
 	EVT_BUTTON( IDOB_CLEAR_ALL, TabularBrowser::OnCommand )
 	EVT_TEXT(IDOB_SEARCH, TabularBrowser::OnCommand)
 	EVT_DVSELECTIONLIST(IDOB_VARSEL, TabularBrowser::OnVarSel)
-	EVT_NOTEBOOK_PAGE_CHANGED(IDOB_PAGE_CHANGE, TabularBrowser::OnPageChanged)
+	EVT_AUINOTEBOOK_PAGE_CHANGED(IDOB_PAGE_CHANGE, TabularBrowser::OnPageChanged)
 END_EVENT_TABLE()
 
 TabularBrowser::TabularBrowser( wxWindow *parent )
 	: wxPanel(parent )
 {
 	m_key = 0;
+	m_numberOfTabs = 0;
 
 	SetBackgroundColour( wxMetroTheme::Colour( wxMT_FOREGROUND ) );
 	
@@ -2074,71 +2072,48 @@ TabularBrowser::TabularBrowser( wxWindow *parent )
 
 }
 
-void TabularBrowser::UpdateNotebook()
+void TabularBrowser::UpdateNotebook(ArraySizeKey grid_size, wxString var_name)
 {
-	m_notebook->DeleteAllPages();
-	m_selectedVars_map.clear();
-	m_grid_map.clear();
-	m_gridTable_map.clear();
-	m_tabLabels_map.clear();
-	m_pageBySize.clear();
-	size_t page = 0;
-
-	// create grids
-	for (int i = 0; i != m_selectedVars.size(); i++)
+	if (m_grid_map.find(grid_size) == m_grid_map.end())
 	{
-		ArraySizeKey var_size;
-		UpdateVariableSize(i, var_size);
-		
-		// no grid of this size exists
-		if (m_grid_map.find(var_size) == m_grid_map.end() || var_size.n_cols > 1)
+		m_grid_map[grid_size] = new wxExtGridCtrl(m_notebook, IDOB_GRID);
+		m_grid_map[grid_size]->EnableEditing(false);
+		m_grid_map[grid_size]->DisableDragCell();
+		m_grid_map[grid_size]->DisableDragRowSize();
+		m_grid_map[grid_size]->DisableDragColMove();
+		m_grid_map[grid_size]->DisableDragGridSize();
+		m_grid_map[grid_size]->SetDefaultCellAlignment(wxALIGN_RIGHT, wxALIGN_CENTER);
+		m_grid_map[grid_size]->SetRowLabelAlignment(wxALIGN_LEFT, wxALIGN_CENTER);
+
+		wxString group = group_by_name[var_name];
+		if (grid_size.n_cols == 1)
 		{
-			m_grid_map[var_size] = new wxExtGridCtrl(m_notebook, IDOB_GRID);
-			m_grid_map[var_size]->EnableEditing(false);
-			m_grid_map[var_size]->DisableDragCell();
-			m_grid_map[var_size]->DisableDragRowSize();
-			m_grid_map[var_size]->DisableDragColMove();
-			m_grid_map[var_size]->DisableDragGridSize();
-			m_grid_map[var_size]->SetDefaultCellAlignment(wxALIGN_RIGHT, wxALIGN_CENTER);
-			m_grid_map[var_size]->SetRowLabelAlignment(wxALIGN_LEFT, wxALIGN_CENTER);
-
-			wxString group = group_by_name[m_selectedVars[i]];
-			if (var_size.n_cols == 1)
-			{
-				m_notebook->AddPage(m_grid_map[var_size], group, wxID_ANY);
-				m_tabLabels_map[var_size] = group;
-			}
-			else
-			{
-				m_notebook->AddPage(m_grid_map[var_size], m_sim->GetLabel(m_selectedVars[i]), wxID_ANY);
-				m_tabLabels_map[var_size] = m_sim->GetLabel(m_selectedVars[i]);
-			}
-
-			wxArrayString selected_vars;
-			selected_vars.Add(m_selectedVars[i]);
-			m_selectedVars_map[var_size] = selected_vars;
-
-			m_pageBySize[var_size] = page;
-			page++;
+			m_notebook->AddPage(m_grid_map[grid_size], group, wxID_ANY);
+			m_tabLabels_map[grid_size] = group;
 		}
 		else
 		{
-			wxArrayString vars = m_selectedVars_map[var_size];
-			vars.Add(m_selectedVars[i]);
-			m_selectedVars_map[var_size] = vars;
-		}	
+			m_notebook->AddPage(m_grid_map[grid_size], m_sim->GetLabel(var_name), wxID_ANY);
+			m_tabLabels_map[grid_size] = m_sim->GetLabel(var_name);
+		}
+		m_pageBySize[grid_size] = m_numberOfTabs;
+		m_numberOfTabs++;
 	}
+}
 
-	for (std::map<ArraySizeKey, wxExtGridCtrl*, ArraySizeKeyCompare>::iterator it = m_grid_map.begin(); it != m_grid_map.end(); it++)
-		UpdateGridSpecific(m_grid_map[it->first], m_gridTable_map[it->first], m_selectedVars_map[it->first], it->first == m_lastSize);
-	
-	// set selection to tab of last variable selected
-	if (page > 0)
+void TabularBrowser::SetLastSelection()
+{
+	if (m_grid_map.find(m_lastSize) != m_grid_map.end())
 	{
-		m_notebook->SetSelection(m_pageBySize[m_lastSize]);
-		m_lastPageSelected = m_pageBySize[m_lastSize];
-		m_grid = m_grid_map[m_lastSize];
-		m_gridTable = m_gridTable_map[m_lastSize];
+		// set selection to tab of last variable selected
+		if (m_numberOfTabs > 0)
+		{
+			m_notebook->SetSelection(m_pageBySize[m_lastSize]);
+			m_lastPageSelected = m_pageBySize[m_lastSize];
+			m_grid = m_grid_map[m_lastSize];
+			m_gridTable = m_gridTable_map[m_lastSize];
+			m_grid->Show();
+		}
 	}
 }
 void TabularBrowser::UpdateGridSpecific(wxExtGridCtrl*& grid, ResultsTable*& gridTable, wxArrayString selectedVars, bool show_grid)
@@ -2156,7 +2131,7 @@ void TabularBrowser::UpdateGridSpecific(wxExtGridCtrl*& grid, ResultsTable*& gri
 	grid->Freeze();
 
 	if (gridTable) gridTable->ReleaseData();
-
+	
 	gridTable = new ResultsTable();
 	gridTable->LoadData(m_sim, selectedVars);
 	gridTable->SetAttrProvider(new wxExtGridCellAttrProvider);
@@ -2210,7 +2185,6 @@ void TabularBrowser::UpdateGridSpecific(wxExtGridCtrl*& grid, ResultsTable*& gri
 	}
 	else
 		grid->AutoSizeColumns();
-		//grid->SetColLabelSize(wxGRID_AUTOSIZE);
 
 	grid->Thaw();
 
@@ -2218,13 +2192,84 @@ void TabularBrowser::UpdateGridSpecific(wxExtGridCtrl*& grid, ResultsTable*& gri
 	grid->GetParent()->Layout();
 	grid->ForceRefresh();
 }
+void TabularBrowser::UpdatePageNumbers(int removed_page)
+{
+	for (PageIterator it = m_pageBySize.begin(); it != m_pageBySize.end(); it++)
+	{
+		if (it->second > removed_page)
+			--(it->second);
+	}
+}
+void TabularBrowser::ProcessRemoved(wxString name)
+{
+	ArraySizeKey removed_size = m_selectedVarsBySizeMap[name];
+	m_selectedVars.Remove(name);
+	m_selectedVarsBySizeMap.erase(name);
+	wxArrayString vars = m_selectedVars_map[removed_size];
+	vars.Remove(name);
+	
+	if (!vars.IsEmpty())
+	{
+		m_selectedVars_map[removed_size]= vars;
+		m_lastSize = removed_size;
+		UpdateGridSpecific(m_grid_map[removed_size], m_gridTable_map[removed_size], vars, true);
+	}
+	else
+	{	
+		m_selectedVars_map.erase(removed_size);
+		int removed_page = m_pageBySize[removed_size];
+		m_notebook->DeletePage(removed_page);
+		m_pageBySize.erase(removed_size);
+		UpdatePageNumbers(removed_page);
+		m_tabLabels_map.erase(removed_size);
+
+		m_numberOfTabs--;
+
+		if (m_numberOfTabs > 0)
+			m_lastSize = m_selectedVarsBySizeMap.begin()->second;
+		else
+			m_notebook->DeleteAllPages();
+			
+		m_grid_map.erase(removed_size);
+		m_gridTable_map.erase(removed_size);
+	}
+	UpdateCase();
+}
+void TabularBrowser::ProcessAdded(wxString name, bool internal_add)
+{
+	int i = -1;
+	if (internal_add)
+		m_selectedVars.Add(name);
+
+	i = m_selectedVars.Index(name);
+	ArraySizeKey var_size = GetVariableSize(i);
+
+	wxArrayString vars = m_selectedVars_map[var_size];
+	bool add = true;
+	for (int j = 0; j != vars.size(); j++)
+	{
+		if (!vars[j].Cmp(m_selectedVars[i]))
+		{
+			add = false;
+			break;
+		}
+	}
+	if (add)
+		vars.Add(m_selectedVars[i]);
+
+	m_selectedVars_map[var_size] = vars;
+	m_selectedVarsBySizeMap[name] = var_size;
+	m_lastSize = var_size;
+
+	UpdateNotebook(var_size, name);
+	UpdateGridSpecific(m_grid_map[var_size], m_gridTable_map[var_size], vars, internal_add);
+	UpdateCase();
+}
 
 void TabularBrowser::Setup( Simulation *data )
 {
 	m_sim = data;
-	
 	UpdateAll();
-	UpdateNotebook();
 }
 wxArrayString TabularBrowser::GetSelectedVariables()
 {
@@ -2233,23 +2278,45 @@ wxArrayString TabularBrowser::GetSelectedVariables()
 
 void TabularBrowser::SelectVariables(const wxArrayString &list)
 {
-	m_selectedVars = list;
-	UpdateAll();
-}
-void TabularBrowser::UpdateVariableSize(int index, ArraySizeKey &var_size)
-{
-	VarValue *vv = m_sim->GetValue(m_selectedVars[index]);
-	var_size.n_cols = vv->Rows();
-	var_size.n_rows = vv->Columns();
-	if (var_size.n_cols == 1)
-		var_size.key = -1;
-	else
+	if (list.size() > 0)
 	{
-		var_size.key = m_key;
-		m_key++;
+		m_selectedVars = list;
+		UpdateAll();
 	}
-	m_selectedVarsWithSize[m_selectedVars[index]] = var_size;
-	m_lastSize = var_size;
+	
+}
+ArraySizeKey TabularBrowser::GetVariableSize(int index)
+{
+	ArraySizeKey var_size;
+	bool contained = false;
+	for (ArrayIterator it = m_selectedVars_map.begin(); it != m_selectedVars_map.end(); it++)
+	{
+		wxArrayString vars = it->second;
+		for (int j = 0; j != vars.size(); j++)
+		{
+			if (!vars[j].Cmp(m_selectedVars[index]))
+			{
+				contained = true;
+				var_size = it->first;
+			}
+		}
+	}
+
+	if (!contained)
+	{
+		VarValue *vv = m_sim->GetValue(m_selectedVars[index]);
+
+		var_size.n_cols = vv->Rows();
+		var_size.n_rows = vv->Columns();
+		if (var_size.n_cols == 1)
+			var_size.key = -1;
+		else
+		{
+			var_size.key = m_key;
+			m_key++;
+		}
+	}
+	return var_size;
 }
 void TabularBrowser::UpdateAll()
 {
@@ -2265,7 +2332,8 @@ void TabularBrowser::UpdateAll()
 	PopulateSelectionList(m_varSel, &m_names, m_sim);
 
 	size_t i = 0;
-	while (i<m_selectedVars.Count())
+
+	while (i< m_selectedVars.Count())
 	{
 		int idx = m_names.Index(m_selectedVars[i]);
 		if (idx < 0)
@@ -2273,6 +2341,7 @@ void TabularBrowser::UpdateAll()
 		else
 		{
 			m_varSel->SelectRowInCol(idx);
+			ProcessAdded(m_selectedVars[i], false);
 			i++;
 		}
 	}
@@ -2280,8 +2349,12 @@ void TabularBrowser::UpdateAll()
 	m_varSel->ExpandSelections();
 	m_varSel->Scroll(vsx, vsy);
 	m_varSel->Thaw();
-
-	UpdateNotebook();
+	SetLastSelection();
+}
+void TabularBrowser::UpdateCase()
+{
+	m_sim->GetCase()->SetProperty("DataBrowserVariables",
+		wxJoin(m_selectedVars, ','));
 }
 
 void TabularBrowser::OnCommand(wxCommandEvent &evt)
@@ -2290,8 +2363,12 @@ void TabularBrowser::OnCommand(wxCommandEvent &evt)
 	{
 	case IDOB_CLEAR_ALL:
 		{
-			m_selectedVars.Clear();
 			m_varSearch->Clear();
+			wxArrayString tmp = m_selectedVars;
+			int size = tmp.size();
+			for (int i = 0; i != size; i++)
+				ProcessRemoved(tmp[i]); 
+				
 			UpdateAll();
 		}
 		break;
@@ -2320,8 +2397,8 @@ void TabularBrowser::OnCommand(wxCommandEvent &evt)
 				}
 				int count = 1;
 				int size = m_gridTable_map.size();
-				std::map<ArraySizeKey, ResultsTable*, ArraySizeKeyCompare>::iterator it;
-				for (it = m_gridTable_map.begin(); it != m_gridTable_map.end(); it++)
+				
+				for (ResultsIterator it = m_gridTable_map.begin(); it != m_gridTable_map.end(); it++)
 				{
 					m_gridTable = it->second;
 					dat.Clear();
@@ -2405,26 +2482,22 @@ void TabularBrowser::OnVarSel( wxCommandEvent & )
 	{
 		wxString name = m_names[ row ];
 
-		// need a way to query size without loading
 		VarValue *var_value = m_sim->GetOutput(name);
 
 		if (checked && m_selectedVars.Index(name) == wxNOT_FOUND)
-			m_selectedVars.Add(name);
-		
+			ProcessAdded(name);
 		
 		if (!checked && m_selectedVars.Index(name) != wxNOT_FOUND)
-		{
-			m_selectedVars.Remove(name);
-			m_selectedVarsWithSize.erase(name);
-		}
-		UpdateNotebook();
+			ProcessRemoved(name);
+
+		SetLastSelection();
 	}
 }
-void TabularBrowser::OnPageChanged(wxBookCtrlEvent& event)
+void TabularBrowser::OnPageChanged(wxAuiNotebookEvent& event)
 {
 	m_lastPageSelected = m_notebook->GetSelection();
 	ArraySizeKey current_size;
-	for (std::map<ArraySizeKey, size_t, ArraySizeKeyCompare>::iterator it = m_pageBySize.begin(); it != m_pageBySize.end(); it++)
+	for (PageIterator it = m_pageBySize.begin(); it != m_pageBySize.end(); it++)
 	{
 		if (it->second == m_lastPageSelected)
 		{
@@ -2432,7 +2505,7 @@ void TabularBrowser::OnPageChanged(wxBookCtrlEvent& event)
 			break;
 		}
 	}
-	if (m_gridTable_map.size() > 0)
+	if (m_grid_map.find(current_size) != m_grid_map.end())
 	{
 		m_grid = m_grid_map[current_size];
 		m_gridTable = m_gridTable_map[current_size];
