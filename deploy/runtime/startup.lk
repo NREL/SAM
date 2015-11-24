@@ -536,7 +536,7 @@ setup_thirdparty_pages( LIFETIME_PV ); //includes building load calculator by de
 
 
 setconfig( 'Flat Plate PV', 'Commercial' );
-setmodules( ['pvsamv1', 'utilityrate3_tab', 'cashloan']);
+setmodules( ['pvsamv1', 'utilityrate3', 'cashloan']);
 setup_flat_plate_pv_pages();
 setup_battery_pages();
 addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
