@@ -1260,9 +1260,35 @@ The 3D shade calculator calculates a set of beam and diffuse shade factors from 
 
 \section{Snow Coverage}\label{sec-snow}
 
-**SEVERIN**
+The snow coverage model uses snow depth data in the weather file to estimate the portion of the array that is covered by snow and calculate a corresponding reduction in power generation at each time step. Snow coverage on the array is measured as a percentage along the height of a row (see figure \ref{fig-snowCoverage} for details). The only snow removal process considered is sliding, and as such the model does not account for snow melting or wind removal. Power losses due to snow coverage are applied just after module performance is calculated.
 
-The snow coverage model uses snow depth data in the weather file to estimate the portion of the array that is covered by snow and calculate a reduction in incident irradiance.
+\begin{figure}
+\begin{center}
+\includegraphics[scale=0.5]{snow-coverage-diagram}
+\caption{Snow coverage diagram on PV arrays. Snow coverage is shown in blue and is measured as the percent of each row's height which is covered (i.e. 0\% coverage corresponds to no snow on the paned while 100\% coverage corresponds to a completely covered panel). The coverage in the figure would correspond to roughly 40\%.}
+\label{fig-snowCoverage}
+\end{center}
+\end{figure}
+
+At each time step the snow model first consults the snow depth data to determine if a new snowfall has occurred. If this is found to be true, the model sets the snow coverage on the current time step to 100\%. Otherwise the model estimates what the current coverage would be by considering the previous time step's coverage, the ambient temperature, and the tilt of array. In order to accomplish this, the model starts be determining whether or not snow sliding will occur during the current time step. When the following condition is true sliding will occur:
+
+\begin{equation}
+	T_a > \frac{I_{poa}}{m}
+	\label{eqn-snowSlidingCondition}
+\end{equation}
+
+Where $T_a$ is the current ambient temperature, $I_{poa}$ is the current plane of array irradiance, and $m$ is an experimentally determined constant ($-80\ W/m^2/C$). For more details on the derivation of this equation please see \citet{marion-snowmodel}. When sliding does not occur, the model sets the current snow coverage to the same coverage value as the preceding time step. However, if sliding does occur, the model sets the current coverage to the coverage at the end of the preceding time step minus a snow slide amount ($s.s.a$) which can be found using:
+
+\begin{equation}
+	s.s.a. = 1.97 * sin( tilt )
+	\label{eqn-snowSlideAmount}
+\end{equation}
+
+Where $tilt$ refers to the tilt of the PV array (see figure \ref{fig-snowCoverage}) and $1.97$ is another experimentally determined constant \citep{marion-snowmodel}.
+
+After determining the snow coverage, the model calculates the array's corresponding reduction in power generation. This is done by assuming that if a string is partially covered by snow it will be shut down by the row's power controller. Conversely, strings which are totally uncovered will produce power normally. For instance, in figure \ref{fig-snowCoverage}, the power production of the bottom string would be set to zero while the top string would behave normally resulting in a 50\% loss in the array's overall power production. In SAM's work flow, the power losses resulting from snow coverage are applied just after the module's performance is calculated but before accounting for degradation and power inversion losses.
+
+Usage of the snow model amounts to a check box labeled 'Estimate losses due to snow' which can be found at the bottom of the 'Shading and Snow' input page. If this is check box is activated, then the snow coverage losses will be automatically calculated as described in this section. To note, not all weatherfiles will contain snow depth data or else may contain a few 'bad' snow depth values (defined as any value that is less than zero, greater than 20 feet, or non-existent). If a bad snow depth value is found during the simulation then that value will be replaced with zero depth. This replacement will only occur for the first 500 bad values, after which if another bad snow depth value is encountered then the simulation will fail.
 
 \section{Self Shading}\label{sec-selfshad}
 
@@ -2964,6 +2990,8 @@ Radiation}. New York, NY: Academic Press.
 \bibitem[Van Schalwijk(1991)]{vanschalkwijk1991} Van Schalkwijk, M.; Kil, T.; Van der Weiden, J. (1991). ``Dependence of diffuse light blocking on the ground cover ratio for stationary PV arrays", Solar Energy (61:1); pp. 381-387.
 
 \bibitem[Wilcox(2008)]{tmy3manual} Wilcox, S.; Marion, W. (2008). ``Users Manual for TMY3 Datasets." TP-581-43156. Golden, CO: National Renewable Energy Laboratory. Accessed November 13, 2013. \url{http://www.nrel.gov/docs/fy08osti/43156.pdf}.
+
+\bibitem[Marion(2013)]{marion-snowmodel} Marion, W. (2013). ``Measured and modeled photovoltaic system energy losses from snow for Colorado and Wisconsin locations." Solar Energy 97 (2013): pp. 112-121.
 
 \end{thebibliography}
 
