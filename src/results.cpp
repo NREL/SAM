@@ -2515,7 +2515,7 @@ void TabularBrowser::OnPageChanged(wxAuiNotebookEvent& event)
 		m_grid = m_gridMap[current_size];
 		m_gridTable = m_gridTableMap[current_size];
 	}
-	wxMessageBox("Changing");
+	// wxMessageBox("Changing");
 }
 void TabularBrowser::OnPageClose(wxAuiNotebookEvent& event)
 {
@@ -2527,14 +2527,13 @@ void TabularBrowser::OnPageClose(wxAuiNotebookEvent& event)
 		for (int i = 0; i != vars.size(); i++)
 			ProcessRemoved(vars[i],false);
 	}
-	wxMessageBox("Closing");
+	// wxMessageBox("Closing");
 
 }
 void TabularBrowser::OnPageClosed(wxAuiNotebookEvent& event)
 {
 	UpdateAll();
-	wxMessageBox("Closed");
-
+	// wxMessageBox("Closed");
 }
 
 void TabularBrowser::GetTextData(wxString &dat, char sep)
