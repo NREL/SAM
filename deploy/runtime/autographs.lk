@@ -32,7 +32,7 @@ function ppa_sale_leaseback_graphs()
 
 function ppa_partnership_graphs()
 {
-		agraph( 'cf_sponsor_aftertax_cash,cf_tax_investor_aftertax_cash', 'Partner After-tax Cash Flows', 'Year', '$', 5, true, true, 'bottom' );
+		agraph( 'cf_sponsor_aftertax,cf_tax_investor_aftertax', 'Partner After-tax Cash Flows', 'Year', '$', 5, true, true, 'bottom' );
 }
 
 
