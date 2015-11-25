@@ -214,6 +214,8 @@ public:
 	wxArrayString GetSelectedVariables();
 	void SelectVariables(const wxArrayString &list);
 	ArraySizeKey GetVariableSize(int index);
+	ArraySizeKey GetVariableSizeByPage();
+	wxExtGridCtrl* GetPage();
 
 private:	
 	Simulation *m_sim;
@@ -225,12 +227,11 @@ private:
 	void OnPageClosed(wxAuiNotebookEvent& event);
 	void UpdateNotebook(ArraySizeKey grid_size, wxString name);
 	void UpdateGridSpecific(wxExtGridCtrl*& grid, ResultsTable*& grid_table, wxArrayString selected_vars, bool show_grid);
-	void UpdatePageNumbers(int removed_page);
 	void UpdateCase();
 	
 	typedef std::map<ArraySizeKey, wxArrayString, ArraySizeKeyCompare>::iterator ArrayIterator;
+	typedef std::map<ArraySizeKey, wxExtGridCtrl*, ArraySizeKeyCompare>::iterator GridIterator;
 	typedef std::map<ArraySizeKey, ResultsTable*, ArraySizeKeyCompare>::iterator ResultsIterator;
-	typedef std::map<ArraySizeKey, size_t, ArraySizeKeyCompare>::iterator PageIterator;
 
 	wxAuiNotebook *m_notebook;
 	std::map<ArraySizeKey, wxExtGridCtrl*, ArraySizeKeyCompare> m_gridMap;
@@ -238,10 +239,8 @@ private:
 	std::map<ArraySizeKey, wxString, ArraySizeKeyCompare> m_tabLabelsMap;
 	std::map<wxString, ArraySizeKey> m_selectedVarsBySizeMap;
 	std::map<ArraySizeKey, wxArrayString, ArraySizeKeyCompare> m_selectedVarsMap;
-	std::map<ArraySizeKey, size_t, ArraySizeKeyCompare> m_pageBySize;
 
 	size_t m_numberOfTabs;
-	size_t m_lastPageSelected;
 	ArraySizeKey m_lastSize;
 
 	wxExtGridCtrl *m_grid;
