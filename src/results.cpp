@@ -159,7 +159,7 @@ void PopulateSelectionList( wxDVSelectionListCtrl *sel, wxArrayString *names, Si
 				wxString grp = ui_hint["GROUP"];
 				if (grp == "UR_MTP")
 					gbn = "Utility Rate Data by Tier/Period"; // monthly tier x period
-				else if (grp == "UR_ATP")
+				else if (grp == "UR_AM")
 					gbn = "Utility Rate Data by Year"; // annual monthly
 			}
 
@@ -1792,7 +1792,6 @@ public:
 			if (row >= 0 && row < Matrix->nrows()
 				&& MatrixRowLabels.size() > 0 && row < MatrixRowLabels.size())
 				return MatrixRowLabels[row];
-			else return wxEmptyString;
 		}
 
 		if (MinCount == MaxCount && MaxCount == 12)
