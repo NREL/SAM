@@ -2835,6 +2835,7 @@ Manual or automated dispatch selection & \texttt{batt\_dispatch\_choice} \\
 \textbf{Minimum state of charge (\%)} & \texttt{batt\_minimum\_SOC} \\
 \textbf{Maximum state of charge (\%)} & \texttt{batt\_maximum\_SOC} \\
 \textbf{Minimum time at charge state (min)} & \texttt{batt\_minimum\_modetime} \\
+\textbf{Target grid power (kW)} & \texttt{batt\_target\_power}\\
 \textbf{Charge from grid} (period \texttt{\textbf{N}}) & \texttt{pv.storage.p\textbf{N}.gridcharge} \\
 \textbf{Charge from PV} (period \texttt{\textbf{N}}) & \texttt{pv.storage.p\textbf{N}.charge} \\
 \textbf{Allow discharge} (period \texttt{\textbf{N}}) & \texttt{pv.storage.p\textbf{N}.discharge} \\
@@ -2953,6 +2954,14 @@ There is often a desire to consider a standalone battery system.  To model this 
 
 \section{DC Connected Battery}\label{sec-batterymodel-dc}
 SAM currently assumes that the battery is placed on the AC bus, such that PV power has been inverted before being transferred to the battery.  Another popular configuration is to connect the battery to the DC side of the PV system such that DC/AC and AC/DC conversion losses can be avoided when charging the battery from excess PV generation.  To mimic a DC connection, the "AC to DC conversion efficiency" input can be increased, such that it is assumed no input conversion penalty is present.  Even in a DC connected system there is likely to be some loss through a charge controller.  The "DC to AC conversion efficiency" can be left alone, since power coming out of the battery will be inverted to place on the AC bus.  It is not currently possible to increase the PV system's DC-to-AC ratio and use excess DC power to charge the battery.
+
+\section{Advanced Dispatch Options} \label{sec-batterymodel-dispatch}
+SAM's manual dispatch controller is described in detail in \citep{diorio2015a}.  Several additional modes have since been added to provide more capabilities to the user.  Regardless of which dispatch model is selected, the minimum and maximum states of charge as well as the minimum time at charge state must be specified.  There are currently four available dispatch models, including the manual dispatch model.
+
+Automated one-day look ahead and one-day look behind peak shaving controllers have been added to perform demand reduction. The one-day look ahead controller uses a perfect 24-hour prediction on PV production and electric load requirements to generate a dispatch strategy for the battery which reduces the grid power required as much as possible over the 24 hours within the state-charge and power limitations of the system.  The one-day look behind assumes that the last 24 hours are a good reflection of what to expect for the next 24 hours, such that yesterdays PV and electric load are used to generate a dispatch strategy for the battery.  This mode is meant as an illustration of a potentially more realistic controller that seeks to use past information to predict the future.  When either of these automated peak shaving modes are selected, the manual dispatch inputs will gray out since they are not required.  
+
+There is also an automated grid power target model, which allows the user to input the maximum grid power limit for every timestep.  The automated controller uses a 24-hour look ahead to predict the grid power required.  The battery is then dispatched to reduce all grid power events which exceed the target threshold for that timestep.  For all timesteps where the grid power is less than the threshold, the battery is allowed to charge from the grid until the power is equal to the threshold.  
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
