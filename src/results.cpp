@@ -1844,8 +1844,8 @@ public:
 					if (vv->Type() == VV_ARRAY)
 					{
 						cc.Values = vv->Array(&cc.N);
-						if (cc.N == 1)
-							vv->ChangeType(VV_NUMBER);
+						// if (cc.N == 1)
+						// 	vv->ChangeType(VV_NUMBER);
 					}
 					if (vv->Type() == VV_NUMBER)
 					{
