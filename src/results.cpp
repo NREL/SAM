@@ -2060,7 +2060,7 @@ TabularBrowser::TabularBrowser( wxWindow *parent )
 	lbs->Add(m_varSel, 1, wxEXPAND, 0);
 	lhs->SetSizer(lbs);
 
-	m_notebook = new wxAuiNotebook(splitwin, IDOB_NOTEBOOK, wxDefaultPosition, wxDefaultSize);
+	m_notebook = new wxAuiNotebook(splitwin, IDOB_NOTEBOOK, wxDefaultPosition, wxDefaultSize, wxAUI_NB_TOP | wxAUI_NB_TAB_SPLIT | wxAUI_NB_TAB_MOVE | wxAUI_NB_SCROLL_BUTTONS | wxAUI_NB_CLOSE_ON_ALL_TABS | wxAUI_NB_MIDDLE_CLICK_CLOSE);
 
 	splitwin->SetMinimumPaneSize( 170 );
 	splitwin->SplitVertically(lhs, m_notebook, (int)(210*wxGetScreenHDScale()));
@@ -2114,25 +2114,27 @@ void TabularBrowser::SetLastSelection()
 		if (m_numberOfTabs > 0)
 		{
 			int page_index = m_notebook->GetPageIndex(m_gridMap[m_lastSize]);
-			m_notebook->SetSelection(page_index);
+			// Hack to change page back and forth to new page to ensure proper rendering
+			int page_toggle = (page_index == 0 ? 1 : 0);
+			m_notebook->ChangeSelection(page_toggle);
+
+			m_notebook->ChangeSelection(page_index);
 			m_grid = m_gridMap[m_lastSize];
 			m_gridTable = m_gridTableMap[m_lastSize];
 			m_grid->Show();
 		}
 	}
 }
-void TabularBrowser::UpdateGridSpecific(wxExtGridCtrl*& grid, ResultsTable*& gridTable, wxArrayString selectedVars, bool show_grid)
+void TabularBrowser::UpdateGridSpecific(wxExtGridCtrl*& grid, ResultsTable*& gridTable, wxArrayString selectedVars)
 {
 	if (!m_sim)
 	{
 		grid->Hide();
 		return;
 	}
-	else if (show_grid)
-		grid->Show();
 	else
-		grid->Hide();
-
+		grid->Show();
+	
 	grid->Freeze();
 
 	if (gridTable) gridTable->ReleaseData();
@@ -2198,7 +2200,7 @@ void TabularBrowser::UpdateGridSpecific(wxExtGridCtrl*& grid, ResultsTable*& gri
 	grid->ForceRefresh();
 }
 
-void TabularBrowser::ProcessRemoved(wxString name, bool internal_delete)
+void TabularBrowser::ProcessRemoved(wxString name, bool internal_delete, bool remove_all)
 {
 	ArraySizeKey removed_size = m_selectedVarsBySizeMap[name];
 	m_selectedVars.Remove(name);
@@ -2206,11 +2208,11 @@ void TabularBrowser::ProcessRemoved(wxString name, bool internal_delete)
 	wxArrayString vars = m_selectedVarsMap[removed_size];
 	vars.Remove(name);
 	
-	if (!vars.IsEmpty())
+	if (!vars.IsEmpty() && !remove_all)
 	{
 		m_selectedVarsMap[removed_size]= vars;
 		m_lastSize = removed_size;
-		UpdateGridSpecific(m_gridMap[removed_size], m_gridTableMap[removed_size], vars, true);
+		UpdateGridSpecific(m_gridMap[removed_size], m_gridTableMap[removed_size], vars);
 	}
 	else
 	{	
@@ -2259,7 +2261,7 @@ void TabularBrowser::ProcessAdded(wxString name, bool internal_add)
 	m_lastSize = var_size;
 
 	UpdateNotebook(var_size, name);
-	UpdateGridSpecific(m_gridMap[var_size], m_gridTableMap[var_size], vars, internal_add);
+	UpdateGridSpecific(m_gridMap[var_size], m_gridTableMap[var_size], vars);
 	UpdateCase();
 }
 
@@ -2381,7 +2383,7 @@ void TabularBrowser::OnCommand(wxCommandEvent &evt)
 			wxArrayString tmp = m_selectedVars;
 			int size = tmp.size();
 			for (int i = 0; i != size; i++)
-				ProcessRemoved(tmp[i]); 
+				ProcessRemoved(tmp[i], true, true); 
 				
 			UpdateAll();
 		}
@@ -2502,7 +2504,7 @@ void TabularBrowser::OnVarSel( wxCommandEvent & )
 			ProcessAdded(name);
 		
 		if (!checked && m_selectedVars.Index(name) != wxNOT_FOUND)
-			ProcessRemoved(name);
+			ProcessRemoved(name, true, false);
 
 		SetLastSelection();
 	}
@@ -2519,6 +2521,7 @@ void TabularBrowser::OnPageChanged(wxAuiNotebookEvent& event)
 }
 void TabularBrowser::OnPageClose(wxAuiNotebookEvent& event)
 {
+	/*
 	ArraySizeKey current_size = GetVariableSizeByPage();
 	if (m_selectedVarsMap.find(current_size) != m_selectedVarsMap.end())
 	{
@@ -2528,10 +2531,33 @@ void TabularBrowser::OnPageClose(wxAuiNotebookEvent& event)
 			ProcessRemoved(vars[i],false);
 	}
 	// wxMessageBox("Closing");
-
+	*/
 }
 void TabularBrowser::OnPageClosed(wxAuiNotebookEvent& event)
 {
+	int page_count = m_notebook->GetPageCount();
+	for (GridIterator it = m_gridMap.begin(); it != m_gridMap.end(); it++)
+	{
+		bool found = false;
+		ArraySizeKey grid_size = it->first;
+		for (int i = 0; i != page_count; i++)
+		{
+			wxExtGridCtrl * notebook_grid = (wxExtGridCtrl*)(m_notebook->GetPage(i));
+			if (notebook_grid == it->second)
+			{
+				found = true;
+				break;
+			}
+		}
+		if (!found)
+		{
+			wxArrayString vars = m_selectedVarsMap[grid_size];
+			for (int i = 0; i != vars.size(); i++)
+				ProcessRemoved(vars[i], false, true);
+			break;
+		}
+	}
+
 	UpdateAll();
 	// wxMessageBox("Closed");
 }
