@@ -195,7 +195,6 @@ private:
 	void OnContextMenu(wxCommandEvent &evt);
 	DECLARE_EVENT_TABLE();
 };
-
 class TabularBrowser : public wxPanel
 {
 public:
@@ -203,7 +202,7 @@ public:
 
 	TabularBrowser( wxWindow *parent );
 
-	void ProcessRemoved(wxString, bool internal_delete=true);
+	void ProcessRemoved(wxString, bool internal_delete, bool remove_all = false);
 	void ProcessAdded(wxString, bool internal_add=true);
 	void SetLastSelection();
 	void Setup( Simulation *sim );
@@ -226,7 +225,7 @@ private:
 	void OnPageClose(wxAuiNotebookEvent& event);
 	void OnPageClosed(wxAuiNotebookEvent& event);
 	void UpdateNotebook(ArraySizeKey grid_size, wxString name);
-	void UpdateGridSpecific(wxExtGridCtrl*& grid, ResultsTable*& grid_table, wxArrayString selected_vars, bool show_grid);
+	void UpdateGridSpecific(wxExtGridCtrl*& grid, ResultsTable*& grid_table, wxArrayString selected_vars);
 	void UpdateCase();
 	
 	typedef std::map<ArraySizeKey, wxArrayString, ArraySizeKeyCompare>::iterator ArrayIterator;
