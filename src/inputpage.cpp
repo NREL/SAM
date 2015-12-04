@@ -463,12 +463,17 @@ bool ActiveInputPage::DataExchange( wxUIObject *obj, VarValue &val, DdxDir dir )
 		if ( dir == VAR_TO_OBJ ) da->Set( val.Array() );
 		else val.Set( da->Get() );
 	}
-	else if ( AFDataMatrixCtrl *dm = obj->GetNative<AFDataMatrixCtrl>() )
+	else if (AFDataMatrixCtrl *dm = obj->GetNative<AFDataMatrixCtrl>())
 	{
-		if ( dir == VAR_TO_OBJ ) dm->SetData( val.Matrix() );
-		else val.Set( dm->GetData() );
+		if (dir == VAR_TO_OBJ) dm->SetData(val.Matrix());
+		else val.Set(dm->GetData());
 	}
-	else if ( AFMonthByHourFactorCtrl *dm = obj->GetNative<AFMonthByHourFactorCtrl>() )
+	else if (AFExtDataMatrixCtrl *dm = obj->GetNative<AFExtDataMatrixCtrl>())
+	{
+		if (dir == VAR_TO_OBJ) dm->SetData(val.Matrix());
+		else val.Set(dm->GetData());
+	}
+	else if (AFMonthByHourFactorCtrl *dm = obj->GetNative<AFMonthByHourFactorCtrl>())
 	{
 		if ( dir == VAR_TO_OBJ ) dm->SetData( val.Matrix() );
 		else val.Set( dm->GetData() );

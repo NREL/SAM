@@ -277,7 +277,8 @@ private:
 class GridCellChoiceRenderer : public wxGridCellStringRenderer
 {
 public:
-	GridCellChoiceRenderer(const wxString& choices = wxEmptyString);
+	GridCellChoiceRenderer();
+	GridCellChoiceRenderer(const wxString& choices);
 
 	virtual void Draw(wxGrid& grid,
 		wxGridCellAttr& attr,
@@ -294,6 +295,7 @@ public:
 
 protected:
 	wxString GetString(const wxGrid& grid, int row, int col);
+	bool m_init;
 
 	wxArrayString m_choices;
 };
@@ -302,6 +304,7 @@ class GridCellChoiceEditor : public wxGridCellEditor
 {
 public:
 	GridCellChoiceEditor();
+	GridCellChoiceEditor(const wxString& choices);
 
 	virtual void Create(wxWindow* parent,
 		wxWindowID id,
@@ -333,6 +336,7 @@ public:
 	void UpdateComboBox();
 private:
 	long m_index;
+	bool m_init;
 	wxComboBox *Combo() const { return (wxComboBox *)m_control; }
 	wxString        m_value;
 	wxArrayString   m_choices;

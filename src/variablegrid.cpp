@@ -428,6 +428,8 @@ wxString VariableGridData::GetTypeName(int row, int col)
 				return "GridCellVarValue";
 			else if (type == "DataMatrix")
 				return "GridCellVarValue";
+			else if (type == "ExtDataMatrix")
+				return "GridCellVarValue";
 			else if (type == "ShadingFactors")
 				return "GridCellVarValue";
 			else if (type == "ValueMatrix")

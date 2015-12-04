@@ -336,6 +336,12 @@ bool GridCellVarValueEditor::DisplayEditor(wxUIObject *obj, wxString &name, wxGr
 		if (vpe.ShowModal() == wxID_OK)
 			ActiveInputPage::DataExchange(vpe.GetUIObject(), *vv, ActiveInputPage::OBJ_TO_VAR);
 	}
+	else if (type == "ExtDataMatrix")
+	{
+		VariablePopupDialog vpe(grid, obj, name, vv, vi);
+		if (vpe.ShowModal() == wxID_OK)
+			ActiveInputPage::DataExchange(vpe.GetUIObject(), *vv, ActiveInputPage::OBJ_TO_VAR);
+	}
 	else if (type == "ShadingFactors")
 	{
 		obj->CreateNative(grid);
@@ -1438,8 +1444,13 @@ wxUIObject *VariablePopupDialog::GetUIObject()
 
 GridCellChoiceRenderer::GridCellChoiceRenderer(const wxString& choices)
 {
-	if (!choices.empty())
-		SetParameters(choices);
+	m_init = true;
+	SetParameters(choices);
+}
+
+GridCellChoiceRenderer::GridCellChoiceRenderer()
+{
+	m_init = false;
 }
 
 wxGridCellRenderer *GridCellChoiceRenderer::Clone() const
@@ -1456,7 +1467,8 @@ wxString GridCellChoiceRenderer::GetString(const wxGrid& grid, int row, int col)
 	{
 		wxString text;
 		long choiceno;
-		SetParameters(vgd->GetChoices(row, col));
+		if (!m_init)
+			SetParameters(vgd->GetChoices(row, col));
 		//table->GetValue(row, col).ToLong(&choiceno);
 		vgd->GetValue(row, col).ToLong(&choiceno);
 		if ((choiceno > -1) && (choiceno < (int)m_choices.size()))
@@ -1521,7 +1533,16 @@ void GridCellChoiceRenderer::SetParameters(const wxString& params)
 GridCellChoiceEditor::GridCellChoiceEditor()
 {
 	m_index = -1;
+	m_init = false;
 }
+
+GridCellChoiceEditor::GridCellChoiceEditor(const wxString& choices)
+{
+	m_index = -1;
+	SetParameters(choices);
+	m_init = true;
+}
+
 
 wxGridCellEditor *GridCellChoiceEditor::Clone() const
 {
@@ -1605,7 +1626,8 @@ void GridCellChoiceEditor::BeginEdit(int row, int col, wxGrid* grid)
 		evtHandler->SetInSetFocus(true);
 
 	GridChoiceData *vgd = (GridChoiceData *)grid->GetTable();
-	SetParameters(vgd->GetChoices(row, col));
+	if (!m_init)
+		SetParameters(vgd->GetChoices(row, col));
 	UpdateComboBox();
 
 	if (vgd->CanGetValueAs(row, col, wxGRID_VALUE_NUMBER))

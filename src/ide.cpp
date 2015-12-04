@@ -1181,9 +1181,11 @@ void UIEditorPanel::OnCommand( wxCommandEvent &evt )
 						vi = m_ipd.Variables().Create(name, VV_STRING);
 					else if ( type == "DataArray" )
 						vi = m_ipd.Variables().Create(name, VV_ARRAY);
-					else if ( type == "DataMatrix" )
+					else if (type == "DataMatrix")
 						vi = m_ipd.Variables().Create(name, VV_MATRIX);
-					else if ( type == "ShadingFactors" )
+					else if (type == "ExtDataMatrix")
+						vi = m_ipd.Variables().Create(name, VV_MATRIX);
+					else if (type == "ShadingFactors")
 						vi = m_ipd.Variables().Create(name, VV_TABLE);
 					else if ( type == "ValueMatrix" )
 						vi = m_ipd.Variables().Create(name, VV_MATRIX);
