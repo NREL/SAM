@@ -2022,7 +2022,6 @@ BEGIN_EVENT_TABLE( TabularBrowser, wxPanel )
 	EVT_TEXT(IDOB_SEARCH, TabularBrowser::OnCommand)
 	EVT_DVSELECTIONLIST(IDOB_VARSEL, TabularBrowser::OnVarSel)
 	EVT_AUINOTEBOOK_PAGE_CHANGED(IDOB_NOTEBOOK, TabularBrowser::OnPageChanged)
-	EVT_AUINOTEBOOK_PAGE_CLOSE(IDOB_NOTEBOOK, TabularBrowser::OnPageClose)
 	EVT_AUINOTEBOOK_PAGE_CLOSED(IDOB_NOTEBOOK, TabularBrowser::OnPageClosed)
 
 END_EVENT_TABLE()
@@ -2519,20 +2518,7 @@ void TabularBrowser::OnPageChanged(wxAuiNotebookEvent& event)
 	}
 	// wxMessageBox("Changing");
 }
-void TabularBrowser::OnPageClose(wxAuiNotebookEvent& event)
-{
-	/*
-	ArraySizeKey current_size = GetVariableSizeByPage();
-	if (m_selectedVarsMap.find(current_size) != m_selectedVarsMap.end())
-	{
-		wxArrayString vars = m_selectedVarsMap[current_size];
-		// wx internally deletes page
-		for (int i = 0; i != vars.size(); i++)
-			ProcessRemoved(vars[i],false);
-	}
-	// wxMessageBox("Closing");
-	*/
-}
+
 void TabularBrowser::OnPageClosed(wxAuiNotebookEvent& event)
 {
 	int page_count = m_notebook->GetPageCount();

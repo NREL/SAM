@@ -222,7 +222,6 @@ private:
 	void OnCommand(wxCommandEvent &evt);
 	void OnVarSel(wxCommandEvent &evt);
 	void OnPageChanged(wxAuiNotebookEvent& event);
-	void OnPageClose(wxAuiNotebookEvent& event);
 	void OnPageClosed(wxAuiNotebookEvent& event);
 	void UpdateNotebook(ArraySizeKey grid_size, wxString name);
 	void UpdateGridSpecific(wxExtGridCtrl*& grid, ResultsTable*& grid_table, wxArrayString selected_vars);
