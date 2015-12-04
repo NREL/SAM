@@ -16,6 +16,7 @@ class wxTextCtrl;
 class wxStaticText;
 class wxListBox;
 class wxExtGridCtrl;
+class AFExtDataMatrixTable;
 
 static wxColour UIColorIndicatorFore(60, 60, 60);
 static wxColour UIColorIndicatorBack(230, 230, 230);
@@ -257,6 +258,122 @@ private:
 
 	DECLARE_EVENT_TABLE();
 };
+
+
+
+
+/* Extended Data Matrix Control */
+
+BEGIN_DECLARE_EVENT_TYPES()
+DECLARE_EVENT_TYPE(wxEVT_AFExtDataMatrixCtrl_CHANGE, 0)
+END_DECLARE_EVENT_TYPES()
+
+#define EVT_EXTDATAMATRIX(id, func)  EVT_COMMAND(id, wxEVT_AFExtDataMatrixCtrl_CHANGE, func)
+
+class AFExtDataMatrixCtrl : public wxPanel
+{
+public:
+	AFExtDataMatrixCtrl(wxWindow *parent, int id,
+		const wxPoint &pos = wxDefaultPosition,
+		const wxSize &sz = wxDefaultSize,
+		const wxString &collabels = wxEmptyString,
+		const wxString &rowlabels = wxEmptyString,
+		const wxString &choices = wxEmptyString,
+		const int &choice_col = -1,
+		bool sidebuttons = false);
+
+	void SetData(const matrix_t<float> &mat);
+	void GetData(matrix_t<float> &mat);
+	matrix_t<float> GetData() const { return m_data; }
+
+	void SetValueLimits(float min = 0.0, float max = 0.0);
+	void GetValueLimits(float *min, float *max);
+
+	bool Export(const wxString &file);
+	bool Import(const wxString &file);
+
+	// '#' = y2*(i/n) + y1*i + y0
+	void SetRowLabelFormat(const wxString &val_fmt, double y2, double y1, double y0);
+	void SetColLabelFormat(const wxString &val_fmt, double y2, double y1, double y0);
+
+	void SetCaption(const wxString &cap);
+	wxString GetCaption();
+
+	void ShowLabels(bool b);
+	bool ShowLabels();
+
+	void ShadeR0C0(bool b);
+	bool ShadeR0C0();
+
+	void ShadeC0(bool b);
+	bool ShadeC0();
+
+	void ShowCols(bool b);
+	bool ShowCols();
+
+	void ShowColLabels(bool b);
+	bool ShowColLabels();
+
+	void SetColLabels(const wxString &colLabels);
+	wxString GetColLabels();
+
+	void SetNumRowsLabel(const wxString &numRowsLabel);
+	wxString GetNumRowsLabel();
+
+	void SetNumColsLabel(const wxString &numColsLabel);
+	wxString GetNumColsLabel();
+
+	void PasteAppendRows(bool b);
+	bool PasteAppendRows();
+
+	void SetChoices(const wxString &choices);
+	wxString GetChoices();
+
+	void SetChoiceColumn(const int &choiceColumn);
+	int GetChoiceColumn();
+
+private:
+
+	wxString m_choices;
+	int m_choiceColumn;
+	AFExtDataMatrixTable *m_gridTable;
+
+	wxString m_rowFormat;
+	double m_rowY2, m_rowY1, m_rowY0;
+	wxString m_colFormat;
+	double m_colY2, m_colY1, m_colY0;
+
+	matrix_t<float> m_data;
+	float m_minVal, m_maxVal;
+	wxNumericCtrl *m_numRows, *m_numCols;
+	wxExtGridCtrl *m_grid;
+	wxStaticText *m_caption, *m_labelCols, *m_labelRows;
+	wxButton *m_btnImport, *m_btnExport, *m_btnCopy, *m_btnPaste;
+	bool m_showLabels;
+	bool m_shadeR0C0;
+	bool m_shadeC0;
+	bool m_showcols;
+	bool m_showColLabels;
+	wxString m_colLabels;
+	wxString m_numRowsLabel;
+	wxString m_numColsLabel;
+	bool m_pasteappendrows;
+
+	void NormalizeToLimits();
+
+	void OnCellChange(wxGridEvent &evt);
+	void OnRowsColsChange(wxCommandEvent &evt);
+	void OnCommand(wxCommandEvent &evt);
+
+
+	void MatrixToGrid();
+
+	DECLARE_EVENT_TABLE();
+};
+
+
+
+
 
 
 
