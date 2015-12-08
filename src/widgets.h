@@ -197,8 +197,14 @@ public:
 	void SetCaption(const wxString &cap);
 	wxString GetCaption();
 
-	void ShowLabels(bool b);
-	bool ShowLabels();
+	void ShowRows(bool b);
+	bool ShowRows();
+
+	void ShowRowLabels(bool b);
+	bool ShowRowLabels();
+
+	void SetRowLabels(const wxString &rowLabels);
+	wxString GetRowLabels();
 
 	void ShadeR0C0(bool b);
 	bool ShadeR0C0();
@@ -237,7 +243,9 @@ private:
 	wxExtGridCtrl *m_grid;
 	wxStaticText *m_caption, *m_labelCols, *m_labelRows;
 	wxButton *m_btnImport, *m_btnExport, *m_btnCopy, *m_btnPaste;
-	bool m_showLabels;
+	bool m_showrows;
+	bool m_showRowLabels;
+	wxString m_rowLabels;
 	bool m_shadeR0C0;
 	bool m_shadeC0;
 	bool m_showcols;
@@ -300,8 +308,15 @@ public:
 	void SetCaption(const wxString &cap);
 	wxString GetCaption();
 
-	void ShowLabels(bool b);
-	bool ShowLabels();
+	void ShowRows(bool b);
+	bool ShowRows();
+
+	void ShowRowLabels(bool b);
+	bool ShowRowLabels();
+
+	void SetRowLabels(const wxString &rowLabels);
+	wxString GetRowLabels();
+
 
 	void ShadeR0C0(bool b);
 	bool ShadeR0C0();
@@ -350,7 +365,9 @@ private:
 	wxExtGridCtrl *m_grid;
 	wxStaticText *m_caption, *m_labelCols, *m_labelRows;
 	wxButton *m_btnImport, *m_btnExport, *m_btnCopy, *m_btnPaste;
-	bool m_showLabels;
+	bool m_showrows;
+	bool m_showRowLabels;
+	wxString m_rowLabels;
 	bool m_shadeR0C0;
 	bool m_shadeC0;
 	bool m_showcols;

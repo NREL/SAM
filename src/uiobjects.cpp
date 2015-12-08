@@ -376,11 +376,13 @@ class wxUIDataMatrixObject : public wxUIObject
 public:
 	wxUIDataMatrixObject() {
 		AddProperty( "PasteAppendRows", new wxUIProperty( false ) );
-		AddProperty( "ShowLabels", new wxUIProperty( false ) );
+		AddProperty("ShowRows", new wxUIProperty(true));
+		AddProperty("ShowRowLabels", new wxUIProperty(false));
+		AddProperty("RowLabels", new wxUIProperty(wxString("")));
 		AddProperty("ShadeR0C0", new wxUIProperty(false));
 		AddProperty("ShadeC0", new wxUIProperty(false));
 		AddProperty("ShowCols", new wxUIProperty(true));
-		AddProperty( "ShowColLabels", new wxUIProperty( true ) );
+		AddProperty("ShowColLabels", new wxUIProperty( true ) );
 		AddProperty("ColLabels", new wxUIProperty(wxString("")));
 		AddProperty("NumRowsLabel", new wxUIProperty(wxString("Rows:")));
 		AddProperty("NumColsLabel", new wxUIProperty(wxString("Cols:")));
@@ -395,7 +397,9 @@ public:
 	virtual wxWindow *CreateNative( wxWindow *parent ) {
 		AFDataMatrixCtrl *dm = new AFDataMatrixCtrl( parent, wxID_ANY, wxDefaultPosition, wxDefaultSize, Property("Layout").GetInteger() == 1 );
 		dm->PasteAppendRows( Property("PasteAppendRows").GetBoolean() );
-		dm->ShowLabels( Property("ShowLabels").GetBoolean() );
+		dm->ShowRows(Property("ShowRows").GetBoolean());
+		dm->ShowRowLabels(Property("ShowRowLabels").GetBoolean());
+		dm->SetRowLabels(Property("RowLabels").GetString());
 		dm->ShadeR0C0(Property("ShadeR0C0").GetBoolean());
 		dm->ShadeC0(Property("ShadeC0").GetBoolean());
 		dm->ShowCols(Property("ShowCols").GetBoolean());
@@ -412,9 +416,11 @@ public:
 			if ( id == "PasteAppendRows" ) dm->PasteAppendRows( p->GetBoolean() );
 			if (id == "ShadeR0C0") dm->ShadeR0C0(p->GetBoolean());
 			if (id == "ShadeC0") dm->ShadeC0(p->GetBoolean());
+			if (id == "ShowRows") dm->ShowRows(p->GetBoolean());
+			if (id == "ShowRowLabels") dm->ShowRowLabels(p->GetBoolean());
+			if (id == "RowLabels") dm->SetRowLabels(p->GetString());
 			if (id == "ShowCols") dm->ShowCols(p->GetBoolean());
-			if ( id == "ShowLabels" ) dm->ShowLabels( p->GetBoolean() );
-			if ( id == "ShowColLabels" ) dm->ShowColLabels( p->GetBoolean() );
+			if (id == "ShowColLabels") dm->ShowColLabels(p->GetBoolean());
 			if (id == "ColLabels") dm->SetColLabels(p->GetString());
 			if (id == "NumRowsLabel") dm->SetNumRowsLabel(p->GetString());
 			if (id == "NumColsLabel") dm->SetNumColsLabel(p->GetString());
@@ -430,7 +436,9 @@ class wxUIExtDataMatrixObject : public wxUIObject
 public:
 	wxUIExtDataMatrixObject() {
 		AddProperty("PasteAppendRows", new wxUIProperty(false));
-		AddProperty("ShowLabels", new wxUIProperty(false));
+		AddProperty("ShowRows", new wxUIProperty(true));
+		AddProperty("ShowRowLabels", new wxUIProperty(false));
+		AddProperty("RowLabels", new wxUIProperty(wxString("")));
 		AddProperty("ShadeR0C0", new wxUIProperty(false));
 		AddProperty("ShadeC0", new wxUIProperty(false));
 		AddProperty("ShowCols", new wxUIProperty(true));
@@ -449,9 +457,11 @@ public:
 	virtual wxUIObject *Duplicate() { wxUIObject *o = new wxUIExtDataMatrixObject; o->Copy(this); return o; }
 	virtual bool IsNativeObject() { return true; }
 	virtual wxWindow *CreateNative(wxWindow *parent) {
-		AFExtDataMatrixCtrl *dm = new AFExtDataMatrixCtrl(parent, wxID_ANY, wxDefaultPosition, wxDefaultSize, Property("ColLabels").GetString(), Property("ColLabels").GetString(), Property("Choices").GetString(), Property("ChoiceColumn").GetInteger(), Property("Layout").GetInteger() == 1);
+		AFExtDataMatrixCtrl *dm = new AFExtDataMatrixCtrl(parent, wxID_ANY, wxDefaultPosition, wxDefaultSize, Property("ColLabels").GetString(), Property("RowLabels").GetString(), Property("Choices").GetString(), Property("ChoiceColumn").GetInteger(), Property("Layout").GetInteger() == 1);
 		dm->PasteAppendRows(Property("PasteAppendRows").GetBoolean());
-		dm->ShowLabels(Property("ShowLabels").GetBoolean());
+		dm->ShowRows(Property("ShowRows").GetBoolean());
+		dm->ShowRowLabels(Property("ShowRowLabels").GetBoolean());
+		dm->SetRowLabels(Property("RowLabels").GetString());
 		dm->ShadeR0C0(Property("ShadeR0C0").GetBoolean());
 		dm->ShadeC0(Property("ShadeC0").GetBoolean());
 		dm->ShowCols(Property("ShowCols").GetBoolean());
@@ -469,7 +479,8 @@ public:
 			if (id == "ShadeR0C0") dm->ShadeR0C0(p->GetBoolean());
 			if (id == "ShadeC0") dm->ShadeC0(p->GetBoolean());
 			if (id == "ShowCols") dm->ShowCols(p->GetBoolean());
-			if (id == "ShowLabels") dm->ShowLabels(p->GetBoolean());
+			if (id == "ShowRows") dm->ShowRows(p->GetBoolean());
+			if (id == "ShowRowLabels") dm->ShowRowLabels(p->GetBoolean());
 			if (id == "ShowColLabels") dm->ShowColLabels(p->GetBoolean());
 //			if (id == "ColLabels") dm->SetColLabels(p->GetString());
 			if (id == "NumRowsLabel") dm->SetNumRowsLabel(p->GetString());
