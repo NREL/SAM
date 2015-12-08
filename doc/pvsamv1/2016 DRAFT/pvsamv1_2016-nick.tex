@@ -2835,7 +2835,9 @@ Manual or automated dispatch selection & \texttt{batt\_dispatch\_choice} \\
 \textbf{Minimum state of charge (\%)} & \texttt{batt\_minimum\_SOC} \\
 \textbf{Maximum state of charge (\%)} & \texttt{batt\_maximum\_SOC} \\
 \textbf{Minimum time at charge state (min)} & \texttt{batt\_minimum\_modetime} \\
-\textbf{Target grid power (kW)} & \texttt{batt\_target\_power}\\
+Target grid power input type (0/1) & \texttt{batt\_target\_choice}\\
+Target grid power time series(kW) & \texttt{batt\_target\_power}\\
+Target grid power single or monthly (kW) & \texttt{batt\_target\_power\_monthly}\\
 \textbf{Charge from grid} (period \texttt{\textbf{N}}) & \texttt{pv.storage.p\textbf{N}.gridcharge} \\
 \textbf{Charge from PV} (period \texttt{\textbf{N}}) & \texttt{pv.storage.p\textbf{N}.charge} \\
 \textbf{Allow discharge} (period \texttt{\textbf{N}}) & \texttt{pv.storage.p\textbf{N}.discharge} \\
@@ -2960,7 +2962,7 @@ SAM's manual dispatch controller is described in detail in \citep{diorio2015a}. 
 
 Automated one-day look ahead and one-day look behind peak shaving controllers have been added to perform demand reduction. The one-day look ahead controller uses a perfect 24-hour prediction on PV production and electric load requirements to generate a dispatch strategy for the battery which reduces the grid power required as much as possible over the 24 hours within the state-charge and power limitations of the system.  The one-day look behind assumes that the last 24 hours are a good reflection of what to expect for the next 24 hours, such that yesterdays PV and electric load are used to generate a dispatch strategy for the battery.  This mode is meant as an illustration of a potentially more realistic controller that seeks to use past information to predict the future.  When either of these automated peak shaving modes are selected, the manual dispatch inputs will gray out since they are not required.  
 
-There is also an automated grid power target model, which allows the user to input the maximum grid power limit for every timestep.  The automated controller uses a 24-hour look ahead to predict the grid power required.  The battery is then dispatched to reduce all grid power events which exceed the target threshold for that timestep.  For all timesteps where the grid power is less than the threshold, the battery is allowed to charge from the grid until the power is equal to the threshold.  
+There is also an automated grid power target model, which allows the user to input the maximum grid power limit. This limit can be input for every timestep or monthly.  To enter monthly information, \textbf{batt\_target\_choice} should be set to 0, and \textbf{batt\_target\_power\_monthly} should be passed in as a length 12 array.  The target power for each timestep within the month will be set to the monthly input.  To enter timeseries target power information, \textbf{batt\_target\_choice} should be set to 1, and \textbf{batt\_target\_power} should be passed in as an array with as many entries as that of the weather file.  The automated controller uses a 24-hour look ahead to predict the grid power required.  The battery is then dispatched to reduce all grid power events which exceed the target threshold for that timestep.  For all timesteps where the grid power is less than the threshold, the battery is allowed to charge from the grid until the power is equal to the threshold. 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
