@@ -927,6 +927,11 @@ public:
 		d_mat = da;
 	}
 
+	matrix_t<float> GetMatrix()
+	{
+		return *d_mat;
+	}
+
 	void SetChoiceCol(int &col)
 	{
 		choice_col = col;
@@ -2258,6 +2263,13 @@ void AFExtDataMatrixCtrl::GetData(matrix_t<float> &mat)
 	mat = m_data;
 }
 
+/*
+matrix_t<float> AFExtDataMatrixCtrl::GetData() const
+{
+	return m_gridTable->GetMatrix();
+}
+*/
+
 void AFExtDataMatrixCtrl::SetValueLimits(float min, float max)
 {
 	m_minVal = min;
@@ -2318,6 +2330,7 @@ void AFExtDataMatrixCtrl::OnCellChange(wxGridEvent &evt)
 		&& irow >= 0 && icol >= 0)
 		m_data.at(irow, icol) = val;
 
+	m_gridTable->SetMatrix(&m_data);
 	m_grid->SetCellValue(irow, icol, wxString::Format("%g", val));
 
 	wxCommandEvent dmcevt(wxEVT_AFExtDataMatrixCtrl_CHANGE, this->GetId());
@@ -2411,17 +2424,21 @@ void AFExtDataMatrixCtrl::OnCommand(wxCommandEvent &evt)
 
 void AFExtDataMatrixCtrl::MatrixToGrid()
 {
+	m_data = m_gridTable->GetMatrix();
 	int r, nr = m_data.nrows();
 	int c, nc = m_data.ncols();
+
+	m_grid->SetTable(m_gridTable);
 
 	m_numRows->SetValue(nr);
 	m_numCols->SetValue(nc);
 
+	/*
 	m_grid->ResizeGrid(nr, nc);
 	for (r = 0; r<nr; r++)
 		for (c = 0; c<nc; c++)
 			m_grid->SetCellValue(r, c, wxString::Format("%g", m_data.at(r, c)));
-
+	*/
 	if (!m_rowFormat.IsEmpty())
 	{
 		for (r = 0; r<nr; r++)
