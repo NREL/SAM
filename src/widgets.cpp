@@ -1533,8 +1533,9 @@ AFDataMatrixCtrl::AFDataMatrixCtrl( wxWindow *parent, int id,
 {
 	m_pasteappendrows = false;
 	m_colLabels="";
+	m_rowLabels = "";
 	m_showColLabels = false;
-	m_showLabels = false;
+	m_showRowLabels = false;
 	m_shadeR0C0 = true;
 	m_shadeC0 = true;
 	m_showcols = true;
@@ -1643,6 +1644,18 @@ wxString AFDataMatrixCtrl::GetColLabels()
 	return m_colLabels;
 }
 
+void AFDataMatrixCtrl::SetRowLabels(const wxString &rowLabels)
+{
+	m_rowLabels = rowLabels;
+	m_rowLabels.Replace("\\n", "\n");
+	MatrixToGrid();
+}
+
+wxString AFDataMatrixCtrl::GetRowLabels()
+{
+	return m_rowLabels;
+}
+
 void AFDataMatrixCtrl::SetNumRowsLabel(const wxString &numRowsLabel)
 {
 	m_numRowsLabel = numRowsLabel;
@@ -1686,6 +1699,17 @@ bool AFDataMatrixCtrl::ShowColLabels()
 	return m_showColLabels;
 }
 
+void AFDataMatrixCtrl::ShowRowLabels(bool b)
+{
+	m_showRowLabels = b;
+	MatrixToGrid();
+}
+
+bool AFDataMatrixCtrl::ShowRowLabels()
+{
+	return m_showRowLabels;
+}
+
 
 void AFDataMatrixCtrl::ShowCols(bool b)
 {
@@ -1698,6 +1722,19 @@ void AFDataMatrixCtrl::ShowCols(bool b)
 bool AFDataMatrixCtrl::ShowCols()
 {
 	return m_showcols;
+}
+
+void AFDataMatrixCtrl::ShowRows(bool b)
+{
+	m_showrows = b;
+	m_numRows->Show(m_showrows);
+	m_labelRows->Show(m_showrows);
+	this->Layout();
+}
+
+bool AFDataMatrixCtrl::ShowRows()
+{
+	return m_showrows;
 }
 
 void AFDataMatrixCtrl::ShadeR0C0(bool b)
@@ -1937,15 +1974,19 @@ void AFDataMatrixCtrl::MatrixToGrid()
 		}
 	}
 
-	if (m_showLabels)
+	if (m_showRowLabels)
 	{
-		m_grid->SetRowLabelSize( 60 );
-		m_grid->SetColLabelSize( 20 );
+		wxArrayString as = wxStringTokenize(m_rowLabels, ",");
+		for (r = 0; r<as.Count() && r < m_grid->GetNumberRows(); r++)
+		{
+			m_grid->SetRowLabelValue(r, as[r]);
+//			m_grid->AutoSizeRowLabelSize(r);
+		}
+		m_grid->SetRowLabelSize(wxGRID_AUTOSIZE);
 	}
 	else
 	{
 		m_grid->SetRowLabelSize( 1 );
-		m_grid->SetColLabelSize( 1 );
 	}
 
 	if ( m_showColLabels )
@@ -1956,9 +1997,11 @@ void AFDataMatrixCtrl::MatrixToGrid()
 			m_grid->SetColLabelValue(c, as[c]);
 			m_grid->AutoSizeColLabelSize( c ); 
 		}
-		
 		m_grid->SetColLabelSize( wxGRID_AUTOSIZE );
-
+	}
+	else
+	{
+		m_grid->SetColLabelSize(1);
 	}
 
 	m_labelRows->SetLabel(m_numRowsLabel);
@@ -1996,16 +2039,6 @@ wxString AFDataMatrixCtrl::GetCaption()
 	return m_caption->GetLabel();
 }
 
-void AFDataMatrixCtrl::ShowLabels(bool b)
-{
-	m_showLabels = b;
-	MatrixToGrid();
-}
-
-bool AFDataMatrixCtrl::ShowLabels()
-{
-	return m_showLabels;
-}
 
 
 /* Extended Data Matrix Control with choice column */
@@ -2035,9 +2068,10 @@ bool sidebuttons)
 : wxPanel(parent, id, pos, sz)
 {
 	m_pasteappendrows = false;
-	m_colLabels = "";
+	m_colLabels = collabels;
+	m_rowLabels = rowlabels;
 	m_showColLabels = false;
-	m_showLabels = false;
+	m_showRowLabels = false;
 	m_shadeR0C0 = true;
 	m_shadeC0 = true;
 	m_showcols = true;
@@ -2152,6 +2186,19 @@ wxString AFExtDataMatrixCtrl::GetColLabels()
 	return m_colLabels;
 }
 
+void AFExtDataMatrixCtrl::SetRowLabels(const wxString &rowLabels)
+{
+	m_rowLabels = rowLabels;
+	m_rowLabels.Replace("\\n", "\n");
+	MatrixToGrid();
+}
+
+wxString AFExtDataMatrixCtrl::GetRowLabels()
+{
+	return m_rowLabels;
+}
+
+
 void AFExtDataMatrixCtrl::SetNumRowsLabel(const wxString &numRowsLabel)
 {
 	m_numRowsLabel = numRowsLabel;
@@ -2195,6 +2242,16 @@ bool AFExtDataMatrixCtrl::ShowColLabels()
 	return m_showColLabels;
 }
 
+void AFExtDataMatrixCtrl::ShowRowLabels(bool b)
+{
+	m_showRowLabels = b;
+	MatrixToGrid();
+}
+
+bool AFExtDataMatrixCtrl::ShowRowLabels()
+{
+	return m_showRowLabels;
+}
 
 void AFExtDataMatrixCtrl::ShowCols(bool b)
 {
@@ -2208,6 +2265,20 @@ bool AFExtDataMatrixCtrl::ShowCols()
 {
 	return m_showcols;
 }
+
+void AFExtDataMatrixCtrl::ShowRows(bool b)
+{
+	m_showrows = b;
+	m_numRows->Show(m_showrows);
+	m_labelRows->Show(m_showrows);
+	this->Layout();
+}
+
+bool AFExtDataMatrixCtrl::ShowRows()
+{
+	return m_showrows;
+}
+
 
 void AFExtDataMatrixCtrl::ShadeR0C0(bool b)
 {
@@ -2459,15 +2530,19 @@ void AFExtDataMatrixCtrl::MatrixToGrid()
 		}
 	}
 
-	if (m_showLabels)
+	if (m_showRowLabels)
 	{
-		m_grid->SetRowLabelSize(60);
-		m_grid->SetColLabelSize(20);
+		wxArrayString as = wxStringTokenize(m_rowLabels, ",");
+		for (r = 0; r<as.Count() && r < m_grid->GetNumberRows(); r++)
+		{
+			m_grid->SetRowLabelValue(r, as[r]);
+//			m_grid->AutoSizeRowLabelSize(r);
+		}
+		m_grid->SetRowLabelSize(wxGRID_AUTOSIZE);
 	}
 	else
 	{
 		m_grid->SetRowLabelSize(1);
-		m_grid->SetColLabelSize(1);
 	}
 
 	if (m_showColLabels)
@@ -2478,9 +2553,11 @@ void AFExtDataMatrixCtrl::MatrixToGrid()
 			m_grid->SetColLabelValue(c, as[c]);
 			m_grid->AutoSizeColLabelSize(c);
 		}
-
 		m_grid->SetColLabelSize(wxGRID_AUTOSIZE);
-
+	}
+	else
+	{
+		m_grid->SetColLabelSize(1);
 	}
 
 	m_labelRows->SetLabel(m_numRowsLabel);
@@ -2518,16 +2595,6 @@ wxString AFExtDataMatrixCtrl::GetCaption()
 	return m_caption->GetLabel();
 }
 
-void AFExtDataMatrixCtrl::ShowLabels(bool b)
-{
-	m_showLabels = b;
-	MatrixToGrid();
-}
-
-bool AFExtDataMatrixCtrl::ShowLabels()
-{
-	return m_showLabels;
-}
 
 
 
