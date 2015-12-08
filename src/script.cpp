@@ -603,12 +603,6 @@ public:
 		return true;
 	}
 	
-	virtual bool OnEval( int line )
-	{
-		wxGetApp().Yield( true );
-		return true;
-	}
-
 	virtual void OnOutput( const wxString &out )
 	{
 		m_scriptwin->AddOutput( out );
