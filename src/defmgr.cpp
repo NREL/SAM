@@ -48,7 +48,7 @@ ValueEditor::ValueEditor( wxWindow *parent )
 	m_text = new wxTextCtrl( this, ID_VALUE, wxEmptyString );
 	m_matrix = new AFDataMatrixCtrl( this, ID_MATRIX, wxDefaultPosition, wxDefaultSize, true );
 	m_matrix->ShadeR0C0( false );
-	m_matrix->ShowLabels( true );
+	m_matrix->ShowRowLabels( true );
 
 	m_fields = new wxListBox( this, ID_FIELDS );
 	

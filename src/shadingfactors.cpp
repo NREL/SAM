@@ -308,7 +308,7 @@ public:
 		m_enableAzal = new wxCheckBox( m_scrollWin, ID_ENABLE_AZAL, "Enable solar azimuth by altitude beam irradiance shading loss table" );
 		m_azal = new AFDataMatrixCtrl( m_scrollWin, wxID_ANY );
 		m_azal->SetInitialSize( wxSize(900,280) );
-		m_azal->ShowLabels( false );
+		m_azal->ShowRowLabels( false );
 
 		matrix_t<float> data(10, 18, 0);
 		for ( int c=0;c<18;c++ )
