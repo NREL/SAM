@@ -284,6 +284,7 @@ public:
 
 	void SetData(const matrix_t<float> &mat);
 	void GetData(matrix_t<float> &mat);
+//	matrix_t<float> GetData() const;
 	matrix_t<float> GetData() const { return m_data; }
 
 	void SetValueLimits(float min = 0.0, float max = 0.0);
