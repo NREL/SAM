@@ -212,7 +212,7 @@ function setup_commercial_pages_mat( mode, degradation ) // mode determines whet
               { 'name'='Financial Tax Credits','caption'='Tax Credits','collapsible'=true,'collapsible_var'='show_tax_credits', 'collapsed_by_default'=false },
               { 'name'='Financial Cash Incentives','caption'='Direct Cash Incentives','collapsible'=true,'collapsible_var'='show_cash_incentives', 'collapsed_by_default'=false } ]],
 		   { 'sidebar'='Incentives', 'help'='incentives' } );
-	addpage( [[ 'Utility Rate - Flat',
+	addpage( [[ 'Utility Rate - Flat_mat',
 			    { 'name'='Utility Rate - Description', 'caption'='Description and Applicability', 'collapsible'=true, 'collapsible_var'='ur_desc_is_shown', 'collapsed_by_default'=true }, 
 			    { 'name'='Utility Rate - Energy Charge_mat', 'caption'='Energy Charges', 'collapsible'=true, 'collapsible_var'='ur_ec_is_shown', 'collapsed_by_default'=true },
 			    { 'name'='Utility Rate - Demand Charge_mat', 'caption'='Demand Charges', 'collapsible'=true, 'collapsible_var'='ur_dc_is_shown', 'collapsed_by_default'=true } ]],
