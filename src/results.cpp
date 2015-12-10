@@ -1841,13 +1841,7 @@ public:
 					cc.Values = 0;
 					cc.N = 1;
 
-					if (vv->Type() == VV_ARRAY)
-					{
-						cc.Values = vv->Array(&cc.N);
-						// if (cc.N == 1)
-						// 	vv->ChangeType(VV_NUMBER);
-					}
-					if (vv->Type() == VV_NUMBER)
+					if (vv->Type() == VV_NUMBER || vv->Length() == 1)
 					{
 						cc.SingleValue = vv->Value();
 						cc.Values = &cc.SingleValue;
@@ -1856,6 +1850,8 @@ public:
 						MaxCount++;
 						MinCount++;
 					}
+					else if (vv->Type() == VV_ARRAY)
+						cc.Values = vv->Array(&cc.N);
 
 					if (cc.N > MaxCount)
 						MaxCount = cc.N;
