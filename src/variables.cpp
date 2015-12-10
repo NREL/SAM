@@ -540,7 +540,7 @@ bool VarValue::Boolean()
 
 float VarValue::Value()
 {
-	if ( m_type == VV_NUMBER) return (float)m_val;
+	if ( m_type == VV_NUMBER || Length() == 1) return (float)m_val;
 	else return std::numeric_limits<float>::quiet_NaN();
 }
 
