@@ -232,15 +232,15 @@ bool ShadingInputData::read( VarValue *root )
 }
 
 
-static const char *hourly_text = "The timestep option is appropriate if you have a set of beam shading losses for each of the simulation timesteps in a single year. ";
-static const char *mxh_text = "The Month by Hour option allows you to specify a set of 288 (12 months x 24 hours) beam shading losses that apply to the 24 hours of the day for each month of the year. Select a cell or group of cells and type a number between 0% and 100% to assign values to the table by hand. Click Import to import a table of values from a properly formatted text file. ";
-static const char *azal_text = "The Azimuth by Altitude option allows you to specify a set of beam shading losses for different sun positions.\n"
+static const char *hourly_text = "Enter beam shading loss values for each of the simulation time steps in a single year. ";
+static const char *mxh_text = "Enter 288 (24 hours x 12 month) beam shading loss values that apply to the 24 hours of the day for each month of the year. Select a cell or group of cells and type a number between 0% and 100% to assign values to the table by hand. Click Import to import a table of values from a properly formatted text file. ";
+static const char *azal_text = "Use the Azimuth by Altitude option if you have a set of beam shading losses for different sun positions.\n"
   "1. Define the size of the table by entering values for the number of rows and columns.\n"
-  "2. Enter solar azimuth values from 0 to 360 degrees in the first row of the table, where 0 = north, 90 = east, 180 = south, and 270 = west.\n"
-  "3. Enter solar altitude values from 0 to 90 degrees in the first column of the table, where zero is on the horizon.\n"
+  "2. Enter solar azimuth values (0 to 360 degrees) in the first row of the table, where 0 = north, 90 = east, 180 = south, 270 = west.\n"
+  "3. Enter solar altitude values (0 to 90 degrees) in the first column of the table, where zero is on the horizon.\n"
   "4. Enter shading losses as the shaded percentage of the beam component of the incident radiation in the remaining table cells.\n"
   "Click Paste to populate the table from your computer\'s clipboard, or click Import to import a table of values from a properly formatted text file.  ";
-static const char *diff_text = "The constant sky diffuse shading loss reduces the overall diffuse irradiance available by the specified loss.  Valid values are between 0% and 100%.";
+static const char *diff_text = "The constant sky diffuse shading loss reduces the diffuse irradiance for each time step in the year. Valid values are between 0% and 100%.";
 
 enum { ID_ENABLE_HOURLY = ::wxID_HIGHEST+999,
 	ID_ENABLE_MXH, ID_ENABLE_AZAL, ID_ENABLE_DIFF,
@@ -288,7 +288,7 @@ public:
 		m_scrollWin = new wxScrolledWindow( this, wxID_ANY );
 		m_scrollWin->SetScrollRate( 50, 50 );
 
-		m_enableTimestep = new wxCheckBox( m_scrollWin, ID_ENABLE_HOURLY, "Enable timestep beam irradiance shading losses" );
+		m_enableTimestep = new wxCheckBox( m_scrollWin, ID_ENABLE_HOURLY, "Enable time step beam irradiance shading losses" );
 		m_timestep = new wxShadingFactorsCtrl(m_scrollWin, wxID_ANY, wxDefaultPosition, wxDefaultSize, m_show_db_options);
 		m_timestep->SetInitialSize(wxSize(900, 200));
 		m_timestep->SetMinuteCaption("Time step in minutes:");
@@ -301,11 +301,11 @@ public:
 //			cl.push_back(wxString::Format("String %d", i+1));
 //		m_timestep->SetColLabels(cl);
 
-		m_enableMxH = new wxCheckBox( m_scrollWin, ID_ENABLE_MXH, "Enable month by hour beam irradiance shading losses" );
+		m_enableMxH = new wxCheckBox( m_scrollWin, ID_ENABLE_MXH, "Enable month-by-hour beam irradiance shading losses" );
 		m_mxh = new AFMonthByHourFactorCtrl( m_scrollWin, wxID_ANY );
 		m_mxh->SetInitialSize( wxSize(900,330) );
 
-		m_enableAzal = new wxCheckBox( m_scrollWin, ID_ENABLE_AZAL, "Enable solar azimuth by altitude beam irradiance shading loss table" );
+		m_enableAzal = new wxCheckBox( m_scrollWin, ID_ENABLE_AZAL, "Enable solar azimuth-by-altitude beam irradiance shading losses" );
 		m_azal = new AFDataMatrixCtrl( m_scrollWin, wxID_ANY );
 		m_azal->SetInitialSize( wxSize(900,280) );
 		m_azal->ShowRowLabels( false );
@@ -317,14 +317,14 @@ public:
 			data.at(r, 0) = r*10;
 		m_azal->SetData( data );
 		
-		m_enableDiffuse = new wxCheckBox( m_scrollWin, ID_ENABLE_DIFF, "Enable sky diffuse shading loss (constant)" );
+		m_enableDiffuse = new wxCheckBox( m_scrollWin, ID_ENABLE_DIFF, "Enable constant sky diffuse shading loss" );
 		m_diffuseFrac = new wxNumericCtrl( m_scrollWin, wxID_ANY, 0.0 );
 		
 		wxSizer *import_tools = new wxStaticBoxSizer( wxHORIZONTAL, m_scrollWin, "Import shading data from external tools");
 		import_tools->Add( new wxButton( m_scrollWin, ID_IMPORT_PVSYST_NEAR_SHADING, "PVsyst near shading..." ), 0, wxALL, 3 );
 		import_tools->Add( new wxButton( m_scrollWin, ID_IMPORT_SUNEYE_HOURLY, "SunEye hourly shading..." ), 0, wxALL, 3 );
 		import_tools->Add( new wxButton( m_scrollWin, ID_IMPORT_SUNEYE_OBSTRUCTIONS, "SunEye obstructions table..." ), 0, wxALL, 3 );
-		import_tools->Add( new wxButton( m_scrollWin, ID_IMPORT_SOLPATH_MXH, "SolarPathfinder month by hour shading..." ), 0, wxALL, 3 );
+		import_tools->Add( new wxButton( m_scrollWin, ID_IMPORT_SOLPATH_MXH, "SolarPathfinder month-by-hour shading..." ), 0, wxALL, 3 );
 
 		wxColour text_color( 0, 128, 192 );
 		int wrap_width = 700;
