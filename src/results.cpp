@@ -2185,6 +2185,8 @@ void TabularBrowser::UpdateGridSpecific(wxExtGridCtrl*& grid, ResultsTable*& gri
 		grid->SetRowLabelSize(wxGRID_AUTOSIZE);
 		grid->HideColLabels();
 	}
+	else if (gridTable->IsMatrix)
+		grid->AutoSizeColumns();
 	else
 		grid->SetColLabelSize(wxGRID_AUTOSIZE);
 
