@@ -2186,7 +2186,7 @@ void TabularBrowser::UpdateGridSpecific(wxExtGridCtrl*& grid, ResultsTable*& gri
 		grid->HideColLabels();
 	}
 	else
-		grid->AutoSizeColumns();
+		grid->SetColLabelSize(wxGRID_AUTOSIZE);
 
 	grid->Thaw();
 
@@ -2512,7 +2512,7 @@ void TabularBrowser::OnPageChanged(wxAuiNotebookEvent& event)
 		m_grid = m_gridMap[current_size];
 		m_gridTable = m_gridTableMap[current_size];
 	}
-	// wxMessageBox("Changing");
+	// wxMessageBox("Changed");
 }
 
 void TabularBrowser::OnPageClosed(wxAuiNotebookEvent& event)
