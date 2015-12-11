@@ -2832,6 +2832,7 @@ Lithium-ion type & \texttt{batt\_lithium\_type} \\
 \midrule
 \multicolumn{2}{c}{Storage Dispatch Controller Inputs}\\
 Manual or automated dispatch selection & \texttt{batt\_dispatch\_choice} \\
+PV dispatch priority choice & \texttt{batt\_pv\_choice} \\
 \textbf{Minimum state of charge (\%)} & \texttt{batt\_minimum\_SOC} \\
 \textbf{Maximum state of charge (\%)} & \texttt{batt\_maximum\_SOC} \\
 \textbf{Minimum time at charge state (min)} & \texttt{batt\_minimum\_modetime} \\
@@ -2848,13 +2849,6 @@ Manual dispatch schedule & \texttt{dispatch\_manual\_sched} \\
 \multicolumn{2}{c}{Battery Lifetime Inputs}\\
 Battery lifetime matrix & \texttt{batt\_lifetime\_matrix} \\
 PV lifetime simulation & \texttt{pv\_lifetime\_simulation} \\
-\midrule
-\multicolumn{2}{c}{Battery Bank Replacement Inputs}\\
-Battery bank replacement option & \texttt{batt\_replacement\_option} \\
-\textbf{Battery bank replacement cost (\$)} & \texttt{batt\_replacement\_cost} \\
-\textbf{Battery cost escalation above inflation (\%)} & \texttt{batt\_replacement\_cost\_escal} \\
-\textbf{Battery bank replacement threshold} & \texttt{batt\_replacement\_capacity} \\
-\textbf{Battery bank replacement schedule} & \texttt{batt\_replacement\_schedule} \\
 \hline
 \end{tabular}
 \label{tab-batteryinputs}
@@ -2867,6 +2861,14 @@ Battery bank replacement option & \texttt{batt\_replacement\_option} \\
 \begin{tabular}{lll}
 \midrule
 Description / \textbf{Name in SAM} & Name in SSC \\
+\midrule
+\multicolumn{2}{c}{Battery Bank Replacement Inputs}\\
+Battery bank replacement option & \texttt{batt\_replacement\_option} \\
+\textbf{Battery bank replacement cost (\$)} & \texttt{batt\_replacement\_cost} \\
+\textbf{Battery cost escalation above inflation (\%)} & \texttt{batt\_replacement\_cost\_escal} \\
+\textbf{Battery bank replacement threshold} & \texttt{batt\_replacement\_capacity} \\
+\textbf{Battery bank replacement schedule} & \texttt{batt\_replacement\_schedule} \\
+
 \midrule
 \multicolumn{2}{c}{Thermal Behavior Inputs}\\
 Battery specific heat capacity (J/kg/K) & \texttt{batt\_Cp} \\
@@ -2892,6 +2894,8 @@ Description / \textbf{Name in SAM} & Name in SSC \\
 \textbf{Annual energy exported to grid (kWh)} & \texttt{annual\_export\_to\_grid\_energy} \\
 \textbf{Annual energy imported from grid (kWh)} & \texttt{annual\_import\_from\_grid\_energy} \\
 \textbf{Battery annual energy charged (kWh)} & \texttt{batt\_annual\_charge\_energy} \\
+\textbf{Battery annual energy charged from grid (kWh)} & \texttt{batt\_annual\_charge\_from\_grid} \\
+\textbf{Battery annual energy charged from pv (kWh)} & \texttt{batt\_annual\_charge\_from\_pv} \\
 \textbf{Battery annual energy discharge (kWh)} & \texttt{batt\_annual\_discharge\_energy} \\
 \textbf{Battery annual energy loss (kWh)} & \texttt{batt\_annual\_energy\_loss} \\
 \textbf{Battery bank replacements per year} & \texttt{batt\_bank\_replacement} \\
@@ -2901,6 +2905,7 @@ Description / \textbf{Name in SAM} & Name in SSC \\
 \multicolumn{2}{c}{Single Value Outputs}\\
 \textbf{Average battery cycle efficiency} & \texttt{average\_cycle\_efficiency} \\
 \textbf{Battery bank installed capacity} & \texttt{batt\_bank\_installed\_capacity} \\
+\textbf{Battery percent charged from PV} & \texttt{batt\_pv\_charge\_percent} \\
 \midrule
 \multicolumn{2}{c}{Monthly Value Outputs}\\
 \textbf{Energy to load from PV (kWh} & \texttt{monthly\_pv\_to\_load} \\
@@ -2958,11 +2963,14 @@ There is often a desire to consider a standalone battery system.  To model this 
 SAM currently assumes that the battery is placed on the AC bus, such that PV power has been inverted before being transferred to the battery.  Another popular configuration is to connect the battery to the DC side of the PV system such that DC/AC and AC/DC conversion losses can be avoided when charging the battery from excess PV generation.  To mimic a DC connection, the "AC to DC conversion efficiency" input can be increased, such that it is assumed no input conversion penalty is present.  Even in a DC connected system there is likely to be some loss through a charge controller.  The "DC to AC conversion efficiency" can be left alone, since power coming out of the battery will be inverted to place on the AC bus.  It is not currently possible to increase the PV system's DC-to-AC ratio and use excess DC power to charge the battery.
 
 \section{Advanced Dispatch Options} \label{sec-batterymodel-dispatch}
-SAM's manual dispatch controller is described in detail in \citep{diorio2015a}.  Several additional modes have since been added to provide more capabilities to the user.  Regardless of which dispatch model is selected, the minimum and maximum states of charge as well as the minimum time at charge state must be specified.  There are currently four available dispatch models, including the manual dispatch model.
+SAM's manual dispatch controller is described in detail in \citep{diorio2015a}.  The controller as described in that report prioritizes PV energy to meet the electric load before charging the battery.  In the latest version of SAM, the user can choose to prioritize PV energy to charge the battery before meeting the electric load or meet the load before charging the battery.  This option is available for all dispatch models.  To set the control to meet the electric load with PV first, set \textbf{batt\_pv\_choice} to 0.  To charge the battery first, set \textbf{batt\_pv\_choice} to 1.
+
+Several additional modes have since been added to provide more capabilities to the user.  Regardless of which dispatch model is selected, the minimum and maximum states of charge, the minimum time at charge state and the PV priority must be specified.  There are currently four available dispatch models, including the manual dispatch model.
 
 Automated one-day look ahead and one-day look behind peak shaving controllers have been added to perform demand reduction. The one-day look ahead controller uses a perfect 24-hour prediction on PV production and electric load requirements to generate a dispatch strategy for the battery which reduces the grid power required as much as possible over the 24 hours within the state-charge and power limitations of the system.  The one-day look behind assumes that the last 24 hours are a good reflection of what to expect for the next 24 hours, such that yesterdays PV and electric load are used to generate a dispatch strategy for the battery.  This mode is meant as an illustration of a potentially more realistic controller that seeks to use past information to predict the future.  When either of these automated peak shaving modes are selected, the manual dispatch inputs will gray out since they are not required.  
 
 There is also an automated grid power target model, which allows the user to input the maximum grid power limit. This limit can be input for every timestep or monthly.  To enter monthly information, \textbf{batt\_target\_choice} should be set to 0, and \textbf{batt\_target\_power\_monthly} should be passed in as a length 12 array.  The target power for each timestep within the month will be set to the monthly input.  To enter timeseries target power information, \textbf{batt\_target\_choice} should be set to 1, and \textbf{batt\_target\_power} should be passed in as an array with as many entries as that of the weather file.  The automated controller uses a 24-hour look ahead to predict the grid power required.  The battery is then dispatched to reduce all grid power events which exceed the target threshold for that timestep.  For all timesteps where the grid power is less than the threshold, the battery is allowed to charge from the grid until the power is equal to the threshold. 
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
