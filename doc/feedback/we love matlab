@@ -1,0 +1,7 @@
+First of all,
+I would like to thank you Paul for the webinar our team was able to watch. We are successfully using the SSC with MATLAB 2011a, we're big MATLAB fans and it works great. We are able to do some pretty good data manipulation and optimization, so far we wrote a script that optimizes for tilt angle and row spacing and are planning to do many more. I believe it executes much faster than in SAM using the parametric tool where I had done something similar previously. We are trying to do a DC:AC ratio optimization and are running into a problem with the missing output for Conversion efficiency in order to calculate clipping losses. It exists for the sandia model alone, but not for pvsamv1. We can run the sandia model in parallel with pvsamv1 to get these values but we were wondering why they did not appear since they both have the same inputs but pvsamv1 was missing outputs because we would prefer not to run an extra module as it allows us to run faster parametric simulations. Attached are the graphs we obtained before we over-sized, they look pretty nice. We love MATLAB!!
+
+Thanks Paul and everyone else working on SAM,
+
+Jonathan Topham, Pennoni Associates Inc, jtopham@outlook.com, SAM support forum 2013-08-07, https://sam.nrel.gov/content/ssc-output-conversion-efficiency-pvsamv1
+
