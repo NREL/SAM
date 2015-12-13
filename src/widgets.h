@@ -16,7 +16,7 @@ class wxTextCtrl;
 class wxStaticText;
 class wxListBox;
 class wxExtGridCtrl;
-class AFExtDataMatrixTable;
+class AFDataMatrixTable;
 
 static wxColour UIColorIndicatorFore(60, 60, 60);
 static wxColour UIColorIndicatorBack(230, 230, 230);
@@ -165,7 +165,8 @@ private:
 };
 
 class wxExtGridCtrl;
-
+ 
+/*
 BEGIN_DECLARE_EVENT_TYPES()
 DECLARE_EVENT_TYPE( wxEVT_AFDataMatrixCtrl_CHANGE, 0 )
 END_DECLARE_EVENT_TYPES()
@@ -267,28 +268,28 @@ private:
 	DECLARE_EVENT_TABLE();
 };
 
-
+*/
 
 
 /* Extended Data Matrix Control */
 
 BEGIN_DECLARE_EVENT_TYPES()
-DECLARE_EVENT_TYPE(wxEVT_AFExtDataMatrixCtrl_CHANGE, 0)
+DECLARE_EVENT_TYPE(wxEVT_AFDataMatrixCtrl_CHANGE, 0)
 END_DECLARE_EVENT_TYPES()
 
-#define EVT_EXTDATAMATRIX(id, func)  EVT_COMMAND(id, wxEVT_AFExtDataMatrixCtrl_CHANGE, func)
+#define EVT_DATAMATRIX(id, func)  EVT_COMMAND(id, wxEVT_AFDataMatrixCtrl_CHANGE, func)
 
-class AFExtDataMatrixCtrl : public wxPanel
+class AFDataMatrixCtrl : public wxPanel
 {
 public:
-	AFExtDataMatrixCtrl(wxWindow *parent, int id,
+	AFDataMatrixCtrl(wxWindow *parent, int id,
 		const wxPoint &pos = wxDefaultPosition,
 		const wxSize &sz = wxDefaultSize,
+		bool sidebuttons = false,
 		const wxString &collabels = wxEmptyString,
 		const wxString &rowlabels = wxEmptyString,
 		const wxString &choices = wxEmptyString,
-		const int &choice_col = -1,
-		bool sidebuttons = false);
+		const int &choice_col = -1);
 
 	void SetData(const matrix_t<float> &mat);
 	void GetData(matrix_t<float> &mat);
@@ -352,7 +353,7 @@ private:
 
 	wxString m_choices;
 	int m_choiceColumn;
-	AFExtDataMatrixTable *m_gridTable;
+	AFDataMatrixTable *m_gridTable;
 
 	wxString m_rowFormat;
 	double m_rowY2, m_rowY1, m_rowY0;

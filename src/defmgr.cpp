@@ -7,7 +7,7 @@
 #include "main.h"
 #include "casewin.h"
 #include "defmgr.h"
-
+ 
 
 static wxString GetDefaultsFile( const wxString &t, const wxString &f )
 {	
