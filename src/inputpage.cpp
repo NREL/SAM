@@ -46,7 +46,7 @@ void UICallbackContext::SetupLibraries( lk::env_t *env )
 	env->register_funcs( wxLKHttpFunctions() );
 	env->register_funcs( wxLKMiscFunctions() );	
 }
-
+ 
 
 BEGIN_EVENT_TABLE( ActiveInputPage, wxPanel )
 	EVT_BUTTON( wxID_ANY, ActiveInputPage::OnNativeEvent )
@@ -64,7 +64,7 @@ BEGIN_EVENT_TABLE( ActiveInputPage, wxPanel )
 	EVT_MONTHLYFACTOR( wxID_ANY, ActiveInputPage::OnNativeEvent )
 	EVT_DATAARRAYBUTTON( wxID_ANY, ActiveInputPage::OnNativeEvent )
 	EVT_DATAMATRIX(wxID_ANY, ActiveInputPage::OnNativeEvent)
-	EVT_EXTDATAMATRIX(wxID_ANY, ActiveInputPage::OnNativeEvent)
+//	EVT_EXTDATAMATRIX(wxID_ANY, ActiveInputPage::OnNativeEvent)
 	EVT_DIURNALPERIODCTRL(wxID_ANY, ActiveInputPage::OnNativeEvent)
 	EVT_MONTHBYHOURFACTOR(wxID_ANY, ActiveInputPage::OnNativeEvent)
 	EVT_SHADINGBUTTON( wxID_ANY, ActiveInputPage::OnNativeEvent )
@@ -469,7 +469,7 @@ bool ActiveInputPage::DataExchange( wxUIObject *obj, VarValue &val, DdxDir dir )
 		if (dir == VAR_TO_OBJ) dm->SetData(val.Matrix());
 		else val.Set(dm->GetData());
 	}
-	else if (AFExtDataMatrixCtrl *dm = obj->GetNative<AFExtDataMatrixCtrl>())
+	else if (AFDataMatrixCtrl *dm = obj->GetNative<AFDataMatrixCtrl>())
 	{
 		if (dir == VAR_TO_OBJ) dm->SetData(val.Matrix());
 		else val.Set(dm->GetData());

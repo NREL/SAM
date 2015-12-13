@@ -370,6 +370,7 @@ public:
 
 };
 
+/*
 
 class wxUIDataMatrixObject : public wxUIObject
 {
@@ -428,13 +429,13 @@ public:
 	}
 };
 
+*/
+ 
 
-
-
-class wxUIExtDataMatrixObject : public wxUIObject
+class wxUIDataMatrixObject : public wxUIObject
 {
 public:
-	wxUIExtDataMatrixObject() {
+	wxUIDataMatrixObject() {
 		AddProperty("PasteAppendRows", new wxUIProperty(false));
 		AddProperty("ShowRows", new wxUIProperty(true));
 		AddProperty("ShowRowLabels", new wxUIProperty(false));
@@ -453,11 +454,11 @@ public:
 		Property("Width").Set(400);
 		Property("Height").Set(300);
 	}
-	virtual wxString GetTypeName() { return "ExtDataMatrix"; }
-	virtual wxUIObject *Duplicate() { wxUIObject *o = new wxUIExtDataMatrixObject; o->Copy(this); return o; }
+	virtual wxString GetTypeName() { return "DataMatrix"; }
+	virtual wxUIObject *Duplicate() { wxUIObject *o = new wxUIDataMatrixObject; o->Copy(this); return o; }
 	virtual bool IsNativeObject() { return true; }
 	virtual wxWindow *CreateNative(wxWindow *parent) {
-		AFExtDataMatrixCtrl *dm = new AFExtDataMatrixCtrl(parent, wxID_ANY, wxDefaultPosition, wxDefaultSize, Property("ColLabels").GetString(), Property("RowLabels").GetString(), Property("Choices").GetString(), Property("ChoiceColumn").GetInteger(), Property("Layout").GetInteger() == 1);
+		AFDataMatrixCtrl *dm = new AFDataMatrixCtrl(parent, wxID_ANY, wxDefaultPosition, wxDefaultSize, Property("Layout").GetInteger() == 1, Property("ColLabels").GetString(), Property("RowLabels").GetString(), Property("Choices").GetString(), Property("ChoiceColumn").GetInteger());
 		dm->PasteAppendRows(Property("PasteAppendRows").GetBoolean());
 		dm->ShowRows(Property("ShowRows").GetBoolean());
 		dm->ShowRowLabels(Property("ShowRowLabels").GetBoolean());
@@ -473,7 +474,7 @@ public:
 	}
 	virtual void OnPropertyChanged(const wxString &id, wxUIProperty *p)
 	{
-		if (AFExtDataMatrixCtrl *dm = GetNative<AFExtDataMatrixCtrl>())
+		if (AFDataMatrixCtrl *dm = GetNative<AFDataMatrixCtrl>())
 		{
 			if (id == "PasteAppendRows") dm->PasteAppendRows(p->GetBoolean());
 			if (id == "ShadeR0C0") dm->ShadeR0C0(p->GetBoolean());
@@ -667,7 +668,7 @@ void RegisterUIObjectsForSAM()
 	wxUIObjectTypeProvider::Register( new wxUISearchListBoxObject );
 	wxUIObjectTypeProvider::Register( new wxUIDataArrayObject );
 	wxUIObjectTypeProvider::Register(new wxUIDataMatrixObject);
-	wxUIObjectTypeProvider::Register(new wxUIExtDataMatrixObject);
+//	wxUIObjectTypeProvider::Register(new wxUIExtDataMatrixObject);
 	wxUIObjectTypeProvider::Register(new wxUIShadingFactorsObject);
 	wxUIObjectTypeProvider::Register( new wxUIValueMatrixObject );
 	wxUIObjectTypeProvider::Register( new wxUIMonthByHourFactorCtrl );

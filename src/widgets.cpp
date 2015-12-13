@@ -903,7 +903,7 @@ public:
 
 
 // testing
-class AFExtDataMatrixTable : public wxGridTableBase
+class AFDataMatrixTable : public wxGridTableBase
 {
 
 public:
@@ -914,7 +914,7 @@ public:
 	wxString collabels;
 	wxString rowlabels;
 
-	AFExtDataMatrixTable(matrix_t<float> *da, const int &col, const wxString &_collabels, const wxString &_rowlabels)
+	AFDataMatrixTable(matrix_t<float> *da, const int &col, const wxString &_collabels, const wxString &_rowlabels)
 	{
 		SetMatrix(da);
 		choice_col = col;
@@ -952,7 +952,7 @@ public:
 	}
 
 	bool IsEmptyCell(int row, int col)
-	{
+	{ 
 		return false;
 	}
 
@@ -986,6 +986,7 @@ public:
 		if (d_mat)
 		{
 			wxArrayString as = wxStringTokenize(collabels, ",");
+			collabels.Replace("\\n", "\n");
 			if (col > -1 && col < as.Count())
 				return as[col];
 		}
@@ -1510,7 +1511,7 @@ void AFDataArrayButton::OnPressed(wxCommandEvent &evt)
 	}
 }
 
-
+/*
 DEFINE_EVENT_TYPE( wxEVT_AFDataMatrixCtrl_CHANGE )
 
 enum { IDDMC_NUMROWS=wxID_HIGHEST+857, IDDMC_NUMCOLS, IDDMC_GRID, IDDMC_IMPORT, IDDMC_EXPORT, IDDMC_COPY, IDDMC_PASTE };
@@ -2039,32 +2040,32 @@ wxString AFDataMatrixCtrl::GetCaption()
 	return m_caption->GetLabel();
 }
 
-
+*/
 
 /* Extended Data Matrix Control with choice column */
 
-DEFINE_EVENT_TYPE(wxEVT_AFExtDataMatrixCtrl_CHANGE)
+DEFINE_EVENT_TYPE(wxEVT_AFDataMatrixCtrl_CHANGE)
 
 enum { IDEDMC_NUMROWS = wxID_HIGHEST + 857, IDEDMC_NUMCOLS, IDEDMC_GRID, IDEDMC_IMPORT, IDEDMC_EXPORT, IDEDMC_COPY, IDEDMC_PASTE };
 
-BEGIN_EVENT_TABLE(AFExtDataMatrixCtrl, wxPanel)
-EVT_NUMERIC(IDEDMC_NUMROWS, AFExtDataMatrixCtrl::OnRowsColsChange)
-EVT_NUMERIC(IDEDMC_NUMCOLS, AFExtDataMatrixCtrl::OnRowsColsChange)
-EVT_BUTTON(IDEDMC_IMPORT, AFExtDataMatrixCtrl::OnCommand)
-EVT_BUTTON(IDEDMC_EXPORT, AFExtDataMatrixCtrl::OnCommand)
-EVT_BUTTON(IDEDMC_COPY, AFExtDataMatrixCtrl::OnCommand)
-EVT_BUTTON(IDEDMC_PASTE, AFExtDataMatrixCtrl::OnCommand)
-EVT_GRID_CMD_CELL_CHANGE(IDEDMC_GRID, AFExtDataMatrixCtrl::OnCellChange)
+BEGIN_EVENT_TABLE(AFDataMatrixCtrl, wxPanel)
+EVT_NUMERIC(IDEDMC_NUMROWS, AFDataMatrixCtrl::OnRowsColsChange)
+EVT_NUMERIC(IDEDMC_NUMCOLS, AFDataMatrixCtrl::OnRowsColsChange)
+EVT_BUTTON(IDEDMC_IMPORT, AFDataMatrixCtrl::OnCommand)
+EVT_BUTTON(IDEDMC_EXPORT, AFDataMatrixCtrl::OnCommand)
+EVT_BUTTON(IDEDMC_COPY, AFDataMatrixCtrl::OnCommand)
+EVT_BUTTON(IDEDMC_PASTE, AFDataMatrixCtrl::OnCommand)
+EVT_GRID_CMD_CELL_CHANGE(IDEDMC_GRID, AFDataMatrixCtrl::OnCellChange)
 END_EVENT_TABLE()
 
-AFExtDataMatrixCtrl::AFExtDataMatrixCtrl(wxWindow *parent, int id,
+AFDataMatrixCtrl::AFDataMatrixCtrl(wxWindow *parent, int id,
 const wxPoint &pos,
 const wxSize &sz,
+bool sidebuttons,
 const wxString &collabels,
 const wxString &rowlabels,
 const wxString &choices,
-const int &choice_col,
-bool sidebuttons)
+const int &choice_col)
 : wxPanel(parent, id, pos, sz)
 {
 	m_pasteappendrows = false;
@@ -2111,7 +2112,7 @@ bool sidebuttons)
 
 	m_grid->RegisterDataType("GridCellChoice", new GridCellChoiceRenderer(choices), new GridCellChoiceEditor(choices));
 
-	m_gridTable = new AFExtDataMatrixTable(&m_data, choice_col, collabels, rowlabels);
+	m_gridTable = new AFDataMatrixTable(&m_data, choice_col, collabels, rowlabels);
 
 	m_grid->SetTable(m_gridTable);
 
@@ -2174,86 +2175,86 @@ bool sidebuttons)
 }
 
 
-void AFExtDataMatrixCtrl::SetColLabels(const wxString &colLabels)
+void AFDataMatrixCtrl::SetColLabels(const wxString &colLabels)
 {
 	m_colLabels = colLabels;
 	m_colLabels.Replace("\\n", "\n");
 	MatrixToGrid();
 }
 
-wxString AFExtDataMatrixCtrl::GetColLabels()
+wxString AFDataMatrixCtrl::GetColLabels()
 {
 	return m_colLabels;
 }
 
-void AFExtDataMatrixCtrl::SetRowLabels(const wxString &rowLabels)
+void AFDataMatrixCtrl::SetRowLabels(const wxString &rowLabels)
 {
 	m_rowLabels = rowLabels;
 	m_rowLabels.Replace("\\n", "\n");
 	MatrixToGrid();
 }
 
-wxString AFExtDataMatrixCtrl::GetRowLabels()
+wxString AFDataMatrixCtrl::GetRowLabels()
 {
 	return m_rowLabels;
 }
 
 
-void AFExtDataMatrixCtrl::SetNumRowsLabel(const wxString &numRowsLabel)
+void AFDataMatrixCtrl::SetNumRowsLabel(const wxString &numRowsLabel)
 {
 	m_numRowsLabel = numRowsLabel;
 	MatrixToGrid();
 }
 
-wxString AFExtDataMatrixCtrl::GetNumRowsLabel()
+wxString AFDataMatrixCtrl::GetNumRowsLabel()
 {
 	return m_numRowsLabel;
 }
 
-void AFExtDataMatrixCtrl::SetNumColsLabel(const wxString &numColsLabel)
+void AFDataMatrixCtrl::SetNumColsLabel(const wxString &numColsLabel)
 {
 	m_numColsLabel = numColsLabel;
 	MatrixToGrid();
 }
 
-wxString AFExtDataMatrixCtrl::GetNumColsLabel()
+wxString AFDataMatrixCtrl::GetNumColsLabel()
 {
 	return m_numColsLabel;
 }
 
-bool AFExtDataMatrixCtrl::PasteAppendRows()
+bool AFDataMatrixCtrl::PasteAppendRows()
 {
 	return m_pasteappendrows;
 }
-void AFExtDataMatrixCtrl::PasteAppendRows(bool b)
+void AFDataMatrixCtrl::PasteAppendRows(bool b)
 {
 	m_pasteappendrows = b;
 }
 
 
-void AFExtDataMatrixCtrl::ShowColLabels(bool b)
+void AFDataMatrixCtrl::ShowColLabels(bool b)
 {
 	m_showColLabels = b;
 	MatrixToGrid();
 }
 
-bool AFExtDataMatrixCtrl::ShowColLabels()
+bool AFDataMatrixCtrl::ShowColLabels()
 {
 	return m_showColLabels;
 }
 
-void AFExtDataMatrixCtrl::ShowRowLabels(bool b)
+void AFDataMatrixCtrl::ShowRowLabels(bool b)
 {
 	m_showRowLabels = b;
 	MatrixToGrid();
 }
 
-bool AFExtDataMatrixCtrl::ShowRowLabels()
+bool AFDataMatrixCtrl::ShowRowLabels()
 {
 	return m_showRowLabels;
 }
 
-void AFExtDataMatrixCtrl::ShowCols(bool b)
+void AFDataMatrixCtrl::ShowCols(bool b)
 {
 	m_showcols = b;
 	m_numCols->Show(m_showcols);
@@ -2261,12 +2262,12 @@ void AFExtDataMatrixCtrl::ShowCols(bool b)
 	this->Layout();
 }
 
-bool AFExtDataMatrixCtrl::ShowCols()
+bool AFDataMatrixCtrl::ShowCols()
 {
 	return m_showcols;
 }
 
-void AFExtDataMatrixCtrl::ShowRows(bool b)
+void AFDataMatrixCtrl::ShowRows(bool b)
 {
 	m_showrows = b;
 	m_numRows->Show(m_showrows);
@@ -2274,39 +2275,39 @@ void AFExtDataMatrixCtrl::ShowRows(bool b)
 	this->Layout();
 }
 
-bool AFExtDataMatrixCtrl::ShowRows()
+bool AFDataMatrixCtrl::ShowRows()
 {
 	return m_showrows;
 }
 
 
-void AFExtDataMatrixCtrl::ShadeR0C0(bool b)
+void AFDataMatrixCtrl::ShadeR0C0(bool b)
 {
 	m_shadeR0C0 = b;
 	m_grid->GetTable()->SetAttrProvider(new wxExtGridCellAttrProvider(b, m_shadeR0C0, b || m_shadeC0));
 	MatrixToGrid();
 }
 
-bool AFExtDataMatrixCtrl::ShadeR0C0()
+bool AFDataMatrixCtrl::ShadeR0C0()
 {
 	return m_shadeR0C0;
 }
 
 
-void AFExtDataMatrixCtrl::ShadeC0(bool b)
+void AFDataMatrixCtrl::ShadeC0(bool b)
 {
 	m_shadeC0 = b;
 	m_grid->GetTable()->SetAttrProvider(new wxExtGridCellAttrProvider(m_shadeR0C0, m_shadeR0C0, b || m_shadeR0C0));
 	MatrixToGrid();
 }
 
-bool AFExtDataMatrixCtrl::ShadeC0()
+bool AFDataMatrixCtrl::ShadeC0()
 {
 	return m_shadeC0;
 }
 
 
-void AFExtDataMatrixCtrl::SetData(const matrix_t<float> &mat)
+void AFDataMatrixCtrl::SetData(const matrix_t<float> &mat)
 {
 	m_data = mat;
 	NormalizeToLimits();
@@ -2314,7 +2315,7 @@ void AFExtDataMatrixCtrl::SetData(const matrix_t<float> &mat)
 	MatrixToGrid();
 }
 
-void AFExtDataMatrixCtrl::NormalizeToLimits()
+void AFDataMatrixCtrl::NormalizeToLimits()
 {
 	if (m_minVal != m_maxVal)
 	{
@@ -2329,31 +2330,31 @@ void AFExtDataMatrixCtrl::NormalizeToLimits()
 	}
 }
 
-void AFExtDataMatrixCtrl::GetData(matrix_t<float> &mat)
+void AFDataMatrixCtrl::GetData(matrix_t<float> &mat)
 {
 	mat = m_data;
 }
 
 /*
-matrix_t<float> AFExtDataMatrixCtrl::GetData() const
+matrix_t<float> AFDataMatrixCtrl::GetData() const
 {
 	return m_gridTable->GetMatrix();
 }
 */
 
-void AFExtDataMatrixCtrl::SetValueLimits(float min, float max)
+void AFDataMatrixCtrl::SetValueLimits(float min, float max)
 {
 	m_minVal = min;
 	m_maxVal = max;
 }
 
-void AFExtDataMatrixCtrl::GetValueLimits(float *min, float *max)
+void AFDataMatrixCtrl::GetValueLimits(float *min, float *max)
 {
 	if (min) *min = m_minVal;
 	if (max) *max = m_maxVal;
 }
 
-bool AFExtDataMatrixCtrl::Export(const wxString &file)
+bool AFDataMatrixCtrl::Export(const wxString &file)
 {
 	wxCSVData csv;
 	for (int r = 0; r<m_data.nrows(); r++)
@@ -2363,7 +2364,7 @@ bool AFExtDataMatrixCtrl::Export(const wxString &file)
 	return csv.WriteFile(file);
 }
 
-bool AFExtDataMatrixCtrl::Import(const wxString &file)
+bool AFDataMatrixCtrl::Import(const wxString &file)
 {
 	wxCSVData csv;
 	if (!csv.ReadFile(file)) return false;
@@ -2377,14 +2378,14 @@ bool AFExtDataMatrixCtrl::Import(const wxString &file)
 	NormalizeToLimits();
 	MatrixToGrid();
 
-	wxCommandEvent evt(wxEVT_AFExtDataMatrixCtrl_CHANGE, this->GetId());
+	wxCommandEvent evt(wxEVT_AFDataMatrixCtrl_CHANGE, this->GetId());
 	evt.SetEventObject(this);
 	GetEventHandler()->ProcessEvent(evt);
 
 	return true;
 }
 
-void AFExtDataMatrixCtrl::OnCellChange(wxGridEvent &evt)
+void AFDataMatrixCtrl::OnCellChange(wxGridEvent &evt)
 {
 	int irow = evt.GetRow();
 	int icol = evt.GetCol();
@@ -2404,12 +2405,12 @@ void AFExtDataMatrixCtrl::OnCellChange(wxGridEvent &evt)
 	m_gridTable->SetMatrix(&m_data);
 	m_grid->SetCellValue(irow, icol, wxString::Format("%g", val));
 
-	wxCommandEvent dmcevt(wxEVT_AFExtDataMatrixCtrl_CHANGE, this->GetId());
+	wxCommandEvent dmcevt(wxEVT_AFDataMatrixCtrl_CHANGE, this->GetId());
 	dmcevt.SetEventObject(this);
 	GetEventHandler()->ProcessEvent(dmcevt);
 }
 
-void AFExtDataMatrixCtrl::OnRowsColsChange(wxCommandEvent &evt)
+void AFDataMatrixCtrl::OnRowsColsChange(wxCommandEvent &evt)
 {
 	size_t rows = (size_t)m_numRows->AsInteger();
 	size_t cols = (size_t)m_numCols->AsInteger();
@@ -2421,12 +2422,12 @@ void AFExtDataMatrixCtrl::OnRowsColsChange(wxCommandEvent &evt)
 
 	MatrixToGrid();
 
-	wxCommandEvent dmcevt(wxEVT_AFExtDataMatrixCtrl_CHANGE, this->GetId());
+	wxCommandEvent dmcevt(wxEVT_AFDataMatrixCtrl_CHANGE, this->GetId());
 	dmcevt.SetEventObject(this);
 	GetEventHandler()->ProcessEvent(dmcevt);
 }
 
-void AFExtDataMatrixCtrl::OnCommand(wxCommandEvent &evt)
+void AFDataMatrixCtrl::OnCommand(wxCommandEvent &evt)
 {
 	switch (evt.GetId())
 	{
@@ -2468,7 +2469,7 @@ void AFExtDataMatrixCtrl::OnCommand(wxCommandEvent &evt)
 
 		MatrixToGrid();
 
-		wxCommandEvent dmcevt(wxEVT_AFExtDataMatrixCtrl_CHANGE, this->GetId());
+		wxCommandEvent dmcevt(wxEVT_AFDataMatrixCtrl_CHANGE, this->GetId());
 		dmcevt.SetEventObject(this);
 		GetEventHandler()->ProcessEvent(dmcevt);
 	}
@@ -2493,7 +2494,7 @@ void AFExtDataMatrixCtrl::OnCommand(wxCommandEvent &evt)
 }
 
 
-void AFExtDataMatrixCtrl::MatrixToGrid()
+void AFDataMatrixCtrl::MatrixToGrid()
 {
 	m_data = m_gridTable->GetMatrix();
 	int r, nr = m_data.nrows();
@@ -2566,7 +2567,7 @@ void AFExtDataMatrixCtrl::MatrixToGrid()
 
 }
 
-void AFExtDataMatrixCtrl::SetRowLabelFormat(const wxString &val_fmt, double y2, double y1, double y0)
+void AFDataMatrixCtrl::SetRowLabelFormat(const wxString &val_fmt, double y2, double y1, double y0)
 {
 	m_rowFormat = val_fmt;
 	m_rowY2 = y2;
@@ -2575,7 +2576,7 @@ void AFExtDataMatrixCtrl::SetRowLabelFormat(const wxString &val_fmt, double y2, 
 	MatrixToGrid();
 }
 
-void AFExtDataMatrixCtrl::SetColLabelFormat(const wxString &val_fmt, double y2, double y1, double y0)
+void AFDataMatrixCtrl::SetColLabelFormat(const wxString &val_fmt, double y2, double y1, double y0)
 {
 	m_colFormat = val_fmt;
 	m_colY2 = y2;
@@ -2584,13 +2585,13 @@ void AFExtDataMatrixCtrl::SetColLabelFormat(const wxString &val_fmt, double y2, 
 	MatrixToGrid();
 }
 
-void AFExtDataMatrixCtrl::SetCaption(const wxString &cap)
+void AFDataMatrixCtrl::SetCaption(const wxString &cap)
 {
 	m_caption->SetLabel(cap);
 	this->Layout();
 }
 
-wxString AFExtDataMatrixCtrl::GetCaption()
+wxString AFDataMatrixCtrl::GetCaption()
 {
 	return m_caption->GetLabel();
 }
