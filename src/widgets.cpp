@@ -2335,12 +2335,6 @@ void AFDataMatrixCtrl::GetData(matrix_t<float> &mat)
 	mat = m_data;
 }
 
-/*
-matrix_t<float> AFDataMatrixCtrl::GetData() const
-{
-	return m_gridTable->GetMatrix();
-}
-*/
 
 void AFDataMatrixCtrl::SetValueLimits(float min, float max)
 {
@@ -2537,7 +2531,6 @@ void AFDataMatrixCtrl::MatrixToGrid()
 		for (r = 0; r<as.Count() && r < m_grid->GetNumberRows(); r++)
 		{
 			m_grid->SetRowLabelValue(r, as[r]);
-//			m_grid->AutoSizeRowLabelSize(r);
 		}
 		m_grid->SetRowLabelSize(wxGRID_AUTOSIZE);
 	}
@@ -2595,14 +2588,6 @@ wxString AFDataMatrixCtrl::GetCaption()
 {
 	return m_caption->GetLabel();
 }
-
-
-
-
-
-
-
-
 
 
 
