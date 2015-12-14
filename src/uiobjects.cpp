@@ -668,7 +668,6 @@ void RegisterUIObjectsForSAM()
 	wxUIObjectTypeProvider::Register( new wxUISearchListBoxObject );
 	wxUIObjectTypeProvider::Register( new wxUIDataArrayObject );
 	wxUIObjectTypeProvider::Register(new wxUIDataMatrixObject);
-//	wxUIObjectTypeProvider::Register(new wxUIExtDataMatrixObject);
 	wxUIObjectTypeProvider::Register(new wxUIShadingFactorsObject);
 	wxUIObjectTypeProvider::Register( new wxUIValueMatrixObject );
 	wxUIObjectTypeProvider::Register( new wxUIMonthByHourFactorCtrl );
