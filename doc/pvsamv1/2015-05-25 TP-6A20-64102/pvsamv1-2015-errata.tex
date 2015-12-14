@@ -3,7 +3,7 @@
 
 \title{Errata for SAM Photovoltaic Model Technical Reference}
 \author{P. Gilman}
-\date{October 15, 2015}
+\date{October 20, 2015}
 
 \usepackage{array}
 
@@ -14,25 +14,36 @@ This document lists errors with corrections for the SAM photovoltaic reference m
 
 Gilman, P.; (2015) ``SAM Photovoltaic Model Technical Reference." TP-6A20-64102. Golden, CO: National Renewable Energy Laboratory.
 
-\section*{Section 11.2: Sandia Inverter Submodel}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Section 4.2: Sun Angles}
 
-\textbf{Equation 11.3} for Sandia inverter model parameters is missing closing parentheses.
-
-Incorrect:
-%lib_sandia.cpp 329
-\begin{align*}
-A &=P_{dc,0} \left[ 1+ C_1 ( V_{dc} - V_{dc,0}\right] \notag\\
-B &= P_{s,0}  \left[ 1+ C_2 ( V_{dc} - V_{dc,0}\right] \notag\\
-C &= C_0  \left[ 1+ C_3 ( V_{dc} - V_{dc,0}\right]
-\end{align*}
+In \textbf{Equation 4.18}, the final condition should be $a<-1$ instead of $a<1$.
 
 Correct:
 \begin{align*}
-A &=P_{dc,0} \left[ 1+ C_1 ( V_{dc} - V_{dc,0} )\right] \notag\\
-B &= P_{s,0}  \left[ 1+ C_2 ( V_{dc} - V_{dc,0} )\right] \notag\\
-C &= C_0  \left[ 1+ C_3 ( V_{dc} - V_{dc,0} )\right]
+a &= \sin\delta \sin\left(\frac{\pi}{180}\mathit{lat}\right) + \cos\delta \cos\left(\frac{\pi}{180}\mathit{lat}\right) \cos\mathit{HA}\notag\\
+\alpha_0 &=\left\{
+  \begin{array}{ll}
+    \arcsin a & \text{if $-1 \leq a \leq 1$}\\
+    \frac{\pi}{2} & \text{if $a>1$}\\
+    -\frac{\pi}{2} & \text{if $a<-1$}
+  \end{array}
+\right.
 \end{align*}
 
+Incorrect:
+\begin{align*}
+a &= \sin\delta \sin\left(\frac{\pi}{180}\mathit{lat}\right) + \cos\delta \cos\left(\frac{\pi}{180}\mathit{lat}\right) \cos\mathit{HA}\notag\\
+\alpha_0 &=\left\{
+  \begin{array}{ll}
+    \arcsin a & \text{if $-1 \leq a \leq 1$}\\
+    \frac{\pi}{2} & \text{if $a>1$}\\
+    -\frac{\pi}{2} & \text{if $a<1$}
+  \end{array}
+\right.
+\end{align*}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section*{Section 8.6: Beam Self-shading DC Loss Factor}
 
 The symbol for the submodule \textbf{fill factor} variable is inconsistent. It should be $F_{fill}$ instead of $\mathit{FF}_0$.
@@ -65,6 +76,7 @@ F_{dc2} &=
 F_{dc3} &= C_3\left(S-1\right)+R_{dt} %eqn10
 \end{align*}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section*{Section 9.4: Sandia Module Model}
 
 \textbf{Equation 9.5} for effective irradiance is missing brackets to show the correct order of multiplication and addition.
@@ -114,6 +126,41 @@ V_{mp} = V_{mp,ref} +
  C_3~s~\left[\Delta T_c \log(E_e)\right]^2 +
  \beta_{mp} (T_c - 25)
 \end{equation*}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Section 9.7: NOCT Cell Temperature Model}
+
+\textbf{Equation 9.36} is missing brackets to show correct order of multiplication.
+
+Correct:
+\begin{equation*}
+T_c = T_a + \frac{G}{800} \left(T_{noct,adj} - 20 \right) \left(1-\frac{\eta_{ref}}{\tau \alpha}\right) \frac{9.5}{5.7+3.8v_{w,adj}}
+\end{equation*}
+
+Incorrect:
+\begin{equation*}
+T_c = T_a + \frac{G}{800} T_{noct,adj} - 20~ 1-\frac{\eta_{ref}}{\tau \alpha} \frac{9.5}{5.7+3.8v_{w,adj}}
+\end{equation*}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Section 11.2: Sandia Inverter Submodel}
+
+\textbf{Equation 11.3} for Sandia inverter model parameters is missing closing parentheses.
+
+Correct:
+\begin{align*}
+A &=P_{dc,0} \left[ 1+ C_1 ( V_{dc} - V_{dc,0} )\right] \notag\\
+B &= P_{s,0}  \left[ 1+ C_2 ( V_{dc} - V_{dc,0} )\right] \notag\\
+C &= C_0  \left[ 1+ C_3 ( V_{dc} - V_{dc,0} )\right]
+\end{align*}
+
+Incorrect:
+%lib_sandia.cpp 329
+\begin{align*}
+A &=P_{dc,0} \left[ 1+ C_1 ( V_{dc} - V_{dc,0}\right] \notag\\
+B &= P_{s,0}  \left[ 1+ C_2 ( V_{dc} - V_{dc,0}\right] \notag\\
+C &= C_0  \left[ 1+ C_3 ( V_{dc} - V_{dc,0}\right]
+\end{align*}
 
 \end{document}
 
