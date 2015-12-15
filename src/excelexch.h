@@ -16,8 +16,9 @@ class ExcelExchange
 public:
 	ExcelExchange();
 
-	void Write( wxOutputStream & );
-	bool Read( wxInputStream & );
+	void Copy(ExcelExchange &rhs);
+	void Write(wxOutputStream &);
+	bool Read(wxInputStream &);
 	
 	bool Enabled;
 	wxString ExcelFile;

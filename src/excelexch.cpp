@@ -24,6 +24,34 @@ ExcelExchange::ExcelExchange()
 	Enabled = false;
 }
 
+
+void ExcelExchange::Copy(ExcelExchange &rhs)
+{
+	Enabled = rhs.Enabled;
+	ExcelFile = rhs.ExcelFile;
+
+	Vars.clear();
+	for (size_t i = 0; i < rhs.Vars.size(); i++)
+	{
+		ExchVar ev;
+		ev.Name = rhs.Vars[i].Name;
+		ev.Range = rhs.Vars[i].Range;
+		ev.Type = rhs.Vars[i].Type;
+		Vars.push_back(ev);
+	}
+
+	Summary.clear();
+	for (size_t i = 0; i < rhs.Summary.size(); i++)
+	{
+		Captured c;
+		c.Name = rhs.Summary[i].Name;
+		c.Range = rhs.Summary[i].Range;
+		c.Value = rhs.Summary[i].Value;
+		Summary.push_back(c);
+	}
+}
+
+
 void ExcelExchange::Write( wxOutputStream &_O )
 {
 	wxDataOutputStream out(_O);
@@ -248,8 +276,6 @@ public:
 			return;
 		
 		int idx = lstVariables->GetSelection();
-		if (idx < 0 || idx >= m_exch.Vars.size())
-			return;
 	
 		switch(evt.GetId())
 		{
@@ -257,11 +283,17 @@ public:
 			m_exch.ExcelFile = txtExcelFile->GetValue();
 			break;
 		case ID_txtExcelRange:
-			m_exch.Vars[idx].Range = txtExcelRange->GetValue();
-			break;
+			{
+				if (idx < 0 || idx >= m_exch.Vars.size())
+					return;
+				m_exch.Vars[idx].Range = txtExcelRange->GetValue();
+			}
+		break;
 		case ID_rbgToFrom:
 			{
-				unsigned long vf = m_ci->Variables.Flags( m_exch.Vars[idx].Name );
+				if (idx < 0 || idx >= m_exch.Vars.size())
+					return;
+				unsigned long vf = m_ci->Variables.Flags(m_exch.Vars[idx].Name);
 				if ( vf & VF_CALCULATED || vf & VF_LIBRARY )
 				{
 					wxMessageBox("'" + m_ci->Variables.Label( m_exch.Vars[idx].Name ) + "' is a calculated value or a library selection, and as a result its value cannot be captured from Excel.");
