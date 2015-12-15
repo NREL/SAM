@@ -257,6 +257,7 @@ bool Case::Copy( Object *obj )
 		m_properties = rhs->m_properties;
 		m_notes = rhs->m_notes;
 		m_parametric.Copy(rhs->m_parametric);
+		m_excelExch.Copy(rhs->m_excelExch);
 		m_stochastic.Copy(rhs->m_stochastic);
 		
 		m_graphs.clear();
