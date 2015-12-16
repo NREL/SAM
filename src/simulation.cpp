@@ -128,7 +128,7 @@ void Simulation::Write( wxOutputStream &os )
 {
 	wxDataOutputStream out( os );
 	out.Write8( 0x9c );
-	out.Write8( 2 ); // version
+	out.Write8( 3 ); // version
 
 	out.WriteString( m_name );
 
@@ -170,7 +170,7 @@ bool Simulation::Read( wxInputStream &is )
 	m_outputLabels.Read( is );
 	m_outputUnits.Read( is );
 	
-	if (ver == 2)
+	if (ver > 2)
 		m_uiHints.Read( is );
 	
 	return ( code == in.Read8() );	
