@@ -1843,7 +1843,7 @@ void fcall_urdb_write(lk::invoke_t &cxt)
 	{
 		VarInfo &vi = *(it->second);
 //		if (vi.Flags & VF_CALCULATED || vi.Flags & VF_INDICATOR) continue;
-		if (vi.Group == "Utility Rate")
+		if (vi.Group.Left(12).Lower() == "utility rate")
 
 		{
 			wxString var_name = it->first;
@@ -1904,6 +1904,30 @@ void fcall_urdb_read(lk::invoke_t &cxt)
 
 
 
+static bool copy_mat(lk::invoke_t &cxt, wxString sched_name, matrix_t<double> &mat)
+{
+	lk::vardata_t &val = cxt.result().hash_item(sched_name);
+	if ((mat.nrows() > 0) && (mat.ncols() >0))
+	{
+		val.empty_vector();
+		size_t nrows = mat.nrows();
+		size_t ncols = mat.ncols();
+		val.resize(nrows);
+		for (size_t r = 0; r<nrows; r++)
+		{
+			lk::vardata_t *row = val.index(r);
+			row->empty_vector();
+			row->resize(ncols);
+			for (size_t c = 0; c<ncols; c++)
+				row->index(c)->assign(mat(r, c));
+		}
+	}
+	return true;
+}
+
+
+
+
 void fcall_urdb_get(lk::invoke_t &cxt)
 {
 	LK_DOC("urdb_get", "Returns data for the specified rate schedule from the OpenEI Utility Rate Database.", "(string:guid):boolean");	
@@ -1960,6 +1984,11 @@ void fcall_urdb_get(lk::invoke_t &cxt)
 		if (!applydiurnalschedule(cxt, "dc_sched_weekday", rate.DemandWeekdaySchedule)) return;
 		if (!applydiurnalschedule(cxt, "dc_sched_weekend", rate.DemandWeekendSchedule)) return;
 
+
+		cxt.result().hash_item("ec_enable").assign(1.0);
+		if (!copy_mat(cxt, "ec_tou_mat", rate.EnergyStructure)) return;
+
+		/*
 		// energy rate structure, e.g. "ur_ec_p1_t1_ub"
 		bool ec_enable = false;
 		for (int period = 0; period < 12; period++)
@@ -1979,7 +2008,7 @@ void fcall_urdb_get(lk::invoke_t &cxt)
 			cxt.result().hash_item("ec_enable").assign(1.0);
 		else
 			cxt.result().hash_item("ec_enable").assign(0.0);
-
+		*/
 		//flat demand structure, e.g. ur_dc_jan_t1_ub
 		wxString months[] = { "jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec" };
 
@@ -2058,7 +2087,7 @@ static void copy_mxh( lk::vardata_t &val, matrix_t<float> &mxh )
 	}
 }
 
-static void copy_mat(lk::vardata_t &val, matrix_t<float> &mts)
+static void copy_matts(lk::vardata_t &val, matrix_t<float> &mts)
 {
 	if (((mts.nrows() % 8760) == 0) && (mts.ncols() >0))
 	{
@@ -2184,7 +2213,7 @@ void fcall_editscene3d(lk::invoke_t &cxt)
 			matrix_t<float> mat_ts(shadets[0].ts.size(), 1);
 			for (size_t i = 0; i < shadets[0].ts.size(); i++)
 				mat_ts.at(i, 0) = shadets[0].ts[i];
-			copy_mat(v, mat_ts);
+			copy_matts(v, mat_ts);
 			order1.push_back(0);
 		}
 		else
@@ -2305,7 +2334,7 @@ void fcall_editscene3d(lk::invoke_t &cxt)
 				name.Printf("subarray%d", (int)(io1 + 1));
 
 				lk::vardata_t &sec = cxt.result().hash_item(name);
-				copy_mat(sec, mat_ts);
+				copy_matts(sec, mat_ts);
 			}
 		}
 

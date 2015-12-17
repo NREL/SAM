@@ -6,6 +6,7 @@
 #include <wx/wx.h>
 #include <wx/string.h>
 
+#include "object.h"
 #include <wex/jsonreader.h>
 
 class AFSearchListBox;
@@ -64,31 +65,27 @@ public:
 		bool HasDemandCharge;
 		wxString DemandRateUnit; // kW, kVA or hp
 		double DemandReactivePower;
+
 		// month based
 		int FlatDemandMonth[12];
 		double FlatDemandMax[12][6]; 
 		double FlatDemandCharge[12][6]; 
 		double FlatDemandAdj[12][6]; 
+		
 		// diurnal based
 		double DemandMax[12][6]; 
 		double DemandCharge[12][6]; 
 		double DemandAdj[12][6]; 
-//		char DemandWeekdaySchedule[289];
-//		char DemandWeekendSchedule[289];
 		double DemandWeekdaySchedule[12][24];
 		double DemandWeekendSchedule[12][24];
 
 		bool HasEnergyCharge;	
-		// diurnal based
-//		wxString EnergyRateUnit; // kWh
-		// TODO - handle different max usage units
-		wxString EnergyMaxUnit[12][6];
-		double EnergyMax[12][6]; 
-		double EnergyBuy[12][6]; 
-		double EnergyAdj[12][6]; 
-		double EnergySell[12][6]; 
-//		char EnergyWeekdaySchedule[289];
-//		char EnergyWeekendSchedule[289];
+//		wxString EnergyMaxUnit[12][6];
+//		double EnergyMax[12][6]; 
+//		double EnergyBuy[12][6]; 
+//		double EnergyAdj[12][6]; 
+//		double EnergySell[12][6]; 
+		matrix_t<double> EnergyStructure;
 		double EnergyWeekdaySchedule[12][24];
 		double EnergyWeekendSchedule[12][24];
 
