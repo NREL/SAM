@@ -55,46 +55,49 @@ void OpenEI::RateData::Reset()
 	HasEnergyCharge=false;	
 
 	EnergyStructure.resize_fill(1, 6, 0);
-	/*
-	//	EnergyRateUnit = "kWh";
+	// single default value
+	EnergyStructure.at(0, 0) = 1;
+	EnergyStructure.at(0, 1) = 1;
+	EnergyStructure.at(0, 2) = 1e+38;
+	EnergyStructure.at(0, 3) = 0;
+	EnergyStructure.at(0, 4) = 0;
+	EnergyStructure.at(0, 5) = 0;
 
+	
 	for (i = 0; i < 12; i++)
 	{
-		for (j = 0; j < 6; j++)
-		{
-
-			EnergyBuy[i][j] = EnergyAdj[i][j] = EnergySell[i][j] = 0.0;
-			// SAMnt limited to float max = 3.4e38
-			EnergyMax[i][j] = 1e38;
-			EnergyMaxUnit[i][j] = "kWh Daily"; // TODO implement max unit
-		}
 		for (int k = 0; k < 24; k++)
 		{
 			EnergyWeekdaySchedule[i][k] = 1;
 			EnergyWeekendSchedule[i][k] = 1;
 		}
 	}
-	*/
+	
 	// TODO - coincident demand charges
 
 	HasDemandCharge = false;
 	DemandRateUnit = "kW"; // TODO update to handle different values
 	DemandReactivePower = 1.0;
 	
-	for (i=0;i<12;i++)
-		FlatDemandMonth[i]=0;
+	DemandFlatStructure.resize_fill(12, 4, 0);
 
 	for (i = 0; i < 12; i++)
 	{
-		for (j = 0; j < 6; j++)
-		{
-			FlatDemandCharge[i][j] = FlatDemandAdj[i][j] = 0.0;
-			// SAMnt limited to float max = 3.4e38
-			FlatDemandMax[i][j] = 1e38;
-			DemandCharge[i][j] = DemandAdj[i][j] = 0.0;
-			// SAMnt limited to float max = 3.4e38
-			DemandMax[i][j] = 1e38;
-		}
+		FlatDemandMonth[i] = 0;
+		DemandFlatStructure.at(i, 0) = i;
+		DemandFlatStructure.at(i, 1) = 1;
+		DemandFlatStructure.at(i, 2) = 1e+38;
+		DemandFlatStructure.at(i, 3) = 0;
+	}
+
+	// data matrix does not allow for zero rows - example for user
+	DemandTOUStructure.resize_fill(1, 4, 0);
+	DemandTOUStructure.at(0, 0) = 1;
+	DemandTOUStructure.at(0, 1) = 1;
+	DemandTOUStructure.at(0, 2) = 1e+38;
+	DemandTOUStructure.at(0, 3) = 0;
+	for (i = 0; i < 12; i++)
+	{
 		for (int k = 0; k < 24; k++)
 		{
 			DemandWeekdaySchedule[i][k] = 1;
@@ -412,52 +415,66 @@ bool OpenEI::RetrieveUtilityRateData(const wxString &guid, RateData &rate, wxStr
 
 	rate.HasEnergyCharge = true;
 
+	// first check for energy rate structure and resize matrix if present
+	int num_ec_rows = 0; // default to one for each month
 	wxJSONValue ers_periods = val.Item("energyratestructure");
 	if (ers_periods.IsArray())
 	{
-//		if (ers_periods.Size() > 12) return false;
-		int es_row = 0;
-		rate.EnergyStructure.resize_fill(ers_periods.Size(), 6, 0.0);
 		for (int period = 0; period < ers_periods.Size(); period++)
 		{
 			wxJSONValue ers_tier = ers_periods[period];
 			if (ers_tier.IsArray())
 			{
-//				if (ers_tier.Size() > 6) return false;
 				for (int tier = 0; tier < ers_tier.Size(); tier++)
 				{
-					double max = json_double(ers_tier[tier].Item("max"), 1e38, &rate.HasEnergyCharge);
-
-					double buy = json_double(ers_tier[tier].Item("rate"), 0.0, &rate.HasEnergyCharge);
-					double sell = json_double(ers_tier[tier].Item("sell"), 0.0, &rate.HasEnergyCharge);
-					double adj = json_double(ers_tier[tier].Item("adj"), 0.0, &rate.HasEnergyCharge);
-					wxString units = json_string(ers_tier[tier].Item("unit"));
-					int iunits = -1; // unsupported
-					if (units.Lower() == "kwh")
-						iunits = 0;
-					else if (units.Lower() == "kwh/kw")
-						iunits = 1;
-					else if (units.Lower() == "kwh daily")
-						iunits = 2;
-					else if (units.Lower() == "kwh/kw daily")
-						iunits = 3;
-					rate.EnergyStructure.at(es_row, 0) = period + 1;
-					rate.EnergyStructure.at(es_row, 1) = tier + 1;
-					rate.EnergyStructure.at(es_row, 2) = max;
-					rate.EnergyStructure.at(es_row, 3) = iunits;
-					rate.EnergyStructure.at(es_row, 4) = buy+adj;
-					rate.EnergyStructure.at(es_row, 5) = sell;
-					es_row++;
-					/*
-					// SAMnt limited to float max = 3.4e38
-					rate.EnergyMax[period][tier] = json_double(ers_tier[tier].Item("max"), 1e38, &rate.HasEnergyCharge);
-
-					rate.EnergyBuy[period][tier] = json_double(ers_tier[tier].Item("rate"), 0.0, &rate.HasEnergyCharge);
-					rate.EnergySell[period][tier] = json_double(ers_tier[tier].Item("sell"), 0.0, &rate.HasEnergyCharge);
-					rate.EnergyAdj[period][tier] = json_double(ers_tier[tier].Item("adj"), 0.0, &rate.HasEnergyCharge);
-					rate.EnergyMaxUnit[period][tier] = json_string(ers_tier[tier].Item("unit"));
-					*/
+					num_ec_rows++;
 				}
+			}
+		}
+	}
+
+	if (num_ec_rows > 0)
+	{
+		rate.EnergyStructure.resize_fill(num_ec_rows, 6, 0.0);
+
+	// next, assign rate values
+		int es_row = 0;
+		for (int period = 0; period < ers_periods.Size(); period++)
+		{
+			wxJSONValue ers_tier = ers_periods[period];
+			for (int tier = 0; tier < ers_tier.Size(); tier++)
+			{
+				double max = json_double(ers_tier[tier].Item("max"), 1e38, &rate.HasEnergyCharge);
+
+				double buy = json_double(ers_tier[tier].Item("rate"), 0.0, &rate.HasEnergyCharge);
+				double sell = json_double(ers_tier[tier].Item("sell"), 0.0, &rate.HasEnergyCharge);
+				double adj = json_double(ers_tier[tier].Item("adj"), 0.0, &rate.HasEnergyCharge);
+				wxString units = json_string(ers_tier[tier].Item("unit"));
+				int iunits = -1; // unsupported
+				if (units.Lower() == "kwh")
+					iunits = 0;
+				else if (units.Lower() == "kwh/kw")
+					iunits = 1;
+				else if (units.Lower() == "kwh daily")
+					iunits = 2;
+				else if (units.Lower() == "kwh/kw daily")
+					iunits = 3;
+				rate.EnergyStructure.at(es_row, 0) = period + 1;
+				rate.EnergyStructure.at(es_row, 1) = tier + 1;
+				rate.EnergyStructure.at(es_row, 2) = max;
+				rate.EnergyStructure.at(es_row, 3) = iunits;
+				rate.EnergyStructure.at(es_row, 4) = buy+adj;
+				rate.EnergyStructure.at(es_row, 5) = sell;
+				es_row++;
+				/*
+				// SAMnt limited to float max = 3.4e38
+				rate.EnergyMax[period][tier] = json_double(ers_tier[tier].Item("max"), 1e38, &rate.HasEnergyCharge);
+
+				rate.EnergyBuy[period][tier] = json_double(ers_tier[tier].Item("rate"), 0.0, &rate.HasEnergyCharge);
+				rate.EnergySell[period][tier] = json_double(ers_tier[tier].Item("sell"), 0.0, &rate.HasEnergyCharge);
+				rate.EnergyAdj[period][tier] = json_double(ers_tier[tier].Item("adj"), 0.0, &rate.HasEnergyCharge);
+				rate.EnergyMaxUnit[period][tier] = json_string(ers_tier[tier].Item("unit"));
+				*/
 			}
 		}
 	}
@@ -465,6 +482,11 @@ bool OpenEI::RetrieveUtilityRateData(const wxString &guid, RateData &rate, wxStr
 	if (!RetrieveDiurnalData(val.Item("energyweekdayschedule"), rate.EnergyWeekdaySchedule)) return false;
 	if (!RetrieveDiurnalData(val.Item("energyweekendschedule"), rate.EnergyWeekendSchedule)) return false;
 
+	
+	
+	
+	
+	
 	/// DEMAND CHARGES
 	rate.HasDemandCharge = true;
 
@@ -472,70 +494,124 @@ bool OpenEI::RetrieveUtilityRateData(const wxString &guid, RateData &rate, wxStr
 
 	rate.DemandReactivePower = json_double( val.Item("demandreactivepowercharge") );
 
-
+	int num_months = 0;
 	wxJSONValue fdm_periods = val.Item("flatdemandmonths");
 	if (fdm_periods.IsArray())
 	{
 		// addresses issue from Pieter 6/26/15 for Upper Cumberland EMC GS3 rate with incorrect json - not an entry for every month.
-		int num_months = fdm_periods.Size();
-		if (fdm_periods.Size() > 12) return false;
-		int json_fdm_period = 0;
-		for (int month = 0; month < 12; month++)
+		num_months = fdm_periods.Size();
+		if (num_months != 12) return false;
+		for (int month = 0; month <num_months; month++)
 		{
-			if (month < num_months)
-			{
-				json_fdm_period = fdm_periods[month].AsInt();
-				rate.FlatDemandMonth[month] = json_fdm_period;
-			}
-			else
-				rate.FlatDemandMonth[month] = json_fdm_period;
+			rate.FlatDemandMonth[month] = fdm_periods[month].AsInt();
 		}
 	}
-
-	wxJSONValue fds_periods = val.Item("flatdemandstructure");
-	if (fds_periods.IsArray())
+	if (num_months == 12)
 	{
-		if (fds_periods.Size() > 12) return false;
-		for (int period = 0; period < fds_periods.Size(); period++)
+		wxJSONValue fds_periods = val.Item("flatdemandstructure");
+		int fds_row = 0;
+		if (fds_periods.IsArray())
 		{
-			wxJSONValue fds_tier = fds_periods[period];
-			if (fds_tier.IsArray())
+			for (int period = 0; period < fds_periods.Size(); period++)
 			{
-				if (fds_tier.Size() > 6) return false;
-				for (int tier = 0; tier < fds_tier.Size(); tier++)
+				wxJSONValue fds_tier = fds_periods[period];
+				if (fds_tier.IsArray())
 				{
-					// SAMnt limited to float max = 3.4e38
-					rate.FlatDemandMax[period][tier] = json_double(fds_tier[tier].Item("max"), 1e38, &rate.HasDemandCharge);
-					rate.FlatDemandCharge[period][tier] = json_double(fds_tier[tier].Item("rate"), 0.0, &rate.HasDemandCharge);
-					rate.FlatDemandAdj[period][tier] = json_double(fds_tier[tier].Item("adj"), 0.0, &rate.HasDemandCharge);
+					for (int tier = 0; tier < fds_tier.Size(); tier++)
+					{
+						fds_row++;
+					}
 				}
 			}
 		}
+		fds_row *= num_months; //estimate - may resize as below.
+		if (fds_row > 0)
+		{
+			rate.DemandFlatStructure.resize_fill(fds_row, 4, 0.0);
+
+			int fd_row = 0;
+			for (int m = 0; m < num_months; m++)
+			{
+				int period = rate.FlatDemandMonth[m];
+				if ( period > 0 && period < fds_periods.Size())
+				{
+					wxJSONValue fds_tier = fds_periods[period];
+					for (int tier = 0; tier < fds_tier.Size(); tier++)
+					{
+						double max = json_double(fds_tier[tier].Item("max"), 1e38, &rate.HasDemandCharge);
+						double charge = json_double(fds_tier[tier].Item("rate"), 0.0, &rate.HasDemandCharge);
+						double adj = json_double(fds_tier[tier].Item("adj"), 0.0, &rate.HasDemandCharge);
+
+						rate.DemandFlatStructure.at(fd_row, 0) = m;
+						rate.DemandFlatStructure.at(fd_row, 1) = tier + 1;
+						rate.DemandFlatStructure.at(fd_row, 2) = max;
+						rate.DemandFlatStructure.at(fd_row, 3) = charge + adj;
+						fd_row++;
+
+						/*
+						// SAMnt limited to float max = 3.4e38
+						rate.FlatDemandMax[period][tier] = json_double(fds_tier[tier].Item("max"), 1e38, &rate.HasDemandCharge);
+						rate.FlatDemandCharge[period][tier] = json_double(fds_tier[tier].Item("rate"), 0.0, &rate.HasDemandCharge);
+						rate.FlatDemandAdj[period][tier] = json_double(fds_tier[tier].Item("adj"), 0.0, &rate.HasDemandCharge);
+						*/
+					}
+				}
+			}
+			rate.DemandFlatStructure.resize_preserve(fd_row, 4, 0.0);
+		}
 	}
 
 
-
+	// first check for energy rate structure and resize matrix if present
+	int num_dc_rows = 0; // default to one for each month
 	wxJSONValue drs_periods = val.Item("demandratestructure");
 	if (drs_periods.IsArray())
 	{
-		if (drs_periods.Size() > 12) return false;
 		for (int period = 0; period < drs_periods.Size(); period++)
 		{
 			wxJSONValue drs_tier = drs_periods[period];
 			if (drs_tier.IsArray())
 			{
-				if (drs_tier.Size() > 6) return false;
 				for (int tier = 0; tier < drs_tier.Size(); tier++)
 				{
-					// SAMnt limited to float max = 3.4e38
-					rate.DemandMax[period][tier] = json_double(drs_tier[tier].Item("max"), 1e38, &rate.HasDemandCharge);
-					rate.DemandCharge[period][tier] = json_double(drs_tier[tier].Item("rate"), 0.0, &rate.HasDemandCharge);
-					rate.DemandAdj[period][tier] = json_double(drs_tier[tier].Item("adj"), 0.0, &rate.HasDemandCharge);
+					num_dc_rows++;
 				}
 			}
 		}
 	}
+	if (num_dc_rows > 0)
+	{
+		rate.DemandTOUStructure.resize_fill(num_dc_rows, 4, 0.0);
 
+		// next, assign rate values
+		int ds_row = 0;
+		for (int period = 0; period < drs_periods.Size(); period++)
+		{
+			wxJSONValue drs_tier = drs_periods[period];
+			for (int tier = 0; tier < drs_tier.Size(); tier++)
+			{
+				double max = json_double(drs_tier[tier].Item("max"), 1e38, &rate.HasDemandCharge);
+
+				double charge = json_double(drs_tier[tier].Item("rate"), 0.0, &rate.HasDemandCharge);
+				double adj = json_double(drs_tier[tier].Item("adj"), 0.0, &rate.HasDemandCharge);
+
+				rate.DemandTOUStructure.at(ds_row, 0) = period + 1;
+				rate.DemandTOUStructure.at(ds_row, 1) = tier + 1;
+				rate.DemandTOUStructure.at(ds_row, 2) = max;
+				rate.DemandTOUStructure.at(ds_row, 3) = charge + adj;
+				ds_row++;
+
+
+				/*
+
+				// SAMnt limited to float max = 3.4e38
+				rate.DemandMax[period][tier] = json_double(drs_tier[tier].Item("max"), 1e38, &rate.HasDemandCharge);
+				rate.DemandCharge[period][tier] = json_double(drs_tier[tier].Item("rate"), 0.0, &rate.HasDemandCharge);
+				rate.DemandAdj[period][tier] = json_double(drs_tier[tier].Item("adj"), 0.0, &rate.HasDemandCharge);
+				*/
+			}
+		}
+	}
 	
 	if (!RetrieveDiurnalData(val.Item("demandweekdayschedule"), rate.DemandWeekdaySchedule)) return false;
 	if (!RetrieveDiurnalData(val.Item("demandweekendschedule"), rate.DemandWeekendSchedule)) return false;
