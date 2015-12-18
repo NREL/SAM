@@ -68,14 +68,16 @@ public:
 
 		// month based
 		int FlatDemandMonth[12];
-		double FlatDemandMax[12][6]; 
-		double FlatDemandCharge[12][6]; 
-		double FlatDemandAdj[12][6]; 
+//		double FlatDemandMax[12][6]; 
+//		double FlatDemandCharge[12][6]; 
+//		double FlatDemandAdj[12][6]; 
+		matrix_t<double> DemandFlatStructure;
 		
 		// diurnal based
-		double DemandMax[12][6]; 
-		double DemandCharge[12][6]; 
-		double DemandAdj[12][6]; 
+//		double DemandMax[12][6]; 
+//		double DemandCharge[12][6]; 
+//		double DemandAdj[12][6]; 
+		matrix_t<double> DemandTOUStructure;
 		double DemandWeekdaySchedule[12][24];
 		double DemandWeekendSchedule[12][24];
 

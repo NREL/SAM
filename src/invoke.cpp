@@ -1988,6 +1988,10 @@ void fcall_urdb_get(lk::invoke_t &cxt)
 		cxt.result().hash_item("ec_enable").assign(1.0);
 		if (!copy_mat(cxt, "ec_tou_mat", rate.EnergyStructure)) return;
 
+		cxt.result().hash_item("dc_enable").assign(1.0);
+		if (!copy_mat(cxt, "dc_flat_mat", rate.DemandFlatStructure)) return;
+		if (!copy_mat(cxt, "dc_tou_mat", rate.DemandTOUStructure)) return;
+
 		/*
 		// energy rate structure, e.g. "ur_ec_p1_t1_ub"
 		bool ec_enable = false;
@@ -2009,7 +2013,11 @@ void fcall_urdb_get(lk::invoke_t &cxt)
 		else
 			cxt.result().hash_item("ec_enable").assign(0.0);
 		*/
-		//flat demand structure, e.g. ur_dc_jan_t1_ub
+		
+
+		/*
+		
+		
 		wxString months[] = { "jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec" };
 
 		lk::vardata_t vd;
@@ -2027,8 +2035,10 @@ void fcall_urdb_get(lk::invoke_t &cxt)
 				cxt.result().hash_item(period_tier + "dc").assign(charge);
 			}
 		}
+		*/
 
 
+		/*
 		// demand rate structure, e.g. ur_dc_p1_t1_ub
 		for (int period = 0; period < 12; period++)
 		{
@@ -2045,7 +2055,7 @@ void fcall_urdb_get(lk::invoke_t &cxt)
 			cxt.result().hash_item("dc_enable").assign(1.0);
 		else
 			cxt.result().hash_item("dc_enable").assign(0.0);
-
+		*/
 	}
 }
 
