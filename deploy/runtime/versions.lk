@@ -52,8 +52,7 @@ Some more examples:
 version_upgrade{'2015.11.16'} = define() {
 	
 	const cfg = config();
-//	if ( cfg.fin == 'Residential' || cfg.fin == 'Commercial' )
-	if( cfg.tech == 'Flat Plate PV' && cfg.fin == 'Commercial')
+	if ( cfg.fin == 'Residential' || cfg.fin == 'Commercial' )
 	{
 		message('Upgrading project to version 2015.11.16');
 		
