@@ -68,25 +68,14 @@ public:
 
 		// month based
 		int FlatDemandMonth[12];
-//		double FlatDemandMax[12][6]; 
-//		double FlatDemandCharge[12][6]; 
-//		double FlatDemandAdj[12][6]; 
 		matrix_t<double> DemandFlatStructure;
 		
 		// diurnal based
-//		double DemandMax[12][6]; 
-//		double DemandCharge[12][6]; 
-//		double DemandAdj[12][6]; 
 		matrix_t<double> DemandTOUStructure;
 		double DemandWeekdaySchedule[12][24];
 		double DemandWeekendSchedule[12][24];
 
 		bool HasEnergyCharge;	
-//		wxString EnergyMaxUnit[12][6];
-//		double EnergyMax[12][6]; 
-//		double EnergyBuy[12][6]; 
-//		double EnergyAdj[12][6]; 
-//		double EnergySell[12][6]; 
 		matrix_t<double> EnergyStructure;
 		double EnergyWeekdaySchedule[12][24];
 		double EnergyWeekendSchedule[12][24];
