@@ -1827,18 +1827,7 @@ bool ParametricGridData::RunSimulations_multi()
 	tpd.NewStage("Calculating...", nthread);
 
 	size_t nok = 0;
-	if (nthread > 1)
-		nok = Simulation::DispatchThreads(tpd, sims, nthread);
-	else
-	{
-		for (size_t i = 0; i < sims.size(); i++)
-		{
-			if (sims[i]->Invoke(true, false))
-				nok++;
-
-			tpd.Update(0, (float)i / (float)total_runs * 100.0f);
-		}
-	}
+	nok = Simulation::DispatchThreads(tpd, sims, nthread);
 
 	int time_sim = sw.Time();
 	sw.Start();
