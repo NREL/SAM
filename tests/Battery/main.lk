@@ -1,0 +1,329 @@
+/* 
+***************************************************************************************************** 
+Notes
+*****************************************************************************************************
+1. Last tested on 1/4/2016
+2. Have to click "Run" twice, there appears to be a bug in SAM
+*/
+
+// Turns 0/1 into failed/passed
+function test_status(status)
+{
+	retCode = "failed";
+	if (status == true)
+		retCode = "passed";
+	return retCode;
+}
+
+/* 
+***************************************************************************************************** 
+Performance tests
+*****************************************************************************************************
+*/
+
+// battery bank sizing test
+function bank_sizing_test()
+{
+	batt_size_choice = get('batt_size_choice');
+	e_desired = get('batt_bank_size');
+	v_desired = get('batt_bank_voltage');
+	e_computed = get('batt_computed_bank_capacity');
+	v_computed = get('batt_computed_voltage');
+	v_nom = get('batt_Vnom_default');
+	q_full = get('batt_Qfull');
+	tol = 1.0001;
+	if (batt_size_choice == 0)
+	{
+		cells_series = ceil(v_desired/v_nom);
+		v_computed_check = cells_series*v_nom;
+		num_strings = ceil(e_desired*1000/(q_full*v_computed));
+
+		e_computed_check = num_strings*q_full*0.001*v_computed_check;
+		
+		if ( abs(v_computed/v_computed_check) > tol || abs(e_computed/e_computed_check) > tol)
+		{
+			outln("---------Bank Sizing Test Failed!!!--------------------------");
+			outln("num_strings: " + num_strings + " v_computed: " + v_computed + " v_check:" + v_computed_check + " e_computed: " + e_computed + " e_check:" + e_computed_check);
+			outln("-------------------------------------------------------------");
+			return false;
+		}
+	}
+	return true;
+}
+
+// chemistry selection test
+function chemistry_test()
+{
+	batt_type = get('batt_type');
+	batt_chem = get('batt_chem');
+	batt_lead_type = get('batt_lead_type');
+	batt_lithium_type = get('batt_lithium_type');
+	num_lead_acid = 4;
+	num_lithium_ion = 7;
+	
+	lead_type = 0;
+	lithium_type = 1;
+	
+	if ((batt_type < num_lead_acid && batt_chem != lead_type) || (batt_type >= num_lead_acid && batt_chem != lithium_type))
+	{
+		outln("-------  Chemistry Test Failed!!! -------------------------------");
+		outln(" batt_type: " + batt_type + " batt_chem: " + batt_chem + " batt_lead_type: " + batt_lead_type + " batt_lithium_type: " + batt_lithium_type);
+		outln("------------------------------------------------------------------");
+		return false;
+	}
+	return true;
+
+}
+
+// voltage properties test
+function voltage_test()
+{
+    Qfull = get('batt_Qfull'); 
+    Qexp = get('batt_Qexp');
+    Qnom = get('batt_Qnom');
+    
+	if ( (Qexp > Qfull) || (Qnom > Qfull) || (Qnom < 0) || (Qexp < 0) || (Qnom < 0) )
+	{
+		outln("------- Voltage Curve Test Failed!!! -------------------------------");
+		outln("Qfull: " + Qfull + " Qexp: " + Qexp +" Qnom: " + Qnom);
+		outln("------------------------------------------------------------------");
+		return false;
+	}
+	return true;
+}
+
+// current & capacity test
+function current_test()
+{
+	current_charge_max = get('batt_current_charge_max');
+	current_discharge_max = get('batt_current_discharge_max');
+	if (current_charge_max < 0 || current_discharge_max < 0)
+	{
+		outln("------- Current Test Failed!!! -----------------------------------");
+		outln("Max charge current: " + current_charge_max + " Max discharge current: " + current_discharge_max);
+		outln("------------------------------------------------------------------");
+		return false;
+	}
+	return true;
+}
+
+// efficiencies check
+function efficiencies_test()
+{
+	ac_dc = get('batt_ac_dc_efficiency');
+	dc_ac = get('batt_dc_ac_efficiency');
+	roundtrip = get('average_cycle_efficiency');
+	if (ac_dc < 0 || ac_dc > 100 || dc_ac < 0 || dc_ac > 100 || roundtrip < 0 || roundtrip > 100)
+	{
+		outln("------- Efficiencies Test Failed!!! -----------------------------------");
+		outln("ac_dc: " + ac_dc + " dc_ac: " + dc_ac + " roundtrip: " + roundtrip);
+		outln("------------------------------------------------------------------");
+		return false;
+	}
+	return true;
+}
+
+// replacements check
+function replacements_test()
+{
+	lifetime = get('pv_lifetime_simulation');
+	if(!lifetime)
+	{
+		set('pv_lifetime_simulation',true);
+		simulate();
+	}
+	
+	batt_replacement_option = get('batt_replacement_option');
+	batt_bank_replacement = get('batt_bank_replacement');
+	batt_capacity_percent = get('batt_capacity_percent');
+	batt_replacement_capacity = get('batt_replacement_capacity');
+	retCode = true;
+	
+	// no replacement failed
+	if (batt_replacement_option == 0 && sum(batt_bank_replacement) > 0)
+		retCode = false;
+	// force a replacement run
+	else if (batt_replacement_option == 0)
+	{
+		set('batt_replacement_option',1);
+		set('batt_replacement_capacity',98);
+		simulate();
+		batt_capacity_percent = get('batt_capacity_percent');
+
+		if (batt_capacity_percent[#batt_capacity_percent-1] < get('batt_replacement_capacity'))
+		{
+			outln("------- Replacements Test Failed!!! -----------------------------------");
+			outln("replacement option: " + get('batt_replacement_option') + " replacements: " + sum(get('batt_bank_replacement')) + " capacity_percent_end: " + batt_capacity_percent[#batt_capacity_percent-1] + " replacement capacity: " + get('batt_replacement_capacity'));
+			outln("------------------------------------------------------------------");
+			retCode = false;
+		}
+		// reset
+		set('batt_replacement_option',batt_replacement_option);
+		set('batt_replacement_capacity',batt_replacement_option);
+		set('pv_lifetime_simulation',lifetime);
+		simulate();
+	}
+	else if (batt_replacement_option == 1 || batt_replacement_option == 2)
+	{
+		if (batt_capacity_percent[#batt_capacity_percent-1] < batt_replacement_capacity)
+		{
+			outln("------- Replacements Test Failed!!! -----------------------------------");
+			outln("replacement option: " + batt_replacement_option + " replacements: " + sum(batt_bank_replacement) + " capacity_percent_end: " + batt_capacity_percent[#batt_capacity_percent-1] + " replacement capacity: " + batt_replacement_capacity);
+			outln("------------------------------------------------------------------");
+			retCode = false;
+		}
+	}
+	return retCode;
+}
+
+/* 
+***************************************************************************************************** 
+Output variable tests
+*****************************************************************************************************
+*/
+
+// check if entries are > 0 and < qmax
+function total_charge()
+{
+	q0 = []; qmax = [];
+	q0 = get('batt_q0');
+	qmax = get('batt_qmax');
+	
+	for (i=0; i<#q0; i++)
+	{
+		if (q0[i] < 0 || q0[i] > qmax[i])
+		{
+			outln("------- Capacity Output Failed!!! -----------------------------------");
+			outln(": i: " + i + "q0: " + q0[i] + " qmax: " + qmax[i]);
+			outln("------------------------------------------------------------------");
+			return false;
+		}
+	}
+	return true;
+}
+
+// check if power to load > 0
+function power_to_load()
+{
+	pv = []; battery = []; grid = []; load_power = [];
+
+	pv = get('pv_to_load');
+	battery = get('batt_to_load');
+	grid = get('grid_to_load');
+	load_power = get('load');
+	
+	for (i=0; i<#pv; i++)
+	{
+		if ( (pv[i] < 0) || (battery[i] < 0) || (grid[i] < 0) || ( load_power[i] != pv[i] + battery[i] + grid[i]))
+		{
+			outln("------- Power to Load Output Failed!!! -----------------------------------");
+			outln(": i: " + i + " pv: " + pv[i] + " battery: " + battery[i] + " grid: " + grid[i] + " load: " + load_power[i]);
+			outln("------------------------------------------------------------------");
+			return false;
+		}
+	}
+	return true;
+}
+
+// check state of charge & cycle depth of discharge
+function charge_state()
+{
+	SOC = []; DOD = [];
+	SOC = get('batt_SOC');
+	DOD = get('batt_DOD');
+	for (i = 0; i<#SOC; i++)
+	{
+		if ( (SOC[i] < 0) || (SOC[i] > 100) || (DOD[i] < 0) || (DOD[i] > 100) )
+		{
+			outln("------- Charge State Output Failed!!! -----------------------------------");
+			outln(": i: " + i + " SOC: " + SOC[i] + " cycle DOD: " + DOD[i]);
+			outln("------------------------------------------------------------------");
+			return false;
+		}
+	}
+	return true;
+}
+
+// check battery number of cycles
+function cycle_degradation()
+{
+	cycles = []; lifetime_percent = [];
+	cycles = get('batt_cycles');
+	lifetime_percent = get('batt_capacity_percent');
+	
+	for (i=1; i<#cycles; i++)
+	{
+		if (cycles[i] < cycles[i-1] && cycles[i] !=0)
+		{
+			outln("------- Degradation Output Failed!!! -----------------------------------");
+			outln(": i: " + i + " cycle: " + cycles[i] + " last cycle " + cycles[i-1]);
+			outln("------------------------------------------------------------------");
+			return false;
+		}
+		
+	return true;	
+	}
+}
+/* 
+***************************************************************************************************** 
+Base case settings 
+*****************************************************************************************************
+*/
+en_batt = true;
+pv_lifetime_simulation = false;
+
+batt_size_choice = 0;
+batt_bank_size = 3;
+batt_bank_voltage = 12;
+batt_type = 8;
+// voltage and capacity
+batt_Vnom_default = 3.6;
+batt_resistance = 0.1;
+batt_C_rate = 0.2;
+batt_Vfull = 4.1;
+batt_Vexp = 4.05;
+batt_Vnom = 3.4;
+batt_Qfull = 2.25;
+batt_Qexp_percent = 1.78;
+batt_Qnom_percent = 88.9;
+batt_C_rate_max_charge = 1;
+batt_C_rate_max_discharge = 1;
+// dispatch
+batt_dispatch_choice = 0;
+batt_pv_choice = 0;
+batt_target_choice = 0;
+
+batt_minimum_SOC = 20;
+batt_maximum_SOC = 100;
+batt_minimum_modetime = 10;
+
+// add in manual dispatch tests
+// add in lifetime tests
+// add in replacement tests
+// add in thermal tests
+
+
+/* 
+***************************************************************************************************** 
+Run Tests
+*****************************************************************************************************
+*/
+
+// performance tests
+outln("Performance Tests");
+simulate();
+outln("Test 1: " + test_status(bank_sizing_test()) + " - Bank sizing test" );
+outln("Test 2: " + test_status(chemistry_test()) + " - Chemisty test");
+outln("Test 3: " + test_status(voltage_test()) + " - Voltage curve test");
+outln("Test 4: " + test_status(current_test())+ " - Current test");
+outln("Test 5: " + test_status(efficiencies_test())+ " - Efficiencies test");
+outln("Test 6: " + test_status(replacements_test()) + " - Replacements test");
+
+// output variable tests
+outln("");
+outln("Output Variable Tests");
+outln("Test 1: " + test_status(total_charge()) + " - Charge test" );
+outln("Test 2: " + test_status(power_to_load()) +" - Power-to-load test");
+outln("Test 3: " + test_status(charge_state()) + " -  Charge state test");
+outln("Test 4: " + test_status(cycle_degradation()) + " - Cycle test");
+
