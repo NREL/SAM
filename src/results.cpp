@@ -1647,7 +1647,6 @@ public:
 	void RemoveLeftCol();
 
 	// matrix specific
-//	matrix_t<float> * Matrix;
 	matrix_t<float> Matrix;
 	std::vector<wxString> MatrixColLabels;
 	std::vector<wxString> MatrixRowLabels;
@@ -1680,7 +1679,6 @@ public:
 			return 1;
 		else
 			return Matrix.ncols();
-//		return Matrix->ncols();
 	}
 
     virtual bool IsEmptyCell( int row, int col )
@@ -1710,16 +1708,8 @@ public:
 		}
 		else if (IsMatrix)
 		{
-//			if (col >= 0 && col < Matrix->ncols() && row >= 0 && row < Matrix->nrows())
 			if (col >= 0 && col < Matrix.ncols() && row >= 0 && row < Matrix.nrows())
 			{
-/*				if (std::isnan(Matrix->at(row, col)))
-					return "NaN";
-				else if (MatrixFormat == "CURRENCY")
-					return	wxNumericCtrl::Format(Matrix->at(row, col), wxNumericCtrl::REAL, 2, true, wxEmptyString, wxEmptyString);
-				else
-					return wxString::Format("%g", Matrix->at(row, col));
-					*/
 				if (std::isnan(Matrix.at(row, col)))
 					return "NaN";
 				else if (MatrixFormat == "CURRENCY")
@@ -1762,7 +1752,6 @@ public:
 		}
 		else
 		{			
-//			if (col >= 0 && col < Matrix->ncols()
 			if (col >= 0 && col < Matrix.ncols()
 					&& MatrixColLabels.size() > 0 && col < MatrixColLabels.size())
 				return MatrixColLabels[col];
@@ -1804,7 +1793,6 @@ public:
 		}
 		else
 		{
-//			if (row >= 0 && row < Matrix->nrows()
 			if (row >= 0 && row < Matrix.nrows()
 					&& MatrixRowLabels.size() > 0 && row < MatrixRowLabels.size())
 				return MatrixRowLabels[row];
@@ -1890,11 +1878,9 @@ public:
 				}
 				else
 				{
-//					Matrix = &(vv->Matrix());
 					Matrix = vv->Matrix();
 					IsMatrix = true;
 					size_t nr, nc;
-//					nr = Matrix->nrows(); nc = Matrix->ncols();
 					nr = Matrix.nrows(); nc = Matrix.ncols();
 					MaxCount = MinCount = nr;
 					bool write_label = true;
@@ -2051,21 +2037,15 @@ std::vector<wxString> TabularBrowser::ResultsTable::MakeURPeriods()
 std::vector<wxString> TabularBrowser::ResultsTable::MakeURPeriodNums(bool cols)
 {
 	std::vector<wxString> v;
-//	if (!Matrix) return v;
-	//	if (((*Matrix).nrows() < 1) || ((*Matrix).ncols() < 1))
 	if ((Matrix.nrows() < 1) || (Matrix.ncols() < 1))
 	return v;
 	if (cols)
 	{
-//		for (size_t i = 0; i < (*Matrix).ncols(); i++)
-//			v.push_back(wxString::Format("Period %d", (int)((*Matrix).at(0, i))));
 		for (size_t i = 0; i < Matrix.ncols(); i++)
 			v.push_back(wxString::Format("Period %d", (int)(Matrix.at(0, i))));
 	}
 	else
 	{
-//		for (size_t i = 0; i < (*Matrix).nrows(); i++)
-//			v.push_back(wxString::Format("Period %d", (int)((*Matrix).at(0, i))));
 		for (size_t i = 0; i < Matrix.nrows(); i++)
 			v.push_back(wxString::Format("Period %d", (int)(Matrix.at(i,0))));
 	}
@@ -2076,22 +2056,16 @@ std::vector<wxString> TabularBrowser::ResultsTable::MakeURPeriodNums(bool cols)
 std::vector<wxString> TabularBrowser::ResultsTable::MakeURTierNums(bool cols)
 {
 	std::vector<wxString> v;
-//	if (!Matrix) return v;
-//	if (((*Matrix).nrows() < 1) || ((*Matrix).ncols() < 1))
 	if ((Matrix.nrows() < 1) || (Matrix.ncols() < 1))
 			return v;
 
 	if (cols)
 	{
-//		for (size_t i = 0; i < (*Matrix).ncols(); i++)
-//			v.push_back(wxString::Format("Tier %d", (int)((*Matrix).at(0, i))));
 		for (size_t i = 0; i < Matrix.ncols(); i++)
 			v.push_back(wxString::Format("Tier %d", (int)(Matrix.at(0, i))));
 	}
 	else
 	{
-//		for (size_t i = 0; i < (*Matrix).nrows(); i++)
-//			v.push_back(wxString::Format("Tier %d", (int)((*Matrix).at(0, i))));
 		for (size_t i = 0; i < Matrix.nrows(); i++)
 			v.push_back(wxString::Format("Tier %d", (int)(Matrix.at(i,0))));
 	}
@@ -2101,12 +2075,8 @@ std::vector<wxString> TabularBrowser::ResultsTable::MakeURTierNums(bool cols)
 
 void TabularBrowser::ResultsTable::RemoveTopRow()
 {
-//	if (!Matrix) return;
-//	if (((*Matrix).nrows() < 1) || ((*Matrix).ncols() < 1))
 	if ((Matrix.nrows() < 1) || (Matrix.ncols() < 1))
 			return;
-//	size_t nr = (*Matrix).nrows() - 1;
-//	size_t nc = (*Matrix).ncols();
 	size_t nr = Matrix.nrows() - 1;
 	size_t nc = Matrix.ncols();
 	for (int ir = 0; ir < (int)nr; ir++)
@@ -2115,20 +2085,13 @@ void TabularBrowser::ResultsTable::RemoveTopRow()
 		for (int ic = 0; ic < (int)nc; ic++)
 			Matrix.at(ir, ic) = Matrix.at(ir + 1, ic);
 	}
-//	(*Matrix).at(ir, ic) = (*Matrix).at(ir + 1, ic);
-
-//	(*Matrix).resize_preserve(nr, nc, 0);
 	Matrix.resize_preserve(nr, nc, 0);
 }
 
 void TabularBrowser::ResultsTable::RemoveLeftCol()
 {
-//	if (!Matrix) return;
-//	if (((*Matrix).nrows() < 1) || ((*Matrix).ncols() < 1))
 	if ((Matrix.nrows() < 1) || (Matrix.ncols() < 1))
 			return;
-//	size_t nr = (*Matrix).nrows();
-//	size_t nc = (*Matrix).ncols() - 1;
 	size_t nr = Matrix.nrows();
 	size_t nc = Matrix.ncols() - 1;
 	for (int ic = 0; ic < (int)nc; ic++)
@@ -2137,9 +2100,6 @@ void TabularBrowser::ResultsTable::RemoveLeftCol()
 		for (int ir = 0; ir < (int)nr; ir++)
 			Matrix.at(ir, ic) = Matrix.at(ir, ic + 1);
 	}
-//	(*Matrix).at(ir, ic) = (*Matrix).at(ir, ic + 1);
-
-//	(*Matrix).resize_preserve(nr, nc, 0);
 	Matrix.resize_preserve(nr, nc, 0);
 }
 
@@ -2327,7 +2287,6 @@ void TabularBrowser::UpdateGridSpecific(wxExtGridCtrl*& grid, ResultsTable*& gri
 		}
 		else if (gridTable->IsMatrix)
 		{
-//			for (int i = 0; i < gridTable->Matrix->ncols(); i++)
 			for (int i = 0; i < gridTable->Matrix.ncols(); i++)
 			{
 				wxArrayString lines = wxSplit(gridTable->MatrixColLabels[i], '\n');
@@ -2719,7 +2678,6 @@ void TabularBrowser::GetTextData(wxString &dat, char sep)
 
 	dat = wxEmptyString;
 
-//	size_t columns = (IsMatrix ? m_gridTable->Matrix->ncols() : m_gridTable->Table.size());
 	size_t columns = (IsMatrix ? m_gridTable->Matrix.ncols() : m_gridTable->Table.size());
 	size_t approxbytes = m_gridTable->MaxCount * 15 * columns;
 	dat.Alloc(approxbytes);
@@ -2757,8 +2715,6 @@ void TabularBrowser::GetTextData(wxString &dat, char sep)
 		{
 			for (c = 0; c < columns; c++)
 			{
-//				int N = (IsMatrix ? m_gridTable->Matrix->nrows() : m_gridTable->Table[c]->N);
-//				float value = (IsMatrix ? m_gridTable->Matrix->at(r, c) : m_gridTable->Table[c]->Values[r]);
 				int N = (IsMatrix ? m_gridTable->Matrix.nrows() : m_gridTable->Table[c]->N);
 				float value = (IsMatrix ? m_gridTable->Matrix.at(r, c) : m_gridTable->Table[c]->Values[r]);
 				if (r < N)
