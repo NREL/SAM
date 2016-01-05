@@ -2494,6 +2494,7 @@ void TabularBrowser::UpdateCase()
 
 void TabularBrowser::OnCommand(wxCommandEvent &evt)
 {
+	int excel_max_rows = 1048576;
 	switch(evt.GetId())
 	{
 	case IDOB_CLEAR_ALL:
@@ -2524,7 +2525,7 @@ void TabularBrowser::OnCommand(wxCommandEvent &evt)
 					wxMessageBox("Could not start Excel.");
 					return;
 				}
-				
+
 				if (!xl.NewWorkbook())
 				{
 					wxMessageBox("Could not create a new Excel worksheet.");
@@ -2535,6 +2536,22 @@ void TabularBrowser::OnCommand(wxCommandEvent &evt)
 				
 				for (ResultsIterator it = m_gridTableMap.begin(); it != m_gridTableMap.end(); it++)
 				{
+					if (it->first.n_rows > excel_max_rows)
+					{
+						busy.~wxBusyInfo();
+						wxString message;
+						message.Printf(wxT("Excel supports max of 1048576 rows.\nLifetime data contains %d rows\nPlease copy and paste Lifetime data to a text file"),it->first.n_rows);
+						wxMessageBox(message);
+
+						if (size == 1)
+						{
+							xl.CloseAllNoSave();
+							return;
+						}
+						else
+							continue;
+					}
+					
 					m_gridTable = it->second;
 					dat.Clear();
 					GetTextData(dat, '\t');
@@ -2551,11 +2568,17 @@ void TabularBrowser::OnCommand(wxCommandEvent &evt)
 						
 						// reduce label size to fit on tab
 						int max_worksheet_name_length = 31;
-						wxString without = "without"; wxString no = "no";
-						wxString system = "system"; wxString sys = "sys";
 						wxString worksheet_name = m_tabLabelsMap[it->first];
-						worksheet_name.Replace(without, no);
-						worksheet_name.Replace(system, sys);
+						worksheet_name.Replace("without", "no");
+						worksheet_name.Replace("system", "sys");
+
+						// remove potential illegal characters
+						worksheet_name.Replace("\\","");
+						worksheet_name.Replace("/", "");
+						worksheet_name.Replace("?", "");
+						worksheet_name.Replace("*", "");
+						worksheet_name.Replace("[", "(");
+						worksheet_name.Replace("]", ")");
 
 						if (worksheet_name.length() > max_worksheet_name_length)
 							worksheet_name = worksheet_name.Mid(0, max_worksheet_name_length);
@@ -2567,7 +2590,6 @@ void TabularBrowser::OnCommand(wxCommandEvent &evt)
 							xl.AddWorksheet();
 							count++;
 						}
-
 					}
 				}
 				xl.Show(true);
@@ -2591,6 +2613,14 @@ void TabularBrowser::OnCommand(wxCommandEvent &evt)
 		break;
 	case IDOB_SAVECSV:
 		{
+			if (m_lastSize.n_rows > excel_max_rows)
+			{
+				wxString message;
+				message.Printf(wxT("Excel supports max of 1048576 rows.\nLifetime data contains %d rows\nPlease copy and paste Lifetime data to a text file"), m_lastSize.n_rows);
+				wxMessageBox(message);
+				return;
+			}
+
 			wxFileDialog fdlg(this, "Save results as CSV", wxEmptyString, "results.csv", "Comma-separated values (*.csv)|*.csv", wxFD_SAVE|wxFD_OVERWRITE_PROMPT);
 			if (fdlg.ShowModal() != wxID_OK) return;
 			
@@ -2600,7 +2630,6 @@ void TabularBrowser::OnCommand(wxCommandEvent &evt)
 				wxMessageBox("Could not open file for write:\n\n" + fdlg.GetPath());
 				return;
 			}
-
 			wxBusyInfo busy("Writing CSV file... please wait");
 
 			wxString dat;
@@ -2647,6 +2676,7 @@ void TabularBrowser::OnPageChanged(wxAuiNotebookEvent& event)
 	{
 		m_grid = m_gridMap[current_size];
 		m_gridTable = m_gridTableMap[current_size];
+		m_lastSize = current_size;
 	}
 	// wxMessageBox("Changed");
 }
