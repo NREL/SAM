@@ -1367,7 +1367,7 @@ void wxShadingFactorsCtrl::OnCommand(wxCommandEvent &evt)
 				m_grid->ResizeGrid(nrows, ncols);
 				m_data.resize_preserve(nrows, ncols, 0.0);
 
-				m_grid->Paste(true);
+				m_grid->Paste( wxExtGridCtrl::PASTE_ALL );
 
 				for (int r = 0; r < m_data.nrows(); r++)
 					for (int c = 0; c < m_data.ncols(); c++)
