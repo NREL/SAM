@@ -2548,7 +2548,19 @@ void TabularBrowser::OnCommand(wxCommandEvent &evt)
 						wxTheClipboard->Close();
 
 						xl.PasteClipboard();
-						xl.SetWorksheetName(m_tabLabelsMap[it->first]);
+						
+						// reduce label size to fit on tab
+						int max_worksheet_name_length = 31;
+						wxString without = "without"; wxString no = "no";
+						wxString system = "system"; wxString sys = "sys";
+						wxString worksheet_name = m_tabLabelsMap[it->first];
+						worksheet_name.Replace(without, no);
+						worksheet_name.Replace(system, sys);
+
+						if (worksheet_name.length() > max_worksheet_name_length)
+							worksheet_name = worksheet_name.Mid(0, max_worksheet_name_length);
+
+						xl.SetWorksheetName(worksheet_name);
 
 						if (count < size)
 						{
