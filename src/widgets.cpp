@@ -483,7 +483,7 @@ public:
 	void OnCopyPaste(wxCommandEvent &evt)
 	{
 		if (evt.GetId() == ID_paste)
-			grdData->Paste(true);
+			grdData->Paste( wxExtGridCtrl::PASTE_ALL );
 		else
 			grdData->Copy(true);
 	}
@@ -1375,7 +1375,7 @@ public:
 		else if (evt.GetId() == IDDD_COPY)
 			Grid->Copy(true);
 		else if (evt.GetId() == IDDD_PASTE)
-			Grid->Paste(true);
+			Grid->Paste(wxExtGridCtrl::PASTE_ALL);
 		else if (evt.GetId() == IDDD_IMPORT)
 		{
 			wxFileDialog dlg(this, "Select data file to import");
@@ -2455,7 +2455,7 @@ void AFDataMatrixCtrl::OnCommand(wxCommandEvent &evt)
 			}
 		}
 
-		m_grid->Paste(true);
+		m_grid->Paste( wxExtGridCtrl::PASTE_ALL );
 
 		for (int r = 0; r<m_data.nrows(); r++)
 			for (int c = 0; c<m_data.ncols(); c++)
@@ -2700,7 +2700,7 @@ public:
 		else if (evt.GetId() == IDDD_COPY)
 			Grid->Copy(true);
 		else if (evt.GetId() == IDDD_PASTE)
-			Grid->Paste(true);
+			Grid->Paste( wxExtGridCtrl::PASTE_ALL );
 	}
 
 	DECLARE_EVENT_TABLE();
