@@ -1268,7 +1268,7 @@ static ssc_bool_t ssc_exec_handler( ssc_module_t p_mod, ssc_handler_t p_handler,
 	const char *s0, const char *s1,
 	void *user_data )
 {
-	ThreadProgressDialog *tpd = (ThreadProgressDialog*) user_data;
+	wxThreadProgressDialog *tpd = (wxThreadProgressDialog*) user_data;
 	if (action_type == SSC_LOG)
 	{		
 		switch( (int)f0 )
@@ -1328,10 +1328,10 @@ void fcall_ssc_exec( lk::invoke_t &cxt )
 	}
 
 
-	ThreadProgressDialog *tpd = 0;
+	wxThreadProgressDialog *tpd = 0;
 	if ( show_dialog )
 	{
-		tpd = new ThreadProgressDialog( SamApp::Window(), 1, true );
+		tpd = new wxThreadProgressDialog( SamApp::Window(), 1, true );
 		tpd->CenterOnParent();
 		tpd->Show();
 		tpd->Status( "Calculating...");

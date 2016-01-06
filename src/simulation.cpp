@@ -13,6 +13,7 @@
 #include <wx/filefn.h>
 
 #include <wex/metro.h>
+#include <wex/utils.h>
 
 #include <lk_absyn.h>
 #include <lk_stdlib.h>
@@ -978,7 +979,7 @@ int Simulation::DispatchThreads( SimulationDialog &tpd,
 	return DispatchThreads( tpd.Dialog(), sims, nthread );
 } 
 
-int Simulation::DispatchThreads( ThreadProgressDialog &tpd, 
+int Simulation::DispatchThreads( wxThreadProgressDialog &tpd, 
 	std::vector<Simulation*> &sims, 
 	int nthread )
 {	
@@ -1070,210 +1071,13 @@ int Simulation::DispatchThreads( ThreadProgressDialog &tpd,
 
 
 
-BEGIN_EVENT_TABLE( ThreadProgressDialog, wxDialog )
-	EVT_BUTTON( wxID_SAVE, ThreadProgressDialog::OnSaveLog )
-	EVT_BUTTON( wxID_CANCEL, ThreadProgressDialog::OnCancel )
-	EVT_CLOSE( ThreadProgressDialog::OnDialogClose )
-END_EVENT_TABLE( )
-
-ThreadProgressDialog::ThreadProgressDialog(wxWindow *parent, int nthreads, bool border)
-	: wxDialog( parent, wxID_ANY, wxEmptyString, wxDefaultPosition, 
-	wxSize(625, 475), (border ? wxBORDER_SIMPLE : wxBORDER_NONE )
-#ifdef __WXOSX__
-	|wxSTAY_ON_TOP // on OSX for some reason, we need this for the dialog show up on top of the transparent pane which is the parent
-#endif
-	 )
-{
-	SetBackgroundColour( *wxWHITE );
-	CenterOnParent();
-
-	m_canceled = false;
-	m_button = new wxMetroButton(this, wxID_CANCEL, "Cancel");//, wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT);
-	
-	wxBoxSizer *szv = new wxBoxSizer(wxVERTICAL);
-
-	m_status = new wxStaticText( this, wxID_ANY, "Processing..." );
-	m_status->SetFont( wxMetroTheme::Font( wxMT_LIGHT, 15 ) );
-	m_status->SetForegroundColour( wxMetroTheme::Colour( wxMT_TEXT ) );
-
-	szv->Add( m_status, 0, wxALL|wxEXPAND, 20 );
-
-	for (int i=0;i<nthreads;i++)
-	{
-			
-		wxStaticText *label = new wxStaticText(this, wxID_ANY, wxString::Format("Process %d", i+1));
-		label->SetForegroundColour( wxMetroTheme::Colour( wxMT_TEXT ) );
-
-		wxGauge *gauge = new wxGauge(this, wxID_ANY, 100);
-		wxTextCtrl *text = new wxTextCtrl(this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxTE_READONLY|wxBORDER_NONE);
-		text->SetBackgroundColour( *wxWHITE );
-		text->SetForegroundColour( wxMetroTheme::Colour( wxMT_TEXT ) );
-		
-		wxBoxSizer *sizer = new wxBoxSizer( wxHORIZONTAL );
-		sizer->Add( label, 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
-		sizer->Add( gauge, 1, wxALL|wxEXPAND, 5 );
-		sizer->Add( text, 0, wxALL|wxEXPAND, 5 );
-
-		m_labels.push_back(label);
-		m_progbars.push_back(gauge);
-		m_percents.push_back(text);
-			
-		szv->Add( sizer, 0, wxEXPAND|wxALL, 5 );
-	}
-	
-	m_log = new wxTextCtrl( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxTE_MULTILINE|wxBORDER_NONE );
-	m_log->SetForegroundColour( wxMetroTheme::Colour( wxMT_TEXT ) );		
-	szv->Add( m_log, 1, wxALL|wxEXPAND, 10 );
-
-	szv->Add( m_button, 0, wxALIGN_CENTER_VERTICAL|wxCENTER|wxLEFT|wxRIGHT|wxBOTTOM, 10);
-
-	
-	// not in a sizer.  will be manually positioned when ShowSaveLogButton is called.
-	m_saveLog = new wxMetroButton(this, wxID_SAVE, "Save log");
-	m_saveLog->Hide();
-	
-	SetSizer(szv);
-}
-
-void ThreadProgressDialog::SetButtonText( const wxString &text )
-{
-	m_button->SetLabel( text );
-	Layout();
-	wxYield();
-}
-
-void ThreadProgressDialog::ShowSaveLogButton()
-{
-	wxSize client( GetClientSize() );
-	wxSize best( m_saveLog->GetBestSize() );
-	m_saveLog->SetSize( 10, client.y - best.y - 10, best.x, best.y );
-	m_saveLog->Show();
-	Layout();
-	wxYield();
-}
-
-void ThreadProgressDialog::Status( const wxString &s )
-{
-	m_status->SetLabel( s );
-}
-
-void ThreadProgressDialog::Reset()
-{
-	for( size_t i=0;i<m_progbars.size();i++ )
-	{
-		m_labels[i]->SetLabel(wxString::Format("Process %d", (int)(i + 1)));
-		m_progbars[i]->SetValue(0);
-		m_percents[i]->ChangeValue( wxEmptyString );
-	}
-
-	Layout();
-}
-
-void ThreadProgressDialog::ShowBars( int n )
-{
-	if ( n < 0 ) n = m_progbars.size();
-	for( size_t i=0;i<m_progbars.size();i++ )
-	{
-		bool show = (i < n);
-		m_labels[i]->Show( show );
-		m_progbars[i]->Show( show );
-		m_percents[i]->Show( show );
-	}
-
-	Layout();
-}
-
-void ThreadProgressDialog::Log( const wxArrayString &list )
-{
-	for (size_t i=0;i<list.Count();i++)
-		Log(list[i]);
-}
-
-bool ThreadProgressDialog::HasMessages()
-{
-	return ( m_log->GetValue().Len() > 0 );
-}
-
-wxString ThreadProgressDialog::GetMessages()
-{
-	return m_log->GetValue();
-}
-
-void ThreadProgressDialog::Log( const wxString &text )
-{
-	m_log->AppendText( text + "\n" );
-}
-
-void ThreadProgressDialog::Update(int ThreadNum, float percent, const wxString &text)
-{
-	if (ThreadNum >= 0 && ThreadNum < m_progbars.size())
-	{
-		m_progbars[ThreadNum]->SetValue( (int)percent );
-		m_percents[ThreadNum]->ChangeValue( wxString::Format("%.1f %%", percent) );
-		if ( !text.IsEmpty() )
-		{
-			m_labels[ThreadNum]->SetLabel( text );
-			Layout();
-		} else {
-			wxString label( wxString::Format("Process %d", ThreadNum+1) );
-			if ( m_labels[ThreadNum]->GetLabel() != label )
-			{
-				m_labels[ThreadNum]->SetLabel( label );
-				Layout();
-			}
-		}
-	}
-}
-
-void ThreadProgressDialog::OnSaveLog( wxCommandEvent & )
-{
-	wxFileDialog dialog( this, "Save simulation messages", wxEmptyString, "log.txt", "Text files (*.txt)|*.txt", wxFD_SAVE|wxFD_OVERWRITE_PROMPT );
-	if ( wxID_OK == dialog.ShowModal() )
-	{
-		wxFile fp( dialog.GetPath(), wxFile::write );
-		if ( fp.IsOpened() )
-			fp.Write( m_log->GetValue() );
-		else
-			wxMessageBox("Could not write to file:\n\n" + dialog.GetPath() );
-	}
-}
-
-void ThreadProgressDialog::Finalize( const wxString &title )
-{
-	if ( HasMessages() )
-	{
-		if ( title.IsEmpty() ) Status( "Simulations finished with notices." );
-		else Status( title );
-
-		ShowBars( 0 );
-		SetButtonText( "OK" );
-		ShowSaveLogButton();
-		Hide();
-		ShowModal();
-	}
-}
-	
-void ThreadProgressDialog::OnCancel(wxCommandEvent &evt)
-{
-	m_canceled = true;
-	if ( IsModal() )
-		EndModal( wxID_CANCEL );
-}
-
-void ThreadProgressDialog::OnDialogClose(wxCloseEvent &evt)
-{
-	m_canceled = true;
-	evt.Skip();
-}
-
-
 SimulationDialog::SimulationDialog( const wxString &message, int nthread )
 {
 	if ( nthread < 1 )
 		nthread = wxThread::GetCPUCount();
 
-	m_transp = CreateTransparentOverlay( SamApp::Window() );
-	m_tpd = new ThreadProgressDialog( m_transp, nthread );
+	m_transp = wxCreateTransparentOverlay( SamApp::Window() );
+	m_tpd = new wxThreadProgressDialog( m_transp, nthread );
 	m_tpd->Show();
 
 	if ( message.IsEmpty() )

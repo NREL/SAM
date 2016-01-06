@@ -2655,26 +2655,11 @@ void ConfigDialog::OnCharHook( wxKeyEvent &evt )
 	}
 }
 
-wxFrame *CreateTransparentOverlay( wxWindow *parent )
-{
-	wxPoint pos = parent->ClientToScreen( wxPoint(0,0) );
-	wxSize size = parent->GetClientSize();
-
-	wxFrame *trans = new wxFrame( parent, wxID_ANY, wxEmptyString,  pos, size, 
-		wxBORDER_NONE | wxFRAME_FLOAT_ON_PARENT | wxFRAME_NO_TASKBAR );
-	trans->SetBackgroundColour( *wxLIGHT_GREY );
-	trans->SetTransparent( 230 );
-	trans->Show();
-
-	return trans;
-}
-
 bool ShowConfigurationDialog( wxWindow *parent, wxString *tech, wxString *fin, bool *reset )
 {
 	if ( parent == 0 ) return false;
 
-	wxWindow *trans = 
-		CreateTransparentOverlay( parent );
+	wxWindow *trans = wxCreateTransparentOverlay( parent );
 	wxPoint pt( trans->GetPosition() );
 	wxSize size( trans->GetClientSize() );
 	
