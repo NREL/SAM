@@ -2747,12 +2747,13 @@ void TabularBrowser::GetTextData(wxString &dat, char sep)
 	}
 	for (size_t r=0;r<m_gridTable->MaxCount;r++)
 	{
-		wxString ord(m_gridTable->GetRowLabelValue(r));
-		if ( ord.Find(sep) != wxNOT_FOUND )
-			ord = '"' + ord + '"';
-
 		if (IsSingleValues)
+		{
+			wxString ord(m_gridTable->GetRowLabelValue(r));
+			if (ord.Find(sep) != wxNOT_FOUND)
+				ord = '"' + ord + '"';
 			dat += ord + sep + wxString::Format("%g\n", m_gridTable->Table[r]->SingleValue);
+		}
 		else 
 		{
 			for (c = 0; c < columns; c++)
