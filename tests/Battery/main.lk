@@ -2,8 +2,7 @@
 ***************************************************************************************************** 
 Notes
 *****************************************************************************************************
-1. Last tested on 1/4/2016
-2. Have to click "Run" twice, there appears to be a bug in SAM
+1. Last tested on 1/6/2016
 */
 
 // Turns 0/1 into failed/passed
@@ -21,7 +20,7 @@ Performance tests
 *****************************************************************************************************
 */
 
-// battery bank sizing test
+// Test 1: battery bank sizing test
 function bank_sizing_test()
 {
 	batt_size_choice = get('batt_size_choice');
@@ -51,7 +50,7 @@ function bank_sizing_test()
 	return true;
 }
 
-// chemistry selection test
+// Test 2: chemistry selection test
 function chemistry_test()
 {
 	batt_type = get('batt_type');
@@ -75,7 +74,7 @@ function chemistry_test()
 
 }
 
-// voltage properties test
+// Test 3: voltage properties test
 function voltage_test()
 {
     Qfull = get('batt_Qfull'); 
@@ -92,7 +91,7 @@ function voltage_test()
 	return true;
 }
 
-// current & capacity test
+// Test 4: current & capacity test
 function current_test()
 {
 	current_charge_max = get('batt_current_charge_max');
@@ -107,7 +106,7 @@ function current_test()
 	return true;
 }
 
-// efficiencies check
+// Test 5: efficiencies check
 function efficiencies_test()
 {
 	ac_dc = get('batt_ac_dc_efficiency');
@@ -123,8 +122,148 @@ function efficiencies_test()
 	return true;
 }
 
-// replacements check
-function replacements_test()
+// Test 6: check if entries are > 0 and < qmax
+function total_charge()
+{
+	q0 = []; qmax = [];
+	q0 = get('batt_q0');
+	qmax = get('batt_qmax');
+	
+	for (i=0; i<#q0; i++)
+	{
+		if (q0[i] < 0 || q0[i] > qmax[i])
+		{
+			outln("------- Capacity Output Failed!!! -----------------------------------");
+			outln(": i: " + i + "q0: " + q0[i] + " qmax: " + qmax[i]);
+			outln("------------------------------------------------------------------");
+			return false;
+		}
+	}
+	return true;
+}
+
+// Test 7: check if power to load > 0
+function power_to_load()
+{
+	tol = 1.0001;
+	pv = []; battery = []; grid = []; load_power = [];
+
+	pv = get('pv_to_load');
+	battery = get('batt_to_load');
+	grid = get('grid_to_load');
+	load_power = get('load');
+	
+	for (i=0; i<#pv; i++)
+	{
+		if ( (pv[i] < 0) || (battery[i] < 0) || (grid[i] < 0) || ( abs(load_power[i]/(pv[i] + battery[i] + grid[i])) > tol  ) )
+		{
+			outln("------- Power to Load Output Failed!!! -----------------------------------");
+			outln(": i: " + i + " pv: " + pv[i] + " battery: " + battery[i] + " grid: " + grid[i] + " load: " + load_power[i]);
+			outln("------------------------------------------------------------------");
+			return false;
+		}
+	}
+	return true;
+}
+
+// Test 8: check state of charge & cycle depth of discharge
+function charge_state()
+{
+	SOC = []; DOD = [];
+	SOC = get('batt_SOC');
+	DOD = get('batt_DOD');
+		
+	for (i = 0; i<#SOC; i++)
+	{
+		if ( (SOC[i] < 0) || (SOC[i] > 100) || (DOD[i] < 0) || (DOD[i] > 100) )
+		{
+			outln("------- Charge State Output Failed!!! -----------------------------------");
+			outln(": i: " + i + " SOC: " + SOC[i] + " cycle DOD: " + DOD[i]);
+			outln("------------------------------------------------------------------");
+			return false;
+		}
+	}
+	return true;
+}
+
+// Test 9: check battery number of cycles
+function cycle_degradation()
+{
+	cycles = []; lifetime_percent = [];
+	cycles = get('batt_cycles');
+	lifetime_percent = get('batt_capacity_percent');
+	
+	for (i=1; i<#cycles; i++)
+	{
+		if (cycles[i] < cycles[i-1] && cycles[i] !=0)
+		{
+			outln("------- Degradation Output Failed!!! -----------------------------------");
+			outln(": i: " + i + " cycle: " + cycles[i] + " last cycle " + cycles[i-1]);
+			outln("------------------------------------------------------------------");
+			return false;
+		}
+		
+	return true;	
+	}
+}
+// Test 10: Peak Shaving Test
+function peak_shaving_test()
+{
+	ret_code = true;
+	month_days = [31,28,31,30,30,31,31,31,30,31,30,31];
+		
+	grid = []; load = [];
+	demand_no_sys = []; demand_with_sys = [];
+	
+	grid = get('grid_power');
+	load = get('load');
+	demand_no_sys = get('year1_hourly_dc_without_system');
+	demand_with_sys = get('year1_hourly_dc_with_system');
+		
+	// demand charges with sys should be less than without sys
+	for (i = 0; i < #demand_no_sys; i++)
+	{
+		if (demand_with_sys[i] > demand_no_sys[i])
+		{
+			outln("------- Peak Shaving Test Failed!!! -----------------------------------");
+			outln("i: " + i  + " Demand charge with system: " + demand_with_sys[i] + " Demand charge no system: " + demand_no_sys[i]);
+			outln("------------------------------------------------------------------");
+			ret_code = false;
+			break;
+		}
+	}
+	count = 0;
+	for (month = 0; month < 12; month++)
+	{	
+		peak_load = 0; peak_grid = 0;
+		for (day = 0; day < month_days[month]; day++)
+		{
+			for (hour = 0; hour < 24; hour++)
+			{
+				if (load[count] > peak_load)
+					peak_load = load[count];
+				if (grid[count] > peak_grid)
+					peak_grid = grid[count];
+				count++;
+			}
+		}
+		if (peak_grid > peak_load)
+		{
+			outln("------- Peak Shaving Test Failed!!! -----------------------------------");
+			outln("month: " + month  + " Peak load: " + peak_load + " Peak grid: " + peak_grid);
+			outln("------------------------------------------------------------------");
+			ret_code = false;
+			break;
+		}
+		peak_load = 0;
+		peak_grid = 0;
+	}
+	
+	return ret_code;
+}
+
+// Test 11: replacements check
+function replacements_test(defaults)
 {
 	lifetime = get('pv_lifetime_simulation');
 	if(!lifetime)
@@ -132,11 +271,14 @@ function replacements_test()
 		set('pv_lifetime_simulation',true);
 		simulate();
 	}
+	batt_bank_replacement = [];
 	
 	batt_replacement_option = get('batt_replacement_option');
-	batt_bank_replacement = get('batt_bank_replacement');
 	batt_capacity_percent = get('batt_capacity_percent');
 	batt_replacement_capacity = get('batt_replacement_capacity');
+
+	batt_bank_replacement = get('batt_bank_replacement');	
+	
 	retCode = true;
 	
 	// no replacement failed
@@ -158,10 +300,7 @@ function replacements_test()
 			retCode = false;
 		}
 		// reset
-		set('batt_replacement_option',batt_replacement_option);
-		set('batt_replacement_capacity',batt_replacement_option);
-		set('pv_lifetime_simulation',lifetime);
-		simulate();
+		reset_default(defaults);
 	}
 	else if (batt_replacement_option == 1 || batt_replacement_option == 2)
 	{
@@ -175,129 +314,65 @@ function replacements_test()
 	}
 	return retCode;
 }
-
-/* 
-***************************************************************************************************** 
-Output variable tests
-*****************************************************************************************************
-*/
-
-// check if entries are > 0 and < qmax
-function total_charge()
+function reset_default(default)
 {
-	q0 = []; qmax = [];
-	q0 = get('batt_q0');
-	qmax = get('batt_qmax');
-	
-	for (i=0; i<#q0; i++)
-	{
-		if (q0[i] < 0 || q0[i] > qmax[i])
-		{
-			outln("------- Capacity Output Failed!!! -----------------------------------");
-			outln(": i: " + i + "q0: " + q0[i] + " qmax: " + qmax[i]);
-			outln("------------------------------------------------------------------");
-			return false;
-		}
-	}
-	return true;
-}
-
-// check if power to load > 0
-function power_to_load()
-{
-	pv = []; battery = []; grid = []; load_power = [];
-
-	pv = get('pv_to_load');
-	battery = get('batt_to_load');
-	grid = get('grid_to_load');
-	load_power = get('load');
-	
-	for (i=0; i<#pv; i++)
-	{
-		if ( (pv[i] < 0) || (battery[i] < 0) || (grid[i] < 0) || ( load_power[i] != pv[i] + battery[i] + grid[i]))
-		{
-			outln("------- Power to Load Output Failed!!! -----------------------------------");
-			outln(": i: " + i + " pv: " + pv[i] + " battery: " + battery[i] + " grid: " + grid[i] + " load: " + load_power[i]);
-			outln("------------------------------------------------------------------");
-			return false;
-		}
-	}
-	return true;
-}
-
-// check state of charge & cycle depth of discharge
-function charge_state()
-{
-	SOC = []; DOD = [];
-	SOC = get('batt_SOC');
-	DOD = get('batt_DOD');
-	for (i = 0; i<#SOC; i++)
-	{
-		if ( (SOC[i] < 0) || (SOC[i] > 100) || (DOD[i] < 0) || (DOD[i] > 100) )
-		{
-			outln("------- Charge State Output Failed!!! -----------------------------------");
-			outln(": i: " + i + " SOC: " + SOC[i] + " cycle DOD: " + DOD[i]);
-			outln("------------------------------------------------------------------");
-			return false;
-		}
-	}
-	return true;
-}
-
-// check battery number of cycles
-function cycle_degradation()
-{
-	cycles = []; lifetime_percent = [];
-	cycles = get('batt_cycles');
-	lifetime_percent = get('batt_capacity_percent');
-	
-	for (i=1; i<#cycles; i++)
-	{
-		if (cycles[i] < cycles[i-1] && cycles[i] !=0)
-		{
-			outln("------- Degradation Output Failed!!! -----------------------------------");
-			outln(": i: " + i + " cycle: " + cycles[i] + " last cycle " + cycles[i-1]);
-			outln("------------------------------------------------------------------");
-			return false;
-		}
-		
-	return true;	
-	}
+	set('en_batt',default{"en_batt"});
+	set('pv_lifetime_simulation',default{"pv_lifetime_simulation"});
+	set('batt_size_choice',default{"batt_size_choice"});
+	set('batt_bank_voltage',default{"batt_bank_voltage"});
+	set('batt_type',default{"batt_type"});
+	set('batt_Vnom_default',default{"batt_Vnom_default"});
+	set('batt_C_rate',default{"batt_C_rate"});
+	set('batt_Vfull',default{"batt_Vfull"});
+	set('batt_Vexp',default{"batt_Vexp"});
+	set('batt_Vnom',default{"batt_Vnom"});
+	set('batt_Qfull',default{"batt_Qfull"});
+	set('batt_Qexp_percent',default{"batt_Qexp_percent"});
+	set('batt_Qnom_percent',default{"batt_Qnom_percent"});
+	set('batt_C_rate_max_charge',default{"batt_C_rate_max_charge"});
+	set('batt_C_rate_max_discharge',default{"batt_C_rate_max_discharge"});
+	set('batt_dispatch_choice',default{"batt_dispatch_choice"});
+	set('batt_pv_choice',default{"batt_pv_choice"});
+	set('batt_target_choice',default{"batt_target_choice"});
+	set('batt_minimum_SOC',default{"batt_minimum_SOC"});
+	set('batt_maximum_SOC',default{"batt_maximum_SOC"});
+	set('batt_minimum_modetime',default{"batt_minimum_modetime"});
+	simulate();
 }
 /* 
 ***************************************************************************************************** 
 Base case settings 
 *****************************************************************************************************
 */
-en_batt = true;
-pv_lifetime_simulation = false;
-
-batt_size_choice = 0;
-batt_bank_size = 3;
-batt_bank_voltage = 12;
-batt_type = 8;
-// voltage and capacity
-batt_Vnom_default = 3.6;
-batt_resistance = 0.1;
-batt_C_rate = 0.2;
-batt_Vfull = 4.1;
-batt_Vexp = 4.05;
-batt_Vnom = 3.4;
-batt_Qfull = 2.25;
-batt_Qexp_percent = 1.78;
-batt_Qnom_percent = 88.9;
-batt_C_rate_max_charge = 1;
-batt_C_rate_max_discharge = 1;
-// dispatch
-batt_dispatch_choice = 0;
-batt_pv_choice = 0;
-batt_target_choice = 0;
-
-batt_minimum_SOC = 20;
-batt_maximum_SOC = 100;
-batt_minimum_modetime = 10;
+default{"en_batt"} = get('en_batt');
+default{"pv_lifetime_simulation"} = get('pv_lifetime_simulation');
+default{"batt_size_choice"} = get('batt_size_choice');
+default{"batt_bank_size"} = get('batt_bank_size');
+default{"batt_bank_voltage"} = get('batt_bank_voltage');
+default{"batt_type"} = get('batt_type');
+default{"batt_Vnom_default"} = get('batt_Vnom_default');
+default{"batt_resistance"} = get('batt_resistance');
+default{"batt_C_rate"} = get('batt_C_rate');
+default{"batt_Vfull"} = get('batt_Vfull');
+default{"batt_Vexp"} = get('batt_Vexp');
+default{"batt_Vnom"} = get('batt_Vnom');
+default{"batt_Qfull"} = get('batt_Qfull');
+default{"batt_Qexp_percent"} = get('batt_Qexp_percent');
+default{"batt_Qnom_percent"} = get('batt_Qnom_percent');
+default{"batt_C_rate_max_charge"} = get('batt_C_rate_max_charge');
+default{"batt_C_rate_max_discharge"} = get('batt_C_rate_max_discharge');
+default{"batt_dispatch_choice"} = get('batt_dispatch_choice');
+default{"batt_pv_choice"} = get('batt_pv_choice');
+default{"batt_target_choice"} = get('batt_target_choice');
+default{"batt_minimum_SOC"} = get('batt_minimum_SOC');
+default{"batt_maximum_SOC"} = get('batt_maximum_SOC');
+default{"batt_minimum_modetime"} = get('batt_minimum_modetime');
 
 // add in manual dispatch tests
+// add in peak shaving tests
+// add in target power tests
+// add in power converter efficiencies test
+// add in losses tests
 // add in lifetime tests
 // add in replacement tests
 // add in thermal tests
@@ -308,8 +383,6 @@ batt_minimum_modetime = 10;
 Run Tests
 *****************************************************************************************************
 */
-
-// performance tests
 outln("Performance Tests");
 simulate();
 outln("Test 1: " + test_status(bank_sizing_test()) + " - Bank sizing test" );
@@ -317,13 +390,10 @@ outln("Test 2: " + test_status(chemistry_test()) + " - Chemisty test");
 outln("Test 3: " + test_status(voltage_test()) + " - Voltage curve test");
 outln("Test 4: " + test_status(current_test())+ " - Current test");
 outln("Test 5: " + test_status(efficiencies_test())+ " - Efficiencies test");
-outln("Test 6: " + test_status(replacements_test()) + " - Replacements test");
-
-// output variable tests
-outln("");
-outln("Output Variable Tests");
-outln("Test 1: " + test_status(total_charge()) + " - Charge test" );
-outln("Test 2: " + test_status(power_to_load()) +" - Power-to-load test");
-outln("Test 3: " + test_status(charge_state()) + " -  Charge state test");
-outln("Test 4: " + test_status(cycle_degradation()) + " - Cycle test");
-
+outln("Test 6: " + test_status(total_charge()) + " - Charge test" );
+outln("Test 7: " + test_status(power_to_load()) +" - Power-to-load test");
+outln("Test 8: " + test_status(charge_state()) + " -  Charge state test");
+outln("Test 9: " + test_status(cycle_degradation()) + " - Cycle test");
+outln("Test 10: " + test_status(peak_shaving_test()) + " - Peak shaving test");
+outln("Test 11: " + test_status(replacements_test(default)) + " - Replacements test");
+reset_default(default);
