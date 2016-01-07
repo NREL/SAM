@@ -119,6 +119,38 @@ function efficiencies_test()
 		outln("------------------------------------------------------------------");
 		return false;
 	}
+	hi_tol = 1.0001; lo_tol = 0.9999;
+	batt_power = []; batt_voltage = []; batt_current = [];
+	batt_power = get('batt_power');
+	batt_voltage = get('batt_voltage');
+	batt_current = get('batt_I');
+	dt_hour = 8760/#batt_power;
+	
+	for (i = 1; i < #batt_power; i++)
+	{
+		multiplier = 0.5*(batt_voltage[i]+batt_voltage[i-1])*dt_hour*0.001;
+		batt_energy_compute = batt_current[i]*multiplier;
+		batt_energy = batt_power[i]*dt_hour;
+		
+		batt_reduced_energy = 0;
+		if (batt_energy_compute < 0)
+			batt_reduced_energy = batt_energy_compute*ac_dc*0.01;
+		else
+			batt_reduced_energy = batt_energy_compute*dc_ac*0.01;
+		
+		ratio = abs(batt_reduced_energy/batt_energy);
+		
+		if (batt_energy == 0)
+			ratio = 1;
+			
+		if ( ratio  > hi_tol || ratio < lo_tol || abs(batt_reduced_energy) > hi_tol*abs(batt_energy))
+		{
+			outln("------- Efficiencies Test Failed!!! -----------------------------------");
+			outln("i: " + i + " ratio: " + ratio + " e_batt: " + batt_energy + " e_batt_computed: " + batt_reduced_energy);
+			outln("------------------------------------------------------------------");
+			return false;
+		}
+	}
 	return true;
 }
 
@@ -337,6 +369,8 @@ function reset_default(default)
 	set('batt_minimum_SOC',default{"batt_minimum_SOC"});
 	set('batt_maximum_SOC',default{"batt_maximum_SOC"});
 	set('batt_minimum_modetime',default{"batt_minimum_modetime"});
+	set('batt_replacement_option',default{"batt_replacement_option"});
+	set('batt_replacement_capacity',default{"batt_replacement_capacity"});
 	simulate();
 }
 /* 
@@ -367,6 +401,8 @@ default{"batt_target_choice"} = get('batt_target_choice');
 default{"batt_minimum_SOC"} = get('batt_minimum_SOC');
 default{"batt_maximum_SOC"} = get('batt_maximum_SOC');
 default{"batt_minimum_modetime"} = get('batt_minimum_modetime');
+default{"batt_replacement_option"} = get('batt_replacement_option');
+default{"batt_replacement_capacity"} = get('batt_replacement_capacity');
 
 // add in manual dispatch tests
 // add in peak shaving tests
