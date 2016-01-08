@@ -331,8 +331,6 @@ function replacements_test(defaults)
 			outln("------------------------------------------------------------------");
 			retCode = false;
 		}
-		// reset
-		reset_default(defaults);
 	}
 	else if (batt_replacement_option == 1 || batt_replacement_option == 2)
 	{
@@ -344,6 +342,68 @@ function replacements_test(defaults)
 			retCode = false;
 		}
 	}
+	reset_default(defaults);
+	return retCode;
+}
+// Test 11: Target Power Test
+function target_power_test(default)
+{
+	simulate();
+	retCode = true;
+	month_days = [31,28,31,30,30,31,31,31,30,31,30,31];
+	grid_to_load = [];
+	peak_grid = [];
+	grid_to_load = get("grid_to_load");
+	count = 0;
+	for (month = 0; month < 12; month++)
+	{
+		peak_grid[month] = 0;
+		for (day = 0; day < month_days[month]; day++)
+		{
+			for (hour = 0; hour < 24; hour++)
+			{
+				if (grid_to_load[count] > peak_grid[month])
+					peak_grid[month] = grid_to_load[count];
+				count++;
+			}
+		}
+	}
+	
+	set('batt_dispatch_choice', 2);
+	set('batt_target_choice',0);
+	set('batt_target_power_monthly', peak_grid);
+	simulate();
+	grid_to_load_new = [];
+	peak_grid_new = [];
+	grid_to_load_new = get("grid_to_load");
+	count = 0;
+	for (month = 0; month < 12; month++)
+	{
+		peak_grid_new[month] = 0;
+		for (day = 0; day < month_days[month]; day++)
+		{
+			for (hour = 0; hour < 24; hour++)
+			{
+				if (grid_to_load_new[count] > peak_grid_new[month])
+					peak_grid_new[month] = grid_to_load_new[count];
+				count++;
+			}
+		}
+	}
+	
+	hi_tol = 1.02; lo_tol = 0.98;
+	for (i = 0; i < #peak_grid; i++)
+	{
+		if (abs(peak_grid[i]/peak_grid_new[i]) > hi_tol || abs(peak_grid[i]/peak_grid_new[i] < lo_tol))
+		{
+			outln("------- Target Power Dispatch Failed!!! -----------------------------------");
+			outln("month: " + i + " target_peak_demand: " + peak_grid[i] + " peak_demand: " + peak_grid_new[i]);
+			outln("------------------------------------------------------------------");
+			retCode = false;
+		}
+	}
+	
+	reset_default(default);
 	return retCode;
 }
 function reset_default(default)
@@ -405,8 +465,6 @@ default{"batt_replacement_option"} = get('batt_replacement_option');
 default{"batt_replacement_capacity"} = get('batt_replacement_capacity');
 
 // add in manual dispatch tests
-// add in peak shaving tests
-// add in target power tests
 // add in power converter efficiencies test
 // add in losses tests
 // add in lifetime tests
@@ -432,4 +490,6 @@ outln("Test 8: " + test_status(charge_state()) + " -  Charge state test");
 outln("Test 9: " + test_status(cycle_degradation()) + " - Cycle test");
 outln("Test 10: " + test_status(peak_shaving_test()) + " - Peak shaving test");
 outln("Test 11: " + test_status(replacements_test(default)) + " - Replacements test");
+outln("Test 12: " + test_status(target_power_test(default)) + " - Target power test");
+
 reset_default(default);

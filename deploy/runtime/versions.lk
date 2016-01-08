@@ -110,6 +110,8 @@ version_upgrade{'2015.11.16'} = define() {
 		value("ur_dc_tou_mat", dc_tou_mat);
 		value("ur_dc_flat_mat", dc_flat_mat);
 	}
+	// battery updates
+	value("batt_dispatch_choice",3);
 };
 
 

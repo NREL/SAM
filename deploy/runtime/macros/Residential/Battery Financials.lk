@@ -50,14 +50,13 @@ function get_monthly_usage_costs(with_system, month, year)
 	else
 		prefix = 'charge_wo_sys_';
 
-	dc_fixed = get(prefix+'dc_fixed_'+month);
-	dc_tou = get(prefix+'dc_tou_'+month);
-	ec = get(prefix+'ec_'+month);
-	ec_flat = get(prefix+'ec_flat_'+month);
+	dc_fixed = get(prefix+'dc_fixed_ym');
+	dc_tou = get(prefix+'dc_tou_ym');
+	ec = get(prefix+'ec_ym');
 	if (ec[year] > 0)
-		total = dc_fixed[year]+dc_tou[year]+ec[year];
+		total = dc_fixed[year][month]+dc_tou[year][month]+ec[year][month];
 	else
-		total = dc_fixed[year]+dc_tou[year];
+		total = dc_fixed[year][month]+dc_tou[year][month];
 	return total;
 }
 
@@ -187,7 +186,7 @@ simulate('',true);
 pv_electricity_cost = (sum(get('elec_cost_with_system')));
 pv_dc_fixed = (sum(get("charge_w_sys_dc_fixed")));
 pv_dc_tou = (sum(get("charge_w_sys_dc_tou")));
-pv_ec = sum(get("charge_w_sys_ec")) + sum(get("charge_w_sys_ec_flat"));
+pv_ec = (sum(get("charge_w_sys_ec")));
 pv_min_month = (sum(compute_minimum_monthly(analysis_period, inflation_rate, escalation_rate, minimum_monthly, true)));
 pv_min_annual = (compute_minimum_annual(analysis_period, inflation_rate, escalation_rate, minimum_annual, true));
 
@@ -202,7 +201,7 @@ simulate('',true);
 batt_electricity_cost = (sum(get('elec_cost_with_system')));
 batt_dc_fixed = (sum(get("charge_w_sys_dc_fixed")));
 batt_dc_tou = (sum(get("charge_w_sys_dc_tou")));
-batt_ec = sum(get("charge_w_sys_ec")) + sum(get("charge_w_sys_ec_flat"));
+batt_ec = (sum(get("charge_w_sys_ec")));
 batt_min_month = (sum(compute_minimum_monthly(analysis_period, inflation_rate, escalation_rate, minimum_monthly, true)));
 batt_min_annual = (compute_minimum_annual(analysis_period, inflation_rate, escalation_rate, minimum_annual, true));
 
@@ -214,20 +213,19 @@ batt_om = sum(compute_o_and_m());
 batt_total = batt_costs + batt_electricity_cost+batt_om;
 batt_npv = get('npv');
 
-
 // No PV or Battery
 none_electricity_cost = (sum(get('elec_cost_without_system')));
 none_dc_fixed = (sum(get('charge_wo_sys_dc_fixed')));
 none_dc_tou = (sum(get('charge_wo_sys_dc_tou')));
-none_ec = sum(get('charge_wo_sys_ec')) + sum(get('charge_wo_sys_ec_flat'));
+none_ec = (sum(get('charge_wo_sys_ec')));
 none_min_month = (sum(compute_minimum_monthly(analysis_period, inflation_rate, escalation_rate, minimum_monthly, false)));
 none_min_annual = (compute_minimum_annual(analysis_period, inflation_rate, escalation_rate, minimum_annual, false));
+
 
 none_costs = 0;
 none_om = 0;
 none_total = none_electricity_cost + none_costs + none_om;
 none_npv = 0;
-
 
 // HTML Output
 str_html = '<html><body>' + 
@@ -248,7 +246,7 @@ str_html = '<html><body>' +
 		   '<br><br><br>' +
 		   '<table bgcolor=#eeeeee width=100%>' +
 		   '<tr><th>Net Present Value</th><th>No System</th><th>PV Only</th><th>PV+Battery</th></tr>' + 
-           '<tr bgcolor=#ffffff><td>Net Present Value ($) </td><td>' + none_npv + '</td><td>' + pv_npv + '</td><td>' + batt_npv + '</td></tr>' +            
+           '<tr bgcolor=#ffffff><td>Net Present Value ($) </td><td>' + none_npv + '</td><td>' + pv_npv + '</td><td>' + batt_npv + '</td></tr>' +    
            '</body></html>';
 
 html_dialog ( str_html , "Battery Financial Evaluation" , [300,300,600,600]);
