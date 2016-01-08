@@ -50,13 +50,13 @@ function get_monthly_usage_costs(with_system, month, year)
 	else
 		prefix = 'charge_wo_sys_';
 
-	dc_fixed = get(prefix+'dc_fixed_'+month);
-	dc_tou = get(prefix+'dc_tou_'+month);
-	ec = get(prefix+'ec_'+month);
+	dc_fixed = get(prefix+'dc_fixed_ym');
+	dc_tou = get(prefix+'dc_tou_ym');
+	ec = get(prefix+'ec_ym');
 	if (ec[year] > 0)
-		total = dc_fixed[year]+dc_tou[year]+ec[year];
+		total = dc_fixed[year][month]+dc_tou[year][month]+ec[year][month];
 	else
-		total = dc_fixed[year]+dc_tou[year];
+		total = dc_fixed[year][month]+dc_tou[year][month];
 	return total;
 }
 
