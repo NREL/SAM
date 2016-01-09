@@ -109,9 +109,12 @@ version_upgrade{'2015.11.16'} = define() {
 		value("ur_ec_tou_mat", ec_tou_mat);
 		value("ur_dc_tou_mat", dc_tou_mat);
 		value("ur_dc_flat_mat", dc_flat_mat);
+		message( 'Utility rate inputs have been updated to tabular values rather than individual values.  See help for more information.', 'warning' );
+
+			// battery updates
+		if( cfg.tech == 'Flat Plate PV')
+			value("batt_dispatch_choice",3);
 	}
-	// battery updates
-	value("batt_dispatch_choice",3);
 };
 
 
@@ -128,15 +131,7 @@ version_upgrade{'2015.10.29'} = define() {
 
 
 version_upgrade{'2015.10.16'} = define() {
-	message('Upgrading project to version 2015.10.16');
-	// shading updates are taking care of when reading in the old shading value.
-	const cfg = config();
-	// update battery bank replacement cost from array to number
-	if( cfg.tech == 'Flat Plate PV' )
-	{
-		x = oldvalue('batt_replacement_cost');
-		value('batt_replacement_cost', x[0], 'Battery cost changed from schedule to single value. Please check results.' ); // derate is now an array to support schedules
-	}
+	message( 'version upgrade for 2015.10.16: nothing to do!', 'notice');
 };
 
 version_upgrade{'2015.9.30'} = define() {
