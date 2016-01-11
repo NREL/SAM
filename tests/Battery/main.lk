@@ -2,7 +2,7 @@
 ***************************************************************************************************** 
 Notes
 *****************************************************************************************************
-1. Last tested on 1/6/2016
+1. Last tested on 1/11/2016
 */
 
 // Turns 0/1 into failed/passed
@@ -345,7 +345,7 @@ function replacements_test(defaults)
 	reset_default(defaults);
 	return retCode;
 }
-// Test 11: Target Power Test
+// Test 12: Target Power Test
 function target_power_test(default)
 {
 	simulate();
@@ -406,13 +406,122 @@ function target_power_test(default)
 	reset_default(default);
 	return retCode;
 }
+// Test 13: Manual Dispatch Test
+function manual_dispatch_test(default)
+{
+	retCode = true;
+	
+	set('batt_dispatch_choice',3);
+	set('batt_pv_choice',0);
+	set('pv_lifetime_simulation',false);
+	
+	simulate();
+	
+	grid_to_batt = []; pv_to_batt = []; batt_to_load = []; batt_dispatch_sched = []; batt_dispatch_sched_weekend = [];
+	can_charge = []; can_gridcharge = []; can_discharge = []; gridcharge_percent = []; discharge_percent = []; q_max = [];
+	gridcharge_percent = []; discharge_percent = [];
+	
+	grid_to_batt = get('grid_to_batt');
+	pv_to_batt = get('pv_to_batt');
+	batt_to_load = get('batt_to_load');
+	batt_dispatch_sched = get('dispatch_manual_sched');
+	batt_dispatch_sched_weekend = get('dispatch_manual_sched_weekend');
+	can_charge = get('dispatch_manual_charge');
+	can_gridcharge = get('dispatch_manual_gridcharge');
+	can_discharge = get('dispatch_manual_discharge');
+	gridcharge_percent_partial = get('dispatch_manual_percent_gridcharge');
+	discharge_percent_partial = get('dispatch_manual_percent_discharge');
+	q_max = get('batt_qmax');
+	voltage = get('batt_voltage');
+	dt_hour = 8760 / #grid_to_batt;
+	
+	grid_index = 0;
+	discharge_index = 0;
+	for (period = 0; period < 6; period++)
+	{
+		gridcharge_percent[period] = 0;
+		discharge_percent[period] = 0;
+		
+		if (can_gridcharge[period])
+		{
+			gridcharge_percent[period] = gridcharge_percent_partial[grid_index];
+			grid_index++;
+		}
+		if (can_discharge[period])
+		{
+			discharge_percent[period] = discharge_percent_partial[discharge_index];
+			discharge_index++;
+		}
+	}
+
+	count = 0;
+	month_days = [31,28,31,30,30,31,31,31,30,31,30,31];
+	is_weekend = false;
+	day_of_week = 0;
+	for (month = 0; month < 12; month++)
+	{
+		for (day = 0; day < month_days[month]; day++)
+		{
+			for (hour = 0; hour < 24; hour++)
+			{
+				profile = [];
+				if (is_weekend)
+					profile = batt_dispatch_sched_weekend[month][hour];
+				else
+					profile = batt_dispatch_sched[month][hour];
+					
+				charge = can_charge[profile-1];
+				gridcharge = can_gridcharge[profile-1];
+				discharge = can_discharge[profile-1];
+				grid_percent = gridcharge_percent[profile-1];
+				dis_percent = discharge_percent[profile-1];
+				pmax = q_max[count]*voltage[count]*0.001/dt_hour;
+				
+				if (pv_to_batt[count] > 0 && !charge ) 
+				{
+					outln("------- Manual Dispatch Failed!!! -----------------------------------");
+					outln("month: " + month + " day: " + day + " hour: " + hour + " charge: " + charge + " pv_to_batt: " + pv_to_batt[count] + " profile: " + profile+ " weekend: " + is_weekend);
+					outln("------------------------------------------------------------------");
+					retCode = false;
+				}
+				
+				if ( (grid_to_batt[count] > 0 && !gridcharge) || (grid_to_batt[count]/pmax > grid_percent*0.01) )
+				{
+					outln("------- Manual Dispatch Failed!!! -----------------------------------");
+					outln("month: " + month + " day: " + day +" hour: " + hour + " gridcharge: " + gridcharge + " grid_to_batt: " + grid_to_batt[count] + " pmax: " + pmax + " gridcharge_percent: " + grid_percent + " profile: " + profile+ " weekend: " + is_weekend);
+					outln("------------------------------------------------------------------");
+					retCode = false;
+				}
+				
+				if ( (batt_to_load[count] > 0 && !discharge) || (batt_to_load[count]/pmax > dis_percent*0.01) )
+				{
+					outln("------- Manual Dispatch Failed!!! -----------------------------------");
+					outln("month: " + month + " day: " + day + " hour: " + hour + " discharge: " + discharge + " batt_to_load: " + batt_to_load[count] + " pmax: " + pmax + " discharge_percent: " + dis_percent + " profile: " + profile + " weekend: " + is_weekend);
+					outln("------------------------------------------------------------------");
+					retCode = false;
+				}
+				count++;
+			}
+			day_of_week++;
+			if (day_of_week > 6)
+				day_of_week = 0;
+			if (day_of_week > 4)
+				is_weekend = true;
+			else
+				is_weekend = false;
+		}
+	}
+	reset_default(default);
+	return retCode;
+}
 function reset_default(default)
 {
 	set('en_batt',default{"en_batt"});
 	set('pv_lifetime_simulation',default{"pv_lifetime_simulation"});
 	set('batt_size_choice',default{"batt_size_choice"});
 	set('batt_bank_voltage',default{"batt_bank_voltage"});
-	set('batt_type',default{"batt_type"});
+	if (get("batt_type") != default{"batt_type"})
+		set('batt_type',default{"batt_type"});
 	set('batt_Vnom_default',default{"batt_Vnom_default"});
 	set('batt_C_rate',default{"batt_C_rate"});
 	set('batt_Vfull',default{"batt_Vfull"});
@@ -464,13 +573,9 @@ default{"batt_minimum_modetime"} = get('batt_minimum_modetime');
 default{"batt_replacement_option"} = get('batt_replacement_option');
 default{"batt_replacement_capacity"} = get('batt_replacement_capacity');
 
-// add in manual dispatch tests
-// add in power converter efficiencies test
 // add in losses tests
 // add in lifetime tests
-// add in replacement tests
 // add in thermal tests
-
 
 /* 
 ***************************************************************************************************** 
@@ -491,5 +596,5 @@ outln("Test 9: " + test_status(cycle_degradation()) + " - Cycle test");
 outln("Test 10: " + test_status(peak_shaving_test()) + " - Peak shaving test");
 outln("Test 11: " + test_status(replacements_test(default)) + " - Replacements test");
 outln("Test 12: " + test_status(target_power_test(default)) + " - Target power test");
-
+outln("Test 13: " + test_status(manual_dispatch_test(default)) + " - Manual power test");
 reset_default(default);
