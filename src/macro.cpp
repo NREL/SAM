@@ -14,6 +14,8 @@
 #include <lk_parse.h>
 #include <lk_eval.h>
 #include <lk_stdlib.h>
+#include <lk_codegen.h>
+#include <lk_vm.h>
 
 #include "script.h"
 #include "main.h"
@@ -21,16 +23,37 @@
 #include "casewin.h"
 
 
-class macro_eval : public lk::eval
+class macro_vm : public lk::vm
 {
+	size_t m_counter;
 	MacroEngine *m_me;
 public:
-	macro_eval( lk::node_t *tree, lk::env_t *env, MacroEngine *me ) 
-		: lk::eval( tree, env ), m_me(me)
+	macro_vm( MacroEngine *me ) 
+		: m_me(me)
 	{
+		m_counter = 0;
 	}
 
 	virtual bool on_run( int line )
+	{
+		// expression & (constant-1) is equivalent to expression % constant where 
+		// constant is a power of two: so use bitwise operator for better performance
+		// see https://en.wikipedia.org/wiki/Modulo_operation#Performance_issues 
+		if ( 0 == (m_counter++ & 1023) ) {
+			wxGetApp().Yield( true );
+			return !m_me->IsStopFlagSet();
+		}
+		else return true;
+	}
+};
+
+class my_vm : public lk::vm
+{
+	MacroEngine *m_me;
+	size_t m_counter;
+public:
+	my_vm( MacroEngine *me ) : m_me(me) { }
+	virtual bool on_run( const lk::srcpos_t &sp )
 	{
 		wxGetApp().Yield( true );
 		return !m_me->IsStopFlagSet();
@@ -80,13 +103,52 @@ extern lk::fcall_t *invoke_general_funcs();
 extern lk::fcall_t *invoke_ssc_funcs();
 
 bool MacroEngine::Run( const wxString &script, lk::vardata_t *args )
-{
-	lk::env_t env;
+{	
+	// first, erase any old output
+	ClearOutput();
 	
-	if ( args != 0 )
-		env.assign( "macro", args );
+	// parse macro code
+	lk::input_string p( script );
+	lk::parser parse( p );	
+	std::auto_ptr<lk::node_t> tree( parse.script() );
+			
+	int i=0;
+	while ( i < parse.error_count() )
+		Output( parse.error(i++) );
+	
+	if ( parse.token() != lk::lexer::END)
+	{
+		Output("Parsing did not reach end of input.\n");
+		return false;
+	}
+
+	if ( parse.error_count() > 0 )
+		return false;	
+	
+	// compile the code into VM instructions and load it
+	macro_vm vm( this );
+	lk::code_gen cg;
+	if ( cg.emitasm( tree.get() ) )
+	{
+		std::vector<unsigned int> code;
+		std::vector<lk::vardata_t> data;
+		std::vector<lk_string> id;
+		std::vector<lk::srcpos_t> dbg;		
+
+		cg.bytecode( code, data, id, dbg );
+		vm.load( code, data, id, dbg );
+	}
 	else
-		env.assign( "macro", new lk::vardata_t ); // assign null to macro variable
+	{
+		Output("Error in code generation: " + cg.error() );
+		return false;
+	}
+	
+	
+	// setup macro runtime environment
+	lk::env_t env;	
+	if ( args != 0 ) env.assign( "macro", args );
+	else env.assign( "macro", new lk::vardata_t ); // assign null to macro variable
 
 	env.register_funcs( lk::stdlib_basic() );
 	env.register_funcs( lk::stdlib_string() );
@@ -102,47 +164,25 @@ bool MacroEngine::Run( const wxString &script, lk::vardata_t *args )
 	env.register_func( fcall_out, this );
 	env.register_func( fcall_outln, this );
 	
-	ClearOutput();
-	
-	lk::input_string p( script );
-	lk::parser parse( p );
-	
-	lk::node_t *tree = parse.script();
-				
-	wxYield();
-	bool success = false;
+	// initialize VM environment
+	vm.initialize( &env );
 
-	if ( parse.error_count() != 0 
-		|| parse.token() != lk::lexer::END)
+	// setup target parent windows for plots
+	wxLKSetToplevelParentForPlots( SamApp::Window() );
+	wxLKSetPlotTarget( NULL );
+
+	// clear the stop flag
+	m_stopFlag = false;
+	
+	// run it!
+	if ( !vm.run( lk::vm::NORMAL ) )
 	{
-		Output("Parsing did not reach end of input.\n");
+		Output("Macro did not finish.\n");
+		Output( vm.error() );
+		return false;
 	}
-	else
-	{
-		
-		wxLKSetToplevelParent( SamApp::Window() );
-		wxLKSetPlotTarget( NULL );
 
-		m_stopFlag = false;
-		macro_eval e( tree, &env, this );
-		success = e.run();
-
-		if ( !success )
-		{
-			Output("Script did not finish.\n");
-			for (size_t i=0;i<e.error_count();i++)
-				Output( e.get_error(i) + "\n");
-		}
-	}
-	
-	int i=0;
-	while ( i < parse.error_count() )
-		Output( parse.error(i++) );
-
-	if( tree != 0 )
-		delete tree;
-
-	return success;
+	return true;
 }
 
 void MacroEngine::Stop()
@@ -150,7 +190,7 @@ void MacroEngine::Stop()
 	// first cancel any simulations that
 	// might be running that were invoked 
 	// from a script
-	ScriptWindow::CancelRunningSimulations();
+	SamScriptWindow::CancelRunningSimulations();
 	m_stopFlag = true;
 }
 
@@ -1031,9 +1071,9 @@ void MacroPanel::OnCommand( wxCommandEvent &evt )
 	case ID_VIEW_CODE:		
 		if ( wxFileExists(m_curMacroPath) )
 		{
-			if ( ScriptWindow *sw = ScriptWindow::FindOpenFile( m_curMacroPath ) )
+			if ( wxLKScriptWindow *sw = SamScriptWindow::FindOpenFile( m_curMacroPath ) )
 				sw->Raise();
-			else if ( ScriptWindow *sw = ScriptWindow::CreateNewWindow() )
+			else if ( wxLKScriptWindow *sw = SamScriptWindow::CreateNewWindow() )
 				sw->Load( m_curMacroPath );
 		}
 		break;
