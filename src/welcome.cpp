@@ -284,7 +284,7 @@ void WelcomeScreen::OnCommand( wxCommandEvent &evt )
 		foo(17);
 		break;
 	case ID_NEW_SCRIPT:
-		ScriptWindow::CreateNewWindow();
+		SamScriptWindow::CreateNewWindow();
 		break;
 	case ID_QUICK_START:
 	{
@@ -313,7 +313,7 @@ void WelcomeScreen::OnCommand( wxCommandEvent &evt )
 		SamApp::ShowHelp( "getting_started");
 		break;
 	case ID_OPEN_SCRIPT:
-		ScriptWindow::OpenFiles();
+		SamScriptWindow::OpenFiles();
 		break;
 	case ID_CREATE_PROJECT:
 		SamApp::Window()->CreateProject();

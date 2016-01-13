@@ -658,10 +658,10 @@ void MainWindow::OnCommand( wxCommandEvent &evt )
 		}
 		break;	
 	case ID_NEW_SCRIPT:
-		ScriptWindow::CreateNewWindow();
+		SamScriptWindow::CreateNewWindow();
 		break;
 	case ID_OPEN_SCRIPT:
-		ScriptWindow::OpenFiles();
+		SamScriptWindow::OpenFiles();
 		break;
 	case ID_BROWSE_INPUTS:
 		if (m_project.GetCases().size() > 0)
@@ -1035,7 +1035,7 @@ void MainWindow::OnClose( wxCloseEvent &evt )
 		return;
 	}
 
-	if ( !ScriptWindow::CloseAll() )
+	if ( !SamScriptWindow::CloseAll() )
 	{
 		evt.Veto();
 		return;
@@ -1773,6 +1773,9 @@ extern void RegisterReportObjectTypes();
 	g_mainWindow = new MainWindow();
 	SetTopWindow( g_mainWindow );
 	g_mainWindow->Show();
+
+	// so that script windows are specialized to SAM, not the base generic one
+	SamScriptWindow::SetFactory( new SamScriptWindowFactory );
 	
 	bool first_load = true;
 	wxString fl_key = wxString::Format("first_load_%d", VersionMajor()*10000+VersionMinor()*100+VersionMicro() );
