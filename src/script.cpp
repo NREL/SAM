@@ -558,7 +558,11 @@ SamScriptWindowFactory::~SamScriptWindowFactory()
 
 wxLKScriptWindow *SamScriptWindowFactory::Create()
 {
-	return new SamScriptWindow( SamApp::Window(), wxID_ANY );
+	wxLKScriptWindow *sw = new SamScriptWindow( SamApp::Window(), wxID_ANY );	
+#ifdef __WXMSW__
+	sw->SetIcon( wxICON( appicon ) );
+#endif	
+	return sw;
 }
 
 enum { ID_VARIABLES = wxID_HIGHEST+494 };
