@@ -23,6 +23,7 @@ Performance tests
 // Test 1: battery bank sizing test
 function bank_sizing_test()
 {
+	retCode = true;
 	batt_size_choice = get('batt_size_choice');
 	e_desired = get('batt_bank_size');
 	v_desired = get('batt_bank_voltage');
@@ -44,19 +45,18 @@ function bank_sizing_test()
 			outln("---------Bank Sizing Test Failed!!!--------------------------");
 			outln("num_strings: " + num_strings + " v_computed: " + v_computed + " v_check:" + v_computed_check + " e_computed: " + e_computed + " e_check:" + e_computed_check);
 			outln("-------------------------------------------------------------");
-			return false;
+			retCode = false;
 		}
 	}
-	return true;
+	return retCode;
 }
 
 // Test 2: chemistry selection test
 function chemistry_test()
 {
+	retCode = true;
 	batt_type = get('batt_type');
 	batt_chem = get('batt_chem');
-	batt_lead_type = get('batt_lead_type');
-	batt_lithium_type = get('batt_lithium_type');
 	num_lead_acid = 4;
 	num_lithium_ion = 7;
 	
@@ -66,17 +66,18 @@ function chemistry_test()
 	if ((batt_type < num_lead_acid && batt_chem != lead_type) || (batt_type >= num_lead_acid && batt_chem != lithium_type))
 	{
 		outln("-------  Chemistry Test Failed!!! -------------------------------");
-		outln(" batt_type: " + batt_type + " batt_chem: " + batt_chem + " batt_lead_type: " + batt_lead_type + " batt_lithium_type: " + batt_lithium_type);
+		outln(" batt_type: " + batt_type + " batt_chem: " + batt_chem);
 		outln("------------------------------------------------------------------");
-		return false;
+		retCode = false;
 	}
-	return true;
+	return retCode;
 
 }
 
 // Test 3: voltage properties test
 function voltage_test()
 {
+	retCode = true;
     Qfull = get('batt_Qfull'); 
     Qexp = get('batt_Qexp');
     Qnom = get('batt_Qnom');
@@ -86,24 +87,40 @@ function voltage_test()
 		outln("------- Voltage Curve Test Failed!!! -------------------------------");
 		outln("Qfull: " + Qfull + " Qexp: " + Qexp +" Qnom: " + Qnom);
 		outln("------------------------------------------------------------------");
-		return false;
+		retCode = false;
 	}
-	return true;
+	return retCode;
 }
 
 // Test 4: current & capacity test
 function current_test()
 {
+	retCode = true;
 	current_charge_max = get('batt_current_charge_max');
 	current_discharge_max = get('batt_current_discharge_max');
+	current = get('batt_I');
+	
 	if (current_charge_max < 0 || current_discharge_max < 0)
 	{
 		outln("------- Current Test Failed!!! -----------------------------------");
 		outln("Max charge current: " + current_charge_max + " Max discharge current: " + current_discharge_max);
 		outln("------------------------------------------------------------------");
-		return false;
+		retCode = false;
 	}
-	return true;
+	
+	for (i = 0; i < #current; i++)
+	{
+		I = current[i];
+		if ((I > 0 && I > current_discharge_max) || (I < 0 && abs(I) > current_charge_max))
+		{
+			outln("------- Current Test Failed!!! -----------------------------------");
+			outln("i: " + i + " I: " + I + " Max charge current: " + current_charge_max + " Max discharge current: " + current_discharge_max);
+			outln("------------------------------------------------------------------");
+			retCode = false;
+		}
+	
+	}
+	return retCode;
 }
 
 // Test 5: efficiencies check
@@ -157,6 +174,7 @@ function efficiencies_test()
 // Test 6: check if entries are > 0 and < qmax
 function total_charge()
 {
+	retCode = true;
 	q0 = []; qmax = [];
 	q0 = get('batt_q0');
 	qmax = get('batt_qmax');
@@ -168,15 +186,16 @@ function total_charge()
 			outln("------- Capacity Output Failed!!! -----------------------------------");
 			outln(": i: " + i + "q0: " + q0[i] + " qmax: " + qmax[i]);
 			outln("------------------------------------------------------------------");
-			return false;
+			retCode = false;
 		}
 	}
-	return true;
+	return retCode;
 }
 
 // Test 7: check if power to load > 0
 function power_to_load()
 {
+	retCode = true;
 	tol = 1.0001;
 	pv = []; battery = []; grid = []; load_power = [];
 
@@ -192,35 +211,40 @@ function power_to_load()
 			outln("------- Power to Load Output Failed!!! -----------------------------------");
 			outln(": i: " + i + " pv: " + pv[i] + " battery: " + battery[i] + " grid: " + grid[i] + " load: " + load_power[i]);
 			outln("------------------------------------------------------------------");
-			return false;
+			retCode = false;
 		}
 	}
-	return true;
+	return retCode;
 }
 
 // Test 8: check state of charge & cycle depth of discharge
 function charge_state()
 {
+	retCode = true;
 	SOC = []; DOD = [];
 	SOC = get('batt_SOC');
 	DOD = get('batt_DOD');
-		
+	q0 = get('batt_q0');
+	qmax = get('batt_qmax');
+	hi_tol = 1.0001;
+	lo_tol = 0.9999;
 	for (i = 0; i<#SOC; i++)
 	{
-		if ( (SOC[i] < 0) || (SOC[i] > 100) || (DOD[i] < 0) || (DOD[i] > 100) )
+		if ( (SOC[i] < 0) || (SOC[i] > 100) || (DOD[i] < 0) || (DOD[i] > 100 ) || (q0[i]/qmax[i]>hi_tol*SOC[i]*0.01) || (q0[i]/qmax[i]<lo_tol*SOC[i]*0.01))
 		{
 			outln("------- Charge State Output Failed!!! -----------------------------------");
-			outln(": i: " + i + " SOC: " + SOC[i] + " cycle DOD: " + DOD[i]);
+			outln(": i: " + i + " SOC: " + SOC[i] + " cycle DOD: " + DOD[i] + " q0: " + q0[i] + " qmax" + qmax[i]);
 			outln("------------------------------------------------------------------");
-			return false;
+			retCode = false;
 		}
 	}
-	return true;
+	return retCode;
 }
 
 // Test 9: check battery number of cycles
 function cycle_degradation()
 {
+	retCode = true;
 	cycles = []; lifetime_percent = [];
 	cycles = get('batt_cycles');
 	lifetime_percent = get('batt_capacity_percent');
@@ -232,11 +256,17 @@ function cycle_degradation()
 			outln("------- Degradation Output Failed!!! -----------------------------------");
 			outln(": i: " + i + " cycle: " + cycles[i] + " last cycle " + cycles[i-1]);
 			outln("------------------------------------------------------------------");
-			return false;
+			retCode = false;
 		}
-		
-	return true;	
+		if (lifetime_percent[i] > lifetime_percent[i-1] && cycles[i] !=0)
+		{
+			outln("------- Degradation Output Failed!!! -----------------------------------");
+			outln(": i: " + i + " capacity_percent: " + lifetime_percent[i] + " last capacity_percent " + lifetime_percent[i-1]);
+			outln("------------------------------------------------------------------");
+			retCode = false;
+		}
 	}
+	return retCode;	
 }
 // Test 10: Peak Shaving Test
 function peak_shaving_test()
