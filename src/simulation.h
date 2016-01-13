@@ -41,7 +41,7 @@ public:
 	
 	// optionally output a debug file before the SSC module is run
 	virtual bool WriteDebugFile( 
-		const wxString &sim, 
+		const wxString &, 
 		ssc_module_t, 
 		ssc_data_t ) { return false; }
 };
