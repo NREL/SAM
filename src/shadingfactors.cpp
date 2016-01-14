@@ -27,8 +27,9 @@ ShadingInputData::ShadingInputData()
 void ShadingInputData::save( std::vector<float> &data )
 {
 	data.clear();
-	data.push_back(3.0); // version number of data format - allows for expansion of options in future.
-//	data.push_back(2.0); // version number of data format - allows for expansion of options in future.
+	data.push_back(4.0); // added string_option 0 = shading database with Tc
+//	data.push_back(3.0); // version number of data format - allows for expansion of options in future.
+	//	data.push_back(2.0); 
 
 //	data.push_back( (en_hourly && hourly.size() == 8760) ? 1.0 : 0.0 );
 	data.push_back((en_mxh && mxh.nrows() == 12 && mxh.ncols() == 24) ? 1.0 : 0.0);
@@ -141,7 +142,8 @@ bool ShadingInputData::load( const std::vector<float> &data )
 
 		return idx == verify;
 	}
-	else if (ver == 3)
+//	else if (ver == 3)
+	else if ((ver == 3) || (ver==4))
 	{
 		en_mxh = data[idx++] > 0 ? true : false;
 		en_azal = data[idx++] > 0 ? true : false;
@@ -174,6 +176,7 @@ bool ShadingInputData::load( const std::vector<float> &data )
 
 //		en_shading_db = data[idx++] > 0 ? true : false;
 		string_option = data[idx++];
+		if (ver == 3) string_option++; // added choice 0 shade db with Tc
 
 		int verify = data[idx++];
 
@@ -1184,7 +1187,8 @@ bool sidebuttons)
 	m_grid->SetRowLabelAlignment(wxALIGN_LEFT, wxALIGN_CENTER);
 
 
-	m_string_arystrvals.push_back("Shading database lookup");
+	m_string_arystrvals.push_back("Shading database");
+	m_string_arystrvals.push_back("Shading database no Tc");
 	m_string_arystrvals.push_back("Average of string values");
 	m_string_arystrvals.push_back("Maximum of string values");
 	m_string_arystrvals.push_back("Minimum of string values");
