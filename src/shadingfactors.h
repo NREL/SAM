@@ -26,7 +26,8 @@ struct ShadingInputData
 
 	/* version 3 */
 	// for more than one string and PV only
-	int string_option; // 0=shading db,1=average,2=max,3=min
+//	int string_option; // 0=shading db,1=average,2=max,3=min
+	int string_option; // 0=shading db with Tc,1=shading db,2=average,3=max,4=min
 	bool en_timestep;
 	matrix_t<float> timestep;
 
