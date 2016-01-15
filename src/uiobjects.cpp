@@ -498,6 +498,7 @@ class wxUIShadingFactorsObject : public wxUIObject
 public:
 	wxUIShadingFactorsObject() {
 		AddProperty("ShowDBOptions", new wxUIProperty(false));
+		AddProperty("Description", new wxUIProperty(wxString("")));
 		AddProperty("TabOrder", new wxUIProperty((int)-1));
 	}
 	virtual wxString GetTypeName() { return "ShadingFactors"; }
@@ -505,7 +506,9 @@ public:
 	virtual bool IsNativeObject() { return true; }
 	virtual bool DrawDottedOutline() { return false; }
 	virtual wxWindow *CreateNative( wxWindow *parent ) {
-		return AssignNative(new ShadingButtonCtrl(parent, wxID_ANY, Property("ShowDBOptions").GetBoolean()));
+		ShadingButtonCtrl *sb = new ShadingButtonCtrl(parent, wxID_ANY, Property("ShowDBOptions").GetBoolean());
+		sb->SetDescription(Property("Description").GetString());
+		return AssignNative(sb);
 	}
 	virtual void Draw( wxWindow *win, wxDC &dc, const wxRect &geom )
 	{
@@ -517,6 +520,15 @@ public:
 		dc.GetTextExtent( label, &x, &y );
 		dc.DrawText( label, geom.x + geom.width/2-x/2, geom.y+geom.height/2-y/2 );
 	}
+
+	virtual void OnPropertyChanged(const wxString &id, wxUIProperty *p)
+	{
+		if (ShadingButtonCtrl *sb = GetNative<ShadingButtonCtrl>())
+		{
+			if (id == "Description") sb->SetDescription(p->GetString());
+		}
+	}
+
 };
 
 class wxUIValueMatrixObject : public wxUIObject
