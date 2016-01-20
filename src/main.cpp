@@ -2329,11 +2329,12 @@ void SamApp::ShowHelp( const wxString &context )
 		wxFileName fn( SamApp::GetRuntimePath() + "/help/html/" );
 		fn.MakeAbsolute();
 		url = "file:///" + fn.GetFullPath( wxPATH_NATIVE ) + "index.html";
-		if ( ! context.IsEmpty() )
-			url += "?" + context + ".htm";		
 #ifdef __WXGTK__
 		wxLaunchDefaultBrowser( url );
 		return;
+#else
+		if ( ! context.IsEmpty() )
+			url += "?" + context + ".htm";		
 #endif
 	}
 	
