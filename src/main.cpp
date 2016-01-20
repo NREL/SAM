@@ -22,7 +22,13 @@ static const char *beta_disclaimer =
 #include <wx/wx.h>
 #include <wx/frame.h>
 #include <wx/stc/stc.h>
+
+#if defined(__WXMSW__)||defined(__WXOSX__)
 #include <wx/webview.h>
+#else
+#include <wx/html/htmlwin.h> // for linux - avoid webkitgtk dependencies
+#endif
+
 #include <wx/simplebook.h>
 #include <wx/panel.h>
 #include <wx/busyinfo.h>
@@ -2106,7 +2112,12 @@ enum { ID_BACK = wxID_HIGHEST+439, ID_BROWSER, ID_HOME, ID_EMAIL_SUPPORT, ID_WEB
 
 class HelpWin : public wxFrame
 {
+#if defined(__WXMSW__)||defined(__WXOSX__)
 	wxWebView *m_webView;
+#else
+	wxHTMLWindow *m_htmlView;
+#endif
+
 	wxString m_aboutHtml;
 public:
 	HelpWin( wxWindow *parent )
@@ -2118,9 +2129,15 @@ public:
 		SetIcon( wxICON( appicon ) );
 #endif
 		SetBackgroundColour( wxMetroTheme::Colour( wxMT_FOREGROUND ) );
+
+#if defined(__WXMSW__)||defined(__WXOSX__)
 		m_webView = wxWebView::New( this, ID_BROWSER, ::wxWebViewDefaultURLStr, wxDefaultPosition, wxDefaultSize, 
 			::wxWebViewBackendDefault, wxBORDER_NONE );
 		m_webView->SetPage( m_aboutHtml, "About SAM" );
+#else
+		m_htmlView = new wxHTMLWindow( this, ID_BROWSER );
+		m_htmlView->SetPage( m_aboutHtml );
+#endif
 
 		wxBoxSizer *tools = new wxBoxSizer( wxHORIZONTAL );
 		tools->Add( new wxMetroButton( this, ID_BACK, "Back" ), 0, wxALL|wxEXPAND, 0 );
@@ -2136,7 +2153,11 @@ public:
 
 		wxBoxSizer *sizer = new wxBoxSizer( wxVERTICAL );
 		sizer->Add( tools, 0, wxALL|wxEXPAND, 0 );
+#if defined(__WXMSW__)||defined(__WXOSX__)
 		sizer->Add( m_webView, 1, wxALL|wxEXPAND, 0 );
+#else
+		sizer->Add( m_htmlView, 1, wxALL|wxEXPAND, 0 );
+#endif
 		SetSizer( sizer );
 	}
 
@@ -2186,7 +2207,12 @@ public:
 	{
 		if ( url == ":about" )
 		{
+#if defined(__WXMSW__)||defined(__WXOSX__)
 			m_webView->SetPage( m_aboutHtml, "About SAM" );
+#else
+			m_htmlView->SetPage( m_aboutHtml, "About SAM" );
+#endif
+
 			return;
 		}
 		else if ( url == ":release_notes" )
@@ -2209,9 +2235,14 @@ public:
 			url = SamApp::WebApi( "forum" );
 		else if ( url == ":website" )
 			url = SamApp::WebApi( "website" );
-		
+					
+#if defined(__WXMSW__)||defined(__WXOSX__)
 		m_webView->LoadURL( url );
+#else
+		wxLaunchDefaultBrowser( file.GetFullPath() );
+#endif
 	}
+
 
 	void OnClose( wxCloseEvent &evt )
 	{

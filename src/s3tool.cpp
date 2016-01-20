@@ -31,6 +31,10 @@
 #include <wx/generic/statbmpg.h>
 #include <wx/mstream.h>
 
+#if defined(__WXMSW__)||defined(__WXOSX__)
+#include <wx/webview.h>
+#endif
+
 #include <wx/propgrid/propgrid.h>
 #include <wx/propgrid/advprops.h>
 #include <wx/splitter.h>
@@ -1384,6 +1388,7 @@ END_EVENT_TABLE()
 ShadeTool::ShadeTool( wxWindow *parent, int id, const wxString &data_path )
 	: wxPanel( parent, id )
 {
+	m_dataPath = data_path;
 	SetBackgroundColour( wxMetroTheme::Colour( wxMT_FOREGROUND ) );
 
 	wxBoxSizer *sizer_tool = new wxBoxSizer( wxHORIZONTAL );
@@ -1452,10 +1457,13 @@ ShadeTool::ShadeTool( wxWindow *parent, int id, const wxString &data_path )
 	m_analysis = new ShadeAnalysis( m_book, this );
 
 #ifdef S3D_STANDALONE
-	wxString help_index( "file:///" + data_path + "/help/index.html" );
-	//wxShowTextMessageDialog( help_index );
+
+#if defined(__WXMSW__)||defined(__WXOSX__)
+	wxString help_index( "file:///" + m_dataPath + "/help/index.html" );
 	m_helpViewer = wxWebView::New( m_book, wxID_ANY, help_index,
 		wxDefaultPosition, wxDefaultSize, wxWebViewBackendDefault, wxBORDER_NONE );
+#endif
+
 #endif
 
 	wxBoxSizer *sizer_main = new wxBoxSizer( wxVERTICAL );
@@ -1469,7 +1477,9 @@ ShadeTool::ShadeTool( wxWindow *parent, int id, const wxString &data_path )
 	m_book->AddPage( m_analysis, "Analysis page" );
 
 #ifdef S3D_STANDALONE
+#if defined(__WXMSW__)||defined(__WXOSX__)
 	m_book->AddPage( m_helpViewer, "Help" );
+#endif
 #else
 	m_book->SetSelection( PG_SCENE );
 #endif
@@ -1748,7 +1758,13 @@ void ShadeTool::OnCommand( wxCommandEvent &evt)
 		break;
 	case wxID_HELP:
 #ifdef S3D_STANDALONE
+		
+#if defined(__WXMSW__)||defined(__WXOSX__)
 		m_book->SetSelection( PG_HELP );
+#else
+		wxLaunchDefaultBrowser( "file:///" + m_dataPath + "/help/index.html" );
+#endif
+
 #else
 		SamApp::ShowHelp( "3d_shade_calculator" );
 #endif
