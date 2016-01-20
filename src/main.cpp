@@ -1631,6 +1631,10 @@ bool SamApp::OnInit()
 
 	SetAppName( "SAM" );
 	SetVendorName( "NREL" );
+	
+#ifdef _DEBUG
+	SamLogWindow::Setup();
+#endif
 
 	// register all the object types that can
 	// be read or written to streams.
@@ -1662,12 +1666,8 @@ extern void RegisterReportObjectTypes();
 	
 	wxString proxy = SamApp::ReadProxyFile();
 	if ( ! proxy.IsEmpty() )
-		wxSimpleCurl::SetProxy( proxy );
-
-#ifdef _DEBUG
-	SamLogWindow::Setup();
-#endif
-
+		wxSimpleCurl::SetProxyAddress( proxy );
+	
 	
 	g_config = new wxConfig( "SAMnt", "NREL" );
 	
@@ -2147,11 +2147,9 @@ public:
 				"The names DOE/NREL/ALLIANCE shall not be used in any representation, advertising, publicity or other manner whatsoever to endorse or promote any entity that adopts or uses the Model.  DOE/NREL/ALLIANCE shall not provide any support, consulting, training or assistance of any kind with regard to the use of the Model or any updates, revisions or new versions of the Model.<br><br>"
 				"YOU AGREE TO INDEMNIFY DOE/NREL/ALLIANCE, AND ITS AFFILIATES, OFFICERS, AGENTS, AND EMPLOYEES AGAINST ANY CLAIM OR DEMAND, INCLUDING REASONABLE ATTORNEYS' FEES, RELATED TO YOUR USE, RELIANCE, OR ADOPTION OF THE MODEL FOR ANY PURPOSE WHATSOEVER.  THE MODEL IS PROVIDED BY DOE/NREL/ALLIANCE \"AS IS\" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE EXPRESSLY DISCLAIMED.  IN NO EVENT SHALL DOE/NREL/ALLIANCE BE LIABLE FOR ANY SPECIAL, INDIRECT OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER, INCLUDING BUT NOT LIMITED TO CLAIMS ASSOCIATED WITH THE LOSS OF DATA OR PROFITS, WHICH MAY RESULT FROM ANY ACTION IN CONTRACT, NEGLIGENCE OR OTHER TORTIOUS CLAIM THAT ARISES OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THE MODEL.<br><br>";
 		
-		wxString proxy( wxSimpleCurl::GetProxy() );
-		if ( proxy.IsEmpty() )
-			proxy = "system default";
-		else
-			proxy = "proxy: " + proxy;
+		wxString proxy( wxSimpleCurl::GetProxyForURL( "https://sam.nrel.gov" ) );
+		if ( proxy.IsEmpty() ) proxy = "none";
+		else proxy = "proxy: " + proxy;
 
 		
 		int patch = 0;
@@ -2393,7 +2391,7 @@ wxString SamApp::ReadProxyFile()
 			char buf[512];
 			fgets(buf,511,f);
 			fclose(f);
-			return wxString::FromAscii(buf).Trim();
+			return wxString::FromAscii(buf).Trim().Trim(false);
 		}
 	}
 

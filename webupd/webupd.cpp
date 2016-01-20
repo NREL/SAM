@@ -313,12 +313,12 @@ public:
 				char buf[512];
 				fgets(buf, 511, fp);
 				fclose(fp);
-				wxSimpleCurl::SetProxy(wxString::FromAscii(buf));
+				wxSimpleCurl::SetProxyAddress(wxString::FromAscii(buf).Trim().Trim(false));
 			}
 		}
 
 		
-		g_icmStr = wxSimpleCurl::GetProxy();
+		g_icmStr = wxSimpleCurl::GetProxyForURL( "https://sam.nrel.gov" );
 		if ( !g_icmStr.IsEmpty() )	g_icmStr = "via proxy, url is " + g_icmStr;
 		else g_icmStr = "system default";
 

@@ -1483,9 +1483,19 @@ void SamRegistration::OnProxySetup( wxCommandEvent & )
 	wxDialog dlg( this, wxID_ANY, "Configure Proxy", wxDefaultPosition, wxDefaultSize, wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER );
 	wxTextCtrl *text = new wxTextCtrl( &dlg, wxID_ANY, proxy );
 	
-	wxString label( "Enter proxy address (leave empty for direct internet connection):\n\n"
-	"  Example:               proxy-server.myorganization.org\n"
-    "  With a custom port:    proxy-server.myorganization.org:9142\n");
+	wxString label;
+#ifdef __WXMSW__
+	label += "By default, SAM will try to automatically detect proxies on Windows\n"
+		     "from Internet Explorer settings.  If you wish to use a specific proxy,\n"
+			 "enter the information below.  Otherwise, leave it blank.\n\n";
+#else
+	
+	label += "Enter proxy address (leave empty for direct internet connection):\n\n";
+#endif
+	label += 
+		"  Example:               proxy-server.myorganization.org\n"
+		"  With a custom port:    proxy-server.myorganization.org:9142\n";
+
 
 	wxBoxSizer *sizer = new wxBoxSizer( wxVERTICAL );
 	sizer->Add( new wxStaticText( &dlg, wxID_ANY, label), 0, wxALL|wxALIGN_CENTER_VERTICAL, 10 );
@@ -1498,7 +1508,7 @@ void SamRegistration::OnProxySetup( wxCommandEvent & )
 	if ( dlg.ShowModal() == wxID_OK )
 	{
 		proxy = text->GetValue();
-		wxSimpleCurl::SetProxy( proxy );
+		wxSimpleCurl::SetProxyAddress( proxy );
 		if ( ! SamApp::WriteProxyFile( proxy ) )
 			wxMessageBox("Could not save proxy configuration to SAM installation folder.\n\nPlease ensure that you have write permissions to the SAM installation folder.");
 	}
