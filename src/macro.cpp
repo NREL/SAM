@@ -1,3 +1,5 @@
+#include <memory>
+
 #include <wx/panel.h>
 #include <wx/sizer.h>
 #include <wx/textctrl.h>

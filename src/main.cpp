@@ -2115,7 +2115,7 @@ class HelpWin : public wxFrame
 #if defined(__WXMSW__)||defined(__WXOSX__)
 	wxWebView *m_webView;
 #else
-	wxHTMLWindow *m_htmlView;
+	wxHtmlWindow *m_htmlView;
 #endif
 
 	wxString m_aboutHtml;
@@ -2135,12 +2135,14 @@ public:
 			::wxWebViewBackendDefault, wxBORDER_NONE );
 		m_webView->SetPage( m_aboutHtml, "About SAM" );
 #else
-		m_htmlView = new wxHTMLWindow( this, ID_BROWSER );
+		m_htmlView = new wxHtmlWindow( this, ID_BROWSER );
 		m_htmlView->SetPage( m_aboutHtml );
 #endif
 
 		wxBoxSizer *tools = new wxBoxSizer( wxHORIZONTAL );
+#if defined(__WXMSW__)||defined(__WXOSX__)
 		tools->Add( new wxMetroButton( this, ID_BACK, "Back" ), 0, wxALL|wxEXPAND, 0 );
+#endif
 		tools->Add( new wxMetroButton( this, ID_HOME, "Home" ), 0, wxALL|wxEXPAND, 0 );
 		tools->Add( new wxMetroButton( this, ID_WEBSITE, "Web site" ), 0, wxALL|wxEXPAND, 0 );
 		tools->Add( new wxMetroButton( this, ID_FORUM, "Forum" ), 0, wxALL|wxEXPAND, 0 );
@@ -2210,7 +2212,7 @@ public:
 #if defined(__WXMSW__)||defined(__WXOSX__)
 			m_webView->SetPage( m_aboutHtml, "About SAM" );
 #else
-			m_htmlView->SetPage( m_aboutHtml, "About SAM" );
+			m_htmlView->SetPage( m_aboutHtml );
 #endif
 
 			return;
@@ -2239,7 +2241,7 @@ public:
 #if defined(__WXMSW__)||defined(__WXOSX__)
 		m_webView->LoadURL( url );
 #else
-		wxLaunchDefaultBrowser( file.GetFullPath() );
+		wxLaunchDefaultBrowser( url );
 #endif
 	}
 
@@ -2255,7 +2257,9 @@ public:
 		switch( evt.GetId() )
 		{
 		case ID_BACK:
+#if defined(__WXMSW__)||defined(__WXOSX__)
 			if ( m_webView->CanGoBack() ) m_webView->GoBack();
+#endif
 			break;
 		case ID_WEBSITE:
 			LoadPage( ":website" );
@@ -2288,10 +2292,12 @@ public:
 		}
 	}
 
+#if defined(__WXMSW__)||defined(__WXOSX__)
 	void OnNewWindow( wxWebViewEvent &evt )
 	{
 		wxLaunchDefaultBrowser( evt.GetURL() );
 	}
+#endif
 
 	DECLARE_EVENT_TABLE();
 };
@@ -2306,7 +2312,9 @@ BEGIN_EVENT_TABLE( HelpWin, wxFrame )
 	EVT_BUTTON( ID_EMAIL_SUPPORT, HelpWin::OnCommand )
 	EVT_BUTTON( wxID_CLOSE, HelpWin::OnCommand )
 	EVT_BUTTON( wxID_ABOUT, HelpWin::OnCommand )
+#if defined(__WXMSW__)||defined(__WXOSX__)
 	EVT_WEBVIEW_NEWWINDOW( ID_BROWSER, HelpWin::OnNewWindow )
+#endif
 	EVT_CLOSE( HelpWin::OnClose )
 END_EVENT_TABLE()
 
@@ -2323,6 +2331,10 @@ void SamApp::ShowHelp( const wxString &context )
 		url = "file:///" + fn.GetFullPath( wxPATH_NATIVE ) + "index.html";
 		if ( ! context.IsEmpty() )
 			url += "?" + context + ".htm";		
+#ifdef __WXGTK__
+		wxLaunchDefaultBrowser( url );
+		return;
+#endif
 	}
 	
 	wxWindow *modal_active = 0;

@@ -1,3 +1,4 @@
+#include <string>
 
 #include <wx/wx.h>
 #include <wx/ffile.h>
@@ -356,7 +357,7 @@ static std::string wstr2str( const wchar_t *s )
 static std::wstring str2wstr( const std::string &s )
 {//Same comment as in wstr2str()
 	std::wstring ret;
-	for( auto i = s.begin(), iEnd = s.end(); i != iEnd; ++i )
+	for( std::string::const_iterator i = s.begin(); i != s.end(); ++i )
 		ret += wchar_t( *i );
 	return ret;
 }
