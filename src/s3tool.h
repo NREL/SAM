@@ -3,7 +3,8 @@
 
 #include <wx/frame.h>
 #include <wx/propgrid/propgrid.h>
-#include <wx/webview.h>
+
+
 #include <wx/buffer.h>
 
 #include <wex/lkscript.h>
@@ -29,6 +30,7 @@ class ShadeTool;
 class AFMonthByHourFactorCtrl;
 class wxMetroButton;
 class VActiveSurfaceObject;
+class wxWebView;
 
 class LocationSetup : public wxPanel
 {
@@ -242,7 +244,7 @@ public:
 	bool SimulateDiffuse(std::vector<diffuse> &result, bool use_groups = false);
 
 private:
-	wxString m_fileName;
+	wxString m_fileName, m_dataPath;
 
 	wxSimplebook *m_book;
 	wxSplitterWindow *m_split;
@@ -253,7 +255,9 @@ private:
 	ShadeAnalysis *m_analysis;
 
 #ifdef S3D_STANDALONE
+#if defined(__WXMSW__)||defined(__WXOSX__)
 	wxWebView *m_helpViewer;
+#endif
 #endif
 
 
