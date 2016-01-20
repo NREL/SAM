@@ -59,8 +59,9 @@ public:
 	// app-wide init and shutdown calls for underlying libcurl initialization
 	static void Init();
 	static void Shutdown();
-	static void SetProxy( const wxString &proxy );
-	static wxString GetProxy();
+	static void SetProxyAddress( const wxString &proxy );
+	static wxString GetProxyForURL( const wxString &url );
+	static wxArrayString GetProxyAutodetectMessages();
 
 	// geocoding function using google APIs.
 	// call is synchronous.  Optionally determine time 
