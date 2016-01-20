@@ -17,7 +17,8 @@
 #include <wex/metro.h>
 #include <wex/dview/dvplotctrl.h>
 #include <wex/dview/dvselectionlist.h>
-#include <wex/dview/dvcolourmap.h>
+//#include <wex/dview/dvcolourmap.h>
+#include <wex/plot/plcolourmap.h>
 #include <wex/dview/dvstatisticstablectrl.h>
 #include <wex/plot/plplotctrl.h>
 #include <wex/plot/plaxis.h>
