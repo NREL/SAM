@@ -78,6 +78,7 @@ $(TARGET): $(OBJECTS) $(WEXLIB) $(LKLIB) $(SSCLIB)
 	cp $(STEPWISEDIR)/stepwise.bin ../deploy/runtime/bin
 	make -f Makefile-webupd
 	cp webupd.bin ../deploy/linux_64
+	cp -R ./GtkTheme ../deploy/linux_64
 
 PKGFILE = sam-linux64-$(SAMVERDASH)-install.run
 
