@@ -58,7 +58,7 @@ echo "writing startup script..."
 text="#!/bin/sh
 cd $INSTALLDIR
 export LD_LIBRARY_PATH=\$LD_LIBRARY_PATH:$INSTALLDIR/linux_64
-exec $INSTALLDIR/linux_64/sam.bin
+GTK2_RC_FILES=$INSTALLDIR/linux_64/GtkTheme/gtk-2.0/gtkrc $INSTALLDIR/linux_64/sam.bin
 "
 echo "$text" > $INSTALLDIR/SAM
 chmod a+x $INSTALLDIR/SAM

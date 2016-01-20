@@ -1,0 +1,46 @@
+################################################
+# PANELS (24px)
+################################################
+
+# Note: Uncommenting means to delete the "#" at the beginning of a line. Commenting out means to add a "#" at the beginning of a line. The "#" tells the theme wether to ignore the line or not.
+
+style "theme-panel"
+{
+
+# Uncomment the following lines when using dark panels! Note: Menus will remain the same.
+#	bg[SELECTED]	= "#525252" # Makes selected items dark.
+#	bg[NORMAL]	= "#3c3c3c" # Makes panel background dark.
+#	bg[PRELIGHT]	= "#424242" # Makes panel button prelight dark.
+#	bg[ACTIVE]	= "#333333" # Makes active buttons dark.
+#	bg[INSENSITIVE]	= "#3C3C3C"
+	fg[NORMAL]	= "#FFFFFF" # Makes panel text light.
+	fg[PRELIGHT]	= darker (@selected_bg_color)  # Makes prelighted text colored.
+	fg[SELECTED]	= lighter (@selected_bg_color)  # Makes prelighted text colored.
+	fg[ACTIVE]	= lighter (@selected_bg_color)  # Makes active text colored.
+	fg[INSENSITIVE]	= lighter (@bg_color) # Color for insensitive text.
+	text[NORMAL]	= @text_color
+	text[PRELIGHT]	= lighter (@selected_bg_color)  # Makes prelighted text colored.
+	text[SELECTED]	= lighter (@selected_bg_color)  # Makes prelighted text colored.
+	text[ACTIVE]	= lighter (@selected_bg_color)  # Makes active text colored.
+#	text[INSENSITIVE]	= lighter (@bg_color)
+}
+
+
+# Panel settings. Do not change.
+widget "*PanelWidget*"		style "theme-panel"
+widget "*PanelApplet*"		style "theme-panel"
+widget "*fast-user-switch*"	style "theme-panel"
+widget "*CPUFreq*Applet*"	style "theme-panel"
+class "PanelApp*"		style "theme-panel"
+class "PanelToplevel*"		style "theme-panel"
+widget_class "*Mail*"		style "theme-panel"
+#class "*Panel*"		style "theme-panel" # Disabled to fix bug.
+widget_class "*notif*"		style "theme-panel"
+widget_class "*Notif*"		style "theme-panel"
+widget_class "*Tray*"		style "theme-panel" 
+widget_class "*tray*"		style "theme-panel"
+widget_class "*Applet*Tomboy*"	style "theme-panel"
+
+# XFCE panel theming.
+#widget "*Xfce*Panel*"		style "theme-panel"
+#class "*Xfce*Panel*"		style "theme-panel"
