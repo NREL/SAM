@@ -5,6 +5,7 @@
 #include <wx/mstream.h>
 #include <wx/buffer.h>
 #include <wx/uri.h>
+#include <wx/log.h>
 
 #include <curl/curl.h>
 
@@ -12,8 +13,13 @@
 
 #include "simplecurl.h"
 
+#ifdef __WXMSW__
+#include <winhttp.h>
+#endif
+
 
 static wxString gs_curlProxyAddress;
+static wxArrayString gs_curlProxyAutodetectMessages;
 
 DEFINE_EVENT_TYPE(wxSIMPLECURL_EVENT);
 
@@ -28,7 +34,7 @@ class wxSimpleCurl::DLThread : public wxThread
 {
 public:
 	wxSimpleCurl *m_sc;
-	wxString m_url;
+	wxString m_url, m_proxy;
 	CURLcode m_resultCode;
 
 	wxMemoryBuffer m_data;
@@ -40,10 +46,11 @@ public:
 	bool m_canceled;
 	wxMutex m_canceledLock;
 
-	DLThread( wxSimpleCurl *cobj, const wxString &url )
+	DLThread( wxSimpleCurl *cobj, const wxString &url, const wxString &proxy )
 		: wxThread( wxTHREAD_JOINABLE ),
 			m_sc(cobj),
 			m_url(url),
+			m_proxy(proxy),
 			m_resultCode( CURLE_OK ),
 			m_threadDone(false),
 			m_canceled(false)
@@ -124,8 +131,12 @@ public:
 
 			curl_easy_setopt(curl, CURLOPT_FOLLOWLOCATION, 1);
 			
-			if ( !gs_curlProxyAddress.IsEmpty() )
-				curl_easy_setopt(curl, CURLOPT_PROXY, (const char*)gs_curlProxyAddress.ToAscii() );
+			if ( !m_proxy.IsEmpty() )
+			{
+				wxURI uri_proxy( m_proxy );
+				wxString encoded_proxy = uri_proxy.BuildURI();
+				curl_easy_setopt(curl, CURLOPT_PROXY, (const char*)encoded_proxy.ToAscii() );
+			}
 			
 			m_resultCode = curl_easy_perform(curl);
 			curl_easy_cleanup(curl);
@@ -254,7 +265,7 @@ bool wxSimpleCurl::Start( const wxString &url, bool synchronous )
 		delete m_thread;
 	}
 
-	m_thread = new DLThread( this, url );
+	m_thread = new DLThread( this, url, GetProxyForURL(url) );
 	m_thread->Create();
 	m_thread->Run();
 	
@@ -328,14 +339,124 @@ void wxSimpleCurl::Abort()
 	}
 }
 
-void wxSimpleCurl::SetProxy( const wxString &proxy )
+void wxSimpleCurl::SetProxyAddress( const wxString &proxy )
 {
 	gs_curlProxyAddress = proxy;
 }
 
-wxString wxSimpleCurl::GetProxy()
+
+static std::string wstr2str( const wchar_t *s )
+{//Unicode to Punycode convertor! Someone? (or simply ignore the IDNA decision from 2003 :):
+	std::string ret;
+	for( ; 0 != *s; ++s )
+		ret += char( *s );
+	return ret;
+}
+
+static std::wstring str2wstr( const std::string &s )
+{//Same comment as in wstr2str()
+	std::wstring ret;
+	for( auto i = s.begin(), iEnd = s.end(); i != iEnd; ++i )
+		ret += wchar_t( *i );
+	return ret;
+}
+
+wxString wxSimpleCurl::GetProxyForURL( const wxString &url )
 {
-	return gs_curlProxyAddress;
+	wxString proxy( gs_curlProxyAddress );
+
+#ifdef __WXMSW__
+	
+	if ( proxy.IsEmpty() )
+	{
+		gs_curlProxyAutodetectMessages.Clear();
+
+		// try to autodetect proxy address for url, at least on windows
+		HINTERNET hInter = ::WinHttpOpen( L"", WINHTTP_ACCESS_TYPE_DEFAULT_PROXY, WINHTTP_NO_PROXY_NAME, WINHTTP_NO_PROXY_BYPASS, 0 );
+	
+		gs_curlProxyAutodetectMessages.Add("Querying IE proxy settings...");
+
+		WINHTTP_CURRENT_USER_IE_PROXY_CONFIG cfg;
+		memset( &cfg, 0, sizeof(WINHTTP_CURRENT_USER_IE_PROXY_CONFIG) );
+		if( ::WinHttpGetIEProxyConfigForCurrentUser( &cfg ) )
+		{
+			printf("autoDetect? %s\n", cfg.fAutoDetect ? "yes" : "no" );
+
+			if ( cfg.lpszAutoConfigUrl )
+				gs_curlProxyAutodetectMessages.Add("lpszAutoConfigUrl: " + wxString(cfg.lpszAutoConfigUrl) );
+			
+			if ( cfg.lpszProxy )
+				gs_curlProxyAutodetectMessages.Add("lpszProxy: " + wxString(cfg.lpszProxy) );
+
+			if ( cfg.lpszProxyBypass )
+				gs_curlProxyAutodetectMessages.Add("lpszProxyBypass: " + wxString(cfg.lpszProxyBypass) );
+		}
+		else
+		{
+			gs_curlProxyAutodetectMessages.Add("Could not get IE proxy settings");
+
+		}
+
+		LPWSTR autoCfgUrl = cfg.lpszAutoConfigUrl;
+		if ( cfg.fAutoDetect || autoCfgUrl )
+		{
+			WINHTTP_AUTOPROXY_OPTIONS autoOpts;
+			memset( &autoOpts, 0, sizeof(WINHTTP_AUTOPROXY_OPTIONS) );
+			autoOpts.fAutoLogonIfChallenged = TRUE;
+			if( cfg.fAutoDetect )
+			{
+				autoOpts.dwAutoDetectFlags = WINHTTP_AUTO_DETECT_TYPE_DHCP | WINHTTP_AUTO_DETECT_TYPE_DNS_A;
+				autoOpts.dwFlags = WINHTTP_AUTOPROXY_AUTO_DETECT;
+			}
+			if( autoCfgUrl )
+			{
+				autoOpts.lpszAutoConfigUrl = autoCfgUrl;
+				autoOpts.dwFlags |= WINHTTP_AUTOPROXY_CONFIG_URL;
+			}
+
+			gs_curlProxyAutodetectMessages.Add( "Querying auto configuration proxy for url: " + url );
+
+			WINHTTP_PROXY_INFO autoCfg;
+			memset( &autoCfg, 0, sizeof(WINHTTP_PROXY_INFO) );
+			if ( ::WinHttpGetProxyForUrl( hInter, url.ToStdWstring().c_str(), 
+					&autoOpts, &autoCfg )
+				&& WINHTTP_ACCESS_TYPE_NO_PROXY != autoCfg.dwAccessType )
+			{
+				if ( autoCfg.lpszProxy )
+				{
+					gs_curlProxyAutodetectMessages.Add( "autoCfg.lpszProxy: " + wxString( autoCfg.lpszProxy ) );
+					proxy = wstr2str( autoCfg.lpszProxy );
+				}
+				else
+					gs_curlProxyAutodetectMessages.Add("No autodetected proxy determined");
+			}
+			else
+			{
+				gs_curlProxyAutodetectMessages.Add("Connection method does not use a proxy");
+			}
+
+		}
+		else
+		{
+			gs_curlProxyAutodetectMessages.Add("Proxy autodetection disabled or no autoconfiguration url found");
+
+			if ( cfg.lpszProxy )
+			{
+				gs_curlProxyAutodetectMessages.Add("Using default: " + wxString(cfg.lpszProxy) );
+				proxy = wxString( cfg.lpszProxy );
+			}
+		}
+
+		::WinHttpCloseHandle( hInter );
+	}
+#endif
+
+	return proxy;
+}
+
+wxArrayString wxSimpleCurl::GetProxyAutodetectMessages()
+{
+	return gs_curlProxyAutodetectMessages;
 }
 
 void wxSimpleCurl::Init()
