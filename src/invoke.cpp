@@ -1,4 +1,5 @@
 #include <algorithm>
+#include <memory>
 #include <wx/log.h>
 #include <wx/tokenzr.h>
 #include <wx/filename.h>
@@ -183,17 +184,27 @@ static void fcall_webapi( lk::invoke_t &cxt )
 
 static void fcall_geocode( lk::invoke_t &cxt )
 {
-	LK_DOC( "geocode", "Returns the latitude and longitude of an address using Google's geocoding web API.", "(string:address):table");
+	LK_DOC( "geocode", "Returns the latitude and longitude of an address using Google's geocoding web API.", "(string:address, [string: busy message]):table");
+	
+	std::auto_ptr<wxBusyInfo> bi(
+		( cxt.arg_count() > 1 ) 
+		? new wxBusyInfo( cxt.arg(1).as_string() ) 
+		: NULL );
+
+	
 	double lat = 0, lon = 0;
-	wxSimpleCurl::GeoCode( cxt.arg(0).as_string(), &lat, &lon );
+	bool ok = wxSimpleCurl::GeoCode( cxt.arg(0).as_string(), &lat, &lon );
 	cxt.result().empty_hash();
 	cxt.result().hash_item("lat").assign(lat);
 	cxt.result().hash_item("lon").assign(lon);
+	cxt.result().hash_item("ok").assign( ok ? 1.0 : 0.0 );
 }
 
 static void fcall_curl( lk::invoke_t &cxt )
 {
-	LK_DOC( "curl", "Issue a synchronous HTTP/HTTPS request.  By default a GET request, but can support POST via parameter 2.  If a third argument is given, the returned data is downloaded to the specified file on disk rather than returned as a string.", "(string:url, [string:post data], [string:local file]):string" );
+	LK_DOC( "curl", "Issue a synchronous HTTP/HTTPS request.  By default a GET request, but can support POST via parameter 2."
+		"If a third argument is given, the returned data is downloaded to the specified file on disk rather than returned as a string.", 
+		"(string:url, [string:post data], [string:local file], [string: busy message]):string" );
 	wxSimpleCurl curl;
 	if( cxt.arg_count() > 1 )
 		curl.SetPostData( cxt.arg(1).as_string() );
@@ -204,6 +215,11 @@ static void fcall_curl( lk::invoke_t &cxt )
 	//	url.Replace( "<SAMAPIKEY:ENERGY_CROP>",   "bb4a09f7833f115ccba081b4a9e028ca904643df" );
 
 	wxLogStatus( "curl: " + url );
+
+	std::auto_ptr<wxBusyInfo> bi(
+		( cxt.arg_count() > 3 ) 
+		? new wxBusyInfo( cxt.arg(3).as_string() ) 
+		: NULL );
 
 	if ( !curl.Start( url, true ) )
 	{
@@ -1545,6 +1561,20 @@ void fcall_current_at_voltage_sandia(lk::invoke_t &cxt)
 	cxt.result().assign(Itrw);
 }
 
+void fcall_wfdownloaddir( lk::invoke_t &cxt)
+{
+	LK_DOC( "wfdownloaddir", "Returns the folder into which solar data files are downloaded.", "(none):string" );
+
+	//Create a folder to put the weather file in
+	wxString wfdir;
+	SamApp::Settings().Read("solar_download_path", &wfdir);
+	if (wfdir.IsEmpty()) wfdir = ::wxGetHomeDir() + "/SAM Downloaded Weather Files";
+	if (!wxDirExists(wfdir)) wxFileName::Mkdir(wfdir, 511, ::wxPATH_MKDIR_FULL);
+	// save to settings (addresses user support issue 69194 12/11/14)
+	SamApp::Settings().Write("solar_download_path", wfdir);
+	cxt.result().assign(wfdir);
+}
+
 void fcall_solarprospector(lk::invoke_t &cxt)
 {
 	LK_DOC("solarprospector", "Creates the solar prospector dialog box, downloads, decompresses, converts, and returns local file name for weather file", "(none) : string");
@@ -2799,6 +2829,7 @@ lk::fcall_t* invoke_general_funcs()
 	static const lk::fcall_t vec[] = {
 		fcall_logmsg,
 		fcall_browse,
+		fcall_wfdownloaddir,
 		fcall_webapi,
 		fcall_geocode,
 		fcall_curl,
