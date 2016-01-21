@@ -199,6 +199,11 @@ bool CaseEvaluator::UpdateLibrary( const wxString &trigger, wxArrayString &chang
 			{
 				// find the entry
 				int entry = lib->FindEntry( vv->String() );
+				
+				// testing 1/21/16 for missing weather file issue
+				if (entry < 0 && lib->NumEntries() > 0 ) entry = 0;
+				//
+
 				if (entry < 0 || !lib->ApplyEntry(entry, varindex, *m_vt, changed))
 				{
 					nerrors++;
