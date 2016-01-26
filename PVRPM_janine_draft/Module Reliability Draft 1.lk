@@ -1,0 +1,180 @@
+//*************************************************************************************
+//Module Reliability Model -- DRAFT --
+//jmf 1/6/16
+//*************************************************************************************
+
+
+// SYSTEM INPUTS-----------------------------------------------------------------------
+	num_modules = 2;
+	system_lifetime_yrs = 0.3;
+
+// MODULE RELIABILITY INPUTS-----------------------------------------------------------
+	// failure mode 1: defective component
+	// failure mode 2: failure
+	module_failure_mean_yrs = 0.15;
+	module_failure_std_yrs = 0.05;
+	// repair time
+	module_repair_mean_days = 5;
+	module_repair_std_days = 5;
+	
+//GLOBAL STRUCTURES--------------------------------------------------------------------
+	global modules = alloc(num_modules);
+	global module_replacement_times = null;
+
+
+//*************************************************************************************
+// SUPPORTING FUNCTIONS
+//*************************************************************************************
+/* 	LHS performs Latin Hypercube Sampling given a distribution type, distribution parameters,
+	and a number of samples. The name parameter allows a more helpful error message.
+	Returns an array of the calculated samples.*/
+function LHS(name, distribution_type, parameters, num_samples)
+{
+	lhs = lhs_create();
+	lhs_dist(lhs, 'x', distribution_type, parameters);
+	if (!lhs_run(lhs, num_samples))
+	{
+		msgbox('Latin Hypercube Sampling failed for: ' + name + ': ' + lhs_error(lhs));
+		exit;
+	}
+	result = lhs_vector(lhs, 'x');
+	lhs_free(lhs);
+	return result;
+}
+
+//*************************************************************************************
+// INITIALIZATION FUNCTION
+//*************************************************************************************
+function initialize()
+{
+	
+	// Module failure mode 2: failure
+	module_failure_mean_days = module_failure_mean_yrs * 365;
+	module_failure_std_days = module_failure_std_yrs * 365;
+	modfail_vector = LHS('module_failure', 'normal', [module_failure_mean_days, module_failure_std_days], num_modules);
+	
+	// Module replacement times
+	module_replacement_times = LHS('module_replacement_times', 'lognormal', [module_repair_mean_days, module_repair_std_days], num_modules*20);
+	
+	// Create module structures
+	for (m = 0; m < num_modules; m++)
+	{
+		modules[m].state = 1;
+		modules[m].time_to_failure = modfail_vector[m];
+		modules[m].cumul_fail = 0;
+		modules[m].time_to_replacement = module_replacement_times[0];
+		module_replacement_times -@ 0; //remove the replacement time that was just used
+	}
+	
+}
+
+//*************************************************************************************
+// DC DERATE CALCULATION FUNCTION
+//*************************************************************************************
+function whats_my_dc_derate()
+{
+	//DC Side Derate calculation
+	operational_modules = 0;
+	for (m=0; m < num_modules; m++)
+		operational_modules += modules[m].state;
+		
+	return operational_modules / num_modules;
+	
+}
+
+//*************************************************************************************
+// INCREMENT TIMESTEP FUNCTION
+//*************************************************************************************
+function step_in_time(modules, module_replacement_times)
+{
+	for (m=0; m < num_modules; m++)
+	{
+		//module is operational
+		if (modules[m].state == 1)
+		{
+			modules[m].time_to_failure--;
+			//module has just failed
+			if (modules[m].time_to_failure <= 0)
+			{
+				modules[m].state = 0;
+				modules[m].time_to_failure = 0;
+				modules[m].cumul_fail++;
+			}
+		}
+		
+		//module is currently failed
+		else
+		{
+			modules[m].time_to_replacement--;
+			if (modules[m].time_to_replacement <= 0)
+			{
+				modules[m].state = 1;
+				//need to reset time to failure and time to replacement
+			}
+		}		
+	}
+	
+}
+
+
+//*************************************************************************************
+// MAIN SCRIPT
+//*************************************************************************************
+
+//allocations for now
+
+dc_availability = null;
+
+//timestep 0
+initialize(modules, module_replacement_times);
+dc_availability[0] = whats_my_dc_derate() * 100;
+outln('0\t' + modules);
+
+//rest of system lifetime
+for (time = 1; time < 100; time++)
+{
+	step_in_time(modules, module_replacement_times);
+	dc_availability[time] = whats_my_dc_derate() * 100;
+	outln(time + '\t' + modules);
+}
+
+//Test outputs
+outln(dc_availability);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
