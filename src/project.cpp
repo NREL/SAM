@@ -580,13 +580,18 @@ wxString VersionUpgrade::CreateHtmlReport( const wxString &file )
 	if ( m_generalLog.size() > 0 )
 		WriteHtml( "General", m_generalLog, html );
 
-	for( LogInfo::iterator it = m_log.begin();
-		it != m_log.end();
-		++it )
+	if ( m_log.size() > 0 )
 	{
-		html += "\n<br><br>\n\n";
-		WriteHtml( it->first, it->second, html );
+		for( LogInfo::iterator it = m_log.begin();
+			it != m_log.end();
+			++it )
+		{
+			html += "\n<br><br>\n\n";
+			WriteHtml( it->first, it->second, html );
+		}
 	}
+	else
+		html += "\n<br><p>No changes detected.</p></br>";
 
 	html += "</body></html>";
 	return html;
@@ -621,12 +626,13 @@ void VersionUpgrade::WriteHtml( const wxString &section, const std::vector<log> 
 
 }
 
-class UpgradeReportDialog : public wxFrame
+class UpgradeReportDialog : public wxDialog
 {
 	wxString m_htmlSrc;
 public:
-	UpgradeReportDialog( const wxString &src ) : wxFrame( SamApp::Window(), wxID_ANY, "Project File Upgrade Report", wxDefaultPosition, wxSize(800,700), 
-		(wxCAPTION | wxCLOSE_BOX | wxCLIP_CHILDREN | wxRESIZE_BORDER | wxFRAME_TOOL_WINDOW | wxFRAME_FLOAT_ON_PARENT) ),
+	UpgradeReportDialog( const wxString &src ) 
+		: wxDialog( SamApp::Window(), wxID_ANY, "Project File Upgrade Report", 
+		wxDefaultPosition, wxSize(800,700), wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER ),
 		m_htmlSrc( src )
 	{
 		SetBackgroundColour( wxMetroTheme::Colour( wxMT_FOREGROUND ) );
@@ -644,6 +650,10 @@ public:
 		sizer->Add( html, 1, wxALL|wxEXPAND, 0 );
 		sizer->Add( buttons, 0, wxALL|wxEXPAND, 0 );
 		SetSizer( sizer );
+
+		SetEscapeId( wxID_CANCEL );
+
+		CenterOnParent();
 	}
 
 	void OnCommand( wxCommandEvent &evt )
@@ -663,21 +673,27 @@ public:
 			}
 		}
 		else if ( evt.GetId() == wxID_CLOSE )
-			Close();
+		{
+			if ( IsModal() ) EndModal( wxID_CANCEL );
+			else Close();
+		}
 	}
 
 	DECLARE_EVENT_TABLE();
 };
 
-BEGIN_EVENT_TABLE( UpgradeReportDialog, wxFrame )
+BEGIN_EVENT_TABLE( UpgradeReportDialog, wxDialog )
 	EVT_BUTTON( wxID_SAVE, UpgradeReportDialog::OnCommand )
 	EVT_BUTTON( wxID_CLOSE, UpgradeReportDialog::OnCommand )
 END_EVENT_TABLE()
 
-void VersionUpgrade::ShowReportDialog( const wxString &file )
+void VersionUpgrade::ShowReportDialog( const wxString &file, bool modal )
 {
-	// show HTML dialog upgrade report		
-	wxFrame *frm = new UpgradeReportDialog( CreateHtmlReport( file ) );
-	frm->CenterOnParent();
-	frm->Show();
+	if ( modal )
+	{
+		UpgradeReportDialog dlg( CreateHtmlReport(file) );
+		dlg.ShowModal();
+	}
+	else
+		(new UpgradeReportDialog( CreateHtmlReport( file ) ))->Show();
 }

@@ -42,6 +42,7 @@ public:
 
 	bool CreateProject();
 	bool CloseProject();
+	void ImportCases();
 
 	wxString GetUniqueCaseName( wxString base = wxEmptyString );
 	bool CreateNewCase( const wxString &name = wxEmptyString, 
