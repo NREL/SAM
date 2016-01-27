@@ -8,6 +8,12 @@
 // by default, should be NULL
 static const char *version_label = 0; //"iscc-ge"; 
 
+// API keys for SAM to use with developer.nrel.gov services.
+const char *sam_api_key =
+"rJzFOTOJhNHcLOnPmW2TNCLV8I4HHLgKddAycGpn"   // production (sam.support@nrel.gov)
+//"yXv3dcb6f5piO0abUMrrTuQvLDFgWvnBz52TJmDJ" // staging (aron.dobos@nrel.gov)
+;
+
 static const char *beta_disclaimer =
 "Notice: Beta versions of SAM are provided as-is and may change without notice."
 	"  Beta software may not work in the same way as a final version, and features and functionality may be changed, enhanced, or removed without notice."

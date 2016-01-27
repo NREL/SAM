@@ -13,11 +13,8 @@
 #include "project.h"
 
 
-static const char *sam_api_key =
-"rJzFOTOJhNHcLOnPmW2TNCLV8I4HHLgKddAycGpn" // production (sam.support@nrel.gov)
-//"yXv3dcb6f5piO0abUMrrTuQvLDFgWvnBz52TJmDJ" // staging (aron.dobos@nrel.gov)
-;
-
+// SAM API key to use with developer.nrel.gov services
+extern const char *sam_api_key;
 
 class wxSimplebook;
 class wxPanel;

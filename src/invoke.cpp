@@ -209,9 +209,7 @@ static void fcall_curl( lk::invoke_t &cxt )
 		curl.SetPostData( cxt.arg(1).as_string() );
 	
 	wxString url(cxt.arg(0).as_string());
-	url.Replace( "<SAMAPIKEY>", "bd36882a2551ce65f1326626dcd110785ae967e2" );
-	//	url.Replace( "<SAMAPIKEY:WIND_BARRIERS>", "bd36882a2551ce65f1326626dcd110785ae967e2" );
-	//	url.Replace( "<SAMAPIKEY:ENERGY_CROP>",   "bb4a09f7833f115ccba081b4a9e028ca904643df" );
+	url.Replace( "<SAMAPIKEY>", wxString(sam_api_key) );
 
 	wxLogStatus( "curl: " + url );
 
@@ -226,7 +224,10 @@ static void fcall_curl( lk::invoke_t &cxt )
 		return;
 	}
 
-	if ( cxt.arg_count() > 2 )
+	wxString file;
+	if ( cxt.arg_count() > 2 ) file = cxt.arg(2).as_string();
+
+	if ( !file.IsEmpty() )
 		cxt.result().assign( curl.WriteDataToFile( cxt.arg(2).as_string() ) ? 1.0 : 0.0 );
 	else
 		cxt.result().assign( curl.GetDataAsString() );
@@ -1612,9 +1613,9 @@ void fcall_windtoolkit(lk::invoke_t &cxt)
 	wxString url;
 	url = SamApp::WebApi("windtoolkit");
 	url.Replace("<YEAR>", spd.GetYear(), 1);
-	url.Replace("<LAT>", wxString::Format(wxT("%f"),lat), 1);
-	url.Replace("<LON>", wxString::Format(wxT("%f"), lon), 1);
-	url.Replace("<KEY>", wxString::Format("SIWy1e6K6FHjlRnKY3RaJWJS9YMnMWqQ8mgLwLfZ")); // key for production server registered to janine.freeman@nrel.gov
+	url.Replace("<LAT>", wxString::Format( "%lg", lat), 1);
+	url.Replace("<LON>", wxString::Format( "%lg", lon), 1);
+	url.Replace("<SAMAPIKEY>", wxString(sam_api_key) );
 
 	//Download the weather file
 	wxSimpleCurl curl;
