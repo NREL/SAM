@@ -5,7 +5,6 @@
 #include <wx/datetime.h>
 #include <wx/sstream.h>
 
-
 BEGIN_DECLARE_EVENT_TYPES()
     DECLARE_EVENT_TYPE(wxSIMPLECURL_EVENT, 7578)
 END_DECLARE_EVENT_TYPES()
