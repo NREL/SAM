@@ -26,7 +26,6 @@
 #include "casewin.h"
 #include "materials.h"
 #include "results.h"
-#include "solarprospector.h"
 #include "windtoolkit.h"
 #include "simplecurl.h"
 #include "urdb.h"
@@ -1575,138 +1574,6 @@ void fcall_wfdownloaddir( lk::invoke_t &cxt)
 	cxt.result().assign(wfdir);
 }
 
-void fcall_solarprospector(lk::invoke_t &cxt)
-{
-	LK_DOC("solarprospector", "Creates the solar prospector dialog box, downloads, decompresses, converts, and returns local file name for weather file", "(none) : string");
-
-	//Create the solar prospector object
-	SolarProspectorDialog spd( SamApp::Window(), "Download Solar Resource File");
-	spd.CenterOnParent();
-	int code = spd.ShowModal(); //shows the dialog and makes it so you can't interact with other parts until window is closed
-
-	//Return an empty string if the window was dismissed
-	if (code == wxID_CANCEL)
-	{
-		cxt.result().assign(wxEmptyString);
-		return;
-	}
-
-	//Get parameters from the dialog box for weather file download
-	wxString year;
-	year = spd.GetYear();
-	double lat, lon;
-	wxString locname;
-	if (spd.IsAddressMode() == true)	//entered an address instead of a lat/long
-	{
-		wxString addr( spd.GetAddress() );
-		if (!wxSimpleCurl::GeoCode(addr, &lat, &lon))
-		{
-			wxMessageBox("Failed to geocode address");
-			return;
-		}
-		
-		for (int i=0;i<(int)addr.Len();i++)
-			if (isalpha(addr[i]) || isdigit(addr[i]) || addr[i] == ' ' || addr[i] == '_')
-				locname += addr[i];
-	}
-	else
-	{
-		lat = spd.GetLatitude();
-		lon = spd.GetLongitude();	
-		locname.Printf("lat%.3lf_lon%.3lf", lat, lon);	
-	}
-
-	//Create URL for weather file download
-	wxString url;
-	if (spd.GetYear() == "TMY" || spd.GetYear() == "TGY" || spd.GetYear() == "TDY")
-	{
-		url = SamApp::WebApi("prospector_typical");
-		url.Replace("<TYPE>", spd.GetYear().Lower(), 1);
-	}
-	else
-	{
-		url = SamApp::WebApi("prospector_year");
-		url.Replace("<YEAR>", spd.GetYear(), 1);
-	}
-
-	int short_lat = (int)(fabs(lat));
-	int short_lon = (int)(fabs(lon));
-
-	if (short_lat % 2 > 0) --short_lat;
-	if (short_lon % 2 > 0) --short_lon;
-	//short_lon += 2; // removed for upgrade to prospector 1998-2009
-
-	wxString dir;
-	dir.Printf("%d%d", short_lon, short_lat);
-
-	wxString glat = wxString::Format("%d", (int)(fabs(lat) * 10)) + "5";
-	wxString glon = wxString::Format("%d", (int)(fabs(lon) * 10)) + "5";
-
-	if (glon.Len()<5) glon = "0" + glon;
-	wxString gridcode = glon + glat;
-
-	url.Replace("<DIR>", dir, 1);
-	url.Replace("<GRIDCODE>", gridcode, 1);
-	url.Replace("sp_data", "prospector_solar_data", 1);	//anonymizes the link in webapis.conf
-
-	//Download the weather file
-	wxSimpleCurl curl;
-	curl.Start(url, true);	//true won't let it return to code unless it's done downloading
-	// would like to put some code here to tell it not to download and to give an error if hits 404 Not Found
-
-	wxString local_file;
-	::wxGetTempFileName("samwf", local_file);
-
-	if (!curl.WriteDataToFile(local_file))
-	{
-		wxMessageBox("Failed to download the 10 km satellite data weather file from NREL for your location.");
-		return;
-	}
-
-	//Decompress weather file
-	wxString dcompfile = local_file + ".extracted.tm2";
-	if (!wxGunzipFile(local_file, dcompfile))
-	{
-		wxMessageBox("Failed to decompress downloaded weather data.");
-		return;
-	}
-
-	//Convert weather file to csv instead of TMY format
-	ssc_data_t data = ssc_data_create();
-	ssc_data_set_string(data, "input_file", dcompfile.c_str());
-
-	//Create a folder to put the weather file in
-	wxString wfdir;
-	SamApp::Settings().Read("solar_download_path", &wfdir);
-	if (wfdir.IsEmpty()) wfdir = ::wxGetHomeDir() + "/SAM Downloaded Weather Files";
-	if (!wxDirExists(wfdir)) wxFileName::Mkdir(wfdir, 511, ::wxPATH_MKDIR_FULL);
-	// save to settings (addresses user support issue 69194 12/11/14)
-	SamApp::Settings().Write("solar_download_path", wfdir);
-
-
-
-	wxString filename = wfdir + "/" + locname + "_" + year + ".csv";
-	ssc_data_set_string(data, "output_file", filename.c_str());
-
-	//Convert the file
-	const char* err = ssc_module_exec_simple_nothread("wfcsvconv", data);
-	ssc_data_free(data);
-	if (err != NULL)
-	{
-		wxMessageBox("Failed to convert weather file to csv: \n \n " + wxString (err));
-		return;
-	}
-
-	wxFileName ff(filename);
-	ff.Normalize();
-	wxString libkey( ff.GetName() );
-
-	//Return the converted filename
-	cxt.result().empty_hash();
-	cxt.result().hash_item( "filename" ).assign( filename );
-	cxt.result().hash_item( "libkey" ).assign( libkey );
-}
-
 void fcall_windtoolkit(lk::invoke_t &cxt)
 {
 	LK_DOC("windtoolkit", "Creates the wind data download dialog box, downloads, decompresses, converts, and returns local file name for weather file", "(none) : string");
@@ -2957,7 +2824,6 @@ lk::fcall_t* invoke_uicallback_funcs()
 		fcall_snlinverter,
 		fcall_current_at_voltage_cec,
 		fcall_current_at_voltage_sandia,
-		fcall_solarprospector,
 		fcall_windtoolkit,
 		fcall_openeiutilityrateform,
 		fcall_urdb_read,

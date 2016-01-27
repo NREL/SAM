@@ -119,9 +119,6 @@
     <ClInclude Include="..\src\s3view.h">
       <Filter>Source</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\solarprospector.h">
-      <Filter>Source</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\p50p90.h">
       <Filter>Source</Filter>
     </ClInclude>
@@ -251,9 +248,6 @@
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="..\src\s3view.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\solarprospector.cpp">
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="..\src\p50p90.cpp">

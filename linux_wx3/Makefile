@@ -31,7 +31,6 @@ OBJECTS = ide.o \
 	s3view.o \
 	stochastic.o \
 	urdb.o \
-	solarprospector.o \
 	windtoolkit.o \
 	registration.o \
 	gridsupport.o \
