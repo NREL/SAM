@@ -128,7 +128,7 @@ public:
 	Case *GetCase() { return m_case; }
 	wxString GetName() { return m_name; }
 
-	void ShowReportDialog( const wxString &file );
+	void ShowReportDialog( const wxString &file, bool modal = false );
 	wxString CreateHtmlReport( const wxString &file );
 
 	static lk::fcall_t* invoke_functions();
