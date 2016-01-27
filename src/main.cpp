@@ -133,6 +133,7 @@ enum { __idFirst = wxID_HIGHEST+592,
 
 	ID_MAIN_MENU, ID_CASE_TABS, ID_PAGE_NOTES,
 	ID_CASE_CREATE, ID_RUN_ALL_CASES, ID_SAVE_HOURLY,
+	ID_IMPORT_CASES,
 	ID_NEW_SCRIPT, ID_OPEN_SCRIPT, ID_BROWSE_INPUTS,
 	__idCaseMenuFirst,
 	ID_CASE_CONFIG,
@@ -159,6 +160,7 @@ BEGIN_EVENT_TABLE( MainWindow, wxFrame )
 	EVT_MENU( wxID_ABOUT, MainWindow::OnCommand )
 	EVT_MENU( wxID_HELP, MainWindow::OnCommand )
 	EVT_MENU( ID_SAVE_HOURLY, MainWindow::OnCommand )
+	EVT_MENU( ID_IMPORT_CASES, MainWindow::OnCommand )
 	EVT_MENU( wxID_NEW, MainWindow::OnCommand )
 	EVT_MENU( ID_NEW_SCRIPT, MainWindow::OnCommand )
 	EVT_MENU( ID_OPEN_SCRIPT, MainWindow::OnCommand )
@@ -199,6 +201,8 @@ MainWindow::MainWindow()
 	fileMenu->Append( wxID_SAVE, "Save\tCtrl-S" );
 	fileMenu->Append( wxID_SAVEAS, "Save as..." );
 	fileMenu->Append( ID_SAVE_HOURLY, "Save with hourly results");
+	fileMenu->AppendSeparator();
+	fileMenu->Append( ID_IMPORT_CASES, "Import cases..");
 	fileMenu->AppendSeparator();
 	fileMenu->Append( ID_BROWSE_INPUTS, "Inputs browser...");
 	fileMenu->AppendSeparator();
@@ -283,6 +287,120 @@ MainWindow::MainWindow()
 	entries.push_back( wxAcceleratorEntry( wxACCEL_NORMAL, WXK_F1, wxID_HELP ) );
 	entries.push_back( wxAcceleratorEntry( wxACCEL_CTRL, WXK_F1,  ID_INTERNAL_SEGFAULT ) ) ;
 	SetAcceleratorTable( wxAcceleratorTable( entries.size(), &entries[0] ) );
+}
+
+
+class CaseImportDialog : public wxDialog
+{
+private:
+	wxCheckListBox *m_cklList;
+public:
+	CaseImportDialog( wxWindow *parent, const wxString &title )
+		: wxDialog( parent, wxID_ANY, title, wxDefaultPosition, 
+			wxSize(350,300), wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER)
+	{
+		m_cklList = new wxCheckListBox( this, wxID_ANY );
+
+		wxBoxSizer *sizer = new wxBoxSizer( wxVERTICAL );
+		sizer->Add( m_cklList, 1, wxALL|wxEXPAND, 8 );
+		sizer->Add( CreateButtonSizer( wxOK|wxCANCEL ), 0, wxALL|wxEXPAND, 8 );
+
+		SetSizer(sizer);
+
+		SetEscapeId( wxID_CANCEL );
+	}
+	
+	void SetItems( const wxArrayString &list )
+	{
+		m_cklList->Clear();
+		m_cklList->Append( list );
+	}
+
+	wxArrayString GetChecked()
+	{
+		wxArrayString list;
+		for (size_t i=0;i<m_cklList->GetCount();i++)
+			if ( m_cklList->IsChecked(i) )
+				list.Add( m_cklList->GetString(i) );
+		return list;
+	}
+};
+
+void MainWindow::ImportCases()
+{
+	wxFileDialog fdlg( this, "Select a SAM project file", wxEmptyString, wxEmptyString, "SAM Project Files (*.sam)|*.sam", wxFD_OPEN );
+	if ( fdlg.ShowModal() != wxID_OK )
+		return;
+
+	wxString file( fdlg.GetPath() );
+	if ( wxFileName(file).SameAs( GetProjectFileName() ) )
+	{
+		wxMessageBox("The file you selected is currently open.");
+		return;
+	}
+
+	
+	int prj_major, prj_minor, prj_micro;
+	int sam_major, sam_minor, sam_micro;
+
+	ProjectFile prj;
+	if ( !prj.ReadArchive( file ) )
+	{
+		wxMessageBox( "Could not read project file:\n\n" + file );
+		return;
+	}
+	
+	size_t file_ver = prj.GetVersionInfo( &prj_major, &prj_minor, &prj_micro );
+	size_t sam_ver = SamApp::Version( &sam_major, &sam_minor, &sam_micro );
+
+	if ( file_ver > sam_ver )
+	{
+		wxMessageBox( "The file '" + wxFileNameFromPath(file) + "' was saved using a newer SAM version "
+			+ wxString::Format( "%d.%d.%d.\n"
+				"You are currently using SAM version %d.%d.%d.\n\n"
+				"Please upgrade to the latest version of SAM to import a case from this file.",				
+				prj_major, prj_minor, prj_micro, sam_major, sam_minor, sam_micro), "Version Error", wxICON_ERROR);
+		return;
+	}
+
+	if ( file_ver < sam_ver )
+	{
+		VersionUpgrade upgd;
+
+		{ // scope to show busy info dialog
+			wxBusyInfo info( "Upgrading project file to current SAM version..." );		
+			if ( !upgd.Run( prj ) )
+				wxMessageBox("Error upgrading older project file:\n\n", file );
+		}
+
+		upgd.ShowReportDialog( file, true );
+	}
+
+	CaseImportDialog cdlg(this, "Select cases(s) to import:");
+	cdlg.CenterOnParent();
+	cdlg.SetItems( prj.GetCaseNames() );
+	if ( cdlg.ShowModal() != wxID_OK)
+		return;
+
+	wxArrayString selections = cdlg.GetChecked();
+	for (size_t i=0;i<selections.Count();i++)
+	{
+		wxString cname( selections[i] );
+
+		if ( Case *to_import = prj.GetCase( cname ) )
+		{
+			// duplicate case and append it to current project
+			wxBusyInfo info("Importing case: " + cname );
+
+			if( Case *dup = dynamic_cast<Case*>(to_import->Duplicate()) )
+			{
+				cname = GetUniqueCaseName(cname);
+				m_project.AddCase( cname, dup );
+				CreateCaseWindow( dup );
+				SwitchToCaseWindow( cname );
+			}
+		}
+	}
 }
 
 bool MainWindow::CreateProject()
@@ -651,6 +769,8 @@ void MainWindow::OnCommand( wxCommandEvent &evt )
 			menu.Append( wxID_SAVEAS, "Save as..." );
 			menu.Append( ID_SAVE_HOURLY, "Save with hourly results");
 			menu.AppendSeparator();
+			menu.Append( ID_IMPORT_CASES, "Import cases..." );
+			menu.AppendSeparator();
 			menu.Append( ID_BROWSE_INPUTS, "Inputs browser...");
 			menu.AppendSeparator();
 			menu.Append( wxID_CLOSE, "Close\tCtrl-W" );
@@ -691,6 +811,9 @@ void MainWindow::OnCommand( wxCommandEvent &evt )
 		m_project.SetSaveHourlyData( true );
 		Save();
 		m_project.SetSaveHourlyData( false );
+		break;
+	case ID_IMPORT_CASES:
+		ImportCases();
 		break;
 	case wxID_CLOSE:
 		if ( CloseProject() )
