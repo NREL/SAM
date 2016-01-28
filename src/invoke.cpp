@@ -115,6 +115,7 @@ static void fcall_dview_solar_data_file( lk::invoke_t &cxt )
 		{ "global", "Global irradiance - GHI", "W/m2" },
 		{ "beam", "Beam irradiance - DNI", "W/m2" },
 		{ "diffuse","Diffuse irradiance - DHI", "W/m2" },
+		{ "poa", "Plane of array irradiance -POA", "W/m2" },
 		{ "wspd", "Wind speed", "m/s" },
 		{ "wdir", "Wind direction", "deg" },
 		{ "tdry", "Dry bulb temp", "C" },
