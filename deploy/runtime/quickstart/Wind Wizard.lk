@@ -27,9 +27,9 @@ function exitIf( exitCondition ){
 /**         Welcome the User        **/
 
 wS = [500,500];
-exitIf( !msgbox("Welcome to the Wind Wizard!\n\n" +
+exitIf( !msgbox("Welcome to the Wind Wizard!\n" +
 	         "This tutorial will provide a series of pop-ups which will guide you through the use of the wind model.\n\n" +
-			 "Although you will interact with pop-up menus in this wizard, the relevant inputs will be highlighted in \n SAM so that you can find them later.\n\n" +
+			 "Although you will interact with pop-up menus in this wizard, the relevant inputs will be highlighted in SAM so that you can find them later.\n\n" +
 			 "Also, there are a lot of options but we'll only focus on the most important ones.", 
 			 [defaultX, defaultY, 500, 200]) );
 			 
