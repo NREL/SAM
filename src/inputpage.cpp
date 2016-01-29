@@ -12,10 +12,10 @@
 #include <wex/diurnal.h>
 #include <wex/utils.h>
 
-#include <lk_parse.h>
-#include <lk_lex.h>
-#include <lk_eval.h>
-#include <lk_stdlib.h>
+#include <lk/parse.h>
+#include <lk/lex.h>
+#include <lk/eval.h>
+#include <lk/stdlib.h>
 
 #include "main.h"
 #include "inputpage.h"

@@ -13,11 +13,11 @@
 #include <wex/utils.h>
 #include <wex/lkscript.h>
 
-#include <lk_parse.h>
-#include <lk_eval.h>
-#include <lk_stdlib.h>
-#include <lk_codegen.h>
-#include <lk_vm.h>
+#include <lk/parse.h>
+#include <lk/eval.h>
+#include <lk/stdlib.h>
+#include <lk/codegen.h>
+#include <lk/vm.h>
 
 #include "script.h"
 #include "main.h"
