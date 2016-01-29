@@ -95,7 +95,7 @@ public:
 				char buf[512];
 				fgets( buf, 511, fp );
 				fclose(fp);
-				wxSimpleCurl::SetProxy( wxString::FromAscii( buf ) );
+				wxSimpleCurl::SetProxyAddress( wxString::FromAscii( buf ) );
 			}
 		}
 
