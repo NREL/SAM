@@ -15,9 +15,9 @@
 #include <wex/metro.h>
 #include <wex/utils.h>
 
-#include <lk_absyn.h>
-#include <lk_stdlib.h>
-#include <lk_eval.h>
+#include <lk/absyn.h>
+#include <lk/stdlib.h>
+#include <lk/eval.h>
 
 #include <ssc/sscapi.h>
 

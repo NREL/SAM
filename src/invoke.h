@@ -2,7 +2,7 @@
 #define __invoke_h
 
 #include <wx/string.h>
-#include <lk_env.h>
+#include <lk/env.h>
 
 // general functions like logging
 lk::fcall_t* invoke_general_funcs();

@@ -18,8 +18,8 @@
 #include <wex/extgrid.h>
 #include <wex/csv.h>
 
-#include <lk_lex.h>
-#include <lk_parse.h>
+#include <lk/lex.h>
+#include <lk/parse.h>
 
 #include <ssc/sscapi.h>
 

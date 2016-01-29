@@ -19,20 +19,101 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="webupd.rc" />
+    <ResourceCompile Include="SAM.rc" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\src\lossadj.cpp" />
+    <ClCompile Include="..\src\defmgr.cpp" />
+    <ClCompile Include="..\src\excelexch.cpp" />
+    <ClCompile Include="..\src\graph.cpp" />
+    <ClCompile Include="..\src\gridsupport.cpp" />
+    <ClCompile Include="..\src\lossdiag.cpp" />
+    <ClCompile Include="..\src\macro.cpp" />
+    <ClCompile Include="..\src\p50p90.cpp" />
+    <ClCompile Include="..\src\parametric.cpp" />
+    <ClCompile Include="..\src\registration.cpp" />
+    <ClCompile Include="..\src\reports.cpp" />
+    <ClCompile Include="..\src\results.cpp" />
+    <ClCompile Include="..\src\case.cpp" />
+    <ClCompile Include="..\src\casewin.cpp" />
+    <ClCompile Include="..\src\equations.cpp" />
+    <ClCompile Include="..\src\ide.cpp" />
+    <ClCompile Include="..\src\inputpage.cpp" />
+    <ClCompile Include="..\src\invoke.cpp" />
+    <ClCompile Include="..\src\ipagelist.cpp" />
+    <ClCompile Include="..\src\library.cpp" />
+    <ClCompile Include="..\src\main.cpp" />
+    <ClCompile Include="..\src\materials.cpp" />
+    <ClCompile Include="..\src\object.cpp" />
+    <ClCompile Include="..\src\project.cpp" />
+    <ClCompile Include="..\src\ptlayoutctrl.cpp" />
+    <ClCompile Include="..\src\s3clipper.cpp" />
+    <ClCompile Include="..\src\s3engine.cpp" />
+    <ClCompile Include="..\src\s3objects.cpp" />
+    <ClCompile Include="..\src\s3tool.cpp" />
+    <ClCompile Include="..\src\s3view.cpp" />
+    <ClCompile Include="..\src\script.cpp" />
+    <ClCompile Include="..\src\shadingfactors.cpp" />
     <ClCompile Include="..\src\simplecurl.cpp" />
-    <ClCompile Include="..\webupd\pkgdlg.cpp" />
-    <ClCompile Include="..\webupd\webupd.cpp" />
+    <ClCompile Include="..\src\simulation.cpp" />
+    <ClCompile Include="..\src\stochastic.cpp" />
+    <ClCompile Include="..\src\troughloop.cpp" />
+    <ClCompile Include="..\src\uiobjects.cpp" />
+    <ClCompile Include="..\src\urdb.cpp" />
+    <ClCompile Include="..\src\variablegrid.cpp" />
+    <ClCompile Include="..\src\variables.cpp" />
+    <ClCompile Include="..\src\welcome.cpp" />
+    <ClCompile Include="..\src\widgets.cpp" />
+    <ClCompile Include="..\src\windtoolkit.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\src\lossadj.h" />
+    <ClInclude Include="..\src\defmgr.h" />
+    <ClInclude Include="..\src\excelexch.h" />
+    <ClInclude Include="..\src\graph.h" />
+    <ClInclude Include="..\src\gridsupport.h" />
+    <ClInclude Include="..\src\lossdiag.h" />
+    <ClInclude Include="..\src\macro.h" />
+    <ClInclude Include="..\src\p50p90.h" />
+    <ClInclude Include="..\src\parametric.h" />
+    <ClInclude Include="..\src\registration.h" />
+    <ClInclude Include="..\src\reports.h" />
+    <ClInclude Include="..\src\results.h" />
+    <ClInclude Include="..\src\case.h" />
+    <ClInclude Include="..\src\casewin.h" />
+    <ClInclude Include="..\src\equations.h" />
+    <ClInclude Include="..\src\ide.h" />
+    <ClInclude Include="..\src\inputpage.h" />
+    <ClInclude Include="..\src\invoke.h" />
+    <ClInclude Include="..\src\ipagelist.h" />
+    <ClInclude Include="..\src\library.h" />
+    <ClInclude Include="..\src\main.h" />
+    <ClInclude Include="..\src\materials.h" />
+    <ClInclude Include="..\src\object.h" />
+    <ClInclude Include="..\src\project.h" />
+    <ClInclude Include="..\src\ptlayoutctrl.h" />
+    <ClInclude Include="..\src\s3clipper.h" />
+    <ClInclude Include="..\src\s3engine.h" />
+    <ClInclude Include="..\src\s3objects.h" />
+    <ClInclude Include="..\src\s3tool.h" />
+    <ClInclude Include="..\src\s3view.h" />
+    <ClInclude Include="..\src\script.h" />
+    <ClInclude Include="..\src\shadingfactors.h" />
     <ClInclude Include="..\src\simplecurl.h" />
-    <ClInclude Include="..\webupd\pkgdlg.h" />
+    <ClInclude Include="..\src\simulation.h" />
+    <ClInclude Include="..\src\stochastic.h" />
+    <ClInclude Include="..\src\troughloop.h" />
+    <ClInclude Include="..\src\uiobjects.h" />
+    <ClInclude Include="..\src\urdb.h" />
+    <ClInclude Include="..\src\variablegrid.h" />
+    <ClInclude Include="..\src\variables.h" />
+    <ClInclude Include="..\src\welcome.h" />
+    <ClInclude Include="..\src\widgets.h" />
+    <ClInclude Include="..\src\windtoolkit.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectName>webupd</ProjectName>
-    <ProjectGuid>{681B4BE8-60E0-4C65-8AE5-0C11479C0344}</ProjectGuid>
+    <ProjectName>SAMnt</ProjectName>
+    <ProjectGuid>{9A9D38AE-B137-4FDB-9715-F356B0844B27}</ProjectGuid>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
@@ -80,28 +161,30 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <OutDir>$(ProjectDir)\..\deploy\$(Platform)\</OutDir>
-    <IntDir>$(ProjectDir)\build\$(Configuration)\$(Platform)\webupd\</IntDir>
+    <IntDir>$(ProjectDir)\build\$(Configuration)\$(Platform)\</IntDir>
     <LinkIncremental>true</LinkIncremental>
     <GenerateManifest>true</GenerateManifest>
-    <TargetName>$(ProjectName)d</TargetName>
+    <TargetName>samd</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IntDir>$(ProjectDir)\build\$(Configuration)\$(Platform)\webupd\</IntDir>
+    <IntDir>$(ProjectDir)\build\$(Configuration)\$(Platform)\</IntDir>
     <LinkIncremental>true</LinkIncremental>
     <GenerateManifest>true</GenerateManifest>
-    <TargetName>$(ProjectName)d</TargetName>
+    <TargetName>samd</TargetName>
     <OutDir>$(ProjectDir)\..\deploy\$(Platform)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <OutDir>$(ProjectDir)\..\deploy\$(Platform)\</OutDir>
-    <IntDir>$(ProjectDir)\build\$(Configuration)\$(Platform)\webupd\</IntDir>
+    <IntDir>$(ProjectDir)\build\$(Configuration)\$(Platform)\</IntDir>
     <LinkIncremental>false</LinkIncremental>
     <GenerateManifest>true</GenerateManifest>
+    <TargetName>sam</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IntDir>$(ProjectDir)\build\$(Configuration)\$(Platform)\webupd\</IntDir>
+    <IntDir>$(ProjectDir)\build\$(Configuration)\$(Platform)\</IntDir>
     <LinkIncremental>false</LinkIncremental>
     <GenerateManifest>true</GenerateManifest>
+    <TargetName>sam</TargetName>
     <OutDir>$(ProjectDir)\..\deploy\$(Platform)\</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -112,15 +195,15 @@
     <ClCompile>
       <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>$(ProjectDir)\libcurl_ssl_win32\include;$(WXMSW3)\lib\vc_lib\mswud;$(WXMSW3)\include;$(WEXDIR)\include;$(LKDIR);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>LK_USE_WXWIDGETS;WIN32;_DEBUG;_CRT_SECURE_NO_DEPRECATE=1;_CRT_NON_CONFORMING_SWPRINTFS=1;_SCL_SECURE_NO_WARNINGS=1;__WXMSW__;_UNICODE;_WINDOWS;NOPCH;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(SSCDIR);$(ProjectDir)\libcurl_ssl_win32\include;$(WXMSW3)\lib\vc_lib\mswud;$(WXMSW3)\include;$(WEXDIR)\include;$(LKDIR)\include;$(SSCDIR);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>LK_USE_WXWIDGETS;WIN32;_DEBUG;_CRT_SECURE_NO_DEPRECATE=1;_CRT_NON_CONFORMING_SWPRINTFS=1;_SCL_SECURE_NO_WARNINGS=1;__WXMSW__;_UNICODE;_WINDOWS;NOPCH;PSAPI_VERSION=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ExceptionHandling>Sync</ExceptionHandling>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <BufferSecurityCheck>true</BufferSecurityCheck>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <ObjectFileName>$(IntDir)</ObjectFileName>
-      <ProgramDataBaseFileName>$(ProjectDir)\$(TargetName).pdb</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName>$(IntDir)\vc13.pdb</ProgramDataBaseFileName>
       <WarningLevel>Level4</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
@@ -132,17 +215,17 @@
       <AdditionalIncludeDirectories>$(WXMSW3)\lib\vc_lib\mswud;$(WXMSW3)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>wxbase30ud_net.lib;wxbase30ud_xml.lib;wxmsw30ud_webview.lib;wxmsw30ud_adv.lib;wxmsw30ud_html.lib;wxmsw30ud_aui.lib;wxmsw30ud_stc.lib;wxmsw30ud_richtext.lib;wxmsw30ud_core.lib;wxbase30ud.lib;wxscintillad.lib;wxtiffd.lib;wxjpegd.lib;wxpngd.lib;wxzlibd.lib;wxregexud.lib;wxexpatd.lib;kernel32.lib;user32.lib;gdi32.lib;comdlg32.lib;winspool.lib;winmm.lib;shell32.lib;comctl32.lib;ole32.lib;oleaut32.lib;uuid.lib;rpcrt4.lib;advapi32.lib;wsock32.lib;wininet.lib;winhttp.lib;wexvc13wx3d.lib;lkvc13wx3d.lib;libcurl.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>wxbase30ud_net.lib;wxbase30ud_xml.lib;wxmsw30ud_propgrid.lib;wxmsw30ud_webview.lib;wxmsw30ud_adv.lib;wxmsw30ud_html.lib;wxmsw30ud_aui.lib;wxmsw30ud_stc.lib;wxmsw30ud_richtext.lib;wxmsw30ud_core.lib;wxbase30ud.lib;wxscintillad.lib;wxtiffd.lib;wxjpegd.lib;wxpngd.lib;wxzlibd.lib;wxregexud.lib;wxexpatd.lib;kernel32.lib;user32.lib;gdi32.lib;comdlg32.lib;winspool.lib;winmm.lib;shell32.lib;comctl32.lib;ole32.lib;oleaut32.lib;uuid.lib;rpcrt4.lib;advapi32.lib;wsock32.lib;psapi.lib;wininet.lib;winhttp.lib;wexvc13wx3d.lib;lkvc13wx3d.lib;libcurl.lib;ssc.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(TargetPath)</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <AdditionalLibraryDirectories>$(ProjectDir)\libcurl_ssl_win32\lib;$(WEXDIR);$(LKDIR);$(WXMSW3)\lib\vc_lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(ProjectDir)\libcurl_ssl_win32\lib;$(LKDIR);$(WEXDIR);$(WXMSW3)\lib\vc_lib;$(SSCDIR)\build_vc2013\$(Platform)\$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <ProgramDatabaseFile>$(OutDir)\$(TargetName).pdb</ProgramDatabaseFile>
+      <ProgramDatabaseFile>$(TargetDir)\$(TargetName).pdb</ProgramDatabaseFile>
       <SubSystem>Windows</SubSystem>
       <TargetMachine>MachineX86</TargetMachine>
     </Link>
     <Bscmake>
-      <OutputFile>vc_mswud\webupd_vc9.bsc</OutputFile>
+      <OutputFile>vc_mswud\SAMnt_vc9.bsc</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
     </Bscmake>
   </ItemDefinitionGroup>
@@ -154,15 +237,15 @@
     <ClCompile>
       <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>$(ProjectDir)\libcurl_ssl_x64\include;$(WXMSW3)\lib\vc_x64_lib\mswud;$(WXMSW3)\include;$(WEXDIR)\include;$(LKDIR);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>LK_USE_WXWIDGETS;WIN32;_DEBUG;_CRT_SECURE_NO_DEPRECATE=1;_CRT_NON_CONFORMING_SWPRINTFS=1;_SCL_SECURE_NO_WARNINGS=1;__WXMSW__;_UNICODE;_WINDOWS;NOPCH;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(SSCDIR);$(ProjectDir)\libcurl_ssl_x64\include;$(WXMSW3)\lib\vc_x64_lib\mswud;$(WXMSW3)\include;$(WEXDIR)\include;$(LKDIR)\include;$(SSCDIR);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>LK_USE_WXWIDGETS;WIN32;_DEBUG;_CRT_SECURE_NO_DEPRECATE=1;_CRT_NON_CONFORMING_SWPRINTFS=1;_SCL_SECURE_NO_WARNINGS=1;__WXMSW__;_UNICODE;_WINDOWS;NOPCH;PSAPI_VERSION=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ExceptionHandling>Sync</ExceptionHandling>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <BufferSecurityCheck>true</BufferSecurityCheck>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <ObjectFileName>$(IntDir)</ObjectFileName>
-      <ProgramDataBaseFileName>$(ProjectDir)\$(TargetName).pdb</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName>$(IntDir)\vc13.pdb</ProgramDataBaseFileName>
       <WarningLevel>Level4</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
@@ -174,16 +257,16 @@
       <AdditionalIncludeDirectories>$(WXMSW3)\lib\vc_lib\mswud;$(WXMSW3)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>wxbase30ud_net.lib;wxbase30ud_xml.lib;wxmsw30ud_webview.lib;wxmsw30ud_adv.lib;wxmsw30ud_html.lib;wxmsw30ud_aui.lib;wxmsw30ud_stc.lib;wxmsw30ud_richtext.lib;wxmsw30ud_core.lib;wxbase30ud.lib;wxscintillad.lib;wxtiffd.lib;wxjpegd.lib;wxpngd.lib;wxzlibd.lib;wxregexud.lib;wxexpatd.lib;kernel32.lib;user32.lib;gdi32.lib;comdlg32.lib;winspool.lib;winmm.lib;shell32.lib;comctl32.lib;ole32.lib;oleaut32.lib;uuid.lib;rpcrt4.lib;advapi32.lib;wsock32.lib;wininet.lib;winhttp.lib;wexvc13wx3x64d.lib;lkvc13wx3x64d.lib;libcurl.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>wxbase30ud_net.lib;wxbase30ud_xml.lib;wxmsw30ud_propgrid.lib;wxmsw30ud_webview.lib;wxmsw30ud_adv.lib;wxmsw30ud_html.lib;wxmsw30ud_aui.lib;wxmsw30ud_stc.lib;wxmsw30ud_richtext.lib;wxmsw30ud_core.lib;wxbase30ud.lib;wxscintillad.lib;wxtiffd.lib;wxjpegd.lib;wxpngd.lib;wxzlibd.lib;wxregexud.lib;wxexpatd.lib;kernel32.lib;user32.lib;gdi32.lib;comdlg32.lib;winspool.lib;winmm.lib;shell32.lib;comctl32.lib;ole32.lib;oleaut32.lib;uuid.lib;rpcrt4.lib;advapi32.lib;wsock32.lib;psapi.lib;wininet.lib;winhttp.lib;wexvc13wx3x64d.lib;lkvc13wx3x64d.lib;libcurl.lib;ssc.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(TargetPath)</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <AdditionalLibraryDirectories>$(ProjectDir)\libcurl_ssl_x64\lib;$(WEXDIR);$(LKDIR);$(WXMSW3)\lib\vc_x64_lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(ProjectDir)\libcurl_ssl_x64\lib;$(LKDIR);$(WEXDIR);$(WXMSW3)\lib\vc_x64_lib;$(SSCDIR)\build_vc2013\$(Platform)\$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <ProgramDatabaseFile>$(OutDir)\$(TargetName).pdb</ProgramDatabaseFile>
+      <ProgramDatabaseFile>$(TargetDir)\$(TargetName).pdb</ProgramDatabaseFile>
       <SubSystem>Windows</SubSystem>
     </Link>
     <Bscmake>
-      <OutputFile>vc_mswud\webupd_vc9.bsc</OutputFile>
+      <OutputFile>vc_mswud\SAMnt_vc9.bsc</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
     </Bscmake>
   </ItemDefinitionGroup>
@@ -195,13 +278,13 @@
     <ClCompile>
       <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
       <Optimization>MaxSpeed</Optimization>
-      <AdditionalIncludeDirectories>$(ProjectDir)\libcurl_ssl_win32\include;$(WXMSW3)\lib\vc_lib\mswu;$(WXMSW3)\include;$(WEXDIR)\include;$(LKDIR);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>LK_USE_WXWIDGETS;WIN32;_CRT_SECURE_NO_DEPRECATE=1;_CRT_NON_CONFORMING_SWPRINTFS=1;_SCL_SECURE_NO_WARNINGS=1;__WXMSW__;NDEBUG;_UNICODE;_WINDOWS;NOPCH;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(SSCDIR);$(ProjectDir)\libcurl_ssl_win32\include;$(WXMSW3)\lib\vc_lib\mswu;$(WXMSW3)\include;$(WEXDIR)\include;$(LKDIR)\include;$(SSCDIR);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>LK_USE_WXWIDGETS;WIN32;_CRT_SECURE_NO_DEPRECATE=1;_CRT_NON_CONFORMING_SWPRINTFS=1;_SCL_SECURE_NO_WARNINGS=1;__WXMSW__;NDEBUG;_UNICODE;_WINDOWS;NOPCH;PSAPI_VERSION=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ExceptionHandling>Sync</ExceptionHandling>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <ObjectFileName>$(IntDir)</ObjectFileName>
-      <ProgramDataBaseFileName>$(ProjectDir)\$(TargetName).pdb</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName>$(ProjectDir)\build\$(Configuration)\$(Platform)\$(TargetName).pdb</ProgramDataBaseFileName>
       <WarningLevel>Level4</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
@@ -213,19 +296,19 @@
       <AdditionalIncludeDirectories>$(WXMSW3)\lib\vc_lib\mswu;$(WXMSW3)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>wxbase30u_net.lib;wxbase30u_xml.lib;wxmsw30u_webview.lib;wxmsw30u_adv.lib;wxmsw30u_html.lib;wxmsw30u_aui.lib;wxmsw30u_stc.lib;wxmsw30u_richtext.lib;wxmsw30u_core.lib;wxbase30u.lib;wxscintilla.lib;wxtiff.lib;wxjpeg.lib;wxpng.lib;wxzlib.lib;wxregexu.lib;wxexpat.lib;kernel32.lib;user32.lib;gdi32.lib;comdlg32.lib;winspool.lib;winmm.lib;shell32.lib;comctl32.lib;ole32.lib;oleaut32.lib;uuid.lib;rpcrt4.lib;advapi32.lib;wsock32.lib;wininet.lib;winhttp.lib;wexvc13wx3.lib;lkvc13wx3.lib;libcurl.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>wxbase30u_net.lib;wxbase30u_xml.lib;wxmsw30u_propgrid.lib;wxmsw30u_webview.lib;wxmsw30u_adv.lib;wxmsw30u_html.lib;wxmsw30u_aui.lib;wxmsw30u_stc.lib;wxmsw30u_richtext.lib;wxmsw30u_core.lib;wxbase30u.lib;wxscintilla.lib;wxtiff.lib;wxjpeg.lib;wxpng.lib;wxzlib.lib;wxregexu.lib;wxexpat.lib;kernel32.lib;user32.lib;gdi32.lib;comdlg32.lib;winspool.lib;winmm.lib;shell32.lib;comctl32.lib;ole32.lib;oleaut32.lib;uuid.lib;rpcrt4.lib;advapi32.lib;wsock32.lib;psapi.lib;wininet.lib;winhttp.lib;wexvc13wx3.lib;lkvc13wx3.lib;libcurl.lib;ssc.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(TargetPath)</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <AdditionalLibraryDirectories>$(ProjectDir)\libcurl_ssl_win32\lib;$(WEXDIR);$(LKDIR);$(WXMSW3)\lib\vc_lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(ProjectDir)\libcurl_ssl_win32\lib;$(LKDIR);$(WEXDIR);$(WXMSW3)\lib\vc_lib;$(SSCDIR)\build_vc2013\$(Platform)\$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <ProgramDatabaseFile>$(OutDir)\$(TargetName).pdb</ProgramDatabaseFile>
+      <ProgramDatabaseFile>$(TargetDir)\$(TargetName).pdb</ProgramDatabaseFile>
       <SubSystem>Windows</SubSystem>
       <TargetMachine>MachineX86</TargetMachine>
       <OptimizeReferences>true</OptimizeReferences>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
     </Link>
     <Bscmake>
-      <OutputFile>vc_mswu\webupd_vc9.bsc</OutputFile>
+      <OutputFile>vc_mswu\SAMnt_vc9.bsc</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
     </Bscmake>
   </ItemDefinitionGroup>
@@ -237,13 +320,13 @@
     <ClCompile>
       <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
       <Optimization>MaxSpeed</Optimization>
-      <AdditionalIncludeDirectories>$(ProjectDir)\libcurl_ssl_x64\include;$(WXMSW3)\lib\vc_x64_lib\mswu;$(WXMSW3)\include;$(WEXDIR)\include;$(LKDIR);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>LK_USE_WXWIDGETS;WIN32;_CRT_SECURE_NO_DEPRECATE=1;_CRT_NON_CONFORMING_SWPRINTFS=1;_SCL_SECURE_NO_WARNINGS=1;__WXMSW__;NDEBUG;_UNICODE;_WINDOWS;NOPCH;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(SSCDIR);$(ProjectDir)\libcurl_ssl_x64\include;$(WXMSW3)\lib\vc_x64_lib\mswu;$(WXMSW3)\include;$(WEXDIR)\include;$(LKDIR)\include;$(SSCDIR);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>LK_USE_WXWIDGETS;WIN32;_CRT_SECURE_NO_DEPRECATE=1;_CRT_NON_CONFORMING_SWPRINTFS=1;_SCL_SECURE_NO_WARNINGS=1;__WXMSW__;NDEBUG;_UNICODE;_WINDOWS;NOPCH;PSAPI_VERSION=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ExceptionHandling>Sync</ExceptionHandling>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <ObjectFileName>$(IntDir)</ObjectFileName>
-      <ProgramDataBaseFileName>$(ProjectDir)\$(TargetName).pdb</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName>$(ProjectDir)\build\$(Configuration)\$(Platform)\$(TargetName).pdb</ProgramDataBaseFileName>
       <WarningLevel>Level4</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
@@ -255,18 +338,18 @@
       <AdditionalIncludeDirectories>$(WXMSW3)\lib\vc_lib\mswu;$(WXMSW3)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>wxbase30u_net.lib;wxbase30u_xml.lib;wxmsw30u_webview.lib;wxmsw30u_adv.lib;wxmsw30u_html.lib;wxmsw30u_aui.lib;wxmsw30u_stc.lib;wxmsw30u_richtext.lib;wxmsw30u_core.lib;wxbase30u.lib;wxscintilla.lib;wxtiff.lib;wxjpeg.lib;wxpng.lib;wxzlib.lib;wxregexu.lib;wxexpat.lib;kernel32.lib;user32.lib;gdi32.lib;comdlg32.lib;winspool.lib;winmm.lib;shell32.lib;comctl32.lib;ole32.lib;oleaut32.lib;uuid.lib;rpcrt4.lib;advapi32.lib;wsock32.lib;wininet.lib;winhttp.lib;wexvc13wx3x64.lib;lkvc13wx3x64.lib;libcurl.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>wxbase30u_net.lib;wxbase30u_xml.lib;wxmsw30u_propgrid.lib;wxmsw30u_webview.lib;wxmsw30u_adv.lib;wxmsw30u_html.lib;wxmsw30u_aui.lib;wxmsw30u_stc.lib;wxmsw30u_richtext.lib;wxmsw30u_core.lib;wxbase30u.lib;wxscintilla.lib;wxtiff.lib;wxjpeg.lib;wxpng.lib;wxzlib.lib;wxregexu.lib;wxexpat.lib;kernel32.lib;user32.lib;gdi32.lib;comdlg32.lib;winspool.lib;winmm.lib;shell32.lib;comctl32.lib;ole32.lib;oleaut32.lib;uuid.lib;rpcrt4.lib;advapi32.lib;wsock32.lib;psapi.lib;wininet.lib;winhttp.lib;wexvc13wx3x64.lib;lkvc13wx3x64.lib;libcurl.lib;ssc.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(TargetPath)</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <AdditionalLibraryDirectories>$(ProjectDir)\libcurl_ssl_x64\lib;$(WEXDIR);$(LKDIR);$(WXMSW3)\lib\vc_x64_lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(ProjectDir)\libcurl_ssl_x64\lib;$(LKDIR);$(WEXDIR);$(WXMSW3)\lib\vc_x64_lib;$(SSCDIR)\build_vc2013\$(Platform)\$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <ProgramDatabaseFile>$(OutDir)\$(TargetName).pdb</ProgramDatabaseFile>
+      <ProgramDatabaseFile>$(TargetDir)\$(TargetName).pdb</ProgramDatabaseFile>
       <SubSystem>Windows</SubSystem>
       <OptimizeReferences>true</OptimizeReferences>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
     </Link>
     <Bscmake>
-      <OutputFile>vc_mswu\webupd_vc9.bsc</OutputFile>
+      <OutputFile>vc_mswu\SAMnt_vc9.bsc</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
     </Bscmake>
   </ItemDefinitionGroup>

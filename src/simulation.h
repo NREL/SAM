@@ -7,7 +7,7 @@
 
 #include <wex/tpdlg.h>
 
-#include <lk_env.h>
+#include <lk/env.h>
 
 #include <ssc/sscapi.h>
 

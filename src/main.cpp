@@ -51,6 +51,10 @@ static const char *beta_disclaimer =
 #include <wx/utils.h>
 #include <wx/platform.h>
 
+#ifdef __WXMSW__
+#include <wex/mswfatal.h>
+#endif
+
 #include <wex/metro.h>
 #include <wex/icons/cirplus.cpng>
 #include <wex/icons/qmark.cpng>
@@ -63,10 +67,10 @@ static const char *beta_disclaimer =
 #include "../resource/menu.cpng"
 #include "../resource/notes_white.cpng"
 
-#include <lk_absyn.h>
-#include <lk_parse.h>
-#include <lk_eval.h>
-#include <lk_stdlib.h>
+#include <lk/absyn.h>
+#include <lk/parse.h>
+#include <lk/eval.h>
+#include <lk/stdlib.h>
 
 #include "main.h"
 #include "registration.h"
@@ -249,7 +253,8 @@ MainWindow::MainWindow()
 	wxBoxSizer *tools = new wxBoxSizer( wxHORIZONTAL );
 	//tools->Add( m_mainMenuButton = new wxMetroButton( m_caseTabPanel, ID_MAIN_MENU, wxEmptyString, wxBITMAP_PNG_FROM_DATA( menu ), wxDefaultPosition, wxDefaultSize /*, wxMB_DOWNARROW */), 0, wxALL|wxEXPAND, 0 );
 	tools->Add( m_mainMenuButton = new wxMetroButton( m_caseTabPanel, ID_MAIN_MENU, "Project", wxNullBitmap/*wxBITMAP_PNG_FROM_DATA( menu )*/, wxDefaultPosition, wxDefaultSize, wxMB_DOWNARROW ), 0, wxALL|wxEXPAND, 0 );
-	tools->Add( new wxMetroButton( m_caseTabPanel, ID_CASE_CREATE, " Case", wxBITMAP_PNG_FROM_DATA( cirplus ), wxDefaultPosition, wxDefaultSize), 0, wxALL|wxEXPAND, 0 );
+	tools->Add( metbut = new wxMetroButton( m_caseTabPanel, ID_CASE_CREATE, "Add", wxBITMAP_PNG_FROM_DATA( cirplus ), wxDefaultPosition, wxDefaultSize), 0, wxALL|wxEXPAND, 0 );
+	metbut->SetToolTip( "Add case" );
 	m_caseTabList = new wxMetroTabList( m_caseTabPanel, ID_CASE_TABS, wxDefaultPosition, wxDefaultSize, wxMT_MENUBUTTONS );
 
 	tools->Add( m_caseTabList, 1, wxALL|wxEXPAND, 0 );		
@@ -530,42 +535,12 @@ void MainWindow::DeleteCaseWindow( Case *c )
 
 extern void ShowIDEWindow();
 
-// just some functions to get a slightly deeper stack trace
-void bar(const char *p)
-{
-    char *pc = 0;
-    *pc = *p;
-
-    printf("bar: %s\n", p);
-}
-
-void baz(const wxString& s)
-{
-    printf("baz: %s\n", (const char*)s.c_str());
-}
-
-void foo(int n)
-{
-    if ( n % 2 )
-        baz("odd");
-    else
-        bar("even");
-}
-
 void MainWindow::OnInternalCommand( wxCommandEvent &evt )
 {
 	switch (evt.GetId())
 	{
 	case ID_INTERNAL_SEGFAULT:
-	{
-// note:
-// https://social.msdn.microsoft.com/Forums/vstudio/en-US/0caf88f7-e22b-49be-a7e9-8504c0312cb8/exception-no-more-propagated-within-few-win32-function-call?forum=vcgeneral
-// https://forums.wxwidgets.org/viewtopic.php?t=18742&p=81165
-// seems that Menu event behaves as timer.  if issued from a button event, crash occurs as expected
-		wxMessageBox("Crash");
-		foo(32);
-		foo(17);
-	}
+		wxMSWSegmentationFault();
 		break;
 	case ID_INTERNAL_INVOKE_SSC_DEBUG:
 		if ( Case *cc = GetCurrentCase() )
@@ -1708,10 +1683,10 @@ static unordered_map<wxString,ConfigOptions, wxStringHash, wxStringEqual> m_opts
 SamApp::SamApp()
 {
 #ifdef __WXMSW__
-extern LONG __stdcall MSW_CrashHandlerExceptionFilter( EXCEPTION_POINTERS * );
-	::SetUnhandledExceptionFilter( MSW_CrashHandlerExceptionFilter );
-	
-	wxHandleFatalExceptions( true );
+	wxMSWSetupExceptionHandler( 
+		wxString("SAM"),
+		SamApp::VersionStr(), 
+		wxString("sam.support@nrel.gov") );
 #endif
 }
 
@@ -1979,14 +1954,7 @@ extern void RegisterReportObjectTypes();
 void SamApp::OnFatalException()
 {
 #ifdef __WXMSW__
-//	int major, minor;
-//	major = wxPlatformInfo::Get().GetOSMajorVersion();
-//	minor = wxPlatformInfo::Get().GetOSMinorVersion();
-//	if (major >= 6 && minor >= 1)  // windows 7 or higher
-//	{
-		extern void MSW_HandleFatalException(); // defined in mswfatal.cpp
-		MSW_HandleFatalException();
-//	}
+	wxMSWHandleApplicationFatalException();	
 #endif
 }
 

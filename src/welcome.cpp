@@ -19,6 +19,10 @@
 #include <wex/metro.h>
 #include <wex/utils.h>
 
+#ifdef __WXMSW__
+#include <wex/mswfatal.h>
+#endif
+
 #include "../resource/nrel.cpng"
 
 #include "main.h"
@@ -280,8 +284,9 @@ void WelcomeScreen::OnCommand( wxCommandEvent &evt )
 		SamApp::CheckForUpdates( false );
 		break;
 	case ID_TEST_SEGFAULT:
-		foo(32);
-		foo(17);
+#ifdef __WXMSW__
+		wxMSWSegmentationFault();
+#endif
 		break;
 	case ID_NEW_SCRIPT:
 		SamScriptWindow::CreateNewWindow();

@@ -4,7 +4,7 @@
 #include <wx/panel.h>
 #include <wex/uiform.h>
 
-#include <lk_env.h>
+#include <lk/env.h>
 
 #include "variables.h"
 #include "equations.h"

@@ -1486,12 +1486,12 @@ bool SamReportTableObject::WriteData( wxOutputStream &os )
 	Script object
  *************************************** */
 
-#include <lk_absyn.h>
-#include <lk_env.h>
-#include <lk_eval.h>
-#include <lk_lex.h>
-#include <lk_parse.h>
-#include <lk_stdlib.h>
+#include <lk/absyn.h>
+#include <lk/env.h>
+#include <lk/eval.h>
+#include <lk/lex.h>
+#include <lk/parse.h>
+#include <lk/stdlib.h>
 
 
 SamReportScriptObject::SamReportScriptObject()
