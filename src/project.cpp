@@ -11,7 +11,7 @@
 
 #include <wex/metro.h>
 
-#include <lk_stdlib.h>
+#include <lk/stdlib.h>
 
 #include "project.h"
 #include "case.h"

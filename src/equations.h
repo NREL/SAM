@@ -7,9 +7,9 @@
 #include <wx/arrstr.h>
 #include <wx/stream.h>
 
-#include <lk_absyn.h>
-#include <lk_lex.h>
-#include <lk_env.h>
+#include <lk/absyn.h>
+#include <lk/lex.h>
+#include <lk/env.h>
 
 #include "object.h"
 #include "variables.h"

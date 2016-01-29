@@ -9,8 +9,8 @@
 #include <wx/log.h>
 #include <wx/mstream.h>
 
-#include <lk_stdlib.h>
-#include <lk_eval.h>
+#include <lk/stdlib.h>
+#include <lk/eval.h>
 
 #include "variables.h"
 

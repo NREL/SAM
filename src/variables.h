@@ -12,8 +12,8 @@
 
 #include <wex/utils.h>
 
-#include <lk_absyn.h>
-#include <lk_eval.h>
+#include <lk/absyn.h>
+#include <lk/eval.h>
 
 #include "object.h"
 

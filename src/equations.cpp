@@ -3,10 +3,10 @@
 #include <wx/file.h>
 #include <wx/datstrm.h>
 
-#include <lk_parse.h>
-#include <lk_env.h>
-#include <lk_stdlib.h>
-#include <lk_eval.h>
+#include <lk/parse.h>
+#include <lk/env.h>
+#include <lk/stdlib.h>
+#include <lk/eval.h>
 
 #include "equations.h"
 

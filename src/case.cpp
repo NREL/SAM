@@ -8,7 +8,7 @@
 #include "main.h"
 #include "library.h"
 #include "invoke.h"
-#include <lk_stdlib.h>
+#include <lk/stdlib.h>
 
 
 CaseCallbackContext::CaseCallbackContext( Case *cc, const wxString &name )
