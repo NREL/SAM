@@ -7,7 +7,7 @@
 
 #include <wx/buffer.h>
 
-#include <wex/lkscript.h>
+//#include <wex/lkscript.h>
 
 #include "object.h"
 #include "simplecurl.h"
