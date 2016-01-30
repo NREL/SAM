@@ -27,11 +27,8 @@ ShadingInputData::ShadingInputData()
 void ShadingInputData::save( std::vector<float> &data )
 {
 	data.clear();
-	data.push_back(4.0); // added string_option 0 = shading database with Tc
-//	data.push_back(3.0); // version number of data format - allows for expansion of options in future.
-	//	data.push_back(2.0); 
+	data.push_back(3.0); // version number of data format - allows for expansion of options in future.
 
-//	data.push_back( (en_hourly && hourly.size() == 8760) ? 1.0 : 0.0 );
 	data.push_back((en_mxh && mxh.nrows() == 12 && mxh.ncols() == 24) ? 1.0 : 0.0);
 	data.push_back( en_azal ? 1.0 : 0.0 );
 	data.push_back( en_diff ? 1.0 : 0.0 );
@@ -39,8 +36,6 @@ void ShadingInputData::save( std::vector<float> &data )
 	data.push_back( -1.0 );
 	data.push_back( -1.0 );
 
-//	for (int i=0;i<8760;i++)
-//		data.push_back( i < hourly.size() ? hourly[i] : 0.0 );
 
 
 	if ( mxh.nrows() != 12 || mxh.ncols() != 24 )
@@ -74,13 +69,9 @@ void ShadingInputData::save( std::vector<float> &data )
 
 void ShadingInputData::clear()
 {
-//	en_hourly = en_mxh = en_azal = en_diff = en_timestep = false;
-//	en_mxh = en_azal = en_diff = en_timestep = en_shading_db = false;
 	en_mxh = en_azal = en_diff = en_timestep = false;
 
 	timestep.resize(8760, 0);
-
-//	hourly.resize(8760, 0);
 
 	mxh.resize_fill(12,24, 0.0);
 
@@ -107,7 +98,6 @@ bool ShadingInputData::load( const std::vector<float> &data )
 	int ver = (int)data[idx++];	
 	if (ver == 2)
 	{
-		//		en_hourly = data[idx++] > 0 ? true : false;
 		en_timestep = data[idx++] > 0 ? true : false;
 		en_mxh = data[idx++] > 0 ? true : false;
 		en_azal = data[idx++] > 0 ? true : false;
@@ -116,10 +106,6 @@ bool ShadingInputData::load( const std::vector<float> &data )
 		idx++; // skip unused -1
 		idx++; // skip unused -1
 
-//		hourly.clear();
-//		hourly.reserve(8760);
-//		for (int i=0;i<8760;i++)
-//			hourly.push_back( data[idx++] );
 		timestep.resize_fill(8760, 1, 0);
 		for (int r = 0; r<8760; r++)
 			timestep.at(r, 0) = data[idx++];
@@ -142,8 +128,7 @@ bool ShadingInputData::load( const std::vector<float> &data )
 
 		return idx == verify;
 	}
-//	else if (ver == 3)
-	else if ((ver == 3) || (ver==4))
+	else 
 	{
 		en_mxh = data[idx++] > 0 ? true : false;
 		en_azal = data[idx++] > 0 ? true : false;
@@ -174,9 +159,7 @@ bool ShadingInputData::load( const std::vector<float> &data )
 			for (int c = 0; c<nc; c++)
 				timestep.at(r, c) = data[idx++];
 
-//		en_shading_db = data[idx++] > 0 ? true : false;
 		string_option = data[idx++];
-		if (ver == 3) string_option++; // added choice 0 shade db with Tc
 
 		int verify = data[idx++];
 
@@ -191,11 +174,6 @@ void ShadingInputData::write( VarValue *vv )
 {
 	vv->SetType( VV_TABLE );
 	VarTable &tab = vv->Table();
-	// Version 2 - should be upgraded in project upgrader
-	//	tab.Set( "en_hourly", VarValue( (bool)en_hourly ) );
-	//	tab.Set( "hourly", VarValue( hourly ) );
-//	tab.Set("en_shading_db_lookup", VarValue(true)); // to enable optional values
-//	tab.Set("shading_db_lookup", VarValue((bool)en_shading_db));
 	tab.Set("en_string_option", VarValue(true)); // to enable optional values
 	tab.Set("string_option", VarValue((int)string_option));
 	tab.Set("en_timestep", VarValue((bool)en_timestep));
@@ -215,10 +193,6 @@ bool ShadingInputData::read( VarValue *root )
 	if ( root->Type() == VV_TABLE )
 	{
 		VarTable &tab = root->Table();
-		// version 2 - should be upgraded in project upgrader
-		//if ( VarValue *vv = tab.Get( "en_hourly" ) ) en_hourly = vv->Boolean();
-		//if ( VarValue *vv = tab.Get("hourly") ) hourly = vv->Array();
-//		if (VarValue *vv = tab.Get("shading_db_lookup")) en_shading_db = vv->Boolean();
 		if (VarValue *vv = tab.Get("string_option")) string_option = vv->Integer();
 		if (VarValue *vv = tab.Get("en_timestep")) en_timestep = vv->Boolean();
 		if (VarValue *vv = tab.Get("timestep")) timestep = vv->Matrix();
@@ -299,10 +273,6 @@ public:
 		int num_cols = 8;
 		matrix_t<float> ts_data(8760, num_cols, 0);
 		m_timestep->SetData(ts_data);
-//		wxArrayString cl;
-//		for (size_t i = 0; i < num_cols; i++)
-//			cl.push_back(wxString::Format("String %d", i+1));
-//		m_timestep->SetColLabels(cl);
 
 		m_enableMxH = new wxCheckBox( m_scrollWin, ID_ENABLE_MXH, "Enable month-by-hour beam irradiance shading losses" );
 		m_mxh = new AFMonthByHourFactorCtrl( m_scrollWin, wxID_ANY );
@@ -459,11 +429,6 @@ public:
 	{
 		wxString stat;
 
-		//if ( all || sh.en_hourly )
-		//{
-		//	m_enableHourly->SetValue( sh.en_hourly );
-		//	stat += "Updated hourly beam shading losses.\n";
-		//}
 		if (all || sh.en_timestep)
 		{
 			m_enableTimestep->SetValue(sh.en_timestep);
@@ -480,7 +445,6 @@ public:
 				nminutes /= (sh.timestep.nrows() / 8760);
 			m_timestep->SetNumMinutes(nminutes);
 			stat += "Updated timestep beam shading losses.\n";
-//			bool en_shade_db = (sh.en_shading_db == 1);
 			int string_option = sh.string_option;
 			m_timestep->SetStringOption(string_option);
 		}
@@ -513,13 +477,10 @@ public:
 
 	void Save( ShadingInputData &sh )
 	{
-//		sh.en_hourly = m_enableTimestep->IsChecked();
-//		m_hourly->Get( sh.hourly ); 
 
 		sh.en_timestep = m_enableTimestep->IsChecked();
 		m_timestep->GetData(sh.timestep);
 
-//		sh.en_shading_db = m_timestep->GetEnableShadingDB();
 		sh.string_option = m_timestep->GetStringOption();
 
 		sh.en_mxh = m_enableMxH->IsChecked();
@@ -874,11 +835,6 @@ bool ImportSunEyeHourly( ShadingInputData &dat, wxWindow *parent )
 	if (readok)
 	{
 		dat.clear();
-		//dat.en_hourly = true;
-		//dat.hourly.clear();
-		//dat.hourly.reserve( 8760 );
-		//for( size_t i=0;i<8760;i++ ) 
-		//	dat.hourly.push_back( beam[i] );
 		dat.en_timestep = true;
 		dat.timestep.clear();
 		dat.timestep.resize_fill(8760,1,0);
@@ -1188,7 +1144,6 @@ bool sidebuttons)
 
 
 	m_string_arystrvals.push_back("Shading database");
-	m_string_arystrvals.push_back("Shading database no Tc");
 	m_string_arystrvals.push_back("Average of string values");
 	m_string_arystrvals.push_back("Maximum of string values");
 	m_string_arystrvals.push_back("Minimum of string values");
