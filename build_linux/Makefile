@@ -15,7 +15,7 @@ SSCLIB = ssc.so
 
 CC = gcc
 CXX = g++
-CFLAGS = -g -DLK_USE_WXWIDGETS -I. -I$(SRCDIR) -I$(WEXDIR)/include -I$(LKDIR) -I$(SSCDIR) `wx-config-3 --cflags`
+CFLAGS = -g -DLK_USE_WXWIDGETS -I. -I$(SRCDIR) -I$(WEXDIR)/include -I$(LKDIR)/include -I$(SSCDIR) `wx-config-3 --cflags`
 CXXFLAGS = $(CFLAGS)
 LDFLAGS = `wx-config-3 --libs propgrid` `wx-config-3 --libs aui` `wx-config-3 --libs stc` `wx-config-3 --libs richtext` `wx-config-3 --libs` -lm $(LKLIB) $(WEXLIB) -lstdc++ -lcurl
 
@@ -77,6 +77,7 @@ $(TARGET): $(OBJECTS) $(WEXLIB) $(LKLIB) $(SSCLIB)
 	cp $(STEPWISEDIR)/stepwise.bin ../deploy/runtime/bin
 	make -f Makefile-webupd
 	cp webupd.bin ../deploy/linux_64
+	rm -rf ../deploy/linux_64/GtkTheme
 	cp -R ./GtkTheme ../deploy/linux_64
 
 PKGFILE = sam-linux64-$(SAMVERDASH)-install.run
