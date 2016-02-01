@@ -1777,14 +1777,18 @@ void fcall_urdb_read(lk::invoke_t &cxt)
 	{
 		wxArrayString errors;
 		wxArrayString list;
+
+		wxArrayString upgrade_list;
+		wxArrayString upgrade_value;
+
 		for (row = 0; row < (int)csv.NumRows(); row++)
 		{
 			wxString var_name = csv.Get(row,0);
 			// get value
+			wxString value = csv.Get(row, 1);
+			value.Replace(";;", "\n");
 			if (VarValue *vv = c->Values().Get(var_name))
 			{
-				wxString value = csv.Get(row,1);
-				value.Replace(";;", "\n");
 				if ( !VarValue::Parse(vv->Type(), value, *vv) )
 				{
 					errors.Add("Problem assigning " + var_name + " to " + value );
@@ -1793,7 +1797,80 @@ void fcall_urdb_read(lk::invoke_t &cxt)
 				else
 					list.Add( var_name );
 			}
+			else
+			{// variable not found
+				// try upgrading - see project file upgrader for 2015.11.16
+				// update to matrix for ec and dc
+				//errors.Add("Problem assigning " + var_name + " missing with " + value);
+				//ret_val = false;
+				upgrade_list.Add(var_name);
+				upgrade_value.Add(value);
+			}
 		}
+		// try upgrading to matrix format
+		if (upgrade_list.Count() > 0)
+		{
+			// fail if not upgraded
+			// try upgrading - see project file upgrader for 2015.11.16
+			/*
+			ec_tou_row=0;
+			dc_tou_row=0;
+			dc_flat_row=0;
+			months = ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec" ];
+			// energy charge matrix inputs
+			for (per=1;per<13;per++)
+			{
+			for (tier=1;tier<7;tier++)
+			{
+			// ec tou
+			per_tier = sprintf("ur_ec_p%d_t%d_", per, tier);
+			br = oldvalue(per_tier + 'br');
+			sr = oldvalue(per_tier + 'sr');
+			ub = oldvalue(per_tier + 'ub');
+			if (sr > 0 || br > 0 || ec_tou_row == 0) // must have one row
+			{
+			ec_tou_mat[ec_tou_row][0]=per;
+			ec_tou_mat[ec_tou_row][1]=tier;
+			ec_tou_mat[ec_tou_row][2]=ub;
+			ec_tou_mat[ec_tou_row][3]=0; // units
+			ec_tou_mat[ec_tou_row][4]=br;
+			ec_tou_mat[ec_tou_row][5]=sr;
+			ec_tou_row++;
+			}
+			// demand tou
+			per_tier = sprintf("ur_dc_p%d_t%d_", per, tier);
+			dc = oldvalue(per_tier + 'dc');
+			ub = oldvalue(per_tier + 'ub');
+			if (dc > 0 || dc_tou_row == 0) // must have one row
+			{
+			dc_tou_mat[dc_tou_row][0]=per;
+			dc_tou_mat[dc_tou_row][1]=tier;
+			dc_tou_mat[dc_tou_row][2]=ub;
+			dc_tou_mat[dc_tou_row][3]=dc;
+			dc_tou_row++;
+			}
+			// flat demand
+			per_tier = sprintf("ur_dc_%s_t%d_", months[per-1], tier);
+			dc = oldvalue(per_tier + 'dc');
+			ub = oldvalue(per_tier + 'ub');
+			if (dc > 0 || dc_flat_row < 12) // must have one value for each month
+			{
+			dc_flat_mat[dc_flat_row][0]=per-1; // month index
+			dc_flat_mat[dc_flat_row][1]=tier;
+			dc_flat_mat[dc_flat_row][2]=ub;
+			dc_flat_mat[dc_flat_row][3]=dc;
+			dc_flat_row++;
+			}
+			}
+			}
+			value("ur_ec_tou_mat", ec_tou_mat);
+			value("ur_dc_tou_mat", dc_tou_mat);
+			value("ur_dc_flat_mat", dc_flat_mat);
+
+			*/
+		}
+
+
 		// this causes the UI and other variables to be updated
 		c->VariablesChanged( list );
 	}
