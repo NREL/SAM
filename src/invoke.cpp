@@ -1812,62 +1812,106 @@ void fcall_urdb_read(lk::invoke_t &cxt)
 		{
 			// fail if not upgraded
 			// try upgrading - see project file upgrader for 2015.11.16
-			/*
-			ec_tou_row=0;
-			dc_tou_row=0;
-			dc_flat_row=0;
-			months = ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec" ];
+			matrix_t<float> ec_tou_mat(72, 6); // will resize
+			matrix_t<float> dc_tou_mat(72, 4); // will resize
+			matrix_t<float> dc_flat_mat(72, 4); // will resize
+			int ec_tou_row=0;
+			int dc_tou_row=0;
+			int dc_flat_row=0;
+			int ndx;
+			double br, sr, ub,dc;
+			wxString per_tier;
+			wxString var_name;
+			wxString months[] = { "jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec" };
 			// energy charge matrix inputs
-			for (per=1;per<13;per++)
+			for (int per=1;per<13;per++)
 			{
-			for (tier=1;tier<7;tier++)
-			{
+				for (int tier=1;tier<7;tier++)
+				{
 			// ec tou
-			per_tier = sprintf("ur_ec_p%d_t%d_", per, tier);
-			br = oldvalue(per_tier + 'br');
-			sr = oldvalue(per_tier + 'sr');
-			ub = oldvalue(per_tier + 'ub');
-			if (sr > 0 || br > 0 || ec_tou_row == 0) // must have one row
-			{
-			ec_tou_mat[ec_tou_row][0]=per;
-			ec_tou_mat[ec_tou_row][1]=tier;
-			ec_tou_mat[ec_tou_row][2]=ub;
-			ec_tou_mat[ec_tou_row][3]=0; // units
-			ec_tou_mat[ec_tou_row][4]=br;
-			ec_tou_mat[ec_tou_row][5]=sr;
-			ec_tou_row++;
-			}
+					br = -1;
+					sr = -1;
+					ub = -1;
+					per_tier = wxString::Format("ur_ec_p%d_t%d_", per, tier);
+					ndx = upgrade_list.Index(per_tier + "br");
+					if (ndx > -1 && ndx < upgrade_value.Count())
+						br = atof(upgrade_value[ndx].c_str());
+					ndx = upgrade_list.Index(per_tier + "sr");
+					if (ndx > -1 && ndx < upgrade_value.Count())
+						sr = atof(upgrade_value[ndx].c_str());
+					ndx = upgrade_list.Index(per_tier + "ub");
+					if (ndx > -1 && ndx < upgrade_value.Count())
+						ub = atof(upgrade_value[ndx].c_str());
+					if (sr > 0 || br > 0 || ec_tou_row == 0) // must have one row
+					{
+						ec_tou_mat.at(ec_tou_row,0)=per;
+						ec_tou_mat.at(ec_tou_row,1) = tier;
+						ec_tou_mat.at(ec_tou_row,2) = ub;
+						ec_tou_mat.at(ec_tou_row,3) = 0; // units
+						ec_tou_mat.at(ec_tou_row,4) = br;
+						ec_tou_mat.at(ec_tou_row,5) = sr;
+						ec_tou_row++;
+					}
 			// demand tou
-			per_tier = sprintf("ur_dc_p%d_t%d_", per, tier);
-			dc = oldvalue(per_tier + 'dc');
-			ub = oldvalue(per_tier + 'ub');
-			if (dc > 0 || dc_tou_row == 0) // must have one row
-			{
-			dc_tou_mat[dc_tou_row][0]=per;
-			dc_tou_mat[dc_tou_row][1]=tier;
-			dc_tou_mat[dc_tou_row][2]=ub;
-			dc_tou_mat[dc_tou_row][3]=dc;
-			dc_tou_row++;
-			}
+					dc = -1;
+					ub = -1;
+					per_tier = wxString::Format("ur_dc_p%d_t%d_", per, tier);
+					ndx = upgrade_list.Index(per_tier + "dc");
+					if (ndx > -1 && ndx < upgrade_value.Count())
+						dc = atof(upgrade_value[ndx].c_str());
+					ndx = upgrade_list.Index(per_tier + "ub");
+					if (ndx > -1 && ndx < upgrade_value.Count())
+						ub = atof(upgrade_value[ndx].c_str());
+					if (dc > 0 || dc_tou_row == 0) // must have one row
+					{
+						dc_tou_mat.at(dc_tou_row,0)=per;
+						dc_tou_mat.at(dc_tou_row,1)=tier;
+						dc_tou_mat.at(dc_tou_row,2)=ub;
+						dc_tou_mat.at(dc_tou_row,3)=dc;
+						dc_tou_row++;
+					}
 			// flat demand
-			per_tier = sprintf("ur_dc_%s_t%d_", months[per-1], tier);
-			dc = oldvalue(per_tier + 'dc');
-			ub = oldvalue(per_tier + 'ub');
-			if (dc > 0 || dc_flat_row < 12) // must have one value for each month
+					dc = -1;
+					ub = -1;
+					per_tier = wxString::Format("ur_dc_%s_t%d_", months[per - 1], tier);
+					ndx = upgrade_list.Index(per_tier + "dc");
+					if (ndx > -1 && ndx < upgrade_value.Count())
+						dc = atof(upgrade_value[ndx].c_str());
+					ndx = upgrade_list.Index(per_tier + "ub");
+					if (ndx > -1 && ndx < upgrade_value.Count())
+						ub = atof(upgrade_value[ndx].c_str());
+					if (dc > 0 || dc_flat_row < 12) // must have one value for each month
+					{
+						dc_flat_mat.at(dc_flat_row,0)=per-1; // month index
+						dc_flat_mat.at(dc_flat_row,1)=tier;
+						dc_flat_mat.at(dc_flat_row,2)=ub;
+						dc_flat_mat.at(dc_flat_row,3)=dc;
+						dc_flat_row++;
+					}
+				}
+			}
+			// resize matrices
+			ec_tou_mat.resize_preserve(ec_tou_row, 6, 0);
+			dc_tou_mat.resize_preserve(dc_tou_row, 4, 0);
+			dc_flat_mat.resize_preserve(dc_flat_row, 4, 0);
+			var_name = "ur_ec_tou_mat";
+			if (VarValue *vv = c->Values().Get(var_name))
 			{
-			dc_flat_mat[dc_flat_row][0]=per-1; // month index
-			dc_flat_mat[dc_flat_row][1]=tier;
-			dc_flat_mat[dc_flat_row][2]=ub;
-			dc_flat_mat[dc_flat_row][3]=dc;
-			dc_flat_row++;
+				vv->Set(ec_tou_mat);
+				list.Add(var_name);
 			}
+			var_name = "ur_dc_tou_mat";
+			if (VarValue *vv = c->Values().Get(var_name))
+			{
+				vv->Set(dc_tou_mat);
+				list.Add(var_name);
 			}
+			var_name = "ur_dc_flat_mat";
+			if (VarValue *vv = c->Values().Get(var_name))
+			{
+				vv->Set(dc_flat_mat);
+				list.Add(var_name);
 			}
-			value("ur_ec_tou_mat", ec_tou_mat);
-			value("ur_dc_tou_mat", dc_tou_mat);
-			value("ur_dc_flat_mat", dc_flat_mat);
-
-			*/
 		}
 
 
