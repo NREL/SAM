@@ -619,13 +619,9 @@ img.dropdown-toggle-icon /* toggle icon */
 }
 /* CSS for responsive image maps */
 
-.hmImageMap a.hmHotspotRect { display:block; position:absolute;
-                              border:none; background:#000; opacity:0.3; filter:alpha(opacity=30);
-            								   visibility:hidden }
-.hmImageMap a.hmHotspotEllipse { display:block; position:absolute; border-radius:50%;
-                                 border:none; background:#000; opacity:0.3; filter:alpha(opacity=30);
-                                 visibility:hidden }
-.hmImageMap:hover a.hmHotspotRect { visibility:visible }
-.hmImageMap:hover a.hmHotspotEllipse { visibility:visible }
-a.hmHotspotRect:hover { border:1px solid #000; background:#FFF }
-a.hmHotspotEllipse:hover { border:1px solid #000; background:#FFF }
+.hmImageMap a.hmHotspotRect { display:block; position:absolute; border: 1px solid transparent; background:#000; opacity:0.01; filter:alpha(opacity=1)  }
+.hmImageMap a.hmHotspotEllipse { display:block; position:absolute; border-radius:50%; border: 1px solid transparent; background:#000; opacity:0.01; filter:alpha(opacity=1) }
+.hmImageMap:hover a.hmHotspotRect {opacity:0.3; filter:alpha(opacity=30); }
+.hmImageMap:hover a.hmHotspotEllipse { opacity:0.3; filter:alpha(opacity=30); }
+a.hmHotspotRect:hover { border:1px solid #000; background:#FFF; opacity:0.3; filter:alpha(opacity=30) }
+a.hmHotspotEllipse:hover { border:1px solid #000; background:#FFF; opacity:0.3; filter:alpha(opacity=30) }
