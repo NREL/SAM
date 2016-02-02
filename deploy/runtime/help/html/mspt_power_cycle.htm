@@ -1,4 +1,4 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
 <head>
    <title>Tower Power Cycle</title>
@@ -106,7 +106,7 @@
 <p class="p_Text"><span class="f_Text">The cycle technology inputs are for either a steam Rankine cycle or a supercritical carbon dioxide (sCO</span><span class="f_Text" style="font-size: 7pt; vertical-align: sub;">2</span><span class="f_Text">) cycle. For a description of the </span><span class="f_Text">sCO</span><span class="f_Text" style="font-size: 7pt; vertical-align: sub;">2</span><span class="f_Text"> cycle with references, see the <a href="power_tower_molten_salt.htm#sco2" class="topiclink">Molten Salt Power Tower</a> overview.</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Power cycle technology</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">Determines whether the power cycle is a <a href="mspt_power_cycle.htm#rankine" class="topiclink">steam Rankine cycle</a> or a <a href="mspt_power_cycle.htm#sco2_brayton" class="topiclink">supercritical carbon dioxide Brayton cycle</a>. SAM displays a different set of inputs depending on the option you choose.</span></p>
-<h4 class="p_Heading4"><a id="rankine"></a><span class="f_Heading4">Steam Rankine Cyce</span></h4>
+<h4 class="p_Heading4"><a id="rankine" class="hmanchor"></a><span class="f_Heading4">Steam Rankine Cyce</span></h4>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Boiler operating pressure, Bar</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The saturation pressure of the steam as it is converted from liquid to vapor in the boiler or steam generator. SAM uses this value to determine the steam's saturation temperature and thus the superheating capability of the heat exchangers. The temperature difference that drives the steam mass flow rate in the Rankine cycle is the difference between the hot heat transfer fluid inlet temperature and the saturation temperature of the steam boiler pressure.</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Steam cycle blowdown fraction</span></p>
@@ -135,7 +135,7 @@
 <p class="p_VariableDescription"><span class="f_VariableDescription">The minimum condenser pressure in inches if mercury prevents the condenser pressure from dropping below the level you specify. In a physical system, allowing the pressure to drop below a certain point can result in physical damage to the system. For evaporative (wet cooling), the default value is 1.25 inches of mercury. For air-cooled (dry cooling), the default is 2 inches of mercury. For hybrid systems, you can use the dry-cooling value of 2 inches of mercury.</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Cooling system part load levels</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The cooling system part load levels tells the heat rejection system model how many discrete operating points there are. A value of 2 means that the system can run at either 100% or 50% rejection. A value of three means rejection operating points of 100% 66% 33%. The part load levels determine how the heat rejection operates under part load conditions when the heat load is less than full load. The default value is 2, and recommended range is between 2 and 10. The value must be an integer.</span></p>
-<h4 class="p_Heading4"><a id="sco2_brayton"></a><span class="f_Heading4">Supercritical Carbon Dioxide Brayton Cycle</span></h4>
+<h4 class="p_Heading4"><a id="sco2_brayton" class="hmanchor"></a><span class="f_Heading4">Supercritical Carbon Dioxide Brayton Cycle</span></h4>
 <p class="p_Note"><span class="f_CHNote">Note.</span><span class="f_Note"> Simulations for the sCO2 Brayton cycle model may take considerably more time than the Rankine cycle model because of the optimization required in each time step. See the <a href="power_tower_molten_salt.htm#sco2" class="topiclink">model description</a> for details.</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Compressor(s) isentropic efficiency</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The isentropic efficiency of the main compressor and recompressor (if applicable) in the sCO</span><span class="f_VariableDescription" style="font-size: 7pt; vertical-align: sub;">2</span><span class="f_VariableDescription"> cycle. </span></p>

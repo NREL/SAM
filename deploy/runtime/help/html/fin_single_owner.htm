@@ -1,4 +1,4 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
 <head>
    <title>Financing Page: Utility Single Owner</title>
@@ -39,7 +39,7 @@
 <!-- Placeholder for topic body. -->
 <table style="width:100%;border:none;border-spacing:0px"><tr style="vertical-align:top"><td style="text-align:left;padding:5px">
 <p class="p_Text"><span class="f_Text">This topic describes the inputs on the Financial Parameters page for the Single Owner financial model. For a general description of the model, see <a href="fin_overview.htm" class="topiclink">Financial Models</a>.</span></p>
-<h3 class="p_Heading3_atocs_" style="page-break-inside: avoid; page-break-after: avoid; border-top: none; border-right: none; border-left: none;"><a id="solutionmode"></a><span class="f_Heading3_atocs_">Solution Mode</span></h3>
+<h3 class="p_Heading3_atocs_" style="page-break-inside: avoid; page-break-after: avoid; border-top: none; border-right: none; border-left: none;"><a id="solutionmode" class="hmanchor"></a><span class="f_Heading3_atocs_">Solution Mode</span></h3>
 <p class="p_Text"><span class="f_Text">The Solution Mode inputs are where you determine how SAM calculates the PPA price, IRR, and other results that appear in the Metrics table on the <a href="summary.htm" class="topiclink">Summary</a> page.</span></p>
 <p class="p_Text"><span class="f_Text">The PPA price is the bid price in a power purchase agreement (PPA), and is the price that the project receives for each unit of electricity that the system generates. The internal rate of return (IRR) is a measure of the project's profitability, and is defined as the nominal discount rate that corresponds to a net present value of zero.</span></p>
 <p class="p_Text"><span class="f_Text">The solution mode determines whether SAM calculates a PPA price based on an IRR target that you specify, or an IRR based on a PPA price that you specify:</span></p>
@@ -139,7 +139,7 @@
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Total Construction Financing Cost</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The total construction financing cost is part of the project's capital costs included </span><span class="f_Text">in the <a href="mtf_costs.htm" class="topiclink">net capital cost</a> value in the Metrics table.</span></p>
 <p class="p_EquationExcel"><span class="f_EquationExcel">Total Construction Financing Cost = Interest + Up-front Fee Amount</span></p>
-<h3 class="p_Heading3_atocs_" style="page-break-inside: avoid; page-break-after: avoid; border-top: none; border-right: none; border-left: none;"><a id="debtservice"></a><span class="f_Heading3_atocs_">Project Term Debt</span></h3>
+<h3 class="p_Heading3_atocs_" style="page-break-inside: avoid; page-break-after: avoid; border-top: none; border-right: none; border-left: none;"><a id="debtservice" class="hmanchor"></a><span class="f_Heading3_atocs_">Project Term Debt</span></h3>
 <p class="p_Text"><span class="f_Text">The Project Term Debt input variables determine the <a href="mtf_debt_and_equity.htm#debt" class="topiclink">size of debt</a> or amount borrowed, and debt-related costs.</span></p>
 <p class="p_Text"><span class="f_Text">You can size the debt in one of two ways:</span></p>
 <p style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 13px; margin: 0px 0px 6px 0px;"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;display:inline-block;width:13px;margin-left:-13px">&#8226;</span><span class="f_CHInterfaceElement">Debt percent</span><span class="f_Text">: Manually specify the size of debt as a fraction of the installed cost, adjusted to account for project costs and fees and for incentives. This option is appropriate for projects with mortgage-style debt, where annual total principal and interest payments are constant, and the annual debt-service coverage ratio (DSCR) varies from year to year.</span></p><p style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 13px; margin: 0px 0px 6px 0px;"><span style="font-size:10pt; font-family: 'Arial Unicode MS','Lucida Sans Unicode','Arial';color:#000000;display:inline-block;width:13px;margin-left:-13px">&#8226;</span><span class="f_CHInterfaceElement">DSCR</span><span class="f_Text">: Specify the debt service coverage ratio (DSCR), and allow SAM to size the debt based on cash available for debt service. This option is for projects with sculpted debt payments, where the total annual debt payment varies from year to year, and the annual DSCR is constant throughout the debt period.</span></p><p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Debt percent</span></p>

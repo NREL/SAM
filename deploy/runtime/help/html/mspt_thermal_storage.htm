@@ -1,4 +1,4 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
 <head>
    <title>Tower Thermal Storage</title>
@@ -124,7 +124,7 @@
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Fossil Fill Fraction</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">A fraction of the power block design turbine gross output from the <a href="mspt_power_cycle.htm" class="topiclink">Power Cycle</a> page that can be met by the backup boiler. Used by the power block module to calculate the energy from the backup boiler.</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">If you specify a fossil fill fraction other than zero for one or more periods and want to account for fuel costs in the financial model, you should assign a fossil fuel cost under Operation and Maintenance costs on the <a href="pt_system_costs.htm" class="topiclink">System Costs</a> page.</span></p>
-<h3 class="p_Heading3_atocs_" style="page-break-inside: avoid; page-break-after: avoid; border-top: none; border-right: none; border-left: none;"><a id="dispatch"></a><span class="f_Heading3_atocs_">Storage and Fossil Dispatch Controls</span></h3>
+<h3 class="p_Heading3_atocs_" style="page-break-inside: avoid; page-break-after: avoid; border-top: none; border-right: none; border-left: none;"><a id="dispatch" class="hmanchor"></a><span class="f_Heading3_atocs_">Storage and Fossil Dispatch Controls</span></h3>
 <p class="p_Text"><span class="f_Text">The thermal storage dispatch controls determine the timing of releases of energy from the thermal energy storage and fossil backup systems to the power block. When the system includes thermal energy storage or fossil backup, SAM can use a different dispatch strategy for up to six different dispatch periods.</span></p>
 <h4 class="p_Heading4"><span class="f_Heading4">Dispatch Control</span></h4>
 <p class="p_Text"><span class="f_Text">For each hour in the simulation, SAM looks at the amount of energy in storage at the beginning of the hour and decides whether or not to operate the power cycle in that hour. For each dispatch period, there are two dispatch targets for starting or continuing to run the power cycle: one for periods of sunshine (</span><span class="f_CHInterfaceElement">storage dispatch fraction w/solar</span><span class="f_Text">), and one for periods of no sunshine (</span><span class="f_CHInterfaceElement">storage dispatch fraction w/o solar</span><span class="f_Text">). The dispatch target for each dispatch period is the product of the storage dispatch fraction for that period and the thermal storage capacity defined by the TES thermal capacity input variable.</span></p>

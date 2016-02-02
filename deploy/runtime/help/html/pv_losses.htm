@@ -1,4 +1,4 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
 <head>
    <title>Losses</title>
@@ -39,7 +39,7 @@
 <!-- Placeholder for topic body. -->
 <table style="width:100%;border:none;border-spacing:0px"><tr style="vertical-align:top"><td style="text-align:left;padding:5px">
 <p class="p_Text"><span class="f_Text">The losses inputs account for soiling and electrical losses that the module and inverter models do not account for. After running a simulation, you can see the effect of these losses on  <a href="results_page.htm" class="topiclink">results</a> by displaying the results variables described below in <a href="data.htm" class="topiclink">data tables</a> and <a href="timeseries.htm" class="topiclink">time series graphs</a>.</span></p>
-<h3 class="p_Heading3_atocs_" style="page-break-inside: avoid; page-break-after: avoid; border-top: none; border-right: none; border-left: none;"><a id="dclosses"></a><span class="f_Heading3_atocs_">DC Losses</span></h3>
+<h3 class="p_Heading3_atocs_" style="page-break-inside: avoid; page-break-after: avoid; border-top: none; border-right: none; border-left: none;"><a id="dclosses" class="hmanchor"></a><span class="f_Heading3_atocs_">DC Losses</span></h3>
 <p class="p_Text"><span class="f_Text">The DC losses account for soiling and DC electrical losses on the DC side of the system that the module model does not calculate, such as electrical losses in the DC wiring that connects modules in the array.</span></p>
 <h4 class="p_Heading4"><span class="f_Heading4">Soiling</span></h4>
 <p class="p_Text"><span class="f_Text">The soiling losses reduce the solar radiation incident on the subarray. SAM calculates the nominal incident radiation value for each time step using solar radiation values from the weather file, and sun and subarray angles. When you specify soiling losses, SAM adjusts the nominal incident radiation value by each soiling loss percentage that applies to the time step. You can see the effect of soiling losses in hourly results by comparing values of the nominal POA irradiance with the &quot;after shading only&quot; and &quot;after shading and soiling&quot; values. The radiation incident on the subarray is the POA total irradiance after shading and soling value (W/m</span><span class="f_Text" style="font-size: 7pt; vertical-align: super;">2</span><span class="f_Text">).</span></p>
@@ -85,7 +85,7 @@
 <p class="p_VariableDescription"><span class="f_VariableDescription">Each module is connected to an inverter.</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">DC optimizers</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">Power electronics minimize array losses.</span></p>
-<h3 class="p_Heading3_atocs_" style="page-break-inside: avoid; page-break-after: avoid; border-top: none; border-right: none; border-left: none;"><a id="aclosses"></a><span class="f_Heading3_atocs_">AC Losses</span></h3>
+<h3 class="p_Heading3_atocs_" style="page-break-inside: avoid; page-break-after: avoid; border-top: none; border-right: none; border-left: none;"><a id="aclosses" class="hmanchor"></a><span class="f_Heading3_atocs_">AC Losses</span></h3>
 <p class="p_Text"><span class="f_Text">The AC losses account for electrical losses on the AC side of the system that the inverter model does not account for. During simulations, SAM uses the total AC loss to </span><span class="f_ListLast">reduce the inverter AC electric output calculated by the inverter model</span><span class="f_Text">. You can see the effect of the interconnection derate factors in the hourly results:</span></p>
 <p class="p_EquationExcel" style="text-indent: -146px; margin: 0px 0px 6px 194px;"><span class="f_EquationExcel">Net AC power = Gross AC power × ( 1 - Total AC loss ÷ 100% )</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">AC wiring</span></p>
