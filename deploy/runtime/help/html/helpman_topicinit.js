@@ -1,4 +1,4 @@
-﻿/* --------------- Script (c) 2006-2013 EC Software ---------------
+﻿/* --------------- Script (c) 2006-2015 EC Software ---------------
 This script was created by Help & Manual. It is designed for use 
 in combination with the output of Help & Manual and must not
 be used outside this context.     http://www.helpandmanual.com
@@ -422,7 +422,7 @@ var hmshowPopup = function(event, txt, trigger) {
 		 
 	var pop = $('<div id="hmpopupdiv"></div>').appendTo('body');
 	if (hmPopupSticky) { 
-      $('body').bind('mouseup.hmpopup', hmhidePopup);
+      $('body').bind(hmBrowser.touchend + '.hmpopup', hmhidePopup);
       $('body').bind('keydown.hmpopup', function(e) { if (e.keyCode == 27) hmhidePopup(); } ); 
     }	      
 	pop.html(txt);
