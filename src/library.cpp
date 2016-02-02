@@ -785,6 +785,7 @@ bool ScanSolarResourceData( const wxString &db_file )
 
 			if ( const char *err = ssc_module_exec_simple_nothread( "wfreader", pdata ) )
 			{
+				errors.Add( err );
 				wxLogStatus("error scanning '" + wf + "'");
 				wxLogStatus("\t%s", err );
 			}
@@ -835,6 +836,9 @@ bool ScanSolarResourceData( const wxString &db_file )
 			has_more = dir.GetNext( &file );
 		}
 	}
+
+	if ( errors.size() > 0 )
+		wxShowTextMessageDialog( wxJoin( errors, '\n' ) );
 
 	return csv.WriteFile( db_file );
 }
