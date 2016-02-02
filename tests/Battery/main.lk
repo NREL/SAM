@@ -413,7 +413,7 @@ function replacements_test(defaults)
 		replace_capacity = 99.5;
 		set('batt_replacement_option',1);
 		set('batt_replacement_capacity',replace_capacity);
-		simulate();
+		simulate([], false);
 		batt_capacity_percent = get('batt_capacity_percent');
 
 		if (batt_capacity_percent[#batt_capacity_percent-1] < replace_capacity)
@@ -440,7 +440,7 @@ function replacements_test(defaults)
 // Test 13: Target Power Test
 function target_power_test(default)
 {
-	simulate();
+	simulate([], false);
 	retCode = true;
 	month_days = [31,28,31,30,30,31,31,31,30,31,30,31];
 	grid_to_load = [];
@@ -464,7 +464,7 @@ function target_power_test(default)
 	set('batt_dispatch_choice', 2);
 	set('batt_target_choice',0);
 	set('batt_target_power_monthly', peak_grid);
-	simulate();
+	simulate([], false);
 	grid_to_load_new = [];
 	peak_grid_new = [];
 	grid_to_load_new = get("grid_to_load");
@@ -503,10 +503,8 @@ function manual_dispatch_test(default)
 {
 	retCode = true;
 	
-	set('batt_dispatch_choice',3);
-	// set('batt_pv_choice',0);
-	
-	simulate();
+	set('batt_dispatch_choice',3);	
+	simulate([], false);
 	
 	grid_to_batt = []; pv_to_batt = []; batt_to_load = []; batt_dispatch_sched = []; batt_dispatch_sched_weekend = [];
 	can_charge = []; can_gridcharge = []; can_discharge = []; gridcharge_percent = []; discharge_percent = []; q_max = [];
@@ -525,6 +523,7 @@ function manual_dispatch_test(default)
 	q_max = get('batt_qmax');
 	voltage = get('batt_voltage');
 	dt_hour = 8760 / #grid_to_batt;
+	steps_per_hour = 1/dt_hour;
 	
 	grid_index = 0;
 	discharge_index = 0;
@@ -568,31 +567,40 @@ function manual_dispatch_test(default)
 				dis_percent = discharge_percent[profile-1];
 				pmax = q_max[count]*voltage[count]*0.001/dt_hour;
 				
-				if (pv_to_batt[count] > 0 && !charge ) 
+				for (step = 0; step < steps_per_hour; step++)
 				{
-					outln("------- Manual Dispatch Failed!!! -----------------------------------");
-					outln("month: " + month + " day: " + day + " hour: " + hour + " charge: " + charge + " pv_to_batt: " + pv_to_batt[count] + " profile: " + profile+ " weekend: " + is_weekend);
-					outln("------------------------------------------------------------------");
-					retCode = false;
+					if (pv_to_batt[count] > 0 && charge == false  ) 
+					{
+						outln("------- Manual Dispatch Failed!!! -----------------------------------");
+						outln("month: " + month + " day: " + day + " hour: " + hour + " step: " + step + " charge: " + charge + " pv_to_batt: " + pv_to_batt[count] + " profile: " + profile+ " weekend: " + is_weekend);
+						outln("------------------------------------------------------------------");
+						retCode = false;
+						break;
+					}
+					
+					if ( (grid_to_batt[count] > 1 && gridcharge == false) || (grid_to_batt[count]/pmax > (grid_percent+1)*0.01) )
+					{
+						outln("------- Manual Dispatch Failed!!! -----------------------------------");
+						outln("month: " + month + " day: " + day +" hour: " + hour + " step: " + step +" gridcharge: " + gridcharge + " grid_to_batt: " + grid_to_batt[count] + " pmax: " + pmax + " gridcharge_percent: " + grid_percent + " profile: " + profile+ " weekend: " + is_weekend);
+						outln("------------------------------------------------------------------");
+						retCode = false;
+						break;
+					}
+					
+					if ( (batt_to_load[count] > 0 && discharge == false) || (batt_to_load[count]/pmax > dis_percent*0.01) )
+					{
+						outln("------- Manual Dispatch Failed!!! -----------------------------------");
+						outln("month: " + month + " day: " + day + " hour: " + hour + " step: " + step +" discharge: " + discharge + " batt_to_load: " + batt_to_load[count] + " pmax: " + pmax + " discharge_percent: " + dis_percent + " profile: " + profile + " weekend: " + is_weekend);
+						outln("------------------------------------------------------------------");
+						retCode = false;
+						break;
+					}
+					count++;
 				}
-				
-				if ( (grid_to_batt[count] > 0 && !gridcharge) || (grid_to_batt[count]/pmax > grid_percent*0.01) )
-				{
-					outln("------- Manual Dispatch Failed!!! -----------------------------------");
-					outln("month: " + month + " day: " + day +" hour: " + hour + " gridcharge: " + gridcharge + " grid_to_batt: " + grid_to_batt[count] + " pmax: " + pmax + " gridcharge_percent: " + grid_percent + " profile: " + profile+ " weekend: " + is_weekend);
-					outln("------------------------------------------------------------------");
-					retCode = false;
-				}
-				
-				if ( (batt_to_load[count] > 0 && !discharge) || (batt_to_load[count]/pmax > dis_percent*0.01) )
-				{
-					outln("------- Manual Dispatch Failed!!! -----------------------------------");
-					outln("month: " + month + " day: " + day + " hour: " + hour + " discharge: " + discharge + " batt_to_load: " + batt_to_load[count] + " pmax: " + pmax + " discharge_percent: " + dis_percent + " profile: " + profile + " weekend: " + is_weekend);
-					outln("------------------------------------------------------------------");
-					retCode = false;
-				}
-				count++;
+				if (retCode == false)
+					break;
 			}
+
 			day_of_week++;
 			if (day_of_week > 6)
 				day_of_week = 0;
@@ -600,7 +608,12 @@ function manual_dispatch_test(default)
 				is_weekend = true;
 			else
 				is_weekend = false;
+			
+			if (retCode == false)
+				break;
 		}
+		if (retCode == false)
+			break;
 	}
 	reset_default(default);
 	return retCode;
@@ -666,7 +679,7 @@ function reset_default(default)
 	set('batt_minimum_modetime',default{"batt_minimum_modetime"});
 	set('batt_replacement_option',default{"batt_replacement_option"});
 	set('batt_replacement_capacity',default{"batt_replacement_capacity"});
-	simulate();
+	simulate([],false);
 }
 
 // add scenarios and loop over all within main test, calling all unit tests 
@@ -798,7 +811,7 @@ n_chemistry = 11;
 
 outln("Performance Tests");
 
-for (pv_choice = 1; pv_choice != n_pvchoice; pv_choice++)
+for (pv_choice = 0; pv_choice != n_pvchoice; pv_choice++)
 {
 	for (weather = 1; weather != n_weather; weather++)
 	{
@@ -809,7 +822,7 @@ for (pv_choice = 1; pv_choice != n_pvchoice; pv_choice++)
 				for (chemistry = 0; chemistry != n_chemistry; chemistry++)
 				{
 					set_scenarios(pv_choice, weather, load, lifetime_analysis, chemistry);
-					simulate();
+					simulate([], false);
 					outln("Test 1: " + test_status(bank_sizing_test()) + " - Bank sizing test" );
 					outln("Test 2: " + test_status(chemistry_test()) + " - Chemisty test");
 					outln("Test 3: " + test_status(voltage_test()) + " - Voltage curve test");
