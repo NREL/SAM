@@ -466,14 +466,14 @@ if( yesno("Would you like to generate a report based off these results?",[defaul
 	
 	
 	// Create report
-	if( yesno("This report will be saved to:\n" + homedir()+"\\windReport.pdf\n\nSelect 'Yes' to continue or 'No' to enter a different file path",[defaultX, defaultY]) ){
-		reportFile = homedir()+"\\windReport.pdf";
+	if( yesno("This report will be saved to:\n" + homedir()+"/windReport.pdf\n\nSelect 'Yes' to continue or 'No' to enter a different file path",[defaultX, defaultY]) ){
+		reportFile = homedir()+"/windReport.pdf";
 	} else {
 		reportFile = choose_file( homedir(), "Output report file", 'PDF Files (*.pdf)|*.pdf');
 	}
 	
 	ok = pdfreport( reportFile, 
-					{'template'=runtimedir() + 'reports\\windwizard.samreport', 'metadata'=data });
+					{'template'=runtimedir() + 'reports/windwizard.samreport', 'metadata'=data });
 	
 	// Open Report
 	browse(reportFile);
