@@ -1,0 +1,1042 @@
+Performance Tests
+Scenario Settings
+pv_choice: 0 weather: 0 load_profile: 0 analysis_period: 0 chemistry: 0
+load_profile: C:\Users\ndiorio\Documents\Data\One-hour load\SAM_default.txt
+Test 1: passed - Bank sizing test
+Test 2: passed - Chemisty test
+Test 3: passed - Voltage curve test
+Test 4: passed - Current test
+Test 5: passed - Efficiencies test
+Test 6: passed - Charge test
+Test 7: passed - Power-to-load test
+Test 8: passed - Power-to-battery test
+Test 9: passed -  Charge state test
+Test 10: passed - Cycle test
+Test 11: passed - Peak shaving test
+Test 12: passed - Replacements test
+Test 13: passed - Target power test
+------- Manual Dispatch Failed!!! -----------------------------------
+month: 0 day: 0 hour: 15 step: 0 discharge: 1 batt_to_load: 23.7376 pmax: 92.3222 discharge_percent: 25 profile: 3 weekend: 0
+------------------------------------------------------------------
+Test 14: failed - Manual power test
+Test 15: passed - PV charge battery test
+Scenario Settings
+pv_choice: 0 weather: 0 load_profile: 0 analysis_period: 0 chemistry: 1
+load_profile: C:\Users\ndiorio\Documents\Data\One-hour load\SAM_default.txt
+Test 1: passed - Bank sizing test
+Test 2: passed - Chemisty test
+Test 3: passed - Voltage curve test
+Test 4: passed - Current test
+Test 5: passed - Efficiencies test
+Test 6: passed - Charge test
+Test 7: passed - Power-to-load test
+Test 8: passed - Power-to-battery test
+Test 9: passed -  Charge state test
+Test 10: passed - Cycle test
+Test 11: passed - Peak shaving test
+Test 12: passed - Replacements test
+Test 13: passed - Target power test
+------- Manual Dispatch Failed!!! -----------------------------------
+month: 0 day: 0 hour: 15 step: 0 discharge: 1 batt_to_load: 23.7376 pmax: 92.3222 discharge_percent: 25 profile: 3 weekend: 0
+------------------------------------------------------------------
+Test 14: failed - Manual power test
+Test 15: passed - PV charge battery test
+Scenario Settings
+pv_choice: 0 weather: 0 load_profile: 0 analysis_period: 0 chemistry: 2
+load_profile: C:\Users\ndiorio\Documents\Data\One-hour load\SAM_default.txt
+Test 1: passed - Bank sizing test
+Test 2: passed - Chemisty test
+Test 3: passed - Voltage curve test
+Test 4: passed - Current test
+Test 5: passed - Efficiencies test
+Test 6: passed - Charge test
+Test 7: passed - Power-to-load test
+Test 8: passed - Power-to-battery test
+Test 9: passed -  Charge state test
+Test 10: passed - Cycle test
+Test 11: passed - Peak shaving test
+Test 12: passed - Replacements test
+Test 13: passed - Target power test
+------- Manual Dispatch Failed!!! -----------------------------------
+month: 0 day: 0 hour: 15 step: 0 discharge: 1 batt_to_load: 23.7376 pmax: 92.3222 discharge_percent: 25 profile: 3 weekend: 0
+------------------------------------------------------------------
+Test 14: failed - Manual power test
+Test 15: passed - PV charge battery test
+Scenario Settings
+pv_choice: 0 weather: 0 load_profile: 0 analysis_period: 0 chemistry: 3
+load_profile: C:\Users\ndiorio\Documents\Data\One-hour load\SAM_default.txt
+Test 1: passed - Bank sizing test
+Test 2: passed - Chemisty test
+Test 3: passed - Voltage curve test
+Test 4: passed - Current test
+Test 5: passed - Efficiencies test
+Test 6: passed - Charge test
+Test 7: passed - Power-to-load test
+Test 8: passed - Power-to-battery test
+Test 9: passed -  Charge state test
+Test 10: passed - Cycle test
+Test 11: passed - Peak shaving test
+Test 12: passed - Replacements test
+Test 13: passed - Target power test
+------- Manual Dispatch Failed!!! -----------------------------------
+month: 0 day: 0 hour: 15 step: 0 discharge: 1 batt_to_load: 23.7376 pmax: 92.3222 discharge_percent: 25 profile: 3 weekend: 0
+------------------------------------------------------------------
+Test 14: failed - Manual power test
+Test 15: passed - PV charge battery test
+Scenario Settings
+pv_choice: 0 weather: 0 load_profile: 0 analysis_period: 0 chemistry: 4
+load_profile: C:\Users\ndiorio\Documents\Data\One-hour load\SAM_default.txt
+Test 1: passed - Bank sizing test
+Test 2: passed - Chemisty test
+Test 3: passed - Voltage curve test
+Test 4: passed - Current test
+Test 5: passed - Efficiencies test
+Test 6: passed - Charge test
+Test 7: passed - Power-to-load test
+Test 8: passed - Power-to-battery test
+Test 9: passed -  Charge state test
+Test 10: passed - Cycle test
+Test 11: passed - Peak shaving test
+Test 12: passed - Replacements test
+Test 13: passed - Target power test
+------- Manual Dispatch Failed!!! -----------------------------------
+month: 0 day: 0 hour: 15 step: 0 discharge: 1 batt_to_load: 23.7376 pmax: 92.3222 discharge_percent: 25 profile: 3 weekend: 0
+------------------------------------------------------------------
+Test 14: failed - Manual power test
+Test 15: passed - PV charge battery test
+Scenario Settings
+pv_choice: 0 weather: 0 load_profile: 0 analysis_period: 0 chemistry: 5
+load_profile: C:\Users\ndiorio\Documents\Data\One-hour load\SAM_default.txt
+Test 1: passed - Bank sizing test
+Test 2: passed - Chemisty test
+Test 3: passed - Voltage curve test
+Test 4: passed - Current test
+Test 5: passed - Efficiencies test
+Test 6: passed - Charge test
+Test 7: passed - Power-to-load test
+Test 8: passed - Power-to-battery test
+Test 9: passed -  Charge state test
+Test 10: passed - Cycle test
+Test 11: passed - Peak shaving test
+Test 12: passed - Replacements test
+Test 13: passed - Target power test
+------- Manual Dispatch Failed!!! -----------------------------------
+month: 0 day: 0 hour: 15 step: 0 discharge: 1 batt_to_load: 23.7376 pmax: 92.3222 discharge_percent: 25 profile: 3 weekend: 0
+------------------------------------------------------------------
+Test 14: failed - Manual power test
+Test 15: passed - PV charge battery test
+Scenario Settings
+pv_choice: 0 weather: 0 load_profile: 0 analysis_period: 0 chemistry: 6
+load_profile: C:\Users\ndiorio\Documents\Data\One-hour load\SAM_default.txt
+Test 1: passed - Bank sizing test
+Test 2: passed - Chemisty test
+Test 3: passed - Voltage curve test
+Test 4: passed - Current test
+Test 5: passed - Efficiencies test
+Test 6: passed - Charge test
+Test 7: passed - Power-to-load test
+Test 8: passed - Power-to-battery test
+Test 9: passed -  Charge state test
+Test 10: passed - Cycle test
+Test 11: passed - Peak shaving test
+Test 12: passed - Replacements test
+Test 13: passed - Target power test
+------- Manual Dispatch Failed!!! -----------------------------------
+month: 0 day: 0 hour: 15 step: 0 discharge: 1 batt_to_load: 23.7376 pmax: 92.3222 discharge_percent: 25 profile: 3 weekend: 0
+------------------------------------------------------------------
+Test 14: failed - Manual power test
+Test 15: passed - PV charge battery test
+Scenario Settings
+pv_choice: 0 weather: 0 load_profile: 0 analysis_period: 0 chemistry: 7
+load_profile: C:\Users\ndiorio\Documents\Data\One-hour load\SAM_default.txt
+Test 1: passed - Bank sizing test
+Test 2: passed - Chemisty test
+Test 3: passed - Voltage curve test
+Test 4: passed - Current test
+Test 5: passed - Efficiencies test
+Test 6: passed - Charge test
+Test 7: passed - Power-to-load test
+Test 8: passed - Power-to-battery test
+Test 9: passed -  Charge state test
+Test 10: passed - Cycle test
+Test 11: passed - Peak shaving test
+Test 12: passed - Replacements test
+Test 13: passed - Target power test
+------- Manual Dispatch Failed!!! -----------------------------------
+month: 0 day: 0 hour: 15 step: 0 discharge: 1 batt_to_load: 23.7376 pmax: 92.3222 discharge_percent: 25 profile: 3 weekend: 0
+------------------------------------------------------------------
+Test 14: failed - Manual power test
+Test 15: passed - PV charge battery test
+Scenario Settings
+pv_choice: 0 weather: 0 load_profile: 0 analysis_period: 0 chemistry: 8
+load_profile: C:\Users\ndiorio\Documents\Data\One-hour load\SAM_default.txt
+Test 1: passed - Bank sizing test
+Test 2: passed - Chemisty test
+Test 3: passed - Voltage curve test
+Test 4: passed - Current test
+Test 5: passed - Efficiencies test
+Test 6: passed - Charge test
+Test 7: passed - Power-to-load test
+Test 8: passed - Power-to-battery test
+Test 9: passed -  Charge state test
+Test 10: passed - Cycle test
+Test 11: passed - Peak shaving test
+Test 12: passed - Replacements test
+Test 13: passed - Target power test
+------- Manual Dispatch Failed!!! -----------------------------------
+month: 0 day: 0 hour: 15 step: 0 discharge: 1 batt_to_load: 23.7376 pmax: 92.3222 discharge_percent: 25 profile: 3 weekend: 0
+------------------------------------------------------------------
+Test 14: failed - Manual power test
+Test 15: passed - PV charge battery test
+Scenario Settings
+pv_choice: 0 weather: 0 load_profile: 0 analysis_period: 0 chemistry: 9
+load_profile: C:\Users\ndiorio\Documents\Data\One-hour load\SAM_default.txt
+Test 1: passed - Bank sizing test
+Test 2: passed - Chemisty test
+Test 3: passed - Voltage curve test
+Test 4: passed - Current test
+Test 5: passed - Efficiencies test
+Test 6: passed - Charge test
+Test 7: passed - Power-to-load test
+Test 8: passed - Power-to-battery test
+Test 9: passed -  Charge state test
+Test 10: passed - Cycle test
+Test 11: passed - Peak shaving test
+Test 12: passed - Replacements test
+Test 13: passed - Target power test
+------- Manual Dispatch Failed!!! -----------------------------------
+month: 0 day: 0 hour: 15 step: 0 discharge: 1 batt_to_load: 23.7376 pmax: 92.3222 discharge_percent: 25 profile: 3 weekend: 0
+------------------------------------------------------------------
+Test 14: failed - Manual power test
+Test 15: passed - PV charge battery test
+Scenario Settings
+pv_choice: 0 weather: 0 load_profile: 0 analysis_period: 0 chemistry: 10
+load_profile: C:\Users\ndiorio\Documents\Data\One-hour load\SAM_default.txt
+Test 1: passed - Bank sizing test
+Test 2: passed - Chemisty test
+Test 3: passed - Voltage curve test
+Test 4: passed - Current test
+Test 5: passed - Efficiencies test
+Test 6: passed - Charge test
+Test 7: passed - Power-to-load test
+Test 8: passed - Power-to-battery test
+Test 9: passed -  Charge state test
+Test 10: passed - Cycle test
+Test 11: passed - Peak shaving test
+Test 12: passed - Replacements test
+Test 13: passed - Target power test
+------- Manual Dispatch Failed!!! -----------------------------------
+month: 0 day: 0 hour: 15 step: 0 discharge: 1 batt_to_load: 23.7376 pmax: 92.3222 discharge_percent: 25 profile: 3 weekend: 0
+------------------------------------------------------------------
+Test 14: failed - Manual power test
+Test 15: passed - PV charge battery test
+Scenario Settings
+pv_choice: 0 weather: 0 load_profile: 0 analysis_period: 1 chemistry: 0
+load_profile: C:\Users\ndiorio\Documents\Data\One-hour load\SAM_default.txt
+Test 1: passed - Bank sizing test
+Test 2: passed - Chemisty test
+Test 3: passed - Voltage curve test
+Test 7: passed - Power-to-load test
+Test 8: passed - Power-to-battery test
+Test 11: passed - Peak shaving test
+Test 12: passed - Replacements test
+Test 13: passed - Target power test
+Test 15: passed - PV charge battery test
+Scenario Settings
+pv_choice: 0 weather: 0 load_profile: 0 analysis_period: 1 chemistry: 1
+load_profile: C:\Users\ndiorio\Documents\Data\One-hour load\SAM_default.txt
+Test 1: passed - Bank sizing test
+Test 2: passed - Chemisty test
+Test 3: passed - Voltage curve test
+Test 7: passed - Power-to-load test
+Test 8: passed - Power-to-battery test
+Test 11: passed - Peak shaving test
+Test 12: passed - Replacements test
+Test 13: passed - Target power test
+Test 15: passed - PV charge battery test
+Scenario Settings
+pv_choice: 0 weather: 0 load_profile: 0 analysis_period: 1 chemistry: 2
+load_profile: C:\Users\ndiorio\Documents\Data\One-hour load\SAM_default.txt
+Test 1: passed - Bank sizing test
+Test 2: passed - Chemisty test
+Test 3: passed - Voltage curve test
+Test 7: passed - Power-to-load test
+Test 8: passed - Power-to-battery test
+Test 11: passed - Peak shaving test
+Test 12: passed - Replacements test
+Test 13: passed - Target power test
+Test 15: passed - PV charge battery test
+Scenario Settings
+pv_choice: 0 weather: 0 load_profile: 0 analysis_period: 1 chemistry: 3
+load_profile: C:\Users\ndiorio\Documents\Data\One-hour load\SAM_default.txt
+Test 1: passed - Bank sizing test
+Test 2: passed - Chemisty test
+Test 3: passed - Voltage curve test
+Test 7: passed - Power-to-load test
+Test 8: passed - Power-to-battery test
+Test 11: passed - Peak shaving test
+Test 12: passed - Replacements test
+Test 13: passed - Target power test
+Test 15: passed - PV charge battery test
+Scenario Settings
+pv_choice: 0 weather: 0 load_profile: 0 analysis_period: 1 chemistry: 4
+load_profile: C:\Users\ndiorio\Documents\Data\One-hour load\SAM_default.txt
+Test 1: passed - Bank sizing test
+Test 2: passed - Chemisty test
+Test 3: passed - Voltage curve test
+Test 7: passed - Power-to-load test
+Test 8: passed - Power-to-battery test
+Test 11: passed - Peak shaving test
+Test 12: passed - Replacements test
+Test 13: passed - Target power test
+Test 15: passed - PV charge battery test
+Scenario Settings
+pv_choice: 0 weather: 0 load_profile: 0 analysis_period: 1 chemistry: 5
+load_profile: C:\Users\ndiorio\Documents\Data\One-hour load\SAM_default.txt
+Test 1: passed - Bank sizing test
+Test 2: passed - Chemisty test
+Test 3: passed - Voltage curve test
+Test 7: passed - Power-to-load test
+Test 8: passed - Power-to-battery test
+Test 11: passed - Peak shaving test
+Test 12: passed - Replacements test
+Test 13: passed - Target power test
+Test 15: passed - PV charge battery test
+Scenario Settings
+pv_choice: 0 weather: 0 load_profile: 0 analysis_period: 1 chemistry: 6
+load_profile: C:\Users\ndiorio\Documents\Data\One-hour load\SAM_default.txt
+Test 1: passed - Bank sizing test
+Test 2: passed - Chemisty test
+Test 3: passed - Voltage curve test
+Test 7: passed - Power-to-load test
+Test 8: passed - Power-to-battery test
+Test 11: passed - Peak shaving test
+Test 12: passed - Replacements test
+Test 13: passed - Target power test
+Test 15: passed - PV charge battery test
+Scenario Settings
+pv_choice: 0 weather: 0 load_profile: 0 analysis_period: 1 chemistry: 7
+load_profile: C:\Users\ndiorio\Documents\Data\One-hour load\SAM_default.txt
+Test 1: passed - Bank sizing test
+Test 2: passed - Chemisty test
+Test 3: passed - Voltage curve test
+Test 7: passed - Power-to-load test
+Test 8: passed - Power-to-battery test
+Test 11: passed - Peak shaving test
+Test 12: passed - Replacements test
+Test 13: passed - Target power test
+Test 15: passed - PV charge battery test
+Scenario Settings
+pv_choice: 0 weather: 0 load_profile: 0 analysis_period: 1 chemistry: 8
+load_profile: C:\Users\ndiorio\Documents\Data\One-hour load\SAM_default.txt
+Test 1: passed - Bank sizing test
+Test 2: passed - Chemisty test
+Test 3: passed - Voltage curve test
+Test 7: passed - Power-to-load test
+Test 8: passed - Power-to-battery test
+Test 11: passed - Peak shaving test
+Test 12: passed - Replacements test
+Test 13: passed - Target power test
+Test 15: passed - PV charge battery test
+Scenario Settings
+pv_choice: 0 weather: 0 load_profile: 0 analysis_period: 1 chemistry: 9
+load_profile: C:\Users\ndiorio\Documents\Data\One-hour load\SAM_default.txt
+Test 1: passed - Bank sizing test
+Test 2: passed - Chemisty test
+Test 3: passed - Voltage curve test
+Test 7: passed - Power-to-load test
+Test 8: passed - Power-to-battery test
+Test 11: passed - Peak shaving test
+Test 12: passed - Replacements test
+Test 13: passed - Target power test
+Test 15: passed - PV charge battery test
+Scenario Settings
+pv_choice: 0 weather: 0 load_profile: 0 analysis_period: 1 chemistry: 10
+load_profile: C:\Users\ndiorio\Documents\Data\One-hour load\SAM_default.txt
+Test 1: passed - Bank sizing test
+Test 2: passed - Chemisty test
+Test 3: passed - Voltage curve test
+Test 7: passed - Power-to-load test
+Test 8: passed - Power-to-battery test
+Test 11: passed - Peak shaving test
+Test 12: passed - Replacements test
+Test 13: passed - Target power test
+Test 15: passed - PV charge battery test
+Scenario Settings
+pv_choice: 0 weather: 0 load_profile: 1 analysis_period: 0 chemistry: 0
+load_profile: C:\Users\ndiorio\Documents\Data\15-minute load\El Monte.txt
+Test 1: passed - Bank sizing test
+Test 2: passed - Chemisty test
+Test 3: passed - Voltage curve test
+Test 4: passed - Current test
+Test 5: passed - Efficiencies test
+Test 6: passed - Charge test
+Test 7: passed - Power-to-load test
+Test 8: passed - Power-to-battery test
+Test 9: passed -  Charge state test
+Test 10: passed - Cycle test
+Test 11: passed - Peak shaving test
+Test 12: passed - Replacements test
+Test 13: passed - Target power test
+------- Manual Dispatch Failed!!! -----------------------------------
+month: 0 day: 0 hour: 15 step: 0 discharge: 1 batt_to_load: 23.7376 pmax: 92.3222 discharge_percent: 25 profile: 3 weekend: 0
+------------------------------------------------------------------
+Test 14: failed - Manual power test
+Test 15: passed - PV charge battery test
+Scenario Settings
+pv_choice: 0 weather: 0 load_profile: 1 analysis_period: 0 chemistry: 1
+load_profile: C:\Users\ndiorio\Documents\Data\15-minute load\El Monte.txt
+Test 1: passed - Bank sizing test
+Test 2: passed - Chemisty test
+Test 3: passed - Voltage curve test
+Test 4: passed - Current test
+Test 5: passed - Efficiencies test
+Test 6: passed - Charge test
+Test 7: passed - Power-to-load test
+Test 8: passed - Power-to-battery test
+Test 9: passed -  Charge state test
+Test 10: passed - Cycle test
+Test 11: passed - Peak shaving test
+Test 12: passed - Replacements test
+Test 13: passed - Target power test
+------- Manual Dispatch Failed!!! -----------------------------------
+month: 0 day: 0 hour: 15 step: 0 discharge: 1 batt_to_load: 23.7376 pmax: 92.3222 discharge_percent: 25 profile: 3 weekend: 0
+------------------------------------------------------------------
+Test 14: failed - Manual power test
+Test 15: passed - PV charge battery test
+Scenario Settings
+pv_choice: 0 weather: 0 load_profile: 1 analysis_period: 0 chemistry: 2
+load_profile: C:\Users\ndiorio\Documents\Data\15-minute load\El Monte.txt
+Test 1: passed - Bank sizing test
+Test 2: passed - Chemisty test
+Test 3: passed - Voltage curve test
+Test 4: passed - Current test
+Test 5: passed - Efficiencies test
+Test 6: passed - Charge test
+Test 7: passed - Power-to-load test
+Test 8: passed - Power-to-battery test
+Test 9: passed -  Charge state test
+Test 10: passed - Cycle test
+Test 11: passed - Peak shaving test
+Test 12: passed - Replacements test
+Test 13: passed - Target power test
+------- Manual Dispatch Failed!!! -----------------------------------
+month: 0 day: 0 hour: 15 step: 0 discharge: 1 batt_to_load: 23.7376 pmax: 92.3222 discharge_percent: 25 profile: 3 weekend: 0
+------------------------------------------------------------------
+Test 14: failed - Manual power test
+Test 15: passed - PV charge battery test
+Scenario Settings
+pv_choice: 0 weather: 0 load_profile: 1 analysis_period: 0 chemistry: 3
+load_profile: C:\Users\ndiorio\Documents\Data\15-minute load\El Monte.txt
+Test 1: passed - Bank sizing test
+Test 2: passed - Chemisty test
+Test 3: passed - Voltage curve test
+Test 4: passed - Current test
+Test 5: passed - Efficiencies test
+Test 6: passed - Charge test
+Test 7: passed - Power-to-load test
+Test 8: passed - Power-to-battery test
+Test 9: passed -  Charge state test
+Test 10: passed - Cycle test
+Test 11: passed - Peak shaving test
+Test 12: passed - Replacements test
+Test 13: passed - Target power test
+------- Manual Dispatch Failed!!! -----------------------------------
+month: 0 day: 0 hour: 15 step: 0 discharge: 1 batt_to_load: 23.7376 pmax: 92.3222 discharge_percent: 25 profile: 3 weekend: 0
+------------------------------------------------------------------
+Test 14: failed - Manual power test
+Test 15: passed - PV charge battery test
+Scenario Settings
+pv_choice: 0 weather: 0 load_profile: 1 analysis_period: 0 chemistry: 4
+load_profile: C:\Users\ndiorio\Documents\Data\15-minute load\El Monte.txt
+Test 1: passed - Bank sizing test
+Test 2: passed - Chemisty test
+Test 3: passed - Voltage curve test
+Test 4: passed - Current test
+Test 5: passed - Efficiencies test
+Test 6: passed - Charge test
+Test 7: passed - Power-to-load test
+Test 8: passed - Power-to-battery test
+Test 9: passed -  Charge state test
+Test 10: passed - Cycle test
+Test 11: passed - Peak shaving test
+Test 12: passed - Replacements test
+Test 13: passed - Target power test
+------- Manual Dispatch Failed!!! -----------------------------------
+month: 0 day: 0 hour: 15 step: 0 discharge: 1 batt_to_load: 23.7376 pmax: 92.3222 discharge_percent: 25 profile: 3 weekend: 0
+------------------------------------------------------------------
+Test 14: failed - Manual power test
+Test 15: passed - PV charge battery test
+Scenario Settings
+pv_choice: 0 weather: 0 load_profile: 1 analysis_period: 0 chemistry: 5
+load_profile: C:\Users\ndiorio\Documents\Data\15-minute load\El Monte.txt
+Test 1: passed - Bank sizing test
+Test 2: passed - Chemisty test
+Test 3: passed - Voltage curve test
+Test 4: passed - Current test
+Test 5: passed - Efficiencies test
+Test 6: passed - Charge test
+Test 7: passed - Power-to-load test
+Test 8: passed - Power-to-battery test
+Test 9: passed -  Charge state test
+Test 10: passed - Cycle test
+Test 11: passed - Peak shaving test
+Test 12: passed - Replacements test
+Test 13: passed - Target power test
+------- Manual Dispatch Failed!!! -----------------------------------
+month: 0 day: 0 hour: 15 step: 0 discharge: 1 batt_to_load: 23.7376 pmax: 92.3222 discharge_percent: 25 profile: 3 weekend: 0
+------------------------------------------------------------------
+Test 14: failed - Manual power test
+Test 15: passed - PV charge battery test
+Scenario Settings
+pv_choice: 0 weather: 0 load_profile: 1 analysis_period: 0 chemistry: 6
+load_profile: C:\Users\ndiorio\Documents\Data\15-minute load\El Monte.txt
+Test 1: passed - Bank sizing test
+Test 2: passed - Chemisty test
+Test 3: passed - Voltage curve test
+Test 4: passed - Current test
+Test 5: passed - Efficiencies test
+Test 6: passed - Charge test
+Test 7: passed - Power-to-load test
+Test 8: passed - Power-to-battery test
+Test 9: passed -  Charge state test
+Test 10: passed - Cycle test
+Test 11: passed - Peak shaving test
+Test 12: passed - Replacements test
+Test 13: passed - Target power test
+------- Manual Dispatch Failed!!! -----------------------------------
+month: 0 day: 0 hour: 15 step: 0 discharge: 1 batt_to_load: 23.7376 pmax: 92.3222 discharge_percent: 25 profile: 3 weekend: 0
+------------------------------------------------------------------
+Test 14: failed - Manual power test
+Test 15: passed - PV charge battery test
+Scenario Settings
+pv_choice: 0 weather: 0 load_profile: 1 analysis_period: 0 chemistry: 7
+load_profile: C:\Users\ndiorio\Documents\Data\15-minute load\El Monte.txt
+Test 1: passed - Bank sizing test
+Test 2: passed - Chemisty test
+Test 3: passed - Voltage curve test
+Test 4: passed - Current test
+Test 5: passed - Efficiencies test
+Test 6: passed - Charge test
+Test 7: passed - Power-to-load test
+Test 8: passed - Power-to-battery test
+Test 9: passed -  Charge state test
+Test 10: passed - Cycle test
+Test 11: passed - Peak shaving test
+Test 12: passed - Replacements test
+Test 13: passed - Target power test
+------- Manual Dispatch Failed!!! -----------------------------------
+month: 0 day: 0 hour: 15 step: 0 discharge: 1 batt_to_load: 23.7376 pmax: 92.3222 discharge_percent: 25 profile: 3 weekend: 0
+------------------------------------------------------------------
+Test 14: failed - Manual power test
+Test 15: passed - PV charge battery test
+Scenario Settings
+pv_choice: 0 weather: 0 load_profile: 1 analysis_period: 0 chemistry: 8
+load_profile: C:\Users\ndiorio\Documents\Data\15-minute load\El Monte.txt
+Test 1: passed - Bank sizing test
+Test 2: passed - Chemisty test
+Test 3: passed - Voltage curve test
+Test 4: passed - Current test
+Test 5: passed - Efficiencies test
+Test 6: passed - Charge test
+Test 7: passed - Power-to-load test
+Test 8: passed - Power-to-battery test
+Test 9: passed -  Charge state test
+Test 10: passed - Cycle test
+Test 11: passed - Peak shaving test
+Test 12: passed - Replacements test
+Test 13: passed - Target power test
+------- Manual Dispatch Failed!!! -----------------------------------
+month: 0 day: 0 hour: 15 step: 0 discharge: 1 batt_to_load: 23.7376 pmax: 92.3222 discharge_percent: 25 profile: 3 weekend: 0
+------------------------------------------------------------------
+Test 14: failed - Manual power test
+Test 15: passed - PV charge battery test
+Scenario Settings
+pv_choice: 0 weather: 0 load_profile: 1 analysis_period: 0 chemistry: 9
+load_profile: C:\Users\ndiorio\Documents\Data\15-minute load\El Monte.txt
+Test 1: passed - Bank sizing test
+Test 2: passed - Chemisty test
+Test 3: passed - Voltage curve test
+Test 4: passed - Current test
+Test 5: passed - Efficiencies test
+Test 6: passed - Charge test
+Test 7: passed - Power-to-load test
+Test 8: passed - Power-to-battery test
+Test 9: passed -  Charge state test
+Test 10: passed - Cycle test
+Test 11: passed - Peak shaving test
+Test 12: passed - Replacements test
+Test 13: passed - Target power test
+------- Manual Dispatch Failed!!! -----------------------------------
+month: 0 day: 0 hour: 15 step: 0 discharge: 1 batt_to_load: 23.7376 pmax: 92.3222 discharge_percent: 25 profile: 3 weekend: 0
+------------------------------------------------------------------
+Test 14: failed - Manual power test
+Test 15: passed - PV charge battery test
+Scenario Settings
+pv_choice: 0 weather: 0 load_profile: 1 analysis_period: 0 chemistry: 10
+load_profile: C:\Users\ndiorio\Documents\Data\15-minute load\El Monte.txt
+Test 1: passed - Bank sizing test
+Test 2: passed - Chemisty test
+Test 3: passed - Voltage curve test
+Test 4: passed - Current test
+Test 5: passed - Efficiencies test
+Test 6: passed - Charge test
+Test 7: passed - Power-to-load test
+Test 8: passed - Power-to-battery test
+Test 9: passed -  Charge state test
+Test 10: passed - Cycle test
+Test 11: passed - Peak shaving test
+Test 12: passed - Replacements test
+Test 13: passed - Target power test
+------- Manual Dispatch Failed!!! -----------------------------------
+month: 0 day: 0 hour: 15 step: 0 discharge: 1 batt_to_load: 23.7376 pmax: 92.3222 discharge_percent: 25 profile: 3 weekend: 0
+------------------------------------------------------------------
+Test 14: failed - Manual power test
+Test 15: passed - PV charge battery test
+Scenario Settings
+pv_choice: 0 weather: 0 load_profile: 1 analysis_period: 1 chemistry: 0
+load_profile: C:\Users\ndiorio\Documents\Data\15-minute load\El Monte.txt
+Test 1: passed - Bank sizing test
+Test 2: passed - Chemisty test
+Test 3: passed - Voltage curve test
+Test 7: passed - Power-to-load test
+Test 8: passed - Power-to-battery test
+Test 11: passed - Peak shaving test
+Test 12: passed - Replacements test
+Test 13: passed - Target power test
+Test 15: passed - PV charge battery test
+Scenario Settings
+pv_choice: 0 weather: 0 load_profile: 1 analysis_period: 1 chemistry: 1
+load_profile: C:\Users\ndiorio\Documents\Data\15-minute load\El Monte.txt
+Test 1: passed - Bank sizing test
+Test 2: passed - Chemisty test
+Test 3: passed - Voltage curve test
+Test 7: passed - Power-to-load test
+Test 8: passed - Power-to-battery test
+Test 11: passed - Peak shaving test
+Test 12: passed - Replacements test
+Test 13: passed - Target power test
+Test 15: passed - PV charge battery test
+Scenario Settings
+pv_choice: 0 weather: 0 load_profile: 1 analysis_period: 1 chemistry: 2
+load_profile: C:\Users\ndiorio\Documents\Data\15-minute load\El Monte.txt
+Test 1: passed - Bank sizing test
+Test 2: passed - Chemisty test
+Test 3: passed - Voltage curve test
+Test 7: passed - Power-to-load test
+Test 8: passed - Power-to-battery test
+Test 11: passed - Peak shaving test
+Test 12: passed - Replacements test
+Test 13: passed - Target power test
+Test 15: passed - PV charge battery test
+Scenario Settings
+pv_choice: 0 weather: 0 load_profile: 1 analysis_period: 1 chemistry: 3
+load_profile: C:\Users\ndiorio\Documents\Data\15-minute load\El Monte.txt
+Test 1: passed - Bank sizing test
+Test 2: passed - Chemisty test
+Test 3: passed - Voltage curve test
+Test 7: passed - Power-to-load test
+Test 8: passed - Power-to-battery test
+Test 11: passed - Peak shaving test
+Test 12: passed - Replacements test
+Test 13: passed - Target power test
+Test 15: passed - PV charge battery test
+Scenario Settings
+pv_choice: 0 weather: 0 load_profile: 1 analysis_period: 1 chemistry: 4
+load_profile: C:\Users\ndiorio\Documents\Data\15-minute load\El Monte.txt
+Test 1: passed - Bank sizing test
+Test 2: passed - Chemisty test
+Test 3: passed - Voltage curve test
+Test 7: passed - Power-to-load test
+Test 8: passed - Power-to-battery test
+Test 11: passed - Peak shaving test
+Test 12: passed - Replacements test
+Test 13: passed - Target power test
+Test 15: passed - PV charge battery test
+Scenario Settings
+pv_choice: 0 weather: 0 load_profile: 1 analysis_period: 1 chemistry: 5
+load_profile: C:\Users\ndiorio\Documents\Data\15-minute load\El Monte.txt
+Test 1: passed - Bank sizing test
+Test 2: passed - Chemisty test
+Test 3: passed - Voltage curve test
+Test 7: passed - Power-to-load test
+Test 8: passed - Power-to-battery test
+Test 11: passed - Peak shaving test
+Test 12: passed - Replacements test
+Test 13: passed - Target power test
+Test 15: passed - PV charge battery test
+Scenario Settings
+pv_choice: 0 weather: 0 load_profile: 1 analysis_period: 1 chemistry: 6
+load_profile: C:\Users\ndiorio\Documents\Data\15-minute load\El Monte.txt
+Test 1: passed - Bank sizing test
+Test 2: passed - Chemisty test
+Test 3: passed - Voltage curve test
+Test 7: passed - Power-to-load test
+Test 8: passed - Power-to-battery test
+Test 11: passed - Peak shaving test
+Test 12: passed - Replacements test
+Test 13: passed - Target power test
+Test 15: passed - PV charge battery test
+Scenario Settings
+pv_choice: 0 weather: 0 load_profile: 1 analysis_period: 1 chemistry: 7
+load_profile: C:\Users\ndiorio\Documents\Data\15-minute load\El Monte.txt
+Test 1: passed - Bank sizing test
+Test 2: passed - Chemisty test
+Test 3: passed - Voltage curve test
+Test 7: passed - Power-to-load test
+Test 8: passed - Power-to-battery test
+Test 11: passed - Peak shaving test
+Test 12: passed - Replacements test
+Test 13: passed - Target power test
+Test 15: passed - PV charge battery test
+Scenario Settings
+pv_choice: 0 weather: 0 load_profile: 1 analysis_period: 1 chemistry: 8
+load_profile: C:\Users\ndiorio\Documents\Data\15-minute load\El Monte.txt
+Test 1: passed - Bank sizing test
+Test 2: passed - Chemisty test
+Test 3: passed - Voltage curve test
+Test 7: passed - Power-to-load test
+Test 8: passed - Power-to-battery test
+Test 11: passed - Peak shaving test
+Test 12: passed - Replacements test
+Test 13: passed - Target power test
+Test 15: passed - PV charge battery test
+Scenario Settings
+pv_choice: 0 weather: 0 load_profile: 1 analysis_period: 1 chemistry: 9
+load_profile: C:\Users\ndiorio\Documents\Data\15-minute load\El Monte.txt
+Test 1: passed - Bank sizing test
+Test 2: passed - Chemisty test
+Test 3: passed - Voltage curve test
+Test 7: passed - Power-to-load test
+Test 8: passed - Power-to-battery test
+Test 11: passed - Peak shaving test
+Test 12: passed - Replacements test
+Test 13: passed - Target power test
+Test 15: passed - PV charge battery test
+Scenario Settings
+pv_choice: 0 weather: 0 load_profile: 1 analysis_period: 1 chemistry: 10
+load_profile: C:\Users\ndiorio\Documents\Data\15-minute load\El Monte.txt
+Test 1: passed - Bank sizing test
+Test 2: passed - Chemisty test
+Test 3: passed - Voltage curve test
+Test 7: passed - Power-to-load test
+Test 8: passed - Power-to-battery test
+Test 11: passed - Peak shaving test
+Test 12: passed - Replacements test
+Test 13: passed - Target power test
+Test 15: passed - PV charge battery test
+Scenario Settings
+pv_choice: 0 weather: 1 load_profile: 0 analysis_period: 0 chemistry: 0
+weather_file: C:\Users\ndiorio\Documents\Data\One-minute weather\FortLauderdale.csv
+load_profile: C:\Users\ndiorio\Documents\Data\One-hour load\SAM_default.txt
+Test 1: passed - Bank sizing test
+Test 2: passed - Chemisty test
+Test 3: passed - Voltage curve test
+Test 4: passed - Current test
+Test 5: passed - Efficiencies test
+Test 6: passed - Charge test
+Test 7: passed - Power-to-load test
+Test 8: passed - Power-to-battery test
+Test 9: passed -  Charge state test
+Test 10: passed - Cycle test
+Test 11: passed - Peak shaving test
+Test 12: passed - Replacements test
+Test 13: passed - Target power test
+------- Manual Dispatch Failed!!! -----------------------------------
+month: 0 day: 7 hour: 9 step: 2 gridcharge: 0 grid_to_batt: 0.592331 pmax: 7615.26 gridcharge_percent: 0 profile: 1 weekend: 0
+------------------------------------------------------------------
+Test 14: failed - Manual power test
+Test 15: passed - PV charge battery test
+Scenario Settings
+pv_choice: 0 weather: 1 load_profile: 0 analysis_period: 0 chemistry: 1
+weather_file: C:\Users\ndiorio\Documents\Data\One-minute weather\FortLauderdale.csv
+load_profile: C:\Users\ndiorio\Documents\Data\One-hour load\SAM_default.txt
+Test 1: passed - Bank sizing test
+Test 2: passed - Chemisty test
+Test 3: passed - Voltage curve test
+Test 4: passed - Current test
+Test 5: passed - Efficiencies test
+Test 6: passed - Charge test
+Test 7: passed - Power-to-load test
+Test 8: passed - Power-to-battery test
+Test 9: passed -  Charge state test
+Test 10: passed - Cycle test
+Test 11: passed - Peak shaving test
+Test 12: passed - Replacements test
+Test 13: passed - Target power test
+------- Manual Dispatch Failed!!! -----------------------------------
+month: 0 day: 7 hour: 9 step: 2 gridcharge: 0 grid_to_batt: 0.592331 pmax: 7615.26 gridcharge_percent: 0 profile: 1 weekend: 0
+------------------------------------------------------------------
+Test 14: failed - Manual power test
+Test 15: passed - PV charge battery test
+Scenario Settings
+pv_choice: 0 weather: 1 load_profile: 0 analysis_period: 0 chemistry: 2
+weather_file: C:\Users\ndiorio\Documents\Data\One-minute weather\FortLauderdale.csv
+load_profile: C:\Users\ndiorio\Documents\Data\One-hour load\SAM_default.txt
+Test 1: passed - Bank sizing test
+Test 2: passed - Chemisty test
+Test 3: passed - Voltage curve test
+Test 4: passed - Current test
+Test 5: passed - Efficiencies test
+Test 6: passed - Charge test
+Test 7: passed - Power-to-load test
+Test 8: passed - Power-to-battery test
+Test 9: passed -  Charge state test
+Test 10: passed - Cycle test
+Test 11: passed - Peak shaving test
+Test 12: passed - Replacements test
+Test 13: passed - Target power test
+------- Manual Dispatch Failed!!! -----------------------------------
+month: 0 day: 7 hour: 9 step: 2 gridcharge: 0 grid_to_batt: 0.592331 pmax: 7615.26 gridcharge_percent: 0 profile: 1 weekend: 0
+------------------------------------------------------------------
+Test 14: failed - Manual power test
+Test 15: passed - PV charge battery test
+Scenario Settings
+pv_choice: 0 weather: 1 load_profile: 0 analysis_period: 0 chemistry: 3
+weather_file: C:\Users\ndiorio\Documents\Data\One-minute weather\FortLauderdale.csv
+load_profile: C:\Users\ndiorio\Documents\Data\One-hour load\SAM_default.txt
+Test 1: passed - Bank sizing test
+Test 2: passed - Chemisty test
+Test 3: passed - Voltage curve test
+Test 4: passed - Current test
+Test 5: passed - Efficiencies test
+Test 6: passed - Charge test
+Test 7: passed - Power-to-load test
+Test 8: passed - Power-to-battery test
+Test 9: passed -  Charge state test
+Test 10: passed - Cycle test
+Test 11: passed - Peak shaving test
+Test 12: passed - Replacements test
+Test 13: passed - Target power test
+------- Manual Dispatch Failed!!! -----------------------------------
+month: 0 day: 7 hour: 9 step: 2 gridcharge: 0 grid_to_batt: 0.592331 pmax: 7615.26 gridcharge_percent: 0 profile: 1 weekend: 0
+------------------------------------------------------------------
+Test 14: failed - Manual power test
+Test 15: passed - PV charge battery test
+Scenario Settings
+pv_choice: 0 weather: 1 load_profile: 0 analysis_period: 0 chemistry: 4
+weather_file: C:\Users\ndiorio\Documents\Data\One-minute weather\FortLauderdale.csv
+load_profile: C:\Users\ndiorio\Documents\Data\One-hour load\SAM_default.txt
+Test 1: passed - Bank sizing test
+Test 2: passed - Chemisty test
+Test 3: passed - Voltage curve test
+Test 4: passed - Current test
+Test 5: passed - Efficiencies test
+Test 6: passed - Charge test
+Test 7: passed - Power-to-load test
+Test 8: passed - Power-to-battery test
+Test 9: passed -  Charge state test
+Test 10: passed - Cycle test
+Test 11: passed - Peak shaving test
+Test 12: passed - Replacements test
+Test 13: passed - Target power test
+------- Manual Dispatch Failed!!! -----------------------------------
+month: 0 day: 7 hour: 9 step: 2 gridcharge: 0 grid_to_batt: 0.592331 pmax: 7615.26 gridcharge_percent: 0 profile: 1 weekend: 0
+------------------------------------------------------------------
+Test 14: failed - Manual power test
+Test 15: passed - PV charge battery test
+Scenario Settings
+pv_choice: 0 weather: 1 load_profile: 0 analysis_period: 0 chemistry: 5
+weather_file: C:\Users\ndiorio\Documents\Data\One-minute weather\FortLauderdale.csv
+load_profile: C:\Users\ndiorio\Documents\Data\One-hour load\SAM_default.txt
+Test 1: passed - Bank sizing test
+Test 2: passed - Chemisty test
+Test 3: passed - Voltage curve test
+Test 4: passed - Current test
+Test 5: passed - Efficiencies test
+Test 6: passed - Charge test
+Test 7: passed - Power-to-load test
+Test 8: passed - Power-to-battery test
+Test 9: passed -  Charge state test
+Test 10: passed - Cycle test
+Test 11: passed - Peak shaving test
+Test 12: passed - Replacements test
+Test 13: passed - Target power test
+------- Manual Dispatch Failed!!! -----------------------------------
+month: 0 day: 7 hour: 9 step: 2 gridcharge: 0 grid_to_batt: 0.592331 pmax: 7615.26 gridcharge_percent: 0 profile: 1 weekend: 0
+------------------------------------------------------------------
+Test 14: failed - Manual power test
+Test 15: passed - PV charge battery test
+Scenario Settings
+pv_choice: 0 weather: 1 load_profile: 0 analysis_period: 0 chemistry: 6
+weather_file: C:\Users\ndiorio\Documents\Data\One-minute weather\FortLauderdale.csv
+load_profile: C:\Users\ndiorio\Documents\Data\One-hour load\SAM_default.txt
+Test 1: passed - Bank sizing test
+Test 2: passed - Chemisty test
+Test 3: passed - Voltage curve test
+Test 4: passed - Current test
+Test 5: passed - Efficiencies test
+Test 6: passed - Charge test
+Test 7: passed - Power-to-load test
+Test 8: passed - Power-to-battery test
+Test 9: passed -  Charge state test
+Test 10: passed - Cycle test
+Test 11: passed - Peak shaving test
+Test 12: passed - Replacements test
+Test 13: passed - Target power test
+------- Manual Dispatch Failed!!! -----------------------------------
+month: 0 day: 7 hour: 9 step: 2 gridcharge: 0 grid_to_batt: 0.592331 pmax: 7615.26 gridcharge_percent: 0 profile: 1 weekend: 0
+------------------------------------------------------------------
+Test 14: failed - Manual power test
+Test 15: passed - PV charge battery test
+Scenario Settings
+pv_choice: 0 weather: 1 load_profile: 0 analysis_period: 0 chemistry: 7
+weather_file: C:\Users\ndiorio\Documents\Data\One-minute weather\FortLauderdale.csv
+load_profile: C:\Users\ndiorio\Documents\Data\One-hour load\SAM_default.txt
+Test 1: passed - Bank sizing test
+Test 2: passed - Chemisty test
+Test 3: passed - Voltage curve test
+Test 4: passed - Current test
+Test 5: passed - Efficiencies test
+Test 6: passed - Charge test
+Test 7: passed - Power-to-load test
+Test 8: passed - Power-to-battery test
+Test 9: passed -  Charge state test
+Test 10: passed - Cycle test
+Test 11: passed - Peak shaving test
+Test 12: passed - Replacements test
+Test 13: passed - Target power test
+------- Manual Dispatch Failed!!! -----------------------------------
+month: 0 day: 7 hour: 9 step: 2 gridcharge: 0 grid_to_batt: 0.592331 pmax: 7615.26 gridcharge_percent: 0 profile: 1 weekend: 0
+------------------------------------------------------------------
+Test 14: failed - Manual power test
+Test 15: passed - PV charge battery test
+Scenario Settings
+pv_choice: 0 weather: 1 load_profile: 0 analysis_period: 0 chemistry: 8
+weather_file: C:\Users\ndiorio\Documents\Data\One-minute weather\FortLauderdale.csv
+load_profile: C:\Users\ndiorio\Documents\Data\One-hour load\SAM_default.txt
+Test 1: passed - Bank sizing test
+Test 2: passed - Chemisty test
+Test 3: passed - Voltage curve test
+Test 4: passed - Current test
+Test 5: passed - Efficiencies test
+Test 6: passed - Charge test
+Test 7: passed - Power-to-load test
+Test 8: passed - Power-to-battery test
+Test 9: passed -  Charge state test
+Test 10: passed - Cycle test
+Test 11: passed - Peak shaving test
+Test 12: passed - Replacements test
+Test 13: passed - Target power test
+------- Manual Dispatch Failed!!! -----------------------------------
+month: 0 day: 7 hour: 9 step: 2 gridcharge: 0 grid_to_batt: 0.592331 pmax: 7615.26 gridcharge_percent: 0 profile: 1 weekend: 0
+------------------------------------------------------------------
+Test 14: failed - Manual power test
+Test 15: passed - PV charge battery test
+Scenario Settings
+pv_choice: 0 weather: 1 load_profile: 0 analysis_period: 0 chemistry: 9
+weather_file: C:\Users\ndiorio\Documents\Data\One-minute weather\FortLauderdale.csv
+load_profile: C:\Users\ndiorio\Documents\Data\One-hour load\SAM_default.txt
+Test 1: passed - Bank sizing test
+Test 2: passed - Chemisty test
+Test 3: passed - Voltage curve test
+Test 4: passed - Current test
+Test 5: passed - Efficiencies test
+Test 6: passed - Charge test
+Test 7: passed - Power-to-load test
+Test 8: passed - Power-to-battery test
+Test 9: passed -  Charge state test
+Test 10: passed - Cycle test
+Test 11: passed - Peak shaving test
+Test 12: passed - Replacements test
+Test 13: passed - Target power test
+------- Manual Dispatch Failed!!! -----------------------------------
+month: 0 day: 7 hour: 9 step: 2 gridcharge: 0 grid_to_batt: 0.592331 pmax: 7615.26 gridcharge_percent: 0 profile: 1 weekend: 0
+------------------------------------------------------------------
+Test 14: failed - Manual power test
+Test 15: passed - PV charge battery test
+Scenario Settings
+pv_choice: 0 weather: 1 load_profile: 0 analysis_period: 0 chemistry: 10
+weather_file: C:\Users\ndiorio\Documents\Data\One-minute weather\FortLauderdale.csv
+load_profile: C:\Users\ndiorio\Documents\Data\One-hour load\SAM_default.txt
+Test 1: passed - Bank sizing test
+Test 2: passed - Chemisty test
+Test 3: passed - Voltage curve test
+Test 4: passed - Current test
+Test 5: passed - Efficiencies test
+Test 6: passed - Charge test
+Test 7: passed - Power-to-load test
+Test 8: passed - Power-to-battery test
+Test 9: passed -  Charge state test
+Test 10: passed - Cycle test
+Test 11: passed - Peak shaving test
+Test 12: passed - Replacements test
+Test 13: passed - Target power test
+------- Manual Dispatch Failed!!! -----------------------------------
+month: 0 day: 7 hour: 9 step: 2 gridcharge: 0 grid_to_batt: 0.592331 pmax: 7615.26 gridcharge_percent: 0 profile: 1 weekend: 0
+------------------------------------------------------------------
+Test 14: failed - Manual power test
+Test 15: passed - PV charge battery test
+Scenario Settings
+pv_choice: 0 weather: 1 load_profile: 0 analysis_period: 1 chemistry: 0
+weather_file: C:\Users\ndiorio\Documents\Data\One-minute weather\FortLauderdale.csv
+load_profile: C:\Users\ndiorio\Documents\Data\One-hour load\SAM_default.txt
+Test 1: passed - Bank sizing test
+Test 2: passed - Chemisty test
+Test 3: passed - Voltage curve test
+Test 7: passed - Power-to-load test
+Test 8: passed - Power-to-battery test
+Test 11: passed - Peak shaving test
+Test 12: passed - Replacements test
+Test 13: passed - Target power test
+Test 15: passed - PV charge battery test
+Scenario Settings
+pv_choice: 0 weather: 1 load_profile: 0 analysis_period: 1 chemistry: 1
+weather_file: C:\Users\ndiorio\Documents\Data\One-minute weather\FortLauderdale.csv
+load_profile: C:\Users\ndiorio\Documents\Data\One-hour load\SAM_default.txt
+Test 1: passed - Bank sizing test
+Test 2: passed - Chemisty test
+Test 3: passed - Voltage curve test
+Test 7: passed - Power-to-load test
+Test 8: passed - Power-to-battery test
+Test 11: passed - Peak shaving test
+Test 12: passed - Replacements test
+Test 13: passed - Target power test
+Test 15: passed - PV charge battery test
+Scenario Settings
+pv_choice: 0 weather: 1 load_profile: 0 analysis_period: 1 chemistry: 2
+weather_file: C:\Users\ndiorio\Documents\Data\One-minute weather\FortLauderdale.csv
+load_profile: C:\Users\ndiorio\Documents\Data\One-hour load\SAM_default.txt
+Test 1: passed - Bank sizing test
+Test 2: passed - Chemisty test
+Test 3: passed - Voltage curve test
+Test 7: passed - Power-to-load test
+Test 8: passed - Power-to-battery test
+Test 11: passed - Peak shaving test
+Test 12: passed - Replacements test
+Test 13: passed - Target power test
+Test 15: passed - PV charge battery test
+Scenario Settings
+pv_choice: 0 weather: 1 load_profile: 0 analysis_period: 1 chemistry: 3
+weather_file: C:\Users\ndiorio\Documents\Data\One-minute weather\FortLauderdale.csv
+load_profile: C:\Users\ndiorio\Documents\Data\One-hour load\SAM_default.txt
+Test 1: passed - Bank sizing test
+Test 2: passed - Chemisty test
+Test 3: passed - Voltage curve test
+Test 7: passed - Power-to-load test
+Test 8: passed - Power-to-battery test
+Test 11: passed - Peak shaving test
+Test 12: passed - Replacements test
+Test 13: passed - Target power test
+Test 15: passed - PV charge battery test
+Scenario Settings
+pv_choice: 0 weather: 1 load_profile: 0 analysis_period: 1 chemistry: 4
+weather_file: C:\Users\ndiorio\Documents\Data\One-minute weather\FortLauderdale.csv
+load_profile: C:\Users\ndiorio\Documents\Data\One-hour load\SAM_default.txt
+Test 1: passed - Bank sizing test
+Test 2: passed - Chemisty test
+Test 3: passed - Voltage curve test
+Test 7: passed - Power-to-load test
+Test 8: passed - Power-to-battery test
+Test 11: passed - Peak shaving test
+Test 12: passed - Replacements test
+Test 13: passed - Target power test
+Test 15: passed - PV charge battery test
+Scenario Settings
+pv_choice: 0 weather: 1 load_profile: 0 analysis_period: 1 chemistry: 5
+weather_file: C:\Users\ndiorio\Documents\Data\One-minute weather\FortLauderdale.csv
+load_profile: C:\Users\ndiorio\Documents\Data\One-hour load\SAM_default.txt
+Test 1: passed - Bank sizing test
+Test 2: passed - Chemisty test
+Test 3: passed - Voltage curve test
+Test 7: passed - Power-to-load test
