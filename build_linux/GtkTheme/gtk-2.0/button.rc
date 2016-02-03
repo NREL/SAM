@@ -1,0 +1,112 @@
+########################################################################
+# Button
+########################################################################
+
+style "button" = "defualt"
+{
+	engine "pixmap" 
+    {
+		image 
+		{
+			function = BOX
+			recolorable = TRUE
+			state = NORMAL
+			detail = "buttondefault"
+			shadow = IN
+			file = "button/button.png"
+			border = {8, 8, 8, 8}
+			stretch = TRUE
+		}
+    
+		image 
+		{
+			function = BOX
+			recolorable = TRUE
+			state = NORMAL
+			shadow = OUT
+			file = "button/button.png"
+			border = {8, 8, 8, 8}
+			stretch = TRUE
+		}
+    
+		image 
+		{
+			function = BOX
+			recolorable = TRUE
+			state = PRELIGHT
+			shadow = OUT
+			file = "button/button.png"
+			border = {8, 8, 8, 8}
+			stretch = TRUE
+		}
+    
+		image 
+		{
+			function = BOX
+			recolorable = TRUE
+			state = PRELIGHT
+			shadow = IN
+			file = "button/button.png"
+			border = {8, 8, 8, 8}
+			stretch = TRUE
+		}
+    
+		image 
+		{
+			function = BOX
+			recolorable = TRUE
+			state = NORMAL
+			shadow = IN
+			file = "button/button.png"
+			border = {8, 8, 8, 8}
+			stretch = TRUE
+		}
+    
+		image 
+		{
+			function = BOX
+			recolorable = TRUE
+			state = INSENSITIVE
+			shadow = IN
+			file = "button/button-ins.png"
+			border = {8, 8, 8, 8}
+			stretch = TRUE
+		}
+    
+		image 
+		{
+			function = BOX
+			recolorable = TRUE
+			state = INSENSITIVE
+			shadow = OUT
+			file = "button/button-ins.png"
+			border = {8, 8, 8, 8}
+			stretch = TRUE
+		}
+    
+		image 
+		{
+			function = BOX
+			recolorable = TRUE
+			state = SELECTED
+			shadow = IN
+			file = "button/button-pressed.png"
+			border = {8, 8, 8, 8}
+			stretch = TRUE
+		}
+    
+		image 
+		{
+			function = BOX
+			recolorable = TRUE
+			state = ACTIVE
+			shadow = IN
+			file = "button/button-pressed.png"
+			border = {8, 8, 8, 8}
+			stretch = TRUE
+		}
+	}
+}
+
+class "GtkButton" style "button"
+

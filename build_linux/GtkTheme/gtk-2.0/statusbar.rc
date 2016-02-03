@@ -1,0 +1,20 @@
+########################################################################
+# Statusbar
+########################################################################
+
+style "statusbar" = "default"
+{
+	engine "pixmap"
+	{
+		image
+		{
+			function = RESIZE_GRIP
+			recolorable	= TRUE
+			detail = "statusbar"
+			overlay_file = "statusbar/resizer.png"
+			overlay_stretch	= TRUE
+		}
+	}
+}
+
+class "GtkStatusbar" style "statusbar"

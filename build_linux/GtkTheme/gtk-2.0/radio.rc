@@ -1,0 +1,30 @@
+########################################################################
+# Radio Buttons 
+########################################################################
+
+style "RadioButton" = "default"
+{
+	engine "pixmap" 
+	{
+		image 
+		{
+			function = OPTION
+			recolorable = TRUE
+			shadow = OUT
+			overlay_file = "radio/radio.png"
+			overlay_stretch = FALSE
+		}
+
+		image 
+		{
+			function = OPTION
+			recolorable = TRUE
+			shadow = IN
+			overlay_file = "radio/radio-pressed.png"
+			overlay_stretch = FALSE
+		}
+	}
+}
+
+class "GtkRadioButton" style "RadioButton"
+class "GtkRadioMenuItem"style "RadioButton"

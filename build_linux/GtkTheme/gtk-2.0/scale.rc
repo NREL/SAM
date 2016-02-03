@@ -1,0 +1,111 @@
+########################################################################
+# Scale
+########################################################################
+
+style "scale" = "default"
+{
+	engine "pixmap"
+	{
+		image
+		{
+			function = BOX
+			recolorable	= TRUE
+			detail = "trough"
+			file = "scale/trough-horiz.png"
+			border = {4, 4, 4, 4}
+			stretch	= TRUE
+			orientation	= HORIZONTAL
+		}
+
+		image
+		{
+			function = BOX
+			recolorable = TRUE
+			detail = "trough"
+			file = "scale/trough-vert.png"
+			border = {4, 4, 4, 4}
+			stretch	= TRUE
+			orientation	= VERTICAL
+		}
+
+		image
+		{
+			function = SLIDER
+			recolorable	= TRUE
+			state = NORMAL
+			file = "scale/null.png"
+			border = {1, 1, 1, 1}
+			stretch = TRUE
+			overlay_file = "scale/slider-horiz.png"
+			overlay_stretch	= FALSE
+			orientation	= HORIZONTAL
+		}
+
+		image
+		{
+			function = SLIDER
+			recolorable	= TRUE
+			state = PRELIGHT
+			file = "scale/null.png"
+			border = {1, 1, 1, 1}
+			stretch	= TRUE
+			overlay_file = "scale/slider-horiz.png"
+			overlay_stretch	= FALSE
+			orientation	= HORIZONTAL
+		}
+
+		image
+		{
+			function = SLIDER
+			recolorable	= TRUE
+			state = INSENSITIVE
+			file = "scale/null.png"
+			border = {1, 1 ,1 , 1}
+			stretch	= TRUE
+			overlay_file = "scale/slider-horiz.png"
+			overlay_stretch	= FALSE
+			orientation	= HORIZONTAL
+		}
+
+		image
+		{
+			function = SLIDER
+			recolorable	= TRUE
+			state = NORMAL
+			file = "scale/null.png"
+			border = {4, 4 ,4 ,4}
+			stretch	= TRUE
+			overlay_file = "scale/slider-vert.png"
+			overlay_stretch	= FALSE
+			orientation	= VERTICAL
+		}
+
+		image
+		{
+			function = SLIDER
+			recolorable	= TRUE
+			state = PRELIGHT
+			file = "scale/null.png"
+			border = {4, 4, 4, 4}
+			stretch	= TRUE
+			overlay_file = "scale/slider-vert.png"
+			overlay_stretch	= FALSE
+			orientation	= VERTICAL
+		}
+
+		image
+		{
+			function = SLIDER
+			recolorable	= TRUE
+			state = INSENSITIVE
+			file = "scale/null.png"
+			border = {4, 4, 4, 4}
+			stretch	= TRUE
+			overlay_file = "scale/slider-vert.png"
+			overlay_stretch	= FALSE
+			orientation	= VERTICAL
+		}
+	}
+}
+
+class "GtkRange" style "scale"
