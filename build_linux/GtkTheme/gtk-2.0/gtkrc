@@ -4,7 +4,7 @@ gtk-menu-shadow-delay	= 0
 
 style "Default" {
 	NautilusIconContainer::highlight_alpha	= 150
-	GtkTreeView::odd_row_color		= "#a0a0a0"
+	GtkTreeView::odd_row_color		= "#f0f0f0"
 
 	fg[NORMAL]				= "#000000"
 	fg[ACTIVE]				= "#000000"
@@ -726,6 +726,9 @@ style "Scales" {
 class "GtkScale" style "Scales"
 
 style "Scrollbars" {
+	GtkScrollbar::stepper_size                      = 15
+	GtkScrollbar::has_forward_stepper               = 1
+	GtkScrollbar::has_backward_stepper              = 1
 	GtkScrollbar::has_secondary_backward_stepper	= 0
 	GtkScrollbar::has_secondary_forward_stepper	= 0
 	GtkScrollbar::min_slider_length			= 50
