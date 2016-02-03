@@ -4,7 +4,7 @@
 # GPL2
 ########################################################################
 
-gtk_color_scheme = "fg_color:#000\nbg_color:#DDD\nbase_color:#fff\ntext_color:#000\nselected_bg_color:#777\nselected_fg_color:#fff\ntooltip_bg_color:#eee\ntooltip_fg_color:#000"
+gtk_color_scheme = "fg_color:#000\nbg_color:#DDD\nbase_color:#fff\ntext_color:#000\nselected_bg_color:#aaa\nselected_fg_color:#fff\ntooltip_bg_color:#eee\ntooltip_fg_color:#000"
 gtk-icon-sizes ="gtk-small-toolbar=16,16:gtk-large-toolbar=24,24:gtk-button=16,16"
 
 include "scrollbar.rc" 

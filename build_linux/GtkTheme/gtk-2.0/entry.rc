@@ -1,0 +1,37 @@
+########################################################################
+# Entry
+########################################################################
+
+style "entry" = "default"
+{
+	engine "pixmap"
+	{
+		### NORMAL
+		image
+		{
+			function = SHADOW
+			recolorable	= TRUE
+			shadow = IN
+			detail = "entry"
+			file = "entry/entry.png"
+			border = {2, 2, 2, 2}
+			stretch	= TRUE
+			state = NORMAL
+		}
+
+		### FOCUS
+		image
+		{
+			function = FOCUS
+			recolorable	= TRUE
+			shadow = IN
+			detail = "entry"
+			file = "entry/entry-active.png"
+			border = {2, 2, 2, 2}
+			stretch	= TRUE
+			state = NORMAL
+		}
+	}
+}
+
+class "GtkEntry" style "entry"
