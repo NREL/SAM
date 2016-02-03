@@ -540,7 +540,9 @@ void MainWindow::OnInternalCommand( wxCommandEvent &evt )
 	switch (evt.GetId())
 	{
 	case ID_INTERNAL_SEGFAULT:
+#ifdef __WXMSW__
 		wxMSWSegmentationFault();
+#endif
 		break;
 	case ID_INTERNAL_INVOKE_SSC_DEBUG:
 		if ( Case *cc = GetCurrentCase() )

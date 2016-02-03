@@ -17,13 +17,11 @@ CC = gcc
 CXX = g++
 CFLAGS = -g -DLK_USE_WXWIDGETS -I. -I$(SRCDIR) -I$(WEXDIR)/include -I$(LKDIR)/include -I$(SSCDIR) `wx-config-3 --cflags`
 CXXFLAGS = $(CFLAGS)
-LDFLAGS = `wx-config-3 --libs propgrid` `wx-config-3 --libs aui` `wx-config-3 --libs stc` `wx-config-3 --libs richtext` `wx-config-3 --libs` -lm $(LKLIB) $(WEXLIB) -lstdc++ -lcurl
+LDFLAGS = $(SSCLIB) $(LKLIB) $(WEXLIB) `wx-config-3 --libs propgrid` `wx-config-3 --libs aui` `wx-config-3 --libs stc` `wx-config-3 --libs richtext` `wx-config-3 --libs` -lm -lstdc++ -lcurl
 
 OBJECTS = ide.o \
 	lossdiag.o \
 	defmgr.o \
-	urdb.o \
-	macro.o \
 	s3clipper.o \
 	s3engine.o \
 	s3objects.o \
@@ -68,11 +66,12 @@ OBJECTS = ide.o \
 TARGET = sam.bin
 
 
-$(TARGET): $(OBJECTS) $(WEXLIB) $(LKLIB) $(SSCLIB)
-	$(CXX) -g -o $@ $^ $(LDFLAGS)
+$(TARGET): $(OBJECTS) $(WEXLIB) $(LKLIB) $(SSCDIR)/build_linux/$(SSCLIB)
+	cp $(SSCDIR)/build_linux/$(SSCLIB) .
+	$(CXX) -g -o $@ $(OBJECTS) $(LDFLAGS)
 	mkdir -p ../deploy/linux_64
 	cp $(TARGET) ../deploy/linux_64
-	cp ../../ssc/build_linux/$(SSCLIB) ../deploy/linux_64
+	cp $(SSCDIR)/build_linux/$(SSCLIB) ../deploy/linux_64
 	cp $(LHSDIR)/lhs.bin ../deploy/runtime/bin
 	cp $(STEPWISEDIR)/stepwise.bin ../deploy/runtime/bin
 	make -f Makefile-webupd
