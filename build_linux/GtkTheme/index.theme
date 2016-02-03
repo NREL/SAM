@@ -1,7 +1,0 @@
-[X-GNOME-Metatheme]
-Name=Sisyphast
-Encoding=UTF-8
-GtkTheme=Sisyphast
-MetacityTheme=Humanity
-IconTheme=Humanity
-GtkColorScheme=fg_color:#333333333333,bg_color:#deb7d1b0c1c4,text_color:#333333333333,base_color:#e4e4d9d9cccc,selected_fg_color:#333333333333,selected_bg_color:#c51e8c733148,tooltip_fg_color:#333333333333,tooltip_bg_color:#deded1d1c1c1

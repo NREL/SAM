@@ -1,0 +1,132 @@
+########################################################################
+# Menubar
+########################################################################
+
+style "menubar" = "defualt"
+{
+	engine "pixmap"
+	{
+		image
+		{
+			function = BOX
+			state = NORMAL
+			file = "menubar/menubar.png"
+			border = {2, 2, 2, 2}
+			stretch = TRUE
+		}
+
+		image
+		{
+			function = BOX
+			state = ACTIVE
+			file = "menubar/menubar.png"
+			border = {2, 2, 2, 2}
+			stretch	= TRUE
+		}
+
+		image
+		{
+			function = BOX
+			state = SELECTED
+			file = "menubar/menubar.png"
+			border = {2, 2, 2, 2}
+			stretch	= TRUE
+		}
+
+		image
+		{
+			function = BOX
+			state = INSENSITIVE
+			file = "menubar/menubar.png"
+			border = {2, 2, 2, 2}
+			stretch	= TRUE
+		}
+	}
+}
+
+class "GtkMenuBar" style "menubar"
+class "*MenuBar*" style "menubar"
+widget_class "*MenuBar.*" style "menubar"
+
+style "menuitem" = "defualt"
+{
+	fg[PRELIGHT] = "#fff"
+
+  	engine "pixmap"
+	{
+		image
+		{
+			function = BOX
+			recolorable	= TRUE
+			file = "menubar/menuitem.png"
+			border = {2, 2, 2, 2}
+			stretch	= TRUE
+		}
+		
+		image 
+		{
+			function = HLINE
+	 		recolorable = TRUE
+	 		file = "menubar/line-h.png"
+			border = {0, 0, 0, 0}
+			stretch = TRUE
+		}
+		
+		image 
+		{
+			function = VLINE
+	 		recolorable = TRUE
+	 		file = "menubar/line-v.png"
+			border = {0, 0, 0, 0}
+			stretch = TRUE
+		}
+		
+		image
+		{
+			function = ARROW
+			recolorable	= TRUE
+			overlay_file = "/arrow/arrow-up.png"
+			overlay_border = {2,2,2,2}
+			overlay_stretch = FALSE
+			arrow_direction	= UP
+		}
+
+		image
+		{
+			function = ARROW
+			recolorable	= TRUE
+			overlay_file = "/arrow/arrow-down.png"
+			overlay_border = {2,2,2,2}
+			overlay_stretch	= FALSE
+			arrow_direction	= DOWN
+		}
+
+		image
+		{
+			function = ARROW
+			recolorable	= TRUE
+			overlay_file = "/arrow/arrow-left.png"
+			overlay_border = {2,2,2,2}
+			overlay_stretch	= FALSE
+			arrow_direction	= LEFT
+		}
+
+		image
+		{
+			function = ARROW
+			recolorable	= TRUE
+			overlay_file = "/arrow/arrow-right.png"
+			overlay_border = {2,2,2,2}
+			overlay_stretch	= FALSE
+			arrow_direction	= RIGHT
+		}
+	}
+}
+
+class "GtkMenuItem" style "menuitem"
+class "GtkImageMenuItem" style "menuitem"
+class "GtkTearoffMenuItem" style "menuitem"
+class "GtkItem" style "menuitem"
+widget_class"*MenuItem*" style "menuitem"
+widget_class"*.GtkMenuItem.*" style "menuitem"
+widget_class"*.GtkAccelMenuItem.*" style "menuitem"
