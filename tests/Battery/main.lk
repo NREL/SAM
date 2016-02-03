@@ -2,7 +2,7 @@
 ***************************************************************************************************** 
 Notes
 *****************************************************************************************************
-1. Last tested on 1/28/2016
+1. Last tested on 2/3/2016
 2. Point to a subhourly weather file
 3. Point to an hourly load profile, subhourly load profile
 4. Set tolerances
@@ -440,12 +440,22 @@ function replacements_test(defaults)
 // Test 13: Target Power Test
 function target_power_test(default)
 {
+	// run over automated dispatch first
+	set('batt_dispatch_choice',0);
 	simulate([], false);
 	retCode = true;
+	
+	analysis_period = 1;
+	if (get('pv_lifetime_simulation') == true)
+		analysis_period = get('analysis_period');
+		
 	month_days = [31,28,31,30,30,31,31,31,30,31,30,31];
 	grid_to_load = [];
 	peak_grid = [];
 	grid_to_load = get("grid_to_load");
+	steps_per_hour = #grid_to_load/(8760*analysis_period);
+	
+	
 	count = 0;
 	for (month = 0; month < 12; month++)
 	{
@@ -454,13 +464,16 @@ function target_power_test(default)
 		{
 			for (hour = 0; hour < 24; hour++)
 			{
-				if (grid_to_load[count] > peak_grid[month])
-					peak_grid[month] = grid_to_load[count];
-				count++;
+				for (step = 0; step < steps_per_hour; step++)
+				{
+					if (grid_to_load[count] > peak_grid[month])
+						peak_grid[month] = grid_to_load[count];
+					count++;
+				}
 			}
 		}
 	}
-	
+	// run target dispatch 
 	set('batt_dispatch_choice', 2);
 	set('batt_target_choice',0);
 	set('batt_target_power_monthly', peak_grid);
@@ -476,9 +489,12 @@ function target_power_test(default)
 		{
 			for (hour = 0; hour < 24; hour++)
 			{
-				if (grid_to_load_new[count] > peak_grid_new[month])
-					peak_grid_new[month] = grid_to_load_new[count];
-				count++;
+				for (step = 0; step < steps_per_hour; step++)
+				{
+					if (grid_to_load_new[count] > peak_grid_new[month])
+						peak_grid_new[month] = grid_to_load_new[count];
+					count++;
+				}
 			}
 		}
 	}
@@ -488,7 +504,7 @@ function target_power_test(default)
 		if (abs(peak_grid[i]/peak_grid_new[i]) > hi_tol_relaxed || abs(peak_grid[i]/peak_grid_new[i] < lo_tol_relaxed))
 		{
 			outln("------- Target Power Dispatch Failed!!! -----------------------------------");
-			outln("month: " + i + " target_peak_demand: " + peak_grid[i] + " peak_demand: " + peak_grid_new[i]);
+			outln("month: " + i + " target_peak_demand: " + peak_grid[i] + " peak_demand: " + peak_grid_new[i] + " percent difference: " + 100*abs(peak_grid_new[i] - peak_grid[i])/peak_grid[i]);
 			outln("------------------------------------------------------------------");
 			retCode = false;
 			break;
@@ -578,7 +594,7 @@ function manual_dispatch_test(default)
 						break;
 					}
 					
-					if ( (grid_to_batt[count] > 1 && gridcharge == false) || (grid_to_batt[count]/pmax > (grid_percent+1)*0.01) )
+					if ( (grid_to_batt[count] > 0 && gridcharge == false) || (grid_to_batt[count]/pmax > (grid_percent*0.01) ) )
 					{
 						outln("------- Manual Dispatch Failed!!! -----------------------------------");
 						outln("month: " + month + " day: " + day +" hour: " + hour + " step: " + step +" gridcharge: " + gridcharge + " grid_to_batt: " + grid_to_batt[count] + " pmax: " + pmax + " gridcharge_percent: " + grid_percent + " profile: " + profile+ " weekend: " + is_weekend);
@@ -813,7 +829,7 @@ outln("Performance Tests");
 
 for (pv_choice = 0; pv_choice != n_pvchoice; pv_choice++)
 {
-	for (weather = 1; weather != n_weather; weather++)
+	for (weather = 0; weather != n_weather; weather++)
 	{
 		for (load = 0; load != n_load; load++)
 		{
