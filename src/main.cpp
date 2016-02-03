@@ -2624,8 +2624,8 @@ END_EVENT_TABLE()
 
 ConfigDialog::ConfigDialog( wxWindow *parent, const wxSize &size )
 	: wxDialog( parent, wxID_ANY, wxEmptyString, wxDefaultPosition, size, wxBORDER_NONE
-#ifdef __WXOSX__
-	| wxSTAY_ON_TOP  // on OSX for some reason, we need this for the dialog show up on top of the transparent pane which is the parent
+#if defined(__WXOSX__)||defined(__WXGTK__)
+	| wxSTAY_ON_TOP  // on OSX/GTK for some reason, we need this for the dialog show up on top of the transparent pane which is the parent
 #endif
 	)
 {
@@ -2819,6 +2819,8 @@ bool ShowConfigurationDialog( wxWindow *parent, wxString *tech, wxString *fin, b
 	if ( !tech->IsEmpty() && !fin->IsEmpty() )
 		dlg->SetConfiguration( *tech, *fin );
     	
+	dlg->Raise();
+
 	bool result = false;
 	if ( dlg->ShowModal() == wxID_OK )
 	{
@@ -2829,7 +2831,7 @@ bool ShowConfigurationDialog( wxWindow *parent, wxString *tech, wxString *fin, b
 		result = true;
 	}
 
-	dlg->Destroy();
+	// config dialog is child of trans so will be destroyed too.
 	trans->Destroy();
 	return result;
 }
