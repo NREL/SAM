@@ -27,11 +27,8 @@ void EqnDatabase::ScanParseTree( lk::node_t *root, wxArrayString *inputs, wxArra
 
 	if ( lk::list_t *n = dynamic_cast<lk::list_t*>( root ) )
 	{
-		while (n)
-		{
-			ScanParseTree(  n->item, inputs, outputs );
-			n = n->next;
-		}
+		for( size_t i=0;i<n->items.size();i++ )
+			ScanParseTree( n->items[i], inputs, outputs );
 	}
 	else if ( lk::iter_t *n = dynamic_cast<lk::iter_t*>( root ) )
 	{
