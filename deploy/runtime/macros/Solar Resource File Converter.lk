@@ -40,7 +40,7 @@ data during the conversion process.</p>
 @*/
 
 // Macro user interface widgets
-//@ name=type;type=combo;value=TMY2,TMY3,EPW,SolarAnywhere;label=Input format;
+//@ name=type;type=combo;value=TMY2,TMY3,EPW,SolarAnywhere;label=Weather file format;
 
 if ( typeof(macro) == 'unknown' ) {
 	msgbox('This macro must be run from within a case.');
@@ -49,7 +49,7 @@ if ( typeof(macro) == 'unknown' ) {
 
 format = macro.type;
 if ( format == '' ) {
-  msgbox('Please choose an input format \nand then run the macro again.');
+  msgbox('Please choose a weather file format!\nChoose TMY2, TMY3, EPW or SolarAnywhere from the list at right, and then run the macro again.');
   exit;
 }  
 
@@ -146,12 +146,12 @@ while ( read_line( fin, str_line ) ) {
     headers = 'Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation';
     ok = write_line( fout , to_string(headers) );
     if ( ok == false ) {
-      msgbox('Failed to write column headers to file. Exiting script.\n');
+      outln('Failed to write column headers to file. Exiting script.\n');
       exit;
     }
     arr = split( str_line, ',' );
     if ( #arr != 8 ) {
-      msgbox('Input file does not appear to be in a SolarAnywhere format: First row has ' + #arr + ' columns instead of 8. Exiting script.\n');
+      outln('Input file does not appear to be in a SolarAnywhere format: First row has ' + #arr + ' columns instead of 8. Exiting script.\n');
       exit;
     }
     h1[0] = "SolarAnywhere"; // source
@@ -170,7 +170,7 @@ while ( read_line( fin, str_line ) ) {
     h1[8] = arr[6]; // elevation
     ok = write_line( fout , to_string(h1) );
     if ( ok == false ) {
-      msgbox('Failed to write first header row to file. Exiting script.\n');
+      outln('Failed to write first header row to file. Exiting script.\n');
       exit;
     }
   }
@@ -180,7 +180,7 @@ while ( read_line( fin, str_line ) ) {
     column_headers = 'Year,Month,Day,Hour,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo';
     ok = write_line( fout , to_string(column_headers) );
     if ( ok == false ) {
-      msgbox('Failed to write column headers to file. Exiting script.\n');
+      outln('Failed to write column headers to file. Exiting script.\n');
       exit;
     }
   }
@@ -196,29 +196,66 @@ while ( read_line( fin, str_line ) ) {
     }
     // convert comma-separated row to an array
     arr = split( data_str, ',');
-    // get data
-    format = 'SolarAnywhere';
-    datetime = split( arr[0] , ' ');
-    date = split( datetime[0] , '/');
-    hour = split( datetime[1] , ':');
-    y = to_int(date[0]);
-    m = to_int(date[1]);
-    d = to_int(date[2]);
-    h = to_int(hour[0]);
-    data[0] = to_string(y); // year
-    data[1] = to_string(m); // month
-    data[2] = to_string(d); // day
-    data[3] = to_string(h); // hour    
-    data[4] = arr[1]; // ghi
-    data[5] = arr[2]; // dni
-    data[6] = arr[9]; // dhi
-    data[7] = arr[3]; // tdry
-    data[8] = missing; // tdew
-    data[9] = missing; // rh
-    data[10] = missing; // pres
-    data[11] = arr[4]; // wspd
-    data[12] = missing; // wdir
-    data[13] = missing; // alb
+    // if less than 15 columns, assume format is SA 
+    // number of columns varies between "time series" (12) and "average" (11) files
+    // TMY3 format has 68 columns 
+    if (#arr < 15 ) {
+      format = 'SolarAnywhere';
+      datetime = split( arr[0] , ' ');
+      date = split( datetime[0] , '/');
+      hour = split( datetime[1] , ':');
+      y = to_int(date[0]);
+      m = to_int(date[1]);
+      d = to_int(date[2]);
+      h = to_int(hour[0]);
+      data[0] = to_string(y); // year
+      data[1] = to_string(m); // month
+      data[2] = to_string(d); // day
+      data[3] = to_string(h); // hour    
+      data[4] = arr[1]; // ghi
+      data[5] = arr[2]; // dni
+      data[6] = arr[9]; // dhi
+      data[7] = arr[3]; // tdry
+      data[8] = missing; // tdew
+      data[9] = missing; // rh
+      data[10] = missing; // pres
+      data[11] = arr[4]; // wspd
+      data[12] = missing; // wdir
+      data[13] = missing; // alb
+    }
+    // if not 12 columns, assume format is SA TMY3
+    else {
+      format = 'SolarAnywhere TMY3';
+      date = split( arr[0] , '/');
+      hour = split( arr[1] , ':');
+      y = to_int(date[2]);
+      m = to_int(date[0]);
+      d = to_int(date[1]);
+      h = to_int(hour[0]);
+      h = h - 1;
+      if ( h == -1 ) {
+        h = 23;
+        if ( m == 1 && line > 2 ) {
+          y = y - 1;
+          m = 12;
+          d = 31;
+        }
+      }
+      data[0] = to_string(y); // year
+      data[1] = to_string(m); // month
+      data[2] = to_string(d); // day
+      data[3] = to_string(h); // hour    
+      data[4] = arr[4]; // ghi
+      data[5] = arr[7]; // dni
+      data[6] = arr[10]; // dhi
+      data[7] = arr[31]; // tdry
+      data[8] = arr[34]; // tdew
+      data[9] = arr[37]; // rh
+      data[10] = arr[40]; // pres
+      data[11] = arr[46]; // wspd
+      data[12] = arr[43]; // wdir
+      data[13] = arr[61]; // alb
+    }
     feb29 = ( m == 2 && d == 29 ); // feb29 is true for leap years
     // check to see if input file is multi-year file
     // if it is, close the output file and append year to file name 
@@ -228,11 +265,11 @@ while ( read_line( fin, str_line ) ) {
       // if this is the first file in the multi-year series, rename it
       if (fcount == 0) { 
         outln('\nMulti-year input file detected. Converting to separate files...');
-        ok = rename_file( output_file , path + out_name + '_' + fyear1 + '.csv' );
-        if (ok == true ) outln('    Year 1 file renamed to\n     ' + replace(out_name,'/','') + '_' + fyear1 + '.csv' );
+        ok = rename_file( output_file , path + '/' + flocation + '_samcsv_' + fyear1 + '.csv' );
+        if (ok == true ) outln('    Year 1 file renamed to\n     ' + flocation + '_samcsv_' + fyear1 + '.csv' );
         else outln('  Failed to rename Year 1 output file');
       }
-      output_file =  path + out_name + '_' + y + '.csv'; 
+      output_file =  path + '/' + flocation + '_samcsv_' + y + '.csv'; 
       fout = open( output_file , 'w' );
       write_line( fout , to_string(headers) );
       write_line( fout , to_string(h1) );
@@ -245,7 +282,7 @@ while ( read_line( fin, str_line ) ) {
       ok = write_line( fout , to_string(data) );
     }  
     if ( ok == false ) {
-      msgbox('Failed to write data row ' + line + ' to file.\n');
+      outln('Failed to write data row ' + line + ' to file.\n');
       exit;
     }
   }  
@@ -270,11 +307,115 @@ outln('\nSuccess! Converted ' + format + ' file to SAM CSV file(s).\n');
 
 // if input file is for a single year, show converted data in data viewer
 if (fcount == 0 ) {
-  if ( yesno('Weather file successfully converted.  Open it?\n\n' + output_file) ) {
-    browse( path_only(output_file) ); // pop up folder where file exists
-    dview_solar( output_file ); // load in DView
-  }
+  outln('Displaying data from ' + file_only(output_file) + '.');
+
+  csv_data = csvread( output_file , { 'skip'=2 } );
+  data_headers=csv_data[0];
+  csv_data -@ 0;
+  num_cols = #data_headers; // skip time stamp columns
+  num_rows = #csv_data; // data rows not including header
+  ts = 8760 / num_rows; // time step in hours
+
+  for (i=4;i<num_cols;i++) names[i-4]=data_headers[i]; // skip time stamp columns
+  num_cols = #names;
+  units = ['W/m2','W/m2','W/m2','C','C','%','millibar','m/s','deg',''];
+  window_title = file_only(output_file);
+
+  // GHI
+  dataset1_name = names[0]; 
+  dataset1_units = units[0];
+  dataset1_multiplier = 1.0;
+  dataset1_data = alloc(num_rows);
+  for (i=0;i<num_rows;i++) ghi[i] = to_real(csv_data[i][4]);
+  dataset1_data = ghi;
+
+  // DNI
+  dataset2_name = names[1]; 
+  dataset2_units = units[1];
+  dataset2_multiplier = 1.0;
+  dataset2_data = alloc(num_rows);
+  for (i=0;i<num_rows;i++) dni[i] = to_real(csv_data[i][5]);
+  dataset2_data = dni;
+
+  // DHI
+  dataset3_name = names[2]; 
+  dataset3_units = units[2];
+  dataset3_multiplier = 1.0;
+  dataset3_data = alloc(num_rows);
+  for (i=0;i<num_rows;i++) dhi[i] = to_real(csv_data[i][6]);
+  dataset3_data = dhi;
+
+  // Tdry
+  dataset4_name = names[3]; 
+  dataset4_units = units[3];
+  dataset4_multiplier = 1.0;
+  dataset4_data = alloc(num_rows);
+  for (i=0;i<num_rows;i++) tdry[i] = to_real(csv_data[i][7]);
+  dataset4_data = tdry;
+
+  // Tdew
+  dataset5_name = names[4]; 
+  dataset5_units = units[4];
+  dataset5_multiplier = 1.0;
+  dataset5_data = alloc(num_rows);
+  for (i=0;i<num_rows;i++) tdew[i] = to_real(csv_data[i][8]);
+  dataset5_data = tdew;
+
+  // RH
+  dataset6_name = names[5]; 
+  dataset6_units = units[5];
+  dataset6_multiplier = 1.0;
+  dataset6_data = alloc(num_rows);
+  for (i=0;i<num_rows;i++) rh[i] = to_real(csv_data[i][9]);
+  dataset6_data = rh;
+
+  // Pres
+  dataset7_name = names[6]; 
+  dataset7_units = units[6];
+  dataset7_multiplier = 1.0;
+  dataset7_data = alloc(num_rows);
+  for (i=0;i<num_rows;i++) pres[i] = to_real(csv_data[i][10]);
+  dataset7_data = pres;
+
+  // Wspd
+  dataset8_name = names[7]; 
+  dataset8_units = units[7];
+  dataset8_multiplier = 1.0;
+  dataset8_data = alloc(num_rows);
+  for (i=0;i<num_rows;i++) wspd[i] = to_real(csv_data[i][11]);
+  dataset8_data = wspd;
+
+  // Wdir
+  dataset9_name = names[8]; 
+  dataset9_units = units[8];
+  dataset9_multiplier = 1.0;
+  dataset9_data = alloc(num_rows);
+  for (i=0;i<num_rows;i++) wdir[i] = to_real(csv_data[i][12]);
+  dataset9_data = wdir;
+
+  // Albedo
+  dataset10_name = names[9]; 
+  dataset10_units = units[9];
+  dataset10_multiplier = 1.0;
+  dataset10_data = alloc(num_rows);
+  for (i=0;i<num_rows;i++) alb[i] = to_real(csv_data[i][13]);
+  dataset10_data = alb;
+
+  // create dview window 
+  dview(num_cols, ts, window_title,
+        dataset1_name, dataset1_units, dataset1_multiplier, dataset1_data,
+        dataset2_name, dataset2_units, dataset2_multiplier, dataset2_data,
+        dataset3_name, dataset3_units, dataset3_multiplier, dataset3_data,
+        dataset4_name, dataset4_units, dataset4_multiplier, dataset4_data,
+        dataset5_name, dataset5_units, dataset5_multiplier, dataset5_data,
+        dataset6_name, dataset6_units, dataset6_multiplier, dataset6_data,
+        dataset7_name, dataset7_units, dataset7_multiplier, dataset7_data,
+        dataset8_name, dataset8_units, dataset8_multiplier, dataset8_data,
+        dataset9_name, dataset9_units, dataset9_multiplier, dataset9_data,
+        dataset10_name, dataset10_units, dataset10_multiplier, dataset10_data
+        );
 }
+
 outln("Done.");
 }
 
