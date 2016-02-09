@@ -52,9 +52,25 @@ Some more examples:
 version_upgrade{'2016.1.21'} = define() {
 	const cfg = config();
 	if (cfg.tech == 'Wind Power')
+	{
+		message('Upgrading project to version 2016.1.21');
+
 		if (value('wind.turbine.radio_list_or_design') == 1)
 			if (value('wind.turbine.blade_design') == 0 || value('wind.turbine.tower_design') == 0)
 				message('The default recommendation for user-entered turbines has been updated to "Advanced" blade and tower design. Please check your Wind Turbine design page if you would like to update your inputs.', 'notice');
+	}
+	if (cfg.tech == 'Flat Plate PV')
+	{
+		message('Upgrading project to version 2016.1.21');
+		for(i=1;i<5;i++)
+		{
+			pre = sprintf('subarray%d_',i);
+			x=value(pre + 'shade_mode');
+			//message('x='+x);
+			value('ui_' + pre + 'en_selfshad',1.0-x);
+		}
+	}
+	
 };
 
 version_upgrade{'2015.11.16'} = define() {
