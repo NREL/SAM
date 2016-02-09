@@ -66,8 +66,8 @@ version_upgrade{'2016.1.21'} = define() {
 		{
 			pre = sprintf('subarray%d_',i);
 			x=value(pre + 'shade_mode');
-			//message('x='+x);
 			value('ui_' + pre + 'en_selfshad',1.0-x);
+			message('Self-shading option for Subarray ' + i + ' changed from drop-down list to check box.');
 		}
 	}
 	
