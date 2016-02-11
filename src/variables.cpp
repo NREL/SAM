@@ -408,7 +408,10 @@ void VarValue::Copy( const VarValue &rhs )
 		m_str = rhs.m_str;
 		m_val = rhs.m_val;
 		m_tab = rhs.m_tab;
-		m_bin = rhs.m_bin;
+		// wxMemeoryBuffer is not a copy on write so causing issues bewtween cases, e.g. shade_scen_3d
+		//		m_bin = rhs.m_bin;
+		m_bin.Clear();
+		m_bin.AppendData(rhs.m_bin.GetData(),rhs.m_bin.GetDataLen());
 		// UI hints?
 	}
 }
