@@ -1206,7 +1206,7 @@ setup_biopower_pages();
 function setup_MSPT_pages()
 {
 	addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource', 'help'='pt_location_and_resource' } );
-	addpage( [[ 'MSPT System Design' ]], { 'sidebar'='System Design', 'help'='mspt_heliostat_field' } );
+	addpage( [[ 'MSPT System Design' ]], { 'sidebar'='System Design', 'help'='mspt_system_design' } );
 	addpage( [[ 'Tower Solar Field' ]], { 'sidebar'='Heliostat Field', 'help'='mspt_heliostat_field' } );
 	addpage( [[ 'Molten Salt Tower Receiver' ]], { 'sidebar'='Tower and Receiver', 'help'='mspt_tower_and_receiver' } );
 	addpage( [[ 'Rankine Cycle' ], [ 'User Defined Power Cycle' ]], 
