@@ -502,9 +502,11 @@ void fcall_focusto( lk::invoke_t &cxt )
 }
 	
 // external fcalls that are compatible with running in a script environment
-extern void fcall_urdb_read( lk::invoke_t & );
-extern void fcall_urdb_write( lk::invoke_t & );
-extern void fcall_urdb_get( lk::invoke_t & );
+extern void fcall_group_read(lk::invoke_t &);
+extern void fcall_group_write(lk::invoke_t &);
+extern void fcall_urdb_read(lk::invoke_t &);
+extern void fcall_urdb_write(lk::invoke_t &);
+extern void fcall_urdb_get(lk::invoke_t &);
 extern void fcall_urdb_list_utilities(lk::invoke_t &);
 extern void fcall_urdb_list_utilities_by_zip_code(lk::invoke_t &);
 extern void fcall_urdb_list_rates(lk::invoke_t &);
@@ -533,6 +535,8 @@ lk::fcall_t *sam_functions() {
 		fcall_overwrite_defaults,
 		fcall_list_technologies,
 		fcall_list_financing,
+		fcall_group_read,
+		fcall_group_write,
 		fcall_urdb_read,
 		fcall_urdb_write,
 		fcall_urdb_get,
