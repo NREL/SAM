@@ -1725,6 +1725,101 @@ static bool applydiurnalschedule(lk::invoke_t &cxt, wxString sched_name, double 
 	return true;
 }
 
+
+void fcall_group_write(lk::invoke_t &cxt)
+{
+	LK_DOC("group_write", "Writes group data from current case to a file.", "(string:groupname, string:filename):boolean");
+
+	Case *c = SamApp::Window()->GetCurrentCase();
+	if (!c) return;
+
+	ConfigInfo *ci = c->GetConfiguration();
+	if (!ci) return;
+
+	wxString groupname = cxt.arg(0).as_string();
+	wxString filename = cxt.arg(1).as_string();
+
+	wxCSVData csv;
+	int row = 0;
+	for (VarInfoLookup::iterator it = ci->Variables.begin();
+		it != ci->Variables.end();	++it)
+	{
+		VarInfo &vi = *(it->second);
+		// skip calculated and indicator values
+		//if (vi.Flags & VF_CALCULATED || vi.Flags & VF_INDICATOR) continue;
+		if (vi.Group.Lower() == groupname.Lower())
+
+		{
+			wxString var_name = it->first;
+			// get value
+			if (VarValue *vv = c->Values().Get(var_name))
+			{
+				// write out csv with first row var name and second row var values
+				wxString value = vv->AsString();
+				value.Replace("\n", ";;");
+				csv.Set(row, 0, var_name);
+				csv.Set(row, 1, value);
+				csv.Set(row, 2, vi.Label);
+				row++;
+			}
+		}
+	}
+	cxt.result().assign(csv.WriteFile(filename.Lower()) ? 1.0 : 0.0);
+}
+
+
+void fcall_group_read(lk::invoke_t &cxt)
+{
+	LK_DOC("group_read", "Reads group data from a file case to the current case.", "(string:groupname, string:filename):boolean");
+
+	Case *c = SamApp::Window()->GetCurrentCase();
+	if (!c) return;
+
+	wxString groupname = cxt.arg(0).as_string();
+	wxString filename = cxt.arg(1).as_string();
+
+	wxCSVData csv;
+	int row = 0;
+	bool ret_val = csv.ReadFile(filename.Lower());
+	if (ret_val)
+	{
+		wxArrayString errors;
+		wxArrayString list;
+
+		for (row = 0; row < (int)csv.NumRows(); row++)
+		{
+			wxString var_name = csv.Get(row, 0);
+			// get value
+			wxString value = csv.Get(row, 1);
+			value.Replace(";;", "\n");
+			if (VarValue *vv = c->Values().Get(var_name))
+			{
+				if (!VarValue::Parse(vv->Type(), value, *vv))
+				{
+					errors.Add("Problem assigning " + var_name + " to " + value);
+					ret_val = false;
+				}
+				else
+					list.Add(var_name);
+			}
+			else
+			{// variable not found
+				// try upgrading - see project file upgrader for 2015.11.16
+				// update to matrix for ec and dc
+				errors.Add("Problem assigning " + var_name + " missing with " + value);
+				ret_val = false;
+			}
+		}
+		// this causes the UI and other variables to be updated
+		c->VariablesChanged(list);
+	}
+	cxt.result().assign(ret_val ? 1.0 : 0.0);
+}
+
+
+
+
+
 void fcall_urdb_write(lk::invoke_t &cxt)
 {
 	LK_DOC("urdb_write", "Writes rate data from current case to a file.", "(string:filename):boolean");
@@ -1762,6 +1857,8 @@ void fcall_urdb_write(lk::invoke_t &cxt)
 	
 	cxt.result().assign( csv.WriteFile( cxt.arg(0).as_string() ) ? 1.0 : 0.0 );
 }
+
+
 
 void fcall_urdb_read(lk::invoke_t &cxt)
 {
@@ -2851,6 +2948,8 @@ lk::fcall_t* invoke_uicallback_funcs()
 		fcall_current_at_voltage_sandia,
 		fcall_windtoolkit,
 		fcall_openeiutilityrateform,
+		fcall_group_read,
+		fcall_group_write,
 		fcall_urdb_read,
 		fcall_urdb_write,
 		fcall_urdb_get,
