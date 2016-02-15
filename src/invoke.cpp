@@ -1746,7 +1746,7 @@ void fcall_group_write(lk::invoke_t &cxt)
 	{
 		VarInfo &vi = *(it->second);
 		// skip calculated and indicator values
-		//if (vi.Flags & VF_CALCULATED || vi.Flags & VF_INDICATOR) continue;
+		if (vi.Flags & VF_CALCULATED || vi.Flags & VF_INDICATOR) continue;
 		if (vi.Group.Lower() == groupname.Lower())
 
 		{
@@ -1804,8 +1804,6 @@ void fcall_group_read(lk::invoke_t &cxt)
 			}
 			else
 			{// variable not found
-				// try upgrading - see project file upgrader for 2015.11.16
-				// update to matrix for ec and dc
 				errors.Add("Problem assigning " + var_name + " missing with " + value);
 				ret_val = false;
 			}
