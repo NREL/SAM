@@ -87,19 +87,22 @@ static const char *beta_disclaimer =
 
 // application globals
 static SamApp::ver releases[] = {
-	{ 2016, 1, 21 },
-	{ 2015, 11, 16 },
-	{ 2015, 10, 29 },
-	{ 2015, 10, 16 },
-	{ 2015, 9, 30 },
-	{ 2015, 9, 9 },
-	{ 2015, 8, 17 },
-		{ 2015, 6, 30 },
-		{ 2015, 5, 27 },
-		{ 2015, 4, 10 },
-		{ 2015, 1, 30 },
-		{ 2014, 11, 24 },
-		{    0,  0,  0 } };
+//please clarify the reason for the new version in a comment. Examples: public release, variable changes, internal release, public beta release, etc.
+//the top version should always be the current working version
+		{ 2016, 2, 16 }, //CURRENT WORKING VERSION
+		{ 2016, 1, 21 }, //internal release
+		{ 2015, 11, 16 }, //utility rate variable changes
+		{ 2015, 10, 29 }, //battery model variable changes
+		{ 2015, 10, 16 }, //internal release
+		{ 2015, 9, 30 }, //internal release
+		{ 2015, 9, 9 }, //CSP and net metering changes
+		{ 2015, 8, 17 }, //CSP variable changes
+	{ 2015, 6, 30 }, //public release
+		{ 2015, 5, 27 }, //CSP variable changes
+		{ 2015, 4, 10 }, //CSP variable changes
+	{ 2015, 1, 30 }, //public release
+	{ 2014, 11, 24 }, //public release
+	{    0,  0,  0 } };
 
 static wxArrayString g_appArgs;
 static MainWindow *g_mainWindow = 0;
