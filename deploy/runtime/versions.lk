@@ -47,21 +47,25 @@ Some more examples:
 	value( 'loss_derate', 1-value('dc_ac_ratio')*0.01, 'A necessary change to the internal units used in SAM' );
 */
 
+
+//***********************************************************************************************************************************************************
+//CURRENT WORKING VERSION- CHANGE THIS VERSION NUMBER WHEN RELEASES ARE CREATED AND MAKE A NEW CURRENT WORKING VERSION FUNCTION
+version_upgrade{'2016.2.16'} = define() {
+	X = 1; //just to keep an error from showing up in lk
+};
+
 //***********************************************************************************************************************************************************
 
 version_upgrade{'2016.1.21'} = define() {
 	const cfg = config();
 	if (cfg.tech == 'Wind Power')
 	{
-		message('Upgrading project to version 2016.1.21');
-
 		if (value('wind.turbine.radio_list_or_design') == 1)
 			if (value('wind.turbine.blade_design') == 0 || value('wind.turbine.tower_design') == 0)
 				message('The default recommendation for user-entered turbines has been updated to "Advanced" blade and tower design. Please check your Wind Turbine design page if you would like to update your inputs.', 'notice');
 	}
 	if (cfg.tech == 'Flat Plate PV')
 	{
-		message('Upgrading project to version 2016.1.21');
 		for(i=1;i<5;i++)
 		{
 			pre = sprintf('subarray%d_',i);
@@ -70,23 +74,25 @@ version_upgrade{'2016.1.21'} = define() {
 			message('Self-shading option for Subarray ' + i + ' changed from drop-down list to check box.');
 		}
 		
-		// battery updates
-		old_dispatch = value("batt_dispatch_choice");
-		// Added new dispatch mode, if they had manual, it's now index 3, others are the same
-		if (old_dispatch == 2)
-			value("batt_dispatch_choice",3);
-		
+		if ((cfg.fin == 'Residential' || cfg.fin == 'Commercial') && value('en_batt') == 1)
+		{
+			// battery updates
+			old_dispatch = value("batt_dispatch_choice");
+			// Added new dispatch mode, if they had manual, it's now index 3, others are the same
+			if (old_dispatch == 2)
+				value("batt_dispatch_choice",3);	
+		}	
 	}
 	
 };
+
+//***********************************************************************************************************************************************************
 
 version_upgrade{'2015.11.16'} = define() {
 	
 	const cfg = config();
 	if ( cfg.fin == 'Residential' || cfg.fin == 'Commercial' )
-	{
-		message('Upgrading project to version 2015.11.16');
-		
+	{	
 		ec_tou_row=0;
 		dc_tou_row=0;
 		dc_flat_row=0;
@@ -144,34 +150,24 @@ version_upgrade{'2015.11.16'} = define() {
 	}
 };
 
+//***********************************************************************************************************************************************************
 
 version_upgrade{'2015.10.29'} = define() {
 	const cfg = config();
-	if( cfg.tech == 'Flat Plate PV' && (cfg.fin == 'Residential' || cfg.fin == 'Commercial' ))
+	if( cfg.tech == 'Flat Plate PV' && (cfg.fin == 'Residential' || cfg.fin == 'Commercial' ) && value('en_batt') == 1)
 	{
-		message('Upgrading project to version 2015.10.29');
 		x = oldvalue('batt_replacement_cost');
 		value( 'batt_replacement_cost', x[0] ); // batt_replacement_cost is now single value
 	}
 };
 
-
-
-version_upgrade{'2015.10.16'} = define() {
-	message( 'version upgrade for 2015.10.16: nothing to do!', 'notice');
-};
-
-version_upgrade{'2015.9.30'} = define() {
-	message( 'version upgrade for 2015.9.30: nothing to do!', 'notice');
-};
+//***********************************************************************************************************************************************************
 
 version_upgrade{'2015.9.9'} = define() {
 	
 	const cfg = config();
 	if ( cfg.fin == 'Residential' || cfg.fin == 'Commercial' )
-	{
-		message('Upgrading project to version 2015.9.9');
-		
+	{		
 		// net metering check box removed
 		nm = oldvalue('ur_enable_net_metering');
 		if (nm==1)
@@ -181,9 +177,7 @@ version_upgrade{'2015.9.9'} = define() {
 	}
 	
 	if( cfg.tech == 'MSPT' )
-	{
-		message('Upgrading project to version 2015.9.9');
-		
+	{	
 		value('piping_loss', oldvalue('Piping_loss'));
 		value('piping_length_const', oldvalue('csp.pt.par.piping_length_const'));
 		value('piping_length_mult', oldvalue('csp.pt.par.piping_length_mult'));
@@ -235,15 +229,14 @@ version_upgrade{'2015.9.9'} = define() {
 	}	
 };
 
+//***********************************************************************************************************************************************************
 
 version_upgrade{'2015.8.17'} = define() {
 	
 	const cfg = config();
 
 	if( cfg.tech == 'DSPT' )
-	{
-		message('Upgrading project to version 2015.8.17');
-		
+	{	
 		// Tower piping length multiplier and constant addition need to be remapped
 		value('piping_length_mult',oldvalue('csp.pt.par.piping_length_const'));
 		value('piping_length_add',oldvalue('csp.pt.par.piping_length_mult'));
@@ -253,11 +246,14 @@ version_upgrade{'2015.8.17'} = define() {
 	}
 	
 	// Add two new dispatch modes, pushed manual to index 2
-	if( cfg.tech == 'Flat Plate PV')
+	if( cfg.tech == 'Flat Plate PV' && (cfg.fin == 'Residential' || cfg.fin == 'Commercial' ) && value('en_batt') == 1)
 		value("batt_dispatch_choice",2);
 
 };
 
+//***********************************************************************************************************************************************************
+
+//PUBLIC VERSION
 version_upgrade{'2015.6.30'} = define() {
 	
 	// have to update adjust:factor to adjust:constant
@@ -270,8 +266,11 @@ version_upgrade{'2015.6.30'} = define() {
 	if ( cfg.fin == 'Residential' || cfg.fin == 'Commercial' )
 		message( 'Utility bill calculations have been updated to use monthly reconciliation for energy and demand charges.  See help for more information.', 'warning' );
 		
+	message('Upgraded project to version 2015.6.30');
+		
 };
 
+//***********************************************************************************************************************************************************
 
 version_upgrade{'2015.5.27'} = define() {
 		
@@ -280,9 +279,7 @@ version_upgrade{'2015.5.27'} = define() {
 	
 	// changes to the Molten Salt Power Tower model
 	if( cfg.tech == 'MSPT' )
-	{
-		message('Upgrading project to version 2015.5.27');
-		
+	{		
 		// Changed names of hot and cold tank max heat variables
 		value('hot_tank_max_heat',oldvalue('tank_max_heat'));
 		value('cold_tank_max_heat',oldvalue('csp.pt.tes.cold_heater_max_load'));
@@ -291,9 +288,8 @@ version_upgrade{'2015.5.27'} = define() {
 
 //***********************************************************************************************************************************************************
 
-
 version_upgrade{'2015.4.10'} = define() {	
-	//get the configurationc
+	//get the configuration
 	const cfg = config();
 		
 	//changes to the Physical Trough model
@@ -336,8 +332,8 @@ version_upgrade{'2015.4.10'} = define() {
 
 //***********************************************************************************************************************************************************
 
+//PUBLIC VERSION
 version_upgrade{'2015.1.30'} = define() {
-	message('Upgrading project to version 2015.1.30');
 	
 	//get the configuration
 	const cfg = config();
@@ -364,10 +360,8 @@ version_upgrade{'2015.1.30'} = define() {
 				message('Version 2104.11.24 of SAM had a bug with the units of the VOC Temperature Coefficient. Please double check this input.', 'warning');
 		}
 	}
+	
+	message('Upgraded project to version 2015.1.30');
 };
 
 //***********************************************************************************************************************************************************
-
-version_upgrade{'2014.11.24'} = define() {
-	message( 'version upgrade for 2014.11.24: nothing to do!', 'notice');
-};
