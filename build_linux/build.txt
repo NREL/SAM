@@ -9,3 +9,7 @@ make -j6
 make install
 mkdir ~/local/bin
 ln -s ~/local/wx-3.0.2/bin/wx-config ~/local/bin/wx-config-3
+# note, symbolic link requires absolute path, eg, if ~ is /home/projects
+# ln -s /home/projects/local/wx-3.0.2/bin/wx-config
+# /home/projects/local/bin/wx-config-3
+export PATH=$PATH:~/local/bin/
