@@ -50,8 +50,19 @@ Some more examples:
 
 //***********************************************************************************************************************************************************
 //CURRENT WORKING VERSION- CHANGE THIS VERSION NUMBER WHEN RELEASES ARE CREATED AND MAKE A NEW CURRENT WORKING VERSION FUNCTION
-version_upgrade{'2016.2.16'} = define() {
-	X = 1; //just to keep an error from showing up in lk
+version_upgrade{'2016.2.19'} = define() {
+	const cfg = config();
+	if (cfg.tech == 'Flat Plate PV')
+	{
+		for (i=1; i<5; i++)
+		{
+			pre = sprintf('subarray%d_', i);
+			x = value (pre +'shade_mode');
+			new = 1 - x; //old SAM: 0 was self-shaded, 1 was none, now: 0 is none, 1 is self-shaded (non-linear), 2 is self-shaded (linear)
+			value(pre + 'shade_mode', new);
+			message ('Self-shading options have changed order', 'notice');
+		}
+	}
 };
 
 //***********************************************************************************************************************************************************
@@ -65,15 +76,7 @@ version_upgrade{'2016.1.21'} = define() {
 				message('The default recommendation for user-entered turbines has been updated to "Advanced" blade and tower design. Please check your Wind Turbine design page if you would like to update your inputs.', 'notice');
 	}
 	if (cfg.tech == 'Flat Plate PV')
-	{
-		for(i=1;i<5;i++)
-		{
-			pre = sprintf('subarray%d_',i);
-			x=value(pre + 'shade_mode');
-			value('ui_' + pre + 'en_selfshad',1.0-x);
-			message('Self-shading option for Subarray ' + i + ' changed from drop-down list to check box.');
-		}
-		
+	{		
 		if ((cfg.fin == 'Residential' || cfg.fin == 'Commercial') && value('en_batt') == 1)
 		{
 			// battery updates
