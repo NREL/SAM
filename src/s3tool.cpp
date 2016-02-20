@@ -1141,12 +1141,40 @@ void ShadeAnalysis::OnGenerateDiurnal( wxCommandEvent & )
 	SimulateDiurnal();
 }
 
+void ShadeAnalysis::UpdateGroups()
+{
+	bool update = false;
+	std::vector<VObject*> objs = m_shadeTool->GetView()->GetObjects();
+	for (size_t i = 0; i < objs.size(); i++)
+	{
+		if (VActiveSurfaceObject *surf = dynamic_cast<VActiveSurfaceObject*>(objs[i]))
+		{
+			// update to use subarray and string dropdown property as requested by Chris
+			wxString grp = "";
+			if (surf->Property("Subarray").GetType() == VProperty::INTEGER)
+				grp = wxString::Format("%d", surf->Property("Subarray").GetInteger());
+			if (surf->Property("String").GetType() == VProperty::INTEGER)
+				grp += wxString::Format(".%d", surf->Property("String").GetInteger());
+			if (grp.Len() < 1)
+			{
+				update = true;
+				grp = surf->Property("Group").GetString().Trim().Trim(false);
+				// implicitly update to appropriate subarray
+				// find all numbers and assign all with smallest number to subarray 1,etc.
+
+			}
+		}
+	}
+}
+
 void ShadeAnalysis::InitializeSections( int mode, std::vector<surfshade> &shade )
 {
 	shade.clear();
 
 	surfshade ungrouped(mode, wxEmptyString ); // for any ungrouped array sections
-	
+
+	//UpdateGroups();
+
 	// setup shading result storage for each group
 	std::vector<VObject*> objs = m_shadeTool->GetView()->GetObjects();
 	for( size_t i=0;i<objs.size();i++ )
@@ -1162,8 +1190,10 @@ void ShadeAnalysis::InitializeSections( int mode, std::vector<surfshade> &shade 
 
 			// keep backwards compatibility
 			if (grp.Len() < 1)
+			{
 				grp = surf->Property("Group").GetString().Trim().Trim(false);
-
+				// implicitly update to appropriate subarray
+			}
 			surfshade *ss = 0;
 
 			if ( !grp.IsEmpty() )
