@@ -180,6 +180,7 @@ public:
 	void InitializeSections( int mode, std::vector<surfshade> &shade );
 
 private:
+	void UpdateGroups(); // update groups to subarrays for old files
 
 	ShadeTool *m_shadeTool;
 	
