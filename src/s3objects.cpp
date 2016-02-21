@@ -310,7 +310,8 @@ void VObject::Write( wxOutputStream &_o )
 {
 	wxDataOutputStream out(_o);
 	out.Write8( 0xaf ); // start code
-	out.Write8( 1 ); // version
+//	out.Write8(1); // version
+	out.Write8(2); // version - change from Group to Subarray and String
 
 	out.Write8( m_visible ? 1 : 0 );
 
@@ -328,7 +329,7 @@ bool VObject::Read( wxInputStream &_i )
 {
 	wxDataInputStream in(_i);
 	wxUint8 code = in.Read8();
-	in.Read8(); // version
+	wxUint8 ver = in.Read8(); // version
 
 	m_visible = in.Read8() != 0;
 
@@ -337,6 +338,28 @@ bool VObject::Read( wxInputStream &_i )
 	{
 		wxString name = in.ReadString();
 		Property(name).Read( _i );
+		if (ver == 1 && name.Lower() == "group")
+		{ // update to subarray and string
+			wxString grp = Property(name).GetString();
+			int ndx = wxNOT_FOUND;
+			wxString num_string = "0123456789";
+			wxString n = "";
+			for (size_t j = 0; j < grp.Len(); j++)
+			{
+				ndx = num_string.Find(grp.Mid(j, 1));
+				if (ndx != wxNOT_FOUND)
+					n += grp.Mid(j, 1);
+			}
+			// default subarray is 1 with range 1 to 4 (zero index)
+			// default string is 1 with range 1 to 8 (zero index)
+			// no string entries before version 2
+			int nsub = (int)atof(n);
+			if (nsub < 1) nsub = 1;
+			if (nsub > 4) nsub = 1;
+
+			Property("Subarray").Set(nsub-1);
+			Property("String").Set(0);
+		}
 	}
 
 	return in.Read8() == code;
