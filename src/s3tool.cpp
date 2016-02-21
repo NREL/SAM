@@ -1144,6 +1144,10 @@ void ShadeAnalysis::OnGenerateDiurnal( wxCommandEvent & )
 void ShadeAnalysis::UpdateGroups()
 {
 	bool update = false;
+	// for old s3d files to convert gourps with numbers to subarray numbers in new schema
+	wxString num_string = "0123456789";
+	wxArrayString nsubarray;
+	std::vector < size_t> obj_ndx;
 	std::vector<VObject*> objs = m_shadeTool->GetView()->GetObjects();
 	for (size_t i = 0; i < objs.size(); i++)
 	{
@@ -1155,13 +1159,59 @@ void ShadeAnalysis::UpdateGroups()
 				grp = wxString::Format("%d", surf->Property("Subarray").GetInteger());
 			if (surf->Property("String").GetType() == VProperty::INTEGER)
 				grp += wxString::Format(".%d", surf->Property("String").GetInteger());
-			if (grp.Len() < 1)
+			if (grp.Len() < 1 || grp == "0.0") // empty or default with no assignment.
 			{
 				update = true;
 				grp = surf->Property("Group").GetString().Trim().Trim(false);
 				// implicitly update to appropriate subarray
 				// find all numbers and assign all with smallest number to subarray 1,etc.
-
+				// check to see if numeric
+				int ndx = wxNOT_FOUND;
+				wxString n = "";
+				for (size_t j = 0; j < grp.Len(); j++)
+				{
+					ndx = num_string.Find(grp.Mid(j, 1));
+					if (ndx != wxNOT_FOUND)
+						n += grp.Mid(j, 1);
+				}
+				if (n != "")
+					nsubarray.Add(n);
+				else
+					nsubarray.Add("1");
+				obj_ndx.push_back(i);
+			}
+		}
+	}
+	if (update)
+	{
+		int min = INT_MAX-1;
+		int max = INT_MIN+1;
+		// go through numbers and place into subarray numbers 1 through n
+		for (size_t i = 0; i < obj_ndx.size() && i < nsubarray.Count(); i++)
+		{
+			int m = (int)atof(nsubarray[i]);
+			if (m < min) min = m;
+			if (m > max) max = m;
+		}
+		if (min > max) min = max;
+		int nsub = 1;
+		for (int n = min; n <= max && nsub <=4; n++)
+		{
+			bool next_sub = false;
+			for (size_t i = 0; i < obj_ndx.size() && i < nsubarray.Count(); i++)
+			{
+				if ((int)atof(nsubarray[i]) == n)
+				{
+					if (VActiveSurfaceObject *surf = dynamic_cast<VActiveSurfaceObject*>(objs[obj_ndx[i]]))
+					{
+						// update to use subarray and string dropdown property as requested by Chris
+						wxString grp = "";
+						surf->Property("Subarray").Set(nsub);
+						surf->Property("String").Set(1);
+						next_sub = true;
+					}
+				}
+				if (next_sub) nsub++;
 			}
 		}
 	}
@@ -1173,7 +1223,7 @@ void ShadeAnalysis::InitializeSections( int mode, std::vector<surfshade> &shade 
 
 	surfshade ungrouped(mode, wxEmptyString ); // for any ungrouped array sections
 
-	//UpdateGroups();
+//	UpdateGroups(); // for old project files that use groups amd importing old s3d files.
 
 	// setup shading result storage for each group
 	std::vector<VObject*> objs = m_shadeTool->GetView()->GetObjects();
