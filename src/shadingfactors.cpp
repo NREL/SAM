@@ -267,7 +267,7 @@ public:
 
 		m_enableTimestep = new wxCheckBox( m_scrollWin, ID_ENABLE_HOURLY, "Enable time step beam irradiance shading losses" );
 		m_timestep = new wxShadingFactorsCtrl(m_scrollWin, wxID_ANY, wxDefaultPosition, wxDefaultSize, m_show_db_options);
-		m_timestep->SetInitialSize(wxSize(900, 200));
+		m_timestep->SetInitialSize(wxSize(900, 300));
 		m_timestep->SetMinuteCaption("Time step in minutes:");
 		m_timestep->SetColCaption(wxString("Number of parallel strings:") + wxString((!descText.IsEmpty() ? " for " : "")) + descText);
 		int num_cols = 8;
@@ -1118,11 +1118,11 @@ EVT_BUTTON(ISFC_IMPORT, wxShadingFactorsCtrl::OnCommand)
 END_EVENT_TABLE()
 
 wxShadingFactorsCtrl::wxShadingFactorsCtrl(wxWindow *parent, int id,
-const wxPoint &pos,
-const wxSize &sz,
-bool show_db_options,
-bool sidebuttons)
-: wxPanel(parent, id, pos, sz)
+	const wxPoint &pos,
+	const wxSize &sz,
+	bool show_db_options,
+	bool sidebuttons)
+	: wxPanel(parent, id, pos, sz)
 {
 	m_default_val = 0;
 	m_num_minutes = 60;
@@ -1224,21 +1224,21 @@ bool sidebuttons)
 	{
 		// for top buttons layout (default)
 		wxBoxSizer *h_tb_sizer = new wxBoxSizer(wxHORIZONTAL);
-		h_tb_sizer->Add(m_caption_timestep, 0, wxALL | wxEXPAND | wxALIGN_CENTER_VERTICAL, 3);
-		h_tb_sizer->Add(m_choice_timestep, 0, wxALL | wxEXPAND | wxALIGN_CENTER_VERTICAL, 3);
+		h_tb_sizer->Add(m_caption_timestep, 0, wxALL | wxALIGN_CENTER_VERTICAL, 3);
+		h_tb_sizer->Add(m_choice_timestep, 0, wxALL | wxALIGN_CENTER_VERTICAL, 3);
 		if (show_db_options)
 		{
 			h_tb_sizer->AddSpacer(5);
-			h_tb_sizer->Add(m_caption_col, 0, wxALL | wxEXPAND | wxALIGN_CENTER_VERTICAL, 3);
-			h_tb_sizer->Add(m_choice_col, 0, wxALL | wxEXPAND | wxALIGN_CENTER_VERTICAL, 3);
+			h_tb_sizer->Add(m_caption_col, 0, wxALL | wxALIGN_CENTER_VERTICAL, 3);
+			h_tb_sizer->Add(m_choice_col, 0, wxALL | wxALIGN_CENTER_VERTICAL, 3);
 			h_tb_sizer->AddSpacer(5);
-			h_tb_sizer->Add(m_choice_string_option, 0, wxALL | wxEXPAND | wxALIGN_CENTER_VERTICAL, 3);
+			h_tb_sizer->Add(m_choice_string_option, 0, wxALL | wxALIGN_CENTER_VERTICAL, 3);
 		}
 		h_tb_sizer->AddSpacer(5);
-		h_tb_sizer->Add(m_btn_copy, 0, wxALL | wxEXPAND, 3);
-		h_tb_sizer->Add(m_btn_paste, 0, wxALL | wxEXPAND, 3);
-		h_tb_sizer->Add(m_btn_import, 0, wxALL | wxEXPAND, 3);
-		h_tb_sizer->Add(m_btn_export, 0, wxALL | wxEXPAND, 3);
+		h_tb_sizer->Add(m_btn_copy, 0,   wxALL, 3);
+		h_tb_sizer->Add(m_btn_paste, 0,  wxALL, 3);
+		h_tb_sizer->Add(m_btn_import, 0, wxALL, 3);
+		h_tb_sizer->Add(m_btn_export, 0, wxALL, 3);
 
 		h_tb_sizer->AddStretchSpacer();
 
