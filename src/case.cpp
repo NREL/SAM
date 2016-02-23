@@ -199,15 +199,13 @@ bool CaseEvaluator::UpdateLibrary( const wxString &trigger, wxArrayString &chang
 			{
 				// find the entry
 				int entry = lib->FindEntry( vv->String() );
-				
-				// testing 1/21/16 for missing weather file issue
-				if (entry < 0 && lib->NumEntries() > 0 ) entry = 0;
-				//
-
+								
 				if (entry < 0 || !lib->ApplyEntry(entry, varindex, *m_vt, changed))
 				{
 					nerrors++;
-					m_errors.Add("error applying library entry " + vv->String() + "\n\n" + wxJoin( lib->GetErrors(), wxChar('\n')) );
+					m_errors.Add("Library error: '" + vv->String() + "'. Please make a different selection before proceeding." );
+					wxArrayString errs( lib->GetErrors() );
+					for( size_t k=0;k<errs.size();k++ ) if ( !errs[k].IsEmpty() ) m_errors.Add( errs[k] );
 				}
 #ifdef _DEBUG
 				else
