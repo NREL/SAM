@@ -2,6 +2,7 @@
 #include <algorithm>
 
 #include <wx/wx.h>
+#include <wx/busyinfo.h>
 #include <wx/filename.h>
 #include <wx/dir.h>
 #include <wx/tokenzr.h>
@@ -692,8 +693,12 @@ bool ShowWindResourceDataSettings()
 	return false;
 }
 
-bool ScanSolarResourceData( const wxString &db_file )
+bool ScanSolarResourceData( const wxString &db_file, bool show_busy )
 {
+	wxBusyInfo *busy = 0;
+	if ( show_busy )
+		busy = new wxBusyInfo("Updating solar resource library...");
+
 	wxArrayString paths;
 	paths.Add( SamApp::GetRuntimePath() + "../solar_resource/" );
 
@@ -785,7 +790,7 @@ bool ScanSolarResourceData( const wxString &db_file )
 
 			if ( const char *err = ssc_module_exec_simple_nothread( "wfreader", pdata ) )
 			{
-				errors.Add( err );
+				errors.Add( wf );
 				wxLogStatus("error scanning '" + wf + "'");
 				wxLogStatus("\t%s", err );
 			}
@@ -837,17 +842,36 @@ bool ScanSolarResourceData( const wxString &db_file )
 		}
 	}
 
-	if ( errors.size() > 0 )
-		wxShowTextMessageDialog( wxJoin( errors, '\n' ) );
+	if ( busy ) delete busy;
+
+	size_t nerr = errors.size();
+	if ( nerr > 0 )
+	{
+#define NERRMAX 5
+		if ( nerr > NERRMAX )
+		{
+			errors.erase( errors.begin()+NERRMAX, errors.end() );
+			errors.Add( wxString::Format("and %d more...", nerr-NERRMAX) );
+		}
+
+		wxMessageBox( "The following weather files in the solar resource library appear to have problems:\n\n" + wxJoin( errors, '\n' ) );
+	}
 
 	return csv.WriteFile( db_file );
 }
 
-bool ScanWindResourceData( const wxString &db_file )
+bool ScanWindResourceData( const wxString &db_file, bool show_busy )
 {
+	wxBusyInfo *busy = 0;
+	if ( show_busy )
+		busy = new wxBusyInfo( "Updating wind resource library..." );
+
 	wxString path = SamApp::GetRuntimePath() + "../wind_resource/";
 	wxDir dir(path);
-	if (!dir.IsOpened()) return false;
+	if (!dir.IsOpened()) {
+		if ( busy ) delete busy;
+		return false;
+	}
 
 	wxCSVData csv;
 	csv(0, 0) = "Name";
@@ -962,6 +986,8 @@ bool ScanWindResourceData( const wxString &db_file )
 
 		has_more = dir.GetNext(&file);
 	}
+
+	if ( busy ) delete busy;
 
 	return csv.WriteFile( db_file );
 }

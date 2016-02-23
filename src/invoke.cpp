@@ -2554,20 +2554,18 @@ void fcall_rescanlibrary( lk::invoke_t &cxt )
 	UICallbackContext &cc = *(UICallbackContext*)cxt.user_data();
 
 	wxString type(cxt.arg(0).as_string().Lower());
-	wxBusyInfo info("Scanning folders for " + type + " data files..." );
-
 	Library *reloaded = 0;
 
 	if ( type == "solar" )
 	{
 		wxString solar_resource_db = SamApp::GetUserLocalDataDir() + "/SolarResourceData.csv";
-		ScanSolarResourceData( solar_resource_db );
+		ScanSolarResourceData( solar_resource_db, true );
 		reloaded = Library::Load( solar_resource_db );
 	}
 	else if ( type == "wind" )
 	{
 		wxString wind_resource_db  = SamApp::GetUserLocalDataDir() + "/WindResourceData.csv";
-		ScanWindResourceData( wind_resource_db );
+		ScanWindResourceData( wind_resource_db, true );
 		reloaded = Library::Load( wind_resource_db );
 	}
 
