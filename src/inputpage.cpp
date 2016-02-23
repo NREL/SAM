@@ -493,7 +493,7 @@ bool ActiveInputPage::DataExchange( wxUIObject *obj, VarValue &val, DdxDir dir )
 		if ( dir == VAR_TO_OBJ )
 		{
 			if ( !slb->SetStringSelection( val.String() ) )
-				wxMessageBox( "Error: the selection '" + val.String() + "' was not found in the available choices." );
+				wxMessageBox( "Error: '" + val.String() + "' was not found among the available choices.  Please make a different selection before proceeding.", "Error", wxOK|wxICON_WARNING );
 		}
 		else val.Set( slb->GetStringSelection() );
 	}
@@ -502,7 +502,7 @@ bool ActiveInputPage::DataExchange( wxUIObject *obj, VarValue &val, DdxDir dir )
 		if ( dir == VAR_TO_OBJ )
 		{
 			if (!ll->SetEntrySelection( val.String() ))
-				wxMessageBox(  "Error: the selection '" + val.String() + "' was not found in the available choices." );
+				wxMessageBox(  "Error: '" + val.String() + "' was not found among the available choices.  Please make a different selection before proceeding.", "Error", wxOK|wxICON_WARNING );
 		}
 		else val.Set( ll->GetEntrySelection() );
 	}
