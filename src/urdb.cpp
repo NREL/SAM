@@ -13,7 +13,7 @@ static wxString MyGet(const wxString &url)
 	wxSimpleCurl curl;
 	curl.AddHttpHeader( "Content-type: text/plain" );
 	curl.AddHttpHeader( "Cache-Control: no-cache" );
-	curl.Start( url, true );
+	curl.Get( url );
 	return curl.GetDataAsString();
 }
 
