@@ -13,15 +13,15 @@ A simulation over the entire analysis period will be conducted regardless of whe
 	<li>Minimum Monthly Charges ($) - Total cost of imposed minimum monthly charges over analysis period </li>
 	<li>Minimum Annual Charges ($) - Total cost of imposed minimum annual charges over analysis period </li>
 	<li>Total Electricity Cost ($) - Total cost of electricity charges over analysis period.  This is the sum of the Demand Charges (Fixed+TOU) and Energy Charges.</li>
-	<li>Capital & Replacement ($) - Total cost of system and replacements</li>
-	<li>Operation & Maintenance ($) - Total cost of operation and maintenance</li>
-	<li>System & Electricity Cost ($) - The sum of Total Electricity Cost and Capital & Replacement costs </li>
+	<li>Capital and Replacement ($) - Total cost of system and replacements</li>
+	<li>Operation and Maintenance ($) - Total cost of operation and maintenance</li>
+	<li>System and Electricity Cost ($) - The sum of Total Electricity Cost and Capital and Replacement costs </li>
 	<li>Net Present Value ($) - The Net Present Value of the system, including electricity costs, taxs, and incentives </li>
 </ul>
 <p>
-A system which offsets more electricity costs than the introduced capital & replacement costs may be considered beneficial.  
+A system which offsets more electricity costs than the introduced capital and replacement costs may be considered beneficial.  
 Negative values indicate credits to the system owner while positive values indicate payments from the system owner.
-The column with the lowest "System & Electricity Cost" results in the lowest costs over the analysis period before considering net-present value (time value of money), taxes, and incentives.
+The column with the lowest "System and Electricity Cost" results in the lowest costs over the analysis period before considering net-present value (time value of money), taxes, and incentives.
 The Net Present Value (NPV) reflects a full cash flow analysis including the discount rate, inflation, taxes, and incentives.  The column with the highest NPV reflects the most financially beneficial option under the current simulation conditions. 
 A negative NPV implies that the project incurs a net loss over the analysis period.  The "No System" option always has an NPV of $0.
 @*/
@@ -111,7 +111,7 @@ function compute_minimum_monthly(analysis_period, inflation_rate, escalation_rat
 
 		for (j=0;j<#months;j++)
 		{
-			// usage is already escalated/inflated, just escalate fixed & monthly
+			// usage is already escalated/inflated, just escalate fixed and monthly
 			usage = get_monthly_usage_costs(with_system, months[j],i);
 			fixed = monthly_fixed*rate;
 			charge = usage+fixed;
@@ -183,7 +183,9 @@ common_fixed_charges = round(compute_fixed_monthly(analysis_period, inflation_ra
 // PV Only
 set('en_batt',0);
 simulate('',true);
-pv_electricity_cost = (sum(get('elec_cost_with_system')));
+cost = get('elec_cost_with_system');
+pv_electricity_cost = (sum(cost));
+pv_electricity_cost_yr1 = cost[1];
 pv_dc_fixed = (sum(get("charge_w_sys_dc_fixed")));
 pv_dc_tou = (sum(get("charge_w_sys_dc_tou")));
 pv_ec = (sum(get("charge_w_sys_ec")));
@@ -198,7 +200,9 @@ pv_npv = get('npv');
 // PV+Battery
 set('en_batt',1);
 simulate('',true);
-batt_electricity_cost = (sum(get('elec_cost_with_system')));
+cost = get('elec_cost_with_system');
+batt_electricity_cost = (sum(cost));
+batt_electricity_cost_yr1 = cost[1];
 batt_dc_fixed = (sum(get("charge_w_sys_dc_fixed")));
 batt_dc_tou = (sum(get("charge_w_sys_dc_tou")));
 batt_ec = (sum(get("charge_w_sys_ec")));
@@ -214,7 +218,9 @@ batt_total = batt_costs + batt_electricity_cost+batt_om;
 batt_npv = get('npv');
 
 // No PV or Battery
-none_electricity_cost = (sum(get('elec_cost_without_system')));
+cost = get('elec_cost_without_system');
+none_electricity_cost = (sum(cost));
+none_electricity_cost_yr1 = cost[1];
 none_dc_fixed = (sum(get('charge_wo_sys_dc_fixed')));
 none_dc_tou = (sum(get('charge_wo_sys_dc_tou')));
 none_ec = (sum(get('charge_wo_sys_ec')));
@@ -229,7 +235,7 @@ none_npv = 0;
 
 // HTML Output
 str_html = '<html><body>' + 
-           '<h3>Costs: ' + analysis_period + ' years </h3>' + 
+           '<h3>Lifecycle Costs Over ' + analysis_period + ' Years </h3>' + 
            '<table bgcolor=#eeeeee width=100%>' + 
            '<tr><th>Specific costs</th><th>No System</th><th>PV Only</th><th>PV+Battery</th></tr>' + 
            '<tr bgcolor=#ffffff><td>Demand Charge (Fixed) ($) </td><td>' + round(none_dc_fixed) + '</td><td>' + round(pv_dc_fixed) + '</td><td>' + round(batt_dc_fixed) + '</td></tr>' +             
@@ -238,15 +244,22 @@ str_html = '<html><body>' +
            '<tr><td>Fixed Monthly Charges ($)</td><td>' + round(common_fixed_charges) + '</td><td>' + round(common_fixed_charges) + '</td><td>' + round(common_fixed_charges) + '</td></tr>' +             
            '<tr bgcolor=#ffffff><td>Minimum Monthly Charges ($)</td><td>' + round(none_min_month) + '</td><td>' + round(pv_min_month) + '</td><td>' + round(batt_min_month) + '</td></tr>' +             
 		   '<tr><td>Minimum Annual Charges ($)</td><td>' + round(none_min_annual) + '</td><td>' + round(pv_min_annual) + '</td><td>' + round(batt_min_annual) + '</td></tr>' +             
-           '<tr bgcolor=#ffffff><td><b>Total Electricity Cost ($) </b></td><td><b>' + round(none_electricity_cost) + '</b></td><td><b>' + round(pv_electricity_cost) + '</b></td><td><b>' + round(batt_electricity_cost) + '</b></td></tr>' +
-           '<tr><td>Total Capital & Replacement Costs($)</td><td>' + round(none_costs) + '</td><td>' +round(pv_costs) + '</td><td>' +round(batt_costs) + '</td></tr>' + 
-           '<tr bgcolor=#ffffff><td>Total Operation & Maintenance Costs($)</td><td>' + round(none_om) + '</td><td>' +round(pv_om) + '</td><td>' +round(batt_om) + '</td></tr>' + 
-		   '<tr><td><b>System & Electricity Cost ($)</b></td><td><b>' + round(none_total) + '</b></td><td><b>' + round(pv_total) + '</b></td><td><b>' + round(batt_total) + '</b></td></tr>' +             
+           '<tr bgcolor=#ffffff><td><b>Total Electricity Bill ($) </b></td><td><b>' + round(none_electricity_cost) + '</b></td><td><b>' + round(pv_electricity_cost) + '</b></td><td><b>' + round(batt_electricity_cost) + '</b></td></tr>' +
+           '<tr><td>Total Capital and Replacement Costs($)</td><td>' + round(none_costs) + '</td><td>' +round(pv_costs) + '</td><td>' +round(batt_costs) + '</td></tr>' + 
+           '<tr bgcolor=#ffffff><td>Total Operation and Maintenance Costs($)</td><td>' + round(none_om) + '</td><td>' +round(pv_om) + '</td><td>' +round(batt_om) + '</td></tr>' + 
+		   '<tr><td><b>System and Electricity Bill Cost ($)</b></td><td><b>' + round(none_total) + '</b></td><td><b>' + round(pv_total) + '</b></td><td><b>' + round(batt_total) + '</b></td></tr>' +             
 		   '</table>' +
 		   '<br><br><br>' +
 		   '<table bgcolor=#eeeeee width=100%>' +
 		   '<tr><th>Net Present Value</th><th>No System</th><th>PV Only</th><th>PV+Battery</th></tr>' + 
-           '<tr bgcolor=#ffffff><td>Net Present Value ($) </td><td>' + none_npv + '</td><td>' + pv_npv + '</td><td>' + batt_npv + '</td></tr>' +    
+           '<tr bgcolor=#ffffff><td>Net Present Value ($) </td><td>' + none_npv + '</td><td>' + pv_npv + '</td><td>' + batt_npv + '</td></tr>' +
+           '</table>' +    
+		   '<br><br><br>' +
+           '<h3>Year One Electricity Bill</h3>' + 
+           '<table bgcolor=#eeeeee width=100%>' + 
+           '<tr><th>Specific costs</th><th>No System</th><th>PV Only</th><th>PV+Battery</th></tr>' + 
+           '<tr bgcolor=#ffffff><td><b>Total Electricity Bill ($) </b></td><td>' + round(none_electricity_cost_yr1) + '</td><td>' + round(pv_electricity_cost_yr1) + '</td><td>' + round(batt_electricity_cost_yr1) + '</td></tr>' +
+		   '</table>' +
            '</body></html>';
 
 html_dialog ( str_html , "Battery Financial Evaluation" , [300,300,600,600]);
