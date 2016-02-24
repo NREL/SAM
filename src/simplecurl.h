@@ -14,8 +14,9 @@ class wxSimpleCurlEvent : public wxEvent
 public:
 	enum { STARTED, PROGRESS, FINISHED };
 
-    wxSimpleCurlEvent(int id, wxEventType type, int code, const wxString &msg = wxEmptyString, const wxString &url = wxEmptyString )
-        : wxEvent(id, type) { m_code = code; m_msg = msg; m_dt = wxDateTime::Now(); m_url = url; m_bytes = m_total = 0; }
+    wxSimpleCurlEvent(int id, wxEventType type, int code, const wxString &msg = wxEmptyString, const wxString &url = wxEmptyString,
+		double bytes=0.0, double total=0.0 )
+        : wxEvent(id, type) { m_code = code; m_msg = msg; m_dt = wxDateTime::Now(); m_url = url; m_bytes = bytes; m_total = total; }
 	wxSimpleCurlEvent( const wxSimpleCurlEvent &evt )
 		: wxEvent( evt.GetId(), evt.GetEventType() ),
 		m_code(evt.m_code),
@@ -32,10 +33,7 @@ public:
 	wxString GetUrl() const { return m_url; }
 	double GetBytesTransferred() const { return m_bytes; }
 	double GetBytesTotal() const { return m_total; }
-
-	void SetBytesTransferred( double b ) { m_bytes = b; }
-	void SetBytesTotal( double t ) { m_total = t; }
-
+	
 protected:
 	int m_code;
 	wxString m_msg;
@@ -65,7 +63,8 @@ public:
 	// geocoding function using google APIs.
 	// call is synchronous.  Optionally determine time 
 	// zone from lat/lon using second service call
-	static bool GeoCode( const wxString &address, double *lat, double *lon, double *tz = 0);
+	static bool GeoCode( const wxString &address, 
+		double *lat, double *lon, double *tz = 0 );
 	enum MapProvider { GOOGLE_MAPS, BING_MAPS };
 	static wxBitmap StaticMap( double lat, double lon, int zoom, MapProvider service = BING_MAPS );
 
@@ -79,25 +78,27 @@ public:
 
 	// progress reporting methods
 	// send wxSimpleCurlEvents to the specified wxEvtHandler, and events have the given id
+	// the event handler will be called in the main thread
 	void SetEventHandler( wxEvtHandler *hh, int id );
-
-	// receive notifications via a callback function
-	void SetCallback( void (*function)( wxSimpleCurlEvent &, void * ), void *user_data );
-
-	// returns true always for asynchronous calls
-	bool Start( const wxString &url, bool synchronous=false );
-
+	
 	wxString GetDataAsString();
 	wxImage GetDataAsImage( int bittype = wxBITMAP_TYPE_JPEG );
 	bool WriteDataToFile( const wxString &file );
-
-	bool Finished();
-	void Abort();
-
+	
+	// asynchronous operation
+	void Start( const wxString &url );
+	bool Wait( bool yield = false ); // must be called to finish download
+	bool IsStarted();
+	bool IsFinished();
+	void Cancel(); // returns immediately
 	bool Ok();
 	wxString GetLastError();
 	
-	bool IsStarted();
+	// synchronous operation
+	bool Get( const wxString &url, 
+		const wxString &progress_dialog_msg=wxEmptyString,
+		wxWindow *parent = NULL);
+		
 	
 	class DLThread;
 	DLThread *GetThread();
@@ -106,8 +107,6 @@ protected:
 	DLThread *m_thread;
 	wxEvtHandler *m_handler;
 	int m_id;
-	void (*m_callback)(wxSimpleCurlEvent &, void * );
-	void *m_userData;
 
 	wxString m_postData;
 	wxArrayString m_httpHeaders;

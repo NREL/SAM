@@ -7,6 +7,7 @@
 #include <wx/buffer.h>
 #include <wx/uri.h>
 #include <wx/log.h>
+#include <wx/progdlg.h>
 
 #include <curl/curl.h>
 
@@ -63,7 +64,13 @@ public:
 	size_t Write( void *p, size_t len )
 	{
 		m_dataLock.Lock();
+
+		// increase memory buffer size in 1 MB increments as needed
+		if ( m_data.GetDataLen() + len > m_data.GetBufSize() )
+			m_data.SetBufSize( m_data.GetBufSize() + 1048576 );
+
 		m_data.AppendData( p, len );
+
 		m_dataLock.Unlock();
 		return len;
 	}
@@ -148,19 +155,14 @@ public:
 
 			m_threadDoneLock.Lock();
 			m_threadDone = true;
-			m_threadDoneLock.Unlock();
+			m_threadDoneLock.Unlock();						
 
-			
 			// issue finished event
-			
-			wxSimpleCurlEvent evt( m_sc->m_id, wxSIMPLECURL_EVENT, 
-				wxSimpleCurlEvent::FINISHED, "finished", m_url );
-
 			if ( m_sc->m_handler != 0 )
-				wxPostEvent( m_sc->m_handler, evt );
-
-			if ( m_sc->m_callback != 0 )
-				(* (m_sc->m_callback) )( evt, m_sc->m_userData );
+			{
+				wxQueueEvent( m_sc->m_handler, new wxSimpleCurlEvent(m_sc->m_id, wxSIMPLECURL_EVENT, 
+					wxSimpleCurlEvent::FINISHED, "finished", m_url) );
+			}
 		}
 		
 		return 0;
@@ -198,16 +200,11 @@ public:
 
 	void IssueProgressEvent( double rDlTotal, double rDlNow )
 	{
-		wxSimpleCurlEvent evt( m_sc->m_id, wxSIMPLECURL_EVENT, 
-			wxSimpleCurlEvent::PROGRESS, "progress", m_url );
-		evt.SetBytesTotal( rDlTotal );
-		evt.SetBytesTransferred( rDlNow );
-
 		if ( m_sc->m_handler != 0 )
-			wxPostEvent( m_sc->m_handler, evt );
-
-		if ( m_sc->m_callback != 0 )
-			( *(m_sc->m_callback) )( evt, m_sc->m_userData );
+		{
+			wxQueueEvent( m_sc->m_handler, new wxSimpleCurlEvent( m_sc->m_id, wxSIMPLECURL_EVENT, 
+				wxSimpleCurlEvent::PROGRESS, "progress", m_url, rDlNow, rDlTotal ) );
+		}
 	}
 };
 
@@ -215,14 +212,12 @@ extern "C" {
     int simplecurl_progress_func(void* userp, double rDlTotal, double rDlNow, 
                                  double rUlTotal, double rUlNow)
     {
-        wxSimpleCurl::DLThread *tt = static_cast<wxSimpleCurl::DLThread*>(userp);
-        if(tt)
+		if( wxSimpleCurl::DLThread *tt = static_cast<wxSimpleCurl::DLThread*>(userp) )
         {
+			tt->IssueProgressEvent( rDlTotal, rDlNow );
 			if (tt->IsCanceled())
-				return -1;
-
-			tt->IssueProgressEvent( rDlTotal, rDlNow );			
-        }
+				return -1; // return non zero should cancel
+		}
 
         return 0;
     }
@@ -231,7 +226,7 @@ extern "C" {
     {
         wxSimpleCurl::DLThread *tt = static_cast<wxSimpleCurl::DLThread*>(userp);
 		if (tt) return tt->Write( ptr, size*nmemb );
-        return 0;
+		else return 0;
     }
 
 }; // extern "C"
@@ -241,59 +236,132 @@ extern "C" {
 
 wxSimpleCurl::wxSimpleCurl( wxEvtHandler *handler, int id )
 	: m_thread( 0 ), m_handler( handler ), 
-	  m_id( id ), m_callback(0), m_userData(0)
+	  m_id( id )
 {
 }
 
 wxSimpleCurl::~wxSimpleCurl()
 {
-	if ( m_thread && !m_thread->IsDone() )
-		Abort();
-
-	if ( m_thread ) delete m_thread;
+	if ( m_thread )
+	{
+		m_thread->Cancel();
+		m_thread->Wait();
+		delete m_thread;
+	}
 }
 
-bool wxSimpleCurl::Start( const wxString &url, bool synchronous )
+void wxSimpleCurl::Start( const wxString &url )
 {
 	if ( m_thread != 0 )
 	{
-		if ( IsStarted() && !Finished() )
-		{
-			m_thread->Cancel();
-			m_thread->Wait();
-		}
-
+		m_thread->Cancel();		
+		m_thread->Wait();
 		delete m_thread;
 	}
 
 	m_thread = new DLThread( this, url, GetProxyForURL(url) );
 	m_thread->Create();
 	m_thread->Run();
-	
-	if ( synchronous )
+}
+
+enum { ID_MY_SIMPLE_CURL=wxID_HIGHEST+491 };
+
+class SimpleCurlProgressDialog : public wxProgressDialog
+{
+	wxString m_baseMsg;
+	wxSimpleCurl *m_simpleCurl;
+public:
+	SimpleCurlProgressDialog(wxSimpleCurl *curl, wxWindow *parent, const wxString &msg )
+		: wxProgressDialog( "Progress", msg, 100, 
+			parent, wxPD_APP_MODAL|wxPD_SMOOTH|wxPD_CAN_ABORT|wxPD_AUTO_HIDE )
 	{
-		while( 1 )
+		m_simpleCurl = curl;
+		m_baseMsg = msg;
+	}
+
+	bool Update( const wxString &msg, double percent )
+	{
+		wxLogStatus("progress update from d/l thread '%s' %.2lf %%", (const char*)msg.c_str(), percent);
+		return wxProgressDialog::Update( percent, m_baseMsg + "  " + msg );
+	}
+
+	void OnSimpleCurlEvent( wxSimpleCurlEvent &evt )
+	{
+		double bytes = evt.GetBytesTransferred();
+		double total = evt.GetBytesTotal();
+		double percent =  total > 0 ? 100.0 * bytes / total : 0.0;
+		if ( percent > 100 ) percent = 100.0;
+
+		if ( !Update( wxString::Format("(%.2lf kB transferred)", bytes*0.001 ), percent ) )
 		{
-			if ( IsStarted() && !Finished() ) wxMilliSleep( 50 );
-			else break;
+			wxLogStatus("requesting cancel from progress dialog on simple curl d/l thread...");
+			m_simpleCurl->Cancel();
+		}
+	}
+
+	DECLARE_EVENT_TABLE()
+};
+
+BEGIN_EVENT_TABLE(SimpleCurlProgressDialog, wxProgressDialog)
+	EVT_SIMPLECURL( ID_MY_SIMPLE_CURL, SimpleCurlProgressDialog::OnSimpleCurlEvent )
+END_EVENT_TABLE()
+
+
+bool wxSimpleCurl::Get( const wxString &url, const wxString &msg, wxWindow *parent )
+{	
+	bool show_progress = !msg.IsEmpty();
+
+	SimpleCurlProgressDialog *pd = 0;
+	if ( show_progress )
+	{
+		if ( !parent )
+		{
+			wxWindowList &wl = ::wxTopLevelWindows;
+			for( wxWindowList::iterator it = wl.begin(); it != wl.end(); ++it )
+				if ( wxTopLevelWindow *tlw = dynamic_cast<wxTopLevelWindow*>( *it ) )
+					if ( tlw->IsActive() )
+						parent = tlw;
 		}
 
-		return m_thread->FinishedOk();
+		pd = new SimpleCurlProgressDialog( this, parent, msg );
+		
+#ifdef __WXMSW__
+		pd->SetIcon( wxICON( appicon ) );
+#endif
+		pd->Show();
+		wxYield();
+		
+		SetEventHandler( pd, ID_MY_SIMPLE_CURL );
 	}
-	else
-		return true;
+
+	Start( url );
+
+	bool ok = Wait( show_progress );
+
+	if ( pd ) delete pd;
+
+	return ok;
+}
+
+bool wxSimpleCurl::Wait( bool yield )
+{
+	while( 1 )
+	{
+		if ( IsStarted() && !IsFinished() ) 
+		{
+			if ( yield ) wxTheApp->Yield( true );
+			wxMilliSleep( 50 );
+		}
+		else break;
+	}
+	
+	return m_thread->FinishedOk();
 }
 
 void wxSimpleCurl::SetEventHandler( wxEvtHandler *hh, int id )
 {
 	m_handler = hh;
 	m_id = id;
-}
-
-void wxSimpleCurl::SetCallback( void (*function)( wxSimpleCurlEvent &, void * ), void *user_data )
-{
-	m_callback = function;
-	m_userData = user_data;
 }
 
 bool wxSimpleCurl::Ok()
@@ -326,18 +394,15 @@ bool wxSimpleCurl::WriteDataToFile( const wxString &file )
 	return m_thread ? m_thread->WriteDataToFile( file ) : false;
 }
 
-bool wxSimpleCurl::Finished()
+bool wxSimpleCurl::IsFinished()
 {
 	return (m_thread != 0 && m_thread->IsDone() && !m_thread->IsRunning() );
 }
 
-void wxSimpleCurl::Abort()
+void wxSimpleCurl::Cancel()
 {
-	if (m_thread != 0 && IsStarted() && !Finished())
-	{
+	if ( m_thread != 0 )
 		m_thread->Cancel();
-		m_thread->Wait();
-	}
 }
 
 void wxSimpleCurl::SetProxyAddress( const wxString &proxy )
@@ -498,7 +563,7 @@ bool wxSimpleCurl::GeoCode( const wxString &address, double *lat, double *lon, d
 	
 	wxSimpleCurl curl;
 	wxBusyCursor curs;
-	if ( !curl.Start( url, true ) )
+	if ( !curl.Get( url, "Geocoding address '" + address + "'..." ) )
 		return false;
 
 	wxJSONReader reader;
@@ -521,8 +586,8 @@ bool wxSimpleCurl::GeoCode( const wxString &address, double *lat, double *lon, d
 		// get timezone from another service
 		url = wxString::Format("https://maps.googleapis.com/maps/api/timezone/json?location=%.14lf,%.14lf&timestamp=1&sensor=false&key=",
 			*lat, *lon) + GOOGLE_API_KEY;
-		curl.Start( url, true );
-		if (reader.Parse( curl.GetDataAsString(), &root )==0)
+		bool ok = curl.Get( url, "Geocoding address..." );
+		if ( ok && reader.Parse( curl.GetDataAsString(), &root )==0)
 		{
 			wxJSONValue val = root.Item("rawOffset");
 			if ( val.IsDouble() ) *tz = val.AsDouble() / 3600.0;
@@ -559,6 +624,6 @@ wxBitmap wxSimpleCurl::StaticMap( double lat, double lon, int zoom, MapProvider 
 	}
 
 	wxSimpleCurl curl;
-	curl.Start( url, true );
-	return wxBitmap( curl.GetDataAsImage(wxBITMAP_TYPE_JPEG) );
+	bool ok = curl.Get( url, "Obtaining aerial imagery..." );
+	return ok ? wxBitmap( curl.GetDataAsImage(wxBITMAP_TYPE_JPEG) ) : wxNullBitmap;
 }
