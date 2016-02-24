@@ -148,7 +148,7 @@ public:
 			dl.Start( url );
 			while( 1 )
 			{
-				if ( dl.IsStarted() && !dl.Finished() ) 
+				if ( dl.IsStarted() && !dl.IsFinished() ) 
 				{
 					wxYield();
 					wxMilliSleep( 30 );
@@ -390,7 +390,7 @@ public:
 		wxRemoveFile( path );
 				
 		wxSimpleCurl dl_notice;
-		if ( dl_notice.Start( url + "/newversion_" + wxString(g_platStr) + ".txt", true ) )
+		if ( dl_notice.Get( url + "/newversion_" + wxString(g_platStr) + ".txt" ) )
 		{
 			wxString text( dl_notice.GetDataAsString() );
 			if ( text.Left(17) == "<!--sam-notice-->" && text.Len() > 18 )
@@ -411,7 +411,7 @@ public:
 		wxString patch_info_file( url + "/patch_" + wxString(g_platStr) + ".txt" );
 		// download current patch information for this platform
 		wxSimpleCurl dl;
-		if ( !dl.Start( patch_info_file, true ) )
+		if ( !dl.Get( patch_info_file ) )
 		{
 			if (!quiet) 
 				wxMessageBox("Could not obtain update information for SAM " + wxString(g_platStr) + ".\n\nInternet connection method: " + g_icmStr, "SAM Web Update");

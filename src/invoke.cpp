@@ -184,14 +184,8 @@ static void fcall_webapi( lk::invoke_t &cxt )
 
 static void fcall_geocode( lk::invoke_t &cxt )
 {
-	LK_DOC( "geocode", "Returns the latitude and longitude of an address using Google's geocoding web API.", "(string:address, [string: busy message]):table");
-	
-	std::auto_ptr<wxBusyInfo> bi(
-		( cxt.arg_count() > 1 ) 
-		? new wxBusyInfo( cxt.arg(1).as_string() ) 
-		: NULL );
-
-	
+	LK_DOC( "geocode", "Returns the latitude and longitude of an address using Google's geocoding web API.", "(string:address):table");
+		
 	double lat = 0, lon = 0;
 	bool ok = wxSimpleCurl::GeoCode( cxt.arg(0).as_string(), &lat, &lon );
 	cxt.result().empty_hash();
@@ -214,12 +208,11 @@ static void fcall_curl( lk::invoke_t &cxt )
 
 	wxLogStatus( "curl: " + url );
 
-	std::auto_ptr<wxBusyInfo> bi(
-		( cxt.arg_count() > 3 ) 
-		? new wxBusyInfo( cxt.arg(3).as_string() ) 
-		: NULL );
+	wxString msg;
+	if ( cxt.arg_count() > 3 )
+		msg = cxt.arg(3).as_string();
 
-	if ( !curl.Start( url, true ) )
+	if ( !curl.Get( url, msg ) )
 	{
 		cxt.result().assign( 0.0 );
 		return;
@@ -1620,8 +1613,14 @@ void fcall_windtoolkit(lk::invoke_t &cxt)
 
 	//Download the weather file
 	wxSimpleCurl curl;
-	curl.Start(url, true);	//true won't let it return to code unless it's done downloading
+	bool ok = curl.Get(url, "Downloading data from wind toolkit...", SamApp::Window() );	//true won't let it return to code unless it's done downloading
 	// would like to put some code here to tell it not to download and to give an error if hits 404 Not Found
+
+	if ( !ok )
+	{
+		wxMessageBox("Failed to download data from web service.");
+		return;
+	}
 
 	//Create a folder to put the weather file in
 	wxString wfdir;

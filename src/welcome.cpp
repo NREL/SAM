@@ -128,7 +128,7 @@ WelcomeScreen::~WelcomeScreen()
 
 void WelcomeScreen::AbortDownloadThreads()
 {
-	m_ssCurlMessage.Abort();
+	m_ssCurlMessage.Cancel();
 }
 
 void WelcomeScreen::OnDownloadTimeout( wxTimerEvent & )

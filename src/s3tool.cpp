@@ -190,7 +190,6 @@ void LocationSetup::OnGetMap( wxCommandEvent & )
 
 void LocationSetup::DownloadMap(  )
 {
-	wxBusyInfo info("Obtaining aerial imagery...");
 	m_bitmap = wxSimpleCurl::StaticMap( m_lat->Value(), m_lon->Value(), m_zoomLevel, wxSimpleCurl::BING_MAPS );
 	if (!m_bitmap.IsOk())
 	{

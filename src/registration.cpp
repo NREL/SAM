@@ -1152,7 +1152,7 @@ bool SamRegistration::CheckInWithServer( int *usage_count )
 		(const char*)key.c_str(), (const char*) GetVersionAndPlatform().c_str(), count );
 	
 	curl.SetPostData( post );
-	curl.Start( url, true );
+	curl.Get( url );
 	
 	if ( usage_count ) *usage_count = -999;
 	
@@ -1375,7 +1375,7 @@ void SamRegistration::OnRegister( wxCommandEvent & )
 	{
 	//	https://developer.nrel.gov/api/sam/v1/tracker/resend_key?api_key=SAMAPIKEY&email=someusersemail@somedomain.com
 		wxString url = SamApp::WebApi("registration") + "/resend_key?api_key=" + wxString(sam_api_key) + "&email=" + email;
-		curl.Start( url, true );
+		curl.Get( url );
 		
 		wxString raw( curl.GetDataAsString() );
 		if ( reader.Parse( raw, &root ) == 0 )
@@ -1405,7 +1405,7 @@ void SamRegistration::OnRegister( wxCommandEvent & )
 		"&sam_version=" + GetVersionAndPlatform();
 		
 	curl.SetPostData( post );
-	curl.Start( url, true );		
+	curl.Get( url );		
 
 	wxString raw( curl.GetDataAsString() );
 	if ( reader.Parse( raw, &root ) == 0 )
