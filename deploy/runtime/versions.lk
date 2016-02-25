@@ -186,54 +186,54 @@ version_upgrade{'2015.9.9'} = define() {
 	
 	if( cfg.tech == 'MSPT' )
 	{	
-		value('piping_loss', oldvalue('Piping_loss'));
-		value('piping_length_const', oldvalue('csp.pt.par.piping_length_const'));
-		value('piping_length_mult', oldvalue('csp.pt.par.piping_length_mult'));
-		value('gross_net_conversion_factor', oldvalue('csp.pt.pwrb.gross_net_conversion_factor'));
-		value('hybrid_tou1', oldvalue('csp.pt.pwrb.hc_ctl1'));
-		value('hybrid_tou2', oldvalue('csp.pt.pwrb.hc_ctl2'));
-		value('hybrid_tou3', oldvalue('csp.pt.pwrb.hc_ctl3'));
-		value('hybrid_tou4', oldvalue('csp.pt.pwrb.hc_ctl4'));
-		value('hybrid_tou5', oldvalue('csp.pt.pwrb.hc_ctl5'));
-		value('hybrid_tou6', oldvalue('csp.pt.pwrb.hc_ctl6'));
-		value('hybrid_tou7', oldvalue('csp.pt.pwrb.hc_ctl7'));
-		value('hybrid_tou8', oldvalue('csp.pt.pwrb.hc_ctl8'));
-		value('hybrid_tou9', oldvalue('csp.pt.pwrb.hc_ctl9'));
+		value('piping_loss', oldvalue('Piping_loss'),"Variable Renamed");
+		value('piping_length_const', oldvalue('csp.pt.par.piping_length_const'),"Variable Renamed");
+		value('piping_length_mult', oldvalue('csp.pt.par.piping_length_mult'),"Variable Renamed");
+		value('gross_net_conversion_factor', oldvalue('csp.pt.pwrb.gross_net_conversion_factor'),"Variable Renamed");
+		value('hybrid_tou1', oldvalue('csp.pt.pwrb.hc_ctl1'),"Variable Renamed");
+		value('hybrid_tou2', oldvalue('csp.pt.pwrb.hc_ctl2'),"Variable Renamed");
+		value('hybrid_tou3', oldvalue('csp.pt.pwrb.hc_ctl3'),"Variable Renamed");
+		value('hybrid_tou4', oldvalue('csp.pt.pwrb.hc_ctl4'),"Variable Renamed");
+		value('hybrid_tou5', oldvalue('csp.pt.pwrb.hc_ctl5'),"Variable Renamed");
+		value('hybrid_tou6', oldvalue('csp.pt.pwrb.hc_ctl6'),"Variable Renamed");
+		value('hybrid_tou7', oldvalue('csp.pt.pwrb.hc_ctl7'),"Variable Renamed");
+		value('hybrid_tou8', oldvalue('csp.pt.pwrb.hc_ctl8'),"Variable Renamed");
+		value('hybrid_tou9', oldvalue('csp.pt.pwrb.hc_ctl9'),"Variable Renamed");
 	}
 	
 	//changes to the Physical Trough model
 	if( cfg.tech == 'Physical Trough' )
 	{
-		value('eta_lhv', oldvalue('csp.dtr.pwrb.boiler_lhv_eff'));
-		value('eta_tes_htr', oldvalue('csp.dtr.tes.tank_heater_eff'));
-		value('n_pl_inc', oldvalue('csp.dtr.pwrb.hr_pl_nlev'));
-		value('P_ref', oldvalue('pb_rated_cap'));
-		value('hybrid_tou1', oldvalue('csp.dtr.pwrb.hc_ctl1'));
-		value('hybrid_tou2', oldvalue('csp.dtr.pwrb.hc_ctl2'));
-		value('hybrid_tou3', oldvalue('csp.dtr.pwrb.hc_ctl3'));
-		value('hybrid_tou4', oldvalue('csp.dtr.pwrb.hc_ctl4'));
-		value('hybrid_tou5', oldvalue('csp.dtr.pwrb.hc_ctl5'));
-		value('hybrid_tou6', oldvalue('csp.dtr.pwrb.hc_ctl6'));
-		value('hybrid_tou7', oldvalue('csp.dtr.pwrb.hc_ctl7'));
-		value('hybrid_tou8', oldvalue('csp.dtr.pwrb.hc_ctl8'));
-		value('hybrid_tou9', oldvalue('csp.dtr.pwrb.hc_ctl9'));
-		value('pressure_mode', oldvalue('csp.dtr.pwrb.pressure_mode'));
+		value('eta_lhv', oldvalue('csp.dtr.pwrb.boiler_lhv_eff'),"Variable Renamed");
+		value('eta_tes_htr', oldvalue('csp.dtr.tes.tank_heater_eff'),"Variable Renamed");
+		value('n_pl_inc', oldvalue('csp.dtr.pwrb.hr_pl_nlev'),"Variable Renamed");
+		value('P_ref', oldvalue('pb_rated_cap'),"Variable Renamed");
+		value('hybrid_tou1', oldvalue('csp.dtr.pwrb.hc_ctl1'),"Variable Renamed");
+		value('hybrid_tou2', oldvalue('csp.dtr.pwrb.hc_ctl2'),"Variable Renamed");
+		value('hybrid_tou3', oldvalue('csp.dtr.pwrb.hc_ctl3'),"Variable Renamed");
+		value('hybrid_tou4', oldvalue('csp.dtr.pwrb.hc_ctl4'),"Variable Renamed");
+		value('hybrid_tou5', oldvalue('csp.dtr.pwrb.hc_ctl5'),"Variable Renamed");
+		value('hybrid_tou6', oldvalue('csp.dtr.pwrb.hc_ctl6'),"Variable Renamed");
+		value('hybrid_tou7', oldvalue('csp.dtr.pwrb.hc_ctl7'),"Variable Renamed");
+		value('hybrid_tou8', oldvalue('csp.dtr.pwrb.hc_ctl8'),"Variable Renamed");
+		value('hybrid_tou9', oldvalue('csp.dtr.pwrb.hc_ctl9'),"Variable Renamed");
+		value('pressure_mode', oldvalue('csp.dtr.pwrb.pressure_mode'),"Variable Renamed");
 	}
 	
 	//changes to the molten salt linear fresnel model
 	if( cfg.tech == 'MSLF' )
 	{
-		value('hybrid_tou1', oldvalue('csp.mslf.cycle.F_wc1'));
-		value('hybrid_tou2', oldvalue('csp.mslf.cycle.F_wc2'));
-		value('hybrid_tou3', oldvalue('csp.mslf.cycle.F_wc3'));
-		value('hybrid_tou4', oldvalue('csp.mslf.cycle.F_wc4'));
-		value('hybrid_tou5', oldvalue('csp.mslf.cycle.F_wc5'));
-		value('hybrid_tou6', oldvalue('csp.mslf.cycle.F_wc6'));
-		value('hybrid_tou7', oldvalue('csp.mslf.cycle.F_wc7'));
-		value('hybrid_tou8', oldvalue('csp.mslf.cycle.F_wc8'));
-		value('hybrid_tou9', oldvalue('csp.mslf.cycle.F_wc9'));
-		value('pressure_mode', oldvalue('csp.mslf.cycle.sliding_pres'));
-		value('combo_condenser_type', oldvalue('csp.mslf.cycle.CT'));
+		value('hybrid_tou1', oldvalue('csp.mslf.cycle.F_wc1'),"Variable Renamed");
+		value('hybrid_tou2', oldvalue('csp.mslf.cycle.F_wc2'),"Variable Renamed");
+		value('hybrid_tou3', oldvalue('csp.mslf.cycle.F_wc3'),"Variable Renamed");
+		value('hybrid_tou4', oldvalue('csp.mslf.cycle.F_wc4'),"Variable Renamed");
+		value('hybrid_tou5', oldvalue('csp.mslf.cycle.F_wc5'),"Variable Renamed");
+		value('hybrid_tou6', oldvalue('csp.mslf.cycle.F_wc6'),"Variable Renamed");
+		value('hybrid_tou7', oldvalue('csp.mslf.cycle.F_wc7'),"Variable Renamed");
+		value('hybrid_tou8', oldvalue('csp.mslf.cycle.F_wc8'),"Variable Renamed");
+		value('hybrid_tou9', oldvalue('csp.mslf.cycle.F_wc9'),"Variable Renamed");
+		value('pressure_mode', oldvalue('csp.mslf.cycle.sliding_pres'),"Variable Renamed");
+		value('combo_condenser_type', oldvalue('csp.mslf.cycle.CT'),"Variable Renamed");
 	}	
 };
 
@@ -246,11 +246,11 @@ version_upgrade{'2015.8.17'} = define() {
 	if( cfg.tech == 'DSPT' )
 	{	
 		// Tower piping length multiplier and constant addition need to be remapped
-		value('piping_length_mult',oldvalue('csp.pt.par.piping_length_const'));
-		value('piping_length_add',oldvalue('csp.pt.par.piping_length_mult'));
+		value('piping_length_mult',oldvalue('csp.pt.par.piping_length_const'),"Variable names for piping length constant and piping length multiplier were switched");
+		value('piping_length_add',oldvalue('csp.pt.par.piping_length_mult'),"Variable names for piping length constant and piping length multiplier were switched");
 		
 		// Emissivity used for all three receivers, not just boiler...
-		value('rec_emis',oldvalue('emis_boiler')); 
+		value('rec_emis',oldvalue('emis_boiler'),"The same coating emissivity is applied to the boiler, superheater, and reheater"); 
 	}
 	
 	// Add two new dispatch modes, pushed manual to index 2
