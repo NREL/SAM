@@ -11,6 +11,7 @@
 
 #include <curl/curl.h>
 
+#include <wex/label.h>
 #include <wex/jsonreader.h>
 
 #include "simplecurl.h"
@@ -266,25 +267,38 @@ void wxSimpleCurl::Start( const wxString &url )
 
 enum { ID_MY_SIMPLE_CURL=wxID_HIGHEST+491 };
 
-class SimpleCurlProgressDialog : public wxProgressDialog
+class SimpleCurlProgressDialog : public wxDialog
 {
+	wxLabel *m_label;
+	wxGauge *m_gauge;
 	wxString m_baseMsg;
 	wxSimpleCurl *m_simpleCurl;
+	bool m_canceled;
 public:
 	SimpleCurlProgressDialog(wxSimpleCurl *curl, wxWindow *parent, const wxString &msg )
-		: wxProgressDialog( "Progress", msg, 100, 
-			parent, wxPD_APP_MODAL|wxPD_SMOOTH|wxPD_CAN_ABORT|wxPD_AUTO_HIDE )
+		: wxDialog( parent, wxID_ANY, "Progress", 
+			wxDefaultPosition, wxSize(500,250), wxDEFAULT_DIALOG_STYLE|wxCLIP_CHILDREN )
 	{
+		SetBackgroundColour( *wxWHITE );
+
+		m_canceled = false;
 		m_simpleCurl = curl;
 		m_baseMsg = msg;
-	}
+		
+		m_label = new wxLabel( this, wxID_ANY, msg + "                                                  " );
+		m_label->SetBackgroundColour( GetBackgroundColour() );
+		m_gauge = new wxGauge( this, wxID_ANY, 100, wxDefaultPosition, wxDefaultSize, wxGA_SMOOTH );
 
-	bool Update( const wxString &msg, double percent )
-	{
-		wxLogStatus("progress update from d/l thread '%s' %.2lf %%", (const char*)msg.c_str(), percent);
-		return wxProgressDialog::Update( percent, m_baseMsg + "  " + msg );
-	}
+		wxBoxSizer *sizer = new wxBoxSizer( wxVERTICAL );
+		sizer->Add( m_label, 0, wxALL|wxALIGN_CENTER_VERTICAL|wxALIGN_LEFT, 10 );
+		sizer->Add( m_gauge, 0, wxALL|wxEXPAND|wxLEFT|wxRIGHT, 10 );
+		sizer->Add( CreateButtonSizer( wxCANCEL ), 0, wxALL|wxEXPAND, 10 );
+		SetSizerAndFit( sizer );
 
+		if ( parent ) CenterOnParent();
+		else CenterOnScreen();
+	}
+	
 	void OnSimpleCurlEvent( wxSimpleCurlEvent &evt )
 	{
 		double bytes = evt.GetBytesTransferred();
@@ -292,17 +306,36 @@ public:
 		double percent =  total > 0 ? 100.0 * bytes / total : 0.0;
 		if ( percent > 100 ) percent = 100.0;
 
-		if ( !Update( wxString::Format("(%.2lf kB transferred)", bytes*0.001 ), percent ) )
+		m_label->SetText( m_baseMsg + "   " + wxString::Format("(%.2lf kB transferred)", bytes*0.001 ) );
+		m_gauge->SetValue( (int)percent );
+		Fit();
+
+		if ( m_canceled )
 		{
 			wxLogStatus("requesting cancel from progress dialog on simple curl d/l thread...");
 			m_simpleCurl->Cancel();
 		}
 	}
 
+	void OnButton( wxCommandEvent &evt )
+	{
+		m_canceled = true;
+		if ( wxWindow *win = dynamic_cast<wxWindow*>(evt.GetEventObject()) )
+			win->Enable( false );
+	}
+
+	void OnClose( wxCloseEvent &evt )
+	{
+		m_canceled = true;
+		evt.Veto();
+	}
+
 	DECLARE_EVENT_TABLE()
 };
 
-BEGIN_EVENT_TABLE(SimpleCurlProgressDialog, wxProgressDialog)
+BEGIN_EVENT_TABLE(SimpleCurlProgressDialog, wxDialog)
+	EVT_BUTTON( wxID_CANCEL, SimpleCurlProgressDialog::OnButton )
+	EVT_CLOSE( SimpleCurlProgressDialog::OnClose )
 	EVT_SIMPLECURL( ID_MY_SIMPLE_CURL, SimpleCurlProgressDialog::OnSimpleCurlEvent )
 END_EVENT_TABLE()
 
@@ -338,7 +371,7 @@ bool wxSimpleCurl::Get( const wxString &url, const wxString &msg, wxWindow *pare
 
 	bool ok = Wait( show_progress );
 
-	if ( pd ) delete pd;
+	if ( pd ) wxTheApp->ScheduleForDestruction( pd );
 
 	return ok;
 }
