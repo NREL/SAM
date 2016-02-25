@@ -371,7 +371,7 @@ bool wxSimpleCurl::Get( const wxString &url, const wxString &msg, wxWindow *pare
 
 	bool ok = Wait( show_progress );
 
-	if ( pd ) wxTheApp->ScheduleForDestruction( pd );
+	if ( pd ) delete pd;
 
 	return ok;
 }
