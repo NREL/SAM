@@ -50,7 +50,7 @@ Some more examples:
 
 //***********************************************************************************************************************************************************
 //CURRENT WORKING VERSION- CHANGE THIS VERSION NUMBER WHEN RELEASES ARE CREATED AND MAKE A NEW CURRENT WORKING VERSION FUNCTION
-version_upgrade{'2016.2.19'} = define() {
+version_upgrade{'2016.2.22'} = define() {
 	const cfg = config();
 	if (cfg.tech == 'Flat Plate PV')
 	{
@@ -62,6 +62,11 @@ version_upgrade{'2016.2.19'} = define() {
 			value(pre + 'shade_mode', new);
 			message ('Self-shading options have changed order', 'notice');
 		}
+	}
+	if ((cfg.fin == 'Residential' || cfg.fin == 'Commercial'))
+	{
+		a = oldvalue('ur_ec_ub_units');
+		value( 'ur_ec_hourly_acc_period', a );
 	}
 };
 
