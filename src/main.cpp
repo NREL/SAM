@@ -386,7 +386,7 @@ void MainWindow::ImportCases()
 		upgd.ShowReportDialog( file, true );
 	}
 
-	CaseImportDialog cdlg(this, "Select cases(s) to import:");
+	CaseImportDialog cdlg(this, "Select case(s) to import:");
 	cdlg.CenterOnParent();
 	cdlg.SetItems( prj.GetCaseNames() );
 	if ( cdlg.ShowModal() != wxID_OK)
