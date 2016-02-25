@@ -59,8 +59,7 @@ version_upgrade{'2016.2.22'} = define() {
 			pre = sprintf('subarray%d_', i);
 			x = value (pre +'shade_mode');
 			new = 1 - x; //old SAM: 0 was self-shaded, 1 was none, now: 0 is none, 1 is self-shaded (non-linear), 2 is self-shaded (linear)
-			value(pre + 'shade_mode', new);
-			message ('Self-shading options have changed order', 'notice');
+			value(pre + 'shade_mode', new, 'Self-shading options have changed order');
 		}
 	}
 	if ((cfg.fin == 'Residential' || cfg.fin == 'Commercial'))
@@ -253,7 +252,7 @@ version_upgrade{'2015.8.17'} = define() {
 		value('rec_emis',oldvalue('emis_boiler'),"The same coating emissivity is applied to the boiler, superheater, and reheater"); 
 	}
 	
-	// Add two new dispatch modes, pushed manual to index 2
+	// Add two new dispatch modes, pushed manual to index 2002
 	if( cfg.tech == 'Flat Plate PV' && (cfg.fin == 'Residential' || cfg.fin == 'Commercial' ) && value('en_batt') == 1)
 		value("batt_dispatch_choice",2);
 
