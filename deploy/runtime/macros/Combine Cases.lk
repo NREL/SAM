@@ -38,11 +38,10 @@ This may be helpful for modeling a variety of scenarios, including:
 //@ name=cases;type=text;label=List cases for Option 2 (comma-separated);value= 
 
 //Check that this macro was run from within a case
-/*
 if ( typeof(macro) == 'unknown' ) {
 	msgbox('This macro must be run from within a case.');
 	exit;
-} */ macro.mode = 0;
+}
 
 //Determine available cases
 cases = list_cases();
