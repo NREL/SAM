@@ -16,7 +16,8 @@ oldLabels = @wf;
 outln("Converting file...");
 
 SIZE = 8760 * 4;   // 15 minute data
-newLabels = ['Year','Month','Day','Hour','Minute','GHI','DNI','DHI','Tdry','Tdew','RH','Pres','Wspd','Wdir','Snow Depth'];
+newLabels = oldLabels;
+newLabels[#oldLabels] = 'Minute';
 newWF = {};
 
 for( i=0; i<#newLabels; i++){
