@@ -1,6 +1,6 @@
 // SAM startup script.
 
-en_iscc = 0;
+en_iscc = 1;
 
 // define all the configurations
 addconfig( 'Flat Plate PV', ['Residential', 'Commercial', 'Third Party', 'Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None'] );
