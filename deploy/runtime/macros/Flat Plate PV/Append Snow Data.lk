@@ -106,19 +106,19 @@ wfIn = open( path_only(wf)+'\\temp.csv', 'r');
 wfOut = open( left(output, #output-4)+"(snow).csv" , 'w');
 weatherData = csvread(path_only(wf)+'\\temp.csv',{"skip"=2, 'table'=true});
 
-params = ['Year','Month','Day','Hour','GHI','DNI','DHI','Tdry','Twet','RH','Pres','Wspd','Albedo','Snow'];
+//read in parameters from original weather file
+params = @weatherData;
 
 // Check for pre-existing snow data
- tmp = @weatherData;
-for(i=0; i<#tmp; i++){
-	if(tmp[i]=='Snow'){
+for(i=0; i<#params; i++){
+	if(params[i]=='Snow'){
 		outln('  Warning: Overwriting previous snow data');
 	}
 }
 
 //Check length of weather data
 
-weatherLength = #weatherData{'Hour'};
+weatherLength = #weatherData{params[0]};
 if( mod(weatherLength, 8760) != 0){
 	outln("Error: Weather data length must be a multiple of 8760");
 	exit;
@@ -154,7 +154,7 @@ if( mod(#snowData, 365) != 0){
 
 if( #snowData == weatherLength) weatherData{'Snow'} = snowData;
 
-elseif( #snowData > #weatherData{'Hour'}){
+elseif( #snowData > #weatherData{params[0]}){
 	ratio = #snowData/weatherLength;
 	tmpSnowData = alloc(weatherLength);
 	for(i=0; i<weatherLength; i++){
@@ -168,7 +168,7 @@ elseif( #snowData > #weatherData{'Hour'}){
 	
 	weatherData{'Snow'} = tmpSnowData;
 }
-elseif( #snowData < #weatherData{'Hour'}){
+elseif( #snowData < #weatherData{params[0]}){
 	ratio = weatherLength/#snowData;
 	tmpSnowData = alloc(weatherLength);
 	for(i=0; i<#snowData; i++){
@@ -181,6 +181,7 @@ elseif( #snowData < #weatherData{'Hour'}){
 }
 ////////////////////////////////////////////////////
 // Write new weather file
+params[#params] = 'Snow'; //there's one more parameter, Snow, now that snow has been added
 tmpLine = "";
 
 read_line(wfIn, tmpLine);
@@ -195,7 +196,7 @@ for(i=0; i<#params; i++){
 }
 write_line(wfOut, tmpLine);
 
-for(i=0; i<#weatherData{'Year'}; i++){
+for(i=0; i<#weatherData{params[0]}; i++){
 	tmpLine = "";
 	
 	for(j=0; j<#params; j++){
@@ -213,3 +214,5 @@ for(i=0; i<#weatherData{'Year'}; i++){
 close(wfIn);
 close(wfOut);
 remove_file(path_only(wf)+'\\temp.csv');
+outln('New weather file created successfully!');
+msgbox('New weather file created successfully!');
