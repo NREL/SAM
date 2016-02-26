@@ -87,7 +87,7 @@ version_upgrade{'2016.1.21'} = define() {
 			old_dispatch = value("batt_dispatch_choice");
 			// Added new dispatch mode, if they had manual, it's now index 3, others are the same
 			if (old_dispatch == 2)
-				value("batt_dispatch_choice",3);	
+				value("batt_dispatch_choice",3,"Keep as manual dispatch");	
 		}	
 	}
 	
@@ -254,7 +254,7 @@ version_upgrade{'2015.8.17'} = define() {
 	
 	// Add two new dispatch modes, pushed manual to index 2002
 	if( cfg.tech == 'Flat Plate PV' && (cfg.fin == 'Residential' || cfg.fin == 'Commercial' ) && value('en_batt') == 1)
-		value("batt_dispatch_choice",2);
+		value("batt_dispatch_choice",2, "Keep as manual dispatch");
 
 };
 
