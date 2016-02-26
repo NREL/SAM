@@ -1768,21 +1768,20 @@ bool SamApp::OnInit()
 extern void RegisterReportObjectTypes();
 	RegisterReportObjectTypes();
 
-
-	wxInitAllImageHandlers();
-	wxSimpleCurl::Init();
-	
 	for( int i=0;i<argc;i++ )
 		g_appArgs.Add( argv[i] );
 	
 	if ( g_appArgs.Count() < 1 || !wxDirExists( wxPathOnly(g_appArgs[0]) ) )
 	{
-
 		wxMessageBox("Startup error - cannot determine application runtime folder from startup argument.\n\n"
 			"Try running " + g_appArgs[0] + " by specifying the full path to the executable.");
 		return false;
 	}
-	
+
+	wxInitAllImageHandlers();
+	wxSimpleCurl::Init();
+	wxPLPlot::AddPdfFontDir( GetRuntimePath() + "/pdffonts" );
+		
 	wxString proxy = SamApp::ReadProxyFile();
 	if ( ! proxy.IsEmpty() )
 		wxSimpleCurl::SetProxyAddress( proxy );
