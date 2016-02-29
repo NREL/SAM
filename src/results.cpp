@@ -1643,6 +1643,12 @@ public:
 	std::vector<wxString> MakeURPeriodNums(bool cols);
 	std::vector<wxString> MakeURTierNums(bool cols);
 	std::vector<wxString> MakeMonths();
+	std::vector<wxString> MakeXY();
+	std::vector<wxString> MakeOpticalEfficiency();
+	std::vector<wxString> MakeFluxMaps(size_t n_cols);
+	std::vector<wxString> MakeNoRowLabels(size_t n_rows);
+	std::vector<wxString> MakeHeliostat(size_t n_rows);
+
 	void RemoveTopRow();
 	void RemoveLeftCol();
 
@@ -1930,6 +1936,21 @@ public:
 							write_label = false;
 							MatrixColLabels = MakeMonths();
 						}
+						else if (!value.Cmp("XY_POSITION"))
+						{
+							write_label = false;
+							MatrixColLabels = MakeXY();
+						}
+						else if (!value.Cmp("OPTICAL_EFFICIENCY"))
+						{
+							write_label = false;
+							MatrixColLabels = MakeOpticalEfficiency();
+						}
+						else if (!value.Cmp("FLUX_MAPS"))
+						{
+							write_label = false;
+							MatrixColLabels = MakeFluxMaps(nc);
+						}
 					}
 
 					if (ui_hint.find("ROW_LABEL") != ui_hint.end())
@@ -1972,6 +1993,16 @@ public:
 						{
 							write_label = false;
 							MatrixRowLabels = MakeMonths();
+						}
+						else if (!value.Cmp("HELIOSTAT"))
+						{
+							write_label = false;
+							MatrixRowLabels = MakeHeliostat(nr);
+						}
+						else if (!value.Cmp("NO_ROW_LABEL"))
+						{
+							write_label = false;
+							MatrixRowLabels = MakeNoRowLabels(nr);
 						}
 					}
 
@@ -2033,7 +2064,6 @@ std::vector<wxString> TabularBrowser::ResultsTable::MakeURPeriods()
 
 	return v;
 }
-
 std::vector<wxString> TabularBrowser::ResultsTable::MakeURPeriodNums(bool cols)
 {
 	std::vector<wxString> v;
@@ -2125,7 +2155,60 @@ std::vector<wxString> TabularBrowser::ResultsTable::MakeMonths()
 
 	return v;
 }
+std::vector<wxString> TabularBrowser::ResultsTable::MakeXY()
+{
+	std::vector<wxString> v;
 
+	v.push_back("X Position");
+	v.push_back("Y Position");
+
+	return v;
+}
+std::vector<wxString> TabularBrowser::ResultsTable::MakeOpticalEfficiency()
+{
+	std::vector<wxString> v;
+
+	v.push_back("Azimuth Angle (deg)");
+	v.push_back("Elevation Angle (deg)");
+	v.push_back("Optical Efficiency");
+
+	return v;
+}
+std::vector<wxString> TabularBrowser::ResultsTable::MakeFluxMaps(size_t n_cols)
+{
+	std::vector<wxString> v;
+	
+	v.push_back("Azimuth Angle (deg)");
+	v.push_back("Elevation Angle (deg)");
+	for (size_t i = 2; i != n_cols; i++)
+	{
+		wxString str;
+		str.Printf(wxT("Panel %d Absorbed Flux [W/m2]"), i - 1);
+		v.push_back(str);
+	}
+
+	return v;
+}
+std::vector<wxString> TabularBrowser::ResultsTable::MakeNoRowLabels(size_t n_rows)
+{
+	std::vector<wxString> v;
+	for (size_t i = 0; i != n_rows; i++)
+		v.push_back("");
+
+	return v;
+}
+std::vector<wxString> TabularBrowser::ResultsTable::MakeHeliostat(size_t n_rows)
+{
+	std::vector<wxString> v;
+	for (size_t i = 0; i != n_rows; i++)
+	{
+		wxString str;
+		str.Printf(wxT("Heliostat %d"), i + 1);
+		v.push_back(str);
+	}
+
+	return v;
+}
 
 enum { IDOB_COPYCLIPBOARD=wxID_HIGHEST+494, 
 	IDOB_SAVECSV, IDOB_SENDEXCEL, IDOB_EXPORTMODE, IDOB_CLEAR_ALL, 
