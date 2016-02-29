@@ -2319,51 +2319,93 @@ void TabularBrowser::UpdateGridSpecific(wxExtGridCtrl*& grid, ResultsTable*& gri
 	grid->ForceRefresh();
 }
 
-void TabularBrowser::ProcessRemoved(wxString name, bool internal_delete, bool remove_all)
+void TabularBrowser::ProcessRemoved(wxString name, bool internal_delete, bool update_grid)
 {
+	if (m_selectedVars.Index(name) == wxNOT_FOUND)
+		return;
+
 	ArraySizeKey removed_size = m_selectedVarsBySizeMap[name];
+	wxArrayString vars = m_selectedVarsMap[removed_size];
+
+	vars.Remove(name);
 	m_selectedVars.Remove(name);
 	m_selectedVarsBySizeMap.erase(name);
-	wxArrayString vars = m_selectedVarsMap[removed_size];
-	vars.Remove(name);
-	
-	if (!vars.IsEmpty() && !remove_all)
+
+	if (!vars.IsEmpty())
 	{
-		m_selectedVarsMap[removed_size]= vars;
+		m_selectedVarsMap[removed_size] = vars;
 		m_lastSize = removed_size;
-		UpdateGridSpecific(m_gridMap[removed_size], m_gridTableMap[removed_size], vars);
+		if (update_grid)
+		{
+			UpdateGridSpecific(m_gridMap[removed_size], m_gridTableMap[removed_size], vars);
+			UpdateCase();
+		}
 	}
 	else
-	{	
-		m_selectedVarsMap.erase(removed_size);
-		m_tabLabelsMap.erase(removed_size);
-		m_numberOfTabs--;
+		ProcessRemovedAll(removed_size, internal_delete);
+}
+void TabularBrowser::ProcessRemovedAll(ArraySizeKey removed_size, bool internal_delete)
+{
+	wxArrayString vars = m_selectedVarsMap[removed_size];
 
-		if (m_numberOfTabs > 0)
-			m_lastSize = m_selectedVarsBySizeMap.begin()->second;
-		
-		if (internal_delete)
+	// remove all will remove all variables on the current grid
+	for (int i = 0; i != vars.size(); i++)
+	{
+		m_selectedVarsBySizeMap.erase(vars[i]);
+		for (int j = 0; j != m_selectedVars.size(); j++)
 		{
-			int removed_page = m_notebook->GetPageIndex(m_gridMap[removed_size]);
-			m_notebook->DeletePage(removed_page);
+			if (vars[i] == m_selectedVars[j])
+			{
+				m_selectedVars.Remove(vars[i]);
+				break;
+			}
 		}
-
-		m_gridMap.erase(removed_size);
-		m_gridTableMap.erase(removed_size);
 	}
+
+	m_selectedVarsMap.erase(removed_size);
+	m_tabLabelsMap.erase(removed_size);
+	m_numberOfTabs--;
+
+	if (m_numberOfTabs > 0)
+		m_lastSize = m_selectedVarsBySizeMap.begin()->second;
+
+	if (internal_delete)
+	{
+		int removed_page = m_notebook->GetPageIndex(m_gridMap[removed_size]);
+		m_notebook->DeletePage(removed_page);
+	}
+
+	m_gridMap.erase(removed_size);
+	m_gridTableMap.erase(removed_size);
+	
 	UpdateCase();
 }
-void TabularBrowser::ProcessAdded(wxString name, bool internal_add)
+void TabularBrowser::ProcessAdded(wxString name)
 {
-	int i = -1;
-	if (internal_add)
+	// check to see if already added
+	bool add = false;
+	if (m_selectedVars.Index(name) == wxNOT_FOUND)
+	{
 		m_selectedVars.Add(name);
+		add = true;
+	}
 
-	i = m_selectedVars.Index(name);
+	int i = m_selectedVars.Index(name);
+
+	
+	// already stored, just updating
+	if (!add && CheckSizeChanged(i))
+	{
+		ProcessRemoved(name, true);
+		m_selectedVars.Add(name);
+		i = m_selectedVars.Index(name);
+	}
+	
 	ArraySizeKey var_size = GetVariableSize(i);
 
+	// check selected variables map
 	wxArrayString vars = m_selectedVarsMap[var_size];
-	bool add = true;
+	add = true;
 	for (int j = 0; j != vars.size(); j++)
 	{
 		if (!vars[j].Cmp(m_selectedVars[i]))
@@ -2375,6 +2417,7 @@ void TabularBrowser::ProcessAdded(wxString name, bool internal_add)
 	if (add)
 		vars.Add(m_selectedVars[i]);
 
+	// update internal data
 	m_selectedVarsMap[var_size] = vars;
 	m_selectedVarsBySizeMap[name] = var_size;
 	m_lastSize = var_size;
@@ -2402,10 +2445,58 @@ void TabularBrowser::SelectVariables(const wxArrayString &list)
 		UpdateAll();
 	}
 }
+void TabularBrowser::RemoveUnusedVariables()
+{
+	VariableMap tmp = m_selectedVarsMap;
+	for (ArrayIterator it = tmp.begin(); it != tmp.end(); it++)
+	{
+		ArraySizeKey var_size = it->first;
+		wxArrayString vars = it->second;
+		for (int i = 0; i != vars.size(); i++)
+		{
+			wxString name = vars[i];
+			VarValue *vv = m_sim->GetValue(name);
+			// don't update grid until the end
+			if (!vv)
+				ProcessRemoved(name, true, false);
+		}
+		// update grid if still exists
+		if (m_gridMap.find(var_size) != m_gridMap.end())
+		{
+			UpdateGridSpecific(m_gridMap[var_size], m_gridTableMap[var_size], vars);
+			UpdateCase();
+		}
+	}
+}
+bool TabularBrowser::CheckSizeChanged(int index)
+{
+	bool changed = true;
+	bool stored;
+	ArraySizeKey stored_size = GetStoredVariableSize(index, stored);
+	ArraySizeKey simulation_size = GetSimulationVariableSize(index);
+	if (stored)
+	{
+		if (stored_size == simulation_size)
+			changed = false;
+	}
+	else
+		changed = false;
+
+	return changed;
+}
 ArraySizeKey TabularBrowser::GetVariableSize(int index)
 {
+	bool stored = false;
+	ArraySizeKey var_size = GetStoredVariableSize(index, stored);
+	if (!stored)
+		var_size = GetSimulationVariableSize(index);
+
+	return var_size;
+}
+ArraySizeKey TabularBrowser::GetStoredVariableSize(int index, bool &stored)
+{
 	ArraySizeKey var_size;
-	bool contained = false;
+	stored = false;
 	for (ArrayIterator it = m_selectedVarsMap.begin(); it != m_selectedVarsMap.end(); it++)
 	{
 		wxArrayString vars = it->second;
@@ -2413,25 +2504,29 @@ ArraySizeKey TabularBrowser::GetVariableSize(int index)
 		{
 			if (!vars[j].Cmp(m_selectedVars[index]))
 			{
-				contained = true;
+				stored = true;
 				var_size = it->first;
+				break;
 			}
 		}
+		if (stored)
+			break;
 	}
+	return var_size;
+}
+ArraySizeKey TabularBrowser::GetSimulationVariableSize(int index)
+{
+	ArraySizeKey var_size;
+	VarValue *vv = m_sim->GetValue(m_selectedVars[index]);
 
-	if (!contained)
+	var_size.n_cols = vv->Rows();
+	var_size.n_rows = vv->Columns();
+	if (var_size.n_cols == 1)
+		var_size.key = -1;
+	else
 	{
-		VarValue *vv = m_sim->GetValue(m_selectedVars[index]);
-
-		var_size.n_cols = vv->Rows();
-		var_size.n_rows = vv->Columns();
-		if (var_size.n_cols == 1)
-			var_size.key = -1;
-		else
-		{
-			var_size.key = m_key;
-			m_key++;
-		}
+		var_size.key = m_key;
+		m_key++;
 	}
 	return var_size;
 }
@@ -2465,19 +2560,20 @@ void TabularBrowser::UpdateAll()
 
 	m_varSel->Freeze();
 	PopulateSelectionList(m_varSel, &m_names, m_sim);
+	RemoveUnusedVariables();
 
-	size_t i = 0;
+	wxArrayString tmp = m_selectedVars;
+	size_t n = tmp.size();
 
-	while (i< m_selectedVars.Count())
+	for (int i = 0; i != n; i++)
 	{
-		int idx = m_names.Index(m_selectedVars[i]);
+		int idx = m_names.Index(tmp[i]);
 		if (idx < 0)
-			m_selectedVars.RemoveAt(i);
+			ProcessRemoved(tmp[i], true);
 		else
 		{
 			m_varSel->SelectRowInCol(idx);
-			ProcessAdded(m_selectedVars[i], false);
-			i++;
+			ProcessAdded(tmp[i]);
 		}
 	}
 
@@ -2500,10 +2596,12 @@ void TabularBrowser::OnCommand(wxCommandEvent &evt)
 	case IDOB_CLEAR_ALL:
 		{
 			m_varSearch->Clear();
-			wxArrayString tmp = m_selectedVars;
-			int size = tmp.size();
-			for (int i = 0; i != size; i++)
-				ProcessRemoved(tmp[i], true, true); 
+			std::vector<ArraySizeKey> sizes;
+			for (GridIterator it = m_gridMap.begin(); it != m_gridMap.end(); it++)
+				sizes.push_back(it->first);
+
+			for (int i = 0; i != sizes.size(); i++)
+				ProcessRemovedAll(sizes[i], true);
 				
 			UpdateAll();
 		}
@@ -2664,7 +2762,7 @@ void TabularBrowser::OnVarSel( wxCommandEvent & )
 			ProcessAdded(name);
 		
 		if (!checked && m_selectedVars.Index(name) != wxNOT_FOUND)
-			ProcessRemoved(name, true, false);
+			ProcessRemoved(name, true);
 
 		SetLastSelection();
 	}
@@ -2699,9 +2797,7 @@ void TabularBrowser::OnPageClosed(wxAuiNotebookEvent& event)
 		}
 		if (!found)
 		{
-			wxArrayString vars = m_selectedVarsMap[grid_size];
-			for (int i = 0; i != vars.size(); i++)
-				ProcessRemoved(vars[i], false, true);
+			ProcessRemovedAll(grid_size, false);
 			break;
 		}
 	}

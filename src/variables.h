@@ -244,6 +244,7 @@ struct SortByRow
 struct ArraySizeKey
 {
 	ArraySizeKey(){ n_rows = n_cols = key = 0; }
+	ArraySizeKey(size_t rows, size_t cols){ n_rows = rows; n_cols = cols; }
 	size_t n_rows;
 	size_t n_cols;
 	int key;
