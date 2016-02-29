@@ -202,8 +202,9 @@ public:
 
 	TabularBrowser( wxWindow *parent );
 
-	void ProcessRemoved(wxString, bool internal_delete, bool remove_all = false);
-	void ProcessAdded(wxString, bool internal_add=true);
+	void ProcessRemoved(wxString, bool internal_delete, bool update_grid=true);
+	void ProcessRemovedAll(ArraySizeKey removed_size, bool internal_delete);
+	void ProcessAdded(wxString);
 	void SetLastSelection();
 	void Setup( Simulation *sim );
 	void UpdateAll();
@@ -211,8 +212,12 @@ public:
 	void GetTextData(wxString &dat, char sep);
 	
 	wxArrayString GetSelectedVariables();
+	void RemoveUnusedVariables();
 	void SelectVariables(const wxArrayString &list);
+	bool CheckSizeChanged(int index);
 	ArraySizeKey GetVariableSize(int index);
+	ArraySizeKey GetStoredVariableSize(int index, bool &contained);
+	ArraySizeKey GetSimulationVariableSize(int index);
 	ArraySizeKey GetVariableSizeByPage();
 	wxExtGridCtrl* GetPage();
 
@@ -230,6 +235,8 @@ private:
 	typedef std::map<ArraySizeKey, wxArrayString, ArraySizeKeyCompare>::iterator ArrayIterator;
 	typedef std::map<ArraySizeKey, wxExtGridCtrl*, ArraySizeKeyCompare>::iterator GridIterator;
 	typedef std::map<ArraySizeKey, ResultsTable*, ArraySizeKeyCompare>::iterator ResultsIterator;
+
+	typedef std::map<ArraySizeKey, wxArrayString, ArraySizeKeyCompare> VariableMap;
 
 	wxAuiNotebook *m_notebook;
 	std::map<ArraySizeKey, wxExtGridCtrl*, ArraySizeKeyCompare> m_gridMap;
