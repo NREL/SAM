@@ -10,8 +10,8 @@ the datasets described below.</p>
 <li><b>TMY3</b> is a comma-delimited format developed by NREL for the NSRDB
     1991-2010 update.</li>
 <li><b>EPW</b> is a comma-delimited format developed for the U.S. Department
-    of energy's EnergyPlus building simulation software.</li>
-<li><b>SolarAnywere</b> is a comma-delimited format used by Clean Power 
+    of Energy's EnergyPlus building simulation software.</li>
+<li><b>SolarAnywhere</b> is a comma-delimited format used by Clean Power 
     Research's weather data service.</li>
 </ul>
 
