@@ -50,6 +50,22 @@ Some more examples:
 
 //***********************************************************************************************************************************************************
 //CURRENT WORKING VERSION- CHANGE THIS VERSION NUMBER WHEN RELEASES ARE CREATED AND MAKE A NEW CURRENT WORKING VERSION FUNCTION
+version_upgrade{'2016.2.26'} = define() {
+	const cfg = config();
+	if ((cfg.fin == 'Residential' || cfg.fin == 'Commercial'))
+	{
+		a = oldvalue('ur_metering_option');
+		if (a==2) // switch old hourly and monthly non net metering options.
+			a=3;
+		else if (a==3)
+			a=2;
+		value( 'ur_metering_option', a );
+		// TODO update sell rates for energy charges to be old single sell rate if necessary
+		// TODO update old flat rates to TOU periods- either add to or replace energy charges
+	}
+};
+
+
 version_upgrade{'2016.2.22'} = define() {
 	const cfg = config();
 	if (cfg.tech == 'Flat Plate PV')
