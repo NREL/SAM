@@ -59,7 +59,7 @@ version_upgrade{'2016.2.26'} = define() {
 			a=3;
 		else if (a==3)
 			a=2;
-		value( 'ur_metering_option', a );
+		value( 'ur_metering_option', a, 'utility rate metering options have changed' );
 		// TODO update sell rates for energy charges to be old single sell rate if necessary
 		// TODO update old flat rates to TOU periods- either add to or replace energy charges
 	}
@@ -77,11 +77,6 @@ version_upgrade{'2016.2.22'} = define() {
 			new = 1 - x; //old SAM: 0 was self-shaded, 1 was none, now: 0 is none, 1 is self-shaded (non-linear), 2 is self-shaded (linear)
 			value(pre + 'shade_mode', new, 'Self-shading options have changed order');
 		}
-	}
-	if ((cfg.fin == 'Residential' || cfg.fin == 'Commercial'))
-	{
-		a = oldvalue('ur_ec_ub_units');
-		value( 'ur_ec_hourly_acc_period', a );
 	}
 };
 
@@ -166,9 +161,9 @@ version_upgrade{'2015.11.16'} = define() {
 				}
 			}
 		}
-		value("ur_ec_tou_mat", ec_tou_mat);
-		value("ur_dc_tou_mat", dc_tou_mat);
-		value("ur_dc_flat_mat", dc_flat_mat);
+		value("ur_ec_tou_mat", ec_tou_mat, 'Utility rate input for electricity charge TOU rates has changed');
+		value("ur_dc_tou_mat", dc_tou_mat, 'Utility rate input for demand charge TOU rates has changed');
+		value("ur_dc_flat_mat", dc_flat_mat, 'Utility rate input for demand charge flat rates has changed');
 		message( 'Utility rate inputs have been updated to tabular values rather than individual values.  See help for more information.', 'warning' );
 	}
 };
@@ -194,9 +189,9 @@ version_upgrade{'2015.9.9'} = define() {
 		// net metering check box removed
 		nm = oldvalue('ur_enable_net_metering');
 		if (nm==1)
-			value('ur_metering_option',oldvalue('ur_excess_monthly_energy_or_dollars'));
+			value('ur_metering_option',oldvalue('ur_excess_monthly_energy_or_dollars'), 'Utility rate metering options have changed');
 		else // non-net metering with monthly reconciliation
-			value('ur_metering_option',2);
+			value('ur_metering_option',2, 'Utility rate metering options have changed');
 	}
 	
 	if( cfg.tech == 'MSPT' )
