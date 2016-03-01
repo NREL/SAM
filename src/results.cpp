@@ -2183,7 +2183,7 @@ std::vector<wxString> TabularBrowser::ResultsTable::MakeFluxMaps(size_t n_cols)
 	for (size_t i = 2; i != n_cols; i++)
 	{
 		wxString str;
-		str.Printf(wxT("Panel %d Absorbed Flux [W/m2]"), i - 1);
+		str.Printf(wxT("Panel %d Absorbed Flux (W/m2)"), i - 1);
 		v.push_back(str);
 	}
 
