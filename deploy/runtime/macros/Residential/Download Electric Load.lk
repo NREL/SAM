@@ -74,7 +74,7 @@ json = curl(url);
 results = jsonparse(json);
 
 //CHECK FOR ERRORS
-if ( json == "" || (results.outputs.tmy2 == null && results.outputs.tmy3 == null && results.outputs.intl == null) ) {
+if ( json == "" || (results.outputs.tmy2 == null && results.outputs.tmy3 == null) ) {
   msgbox("Failed to translate latitude and longitude to a TMY3 ID.\n\nClick OK to exit macro.");
   exit;
 }
