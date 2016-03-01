@@ -24,6 +24,80 @@
   </head>
   <body>
       <p style="font-family:Segoe UI,sans-serif;font-size:20pt;text-align:center;color:#0072C6;">System Advisor Model (SAM) Release Notes</p>
+	  
+<h1>Version 2016.3.14, March 2016</h1>
+<p> This is a new release that addes several new major capabilities in the photovoltaic, battery storage, and molten salt power tower models.  In addition, there is a new technology option for integrated solar combined cycle (ISCC) plants, as well as a new tabular results browser, and many enhancements to the scripting capabilities.
+
+<h2>Photovoltaics</h2>
+<ul>
+<li> New plane-of-array (POA) irradiance input option from broadband or matched reference cell sources
+<li> New model for non-linear energy losses due to obstruction shading on parallel connected strings in 3D shading calculator
+<li> New linear beam irradiance loss self-shading option for fixed and 1 axis tracking arrays
+<li> Bug fix for inverter night time losses in loss diagram
+<li> <b>TODO</b>
+</ul>
+
+
+<h2>Battery Storage</h2>
+<ul>
+<li><b>TODO</b>
+</ul>
+
+<h2>Parabolic Trough (Physical)</h2>
+<ul>
+<li><b>TODO</b>
+</ul>
+
+<h2>Molten Salt Power Tower</h2>
+<ul>
+<li><b>TODO</b>
+</ul>
+
+<h2>Wind</h2>
+<ul>
+<li> Added step-by-step wizard for creating new wind projects
+<li><b>TODO</b>
+</ul>
+
+<h2>PPA Financial Models</h2>
+<ul>
+<li><b>TODO</b>
+</ul>
+
+<h2>Residential and Commerical Financial Models</h2>
+<ul>
+<li><b>TODO</b>
+</ul>
+
+<h2>Utility Rates</h2>
+<ul>
+<li> Revised and simplified metering options with single/dual meter and various energy or monetary rollover options
+<li> Revised user interface simplifies entering complex utility rate structures
+<li> Outputs are reported in tabular format by tier and period
+<li> Flat rates now modeled as energy charges under a single tier and time of use period
+<li> Simplified treatment of sell rates
+<li> Uses updated OpenEI International Utility Rate Database (IURDB)
+</ul>
+
+<h2>General</h2>
+<ul>
+<li> SAM uses the new NREL National Solar Radiation Database (NSRDB) for satellite irradiance data on a 4 km grid (see <a href="http://nsrdb.nrel.gov">http://nsrdb.nrel.gov</a>).
+<li> Improved results browser can display matrix data and groups results by category
+<li> Internet access proxies are automatically detected on Windows
+<li> User interface scales properly on high DPI laptop and tablet screens on Windows and OSX
+<li> Scripting language has a new interactive debugger that lets you step through your script line by line
+<li> Scripts run significantly faster due to new virtual machine architecture
+<li> Several built-in script functions added or improved (csvread, csvconv, curl, stable_sort, choose_from_list, transp, tempfile
+<li> Real-time syntax checking in script editor does not hang the user interface when editing long scripts
+<li> Improved rendering for plots when exported in PDF format
+<li> Bug fixes for horizontal stacked bar plots
+<li> Bug fix for time stamp shown in results viewer for 1 minute time series data
+<li> Updated weather file converter script to handle SolarAnywhere data files
+<li> Bug fix for saving projects with different 3D shading scenes in multiple cases
+<li> Linux version updated to remove webkitgtk dependency
+</ul>
+
+<p></p>
 
 <h1>Version 2015.6.30 Revision 4, October 2015</h1>
 <p> This is a maintenance update that fixes several issues:
