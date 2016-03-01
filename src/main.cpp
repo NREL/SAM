@@ -91,6 +91,7 @@ static SamApp::ver releases[] = {
 //the top version should always be the current working version
 		{ 2016, 2, 29 }, // internal release and current working version.
 		{ 2016, 2, 26 }, // utility rate changes
+		{ 2016, 2, 22 }, // self-shading update
 		{ 2016, 2, 19 }, //PV variable changes 
 		{ 2016, 2, 16 }, //new versioning scheme
 		{ 2016, 1, 21 }, //internal release
