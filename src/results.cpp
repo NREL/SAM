@@ -2159,8 +2159,8 @@ std::vector<wxString> TabularBrowser::ResultsTable::MakeXY()
 {
 	std::vector<wxString> v;
 
-	v.push_back("X Position");
-	v.push_back("Y Position");
+	v.push_back("X Position (m)");
+	v.push_back("Y Position (m)");
 
 	return v;
 }
@@ -2170,7 +2170,7 @@ std::vector<wxString> TabularBrowser::ResultsTable::MakeOpticalEfficiency()
 
 	v.push_back("Azimuth Angle (deg)");
 	v.push_back("Elevation Angle (deg)");
-	v.push_back("Optical Efficiency");
+	v.push_back("Optical Efficiency (-)");
 
 	return v;
 }
@@ -2183,7 +2183,7 @@ std::vector<wxString> TabularBrowser::ResultsTable::MakeFluxMaps(size_t n_cols)
 	for (size_t i = 2; i != n_cols; i++)
 	{
 		wxString str;
-		str.Printf(wxT("Panel %d Absorbed Flux (W/m2)"), i - 1);
+		str.Printf(wxT("Panel %d Absorbed Flux (kW/m2)"), i - 1);
 		v.push_back(str);
 	}
 
