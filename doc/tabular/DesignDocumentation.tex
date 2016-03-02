@@ -15,7 +15,7 @@
 %%% PAGE DIMENSIONS
 \usepackage{geometry} % to change the page dimensions
 \geometry{a4paper} % or letterpaper (US) or a5paper or....
-% \geometry{margin=2in} % for example, change the margins to 2 inches all round
+\geometry{margin=1in} % for example, change the margins to 2 inches all round
 % \geometry{landscape} % set up the page for landscape
 %   read geometry.pdf for detailed page layout information
 
@@ -64,10 +64,111 @@
 \section{Introduction}
 The tabular results browser in SAM provides the user the capability to easily display and compare matrix data.  This document is intended for internal use only to provide reference for the design of the tabular browser in case of future problems.  Basic code paths will be listed, as well as intended behavior.  For functions which have been particulary difficult to get correct, inputs, outputs, and additional details will be explained.
 
-\section{Scenarios}
+\section{Code Paths}
+\subsection{Running a simulation}
+The general code path which occurs when running a simulation is:\\
+\\
+\texttt{
+MainWindow::OnCaseMenu \\
+\indent CaseWindow::RunBaseCase \\
+ \indent \indent	Simulation::DispatchThreads \\
+ \indent \indent		CaseWindow::UpdateResults \\
+ \indent \indent \indent			CaseWindow::Setup \\
+ \indent \indent \indent \indent			TabularBrowser::Setup \\
+ \indent \indent \indent \indent \indent				TabularBrowser::UpdateAll \\
+ \indent \indent \indent			CaseWindow::GetTabularBrowser \\
+ \indent \indent \indent \indent				TabularBrowser::SelectVariables \\
+ \indent \indent \indent \indent \indent					TabularBrowser::UpdateAll \\
+}
+\\
+As can be seen, the tabular browser is updated twice when a simulation is run.  More investigation needs to be done to understand if this is correct. Within TabularBrowser, a new or updated simulation results in calls to UpdateAll.  This function encapsulates checks for adding variables, removing variables, and updating variable sizes on the existing grids. The following illustrates the order of the calls within UpdateAll, with the understanding that some logic exists to choose when to call these functions or not.  \\
+\\
+\\
+\texttt{
+TabularBrowser::UpdateAll \\
+\indent PopulateSelectionList \\
+\indent TabularBrowser::RemoveUnusedVariables \\
+\indent TabularBrowser::ProcessRemoved \\
+\indent TabularBrowser::ProcessAdded \\
+\indent TabularBrowser::SetLastSelection \\
+}
+\subsection{OnPageClosed}
+When a page in the tabular browser is closed, a page-closed event is generated, at which point internal data structures need to be cleaned up, and the existing grids need to be updated. The primary tasks which must occur are to remove all of the variables on the closed-grid and then redraw the existing grids.\\
+\\
+\texttt{
+TabularBrowser::OnPageClosed \\
+\indent TabularBrowser::ProcessRemovedAll \\
+\indent TabularBrowser::UpdateAll
+}
+\subsection{OnPageChanged}
+Every time a user clicks on a notebook tab which results in a change of page from the previously selected tab to the new selection, a page-changed event is generated. The event handling for this is relatively simple.  The code simply points local variables to reflect the currently selected grid.
+
+\subsection{OnVarSel}
+Every time a user clicks to add or remove a variable from the current grid, a variable-select event is generated.  To handle this event, the code simply checks whether the check-box is selected or deselected and then processes the addition or removal:\\
+\\
+\texttt{
+TabularBrowser::OnVarSel \\
+\indent TabularBrowser::ProcessAdded\\
+\indent TabularBrowser::ProcessRemoved\\
+\indent TabularBrowser::SetLastSelection \\
+}
+
+\section{Data Structures}
+The internal data structures relevent to the TabularBrowser are: \\
+\\
+\begin{tabular}{l | p{11cm} }
+\hline
+\texttt{m\_notebook} & the wxAuiNotebook which holds a wxExtGridCtrl on every tab \\ \hline
+\texttt{m\_grid} & the currently selected wxExtGridCtrl \\ \hline
+\texttt{m\_gridTable} & the underlying table containing the data for the currently selected grid \\ \hline
+\texttt{m\_gridMap} & a map which associates grid size to a pointer to that grid \\ \hline
+\texttt{m\_gridTableMap} & a map which associates grid size to a pointer to the underlying data table \\ \hline
+\texttt{m\_tabLabelsMap} & a map which associates grid size to the label of the tab \\ \hline
+\texttt{m\_selectedVars} & a string array containing names of every variable selected across all grids \\ \hline
+\texttt{m\_selectedVarsBySizeMap} & a map which associates variable name to the grid size \\ \hline
+\texttt{m\_selectedVarsMap} & a map which associates grid size to the array of variable names on that particular grid \\ \hline
+\texttt{m\_numberOfTabs} & the number of tabs (grids) \\ \hline
+\texttt{m\_lastSize} & the size of the last selected grid \\ \hline
+\texttt{m\_key} & an integer which increments when a matrix is added, allowing a way to keep track of grids of the same size \\ 
+\hline
+\end{tabular}
 
 \section{Main Functions}
+\subsection{ProcessAdded}
+\textbf{Inputs} \\
+\texttt{wxString name} - the name of the variable to add \\
+\\
+\textbf{Outputs}\\
+\texttt{none} \\
+\\
+\textbf{Description}
+The \texttt{ProcessAdded} function is called for one variable at a time. The function checks whether or not the size of the grid associated with the variable has changed.  If the size has changed, \texttt{ProcessRemoved} is called before proceeding. If \texttt{ProcessAdded} is called and a variable needs to be added, it will be added to \texttt{m\_selectedVars}, \texttt{m\_selectedVarsMap}, and \texttt{m\_selectedVarsBySizeMap}. The variable size will be used to update \texttt{m\_lastSize}.  Finally, the notebook, grid, and case will be updated.
+
+\subsection{ProcessRemoved}
+\textbf{Inputs} \\
+\texttt{wxString name} - the name of the variable to remove \\
+\texttt{bool update\_grid} - boolean choice on whether to call for grid update \\
+\\
+\textbf{Outputs}\\
+\texttt{none} \\
+\\
+\textbf{Description}
+The \texttt{ProcessRemoved} function is called for one variable at a time. The variable is removed from \texttt{m\_selectedVars}, \texttt{m\_selectedVarsMap}, and \texttt{m\_selectedVarsBySizeMap}. In the event that more variables exist on the current grid, the variable size will be used to update \texttt{m\_lastSize}, and if \texttt{update\_grid} is true, the grid and case will be updated.  If no more variables exist on the current grid, a call is made to \texttt{ProcessRemovedAll}.\\
+\\
+
+
+\subsection{ProcessRemovedAll}
+\subsection{GetVariableSize}
+\subsection{CheckSizeChanged}
+\subsection{RemoveUnusedVariables}
+\subsection{UpdateNotebook}
+\subsection{UpdateGridSpecific}
+\subsection{UpdateCase}
+\subsection{LoadData}
+
+\section{UI Hints}
 
 \section{Bugs and Pitfalls}
+\subsection{Changing from single-year to lifetime mode}
 
 \end{document}
