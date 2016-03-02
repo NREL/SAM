@@ -2475,7 +2475,6 @@ void TabularBrowser::ProcessAdded(wxString name)
 
 	int i = m_selectedVars.Index(name);
 
-	
 	// already stored, just updating
 	if (!add && CheckSizeChanged(i))
 	{
@@ -2539,14 +2538,21 @@ void TabularBrowser::RemoveUnusedVariables()
 		{
 			wxString name = vars[i];
 			VarValue *vv = m_sim->GetValue(name);
+			int index = m_selectedVars.Index(name);
+
 			// don't update grid until the end
 			if (!vv)
 				ProcessRemoved(name, true, false);
+			else if (index != wxNOT_FOUND && CheckSizeChanged(index))
+			{
+				ProcessRemoved(name, true, false);
+				ProcessAdded(name);
+			}
 		}
 		// update grid if still exists
 		if (m_gridMap.find(var_size) != m_gridMap.end())
 		{
-			UpdateGridSpecific(m_gridMap[var_size], m_gridTableMap[var_size], vars);
+			UpdateGridSpecific(m_gridMap[var_size], m_gridTableMap[var_size], m_selectedVarsMap[var_size]);
 			UpdateCase();
 		}
 	}
@@ -2608,8 +2614,17 @@ ArraySizeKey TabularBrowser::GetSimulationVariableSize(int index)
 		var_size.key = -1;
 	else
 	{
-		var_size.key = m_key;
-		m_key++;
+		// need to pull stored key if exists for comparison
+		if (m_selectedVarsBySizeMap.find(m_selectedVars[index]) != m_selectedVarsBySizeMap.end())
+		{
+			ArraySizeKey stored_size = m_selectedVarsBySizeMap[m_selectedVars[index]];
+			var_size.key = stored_size.key;
+		}
+		else
+		{
+			var_size.key = m_key;
+			m_key++;
+		}
 	}
 	return var_size;
 }
@@ -2631,11 +2646,10 @@ wxExtGridCtrl* TabularBrowser::GetPage()
 {
 	return (wxExtGridCtrl*)(m_notebook->GetCurrentPage());
 }
-void TabularBrowser::UpdateAll()
+void TabularBrowser::UpdateSelectionList(int &vsx, int &vsy, bool select_in_list)
 {
 	m_names.Clear();
 
-	int vsx, vsy;
 	m_varSel->GetViewStart(&vsx, &vsy);
 	m_varSel->RemoveAll();
 
@@ -2643,6 +2657,25 @@ void TabularBrowser::UpdateAll()
 
 	m_varSel->Freeze();
 	PopulateSelectionList(m_varSel, &m_names, m_sim);
+	
+	if (select_in_list)
+	{
+		for (int i = 0; i != m_selectedVars.size(); i++)
+			m_varSel->SelectRowInCol(m_names.Index(m_selectedVars[i]));
+	}
+}
+void TabularBrowser::UpdateSelectionExpansion(int vsx, int vsy)
+{
+	m_varSel->ExpandSelections();
+	m_varSel->Scroll(vsx, vsy);
+	m_varSel->Thaw();
+	SetLastSelection();
+}
+
+void TabularBrowser::UpdateAll()
+{
+	int vsx, vsy;
+	UpdateSelectionList(vsx,vsy);
 	RemoveUnusedVariables();
 
 	wxArrayString tmp = m_selectedVars;
@@ -2651,19 +2684,14 @@ void TabularBrowser::UpdateAll()
 	for (int i = 0; i != n; i++)
 	{
 		int idx = m_names.Index(tmp[i]);
-		if (idx < 0)
-			ProcessRemoved(tmp[i], true);
-		else
+
+		if (idx >= 0)
 		{
 			m_varSel->SelectRowInCol(idx);
 			ProcessAdded(tmp[i]);
 		}
 	}
-
-	m_varSel->ExpandSelections();
-	m_varSel->Scroll(vsx, vsy);
-	m_varSel->Thaw();
-	SetLastSelection();
+	UpdateSelectionExpansion(vsx, vsy);
 }
 void TabularBrowser::UpdateCase()
 {
@@ -2884,8 +2912,10 @@ void TabularBrowser::OnPageClosed(wxAuiNotebookEvent& event)
 			break;
 		}
 	}
-
-	UpdateAll();
+	int vsx, vsy;
+	UpdateSelectionList(vsx, vsy, true);
+	UpdateSelectionExpansion(vsx, vsy);
+	// UpdateAll();
 	// wxMessageBox("Closed");
 }
 

@@ -209,6 +209,8 @@ public:
 	void Setup( Simulation *sim );
 	void UpdateAll();
 	void UpdateDisplayed(wxString &srch);
+	void UpdateSelectionList(int &vsx, int &vsy, bool select_in_list=false);
+	void UpdateSelectionExpansion(int vsx, int vsy);
 	void GetTextData(wxString &dat, char sep);
 	
 	wxArrayString GetSelectedVariables();
