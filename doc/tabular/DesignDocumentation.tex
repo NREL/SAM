@@ -86,11 +86,10 @@ As can be seen, the tabular browser is updated twice when a simulation is run.  
 \\
 \texttt{
 TabularBrowser::UpdateAll \\
-\indent PopulateSelectionList \\
+\indent TabularBrowser::UpdateSelectionList \\
 \indent TabularBrowser::RemoveUnusedVariables \\
-\indent TabularBrowser::ProcessRemoved \\
 \indent TabularBrowser::ProcessAdded \\
-\indent TabularBrowser::SetLastSelection \\
+\indent TabularBrowser::UpdateSelectionExpansion \\
 }
 \subsection{OnPageClosed}
 When a page in the tabular browser is closed, a page-closed event is generated, at which point internal data structures need to be cleaned up, and the existing grids need to be updated. The primary tasks which must occur are to remove all of the variables on the closed-grid and then redraw the existing grids.\\
@@ -153,22 +152,171 @@ The \texttt{ProcessAdded} function is called for one variable at a time. The fun
 \texttt{none} \\
 \\
 \textbf{Description}
-The \texttt{ProcessRemoved} function is called for one variable at a time. The variable is removed from \texttt{m\_selectedVars}, \texttt{m\_selectedVarsMap}, and \texttt{m\_selectedVarsBySizeMap}. In the event that more variables exist on the current grid, the variable size will be used to update \texttt{m\_lastSize}, and if \texttt{update\_grid} is true, the grid and case will be updated.  If no more variables exist on the current grid, a call is made to \texttt{ProcessRemovedAll}.\\
-\\
-
+The \texttt{ProcessRemoved} function is called for one variable at a time. The variable is removed from \texttt{m\_selectedVars}, \texttt{m\_selectedVarsMap}, and \texttt{m\_selectedVarsBySizeMap}. In the event that more variables exist on the current grid, the variable size will be used to update \texttt{m\_lastSize}, and if \texttt{update\_grid} is true, the grid and case will be updated.  If no more variables exist on the current grid, a call is made to \texttt{ProcessRemovedAll}.
 
 \subsection{ProcessRemovedAll}
-\subsection{GetVariableSize}
-\subsection{CheckSizeChanged}
-\subsection{RemoveUnusedVariables}
-\subsection{UpdateNotebook}
-\subsection{UpdateGridSpecific}
-\subsection{UpdateCase}
-\subsection{LoadData}
+\textbf{Inputs} \\
+\texttt{ArraySizeKey removed\_size} - the size of grid to remove variables for \\
+\\
+\textbf{Outputs}\\
+\texttt{none} \\
+\\
+\textbf{Description}
+The \texttt{ProcessRemovedAll} function is called to remove all similiarly-sized variables from internal data structures, including the deletion of the underlying grid, grid table, and notebook page. The variables are removed from \texttt{m\_selectedVars}, \texttt{m\_selectedVarsMap}, \texttt{m\_selectedVarsBySizeMap}, \texttt{m\_tabLabelsMap}, and \texttt{m\_gridMap}, \texttt{m\_gridTableMap}. The variable \texttt{m\_numberOfTabs} is decremented.
 
-\section{UI Hints}
+\subsection{GetVariableSize}
+\textbf{Inputs} \\
+\texttt{int index} - the index of the variable within m\_selectedVars to retrieve size information for \\
+\\
+\textbf{Outputs}\\
+\texttt{ArraySizeKey var\_size} - the variable size.  If the variable size is not found, the returned size will have 0 rows, 0 columns \\
+\\
+\textbf{Description}
+The function first calls \texttt{GetStoredVariableSize} to search internal TabularBrowser data structures for the variable size.  If the information is not stored, the function calls \texttt{GetSimulationVariableSize}, which queries the simulation object for information about the variable.  
+
+\subsection{CheckSizeChanged}
+\textbf{Inputs} \\
+\texttt{int index} - the index of the variable within m\_selectedVars to retrieve size information for \\
+\\
+\textbf{Outputs}\\
+\texttt{bool changed} - true if the variable size is changed, else false \\
+\\
+\textbf{Description}
+This function was designed to detect a variable size change in the event that a simulation is re-run with the Lifetime setting changed.  The function first calls \texttt{GetStoredVariableSize} to search internal TabularBrowser data structures for the variable size.  If the information is  stored, the function calls \\ \texttt{GetSimulationVariableSize}, which queries the simulation object for information about the size of the variable after the most recent simulation.  Of note is that if the variable size is for a matrix, there is also an associated key.  The \texttt{ArraySizeKey} retrieved from the simulation object duplicates the key present in the stored object so that the two sizes can be compared.  If the stored size does not match the simulation size, the function returns true, else false.
+
+\subsection{RemoveUnusedVariables}
+\textbf{Inputs} \\
+\texttt{none} \\
+\\
+\textbf{Outputs}\\
+\texttt{none} \\
+\\
+\textbf{Description}
+This function was designed to account for the scenario where a simulation is re-run with the Lifetime setting changed, such that some variables will have changed size and disappear from the grids they were previously on.  Previously, SAM would crash under this scenario.  The function loops over \texttt{m\_selectedVarsMap}. In each loop, it extracts the variable size and list of variables at that size.  The simulation object is queried for the each variable on the grid.  If the variable is not found within the simulation, \texttt{ProcessRemoved} is called for that variable.  If the variable is still found, a call is made to \texttt{CheckSizeChanged}.  If the variable has changed size, \texttt{ProcessRemoved} is called, followed by \texttt{ProcessAdded} to update internal data structures with the correct size information.  Finally, the grid and case are updated.
+
+\subsection{UpdateNotebook}
+\textbf{Inputs} \\
+\texttt{ArraySizeKey grid\_size} \\
+\texttt{wxString name} \\
+\\
+\textbf{Outputs}\\
+\texttt{none} \\
+\\
+\textbf{Description}
+This function was designed to update the tabs available within the notebook.  If \texttt{m\_gridMap} does not contain a grid at the input size, a new grid is created and placed onto a new page.  The \texttt{m\_tabLabelsMap} is updated with the appropriate label for that variable size, and \texttt{m\_numberOfTabs} is incremented.
+
+\subsection{UpdateGridSpecific}
+\textbf{Inputs} \\
+\texttt{wxExtGridCtrl *\& grid} - a pointer to the grid to update, called by reference \\
+\texttt{ResultsTable *\& grid\_table} - a pointer to the ResultsTable, called by reference  \\
+\texttt{wxArrayString selected\_vars} - the selected variable to load on the grid \\
+\\
+\textbf{Outputs}\\
+\texttt{none} \\
+\\
+\textbf{Description}
+This function was designed to update the variables on the selected grid. Of note, is that the grid and grid map are passed as references so they can be internally allocated, modified, and returned.  The function always deletes the underlying ResultsTable for the current grid, and reloads the information with a call to \texttt{LoadData}.  Grid properties such as the size of row labels, column size, column labels, font, and font weight are specified.  When the data is loaded, the grid is drawn and refreshed on the screen.
+
+\subsection{UpdateCase}
+\textbf{Inputs} \\
+\texttt{none} \\
+\\
+\textbf{Outputs}\\
+\texttt{none} \\
+\\
+\textbf{Description}
+This function is designed to update the current case data browser variables with the variables selected within the TabularBrowser.  
+
+\subsection{LoadData}
+\textbf{Inputs} \\
+\texttt{Simulation *results} - the simulation object obtained from running a new simulation\\
+\texttt{wxArrayString \&vars} - the variables to load \\
+\\
+\textbf{Outputs}\\
+\texttt{none} \\
+\\
+\textbf{Description}
+This function is called from \texttt{UpdateGridSpecific} and is designed to load the selected variables from the simulation object onto the appropriately sized grid and grid table.  The variables are loaded from the simulation object and classified as matrices, arrays, or single values.  For matrix data, optional user-interface hints are parsed and the appropriate row and column labels are assigned.
+
+\section{User Interface Hints}
+This powerful feature allows a programmer to specify custom output hints  within \texttt{ssc} compute modules.  User interface (UI) hints specified within \texttt{ssc} are passed and parsed within the Simulation object for use in the TabularBrowser (and potentially other places).  Currently, UI hints are used to: \\
+\\
+- Specify custom header labels within the data selection list \\
+- Specify custom row and column labels for matrix outputs \\
+\\
+The set of currently available UI hints and how to use them will be documented below.
+
+\subsection{UI hints for custom group labels}
+UI hints for custom group labels are implemented in \texttt{SAMnt} within \texttt{PopulateSelectionList}.  
+\\
+The key to implement a custom group label is: \texttt{GROUP}\\
+\\
+Currently, the implemented hints are:\\
+\begin{tabular}{l | p{13cm}}
+\hline
+\texttt{UR\_MTP} & Utility rate data by tier\/period \\ \hline
+\texttt{UR\_AM} & Utility rate data by year \\ 
+\hline
+\end{tabular}
+
+\subsection{UI hints for row labels}
+UI hints for row and column labels are implemented in \texttt{TabularBrowser::LoadData}.  The labels are defined in custom function within \texttt{TabularBrowser} such as \texttt{MakeTimeOfDay}.  \\
+\\
+The key to implement a row label is: \texttt{ROW\_LABEL}.\\
+\\
+The currently available row labels are: \\
+\begin{tabular}{l | p{13cm}}
+\hline
+\texttt{HOURS\_OF\_DAY} &  lists the rows as hours of the day.  Assumes 24 rows, goes from 12 am to 11 pm \\ \hline
+\texttt{UR\_PERIODS} & lists the rows as utility rate periods.  Assumes 12 rows, goes from period 1 to 12 \\ \hline
+\texttt{UR\_PERIODNUMS} & lists the rows as period numbers, with a reduced matrix size to show only non-zero periods \\ \hline
+\texttt{UR\_TIERS} & lists the rows as tier numbers.  Assumes 6 rows, goes from tier 1 to 6 \\ \hline
+\texttt{UR\_TIERNUMS} & lists the rows as tier numbers, with a reduced matrix size to show only non-zero tiers \\ \hline
+\texttt{MONTHS} & lists the rows as months.  Assumes 12 rows, goes from January to February \\ \hline
+\texttt{NO\_ROW\_LABEL} & lists the row labels as blanks. \\ \hline
+\end{tabular}
+\subsection{UI hints for column labels}
+The key to implement a row label is: \texttt{COL\_LABEL}.\\
+\\
+\begin{tabular}{l | p{12cm}}
+\hline 
+\texttt{HOURS\_OF\_DAY} & lists the columns as hours of the day.  Assumes 24 rows, goes from 12 am to 11 pm \\ \hline
+\texttt{UR\_PERIODS} & lists the columns as utility rate periods.  Assumes 12 rows, goes from period 1 to 12 \\ \hline
+\texttt{UR\_PERIODNUMS} & lists the columns as period numbers, with a reduced matrix size to show only non-zero periods \\ \hline
+\texttt{UR\_TIERS} & lists the columns as tier numbers.  Assumes 6 rows, goes from tier 1 to 6 \\ \hline
+\texttt{UR\_TIERNUMS} & lists the columns as tier numbers, with a reduced matrix size to show only non-zero tiers \\ \hline
+\texttt{MONTHS} & lists the columns as months.  Assumes 12 rows, goes from January to February \\ \hline
+\texttt{XY\_POSITION} & lists the columns as "X Position (m)" and "Y Position (m)" \\ \hline
+\texttt{OPTICAL\_EFFICIENCY} & lists the columns as "Azimuth Angle (deg)", "Elevation Angle (deg)", and "Optical Efficiency (-)"\\ \hline
+\texttt{FLUX\_MAPS} & lists the columns as "Azimuth Angle (deg)", "Elevation Angle (deg)", and "Panel i Absorbed Flux (kW/m2)" for i:N panels \\ \hline
+\end{tabular} 
+\subsection{UI hints for format specifiers}
+Format specifiers can be used to format data output in a certain way, for instance, formatting currency or time.  \\
+\\
+The key to implement a format specifier is: \texttt{FORMAT\_SPEC}.\\
+\\
+Only one format specifier is currently available.  In the event that no format specifier is listed, matrix data will be formated as a real value. \\
+\begin{tabular}{l | p{12cm}}
+\hline 
+\texttt{CURRENCY} & lists the data in a currency format \\ \hline
+\end{tabular}
+\subsection{Adding a UI hint within SSC}
+To implement the UI hints in SSC, go to the variable table at the top of the compute module.  The last field in the table is for UI hints.  To enter a UI hint, enter the key and associated value like: \\
+\\
+\texttt{"KEY=VALUE"} \\
+\\
+To enter multiple hints, seperate them by commas with no spaces, such as:\\
+\\
+\texttt{"KEY1=VALUE1,KEY2=VALUE2"}\\
+\\
+This is illustrated by the real example from \texttt{cmod\_utilityrate4}\\
+\\
+\texttt{"COL\_LABEL=MONTHS,FORMAT\_SPEC=CURRENCY,GROUP=UR\_AM"}
 
 \section{Bugs and Pitfalls}
-\subsection{Changing from single-year to lifetime mode}
+\subsection{Changing from single year to lifetime mode}
+When changing from a single year to lifetime mode or vice versa, special care must be taken within the tabular browser implementation to properly update internal data structures.  Crashes would previously occur when a dual-variable (one that changes size depending on the "Lifetime" setting" was listed in the results browser under the original size and the simulation was rerun under a different setting.  
+\subsection{Maintaining window docking between simulations}
+When making changes to the tabular browser, it is important to ensure that custom window docking is maintained when re-running a simulation.  It is not entirely clear what causes the docking positions to be deleted, possibly calling \texttt{UpdateGridSpecific} from \texttt{ProcessRemoved}, or a change to \texttt{m\_notebook}.
 
 \end{document}
