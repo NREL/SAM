@@ -1647,7 +1647,6 @@ public:
 	std::vector<wxString> MakeOpticalEfficiency();
 	std::vector<wxString> MakeFluxMaps(size_t n_cols);
 	std::vector<wxString> MakeNoRowLabels(size_t n_rows);
-	std::vector<wxString> MakeHeliostat(size_t n_rows);
 
 	void RemoveTopRow();
 	void RemoveLeftCol();
@@ -1994,11 +1993,6 @@ public:
 							write_label = false;
 							MatrixRowLabels = MakeMonths();
 						}
-						else if (!value.Cmp("HELIOSTAT"))
-						{
-							write_label = false;
-							MatrixRowLabels = MakeHeliostat(nr);
-						}
 						else if (!value.Cmp("NO_ROW_LABEL"))
 						{
 							write_label = false;
@@ -2197,18 +2191,6 @@ std::vector<wxString> TabularBrowser::ResultsTable::MakeNoRowLabels(size_t n_row
 
 	return v;
 }
-std::vector<wxString> TabularBrowser::ResultsTable::MakeHeliostat(size_t n_rows)
-{
-	std::vector<wxString> v;
-	for (size_t i = 0; i != n_rows; i++)
-	{
-		wxString str;
-		str.Printf(wxT("Heliostat %d"), i + 1);
-		v.push_back(str);
-	}
-
-	return v;
-}
 
 enum { IDOB_COPYCLIPBOARD=wxID_HIGHEST+494, 
 	IDOB_SAVECSV, IDOB_SENDEXCEL, IDOB_EXPORTMODE, IDOB_CLEAR_ALL, 
@@ -2402,7 +2384,7 @@ void TabularBrowser::UpdateGridSpecific(wxExtGridCtrl*& grid, ResultsTable*& gri
 	grid->ForceRefresh();
 }
 
-void TabularBrowser::ProcessRemoved(wxString name, bool internal_delete, bool update_grid)
+void TabularBrowser::ProcessRemoved(wxString name, bool update_grid)
 {
 	if (m_selectedVars.Index(name) == wxNOT_FOUND)
 		return;
@@ -2425,9 +2407,9 @@ void TabularBrowser::ProcessRemoved(wxString name, bool internal_delete, bool up
 		}
 	}
 	else
-		ProcessRemovedAll(removed_size, internal_delete);
+		ProcessRemovedAll(removed_size);
 }
-void TabularBrowser::ProcessRemovedAll(ArraySizeKey removed_size, bool internal_delete)
+void TabularBrowser::ProcessRemovedAll(ArraySizeKey removed_size)
 {
 	wxArrayString vars = m_selectedVarsMap[removed_size];
 
@@ -2452,12 +2434,10 @@ void TabularBrowser::ProcessRemovedAll(ArraySizeKey removed_size, bool internal_
 	if (m_numberOfTabs > 0)
 		m_lastSize = m_selectedVarsBySizeMap.begin()->second;
 
-	if (internal_delete)
-	{
-		int removed_page = m_notebook->GetPageIndex(m_gridMap[removed_size]);
+	int removed_page = m_notebook->GetPageIndex(m_gridMap[removed_size]);
+	if (removed_page != wxNOT_FOUND)
 		m_notebook->DeletePage(removed_page);
-	}
-
+	
 	m_gridMap.erase(removed_size);
 	m_gridTableMap.erase(removed_size);
 	
@@ -2478,7 +2458,7 @@ void TabularBrowser::ProcessAdded(wxString name)
 	// already stored, just updating
 	if (!add && CheckSizeChanged(i))
 	{
-		ProcessRemoved(name, true);
+		ProcessRemoved(name);
 		m_selectedVars.Add(name);
 		i = m_selectedVars.Index(name);
 	}
@@ -2542,10 +2522,10 @@ void TabularBrowser::RemoveUnusedVariables()
 
 			// don't update grid until the end
 			if (!vv)
-				ProcessRemoved(name, true, false);
+				ProcessRemoved(name, false);
 			else if (index != wxNOT_FOUND && CheckSizeChanged(index))
 			{
-				ProcessRemoved(name, true, false);
+				ProcessRemoved(name, false);
 				ProcessAdded(name);
 			}
 		}
@@ -2712,7 +2692,7 @@ void TabularBrowser::OnCommand(wxCommandEvent &evt)
 				sizes.push_back(it->first);
 
 			for (int i = 0; i != sizes.size(); i++)
-				ProcessRemovedAll(sizes[i], true);
+				ProcessRemovedAll(sizes[i]);
 				
 			UpdateAll();
 		}
@@ -2873,7 +2853,7 @@ void TabularBrowser::OnVarSel( wxCommandEvent & )
 			ProcessAdded(name);
 		
 		if (!checked && m_selectedVars.Index(name) != wxNOT_FOUND)
-			ProcessRemoved(name, true);
+			ProcessRemoved(name);
 
 		SetLastSelection();
 	}
@@ -2908,14 +2888,14 @@ void TabularBrowser::OnPageClosed(wxAuiNotebookEvent& event)
 		}
 		if (!found)
 		{
-			ProcessRemovedAll(grid_size, false);
+			ProcessRemovedAll(grid_size);
 			break;
 		}
 	}
 	int vsx, vsy;
 	UpdateSelectionList(vsx, vsy, true);
 	UpdateSelectionExpansion(vsx, vsy);
-	// UpdateAll();
+
 	// wxMessageBox("Closed");
 }
 

@@ -202,8 +202,8 @@ public:
 
 	TabularBrowser( wxWindow *parent );
 
-	void ProcessRemoved(wxString, bool internal_delete, bool update_grid=true);
-	void ProcessRemovedAll(ArraySizeKey removed_size, bool internal_delete);
+	void ProcessRemoved(wxString, bool update_grid=true);
+	void ProcessRemovedAll(ArraySizeKey removed_size);
 	void ProcessAdded(wxString);
 	void SetLastSelection();
 	void Setup( Simulation *sim );
