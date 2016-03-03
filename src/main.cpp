@@ -1784,6 +1784,7 @@ extern void RegisterReportObjectTypes();
 	wxInitAllImageHandlers();
 	wxSimpleCurl::Init();
 	wxPLPlot::AddPdfFontDir( GetRuntimePath() + "/pdffonts" );
+	wxPLPlot::SetPdfDefaultFont( "ComputerModernSansSerifRegular", 10.0 );
 		
 	wxString proxy = SamApp::ReadProxyFile();
 	if ( ! proxy.IsEmpty() )
