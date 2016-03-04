@@ -1111,7 +1111,7 @@ EVT_CLOSE( PageNote::OnHideClose )
 END_EVENT_TABLE()
 
 PageNote::PageNote(CaseWindow *cwin)
-	: wxMiniFrame(cwin, -1, "Notes", wxDefaultPosition, wxDefaultSize,
+	: wxMiniFrame(cwin, -1, "Notes", wxDefaultPosition, wxScaleSize(300,450),
 			  wxCLOSE_BOX|wxSYSTEM_MENU|wxCAPTION|wxRESIZE_BORDER)
 {
 	m_text = new wxTextCtrl(this,
