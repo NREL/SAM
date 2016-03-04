@@ -215,10 +215,11 @@ CaseWindow::CaseWindow( wxWindow *parent, Case *c )
 
 	// load page note window geometry
 	int nw_xrel, nw_yrel, nw_w, nw_h;
-	nw_xrel = wxAtoi( m_case->GetProperty("NoteWindowXRel") );
-	nw_yrel = wxAtoi( m_case->GetProperty("NoteWindowYRel") );
-	nw_w = wxAtoi( m_case->GetProperty("NoteWindowWidth") );
-	nw_h = wxAtoi( m_case->GetProperty("NoteWindowHeight") );
+	double sf = GetContentScaleFactor();
+	nw_xrel = (int)( wxAtoi( m_case->GetProperty("NoteWindowXRel") ) * sf );
+	nw_yrel = (int)( wxAtoi( m_case->GetProperty("NoteWindowYRel") ) * sf );
+	nw_w = (int)( wxAtoi( m_case->GetProperty("NoteWindowWidth") ) * sf );
+	nw_h = (int)( wxAtoi( m_case->GetProperty("NoteWindowHeight") ) * sf );
 	
 	wxLogStatus("nw_xrel = %d, nw_yrel = %d  (%d x %d)", nw_xrel, nw_yrel, nw_w, nw_h );
 
@@ -280,12 +281,12 @@ void CaseWindow::SaveCurrentViewProperties()
 		
 	x = x-px;
 	y = y-py;
-
+	double sf = GetContentScaleFactor();
 	m_pageNote->GetClientSize(&w,&h);
-	m_case->SetProperty("NoteWindowXRel", wxString::Format("%d", x ));
-	m_case->SetProperty("NoteWindowYRel", wxString::Format("%d",  y ));
-	m_case->SetProperty("NoteWindowWidth", wxString::Format("%d", w ));
-	m_case->SetProperty("NoteWindowHeight", wxString::Format("%d", h ));
+	m_case->SetProperty("NoteWindowXRel", wxString::Format("%d", (int)(x/sf) ));
+	m_case->SetProperty("NoteWindowYRel", wxString::Format("%d",  (int)(y/sf) ));
+	m_case->SetProperty("NoteWindowWidth", wxString::Format("%d", (int)(w/sf) ));
+	m_case->SetProperty("NoteWindowHeight", wxString::Format("%d", (int)(h/sf) ));
 
 	m_case->SetProperty( "DataBrowserVariables", 
 		wxJoin( m_baseCaseResults->GetTabularBrowser()->GetSelectedVariables(), ',') );

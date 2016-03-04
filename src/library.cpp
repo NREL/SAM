@@ -521,7 +521,11 @@ void LibraryCtrl::ReloadLibrary()
 
 		UpdateList();
 
-		m_list->SetColumnWidth( 0, 350 );
+		double sf = GetContentScaleFactor();
+		m_list->SetColumnWidth( 0, (int)(350*sf) );
+		for( int i=1;i<m_list->GetColumnCount();i++ )
+			m_list->SetColumnWidth( i, (int)(100*sf) );
+
 		if ( !item.IsEmpty() ) SetEntrySelection( item );		
 	}
 	// TODO - address this issue from Nate when using parametrics

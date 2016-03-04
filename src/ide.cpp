@@ -871,7 +871,7 @@ UIEditorPanel::UIEditorPanel( wxWindow *parent )
 	sz_scripts_main->Add( sz_scripts_right, 1, wxALL|wxEXPAND, 0 );
 	scripts_panel->SetSizer( sz_scripts_main );
 
-	center_split->SplitHorizontally( m_uiFormEditor, scripts_panel, -400 );
+	center_split->SplitHorizontally( m_uiFormEditor, scripts_panel, (int)(-400*GetContentScaleFactor()) );
 	center_split->SetSashGravity( 1.0 );
 	center_split->SetMinimumPaneSize( 20 );
 
