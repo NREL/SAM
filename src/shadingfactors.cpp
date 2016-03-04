@@ -252,13 +252,10 @@ public:
 	ShadingDialog( wxWindow *parent, const wxString &descText, bool show_db_options = false )
 		: wxDialog( parent, wxID_ANY, 
 			wxString("Edit shading data") + wxString( (!descText.IsEmpty() ? ": " : "") ) + descText, 
-			wxDefaultPosition, wxDefaultSize, 
+			wxDefaultPosition, wxScaleSize(950,600), 
 			wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER)
 	{
 		SetEscapeId( wxID_CANCEL );
-
-//		SetClientSize(870, 600);
-		SetClientSize(950, 600);
 
 		m_show_db_options = show_db_options;
 
@@ -335,15 +332,9 @@ public:
 
 		m_scrollWin->SetSizer( scroll );
 
-		wxSizer *buttons = new wxBoxSizer( wxHORIZONTAL );
-		buttons->AddStretchSpacer(1);
-		buttons->Add( new wxButton(this, wxID_OK, "OK" ), 0, wxALL|wxEXPAND, 3 );
-		buttons->Add( new wxButton(this, wxID_CANCEL, "Cancel" ), 0, wxALL|wxEXPAND, 3  );
-		buttons->Add( new wxButton(this, wxID_HELP, "Help" ), 0, wxALL|wxEXPAND, 3  );
-
 		wxSizer *box = new wxBoxSizer(wxVERTICAL);
 		box->Add( m_scrollWin, 1, wxALL|wxEXPAND );
-		box->Add( buttons, 0, wxALL|wxEXPAND );
+		box->Add( CreateButtonSizer(wxOK|wxCANCEL|wxHELP), 0, wxALL|wxEXPAND, 10 );
 		SetSizer( box );
 
 		UpdateVisibility();
