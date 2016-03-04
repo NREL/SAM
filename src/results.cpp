@@ -278,7 +278,7 @@ ResultsViewer::ResultsViewer( wxWindow *parent, int id )
 	m_cashFlowTable->EnableEditing(false);
 	m_cashFlowTable->EnableCopyPaste(true);
 	m_cashFlowTable->EnablePasteEvent(false);
-	m_cashFlowTable->SetRowLabelSize( 300 );
+	m_cashFlowTable->SetRowLabelSize( (int)(300*GetContentScaleFactor()) );
 
 	m_cf_bottom_panel = new wxPanel(m_cf_splitter);
 
@@ -2325,7 +2325,7 @@ void TabularBrowser::UpdateGridSpecific(wxExtGridCtrl*& grid, ResultsTable*& gri
 	gridTable->LoadData(m_sim, selectedVars);
 	gridTable->SetAttrProvider(new wxExtGridCellAttrProvider);
 	grid->SetTable(gridTable, true);
-	grid->SetRowLabelSize(gridTable->IsTimeSeriesShown() ? 115 : 55);
+	grid->SetRowLabelSize( (int)(GetContentScaleFactor()*(gridTable->IsTimeSeriesShown() ? 115 : 55)) );
 
 	if (m_selectedVars.size() > 0)
 	{
