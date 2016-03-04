@@ -1339,7 +1339,7 @@ bool SamRegistration::ShowNotice()
 	wxStaticText *tt = new wxStaticText( &dlg, wxID_ANY, text );
 	tt->SetFont( wxMetroTheme::Font( wxMT_NORMAL, 10 ) );
 	tt->SetForegroundColour( wxColour(120,120,120) );
-	tt->Wrap( 450 );
+	tt->Wrap( (int)(450*wxGetScreenHDScale()) );
 	wxBoxSizer *sizer = new wxBoxSizer( wxVERTICAL );
 	sizer->Add( tt, 0, wxALL|wxEXPAND, 15 );
 	sizer->Add( dlg.CreateButtonSizer( wxOK|wxCANCEL ), 0, wxALL|wxCENTER, 15 );

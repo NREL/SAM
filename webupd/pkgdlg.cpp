@@ -236,7 +236,7 @@ PackageDialog::PackageDialog( wxWindow *parent, const wxString &title,
 	m_output->SetFont( wxFont(12, wxFONTFAMILY_MODERN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, "Consolas" ));
 	m_output->SetForegroundColour( "navy" );
 
-	split->SplitHorizontally(m_grid, m_output, (int)(-300*GetContentScaleFactor()));
+	split->SplitHorizontally(m_grid, m_output, (int)(-300*wxGetScreenHDScale()));
 
 	wxBoxSizer *sizer = new wxBoxSizer( wxVERTICAL );
 	sizer->Add( buttons, 0, wxALL|wxEXPAND, 3 );	

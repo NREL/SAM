@@ -215,7 +215,7 @@ CaseWindow::CaseWindow( wxWindow *parent, Case *c )
 
 	// load page note window geometry
 	int nw_xrel, nw_yrel, nw_w, nw_h;
-	double sf = GetContentScaleFactor();
+	double sf = wxGetScreenHDScale();
 	nw_xrel = (int)( wxAtoi( m_case->GetProperty("NoteWindowXRel") ) * sf );
 	nw_yrel = (int)( wxAtoi( m_case->GetProperty("NoteWindowYRel") ) * sf );
 	nw_w = (int)( wxAtoi( m_case->GetProperty("NoteWindowWidth") ) * sf );
@@ -281,7 +281,7 @@ void CaseWindow::SaveCurrentViewProperties()
 		
 	x = x-px;
 	y = y-py;
-	double sf = GetContentScaleFactor();
+	double sf = wxGetScreenHDScale();
 	m_pageNote->GetClientSize(&w,&h);
 	m_case->SetProperty("NoteWindowXRel", wxString::Format("%d", (int)(x/sf) ));
 	m_case->SetProperty("NoteWindowYRel", wxString::Format("%d",  (int)(y/sf) ));

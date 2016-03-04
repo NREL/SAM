@@ -344,11 +344,11 @@ SamReportWindow::SamReportWindow( wxWindow *parent )
 				wxLC_REPORT | wxLC_SINGLE_SEL | wxLC_ALIGN_LEFT);
 	m_pagesCtrl->SetImageList(&m_imageList, wxIMAGE_LIST_SMALL); 
 	m_pagesCtrl->InsertColumn(0, "Report Pages");
-	m_pagesCtrl->SetColumnWidth(0, (int)(250*GetContentScaleFactor()));
+	m_pagesCtrl->SetColumnWidth(0, (int)(250*wxGetScreenHDScale()));
 
 	m_layoutCtrl = new wxPageLayoutCtrl( split, IDR_PAGELAYOUT );
 
-	split->SplitVertically( m_pagesCtrl, m_layoutCtrl, (int)(200*GetContentScaleFactor()) );
+	split->SplitVertically( m_pagesCtrl, m_layoutCtrl, (int)(200*wxGetScreenHDScale()) );
 
 	m_statusText = new wxStaticText( this, wxID_ANY, "Ready" );
 
