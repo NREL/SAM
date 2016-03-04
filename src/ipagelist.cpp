@@ -175,7 +175,7 @@ void InputPageList::Invalidate()
 	wxClientDC dc(this);
 	dc.SetFont( MYFONT );
 
-	int height = 6*dc.GetCharHeight()/4;	
+	int height = (int)(1.6*dc.GetCharHeight());	
 	int y = 0;
 	for (int i=0;i<m_items.size();i++)
 	{
@@ -197,10 +197,6 @@ void InputPageList::OnResize(wxSizeEvent &evt)
 	Invalidate();
 }
 
-#define SGP_VSPACE 15
-#define SGP_XLEFT 15
-#define SGP_XRIGHT 5
-#define SCRLW 15
 #define TXTXOFF 10
 
 
@@ -217,10 +213,10 @@ void InputPageList::OnPaint(wxPaintEvent &evt)
 		&windowRect.x, &windowRect.y);
 	dc.DrawRectangle(windowRect);
 
-	double xScale, yScale;
-	wxDevicePPIToScale( dc.GetPPI(), &xScale, &yScale );
+	double scale = GetContentScaleFactor();
 	
 	dc.SetTextForeground( *wxBLACK );
+	dc.SetFont( MYFONT );
 
 	for (int i=0;i<m_items.size();i++)	
 	{
@@ -234,13 +230,13 @@ void InputPageList::OnPaint(wxPaintEvent &evt)
 		dc.SetBrush( wxBrush(c, wxSOLID) );
 		dc.DrawRectangle( r.x, r.y, r.width, r.height);
 
-		wxFont font(MYFONT);
-		if ( i==m_selectedIdx ) font.SetWeight( wxFONTWEIGHT_BOLD );
-		dc.SetFont( font );
+		//wxFont font(MYFONT);
+		//if ( i==m_selectedIdx ) font.SetWeight( wxFONTWEIGHT_BOLD );
+		//dc.SetFont( font );
 
 		wxSize tsz( dc.GetTextExtent( m_items[i].name ) );
 
-		dc.DrawText( m_items[i].name, r.x+(int)(TXTXOFF*xScale), r.y+r.height/2-tsz.y/2 );
+		dc.DrawText( m_items[i].name, r.x+(int)(TXTXOFF*scale), r.y+r.height/2-tsz.y/2 );
 
 		dc.SetBackground( wxBrush( GetBackgroundColour() ) );
 
@@ -249,7 +245,7 @@ void InputPageList::OnPaint(wxPaintEvent &evt)
 		{
 			int tx_w = dc.GetTextExtent( m_items[i].name ).GetWidth();
 			dc.DrawBitmap(g_notesBitmap, 
-				r.x + r.width - g_notesBitmap.GetWidth() - ((int)TXTXOFF*xScale),
+				r.x + r.width - g_notesBitmap.GetWidth() - ((int)TXTXOFF*scale),
 				r.y + r.height/2 - g_notesBitmap.GetHeight()/2);
 		}
 	}
