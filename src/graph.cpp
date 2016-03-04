@@ -871,7 +871,7 @@ GraphViewer::GraphViewer(wxWindow *parent) : wxPanel(parent, wxID_ANY)
 	m_layout->SetShowSizing( true );
 
 	splitter->SetMinimumPaneSize( 50 );
-	splitter->SplitVertically( m_lpanel, m_layout, 260 );
+	splitter->SplitVertically( m_lpanel, m_layout, (int)(260*GetContentScaleFactor()) );
 
 	SetSizer(main_sizer);
 	main_sizer->SetSizeHints(this);

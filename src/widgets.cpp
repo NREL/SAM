@@ -1296,7 +1296,7 @@ public:
 		GridTable->SetAttrProvider( new wxExtGridCellAttrProvider );
 
 		Grid->SetTable( GridTable, true );
-		Grid->SetColumnWidth(0,130);
+		Grid->SetColumnWidth(0, (int)(130*GetContentScaleFactor()));
 
 		Grid->Layout();
 		Grid->Refresh();
