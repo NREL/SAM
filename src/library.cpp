@@ -521,7 +521,7 @@ void LibraryCtrl::ReloadLibrary()
 
 		UpdateList();
 
-		double sf = GetContentScaleFactor();
+		double sf = wxGetScreenHDScale();
 		m_list->SetColumnWidth( 0, (int)(350*sf) );
 		for( int i=1;i<m_list->GetColumnCount();i++ )
 			m_list->SetColumnWidth( i, (int)(100*sf) );

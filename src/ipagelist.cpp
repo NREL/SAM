@@ -213,7 +213,7 @@ void InputPageList::OnPaint(wxPaintEvent &evt)
 		&windowRect.x, &windowRect.y);
 	dc.DrawRectangle(windowRect);
 
-	double scale = GetContentScaleFactor();
+	double scale = wxGetScreenHDScale();
 	
 	dc.SetTextForeground( *wxBLACK );
 	dc.SetFont( MYFONT );

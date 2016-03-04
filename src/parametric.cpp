@@ -310,7 +310,7 @@ ParametricViewer::ParametricViewer(wxWindow *parent, Case *cc)
 	m_layout = new wxSnapLayout(splitter, wxID_ANY);
 
 	splitter->SetMinimumPaneSize(200);
-	splitter->SplitHorizontally(top_panel, m_layout, (int)(550*GetContentScaleFactor()));
+	splitter->SplitHorizontally(top_panel, m_layout, (int)(550*wxGetScreenHDScale()));
 	
 	wxBoxSizer *main_sizer = new wxBoxSizer(wxHORIZONTAL);
 	main_sizer->Add(splitter, 1, wxALL|wxEXPAND, 0);
