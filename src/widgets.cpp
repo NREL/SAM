@@ -226,7 +226,7 @@ class SchedNumericDialog : public wxDialog
 
 public:
 	SchedNumericDialog( wxWindow *parent, const wxString &title, const wxString &label, const wxString &desc, bool with_resize_options )
-		: wxDialog( parent, wxID_ANY, title, wxDefaultPosition, wxSize(470,400), wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER )
+		: wxDialog( parent, wxID_ANY, title, wxDefaultPosition, wxScaleSize(470,400), wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER )
 	{
 		m_grid = new wxExtGridCtrl( this, wxID_ANY );
 		m_grid->CreateGrid( 50, 1);
@@ -421,7 +421,7 @@ class MonthlyFactorDialog : public wxDialog
 	wxExtGridCtrl *grdData;
 public:	
 	MonthlyFactorDialog(wxWindow *parent, const wxString &title )
-		: wxDialog( parent, wxID_ANY, title, wxDefaultPosition, wxSize(400, 500), wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER )
+		: wxDialog( parent, wxID_ANY, title, wxDefaultPosition, wxScaleSize(400, 500), wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER )
 	{
 		lblDescription = new wxStaticText( this, wxID_ANY, "Values" );
 		grdData = new wxExtGridCtrl( this, ID_grid );
@@ -1202,7 +1202,7 @@ private:
 
 public:
 	AFDataArrayDialog(wxWindow *parent, const wxString &title, const wxString &desc, const wxString &collabel)
-		: wxDialog(parent, wxID_ANY, title, wxDefaultPosition, wxSize(430,510), 
+		: wxDialog(parent, wxID_ANY, title, wxDefaultPosition, wxScaleSize(430,510), 
 			wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER )
 	{
 		mLabel = collabel;
@@ -2601,7 +2601,7 @@ class DataGridDialog : public wxDialog
 public:
 
 	DataGridDialog(wxWindow *parent, const wxString &title)
-		: wxDialog(parent, -1, title, wxDefaultPosition, wxSize(330,410), 
+		: wxDialog(parent, -1, title, wxDefaultPosition, wxScaleSize(330,410), 
 			wxCAPTION|wxRESIZE_BORDER|wxMAXIMIZE_BOX|wxCLOSE_BOX|wxSYSTEM_MENU )
 	{
 		wxButton *btn = NULL;

@@ -13,6 +13,7 @@
 
 #include <wex/label.h>
 #include <wex/jsonreader.h>
+#include <wex/utils.h>
 
 #include "simplecurl.h"
 
@@ -277,7 +278,7 @@ class SimpleCurlProgressDialog : public wxDialog
 public:
 	SimpleCurlProgressDialog(wxSimpleCurl *curl, wxWindow *parent, const wxString &msg )
 		: wxDialog( parent, wxID_ANY, "Progress", 
-			wxDefaultPosition, wxSize(500,250), wxDEFAULT_DIALOG_STYLE|wxCLIP_CHILDREN )
+			wxDefaultPosition, wxScaleSize(500,250), wxDEFAULT_DIALOG_STYLE|wxCLIP_CHILDREN )
 	{
 		SetBackgroundColour( *wxWHITE );
 

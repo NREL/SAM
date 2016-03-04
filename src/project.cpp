@@ -632,7 +632,7 @@ class UpgradeReportDialog : public wxDialog
 public:
 	UpgradeReportDialog( const wxString &src ) 
 		: wxDialog( SamApp::Window(), wxID_ANY, "Project File Upgrade Report", 
-		wxDefaultPosition, wxSize(800,700), wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER ),
+		wxDefaultPosition, wxScaleSize(800,700), wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER ),
 		m_htmlSrc( src )
 	{
 		SetBackgroundColour( wxMetroTheme::Colour( wxMT_FOREGROUND ) );

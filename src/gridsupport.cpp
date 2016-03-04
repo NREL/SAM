@@ -949,7 +949,7 @@ BEGIN_EVENT_TABLE(ArrayPopupDialog, wxDialog)
 END_EVENT_TABLE()
 
 ArrayPopupDialog::ArrayPopupDialog(wxWindow *parent, const wxString &title, const wxString &label, VarValue *vv ) 
-	: wxDialog(parent, wxID_ANY, title, wxDefaultPosition, wxSize(600, 500), wxRESIZE_BORDER | wxDEFAULT_DIALOG_STYLE), m_vv(vv)
+	: wxDialog(parent, wxID_ANY, title, wxDefaultPosition, wxScaleSize(600, 500), wxRESIZE_BORDER | wxDEFAULT_DIALOG_STYLE), m_vv(vv)
 {
 	
 #ifdef __WXMSW__
@@ -1044,7 +1044,7 @@ ArrayPopupDialog::ArrayPopupDialog(wxWindow *parent, const wxString &title, cons
 
 
 ArrayPopupDialog::ArrayPopupDialog(wxWindow *parent, const wxString &title, const wxArrayString &labels, std::vector<std::vector<float> > &values_vec) 
-: wxDialog(parent, wxID_ANY, title, wxDefaultPosition, wxSize(600, 500), wxRESIZE_BORDER | wxDEFAULT_DIALOG_STYLE)
+: wxDialog(parent, wxID_ANY, title, wxDefaultPosition, wxScaleSize(600, 500), wxRESIZE_BORDER | wxDEFAULT_DIALOG_STYLE)
 {
 #ifdef __WXMSW__
 	SetIcon(wxICON(appicon));

@@ -2089,7 +2089,7 @@ EVT_RADIOBUTTON(ID_setupOption, Parametric_QS::OnCommand)
 END_EVENT_TABLE()
 
 Parametric_QS::Parametric_QS(wxWindow *parent, Case *c)
-: wxDialog(parent, wxID_ANY, "Parametric Quick Setup", wxDefaultPosition, wxSize(550, 350), wxDEFAULT_DIALOG_STYLE | wxRESIZE_BORDER),
+: wxDialog(parent, wxID_ANY, "Parametric Quick Setup", wxDefaultPosition, wxScaleSize(550, 350), wxDEFAULT_DIALOG_STYLE | wxRESIZE_BORDER),
 m_case(c)
 {
 	lstVariables = new wxListBox(this, ID_lstVariables);

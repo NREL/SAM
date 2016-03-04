@@ -711,7 +711,7 @@ public:
 	int m_disttype;
 
 	InputDistDialog(wxWindow *parent, const wxString &title)
-		: wxDialog( parent, wxID_ANY, title, wxDefaultPosition, wxSize(450,350), wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER )
+		: wxDialog( parent, wxID_ANY, title, wxDefaultPosition, wxScaleSize(450,350), wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER )
 	{
 		cboDistribution = new wxChoice(this, ID_cboDistribution);
 				
@@ -954,7 +954,7 @@ StochasticPanel::StochasticPanel(wxWindow *parent, Case *cc)
 	wxBoxSizer *sizer_inputs_v = new wxBoxSizer( wxVERTICAL );
 	sizer_inputs_v->Add( sizer_inputs, 0, wxALL|wxEXPAND, 3 );
 	m_inputList = new wxListBox(szbox->GetStaticBox(), ID_m_inputList);
-	m_inputList->SetInitialSize( wxSize( 300, 100 ) );
+	m_inputList->SetInitialSize( wxScaleSize( 300, 100 ) );
 	sizer_inputs_v->Add( m_inputList, 0, wxALL|wxEXPAND, 5 );
 
 
@@ -986,8 +986,8 @@ StochasticPanel::StochasticPanel(wxWindow *parent, Case *cc)
 	wxBoxSizer *sizer_corr_v = new wxBoxSizer( wxVERTICAL );
 	sizer_corr_v->Add( sizer_corr, 0, wxALL|wxEXPAND, 3 );
 	m_corrList = new wxListBox(szbox->GetStaticBox(), ID_m_corrList);
-	m_corrList->SetInitialSize(wxSize(300, 100));
-//	m_corrList->SetInitialSize(wxSize(300, 50));
+	m_corrList->SetInitialSize(wxScaleSize(300, 100));
+//	m_corrList->SetInitialSize(wxScaleSize(300, 50));
 	sizer_corr_v->Add(m_corrList, 0, wxALL | wxEXPAND, 5);
 //	sizer_corr_v->Add(sizer_wf, 0, wxALL | wxEXPAND, 3);
 
@@ -999,7 +999,7 @@ StochasticPanel::StochasticPanel(wxWindow *parent, Case *cc)
 	wxBoxSizer *sizer_out_v = new wxBoxSizer( wxVERTICAL );
 	sizer_out_v->Add( sizer_out, 0, wxALL|wxEXPAND, 3 );
 	m_outputList = new wxListBox( szbox->GetStaticBox(), wxID_ANY );
-	m_outputList->SetInitialSize( wxSize( 200, 100 ) );	
+	m_outputList->SetInitialSize( wxScaleSize( 200, 100 ) );	
 	sizer_out_v->Add( m_outputList, 0, wxALL|wxEXPAND, 5 );
 
 	szbox->Add( sizer_inputs_v, 0, wxALL|wxEXPAND, 5 );
@@ -1947,7 +1947,7 @@ void StochasticPanel::OnComputeSamples(wxCommandEvent &evt)
 		collabels.Add(label);
 	}
 	
-	wxDialog *dlg = new wxDialog( this, wxID_ANY, "Data Vectors", wxDefaultPosition, wxSize(400,600), wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER);
+	wxDialog *dlg = new wxDialog( this, wxID_ANY, "Data Vectors", wxDefaultPosition, wxScaleSize(400,600), wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER);
 	wxExtGridCtrl *grid = new wxExtGridCtrl( dlg, wxID_ANY );
 	grid->EnableCopyPaste( true );
 	grid->CreateGrid( table.nrows(), table.ncols() );

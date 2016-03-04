@@ -316,7 +316,7 @@ class wxMetroListBox;
 class ConfigDialog : public wxDialog
 {
 public:
-	ConfigDialog( wxWindow *parent, const wxSize &size = wxSize(700,570) );
+	ConfigDialog( wxWindow *parent, const wxSize &size = wxScaleSize(700,570) );
 
 	void SetConfiguration(const wxString &t, const wxString &f);
 	void GetConfiguration(wxString &t, wxString &f);
