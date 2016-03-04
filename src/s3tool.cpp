@@ -1113,7 +1113,7 @@ void ShadeAnalysis::OnGenerateTimeSeries( wxCommandEvent & )
 	{	
 		wxFrame *frame = new wxFrame( 0, wxID_ANY, 
 			wxString::Format("Shade fractions (computation in %d ms)", time), 
-			wxDefaultPosition, wxSize(900,700) );
+			wxDefaultPosition, wxScaleSize(900,700) );
 
 		wxDVPlotCtrl *dview = new wxDVPlotCtrl( frame );	
 		std::vector<double> data(nstep);
@@ -1441,13 +1441,13 @@ ShadeTool::ShadeTool( wxWindow *parent, int id, const wxString &data_path )
 	wxBoxSizer *debug_sizer = new wxBoxSizer( wxHORIZONTAL );
 	
 	debug_sizer->Add( new wxStaticText( m_debugPanel, wxID_ANY, "Azi:"),0,wxALIGN_CENTER_VERTICAL|wxALL,4);
-	debug_sizer->Add( m_txtAzi = new wxTextCtrl( m_debugPanel, ID_AZIMUTH, "143", wxDefaultPosition, wxSize(70,24),  wxTE_PROCESS_ENTER), 0, wxALL|wxEXPAND, 2);
+	debug_sizer->Add( m_txtAzi = new wxTextCtrl( m_debugPanel, ID_AZIMUTH, "143", wxDefaultPosition, wxScaleSize(70,24),  wxTE_PROCESS_ENTER), 0, wxALL|wxEXPAND, 2);
 	
 	debug_sizer->Add(new wxStaticText(m_debugPanel, wxID_ANY, "Alt:"), 0, wxALIGN_CENTER_VERTICAL|wxALL, 4);
-	debug_sizer->Add(m_txtAlt = new wxTextCtrl(m_debugPanel, ID_ALTITUDE, "28", wxDefaultPosition, wxSize(70, 24), wxTE_PROCESS_ENTER), 0, wxALL | wxEXPAND, 2);
+	debug_sizer->Add(m_txtAlt = new wxTextCtrl(m_debugPanel, ID_ALTITUDE, "28", wxDefaultPosition, wxScaleSize(70, 24), wxTE_PROCESS_ENTER), 0, wxALL | wxEXPAND, 2);
 	
 	debug_sizer->Add(new wxStaticText(m_debugPanel, wxID_ANY, "scale:"), 0, wxALIGN_CENTER_VERTICAL|wxALL, 4);
-	debug_sizer->Add(m_txtScale = new wxTextCtrl(m_debugPanel, ID_SCALE, "4", wxDefaultPosition, wxSize(70, 24), wxTE_PROCESS_ENTER), 0, wxALL | wxEXPAND, 2);
+	debug_sizer->Add(m_txtScale = new wxTextCtrl(m_debugPanel, ID_SCALE, "4", wxDefaultPosition, wxScaleSize(70, 24), wxTE_PROCESS_ENTER), 0, wxALL | wxEXPAND, 2);
 	
 	debug_sizer->Add(new wxButton(m_debugPanel, ID_EXPORT_HOURLY, "Export Hourly"), 0, wxALL | wxEXPAND, 0);
 	debug_sizer->Add(new wxButton(m_debugPanel, ID_EXPORT_DIURNAL, "Export Diurnal"), 0, wxALL | wxEXPAND, 0);

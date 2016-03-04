@@ -4,6 +4,7 @@
 #include <wx/clipbrd.h>
 
 #include <wex/csv.h>
+#include <wex/utils.h>
 
 #include "materials.h"
 
@@ -75,9 +76,9 @@ END_EVENT_TABLE()
 
 MatPropDialog::MatPropDialog(wxWindow *parent)
 	: wxDialog(parent, -1, "Edit Material Properties", wxDefaultPosition,
-		  wxSize(670, 530), wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER)
+		  wxScaleSize(670, 530), wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER)
 {
-	m_grid = new wxGrid(this, ID_GRID, wxPoint(9,33), wxSize(545,72));
+	m_grid = new wxGrid(this, ID_GRID);
 
 	m_grid->CreateGrid(1,MPC_NCOLS);
 	m_grid->EnableEditing(true);

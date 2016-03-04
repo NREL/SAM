@@ -122,7 +122,7 @@ class SamLogWindow : public wxLogWindow
 public:
 	SamLogWindow( )	: wxLogWindow( 0, "sam-log" ) { 
 		GetFrame()->SetPosition( wxPoint( 5, 5 ) );
-		GetFrame()->SetClientSize( wxSize(1100,200) );
+		GetFrame()->SetClientSize( wxScaleSize(1000,200) );
 	}
 	virtual bool OnFrameClose( wxFrame *frame ) {
 		g_logWindow = 0; // clear the global pointer, then delete the frame
@@ -196,7 +196,7 @@ END_EVENT_TABLE()
 
 MainWindow::MainWindow()
 	: wxFrame( 0, wxID_ANY, wxT("SAM") + wxString(" ") + SamApp::VersionStr(), 
-		wxDefaultPosition, wxSize( 1100, 700 ) )
+		wxDefaultPosition, wxScaleSize( 1100, 700 ) )
 {
 #ifdef __WXMSW__
 	SetIcon( wxICON( appicon ) );
@@ -310,7 +310,7 @@ private:
 public:
 	CaseImportDialog( wxWindow *parent, const wxString &title )
 		: wxDialog( parent, wxID_ANY, title, wxDefaultPosition, 
-			wxSize(350,300), wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER)
+			wxScaleSize(350,300), wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER)
 	{
 		m_cklList = new wxCheckListBox( this, wxID_ANY );
 
@@ -623,7 +623,7 @@ void MainWindow::CaseVarGrid(std::vector<Case*> &cases)
 			}
 		}
 
-		wxFrame *frame = new wxFrame(this, wxID_ANY, title, wxDefaultPosition, wxSize(400, 700));
+		wxFrame *frame = new wxFrame(this, wxID_ANY, title, wxDefaultPosition, wxScaleSize(400, 700));
 		wxGrid *grid = new wxGrid(frame, wxID_ANY);
 
 		size_t num_cols = col_hdrs.Count();
@@ -1193,7 +1193,7 @@ public:
 
 	SplashScreen()
 		: wxDialog( 0, wxID_ANY, wxEmptyString, wxDefaultPosition, 
-		wxScaleSize( wxSize(515,385) ), wxBORDER_NONE ),
+		wxScaleSize( 515, 385 ), wxBORDER_NONE ),
 		m_message( "Starting up...please wait" )
 	{
 		m_nrelLogo = wxBITMAP_PNG_FROM_DATA( nrel_small );
@@ -2230,7 +2230,7 @@ class HelpWin : public wxFrame
 	wxString m_aboutHtml;
 public:
 	HelpWin( wxWindow *parent )
-		: wxFrame( parent, wxID_ANY, "System Advisor Model Help", wxDefaultPosition, wxSize(1024,600) )
+		: wxFrame( parent, wxID_ANY, "System Advisor Model Help", wxDefaultPosition, wxScaleSize(1000,600) )
 	{
 		CreateAboutHtml();
 

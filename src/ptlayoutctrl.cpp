@@ -445,7 +445,7 @@ END_EVENT_TABLE()
 PTLayoutRenderer::PTLayoutRenderer(PTLayoutCtrl *parent)
 	: wxWindow(parent,-1, wxDefaultPosition, wxDefaultSize, wxCLIP_CHILDREN|wxWANTS_CHARS)
 {
-	SetMinSize(wxSize(200,200));
+	SetMinSize(wxScaleSize(200,200));
 	hlRad=hlAzm=-1;
 
 	SetBackgroundStyle(wxBG_STYLE_CUSTOM);

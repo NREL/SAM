@@ -67,7 +67,7 @@ class PatchFileHelper : public wxDialog
 				const wxString &level ,
 				const wxString &md5  )
 			: wxDialog(parent, -1, "Create Patch File Line: patch_"+plat+".txt", 
-					wxDefaultPosition, wxSize(750,450), wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER),
+					wxDefaultPosition, wxScaleSize(750,450), wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER),
 			m_archive(archive),
 			m_platStr(plat),
 			m_verStr(ver),
@@ -189,7 +189,7 @@ static const char *help_text =
 
 PackageDialog::PackageDialog( wxWindow *parent, const wxString &title,
 	const wxString &ver, const wxString &basepath, const wxString &plat)
-	: wxDialog( parent, wxID_ANY, title, wxDefaultPosition, wxSize(1100, 800), wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER)
+	: wxDialog( parent, wxID_ANY, title, wxDefaultPosition, wxScaleSize(1100, 800), wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER)
 {
 	m_appPath = basepath;
 	m_verStr = ver;

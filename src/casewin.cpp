@@ -1157,7 +1157,7 @@ BEGIN_EVENT_TABLE( SelectVariableDialog, wxDialog )
 END_EVENT_TABLE()
 
 SelectVariableDialog::SelectVariableDialog(wxWindow *parent, const wxString &title)
-	 : wxDialog( parent, wxID_ANY, title, wxDefaultPosition, wxSize(500,500), wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER )
+	 : wxDialog( parent, wxID_ANY, title, wxDefaultPosition, wxScaleSize(500,500), wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER )
 {	
 	wxBoxSizer *search_sizer = new wxBoxSizer( wxHORIZONTAL );
 	search_sizer->Add( new wxStaticText(this, wxID_ANY, "  Search: "), 0, wxALL|wxALIGN_CENTER_VERTICAL, 4);
@@ -1521,7 +1521,7 @@ BEGIN_EVENT_TABLE( NumericRangeDialog, wxDialog )
 END_EVENT_TABLE()
 
 NumericRangeDialog::NumericRangeDialog( wxWindow *parent, const wxString &title )
-	 : wxDialog( parent, wxID_ANY, title, wxDefaultPosition, wxSize(500, 325), wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER )
+	 : wxDialog( parent, wxID_ANY, title, wxDefaultPosition, wxScaleSize(500, 325), wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER )
 {
 	m_intOnly = false;
 

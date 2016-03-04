@@ -78,7 +78,7 @@ WelcomeScreen::WelcomeScreen(wxWindow *parent)
 	SetBackgroundColour( *wxWHITE );
 
 #ifdef _DEBUG
-	new wxButton( this, ID_TEST_SEGFAULT, "!!!", wxPoint(0,0), wxSize(22,22) );
+	new wxButton( this, ID_TEST_SEGFAULT, "!!!", wxPoint(0,0), wxSize(25,25) );
 #endif
 
 	m_messageStatus = DOWNLOADING;
@@ -108,7 +108,7 @@ WelcomeScreen::WelcomeScreen(wxWindow *parent)
 	m_btnAbout = new wxMetroButton( this, wxID_ABOUT, "About" );
 	m_btnQuit = new wxMetroButton( this, wxID_EXIT, "Quit" );
 	
-	m_recent = new wxMetroListBox(this, ID_RECENT_FILES, wxPoint(15,327), wxSize(650,150) );
+	m_recent = new wxMetroListBox(this, ID_RECENT_FILES );
 	
 
 	LayoutWidgets();

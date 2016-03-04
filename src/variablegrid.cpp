@@ -643,7 +643,7 @@ BEGIN_EVENT_TABLE(VariableGridFrame, wxFrame)
 END_EVENT_TABLE()
 
 VariableGridFrame::VariableGridFrame(wxWindow *parent, ProjectFile *pf, Case *c, VarTable *vt, wxString frame_title) 
-	: wxFrame(parent, wxID_ANY, "Variable Grid", wxDefaultPosition, wxSize(800, 700)), m_pf(pf)
+	: wxFrame(parent, wxID_ANY, "Variable Grid", wxDefaultPosition, wxScaleSize(800, 700)), m_pf(pf)
 {
 	m_show_calculated = false;
 	SetBackgroundColour( wxMetroTheme::Colour( wxMT_FOREGROUND ) );

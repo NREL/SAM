@@ -1262,7 +1262,7 @@ SamRegistration::SamRegistration( wxWindow *parent )
 	m_output = new wxTextCtrl( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxBORDER_NONE|wxTE_READONLY|wxTE_MULTILINE );
 	m_output->SetBackgroundColour( *wxWHITE );
 	m_output->SetForegroundColour( wxMetroTheme::Colour( wxMT_TEXT ) );
-	m_output->SetInitialSize( wxSize(550, 150 ) );
+	m_output->SetInitialSize( wxScaleSize(550, 150 ) );
 	m_output->SetFont( font );
 	m_output->SetValue("To register SAM:\n"
 		"1. Type your email address and click Register.\n"

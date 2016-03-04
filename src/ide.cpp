@@ -243,7 +243,7 @@ class RemapDialog : public wxDialog
 	StringHash m_vtlMap;
 public:
 	RemapDialog( wxWindow *parent, const wxString &title, UIEditorPanel *ui )
-		: wxDialog( parent, wxID_ANY, title, wxDefaultPosition, wxSize(610, 550), wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER ),
+		: wxDialog( parent, wxID_ANY, title, wxDefaultPosition, wxScaleSize(610, 550), wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER ),
 		m_ui( ui )
 	{
 		wxNotebook *notebook = new wxNotebook( this, wxID_ANY );
@@ -564,7 +564,7 @@ END_EVENT_TABLE()
 
 static bool ShowTableEditor( VarInfoLookup &vi )
 {
-	wxDialog dlg( NULL, wxID_ANY, "Edit labels", wxDefaultPosition, wxSize(600, 750), wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER );
+	wxDialog dlg( NULL, wxID_ANY, "Edit labels", wxDefaultPosition, wxScaleSize(600, 750), wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER );
 	wxExtGridCtrl *grid = new wxExtGridCtrl( &dlg, wxID_ANY );
 	grid->EnableCopyPaste( true );
 	grid->CreateGrid( vi.size(), 4 );
@@ -752,7 +752,7 @@ UIEditorPanel::UIEditorPanel( wxWindow *parent )
 	sz_form_tools->Add( new wxButton( this, ID_VAR_LOAD, "Load", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL|wxEXPAND, 2 );
 		
 	m_uiPropEditor = new wxUIPropertyEditor( this, wxID_ANY );
-	m_formList = new wxListBox( this, ID_FORM_LIST, wxDefaultPosition, wxSize(300, 300), 0, 0, wxLB_SINGLE|wxBORDER_NONE );
+	m_formList = new wxListBox( this, ID_FORM_LIST, wxDefaultPosition, wxScaleSize(300, 300), 0, 0, wxLB_SINGLE|wxBORDER_NONE );
 	
 	wxBoxSizer *sz_form_left = new wxBoxSizer( wxVERTICAL );
 	sz_form_left->Add( new wxStaticText( this, wxID_ANY, "UI Forms" ), 0, wxALL|wxALIGN_CENTER_VERTICAL, 4 );
@@ -983,7 +983,7 @@ void UIEditorPanel::OnTextFind( wxCommandEvent & )
 	wxString text = wxGetTextFromUser( "Enter text to search for:", "Query", wxEmptyString, this );
 	if ( text.IsEmpty() ) return;
 	
-	wxDialog *dialog = new wxDialog( this, wxID_ANY, "Searching for: '" + text + "'", wxDefaultPosition, wxSize( 550, 400 ), wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER );
+	wxDialog *dialog = new wxDialog( this, wxID_ANY, "Searching for: '" + text + "'", wxDefaultPosition, wxScaleSize( 550, 400 ), wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER );
 	wxTextCtrl *tc = new wxTextCtrl( dialog, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxTE_MULTILINE );
 	wxGauge *gau = new wxGauge( dialog, wxID_ANY, 1 );
 	wxSizer *sz = new wxBoxSizer( wxVERTICAL );
@@ -1388,7 +1388,7 @@ void UIEditorPanel::OnCommand( wxCommandEvent &evt )
 				text << wxJoin(errors, '\n');
 			}
 			
-			wxShowTextMessageDialog( text, "equation scan", this, wxSize(800,700) );
+			wxShowTextMessageDialog( text, "equation scan", this, wxScaleSize(800,700) );
 		}
 		break;
 	case ID_VAR_CHECK_ALL:
@@ -1637,7 +1637,7 @@ BEGIN_EVENT_TABLE( IDEWindow, wxFrame )
 END_EVENT_TABLE()
 
 IDEWindow::IDEWindow( wxWindow *parent )
-	: wxFrame(parent, wxID_ANY, "SAM Development Environment", wxDefaultPosition, wxSize(1150,900) )
+	: wxFrame(parent, wxID_ANY, "SAM Development Environment", wxDefaultPosition, wxScaleSize(1150,900) )
 {
 #ifdef __WXMSW__
 	SetIcon( wxICON( appicon ) );

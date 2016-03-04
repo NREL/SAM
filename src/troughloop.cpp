@@ -4,6 +4,7 @@
 #include <wx/filename.h>
 
 #include <wex/numeric.h>
+#include <wex/utils.h>
 
 #include "troughloop.h"
 
@@ -173,7 +174,7 @@ TRLoopRenderer::TRLoopRenderer(TRLoopCtrl *parent)
 	mTRCtrl = parent;
 
 	SetBackgroundStyle(wxBG_STYLE_CUSTOM);
-	SetMinSize(wxSize(600,200));
+	SetMinSize(wxScaleSize(600,200));
 
 	bMouseDown = false;
 	bMultiSelMode = false;

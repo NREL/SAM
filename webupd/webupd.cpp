@@ -97,7 +97,7 @@ private:
 	wxMetroButton *m_button;
 public:
 	UpdateDialog(wxString &url) 
-		: wxDialog( 0, wxID_ANY, "SAM Web Update", wxDefaultPosition, wxSize(650,550), wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER )
+		: wxDialog( 0, wxID_ANY, "SAM Web Update", wxDefaultPosition, wxScaleSize(650,550), wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER )
 	{
 		SetBackgroundColour( *wxWHITE );
 
@@ -395,7 +395,7 @@ public:
 			wxString text( dl_notice.GetDataAsString() );
 			if ( text.Left(17) == "<!--sam-notice-->" && text.Len() > 18 )
 			{
-				wxDialog dlg( 0, wxID_ANY, "Notice", wxDefaultPosition, wxSize(550,500), wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER );
+				wxDialog dlg( 0, wxID_ANY, "Notice", wxDefaultPosition, wxScaleSize(550,500), wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER );
 				dlg.SetBackgroundColour( *wxWHITE );
 				MyHtmlWindow *html = new MyHtmlWindow( &dlg, wxID_ANY );
 				html->SetPage( text );
@@ -463,7 +463,7 @@ public:
 		if (latest_ver > curver)
 		{
 			wxDialog dlg( 0, wxID_ANY, "SAM Web Update (" + g_samVerIdStr + ")",
-				wxDefaultPosition, wxSize(650,550), wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER);
+				wxDefaultPosition, wxScaleSize(650,550), wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER);
 			dlg.SetBackgroundColour( wxMetroTheme::Colour( wxMT_FOREGROUND ) );
 			MyHtmlWindow *html = new MyHtmlWindow( &dlg, wxID_ANY );
 			wxString h="An update is available for SAM " + g_samVerIdStr + ". To install the update, click <b>Update</b>. To ignore the update and start SAM, click <b>Cancel</b>. You can update later by clicking <b>Check for Updates</b> on SAM's Start page.<br><br>";

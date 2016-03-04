@@ -203,7 +203,7 @@ class MacroOutputFrame : public wxFrame
 public:
 	wxTextCtrl *txtoutput;
 	MacroOutputFrame()
-		: wxFrame( SamApp::Window(), wxID_ANY, "Macro Output", wxDefaultPosition, wxSize( 700, 250 ) )
+		: wxFrame( SamApp::Window(), wxID_ANY, "Macro Output", wxDefaultPosition, wxScaleSize( 700, 250 ) )
 	{
 		gs_macroOutputFrame = this;
 		txtoutput = new wxTextCtrl( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxTE_MULTILINE|wxTE_READONLY|wxBORDER_NONE );
@@ -270,7 +270,7 @@ MacroPanel::MacroPanel( wxWindow *parent, Case *cc )
 	m_rightPanel->SetBackgroundColour( wxMetroTheme::Colour( wxMT_FOREGROUND ) );
 
 	m_html = new wxHtmlWindow( m_rightPanel, ID_HTML, wxDefaultPosition, wxDefaultSize, wxHW_DEFAULT_STYLE|wxBORDER_NONE );
-	m_html->SetMinClientSize( wxSize( 300, 300 ) );
+	m_html->SetMinClientSize( wxScaleSize( 300, 300 ) );
 
 	m_run = new wxMetroButton( m_rightPanel, ID_RUN_MACRO, "Run macro", wxNullBitmap, wxDefaultPosition, wxDefaultSize, wxMB_RIGHTARROW );
 	m_stop = new wxMetroButton( m_rightPanel, ID_STOP_MACRO, "Stop" );
@@ -411,7 +411,7 @@ public:
 	VarListSelector( wxWindow *parent, bool only_num=false, bool en_meta=false, const wxString &prompt=wxEmptyString )
 		: wxPanel( parent ), m_onlyNumbers( only_num ), m_enableMeta(en_meta), m_prompt(prompt)
 	{
-		SetMinClientSize( wxSize( 200, 130 ) );
+		SetMinClientSize( wxScaleSize( 200, 130 ) );
 		wxBoxSizer *sizer = new wxBoxSizer( wxHORIZONTAL );
 		sizer->Add( m_list = new wxListBox( this, ID_VARLIST, wxDefaultPosition, wxDefaultSize, 0, 0, wxLB_HSCROLL ), 1, wxALL|wxEXPAND, 0 );
 
@@ -534,7 +534,7 @@ class SearchListDialog : public wxDialog
 public:
 	SearchListDialog( wxWindow *parent, const wxString &title, const wxArrayString &list )
 		: wxDialog( parent, wxID_ANY, title, wxDefaultPosition, 
-			wxSize(500, 400), wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER )
+			wxScaleSize(500, 400), wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER )
 	{
 		m_slb = new AFSearchListBox( this, wxID_ANY );
 		m_slb->Append( list );

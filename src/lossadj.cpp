@@ -252,7 +252,7 @@ class LossAdjustmentDialog : public wxDialog
 	PeriodFactorCtrl *m_periods; 
 public:
 	LossAdjustmentDialog( wxWindow *parent )
-		: wxDialog( parent, wxID_ANY, "Edit Losses", wxDefaultPosition, wxSize(850,450), wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER )
+		: wxDialog( parent, wxID_ANY, "Edit Losses", wxDefaultPosition, wxScaleSize(850,450), wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER )
 	{
 		SetEscapeId( wxID_CANCEL );
 

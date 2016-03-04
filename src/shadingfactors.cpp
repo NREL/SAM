@@ -267,7 +267,7 @@ public:
 
 		m_enableTimestep = new wxCheckBox( m_scrollWin, ID_ENABLE_HOURLY, "Enable time step beam irradiance shading losses" );
 		m_timestep = new wxShadingFactorsCtrl(m_scrollWin, wxID_ANY, wxDefaultPosition, wxDefaultSize, m_show_db_options);
-		m_timestep->SetInitialSize(wxSize(900, 300));
+		m_timestep->SetInitialSize(wxScaleSize(900, 300));
 		m_timestep->SetMinuteCaption("Time step in minutes:");
 		m_timestep->SetColCaption(wxString("Number of parallel strings:") + wxString((!descText.IsEmpty() ? " for " : "")) + descText);
 		int num_cols = 8;
@@ -276,11 +276,11 @@ public:
 
 		m_enableMxH = new wxCheckBox( m_scrollWin, ID_ENABLE_MXH, "Enable month-by-hour beam irradiance shading losses" );
 		m_mxh = new AFMonthByHourFactorCtrl( m_scrollWin, wxID_ANY );
-		m_mxh->SetInitialSize( wxSize(900,330) );
+		m_mxh->SetInitialSize( wxScaleSize(900,330) );
 
 		m_enableAzal = new wxCheckBox( m_scrollWin, ID_ENABLE_AZAL, "Enable solar azimuth-by-altitude beam irradiance shading losses" );
 		m_azal = new AFDataMatrixCtrl( m_scrollWin, wxID_ANY );
-		m_azal->SetInitialSize( wxSize(900,280) );
+		m_azal->SetInitialSize( wxScaleSize(900,280) );
 		m_azal->ShowRowLabels( false );
 
 		matrix_t<float> data(10, 18, 0);
