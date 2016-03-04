@@ -373,7 +373,7 @@ void LossDiagramCtrl::OnContextMenu( wxCommandEvent &evt )
 
 void loss_diagram_test()
 {
-	wxFrame *frame = new wxFrame( 0, wxID_ANY, "Loss Diagram Test", wxDefaultPosition, wxSize(100,300) );
+	wxFrame *frame = new wxFrame( 0, wxID_ANY, "Loss Diagram Test", wxDefaultPosition, wxScaleSize(100,300) );
 	LossDiagramCtrl *ldc = new LossDiagramCtrl( frame );
 
 	LossDiagramObject &ld = ldc->GetDiagram();

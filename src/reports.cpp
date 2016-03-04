@@ -1041,7 +1041,7 @@ class GraphPropertiesDialog : public wxDialog
 public:
 	GraphPropertiesDialog( wxWindow *parent, Simulation *sim )
 		: wxDialog( parent, wxID_ANY, "Edit graph properties", wxDefaultPosition, 
-		wxSize(900, 550), wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER )
+		wxScaleSize(900, 550), wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER )
 	{
 		m_sim = sim;
 
@@ -1269,7 +1269,7 @@ public:
 		m_layoutCtrl(0)
 	{
 		SetEscapeId( wxID_CANCEL );
-		SetMinSize( wxSize(520, 470) );
+		SetMinSize( wxScaleSize(520, 470) );
 		m_grid = new wxExtGridCtrl( this, IDTOED_GRID );
 		m_grid->CreateGrid(2,2);
 		wxSizer *buttons = CreateButtonSizer( wxOK|wxCANCEL );
@@ -2011,7 +2011,7 @@ private:
 public:
 	SamScriptObjectEditDialog( wxWindow *parent )
 		: wxDialog( parent, wxID_ANY, wxString("Edit Script Object"),
-			wxDefaultPosition, wxSize(600, 900), 
+			wxDefaultPosition, wxScaleSize(600, 900), 
 			wxCAPTION|wxRESIZE_BORDER|wxCLOSE_BOX|wxSYSTEM_MENU),
 			m_timer( this, IDT_TIMER )
 	{

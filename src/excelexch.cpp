@@ -146,22 +146,22 @@ class ExcelExchDialog : public wxDialog
 public:
 
 	ExcelExchDialog(wxWindow *parent, int id)
-		 : wxDialog( parent, id, "Excel Exchange", wxDefaultPosition, wxSize(600,350),
+		 : wxDialog( parent, id, "Excel Exchange", wxDefaultPosition, wxScaleSize(600,350),
 		 wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER)
 	{
 		//SetBackgroundColour( *wxWHITE );
 
-		txtExcelFile = new wxExtTextCtrl(this, ID_txtExcelFile, "<Select an Excel file>", wxPoint(303,30), wxSize(334,21));
-		txtExcelRange = new wxExtTextCtrl(this, ID_txtExcelRange, "A1", wxPoint(417,132), wxSize(121,21));
+		txtExcelFile = new wxExtTextCtrl(this, ID_txtExcelFile, "<Select an Excel file>");
+		txtExcelRange = new wxExtTextCtrl(this, ID_txtExcelRange, "A1");
 			
-		lstVariables = new wxListBox(this, ID_lstVariables, wxPoint(111,30), wxSize(182,123), 0, 0, wxLB_SINGLE);
+		lstVariables = new wxListBox(this, ID_lstVariables, wxDefaultPosition, wxDefaultSize, 0, 0, wxLB_SINGLE);
 		
 		chkEnableExch = new wxCheckBox(this, ID_chkEnableExch, "Turn on Excel Exchange for the base case simulation");
 
 		wxArrayString _data_rbgToFrom;
 		_data_rbgToFrom.Add("Send variable value to Excel");
 		_data_rbgToFrom.Add("Capture variable value from Excel");
-		rbgToFrom = new wxRadioChoice(this, ID_rbgToFrom, wxPoint(303,84), wxSize(332,44));
+		rbgToFrom = new wxRadioChoice(this, ID_rbgToFrom, wxDefaultPosition, wxDefaultSize);
 		rbgToFrom->Add( _data_rbgToFrom);
 			
 		wxBoxSizer *sz1 = new wxBoxSizer( wxHORIZONTAL );

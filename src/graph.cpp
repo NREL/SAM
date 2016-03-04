@@ -143,7 +143,7 @@ END_EVENT_TABLE()
 
 
 GraphCtrl::GraphCtrl( wxWindow *parent, int id )
-	: wxPLPlotCtrl( parent, id, wxDefaultPosition, wxSize(500,400) )
+	: wxPLPlotCtrl( parent, id, wxDefaultPosition, wxScaleSize(500,400) )
 {
 	SetBackgroundColour( *wxWHITE );
 }

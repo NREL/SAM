@@ -7,6 +7,8 @@
 #include <wx/dir.h>
 #include <wx/tokenzr.h>
 
+#include <wex/utils.h>
+
 #include <ssc/sscapi.h>
 
 #include "library.h"
@@ -26,7 +28,7 @@ private:
 	wxTextCtrl *m_downloadPath;
 public:
 	SettingsDialog( wxWindow *parent, const wxString &title, const wxString &data_file_name = "Weather File" )
-		: wxDialog( parent, wxID_ANY, title, wxDefaultPosition, wxSize(400,450), wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER)
+		: wxDialog( parent, wxID_ANY, title, wxDefaultPosition, wxScaleSize(400,450), wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER)
 	{
 		wxSizer *szmain = new wxBoxSizer( wxVERTICAL );
 		wxSizer *sizer_wfpaths = new wxStaticBoxSizer( wxVERTICAL, this, data_file_name+" Folders" );

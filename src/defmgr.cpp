@@ -227,7 +227,7 @@ void ValueEditor::OnEditField( wxCommandEvent & )
 		return;
 	}
 	
-	wxDialog dlg( this, wxID_ANY, "Edit field: " + name, wxDefaultPosition, wxSize(600,400), wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER );
+	wxDialog dlg( this, wxID_ANY, "Edit field: " + name, wxDefaultPosition, wxScaleSize(600,400), wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER );
 	ValueEditor *ve = new ValueEditor( &dlg );
 	ve->Set( *vv );
 	wxBoxSizer *sizer = new wxBoxSizer( wxVERTICAL );

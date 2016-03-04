@@ -683,7 +683,7 @@ BEGIN_EVENT_TABLE( OpenEIUtilityRateDialog, wxDialog )
 END_EVENT_TABLE()
 
 OpenEIUtilityRateDialog::OpenEIUtilityRateDialog(wxWindow *parent, const wxString &title, const wxString &market)
-	 : wxDialog( parent, wxID_ANY, title, wxDefaultPosition, wxSize(800,600), wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER)
+	 : wxDialog( parent, wxID_ANY, title, wxDefaultPosition, wxScaleSize(800,600), wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER)
 {
 	cboResCom = new wxChoice(this, ID_cboResCom);
 	cboResCom->Append("All Schedules");
@@ -706,21 +706,21 @@ OpenEIUtilityRateDialog::OpenEIUtilityRateDialog(wxWindow *parent, const wxStrin
 	btnQueryAgain = new wxButton(this, ID_btnQueryAgain, "Show all");
 	lblUtilityCount = new wxStaticText(this, ID_lblStatus, "");
 
-	lstUtilities = new AFSearchListBox(this, ID_lstUtilities, wxPoint(9,30), wxSize(266,450));
+	lstUtilities = new AFSearchListBox(this, ID_lstUtilities);
 
-	lstRates = new AFSearchListBox(this, ID_lstRates, wxPoint(288,30), wxSize(353,144));
+	lstRates = new AFSearchListBox(this, ID_lstRates);
 
 	txtRateName = new wxExtTextCtrl(this, ID_txtRateName);
 	txtRateName->SetEditable( false );
 	txtRateName->SetForegroundColour( wxColour(0, 0, 0) );
 	txtRateName->SetBackgroundColour( wxColour(255, 255, 255) );
 
-	txtRateDescription = new wxTextCtrl(this, ID_txtRateDescription, "", wxPoint(375, 225), wxSize(252, 255), wxTE_MULTILINE | wxTE_WORDWRAP | wxTE_PROCESS_TAB | wxTE_READONLY );
+	txtRateDescription = new wxTextCtrl(this, ID_txtRateDescription, "", wxDefaultPosition, wxDefaultSize, wxTE_MULTILINE | wxTE_WORDWRAP | wxTE_PROCESS_TAB | wxTE_READONLY );
 	
-	hypOpenEILink = new wxHyperlinkCtrl(this, ID_hypOpenEILink, "Go to rate page on OpenEI.org...", "http://en.openei.org/wiki/Utility_Rate_Database", wxPoint(294, 450), wxSize(281, 21));
-	hypJSONLink = new wxHyperlinkCtrl(this, ID_hypOpenEILink, "Rate JSON data page...", "http://en.openei.org/wiki/Utility_Rate_Database", wxPoint(594, 450), wxSize(281, 21));
+	hypOpenEILink = new wxHyperlinkCtrl(this, ID_hypOpenEILink, "Go to rate page on OpenEI.org...", "http://en.openei.org/wiki/Utility_Rate_Database" );
+	hypJSONLink = new wxHyperlinkCtrl(this, ID_hypOpenEILink, "Rate JSON data page...", "http://en.openei.org/wiki/Utility_Rate_Database");
 
-	lblStatus = new wxStaticText(this, ID_lblStatus, "", wxPoint(9,486), wxSize(400,21));
+	lblStatus = new wxStaticText(this, ID_lblStatus, "");
 	
 	btnApply = new wxButton(this, ID_btnApply, "Download and apply utility rate");
 	btnClose = new wxButton(this, ID_btnClose, "Close");
