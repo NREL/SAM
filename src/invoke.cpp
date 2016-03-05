@@ -1844,6 +1844,7 @@ void fcall_urdb_write(lk::invoke_t &cxt)
 				// write out csv with first row var name and second row var values
 				wxString value = vv->AsString();
 				value.Replace("\n", ";;");
+				value.Replace("\r", ";;");
 				csv.Set(row, 0, var_name);
 				csv.Set(row, 1, value);
 				csv.Set(row, 2, vi.Label);
@@ -1904,7 +1905,6 @@ void fcall_urdb_read(lk::invoke_t &cxt)
 		// try upgrading to matrix format
 		if (upgrade_list.Count() > 0)
 		{
-			// fail if not upgraded
 			// try upgrading - see project file upgrader for 2015.11.16
 			matrix_t<float> ec_tou_mat(72, 6); // will resize
 			matrix_t<float> dc_tou_mat(72, 4); // will resize
@@ -1917,10 +1917,11 @@ void fcall_urdb_read(lk::invoke_t &cxt)
 			wxString per_tier;
 			wxString var_name;
 			wxString months[] = { "jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec" };
+			bool overwrite = true;
 			// energy charge matrix inputs
-			for (int per=1;per<13;per++)
+			for (int per=1;per<13 && overwrite;per++)
 			{
-				for (int tier=1;tier<7;tier++)
+				for (int tier=1;tier<7 && overwrite;tier++)
 				{
 			// ec tou
 					br = -1;
@@ -1930,12 +1931,19 @@ void fcall_urdb_read(lk::invoke_t &cxt)
 					ndx = upgrade_list.Index(per_tier + "br");
 					if (ndx > -1 && ndx < upgrade_value.Count())
 						br = atof(upgrade_value[ndx].c_str());
+					else
+						overwrite = false;
 					ndx = upgrade_list.Index(per_tier + "sr");
 					if (ndx > -1 && ndx < upgrade_value.Count())
 						sr = atof(upgrade_value[ndx].c_str());
+					else
+						overwrite = false;
 					ndx = upgrade_list.Index(per_tier + "ub");
 					if (ndx > -1 && ndx < upgrade_value.Count())
 						ub = atof(upgrade_value[ndx].c_str());
+					else
+						overwrite = false;
+					if (!overwrite) continue;
 					if (sr > 0 || br > 0 || ec_tou_row == 0) // must have one row
 					{
 						ec_tou_mat.at(ec_tou_row,0)=per;
@@ -1953,9 +1961,14 @@ void fcall_urdb_read(lk::invoke_t &cxt)
 					ndx = upgrade_list.Index(per_tier + "dc");
 					if (ndx > -1 && ndx < upgrade_value.Count())
 						dc = atof(upgrade_value[ndx].c_str());
+					else
+						overwrite = false;
 					ndx = upgrade_list.Index(per_tier + "ub");
 					if (ndx > -1 && ndx < upgrade_value.Count())
 						ub = atof(upgrade_value[ndx].c_str());
+					else
+						overwrite = false;
+					if (!overwrite) continue;
 					if (dc > 0 || dc_tou_row == 0) // must have one row
 					{
 						dc_tou_mat.at(dc_tou_row,0)=per;
@@ -1971,11 +1984,16 @@ void fcall_urdb_read(lk::invoke_t &cxt)
 					ndx = upgrade_list.Index(per_tier + "dc");
 					if (ndx > -1 && ndx < upgrade_value.Count())
 						dc = atof(upgrade_value[ndx].c_str());
+					else
+						overwrite = false;
 					ndx = upgrade_list.Index(per_tier + "ub");
 					if (ndx > -1 && ndx < upgrade_value.Count())
 						ub = atof(upgrade_value[ndx].c_str());
-					if (dc > 0 || dc_flat_row < 12) // must have one value for each month
-					{
+					else
+						overwrite = false;
+					if (!overwrite) continue;
+					if (dc > 0 || tier == 1) // must have one value for each month
+						{
 						dc_flat_mat.at(dc_flat_row,0)=per-1; // month index
 						dc_flat_mat.at(dc_flat_row,1)=tier;
 						dc_flat_mat.at(dc_flat_row,2)=ub;
@@ -1985,26 +2003,29 @@ void fcall_urdb_read(lk::invoke_t &cxt)
 				}
 			}
 			// resize matrices
-			ec_tou_mat.resize_preserve(ec_tou_row, 6, 0);
-			dc_tou_mat.resize_preserve(dc_tou_row, 4, 0);
-			dc_flat_mat.resize_preserve(dc_flat_row, 4, 0);
-			var_name = "ur_ec_tou_mat";
-			if (VarValue *vv = c->Values().Get(var_name))
+			if (overwrite)
 			{
-				vv->Set(ec_tou_mat);
-				list.Add(var_name);
-			}
-			var_name = "ur_dc_tou_mat";
-			if (VarValue *vv = c->Values().Get(var_name))
-			{
-				vv->Set(dc_tou_mat);
-				list.Add(var_name);
-			}
-			var_name = "ur_dc_flat_mat";
-			if (VarValue *vv = c->Values().Get(var_name))
-			{
-				vv->Set(dc_flat_mat);
-				list.Add(var_name);
+				ec_tou_mat.resize_preserve(ec_tou_row, 6, 0);
+				dc_tou_mat.resize_preserve(dc_tou_row, 4, 0);
+				dc_flat_mat.resize_preserve(dc_flat_row, 4, 0);
+				var_name = "ur_ec_tou_mat";
+				if (VarValue *vv = c->Values().Get(var_name))
+				{
+					vv->Set(ec_tou_mat);
+					list.Add(var_name);
+				}
+				var_name = "ur_dc_tou_mat";
+				if (VarValue *vv = c->Values().Get(var_name))
+				{
+					vv->Set(dc_tou_mat);
+					list.Add(var_name);
+				}
+				var_name = "ur_dc_flat_mat";
+				if (VarValue *vv = c->Values().Get(var_name))
+				{
+					vv->Set(dc_flat_mat);
+					list.Add(var_name);
+				}
 			}
 		}
 
