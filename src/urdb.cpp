@@ -533,7 +533,7 @@ bool OpenEI::RetrieveUtilityRateData(const wxString &guid, RateData &rate, wxStr
 			for (int m = 0; m < num_months; m++)
 			{
 				int period = rate.FlatDemandMonth[m];
-				if ( period > 0 && period < fds_periods.Size())
+				if ( period >= 0 && period < fds_periods.Size())
 				{
 					wxJSONValue fds_tier = fds_periods[period];
 					for (int tier = 0; tier < fds_tier.Size(); tier++)
