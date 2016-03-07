@@ -1918,6 +1918,19 @@ void fcall_urdb_read(lk::invoke_t &cxt)
 			wxString var_name;
 			wxString months[] = { "jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec" };
 			bool overwrite = true;
+			ndx = upgrade_list.Index("ur_enable_net_metering");
+			int nm = 1; // default to net metering
+			if (ndx > -1 && ndx < upgrade_value.Count())
+				nm = (int)atof(upgrade_value[ndx].c_str());
+			double flat_buy_rate = 0;
+			double flat_sell_rate = 0;
+			ndx = upgrade_list.Index("ur_flat_buy_rate");
+			if (ndx > -1 && ndx < upgrade_value.Count())
+				flat_buy_rate = atof(upgrade_value[ndx].c_str());
+			ndx = upgrade_list.Index("ur_flat_sell_rate");
+			if (ndx > -1 && ndx < upgrade_value.Count())
+				flat_sell_rate = atof(upgrade_value[ndx].c_str());
+			if (nm > 0) flat_sell_rate = flat_buy_rate;
 			// energy charge matrix inputs
 			for (int per=1;per<13 && overwrite;per++)
 			{
@@ -1938,6 +1951,7 @@ void fcall_urdb_read(lk::invoke_t &cxt)
 						sr = atof(upgrade_value[ndx].c_str());
 					else
 						overwrite = false;
+					if (nm > 0) sr = br;
 					ndx = upgrade_list.Index(per_tier + "ub");
 					if (ndx > -1 && ndx < upgrade_value.Count())
 						ub = atof(upgrade_value[ndx].c_str());
@@ -1946,6 +1960,12 @@ void fcall_urdb_read(lk::invoke_t &cxt)
 					if (!overwrite) continue;
 					if (sr > 0 || br > 0 || ec_tou_row == 0) // must have one row
 					{
+						if (sr == 0 && br == 0 && ec_tou_row == 0)
+						{
+							br = flat_buy_rate;
+							sr = flat_sell_rate;
+							ub = 1e38;
+						}
 						ec_tou_mat.at(ec_tou_row,0)=per;
 						ec_tou_mat.at(ec_tou_row,1) = tier;
 						ec_tou_mat.at(ec_tou_row,2) = ub;
