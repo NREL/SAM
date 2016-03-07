@@ -60,8 +60,40 @@ version_upgrade{'2016.2.26'} = define() {
 		else if (a==3)
 			a=2;
 		value( 'ur_metering_option', a, 'utility rate metering options have changed' );
-		// TODO update sell rates for energy charges to be old single sell rate if necessary
-		// TODO update old flat rates to TOU periods- either add to or replace energy charges
+		// update old flat rates to TOU periods- replace energy charges if energy TOU rates not enabled
+		buy = oldvalue('ur_flat_buy_rate');
+		sell = oldvalue('ur_flat_sell_rate');
+		ec_enable = oldvalue('ur_ec_enable');
+		if (buy > 0 || sell > 0)
+		{
+			if (ec_enable > 0)
+			{
+				message('Your project file had both flat and TOU energy rates. The TOU energy rates have been updated and the flat rates ignored. Please review the "Electricity Rates" page.', 'notice');
+			}
+			else // replace weekend and weekday schedules and ec_tou_mat
+			{
+				nm = oldvalue('ur_enable_net_metering');
+				if (nm>0)
+					sell=buy;
+				ec_tou_mat[0][0] = 1; // period
+				ec_tou_mat[0][1] = 1; // tier
+				ec_tou_mat[0][2] = 1e+38; // max
+				ec_tou_mat[0][3] = 0; // units (kWh)
+				ec_tou_mat[0][4] = buy; // buy
+				ec_tou_mat[0][5] = sell; // sell
+				value("ur_ec_tou_mat", ec_tou_mat, 'Utility rate input for energy charge updated');
+				for (m=0;m<12;m++)
+				{
+					for (h=0;h<24;h++)
+					{
+						sched[m][h] = 1;
+					}
+				}
+				value("ur_ec_sched_weekday", sched, 'Utility rate weekday schedule for energy charge updated');
+				value("ur_ec_sched_weekend", sched, 'Utility rate weekend schedule for energy charge updated');
+			}
+		}
+		
 	}
 };
 
@@ -116,6 +148,7 @@ version_upgrade{'2015.11.16'} = define() {
 		dc_flat_row=0;
 		months = ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec" ];
 		// energy charge matrix inputs
+		nm = oldvalue('ur_enable_net_metering');
 		for (per=1;per<13;per++)
 		{
 			for (tier=1;tier<7;tier++)
@@ -125,6 +158,9 @@ version_upgrade{'2015.11.16'} = define() {
 				br = oldvalue(per_tier + 'br');
 				sr = oldvalue(per_tier + 'sr');
 				ub = oldvalue(per_tier + 'ub');
+				if (nm>0)
+					sr=br;
+				
 				if (sr > 0 || br > 0 || ec_tou_row == 0) // must have one row
 				{
 					ec_tou_mat[ec_tou_row][0]=per;
