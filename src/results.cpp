@@ -158,9 +158,9 @@ void PopulateSelectionList( wxDVSelectionListCtrl *sel, wxArrayString *names, Si
 			{
 				wxString grp = ui_hint["GROUP"];
 				if (grp == "UR_MTP")
-					gbn = "Utility Rate Data by Tier/Period"; // monthly tier x period
+					gbn = "Electricity Rate Data by Tier/Period"; // monthly tier x period
 				else if (grp == "UR_AM")
-					gbn = "Utility Rate Data by Year"; // annual monthly
+					gbn = "Electricity Rate Data by Year"; // annual monthly
 			}
 
 			group_by_name[list[j]] = gbn;
