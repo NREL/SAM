@@ -30,11 +30,21 @@
 
 <h2>Photovoltaics</h2>
 <ul>
-<li> New plane-of-array (POA) irradiance input option from broadband or matched reference cell sources
+<li> Limit albedo values to greater than zero and less than one (non-inclusive). Albedo = 0 and albedo = 1 are invalid (non-physical).
+<li> New plane-of-array (POA) irradiance input option from broadband or reference cell sources
+<li> Added warnings to let the user know if SAM calculates a negative irradiance value and sets it to zero
+<li> Fixed bugs in the Append Snow Data macro
 <li> New model for non-linear energy losses due to obstruction shading on parallel connected strings in 3D shading calculator
 <li> New linear beam irradiance loss self-shading option for fixed and 1 axis tracking arrays
-<li> Bug fix for inverter night time losses in loss diagram
-<li> <b>TODO</b>
+<li> Bug fix to allow self-shading to run even if the weather file does not contain DNI data
+<li> Bug fix in the existing non-linear self-shading algorithm that may have been slightly underestimating shade losses
+<li> Bug fix for self-shading outputs in lifetime mode
+<li> Improved feedback when setting up a self-shading scenario to make sure the self-shading is consistent with the system design
+<li> Additional detail in the module and inverter libraries to make it easier to sort equipment
+<li> Added option to save and load inputs for the CEC Performance Model with User Entered Specifications
+<li> Removed redundant total DC and total AC loss inputs
+<li> Bug fix in the treatment of AC wiring and transformer losses at nighttime: they were incorrectly lessening the power draw at night, now they correctly add to it
+<li> Bug fix for inverter night time losses in loss diagram <b> ARON IS THIS SOMETHING YOU FIXED OR IS IT THE BUG LISTED JUST BEFORE THIS???</b>
 </ul>
 
 
@@ -60,8 +70,8 @@
 
 <h2>Wind</h2>
 <ul>
-<li> Added step-by-step wizard for creating new wind projects
-<li><b>TODO</b>
+<li> Added step-by-step wizard to help introduce new users to the wind model
+<li> Updated the default assumptions for the "Define turbine design characteristics" blade and tower design options to reflect current technology
 </ul>
 
 <h2>PPA Financial Models</h2>
@@ -71,6 +81,8 @@
 
 <h2>Residential and Commerical Financial Models</h2>
 <ul>
+<li> Simplified utility rate input variables are now tables of user-defined size
+<li> Minor bug fix in the Download Electric Load macro to handle changes in the OpenEI data format
 <li><b>TODO</b>
 </ul>
 
@@ -88,11 +100,14 @@
 <ul>
 <li> SAM uses the new NREL National Solar Radiation Database (NSRDB) for satellite irradiance data on a 4 km grid (see <a href="http://nsrdb.nrel.gov">http://nsrdb.nrel.gov</a>).
 <li> Improved results browser can display matrix data and groups results by category
+<li> Updated default values to reflect current market conditions, especially in PV and wind
+<li> Updated output variable labels for clarity
 <li> Internet access proxies are automatically detected on Windows
 <li> User interface scales properly on high DPI laptop and tablet screens on Windows and OSX
 <li> Scripting language has a new interactive debugger that lets you step through your script line by line
 <li> Scripts run significantly faster due to new virtual machine architecture
-<li> Several built-in script functions added or improved (csvread, csvconv, curl, stable_sort, choose_from_list, transp, tempfile
+<li> Several built-in script functions added or improved (csvread, csvconv, curl, stable_sort, choose_from_list, transp, tempfile)
+<li> Bug fixes in Combine Cases macro to work with various financial models
 <li> Real-time syntax checking in script editor does not hang the user interface when editing long scripts
 <li> Improved rendering for plots when exported in PDF format
 <li> Bug fixes for horizontal stacked bar plots
@@ -100,6 +115,7 @@
 <li> Updated weather file converter script to handle SolarAnywhere data files
 <li> Bug fix for saving projects with different 3D shading scenes in multiple cases
 <li> Linux version updated to remove webkitgtk dependency
+<li> P50/P90 functionality updated to run correctly if file names contain periods
 </ul>
 
 <p></p>
