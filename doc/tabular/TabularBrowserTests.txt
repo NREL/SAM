@@ -1,0 +1,22 @@
+Tabular Browser Tests
+
+Add 1 single value
+o	remove single value
+o	 “Clear all selections”
+
+Add 1 single value, 1 monthly data
+o	select Single Values tab, close Monthly Data tab then Single Values tab.
+o	swap tabs, close non-selected tab, then selected tab
+o	drag monthly data to right, 
+		close single values, close monthly data
+		“Clear all selections”
+		
+Add 1 single value, 1 monthly, 1 matrix
+o	Close single value, monthly, matrix
+o	Swap monthly and single values, close single values, close monthly data, close matrix
+o	Swap monthly and single values, swap matrix and single values, close single values, close monthly data, close matrix
+o	Drag matrix to right, drag monthly to bottom, close matrix, close monthly, close single values
+o	Drag matrix to right, drag monthly to bottom, “Clear all selections”
+
+Add 2 single values
+o	Click “X” on tab
