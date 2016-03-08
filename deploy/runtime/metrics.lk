@@ -154,6 +154,7 @@ function MSPT_metrics()
 	metric( 'annual_energy', {'label'='Annual energy (year 1)', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh' } );
 //	metric( 'conversion_factor', {'label'='Gross-to-net conversion', 'mode'='f', 'deci'='1', 'thousep'='true', 'post'=' %' } );
 	metric( 'capacity_factor', {'label'='Capacity factor (year 1)', 'mode'='f', 'deci'='1', 'thousep'='true', 'post'='%' } );
+	metric( 'annual_total_water_use', {'label'='Annual Water Usage','mode'='f','deci'='0','thousep'='true','post'=' m^3' } );
 }
 
 function ISCC_metrics() 
