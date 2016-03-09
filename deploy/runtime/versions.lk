@@ -50,6 +50,25 @@ Some more examples:
 
 //***********************************************************************************************************************************************************
 //CURRENT WORKING VERSION- CHANGE THIS VERSION NUMBER WHEN RELEASES ARE CREATED AND MAKE A NEW CURRENT WORKING VERSION FUNCTION
+version_upgrade{'2016.3.2'} = define() {
+
+	//TELL USERS IF THE ANSWERS ARE GOING TO CHANGE
+	const cfg = config();
+	if (cfg.tech == 'Flat Plate PV')
+	{	
+		message('This version fixes a bug in how AC wiring and transformer losses are applied. This may change your results slightly. Please see the release notes for more detail.', 'warning');
+		if (value('subarray1_shade_mode') == 1 || value('subarray2_shade_mode') == 1 || value('subarray3_shade_mode') == 1 || value('subarray4_shade_mode') == 1)
+			message('This version fixes a bug in the self-shading algorithm. This may change your results slightly. Please see the release notes for more detail.','warning');
+	}
+	if (cfg.tech == 'Physical Trough')
+		message('This version fixes a bug that resulted in unreasonable freeze protection parasitics. This may change your results slightly. Please see the release notes for more detail.','warning');
+	if (cfg.tech == 'Empirical Trough')
+		message('This version fixes a bug with cooling tower temperature corrections. This may change your results. Please see the release notes for more detail.','warning');
+	if (cfg.tech == 'DSPT')
+		message('This version fixes a bug with the calculation of heliostat tracking parasitics. This may change your results slightly. Please see the release notes for more detail.','warning');
+
+};
+
 version_upgrade{'2016.2.26'} = define() {
 	const cfg = config();
 	if ((cfg.fin == 'Residential' || cfg.fin == 'Commercial'))
@@ -68,7 +87,7 @@ version_upgrade{'2016.2.26'} = define() {
 		{
 			if (ec_enable > 0)
 			{
-				message('Your project file had both flat and TOU energy rates. The TOU energy rates have been updated and the flat rates ignored. Please review the "Electricity Rates" page.', 'notice');
+				message('Your project file had both flat and TOU energy rates. The TOU energy rates have been updated and the flat rates ignored. Please review the "Electricity Rates" page.', 'warning');
 			}
 			else // replace weekend and weekday schedules and ec_tou_mat
 			{
@@ -200,7 +219,7 @@ version_upgrade{'2015.11.16'} = define() {
 		value("ur_ec_tou_mat", ec_tou_mat, 'Utility rate input for electricity charge TOU rates has changed');
 		value("ur_dc_tou_mat", dc_tou_mat, 'Utility rate input for demand charge TOU rates has changed');
 		value("ur_dc_flat_mat", dc_flat_mat, 'Utility rate input for demand charge flat rates has changed');
-		message( 'Utility rate inputs have been updated to tabular values rather than individual values.  See help for more information.', 'warning' );
+		message( 'Utility rate inputs have been updated to tabular values rather than individual values.  See help for more information.', 'notice' );
 	}
 };
 
