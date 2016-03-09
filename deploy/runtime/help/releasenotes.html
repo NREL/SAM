@@ -44,7 +44,6 @@
 <li> Added option to save and load inputs for the CEC Performance Model with User Entered Specifications
 <li> Removed redundant total DC and total AC loss inputs
 <li> Bug fix in the treatment of AC wiring and transformer losses at nighttime: they were incorrectly lessening the power draw at night, now they correctly add to it
-<li> Bug fix for inverter night time losses in loss diagram <b> ARON IS THIS SOMETHING YOU FIXED OR IS IT THE BUG LISTED JUST BEFORE THIS???</b>
 </ul>
 
 
@@ -60,12 +59,22 @@
 
 <h2>Parabolic Trough (Physical)</h2>
 <ul>
-<li><b>TODO</b>
+<li>This release fixes a bug that resulted in unreasonable freeze protection parasitics. This bug typically occurred during subhourly simulations, however the fix may also improve the annual energy for some hourly simulations
+</ul>
+
+<h2>Parabolic Trough (Empirical)</h2>
+<ul>
+<li>This release fixes a bug in the implementation of the Cooling Tower Correction defined on the Power Block page. The previous version applied a wet bulb correction when “Dry-bulb Basis” was selected for the Temp. Correction Mode, and it cancelled the temperature correction when “Wet-bulb Basis” was selected (i.e. the performance model did not adjust for temperature variation during the annual simulation). This fix did not affect the 6.30.2015 default case, as the Cooling Tower Correction was set to a constant value (i.e. F0 = 1 and the remaining coefficients were zero). However, the bug could have a sizeable effect (5-20%) on cases expecting a temperature correction
 </ul>
 
 <h2>Molten Salt Power Tower</h2>
 <ul>
 <li><b>TODO</b>
+</ul>
+
+<h2>Direct Steam Power Tower</h2>
+<ul>
+<li>This release correctly calculates heliostat tracking parasitics. The old version was underreporting this value. This fix reduces the annual energy output by about 0.5% in the default case.
 </ul>
 
 <h2>Wind</h2>
