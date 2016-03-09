@@ -562,26 +562,20 @@ ResultsViewer::~ResultsViewer()
 		delete m_tsDataSets[i];
 }
 
-TimeSeriesData::TimeSeriesData( float *p, size_t len, double ts_hour, bool instantaneous, const wxString &label, const wxString &units )
-	: wxDVTimeSeriesDataSet(), m_pdata(p), m_len(len), m_tsHour(ts_hour), m_instantaneous(instantaneous), m_label(label), m_units(units)
+TimeSeriesData::TimeSeriesData( float *p, size_t len, double ts_hour, double ts_offset, const wxString &label, const wxString &units )
+	: wxDVTimeSeriesDataSet(), m_pdata(p), m_len(len), m_tsHour(ts_hour), m_startOffsetHours(ts_offset), m_label(label), m_units(units)
 {
 	/* nothing to do */
 }
 
 wxRealPoint TimeSeriesData::At(size_t i) const
 {
-	// SAM convention is that for hourly simulation, 
-	// the sun position is calculated at the midpoint of the hour, unless the
-	// time series is specified to be an instantaneous hourly dataset (i.e. NSRDB hourly files as of march 2016)
-	
-	// For subhourly simulation, the sun position is calculated at the instantaneous
-	// time specified for the data record in the weather file
-
+	// we depend on the SSC model to report 'ts_shift_hours'
+	// to properly display hourly results
 	double time = i*m_tsHour;
-	if ( !m_instantaneous && m_tsHour == 1.0 ) time += 0.5;
+	if ( m_tsHour == 1.0 ) time += m_startOffsetHours;
 
 	if ( i < m_len ) return wxRealPoint( time, m_pdata[i] );
-	if ( i < m_len ) return wxRealPoint( i*m_tsHour, m_pdata[i] );
 	else return wxRealPoint(0,0);
 }
 
@@ -760,10 +754,10 @@ void ResultsViewer::Setup( Simulation *sim )
 		if ( lftm->Value() != 0.0f )
 			use_lifetime = true;
 	
-	bool is_hourly_instantaneous = false;
-	if ( VarValue *ihi = sim->GetValue("instantaneous_hourly_values") )
-		if ( ihi->Value() != 0.0f )
-			is_hourly_instantaneous = true;
+	double ts_shift_hours = 0.0;
+	if ( VarValue *ihi = sim->GetValue("ts_shift_hours") )
+		if ( ihi->Value() > 0 && ihi->Value() <= 1.0 )
+			ts_shift_hours = ihi->Value();
 
 
 	int an_period = -1;
@@ -798,12 +792,7 @@ void ResultsViewer::Setup( Simulation *sim )
 
 				wxString group("Hourly Data");
 				double time_step = -1;
-
-				bool instantaneous = true;
-				if ( !is_hourly_instantaneous
-					&& ( steps_per_hour == 1 || steps_per_hour_lt == 1 ) )
-					instantaneous = false;
-
+				
 				if (n == 8760)
 				{
 					group = "Hourly Data";
@@ -828,8 +817,7 @@ void ResultsViewer::Setup( Simulation *sim )
 				if (time_step > 0)
 				{
 					wxLogStatus("Adding time series dataset: %d len, %lg time step", (int)n, 1.0 / steps_per_hour_lt);
-					TimeSeriesData *tsd = new TimeSeriesData(p, n, time_step,
-						instantaneous,
+					TimeSeriesData *tsd = new TimeSeriesData(p, n, time_step, ts_shift_hours,
 						m_sim->GetLabel(vars[i]),
 						m_sim->GetUnits(vars[i]));
 					tsd->SetMetaData(vars[i]); // save the variable name in the meta field for easy lookup later

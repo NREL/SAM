@@ -824,7 +824,7 @@ void ParametricViewer::AddPlot(const wxString &output_name)
 							&& steps_per_hour <= 60 
 							&& n == steps_per_hour*8760 )
 						{
-							dv->AddDataSet(new TimeSeriesData(y, n, 1.0/steps_per_hour, false, // by default not instantaneous values for hourly data
+							dv->AddDataSet(new TimeSeriesData(y, n, 1.0/steps_per_hour, 0.0, // by default not instantaneous values for hourly data
 									m_grid_data->GetColLabelValue(col) + wxString::Format(" : run(%d)", (int)(row + 1)), 
 									m_grid_data->GetUnits(col)), true );
 							dv->SelectDataSetAtIndex(row);
