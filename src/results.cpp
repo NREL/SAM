@@ -754,7 +754,9 @@ void ResultsViewer::Setup( Simulation *sim )
 		if ( lftm->Value() != 0.0f )
 			use_lifetime = true;
 	
-	double ts_shift_hours = 0.0;
+	// by default, no valid time shift specified so default to 0.0
+	// for subhourly simulation and 0.5 for hourly simulation
+	double ts_shift_hours = std::numeric_limits<double>::quiet_NaN();
 	if ( VarValue *ihi = sim->GetValue("ts_shift_hours") )
 		if ( ihi->Value() > 0 && ihi->Value() <= 1.0 )
 			ts_shift_hours = ihi->Value();
@@ -816,8 +818,16 @@ void ResultsViewer::Setup( Simulation *sim )
 
 				if (time_step > 0)
 				{
+					double offset = 0.0;
+					if ( time_step == 1.0 )
+					{
+						// for hourly data, if the model specifies a shift, 
+						// use it, otherwise default to 0.5 as before for midpoint
+						offset = std::isfinite(ts_shift_hours)  ? ts_shift_hours : 0.5;
+					}
+
 					wxLogStatus("Adding time series dataset: %d len, %lg time step", (int)n, 1.0 / steps_per_hour_lt);
-					TimeSeriesData *tsd = new TimeSeriesData(p, n, time_step, ts_shift_hours,
+					TimeSeriesData *tsd = new TimeSeriesData(p, n, time_step, offset,
 						m_sim->GetLabel(vars[i]),
 						m_sim->GetUnits(vars[i]));
 					tsd->SetMetaData(vars[i]); // save the variable name in the meta field for easy lookup later
