@@ -756,7 +756,7 @@ void ResultsViewer::Setup( Simulation *sim )
 	// for subhourly simulation and 0.5 for hourly simulation
 	double ts_shift_hours = std::numeric_limits<double>::quiet_NaN();
 	if ( VarValue *ihi = sim->GetValue("ts_shift_hours") )
-		if ( ihi->Value() > 0 && ihi->Value() <= 1.0 )
+		if ( ihi->Value() >= 0.0 && ihi->Value() <= 1.0 )
 			ts_shift_hours = ihi->Value();
 
 
@@ -824,50 +824,14 @@ void ResultsViewer::Setup( Simulation *sim )
 					else
 						offset = ( time_step==1.0 ) ? 0.5 : 0.0;
 
-					wxLogStatus("Adding time series dataset: %d len, %lg time step", (int)n, 1.0 / steps_per_hour_lt);
+					wxLogStatus("Adding time series dataset: %d len, %lg time step, %lg offset", (int)n, time_step, offset);
+
 					TimeSeriesData *tsd = new TimeSeriesData(p, n, time_step, offset,
 						m_sim->GetLabel(vars[i]),
 						m_sim->GetUnits(vars[i]));
 					tsd->SetMetaData(vars[i]); // save the variable name in the meta field for easy lookup later
 					AddDataSet(tsd, group);
 				}
-
-				/*
-				if (steps_per_hour > 0
-					&& steps_per_hour <= 60
-					&& ((n == steps_per_hour * 8760) // sub hourly
-					|| (n == 8760) // hourly
-					|| (n == steps_per_hour_lt * 8760 * (an_period - 1)) // sub hourly lifetime
-					|| (n == 8760 * (an_period - 1)))) // hourly lifetime
-				{
-					wxString group("Hourly Data");
-					if (steps_per_hour > 1)
-						group = wxString::Format("%lg Minute Data", 60.0 / steps_per_hour);
-					if (use_lifetime)
-					{
-						group = "Lifetime Hourly Data";
-						if (steps_per_hour_lt > 1)
-						{
-							group = wxString::Format("Lifetime %lg Minute Data", 60.0 / steps_per_hour_lt);
-							wxLogStatus("Adding time series dataset: %d len, %lg time step", (int)n, 1.0 / steps_per_hour_lt);
-							TimeSeriesData *tsd = new TimeSeriesData(p, n, 1.0 / steps_per_hour_lt,
-								m_sim->GetLabel(vars[i]),
-								m_sim->GetUnits(vars[i]));
-							tsd->SetMetaData(vars[i]); // save the variable name in the meta field for easy lookup later
-							AddDataSet(tsd, group);
-						}
-					}
-					else
-					{
-						wxLogStatus("Adding time series dataset: %d len, %lg time step", (int)n, 1.0 / steps_per_hour);
-						TimeSeriesData *tsd = new TimeSeriesData(p, n, 1.0 / steps_per_hour,
-							m_sim->GetLabel(vars[i]),
-							m_sim->GetUnits(vars[i]));
-						tsd->SetMetaData(vars[i]); // save the variable name in the meta field for easy lookup later
-						AddDataSet(tsd, group);
-					}
-				}
-				*/
 			}
 		}
 	}
