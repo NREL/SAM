@@ -33,6 +33,7 @@
 #include "s3tool.h"
 #include "lossdiag.h"
 #include "stochastic.h"
+#include "registration.h"
 
 static void fcall_dview(lk::invoke_t &cxt)
 {
@@ -205,6 +206,7 @@ static void fcall_curl( lk::invoke_t &cxt )
 	
 	wxString url(cxt.arg(0).as_string());
 	url.Replace( "<SAMAPIKEY>", wxString(sam_api_key) );
+	url.Replace( "<USEREMAIL>", SamRegistration::GetEmail() );
 
 	wxLogStatus( "curl: " + url );
 
