@@ -572,9 +572,7 @@ wxRealPoint TimeSeriesData::At(size_t i) const
 {
 	// we depend on the SSC model to report 'ts_shift_hours'
 	// to properly display hourly results
-	double time = i*m_tsHour;
-	if ( m_tsHour == 1.0 ) time += m_startOffsetHours;
-
+	double time = m_startOffsetHours + i*m_tsHour;
 	if ( i < m_len ) return wxRealPoint( time, m_pdata[i] );
 	else return wxRealPoint(0,0);
 }
@@ -818,13 +816,13 @@ void ResultsViewer::Setup( Simulation *sim )
 
 				if (time_step > 0)
 				{
+					// if the model specifies a shift, use it whatever the timestep 
+					// otherwise default to 0.5 as before for midpoint hourly, or 0.0 for subhourly
 					double offset = 0.0;
-					if ( time_step == 1.0 )
-					{
-						// for hourly data, if the model specifies a shift, 
-						// use it, otherwise default to 0.5 as before for midpoint
-						offset = std::isfinite(ts_shift_hours)  ? ts_shift_hours : 0.5;
-					}
+					if ( std::isfinite(ts_shift_hours) )
+						offset = ts_shift_hours;
+					else
+						offset = ( time_step==1.0 ) ? 0.5 : 0.0;
 
 					wxLogStatus("Adding time series dataset: %d len, %lg time step", (int)n, 1.0 / steps_per_hour_lt);
 					TimeSeriesData *tsd = new TimeSeriesData(p, n, time_step, offset,
