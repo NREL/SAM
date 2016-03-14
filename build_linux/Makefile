@@ -1,4 +1,4 @@
-SAMVER=2016.2.22
+SAMVER=2016.3.14
 SAMVERDASH=$(subst .,-,$(SAMVER))
 SRCDIR = ../src
 VPATH = $(SRCDIR)
@@ -79,7 +79,7 @@ $(TARGET): $(OBJECTS) $(WEXLIB) $(LKLIB) $(SSCDIR)/build_linux/$(SSCLIB)
 	rm -rf ../deploy/linux_64/GtkTheme
 	cp -R ./GtkTheme ../deploy/linux_64
 
-PKGFILE = sam-linux64-$(SAMVERDASH)-install.run
+PKGFILE = sam-linux-$(SAMVERDASH).run
 
 
 package:
