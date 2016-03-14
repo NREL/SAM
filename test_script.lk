@@ -20,6 +20,7 @@ create_case( 'Flat Plate PV', 'Residential', 'test_case');
 //Keep track of the number of configurations
 configs = 0;
 
+start_timer();
 //loop through all technologies
 technologies = 	list_technologies();
 for (t=0; t<#technologies; t++)
@@ -91,4 +92,7 @@ for (t=0; t<#technologies; t++)
 	}
 }
 
+minutes = elapsed_time()*0.001/60.0;
 outln( 'Total Number of Configurations: ' + configs);
+outln( 'Completed in ' + minutes + ' minutes' );
+outln( 'Wrote results to ' + output_file );
