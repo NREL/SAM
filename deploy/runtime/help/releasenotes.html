@@ -26,24 +26,26 @@
       <p style="font-family:Segoe UI,sans-serif;font-size:20pt;text-align:center;color:#0072C6;">System Advisor Model (SAM) Release Notes</p>
 	  
 <h1>Version 2016.3.14, March 2016</h1>
-<p> This is a new release that addes several new major capabilities in the photovoltaic, battery storage, and molten salt power tower models.  In addition, there is a new technology option for integrated solar combined cycle (ISCC) plants, as well as a new tabular results browser, and many enhancements to the scripting capabilities.
+<p> This version adds new capabilities to the photovoltaic, battery storage, and molten salt power tower performance models with a new model for integrated solar combined cycle (ISCC) concentrating solar power plants. This version also adds new electricity metering options and other electricity rate improvements to the residential and commercial financial models. It includes a new data browser for tabular results and many enhancements to the LK scripting language.
 
 <h2>Photovoltaics</h2>
 <ul>
-<li> Limit albedo values to greater than zero and less than one (non-inclusive). Albedo = 0 and albedo = 1 are invalid (non-physical).
-<li> New plane-of-array (POA) irradiance input option from broadband or reference cell sources
+<li> New option to use plane-of-array (POA) irradiance data in the weather file as input, works with data from a pyranometer (broadband) or reference cell
+<li> New obstruction shading model calculates beam shading factors for a subarray represented in the 3D shading calculator as consisting of up to 8 parallel strings
+<li> New self-shading option for subarrays that experience linear reduction in output with an increase in self shading
+<li> New capability for the module and inverter models with user entered parameters to save and load parameters from a text file
+<li> Limit albedo values to greater than zero and less than one (non-inclusive). Albedo = 0 and albedo = 1 are invalid (non-physical)
+<li> Change results variable names for irradiance values to make it clearer which values are from weather file and which values are calculated by transposition model, e.g., change "Beam irradiance" to "Irradiance DNI from weather file"
 <li> Added warnings to let the user know if SAM calculates a negative irradiance value and sets it to zero
 <li> Fixed bugs in the Append Snow Data macro
-<li> New model for non-linear energy losses due to obstruction shading on parallel connected strings in 3D shading calculator
-<li> New linear beam irradiance loss self-shading option for fixed and 1 axis tracking arrays
 <li> Bug fix to allow self-shading to run even if the weather file does not contain DNI data
 <li> Bug fix in the existing non-linear self-shading algorithm that may have been slightly underestimating shade losses
 <li> Bug fix for self-shading outputs in lifetime mode
 <li> Improved feedback when setting up a self-shading scenario to make sure the self-shading is consistent with the system design
 <li> Additional detail in the module and inverter libraries to make it easier to sort equipment
-<li> Added option to save and load inputs for the CEC Performance Model with User Entered Specifications
 <li> Removed redundant total DC and total AC loss inputs
 <li> Bug fix in the treatment of AC wiring and transformer losses at nighttime: they were incorrectly lessening the power draw at night, now they correctly add to it
+<li> Update report template to work with new electricity rate inputs and results and fix bugs
 </ul>
 
 
@@ -51,10 +53,15 @@
 <ul>
 <li> New automated peak-shaving mode for demand charge reduction
 <li> New power target mode 
-<li> New ability to schedule weekend dispatch seperately
+<li> New ability to schedule weekend dispatch separately
 <li> New ability to prioritize photovoltaic power to battery or electric load
 <li> New ability to customize grid charging levels
 <li> Additional outputs to view battery metrics
+</ul>
+
+<h2>Concentrating Solar Power (CSP) Models</h2>
+<ul>
+<li>Water usage reported for all CSP models
 </ul>
 
 <h2>Parabolic Trough (Physical)</h2>
@@ -64,12 +71,15 @@
 
 <h2>Parabolic Trough (Empirical)</h2>
 <ul>
-<li>This release fixes a bug in the implementation of the Cooling Tower Correction defined on the Power Block page. The previous version applied a wet bulb correction when “Dry-bulb Basis” was selected for the Temp. Correction Mode, and it cancelled the temperature correction when “Wet-bulb Basis” was selected (i.e. the performance model did not adjust for temperature variation during the annual simulation). This fix did not affect the 6.30.2015 default case, as the Cooling Tower Correction was set to a constant value (i.e. F0 = 1 and the remaining coefficients were zero). However, the bug could have a sizeable effect (5-20%) on cases expecting a temperature correction
+<li>This release fixes a bug in the implementation of the Cooling Tower Correction defined on the Power Block page. The previous version applied a wet bulb correction when “Dry-bulb Basis” was selected for the Temp. Correction Mode, and it cancelled the temperature correction when “Wet-bulb Basis” was selected (i.e. the performance model did not adjust for temperature variation during the annual simulation). This fix did not affect the 6.30.2015 default case, as the Cooling Tower Correction was set to a constant value (i.e. F0 = 1 and the remaining coefficients were zero). However, the bug could have a sizable effect (5-20%) on cases expecting a temperature correction
 </ul>
 
 <h2>Molten Salt Power Tower</h2>
 <ul>
-<li><b>TODO</b>
+<li>A new dispatch optimization model and plant control algorithm with numerical solver automatically optimizes the dispatch of the thermal energy storage system to maximize plant revenue based on the time-of-use period PPA price multipliers defined on the Time of Delivery Factors page.  If dispatch optimization is not selected, the plant control algorithm determines how to operate the power tower system based on the time-of-use periods and Turbine output fraction schedule defined on the new System Control input page. 
+<li>Reorganize user inputs: New System Design page has inputs that define the system nameplate capacities and design point parameters, System Control page for the new dispatch optimization inputs and other variables related to the operation of the system, Thermal Storage page now only has inputs to define the capacity of the TES, Parasitics page removed and those inputs moved to input page for relevant component, e.g., power cycle HTF pump power is now on Power Cycle page instead of Parasitics page.
+<li>Supercritical carbon dioxide power cycle, thermocline storage, and fossil backup are not available in this version of the power tower model because of the new system control and optimization models.
+<li>New user-defined power cycle option accepts performance data from an external power cycle model to define the performance characteristics of Rankine or other types of cycles.
 </ul>
 
 <h2>Direct Steam Power Tower</h2>
@@ -85,24 +95,28 @@
 
 <h2>PPA Financial Models</h2>
 <ul>
-<li><b>TODO</b>
+<li>Allow PPA price escalation rate to be negative and greater than 100%
+<li>Fix bug in PPA partnership flip models that caused ITC to be incorrectly allocated to the partners
+<li>Fix bug in PPA partnership flip models that caused flip year to be incorrectly determined due to invalid IRR values being reported as NaN instead of zero
+<li>Fix bug with how salvage value is accounted for in the cash flow for PPA financial models
+<li>Minor revisions of output variable labels
 </ul>
 
-<h2>Residential and Commerical Financial Models</h2>
+<h2>Residential and Commercial Financial Models</h2>
 <ul>
-<li> Simplified utility rate input variables are now tables of user-defined size
-<li> Minor bug fix in the Download Electric Load macro to handle changes in the OpenEI data format
-<li><b>TODO</b>
+<li>Minor bug fix in the Download Electric Load macro to handle changes in the OpenEI data format
 </ul>
 
 <h2>Utility Rates</h2>
 <ul>
-<li> Revised and simplified metering options with single/dual meter and various energy or monetary rollover options
-<li> Revised user interface simplifies entering complex utility rate structures
-<li> Outputs are reported in tabular format by tier and period
+<li>New electricity metering options to handle a broader range of electricity rate structures, including net metering and feed-in tariffs
+<li>New maximum usage units for tiers in addition to kWh: kWh/kW, kWh/daily, kWh/kW daily
+<li>Replace individual inputs and results for energy and demand rate structures with tables to simplify editing and analyzing rate structure data  (this version converts data from old .sam files into new format)
+<li>Revise labels of results variables and add new kWh export variable
+<li>For electricity rates that combine net metering with time-of-use periods and tiers pro-rate rollover credits to next month's time-of-use periods
+<li>For electricity rates with net metering and time-of-use periods, apply method for rolling over credits to appropriate periods when the next month has a different time-of-use schedule (assume periods at 12 am, 6 am, 12 pm and 6 pm determine periods to roll over to)
 <li> Flat rates now modeled as energy charges under a single tier and time of use period
-<li> Simplified treatment of sell rates
-<li> Uses updated OpenEI International Utility Rate Database (IURDB)
+<li> Update to new OpenEI Utility Rate Database
 </ul>
 
 <h2>General</h2>
@@ -110,6 +124,7 @@
 <li> SAM uses the new NREL National Solar Radiation Database (NSRDB) for satellite irradiance data on a 4 km grid (see <a href="http://nsrdb.nrel.gov">http://nsrdb.nrel.gov</a>).
 <li> Improved results browser can display matrix data and groups results by category
 <li> Updated default values to reflect current market conditions, especially in PV and wind
+<li> New feature to import one or more cases from a .sam file into the currently open file
 <li> Updated output variable labels for clarity
 <li> Internet access proxies are automatically detected on Windows
 <li> User interface scales properly on high DPI laptop and tablet screens on Windows and OSX
