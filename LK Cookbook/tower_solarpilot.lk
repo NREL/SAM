@@ -48,6 +48,7 @@
 	ssc_var(obj, "sales_tax_frac",get('csp.pt.cost.sales_tax.percent'));
 	ssc_var(obj, "cost_sf_fixed", get('cost_sf_fixed'));
 	
+	ssc_var(obj, "opt_flux_penalty", get('opt_flux_penalty')); // new for SAM 2016.3.14
 	ssc_var(obj, "opt_max_iter", get('opt_max_iter'));
 	ssc_var(obj, "flux_max", flux_max);
 	
@@ -56,7 +57,7 @@
 	ssc_var(obj, "opt_init_step", get('opt_init_step'));
 	ssc_var(obj, "opt_conv_tol", get('opt_conv_tol'));
 	ssc_var(obj, "opt_algorithm", get('opt_algorithm'));
-	ssc_var(obj, "opt_flux_penalty", get("opt_flux_penalty"));
+	ssc_var(obj, "opt_flux_penalty", get('opt_flux_penalty'));
 		
 	//ssc_dump( obj, homedir() + '/solarpilot.txt' );
 	//msgbox("Dumping inputs to: " + homedir() + '/solarpilot.txt');
