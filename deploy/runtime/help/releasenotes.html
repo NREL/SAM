@@ -77,14 +77,16 @@
 <h2>Parabolic Trough (Empirical)</h2>
 <ul>
 <li>This release fixes a bug in the implementation of the Cooling Tower Correction defined on the Power Block page. The previous version applied a wet bulb correction when “Dry-bulb Basis” was selected for the Temp. Correction Mode, and it cancelled the temperature correction when “Wet-bulb Basis” was selected (i.e. the performance model did not adjust for temperature variation during the annual simulation). This fix did not affect the 6.30.2015 default case, as the Cooling Tower Correction was set to a constant value (i.e. F0 = 1 and the remaining coefficients were zero). However, the bug could have a sizable effect (5-20%) on cases expecting a temperature correction
+<li>Fix a bug that prevented Power Block parameters from the library to be applied when you selected an item in the library
 </ul>
 
 <h2>Molten Salt Power Tower</h2>
 <ul>
-<li>A new dispatch optimization model and plant control algorithm with numerical solver automatically optimizes the dispatch of the thermal energy storage system to maximize plant revenue based on the time-of-use period PPA price multipliers defined on the Time of Delivery Factors page.  If dispatch optimization is not selected, the plant control algorithm determines how to operate the power tower system based on the time-of-use periods and Turbine output fraction schedule defined on the new System Control input page. 
+<li>New dispatch optimization model and plant control algorithm with numerical solver automatically optimizes the dispatch of the thermal energy storage system to maximize plant revenue based on the time-of-use period PPA price multipliers defined on the Time of Delivery Factors page.  If dispatch optimization is not selected, the plant control algorithm determines how to operate the power tower system based on the time-of-use periods and Turbine output fraction schedule defined on the new System Control input page. 
+<li>New user-defined power cycle option accepts performance data from an external power cycle model to define the performance characteristics of Rankine or other types of cycles.
+<li>New "Matrix Data" results for receiver flux map, solar field optical efficiencies, and heliostat positions
 <li>Reorganize user inputs: New System Design page has inputs that define the system nameplate capacities and design point parameters, System Control page for the new dispatch optimization inputs and other variables related to the operation of the system, Thermal Storage page now only has inputs to define the capacity of the TES, Parasitics page removed and those inputs moved to input page for relevant component, e.g., power cycle HTF pump power is now on Power Cycle page instead of Parasitics page.
 <li>Supercritical carbon dioxide power cycle, thermocline storage, and fossil backup are not available in this version of the power tower model because of the new system control and optimization models.
-<li>New user-defined power cycle option accepts performance data from an external power cycle model to define the performance characteristics of Rankine or other types of cycles.
 </ul>
 
 <h2>Direct Steam Power Tower</h2>
