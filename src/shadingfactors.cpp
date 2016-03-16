@@ -868,8 +868,9 @@ bool ImportSunEyeObstructions( ShadingInputData &dat, wxWindow *parent )
 	bool colok = true;
 	int linesok = 0;
 	double azi[361];
-	double alt[361];
-	int imageCount;
+	int imageCount = 0;
+	int columnCount = 0;
+	int elevationStartCol = -1;
 	float obstructionStep;
 	double tmpVal;
 		
@@ -893,33 +894,46 @@ bool ImportSunEyeObstructions( ShadingInputData &dat, wxWindow *parent )
 				}
 			}
 		}
-		else if (readdata == true && j == -1) j++;
+		else if (readdata == true && j == -1)
+		{ // get image count here
+			columnCount = lnp.Count();
+			for (size_t i = 0; i < columnCount; i++)
+			{
+				int ndx = lnp[i].Lower().Find("elevation");
+				if (ndx != wxNOT_FOUND && (ndx < 2)) // Not Average or Maximum 
+				{
+					imageCount++;
+					// set elevation start column
+					if (elevationStartCol < 0) elevationStartCol = i;
+				}
+			}
+			if (imageCount < 1 || elevationStartCol < 0)
+			{
+				wxMessageBox("Error: No 'Elevations' data columns found.");
+				return false;
+			}
+			j++;
+		}
 		else
 		{
-			// Sev 150624: Check for number of images
-			if( j == 0)	{
-				imageCount = lnp.Count() - 4;
+			if( j == 0)	
+			{
 				obstructions.resize_fill( 362, imageCount, 0.0);
 				obstructionStep = 100.0 / imageCount;
 			}
 
 			if (j <= 360)
 			{
-// Modify to read in ObstructionElevation.csv (average in column 3 and then max and then value for each skyline
-// Works with individual skyline obstrucitons (e.g. Sky01ObstrucitonElevations.csv) or with average.
-//				if (lnp.Count() != 3)
-				if (lnp.Count() < imageCount + 3)
+				if (lnp.Count() < elevationStartCol + imageCount)
 				{
-					colok = false;
-					readok = false;
-					break;
-				} 
+					wxMessageBox(wxString::Format("Error: Not enough data found at data row=%d.", j ));
+					return false;
+				}
 				else
 				{
 					azi[j] = wxAtof(lnp[0]); //first column contains compass heading azimuth values (0=north, 90=east)
-					alt[j] = wxAtof(lnp[2]);
-					for (int ii=0; ii<imageCount; ii++)
-						obstructions.at(j,ii) = wxAtof(lnp[ii+4]); 
+					for (int ii=0; ii<imageCount && (ii+elevationStartCol) < lnp.Count(); ii++)
+						obstructions.at(j,ii) = wxAtof(lnp[ii+elevationStartCol]); 
 				}
 				j++;
 			}

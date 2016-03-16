@@ -225,11 +225,13 @@ public:
 
 	void resize(size_t nr, size_t nc)
 	{
-		if (nr < 1 || nc < 1) return;
+		// sj 2016.3.16 (int) casting handles AV issue (below) when integer value < 0 and size_t value too large
+		if ((int)nr < 1 || (int)nc < 1) return;
 		if (nr == n_rows && nc == n_cols) return;
 			
 		if (t_array) delete [] t_array;
-		t_array = new T[ nr * nc ];
+		// AV issue when integer value < 0 and size_t value too large
+		t_array = new T[nr * nc];
 		n_rows = nr;
 		n_cols = nc;
 	}
