@@ -1,16 +1,16 @@
 #include <wx/tokenzr.h>
 #include <wx/log.h>
 
+#include <wex/easycurl.h>
 #include <wex/utils.h>
 
 #include "urdb.h"
-#include "simplecurl.h"
 #include "widgets.h"
 #include "main.h"
 
 static wxString MyGet(const wxString &url)
 {
-	wxSimpleCurl curl;
+	wxEasyCurl curl;
 	curl.AddHttpHeader( "Content-type: text/plain" );
 	curl.AddHttpHeader( "Cache-Control: no-cache" );
 	curl.Get( url );

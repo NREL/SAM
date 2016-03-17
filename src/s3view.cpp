@@ -35,10 +35,10 @@
 #include <wex/dview/dvplotctrl.h>
 #include <wex/utils.h>
 #include <wex/jsonreader.h>
+#include <wex/easycurl.h>
 
 //#include <curl/curl.h>
 
-#include "simplecurl.h"
 #include "s3view.h"
 
 

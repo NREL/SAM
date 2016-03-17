@@ -20,9 +20,6 @@
     <ClInclude Include="..\src\main.h">
       <Filter>Source</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\simplecurl.h">
-      <Filter>Source</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\project.h">
       <Filter>Source</Filter>
     </ClInclude>
@@ -149,9 +146,6 @@
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="..\src\main.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\simplecurl.cpp">
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="..\src\project.cpp">
