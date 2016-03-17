@@ -43,7 +43,6 @@ void UICallbackContext::SetupLibraries( lk::env_t *env )
 {
 	env->register_funcs( invoke_uicallback_funcs(), this );
 	env->register_funcs( wxLKPlotFunctions() );
-	env->register_funcs( wxLKHttpFunctions() );
 	env->register_funcs( wxLKMiscFunctions() );	
 }
  

@@ -46,6 +46,7 @@
 #include <wex/utils.h>
 #include <wex/jsonreader.h>
 #include <wex/metro.h>
+#include <wex/easycurl.h>
 
 #include <wex/icons/cirplus_12.cpng>
 #include <wex/icons/cirminus_12.cpng>
@@ -58,7 +59,6 @@
 
 #include "s3tool.h"
 #include "s3view.h"
-#include "simplecurl.h"
 
 #ifndef S3D_STANDALONE
 #include "main.h"
@@ -85,7 +85,7 @@ BEGIN_EVENT_TABLE( LocationSetup, wxPanel )
 	EVT_BUTTON( ID_MANUAL_SCALE, LocationSetup::OnManualScale )
 	EVT_BUTTON( ID_UNDERLAY_MAP, LocationSetup::OnUnderlayMap )
 	EVT_BUTTON( ID_REMOVE_UNDERLAY, LocationSetup::OnRemoveUnderlay )
-	EVT_SIMPLECURL( ID_CURL, LocationSetup::OnCurl )
+	EVT_EASYCURL( ID_CURL, LocationSetup::OnCurl )
 END_EVENT_TABLE()
 
 
@@ -156,7 +156,7 @@ LocationSetup::LocationSetup( wxWindow *parent, ShadeTool *st )
 
 
 
-void LocationSetup::OnCurl( wxSimpleCurlEvent &evt )
+void LocationSetup::OnCurl( wxEasyCurlEvent &evt )
 {
 	// could do a progress thing...?
 }
@@ -170,7 +170,7 @@ void LocationSetup::OnAddressChange( wxCommandEvent &e )
 	wxYield();
 
 	double lat, lon, tz;
-	if ( !wxSimpleCurl::GeoCode( m_address->GetValue(), &lat, &lon, &tz ) )
+	if ( !wxEasyCurl::GeoCode( m_address->GetValue(), &lat, &lon, &tz ) )
 	{
 		wxMessageBox("failed to geocode address");
 		return;
@@ -190,7 +190,7 @@ void LocationSetup::OnGetMap( wxCommandEvent & )
 
 void LocationSetup::DownloadMap(  )
 {
-	m_bitmap = wxSimpleCurl::StaticMap( m_lat->Value(), m_lon->Value(), m_zoomLevel, wxSimpleCurl::BING_MAPS );
+	m_bitmap = wxEasyCurl::StaticMap( m_lat->Value(), m_lon->Value(), m_zoomLevel, wxEasyCurl::BING_MAPS );
 	if (!m_bitmap.IsOk())
 	{
 		wxMessageBox("Invalid image data file");

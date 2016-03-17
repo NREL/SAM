@@ -158,7 +158,6 @@ bool MacroEngine::Run( const wxString &script, lk::vardata_t *args )
 	env.register_funcs( lk::stdlib_wxui() );
 	env.register_funcs( lk::stdlib_basic() );
 	env.register_funcs( wxLKPlotFunctions() );
-	env.register_funcs( wxLKHttpFunctions() );
 	env.register_funcs( wxLKMiscFunctions() );
 	env.register_funcs( invoke_general_funcs() );
 	env.register_funcs( invoke_ssc_funcs() );

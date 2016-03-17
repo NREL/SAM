@@ -12,6 +12,8 @@ Team Revisions
 
 - snow model (SEVERIN)
 
+- linear self shading (JANINE)
+
 Paul Revisions
 --------------
 

@@ -8,9 +8,9 @@
 #include <wx/buffer.h>
 
 //#include <wex/lkscript.h>
+#include <wex/easycurl.h>
 
 #include "object.h"
-#include "simplecurl.h"
 
 class View3D;
 
@@ -59,10 +59,10 @@ private:
 	wxScrolledWindow *m_scrollWin;
 	wxBitmap m_bitmap, m_unannotatedBitmap;
 	wxTextCtrl *m_locationInfo;
-	wxSimpleCurl m_curl;
+	wxEasyCurl m_curl;
 	wxNumericCtrl *m_lat, *m_lon, *m_tz;
 
-	void OnCurl( wxSimpleCurlEvent &evt );
+	void OnCurl( wxEasyCurlEvent &evt );
 	void DoCurlDirect( const wxString &url );	
 	void OnGetMap( wxCommandEvent &evt );
 	void OnMapChange( wxCommandEvent &evt );
