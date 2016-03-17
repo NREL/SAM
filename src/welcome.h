@@ -7,7 +7,7 @@
 #include <wx/html/htmlwin.h>
 #include <wx/hyperlink.h>
 
-#include "simplecurl.h"
+#include <wex/easycurl.h>
 
 
 class MainWindow;
@@ -50,8 +50,8 @@ private:
 		
 	wxTimer m_downloadTimer;
 	
-	wxSimpleCurl m_ssCurlMessage;
-	void OnMessageDownloadThread( wxSimpleCurlEvent & );
+	wxEasyCurl m_ssCurlMessage;
+	void OnMessageDownloadThread( wxEasyCurlEvent & );
 	void UpdateMessagesHtml(const wxString &html);
 	
 	DECLARE_EVENT_TABLE()

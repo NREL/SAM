@@ -13,6 +13,7 @@
 #include <wex/dview/dvplotctrl.h>
 #include <wex/utils.h>
 #include <wex/csv.h>
+#include <wex/easycurl.h>
 
 #ifdef __WXMSW__
 #include <wex/ole/excelauto.h>
@@ -27,7 +28,6 @@
 #include "materials.h"
 #include "results.h"
 #include "windtoolkit.h"
-#include "simplecurl.h"
 #include "urdb.h"
 #include "invoke.h"
 #include "s3tool.h"
@@ -188,7 +188,7 @@ static void fcall_geocode( lk::invoke_t &cxt )
 	LK_DOC( "geocode", "Returns the latitude and longitude of an address using Google's geocoding web API.", "(string:address):table");
 		
 	double lat = 0, lon = 0;
-	bool ok = wxSimpleCurl::GeoCode( cxt.arg(0).as_string(), &lat, &lon );
+	bool ok = wxEasyCurl::GeoCode( cxt.arg(0).as_string(), &lat, &lon );
 	cxt.result().empty_hash();
 	cxt.result().hash_item("lat").assign(lat);
 	cxt.result().hash_item("lon").assign(lon);
@@ -200,13 +200,11 @@ static void fcall_curl( lk::invoke_t &cxt )
 	LK_DOC( "curl", "Issue a synchronous HTTP/HTTPS request.  By default a GET request, but can support POST via parameter 2."
 		"If a third argument is given, the returned data is downloaded to the specified file on disk rather than returned as a string.", 
 		"(string:url, [string:post data], [string:local file], [string: busy message]):string" );
-	wxSimpleCurl curl;
+	wxEasyCurl curl;
 	if( cxt.arg_count() > 1 )
 		curl.SetPostData( cxt.arg(1).as_string() );
 	
 	wxString url(cxt.arg(0).as_string());
-	url.Replace( "<SAMAPIKEY>", wxString(sam_api_key) );
-	url.Replace( "<USEREMAIL>", SamRegistration::GetEmail() );
 
 	wxLogStatus( "curl: " + url );
 
@@ -1593,7 +1591,7 @@ void fcall_windtoolkit(lk::invoke_t &cxt)
 	double lat, lon;
 	if (spd.IsAddressMode() == true)	//entered an address instead of a lat/long
 	{
-		if (!wxSimpleCurl::GeoCode(spd.GetAddress(), &lat, &lon))
+		if (!wxEasyCurl::GeoCode(spd.GetAddress(), &lat, &lon))
 		{
 			wxMessageBox("Failed to geocode address");
 			return;
@@ -1614,7 +1612,7 @@ void fcall_windtoolkit(lk::invoke_t &cxt)
 	url.Replace("<SAMAPIKEY>", wxString(sam_api_key) );
 
 	//Download the weather file
-	wxSimpleCurl curl;
+	wxEasyCurl curl;
 	bool ok = curl.Get(url, "Downloading data from wind toolkit...", SamApp::Window() );	//true won't let it return to code unless it's done downloading
 	// would like to put some code here to tell it not to download and to give an error if hits 404 Not Found
 
@@ -2858,8 +2856,8 @@ lk::fcall_t* invoke_general_funcs()
 		fcall_browse,
 		fcall_wfdownloaddir,
 		fcall_webapi,
-		fcall_geocode,
-		fcall_curl,
+		//fcall_geocode,
+		//fcall_curl,
 		fcall_appdir,
 		fcall_runtimedir,
 		fcall_userlocaldatadir,

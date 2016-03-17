@@ -7,9 +7,9 @@
 #include <wex/metro.h>
 #include <wex/utils.h>
 #include <wex/jsonreader.h>
+#include <wex/easycurl.h>
 
 #include "main.h"
-#include "simplecurl.h"
 #include "registration.h"
 
 //static const char *sam_api_key = 
@@ -1145,7 +1145,7 @@ bool SamRegistration::CheckInWithServer( int *usage_count )
 		return false;
 		
 	wxBusyCursor curs;
-	wxSimpleCurl curl;
+	wxEasyCurl curl;
 	
 	wxString url = SamApp::WebApi("registration") + wxString::Format("/usage?api_key=%s", sam_api_key );
 	wxString post = wxString::Format("sam_key=%s&app_code=desktop&sam_version=%s&count=%d", 
@@ -1362,10 +1362,11 @@ void SamRegistration::OnRegister( wxCommandEvent & )
 	}
 	
 	// save the email address in settings.
-	SamApp::Settings().Write("user-email-" + GetVersionAndPlatform(), email );
+	SamApp::Settings().Write("user-email-" + GetVersionAndPlatform(), email );	
+	wxEasyCurl::SetUrlEscape( "<USEREMAIL>", email );
 
 	wxBusyCursor curs;
-	wxSimpleCurl curl( this, wxID_ANY );
+	wxEasyCurl curl( this, wxID_ANY );
 	int code = -1;
 	wxJSONValue root;
 	wxJSONReader reader;
@@ -1508,7 +1509,7 @@ void SamRegistration::OnProxySetup( wxCommandEvent & )
 	if ( dlg.ShowModal() == wxID_OK )
 	{
 		proxy = text->GetValue();
-		wxSimpleCurl::SetProxyAddress( proxy );
+		wxEasyCurl::SetProxyAddress( proxy );
 		if ( ! SamApp::WriteProxyFile( proxy ) )
 			wxMessageBox("Could not save proxy configuration to SAM installation folder.\n\nPlease ensure that you have write permissions to the SAM installation folder.");
 	}

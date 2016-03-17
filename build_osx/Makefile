@@ -52,7 +52,6 @@ OBJECTS = ide.o \
 	variables.o \
 	project.o \
 	object.o \
-	simplecurl.o \
 	variablegrid.o \
 	parametric.o \
 	welcome.o \

@@ -63,7 +63,7 @@ BEGIN_EVENT_TABLE(WelcomeScreen, wxPanel)
 	
 	EVT_HTML_LINK_CLICKED( ID_MESSAGES_HTML, WelcomeScreen::OnMessagesLinkClicked )
 
-	EVT_SIMPLECURL( ID_MESSAGE_THREAD, WelcomeScreen::OnMessageDownloadThread )
+	EVT_EASYCURL( ID_MESSAGE_THREAD, WelcomeScreen::OnMessageDownloadThread )
 	EVT_TIMER( ID_DOWNLOAD_TIMER, WelcomeScreen::OnDownloadTimeout )
 END_EVENT_TABLE();
 
@@ -142,10 +142,10 @@ void WelcomeScreen::OnMessagesLinkClicked(wxHtmlLinkEvent &e)
 	wxLaunchDefaultBrowser( e.GetLinkInfo().GetHref(), wxBROWSER_NEW_WINDOW );
 }
 
-void WelcomeScreen::OnMessageDownloadThread(wxSimpleCurlEvent &e)
+void WelcomeScreen::OnMessageDownloadThread(wxEasyCurlEvent &e)
 {
 	wxLogStatus("OnMessageDownloadThread: " + e.GetMessage());
-	if (e.GetStatusCode() == wxSimpleCurlEvent::FINISHED)
+	if (e.GetStatusCode() == wxEasyCurlEvent::FINISHED)
 		UpdateMessagesHtml( m_ssCurlMessage.GetDataAsString() );
 }
 

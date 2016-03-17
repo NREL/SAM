@@ -14,6 +14,20 @@ const char *sam_api_key =
 //"yXv3dcb6f5piO0abUMrrTuQvLDFgWvnBz52TJmDJ" // staging (aron.dobos@nrel.gov)
 ;
 
+
+// Google APIs:
+// login to developer api console at: https://code.google.com/apis/console
+// user name: aron.dobos@nrel.gov
+// passwd: 1H*****....******r
+static const char *GOOGLE_API_KEY = "AIzaSyCyH4nHkZ7FhBK5xYg4db3K7WN-vhpDxas";
+
+// Bing Map APIs:
+// login to account center at: https://www.bingmapsportal.com/
+// user name: aron.dobos@nrel.gov
+// passwd: 1H*****....******r
+static const char *BING_API_KEY = "Av0Op8DvYGR2w07w_771JLum7-fdry0kBtu3ZA4uu_9jBJOUZgPY7mdbWhVjiORY";
+
+
 static const char *beta_disclaimer =
 "Notice: Beta versions of SAM are provided as-is and may change without notice."
 	"  Beta software may not work in the same way as a final version, and features and functionality may be changed, enhanced, or removed without notice."
@@ -1693,12 +1707,6 @@ static unordered_map<wxString,ConfigOptions, wxStringHash, wxStringEqual> m_opts
 
 SamApp::SamApp()
 {
-#ifdef __WXMSW__
-	wxMSWSetupExceptionHandler( 
-		wxString("SAM"),
-		SamApp::VersionStr(), 
-		wxString("sam.support@nrel.gov") );
-#endif
 }
 
 class SAMThemeProvider : public wxMetroThemeProvider
@@ -1732,6 +1740,13 @@ public:
 
 bool SamApp::OnInit()
 {
+#ifdef __WXMSW__
+	wxMSWSetupExceptionHandler( 
+		wxString("SAM"),
+		SamApp::VersionStr(), 
+		wxString("sam.support@nrel.gov") );
+#endif
+
 	// apd : On windows, make sure process is DPI aware, regardless
 	// of whether wxWidgets does this.  ref: http://trac.wxwidgets.org/ticket/16116
 	// We don't use built-in icons or AUI, and rather have clean lines and text
@@ -1758,6 +1773,13 @@ bool SamApp::OnInit()
 #ifdef _DEBUG
 	SamLogWindow::Setup();
 #endif
+	
+	wxLogStatus( "startup version %d.%d.%d with SSC version %d, %s", 
+		releases[0].major,
+		releases[0].minor,
+		releases[0].micro,
+		ssc_version(),
+		ssc_build_info() );
 
 	// register all the object types that can
 	// be read or written to streams.
@@ -1781,26 +1803,23 @@ extern void RegisterReportObjectTypes();
 			"Try running " + g_appArgs[0] + " by specifying the full path to the executable.");
 		return false;
 	}
+	
+	g_config = new wxConfig( "SAMnt", "NREL" );
 
 	wxInitAllImageHandlers();
-	wxSimpleCurl::Init();
+
+	wxEasyCurl::Initialize();
+	wxEasyCurl::SetApiKeys( GOOGLE_API_KEY, BING_API_KEY );
+	wxEasyCurl::SetUrlEscape( "<SAMAPIKEY>", wxString(sam_api_key) );
+	wxEasyCurl::SetUrlEscape( "<USEREMAIL>", SamRegistration::GetEmail() );
+
 	wxPLPlot::AddPdfFontDir( GetRuntimePath() + "/pdffonts" );
 	wxPLPlot::SetPdfDefaultFont( "ComputerModernSansSerifRegular", 10.0 );
 		
 	wxString proxy = SamApp::ReadProxyFile();
 	if ( ! proxy.IsEmpty() )
-		wxSimpleCurl::SetProxyAddress( proxy );
+		wxEasyCurl::SetProxyAddress( proxy );
 	
-	
-	g_config = new wxConfig( "SAMnt", "NREL" );
-	
-	
-	wxLogStatus( "startup version %d.%d.%d with SSC version %d, %s", 
-		releases[0].major,
-		releases[0].minor,
-		releases[0].micro,
-		ssc_version(),
-		ssc_build_info() );
 	
 	SplashScreen splash;
 	splash.CenterOnScreen();
@@ -2019,7 +2038,7 @@ int SamApp::OnExit()
 #endif
 	
 
-	wxSimpleCurl::Shutdown();
+	wxEasyCurl::Shutdown();
 	
 	wxLog::SetActiveTarget( 0 );
 	return 0;
@@ -2280,7 +2299,7 @@ public:
 				"The names DOE/NREL/ALLIANCE shall not be used in any representation, advertising, publicity or other manner whatsoever to endorse or promote any entity that adopts or uses the Model.  DOE/NREL/ALLIANCE shall not provide any support, consulting, training or assistance of any kind with regard to the use of the Model or any updates, revisions or new versions of the Model.<br><br>"
 				"YOU AGREE TO INDEMNIFY DOE/NREL/ALLIANCE, AND ITS AFFILIATES, OFFICERS, AGENTS, AND EMPLOYEES AGAINST ANY CLAIM OR DEMAND, INCLUDING REASONABLE ATTORNEYS' FEES, RELATED TO YOUR USE, RELIANCE, OR ADOPTION OF THE MODEL FOR ANY PURPOSE WHATSOEVER.  THE MODEL IS PROVIDED BY DOE/NREL/ALLIANCE \"AS IS\" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE EXPRESSLY DISCLAIMED.  IN NO EVENT SHALL DOE/NREL/ALLIANCE BE LIABLE FOR ANY SPECIAL, INDIRECT OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER, INCLUDING BUT NOT LIMITED TO CLAIMS ASSOCIATED WITH THE LOSS OF DATA OR PROFITS, WHICH MAY RESULT FROM ANY ACTION IN CONTRACT, NEGLIGENCE OR OTHER TORTIOUS CLAIM THAT ARISES OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THE MODEL.<br><br>";
 		
-		wxString proxy( wxSimpleCurl::GetProxyForURL( "https://sam.nrel.gov" ) );
+		wxString proxy( wxEasyCurl::GetProxyForURL( "https://sam.nrel.gov" ) );
 		if ( proxy.IsEmpty() ) proxy = "none";
 		else proxy = "proxy: " + proxy;
 

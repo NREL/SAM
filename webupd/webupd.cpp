@@ -26,8 +26,7 @@
 #include <wex/metro.h>
 #include <wex/md5.h>
 #include <wex/utils.h>
-
-#include "../src/simplecurl.h"
+#include <wex/easycurl.h>
 
 #include "pkgdlg.h"
 
@@ -138,7 +137,7 @@ public:
 			
 			wxString patchArchive = wxFileName::GetTempDir() + "/sam_dl_patch.zip";
 			wxString url =  m_url + "/" + pi->file;
-			wxSimpleCurl dl( this, ID_download );
+			wxEasyCurl dl( this, ID_download );
 			m_text->AppendText("Downloading: " + url + "\n");
 			wxYield();
 			
@@ -199,7 +198,7 @@ public:
 		ev.Veto();
 	}
 		
-	void OnDownloadProgressEvent(wxSimpleCurlEvent &e)
+	void OnDownloadProgressEvent(wxEasyCurlEvent &e)
 	{
 		double n = e.GetBytesTransferred();
 		double len = e.GetBytesTotal();	
@@ -292,7 +291,7 @@ public:
 BEGIN_EVENT_TABLE(UpdateDialog, wxDialog)
 	EVT_CLOSE( UpdateDialog::OnCloseEvent )
 	EVT_BUTTON( wxID_OK, UpdateDialog::OnCommand )
-	EVT_SIMPLECURL( ID_download, UpdateDialog::OnDownloadProgressEvent )
+	EVT_EASYCURL( ID_download, UpdateDialog::OnDownloadProgressEvent )
 END_EVENT_TABLE();
 
 
@@ -302,7 +301,7 @@ class SamUpdateApp : public wxApp
 public:
 	bool OnInit()
 	{
-		wxSimpleCurl::Init();
+		wxEasyCurl::Initialize();
 
 		
 		wxString proxy_file = wxPathOnly(argv[0]) + "/proxy.txt";
@@ -313,12 +312,12 @@ public:
 				char buf[512];
 				fgets(buf, 511, fp);
 				fclose(fp);
-				wxSimpleCurl::SetProxyAddress(wxString::FromAscii(buf).Trim().Trim(false));
+				wxEasyCurl::SetProxyAddress(wxString::FromAscii(buf).Trim().Trim(false));
 			}
 		}
 
 		
-		g_icmStr = wxSimpleCurl::GetProxyForURL( "https://sam.nrel.gov" );
+		g_icmStr = wxEasyCurl::GetProxyForURL( "https://sam.nrel.gov" );
 		if ( !g_icmStr.IsEmpty() )	g_icmStr = "via proxy, url is " + g_icmStr;
 		else g_icmStr = "system default";
 
@@ -389,7 +388,7 @@ public:
 		fclose(fp);	
 		wxRemoveFile( path );
 				
-		wxSimpleCurl dl_notice;
+		wxEasyCurl dl_notice;
 		if ( dl_notice.Get( url + "/newversion_" + wxString(g_platStr) + ".txt" ) )
 		{
 			wxString text( dl_notice.GetDataAsString() );
@@ -410,7 +409,7 @@ public:
 
 		wxString patch_info_file( url + "/patch_" + wxString(g_platStr) + ".txt" );
 		// download current patch information for this platform
-		wxSimpleCurl dl;
+		wxEasyCurl dl;
 		if ( !dl.Get( patch_info_file ) )
 		{
 			if (!quiet) 
@@ -586,7 +585,7 @@ public:
 			if (!quiet) wxMessageBox("SAM " + g_samVerIdStr + " is up to date.","SAM Web Update");
 		}
 		
-		wxSimpleCurl::Shutdown();
+		wxEasyCurl::Shutdown();
 		
 		return false;
 	}
