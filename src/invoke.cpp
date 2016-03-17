@@ -183,51 +183,6 @@ static void fcall_webapi( lk::invoke_t &cxt )
 	cxt.result().assign( SamApp::WebApi( cxt.arg_count() > 0 ? cxt.arg(0).as_string() : wxEmptyString ) );
 }
 
-static void fcall_geocode( lk::invoke_t &cxt )
-{
-	LK_DOC( "geocode", "Returns the latitude and longitude of an address using Google's geocoding web API.", "(string:address):table");
-		
-	double lat = 0, lon = 0;
-	bool ok = wxEasyCurl::GeoCode( cxt.arg(0).as_string(), &lat, &lon );
-	cxt.result().empty_hash();
-	cxt.result().hash_item("lat").assign(lat);
-	cxt.result().hash_item("lon").assign(lon);
-	cxt.result().hash_item("ok").assign( ok ? 1.0 : 0.0 );
-}
-
-static void fcall_curl( lk::invoke_t &cxt )
-{
-	LK_DOC( "curl", "Issue a synchronous HTTP/HTTPS request.  By default a GET request, but can support POST via parameter 2."
-		"If a third argument is given, the returned data is downloaded to the specified file on disk rather than returned as a string.", 
-		"(string:url, [string:post data], [string:local file], [string: busy message]):string" );
-	wxEasyCurl curl;
-	if( cxt.arg_count() > 1 )
-		curl.SetPostData( cxt.arg(1).as_string() );
-	
-	wxString url(cxt.arg(0).as_string());
-
-	wxLogStatus( "curl: " + url );
-
-	wxString msg;
-	if ( cxt.arg_count() > 3 )
-		msg = cxt.arg(3).as_string();
-
-	if ( !curl.Get( url, msg ) )
-	{
-		cxt.result().assign( 0.0 );
-		return;
-	}
-
-	wxString file;
-	if ( cxt.arg_count() > 2 ) file = cxt.arg(2).as_string();
-
-	if ( !file.IsEmpty() )
-		cxt.result().assign( curl.WriteDataToFile( cxt.arg(2).as_string() ) ? 1.0 : 0.0 );
-	else
-		cxt.result().assign( curl.GetDataAsString() );
-}
-
-
 static void fcall_appdir( lk::invoke_t &cxt )
 {
 	LK_DOC("appdir", "Return the application folder.", "(none):string");
