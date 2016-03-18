@@ -174,7 +174,8 @@ void ShadingInputData::write( VarValue *vv )
 {
 	vv->SetType( VV_TABLE );
 	VarTable &tab = vv->Table();
-	tab.Set("en_string_option", VarValue(true)); // to enable optional values
+//	tab.Set("en_string_option", VarValue(true)); // to enable optional values
+	if (!en_timestep) string_option = -1;
 	tab.Set("string_option", VarValue((int)string_option));
 	tab.Set("en_timestep", VarValue((bool)en_timestep));
 	tab.Set("timestep", VarValue(timestep));
