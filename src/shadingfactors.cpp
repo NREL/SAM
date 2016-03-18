@@ -62,7 +62,7 @@ void ShadingInputData::save( std::vector<float> &data )
 		for (size_t c = 0; c < timestep.ncols(); c++)
 			data.push_back(timestep.at(r, c));
 
-	data.push_back(((string_option >= 0) && (timestep.nrows() % 8760 == 0)) ? string_option : -1);
+	data.push_back(((string_option >= 0) && (timestep.nrows() % 8760 == 0) && en_timestep) ? string_option : -1);
 
 	data.push_back( data.size() + 1 ); // verification flag that size is consistent
 }
