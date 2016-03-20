@@ -174,7 +174,7 @@ void ShadingInputData::write( VarValue *vv )
 {
 	vv->SetType( VV_TABLE );
 	VarTable &tab = vv->Table();
-//	tab.Set("en_string_option", VarValue(true)); // to enable optional values
+	tab.Set("en_string_option", VarValue(true)); // to enable optional values
 	if (!en_timestep) string_option = -1;
 	tab.Set("string_option", VarValue((int)string_option));
 	tab.Set("en_timestep", VarValue((bool)en_timestep));
@@ -1536,6 +1536,8 @@ void wxShadingFactorsCtrl::SetStringOption(int &string_option)
 {
 	if (string_option >= 0 && string_option < (int)m_string_arystrvals.Count())
 		m_choice_string_option->SetSelection(string_option);
+	else
+		m_choice_string_option->SetSelection(0); // default
 }
 
 int wxShadingFactorsCtrl::GetStringOption()
