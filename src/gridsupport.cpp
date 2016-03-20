@@ -338,6 +338,8 @@ bool GridCellVarValueEditor::DisplayEditor(wxUIObject *obj, wxString &name, wxGr
 	}
 	else if (type == "ShadingFactors")
 	{
+		if (vi && vi->Group.Lower()=="shading and snow") // PV
+			obj->Property("ShowDBOptions").Set(true);
 		obj->CreateNative(grid);
 		ActiveInputPage::DataExchange(obj, *vv, ActiveInputPage::VAR_TO_OBJ);
 		ShadingButtonCtrl *sf = obj->GetNative<ShadingButtonCtrl>();
