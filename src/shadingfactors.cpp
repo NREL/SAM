@@ -280,6 +280,9 @@ public:
 		m_azal = new AFDataMatrixCtrl( m_scrollWin, wxID_ANY );
 		m_azal->SetInitialSize( wxScaleSize(900,280) );
 		m_azal->ShowRowLabels( false );
+		m_azal->PasteAppendCols(true);
+		m_azal->PasteAppendRows(true);
+		m_azal->ShadeR0C0(true);
 
 		matrix_t<float> data(10, 18, 0);
 		for ( int c=0;c<18;c++ )

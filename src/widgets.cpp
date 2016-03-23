@@ -2069,6 +2069,7 @@ const int &choice_col)
 : wxPanel(parent, id, pos, sz)
 {
 	m_pasteappendrows = false;
+	m_pasteappendcols = false;
 	m_colLabels = collabels;
 	m_rowLabels = rowlabels;
 	m_showColLabels = false;
@@ -2229,6 +2230,15 @@ bool AFDataMatrixCtrl::PasteAppendRows()
 void AFDataMatrixCtrl::PasteAppendRows(bool b)
 {
 	m_pasteappendrows = b;
+}
+
+bool AFDataMatrixCtrl::PasteAppendCols()
+{
+	return m_pasteappendcols;
+}
+void AFDataMatrixCtrl::PasteAppendCols(bool b)
+{
+	m_pasteappendcols = b;
 }
 
 
@@ -2430,7 +2440,7 @@ void AFDataMatrixCtrl::OnCommand(wxCommandEvent &evt)
 		break;
 	case IDEDMC_PASTE:
 	{
-		if (m_pasteappendrows)
+		if (m_pasteappendrows || m_pasteappendcols)
 		{
 			if (wxTheClipboard->Open())
 			{
@@ -2449,7 +2459,14 @@ void AFDataMatrixCtrl::OnCommand(wxCommandEvent &evt)
 				wxArrayString lines = wxStringTokenize(data, "\n", ::wxTOKEN_RET_EMPTY_ALL);
 #endif
 				int ncols = m_grid->GetNumberCols();
-				int nrows = lines.Count() - 1;
+				int nrows = m_grid->GetNumberRows();
+				if (m_pasteappendrows && lines.Count()>1)
+					nrows = lines.Count() - 1;
+				if (m_pasteappendcols && lines.Count() > 1)
+				{
+					wxArrayString col_vals = wxStringTokenize(lines[0], "\t,", ::wxTOKEN_RET_EMPTY_ALL);
+					ncols = col_vals.Count() - 1;
+				}
 				m_grid->ResizeGrid(nrows, ncols);
 				m_data.resize_preserve(nrows, ncols, 0.0);
 			}
@@ -2494,13 +2511,15 @@ void AFDataMatrixCtrl::MatrixToGrid()
 	int r, nr = m_data.nrows();
 	int c, nc = m_data.ncols();
 
+	m_grid->Freeze();
 	m_grid->SetTable(m_gridTable);
 
 	m_numRows->SetValue(nr);
 	m_numCols->SetValue(nc);
 
+	
+	//m_grid->ResizeGrid(nr, nc);
 	/*
-	m_grid->ResizeGrid(nr, nc);
 	for (r = 0; r<nr; r++)
 		for (c = 0; c<nc; c++)
 			m_grid->SetCellValue(r, c, wxString::Format("%g", m_data.at(r, c)));
@@ -2557,6 +2576,8 @@ void AFDataMatrixCtrl::MatrixToGrid()
 	m_labelRows->SetLabel(m_numRowsLabel);
 	m_labelCols->SetLabel(m_numColsLabel);
 	Layout();
+	m_grid->Thaw();
+	m_grid->Refresh();
 
 }
 
