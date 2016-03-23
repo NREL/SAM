@@ -62,7 +62,7 @@ void ShadingInputData::save( std::vector<float> &data )
 		for (size_t c = 0; c < timestep.ncols(); c++)
 			data.push_back(timestep.at(r, c));
 
-	data.push_back(((string_option >= 0) && (timestep.nrows() % 8760 == 0)) ? string_option : -1);
+	data.push_back(((string_option >= 0) && (timestep.nrows() % 8760 == 0) && en_timestep) ? string_option : -1);
 
 	data.push_back( data.size() + 1 ); // verification flag that size is consistent
 }
@@ -175,6 +175,7 @@ void ShadingInputData::write( VarValue *vv )
 	vv->SetType( VV_TABLE );
 	VarTable &tab = vv->Table();
 	tab.Set("en_string_option", VarValue(true)); // to enable optional values
+	if (!en_timestep) string_option = -1;
 	tab.Set("string_option", VarValue((int)string_option));
 	tab.Set("en_timestep", VarValue((bool)en_timestep));
 	tab.Set("timestep", VarValue(timestep));
@@ -279,6 +280,9 @@ public:
 		m_azal = new AFDataMatrixCtrl( m_scrollWin, wxID_ANY );
 		m_azal->SetInitialSize( wxScaleSize(900,280) );
 		m_azal->ShowRowLabels( false );
+		m_azal->PasteAppendCols(true);
+		m_azal->PasteAppendRows(true);
+		m_azal->ShadeR0C0(true);
 
 		matrix_t<float> data(10, 18, 0);
 		for ( int c=0;c<18;c++ )
@@ -1535,6 +1539,8 @@ void wxShadingFactorsCtrl::SetStringOption(int &string_option)
 {
 	if (string_option >= 0 && string_option < (int)m_string_arystrvals.Count())
 		m_choice_string_option->SetSelection(string_option);
+	else
+		m_choice_string_option->SetSelection(0); // default
 }
 
 int wxShadingFactorsCtrl::GetStringOption()
