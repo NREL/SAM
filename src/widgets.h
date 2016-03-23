@@ -343,6 +343,9 @@ public:
 	void PasteAppendRows(bool b);
 	bool PasteAppendRows();
 
+	void PasteAppendCols(bool b);
+	bool PasteAppendCols();
+
 	void SetChoices(const wxString &choices);
 	wxString GetChoices();
 
@@ -377,6 +380,7 @@ private:
 	wxString m_numRowsLabel;
 	wxString m_numColsLabel;
 	bool m_pasteappendrows;
+	bool m_pasteappendcols;
 
 	void NormalizeToLimits();
 
