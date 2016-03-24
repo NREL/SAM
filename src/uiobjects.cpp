@@ -437,6 +437,7 @@ class wxUIDataMatrixObject : public wxUIObject
 public:
 	wxUIDataMatrixObject() {
 		AddProperty("PasteAppendRows", new wxUIProperty(false));
+		AddProperty("PasteAppendCols", new wxUIProperty(false));
 		AddProperty("ShowRows", new wxUIProperty(true));
 		AddProperty("ShowRowLabels", new wxUIProperty(false));
 		AddProperty("RowLabels", new wxUIProperty(wxString("")));
@@ -460,6 +461,7 @@ public:
 	virtual wxWindow *CreateNative(wxWindow *parent) {
 		AFDataMatrixCtrl *dm = new AFDataMatrixCtrl(parent, wxID_ANY, wxDefaultPosition, wxDefaultSize, Property("Layout").GetInteger() == 1, Property("ColLabels").GetString(), Property("RowLabels").GetString(), Property("Choices").GetString(), Property("ChoiceColumn").GetInteger());
 		dm->PasteAppendRows(Property("PasteAppendRows").GetBoolean());
+		dm->PasteAppendCols(Property("PasteAppendCols").GetBoolean());
 		dm->ShowRows(Property("ShowRows").GetBoolean());
 		dm->ShowRowLabels(Property("ShowRowLabels").GetBoolean());
 		dm->SetRowLabels(Property("RowLabels").GetString());
@@ -477,6 +479,7 @@ public:
 		if (AFDataMatrixCtrl *dm = GetNative<AFDataMatrixCtrl>())
 		{
 			if (id == "PasteAppendRows") dm->PasteAppendRows(p->GetBoolean());
+			if (id == "PasteAppendCols") dm->PasteAppendCols(p->GetBoolean());
 			if (id == "ShadeR0C0") dm->ShadeR0C0(p->GetBoolean());
 			if (id == "ShadeC0") dm->ShadeC0(p->GetBoolean());
 			if (id == "ShowCols") dm->ShowCols(p->GetBoolean());
