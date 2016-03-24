@@ -2465,7 +2465,7 @@ void AFDataMatrixCtrl::OnCommand(wxCommandEvent &evt)
 				if (m_pasteappendcols && lines.Count() > 1)
 				{
 					wxArrayString col_vals = wxStringTokenize(lines[0], "\t,", ::wxTOKEN_RET_EMPTY_ALL);
-					ncols = col_vals.Count() - 1;
+					ncols = col_vals.Count();
 				}
 				m_grid->ResizeGrid(nrows, ncols);
 				m_data.resize_preserve(nrows, ncols, 0.0);
