@@ -210,8 +210,8 @@ bool ShadingInputData::read( VarValue *root )
 }
 
 
-static const char *hourly_text = "Enter beam shading loss values for each of the simulation time steps in a single year. ";
-static const char *mxh_text = "Enter 288 (24 hours x 12 month) beam shading loss values that apply to the 24 hours of the day for each month of the year. Select a cell or group of cells and type a number between 0% and 100% to assign values to the table by hand. Click Import to import a table of values from a properly formatted text file. ";
+static const char *hourly_text = "Enter a beam shading loss percentage for each of the simulation time steps in a single year. If you have separate shading data for each of up to 8 strings in this subarray, choose a number of strings to create a table column for each string, and then choose a method for determining the subarray losses from the string losses.";
+static const char *mxh_text = "Enter 288 (24 hours x 12 month) beam shading loss percentages that apply to the 24 hours of the day for each month of the year. Select a cell or group of cells and type a number between 0% and 100% to assign values to the table by hand. Click Import to import a table of values from a properly formatted text file. ";
 static const char *azal_text = "Use the Azimuth by Altitude option if you have a set of beam shading losses for different sun positions.\n"
   "1. Define the size of the table by entering values for the number of rows and columns.\n"
   "2. Enter solar azimuth values (0 to 360 degrees) in the first row of the table, where 0 = north, 90 = east, 180 = south, 270 = west.\n"
@@ -252,7 +252,7 @@ class ShadingDialog : public wxDialog
 public:
 	ShadingDialog( wxWindow *parent, const wxString &descText, bool show_db_options = false )
 		: wxDialog( parent, wxID_ANY, 
-			wxString("Edit shading data") + wxString( (!descText.IsEmpty() ? ": " : "") ) + descText, 
+			wxString("Edit Shading Data") + wxString( (!descText.IsEmpty() ? " for " : "") ) + descText, 
 			wxDefaultPosition, wxScaleSize(950,600), 
 			wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER)
 	{
@@ -263,11 +263,11 @@ public:
 		m_scrollWin = new wxScrolledWindow( this, wxID_ANY );
 		m_scrollWin->SetScrollRate( 50, 50 );
 
-		m_enableTimestep = new wxCheckBox( m_scrollWin, ID_ENABLE_HOURLY, "Enable time step beam irradiance shading losses" );
+		m_enableTimestep = new wxCheckBox( m_scrollWin, ID_ENABLE_HOURLY, "Enable beam irradiance shading losses by time step" );
 		m_timestep = new wxShadingFactorsCtrl(m_scrollWin, wxID_ANY, wxDefaultPosition, wxDefaultSize, m_show_db_options);
 		m_timestep->SetInitialSize(wxScaleSize(900, 300));
-		m_timestep->SetMinuteCaption("Time step in minutes:");
-		m_timestep->SetColCaption(wxString("Number of parallel strings:") + wxString((!descText.IsEmpty() ? " for " : "")) + descText);
+		m_timestep->SetMinuteCaption("Time step in minutes");
+		m_timestep->SetColCaption(wxString("Strings") + wxString((!descText.IsEmpty() ? " in " : "")) + descText);
 		int num_cols = 8;
 		matrix_t<float> ts_data(8760, num_cols, 0);
 		m_timestep->SetData(ts_data);
@@ -1152,10 +1152,10 @@ wxShadingFactorsCtrl::wxShadingFactorsCtrl(wxWindow *parent, int id,
 	m_grid->SetRowLabelAlignment(wxALIGN_LEFT, wxALIGN_CENTER);
 
 
-	m_string_arystrvals.push_back("Shading database");
-	m_string_arystrvals.push_back("Average of string values");
-	m_string_arystrvals.push_back("Maximum of string values");
-	m_string_arystrvals.push_back("Minimum of string values");
+	m_string_arystrvals.push_back("Database lookup");
+	m_string_arystrvals.push_back("Average of strings");
+	m_string_arystrvals.push_back("Maximum of strings");
+	m_string_arystrvals.push_back("Minimum of strings");
 	m_choice_string_option = new wxChoice(this, ISFC_CHOICESTRING, wxDefaultPosition, wxDefaultSize, m_string_arystrvals);
 	m_choice_string_option->SetBackgroundColour(*wxWHITE);
 
@@ -1216,6 +1216,7 @@ wxShadingFactorsCtrl::wxShadingFactorsCtrl(wxWindow *parent, int id,
 			v_tb_sizer->AddSpacer(5);
 			v_tb_sizer->Add(m_choice_string_option, 0, wxALL | wxEXPAND, 3);
 		}
+
 		v_tb_sizer->AddSpacer(5);
 		v_tb_sizer->Add(m_btn_copy, 0, wxALL | wxEXPAND, 3);
 		v_tb_sizer->Add(m_btn_paste, 0, wxALL | wxEXPAND, 3);
