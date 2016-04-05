@@ -210,14 +210,15 @@ bool ShadingInputData::read( VarValue *root )
 }
 
 
-static const char *hourly_text = "Enter a beam shading loss percentage for each of the simulation time steps in a single year. If you have separate shading data for each of up to 8 strings in this subarray, choose a number of strings to create a table column for each string, and then choose a method for determining the subarray losses from the string losses.";
-static const char *mxh_text = "Enter 288 (24 hours x 12 month) beam shading loss percentages that apply to the 24 hours of the day for each month of the year. Select a cell or group of cells and type a number between 0% and 100% to assign values to the table by hand. Click Import to import a table of values from a properly formatted text file. ";
-static const char *azal_text = "Use the Azimuth by Altitude option if you have a set of beam shading losses for different sun positions.\n"
+static const char *hourly_text_basic = "Enter a beam shading loss percentage for each of the simulation time steps in a single year. No shading is 0%, and full shading is 100%. Choose a time step in minutes equivalent to the weather file time step.\n\nNote that the 3D Shade Calculator automatically populates this beam shading table.";
+static const char *hourly_text_strings = "Enter a beam shading loss percentage for each of the simulation time steps in a single year. No shading is 0%, and full shading is 100%. Choose a time step in minutes equivalent to the weather file time step. If you have separate shading data for each of up to 8 strings in this subarray, choose a number of strings to create a table column for each string, and then choose a method for determining the subarray losses from the string losses.\n\nNote that the 3D Shade Calculator automatically populates this beam shading table.";
+static const char *mxh_text = "Enter 288 (24 hours x 12 month) beam shading loss percentages that apply to the 24 hours of the day for each month of the year. No shading is 0%, and full shading is 100%. Select a cell or group of cells and type a number to assign values to the table by hand. Click Import to import a table of values from a properly formatted text file. Click Export to export the data to a text file, or to create a template file for importing.";
+static const char *azal_text = "Use the Azimuth by Altitude option if you have a set of beam shading losses for different sun positions.\n\n"
   "1. Define the size of the table by entering values for the number of rows and columns.\n"
   "2. Enter solar azimuth values (0 to 360 degrees) in the first row of the table, where 0 = north, 90 = east, 180 = south, 270 = west.\n"
   "3. Enter solar altitude values (0 to 90 degrees) in the first column of the table, where zero is on the horizon.\n"
-  "4. Enter shading losses as the shaded percentage of the beam component of the incident radiation in the remaining table cells.\n"
-  "Click Paste to populate the table from your computer\'s clipboard, or click Import to import a table of values from a properly formatted text file.  ";
+  "4. Enter shading losses as the shaded percentage of the beam component of the incident radiation in the remaining table cells. No shading is 0%, and full shading is 100%.\n\n"
+  "Click Paste to populate the table from your computer\'s clipboard, or click Import to import a table of values from a properly formatted text file.  Click Export to export the data to a text file, or to create a template file for importing.";
 static const char *diff_text = "The constant sky diffuse shading loss reduces the diffuse irradiance for each time step in the year. Valid values are between 0% and 100%.";
 
 enum { ID_ENABLE_HOURLY = ::wxID_HIGHEST+999,
@@ -266,9 +267,9 @@ public:
 		m_enableTimestep = new wxCheckBox( m_scrollWin, ID_ENABLE_HOURLY, "Enable beam irradiance shading losses by time step" );
 		m_timestep = new wxShadingFactorsCtrl(m_scrollWin, wxID_ANY, wxDefaultPosition, wxDefaultSize, m_show_db_options);
 		m_timestep->SetInitialSize(wxScaleSize(900, 300));
-		m_timestep->SetMinuteCaption("Time step in minutes");
-		m_timestep->SetColCaption(wxString("Strings") + wxString((!descText.IsEmpty() ? " in " : "")) + descText);
-		m_timestep->SetStringCaption(wxString("Paul's caption"));
+		m_timestep->SetMinuteCaption("Time step in minutes:");
+		m_timestep->SetColCaption(wxString("Strings") + wxString((!descText.IsEmpty() ? " in " : "")) + descText + wxString((!descText.IsEmpty() ? ":" : "")));
+		m_timestep->SetStringCaption(wxString("Method for converting string losses to subarray:"));
 
 		int num_cols = 8;
 		matrix_t<float> ts_data(8760, num_cols, 0);
@@ -284,8 +285,8 @@ public:
 		m_azal = new AFDataMatrixCtrl(m_scrollWin, wxID_ANY, wxDefaultPosition, wxDefaultSize, false, wxEmptyString, wxEmptyString, wxEmptyString, -1, true);
 		m_azal->SetInitialSize( wxScaleSize(900,280) );
 		//m_azal->ShowRowLabels( false );
-		m_azal->SetNumRowsLabel("Paul's row:");
-		m_azal->SetNumColsLabel("Paul's col:");
+		m_azal->SetNumRowsLabel("Number of altitude values (rows):");
+		m_azal->SetNumColsLabel("Number of azimuth values (columns):");
 		m_azal->PasteAppendCols(true);
 		m_azal->PasteAppendRows(true);
 		m_azal->ShadeR0C0(true);
@@ -314,7 +315,7 @@ public:
 		scroll->Add( new wxStaticLine( m_scrollWin ), 0, wxALL|wxEXPAND );
 
 		scroll->Add( m_enableTimestep, 0, wxALL|wxEXPAND, 5 );
-		scroll->Add( m_textTimestep = new wxStaticText( m_scrollWin, wxID_ANY, hourly_text ), 0, wxALL|wxEXPAND, 10 );
+		scroll->Add( m_textTimestep = new wxStaticText( m_scrollWin, wxID_ANY, !descText.IsEmpty() ? hourly_text_strings : hourly_text_basic ), 0, wxALL|wxEXPAND, 10 );
 		scroll->Add( m_timestep, 0, wxALL, 5 );
 		m_textTimestep->Wrap(wrap_width);
 		m_textTimestep->SetForegroundColour(text_color);
