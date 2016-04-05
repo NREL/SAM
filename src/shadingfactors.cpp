@@ -268,6 +268,8 @@ public:
 		m_timestep->SetInitialSize(wxScaleSize(900, 300));
 		m_timestep->SetMinuteCaption("Time step in minutes");
 		m_timestep->SetColCaption(wxString("Strings") + wxString((!descText.IsEmpty() ? " in " : "")) + descText);
+		m_timestep->SetStringCaption(wxString("Paul's caption"));
+
 		int num_cols = 8;
 		matrix_t<float> ts_data(8760, num_cols, 0);
 		m_timestep->SetData(ts_data);
@@ -277,9 +279,13 @@ public:
 		m_mxh->SetInitialSize( wxScaleSize(900,330) );
 
 		m_enableAzal = new wxCheckBox( m_scrollWin, ID_ENABLE_AZAL, "Enable solar azimuth-by-altitude beam irradiance shading losses" );
-		m_azal = new AFDataMatrixCtrl( m_scrollWin, wxID_ANY );
+		//m_azal = new AFDataMatrixCtrl(m_scrollWin, wxID_ANY);
+		// bottom buttons for import/export and added row and column labels
+		m_azal = new AFDataMatrixCtrl(m_scrollWin, wxID_ANY, wxDefaultPosition, wxDefaultSize, false, wxEmptyString, wxEmptyString, wxEmptyString, -1, true);
 		m_azal->SetInitialSize( wxScaleSize(900,280) );
-		m_azal->ShowRowLabels( false );
+		//m_azal->ShowRowLabels( false );
+		m_azal->SetNumRowsLabel("Paul's row:");
+		m_azal->SetNumColsLabel("Paul's col:");
 		m_azal->PasteAppendCols(true);
 		m_azal->PasteAppendRows(true);
 		m_azal->ShadeR0C0(true);
@@ -1163,6 +1169,9 @@ wxShadingFactorsCtrl::wxShadingFactorsCtrl(wxWindow *parent, int id,
 	m_caption_col = new wxStaticText(this, wxID_ANY, "");
 	m_caption_col->SetFont(*wxNORMAL_FONT);
 
+	m_caption_string = new wxStaticText(this, wxID_ANY, "");
+	m_caption_string->SetFont(*wxNORMAL_FONT);
+
 	m_col_arystrvals.push_back("1");
 	m_col_arystrvals.push_back("2");
 	m_col_arystrvals.push_back("3");
@@ -1198,6 +1207,7 @@ wxShadingFactorsCtrl::wxShadingFactorsCtrl(wxWindow *parent, int id,
 	{
 		m_caption_col->Show(false);
 		m_choice_col->Show(false);
+		m_caption_string->Show(false);
 		m_choice_string_option->Show(false);
 	}
 
@@ -1214,6 +1224,7 @@ wxShadingFactorsCtrl::wxShadingFactorsCtrl(wxWindow *parent, int id,
 			v_tb_sizer->Add(m_caption_col, 0, wxALL | wxEXPAND, 3);
 			v_tb_sizer->Add(m_choice_col, 0, wxALL | wxEXPAND, 3);
 			v_tb_sizer->AddSpacer(5);
+			v_tb_sizer->Add(m_caption_string, 0, wxALL | wxEXPAND, 3);
 			v_tb_sizer->Add(m_choice_string_option, 0, wxALL | wxEXPAND, 3);
 		}
 
@@ -1242,19 +1253,31 @@ wxShadingFactorsCtrl::wxShadingFactorsCtrl(wxWindow *parent, int id,
 			h_tb_sizer->Add(m_caption_col, 0, wxALL | wxALIGN_CENTER_VERTICAL, 3);
 			h_tb_sizer->Add(m_choice_col, 0, wxALL | wxALIGN_CENTER_VERTICAL, 3);
 			h_tb_sizer->AddSpacer(5);
+			h_tb_sizer->Add(m_caption_string, 0, wxALL | wxALIGN_CENTER_VERTICAL, 3);
 			h_tb_sizer->Add(m_choice_string_option, 0, wxALL | wxALIGN_CENTER_VERTICAL, 3);
 		}
+		/*
 		h_tb_sizer->AddSpacer(5);
 		h_tb_sizer->Add(m_btn_copy, 0,   wxALL, 3);
 		h_tb_sizer->Add(m_btn_paste, 0,  wxALL, 3);
 		h_tb_sizer->Add(m_btn_import, 0, wxALL, 3);
 		h_tb_sizer->Add(m_btn_export, 0, wxALL, 3);
-
+		*/
 		h_tb_sizer->AddStretchSpacer();
 
 		wxBoxSizer *v_sizer = new wxBoxSizer(wxVERTICAL);
 		v_sizer->Add(h_tb_sizer, 0, wxALL | wxEXPAND, 1);
 		v_sizer->Add(m_grid, 1, wxALL | wxEXPAND, 1);
+
+		// bottom buttons per Paul 4/4/16
+		wxBoxSizer *h_bb_sizer = new wxBoxSizer(wxHORIZONTAL);
+		h_bb_sizer->Add(m_btn_import, 0, wxALL, 3);
+		h_bb_sizer->Add(m_btn_export, 0, wxALL, 3);
+		h_bb_sizer->Add(new wxStaticLine(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxVERTICAL), 0, wxALL | wxEXPAND, 1);
+		h_bb_sizer->Add(m_btn_copy, 0, wxALL, 3);
+		h_bb_sizer->Add(m_btn_paste, 0, wxALL, 3);
+		h_bb_sizer->AddStretchSpacer();
+		v_sizer->Add(h_bb_sizer, 0, wxALL | wxEXPAND, 1);
 
 		SetSizer(v_sizer, false);
 	}
@@ -1506,6 +1529,17 @@ void wxShadingFactorsCtrl::SetColCaption(const wxString &cap)
 wxString wxShadingFactorsCtrl::GetColCaption()
 {
 	return m_caption_col->GetLabel();
+}
+
+void wxShadingFactorsCtrl::SetStringCaption(const wxString &cap)
+{
+	m_caption_string->SetLabel(cap);
+	this->Layout();
+}
+
+wxString wxShadingFactorsCtrl::GetStringCaption()
+{
+	return m_caption_string->GetLabel();
 }
 
 
