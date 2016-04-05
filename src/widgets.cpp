@@ -2065,7 +2065,8 @@ bool sidebuttons,
 const wxString &collabels,
 const wxString &rowlabels,
 const wxString &choices,
-const int &choice_col)
+const int &choice_col,
+bool bottombuttons)
 : wxPanel(parent, id, pos, sz)
 {
 	m_pasteappendrows = false;
@@ -2130,9 +2131,9 @@ const int &choice_col)
 		v_tb_sizer->Add(m_btnExport, 0, wxALL | wxEXPAND, 2);
 		v_tb_sizer->Add(m_btnCopy, 0, wxALL | wxEXPAND, 2);
 		v_tb_sizer->Add(m_btnPaste, 0, wxALL | wxEXPAND, 2);
-		v_tb_sizer->Add(m_labelRows, 0, wxALL | wxEXPAND, 2);
+		v_tb_sizer->Add(m_labelRows, 0, wxALL | wxALIGN_CENTER_VERTICAL, 2);
 		v_tb_sizer->Add(m_numRows, 0, wxALL | wxEXPAND, 2);
-		v_tb_sizer->Add(m_labelCols, 0, wxALL | wxEXPAND, 2);
+		v_tb_sizer->Add(m_labelCols, 0, wxALL | wxALIGN_CENTER_VERTICAL, 2);
 		v_tb_sizer->Add(m_numCols, 0, wxALL | wxEXPAND, 2);
 		v_tb_sizer->AddStretchSpacer();
 
@@ -2148,20 +2149,34 @@ const int &choice_col)
 		wxBoxSizer *h_tb_sizer = new wxBoxSizer(wxHORIZONTAL);
 		h_tb_sizer->Add(m_caption, 0, wxALL | wxEXPAND | wxALIGN_CENTER_VERTICAL, 3);
 		h_tb_sizer->AddStretchSpacer();
-		h_tb_sizer->Add(m_btnImport, 0, wxALL | wxEXPAND, 2);
-		h_tb_sizer->Add(m_btnExport, 0, wxALL | wxEXPAND, 2);
-		h_tb_sizer->Add(new wxStaticLine(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxVERTICAL), 0, wxALL | wxEXPAND, 1);
-		h_tb_sizer->Add(m_btnCopy, 0, wxALL | wxEXPAND, 2);
-		h_tb_sizer->Add(m_btnPaste, 0, wxALL | wxEXPAND, 2);
-		h_tb_sizer->Add(new wxStaticLine(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxVERTICAL), 0, wxALL | wxEXPAND, 1);
-		h_tb_sizer->Add(m_labelRows, 0, wxALL | wxEXPAND | wxALIGN_CENTER_VERTICAL, 2);
+		if (!bottombuttons)
+		{
+			h_tb_sizer->Add(m_btnImport, 0, wxALL | wxEXPAND, 2);
+			h_tb_sizer->Add(m_btnExport, 0, wxALL | wxEXPAND, 2);
+			h_tb_sizer->Add(new wxStaticLine(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxVERTICAL), 0, wxALL | wxEXPAND, 1);
+			h_tb_sizer->Add(m_btnCopy, 0, wxALL | wxEXPAND, 2);
+			h_tb_sizer->Add(m_btnPaste, 0, wxALL | wxEXPAND, 2);
+			h_tb_sizer->Add(new wxStaticLine(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxVERTICAL), 0, wxALL | wxEXPAND, 1);
+		}
+		h_tb_sizer->Add(m_labelRows, 0, wxALL | wxALIGN_CENTER_VERTICAL, 2);
 		h_tb_sizer->Add(m_numRows, 0, wxALL | wxEXPAND, 2);
-		h_tb_sizer->Add(m_labelCols, 0, wxALL | wxEXPAND | wxALIGN_CENTER_VERTICAL, 2);
+		h_tb_sizer->Add(m_labelCols, 0, wxALL | wxALIGN_CENTER_VERTICAL, 2);
 		h_tb_sizer->Add(m_numCols, 0, wxALL | wxEXPAND, 2);
 
 		wxBoxSizer *v_sizer = new wxBoxSizer(wxVERTICAL);
 		v_sizer->Add(h_tb_sizer, 0, wxALL | wxEXPAND, 1);
 		v_sizer->Add(m_grid, 1, wxALL | wxEXPAND, 1);
+
+		wxBoxSizer *h_bb_sizer = new wxBoxSizer(wxHORIZONTAL);
+		if (bottombuttons)
+		{
+			h_bb_sizer->Add(m_btnImport, 0, wxALL | wxEXPAND, 2);
+			h_bb_sizer->Add(m_btnExport, 0, wxALL | wxEXPAND, 2);
+			h_bb_sizer->Add(new wxStaticLine(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxVERTICAL), 0, wxALL | wxEXPAND, 1);
+			h_bb_sizer->Add(m_btnCopy, 0, wxALL | wxEXPAND, 2);
+			h_bb_sizer->Add(m_btnPaste, 0, wxALL | wxEXPAND, 2);
+			v_sizer->Add(h_bb_sizer, 0, wxALL | wxEXPAND, 1);
+		}
 
 		SetSizer(v_sizer, false);
 	}

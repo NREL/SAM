@@ -289,7 +289,8 @@ public:
 		const wxString &collabels = wxEmptyString,
 		const wxString &rowlabels = wxEmptyString,
 		const wxString &choices = wxEmptyString,
-		const int &choice_col = -1);
+		const int &choice_col = -1,
+		bool bottombuttons = false);
 
 	void SetData(const matrix_t<float> &mat);
 	void GetData(matrix_t<float> &mat);
