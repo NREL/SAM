@@ -488,7 +488,8 @@ private:
 	void OnGridEditorShown(wxGridEvent &evt);
 	void OnGridRangeSelect(wxGridRangeSelectEvent &evt);
 
-	void OnCopyClipboard(wxCommandEvent &evt);
+	void OnCopy(wxCommandEvent &evt);
+	void OnPaste(wxCommandEvent &evt);
 	void OnImport(wxCommandEvent &evt);
 	void OnExport(wxCommandEvent &evt);
 	void OnApply(wxCommandEvent &evt);
