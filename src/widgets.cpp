@@ -2065,7 +2065,8 @@ bool sidebuttons,
 const wxString &collabels,
 const wxString &rowlabels,
 const wxString &choices,
-const int &choice_col)
+const int &choice_col,
+bool bottombuttons)
 : wxPanel(parent, id, pos, sz)
 {
 	m_pasteappendrows = false;
@@ -2130,9 +2131,9 @@ const int &choice_col)
 		v_tb_sizer->Add(m_btnExport, 0, wxALL | wxEXPAND, 2);
 		v_tb_sizer->Add(m_btnCopy, 0, wxALL | wxEXPAND, 2);
 		v_tb_sizer->Add(m_btnPaste, 0, wxALL | wxEXPAND, 2);
-		v_tb_sizer->Add(m_labelRows, 0, wxALL | wxEXPAND, 2);
+		v_tb_sizer->Add(m_labelRows, 0, wxALL | wxALIGN_CENTER_VERTICAL, 2);
 		v_tb_sizer->Add(m_numRows, 0, wxALL | wxEXPAND, 2);
-		v_tb_sizer->Add(m_labelCols, 0, wxALL | wxEXPAND, 2);
+		v_tb_sizer->Add(m_labelCols, 0, wxALL | wxALIGN_CENTER_VERTICAL, 2);
 		v_tb_sizer->Add(m_numCols, 0, wxALL | wxEXPAND, 2);
 		v_tb_sizer->AddStretchSpacer();
 
@@ -2148,20 +2149,34 @@ const int &choice_col)
 		wxBoxSizer *h_tb_sizer = new wxBoxSizer(wxHORIZONTAL);
 		h_tb_sizer->Add(m_caption, 0, wxALL | wxEXPAND | wxALIGN_CENTER_VERTICAL, 3);
 		h_tb_sizer->AddStretchSpacer();
-		h_tb_sizer->Add(m_btnImport, 0, wxALL | wxEXPAND, 2);
-		h_tb_sizer->Add(m_btnExport, 0, wxALL | wxEXPAND, 2);
-		h_tb_sizer->Add(new wxStaticLine(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxVERTICAL), 0, wxALL | wxEXPAND, 1);
-		h_tb_sizer->Add(m_btnCopy, 0, wxALL | wxEXPAND, 2);
-		h_tb_sizer->Add(m_btnPaste, 0, wxALL | wxEXPAND, 2);
-		h_tb_sizer->Add(new wxStaticLine(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxVERTICAL), 0, wxALL | wxEXPAND, 1);
-		h_tb_sizer->Add(m_labelRows, 0, wxALL | wxEXPAND | wxALIGN_CENTER_VERTICAL, 2);
+		if (!bottombuttons)
+		{
+			h_tb_sizer->Add(m_btnImport, 0, wxALL | wxEXPAND, 2);
+			h_tb_sizer->Add(m_btnExport, 0, wxALL | wxEXPAND, 2);
+			h_tb_sizer->Add(new wxStaticLine(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxVERTICAL), 0, wxALL | wxEXPAND, 1);
+			h_tb_sizer->Add(m_btnCopy, 0, wxALL | wxEXPAND, 2);
+			h_tb_sizer->Add(m_btnPaste, 0, wxALL | wxEXPAND, 2);
+			h_tb_sizer->Add(new wxStaticLine(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxVERTICAL), 0, wxALL | wxEXPAND, 1);
+		}
+		h_tb_sizer->Add(m_labelRows, 0, wxALL | wxALIGN_CENTER_VERTICAL, 2);
 		h_tb_sizer->Add(m_numRows, 0, wxALL | wxEXPAND, 2);
-		h_tb_sizer->Add(m_labelCols, 0, wxALL | wxEXPAND | wxALIGN_CENTER_VERTICAL, 2);
+		h_tb_sizer->Add(m_labelCols, 0, wxALL | wxALIGN_CENTER_VERTICAL, 2);
 		h_tb_sizer->Add(m_numCols, 0, wxALL | wxEXPAND, 2);
 
 		wxBoxSizer *v_sizer = new wxBoxSizer(wxVERTICAL);
 		v_sizer->Add(h_tb_sizer, 0, wxALL | wxEXPAND, 1);
 		v_sizer->Add(m_grid, 1, wxALL | wxEXPAND, 1);
+
+		wxBoxSizer *h_bb_sizer = new wxBoxSizer(wxHORIZONTAL);
+		if (bottombuttons)
+		{
+			h_bb_sizer->Add(m_btnImport, 0, wxALL | wxEXPAND, 2);
+			h_bb_sizer->Add(m_btnExport, 0, wxALL | wxEXPAND, 2);
+			h_bb_sizer->Add(new wxStaticLine(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxVERTICAL), 0, wxALL | wxEXPAND, 1);
+			h_bb_sizer->Add(m_btnCopy, 0, wxALL | wxEXPAND, 2);
+			h_bb_sizer->Add(m_btnPaste, 0, wxALL | wxEXPAND, 2);
+			v_sizer->Add(h_bb_sizer, 0, wxALL | wxEXPAND, 1);
+		}
 
 		SetSizer(v_sizer, false);
 	}
@@ -2923,7 +2938,7 @@ matrix_t<float> AFValueMatrixButton::Get()
 
 
 
-enum { IDSF_GRID = wxID_HIGHEST+495, IDSF_SHADINGVAL, IDSF_APPLY, IDSF_IMPORT, IDSF_EXPORT, IDSF_COPY_CLIPBOARD };
+enum { IDSF_GRID = wxID_HIGHEST+495, IDSF_SHADINGVAL, IDSF_APPLY, IDSF_IMPORT, IDSF_EXPORT, IDSF_COPY, IDSF_PASTE };
 
 BEGIN_EVENT_TABLE(AFMonthByHourFactorCtrl, wxPanel)
 
@@ -2935,7 +2950,8 @@ BEGIN_EVENT_TABLE(AFMonthByHourFactorCtrl, wxPanel)
 
 	EVT_BUTTON( IDSF_IMPORT, AFMonthByHourFactorCtrl::OnImport)
 	EVT_BUTTON( IDSF_EXPORT, AFMonthByHourFactorCtrl::OnExport)
-	EVT_BUTTON( IDSF_COPY_CLIPBOARD, AFMonthByHourFactorCtrl::OnCopyClipboard )
+	EVT_BUTTON(IDSF_COPY, AFMonthByHourFactorCtrl::OnCopy)
+	EVT_BUTTON(IDSF_PASTE, AFMonthByHourFactorCtrl::OnPaste)
 
 	EVT_BUTTON( IDSF_APPLY, AFMonthByHourFactorCtrl::OnApply )
 	EVT_NUMERIC( IDSF_SHADINGVAL, AFMonthByHourFactorCtrl::OnApply )
@@ -3013,7 +3029,9 @@ AFMonthByHourFactorCtrl::AFMonthByHourFactorCtrl(wxWindow *parent, int id, const
 	wxBoxSizer *bottomctrls = new wxBoxSizer(wxHORIZONTAL);
 	bottomctrls->Add(new wxButton(this, IDSF_IMPORT, "Import..."), 0, wxALL|wxEXPAND, 1);
 	bottomctrls->Add(new wxButton(this, IDSF_EXPORT, "Export..."), 0, wxALL|wxEXPAND, 1);
-	bottomctrls->Add(new wxButton(this, IDSF_COPY_CLIPBOARD, "Copy to clipboard"), 0, wxALL|wxEXPAND, 1 );
+	bottomctrls->Add(new wxStaticLine(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxVERTICAL), 0, wxALL | wxEXPAND, 1);
+	bottomctrls->Add(new wxButton(this, IDSF_COPY, "Copy"), 0, wxALL | wxEXPAND, 1);
+	bottomctrls->Add(new wxButton(this, IDSF_PASTE, "Paste"), 0, wxALL | wxEXPAND, 1);
 	bottomctrls->AddStretchSpacer();
 	
 	wxBoxSizer *mainsz = new wxBoxSizer(wxVERTICAL);
@@ -3276,7 +3294,7 @@ void AFMonthByHourFactorCtrl::OnImport(wxCommandEvent &evt)
 	}
 }
 
-void AFMonthByHourFactorCtrl::OnCopyClipboard(wxCommandEvent &evt)
+void AFMonthByHourFactorCtrl::OnCopy(wxCommandEvent &evt)
 {
 	wxBusyCursor busycurs;
 	wxString sdata;
@@ -3296,6 +3314,54 @@ void AFMonthByHourFactorCtrl::OnCopyClipboard(wxCommandEvent &evt)
 		wxTheClipboard->Close();
 	}
 }
+
+void AFMonthByHourFactorCtrl::OnPaste(wxCommandEvent &evt)
+{
+	wxBusyCursor busycurs;
+	// resize rows per data pasted
+	if (wxTheClipboard->Open())
+	{
+		wxString data;
+		wxTextDataObject textobj;
+		if (wxTheClipboard->GetData(textobj))
+		{
+			data = textobj.GetText();
+			wxTheClipboard->Close();
+		}
+		if (data.IsEmpty()) return;
+
+#ifdef __WXMAC__
+		wxArrayString lines = wxStringTokenize(data, "\r", ::wxTOKEN_RET_EMPTY_ALL);
+#else
+		wxArrayString lines = wxStringTokenize(data, "\n", ::wxTOKEN_RET_EMPTY_ALL);
+#endif
+
+		int ncols = 0;
+		if (lines.Count() > 0)
+		{
+			matrix_t<float> grid;
+			grid.resize_fill(mData.nrows(), mData.ncols(), 0.0f);
+
+			for (int r = 0; r < grid.nrows(); r++)
+				for (int c = 0; c < grid.ncols(); c++)
+					grid.at(r, c) = (float)mData.at(r, c);
+
+			for (int r = 0; r < mData.nrows() && r < lines.Count(); r++)
+			{
+				wxArrayString vals = wxStringTokenize(lines[r], "\t", ::wxTOKEN_RET_EMPTY_ALL);
+				ncols = vals.Count();
+				for (int c = 0; c < mData.ncols() && c < ncols; c++)
+					grid.at(r, c) = (float)wxAtof(vals[c].c_str());
+			}
+
+			SetData(grid);
+			DispatchEvent();
+		}
+	}
+
+}
+
+
 
 void AFMonthByHourFactorCtrl::OnExport(wxCommandEvent &evt)
 {

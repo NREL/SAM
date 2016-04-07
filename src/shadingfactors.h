@@ -125,6 +125,9 @@ public:
 	matrix_t<float> GetData() const { return m_data; }
 
 
+	void SetStringCaption(const wxString &cap);
+	wxString GetStringCaption();
+
 	void SetColCaption(const wxString &cap);
 	wxString GetColCaption();
 
@@ -159,6 +162,7 @@ private:
 	wxExtGridCtrl *m_grid;
 	wxShadingFactorsTable *m_grid_data;
 	wxStaticText *m_caption_col;
+	wxStaticText *m_caption_string;
 	wxChoice *m_choice_col;
 	wxStaticText *m_caption_timestep;
 	wxChoice *m_choice_timestep;

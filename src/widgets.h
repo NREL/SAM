@@ -289,7 +289,8 @@ public:
 		const wxString &collabels = wxEmptyString,
 		const wxString &rowlabels = wxEmptyString,
 		const wxString &choices = wxEmptyString,
-		const int &choice_col = -1);
+		const int &choice_col = -1,
+		bool bottombuttons = false);
 
 	void SetData(const matrix_t<float> &mat);
 	void GetData(matrix_t<float> &mat);
@@ -487,7 +488,8 @@ private:
 	void OnGridEditorShown(wxGridEvent &evt);
 	void OnGridRangeSelect(wxGridRangeSelectEvent &evt);
 
-	void OnCopyClipboard(wxCommandEvent &evt);
+	void OnCopy(wxCommandEvent &evt);
+	void OnPaste(wxCommandEvent &evt);
 	void OnImport(wxCommandEvent &evt);
 	void OnExport(wxCommandEvent &evt);
 	void OnApply(wxCommandEvent &evt);

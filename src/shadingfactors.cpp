@@ -210,14 +210,15 @@ bool ShadingInputData::read( VarValue *root )
 }
 
 
-static const char *hourly_text = "Enter beam shading loss values for each of the simulation time steps in a single year. ";
-static const char *mxh_text = "Enter 288 (24 hours x 12 month) beam shading loss values that apply to the 24 hours of the day for each month of the year. Select a cell or group of cells and type a number between 0% and 100% to assign values to the table by hand. Click Import to import a table of values from a properly formatted text file. ";
-static const char *azal_text = "Use the Azimuth by Altitude option if you have a set of beam shading losses for different sun positions.\n"
+static const char *hourly_text_basic = "Enter a beam shading loss percentage for each of the simulation time steps in a single year. No shading is 0%, and full shading is 100%. Choose a time step in minutes equivalent to the weather file time step.\n\nNote that the 3D Shade Calculator automatically populates this beam shading table.";
+static const char *hourly_text_strings = "Enter a beam shading loss percentage for each of the simulation time steps in a single year. No shading is 0%, and full shading is 100%. Choose a time step in minutes equivalent to the weather file time step. If you have separate shading data for each of up to 8 strings in this subarray, choose a number of strings to create a table column for each string, and then choose a method for determining the subarray losses from the string losses.\n\nNote that the 3D Shade Calculator automatically populates this beam shading table.";
+static const char *mxh_text = "Enter 288 (24 hours x 12 month) beam shading loss percentages that apply to the 24 hours of the day for each month of the year. No shading is 0%, and full shading is 100%. Select a cell or group of cells and type a number to assign values to the table by hand. Click Import to import a table of values from a properly formatted text file. Click Export to export the data to a text file, or to create a template file for importing.";
+static const char *azal_text = "Use the Azimuth by Altitude option if you have a set of beam shading losses for different sun positions.\n\n"
   "1. Define the size of the table by entering values for the number of rows and columns.\n"
   "2. Enter solar azimuth values (0 to 360 degrees) in the first row of the table, where 0 = north, 90 = east, 180 = south, 270 = west.\n"
   "3. Enter solar altitude values (0 to 90 degrees) in the first column of the table, where zero is on the horizon.\n"
-  "4. Enter shading losses as the shaded percentage of the beam component of the incident radiation in the remaining table cells.\n"
-  "Click Paste to populate the table from your computer\'s clipboard, or click Import to import a table of values from a properly formatted text file.  ";
+  "4. Enter shading losses as the shaded percentage of the beam component of the incident radiation in the remaining table cells. No shading is 0%, and full shading is 100%.\n\n"
+  "Click Paste to populate the table from your computer\'s clipboard, or click Import to import a table of values from a properly formatted text file.  Click Export to export the data to a text file, or to create a template file for importing.";
 static const char *diff_text = "The constant sky diffuse shading loss reduces the diffuse irradiance for each time step in the year. Valid values are between 0% and 100%.";
 
 enum { ID_ENABLE_HOURLY = ::wxID_HIGHEST+999,
@@ -252,7 +253,7 @@ class ShadingDialog : public wxDialog
 public:
 	ShadingDialog( wxWindow *parent, const wxString &descText, bool show_db_options = false )
 		: wxDialog( parent, wxID_ANY, 
-			wxString("Edit shading data") + wxString( (!descText.IsEmpty() ? ": " : "") ) + descText, 
+			wxString("Edit Shading Data") + wxString( (!descText.IsEmpty() ? " for " : "") ) + descText, 
 			wxDefaultPosition, wxScaleSize(950,600), 
 			wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER)
 	{
@@ -263,11 +264,13 @@ public:
 		m_scrollWin = new wxScrolledWindow( this, wxID_ANY );
 		m_scrollWin->SetScrollRate( 50, 50 );
 
-		m_enableTimestep = new wxCheckBox( m_scrollWin, ID_ENABLE_HOURLY, "Enable time step beam irradiance shading losses" );
+		m_enableTimestep = new wxCheckBox( m_scrollWin, ID_ENABLE_HOURLY, "Enable beam irradiance shading losses by time step" );
 		m_timestep = new wxShadingFactorsCtrl(m_scrollWin, wxID_ANY, wxDefaultPosition, wxDefaultSize, m_show_db_options);
 		m_timestep->SetInitialSize(wxScaleSize(900, 300));
 		m_timestep->SetMinuteCaption("Time step in minutes:");
-		m_timestep->SetColCaption(wxString("Number of parallel strings:") + wxString((!descText.IsEmpty() ? " for " : "")) + descText);
+		m_timestep->SetColCaption(wxString("Strings") + wxString((!descText.IsEmpty() ? " in " : "")) + descText + wxString((!descText.IsEmpty() ? ":" : "")));
+		m_timestep->SetStringCaption(wxString("Method for converting string losses to subarray:"));
+
 		int num_cols = 8;
 		matrix_t<float> ts_data(8760, num_cols, 0);
 		m_timestep->SetData(ts_data);
@@ -277,9 +280,13 @@ public:
 		m_mxh->SetInitialSize( wxScaleSize(900,330) );
 
 		m_enableAzal = new wxCheckBox( m_scrollWin, ID_ENABLE_AZAL, "Enable solar azimuth-by-altitude beam irradiance shading losses" );
-		m_azal = new AFDataMatrixCtrl( m_scrollWin, wxID_ANY );
+		//m_azal = new AFDataMatrixCtrl(m_scrollWin, wxID_ANY);
+		// bottom buttons for import/export and added row and column labels
+		m_azal = new AFDataMatrixCtrl(m_scrollWin, wxID_ANY, wxDefaultPosition, wxDefaultSize, false, wxEmptyString, wxEmptyString, wxEmptyString, -1, true);
 		m_azal->SetInitialSize( wxScaleSize(900,280) );
-		m_azal->ShowRowLabels( false );
+		//m_azal->ShowRowLabels( false );
+		m_azal->SetNumRowsLabel("Number of altitude values (rows):");
+		m_azal->SetNumColsLabel("Number of azimuth values (columns):");
 		m_azal->PasteAppendCols(true);
 		m_azal->PasteAppendRows(true);
 		m_azal->ShadeR0C0(true);
@@ -308,7 +315,7 @@ public:
 		scroll->Add( new wxStaticLine( m_scrollWin ), 0, wxALL|wxEXPAND );
 
 		scroll->Add( m_enableTimestep, 0, wxALL|wxEXPAND, 5 );
-		scroll->Add( m_textTimestep = new wxStaticText( m_scrollWin, wxID_ANY, hourly_text ), 0, wxALL|wxEXPAND, 10 );
+		scroll->Add( m_textTimestep = new wxStaticText( m_scrollWin, wxID_ANY, !descText.IsEmpty() ? hourly_text_strings : hourly_text_basic ), 0, wxALL|wxEXPAND, 10 );
 		scroll->Add( m_timestep, 0, wxALL, 5 );
 		m_textTimestep->Wrap(wrap_width);
 		m_textTimestep->SetForegroundColour(text_color);
@@ -1152,16 +1159,19 @@ wxShadingFactorsCtrl::wxShadingFactorsCtrl(wxWindow *parent, int id,
 	m_grid->SetRowLabelAlignment(wxALIGN_LEFT, wxALIGN_CENTER);
 
 
-	m_string_arystrvals.push_back("Shading database");
-	m_string_arystrvals.push_back("Average of string values");
-	m_string_arystrvals.push_back("Maximum of string values");
-	m_string_arystrvals.push_back("Minimum of string values");
+	m_string_arystrvals.push_back("Database lookup");
+	m_string_arystrvals.push_back("Average of strings");
+	m_string_arystrvals.push_back("Maximum of strings");
+	m_string_arystrvals.push_back("Minimum of strings");
 	m_choice_string_option = new wxChoice(this, ISFC_CHOICESTRING, wxDefaultPosition, wxDefaultSize, m_string_arystrvals);
 	m_choice_string_option->SetBackgroundColour(*wxWHITE);
 
 
 	m_caption_col = new wxStaticText(this, wxID_ANY, "");
 	m_caption_col->SetFont(*wxNORMAL_FONT);
+
+	m_caption_string = new wxStaticText(this, wxID_ANY, "");
+	m_caption_string->SetFont(*wxNORMAL_FONT);
 
 	m_col_arystrvals.push_back("1");
 	m_col_arystrvals.push_back("2");
@@ -1198,6 +1208,7 @@ wxShadingFactorsCtrl::wxShadingFactorsCtrl(wxWindow *parent, int id,
 	{
 		m_caption_col->Show(false);
 		m_choice_col->Show(false);
+		m_caption_string->Show(false);
 		m_choice_string_option->Show(false);
 	}
 
@@ -1214,8 +1225,10 @@ wxShadingFactorsCtrl::wxShadingFactorsCtrl(wxWindow *parent, int id,
 			v_tb_sizer->Add(m_caption_col, 0, wxALL | wxEXPAND, 3);
 			v_tb_sizer->Add(m_choice_col, 0, wxALL | wxEXPAND, 3);
 			v_tb_sizer->AddSpacer(5);
+			v_tb_sizer->Add(m_caption_string, 0, wxALL | wxEXPAND, 3);
 			v_tb_sizer->Add(m_choice_string_option, 0, wxALL | wxEXPAND, 3);
 		}
+
 		v_tb_sizer->AddSpacer(5);
 		v_tb_sizer->Add(m_btn_copy, 0, wxALL | wxEXPAND, 3);
 		v_tb_sizer->Add(m_btn_paste, 0, wxALL | wxEXPAND, 3);
@@ -1241,19 +1254,31 @@ wxShadingFactorsCtrl::wxShadingFactorsCtrl(wxWindow *parent, int id,
 			h_tb_sizer->Add(m_caption_col, 0, wxALL | wxALIGN_CENTER_VERTICAL, 3);
 			h_tb_sizer->Add(m_choice_col, 0, wxALL | wxALIGN_CENTER_VERTICAL, 3);
 			h_tb_sizer->AddSpacer(5);
+			h_tb_sizer->Add(m_caption_string, 0, wxALL | wxALIGN_CENTER_VERTICAL, 3);
 			h_tb_sizer->Add(m_choice_string_option, 0, wxALL | wxALIGN_CENTER_VERTICAL, 3);
 		}
+		/*
 		h_tb_sizer->AddSpacer(5);
 		h_tb_sizer->Add(m_btn_copy, 0,   wxALL, 3);
 		h_tb_sizer->Add(m_btn_paste, 0,  wxALL, 3);
 		h_tb_sizer->Add(m_btn_import, 0, wxALL, 3);
 		h_tb_sizer->Add(m_btn_export, 0, wxALL, 3);
-
+		*/
 		h_tb_sizer->AddStretchSpacer();
 
 		wxBoxSizer *v_sizer = new wxBoxSizer(wxVERTICAL);
 		v_sizer->Add(h_tb_sizer, 0, wxALL | wxEXPAND, 1);
 		v_sizer->Add(m_grid, 1, wxALL | wxEXPAND, 1);
+
+		// bottom buttons per Paul 4/4/16
+		wxBoxSizer *h_bb_sizer = new wxBoxSizer(wxHORIZONTAL);
+		h_bb_sizer->Add(m_btn_import, 0, wxALL, 3);
+		h_bb_sizer->Add(m_btn_export, 0, wxALL, 3);
+		h_bb_sizer->Add(new wxStaticLine(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxVERTICAL), 0, wxALL | wxEXPAND, 1);
+		h_bb_sizer->Add(m_btn_copy, 0, wxALL, 3);
+		h_bb_sizer->Add(m_btn_paste, 0, wxALL, 3);
+		h_bb_sizer->AddStretchSpacer();
+		v_sizer->Add(h_bb_sizer, 0, wxALL | wxEXPAND, 1);
 
 		SetSizer(v_sizer, false);
 	}
@@ -1505,6 +1530,17 @@ void wxShadingFactorsCtrl::SetColCaption(const wxString &cap)
 wxString wxShadingFactorsCtrl::GetColCaption()
 {
 	return m_caption_col->GetLabel();
+}
+
+void wxShadingFactorsCtrl::SetStringCaption(const wxString &cap)
+{
+	m_caption_string->SetLabel(cap);
+	this->Layout();
+}
+
+wxString wxShadingFactorsCtrl::GetStringCaption()
+{
+	return m_caption_string->GetLabel();
 }
 
 
