@@ -3,24 +3,56 @@
 //jmf 2/24/16
 //*************************************************************************************
 
+// TO DO-----------------------------------------------------------------------------------
+/*
+	Terminology: replacement versus repair
+	Module failures: Replacement versus repair? How to tell? How affecting warranty? How affecting next failure time? etc.
+	Error checking on arrays 
+*/
 
 // SYSTEM INPUTS-----------------------------------------------------------------------
-	num_modules = 2;
-	system_lifetime_yrs = 0.3;
+	num_modules = 9408;
+	system_lifetime_yrs = 1;
 
 // MODULE RELIABILITY INPUTS-----------------------------------------------------------
 	// failure mode 1: defective component
+	module_percentage_defective_percent = 20;
+	module_defective_failures_per_yr = 0.5;
 	// failure mode 2: failure
-	module_failure_mean_yrs = 0.15;
-	module_failure_std_yrs = 0.05;
+	module_failure_mean_yrs = 35;
+	module_failure_std_yrs = 8;
 	// repair time
-	module_repair_mean_days = 5;
-	module_repair_std_days = 5;
+	module_repair_mean_days = 45; //says 60 in pseudo code but is currently 45 in Goldsim
+	module_repair_std_days = 15; //says 20 in pseudo code but is currently 15 in Goldsim
+	// warranty period
+	module_warranty_yrs = 20;
 	
-//GLOBAL STRUCTURES--------------------------------------------------------------------
+//GLOBAL STRUCTURES---------------------------------------------------------------------------
+//Arrays
 	global modules = alloc(num_modules);
 	global module_replacement_times = null;
+	global module_failure_times = null;
+	global module_defective_failure_times = null;
 
+//Time values	
+	global warranty_days = module_warranty_yrs * 365;
+	global module_failure_mean_days = module_failure_mean_yrs * 365;
+	global module_failure_std_days = module_failure_std_yrs * 365;
+	global module_defective_failures_per_day = module_defective_failures_per_yr / 365;
+	
+//DATA CONTAINERS------------------------------------------------------------------------------
+
+//MODULE INFORMATION
+//Data is only stored for the current timestep.
+/*
+state = operational (1) or failed (0)
+defective = flag for whether or not this module has a defect.
+	If true, then the module is also eligible for the defective failure mode
+time_to_replacement = number of days from onset of failure until it is replaced
+time_to_failure = number of days left until that module fails
+cumulative_failures = total number of failures for that module
+cumul_oow_failures = total number of failures out of warranty for that module
+*/
 
 //*************************************************************************************
 // SUPPORTING FUNCTIONS
@@ -43,29 +75,79 @@ function LHS(name, distribution_type, parameters, num_samples)
 }
 
 //*************************************************************************************
-// INITIALIZATION FUNCTION
+// INITIALIZATION AND FAILURE FUNCTIONS
 //*************************************************************************************
+//MODULE INITIALIZATION------------------------------------------------------------------------------
+// Initializes a single module "m" in the modules list
+// If initializing for the first time, "time_is_zero" is true so that cumulative failures is set to zero
+// To be used at the beginning or when a module is replaced
+function initialize_module(m, time_is_zero)
+{
+	// Module state
+	modules[m].state = 1; //module is operational
+	
+	// Module failures
+	// cumulative failures and OOW failures initialized to zero at time zero only
+	if (time_is_zero)
+	{
+		modules[m].cumulative_failures = 0;
+		modules[m].cumul_oow_failures = 0;
+	}
+	
+	// Module failure mode 2: normal failure
+	// Start with this failure mode because it exists for ALL modules
+	modules[m].time_to_failure = module_failure_times[0]; //assign failure time
+	module_failure_times -@ 0; //remove the failure time that was just used
+	if (#module_failure_times <=0)
+			module_failure_times = LHS('module_failure', 'normal', [module_failure_mean_days, module_failure_std_days], num_modules*10);
+
+	
+	// Module failure mode 1: defective modules
+	modules[m].defective = rand() < (module_percentage_defective_percent / 100); //randomly assign a given % of modules to be defective
+	// If the module is defective, check the defective failure time against the normal failure time
+	if (modules[m].defective)
+	{	
+		defective_time = module_defective_failure_times[0]; //defective failure time for that module
+		module_defective_failure_times -@ 0; //remove the defective failure time that was just used
+		if (#module_defective_failure_times <=0)
+			module_defective_failure_times = LHS('module_defective_failure', 'exponential', [module_defective_failures_per_day], num_modules*10);
+		if (defective_time < modules[m].time_to_failure) //defective failure occurs before normal failure
+			modules[m].time_to_failure = defective_time;
+	}
+	
+	// Module time to replacement in case of failure
+	modules[m].time_to_replacement = module_replacement_times[0];
+	module_replacement_times -@ 0; //remove the replacement time that was just used
+	if (#module_replacement_times <=0)
+		module_replacement_times = LHS('module_replacement_times', 'lognormal', [module_repair_mean_days, module_repair_std_days], num_modules*20);
+}
+
+//MODULE FAILURE----------------------------------------------------------------------------------------
+// Changes module "m" state to failed, current "day" checked against warranty
+function module_failure(m, day)
+{
+	modules[m].state = 0;
+	modules[m].time_to_failure = 0;
+	modules[m].cumulative_failures++;
+	if (day > warranty_days)
+		modules[m].cumul_oow_failures++;
+}
+
+//SYSTEM INITIALIZATION---------------------------------------------------------------------------------
 function initialize()
 {
+	// Module failure mode 1: defective component
+	module_defective_failure_times = LHS('module_defective_failure', 'exponential', [module_defective_failures_per_day], num_modules*10);
 	
 	// Module failure mode 2: failure
-	module_failure_mean_days = module_failure_mean_yrs * 365;
-	module_failure_std_days = module_failure_std_yrs * 365;
-	modfail_vector = LHS('module_failure', 'normal', [module_failure_mean_days, module_failure_std_days], num_modules);
+	module_failure_times = LHS('module_failure', 'normal', [module_failure_mean_days, module_failure_std_days], num_modules*10);
 	
 	// Module replacement times
 	module_replacement_times = LHS('module_replacement_times', 'lognormal', [module_repair_mean_days, module_repair_std_days], num_modules*20);
 	
 	// Create module structures
 	for (m = 0; m < num_modules; m++)
-	{
-		modules[m].state = 1;
-		modules[m].time_to_failure = modfail_vector[m];
-		modules[m].cumul_fail = 0;
-		modules[m].time_to_replacement = module_replacement_times[0];
-		module_replacement_times -@ 0; //remove the replacement time that was just used
-	}
-	
+		initialize_module(m, true);
 }
 
 //*************************************************************************************
@@ -79,13 +161,12 @@ function whats_my_dc_derate()
 		operational_modules += modules[m].state;
 		
 	return operational_modules / num_modules;
-	
 }
 
 //*************************************************************************************
 // INCREMENT TIMESTEP FUNCTION
 //*************************************************************************************
-function step_in_time(modules, module_replacement_times)
+function step_in_time(day)
 {
 	for (m=0; m < num_modules; m++)
 	{
@@ -95,25 +176,18 @@ function step_in_time(modules, module_replacement_times)
 			modules[m].time_to_failure--;
 			//module has just failed
 			if (modules[m].time_to_failure <= 0)
-			{
-				modules[m].state = 0;
-				modules[m].time_to_failure = 0;
-				modules[m].cumul_fail++;
-			}
+				module_failure(m, day);
 		}
 		
 		//module is currently failed
 		else
 		{
 			modules[m].time_to_replacement--;
+			//module is replaced
 			if (modules[m].time_to_replacement <= 0)
-			{
-				modules[m].state = 1;
-				//need to reset time to failure and time to replacement
-			}
+				initialize_module(m, false); //initialize a new module without resetting cumulative failures
 		}		
 	}
-	
 }
 
 
@@ -124,22 +198,28 @@ function step_in_time(modules, module_replacement_times)
 //allocations for now
 
 dc_availability = null;
+total_module_failures = 0;
 
 //timestep 0
-initialize(modules, module_replacement_times);
+initialize();
 dc_availability[0] = whats_my_dc_derate() * 100;
-outln('0\t' + modules);
+//outln('0\t' + modules);
 
 //rest of system lifetime
-for (time = 1; time < 100; time++)
+for (day = 1; day < system_lifetime_yrs * 365; day++)
 {
-	step_in_time(modules, module_replacement_times);
-	dc_availability[time] = whats_my_dc_derate() * 100;
-	outln(time + '\t' + modules);
+	step_in_time(day);
+	dc_availability[day] = whats_my_dc_derate() * 100;
+	//outln(day + '\t' + modules);
 }
+
+for (m=0; m < num_modules; m++)
+	total_module_failures += modules[m].cumulative_failures;
 
 //Test outputs
 outln(dc_availability);
+outln(total_module_failures);
+
 
 
 
