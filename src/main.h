@@ -187,6 +187,7 @@ struct InputPageGroup
 	bool OrganizeAsExclusivePages;
 	wxString ExclusivePageVar;
 	std::vector< PageInfo > ExclusiveHeaderPages;
+	bool ExclusiveTabs;
 };
 
 	
@@ -236,7 +237,8 @@ public:
 		const wxString &sidebar,
 		const wxString &hlpcxt,
 		const wxString &exclvar,
-		const std::vector<PageInfo> &exclhdr_pages );
+		const std::vector<PageInfo> &exclhdr_pages,
+		bool excl_tabs );
 
 	wxArrayString GetTechnologies();
 	wxArrayString GetFinancingForTech(const wxString &tech);

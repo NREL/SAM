@@ -91,7 +91,7 @@ END_EVENT_TABLE()
 
 enum { ID_INPUTPAGELIST = wxID_HIGHEST + 142,
 	ID_SIMULATE, ID_RESULTSPAGE, ID_ADVANCED, ID_PARAMETRICS, ID_STOCHASTIC, ID_P50P90, ID_MACRO,
-	ID_COLLAPSE,ID_EXCL_BUTTON, ID_EXCL_OPTION, ID_EXCL_OPTION_MAX=ID_EXCL_OPTION+25,
+	ID_COLLAPSE,ID_EXCL_BUTTON, ID_EXCL_TABLIST, ID_EXCL_OPTION, ID_EXCL_OPTION_MAX=ID_EXCL_OPTION+25,
 	ID_PAGES, ID_BASECASE_PAGES };
 
 BEGIN_EVENT_TABLE( CaseWindow, wxSplitterWindow )
@@ -110,6 +110,7 @@ BEGIN_EVENT_TABLE( CaseWindow, wxSplitterWindow )
 	EVT_BUTTON( ID_EXCL_BUTTON, CaseWindow::OnCommand )
 	EVT_CHECKBOX( ID_COLLAPSE, CaseWindow::OnCommand )
 	EVT_MENU_RANGE( ID_EXCL_OPTION, ID_EXCL_OPTION_MAX, CaseWindow::OnCommand )
+	EVT_LISTBOX( ID_EXCL_TABLIST, CaseWindow::OnCommand )
 
 	EVT_NOTEBOOK_PAGE_CHANGED( ID_PAGES, CaseWindow::OnSubNotebookPageChanged )
 	EVT_NOTEBOOK_PAGE_CHANGED( ID_BASECASE_PAGES, CaseWindow::OnSubNotebookPageChanged )
@@ -176,10 +177,14 @@ CaseWindow::CaseWindow( wxWindow *parent, Case *c )
 	m_exclPanel = new wxPanel( m_inputPagePanel );
 	m_exclPanel->SetBackgroundColour( *wxWHITE );
 	m_exclPageButton = new wxMetroButton( m_exclPanel, ID_EXCL_BUTTON, "Change...", wxNullBitmap, wxDefaultPosition, wxDefaultSize, wxMB_DOWNARROW );
-	wxBoxSizer *excl_horiz = new wxBoxSizer( wxHORIZONTAL );
-	excl_horiz->Add( m_exclPageButton, 0, wxALL|wxALIGN_CENTER_VERTICAL, 2 );
-	excl_horiz->AddStretchSpacer();
-	m_exclPanel->SetSizer( excl_horiz );
+	m_exclPageTabList = new wxMetroTabList( m_exclPanel, ID_EXCL_TABLIST, wxDefaultPosition, wxDefaultSize, wxMT_LIGHTTHEME );
+	m_exclPageTabList->SetFont( wxMetroTheme::Font( wxMT_NORMAL, 11 ) );
+	
+	m_exclPanelSizer = new wxBoxSizer( wxHORIZONTAL );
+	m_exclPanelSizer->Add( m_exclPageButton, 0, wxALL|wxALIGN_CENTER_VERTICAL, 2 );
+	m_exclPanelSizer->Add( m_exclPageTabList, 1, wxALL|wxALIGN_CENTER_VERTICAL, 2 );
+	m_exclPanelSizer->AddStretchSpacer();
+	m_exclPanel->SetSizer( m_exclPanelSizer );
 
 	wxBoxSizer *ip_sizer = new wxBoxSizer( wxVERTICAL );
 	ip_sizer->Add( m_exclPanel, 0, wxALL|wxEXPAND, 0 );
@@ -560,12 +565,14 @@ void CaseWindow::OnCommand( wxCommandEvent &evt )
 //			m_inputPageScrollWin->Thaw();
 		}
 	}
-	else if ( evt.GetId() >= ID_EXCL_OPTION && evt.GetId() < ID_EXCL_OPTION_MAX )
+	else if ( evt.GetId() == ID_EXCL_TABLIST ||
+		( evt.GetId() >= ID_EXCL_OPTION && evt.GetId() < ID_EXCL_OPTION_MAX ) )
 	{
 		if ( 0 == m_currentGroup ) return;
+		
+		int sel = (evt.GetId()==ID_EXCL_TABLIST) ? m_exclPageTabList->GetSelection() : evt.GetId() - ID_EXCL_OPTION;
 
 		VarValue *vv = m_case->Values().Get( m_currentGroup->ExclusivePageVar );
-		int sel = evt.GetId() - ID_EXCL_OPTION;
 		if ( vv != 0 && sel != vv->Integer() )
 		{
 			wxBusyCursor wait;			
@@ -874,10 +881,32 @@ void CaseWindow::SetupActivePage()
 		if ( excl_idx < m_currentGroup->Pages.size() 
 			&& m_currentGroup->Pages[excl_idx].size() > 0 )
 		{
-			//m_exclPageLabel->SetLabel( m_currentGroup->Pages[excl_idx][0].Caption );
-			m_exclPageButton->SetLabel( m_currentGroup->Pages[excl_idx][0].Caption );
+			m_exclPageButton->Show( false );
+			m_exclPageTabList->Show( false );
+			m_exclPanelSizer->Clear();
+
+			if ( m_currentGroup->ExclusiveTabs )
+			{
+				m_exclPageTabList->Clear();
+				for( size_t i=0;i<m_currentGroup->Pages.size();i++)
+					if ( m_currentGroup->Pages[i].size() > 0 )
+						m_exclPageTabList->Append( m_currentGroup->Pages[i][0].Caption );
+
+				m_exclPageTabList->SetSelection( excl_idx );
+				m_exclPageTabList->Show( true );
+				m_exclPanelSizer->Add( m_exclPageTabList, 1, wxALL|wxALIGN_CENTER_VERTICAL, 2 );
+			}
+			else
+			{
+				m_exclPageButton->SetLabel( m_currentGroup->Pages[excl_idx][0].Caption );
+				m_exclPageButton->Show( true );
+				m_exclPanelSizer->Add( m_exclPageButton, 0, wxALL|wxALIGN_CENTER_VERTICAL, 2 );
+				m_exclPanelSizer->AddStretchSpacer();
+			}
+
 			m_exclPanel->Layout();
 			m_exclPanel->Show( true );
+
 			active_pages = &( m_currentGroup->Pages[excl_idx] );
 			active_headers = &( m_currentGroup->ExclusiveHeaderPages );
 		}
