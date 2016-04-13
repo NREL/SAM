@@ -302,6 +302,7 @@ static void fcall_addpage( lk::invoke_t &cxt )
 	wxString sidebar = pages[0][0].Name;
 	wxString help = sidebar;
 	wxString exclusive_var;
+	bool exclusive_tabs = false;
 	std::vector<PageInfo> excl_header_pages;
 	
 	if ( cxt.arg_count() > 1 )
@@ -316,6 +317,9 @@ static void fcall_addpage( lk::invoke_t &cxt )
 		
 		if ( lk::vardata_t *x = props.lookup("exclusive_var") )
 			exclusive_var = x->as_string();
+
+		if ( lk::vardata_t *x = props.lookup("exclusive_tabs") )
+			exclusive_tabs = x->as_boolean();
 
 		if ( lk::vardata_t *x = props.lookup("exclusive_header_pages") )
 		{
@@ -335,7 +339,7 @@ static void fcall_addpage( lk::invoke_t &cxt )
 	}
 
 
-	SamApp::Config().AddInputPageGroup( pages, sidebar, help, exclusive_var, excl_header_pages );
+	SamApp::Config().AddInputPageGroup( pages, sidebar, help, exclusive_var, excl_header_pages, exclusive_tabs );
 }
 
 static void fcall_setting( lk::invoke_t &cxt )

@@ -93,7 +93,9 @@ private:
 	std::vector<PageDisplayState*> m_currentActivePages;
 	wxScrolledWindow *m_inputPageScrollWin;
 	wxPanel *m_exclPanel;
+	wxBoxSizer *m_exclPanelSizer;
 	wxMetroButton *m_exclPageButton;
+	wxMetroTabList *m_exclPageTabList;
 	void UpdatePageListForConfiguration( const std::vector<PageInfo> &pages, ConfigInfo *cfg );
 	void LoadPageList( const std::vector<PageInfo> &list, bool header );
 	void SetupActivePage();

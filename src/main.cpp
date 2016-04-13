@@ -1568,7 +1568,8 @@ void ConfigDatabase::SetModules( const wxArrayString &list )
 
 void ConfigDatabase::AddInputPageGroup( const std::vector< std::vector<PageInfo> > &pages, const wxString &sidebar, 
 	const wxString &hlpcxt, const wxString &exclvar,
-	const std::vector<PageInfo> &exclhdr_pages )
+	const std::vector<PageInfo> &exclhdr_pages,
+	bool excl_tabs )
 {
 	if ( m_curConfig == 0 ) return;
 
@@ -1579,6 +1580,7 @@ void ConfigDatabase::AddInputPageGroup( const std::vector< std::vector<PageInfo>
 	ip->OrganizeAsExclusivePages = !exclvar.IsEmpty();
 	ip->ExclusivePageVar = exclvar;
 	ip->ExclusiveHeaderPages = exclhdr_pages;
+	ip->ExclusiveTabs = excl_tabs;
 
 	m_curConfig->InputPageGroups.push_back( ip );
 }
