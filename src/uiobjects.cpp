@@ -671,6 +671,23 @@ public:
 	}
 };
 
+#include "s3tool.h"
+class wxUIScene3DObject : public wxUIObject
+{
+public:
+	wxUIScene3DObject() {
+		// no properties yet
+	}
+	virtual wxString GetTypeName() { return "Scene3D"; }
+	virtual wxUIObject *Duplicate() { wxUIObject *o = new wxUIScene3DObject; o->Copy( this ); return o; }
+	virtual bool IsNativeObject() { return true; }
+	virtual bool DrawDottedOutline() { return false; }
+	virtual wxWindow *CreateNative( wxWindow *parent ) {
+		return AssignNative( new ShadeTool( parent, wxID_ANY ) );
+	}
+
+};
+
 void RegisterUIObjectsForSAM()
 {
 	wxUIObjectTypeProvider::Register( new wxUISchedNumericObject );
@@ -688,4 +705,5 @@ void RegisterUIObjectsForSAM()
 	wxUIObjectTypeProvider::Register( new wxUIMonthByHourFactorCtrl );
 	wxUIObjectTypeProvider::Register( new wxUILibraryCtrl );
 	wxUIObjectTypeProvider::Register( new wxUILossAdjustmentCtrl );
+	wxUIObjectTypeProvider::Register( new wxUIScene3DObject );
 }

@@ -3,6 +3,7 @@
 en_iscc = 1;
 
 // define all the configurations
+addconfig( 'Photovoltaic', ['None'] );
 addconfig( 'Flat Plate PV', ['Residential', 'Commercial', 'Third Party', 'Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None'] );
 addconfig( 'PVWatts', [ 'Residential', 'Commercial', 'Third Party', 'Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None' ] );
 addconfig( 'High-X Concentrating PV', ['Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
@@ -21,7 +22,7 @@ addconfig( 'Dish Stirling', ['Commercial','Single Owner', 'Leveraged Partnership
 addconfig( 'Generic CSP System', ['Commercial','Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
 if ( en_iscc ) { addconfig( 'ISCC', ['Single Owner']); }
 
-
+configopt( 'Photovoltaic',              {'long_name'='Photovoltaic (super detailed)',            'short_name'='Photovoltaic',     'description'='Photovoltaic system using detailed photovoltaic model with separate module and inverter component models' } );
 configopt( 'Flat Plate PV',               { 'long_name'='Photovoltaic (detailed)',                'short_name'='Photovoltaic',     'description'='Photovoltaic system using detailed photovoltaic model with separate module and inverter component models' } );
 configopt( 'PVWatts',                     { 'long_name'='Photovoltaic (PVWatts)',                 'short_name'='PVWatts',          'description'='Photovoltaic system using basic NREL PVWatts V5 algorithm' } );
 configopt( 'High-X Concentrating PV',     { 'long_name'='High concentration PV',             'short_name'='HCPV',             'description'='Concentrating photovoltaic system with a high concentration photovoltaic module model and separate inverter model' } );
@@ -1439,3 +1440,38 @@ setmodules( ['tcsMSLF', 'singleowner']);
 setup_MSLF_pages();
 addpage( [[ 'Molten Salt Linear Fresnel Capital Costs','O and M Costs']], { 'sidebar'='System Costs', 'help'='lf_system_costs' } );
 setup_single_owner_pages(LIFETIME_SYSTEM);
+
+
+
+setconfig( 'Photovoltaic', 'None' );
+addpage( [[ 'Solar Resource Data', {'name'='PV Albedo and Radiation', 'caption' = 'Albedo - Sky Diffuse Model - Irradiance Data (Advanced)', 'collapsible'=true, 'collapsible_var'='pv.radmode.is_shown'} ]], { 'sidebar'='Location and Resource', 'help'='pv_location_and_resource' } );
+
+addpage( [ ['PV2 Environment'] ], { 'sidebar'='Environment', 'help'='pv_environ' } );
+
+addpage( [ [ {'name'='PV2 Unified Module Model 1', 'caption'='Module 1' }],
+//				['CEC Performance Model with Module Database', { 'name'='Test 1', 'collapsible'=true, 'collapsible_var'='pv.module.test_1.is_shown' }],
+			[{'name'='PV2 Unified Module Model 2', 'caption'='Module 2' }],
+			[{'name'='PV2 Unified Module Model 3', 'caption'='Module 3' }], 
+			[{'name'='PV2 Unified Module Model 4', 'caption'='Module 4' }] ], 				
+		{ 'sidebar'='Modules', 'help'='pv_module', 'exclusive_var'='module_type', 'exclusive_tabs'=true} );
+		
+
+addpage( [ [ {'name'='PV2 Unified Inverter Model 1', 'caption'='Inverter 1' }],
+			[{'name'='PV2 Unified Inverter Model 2', 'caption'='Inverter 2' }] ], 				
+		{ 'sidebar'='Inverters', 'help'='pv_inverter', 'exclusive_var'='inverter_type', 'exclusive_tabs'=true} );
+		
+
+addpage( [ [ {'name'='PV2 DC Design 1', 'caption'='Array 1' }],
+			[{'name'='PV2 DC Design 2', 'caption'='Array 2' }],
+			[{'name'='PV2 DC Design 3', 'caption'='Array 3' }], 
+			[{'name'='PV2 DC Design 4', 'caption'='Array 4' }],
+			[{'name'='PV2 DC Design 5', 'caption'='Array 5' }],
+			[{'name'='PV2 DC Design 6', 'caption'='Array 6' }] ], 				
+		{ 'sidebar'='DC Design', 'help'='pv_dc_design', 'exclusive_var'='dc_design_index', 'exclusive_tabs'=true} );
+		
+addpage( [ ['PV2 AC Design'] ], { 'sidebar'='AC Design', 'help'='pv_ac_design' } );
+addpage( [[ {'name'='Lifetime System', 'caption'='PV simulation over one year'}],
+		[ {'name'='Lifetime PV', 'caption'='PV simulation over analysis period' }],],
+	   {  'sidebar'='Lifetime','help'='lifetime', 'exclusive_var'='pv_lifetime_simulation' } );
+
+setup_battery_pages();
