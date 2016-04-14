@@ -70,6 +70,10 @@ public:
 	wxString GetName() { return m_name; }
 	VarValue *GetInput( const wxString &name );
 
+	// generate code
+	bool Generate_lk(FILE *fp);
+
+
 	Case *GetCase() { return m_case; }
 	
 	virtual wxArrayString ListOutputs();

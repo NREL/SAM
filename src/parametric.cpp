@@ -201,7 +201,7 @@ enum { ID_SELECT_INPUTS = wxID_HIGHEST+494, ID_SELECT_OUTPUTS, ID_NUMRUNS,
 	ID_OUTPUTMENU_ADD_PLOT, ID_OUTPUTMENU_REMOVE_PLOT, 
 	ID_OUTPUTMENU_SHOW_DATA, ID_OUTPUTMENU_CLIPBOARD, 
 	ID_OUTPUTMENU_CSV, ID_OUTPUTMENU_EXCEL, 
-	ID_SHOW_ALL_INPUTS, ID_QUICK_SETUP, ID_EXPORT_MENU };
+	ID_SHOW_ALL_INPUTS, ID_QUICK_SETUP, ID_EXPORT_MENU, ID_GEN_LK };
 
 
 
@@ -210,6 +210,7 @@ BEGIN_EVENT_TABLE(ParametricViewer, wxPanel)
 	EVT_BUTTON(ID_SELECT_OUTPUTS, ParametricViewer::OnCommand)
 	EVT_NUMERIC(ID_NUMRUNS, ParametricViewer::OnCommand)
 	EVT_BUTTON(ID_RUN, ParametricViewer::OnCommand)
+	EVT_BUTTON(ID_GEN_LK, ParametricViewer::OnCommand)
 	EVT_BUTTON(ID_QUICK_SETUP, ParametricViewer::OnCommand)
 	
 	EVT_BUTTON(ID_EXPORT_MENU, ParametricViewer::OnCommand)
@@ -255,6 +256,7 @@ ParametricViewer::ParametricViewer(wxWindow *parent, Case *cc)
 	tool_sizer->Add(new wxMetroButton(top_panel, ID_SELECT_INPUTS, "Inputs..."), 0, wxALL | wxEXPAND, 0);
 	tool_sizer->Add(new wxMetroButton(top_panel, ID_SELECT_OUTPUTS, "Outputs..."), 0, wxALL | wxEXPAND, 0);
 	tool_sizer->Add(new wxMetroButton(top_panel, ID_RUN, "Run simulations", wxNullBitmap, wxDefaultPosition, wxDefaultSize, wxMB_RIGHTARROW), 0, wxALL | wxEXPAND, 0);
+	tool_sizer->Add(new wxMetroButton(top_panel, ID_GEN_LK, "Generate lk", wxNullBitmap, wxDefaultPosition, wxDefaultSize, wxMB_RIGHTARROW), 0, wxALL | wxEXPAND, 0);
 	tool_sizer->AddStretchSpacer();
 	wxStaticText *lblruns = new wxStaticText(top_panel, wxID_ANY, "Number of runs:");
 	lblruns->SetForegroundColour( *wxWHITE );
@@ -442,6 +444,9 @@ void ParametricViewer::OnCommand(wxCommandEvent &evt)
 	case ID_RUN:
 		RunSimulations();
 		UpdateGrid();
+		break;
+	case ID_GEN_LK:
+		Generate_lk();
 		break;
 	case ID_CLEAR:
 		ClearResults();
@@ -880,6 +885,19 @@ void ParametricViewer::RunSimulations()
 	AddAllPlots();
 	UpdateGrid();
 }
+
+void ParametricViewer::Generate_lk()
+{
+	// check that inputs and outputs are selected
+	if ((m_input_names.Count() <= 0) || (m_output_names.Count() <= 0))
+	{
+		wxMessageBox("You must set up parametric inputs and outputs before generating lk scripts.", "Incomplete parametric setup");
+		return;
+	}
+
+	m_grid_data->Generate_lk();
+}
+
 
 void ParametricViewer::ClearResults()
 {
@@ -1935,6 +1953,74 @@ bool ParametricGridData::RunSimulations_single()
 	}
 	return true;
 }
+
+
+
+bool ParametricGridData::Generate_lk()
+{
+	wxString fld = "c:/test";
+	// TODO: prompt user for folder
+	wxDirDialog *d = new wxDirDialog(NULL, "Choose a directory");
+	if (d->ShowModal() == wxID_OK)
+	{
+		fld = d->GetPath();
+	}
+
+	for (size_t i = 0; i < m_par.Runs.size(); i++)
+	{
+		// reset all simulation objects to copy over latest value if changed on input page (no listeners)
+		m_valid_run[i] = false;
+
+		if (!m_valid_run[i])
+		{
+			m_par.Runs[i]->Clear();
+			// override values here to handle copying
+			for (int col = 0; col < m_cols; col++)
+			{
+				if (IsInput(col))
+				{
+					if (VarValue *vv = &m_par.Setup[col].Values[i])
+					{
+						// set for simulation
+						m_par.Runs[i]->Override(m_var_names[col], *vv);
+					}
+				}
+			}
+			// Excel exchange if necessary
+			ExcelExchange &ex = m_case->ExcelExch();
+			if (ex.Enabled)
+				ExcelExchange::RunExcelExchange(ex, m_case->Values(), m_par.Runs[i]);
+
+			wxString file = fld + wxString::Format("/run%d.lk", (int)(i+1));
+			if (FILE *fp = fopen(file.c_str(), "w"))
+			{
+				fprintf(fp, "clear();\n");
+				if (m_par.Runs[i]->Generate_lk(fp))
+				{
+
+					// outputs
+					for (int col = 0; col < m_cols; col++)
+					{
+						if (!IsInput(col))
+						{
+							// process outputs as desired
+							fprintf(fp, "outln( '%s = ' + var('%s'));\n", (const char*)m_var_names[col].c_str(), (const char*)m_var_names[col].c_str());
+						}
+					}
+				}
+				fclose(fp);
+			}
+			else
+			{
+				wxShowTextMessageDialog(wxJoin(m_par.Runs[i]->GetErrors(), '\n'));
+				return false;
+			}
+		}
+	}
+	return true;
+}
+
+
 
 
 void ParametricGridData::UpdateInputs(wxArrayString &input_names)
