@@ -92,6 +92,7 @@ public:
 	void DeleteSetup(wxString &var_name);
 	void UpdateNumberRows(int rows);
 	bool RunSimulations_single();
+	bool Generate_lk();
 	bool RunSimulations_multi();
 	void ClearResults(int row);
 	void ClearResults();
@@ -167,6 +168,8 @@ private:
 	void UpdateNumRuns();
 	void RunSimulations();
 	void ClearResults();
+
+	void Generate_lk();
 
 	void AddPlot(const wxString &output_name);
 	void RemovePlot(const wxString &output_name);

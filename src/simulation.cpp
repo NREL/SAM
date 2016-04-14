@@ -542,6 +542,103 @@ bool Simulation::WriteDebugFile( const wxString &file, ssc_data_t p_data )
 		return false;
 }
 
+
+bool Simulation::Generate_lk(FILE *fp)
+{
+	SingleThreadHandler ih;
+
+	if (!Prepare())
+		return false;
+
+	ssc_data_t p_data = ssc_data_create();
+
+	if (m_simlist.size() == 0)
+		ih.Error("No simulation compute modules defined for this configuration.");
+
+	for (size_t kk = 0; kk < m_simlist.size(); kk++)
+	{
+		ssc_module_t p_mod = ssc_module_create(m_simlist[kk].c_str());
+		if (!p_mod)
+		{
+			ih.Error("could not create ssc module: " + m_simlist[kk]);
+			continue;
+		}
+
+		int pidx = 0;
+		while (const ssc_info_t p_inf = ssc_module_var_info(p_mod, pidx++))
+		{
+			int var_type = ssc_info_var_type(p_inf);   // SSC_INPUT, SSC_OUTPUT, SSC_INOUT
+			int data_type = ssc_info_data_type(p_inf); // SSC_STRING, SSC_NUMBER, SSC_ARRAY, SSC_MATRIX		
+			wxString name(ssc_info_name(p_inf)); // assumed to be non-null
+			wxString reqd(ssc_info_required(p_inf));
+
+			if (var_type == SSC_INPUT || var_type == SSC_INOUT)
+			{
+				// handle ssc variable names
+				// that are explicit field accesses"shading:mxh"
+				wxString field;
+				int pos = name.Find(':');
+				if (pos != wxNOT_FOUND)
+				{
+					field = name.Mid(pos + 1);
+					name = name.Left(pos);
+				}
+
+				int existing_type = ssc_data_query(p_data, ssc_info_name(p_inf));
+				if (existing_type != data_type)
+				{
+					if (VarValue *vv = GetInput(name))
+					{
+						if (!field.IsEmpty())
+						{
+							if (vv->Type() != VV_TABLE)
+								ih.Error("SSC variable has table:field specification, but '" + name + "' is not a table in SAM");
+
+							bool do_copy_var = false;
+							if (reqd.Left(1) == "?")
+							{
+								// if the SSC variable is optional, check for the 'en_<field>' element in the table
+								if (VarValue *en_flag = vv->Table().Get("en_" + field))
+									if (en_flag->Boolean())
+										do_copy_var = true;
+							}
+							else do_copy_var = true;
+
+							if (do_copy_var)
+							{
+								if (VarValue *vv_field = vv->Table().Get(field))
+								{
+									if (!VarValueToSSC(vv_field, p_data, name + ":" + field))
+										ih.Error("Error translating table:field variable from SAM UI to SSC for '" + name + "':" + field);
+								}
+							}
+
+						}
+
+						if (!VarValueToSSC(vv, p_data, name))
+							ih.Error("Error translating data from SAM UI to SSC for " + name);
+
+					}
+					else if (reqd == "*")
+						ih.Error("SSC requires input '" + name + "', but was not found in the SAM UI or from previous simulations");
+				}
+			}
+		}
+
+//		ih.WriteDebugFile(m_simlist[kk], p_mod, p_data);
+		const char *name = ssc_data_first(p_data);
+		while (name)
+		{
+			dump_variable(fp, p_data, name);
+			name = ssc_data_next(p_data);
+		}
+		fprintf(fp, "run('%s');\n", (const char*)m_simlist[kk].c_str());
+
+	}
+	return true;
+}
+
+
 bool Simulation::InvokeWithHandler( ISimulationHandler *ih )
 {
 	assert( 0 != ih );
