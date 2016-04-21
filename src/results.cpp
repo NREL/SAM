@@ -2676,6 +2676,17 @@ void TabularBrowser::OnCommand(wxCommandEvent &evt)
 	case IDOB_COPYCLIPBOARD:
 	case IDOB_SENDEXCEL:
 		{
+			if (m_gridTableMap.size() == 0)
+			{
+				wxString message;
+				if (evt.GetId() == IDOB_SENDEXCEL)
+					message = "Please select at least one output variable before sending to Excel.";
+				else
+					message = "Please select at least one output variable before copying.";
+				wxMessageBox(message);
+				return;
+			}
+
 			wxBusyInfo busy("Processing data table... please wait");
 			wxString dat;
 
@@ -2778,6 +2789,13 @@ void TabularBrowser::OnCommand(wxCommandEvent &evt)
 		break;
 	case IDOB_SAVECSV:
 		{
+			if (m_gridTableMap.size()==0)
+			{
+				wxString message;
+				message.Printf(wxT("Please select at least one output variable before saving to a CSV file."));
+				wxMessageBox(message);
+				return;
+			}
 			if (m_lastSize.n_rows > excel_max_rows)
 			{
 				wxString message;
