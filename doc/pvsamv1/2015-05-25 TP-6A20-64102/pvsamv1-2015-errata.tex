@@ -15,6 +15,44 @@ This document lists errors with corrections for the SAM photovoltaic reference m
 Gilman, P.; (2015) ``SAM Photovoltaic Model Technical Reference." TP-6A20-64102. Golden, CO: National Renewable Energy Laboratory.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Chapter 3: Irradiance and Weather Data}
+
+In \textbf{Table 2 Weather Data} and \textbf{Table 3 Sun Position Variable Definitions}, the time zone and longitude should be degrees East of GMT and $0^\circ$ rather than West.
+
+Also, the range of values for time zone is $-12 < \mathit{tz} < 12$, for longitude is $-180^\circ < \mathit{lon} < 180^\circ$, and for latitude is $ 0^\circ < \mathit{lat} < 90^\circ$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Section 4.3: Sunrise and Sunset Hours}
+
+In \textbf{Equation 4.23} for the equation of time in hours, the equation for $\alpha$ uses $\frac{\pi}{180}$ instead of $\frac{180}{\pi}$.
+
+Correct:
+\begin{align*}
+a &= \frac{1}{15}\left(\mathit{mnlong} - \frac{\pi}{180}\mathit{ra}\right)\notag\\
+\mathit{EOT} &= 
+\left\{
+   \begin{array}{ll}
+     a & \text{if $-0.33 \leq a \leq 0.33$}\\
+     a + 24 & \text{if $a<-0.33$}\\
+     a - 24 & \text{if $a>0.33$}
+   \end{array}
+\right. 
+\end{align*}
+
+Incorrect:
+\begin{align*}
+a &= \frac{1}{15}\left(\mathit{mnlong} - \frac{180}{\pi}\mathit{ra}\right)\notag\\
+\mathit{EOT} &= 
+\left\{
+   \begin{array}{ll}
+     a & \text{if $-0.33 \leq a \leq 0.33$}\\
+     a + 24 & \text{if $a<-0.33$}\\
+     a - 24 & \text{if $a>0.33$}
+   \end{array}
+\right. 
+\end{align*}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section*{Section 4.2: Sun Angles}
 
 In \textbf{Equation 4.18}, the final condition should be $a<-1$ instead of $a<1$.
@@ -41,6 +79,84 @@ a &= \sin\delta \sin\left(\frac{\pi}{180}\mathit{lat}\right) + \cos\delta \cos\l
     -\frac{\pi}{2} & \text{if $a<1$}
   \end{array}
 \right.
+\end{align*}
+
+In \textbf{Equation 4.19} for the sun altitude angle corrected for refraction, the equation for refraction $r$ for the case $\alpha_{0d} > -0.56$ is incorrect.
+
+Correct:
+\begin{align*}\label{eqn-elvcorr}
+\alpha_{0d} &= \frac{180}{\pi}\alpha_0\notag\\
+r &= \left\{
+\begin{array}{ll}
+3.51561\left(0.1594 + 0.0196\alpha_{0d} + 0.00002\alpha_{0d}^2\right) \left(1 + 0.505\alpha_{0d} + 0.0845\alpha_{0d}^2\right)^{-1} & \text{if $\alpha_{0d}>-0.56$}\\
+0.56 & \text{if $\alpha_{0d} \leq -0.56$}
+\end{array}
+\right.\notag\\
+\alpha & = \left\{
+\begin{array}{ll}
+\frac{\pi}{2} & \text{if $\alpha_{0d} + r > 90$}\\
+\frac{\pi}{180}\left(\alpha_{0d} + r\right) & \text{if $\alpha_{0d} + r \leq 90$}
+\end{array}
+\right.
+\end{align*}
+
+Incorrect:
+\begin{align*}
+\alpha_{0d} &= \frac{180}{\pi}\alpha_0\notag\\
+r &= \left\{
+\begin{array}{ll}
+\alpha_{0d} + 3.51561\left(\frac{0.1594 + 0.0196\alpha_{0d} + 0.00002\alpha_{0d}^2}{1 + 0.505\alpha_{0d} + 0.0845\alpha_{0d}^2}\right) & \text{if $\alpha_{0d}>-0.56$}\\
+0.56 & \text{if $\alpha_{0d} \leq -0.56$}
+\end{array}
+\right.\notag\\
+\alpha & = \left\{
+\begin{array}{ll}
+\frac{\pi}{2} & \text{if $\alpha_{0d} + r > 90$}\\
+\frac{\pi}{180}\left(\alpha_{0d} + r\right) & \text{if $\alpha_{0d} + r \leq 90$}
+\end{array}
+\right.
+\end{align*}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Section 4.3: Sunrise and Sunset Hours}
+
+\textbf{Equation 4.24} and \textbf{Equation 4.25} use the undefined variable $\lambda$ for the longitude instead of $lon$.
+
+Correct:
+\begin{equation*}
+t_{sunrise} = 12 - \frac{1}{15} \frac{180}{\pi}\mathit{HAR} - \left(\frac{\mathit{lon}}{15} - \mathit{tz}\right)-\mathit{EOT}
+\end{equation*}
+
+\begin{equation*}
+t_{sunrise} = 12 + \frac{1}{15} \frac{180}{\pi}\mathit{HAR} - \left(\frac{\mathit{lon}}{15} - \mathit{tz}\right)-\mathit{EOT}
+\end{equation*}
+
+Incorrect:
+\begin{equation*}
+t_{sunrise} = 12 - \frac{1}{15} \frac{180}{\pi}\mathit{HAR} - \left(\frac{\lambda}{15} - \mathit{tz}\right)-\mathit{EOT}
+\end{equation*}
+
+\begin{equation*}
+t_{sunrise} = 12 + \frac{1}{15} \frac{180}{\pi}\mathit{HAR} - \left(\frac{\lambda}{15} - \mathit{tz}\right)-\mathit{EOT}
+\end{equation*}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Section 6.2.2 HDKR Model}
+
+In \textbf{Equation 6.11}, the equation for the isotropic component incorrectly uses the angle of incidence $\mathit{AOI}$ instead of the subarray tilt angle $\beta_s$.
+
+Correct:
+\begin{align*}
+\mathit{cir} &= E_d A_i R_b \notag\\
+\mathit{iso} &= E_d \left( 1 - A_i \right) \frac{1 + \cos\ \beta_s}{2} \notag\\
+\mathit{isohor} &= \mathit{iso} \left( 1 + f s \right)
+\end{align*}
+
+Incorrect:
+\begin{align*}
+\mathit{cir} &= E_d A_i R_b \notag\\
+\mathit{iso} &= E_d \left( 1 - A_i \right) \frac{1 + \cos\mathit{AOI}}{2} \notag\\
+\mathit{isohor} &= \mathit{iso} \left( 1 + f s \right)
 \end{align*}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
