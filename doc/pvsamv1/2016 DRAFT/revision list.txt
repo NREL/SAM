@@ -17,27 +17,53 @@ Team Revisions
 Paul Revisions
 --------------
 
-- POA input options
+Add range (0-90, -180-180, -12-12) to weather data and sun position variable descripton tables for lataitude, longitude, and time zone. DONE
 
-- irradiance components options 
+Add range to time zone description (eq. 4.5). DONE
 
-- backtracking correction? (does not run self-shading model)
+Update irradiance chapter to cover new POA and GHI/DHI inputs and to make it clearer what weather data is reqiured. DONE
 
-- curtailment and availability losses
+Remove references to library editor and clarify how module/inverter and solar resource libraries work in SAM and SSC. DONE
 
-- New DC optimizer loss input
+Replace all references to hourly time steps with generic time step for sub-hourly simulations. DONE
 
-- check the performance ratio formula now that we've fixed that bug?
+Check sunrise and sunset "solar position minute" calculation for new time convention. Explanation is for hourly data and is not clear that "hr" is either beginning of hour or end of hour, so need to update for current implementation. (Section Sunrise and Sunset Hours)
 
-- module output voltage and inverter MPPT voltage clipping
+Update shading input SSC variable names (See Table Effective POA irradiance variable definitions).
 
-- revised output variables (no more ac gross/ac net)
+POA input options. DONE
 
-- change units from kWh to kW
+Irradiance components options. DONE
 
-- Add units to variable definition tables
+Curtailment and availability losses. DONE
 
-- lifetime simulations and degradation
+New DC optimizer loss input. DONE
+
+Correct losses to explain how category losses are applied to total loss. DONE
+
+Revised SAM output variables (no more ac gross/ac net). DONE
+
+Check the performance ratio formula now that we've fixed that bug?
+
+Module output voltage and inverter MPPT voltage clipping
+
+Explain in 10.1 DC String Voltage why subarray mismatch is only available for Sandia module model, and find out if it's avalable for IEC61853. DONE
+
+Mismatch model can only be used with a single-diode module model (see PVSAMV1 comment on line 977)
+
+Backtracking correction? (does not run self-shading model)
+
+Check inverter input power equation (11.1) and dc power output Pdc, Pdc,net, Pdc,gross to be consistent with SAM outputs. Consider rewriting chapter 10 as 1 DC String Voltage, DC losses, DC power output (remove section on gross DC power)
+
+Change units from kWh to kW
+
+Add units to variable definition tables
+
+Lifetime simulations and degradation
+
+Check SSC variable names
+
+Update help references
 
 Wish List
 ---------
@@ -46,6 +72,18 @@ Wish List
 
 Errors
 ======
+
+p. 10, p.13 time zone and longitude units should be degrees E of 0 instead of degrees W of zero. DONE
+
+p. 14 time of day equation, clarify that time zone range is -12 < tz < 12. DONE
+
+p. 15 sun altitude corrected for refraction Equation 4.19, r for >-0.56 is incorrect.DONE
+
+p. 16 Equation of time Equation for sun altitude angle alpha should be 180/pi, not pi/180. DONE
+
+p. 16 Equations 4.24 and 4.25, sunrise and sunset time equations, for longitude use lambda, which is not defined in the text, instead of lon. DONE
+
+p. 24 Equation 6.11 diffuse components, iso should be cos tilt, not cos AOI. DONE
 
 p. 43 "The cell temperature Tc for the CEC model is calculated using either the NOCT cell temperature model or the heat transfer cell temperature model." That is only true for CEC with database -- for the CEC with user parameters, only the NOCT temp model is available.
 

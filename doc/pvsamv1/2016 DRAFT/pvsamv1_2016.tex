@@ -259,12 +259,12 @@ Symbol & Field & Description\\
 - & Location ID* & numerical identifier [\textit{722780}]\\
  - & City* & location name [\textit{``Phoenix Sky Harbor Intl Ap"}]\\
 - & State* & two-letter state abbreviation [\textit{AZ}]\\
-$\mathit{tz}$ &Time zone & hours W of GMT [\textit{-7.0}] \\
-$\mathit{lat}$ & Latitude & decimal degree N of 0 [\textit{33.450}] \\
-$\mathit{lon}$ & Longitude & decimal degree W of 0 [\textit{-11.983}]\\
+$\mathit{tz}$ &Time zone & hours E of GMT [\textit{-7.0}] \\
+$\mathit{lat}$ & Latitude & decimal \degree N of 0, (0 - 90) [\textit{33.450}] \\
+$\mathit{lon}$ & Longitude & decimal \degree E of 0, (-180 - 180) [\textit{-11.983}]\\
 $\mathit{elv}$ & Elevation & meters above sea level [\textit{337}]\\
 \midrule
-\multicolumn{3}{c}{Hourly Data Records}\\
+\multicolumn{3}{c}{Time Step Data Records}\\
 $\mathit{yr}$& Year & typical year [\textit{1988}] \\
 $\mathit{mo}$ & Month & typical month (1-12) \\
 $\mathit{day}$ & Day & day of year (1-365) \\
@@ -353,9 +353,9 @@ The sun position algorithm does not include an air mass equation. Instead, each 
 Symbol & Description / \textbf{Name in SAM} & Name in SSC\\
 \midrule
 \multicolumn{3}{c}{Inputs}\\
-$\mathit{tz}$ & time zone (hrs W of GMT) & \texttt{tz}\\
-$\mathit{lat}$ & latitude (decimal $^\circ$N of equator) & \texttt{lat}\\
-$\mathit{lon}$ & longitude (decimal $^\circ$W of GMT) & \texttt{lon}\\
+$\mathit{tz}$ & time zone (hrs E of GMT, -12 < $tz$ < 12) & \texttt{tz}\\
+$\mathit{lat}$ & latitude (decimal $^\circ$N of equator, 0 < $lat$ < 90) & \texttt{lat}\\
+$\mathit{lon}$ & longitude (decimal $^\circ$E of GMT, -180 < $lon$ < 180) & \texttt{lon}\\
 $\mathit{yr}$ & year (e.g., 1988) & \texttt{year}\\
 $\mathit{mo}$ & month year (1-12) & \texttt{month}\\
 $\mathit{day}$ & day of year (1-365) & \texttt{day}\\
@@ -428,20 +428,31 @@ The Julian day of year is then:
 \right. 
 \end{equation}
 
-The current decimal time of day expressed as an offset from UTC depends on the hour and minute of the current time stamp, and the location's time zone:
+The current decimal time of day expressed as an offset from UTC depends on the hour and minute of the current time stamp, and the location's time zone.  Valid values for the time zone are $-12<\mathit{tz}<12$.
 %lib_irradproc.cpp 103
 \begin{equation}\label{eqn-tutc}
 t_{utc} = \mathit{hr} + \frac{\mathit{min}}{60} - \mathit{tz}
 \end{equation}
 
-For some combinations of time stamp and time zone, Equation~\ref{eqn-tutc} may yield a value less than zero or greater than 24 hours, in which case the following correction applies:
+For some combinations of time stamp and time zone, Equation~\ref{eqn-tutc} may yield a value less than zero or greater than 24 hours, in which case the following corrections apply:
 %lib_irradproc.cpp 104
 \begin{equation}
-\left\{
+t_{utc} = \left\{
    \begin{array}{ll}
-      t_{utc} = t_{utc} + 24, \mathit{jdoy} = \mathit{jdoy} - 1 & 
+       t_{utc} + 24 & 
       \text{if $t_{utc}<0$}\\
-      t_{utc} = t_{utc} - 24,  \mathit{jdoy} = \mathit{jdoy} + 1 & 
+      t_{utc} - 24 & 
+      \text{if $t_{utc}>24$}
+   \end{array}
+\right. 
+\end{equation}
+
+\begin{equation}
+ \mathit{jdoy} =\left\{
+  \begin{array}{ll}
+      \mathit{jdoy} - 1 & 
+      \text{if $t_{utc}<0$}\\
+      \mathit{jdoy} + 1 & 
       \text{if $t_{utc}>24$}
    \end{array}
 \right. 
@@ -549,13 +560,13 @@ a &= \sin\delta \sin\left(\frac{\pi}{180}\mathit{lat}\right) + \cos\delta \cos\l
 \right.
 \end{align}
 
-The sun altitude angle $\alpha$ corrected for refraction is:
+The sun altitude angle $\alpha$ in radians corrected for refraction is (these equations use the uncorrected sun altitude angle in degrees, indicated by the subscript $d$):
 % lib_irradproc 194
 \begin{align}\label{eqn-elvcorr}
 \alpha_{0d} &= \frac{180}{\pi}\alpha_0\notag\\
 r &= \left\{
 \begin{array}{ll}
-\alpha_{0d} + 3.51561\left(\frac{0.1594 + 0.0196\alpha_{0d} + 0.00002\alpha_{0d}^2}{1 + 0.505\alpha_{0d} + 0.0845\alpha_{0d}^2}\right) & \text{if $\alpha_{0d}>-0.56$}\\
+3.51561\left(0.1594 + 0.0196\alpha_{0d} + 0.00002\alpha_{0d}^2\right) \left(1 + 0.505\alpha_{0d} + 0.0845\alpha_{0d}^2\right)^{-1} & \text{if $\alpha_{0d}>-0.56$}\\
 0.56 & \text{if $\alpha_{0d} \leq -0.56$}
 \end{array}
 \right.\notag\\
@@ -614,7 +625,7 @@ a &= -\tan \mathit{lat}\tan\delta\notag\\
 The equation of time in hours:
 %lib_irradproc.cpp 204
 \begin{align}\label{eqn-eot}
-a &= \frac{1}{15}\left(\mathit{mnlong} - \frac{\pi}{180}\mathit{ra}\right)\notag\\
+a &= \frac{1}{15}\left(\mathit{mnlong} - \frac{180}{\pi}\mathit{ra}\right)\notag\\
 \mathit{EOT} &= 
 \left\{
    \begin{array}{ll}
@@ -628,12 +639,12 @@ a &= \frac{1}{15}\left(\mathit{mnlong} - \frac{\pi}{180}\mathit{ra}\right)\notag
 The sunrise time in local standard decimal time:
 %lib_irradproc.cpp 219
 \begin{equation}
-t_{sunrise} = 12 - \frac{1}{15} \frac{180}{\pi}\mathit{HAR} - \left(\frac{\lambda}{15} - \mathit{tz}\right)-\mathit{EOT}
+t_{sunrise} = 12 - \frac{1}{15} \frac{180}{\pi}\mathit{HAR} - \left(\frac{\mathit{lon}}{15} - \mathit{tz}\right)-\mathit{EOT}
 \end{equation}
 
 And, the sunset in local standard time: 
 \begin{equation}
-t_{sunrise} = 12 + \frac{1}{15} \frac{180}{\pi}\mathit{HAR} - \left(\frac{\lambda}{15} - \mathit{tz}\right)-\mathit{EOT}
+t_{sunrise} = 12 + \frac{1}{15} \frac{180}{\pi}\mathit{HAR} - \left(\frac{\mathit{lon}}{15} - \mathit{tz}\right)-\mathit{EOT}
 \end{equation}
 
 The solar position minute for the sunrise hour is at the midpoint between the minute during which the sun rose and the end of the current hour. Assuming a 60 minute time step and that that the sunup time is in decimal minutes: 
@@ -1005,7 +1016,7 @@ E_g - E_b\cos Z & \text{Calculate for \textbf{Total and beam} ($\texttt{irrad\_m
 The isotropic diffuse sky irradiance \citep{liu1963}:
 %lib_irradproc 521
 \begin{equation}
-I_d = E_d\frac{1 + \cos\beta}{2}
+I_d = E_d\frac{1 + \cos\beta_s}{2}
 \end{equation}
 
 The isotropic model does not account for circumsolar diffuse irradiance or horizon brightening:
@@ -1053,7 +1064,7 @@ The circumsolar, isotropic, and horizon brightening components of the diffuse sk
 %lib_irradproc.cpp 477
 \begin{align}
 \mathit{cir} &= E_d A_i R_b \notag\\
-\mathit{iso} &= E_d \left( 1 - A_i \right) \frac{1 + \cos\AOI}{2} \notag\\
+\mathit{iso} &= E_d \left( 1 - A_i \right) \frac{1 + \cos\ \beta_s}{2} \notag\\
 \mathit{isohor} &= \mathit{iso} \left( 1 + f s \right)
 \end{align}
 
