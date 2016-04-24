@@ -2188,6 +2188,8 @@ END_EVENT_TABLE()
 TabularBrowser::TabularBrowser( wxWindow *parent )
 	: wxPanel(parent )
 {
+	m_gridTable = NULL;
+	
 	m_key = 0;
 	m_numberOfTabs = 0;
 
@@ -2676,7 +2678,7 @@ void TabularBrowser::OnCommand(wxCommandEvent &evt)
 	case IDOB_COPYCLIPBOARD:
 	case IDOB_SENDEXCEL:
 		{
-			if (m_gridTableMap.size() == 0)
+			if (m_gridTableMap.size() < 1)
 			{
 				wxString message;
 				if (evt.GetId() == IDOB_SENDEXCEL)
@@ -2789,13 +2791,14 @@ void TabularBrowser::OnCommand(wxCommandEvent &evt)
 		break;
 	case IDOB_SAVECSV:
 		{
-			if (m_gridTableMap.size()==0)
+			if (m_gridTableMap.size() < 1)
 			{
 				wxString message;
 				message.Printf(wxT("Please select at least one output variable before saving to a CSV file."));
 				wxMessageBox(message);
 				return;
 			}
+
 			if (m_lastSize.n_rows > excel_max_rows)
 			{
 				wxString message;
@@ -2895,9 +2898,10 @@ void TabularBrowser::OnPageClosed(wxAuiNotebookEvent& event)
 
 void TabularBrowser::GetTextData(wxString &dat, char sep)
 {
-	if (!m_gridTable)
+	if (!m_gridTable || m_gridTableMap.size() < 1)
 		return;
 
+	// access violaiton here since m_gridTable not created
 	bool IsMatrix = m_gridTable->IsMatrix;
 	bool IsSingleValues = m_gridTable->IsSingleValues;
 
