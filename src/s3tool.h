@@ -194,6 +194,7 @@ private:
 	void OnGenerateDiurnal(wxCommandEvent &);
 	void OnGenerateDiffuse(wxCommandEvent &);
 
+	wxString GetGroupDisplayName(const wxString &group);
 	DECLARE_EVENT_TABLE();
 };
 

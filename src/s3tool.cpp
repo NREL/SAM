@@ -872,14 +872,15 @@ bool ShadeAnalysis::SimulateDiffuse(std::vector<surfshade> &shade, bool save)
 		else average = 0; // if there were no surfaces in this piece (i.e. facing away from sun), no diffuse blocking
 
 		m_diffuseShadePercent.push_back(average);
-		m_diffuseName.push_back(shade[j].group);
+//		m_diffuseName.push_back(shade[j].group);
+		m_diffuseName.push_back(GetGroupDisplayName(shade[j].group));
 	}
 		
 	wxString difftext("Diffuse shading: ");
-	for( size_t i=0;i<m_diffuseShadePercent.size();i++ )
+	for (size_t i = 0; i<m_diffuseShadePercent.size(); i++)
 	{
-		difftext += m_diffuseName[i] + wxString::Format(": %.2lf %%", m_diffuseShadePercent[i]);
-		difftext += m_diffuseName[i] + wxString::Format(": %lg %%", m_diffuseShadePercent[i]);
+		difftext += m_diffuseName[i] + wxString::Format(": %.2lf%%", m_diffuseShadePercent[i]);
+//		difftext += m_diffuseName[i] + wxString::Format(": %lg %%", m_diffuseShadePercent[i]);
 		if ( i < m_diffuseShadePercent.size()-1 ) difftext += ", ";
 	}
 
@@ -919,6 +920,18 @@ bool ShadeAnalysis::SimulateDiffuse(std::vector<surfshade> &shade, bool save)
 
 	return true;
 }
+
+wxString ShadeAnalysis::GetGroupDisplayName(const wxString &group)
+{
+	wxString name = group;
+	wxArrayString name_ary = wxSplit(group, '.');
+	if (name_ary.Count() == 2)
+	{
+		name = wxString::Format("Subarray %d, String %d", atoi(name_ary[0].c_str()) + 1, atoi(name_ary[1].c_str()) + 1);
+	}
+	return name;
+}
+
 
 bool ShadeAnalysis::SimulateTimeseries( int minute_step, std::vector<surfshade> &shade )
 {
@@ -1290,15 +1303,16 @@ bool ShadeAnalysis::SimulateDiurnal()
 	}
 
 	int y = 0;
-	for( size_t i=0;i<shade.size();i++ )
+	for (size_t i = 0; i<shade.size(); i++)
 	{
 		if ( i >= m_mxhList.size() )
 			m_mxhList.push_back( new AFMonthByHourFactorCtrl( m_scroll, wxID_ANY ) );
 
 		AFMonthByHourFactorCtrl *mxh = m_mxhList[i];
 		mxh->SetSize( 0, y, 1300, 360 );
-		mxh->SetTitle( shade[i].group );
-		mxh->SetData( shade[i].sfac );
+//		mxh->SetTitle(shade[i].group);
+		mxh->SetTitle(GetGroupDisplayName(shade[i].group));
+		mxh->SetData(shade[i].sfac);
 		mxh->SetLegend( "Shade Loss (%): 0=no shade, 100=fully shaded" );
 		y += 360;
 	}
