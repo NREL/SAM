@@ -140,6 +140,9 @@
     <ClInclude Include="..\src\lossadj.h">
       <Filter>Source</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\codegen.h">
+      <Filter>Source</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\welcome.cpp">
@@ -266,6 +269,9 @@
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="..\src\lossadj.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\codegen.cpp">
       <Filter>Source</Filter>
     </ClCompile>
   </ItemGroup>
