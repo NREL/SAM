@@ -2104,7 +2104,7 @@ bool bottombuttons)
 	m_grid = new wxExtGridCtrl(this, IDEDMC_GRID);
 	m_grid->CreateGrid(8, 12);
 	m_grid->EnableCopyPaste(true);
-	m_grid->EnablePasteEvent(false);
+	m_grid->EnablePasteEvent(true);
 	m_grid->DisableDragCell();
 	m_grid->DisableDragRowSize();
 	m_grid->DisableDragColMove();
