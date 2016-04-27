@@ -41,13 +41,14 @@ public:
 
 	// try to make same across languages
 	bool GenerateCode(wxOutputStream &os);
-
+	bool Prepare();
 	bool Ok();
 
 protected:
 	Case *m_case;
 	wxString m_name;
 	wxArrayString m_errors;
+	VarTable m_inputs;
 };
 
 // for file and language prompting
