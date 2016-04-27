@@ -593,7 +593,7 @@ bool Simulation::Generate_lk(FILE *fp)
 						{
 							if (vv->Type() != VV_TABLE)
 								ih.Error("SSC variable has table:field specification, but '" + name + "' is not a table in SAM");
-
+							
 							bool do_copy_var = false;
 							if (reqd.Left(1) == "?")
 							{
@@ -612,7 +612,7 @@ bool Simulation::Generate_lk(FILE *fp)
 										ih.Error("Error translating table:field variable from SAM UI to SSC for '" + name + "':" + field);
 								}
 							}
-
+							
 						}
 
 						if (!VarValueToSSC(vv, p_data, name))
@@ -625,7 +625,6 @@ bool Simulation::Generate_lk(FILE *fp)
 			}
 		}
 
-//		ih.WriteDebugFile(m_simlist[kk], p_mod, p_data);
 		const char *name = ssc_data_first(p_data);
 		while (name)
 		{
