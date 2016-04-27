@@ -126,15 +126,59 @@ CodeGen_Base::CodeGen_Base( Case *cc, const wxString &name )
 {
 }
 
+bool CodeGen_Base::Prepare()
+{
+	m_inputs.clear();
+	m_inputs = m_case->Values();
+	/* may be used in the future
+	// transfer all the values except for ones that have been 'overriden'
+	for (VarTableBase::const_iterator it = m_case->Values().begin();
+		it != m_case->Values().end();
+		++it)
+		if (0 == m_inputs.Get(it->first))
+			m_inputs.Set(it->first, *(it->second));
+*/
+	// recalculate all the equations
+	CaseEvaluator eval(m_case, m_inputs, m_case->Equations());
+	int n = eval.CalculateAll();
+
+	if (n < 0)
+	{
+		wxArrayString &errs = eval.GetErrors();
+		for (size_t i = 0; i<errs.size(); i++)
+			m_errors.Add(errs[i]);
+
+		return false;
+	}
+	return true;
+}
+
 
 bool CodeGen_Base::GenerateCode(wxOutputStream &os)
 {
+	ConfigInfo *cfg = m_case->GetConfiguration();
+	if (!cfg)
+	{
+		m_errors.Add("no valid configuration for this case");
+		return false;
+	}
+	if (!Prepare())
+	{
+		m_errors.Add("preparation failed for this case");
+		return false;
+	}
+
+
 	// write language specific header
 	Header(os);
+	
 	// create ssc data container 
 	wxString data_name = "data";
 	CreateSSCData(os, data_name);
+	
 	// get list of compute modules from case configuration
+	wxArrayString simlist = cfg->Simulations;
+
 	// go through each module and create and set inputs and run and free
 
 	// list of outputs from metrics - go through and call output for each
