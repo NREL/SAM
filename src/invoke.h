@@ -19,6 +19,9 @@ lk::fcall_t* invoke_uicallback_funcs();
 // these functions expect a CaseCallbackContext* as user_data
 lk::fcall_t* invoke_casecallback_funcs();
 
+// these functions expect a CodeGenCallbackContext* as user_data
+lk::fcall_t* invoke_codegencallback_funcs();
+
 // these functions expect a ResultsCallbackContext* as user_data
 lk::fcall_t* invoke_resultscallback_funcs();
 

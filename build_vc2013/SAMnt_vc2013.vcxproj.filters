@@ -143,6 +143,7 @@
     <ClInclude Include="..\src\codegen.h">
       <Filter>Source</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\codegencallback.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\welcome.cpp">
