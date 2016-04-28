@@ -34,6 +34,10 @@
 #include "lossdiag.h"
 #include "stochastic.h"
 #include "registration.h"
+#include "codegencallback.h"
+
+
+
 
 static void fcall_dview(lk::invoke_t &cxt)
 {
@@ -374,6 +378,51 @@ static void fcall_financing( lk::invoke_t &cxt )
 	CaseCallbackContext &cc = *static_cast<CaseCallbackContext*>( cxt.user_data() ); 
 	cxt.result().assign( cc.GetCase().GetFinancing() );
 }
+
+static void fcall_codegen_metric(lk::invoke_t &cxt)
+{
+	LK_DOC("metric", "Add an output metric to the current configuration. Options include mode,deci,thousep,pre,post,label,scale", "(string:variable, [table:options]):none");
+
+	if (CodeGenCallbackContext *ci = static_cast<CodeGenCallbackContext*>(cxt.user_data()))
+	{
+		CodeGenData md;
+		md.var = cxt.arg(0).as_string();
+
+		if (cxt.arg_count() > 1)
+		{
+			lk::vardata_t &opts = cxt.arg(1).deref();
+			if (lk::vardata_t *x = opts.lookup("mode"))
+			{
+				wxString mm = x->as_string();
+				mm.MakeLower();
+				if (mm == "f") md.mode = 'f';
+				else if (mm == "e") md.mode = 'e';
+				else if (mm == "h") md.mode = 'h';
+			}
+
+			if (lk::vardata_t *x = opts.lookup("deci"))
+				md.deci = x->as_integer();
+
+			if (lk::vardata_t *x = opts.lookup("thousep"))
+				md.thousep = x->as_boolean();
+
+			if (lk::vardata_t *x = opts.lookup("pre"))
+				md.pre = x->as_string();
+
+			if (lk::vardata_t *x = opts.lookup("post"))
+				md.post = x->as_string();
+
+			if (lk::vardata_t *x = opts.lookup("label"))
+				md.label = x->as_string();
+
+			if (lk::vardata_t *x = opts.lookup("scale"))
+				md.scale = x->as_number();
+		}
+
+		ci->GetCodeGen_Base()->AddData(md);
+	}
+}
+
 
 static void fcall_metric( lk::invoke_t &cxt )
 {
@@ -2903,6 +2952,14 @@ lk::fcall_t* invoke_casecallback_funcs()
 		fcall_technology,
 		fcall_financing,
 		0 };
+	return (lk::fcall_t*)vec;
+}
+
+lk::fcall_t* invoke_codegencallback_funcs()
+{
+	static const lk::fcall_t vec[] = {
+		fcall_codegen_metric,
+			0 };
 	return (lk::fcall_t*)vec;
 }
 

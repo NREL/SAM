@@ -173,6 +173,7 @@ enum { __idFirst = wxID_HIGHEST+592,
 	ID_CASE_RESET_DEFAULTS,
 	ID_CASE_CLEAR_RESULTS,
 	ID_CASE_IMPORT,
+	ID_CASE_GENERATE_CODE,
 	ID_CASE_MOVE_LEFT,
 	ID_CASE_MOVE_RIGHT,
 	__idCaseMenuLast,
@@ -1059,6 +1060,8 @@ void MainWindow::OnCaseTabButton( wxCommandEvent &evt )
 #endif
 	//menu.AppendSeparator();
 	//menu.Append( ID_CASE_IMPORT, "Import" );
+	menu.AppendSeparator();
+	menu.Append(ID_CASE_GENERATE_CODE, "Generate code...");
 
 	menu.Popup( this, m_caseTabList->GetPopupMenuPosition( m_caseTabList->GetSelection() ) );
 }
@@ -1146,7 +1149,10 @@ void MainWindow::OnCaseMenu( wxCommandEvent &evt )
 		}
 		break;
 	case ID_CASE_EXCELEXCH:
-		ExcelExchange::ShowExcelExchangeDialog( c->ExcelExch(), cw );
+		ExcelExchange::ShowExcelExchangeDialog(c->ExcelExch(), cw);
+		break;
+	case ID_CASE_GENERATE_CODE:
+		CodeGen_Base::ShowCodeGenDialog( cw);
 		break;
 	case ID_CASE_REPORT:
 		cw->GenerateReport();
