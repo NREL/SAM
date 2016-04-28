@@ -8,6 +8,7 @@
 #include "equations.h"
 #include "simulation.h"
 #include "excelexch.h"
+#include "codegen.h"
 #include "parametric.h"
 #include "stochastic.h"
 #include "graph.h"
