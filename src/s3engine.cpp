@@ -4,11 +4,9 @@
 #include <sstream>
 
 #include <wex/utils.h>
-
+#include <wex/clipper/clipper.h>
 
 #include "s3engine.h"
-#include "s3clipper.h"
-
 
 #ifndef DTOR
 #define DTOR 0.0174532925199433
