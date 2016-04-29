@@ -8,10 +8,13 @@
 	Terminology: replacement versus repair
 	Module failures: Replacement versus repair? How to tell? How affecting warranty? How affecting next failure time? etc.
 	Error checking on arrays 
+	Set active case and error check
+	Get system lifetime from financial case, OR set it if no financials (or LCOE?)
+	HOW DOES DC DERATE WORK- YEAR 1 VERSUS OTHER YEARS? Right now this will crash if run for >1 year, I think...
 */
 
 // SYSTEM INPUTS-----------------------------------------------------------------------
-	num_modules = 9408;
+	num_modules = get('total_modules'); //9408;
 	system_lifetime_yrs = 1;
 
 // MODULE RELIABILITY INPUTS-----------------------------------------------------------
@@ -213,8 +216,17 @@ for (day = 1; day < system_lifetime_yrs * 365; day++)
 	//outln(day + '\t' + modules);
 }
 
+//count up cumulative failures
 for (m=0; m < num_modules; m++)
 	total_module_failures += modules[m].cumulative_failures;
+	
+//assign dc availability derate and run PV performance model
+//THIS DOESN'T WORK, HAVE TO RUN PV MODEL FROM HERE I THINK
+set('dc_availability', dc_availability);
+messages = '';
+success = simulate(messages, false);
+if (!success)
+	msgbox('Simulation failed.' + messages);
 
 //Test outputs
 outln(dc_availability);
