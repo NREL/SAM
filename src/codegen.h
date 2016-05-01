@@ -32,7 +32,7 @@ struct CodeGenData {
 class CodeGen_Base
 {
 public:
-	CodeGen_Base( Case *cc, const wxString &name );
+	CodeGen_Base( Case *cc, const wxString &folder );
 
 	void Clear();
 	Case *GetCase() { return m_case; }
@@ -47,7 +47,7 @@ public:
 	virtual bool FreeSSCModule(FILE *fp, wxString &name) = 0;
 //	virtual bool SetSSCVariable(FILE *fp)=0;
 //	virtual bool GetSSCVariable(FILE *fp)=0;
-	virtual bool Input(FILE *fp, ssc_data_t p_data, const char *name, wxString folder)=0;
+	virtual bool Input(FILE *fp, ssc_data_t p_data, const char *name, const wxString &folder)= 0;
 	// language specific output specification (e.g. printf)
 	virtual bool Output(FILE *fp)=0;
 	
@@ -60,7 +60,7 @@ public:
 
 protected:
 	Case *m_case;
-	wxString m_name;
+	wxString m_folder;
 	wxArrayString m_errors;
 	VarTable m_inputs;
 	std::vector<CodeGenData> m_data;
@@ -69,7 +69,7 @@ protected:
 class CodeGen_lk : virtual public CodeGen_Base
 {
 public:
-	CodeGen_lk(Case *cc, const wxString &name);
+	CodeGen_lk(Case *cc, const wxString &folder);
 	bool Header(FILE *fp);
 	bool CreateSSCData(FILE *fp, wxString &name);
 	bool FreeSSCData(FILE *fp, wxString &name);
@@ -78,7 +78,7 @@ public:
 	bool FreeSSCModule(FILE *fp, wxString &name);
 //	bool SetSSCVariable(FILE *fp);
 //	bool GetSSCVariable(FILE *fp);
-	bool Input(FILE *fp, ssc_data_t p_data, const char *name, wxString folder);
+	bool Input(FILE *fp, ssc_data_t p_data, const char *name, const wxString &folder);
 	// language specific output specification (e.g. printf)
 	bool Output(FILE *fp);
 
