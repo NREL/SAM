@@ -31,6 +31,7 @@
 #include "results.h"
 #include "invoke.h"
 
+#define CG_LEN_MAX 288
 
 CodeGenCallbackContext::CodeGenCallbackContext(CodeGen_Base *c, const wxString &desc)
 	: CaseCallbackContext(c->GetCase(), desc), m_cgb(c)
@@ -72,6 +73,7 @@ private:
 	CaseWindow *m_caseWin;
 	wxExtTextCtrl *txt_code_file;
 	wxChoice *choice_language;
+	wxString m_filename;
 
 public:
 	CodeGen_Dialog(wxWindow *parent, int id)
@@ -142,16 +144,19 @@ public:
 		// run GenerateCode function
 		int code = choice_language->GetSelection();
 		// TODO test for valid filename
-		wxString fn = txt_code_file->GetValue();
-		if (FILE *fp = fopen(fn.c_str(), "w"))
+		wxString folder = txt_code_file->GetValue();
+		folder.Replace("\\", "/");
+		wxString m_filename = folder;
+		if (code == 0) // lk
 		{
-			if (code== 0) // lk
+			m_filename = folder + "/" + SamApp::Project().GetCaseName(m_case) + ".lk";
+			if (FILE *fp = fopen(m_filename.c_str(), "w"))
 			{
 				// testing - will use derived class for each language
-				CodeGen_lk *cg = new CodeGen_lk(m_case, "test ");
+				CodeGen_lk *cg = new CodeGen_lk(m_case, folder);
 				cg->GenerateCode(fp);
+				fclose(fp);
 			}
-			fclose(fp);
 		}
 	}
 
@@ -164,8 +169,6 @@ public:
 		wxString fn = txt_code_file->GetValue();
 		wxLaunchDefaultApplication(fn);
 	}
-
-
 
 	void OnHelp(wxCommandEvent &)
 	{
@@ -321,27 +324,9 @@ static bool VarValueToSSC( VarValue *vv, ssc_data_t pdata, const wxString &sscna
 }
 
 
-static void write_array_string(wxDataOutputStream &out, wxArrayString &list)
-{
-	out.Write32(list.size());
-	for (size_t i = 0; i<list.size(); i++)
-		out.WriteString(list[i]);
-}
 
-static void read_array_string(wxDataInputStream &in, wxArrayString &list)
-{
-	list.Clear();
-	size_t n = in.Read32();
-	for (size_t i = 0; i<n; i++)
-		list.Add(in.ReadString());
-}
-
-// end of prototype from simulation.cpp
-
-
-
-CodeGen_Base::CodeGen_Base( Case *cc, const wxString &name )
-	: m_case( cc ), m_name( name )
+CodeGen_Base::CodeGen_Base( Case *cc, const wxString &folder )
+	: m_case( cc ), m_folder( folder )
 {
 }
 
@@ -475,7 +460,7 @@ bool CodeGen_Base::GenerateCode(FILE *fp)
 		while (name)
 		{
 			//dump_variable(fp, p_data, name);
-			Input(fp, p_data, name, m_name);
+			Input(fp, p_data, name, m_folder);
 			name = ssc_data_next(p_data);
 		}
 		RunSSCModule(fp, simlist[kk]);
@@ -531,7 +516,6 @@ void CodeGen_Base::AddData(CodeGenData md)
 	m_data.push_back(md); 
 }
 
-
 bool CodeGen_Base::Ok()
 {
 	return m_errors.size() == 0;
@@ -552,7 +536,7 @@ bool CodeGen_Base::ShowCodeGenDialog(CaseWindow *cw)
 
 
 
-CodeGen_lk::CodeGen_lk(Case *cc, const wxString &name) : CodeGen_Base(cc, name)
+CodeGen_lk::CodeGen_lk(Case *cc, const wxString &folder) : CodeGen_Base(cc, folder)
 {
 
 }
@@ -565,7 +549,7 @@ bool CodeGen_lk::Output(FILE *fp)
 	return true;
 }
 
-bool CodeGen_lk::Input(FILE *fp, ssc_data_t p_data, const char *name, wxString Folder)
+bool CodeGen_lk::Input(FILE *fp, ssc_data_t p_data, const char *name, const wxString &folder)
 {
 	ssc_number_t value;
 	ssc_number_t *p;
@@ -588,33 +572,72 @@ bool CodeGen_lk::Input(FILE *fp, ssc_data_t p_data, const char *name, wxString F
 		break;
 	case SSC_ARRAY:
 		p = ::ssc_data_get_array(p_data, name, &len);
-		fprintf(fp, "var( '%s', [", name);
-		for (int i = 0; i<(len - 1); i++)
-		{
-			dbl_value = (double)p[i];
-			if (dbl_value > 1e38) dbl_value = 1e38;
-			fprintf(fp, " %lg,", dbl_value);
+		if (len > CG_LEN_MAX)
+		{ // separate csv file (var_name.csv in folder) for each variable
+			wxCSVData csv;
+			wxString fn = folder + "/" + wxString(name) + ".csv";
+			// write out as single column data for compatibility with csvread in SDKTool
+			for (int i = 0; i < len; i++)
+			{
+				dbl_value = (double)p[i];
+				if (dbl_value > 1e38) dbl_value = 1e38;
+//				str_value = wxString::Format("%lg", dbl_value);
+				csv.Set(i, 0, wxString::Format("%lg", dbl_value));
+			}
+			csv.WriteFile(fn);
+//			fprintf(fp, "var( '%s', csvread('%s'));", name, (const char*)fn.c_str());
+			fprintf(fp, "var( '%s', real_array(read_text_file('%s')));", name, (const char*)fn.c_str());
 		}
-		dbl_value = (double)p[len - 1];
-		if (dbl_value > 1e38) dbl_value = 1e38;
-		fprintf(fp, " %lg ] );\n", dbl_value);
+		else
+		{
+			fprintf(fp, "var( '%s', [", name);
+			for (int i = 0; i < (len - 1); i++)
+			{
+				dbl_value = (double)p[i];
+				if (dbl_value > 1e38) dbl_value = 1e38;
+				fprintf(fp, " %lg,", dbl_value);
+			}
+			dbl_value = (double)p[len - 1];
+			if (dbl_value > 1e38) dbl_value = 1e38;
+			fprintf(fp, " %lg ] );\n", dbl_value);
+		}
 		break;
 	case SSC_MATRIX:
 		p = ::ssc_data_get_matrix(p_data, name, &nr, &nc);
 		len = nr*nc;
-		fprintf(fp, "var( '%s', \n[ [", name);
-		for (int k = 0; k<(len - 1); k++)
-		{
-			dbl_value = (double)p[k];
-			if (dbl_value > 1e38) dbl_value = 1e38;
-			if ((k + 1) % nc == 0)
-				fprintf(fp, " %lg ], \n[", dbl_value);
-			else
-				fprintf(fp, " %lg,", dbl_value);
+		if (len > CG_LEN_MAX)
+		{ // separate csv file (var_name.csv in folder) for each variable
+			wxCSVData csv;
+			wxString fn = folder + "/" + wxString(name) + ".csv";
+			for (int r = 0; r < nr; r++)
+			{
+				for (int c = 0; r < nc; c++)
+				{
+					dbl_value = (double)p[r*nc+c];
+					if (dbl_value > 1e38) dbl_value = 1e38;
+					csv.Set(r, c, wxString::Format("%lg", dbl_value));
+				}
+			}
+			csv.WriteFile(fn);
+			fprintf(fp, "var( '%s', csvread('%s'));", name, (const char*)fn.c_str());
 		}
-		dbl_value = (double)p[len - 1];
-		if (dbl_value > 1e38) dbl_value = 1e38;
-		fprintf(fp, " %lg ] ] );\n", dbl_value);
+		else
+		{
+			fprintf(fp, "var( '%s', \n[ [", name);
+			for (int k = 0; k < (len - 1); k++)
+			{
+				dbl_value = (double)p[k];
+				if (dbl_value > 1e38) dbl_value = 1e38;
+				if ((k + 1) % nc == 0)
+					fprintf(fp, " %lg ], \n[", dbl_value);
+				else
+					fprintf(fp, " %lg,", dbl_value);
+			}
+			dbl_value = (double)p[len - 1];
+			if (dbl_value > 1e38) dbl_value = 1e38;
+			fprintf(fp, " %lg ] ] );\n", dbl_value);
+		}
+		// TODO tables in future
 	}
 	return true;
 }
