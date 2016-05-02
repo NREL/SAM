@@ -47,12 +47,12 @@ public:
 	virtual bool FreeSSCModule(FILE *fp, wxString &name) = 0;
 //	virtual bool SetSSCVariable(FILE *fp)=0;
 //	virtual bool GetSSCVariable(FILE *fp)=0;
-	virtual bool Input(FILE *fp, ssc_data_t p_data, const char *name, const wxString &folder)= 0;
+	virtual bool Input(FILE *fp, ssc_data_t p_data, const char *name, const wxString &folder, const int &array_matrix_threshold) = 0;
 	// language specific output specification (e.g. printf)
 	virtual bool Output(FILE *fp)=0;
 	
 	// try to make same across languages
-	bool GenerateCode(FILE *fp);
+	bool GenerateCode(FILE *fp, const int &array_matrix_threshold);
 	bool Prepare();
 	bool Ok();
 	void AddData(CodeGenData md);
@@ -78,7 +78,7 @@ public:
 	bool FreeSSCModule(FILE *fp, wxString &name);
 //	bool SetSSCVariable(FILE *fp);
 //	bool GetSSCVariable(FILE *fp);
-	bool Input(FILE *fp, ssc_data_t p_data, const char *name, const wxString &folder);
+	bool Input(FILE *fp, ssc_data_t p_data, const char *name, const wxString &folder, const int &array_matrix_threshold);
 	// language specific output specification (e.g. printf)
 	bool Output(FILE *fp);
 

@@ -31,8 +31,6 @@
 #include "results.h"
 #include "invoke.h"
 
-#define CG_LEN_MAX 288
-
 CodeGenCallbackContext::CodeGenCallbackContext(CodeGen_Base *c, const wxString &desc)
 	: CaseCallbackContext(c->GetCase(), desc), m_cgb(c)
 {
@@ -53,11 +51,12 @@ void CodeGenCallbackContext::SetupLibraries(lk::env_t *env)
 
 
 enum {
-	ID_btn_select_file,
-	ID_btn_generate_file,
-	ID_btn_open_file,
-	ID_txt_code_file,
-	ID_choice_language
+	ID_btn_select_folder,
+	ID_btn_generate,
+	ID_btn_open_folder,
+	ID_txt_code_folder,
+	ID_choice_language,
+	ID_choice_array_matrix_threshold
 };
 
 
@@ -71,9 +70,10 @@ private:
 	Case *m_case;
 	ConfigInfo *m_ci;
 	CaseWindow *m_caseWin;
-	wxExtTextCtrl *txt_code_file;
+	wxExtTextCtrl *txt_code_folder;
 	wxChoice *choice_language;
-	wxString m_filename;
+	wxChoice *choice_array_matrix_threshold;
+	wxString m_foldername;
 
 public:
 	CodeGen_Dialog(wxWindow *parent, int id)
@@ -81,7 +81,7 @@ public:
 		wxDEFAULT_DIALOG_STYLE | wxRESIZE_BORDER)
 	{
 
-		txt_code_file = new wxExtTextCtrl(this, ID_txt_code_file, "<output file>");
+		txt_code_folder = new wxExtTextCtrl(this, ID_txt_code_folder, "");
  
 		wxArrayString data_languages;
 		// ids or just index values from here
@@ -90,23 +90,44 @@ public:
 		choice_language = new wxChoice(this, ID_choice_language, wxDefaultPosition, wxDefaultSize, data_languages);
 		choice_language->SetSelection(0);
 
+		wxArrayString data_threshold;
+		// ids or just index values from here
+		data_threshold.Add("no separate files");
+		data_threshold.Add("all in separate files");
+		data_threshold.Add(">288 elements (diurnal)");
+		data_threshold.Add(">20 elements (typical analysis period)");
+		choice_array_matrix_threshold = new wxChoice(this, ID_choice_language, wxDefaultPosition, wxDefaultSize, data_threshold);
+		choice_array_matrix_threshold->SetSelection(2); // default 288
+
 		wxBoxSizer *sz1 = new wxBoxSizer(wxHORIZONTAL);
-		sz1->Add(new wxStaticText(this, wxID_ANY, "Generated file:"), 0, wxALL | wxALIGN_CENTER_VERTICAL, 4);
-		sz1->Add(txt_code_file, 1, wxALL | wxALIGN_CENTER_VERTICAL, 4);
-		sz1->Add(new wxButton(this, ID_btn_select_file, "...", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL | wxALIGN_CENTER_VERTICAL, 4);
+		sz1->Add(new wxStaticText(this, wxID_ANY, "Output folder:"), 0, wxALL | wxALIGN_CENTER_VERTICAL, 4);
+		sz1->Add(txt_code_folder, 1, wxALL | wxALIGN_CENTER_VERTICAL, 4);
+		sz1->Add(new wxButton(this, ID_btn_select_folder, "...", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL | wxALIGN_CENTER_VERTICAL, 4);
 
 		wxBoxSizer *sz2 = new wxBoxSizer(wxHORIZONTAL);
-		sz2->Add(new wxStaticText(this, wxID_ANY, "Desired language:"), 0, wxALL | wxEXPAND, 4);
+		sz2->Add(new wxStaticText(this, wxID_ANY, "Output code language:"), 0, wxALL | wxEXPAND, 4);
 		sz2->Add(choice_language, 0, wxALL | wxEXPAND, 4);
-		sz2->Add(new wxButton(this, ID_btn_generate_file, "Generate File", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL | wxEXPAND, 1);
-		sz2->Add(new wxButton(this, ID_btn_open_file, "Open file", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL | wxEXPAND, 1);
+
+		wxBoxSizer *sz3 = new wxBoxSizer(wxHORIZONTAL);
+		sz3->Add(new wxStaticText(this, wxID_ANY, "Separate files for arrays and matrices:"), 0, wxALL | wxEXPAND, 4);
+		sz3->Add(choice_array_matrix_threshold, 0, wxALL | wxEXPAND, 4);
+
+
+		wxBoxSizer *sz4 = new wxBoxSizer(wxHORIZONTAL);
+		sz4->Add(new wxButton(this, wxHELP, "Help", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL | wxEXPAND, 1);
+		sz4->AddStretchSpacer();
+		sz4->Add(new wxButton(this, ID_btn_generate, "Generate code", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL | wxEXPAND, 1);
+		sz4->Add(new wxButton(this, ID_btn_open_folder, "Open folder", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL | wxEXPAND, 1);
+		sz4->Add(new wxButton(this, wxCANCEL, "Close", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL | wxEXPAND, 1);
 
 	
 
 		wxBoxSizer *sizer = new wxBoxSizer(wxVERTICAL);
 		sizer->Add(sz1, 0, wxALL | wxEXPAND, 5);
 		sizer->Add(sz2, 1, wxALL | wxEXPAND, 5);
-		sizer->Add(CreateButtonSizer(wxHELP | wxOK | wxCANCEL), 0, wxALL | wxEXPAND, 10);
+		sizer->Add(sz3, 1, wxALL | wxEXPAND, 5);
+		sizer->Add(sz4, 0, wxALL | wxEXPAND, 5);
+		//sizer->Add(CreateButtonSizer(wxHELP | wxOK | wxCANCEL), 0, wxALL | wxEXPAND, 10);
 		SetSizerAndFit(sizer);
 	}
 
@@ -122,51 +143,70 @@ public:
 
 	}
 
+	int GetThreshold()
+	{
+		int threshold = 288; // default
+		switch (choice_array_matrix_threshold->GetSelection())
+		{
+		case 0: // none (greater than 10,000 always written out)
+			threshold = 10000;
+			break;
+		case 1: // all written to separate files
+			threshold = 0;
+			break;
+		case 2: // diurnal
+			threshold = 288;
+			break;
+		case 3: // analysis period
+			threshold = 20;
+			break;
+		default:
+			threshold = 288;
+		}
+		return threshold;
+	}
 
-	void OnCodeFile(wxCommandEvent &evt)
+	void OnCodeFolder(wxCommandEvent &evt)
 	{
 		if (!m_case) return;
 
-		wxFileDialog dlg(this, "Specify an output file", "", "", "Code Files (*.*)|*.*");
+		wxDirDialog dlg(this, "Select an output folder", ::wxGetHomeDir(), wxDD_DEFAULT_STYLE | wxDD_DIR_MUST_EXIST);
 		if (dlg.ShowModal() == wxID_OK)
 		{
 			wxString fn = dlg.GetPath();
-			if (wxPathOnly(fn) == wxPathOnly(SamApp::Window()->GetProjectFileName()))
-				fn = dlg.GetFilename();
-
-			txt_code_file->SetValue(fn);
+			txt_code_folder->SetValue(fn);
 		}
 	}
 
-	void OnGenerateFile(wxCommandEvent &)
+	void OnGenerate(wxCommandEvent &)
 	{
 		// create appropriate language class with case passed to constructor
 		// run GenerateCode function
 		int code = choice_language->GetSelection();
 		// TODO test for valid filename
-		wxString folder = txt_code_file->GetValue();
+		wxString folder = txt_code_folder->GetValue();
 		folder.Replace("\\", "/");
-		wxString m_filename = folder;
+		wxString m_foldername = folder;
+		int threshold = GetThreshold();
 		if (code == 0) // lk
 		{
-			m_filename = folder + "/" + SamApp::Project().GetCaseName(m_case) + ".lk";
-			if (FILE *fp = fopen(m_filename.c_str(), "w"))
+			m_foldername = folder + "/" + SamApp::Project().GetCaseName(m_case) + ".lk";
+			if (FILE *fp = fopen(m_foldername.c_str(), "w"))
 			{
 				// testing - will use derived class for each language
 				CodeGen_lk *cg = new CodeGen_lk(m_case, folder);
-				cg->GenerateCode(fp);
+				cg->GenerateCode(fp, threshold);
 				fclose(fp);
 			}
 		}
 	}
 
-	void OnOpenFile(wxCommandEvent &)
+	void OnOpenFolder(wxCommandEvent &)
 	{
-		// create appropriate language class with case passed to constructor
 		// run GenerateCode function
 		int code = choice_language->GetSelection();
-		// TODO test for valid filename
-		wxString fn = txt_code_file->GetValue();
+		// 
+		wxString fn = txt_code_folder->GetValue();
 		wxLaunchDefaultApplication(fn);
 	}
 
@@ -175,14 +215,20 @@ public:
 		SamApp::ShowHelp("code_generation");
 	}
 
+	void OnCancel(wxCommandEvent &)
+	{
+		Close();
+	}
+
 	DECLARE_EVENT_TABLE();
 };
 
 BEGIN_EVENT_TABLE(CodeGen_Dialog, wxDialog)
-EVT_BUTTON(ID_btn_select_file, CodeGen_Dialog::OnCodeFile)
-EVT_BUTTON(ID_btn_generate_file, CodeGen_Dialog::OnGenerateFile)
-EVT_BUTTON(ID_btn_open_file, CodeGen_Dialog::OnOpenFile)
-EVT_BUTTON(wxID_HELP, CodeGen_Dialog::OnHelp)
+EVT_BUTTON(ID_btn_select_folder, CodeGen_Dialog::OnCodeFolder)
+EVT_BUTTON(ID_btn_generate, CodeGen_Dialog::OnGenerate)
+EVT_BUTTON(ID_btn_open_folder, CodeGen_Dialog::OnOpenFolder)
+EVT_BUTTON(wxHELP, CodeGen_Dialog::OnHelp)
+EVT_BUTTON(wxCANCEL, CodeGen_Dialog::OnCancel)
 END_EVENT_TABLE()
 
 
@@ -358,7 +404,7 @@ bool CodeGen_Base::Prepare()
 }
 
 
-bool CodeGen_Base::GenerateCode(FILE *fp)
+bool CodeGen_Base::GenerateCode(FILE *fp, const int &array_matrix_threshold)
 {
 	ConfigInfo *cfg = m_case->GetConfiguration();
 
@@ -455,20 +501,29 @@ bool CodeGen_Base::GenerateCode(FILE *fp)
 				}
 			}
 		}
-
+		/* avoid duplication of inputs 
 		const char *name = ssc_data_first(p_data);
 		while (name)
 		{
-			//dump_variable(fp, p_data, name);
-			Input(fp, p_data, name, m_folder);
+			Input(fp, p_data, name, m_folder, array_matrix_threshold);
 			name = ssc_data_next(p_data);
 		}
 		RunSSCModule(fp, simlist[kk]);
-//		fprintf(fp, "run('%s');\n", (const char*)simlist[kk].c_str());
-
+		*/
 	}
 
-	// outputs
+	const char *name = ssc_data_first(p_data);
+	while (name)
+	{
+		Input(fp, p_data, name, m_folder, array_matrix_threshold);
+		name = ssc_data_next(p_data);
+	}
+
+	// run compute modules in sequence (INOUT variables will be updated
+	for (size_t kk = 0; kk < simlist.size(); kk++)
+		RunSSCModule(fp, simlist[kk]);
+
+	// outputs - metrics for case
 	m_data.clear();
 	CodeGenCallbackContext cc(this, "Metrics callback: " + cfg->Technology + ", " + cfg->Financing);
 
@@ -486,10 +541,6 @@ bool CodeGen_Base::GenerateCode(FILE *fp)
 			cc.Invoke(metricscb, SamApp::GlobalCallbacks().GetEnv());
 	}
 
-	/*
-	for (size_t ii = 0; ii < m_data.size(); ii++)
-		fprintf(fp, "outln('%s ' + var('%s'));\n", (const char*)m_data[ii].label.c_str(), (const char*)m_data[ii].var.c_str());
-*/
 	if (!Output(fp))
 	{
 		m_errors.Add("Output failed");
@@ -549,7 +600,7 @@ bool CodeGen_lk::Output(FILE *fp)
 	return true;
 }
 
-bool CodeGen_lk::Input(FILE *fp, ssc_data_t p_data, const char *name, const wxString &folder)
+bool CodeGen_lk::Input(FILE *fp, ssc_data_t p_data, const char *name, const wxString &folder, const int &array_matrix_threshold)
 {
 	ssc_number_t value;
 	ssc_number_t *p;
@@ -572,7 +623,7 @@ bool CodeGen_lk::Input(FILE *fp, ssc_data_t p_data, const char *name, const wxSt
 		break;
 	case SSC_ARRAY:
 		p = ::ssc_data_get_array(p_data, name, &len);
-		if (len > CG_LEN_MAX)
+		if (len > array_matrix_threshold)
 		{ // separate csv file (var_name.csv in folder) for each variable
 			wxCSVData csv;
 			wxString fn = folder + "/" + wxString(name) + ".csv";
@@ -586,7 +637,7 @@ bool CodeGen_lk::Input(FILE *fp, ssc_data_t p_data, const char *name, const wxSt
 			}
 			csv.WriteFile(fn);
 //			fprintf(fp, "var( '%s', csvread('%s'));", name, (const char*)fn.c_str());
-			fprintf(fp, "var( '%s', real_array(read_text_file('%s')));", name, (const char*)fn.c_str());
+			fprintf(fp, "var( '%s', real_array(read_text_file('%s')));\n", name, (const char*)fn.c_str());
 		}
 		else
 		{
@@ -605,13 +656,13 @@ bool CodeGen_lk::Input(FILE *fp, ssc_data_t p_data, const char *name, const wxSt
 	case SSC_MATRIX:
 		p = ::ssc_data_get_matrix(p_data, name, &nr, &nc);
 		len = nr*nc;
-		if (len > CG_LEN_MAX)
+		if (len > array_matrix_threshold)
 		{ // separate csv file (var_name.csv in folder) for each variable
 			wxCSVData csv;
 			wxString fn = folder + "/" + wxString(name) + ".csv";
 			for (int r = 0; r < nr; r++)
 			{
-				for (int c = 0; r < nc; c++)
+				for (int c = 0; c < nc; c++)
 				{
 					dbl_value = (double)p[r*nc+c];
 					if (dbl_value > 1e38) dbl_value = 1e38;
@@ -619,7 +670,7 @@ bool CodeGen_lk::Input(FILE *fp, ssc_data_t p_data, const char *name, const wxSt
 				}
 			}
 			csv.WriteFile(fn);
-			fprintf(fp, "var( '%s', csvread('%s'));", name, (const char*)fn.c_str());
+			fprintf(fp, "var( '%s', csvread('%s'));\n", name, (const char*)fn.c_str());
 		}
 		else
 		{
