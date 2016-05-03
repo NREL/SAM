@@ -58,7 +58,8 @@ OBJECTS = ide.o \
 	ptlayoutctrl.o \
 	troughloop.o \
 	shadingfactors.o \
-	materials.o
+	materials.o \
+	codegen.o
 
 TARGET = SAM
 
