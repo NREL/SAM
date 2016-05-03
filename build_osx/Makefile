@@ -20,7 +20,6 @@ OBJECTS = ide.o \
 	defmgr.o \
 	urdb.o \
 	macro.o \
-	s3clipper.o \
 	s3engine.o \
 	s3objects.o \
 	s3tool.o \
