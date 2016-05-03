@@ -22,7 +22,6 @@ LDFLAGS = $(SSCLIB) $(LKLIB) $(WEXLIB) `wx-config-3 --libs propgrid` `wx-config-
 OBJECTS = ide.o \
 	lossdiag.o \
 	defmgr.o \
-	s3clipper.o \
 	s3engine.o \
 	s3objects.o \
 	s3tool.o \
