@@ -183,9 +183,14 @@ public:
 		// create appropriate language class with case passed to constructor
 		// run GenerateCode function
 		int code = choice_language->GetSelection();
-		// TODO test for valid filename
+		// TODO test for valid folder
 		wxString folder = txt_code_folder->GetValue();
 		folder.Replace("\\", "/");
+		if (!wxDirExists(folder))
+		{
+			wxMessageBox(wxString::Format("Error: the path '%s' does not exist", (const char*)folder.c_str()), "Path Error", wxICON_ERROR);
+			return;
+		}
 		wxString m_foldername = folder;
 		int threshold = GetThreshold();
 		if (code == 0) // lk
@@ -193,10 +198,21 @@ public:
 			m_foldername = folder + "/" + SamApp::Project().GetCaseName(m_case) + ".lk";
 			if (FILE *fp = fopen(m_foldername.c_str(), "w"))
 			{
-				// testing - will use derived class for each language
 				CodeGen_lk *cg = new CodeGen_lk(m_case, folder);
 				cg->GenerateCode(fp, threshold);
 				fclose(fp);
+				if (!cg->Ok())	wxMessageBox(cg->GetErrors(), "Generate Errors", wxICON_ERROR);
+			}
+		}
+		else if (code == 1) // c
+		{
+			m_foldername = folder + "/" + SamApp::Project().GetCaseName(m_case) + ".c";
+			if (FILE *fp = fopen(m_foldername.c_str(), "w"))
+			{
+				CodeGen_c *cg = new CodeGen_c(m_case, folder);
+				cg->GenerateCode(fp, threshold);
+				fclose(fp);
+				if (!cg->Ok())	wxMessageBox(cg->GetErrors(), "Generate Errors", wxICON_ERROR);
 			}
 		}
 	}
@@ -232,80 +248,94 @@ EVT_BUTTON(wxCANCEL, CodeGen_Dialog::OnCancel)
 END_EVENT_TABLE()
 
 
-/*
 
-// prototype for each language
-static void dump_variable(FILE *fp, ssc_data_t p_data, const char *name)
+static bool VarValueToSSC(VarValue *vv, ssc_data_t pdata, const wxString &sscname)
 {
-	ssc_number_t value;
-	ssc_number_t *p;
-	int len, nr, nc;
-	wxString str_value;
-	double dbl_value;
-	int type = ::ssc_data_query(p_data, name);
-	switch (type)
-	{
-	case SSC_STRING:
-		str_value = wxString::FromUTF8(::ssc_data_get_string(p_data, name));
-		str_value.Replace("\\", "/");
-		fprintf(fp, "var( '%s', '%s' );\n", name, (const char*)str_value.c_str());
-		break;
-	case SSC_NUMBER:
-		::ssc_data_get_number(p_data, name, &value);
-		dbl_value = (double)value;
-		if (dbl_value > 1e38) dbl_value = 1e38;
-		fprintf(fp, "var( '%s', %lg );\n", name, dbl_value);
-		break;
-	case SSC_ARRAY:
-		p = ::ssc_data_get_array(p_data, name, &len);
-		fprintf(fp, "var( '%s', [", name);
-		for (int i = 0; i<(len - 1); i++)
-		{
-			dbl_value = (double)p[i];
-			if (dbl_value > 1e38) dbl_value = 1e38;
-			fprintf(fp, " %lg,", dbl_value);
-		}
-		dbl_value = (double)p[len - 1];
-		if (dbl_value > 1e38) dbl_value = 1e38;
-		fprintf(fp, " %lg ] );\n", dbl_value);
-		break;
-	case SSC_MATRIX:
-		p = ::ssc_data_get_matrix(p_data, name, &nr, &nc);
-		len = nr*nc;
-		fprintf(fp, "var( '%s', \n[ [", name);
-		for (int k = 0; k<(len - 1); k++)
-		{
-			dbl_value = (double)p[k];
-			if (dbl_value > 1e38) dbl_value = 1e38;
-			if ((k + 1) % nc == 0)
-				fprintf(fp, " %lg ], \n[", dbl_value);
-			else
-				fprintf(fp, " %lg,", dbl_value);
-		}
-		dbl_value = (double)p[len - 1];
-		if (dbl_value > 1e38) dbl_value = 1e38;
-		fprintf(fp, " %lg ] ] );\n", dbl_value);
-	}
-}
-
-*/
-
-
-
-
-
-
-static bool VarValueToSSC( VarValue *vv, ssc_data_t pdata, const wxString &sscname )
-{
-	switch( vv->Type() )
+	switch (vv->Type())
 	{
 	case VV_NUMBER:
-		ssc_data_set_number( pdata, sscname.c_str(), (ssc_number_t)vv->Value() );
+		ssc_data_set_number(pdata, sscname.c_str(), (ssc_number_t)vv->Value());
 		break;
 	case VV_ARRAY:
 	{
 		size_t n;
-		float *p = vv->Array( &n );
+		float *p = vv->Array(&n);
+		if (sizeof(ssc_number_t) == sizeof(float))
+			ssc_data_set_array(pdata, sscname.c_str(), p, n);
+		else
+		{
+			ssc_number_t *pp = new ssc_number_t[n];
+			for (size_t i = 0; i<n; i++)
+				pp[i] = p[i];
+
+			ssc_data_set_array(pdata, sscname.c_str(), pp, n);
+
+			delete[] pp;
+		}
+	}
+	break;
+	case VV_MATRIX:
+	{
+		matrix_t<float> &fl = vv->Matrix();
+		if (sizeof(ssc_number_t) == sizeof(float))
+		{
+			ssc_data_set_matrix(pdata, sscname.c_str(), fl.data(), fl.nrows(), fl.ncols());
+		}
+		else
+		{
+			ssc_number_t *pp = new ssc_number_t[fl.nrows() * fl.ncols()];
+			size_t n = 0;
+			for (size_t r = 0; r < fl.nrows(); r++)
+				for (size_t c = 0; c<fl.ncols(); c++)
+					pp[n++] = (ssc_number_t)fl(r, c);
+
+			ssc_data_set_matrix(pdata, sscname.c_str(), pp, fl.nrows(), fl.ncols());
+			delete[] pp;
+		}
+	}
+	break;
+	case VV_STRING:
+		ssc_data_set_string(pdata, sscname.c_str(), vv->String().c_str());
+		break;
+	case VV_TABLE:
+	{
+		ssc_data_t tab = ssc_data_create();
+		VarTable &vt = vv->Table();
+		for (VarTable::iterator it = vt.begin();
+			it != vt.end();
+			++it)
+		{
+			VarValueToSSC(it->second, tab, it->first);
+		}
+
+		ssc_data_set_table(pdata, sscname.c_str(), tab);
+
+		ssc_data_free(tab); // ssc_data_set_table above makes a deep copy, so free this here
+	}
+	break;
+
+
+	case VV_INVALID:
+	default:
+		return false;
+	}
+
+	return true;
+}
+
+
+
+static bool TypeToSSC( int Type, ssc_data_t pdata, const wxString &sscname )
+{
+//	switch( Type )
+//	{
+//	case VV_NUMBER:
+		ssc_data_set_number( pdata, sscname.c_str(), (ssc_number_t)0 );
+/*		break;
+	case VV_ARRAY:
+	{
+		size_t n=2;
+		float p[2] = { 0.0, 0.0 };
 		if ( sizeof(ssc_number_t) == sizeof( float ) )
 			ssc_data_set_array( pdata, sscname.c_str(), p, n );
 		else
@@ -322,7 +352,7 @@ static bool VarValueToSSC( VarValue *vv, ssc_data_t pdata, const wxString &sscna
 		break;
 	case VV_MATRIX:
 	{
-		matrix_t<float> &fl = vv->Matrix();
+		matrix_t<float> fl(2,2,0.0);
 		if ( sizeof(ssc_number_t) == sizeof(float) )
 		{
 			ssc_data_set_matrix( pdata, sscname.c_str(), fl.data(), fl.nrows(), fl.ncols() );
@@ -341,31 +371,14 @@ static bool VarValueToSSC( VarValue *vv, ssc_data_t pdata, const wxString &sscna
 	}
 		break;
 	case VV_STRING:
-		ssc_data_set_string( pdata, sscname.c_str(), vv->String().c_str() );
+		ssc_data_set_string( pdata, sscname.c_str(), "name" );
 		break;
-	case VV_TABLE:
-	{
-		ssc_data_t tab = ssc_data_create();
-		VarTable &vt = vv->Table();
-		for( VarTable::iterator it = vt.begin();
-			it != vt.end();
-			++it )
-		{
-			VarValueToSSC( it->second, tab, it->first );
-		}
-
-		ssc_data_set_table( pdata, sscname.c_str(), tab );
-
-		ssc_data_free( tab ); // ssc_data_set_table above makes a deep copy, so free this here
-	}
-		break;
-
 
 	case VV_INVALID:
 	default:
 		return false;
 	}
-
+*/
 	return true;
 }
 
@@ -431,6 +444,9 @@ bool CodeGen_Base::GenerateCode(FILE *fp, const int &array_matrix_threshold)
 
 	// go through and translate all SAM UI variables to SSC variables
 	ssc_data_t p_data = ssc_data_create();
+
+	// go through and get outputs for determining types
+	ssc_data_t p_data_output = ssc_data_create();
 
 	for (size_t kk = 0; kk < simlist.size(); kk++)
 	{
@@ -500,6 +516,20 @@ bool CodeGen_Base::GenerateCode(FILE *fp, const int &array_matrix_threshold)
 						m_errors.Add("SSC requires input '" + name + "', but was not found in the SAM UI or from previous simulations");
 				}
 			}
+			else if (var_type == SSC_OUTPUT)
+			{
+				wxString field;
+				int pos = name.Find(':');
+				if (pos != wxNOT_FOUND)
+				{
+					field = name.Mid(pos + 1);
+					name = name.Left(pos);
+				}
+
+				if (!TypeToSSC(data_type, p_data_output, name))
+					m_errors.Add("Error for output " + name);
+
+			}
 		}
 		/* avoid duplication of inputs 
 		const char *name = ssc_data_first(p_data);
@@ -512,17 +542,27 @@ bool CodeGen_Base::GenerateCode(FILE *fp, const int &array_matrix_threshold)
 		*/
 	}
 
+	// write language specific header
+	if (!Header(fp))
+		m_errors.Add("Header failed");
+
+
+
 	const char *name = ssc_data_first(p_data);
 	while (name)
 	{
-		Input(fp, p_data, name, m_folder, array_matrix_threshold);
+		if (!Input(fp, p_data, name, m_folder, array_matrix_threshold))
+			m_errors.Add(wxString::Format("Input %s write failed",name));
 		name = ssc_data_next(p_data);
 	}
 
 	// run compute modules in sequence (INOUT variables will be updated
 	for (size_t kk = 0; kk < simlist.size(); kk++)
+	{
+		CreateSSCModule(fp, simlist[kk]);
 		RunSSCModule(fp, simlist[kk]);
-
+		FreeSSCModule(fp);
+	}
 	// outputs - metrics for case
 	m_data.clear();
 	CodeGenCallbackContext cc(this, "Metrics callback: " + cfg->Technology + ", " + cfg->Financing);
@@ -541,25 +581,13 @@ bool CodeGen_Base::GenerateCode(FILE *fp, const int &array_matrix_threshold)
 			cc.Invoke(metricscb, SamApp::GlobalCallbacks().GetEnv());
 	}
 
-	if (!Output(fp))
-	{
+	if (!Output(fp, p_data_output))
 		m_errors.Add("Output failed");
-	}
-	/*
-	// write language specific header
-	Header(fp);
 
-	// create ssc data container 
-	wxString data_name = "data";
-	CreateSSCData(fp, data_name);
+	if (!Footer(fp))
+		m_errors.Add("Footer failed");
 
-	// list of outputs from metrics - go through and call output for each
-	wxString out_name = "";
-	Output(fp, out_name);
-	// clean up
-	FreeSSCData(fp, data_name);
-	*/
-	return true;
+	return (m_errors.Count() == 0);
 }
 
 void CodeGen_Base::AddData(CodeGenData md) 
@@ -585,15 +613,22 @@ bool CodeGen_Base::ShowCodeGenDialog(CaseWindow *cw)
 		return false;
 }
 
+wxString CodeGen_Base::GetErrors()
+{
+	wxString ret = "";
+	for (size_t i = 0; i < m_errors.Count(); i++)
+		ret += m_errors[i] + "\n";
+	return ret;
+}
 
+// lk code generation class
 
 CodeGen_lk::CodeGen_lk(Case *cc, const wxString &folder) : CodeGen_Base(cc, folder)
 {
-
 }
 
 
-bool CodeGen_lk::Output(FILE *fp)
+bool CodeGen_lk::Output(FILE *fp, ssc_data_t p_data)
 {
 	for (size_t ii = 0; ii < m_data.size(); ii++)
 		fprintf(fp, "outln('%s ' + var('%s'));\n", (const char*)m_data[ii].label.c_str(), (const char*)m_data[ii].var.c_str());
@@ -694,7 +729,7 @@ bool CodeGen_lk::Input(FILE *fp, ssc_data_t p_data, const char *name, const wxSt
 }
 
 
-bool CodeGen_lk::RunSSCModule(FILE *fp, wxString& name)
+bool CodeGen_lk::RunSSCModule(FILE *fp, wxString &name)
 {
 	if (name.IsNull() || name.Length() < 1)
 		return false;
@@ -706,16 +741,7 @@ bool CodeGen_lk::RunSSCModule(FILE *fp, wxString& name)
 
 bool CodeGen_lk::Header(FILE *fp)
 {
-	return true;
-}
-
-bool CodeGen_lk::CreateSSCData(FILE *fp, wxString &name)
-{
-	return true;
-}
-
-bool CodeGen_lk::FreeSSCData(FILE *fp, wxString &name)
-{
+	fprintf(fp, "clear();\n");
 	return true;
 }
 
@@ -724,11 +750,245 @@ bool CodeGen_lk::CreateSSCModule(FILE *fp, wxString &name)
 	return true;
 }
 
-
-bool CodeGen_lk::FreeSSCModule(FILE *fp, wxString &name)
+bool CodeGen_lk::FreeSSCModule(FILE *fp)
 {
 	return true;
 }
 
+bool CodeGen_lk::Footer(FILE *fp)
+{
+	return true;
+}
+
+
+// c code generation class
+
+CodeGen_c::CodeGen_c(Case *cc, const wxString &folder) : CodeGen_Base(cc, folder)
+{
+}
+
+
+bool CodeGen_c::Output(FILE *fp, ssc_data_t p_data)
+{
+//		fprintf(fp, "outln('%s ' + var('%s'));\n", (const char*)m_data[ii].label.c_str(), (const char*)m_data[ii].var.c_str());
+	ssc_number_t value;
+	ssc_number_t *p;
+	int len, nr, nc;
+	wxString str_value;
+	double dbl_value;
+	for (size_t ii = 0; ii < m_data.size(); ii++)
+	{
+		const char *name = (const char*)m_data[ii].var.c_str();
+		int type = ::ssc_data_query(p_data, name); 
+		switch (type)
+		{
+		case SSC_STRING:
+			fprintf(fp, "	const char *%s = ssc_data_get_string( data, \"%s\" );\n", name, name);
+			fprintf(fp, "	printf(\"\%s = \%s\"), %s, %s);\n", (const char*)m_data[ii].label.c_str(), name);
+			break;
+		case SSC_NUMBER:
+			fprintf(fp, "	ssc_number_t %s;\n", name);
+			fprintf(fp, "	ssc_data_get_number(data, \"%s\", &%s);\n", name, name);
+			fprintf(fp, "	printf(\"%%s = %%lg\\n\", \"%s\", (double)%s);\n", (const char*)m_data[ii].label.c_str(), name);
+			break;
+		case SSC_ARRAY:
+			p = ::ssc_data_get_array(p_data, name, &len);
+			fprintf(fp, "ssc_number_t p_%s[%d] ={", name, len);
+			fprintf(fp, "ssc_data_get_array( data, \"%s\", p_%s, %d );\n", name, name, len);
+			break;
+		case SSC_MATRIX:
+			// TODO tables in future
+			break;
+		}
+	}
+	return true;
+}
+
+bool CodeGen_c::Input(FILE *fp, ssc_data_t p_data, const char *name, const wxString &folder, const int &array_matrix_threshold)
+{
+	ssc_number_t value;
+	ssc_number_t *p;
+	int len, nr, nc;
+	wxString str_value;
+	double dbl_value;
+	int type = ::ssc_data_query(p_data, name);
+	switch (type)
+	{
+	case SSC_STRING:
+		str_value = wxString::FromUTF8(::ssc_data_get_string(p_data, name));
+		str_value.Replace("\\", "/");
+		fprintf(fp, "	ssc_data_set_string( data, \"%s\", \"%s\" );\n", name, (const char*)str_value.c_str());
+		break;
+	case SSC_NUMBER:
+		::ssc_data_get_number(p_data, name, &value);
+		dbl_value = (double)value;
+		if (dbl_value > 1e38) dbl_value = 1e38;
+		fprintf(fp, "	ssc_data_set_number( data, \"%s\", %lg );\n", name, dbl_value);
+		break;
+	case SSC_ARRAY:
+		p = ::ssc_data_get_array(p_data, name, &len);
+		if (len > array_matrix_threshold)
+		{ // separate csv file (var_name.csv in folder) for each variable
+			wxCSVData csv;
+			wxString fn = folder + "/" + wxString(name) + ".csv";
+			// write out as single column data for compatibility with csvread in SDKTool
+			for (int i = 0; i < len; i++)
+			{
+				dbl_value = (double)p[i];
+				if (dbl_value > 1e38) dbl_value = 1e38;
+				//				str_value = wxString::Format("%lg", dbl_value);
+				csv.Set(i, 0, wxString::Format("%lg", dbl_value));
+			}
+			csv.WriteFile(fn);
+			//			fprintf(fp, "var( '%s', csvread('%s'));", name, (const char*)fn.c_str());
+			fprintf(fp, "var( '%s', real_array(read_text_file('%s')));\n", name, (const char*)fn.c_str());
+		}
+		else
+		{
+			fprintf(fp, "	ssc_number_t p_%s[%d] ={", name, len);
+			for (int i = 0; i < (len-1); i++)
+			{
+				dbl_value = (double)p[i];
+				if (dbl_value > 1e38) dbl_value = 1e38;
+				fprintf(fp, " %lg,", dbl_value);
+			}
+			dbl_value = (double)p[len - 1];
+			if (dbl_value > 1e38) dbl_value = 1e38;
+			fprintf(fp, " %lg };\n", dbl_value);
+			fprintf(fp, "	ssc_data_set_array( data, \"%s\", p_%s, %d );\n", name, name, len);
+		}
+		break;
+	case SSC_MATRIX:
+		p = ::ssc_data_get_matrix(p_data, name, &nr, &nc);
+		len = nr*nc;
+		if (len > array_matrix_threshold)
+		{ // separate csv file (var_name.csv in folder) for each variable
+			wxCSVData csv;
+			wxString fn = folder + "/" + wxString(name) + ".csv";
+			for (int r = 0; r < nr; r++)
+			{
+				for (int c = 0; c < nc; c++)
+				{
+					dbl_value = (double)p[r*nc + c];
+					if (dbl_value > 1e38) dbl_value = 1e38;
+					csv.Set(r, c, wxString::Format("%lg", dbl_value));
+				}
+			}
+			csv.WriteFile(fn);
+			fprintf(fp, "var( '%s', csvread('%s'));\n", name, (const char*)fn.c_str());
+		}
+		else
+		{
+			fprintf(fp, "	ssc_number_t p_%s[%d] ={", name, len);
+			for (int k = 0; k < (len - 1); k++)
+			{
+				dbl_value = (double)p[k];
+				if (dbl_value > 1e38) dbl_value = 1e38;
+				fprintf(fp, " %lg,", dbl_value);
+			}
+			dbl_value = (double)p[len - 1];
+			if (dbl_value > 1e38) dbl_value = 1e38;
+			fprintf(fp, " %lg };\n", dbl_value);
+			fprintf(fp, "	ssc_data_set_matrix( data, \"%s\", p_%s, %d, %d );\n", name, name, nr, nc);
+		}
+		// TODO tables in future
+	}
+	return true;
+}
+
+
+bool CodeGen_c::RunSSCModule(FILE *fp, wxString &name)
+{
+	fprintf(fp, "	if (ssc_module_exec(module, data) == 0)\n");
+	fprintf(fp, "	{\n");
+	fprintf(fp, "		printf(\"error during simulation.\"); \n");
+	fprintf(fp, "		ssc_module_free(module); \n");
+	fprintf(fp, "		ssc_data_free(data); \n");
+	fprintf(fp, "		return -1; \n");
+	fprintf(fp, "	}\n");
+	return true;
+}
+
+
+bool CodeGen_c::Header(FILE *fp)
+{
+	// top of file and supporting functions
+	fprintf(fp, "#include <stdio.h>\n");
+	fprintf(fp, "#include \"sscapi.h\"\n");
+	fprintf(fp, "\n");
+
+	// handle message
+	fprintf(fp, "ssc_bool_t my_handler(ssc_module_t p_mod, ssc_handler_t p_handler, int action,\n");
+	fprintf(fp, "	float f0, float f1, const char *s0, const char *s1, void *user_data)\n");
+	fprintf(fp, "{\n");
+	fprintf(fp, "	if (action == SSC_LOG)\n");
+	fprintf(fp, "	{\n");
+	fprintf(fp, "		// print log message to console\n");
+	fprintf(fp, "		switch ((int)f0)\n");
+	fprintf(fp, "		{\n");
+	fprintf(fp, "		case SSC_NOTICE: printf(\"Notice: %s\", s0); break;\n");
+	fprintf(fp, "		case SSC_WARNING: printf(\"Warning: %s\", s0); break;\n");
+	fprintf(fp, "		case SSC_ERROR: printf(\"Error: %s\", s0); break;\n");
+	fprintf(fp, "		}\n");
+	fprintf(fp, "		return 1;\n");
+	fprintf(fp, "	}\n");
+	fprintf(fp, "	else if (action == SSC_UPDATE)\n");
+	fprintf(fp, "	{\n");
+	fprintf(fp, "		// print status update to console\n");
+	fprintf(fp, "		printf(\"(%.2f %%) % s\", f0, s0);\n");
+	fprintf(fp, "		return 1; // return 0 to abort simulation as needed.\n");
+	fprintf(fp, "	}\n");
+	fprintf(fp, "	else\n");
+	fprintf(fp, "		return 0;\n");
+	fprintf(fp, "}\n");
+	fprintf(fp, "\n");
+
+	// handle csv files
+	fprintf(fp, "\n");
+
+	fprintf(fp, "int main(int argc, char *argv[])\n");
+	fprintf(fp, "{\n");
+
+	// create global data container
+	fprintf(fp, "	ssc_data_t data = ssc_data_create();\n");
+	fprintf(fp, "	if (data == NULL)\n");
+	fprintf(fp, "	{\n");
+	fprintf(fp, "		printf(\"error: out of memory.\");\n");
+	fprintf(fp, "		return -1;\n");
+	fprintf(fp, "	}\n");
+
+	return true;
+}
+
+bool CodeGen_c::CreateSSCModule(FILE *fp, wxString &name)
+{
+	if (name.IsNull() || name.Length() < 1)
+		return false;
+	else
+	{
+		fprintf(fp, "	ssc_module_t module = ssc_module_create(\"%s\"); \n", (const char*)name.c_str());
+		fprintf(fp, "	if (NULL == module)\n");
+		fprintf(fp, "	{\n");
+		fprintf(fp, "		printf(\"error: could not create '%s' module.\"); \n", (const char*)name.c_str());
+		fprintf(fp, "		ssc_data_free(data); \n");
+		fprintf(fp, "		return -1; \n");
+		fprintf(fp, "	}\n");
+	}
+	return true;
+}
+
+bool CodeGen_c::FreeSSCModule(FILE *fp)
+{
+	fprintf(fp, "	ssc_module_free(module);\n");
+	return true;
+}
+
+bool CodeGen_c::Footer(FILE *fp)
+{
+	fprintf(fp, "	ssc_data_free(data);\n");
+	fprintf(fp, "	return 0;\n");
+	fprintf(fp, "}\n");
+	return true;
+}
 
 
