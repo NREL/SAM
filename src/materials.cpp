@@ -70,7 +70,7 @@ BEGIN_EVENT_TABLE( MatPropDialog, wxDialog )
 	EVT_BUTTON( ID_IMPORT, MatPropDialog::OnCommand )
 	EVT_BUTTON( ID_EXPORT, MatPropDialog::OnCommand )
 	EVT_NUMERIC( ID_NUMPOINTS, MatPropDialog::OnNumPointsChange )
-	EVT_GRID_CMD_CELL_CHANGE( ID_GRID, MatPropDialog::OnGridCellChange)
+	EVT_GRID_CMD_CELL_CHANGED( ID_GRID, MatPropDialog::OnGridCellChange)
 	EVT_CLOSE( MatPropDialog::OnCloseWindow )
 END_EVENT_TABLE()
 

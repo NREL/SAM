@@ -1124,13 +1124,13 @@ DEFINE_EVENT_TYPE(wxEVT_wxShadingFactorsCtrl_CHANGE)
 enum { ISFC_CHOICECOL = wxID_HIGHEST + 857, ISFC_CHOICEMINUTE, ISFC_CHOICESTRING, ISFC_GRID, ISFC_COPY, ISFC_PASTE, ISFC_IMPORT, ISFC_EXPORT };
 
 BEGIN_EVENT_TABLE(wxShadingFactorsCtrl, wxPanel)
-EVT_GRID_CMD_CELL_CHANGE(ISFC_GRID, wxShadingFactorsCtrl::OnCellChange)
-EVT_CHOICE(ISFC_CHOICECOL, wxShadingFactorsCtrl::OnChoiceCol)
-EVT_CHOICE(ISFC_CHOICEMINUTE, wxShadingFactorsCtrl::OnChoiceMinute)
-EVT_BUTTON(ISFC_COPY, wxShadingFactorsCtrl::OnCommand)
-EVT_BUTTON(ISFC_PASTE, wxShadingFactorsCtrl::OnCommand)
-EVT_BUTTON(ISFC_EXPORT, wxShadingFactorsCtrl::OnCommand)
-EVT_BUTTON(ISFC_IMPORT, wxShadingFactorsCtrl::OnCommand)
+	EVT_GRID_CMD_CELL_CHANGED(ISFC_GRID, wxShadingFactorsCtrl::OnCellChange)
+	EVT_CHOICE(ISFC_CHOICECOL, wxShadingFactorsCtrl::OnChoiceCol)
+	EVT_CHOICE(ISFC_CHOICEMINUTE, wxShadingFactorsCtrl::OnChoiceMinute)
+	EVT_BUTTON(ISFC_COPY, wxShadingFactorsCtrl::OnCommand)
+	EVT_BUTTON(ISFC_PASTE, wxShadingFactorsCtrl::OnCommand)
+	EVT_BUTTON(ISFC_EXPORT, wxShadingFactorsCtrl::OnCommand)
+	EVT_BUTTON(ISFC_IMPORT, wxShadingFactorsCtrl::OnCommand)
 END_EVENT_TABLE()
 
 wxShadingFactorsCtrl::wxShadingFactorsCtrl(wxWindow *parent, int id,

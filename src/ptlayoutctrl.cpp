@@ -17,7 +17,7 @@ BEGIN_EVENT_TABLE( PTLayoutCtrl, wxPanel )
 	EVT_NUMERIC( ID_SPAN, PTLayoutCtrl::OnSpanAngleChange )
 	EVT_NUMERIC( ID_NUMROWS, PTLayoutCtrl::OnGridSizeChange )
 	EVT_NUMERIC( ID_NUMCOLS, PTLayoutCtrl::OnGridSizeChange )
-	EVT_GRID_CMD_CELL_CHANGE( ID_GRID, PTLayoutCtrl::OnGridCellChange)
+	EVT_GRID_CMD_CELL_CHANGED( ID_GRID, PTLayoutCtrl::OnGridCellChange)
 	EVT_GRID_CMD_SELECT_CELL( ID_GRID, PTLayoutCtrl::OnGridCellSelect)
 
 	EVT_BUTTON( ID_COPY, PTLayoutCtrl::OnButton )

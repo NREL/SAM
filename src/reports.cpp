@@ -1364,7 +1364,7 @@ public:
 			if ( r >= 0 && r < m_grid->GetNumberRows()
 				&& c >= 0 && c < m_grid->GetNumberCols() )
 			{
-				m_grid->SetCellValue( text, r, c );
+				m_grid->SetCellValue( r, c, text );
 				UpdateDisplay();
 			}
 		}
@@ -1378,7 +1378,7 @@ BEGIN_EVENT_TABLE( SamReportTableObjectEditDialog, wxDialog )
 EVT_NUMERIC( IDTOED_ROWS, SamReportTableObjectEditDialog::OnRows )
 EVT_NUMERIC( IDTOED_COLS, SamReportTableObjectEditDialog::OnCols )
 EVT_BUTTON( IDTOED_INSERTVAR, SamReportTableObjectEditDialog::OnInsertVar )
-EVT_GRID_CMD_CELL_CHANGE( IDTOED_GRID, SamReportTableObjectEditDialog::OnGrid )
+EVT_GRID_CMD_CELL_CHANGED( IDTOED_GRID, SamReportTableObjectEditDialog::OnGrid )
 END_EVENT_TABLE()
 
 bool SamReportTableObject::EditObject( wxPageLayoutCtrl *layout )

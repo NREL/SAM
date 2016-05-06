@@ -920,7 +920,7 @@ void VariableGridFrame::SizeColumns()
 		GetTextExtent(m_grid->GetColLabelValue(col), &width, &height);
 		if ((width + 10) > col_width[col]) col_width[col] = width + 10;
 		if (col_width[col] > 250) col_width[col] = 250;
-		m_grid->SetColumnWidth(col, col_width[col]);
+		m_grid->SetColSize(col, col_width[col]);
 	}
 }
 

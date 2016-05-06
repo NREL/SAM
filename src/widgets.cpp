@@ -231,7 +231,7 @@ public:
 		m_grid = new wxExtGridCtrl( this, wxID_ANY );
 		m_grid->CreateGrid( 50, 1);
 		m_grid->SetColLabelValue( 0, label );
-		m_grid->SetColumnWidth( 0, wxGRID_AUTOSIZE );
+		m_grid->SetColSize( 0, wxGRID_AUTOSIZE );
 		m_grid->SetColLabelAlignment( wxALIGN_LEFT, wxALIGN_CENTER );
 		
 		wxBoxSizer *tools = new wxBoxSizer( wxVERTICAL );
@@ -1296,7 +1296,7 @@ public:
 		GridTable->SetAttrProvider( new wxExtGridCellAttrProvider );
 
 		Grid->SetTable( GridTable, true );
-		Grid->SetColumnWidth(0, (int)(130*wxGetScreenHDScale()));
+		Grid->SetColSize(0, (int)(130*wxGetScreenHDScale()));
 
 		Grid->Layout();
 		Grid->Refresh();
@@ -2055,7 +2055,7 @@ EVT_BUTTON(IDEDMC_IMPORT, AFDataMatrixCtrl::OnCommand)
 EVT_BUTTON(IDEDMC_EXPORT, AFDataMatrixCtrl::OnCommand)
 EVT_BUTTON(IDEDMC_COPY, AFDataMatrixCtrl::OnCommand)
 EVT_BUTTON(IDEDMC_PASTE, AFDataMatrixCtrl::OnCommand)
-EVT_GRID_CMD_CELL_CHANGE(IDEDMC_GRID, AFDataMatrixCtrl::OnCellChange)
+EVT_GRID_CMD_CELL_CHANGED(IDEDMC_GRID, AFDataMatrixCtrl::OnCellChange)
 END_EVENT_TABLE()
 
 AFDataMatrixCtrl::AFDataMatrixCtrl(wxWindow *parent, int id,
@@ -2746,7 +2746,7 @@ BEGIN_EVENT_TABLE(DataGridDialog, wxDialog)
 	EVT_BUTTON( IDDD_COPY, DataGridDialog::OnCommand )
 	EVT_BUTTON( IDDD_PASTE, DataGridDialog::OnCommand )
 	EVT_BUTTON( IDDD_CHANGENUMROWS, DataGridDialog::OnCommand )
-	EVT_GRID_CMD_CELL_CHANGE( IDDD_GRID, DataGridDialog::OnCellChange )
+	EVT_GRID_CMD_CELL_CHANGED( IDDD_GRID, DataGridDialog::OnCellChange )
 END_EVENT_TABLE()
 
 
@@ -2942,7 +2942,7 @@ enum { IDSF_GRID = wxID_HIGHEST+495, IDSF_SHADINGVAL, IDSF_APPLY, IDSF_IMPORT, I
 
 BEGIN_EVENT_TABLE(AFMonthByHourFactorCtrl, wxPanel)
 
-	EVT_GRID_CMD_CELL_CHANGE( IDSF_GRID, AFMonthByHourFactorCtrl::OnGridCellChange)
+	EVT_GRID_CMD_CELL_CHANGED( IDSF_GRID, AFMonthByHourFactorCtrl::OnGridCellChange)
 	EVT_GRID_CMD_SELECT_CELL( IDSF_GRID, AFMonthByHourFactorCtrl::OnGridCellSelect)
 	EVT_GRID_CMD_RANGE_SELECT( IDSF_GRID, AFMonthByHourFactorCtrl::OnGridRangeSelect)
 	EVT_GRID_CMD_EDITOR_HIDDEN( IDSF_GRID, AFMonthByHourFactorCtrl::OnGridEditorHidden)

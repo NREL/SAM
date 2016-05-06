@@ -1009,7 +1009,7 @@ ArrayPopupDialog::ArrayPopupDialog(wxWindow *parent, const wxString &title, cons
 		m_grid->SetCellValue(11, 0, "Dec");
 	}
 
-	m_grid->SetEditable(false);
+	m_grid->EnableEditing(false);
 	
 	wxBoxSizer *sizer = new wxBoxSizer(wxVERTICAL);
 
@@ -1020,8 +1020,8 @@ ArrayPopupDialog::ArrayPopupDialog(wxWindow *parent, const wxString &title, cons
 	sz = GetTextExtent(spacer);
 	int width = sz.GetWidth() - 20 ; // subtract scrollbar width
 
-	m_grid->SetColumnWidth(0, (int)(width / 2.0));
-	m_grid->SetColumnWidth(1, width - (int)(width / 2.0));
+	m_grid->SetColSize(0, (int)(width / 2.0));
+	m_grid->SetColSize(1, width - (int)(width / 2.0));
 	
 	wxBoxSizer *cf_tools = new wxBoxSizer(wxHORIZONTAL);
 	cf_tools->Add(new wxMetroButton(this, ID_APD_CLIPBOARD, "Copy to clipboard"), 0, wxALL, 0);
@@ -1119,7 +1119,7 @@ ArrayPopupDialog::ArrayPopupDialog(wxWindow *parent, const wxString &title, cons
 			m_grid->SetCellValue(row, 0, wxString::Format("%d", row));
 	}
 
-	if (vec_size == 1) m_grid->SetColumnWidth(0, 0); // hide index column for single values.
+	if (vec_size == 1) m_grid->SetColSize(0, 0); // hide index column for single values.
 	m_grid->EnableEditing(false);
 	m_grid->Thaw();
 
@@ -1139,10 +1139,10 @@ ArrayPopupDialog::ArrayPopupDialog(wxWindow *parent, const wxString &title, cons
 	col_width = (int)(width / values_vec_size);
 	for (size_t i = 1; i < cols; i++)
 	{
-		m_grid->SetColumnWidth(i, col_width);
+		m_grid->SetColSize(i, col_width);
 		tot_width += col_width;
 	}
-	m_grid->SetColumnWidth(0, width - tot_width);
+	m_grid->SetColSize(0, width - tot_width);
 	
 	wxBoxSizer *cf_tools = new wxBoxSizer(wxHORIZONTAL);
 	cf_tools->Add(new wxMetroButton(this, ID_APD_CLIPBOARD, "Copy to clipboard"), 0, wxALL, 2);
