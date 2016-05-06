@@ -146,13 +146,15 @@ private:
 	wxChoice *choice_language;
 	wxChoice *choice_array_matrix_threshold;
 	wxString m_foldername;
+	wxFileName m_wxfilename;
+
 
 public:
 	CodeGen_Dialog(wxWindow *parent, int id)
 		: wxDialog(parent, id, "Code Generator", wxDefaultPosition, wxScaleSize(600, 350),
 		wxDEFAULT_DIALOG_STYLE | wxRESIZE_BORDER)
 	{
-
+		// TODO initialize to property
 		txt_code_folder = new wxExtTextCtrl(this, ID_txt_code_folder, "");
  
 		wxArrayString data_languages;
@@ -189,7 +191,6 @@ public:
 		sz4->Add(new wxButton(this, wxHELP, "Help", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL | wxEXPAND, 1);
 		sz4->AddStretchSpacer();
 		sz4->Add(new wxButton(this, ID_btn_generate, "Generate code", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL | wxEXPAND, 1);
-//		sz4->Add(new wxButton(this, ID_btn_open_folder, "Open folder", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL | wxEXPAND, 1);
 		sz4->Add(new wxButton(this, wxCANCEL, "Close", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL | wxEXPAND, 1);
 
 	
@@ -198,7 +199,6 @@ public:
 		sizer->Add(sz2, 1, wxALL | wxEXPAND, 5);
 		sizer->Add(sz3, 1, wxALL | wxEXPAND, 5);
 		sizer->Add(sz4, 0, wxALL | wxEXPAND, 5);
-		//sizer->Add(CreateButtonSizer(wxHELP | wxOK | wxCANCEL), 0, wxALL | wxEXPAND, 10);
 		SetSizerAndFit(sizer);
 	}
 
@@ -241,7 +241,8 @@ public:
 	{
 		if (!m_case) return;
 
-		wxDirDialog dlg(this, "Select an output folder", ::wxGetHomeDir(), wxDD_DEFAULT_STYLE | wxDD_DIR_MUST_EXIST);
+		if (m_foldername.IsEmpty()) m_foldername = ::wxGetHomeDir();
+		wxDirDialog dlg(this, "Select an output folder", m_foldername, wxDD_DEFAULT_STYLE | wxDD_DIR_MUST_EXIST);
 		if (dlg.ShowModal() == wxID_OK)
 		{
 			wxString fn = dlg.GetPath();
@@ -261,7 +262,7 @@ public:
 			wxMessageBox(wxString::Format("Error: the path '%s' does not exist", (const char*)folder.c_str()), "Path Error", wxICON_ERROR);
 			return;
 		}
-		wxString m_foldername = folder;
+		m_foldername = folder;
 		int threshold = GetThreshold();
 		if (code == 0) // lk
 		{
@@ -934,8 +935,7 @@ bool CodeGen_c::Input(FILE *fp, ssc_data_t p_data, const char *name, const wxStr
 				csv.Set(i, 0, wxString::Format("%lg", dbl_value));
 			}
 			csv.WriteFile(fn);
-			//			fprintf(fp, "var( '%s', csvread('%s'));", name, (const char*)fn.c_str());
-			fprintf(fp, "var( '%s', real_array(read_text_file('%s')));\n", name, (const char*)fn.c_str());
+			fprintf(fp, "	set_array( data, \"%s\", \"%s\", %d);\n", name, (const char*)fn.c_str(), len);
 		}
 		else
 		{
@@ -969,7 +969,7 @@ bool CodeGen_c::Input(FILE *fp, ssc_data_t p_data, const char *name, const wxStr
 				}
 			}
 			csv.WriteFile(fn);
-			fprintf(fp, "var( '%s', csvread('%s'));\n", name, (const char*)fn.c_str());
+			fprintf(fp, "	set_matrix( data, \"%s\", \"%s\", %d, %d);\n", name, (const char*)fn.c_str(), nr, nc);
 		}
 		else
 		{
@@ -1008,6 +1008,8 @@ bool CodeGen_c::Header(FILE *fp)
 {
 	// top of file and supporting functions
 	fprintf(fp, "#include <stdio.h>\n");
+	fprintf(fp, "#include <string.h>\n");
+	fprintf(fp, "#include <stdlib.h>\n");
 	fprintf(fp, "#include \"sscapi.h\"\n");
 	fprintf(fp, "\n");
 
@@ -1038,6 +1040,78 @@ bool CodeGen_c::Header(FILE *fp)
 	fprintf(fp, "\n");
 
 	// handle csv files
+	// arrays
+	fprintf(fp, "bool set_array(ssc_data_t p_data, const char *name, const char* fn, int len)\n");
+	fprintf(fp, "{\n");
+	fprintf(fp, "	char buffer[1024];\n");
+	fprintf(fp, "	char *record, *line;\n");
+	fprintf(fp, "	int i = 0;\n");
+	fprintf(fp, "	ssc_number_t *ary;\n");
+	fprintf(fp, "	FILE *fp = fopen(fn, \"r\");\n");
+	fprintf(fp, "	if (fp == NULL)\n");
+	fprintf(fp, "	{\n");
+	fprintf(fp, "		printf(\"file opening failed \");\n");
+	fprintf(fp, "		return false;\n");
+	fprintf(fp, "	}\n");
+	fprintf(fp, "	ary = (ssc_number_t *)malloc(len * sizeof(ssc_number_t));\n");
+	fprintf(fp, "	if (fp == NULL)\n");
+	fprintf(fp, "	{\n");
+	fprintf(fp, "		printf(\"file opening failed \");\n");
+	fprintf(fp, "		return false;\n");
+	fprintf(fp, "	}\n");
+	fprintf(fp, "	while ((line = fgets(buffer, sizeof(buffer), fp)) != NULL)\n");
+	fprintf(fp, "	{\n");
+	fprintf(fp, "		record = strtok(line, \",\");\n");
+	fprintf(fp, "		while ((record != NULL) && (i < len))\n");
+	fprintf(fp, "		{\n");
+	fprintf(fp, "			ary[i] = atof(record);\n");
+	fprintf(fp, "			record = strtok(NULL, \",\");\n");
+	fprintf(fp, "			i++;\n");
+	fprintf(fp, "		}\n");
+	fprintf(fp, "	}\n");
+	fprintf(fp, "	fclose(fp);\n");
+	fprintf(fp, "	ssc_data_set_array(p_data, name, ary, len);\n");
+	fprintf(fp, "	free(ary);\n");
+	fprintf(fp, "	return true;\n");
+	fprintf(fp, "}\n");
+	fprintf(fp, "\n");
+
+	// matrices
+	fprintf(fp, "bool set_matrix(ssc_data_t p_data, const char *name, const char* fn, int nr, int nc)\n");
+	fprintf(fp, "{\n");
+	fprintf(fp, "	char buffer[1024];\n");
+	fprintf(fp, "	char *record, *line;\n");
+	fprintf(fp, "	ssc_number_t *ary;\n");
+	fprintf(fp, "	int i = 0, len = nr*nc;\n");
+	fprintf(fp, "	FILE *fp = fopen(fn, \"r\");\n");
+	fprintf(fp, "	if (fp == NULL)\n");
+	fprintf(fp, "	{\n");
+	fprintf(fp, "		printf(\"file opening failed \");\n");
+	fprintf(fp, "		return false;\n");
+	fprintf(fp, "	}\n");
+	fprintf(fp, "	ary = (ssc_number_t *)malloc(len * sizeof(ssc_number_t));\n");
+	fprintf(fp, "	if (fp == NULL)\n");
+	fprintf(fp, "	{\n");
+	fprintf(fp, "		printf(\"file opening failed \");\n");
+	fprintf(fp, "		return false;\n");
+	fprintf(fp, "	}\n");
+	fprintf(fp, "	while ((line = fgets(buffer, sizeof(buffer), fp)) != NULL)\n");
+	fprintf(fp, "	{\n");
+	fprintf(fp, "		record = strtok(line, \",\");\n");
+	fprintf(fp, "		while ((record != NULL) && (i < len))\n");
+	fprintf(fp, "		{\n");
+	fprintf(fp, "			ary[i] = atof(record);\n");
+	fprintf(fp, "			record = strtok(NULL, \",\");\n");
+	fprintf(fp, "			i++;\n");
+	fprintf(fp, "		}\n");
+	fprintf(fp, "	}\n");
+	fprintf(fp, "	fclose(fp);\n");
+	fprintf(fp, "	ssc_data_set_matrix(p_data, name, ary, nr, nc);\n");
+	fprintf(fp, "	free(ary);\n");
+	fprintf(fp, "	return true;\n");
+	fprintf(fp, "}\n");
+
+
 	fprintf(fp, "\n");
 
 	fprintf(fp, "int main(int argc, char *argv[])\n");
