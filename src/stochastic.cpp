@@ -742,7 +742,7 @@ public:
 
 		cdf_grid = new wxExtGridCtrl(this, wxID_ANY);
 		cdf_grid->CreateGrid(5, 2);
-		cdf_grid->SetEditable(true);
+		cdf_grid->EnableEditing(true);
 
 		wxBoxSizer *sizer = new wxBoxSizer( wxVERTICAL );
 		sizer->Add( cboDistribution, 0, wxALL|wxEXPAND, 5 );

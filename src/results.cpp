@@ -922,7 +922,7 @@ void ResultsViewer::Setup( Simulation *sim )
 						else // cl.digits == -2 // generic format
 							sval = wxString::Format("%g", fval);
 
-						m_cashFlowTable->SetCellValue(sval, cashflow_row, cl.coloff+i);
+						m_cashFlowTable->SetCellValue( cashflow_row, cl.coloff+i, sval );
 					}
 				}
 				cashflow_row++;
@@ -939,7 +939,7 @@ void ResultsViewer::Setup( Simulation *sim )
 				m_depreciationTable->SetRowLabelValue(depreciation_row, list[0]);
 				for (size_t i = 1; i < n && i < nyears; i++)
 				{
-					m_depreciationTable->SetCellValue(list[i], depreciation_row, i - 1);
+					m_depreciationTable->SetCellValue( depreciation_row, i - 1, list[i] );
 				}
 				depreciation_row++;
 			}
@@ -991,14 +991,14 @@ void ResultsViewer::Setup( Simulation *sim )
 								sval += wxString::Format("%g", fval);
 							if (j < m-1) sval += ";";
 						}
-						m_depreciationTable->SetCellValue(sval, depreciation_row, i - 1);
+						m_depreciationTable->SetCellValue( depreciation_row, i - 1, sval );
 					}
 				}
 				depreciation_row++;
 			}
 			else
 			{
-				m_cashFlowTable->SetCellValue("'" + cl.name + "' not found.", r, 0);
+				m_cashFlowTable->SetCellValue( r, 0, "'" + cl.name + "' not found." );
 				cashflow_row++;
 			}
 		}
