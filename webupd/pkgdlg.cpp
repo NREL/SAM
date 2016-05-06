@@ -471,10 +471,10 @@ void PackageDialog::UpdateGrid()
 
 	for( size_t i=0;i<m_diffs.size();i++ )
 	{
-		m_grid->SetCellValue( m_diffs[i]->cur, i, 0 );
-		m_grid->SetCellValue( m_diffs[i]->cur_time.FormatDate() + " " + m_diffs[i]->cur_time.FormatTime(), i, 1 );
-		m_grid->SetCellValue( m_diffs[i]->bindiff ? "UPDATED" : "NEW", i, 2 );		
-		m_grid->SetCellBackgroundColour(  m_diffs[i]->bindiff ? "wheat" : "sea green", i, 2 );
+		m_grid->SetCellValue( i, 0, m_diffs[i]->cur );
+		m_grid->SetCellValue( i, 1, m_diffs[i]->cur_time.FormatDate() + " " + m_diffs[i]->cur_time.FormatTime() );
+		m_grid->SetCellValue( i, 2, m_diffs[i]->bindiff ? "UPDATED" : "NEW" );		
+		m_grid->SetCellBackgroundColour( i, 2,   m_diffs[i]->bindiff ? "wheat" : "sea green");
 	}
 	m_grid->AutoSizeColumns();
 	m_grid->Thaw();
@@ -541,8 +541,7 @@ void PackageDialog::MakePackage()
 		return;
 	}
 
-	wxString temp;
-	wxGetTempFileName("zzsam", temp );
+	wxString temp( wxFileName::CreateTempFileName( "zzsam" ) );
 
 	m_output->AppendText("writing zip: " + temp + "\n");
 	wxSafeYield( NULL, true );

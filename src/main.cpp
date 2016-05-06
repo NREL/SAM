@@ -717,7 +717,7 @@ void MainWindow::CaseVarGrid(std::vector<Case*> &cases)
 			grid->SetColLabelValue(col, col_hdrs[col]);
 			GetTextExtent(col_hdrs[col], &width, &height);
 			if ((width + 10) > col_width[col]) col_width[col] = width + 10;
-			grid->SetColumnWidth(col, col_width[col]);
+			grid->SetColSize(col, col_width[col]);
 		}
 		grid->Thaw();
 

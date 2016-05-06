@@ -252,8 +252,8 @@ public:
 		m_grid->CreateGrid( 10, 2 );
 		m_grid->SetColLabelValue( 0, "Old name" );
 		m_grid->SetColLabelValue( 1, "New name" );
-		m_grid->SetColumnWidth( 0, 250 );
-		m_grid->SetColumnWidth( 1, 250 );
+		m_grid->SetColSize( 0, 250 );
+		m_grid->SetColSize( 1, 250 );
 		notebook->AddPage( m_grid, "Name Mapping" );
 
 		wxPanel *panel_ssc = new wxPanel( notebook, wxID_ANY );
@@ -323,8 +323,8 @@ public:
 		m_grid->ResizeGrid( list.size(), 2 );
 		for( size_t i=0;i<list.size();i++ )
 		{
-			m_grid->SetCellValue( list[i], i, 0 );
-			m_grid->SetCellBackgroundColour( *wxWHITE, i, 1 );
+			m_grid->SetCellValue( i, 0, list[i] );
+			m_grid->SetCellBackgroundColour( i, 1, *wxWHITE );
 		}
 	}
 
@@ -395,7 +395,7 @@ public:
 
 		for (int r=0;r<nrows;r++)
 			for (int c=0;c<ncols;c++)
-				m_sscVars->SetCellValue( vartab[r][c], r, c );
+				m_sscVars->SetCellValue( r, c, vartab[r][c] );
 
 		m_sscVars->AutoSizeColumns(false);
 		m_sscVars->Thaw();
@@ -461,8 +461,8 @@ public:
 				wxString ssc = m_vtlMap[ m_grid->GetCellValue(i,0) ];
 				if ( !ssc.IsEmpty() )
 				{
-					m_grid->SetCellValue(ssc,i,1);
-					m_grid->SetCellBackgroundColour( wxColour(255,213,226), i,1 );
+					m_grid->SetCellValue( i, 1, ssc );
+					m_grid->SetCellBackgroundColour( i, 1, wxColour(255,213,226) );
 				}
 			}
 			break;
@@ -478,8 +478,8 @@ public:
 						if ( pos > 0 )
 						{
 							ssc = ssc.Mid( pos+1);
-							m_grid->SetCellValue(ssc,i,1);
-							m_grid->SetCellBackgroundColour( wxColour(255,213,226), i,1 );
+							m_grid->SetCellValue( i, 1, ssc );
+							m_grid->SetCellBackgroundColour( i, 1,  wxColour(255,213,226) );
 						}
 					}
 				}
