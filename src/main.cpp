@@ -103,9 +103,10 @@ static const char *beta_disclaimer =
 static SamApp::ver releases[] = {
 //please clarify the reason for the new version in a comment. Examples: public release, variable changes, internal release, public beta release, etc.
 //the top version should always be the current working version
+		{ 2016, 5, 4 }, //dc adjustment factor added and differentiate current working version
 	{ 2016, 3, 14 }, // public pi-day release!
 		{ 2016, 3, 2 }, // Beta release that expires 4/15/16
-		{ 2016, 2, 29 }, // internal release and current working version.
+		{ 2016, 2, 29 }, // internal release
 		{ 2016, 2, 26 }, // utility rate changes
 		{ 2016, 2, 22 }, // self-shading update
 		{ 2016, 2, 19 }, // PV variable changes 
