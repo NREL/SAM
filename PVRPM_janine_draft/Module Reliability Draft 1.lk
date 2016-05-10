@@ -1,16 +1,20 @@
 //*************************************************************************************
 //Module Reliability Model -- DRAFT --
-//jmf 2/24/16
+//jmf 5/8/16
 //*************************************************************************************
 
 // TO DO-----------------------------------------------------------------------------------
 /*
 	Terminology: replacement versus repair
 	Module failures: Replacement versus repair? How to tell? How affecting warranty? How affecting next failure time? etc.
+	Don't allow negative time setting for failure times
 	Error checking on arrays 
 	Set active case and error check
 	Get system lifetime from financial case, OR set it if no financials (or LCOE?)
 	HOW DOES DC DERATE WORK- YEAR 1 VERSUS OTHER YEARS? Right now this will crash if run for >1 year, I think...
+	DC Derate needs to be expanded to include lifetime mode in SSC as well
+	DC derate needs to be added to loss tree
+	Currently running daily, do we need to change that? If so, how?
 */
 
 // SYSTEM INPUTS-----------------------------------------------------------------------
@@ -220,13 +224,29 @@ for (day = 1; day < system_lifetime_yrs * 365; day++)
 for (m=0; m < num_modules; m++)
 	total_module_failures += modules[m].cumulative_failures;
 	
-//assign dc availability derate and run PV performance model
-//THIS DOESN'T WORK, HAVE TO RUN PV MODEL FROM HERE I THINK
-set('dc_availability', dc_availability);
+//create SAM performance adjustment table for the dc availability derate
+hourly_loss = alloc(8760);
+idx = 0;
+for (day = 0; day < 365; day++)
+	for (j = 0; j < 24; j++)
+	{
+		hourly_loss[idx] = 100 - dc_availability[day];
+		idx++;
+	}
+outln(hourly_loss);
+adjust.constant = 0;
+adjust.en_hourly = 1;
+adjust.hourly = hourly_loss;
+adjust.en_periods = 0;
+set('dc_adjust', adjust);
+
+//run PV performance model- for now running the currently active case
 messages = '';
-success = simulate(messages, false);
+success = simulate(messages, true);
 if (!success)
 	msgbox('Simulation failed.' + messages);
+	
+show_page('Results');
 
 //Test outputs
 outln(dc_availability);
