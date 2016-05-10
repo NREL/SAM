@@ -48,7 +48,7 @@ void CodeGenCallbackContext::SetupLibraries(lk::env_t *env)
 }
 
 
-
+/*
 // for file and language prompting
 enum {
 	ID_btn_open_code,
@@ -122,7 +122,7 @@ EVT_BUTTON(wxHELP, CodeOpen_Dialog::OnHelp)
 EVT_BUTTON(wxCANCEL, CodeOpen_Dialog::OnCancel)
 END_EVENT_TABLE()
 
-
+*/
 
 
 // for file and language prompting
@@ -130,10 +130,10 @@ END_EVENT_TABLE()
 enum {
 	ID_btn_select_folder,
 	ID_btn_generate,
-//	ID_btn_open_folder,
 	ID_txt_code_folder,
 	ID_choice_language,
-	ID_choice_array_matrix_threshold
+	ID_check_csvfiles,
+//	ID_choice_array_matrix_threshold
 };
 
 class CodeGen_Dialog : public wxDialog
@@ -144,18 +144,30 @@ private:
 	CaseWindow *m_caseWin;
 	wxExtTextCtrl *txt_code_folder;
 	wxChoice *choice_language;
-	wxChoice *choice_array_matrix_threshold;
+//	wxChoice *choice_array_matrix_threshold;
+	wxCheckBox *chk_csvfiles;
 	wxString m_foldername;
-	wxFileName m_wxfilename;
+//	wxFileName m_wxfilename;
 
 
 public:
-	CodeGen_Dialog(wxWindow *parent, int id)
+	CodeGen_Dialog(wxWindow *parent, int id, CaseWindow *cwin)
 		: wxDialog(parent, id, "Code Generator", wxDefaultPosition, wxScaleSize(600, 350),
 		wxDEFAULT_DIALOG_STYLE | wxRESIZE_BORDER)
 	{
-		// TODO initialize to property
-		txt_code_folder = new wxExtTextCtrl(this, ID_txt_code_folder, "");
+		m_caseWin = cwin;
+
+		if (!m_caseWin) return;
+
+		m_case = cwin->GetCase();
+		m_ci = m_case->GetConfiguration();
+
+
+		// initialize property
+		m_foldername = m_case->GetProperty("CodeGeneratorFolder");
+		if (m_foldername.IsEmpty()) m_foldername = ::wxGetHomeDir();
+
+		txt_code_folder = new wxExtTextCtrl(this, ID_txt_code_folder, m_foldername);
  
 		wxArrayString data_languages;
 		// ids or just index values from here
@@ -164,6 +176,7 @@ public:
 		choice_language = new wxChoice(this, ID_choice_language, wxDefaultPosition, wxDefaultSize, data_languages);
 		choice_language->SetSelection(0);
 
+		/*
 		wxArrayString data_threshold;
 		// ids or just index values from here
 		data_threshold.Add("no separate files");
@@ -172,6 +185,10 @@ public:
 		data_threshold.Add(">20 elements (typical analysis period)");
 		choice_array_matrix_threshold = new wxChoice(this, ID_choice_language, wxDefaultPosition, wxDefaultSize, data_threshold);
 		choice_array_matrix_threshold->SetSelection(2); // default 288
+		*/
+		chk_csvfiles = new wxCheckBox(this, ID_check_csvfiles, "csv files for large arrays and matrices");
+		chk_csvfiles->SetValue((m_case->GetProperty("CodeGeneratorCSVFiles") != "NO"));
+
 
 		wxBoxSizer *sz1 = new wxBoxSizer(wxHORIZONTAL);
 		sz1->Add(new wxStaticText(this, wxID_ANY, "Specify output folder:"), 0, wxALL | wxALIGN_CENTER_VERTICAL, 4);
@@ -183,8 +200,9 @@ public:
 		sz2->Add(choice_language, 0, wxALL | wxEXPAND, 4);
 
 		wxBoxSizer *sz3 = new wxBoxSizer(wxHORIZONTAL);
-		sz3->Add(new wxStaticText(this, wxID_ANY, "Separate files for arrays and matrices:"), 0, wxALL | wxEXPAND, 4);
-		sz3->Add(choice_array_matrix_threshold, 0, wxALL | wxEXPAND, 4);
+//		sz3->Add(new wxStaticText(this, wxID_ANY, "Separate files for arrays and matrices:"), 0, wxALL | wxEXPAND, 4);
+//		sz3->Add(choice_array_matrix_threshold, 0, wxALL | wxEXPAND, 4);
+		sz3->Add(chk_csvfiles, 0, wxALL | wxEXPAND, 4);
 
 
 		wxBoxSizer *sz4 = new wxBoxSizer(wxHORIZONTAL);
@@ -206,17 +224,13 @@ public:
 	{
 	}
 
-	void Set(CaseWindow *cwin)
-	{
-		m_caseWin = cwin;
-		m_case = cwin->GetCase();
-		m_ci = m_case->GetConfiguration();
-
-	}
 
 	int GetThreshold()
 	{
-		int threshold = 288; // default
+		int threshold = 10000; // > 10,000 always written out
+		if (chk_csvfiles->IsChecked())
+			threshold = 288;
+		/*
 		switch (choice_array_matrix_threshold->GetSelection())
 		{
 		case 0: // none (greater than 10,000 always written out)
@@ -234,6 +248,7 @@ public:
 		default:
 			threshold = 288;
 		}
+		*/
 		return threshold;
 	}
 
@@ -241,12 +256,12 @@ public:
 	{
 		if (!m_case) return;
 
-		if (m_foldername.IsEmpty()) m_foldername = ::wxGetHomeDir();
 		wxDirDialog dlg(this, "Select an output folder", m_foldername, wxDD_DEFAULT_STYLE | wxDD_DIR_MUST_EXIST);
 		if (dlg.ShowModal() == wxID_OK)
 		{
-			wxString fn = dlg.GetPath();
-			txt_code_folder->SetValue(fn);
+			m_foldername = dlg.GetPath();
+			m_foldername.Replace("\\", "/");
+			txt_code_folder->SetValue(m_foldername);
 		}
 	}
 
@@ -255,63 +270,66 @@ public:
 		// create appropriate language class with case passed to constructor
 		// run GenerateCode function
 		int code = choice_language->GetSelection();
-		wxString folder = txt_code_folder->GetValue();
-		folder.Replace("\\", "/");
-		if (!wxDirExists(folder))
+		m_foldername = txt_code_folder->GetValue();
+		m_foldername.Replace("\\", "/");
+		txt_code_folder->SetValue(m_foldername);
+		if (!wxDirExists(m_foldername))
 		{
-			wxMessageBox(wxString::Format("Error: the path '%s' does not exist", (const char*)folder.c_str()), "Path Error", wxICON_ERROR);
+			wxMessageBox(wxString::Format("Error: the path '%s' does not exist", (const char*)m_foldername.c_str()), "Path Error", wxICON_ERROR);
 			return;
 		}
-		m_foldername = folder;
 		int threshold = GetThreshold();
+
+		// from wxWiki to convert wxString to char*
+		wxString fn = SamApp::Project().GetCaseName(m_case);
+		// replace spaces for SDK user friendly name
+		fn.Replace(" ", "_");
+		char cfn[100];
+		strcpy(cfn, (const char*)fn.mb_str(wxConvUTF8));
+		fn = m_foldername + "/" + wxString::FromAscii(cfn);
+
 		if (code == 0) // lk
 		{
-			m_foldername = folder + "/" + SamApp::Project().GetCaseName(m_case) + ".lk";
-			if (FILE *fp = fopen(m_foldername.c_str(), "w"))
+			fn += ".lk";
+			if (FILE *fp = fopen(fn.c_str(), "w"))
 			{
-				CodeGen_lk *cg = new CodeGen_lk(m_case, folder);
+				CodeGen_lk *cg = new CodeGen_lk(m_case, m_foldername);
 				cg->GenerateCode(fp, threshold);
 				fclose(fp);
 				if (!cg->Ok())	
 					wxMessageBox(cg->GetErrors(), "Generate Errors", wxICON_ERROR);
 				else
-				{
-					wxFileName fn(m_foldername);
-					wxString message = "lk code generation successful!\n\nClick 'Open folder' to open folder containing all files generated.\n\nClick 'Open code' to open generated code file in associated program.";
-					ShowOpenDialog(fn, message);
-				}
+					ShowOpenDialog();
 			}
 		}
 		else if (code == 1) // c
 		{
-			m_foldername = folder + "/" + SamApp::Project().GetCaseName(m_case) + ".c";
-			if (FILE *fp = fopen(m_foldername.c_str(), "w"))
+			fn += ".c";
+			if (FILE *fp = fopen(fn.c_str(), "w"))
 			{
-				CodeGen_c *cg = new CodeGen_c(m_case, folder);
+				CodeGen_c *cg = new CodeGen_c(m_case, m_foldername);
 				cg->GenerateCode(fp, threshold);
 				fclose(fp);
 				if (!cg->Ok())	
 					wxMessageBox(cg->GetErrors(), "Generate Errors", wxICON_ERROR);
 				else
-				{
-					wxFileName fn(m_foldername);
-					wxString message = "c code generation successful!\n\nClick 'Open folder' to open folder containing all files generated.\n\nClick 'Open code' to open generated code file in associated program.";
-					ShowOpenDialog(fn, message);
-				}
+					ShowOpenDialog();
 			}
 		}
 	}
 
-	bool ShowOpenDialog(wxFileName &fn, wxString &message)
+	void ShowOpenDialog()
 	{
-		CodeOpen_Dialog dialog = CodeOpen_Dialog(this, wxID_ANY, fn, message);
-		dialog.CenterOnParent();
-		if (wxID_OK == dialog.ShowModal())
+		wxString message = "Code generation successful!\n\nClick 'OK' to open folder containing all files generated.\n\nClick 'Cancel' to return to the code generator dialog.";
+		if (wxOK == wxMessageBox(message, "Code Generator Success", wxOK | wxCANCEL))
 		{
-			return true;
+			m_case->SetProperty("CodeGeneratorFolder", m_foldername);
+			wxString csvfile = "YES";
+			if (!chk_csvfiles->GetValue()) csvfile = "NO";
+			m_case->SetProperty("CodeGeneratorCSVFiles", csvfile);
+			wxLaunchDefaultApplication(m_foldername);
+			Close();
 		}
-		else
-			return false;
 	}
 
 	/*
@@ -697,13 +715,10 @@ bool CodeGen_Base::Ok()
 
 bool CodeGen_Base::ShowCodeGenDialog(CaseWindow *cw)
 {
-	CodeGen_Dialog dialog(SamApp::Window(), wxID_ANY);
+	CodeGen_Dialog dialog(SamApp::Window(), wxID_ANY, cw);
 	dialog.CenterOnParent();
-	dialog.Set(cw);
 	if (wxID_OK == dialog.ShowModal())
-	{
 		return true;
-	}
 	else
 		return false;
 }
