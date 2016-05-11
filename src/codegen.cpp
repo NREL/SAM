@@ -174,7 +174,11 @@ public:
 		data_languages.Add("lk");
 		data_languages.Add("c");
 		choice_language = new wxChoice(this, ID_choice_language, wxDefaultPosition, wxDefaultSize, data_languages);
-		choice_language->SetSelection(0);
+	
+		int lang = wxAtoi(m_case->GetProperty("CodeGeneratorLanguage"));
+		if (lang < 0) lang = 0;
+		if (lang > (data_languages.Count() - 1)) lang = data_languages.Count() - 1;
+		choice_language->SetSelection(lang);
 
 		/*
 		wxArrayString data_threshold;
@@ -320,15 +324,17 @@ public:
 
 	void ShowOpenDialog()
 	{
-		wxString message = "Code generation successful!\n\nClick 'OK' to open folder containing all files generated.\n\nClick 'Cancel' to return to the code generator dialog.";
-		if (wxOK == wxMessageBox(message, "Code Generator Success", wxOK | wxCANCEL))
+//		wxString message = "Code generation successful!\n\nClick 'OK' to open folder containing all files generated.\n\nClick 'Cancel' to return to the code generator dialog.";
+		m_case->SetProperty("CodeGeneratorFolder", m_foldername);
+		wxString csvfile = "YES";
+		if (!chk_csvfiles->GetValue()) csvfile = "NO";
+		m_case->SetProperty("CodeGeneratorCSVFiles", csvfile);
+		m_case->SetProperty("CodeGeneratorLanguage", wxString::Format("%d", choice_language->GetSelection()));
+		Close();
+		wxString message = "Code generation successful!\n\nOpen folder containing all files generated?";
+		if (wxYES == wxMessageBox(message, "Code Generator Success", wxYES | wxNO))
 		{
-			m_case->SetProperty("CodeGeneratorFolder", m_foldername);
-			wxString csvfile = "YES";
-			if (!chk_csvfiles->GetValue()) csvfile = "NO";
-			m_case->SetProperty("CodeGeneratorCSVFiles", csvfile);
 			wxLaunchDefaultApplication(m_foldername);
-			Close();
 		}
 	}
 
