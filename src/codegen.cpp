@@ -331,7 +331,7 @@ public:
 		m_case->SetProperty("CodeGeneratorCSVFiles", csvfile);
 		m_case->SetProperty("CodeGeneratorLanguage", wxString::Format("%d", choice_language->GetSelection()));
 		Close();
-		wxString message = "Code generation successful!\n\nOpen folder containing all files generated?";
+		wxString message = "Open folder containing all files generated?";
 		if (wxYES == wxMessageBox(message, "Code Generator Success", wxYES | wxNO))
 		{
 			wxLaunchDefaultApplication(m_foldername);
