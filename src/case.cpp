@@ -799,7 +799,7 @@ int Case::Recalculate( const wxArrayString &triggers )
 
 }
 
-int Case::RecalculateAll()
+int Case::RecalculateAll( bool quietly )
 {
 	if ( !m_config )
 	{
@@ -810,7 +810,8 @@ int Case::RecalculateAll()
 	CaseEvaluator eval( this, m_vals, m_config->Equations );
 	int n = eval.CalculateAll();
 	if ( n > 0 ) SendEvent( CaseEvent( CaseEvent::VARS_CHANGED, eval.GetUpdated() ) );
-	else if ( n < 0 ) wxShowTextMessageDialog( wxJoin( eval.GetErrors(), wxChar('\n') )  );
+	else if ( n < 0 && !quietly ) wxShowTextMessageDialog( wxJoin( eval.GetErrors(), wxChar('\n') )  );
+
 	return n;
 }
 
