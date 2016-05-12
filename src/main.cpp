@@ -1750,10 +1750,11 @@ public:
 bool SamApp::OnInit()
 {
 #ifdef __WXMSW__
-	wxMSWSetupExceptionHandler( 
+	/*wxMSWSetupExceptionHandler( 
 		wxString("SAM"),
 		SamApp::VersionStr(), 
 		wxString("sam.support@nrel.gov") );
+		*/
 #endif
 
 	// apd : On windows, make sure process is DPI aware, regardless
@@ -1993,7 +1994,7 @@ extern void RegisterReportObjectTypes();
 void SamApp::OnFatalException()
 {
 #ifdef __WXMSW__
-	wxMSWHandleApplicationFatalException();	
+	//wxMSWHandleApplicationFatalException();	
 #endif
 }
 

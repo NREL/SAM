@@ -557,7 +557,14 @@ bool VersionUpgrade::Run( ProjectFile &pf )
 				wxString::Format("%d.%d.%d", sammajor, samminor, sammicro) ) )
 			// call the script once for each case
 			for( size_t i=0;i<cases.size();i++ )
+			{
 				Invoke( cases[i], pf.GetCaseName( cases[i] ), cb );
+				
+				// recalculate equations in each case for each consecutive upgrade
+				// to make sure all variables are in sync
+				if ( cases[i]->RecalculateAll( true ) < 0 )
+					GetLog().push_back( log( WARNING, "Error updating calculated values in '" + pf.GetCaseName(cases[i]) + "' during upgrade process.  Please resolve any errors, save the project file, and reopen it." ) );
+			}
 	}
 
 	// don't retain a pointer to the script database environment
