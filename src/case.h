@@ -122,7 +122,10 @@ public:
 
 	// recalculate all equations in this case
 	// CaseEvent is issued for all updated variables
-	int RecalculateAll();
+	// returns negative on error, or positive number indicating
+	// success of number of variables update.  shows an error
+	// message box unless 'quietly' = true
+	int RecalculateAll( bool quietly = false );
 	
 	StringHash &Properties() { return m_properties; }
 	wxString GetProperty( const wxString &id );
