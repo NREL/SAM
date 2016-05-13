@@ -15,6 +15,7 @@
 	DC Derate needs to be expanded to include lifetime mode in SSC as well
 	DC derate needs to be added to loss tree
 	Currently running daily, do we need to change that? If so, how?
+	TRANSLATE TO HOURLY---------------------
 */
 
 // SYSTEM INPUTS-----------------------------------------------------------------------
@@ -227,12 +228,16 @@ for (m=0; m < num_modules; m++)
 //create SAM performance adjustment table for the dc availability derate
 hourly_loss = alloc(8760);
 idx = 0;
+day_num = alloc(365);
 for (day = 0; day < 365; day++)
+{
+	day_num[day] = day;
 	for (j = 0; j < 24; j++)
 	{
 		hourly_loss[idx] = 100 - dc_availability[day];
 		idx++;
 	}
+}
 outln(hourly_loss);
 adjust.constant = 0;
 adjust.en_hourly = 1;
@@ -252,6 +257,11 @@ show_page('Results');
 outln(dc_availability);
 outln(total_module_failures);
 
+newplot();
+plot(day_num, dc_availability, {'type'='line'});
+plotopt({'title'='Percentage of Modules that are Operational'});
+axis('x1', {'label'='Day'});
+axis('y1', {'label'='% Operational'});
 
 
 
