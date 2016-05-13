@@ -1573,11 +1573,11 @@ NumericRangeDialog::NumericRangeDialog( wxWindow *parent, const wxString &title 
 
 	wxFlexGridSizer *range_sizer = new wxFlexGridSizer( 2 );
 	range_sizer->Add( new wxStaticText( range_sizer_box->GetStaticBox(), wxID_ANY, "Start value:" ), 0, wxALL|wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL, 4 );
-	range_sizer->Add( m_numStart = new wxNumericCtrl( range_sizer_box->GetStaticBox(), ID_numStart, 0, wxNumericCtrl::REAL ), 0, wxALL, 4 );
+	range_sizer->Add( m_numStart = new wxNumericCtrl( range_sizer_box->GetStaticBox(), ID_numStart, 0, wxNUMERIC_REAL ), 0, wxALL, 4 );
 	range_sizer->Add( new wxStaticText( range_sizer_box->GetStaticBox(), wxID_ANY, "End value:" ), 0, wxALL|wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL, 4 );
-	range_sizer->Add( m_numEnd = new wxNumericCtrl( range_sizer_box->GetStaticBox(), ID_numEnd, 0, wxNumericCtrl::REAL ), 0, wxALL, 4 );
+	range_sizer->Add( m_numEnd = new wxNumericCtrl( range_sizer_box->GetStaticBox(), ID_numEnd, 0, wxNUMERIC_REAL ), 0, wxALL, 4 );
 	range_sizer->Add( new wxStaticText( range_sizer_box->GetStaticBox(), wxID_ANY, "Increment:" ), 0, wxALL|wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL, 4 );
-	range_sizer->Add( m_numIncr = new wxNumericCtrl( range_sizer_box->GetStaticBox(), ID_numIncr, 0, wxNumericCtrl::REAL ), 0, wxALL, 4 );
+	range_sizer->Add( m_numIncr = new wxNumericCtrl( range_sizer_box->GetStaticBox(), ID_numIncr, 0, wxNUMERIC_REAL ), 0, wxALL, 4 );
 	range_sizer->AddStretchSpacer(); 
 	range_sizer->Add( new wxButton(range_sizer_box->GetStaticBox(), ID_cmdUpdateValues, "Update", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL, 4 );
 	
