@@ -653,9 +653,9 @@ void ResultsViewer::Setup( Simulation *sim )
 				value = md.scale*(double)vv->Value();
 
 				int deci = md.deci;
-				if ( md.mode == 'g' ) deci = wxNumericCtrl::GENERIC;
-				else if ( md.mode == 'e' ) deci = wxNumericCtrl::EXPONENTIAL;
-				else if ( md.mode == 'h' ) deci = wxNumericCtrl::HEXADECIMAL;
+				if ( md.mode == 'g' ) deci = wxNUMERIC_GENERIC;
+				else if ( md.mode == 'e' ) deci = wxNUMERIC_EXPONENTIAL;
+				else if ( md.mode == 'h' ) deci = wxNUMERIC_HEXADECIMAL;
 			
 				slab = md.label;
 				if ( slab.IsEmpty() )
@@ -665,7 +665,7 @@ void ResultsViewer::Setup( Simulation *sim )
 				if ( post.IsEmpty() )
 					post = " " + m_sim->GetUnits( md.var );
 				
-				sval = wxNumericCtrl::Format( value, wxNumericCtrl::REAL, 
+				sval = wxNumericFormat( value, wxNUMERIC_REAL, 
 					deci, md.thousep, md.pre, post );
 			}
 
@@ -916,7 +916,7 @@ void ResultsViewer::Setup( Simulation *sim )
 						float fval = p[i] * cl.scale;
 						wxString sval;
 						if (cl.digits >= 0 && fval != 0.0f)
-							sval = wxNumericCtrl::Format(fval, wxNumericCtrl::REAL, cl.digits, true, wxEmptyString, wxEmptyString);
+							sval = wxNumericFormat(fval, wxNUMERIC_REAL, cl.digits, true, wxEmptyString, wxEmptyString);
 						else if (cl.digits == -3) // integer cast
 							sval = wxString::Format("%d", (int)fval);
 						else // cl.digits == -2 // generic format
@@ -984,7 +984,7 @@ void ResultsViewer::Setup( Simulation *sim )
 						{
 							float fval = p[j] * cl.scale;
 							if (cl.digits > 0 && fval != 0.0f)
-								sval += wxNumericCtrl::Format(fval, wxNumericCtrl::REAL, cl.digits, true, wxEmptyString, wxEmptyString);
+								sval += wxNumericFormat(fval, wxNUMERIC_REAL, cl.digits, true, wxEmptyString, wxEmptyString);
 							else if (cl.digits == -2)
 								sval += wxString::Format("%d", (int)fval);
 							else
@@ -1694,7 +1694,7 @@ public:
 				if (std::isnan(Matrix.at(row, col)))
 					return "NaN";
 				else if (MatrixFormat == "CURRENCY")
-					return	wxNumericCtrl::Format(Matrix.at(row, col), wxNumericCtrl::REAL, 2, true, wxEmptyString, wxEmptyString);
+					return	wxNumericFormat(Matrix.at(row, col), wxNUMERIC_REAL, 2, true, wxEmptyString, wxEmptyString);
 				else
 					return wxString::Format("%g", Matrix.at(row, col));
 			}

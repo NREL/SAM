@@ -819,7 +819,7 @@ wxString SamReportFormatVariable( double value, const wxString &fmt )
 		int dec = wxAtoi( fmt.Mid(1) );
 		if (dec < 1) dec = 0;
 		if (dec > 30) dec = 30;		
-		return wxNumericCtrl::Format( value, wxNumericCtrl::REAL, dec, fmt[0]==',', wxEmptyString, wxEmptyString );
+		return wxNumericFormat( value, wxNUMERIC_REAL, dec, fmt[0]==',', wxEmptyString, wxEmptyString );
 	}
 	else if (fmt[0] == 'i')
 		return wxString::Format("%d", (int)value);
@@ -1276,9 +1276,9 @@ public:
 
 		buttons->AddStretchSpacer();
 		buttons->Add( new wxStaticText(this, wxID_ANY, "   Rows:"), 0, wxALL|wxEXPAND, 3 );
-		buttons->Add( (m_numRows=new wxNumericCtrl(this, IDTOED_ROWS, 0, wxNumericCtrl::INTEGER)), 0, wxALL|wxEXPAND, 3 );
+		buttons->Add( (m_numRows=new wxNumericCtrl(this, IDTOED_ROWS, 0, wxNUMERIC_INTEGER)), 0, wxALL|wxEXPAND, 3 );
 		buttons->Add( new wxStaticText(this, wxID_ANY, "   Cols:"), 0, wxALL|wxEXPAND, 3 );
-		buttons->Add( (m_numCols=new wxNumericCtrl(this, IDTOED_COLS, 0, wxNumericCtrl::INTEGER)), 0, wxALL|wxEXPAND, 3 );
+		buttons->Add( (m_numCols=new wxNumericCtrl(this, IDTOED_COLS, 0, wxNUMERIC_INTEGER)), 0, wxALL|wxEXPAND, 3 );
 		buttons->Add( new wxButton(this, IDTOED_INSERTVAR, "Insert variable..."), 0, wxALL|wxEXPAND, 3);
 
 		wxBoxSizer *vert = new wxBoxSizer(wxVERTICAL);
@@ -2614,9 +2614,9 @@ void SamReportScriptObject::RenderBarGraph( const std::vector<double> &values, c
 
 		wxString label;
 		if (decimals <= 0 && fabs(ticks[i].world)>999)
-			label = wxNumericCtrl::Format( ticks[i].world, wxNumericCtrl::REAL, wxNumericCtrl::GENERIC, true, wxEmptyString, wxEmptyString );
+			label = wxNumericFormat( ticks[i].world, wxNUMERIC_REAL, wxNUMERIC_GENERIC, true, wxEmptyString, wxEmptyString );
 		else if (decimals < 6)
-			label = wxNumericCtrl::Format( ticks[i].world, wxNumericCtrl::REAL, decimals, true, wxEmptyString, wxEmptyString );		
+			label = wxNumericFormat( ticks[i].world, wxNUMERIC_REAL, decimals, true, wxEmptyString, wxEmptyString );		
 		else
 			label = wxString::Format("%lg", ticks[i].world );
 
@@ -2653,9 +2653,9 @@ void SamReportScriptObject::RenderBarGraph( const std::vector<double> &values, c
 		{
 			wxString label;
 			if (decimals <= 0 && fabs(values[i])>999)
-				label = wxNumericCtrl::Format( values[i], wxNumericCtrl::REAL, wxNumericCtrl::GENERIC, true, wxEmptyString, wxEmptyString );
+				label = wxNumericFormat( values[i], wxNUMERIC_REAL, wxNUMERIC_GENERIC, true, wxEmptyString, wxEmptyString );
 			else if (decimals < 6)
-				label = wxNumericCtrl::Format( values[i], wxNumericCtrl::REAL, decimals, true, wxEmptyString, wxEmptyString );		
+				label = wxNumericFormat( values[i], wxNUMERIC_REAL, decimals, true, wxEmptyString, wxEmptyString );		
 			else
 				label = wxString::Format("%lg", values[i] );
 

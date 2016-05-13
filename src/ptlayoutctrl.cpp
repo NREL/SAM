@@ -36,8 +36,8 @@ PTLayoutCtrl::PTLayoutCtrl(wxWindow *parent, int id, const wxPoint &pos, const w
 	m_spanAngle = 360;
 
 	m_numSpan = new wxNumericCtrl(this, ID_SPAN, 360.0);
-	m_numRows = new wxNumericCtrl(this, ID_NUMROWS, 6, wxNumericCtrl::INTEGER);
-	m_numCols = new wxNumericCtrl(this, ID_NUMCOLS, 8, wxNumericCtrl::INTEGER);
+	m_numRows = new wxNumericCtrl(this, ID_NUMROWS, 6, wxNUMERIC_INTEGER);
+	m_numCols = new wxNumericCtrl(this, ID_NUMCOLS, 8, wxNUMERIC_INTEGER);
 
 	m_data.resize_fill(12,12, 0.0);
 	for (int r=0;r<m_data.nrows();r++)

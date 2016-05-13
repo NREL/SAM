@@ -43,7 +43,7 @@ TRLoopCtrl::TRLoopCtrl(wxWindow *parent, int id, const wxPoint &pos, const wxSiz
 	}
 
 	mRenderer = new TRLoopRenderer(this);
-	mNumSCAs = new wxNumericCtrl(this, IDTRL_NSCAS, mLoop.size(), wxNumericCtrl::INTEGER);
+	mNumSCAs = new wxNumericCtrl(this, IDTRL_NSCAS, mLoop.size(), wxNUMERIC_INTEGER);
 
 	mEditModeSCA = new wxRadioButton(this, IDTRL_EDITSCA, "Edit SCAs", wxDefaultPosition, wxDefaultSize, wxRB_GROUP);
 	mEditModeHCE = new wxRadioButton(this, IDTRL_EDITHCE, "Edit HCEs");

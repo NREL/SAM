@@ -153,7 +153,7 @@ void LossDiagramObject::Render( wxPageOutputDevice &dv )
 			
 			dv.Font( face, points+1, true, false );
 			dv.Text( x+0.1f, y+0.05f, li.text );
-			dv.Text( x+0.1f, y+0.05f+th*1.2f, wxNumericCtrl::Format( li.value, wxNumericCtrl::REAL, 0, true, wxEmptyString, wxEmptyString ) );
+			dv.Text( x+0.1f, y+0.05f+th*1.2f, wxNumericFormat( li.value, wxNUMERIC_REAL, 0, true, wxEmptyString, wxEmptyString ) );
 			dv.Font( face, points, false, false );
 		}
 		else

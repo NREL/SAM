@@ -261,7 +261,7 @@ ParametricViewer::ParametricViewer(wxWindow *parent, Case *cc)
 	wxStaticText *lblruns = new wxStaticText(top_panel, wxID_ANY, "Number of runs:");
 	lblruns->SetForegroundColour( *wxWHITE );
 	tool_sizer->Add( lblruns, 0, wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT, 3);
-	m_num_runs_ctrl = new wxNumericCtrl(top_panel, ID_NUMRUNS, 0, wxNumericCtrl::INTEGER);
+	m_num_runs_ctrl = new wxNumericCtrl(top_panel, ID_NUMRUNS, 0, wxNUMERIC_INTEGER);
 	wxSize bestsz( m_num_runs_ctrl->GetBestSize() );
 	m_num_runs_ctrl->SetInitialSize( wxSize( bestsz.x/2, bestsz.y ) );
 	m_num_runs_ctrl->SetEditable(true);
@@ -2214,7 +2214,7 @@ m_case(c)
 	choice_sizer->Add(new wxStaticText(this, wxID_ANY, "Setup mode:"), 0, wxALIGN_LEFT | wxALIGN_CENTER_VERTICAL | wxALL, 3);
 	choice_sizer->Add(rchSetupOption, 2, wxEXPAND | wxALL, 2);
 
-	numberRuns = new wxNumericCtrl(this, ID_numberRuns, 0, wxNumericCtrl::INTEGER);
+	numberRuns = new wxNumericCtrl(this, ID_numberRuns, 0, wxNUMERIC_INTEGER);
 	numberRuns->SetFormat(0, true);
 	numberRuns->SetEditable(false);
 	wxBoxSizer *numrun_sizer = new wxBoxSizer(wxHORIZONTAL);
