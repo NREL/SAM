@@ -43,7 +43,7 @@ AFSchedNumeric::AFSchedNumeric( wxWindow *parent, int id, const wxPoint &pos, co
 	bUseSchedule = false;
 	bScheduleOnly = false;
 
-	mFixedValue = new wxNumericCtrl(this, IDAFSN_NUMERIC, 0.0, wxNumericCtrl::REAL, wxPoint(m_switchWidth,0), wxSize( size.GetWidth()-m_switchWidth, size.GetHeight()) );
+	mFixedValue = new wxNumericCtrl(this, IDAFSN_NUMERIC, 0.0, wxNUMERIC_REAL, wxPoint(m_switchWidth,0), wxSize( size.GetWidth()-m_switchWidth, size.GetHeight()) );
 	mBtnEditSched = new wxButton(this, IDAFSN_SBUTTON, "Edit...", wxPoint(m_switchWidth,0), wxSize( size.GetWidth()-m_switchWidth, size.GetHeight()) );
 	mBtnEditSched->Show(false);
 }
@@ -239,7 +239,7 @@ public:
 		if ( with_resize_options )
 		{
 			tools->Add( new wxStaticText( this, wxID_ANY, "Number of values:"), 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
-			tools->Add( m_numVals = new wxNumericCtrl( this, ID_numValueCount, 50, wxNumericCtrl::INTEGER ), 0, wxALL, 3 );
+			tools->Add( m_numVals = new wxNumericCtrl( this, ID_numValueCount, 50, wxNUMERIC_INTEGER ), 0, wxALL, 3 );
 		}
 		
 		tools->Add( new wxButton( this, ID_btnCopyData, "Copy" ), 0, wxALL, 3 );
@@ -1552,8 +1552,8 @@ AFDataMatrixCtrl::AFDataMatrixCtrl( wxWindow *parent, int id,
 
 	m_data.resize_fill( 8, 6, 0.0f );
 
-	m_numRows = new wxNumericCtrl( this, IDDMC_NUMROWS, m_data.nrows(), wxNumericCtrl::INTEGER );
-	m_numCols = new wxNumericCtrl( this, IDDMC_NUMCOLS, m_data.ncols(), wxNumericCtrl::INTEGER );
+	m_numRows = new wxNumericCtrl( this, IDDMC_NUMROWS, m_data.nrows(), wxNUMERIC_INTEGER );
+	m_numCols = new wxNumericCtrl( this, IDDMC_NUMCOLS, m_data.ncols(), wxNUMERIC_INTEGER );
 	m_labelRows = new wxStaticText(this, wxID_ANY, "Rows:");
 	m_labelCols = new wxStaticText(this, wxID_ANY, "Cols:");
 
@@ -2090,8 +2090,8 @@ bool bottombuttons)
 
 	m_data.resize_fill(8, 6, 0.0f);
 
-	m_numRows = new wxNumericCtrl(this, IDEDMC_NUMROWS, m_data.nrows(), wxNumericCtrl::INTEGER);
-	m_numCols = new wxNumericCtrl(this, IDEDMC_NUMCOLS, m_data.ncols(), wxNumericCtrl::INTEGER);
+	m_numRows = new wxNumericCtrl(this, IDEDMC_NUMROWS, m_data.nrows(), wxNUMERIC_INTEGER);
+	m_numCols = new wxNumericCtrl(this, IDEDMC_NUMCOLS, m_data.ncols(), wxNUMERIC_INTEGER);
 	m_labelRows = new wxStaticText(this, wxID_ANY, "Rows:");
 	m_labelCols = new wxStaticText(this, wxID_ANY, "Cols:");
 
@@ -2774,7 +2774,7 @@ AFValueMatrixButton::AFValueMatrixButton(wxWindow *parent, int id, const wxPoint
 
 	bUseTable = false;
 
-	mSingleValue = new wxNumericCtrl(this, IDDGB_NUMERIC, 0.0, wxNumericCtrl::REAL, wxPoint(m_switchWidth,0), wxSize( sz.GetWidth()-m_switchWidth, sz.GetHeight()) );
+	mSingleValue = new wxNumericCtrl(this, IDDGB_NUMERIC, 0.0, wxNUMERIC_REAL, wxPoint(m_switchWidth,0), wxSize( sz.GetWidth()-m_switchWidth, sz.GetHeight()) );
 	mBtnEditTable = new wxButton(this, IDDGB_BUTTON, "Table...", wxPoint(m_switchWidth,0), wxSize( sz.GetWidth()-m_switchWidth, sz.GetHeight()) );
 	mBtnEditTable->Show(false);
 

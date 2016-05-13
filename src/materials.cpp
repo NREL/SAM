@@ -95,7 +95,7 @@ MatPropDialog::MatPropDialog(wxWindow *parent)
 	m_grid->SetColLabelAlignment(wxALIGN_LEFT,wxALIGN_CENTRE);
 	m_grid->AutoSize();
 
-	m_numPoints = new wxNumericCtrl(this, ID_NUMPOINTS, 1, wxNumericCtrl::INTEGER );
+	m_numPoints = new wxNumericCtrl(this, ID_NUMPOINTS, 1, wxNUMERIC_INTEGER );
 
 	wxBoxSizer *bxtop = new wxBoxSizer(wxHORIZONTAL);
 	bxtop->Add( new wxStaticText( this,-1, "Number of data points:" ), 0, wxALL|wxALIGN_CENTER_VERTICAL, 2);

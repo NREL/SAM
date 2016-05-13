@@ -683,11 +683,11 @@ void MacroPanel::CreateUI( const wxString &buf )
 		}
 		else if ( type == "integer" )
 		{
-			win = new wxNumericCtrl( m_macroUI, wxID_ANY, wxAtof(value), wxNumericCtrl::INTEGER );
+			win = new wxNumericCtrl( m_macroUI, wxID_ANY, wxAtof(value), wxNUMERIC_INTEGER );
 		}
 		else if ( type == "number" )
 		{
-			win = new wxNumericCtrl( m_macroUI, wxID_ANY, wxAtof(value), wxNumericCtrl::REAL );
+			win = new wxNumericCtrl( m_macroUI, wxID_ANY, wxAtof(value), wxNUMERIC_REAL );
 		}
 		else if ( type == "combo" )
 		{
