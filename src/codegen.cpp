@@ -232,7 +232,8 @@ public:
 
 	int GetThreshold()
 	{
-		int threshold = 288; // everything with more than 288 elements written to csv file.
+		int threshold = 0; // everything with more than 288 elements written to csv file.
+//		int threshold = 288; // everything with more than 288 elements written to csv file.
 		/*
 		int threshold = 10000; // > 10,000 always written out
 		if (chk_csvfiles->IsChecked())
@@ -1278,21 +1279,21 @@ bool CodeGen_csharp::Input(FILE *fp, ssc_data_t p_data, const char *name, const 
 				csv.Set(i, 0, wxString::Format("%lg", dbl_value));
 			}
 			csv.WriteFile(fn);
-			fprintf(fp, "		csvfile( \"%s\", \"%s\", %d);\n", name, (const char*)fn.c_str(), len);
+			fprintf(fp, "		data.SetArray( \"%s\", \"%s\", %d);\n", name, (const char*)fn.c_str(), len);
 		}
 		else
 		{
-			fprintf(fp, "		ssc_number_t p_%s[%d] ={", name, len);
+			fprintf(fp, "		float[] p_%s ={", name, len);
 			for (int i = 0; i < (len - 1); i++)
 			{
 				dbl_value = (double)p[i];
 				if (dbl_value > 1e38) dbl_value = 1e38;
-				fprintf(fp, " %lg,", dbl_value);
+				fprintf(fp, " %lgf,", dbl_value);
 			}
 			dbl_value = (double)p[len - 1];
 			if (dbl_value > 1e38) dbl_value = 1e38;
-			fprintf(fp, " %lg };\n", dbl_value);
-			fprintf(fp, "		sscData.SetArray( \"%s\", p_%s, %d );\n", name, name, len);
+			fprintf(fp, " %lgf };\n", dbl_value);
+			fprintf(fp, "		data.SetArray( \"%s\", p_%s);\n", name, name);
 		}
 		break;
 	case SSC_MATRIX:
@@ -1312,21 +1313,26 @@ bool CodeGen_csharp::Input(FILE *fp, ssc_data_t p_data, const char *name, const 
 				}
 			}
 			csv.WriteFile(fn);
-			fprintf(fp, "		csvfile( \"%s\", \"%s\", %d, %d);\n", name, (const char*)fn.c_str(), nr, nc);
+			fprintf(fp, "		data.SetMatrix( \"%s\", \"%s\", %d, %d);\n", name, (const char*)fn.c_str(), nr, nc);
 		}
 		else
 		{
-			fprintf(fp, "		ssc_number_t p_%s[%d] ={", name, len);
+			fprintf(fp, "		float[,] p_%s ={ {", name, len);
 			for (int k = 0; k < (len - 1); k++)
 			{
 				dbl_value = (double)p[k];
 				if (dbl_value > 1e38) dbl_value = 1e38;
-				fprintf(fp, " %lg,", dbl_value);
+				if ((k > 0) && (k%nc == 0))
+					fprintf(fp, " { %lgf,", dbl_value);
+				else if (k%nc == (nc - 1))
+					fprintf(fp, " %lgf },", dbl_value);
+				else 
+					fprintf(fp, " %lgf, ", dbl_value);
 			}
 			dbl_value = (double)p[len - 1];
 			if (dbl_value > 1e38) dbl_value = 1e38;
-			fprintf(fp, " %lg };\n", dbl_value);
-			fprintf(fp, "		sscData.SetMatrix( \"%s\", p_%s, %d, %d );\n", name, name, nr, nc);
+			fprintf(fp, " %lgf } };\n", dbl_value);
+			fprintf(fp, "		data.SetMatrix( \"%s\", p_%s );\n", name, name);
 		}
 		// TODO tables in future
 	}
@@ -1360,6 +1366,7 @@ bool CodeGen_csharp::Header(FILE *fp)
 {
 	// top of file and supporting functions
 	fprintf(fp, "using System;\n");
+	fprintf(fp, "using System.IO;\n");
 	fprintf(fp, "using System.Collections.Generic;\n");
 	fprintf(fp, "using System.Linq;\n");
 	fprintf(fp, "using System.Text;\n");
@@ -1883,6 +1890,20 @@ bool CodeGen_csharp::Header(FILE *fp)
 	fprintf(fp, "            sscapi.ssc_data_set_array(m_data, name, data, data.Length);\n");
 	fprintf(fp, "        }\n");
 	fprintf(fp, "\n");
+	fprintf(fp, "        public void SetArray(String name, String fn, int len)\n");
+	fprintf(fp, "        {\n");
+	fprintf(fp, "            StreamReader sr = new StreamReader(fn);\n");
+	fprintf(fp, "            int Row = 0;\n");
+	fprintf(fp, "            float[] data = new float[len];\n");
+	fprintf(fp, "            while (!sr.EndOfStream && Row < len)\n");
+	fprintf(fp, "            {\n");
+	fprintf(fp, "				string[] Line = sr.ReadLine().Split(',');\n");
+	fprintf(fp, "				data[Row] = float.Parse(Line[0]);\n");
+	fprintf(fp, "				Row++;\n");
+	fprintf(fp, "            }\n");
+	fprintf(fp, "            sscapi.ssc_data_set_array(m_data, name, data, len);\n");
+	fprintf(fp, "        }\n");
+	fprintf(fp, "\n");
 	fprintf(fp, "        public float[] GetArray(String name)\n");
 	fprintf(fp, "        {\n");
 	fprintf(fp, "            int len;\n");
@@ -1901,6 +1922,21 @@ bool CodeGen_csharp::Header(FILE *fp)
 	fprintf(fp, "            int nRows = mat.GetLength(0);\n");
 	fprintf(fp, "            int nCols = mat.GetLength(1);\n");
 	fprintf(fp, "            sscapi.ssc_data_set_matrix(m_data, name, mat, nRows, nCols);\n");
+	fprintf(fp, "        }\n");
+	fprintf(fp, "\n");
+	fprintf(fp, "        public void SetMatrix(String name, String fn, int nr, int nc)\n");
+	fprintf(fp, "        {\n");
+	fprintf(fp, "            StreamReader sr = new StreamReader(fn);\n");
+	fprintf(fp, "            int Row = 0;\n");
+	fprintf(fp, "            float[,] mat = new float[nr, nc];\n");
+	fprintf(fp, "            while (!sr.EndOfStream && Row < nr)\n");
+	fprintf(fp, "            {\n");
+	fprintf(fp, "				string[] Line = sr.ReadLine().Split(',');\n");
+	fprintf(fp, "				for (int ic = 0; ic < Line.Length && ic < nc; ic++)\n");
+	fprintf(fp, "					mat[Row, ic] = float.Parse(Line[ic]);\n");
+	fprintf(fp, "				Row++;\n");
+	fprintf(fp, "            }\n");
+	fprintf(fp, "            sscapi.ssc_data_set_matrix(m_data, name, mat, nr, nc);\n");
 	fprintf(fp, "        }\n");
 	fprintf(fp, "\n");
 	fprintf(fp, "        public float[,] GetMatrix(String name)\n");
@@ -2178,6 +2214,9 @@ bool CodeGen_csharp::Header(FILE *fp)
 	fprintf(fp, "    }\n");
 	fprintf(fp, "}\n");
 	fprintf(fp, "\n");
+
+	// csv reader
+
 
 	fprintf(fp, "class SAM_Code\n");
 	fprintf(fp, "{\n");
