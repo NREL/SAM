@@ -105,4 +105,17 @@ public:
 	bool Footer(FILE *fp);
 };
 
+class CodeGen_matlab : virtual public CodeGen_Base
+{
+public:
+	CodeGen_matlab(Case *cc, const wxString &folder);
+	bool Header(FILE *fp);
+	bool CreateSSCModule(FILE *fp, wxString &name);
+	bool RunSSCModule(FILE *fp, wxString &name);
+	bool FreeSSCModule(FILE *fp);
+	bool Input(FILE *fp, ssc_data_t p_data, const char *name, const wxString &folder, const int &array_matrix_threshold);
+	bool Output(FILE *fp, ssc_data_t p_data);
+	bool Footer(FILE *fp);
+};
+
 #endif
