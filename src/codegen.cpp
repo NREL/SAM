@@ -164,7 +164,8 @@ public:
 
 
 		// initialize property
-		m_foldername = m_case->GetProperty("CodeGeneratorFolder");
+//		m_foldername = m_case->GetProperty("CodeGeneratorFolder");
+		m_foldername = SamApp::Settings().Read("CodeGeneratorFolder");
 		if (m_foldername.IsEmpty()) m_foldername = ::wxGetHomeDir();
 
 		txt_code_folder = new wxExtTextCtrl(this, ID_txt_code_folder, m_foldername);
@@ -176,7 +177,13 @@ public:
 		data_languages.Add("c#");
 		choice_language = new wxChoice(this, ID_choice_language, wxDefaultPosition, wxDefaultSize, data_languages);
 	
-		int lang = wxAtoi(m_case->GetProperty("CodeGeneratorLanguage"));
+//		int lang = 0;
+//		wxString str_lang = m_case->GetProperty("CodeGeneratorLanguage");
+//		wxString str_lang = SamApp::Settings().Read("CodeGeneratorLanguage");
+//		if (str_lang.IsNumber())
+//			lang = wxAtoi(str_lang);
+
+		int lang = (int)SamApp::Settings().ReadLong("CodeGeneratorLanguage",0);
 		if (lang < 0) lang = 0;
 		if (lang > (data_languages.Count() - 1)) lang = data_languages.Count() - 1;
 		choice_language->SetSelection(lang);
@@ -232,8 +239,7 @@ public:
 
 	int GetThreshold()
 	{
-		int threshold = 0; // everything with more than 288 elements written to csv file.
-//		int threshold = 288; // everything with more than 288 elements written to csv file.
+		int threshold = 288; // everything with more than 288 elements written to csv file.
 		/*
 		int threshold = 10000; // > 10,000 always written out
 		if (chk_csvfiles->IsChecked())
@@ -343,11 +349,13 @@ public:
 	void ShowOpenDialog()
 	{
 //		wxString message = "Code generation successful!\n\nClick 'OK' to open folder containing all files generated.\n\nClick 'Cancel' to return to the code generator dialog.";
-		m_case->SetProperty("CodeGeneratorFolder", m_foldername);
+//		m_case->SetProperty("CodeGeneratorFolder", m_foldername);
+		SamApp::Settings().Write("CodeGeneratorFolder", m_foldername);
 //		wxString csvfile = "YES";
 //		if (!chk_csvfiles->GetValue()) csvfile = "NO";
 //		m_case->SetProperty("CodeGeneratorCSVFiles", csvfile);
-		m_case->SetProperty("CodeGeneratorLanguage", wxString::Format("%d", choice_language->GetSelection()));
+//		m_case->SetProperty("CodeGeneratorLanguage", wxString::Format("%d", choice_language->GetSelection()));
+		SamApp::Settings().Write("CodeGeneratorLanguage", choice_language->GetSelection());
 		Close();
 		wxString message = "Open folder containing all files generated?";
 		if (wxYES == wxMessageBox(message, "Code Generator Success", wxYES | wxNO))
@@ -2264,5 +2272,316 @@ bool CodeGen_csharp::Footer(FILE *fp)
 	fprintf(fp, "}\n");
 	return true;
 }
+
+
+
+
+// MATLAB code generation class
+
+CodeGen_matlab::CodeGen_matlab(Case *cc, const wxString &folder) : CodeGen_Base(cc, folder)
+{
+}
+
+
+bool CodeGen_matlab::Output(FILE *fp, ssc_data_t p_data)
+{
+	//		fprintf(fp, "outln('%s ' + var('%s'));\n", (const char*)m_data[ii].label.c_str(), (const char*)m_data[ii].var.c_str());
+	ssc_number_t value;
+	ssc_number_t *p;
+	int len, nr, nc;
+	wxString str_value;
+	double dbl_value;
+	for (size_t ii = 0; ii < m_data.size(); ii++)
+	{
+		const char *name = (const char*)m_data[ii].var.c_str();
+		int type = ::ssc_data_query(p_data, name);
+		switch (type)
+		{
+		case SSC_STRING:
+			fprintf(fp, "	const char *%s = ssc_data_get_string( data, \"%s\" );\n", name, name);
+			fprintf(fp, "	printf(\"\%s = \%s\"), %s, %s);\n", (const char*)m_data[ii].label.c_str(), name);
+			break;
+		case SSC_NUMBER:
+			fprintf(fp, "	ssc_number_t %s;\n", name);
+			fprintf(fp, "	ssc_data_get_number(data, \"%s\", &%s);\n", name, name);
+			fprintf(fp, "	printf(\"%%s = %%lg\\n\", \"%s\", (double)%s);\n", (const char*)m_data[ii].label.c_str(), name);
+			break;
+		case SSC_ARRAY:
+			p = ::ssc_data_get_array(p_data, name, &len);
+			fprintf(fp, "ssc_number_t p_%s[%d] ={", name, len);
+			fprintf(fp, "ssc_data_get_array( data, \"%s\", p_%s, %d );\n", name, name, len);
+			break;
+		case SSC_MATRIX:
+			// TODO tables in future
+			break;
+		}
+	}
+	return true;
+}
+
+bool CodeGen_matlab::Input(FILE *fp, ssc_data_t p_data, const char *name, const wxString &folder, const int &array_matrix_threshold)
+{
+	ssc_number_t value;
+	ssc_number_t *p;
+	int len, nr, nc;
+	wxString str_value;
+	double dbl_value;
+	int type = ::ssc_data_query(p_data, name);
+	switch (type)
+	{
+	case SSC_STRING:
+		str_value = wxString::FromUTF8(::ssc_data_get_string(p_data, name));
+		str_value.Replace("\\", "/");
+		fprintf(fp, "	ssc_data_set_string( data, \"%s\", \"%s\" );\n", name, (const char*)str_value.c_str());
+		break;
+	case SSC_NUMBER:
+		::ssc_data_get_number(p_data, name, &value);
+		dbl_value = (double)value;
+		if (dbl_value > 1e38) dbl_value = 1e38;
+		fprintf(fp, "	ssc_data_set_number( data, \"%s\", %lg );\n", name, dbl_value);
+		break;
+	case SSC_ARRAY:
+		p = ::ssc_data_get_array(p_data, name, &len);
+		if (len > array_matrix_threshold)
+		{ // separate csv file (var_name.csv in folder) for each variable
+			wxCSVData csv;
+			wxString fn = folder + "/" + wxString(name) + ".csv";
+			// write out as single column data for compatibility with csvread in SDKTool
+			for (int i = 0; i < len; i++)
+			{
+				dbl_value = (double)p[i];
+				if (dbl_value > 1e38) dbl_value = 1e38;
+				//				str_value = wxString::Format("%lg", dbl_value);
+				csv.Set(i, 0, wxString::Format("%lg", dbl_value));
+			}
+			csv.WriteFile(fn);
+			fprintf(fp, "	set_array( data, \"%s\", \"%s\", %d);\n", name, (const char*)fn.c_str(), len);
+		}
+		else
+		{
+			fprintf(fp, "	ssc_number_t p_%s[%d] ={", name, len);
+			for (int i = 0; i < (len - 1); i++)
+			{
+				dbl_value = (double)p[i];
+				if (dbl_value > 1e38) dbl_value = 1e38;
+				fprintf(fp, " %lg,", dbl_value);
+			}
+			dbl_value = (double)p[len - 1];
+			if (dbl_value > 1e38) dbl_value = 1e38;
+			fprintf(fp, " %lg };\n", dbl_value);
+			fprintf(fp, "	ssc_data_set_array( data, \"%s\", p_%s, %d );\n", name, name, len);
+		}
+		break;
+	case SSC_MATRIX:
+		p = ::ssc_data_get_matrix(p_data, name, &nr, &nc);
+		len = nr*nc;
+		if (len > array_matrix_threshold)
+		{ // separate csv file (var_name.csv in folder) for each variable
+			wxCSVData csv;
+			wxString fn = folder + "/" + wxString(name) + ".csv";
+			for (int r = 0; r < nr; r++)
+			{
+				for (int c = 0; c < nc; c++)
+				{
+					dbl_value = (double)p[r*nc + c];
+					if (dbl_value > 1e38) dbl_value = 1e38;
+					csv.Set(r, c, wxString::Format("%lg", dbl_value));
+				}
+			}
+			csv.WriteFile(fn);
+			fprintf(fp, "	set_matrix( data, \"%s\", \"%s\", %d, %d);\n", name, (const char*)fn.c_str(), nr, nc);
+		}
+		else
+		{
+			fprintf(fp, "	ssc_number_t p_%s[%d] ={", name, len);
+			for (int k = 0; k < (len - 1); k++)
+			{
+				dbl_value = (double)p[k];
+				if (dbl_value > 1e38) dbl_value = 1e38;
+				fprintf(fp, " %lg,", dbl_value);
+			}
+			dbl_value = (double)p[len - 1];
+			if (dbl_value > 1e38) dbl_value = 1e38;
+			fprintf(fp, " %lg };\n", dbl_value);
+			fprintf(fp, "	ssc_data_set_matrix( data, \"%s\", p_%s, %d, %d );\n", name, name, nr, nc);
+		}
+		// TODO tables in future
+	}
+	return true;
+}
+
+
+bool CodeGen_matlab::RunSSCModule(FILE *fp, wxString &name)
+{
+	fprintf(fp, "	if (ssc_module_exec(module, data) == 0)\n");
+	fprintf(fp, "	{\n");
+	fprintf(fp, "		printf(\"error during simulation.\"); \n");
+	fprintf(fp, "		ssc_module_free(module); \n");
+	fprintf(fp, "		ssc_data_free(data); \n");
+	fprintf(fp, "		return -1; \n");
+	fprintf(fp, "	}\n");
+	return true;
+}
+
+
+bool CodeGen_matlab::Header(FILE *fp)
+{
+	// top of file and supporting functions
+	fprintf(fp, "#include <stdio.h>\n");
+	fprintf(fp, "#include <string.h>\n");
+	fprintf(fp, "#include <stdlib.h>\n");
+	fprintf(fp, "#include \"sscapi.h\"\n");
+	fprintf(fp, "\n");
+
+	// handle message
+	fprintf(fp, "ssc_bool_t my_handler(ssc_module_t p_mod, ssc_handler_t p_handler, int action,\n");
+	fprintf(fp, "	float f0, float f1, const char *s0, const char *s1, void *user_data)\n");
+	fprintf(fp, "{\n");
+	fprintf(fp, "	if (action == SSC_LOG)\n");
+	fprintf(fp, "	{\n");
+	fprintf(fp, "		// print log message to console\n");
+	fprintf(fp, "		switch ((int)f0)\n");
+	fprintf(fp, "		{\n");
+	fprintf(fp, "		case SSC_NOTICE: printf(\"Notice: %s\", s0); break;\n");
+	fprintf(fp, "		case SSC_WARNING: printf(\"Warning: %s\", s0); break;\n");
+	fprintf(fp, "		case SSC_ERROR: printf(\"Error: %s\", s0); break;\n");
+	fprintf(fp, "		}\n");
+	fprintf(fp, "		return 1;\n");
+	fprintf(fp, "	}\n");
+	fprintf(fp, "	else if (action == SSC_UPDATE)\n");
+	fprintf(fp, "	{\n");
+	fprintf(fp, "		// print status update to console\n");
+	fprintf(fp, "		printf(\"(%.2f %%) % s\", f0, s0);\n");
+	fprintf(fp, "		return 1; // return 0 to abort simulation as needed.\n");
+	fprintf(fp, "	}\n");
+	fprintf(fp, "	else\n");
+	fprintf(fp, "		return 0;\n");
+	fprintf(fp, "}\n");
+	fprintf(fp, "\n");
+
+	// handle csv files
+	// arrays
+	fprintf(fp, "bool set_array(ssc_data_t p_data, const char *name, const char* fn, int len)\n");
+	fprintf(fp, "{\n");
+	fprintf(fp, "	char buffer[1024];\n");
+	fprintf(fp, "	char *record, *line;\n");
+	fprintf(fp, "	int i = 0;\n");
+	fprintf(fp, "	ssc_number_t *ary;\n");
+	fprintf(fp, "	FILE *fp = fopen(fn, \"r\");\n");
+	fprintf(fp, "	if (fp == NULL)\n");
+	fprintf(fp, "	{\n");
+	fprintf(fp, "		printf(\"file opening failed \");\n");
+	fprintf(fp, "		return false;\n");
+	fprintf(fp, "	}\n");
+	fprintf(fp, "	ary = (ssc_number_t *)malloc(len * sizeof(ssc_number_t));\n");
+	fprintf(fp, "	if (fp == NULL)\n");
+	fprintf(fp, "	{\n");
+	fprintf(fp, "		printf(\"file opening failed \");\n");
+	fprintf(fp, "		return false;\n");
+	fprintf(fp, "	}\n");
+	fprintf(fp, "	while ((line = fgets(buffer, sizeof(buffer), fp)) != NULL)\n");
+	fprintf(fp, "	{\n");
+	fprintf(fp, "		record = strtok(line, \",\");\n");
+	fprintf(fp, "		while ((record != NULL) && (i < len))\n");
+	fprintf(fp, "		{\n");
+	fprintf(fp, "			ary[i] = atof(record);\n");
+	fprintf(fp, "			record = strtok(NULL, \",\");\n");
+	fprintf(fp, "			i++;\n");
+	fprintf(fp, "		}\n");
+	fprintf(fp, "	}\n");
+	fprintf(fp, "	fclose(fp);\n");
+	fprintf(fp, "	ssc_data_set_array(p_data, name, ary, len);\n");
+	fprintf(fp, "	free(ary);\n");
+	fprintf(fp, "	return true;\n");
+	fprintf(fp, "}\n");
+	fprintf(fp, "\n");
+
+	// matrices
+	fprintf(fp, "bool set_matrix(ssc_data_t p_data, const char *name, const char* fn, int nr, int nc)\n");
+	fprintf(fp, "{\n");
+	fprintf(fp, "	char buffer[1024];\n");
+	fprintf(fp, "	char *record, *line;\n");
+	fprintf(fp, "	ssc_number_t *ary;\n");
+	fprintf(fp, "	int i = 0, len = nr*nc;\n");
+	fprintf(fp, "	FILE *fp = fopen(fn, \"r\");\n");
+	fprintf(fp, "	if (fp == NULL)\n");
+	fprintf(fp, "	{\n");
+	fprintf(fp, "		printf(\"file opening failed \");\n");
+	fprintf(fp, "		return false;\n");
+	fprintf(fp, "	}\n");
+	fprintf(fp, "	ary = (ssc_number_t *)malloc(len * sizeof(ssc_number_t));\n");
+	fprintf(fp, "	if (fp == NULL)\n");
+	fprintf(fp, "	{\n");
+	fprintf(fp, "		printf(\"file opening failed \");\n");
+	fprintf(fp, "		return false;\n");
+	fprintf(fp, "	}\n");
+	fprintf(fp, "	while ((line = fgets(buffer, sizeof(buffer), fp)) != NULL)\n");
+	fprintf(fp, "	{\n");
+	fprintf(fp, "		record = strtok(line, \",\");\n");
+	fprintf(fp, "		while ((record != NULL) && (i < len))\n");
+	fprintf(fp, "		{\n");
+	fprintf(fp, "			ary[i] = atof(record);\n");
+	fprintf(fp, "			record = strtok(NULL, \",\");\n");
+	fprintf(fp, "			i++;\n");
+	fprintf(fp, "		}\n");
+	fprintf(fp, "	}\n");
+	fprintf(fp, "	fclose(fp);\n");
+	fprintf(fp, "	ssc_data_set_matrix(p_data, name, ary, nr, nc);\n");
+	fprintf(fp, "	free(ary);\n");
+	fprintf(fp, "	return true;\n");
+	fprintf(fp, "}\n");
+
+
+	fprintf(fp, "\n");
+
+	fprintf(fp, "int main(int argc, char *argv[])\n");
+	fprintf(fp, "{\n");
+
+	// create global data container
+	fprintf(fp, "	ssc_data_t data = ssc_data_create();\n");
+	fprintf(fp, "	if (data == NULL)\n");
+	fprintf(fp, "	{\n");
+	fprintf(fp, "		printf(\"error: out of memory.\");\n");
+	fprintf(fp, "		return -1;\n");
+	fprintf(fp, "	}\n");
+	fprintf(fp, "	ssc_module_t module;\n");
+	fprintf(fp, "\n");
+
+	return true;
+}
+
+bool CodeGen_matlab::CreateSSCModule(FILE *fp, wxString &name)
+{
+	if (name.IsNull() || name.Length() < 1)
+		return false;
+	else
+	{
+		fprintf(fp, "	module = ssc_module_create(\"%s\"); \n", (const char*)name.c_str());
+		fprintf(fp, "	if (NULL == module)\n");
+		fprintf(fp, "	{\n");
+		fprintf(fp, "		printf(\"error: could not create '%s' module.\"); \n", (const char*)name.c_str());
+		fprintf(fp, "		ssc_data_free(data); \n");
+		fprintf(fp, "		return -1; \n");
+		fprintf(fp, "	}\n");
+	}
+	return true;
+}
+
+bool CodeGen_matlab::FreeSSCModule(FILE *fp)
+{
+	fprintf(fp, "	ssc_module_free(module);\n");
+	return true;
+}
+
+bool CodeGen_matlab::Footer(FILE *fp)
+{
+	fprintf(fp, "	ssc_data_free(data);\n");
+	fprintf(fp, "	return 0;\n");
+	fprintf(fp, "}\n");
+	return true;
+}
+
+
+
 
 
