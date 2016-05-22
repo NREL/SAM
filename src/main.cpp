@@ -1153,7 +1153,7 @@ void MainWindow::OnCaseMenu( wxCommandEvent &evt )
 		ExcelExchange::ShowExcelExchangeDialog(c->ExcelExch(), cw);
 		break;
 	case ID_CASE_GENERATE_CODE:
-//		CodeGen_Base::ShowCodeGenDialog( cw);
+		CodeGen_Base::ShowCodeGenDialog( cw);
 		break;
 	case ID_CASE_REPORT:
 		cw->GenerateReport();

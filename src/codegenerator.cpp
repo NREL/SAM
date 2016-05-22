@@ -49,6 +49,7 @@ void CodeGenCallbackContext::SetupLibraries(lk::env_t *env)
 }
 
 
+
 /*
 // for file and language prompting
 enum {
@@ -900,7 +901,7 @@ bool CodeGen_c::Output(ssc_data_t p_data)
 		{
 		case SSC_STRING:
 			fprintf(m_fp, "	const char *%s = ssc_data_get_string( data, \"%s\" );\n", name, name);
-			fprintf(m_fp, "	printf(\"\%s = \%s\"), %s, %s);\n", (const char*)m_data[ii].label.c_str(), name);
+			fprintf(m_fp, "	printf(\"%%s = %%s\"), %s, %s);\n", (const char*)m_data[ii].label.c_str(), name);
 			break;
 		case SSC_NUMBER:
 			fprintf(m_fp, "	ssc_number_t %s;\n", name);
