@@ -60,7 +60,7 @@ OBJECTS = ide.o \
 	troughloop.o \
 	shadingfactors.o \
 	materials.o \
-	codegen.o
+	codegenerator.o
 
 TARGET = sam.bin
 
