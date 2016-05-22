@@ -22,7 +22,7 @@
     <ResourceCompile Include="SAM.rc" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\src\codegen.cpp" />
+    <ClCompile Include="..\src\codegenerator.cpp" />
     <ClCompile Include="..\src\lossadj.cpp" />
     <ClCompile Include="..\src\defmgr.cpp" />
     <ClCompile Include="..\src\excelexch.cpp" />
@@ -66,8 +66,8 @@
     <ClCompile Include="..\src\windtoolkit.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\src\codegen.h" />
     <ClInclude Include="..\src\codegencallback.h" />
+    <ClInclude Include="..\src\codegenerator.h" />
     <ClInclude Include="..\src\lossadj.h" />
     <ClInclude Include="..\src\defmgr.h" />
     <ClInclude Include="..\src\excelexch.h" />
