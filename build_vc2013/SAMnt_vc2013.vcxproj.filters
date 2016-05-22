@@ -137,10 +137,10 @@
     <ClInclude Include="..\src\lossadj.h">
       <Filter>Source</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\codegen.h">
+    <ClInclude Include="..\src\codegencallback.h" />
+    <ClInclude Include="..\src\codegenerator.h">
       <Filter>Source</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\codegencallback.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\welcome.cpp">
@@ -266,7 +266,7 @@
     <ClCompile Include="..\src\lossadj.cpp">
       <Filter>Source</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\codegen.cpp">
+    <ClCompile Include="..\src\codegenerator.cpp">
       <Filter>Source</Filter>
     </ClCompile>
   </ItemGroup>
