@@ -23,7 +23,7 @@
 #include <ssc/sscapi.h>
 
 #include "variables.h"
-#include "codegen.h"
+#include "codegenerator.h"
 #include "codegencallback.h"
 #include "main.h"
 #include "equations.h"
@@ -1336,7 +1336,7 @@ bool CodeGen_csharp::RunSSCModule(wxString &name)
 	fprintf(m_fp, "				String stype = \"NOTICE\";\n");
 	fprintf(m_fp, "				if (type == SSC.API.WARNING) stype = \"WARNING\";\n");
 	fprintf(m_fp, "				else if (type == SSC.API.ERROR) stype = \"ERROR\";\n");
-	fprintf(m_fp, "				Console.WriteLine(\"[\" + stype + \" at time : \" + time + \"]: \" + msg \);\n");
+	fprintf(m_fp, "				Console.WriteLine(\"[\" + stype + \" at time : \" + time + \"]: \" + msg );\n");
 	fprintf(m_fp, "				idx++;\n");
 	fprintf(m_fp, "			}\n");
 	fprintf(m_fp, "			return;\n");
