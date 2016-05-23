@@ -24,7 +24,6 @@
 #include <wx/tokenzr.h>
 
 #include <wex/metro.h>
-//#include "md5.h"
 
 #include <wex/utils.h>
 #include <wex/easycurl.h>

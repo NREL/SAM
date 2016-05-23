@@ -30,8 +30,6 @@
 #include <wx/tokenzr.h>
 
 #include <wex/utils.h>
-//#include "md5.h"
-
 
 #include <wex/extgrid.h>
 
