@@ -24,6 +24,8 @@
 #include <wx/tokenzr.h>
 
 #include <wex/metro.h>
+//#include "md5.h"
+
 #include <wex/utils.h>
 #include <wex/easycurl.h>
 
@@ -303,7 +305,6 @@ public:
 	{
 		wxEasyCurl::Initialize();
 
-		
 		wxString proxy_file = wxPathOnly(argv[0]) + "/proxy.txt";
 		if (wxFileExists(proxy_file))
 		{

@@ -30,6 +30,8 @@
 #include <wx/tokenzr.h>
 
 #include <wex/utils.h>
+//#include "md5.h"
+
 
 #include <wex/extgrid.h>
 
@@ -583,7 +585,7 @@ void PackageDialog::MakePackage()
 
 	zip.Close();
 	out.Close();
-
+	
 	m_md5 = wxMD5::GetFileMD5( temp );
 	m_output->AppendText("zip ok: md5=" + m_md5 + "\n");
 	wxSafeYield( NULL, true );
