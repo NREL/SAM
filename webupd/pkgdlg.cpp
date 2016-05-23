@@ -30,10 +30,10 @@
 #include <wx/tokenzr.h>
 
 #include <wex/utils.h>
-#include <wex/md5.h>
 
 #include <wex/extgrid.h>
 
+#include "md5.h"
 
 BEGIN_EVENT_TABLE( MyHtmlWindow, wxHtmlWindow )
 	EVT_HTML_LINK_CLICKED( wxID_ANY, MyHtmlWindow::OnLinkClicked )

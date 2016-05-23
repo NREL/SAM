@@ -24,10 +24,10 @@
 #include <wx/tokenzr.h>
 
 #include <wex/metro.h>
-#include <wex/md5.h>
 #include <wex/utils.h>
 #include <wex/easycurl.h>
 
+#include "md5.h"
 #include "pkgdlg.h"
 
 static wxString g_updateURL("https://sam.nrel.gov/sites/sam.nrel.gov/files/content/updates/");

@@ -22,10 +22,12 @@
     <ResourceCompile Include="webupd.rc" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\webupd\md5.cpp" />
     <ClCompile Include="..\webupd\pkgdlg.cpp" />
     <ClCompile Include="..\webupd\webupd.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\webupd\md5.h" />
     <ClInclude Include="..\webupd\pkgdlg.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
