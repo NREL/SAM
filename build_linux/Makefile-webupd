@@ -14,8 +14,9 @@ CXXFLAGS = $(CFLAGS)
 LDFLAGS = `wx-config-3 --libs propgrid` `wx-config-3 --libs aui` `wx-config-3 --libs stc` `wx-config-3 --libs richtext` `wx-config-3 --libs` -lm $(LKLIB) $(WEXLIB) -lstdc++ -lcurl
 
 OBJECTS =  \
+	md5.o \
 	webupd.o \
-	pkgdlg.o 
+	pkgdlg.o
 
 TARGET = webupd.bin
 
