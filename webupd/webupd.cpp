@@ -28,7 +28,6 @@
 #include <wex/utils.h>
 #include <wex/easycurl.h>
 
-#include "md5.h"
 #include "pkgdlg.h"
 
 static wxString g_updateURL("https://sam.nrel.gov/sites/sam.nrel.gov/files/content/updates/");
@@ -158,7 +157,7 @@ public:
 
 			if ( dl.Ok() && dl.WriteDataToFile( patchArchive ) )
 			{
-				wxString md5 = wxMD5::GetFileMD5( patchArchive );
+				wxString md5 = wxGetFileMD5( patchArchive );
 				if (md5.Trim().Trim(true).Lower() != pi->md5.Trim().Trim(true).Lower())
 				{
 					wxMessageBox("Revision archive did not download correctly (MD5 checksum error).  Please try the update process again.\n\n" + md5 + " != " + pi->md5, "SAM Web Update");
@@ -370,7 +369,7 @@ public:
 			{
 				wxFileDialog dlg( 0, "Select file to get MD5SUM for" );
 				if ( wxID_OK == dlg.ShowModal() )
-					::wxShowTextMessageDialog( "MD5SUM for " + dlg.GetPath() + "\n\n" + wxMD5::GetFileMD5( dlg.GetPath() ) );
+					::wxShowTextMessageDialog( "MD5SUM for " + dlg.GetPath() + "\n\n" + wxGetFileMD5( dlg.GetPath() ) );
 				else
 					wxMessageBox("no file selected, quitting");
 				return false;

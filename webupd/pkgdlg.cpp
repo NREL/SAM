@@ -33,7 +33,6 @@
 
 #include <wex/extgrid.h>
 
-#include "md5.h"
 
 BEGIN_EVENT_TABLE( MyHtmlWindow, wxHtmlWindow )
 	EVT_HTML_LINK_CLICKED( wxID_ANY, MyHtmlWindow::OnLinkClicked )
@@ -584,7 +583,7 @@ void PackageDialog::MakePackage()
 	zip.Close();
 	out.Close();
 	
-	m_md5 = wxMD5::GetFileMD5( temp );
+	m_md5 = wxGetFileMD5( temp );
 	m_output->AppendText("zip ok: md5=" + m_md5 + "\n");
 	wxSafeYield( NULL, true );
 
@@ -606,7 +605,7 @@ void PackageDialog::MakePackage()
 	m_archive = dlg.GetPath();
 
 	wxCopyFile( temp, m_archive );
-	if ( wxMD5::GetFileMD5( m_archive ) == m_md5 )
+	if ( wxGetFileMD5( m_archive ) == m_md5 )
 	{
 		m_output->AppendText( "patch archive written to: " + dlg.GetPath() + "\n");
 		wxRemoveFile( temp );
