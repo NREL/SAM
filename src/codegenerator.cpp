@@ -335,11 +335,11 @@ public:
 		SamApp::Settings().Write("CodeGeneratorFolder", m_foldername);
 		SamApp::Settings().Write("CodeGeneratorLanguage", choice_language->GetSelection());
 		Close();
-		wxString message = "Open folder containing all files generated?";
-		if (wxYES == wxMessageBox(message, "Code Generator Success", wxYES | wxNO))
-		{
+//		wxString message = "Open folder containing all files generated?";
+//		if (wxYES == wxMessageBox(message, "Code Generator Success", wxYES | wxNO))
+//		{
 			wxLaunchDefaultApplication(m_foldername);
-		}
+//		}
 	}
 
 	void OnHelp(wxCommandEvent &)
