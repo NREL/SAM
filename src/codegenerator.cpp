@@ -50,321 +50,6 @@ void CodeGenCallbackContext::SetupLibraries(lk::env_t *env)
 
 
 
-/*
-// for file and language prompting
-enum {
-	ID_btn_open_code,
-	ID_btn_open_folder
-};
-
-class CodeOpen_Dialog : public wxDialog
-{
-private:
-	Case *m_case;
-	wxTextCtrl *m_txtctrl;
-	wxFileName m_filename;
-
-public:
-	CodeOpen_Dialog(wxWindow *parent, int id, wxFileName &fn, wxString &message)
-		: wxDialog(parent, id, "Open Code", wxDefaultPosition, wxScaleSize(600, 350),
-		wxDEFAULT_DIALOG_STYLE | wxRESIZE_BORDER), m_filename(fn)
-	{
-		m_txtctrl = new wxTextCtrl(this, -1, message,
-			wxDefaultPosition, wxDefaultSize, wxTE_MULTILINE | wxTE_READONLY);
-		//txtctrl->SetFont( wxFont(10, wxMODERN, wxNORMAL, wxNORMAL) );
-
-		wxBoxSizer *sz4 = new wxBoxSizer(wxHORIZONTAL);
-		sz4->Add(new wxButton(this, wxHELP, "Help", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL | wxEXPAND, 1);
-		sz4->AddStretchSpacer();
-		sz4->Add(new wxButton(this, ID_btn_open_folder, "Open folder", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL | wxEXPAND, 1);
-		sz4->Add(new wxButton(this, ID_btn_open_code, "Open code", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL | wxEXPAND, 1);
-		sz4->Add(new wxButton(this, wxCANCEL, "Close", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL | wxEXPAND, 1);
-
-
-
-		wxBoxSizer *sizer = new wxBoxSizer(wxVERTICAL);
-		sizer->Add(m_txtctrl, 1, wxALL | wxEXPAND, 10);
-		sizer->Add(sz4, 0, wxALL | wxEXPAND, 5);
-		SetSizerAndFit(sizer);
-	}
-
-	~CodeOpen_Dialog()
-	{
-	}
-
-
-	void OnOpenFolder(wxCommandEvent &)
-	{
-		wxLaunchDefaultApplication(m_filename.GetPath());
-	}
-
-	void OnOpenCode(wxCommandEvent &)
-	{
-		// default associated program
-		wxLaunchDefaultApplication(m_filename.GetFullPath());
-	}
-
-	void OnHelp(wxCommandEvent &)
-	{
-		SamApp::ShowHelp("code_generation");
-	}
-
-	void OnCancel(wxCommandEvent &)
-	{
-		Close();
-	}
-
-	DECLARE_EVENT_TABLE();
-};
-
-BEGIN_EVENT_TABLE(CodeOpen_Dialog, wxDialog)
-EVT_BUTTON(ID_btn_open_folder, CodeOpen_Dialog::OnOpenFolder)
-EVT_BUTTON(ID_btn_open_code, CodeOpen_Dialog::OnOpenCode)
-EVT_BUTTON(wxHELP, CodeOpen_Dialog::OnHelp)
-EVT_BUTTON(wxCANCEL, CodeOpen_Dialog::OnCancel)
-END_EVENT_TABLE()
-
-*/
-
-
-// for file and language prompting
-
-enum {
-	ID_btn_select_folder,
-	ID_btn_generate,
-	ID_txt_code_folder,
-	ID_choice_language,
-	ID_check_csvfiles,
-//	ID_choice_array_matrix_threshold
-};
-
-class CodeGen_Dialog : public wxDialog
-{
-private:
-	Case *m_case;
-	ConfigInfo *m_ci;
-	CaseWindow *m_caseWin;
-	wxExtTextCtrl *txt_code_folder;
-	wxChoice *choice_language;
-	wxString m_foldername;
-
-public:
-	CodeGen_Dialog(wxWindow *parent, int id, CaseWindow *cwin)
-		: wxDialog(parent, id, "Code Generator", wxDefaultPosition, wxScaleSize(600, 350),
-		wxDEFAULT_DIALOG_STYLE | wxRESIZE_BORDER)
-	{
-		m_caseWin = cwin;
-
-		if (!m_caseWin) return;
-
-		m_case = cwin->GetCase();
-		m_ci = m_case->GetConfiguration();
-
-
-		// initialize property
-		m_foldername = SamApp::Settings().Read("CodeGeneratorFolder");
-		if (m_foldername.IsEmpty()) m_foldername = ::wxGetHomeDir();
-
-		txt_code_folder = new wxExtTextCtrl(this, ID_txt_code_folder, m_foldername);
- 
-		wxArrayString data_languages;
-		// ids or just index values from here
-		data_languages.Add("lk");
-		data_languages.Add("c");
-		data_languages.Add("c#");
-		data_languages.Add("matlab");
-		data_languages.Add("python");
-		choice_language = new wxChoice(this, ID_choice_language, wxDefaultPosition, wxDefaultSize, data_languages);
-	
-		int lang = (int)SamApp::Settings().ReadLong("CodeGeneratorLanguage",0);
-		if (lang < 0) lang = 0;
-		if (lang > (data_languages.Count() - 1)) lang = data_languages.Count() - 1;
-		choice_language->SetSelection(lang);
-
-
-		wxBoxSizer *sz1 = new wxBoxSizer(wxHORIZONTAL);
-		sz1->Add(new wxStaticText(this, wxID_ANY, "Specify output folder:"), 0, wxALL | wxALIGN_CENTER_VERTICAL, 4);
-		sz1->Add(txt_code_folder, 1, wxALL | wxALIGN_CENTER_VERTICAL, 4);
-		sz1->Add(new wxButton(this, ID_btn_select_folder, "...", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL | wxALIGN_CENTER_VERTICAL, 4);
-
-		wxBoxSizer *sz2 = new wxBoxSizer(wxHORIZONTAL);
-		sz2->Add(new wxStaticText(this, wxID_ANY, "Select code language:"), 0, wxALL | wxEXPAND, 4);
-		sz2->Add(choice_language, 0, wxALL | wxEXPAND, 4);
-
-
-		wxBoxSizer *sz4 = new wxBoxSizer(wxHORIZONTAL);
-		sz4->Add(new wxButton(this, wxHELP, "Help", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL | wxEXPAND, 1);
-		sz4->AddStretchSpacer();
-		sz4->Add(new wxButton(this, ID_btn_generate, "Generate code", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL | wxEXPAND, 1);
-		sz4->Add(new wxButton(this, wxCANCEL, "Close", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL | wxEXPAND, 1);
-
-	
-		wxBoxSizer *sizer = new wxBoxSizer(wxVERTICAL);
-		sizer->Add(sz1, 0, wxALL | wxEXPAND, 5);
-		sizer->Add(sz2, 1, wxALL | wxEXPAND, 5);
-		sizer->Add(sz4, 0, wxALL | wxEXPAND, 5);
-		SetSizerAndFit(sizer);
-	}
-
-	~CodeGen_Dialog()
-	{
-	}
-
-
-	int GetThreshold()
-	{
-		int threshold = 288; // everything with more than 288 elements written to csv file.
-		/*
-		int threshold = 10000; // > 10,000 always written out
-		if (chk_csvfiles->IsChecked())
-			threshold = 288;
-
-		switch (choice_array_matrix_threshold->GetSelection())
-		{
-		case 0: // none (greater than 10,000 always written out)
-			threshold = 10000;
-			break;
-		case 1: // all written to separate files
-			threshold = 0;
-			break;
-		case 2: // diurnal
-			threshold = 288;
-			break;
-		case 3: // analysis period
-			threshold = 20;
-			break;
-		default:
-			threshold = 288;
-		}
-		*/
-		return threshold;
-	}
-
-	void OnCodeFolder(wxCommandEvent &evt)
-	{
-		if (!m_case) return;
-
-		wxDirDialog dlg(this, "Select an output folder", m_foldername, wxDD_DEFAULT_STYLE | wxDD_DIR_MUST_EXIST);
-		if (dlg.ShowModal() == wxID_OK)
-		{
-			m_foldername = dlg.GetPath();
-			m_foldername.Replace("\\", "/");
-			txt_code_folder->SetValue(m_foldername);
-		}
-	}
-
-	void OnGenerate(wxCommandEvent &)
-	{
-		// create appropriate language class with case passed to constructor
-		// run GenerateCode function
-		int code = choice_language->GetSelection();
-		m_foldername = txt_code_folder->GetValue();
-		m_foldername.Replace("\\", "/");
-		txt_code_folder->SetValue(m_foldername);
-		if (!wxDirExists(m_foldername))
-		{
-			wxMessageBox(wxString::Format("Error: the path '%s' does not exist", (const char*)m_foldername.c_str()), "Path Error", wxICON_ERROR);
-			return;
-		}
-		int threshold = GetThreshold();
-
-		// from wxWiki to convert wxString to char*
-		wxString fn = SamApp::Project().GetCaseName(m_case);
-		// replace spaces for SDK user friendly name
-		fn.Replace(" ", "_");
-		fn.Replace("(", "_"); // matlab
-		fn.Replace(")", "_"); // matlab
-		char cfn[100];
-		strcpy(cfn, (const char*)fn.mb_str(wxConvUTF8));
-		fn = m_foldername + "/" + wxString::FromAscii(cfn);
-
-		if (code == 0) // lk
-		{
-			fn += ".lk";
-			CodeGen_lk *cg = new CodeGen_lk(m_case, fn);
-			cg->GenerateCode(threshold);
-			if (!cg->Ok())	
-				wxMessageBox(cg->GetErrors(), "Generate Errors", wxICON_ERROR);
-			else
-				ShowOpenDialog();
-		}
-		else if (code == 1) // c
-		{
-			fn += ".c";
-			CodeGen_c *cg = new CodeGen_c(m_case, fn);
-			cg->GenerateCode(threshold);
-			if (!cg->Ok())
-				wxMessageBox(cg->GetErrors(), "Generate Errors", wxICON_ERROR);
-			else
-				ShowOpenDialog();
-		}
-		else if (code == 2) // c#
-		{
-			fn += ".cs";
-			CodeGen_csharp *cg = new CodeGen_csharp(m_case, fn);
-			cg->GenerateCode(threshold);
-			if (!cg->Ok())
-				wxMessageBox(cg->GetErrors(), "Generate Errors", wxICON_ERROR);
-			else
-				ShowOpenDialog();
-		}
-		else if (code == 3) // matlab
-		{
-			fn += ".m";
-			CodeGen_matlab *cg = new CodeGen_matlab(m_case, fn);
-			cg->GenerateCode(threshold);
-			if (!cg->Ok())
-				wxMessageBox(cg->GetErrors(), "Generate Errors", wxICON_ERROR);
-			else
-				ShowOpenDialog();
-		}
-		else if (code == 4) // python
-		{
-			fn += ".py";
-			CodeGen_python *cg = new CodeGen_python(m_case, fn);
-			cg->GenerateCode(threshold);
-			if (!cg->Ok())
-				wxMessageBox(cg->GetErrors(), "Generate Errors", wxICON_ERROR);
-			else
-				ShowOpenDialog();
-		}
-	}
-
-	void ShowOpenDialog()
-	{
-		SamApp::Settings().Write("CodeGeneratorFolder", m_foldername);
-		SamApp::Settings().Write("CodeGeneratorLanguage", choice_language->GetSelection());
-		Close();
-//		wxString message = "Open folder containing all files generated?";
-//		if (wxYES == wxMessageBox(message, "Code Generator Success", wxYES | wxNO))
-//		{
-			wxLaunchDefaultApplication(m_foldername);
-//		}
-	}
-
-	void OnHelp(wxCommandEvent &)
-	{
-		SamApp::ShowHelp("code_generation");
-	}
-
-	void OnCancel(wxCommandEvent &)
-	{
-		Close();
-	}
-
-	DECLARE_EVENT_TABLE();
-};
-
-BEGIN_EVENT_TABLE(CodeGen_Dialog, wxDialog)
-EVT_BUTTON(ID_btn_select_folder, CodeGen_Dialog::OnCodeFolder)
-EVT_BUTTON(ID_btn_generate, CodeGen_Dialog::OnGenerate)
-EVT_BUTTON(wxHELP, CodeGen_Dialog::OnHelp)
-EVT_BUTTON(wxCANCEL, CodeGen_Dialog::OnCancel)
-END_EVENT_TABLE()
-
-
-
-
 static bool VarValueToSSC(VarValue *vv, ssc_data_t pdata, const wxString &sscname)
 {
 	switch (vv->Type())
@@ -722,10 +407,93 @@ bool CodeGen_Base::Ok()
 
 bool CodeGen_Base::ShowCodeGenDialog(CaseWindow *cw)
 {
-	CodeGen_Dialog dialog(SamApp::Window(), wxID_ANY, cw);
-	dialog.CenterOnParent();
-	if (wxID_OK == dialog.ShowModal())
-		return true;
+	if (!cw || !(cw->GetCase())) return false;
+
+	wxArrayString code_languages;
+	// ids or just index values from here
+	code_languages.Add("lk");
+	code_languages.Add("c");
+	code_languages.Add("c#");
+	code_languages.Add("matlab");
+	code_languages.Add("python");
+
+	// initialize properties
+	wxString foldername = SamApp::Settings().Read("CodeGeneratorFolder");
+	if (foldername.IsEmpty()) foldername = ::wxGetHomeDir();
+
+	int lang = (int)SamApp::Settings().ReadLong("CodeGeneratorLanguage", 0);
+	if (lang < 0) lang = 0;
+	if (lang >(code_languages.Count() - 1)) lang = code_languages.Count() - 1;
+
+	// get language
+	wxSingleChoiceDialog *scd_language = new wxSingleChoiceDialog(SamApp::Window(), "Select code language:", "Code language", code_languages);
+	scd_language->SetSelection(lang);
+	if (scd_language->ShowModal() == wxID_OK)
+	{
+		lang = scd_language->GetSelection();
+		SamApp::Settings().Write("CodeGeneratorLanguage", lang);
+	}
+
+	// get folder
+	wxDirDialog dlg(SamApp::Window(), "Select an output folder", foldername, wxDD_DEFAULT_STYLE | wxDD_DIR_MUST_EXIST);
+	if (dlg.ShowModal() == wxID_OK)
+	{
+		foldername = dlg.GetPath();
+		foldername.Replace("\\", "/");
+		SamApp::Settings().Write("CodeGeneratorFolder", foldername);
+	}
+
+	// generate code
+	int threshold = 288; // all arrays and matrices with more than 288 elements get written to csv file
+
+	// from wxWiki to convert wxString to char*
+	Case *c = cw->GetCase();
+	wxString fn = SamApp::Project().GetCaseName(c);
+	// replace spaces for SDK user friendly name
+	fn.Replace(" ", "_");
+	fn.Replace("(", "_"); // matlab
+	fn.Replace(")", "_"); // matlab
+	char cfn[100];
+	strcpy(cfn, (const char*)fn.mb_str(wxConvUTF8));
+	fn = foldername + "/" + wxString::FromAscii(cfn);
+
+	CodeGen_Base *cg;
+	wxString err_msg = "";
+	if (lang == 0) // lk
+	{
+		fn += ".lk";
+		cg = new CodeGen_lk(c, fn);
+	}
+	else if (lang == 1) // c
+	{
+		fn += ".c";
+		cg = new CodeGen_c(c, fn);
+	}
+	else if (lang == 2) // c#
+	{
+		fn += ".cs";
+		cg = new CodeGen_csharp(c, fn);
+	}
+	else if (lang == 3) // matlab
+	{
+		fn += ".m";
+		cg = new CodeGen_matlab(c, fn);
+	}
+	else if (lang == 4) // python
+	{
+		fn += ".py";
+		cg = new CodeGen_python(c, fn);
+	}
+
+	if (cg)
+	{
+		cg->GenerateCode(threshold);
+		if (!cg->Ok())
+			wxMessageBox(cg->GetErrors(), "Code Generator Errors", wxICON_ERROR);
+		else
+			wxLaunchDefaultApplication(foldername);
+		return cg->Ok();
+	}
 	else
 		return false;
 }
@@ -887,12 +655,7 @@ CodeGen_c::CodeGen_c(Case *cc, const wxString &folder) : CodeGen_Base(cc, folder
 
 bool CodeGen_c::Output(ssc_data_t p_data)
 {
-//		fprintf(m_fp, "outln('%s ' + var('%s'));\n", (const char*)m_data[ii].label.c_str(), (const char*)m_data[ii].var.c_str());
-	ssc_number_t value;
-	ssc_number_t *p;
-	int len, nr, nc;
 	wxString str_value;
-	double dbl_value;
 	for (size_t ii = 0; ii < m_data.size(); ii++)
 	{
 		const char *name = (const char*)m_data[ii].var.c_str();
@@ -1194,12 +957,7 @@ CodeGen_csharp::CodeGen_csharp(Case *cc, const wxString &folder) : CodeGen_Base(
 
 bool CodeGen_csharp::Output(ssc_data_t p_data)
 {
-	//		fprintf(m_fp, "outln('%s ' + var('%s'));\n", (const char*)m_data[ii].label.c_str(), (const char*)m_data[ii].var.c_str());
-	ssc_number_t value;
-	ssc_number_t *p;
-	int len, nr, nc;
 	wxString str_value;
-	double dbl_value;
 	for (size_t ii = 0; ii < m_data.size(); ii++)
 	{
 		const char *name = (const char*)m_data[ii].var.c_str();
@@ -2262,11 +2020,7 @@ CodeGen_matlab::CodeGen_matlab(Case *cc, const wxString &folder) : CodeGen_Base(
 bool CodeGen_matlab::Output(ssc_data_t p_data)
 {
 	//		fprintf(m_fp, "outln('%s ' + var('%s'));\n", (const char*)m_data[ii].label.c_str(), (const char*)m_data[ii].var.c_str());
-	ssc_number_t value;
-	ssc_number_t *p;
-	int len, nr, nc;
 	wxString str_value;
-	double dbl_value;
 	for (size_t ii = 0; ii < m_data.size(); ii++)
 	{
 		const char *name = (const char*)m_data[ii].var.c_str();
@@ -2669,11 +2423,7 @@ CodeGen_python::CodeGen_python(Case *cc, const wxString &folder) : CodeGen_Base(
 bool CodeGen_python::Output(ssc_data_t p_data)
 {
 	//		fprintf(m_fp, "outln('%s ' + var('%s'));\n", (const char*)m_data[ii].label.c_str(), (const char*)m_data[ii].var.c_str());
-	ssc_number_t value;
-	ssc_number_t *p;
-	int len, nr, nc;
 	wxString str_value;
-	double dbl_value;
 	for (size_t ii = 0; ii < m_data.size(); ii++)
 	{
 		const char *name = (const char*)m_data[ii].var.c_str();
