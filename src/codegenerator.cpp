@@ -2488,11 +2488,10 @@ bool CodeGen_python::Input(ssc_data_t p_data, const char *name, const wxString &
 			{
 				dbl_value = (double)p[i];
 				if (dbl_value > 1e38) dbl_value = 1e38;
-				//				str_value = wxString::Format("%lg", dbl_value);
 				csv.Set(i, 0, wxString::Format("%lg", dbl_value));
 			}
 			csv.WriteFile(fn);
-			fprintf(m_fp, "	%s = numpy.array(list(csv.reader(open('%s','rb'),delimiter=','))).astype('float').flatten()\n", name, (const char*)fn.c_str());
+			fprintf(m_fp, "	ssc.data_set_array_from_csv( data, '%s', '%s');\n", name, (const char*)fn.c_str());
 		}
 		else
 		{
@@ -2506,8 +2505,8 @@ bool CodeGen_python::Input(ssc_data_t p_data, const char *name, const wxString &
 			dbl_value = (double)p[len - 1];
 			if (dbl_value > 1e38) dbl_value = 1e38;
 			fprintf(m_fp, " %lg ];\n", dbl_value);
+			fprintf(m_fp, "	ssc.data_set_array( data, '%s',  %s);\n", name, name);
 		}
-		fprintf(m_fp, "	ssc.data_set_array( data, '%s',  %s);\n", name, name);
 		break;
 	case SSC_MATRIX:
 		p = ::ssc_data_get_matrix(p_data, name, &nr, &nc);
@@ -2525,7 +2524,8 @@ bool CodeGen_python::Input(ssc_data_t p_data, const char *name, const wxString &
 					csv.Set(r, c, wxString::Format("%lg", dbl_value));
 				}
 			}
-			fprintf(m_fp, "	%s = numpy.array(list(csv.reader(open('%s','rb'),delimiter=','))).astype('float')\n", name, (const char*)fn.c_str());
+			csv.WriteFile(fn);
+			fprintf(m_fp, "	ssc.data_set_matrix_from_csv( data, '%s', '%s');\n", name, (const char*)fn.c_str());
 		}
 		else
 		{
@@ -2544,7 +2544,6 @@ bool CodeGen_python::Input(ssc_data_t p_data, const char *name, const wxString &
 			fprintf(m_fp, " %lg ]];\n", dbl_value);
 			fprintf(m_fp, "	ssc.data_set_matrix( data,  '%s', %s );\n", name, name);
 		}
-		fprintf(m_fp, "	ssc.data_set_matrix( data,  '%s', %s );\n", name, name);
 		break;
 		// TODO tables in future
 	}
@@ -2571,7 +2570,7 @@ bool CodeGen_python::RunSSCModule(wxString &name)
 bool CodeGen_python::Header()
 {
 	// top of file and supporting functions
-	fprintf(m_fp, "import string, sys, struct, os, numpy, csv\n");
+	fprintf(m_fp, "import string, sys, struct, os\n");
 	fprintf(m_fp, "from ctypes import *\n");
 	fprintf(m_fp, "c_number = c_float # must be c_double or c_float depending on how defined in sscapi.h\n");
 	fprintf(m_fp, "class PySSC:\n");
@@ -2625,6 +2624,13 @@ bool CodeGen_python::Header()
 	fprintf(m_fp, "		arr = (c_number*count)()\n");
 	fprintf(m_fp, "		arr[:] = parr # set all at once instead of looping\n");
 	fprintf(m_fp, "		return self.pdll.ssc_data_set_array( c_void_p(p_data), c_char_p(name),pointer(arr), c_int(count))\n");
+	fprintf(m_fp, "	def data_set_array_from_csv(self, p_data, name, fn) :\n");
+	fprintf(m_fp, "		f = open(fn, 'rb'); \n");
+	fprintf(m_fp, "		data = []; \n");
+	fprintf(m_fp, "		for line in f : \n");
+	fprintf(m_fp, "			data.extend([n for n in map(float, line.split(','))])\n");
+	fprintf(m_fp, "		f.close(); \n");
+	fprintf(m_fp, "		return self.data_set_array(p_data, name, data); \n");
 	fprintf(m_fp, "	def data_set_matrix(self,p_data,name,mat):\n");
 	fprintf(m_fp, "		nrows = len(mat)\n");
 	fprintf(m_fp, "		ncols = len(mat[0])\n");
@@ -2636,6 +2642,14 @@ bool CodeGen_python::Header()
 	fprintf(m_fp, "				arr[idx] = c_number(mat[r][c])\n");
 	fprintf(m_fp, "				idx=idx+1\n");
 	fprintf(m_fp, "		return self.pdll.ssc_data_set_matrix( c_void_p(p_data), c_char_p(name),pointer(arr), c_int(nrows), c_int(ncols))\n");
+	fprintf(m_fp, "	def data_set_matrix_from_csv(self, p_data, name, fn) :\n");
+	fprintf(m_fp, "		f = open(fn, 'rb'); \n");
+	fprintf(m_fp, "		data = []; \n");
+	fprintf(m_fp, "		for line in f : \n");
+	fprintf(m_fp, "			lst = ([n for n in map(float, line.split(','))])\n");
+	fprintf(m_fp, "			data.append(lst);\n");
+	fprintf(m_fp, "		f.close(); \n");
+	fprintf(m_fp, "		return self.data_set_matrix(p_data, name, data); \n");
 	fprintf(m_fp, "	def data_set_table(self,p_data,name,tab):\n");
 	fprintf(m_fp, "		return self.pdll.ssc_data_set_table( c_void_p(p_data), c_char_p(name), c_void_p(tab) );\n");
 	fprintf(m_fp, "	def data_get_string(self, p_data, name):\n");
