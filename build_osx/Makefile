@@ -13,7 +13,7 @@ CC = gcc -mmacosx-version-min=10.9
 CXX = g++ -mmacosx-version-min=10.9
 CFLAGS = -g -DLK_USE_WXWIDGETS -I. -I$(SRCDIR) -I$(WEXDIR)/include -I$(LKDIR)/include -I$(SSCDIR) `wx-config-3 --cflags`  -DWX_PRECOMP -O2 -arch x86_64  -fno-common -DWX_PRECOMP -O2 -arch x86_64  -fno-common
 CXXFLAGS = $(CFLAGS) -std=gnu++11
-LDFLAGS =  -arch x86_64 `wx-config-3 --libs` `wx-config-3 --libs aui` `wx-config-3 --libs stc` `wx-config-3 --libs propgrid` `wx-config-3 --libs richtext` -lm $(LKLIB) $(WEXLIB) -lstdc++ -lcurl
+LDFLAGS =  -arch x86_64 `wx-config-3 --libs` `wx-config-3 --libs aui` `wx-config-3 --libs stc` `wx-config-3 --libs propgrid` `wx-config-3 --libs richtext` -lm $(LKLIB) $(WEXLIB) -lcurl
 
 OBJECTS = ide.o \
 	lossdiag.o \
@@ -97,7 +97,7 @@ DEPENDS = $(OBJECTS:.o=.d)
 -include $(DEPENDS)
 
 %.d: %.cpp
-	$(CXX) -MM $(CFLAGS) $^ > $*.d
+	$(CXX) -MM $(CXXFLAGS) $^ > $*.d
 	@cp -f $*.d $*.d.tmp
 	@sed -e 's/.*://' -e 's/\\$$//' < $*.d.tmp | fmt -1 | \
 	  sed -e 's/^ *//' -e 's/$$/:/' >> $*.d
