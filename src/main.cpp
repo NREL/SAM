@@ -1824,7 +1824,7 @@ extern void RegisterReportObjectTypes();
 	wxEasyCurl::SetUrlEscape( "<USEREMAIL>", SamRegistration::GetEmail() );
 
 	wxPLPlot::AddPdfFontDir( GetRuntimePath() + "/pdffonts" );
-	wxPLPlot::SetPdfDefaultFont( "ComputerModernSansSerifRegular", 10.0 );
+	wxPLPlot::SetPdfDefaultFont( "ComputerModernSansSerif", 10.0 );
 		
 	wxString proxy = SamApp::ReadProxyFile();
 	if ( ! proxy.IsEmpty() )
