@@ -1250,9 +1250,55 @@ The sky diffuse near-object shading factor $S_{dns}$ is a single value that repr
 
 \subsection{3D Shade Calculator}\label{sec-3dshad}
 
-**ARON, STEVE**
+The 3D shade calculator calculates a set of beam and diffuse shade factors from a three-dimensional representation of the photovoltaic array and nearby shading objects.  Objects in the 3D scene are represented by a set of polygons whose coordinates are specified in 3D space (x,y,z).  Polygons associated with the photovoltaic array or modules are marked as ``active surfaces'', so that the calculator can determine for which surfaces shading and blocking should be evaluated.  The geometry system uses a right-handed coordinate system in which $+x$ points east, $+y$ points north, and $+z$ points normal out of the ground towards the sky. 
 
-The 3D shade calculator calculates a set of beam and diffuse shade factors from a three-dimensional representation of the photovoltaic array and nearby shading objects.
+The interactive 3D editor, shown in Figure~\ref{fig:3dscene}, allows for creating a complex scene from a set of predefined objects: boxes, cylinders, trees, roof panes, and photovoltaic surfaces.  Each object is represented in 3D by a set of planar polygons that are generated automatically from the object's set of properties that define its position, size, and shape.  
+
+\begin{figure}
+\begin{center}
+\scalebox{0.7}{\includegraphics{figures/3dscene.png}}
+\caption{3D scene editor for shading calculations}
+\label{fig:3dscene}
+\end{center}
+\end{figure}
+
+Active surfaces representing photovoltaic modules can be grouped together logically to represent a string or subarray.  When calculating the time series shade loss fractions at hourly or subhourly time steps, the losses for each string or subarray are reported independently.  If no strings or subarrays are specified in the 3D scene editor, the total active surface shade loss is reported.  This allows the 3D editor to be used for SAM's simple PVWatts performance model, or for solar water heating applications, in addition to the detailed photovoltaic model described here.
+
+The output from the shade calculator is a array of shading factors for each subarray in the system.  If the nonlinear shading loss lookup table model, discussed subsequently, is enabled, string level losses are calculated for each subarray.  The shade calculations are performed entirely in the SAM user interface, and the time series shade loss arrays are passed to the SSC model for the PV system performance calculations.
+
+The calculation procedure for linear shading losses for each active surface at each time step is as follows:
+
+\begin{enumerate}
+\item Calculate the solar zenith and azimuth angles for the current time stamp (month, day, hour, minute) and location (latitude, longitude, time zone).
+\item Create a list of polygons from the scene objects in untransformed 3D space.
+\item Calculate the axis $x$, $y$, and $z$ rotation angles corresponding to a rotation of the scene associated with the current sun position.  In other words, the 3D scene is rotated so that it is shown as if it were observed from the sun.
+\item Using this 3D rotation matrix, calculate the rotated coordinates of each polygon vertex to transform the whole scene into the line of sight from the sun using a parallel projection.  This assumes the sun is infinitely far away and that the sun rays reaching the scene are essentially parallel to one another.
+\item Using a backface culling algorithm, eliminate polygons from the scene that face away from the sun and are not visible.
+\item Apply the binary space partitioning (BSP) algorithm to sort all the remaining visible polygons in back-to-front order.  Polygons at the ``front'' are closest to the sun.
+\item Discard the transformed $z$ coordinate to effectively ``flatten'' the scene into two dimensions, as if it were viewed from the infinitely far away sun.
+	\item For each active surface:
+	\begin{enumerate}
+	\item Create a list of polygons (regular and other active surfaces) that are in front of the active surface, that is, between it and the sun.
+	\item Using a 2D polygon clipping algorithm, determine the intersection between the active surface and the list of potential blocking polygons.
+	\item The resulting intersection polygon's area divided by the active surface polygon area gives the linear shading fraction for that active surface at the current time (sun position).
+	\end{enumerate}
+\item If subarrays and strings are specified, determine the appropriate shade fractions for each piece from the sum total of the intersected (shaded) areas divided by the sum total of the unshaded active surface areas associated with each string or subarray.   If no strings or subarrays are specified in the geometry, the total intersected (shaded) area divided by the total unshaded active surface area is reported as the overall average shading fraction.
+\end{enumerate}
+
+Once the linear shade fraction for each portion of the photovoltaic array is known at each time step, it is converted into a loss percentage and automatically entered into the SAM beam irradiance shading loss table in the user interface. These values are passed directly to the SSC simulation model for calculating system electricity generation.
+
+For systems with microinverters or module level power electronics such as DC-DC optimisers, the linear shading losses are appropriate estimates of overall energy lost due to shading.  However, for systems with strings of modules connected in parallel to a single inverter maximum power point tracking input, irregular obstruction shading can result in additional losses due to limiting effects associated with mismatch among the strings.  For this situation, MacAlpine~\cite{macalpine2015} proposed a computationally efficient method to estimate the nonlinear impact of partially shaded strings without requiring a full bottoms-up electrical cell-by-cell model.  This model is enabled by selecting the ``database lookup'' option in the time series beam shading table dialog in SAM.  In brief, the model uses a precalculated lookup table that, given: 1) number of parallel strings, 2) linear shade fraction on each string, and 3) fraction of diffuse irradiance on each string, estimates the total DC power loss due to the irregular shading on parallel strings.  The trivariate lookup table is built into the SAM model and can handle up to eight parallel strings.  Refer to~\cite{macalpine2015} for additional details on this model.
+
+The 3D shading calculator also estimates the loss of available diffuse irradiance to the active photovoltaic surfaces due to blocking of the sky dome by obstructions.  The procedure is as follows:
+\begin{enumerate}
+\item Divide the hemispherical sky dome into sections of some number of azimuth and zenith angle divisions.  By default, SAM uses 1 degree increments in both directions, for a total of 360 * 90 = 32400 divisions.
+\item For each position, transform the scene to the solar azimuth and zenith angle.
+\item Calculate the intersected (shaded) areas on each active surface polygon using the same procedure as for the beam irradiance shading loss.
+\item Integrate the shade loss over all positions in the sky dome by multiplying the observed shaded fraction with the solid angle of spherical integration $\sin(\theta_z)$.  This accounts for the fact that the sky dome divisions at the top of the hemisphere are much smaller than near $\theta_z\approx 0$.
+\end{enumerate}
+
+This procedure results in an estimate of the view factor of the active surfaces in each subarray to the sky dome, and hence the effective diffuse irradiance loss.  The model assumes an isotropic diffuse sky, and does not adjust for increased circumsolar diffuse irradiance.
+
 
 \subsection{Import Shade Data}\label{sec-importshad}
 
@@ -3072,6 +3118,9 @@ Radiation}. New York, NY: Academic Press.
 \bibitem[King(2007)]{king2007} King, D.; Gonzalez, S.; Galbraith, G.; Boyson, W. (2007). ``Performance Model for Grid-Connected Photovoltaic Inverters." 47 pp.; Albuquerque, NM: Sandia National Laboratories. SAND2007-5036. Accessed March 7, 2014: \url{http://prod.sandia.gov/techlib/access-control.cgi/2007/075036.pdf}
 
 \bibitem[Liu(1963)]{liu1963} Liu, B.; Jordan, R. (1963). ``A Rational Procedure for Predicting The Long-term Average Performance of Flat-plate Solar-energy Collectors." \textit{Solar Energy} (7:2); pp. 53-74.
+
+
+\bibitem[MacAlpine(2015)]{macalpine2015} MacAlpine, S.; Deline, C.; ``Simplified Method for Modeling the Impact of Arbitrary Partial Shading Conditions on PV Array Performance''.  Proc. IEEE 41st PVSC Conf, New Orleans, LA, June, 2015.
 
 \bibitem[Michalsky(1988)]{michalsky1988} Michalsky, J. (1988). ``The Astronomical Almanac's Algorithm for Approximate Solar Position (1950-2050)." \textit{Solar Energy} (40:3); pp. 227-235.
 
