@@ -2,7 +2,7 @@
 #define __variable_h
 
 #include <vector>
-#include <map>
+#include <unordered_map>
 
 #include <wx/string.h>
 #include <wx/arrstr.h>

@@ -433,6 +433,9 @@ bool CodeGen_Base::ShowCodeGenDialog(CaseWindow *cw)
 		lang = scd_language->GetSelection();
 		SamApp::Settings().Write("CodeGeneratorLanguage", lang);
 	}
+	else // user cancelled.
+		return false;
+
 
 	// get folder
 	wxDirDialog dlg(SamApp::Window(), "Select an output folder", foldername, wxDD_DEFAULT_STYLE | wxDD_DIR_MUST_EXIST);
@@ -442,6 +445,8 @@ bool CodeGen_Base::ShowCodeGenDialog(CaseWindow *cw)
 		foldername.Replace("\\", "/");
 		SamApp::Settings().Write("CodeGeneratorFolder", foldername);
 	}
+	else // user cancelled.
+		return false;
 
 	// generate code
 	int threshold = 288; // all arrays and matrices with more than 288 elements get written to csv file
