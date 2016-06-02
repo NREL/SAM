@@ -2588,7 +2588,7 @@ bool CodeGen_python::Header()
 	fprintf(m_fp, "		elif sys.platform == 'darwin':\n");
 	fprintf(m_fp, "			self.pdll = CDLL(\"ssc.dylib\") \n");
 	fprintf(m_fp, "		elif sys.platform == 'linux2':\n");
-	fprintf(m_fp, "			self.pdll = CDLL('ssc.so')   # instead of relative path, require user to have on LD_LIBRARY_PATH\n");
+	fprintf(m_fp, "			self.pdll = CDLL('./ssc.so')   # instead of relative path, require user to have on LD_LIBRARY_PATH\n");
 	fprintf(m_fp, "		else:\n");
 	fprintf(m_fp, "			print \"Platform not supported \", sys.platform\n");
 	fprintf(m_fp, "	INVALID=0\n");
