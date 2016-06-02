@@ -17,6 +17,8 @@ Team Revisions
 Paul Revisions
 --------------
 
+Add Aron (3d shade and iec61853) and Nick (battery) contributions. DONE
+
 Add range (0-90, -180-180, -12-12) to weather data and sun position variable descripton tables for lataitude, longitude, and time zone. DONE
 
 Add range to time zone description (eq. 4.5). DONE
@@ -27,7 +29,9 @@ Remove references to library editor and clarify how module/inverter and solar re
 
 Replace all references to hourly time steps with generic time step for sub-hourly simulations. DONE
 
-Check sunrise and sunset "solar position minute" calculation for new time convention. Explanation is for hourly data and is not clear that "hr" is either beginning of hour or end of hour, so need to update for current implementation. (Section Sunrise and Sunset Hours)
+Check sunrise and sunset "solar position minute" calculation for new time convention. Explanation is for hourly data and is not clear that "hr" is either beginning of hour or end of hour, so need to update for current implementation. (Section Sunrise and Sunset Hours). DONE
+
+Revise snow coverage as dc loss rather than incident irradiance reduction.
 
 Update shading input SSC variable names (See Table Effective POA irradiance variable definitions).
 
@@ -85,6 +89,6 @@ p. 16 Equations 4.24 and 4.25, sunrise and sunset time equations, for longitude 
 
 p. 24 Equation 6.11 diffuse components, iso should be cos tilt, not cos AOI. DONE
 
-p. 43 "The cell temperature Tc for the CEC model is calculated using either the NOCT cell temperature model or the heat transfer cell temperature model." That is only true for CEC with database -- for the CEC with user parameters, only the NOCT temp model is available.
+p. 43 "The cell temperature Tc for the CEC model is calculated using either the NOCT cell temperature model or the heat transfer cell temperature model." That is only true for CEC with database -- for the CEC with user parameters, only the NOCT temp model is available. DONE
 
 
