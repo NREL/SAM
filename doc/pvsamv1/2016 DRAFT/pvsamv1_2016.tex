@@ -84,20 +84,20 @@ The variable names in this manual are listed in tables at the beginning of each 
 
 For solar irradiance values, the letter $E$ indicates data from the weather file, $I$ indicates irradiance incident on the photovoltaic array before soiling and shading, and $G$ indicates effective irradiance incident on the array (at the top of the module cover) after soiling and shading. The subscripts $b$, $d$, and $g$ indicate beam, diffuse, and global irradiance values.
 
-The variable $P$ indicates an electrical power value in Watts or kilowatts. Because SAM is an hourly simulation model, these power values are average hourly values, equivalent to Watt-hour (or kilowatt-hour) per hour.
+The variable $P$ indicates an electrical power value in Watts or kilowatts.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Photovoltaic Performance Model Overview}
 
-SAM's photovoltaic performance model combines module and inverter submodels (see Table~\ref{tab-submodels}) with supplementary code to calculate a photovoltaic power system's hourly AC output given a weather file and data describing the physical characteristics of the module, inverter, and array. The main submodels are listed in Table~\ref{tab-submodels} with a citation of the publication that originally described the modeling approach or an indication that the submodel uses standard equations, or was developed by the National Renewable Energy Laboratory (NREL), in which case the description in this manual is the only documentation of the modeling approach.
+SAM's photovoltaic performance model combines module and inverter models (see Table~\ref{tab-submodels}) with supplementary code to calculate a photovoltaic power system's AC output over one year given a weather file and data describing the physical characteristics of the module, inverter, and array. The main models are listed in Table~\ref{tab-submodels} with a citation of the publication that originally described the modeling approach or an indication that the model uses standard equations, or was developed by the National Renewable Energy Laboratory (NREL), in which case the description in this manual is the only documentation of the modeling approach.
 
 \begin{table}
 \begin{center}
-\caption{The Primary SAM Photovoltaic Performance Model Submodels}
+\caption{The SAM Photovoltaic Performance Model Modules}
 \begin{tabular}{ll}
 \midrule
-Submodel & Reference\\
+Module & Reference\\
 \midrule
 Weather file reader & NREL\\
 Sun position & \citet{michalsky1988}, \citet{iqbal1983}, NREL\\
@@ -120,10 +120,9 @@ Part load inverter model & NREL\\
 \end{center}
 \end{table}
 
-
 The photovoltaic performance model can simulate any size of system, from a small rooftop array and a single inverter to a large system with multiple subarrays and banks of inverters.
 
-The model calculates the system's AC electrical output over one year as an array of 8,760 hourly AC power values. It reads hourly solar resource and temperature data from a weather file describing the resource at the system's location for the year, and uses them with inputs describing the system's design in equations to calculate module and inverter conversion efficiencies and energy losses.
+The model calculates the system's AC electrical output over one year. It reads solar resource and temperature data from a weather file describing the resource at the system's location for the year, and uses them with inputs describing the system's design in equations to calculate module and inverter conversion efficiencies and energy losses.
 
 The modeled system must consist of a single type of photovoltaic module and a single type of inverter -- it cannot combine different sizes or brands of modules and inverters. The array may consist of up to four subarrays, each with its own set of parameters for tracking, surface angles, shading and soiling, and DC losses. Each subarray can have a different number of modules, but all subarrays must have the same number of modules per string so that all subarrays have the same nominal DC voltage, which serves as the inverter's nominal input voltage.
 
@@ -132,7 +131,7 @@ The array must be connected either to a single inverter or to a bank of inverter
 The module model (Section~\ref{sec-module}) and inverter model (Section~\ref{sec-inverter}) calculate solar-energy-to-DC-electricity and DC-to-AC electricity conversion efficiencies, respectively, and account for losses associated with each component. The self-shading models (Section~\ref{sec-selfshad}) calculate losses caused by shading of modules in the array by neighboring modules. The photovoltaic performance model does not explicitly calculate the remaining system losses. They are represented by user-specified inputs:
 
 \begin{itemize}
-\item{Beam and diffuse shading losses for near-object shading of the array (Section~\ref{sec-nearobjectshad}). These can be specified as hourly (8,760 values), month-by-hour (288 values), or sun azimuth angle by elevation (number of values varies), and may be generated by shading analysis equipment and software.}
+\item{Beam and diffuse shading losses for near-object shading of the array (Section~\ref{sec-nearobjectshad}). These can be specified for each hourly or subhourly time step, month-by-hour (288 values), or sun azimuth angle by elevation (number of values varies), and may be generated by shading analysis equipment and software.}
 \item{Monthly soiling losses for dust and other accumulation on the array (Section~\ref{sec-soiling}).}
 \item{DC losses for module mismatch, DC wiring and connections, tracking, and other losses associated with the array (Section~\ref{sec-dclosses}).}
 \item{AC losses for AC wiring and transformer losses (Section~\ref{sec-aclosses}).}
@@ -154,7 +153,7 @@ This section describes the basic algorithm of SAM's photovoltaic performance mod
 \end{center}
 \end{figure}
  
-The hourly simulation model performs the following calculations for each of the 8,760 hours in a year:
+The simulation model performs the following calculations for each time step in one year:
 
 \begin{enumerate}
 
@@ -200,7 +199,7 @@ The hourly simulation model performs the following calculations for each of the 
 
   \end{enumerate}
 
-\item{Run the inverter submodel to calculate the gross AC power and inverter conversion efficiency (Section~\ref{sec-inverter}).} %lib_pvsamv1.cpp 1515
+\item{Run the inverter model to calculate the gross AC power and inverter conversion efficiency (Section~\ref{sec-inverter}).} %lib_pvsamv1.cpp 1515
 
 %\item{Calculate irradiance values for results} %lib_pvsamv1.cpp 1535
 
@@ -208,22 +207,26 @@ The hourly simulation model performs the following calculations for each of the 
 
 \end{enumerate}
 
-\section{Component Libraries and Weather Files} \label{sec-libraries}
+\section{Equipment Libraries and Weather Files} \label{sec-libraries}
 
-SAM includes a set of component libraries and weather files that store copies of data managed by different organizations. The component libraries store module and inverter parameters that represent the components' physical properties. The weather files store data representing the solar resource at different locations.
+SAM comes with libraries that store module and inverter parameters representing the equipment's physical properties. The solar resource library stores weather files with data representing the solar resource at different locations. The data in these libraries are copies of data managed by different organizations.
 
-The following is a list of the databases used by SAM's photovoltaic performance model:
+The following is a list of module and inverter libraries used by SAM's photovoltaic performance model with the source of data each library contains:
 \begin{itemize}
-\item California Energy Commission Eligible Photovoltaic Modules \citep{gsc2014b}
-\item California Energy Commission Eligible Inverters \citep{gsc2014c}
-\item Sandia National Laboratories Module Database \citep{sandia-testeval}
+\item \textbf{CEC Modules:} California Energy Commission Eligible Photovoltaic Modules \citep{gsc2014b}
+\item \textbf{CEC Inverters:} California Energy Commission Eligible Inverters \citep{gsc2014c}
+\item \textbf{Sandia Modules:} Sandia National Laboratories Module Database \citep{sandia-testeval}
+\end{itemize}
+
+SAM's solar resource library contains data from the following sources:
+\begin{itemize}
 \item NREL National Solar Radiation Database 1961-1990 (TMY2) \citep{nsrdb}
 \item NREL National Solar Radiation Database 1991-2010 Update (TMY3) \citep{nsrdb}
 \item U.S. DOE EnergyPlus Weather Data \citep{epw}
 \item NREL Solar Prospector \citep{solarprospector}
 \end{itemize}
 
-Note that these data collections are not part of SSC. If you are developing a model using the SAM software development kit and want to use the component libraries, you will have to write your own code to read the data. (You can use SAM's library editor to export data from the component libraries to a text file as described in \citet{help-libraries}.)
+Note that these data collections are not part of SSC. If you are developing a model using the SAM software development kit and want to use parmaeters from the libraries, you will have to write your own code to read the data. The module and inverter libraries are text files that use a simple comma-separated format. The solar resource library contains weather data files in the SAM CSV format \citep{help-weatherfileformats}.
 
 \section{System Sizing} \label{sec-sizing}
 
@@ -235,18 +238,31 @@ The system sizing algorithm is not available in SSC.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Irradiance and Weather Data}\label{sec-irradianceweatherdata}
 
-The photovoltaic performance model requires a weather file with data describing the solar radiation and weather observations at the system location. It uses location information and hourly time stamps to calculate hourly sun position angles (Section~\ref{sec-sunposition}),  and irradiance data to calculate hourly plane-of-array (POA) irradiance values (Section~\ref{sec-incidentirradiance}). The cell temperature submodel (Section~\ref{sec-celltempoptions}) uses ambient temperature and wind speed data to calculate the hourly photovoltaic cell temperature values.
+The photovoltaic performance model requires a weather file with solar resource data for one year and information about the location of the measurement site. The data may be hourly, or subhourly with a time resolution of up to one minute.
 
-SAM can read files in the formats listed below. For general descriptions of the formats, and references to more detailed documentation see \citep{help-weatherfileformats}.
+The model uses data from the weather file to calculate the following values for each time step in the year:
 
 \begin{itemize}
-\item SAM CSV: Comma-separated text format developed by NREL for use with SAM.
-\item TMY3: Comma-separated text format developed by NREL for the National Solar Radiation Database 1991-2010 update.
-\item TMY2: Text format developed by NREL for the National Solar Radiation Database 1961 - 1990 data set.
+\item Sun position angles (Section~\ref{sec-sunposition}).
+\item Plane-of-array (POA) irradiance (Section~\ref{sec-incidentirradiance}).
+\item Photovoltaic cell temperature (Section~\ref{sec-celltempoptions}).
+\item Array DC loss due to snow cover (Section~\ref{sec-snow}).
+\end{itemize}
+
+Solar resource data must include solar irradiance, wind speed, and ambient temperature data, and may include optional snow depth and albedo data. Location data must include latitude, longitude, time zone and elevation, and may include optional fields for location name or number, city, state, region, and country. 
+
+Each row in the weather file must have a Year, Month, Day, and Hour column indicating the time for sun position calculations. Sub-hourly data must have an additional Minute column. For hourly data, the Minute column is optional, and may be used to indicate the minute for sun position calculations. For hourly data with no Minute column, the model uses the midpoint of the hour for the sun position calculations.
+
+SAM can read files in the formats listed below. For descriptions of the formats see \citep{help-weatherfileformats}.
+
+\begin{itemize}
+\item SAM CSV: Comma-separated text format developed by NREL for use with SAM. This is also the file format for files from the NREL National Solar Radiation Database.
+\item TMY3: Comma-separated text format originally developed by NREL for the National Solar Radiation Database 1991-2010 update.
+\item TMY2: Text format originally developed by NREL for the National Solar Radiation Database 1961 - 1990 data set.
 \item EPW: Text format derived from the TMY2 format for the EnergyPlus building modeling software. 
 \end{itemize}
 
-SAM reads and stores the weather file data shown in Table~\ref{tab-wfdata}. It ignores any additional data elements that may be included in the different weather file formats. For example, it ignores the source and uncertainty flags in the TMY3 file format.
+SAM's photovoltaic model reads and stores the weather file data shown in Table~\ref{tab-wfdata}. It ignores any additional data elements that may be included in the different weather file formats. Some additional data elements, such as relative humidity, are required for SAM's concentrating solar power performance models, but not for the photovoltaic model. SAM also ignores supporting data, such as the source and uncertainty flags in the TMY3 file format.
 
 \begin{table}
 \begin{center}
@@ -260,68 +276,74 @@ Symbol & Field & Description\\
  - & City* & location name [\textit{``Phoenix Sky Harbor Intl Ap"}]\\
 - & State* & two-letter state abbreviation [\textit{AZ}]\\
 $\mathit{tz}$ &Time zone & hours E of GMT [\textit{-7.0}] \\
-$\mathit{lat}$ & Latitude & decimal \degree N of 0, (0 - 90) [\textit{33.450}] \\
-$\mathit{lon}$ & Longitude & decimal \degree E of 0, (-180 - 180) [\textit{-11.983}]\\
+$\mathit{lat}$ & Latitude & decimal degree N of 0 [\textit{33.450}] \\
+$\mathit{lon}$ & Longitude & decimal degree E of 0 [\textit{-11.983}]\\
 $\mathit{elv}$ & Elevation & meters above sea level [\textit{337}]\\
 \midrule
-\multicolumn{3}{c}{Time Step Data Records}\\
+\multicolumn{3}{c}{Time Series Data Records}\\
 $\mathit{yr}$& Year & typical year [\textit{1988}] \\
 $\mathit{mo}$ & Month & typical month (1-12) \\
 $\mathit{day}$ & Day & day of year (1-365) \\
 $\mathit{hr}$ & Hour & hour of day (0-23) in local time \\
-$\mathit{min}$ & Minute & minute past the hour (0-59) \\
-$E_g$ & Global horizontal irradiance (Wh/m$^2$) & total radiation on a horizontal surface \\
-$E_b$ & Direct normal irradiance (W/m$^2$) & direct radiation on a surface normal to the sun \\
-$E_d$ & Diffuse horizontal irradiance (Wh/m$^2$) & radiation on a horizontal surface from the sky \\
+$\mathit{min}$ & Minute & minute of hour (0-59) \\
+$E_g$ & Global horizontal irradiance (W/m$^2$) & total radiation on a horizontal surface \\
+$E_b$ & Direct normal irradiance (W/$^2$) & direct radiation on a surface normal to the sun \\
+$E_d$ & Diffuse horizontal irradiance (W/m$^2$) & radiation on a horizontal surface from the sky \\
 $v_{wind}$ & Wind speed (m/s) & wind speed \\
--  & Wind direction* ($^{\circ}$E of N) & wind direction \\
 $T_a$ & Dry bulb temperature ($^{\circ}$C) & ambient dry-bulb temperature \\
-- & Wet bulb temp* ($^{\circ}$C) & ambient wet-bulb temperature \\
-- & Dew point temp* ($^{\circ}$C) & ambient dew-point temperature \\
-- & Relative humidity* (\%) &  relative humidity \\
-- & Pressure* (mbar) & atmospheric pressure \\
-$D_{snow}$ & Snow depth (cm) & depth of snow \\
-$\mathit{\rho}$ & Ground reflectance & ground reflectance factor or albedo \\
+$D_{snow}$ & Snow depth (cm)* & depth of snow \\
+$\mathit{\rho}$ & Ground reflectance* & ground reflectance factor or albedo \\
 \midrule
 \multicolumn{3}{l}{\textit{Table Notes}}\\
-\multicolumn{3}{l}{The photovoltaic model does not use fields marked (*), but they are required by the weather file reader.}\\
+\multicolumn{3}{l}{Fields marked (*) are optional.}\\
 \multicolumn{3}{l}{The italicized values in brackets are examples from a TMY3 file's header.}\\
 \end{tabular}
 \label{tab-wfdata}
 \end{center}
 \end{table}
 
-\section{Time Convention and Resolution}
+\section{Time Period and Resolution}\label{sec-timeconvention}
 
-The weather file contains one year of data. The number of data rows in the file determines the simulation time step. For example, a file with 8,760 rows of weather data (not including header rows) would result in an hourly simulation. A weather file for a 15-minute simulation time step should have 35,040 rows in addition to the header rows.
+The weather file contains one year of time series solar resource data. The photovoltaic performance model can run simulations with up to one-minute time steps. The time between time steps may be between one and 60 minutes, as long as 8760 minutes per hour is a multiple of the time step length in minutes. For example, the model will run with a weather file that contains one-minute data, 10-minute data, 15-minute data, or 60-minute (hourly) data.
 
-The first row of data in the weather file is for the first time step after midnight on January 1, local standard time. For hourly data, the first row is for the hour ending at 1 a.m. on January 1. For 15-minute data, the first row is for the quarter hour ending at 1:15 a.m. on January 1.
+The number of data rows in the file determines the simulation time step. For example, a file with 8760 rows of weather data (not including header rows) would result in an hourly simulation. A weather file for a 15-minute simulation time step should have 35,040 data rows in addition to the header rows. A one-minute data file would have 525,600 data rows.
 
-By default, SAM calculates the sun position for the mid-point of the time step. For example, for hourly data, SAM calculates the sun position for each hour at 30 minutes after the hour so that the sun position for the 10:00 a.m. hour would be its position at 10:30 a.m. However, if the weather file includes a Minute column, SAM will instead use the minute indicated to calculate each time step's solar position.
+The first data row in the weather file is for the first time step after midnight on January 1, local standard time. For hourly data, the first row is for the hour ending at 1 a.m. on January 1. For 15-minute data, the first row is for the quarter hour ending at 1:15 a.m. on January 1.
 
-\section{Irradiance and Insolation}
+By default for hourly weather data, SAM calculates the sun position (and photovoltaic array surface angles) for the mid-point of the time step. For example, the sun position for the 10:00 a.m. hour would be its position at 10:30 a.m. However, if the weather file contains hourly data and includes a Minute column, SAM instead uses the minute indicated to calculate the sun position for each hour. Sub-hourly weather data must include a Minute column indicating the for sun postion calculations.
+
+\section{Irradiance}
 
 %% Also address questions about spectrum and field of view
 
 Solar irradiance is a measure of the instantaneous power from the sun on a surface over an area, typically given in the SI units of watts per square meter (W/m$^2$). In the weather files from the National Solar Radiation Database \citep{nsrdb}, each irradiance value is the total solar radiation in the 60 minutes ending at a given time step. These values represent the average solar power over a given hour in watt-hours per hour per square meter (Wh/h$\cdot$m$^2$). In SAM these values are expressed in the mathematically equivalent W/m$^2$ (or converted to kW/m$^2$).
 
-The weather file stores hourly values for the three components of solar irradiance:
+The weather file stores time series values for the three components of solar irradiance:
 
 \begin{itemize}
-\item The total solar irradiance on a surface parallel to the ground (horizontal), called global horizontal irradiance.
-\item The portion of the solar irradiance that reaches a surface normal to the sun in a direct line from the solar disk (typically assuming a measurement device with a $5^{\circ}$ field of view), called beam normal or direct normal irradiance.
-\item The solar irradiance on a horizontal surface from the sky excluding the solar disc, or diffuse horizontal irradiance.
+\item Global horizontal irradiance (GHI): The total solar irradiance on a surface parallel to the ground (horizontal).
+\item Direct normal irradiance (DNI): The portion of the solar irradiance that reaches a surface normal to the sun in a direct line from the solar disk (typically assuming a measurement device with a $5^{\circ}$ field of view), also called beam normal.
+\item Diffuse horizontal irradiance (DHI): The solar irradiance on a horizontal surface from the sky excluding the solar disc.
 \end{itemize}
 
-Insolation is a measure of the energy from the sun over a given time on a surface given in watt-hours per square meter (Wh/m$^2$). SAM calculates the monthly and annual insolation incident on the plane of the photovoltaic array (Section~\ref{sec-incidentirradiance}). 
+The photovoltaic performance model requires direct normal and diffuse horizontal irradiance data to calculate the plane-of-array irradiance (Section~\ref{sec-incidentirradiance}). However, it includes functions to estimate either the direct normal (see Equation \ref{eqn-beam}) or diffuse horizontal (see Equation \ref{eqn-diffhoriz}) irradiance when the weather file is missing those data elements. To use a weather file that is missing either the DNI or DHI data, you must choose the appropriate \textbf{Advanced} options on the Location and Resource input page (\texttt{irrad\_mode} in SSC).
+
+Weather files from the NREL National Solar Radiation Database include all three components of the solar irradiance: Direct normal, diffuse horizontal, and global horizontal. However, the photovoltaic performance model will recognize a file that contains any of the following combinations of irradiance data:
+
+\begin{itemize}
+\item Direct normal and diffuse horizontal.
+\item Direct normal and global horizontal.
+\item Global horizontal and diffuse horizontal.
+\item Total plane-of-array irradiance measured by either a reference cell or pyranometer.
+\end{itemize}
 
 \section{Weather Observations}
 
-SAM uses ambient temperature and wind speed data from the weather file to estimate the effect of photovoltaic cell temperature on the array's performance. Although wind direction does have an effect on cell temperature, the photovoltaic performance model assumes that its cumulative effect over the year is negligible \citep{king2004}.
+The photovoltaic performance model uses ambient temperature and wind speed data from the weather file to estimate the effect of photovoltaic cell temperature on the array's performance. Although wind direction does have an effect on cell temperature, the photovoltaic performance model assumes that its cumulative effect over the year is negligible \citep{king2004}.
 
 The air temperature or dry-bulb temperature is the temperature in degrees Celsius (\degree C) of ambient air measured by a thermometer exposed to the air but shielded from the sun and rain. 
 
-SAM assumes that the hourly wind speed measurements from the weather file are in m/s and measured at a height of 10 m above the ground.
+SAM assumes that the wind speed measurements from the weather file are in m/s and measured at a height of 10 m above the ground.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -332,18 +354,18 @@ SAM calculates the sun altitude, zenith, and declination angles that define its 
 The overall sun position algorithm steps are:
 % lib_irradproc 835-887
 \begin{enumerate}
-\item Calculate the effective time in hours for the current time step.
-\item Calculate the sun angle for the current hour.
+\item Calculate the effective time in hours for the time step.
+\item Calculate the sun angle for the time step.
 \item Determine the current day's sunrise and sunset time.
-\item Determine the sunup flag for the current hour.
-\item Calculate the extraterrestrial radiation for the current hour.
+\item Determine the sunup flag for the time step.
+\item Calculate the extraterrestrial radiation for the time step.
 \end{enumerate}
 
 Although all of the sun angle input and results variables in SAM are in degrees, most of the internal equations use angle values in radians.
 
 Table~\ref{tab-sunposvars} lists the sun position algorithm's inputs and outputs. Figure~\ref{fig-sunangles}, adapted from \citet{dunlap2007}, shows the sun angles. The inputs are for each time step, and come from the weather file. 
 
-The sun position algorithm does not include an air mass equation. Instead, each submodel or algorithm that needs it uses its own equation to calculate the value: The Perez incident sky diffuse model uses Equation~\ref{eqn-perezam}, and the Sandia and CEC module models use the same equation, shown in Equations~\ref{eqn-sandiaam} and \ref{eqn-cecam}, respectively. 
+The sun position algorithm does not include an air mass equation. Instead, each algorithm that needs the value uses its own equation to calculate the value: The Perez incident sky diffuse model uses Equation~\ref{eqn-perezam}, and the Sandia and CEC module models use the same equation, shown in Equations~\ref{eqn-sandiaam} and \ref{eqn-cecam}, respectively. 
 
 \begin{table}
 \begin{center}
@@ -391,10 +413,7 @@ The standard weather files from the National Solar Radiation Database \citep{nsr
 hr=hr-1
 \end{equation}
 
-The algorithm uses the midpoint of the time step for sun position calculations (except for the hours containing sunrise and sunset, see Section~\ref{sec-sunriseset}), and assumes an hourly time step, so it replaces the minute value from the weather file: %eg, for tmy2 format see weatherfile.cpp 601
-\begin{equation}\label{eqn-mn30}
-\mathit{min} =30
-\end{equation}
+For hourly weather files that do not contain a Minute column, the algorithm uses the midpoint of the time step for sun position calculations (except for the hours containing sunrise and sunset, see Section~\ref{sec-sunriseset}) so that $min=30$. Otherwise, for weather data that contains a Minute time step, $min$ is the value for the current time step from the weather file.
 
 %lib_irradproc.cpp 102
 The Julian day of year $\mathit{jdoy}$ is the number of days since Noon on January 1 of the current year (strictly speaking, it should be called the \textit{ordinal date}). Because some weather files are typical year files, the time stamps in a given file may not all use the same year. For example, all January time stamps may be 1988, while all February time stamps may be 2005 \citep{tmy3}.
@@ -428,13 +447,13 @@ The Julian day of year is then:
 \right. 
 \end{equation}
 
-The current decimal time of day expressed as an offset from UTC depends on the hour and minute of the current time stamp, and the location's time zone.  Valid values for the time zone are $-12<\mathit{tz}<12$.
+The current decimal time of day expressed as an offset from UTC depends on the hour and minute of the current time stamp, and the location's time zone. Valid values for the time zone are $-12<\mathit{tz}<12$.
 %lib_irradproc.cpp 103
 \begin{equation}\label{eqn-tutc}
 t_{utc} = \mathit{hr} + \frac{\mathit{min}}{60} - \mathit{tz}
 \end{equation}
 
-For some combinations of time stamp and time zone, Equation~\ref{eqn-tutc} may yield a value less than zero or greater than 24 hours, in which case the following corrections apply:
+For some combinations of time stamp and time zone, Equation~\ref{eqn-tutc} may yield a value less than zero or greater than 24 hours, in which case the following correction applies:
 %lib_irradproc.cpp 104
 \begin{equation}
 t_{utc} = \left\{
@@ -446,18 +465,6 @@ t_{utc} = \left\{
    \end{array}
 \right. 
 \end{equation}
-
-\begin{equation}
- \mathit{jdoy} =\left\{
-  \begin{array}{ll}
-      \mathit{jdoy} - 1 & 
-      \text{if $t_{utc}<0$}\\
-      \mathit{jdoy} + 1 & 
-      \text{if $t_{utc}>24$}
-   \end{array}
-\right. 
-\end{equation}
-
 The Julian date $\mathit{julian}$ of the current hour is the Julian day of the preceding noon plus the number of hours since then. The Julian day is defined as the number of days since Noon on January 1, 2000:
 % time irradproc.cpp 117
 \begin{equation}\label{eqn-jday}
@@ -466,7 +473,7 @@ The Julian date $\mathit{julian}$ of the current hour is the Julian day of the p
 
 \section{Sun Angles} \label{sec-sunangles}
 
-The sun angle equations are from \citet{michalsky1988}. The sun angles (Figure~\ref{fig-sunangles}) are the altitude angle $\alpha$, declination angle $\delta$, and zenith angle $Z$. SAM also calculates the sun azimuth angle $\gamma$ for use in the incident irradiance calculations. The solar declination angle is not used in the incident irradiance calculations, but is required to calculate the sun azimuth angle. The bold font in Table~\ref{tab-sunposvars} indicates that SAM reports the sun zenith, altitude, and azimuth angles in the hourly results.
+The sun angle equations are from \citet{michalsky1988}. The sun angles (Figure~\ref{fig-sunangles}) are the altitude angle $\alpha$, declination angle $\delta$, and zenith angle $Z$. SAM also calculates the sun azimuth angle $\gamma$ for use in the incident irradiance calculations. The solar declination angle is not used in the incident irradiance calculations, but is required to calculate the sun azimuth angle. The bold font in Table~\ref{tab-sunposvars} indicates that SAM reports the sun zenith, altitude, and azimuth angles in the results.
 
 The first step in the sun angle calculation for a given time step is to determine the ecliptic coordinates of the location, which define the photovoltaic array's position on the earth relative to the sun. The ecliptic coordinate variables are the mean longitude, mean anomaly, ecliptic longitude, and obliquity of the ecliptic. The algorithm uses ecliptic coordinates instead of equatorial coordinates to include the effect of the earth's inclination in the sun angle calculations.
 
@@ -555,7 +562,7 @@ a &= \sin\delta \sin\left(\frac{\pi}{180}\mathit{lat}\right) + \cos\delta \cos\l
   \begin{array}{ll}
     \arcsin a & \text{if $-1 \leq a \leq 1$}\\
     \frac{\pi}{2} & \text{if $a>1$}\\
-    -\frac{\pi}{2} & \text{if $a<1$}
+    -\frac{\pi}{2} & \text{if $a<-1$}
   \end{array}
 \right.
 \end{align}
@@ -606,18 +613,18 @@ Z = \frac{\pi}{2}-\alpha
 
 \section{Sunrise and Sunset Hours}\label{sec-sunriseset}
 
-For the hours of each day that contain the time of sunrise and sunset, it is not appropriate to use the midpoint of the hour (see Equation~\ref{eqn-mn30}) to calculate that hour's solar position because the midpoint may be before sunrise or after sunset. For the sunrise hour, the solar position angle is for the minute at the midpoint between the minute of sunrise and the end of the hour. For the sunset hour, the angle is for the midpoint between the beginning of the hour and sunset.
+The photovoltaic model assumes that the array generates electricity starting in the hour that contains the sunrise and ending in the hour that contains the sunset.
 
-To determine whether the current time stamp is for an hour that contains a sunrise, or is a nighttime or daytime hour, the sunrise hour angle in radians is:
+To determine whether the current time step contains a sunrise, the sunrise hour angle is:
 %lib_irradproc.cpp 210
-\begin{align}\label{eqn-sunup}
-a &= -\tan \mathit{lat}\tan\delta\notag\\
+\begin{align}\label{eqn-sunriseha}
+a &= -\tan \mathit{lat}~\tan\delta\notag\\
 \mathit{HAR} &= 
 \left\{
    \begin{array}{lll}
       0 & \text{if $a\geq1$} & \text{sun is down}\\
       \pi & \text{if $a\leq-1$} & \text{sun is up}\\
-      \arccos a & \text{if $-1<a<1$} & \text{sunrise hour}
+      \arccos a & \text{if $-1<a<1$} & \text{sunrise}
    \end{array}
 \right. 
 \end{align}
@@ -625,7 +632,7 @@ a &= -\tan \mathit{lat}\tan\delta\notag\\
 The equation of time in hours:
 %lib_irradproc.cpp 204
 \begin{align}\label{eqn-eot}
-a &= \frac{1}{15}\left(\mathit{mnlong} - \frac{180}{\pi}\mathit{ra}\right)\notag\\
+a &= \frac{1}{15}\left(\mathit{mnlong} - \frac{\pi}{180}\mathit{ra}\right)\notag\\
 \mathit{EOT} &= 
 \left\{
    \begin{array}{ll}
@@ -636,38 +643,49 @@ a &= \frac{1}{15}\left(\mathit{mnlong} - \frac{180}{\pi}\mathit{ra}\right)\notag
 \right. 
 \end{align}
 
-The sunrise time in local standard decimal time:
+The sunrise hour in local standard decimal time:
 %lib_irradproc.cpp 219
 \begin{equation}
-t_{sunrise} = 12 - \frac{1}{15} \frac{180}{\pi}\mathit{HAR} - \left(\frac{\mathit{lon}}{15} - \mathit{tz}\right)-\mathit{EOT}
+h_{sunrise} = 12 - \frac{1}{15} \frac{180}{\pi}\mathit{HAR} - \left(\frac{\mathit{lon}}{15} - \mathit{tz}\right)-\mathit{EOT}
 \end{equation}
 
-And, the sunset in local standard time: 
+And, the sunset hour in local standard time: 
 \begin{equation}
-t_{sunrise} = 12 + \frac{1}{15} \frac{180}{\pi}\mathit{HAR} - \left(\frac{\mathit{lon}}{15} - \mathit{tz}\right)-\mathit{EOT}
+h_{sunset} = 12 + \frac{1}{15} \frac{180}{\pi}\mathit{HAR} - \left(\frac{\mathit{lon}}{15} - \mathit{tz}\right)-\mathit{EOT}
 \end{equation}
 
-The solar position minute for the sunrise hour is at the midpoint between the minute during which the sun rose and the end of the current hour. Assuming a 60 minute time step and that that the sunup time is in decimal minutes: 
+For hourly data, the sunrise minute is at the midpoint between the minute during which the sun rose and the end of the time step. The sunset minute is at the midpoint between the beginning of the time step and the minute during which the sun set: 
 %adapted from irradproc.cpp 847 for 60 minute (3600 second) time step
-\begin{equation}
-\mathit{min}_{sunrise}=60 \left(1 - (t_{sunrise} -\mathit{hr}) + \frac{(t_{\mathrm{sunrise}} - hr)}{2}\right)
-\end{equation}
 
-Similarly, the solar position minute for the sunset hour is at the midpoint between the beginning of the current hour and the minute during which the sun set:
-\begin{equation}
-\mathit{min}_{\mathrm{sunset}}=\frac{60 (t_{\mathrm{sunset}} - \mathit{hr})}{2}
-\end{equation}
+\begin{align}
+\begin{array}{ll}
+\mathit{m}_\mathrm{sunrise}&=60 \left(1 - (h_{sunrise} -\mathit{hr}) + \frac{(t_{\mathrm{sunrise}} - hr)}{2}\right)\\
+\mathit{m}_{\mathrm{sunset}}&=\frac{60 (h_{\mathrm{sunset}} - \mathit{hr})}{2}
+\end{array}
+\end{align}
+
+For sub-hourly data, the sunrise and sunset minute is determined by the minute indicated by the time stamp:
+\begin{align}
+\begin{array}{ll}
+\mathit{m}_\mathrm{sunrise}&=\mathit{min}\\
+\mathit{m}_\mathrm{sunset}&=\mathit{min}
+\end{array}
+\end{align}
 
 \section{Sunup Flag}\label{sec-sunup}
 
-The sunup flag indicates whether the sun is above or below the horizon in the current hour. It is determined from the sunrise hour angle (Equation~\ref{eqn-sunup}):
-  \begin{itemize}
-  \item If the sun is down in the current hour, $\mathit{sunup} = 0$.
-  \item If the sun is up in the current hour, $\mathit{sunup} = 1$.
-  \item If a sunrise occurs in the current hour, $\mathit{sunup} = 2$.
-  \item If a sunset occurs in the current hour, $\mathit{sunup} = 3$.
-  \end{itemize}
+The sunup flag indicates whether the sun is above or below the horizon in the current time step. The photovoltaic model uses this value to determine whether to calculate the cell temperature in the current time step. It only reports the sunrise and sunset hour ($\mathit{sunup}=2$ and $\mathit{sunup}=3$, respectively) for hourly data. Its value is determined from the sunrise hour angle (Equation~\ref{eqn-sunriseha}):
 
+\begin{align}\label{eqn-sunrise}
+sunup &= \left\{
+\begin{array}{ll}
+0 & \text{sun is down}\\
+1 & \text{sun is up}\\
+2 & \text{sunrise}\\
+3 & \text{sunset}
+\end{array}
+\right.
+\end{align}
 
 \section{Extraterrestrial Radiation}\label{sec-hextra}
 
@@ -710,7 +728,7 @@ SAM considers each subarray in the system to be a flat surface with one tilt ang
 
 The surface angle equations are based on standard geometric relationships defined by the surface orientation and sun angles (Section~\ref{sec-sunangles}).
 
-SAM calculates each subarray's surface angles for each of the 8,760 hours of the simulation. For systems with trackers, the surface angles in a given hour are fixed over the hour. Because the sun position angles are at the midpoint of the hour (except for the hours containing the sunrise and sunset (Section~\ref{sec-sunriseset}), the surface angles are also at the midpoint of the hour.
+SAM calculates each subarray's surface angles for each time step of the simulation. For systems with trackers, the surface angles in a given time step are fixed over the time step. The surface angles are for the same minute of the hour as the sun position angles: Either the minute indicated in the weather file, or for hourly weather data with no Minute column, the midpoint of the hour (Section~\ref{sec-timeconvention}).
 
 Table~\ref{tab-surfaceanglevars} defines the variables used for the equations in this section. Figure~\ref{fig-arrayorientation}, adapted from \citet{dunlap2007}, shows how the surface angles are defined.
 
@@ -854,7 +872,7 @@ For a subarray with one-axis tracking, SAM assumes that the tracker rotates abou
 
 The \textbf{tracker rotation angle} $\theta$ is the angle of the subarray surface from the horizontal about the tracking axis. For a surface tilted as shown Figure~\ref{fig-arrayorientation}, the rotation angle is the angle as viewed from the raised end of the surface, with a negative rotation angle indicating counter-clockwise rotation from the horizontal. For a surface in the northern hemisphere with a surface azimuth angle of $180^\circ$, a negative rotation angle is for a surface facing east toward the morning sun with $-90^\circ$ for a vertical, east-facing surface. A positive rotation angle is for an array facing the afternoon sun, with $90^\circ$ for a vertical, west-facing surface.  In the southern hemisphere, for a surface with an azimuth angle of $0^\circ$, a negative rotation limit indicates a west-facing surface.
 
-The \textbf{tracker rotation limit} $\theta_lim$ is the physical limit of the tracker's motion about the tracking axis in degrees with valid values between $0$ and $\pm 90^\circ$. (Note that SAM's user interface restricts the rotation limit values to $\pm 85\degree$.) For example, a tracker in the northern hemisphere with a rotation limit of 45$^\circ$ would start tracking at a rotation angle of $-45^\circ$ in the sunrise hour, and stop tracking at a rotation angle of $45^\circ$ in the sunset hour.
+The \textbf{tracker rotation limit} $\theta_lim$ is the physical limit of the tracker's motion about the tracking axis in degrees with valid values between $0$ and $\pm 90^\circ$. (Note that SAM's user interface restricts the rotation limit values to $\pm 85\degree$.) For example, a tracker in the northern hemisphere with a rotation limit of 45$^\circ$ would start tracking at a rotation angle of $-45^\circ$ in the sunrise time step, and stop tracking at a rotation angle of $45^\circ$ in the sunset time step.
 
 SAM adjusts the surface rotation angle as follows:
 \begin{itemize}
@@ -924,7 +942,7 @@ The backtracking rotation difference $\Delta\theta$ reported by SSC as \texttt{b
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Incident Irradiance}\label{sec-incidentirradiance}
 
-The incident irradiance, also called plane-of-array irradiance or POA irradiance, is the solar irradiance incident on the plane of the photovoltaic array in a given time step. SAM calculates the incident irradiance for the sunrise hour, sunup hours, and sunset hour. The incident angle algorithm calculates the hourly beam and diffuse irradiance incident on the photovoltaic subarray surface for a given sun position, latitude, and surface orientation. For each  time step in the simulation, the incident irradiance algorithm steps are:
+The incident irradiance, also called plane-of-array irradiance or POA irradiance, is the solar irradiance incident on the plane of the photovoltaic array in a given time step. SAM calculates the incident irradiance for the sunrise, sun-up, and sunset time steps. The incident angle algorithm calculates the beam and diffuse irradiance incident on the photovoltaic subarray surface for a given sun position, latitude, and surface orientation. For each time step in the simulation, the incident irradiance algorithm steps are:
 
 %lib_irradproc.cpp 896-938
 \begin{enumerate}
@@ -952,7 +970,7 @@ $\mathit{\rho}$ & \textbf{Albedo} (ground reflectance)& \texttt{albedo}\\
 $\AOI$ & \text{angle of incidence} & \texttt{incidence}\\
 $\beta_s$ & \textbf{Subarray [\textit{n}] Surface tilt} & \texttt{tilt}\\
 $Z$ & \textbf{Solar zenith angle} & \texttt{sun\_zen}\\
-- & \textbf{Beam and diffuse}, \textbf{Total and beam} & \texttt{irrad\_mode}\\
+- & \textbf{Beam and diffuse}, \textbf{Total and beam}, \textbf{Total and diffuse} & \texttt{irrad\_mode}\\
 - & \textbf{Isotropic}, \textbf{HDKR}, \textbf{Perez} & \texttt{sky\_model}\\
 - & \textbf{Use albedo in weather file if it is specified} & \texttt{use\_wf\_albedo}\\
 \midrule
@@ -968,6 +986,12 @@ $D_h$ & horizon brightening component of incident diffuse irradiance & \texttt{p
 \label{tab-incidentirradiancevars}
 \end{center}
 \end{table}
+
+\section{Bypassing POA Calculations}
+
+The photovoltaic performance model allows you to use measured plane-of-array (POA) data instead of calculating POA values from beam normal and horizontal diffuse data. 
+
+To use POA data as input, choose the appropriate \textbf{PV Albedo and Radiation} option on the Location and Resource page: \textbf{POA-Reference} ($\texttt{irrad\_proc}=3$ in SSC), or \textbf{POA-Pyranometer} ($\texttt{irrad\_proc}=4$ in SSC).
 
 \section{Incident Beam Irradiance}\label{sec-incidentbeam}
 
@@ -985,6 +1009,17 @@ I_{\mathrm{bh}}=E_b\cos Z
 
 %cmod_pvsamv1.cpp 1213
 SAM compares $I_{\mathrm{bh}}$ to the extraterrestrial radiation $H$ (Equation~\ref{eqn-hextra}). If $I_{\mathrm{bh}}>H$, it generates an error flag that causes the calculations to stop and SAM to display the error message``failed to compute irradiation on surface."
+
+The \textbf{Radiation Components} option on the Location and Resource input page (\texttt{irrad\_mode} in SSC) allows you to choose whether to use the beam irradiance  irradiance from the weather file, or whether to calculate it from the global horizontal and diffuse horizontal irradiance values:
+%lib_irradproc.cpp 1001
+\begin{equation}\label{eqn-beam}
+E_b = \left\{
+\begin{array}{ll}
+E_b & \text{Use weather file value if option is \textbf{Beam and diffuse} ($\texttt{irrad\_mode}=0)$}\\
+(E_g - E_d)/\cos Z & \text{Calculate for \textbf{Total and diffuse} ($\texttt{irrad\_mode}=2)$}
+\end{array}
+\right.
+\end{equation}
 
 \section{Incident Sky Diffuse Irradiance}
 
@@ -1064,7 +1099,7 @@ The circumsolar, isotropic, and horizon brightening components of the diffuse sk
 %lib_irradproc.cpp 477
 \begin{align}
 \mathit{cir} &= E_d A_i R_b \notag\\
-\mathit{iso} &= E_d \left( 1 - A_i \right) \frac{1 + \cos\ \beta_s}{2} \notag\\
+\mathit{iso} &= E_d \left( 1 - A_i \right) \frac{1 + \cos \beta_s}{2} \notag\\
 \mathit{isohor} &= \mathit{iso} \left( 1 + f s \right)
 \end{align}
 
@@ -1196,7 +1231,7 @@ Symbol & Description / \textbf{Name in SAM} & Name in SSC\\
 $I_b$ & incident beam irradiance  & \texttt{poa\_beam}\\
 $I_d$ & incident sky diffuse irradiance & \texttt{poa\_skydiff}\\
 $I_r$ & incident ground-reflected irradiance & \texttt{poa\_gnddiff}\\
-$L_h$ & 8,760 hourly beam shading loss percentages  & \texttt{poa\_beam}\\
+$L_h$ & time series beam shading loss percentages  & \texttt{poa\_beam}\\
 $L_{mh}$ & hour-by-month beam shading loss percentages & \texttt{subarray[\textit{n}]\_shading\_mxh}\\
 $L_{azal}$ & sun azimuth-by-altitude beam shading loss percentages & \texttt{subarray[\textit{n}]\_shading\_azal}\\
 $L_{dns}$ & near object sky diffuse shading loss percentage  & \texttt{subarray[\textit{n}]\_shading\_diff}\\
@@ -1218,7 +1253,7 @@ $O$ & \textbf{...Soiling loss} & \texttt{...soiling\_derate}\\
 \end{center}
 \end{table}
 
-The effective irradiance is the solar energy that reaches the top of the module cover. The module submodel (Section~\ref{sec-module}) accounts for the effect of the module cover on the energy that reaches the photovoltaic cell including angle-of-incidence and reflection losses. Each module submodel option uses a different approach to calculating these losses.
+The effective irradiance is the solar energy that reaches the top of the module cover. The module model (Section~\ref{sec-module}) accounts for the effect of the module cover on the energy that reaches the photovoltaic cell including angle-of-incidence and reflection losses. Each module model uses a different approach to calculating these losses.
 
 \section{Nominal Global Incident Irradiance}\label{sec-nominalincidentirradiance}
 
@@ -1233,15 +1268,15 @@ I = I_{b} + I_{d} + I_{r}
 %pvsamv1.cpp  1240
 Near-object shading is a reduction in the POA incident irradiance by objects near the array, such as buildings, poles, trees, hills, etc. Near-object shading reduces both the beam and diffuse POA irradiance.
 
-SAM represents the reduction in beam POA irradiance using a set of beam shading losses. A beam shading loss is a percentage that represents a reduction in the POA beam irradiance for a given hour. A shading loss of zero represents no shading. A shading loss of 100\% represents complete shading.
+SAM represents the reduction in beam POA irradiance using a set of beam shading losses. A beam shading loss is a percentage that represents a reduction in the POA beam irradiance for a given time step. A shading loss of zero represents no shading. A shading loss of 100\% represents complete shading.
 
 SAM stores a set of shading losses for each subarray. The losses are specified in the Edit Shading Data window, which opens from the Shading input page when you click the \textbf{Edit Shading} button for a subarray.
 
 SAM reads beam shading losses from three different lookup tables that make it possible to use shading data from different sources, such as shade analysis tools and modeling software:
 \begin{itemize} 
-\item \textbf{Hourly} is a column of 8,760 shading losses, one for each hour of the year.
+\item \textbf{Time series} is a column of shading losses, one for each time step of the year (8760 for hourly simulations).
 \item \textbf{Hour by month} is a 24-by-12 table of 288 shading losses with one value for each hour of the day by month. For each month, SAM applies the same shading loss to a given hour of the day.
-\item \textbf{Solar azimuth by altitude} is a table of shading losses for a range of sun azimuth and altitude angles. SAM uses bilinear interpolation to calculate the shading loss for a given hour based on that hour's solar position angles and four shading losses from the table.
+\item \textbf{Solar azimuth by altitude} is a table of shading losses for a range of sun azimuth and altitude angles. SAM uses bilinear interpolation to calculate the shading loss for a given time step based on the solar position angles and four shading losses from the table.
 \end{itemize}
 
 SAM's user interface provides access to conversion functions that allow for importing shading data from files created by either the PVsyst, Solmetric SunEye, or SolarPathfinder\texttrademark~software as described in \citet{help-shading}. The conversion functions translate the data from the files into the appropriate table listed above. These functions are not available in SSC.
@@ -1251,7 +1286,7 @@ The shading loss inputs are expressed as percentages. SAM converts each percenta
 S=1-\frac{L}{100\%}
 \end{equation}
 
-The beam near-object shading factor for a given hour is the product of the values in the three beam shading loss factors:
+The beam near-object shading factor for a given time step is the product of the values in the three beam shading loss factors:
 %pvsamv1.cpp 1235
 \begin{equation}\label{eqn-sbns}
 S_{bns}=S_{hr}~S_{mh}~S_{azalt}
@@ -1261,47 +1296,59 @@ The sky diffuse near-object shading factor $S_{dns}$ is a single value that repr
 
 \subsection{3D Shade Calculator}\label{sec-3dshad}
 
-**ARON, STEVE**
+The 3D shade calculator calculates a set of beam and diffuse shade factors from a three-dimensional representation of the photovoltaic array and nearby shading objects. Objects in the 3D scene are represented by a set of polygons whose coordinates are specified in 3D space (x,y,z).  Polygons associated with the photovoltaic array or modules are marked as ``active surfaces'', so that the calculator can determine for which surfaces shading and blocking should be evaluated.  The geometry system uses a right-handed coordinate system in which $+x$ points east, $+y$ points north, and $+z$ points normal out of the ground towards the sky. 
 
-The 3D shade calculator calculates a set of beam and diffuse shade factors from a three-dimensional representation of the photovoltaic array and nearby shading objects.
+The interactive 3D editor, shown in Figure~\ref{fig:3dscene}, allows for creating a complex scene from a set of predefined objects: boxes, cylinders, trees, roof panes, and photovoltaic surfaces.  Each object is represented in 3D by a set of planar polygons that are generated automatically from the object's set of properties that define its position, size, and shape.  
+
+\begin{figure}
+\begin{center}
+\scalebox{0.7}{\includegraphics{figures/3dscene.png}}
+\caption{3D scene editor for shading calculations}
+\label{fig:3dscene}
+\end{center}
+\end{figure}
+
+Active surfaces representing photovoltaic modules can be grouped together logically to represent a string or subarray.  When calculating the time series shade loss fractions at hourly or subhourly time steps, the losses for each string or subarray are reported independently.  If no strings or subarrays are specified in the 3D scene editor, the total active surface shade loss is reported.  This allows the 3D editor to be used for SAM's simple PVWatts performance model, or for solar water heating applications, in addition to the detailed photovoltaic model described here.
+
+The output from the shade calculator is a array of shading factors for each subarray in the system.  If the nonlinear shading loss lookup table model, discussed subsequently, is enabled, string level losses are calculated for each subarray.  The shade calculations are performed entirely in the SAM user interface, and the time series shade loss arrays are passed to the SSC model for the PV system performance calculations.
+
+The calculation procedure for linear shading losses for each active surface at each time step is as follows:
+
+\begin{enumerate}
+\item Calculate the solar zenith and azimuth angles for the current time stamp (month, day, hour, minute) and location (latitude, longitude, time zone).
+\item Create a list of polygons from the scene objects in untransformed 3D space.
+\item Calculate the axis $x$, $y$, and $z$ rotation angles corresponding to a rotation of the scene associated with the current sun position.  In other words, the 3D scene is rotated so that it is shown as if it were observed from the sun.
+\item Using this 3D rotation matrix, calculate the rotated coordinates of each polygon vertex to transform the whole scene into the line of sight from the sun using a parallel projection.  This assumes the sun is infinitely far away and that the sun rays reaching the scene are essentially parallel to one another.
+\item Using a backface culling algorithm, eliminate polygons from the scene that face away from the sun and are not visible.
+\item Apply the binary space partitioning (BSP) algorithm to sort all the remaining visible polygons in back-to-front order.  Polygons at the ``front'' are closest to the sun.
+\item Discard the transformed $z$ coordinate to effectively ``flatten'' the scene into two dimensions, as if it were viewed from the infinitely far away sun.
+	\item For each active surface:
+	\begin{enumerate}
+	\item Create a list of polygons (regular and other active surfaces) that are in front of the active surface, that is, between it and the sun.
+	\item Using a 2D polygon clipping algorithm, determine the intersection between the active surface and the list of potential blocking polygons.
+	\item The resulting intersection polygon's area divided by the active surface polygon area gives the linear shading fraction for that active surface at the current time (sun position).
+	\end{enumerate}
+\item If subarrays and strings are specified, determine the appropriate shade fractions for each piece from the sum total of the intersected (shaded) areas divided by the sum total of the unshaded active surface areas associated with each string or subarray.   If no strings or subarrays are specified in the geometry, the total intersected (shaded) area divided by the total unshaded active surface area is reported as the overall average shading fraction.
+\end{enumerate}
+
+Once the linear shade fraction for each portion of the photovoltaic array is known at each time step, it is converted into a loss percentage and automatically entered into the SAM beam irradiance shading loss table in the user interface. These values are passed directly to the SSC simulation model for calculating system electricity generation.
+
+For systems with microinverters or module level power electronics such as DC-DC optimisers, the linear shading losses are appropriate estimates of overall energy lost due to shading.  However, for systems with strings of modules connected in parallel to a single inverter maximum power point tracking input, irregular obstruction shading can result in additional losses due to limiting effects associated with mismatch among the strings.  For this situation, MacAlpine~\cite{macalpine2015} proposed a computationally efficient method to estimate the nonlinear impact of partially shaded strings without requiring a full bottoms-up electrical cell-by-cell model.  This model is enabled by selecting the ``database lookup'' option in the time series beam shading table dialog in SAM.  In brief, the model uses a precalculated lookup table that, given: 1) number of parallel strings, 2) linear shade fraction on each string, and 3) fraction of diffuse irradiance on each string, estimates the total DC power loss due to the irregular shading on parallel strings.  The trivariate lookup table is built into the SAM model and can handle up to eight parallel strings.  Refer to~\cite{macalpine2015} for additional details on this model.
+
+The 3D shading calculator also estimates the loss of available diffuse irradiance to the active photovoltaic surfaces due to blocking of the sky dome by obstructions.  The procedure is as follows:
+\begin{enumerate}
+\item Divide the hemispherical sky dome into sections of some number of azimuth and zenith angle divisions.  By default, SAM uses 1 degree increments in both directions, for a total of 360 * 90 = 32400 divisions.
+\item For each position, transform the scene to the solar azimuth and zenith angle.
+\item Calculate the intersected (shaded) areas on each active surface polygon using the same procedure as for the beam irradiance shading loss.
+\item Integrate the shade loss over all positions in the sky dome by multiplying the observed shaded fraction with the solid angle of spherical integration $\sin(\theta_z)$.  This accounts for the fact that the sky dome divisions at the top of the hemisphere are much smaller than near $\theta_z\approx 0$.
+\end{enumerate}
+
+This procedure results in an estimate of the view factor of the active surfaces in each subarray to the sky dome, and hence the effective diffuse irradiance loss.  The model assumes an isotropic diffuse sky, and does not adjust for increased circumsolar diffuse irradiance.
+
 
 \subsection{Import Shade Data}\label{sec-importshad}
 
 **JANINE** (per Aron SAM meeting 10/14 -- maybe for Help instead? Should we document here if not part of SSC?)
-
-\section{Snow Coverage}\label{sec-snow}
-
-The snow coverage model uses snow depth data in the weather file to estimate the portion of the array that is covered by snow and calculate a corresponding reduction in power generation at each time step. Snow coverage on the array is measured as a percentage along the height of a row (see figure \ref{fig-snowCoverage} for details). The only snow removal process considered is sliding, and as such the model does not account for snow melting or wind removal. Power losses due to snow coverage are applied just after module performance is calculated.
-
-\begin{figure}
-\begin{center}
-\includegraphics[scale=0.5]{snow-coverage-diagram}
-\caption{Snow coverage diagram on PV arrays. Snow coverage is shown in blue and is measured as the percent of each row's height which is covered (i.e. 0\% coverage corresponds to no snow on the paned while 100\% coverage corresponds to a completely covered panel). The coverage in the figure would correspond to roughly 40\%.}
-\label{fig-snowCoverage}
-\end{center}
-\end{figure}
-
-At each time step the snow model first consults the snow depth data to determine if a new snowfall has occurred. If this is found to be true, the model sets the snow coverage on the current time step to 100\%. Otherwise the model estimates what the current coverage would be by considering the previous time step's coverage, the ambient temperature, and the tilt of array. In order to accomplish this, the model starts be determining whether or not snow sliding will occur during the current time step. When the following condition is true sliding will occur:
-
-\begin{equation}
-	T_a > \frac{I_{poa}}{m}
-	\label{eqn-snowSlidingCondition}
-\end{equation}
-
-Where $T_a$ is the current ambient temperature, $I_{poa}$ is the current plane of array irradiance, and $m$ is an experimentally determined constant ($-80\ W/m^2/C$). For more details on the derivation of this equation please see \citet{marion-snowmodel}. When sliding does not occur, the model sets the current snow coverage to the same coverage value as the preceding time step. However, if sliding does occur, the model sets the current coverage to the coverage at the end of the preceding time step minus a snow slide amount ($s.s.a$) which can be found using:
-
-\begin{equation}
-	s.s.a. = 1.97 * sin( tilt )
-	\label{eqn-snowSlideAmount}
-\end{equation}
-
-Where $tilt$ refers to the tilt of the PV array (see figure \ref{fig-snowCoverage}) and $1.97$ is another experimentally determined constant \citep{marion-snowmodel}.
-
-After determining the snow coverage, the model calculates the array's corresponding reduction in power generation. This is done by assuming that if a string is partially covered by snow it will be shut down by the row's power controller. Conversely, strings which are totally uncovered will produce power normally. For instance, in figure \ref{fig-snowCoverage}, the power production of the bottom string would be set to zero while the top string would behave normally resulting in a 50\% loss in the array's overall power production. In SAM's work flow, the power losses resulting from snow coverage are applied just after the module's performance is calculated but before accounting for degradation and power inversion losses.
-
-Usage of the snow model amounts to a check box labeled 'Estimate losses due to snow' which can be found at the bottom of the 'Shading and Snow' input page. If this is check box is activated, then the snow coverage losses will be automatically calculated as described in this section. The same can be accomplished in SSC by setting the \texttt{en\_snow\_model} variable to 1 (which is 0 by default). The snow model is also implemented as a stand alone compute module, and as such can be used in SSC to post process user-supplied performance data to include snow coverage loss estimates. 
-
-To note, not all weatherfiles will contain snow depth data or else may contain a few 'bad' snow depth values (defined as any value that is less than zero, greater than 20 feet, or non-existent). If a bad snow depth value is found during the simulation then that value will be replaced with zero depth. This replacement will only occur for the first 500 bad values, after which if another bad snow depth value is encountered then the simulation will fail.
 
 \section{Self Shading}\label{sec-selfshad}
 
@@ -1339,7 +1386,7 @@ SAM converts each soiling loss percentage to a factor:
 O=1-\frac{L}{100\%}
 \end{equation}
 
-For each hour of each month, SAM applies that month's soiling factor $O$ to all components of the incident irradiance.
+For each time step of each month, SAM applies that month's soiling factor $O$ to all components of the incident irradiance.
 
 \section{Effective Irradiance after Shading and Soiling}
 
@@ -1352,13 +1399,13 @@ G_d &= G_{dshad}~O\notag\\
 G_r &=  G_{rshad}~O
 \end{align}
 
-SAM reports the global effective irradiance $G$ and the total diffuse effective irradiance $G_{d,t}$ in the hourly results. (Note that the module submodels use the component values in Equation~\ref{eqn-effectivebeamdiffuse} as input rather than the global value.):
+SAM reports the global effective irradiance $G$ and the total diffuse effective irradiance $G_{d,t}$ in the results. (Note that the module models use the component values in Equation~\ref{eqn-effectivebeamdiffuse} as input rather than the global value.):
 \begin{align}
 G &= G_b + G_d + G_r\notag\\
 G_{d,t} & = G_d + G_r
 \end{align}
 
-SAM also reports the effective beam shading factor $S_b$ in the hourly results ($S_{bns}$) is the near-object shading factor from Equation~\ref{eqn-sbns}:
+SAM also reports the effective beam shading factor $S_b$ in the results ($S_{bns}$) is the near-object shading factor from Equation~\ref{eqn-sbns}:
 %cmod_pvsamv1.cpp 1336
 \begin{equation}
 S_b = \left\{
@@ -1405,14 +1452,16 @@ $G_d$ & POA diffuse irradiance (sky and ground) & - \\
 $\rho$ & albedo (from weather file, or set to 0.2) & \texttt{albedo} \\
 \midrule
 \multicolumn{3}{c}{Outputs}\\
-$S_{dss}$ & sky diffuse factor  / \textbf{Self-shading diffuse derate}& \texttt{hourly\_ss\_diffuse\_derate}\\
-$S_{rss}$ & ground diffuse factor  / \textbf{Self-shading reflected derate}& \texttt{hourly\_ss\_reflected\_derate}\\
-$F_{dcss}$& DC loss factor / \textbf{Self-shading derate} & \texttt{hourly\_ss\_derate}\\
+$S_{dss}$ & sky diffuse factor  / \textbf{Self-shading diffuse derate}& \texttt{[...]\_ss\_diffuse\_derate}\\
+$S_{rss}$ & ground diffuse factor  / \textbf{Self-shading reflected derate}& \texttt{[...]\_ss\_reflected\_derate}\\
+$F_{dcss}$& DC loss factor / \textbf{Self-shading derate} & \texttt{[...]\_ss\_derate}\\
+\midrule
+\multicolumn{3}{l}{Ellipses (...) indicate \texttt{subarray[\textit{n}]}.}\\
 \end{tabular}
 \label{tab-selfshadinputs}
 \end{center}
 \end{table}
-
+@@
 The self-shading model consists of two sets of equations, one to calculate the reduction in diffuse POA irradiance, and a separate one to calculate a DC loss factor to account for the non-linear performance impact of the beam POA irradiance reduction:
 
 \begin{itemize}
@@ -1470,7 +1519,7 @@ W &= \sqrt{ \frac{A_m}{R_{aspect}}}\\
 L &= W \mathit{R_{aspect}}
 \end{align}
 
-The module area is either from the module library, or an input, depending on the module submodel (see Section~\ref{sec-moduleoptions}).
+The module area is either from the module library, or an input, depending on the module model (see Section~\ref{sec-moduleoptions}).
 
 The length of the side of a row (distance from the bottom edge to the top edge of a row):
 %pvsamv1 update 1119
@@ -1766,50 +1815,61 @@ F_{dcss}=X\max\left(F_{dc1},F_{dc2},F_{dc3}\right)+(1-X)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Module DC Output}\label{sec-module}
 
-SAM uses one of four module submodels and one of three cell temperature submodels to calculate the DC power output of a single module in each subarray.  SAM's implementations of the submodels are effectively point-value efficiency models because SAM assumes that each subarray operates at its maximum power point (except with the mismatch option described in the next paragraph):
+SAM uses one of four module models and one of three cell temperature models to calculate the DC power output of a single module in each subarray. SAM makes the following assumptions:
 \begin{itemize}
-\item The subarray maximum power point is determined by the maximum power point of a single module.
+\item All modules in the system operate at their maximum power point voltage, except for the subarray mismatch and inverter operating voltage limit losses described below.
+\item The subarray maximum power point is determined by the maximum power point of a single module and number of modules per string.
+\item All subarrays in the system have the same number of modules per string, and therefore operate at the same voltage.
 \item All modules in each subarray operate uniformly. SAM does not calculate module mismatch losses.
 \end{itemize}
 
-For an array with multiple subarrays and the CEC module submodel, SAM's optional PV subarray mismatch option adjusts the maximum power voltage to account for mismatch \textit{between subarrays} as described in Section~\ref{sec-mismatch}.
-
-Calculating the module's DC output in a given hourly time step when the sun is up (see Section~\ref{sec-sunup}) is a two step process:
+Because the CEC and IEC 61853 module models (Section~\ref{sec-moduleoptions}) use a continuous function to represent the module's I-V curve, SAM can estimate losses due to subarray mismatch and inverter input operating input voltage limits:
+\begin{itemize}
+\item For an array with multiple subarrays, the optional PV subarray mismatch option adjusts the maximum power voltage to account for mismatch \textit{between subarrays} as described in Section~\ref{sec-mismatch}.
+\item When the inverter specifications include maximum and minimum MPPT voltage limits and the string voltage exceeds those limits, SAM clamps the string voltage to those limits.
+\end{itemize}
+Calculating the module's DC output in a time step when the sun is up (see Section~\ref{sec-sunup}) is a two step process:
 %cmod_pvsamv1.cpp 1466
 \begin{enumerate}
 \item Calculate the photovoltaic cell temperature. SAM assumes that the temperature of cells in all of the modules in each subarray is uniform.
 \item Calculate the module's DC power output based on its physical characteristics, the effective irradiance, and cell temperature.
 \end{enumerate}
 
-Table~\ref{tab-modulevars} lists the input and output variables used by each of the module and cell temperature submodels described. Each submodel uses an additional set of input parameters as described in the submodel descriptions.
+Table~\ref{tab-modulevars} lists the input and output variables used by each of SAM's module and cell temperature models. Each model uses an additional set of input parameters listed in each model's section below.
 
 \begin{table}
 \begin{center}
-\caption{Module Submodel Variable Definitions}
+\caption{Module Model Variable Definitions}
 \begin{tabular}{ll}
 \midrule
 Symbol & Description / \textbf{Name in SAM}\\
 \midrule
-\multicolumn{2}{c}{Inputs}\\
+\multicolumn{2}{c}{Effective POA Irradiance Inputs}\\
 $G_b$ & effective beam irradiance \\
 $G_d$ & effective sky diffuse irradiance \\
-$G_r$ & effective ground-reflected irradiance  \\
-$T_{dry}$ & ambient dry bulb temperature  \\
-$v_w$ & wind speed from weather file \\
-$Z$ & sun zenith angle \\
-$h$ & elevation above sea level in meters from weather file \\
-$\beta_s$ & subarray \textbf{tilt} angle \\
-$\gamma_s$ & subarray \textbf{azimuth} angle \\
+$G_r$ & effective ground-reflected diffuse irradiance  \\
 $\AOI$ & incidence angle \\
+$Z$ & sun zenith angle \\
+\midrule
+\multicolumn{2}{c}{Inputs from Weather File}\\
+$T_{dry}$ & ambient dry bulb temperature  \\
+$v_w$ & wind speed \\
+$h$ & elevation above sea level \\
 $\mathit{hr}$ & hour of day local time \\
 \midrule
-\multicolumn{2}{c}{Outputs}\\
+\multicolumn{2}{c}{Subarray Inputs}\\
+$\beta_s$ & subarray \textbf{tilt} angle \\
+$\gamma_s$ & subarray \textbf{azimuth} angle \\
+\midrule
+\multicolumn{2}{c}{Intermediate Outputs}\\
 $P_{dc}$ & module power \\
 $V_{dc}$ & module voltage \\
 $I_{dc}$ & module current  \\
-$\eta_m$ & module efficiency \\
 $V_{oc}$ & operating open circuit voltage  \\
 $I_{sc}$ & operating closed circuit current \\
+\midrule
+\multicolumn{2}{c}{Outputs}\\
+$\eta_m$ & module efficiency \\
 $T_c$ & cell temperature \\
 \midrule
 \end{tabular}
@@ -1817,22 +1877,23 @@ $T_c$ & cell temperature \\
 \end{center}
 \end{table}
 
-\section{Module Submodel Options}\label{sec-moduleoptions}
+\section{Module Models}\label{sec-moduleoptions}
 
-SAM calculates the a single photovoltaic module's DC output with one of the module submodels listed below, with descriptions from \citet{help-module} and \citet{blair2013}:
+SAM calculates the a single photovoltaic module's DC output with one of the module models listed below \citep{blair2013}. The simple efficiency and Sandia module models are point-value models that calculate module power at one or more discrete points on the module's I-V curve. The CEC and IEC-61853 models are single-diode equivalent circuit models that represent the module I-V curve as a continuous function.
 
 \begin{itemize}
-\item \textbf{Simple Efficiency Module Model} (Section~\ref{sec-simplemodule}) is a simple representation of module performance that requires you to provide the module area, a set of conversion efficiency values, and temperature correction parameters. The simple efficiency model is the least accurate of the three models for predicting the performance of specific modules. It is useful for preliminary performance predictions before you have selected a specific module, and allows you to specify a module efficiency and temperature performance parameters, which is useful for analyses involving sensitivity or parametric analysis.
-\item \textbf{California Energy Commission (CEC) Performance Model with Module Database} (Section~\ref{sec-cecmodule}) is an implementation of the six-parameter single-diode equivalent circuit model used in the CEC New Solar Homes Partneship Calculator \citep{gsc2014a}, and is an extension of the five-parameter model described in \citet{desoto2004a}. The model calculates the photovoltaic module hourly DC output using equations with parameters stored in SAM's CEC module library. The library contains data provided by the California Energy Commission \citep{gsc2014a} \citep{gsc2014b}.
+\item \textbf{Simple Efficiency Module Model} (Section~\ref{sec-simplemodule}) is a simple representation of module performance that calculates the module's DC output at the maximum power point from the module area, a table of conversion efficiency values over a range of irradiances, and temperature correction parameters. The simple efficiency model is the least accurate of the three models for predicting the performance of specific modules. It is useful for preliminary performance predictions before you have selected a specific module, and allows you to explicitly specify the module efficiency, which is useful for analyses involving sensitivity or parametric analysis.
+\item \textbf{California Energy Commission (CEC) Performance Model with Module Database} (Section~\ref{sec-cecmodule}) is an implementation of the six-parameter, single-diode equivalent circuit model used in the CEC New Solar Homes Partnership Calculator \citep{gsc2014a}, and is an extension of the five-parameter model described in \citet{desoto2004a}. The model calculates the photovoltaic module DC output using equations with parameters stored in SAM's CEC module library (see Section~\ref{sec-libraries}). The library contains data provided by the California Energy Commission \citep{gsc2014a} \citep{gsc2014b}.
 \item \textbf{CEC Performance Model with User Entered Specifications}  (Section~\ref{sec-cecmodule}) is the same implementation as the CEC Performance Model with Module Database, but with a coefficient calculator \citep{dobos2012a} to calculate the model parameters from the standard module specifications provided on manufacturer data sheets. This makes it possible to use the six-parameter model for modules not included in the CEC module library.
-\item \textbf{Sandia PV Array Performance Model with Module Database}  (Section~\ref{sec-sandiamodule}) is an implementation of the Sandia National Laboratories photovoltaic module and array performance model \citep{king2004}. The model calculates hourly efficiency values based on data measured from modules and arrays in realistic outdoor operating conditions. The database includes modules with different cell types, including crystalline silicon, and various thin film technologies.
+\item \textbf{IEC 68153 Single Diode Model} (Section~\ref{sec-iecmodule}) is a ten-parameter single-diode model adapted from the five-parameter single-diode model. It calculates model parameter values from a table of module test data that follow the IEC 61853 rating standard \citep{dobos2014}. 
+\item \textbf{Sandia PV Array Performance Model with Module Database}  (Section~\ref{sec-sandiamodule}) is an implementation of the Sandia National Laboratories photovoltaic module and array performance model \citep{king2004}. This empirical model calculates module voltage and power at five points on the module's I-V curve using data measured from modules and arrays in realistic outdoor operating conditions. The database stored in SAM's Sandia module library (see Section~\ref{sec-libraries}) includes modules with different cell types, including crystalline silicon, and various thin film technologies.
 \end{itemize}
 
-In SSC, the \texttt{pvsamv1} input variable \texttt{module\_model} determines the module submodel as shown in Table~\ref{tab-modulesubmodels}.
+In SSC, the \texttt{pvsamv1} input variable \texttt{module\_model} determines the module model as shown in Table~\ref{tab-modulesubmodels}.
 
 \begin{table}
 \begin{center}
-\caption{Module Submodels in SSC}
+\caption{Module Models in SSC}
 \begin{tabular}{lc}
 \midrule
 Name in SAM & \texttt{module\_model} \\
@@ -1847,13 +1908,13 @@ Sandia PV Array Performance Model with Module Database & 3 \\
 \end{center}
 \end{table}
 
-\section{Cell Temperature Submodel Options}\label{sec-celltempoptions}
+\section{Cell Temperature Models}\label{sec-celltempoptions}
 
-Each module submodel uses one of the cell temperature submodels shown in Table~\ref{tab-tempcorr} to calculate the photovoltaic cell temperature in a given hour. Each module submodel uses a single cell temperature submodel, except for the CEC module model with database parameters, which offers two cell temperature submodel options.
+Each module model uses one of the cell temperature models shown in Table~\ref{tab-tempcorr} to calculate the photovoltaic cell temperature in a given time step. Each module model uses a single cell temperature model, except for the CEC module model with database parameters, which offers two cell temperature model options.
 
 \begin{table}
 \begin{center}
-\caption{Cell Temperature Submodels}
+\caption{Cell Temperature Models}
 \begin{tabular}{lll}
 \midrule
 Module Model & Temperature Model & Section\\
@@ -1868,13 +1929,13 @@ CEC with user-specified parameters & NOCT & \ref{sec-tcnoct}\\
 \end{center}
 \end{table}
 
-As described above, in each hourly time step, SAM calls the appropriate cell temperature submodel once before calling the module submodel. When the subarray mismatch option (Section~\ref{sec-mismatch}) is enabled, it also calls the cell temperature submodel as part of that set of calculations.
+In each time step, SAM calls the appropriate cell temperature model once before calling the module model. When the subarray mismatch option (Section~\ref{sec-mismatch}) is enabled, it also calls the cell temperature model as part of that set of calculations.
 
 \section{Module Degradation}
 
-SAM's module submodels calculate the DC power output of a single module in a single hourly time step. For a given simulation, SAM runs the module submodel 8,760 times to calculate the output over a single year. Because the model calculates the output in a single year, it does not have the information required to model degradation of module output over a number of years of operation.
+SAM's module models calculate the DC power output of a single module in a single time step. For a given simulation, SAM runs the module model for each time step (8760 times for a simulation with hourly time steps) to calculate the output over a single year. Because the model calculates the output in a single year, it does not have the information required to model degradation of module output over a number of years of operation.
 
-SAM's photovoltaic performance model calculates the hourly AC output of the photovoltaic system. Its financial models add up these 8,760 hourly values to calculate the system's total AC output in one year, and treat this value as the system's total output in the first year of the system's operation.
+SAM's photovoltaic performance model calculates the AC output of the photovoltaic system for each time step in one year. The financial models add up the time series values to calculate the system's total AC output in one year, and treat this value as the system's total output in the first year of the system's operation.
 
 The financial models use a lifetime in years and annual degradation factor to calculate the system's output in the second year and later for cash flow calculations. This degradation factor can approximate the impact of module degradation on the performance of a photovoltaic system. However, because the degradation factor applies to the total annual \textit{AC output} of the system, it only very roughly represents module degradation. In an actual system, module degradation reduces the array's \textit{DC output}, and this reduction can affect inverter sizing decisions in a way that SAM cannot model.
 
@@ -1884,23 +1945,22 @@ If the weather file for a given analysis contains typical-year data (rather than
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Sandia Module Model}\label{sec-sandiamodule}
 
-SAM's Sandia Module Model (see Section~\ref{sec-moduleoptions}) is an implementation of the empirical model of a photovoltaic module described in \citet{king2004}. 
+SAM's Sandia Module Model is an implementation of the empirical model of a photovoltaic module described in \citet{king2004}. See Section~\ref{sec-moduleoptions} for a general description of all of SAM's module models.
 
 For a description of the Sandia cell temperature model, see Section~\ref{sec-tcsandia}.
 
-The Sandia module model uses the module parameters in Table~\ref{tab-sandiamodulevars} along with the general module input variables in Table~\ref{tab-modulevars}. The parameters in Table~\ref{tab-sandiamodulevars} are from the Sandia module database maintained by Sandia National Laboratories \citep{sandia-testeval}.  In SAM, the parameters are stored in the Sandia module library \citep{help-libraries}. In SSC, the implementation of the Sandia module model described here is part of the \texttt{pvsamv1} module and does not include a parameter library (See Section~\ref{sec-libraries}).
+The Sandia module model uses the module parameters in Table~\ref{tab-sandiamodulevars} along with the general module input variables in Table~\ref{tab-modulevars}. The parameters in Table~\ref{tab-sandiamodulevars} are from the Sandia module database maintained by Sandia National Laboratories \citep{sandia-testeval}.  In SAM, the parameters are stored in the Sandia module library. In SSC, the implementation of the Sandia module model described here is part of the \texttt{pvsamv1} module and does not include a parameter library (See Section~\ref{sec-libraries}).
 
 %%
 % How does SAM use fill factor? See cmod_pvsamv1.cpp 769, and Equation 6 in King 2004.
 
 \begin{table}
 \begin{center}
-\caption{Sandia Module Model Variable Definitions}
+\caption{Sandia Module Model Inputs}
 \begin{tabular}{lll}
 \midrule
 Symbol & Description / \textbf{Name in SAM} & Name in SSC \\
 \midrule
-\multicolumn{3}{c}{Inputs}\\
 $V_{mp,ref}$ & reference \textbf{Max Power Voltage} &\texttt{snl\_vmpo} \\
 $I_{mp,ref}$ & reference \textbf{Max Power Current} & \texttt{snl\_i\_mpo} \\
 $V_{oc,ref}$ & reference \textbf{Open Circuit Voltage} & \texttt{snl\_voco} \\
@@ -1921,9 +1981,6 @@ $f_d$ & fraction of diffuse irradiance used by module & \texttt{snl\_fd} \\
 $a_{0...4}$ & air mass coefficients 0...4 & \texttt{snl\_a[\textit{0...4}]} \\
 $b_{0...5}$ & incidence angle modifier coefficients 0...5 & \texttt{snl\_b[\textit{0...5}]} 
 \\
-\midrule
-\multicolumn{3}{c}{Output}\\
-$P_{dc,m}$ & module DC output power & \\
 \hline
 \end{tabular}
 \label{tab-sandiamodulevars}
@@ -1932,7 +1989,7 @@ $P_{dc,m}$ & module DC output power & \\
 
 The reference conditions for the Sandia module model parameters are total incident irradiance of 1,000 W/m$^2$ and reference cell temperature of 25\degree C. 
 
-When you select a module on SAM's Module input page for the \textbf{Sandia PV Array Performance Model with Module Database}, SAM displays some of the module's reference parameters in Table~\ref{tab-sandiamodulevars} from the Sandia Module library as uneditable values. You can use SAM's library editor to see a complete list of the module parameters or to modify parameter values \citep{help-libraries}.
+When you choose a module on SAM's Module input page for the \textbf{Sandia PV Array Performance Model with Module Database}, SAM displays some of the module's reference parameters in Table~\ref{tab-sandiamodulevars} from the Sandia Module library as uneditable values.
 
 The absolute air mass is a relative measure of the optical path length that sunlight travels through the atmosphere and depends on the sun zenith angle in degrees (Section~\ref{sec-sunangles}) and the elevation above sea level ($AM=1$ at sea level with the sun directly overhead):
 %lib_sandia.cpp 245, 154
@@ -1956,7 +2013,7 @@ F_2 = b_0 + b_1\AOI
 		+ b_5\AOI^5
 \end{equation}
 
-The short circuit current is a function of the cell temperature (Section~\ref{sec-tcsandia}), effective irradiance (Section~\ref{sec-effectiveirradiance}) and the short circuit temperature coefficient in A/\degree C. The diffuse utilization factor $F_d$ is one of the parameters from the Sandia module library, and is equal to one for flat plate modules:
+The short circuit current is a function of the cell temperature (Equation~, where $T_c$ is from Equation~\ref{eqn-sandiatemp}), effective irradiance (Section~\ref{sec-effectiveirradiance}) and the short circuit temperature coefficient in A/\degree C. The diffuse utilization factor $F_d$ is one of the parameters from the Sandia module library, and is equal to one for flat plate modules:
 %lib_sandia.cpp 254, 96
 \begin{equation}
 I_{sc} = I_{sc,ref} F_1 \left( \frac{G_b F_2 + f_d (G_d+G_r)}{1000} \right) \left[1+\alpha_{sc,ref} (T_c-25)\right]
@@ -2007,7 +2064,7 @@ P_{dc,m} = V_{mp}~I_{mp}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{CEC Module Model}\label{sec-cecmodule}
 
-SAM's CEC Module Model  (see Section~\ref{sec-moduleoptions}) is an implementation of the single-diode equivalent circuit model of a photovoltaic module described in \citet{desoto2004a}, and with more detail in \citet{desoto2004b}. It is also described in Section 23.2 of  \citet{duffie2013}.
+SAM's CEC Module Model is an implementation of the single-diode equivalent circuit model of a photovoltaic module described in \citet{desoto2004a}, and with more detail in \citet{desoto2004b}. It is also described in Section 23.2 of  \citet{duffie2013}. See Section~\ref{sec-moduleoptions} for a general description of all of SAM's module models.
 
 SAM includes two options for the model (see Section~\ref{sec-module}): It may use a set of reference parameters from the CEC module library with data provided by the California Energy Commission \citep{gsc2014a}, or a set of reference parameters generated by SAM's coefficient generator from module specifications that you provide as input to the model. The equations described in this section are for the module's DC output, not for the module coefficients. For a description of the coefficient generator equations, see \citet{dobos2012a}. 
 
@@ -2017,12 +2074,11 @@ In SSC, the implementation of the CEC module model described here is part of the
 
 \begin{table}
 \begin{center}
-\caption{CEC Module Model Variable Definitions}
+\caption{CEC Module Model Inputs}
 \begin{tabular}{lll}
 \midrule
 Symbol & Description / \textbf{Name in SAM} & Name in SSC \\
 \midrule
-\multicolumn{3}{c}{Inputs}\\
 $I_{mp,ref}$ & reference \textbf{Max Power Current} & \texttt{cec\_i\_mp\_ref} \\
 $V_{oc,ref}$ & reference \textbf{Open Circuit Voltage} & \texttt{cec\_v\_oc\_ref} \\
 $I_{sc,ref}$ & reference \textbf{Short Circuit Current} & \texttt{cec\_i\_sc\_ref} \\
@@ -2034,9 +2090,6 @@ $R_{s,ref}$ & reference series resistance, \textbf{R\_s} & \texttt{cec\_r\_s\_re
 $a_{ref}$ & reference ideality factor, \textbf{A\_ref} & \texttt{cec\_a\_ref} \\
 $R_{sh,ref}$ & reference shunt resistance \textbf{R\_sh\_ref}& \texttt{cec\_r\_sh\_ref} \\
 $\mathit{adjust}$ & temperature coefficient adjustment factor & \texttt{cec\_adjust} \\
-\midrule
-\multicolumn{3}{c}{Output}\\
-$P_{dc,m}$ & module DC output power & \\
 \hline
 \end{tabular}
 \label{tab-cecmodulevars}
@@ -2045,7 +2098,7 @@ $P_{dc,m}$ & module DC output power & \\
 
 The reference conditions for the CEC module model parameters are total incident irradiance of 1,000 W/m$^2$ and reference cell temperature of 25\degree C. 
 
-When you select a module on SAM's Module input page for the \textbf{CEC Performance Model with Module Database}, SAM displays the module's reference parameters shown in Table~\ref{tab-cecmodulevars} from the CEC Module library as uneditable values. You can use SAM's library editor to modify reference parameter values for a module  \citep{help-libraries}.
+When you select a module on SAM's Module input page for the \textbf{CEC Performance Model with Module Database}, SAM displays the module's reference parameters shown in Table~\ref{tab-cecmodulevars} from the CEC Module library as uneditable values.
 
 The five-parameter single-diode equivalent circuit equation for the module current $I$ at a given voltage $V$ is:
 \begin{equation}\label{eqn-cec5par}
@@ -2155,8 +2208,9 @@ G =  MG_0
 %lib_cec6par.cpp 338
 The module DC output is only calculated when $G>1$.
 
-The cell temperature $T_c$ for the CEC module model is calculated using either the NOCT cell temperature model (Section~\ref{sec-tcnoct}) or the heat transfer cell temperature model (Section~\ref{sec-tcheattransfer}). For the next set of equations, the cell temperature is in Kelvin, and the reference cell temperature of $25\degree C$ in Kelvin is $25\degree \text{C} + 273.15 \text{K} = 298.15 \text{K}$.
+The cell temperature $T_c$ is calculated using either the NOCT cell temperature model (Section~\ref{sec-tcnoct}) or the heat transfer cell temperature model (Section~\ref{sec-tcheattransfer}) as described in Section \ref{sec-celltempoptions}.
 
+For the next set of equations, the cell temperature is in Kelvin, and the reference cell temperature of $25\degree C$ in Kelvin is $25\degree \text{C} + 273.15 \text{K} = 298.15 \text{K}$.
 The light current $I_L$:
 %lib_cec6par.cpp 343
 \begin{equation}\label{eqn-lightcurrent}
@@ -2226,12 +2280,11 @@ The cell temperature parameters $a$, $b$, and $\Delta T$ depend on the \textbf{M
 
 \begin{table}
 \begin{center}
-\caption{Simple Efficiency Module Model Variable Definitions}
+\caption{Simple Efficiency Module Model Inputs}
 \begin{tabular}{lll}
 \midrule
 Symbol & Description / \textbf{Name in SAM} & Name in SSC \\
 \midrule
-\multicolumn{3}{c}{Inputs}\\
 $V_{mp,ref}$ & reference \textbf{Maximum Power Voltage} & - \\
 $V_{oc,ref}$ & reference \textbf{Open Circuit Voltage} & - \\
 $A_m$ & module \textbf{Area} & \texttt{spe\_area} \\
@@ -2243,9 +2296,6 @@ $G_{0...4}$ & radiation values in efficiency table & \texttt{spe\_rad[\textit{0.
 $G_{ref}$ & reference radiation value from efficiency table & \texttt{spe\_reference} \\
 $\eta_{0...4}$ & module efficiency values in efficiency table & \texttt{spe\_eff[\textit{0...4}]} \\
 $f_d$ & \textbf{Diffuse utilization factor} & \texttt{spe\_fd} \\
-\midrule
-\multicolumn{3}{c}{Output}\\
-$P_{dc,m}$ & module DC output power & \\
 \hline
 \end{tabular}
 \label{tab-spemodulevars}
@@ -2293,7 +2343,7 @@ $V_{mp}$ & module maximum power voltage rating & \texttt{6par\_vmp} \\
 $A_m$ & module area in meters & \texttt{6par\_area} \\
 \midrule
 \multicolumn{3}{c}{Output}\\
-$T_c$ & cell temperature & \texttt{hourly\_subarray[\textit{n}]\_celltemp} \\
+$T_c$ & cell temperature & \texttt{subarray[\textit{n}]\_celltemp} \\
 \hline
 \end{tabular}
 \label{tab-tempnoct}
@@ -2341,9 +2391,9 @@ T_c = T_a + \frac{G}{800} \left(T_{noct,adj} - 20 \right) \left(1-\frac{\eta_{re
 
 \section{Heat Transfer Cell Temperature Model}\label{sec-tcheattransfer}
 
-The heat transfer cell temperature model is from the work described in \citet{neises2011}, with model descriptions in Chapters 4 and 5, and an implementation in FORTRAN in Appendix H. SAM's model is adapted from the FORTRAN implementation, and its description is omitted from this section because of its length.
+The heat transfer cell temperature model is from the descriptions in Chapters 4 and 5 and the FORTRAN implementation in Appendix H of \citet{neises2011}. SAM's model is adapted from this implementation, and its description is omitted from this section because of its length.
 
-In SAM, the heat transfer cell temperature model is available with the \textbf{CEC Performance Model with Module Database} module model on the Module input page as the \textbf{Mounting specific cell temp model} option ($\mathtt{cec\_temp\_corr\_mode}=1$ in SSC \texttt{pvsamv1}).
+In SAM, the heat transfer cell temperature model is available with the \textbf{CEC Performance Model with Module Database} module model on the Module input page as the \textbf{Mounting specific cell temp model} option\\($\mathtt{cec\_temp\_corr\_mode}=1$ in SSC \texttt{pvsamv1}).
 
 %inputs cmod_pvsamv1.cpp 802
 \begin{table}
@@ -2365,7 +2415,7 @@ Description / \textbf{Name in SAM} & Name in SSC \\
 \textbf{Gap Spacing} & \texttt{cec\_gap\_spacing} \\ 
 \midrule
 \multicolumn{2}{c}{Output}\\
-cell temperature & \texttt{hourly\_subarray[\textit{n}]\_celltemp} \\
+cell temperature & \texttt{subarray[\textit{n}]\_celltemp} \\
 \hline
 \end{tabular}
 \label{tab-tempheattransfer}
@@ -2396,7 +2446,7 @@ $b$ &  Temperature coefficient \textbf{b} & \texttt{snl\_b} or \texttt{snl\_ref\
 $\Delta T$ & Temperature coefficent \textbf{dT} & \texttt{snl\_dtc} or \texttt{snl\_ref\_dtc} \\
 \midrule
 \multicolumn{3}{c}{Output}\\
-$T_c$ & cell temperature & \texttt{hourly\_subarray[\textit{n}]\_celltemp} \\
+$T_c$ & cell temperature & \texttt{subarray[\textit{n}]\_celltemp} \\
 \hline
 \end{tabular}
 \label{tab-tempsandia}
@@ -2436,7 +2486,7 @@ T_m = G e^{a+b v_w} + T_a
 \end{equation}
 
 The cell temperature in degrees Celsius (\degree C):
-\begin{equation}\label{eqn-cectemp}
+\begin{equation}\label{eqn-sandiatemp}
 T_c = T_m + \frac{G}{1000}  \Delta T
 \end{equation}
 
@@ -2444,15 +2494,164 @@ T_c = T_m + \frac{G}{1000}  \Delta T
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{IEC 61853 Single Diode Module Model}\label{sec-iecmodule}
 
-**ARON**
+The IEC-61853 Single Diode model is a detailed method for predicting the performance of flat plate photovoltaic modules.  The model uses data from modules tested according to the International Electrotechnical Commission (IEC) power and rating standard, IEC 61853, \textit{Irradiance and Temperature Performance Measurements and Power Rating}.  A summary of the model follows, with full details available in~\cite{dobos2014}.
 
-The IEC-61853 Single Diode model is a detailed method for predicting the performance of flat plate photovoltaic modules.  The model uses data from modules tested according to the International Electrotechnical Commission (IEC) power and rating standard, IEC 61853, \textit{Irradiance and Temperature Performance Measurements and Power Rating}.
+IEC-61853 defines a matrix of 23 temperature and irradiance pairs (Table~\ref{tab_testmatrix}) at which a module must be tested for maximum power $P_{mp}$, maximum power current $I_{mp}$, open circuit voltage $V_{oc}$, and short circuit current $I_{sc}$. 
+
+\begin{table}[h!]
+\begin{center}
+\begin{tabular}{lllll}
+ W/m$^2$ & 15$^\circ$C & 25$^\circ$C & 50$^\circ$C & 75$^\circ$C \\
+\hline
+1100 & & x & x & x \\
+1000 & x & x & x & x \\
+800 & x & x & x & x \\
+600 & x & x & x & x \\
+400 & x & x & x &  \\
+200 & x & x & x &  \\
+100 & x & x &  &  \\
+\end{tabular}
+\caption{IEC-61853 Module Test Matrix}
+\label{tab_testmatrix}
+\end{center}
+\end{table}
+
+The IEC-61853 model extends the basic single diode model which represents a photovoltaic module's current-voltage characteristic by Eqn.~\ref{eqn_singlediode}.
+\begin{equation}
+I = I_L - I_o\left(\exp \left[\frac{V+IR_s}{a}\right]-1\right) - \frac{V+IR_s}{R_{sh}}
+\label{eqn_singlediode}
+\end{equation}
+
+This current-voltage equation is governed by five parameters: the modified diode nonideality factor $a$, the light current $I_L$, the reverse saturation current $I_o$, the series resistance $R_s$, and the shunt resistance $R_{sh}$.  The modified nonideality factor representing the whole module is related to the diode factor $n$ of a single cell by Eqn.~\ref{eqn_a}, where $N_s$ is the number of cells in series.
+\begin{equation}\label{eqn_a}
+a = N_s\frac{kT}{q}n
+\end{equation}
+
+The five parameters are measured at STC, and are translated to operating conditions via auxiliary equations.  The standard CEC single diode model in SAM implements Eqns.~\ref{eqn_aux1}-\ref{eqn_aux5} to translate the parameters given effective irradiance $S$ and cell temperature $T_c$, with $S_{ref}=1000$~W/m$^2$, $T_{ref}=25^\circ$C, and $E_{g,ref} = 1.121$~eV.  The series resistance $R_s$ is assumed to be constant.
+
+\begin{equation}\label{eqn_aux1} a = a_{ref}\cdot T_c / T_{ref} \end{equation}
+\begin{equation}\label{eqn_aux2} I_L = \frac{S}{S_{ref}}\cdot(I_{L,ref} + \alpha(T_c-T_{ref})) \end{equation}
+\begin{equation}\label{eqn_aux3}
+\frac{I_o}{I_{o,ref}} = \left[ \frac{T_{c}}{T_{ref}} \right] ^ 3 \exp \left[ \frac{1}{k} \left( \frac{E_g}{T}\Bigg|_{T_{ref}} - \frac{E_g}{T}\Bigg|_{T_{c}} \right) \right]
+\end{equation}
+\begin{equation}\label{eqn_aux4}
+\frac{E_g}{E_{g,ref}} = 1 - 0.0002677(T_{c} - T_{ref})
+\end{equation}
+\begin{equation}\label{eqn_aux5}
+R_{sh} = R_{sh,ref}\cdot\frac{S_{ref}}{S}
+\end{equation}
+
+Model parameters result from simultaneously solving the diode equation at five points on the STC I-V curve: short circuit ($V=0, I=I_{sc}$), open circuit ($V=V_{oc}, I=0$), maximum power ($V=V_{mp}, I=I_{mp}$), derivative of maximum power $\frac{d(IV)}{dV}|_{mp}=0$, and open circuit temperature coefficient $\beta = \frac{dV}{dT}|_{I=0}$.  Details are given in \cite{desoto2004a} and \cite{dobos2012a}.
+
+We assume that the standard single diode model equation is capable of representing actual I-V curve data at operating conditions.  Experience suggests that the primary reason for the single diode model's inaccuracies emerges from the choices of auxiliary equations that translate the five parameters to operating conditions.  Consequently, the five parameters are assumed to be independent functions of temperature and irradiance.  We estimate values for $a$, $I_L$, $I_o$, $R_s$, and $R_{sh}$ at each IEC-61853 test condition, and fit the results to new auxiliary equations that are functions of both temperature and irradiance .
+
+At each test measurement in the IEC-61853 matrix, three points on the actual I-V curve are known.  Additionally, the derivative of maximum power $\frac{d(IV)}{dV}|_{mp}=0$ condition can be applied, yielding four constraint equations.  Reasonably assuming that the cell diode factor $n$ should remain constant across temperature and irradiance - after all, it aims to represent an intrinsic physical property of the diode junction - the four constraints are sufficient to solve for $I_L$, $I_o$, $R_s$, and $R_{sh}$.  The modified diode factor $a$ is calculated by Eqn.~\ref{eqn_a}.
+
+Next, an estimate must be made for the cell diode factor $n$.  The empirical Sandia PV Array Performance Model provides an equation for open circuit voltage that incorporates the diode factor, cell temperature, and the open circuit temperature coefficient $\beta$.  The Sandia $V_{oc}$ equation is asymptotically equivalent to the single diode model equation~\cite{hansen2013}, and is analogous to the ``$V_{oc}$ Method'' for cell temperature described in IEC-60904-9.  While this equation is best suited for crystalline silicon modules, the Sandia model has been shown to be suitable for all cell types~\cite{sapm}, and thus it is readily used here.  Rearranging terms yields an equation for $n$ (Eqn.~\ref{eqn_snlvoc}) at any temperature $T_c$ and irradiance $S$.  $V_T$ is thermal voltage $V_T=kT_c/q$.  The temperature coefficient $\beta$ at 1000 W/m$^2$ is obtained directly by calculating the change in $V_{oc}$ as a function of temperature from the test data.  Eqn.~\ref{eqn_snlvoc} is evaluated at all temperature $T_c$ and irradiance $S$ conditions in the IEC-61853 test matrix, and the average value yields the final diode factor $n$ that is used in subsequent calculations.
+
+\begin{equation}\label{eqn_snlvoc}
+n = \frac{ (V_{oc} - \beta( T_c - T_{ref} ) - V_{oc,ref}) }
+            { N_s \cdot V_T \cdot \ln( S/S_{ref} ) }
+\end{equation}
+
+With an estimate for $n$, the four constraint equations can now be solved at each test condition.  The multidimensional nonlinear Newton's method solves $\mathbf{F}(\mathbf{x})=0$, where $\mathbf{x} = \left[ I_L,  I_o, R_s. R_{sh} \right]'$, and 
+
+\begin{equation}
+\mathbf{F} = \left[ \begin{array}{l} 
+I_L - I_o\left(\exp\left[\frac{I_{sc}R_s}{a}\right]-1\right) - \frac{I_{sc}R_s}{R_{sh}} - I_{sc} \\ 
+
+I_L - I_o\left(\exp \left[\frac{V_{oc}}{a}\right]-1\right) - \frac{V_{oc}}{R_{sh}} \\ 
+
+I_L - I_o\left(\exp \left[\frac{V_{mp}+I_{mp}R_s}{a}\right]-1\right) - \frac{V_{mp}+I_{mp}R_s}{R_{sh}} - I_{mp} \\
+
+I_{mp} - V_{mp}\left[ \frac{  \frac{I_o}{a}\exp\left[ \frac{V_{mp} + I_{mp}R_s}{a}\right] + \frac{1}{R_{sh}} } { 1  + \frac{I_o R_s}{a}\exp \left[ \frac{V_{mp} + I_{mp}R_s}{a}\right] + \frac{R_s}{R_{sh}} } \right] \\
+\end{array} \right]
+\end{equation}
+
+With Newton's method successfully solving for $I_L$, $I_o$, $R_s$, and $R_{sh}$ at each test irradiance and temperature, we fit new auxiliary equations for series resistance (Eqn.~\ref{eqn_auxrsnew}) and shunt resistance (Eqn.~\ref{eqn_auxrshnew}).  Successive nonlinear least-squares fitting is applied to estimate the parameters $C_{1,2,3}$ and $D_{1,2,3}$.
+
+\begin{equation}\label{eqn_auxrsnew}
+R_s = D_1 + D_2(T_c-T_{ref}) + D_3\left( 1-\frac{S}{S_{ref}}\right)\left(\frac{S_{ref}}{S}\right)^2
+\end{equation}
+
+\begin{equation}\label{eqn_auxrshnew}
+R_{sh} = C_1 + C_2\left[ \left(\frac{S_{ref}}{S}\right)^{C_3}-1 \right]
+\end{equation}
+
+The standard auxiliary equations (Eqns.~\ref{eqn_aux1}-\ref{eqn_aux4}) are retained for $a$, $I_L$, $I_o$, and $E_g$, though we note that $E_{g,ref}$ is fitted to the best fit for $I_o$ across the operating range.  
+
+Finally, with a full set of equations describing the variation of single diode model parameters across the entire range of irradiance and temperature conditions, the model calculates each parameter's value at every time step and uses a golden search maximization process to find the maximum power ($P=IV$) by iteratively solving the current-voltage relation to determine $I$ and $V$.  
+
+The IEC-61853 model gives the user a choice of standard glass or glass with an antireflective coating.  The model applies an angle of incidence correction to adjust the direct beam irradiance to account for reflection losses.  This model is the same as used in PVWatts version 5, and is an extension of approach in~\cite{desoto2004a}.
+
+For standard glass, we use a single slab model, calculating the transmittance through glass with index of refraction of 1.526.  This follows the treatment in ~\cite{desoto2004a}, with the simplification of removing the absorptance term which is determined below to have a negligible effect.
+
+For glass with an antireflective coating, a two slab approach is used to model the improvement in angular response.  The two slab model involves predicting the transmittance of irradiance through two materials using a physical representation for unpolarized radiation described in~\cite{desoto2004a} twice: once for the anti-reflective (AR) coating, and subsequently for the glass cover.
+        
+\begin{figure}[h!]
+\begin{center}
+\scalebox{0.5}{\includegraphics{figures/fig_twoslab_model.pdf}}
+\end{center}
+\caption{Diagram of two slab module cover reflection loss model}
+\label{fig_twoslab_model}
+\end{figure}
+
+First, the angle of refraction $\theta_2$ into the AR coating is calculated with Snell's law given angle of incidence $\theta_1$:
+
+\begin{equation}\label{snell1}
+\theta_2 = \arcsin\left( \frac{n_{air}}{n_{AR}} \sin(\theta_1 ) \right)
+\end{equation}
+
+Next, the transmittance through the AR coating is calculated from Fresnel's equation for non-reflected unpolarized radiation, which takes the average of parallel and perpendicular components.
+
+\begin{equation}\label{fresnel1}
+\tau_{AR} = 1 - 0.5
+        \left( \frac{\sin(\theta_2-\theta_1)^2}{\sin(\theta_2+\theta_1)^2} 
+               + \frac{\tan(\theta_2-\theta_1)^2}{\tan(\theta_2+\theta_1)^2}  \right)
+\end{equation}
+
+The angle of refraction into the glass cover $\theta_3$ is again determined from Snell's law.
+
+\begin{equation}\label{snell1}
+\theta_3 = \arcsin\left( \frac{n_{AR}}{n_{glass}} \sin(\theta_2 ) \right)
+\end{equation}
+
+The transmittance through the glass is calculated similarly given $\theta_2$ and $\theta_3$.
+
+\begin{equation}\label{fresnel1}
+\tau_{glass} = 1 - 0.5
+        \left( \frac{\sin(\theta_3-\theta_2)^2}{\sin(\theta_3+\theta_2)^2} 
+               + \frac{\tan(\theta_3-\theta_2)^2}{\tan(\theta_3+\theta_2)^2}  \right)
+\end{equation}
+
+Finally, the effective transmittance through the AR coated module cover is given by:
+
+\begin{equation}\label{tau_eff}
+\tau_{cover} = \tau_{AR}\tau_{glass}
+\end{equation}
+
+\cite{desoto2004a} suggests using Bouguer's law to estimate the absorption, but for typical dimensions ($\sim$2~mm) and extinction coefficients ($K\approx 4$) in this application, the absorption is predicted to be less than 0.1~\% and is thus ignored.
+
+Normalizing the response curve to normal incidence shows that the model predicts an improvement in light capture at high incidence angles for AR glass, which agrees with data from manufacturers of AR coated modules (Fig.~\ref{fig_twoslab_norm}).
+
+\begin{figure}[h!]
+\begin{center}
+\scalebox{0.8}{\includegraphics{figures/fig_twoslab_norm.pdf}}
+\end{center}
+\caption{Two slab model angular response compared with single slab model - normalized}
+\label{fig_twoslab_norm}
+\end{figure}
+
+The AR glass option will predict slightly higher output compared with the standard option due to the improved angular response.  The normal incidence transmittance of the module cover is assumed to be captured in the nameplate rating of the system. 
+
+Finally, we note that the IEC-61853 module model handles spectral effects using the Sandia effective air mass polynomial to calculate an air mass modifier coefficient that reduces the available effective irradiance to the cell. The module temperature is estimated using the standard CEC single diode model approach.
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Array DC Output}\label{sec-arraydcoutput}
 
-SAM calculates the photovoltaic array's DC output by multiplying a single module's DC output (Section~\ref{sec-module}) by the number of modules in the array. This assumes that all of the modules in the array operate uniformly at the maximum power point of a single module. 
+The photovoltaic array may consist of a single subarray, or up to four subarrays. Each subarray may have different orientation, **** tracking  SAM calculates the photovoltaic array's DC output by multiplying a single module's DC output (Section~\ref{sec-module}) by the number of modules in the array. This assumes that all of the modules in the array operate uniformly at the maximum power point of a single module. 
 
 SAM does not explicitly calculate electrical losses due to maximum power point mismatches between modules that would occur in a real system. You can account for those losses using the DC loss factor (Section~\ref{sec-dclosses}).
 
@@ -2473,12 +2672,12 @@ $N_{sub}$ & number of enabled subarrays & - \\
 $L_{dc,n}$ & \textbf{Total DC power loss} for subarray \textit{n} &  \texttt{subarray[\textit{n}]\_dcloss} \\
 \midrule
 \multicolumn{3}{c}{Outputs}\\
-$V_{dc,n}$ & \textbf{Subarray [\textit{n}] DC string voltage} & \texttt{hourly\_subarray[\textit{n}]\_dc\_voltage} \\
-$V_{dc}$ & \textbf{Inverter dc input voltage} & \texttt{hourly\_inverter\_dc\_voltage} \\
-$P_{dc,gross,n}$ & \textbf{Subarray [\textit{n}] Gross DC output} &  \texttt{hourly\_subarray[\textit{n}]\_dc\_gross} \\
-$P_{dc,net,n}$ & \textbf{Subarray [\textit{n}] Net DC output} &  \texttt{hourly\_subarray[\textit{n}]\_dc\_net} \\
-$P_{dc,gross}$ & \textbf{Gross dc array output} & \texttt{hourly\_dc\_gross} \\
-$P_{dc,net}$ & \textbf{Net dc array output} & \texttt{hourly\_dc\_net} \\
+$V_{dc,n}$ & \textbf{Subarray [\textit{n}] DC string voltage} & \texttt{subarray[\textit{n}]\_dc\_voltage} \\
+$V_{dc}$ & \textbf{Inverter dc input voltage} & \texttt{inverter\_dc\_voltage} \\
+$P_{dc,gross,n}$ & \textbf{Subarray [\textit{n}] Gross DC output} &  \texttt{subarray[\textit{n}]\_dc\_gross} \\
+$P_{dc,net,n}$ & \textbf{Subarray [\textit{n}] Net DC output} &  \texttt{subarray[\textit{n}]\_dc\_net} \\
+$P_{dc,gross}$ & \textbf{Gross dc array output} & \texttt{dc\_gross} \\
+$P_{dc,net}$ & \textbf{Net dc array output} & \texttt{dc\_net} \\
 \hline
 \end{tabular}
 \label{tab-arraydcoutputvars}
@@ -2487,9 +2686,9 @@ $P_{dc,net}$ & \textbf{Net dc array output} & \texttt{hourly\_dc\_net} \\
 
 \section{DC String Voltage}\label{sec-dcstringvoltage}
 
-SAM calculates the array's DC string voltage in each hourly time step to determine the inverter's input voltage.
+SAM calculates the array's DC string voltage in each time step to determine the inverter's input voltage.
 
-For a system with a single subarray, the array's string DC voltage in a given hourly time step is the module voltage times the number of modules per string.
+For a system with a single subarray, the array's string DC voltage in a given time step is the module voltage times the number of modules per string.
 %cmod_pvsamv1.cpp 1481
 \begin{equation}
 V_{dc} = V_{dc,m} N_{modules}
@@ -2502,7 +2701,7 @@ For systems with more than one subarray, when the subarrays have different orien
 \begin{equation}
 V_{dc} =  \frac{1}{N_{sub}}\sum_{n=1}^{N_{sub}} V_{dc,n}
 \end{equation}
-\item By running the module model iteratively for each subarray to determine the array's maximum string voltage (available with the CEC module model only) as described in Section~\ref{sec-mismatch}.
+\item By running the module model iteratively for each subarray to determine the array's maximum string voltage (available with the CEC and IEC 61853 module models only) as described in Section~\ref{sec-mismatch}.
 \end{itemize}
 
 When you choose the CEC module model, the \textbf{Calculate maximum power voltage for array and associated losses due to subarray mismatch} check box ($\mathtt{enable\_mismatch\_vmax\_calc}=1$ in the SSC \texttt{pvsamv1} module) determines what method SAM uses to calculate the array's maximum power point DC voltage.
@@ -2524,26 +2723,61 @@ P_{dc,gross} &= \sum_{n=1}^{N_{sub}} P_{dc,gross,n}
 
 \section{DC Losses} \label{sec-dclosses}
 
-SAM models electrical losses on the DC side of the system using a single DC loss factor for each subarray in the system. In SAM, the DC loss factor for each subarray is calculated from the five loss percentages on the Losses input page:
+SAM models electrical losses on the DC side of the system using a single DC loss for each subarray in the system. In SAM, the DC loss for each subarray is calculated from the five loss percentages on the Losses input page:
 \begin{align}\label{eqn-dcderate}
-L_{dc} &= L_1~L_2~L_3~L_4~L_5 \notag\\
-L_{1} &= 100~\left(1-\frac{L_{mismatch}}{100}\right) \notag\\
-L_{2} &= 100~\left(1-\frac{L_{diodesconnections}}{100}\right) \notag\\
-L_{3} &= 100~\left(1-\frac{L_{dcwiring}}{100}\right) \notag\\
-L_{4} &= 100~\left(1-\frac{L_{trackingerror}}{100}\right) \notag\\
-L_{5} &= 100~\left(1-\frac{L_{nameplate}}{100}\right)
+L_{dc} &= 100~(1-F_1~F_2~F_3~F_4~F_5~F_6) \notag\\
+F_{1} &= 1-\frac{L_{\textit{mismatch}}}{100} \notag\\
+F_{2} &= 1-\frac{L_{\textit{diodeconn}}}{100} \notag\\
+F_{3} &= 1-\frac{L_{\textit{dcwiring}}}{100} \notag\\
+F_{4} &= 1-\frac{L_{\textit{tracking}}}{100} \notag\\
+F_{5} &= 1-\frac{L_{\textit{nameplate}}}{100} \notag\\
+F_{6} &= 1-\frac{L_{\textit{dcoptimizer}}}{100}
 \end{align}
 
-The DC loss factor for each subarray $n$:
+Note that the single DC power optimizer loss applies to all subarrays.
+
+In the SSC \texttt{pvsamv1} module, each subarray's DC loss is stored as a single value \texttt{subarray[\textit{n}]\_dcloss}. The model applies the loss categories (\texttt{subarray[\textit{n}]\_mismatch\_loss}, \texttt{subarray[\textit{n}]\_diodeconn\_loss}, \texttt{subarray[\textit{n}]\_dcwiring\_loss}, \texttt{subarray[\textit{n}]\_tracking\_loss}, \texttt{subarray[\textit{n}]\_dcoptimizer\_loss}) to the total loss to estimate each category's contribution to the total loss. You must ensure that the value of \texttt{subarray[\textit{n}]\_dcloss} is consistent with the category values according to Equation~\ref{eqn-dcderate}.
+
+\section{DC Losses Due to Snow}\label{sec-snow}
+
+The snow cover model uses snow depth data in the weather file to estimate the portion of the array that is covered by snow and calculate a corresponding reduction in power generation for each time step. The model calculates a reduction in system output rather than a reduction in incident irradiance because it was developed empirically by measuring system electrical output for several photovoltaic systems installed in snowy climates, as described in \citet{marion-snowmodel} and \citet{ryberg-snowmodel}.
+
+Snow coverage on the array is measured as a percentage along the height of a row (see figure \ref{fig-snowCoverage} for details). The only snow removal process considered is sliding, and as such the model does not account for snow melting or wind removal. Power losses due to snow coverage are applied just after module performance is calculated.
+
+\begin{figure}
+\begin{center}
+\includegraphics[scale=0.5]{snow-coverage-diagram}
+\caption{Snow coverage diagram on PV arrays. Snow coverage is shown in blue and is measured as the percent of each row's height which is covered (i.e. 0\% coverage corresponds to no snow on the paned while 100\% coverage corresponds to a completely covered panel). The coverage in the figure would correspond to roughly 40\%.}
+\label{fig-snowCoverage}
+\end{center}
+\end{figure}
+
+At each time step the snow model first consults the snow depth data to determine if a new snowfall has occurred. If this is found to be true, the model sets the snow coverage on the current time step to 100\%. Otherwise the model estimates what the current coverage would be by considering the previous time step's coverage, the ambient temperature, and the tilt of array. In order to accomplish this, the model starts be determining whether or not snow sliding will occur during the current time step. When the following condition is true sliding will occur:
+
 \begin{equation}
-F_{dc,n}=1 - \frac{L_{dc,n}}{100}
+	T_a > \frac{I_{poa}}{m}
+	\label{eqn-snowSlidingCondition}
 \end{equation}
 
-In the SSC \texttt{pvsamv1} module, each subarray's DC loss is stored as a single value \texttt{subarray[\textit{n}]\_dcloss}. There are no loss categories in SSC: The categories shown in Equation~\ref{eqn-dcderate} are part of SAM's user interface.
+Where $T_a$ is the current ambient temperature, $I_{poa}$ is the current plane of array irradiance, and $m$ is an experimentally determined constant ($-80\ W/m^2/C$). For more details on the derivation of this equation please see \citet{marion-snowmodel}. When sliding does not occur, the model sets the current snow coverage to the same coverage value as the preceding time step. However, if sliding does occur, the model sets the current coverage to the coverage at the end of the preceding time step minus a snow slide amount ($s.s.a$) which can be found using:
 
-\section{Net DC Power Output}
+\begin{equation}
+	s.s.a. = 1.97 * sin( tilt )
+	\label{eqn-snowSlideAmount}
+\end{equation}
 
-The net DC power output of each subarray is each subarray's gross DC power output multiplied by the subarray's DC loss factor:
+Where $tilt$ refers to the tilt of the PV array (see figure \ref{fig-snowCoverage}) and $1.97$ is another experimentally determined constant \citep{marion-snowmodel}.
+
+After determining the snow coverage, the model calculates the array's corresponding reduction in power generation. This is done by assuming that if a string is partially covered by snow it will be shut down by the row's power controller. Conversely, strings which are totally uncovered will produce power normally. For instance, in figure \ref{fig-snowCoverage}, the power production of the bottom string would be set to zero while the top string would behave normally resulting in a 50\% loss in the array's overall power production. In SAM's work flow, the power losses resulting from snow coverage are applied just after the module's performance is calculated but before accounting for degradation and power inversion losses.
+
+Usage of the snow model amounts to a check box labeled 'Estimate losses due to snow' which can be found at the bottom of the 'Shading and Snow' input page. If this is check box is activated, then the snow coverage losses will be automatically calculated as described in this section. The same can be accomplished in SSC by setting the \texttt{en\_snow\_model} variable to 1 (which is 0 by default). The snow model is also implemented as a stand alone compute module, and as such can be used in SSC to post process user-supplied performance data to include snow coverage loss estimates. 
+
+To note, not all weatherfiles will contain snow depth data or else may contain a few 'bad' snow depth values (defined as any value that is less than zero, greater than 20 feet, or non-existent). If a bad snow depth value is found during the simulation then that value will be replaced with zero depth. This replacement will only occur for the first 500 bad values, after which if another bad snow depth value is encountered then the simulation will fail.
+
+
+\section{Array DC Power Output}
+
+The DC power output of each subarray is each subarray's gross DC power output multiplied by the subarray's DC loss factor:
 %cmod_pvsamv1.cpp 1505
 \begin{equation}
 P_{dc,net,n} = P_{dc,gross,n}~F_{dc,n}
@@ -2565,28 +2799,35 @@ You can account for electricity consumption of maximum power point tracking equi
 
 \section{Subarray Mismatch Losses}\label{sec-mismatch}
 
-For a system with more than one subarray, SAM can estimate losses due to maximum power point mismatches between subarrays, but only with the CEC module submodel  (either with database parameters or user-defined inputs, see Section~\ref{sec-cecmodule}). For the Sandia module model and simple efficiency module model, SAM does not estimate subarray mismatch losses as explained in Section~\ref{sec-dcstringvoltage}.
+For a system with more than one subarray, SAM can estimate losses due to maximum power point mismatches between subarrays, but only for the single-diode equivalent circuit module models (CEC and IEC 61853 models) because they represent the subarray's I-V curve as a continuous function, which makes it possible to estimate the subarray power at points that are off the maximum power point. The point-value models (simple efficiency and Sandia module) calculate values at discrete points on the subarray's I-V curve, and are not suitable for estimates of module power at other points on the curve \citep{dobos2012b}.
 
 The subarray mismatch loss algorithm \citep{dobos2012b} is intended to model situations that may occur in residential rooftop systems when the array is installed on different parts of the roof with different orientations and connected to a single inverter. The group of modules on each roof surface is a subarray, and may have its own set of parameters defining its tilt and azimuth angles, tracking, shading factors, and DC losses. 
 
 In larger systems, modules are typically oriented uniformly across the entire array. SAM's subarray mismatch algorithm is not suitable for such systems. SAM does not calculate mismatch losses due to maximum power point losses between individual modules in the array or in each subarray.
 
 %cmod_pvsamv1.cpp 1405
-The algorithm determines the system's maximum power point in a given hourly time step by running the CEC module model over a range of maximum power point voltage values to find the voltage that results in the complete array's highest maximum power given each of its subarray's effective incident irradiance, module performance and temperature parameters.
+The algorithm determines the system's maximum power point in a given time step by running the CEC or IEC 61853 module model over a range of maximum power point voltage values to find the voltage that results in the complete array's highest maximum power given each of its subarray's effective incident irradiance, module performance and temperature parameters.
 
-The subarray mismatch algorithm runs the cell temperature submodel (Section~\ref{sec-celltempoptions}) and CEC module submodel separately from the submodel runs for the main system energy calculations. Therefore, in addition to the input variables listed in Table~\ref{tab-arraydcoutputvars}, the algorithm also uses the inputs listed in Tables~\ref{tab-modulevars} and \ref{tab-cecmodulevars}.
+The subarray mismatch algorithm runs the cell temperature model (Section~\ref{sec-celltempoptions}) and module model separately from the model runs for the main system energy calculations. Therefore, in addition to the input variables listed in Table~\ref{tab-arraydcoutputvars}, the algorithm also uses the inputs listed in Tables~\ref{tab-modulevars} and \ref{tab-cecmodulevars}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Inverter AC Output}\label{sec-inverter}
 
-SAM uses one of two inverter submodels (Section~\ref{sec-inverteroptions}) to calculate the total AC power output of all of the inverters in the system. For systems with more than one inverter, SAM models the inverters as a single large inverter that operates with the array DC string voltage as the inverter's input voltage. 
+SAM uses one of the inverter models listed in Section~\ref{sec-inverteroptions} to calculate the total AC power output of all of the inverters in the system. For systems with more than one inverter, SAM models the inverters as a single large inverter that operates with the array DC string voltage as the inverter's input voltage. 
 
-The inverter submodels calculate the inverter's DC-to-AC power conversion efficiency, and account for inverter saturation and clipping. They do not explicitly account for the effect of temperature on inverter performance or for the impact on inverter performance of power factor control or grid outages.
+The inverter models calculate the inverter's DC-to-AC power conversion efficiency at rated and part-load operating power. They do not explicitly account for the effect of temperature on inverter performance or for the impact on inverter performance of power factor control or grid outages. 
+
+SAM accounts for two kinds of inverter losses, or "clipping" described in Section~\ref{sec-invclip}:
+
+\begin{itemize}
+\item Clipping loss due to inverter saturation, when the inverter DC input power exceeds the inverter's nameplate rating.
+\item MPPT clipping loss when the DC input voltage exceeds the inverter's nameplate operating voltage (MPPT voltage) limit ratings.
+\end{itemize}
 
 \begin{table}
 \begin{center}
-\caption{Inverter Submodel Variable Definitions}
+\caption{Inverter Model Variable Definitions}
 \begin{tabular}{lll}
 \midrule
 Symbol & Description / \textbf{Name in SAM} & Name in the SSC Module \texttt{pvsamv1}\\
@@ -2597,11 +2838,11 @@ $N$ & number of inverters & - \\
 $V_{dc}$ & DC string voltage & - \\
 \midrule
 \multicolumn{3}{c}{Output}\\
-$P_{ac}$ & \textbf{Gross ac output} & \texttt{hourly\_ac\_net} \\
-$\eta_{inv}$ & \textbf{Inverter efficiency} & \texttt{hourly\_inv\_eff}  \\
-$P_{clip}$ & \textbf{Inverter clipping loss} & \texttt{hourly\_inv\_cliploss}  \\
-$P_{so}$ & \textbf{Inverter power consumption loss}& \texttt{hourly\_inv\_psoloss}  \\
-$P_{nt}$ & \textbf{Inverter night time loss}& \texttt{hourly\_inv\_ntloss}  \\
+$P_{ac}$ & \textbf{Gross ac output} & \texttt{ac\_net} \\
+$\eta_{inv}$ & \textbf{Inverter efficiency} & \texttt{inv\_eff}  \\
+$P_{clip}$ & \textbf{Inverter clipping loss} & \texttt{inv\_cliploss}  \\
+$P_{so}$ & \textbf{Inverter power consumption loss}& \texttt{inv\_psoloss}  \\
+$P_{nt}$ & \textbf{Inverter night time loss}& \texttt{inv\_ntloss}  \\
 $P_{par}$ & AC parasitic power consumption (W) & - \\%may not be used
 $R_{partload}$ & part load ratio & - \\
 \midrule
@@ -2610,14 +2851,14 @@ $R_{partload}$ & part load ratio & - \\
 \end{center}
 \end{table}
 
-Regardless of the inverter submodel, SAM calculates the inverter input power for each hourly time step by dividing the array's total DC power output by the number of inverters in the system:
+Regardless of the inverter model, SAM calculates the inverter input power for each time step by dividing the array's total DC power output by the number of inverters in the system:
 \begin{equation}\label{eqn-invinputpower}
 P_{dc} = \frac{P_{dc,net}}{N}
 \end{equation}
 
-\section{Inverter Submodel Options}\label{sec-inverteroptions}
+\section{Inverter Models}\label{sec-inverteroptions}
 
-SAM calculates the a single photovoltaic module's DC output with one of the module submodels listed below, with descriptions from \citet{help-module} and \citet{blair2013}:
+SAM calculates the a single inverter's AC output with one of the inverter models listed below \citep{blair2013}:
 
 \begin{itemize}
 \item \textbf{Inverter CEC Database} (Section~\ref{sec-sandiainverter}), also called the Sandia inverter model, is an empirical model that uses manufacturer specifications with four empirically derived coefficients $C_0$, $C_1$, $C_2$, $C_3$ \citep{king2007}. It uses parameters from a database maintained by the California Energy Commission \citep{gsc2014a}.
@@ -2625,11 +2866,11 @@ SAM calculates the a single photovoltaic module's DC output with one of the modu
 \item \textbf{Inverter Part Load Curve}) (Section~\ref{sec-partloadinverter}) is a model developed by NREL for SAM that uses a table of efficiency values at different inverter load levels to represent the inverter's performance.
 \end{itemize}
 
-In the SSC \texttt{pvsamv1} module, the input variable \texttt{inverter\_model} determines the module submodel as shown in Table~\ref{tab-invertersubmodels}.
+In the SSC \texttt{pvsamv1} module, the input variable \texttt{inverter\_model} determines the module model as shown in Table~\ref{tab-invertersubmodels}.
 
 \begin{table}
 \begin{center}
-\caption{Inverter Submodels in SSC}
+\caption{Inverter Models in SSC}
 \begin{tabular}{lc}
 \midrule
 Name in SAM & \texttt{inverter\_model} \\
@@ -2645,7 +2886,7 @@ Inverter Part Load Curve & 2 \\
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Sandia Inverter Submodel}\label{sec-sandiainverter}
+\section{Sandia Inverter Model}\label{sec-sandiainverter}
 
 SAM's Sandia Inverter model is an implementation of the empirical model described in \citet{king2007}. As explained in Section~\ref{sec-inverteroptions}, SAM has two implementations of the Sandia inverter model: One uses  a set of reference parameters from the Sandia Inverters library with data provided by the California Energy Commission \citep{gsc2014a}, and the other uses manufacturer specifications without the additional $C$ coefficients included in the library. Both versions are described in this section.
 
@@ -2653,7 +2894,7 @@ In SSC, the implementation of the Sandia inverter model described here is part o
 
 \begin{table}
 \begin{center}
-\caption{Sandia Inverter Submodel Variable Definitions}
+\caption{Sandia Inverter Model Variable Definitions}
 \begin{tabular}{lll}
 \midrule
 Symbol & Description / \textbf{Name in SAM} & Name in SSC \\
@@ -2673,11 +2914,11 @@ $c_2$ & Coefficient of $P_{so}$ variation with DC input voltage V$^{-1}$ &\textt
 $c_3$ & Coefficient of $C_0$ variation with DC input voltage V$^{-1}$ & \texttt{inv\_snl\_c3} \\
 \midrule
 \multicolumn{3}{c}{Output}\\
-$P_{ac}$ & \textbf{Gross ac output} & \texttt{hourly\_ac\_net} \\
-$\eta_{inv}$ & \textbf{Inverter efficiency} & \texttt{hourly\_inv\_eff}  \\
-$P_{clip}$ & \textbf{Inverter clipping loss} & \texttt{hourly\_inv\_cliploss}  \\
-$P_{s}$ & \textbf{Inverter power consumption loss}& \texttt{hourly\_inv\_psoloss}  \\
-$P_{nt}$ & \textbf{Inverter night time loss}& \texttt{hourly\_inv\_ntloss}  \\
+$P_{ac}$ & \textbf{Gross ac output} & \texttt{ac\_net} \\
+$\eta_{inv}$ & \textbf{Inverter efficiency} & \texttt{inv\_eff}  \\
+$P_{clip}$ & \textbf{Inverter clipping loss} & \texttt{inv\_cliploss}  \\
+$P_{s}$ & \textbf{Inverter power consumption loss}& \texttt{inv\_psoloss}  \\
+$P_{nt}$ & \textbf{Inverter night time loss}& \texttt{inv\_ntloss}  \\
 \hline
 \end{tabular}
 \label{tab-sandiainvertervars}
@@ -2752,13 +2993,13 @@ The inverter's DC-to-AC power conversion efficiency:
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Inverter Part Load Curve Submodel}\label{sec-partloadinverter}
+\section{Inverter Part Load Curve Model}\label{sec-partloadinverter}
 
 NREL developed the Inverter Part Load Curve model specifically for SAM. The model's input and output variables are shown in Table~\ref{tab-partloadinvertervars}.
 
 \begin{table}
 \begin{center}
-\caption{Inverter Part Load Curve Submodel Variable Definitions}
+\caption{Inverter Part Load Curve Model Variable Definitions}
 \begin{tabular}{lll}
 \midrule
 Symbol & Description / \textbf{Name in SAM} & Name in SSC \\
@@ -2776,18 +3017,18 @@ $\eta_{\mathrm{inv},0-N}$ & column of $N$ efficiency values & \texttt{inv\_ds\_e
 $P_{ac,0-N}$ & column of $N$ AC power output values & \texttt{inv\_ds\_partload} \\
 \midrule
 \multicolumn{3}{c}{Output}\\
-$P_{ac}$ & \textbf{Gross ac output} & \texttt{hourly\_ac\_net} \\
-$\eta_{inv}$ & \textbf{Inverter efficiency} & \texttt{hourly\_inv\_eff}  \\
-$P_{clip}$ & \textbf{Inverter clipping loss} & \texttt{hourly\_inv\_cliploss}  \\
-$P_{s}$ & \textbf{Inverter power consumption loss}& \texttt{hourly\_inv\_psoloss}  \\
-$P_{nt}$ & \textbf{Inverter night time loss}& \texttt{hourly\_inv\_ntloss}  \\
+$P_{ac}$ & \textbf{Gross ac output} & \texttt{ac\_net} \\
+$\eta_{inv}$ & \textbf{Inverter efficiency} & \texttt{inv\_eff}  \\
+$P_{clip}$ & \textbf{Inverter clipping loss} & \texttt{inv\_cliploss}  \\
+$P_{s}$ & \textbf{Inverter power consumption loss}& \texttt{inv\_psoloss}  \\
+$P_{nt}$ & \textbf{Inverter night time loss}& \texttt{inv\_ntloss}  \\
 \hline
 \end{tabular}
 \label{tab-partloadinvertervars}
 \end{center}
 \end{table}
 
-The part-load ratio for the current hour depends on the inverter's DC input power and its maximum rated DC power:
+The part-load ratio for the current time step depends on the inverter's DC input power and its maximum rated DC power:
 % lib_pvinv.cpp 34
 \begin{equation}
 x = \frac{P_{dc}}{P{dc,0}}
@@ -2818,19 +3059,217 @@ P_{ac} = -P_{nt,0} \notag\\
 P_{nt} = P_{nt,0}
 \end{align}
 
+\section{Inverter Clipping Losses}\label{sec-invclip}
+
+The photovoltaic performance model calculates two types of inverter clipping losses:
+
+\begin{itemize}
+\item MPPT clipping is a reduction in the inverter input DC power when the input voltage falls outside of the operating range defined by the minimum and maximum MPPT DC voltage ratings.
+\item Power clipping is a reduction in the inverter output AC power when the inverter power exceeds its nameplate rating.
+\end{itemize}
+
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Battery Storage}\label{battery}
 
-**NICK**
-
 The battery storage model calculates power to and from a bank of lead-acid or lithium-ion batteries and estimates battery lifetime.
+
+The battery storage model allows users to connect lead-acid and lithium-ion battery systems to their PV system for behind-the-meter applications.  In order to enable the battery model, a "Photovoltaic (detailed)" performance model must be selected with either "Residential (distributed)", "Commercial (distributed)", or "Third party ownership" financial models.  Under the "Battery Storage" page, "Enable Battery" must then be selected from the drop down menu near the top of the page.  If batteries are being considered as part of a detailed financial analysis, it is recommended that "PV simulation over analysis period" is selected on the "Lifetime" page.  Battery costs are entered on the "System Costs" page.
+
+SAM models the connection by assuming that the battery system is connnected on the AC bus such that incoming AC power must be internally rectificed by the battery.  DC power output by the battery is internally inverted before being sent to the grid or load.  Single-point efficiencies allow the user to specify the AC-DC conversion loss and the DC-AC conversion loss.  Internal battery losses are applied due to lifetime degradation, thermal effects, and differences in charging and discharging voltages.
+
+Customizable profiles allow specification of when the batteries can be charged from the grid and excess PV generation, and discharged to meet a custom portion of the electric load.  Users may enter detailed  inputs for voltage, capacity, lifetime, and thermal properties, or may use defaults provided by SAM.   Battery costs and replacement criteria may also be entered to consider the full lifetime costs of installing a battery system. A technical reference is available for a complete description of the battery model, including information about the validation process \citep{diorio2015a}. An economic case-study  is available as an example for how the battery model may be used to do detailed financial analysis of potential battery systems considering specific utility rate structures, battery costs, and dispatch criteria \citep{diorio2015b}.
+
+\section{Battery Model Inputs and Outputs}\label{sec-batterymodel-inputs}
+The battery model requires multiple inputs and provides multiple outputs.  Inputs are described in Table~\ref{tab-batteryinputs} and Table~\ref{tab-batteryinputs2} .  Battery outputs are described in Table~\ref{tab-batteryoutputs}.  Variable length outputs will be a single value if a lifetime simulation is not run, and will be an array of values for lifetime simulations, listed under the "Annual" data dropdown.  For simulations involving lead-acid batteries, two additional outputs are available, shown in Table~\ref{tab-batteryoutputs-lead}.  
+
+\begin{table}
+\begin{center}
+\caption{Battery Inputs}
+\begin{tabular}{lll}
+\midrule
+Description / \textbf{Name in SAM} & Name in SSC \\
+\midrule
+\multicolumn{2}{c}{Battery Bank Sizing Inputs}\\
+\textbf{Desired bank capacity (kWh)} & \texttt{batt\_bank\_size} \\
+\textbf{Desired bank voltage (V)} & \texttt{batt\_bank\_voltage} \\
+\textbf{Total cells in series} & \texttt{batt\_bank\_ncells\_serial} \\
+\textbf{Total number of strings} & \texttt{batt\_bank\_nstrings} \\
+Specify desired bank size or specify cells & \texttt{batt\_size\_choice} \\
+\midrule
+\multicolumn{2}{c}{Battery Chemistry Inputs}\\
+Lead-acid or lithium-ion chemistry type & \texttt{batt\_type} \\
+\midrule
+\multicolumn{2}{c}{Voltage Inputs}\\
+\textbf{Cell nominal voltage (V)} & \texttt{batt\_Vnom\_default} \\
+\textbf{Internal resistance ($\Omega$)} & \texttt{batt\_resistance} \\
+\textbf{C-rate of discharge curve} & \texttt{batt\_C\_rate} \\
+\textbf{Fully charged cell-voltage (V)} & \texttt{batt\_Vfull} \\
+\textbf{Exponential zone cell voltage (V)} & \texttt{batt\_Vexp} \\
+\textbf{Nominal zone cell voltage (V)} & \texttt{batt\_Vnom} \\
+\midrule
+\multicolumn{2}{c}{Current \& Capacity Inputs}\\
+\textbf{Cell capacity (Ah)} & \texttt{batt\_Qfull} \\
+\textbf{Max C-rate charge} & \texttt{batt\_C\_rate\_max\_charge} \\
+\textbf{Max C-rate discharge} & \texttt{batt\_C\_rate\_max\_discharge} \\
+\midrule
+\multicolumn{2}{c}{Power Coverters Inputs}\\
+\textbf{AC to DC conversion efficiency (\%)} & \texttt{batt\_ac\_dc\_efficiency} \\
+\textbf{DC to AC conversion efficiency (\%)} & \texttt{batt\_dc\_ac\_efficiency} \\
+\midrule
+\multicolumn{2}{c}{Storage Dispatch Controller Inputs}\\
+Manual or automated dispatch selection & \texttt{batt\_dispatch\_choice} \\
+PV dispatch priority choice & \texttt{batt\_pv\_choice} \\
+\textbf{Minimum state of charge (\%)} & \texttt{batt\_minimum\_SOC} \\
+\textbf{Maximum state of charge (\%)} & \texttt{batt\_maximum\_SOC} \\
+\textbf{Minimum time at charge state (min)} & \texttt{batt\_minimum\_modetime} \\
+Target grid power input type (0/1) & \texttt{batt\_target\_choice}\\
+Target grid power time series(kW) & \texttt{batt\_target\_power}\\
+Target grid power single or monthly (kW) & \texttt{batt\_target\_power\_monthly}\\
+\textbf{Charge from grid} (period \texttt{\textbf{N}}) & \texttt{pv.storage.p\textbf{N}.gridcharge} \\
+\textbf{Charge from PV} (period \texttt{\textbf{N}}) & \texttt{pv.storage.p\textbf{N}.charge} \\
+\textbf{Allow discharge} (period \texttt{\textbf{N}}) & \texttt{pv.storage.p\textbf{N}.discharge} \\
+\textbf{\% capacity to discharge (\%)} (period \texttt{\textbf{N}}) & \texttt{batt\_discharge\_percent\_\textbf{N}.discharge} \\
+\textbf{\% capacity to gridcharge (\%)} (period \texttt{\textbf{N}}) & \texttt{batt\_gridcharge\_percent\_\textbf{N}.gridcharge} \\
+Manual dispatch schedule & \texttt{dispatch\_manual\_sched} \\
+\midrule
+\multicolumn{2}{c}{Battery Lifetime Inputs}\\
+Battery lifetime matrix & \texttt{batt\_lifetime\_matrix} \\
+PV lifetime simulation & \texttt{pv\_lifetime\_simulation} \\
+\hline
+\end{tabular}
+\label{tab-batteryinputs}
+\end{center}
+\end{table}
+
+\begin{table}
+\begin{center}
+\caption{Battery Inputs Continued}
+\begin{tabular}{lll}
+\midrule
+Description / \textbf{Name in SAM} & Name in SSC \\
+\midrule
+\multicolumn{2}{c}{Battery Bank Replacement Inputs}\\
+Battery bank replacement option & \texttt{batt\_replacement\_option} \\
+\textbf{Battery bank replacement cost (\$)} & \texttt{batt\_replacement\_cost} \\
+\textbf{Battery cost escalation above inflation (\%)} & \texttt{batt\_replacement\_cost\_escal} \\
+\textbf{Battery bank replacement threshold} & \texttt{batt\_replacement\_capacity} \\
+\textbf{Battery bank replacement schedule} & \texttt{batt\_replacement\_schedule} \\
+
+\midrule
+\multicolumn{2}{c}{Thermal Behavior Inputs}\\
+Battery specific heat capacity (J/kg/K) & \texttt{batt\_Cp} \\
+Battery heat transfer coefficient (W/m2/K)& \texttt{batt\_h\_to\_ambient} \\
+Battery room temperature (C) & \texttt{T\_room} \\
+Battery capacity vs. temperature table & \texttt{cap\_vs\_temp} \\
+\textbf{Specific energy per mass (Wh/kg)} & \texttt{batt\_specific\_energy\_per\_mass} \\
+\textbf{Specific energy per volume (Wh/L)} & \texttt{batt\_specific\_energy\_per\_volume} \\
+\hline
+\end{tabular}
+\label{tab-batteryinputs2}
+\end{center}
+\end{table}
+
+\begin{table}
+\begin{center}
+\caption{Battery Outputs}
+\begin{tabular}{lll}
+\midrule
+Description / \textbf{Name in SAM} & Name in SSC \\
+\midrule
+\multicolumn{2}{c}{Variable Length Outputs}\\
+\textbf{Annual energy exported to grid (kWh)} & \texttt{annual\_export\_to\_grid\_energy} \\
+\textbf{Annual energy imported from grid (kWh)} & \texttt{annual\_import\_from\_grid\_energy} \\
+\textbf{Battery annual energy charged (kWh)} & \texttt{batt\_annual\_charge\_energy} \\
+\textbf{Battery annual energy charged from grid (kWh)} & \texttt{batt\_annual\_charge\_from\_grid} \\
+\textbf{Battery annual energy charged from pv (kWh)} & \texttt{batt\_annual\_charge\_from\_pv} \\
+\textbf{Battery annual energy discharge (kWh)} & \texttt{batt\_annual\_discharge\_energy} \\
+\textbf{Battery annual energy loss (kWh)} & \texttt{batt\_annual\_energy\_loss} \\
+\textbf{Battery bank replacements per year} & \texttt{batt\_bank\_replacement} \\
+\textbf{Battery replacement cost)} & \texttt{cf\_batt\_bank\_replacement\_cost} \\
+\textbf{Battery replacement cost schedule} & \texttt{cf\_batt\_replacement\_cost\_schedule} \\
+\midrule
+\multicolumn{2}{c}{Single Value Outputs}\\
+\textbf{Average battery cycle efficiency} & \texttt{average\_cycle\_efficiency} \\
+\textbf{Battery bank installed capacity} & \texttt{batt\_bank\_installed\_capacity} \\
+\textbf{Battery percent charged from PV} & \texttt{batt\_pv\_charge\_percent} \\
+\midrule
+\multicolumn{2}{c}{Monthly Value Outputs}\\
+\textbf{Energy to load from PV (kWh} & \texttt{monthly\_pv\_to\_load} \\
+\textbf{Energy to load from battery (kWh} & \texttt{monthly\_batt\_to\_load} \\
+\textbf{Energy to load from grid (kWh} & \texttt{monthly\_grid\_to\_load} \\
+\midrule
+\multicolumn{2}{c}{Lifetime Outputs at Simulation Timestep}\\
+\textbf{Battery capacity percent for lifetime (\%)} & \texttt{batt\_capacity\_percent} \\
+\textbf{Battery cycle depth of discharge (\%)} & \texttt{batt\_DOD} \\
+\textbf{Battery number of cycles} & \texttt{batt\_cycles} \\
+\textbf{Battery state of charge (\%)} & \texttt{batt\_SOC} \\
+\textbf{Power of PV+ battery (kW)} & \texttt{pv\_batt\_gen} \\
+\textbf{Power to battery from PV (kW)} & \texttt{pv\_to\_batt} \\
+\textbf{Power to battery from grid (kW)} & \texttt{grid\_to\_batt} \\
+\textbf{Power to load from PV (kW)} & \texttt{pv\_to\_load} \\
+\textbf{Power to load from battery (kW)} & \texttt{batt\_to\_load} \\
+\textbf{Power to load from grid (kW)} & \texttt{grid\_to\_load} \\
+\textbf{Power to/from battery (kW)} & \texttt{batt\_power} \\
+\textbf{Power to/from grid (kW)} & \texttt{grid\_power} \\
+\midrule
+\multicolumn{2}{c}{Outputs at Simulation Timestep}\\
+\textbf{Battery capacity percent for temperature(\%)} & \texttt{batt\_capacity\_thermal\_percent} \\
+\textbf{Battery cell voltage (V)} & \texttt{batt\_voltage\_cell} \\
+\textbf{Battery current (A)} & \texttt{batt\_I} \\
+\textbf{Battery max charge (Ah)} & \texttt{batt\_qmax} \\
+\textbf{Battery temperature (C)} & \texttt{batt\_temperature} \\
+\textbf{Battery total charge (Ah)} & \texttt{batt\_q0} \\
+\textbf{Battery voltage (V)} & \texttt{batt\_voltage} \\
+\hline
+\end{tabular}
+\label{tab-batteryoutputs}
+\end{center}
+\end{table}
+
+\begin{table}
+\begin{center}
+\caption{Battery Lead-Acid Specific Outputs}
+\begin{tabular}{lll}
+\midrule
+Description / \textbf{Name in SAM} & Name in SSC \\
+\midrule
+\multicolumn{2}{c}{Variable Length Outputs}\\
+\textbf{Battery available charge (Ah)} & \texttt{batt\_q1} \\
+\textbf{Battery bound charge (Ah)} & \texttt{batt\_q2} \\
+\hline
+\end{tabular}
+\label{tab-batteryoutputs-lead}
+\end{center}
+\end{table}
+
+\section{Battery With No PV System}\label{sec-batterymodel-nopv}
+There is often a desire to consider a standalone battery system.  To model this in SAM, begin a detailed Photovoltaic project with a Residential, Commercial, or Third-Party ownership financial model. On the losses page, within the "Curtailment and Availability" section, click on "Edit losses".  Make the "Contant loss (\%)" equal to 100\%.  This zeros out the contribution of PV production to the system analysis.  Next, it is important to zero out the PV system cost.  On the "System Costs" page, make the module "\$/Wdc"  and inverter "\$/Wdc fields equal to 0.  It is assumed that the cost of inverters required by the battery system to place power on the AC bus is included in the battery bank cost.
+
+\section{DC Connected Battery}\label{sec-batterymodel-dc}
+SAM currently assumes that the battery is placed on the AC bus, such that PV power has been inverted before being transferred to the battery.  Another popular configuration is to connect the battery to the DC side of the PV system such that DC/AC and AC/DC conversion losses can be avoided when charging the battery from excess PV generation.  To mimic a DC connection, the "AC to DC conversion efficiency" input can be increased, such that it is assumed no input conversion penalty is present.  Even in a DC connected system there is likely to be some loss through a charge controller.  The "DC to AC conversion efficiency" can be left alone, since power coming out of the battery will be inverted to place on the AC bus.  It is not currently possible to increase the PV system's DC-to-AC ratio and use excess DC power to charge the battery.
+
+\section{Advanced Dispatch Options} \label{sec-batterymodel-dispatch}
+SAM's manual dispatch controller is described in detail in \citep{diorio2015a}.  The controller as described in that report prioritizes PV energy to meet the electric load before charging the battery.  In the latest version of SAM, the user can choose to prioritize PV energy to charge the battery before meeting the electric load or meet the load before charging the battery.  This option is available for all dispatch models.  To set the control to meet the electric load with PV first, set \textbf{batt\_pv\_choice} to 0.  To charge the battery first, set \textbf{batt\_pv\_choice} to 1.
+
+Several additional modes have since been added to provide more capabilities to the user.  Regardless of which dispatch model is selected, the minimum and maximum states of charge, the minimum time at charge state and the PV priority must be specified.  There are currently four available dispatch models, including the manual dispatch model.
+
+Automated one-day look ahead and one-day look behind peak shaving controllers have been added to perform demand reduction. The one-day look ahead controller uses a perfect 24-hour prediction on PV production and electric load requirements to generate a dispatch strategy for the battery which reduces the grid power required as much as possible over the 24 hours within the state-charge and power limitations of the system.  The one-day look behind assumes that the last 24 hours are a good reflection of what to expect for the next 24 hours, such that yesterdays PV and electric load are used to generate a dispatch strategy for the battery.  This mode is meant as an illustration of a potentially more realistic controller that seeks to use past information to predict the future.  When either of these automated peak shaving modes are selected, the manual dispatch inputs will gray out since they are not required.  
+
+There is also an automated grid power target model, which allows the user to input the maximum grid power limit. This limit can be input for every timestep or monthly.  To enter monthly information, \textbf{batt\_target\_choice} should be set to 0, and \textbf{batt\_target\_power\_monthly} should be passed in as a length 12 array.  The target power for each timestep within the month will be set to the monthly input.  To enter timeseries target power information, \textbf{batt\_target\_choice} should be set to 1, and \textbf{batt\_target\_power} should be passed in as an array with as many entries as that of the weather file.  The automated controller uses a 24-hour look ahead to predict the grid power required.  The battery is then dispatched to reduce all grid power events which exceed the target threshold for that timestep.  For all timesteps where the grid power is less than the threshold, the battery is allowed to charge from the grid until the power is equal to the threshold. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{System AC Output}
 
-The system AC output is the electricity generated by the photovoltaic system and delivered to either the grid, a building load, or both.
+The system AC output is the electricity generated by the photovoltaic system and may be delivered to any of the following, depending on the financial model that is coupled with the photovoltaic performance model:
+\begin{itemize}
+\item Electric power grid
+\item Building or facility electric load
+\item Electric storage battery
+\end{itemize}
 \begin{table}
 \begin{center}
 \caption{System AC Output Variable Definitions}
@@ -2842,53 +3281,52 @@ Symbol & Description / \textbf{Name in SAM} & Name in SSC \\
 $N_{inv}$ & \textbf{Number of inverters} & \texttt{inverter\_count} \\
 $P_{ac}$ & AC output of a single inverter & - \\
 $L_{ac}$ & \textbf{Total AC power loss} & \texttt{ac\_loss} \\
+$L_{\textit{adjust}}$ & Curtailment and availability losses & \texttt{adjust} \\
 \midrule
 \multicolumn{3}{c}{Outputs}\\
-$P_{ac,gross}$ & \textbf{Gross ac output} & \texttt{hourly\_ac\_gross} \\
-$P_{ac,net}$ & \textbf{Net ac output} & \texttt{hourly\_ac\_net} \\
+$P_{\textit{gen}}$ & \textbf{Power generated by system} & \texttt{gen} \\
 \hline
 \end{tabular}
 \label{tab-systemacoutputvars}
 \end{center}
 \end{table}
 
-\section{Gross AC Power Output}
-
-The gross AC power output is the inverter output before the AC and other losses:
-%cmod_pvsamv1.cpp 1530
-\begin{equation}
-P_{ac,gross}= N_{inv}~P_{ac}
-\end{equation}
-
 \section{AC Losses}\label{sec-aclosses}
 
-SAM models electrical losses on the AC side of the system using a single AC loss factor.  In SAM, the AC loss factor is calculated from the two loss percentages on the Losses input page:
+SAM models electrical losses on the AC side of the system using a single AC loss percentage.  In SAM, the model calculates the AC loss percentage from the AC wiring and step-up transformer loss percentages on the Losses input page:
 \begin{align}\label{eqn-acderate}
-L_{ac} &= L_1~L_2\notag\\
-L_{1} &= 100~\left(1-\frac{L_{acwiring}}{100}\right) \notag\\
-L_{2} &= 100~\left(1-\frac{L_{transformer}}{100}\right)
+L_{ac} &= 100~(1-F_1~F_2)\notag\\
+F_{1} &= 1-\frac{L_{\textit{acwiring}}}{100} \notag\\
+F_{2} &= 1-\frac{L_{\textit{transformer}}}{100}
 \end{align}
 
-The AC loss factor:
+In the SSC \texttt{pvsamv1} module, the AC loss $L_{ac}$ is the single value input \texttt{ac\_loss}. SSC applies the loss categories (AC wiring and step-up transformer losses) to the total AC loss to estimate the contribution of each category to the total loss. It does not calculate the value of the total loss from the AC wiring and transformer loss cateogories as SAM does. In order for the AC wiring loss and step-up transformer losses to be consistent with the total AC loss, you must calculate the value of the $L_{ac}$ input using Equation~\ref{eqn-acderate} and the values you assign to $L_{\textit{acwiring}}$ (\texttt{acwiring\_loss}) and $L_{\textit{transformer}}$ (\texttt{transformer\_loss}).
+
+
+\section{Curtailment and Availability Losses}
+
+Curtailment and availability losses may be used to account for operating losses imposed on the system by factors other than the solar resource and system's design, such as forced, scheduled, and unplanned outages, or other factors that reduce the system's AC power output.
+
+SAM models curtailment and availability losses using an array of hourly loss values that apply to each time step of the simulation. In SAM, the losses are defined using the Edit Losses window, which is accessible from the Losses input page. 
+
+In SSC, the losses may be defined in any of three ways:
+
+\begin{itemize}
+\item Constant loss (\texttt{adjust:constant}) is a single loss percentage that applies to all hours of the year.
+\item Hourly losses (\texttt{adjust:hourly}) is an $8760\times1$ array of loss percentages that apply to each hour of the year.
+\item Hourly losses with custom periods (\texttt{adjust:periods}) is an $n\times3$ matrix that defines losses over ranges of hours. For example this $2\times3$ array, $\texttt{adjust:perods=[[12,99,5][3146,3916,3]]}$, would apply a loss of 5\% to hours 12 through 99, and a loss of 3\% to hours 3146 through 3916.
+\end{itemize}
+
+\section{Power Generated by System} \label{sec-hourlyenergy}
+
+The \textbf{Power generated by system} result variable is the electricity generated by the renewable energy system after all losses and adjustments. 
+
 \begin{equation}
-F_{ac}=1-\frac{L_{ac}}{100}
+P_{gen}=  N_{inv}~P_{ac}~\left(1-\frac{L_{ac}}{100}\right)~\left(1-\frac{L_{\textit{adjust}}}{100}\right)
 \end{equation}
 
-In the SSC \texttt{pvsamv1} module, the AC loss is the single value \texttt{ac\_derate}. There are no loss categories in SSC: The categories shown in Equation~\ref{eqn-acderate} are part of SAM's user interface.
 
-\section{Net AC Power Output}\label{sec-netacoutput}
-
-The net AC power output is the gross AC output multiplied by the AC loss factor:
-%cmod_pvsamv1.cpp 1570
-\begin{equation}
-P_{ac,net}= P_{ac,gross}~F_{ac}
-\end{equation}
-
-\section{Hourly Energy} \label{sec-hourlyenergy}
-
-SAM uses the \textbf{Hourly Energy} result variable for all of the performance models to represent the electricity generated by the renewable energy system (or, in the case of a solar hot water system, the energy saved by the system) after all losses and adjustments \citep{help-hourlyenergy}. For the photovoltaic performance model, \textbf{Hourly Energy} (\texttt{hourly\_e\_net\_delivered} in SSC \texttt{annualoutput}) is equal to \textbf{Net ac output} less any adjustments specified on the Performance Adjustment input page. 
-
-For a photovoltaic project that uses one of the Utility IPP financial models, hourly energy is the electricity delivered to the grid and sold at a negotiated power price. For projects with either the residential or commercial financing options, hourly energy is the electricity generated by the photovoltaic system that displaces purchases of electricity at a retail rate.
+For a photovoltaic project that uses one of the Utility IPP financial models, \textbf{Power generated by system} is the electricity delivered to the grid and sold at a negotiated power price. For projects with either the residential or commercial financing options it is the electricity generated by the photovoltaic system that may meet all or part of a building or facility's electric load, be sold to the grid, or charge a battery.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -2921,11 +3359,13 @@ For a photovoltaic project that uses one of the Utility IPP financial models, ho
 
 \bibitem[Dobos(2012a)]{dobos2012a} Dobos, A. (2012). ``An Improved Coefficient Calculator for the California Energy Commission 6 Parameter Photovoltaic Module Model." \textit{Journal of Solar Energy Engineering} (134:2).
 
-\bibitem[Dobos(2012b)]{dobos2012b} Dobos, A. (June 2012). ``Modeling of Annual DC Energy Losses due to Off Maximum Power Point Operation in PV Arrays." Prepared for 38th IEEE Photovoltaic Specialists Conference (PVSC '12). 3 pp. Accessed March 17, 2014: \url{http://ieeexplore.ieee.org/xpl/articleDetails.jsp?arnumber=6318207}
+\bibitem[Dobos(2012b)]{dobos2012b} Dobos, A. (June 2012). ``Modeling of Annual DC Energy Losses due to Off Maximum Power Point Operation in PV Arrays." Prepared for 38th IEEE Photovoltaic Specialists Conference (PVSC 2012). 3 pp. Accessed March 17, 2014: \url{http://ieeexplore.ieee.org/xpl/articleDetails.jsp?arnumber=6318207}
 
 \bibitem[Dobos(2013a)]{dobos2013a} Dobos, A. (2013). ``PVWatts Version 1 Technical Reference." TP-6A20-60272. Golden, CO: National Renewable Energy Laboratory. Accessed February 20, 2014. \url{http://www.nrel.gov/docs/fy14osti/60272.pdf}
 
 \bibitem[Dobos(2013b)]{dobos2013b} Dobos, A. (2013). ``5-Parameter PV Module Model." Presented at the 2013 Sandia PV Performance Modeling Workshop on May 1, 2013. Accessed March 4, 2014: \url{http://pvpmc.org/home/2013-pv-performance-modeling-workshop/}
+
+\bibitem[Dobos(2014)]{dobos2014} Dobos, A.; MacAlpine, S. ``Procedure for Applying IEC-61853 Test Data to a Single Diode Model." Prepared for 40th IEEE Photovoltaic Specialist Conference (PVSC 2014). 4 pp. Accessed November 25, 2015: \url{http://ieeexplore.ieee.org/xpl/articleDetails.jsp?arnumber=6925525}
 
 \bibitem[Duffie and Beckman(2013)]{duffie2013} Duffie, J.; Beckman, W. (2013). \textit{Solar Engineering of Thermal Processes, 4th ed}. New York, NY: Wiley.
 
@@ -2958,6 +3398,8 @@ Radiation}. New York, NY: Academic Press.
 \bibitem[Go Solar California(2014c)]{gsc2014c} ``List of Eligible Inverters per SB1 Guidelines." (2014). Go Solar California. Accessed March 19, 2014:
  \url{http://www.gosolarcalifornia.ca.gov/equipment/pv_inverters.php}
 
+\bibitem[Marion(2013)]{marion-snowmodel} Marion, W. (2013). ``Measured and modeled photovoltaic system energy losses from snow for Colorado and Wisconsin locations." Solar Energy 97 (2013): pp. 112-121.
+
 \bibitem[NSRDB(2014)]{nsrdb} ``National Solar Radiation Database (NSRDB)." (2014). National Renewable Energy Laboratory.  Accessed November 13, 2013. \url{http://rredc.nrel.gov/solar/old_data/nsrdb/}.
 
 \bibitem[NSRDB(2014a)]{tmy3} ``National Solar Radiation Database (NSRDB) 1991 - 2005 Update: Typical Meteorological Year 3." (2014). National Renewable Energy Laboratory. Accessed November 13, 2013. \url{http://rredc.nrel.gov/solar/old\_data/nsrdb/1991-2005/tmy3/}.
@@ -2980,11 +3422,7 @@ Radiation}. New York, NY: Academic Press.
 
 \bibitem[Reindl(1988)]{reindl1988} Reindl, D. (1988). ``Estimating Diffuse Radiation on Horizontal Surfaces and Total Radiation on Tilted Surfaces." Masters Thesis. University of Wisconsin Madison, Solar Energy Laboratory. \url{http://sel.me.wisc.edu/publications/theses/reindl88.zip}
 
-\bibitem[SAM Help - Hourly Energy(2014)]{help-hourlyenergy} ``SAM Help: Hourly Energy." (2014) SAM 2014.1.14 Help System. National Renewable Energy Laboratory. Available on line at \url{https://www.nrel.gov/analysis/sam/help/html-php/index.html?mtp_annual_energy.htm} (accessed March 18, 2014).
-
-\bibitem[SAM Help - Libraries(2014)]{help-libraries} ``SAM Help: Libraries." (2014) SAM 2014.1.14 Help System. National Renewable Energy Laboratory. Available on line at \url{https://www.nrel.gov/analysis/sam/help/html-php/index.html?libraries.htm} (accessed February 26, 2014).
-
-\bibitem[SAM Help - Module(2014)]{help-module} ``SAM Help: Module." (2014). SAM 2014.1.14 Help System. National Renewable Energy Laboratory. Available on line at \url{https://www.nrel.gov/analysis/sam/help/html-php/index.html?pv_module.htm} (accessed February 26, 2014).
+\bibitem[Ryberg(2015)]{ryberg-snowmodel} Ryberg, D.; Freeman, J. (2015). ``Integration, Validation and Application of a PV Snow Coverage Model in SAM." TP-6A20-64260. Golden, CO: National Renewable Energy Laboratory. Accessed June 1, 2016. \url{http://www.nrel.gov/docs/fy15osti/64260.pdf}
 
 \bibitem[SAM Help - Performance Adjustment(2014)]{help-performanceadjustment} ``SAM Help: Performance Adjustment." (2014). SAM 2014.1.14 Help System. National Renewable Energy Laboratory. Available on line at \url{https://www.nrel.gov/analysis/sam/help/html-php/index.html?fin_annual_performance.htm} (accessed March 18, 2014).
 
@@ -3004,7 +3442,6 @@ Radiation}. New York, NY: Academic Press.
 
 \bibitem[Wilcox(2008)]{tmy3manual} Wilcox, S.; Marion, W. (2008). ``Users Manual for TMY3 Datasets." TP-581-43156. Golden, CO: National Renewable Energy Laboratory. Accessed November 13, 2013. \url{http://www.nrel.gov/docs/fy08osti/43156.pdf}.
 
-\bibitem[Marion(2013)]{marion-snowmodel} Marion, W. (2013). ``Measured and modeled photovoltaic system energy losses from snow for Colorado and Wisconsin locations." Solar Energy 97 (2013): pp. 112-121.
 
 \end{thebibliography}
 
