@@ -19,39 +19,80 @@
 */
 
 // SYSTEM INPUTS-----------------------------------------------------------------------
+//WHY DO THESE WORK IF THEY'RE NOT GLOBAL?? BECAUSE THEY'RE ASSIGNED UP HERE AND NOT IN THE FUNCTION? SO WHY DO I HAVE TO ASSIGN GLOBAL THINGS UP HERE? HELP!!!!!!!!!
 	num_modules = get('total_modules'); //9408;
+	num_modules_per_string = get('modules_per_string'); //14
+	num_strings = get('strings_in_parallel'); //672
+	num_combiners = get('inverter_count'); //8
+	num_strings_per_combiner = num_strings / num_combiners; //THIS IS NOT NECESSARILY AN INTEGER, NEED TO ERROR CHECK THIS!!!!!!!!!!!!!!!!
 	system_lifetime_yrs = 1;
 
 // MODULE RELIABILITY INPUTS-----------------------------------------------------------
 	// failure mode 1: defective component
+	module_defective_distribution = 'exponential';
 	module_percentage_defective_percent = 20;
 	module_defective_failures_per_yr = 0.5;
 	// failure mode 2: failure
+	module_failure_distribution = 'normal';
 	module_failure_mean_yrs = 35;
 	module_failure_std_yrs = 8;
 	// repair time
+	module_repair_distribution = 'lognormal';
 	module_repair_mean_days = 45; //says 60 in pseudo code but is currently 45 in Goldsim
 	module_repair_std_days = 15; //says 20 in pseudo code but is currently 15 in Goldsim
 	// warranty period
 	module_warranty_yrs = 20;
 	
+// STRING RELIABILITY INPUTS------------------------------------------------------------
+	// failure mode 1
+	string_failure_distribution = 'exponential';
+	string_failures_per_yr = 0.1;
+	// repair time
+	string_repair_distribution = 'lognormal';
+	string_repair_mean_days = 10; //HAD TO CHANGE THESE DUE TO LIMITATIONS IN THE NUMBERS THE LHS CODE WILL ACCEPT!!!!!!!!!!!!!!!!!!
+	string_repair_std_days = 5; //SAME AS ABOVE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	
+// COMBINER RELIABILITY INPUTS----------------------------------------------------------
+	// failure mode 1
+	combiner_failure_distribution = 'lognormal';
+	combiner_failure_mean_yrs = 5.4;
+	combiner_failure_std_yrs = 1.9;
+	// repair time
+	combiner_repair_distribution = 'exponential';
+	combiner_repair_mean_days = 5;
+	
 //GLOBAL STRUCTURES---------------------------------------------------------------------------
-//Arrays
+//Arrays to hold component information, failure times, and replacement times
+	// Modules
 	global modules = alloc(num_modules);
 	global module_replacement_times = null;
 	global module_failure_times = null;
 	global module_defective_failure_times = null;
+	// Strings
+	global strings = alloc(num_strings);
+	global string_failure_times = null;
+	global string_repair_times = null;
+	// Combiner Boxes
+	global combiners = alloc(num_combiners);
+	global combiner_failure_times = null;
+	global combiner_repair_times = null;
 
-//Time values	
-	global warranty_days = module_warranty_yrs * 365;
+//Conversions of inputs to days
+	// Modules
+	global module_warranty_days = module_warranty_yrs * 365;
 	global module_failure_mean_days = module_failure_mean_yrs * 365;
 	global module_failure_std_days = module_failure_std_yrs * 365;
 	global module_defective_failures_per_day = module_defective_failures_per_yr / 365;
+	// Strings
+	global string_failures_per_day = string_failures_per_yr / 365;
+	// Combiners
+	global combiner_failure_mean_days = combiner_failure_mean_yrs * 365;
+	global combiner_failure_std_days = combiner_failure_std_yrs * 365;
 	
 //DATA CONTAINERS------------------------------------------------------------------------------
-
-//MODULE INFORMATION
 //Data is only stored for the current timestep.
+
+// MODULE INFORMATION
 /*
 state = operational (1) or failed (0)
 defective = flag for whether or not this module has a defect.
@@ -60,6 +101,22 @@ time_to_replacement = number of days from onset of failure until it is replaced
 time_to_failure = number of days left until that module fails
 cumulative_failures = total number of failures for that module
 cumul_oow_failures = total number of failures out of warranty for that module
+*/
+
+// STRING INFORMATION
+/*
+state = operational (1) or failed (0)
+time_to_failure = number of days left until the string fails
+time_to_repair = number of days from onset of failure until it is repaired
+cumulative_failures = total number of failures for that string
+*/
+
+// DC COMBINER INFORMATION
+/*
+state = operational (1) or failed (0)
+time_to_failure = number of days left until the combiner fails
+time_to_repair = number of days from onset of failure until it is repaired
+cumulative_failures = total number of failures for that combiner
 */
 
 //*************************************************************************************
@@ -107,7 +164,7 @@ function initialize_module(m, time_is_zero)
 	modules[m].time_to_failure = module_failure_times[0]; //assign failure time
 	module_failure_times -@ 0; //remove the failure time that was just used
 	if (#module_failure_times <=0)
-			module_failure_times = LHS('module_failure', 'normal', [module_failure_mean_days, module_failure_std_days], num_modules*10);
+			module_failure_times = LHS('module_failure', module_failure_distribution, [module_failure_mean_days, module_failure_std_days], num_modules*10);
 
 	
 	// Module failure mode 1: defective modules
@@ -118,7 +175,7 @@ function initialize_module(m, time_is_zero)
 		defective_time = module_defective_failure_times[0]; //defective failure time for that module
 		module_defective_failure_times -@ 0; //remove the defective failure time that was just used
 		if (#module_defective_failure_times <=0)
-			module_defective_failure_times = LHS('module_defective_failure', 'exponential', [module_defective_failures_per_day], num_modules*10);
+			module_defective_failure_times = LHS('module_defective_failure', module_defective_distribution, [module_defective_failures_per_day], num_modules*10);
 		if (defective_time < modules[m].time_to_failure) //defective failure occurs before normal failure
 			modules[m].time_to_failure = defective_time;
 	}
@@ -127,7 +184,53 @@ function initialize_module(m, time_is_zero)
 	modules[m].time_to_replacement = module_replacement_times[0];
 	module_replacement_times -@ 0; //remove the replacement time that was just used
 	if (#module_replacement_times <=0)
-		module_replacement_times = LHS('module_replacement_times', 'lognormal', [module_repair_mean_days, module_repair_std_days], num_modules*20);
+		module_replacement_times = LHS('module_replacement_times', module_repair_distribution, [module_repair_mean_days, module_repair_std_days], num_modules*20);
+}
+
+function initialize_string(s, time_is_zero)
+{
+	// String state
+	strings[s].state = 1; //string is operational
+	
+	// String failures
+	//cumulative failures initialized to zero at time zero only
+	if (time_is_zero)
+		strings[s].cumulative_failures = 0;
+		
+	// String failure mode 1
+	strings[s].time_to_failure = string_failure_times[0]; //assign failure time
+	string_failure_times -@ 0; //remove the failure time that was just used
+	if (#string_failure_times <=0)
+		string_failure_times = LHS('string_failure', string_failure_distribution, [string_failures_per_day], num_strings*10);
+		
+	// String time to replacement in case of failure
+	strings[s].time_to_repair = string_repair_times[0];
+	string_repair_times -@ 0; //remove the replacement time that was just used
+	if (#string_repair_times <=0)
+		string_repair_times = LHS('string_repair_times', string_repair_distribution, [string_repair_mean_days, string_repair_std_days], num_strings*20);
+}
+
+function initialize_combiner(c, time_is_zero)
+{
+	// combiner state
+	combiners[c].state = 1; //combiner is operational
+	
+	// combiner failures
+	//cumulative failures initialized to zero at time zero only
+	if (time_is_zero)
+		combiners[c].cumulative_failures = 0;
+		
+	// combiner failure mode 1
+	combiners[c].time_to_failure = combiner_failure_times[0]; //assign failure time
+	combiner_failure_times -@ 0; //remove the failure time that was just used
+	if (#combiner_failure_times <=0)
+		combiner_failure_times = LHS('combiner_failure', combiner_failure_distribution, [combiner_failure_mean_days, combiner_failure_std_days], num_combiners*10);
+		
+	// combiner time to replacement in case of failure
+	combiners[c].time_to_repair = combiner_repair_times[0];
+	combiner_repair_times -@ 0; //remove the replacement time that was just used
+	if (#combiner_repair_times <=0)
+		combiner_repair_times = LHS('combiner_repair_times', combiner_repair_distribution, [combiner_repair_mean_days], num_combiners*20);
 }
 
 //MODULE FAILURE----------------------------------------------------------------------------------------
@@ -137,36 +240,97 @@ function module_failure(m, day)
 	modules[m].state = 0;
 	modules[m].time_to_failure = 0;
 	modules[m].cumulative_failures++;
-	if (day > warranty_days)
+	if (day > module_warranty_days)
 		modules[m].cumul_oow_failures++;
+}
+
+function string_failure(s)
+{
+	strings[s].state = 0;
+	strings[s].time_to_failure = 0;
+	strings[s].cumulative_failures++;
+}
+
+function combiner_failure(c)
+{
+	combiners[c].state = 0;
+	combiners[c].time_to_failure = 0;
+	combiners[c].cumulative_failures++;
 }
 
 //SYSTEM INITIALIZATION---------------------------------------------------------------------------------
 function initialize()
 {
 	// Module failure mode 1: defective component
-	module_defective_failure_times = LHS('module_defective_failure', 'exponential', [module_defective_failures_per_day], num_modules*10);
+	module_defective_failure_times = LHS('module_defective_failure', module_defective_distribution, [module_defective_failures_per_day], num_modules*10);
 	
 	// Module failure mode 2: failure
-	module_failure_times = LHS('module_failure', 'normal', [module_failure_mean_days, module_failure_std_days], num_modules*10);
+	module_failure_times = LHS('module_failure', module_failure_distribution, [module_failure_mean_days, module_failure_std_days], num_modules*10);
 	
 	// Module replacement times
-	module_replacement_times = LHS('module_replacement_times', 'lognormal', [module_repair_mean_days, module_repair_std_days], num_modules*20);
+	module_replacement_times = LHS('module_replacement_times', module_repair_distribution, [module_repair_mean_days, module_repair_std_days], num_modules*20);
+	
+	// String failure mode 1
+	string_failure_times = LHS('string_failure', string_failure_distribution, [string_failures_per_day], num_strings*10);
+	
+	// String repair times
+	string_repair_times = LHS('string_repair_times', string_repair_distribution, [string_repair_mean_days, string_repair_std_days], num_strings*20);
+	
+	// Combiner failure mode 1
+	combiner_failure_times = LHS('combiner_failure', combiner_failure_distribution, [combiner_failure_mean_days, combiner_failure_std_days], num_combiners*10);
+	
+	// Combiner repair times
+	combiner_repair_times = LHS('combiner_repair_times', combiner_repair_distribution, [combiner_repair_mean_days], num_combiners*20);
 	
 	// Create module structures
 	for (m = 0; m < num_modules; m++)
 		initialize_module(m, true);
+		
+	// Create string structures
+	for (s = 0; s < num_strings; s++)
+		initialize_string(s, true);
+		
+	// Create combiner structures
+	for (c = 0; c < num_combiners; c++)
+		initialize_combiner(c, true);
 }
 
 //*************************************************************************************
 // DC DERATE CALCULATION FUNCTION
 //*************************************************************************************
-function whats_my_dc_derate()
+function whats_my_dc_derate() 
 {
-	//DC Side Derate calculation
+	//note that here, "operational modules" means modules whose power is REACHING the inverter, 
+	//regardless of whether the module itself is failed or not
 	operational_modules = 0;
-	for (m=0; m < num_modules; m++)
-		operational_modules += modules[m].state;
+	
+	for (c=0; c < num_combiners; c++)
+	{
+		if (combiners[c].state == 0)
+			continue; //if the combiner out, none of the modules on that combiner reach the inverter
+		for (s=0; s < num_strings_per_combiner; s++)
+		{
+			if (strings[s].state == 0)
+				continue; //if string is out, none of the modules on that combiner reach the inverter
+			for (m=0; m < num_modules_per_string; m++)
+			{
+				// what module index are we at? 
+				/* 
+				number of combiners we've already looped through * total number modules per combiner +
+				number of strings on this combiner we've already looped through * modules per string +
+				number of modules that we've passed on this string
+				*/
+				// because c, s, and m are 0-indexed, they represent how many of each component have been completed by this point
+				module_index = c * (num_strings_per_combiner * num_modules_per_string) + s * num_modules_per_string + m;
+				if (module_index > num_modules)
+				{
+					msgbox('Error, calculated module index > number of modules in the dc derate function');
+					exit;
+				}
+				operational_modules += modules[module_index].state; //1 if operating, 0 if failed
+			}
+		}
+	}
 		
 	return operational_modules / num_modules;
 }
@@ -176,6 +340,7 @@ function whats_my_dc_derate()
 //*************************************************************************************
 function step_in_time(day)
 {
+	// Modules------------------------------------------------------------------
 	for (m=0; m < num_modules; m++)
 	{
 		//module is operational
@@ -196,6 +361,48 @@ function step_in_time(day)
 				initialize_module(m, false); //initialize a new module without resetting cumulative failures
 		}		
 	}
+	
+	// Strings------------------------------------------------------------------
+	for (s=0; s < num_strings; s++)
+	{
+		//string is operational
+		if (strings[s].state == 1)
+		{	
+			strings[s].time_to_failure--;
+			//string has just failed
+			if (strings[s].time_to_failure <= 0)
+				string_failure(s);
+		}
+		//string is currently failed
+		else
+		{
+			strings[s].time_to_repair--;
+			//string is replaced
+			if (strings[s].time_to_repair <= 0)
+				initialize_string(s, false); //initialize the string without resetting cumulative failures
+		}
+	}
+	
+	// Combiners------------------------------------------------------------------
+	for (c=0; c < num_combiners; c++)
+	{
+		//combiner is operational
+		if (combiners[c].state == 1)
+		{	
+			combiners[c].time_to_failure--;
+			//combiner has just failed
+			if (combiners[c].time_to_failure <= 0)
+				combiner_failure(c);
+		}
+		//combiner is currently failed
+		else
+		{
+			combiners[c].time_to_repair--;
+			//combiner is replaced
+			if (combiners[c].time_to_repair <= 0)
+				initialize_combiner(c, false); //initialize the combiner without resetting cumulative failures
+		}
+	}
 }
 
 
@@ -207,6 +414,8 @@ function step_in_time(day)
 
 dc_availability = null;
 total_module_failures = 0;
+total_string_failures = 0;
+total_combiner_failures = 0;
 
 //timestep 0
 initialize();
@@ -224,6 +433,10 @@ for (day = 1; day < system_lifetime_yrs * 365; day++)
 //count up cumulative failures
 for (m=0; m < num_modules; m++)
 	total_module_failures += modules[m].cumulative_failures;
+for (s=0; s < num_strings; s++)
+	total_string_failures += strings[s].cumulative_failures;
+for (c=0; c < num_combiners; c++)
+	total_combiner_failures += combiners[c].cumulative_failures;
 	
 //create SAM performance adjustment table for the dc availability derate
 hourly_loss = alloc(8760);
@@ -238,7 +451,7 @@ for (day = 0; day < 365; day++)
 		idx++;
 	}
 }
-outln(hourly_loss);
+//outln(hourly_loss);
 adjust.constant = 0;
 adjust.en_hourly = 1;
 adjust.hourly = hourly_loss;
@@ -254,12 +467,14 @@ if (!success)
 show_page('Results');
 
 //Test outputs
-outln(dc_availability);
-outln(total_module_failures);
+//outln(dc_availability);
+outln('Total module failures =' + total_module_failures);
+outln('Total string failures =' + total_string_failures);
+outln('Total combiner failures =' + total_combiner_failures);
 
 newplot();
 plot(day_num, dc_availability, {'type'='line'});
-plotopt({'title'='Percentage of Modules that are Operational'});
+plotopt({'title'='DC Availability'});
 axis('x1', {'label'='Day'});
 axis('y1', {'label'='% Operational'});
 
