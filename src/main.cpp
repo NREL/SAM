@@ -572,11 +572,29 @@ void MainWindow::OnInternalCommand( wxCommandEvent &evt )
 	case ID_INTERNAL_INVOKE_SSC_DEBUG:
 		if ( Case *cc = GetCurrentCase() )
 		{
-			cc->BaseCase().Clear();
-			if (!cc->BaseCase().Invoke())
-				wxShowTextMessageDialog( wxJoin( cc->BaseCase().GetAllMessages(), '\n') );
-			if (CaseWindow *cw = GetCaseWindow(cc))
-				cw->UpdateResults();
+			// initialize properties
+			wxString folder = SamApp::Settings().Read("SSCDebugFolder");
+			if (folder.IsEmpty()) folder = ::wxGetHomeDir();
+			// get folder
+			wxDirDialog dlg(SamApp::Window(), "Select an output folder", folder, wxDD_DEFAULT_STYLE | wxDD_DIR_MUST_EXIST);
+			if (dlg.ShowModal() == wxID_OK)
+			{
+				folder = dlg.GetPath();
+				folder.Replace("\\", "/");
+				SamApp::Settings().Write("SSCDebugFolder", folder);
+			}
+			else // user cancelled.
+				return;
+
+			if (wxDir::Exists(folder))
+			{
+				cc->BaseCase().Clear();
+				if (!cc->BaseCase().Invoke(false, true, folder))
+					wxShowTextMessageDialog(wxJoin(cc->BaseCase().GetAllMessages(), '\n'));
+				if (CaseWindow *cw = GetCaseWindow(cc))
+					cw->UpdateResults();
+				wxLaunchDefaultApplication(folder);
+			}
 		}
 		break;
 	case ID_INTERNAL_IDE:
@@ -2688,16 +2706,18 @@ ConfigDialog::ConfigDialog( wxWindow *parent, const wxSize &size )
 
 	wxBoxSizer *hbox = new wxBoxSizer (wxHORIZONTAL );
 	hbox->Add( new wxMetroButton(this, wxID_HELP, "Help" ), 0, wxALL|wxEXPAND, 0 );
-	hbox->Add( m_pChkUseDefaults, 0, wxALL|wxEXPAND|wxALIGN_CENTER_VERTICAL, 4 );
-	m_pChkUseDefaults->SetForegroundColour( *wxWHITE );
+//	hbox->Add(m_pChkUseDefaults, 0, wxALL | wxEXPAND | wxALIGN_CENTER_VERTICAL, 4);
+	hbox->Add(m_pChkUseDefaults, 0, wxALL | wxEXPAND, 4);
+	m_pChkUseDefaults->SetForegroundColour(*wxWHITE);
 	hbox->AddStretchSpacer();
 	//hbox->Add( CreateButtonSizer( wxOK|wxCANCEL ) );
 	hbox->Add( new wxMetroButton(this, wxID_OK, "   OK   "), 0, wxALL, 0 );
 	hbox->Add( new wxMetroButton(this, wxID_CANCEL, "Cancel"), 0, wxALL, 0 );
 	
 	wxBoxSizer *vbox = new wxBoxSizer( wxVERTICAL );
-	vbox->Add( label, 0, wxALL|wxEXPAND|wxALIGN_CENTER_VERTICAL, 8 );
-	vbox->Add( choice_sizer, 1, wxALL|wxEXPAND, 0 );
+//	vbox->Add(label, 0, wxALL | wxEXPAND | wxALIGN_CENTER_VERTICAL, 8);
+	vbox->Add(label, 0, wxALL | wxEXPAND , 8);
+	vbox->Add(choice_sizer, 1, wxALL | wxEXPAND, 0);
 	vbox->Add( hbox, 0, wxALL|wxEXPAND, 0 );	
 	SetSizer( vbox );
 
