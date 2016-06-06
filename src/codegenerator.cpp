@@ -544,7 +544,7 @@ bool CodeGen_lk::Input(ssc_data_t p_data, const char *name, const wxString &fold
 		::ssc_data_get_number(p_data, name, &value);
 		dbl_value = (double)value;
 		if (dbl_value > 1e38) dbl_value = 1e38;
-		fprintf(m_fp, "var( '%s', %lg );\n", name, dbl_value);
+		fprintf(m_fp, "var( '%s', %.17g );\n", name, dbl_value);
 		break;
 	case SSC_ARRAY:
 		p = ::ssc_data_get_array(p_data, name, &len);
@@ -557,8 +557,8 @@ bool CodeGen_lk::Input(ssc_data_t p_data, const char *name, const wxString &fold
 			{
 				dbl_value = (double)p[i];
 				if (dbl_value > 1e38) dbl_value = 1e38;
-//				str_value = wxString::Format("%lg", dbl_value);
-				csv.Set(i, 0, wxString::Format("%lg", dbl_value));
+//				str_value = wxString::Format("%.17g", dbl_value);
+				csv.Set(i, 0, wxString::Format("%.17g", dbl_value));
 			}
 			csv.WriteFile(fn);
 //			fprintf(m_fp, "var( '%s', csvread('%s'));", name, (const char*)fn.c_str());
@@ -571,11 +571,11 @@ bool CodeGen_lk::Input(ssc_data_t p_data, const char *name, const wxString &fold
 			{
 				dbl_value = (double)p[i];
 				if (dbl_value > 1e38) dbl_value = 1e38;
-				fprintf(m_fp, " %lg,", dbl_value);
+				fprintf(m_fp, " %.17g,", dbl_value);
 			}
 			dbl_value = (double)p[len - 1];
 			if (dbl_value > 1e38) dbl_value = 1e38;
-			fprintf(m_fp, " %lg ] );\n", dbl_value);
+			fprintf(m_fp, " %.17g ] );\n", dbl_value);
 		}
 		break;
 	case SSC_MATRIX:
@@ -591,7 +591,7 @@ bool CodeGen_lk::Input(ssc_data_t p_data, const char *name, const wxString &fold
 				{
 					dbl_value = (double)p[r*nc+c];
 					if (dbl_value > 1e38) dbl_value = 1e38;
-					csv.Set(r, c, wxString::Format("%lg", dbl_value));
+					csv.Set(r, c, wxString::Format("%.17g", dbl_value));
 				}
 			}
 			csv.WriteFile(fn);
@@ -605,13 +605,13 @@ bool CodeGen_lk::Input(ssc_data_t p_data, const char *name, const wxString &fold
 				dbl_value = (double)p[k];
 				if (dbl_value > 1e38) dbl_value = 1e38;
 				if ((k + 1) % nc == 0)
-					fprintf(m_fp, " %lg ], \n[", dbl_value);
+					fprintf(m_fp, " %.17g ], \n[", dbl_value);
 				else
-					fprintf(m_fp, " %lg,", dbl_value);
+					fprintf(m_fp, " %.17g,", dbl_value);
 			}
 			dbl_value = (double)p[len - 1];
 			if (dbl_value > 1e38) dbl_value = 1e38;
-			fprintf(m_fp, " %lg ] ] );\n", dbl_value);
+			fprintf(m_fp, " %.17g ] ] );\n", dbl_value);
 		}
 		// TODO tables in future
 	}
@@ -674,7 +674,7 @@ bool CodeGen_c::Output(ssc_data_t p_data)
 		case SSC_NUMBER:
 			fprintf(m_fp, "	ssc_number_t %s;\n", name);
 			fprintf(m_fp, "	ssc_data_get_number(data, \"%s\", &%s);\n", name, name);
-			fprintf(m_fp, "	printf(\"%%s = %%lg\\n\", \"%s\", (double)%s);\n", (const char*)m_data[ii].label.c_str(), name);
+			fprintf(m_fp, "	printf(\"%%s = %%.17g\\n\", \"%s\", (double)%s);\n", (const char*)m_data[ii].label.c_str(), name);
 			break;
 		case SSC_ARRAY:
 			// TODO finish and test
@@ -709,7 +709,7 @@ bool CodeGen_c::Input(ssc_data_t p_data, const char *name, const wxString &folde
 		::ssc_data_get_number(p_data, name, &value);
 		dbl_value = (double)value;
 		if (dbl_value > 1e38) dbl_value = 1e38;
-		fprintf(m_fp, "	ssc_data_set_number( data, \"%s\", %lg );\n", name, dbl_value);
+		fprintf(m_fp, "	ssc_data_set_number( data, \"%s\", %.17g );\n", name, dbl_value);
 		break;
 	case SSC_ARRAY:
 		p = ::ssc_data_get_array(p_data, name, &len);
@@ -722,8 +722,8 @@ bool CodeGen_c::Input(ssc_data_t p_data, const char *name, const wxString &folde
 			{
 				dbl_value = (double)p[i];
 				if (dbl_value > 1e38) dbl_value = 1e38;
-				//				str_value = wxString::Format("%lg", dbl_value);
-				csv.Set(i, 0, wxString::Format("%lg", dbl_value));
+				//				str_value = wxString::Format("%.17g", dbl_value);
+				csv.Set(i, 0, wxString::Format("%.17g", dbl_value));
 			}
 			csv.WriteFile(fn);
 			fprintf(m_fp, "	set_array( data, \"%s\", \"%s\", %d);\n", name, (const char*)fn.c_str(), len);
@@ -735,11 +735,11 @@ bool CodeGen_c::Input(ssc_data_t p_data, const char *name, const wxString &folde
 			{
 				dbl_value = (double)p[i];
 				if (dbl_value > 1e38) dbl_value = 1e38;
-				fprintf(m_fp, " %lg,", dbl_value);
+				fprintf(m_fp, " %.17g,", dbl_value);
 			}
 			dbl_value = (double)p[len - 1];
 			if (dbl_value > 1e38) dbl_value = 1e38;
-			fprintf(m_fp, " %lg };\n", dbl_value);
+			fprintf(m_fp, " %.17g };\n", dbl_value);
 			fprintf(m_fp, "	ssc_data_set_array( data, \"%s\", p_%s, %d );\n", name, name, len);
 		}
 		break;
@@ -756,7 +756,7 @@ bool CodeGen_c::Input(ssc_data_t p_data, const char *name, const wxString &folde
 				{
 					dbl_value = (double)p[r*nc + c];
 					if (dbl_value > 1e38) dbl_value = 1e38;
-					csv.Set(r, c, wxString::Format("%lg", dbl_value));
+					csv.Set(r, c, wxString::Format("%.17g", dbl_value));
 				}
 			}
 			csv.WriteFile(fn);
@@ -769,11 +769,11 @@ bool CodeGen_c::Input(ssc_data_t p_data, const char *name, const wxString &folde
 			{
 				dbl_value = (double)p[k];
 				if (dbl_value > 1e38) dbl_value = 1e38;
-				fprintf(m_fp, " %lg,", dbl_value);
+				fprintf(m_fp, " %.17g,", dbl_value);
 			}
 			dbl_value = (double)p[len - 1];
 			if (dbl_value > 1e38) dbl_value = 1e38;
-			fprintf(m_fp, " %lg };\n", dbl_value);
+			fprintf(m_fp, " %.17g };\n", dbl_value);
 			fprintf(m_fp, "	ssc_data_set_matrix( data, \"%s\", p_%s, %d, %d );\n", name, name, nr, nc);
 		}
 		// TODO tables in future
@@ -1009,7 +1009,7 @@ bool CodeGen_csharp::Input(ssc_data_t p_data, const char *name, const wxString &
 		::ssc_data_get_number(p_data, name, &value);
 		dbl_value = (double)value;
 		if (dbl_value > 1e38) dbl_value = 1e38;
-		fprintf(m_fp, "		data.SetNumber( \"%s\", %lgf );\n", name, dbl_value);
+		fprintf(m_fp, "		data.SetNumber( \"%s\", %.17gf );\n", name, dbl_value);
 		break;
 	case SSC_ARRAY:
 		p = ::ssc_data_get_array(p_data, name, &len);
@@ -1022,8 +1022,8 @@ bool CodeGen_csharp::Input(ssc_data_t p_data, const char *name, const wxString &
 			{
 				dbl_value = (double)p[i];
 				if (dbl_value > 1e38) dbl_value = 1e38;
-				//				str_value = wxString::Format("%lg", dbl_value);
-				csv.Set(i, 0, wxString::Format("%lg", dbl_value));
+				//				str_value = wxString::Format("%.17g", dbl_value);
+				csv.Set(i, 0, wxString::Format("%.17g", dbl_value));
 			}
 			csv.WriteFile(fn);
 			fprintf(m_fp, "		data.SetArray( \"%s\", \"%s\", %d);\n", name, (const char*)fn.c_str(), len);
@@ -1035,11 +1035,11 @@ bool CodeGen_csharp::Input(ssc_data_t p_data, const char *name, const wxString &
 			{
 				dbl_value = (double)p[i];
 				if (dbl_value > 1e38) dbl_value = 1e38;
-				fprintf(m_fp, " %lgf,", dbl_value);
+				fprintf(m_fp, " %.17gf,", dbl_value);
 			}
 			dbl_value = (double)p[len - 1];
 			if (dbl_value > 1e38) dbl_value = 1e38;
-			fprintf(m_fp, " %lgf };\n", dbl_value);
+			fprintf(m_fp, " %.17gf };\n", dbl_value);
 			fprintf(m_fp, "		data.SetArray( \"%s\", p_%s);\n", name, name);
 		}
 		break;
@@ -1056,7 +1056,7 @@ bool CodeGen_csharp::Input(ssc_data_t p_data, const char *name, const wxString &
 				{
 					dbl_value = (double)p[r*nc + c];
 					if (dbl_value > 1e38) dbl_value = 1e38;
-					csv.Set(r, c, wxString::Format("%lg", dbl_value));
+					csv.Set(r, c, wxString::Format("%.17g", dbl_value));
 				}
 			}
 			csv.WriteFile(fn);
@@ -1070,15 +1070,15 @@ bool CodeGen_csharp::Input(ssc_data_t p_data, const char *name, const wxString &
 				dbl_value = (double)p[k];
 				if (dbl_value > 1e38) dbl_value = 1e38;
 				if ((k > 0) && (k%nc == 0))
-					fprintf(m_fp, " { %lgf,", dbl_value);
+					fprintf(m_fp, " { %.17gf,", dbl_value);
 				else if (k%nc == (nc - 1))
-					fprintf(m_fp, " %lgf },", dbl_value);
+					fprintf(m_fp, " %.17gf },", dbl_value);
 				else 
-					fprintf(m_fp, " %lgf, ", dbl_value);
+					fprintf(m_fp, " %.17gf, ", dbl_value);
 			}
 			dbl_value = (double)p[len - 1];
 			if (dbl_value > 1e38) dbl_value = 1e38;
-			fprintf(m_fp, " %lgf } };\n", dbl_value);
+			fprintf(m_fp, " %.17gf } };\n", dbl_value);
 			fprintf(m_fp, "		data.SetMatrix( \"%s\", p_%s );\n", name, name);
 		}
 		// TODO tables in future
@@ -2082,7 +2082,7 @@ bool CodeGen_matlab::Input(ssc_data_t p_data, const char *name, const wxString &
 		::ssc_data_get_number(p_data, name, &value);
 		dbl_value = (double)value;
 		if (dbl_value > 1e38) dbl_value = 1e38;
-		fprintf(m_fp, "	ssccall('data_set_number', data, '%s', %lg);\n", name, dbl_value);
+		fprintf(m_fp, "	ssccall('data_set_number', data, '%s', %.17g);\n", name, dbl_value);
 		break;
 	case SSC_ARRAY:
 		p = ::ssc_data_get_array(p_data, name, &len);
@@ -2095,8 +2095,8 @@ bool CodeGen_matlab::Input(ssc_data_t p_data, const char *name, const wxString &
 			{
 				dbl_value = (double)p[i];
 				if (dbl_value > 1e38) dbl_value = 1e38;
-				//				str_value = wxString::Format("%lg", dbl_value);
-				csv.Set(i, 0, wxString::Format("%lg", dbl_value));
+				//				str_value = wxString::Format("%.17g", dbl_value);
+				csv.Set(i, 0, wxString::Format("%.17g", dbl_value));
 			}
 			csv.WriteFile(fn);
 			fprintf(m_fp, "	%s = csvread( '%s');\n", name, (const char*)fn.c_str());
@@ -2108,11 +2108,11 @@ bool CodeGen_matlab::Input(ssc_data_t p_data, const char *name, const wxString &
 			{
 				dbl_value = (double)p[i];
 				if (dbl_value > 1e38) dbl_value = 1e38;
-				fprintf(m_fp, " %lg;", dbl_value);
+				fprintf(m_fp, " %.17g;", dbl_value);
 			}
 			dbl_value = (double)p[len - 1];
 			if (dbl_value > 1e38) dbl_value = 1e38;
-			fprintf(m_fp, " %lg ];\n", dbl_value);
+			fprintf(m_fp, " %.17g ];\n", dbl_value);
 		}
 		fprintf(m_fp, "	ssccall( 'data_set_array', data, '%s', %s );\n", name, name);
 		break;
@@ -2129,7 +2129,7 @@ bool CodeGen_matlab::Input(ssc_data_t p_data, const char *name, const wxString &
 				{
 					dbl_value = (double)p[r*nc + c];
 					if (dbl_value > 1e38) dbl_value = 1e38;
-					csv.Set(r, c, wxString::Format("%lg", dbl_value));
+					csv.Set(r, c, wxString::Format("%.17g", dbl_value));
 				}
 			}
 			fprintf(m_fp, "	%s = csvread( '%s');\n", name, (const char*)fn.c_str());
@@ -2142,13 +2142,13 @@ bool CodeGen_matlab::Input(ssc_data_t p_data, const char *name, const wxString &
 				dbl_value = (double)p[k];
 				if (dbl_value > 1e38) dbl_value = 1e38;
 				if (k%nc == (nc - 1))
-					fprintf(m_fp, " %lg ;", dbl_value);
+					fprintf(m_fp, " %.17g ;", dbl_value);
 				else 
-					fprintf(m_fp, " %lg  ", dbl_value);
+					fprintf(m_fp, " %.17g  ", dbl_value);
 			}
 			dbl_value = (double)p[len - 1];
 			if (dbl_value > 1e38) dbl_value = 1e38;
-			fprintf(m_fp, " %lg ];\n", dbl_value);
+			fprintf(m_fp, " %.17g ];\n", dbl_value);
 		}
 		fprintf(m_fp, "	ssccall( 'data_set_matrix', data, '%s', %s );\n", name, name);
 		// TODO tables in future
@@ -2480,7 +2480,7 @@ bool CodeGen_python::Input(ssc_data_t p_data, const char *name, const wxString &
 		::ssc_data_get_number(p_data, name, &value);
 		dbl_value = (double)value;
 		if (dbl_value > 1e38) dbl_value = 1e38;
-		fprintf(m_fp, "	ssc.data_set_number( data, '%s', %lg )\n", name, dbl_value);
+		fprintf(m_fp, "	ssc.data_set_number( data, '%s', %.17g )\n", name, dbl_value);
 		break;
 	case SSC_ARRAY:
 		p = ::ssc_data_get_array(p_data, name, &len);
@@ -2493,7 +2493,7 @@ bool CodeGen_python::Input(ssc_data_t p_data, const char *name, const wxString &
 			{
 				dbl_value = (double)p[i];
 				if (dbl_value > 1e38) dbl_value = 1e38;
-				csv.Set(i, 0, wxString::Format("%lg", dbl_value));
+				csv.Set(i, 0, wxString::Format("%.17g", dbl_value));
 			}
 			csv.WriteFile(fn);
 			fprintf(m_fp, "	ssc.data_set_array_from_csv( data, '%s', '%s');\n", name, (const char*)fn.c_str());
@@ -2505,11 +2505,11 @@ bool CodeGen_python::Input(ssc_data_t p_data, const char *name, const wxString &
 			{
 				dbl_value = (double)p[i];
 				if (dbl_value > 1e38) dbl_value = 1e38;
-				fprintf(m_fp, " %lg,", dbl_value);
+				fprintf(m_fp, " %.17g,", dbl_value);
 			}
 			dbl_value = (double)p[len - 1];
 			if (dbl_value > 1e38) dbl_value = 1e38;
-			fprintf(m_fp, " %lg ];\n", dbl_value);
+			fprintf(m_fp, " %.17g ];\n", dbl_value);
 			fprintf(m_fp, "	ssc.data_set_array( data, '%s',  %s);\n", name, name);
 		}
 		break;
@@ -2526,7 +2526,7 @@ bool CodeGen_python::Input(ssc_data_t p_data, const char *name, const wxString &
 				{
 					dbl_value = (double)p[r*nc + c];
 					if (dbl_value > 1e38) dbl_value = 1e38;
-					csv.Set(r, c, wxString::Format("%lg", dbl_value));
+					csv.Set(r, c, wxString::Format("%.17g", dbl_value));
 				}
 			}
 			csv.WriteFile(fn);
@@ -2540,13 +2540,13 @@ bool CodeGen_python::Input(ssc_data_t p_data, const char *name, const wxString &
 				dbl_value = (double)p[k];
 				if (dbl_value > 1e38) dbl_value = 1e38;
 				if (k%nc == (nc - 1))
-					fprintf(m_fp, " %lg ], [", dbl_value);
+					fprintf(m_fp, " %.17g ], [", dbl_value);
 				else
-					fprintf(m_fp, " %lg,  ", dbl_value);
+					fprintf(m_fp, " %.17g,  ", dbl_value);
 			}
 			dbl_value = (double)p[len - 1];
 			if (dbl_value > 1e38) dbl_value = 1e38;
-			fprintf(m_fp, " %lg ]];\n", dbl_value);
+			fprintf(m_fp, " %.17g ]];\n", dbl_value);
 			fprintf(m_fp, "	ssc.data_set_matrix( data,  '%s', %s );\n", name, name);
 		}
 		break;

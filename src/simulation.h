@@ -92,10 +92,10 @@ public:
 	void GetVariableLengths( std::vector<ArraySize> & sizes );
 
 	// prepares and runs simulation
-	bool Invoke(bool silent=false, bool prepare=true);
+	bool Invoke(bool silent=false, bool prepare=true, wxString folder=wxEmptyString);
 	
 	bool Prepare(); // not threadable, but must be called before below
-	bool InvokeWithHandler( ISimulationHandler *ih ); // updates elapsed time
+	bool InvokeWithHandler(ISimulationHandler *ih, wxString folder = wxEmptyString); // updates elapsed time
 
 	// results and messages if it succeeded
 	bool Ok();

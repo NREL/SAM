@@ -336,6 +336,7 @@ public:
 
 	virtual bool WriteDebugFile( const wxString &sim, ssc_module_t p_mod, ssc_data_t p_data )
 	{
+		/*
 		// folder prompting
 //		wxString dbgfile( wxGetHomeDir() + "/ssc-" + sim + ".lk" );
 //		return Simulation::WriteDebugFile(dbgfile, p_mod, p_data);
@@ -351,6 +352,8 @@ public:
 		}
 		else
 			return false;
+			*/
+		return Simulation::WriteDebugFile(sim, p_mod, p_data);
 	}
 
 };
@@ -389,10 +392,14 @@ static ssc_bool_t ssc_invoke_handler( ssc_module_t p_mod, ssc_handler_t p_handle
 		return 0;
 }
 
-bool Simulation::Invoke( bool silent, bool prepare )
+bool Simulation::Invoke( bool silent, bool prepare, wxString folder )
 {
 	SingleThreadHandler sc;
 	wxProgressDialog *prog = 0;
+	if (!folder.IsEmpty())
+	{
+		// set folder before progress dialog to prevent hiding
+	}
 	if ( !silent )
 	{
 		prog = new wxProgressDialog("Simulation", "in progress", 100,
@@ -406,7 +413,7 @@ bool Simulation::Invoke( bool silent, bool prepare )
 	if ( prepare && !Prepare() )
 		return false;
 	
-	bool ok =  InvokeWithHandler( &sc );
+	bool ok =  InvokeWithHandler( &sc, folder );
 
 	if ( prog ) prog->Destroy();
 
@@ -455,7 +462,7 @@ bool Simulation::Prepare()
 }
 
 static void dump_variable( FILE *fp, ssc_data_t p_data, const char *name )
-{
+{ // .17g to .17g for full double precesion.
 	ssc_number_t value;
 	ssc_number_t *p;
 	int len, nr, nc;
@@ -474,7 +481,7 @@ static void dump_variable( FILE *fp, ssc_data_t p_data, const char *name )
 		::ssc_data_get_number( p_data, name, &value );
 		dbl_value = (double)value;
 		if ( dbl_value > 1e38 ) dbl_value = 1e38;
-		fprintf(fp, "var( '%s', %lg );\n", name, dbl_value );
+		fprintf(fp, "var( '%s', %.17g );\n", name, dbl_value );
 		break;
 	case SSC_ARRAY:
 		p = ::ssc_data_get_array( p_data, name, &len );
@@ -483,11 +490,11 @@ static void dump_variable( FILE *fp, ssc_data_t p_data, const char *name )
 		{
 			dbl_value = (double)p[i];
 			if ( dbl_value > 1e38 ) dbl_value = 1e38;
-			fprintf(fp, " %lg,", dbl_value );
+			fprintf(fp, " %.17g,", dbl_value );
 		}
 		dbl_value = (double)p[len-1];
 		if ( dbl_value > 1e38 ) dbl_value = 1e38;
-		fprintf(fp, " %lg ] );\n", dbl_value );
+		fprintf(fp, " %.17g ] );\n", dbl_value );
 		break;
 	case SSC_MATRIX:
 		p = ::ssc_data_get_matrix( p_data, name, &nr, &nc );
@@ -498,13 +505,13 @@ static void dump_variable( FILE *fp, ssc_data_t p_data, const char *name )
 			dbl_value = (double)p[k];
 			if ( dbl_value > 1e38 ) dbl_value = 1e38;
 			if ( (k+1)%nc == 0 ) 
-				fprintf(fp, " %lg ], \n[", dbl_value);
+				fprintf(fp, " %.17g ], \n[", dbl_value);
 			else
-				fprintf(fp, " %lg,", dbl_value);
+				fprintf(fp, " %.17g,", dbl_value);
 		}
 		dbl_value = (double)p[len-1];
 		if ( dbl_value > 1e38 ) dbl_value = 1e38;
-		fprintf(fp, " %lg ] ] );\n", dbl_value);
+		fprintf(fp, " %.17g ] ] );\n", dbl_value);
 	}
 }
 
@@ -512,13 +519,17 @@ bool Simulation::WriteDebugFile( const wxString &file, ssc_module_t p_mod, ssc_d
 {
 	if( FILE *fp = fopen( file.c_str(), "w" ) )
 	{
+		fprintf(fp, "clear();\n");
 		int dbgidx = 0;
 		while( const ssc_info_t p_inf = ssc_module_var_info( p_mod, dbgidx++ ) )
 		{
 			const char *name = ::ssc_info_name( p_inf );
 			dump_variable( fp, p_data, name );
 		}
-		fclose( fp );
+		wxString name = wxFileName(file).GetName();
+		name = name.Right(name.length() - 4); // skip "ssc-"
+		fprintf(fp, "run('%s');\n", (const char *)name.c_str());
+		fclose(fp);
 		return true;
 	}
 	else
@@ -638,7 +649,7 @@ bool Simulation::Generate_lk(FILE *fp)
 }
 
 
-bool Simulation::InvokeWithHandler( ISimulationHandler *ih )
+bool Simulation::InvokeWithHandler(ISimulationHandler *ih, wxString folder)
 {
 	assert( 0 != ih );
 
@@ -722,7 +733,9 @@ bool Simulation::InvokeWithHandler( ISimulationHandler *ih )
 		}
 
 		// optionally write a debug input file if the ISimulationHandler defines it
-		ih->WriteDebugFile( m_simlist[kk], p_mod, p_data );
+		wxString fn = folder + "/ssc-" + m_simlist[kk] + ".lk";
+		ih->WriteDebugFile( fn, p_mod, p_data );
+		//ih->WriteDebugFile( m_simlist[kk], p_mod, p_data );
 		
 		wxStopWatch ssctime;
 		ssc_bool_t ok = ssc_module_exec_with_handler( p_mod, p_data, ssc_invoke_handler, ih );
