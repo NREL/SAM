@@ -2740,7 +2740,7 @@ In the SSC \texttt{pvsamv1} module, each subarray's DC loss is stored as a singl
 
 \section{DC Losses Due to Snow}\label{sec-snow}
 
-The snow cover model uses snow depth data in the weather file to estimate the portion of the array that is covered by snow and calculate a corresponding reduction in power generation for each time step. The model calculates a reduction in system output rather than a reduction in incident irradiance because it was developed empirically by measuring system electrical output for several photovoltaic systems installed in snowy climates, as described in \citet{marion-snowmodel} and \citet{ryberg-snowmodel}.
+The snow cover model uses snow depth and ambient temperature data from the weather file with the array tilt angle to estimate the portion of the array that is covered by snow. It then uses that information to calculate a loss in the array's DC power output caused by the snow. The model calculates a reduction in system output instead of a reduction in incident irradiance because it was developed empirically by measuring system electrical output for several photovoltaic systems installed in snowy climates, as described in \citet{marion-snowmodel} and \citet{ryberg-snowmodel}.
 
 Snow coverage on the array is measured as a percentage along the height of a row (see figure \ref{fig-snowCoverage} for details). The only snow removal process considered is sliding, and as such the model does not account for snow melting or wind removal. Power losses due to snow coverage are applied just after module performance is calculated.
 
