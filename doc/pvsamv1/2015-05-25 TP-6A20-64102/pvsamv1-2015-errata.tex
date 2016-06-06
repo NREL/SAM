@@ -14,6 +14,8 @@ This document lists errors with corrections for the SAM photovoltaic reference m
 
 Gilman, P.; (2015) ``SAM Photovoltaic Model Technical Reference." TP-6A20-64102. Golden, CO: National Renewable Energy Laboratory.
 
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section*{Chapter 3: Irradiance and Weather Data}
 
@@ -157,6 +159,23 @@ Incorrect:
 \mathit{cir} &= E_d A_i R_b \notag\\
 \mathit{iso} &= E_d \left( 1 - A_i \right) \frac{1 + \cos\mathit{AOI}}{2} \notag\\
 \mathit{isohor} &= \mathit{iso} \left( 1 + f s \right)
+\end{align*}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Section 6.2.3 Perez 1990 Model}
+
+\textbf{Equation 6.14} for the $a$ and $b$ parameters in the Perez 1990 sky diffuse irradiance model uses the angle of incidence $AOI$ instead of the sun zenith angle $Z$.
+
+Correct:
+\begin{align*}
+a &= \max( 0, \cos Z ) \notag\\
+b & =\max( \cos85\degree, \cos Z) 
+\end{align*}
+
+Incorrect:
+\begin{align*}
+a &= \max( 0, \cos \mathit{AOI} ) \notag\\
+b & =\max( \cos85\degree, \cos \mathit{AOI}) 
 \end{align*}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
