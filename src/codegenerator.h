@@ -132,4 +132,30 @@ public:
 	bool Footer();
 };
 
+class CodeGen_java : virtual public CodeGen_Base
+{
+public:
+	CodeGen_java(Case *cc, const wxString &folder);
+	bool Header();
+	bool CreateSSCModule(wxString &name);
+	bool RunSSCModule(wxString &name);
+	bool FreeSSCModule();
+	bool Input(ssc_data_t p_data, const char *name, const wxString &folder, const int &array_matrix_threshold);
+	bool Output(ssc_data_t p_data);
+	bool Footer();
+};
+
+class CodeGen_php : virtual public CodeGen_Base
+{
+public:
+	CodeGen_php(Case *cc, const wxString &folder);
+	bool Header();
+	bool CreateSSCModule(wxString &name);
+	bool RunSSCModule(wxString &name);
+	bool FreeSSCModule();
+	bool Input(ssc_data_t p_data, const char *name, const wxString &folder, const int &array_matrix_threshold);
+	bool Output(ssc_data_t p_data);
+	bool Footer();
+};
+
 #endif
