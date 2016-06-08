@@ -2740,9 +2740,34 @@ In the SSC \texttt{pvsamv1} module, each subarray's DC loss is stored as a singl
 
 \section{DC Losses Due to Snow}\label{sec-snow}
 
-The snow cover model uses snow depth and ambient temperature data from the weather file with the array tilt angle to estimate the portion of the array that is covered by snow. It then uses that information to calculate a loss in the array's DC power output caused by the snow. The model calculates a reduction in system output instead of a reduction in incident irradiance because it was developed empirically by measuring system electrical output for several photovoltaic systems installed in snowy climates, as described in \citet{marion-snowmodel} and \citet{ryberg-snowmodel}.
+The snow cover model estimates the portion of the array that is covered by snow and calculates a loss in the array's DC power output caused by the snow. The model calculates a reduction in system output instead of a reduction in incident irradiance because it was developed empirically by measuring system electrical output for several photovoltaic systems installed in snowy climates, as described in \citet{marion-snowmodel} and \citet{ryberg-snowmodel}.
 
-Snow coverage on the array is measured as a percentage along the height of a row (see figure \ref{fig-snowCoverage} for details). The only snow removal process considered is sliding, and as such the model does not account for snow melting or wind removal. Power losses due to snow coverage are applied just after module performance is calculated.
+\begin{table}
+\begin{center}
+\caption{Snow Loss Model Variable Definitions}
+\begin{tabular}{lll}
+\midrule
+Symbol & Description / \textbf{Name in SAM} & Name in SSC \\
+\midrule
+\multicolumn{3}{c}{Inputs}\\
+$****$ & \textbf{Estimate losses due to snow} & **** \\
+$D_{snow}$ & snow depth (cm) & - \\
+$T_{dry}$ & ambient dry bulb temperature (/deg C) & - \\
+$G_{b}$ & POA beam irradiance & - \\
+$G_{d}$ & POA diffuse irradiance (sky and ground) & - \\
+\midrule
+\multicolumn{3}{c}{Outputs}\\
+$P_{snow}$ & \textbf{Power loss due to snow} (kW) & \texttt{****} \\
+$C_{snow}$ & \textbf{Snow coverage} (0..1) & \texttt{****} \\
+$P_{snow,n}$ & \textbf{Subarray [\textit{n}] Power loss due to snow} (kW) &  \texttt{subarray[\textit{n}]\_dc\_gross} \\
+$C_{snow,n}$ & \textbf{Subarray [\textit{n}] Snow coverage} (0..1) &  \texttt{subarray[\textit{n}]\_dc\_net} \\
+\hline
+\end{tabular}
+\label{tab-snowvars}
+\end{center}
+\end{table}
+
+Snow coverage is a fraction of the height of a subarray row as shown in Figure \ref{fig-snowCoverage}. The snow model only considers sliding. It does not consider other snow removal processes such as snow melting or removal by wind considered.
 
 \begin{figure}
 \begin{center}
@@ -2752,14 +2777,14 @@ Snow coverage on the array is measured as a percentage along the height of a row
 \end{center}
 \end{figure}
 
-At each time step the snow model first consults the snow depth data to determine if a new snowfall has occurred. If this is found to be true, the model sets the snow coverage on the current time step to 100\%. Otherwise the model estimates what the current coverage would be by considering the previous time step's coverage, the ambient temperature, and the tilt of array. In order to accomplish this, the model starts be determining whether or not snow sliding will occur during the current time step. When the following condition is true sliding will occur:
+SAM's snow model algorithm is adapted from \citet{marion-snowmodel} as follows:
 
-\begin{equation}
-	T_a > \frac{I_{poa}}{m}
-	\label{eqn-snowSlidingCondition}
-\end{equation}
+Determine snow coverage: IF $D_{snow}$ in the current time step is greater than its value in the previous time step, THEN set the snow coverage for each subarray to one, $C_{snow} = 1$. Otherwise set it to the previous time step's value.
+IF $T_{dry}> \frac{G_{b}+G_{d}}{m}$ THEN assume snow slide ocurred in this time step, so reduce snow coverage by 0.10. Otherwise, set current time step snow cover to previous time step value.
 
-Where $T_a$ is the current ambient temperature, $I_{poa}$ is the current plane of array irradiance, and $m$ is an experimentally determined constant ($-80\ W/m^2/C$). For more details on the derivation of this equation please see \citet{marion-snowmodel}. When sliding does not occur, the model sets the current snow coverage to the same coverage value as the preceding time step. However, if sliding does occur, the model sets the current coverage to the coverage at the end of the preceding time step minus a snow slide amount ($s.s.a$) which can be found using:
+The parameter $m$ is an experimentally determined constant ($-80\ W/m^2/C$) described in \citet{marion-snowmodel}. 
+
+If sliding does occur, the model sets the current coverage to the coverage at the end of the preceding time step minus a snow slide amount ($s.s.a$) which can be found using:
 
 \begin{equation}
 	s.s.a. = 1.97 * sin( tilt )
