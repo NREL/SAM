@@ -416,6 +416,8 @@ bool CodeGen_Base::ShowCodeGenDialog(CaseWindow *cw)
 	code_languages.Add("c#");
 	code_languages.Add("matlab");
 	code_languages.Add("python");
+	code_languages.Add("java");
+	code_languages.Add("php");
 
 	// initialize properties
 	wxString foldername = SamApp::Settings().Read("CodeGeneratorFolder");
@@ -489,6 +491,18 @@ bool CodeGen_Base::ShowCodeGenDialog(CaseWindow *cw)
 		fn += ".py";
 		cg = new CodeGen_python(c, fn);
 	}
+	else if (lang == 5) // java
+	{
+		fn += ".java";
+		cg = new CodeGen_java(c, fn);
+	}
+	else if (lang == 6) // php
+	{
+		fn += ".php";
+		cg = new CodeGen_php(c, fn);
+	}
+	else
+		return false;
 
 	if (cg)
 	{
