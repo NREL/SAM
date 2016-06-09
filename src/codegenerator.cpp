@@ -413,11 +413,13 @@ bool CodeGen_Base::ShowCodeGenDialog(CaseWindow *cw)
 	// ids or just index values from here
 	code_languages.Add("lk");
 	code_languages.Add("c");
-	code_languages.Add("c#");
 	code_languages.Add("matlab");
 	code_languages.Add("python");
 	code_languages.Add("java");
 	code_languages.Add("php");
+#ifdef __WXMSW__
+	code_languages.Add("c#");
+#endif
 
 	// initialize properties
 	wxString foldername = SamApp::Settings().Read("CodeGeneratorFolder");
@@ -476,31 +478,33 @@ bool CodeGen_Base::ShowCodeGenDialog(CaseWindow *cw)
 		fn += ".c";
 		cg = new CodeGen_c(c, fn);
 	}
-	else if (lang == 2) // c#
-	{
-		fn += ".cs";
-		cg = new CodeGen_csharp(c, fn);
-	}
-	else if (lang == 3) // matlab
+	else if (lang == 2) // matlab
 	{
 		fn += ".m";
 		cg = new CodeGen_matlab(c, fn);
 	}
-	else if (lang == 4) // python
+	else if (lang == 3) // python
 	{
 		fn += ".py";
 		cg = new CodeGen_python(c, fn);
 	}
-	else if (lang == 5) // java
+	else if (lang == 4) // java
 	{
 		fn += ".java";
 		cg = new CodeGen_java(c, fn);
 	}
-	else if (lang == 6) // php
+	else if (lang == 5) // php
 	{
 		fn += ".php";
 		cg = new CodeGen_php(c, fn);
 	}
+#ifdef __WXMSW__
+	else if (lang == 6) // c#
+	{
+		fn += ".cs";
+		cg = new CodeGen_csharp(c, fn);
+	}
+#endif
 	else
 		return false;
 

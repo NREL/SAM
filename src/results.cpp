@@ -2915,7 +2915,7 @@ void TabularBrowser::GetTextData(wxString &dat, char sep)
 
 	if (!IsSingleValues)
 	{
-		wxString ts_label = "TimeStamp";
+		wxString ts_label = "Time stamp";
 		dat += '"' + ts_label + '"' + sep;
 		for (c = 0; c < columns; c++)
 		{
