@@ -39,8 +39,8 @@ public:
 	wxString GetErrors();
 
 	// language specfic header and supporting functions
+	virtual bool SupportingFiles() = 0;
 	virtual bool Header()=0;
-
 	virtual bool CreateSSCModule(wxString &name) = 0;
 	virtual bool RunSSCModule(wxString &name) = 0;
 	virtual bool FreeSSCModule() = 0;
@@ -71,6 +71,7 @@ class CodeGen_lk : virtual public CodeGen_Base
 {
 public:
 	CodeGen_lk(Case *cc, const wxString &folder);
+	bool SupportingFiles();
 	bool Header();
 	bool CreateSSCModule(wxString &name);
 	bool RunSSCModule(wxString &name);
@@ -84,6 +85,7 @@ class CodeGen_c : virtual public CodeGen_Base
 {
 public:
 	CodeGen_c(Case *cc, const wxString &folder);
+	bool SupportingFiles();
 	bool Header();
 	bool CreateSSCModule(wxString &name);
 	bool RunSSCModule(wxString &name);
@@ -97,6 +99,7 @@ class CodeGen_csharp : virtual public CodeGen_Base
 {
 public:
 	CodeGen_csharp(Case *cc, const wxString &folder);
+	bool SupportingFiles();
 	bool Header();
 	bool CreateSSCModule(wxString &name);
 	bool RunSSCModule(wxString &name);
@@ -110,6 +113,7 @@ class CodeGen_matlab : virtual public CodeGen_Base
 {
 public:
 	CodeGen_matlab(Case *cc, const wxString &folder);
+	bool SupportingFiles();
 	bool Header();
 	bool CreateSSCModule(wxString &name);
 	bool RunSSCModule(wxString &name);
@@ -123,6 +127,7 @@ class CodeGen_python : virtual public CodeGen_Base
 {
 public:
 	CodeGen_python(Case *cc, const wxString &folder);
+	bool SupportingFiles();
 	bool Header();
 	bool CreateSSCModule(wxString &name);
 	bool RunSSCModule(wxString &name);
@@ -136,6 +141,7 @@ class CodeGen_java : virtual public CodeGen_Base
 {
 public:
 	CodeGen_java(Case *cc, const wxString &folder);
+	bool SupportingFiles();
 	bool Header();
 	bool CreateSSCModule(wxString &name);
 	bool RunSSCModule(wxString &name);
@@ -149,6 +155,7 @@ class CodeGen_php : virtual public CodeGen_Base
 {
 public:
 	CodeGen_php(Case *cc, const wxString &folder);
+	bool SupportingFiles();
 	bool Header();
 	bool CreateSSCModule(wxString &name);
 	bool RunSSCModule(wxString &name);
