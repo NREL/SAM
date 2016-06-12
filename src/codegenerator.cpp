@@ -454,6 +454,8 @@ bool CodeGen_Base::ShowCodeGenDialog(CaseWindow *cw)
 		return false;
 
 	// generate code
+	//int threshold = 0; // testing writing out all array and matrix values to external files
+	//	int threshold = 100000; // testing writing out all values with no external files
 	int threshold = 288; // all arrays and matrices with more than 288 elements get written to csv file
 
 	// from wxWiki to convert wxString to char*
@@ -2880,7 +2882,7 @@ bool CodeGen_java::Input(ssc_data_t p_data, const char *name, const wxString &fo
 		if (dbl_value > 1e38) dbl_value = 1e38;
 		fprintf(m_fp, "		api.ssc_data_set_number( data, \"%s\", %.17gf );\n", name, dbl_value);
 		break;
-	case SSC_ARRAY: // TODO
+	case SSC_ARRAY: 
 		p = ::ssc_data_get_array(p_data, name, &len);
 		if (len > array_matrix_threshold)
 		{ // separate csv file (var_name.csv in folder) for each variable
@@ -2895,24 +2897,24 @@ bool CodeGen_java::Input(ssc_data_t p_data, const char *name, const wxString &fo
 				csv.Set(i, 0, wxString::Format("%.17g", dbl_value));
 			}
 			csv.WriteFile(fn);
-			fprintf(m_fp, "	set_array( data, \"%s\", \"%s\", %d);\n", name, (const char*)fn.c_str(), len);
+			fprintf(m_fp, "		set_array( data, \"%s\", \"%s\", %d);\n", name, (const char*)fn.c_str(), len);
 		}
 		else
 		{
-			fprintf(m_fp, "	ssc_number_t p_%s[%d] ={", name, len);
+			fprintf(m_fp, "		float[] p_%s = {", name);
 			for (int i = 0; i < (len - 1); i++)
 			{
 				dbl_value = (double)p[i];
 				if (dbl_value > 1e38) dbl_value = 1e38;
-				fprintf(m_fp, " %.17g,", dbl_value);
+				fprintf(m_fp, " %.17gf,", dbl_value);
 			}
 			dbl_value = (double)p[len - 1];
 			if (dbl_value > 1e38) dbl_value = 1e38;
-			fprintf(m_fp, " %.17g };\n", dbl_value);
-			fprintf(m_fp, "	ssc_data_set_array( data, \"%s\", p_%s, %d );\n", name, name, len);
+			fprintf(m_fp, " %.17gf };\n", dbl_value);
+			fprintf(m_fp, "		api.ssc_data_set_array( data, \"%s\", p_%s, %d );\n", name, name, len);
 		}
 		break;
-	case SSC_MATRIX: // TODO
+	case SSC_MATRIX:
 		p = ::ssc_data_get_matrix(p_data, name, &nr, &nc);
 		len = nr*nc;
 		if (len > array_matrix_threshold)
@@ -2929,21 +2931,21 @@ bool CodeGen_java::Input(ssc_data_t p_data, const char *name, const wxString &fo
 				}
 			}
 			csv.WriteFile(fn);
-			fprintf(m_fp, "	set_matrix( data, \"%s\", \"%s\", %d, %d);\n", name, (const char*)fn.c_str(), nr, nc);
+			fprintf(m_fp, "		set_matrix( data, \"%s\", \"%s\", %d, %d);\n", name, (const char*)fn.c_str(), nr, nc);
 		}
 		else
 		{
-			fprintf(m_fp, "	ssc_number_t p_%s[%d] ={", name, len);
+			fprintf(m_fp, "		float[] p_%s ={ ", name);
 			for (int k = 0; k < (len - 1); k++)
 			{
 				dbl_value = (double)p[k];
 				if (dbl_value > 1e38) dbl_value = 1e38;
-				fprintf(m_fp, " %.17g,", dbl_value);
+				fprintf(m_fp, " %.17gf, ", dbl_value);
 			}
 			dbl_value = (double)p[len - 1];
 			if (dbl_value > 1e38) dbl_value = 1e38;
-			fprintf(m_fp, " %.17g };\n", dbl_value);
-			fprintf(m_fp, "	ssc_data_set_matrix( data, \"%s\", p_%s, %d, %d );\n", name, name, nr, nc);
+			fprintf(m_fp, " %.17gf };\n", dbl_value);
+			fprintf(m_fp, "		api.ssc_data_set_matrix( data, \"%s\", p_%s, %d, %d );\n", name, name, nr, nc);
 		}
 		// TODO tables in future
 	}
@@ -2976,6 +2978,79 @@ bool CodeGen_java::Header()
 
 	fprintf(m_fp, "public class %s\n", (const char*)m_name.c_str());
 	fprintf(m_fp, "{\n");
+	fprintf(m_fp, "	public static SSCAPIJNI api;\n");
+	
+	// handle csv files
+	// arrays
+	fprintf(m_fp, "	public static void set_array(long cxt, String name, String csvFile, int len)\n");
+	fprintf(m_fp, "	{\n");
+	fprintf(m_fp, "		BufferedReader br = null;\n");
+	fprintf(m_fp, "		String line = \"\";\n");
+	fprintf(m_fp, "		float ary[] = new float[len];\n");
+	fprintf(m_fp, "		int i=0;\n");
+	fprintf(m_fp, "		try {\n");
+	fprintf(m_fp, "			br = new BufferedReader(new FileReader(csvFile));\n");
+	fprintf(m_fp, "			while (((line = br.readLine()) != null) && (i<len)) {\n");
+	fprintf(m_fp, "				ary[i]=Float.parseFloat(line);\n");
+	fprintf(m_fp, "				i++;\n");
+	fprintf(m_fp, "			}\n");
+	fprintf(m_fp, "		} catch (FileNotFoundException e) {\n");
+	fprintf(m_fp, "			e.printStackTrace();\n");
+	fprintf(m_fp, "		} catch (IOException e) {\n");
+	fprintf(m_fp, "			e.printStackTrace();\n");
+	fprintf(m_fp, "		} finally {\n");
+	fprintf(m_fp, "			if (br != null) {\n");
+	fprintf(m_fp, "				try {");
+	fprintf(m_fp, "					br.close();");
+	fprintf(m_fp, "				br.close();");
+	fprintf(m_fp, "				} catch (IOException e) {");
+	fprintf(m_fp, "					e.printStackTrace();\n");
+	fprintf(m_fp, "				}\n");
+	fprintf(m_fp, "			}\n");
+	fprintf(m_fp, "		}\n");
+	fprintf(m_fp, "		api.ssc_data_set_array( cxt, name, ary, len);\n");
+	fprintf(m_fp, "		return;\n");
+	fprintf(m_fp, "	}\n");
+	fprintf(m_fp, "\n");
+
+	// matrices
+	fprintf(m_fp, "	public static void set_matrix(long cxt, String name, String csvFile, int nr, int nc)\n");
+	fprintf(m_fp, "	{\n");
+	fprintf(m_fp, "		BufferedReader br = null;\n");
+	fprintf(m_fp, "		String line = \"\";\n");
+	fprintf(m_fp, "		String values[];\n");
+	fprintf(m_fp, "		String cvsSplitBy = \",\";\n");
+	fprintf(m_fp, "		int len=nr*nc;\n");
+	fprintf(m_fp, "		float ary[] = new float[len];\n");
+	fprintf(m_fp, "		int i=0;\n");
+	fprintf(m_fp, "		try {\n");
+	fprintf(m_fp, "			br = new BufferedReader(new FileReader(csvFile));\n");
+	fprintf(m_fp, "			while (((line = br.readLine()) != null) && (i<len)) {\n");
+	fprintf(m_fp, "				values = line.split(cvsSplitBy);\n");
+	fprintf(m_fp, "				for (int ic=0;ic<values.length;ic++){\n");
+	fprintf(m_fp, "					ary[i]=Float.parseFloat(values[ic]);\n");
+	fprintf(m_fp, "					i++;\n");
+	fprintf(m_fp, "				}\n");
+	fprintf(m_fp, "			}\n");
+	fprintf(m_fp, "		} catch (FileNotFoundException e) {\n");
+	fprintf(m_fp, "			e.printStackTrace();\n");
+	fprintf(m_fp, "		} catch (IOException e) {\n");
+	fprintf(m_fp, "			e.printStackTrace();\n");
+	fprintf(m_fp, "		} finally {\n");
+	fprintf(m_fp, "			if (br != null) {\n");
+	fprintf(m_fp, "				try {");
+	fprintf(m_fp, "					br.close();");
+	fprintf(m_fp, "				br.close();");
+	fprintf(m_fp, "				} catch (IOException e) {");
+	fprintf(m_fp, "					e.printStackTrace();\n");
+	fprintf(m_fp, "				}\n");
+	fprintf(m_fp, "			}\n");
+	fprintf(m_fp, "		}\n");
+	fprintf(m_fp, "		api.ssc_data_set_matrix( cxt, name, ary, nr, nc);\n");
+	fprintf(m_fp, "		return;\n");
+	fprintf(m_fp, "	}\n");
+	fprintf(m_fp, "\n");
+
 
 
 	fprintf(m_fp, "	public static void main(String[] args) throws Exception\n");
@@ -2983,8 +3058,9 @@ bool CodeGen_java::Header()
 
 	// create global data container
 	fprintf(m_fp, "		System.loadLibrary(\"SSCAPIJNI\");\n");
-	fprintf(m_fp, "		SSCAPIJNI api = new SSCAPIJNI();\n");
+	fprintf(m_fp, "		api = new SSCAPIJNI();\n");
 	fprintf(m_fp, "		long data=api.ssc_data_create();\n");
+	fprintf(m_fp, "		long mod;\n");
 	fprintf(m_fp, "\n");
 
 	return true;
@@ -2996,7 +3072,7 @@ bool CodeGen_java::CreateSSCModule(wxString &name)
 		return false;
 	else
 	{
-		fprintf(m_fp, "		long mod = api.ssc_module_create(\"%s\");\n", (const char*)name.c_str());
+		fprintf(m_fp, "		mod = api.ssc_module_create(\"%s\");\n", (const char*)name.c_str());
 	}
 	return true;
 }
