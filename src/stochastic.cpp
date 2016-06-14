@@ -17,6 +17,7 @@ char *lhs_dist_names[LHS_NUMDISTS] = {
 	"Uniform,Min,Max",
 	"Normal,Mean (mu),Std. Dev. (sigma)",
 	"Lognormal,Mean,ErrorF",
+	"Lognormal-N,Mean,Std. Dev.",
 	"Triangular,A,B,C",
 	"Gamma,Alpha,Beta",
 	"Poisson,Lambda",
@@ -53,7 +54,7 @@ void LHS::SeedVal(int sv)
 
 bool LHS::Exec()
 {
-	wxString workdir( wxFileName::GetTempDir() );
+	wxString workdir( "C:/users/jfreeman/desktop" );
 	
 	wxString lhsexe( SamApp::GetRuntimePath() + "/bin/" + wxString(LHSBINARY) );
 
@@ -112,6 +113,11 @@ bool LHS::Exec()
 		case LHS_LOGNORMAL:
 			fprintf(fp, "%s LOGNORMAL %lg %lg\n", (const char*)m_dist[i].name.c_str(), 
 				m_dist[i].params[0], 
+				m_dist[i].params[1]);
+			break;
+		case LHS_LOGNORMAL_N:
+			fprintf(fp, "%s LOGNORMAL-N %lg %lg\n", (const char*)m_dist[i].name.c_str(),
+				m_dist[i].params[0],
 				m_dist[i].params[1]);
 			break;
 		case LHS_TRIANGULAR:
