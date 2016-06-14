@@ -54,7 +54,7 @@ void LHS::SeedVal(int sv)
 
 bool LHS::Exec()
 {
-	wxString workdir( "C:/users/jfreeman/desktop" );
+	wxString workdir(wxFileName::GetTempDir());
 	
 	wxString lhsexe( SamApp::GetRuntimePath() + "/bin/" + wxString(LHSBINARY) );
 
