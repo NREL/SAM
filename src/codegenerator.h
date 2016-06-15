@@ -51,6 +51,7 @@ public:
 	virtual bool Footer() = 0;
 
 	// same across languages
+	bool PlatformFiles();
 	bool GenerateCode(const int &array_matrix_threshold);
 	bool Prepare();
 	bool Ok();

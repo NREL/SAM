@@ -199,6 +199,118 @@ CodeGen_Base::~CodeGen_Base()
 	if (m_fp) fclose(m_fp);
 }
 
+bool CodeGen_Base::PlatformFiles()
+{
+	// copy appropriate dll
+#if defined(__WXMSW__)
+	wxString f1 = SamApp::GetAppPath() + "/ssc.dll";
+	wxString f2 = m_folder + "/ssc.dll";
+#elif defined(__WXOSX__)
+	wxString f1 = SamApp::GetAppPath() + "/ssc.dll";
+	wxString f2 = m_folder + "/ssc.dll";
+#elif defined(__WXGTK__)
+	wxString f1 = SamApp::GetAppPath() + "/ssc.dll";
+	wxString f2 = m_folder + "/ssc.dll";
+#else
+	return false;
+#endif
+	wxCopyFile(f1, f2);
+	// sscapi.h
+	wxString fn = m_folder + "/sscapi.h";
+	FILE* f = fopen(fn.c_str(), "w");
+	if (!f) return false;
+	fprintf(f, "#ifndef __ssc_api_h\n");
+	fprintf(f, "#define __ssc_api_h\n");
+	fprintf(f, "#if defined(__WINDOWS__)&&defined(__DLL__)\n");
+	fprintf(f, "#define SSCEXPORT __declspec(dllexport)\n");
+	fprintf(f, "#else\n");
+	fprintf(f, "#define SSCEXPORT\n");
+	fprintf(f, "#endif\n");
+	fprintf(f, "#ifndef __SSCLINKAGECPP__\n");
+	fprintf(f, "#ifdef __cplusplus\n");
+	fprintf(f, "extern \"C\" {\n");
+	fprintf(f, "#endif\n");
+	fprintf(f, "#endif\n");
+	fprintf(f, "SSCEXPORT int ssc_version();\n");
+	fprintf(f, "SSCEXPORT const char *ssc_build_info();\n");
+	fprintf(f, "typedef void* ssc_data_t;\n");
+	fprintf(f, "typedef float ssc_number_t;\n");
+	fprintf(f, "typedef int ssc_bool_t;\n");
+	fprintf(f, "#define SSC_INVALID 0\n");
+	fprintf(f, "#define SSC_STRING 1\n");
+	fprintf(f, "#define SSC_NUMBER 2\n");
+	fprintf(f, "#define SSC_ARRAY 3\n");
+	fprintf(f, "#define SSC_MATRIX 4\n");
+	fprintf(f, "#define SSC_TABLE 5\n");
+	fprintf(f, "SSCEXPORT ssc_data_t ssc_data_create();\n");
+	fprintf(f, "SSCEXPORT void ssc_data_free( ssc_data_t p_data );\n");
+	fprintf(f, "SSCEXPORT void ssc_data_clear( ssc_data_t p_data );\n");
+	fprintf(f, "SSCEXPORT void ssc_data_unassign( ssc_data_t p_data, const char *name );\n");
+	fprintf(f, "SSCEXPORT int ssc_data_query( ssc_data_t p_data, const char *name );\n");
+	fprintf(f, "SSCEXPORT const char *ssc_data_first( ssc_data_t p_data );\n");
+	fprintf(f, "SSCEXPORT const char *ssc_data_next( ssc_data_t p_data );\n");
+	fprintf(f, "SSCEXPORT void ssc_data_set_string( ssc_data_t p_data, const char *name, const char *value );\n");
+	fprintf(f, "SSCEXPORT void ssc_data_set_number( ssc_data_t p_data, const char *name, ssc_number_t value );\n");
+	fprintf(f, "SSCEXPORT void ssc_data_set_array( ssc_data_t p_data, const char *name, ssc_number_t *pvalues, int length );\n");
+	fprintf(f, "SSCEXPORT void ssc_data_set_matrix( ssc_data_t p_data, const char *name, ssc_number_t *pvalues, int nrows, int ncols );\n");
+	fprintf(f, "SSCEXPORT void ssc_data_set_table( ssc_data_t p_data, const char *name, ssc_data_t table );\n");
+	fprintf(f, "SSCEXPORT const char *ssc_data_get_string( ssc_data_t p_data, const char *name );\n");
+	fprintf(f, "SSCEXPORT ssc_bool_t ssc_data_get_number( ssc_data_t p_data, const char *name, ssc_number_t *value );\n");
+	fprintf(f, "SSCEXPORT ssc_number_t *ssc_data_get_array( ssc_data_t p_data, const char *name, int *length );\n");
+	fprintf(f, "SSCEXPORT ssc_number_t *ssc_data_get_matrix( ssc_data_t p_data, const char *name, int *nrows, int *ncols );\n");
+	fprintf(f, "SSCEXPORT ssc_data_t ssc_data_get_table( ssc_data_t p_data, const char *name );\n");
+	fprintf(f, "typedef void* ssc_entry_t;\n");
+	fprintf(f, "SSCEXPORT ssc_entry_t ssc_module_entry( int index );\n");
+	fprintf(f, "SSCEXPORT const char *ssc_entry_name( ssc_entry_t p_entry );\n");
+	fprintf(f, "SSCEXPORT const char *ssc_entry_description( ssc_entry_t p_entry );\n");
+	fprintf(f, "SSCEXPORT int ssc_entry_version( ssc_entry_t p_entry );\n");
+	fprintf(f, "typedef void* ssc_module_t;\n");
+	fprintf(f, "typedef void* ssc_info_t;\n");
+	fprintf(f, "SSCEXPORT ssc_module_t ssc_module_create( const char *name );\n");
+	fprintf(f, "SSCEXPORT void ssc_module_free( ssc_module_t p_mod );\n");
+	fprintf(f, "#define SSC_INPUT 1\n");
+	fprintf(f, "#define SSC_OUTPUT 2\n");
+	fprintf(f, "#define SSC_INOUT 3\n");
+	fprintf(f, "SSCEXPORT const ssc_info_t ssc_module_var_info( ssc_module_t p_mod, int index );\n");
+	fprintf(f, "SSCEXPORT int ssc_info_var_type( ssc_info_t p_inf );\n");
+	fprintf(f, "SSCEXPORT int ssc_info_data_type( ssc_info_t p_inf );\n");
+	fprintf(f, "SSCEXPORT const char *ssc_info_name( ssc_info_t p_inf );\n");
+	fprintf(f, "SSCEXPORT const char *ssc_info_label( ssc_info_t p_inf );\n");
+	fprintf(f, "SSCEXPORT const char *ssc_info_units( ssc_info_t p_inf );\n");
+	fprintf(f, "SSCEXPORT const char *ssc_info_meta( ssc_info_t p_inf );\n");
+	fprintf(f, "SSCEXPORT const char *ssc_info_group( ssc_info_t p_inf );\n");
+	fprintf(f, "SSCEXPORT const char *ssc_info_required( ssc_info_t p_inf );\n");
+	fprintf(f, "SSCEXPORT const char *ssc_info_constraints( ssc_info_t p_inf );\n");
+	fprintf(f, "SSCEXPORT const char *ssc_info_uihint( ssc_info_t p_inf );\n");
+	fprintf(f, "SSCEXPORT void ssc_module_exec_set_print( int print );\n");
+	fprintf(f, "SSCEXPORT ssc_bool_t ssc_module_exec_simple( const char *name, ssc_data_t p_data );\n");
+	fprintf(f, "SSCEXPORT const char *ssc_module_exec_simple_nothread( const char *name, ssc_data_t p_data );\n");
+	fprintf(f, "#define SSC_LOG 0\n");
+	fprintf(f, "#define SSC_UPDATE 1\n");
+	fprintf(f, "SSCEXPORT ssc_bool_t ssc_module_exec( ssc_module_t p_mod, ssc_data_t p_data );\n");
+	fprintf(f, "typedef void* ssc_handler_t;\n");
+	fprintf(f, "SSCEXPORT ssc_bool_t ssc_module_exec_with_handler(\n");
+	fprintf(f, "	ssc_module_t p_mod,\n");
+	fprintf(f, "	ssc_data_t p_data,\n");
+	fprintf(f, "	ssc_bool_t (*pf_handler)( ssc_module_t, ssc_handler_t, int action, float f0, float f1, const char *s0, const char *s1, void *user_data ),\n");
+	fprintf(f, "	void *pf_user_data );\n");
+	fprintf(f, "#define SSC_NOTICE 1\n");
+	fprintf(f, "#define SSC_WARNING 2\n");
+	fprintf(f, "#define SSC_ERROR 3\n");
+	fprintf(f, "SSCEXPORT const char *ssc_module_log( ssc_module_t p_mod, int index, int *item_type, float *time );\n");
+	fprintf(f, "SSCEXPORT void __ssc_segfault();\n");
+	fprintf(f, "#ifndef __SSCLINKAGECPP__\n");
+	fprintf(f, "#ifdef __cplusplus\n");
+	fprintf(f, "}\n");
+	fprintf(f, "#endif\n");
+	fprintf(f, "\n");
+	fprintf(f, "#endif // __SSCLINKAGECPP__\n");
+	fprintf(f, "\n");
+	fprintf(f, "#endif\n");
+	fclose(f);
+	return true;
+}
+
 bool CodeGen_Base::Prepare()
 {
 	m_inputs.clear();
@@ -345,6 +457,10 @@ bool CodeGen_Base::GenerateCode(const int &array_matrix_threshold)
 			}
 		}
 	}
+	// Platform specific files
+	if (!PlatformFiles())
+		m_errors.Add("PlatformFiles failed");
+
 	// language specific additional files
 	if (!SupportingFiles())
 		m_errors.Add("SupportingFiles failed");
@@ -839,16 +955,16 @@ bool CodeGen_c::Header()
 	fprintf(m_fp, "		// print log message to console\n");
 	fprintf(m_fp, "		switch ((int)f0)\n");
 	fprintf(m_fp, "		{\n");
-	fprintf(m_fp, "		case SSC_NOTICE: printf(\"Notice: %s\", s0); break;\n");
-	fprintf(m_fp, "		case SSC_WARNING: printf(\"Warning: %s\", s0); break;\n");
-	fprintf(m_fp, "		case SSC_ERROR: printf(\"Error: %s\", s0); break;\n");
+	fprintf(m_fp, "		case SSC_NOTICE: printf(\"Notice: %%s\", s0); break;\n");
+	fprintf(m_fp, "		case SSC_WARNING: printf(\"Warning: %%s\", s0); break;\n");
+	fprintf(m_fp, "		case SSC_ERROR: printf(\"Error: %%s\", s0); break;\n");
 	fprintf(m_fp, "		}\n");
 	fprintf(m_fp, "		return 1;\n");
 	fprintf(m_fp, "	}\n");
 	fprintf(m_fp, "	else if (action == SSC_UPDATE)\n");
 	fprintf(m_fp, "	{\n");
 	fprintf(m_fp, "		// print status update to console\n");
-	fprintf(m_fp, "		printf(\"(%.2f %%) % s\", f0, s0);\n");
+	fprintf(m_fp, "		printf(\"(%%.2f %%) %%s\", f0, s0);\n");
 	fprintf(m_fp, "		return 1; // return 0 to abort simulation as needed.\n");
 	fprintf(m_fp, "	}\n");
 	fprintf(m_fp, "	else\n");
@@ -865,17 +981,12 @@ bool CodeGen_c::Header()
 	fprintf(m_fp, "	int i = 0;\n");
 	fprintf(m_fp, "	ssc_number_t *ary;\n");
 	fprintf(m_fp, "	FILE *fp = fopen(fn, \"r\");\n");
-	fprintf(m_fp, "	if (m_fp == NULL)\n");
+	fprintf(m_fp, "	if (fp == NULL)\n");
 	fprintf(m_fp, "	{\n");
 	fprintf(m_fp, "		printf(\"file opening failed \");\n");
 	fprintf(m_fp, "		return false;\n");
 	fprintf(m_fp, "	}\n");
 	fprintf(m_fp, "	ary = (ssc_number_t *)malloc(len * sizeof(ssc_number_t));\n");
-	fprintf(m_fp, "	if (m_fp == NULL)\n");
-	fprintf(m_fp, "	{\n");
-	fprintf(m_fp, "		printf(\"file opening failed \");\n");
-	fprintf(m_fp, "		return false;\n");
-	fprintf(m_fp, "	}\n");
 	fprintf(m_fp, "	while ((line = fgets(buffer, sizeof(buffer), fp)) != NULL)\n");
 	fprintf(m_fp, "	{\n");
 	fprintf(m_fp, "		record = strtok(line, \",\");\n");
@@ -886,7 +997,7 @@ bool CodeGen_c::Header()
 	fprintf(m_fp, "			i++;\n");
 	fprintf(m_fp, "		}\n");
 	fprintf(m_fp, "	}\n");
-	fprintf(m_fp, "	fclose();\n");
+	fprintf(m_fp, "	fclose(fp);\n");
 	fprintf(m_fp, "	ssc_data_set_array(p_data, name, ary, len);\n");
 	fprintf(m_fp, "	free(ary);\n");
 	fprintf(m_fp, "	return true;\n");
@@ -901,17 +1012,12 @@ bool CodeGen_c::Header()
 	fprintf(m_fp, "	ssc_number_t *ary;\n");
 	fprintf(m_fp, "	int i = 0, len = nr*nc;\n");
 	fprintf(m_fp, "	FILE *fp = fopen(fn, \"r\");\n");
-	fprintf(m_fp, "	if (m_fp == NULL)\n");
+	fprintf(m_fp, "	if (fp == NULL)\n");
 	fprintf(m_fp, "	{\n");
 	fprintf(m_fp, "		printf(\"file opening failed \");\n");
 	fprintf(m_fp, "		return false;\n");
 	fprintf(m_fp, "	}\n");
 	fprintf(m_fp, "	ary = (ssc_number_t *)malloc(len * sizeof(ssc_number_t));\n");
-	fprintf(m_fp, "	if (m_fp == NULL)\n");
-	fprintf(m_fp, "	{\n");
-	fprintf(m_fp, "		printf(\"file opening failed \");\n");
-	fprintf(m_fp, "		return false;\n");
-	fprintf(m_fp, "	}\n");
 	fprintf(m_fp, "	while ((line = fgets(buffer, sizeof(buffer), fp)) != NULL)\n");
 	fprintf(m_fp, "	{\n");
 	fprintf(m_fp, "		record = strtok(line, \",\");\n");
@@ -922,7 +1028,7 @@ bool CodeGen_c::Header()
 	fprintf(m_fp, "			i++;\n");
 	fprintf(m_fp, "		}\n");
 	fprintf(m_fp, "	}\n");
-	fprintf(m_fp, "	fclose();\n");
+	fprintf(m_fp, "	fclose(fp);\n");
 	fprintf(m_fp, "	ssc_data_set_matrix(p_data, name, ary, nr, nc);\n");
 	fprintf(m_fp, "	free(ary);\n");
 	fprintf(m_fp, "	return true;\n");
@@ -3085,105 +3191,9 @@ bool CodeGen_java::FreeSSCModule()
 
 bool CodeGen_java::SupportingFiles()
 {
-	// copy appropriate dll
-	wxString f1 = SamApp::GetAppPath() + "/ssc.dll";
-	wxString f2 = m_folder + "/ssc.dll";
-	wxCopyFile(f1, f2);
-	// sscapi.h
-	wxString fn = m_folder + "/sscapi.h";
-	FILE* f = fopen(fn.c_str(), "w");
-	if (!f) return false;
-	fprintf(f, "#ifndef __ssc_api_h\n");
-	fprintf(f, "#define __ssc_api_h\n");
-	fprintf(f, "#if defined(__WINDOWS__)&&defined(__DLL__)\n");
-	fprintf(f, "#define SSCEXPORT __declspec(dllexport)\n");
-	fprintf(f, "#else\n");
-	fprintf(f, "#define SSCEXPORT\n");
-	fprintf(f, "#endif\n");
-	fprintf(f, "#ifndef __SSCLINKAGECPP__\n");
-	fprintf(f, "#ifdef __cplusplus\n");
-	fprintf(f, "extern \"C\" {\n");
-	fprintf(f, "#endif\n");
-	fprintf(f, "#endif\n");
-	fprintf(f, "SSCEXPORT int ssc_version();\n");
-	fprintf(f, "SSCEXPORT const char *ssc_build_info();\n");
-	fprintf(f, "typedef void* ssc_data_t;\n");
-	fprintf(f, "typedef float ssc_number_t;\n");
-	fprintf(f, "typedef int ssc_bool_t;\n");
-	fprintf(f, "#define SSC_INVALID 0\n");
-	fprintf(f, "#define SSC_STRING 1\n");
-	fprintf(f, "#define SSC_NUMBER 2\n");
-	fprintf(f, "#define SSC_ARRAY 3\n");
-	fprintf(f, "#define SSC_MATRIX 4\n");
-	fprintf(f, "#define SSC_TABLE 5\n");
-	fprintf(f, "SSCEXPORT ssc_data_t ssc_data_create();\n");
-	fprintf(f, "SSCEXPORT void ssc_data_free( ssc_data_t p_data );\n");
-	fprintf(f, "SSCEXPORT void ssc_data_clear( ssc_data_t p_data );\n");
-	fprintf(f, "SSCEXPORT void ssc_data_unassign( ssc_data_t p_data, const char *name );\n");
-	fprintf(f, "SSCEXPORT int ssc_data_query( ssc_data_t p_data, const char *name );\n");
-	fprintf(f, "SSCEXPORT const char *ssc_data_first( ssc_data_t p_data );\n");
-	fprintf(f, "SSCEXPORT const char *ssc_data_next( ssc_data_t p_data );\n");
-	fprintf(f, "SSCEXPORT void ssc_data_set_string( ssc_data_t p_data, const char *name, const char *value );\n");
-	fprintf(f, "SSCEXPORT void ssc_data_set_number( ssc_data_t p_data, const char *name, ssc_number_t value );\n");
-	fprintf(f, "SSCEXPORT void ssc_data_set_array( ssc_data_t p_data, const char *name, ssc_number_t *pvalues, int length );\n");
-	fprintf(f, "SSCEXPORT void ssc_data_set_matrix( ssc_data_t p_data, const char *name, ssc_number_t *pvalues, int nrows, int ncols );\n");
-	fprintf(f, "SSCEXPORT void ssc_data_set_table( ssc_data_t p_data, const char *name, ssc_data_t table );\n");
-	fprintf(f, "SSCEXPORT const char *ssc_data_get_string( ssc_data_t p_data, const char *name );\n");
-	fprintf(f, "SSCEXPORT ssc_bool_t ssc_data_get_number( ssc_data_t p_data, const char *name, ssc_number_t *value );\n");
-	fprintf(f, "SSCEXPORT ssc_number_t *ssc_data_get_array( ssc_data_t p_data, const char *name, int *length );\n");
-	fprintf(f, "SSCEXPORT ssc_number_t *ssc_data_get_matrix( ssc_data_t p_data, const char *name, int *nrows, int *ncols );\n");
-	fprintf(f, "SSCEXPORT ssc_data_t ssc_data_get_table( ssc_data_t p_data, const char *name );\n");
-	fprintf(f, "typedef void* ssc_entry_t;\n");
-	fprintf(f, "SSCEXPORT ssc_entry_t ssc_module_entry( int index );\n");
-	fprintf(f, "SSCEXPORT const char *ssc_entry_name( ssc_entry_t p_entry );\n");
-	fprintf(f, "SSCEXPORT const char *ssc_entry_description( ssc_entry_t p_entry );\n");
-	fprintf(f, "SSCEXPORT int ssc_entry_version( ssc_entry_t p_entry );\n");
-	fprintf(f, "typedef void* ssc_module_t;\n");
-	fprintf(f, "typedef void* ssc_info_t;\n");
-	fprintf(f, "SSCEXPORT ssc_module_t ssc_module_create( const char *name );\n");
-	fprintf(f, "SSCEXPORT void ssc_module_free( ssc_module_t p_mod );\n");
-	fprintf(f, "#define SSC_INPUT 1\n");
-	fprintf(f, "#define SSC_OUTPUT 2\n");
-	fprintf(f, "#define SSC_INOUT 3\n");
-	fprintf(f, "SSCEXPORT const ssc_info_t ssc_module_var_info( ssc_module_t p_mod, int index );\n");
-	fprintf(f, "SSCEXPORT int ssc_info_var_type( ssc_info_t p_inf );\n");
-	fprintf(f, "SSCEXPORT int ssc_info_data_type( ssc_info_t p_inf );\n");
-	fprintf(f, "SSCEXPORT const char *ssc_info_name( ssc_info_t p_inf );\n");
-	fprintf(f, "SSCEXPORT const char *ssc_info_label( ssc_info_t p_inf );\n");
-	fprintf(f, "SSCEXPORT const char *ssc_info_units( ssc_info_t p_inf );\n");
-	fprintf(f, "SSCEXPORT const char *ssc_info_meta( ssc_info_t p_inf );\n");
-	fprintf(f, "SSCEXPORT const char *ssc_info_group( ssc_info_t p_inf );\n");
-	fprintf(f, "SSCEXPORT const char *ssc_info_required( ssc_info_t p_inf );\n");
-	fprintf(f, "SSCEXPORT const char *ssc_info_constraints( ssc_info_t p_inf );\n");
-	fprintf(f, "SSCEXPORT const char *ssc_info_uihint( ssc_info_t p_inf );\n");
-	fprintf(f, "SSCEXPORT void ssc_module_exec_set_print( int print );\n");
-	fprintf(f, "SSCEXPORT ssc_bool_t ssc_module_exec_simple( const char *name, ssc_data_t p_data );\n");
-	fprintf(f, "SSCEXPORT const char *ssc_module_exec_simple_nothread( const char *name, ssc_data_t p_data );\n");
-	fprintf(f, "#define SSC_LOG 0\n");
-	fprintf(f, "#define SSC_UPDATE 1\n");
-	fprintf(f, "typedef void* ssc_handler_t;\n");
-	fprintf(f, "SSCEXPORT ssc_bool_t ssc_module_exec_with_handler(\n");
-	fprintf(f, "	ssc_module_t p_mod,\n");
-	fprintf(f, "	ssc_data_t p_data,\n");
-	fprintf(f, "	ssc_bool_t (*pf_handler)( ssc_module_t, ssc_handler_t, int action, float f0, float f1, const char *s0, const char *s1, void *user_data ),\n");
-	fprintf(f, "	void *pf_user_data );\n");
-	fprintf(f, "#define SSC_NOTICE 1\n");
-	fprintf(f, "#define SSC_WARNING 2\n");
-	fprintf(f, "#define SSC_ERROR 3\n");
-	fprintf(f, "SSCEXPORT const char *ssc_module_log( ssc_module_t p_mod, int index, int *item_type, float *time );\n");
-	fprintf(f, "SSCEXPORT void __ssc_segfault();\n");
-	fprintf(f, "#ifndef __SSCLINKAGECPP__\n");
-	fprintf(f, "#ifdef __cplusplus\n");
-	fprintf(f, "}\n");
-	fprintf(f, "#endif\n");
-	fprintf(f, "\n");
-	fprintf(f, "#endif // __SSCLINKAGECPP__\n");
-	fprintf(f, "\n");
-	fprintf(f, "#endif\n");
-	fclose(f);
 	// add JNI file - java class 
-	fn = m_folder + "/SSCAPIJNI.java";
-	f = fopen(fn.c_str(), "w");
+	wxString fn = m_folder + "/SSCAPIJNI.java";
+	FILE *f = fopen(fn.c_str(), "w");
 	if (!f) return false;
 	fprintf(f, "public class SSCAPIJNI {\n");
 	fprintf(f, "  public final static native int ssc_version();\n");
