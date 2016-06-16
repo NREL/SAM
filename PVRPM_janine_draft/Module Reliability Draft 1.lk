@@ -17,7 +17,12 @@
 	Currently running daily, do we need to change that? If so, how?
 	TRANSLATE TO HOURLY---------------------
 	replace "array" with "vector" to avoid confusion
+	replace "num_etc" with component.number
 */
+
+//*************************************************************************************
+// INPUTS
+//*************************************************************************************
 
 // SYSTEM INPUTS-----------------------------------------------------------------------
 //WHY DO THESE WORK IF THEY'RE NOT GLOBAL?? BECAUSE THEY'RE ASSIGNED UP HERE AND NOT IN THE FUNCTION? SO WHY DO I HAVE TO ASSIGN GLOBAL THINGS UP HERE? HELP!!!!!!!!!
@@ -63,18 +68,66 @@
 	// repair time
 	combiner_repair_distribution = 'exponential';
 	combiner_repair_mean_days = 5;
-	
-//GLOBAL STRUCTURES---------------------------------------------------------------------------
-//Arrays to hold component information, failure times, and replacement times
+
+
+
+//*************************************************************************************
+// DATA CONTAINERS
+//*************************************************************************************
+
+// COMPONENT META DATA CONTAINER----------------------------------------------------------
+// contains information about a component type in the system
+/*
+number = number of that type of component in the system
+warranty
+	bool = true if the component has a warranty, otherwise false
+	days = number of days that the warranty is for (e.g. a 20 year warranty would be 20 * 365 days)
+failure[i]
+	distribution = distribution type of failure mode i
+	parameters = a table of parameters for failure mode i (e.g. [45, 15] )
+	times = a vector of failure times for failure mode i
+defective
+	bool = true if the component also has defective failures, otherwise false
+	fraction = fraction of that type of component that are defective
+	distribution = distribution of defective failure mode
+	parameters = parameters of defective failure mode
+	times = a vector of defective failure times
+repair
+	distribution = distribution type of repair times
+	parameters = parameters of the repair distribution
+	times = a vector of repair times
+*/
+
+// INDIVIDUAL COMPONENT DATA CONTAINER-------------------------------------------------------
+// contains current timestep data for a single component in the system
+/*
+state = operational (1) or failed (0)
+defective = flag for whether or not this component has a defect.
+	If true, then the component is also eligible for the defective failure mode
+time_to_failure = number of days left until the component fails
+time_to_repair = number of days from onset of failure until component is repaired
+cumulative_failures = total number of failures for that component
+cumulative_oow_failures = total number of failures out of warranty for that component if applicable
+*/
+
+//SET UP DATA CONTAINERS----------------------------------------------------------------------
 	// Modules
 	global modules = alloc(num_modules);
-	global module_replacement_times = null;
-	global module_failure_times = null;
-	global module_defective_failure_times = null;
-	global module_warranty_days = module_warranty_yrs * 365;
-	global module_failure_mean_days = module_failure_mean_yrs * 365;
-	global module_failure_std_days = module_failure_std_yrs * 365;
-	global module_defective_failures_per_day = module_defective_failures_per_yr / 365;
+	global module_meta = null;
+	module_meta.number = num_modules;
+	module_meta.warranty.bool = true;
+	module_meta.warranty.days = module_warranty_yrs * 365;
+	module_meta.failure[0].distribution = module_failure_distribution;
+	module_meta.failure[0].parameters = [module_failure_mean_yrs * 365, module_failure_std_yrs * 365];
+	module_meta.failure[0].times = null;
+	module_meta.defective.bool = true;
+	module_meta.defective.fraction = module_percentage_defective_percent / 100;
+	module_meta.defective.distribution = module_defective_distribution;
+	module_meta.defective.parameters = [module_defective_failures_per_yr / 365];
+	module_meta.defective.times = null;
+	module_meta.repair.distribution = module_repair_distribution;
+	module_meta.repair.parameters =  [module_repair_mean_days, module_repair_std_days];
+	module_meta.repair.times = null;
 	
 //Input containters--------------------------------------------------------------------------------
 	// Strings
@@ -82,48 +135,28 @@
 	global string_meta = null;
 	string_meta.number = num_strings;
 	string_meta.warranty = false;
-	string_meta.failure_distribution = string_failure_distribution;
-	string_meta.failure_parameters = [(string_failures_per_yr / 365)];
-	string_meta.repair_distribution = string_repair_distribution;
-	string_meta.repair_parameters = [string_repair_mean_days, string_repair_std_days];
-	string_meta.failure_times = null;
-	string_meta.repair_times = null;
+	string_meta.failure[0].distribution = string_failure_distribution;
+	string_meta.failure[0].parameters = [(string_failures_per_yr / 365)];
+	string_meta.failure[0].times = null;
+	string_meta.defective.bool = false;
+	string_meta.repair.distribution = string_repair_distribution;
+	string_meta.repair.parameters = [string_repair_mean_days, string_repair_std_days];
+	string_meta.repair.times = null;
 	
 	// Combiners
 	global combiners = alloc(num_combiners);
 	global combiner_meta = null;
 	combiner_meta.number = num_combiners;
 	combiner_meta.warranty = false;
-	combiner_meta.failure_distribution = combiner_failure_distribution;
-	combiner_meta.failure_parameters = [combiner_failure_min_days, combiner_failure_max_days];
-	combiner_meta.repair_distribution = combiner_repair_distribution;
-	combiner_meta.repair_parameters = [combiner_repair_mean_days];
-	combiner_meta.failure_times = null;
-	combiner_meta.repair_times = null;
+	combiner_meta.failure[0].distribution = combiner_failure_distribution;
+	combiner_meta.failure[0].parameters = [combiner_failure_min_days, combiner_failure_max_days];
+	combiner_meta.failure[0].times = null;
+	combiner_meta.defective.bool = false;
+	combiner_meta.repair.distribution = combiner_repair_distribution;
+	combiner_meta.repair.parameters = [combiner_repair_mean_days];
+	combiner_meta.repair.times = null;
 	
-	
-//DATA CONTAINERS------------------------------------------------------------------------------
-//Data is only stored for the current timestep.
 
-// MODULE INFORMATION
-/*
-state = operational (1) or failed (0)
-defective = flag for whether or not this module has a defect.
-	If true, then the module is also eligible for the defective failure mode
-time_to_replacement = number of days from onset of failure until it is replaced
-time_to_failure = number of days left until that module fails
-cumulative_failures = total number of failures for that module
-cumul_oow_failures = total number of failures out of warranty for that module
-*/
-
-// OTHER COMPONENT INFORMATION
-/*
-state = operational (1) or failed (0)
-time_to_failure = number of days left until the string fails
-time_to_repair = number of days from onset of failure until it is repaired
-cumulative_failures = total number of failures for that string
-cumulative_oow_failures = total number of failures out of warranty for that component if applicable
-*/
 
 //*************************************************************************************
 // SUPPORTING FUNCTIONS
@@ -146,12 +179,15 @@ function LHS(name, distribution_type, parameters, num_samples)
 }
 
 //*************************************************************************************
-// INITIALIZATION AND FAILURE FUNCTIONS
+// COMPONENT FUNCTIONS
 //*************************************************************************************
-//MODULE INITIALIZATION------------------------------------------------------------------------------
-// Initializes a single module "m" in the modules list
-// If initializing for the first time, "time_is_zero" is true so that cumulative failures is set to zero
-// To be used at the beginning or when a module is replaced
+
+//INITIALIZATION------------------------------------------------------------------------------
+// Used to set up a component for the first time or to renew the values when the component is replaced
+// Initializes a single component "component_idx" in the "component_array"
+// "Component_meta" stores the failure and repair information for that type of component
+// If initializing a component for the first time, "bool_time_is_zero" is true
+// If initializing due to a replacement, "bool_time_is_zero" is false
 
 function initialize_component(component_meta, component_array, component_idx, bool_time_is_zero)
 {
@@ -162,68 +198,50 @@ function initialize_component(component_meta, component_array, component_idx, bo
 	if (bool_time_is_zero)
 	{
 		// cumulative failures and OOW failures initialized to zero at time zero only
+		//HOW DO I KEEP TRACK OF FAILURES BY FAILURE TYPE??? DO I DO IT WHEN I CALCULATE TIMES??
 		component_array[component_idx].cumulative_failures = 0;
 		component_array[component_idx].cumulative_oow_failures = 0;
 	}
 	
-	// Main failure type
-	if (component_meta.failure_times == null || #component_meta.failure_times <= 0) //null on initialization of very first component, less than zero when you've used up the array
-		component_meta.failure_times = LHS(to_string(component_meta.failure_times), component_meta.failure_distribution, component_meta.failure_parameters, (#component_array * 10));
-	component_array[component_idx].time_to_failure = component_meta.failure_times[0]; //assign a failure time
-	component_meta.failure_times -@ 0; //remove the failure time that was just used
+	// Loop through all failure modes to determine failure times
+	num_failure_modes = #component_meta.failure;
+	for (j = 0; j < num_failure_modes; j++)
+	{
+		if (component_meta.failure[j].times == null || #component_meta.failure[j].times <= 0) //null on initialization of very first component, less than zero when you've used up the pre-calculated vector
+			component_meta.failure[j].times = LHS(to_string(component_meta.failure[j].times), component_meta.failure[j].distribution, component_meta.failure[j].parameters, (#component_array * 10));
+		possible_failure_times[j] = component_meta.failure[j].times[0]; //assign a failure time
+		component_meta.failure[j].times -@ 0; //remove the failure time that was just used
+	}
+	// Because all failure modes are hard failures (no partial failures), pick whichever failure mode will occur first
+	component_array[component_idx].time_to_failure = min(possible_failure_times);
+	
+	// Defective component
+	if (component_meta.defective.bool)
+	{
+		component_array[component_idx].defective = rand() < component_meta.defective.fraction; //randomly assign a given fraction of components to be defective
+		// If the component is defective, check the defective failure time against the previously assigned failure time
+		if (component_array[component_idx].defective)
+		{	
+			if (component_meta.defective.times == null || #component_meta.defective.times <= 0) //null on initialization of very first component, less than zero when you've used up the pre-calculated vector
+				component_meta.defective.times = LHS(to_string(component_meta.defective.times), component_meta.defective.distribution, component_meta.defective.parameters, (#component_array * 10));
+			defective_failure_time = component_meta.defective.times[0]; //assign a failure time
+			component_meta.defective.times -@ 0; //remove the failure time that was just used
+			if (defective_failure_time < component_array[component_idx].time_to_failure) //defective failure occurs before normal failure
+				component_array[component_idx].time_to_failure = defective_failure_time;
+		}
+	}
 			
 	// Time to replacement or repair in case of failure
-	if (component_meta.repair_times == null || #component_meta.repair_times <= 0) //null on initialization of very first component, less than zero when you've used up the array
-		component_meta.repair_times = LHS(to_string(component_meta.repair_times), component_meta.repair_distribution, component_meta.repair_parameters, (#component_array * 10));
-	component_array[component_idx].time_to_repair = component_meta.repair_times[0];
-	component_meta.repair_times -@ 0; //remove the repair time that was just used
-	
-	//SPECIAL CASE: Modules and inverters have more than one failure mode- how do I handle those here?
-}
-
-function initialize_module(m, time_is_zero)
-{
-	// Module state
-	modules[m].state = 1; //module is operational
-	
-	// Module failures
-	// cumulative failures and OOW failures initialized to zero at time zero only
-	if (time_is_zero)
-	{
-		modules[m].cumulative_failures = 0;
-		modules[m].cumul_oow_failures = 0;
-	}
-	
-	// Module failure mode 2: normal failure
-	// Start with this failure mode because it exists for ALL modules
-	modules[m].time_to_failure = module_failure_times[0]; //assign failure time
-	module_failure_times -@ 0; //remove the failure time that was just used
-	if (#module_failure_times <=0)
-			module_failure_times = LHS('module_failure', module_failure_distribution, [module_failure_mean_days, module_failure_std_days], num_modules*10);
-
-	
-	// Module failure mode 1: defective modules
-	modules[m].defective = rand() < (module_percentage_defective_percent / 100); //randomly assign a given % of modules to be defective
-	// If the module is defective, check the defective failure time against the normal failure time
-	if (modules[m].defective)
-	{	
-		defective_time = module_defective_failure_times[0]; //defective failure time for that module
-		module_defective_failure_times -@ 0; //remove the defective failure time that was just used
-		if (#module_defective_failure_times <=0)
-			module_defective_failure_times = LHS('module_defective_failure', module_defective_distribution, [module_defective_failures_per_day], num_modules*10);
-		if (defective_time < modules[m].time_to_failure) //defective failure occurs before normal failure
-			modules[m].time_to_failure = defective_time;
-	}
-	
-	// Module time to replacement in case of failure
-	modules[m].time_to_replacement = module_replacement_times[0];
-	module_replacement_times -@ 0; //remove the replacement time that was just used
-	if (#module_replacement_times <=0)
-		module_replacement_times = LHS('module_replacement_times', module_repair_distribution, [module_repair_mean_days, module_repair_std_days], num_modules*20);
+	if (component_meta.repair.times == null || #component_meta.repair.times <= 0) //null on initialization of very first component, less than zero when you've used up the array
+		component_meta.repair.times = LHS(to_string(component_meta.repair.times), component_meta.repair.distribution, component_meta.repair.parameters, (#component_array * 10));
+	component_array[component_idx].time_to_repair = component_meta.repair.times[0];
+	component_meta.repair.times -@ 0; //remove the repair time that was just used
 }
 
 //COMPONENT FAILURE----------------------------------------------------------------------------------------
-// Changes "component_idx" in the array "component" state to failed, increments failures, checks current "day" against warranty if bool_warranty is true
+// Used to change a component's state from operational to failed
+// Changes "component_idx" in the array "component" state to failed and increments failures
+// Checks current "day" against warranty if bool_warranty is true
 
 function component_failure(component_array, component_idx, day, bool_warranty, warranty_length_days)
 {
@@ -234,21 +252,16 @@ function component_failure(component_array, component_idx, day, bool_warranty, w
 		component_array[component_idx].cumul_oow_failures++;
 }
 
+//*************************************************************************************
+// SYSTEM FUNCTIONS
+//*************************************************************************************
+
 //SYSTEM INITIALIZATION---------------------------------------------------------------------------------
 function initialize()
 {
-	// Module failure mode 1: defective component
-	module_defective_failure_times = LHS('module_defective_failure', module_defective_distribution, [module_defective_failures_per_day], num_modules*10);
-	
-	// Module failure mode 2: failure
-	module_failure_times = LHS('module_failure', module_failure_distribution, [module_failure_mean_days, module_failure_std_days], num_modules*10);
-	
-	// Module replacement times
-	module_replacement_times = LHS('module_replacement_times', module_repair_distribution, [module_repair_mean_days, module_repair_std_days], num_modules*20);
-		
 	// Create module structures
 	for (m = 0; m < num_modules; m++)
-		initialize_module(m, true);
+		initialize_component(module_meta, modules, m, true);
 		
 	// Create string structures
 	for (s = 0; s < num_strings; s++)
@@ -259,9 +272,7 @@ function initialize()
 		initialize_component(combiner_meta, combiners, c, true);
 }
 
-//*************************************************************************************
-// DC DERATE CALCULATION FUNCTION
-//*************************************************************************************
+// DC DERATE CALCULATION FUNCTION------------------------------------------------------------------------
 function whats_my_dc_derate() 
 {
 	//note that here, "operational modules" means modules whose power is REACHING the inverter, 
@@ -299,9 +310,7 @@ function whats_my_dc_derate()
 	return operational_modules / num_modules;
 }
 
-//*************************************************************************************
-// INCREMENT TIMESTEP FUNCTION
-//*************************************************************************************
+// INCREMENT TIMESTEP FUNCTION------------------------------------------------------------------------------
 function step_in_time(day)
 {
 	// Modules------------------------------------------------------------------
@@ -313,16 +322,16 @@ function step_in_time(day)
 			modules[m].time_to_failure--;
 			//module has just failed
 			if (modules[m].time_to_failure <= 0)
-				component_failure(modules, m, day, true, module_warranty_days);
+				component_failure(modules, m, day, true, module_meta.warranty.days);
 		}
 		
 		//module is currently failed
 		else
 		{
-			modules[m].time_to_replacement--;
+			modules[m].time_to_repair--;
 			//module is replaced
-			if (modules[m].time_to_replacement <= 0)
-				initialize_module(m, false); //initialize a new module without resetting cumulative failures
+			if (modules[m].time_to_repair <= 0)
+				initialize_component(module_meta, modules, m, false); //initialize a new module without resetting cumulative failures
 		}		
 	}
 	
