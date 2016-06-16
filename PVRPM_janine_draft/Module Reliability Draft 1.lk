@@ -1,6 +1,6 @@
 //*************************************************************************************
 //Module Reliability Model -- DRAFT --
-//jmf 6/4/16
+//jmf 6/16/16
 //*************************************************************************************
 
 // TO DO-----------------------------------------------------------------------------------
@@ -164,19 +164,16 @@ function initialize_component(component_meta, component_array, component_idx, bo
 		// cumulative failures and OOW failures initialized to zero at time zero only
 		component_array[component_idx].cumulative_failures = 0;
 		component_array[component_idx].cumulative_oow_failures = 0;
-		// failure and repair arrays must be initialized at time zero
-		component_meta.failure_times = LHS(to_string(component_meta.failure_times), component_meta.failure_distribution, component_meta.failure_parameters, (#component_array * 10));
-		component_meta.repair_times = LHS(to_string(component_meta.repair_times), component_meta.repair_distribution, component_meta.repair_parameters, (#component_array * 10));
 	}
 	
 	// Main failure type
-	if (#component_meta.failure_times <= 0) //this will always be true on the first "initialize" call
+	if (component_meta.failure_times == null || #component_meta.failure_times <= 0) //null on initialization of very first component, less than zero when you've used up the array
 		component_meta.failure_times = LHS(to_string(component_meta.failure_times), component_meta.failure_distribution, component_meta.failure_parameters, (#component_array * 10));
 	component_array[component_idx].time_to_failure = component_meta.failure_times[0]; //assign a failure time
 	component_meta.failure_times -@ 0; //remove the failure time that was just used
 			
 	// Time to replacement or repair in case of failure
-	if (#component_meta.repair_times <= 0) //this will always be true on the first "initialize" call
+	if (component_meta.repair_times == null || #component_meta.repair_times <= 0) //null on initialization of very first component, less than zero when you've used up the array
 		component_meta.repair_times = LHS(to_string(component_meta.repair_times), component_meta.repair_distribution, component_meta.repair_parameters, (#component_array * 10));
 	component_array[component_idx].time_to_repair = component_meta.repair_times[0];
 	component_meta.repair_times -@ 0; //remove the repair time that was just used
