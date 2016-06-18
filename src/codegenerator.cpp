@@ -206,11 +206,11 @@ bool CodeGen_Base::PlatformFiles()
 	wxString f1 = SamApp::GetAppPath() + "/ssc.dll";
 	wxString f2 = m_folder + "/ssc.dll";
 #elif defined(__WXOSX__)
-	wxString f1 = SamApp::GetAppPath() + "/ssc.dll";
-	wxString f2 = m_folder + "/ssc.dll";
+	wxString f1 = SamApp::GetAppPath() + "/ssc.dylib";
+	wxString f2 = m_folder + "/ssc.dylib";
 #elif defined(__WXGTK__)
-	wxString f1 = SamApp::GetAppPath() + "/ssc.dll";
-	wxString f2 = m_folder + "/ssc.dll";
+	wxString f1 = SamApp::GetAppPath() + "/ssc.so";
+	wxString f2 = m_folder + "/ssc.so";
 #else
 	return false;
 #endif
@@ -4214,7 +4214,7 @@ bool CodeGen_java::SupportingFiles()
 	fprintf(f, "    	endif\n");
 	fprintf(f, "    else \n");
 	fprintf(f, "        ifneq (,$findstring(Linux, $(PF)))\n");
-	fprintf(f, "	    CIFLAGS = -I/usr/java/jdk1.7.0_71/include -I/usr/java/jdk1.7.0_71/include/linux -fPIC \n");
+	fprintf(f, "	    CIFLAGS = -I/usr/java/default/include -I/usr/java/default/include/linux -fPIC \n");
 	fprintf(f, "	    SSCLIB = ./ssc.so\n");
 	fprintf(f, "	    EXT = so\n");
 	fprintf(f, "	    JNILIB = libSSCAPIJNI.so\n");
