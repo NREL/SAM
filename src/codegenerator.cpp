@@ -4416,16 +4416,15 @@ bool CodeGen_php::Input(ssc_data_t p_data, const char *name, const wxString &fol
 
 bool CodeGen_php::RunSSCModule(wxString &name)
 {
-	fprintf(m_fp, "	ssc.module_exec_set_print( 0 );\n");
-	fprintf(m_fp, "	if ssc.module_exec(module, data) == 0:\n");
-	fprintf(m_fp, "		print '%s simulation error'\n", (const char*)name.c_str());
-	fprintf(m_fp, "		idx = 1\n");
-	fprintf(m_fp, "		msg = ssc.module_log(module, 0)\n");
-	fprintf(m_fp, "		while (msg != None):\n");
-	fprintf(m_fp, "			print '\t: ' + msg\n");
-	fprintf(m_fp, "			msg = ssc.module_log(module, idx)\n");
-	fprintf(m_fp, "			idx = idx + 1\n");
-	fprintf(m_fp, "		sys.exit( \"Simulation Error\" );\n");
+	fprintf(m_fp, "	if ( !sscphp_module_exec( $mod, $dat ) )\n");
+	fprintf(m_fp, "	{\n");
+	fprintf(m_fp, "		$index = 0;\n");
+	fprintf(m_fp, "		while ($err = sscphp_module_log( $mod, $index++ ) )\n");
+	fprintf(m_fp, "		{\n");
+	fprintf(m_fp, "			echo \"$err<br>\n\";\n");
+	fprintf(m_fp, "		}\n");
+	fprintf(m_fp, "		break 1;\n");
+	fprintf(m_fp, "	}\n");
 	return true;
 }
 
@@ -4604,7 +4603,7 @@ bool CodeGen_php::Header()
 	fprintf(m_fp, "		return self.pdll.ssc_module_exec_set_print( c_int(prn) );\n");
 	fprintf(m_fp, "if __name__ == \"__main__\":\n");
 	fprintf(m_fp, "	ssc = PySSC()\n");
-	fprintf(m_fp, "	data = ssc.data_create()\n");
+	fprintf(m_fp, "	$dat = sscphp_data_create();\n");
 
 	return true;
 }
@@ -4615,14 +4614,14 @@ bool CodeGen_php::CreateSSCModule(wxString &name)
 		return false;
 	else
 	{
-		fprintf(m_fp, "	module = ssc.module_create(\"%s\")	\n", (const char*)name.c_str());
+		fprintf(m_fp, "	$mod = sscphp_module_create(\"%s\");\n", (const char*)name.c_str());
 	}
 	return true;
 }
 
 bool CodeGen_php::FreeSSCModule()
 {
-	fprintf(m_fp, "	ssc.module_free(module)\n");
+	fprintf(m_fp, "	sscphp_module_free( $mod );\n");
 	return true;
 }
 
@@ -4633,7 +4632,7 @@ bool CodeGen_php::SupportingFiles()
 
 bool CodeGen_php::Footer()
 {
-	fprintf(m_fp, "	ssc.data_free(data);");
+	fprintf(m_fp, "	sscphp_data_free( $dat );");
 	return true;
 }
 
