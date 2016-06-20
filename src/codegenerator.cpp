@@ -4338,7 +4338,7 @@ bool CodeGen_php::Input(ssc_data_t p_data, const char *name, const wxString &fol
 		::ssc_data_get_number(p_data, name, &value);
 		dbl_value = (double)value;
 		if (dbl_value > 1e38) dbl_value = 1e38;
-		fprintf(m_fp, "	sscphp_data_set_number( $dat, '%s', %.17g )\n", name, dbl_value);
+		fprintf(m_fp, "	sscphp_data_set_number( $dat, '%s', %.17g );\n", name, dbl_value);
 		break;
 	case SSC_ARRAY:
 		p = ::ssc_data_get_array(p_data, name, &len);
@@ -4480,7 +4480,7 @@ bool CodeGen_php::Header()
 	fprintf(m_fp, "	    return;\n");
 	fprintf(m_fp, "	}\n");
 	fprintf(m_fp, "	sscphp_data_set_matrix( $data, $name, $ary, $nr, $nc);\n");
-	fprintf(m_fp, "}\n");
+	fprintf(m_fp, " }\n");
 	fprintf(m_fp, "	$dat = sscphp_data_create();\n");
 	return true;
 }
@@ -5034,14 +5034,14 @@ bool CodeGen_php::SupportingFiles()
 	fn = m_folder + "/Makefile";
 	f = fopen(fn.c_str(), "w");
 	if (!f) return false;
-	fprintf(m_fp, "PHPDIR=/usr/include/php\n");
-	fprintf(m_fp, "\n");
-	fprintf(m_fp, "sscphp.so: sscphp.c\n");
-	fprintf(m_fp, "	gcc -shared -O2 -fPIC -I$(PHPDIR) -I$(PHPDIR)/TSRM -I$(PHPDIR)/main -I$(PHPDIR)/ext -I$(PHPDIR)/Zend -o sscphp.so sscphp.c ssc.dylib\n");
-	fprintf(m_fp, "\n");
-	fprintf(m_fp, "clean:\n");
-	fprintf(m_fp, "	rm sscphp.so\n");
-	fprintf(m_fp, "\n");
+	fprintf(f, "PHPDIR=/usr/include/php\n");
+	fprintf(f, "\n");
+	fprintf(f, "sscphp.so: sscphp.c\n");
+	fprintf(f, "	gcc -shared -O2 -fPIC -I$(PHPDIR) -I$(PHPDIR)/TSRM -I$(PHPDIR)/main -I$(PHPDIR)/ext -I$(PHPDIR)/Zend -o sscphp.so sscphp.c ssc.so\n");
+	fprintf(f, "\n");
+	fprintf(f, "clean:\n");
+	fprintf(f, "	rm sscphp.so\n");
+	fprintf(f, "\n");
 	fprintf(f, "help:\n");
 	fprintf(f, "	@echo \"Please check the settings for your system.Your system may not be supported.Please contact sam.support@nrel.gov.System: $(PF) $(VERS)\"\n");
 	fclose(f);
