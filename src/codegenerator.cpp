@@ -4354,7 +4354,7 @@ bool CodeGen_php::Input(ssc_data_t p_data, const char *name, const wxString &fol
 				csv.Set(i, 0, wxString::Format("%.17g", dbl_value));
 			}
 			csv.WriteFile(fn);
-			fprintf(m_fp, "	ssc.data_set_array_from_csv( data, '%s', '%s');\n", name, (const char*)fn.c_str());
+			fprintf(m_fp, "	set_array_from_csv( $dat, '%s', '%s', %d);\n", name, (const char*)fn.c_str(), len);
 		}
 		else
 		{
@@ -4388,7 +4388,7 @@ bool CodeGen_php::Input(ssc_data_t p_data, const char *name, const wxString &fol
 				}
 			}
 			csv.WriteFile(fn);
-			fprintf(m_fp, "	ssc.data_set_matrix_from_csv( data, '%s', '%s');\n", name, (const char*)fn.c_str());
+			fprintf(m_fp, "	set_matrix_from_csv( $dat, '%s', '%s', %d, %d);\n", name, (const char*)fn.c_str(), nr, nc);
 		}
 		else
 		{
@@ -4432,9 +4432,56 @@ bool CodeGen_php::RunSSCModule(wxString &name)
 bool CodeGen_php::Header()
 {
 	// top of file and supporting functions
-
+	fprintf(m_fp, "<?php\n");
+	fprintf(m_fp, "    function set_array_from_csv( $data, $name, $filename, $len) {\n");
+	fprintf(m_fp, "	$row = 0;\n");
+	fprintf(m_fp, "	$ary = array();\n");
+	fprintf(m_fp, "	if (($handle = fopen($filename, \"r\")) !== FALSE) {\n");
+	fprintf(m_fp, "	    while (($data = fgetcsv($handle, 1000, \",\")) !== FALSE) {\n");
+	fprintf(m_fp, "		$num = count($data);\n");
+	fprintf(m_fp, "		for ($c=0; $c < $num; $c++) {\n");
+	fprintf(m_fp, "		    $ary[$row] = $data[$c];\n");
+	fprintf(m_fp, "		}\n");
+	fprintf(m_fp, "		$row++;\n");
+	fprintf(m_fp, "	    }\n");
+	fprintf(m_fp, "	    fclose($handle);\n");
+	fprintf(m_fp, "	}\n");
+	fprintf(m_fp, "	if ($row != $len) {\n");
+	fprintf(m_fp, "	    echo \"number of elements $len not matching file length $row\" . PHP_EOL;\n");
+	fprintf(m_fp, "	    return;\n");
+	fprintf(m_fp, "	}\n");
+	fprintf(m_fp, "	sscphp_data_set_array( $data, $name, $ary, $len);\n");
+	fprintf(m_fp, "    }\n");
+	fprintf(m_fp, "    function set_matrix_from_csv( $data, $name, $filename, $nr, $nc) {\n");
+	fprintf(m_fp, "	$i=0;\n");
+	fprintf(m_fp, "	$row = 0;\n");
+	fprintf(m_fp, "	$ary = array();\n");
+	fprintf(m_fp, "	if (($handle = fopen($filename, \"r\")) !== FALSE) {\n");
+	fprintf(m_fp, "	    while (($data = fgetcsv($handle, 1000, \",\")) !== FALSE) {\n");
+	fprintf(m_fp, "		$col = count($data);\n");
+	fprintf(m_fp, "		if ($col != $nc) {\n");
+	fprintf(m_fp, "		    echo \"number of elements $col not matching row length $nc for row $row\" . PHP_EOL;\n");
+	fprintf(m_fp, "		    return;\n");
+	fprintf(m_fp, "		}\n");
+	fprintf(m_fp, "	        for ($c=0; $c < $col; $c++) {\n");
+	fprintf(m_fp, "            		$ary[$i] = $data[$c];\n");
+	fprintf(m_fp, "            		$i++;\n");
+	fprintf(m_fp, "        	}\n");
+	fprintf(m_fp, "        	$row++;\n");
+	fprintf(m_fp, "    	    }\n");
+	fprintf(m_fp, "    	fclose($handle);\n");
+	fprintf(m_fp, "	}\n");
+	fprintf(m_fp, "	if ($row != $nr) {\n");
+	fprintf(m_fp, "	    echo \"number of rows $nr not matching file length $row\" . PHP_EOL;\n");
+	fprintf(m_fp, "	    return;\n");
+	fprintf(m_fp, "	}\n");
+	fprintf(m_fp, "	if ($i != ($nr * $nc)) {\n");
+	fprintf(m_fp, "	    echo \"number of elements $i not matching file length \" $nr*$nc . PHP_EOL;\n");
+	fprintf(m_fp, "	    return;\n");
+	fprintf(m_fp, "	}\n");
+	fprintf(m_fp, "	sscphp_data_set_matrix( $data, $name, $ary, $nr, $nc);\n");
+	fprintf(m_fp, "}\n");
 	fprintf(m_fp, "	$dat = sscphp_data_create();\n");
-
 	return true;
 }
 
@@ -4983,12 +5030,28 @@ bool CodeGen_php::SupportingFiles()
 	fprintf(f, "// install module\n");
 	fprintf(f, "ZEND_GET_MODULE(sscphp)\n");
 	fclose(f);
+	// add Makefile (currently linux only)
+	fn = m_folder + "/Makefile";
+	f = fopen(fn.c_str(), "w");
+	if (!f) return false;
+	fprintf(m_fp, "PHPDIR=/usr/include/php\n");
+	fprintf(m_fp, "\n");
+	fprintf(m_fp, "sscphp.so: sscphp.c\n");
+	fprintf(m_fp, "	gcc -shared -O2 -fPIC -I$(PHPDIR) -I$(PHPDIR)/TSRM -I$(PHPDIR)/main -I$(PHPDIR)/ext -I$(PHPDIR)/Zend -o sscphp.so sscphp.c ssc.dylib\n");
+	fprintf(m_fp, "\n");
+	fprintf(m_fp, "clean:\n");
+	fprintf(m_fp, "	rm sscphp.so\n");
+	fprintf(m_fp, "\n");
+	fprintf(f, "help:\n");
+	fprintf(f, "	@echo \"Please check the settings for your system.Your system may not be supported.Please contact sam.support@nrel.gov.System: $(PF) $(VERS)\"\n");
+	fclose(f);
 	return true;
 }
 
 bool CodeGen_php::Footer()
 {
-	fprintf(m_fp, "	sscphp_data_free( $dat );");
+	fprintf(m_fp, "	sscphp_data_free( $dat );\n");
+	fprintf(m_fp, "?>\n");
 	return true;
 }
 
