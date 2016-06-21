@@ -4294,25 +4294,22 @@ bool CodeGen_php::Output(ssc_data_t p_data)
 		switch (type)
 		{
 		case SSC_STRING:
-			fprintf(m_fp, "	%s = ssc.data_set_string( data, '%s' );\n", name, name);
-			fprintf(m_fp, " print '%s = ', %s\n", (const char*)m_data[ii].label.c_str(), name);
+			fprintf(m_fp, "	$%s = sscphp_data_get_string( $dat, '%s' );\n", name, name);
+			fprintf(m_fp, " echo '%s = '. $%s . PHP_EOL;\n", (const char*)m_data[ii].label.c_str(), name);
 			break;
 		case SSC_NUMBER:
-			fprintf(m_fp, "	%s = ssc.data_get_number(data, '%s');\n", name, name);
-			fprintf(m_fp, "	print '%s = ', %s\n", (const char*)m_data[ii].label.c_str(), name);
+			fprintf(m_fp, "	$%s = sscphp_data_get_number( $dat, '%s');\n", name, name);
+			fprintf(m_fp, "	 echo '%s = '. $%s . PHP_EOL;\n", (const char*)m_data[ii].label.c_str(), name);
 			break;
 		case SSC_ARRAY:
-			fprintf(m_fp, "	%s = ssc.data_get_array(data, '%s')", name, name);
-			fprintf(m_fp, "	for i in range(len(%s)):\n", name);
-			fprintf(m_fp, "		print '\tarray element: ' , i ,' = ' , %s[i]\n", name);
+			fprintf(m_fp, "	$%s = sscphp_data_get_array( $dat, '%s');\n", name, name);
+			fprintf(m_fp, "	for ($i=0; $i<count($%s);$i++):\n", name);
+			fprintf(m_fp, "		echo 'array element: ' . $i .' = ' . $%s[$i] . PHP_EOL;\n", name);
 			break;
-		case SSC_MATRIX:
-			fprintf(m_fp, "	%s = ssc.data_get_matrix(data, '%s')", name, name);
-			fprintf(m_fp, "	nrows = len(%s);\n", name);
-			fprintf(m_fp, "	ncols = len(%s[0])\n", name);
-			fprintf(m_fp, "	for i in range(nrows):\n");
-			fprintf(m_fp, "		for j in range(ncols):\n");
-			fprintf(m_fp, "			print '\treturned matrix element : (' , i , ', ' , j , ') = ' , %s[i][j]\n", name);
+		case SSC_MATRIX: // update to find columns
+			fprintf(m_fp, "	$%s = sscphp_data_get_matrix( $dat, '%s');\n", name, name);
+			fprintf(m_fp, "	for ($i=0; $i<count($%s);$i++):\n", name);
+			fprintf(m_fp, "		echo 'array element: ' . $i .' = ' . $%s[$i] . PHP_EOL;\n", name);
 			break;
 		}
 	}
