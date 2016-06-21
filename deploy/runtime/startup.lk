@@ -857,7 +857,7 @@ setup_geothermal_power_pages();
 // Generic System //////////////////////////////////////////////////////////////
 function setup_generic_system_pages()
 {
-	addpage( [[ 'Generic System Plant' ]], { 'sidebar'='Power Plant' } );
+	addpage( [[ 'Generic System Plant' ]], { 'sidebar'='Power Plant' , 'help'='generic_system_plant' } );
 }
 
 setconfig( 'Generic System', 'Residential' );	
