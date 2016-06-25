@@ -206,7 +206,7 @@ bool CodeGen_Base::PlatformFiles()
 	wxString f1 = SamApp::GetAppPath() + "/ssc.dll";
 	wxString f2 = m_folder + "/ssc.dll";
 #elif defined(__WXOSX__)
-	wxString f1 = SamApp::GetAppPath() + "/ssc.dylib";
+	wxString f1 = SamApp::GetAppPath() + "/../Frameworks/ssc.dylib";
 	wxString f2 = m_folder + "/ssc.dylib";
 #elif defined(__WXGTK__)
 	wxString f1 = SamApp::GetAppPath() + "/ssc.so";
@@ -3705,7 +3705,7 @@ bool CodeGen_java::SupportingFiles()
 	fprintf(f, "	if (name)\n");
 	fprintf(f, "	{\n");
 	fprintf(f, "      ssc_name = (char *)(*jenv)->GetStringUTFChars(jenv, name, 0);\n");
-	fprintf(f, "	  if (!ssc_name) return ;\n");
+	fprintf(f, "	  if (!ssc_name) return NULL;\n");
 	fprintf(f, "	}\n");
 	fprintf(f, "	int i, count;\n");
 	fprintf(f, "    jfloatArray output;\n");
@@ -3731,7 +3731,7 @@ bool CodeGen_java::SupportingFiles()
 	fprintf(f, "	if (name)\n");
 	fprintf(f, "	{\n");
 	fprintf(f, "      ssc_name = (char *)(*jenv)->GetStringUTFChars(jenv, name, 0);\n");
-	fprintf(f, "	  if (!ssc_name) return ;\n");
+	fprintf(f, "	  if (!ssc_name) return NULL;\n");
 	fprintf(f, "	}\n");
 	fprintf(f, "    int i, row_count, col_count;\n");
 	fprintf(f, "    jfloatArray output;\n");
@@ -4192,6 +4192,10 @@ bool CodeGen_java::SupportingFiles()
 	fprintf(f, "    ifneq (,$(findstring Darwin, $(PF)))\n");
 	fprintf(f, "        VERS = $(shell sw_vers -productVersion)\n");
 	fprintf(f, "#Update based on your Java installation location\n");
+	fprintf(f, "        CIFLAGS = -I/Library/Java/JavaVirtualMachines/jdk1.8.0_91.jdk/Contents/Home/include -I/Library/Java/JavaVirtualMachines/jdk1.8.0_91.jdk/Contents/Home/include/darwin\n");
+	fprintf(f, "        SSCLIB = ./ssc.dylib\n");
+	fprintf(f, "        EXT = dylib\n");
+	fprintf(f, "        JNILIB = libSSCAPIJNI.jnilib\n");
 	fprintf(f, "        ifneq (,$(findstring 10.8, $(VERS) ))\n");
 	fprintf(f, "            CIFLAGS = -I/System/Library/Frameworks/JavaVM.framework/Versions/Current/Headers -I/System/Library/Frameworks/JavaVM.framework/Headers\n");
 	fprintf(f, "	    SSCLIB = ssc.dylib\n");
