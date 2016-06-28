@@ -5,8 +5,6 @@
 
 // TO DO-----------------------------------------------------------------------------------
 /*
-	Terminology: replacement versus repair
-	Module failures: Replacement versus repair? How to tell? How affecting warranty? How affecting next failure time? etc.
 	Don't allow negative time setting for failure times
 	Error checking on arrays 
 	Set active case and error check
@@ -43,9 +41,9 @@
 	module_failure_mean_yrs = 35;
 	module_failure_std_yrs = 8;
 	// repair time
-	module_repair_distribution = 'normal'; //'lognormal'; //SHOULD BE LOGNORMAL N BUT THAT DOESN'T SEEM TO AGREE WITH GOLDSIM!!!!!!
+	module_repair_distribution = 'lognormal';
 	module_repair_mean_days = 45; //says 60 in pseudo code but is currently 45 in Goldsim
-	module_repair_std_days = 15; //says 20 in pseudo code but is currently 15 in Goldsim
+	module_repair_std_days = 15; //1.9713; //says 20 in pseudo code but is currently 15 in Goldsim, using the %kurtosis from the input box in Goldsim because that seems to match the best!!!!!!!
 	// warranty period
 	module_warranty_yrs = 20;
 	
@@ -60,11 +58,9 @@
 	
 // COMBINER RELIABILITY INPUTS----------------------------------------------------------
 	// failure mode 1
-	combiner_failure_distribution = 'uniform'; //'lognormal';//SHOULD BE LOGNORMAL N BUT THAT DOESN'T SEEM TO AGREE WITH GOLDSIM!!!!!!
-	//combiner_failure_mean_yrs = 5.4;
-	//combiner_failure_std_yrs = 1.9;
-	combiner_failure_min_days = 20; //1131;
-	combiner_failure_max_days = 320; //2148;
+	combiner_failure_distribution = 'uniform';
+	combiner_failure_min_days = 150; //1131;
+	combiner_failure_max_days = 200; //2148;
 	// repair time
 	combiner_repair_distribution = 'exponential';
 	combiner_repair_mean_days = 5;
@@ -134,7 +130,8 @@ cumulative_oow_failures = total number of failures out of warranty for that comp
 	global strings = alloc(num_strings);
 	global string_meta = null;
 	string_meta.number = num_strings;
-	string_meta.warranty = false;
+	string_meta.warranty.bool = false;
+	string_meta.warranty.days = 0;
 	string_meta.failure[0].distribution = string_failure_distribution;
 	string_meta.failure[0].parameters = [(string_failures_per_yr / 365)];
 	string_meta.failure[0].times = null;
@@ -147,7 +144,8 @@ cumulative_oow_failures = total number of failures out of warranty for that comp
 	global combiners = alloc(num_combiners);
 	global combiner_meta = null;
 	combiner_meta.number = num_combiners;
-	combiner_meta.warranty = false;
+	combiner_meta.warranty.bool = false;
+	combiner_meta.warranty.days = 0;
 	combiner_meta.failure[0].distribution = combiner_failure_distribution;
 	combiner_meta.failure[0].parameters = [combiner_failure_min_days, combiner_failure_max_days];
 	combiner_meta.failure[0].times = null;
@@ -183,11 +181,11 @@ function LHS(name, distribution_type, parameters, num_samples)
 //*************************************************************************************
 
 //INITIALIZATION------------------------------------------------------------------------------
-// Used to set up a component for the first time or to renew the values when the component is replaced
+// Used to set up a component for the first time or to renew the values when the component is repaired
 // Initializes a single component "component_idx" in the "component_array"
 // "Component_meta" stores the failure and repair information for that type of component
 // If initializing a component for the first time, "bool_time_is_zero" is true
-// If initializing due to a replacement, "bool_time_is_zero" is false
+// If initializing due to a repair, "bool_time_is_zero" is false
 
 function initialize_component(component_meta, component_array, component_idx, bool_time_is_zero)
 {
@@ -311,70 +309,28 @@ function whats_my_dc_derate()
 }
 
 // INCREMENT TIMESTEP FUNCTION------------------------------------------------------------------------------
-function step_in_time(day)
+function step_in_time(component_meta, component_array, day)
 {
-	// Modules------------------------------------------------------------------
-	for (m=0; m < num_modules; m++)
+	//loop through number of components
+	for (i=0; i < component_meta.number; i++)
 	{
-		//module is operational
-		if (modules[m].state == 1)
+		//component is operational
+		if (component_array[i].state == 1)
 		{
-			modules[m].time_to_failure--;
-			//module has just failed
-			if (modules[m].time_to_failure <= 0)
-				component_failure(modules, m, day, true, module_meta.warranty.days);
+			component_array[i].time_to_failure--;
+			//component has just failed
+			if (component_array[i].time_to_failure <= 0)
+				component_failure(component_array, i, day, component_meta.warranty.bool, component_meta.warranty.days);
 		}
 		
-		//module is currently failed
+		//component is currently failed
 		else
 		{
-			modules[m].time_to_repair--;
-			//module is replaced
-			if (modules[m].time_to_repair <= 0)
-				initialize_component(module_meta, modules, m, false); //initialize a new module without resetting cumulative failures
+			component_array[i].time_to_repair--;
+			//component is repaired
+			if (component_array[i].time_to_repair <= 0)
+				initialize_component(component_meta, component_array, i, false); //initialize a new module without resetting cumulative failures
 		}		
-	}
-	
-	// Strings------------------------------------------------------------------
-	for (s=0; s < num_strings; s++)
-	{
-		//string is operational
-		if (strings[s].state == 1)
-		{	
-			strings[s].time_to_failure--;
-			//string has just failed
-			if (strings[s].time_to_failure <= 0)
-				component_failure (strings, s, day, false, 0);
-		}
-		//string is currently failed
-		else
-		{
-			strings[s].time_to_repair--;
-			//string is replaced
-			if (strings[s].time_to_repair <= 0)
-				initialize_component(string_meta, strings, s, false); //initialize the string without resetting cumulative failures
-		}
-	}
-	
-	// Combiners------------------------------------------------------------------
-	for (c=0; c < num_combiners; c++)
-	{
-		//combiner is operational
-		if (combiners[c].state == 1)
-		{	
-			combiners[c].time_to_failure--;
-			//combiner has just failed
-			if (combiners[c].time_to_failure <= 0)
-				component_failure(combiners, c, day, false, 0);
-		}
-		//combiner is currently failed
-		else
-		{
-			combiners[c].time_to_repair--;
-			//combiner is replaced
-			if (combiners[c].time_to_repair <= 0)
-				initialize_component(combiner_meta, combiners, c, false); //initialize the combiner without resetting cumulative failures
-		}
 	}
 }
 
@@ -398,7 +354,9 @@ dc_availability[0] = whats_my_dc_derate() * 100;
 //rest of system lifetime
 for (day = 1; day < system_lifetime_yrs * 365; day++)
 {
-	step_in_time(day);
+	step_in_time(module_meta, modules, day);
+	step_in_time(string_meta, strings, day);
+	step_in_time(combiner_meta, combiners, day);
 	dc_availability[day] = whats_my_dc_derate() * 100;
 	//outln(day + '\t' + modules);
 }
