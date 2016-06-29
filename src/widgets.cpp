@@ -1447,7 +1447,7 @@ END_EVENT_TABLE()
 AFDataArrayButton::AFDataArrayButton( wxWindow *parent, int id, const wxPoint &pos, const wxSize &size)
 	: wxButton(parent, id, "Edit data...", pos, size)
 {
-	mData.resize(8670, 0.0);
+	mData.resize(8760, 0.0);
 	mMode = DATA_ARRAY_8760_MULTIPLES;
 }
 
