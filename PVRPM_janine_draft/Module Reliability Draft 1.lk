@@ -112,7 +112,7 @@
 
 // GRID RELIABILITY INPUTS--------------------------------------------------------------
 	// failure mode 1
-	grid_failure_distribution = 'weibull';
+	grid_failure_distribution = 'normal';
 	grid_failure_mean_yrs = 0.35;
 	grid_failure_slope = 0.75;
 	// repair time
@@ -452,6 +452,7 @@ function whats_my_ac_derate()
 		{
 			// because t and i are 0-indexed, they represent how many of each component have been completed by this point
 			inverter_index = t * num_inverters_per_transformer + i;
+			if (inverter_index > num_inverters - 1)
 			{
 				msgbox('Error, calculated inverter index > number of inverters in the ac derate function');
 				exit;
