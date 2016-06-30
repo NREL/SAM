@@ -814,6 +814,49 @@ void fcall_property( lk::invoke_t &cxt )
 	}
 }
 
+
+void fcall_showcol(lk::invoke_t &cxt)
+{
+	LK_DOC("showcol", "Shows or hides a column in a user interface data matrix", "(string:name, number:col, boolean:enable):none");
+
+	UICallbackContext &cc = *(UICallbackContext*)cxt.user_data();
+	if (wxUIObject *obj = cc.InputPage()->FindActiveObject(cxt.arg(0).as_string(), 0))
+		if (AFDataMatrixCtrl *native = obj->GetNative<AFDataMatrixCtrl>())
+			native->ShowCol(cxt.arg(1).as_integer(), cxt.arg(2).as_boolean());
+}
+
+void fcall_showrow(lk::invoke_t &cxt)
+{
+	LK_DOC("showrow", "Shows or hides a row in a user interface data matrix", "(string:name, number:row, boolean:enable):none");
+
+	UICallbackContext &cc = *(UICallbackContext*)cxt.user_data();
+	if (wxUIObject *obj = cc.InputPage()->FindActiveObject(cxt.arg(0).as_string(), 0))
+		if (AFDataMatrixCtrl *native = obj->GetNative<AFDataMatrixCtrl>())
+			native->ShowRow(cxt.arg(1).as_integer(), cxt.arg(2).as_boolean());
+}
+
+
+void fcall_enablecol(lk::invoke_t &cxt)
+{
+	LK_DOC("enablecol", "Enable or disable a column in a user interface data matrix", "(string:name, number:col, boolean:enable):none");
+
+	UICallbackContext &cc = *(UICallbackContext*)cxt.user_data();
+	if (wxUIObject *obj = cc.InputPage()->FindActiveObject(cxt.arg(0).as_string(), 0))
+		if (AFDataMatrixCtrl *native = obj->GetNative<AFDataMatrixCtrl>())
+			native->SetColReadOnly(cxt.arg(1).as_integer(), cxt.arg(2).as_boolean());
+}
+
+void fcall_enablerow(lk::invoke_t &cxt)
+{
+	LK_DOC("enablerow", "Enable or disable a row in a user interface data matrix", "(string:name, number:row, boolean:enable):none");
+
+	UICallbackContext &cc = *(UICallbackContext*)cxt.user_data();
+	if (wxUIObject *obj = cc.InputPage()->FindActiveObject(cxt.arg(0).as_string(), 0))
+		if (AFDataMatrixCtrl *native = obj->GetNative<AFDataMatrixCtrl>())
+			native->SetRowReadOnly(cxt.arg(1).as_integer(), cxt.arg(2).as_boolean());
+}
+
+
 void fcall_enable( lk::invoke_t &cxt )
 {
 	LK_DOC("enable", "Enable or disable a user interface widget", "(string:name, boolean:enable):none");
@@ -2989,6 +3032,10 @@ lk::fcall_t* invoke_uicallback_funcs()
 		fcall_setplot,
 		fcall_clearplot,
 		fcall_enable,
+		fcall_enablerow,
+		fcall_enablecol,
+		fcall_showrow,
+		fcall_showcol,
 		fcall_show,
 		fcall_property,
 		fcall_refresh,

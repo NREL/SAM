@@ -2305,6 +2305,49 @@ bool AFDataMatrixCtrl::ShowRows()
 	return m_showrows;
 }
 
+void AFDataMatrixCtrl::ShowRow(const int &row, bool show)
+{
+	if (row > -1 && row < m_grid->GetNumberRows())
+	{
+		if (show)
+			m_grid->ShowRow(row);
+		else
+			m_grid->HideRow(row);
+		this->Layout();
+	}
+}
+
+void AFDataMatrixCtrl::ShowCol(const int &col, bool show)
+{
+	if (col > -1 && col < m_grid->GetNumberCols())
+	{
+		if (show)
+			m_grid->ShowCol(col);
+		else
+			m_grid->HideCol(col);
+		this->Layout();
+	}
+}
+
+void AFDataMatrixCtrl::SetColReadOnly(const int &col, bool readonly)
+{
+	if (col > -1 && col < m_grid->GetNumberCols())
+	{
+		for (int i = 0; i < m_grid->GetNumberRows(); i++)
+			m_grid->SetReadOnly(i, col, readonly);
+		this->Layout();
+	}
+}
+
+void AFDataMatrixCtrl::SetRowReadOnly(const int &row, bool readonly)
+{
+	if (row > -1 && row < m_grid->GetNumberRows())
+	{
+		for (int i = 0; i < m_grid->GetNumberCols(); i++)
+			m_grid->SetReadOnly(row, i, readonly);
+		this->Layout();
+	}
+}
 
 void AFDataMatrixCtrl::ShadeR0C0(bool b)
 {
