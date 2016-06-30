@@ -353,6 +353,13 @@ public:
 	void SetChoiceColumn(const int &choiceColumn);
 	int GetChoiceColumn();
 
+	void SetColReadOnly(const int &col, bool readonly);
+	void SetRowReadOnly(const int &row, bool readonly);
+
+	void ShowCol(const int &col, bool show);
+	void ShowRow(const int &row, bool show);
+
+
 private:
 
 	wxString m_choices;
