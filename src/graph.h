@@ -27,6 +27,9 @@ class Simulation;
 class Graph
 {
 public:
+
+	static std::vector<wxColour> &Colours();
+
 	Graph();
 
 	void Copy( Graph *gr );
