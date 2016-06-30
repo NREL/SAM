@@ -149,11 +149,9 @@ GraphCtrl::GraphCtrl( wxWindow *parent, int id )
 }
 
 
-void GraphCtrl::Display( Simulation *sim, Graph &gi )
+std::vector<wxColour> &Graph::Colours()
 {
-static const char *s_monthNames[12] = { "Jan", "Feb", "Mar", "Apr", "May", "Jun", 
-										"Jul", "Aug", "Sep", "Oct", "Nov", "Dec" };
-
+	
 static std::vector<wxColour> s_colours;
 	if ( s_colours.size() == 0 )
 	{
@@ -172,6 +170,16 @@ static std::vector<wxColour> s_colours;
 		s_colours.push_back( wxColour("dim grey") );
 		s_colours.push_back( wxColour("brown") );
 	}
+
+	return s_colours;
+}
+
+void GraphCtrl::Display( Simulation *sim, Graph &gi )
+{
+static const char *s_monthNames[12] = { "Jan", "Feb", "Mar", "Apr", "May", "Jun", 
+										"Jul", "Aug", "Sep", "Oct", "Nov", "Dec" };
+
+	std::vector<wxColour> &s_colours = Graph::Colours();
 
 	m_s = sim;
 	m_g.Copy( &gi );

@@ -8,6 +8,7 @@ class wxSnapLayout;
 class Case;
 class wxExtGridCtrl;
 class wxPLPlotCtrl;
+class wxNumericCtrl;
 
 class P50P90Form : public wxPanel
 {
@@ -25,6 +26,8 @@ private:
 	wxTextCtrl *m_folder;
 	wxExtGridCtrl *m_grid;
 	std::vector<wxWindow*> m_graphs;
+	wxNumericCtrl *m_puser;
+	wxSnapLayout *m_layout;
 
 	DECLARE_EVENT_TABLE();
 };
