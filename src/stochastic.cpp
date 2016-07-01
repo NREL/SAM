@@ -23,6 +23,7 @@ char *lhs_dist_names[LHS_NUMDISTS] = {
 	"Poisson,Lambda",
 	"Binomial,P,N",
 	"Exponential,Lambda",
+	"Weibull,Alpha or k (shape parameter),Beta or lambda (scale parameter)",
 	"UserCDF,N"
 };
 
@@ -143,6 +144,11 @@ bool LHS::Exec()
 		case LHS_EXPONENTIAL:
 			fprintf(fp, "%s EXPONENTIAL %lg\n", (const char*)m_dist[i].name.c_str(), 
 				m_dist[i].params[0]);
+			break;
+		case LHS_WEIBULL:
+			fprintf(fp, "%s WEIBULL %lg %lg\n", (const char*)m_dist[i].name.c_str(),
+				m_dist[i].params[0],
+				m_dist[i].params[1]);
 			break;
 		case LHS_USERCDF:
 			ncdfpairs = (int) m_dist[i].params[0];
