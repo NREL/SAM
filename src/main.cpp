@@ -103,7 +103,7 @@ static const char *beta_disclaimer =
 static SamApp::ver releases[] = {
 //please clarify the reason for the new version in a comment. Examples: public release, variable changes, internal release, public beta release, etc.
 //the top version should always be the current working version
-		{ 2016, 5, 4 }, //dc adjustment factor added and differentiate current working version
+		{ 2016, 5, 4 }, //dc adjustment factor added, current working version
 	{ 2016, 3, 14 }, // public pi-day release!
 		{ 2016, 3, 2 }, // Beta release that expires 4/15/16
 		{ 2016, 2, 29 }, // internal release
@@ -1261,10 +1261,9 @@ public:
 		// dc.SetBackground( wxBrush( wxColour(120, 67, 163) ) ); // violet
 		// dc.SetBackground( wxBrush( wxColour(191, 38, 96) ) ); // reddish pink
 		//dc.SetBackground( wxBrush( wxColour(15,79,34) ) ); // dark forest green	
+		// dc.SetBackground( wxBrush( wxColour(130,186,0) ) ); // pale lime green		
 
-		dc.SetBackground( wxBrush( wxColour(130,186,0) ) ); // pale lime green		
-
-		// dc.SetBackground(wxBrush(wxColour(241, 47, 144))); // hot pink <- then how about this one?
+		dc.SetBackground(wxBrush(wxColour(241, 47, 144))); // hot pink, making development more fun for everyone!
 
 		dc.Clear();
 
