@@ -50,6 +50,21 @@ Some more examples:
 
 //***********************************************************************************************************************************************************
 //CURRENT WORKING VERSION- CHANGE THIS VERSION NUMBER WHEN RELEASES ARE CREATED AND MAKE A NEW CURRENT WORKING VERSION FUNCTION
+version_upgrade{'2016.7.1'} = define() {
+	
+	return;
+};
+
+
+//****************************************************************************************************************************************************************
+
+// PUBLIC VERSION
+version_upgrade{'2016.3.14'} = define() {
+	message('Upgraded project to version 2016.3.14');
+};
+
+//****************************************************************************************************************************************************************
+
 version_upgrade{'2016.3.2'} = define() {
 
 	//TELL USERS IF THE ANSWERS ARE GOING TO CHANGE
@@ -68,6 +83,8 @@ version_upgrade{'2016.3.2'} = define() {
 		message('This version fixes a bug with the calculation of heliostat tracking parasitics. This may change your results slightly. Please see the release notes for more detail.','warning');
 
 };
+
+//****************************************************************************************************************************************************************
 
 version_upgrade{'2016.2.26'} = define() {
 	const cfg = config();
@@ -116,6 +133,7 @@ version_upgrade{'2016.2.26'} = define() {
 	}
 };
 
+//**********************************************************************************************************************************************************
 
 version_upgrade{'2016.2.22'} = define() {
 	const cfg = config();
