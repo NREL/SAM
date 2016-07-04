@@ -370,67 +370,6 @@ public:
 
 };
 
-/*
-
-class wxUIDataMatrixObject : public wxUIObject
-{
-public:
-	wxUIDataMatrixObject() {
-		AddProperty( "PasteAppendRows", new wxUIProperty( false ) );
-		AddProperty("ShowRows", new wxUIProperty(true));
-		AddProperty("ShowRowLabels", new wxUIProperty(false));
-		AddProperty("RowLabels", new wxUIProperty(wxString("")));
-		AddProperty("ShadeR0C0", new wxUIProperty(false));
-		AddProperty("ShadeC0", new wxUIProperty(false));
-		AddProperty("ShowCols", new wxUIProperty(true));
-		AddProperty("ShowColLabels", new wxUIProperty( true ) );
-		AddProperty("ColLabels", new wxUIProperty(wxString("")));
-		AddProperty("NumRowsLabel", new wxUIProperty(wxString("Rows:")));
-		AddProperty("NumColsLabel", new wxUIProperty(wxString("Cols:")));
-		AddProperty("Layout", new wxUIProperty(0, "Buttons on top,Buttons on side"));
-
-		Property("Width").Set(400);
-		Property("Height").Set(300);
-	}
-	virtual wxString GetTypeName() { return "DataMatrix"; }
-	virtual wxUIObject *Duplicate() { wxUIObject *o = new wxUIDataMatrixObject; o->Copy( this ); return o; }
-	virtual bool IsNativeObject() { return true; }
-	virtual wxWindow *CreateNative( wxWindow *parent ) {
-		AFDataMatrixCtrl *dm = new AFDataMatrixCtrl( parent, wxID_ANY, wxDefaultPosition, wxDefaultSize, Property("Layout").GetInteger() == 1 );
-		dm->PasteAppendRows( Property("PasteAppendRows").GetBoolean() );
-		dm->ShowRows(Property("ShowRows").GetBoolean());
-		dm->ShowRowLabels(Property("ShowRowLabels").GetBoolean());
-		dm->SetRowLabels(Property("RowLabels").GetString());
-		dm->ShadeR0C0(Property("ShadeR0C0").GetBoolean());
-		dm->ShadeC0(Property("ShadeC0").GetBoolean());
-		dm->ShowCols(Property("ShowCols").GetBoolean());
-		dm->ShowColLabels( Property("ShowColLabels").GetBoolean() );
-		dm->SetColLabels(Property("ColLabels").GetString());
-		dm->SetNumRowsLabel(Property("NumRowsLabel").GetString());
-		dm->SetNumColsLabel(Property("NumColsLabel").GetString());
-		return AssignNative(dm);
-	}
-	virtual void OnPropertyChanged( const wxString &id, wxUIProperty *p )
-	{
-		if ( AFDataMatrixCtrl *dm = GetNative<AFDataMatrixCtrl>() )
-		{
-			if ( id == "PasteAppendRows" ) dm->PasteAppendRows( p->GetBoolean() );
-			if (id == "ShadeR0C0") dm->ShadeR0C0(p->GetBoolean());
-			if (id == "ShadeC0") dm->ShadeC0(p->GetBoolean());
-			if (id == "ShowRows") dm->ShowRows(p->GetBoolean());
-			if (id == "ShowRowLabels") dm->ShowRowLabels(p->GetBoolean());
-			if (id == "RowLabels") dm->SetRowLabels(p->GetString());
-			if (id == "ShowCols") dm->ShowCols(p->GetBoolean());
-			if (id == "ShowColLabels") dm->ShowColLabels(p->GetBoolean());
-			if (id == "ColLabels") dm->SetColLabels(p->GetString());
-			if (id == "NumRowsLabel") dm->SetNumRowsLabel(p->GetString());
-			if (id == "NumColsLabel") dm->SetNumColsLabel(p->GetString());
-		}
-	}
-};
-
-*/
- 
 
 class wxUIDataMatrixObject : public wxUIObject
 {
@@ -451,6 +390,8 @@ public:
 		AddProperty("Layout", new wxUIProperty(0, "Buttons on top,Buttons on side"));
 		AddProperty("ChoiceColumn", new wxUIProperty(-1));
 		AddProperty("Choices", new wxUIProperty(wxString("Choice1,Choice2")));
+		AddProperty("HideColumn", new wxUIProperty(-1));
+		AddProperty("ShowColumn", new wxUIProperty(-1));
 
 		Property("Width").Set(400);
 		Property("Height").Set(300);
@@ -472,6 +413,8 @@ public:
 		dm->SetColLabels(Property("ColLabels").GetString());
 		dm->SetNumRowsLabel(Property("NumRowsLabel").GetString());
 		dm->SetNumColsLabel(Property("NumColsLabel").GetString());
+		dm->ShowCol(Property("ShowColumn").GetInteger(), true);
+		dm->ShowCol(Property("HideColumn").GetInteger(), false);
 		return AssignNative(dm);
 	}
 	virtual void OnPropertyChanged(const wxString &id, wxUIProperty *p)
@@ -489,6 +432,8 @@ public:
 //			if (id == "ColLabels") dm->SetColLabels(p->GetString());
 			if (id == "NumRowsLabel") dm->SetNumRowsLabel(p->GetString());
 			if (id == "NumColsLabel") dm->SetNumColsLabel(p->GetString());
+			if (id == "ShowColumn") dm->ShowCol(p->GetInteger(), true);
+			if (id == "HideColumn") dm->ShowCol(p->GetInteger(), false);
 		}
 	}
 };
