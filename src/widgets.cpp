@@ -1794,7 +1794,6 @@ void AFDataMatrixCtrl::ShowCol(const int &col, bool show)
 			m_grid->ShowCol(col);
 		else
 			m_grid->HideCol(col);
-		m_grid->Refresh();
 		this->Layout();
 	}
 }
