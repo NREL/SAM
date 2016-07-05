@@ -389,7 +389,7 @@ $Z$ & \textbf{Solar zenith angle (deg)} & \texttt{sun\_zen}\\
 $\alpha$ & \textbf{Solar altitude angle (deg)} & \texttt{sun\_elv}\\
 $\delta$ & solar declination angle & \texttt{sun\_dec}\\
 $\gamma$ & \textbf{Solar azimuth angle (deg)} & \texttt{sun\_azm}\\
-$\mathit{sunup}$ & \textbf{Sun up over horizon (0/1)} & -\\
+$\mathit{sunup}$ & \textbf{Sun up over horizon (0/1)} & \texttt{sunup}\\
 \midrule
 \end{tabular}
 \label{tab-sunposvars}
@@ -2742,6 +2742,8 @@ In the SSC \texttt{pvsamv1} module, each subarray's DC loss is stored as a singl
 
 The snow cover model estimates the portion of the array that is covered by snow and calculates a loss in the array's DC power output caused by the snow. The model calculates a reduction in system output instead of a reduction in incident irradiance because it was developed empirically by measuring system electrical output for several photovoltaic systems installed in snowy climates, as described in \citet{marion-snowmodel} and \citet{ryberg-snowmodel}.
 
+To use the snow model in SAM, check \textbf{Estimate losses due to snow} on the Shading and Snow input page. Be sure to use a weather file with snow depth data. The \textbf{Maximum snow depth} value on the Location and Resource page indicates whether there is snow depth data in the weather file: A value of "NaN" indicates there is no snow depth data in the file. Also make sure that the \textbf{Number of modules along side} on the Shading and Snow input page is consistent with the number of modules in the subarray. In SSC, set $\texttt{en\_snow\_model} = 1$ to enable the snow model, and check that the value of \texttt{subarray[\textit{n}]\_nmody} is correct.
+
 \begin{table}
 \begin{center}
 \caption{Snow Loss Model Variable Definitions}
@@ -2750,11 +2752,14 @@ The snow cover model estimates the portion of the array that is covered by snow 
 Symbol & Description / \textbf{Name in SAM} & Name in SSC \\
 \midrule
 \multicolumn{3}{c}{Inputs}\\
-$****$ & \textbf{Estimate losses due to snow} & **** \\
+- & \textbf{Estimate losses due to snow} & \texttt{en\_snow\_model} \\
+$M_{side}$ & \textbf{Number of modules along side of row} &  \texttt{subarray[\textit{n}]\_nmody}\\
+$\beta_s$ & surface tilt angle & \texttt{subarray[\textit{n}]\_tilt}\\
 $D_{snow}$ & snow depth (cm) & - \\
-$T_{dry}$ & ambient dry bulb temperature (/deg C) & - \\
+$T_{dry}$ & ambient dry bulb temperature ($^\circ$C) & - \\
 $G_{b}$ & POA beam irradiance & - \\
 $G_{d}$ & POA diffuse irradiance (sky and ground) & - \\
+$\mathit{sunup}$ & \textbf{Sun up over horizon (0/1)} & \texttt{sunup} \\
 \midrule
 \multicolumn{3}{c}{Outputs}\\
 $P_{snow}$ & \textbf{Power loss due to snow} (kW) & \texttt{****} \\
@@ -2767,7 +2772,7 @@ $C_{snow,n}$ & \textbf{Subarray [\textit{n}] Snow coverage} (0..1) &  \texttt{su
 \end{center}
 \end{table}
 
-Snow coverage is a fraction of the height of a subarray row as shown in Figure \ref{fig-snowCoverage}. The snow model only considers sliding. It does not consider other snow removal processes such as snow melting or removal by wind considered.
+Snow coverage is a fraction of the height of a subarray row as shown in Figure \ref{fig-snowCoverage} and determined by the number of modules along side of row input (\texttt{nmody} in SSC). The snow model only considers sliding. It does not consider other snow removal processes such as snow melting or removal by wind considered.
 
 \begin{figure}
 \begin{center}
@@ -2779,17 +2784,35 @@ Snow coverage is a fraction of the height of a subarray row as shown in Figure \
 
 SAM's snow model algorithm is adapted from \citet{marion-snowmodel} as follows:
 
-Determine snow coverage: IF $D_{snow}$ in the current time step is greater than its value in the previous time step, THEN set the snow coverage for each subarray to one, $C_{snow} = 1$. Otherwise set it to the previous time step's value.
-IF $T_{dry}> \frac{G_{b}+G_{d}}{m}$ THEN assume snow slide ocurred in this time step, so reduce snow coverage by 0.10. Otherwise, set current time step snow cover to previous time step value.
+\textbf{1. Determine amount of snow coverage based on snow depth}
 
-The parameter $m$ is an experimentally determined constant ($-80\ W/m^2/C$) described in \citet{marion-snowmodel}. 
+Set snow coverage to one $C_{snow} = 1$ if all of the following conditions are met:
+\begin{itemize}
+\item Snow depth $D_{snow}$ is greater than its value in the previous time step.
+\item $D_{snow}$ in the current time step is greater than 1 cm.
+\item The difference between $D_{snow}$ in the current and previous time steps is greater than 1 cm/hr.
+\end{itemize}
 
-If sliding does occur, the model sets the current coverage to the coverage at the end of the preceding time step minus a snow slide amount ($s.s.a$) which can be found using:
+If any of the above conditions are not met, set $C_{snow}$ to the previous time step's value.
+
+If $D_{snow} < 1$ cm, then set $C_{snow}=0$. This ensures that the snow eventually melts off of a subarray with a tilt angle of zero $\beta_s=0$. This adaptation is specific to SAM and not part of the original Marion model, which is limited to $10^\circ \text{C} < \beta_{S} < 45^\circ \text{C}$.
+
+\texbf{2. Decrease amount of snow coverage if sliding occurs}
+
+Because SAM does not calculate surface angles for night-time time steps ($sunup = 0$), the snow model sets the night-time subarray tilt angle to the base value $\beta_0$ to ensure it accounts for snow sliding that may occur at night. Note that this value is not reflected in the $\beta_S$ calculated by the photovoltaic model. 
+
+If the ambient temperature for the current time step is high enough to initiate snow sliding in the current hour, $T_{dry}> \frac{G_{b}+G_{d}}{m}$, then reduce snow coverage in the current time step $C_{snow}$ by 10\%. Otherwise, set $C_{snow}$ to its value in the previous time step. For subhourly data, the snow cover is reduced by the time step's fraction of an hour to ensure that the reduction over the hour is 10\% of the previous hours snow coverage value. For example, for 15-minute time steps, the reduction would be $0.10 \times 15/60$.
 
 \begin{equation}
-	s.s.a. = 1.97 * sin( tilt )
+	s.s.a. = 1.97 * sin( \beta_{S} )
 	\label{eqn-snowSlideAmount}
 \end{equation}
+
+The relationship $T_{dry}> \frac{G_{b}+G_{d}}{m}$ was determined experimentally with the constant parameter $m=-80\ W/m^2/^\circ C$) as described in \citet{marion-snowmodel}.
+
+
+
+
 
 Where $tilt$ refers to the tilt of the PV array (see figure \ref{fig-snowCoverage}) and $1.97$ is another experimentally determined constant \citep{marion-snowmodel}.
 
