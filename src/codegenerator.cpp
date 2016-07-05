@@ -2566,7 +2566,7 @@ bool CodeGen_matlab::Footer()
 
 
 
-// Python 2.7 code generation class
+// Python 2.7.8 and 3.4.2 code generation class
 
 CodeGen_python::CodeGen_python(Case *cc, const wxString &folder) : CodeGen_Base(cc, folder)
 {
@@ -2584,25 +2584,25 @@ bool CodeGen_python::Output(ssc_data_t p_data)
 		switch (type)
 		{
 		case SSC_STRING:
-			fprintf(m_fp, "	%s = ssc.data_set_string( data, '%s' );\n", name, name);
-			fprintf(m_fp, " print '%s = ', %s\n", (const char*)m_data[ii].label.c_str(), name);
+			fprintf(m_fp, "	%s = ssc.data_set_string( data, b'%s' );\n", name, name);
+			fprintf(m_fp, " print ('%s = ', %s)\n", (const char*)m_data[ii].label.c_str(), name);
 			break;
 		case SSC_NUMBER:
-			fprintf(m_fp, "	%s = ssc.data_get_number(data, '%s');\n", name, name);
-			fprintf(m_fp, "	print '%s = ', %s\n", (const char*)m_data[ii].label.c_str(), name);
+			fprintf(m_fp, "	%s = ssc.data_get_number(data, b'%s');\n", name, name);
+			fprintf(m_fp, "	print ('%s = ', %s)\n", (const char*)m_data[ii].label.c_str(), name);
 			break;
 		case SSC_ARRAY:
-			fprintf(m_fp, "	%s = ssc.data_get_array(data, '%s')", name, name);
+			fprintf(m_fp, "	%s = ssc.data_get_array(data, b'%s')", name, name);
 			fprintf(m_fp, "	for i in range(len(%s)):\n", name);
-			fprintf(m_fp, "		print '\tarray element: ' , i ,' = ' , %s[i]\n", name);
+			fprintf(m_fp, "		print ('\tarray element: ' , i ,' = ' , %s[i])\n", name);
 			break;
 		case SSC_MATRIX:
-			fprintf(m_fp, "	%s = ssc.data_get_matrix(data, '%s')", name, name);
+			fprintf(m_fp, "	%s = ssc.data_get_matrix(data, b'%s')", name, name);
 			fprintf(m_fp, "	nrows = len(%s);\n", name);
 			fprintf(m_fp, "	ncols = len(%s[0])\n", name);
 			fprintf(m_fp, "	for i in range(nrows):\n");
 			fprintf(m_fp, "		for j in range(ncols):\n");
-			fprintf(m_fp, "			print '\treturned matrix element : (' , i , ', ' , j , ') = ' , %s[i][j]\n", name);
+			fprintf(m_fp, "			print ('\treturned matrix element : (' , i , ', ' , j , ') = ' , %s[i][j])\n", name);
 			break;
 		}
 	}
@@ -2622,13 +2622,13 @@ bool CodeGen_python::Input(ssc_data_t p_data, const char *name, const wxString &
 	case SSC_STRING:
 		str_value = wxString::FromUTF8(::ssc_data_get_string(p_data, name));
 		str_value.Replace("\\", "/");
-		fprintf(m_fp, "	ssc.data_set_string( data, '%s', '%s' );\n", name, (const char*)str_value.c_str());
+		fprintf(m_fp, "	ssc.data_set_string( data, b'%s', b'%s' );\n", name, (const char*)str_value.c_str());
 		break;
 	case SSC_NUMBER:
 		::ssc_data_get_number(p_data, name, &value);
 		dbl_value = (double)value;
 		if (dbl_value > 1e38) dbl_value = 1e38;
-		fprintf(m_fp, "	ssc.data_set_number( data, '%s', %.17g )\n", name, dbl_value);
+		fprintf(m_fp, "	ssc.data_set_number( data, b'%s', %.17g )\n", name, dbl_value);
 		break;
 	case SSC_ARRAY:
 		p = ::ssc_data_get_array(p_data, name, &len);
@@ -2644,7 +2644,7 @@ bool CodeGen_python::Input(ssc_data_t p_data, const char *name, const wxString &
 				csv.Set(i, 0, wxString::Format("%.17g", dbl_value));
 			}
 			csv.WriteFile(fn);
-			fprintf(m_fp, "	ssc.data_set_array_from_csv( data, '%s', '%s');\n", name, (const char*)fn.c_str());
+			fprintf(m_fp, "	ssc.data_set_array_from_csv( data, b'%s', b'%s');\n", name, (const char*)fn.c_str());
 		}
 		else
 		{
@@ -2658,7 +2658,7 @@ bool CodeGen_python::Input(ssc_data_t p_data, const char *name, const wxString &
 			dbl_value = (double)p[len - 1];
 			if (dbl_value > 1e38) dbl_value = 1e38;
 			fprintf(m_fp, " %.17g ];\n", dbl_value);
-			fprintf(m_fp, "	ssc.data_set_array( data, '%s',  %s);\n", name, name);
+			fprintf(m_fp, "	ssc.data_set_array( data, b'%s',  %s);\n", name, name);
 		}
 		break;
 	case SSC_MATRIX:
@@ -2678,7 +2678,7 @@ bool CodeGen_python::Input(ssc_data_t p_data, const char *name, const wxString &
 				}
 			}
 			csv.WriteFile(fn);
-			fprintf(m_fp, "	ssc.data_set_matrix_from_csv( data, '%s', '%s');\n", name, (const char*)fn.c_str());
+			fprintf(m_fp, "	ssc.data_set_matrix_from_csv( data, b'%s', b'%s');\n", name, (const char*)fn.c_str());
 		}
 		else
 		{
@@ -2695,7 +2695,7 @@ bool CodeGen_python::Input(ssc_data_t p_data, const char *name, const wxString &
 			dbl_value = (double)p[len - 1];
 			if (dbl_value > 1e38) dbl_value = 1e38;
 			fprintf(m_fp, " %.17g ]];\n", dbl_value);
-			fprintf(m_fp, "	ssc.data_set_matrix( data,  '%s', %s );\n", name, name);
+			fprintf(m_fp, "	ssc.data_set_matrix( data, b'%s', %s );\n", name, name);
 		}
 		break;
 		// TODO tables in future
@@ -2708,11 +2708,11 @@ bool CodeGen_python::RunSSCModule(wxString &name)
 {
 	fprintf(m_fp, "	ssc.module_exec_set_print( 0 );\n");
 	fprintf(m_fp, "	if ssc.module_exec(module, data) == 0:\n");
-	fprintf(m_fp, "		print '%s simulation error'\n", (const char*)name.c_str());
+	fprintf(m_fp, "		print ('%s simulation error')\n", (const char*)name.c_str());
 	fprintf(m_fp, "		idx = 1\n");
 	fprintf(m_fp, "		msg = ssc.module_log(module, 0)\n");
 	fprintf(m_fp, "		while (msg != None):\n");
-	fprintf(m_fp, "			print '\t: ' + msg\n");
+	fprintf(m_fp, "			print ('\t: ' + msg)\n");
 	fprintf(m_fp, "			msg = ssc.module_log(module, idx)\n");
 	fprintf(m_fp, "			idx = idx + 1\n");
 	fprintf(m_fp, "		sys.exit( \"Simulation Error\" );\n");
@@ -2738,7 +2738,7 @@ bool CodeGen_python::Header()
 	fprintf(m_fp, "		elif sys.platform == 'linux2':\n");
 	fprintf(m_fp, "			self.pdll = CDLL('./ssc.so')   # instead of relative path, require user to have on LD_LIBRARY_PATH\n");
 	fprintf(m_fp, "		else:\n");
-	fprintf(m_fp, "			print \"Platform not supported \", sys.platform\n");
+	fprintf(m_fp, "			print ('Platform not supported ', sys.platform)\n");
 	fprintf(m_fp, "	INVALID=0\n");
 	fprintf(m_fp, "	STRING=1\n");
 	fprintf(m_fp, "	NUMBER=2\n");
@@ -2781,7 +2781,7 @@ bool CodeGen_python::Header()
 	fprintf(m_fp, "		f = open(fn, 'rb'); \n");
 	fprintf(m_fp, "		data = []; \n");
 	fprintf(m_fp, "		for line in f : \n");
-	fprintf(m_fp, "			data.extend([n for n in map(float, line.split(','))])\n");
+	fprintf(m_fp, "			data.extend([n for n in map(float, line.split(b','))])\n");
 	fprintf(m_fp, "		f.close(); \n");
 	fprintf(m_fp, "		return self.data_set_array(p_data, name, data); \n");
 	fprintf(m_fp, "	def data_set_matrix(self,p_data,name,mat):\n");
@@ -2799,7 +2799,7 @@ bool CodeGen_python::Header()
 	fprintf(m_fp, "		f = open(fn, 'rb'); \n");
 	fprintf(m_fp, "		data = []; \n");
 	fprintf(m_fp, "		for line in f : \n");
-	fprintf(m_fp, "			lst = ([n for n in map(float, line.split(','))])\n");
+	fprintf(m_fp, "			lst = ([n for n in map(float, line.split(b','))])\n");
 	fprintf(m_fp, "			data.append(lst);\n");
 	fprintf(m_fp, "		f.close(); \n");
 	fprintf(m_fp, "		return self.data_set_matrix(p_data, name, data); \n");
@@ -2905,7 +2905,7 @@ bool CodeGen_python::CreateSSCModule(wxString &name)
 		return false;
 	else
 	{
-		fprintf(m_fp, "	module = ssc.module_create(\"%s\")	\n", (const char*)name.c_str());
+		fprintf(m_fp, "	module = ssc.module_create(b'%s')	\n", (const char*)name.c_str());
 	}
 	return true;
 }
