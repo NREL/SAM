@@ -33,10 +33,10 @@
 	num_modules_per_string = get('modules_per_string'); //14
 	num_strings = get('strings_in_parallel'); //672
 	num_inverters = get('inverter_count');
-	num_combiners = num_inverters * 2; //48 //NEED TO UPDATE THIS ASSUMPTION- MAKE IT AN INPUT AND ERROR CHECK IT
+	num_combiners = 48; //num_inverters * 2; //48 //NEED TO UPDATE THIS ASSUMPTION- MAKE IT AN INPUT AND ERROR CHECK IT
 	num_strings_per_combiner = num_strings / num_combiners; //THIS IS NOT NECESSARILY AN INTEGER, NEED TO ERROR CHECK THIS!!!!!!!!!!!!!!!!
 	num_disconnects = num_inverters;
-	num_transformers = 1;
+	num_transformers = 2;
 	num_inverters_per_transformer = num_inverters / num_transformers; //CHECK THAT THIS IS AN INTEGER
 	system_lifetime_yrs = 1;
 
@@ -83,18 +83,19 @@
 	inverter_routine_failures_per_yr = 1;
 	// failure mode 3: catastrophic failure
 	inverter_catastrophic_distribution = 'normal';
-	inverter_catastrophic_mean_days = 3652.5;
-	inverter_catastrophic_std_days = 365.2;
+	inverter_catastrophic_mean_days = 3650; //10 years
+	inverter_catastrophic_std_days = 365; //1 year
 	// repair time
 	inverter_repair_distribution = 'lognormal';
-	inverter_repair_mean_days = 1.75;
-	inverter_repair_std_days = 1.62;
+	inverter_repair_mean_days = 3;
+	inverter_repair_std_days = 1.5;
+	//IN GOLDSIM, THERE IS A DIFFERENT REPAIR TIME FOR EACH FAILURE TYPE! MAKING THEM ALL THE SAME AND MATCHING TO ABOVE FOR NOW
 	
 // AC DISCONNECT RELIABILITY INPUTS-----------------------------------------------------
 	// failure mode 1
-	disconnect_failure_distribution = 'normal';//'weibull';
-	disconnect_failure_mean_yrs = 186.694;
-	disconnect_failure_slope = 0.3477;
+	disconnect_failure_distribution = 'weibull';
+	disconnect_failure_mean_yrs = 0.547; //years //186.694; //eta, was a triangular distribution in goldsim, made it into a uniform distribution with min=max=200, but not sure if i changed the units successfully???
+	disconnect_failure_slope = 0.3477; //shape factor and slope are the same parameter
 	// repair time
 	disconnect_repair_distribution = 'lognormal';
 	disconnect_repair_mean_days = 1.75;
@@ -102,8 +103,8 @@
 	
 // TRANSFORMER RELIABILITY INPUTS-------------------------------------------------------
 	// failure mode 1
-	transformer_failure_distribution = 'normal'; //'weibull';
-	transformer_failure_mean_yrs = 1.71;
+	transformer_failure_distribution = 'weibull';
+	transformer_failure_mean_yrs = 0.164;// days, again, had to change in goldsim, made it into a uniform distribution with min=max=60, I think unit is days? //1.71;
 	transformer_failure_slope = 0.3477;
 	// repair time
 	transformer_repair_distribution = 'lognormal-n';
@@ -112,8 +113,8 @@
 
 // GRID RELIABILITY INPUTS--------------------------------------------------------------
 	// failure mode 1
-	grid_failure_distribution = 'normal';
-	grid_failure_mean_yrs = 0.35;
+	grid_failure_distribution = 'weibull';
+	grid_failure_mean_yrs = 0.351; //again, same as other weibulls
 	grid_failure_slope = 0.75;
 	// repair time
 	grid_repair_distribution = 'exponential';
@@ -233,7 +234,7 @@ cumulative_oow_failures = total number of failures out of warranty for that comp
 	disconnect_meta.warranty.bool = false;
 	disconnect_meta.warranty.days = 0;
 	disconnect_meta.failure[0].distribution = disconnect_failure_distribution;
-	disconnect_meta.failure[0].parameters = [disconnect_failure_mean_yrs * 365, disconnect_failure_slope];
+	disconnect_meta.failure[0].parameters = [disconnect_failure_slope, disconnect_failure_mean_yrs * 365];
 	disconnect_meta.failure[0].times = null;
 	disconnect_meta.defective.bool = false;
 	disconnect_meta.repair.distribution = disconnect_repair_distribution;
@@ -247,7 +248,7 @@ cumulative_oow_failures = total number of failures out of warranty for that comp
 	transformer_meta.warranty.bool = false;
 	transformer_meta.warranty.days = 0;
 	transformer_meta.failure[0].distribution = transformer_failure_distribution;
-	transformer_meta.failure[0].parameters = [transformer_failure_mean_yrs * 365, transformer_failure_slope];
+	transformer_meta.failure[0].parameters = [transformer_failure_slope, transformer_failure_mean_yrs * 365];
 	transformer_meta.failure[0].times = null;
 	transformer_meta.defective.bool = false;
 	transformer_meta.repair.distribution = transformer_repair_distribution;
@@ -261,7 +262,7 @@ cumulative_oow_failures = total number of failures out of warranty for that comp
 	grid_meta.warranty.bool = false;
 	grid_meta.warranty.days = 0;
 	grid_meta.failure[0].distribution = grid_failure_distribution;
-	grid_meta.failure[0].parameters = [grid_failure_mean_yrs * 365, grid_failure_slope];
+	grid_meta.failure[0].parameters = [grid_failure_slope, grid_failure_mean_yrs * 365];
 	grid_meta.failure[0].times = null;
 	grid_meta.defective.bool = false;
 	grid_meta.repair.distribution = grid_repair_distribution;
