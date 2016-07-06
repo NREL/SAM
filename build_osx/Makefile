@@ -9,8 +9,8 @@ WEXLIB = $(WEXDIR)/wexosxwx3.a
 LKLIB = $(LKDIR)/lkosxwx3.a
 SSCLIB = $(SSCDIR)/build_osx/ssc.dylib
 
-CC = gcc -mmacosx-version-min=10.8
-CXX = g++ -mmacosx-version-min=10.8
+CC = gcc -mmacosx-version-min=10.9
+CXX = g++ -mmacosx-version-min=10.9
 CFLAGS = -g -DLK_USE_WXWIDGETS -I. -I$(SRCDIR) -I$(WEXDIR)/include -I$(LKDIR)/include -I$(SSCDIR) `wx-config-3 --cflags`  -DWX_PRECOMP -O2 -arch x86_64  -fno-common -DWX_PRECOMP -O2 -arch x86_64  -fno-common
 CXXFLAGS = $(CFLAGS) -std=gnu++11
 LDFLAGS =  -arch x86_64 `wx-config-3 --libs` `wx-config-3 --libs aui` `wx-config-3 --libs stc` `wx-config-3 --libs propgrid` `wx-config-3 --libs richtext` `wx-config-3 --libs webview` -lm $(LKLIB) $(WEXLIB) -lcurl

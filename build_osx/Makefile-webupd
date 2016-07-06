@@ -5,8 +5,8 @@ WEXLIB = $(WEXDIR)/wexosxwx3.a
 LKDIR = ../../lk
 LKLIB = $(LKDIR)/lkosxwx3.a
 
-CC = gcc -mmacosx-version-min=10.8
-CXX = g++ -mmacosx-version-min=10.8
+CC = gcc -mmacosx-version-min=10.9
+CXX = g++ -mmacosx-version-min=10.9
 CFLAGS = -g -I. -I$(WEXDIR)/include -I$(LKDIR)/include -I../tcs -DLK_USE_WXWIDGETS `wx-config-3 --cflags` -DWX_PRECOMP -O2 -arch x86_64  -fno-common -DWX_PRECOMP -O2 -arch x86_64  -fno-common
 CXXFLAGS = $(CFLAGS) -std=gnu++11
 LDFLAGS =  -arch x86_64 $(WEXLIB) $(LKLIB) `wx-config-3 --libs` `wx-config-3 --libs aui` `wx-config-3 --libs stc` -lm -lcurl
