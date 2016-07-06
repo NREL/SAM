@@ -152,11 +152,10 @@ public:
 	bool Footer();
 };
 
-class CodeGen_php : virtual public CodeGen_Base
+class CodeGen_php : public virtual CodeGen_Base
 {
 public:
 	CodeGen_php(Case *cc, const wxString &folder);
-	bool SupportingFiles();
 	bool Header();
 	bool CreateSSCModule(wxString &name);
 	bool RunSSCModule(wxString &name);
@@ -164,6 +163,20 @@ public:
 	bool Input(ssc_data_t p_data, const char *name, const wxString &folder, const int &array_matrix_threshold);
 	bool Output(ssc_data_t p_data);
 	bool Footer();
+};
+
+class CodeGen_php5 : public virtual CodeGen_php
+{
+public:
+	CodeGen_php5(Case *cc, const wxString &folder);
+	bool SupportingFiles();
+};
+
+class CodeGen_php7 : public virtual CodeGen_php
+{
+public:
+	CodeGen_php7(Case *cc, const wxString &folder);
+	bool SupportingFiles();
 };
 
 #endif
