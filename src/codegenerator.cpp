@@ -4566,7 +4566,7 @@ bool CodeGen_php5::SupportingFiles()
 	fprintf(f, "}\n");
 	fprintf(f, "PHP_MINFO_FUNCTION(sscphp) {\n");
 	fprintf(f, "	char buf[16];\n");
-	fprintf(f, "	sprintf(buf, \"%d\", ssc_version());\n");
+	fprintf(f, "	sprintf(buf, \"%%d\", ssc_version());\n");
 	fprintf(f, "	php_info_print_table_start();\n");
 	fprintf(f, "	php_info_print_table_header(2, \"NREL SAM Simulation Core(SSC) support\", \"enabled\");\n");
 	fprintf(f, "	php_info_print_table_row(2, \"Version\", buf );\n");
@@ -4817,7 +4817,7 @@ bool CodeGen_php5::SupportingFiles()
 	fprintf(f, "	ZEND_FETCH_RESOURCE( p, spobj*, &res, -1, spobj_name, spobj_id );\n");
 	fprintf(f, "	if (!p || !p->p_dat) return;\n");
 	fprintf(f, "	value = ssc_data_get_string( p->p_dat, name );\n");
-	fprintf(f, "	RETURN_STRING( value ? value : "" , 1 )\n");
+	fprintf(f, "	RETURN_STRING( value ? value : \"\" , 1 )\n");
 	fprintf(f, "}\n");
 	fprintf(f, "PHP_FUNCTION( sscphp_data_get_number )\n");
 	fprintf(f, "{\n");
