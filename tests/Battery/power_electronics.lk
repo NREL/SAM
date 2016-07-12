@@ -1,0 +1,230 @@
+/* 
+***************************************************************************************************** 
+Notes
+*****************************************************************************************************
+1. Last tested on 7/12/2016
+2. Point to a subhourly weather file
+3. Point to an hourly load profile, subhourly load profile
+4. Set tolerances
+*/
+
+global subhourly_weather = 'C:\\Users\\ndiorio\\Documents\\Data\\One-minute weather\\FortLauderdale.csv';
+global hourly_load = 'C:\\Users\\ndiorio\\Documents\\Data\\One-hour load\\SAM_default.txt';
+global subhourly_load = 'C:\\Users\\ndiorio\\Documents\\Data\\15-minute load\\El Monte.txt';
+
+global lo_tol = 0.999;
+global hi_tol = 1.001;
+
+global hi_tol_relaxed = 1.02; 
+global lo_tol_relaxed = 0.98;
+
+// Turns 0/1 into failed/passed
+function test_status(status)
+{
+	retCode = "failed";
+	if (status == true)
+		retCode = "passed";
+	return retCode;
+}
+
+/* 
+***************************************************************************************************** 
+Performance tests
+*****************************************************************************************************
+*/
+function test_accumulated()
+{
+	p_battery = get('batt_power');
+	efficiency_reported = get('average_cycle_efficiency');
+	
+	steps_per_hour = #p_battery / 8760;
+	dt_hour = 1/steps_per_hour;
+	
+	e_charge = 0;
+	e_discharge = 0;
+	
+	for (i = 0; i != #p_battery; i++)
+	{
+		if (p_battery[i] > 0)
+			e_discharge += p_battery[i]*dt_hour;
+		else 
+			e_charge += (-p_battery[i]*dt_hour);
+	}
+	efficiency = 100 * (e_discharge / e_charge);
+
+	if (efficiency < efficiency_reported * lo_tol || efficiency > efficiency_reported * hi_tol)
+	{
+		outln('Efficiency failed: Reported: ' + efficiency_reported + ' , Calculated: ' + efficiency);
+		return false;
+	}
+
+	return true;
+}
+function power_to_load()
+{
+	retCode = true;
+	pv = []; battery = []; grid = []; load_power = [];
+	pv = get('pv_to_load');
+	battery = get('batt_to_load');
+	grid = get('grid_to_load');
+	load_power = [];
+	
+	lifetime = get('pv_lifetime_simulation');
+
+	if (lifetime)
+		load_power = get('lifetime_load');
+	else
+		load_power = get('load');
+	
+	// can't compare if using different time steps for weather and load
+	if (#load_power == #pv)
+	{
+		for (i=0; i<#pv; i++)
+		{
+			check = load_power[i]/(pv[i] + battery[i] + grid[i]);
+			if ( pv[i] < 0 || battery[i] < 0 || grid[i] < 0||  check > hi_tol  || check < lo_tol  )
+			{
+				outln("------- Power to Load Output Failed!!! -----------------------------------");
+				outln(": i: " + i + " pv: " + pv[i] + " battery: " + battery[i] + " grid: " + grid[i] + " load: " + load_power[i] + " check: " + check);
+				outln("------------------------------------------------------------------");
+				break;
+				retCode = false;
+			}
+		}
+	}
+	return retCode;
+}
+// Test: check power to battery
+function power_to_battery()
+{
+	retCode = true;
+	
+	pv = []; battery = []; grid = []; 
+
+	pv = get('pv_to_batt');
+	battery = get('batt_power');
+	grid = get('grid_to_batt');
+
+	for (i=0; i<#pv; i++)
+	{
+		if ( (pv[i] < 0) || (grid[i] < 0))
+		{
+			outln("------- Power to Battery Output Failed!!! -----------------------------------");
+			outln(": i: " + i  + " pv_to_batt: " + pv[i] + " battery: " + battery[i] + " grid_to_batt: " + grid[i]);
+			outln("------------------------------------------------------------------");
+			break;
+			retCode = false;
+		}
+		check = abs(battery[i]/(pv[i] + grid[i]));
+		if (battery[i] < 0 && (  check > hi_tol || check < lo_tol  ) )
+		{
+			outln("------- Power to Battery Output Failed!!! -----------------------------------");
+			outln(": i: " + i +  " pv_to_batt: " + pv[i] + " battery: " + battery[i] + " grid_to_batt: " + grid[i] + " check: " + check );
+			outln("------------------------------------------------------------------");
+			break;
+			retCode = false;
+		}
+	}
+	
+	reset_default(default);
+	return retCode;
+}
+
+// default values which will be used to reset
+function reset_default(default)
+{
+	set('en_batt',default{"en_batt"});
+	set('pv_lifetime_simulation',default{"pv_lifetime_simulation"});
+	set('batt_size_choice',default{"batt_size_choice"});
+	set('batt_bank_voltage',default{"batt_bank_voltage"});
+	if (get("batt_type") != default{"batt_type"})
+		set('batt_type',default{"batt_type"});
+	set('batt_Vnom_default',default{"batt_Vnom_default"});
+	set('batt_C_rate',default{"batt_C_rate"});
+	set('batt_Vfull',default{"batt_Vfull"});
+	set('batt_Vexp',default{"batt_Vexp"});
+	set('batt_Vnom',default{"batt_Vnom"});
+	set('batt_Qfull',default{"batt_Qfull"});
+	set('batt_Qexp_percent',default{"batt_Qexp_percent"});
+	set('batt_Qnom_percent',default{"batt_Qnom_percent"});
+	set('batt_C_rate_max_charge',default{"batt_C_rate_max_charge"});
+	set('batt_C_rate_max_discharge',default{"batt_C_rate_max_discharge"});
+	set('batt_dispatch_choice',default{"batt_dispatch_choice"});
+	set('batt_pv_choice',default{"batt_pv_choice"});
+	set('batt_target_choice',default{"batt_target_choice"});
+	set('batt_minimum_SOC',default{"batt_minimum_SOC"});
+	set('batt_maximum_SOC',default{"batt_maximum_SOC"});
+	set('batt_minimum_modetime',default{"batt_minimum_modetime"});
+	set('batt_replacement_option',default{"batt_replacement_option"});
+	set('batt_replacement_capacity',default{"batt_replacement_capacity"});
+	simulate([],false);
+}
+
+// add scenarios and loop over all within main test, calling all unit tests 
+// for multiople scenarios
+function connection_scenarios(scenario)
+{
+	if (scenario == 0)
+		outln('Connection: DC');
+	else if (scenario == 1)
+		outln('Connection: AC');
+		
+	set('batt_ac_or_dc', scenario);
+}
+
+/* 
+***************************************************************************************************** 
+Base case settings 
+*****************************************************************************************************
+*/
+default{"en_batt"} = get('en_batt');
+default{"batt_size_choice"} = get('batt_size_choice');
+default{"batt_bank_size"} = get('batt_bank_size');
+default{"batt_bank_voltage"} = get('batt_bank_voltage');
+default{"batt_type"} = get('batt_type');
+default{"batt_Vnom_default"} = get('batt_Vnom_default');
+default{"batt_resistance"} = get('batt_resistance');
+default{"batt_C_rate"} = get('batt_C_rate');
+default{"batt_Vfull"} = get('batt_Vfull');
+default{"batt_Vexp"} = get('batt_Vexp');
+default{"batt_Vnom"} = get('batt_Vnom');
+default{"batt_Qfull"} = get('batt_Qfull');
+default{"batt_Qexp_percent"} = get('batt_Qexp_percent');
+default{"batt_Qnom_percent"} = get('batt_Qnom_percent');
+default{"batt_C_rate_max_charge"} = get('batt_C_rate_max_charge');
+default{"batt_C_rate_max_discharge"} = get('batt_C_rate_max_discharge');
+default{"batt_dispatch_choice"} = get('batt_dispatch_choice');
+default{"batt_target_choice"} = get('batt_target_choice');
+default{"batt_minimum_SOC"} = get('batt_minimum_SOC');
+default{"batt_maximum_SOC"} = get('batt_maximum_SOC');
+default{"batt_minimum_modetime"} = get('batt_minimum_modetime');
+default{"batt_replacement_option"} = get('batt_replacement_option');
+default{"batt_replacement_capacity"} = get('batt_replacement_capacity');
+
+/*
+ manual tests - unless can think of way to script
+ 1. Upgrade project file with battery, test all dispatch strategies
+ 2. Upgrade project file, change weather file
+*/   
+
+/* 
+***************************************************************************************************** 
+Run Tests
+*****************************************************************************************************
+*/
+n_connections = 2;
+
+outln("Performance Tests");
+
+
+for (connection = 0; connection != n_connections; connection++)
+{
+	connection_scenarios(connection);
+	simulate([], false);
+	outln("Test 1: " + test_status(test_accumulated()) + " - Efficiency Test" );
+	outln("Test 2: " + test_status(power_to_load()) +" - Power-to-load test");
+	outln("Test 3: " + test_status(power_to_battery()) + " - Power-to-battery test");
+
+	reset_default(default);
+}
+			
