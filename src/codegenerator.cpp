@@ -4399,19 +4399,19 @@ bool CodeGen_php::Input(ssc_data_t p_data, const char *name, const wxString &fol
 		}
 		else
 		{
-			fprintf(m_fp, "	$%s = [[", name);
+			fprintf(m_fp, "	$%s = array( array(", name);
 			for (int k = 0; k < (len - 1); k++)
 			{
 				dbl_value = (double)p[k];
 				if (dbl_value > 1e38) dbl_value = 1e38;
 				if (k%nc == (nc - 1))
-					fprintf(m_fp, " %.17g ], [", dbl_value);
+					fprintf(m_fp, " %.17g ), array(", dbl_value);
 				else
 					fprintf(m_fp, " %.17g,  ", dbl_value);
 			}
 			dbl_value = (double)p[len - 1];
 			if (dbl_value > 1e38) dbl_value = 1e38;
-			fprintf(m_fp, " %.17g ]];\n", dbl_value);
+			fprintf(m_fp, " %.17g ));\n", dbl_value);
 			fprintf(m_fp, "	sscphp_data_set_matrix( $dat, \"%s\", $%s );\n", name, name);
 		}
 		break;
@@ -4447,7 +4447,7 @@ bool CodeGen_php::Header()
 	fprintf(m_fp, "	    while (($data = fgetcsv($handle, 1000, \",\")) !== FALSE) {\n");
 	fprintf(m_fp, "		$num = count($data);\n");
 	fprintf(m_fp, "		for ($c=0; $c < $num; $c++) {\n");
-	fprintf(m_fp, "		    $ary[$row] = $data[$c];\n");
+	fprintf(m_fp, "		    $ary[$row] = floatval($data[$c]);\n");
 	fprintf(m_fp, "		}\n");
 	fprintf(m_fp, "		$row++;\n");
 	fprintf(m_fp, "	    }\n");
@@ -4470,10 +4470,12 @@ bool CodeGen_php::Header()
 	fprintf(m_fp, "		    echo \"number of elements $col not matching row length $nc for row $row\" . PHP_EOL;\n");
 	fprintf(m_fp, "		    return;\n");
 	fprintf(m_fp, "		}\n");
+	fprintf(m_fp, "		$row_ary = array();\n");
 	fprintf(m_fp, "	        for ($c=0; $c < $col; $c++) {\n");
-	fprintf(m_fp, "            		$ary[$i] = $data[$c];\n");
+	fprintf(m_fp, "            		$row_ary[$i] = floatval($data[$c]);\n");
 	fprintf(m_fp, "            		$i++;\n");
 	fprintf(m_fp, "        	}\n");
+	fprintf(m_fp, "        	$ary[$row]=$row_ary;\n");
 	fprintf(m_fp, "        	$row++;\n");
 	fprintf(m_fp, "    	    }\n");
 	fprintf(m_fp, "    	fclose($handle);\n");
