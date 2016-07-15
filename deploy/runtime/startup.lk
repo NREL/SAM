@@ -70,18 +70,31 @@ function setup_elec_load_page( mode ) //i is 1 for technologies that HAVE the bu
 	}
 	else return;
 }
-function setup_battery_pages()
+function setup_battery_pages_behind_the_meter()
 {
 	addpage([ [{'name'='Battery None','caption'='No Battery'}],
 			  [{'name'='Battery Model', 'caption'='Enable Battery'},
 			   'Battery Configuration',
 			   'Battery Dispatch',
+			   'Battery Dispatch Common',
+			   'Battery Dispatch Manual', 
 			   'Battery Lifetime',
 			   'Battery Replacements',
 			   'Battery Thermal'] ],
 			  { 'sidebar'='Battery Storage', 'help'='battery_model', 'exclusive_var'='en_batt'} );
 }
-
+function setup_battery_pages_front_of_meter()
+{
+	addpage([ [{'name'='Battery None','caption'='No Battery'}],
+			  [{'name'='Battery Model', 'caption'='Enable Battery'},
+			   'Battery Configuration',
+			   'Battery Dispatch Common',
+			   'Battery Dispatch Manual', 
+			   'Battery Lifetime',
+			   'Battery Replacements',
+			   'Battery Thermal'] ],
+			  { 'sidebar'='Battery Storage', 'help'='battery_model', 'exclusive_var'='en_batt'} );
+}
 function setup_pvwatts_pages()
 {
 	addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource', 'help'='pv_location_and_resource' } );
@@ -524,7 +537,7 @@ setmodules( ['pvsamv1'] );
 setconfig( 'Flat Plate PV', 'Residential' );
 setmodules( ['belpe', 'pvsamv1', 'utilityrate5', 'cashloan']);
 setup_flat_plate_pv_pages();
-setup_battery_pages();
+setup_battery_pages_behind_the_meter();
 addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
 setup_residential_pages( LOAD_BELPE , LIFETIME_PV ); //includes building load calculator
 
@@ -532,13 +545,13 @@ setup_residential_pages( LOAD_BELPE , LIFETIME_PV ); //includes building load ca
 setconfig( 'Flat Plate PV', 'Third Party' );
 setmodules( ['belpe', 'pvsamv1', 'utilityrate5', 'thirdpartyownership']);
 setup_flat_plate_pv_pages();
-setup_battery_pages();
+setup_battery_pages_behind_the_meter();
 setup_thirdparty_pages( LIFETIME_PV ); //includes building load calculator by default in this function
 
 setconfig( 'Flat Plate PV', 'Commercial' );
 setmodules( ['pvsamv1', 'utilityrate5', 'cashloan']);
 setup_flat_plate_pv_pages();
-setup_battery_pages();
+setup_battery_pages_behind_the_meter();
 addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
 setup_commercial_pages( LOAD_SIMPLE, LIFETIME_PV ); //belpe not valid for commercial
 
@@ -575,6 +588,7 @@ setup_sale_leaseback_pages( LIFETIME_PV );
 setconfig( 'Flat Plate PV', 'Single Owner' );	
 setmodules( ['pvsamv1', 'singleowner']);
 setup_flat_plate_pv_pages();
+setup_battery_pages_front_of_meter();
 addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
 setup_single_owner_pages( LIFETIME_PV );
 
@@ -1474,4 +1488,4 @@ addpage( [[ {'name'='Lifetime System', 'caption'='PV simulation over one year'}]
 		[ {'name'='Lifetime PV', 'caption'='PV simulation over analysis period' }],],
 	   {  'sidebar'='Lifetime','help'='lifetime', 'exclusive_var'='pv_lifetime_simulation' } );
 
-setup_battery_pages();
+setup_battery_pages_behind_the_meter();
