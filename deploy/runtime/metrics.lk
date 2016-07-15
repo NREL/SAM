@@ -247,7 +247,7 @@ function biopower_metrics()
 
 // Technology Metrics
 metrics{ 'Flat Plate PV' } = define() { pv_metrics(); 
-	if ((financing()=="Residential") || (financing()=="Commercial"))
+	if ((financing()=="Residential") || (financing()=="Commercial") || (financing()=="Single Owner"))
 		metric( 'average_cycle_efficiency', {'label'='Battery efficiency', 'mode'='f', 'deci'='2', 'post'='%' } );
 };
 metrics{ 'PV_battery' } = define() { pv_metrics(); };
