@@ -1,26 +1,27 @@
 //*************************************************************************************
 //Module Reliability Model -- DRAFT --
-//jmf 6/16/16
+//jmf 7/7/16
 //*************************************************************************************
 
 // TO DO-----------------------------------------------------------------------------------
 /*
-	Don't allow negative time setting for failure times
+	Don't allow negative time setting for failure times-- does that actually matter?
 	Error checking on arrays 
 	Set active case and error check
 	Get system lifetime from financial case, OR set it if no financials (or LCOE?)
 	HOW DOES DC DERATE WORK- YEAR 1 VERSUS OTHER YEARS? Right now this will crash if run for >1 year, I think...
 	DC Derate needs to be expanded to include lifetime mode in SSC as well
 	DC derate needs to be added to loss tree
-	Currently running daily, do we need to change that? If so, how?
 	TRANSLATE TO HOURLY---------------------
-	replace "array" with "vector" to avoid confusion
-	replace "num_etc" with component.number
 	add keeping track of failure modes by type
 	Right now, we can only handle regularly set up systems (same mod/string, string/inv, etc for the whole system)
 	inverter warranty resets when inverter is replaced
 	need to check all lognormal distributions
-	need to add weibull to LHS options
+	Add what the acceptable input ranges are for LHS when errors are encountered?
+	Add "calculating"/"running" popup
+	Add capability to specify no repairs
+	Turn on and off various components- run through power also
+	Add component-level availability output graph vs time (using Geoff's equation)
 */
 
 //*************************************************************************************
@@ -33,10 +34,10 @@
 	num_modules_per_string = get('modules_per_string'); //14
 	num_strings = get('strings_in_parallel'); //672
 	num_inverters = get('inverter_count');
-	num_combiners = 48; //num_inverters * 2; //48 //NEED TO UPDATE THIS ASSUMPTION- MAKE IT AN INPUT AND ERROR CHECK IT
+	num_combiners = 2;//48; //num_inverters * 2; //48 //NEED TO UPDATE THIS ASSUMPTION- MAKE IT AN INPUT AND ERROR CHECK IT
 	num_strings_per_combiner = num_strings / num_combiners; //THIS IS NOT NECESSARILY AN INTEGER, NEED TO ERROR CHECK THIS!!!!!!!!!!!!!!!!
 	num_disconnects = num_inverters;
-	num_transformers = 2;
+	num_transformers = 1; //2;
 	num_inverters_per_transformer = num_inverters / num_transformers; //CHECK THAT THIS IS AN INTEGER
 	system_lifetime_yrs = 1;
 
@@ -67,9 +68,9 @@
 	
 // COMBINER RELIABILITY INPUTS----------------------------------------------------------
 	// failure mode 1
-	combiner_failure_distribution = 'uniform';
-	combiner_failure_min_days = 150; //1131;
-	combiner_failure_max_days = 200; //2148;
+	combiner_failure_distribution = 'lognormal';
+	combiner_failure_mean_days = 153.3; 
+	combiner_failure_std_days = 14.235; 
 	// repair time
 	combiner_repair_distribution = 'exponential';
 	combiner_repair_mean_days = 5;
@@ -94,7 +95,7 @@
 // AC DISCONNECT RELIABILITY INPUTS-----------------------------------------------------
 	// failure mode 1
 	disconnect_failure_distribution = 'weibull';
-	disconnect_failure_mean_yrs = 0.547; //years //186.694; //eta, was a triangular distribution in goldsim, made it into a uniform distribution with min=max=200, but not sure if i changed the units successfully???
+	disconnect_failure_mean_yrs = 2.82; 
 	disconnect_failure_slope = 0.3477; //shape factor and slope are the same parameter
 	// repair time
 	disconnect_repair_distribution = 'lognormal';
@@ -104,7 +105,7 @@
 // TRANSFORMER RELIABILITY INPUTS-------------------------------------------------------
 	// failure mode 1
 	transformer_failure_distribution = 'weibull';
-	transformer_failure_mean_yrs = 0.164;// days, again, had to change in goldsim, made it into a uniform distribution with min=max=60, I think unit is days? //1.71;
+	transformer_failure_mean_yrs = 0.845;
 	transformer_failure_slope = 0.3477;
 	// repair time
 	transformer_repair_distribution = 'lognormal-n';
@@ -114,7 +115,7 @@
 // GRID RELIABILITY INPUTS--------------------------------------------------------------
 	// failure mode 1
 	grid_failure_distribution = 'weibull';
-	grid_failure_mean_yrs = 0.351; //again, same as other weibulls
+	grid_failure_mean_yrs = 0.42;
 	grid_failure_slope = 0.75;
 	// repair time
 	grid_repair_distribution = 'exponential';
@@ -200,7 +201,7 @@ cumulative_oow_failures = total number of failures out of warranty for that comp
 	combiner_meta.warranty.bool = false;
 	combiner_meta.warranty.days = 0;
 	combiner_meta.failure[0].distribution = combiner_failure_distribution;
-	combiner_meta.failure[0].parameters = [combiner_failure_min_days, combiner_failure_max_days];
+	combiner_meta.failure[0].parameters = [combiner_failure_mean_days, combiner_failure_std_days];
 	combiner_meta.failure[0].times = null;
 	combiner_meta.defective.bool = false;
 	combiner_meta.repair.distribution = combiner_repair_distribution;
@@ -296,23 +297,23 @@ function LHS(name, distribution_type, parameters, num_samples)
 
 //INITIALIZATION------------------------------------------------------------------------------
 // Used to set up a component for the first time or to renew the values when the component is repaired
-// Initializes a single component "component_idx" in the "component_array"
+// Initializes a single component "component_idx" in the "component_vector"
 // "Component_meta" stores the failure and repair information for that type of component
 // If initializing a component for the first time, "bool_time_is_zero" is true
 // If initializing due to a repair, "bool_time_is_zero" is false
 
-function initialize_component(component_meta, component_array, component_idx, bool_time_is_zero)
+function initialize_component(component_meta, component_vector, component_idx, bool_time_is_zero)
 {
 	// Component state
-	component_array[component_idx].state = 1; //component is operational
+	component_vector[component_idx].state = 1; //component is operational
 	
 	// Component failures and repairs
 	if (bool_time_is_zero)
 	{
 		// cumulative failures and OOW failures initialized to zero at time zero only
 		//HOW DO I KEEP TRACK OF FAILURES BY FAILURE TYPE??? DO I DO IT WHEN I CALCULATE TIMES??
-		component_array[component_idx].cumulative_failures = 0;
-		component_array[component_idx].cumulative_oow_failures = 0;
+		component_vector[component_idx].cumulative_failures = 0;
+		component_vector[component_idx].cumulative_oow_failures = 0;
 	}
 	
 	// Loop through all failure modes to determine failure times
@@ -320,33 +321,33 @@ function initialize_component(component_meta, component_array, component_idx, bo
 	for (j = 0; j < num_failure_modes; j++)
 	{
 		if (component_meta.failure[j].times == null || #component_meta.failure[j].times <= 0) //null on initialization of very first component, less than zero when you've used up the pre-calculated vector
-			component_meta.failure[j].times = LHS(to_string(component_meta.failure[j].times), component_meta.failure[j].distribution, component_meta.failure[j].parameters, (#component_array * 10));
+			component_meta.failure[j].times = LHS(to_string(component_meta.failure[j].times), component_meta.failure[j].distribution, component_meta.failure[j].parameters, (#component_vector * 10));
 		possible_failure_times[j] = component_meta.failure[j].times[0]; //assign a failure time
 		component_meta.failure[j].times -@ 0; //remove the failure time that was just used
 	}
 	// Because all failure modes are hard failures (no partial failures), pick whichever failure mode will occur first
-	component_array[component_idx].time_to_failure = min(possible_failure_times);
+	component_vector[component_idx].time_to_failure = min(possible_failure_times);
 	
 	// Defective component
 	if (component_meta.defective.bool)
 	{
-		component_array[component_idx].defective = rand() < component_meta.defective.fraction; //randomly assign a given fraction of components to be defective
+		component_vector[component_idx].defective = rand() < component_meta.defective.fraction; //randomly assign a given fraction of components to be defective
 		// If the component is defective, check the defective failure time against the previously assigned failure time
-		if (component_array[component_idx].defective)
+		if (component_vector[component_idx].defective)
 		{	
 			if (component_meta.defective.times == null || #component_meta.defective.times <= 0) //null on initialization of very first component, less than zero when you've used up the pre-calculated vector
-				component_meta.defective.times = LHS(to_string(component_meta.defective.times), component_meta.defective.distribution, component_meta.defective.parameters, (#component_array * 10));
+				component_meta.defective.times = LHS(to_string(component_meta.defective.times), component_meta.defective.distribution, component_meta.defective.parameters, (#component_vector * 10));
 			defective_failure_time = component_meta.defective.times[0]; //assign a failure time
 			component_meta.defective.times -@ 0; //remove the failure time that was just used
-			if (defective_failure_time < component_array[component_idx].time_to_failure) //defective failure occurs before normal failure
-				component_array[component_idx].time_to_failure = defective_failure_time;
+			if (defective_failure_time < component_vector[component_idx].time_to_failure) //defective failure occurs before normal failure
+				component_vector[component_idx].time_to_failure = defective_failure_time;
 		}
 	}
 			
 	// Time to replacement or repair in case of failure
 	if (component_meta.repair.times == null || #component_meta.repair.times <= 0) //null on initialization of very first component, less than zero when you've used up the array
-		component_meta.repair.times = LHS(to_string(component_meta.repair.times), component_meta.repair.distribution, component_meta.repair.parameters, (#component_array * 10));
-	component_array[component_idx].time_to_repair = component_meta.repair.times[0];
+		component_meta.repair.times = LHS(to_string(component_meta.repair.times), component_meta.repair.distribution, component_meta.repair.parameters, (#component_vector * 10));
+	component_vector[component_idx].time_to_repair = component_meta.repair.times[0];
 	component_meta.repair.times -@ 0; //remove the repair time that was just used
 }
 
@@ -355,13 +356,13 @@ function initialize_component(component_meta, component_array, component_idx, bo
 // Changes "component_idx" in the array "component" state to failed and increments failures
 // Checks current "day" against warranty if bool_warranty is true
 
-function component_failure(component_array, component_idx, day, bool_warranty, warranty_length_days)
+function component_failure(component_vector, component_idx, day, bool_warranty, warranty_length_days)
 {
-	component_array[component_idx].state = 0;
-	component_array[component_idx].time_to_failure = 0;
-	component_array[component_idx].cumulative_failures++;
+	component_vector[component_idx].state = 0;
+	component_vector[component_idx].time_to_failure = 0;
+	component_vector[component_idx].cumulative_failures++;
 	if (bool_warranty && day > warranty_length_days)
-		component_array[component_idx].cumul_oow_failures++;
+		component_vector[component_idx].cumul_oow_failures++;
 }
 
 //*************************************************************************************
@@ -372,27 +373,27 @@ function component_failure(component_array, component_idx, day, bool_warranty, w
 function initialize()
 {
 	// Create module structures
-	for (m = 0; m < num_modules; m++)
+	for (m = 0; m < module_meta.number; m++)
 		initialize_component(module_meta, modules, m, true);
 		
 	// Create string structures
-	for (s = 0; s < num_strings; s++)
+	for (s = 0; s < string_meta.number; s++)
 		initialize_component(string_meta, strings, s, true);
 		
 	// Create combiner structures
-	for (c = 0; c < num_combiners; c++)
+	for (c = 0; c < combiner_meta.number; c++)
 		initialize_component(combiner_meta, combiners, c, true);
 		
 	// Create inverter structures
-	for (i = 0; i < num_inverters; i++)
+	for (i = 0; i < inverter_meta.number; i++)
 		initialize_component(inverter_meta, inverters, i, true);
 	
 	// Create AC disconnect structures
-	for (d = 0; d < num_disconnects; d++)
+	for (d = 0; d < disconnect_meta.number; d++)
 		initialize_component(disconnect_meta, disconnects, d, true);
 	
 	// Create transformer structures
-	for (t = 0; t < num_transformers; t++)
+	for (t = 0; t < transformer_meta.number; t++)
 		initialize_component(transformer_meta, transformers, t, true);
 	
 	// Create grid structure
@@ -406,7 +407,7 @@ function whats_my_dc_derate()
 	//regardless of whether the module itself is failed or not
 	operational_modules = 0;
 	
-	for (c=0; c < num_combiners; c++)
+	for (c=0; c < combiner_meta.number; c++)
 	{
 		if (combiners[c].state == 0)
 			continue; //if the combiner out, none of the modules on that combiner reach the inverter
@@ -424,7 +425,7 @@ function whats_my_dc_derate()
 				*/
 				// because c, s, and m are 0-indexed, they represent how many of each component have been completed by this point
 				module_index = c * (num_strings_per_combiner * num_modules_per_string) + s * num_modules_per_string + m;
-				if (module_index > num_modules - 1)
+				if (module_index > #modules - 1)
 				{
 					msgbox('Error, calculated module index > number of modules in the dc derate function');
 					exit;
@@ -434,7 +435,7 @@ function whats_my_dc_derate()
 		}
 	}
 		
-	return operational_modules / num_modules;
+	return operational_modules / module_meta.number;
 }
 
 // AC DERATE CALCULATION FUNCTION--------------------------------------------------------------------------
@@ -445,7 +446,7 @@ function whats_my_ac_derate()
 		return 0;
 	
 	operational_inverters = 0;
-	for (t=0; t < num_transformers; t++)
+	for (t=0; t < transformer_meta.number; t++)
 	{
 		if (transformers[t].state == 0) 
 			continue; //if the transformer is down, none of those inverters can reach grid
@@ -453,7 +454,7 @@ function whats_my_ac_derate()
 		{
 			// because t and i are 0-indexed, they represent how many of each component have been completed by this point
 			inverter_index = t * num_inverters_per_transformer + i;
-			if (inverter_index > num_inverters - 1)
+			if (inverter_index > #inverters - 1)
 			{
 				msgbox('Error, calculated inverter index > number of inverters in the ac derate function');
 				exit;
@@ -461,32 +462,32 @@ function whats_my_ac_derate()
 			operational_inverters += (inverters[inverter_index].state && disconnects[inverter_index].state ); //1 if both are operating, 0 if either or both is failed
 		}
 	}
-	return operational_inverters / num_inverters;
+	return operational_inverters / inverter_meta.number;
 }
 
 
 // INCREMENT TIMESTEP FUNCTION------------------------------------------------------------------------------
-function step_in_time(component_meta, component_array, day)
+function step_in_time(component_meta, component_vector, day)
 {
 	//loop through number of components
 	for (i=0; i < component_meta.number; i++)
 	{
 		//component is operational
-		if (component_array[i].state == 1)
+		if (component_vector[i].state == 1)
 		{
-			component_array[i].time_to_failure--;
+			component_vector[i].time_to_failure--;
 			//component has just failed
-			if (component_array[i].time_to_failure <= 0)
-				component_failure(component_array, i, day, component_meta.warranty.bool, component_meta.warranty.days);
+			if (component_vector[i].time_to_failure <= 0)
+				component_failure(component_vector, i, day, component_meta.warranty.bool, component_meta.warranty.days);
 		}
 		
 		//component is currently failed
 		else
 		{
-			component_array[i].time_to_repair--;
+			component_vector[i].time_to_repair--;
 			//component is repaired
-			if (component_array[i].time_to_repair <= 0)
-				initialize_component(component_meta, component_array, i, false); //initialize a new module without resetting cumulative failures
+			if (component_vector[i].time_to_repair <= 0)
+				initialize_component(component_meta, component_vector, i, false); //initialize a new module without resetting cumulative failures
 		}		
 	}
 }
@@ -530,21 +531,22 @@ for (day = 1; day < system_lifetime_yrs * 365; day++)
 }
 
 //count up cumulative failures
-for (m=0; m < num_modules; m++)
+for (m=0; m < module_meta.number; m++)
 	total_module_failures += modules[m].cumulative_failures;
-for (s=0; s < num_strings; s++)
+for (s=0; s < string_meta.number; s++)
 	total_string_failures += strings[s].cumulative_failures;
-for (c=0; c < num_combiners; c++)
+for (c=0; c < combiner_meta.number; c++)
 	total_combiner_failures += combiners[c].cumulative_failures;
-for (i=0; i < num_inverters; i++)
+for (i=0; i < inverter_meta.number; i++)
 	total_inverter_failures += inverters[i].cumulative_failures;
-for (d=0; d < num_disconnects; d++)
+for (d=0; d < disconnect_meta.number; d++)
 	total_disconnect_failures += disconnects[d].cumulative_failures;
-for (t=0; t < num_transformers; t++)
+for (t=0; t < transformer_meta.number; t++)
 	total_transformer_failures += transformers[t].cumulative_failures;
 total_grid_failures = grid[0].cumulative_failures;
 	
-//create SAM performance adjustment table for the dc availability derate
+//create SAM performance adjustment tables for the availability derates
+time = alloc(8760);
 hourly_loss = alloc(8760);
 hourly_ac_loss = alloc(8760);
 idx = 0;
@@ -554,6 +556,7 @@ for (day = 0; day < 365; day++)
 	day_num[day] = day;
 	for (j = 0; j < 24; j++)
 	{
+		time[idx] = idx;
 		hourly_loss[idx] = 100 - dc_availability[day];
 		hourly_ac_loss[idx] = 100 - ac_availability[day];
 		idx++;
@@ -591,19 +594,30 @@ outln('Total transformer failures =' + total_transformer_failures);
 outln('Total grid failures =' + total_grid_failures);
 
 newplot();
-plot(day_num, dc_availability, {'type'='line'});
-plotopt({'title'='DC Availability'});
-axis('x1', {'label'='Day'});
-axis('y1', {'label'='% Operational'});
+plot(day_num, dc_availability, {type='line'});
+plotopt({title='DC Availability'});
+axis('x1', {label='Day'});
+axis('y1', {label='% Operational'});
 
 newplot();
-plot(day_num, ac_availability, {'type'='line'});
-plotopt({'title'='AC Availability'});
-axis('x1', {'label'='Day'});
-axis('y1', {'label'='% Operational'});
+plot(day_num, ac_availability, {type='line'});
+plotopt({title='AC Availability'});
+axis('x1', {label='Day'});
+axis('y1', {label='% Operational'});
 
+newplot();
+hourly_dc_power = get('dc_net');
+plot(time, hourly_dc_power, {'type' = 'line'});
+plotopt({title = 'DC Power Vs Time'});
+axis('x1', {label = 'Hour'});
+axis('y1', {label = 'DC Power (kW)'});
 
-
+newplot();
+hourly_ac_power = get('gen');
+plot(time, hourly_ac_power, {'type' = 'line'});
+plotopt({title = 'AC Power Vs Time'});
+axis('x1', {label = 'Hour'});
+axis('y1', {label = 'AC Power (kW)'});
 
 
 
