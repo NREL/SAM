@@ -43,14 +43,14 @@ class process_pvsol:
 
         pv_energy = self.df['Rated PV Energy [kWh]']
         module_shading = self.df['Module Shading [kWh]']
-        horizon_shading = self.df['Horizon Shading [kWh/m2]']
+        horizon_shading = self.df['Horizon Shading [kWh/m2]'] * self.pv_area * self.pv_efficiency
 
         loss_percent = []
 
         for i in range(0, len(pv_energy)):
             # partial shading
-            if module_shading[i] < 0:
-                loss_percent.append(100 * abs(module_shading[i]) / pv_energy[i])
+            if module_shading[i] < 0 or horizon_shading[i] < 0:
+                loss_percent.append(100 * abs(module_shading[i] + horizon_shading[i]) / (pv_energy[i] + horizon_shading[i]) )
             else:
                 # no shading
                 if pv_energy[i] > 0:
@@ -83,7 +83,7 @@ class process_pvsol:
         plt.close()
         #plt.show()
 
-efficiency = 0.134
+efficiency = 0.1334
 area = 1.5
 
 test1 = process_pvsol('Basic Test 1.csv', 'test1_PVSOL.csv', efficiency, area)
