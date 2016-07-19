@@ -4,13 +4,13 @@
 #include <wx/webview.h>
 
 #include <wex/dview/dvplotctrl.h>
+#include <wex/easycurl.h>
 
-#include "../src/simplecurl.h"
 #include "../src/s3tool.h"
 #include "../src/s3view.h"
 
 wxArrayString g_appArgs;
-wxString g_appTitle( "SAM Shade Calculator (2015.8.4)" );
+wxString g_appTitle( "SAM Shade Calculator (2016.7.19)" );
 
 class MyFrame : public wxFrame
 {
@@ -67,7 +67,7 @@ public:
 	bool OnInit()
 	{
 		wxInitAllImageHandlers();
-		wxSimpleCurl::Init();
+		wxEasyCurl::Initialize();
 		
 		m_locale.Init();
 
@@ -95,7 +95,7 @@ public:
 				char buf[512];
 				fgets( buf, 511, fp );
 				fclose(fp);
-				wxSimpleCurl::SetProxyAddress( wxString::FromAscii( buf ) );
+				wxEasyCurl::SetProxyAddress( wxString::FromAscii( buf ) );
 			}
 		}
 
