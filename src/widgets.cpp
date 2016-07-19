@@ -1581,7 +1581,9 @@ bool bottombuttons)
 	m_grid->SetRowLabelAlignment(wxALIGN_LEFT, wxALIGN_CENTER);
 	m_grid->GetTable()->SetAttrProvider(new wxExtGridCellAttrProvider(m_shadeR0C0, true, m_shadeC0));
 
+#ifndef S3D_STANDALONE
 	m_grid->RegisterDataType("GridCellChoice", new GridCellChoiceRenderer(choices), new GridCellChoiceEditor(choices));
+#endif
 
 	m_gridTable = new AFDataMatrixTable(&m_data, choice_col, collabels, rowlabels);
 
