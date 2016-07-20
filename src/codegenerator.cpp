@@ -4365,7 +4365,7 @@ bool CodeGen_php::Input(ssc_data_t p_data, const char *name, const wxString &fol
 		}
 		else
 		{
-			fprintf(m_fp, "	$%s =[", name);
+			fprintf(m_fp, "	$%s =array(", name);
 			for (int i = 0; i < (len - 1); i++)
 			{
 				dbl_value = (double)p[i];
@@ -4374,7 +4374,7 @@ bool CodeGen_php::Input(ssc_data_t p_data, const char *name, const wxString &fol
 			}
 			dbl_value = (double)p[len - 1];
 			if (dbl_value > 1e38) dbl_value = 1e38;
-			fprintf(m_fp, " %.17g ];\n", dbl_value);
+			fprintf(m_fp, " %.17g );\n", dbl_value);
 			fprintf(m_fp, "	sscphp_data_set_array( $dat, \"%s\", $%s);\n", name, name);
 		}
 		break;
@@ -5062,6 +5062,7 @@ bool CodeGen_php5::SupportingFiles()
 	f = fopen(fn.c_str(), "w");
 	if (!f) return false;
 	fprintf(f, "extension=%s/sscphp.so\n", (const char *)m_folder.c_str());
+	fprintf(f, "extension_dir=/\n");
 	fclose(f);
 	// add Makefile (currently linux only)
 	fn = m_folder + "/Makefile";
@@ -5667,6 +5668,7 @@ bool CodeGen_php7::SupportingFiles()
 	f = fopen(fn.c_str(), "w");
 	if (!f) return false;
 	fprintf(f, "extension=%s/sscphp.so\n", (const char *)m_folder.c_str());
+	fprintf(f, "extension_dir=/\n");
 	fclose(f);
 	// add Makefile (currently linux only)
 	fn = m_folder + "/Makefile";
