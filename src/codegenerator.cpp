@@ -5668,7 +5668,6 @@ bool CodeGen_php7::SupportingFiles()
 	f = fopen(fn.c_str(), "w");
 	if (!f) return false;
 	fprintf(f, "extension=%s/sscphp.so\n", (const char *)m_folder.c_str());
-	fprintf(f, "extension_dir=/\n");
 	fclose(f);
 	// add Makefile (currently linux only)
 	fn = m_folder + "/Makefile";
