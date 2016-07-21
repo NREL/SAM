@@ -5057,32 +5057,64 @@ bool CodeGen_php5::SupportingFiles()
 	fprintf(f, "// install module\n");
 	fprintf(f, "ZEND_GET_MODULE(sscphp)\n");
 	fclose(f);
-	// add php.ini for module location
-	fn = m_folder + "/php.ini";
-	f = fopen(fn.c_str(), "w");
-	if (!f) return false;
-	fprintf(f, "extension=%s/sscphp.so\n", (const char *)m_folder.c_str());
-	fprintf(f, "extension_dir=/\n");
-	fclose(f);
-	// add Makefile (currently linux only)
-	fn = m_folder + "/Makefile";
-	f = fopen(fn.c_str(), "w");
-	if (!f) return false;
-	fprintf(f, "PHPDIR=/usr/include/php\n");
-	fprintf(f, "\n");
-	fprintf(f, "sscphp.so: sscphp.c\n");
-	fprintf(f, "	gcc -shared -O2 -fPIC -I$(PHPDIR) -I$(PHPDIR)/TSRM -I$(PHPDIR)/main -I$(PHPDIR)/ext -I$(PHPDIR)/Zend -o sscphp.so sscphp.c ./ssc.so\n");
-	fprintf(f, "\n");
-	fprintf(f, "run:\n");
-	fprintf(f, "	php -c ./php.ini %s.php\n", (const char *)m_name.c_str());
-	fprintf(f, "\n");
-	fprintf(f, "clean:\n");
-	fprintf(f, "	rm sscphp.so\n");
-	fprintf(f, "\n");
-	fprintf(f, "help:\n");
-	fprintf(f, "	@echo \"Please check the settings for your system.Your system may not be supported.Please contact sam.support@nrel.gov.System: $(PF) $(VERS)\"\n");
-	fclose(f);
-	return true;
+    // add php.ini for module location
+    // add Makefile
+#if defined(__WXMSW__)  // no windows support yet
+    return false;
+#elif defined(__WXOSX__)
+    fn = m_folder + "/php.ini";
+    f = fopen(fn.c_str(), "w");
+    if (!f) return false;
+    fprintf(f, "extension=%s/sscphp.dylib\n", (const char *)m_folder.c_str());
+    fprintf(f, "extension_dir=/\n");
+    fclose(f);
+    fn = m_folder + "/Makefile";
+    f = fopen(fn.c_str(), "w");
+    if (!f) return false;
+    fprintf(f, "PHPDIR=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk/usr/include/php\n");
+    fprintf(f, "\n");
+    fprintf(f, "sscphp.dylib: sscphp.c\n");
+    fprintf(f, "	gcc -mmacosx-version-min=10.9 -g -DWX_PRECOMP -O2  -fno-common -DWX_PRECOMP -O2 -arch x86_64  -Wl,-undefined,dynamic_lookup -fno-common -I$(PHPDIR) -I$(PHPDIR)/TSRM -I$(PHPDIR)/main -I$(PHPDIR)/ext -I$(PHPDIR)/Zend -o sscphp.dylib sscphp.c %s/ssc.dylib\n", (const char *)m_folder.c_str());
+    fprintf(f, "\n");
+    fprintf(f, "run:\n");
+    fprintf(f, "	install_name_tool -change @executable_path/../Frameworks/ssc.dylib %s/ssc.dylib sscphp.dylib\n", (const char *)m_folder.c_str());
+    fprintf(f, "	php -c ./php.ini %s.php\n", (const char *)m_name.c_str());
+    fprintf(f, "\n");
+    fprintf(f, "clean:\n");
+    fprintf(f, "	rm sscphp.dylib\n");
+    fprintf(f, "\n");
+    fprintf(f, "help:\n");
+    fprintf(f, "	@echo \"Please check the settings for your system.Your system may not be supported.Please contact sam.support@nrel.gov.System: $(PF) $(VERS)\"\n");
+    fclose(f);
+    return true;
+#elif defined(__WXGTK__)
+    fn = m_folder + "/php.ini";
+    f = fopen(fn.c_str(), "w");
+    if (!f) return false;
+    fprintf(f, "extension=%s/sscphp.so\n", (const char *)m_folder.c_str());
+    fprintf(f, "extension_dir=/\n");
+    fclose(f);
+    fn = m_folder + "/Makefile";
+    f = fopen(fn.c_str(), "w");
+    if (!f) return false;
+    fprintf(f, "PHPDIR=/usr/include/php\n");
+    fprintf(f, "\n");
+    fprintf(f, "sscphp.so: sscphp.c\n");
+    fprintf(f, "	gcc -shared -O2 -fPIC -I$(PHPDIR) -I$(PHPDIR)/TSRM -I$(PHPDIR)/main -I$(PHPDIR)/ext -I$(PHPDIR)/Zend -o sscphp.so sscphp.c ./ssc.so\n");
+    fprintf(f, "\n");
+    fprintf(f, "run:\n");
+    fprintf(f, "	php -c ./php.ini %s.php\n", (const char *)m_name.c_str());
+    fprintf(f, "\n");
+    fprintf(f, "clean:\n");
+    fprintf(f, "	rm sscphp.so\n");
+    fprintf(f, "\n");
+    fprintf(f, "help:\n");
+    fprintf(f, "	@echo \"Please check the settings for your system.Your system may not be supported.Please contact sam.support@nrel.gov.System: $(PF) $(VERS)\"\n");
+    fclose(f);
+    return true;
+#else
+    return false;
+#endif
 }
 
 CodeGen_php7::CodeGen_php7(Case *cc, const wxString &folder) : CodeGen_php(cc, folder), CodeGen_Base(cc, folder)
