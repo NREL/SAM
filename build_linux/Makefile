@@ -90,9 +90,9 @@ package:
 	rm -rf ./sam.deploy/x64
 	rm -rfv ./sam.deploy/linux_64/SAM
 	rm -rfv ./sam.deploy/linux_64/SAM~
-	rm -rfv `find ./sam.deploy -type d -name .svn`
 	rm -rfv `find ./sam.deploy -type f -name "*.iss"`
 	rm -rfv `find ./sam.deploy -type f -name "*.exe"`
+	find ./sam.deploy  -name .svn -exec rm -rf {} \; 2> /dev/null; true
 	echo "stripping binaries..."
 # for now, don't strip debugging information even though
 # the binaries are much bigger, because backtraces from crashes 
