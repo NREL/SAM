@@ -528,15 +528,15 @@ bool CodeGen_Base::ShowCodeGenDialog(CaseWindow *cw)
 
 	wxArrayString code_languages;
 	// ids or just index values from here
-	code_languages.Add("lk");
-	code_languages.Add("c");
-	code_languages.Add("matlab");
-	code_languages.Add("python");
-	code_languages.Add("java");
-	code_languages.Add("php5");
-	code_languages.Add("php7");
+	code_languages.Add("LK for SDKtool");
+	code_languages.Add("C");
+	code_languages.Add("MATLAB");
+	code_languages.Add("Python 2.7");
+	code_languages.Add("Java");
+	code_languages.Add("PHP 5");
+	code_languages.Add("PHP 7");
 #ifdef __WXMSW__
-	code_languages.Add("c#");
+	code_languages.Add("C#");
 #endif
 
 	// initialize properties
@@ -548,7 +548,7 @@ bool CodeGen_Base::ShowCodeGenDialog(CaseWindow *cw)
 	if (lang >(code_languages.Count() - 1)) lang = code_languages.Count() - 1;
 
 	// get language
-	wxSingleChoiceDialog *scd_language = new wxSingleChoiceDialog(SamApp::Window(), "Select code language:", "Code language", code_languages);
+	wxSingleChoiceDialog *scd_language = new wxSingleChoiceDialog(SamApp::Window(), "Choose a language:", "Code Language", code_languages);
 	scd_language->SetSelection(lang);
 	if (scd_language->ShowModal() == wxID_OK)
 	{
@@ -560,7 +560,7 @@ bool CodeGen_Base::ShowCodeGenDialog(CaseWindow *cw)
 
 
 	// get folder
-	wxDirDialog dlg(SamApp::Window(), "Select an output folder", foldername, wxDD_DEFAULT_STYLE | wxDD_DIR_MUST_EXIST);
+	wxDirDialog dlg(SamApp::Window(), "Choose Folder", foldername, wxDD_DEFAULT_STYLE | wxDD_DIR_MUST_EXIST);
 	if (dlg.ShowModal() == wxID_OK)
 	{
 		foldername = dlg.GetPath();
