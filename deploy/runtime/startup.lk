@@ -75,7 +75,7 @@ function setup_battery_pages_behind_the_meter()
 	addpage([ [{'name'='Battery None','caption'='No Battery'}],
 			  [{'name'='Battery Model', 'caption'='Enable Battery'},
 			   'Battery Configuration',
-			   'Battery Dispatch',
+			   'Battery Dispatch Behind the Meter',
 			   'Battery Dispatch Common',
 			   'Battery Dispatch Manual', 
 			   'Battery Lifetime',
