@@ -16,6 +16,8 @@
 	Add "calculating"/"running" popup
 	Turn on and off various components- run through power also
 	Add component-level availability output graph vs time (using Geoff's equation)
+	Set SAM's degradation UI to 0 since degradation is handled here.
+	Output time series module availability, degradation, etc. to a csv.
 */
 
 //*************************************************************************************
@@ -42,8 +44,8 @@
 	module_defective_failures_per_yr = 0.5;
 	// failure mode 2: failure
 	module_failure_distribution = 'normal';
-	module_failure_mean_yrs = 35;
-	module_failure_std_yrs = 8;
+	module_failure_mean_yrs = 0.5; //35;
+	module_failure_std_yrs = 0.5; //8;
 	// repair time
 	module_repair_distribution = 'lognormal';
 	module_repair_mean_days = 45; //says 60 in pseudo code but is currently 45 in Goldsim
@@ -51,7 +53,7 @@
 	// warranty period
 	module_warranty_yrs = 20;
 	//degradation rate
-	module_degradation_percent_per_yr = 1;
+	module_degradation_percent_per_yr = 100; //1;
 	
 // STRING RELIABILITY INPUTS------------------------------------------------------------
 	// failure mode 1
@@ -126,7 +128,7 @@ Return: Current degradation factor in fractional form, i.e. if module is 2% degr
 module_degradation_percent_per_day = module_degradation_percent_per_yr / 365;
 function current_degradation_rate(t)
 {
-	return 1 / pow((1 + module_degradation_percent_per_day), t);
+	return 1 / pow((1 + module_degradation_percent_per_day / 100), t);
 }	
 
 //*************************************************************************************
@@ -213,6 +215,7 @@ degradation_factor = 1 - percentage the component has degraded at this time (ex.
 	string_meta.repair.distribution = string_repair_distribution;
 	string_meta.repair.parameters = [string_repair_mean_days, string_repair_std_days];
 	string_meta.repair.times = null;
+	string_meta.degradation.bool = false;
 	
 	// Combiners
 	global combiners = alloc(num_combiners);
@@ -228,6 +231,7 @@ degradation_factor = 1 - percentage the component has degraded at this time (ex.
 	combiner_meta.repair.distribution = combiner_repair_distribution;
 	combiner_meta.repair.parameters = [combiner_repair_mean_days];
 	combiner_meta.repair.times = null;
+	combiner_meta.degradation.bool = false;
 	
 	// Inverters
 	global inverters = alloc(num_inverters);
@@ -249,6 +253,7 @@ degradation_factor = 1 - percentage the component has degraded at this time (ex.
 	inverter_meta.repair.distribution = inverter_repair_distribution;
 	inverter_meta.repair.parameters = [inverter_repair_mean_days, inverter_repair_std_days];
 	inverter_meta.repair.times = null;
+	inverter_meta.degradation.bool = false;
 	
 	// AC Disconnects
 	global disconnects = alloc(num_disconnects);
@@ -264,6 +269,7 @@ degradation_factor = 1 - percentage the component has degraded at this time (ex.
 	disconnect_meta.repair.distribution = disconnect_repair_distribution;
 	disconnect_meta.repair.parameters = [disconnect_repair_mean_days, disconnect_repair_std_days];
 	disconnect_meta.repair.times = null;
+	disconnect_meta.degradation.bool = false;
 	
 	// Transformers
 	global transformers = alloc(num_transformers);
@@ -279,6 +285,7 @@ degradation_factor = 1 - percentage the component has degraded at this time (ex.
 	transformer_meta.repair.distribution = transformer_repair_distribution;
 	transformer_meta.repair.parameters = [transformer_repair_mean_days, transformer_repair_std_days];
 	transformer_meta.repair.times = null;
+	transformer_meta.degradation.bool = false;
 	
 	// Grid
 	global grid = 1;
@@ -294,6 +301,7 @@ degradation_factor = 1 - percentage the component has degraded at this time (ex.
 	grid_meta.repair.distribution = grid_repair_distribution;
 	grid_meta.repair.parameters = [grid_repair_mean_days];
 	grid_meta.repair.times = null;
+	grid_meta.degradation.bool = false;
 
 
 //*************************************************************************************
@@ -385,6 +393,10 @@ function initialize_component(component_meta, component_vector, component_idx, b
 		component_meta.repair.times = LHS(to_string(component_meta.repair.times), component_meta.repair.distribution, component_meta.repair.parameters, (#component_vector * 10));
 	component_vector[component_idx].time_to_repair = component_meta.repair.times[0];
 	component_meta.repair.times -@ 0; //remove the repair time that was just used
+	
+	// Reset degradation time when a component is replaced
+	if (component_meta.degradation.bool)
+		component_vector[component_idx].days_of_degradation = 0;
 }
 
 //COMPONENT FAILURE----------------------------------------------------------------------------------------
@@ -505,6 +517,22 @@ function whats_my_ac_derate()
 	return operational_inverters / inverter_meta.number;
 }
 
+// FLEETWIDE DEGRADATION CALCULATION------------------------------------------------------------------------
+//Degradation is only averaged for operational modules. 
+//Otherwise, the power production hit from degradation and from the module failure would be unfairly double-counted in production estimates.
+function whats_my_degradation()
+{
+	fleet_degradation_sum = 0;
+	for (m=0; m < module_meta.number; m++)
+	{
+		if (modules[m].state == 1) 
+			fleet_degradation_sum += modules[m].degradation_factor;
+		else
+			fleet_degradation_sum += 1;
+	}
+	return fleet_degradation_sum / module_meta.number;
+}
+
 
 // INCREMENT TIMESTEP FUNCTION------------------------------------------------------------------------------
 function step_in_time(component_meta, component_vector, day)
@@ -528,7 +556,14 @@ function step_in_time(component_meta, component_vector, day)
 			//component is repaired
 			if (component_vector[i].time_to_repair <= 0 && component_meta.repair.bool) //only repair the item if repairs are enabled
 				initialize_component(component_meta, component_vector, i, false); //initialize a new module without resetting cumulative failures
-		}		
+		}
+		
+		//degradation
+		if (component_meta.degradation.bool)
+		{
+			component_vector[i].degradation_factor = current_degradation_rate(component_vector[i].days_of_degradation);
+			component_vector[i].days_of_degradation++;
+		}
 	}
 }
 
@@ -539,6 +574,7 @@ function step_in_time(component_meta, component_vector, day)
 
 //allocations for now
 
+module_degradation = null;
 dc_availability = null;
 ac_availability = null;
 total_module_failures = 0;
@@ -551,22 +587,24 @@ total_grid_failures = 0;
 
 //timestep 0
 initialize();
-dc_availability[0] = whats_my_dc_derate() * 100;
-ac_availability[0] = whats_my_ac_derate() * 100;
+module_degradation[0] = whats_my_degradation();
+dc_availability[0] = whats_my_dc_derate();
+ac_availability[0] = whats_my_ac_derate();
 //outln('0\t' + modules);
 
 //rest of system lifetime
 for (day = 1; day < system_lifetime_yrs * 365; day++)
 {
 	step_in_time(module_meta, modules, day);
+	module_degradation[day] = whats_my_degradation();
 	step_in_time(string_meta, strings, day);
 	step_in_time(combiner_meta, combiners, day);
 	step_in_time(inverter_meta, inverters, day);
 	step_in_time(disconnect_meta, disconnects, day);
 	step_in_time(transformer_meta, transformers, day);
 	step_in_time(grid_meta, grid, day);
-	dc_availability[day] = whats_my_dc_derate() * 100;
-	ac_availability[day] = whats_my_ac_derate() * 100;
+	dc_availability[day] = whats_my_dc_derate();
+	ac_availability[day] = whats_my_ac_derate();
 	//outln(day + '\t' + modules);
 }
 
@@ -597,8 +635,8 @@ for (day = 0; day < 365; day++)
 	for (j = 0; j < 24; j++)
 	{
 		time[idx] = idx;
-		hourly_loss[idx] = 100 - dc_availability[day];
-		hourly_ac_loss[idx] = 100 - ac_availability[day];
+		hourly_loss[idx] = 100 * (1 - (dc_availability[day] * module_degradation[day]));
+		hourly_ac_loss[idx] = 100 * (1 - ac_availability[day]);
 		idx++;
 	}
 }
@@ -621,7 +659,7 @@ success = simulate(messages, true);
 if (!success)
 	msgbox('Simulation failed.' + messages);
 	
-show_page('Results');
+//show_page('Results');
 
 //Test outputs
 //outln(dc_availability);
@@ -632,7 +670,6 @@ outln('Total inverter failures =' + total_inverter_failures);
 outln('Total disconnect failures =' + total_disconnect_failures);
 outln('Total transformer failures =' + total_transformer_failures);
 outln('Total grid failures =' + total_grid_failures);
-outln(modules);
 
 newplot();
 plot(day_num, dc_availability, {type='line'});
@@ -648,14 +685,20 @@ axis('y1', {label='% Operational'});
 
 newplot();
 hourly_dc_power = get('dc_net');
-plot(time, hourly_dc_power, {'type' = 'line'});
+plot(time, hourly_dc_power, {type = 'line'});
 plotopt({title = 'DC Power Vs Time'});
 axis('x1', {label = 'Hour'});
 axis('y1', {label = 'DC Power (kW)'});
 
 newplot();
 hourly_ac_power = get('gen');
-plot(time, hourly_ac_power, {'type' = 'line'});
+plot(time, hourly_ac_power, {type = 'line'});
 plotopt({title = 'AC Power Vs Time'});
 axis('x1', {label = 'Hour'});
 axis('y1', {label = 'AC Power (kW)'});
+
+newplot();
+plot(day_num, module_degradation, {type = 'line'});
+plotopt({title = 'Fleetwide Module Degradation vs Time'});
+axis('x1', {label = 'Hour'});
+axis('y1', {label = 'Module Degradation'});
