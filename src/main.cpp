@@ -571,32 +571,44 @@ void MainWindow::OnInternalCommand( wxCommandEvent &evt )
 #endif
 		break;
 	case ID_INTERNAL_INVOKE_SSC_DEBUG:
+	{
+		size_t tab_sel = m_caseTabList->GetSelection();
+		wxString case_name = m_caseTabList->GetLabel(tab_sel);
+		Case *c = m_project.GetCase(case_name);
+		CaseWindow *cw = GetCaseWindow(c);
+		if (c == 0 || cw == 0) return; // error
+
+		CodeGen_Base::ShowCodeGenDialog(cw);
+		// code generator
+		/*
 		if ( Case *cc = GetCurrentCase() )
 		{
-			// initialize properties
-			wxString folder = SamApp::Settings().Read("SSCDebugFolder");
-			if (folder.IsEmpty()) folder = ::wxGetHomeDir();
-			// get folder
-			wxDirDialog dlg(SamApp::Window(), "Select an output folder", folder, wxDD_DEFAULT_STYLE | wxDD_DIR_MUST_EXIST);
-			if (dlg.ShowModal() == wxID_OK)
-			{
-				folder = dlg.GetPath();
-				folder.Replace("\\", "/");
-				SamApp::Settings().Write("SSCDebugFolder", folder);
-			}
-			else // user cancelled.
-				return;
-
-			if (wxDir::Exists(folder))
-			{
-				cc->BaseCase().Clear();
-				if (!cc->BaseCase().Invoke(false, true, folder))
-					wxShowTextMessageDialog(wxJoin(cc->BaseCase().GetAllMessages(), '\n'));
-				if (CaseWindow *cw = GetCaseWindow(cc))
-					cw->UpdateResults();
-				wxLaunchDefaultApplication(folder);
-			}
+		// initialize properties
+		wxString folder = SamApp::Settings().Read("SSCDebugFolder");
+		if (folder.IsEmpty()) folder = ::wxGetHomeDir();
+		// get folder
+		wxDirDialog dlg(SamApp::Window(), "Select an output folder", folder, wxDD_DEFAULT_STYLE | wxDD_DIR_MUST_EXIST);
+		if (dlg.ShowModal() == wxID_OK)
+		{
+		folder = dlg.GetPath();
+		folder.Replace("\\", "/");
+		SamApp::Settings().Write("SSCDebugFolder", folder);
 		}
+		else // user cancelled.
+		return;
+
+		if (wxDir::Exists(folder))
+		{
+		cc->BaseCase().Clear();
+		if (!cc->BaseCase().Invoke(false, true, folder))
+		wxShowTextMessageDialog(wxJoin(cc->BaseCase().GetAllMessages(), '\n'));
+		if (CaseWindow *cw = GetCaseWindow(cc))
+		cw->UpdateResults();
+		wxLaunchDefaultApplication(folder);
+		}
+		}
+		*/
+	}
 		break;
 	case ID_INTERNAL_IDE:
 		ShowIDEWindow();
