@@ -523,14 +523,16 @@ function whats_my_ac_derate()
 function whats_my_degradation()
 {
 	fleet_degradation_sum = 0;
+	number_of_operational_modules = 0;
 	for (m=0; m < module_meta.number; m++)
 	{
-		if (modules[m].state == 1) 
+		if (modules[m].state == 1)
+		{ 
 			fleet_degradation_sum += modules[m].degradation_factor;
-		else
-			fleet_degradation_sum += 1;
+			number_of_operational_modules++;
+		}
 	}
-	return fleet_degradation_sum / module_meta.number;
+	return fleet_degradation_sum / number_of_operational_modules;
 }
 
 
