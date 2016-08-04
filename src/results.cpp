@@ -2139,7 +2139,7 @@ std::vector<wxString> TabularBrowser::ResultsTable::MakeOpticalEfficiency()
 	std::vector<wxString> v;
 
 	v.push_back("Azimuth Angle (deg)");
-	v.push_back("Elevation Angle (deg)");
+	v.push_back("Zenith Angle (deg)");
 	v.push_back("Optical Efficiency (-)");
 
 	return v;
@@ -2149,7 +2149,7 @@ std::vector<wxString> TabularBrowser::ResultsTable::MakeFluxMaps(size_t n_cols)
 	std::vector<wxString> v;
 	
 	v.push_back("Azimuth Angle (deg)");
-	v.push_back("Elevation Angle (deg)");
+	v.push_back("Zenith Angle (deg)");
 	for (size_t i = 2; i != n_cols; i++)
 	{
 		wxString str;
