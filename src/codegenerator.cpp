@@ -2729,6 +2729,7 @@ bool CodeGen_python::RunSSCModule(wxString &name)
 bool CodeGen_python::Header()
 {
 	// top of file and supporting functions
+	fprintf(m_fp, "#Created with SAM version %s\n", (const char*)SamApp::VersionStr().c_str());
 	fprintf(m_fp, "import string, sys, struct, os\n");
 	fprintf(m_fp, "from ctypes import *\n");
 	fprintf(m_fp, "c_number = c_float # must be c_double or c_float depending on how defined in sscapi.h\n");
