@@ -93,17 +93,27 @@ area = 1.5
 efficiency = 0.1334
 columns_1 = [0, 11, 23, 25]
 
-test1 = process_pvsol('Basic Test 1.csv', 'test1_PVSOL.csv', efficiency, area, columns_1)
-test2 = process_pvsol('Basic Test 2.csv', 'test2_PVSOL.csv', efficiency, area, columns_1)
-test3 = process_pvsol('Basic Test 3.csv', 'test3_PVSOL.csv', efficiency, area, columns_1)
+#test1 = process_pvsol('Basic Test 1.csv', 'test1_PVSOL.csv', efficiency, area, columns_1)
+#test2 = process_pvsol('Basic Test 2.csv', 'test2_PVSOL.csv', efficiency, area, columns_1)
+#test3 = process_pvsol('Basic Test 3.csv', 'test3_PVSOL.csv', efficiency, area, columns_1)
 
 # Babbitt
 area = 237.9
 efficiency = 0.1178
 columns_2 = [0, 8, 14, 16]
-test4 = process_pvsol('9815 Babbitt.csv', 'test_babbitt_PVSOL.csv', efficiency, area, columns_2)
+#test4 = process_pvsol('9815 Babbitt.csv', 'test_babbitt_PVSOL.csv', efficiency, area, columns_2)
 
 # Ivanhoe
 area = 15.529125
 efficiency = 0.0515
-test5 = process_pvsol('Ivanhoe.csv', 'test_ivanhoe_PVSOL.csv', efficiency, area, columns_1)
+#test5 = process_pvsol('Ivanhoe.csv', 'test_ivanhoe_PVSOL.csv', efficiency, area, columns_1)
+
+# Halstead
+area = 105.0229375
+efficiency = 0.1333
+#test6 = process_pvsol('17339 Halstead.csv', 'test_halstead_PVSOL.csv', efficiency, area, columns_2)
+
+# Trieu
+area = 43.6
+efficiency = 0.1193
+test6 = process_pvsol('Trieu.csv', 'test_trieu_PVSOL.csv', efficiency, area, columns_2)
