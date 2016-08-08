@@ -8,10 +8,13 @@ class process_pvsol:
     pv_area = []
     filename = []
     output_filename = []
+    columns = []
 
-    def __init__(self, filename, output_filename, pv_efficiency, pv_area):
+    def __init__(self, filename, output_filename, pv_efficiency, pv_area, columns):
         self.pv_efficiency = pv_efficiency
         self.pv_area = pv_area
+        self.columns = columns
+
         self.filename = filename
         self.output_filename = output_filename
 
@@ -26,7 +29,8 @@ class process_pvsol:
                   'Rated PV Energy [kWh]',
                   'Module Shading [kWh]']
 
-        self.df = pd.read_csv(self.filename, usecols=[0, 11, 23, 25], header=None, names=labels, skiprows=18)
+        self.df = pd.read_csv(self.filename, usecols=self.columns, header=None, names=labels, skiprows=18)
+
         index = range(0, len(self.df['Time']))
         self.df['Index'] = index
         self.df.set_index('Index')
@@ -83,9 +87,23 @@ class process_pvsol:
         plt.close()
         #plt.show()
 
-efficiency = 0.1334
-area = 1.5
 
-test1 = process_pvsol('Basic Test 1.csv', 'test1_PVSOL.csv', efficiency, area)
-test2 = process_pvsol('Basic Test 2.csv', 'test2_PVSOL.csv', efficiency, area)
-test3 = process_pvsol('Basic Test 3.csv', 'test3_PVSOL.csv', efficiency, area)
+# Basic Tests
+area = 1.5
+efficiency = 0.1334
+columns_1 = [0, 11, 23, 25]
+
+test1 = process_pvsol('Basic Test 1.csv', 'test1_PVSOL.csv', efficiency, area, columns_1)
+test2 = process_pvsol('Basic Test 2.csv', 'test2_PVSOL.csv', efficiency, area, columns_1)
+test3 = process_pvsol('Basic Test 3.csv', 'test3_PVSOL.csv', efficiency, area, columns_1)
+
+# Babbitt
+area = 237.9
+efficiency = 0.1178
+columns_2 = [0, 8, 14, 16]
+test4 = process_pvsol('9815 Babbitt.csv', 'test_babbitt_PVSOL.csv', efficiency, area, columns_2)
+
+# Ivanhoe
+area = 15.529125
+efficiency = 0.0515
+test5 = process_pvsol('Ivanhoe.csv', 'test_ivanhoe_PVSOL.csv', efficiency, area, columns_1)
