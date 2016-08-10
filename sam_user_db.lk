@@ -6,8 +6,7 @@ file = homedir() + '/sam_users.csv';
 if ( yesno('download latest database file?') )
 {
 	url = 'https://developer.nrel.gov/api/sam/v1/tracker/user_stats?api_key=rJzFOTOJhNHcLOnPmW2TNCLV8I4HHLgKddAycGpn';
-	outln( 'downloading... >> ' + file );
-	curl( url, '', file );
+	curl( url, {file=file, message='downloading...'});
 }
 
 outln('loading ' + file );
@@ -104,7 +103,7 @@ outln(xx);
 outln(yy);
 	
 newplot(true);
-plot(xx,yy, {'type'='bar'});
+plot(xx,yy, {'type'='bar', size=20});
 axis('x1', {'type'='label', 'labels'=labels,'label'='Platform', 'min'=-1, 'max'=#keys});
 axis('y1', {'label'='Percentage (%)', 'max'=maxper*1.05, 'min'=0});
 plotopt({'legend'=false, 'title'='Usage by operating system as of ' + date_time()});
@@ -123,14 +122,14 @@ for( i=0;i<#public_versions;i++ )
 
 
 newplot(false);
-plot(xx,yy, {'type'='bar'});
+plot(xx,yy, {'type'='bar', size=20});
 axis('x1', {'type'='label', 'labels'=labels,'label'='Version', 'min'=-1, 'max'=#public_versions});
 axis('y1', {'label'='Usage count', 'max'=max(yy)*1.05, 'min'=0});
 plotopt({'legend'=false, 'title'='Usage by version as of ' + date_time()});
 
 
 newplot(false);
-plot(xx,yy2, {'type'='bar'});
+plot(xx,yy2, {'type'='bar', size=20});
 axis('x1', {'type'='label', 'labels'=labels,'label'='Version', 'min'=-1, 'max'=#public_versions});
 axis('y1', {'label'='Registrations count', 'max'=max(yy2)*1.05, 'min'=0});
 plotopt({'legend'=false, 'title'='Registrations by version as of ' + date_time()});
