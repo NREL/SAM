@@ -2196,12 +2196,12 @@ TabularBrowser::TabularBrowser( wxWindow *parent )
 	SetBackgroundColour( wxMetroTheme::Colour( wxMT_FOREGROUND ) );
 	
 	wxBoxSizer *tb_sizer = new wxBoxSizer(wxHORIZONTAL);	
-	tb_sizer->Add( new wxMetroButton( this, IDOB_CLEAR_ALL, "Clear all selections "), 0, wxEXPAND|wxALL, 0);
 	tb_sizer->Add( new wxMetroButton( this, IDOB_COPYCLIPBOARD, "Copy to clipboard"), 0, wxEXPAND|wxALL, 0);
 	tb_sizer->Add( new wxMetroButton( this, IDOB_SAVECSV, "Save as CSV..."), 0, wxEXPAND|wxALL, 0);
 #ifdef __WXMSW__
 	tb_sizer->Add( new wxMetroButton( this, IDOB_SENDEXCEL, "Send to Excel"), 0, wxEXPAND|wxALL, 0);
 #endif
+	tb_sizer->Add( new wxMetroButton( this, IDOB_CLEAR_ALL, "Clear all"), 0, wxEXPAND|wxALL, 0);
 	tb_sizer->AddStretchSpacer(1);
 
 	wxSplitterWindow *splitwin = new wxSplitterWindow(this, wxID_ANY,
