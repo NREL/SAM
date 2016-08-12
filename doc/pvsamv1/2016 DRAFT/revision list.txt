@@ -31,11 +31,15 @@ Replace all references to hourly time steps with generic time step for sub-hourl
 
 Check sunrise and sunset "solar position minute" calculation for new time convention. Explanation is for hourly data and is not clear that "hr" is either beginning of hour or end of hour, so need to update for current implementation. (Section Sunrise and Sunset Hours). DONE
 
-Revise snow coverage as dc loss rather than incident irradiance reduction.
+Revise snow coverage as dc loss rather than incident irradiance reduction. DONE
 
-Update shading input SSC variable names (See Table Effective POA irradiance variable definitions).
+Update shading input SSC variable names (See Table Effective POA irradiance variable definitions). DONE
 
 POA input options. DONE
+
+Check that incident irradiance section describes that beam, diffuse, and global may come from weather file or be calculated depending on input option.
+
+Change "incident" to POA to be consistent with UI.
 
 Irradiance components options. DONE
 
