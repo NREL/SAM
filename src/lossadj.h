@@ -17,8 +17,6 @@
 	adjust:hourly
 	adjust:en_periods
 	adjust:periods
-	adjust:en_lifetime
-	adjust:lifetime
 */
 
 class wxButton;
@@ -47,9 +45,6 @@ public:
 
 		bool en_periods;
 		matrix_t<float> periods; // stored as n x 3 matrix: columns: [start hour] [length hour] [factor]
-
-		bool en_lifetime;
-		std::vector<float> lifetime;
 	};
 
 	bool DoEdit();
