@@ -19,6 +19,9 @@
 	Set SAM's degradation UI to 0 since degradation is handled here.
 	Output time series module availability, degradation, etc. to a csv.
 	Inverter O&M is different from other
+	Add check that case must be in lifetime mode
+	WARRANTY REPAIRS NEED TO NOT COST ANYTHING
+	I don't like how I'm doing repair cost additions right now. Maybe change it to something else?
 */
 
 //*************************************************************************************
@@ -36,7 +39,7 @@
 	num_disconnects = num_inverters;
 	num_transformers = 1; //2;
 	num_inverters_per_transformer = num_inverters / num_transformers; //CHECK THAT THIS IS AN INTEGER
-	system_lifetime_yrs = 1;
+	system_lifetime_yrs = get('analysis_period');
 
 // FINANCIAL INPUTS--------------------------------------------------------------------
 	present_day_labor_rate = 100; //dollars per hour
@@ -58,7 +61,7 @@
 	// warranty period
 	module_warranty_yrs = 20;
 	//degradation rate
-	module_degradation_percent_per_yr = 100; //1;
+	module_degradation_percent_per_yr = 5; //1;
 	//repair costs
 	module_repair_time = 2; //hours
 	module_cost = 322; //$
@@ -686,35 +689,33 @@ total_grid_failures = grid[0].cumulative_failures;
 	
 	
 //create SAM performance adjustment tables for the availability derates
-//THIS NEEDS TO CHANGE TO USE THE LIFETIME DAILY INPUT INSTEAD OF THE HOURLY FIRST YEAR INPUT
-time = alloc(8760);
-hourly_loss = alloc(8760);
-hourly_ac_loss = alloc(8760);
+time = alloc(8760 * system_lifetime_yrs);
+daily_dc_loss = alloc(365 * system_lifetime_yrs);
+daily_ac_loss = alloc(365 * system_lifetime_yrs);
 idx = 0;
-day_num = alloc(365);
-for (day = 0; day < 365; day++)
+day_num = alloc(365 * system_lifetime_yrs);
+for (day = 0; day < (365 * system_lifetime_yrs); day++)
 {
 	day_num[day] = day;
+	daily_dc_loss[day] = 100 * (1 - (dc_availability[day] * module_degradation[day]));
+	daily_ac_loss[day] = 100 * (1 - ac_availability[day]);
 	for (j = 0; j < 24; j++)
 	{
 		time[idx] = idx;
-		hourly_loss[idx] = 100 * (1 - (dc_availability[day] * module_degradation[day]));
-		hourly_ac_loss[idx] = 100 * (1 - ac_availability[day]);
 		idx++;
 	}
 }
+outln(daily_dc_loss);
+outln(daily_ac_loss);
+
 //DC adjustment factors
-adjust.constant = 0;
-adjust.en_hourly = 1;
-adjust.hourly = hourly_loss;
-adjust.en_periods = 0;
-set('dc_adjust', adjust);
+set('en_dc_lifetime_losses', 1);
+set('dc_lifetime_losses', daily_dc_loss);
 //AC adjustment factors
-adjust_ac.constant = 0;
-adjust_ac.en_hourly = 1;
-adjust_ac.hourly = hourly_ac_loss;
-adjust_ac.en_periods = 0;
-set('adjust', adjust_ac);
+set('en_ac_lifetime_losses', 1);
+set('ac_lifetime_losses', daily_ac_loss);
+//Degradation is included as part of the DC losses, so set it to zero
+//set('dc_degradation', [0]);
 
 
 //Create O&M inputs based on costs
