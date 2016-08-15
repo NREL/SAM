@@ -16,6 +16,11 @@ Team Revisions
 
 Paul Revisions
 --------------
+Put units in variable tables outside of bold font.
+
+Check that array dc outputs table matches latest version of SAM pv outputs.
+
+Check kW vs W in outputs.
 
 Add Aron (3d shade and iec61853) and Nick (battery) contributions. DONE
 

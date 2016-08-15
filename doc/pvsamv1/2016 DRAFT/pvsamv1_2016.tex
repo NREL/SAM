@@ -385,11 +385,11 @@ $\mathit{hr}$ & hour of day local time (0-23) & \texttt{hour}\\
 $\mathit{min}$ & minute of hour (0-59) & \texttt{minute}\\
 \midrule
 \multicolumn{3}{c}{Outputs}\\
-$Z$ & \textbf{Solar zenith angle (deg)} & \texttt{sun\_zen}\\
-$\alpha$ & \textbf{Solar altitude angle (deg)} & \texttt{sun\_elv}\\
-$\delta$ & solar declination angle & \texttt{sun\_dec}\\
-$\gamma$ & \textbf{Solar azimuth angle (deg)} & \texttt{sun\_azm}\\
-$\mathit{sunup}$ & \textbf{Sun up over horizon (0/1)} & \texttt{sunup}\\
+$Z$ & \textbf{Solar zenith angle} (deg) & \texttt{sun\_zen}\\
+$\alpha$ & \textbf{Solar altitude angle} (deg) & \texttt{sun\_elv}\\
+$\delta$ & solar declination angle (deg) & \texttt{sun\_dec}\\
+$\gamma$ & \textbf{Solar azimuth angle} (deg) & \texttt{sun\_azm}\\
+$\mathit{sunup}$ & \textbf{Sun up over horizon}  (0/1/2/3)& \texttt{sunup}\\
 \midrule
 \end{tabular}
 \label{tab-sunposvars}
@@ -745,9 +745,9 @@ Symbol & Description / \textbf{Name in SAM} & Name in SSC\\
 \midrule
 \multicolumn{3}{c}{Inputs}\\
 - & \textbf{Fixed}, \textbf{1 Axis}, \textbf{2 Axis}, \textbf{Azimuth Axis} & \texttt{track\_mode}\\
-$\beta_0$ & \textbf{Tilt (deg)}& \texttt{tilt}\\
-$\gamma_0$ & \textbf{Azimuth (deg)} & \texttt{azimuth}\\
-$\theta_{\mathrm{lim}}$ & \textbf{Tracker rotation limit (deg)} & \texttt{rotlim}\\
+$\beta_0$ & \textbf{Tilt} (deg)& \texttt{tilt}\\
+$\gamma_0$ & \textbf{Azimuth} (deg) & \texttt{azimuth}\\
+$\theta_{\mathrm{lim}}$ & \textbf{Tracker rotation limit} (deg) & \texttt{rotlim}\\
 $Z$ & sun zenith angle (deg) & \texttt{sun\_zen}\\
 $\gamma$ & sun azimuth angle (deg) & \texttt{sun\_azm}\\
 - & \textbf{Backtracking }& \texttt{backtrack}\\
@@ -757,11 +757,11 @@ $\GCR$ & \textbf{Ground coverage ratio (GCR)} & \texttt{GCR}\\
 \midrule
 \multicolumn{3}{c}{Outputs}\\
 $\AOI$ & incidence angle & \texttt{incidence}\\
-$\beta_s$ & \textbf{Subarray [\textit{n}] Surface tilt (deg)} & \texttt{surf\_tilt}\\
-$\gamma_s$ & \textbf{Subarray [\textit{n}] Surface azimuth (deg)} & \texttt{surf\_azm}\\
-$\theta$ & \textbf{Subarray [\textit{n}] Axis rotation for 1 axis trackers (deg)} & \texttt{axis\_rotation}\\
-$\theta_0$ & \textbf{Subarray [\textit{n}] Ideal axis rotation for 1 axis trackers (deg)} & -\\
-$\Delta\theta$ & backtracking difference from ideal rotation & \texttt{bt\_diff}\\
+$\beta_s$ & \textbf{Subarray [\textit{n}] Surface tilt} (deg) & \texttt{surf\_tilt}\\
+$\gamma_s$ & \textbf{Subarray [\textit{n}] Surface azimuth} (deg) & \texttt{surf\_azm}\\
+$\theta$ & \textbf{Subarray [\textit{n}] Axis rotation for 1 axis trackers} (deg) & \texttt{axis\_rotation}\\
+$\theta_0$ & \textbf{Subarray [\textit{n}] Ideal axis rotation for 1 axis trackers} (deg) & -\\
+$\Delta\theta$ & backtracking difference from ideal rotation (deg) & \texttt{bt\_diff}\\
 \midrule
 \end{tabular}
 \label{tab-surfaceanglevars}
@@ -975,12 +975,12 @@ $Z$ & \textbf{Solar zenith angle}  (deg)& \texttt{sun\_zen}\\
 - & \textbf{Use albedo in weather file if it is specified} & \texttt{use\_wf\_albedo}\\
 \midrule
 \multicolumn{3}{c}{Outputs}\\
-$I_b$ & incident beam irradiance & \texttt{poa\_beam}\\
-$I_d$ & incident sky diffuse irradiance & \texttt{poa\_skydiff}\\
-$I_r$ & incident ground-reflected irradiance & \texttt{poa\_gnddiff}\\
-$D_i$ & isotropic component of incident diffuse irradiance & \texttt{poa\_skydiff\_iso}\\
-$D_c$ & circumsolar component of incident diffuse irradiance & \texttt{poa\_skydiff\_cir}\\
-$D_h$ & horizon brightening component of incident diffuse irradiance & \texttt{poa\_skydiff\_hor}\\
+$I_b$ & incident beam irradiance (W/m$^2$)& \texttt{poa\_beam}\\
+$I_d$ & incident sky diffuse irradiance (W/m$^2$)& \texttt{poa\_skydiff}\\
+$I_r$ & incident ground-reflected irradiance (W/m$^2$) & \texttt{poa\_gnddiff}\\
+$D_i$ & isotropic component of incident diffuse irradiance (W/m$^2$) & \texttt{poa\_skydiff\_iso}\\
+$D_c$ & circumsolar component of incident diffuse irradiance (W/m$^2$) & \texttt{poa\_skydiff\_cir}\\
+$D_h$ & horizon brightening component of incident diffuse irradiance (W/m$^2$)& \texttt{poa\_skydiff\_hor}\\
 \midrule
 \end{tabular}
 \label{tab-incidentirradiancevars}
@@ -1228,21 +1228,21 @@ The effective, or plane-of-array (POA) irradiance is the incident irradiance les
 Symbol & Description / \textbf{Name in SAM} & Name in SSC\\
 \midrule
 \multicolumn{3}{c}{Inputs}\\
-$I_b$ & incident beam irradiance  & \texttt{poa\_beam}\\
-$I_d$ & incident sky diffuse irradiance & \texttt{poa\_skydiff}\\
-$I_r$ & incident ground-reflected irradiance & \texttt{poa\_gnddiff}\\
-$L_h$ & time series beam shading loss percentages  & \texttt{poa\_beam}\\
-$L_{mh}$ & hour-by-month beam shading loss percentages & \texttt{subarray[\textit{n}]\_shading:mxh}\\
-$L_{azal}$ & sun azimuth-by-altitude beam shading loss percentages & \texttt{subarray[\textit{n}]\_shading:azal}\\
-$L_{dns}$ & near object sky diffuse shading loss percentage  & \texttt{subarray[\textit{n}]\_shading:diff}\\
-$L_{soilng}$ & monthly soiling loss percentages  & \texttt{subarray[\textit{n}]\_soiling}\\
+$I_b$ & incident beam irradiance (W/m$^2$)  & \texttt{poa\_beam}\\
+$I_d$ & incident sky diffuse irradiance (W/m$^2$)& \texttt{poa\_skydiff}\\
+$I_r$ & incident ground-reflected irradiance (W/m$^2$)& \texttt{poa\_gnddiff}\\
+$L_h$ & time series beam shading loss percentages (\%) & \texttt{poa\_beam}\\
+$L_{mh}$ & hour-by-month beam shading loss (\%)& \texttt{subarray[\textit{n}]\_shading:mxh}\\
+$L_{azal}$ & sun azimuth-by-altitude beam shading loss  (\%)& \texttt{subarray[\textit{n}]\_shading:azal}\\
+$L_{dns}$ & near object sky diffuse shading loss (\%)  & \texttt{subarray[\textit{n}]\_shading:diff}\\
+$L_{soilng}$ & monthly soiling loss (\%)  & \texttt{subarray[\textit{n}]\_soiling}\\
 \midrule
 \multicolumn{3}{c}{Outputs}\\
-$I$ & \textbf{...Nominal POA total irradiance} & \texttt{...poa\_nom}\\
-$G_{g,shad}$ & \textbf{...POA total irradiance after shading only} & \texttt{...poa\_shaded}\\
-$G_b$ & \textbf{...POA beam irradiance after shading and soiling} & \texttt{...poa\_eff\_beam}\\
-$G_d$ & \textbf{...POA diffuse irradiance after shading and soiling} & \texttt{...poa\_eff\_skydiff}\\
-$G$ & \textbf{...POA total irradiance after shading and soiling} & \texttt{...poa\_eff}\\
+$I$ & \textbf{...Nominal POA total irradiance} (W/m$^2$)& \texttt{...poa\_nom}\\
+$G_{g,shad}$ & \textbf{...POA total irradiance after shading only} (W/m$^2$)& \texttt{...poa\_shaded}\\
+$G_b$ & \textbf{...POA beam irradiance after shading and soiling} (W/m$^2$)& \texttt{...poa\_eff\_beam}\\
+$G_d$ & \textbf{...POA diffuse irradiance after shading and soiling} (W/m$^2$)& \texttt{...poa\_eff\_skydiff}\\
+$G$ & \textbf{...POA total irradiance after shading and soiling} (W/m$^2$)& \texttt{...poa\_eff}\\
 $S_{bns}$ & \textbf{...Beam irradiance shading factor} & \texttt{...beam\_shading\_factor}\\
 $O$ & \textbf{...Soiling loss} & \texttt{...soiling\_derate}\\
 \midrule
@@ -1441,15 +1441,15 @@ $M_{side}$ & \textbf{Number of modules along side of row} & \texttt{subarray[\te
 $M_{bottom}$ & \textbf{Number of modules along bottom of row} & \texttt{subarray[\textit{n}]\_nmodx}\\
 $N_{strings}$ & Number of strings in parallel & \texttt{strings\_in\_parallel}\\
 $\GCR$ & \textbf{GCR}, ground coverage ratio & \texttt{subarray[\textit{n}]\_gcr}\\
-$A_m$ & module area & \texttt{[spe,cec,6par,snl]\_area}\\
-$\beta_s$ & surface tilt angle & \texttt{subarray[\textit{n}]\_tilt} \\
-$\gamma_s$ & surface azimuth angle & \texttt{subarray[\textit{n}]\_azimuth} \\
+$A_m$ & module area )(M$^2$& \texttt{[spe,cec,6par,snl]\_area}\\
+$\beta_s$ & surface tilt angle (deg)& \texttt{subarray[\textit{n}]\_tilt} \\
+$\gamma_s$ & surface azimuth angle (deg)& \texttt{subarray[\textit{n}]\_azimuth} \\
 $Z$ & sun zenith angle & -\\
-$\gamma$ & sun azimuth angle & - \\
-$E_b$ & direct normal irradiance (from weather file) & - \\
-$G_b$ & POA beam irradiance & - \\
-$G_d$ & POA diffuse irradiance (sky and ground) & - \\
-$\rho$ & albedo (from weather file, or set to 0.2) & \texttt{albedo} \\
+$\gamma$ & sun azimuth angle (deg)& - \\
+$E_b$ & direct normal irradiance (W/m$^2$) & - \\
+$G_b$ & POA beam irradiance (W/m$^2$)& - \\
+$G_d$ & POA diffuse irradiance (sky and ground) (W/m$^2$)& - \\
+$\rho$ & albedo*& \texttt{albedo} \\
 \midrule
 \multicolumn{3}{c}{Outputs}\\
 $S_{dss}$ & sky diffuse factor  / \textbf{Self-shading diffuse derate}& \texttt{[...]\_ss\_diffuse\_derate}\\
@@ -1457,6 +1457,7 @@ $S_{rss}$ & ground diffuse factor  / \textbf{Self-shading reflected derate}& \te
 $F_{dcss}$& DC loss factor / \textbf{Self-shading derate} & \texttt{[...]\_ss\_derate}\\
 \midrule
 \multicolumn{3}{l}{Ellipses (...) indicate \texttt{subarray[\textit{n}]}.}\\
+\multicolumn{3}{l}*Albedo may be from weather file or set to default value of 0.2 if weather file does not contain albedo data.\\
 \end{tabular}
 \label{tab-selfshadinputs}
 \end{center}
@@ -1844,33 +1845,33 @@ Table~\ref{tab-modulevars} lists the input and output variables used by each of 
 \midrule
 Symbol & Description / \textbf{Name in SAM}\\
 \midrule
-\multicolumn{2}{c}{Effective POA Irradiance Inputs}\\
-$G_b$ & effective beam irradiance \\
-$G_d$ & effective sky diffuse irradiance \\
-$G_r$ & effective ground-reflected diffuse irradiance  \\
-$\AOI$ & incidence angle \\
-$Z$ & sun zenith angle \\
+\multicolumn{2}{c}{\textit{Effective POA Irradiance Inputs}}\\
+$G_b$ & effective beam irradiance (W/m$^2$)\\
+$G_d$ & effective sky diffuse irradiance (W/m$^2$) \\
+$G_r$ & effective ground-reflected diffuse irradiance (W/m$^2$)  \\
+$\AOI$ & incidence angle (deg)\\
+$Z$ & sun zenith angle (deg)\\
 \midrule
-\multicolumn{2}{c}{Inputs from Weather File}\\
-$T_{dry}$ & ambient dry bulb temperature  \\
-$v_w$ & wind speed \\
-$h$ & elevation above sea level \\
-$\mathit{hr}$ & hour of day local time \\
+\multicolumn{2}{c}{\textit{Inputs from Weather File}}\\
+$T_{dry}$ & ambient dry bulb temperature ($^\circ$C) \\
+$v_w$ & wind speed (m/s)\\
+$h$ & elevation above sea level (m)\\
+$\mathit{hr}$ & hour of day local time (h)\\
 \midrule
-\multicolumn{2}{c}{Subarray Inputs}\\
-$\beta_s$ & subarray \textbf{tilt} angle \\
-$\gamma_s$ & subarray \textbf{azimuth} angle \\
+\multicolumn{2}{c}{\textit{Subarray Inputs}}\\
+$\beta_s$ & subarray \textbf{tilt} angle (deg) \\
+$\gamma_s$ & subarray \textbf{azimuth} angle (deg)\\
 \midrule
-\multicolumn{2}{c}{Intermediate Outputs}\\
-$P_{dc}$ & module power \\
-$V_{dc}$ & module voltage \\
-$I_{dc}$ & module current  \\
-$V_{oc}$ & operating open circuit voltage  \\
-$I_{sc}$ & operating closed circuit current \\
+\multicolumn{2}{c}{\textit{Intermediate Outputs}}\\
+$P_{dc}$ & module power (W)\\
+$V_{dc}$ & module voltage (V)\\
+$I_{dc}$ & module current  (A)\\
+$V_{oc}$ & operating open circuit voltage (V) \\
+$I_{sc}$ & operating closed circuit current (A)\\
 \midrule
-\multicolumn{2}{c}{Outputs}\\
-$\eta_m$ & module efficiency \\
-$T_c$ & cell temperature \\
+\multicolumn{2}{c}{\textit{Outputs}}\\
+$\eta_m$ & module efficiency (\%)\\
+$T_c$ & cell temperature ($^\circ$C)\\
 \midrule
 \end{tabular}
 \label{tab-modulevars}
@@ -1961,19 +1962,19 @@ The Sandia module model uses the module parameters in Table~\ref{tab-sandiamodul
 \midrule
 Symbol & Description / \textbf{Name in SAM} & Name in SSC \\
 \midrule
-$V_{mp,ref}$ & reference \textbf{Max Power Voltage} &\texttt{snl\_vmpo} \\
-$I_{mp,ref}$ & reference \textbf{Max Power Current} & \texttt{snl\_i\_mpo} \\
-$V_{oc,ref}$ & reference \textbf{Open Circuit Voltage} & \texttt{snl\_voco} \\
-$I_{sc,ref}$ & reference \textbf{Short Circuit Current} & \texttt{snl\_isco} \\
-$\alpha_{sc,ref}$ & short circuit temperature coefficient & \texttt{snl\_aisc} \\
-$\beta_{oc,ref}$ & open circuit temperature coefficient & \texttt{snl\_bvoco} \\
-$\beta_{mp,ref}$ & maximum power voltage temperature coefficient & \texttt{snl\_bvmpo} \\
-$\gamma_{mp,ref}$ & maximum power temperature coefficient & \texttt{snl\_aimp} \\
-$M_{\beta oc}$ & relates $\beta_{oc,ref}$ to effective irradiance& \texttt{snl\_mbvoc} \\
-$M_{\beta mp}$ & relates $\beta_{mp,ref}$ to effective irradiance& \texttt{snl\_mbvmp} \\
+$V_{mp,ref}$ & reference \textbf{Max Power Voltage} (V)&\texttt{snl\_vmpo} \\
+$I_{mp,ref}$ & reference \textbf{Max Power Current} (A)& \texttt{snl\_i\_mpo} \\
+$V_{oc,ref}$ & reference \textbf{Open Circuit Voltage} (V)& \texttt{snl\_voco} \\
+$I_{sc,ref}$ & reference \textbf{Short Circuit Current} (A) & \texttt{snl\_isco} \\
+$\alpha_{sc,ref}$ & normalized short circuit current temperature coefficient   (1/$^\circ$C) & \texttt{snl\_aisc}\\
+$\beta_{oc,ref}$ & open circuit voltage temperature coefficient  (V/$^\circ$C)& \texttt{snl\_bvoco} \\
+$\beta_{mp,ref}$ & maximum power voltage temperature coefficient  (V/$^\circ$C)& \texttt{snl\_bvmpo} \\
+$\gamma_{mp,ref}$ & maximum power temperature coefficient  (W/$^\circ$C)& \texttt{snl\_aimp} \\
+$M_{\beta oc}$ & relates $\beta_{oc,ref}$ to effective irradiance (V/$^\circ$C)& \texttt{snl\_mbvoc} \\
+$M_{\beta mp}$ & relates $\beta_{mp,ref}$ to effective irradiance (V/$^\circ$C)& \texttt{snl\_mbvmp} \\
 $s$ & number of cells in series & \texttt{snl\_series\_cells} \\
 $C_0$, $C_1$ & coefficients relating $I_{mp}$ to $G$ & \texttt{snl\_c0}, \texttt{snl\_c1} \\
-$C_2$, $C_3$ & coefficients relating $V_{mp}$ to $G$ & \texttt{snl\_c2}, \texttt{snl\_c3} \\
+$C_2$, $C_3$ & coefficients relating $V_{mp}$ to $G$ ($C_3$ is in 1/V)& \texttt{snl\_c2}, \texttt{snl\_c3} \\
 $C_4$, $C_5$ & coefficients relating $I_x$ to $G$ & \texttt{snl\_c4}, \texttt{snl\_c5} \\
 $C_6$, $C_7$ & coefficients relating $I_{xx}$ to $G$ & \texttt{snl\_c6}, \texttt{snl\_c7} \\
 $n$ & diode factor & \texttt{snl\_n} \\
@@ -2079,16 +2080,16 @@ In SSC, the implementation of the CEC module model described here is part of the
 \midrule
 Symbol & Description / \textbf{Name in SAM} & Name in SSC \\
 \midrule
-$I_{mp,ref}$ & reference \textbf{Max Power Current} & \texttt{cec\_i\_mp\_ref} \\
-$V_{oc,ref}$ & reference \textbf{Open Circuit Voltage} & \texttt{cec\_v\_oc\_ref} \\
-$I_{sc,ref}$ & reference \textbf{Short Circuit Current} & \texttt{cec\_i\_sc\_ref} \\
+$I_{mp,ref}$ & reference \textbf{Max Power Current}  (A)& \texttt{cec\_i\_mp\_ref} \\
+$V_{oc,ref}$ & reference \textbf{Open Circuit Voltage} (V) & \texttt{cec\_v\_oc\_ref} \\
+$I_{sc,ref}$ & reference \textbf{Short Circuit Current} (A) & \texttt{cec\_i\_sc\_ref} \\
 $\alpha_{sc,ref}$ & short circuit current temperature coefficient (A/\degree C) & \texttt{cec\_alpha\_sc} \\
 $\beta_{oc,ref}$ & open circuit voltage temperature coefficient (V/\degree C) & \texttt{cec\_beta\_oc} \\
-$I_{L,ref}$ & reference light current, \textbf{I\_L\_ref} & \texttt{cec\_i\_l\_ref} \\
-$I_{o,ref}$ & reference diode saturation current, \textbf{I\_o\_ref} & \texttt{cec\_i\_o\_ref} \\
-$R_{s,ref}$ & reference series resistance, \textbf{R\_s} & \texttt{cec\_r\_s\_ref} \\
-$a_{ref}$ & reference ideality factor, \textbf{A\_ref} & \texttt{cec\_a\_ref} \\
-$R_{sh,ref}$ & reference shunt resistance \textbf{R\_sh\_ref}& \texttt{cec\_r\_sh\_ref} \\
+$I_{L,ref}$ & reference light current, \textbf{I\_L\_ref} (A) & \texttt{cec\_i\_l\_ref} \\
+$I_{o,ref}$ & reference diode saturation current, \textbf{I\_o\_ref} (A) & \texttt{cec\_i\_o\_ref} \\
+$R_{s,ref}$ & reference series resistance, \textbf{R\_s} ($\Omega$) & \texttt{cec\_r\_s\_ref} \\
+$a_{ref}$ & reference ideality factor, \textbf{A\_ref} (V) & \texttt{cec\_a\_ref} \\
+$R_{sh,ref}$ & reference shunt resistance \textbf{R\_sh\_ref} ($\Omega$)& \texttt{cec\_r\_sh\_ref} \\
 $\mathit{adjust}$ & temperature coefficient adjustment factor & \texttt{cec\_adjust} \\
 \hline
 \end{tabular}
@@ -2285,16 +2286,16 @@ The cell temperature parameters $a$, $b$, and $\Delta T$ depend on the \textbf{M
 \midrule
 Symbol & Description / \textbf{Name in SAM} & Name in SSC \\
 \midrule
-$V_{mp,ref}$ & reference \textbf{Maximum Power Voltage} & - \\
-$V_{oc,ref}$ & reference \textbf{Open Circuit Voltage} & - \\
-$A_m$ & module \textbf{Area} & \texttt{spe\_area} \\
-$\gamma_{mp,ref}$ & maximum power \textbf{Temperature Coefficient} & \texttt{spe\_temp\_coeff} \\
+$V_{mp,ref}$ & reference \textbf{Maximum Power Voltage} (V)& - \\
+$V_{oc,ref}$ & reference \textbf{Open Circuit Voltage} (V)& - \\
+$A_m$ & module \textbf{Area} (m$^2$)& \texttt{spe\_area} \\
+$\gamma_{mp,ref}$ & maximum power \textbf{Temperature Coefficient} (\%/$^\circ$C) & \texttt{spe\_temp\_coeff} \\
 $a$ & Sandia temperature parameter \textbf{a} & \texttt{spe\_a} \\
 $b$ & Sandia temperature parameter \textbf{b} & \texttt{spe\_b} \\
-$\Delta T$ & Sandia temperature parameter \textbf{dT} & \texttt{spe\_dT} \\
-$G_{0...4}$ & radiation values in efficiency table & \texttt{spe\_rad[\textit{0...4}]} \\
-$G_{ref}$ & reference radiation value from efficiency table & \texttt{spe\_reference} \\
-$\eta_{0...4}$ & module efficiency values in efficiency table & \texttt{spe\_eff[\textit{0...4}]} \\
+$\Delta T$ & Sandia temperature parameter \textbf{dT} ($^\circ$C) & \texttt{spe\_dT} \\
+$G_{0...4}$ & radiation values in efficiency table (W/m$^2$)& \texttt{spe\_rad[\textit{0...4}]} \\
+$G_{ref}$ & reference radiation value from efficiency table (W/m$^2$) & \texttt{spe\_reference} \\
+$\eta_{0...4}$ & module efficiency values in efficiency table (\%)& \texttt{spe\_eff[\textit{0...4}]} \\
 $f_d$ & \textbf{Diffuse utilization factor} & \texttt{spe\_fd} \\
 \hline
 \end{tabular}
@@ -2332,18 +2333,18 @@ The NOCT photovoltaic cell temperature model is from Chapter 23.3 of \citet{duff
 Symbol & Description / \textbf{Name in SAM} & Name in SSC \\
 \midrule
 \multicolumn{3}{c}{Inputs}\\
-$G$ & effective irradiance transmitted to the photovoltaic cell & - \\
+$G$ & effective irradiance transmitted to cell (W/m$^2$)& - \\
 $\tau \alpha$ & effective transmittance-absorbtance product & - \\
-$v_{w}$ & wind speed from weather file & - \\
-- & \textbf{Array height} & \texttt{cec\_height} \\
+$v_{w}$ & wind speed (m/s) & - \\
+- & \textbf{Array height} (m)& \texttt{cec\_height} \\
 - & \textbf{Mounting standoff} & \texttt{cec\_standoff} \\
-$T_{noct}$ & module NOCT temperature rating & \texttt{6par\_tnoct} \\
-$I_{mp}$ & module maximum power current rating & \texttt{6par\_imp} \\
-$V_{mp}$ & module maximum power voltage rating & \texttt{6par\_vmp} \\
-$A_m$ & module area in meters & \texttt{6par\_area} \\
+$T_{noct}$ & module NOCT temperature rating ($^\circ$C)& \texttt{6par\_tnoct} \\
+$I_{mp}$ & module maximum power current rating (A)& \texttt{6par\_imp} \\
+$V_{mp}$ & module maximum power voltage rating (V) & \texttt{6par\_vmp} \\
+$A_m$ & module area in meters (m$^2$)& \texttt{6par\_area} \\
 \midrule
 \multicolumn{3}{c}{Output}\\
-$T_c$ & cell temperature & \texttt{subarray[\textit{n}]\_celltemp} \\
+$T_c$ & cell temperature ($^\circ$C)& \texttt{subarray[\textit{n}]\_celltemp} \\
 \hline
 \end{tabular}
 \label{tab-tempnoct}
@@ -2407,12 +2408,12 @@ Description / \textbf{Name in SAM} & Name in SSC \\
 \textbf{Mounting Configuration} & \texttt{cec\_mounting\_config} \\ 
 \textbf{Heat Transfer Dimensions} & \texttt{cec\_heat\_transfer} \\ 
 \textbf{Mounting Structure Orientation} & \texttt{cec\_mounting\_orientation} \\ 
-\textbf{Module Width} & \texttt{cec\_module\_width} \\ 
-\textbf{Module Length} & \texttt{cec\_module\_length} \\ 
+\textbf{Module Width} (m)& \texttt{cec\_module\_width} \\ 
+\textbf{Module Length} (m)& \texttt{cec\_module\_length} \\ 
 \textbf{Rows of modules in array} & \texttt{cec\_array\_rows} \\ 
 \textbf{Columns of modules in array} & \texttt{cec\_array\_cols} \\ 
-\textbf{Temperature behind the module} & \texttt{cec\_backside\_temp} \\ 
-\textbf{Gap Spacing} & \texttt{cec\_gap\_spacing} \\ 
+\textbf{Temperature behind the module} ($^\circ$C) & \texttt{cec\_backside\_temp} \\ 
+\textbf{Gap Spacing} (m)& \texttt{cec\_gap\_spacing} (m) \\ 
 \midrule
 \multicolumn{2}{c}{Output}\\
 cell temperature & \texttt{subarray[\textit{n}]\_celltemp} \\
@@ -2436,14 +2437,14 @@ The Sandia cell temperature model requires the effective incident irradiance and
 Symbol & Description / \textbf{Name in SAM} & Name in SSC \\
 \midrule
 \multicolumn{3}{c}{Inputs}\\
-$G_b$ & effective beam irradiance & - \\
-$G_d$ & effective sky diffuse irradiance & - \\
-$G_r$ & effective ground-reflected irradiance & - \\
-$v_{w}$ & wind speed from weather file & - \\
-$T_{a}$ & ambient temperature from weather file & - \\
+$G_b$ & effective beam irradiance (W/m$^2$)& - \\
+$G_d$ & effective sky diffuse irradiance (W/m$^2$) & - \\
+$G_r$ & effective ground-reflected irradiance (W/m$^2$) & - \\
+$v_{w}$ & wind speed (m/s) & - \\
+$T_{a}$ & ambient temperature ($^\circ$C) & - \\
 $a$ & Temperature coefficient \textbf{a} & \texttt{snl\_a} or \texttt{snl\_ref\_a}\\
 $b$ &  Temperature coefficient \textbf{b} & \texttt{snl\_b} or \texttt{snl\_ref\_b}\\
-$\Delta T$ & Temperature coefficent \textbf{dT} & \texttt{snl\_dtc} or \texttt{snl\_ref\_dtc} \\
+$\Delta T$ & Temperature coefficent \textbf{dT} ($^\circ$C) & \texttt{snl\_dtc} or \texttt{snl\_ref\_dtc} \\
 \midrule
 \multicolumn{3}{c}{Output}\\
 $T_c$ & cell temperature & \texttt{subarray[\textit{n}]\_celltemp} \\
@@ -2663,21 +2664,21 @@ SAM does not explicitly calculate electrical losses due to maximum power point m
 Symbol & Description / \textbf{Name in SAM} & Name in SSC \\
 \midrule
 \multicolumn{3}{c}{Inputs}\\
-$V_{dc,m}$ & module dc voltage & - \\
-$P_{dc,m}$ & module dc power & - \\
+$V_{dc,m}$ & module dc voltage (V)& - \\
+$P_{dc,m}$ & module dc power (W) & - \\
 $N_{modules}$ & \textbf{Modules per string} & \texttt{modules\_per\_string} \\
 $N_{parstrings}$ & \textbf{Strings in parallel} & \texttt{strings\_in\_parallel} \\
 $N_{strings,n}$ & \textbf{Strings allocated to subarray} \textit{n} & \texttt{subarray[\textit{n}]\_nstrings} \\
 $N_{sub}$ & number of enabled subarrays & - \\
-$L_{dc,n}$ & \textbf{Total DC power loss} for subarray \textit{n} &  \texttt{subarray[\textit{n}]\_dcloss} \\
+$L_{dc,n}$ & \textbf{Total DC power loss} for subarray \textit{n} (\%)&  \texttt{subarray[\textit{n}]\_dcloss} \\
 \midrule
 \multicolumn{3}{c}{Outputs}\\
-$V_{dc,n}$ & \textbf{Subarray [\textit{n}] DC string voltage} & \texttt{subarray[\textit{n}]\_dc\_voltage} \\
-$V_{dc}$ & \textbf{Inverter dc input voltage} & \texttt{inverter\_dc\_voltage} \\
-$P_{dc,gross,n}$ & \textbf{Subarray [\textit{n}] Gross DC output} &  \texttt{subarray[\textit{n}]\_dc\_gross} \\
-$P_{dc,net,n}$ & \textbf{Subarray [\textit{n}] Net DC output} &  \texttt{subarray[\textit{n}]\_dc\_net} \\
-$P_{dc,gross}$ & \textbf{Gross dc array output} & \texttt{dc\_gross} \\
-$P_{dc,net}$ & \textbf{Net dc array output} & \texttt{dc\_net} \\
+$V_{dc,n}$ & \textbf{Subarray [\textit{n}] DC string voltage} (V)& \texttt{subarray[\textit{n}]\_dc\_voltage} \\
+$V_{dc}$ & \textbf{Inverter dc input voltage} (V)& \texttt{inverter\_dc\_voltage} \\
+$P_{dc,gross,n}$ & \textbf{Subarray [\textit{n}] Gross DC output}(W) &  \texttt{subarray[\textit{n}]\_dc\_gross} \\
+$P_{dc,net,n}$ & \textbf{Subarray [\textit{n}] Net DC output} (W)&  \texttt{subarray[\textit{n}]\_dc\_net} \\
+$P_{dc,gross}$ & \textbf{Gross dc array output} (W)& \texttt{dc\_gross} \\
+$P_{dc,net}$ & \textbf{Net dc array output} (W)& \texttt{dc\_net} \\
 \hline
 \end{tabular}
 \label{tab-arraydcoutputvars}
@@ -2758,14 +2759,14 @@ $\beta_0$ & \textbf{tilt} & \texttt{subarray[\textit{n}]\_tilt}\\
 $\beta_s$ & surface tilt angle (calculated output) & \texttt{subarray[\textit{n}]\_surf\_tilt}\\
 $D_{snow}$ & snow depth (cm) & - \\
 $T_{dry}$ & ambient dry bulb temperature ($^\circ$C) & - \\
-$G_{b}$ & POA beam irradiance & - \\
+$G_{b}$ & POA beam irradiance (W/m$^2$)& - \\
 $G_{d}$ & POA diffuse irradiance (sky and ground) & - \\
 $\mathit{sunup}$ & \textbf{Sun up over horizon (0/1)} & \texttt{sunup} \\
 \midrule
 \multicolumn{3}{c}{Outputs}\\
-$P_{snow}$ & \textbf{Power loss due to snow} (kW) & \texttt{****} \\
+$P_{snow}$ & \textbf{Power loss due to snow} (W) & \texttt{****} \\
 $C_{snow}$ & \textbf{Snow coverage} (0..1) & \texttt{****} \\
-$P_{snow,n}$ & \textbf{Subarray [\textit{n}] Power loss due to snow} (kW) &  \texttt{subarray[\textit{n}]\_dc\_gross} \\
+$P_{snow,n}$ & \textbf{Subarray [\textit{n}] Power loss due to snow} (W) &  \texttt{subarray[\textit{n}]\_dc\_gross} \\
 $C_{snow,n}$ & \textbf{Subarray [\textit{n}] Snow coverage} (0..1) &  \texttt{subarray[\textit{n}]\_dc\_net} \\
 \hline
 \end{tabular}
@@ -2898,16 +2899,16 @@ SAM accounts for two kinds of inverter losses, or "clipping" described in Sectio
 Symbol & Description / \textbf{Name in SAM} & Name in the SSC Module \texttt{pvsamv1}\\
 \midrule
 \multicolumn{3}{c}{Inputs}\\
-$P_{dc,net}$ & net DC power output of the array & \\
+$P_{dc,net}$ & net DC power output of the array (W)& \\
 $N$ & number of inverters & - \\
-$V_{dc}$ & DC string voltage & - \\
+$V_{dc}$ & DC string voltage (V)& - \\
 \midrule
 \multicolumn{3}{c}{Output}\\
-$P_{ac}$ & \textbf{Gross ac output} & \texttt{ac\_net} \\
-$\eta_{inv}$ & \textbf{Inverter efficiency} & \texttt{inv\_eff}  \\
-$P_{clip}$ & \textbf{Inverter clipping loss} & \texttt{inv\_cliploss}  \\
-$P_{so}$ & \textbf{Inverter power consumption loss}& \texttt{inv\_psoloss}  \\
-$P_{nt}$ & \textbf{Inverter night time loss}& \texttt{inv\_ntloss}  \\
+$P_{ac}$ & \textbf{Gross ac output} (W) & \texttt{ac\_net} \\
+$\eta_{inv}$ & \textbf{Inverter efficiency} (\%)& \texttt{inv\_eff}  \\
+$P_{clip}$ & \textbf{Inverter clipping loss} (kW)& \texttt{inv\_cliploss}  \\
+$P_{so}$ & \textbf{Inverter power consumption loss} (kW)& \texttt{inv\_psoloss}  \\
+$P_{nt}$ & \textbf{Inverter night time loss} (kW)& \texttt{inv\_ntloss}  \\
 $P_{par}$ & AC parasitic power consumption (W) & - \\%may not be used
 $R_{partload}$ & part load ratio & - \\
 \midrule
@@ -2965,25 +2966,25 @@ In SSC, the implementation of the Sandia inverter model described here is part o
 Symbol & Description / \textbf{Name in SAM} & Name in SSC \\
 \midrule
 \multicolumn{3}{c}{Inputs}\\
-$P_{dc}$ & inverter DC input power (Equation~\ref{eqn-invinputpower}) & - \\
-$V_{dc}$ & inverter DC input voltage (DC string voltage) & - \\
-$V_{dc,max}$ & \textbf{Maximum DC power} & \texttt{inv\_snl\_vdcmax} \\
-$I_{dc,0}$ & \textbf{Nominal DC voltage} & \texttt{inv\_snl\_vdco} \\
-$P_{s,0}$ & \textbf{Power consumption during operation} & \texttt{inv\_snl\_pso} \\
-$P_{nt,0}$ & \textbf{Power consumption at night} & \texttt{inv\_snl\_pnt} \\
-$P_{ac,0}$ & \textbf{Maximum AC power} & \texttt{inv\_snl\_paco} \\
-$P_{dc,0}$ & \textbf{Maximum DC power} & \texttt{inv\_snl\_pdco} \\
-$c_0$ & Curvature between AC power and DC power W$^{-1}$ & \texttt{inv\_snl\_c0} \\
-$c_1$ & Coefficient of $P_dc,0$ variation with DC input voltage V$^{-1}$ &  \texttt{inv\_snl\_c1} \\
-$c_2$ & Coefficient of $P_{so}$ variation with DC input voltage V$^{-1}$ &\texttt{inv\_snl\_c2} \\
-$c_3$ & Coefficient of $C_0$ variation with DC input voltage V$^{-1}$ & \texttt{inv\_snl\_c3} \\
+$P_{dc}$ & inverter DC input power (Equation~\ref{eqn-invinputpower}) (W) & - \\
+$V_{dc}$ & inverter DC input voltage (DC string voltage) (V) & - \\
+$V_{dc,max}$ & \textbf{Maximum DC power} (W)& \texttt{inv\_snl\_vdcmax} \\
+$I_{dc,0}$ & \textbf{Nominal DC voltage} (V)& \texttt{inv\_snl\_vdco} \\
+$P_{s,0}$ & \textbf{Power consumption during operation} (W)& \texttt{inv\_snl\_pso} \\
+$P_{nt,0}$ & \textbf{Power consumption at night} (W)& \texttt{inv\_snl\_pnt} \\
+$P_{ac,0}$ & \textbf{Maximum AC power} (W)& \texttt{inv\_snl\_paco} \\
+$P_{dc,0}$ & \textbf{Maximum DC power} (W) & \texttt{inv\_snl\_pdco} \\
+$c_0$ & Curvature between AC power and DC power (1/W) & \texttt{inv\_snl\_c0} \\
+$c_1$ & Coefficient of $P_dc,0$ variation with DC input voltage (1/V) &  \texttt{inv\_snl\_c1} \\
+$c_2$ & Coefficient of $P_{so}$ variation with DC input voltage (1/V) &\texttt{inv\_snl\_c2} \\
+$c_3$ & Coefficient of $C_0$ variation with DC input voltage (1/V) & \texttt{inv\_snl\_c3} \\
 \midrule
 \multicolumn{3}{c}{Output}\\
-$P_{ac}$ & \textbf{Gross ac output} & \texttt{ac\_net} \\
-$\eta_{inv}$ & \textbf{Inverter efficiency} & \texttt{inv\_eff}  \\
-$P_{clip}$ & \textbf{Inverter clipping loss} & \texttt{inv\_cliploss}  \\
-$P_{s}$ & \textbf{Inverter power consumption loss}& \texttt{inv\_psoloss}  \\
-$P_{nt}$ & \textbf{Inverter night time loss}& \texttt{inv\_ntloss}  \\
+$P_{ac}$ & \textbf{Gross ac output} (W)& \texttt{ac\_net} \\
+$\eta_{inv}$ & \textbf{Inverter efficiency}(\%) & \texttt{inv\_eff}  \\
+$P_{clip}$ & \textbf{Inverter clipping loss} (W)& \texttt{inv\_cliploss}  \\
+$P_{s}$ & \textbf{Inverter power consumption loss} (W)& \texttt{inv\_psoloss}  \\
+$P_{nt}$ & \textbf{Inverter night time loss} (W)& \texttt{inv\_ntloss}  \\
 \hline
 \end{tabular}
 \label{tab-sandiainvertervars}
@@ -3070,23 +3071,23 @@ NREL developed the Inverter Part Load Curve model specifically for SAM. The mode
 Symbol & Description / \textbf{Name in SAM} & Name in SSC \\
 \midrule
 \multicolumn{3}{c}{Inputs}\\
-$P_{dc}$ & inverter DC input power (Equation~\ref{eqn-invinputpower}) & - \\
-$V_{dc}$ & inverter DC input voltage (DC string voltage) & - \\
-$V_{dc,max}$ & \textbf{Maximum DC power} & \texttt{inv\_ds\_vdcmax} \\
-$I_{dc,0}$ & \textbf{Nominal DC voltage} & \texttt{inv\_ds\_vdco} \\
-$P_{s,0}$ & \textbf{Power consumption during operation} & \texttt{inv\_ds\_pso} \\
-$P_{nt,0}$ & \textbf{Power consumption at night} & \texttt{inv\_ds\_pnt} \\
-$P_{ac,0}$ & \textbf{Maximum AC power} & \texttt{inv\_ds\_paco} \\
-$P_{dc,0}$ & \textbf{Maximum DC power} & \texttt{inv\_ds\_pdco} \\
-$\eta_{\mathrm{inv},0-N}$ & column of $N$ efficiency values & \texttt{inv\_ds\_efficiency} \\
-$P_{ac,0-N}$ & column of $N$ AC power output values & \texttt{inv\_ds\_partload} \\
+$P_{dc}$ & inverter DC input power (Equation~\ref{eqn-invinputpower}) (W)& - \\
+$V_{dc}$ & inverter DC input voltage (DC string voltage) (V) & - \\
+$V_{dc,max}$ & \textbf{Maximum DC power} (W)& \texttt{inv\_ds\_vdcmax} \\
+$I_{dc,0}$ & \textbf{Nominal DC voltage} (V) & \texttt{inv\_ds\_vdco} \\
+$P_{s,0}$ & \textbf{Power consumption during operation} (W)& \texttt{inv\_ds\_pso} \\
+$P_{nt,0}$ & \textbf{Power consumption at night} (W)& \texttt{inv\_ds\_pnt} \\
+$P_{ac,0}$ & \textbf{Maximum AC power} (W)& \texttt{inv\_ds\_paco} \\
+$P_{dc,0}$ & \textbf{Maximum DC power} (W)& \texttt{inv\_ds\_pdco} \\
+$\eta_{\mathrm{inv},0-N}$ & column of $N$ efficiency values (\%)& \texttt{inv\_ds\_efficiency} \\
+$P_{ac,0-N}$ & column of $N$ AC power output values (W)& \texttt{inv\_ds\_partload} \\
 \midrule
 \multicolumn{3}{c}{Output}\\
-$P_{ac}$ & \textbf{Gross ac output} & \texttt{ac\_net} \\
-$\eta_{inv}$ & \textbf{Inverter efficiency} & \texttt{inv\_eff}  \\
-$P_{clip}$ & \textbf{Inverter clipping loss} & \texttt{inv\_cliploss}  \\
-$P_{s}$ & \textbf{Inverter power consumption loss}& \texttt{inv\_psoloss}  \\
-$P_{nt}$ & \textbf{Inverter night time loss}& \texttt{inv\_ntloss}  \\
+$P_{ac}$ & \textbf{Gross ac output} (W)& \texttt{ac\_net} \\
+$\eta_{inv}$ & \textbf{Inverter efficiency} (\%)& \texttt{inv\_eff}  \\
+$P_{clip}$ & \textbf{Inverter clipping loss} (W)& \texttt{inv\_cliploss}  \\
+$P_{s}$ & \textbf{Inverter power consumption loss} (W)& \texttt{inv\_psoloss}  \\
+$P_{nt}$ & \textbf{Inverter night time loss} (W)& \texttt{inv\_ntloss}  \\
 \hline
 \end{tabular}
 \label{tab-partloadinvertervars}
@@ -3158,8 +3159,8 @@ The battery model requires multiple inputs and provides multiple outputs.  Input
 Description / \textbf{Name in SAM} & Name in SSC \\
 \midrule
 \multicolumn{2}{c}{Battery Bank Sizing Inputs}\\
-\textbf{Desired bank capacity (kWh)} & \texttt{batt\_bank\_size} \\
-\textbf{Desired bank voltage (V)} & \texttt{batt\_bank\_voltage} \\
+\textbf{Desired bank capacity} (kWh) & \texttt{batt\_bank\_size} \\
+\textbf{Desired bank voltage} (V) & \texttt{batt\_bank\_voltage} \\
 \textbf{Total cells in series} & \texttt{batt\_bank\_ncells\_serial} \\
 \textbf{Total number of strings} & \texttt{batt\_bank\_nstrings} \\
 Specify desired bank size or specify cells & \texttt{batt\_size\_choice} \\
@@ -3168,36 +3169,36 @@ Specify desired bank size or specify cells & \texttt{batt\_size\_choice} \\
 Lead-acid or lithium-ion chemistry type & \texttt{batt\_type} \\
 \midrule
 \multicolumn{2}{c}{Voltage Inputs}\\
-\textbf{Cell nominal voltage (V)} & \texttt{batt\_Vnom\_default} \\
-\textbf{Internal resistance ($\Omega$)} & \texttt{batt\_resistance} \\
+\textbf{Cell nominal voltage} (V) & \texttt{batt\_Vnom\_default} \\
+\textbf{Internal resistance} ($\Omega$) & \texttt{batt\_resistance} \\
 \textbf{C-rate of discharge curve} & \texttt{batt\_C\_rate} \\
-\textbf{Fully charged cell-voltage (V)} & \texttt{batt\_Vfull} \\
-\textbf{Exponential zone cell voltage (V)} & \texttt{batt\_Vexp} \\
-\textbf{Nominal zone cell voltage (V)} & \texttt{batt\_Vnom} \\
+\textbf{Fully charged cell-voltage} (V) & \texttt{batt\_Vfull} \\
+\textbf{Exponential zone cell voltage} (V) & \texttt{batt\_Vexp} \\
+\textbf{Nominal zone cell voltage} (V) & \texttt{batt\_Vnom} \\
 \midrule
 \multicolumn{2}{c}{Current \& Capacity Inputs}\\
-\textbf{Cell capacity (Ah)} & \texttt{batt\_Qfull} \\
+\textbf{Cell capacity} (Ah) & \texttt{batt\_Qfull} \\
 \textbf{Max C-rate charge} & \texttt{batt\_C\_rate\_max\_charge} \\
 \textbf{Max C-rate discharge} & \texttt{batt\_C\_rate\_max\_discharge} \\
 \midrule
 \multicolumn{2}{c}{Power Coverters Inputs}\\
-\textbf{AC to DC conversion efficiency (\%)} & \texttt{batt\_ac\_dc\_efficiency} \\
-\textbf{DC to AC conversion efficiency (\%)} & \texttt{batt\_dc\_ac\_efficiency} \\
+\textbf{AC to DC conversion efficiency} (\%) & \texttt{batt\_ac\_dc\_efficiency} \\
+\textbf{DC to AC conversion efficiency} (\%) & \texttt{batt\_dc\_ac\_efficiency} \\
 \midrule
 \multicolumn{2}{c}{Storage Dispatch Controller Inputs}\\
 Manual or automated dispatch selection & \texttt{batt\_dispatch\_choice} \\
 PV dispatch priority choice & \texttt{batt\_pv\_choice} \\
-\textbf{Minimum state of charge (\%)} & \texttt{batt\_minimum\_SOC} \\
-\textbf{Maximum state of charge (\%)} & \texttt{batt\_maximum\_SOC} \\
-\textbf{Minimum time at charge state (min)} & \texttt{batt\_minimum\_modetime} \\
+\textbf{Minimum state of charge} (\%) & \texttt{batt\_minimum\_SOC} \\
+\textbf{Maximum state of charge} (\%) & \texttt{batt\_maximum\_SOC} \\
+\textbf{Minimum time at charge state} (min) & \texttt{batt\_minimum\_modetime} \\
 Target grid power input type (0/1) & \texttt{batt\_target\_choice}\\
-Target grid power time series(kW) & \texttt{batt\_target\_power}\\
+Target grid power time series (kW) & \texttt{batt\_target\_power}\\
 Target grid power single or monthly (kW) & \texttt{batt\_target\_power\_monthly}\\
-\textbf{Charge from grid} (period \texttt{\textbf{N}}) & \texttt{pv.storage.p\textbf{N}.gridcharge} \\
-\textbf{Charge from PV} (period \texttt{\textbf{N}}) & \texttt{pv.storage.p\textbf{N}.charge} \\
-\textbf{Allow discharge} (period \texttt{\textbf{N}}) & \texttt{pv.storage.p\textbf{N}.discharge} \\
-\textbf{\% capacity to discharge (\%)} (period \texttt{\textbf{N}}) & \texttt{batt\_discharge\_percent\_\textbf{N}.discharge} \\
-\textbf{\% capacity to gridcharge (\%)} (period \texttt{\textbf{N}}) & \texttt{batt\_gridcharge\_percent\_\textbf{N}.gridcharge} \\
+\textbf{Charge from grid} (period \texttt{\textit{n}}) & \texttt{pv.storage.p[\textit{n}].gridcharge} \\
+\textbf{Charge from PV} (period \texttt{\textit{n}}) & \texttt{pv.storage.p[\textit{n}].charge} \\
+\textbf{Allow discharge} (period \texttt{\textit{n}}) & \texttt{pv.storage.p[\textit{n}].discharge} \\
+\textbf{\% capacity to discharge (\%)} (period \texttt{\textit{n}}) & \texttt{batt\_discharge\_percent\_[\textit{n}].discharge} \\
+\textbf{\% capacity to gridcharge} (\%) (period \texttt{\textit{n}}) & \texttt{batt\_gridcharge\_percent\_[\textit{n}].gridcharge} \\
 Manual dispatch schedule & \texttt{dispatch\_manual\_sched} \\
 \midrule
 \multicolumn{2}{c}{Battery Lifetime Inputs}\\
@@ -3218,8 +3219,8 @@ Description / \textbf{Name in SAM} & Name in SSC \\
 \midrule
 \multicolumn{2}{c}{Battery Bank Replacement Inputs}\\
 Battery bank replacement option & \texttt{batt\_replacement\_option} \\
-\textbf{Battery bank replacement cost (\$)} & \texttt{batt\_replacement\_cost} \\
-\textbf{Battery cost escalation above inflation (\%)} & \texttt{batt\_replacement\_cost\_escal} \\
+\textbf{Battery bank replacement cost} (\$) & \texttt{batt\_replacement\_cost} \\
+\textbf{Battery cost escalation above inflation} (\%) & \texttt{batt\_replacement\_cost\_escal} \\
 \textbf{Battery bank replacement threshold} & \texttt{batt\_replacement\_capacity} \\
 \textbf{Battery bank replacement schedule} & \texttt{batt\_replacement\_schedule} \\
 
@@ -3229,8 +3230,8 @@ Battery specific heat capacity (J/kg/K) & \texttt{batt\_Cp} \\
 Battery heat transfer coefficient (W/m2/K)& \texttt{batt\_h\_to\_ambient} \\
 Battery room temperature (C) & \texttt{T\_room} \\
 Battery capacity vs. temperature table & \texttt{cap\_vs\_temp} \\
-\textbf{Specific energy per mass (Wh/kg)} & \texttt{batt\_specific\_energy\_per\_mass} \\
-\textbf{Specific energy per volume (Wh/L)} & \texttt{batt\_specific\_energy\_per\_volume} \\
+\textbf{Specific energy per mass} (Wh/kg) & \texttt{batt\_specific\_energy\_per\_mass} \\
+\textbf{Specific energy per volume} (Wh/L) & \texttt{batt\_specific\_energy\_per\_volume} \\
 \hline
 \end{tabular}
 \label{tab-batteryinputs2}
@@ -3245,49 +3246,49 @@ Battery capacity vs. temperature table & \texttt{cap\_vs\_temp} \\
 Description / \textbf{Name in SAM} & Name in SSC \\
 \midrule
 \multicolumn{2}{c}{Variable Length Outputs}\\
-\textbf{Annual energy exported to grid (kWh)} & \texttt{annual\_export\_to\_grid\_energy} \\
-\textbf{Annual energy imported from grid (kWh)} & \texttt{annual\_import\_from\_grid\_energy} \\
-\textbf{Battery annual energy charged (kWh)} & \texttt{batt\_annual\_charge\_energy} \\
-\textbf{Battery annual energy charged from grid (kWh)} & \texttt{batt\_annual\_charge\_from\_grid} \\
-\textbf{Battery annual energy charged from pv (kWh)} & \texttt{batt\_annual\_charge\_from\_pv} \\
-\textbf{Battery annual energy discharge (kWh)} & \texttt{batt\_annual\_discharge\_energy} \\
-\textbf{Battery annual energy loss (kWh)} & \texttt{batt\_annual\_energy\_loss} \\
+\textbf{Annual energy exported to grid} (kWh) & \texttt{annual\_export\_to\_grid\_energy} \\
+\textbf{Annual energy imported from grid} (kWh) & \texttt{annual\_import\_from\_grid\_energy} \\
+\textbf{Battery annual energy charged} (kWh) & \texttt{batt\_annual\_charge\_energy} \\
+\textbf{Battery annual energy charged from grid} (kWh) & \texttt{batt\_annual\_charge\_from\_grid} \\
+\textbf{Battery annual energy charged from pv} (kWh) & \texttt{batt\_annual\_charge\_from\_pv} \\
+\textbf{Battery annual energy discharge} (kWh) & \texttt{batt\_annual\_discharge\_energy} \\
+\textbf{Battery annual energy loss} (kWh) & \texttt{batt\_annual\_energy\_loss} \\
 \textbf{Battery bank replacements per year} & \texttt{batt\_bank\_replacement} \\
-\textbf{Battery replacement cost)} & \texttt{cf\_batt\_bank\_replacement\_cost} \\
+\textbf{Battery replacement cost} (\$)& \texttt{cf\_batt\_bank\_replacement\_cost} \\
 \textbf{Battery replacement cost schedule} & \texttt{cf\_batt\_replacement\_cost\_schedule} \\
 \midrule
 \multicolumn{2}{c}{Single Value Outputs}\\
-\textbf{Average battery cycle efficiency} & \texttt{average\_cycle\_efficiency} \\
-\textbf{Battery bank installed capacity} & \texttt{batt\_bank\_installed\_capacity} \\
-\textbf{Battery percent charged from PV} & \texttt{batt\_pv\_charge\_percent} \\
+\textbf{Average battery cycle efficiency} (\%)& \texttt{average\_cycle\_efficiency} \\
+\textbf{Battery bank installed capacity} (kWh)& \texttt{batt\_bank\_installed\_capacity} \\
+\textbf{Battery percent charged from PV} (\%)& \texttt{batt\_pv\_charge\_percent} \\
 \midrule
 \multicolumn{2}{c}{Monthly Value Outputs}\\
-\textbf{Energy to load from PV (kWh} & \texttt{monthly\_pv\_to\_load} \\
-\textbf{Energy to load from battery (kWh} & \texttt{monthly\_batt\_to\_load} \\
-\textbf{Energy to load from grid (kWh} & \texttt{monthly\_grid\_to\_load} \\
+\textbf{Energy to load from PV} (kWh) & \texttt{monthly\_pv\_to\_load} \\
+\textbf{Energy to load from battery} (kWh) & \texttt{monthly\_batt\_to\_load} \\
+\textbf{Energy to load from grid} (kWh) & \texttt{monthly\_grid\_to\_load} \\
 \midrule
 \multicolumn{2}{c}{Lifetime Outputs at Simulation Timestep}\\
-\textbf{Battery capacity percent for lifetime (\%)} & \texttt{batt\_capacity\_percent} \\
-\textbf{Battery cycle depth of discharge (\%)} & \texttt{batt\_DOD} \\
+\textbf{Battery capacity percent for lifetime} (\%) & \texttt{batt\_capacity\_percent} \\
+\textbf{Battery cycle depth of discharge} (\%) & \texttt{batt\_DOD} \\
 \textbf{Battery number of cycles} & \texttt{batt\_cycles} \\
-\textbf{Battery state of charge (\%)} & \texttt{batt\_SOC} \\
-\textbf{Power of PV+ battery (kW)} & \texttt{pv\_batt\_gen} \\
-\textbf{Power to battery from PV (kW)} & \texttt{pv\_to\_batt} \\
-\textbf{Power to battery from grid (kW)} & \texttt{grid\_to\_batt} \\
-\textbf{Power to load from PV (kW)} & \texttt{pv\_to\_load} \\
-\textbf{Power to load from battery (kW)} & \texttt{batt\_to\_load} \\
-\textbf{Power to load from grid (kW)} & \texttt{grid\_to\_load} \\
-\textbf{Power to/from battery (kW)} & \texttt{batt\_power} \\
-\textbf{Power to/from grid (kW)} & \texttt{grid\_power} \\
+\textbf{Battery state of charge} (\%) & \texttt{batt\_SOC} \\
+\textbf{Power of PV+ battery} (kW) & \texttt{pv\_batt\_gen} \\
+\textbf{Power to battery from PV} (kW) & \texttt{pv\_to\_batt} \\
+\textbf{Power to battery from grid}  (kW)& \texttt{grid\_to\_batt} \\
+\textbf{Power to load from PV} (kW) & \texttt{pv\_to\_load} \\
+\textbf{Power to load from battery} (kW) & \texttt{batt\_to\_load} \\
+\textbf{Power to load from grid} (kW) & \texttt{grid\_to\_load} \\
+\textbf{Power to/from battery} (kW) & \texttt{batt\_power} \\
+\textbf{Power to/from grid} (kW) & \texttt{grid\_power} \\
 \midrule
 \multicolumn{2}{c}{Outputs at Simulation Timestep}\\
-\textbf{Battery capacity percent for temperature(\%)} & \texttt{batt\_capacity\_thermal\_percent} \\
-\textbf{Battery cell voltage (V)} & \texttt{batt\_voltage\_cell} \\
-\textbf{Battery current (A)} & \texttt{batt\_I} \\
-\textbf{Battery max charge (Ah)} & \texttt{batt\_qmax} \\
-\textbf{Battery temperature (C)} & \texttt{batt\_temperature} \\
-\textbf{Battery total charge (Ah)} & \texttt{batt\_q0} \\
-\textbf{Battery voltage (V)} & \texttt{batt\_voltage} \\
+\textbf{Battery capacity percent for temperature} (\%) & \texttt{batt\_capacity\_thermal\_percent} \\
+\textbf{Battery cell voltage} (V)& \texttt{batt\_voltage\_cell} \\
+\textbf{Battery current} (A) & \texttt{batt\_I} \\
+\textbf{Battery max charge} (Ah) & \texttt{batt\_qmax} \\
+\textbf{Battery temperature} ($^\circ$C) & \texttt{batt\_temperature} \\
+\textbf{Battery total charge} (Ah) & \texttt{batt\_q0} \\
+\textbf{Battery voltage} (V) & \texttt{batt\_voltage} \\
 \hline
 \end{tabular}
 \label{tab-batteryoutputs}
@@ -3344,12 +3345,12 @@ Symbol & Description / \textbf{Name in SAM} & Name in SSC \\
 \midrule
 \multicolumn{3}{c}{Inputs}\\
 $N_{inv}$ & \textbf{Number of inverters} & \texttt{inverter\_count} \\
-$P_{ac}$ & AC output of a single inverter & - \\
-$L_{ac}$ & \textbf{Total AC power loss} & \texttt{ac\_loss} \\
-$L_{\textit{adjust}}$ & Curtailment and availability losses & \texttt{adjust} \\
+$P_{ac}$ & AC output of a single inverter (W)& - \\
+$L_{ac}$ & \textbf{Total AC power loss} (\%)& \texttt{ac\_loss} \\
+$L_{\textit{adjust}}$ & Curtailment and availability losses (\%)& \texttt{adjust} \\
 \midrule
 \multicolumn{3}{c}{Outputs}\\
-$P_{\textit{gen}}$ & \textbf{Power generated by system} & \texttt{gen} \\
+$P_{\textit{gen}}$& \textbf{Power generated by system}  (W)& \texttt{gen} \\
 \hline
 \end{tabular}
 \label{tab-systemacoutputvars}
