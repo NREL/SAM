@@ -16,6 +16,7 @@ Team Revisions
 
 Paul Revisions
 --------------
+
 Put units in variable tables outside of bold font. DONE
 
 Check that array dc outputs table matches latest version of SAM pv outputs. DONE
@@ -42,12 +43,6 @@ Update shading input SSC variable names (See Table Effective POA irradiance vari
 
 POA input options. DONE
 
-Check that incident irradiance section describes that beam, diffuse, and global may come from weather file or be calculated depending on input option.
-
-Describe how decomposition model works when POA input is combined with beam shading.
-
-Change "incident" to POA to be consistent with UI.
-
 Irradiance components options. DONE
 
 Curtailment and availability losses. DONE
@@ -58,27 +53,36 @@ Correct losses to explain how category losses are applied to total loss. DONE
 
 Revised SAM output variables (no more ac gross/ac net). DONE
 
-Check the performance ratio formula now that we've fixed that bug?
-
-Module output voltage and inverter MPPT voltage clipping and subarray mismatch, and how that affects net power output
-
 Explain in 10.1 DC String Voltage why subarray mismatch is only available for Sandia module model, and find out if it's avalable for IEC61853. DONE
 
 Mismatch model can only be used with a single-diode module model (see PVSAMV1 comment on line 977). DONE
 
-Backtracking correction? (does not run self-shading model)
+Change units from kWh to kW. DONE
+
+Add units to variable definition tables. DONE
 
 Check inverter input power equation (11.1) and dc power output Pdc, Pdc,net, Pdc,gross to be consistent with SAM outputs. Consider rewriting chapter 10 as 1 DC String Voltage, DC losses, DC power output (remove section on gross DC power)
 
-Change units from kWh to kW. DONE
+Backtracking correction? (does not run self-shading model)
 
-Add units to variable definition tables
+Module output voltage and inverter MPPT voltage clipping and subarray mismatch, and how that affects net power output
+
+Change module output voltage and power variables to Vmp and Pmp as in DC output variables table.
 
 Lifetime simulations and degradation
 
 Check SSC variable names
 
+Check the performance ratio formula now that we've fixed that bug?
+
 Update help references
+
+Check that incident irradiance section describes that beam, diffuse, and global may come from weather file or be calculated depending on input option.
+
+Describe how decomposition model works when POA input is combined with beam shading.
+
+Change "incident" to POA to be consistent with UI.
+
 
 Wish List
 ---------
