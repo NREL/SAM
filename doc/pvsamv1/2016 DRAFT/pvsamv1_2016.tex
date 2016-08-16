@@ -1352,11 +1352,6 @@ The 3D shading calculator also estimates the loss of available diffuse irradianc
 
 This procedure results in an estimate of the view factor of the active surfaces in each subarray to the sky dome, and hence the effective diffuse irradiance loss.  The model assumes an isotropic diffuse sky, and does not adjust for increased circumsolar diffuse irradiance.
 
-
-\subsection{Import Shade Data}\label{sec-importshad}
-
-**JANINE** (per Aron SAM meeting 10/14 -- maybe for Help instead? Should we document here if not part of SSC?)
-
 \section{Self Shading}\label{sec-selfshad}
 
 Self shading is shading of photovoltaic modules in one row by modules in a neighboring rows. SAM uses the same self-shading model for fixed subarrays (no tracking) and subarrays with one-axis tracking. SAM does not model self shading for subarrays with two-axis or azimuth-axis tracking. Because the model assumes that modules consist of photovoltaic cells with three bypass diodes, it is suitable for modules mono- or poly-crystalline silicon photovoltaic cells, but not for thin film modules.The self-shading algorithm is described in detail in Section~\ref{sec-selfshadalg}.
@@ -2673,8 +2668,8 @@ For an array with more than one subarray, the array's DC output is the sum of th
 Symbol & Description / \textbf{Name in SAM} & Name in SSC \\
 \midrule
 \multicolumn{3}{c}{Inputs}\\
-$V_{dc,m}$ & module DC voltage (V)& - \\
-$P_{dc,m}$ & module DC power (W) & - \\
+$V_{mp}$ & module DC voltage (V)& - \\
+$P_{mp}$ & module DC power (W) & - \\
 $N_{modules}$ & \textbf{Modules per string} & \texttt{modules\_per\_string} \\
 $N_{parstrings}$ & \textbf{Strings in parallel} & \texttt{strings\_in\_parallel} \\
 $N_{strings,n}$ & \textbf{Strings allocated to subarray} \textit{n} & \texttt{subarray[\textit{n}]\_nstrings} \\
@@ -2698,25 +2693,18 @@ $P_{dc,net}$ & \textbf{Array power (DC)} (kW)& \texttt{dc\_net} \\
 
 \section{DC String Voltage}\label{sec-dcstringvoltage}
 
-SAM calculates the array's DC string voltage in each time step to determine the inverter's input voltage.
-
-For a system with a single subarray, the array's string DC voltage in a given time step is the module voltage times the number of modules per string.
+SAM calculates the array's DC string voltage in each time step to determine the inverter's input voltage. SAM assumes that each module operates at its maximum-power-point (MPPT) voltage. For systems with more than one subarray, SAM assumes that all subarrays have the same number of modules per string. The DC string voltage $V_{dc}$ in a given time step is the module MPPT voltage times the number of modules per string:
 %cmod_pvsamv1.cpp 1481
 \begin{equation}
 V_{dc} = V_{dc,m} N_{modules}
 \end{equation}
 
-For systems with more than one subarray, when the subarrays have different orientations, tracking, shading factors, or DC loss factors, the maximum power point of each subarray is different. In such cases, SAM calculates the array's DC output voltage in one of two ways:
-\begin{itemize}
-\item By averaging the values of the subarray string voltages (available with all module models): 
-%cmod_pvsamv1.cpp 1488
-\begin{equation}
-V_{dc} =  \frac{1}{N_{sub}}\sum_{n=1}^{N_{sub}} V_{dc,n}
-\end{equation}
-\item By running the module model iteratively for each subarray to determine the array's maximum string voltage (available with the CEC and IEC 61853 module models only) as described in Section~\ref{sec-mismatch}.
-\end{itemize}
+However, under certain conditions, SAM adjusts the DC string voltage:
 
-When you choose the CEC or IEC 61853 module model, the \textbf{Calculate maximum power voltage for array and associated losses due to subarray mismatch} check box at the bottom of the System Design input page ($\mathtt{enable\_mismatch\_vmax\_calc}=1$ in the SSC \texttt{pvsamv1} module) determines what method SAM uses to calculate the array's maximum power point DC voltage.
+\begin{itemize}
+\item The string voltage falls outside of the range defined by the inverter's minimum and maximum input MPPT voltage ratings (Section~\ref{sec-invclip})
+\item The system consists of more than one subarray, and the subarrays have different maximum power points, for example because of different orientation or type of tracking (Section~\ref{sec-subarraymismatch}).
+\end{itemize}
 
 \section{Gross DC Power Output}
 
@@ -2732,9 +2720,11 @@ For systems with more than one subarray, the array's gross DC output is the sum 
 P_{dc,gross} = \sum_{n=1}^{N_{sub}} P_{dc,gross,n}
 \end{equation}
 
+The gross DC power output is an intermediate variable that SAM uses for internal calculations but does not report in the model outputs.
+
 \section{DC Electrical Losses} \label{sec-dclosses}
 
-SAM models electrical losses on the DC side of the system using a single DC loss factor for each subarray in the system. The DC loss factor for each subarray $F_{dc,n}$ is calculated from the six loss percentages on the Losses input page:
+SAM models electrical losses on the DC side of the system using a single DC loss factor for each subarray in the system that applies to the gross DC power output. The DC loss factor for each subarray $F_{dc,n}$ is calculated from the six loss percentages on the Losses input page:
 %cmod_pvsamv1.cpp 981
 \begin{align}\label{eqn-dcderate}
 F_{dc,n} &= F_{dc1,n}~F_{dc2,n}~F_{dc3,n}~F_{dc4,n}~F_{dc5,n}~F_{dc6,n} \notag\\
@@ -2750,7 +2740,7 @@ Note that the single DC power optimizer loss applies to all subarrays.
 
 \section{DC Snow Losses}\label{sec-snow}
 
-The snow cover model estimates the portion of the array that is covered by snow and calculates a loss in the subarray's DC power output caused by the snow. The model calculates a reduction in subarray output instead of a reduction in incident irradiance because it was developed empirically by measuring system electrical output for several photovoltaic systems installed in snowy climates, as described in \citet{marion-snowmodel} and \citet{ryberg-snowmodel}.
+The snow cover model estimates the portion of the array that is covered by snow and calculates a loss caused by the snow that applies to the subarray's gross DC power output. The model calculates a reduction in subarray power output instead of a reduction in incident irradiance because it was developed empirically by measuring system electrical output for several photovoltaic systems installed in snowy climates, as described in \citet{marion-snowmodel} and \citet{ryberg-snowmodel}.
 
 To use the snow model in SAM, check \textbf{Estimate losses due to snow} on the Shading and Snow input page. Be sure to use a weather file with snow depth data. The \textbf{Maximum snow depth} value on the Location and Resource page indicates whether there is snow depth data in the weather file: A value of "NaN" indicates there is no snow depth data in the file. Also make sure that the \textbf{Number of modules along side} on the Shading and Snow input page is consistent with the number of modules in the subarray. In SSC, set $\texttt{en\_snow\_model} = 1$ to enable the snow model, and check that the value of \texttt{subarray[\textit{n}]\_nmody} is correct.
 
@@ -2872,7 +2862,18 @@ SAM does not explicitly model a maximum power point tracker or other power condi
 
 You can account for electricity consumption of maximum power point tracking equipment and other related losses using the DC losses (see Section~\ref{sec-dclosses}).
 
-\section{Subarray Mismatch Losses}\label{sec-mismatch}
+\section{Subarray Mismatch Losses}\label{sec-subarraymismatch}
+For systems with more than one subarray, when the subarrays have different orientations, tracking, shading factors, or DC loss factors, the maximum power point of each subarray is different. In such cases, SAM calculates the array's DC output voltage in one of two ways:
+\begin{itemize}
+\item By averaging the values of the subarray string voltages (available with all module models): 
+%cmod_pvsamv1.cpp 1488
+\begin{equation}
+V_{dc} =  \frac{1}{N_{sub}}\sum_{n=1}^{N_{sub}} V_{dc,n}
+\end{equation}
+\item By running the module model iteratively for each subarray to determine the array's maximum string voltage (available with the CEC and IEC 61853 module models only) as described below.
+\end{itemize}
+
+When you choose the CEC or IEC 61853 module model, the \textbf{Calculate maximum power voltage for array and associated losses due to subarray mismatch} check box at the bottom of the System Design input page ($\mathtt{enable\_mismatch\_vmax\_calc}=1$ in the SSC \texttt{pvsamv1} module) determines what method SAM uses to calculate the array's maximum power point DC voltage.
 
 For a system with more than one subarray, SAM can estimate losses due to maximum power point mismatches between subarrays, but only for the single-diode equivalent circuit module models (CEC and IEC 61853 models) because they represent the subarray's I-V curve as a continuous function, which makes it possible to estimate the subarray power at points that are off of the maximum power point. The point-value models (simple efficiency and Sandia module) calculate values at discrete points on the subarray's I-V curve, and are not suitable for estimates of module power at other points on the curve \citep{dobos2012b}.
 
@@ -2893,12 +2894,7 @@ SAM uses one of the inverter models listed in Section~\ref{sec-inverteroptions} 
 
 The inverter models calculate the inverter's DC-to-AC power conversion efficiency at rated and part-load operating power. They do not explicitly account for the effect of temperature on inverter performance or for the impact on inverter performance of power factor control or grid outages. 
 
-SAM accounts for two kinds of inverter losses, or "clipping" described in Section~\ref{sec-invclip}:
-
-\begin{itemize}
-\item Clipping loss due to inverter saturation, when the inverter DC input power exceeds the inverter's nameplate rating.
-\item MPPT clipping loss when the DC input voltage exceeds the inverter's nameplate operating voltage (MPPT voltage) limit ratings.
-\end{itemize}
+SAM accounts for two kinds of inverter losses, or "clipping" described in Section~\ref{sec-invclip}.
 
 \begin{table}
 \begin{center}
@@ -3043,7 +3039,7 @@ P_{ac,s=0} - P_{ac} & \text{(\textbf{Inverter CEC Database} option, and } \\
 \right.
 \end{equation}
 
-For the \textbf{Inverter Datasheet} option, the operating losses are zero:
+For the \textbf{Inverter Datasheet} option, the operating losses are zero.
 
 SAM considers the inverter to be operating at night when the DC input power is less than the operating power losses $P_{dc} < P_{so}$. At night:
 %lib_sandia.cpp 345
@@ -3139,9 +3135,13 @@ P_{nt} = P_{nt,0}
 The photovoltaic performance model calculates two types of inverter clipping losses:
 
 \begin{itemize}
-\item MPPT clipping is a reduction in the inverter input DC power when the input voltage falls outside of the operating range defined by the minimum and maximum MPPT DC voltage ratings.
-\item Power clipping is a reduction in the inverter output AC power when the inverter power exceeds its nameplate rating.
+\item MPPT clipping is a reduction in the inverter DC input power when the input voltage (DC string voltage) falls outside of the operating range defined by the inverter's minimum and maximum MPPT DC voltage ratings.
+\item Power clipping is a reduction in the inverter output AC power caused by inverter saturation when the inverter power exceeds its nameplate rating.
 \end{itemize}
+
+When the DC string voltage is less than the inverter's minimum MPPT voltage rating, SAM sets the DC string voltage to the minimum rating. Similarly, when the DC string voltage is greater than the inverter's maximum MPPT voltage rating, SAM sets the DC string voltage to the maximum rating.
+
+Power clipping is handled by the inverter model as described in the sections above for each inverter model.
 
 
 
