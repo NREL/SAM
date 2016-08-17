@@ -251,9 +251,13 @@ The model uses data from the weather file to calculate the following values for 
 
 Solar resource data must include solar irradiance, wind speed, and ambient temperature data, and may include optional snow depth and albedo data. Location data must include latitude, longitude, time zone and elevation, and may include optional fields for location name or number, city, state, region, and country. 
 
-Each row in the weather file must have a Year, Month, Day, and Hour column indicating the time for sun position calculations. Sub-hourly data must have an additional Minute column. For hourly data, the Minute column is optional, and may be used to indicate the minute for sun position calculations. For hourly data with no Minute column, the model uses the midpoint of the hour for the sun position calculations.
+****SOLAR IRRADIANCE DATA CAN BE DNI/DHI, DNI/GHI, GHI/DHI, OR POA. DNI/DHI IS DEFAULT, WHEN OTHER OPTIONS ARE USED, SAM CALCULATES MISSING COMPONENT FROM OTHER TWO. POA BYPASSES CALCULATIONS EXCEPT FOR SHADING REF BYPASSING POA SECTION****
+
+Each row in the weather file must have a Year, Month, Day, and Hour column indicating the time for sun position calculations. Sub-hourly data must have an additional Minute column. For hourly data, the Minute column is optional, and may be used to indicate the minute for sun position calculations (Section~\ref{sec-timeconvention}). 
 
 SAM can read files in the formats listed below. For descriptions of the formats see \citep{help-weatherfileformats}.
+
+****SSC OPTION TO INPUT DATA ARRAY INSTEAD OF WEATHER FILE****
 
 \begin{itemize}
 \item SAM CSV: Comma-separated text format developed by NREL for use with SAM. This is also the file format for files from the NREL National Solar Radiation Database.
@@ -262,7 +266,7 @@ SAM can read files in the formats listed below. For descriptions of the formats 
 \item EPW: Text format derived from the TMY2 format for the EnergyPlus building modeling software. 
 \end{itemize}
 
-SAM's photovoltaic model reads and stores the weather file data shown in Table~\ref{tab-wfdata}. It ignores any additional data elements that may be included in the different weather file formats. Some additional data elements, such as relative humidity, are required for SAM's concentrating solar power performance models, but not for the photovoltaic model. SAM also ignores supporting data, such as the source and uncertainty flags in the TMY3 file format.
+SAM's photovoltaic model reads and stores the weather file data shown in Table~\ref{tab-wfdata}. It ignores any additional data elements that may be included in the different weather file formats. Some additional data elements, such as relative humidity, ****RELATIVE HUMIDITY REQUIRED FOR HEAT TRANSFER CELL TEMP MODEL**** are required for SAM's concentrating solar power performance models, but not for the photovoltaic model. SAM also ignores supporting data, such as the source and uncertainty flags in the TMY3 file format.
 
 \begin{table}
 \begin{center}
@@ -286,9 +290,10 @@ $\mathit{mo}$ & Month & typical month (1-12) \\
 $\mathit{day}$ & Day & day of year (1-365) \\
 $\mathit{hr}$ & Hour & hour of day (0-23) in local time \\
 $\mathit{min}$ & Minute & minute of hour (0-59) \\
-$E_g$ & Global horizontal irradiance (W/m$^2$) & total radiation on a horizontal surface \\
+$E_g$ & Global horizontal irradiance (W/m$^2$) ****NOT REQUIRED & total radiation on a horizontal surface \\
 $E_b$ & Direct normal irradiance (W/$^2$) & direct radiation on a surface normal to the sun \\
 $E_d$ & Diffuse horizontal irradiance (W/m$^2$) & radiation on a horizontal surface from the sky \\
+POA & ****POA IS OPTIONAL & ****PLANE OF ARRAY\\
 $v_{wind}$ & Wind speed (m/s) & wind speed \\
 $T_a$ & Dry bulb temperature ($^{\circ}$C) & ambient dry-bulb temperature \\
 $D_{snow}$ & Snow depth (cm)* & depth of snow \\
