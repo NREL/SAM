@@ -114,7 +114,7 @@ function setup_flat_plate_pv_pages()
 				['IEC61853 Single Diode Model'] ], 				
 			{ 'sidebar'='Module', 'help'='pv_module', 'exclusive_var'='module_model' } );
 			
-	addpage( [ ['Inverter CEC Database'], ['Inverter Datasheet'], ['Inverter Part Load Curve'] ], 
+	addpage( [ ['Inverter CEC Database'], ['Inverter CEC Coefficient Generator'], ['Inverter Datasheet'], ['Inverter Part Load Curve'] ], 
 			{ 'sidebar'='Inverter', 'help'='pv_inverter', 'exclusive_var'='inverter_model' } );
 	addpage( [ ['PV System Design', {'name'='PV Subarray Voltage Mismatch', 'collapsible'=true, 'collapsible_var' = 'mismatch_shown'}] ], { 'sidebar'='System Design', 'help'='pv_system_design' } );
 	addpage( [ ['PV Shading'] ], { 'sidebar'='Shading and Snow', 'help'='pv_shading' } );
