@@ -227,6 +227,14 @@
       <OutputFile>vc_mswud\SAMnt_vc9.bsc</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
     </Bscmake>
+    <PostBuildEvent>
+      <Command>robocopy $(WEXDIR)\build_vc2013\libcurl_ssl_$(Platform)\bin $(SAMNTDIR)\deploy\$(Platform)\ /E /XC /XN /XO /XX 
+
+if %ERRORLEVEL% GEQ 8 (
+exit) else (
+exit 0    
+)</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <Midl>
@@ -268,6 +276,14 @@
       <OutputFile>vc_mswud\SAMnt_vc9.bsc</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
     </Bscmake>
+    <PostBuildEvent>
+      <Command>robocopy $(WEXDIR)\build_vc2013\libcurl_ssl_$(Platform)\bin $(SAMNTDIR)\deploy\$(Platform)\ /E /XC /XN /XO /XX 
+
+if %ERRORLEVEL% GEQ 8 (
+exit) else (
+exit 0    
+)</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <Midl>
@@ -310,6 +326,14 @@
       <OutputFile>vc_mswu\SAMnt_vc9.bsc</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
     </Bscmake>
+    <PostBuildEvent>
+      <Command>robocopy $(WEXDIR)\build_vc2013\libcurl_ssl_$(Platform)\bin $(SAMNTDIR)\deploy\$(Platform)\ /E /XC /XN /XO /XX 
+
+if %ERRORLEVEL% GEQ 8 (
+exit) else (
+exit 0    
+)</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <Midl>
@@ -351,6 +375,14 @@
       <OutputFile>vc_mswu\SAMnt_vc9.bsc</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
     </Bscmake>
+    <PostBuildEvent>
+      <Command>robocopy $(WEXDIR)\build_vc2013\libcurl_ssl_$(Platform)\bin $(SAMNTDIR)\deploy\$(Platform)\ /E /XC /XN /XO /XX 
+
+if %ERRORLEVEL% GEQ 8 (
+exit) else (
+exit 0    
+)</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
