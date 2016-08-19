@@ -1,0 +1,102 @@
+
+function read_SAM( itest )
+{
+	file = '../test' + to_string(itest)+'_SAM.csv';
+	data = csvread( file, {skip=4,table=true,numeric=true});
+	sf = data{'0.0 %'};	
+	outln( file + ': ' + @data + ': ' + #sf + ' values.' );
+	return sf;
+}
+
+function read_PVSOL( itest )
+{
+	file = '../test' + to_string(itest)+'_PVSOL.csv';
+	data = csvread( file, {skip=0,table=true,numeric=true});
+	sf = data{'Loss Percent [%]'};	
+	outln( file + ': ' + @data + ': ' + #sf + ' values.' );
+	return sf;
+}
+
+function read_PVsyst( itest )
+{
+	file = '../test' + to_string(itest)+'_PVsyst.csv';
+	data = csvread( file, {skip=13,numeric=true});
+
+	sf = alloc(8760);
+	for( i=0;i<8760;i++ )
+	{
+		sf[i] = 100-100*data[i][8];
+		if ( data[i][2] == 0 )
+			sf[i] = 100;
+	}
+		
+	outln( file + ': ' + #data + ': ' + #sf + ' values.' );
+	return sf;
+}
+
+
+function extract( array, start, length )
+{
+	x = alloc(length);
+	for( i=0;i<length;i++ )
+		x[i] = array[start+i];
+	return x;
+}
+
+read_SAM(3);
+read_PVSOL(3);
+read_PVsyst(3);
+
+jan1_idx = 0;
+apr1_idx = 2160;
+jul1_idx = 4344;
+oct1_idx = 6552;
+
+day_names = [ 'January 1st', 'April 1st', 'July 1st', 'October 1st' ];
+days = [ jan1_idx, apr1_idx, jul1_idx, oct1_idx ];
+
+day_start = 0;
+day_hours = 24;
+
+for( i=0;i<day_hours;i++ )
+	time[i] = i+day_start+0.5;
+	
+
+models = [ 'SAM', 'PVsyst', 'PV*SOL' ];
+loadfuncs = [ read_SAM, read_PVsyst, read_PVSOL ];
+nmodels = #loadfuncs;
+colors = [ 'black', 'light grey', 'grey' ];
+styles = [ 'solid', 'dot', 'dash' ];
+sizes = [ 2, 1, 2 ];
+markers = [ 'none', 'circle', 'none' ];
+locations = ['', 'Denver', 'Quito', 'Perth' ];
+
+for( itest=1;itest<=3;itest++ )
+{
+	for (i=0;i<nmodels;i++ )
+	{
+		data[i] = loadfuncs[i]( itest );
+		outln( #data[i] );
+	}
+	
+	newplot(true);
+
+	for( i=0;i<#days;i++ )
+	{
+		newplot();
+		for( m=0;m<nmodels;m++ )
+		{
+			sf = extract( data[m], days[i]+day_start, day_hours );
+			plot( time, sf,
+				{ series=models[m], style=styles[m], marker=markers[m], 
+					size=sizes[m], color=colors[m] } );
+		}
+		plotopt( {title= locations[itest] + ' on ' + day_names[i] } );
+		axis( 'x1', {label='Time of day (hour)'});
+		axis( 'y1', {label='Linear shade loss (%)'});
+		file = lower(locations[itest] + '_' + (i+1) + '.pdf' );
+		plotout( file );
+		
+	}
+}
+
