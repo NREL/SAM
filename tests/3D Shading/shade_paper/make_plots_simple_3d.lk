@@ -1,25 +1,25 @@
 
-function read_SAM( itest )
+function read_SAM( name )
 {
-	file = '../test' + to_string(itest)+'_SAM.csv';
+	file = '../' + name +'_SAM.csv';
 	data = csvread( file, {skip=4,table=true,numeric=true});
 	sf = data{'0.0 %'};	
 	outln( file + ': ' + @data + ': ' + #sf + ' values.' );
 	return sf;
 }
 
-function read_PVSOL( itest )
+function read_PVSOL( name )
 {
-	file = '../test' + to_string(itest)+'_PVSOL.csv';
+	file = '../' + name + '_PVSOL.csv';
 	data = csvread( file, {skip=0,table=true,numeric=true});
 	sf = data{'Loss Percent [%]'};	
 	outln( file + ': ' + @data + ': ' + #sf + ' values.' );
 	return sf;
 }
 
-function read_PVsyst( itest )
+function read_PVsyst( name )
 {
-	file = '../test' + to_string(itest)+'_PVsyst.csv';
+	file = '../' + name +'_PVsyst.csv';
 	data = csvread( file, {skip=13,numeric=true});
 
 	sf = alloc(8760);
@@ -43,9 +43,6 @@ function extract( array, start, length )
 	return x;
 }
 
-read_SAM(3);
-read_PVSOL(3);
-read_PVsyst(3);
 
 jan1_idx = 0;
 apr1_idx = 2160;
@@ -64,39 +61,51 @@ for( i=0;i<day_hours;i++ )
 
 models = [ 'SAM', 'PVsyst', 'PV*SOL' ];
 loadfuncs = [ read_SAM, read_PVsyst, read_PVSOL ];
-nmodels = #loadfuncs;
 colors = [ 'black', 'light grey', 'grey' ];
 styles = [ 'solid', 'dot', 'dash' ];
 sizes = [ 2, 1, 2 ];
 markers = [ 'none', 'circle', 'none' ];
-locations = ['', 'Denver', 'Quito', 'Perth' ];
 
-for( itest=1;itest<=3;itest++ )
+
+function make_plots( names, labels )
 {
-	for (i=0;i<nmodels;i++ )
+	nmodels = #loadfuncs;
+	for( itest=0;itest<#names;itest++ )
 	{
-		data[i] = loadfuncs[i]( itest );
-		outln( #data[i] );
-	}
-	
-	newplot(true);
-
-	for( i=0;i<#days;i++ )
-	{
-		newplot();
-		for( m=0;m<nmodels;m++ )
+		for (i=0;i<nmodels;i++ )
 		{
-			sf = extract( data[m], days[i]+day_start, day_hours );
-			plot( time, sf,
-				{ series=models[m], style=styles[m], marker=markers[m], 
-					size=sizes[m], color=colors[m] } );
+			data[i] = loadfuncs[i]( names[itest] );
+			outln( #data[i] );
 		}
-		plotopt( {title= locations[itest] + ' on ' + day_names[i] } );
-		axis( 'x1', {label='Time of day (hour)'});
-		axis( 'y1', {label='Linear shade loss (%)'});
-		file = lower(locations[itest] + '_' + (i+1) + '.pdf' );
-		plotout( file );
 		
+		newplot(true);
+
+		for( i=0;i<#days;i++ )
+		{
+			newplot();
+			for( m=0;m<nmodels;m++ )
+			{
+				sf = extract( data[m], days[i]+day_start, day_hours );
+				plot( time, sf,
+					{ series=models[m], style=styles[m], marker=markers[m], 
+						size=sizes[m], color=colors[m] } );
+			}
+			plotopt( {title= labels[itest] + ' on ' + day_names[i] } );
+			axis( 'x1', {label='Time of day (hour)'});
+			axis( 'y1', {label='Linear shade loss (%)'});
+			file = lower(labels[itest] + '_' + (i+1) + '.pdf' );
+			file = replace(file, ' ', '_' );
+			plotout( file );
+			
+		}
 	}
 }
+
+make_plots( [ 'test1', 'test2', 'test3' ], ['Denver', 'Quito', 'Perth' ] );
+
+
+models = [ 'SAM', 'PV*SOL' ];
+loadfuncs = [ read_SAM, read_PVSOL ];
+make_plots( [ 'ivanhoe', 'babbitt', 'halsted', 'paradise' ],
+ [ 'Ivanhoe in Denver', 'Babbitt in Los Angeles', 'Halsted in Los Angeles', 'Paradise in Soquel' ] );
 
