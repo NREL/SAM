@@ -334,6 +334,11 @@ exit) else (
 exit 0    
 )</Command>
     </PostBuildEvent>
+    <PreBuildEvent>
+      <Command>copy $(SSCDIR)\build_vc2013\$(Platform)\$(Configuration)\ssc.dll $(SAMNTDIR)\deploy\$(Platform)
+copy $(SSCDIR)\build_vc2013\$(Platform)\$(Configuration)\ssc.pdb $(SAMNTDIR)\deploy\$(Platform)\
+</Command>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <Midl>
@@ -383,6 +388,11 @@ exit) else (
 exit 0    
 )</Command>
     </PostBuildEvent>
+    <PreBuildEvent>
+      <Command>copy $(SSCDIR)\build_vc2013\$(Platform)\$(Configuration)\ssc.dll $(SAMNTDIR)\deploy\$(Platform)
+copy $(SSCDIR)\build_vc2013\$(Platform)\$(Configuration)\ssc.pdb $(SAMNTDIR)\deploy\$(Platform)\
+</Command>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
