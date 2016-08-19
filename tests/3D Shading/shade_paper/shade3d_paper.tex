@@ -244,7 +244,7 @@ SAM and PVsyst estimate similar diffuse loss in Quito and Perth, but PVsyst esti
 
 \section{Comparison with On-site Measurements}
 
-In this section, we apply the same pro
+In this section, we apply the same procedures to four actual systems for which monthly solar access estimates have been measured using SunEye or SolarPathfinder devices.  The system names and locations are listed in Table~\ref{tab:measured_system_names}.  This analysis does not purport to have the modeled 3D geometry of the roofs, trees, and PV systems impeccably reflect reality - but rather to be a ``reasonable'' model for each scene.  Each scene was first entered into the SAM shading tool (Figs.~\ref{fig:ivanhoe}-\ref{fig:paradise}, and then subsequently rebuilt in PVsyst and PV*SOL to as close an approximation as possible within the competence of the authors.
 
 \begin{table}[h!]
 \begin{center}
@@ -257,7 +257,7 @@ Halstead & Los Angeles & 34.24 & -118.51 & -8 \\
 Paradise & Soquel & 36.99 & -121.95 & -8 \\
 \end{tabular}
 \caption{Locations with on-site measurements.}
-\label{tab:suneye}
+\label{tab:measured_system_names}
 \end{center}
 \end{table}
 
@@ -295,6 +295,20 @@ Paradise & Soquel & 36.99 & -121.95 & -8 \\
 \label{fig:paradise}
 \end{figure}
 
+\begin{table}[h!]
+\begin{center}
+\begin{tabular}{lccc}
+Scene & SAM & PVsyst & PV*SOL \\
+\hline
+Ivanhoe & 17.7~\% & ? & ? \\
+Babbitt  & 9.3~\% & ? & ? \\
+Halstead  & 9.7~\% & ? & ? \\
+Paradise & 12.4~\% & ? & ? \\
+\end{tabular}
+\caption{Sky diffuse loss estimates for prototypical systems.}
+\label{tab:diffuse_loss}
+\end{center}
+\end{table}
 
 
 \section{Sensitivity to Scene Error}
@@ -312,7 +326,7 @@ Lorum ipsum conclusionem.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{acknowledgment}
-This work was supported by the U.S. Department of Energy under Contract No. DE-AC36-08-GO28308 with the National Renewable Energy Laboratory.
+This work was supported by the U.S. Department of Energy under Contract No. DE-AC36-08-GO28308 with the National Renewable Energy Laboratory.  We also are immensely grateful to Dr. T. T. Mai for sharing solar access measurements and system specifications for the ``Paradise'' system considered in this report.
 \end{acknowledgment}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
