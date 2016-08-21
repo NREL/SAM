@@ -185,7 +185,13 @@ static bool SSCTypeToSSC( int ssc_type, ssc_data_t pdata, const wxString &sscnam
 	return true;
 }
 
-
+static wxString TableElementFileNames(const char *ssc_varname)
+{
+	// handle SAMnt table (":") naming for files to be read into ssc 
+	wxString fn = wxString(ssc_varname);
+	fn.Replace(":", "_");
+	return fn;
+}
 
 CodeGen_Base::CodeGen_Base( Case *cc, const wxString &fullpath )
 	: m_case( cc )
@@ -694,17 +700,15 @@ bool CodeGen_lk::Input(ssc_data_t p_data, const char *name, const wxString &fold
 		if (len > array_matrix_threshold)
 		{ // separate csv file (var_name.csv in folder) for each variable
 			wxCSVData csv;
-			wxString fn = folder + "/" + wxString(name) + ".csv";
+			wxString fn = folder + "/" + TableElementFileNames(name) + ".csv";
 			// write out as single column data for compatibility with csvread in SDKTool
 			for (int i = 0; i < len; i++)
 			{
 				dbl_value = (double)p[i];
 				if (dbl_value > 1e38) dbl_value = 1e38;
-//				str_value = wxString::Format("%.17g", dbl_value);
 				csv.Set(i, 0, wxString::Format("%.17g", dbl_value));
 			}
 			csv.WriteFile(fn);
-//			fprintf(m_fp, "var( '%s', csvread('%s'));", name, (const char*)fn.c_str());
 			fprintf(m_fp, "var( '%s', real_array(read_text_file('%s')));\n", name, (const char*)fn.c_str());
 		}
 		else
@@ -727,7 +731,7 @@ bool CodeGen_lk::Input(ssc_data_t p_data, const char *name, const wxString &fold
 		if (len > array_matrix_threshold)
 		{ // separate csv file (var_name.csv in folder) for each variable
 			wxCSVData csv;
-			wxString fn = folder + "/" + wxString(name) + ".csv";
+			wxString fn = folder + "/" + TableElementFileNames(name) + ".csv";
 			for (int r = 0; r < nr; r++)
 			{
 				for (int c = 0; c < nc; c++)
@@ -864,7 +868,7 @@ bool CodeGen_c::Input(ssc_data_t p_data, const char *name, const wxString &folde
 		if (len > array_matrix_threshold)
 		{ // separate csv file (var_name.csv in folder) for each variable
 			wxCSVData csv;
-			wxString fn = folder + "/" + wxString(name) + ".csv";
+			wxString fn = folder + "/" + TableElementFileNames(name) + ".csv";
 			// write out as single column data for compatibility with csvread in SDKTool
 			for (int i = 0; i < len; i++)
 			{
@@ -897,7 +901,7 @@ bool CodeGen_c::Input(ssc_data_t p_data, const char *name, const wxString &folde
 		if (len > array_matrix_threshold)
 		{ // separate csv file (var_name.csv in folder) for each variable
 			wxCSVData csv;
-			wxString fn = folder + "/" + wxString(name) + ".csv";
+			wxString fn = folder + "/" + TableElementFileNames(name) + ".csv";
 			for (int r = 0; r < nr; r++)
 			{
 				for (int c = 0; c < nc; c++)
@@ -1159,7 +1163,7 @@ bool CodeGen_csharp::Input(ssc_data_t p_data, const char *name, const wxString &
 		if (len > array_matrix_threshold)
 		{ // separate csv file (var_name.csv in folder) for each variable
 			wxCSVData csv;
-			wxString fn = folder + "/" + wxString(name) + ".csv";
+			wxString fn = folder + "/" + TableElementFileNames(name) + ".csv";
 			// write out as single column data for compatibility with csvread in SDKTool
 			for (int i = 0; i < len; i++)
 			{
@@ -1192,7 +1196,7 @@ bool CodeGen_csharp::Input(ssc_data_t p_data, const char *name, const wxString &
 		if (len > array_matrix_threshold)
 		{ // separate csv file (var_name.csv in folder) for each variable
 			wxCSVData csv;
-			wxString fn = folder + "/" + wxString(name) + ".csv";
+			wxString fn = folder + "/" + TableElementFileNames(name) + ".csv";
 			for (int r = 0; r < nr; r++)
 			{
 				for (int c = 0; c < nc; c++)
@@ -2238,7 +2242,7 @@ bool CodeGen_matlab::Input(ssc_data_t p_data, const char *name, const wxString &
 		if (len > array_matrix_threshold)
 		{ // separate csv file (var_name.csv in folder) for each variable
 			wxCSVData csv;
-			wxString fn = folder + "/" + wxString(name) + ".csv";
+			wxString fn = folder + "/" + TableElementFileNames(name) + ".csv";
 			// write out as single column data for compatibility with csvread in SDKTool
 			for (int i = 0; i < len; i++)
 			{
@@ -2271,7 +2275,7 @@ bool CodeGen_matlab::Input(ssc_data_t p_data, const char *name, const wxString &
 		if (len > array_matrix_threshold)
 		{ // separate csv file (var_name.csv in folder) for each variable
 			wxCSVData csv;
-			wxString fn = folder + "/" + wxString(name) + ".csv";
+			wxString fn = folder + "/" + TableElementFileNames(name) + ".csv";
 			for (int r = 0; r < nr; r++)
 			{
 				for (int c = 0; c < nc; c++)
@@ -2641,7 +2645,7 @@ bool CodeGen_python::Input(ssc_data_t p_data, const char *name, const wxString &
 		if (len > array_matrix_threshold)
 		{ // separate csv file (var_name.csv in folder) for each variable
 			wxCSVData csv;
-			wxString fn = folder + "/" + wxString(name) + ".csv";
+			wxString fn = folder + "/" + TableElementFileNames(name) + ".csv";
 			// write out as single column data for compatibility with csvread in SDKTool
 			for (int i = 0; i < len; i++)
 			{
@@ -2673,7 +2677,7 @@ bool CodeGen_python::Input(ssc_data_t p_data, const char *name, const wxString &
 		if (len > array_matrix_threshold)
 		{ // separate csv file (var_name.csv in folder) for each variable
 			wxCSVData csv;
-			wxString fn = folder + "/" + wxString(name) + ".csv";
+			wxString fn = folder + "/" + TableElementFileNames(name) + ".csv";
 			for (int r = 0; r < nr; r++)
 			{
 				for (int c = 0; c < nc; c++)
@@ -3000,7 +3004,7 @@ bool CodeGen_java::Input(ssc_data_t p_data, const char *name, const wxString &fo
 		if (len > array_matrix_threshold)
 		{ // separate csv file (var_name.csv in folder) for each variable
 			wxCSVData csv;
-			wxString fn = folder + "/" + wxString(name) + ".csv";
+			wxString fn = folder + "/" + TableElementFileNames(name) + ".csv";
 			// write out as single column data for compatibility with csvread in SDKTool
 			for (int i = 0; i < len; i++)
 			{
@@ -3033,7 +3037,7 @@ bool CodeGen_java::Input(ssc_data_t p_data, const char *name, const wxString &fo
 		if (len > array_matrix_threshold)
 		{ // separate csv file (var_name.csv in folder) for each variable
 			wxCSVData csv;
-			wxString fn = folder + "/" + wxString(name) + ".csv";
+			wxString fn = folder + "/" + TableElementFileNames(name) + ".csv";
 			for (int r = 0; r < nr; r++)
 			{
 				for (int c = 0; c < nc; c++)
@@ -4353,7 +4357,7 @@ bool CodeGen_php::Input(ssc_data_t p_data, const char *name, const wxString &fol
 		if (len > array_matrix_threshold)
 		{ // separate csv file (var_name.csv in folder) for each variable
 			wxCSVData csv;
-			wxString fn = folder + "/" + wxString(name) + ".csv";
+			wxString fn = folder + "/" + TableElementFileNames(name) + ".csv";
 			// write out as single column data for compatibility with csvread in SDKTool
 			for (int i = 0; i < len; i++)
 			{
@@ -4385,7 +4389,7 @@ bool CodeGen_php::Input(ssc_data_t p_data, const char *name, const wxString &fol
 		if (len > array_matrix_threshold)
 		{ // separate csv file (var_name.csv in folder) for each variable
 			wxCSVData csv;
-			wxString fn = folder + "/" + wxString(name) + ".csv";
+			wxString fn = folder + "/" + TableElementFileNames(name) + ".csv";
 			for (int r = 0; r < nr; r++)
 			{
 				for (int c = 0; c < nc; c++)
