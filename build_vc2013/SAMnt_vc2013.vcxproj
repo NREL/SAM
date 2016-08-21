@@ -228,7 +228,7 @@
       <SuppressStartupBanner>true</SuppressStartupBanner>
     </Bscmake>
     <PostBuildEvent>
-      <Command>robocopy $(WEXDIR)\build_vc2013\libcurl_ssl_$(Platform)\bin $(SAMNTDIR)\deploy\$(Platform)\ /E /XC /XN /XO /XX 
+      <Command>robocopy $(WEXDIR)\build_vc2013\libcurl_ssl_$(Platform)\bin $(SAMNTDIR)\deploy\$(Platform)\ /E /XC /XN /XO /XX /NP /NS /NJS /NJH /NC 
 
 if %ERRORLEVEL% GEQ 8 (
 exit) else (
@@ -277,7 +277,7 @@ exit 0
       <SuppressStartupBanner>true</SuppressStartupBanner>
     </Bscmake>
     <PostBuildEvent>
-      <Command>robocopy $(WEXDIR)\build_vc2013\libcurl_ssl_$(Platform)\bin $(SAMNTDIR)\deploy\$(Platform)\ /E /XC /XN /XO /XX 
+      <Command>robocopy $(WEXDIR)\build_vc2013\libcurl_ssl_$(Platform)\bin $(SAMNTDIR)\deploy\$(Platform)\ /E /XC /XN /XO /XX /NP /NS /NJS /NJH /NC 
 
 if %ERRORLEVEL% GEQ 8 (
 exit) else (
@@ -330,7 +330,7 @@ exit 0
       <Command>copy $(SSCDIR)\build_vc2013\$(Platform)\$(Configuration)\ssc.dll $(SAMNTDIR)\deploy\$(Platform)
 copy $(SSCDIR)\build_vc2013\$(Platform)\$(Configuration)\ssc.pdb $(SAMNTDIR)\deploy\$(Platform)\
 
-robocopy $(WEXDIR)\build_vc2013\libcurl_ssl_$(Platform)\bin $(SAMNTDIR)\deploy\$(Platform)\ /E /XC /XN /XO /XX 
+robocopy $(WEXDIR)\build_vc2013\libcurl_ssl_$(Platform)\bin $(SAMNTDIR)\deploy\$(Platform)\ /E /XC /XN /XO /XX /NP /NS /NJS /NJH /NC 
 
 if %ERRORLEVEL% GEQ 8 (
 exit) else (
@@ -386,7 +386,7 @@ exit 0
       <Command>copy $(SSCDIR)\build_vc2013\$(Platform)\$(Configuration)\ssc.dll $(SAMNTDIR)\deploy\$(Platform)
 copy $(SSCDIR)\build_vc2013\$(Platform)\$(Configuration)\ssc.pdb $(SAMNTDIR)\deploy\$(Platform)\
 
-robocopy $(WEXDIR)\build_vc2013\libcurl_ssl_$(Platform)\bin $(SAMNTDIR)\deploy\$(Platform)\ /E /XC /XN /XO /XX 
+robocopy $(WEXDIR)\build_vc2013\libcurl_ssl_$(Platform)\bin $(SAMNTDIR)\deploy\$(Platform)\ /E /XC /XN /XO /XX /NP /NS /NJS /NJH /NC 
 
 if %ERRORLEVEL% GEQ 8 (
 exit) else (
