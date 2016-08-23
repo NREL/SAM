@@ -238,7 +238,7 @@ Perth  & 8.1~\% & 8.6~\% & ? \\
 \end{center}
 \end{table}
 
-SAM and PVsyst estimate similar diffuse loss in Quito and Perth, but PVsyst estimates over double the diffuse loss for the Denver scenario.  The reason for this behavior is not clear.  \textbf{PV*SOL needs diffuse loss breakout}
+SAM and PVsyst estimate similar diffuse loss in Quito and Perth, but PVsyst estimates more than twice the diffuse loss for the Denver scenario.  The reason for this behavior is not clear.  \textbf{PV*SOL needs diffuse loss breakout}
 
 
 
@@ -295,6 +295,8 @@ Paradise & Soquel & 36.99 & -121.95 & -8 \\
 \label{fig:paradise}
 \end{figure}
 
+The estimated sky diffuse losses are listed in Table~\ref{tab:diffuse_loss_systems}.  \textbf{Need sky diffuse losses for PVsyst and PV*SOL to compare!}
+
 \begin{table}[h!]
 \begin{center}
 \begin{tabular}{lccc}
@@ -311,6 +313,8 @@ Paradise & 12.4~\% & ? & ? \\
 \end{table}
 
 
+Representative daily shading loss profiles for each system are shown in Figs.~\ref{fig:ivanhoe_denver_profiles}-\ref{fig:paradise_soquel_profiles}.  In general, there is good qualitative agreement among all tools.  SAM and PVsyst appear to be the closest to one another, while PV*SOL occasionally diverges significantly from the other tools, particularly at the begining or end of the day.  For example, on October 1st, for the Ivanhoe system, PV*SOL predicts significantly lower shade losses in the afternoon after about 3~pm as the trees to the west obscure large portions of the array.  Similar behavior can be observed for Paradise on January 1st, as generally among the other systems and times of the year.  
+
 \begin{figure*}[h!]
 \begin{center}
 \scalebox{0.55}{\includegraphics{ivanhoe_in_denver_1.pdf}\includegraphics{ivanhoe_in_denver_2.pdf}}
@@ -319,7 +323,6 @@ Paradise & 12.4~\% & ? & ? \\
 \caption{Daily shade loss profiles for the Ivanhoe system in Denver.}
 \label{fig:ivanhoe_denver_profiles}
 \end{figure*}
-
 
 \begin{figure*}[h!]
 \begin{center}
@@ -330,7 +333,6 @@ Paradise & 12.4~\% & ? & ? \\
 \label{fig:babbitt_los_angeles_profiles}
 \end{figure*}
 
-
 \begin{figure*}[h!]
 \begin{center}
 \scalebox{0.55}{\includegraphics{halsted_in_los_angeles_1.pdf}\includegraphics{halsted_in_los_angeles_2.pdf}}
@@ -340,17 +342,47 @@ Paradise & 12.4~\% & ? & ? \\
 \label{fig:halsted_los_angeles_profiles}
 \end{figure*}
 
-
-
-
 \begin{figure*}[h!]
 \begin{center}
 \scalebox{0.55}{\includegraphics{paradise_in_soquel_1.pdf}\includegraphics{paradise_in_soquel_2.pdf}}
 \scalebox{0.55}{\includegraphics{paradise_in_soquel_3.pdf}\includegraphics{paradise_in_soquel_4.pdf}}
 \end{center}
 \caption{Daily shade loss profiles for the Paradise system in Soquel.}
-\label{fig:ivanhoe_denver_profiles}
+\label{fig:paradise_soquel_profiles}
 \end{figure*}
+
+Next, the monthly average beam shade losses for each system are compared with measured estimates of monthly solar access from a SunEye or SolarPathfinder device in Table~\ref{tab:compare_measured}.
+
+
+\begin{table*}[h!]
+\begin{center}
+\begin{tabular}{lcccccccccccc}
+ & Jan & Feb & Mar & Apr & May & Jun & Jul & Aug & Sep & Oct & Nov & Dec \\
+\hline
+Ivanhoe*  & 36 & 26 & 19 & 20 & 20 & 19 & 19 & 18 & 19 & 22 & 31 & 36 \\
+~~SAM     & x & x & x & x & x & x & x & x & x & x & x & x \\
+~~PVsyst  & x & x & x & x & x & x & x & x & x & x & x & x \\
+~~PV*SOL  & x & x & x & x & x & x & x & x & x & x & x & x \\
+\hline
+Babbitt* & 16 & 15 & 9 & 7 & 8 & 9 & 8 & 7 & 8 & 11 & 15 & 17 \\
+~~SAM     & x & x & x & x & x & x & x & x & x & x & x & x \\
+~~PVsyst  & x & x & x & x & x & x & x & x & x & x & x & x \\
+~~PV*SOL  & x & x & x & x & x & x & x & x & x & x & x & x \\
+\hline
+Halsted* & 17 & 14 & 9 & 6 & 5 & 5 & 4 & 4 & 9 & 11 & 16 & 19 \\
+~~SAM     & x & x & x & x & x & x & x & x & x & x & x & x \\
+~~PVsyst  & x & x & x & x & x & x & x & x & x & x & x & x \\
+~~PV*SOL  & x & x & x & x & x & x & x & x & x & x & x & x \\
+\hline
+Paradise* & 26 & 31 & 32 & 22 & 14 & 14 & 13 & 17 & 26 & 30 & 28 & 26 \\
+~~SAM     & x & x & x & x & x & x & x & x & x & x & x & x \\
+~~PVsyst  & x & x & x & x & x & x & x & x & x & x & x & x \\
+~~PV*SOL  & x & x & x & x & x & x & x & x & x & x & x & x \\
+\end{tabular}
+\caption{Modeled and measured monthly average shade loss, in percent. '*' denotes measured value from a site survey using either a SunEye or SolarPathfinder device.}
+\label{Label}
+\end{center}
+\end{table*}
 
 
 
