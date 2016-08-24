@@ -453,7 +453,7 @@ function component_failure(component_vector, component_idx, day, bool_warranty, 
 	else
 		component_vector[component_idx].failures_by_type[component_vector[component_idx].failure_type]++;
 	if (bool_warranty && day > warranty_length_days)
-		component_vector[component_idx].cumul_oow_failures++;
+		component_vector[component_idx].cumulative_oow_failures++;
 }
 
 //*************************************************************************************
