@@ -37,11 +37,11 @@ class process_pvsol:
 
     def write_file(self):
         self.df.to_csv(self.output_filename, columns=['Time',
-                                                      'Horizon Shading [kWh/m2]',
+                                                      'Horizon (Diffuse) Shading [kWh]',
                                                       'Module Shading [kWh]',
-                                                      'Rated PV Energy [kWh]',
-                                                      'Loss Percent [%]'])
-
+                                                      'PV Energy [kWh]',
+                                                      'Loss Percent [%]',
+                                                      'Loss Percent Diffuse [%]'])
 
     def calculate_loss(self):
 
@@ -50,8 +50,33 @@ class process_pvsol:
         horizon_shading = self.df['Horizon Shading [kWh/m2]'] * self.pv_area * self.pv_efficiency
 
         loss_percent = []
+        loss_percent_diffuse = []
+
+        pv_energy_no_diffuse = []
+        pv_shaded = []
+        loss_shade = []
 
         for i in range(0, len(pv_energy)):
+
+            # remove diffuse horizon shading from PV
+            pv_energy_no_diffuse.append(pv_energy[i] + abs(horizon_shading[i]))
+
+            # compute "shaded" pv energy
+            pv_shaded.append(pv_energy_no_diffuse[i] + horizon_shading[i] + module_shading[i])
+
+            # total shade loss
+            loss_shade.append(horizon_shading[i] + module_shading[i])
+
+            # total loss percent
+            if pv_energy[i] > 0:
+                loss_percent.append(100 * abs(loss_shade[i])/pv_energy_no_diffuse[i])
+            else:
+                loss_percent.append(100)
+
+            # diffuse loss percent
+            loss_percent_diffuse.append(abs(horizon_shading[i])/pv_energy_no_diffuse[i])
+
+            '''
             # partial shading
             if module_shading[i] < 0 or horizon_shading[i] < 0:
                 loss_percent.append(100 * abs(module_shading[i] + horizon_shading[i]) / (pv_energy[i] + horizon_shading[i]) )
@@ -62,8 +87,13 @@ class process_pvsol:
                 # night time
                 else:
                     loss_percent.append(100)
+            '''
 
         self.df['Loss Percent [%]'] = loss_percent
+        self.df['Loss Percent Diffuse [%]'] = loss_percent_diffuse
+        self.df['Horizon (Diffuse) Shading [kWh]'] = horizon_shading
+        self.df['PV Energy [kWh]'] = pv_energy_no_diffuse
+
         return loss_percent
 
 # currently only plots module losses, not anything related to horizon shading
@@ -93,27 +123,28 @@ area = 1.5
 efficiency = 0.1334
 columns_1 = [0, 11, 23, 25]
 
-#test1 = process_pvsol('Basic Test 1.csv', 'test1_PVSOL.csv', efficiency, area, columns_1)
-#test2 = process_pvsol('Basic Test 2.csv', 'test2_PVSOL.csv', efficiency, area, columns_1)
-#test3 = process_pvsol('Basic Test 3.csv', 'test3_PVSOL.csv', efficiency, area, columns_1)
+test1 = process_pvsol('Basic Test 1.csv', 'test1_PVSOL.csv', efficiency, area, columns_1)
+test2 = process_pvsol('Basic Test 2.csv', 'test2_PVSOL.csv', efficiency, area, columns_1)
+test3 = process_pvsol('Basic Test 3.csv', 'test3_PVSOL.csv', efficiency, area, columns_1)
 
 # Babbitt
 area = 237.9
 efficiency = 0.1178
 columns_2 = [0, 8, 14, 16]
-#test4 = process_pvsol('9815 Babbitt.csv', 'test_babbitt_PVSOL.csv', efficiency, area, columns_2)
+test4 = process_pvsol('9815 Babbitt.csv', 'babbitt_PVSOL.csv', efficiency, area, columns_2)
 
 # Ivanhoe
 area = 15.529125
 efficiency = 0.0515
-#test5 = process_pvsol('Ivanhoe.csv', 'test_ivanhoe_PVSOL.csv', efficiency, area, columns_1)
+test5 = process_pvsol('Ivanhoe.csv', 'ivanhoe_PVSOL.csv', efficiency, area, columns_1)
 
 # Halstead
 area = 105.0229375
 efficiency = 0.1333
-#test6 = process_pvsol('17339 Halstead.csv', 'test_halstead_PVSOL.csv', efficiency, area, columns_2)
+test6 = process_pvsol('17339 Halstead.csv', 'halstead_PVSOL.csv', efficiency, area, columns_2)
 
 # Trieu
 area = 43.6
 efficiency = 0.1193
-test6 = process_pvsol('Trieu.csv', 'test_trieu_PVSOL.csv', efficiency, area, columns_2)
+test6 = process_pvsol('Trieu.csv', 'paradise_PVSOL.csv', efficiency, area, columns_2)
+
