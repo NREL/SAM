@@ -184,10 +184,9 @@ L_h = L_{i,0} A \eta
 \end{equation}
 where $L_{i,0}$ is the provided horizon irradiance loss in Watts/m$^2$, $A$ is the module area, and $\eta$ the STC efficiency.  Then, the loss due to shadowing from obstructions may be retrieved at each hour:
 \begin{equation}\label{eqn:pvsol_ls}
-L_s (\%) = 100 \cdot \frac{ M_{dc} + L_h }{ M_{0} + L_h }
+L_s (\%) = 100 \cdot \frac{ L_m + L_h }{ M_{0} + L_h }
 \end{equation}
-where $M_{dc}$ is the shaded module energy (kWh) and $M_0$ is the rated PV DC output.
-
+where $L_{m}$ is the reported module loss (kWh) and $M_0$ is the rated PV DC output. The horizon irradiance loss is added back into the rated PV DC output because PV*SOL derates the PV DC output by this loss before reporting the quantity.  
 
 Geometric shading loss for the three prototypical scenarios are shown in Fig.~\ref{fig:simple_denver}-\ref{fig:simple_perth} for four representative days of the year.  SAM and PVsyst estimate nearly identical shading losses but for some occasional deviations that are rather minor in magnitude at sun-up and sun-down hours for Denver and Quito.  These deviations may result from small differences in the sun position calculation algorithms used by the tools, and the assumptions in each for how to handle hours in which the sun is only partially above the horizon.  Although good agreement persists for Perth, PVsyst predicts a much more pronounced shade loss around hours 18-19 in January, April, and October than SAM, but only in that single hour of the day.  One might presume that running these shade loss calculations at subhourly timesteps may recover finer detail of the actual shading profiles, which may explain some of these differences.  We note that currently only SAM offers subhourly shade loss calculations, and \textbf{so subsequent exploration of time step effects will be limited to SAM}.
 
