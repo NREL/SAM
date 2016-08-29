@@ -1,28 +1,47 @@
 //*************************************************************************************
 //Module Reliability Model -- DRAFT --
-//jmf 7/7/16
+//jmf 8/31/16
 //*************************************************************************************
 
 // TO DO-----------------------------------------------------------------------------------
 /*
-	Set active case and error check
-	Get system lifetime from financial case, OR set it if no financials (or LCOE?)
-	HOW DOES DC DERATE WORK- YEAR 1 VERSUS OTHER YEARS? Right now this will crash if run for >1 year, I think...
-	DC Derate needs to be expanded to include lifetime mode in SSC as well
 	DC derate needs to be added to loss tree
-	Right now, we can only handle regularly set up systems (same mod/string, string/inv, etc for the whole system)
 	inverter warranty resets when inverter is replaced
 	Add what the acceptable input ranges are for LHS when errors are encountered?
 	Add "calculating"/"running" popup
-	Turn on and off various components- run through power also
 	Add component-level availability output graph vs time (using Geoff's equation)
-	Set SAM's degradation UI to 0 since degradation is handled here.
 	Output time series module availability, degradation, etc. to a csv.
-	Inverter O&M is different from other
 	Add check that case must be in lifetime mode
 	WARRANTY REPAIRS NEED TO NOT COST ANYTHING
+	WHEN AN INVERTER FAILS ROUTINELY, IT NEEDS TO NOT BE COMPLETELY RESET- which ones do reset it?
 	I don't like how I'm doing repair cost additions right now. Maybe change it to something else?
 */
+
+
+// CHECK THE ACTIVE CASE----------------------------------------------------------------------------
+/*
+if ( typeof(macro) == 'unknown' ) {
+	msgbox('This script must be run as a macro from within a case.');
+	exit;
+}
+
+cfg = configuration();
+fin = cfg[1];
+tech = cfg[0];
+
+if (tech != 'Flat Plate PV')
+{
+	msgbox('Error: This script is only applicable to the detailed photovoltaic model.');
+	exit;
+}
+
+if (fin == 'Third Party' || fin == 'LCOE Calculator' || fin == 'None')
+{
+	msgbox('Error: This script cannot be run from financial model: ' + fin);
+	exit;
+}
+*/
+
 
 //*************************************************************************************
 // INPUTS
@@ -93,7 +112,7 @@
 // INVERTER RELIABILITY INPUTS----------------------------------------------------------
 	// failure mode 1: component failure
 	inverter_component_failure_distribution = 'exponential';
-	inverter_component_failures_per_yr = 0.2;
+	inverter_component_failures_per_yr = 2;//0.2;
 	// failure mode 2: routine failure
 	inverter_routine_failure_distribution = 'exponential';
 	inverter_routine_failures_per_yr = 1;
@@ -105,6 +124,22 @@
 	inverter_repair_distribution = 'lognormal';
 	inverter_repair_mean_days = 3;
 	inverter_repair_std_days = 1.5;
+	// repair costs: routine failure
+	inverter_routine_repair_time = 0;
+	inv_pdco = get('inv_snl_pdco'); //THIS CURRENTLY WON'T WORK FOR ANYTHING BUT CEC DATABASE INVERTER MODEL
+	inverter_routine_cost = 0;
+	if (inv_pdco <= 10000)
+		inverter_routine_cost = 200;
+	else if (inv_pdco <= 100000)
+		inverter_routine_cost = 500;
+	else
+		inverter_routine_cost = 1000;
+	// repair costs: catastrophic failure
+	inverter_catastrophic_repair_time = 0;
+	inverter_catastrophic_cost = 0.35 * get('inv_snl_paco'); //35 cents/Watt
+	// repair costs: component failure
+	inverter_component_repair_time = 0;
+	inverter_component_cost = 0.2 * inverter_catastrophic_cost;
 	//IN GOLDSIM, THERE IS A DIFFERENT REPAIR TIME FOR EACH FAILURE TYPE! MAKING THEM ALL THE SAME AND MATCHING TO ABOVE FOR NOW
 	
 // AC DISCONNECT RELIABILITY INPUTS-----------------------------------------------------
@@ -163,6 +198,7 @@ function current_degradation_rate(t)
 // COMPONENT META DATA CONTAINER----------------------------------------------------------
 // contains information about a component type in the system
 /*
+bool = true if component is allowed to fail
 number = number of that type of component in the system
 warranty
 	bool = true if the component has a warranty, otherwise false
@@ -171,6 +207,8 @@ failure[i]
 	distribution = distribution type of failure mode i
 	parameters = a table of parameters for failure mode i (e.g. [45, 15] )
 	times = a vector of failure times for failure mode i
+	labor_time = number of hours of labor it takes to repair the component
+	cost = cost to replace the component
 defective
 	bool = true if the component also has defective failures, otherwise false
 	fraction = fraction of that type of component that are defective
@@ -182,8 +220,6 @@ repair
 	distribution = distribution type of repair times
 	parameters = parameters of the repair distribution
 	times = a vector of repair times
-	labor_time = number of hours of labor it takes to repair the component
-	cost = cost to replace the component
 degradation (MODULES ONLY)
 	bool = true if the component has degradation
 	rate = degradation rate (%/day) *converted from percent per year
@@ -209,13 +245,16 @@ degradation_factor = 1 - percentage the component has degraded at this time (ex.
 //SET UP DATA CONTAINERS----------------------------------------------------------------------
 	// Modules
 	global modules = alloc(num_modules);
-	global module_meta = null;
+	global module_meta = null;	
+	module_meta.bool = false;
 	module_meta.number = num_modules;
 	module_meta.warranty.bool = true;
 	module_meta.warranty.days = module_warranty_yrs * 365;
 	module_meta.failure[0].distribution = module_failure_distribution;
 	module_meta.failure[0].parameters = [module_failure_mean_yrs * 365, module_failure_std_yrs * 365];
 	module_meta.failure[0].times = null;
+	module_meta.failure[0].labor_time = module_repair_time;
+	module_meta.failure[0].cost = module_cost;
 	module_meta.defective.bool = true;
 	module_meta.defective.fraction = module_percentage_defective_percent / 100;
 	module_meta.defective.distribution = module_defective_distribution;
@@ -225,64 +264,75 @@ degradation_factor = 1 - percentage the component has degraded at this time (ex.
 	module_meta.repair.distribution = module_repair_distribution;
 	module_meta.repair.parameters =  [module_repair_mean_days, module_repair_std_days];
 	module_meta.repair.times = null;
-	module_meta.repair.labor_time = module_repair_time;
-	module_meta.repair.cost = module_cost;
 	module_meta.degradation.bool = true;
 	module_meta.degradation.rate = module_degradation_percent_per_yr; //%/year
 	
 	// Strings
 	global strings = alloc(num_strings);
 	global string_meta = null;
+	string_meta.bool = false;
 	string_meta.number = num_strings;
 	string_meta.warranty.bool = false;
 	string_meta.warranty.days = 0;
 	string_meta.failure[0].distribution = string_failure_distribution;
 	string_meta.failure[0].parameters = [(string_failures_per_yr / 365)];
 	string_meta.failure[0].times = null;
+	string_meta.failure[0].labor_time = string_repair_time;
+	string_meta.failure[0].cost = string_cost;
 	string_meta.defective.bool = false;
 	string_meta.repair.bool = true;
 	string_meta.repair.distribution = string_repair_distribution;
 	string_meta.repair.parameters = [string_repair_mean_days, string_repair_std_days];
 	string_meta.repair.times = null;
-	string_meta.repair.labor_time = string_repair_time;
-	string_meta.repair.cost = string_cost;
 	string_meta.degradation.bool = false;
 	
 	// Combiners
 	global combiners = alloc(num_combiners);
 	global combiner_meta = null;
+	combiner_meta.bool = false;
 	combiner_meta.number = num_combiners;
 	combiner_meta.warranty.bool = false;
 	combiner_meta.warranty.days = 0;
 	combiner_meta.failure[0].distribution = combiner_failure_distribution;
 	combiner_meta.failure[0].parameters = [combiner_failure_mean_days, combiner_failure_std_days];
 	combiner_meta.failure[0].times = null;
+	combiner_meta.failure[0].labor_time = combiner_repair_time;
+	combiner_meta.failure[0].cost = combiner_cost;
 	combiner_meta.defective.bool = false;
 	combiner_meta.repair.bool = true;
 	combiner_meta.repair.distribution = combiner_repair_distribution;
 	combiner_meta.repair.parameters = [combiner_repair_mean_days];
 	combiner_meta.repair.times = null;
-	combiner_meta.repair.labor_time = combiner_repair_time;
-	combiner_meta.repair.cost = combiner_cost;
 	combiner_meta.degradation.bool = false;
 	
 	// Inverters
 	global inverters = alloc(num_inverters);
 	global inverter_meta = null;
+	inverter_meta.bool = true;
 	inverter_meta.number = num_inverters;
 	inverter_meta.warranty.bool = false; //THIS IS ALMOST DEFINITELY GOING TO BE TRUE WHEN WE MODIFY THE INPUTS, BUT NOTHING IN PSEUDOCODE
 	inverter_meta.warranty.days = 0;
+	//failure mode 1
 	inverter_meta.failure[0].distribution = inverter_component_failure_distribution;
 	inverter_meta.failure[0].parameters = [inverter_component_failures_per_yr / 365];
 	inverter_meta.failure[0].times = null;
+	inverter_meta.failure[0].labor_time = inverter_component_repair_time;
+	inverter_meta.failure[0].cost = inverter_component_cost;
+	//failure mode 2
 	inverter_meta.failure[1].distribution = inverter_routine_failure_distribution;
 	inverter_meta.failure[1].parameters = [inverter_routine_failures_per_yr / 365];
 	inverter_meta.failure[1].times = null;
+	inverter_meta.failure[1].labor_time = inverter_routine_repair_time;
+	inverter_meta.failure[1].cost = inverter_routine_cost;
+	//failure mode 3
 	inverter_meta.failure[2].distribution = inverter_catastrophic_distribution;
 	inverter_meta.failure[2].parameters = [inverter_catastrophic_mean_days, inverter_catastrophic_std_days];
 	inverter_meta.failure[2].times = null;
+	inverter_meta.failure[2].labor_time = inverter_catastrophic_repair_time;
+	inverter_meta.failure[2].cost = inverter_catastrophic_cost;
+	//other
 	inverter_meta.defective.bool = false;
-	inverter_meta.repair.bool = false;
+	inverter_meta.repair.bool = true;
 	inverter_meta.repair.distribution = inverter_repair_distribution;
 	inverter_meta.repair.parameters = [inverter_repair_mean_days, inverter_repair_std_days];
 	inverter_meta.repair.times = null;
@@ -291,55 +341,58 @@ degradation_factor = 1 - percentage the component has degraded at this time (ex.
 	// AC Disconnects
 	global disconnects = alloc(num_disconnects);
 	global disconnect_meta = null;
+	disconnect_meta.bool = false;
 	disconnect_meta.number = num_disconnects;
 	disconnect_meta.warranty.bool = false;
 	disconnect_meta.warranty.days = 0;
 	disconnect_meta.failure[0].distribution = disconnect_failure_distribution;
 	disconnect_meta.failure[0].parameters = [disconnect_failure_slope, disconnect_failure_mean_yrs * 365];
 	disconnect_meta.failure[0].times = null;
+	disconnect_meta.failure[0].labor_time = disconnect_repair_time;
+	disconnect_meta.failure[0].cost = disconnect_cost;
 	disconnect_meta.defective.bool = false;
 	disconnect_meta.repair.bool = true;
 	disconnect_meta.repair.distribution = disconnect_repair_distribution;
 	disconnect_meta.repair.parameters = [disconnect_repair_mean_days, disconnect_repair_std_days];
 	disconnect_meta.repair.times = null;
-	disconnect_meta.repair.labor_time = disconnect_repair_time;
-	disconnect_meta.repair.cost = disconnect_cost;
 	disconnect_meta.degradation.bool = false;
 	
 	// Transformers
 	global transformers = alloc(num_transformers);
 	global transformer_meta = null;
+	transformer_meta.bool = false;
 	transformer_meta.number = num_transformers;
 	transformer_meta.warranty.bool = false;
 	transformer_meta.warranty.days = 0;
 	transformer_meta.failure[0].distribution = transformer_failure_distribution;
 	transformer_meta.failure[0].parameters = [transformer_failure_slope, transformer_failure_mean_yrs * 365];
 	transformer_meta.failure[0].times = null;
+	transformer_meta.failure[0].labor_time = transformer_repair_time;
+	transformer_meta.failure[0].cost = transformer_cost;
 	transformer_meta.defective.bool = false;
 	transformer_meta.repair.bool = true;
 	transformer_meta.repair.distribution = transformer_repair_distribution;
 	transformer_meta.repair.parameters = [transformer_repair_mean_days, transformer_repair_std_days];
 	transformer_meta.repair.times = null;
-	transformer_meta.repair.labor_time = transformer_repair_time;
-	transformer_meta.repair.cost = transformer_cost;
 	transformer_meta.degradation.bool = false;
 	
 	// Grid
 	global grid = 1;
 	global grid_meta = null;
+	grid_meta.bool = false;
 	grid_meta.number = 1;
 	grid_meta.warranty.bool = false;
 	grid_meta.warranty.days = 0;
 	grid_meta.failure[0].distribution = grid_failure_distribution;
 	grid_meta.failure[0].parameters = [grid_failure_slope, grid_failure_mean_yrs * 365];
 	grid_meta.failure[0].times = null;
+	grid_meta.failure[0].labor_time = grid_repair_time;
+	grid_meta.failure[0].cost = grid_repair_cost;
 	grid_meta.defective.bool = false;
 	grid_meta.repair.bool = true;
 	grid_meta.repair.distribution = grid_repair_distribution;
 	grid_meta.repair.parameters = [grid_repair_mean_days];
 	grid_meta.repair.times = null;
-	grid_meta.repair.labor_time = grid_repair_time;
-	grid_meta.repair.cost = grid_repair_cost;
 	grid_meta.degradation.bool = false;
 
 
@@ -426,7 +479,7 @@ function initialize_component(component_meta, component_vector, component_idx, b
 			}
 		}
 	}
-			
+
 	// Time to replacement or repair in case of failure
 	if (component_meta.repair.times == null || #component_meta.repair.times <= 0) //null on initialization of very first component, less than zero when you've used up the array
 		component_meta.repair.times = LHS(to_string(component_meta.repair.times), component_meta.repair.distribution, component_meta.repair.parameters, (#component_vector * 10));
@@ -590,8 +643,8 @@ function step_in_time(component_meta, component_vector, day, component_repair_co
 		if (component_vector[i].state == 1)
 		{
 			component_vector[i].time_to_failure--;
-			//component has just failed
-			if (component_vector[i].time_to_failure <= 0)
+			//component has just failed and failure is allowed for this type of component
+			if (component_vector[i].time_to_failure <= 0 && component_meta.bool == true)
 				component_failure(component_vector, i, day, component_meta.warranty.bool, component_meta.warranty.days);
 		}
 		
@@ -602,9 +655,14 @@ function step_in_time(component_meta, component_vector, day, component_repair_co
 			//component is repaired
 			if (component_vector[i].time_to_repair <= 0 && component_meta.repair.bool) //only repair the item if repairs are enabled
 			{
-				initialize_component(component_meta, component_vector, i, false); //initialize a new module without resetting cumulative failures
-				component_repair_cost = component_meta.repair.cost + labor_rate * component_meta.repair.labor_time;
-				component_repair_costs[day] += component_repair_cost;				
+				//add the cost to repair the component
+				failure_index = 0;
+				if (component_vector[i].failure_type != 'defective') //defective costs the same as failure mode 0
+					failure_index = component_vector[i].failure_type; 
+				component_repair_cost = component_meta.failure[failure_index].cost + labor_rate * component_meta.failure[failure_index].labor_time;
+				component_repair_costs[day] += component_repair_cost;
+				//initialize a new module without resetting cumulative failures
+				initialize_component(component_meta, component_vector, i, false); 			
 			}
 		}
 		
@@ -628,9 +686,8 @@ module_degradation = null;
 dc_availability = ac_availability = null;
 labor_rate = 0;
 module_repair_costs = string_repair_costs = combiner_repair_costs = null;
-disconnect_repair_costs = transformer_repair_costs = null;
+inverter_repair_costs = disconnect_repair_costs = transformer_repair_costs = null;
 grid_repair_costs = null;
-fake_repair_costs = null;
 total_module_failures = total_string_failures = total_combiner_failures = 0;
 total_inverter_failures = total_disconnect_failures = total_transformer_failures = 0;
 total_grid_failures = 0;
@@ -642,7 +699,7 @@ module_degradation[0] = whats_my_degradation();
 dc_availability[0] = whats_my_dc_derate();
 ac_availability[0] = whats_my_ac_derate();
 module_repair_costs[0] = string_repair_costs[0] = combiner_repair_costs[0] = 0; //no costs are accrued at time zero because nothing has changed state
-disconnect_repair_costs[0] = transformer_repair_costs[0] = 0;
+inverter_repair_costs[0] = disconnect_repair_costs[0] = transformer_repair_costs[0] = 0;
 grid_repair_costs[0] = 0;
 //outln('0\t' + modules);
 
@@ -651,16 +708,16 @@ grid_repair_costs[0] = 0;
 for (day = 1; day < system_lifetime_yrs * 365; day++)
 {	
 	//increase the labor rate each year
-	if (mod(day, 365) == 0)
+	if (day == 1 || mod(day, 365) == 0) //need to set the labor rate initially and then again at the beginning of every year
 	{
 		year = floor(day / 365);
-		labor_rate = present_day_labor_rate * pow((1 + inflation), year);
+		labor_rate = present_day_labor_rate * pow((1 + inflation / 100), year);
 	}
 	//step each component through time
 	step_in_time(module_meta, modules, day, module_repair_costs);
 	step_in_time(string_meta, strings, day, string_repair_costs);
 	step_in_time(combiner_meta, combiners, day, combiner_repair_costs);
-	step_in_time(inverter_meta, inverters, day, fake_repair_costs);
+	step_in_time(inverter_meta, inverters, day, inverter_repair_costs);
 	step_in_time(disconnect_meta, disconnects, day, disconnect_repair_costs);
 	step_in_time(transformer_meta, transformers, day, transformer_repair_costs);
 	step_in_time(grid_meta, grid, day, grid_repair_costs);
@@ -679,8 +736,15 @@ for (s=0; s < string_meta.number; s++)
 	total_string_failures += strings[s].cumulative_failures;
 for (c=0; c < combiner_meta.number; c++)
 	total_combiner_failures += combiners[c].cumulative_failures;
+inverter_failures_by_type = alloc(#inverter_meta.failure);
+for (j=0; j<#inverter_meta.failure; j++)
+	inverter_failures_by_type[j] = 0;
 for (i=0; i < inverter_meta.number; i++)
+{
 	total_inverter_failures += inverters[i].cumulative_failures;
+	for (j=0; j<#inverter_meta.failure; j++)
+		inverter_failures_by_type[j] += inverters[i].failures_by_type[j];
+}
 for (d=0; d < disconnect_meta.number; d++)
 	total_disconnect_failures += disconnects[d].cumulative_failures;
 for (t=0; t < transformer_meta.number; t++)
@@ -705,8 +769,6 @@ for (day = 0; day < (365 * system_lifetime_yrs); day++)
 		idx++;
 	}
 }
-outln(daily_dc_loss);
-outln(daily_ac_loss);
 
 //DC adjustment factors
 set('en_dc_lifetime_losses', 1);
@@ -714,8 +776,10 @@ set('dc_lifetime_losses', daily_dc_loss);
 //AC adjustment factors
 set('en_ac_lifetime_losses', 1);
 set('ac_lifetime_losses', daily_ac_loss);
-//Degradation is included as part of the DC losses, so set it to zero
-//set('dc_degradation', [0]);
+//Degradation is included as part of the DC losses, so set it to zero and create a note in the UI
+set('dc_degradation', [0]);
+//show_page('Lifetime PV');
+//pagenote('Degradation is included in the lifetime daily DC losses, so the degradation input has been set to zero.');
 
 
 //Create O&M inputs based on costs
@@ -728,7 +792,7 @@ for (day = 0; day < system_lifetime_yrs * 365; day++)
 		yr_idx = day / 365;
 		o_m_yearly_costs[yr_idx] = 0;
 	}
-	o_m_yearly_costs[yr_idx] += module_repair_costs[day] + string_repair_costs[day] + combiner_repair_costs[day] + disconnect_repair_costs[day] + transformer_repair_costs[day] + grid_repair_costs[day];	
+	o_m_yearly_costs[yr_idx] += module_repair_costs[day] + string_repair_costs[day] + combiner_repair_costs[day] + inverter_repair_costs[day] + disconnect_repair_costs[day] + transformer_repair_costs[day] + grid_repair_costs[day];	
 }
 set('om_fixed', o_m_yearly_costs);
 outln(o_m_yearly_costs);
@@ -739,8 +803,7 @@ messages = '';
 success = simulate(messages, true);
 if (!success)
 	msgbox('Simulation failed.' + messages);
-	
-//show_page('Results');
+show_page('Results');
 
 
 //Test outputs
@@ -749,10 +812,11 @@ outln('Total module failures =' + total_module_failures);
 outln('Total string failures =' + total_string_failures);
 outln('Total combiner failures =' + total_combiner_failures);
 outln('Total inverter failures =' + total_inverter_failures);
+outln('Inverter failures by type =' + inverter_failures_by_type);
 outln('Total disconnect failures =' + total_disconnect_failures);
 outln('Total transformer failures =' + total_transformer_failures);
 outln('Total grid failures =' + total_grid_failures);
-
+/*
 newplot();
 plot(day_num, dc_availability, {type='line'});
 plotopt({title='DC Availability'});
@@ -784,3 +848,4 @@ plot(day_num, module_degradation, {type = 'line'});
 plotopt({title = 'Fleetwide Module Degradation vs Time'});
 axis('x1', {label = 'Hour'});
 axis('y1', {label = 'Module Degradation'});
+*/
