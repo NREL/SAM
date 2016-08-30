@@ -179,6 +179,21 @@ b & =\max( \cos85\degree, \cos \mathit{AOI})
 \end{align*}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Section 8.3 Sky Diffuse POA Irradiance Reduction}
+
+Parentheses are missing from \textbf{Equation 8.9} for the reduction in sky diffuse POA irradiance, which is part of the self-shading algorithm.
+
+Correct:
+\begin{equation*}
+G_{sky,\text{red}} = G_d - G_{dh}\left(1 - \cos^2\frac{\psi}{2}\right)\frac{N_{rows} - 1}{N_{rows}}
+\end{equation*}
+
+Incorrect:
+\begin{equation*}
+G_{sky,\text{red}} = G_d - G_{dh}~ 1 - \cos^2\frac{\psi}{2}~ \frac{N_{rows} - 1}{N_{rows}}
+\end{equation*}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section*{Section 8.6: Beam Self-shading DC Loss Factor}
 
 The symbol for the submodule \textbf{fill factor} variable is inconsistent. It should be $F_{fill}$ instead of $\mathit{FF}_0$.
