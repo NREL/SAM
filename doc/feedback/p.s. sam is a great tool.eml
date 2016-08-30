@@ -1,0 +1,187 @@
+X-Account-Key: account1
+X-UIDL: 11e6-6ec3-94ee0bb6-b9a1-00144fe24596
+X-Mozilla-Status: 0001
+X-Mozilla-Status2: 00000000
+X-Mozilla-Keys:                                                                                 
+Status:  U
+Return-Path: <SAM.Support@nrel.gov>
+Received: from mx-jacana.atl.sa.earthlink.net ([207.69.195.26])
+	by mdl-increase.atl.sa.earthlink.net (EarthLink SMTP Server) with SMTP id 1BEKE92hz3Nl36Z0; Tue, 30 Aug 2016 11:08:17 -0400 (EDT)
+Received: from xv12edg02.nrel.gov ([192.174.58.133])
+	by mx-jacana.atl.sa.earthlink.net (EarthLink SMTP Server) with ESMTP id 1BEKDv2ZE3Nl34e0
+	for <paulgilman@earthlink.net>; Tue, 30 Aug 2016 11:07:37 -0400 (EDT)
+Received: from XP11MBX1.nrel.gov (10.20.41.66) by xv12edg02.nrel.gov
+ (192.174.58.133) with Microsoft SMTP Server (TLS) id 15.0.1178.4; Tue, 30 Aug
+ 2016 09:07:36 -0600
+Received: from XP11MBX3.nrel.gov (10.20.41.68) by xp11mbx1.nrel.gov
+ (10.20.41.66) with Microsoft SMTP Server (TLS) id 15.0.1178.4; Tue, 30 Aug
+ 2016 09:07:32 -0600
+Received: from XP11MBX3.nrel.gov ([fe80::877:e0d2:247:1c13]) by
+ xp11mbx3.nrel.gov ([fe80::877:e0d2:247:1c13%14]) with mapi id 15.00.1178.000;
+ Tue, 30 Aug 2016 09:07:33 -0600
+From: SAM Support <SAM.Support@nrel.gov>
+To: "'paulgilman@earthlink.net'" <paulgilman@earthlink.net>
+Subject: p.s. sam is a great tool
+Thread-Topic: p.s. sam is a great tool
+Thread-Index: AQHSAtA7wqQ+cjs6qkWgZKokdA5+Ug==
+Date: Tue, 30 Aug 2016 15:07:31 +0000
+Message-ID: <1472569650221.20489@nrel.gov>
+References: <035A8C98F8F71749BBD0130F1667C37D27D7DA4D@IERMAIL01.ier.uni-stuttgart.de>
+In-Reply-To: <035A8C98F8F71749BBD0130F1667C37D27D7DA4D@IERMAIL01.ier.uni-stuttgart.de>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: yes
+X-MS-TNEF-Correlator:
+x-ms-exchange-transport-fromentityheader: Hosted
+x-originating-ip: [10.20.41.6]
+Content-Type: multipart/related; boundary="_003_147256965022120489nrelgov_";
+	type="text/plain"
+MIME-Version: 1.0
+X-Authentication-Results: dkim="fail"; (2:no or failed dkim processing); dmarc="none"; (1); dwl="miss"; den="not exempt"
+X-ELNK-AV: 0
+X-ELNK-Info: sbv=0; sbrc=.0; sbf=0b; sbw=000;
+
+--_003_147256965022120489nrelgov_
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+
+
+Best regards,
+Paul.
+
+-----
+Paul Gilman
+System Advisor Model Support
+sam.support@nrel.gov<mailto:sam.support@nrel.gov>
+________________________________
+From: Dimitrij Chudinzow <Dimitrij.Chudinzow@ier.uni-stuttgart.de>
+Sent: Tuesday, August 30, 2016 8:54 AM
+To: SAM Support
+Subject: Mistake in "SAM Photovoltaic Model Technical Reference"?
+
+Dear SAM Support,
+
+while reading the manual (Gilman, P. (2015). SAM Photovoltaic Model Technic=
+al Reference. National Renewable Energy Laboratory.  59 pp.; NREL/TP-6A20-6=
+4102), I wonder if eq. 8.9 on page 33 lacks some brackets.
+
+[cid:image004.jpg@01D202D6.D4AA4070]
+I think it should be G_sky,red =3D (G_d-G_dh)*(1-cos=B2(psi/2))*(N_rows-1)/=
+N_rows.
+
+I also checked Errata for PV reference manual, 6/8/2016, but there's no inf=
+ormation about this specific equation.
+
+
+Kind regards
+Dimitrij Chudinzow
+
+PS: SAM is a great tool.
+________________________________
+Dimitrij Chudinzow, M. Sc.
+Wissenschaftlicher Mitarbeiter
+
+[cid:image001.png@01CC7D0D.6DB495E0]
+
+Universit=E4t Stuttgart
+
+
+
+
+
+IER
+
+Institut f=FCr Energiewirtschaft und Rationelle Energieanwendung
+Institute for Energy Economics and Rational Use of Energy
+
+
+He=DFbr=FChlstra=DFe 49a
+70565 Stuttgart
+T: +49 711 685 87870
+F: +49 711 685 87883
+E: dimitrij.chudinzow@ier.uni-stuttgart.de<mailto:dimitrij.chudinzow@ier.un=
+i-stuttgart.de>
+I:  www.ier.uni-stuttgart.de<https://myvpn.nrel.gov/,DanaInfo=3Dwww.ier.uni=
+-stuttgart.de+>
+
+
+--_003_147256965022120489nrelgov_
+Content-Type: image/png; name="image003.png"
+Content-Description: image003.png
+Content-Disposition: inline; filename="image003.png"; size=936;
+	creation-date="Tue, 30 Aug 2016 13:54:46 GMT";
+	modification-date="Tue, 30 Aug 2016 13:54:46 GMT"
+Content-ID: <image003.png@01D202D6.B1853640>
+Content-Transfer-Encoding: base64
+
+iVBORw0KGgoAAAANSUhEUgAAAB0AAAAdCAAAAABz+DjTAAAABGdBTUEAALGOfPtRkwAAAAlwSFlz
+AAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUATWljcm9zb2Z0IE9mZmljZX/tNXEAAAMlSURB
+VDjLXZNdTFJhGMfPZV3YReumcjnb+ja3vj80KbHUUtN0rbXVappAWiGaUZBpzTnAnOYahJqnnCkc
+RANBTgNJASHDUGeeJYZQhAKHSpFwkbxp6irfy/e3593e//P7Q2DhzMJokK+epdF/1fCDsobgwi20
+SMF+Msi5A27dBTk0cDka/E9xt5XrsFf6JisnPnNtuOcvDTS9Ma+Vjq5QeVMdtlR/20qLcL1ViyxS
+/AA8zTCajPLWQA0ckGLGr2+L/LzopZdnRtJwXegkk+hNTJsiVONb+wZTxmYW6I/2gs5LNk3dI0UP
+Sa8lGaTVtT2ixG6ab46aBTh35yQoIYLdRaaNffqNQ4UHwZFy4NrhFo5AnBAXABU5g51ltZ3J39lV
+eFI3j6XWZSAAX8WCvB9QytPaarlsS1U9SYS0CLIbOdvQhovSuo4PXmjk/cv4B2+wyFwn5Yxzu1qx
+0xlNdV3ZY5thiodHIc7uuQ+HFX9RnxBLMsWZZOFNwYujGgcjBYBIGvTT0po/rFRlVJQxYAI1PjE/
+tZlErTir6hhow+xQv0ly1dTdfazVdY3KDks/vauJnO8SELXa3pZxO0RIAMAeUgyUcX7RmuuHYygh
+kulYDaCvdoK0WGhoUELq0mgIYnfujT+zAnKeuzlWq1VK+vshO9ZOk0mUZytKGc3EvARCehLMLC0/
+p0Ilko8zUEHEXJ4JJXZ1vKiRLsoiNWRJkXiNg74JgD0syIK1nbgfGIvInaAQx7ep0Uj3qRvOrL1m
+I1OMjUBeDM2BTTyFfPPDZ9ktSIswq6F8K4oUw3wFNgWx53MWXB9Qlap6Ur5xqtzJXTx2p+48F+Ah
+LGgUwbkRHnAvDsSUvAvv04cPFR4CRzjAs92NmOf3Kyt8ffKtQfVYpqPotRQDylcaLBfUBb5FN/zm
+NJcubIp9/EdCqjcm076hz5Fu8S95tb/ed9v4rhdrc9TBgVaxvt9wx8+LWnJS0Du6bs5JFD84bj3t
+a1/5CQm16kT/+OxxWXkOx+PpqUde/InN/XVZF/aRASUPFDJA2T1wKWpZF2afvwry4EA+PYjWBeWN
+iz36Da3rQ6dt5ED9AAAAAElFTkSuQmCC
+
+--_003_147256965022120489nrelgov_
+Content-Type: image/jpeg; name="image004.jpg"
+Content-Description: image004.jpg
+Content-Disposition: inline; filename="image004.jpg"; size=2298;
+	creation-date="Tue, 30 Aug 2016 13:54:46 GMT";
+	modification-date="Tue, 30 Aug 2016 13:54:46 GMT"
+Content-ID: <image004.jpg@01D202D6.D4AA4070>
+Content-Transfer-Encoding: base64
+
+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
+iiiiiiiiiiiiiiiiiiiiv//Z
+
+--_003_147256965022120489nrelgov_--
+
