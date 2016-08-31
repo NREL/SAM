@@ -15,6 +15,8 @@
 	WARRANTY REPAIRS NEED TO NOT COST ANYTHING
 	WHEN AN INVERTER FAILS ROUTINELY, IT NEEDS TO NOT BE COMPLETELY RESET- which ones do reset it?
 	I don't like how I'm doing repair cost additions right now. Maybe change it to something else?
+	How do trackers work with multiple subarrays? For now only enabled for subarray 1
+	Need to escalate tracker costs
 */
 
 
@@ -58,6 +60,8 @@ if (fin == 'Third Party' || fin == 'LCOE Calculator' || fin == 'None')
 	num_disconnects = num_inverters;
 	num_transformers = 1; //2;
 	num_inverters_per_transformer = num_inverters / num_transformers; //CHECK THAT THIS IS AN INTEGER
+	num_trackers = ceil(num_strings / 3); //HOW TO FIGURE THIS ONE OUT?
+	tracking_system = ( (get('subarray1_track_mode') == 1) || (get('subarray1_track_mode') == 2) || (get('subarray1_track_mode') == 3) );
 	system_lifetime_yrs = get('analysis_period');
 
 // FINANCIAL INPUTS--------------------------------------------------------------------
@@ -164,7 +168,7 @@ if (fin == 'Third Party' || fin == 'LCOE Calculator' || fin == 'None')
 	transformer_repair_distribution = 'lognormal-n';
 	transformer_repair_mean_days = 0.22;
 	transformer_repair_std_days = 0.25;
-	//repair costs
+	// repair costs
 	transformer_repair_time = 10; //hours
 	transformer_cost = 32868; //$
 
@@ -178,6 +182,16 @@ if (fin == 'Third Party' || fin == 'LCOE Calculator' || fin == 'None')
 	grid_repair_mean_days = 0.155;
 	grid_repair_time = 0;
 	grid_repair_cost = 0;
+	
+// TRACKER INPUTS-----------------------------------------------------------------------
+	// failure mode 1
+	tracker_failure_distribution = 'exponential';
+	tracker_failure_mean_per_year = 0.083;
+	// repair time
+	tracker_repair_distribution = 'lognormal-n';
+	tracker_repair_mean_days = 30;
+	tracker_repair_std_days = 10;
+	tracker_repair_current_cost = 2000;
 	
 // INPUT FUNCTION: DEGRADATION----------------------------------------------------------
 /*
@@ -207,8 +221,8 @@ failure[i]
 	distribution = distribution type of failure mode i
 	parameters = a table of parameters for failure mode i (e.g. [45, 15] )
 	times = a vector of failure times for failure mode i
-	labor_time = number of hours of labor it takes to repair the component
-	cost = cost to replace the component
+	labor_time = number of hours of labor it takes to repair this type of failure
+	cost = parts cost to repair this type of failure
 defective
 	bool = true if the component also has defective failures, otherwise false
 	fraction = fraction of that type of component that are defective
@@ -246,7 +260,7 @@ degradation_factor = 1 - percentage the component has degraded at this time (ex.
 	// Modules
 	global modules = alloc(num_modules);
 	global module_meta = null;	
-	module_meta.bool = false;
+	module_meta.bool = true;
 	module_meta.number = num_modules;
 	module_meta.warranty.bool = true;
 	module_meta.warranty.days = module_warranty_yrs * 365;
@@ -270,10 +284,10 @@ degradation_factor = 1 - percentage the component has degraded at this time (ex.
 	// Strings
 	global strings = alloc(num_strings);
 	global string_meta = null;
-	string_meta.bool = false;
+	string_meta.bool = true;
 	string_meta.number = num_strings;
 	string_meta.warranty.bool = false;
-	string_meta.warranty.days = 0;
+	//string_meta.warranty.days = 0;
 	string_meta.failure[0].distribution = string_failure_distribution;
 	string_meta.failure[0].parameters = [(string_failures_per_yr / 365)];
 	string_meta.failure[0].times = null;
@@ -289,7 +303,7 @@ degradation_factor = 1 - percentage the component has degraded at this time (ex.
 	// Combiners
 	global combiners = alloc(num_combiners);
 	global combiner_meta = null;
-	combiner_meta.bool = false;
+	combiner_meta.bool = true;
 	combiner_meta.number = num_combiners;
 	combiner_meta.warranty.bool = false;
 	combiner_meta.warranty.days = 0;
@@ -341,7 +355,7 @@ degradation_factor = 1 - percentage the component has degraded at this time (ex.
 	// AC Disconnects
 	global disconnects = alloc(num_disconnects);
 	global disconnect_meta = null;
-	disconnect_meta.bool = false;
+	disconnect_meta.bool = true;
 	disconnect_meta.number = num_disconnects;
 	disconnect_meta.warranty.bool = false;
 	disconnect_meta.warranty.days = 0;
@@ -360,7 +374,7 @@ degradation_factor = 1 - percentage the component has degraded at this time (ex.
 	// Transformers
 	global transformers = alloc(num_transformers);
 	global transformer_meta = null;
-	transformer_meta.bool = false;
+	transformer_meta.bool = true;
 	transformer_meta.number = num_transformers;
 	transformer_meta.warranty.bool = false;
 	transformer_meta.warranty.days = 0;
@@ -379,7 +393,7 @@ degradation_factor = 1 - percentage the component has degraded at this time (ex.
 	// Grid
 	global grid = 1;
 	global grid_meta = null;
-	grid_meta.bool = false;
+	grid_meta.bool = true;
 	grid_meta.number = 1;
 	grid_meta.warranty.bool = false;
 	grid_meta.warranty.days = 0;
@@ -394,7 +408,25 @@ degradation_factor = 1 - percentage the component has degraded at this time (ex.
 	grid_meta.repair.parameters = [grid_repair_mean_days];
 	grid_meta.repair.times = null;
 	grid_meta.degradation.bool = false;
-
+	
+	// Trackers
+	global trackers = alloc(num_trackers);
+	global tracker_meta = null;
+	tracker_meta.bool = false;
+	tracker_meta.number = num_trackers;
+	tracker_meta.warranty.bool = false;
+	tracker_meta.failure[0].distribution = tracker_failure_distribution;
+	tracker_meta.failure[0].parameters = [tracker_failure_mean_per_year / 365];
+	tracker_meta.failure[0].times = null;
+	tracker_meta.failure[0].labor_time = 0;
+	tracker_meta.failure[0].cost = tracker_repair_current_cost;
+	tracker_meta.defective.bool = false;
+	tracker_meta.repair.bool = true;
+	tracker_meta.repair.distribution = tracker_repair_distribution;
+	tracker_meta.repair.parameters = [tracker_repair_mean_days, tracker_repair_std_days];
+	tracker_meta.repair.times = null;
+	tracker_meta.degradation.bool = false;
+	
 
 //*************************************************************************************
 // SUPPORTING FUNCTIONS
@@ -542,6 +574,13 @@ function initialize()
 	
 	// Create grid structure
 	initialize_component(grid_meta, grid, 0, true);
+	
+	// Create tracker structures
+	if (tracking_system)
+	{
+		for (tr = 0; tr < tracker_meta.number; tr++)
+			initialize_component(tracker_meta, trackers, tr, true);
+	}
 }
 
 // DC DERATE CALCULATION FUNCTION------------------------------------------------------------------------
@@ -681,16 +720,19 @@ function step_in_time(component_meta, component_vector, day, component_repair_co
 //*************************************************************************************
 
 //allocations for now
-
+//costs
 module_degradation = null;
 dc_availability = ac_availability = null;
 labor_rate = 0;
 module_repair_costs = string_repair_costs = combiner_repair_costs = null;
 inverter_repair_costs = disconnect_repair_costs = transformer_repair_costs = null;
 grid_repair_costs = null;
+tracker_repair_costs = null;
+//failures
 total_module_failures = total_string_failures = total_combiner_failures = 0;
 total_inverter_failures = total_disconnect_failures = total_transformer_failures = 0;
 total_grid_failures = 0;
+total_tracker_failures = 0;
 
 
 //timestep 0
@@ -701,6 +743,7 @@ ac_availability[0] = whats_my_ac_derate();
 module_repair_costs[0] = string_repair_costs[0] = combiner_repair_costs[0] = 0; //no costs are accrued at time zero because nothing has changed state
 inverter_repair_costs[0] = disconnect_repair_costs[0] = transformer_repair_costs[0] = 0;
 grid_repair_costs[0] = 0;
+tracker_repair_costs[0] = 0;
 //outln('0\t' + modules);
 
 
@@ -721,7 +764,11 @@ for (day = 1; day < system_lifetime_yrs * 365; day++)
 	step_in_time(disconnect_meta, disconnects, day, disconnect_repair_costs);
 	step_in_time(transformer_meta, transformers, day, transformer_repair_costs);
 	step_in_time(grid_meta, grid, day, grid_repair_costs);
+	if (tracking_system)
+		step_in_time(tracker_meta, trackers, day, tracker_repair_costs);
 	//count up current timestep states
+	if (tracking_system)
+		tilt_angle[day] = whats_my_average_tracking_angle();
 	module_degradation[day] = whats_my_degradation();
 	dc_availability[day] = whats_my_dc_derate();
 	ac_availability[day] = whats_my_ac_derate();
@@ -750,6 +797,11 @@ for (d=0; d < disconnect_meta.number; d++)
 for (t=0; t < transformer_meta.number; t++)
 	total_transformer_failures += transformers[t].cumulative_failures;
 total_grid_failures = grid[0].cumulative_failures;
+if (tracking_system)
+{
+	for (tr=0; tr < tracker_meta.number; tr++)
+		total_tracker_failures += trackers[tr].cumulative_failures;
+}
 	
 	
 //create SAM performance adjustment tables for the availability derates
@@ -769,6 +821,9 @@ for (day = 0; day < (365 * system_lifetime_yrs); day++)
 		idx++;
 	}
 }
+
+//Tracker adjustments
+
 
 //DC adjustment factors
 set('en_dc_lifetime_losses', 1);
@@ -795,7 +850,6 @@ for (day = 0; day < system_lifetime_yrs * 365; day++)
 	o_m_yearly_costs[yr_idx] += module_repair_costs[day] + string_repair_costs[day] + combiner_repair_costs[day] + inverter_repair_costs[day] + disconnect_repair_costs[day] + transformer_repair_costs[day] + grid_repair_costs[day];	
 }
 set('om_fixed', o_m_yearly_costs);
-outln(o_m_yearly_costs);
 
 
 //run PV performance model- for now running the currently active case
@@ -816,7 +870,7 @@ outln('Inverter failures by type =' + inverter_failures_by_type);
 outln('Total disconnect failures =' + total_disconnect_failures);
 outln('Total transformer failures =' + total_transformer_failures);
 outln('Total grid failures =' + total_grid_failures);
-/*
+
 newplot();
 plot(day_num, dc_availability, {type='line'});
 plotopt({title='DC Availability'});
@@ -848,4 +902,3 @@ plot(day_num, module_degradation, {type = 'line'});
 plotopt({title = 'Fleetwide Module Degradation vs Time'});
 axis('x1', {label = 'Hour'});
 axis('y1', {label = 'Module Degradation'});
-*/
