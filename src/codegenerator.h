@@ -179,4 +179,18 @@ public:
 	bool SupportingFiles();
 };
 
+class CodeGen_vba : public virtual CodeGen_Base
+{
+public:
+	CodeGen_vba(Case *cc, const wxString &folder);
+	bool SupportingFiles();
+	bool Header();
+	bool CreateSSCModule(wxString &name);
+	bool RunSSCModule(wxString &name);
+	bool FreeSSCModule();
+	bool Input(ssc_data_t p_data, const char *name, const wxString &folder, const int &array_matrix_threshold);
+	bool Output(ssc_data_t p_data);
+	bool Footer();
+};
+
 #endif
