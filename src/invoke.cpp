@@ -2394,7 +2394,7 @@ void fcall_editscene3d(lk::invoke_t &cxt)
 		else
 		{
 			// now copy over all the subarray sections
-			// the user must label them as 'Subarray1.string1', 'Subarraya.string2', etc for them to get placed in the right section
+			// the user must label them as 'Subarray1.string1', 'Subarray1.string2', etc for them to get placed in the right section
 
 			// return in order of subarray 1, subarray 2, subarray 3, subarray 4 for application in ui
 			// first parse and group first part of names
