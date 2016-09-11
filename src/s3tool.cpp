@@ -872,15 +872,16 @@ bool ShadeAnalysis::SimulateDiffuse(std::vector<surfshade> &shade, bool save)
 		else average = 0; // if there were no surfaces in this piece (i.e. facing away from sun), no diffuse blocking
 
 		m_diffuseShadePercent.push_back(average);
-//		m_diffuseName.push_back(shade[j].group);
-		m_diffuseName.push_back(GetGroupDisplayName(shade[j].group));
+		m_diffuseName.push_back(shade[j].group);
+//		m_diffuseName.push_back(GetGroupDisplayName(shade[j].group));
 	}
 		
 	wxString difftext("Diffuse shading: ");
 	for (size_t i = 0; i<m_diffuseShadePercent.size(); i++)
 	{
-		difftext += m_diffuseName[i] + wxString::Format(": %.2lf%%", m_diffuseShadePercent[i]);
-//		difftext += m_diffuseName[i] + wxString::Format(": %lg %%", m_diffuseShadePercent[i]);
+		difftext += GetGroupDisplayName(shade[i].group) + wxString::Format(": %.2lf%%", m_diffuseShadePercent[i]);
+		//difftext += m_diffuseName[i] + wxString::Format(": %.2lf%%", m_diffuseShadePercent[i]);
+		//		difftext += m_diffuseName[i] + wxString::Format(": %lg %%", m_diffuseShadePercent[i]);
 		if ( i < m_diffuseShadePercent.size()-1 ) difftext += ", ";
 	}
 
@@ -1135,8 +1136,9 @@ void ShadeAnalysis::OnGenerateTimeSeries( wxCommandEvent & )
 			for( size_t i=0;i<nstep;i++ )
 				data[i] = shade[j].sfac[i];
 
-			wxDVArrayDataSet *dset = new wxDVArrayDataSet(shade[j].group, "% Shaded", min/60.0, data);
-			dset->SetOffset( 0.5*min/60.0 );
+			wxDVArrayDataSet *dset = new wxDVArrayDataSet(GetGroupDisplayName( shade[j].group), "% Shaded", min / 60.0, data);
+//			wxDVArrayDataSet *dset = new wxDVArrayDataSet(shade[j].group, "% Shaded", min / 60.0, data);
+			dset->SetOffset(0.5*min / 60.0);
 			dview->AddDataSet( dset );
 		}
 		dview->SelectDataOnBlankTabs();
