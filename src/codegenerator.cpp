@@ -5751,12 +5751,10 @@ bool CodeGen_vba::Output(ssc_data_t p_data)
 		switch (type)
 		{
 		case SSC_STRING:
-			fprintf(m_fp, "		String %s = data.GetString( \"%s\" );\n", name, name);
-			fprintf(m_fp, "		Console.WriteLine(\"{0} = {1}\"), %s, %s);\n", (const char*)m_data[ii].label.c_str(), name);
+			fprintf(m_fp, "	Debug.Print \"%s = \" & VBASSCDataGetString(p_data, \"%s\")\n", (const char*)m_data[ii].label.c_str(), name);
 			break;
 		case SSC_NUMBER:
-			fprintf(m_fp, "		float %s = data.GetNumber(\"%s\");\n", name, name);
-			fprintf(m_fp, "		Console.WriteLine(\"{0} = {1}\", \"%s\", %s);\n", (const char*)m_data[ii].label.c_str(), name);
+			fprintf(m_fp, "	Debug.Print \"%s = \" & VBASSCDataGetNumber(p_data, \"%s\")\n", (const char*)m_data[ii].label.c_str(), name);
 			break;
 		case SSC_ARRAY: // TODO
 			//p = ::ssc_data_get_array(p_data, name, &len);
@@ -5779,22 +5777,26 @@ bool CodeGen_vba::Input(ssc_data_t p_data, const char *name, const wxString &fol
 	wxString str_value;
 	double dbl_value;
 	int type = ::ssc_data_query(p_data, name);
+	// VBA editor has threshold of 1024 characters per line so adjust matrix and array througholds accordingly
+//	int chars_per_value = 5; // assume average of 5 characters per string entry for array and matrix values
+	int chars_per_value = 500; // assume average of 5 characters per string entry for array and matrix values
 	switch (type)
 	{
 	case SSC_STRING:
 		str_value = wxString::FromUTF8(::ssc_data_get_string(p_data, name));
 		str_value.Replace("\\", "/");
-		fprintf(m_fp, "		data.SetString( \"%s\", \"%s\" );\n", name, (const char*)str_value.c_str());
+		fprintf(m_fp, "		sscvb_data_set_string p_data, \"%s\", \"%s\" \n", name, (const char*)str_value.c_str());
 		break;
 	case SSC_NUMBER:
 		::ssc_data_get_number(p_data, name, &value);
 		dbl_value = (double)value;
 		if (dbl_value > 1e38) dbl_value = 1e38;
-		fprintf(m_fp, "		data.SetNumber( \"%s\", %.17gf );\n", name, dbl_value);
+		fprintf(m_fp, "		sscvb_data_set_number p_data, \"%s\", %lg \n", name, dbl_value);
 		break;
 	case SSC_ARRAY:
 		p = ::ssc_data_get_array(p_data, name, &len);
-		if (len > array_matrix_threshold)
+//		if (len > array_matrix_threshold)
+		if ((len * chars_per_value) > array_matrix_threshold)
 		{ // separate csv file (var_name.csv in folder) for each variable
 			wxCSVData csv;
 			wxString fn = folder + "/" + TableElementFileNames(name) + ".csv";
@@ -5804,30 +5806,31 @@ bool CodeGen_vba::Input(ssc_data_t p_data, const char *name, const wxString &fol
 				dbl_value = (double)p[i];
 				if (dbl_value > 1e38) dbl_value = 1e38;
 				//				str_value = wxString::Format("%.17g", dbl_value);
-				csv.Set(i, 0, wxString::Format("%.17g", dbl_value));
+				csv.Set(i, 0, wxString::Format("%lg", dbl_value));
 			}
 			csv.WriteFile(fn);
-			fprintf(m_fp, "		data.SetArray( \"%s\", \"%s\", %d);\n", name, (const char*)fn.c_str(), len);
+			fprintf(m_fp, "		VBASSCDataCSVSetArray p_data, \"%s\", \"%s\"\n", name, (const char*)fn.c_str());
 		}
 		else
 		{
-			fprintf(m_fp, "		float[] p_%s ={", name, len);
+			fprintf(m_fp, "	str_data = \"");
 			for (int i = 0; i < (len - 1); i++)
 			{
 				dbl_value = (double)p[i];
 				if (dbl_value > 1e38) dbl_value = 1e38;
-				fprintf(m_fp, " %.17gf,", dbl_value);
+				fprintf(m_fp, "%lg,", dbl_value);
 			}
 			dbl_value = (double)p[len - 1];
 			if (dbl_value > 1e38) dbl_value = 1e38;
-			fprintf(m_fp, " %.17gf };\n", dbl_value);
-			fprintf(m_fp, "		data.SetArray( \"%s\", p_%s);\n", name, name);
+			fprintf(m_fp, "%lg\"\n", dbl_value);
+			fprintf(m_fp, "		VBASSCDataStringSetArray p_data, \"%s\", str_data\n", name);
 		}
 		break;
 	case SSC_MATRIX:
 		p = ::ssc_data_get_matrix(p_data, name, &nr, &nc);
 		len = nr*nc;
-		if (len > array_matrix_threshold)
+//		if (len > array_matrix_threshold)
+		if ((len * chars_per_value) > array_matrix_threshold)
 		{ // separate csv file (var_name.csv in folder) for each variable
 			wxCSVData csv;
 			wxString fn = folder + "/" + TableElementFileNames(name) + ".csv";
@@ -5837,30 +5840,30 @@ bool CodeGen_vba::Input(ssc_data_t p_data, const char *name, const wxString &fol
 				{
 					dbl_value = (double)p[r*nc + c];
 					if (dbl_value > 1e38) dbl_value = 1e38;
-					csv.Set(r, c, wxString::Format("%.17g", dbl_value));
+					csv.Set(r, c, wxString::Format("%lg", dbl_value));
 				}
 			}
 			csv.WriteFile(fn);
-			fprintf(m_fp, "		data.SetMatrix( \"%s\", \"%s\", %d, %d);\n", name, (const char*)fn.c_str(), nr, nc);
+			fprintf(m_fp, "		VBASSCDataCSVSetMatrix p_data, \"%s\", \"%s\"\n", name, (const char*)fn.c_str());
 		}
 		else
 		{
-			fprintf(m_fp, "		float[,] p_%s ={ {", name, len);
+			fprintf(m_fp, "	str_data = \"");
 			for (int k = 0; k < (len - 1); k++)
 			{
 				dbl_value = (double)p[k];
 				if (dbl_value > 1e38) dbl_value = 1e38;
 				if ((k > 0) && (k%nc == 0))
-					fprintf(m_fp, " { %.17gf,", dbl_value);
+					fprintf(m_fp, "%lg,", dbl_value);
 				else if (k%nc == (nc - 1))
-					fprintf(m_fp, " %.17gf },", dbl_value);
+					fprintf(m_fp, "%lg;", dbl_value);
 				else
-					fprintf(m_fp, " %.17gf, ", dbl_value);
+					fprintf(m_fp, "%lg,", dbl_value);
 			}
 			dbl_value = (double)p[len - 1];
 			if (dbl_value > 1e38) dbl_value = 1e38;
-			fprintf(m_fp, " %.17gf } };\n", dbl_value);
-			fprintf(m_fp, "		data.SetMatrix( \"%s\", p_%s );\n", name, name);
+			fprintf(m_fp, "%lg\"\n", dbl_value);
+			fprintf(m_fp, "		VBASSCDataStringSetMatrix p_data, \"%s\", str_data\n", name);
 		}
 		// TODO tables in future
 	}
@@ -5870,7 +5873,7 @@ bool CodeGen_vba::Input(ssc_data_t p_data, const char *name, const wxString &fol
 
 bool CodeGen_vba::RunSSCModule(wxString &name)
 {
-	fprintf(m_fp, "	res = sscvb_module_exec(p_mod, p_data)\n");
+	fprintf(m_fp, " res = sscvb_module_exec(p_mod, p_data)\n");
 	// TODO - log errors
 	/*
 	fprintf(m_fp, "		{\n");
@@ -6080,14 +6083,14 @@ bool CodeGen_vba::Header()
 	fprintf(m_fp, "    If (num_rows <= 0) Then\n");
 	fprintf(m_fp, "        VBASSCDataCSVSetMatrix = False\n");
 	fprintf(m_fp, "    Else\n");
-	fprintf(m_fp, "        fcols = Split(frows(0), ", ")\n");
+	fprintf(m_fp, "        fcols = Split(frows(0), \",\")\n");
 	fprintf(m_fp, "        num_cols = UBound(fcols) + 1\n");
 	fprintf(m_fp, "        If (num_cols <= 0) Then\n");
 	fprintf(m_fp, "            VBASSCDataCSVSetMatrix = False\n");
 	fprintf(m_fp, "        Else\n");
 	fprintf(m_fp, "            ReDim mat(num_rows - 1, num_cols - 1)\n");
 	fprintf(m_fp, "            Do While (ir < num_rows)\n");
-	fprintf(m_fp, "                fcols = Split(frows(ir), ", ")\n");
+	fprintf(m_fp, "                fcols = Split(frows(ir), \",\")\n");
 	fprintf(m_fp, "                ic = UBound(fcols)\n");
 	fprintf(m_fp, "                If ((ic + 1) <> num_cols) Then\n");
 	fprintf(m_fp, "                    VBASSCDataCSVSetMatrix = False\n");
@@ -6105,6 +6108,85 @@ bool CodeGen_vba::Header()
 	fprintf(m_fp, "        End If\n");
 	fprintf(m_fp, "    End If\n");
 	fprintf(m_fp, "End Function\n");
+	fprintf(m_fp, "Public Function VBASSCDataStringSetArray(pdata As LongPtr, name As String, str_data As String) As Boolean\n");
+	fprintf(m_fp, "    Dim fnum As Long\n");
+	fprintf(m_fp, "    Dim wholefile As String\n");
+	fprintf(m_fp, "    Dim frows As Variant\n");
+	fprintf(m_fp, "    Dim i As Long\n");
+	fprintf(m_fp, "    Dim num_rows As Long\n");
+	fprintf(m_fp, "    Dim ary() As Double\n");
+	fprintf(m_fp, "    i = 0\n");
+	fprintf(m_fp, "    frows = Split(str_data, \",\")\n");
+	fprintf(m_fp, "    num_rows = UBound(frows)\n");
+	fprintf(m_fp, "    If (num_rows <= 0) Then\n");
+	fprintf(m_fp, "        VBASSCDataStringSetArray = False\n");
+	fprintf(m_fp, "    Else\n");
+	fprintf(m_fp, "        ReDim ary(num_rows)\n");
+	fprintf(m_fp, "        Do While (i <= num_rows)\n");
+	fprintf(m_fp, "            ary(i) = CDbl(frows(i))\n");
+	fprintf(m_fp, "            i = i + 1\n");
+	fprintf(m_fp, "        Loop\n");
+	fprintf(m_fp, "        i = VBASSCDataSetArray(pdata, name, ary)\n");
+	fprintf(m_fp, "        VBASSCDataStringSetArray = (i = 1)\n");
+	fprintf(m_fp, "    End If\n");
+	fprintf(m_fp, "End Function\n");
+	fprintf(m_fp, "Public Function VBASSCDataStringSetMatrix(pdata As LongPtr, name As String, str_data As String) As Boolean\n");
+	fprintf(m_fp, "    Dim fnum As Long\n");
+	fprintf(m_fp, "    Dim wholefile As String\n");
+	fprintf(m_fp, "    Dim frows As Variant\n");
+	fprintf(m_fp, "    Dim fcols As Variant\n");
+	fprintf(m_fp, "    Dim ir As Long\n");
+	fprintf(m_fp, "    Dim ic As Long\n");
+	fprintf(m_fp, "    Dim num_rows As Long\n");
+	fprintf(m_fp, "    Dim num_cols As Long\n");
+	fprintf(m_fp, "    Dim mat() As Double\n");
+	fprintf(m_fp, "    ir = 0\n");
+	fprintf(m_fp, "    frows = Split(str_data, \";\")\n");
+	fprintf(m_fp, "    num_rows = UBound(frows) + 1\n");
+	fprintf(m_fp, "    If (num_rows <= 0) Then\n");
+	fprintf(m_fp, "        VBASSCDataStringSetMatrix = False\n");
+	fprintf(m_fp, "    Else\n");
+	fprintf(m_fp, "        fcols = Split(frows(0), \",\")\n");
+	fprintf(m_fp, "        num_cols = UBound(fcols) + 1\n");
+	fprintf(m_fp, "        If (num_cols <= 0) Then\n");
+	fprintf(m_fp, "            VBASSCDataStringSetMatrix = False\n");
+	fprintf(m_fp, "        Else\n");
+	fprintf(m_fp, "            ReDim mat(num_rows - 1, num_cols - 1)\n");
+	fprintf(m_fp, "            Do While (ir < num_rows)\n");
+	fprintf(m_fp, "                fcols = Split(frows(ir), \",\")\n");
+	fprintf(m_fp, "                ic = UBound(fcols)\n");
+	fprintf(m_fp, "                If ((ic + 1) <> num_cols) Then\n");
+	fprintf(m_fp, "                    VBASSCDataStringSetMatrix = False\n");
+	fprintf(m_fp, "                    Exit Function\n");
+	fprintf(m_fp, "                End If\n");
+	fprintf(m_fp, "                ic = 0\n");
+	fprintf(m_fp, "                Do While (ic < num_cols)\n");
+	fprintf(m_fp, "                    mat(ir, ic) = CDbl(fcols(ic))\n");
+	fprintf(m_fp, "                    ic = ic + 1\n");
+	fprintf(m_fp, "                Loop\n");
+	fprintf(m_fp, "                ir = ir + 1\n");
+	fprintf(m_fp, "            Loop\n");
+	fprintf(m_fp, "            ir = VBASSCDataSetMatrix(pdata, name, mat)\n");
+	fprintf(m_fp, "            VBASSCDataStringSetMatrix = (ir = 1)\n");
+	fprintf(m_fp, "        End If\n");
+	fprintf(m_fp, "    End If\n");
+	fprintf(m_fp, "End Function\n");
+	fprintf(m_fp, "Public Function VBASSCDataGetString(p_data As LongPtr, name As String) As String\n");
+	fprintf(m_fp, "    Dim str_len As Long\n");
+	fprintf(m_fp, "    Dim lng_ptr As LongPtr\n");
+	fprintf(m_fp, "    Dim str As String\n");
+	fprintf(m_fp, "    str_len = 0\n");
+	fprintf(m_fp, "    lng_ptr = sscvb_data_get_string(p_data, name, str, str_len)\n");
+	fprintf(m_fp, "    str = Space(lng_ptr)\n");
+	fprintf(m_fp, "    str_len = sscvb_data_get_string(p_data, name, str, lng_ptr)\n");
+	fprintf(m_fp, "    VBASSCDataGetString = str\n");
+	fprintf(m_fp, "End Function\n");
+	fprintf(m_fp, "Public Function VBASSCDataGetNumber(p_data As LongPtr, name As String) As Double\n");
+	fprintf(m_fp, "    Dim dval As Double\n");
+	fprintf(m_fp, "    sscvb_data_get_number p_data, name, dval\n");
+	fprintf(m_fp, "    VBASSCDataGetNumber = dval\n");
+	fprintf(m_fp, "End Function\n");
+
 
 	fprintf(m_fp, "Sub RunCase()\n");
 	fprintf(m_fp, "    Dim p_data As LongPtr\n");
@@ -6112,11 +6194,12 @@ bool CodeGen_vba::Header()
 	fprintf(m_fp, "    Dim dval As Double\n");
 	fprintf(m_fp, "    Dim res As LongPtr\n");
 	fprintf(m_fp, "    Dim str As String\n");
+	fprintf(m_fp, "    Dim str_data As String\n");
 	fprintf(m_fp, "    Dim ary() As Double\n");
 	fprintf(m_fp, "    Dim mat() As Double\n");
 	fprintf(m_fp, "    Dim str_len As Long\n");
 	fprintf(m_fp, "    Dim lng_ptr As LongPtr\n");
-	fprintf(m_fp, "    ChDir (\"%s\")\n", m_folder);
+	fprintf(m_fp, "    ChDir \"%s\"\n", (const char *)m_folder.c_str());
 	fprintf(m_fp, "    Debug.Print CurDir\n");
 	fprintf(m_fp, "    Debug.Print \"ssc version \" & sscvb_version()\n");
 	fprintf(m_fp, "    lng_ptr = sscvb_build_info(str, str_len)\n");
