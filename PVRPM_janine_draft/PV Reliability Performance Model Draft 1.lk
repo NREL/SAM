@@ -12,13 +12,11 @@
 	Add "calculating"/"running" popup
 	Add component-level availability output graph vs time (using Geoff's equation)
 	Output time series module availability, degradation, etc. to a csv.
-	Add check that case must be in lifetime mode
 	WARRANTY REPAIRS NEED TO NOT COST ANYTHING
 	WHEN AN INVERTER FAILS ROUTINELY, IT NEEDS TO NOT BE COMPLETELY RESET- which ones do reset it?
 	I don't like how I'm doing repair cost additions right now. Maybe change it to something else?
 	How do trackers work with multiple subarrays? For now only enabled for subarray 1
 	Need to escalate tracker costs
-	MAKE DEFECTIVE FAILURES A REGULAR FAILURE TYPE
 */
 
 
@@ -35,16 +33,29 @@ tech = cfg[0];
 
 if (tech != 'Flat Plate PV')
 {
-	msgbox('Error: This script is only applicable to the detailed photovoltaic model.');
+	msgbox('Error: This script is only applicable to the detailed photovoltaic model. Exiting simulation.');
 	exit;
 }
 
 if (fin == 'Third Party' || fin == 'LCOE Calculator' || fin == 'None')
 {
-	msgbox('Error: This script cannot be run from financial model: ' + fin);
+	msgbox('Error: This script cannot be run from financial model: ' + fin + '. Exiting simulation.');
 	exit;
 }
+
+is_lifetime_mode = get('pv_lifetime_simulation');
+if (!is_lifetime_mode)
+{
+	make_lifetime_mode = yesno('PV simulations must be run in lifetime mode with this script. Change your case to lifetime mode now?');
+	if (!make_lifetime_mode)
+	{
+		msgbox('Please modify your case to use lifetime mode. Exiting simulation');
+		exit;
+	}
+	set('pv_lifetime_simulation', 1);
+}
 */
+
 
 
 //*************************************************************************************
@@ -100,12 +111,8 @@ failure[i]
 	times = a vector of failure times for failure mode i
 	labor_time = number of hours of labor it takes to repair this type of failure
 	cost = parts cost to repair this type of failure
-defective
-	has_defective_failures = true if the component also has defective failures, otherwise false
-	fraction = fraction of that type of component that are defective
-	distribution = distribution of defective failure mode
-	parameters = parameters of defective failure mode
-	times = a vector of defective failure times
+	***OPTIONAL PARAMETER
+	***fraction = If fraction is defined, then failure mode i is a defective failure mode, and "fraction" represents the fraction of this type of component that are defective
 repair
 	can_repair = true if the component is allowed to be repaired
 	distribution = distribution type of repair times
@@ -134,14 +141,14 @@ degradation_factor = 1 - percentage the component has degraded at this time (ex.
 */
 
 // REPAIR COSTS DATA CONTAINER-------------------------------------------------------
-// contains all the costs by component and day
+// contains all the costs by day
 /*
-modules
-strings
-dc combiners
-inverters
-ac disconnects
-transformers
+	modules
+	strings
+	dc combiners
+	inverters
+	ac disconnects
+	transformers
 */
 
 //SET UP DATA CONTAINERS----------------------------------------------------------------------
@@ -152,16 +159,19 @@ transformers
 	module_meta.number = num_modules;
 	module_meta.warranty.has_warranty = true;
 	module_meta.warranty.days = 20 * 365; //years converted to days
+	//failure mode 1: normal failures
 	module_meta.failure[0].distribution = 'normal';
 	module_meta.failure[0].parameters = [35 * 365, 8 * 365]; //mean, std, years converted to days
 	module_meta.failure[0].times = null;
 	module_meta.failure[0].labor_time = 2; //hours
 	module_meta.failure[0].cost = 322; //$
-	module_meta.defective.has_defective_failures = true;
-	module_meta.defective.fraction = 20 / 100;
-	module_meta.defective.distribution = 'exponential';
-	module_meta.defective.parameters = [0.5 / 365]; //failures per year converted to days
-	module_meta.defective.times = null;
+	//failure mode 2: defective failures
+	module_meta.failure[1].distribution = 'exponential';
+	module_meta.failure[1].parameters = [0.5 / 365]; //failures per year converted to days
+	module_meta.failure[1].times = null;
+	module_meta.failure[1].labor_time = 2; //hours
+	module_meta.failure[1].cost = 322; //$
+	module_meta.failure[1].fraction = 20 / 100; //% converted to fraction
 	module_meta.repair.can_repair = true;
 	module_meta.repair.distribution = 'lognormal';
 	module_meta.repair.parameters =  [45, 15]; //mean, std, in days
@@ -180,7 +190,6 @@ transformers
 	string_meta.failure[0].times = null;
 	string_meta.failure[0].labor_time = 1; //hours
 	string_meta.failure[0].cost = 20; //$
-	string_meta.defective.has_defective_failures = false;
 	string_meta.repair.can_repair = true;
 	string_meta.repair.distribution = 'normal';
 	string_meta.repair.parameters = [10, 5]; //mean, std, in days
@@ -198,7 +207,6 @@ transformers
 	combiner_meta.failure[0].times = null;
 	combiner_meta.failure[0].labor_time = 2; //hours
 	combiner_meta.failure[0].cost = 976; //$
-	combiner_meta.defective.has_defective_failures = false;
 	combiner_meta.repair.can_repair = true;
 	combiner_meta.repair.distribution = 'exponential';
 	combiner_meta.repair.parameters = [5]; //mean, in days
@@ -237,7 +245,6 @@ transformers
 	inverter_meta.failure[2].labor_time = 0;
 	inverter_meta.failure[2].cost = 0.35 * get('inv_snl_paco'); //35 cents per watt
 	//other
-	inverter_meta.defective.has_defective_failures = false;
 	inverter_meta.repair.can_repair = true;
 	inverter_meta.repair.distribution = 'lognormal';
 	inverter_meta.repair.parameters = [3, 1.5]; //mean, std, in days
@@ -256,7 +263,6 @@ transformers
 	disconnect_meta.failure[0].times = null;
 	disconnect_meta.failure[0].labor_time = 4; //hours
 	disconnect_meta.failure[0].cost = 500; //$
-	disconnect_meta.defective.has_defective_failures = false;
 	disconnect_meta.repair.can_repair = true;
 	disconnect_meta.repair.distribution = 'lognormal';
 	disconnect_meta.repair.parameters = [1.75, 1.62]; //mean, std, in days
@@ -274,7 +280,6 @@ transformers
 	transformer_meta.failure[0].times = null;
 	transformer_meta.failure[0].labor_time = 10; //hours
 	transformer_meta.failure[0].cost = 32868; //$
-	transformer_meta.defective.has_defective_failures = false;
 	transformer_meta.repair.can_repair = true;
 	transformer_meta.repair.distribution = 'lognormal-n';
 	transformer_meta.repair.parameters = [0.22, 0.25]; //mean, std, in days
@@ -292,7 +297,6 @@ transformers
 	grid_meta.failure[0].times = null;
 	grid_meta.failure[0].labor_time = 0;
 	grid_meta.failure[0].cost = 0;
-	grid_meta.defective.has_defective_failures = false;
 	grid_meta.repair.can_repair = true;
 	grid_meta.repair.distribution = 'exponential';
 	grid_meta.repair.parameters = [0.155]; //mean in days
@@ -312,7 +316,6 @@ transformers
 		tracker_meta.failure[0].times = null;
 		tracker_meta.failure[0].labor_time = 0;
 		tracker_meta.failure[0].cost = 2000;
-		tracker_meta.defective.has_defective_failures = false;
 		tracker_meta.repair.can_repair = true;
 		tracker_meta.repair.distribution = 'lognormal-n';
 		tracker_meta.repair.parameters = [30, 10]; //mean, std, in days
@@ -368,8 +371,6 @@ function initialize_component(component_meta, component_vector, component_idx, b
 		// cumulative failures and OOW failures initialized to zero at time zero only
 		component_vector[component_idx].cumulative_failures = 0;
 		component_vector[component_idx].cumulative_oow_failures = 0;
-		if (component_meta.defective.has_defective_failures)
-			component_vector[component_idx].defective_failures = 0;
 		for (i=0; i < num_failure_modes; i++)
 			component_vector[component_idx].failures_by_type[i] = 0;
 		// degradation
@@ -380,33 +381,24 @@ function initialize_component(component_meta, component_vector, component_idx, b
 	// Loop through all failure modes to determine failure times
 	for (j = 0; j < num_failure_modes; j++)
 	{
+		//check the vector of failure times for this failure mode
 		if (component_meta.failure[j].times == null || #component_meta.failure[j].times <= 0) //null on initialization of very first component, less than zero when you've used up the pre-calculated vector
 			component_meta.failure[j].times = LHS(to_string(component_meta.failure[j].times), component_meta.failure[j].distribution, component_meta.failure[j].parameters, (#component_vector * 10));
-		possible_failure_times[j] = component_meta.failure[j].times[0]; //assign a failure time
-		component_meta.failure[j].times -@ 0; //remove the failure time that was just used
+		//check if this failure mode is a defective mode
+		if (component_meta.failure[j].fraction != null) //only defective failure modes have a fraction associated with them
+			component_vector[component_idx].defective = rand() < component_meta.failure[j].fraction; //randomly assign a given fraction of components to be defective
+		//assign a failure time for this failure mode unless it's a defective failure mode and the component is not defective
+		if (component_meta.failure[j].fraction == null || component_vector[component_idx].defective)
+		{
+			possible_failure_times[j] = component_meta.failure[j].times[0]; //assign a failure time
+			component_meta.failure[j].times -@ 0; //remove the failure time that was just used
+		}
+		else
+			possible_failure_times[j] = nan(); //the min function won't return a nan
 	}
 	// Because all failure modes are hard failures (no partial failures), pick whichever failure mode will occur first
 	component_vector[component_idx].time_to_failure = min(possible_failure_times);
 	component_vector[component_idx].failure_type = possible_failure_times ?@ component_vector[component_idx].time_to_failure;
-	
-	// Defective component
-	if (component_meta.defective.has_defective_failures)
-	{
-		component_vector[component_idx].defective = rand() < component_meta.defective.fraction; //randomly assign a given fraction of components to be defective
-		// If the component is defective, check the defective failure time against the previously assigned failure time
-		if (component_vector[component_idx].defective)
-		{	
-			if (component_meta.defective.times == null || #component_meta.defective.times <= 0) //null on initialization of very first component, less than zero when you've used up the pre-calculated vector
-				component_meta.defective.times = LHS(to_string(component_meta.defective.times), component_meta.defective.distribution, component_meta.defective.parameters, (#component_vector * 10));
-			defective_failure_time = component_meta.defective.times[0]; //assign a failure time
-			component_meta.defective.times -@ 0; //remove the failure time that was just used
-			if (defective_failure_time < component_vector[component_idx].time_to_failure) //defective failure occurs before normal failure
-			{
-				component_vector[component_idx].time_to_failure = defective_failure_time;
-				component_vector[component_idx].failure_type = 'defective';
-			}
-		}
-	}
 
 	// Time to replacement or repair in case of failure
 	if (component_meta.repair.times == null || #component_meta.repair.times <= 0) //null on initialization of very first component, less than zero when you've used up the array
@@ -429,10 +421,7 @@ function component_failure(component_vector, component_idx, day, bool_warranty, 
 	component_vector[component_idx].state = 0;
 	component_vector[component_idx].time_to_failure = 0;
 	component_vector[component_idx].cumulative_failures++;
-	if (component_vector[component_idx].failure_type == 'defective')
-		component_vector[component_idx].defective_failures++;
-	else
-		component_vector[component_idx].failures_by_type[component_vector[component_idx].failure_type]++;
+	component_vector[component_idx].failures_by_type[component_vector[component_idx].failure_type]++;
 	if (bool_warranty && day > warranty_length_days)
 		component_vector[component_idx].cumulative_oow_failures++;
 }
@@ -591,9 +580,7 @@ function step_in_time(component_meta, component_vector, day, component_repair_co
 			if (component_vector[i].time_to_repair <= 0 && component_meta.repair.can_repair) //only repair the item if repairs are enabled
 			{
 				//add the cost to repair the component
-				failure_index = 0;
-				if (component_vector[i].failure_type != 'defective') //defective costs the same as failure mode 0
-					failure_index = component_vector[i].failure_type; 
+				failure_index = component_vector[i].failure_type; 
 				component_repair_cost = component_meta.failure[failure_index].cost + labor_rate * component_meta.failure[failure_index].labor_time;
 				component_repair_costs[day] += component_repair_cost;
 				//initialize a new module without resetting cumulative failures
@@ -738,8 +725,14 @@ total_inverter_failures = total_disconnect_failures = total_transformer_failures
 total_grid_failures = 0;
 total_tracker_failures = 0;
 //count up cumulative failures
+for (j=0; j<#module_meta.failure; j++)
+	module_failures_by_type[j] = 0;
 for (m=0; m < module_meta.number; m++)
+{
 	total_module_failures += modules[m].cumulative_failures;
+	for (j=0; j<#module_meta.failure; j++)
+		module_failures_by_type[j] += modules[m].failures_by_type[j];
+}
 for (s=0; s < string_meta.number; s++)
 	total_string_failures += strings[s].cumulative_failures;
 for (c=0; c < combiner_meta.number; c++)
@@ -766,6 +759,7 @@ if (is_tracking_system)
 
 //outln(dc_availability);
 outln('Total module failures =' + total_module_failures);
+outln('Total module failures by type =' + module_failures_by_type);
 outln('Total string failures =' + total_string_failures);
 outln('Total combiner failures =' + total_combiner_failures);
 outln('Total inverter failures =' + total_inverter_failures);
