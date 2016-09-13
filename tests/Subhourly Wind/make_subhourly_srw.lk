@@ -1,0 +1,19 @@
+I = open( 'c:/users/adobos/desktop/HourlyWindFile.srw', 'r');
+O = open( 'c:/users/adobos/desktop/SubhourlyWindFile5Min.srw', 'w' );
+
+steps_per_hour = 12;
+
+buf = '';
+read_line( I, buf ); write_line( O, buf );
+read_line( I, buf ); write_line( O, buf );
+read_line( I, buf ); write_line( O, buf );
+read_line( I, buf ); write_line( O, buf );
+read_line( I, buf ); write_line( O, buf );
+for( i=0;i<8760;i++ )
+{
+	read_line( I, buf ); 
+	for( j=0;j<steps_per_hour;j++ )
+		write_line( O, buf );
+}
+
+close(I);close(O);
