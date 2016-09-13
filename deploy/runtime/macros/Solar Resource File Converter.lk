@@ -326,7 +326,7 @@ if (fcount == 0 ) {
   // GHI
   dataset1_name = names[0]; 
   dataset1_units = units[0];
-  dataset1_multiplier = 1.0;
+  dataset1_selected = 1;
   dataset1_data = alloc(num_rows);
   for (i=0;i<num_rows;i++) ghi[i] = to_real(csv_data[i][4]);
   dataset1_data = ghi;
@@ -334,7 +334,7 @@ if (fcount == 0 ) {
   // DNI
   dataset2_name = names[1]; 
   dataset2_units = units[1];
-  dataset2_multiplier = 1.0;
+  dataset2_selected = 0;
   dataset2_data = alloc(num_rows);
   for (i=0;i<num_rows;i++) dni[i] = to_real(csv_data[i][5]);
   dataset2_data = dni;
@@ -342,7 +342,7 @@ if (fcount == 0 ) {
   // DHI
   dataset3_name = names[2]; 
   dataset3_units = units[2];
-  dataset3_multiplier = 1.0;
+  dataset3_selected = 0;
   dataset3_data = alloc(num_rows);
   for (i=0;i<num_rows;i++) dhi[i] = to_real(csv_data[i][6]);
   dataset3_data = dhi;
@@ -350,7 +350,7 @@ if (fcount == 0 ) {
   // Tdry
   dataset4_name = names[3]; 
   dataset4_units = units[3];
-  dataset4_multiplier = 1.0;
+  dataset4_selected = 0;
   dataset4_data = alloc(num_rows);
   for (i=0;i<num_rows;i++) tdry[i] = to_real(csv_data[i][7]);
   dataset4_data = tdry;
@@ -358,7 +358,7 @@ if (fcount == 0 ) {
   // Tdew
   dataset5_name = names[4]; 
   dataset5_units = units[4];
-  dataset5_multiplier = 1.0;
+  dataset5_selected = 0;
   dataset5_data = alloc(num_rows);
   for (i=0;i<num_rows;i++) tdew[i] = to_real(csv_data[i][8]);
   dataset5_data = tdew;
@@ -366,7 +366,7 @@ if (fcount == 0 ) {
   // RH
   dataset6_name = names[5]; 
   dataset6_units = units[5];
-  dataset6_multiplier = 1.0;
+  dataset6_selected = 0;
   dataset6_data = alloc(num_rows);
   for (i=0;i<num_rows;i++) rh[i] = to_real(csv_data[i][9]);
   dataset6_data = rh;
@@ -374,7 +374,7 @@ if (fcount == 0 ) {
   // Pres
   dataset7_name = names[6]; 
   dataset7_units = units[6];
-  dataset7_multiplier = 1.0;
+  dataset7_selected = 0;
   dataset7_data = alloc(num_rows);
   for (i=0;i<num_rows;i++) pres[i] = to_real(csv_data[i][10]);
   dataset7_data = pres;
@@ -382,7 +382,7 @@ if (fcount == 0 ) {
   // Wspd
   dataset8_name = names[7]; 
   dataset8_units = units[7];
-  dataset8_multiplier = 1.0;
+  dataset8_selected = 0;
   dataset8_data = alloc(num_rows);
   for (i=0;i<num_rows;i++) wspd[i] = to_real(csv_data[i][11]);
   dataset8_data = wspd;
@@ -390,7 +390,7 @@ if (fcount == 0 ) {
   // Wdir
   dataset9_name = names[8]; 
   dataset9_units = units[8];
-  dataset9_multiplier = 1.0;
+  dataset9_selected = 0;
   dataset9_data = alloc(num_rows);
   for (i=0;i<num_rows;i++) wdir[i] = to_real(csv_data[i][12]);
   dataset9_data = wdir;
@@ -398,23 +398,23 @@ if (fcount == 0 ) {
   // Albedo
   dataset10_name = names[9]; 
   dataset10_units = units[9];
-  dataset10_multiplier = 1.0;
+  dataset10_selected = 0;
   dataset10_data = alloc(num_rows);
   for (i=0;i<num_rows;i++) alb[i] = to_real(csv_data[i][13]);
   dataset10_data = alb;
 
   // create dview window 
   dview(num_cols, ts, window_title,
-        dataset1_name, dataset1_units, dataset1_multiplier, dataset1_data,
-        dataset2_name, dataset2_units, dataset2_multiplier, dataset2_data,
-        dataset3_name, dataset3_units, dataset3_multiplier, dataset3_data,
-        dataset4_name, dataset4_units, dataset4_multiplier, dataset4_data,
-        dataset5_name, dataset5_units, dataset5_multiplier, dataset5_data,
-        dataset6_name, dataset6_units, dataset6_multiplier, dataset6_data,
-        dataset7_name, dataset7_units, dataset7_multiplier, dataset7_data,
-        dataset8_name, dataset8_units, dataset8_multiplier, dataset8_data,
-        dataset9_name, dataset9_units, dataset9_multiplier, dataset9_data,
-        dataset10_name, dataset10_units, dataset10_multiplier, dataset10_data
+        dataset1_name, dataset1_units, dataset1_selected, dataset1_data,
+        dataset2_name, dataset2_units, dataset2_selected, dataset2_data,
+        dataset3_name, dataset3_units, dataset3_selected, dataset3_data,
+        dataset4_name, dataset4_units, dataset4_selected, dataset4_data,
+        dataset5_name, dataset5_units, dataset5_selected, dataset5_data,
+        dataset6_name, dataset6_units, dataset6_selected, dataset6_data,
+        dataset7_name, dataset7_units, dataset7_selected, dataset7_data,
+        dataset8_name, dataset8_units, dataset8_selected, dataset8_data,
+        dataset9_name, dataset9_units, dataset9_selected, dataset9_data,
+        dataset10_name, dataset10_units, dataset10_selected, dataset10_data
         );
 }
 
