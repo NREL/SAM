@@ -41,43 +41,45 @@
 
 static void fcall_dview(lk::invoke_t &cxt)
 {
-	LK_DOC("dview", "Creates a separate dview viewer for viewing specified data.", "( number:num_datasets, number:timestep, string:window name, string:data_name1, string:data_units1, number:multiplier1, variant:data1, [ string:data_name2, string:data_units2, number:multiplier2, variant:data2], ...):none");
+	LK_DOC("dview", "Creates a separate dview viewer for viewing specified data.", "( number:num_datasets, number:timestep, string:window name, string:data_name1, string:data_units1, bool:select_dataset, variant:data1, [ string:data_name2, string:data_units2, bool:select_dataset2, variant:data2], ...):none");
 
 
 	int num_datasets = (int)cxt.arg(0).as_number();
 	double timestep = cxt.arg(1).as_number(); // fraction of hour
 	wxString win_name = cxt.arg(2).as_string();
 
-	size_t data_length = 8760;
-	if (timestep > 0)
-		data_length /= timestep;
-
 	size_t ndx = 3;
-	if ((4 * num_datasets + ndx) != cxt.arg_count()) return;
+	if ((4 * num_datasets + ndx) != cxt.arg_count())
+	{
+		cxt.error("Incorrect number of arguments");
+		return;
+	}
 
 	wxFrame *frame = new wxFrame( SamApp::Window(), wxID_ANY, "Data Viewer: " + win_name, wxDefaultPosition, wxScaleSize(1000,700),
 		(wxCAPTION | wxCLOSE_BOX | wxCLIP_CHILDREN | wxRESIZE_BORDER | wxFRAME_TOOL_WINDOW | wxFRAME_FLOAT_ON_PARENT) );
 	wxDVPlotCtrl *dview = new wxDVPlotCtrl(frame, wxID_ANY);
 	
+	size_t data_index = 0;
 	while (ndx < cxt.arg_count())
 	{ 
 		wxString data_name = cxt.arg(ndx++).as_string();
 		wxString data_units = cxt.arg(ndx++).as_string();
-		double scale = cxt.arg(ndx++).as_number();
+		double select_dataset = cxt.arg(ndx++).as_boolean();
 		lk::vardata_t &data = cxt.arg(ndx++);
-		if (data.length() != data_length) return;
 
-		std::vector<double> plot_data( data_length );
-		for (size_t i = 0; i < data_length; i++)
-			plot_data[i] = scale * data.index(i)->as_number();
+		std::vector<double> plot_data( data.length() );
+		for (size_t i = 0; i < data.length(); i++)
+			plot_data[i] = data.index(i)->as_number();
 
 		wxDVArrayDataSet *dvset = new wxDVArrayDataSet(data_name, data_units, timestep, plot_data);
 		dvset->SetGroupName( win_name );
 		dview->AddDataSet( dvset );
+		if (select_dataset)
+			dview->SelectDataIndex(data_index);
+		data_index++;
 	}
-
+	
 	dview->GetStatisticsTable()->RebuildDataViewCtrl();
-	dview->SelectDataIndex(0);
 	dview->DisplayTabs();
 
 	frame->Show();
