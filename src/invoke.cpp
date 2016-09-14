@@ -66,6 +66,11 @@ static void fcall_dview(lk::invoke_t &cxt)
 		wxString data_units = cxt.arg(ndx++).as_string();
 		double select_dataset = cxt.arg(ndx++).as_boolean();
 		lk::vardata_t &data = cxt.arg(ndx++);
+		if (data.length() == 0)
+		{
+			cxt.error("Data stream" + data_name + "has length zero.");
+			return;
+		}
 
 		std::vector<double> plot_data( data.length() );
 		for (size_t i = 0; i < data.length(); i++)
