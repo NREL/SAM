@@ -5784,13 +5784,13 @@ bool CodeGen_vba::Input(ssc_data_t p_data, const char *name, const wxString &fol
 	case SSC_STRING:
 		str_value = wxString::FromUTF8(::ssc_data_get_string(p_data, name));
 		str_value.Replace("\\", "/");
-		fprintf(m_fp, "		sscvb_data_set_string p_data, \"%s\", \"%s\" \n", name, (const char*)str_value.c_str());
+		fprintf(m_fp, "	sscvb_data_set_string p_data, \"%s\", \"%s\" \n", name, (const char*)str_value.c_str());
 		break;
 	case SSC_NUMBER:
 		::ssc_data_get_number(p_data, name, &value);
 		dbl_value = (double)value;
 		if (dbl_value > 1e38) dbl_value = 1e38;
-		fprintf(m_fp, "		sscvb_data_set_number p_data, \"%s\", %lg \n", name, dbl_value);
+		fprintf(m_fp, "	sscvb_data_set_number p_data, \"%s\", %lg \n", name, dbl_value);
 		break;
 	case SSC_ARRAY:
 		p = ::ssc_data_get_array(p_data, name, &len);
@@ -5808,7 +5808,7 @@ bool CodeGen_vba::Input(ssc_data_t p_data, const char *name, const wxString &fol
 				csv.Set(i, 0, wxString::Format("%lg", dbl_value));
 			}
 			csv.WriteFile(fn);
-			fprintf(m_fp, "		VBASSCDataCSVSetArray p_data, \"%s\", \"%s\"\n", name, (const char*)fn.c_str());
+			fprintf(m_fp, "	VBASSCDataCSVSetArray p_data, \"%s\", \"%s\"\n", name, (const char*)fn.c_str());
 		}
 		else
 		{
@@ -5822,7 +5822,7 @@ bool CodeGen_vba::Input(ssc_data_t p_data, const char *name, const wxString &fol
 			dbl_value = (double)p[len - 1];
 			if (dbl_value > 1e38) dbl_value = 1e38;
 			fprintf(m_fp, "%lg\"\n", dbl_value);
-			fprintf(m_fp, "		VBASSCDataStringSetArray p_data, \"%s\", str_data\n", name);
+			fprintf(m_fp, "	VBASSCDataStringSetArray p_data, \"%s\", str_data\n", name);
 		}
 		break;
 	case SSC_MATRIX:
@@ -5843,7 +5843,7 @@ bool CodeGen_vba::Input(ssc_data_t p_data, const char *name, const wxString &fol
 				}
 			}
 			csv.WriteFile(fn);
-			fprintf(m_fp, "		VBASSCDataCSVSetMatrix p_data, \"%s\", \"%s\"\n", name, (const char*)fn.c_str());
+			fprintf(m_fp, "	VBASSCDataCSVSetMatrix p_data, \"%s\", \"%s\"\n", name, (const char*)fn.c_str());
 		}
 		else
 		{
@@ -5862,7 +5862,7 @@ bool CodeGen_vba::Input(ssc_data_t p_data, const char *name, const wxString &fol
 			dbl_value = (double)p[len - 1];
 			if (dbl_value > 1e38) dbl_value = 1e38;
 			fprintf(m_fp, "%lg\"\n", dbl_value);
-			fprintf(m_fp, "		VBASSCDataStringSetMatrix p_data, \"%s\", str_data\n", name);
+			fprintf(m_fp, "	VBASSCDataStringSetMatrix p_data, \"%s\", str_data\n", name);
 		}
 		// TODO tables in future
 	}
@@ -5872,17 +5872,17 @@ bool CodeGen_vba::Input(ssc_data_t p_data, const char *name, const wxString &fol
 
 bool CodeGen_vba::RunSSCModule(wxString &name)
 {
-	fprintf(m_fp, " res = sscvb_module_exec(p_mod, p_data)\n");
-	fprintf(m_fp, " If (res = 0) Then\n");
-	fprintf(m_fp, "     Debug.Print \"compute module %s failed.\"\n", (const char *)name.c_str());
-	fprintf(m_fp, "     ndx = 0\n");
-	fprintf(m_fp, "     Do\n");
-	fprintf(m_fp, "         str = VBASSCModuleLog(p_mod, ndx)\n");
-	fprintf(m_fp, "         Debug.Print str\n");
-	fprintf(m_fp, "         ndx = ndx + 1\n");
-	fprintf(m_fp, "     Loop Until (str = \"\")\n");
-	fprintf(m_fp, "     Exit Sub\n");
-	fprintf(m_fp, " End If\n");
+	fprintf(m_fp, "	res = sscvb_module_exec(p_mod, p_data)\n");
+	fprintf(m_fp, "	If (res = 0) Then\n");
+	fprintf(m_fp, "		Debug.Print \"compute module %s failed.\"\n", (const char *)name.c_str());
+	fprintf(m_fp, "		ndx = 0\n");
+	fprintf(m_fp, "		Do\n");
+	fprintf(m_fp, "			str = VBASSCModuleLog(p_mod, ndx)\n");
+	fprintf(m_fp, "			Debug.Print str\n");
+	fprintf(m_fp, "			ndx = ndx + 1\n");
+	fprintf(m_fp, "		Loop Until (str = \"\")\n");
+	fprintf(m_fp, "		Exit Sub\n");
+	fprintf(m_fp, "	End If\n");
 	return true;
 }
 
@@ -5924,7 +5924,7 @@ bool CodeGen_vba::Header()
 	fprintf(m_fp, "    Private Declare PtrSafe Function sscvb_data_set_string _\n");
 	fprintf(m_fp, "        Lib \"ssc.dll\" _\n");
 	fprintf(m_fp, "        (ByVal p_data As LongPtr, ByVal name As String, ByVal value As String) As LongPtr\n");
-	fprintf(m_fp, "    Private Declare Function sscvb_data_get_string _\n");
+	fprintf(m_fp, "    Private Declare PtrSafe Function sscvb_data_get_string _\n");
 	fprintf(m_fp, "        Lib \"ssc.dll\" _\n");
 	fprintf(m_fp, "        (ByVal p_data As LongPtr, ByVal name As String, ByVal value As String, ByVal str_len As Long) As LongPtr\n");
 	fprintf(m_fp, "    Private Declare PtrSafe Function sscvb_module_exec _\n");
@@ -5938,7 +5938,7 @@ bool CodeGen_vba::Header()
 	fprintf(m_fp, "        (ByVal p_mod As LongPtr) As LongPtr\n");
 	fprintf(m_fp, "    Private Declare PtrSafe Function sscvb_module_log _\n");
 	fprintf(m_fp, "        Lib \"ssc.dll\" _\n");
-	fprintf(m_fp, "        (ByVal p_mod As LongPtr, ByVal index As LongPtr, ByRef item_type As LongPtr, ByRef time As Double,  ByVal msg As String, ByVal str_len As Long) As LongPtr\n");
+	fprintf(m_fp, "        (ByVal p_mod As LongPtr, ByVal index As LongPtr, ByRef item_type As LongPtr, ByRef time As Double, ByVal msg As String, ByVal str_len As Long) As LongPtr\n");
 	fprintf(m_fp, "#Else ' win32 - requires Alias per dumpbin\n");
 	fprintf(m_fp, "    Private Declare PtrSafe Function sscvb_version _\n");
 	fprintf(m_fp, "        Lib \"ssc.dll\" _\n");
@@ -5984,7 +5984,7 @@ bool CodeGen_vba::Header()
 	fprintf(m_fp, "        Lib \"ssc.dll\" _\n");
 	fprintf(m_fp, "        Alias \"_sscvb_data_set_string@12\" _\n");
 	fprintf(m_fp, "        (ByVal p_data As LongPtr, ByVal name As String, ByVal value As String) As LongPtr\n");
-	fprintf(m_fp, "    Private Declare Function sscvb_data_get_string _\n");
+	fprintf(m_fp, "    Private Declare PtrSafe Function sscvb_data_get_string _\n");
 	fprintf(m_fp, "        Lib \"ssc.dll\" _\n");
 	fprintf(m_fp, "        Alias \"_sscvb_data_get_string@16\" _\n");
 	fprintf(m_fp, "        (ByVal p_data As LongPtr, ByVal name As String, ByVal value As String, ByVal str_len As Long) As LongPtr\n");
@@ -6003,21 +6003,21 @@ bool CodeGen_vba::Header()
 	fprintf(m_fp, "    Private Declare PtrSafe Function sscvb_module_log _\n");
 	fprintf(m_fp, "        Lib \"ssc.dll\" _\n");
 	fprintf(m_fp, "        Alias \"_sscvb_module_log@24\" _\n");
-	fprintf(m_fp, "        (ByVal p_mod As LongPtr, ByVal index As LongPtr, ByRef item_type As LongPtr, ByRef time As Double,  ByVal msg As String, ByVal str_len As Long) As LongPtr\n");
+	fprintf(m_fp, "        (ByVal p_mod As LongPtr, ByVal index As LongPtr, ByRef item_type As LongPtr, ByRef time As Double, ByVal msg As String, ByVal str_len As Long) As LongPtr\n");
 	fprintf(m_fp, "#End If\n");
-	fprintf(m_fp, "Public Function VBASSCDataSetArray(pdata As LongPtr, name As String, data() As Double) As Long\n");
-	fprintf(m_fp, "    Dim count As Long\n");
+	fprintf(m_fp, "Public Function VBASSCDataSetArray(pdata As LongPtr, name As String, data() As Double) As LongPtr\n");
+	fprintf(m_fp, "    Dim count As LongPtr\n");
 	fprintf(m_fp, "    count = UBound(data) + 1\n");
 	fprintf(m_fp, "    VBASSCDataSetArray = sscvb_data_set_array(pdata, name, data(0), count)\n");
 	fprintf(m_fp, "End Function\n");
-	fprintf(m_fp, "Public Function VBASSCDataGetArray(pdata As LongPtr, name As String, data() As Double) As Long\n");
-	fprintf(m_fp, "    Dim count As Long\n");
+	fprintf(m_fp, "Public Function VBASSCDataGetArray(pdata As LongPtr, name As String, data() As Double) As LongPtr\n");
+	fprintf(m_fp, "    Dim count As LongPtr\n");
 	fprintf(m_fp, "    Dim dummy As Double\n");
 	fprintf(m_fp, "    count = sscvb_data_get_array(pdata, name, dummy, 0)\n");
-	fprintf(m_fp, "    ReDim data(count - 1)\n");
+	fprintf(m_fp, "    ReDim data(CLng(count) - 1)\n");
 	fprintf(m_fp, "    VBASSCDataGetArray = sscvb_data_get_array(pdata, name, data(0), count)\n");
 	fprintf(m_fp, "End Function\n");
-	fprintf(m_fp, "Public Function VBASSCDataSetMatrix(pdata As LongPtr, name As String, data() As Double) As Long\n");
+	fprintf(m_fp, "Public Function VBASSCDataSetMatrix(pdata As LongPtr, name As String, data() As Double) As LongPtr\n");
 	fprintf(m_fp, "    Dim nrow As Long\n");
 	fprintf(m_fp, "    Dim ncol As Long\n");
 	fprintf(m_fp, "    Dim ary() As Double\n");
@@ -6036,22 +6036,22 @@ bool CodeGen_vba::Header()
 	fprintf(m_fp, "    Next ir\n");
 	fprintf(m_fp, "    VBASSCDataSetMatrix = sscvb_data_set_matrix(pdata, name, ary(0), nrow, ncol)\n");
 	fprintf(m_fp, "End Function\n");
-	fprintf(m_fp, "Public Function VBASSCDataGetMatrix(pdata As LongPtr, name As String, data() As Double) As Long\n");
-	fprintf(m_fp, "    Dim nrow As Long\n");
-	fprintf(m_fp, "    Dim ncol As Long\n");
+	fprintf(m_fp, "Public Function VBASSCDataGetMatrix(pdata As LongPtr, name As String, data() As Double) As LongPtr\n");
+	fprintf(m_fp, "    Dim nrow As LongPtr\n");
+	fprintf(m_fp, "    Dim ncol As LongPtr\n");
 	fprintf(m_fp, "    Dim dummy As Double\n");
 	fprintf(m_fp, "    Dim ary() As Double\n");
 	fprintf(m_fp, "    Dim ic As Long\n");
 	fprintf(m_fp, "    Dim ir As Long\n");
 	fprintf(m_fp, "    Dim i As Long\n");
-	fprintf(m_fp, "    Dim ilen As Long\n");
+	fprintf(m_fp, "    Dim ilen As LongPtr\n");
 	fprintf(m_fp, "    nrow = sscvb_data_get_matrix(pdata, name, dummy, 0, 0)\n");
 	fprintf(m_fp, "    ncol = sscvb_data_get_matrix(pdata, name, dummy, nrow, 0)\n");
-	fprintf(m_fp, "    ReDim data(nrow - 1, ncol - 1)\n");
-	fprintf(m_fp, "    ReDim ary(nrow * ncol - 1)\n");
+	fprintf(m_fp, "    ReDim data(CLng(nrow) - 1, CLng(ncol) - 1)\n");
+	fprintf(m_fp, "    ReDim ary(CLng(nrow) * CLng(ncol) - 1)\n");
 	fprintf(m_fp, "    ilen = sscvb_data_get_matrix(pdata, name, ary(0), nrow, ncol)\n");
-	fprintf(m_fp, "    For ir = 0 To nrow - 1\n");
-	fprintf(m_fp, "        For ic = 0 To ncol - 1\n");
+	fprintf(m_fp, "    For ir = 0 To CLng(nrow) - 1\n");
+	fprintf(m_fp, "        For ic = 0 To CLng(ncol) - 1\n");
 	fprintf(m_fp, "            data(ir, ic) = ary(i)\n");
 	fprintf(m_fp, "            i = i + 1\n");
 	fprintf(m_fp, "        Next ic\n");
@@ -6081,7 +6081,7 @@ bool CodeGen_vba::Header()
 	fprintf(m_fp, "            ary(i) = CDbl(frows(i))\n");
 	fprintf(m_fp, "            i = i + 1\n");
 	fprintf(m_fp, "        Loop\n");
-	fprintf(m_fp, "        i = VBASSCDataSetArray(pdata, name, ary)\n");
+	fprintf(m_fp, "        i = CLng(VBASSCDataSetArray(pdata, name, ary))\n");
 	fprintf(m_fp, "        VBASSCDataCSVSetArray = (i = 1)\n");
 	fprintf(m_fp, "    End If\n");
 	fprintf(m_fp, "End Function\n");
@@ -6126,7 +6126,7 @@ bool CodeGen_vba::Header()
 	fprintf(m_fp, "                Loop\n");
 	fprintf(m_fp, "                ir = ir + 1\n");
 	fprintf(m_fp, "            Loop\n");
-	fprintf(m_fp, "            ir = VBASSCDataSetMatrix(pdata, name, mat)\n");
+	fprintf(m_fp, "            ir = CLng(VBASSCDataSetMatrix(pdata, name, mat))\n");
 	fprintf(m_fp, "            VBASSCDataCSVSetMatrix = (ir = 1)\n");
 	fprintf(m_fp, "        End If\n");
 	fprintf(m_fp, "    End If\n");
@@ -6149,7 +6149,7 @@ bool CodeGen_vba::Header()
 	fprintf(m_fp, "            ary(i) = CDbl(frows(i))\n");
 	fprintf(m_fp, "            i = i + 1\n");
 	fprintf(m_fp, "        Loop\n");
-	fprintf(m_fp, "        i = VBASSCDataSetArray(pdata, name, ary)\n");
+	fprintf(m_fp, "        i = CLng(VBASSCDataSetArray(pdata, name, ary))\n");
 	fprintf(m_fp, "        VBASSCDataStringSetArray = (i = 1)\n");
 	fprintf(m_fp, "    End If\n");
 	fprintf(m_fp, "End Function\n");
@@ -6189,7 +6189,7 @@ bool CodeGen_vba::Header()
 	fprintf(m_fp, "                Loop\n");
 	fprintf(m_fp, "                ir = ir + 1\n");
 	fprintf(m_fp, "            Loop\n");
-	fprintf(m_fp, "            ir = VBASSCDataSetMatrix(pdata, name, mat)\n");
+	fprintf(m_fp, "            ir = CLng(VBASSCDataSetMatrix(pdata, name, mat))\n");
 	fprintf(m_fp, "            VBASSCDataStringSetMatrix = (ir = 1)\n");
 	fprintf(m_fp, "        End If\n");
 	fprintf(m_fp, "    End If\n");
@@ -6200,8 +6200,9 @@ bool CodeGen_vba::Header()
 	fprintf(m_fp, "    Dim str As String\n");
 	fprintf(m_fp, "    str_len = 0\n");
 	fprintf(m_fp, "    lng_ptr = sscvb_data_get_string(p_data, name, str, str_len)\n");
-	fprintf(m_fp, "    str = Space(lng_ptr)\n");
-	fprintf(m_fp, "    str_len = sscvb_data_get_string(p_data, name, str, lng_ptr)\n");
+	fprintf(m_fp, "    str_len = CLng(lng_ptr)\n");
+	fprintf(m_fp, "    str = Space(str_len)\n");
+	fprintf(m_fp, "    lng_ptr = sscvb_data_get_string(p_data, name, str, str_len)\n");
 	fprintf(m_fp, "    VBASSCDataGetString = str\n");
 	fprintf(m_fp, "End Function\n");
 	fprintf(m_fp, "Public Function VBASSCDataGetNumber(p_data As LongPtr, name As String) As Double\n");
@@ -6210,17 +6211,19 @@ bool CodeGen_vba::Header()
 	fprintf(m_fp, "    VBASSCDataGetNumber = dval\n");
 	fprintf(m_fp, "End Function\n");
 	fprintf(m_fp, "Public Function VBASSCModuleLog(p_data As LongPtr, index As Long) As String\n");
-	fprintf(m_fp, "    Dim str_len As LongPtr\n");
+	fprintf(m_fp, "    Dim str_len As Long\n");
+	fprintf(m_fp, "    Dim lng_ptr As LongPtr\n");
 	fprintf(m_fp, "    Dim item_type As LongPtr\n");
 	fprintf(m_fp, "    Dim time As Double\n");
 	fprintf(m_fp, "    Dim str As String\n");
 	fprintf(m_fp, "    str_len = 0\n");
-	fprintf(m_fp, "    str_len = sscvb_module_log(p_data, index, item_type, time, str, str_len)\n");
+	fprintf(m_fp, "    lng_ptr = sscvb_module_log(p_data, index, item_type, time, str, str_len)\n");
+	fprintf(m_fp, "    str_len = CLng(lng_ptr)\n");
 	fprintf(m_fp, "    If (str_len = 0) Then\n");
 	fprintf(m_fp, "        str = \"\"\n");
 	fprintf(m_fp, "    Else\n");
 	fprintf(m_fp, "        str = Space(str_len)\n");
-	fprintf(m_fp, "        str_len = sscvb_module_log(p_data, index, item_type, time, str, str_len)\n");
+	fprintf(m_fp, "        lng_ptr = sscvb_module_log(p_data, index, item_type, time, str, str_len)\n");
 	fprintf(m_fp, "    '#define SSC_NOTICE 1\n");
 	fprintf(m_fp, "    '#define SSC_WARNING 2\n");
 	fprintf(m_fp, "    '#define SSC_ERROR 3\n");
@@ -6246,13 +6249,14 @@ bool CodeGen_vba::Header()
 	fprintf(m_fp, "    Dim mat() As Double\n");
 	fprintf(m_fp, "    Dim str_len As Long\n");
 	fprintf(m_fp, "    Dim lng_ptr As LongPtr\n");
-	fprintf(m_fp, "    Dim ndx As LongPtr\n");
+	fprintf(m_fp, "    Dim ndx As Long\n");
 	fprintf(m_fp, "    ChDir \"%s\"\n", (const char *)m_folder.c_str());
 	fprintf(m_fp, "    Debug.Print CurDir\n");
 	fprintf(m_fp, "    Debug.Print \"ssc version \" & sscvb_version()\n");
 	fprintf(m_fp, "    lng_ptr = sscvb_build_info(str, str_len)\n");
-	fprintf(m_fp, "    str = Space(lng_ptr)\n");
-	fprintf(m_fp, "    str_len = sscvb_build_info(str, lng_ptr)\n");
+	fprintf(m_fp, "    str_len = Clng(lng_ptr)\n");
+	fprintf(m_fp, "    str = Space(str_len)\n");
+	fprintf(m_fp, "    lng_ptr = sscvb_build_info(str, str_len)\n");
 	fprintf(m_fp, "    Debug.Print \"ssc build \" & str\n");
 	fprintf(m_fp, "    p_data = sscvb_data_create()\n");
 
