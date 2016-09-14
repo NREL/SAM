@@ -1,6 +1,7 @@
 //*************************************************************************************
-//Module Reliability Model -- DRAFT --
-//jmf 8/31/16
+//PV Reliability Performance Model -- DRAFT --
+//Janine Freeman, NREL
+//14 September 2016
 //*************************************************************************************
 
 // TO DO-----------------------------------------------------------------------------------
@@ -15,45 +16,10 @@
 	WARRANTY REPAIRS NEED TO NOT COST ANYTHING
 	WHEN AN INVERTER FAILS ROUTINELY, IT NEEDS TO NOT BE COMPLETELY RESET- which ones do reset it?
 	I don't like how I'm doing repair cost additions right now. Maybe change it to something else?
-	How do trackers work with multiple subarrays? For now only enabled for subarray 1
 	Need to escalate tracker costs
-*/
-
-
-// CHECK THE ACTIVE CASE----------------------------------------------------------------------------
-/*
-if ( typeof(macro) == 'unknown' ) {
-	msgbox('This script must be run as a macro from within a case.');
-	exit;
-}
-
-cfg = configuration();
-fin = cfg[1];
-tech = cfg[0];
-
-if (tech != 'Flat Plate PV')
-{
-	msgbox('Error: This script is only applicable to the detailed photovoltaic model. Exiting simulation.');
-	exit;
-}
-
-if (fin == 'Third Party' || fin == 'LCOE Calculator' || fin == 'None')
-{
-	msgbox('Error: This script cannot be run from financial model: ' + fin + '. Exiting simulation.');
-	exit;
-}
-
-is_lifetime_mode = get('pv_lifetime_simulation');
-if (!is_lifetime_mode)
-{
-	make_lifetime_mode = yesno('PV simulations must be run in lifetime mode with this script. Change your case to lifetime mode now?');
-	if (!make_lifetime_mode)
-	{
-		msgbox('Please modify your case to use lifetime mode. Exiting simulation');
-		exit;
-	}
-	set('pv_lifetime_simulation', 1);
-}
+	BETTER WORD FOR DERATE
+	Basic failure rates as an output (failures per million hours)
+	Make macro UI inputs
 */
 
 
@@ -68,19 +34,31 @@ if (!is_lifetime_mode)
 	num_strings = get('strings_in_parallel'); //672
 	num_inverters = get('inverter_count');
 	inverter_size = ?(get('inverter_model')) [get('inv_snl_paco'), get('inv_ds_paco'), get('inv_pd_paco')];
-	num_combiners = 2;//48; //num_inverters * 2; //48 //NEED TO UPDATE THIS ASSUMPTION- MAKE IT AN INPUT AND ERROR CHECK IT!!!
-	num_strings_per_combiner = num_strings / num_combiners; //THIS IS NOT NECESSARILY AN INTEGER, NEED TO ERROR CHECK THIS!!!!!!!!!!!!!!!!
+	num_combiners = 4;//48; //num_inverters * 2; //48 //NEED TO UPDATE THIS ASSUMPTION- MAKE IT AN INPUT AND ERROR CHECK IT!!
+	num_strings_per_combiner = num_strings / num_combiners; //THIS IS NOT NECESSARILY AN INTEGER, NEED TO ERROR CHECK THIS!!
 	num_disconnects = num_inverters;
 	num_transformers = 1; //2;
 	num_inverters_per_transformer = num_inverters / num_transformers; //CHECK THAT THIS IS AN INTEGER!!
-	num_trackers = ceil(num_strings / 3); //HOW TO FIGURE THIS ONE OUT?!!
-	is_tracking_system = ( (get('subarray1_track_mode') == 1) || (get('subarray1_track_mode') == 2) || (get('subarray1_track_mode') == 3) );
+	num_trackers = ceil(num_strings / 2); //HOW TO FIGURE THIS ONE OUT?!!
 	system_lifetime_yrs = get('analysis_period');
+	has_multiple_subarrays = ( (get('subarray2_enable') == 1) || (get('subarray3_enable') == 1) || (get('subarray4_enable') == 1) );
+	is_tracking_system = false;
+	if ((get('subarray1_track_mode') == 1 || get('subarray1_track_mode') == 2 || get('subarray1_track_mode') == 3))
+		is_tracking_system = true;
+	if (get('subarray2_enable') == 1 && (get('subarray2_track_mode') == 1 || get('subarray2_track_mode') == 2 || get('subarray2_track_mode') == 3))
+		is_tracking_system = true;
+	if (get('subarray3_enable') == 1 && (get('subarray3_track_mode') == 1 || get('subarray3_track_mode') == 2 || get('subarray3_track_mode') == 3))
+		is_tracking_system = true;
+	if (get('subarray4_enable') == 1 && (get('subarray4_track_mode') == 1 || get('subarray4_track_mode') == 2 || get('subarray4_track_mode') == 3))
+		is_tracking_system = true;
 
 // FINANCIAL INPUTS--------------------------------------------------------------------
 	present_day_labor_rate = 100; //dollars per hour
 	inflation = 3; //%
 	
+// TRACKER FAILURE INPUT---------------------------------------------------------------
+	use_worst_case_tracker = true;
+
 // INPUT FUNCTION: DEGRADATION----------------------------------------------------------
 /*
 Equation format must follow:
@@ -155,7 +133,7 @@ degradation_factor = 1 - percentage the component has degraded at this time (ex.
 	// Modules
 	global modules = alloc(num_modules);
 	global module_meta = null;	
-	module_meta.can_fail = true;
+	module_meta.can_fail = false;
 	module_meta.number = num_modules;
 	module_meta.warranty.has_warranty = true;
 	module_meta.warranty.days = 20 * 365; //years converted to days
@@ -182,7 +160,7 @@ degradation_factor = 1 - percentage the component has degraded at this time (ex.
 	// Strings
 	global strings = alloc(num_strings);
 	global string_meta = null;
-	string_meta.can_fail = true;
+	string_meta.can_fail = false;
 	string_meta.number = num_strings;
 	string_meta.warranty.has_warranty = false;
 	string_meta.failure[0].distribution = 'exponential';
@@ -199,7 +177,7 @@ degradation_factor = 1 - percentage the component has degraded at this time (ex.
 	// Combiners
 	global combiners = alloc(num_combiners);
 	global combiner_meta = null;
-	combiner_meta.can_fail = true;
+	combiner_meta.can_fail = false;
 	combiner_meta.number = num_combiners;
 	combiner_meta.warranty.has_warranty = false;
 	combiner_meta.failure[0].distribution = 'lognormal';
@@ -216,7 +194,7 @@ degradation_factor = 1 - percentage the component has degraded at this time (ex.
 	// Inverters
 	global inverters = alloc(num_inverters);
 	global inverter_meta = null;
-	inverter_meta.can_fail = true;
+	inverter_meta.can_fail = false;
 	inverter_meta.number = num_inverters;
 	inverter_meta.warranty.has_warranty = false; //THIS IS ALMOST DEFINITELY GOING TO BE TRUE WHEN WE MODIFY THE INPUTS, BUT NOTHING IN PSEUDOCODE
 	//failure mode 1: component failure
@@ -255,7 +233,7 @@ degradation_factor = 1 - percentage the component has degraded at this time (ex.
 	// AC Disconnects
 	global disconnects = alloc(num_disconnects);
 	global disconnect_meta = null;
-	disconnect_meta.can_fail = true;
+	disconnect_meta.can_fail = false;
 	disconnect_meta.number = num_disconnects;
 	disconnect_meta.warranty.has_warranty = false;
 	disconnect_meta.failure[0].distribution = 'weibull';
@@ -272,7 +250,7 @@ degradation_factor = 1 - percentage the component has degraded at this time (ex.
 	// Transformers
 	global transformers = alloc(num_transformers);
 	global transformer_meta = null;
-	transformer_meta.can_fail = true;
+	transformer_meta.can_fail = false;
 	transformer_meta.number = num_transformers;
 	transformer_meta.warranty.has_warranty = false;
 	transformer_meta.failure[0].distribution = 'weibull';
@@ -289,7 +267,7 @@ degradation_factor = 1 - percentage the component has degraded at this time (ex.
 	// Grid
 	global grid = 1;
 	global grid_meta = null;
-	grid_meta.can_fail = true;
+	grid_meta.can_fail = false;
 	grid_meta.number = 1;
 	grid_meta.warranty.has_warranty = false;
 	grid_meta.failure[0].distribution = 'weibull';
@@ -308,16 +286,16 @@ degradation_factor = 1 - percentage the component has degraded at this time (ex.
 	{
 		global trackers = alloc(num_trackers);
 		global tracker_meta = null;
-		tracker_meta.can_fail = false;
+		tracker_meta.can_fail = true;
 		tracker_meta.number = num_trackers;
 		tracker_meta.warranty.has_warranty = false;
 		tracker_meta.failure[0].distribution = 'exponential';
-		tracker_meta.failure[0].parameters = [0.083 / 365]; //mean per year converted to per day
+		tracker_meta.failure[0].parameters = [10 / 365]; //mean per year converted to per day //0.083
 		tracker_meta.failure[0].times = null;
 		tracker_meta.failure[0].labor_time = 0;
 		tracker_meta.failure[0].cost = 2000;
 		tracker_meta.repair.can_repair = true;
-		tracker_meta.repair.distribution = 'lognormal-n';
+		tracker_meta.repair.distribution = 'normal'; //'lognormal-n';
 		tracker_meta.repair.parameters = [30, 10]; //mean, std, in days
 		tracker_meta.repair.times = null;
 		tracker_meta.degradation.can_degrade = false;
@@ -325,7 +303,7 @@ degradation_factor = 1 - percentage the component has degraded at this time (ex.
 	
 	// Costs
 	global costs = null;
-	
+
 
 //*************************************************************************************
 // SUPPORTING FUNCTIONS
@@ -551,6 +529,23 @@ function whats_my_degradation()
 	return fleet_degradation_sum / number_of_operational_modules;
 }
 
+// TRACKER DERATE CALCULATION-------------------------------------------------------------------------------
+//Input is the day number in the system lifetime
+//Returns a factor (0-1) reflecting the percentage of power lost due to malfunctioning trackers
+function whats_my_tracker_derate(day)
+{
+	// total number of working trackers
+	num_operational_trackers = 0;
+	for (tr=0; tr < tracker_meta.number; tr++)
+		if (trackers[tr].state == 1)
+			num_operational_trackers++;
+	fraction_operational = num_operational_trackers / tracker_meta.number;
+	operational_trackers[day] = fraction_operational;
+	day_of_year = mod(day, 365); //0-indexed, but so are the tracker_derates
+	full_derate = daily_tracker_coeffs[day_of_year];
+	adjusted_derate = full_derate + fraction_operational* (1 - full_derate);
+	return adjusted_derate;
+}
 
 // INCREMENT TIMESTEP FUNCTION------------------------------------------------------------------------------
 //increments all components in component_vector of type component_meta on a given day
@@ -598,11 +593,73 @@ function step_in_time(component_meta, component_vector, day, component_repair_co
 }
 
 
-//*************************************************************************************
+//**********************************************************************************************************************************************************************
 // MAIN SCRIPT
-//*************************************************************************************
+//**********************************************************************************************************************************************************************
+	
+// CHECK THE ACTIVE CASE----------------------------------------------------------------------------
+/*
+if ( typeof(macro) == 'unknown' ) {
+	msgbox('This script must be run as a macro from within a case.');
+	exit;
+}*/
 
-// Allocate outputs
+cfg = configuration();
+fin = cfg[1];
+tech = cfg[0];
+// Technology must be detailed PV model
+if (tech != 'Flat Plate PV')
+{
+	msgbox('Error: This script is only applicable to the detailed photovoltaic model. Exiting simulation.');
+	exit;
+}
+// Third party, LCOE calculator, and None don't have lifetime mode
+if (fin == 'Third Party' || fin == 'LCOE Calculator' || fin == 'None')
+{
+	msgbox('Error: This script cannot be run from financial model: ' + fin + '. Exiting simulation.');
+	exit;
+}
+// Must be run in lifetime mode
+is_lifetime_mode = get('pv_lifetime_simulation');
+if (!is_lifetime_mode)
+{
+	make_lifetime_mode = yesno('PV simulations must be run in lifetime mode with this script. Change your case to lifetime mode now?');
+	if (!make_lifetime_mode)
+	{
+		msgbox('Error: Please modify your case to use lifetime mode. Exiting simulation');
+		exit;
+	}
+	set('pv_lifetime_simulation', 1);
+}
+// Lifetime daily DC and AC loss structures must be empty to run.
+//NEED TO DISABLE THIS IN A SCRIPT THAT LOOPS OVER MANY RUNS!!
+if (get('en_dc_lifetime_losses') || get('en_ac_lifetime_losses'))
+{
+	proceed = yesno('This script will overwrite any user-entered lifetime daily losses, and they will be lost. Proceed?');
+	if (!proceed)
+	{
+		msgbox('Please modify the case not to use user-entered lifetime daily losses. Exiting simulation.');
+		exit;
+	}
+}
+// Multiple subarrays can't have tracker failures
+if (has_multiple_subarrays && is_tracking_system && tracker_meta.can_fail)
+{
+	msgbox('Error: Tracker failures may only be modeled for a system consisting of a single subarray. Exiting simulation.');
+	exit;
+}
+//Tracking systems can't be 2-axis or azimuth-axis
+if (is_tracking_system)
+{
+	//only need to check subarray 1, since at this point tracking systems with multiple subarrays will have been terminated.
+	if (get('subarray1_track_mode') == 2 || get('subarray1_track_mode') == 3)
+	{
+		msgbox('Error: This script is not configured to run with 2-axis tracking or azimuth-axis tracking systems. Exiting simulation.');
+		exit;
+	}
+}
+
+// Allocate outputs----------------------------------------------------------------------------------
 //costs
 costs.module = alloc(system_lifetime_yrs * 365);
 costs.string = alloc(system_lifetime_yrs * 365);
@@ -615,8 +672,100 @@ if (is_tracking_system)
 	costs.tracker = alloc(system_lifetime_yrs * 365);
 //time variables
 module_degradation = null;
+if (is_tracking_system)
+{
+	tracker_derate = null;
+	daily_tracker_coeffs = alloc(365);
+	global operational_trackers = null;
+}
 dc_availability = ac_availability = null;
 labor_rate = 0;
+
+//precalculate tracking derates for tracking systems--------------------------------------------------------
+if (is_tracking_system && tracker_meta.can_fail)
+{
+	if (get('subarray1_tilt') != 0)
+	{
+		msgbox('This script can only model tracker failures for 0 degree tilt trackers. Exiting simulation.');
+		exit;
+	}
+	
+	// calculate hourly performance with tracker for one year
+	user_analysis_period = get('analysis_period');
+	set('analysis_period', 1);
+	set('en_ac_lifetime_losses', 0);
+	set('en_dc_lifetime_losses', 0);
+	if (!simulate('', 0))
+	{
+		msgbox('Error simulating first-year tracker performance');
+		set('analysis_period', user_analysis_period);
+		exit;
+	}
+	timeseries_with_tracker = get('gen');
+	
+	// calculate hourly performance without trackers for one year
+	user_tracking_mode = get('subarray1_track_mode');
+	user_azimuth = get('subarray1_azimuth');
+	user_tilt = get('subarray1_tilt');
+	set('subarray1_track_mode', 0); //set to fixed tilt
+	if (user_azimuth > 360 || user_azimuth < 0)
+	{
+		msgbox('Azimuth must be between 0 and 360. Please adjust the azimuth and try again.');
+		exit;
+	}
+	//assume worst case tracker gets stuck to north. If axis is north-south, assume gets stuck to west.
+	if (use_worst_case_tracker)
+	{
+		worst_case_az = user_azimuth;
+		if (user_azimuth < 180)
+			worst_case_az -= 90;
+		else
+			worst_case_az += 90;
+		if (worst_case_az < 0)
+			worst_case_az += 360;
+		if (worst_case_az >= 360)
+			worst_case_az -=360;
+		set('subarray1_azimuth', worst_case_az);
+		set('subarray1_tilt', get('subarray1_rotlim'));
+	}
+	//assume average case is that tracker gets stuck flat
+	else
+		set('subarray1_tilt', 0); //doesn't matter what az is if it's flat
+	if (!simulate('', 0))
+	{
+		msgbox('Error simulating first-year tracker failure performance');
+		set('analysis_period', user_analysis_period);
+		set('subarray1_track_mode', user_tracking_mode); 
+		set('subarray1_azimuth', user_azimuth);
+		set('subarray1_tilt', user_tilt);
+		exit;
+	}
+	timeseries_without_tracker = get('gen');
+	
+	//calculate daily loss statistics
+	timestep = (#timeseries_with_tracker / 8760);
+	index = 0;
+	for (d=0; d<365; d++)
+	{
+		sum_without_tracker = 0;
+		sum_with_tracker = 0;
+		for (h=0; h<24; h++)
+			for (ts=0; ts<timestep; ts++)
+			{
+				sum_without_tracker += timeseries_without_tracker[index];
+				sum_with_tracker += timeseries_with_tracker[index];
+				index++;
+			}
+		//NOTE: On some cloudy days, daily_tracker_coeff might be positive!! See help for details.
+		daily_tracker_coeffs[d] = sum_without_tracker / sum_with_tracker;
+	}
+	
+	//reset the inputs to user specified values
+	set('analysis_period', user_analysis_period);
+	set('subarray1_track_mode', user_tracking_mode); 
+	set('subarray1_azimuth', user_azimuth);
+	set('subarray1_tilt', user_tilt);
+}
 
 //timestep 0
 initialize();
@@ -627,7 +776,10 @@ costs.module[0] = costs.string[0] = costs.combiner[0] = 0; //no costs are accrue
 costs.inverter[0] = costs.disconnect[0] = costs.transformer[0] = 0;
 costs.grid[0] = 0;
 if (is_tracking_system)
+{
 	costs.tracker[0] = 0;
+	tracker_derate[0] = 1;
+}
 //outln('0\t' + modules);
 
 
@@ -652,14 +804,14 @@ for (day = 1; day < system_lifetime_yrs * 365; day++)
 		step_in_time(tracker_meta, trackers, day, costs.tracker);
 	//count up current timestep states
 	if (is_tracking_system)
-		tilt_angle[day] = whats_my_average_tracking_angle();
+		tracker_derate[day] = whats_my_tracker_derate(day);
 	module_degradation[day] = whats_my_degradation();
 	dc_availability[day] = whats_my_dc_derate();
 	ac_availability[day] = whats_my_ac_derate();
 	//outln(day + '\t' + modules);
 }	
 	
-//create SAM performance adjustment tables for the availability derates
+//create SAM performance adjustment tables for the availability derates, degradation, and tracker derates
 time = alloc(8760 * system_lifetime_yrs);
 daily_dc_loss = alloc(365 * system_lifetime_yrs);
 daily_ac_loss = alloc(365 * system_lifetime_yrs);
@@ -668,7 +820,7 @@ day_num = alloc(365 * system_lifetime_yrs);
 for (day = 0; day < (365 * system_lifetime_yrs); day++)
 {
 	day_num[day] = day;
-	daily_dc_loss[day] = 100 * (1 - (dc_availability[day] * module_degradation[day]));
+	daily_dc_loss[day] = 100 * (1 - (dc_availability[day] * module_degradation[day] * ?(is_tracking_system)[1, tracker_derate[day]]));
 	daily_ac_loss[day] = 100 * (1 - ac_availability[day]);
 	for (j = 0; j < 24; j++)
 	{
@@ -676,9 +828,6 @@ for (day = 0; day < (365 * system_lifetime_yrs); day++)
 		idx++;
 	}
 }
-
-//Tracker adjustments
-
 
 //DC adjustment factors
 set('en_dc_lifetime_losses', 1);
@@ -713,7 +862,10 @@ set('om_fixed', o_m_yearly_costs);
 messages = '';
 success = simulate(messages, true);
 if (!success)
+{
 	msgbox('Simulation failed.' + messages);
+	exit;
+}
 show_page('Results');
 
 
@@ -767,19 +919,16 @@ outln('Inverter failures by type =' + inverter_failures_by_type);
 outln('Total disconnect failures =' + total_disconnect_failures);
 outln('Total transformer failures =' + total_transformer_failures);
 outln('Total grid failures =' + total_grid_failures);
+if (is_tracking_system)
+	outln('Total tracker failures =' + total_tracker_failures);
 
-//daily failures
-dview(2, 24, 'Daily availability', 'DC Power Losses', '', 1.0, dc_availability, 'AC Power Losses', '', 1.0, ac_availability);
+//daily performance
+if (is_tracking_system)
+	dview(5, 24, 'Daily availability', 'DC Availability', '', 1.0, dc_availability, 'AC Availability', '', 1.0, ac_availability, 'Module degradation', '', 1.0, module_degradation, 'Tracker derate', '', 1.0, tracker_derate, 'Operational trackers', '', 1.0, operational_trackers);
+else
+	dview(3, 24, 'Daily availability', 'DC Availability', '', 1.0, dc_availability, 'AC Availability', '', 1.0, ac_availability, 'Module degradation', '', 1.0, module_degradation);
 
 //lifetime power output
 hourly_dc_power = get('dc_net');
 hourly_ac_power = get('gen');
 dview(2, 1, 'Lifetime System Power', 'DC Power', 'kW', 1.0, hourly_dc_power, 'AC Power', 'kW', 1.0, hourly_ac_power);
-
-/*
-newplot();
-plot(day_num, module_degradation, {type = 'line'});
-plotopt({title = 'Fleetwide Module Degradation vs Time'});
-axis('x1', {label = 'Hour'});
-axis('y1', {label = 'Module Degradation'});
-*/
