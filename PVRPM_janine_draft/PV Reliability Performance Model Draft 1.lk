@@ -49,7 +49,7 @@
 	inflation = 3; //%
 	
 // TRACKER FAILURE INPUT---------------------------------------------------------------
-	use_worst_case_tracker = true;
+	use_worst_case_tracker = false;
 
 // INPUT FUNCTION: DEGRADATION----------------------------------------------------------
 /*
@@ -718,7 +718,7 @@ if (is_tracking_system && tracker_meta.can_fail)
 		set('analysis_period', user_analysis_period);
 		exit;
 	}
-	timeseries_with_tracker = get('gen');
+	timeseries_with_tracker = get('dc_net');
 	
 	// calculate hourly performance without trackers for one year
 	user_tracking_mode = get('subarray1_track_mode');
@@ -757,7 +757,7 @@ if (is_tracking_system && tracker_meta.can_fail)
 		set('subarray1_tilt', user_tilt);
 		exit;
 	}
-	timeseries_without_tracker = get('gen');
+	timeseries_without_tracker = get('dc_net');
 	
 	//calculate daily loss statistics
 	timestep = (#timeseries_with_tracker / 8760);
@@ -785,7 +785,7 @@ if (is_tracking_system && tracker_meta.can_fail)
 }
 
 //timestep 0
-//progressbar( {title='Simulation progress', message='Initializing system',cancelbutton=true, time=true, max=system_lifetime_yrs * 365});
+progressbar( {title='Simulation progress', message='Initializing system',cancelbutton=true, time=true, max=system_lifetime_yrs * 365});
 initialize();
 module_degradation_factor[0] = whats_my_degradation();
 dc_power_availability[0] = whats_my_dc_availability();
@@ -806,13 +806,13 @@ if (is_tracking_system)
 
 for (day = 1; day < system_lifetime_yrs * 365; day++)
 {	
-	/*was_canceled = progressbar({value=day, message='Running reliability model...'});
+	was_canceled = progressbar({value=day, message='Running reliability model...'});
 	if (was_canceled)
 	{
 		outln('Simulation canceled by user.');
 		progressbar();
 		exit;
-	}*/
+	}
 	//increase the labor rate each year
 	if (day == 1 || mod(day, 365) == 0) //need to set the labor rate initially and then again at the beginning of every year
 	{
@@ -839,7 +839,7 @@ for (day = 1; day < system_lifetime_yrs * 365; day++)
 	ac_power_availability[day] = whats_my_ac_availability();
 	//outln(day + '\t' + modules);
 }
-//progressbar({message='Running SAM simulation...'});	
+progressbar({message='Running SAM simulation...'});	
 	
 //create SAM performance adjustment tables for the availability, degradation, and tracker loss factors
 time = alloc(8760 * system_lifetime_yrs);
@@ -939,7 +939,7 @@ if (is_tracking_system)
 		total_tracker_failures += trackers[tr].cumulative_failures;
 }
 
-//progressbar();
+progressbar();
 
 //outln(dc_power_availability);
 outln('Total module failures =' + total_module_failures);
