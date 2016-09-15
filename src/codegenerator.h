@@ -11,7 +11,7 @@
 
 #include <ssc/sscapi.h>
 
-
+ 
 class Case;
 class CaseWindow;
 class VarTable;
