@@ -10,7 +10,7 @@
 #include "invoke.h"
 #include <lk/stdlib.h>
 
-
+   
 CaseCallbackContext::CaseCallbackContext( Case *cc, const wxString &name )
 	: m_case(cc), m_name(name)
 {	
