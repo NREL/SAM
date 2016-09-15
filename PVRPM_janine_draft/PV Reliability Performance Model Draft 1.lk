@@ -10,7 +10,6 @@
 	DC derate needs to be added to loss tree
 	inverter warranty resets when inverter is replaced
 	Add what the acceptable input ranges are for LHS when errors are encountered?
-	Add "calculating"/"running" popup
 	Add component-level availability output graph vs time (using Geoff's equation)
 	Output time series module availability, degradation, etc. to a csv.
 	WARRANTY REPAIRS NEED TO NOT COST ANYTHING
@@ -768,6 +767,7 @@ if (is_tracking_system && tracker_meta.can_fail)
 }
 
 //timestep 0
+progressbar( {title='Simulation progress', message='Initializing system',cancelbutton=true, time=true, max=system_lifetime_yrs * 365});
 initialize();
 module_degradation[0] = whats_my_degradation();
 dc_availability[0] = whats_my_dc_derate();
@@ -784,8 +784,16 @@ if (is_tracking_system)
 
 
 //rest of system lifetime
+
 for (day = 1; day < system_lifetime_yrs * 365; day++)
 {	
+	was_canceled = progressbar({value=day, message='Running reliability model...'});
+	if (was_canceled)
+	{
+		outln('Simulation canceled by user.');
+		progressbar();
+		exit;
+	}
 	//increase the labor rate each year
 	if (day == 1 || mod(day, 365) == 0) //need to set the labor rate initially and then again at the beginning of every year
 	{
@@ -809,7 +817,8 @@ for (day = 1; day < system_lifetime_yrs * 365; day++)
 	dc_availability[day] = whats_my_dc_derate();
 	ac_availability[day] = whats_my_ac_derate();
 	//outln(day + '\t' + modules);
-}	
+}
+progressbar({message='Running SAM simulation...'});	
 	
 //create SAM performance adjustment tables for the availability derates, degradation, and tracker derates
 time = alloc(8760 * system_lifetime_yrs);
@@ -908,6 +917,8 @@ if (is_tracking_system)
 	for (tr=0; tr < tracker_meta.number; tr++)
 		total_tracker_failures += trackers[tr].cumulative_failures;
 }
+
+progressbar();
 
 //outln(dc_availability);
 outln('Total module failures =' + total_module_failures);
