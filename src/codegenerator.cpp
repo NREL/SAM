@@ -5751,10 +5751,10 @@ bool CodeGen_vba::Output(ssc_data_t p_data)
 		switch (type)
 		{
 		case SSC_STRING:
-			fprintf(m_fp, "	Debug.Print \"%s = \" & VBASSCDataGetString(p_data, \"%s\")\n", (const char*)m_data[ii].label.c_str(), name);
+			fprintf(m_fp, "    Debug.Print \"%s = \" & VBASSCDataGetString(p_data, \"%s\")\n", (const char*)m_data[ii].label.c_str(), name);
 			break;
 		case SSC_NUMBER:
-			fprintf(m_fp, "	Debug.Print \"%s = \" & VBASSCDataGetNumber(p_data, \"%s\")\n", (const char*)m_data[ii].label.c_str(), name);
+			fprintf(m_fp, "    Debug.Print \"%s = \" & VBASSCDataGetNumber(p_data, \"%s\")\n", (const char*)m_data[ii].label.c_str(), name);
 			break;
 		case SSC_ARRAY: // TODO
 			//p = ::ssc_data_get_array(p_data, name, &len);
@@ -5784,13 +5784,13 @@ bool CodeGen_vba::Input(ssc_data_t p_data, const char *name, const wxString &fol
 	case SSC_STRING:
 		str_value = wxString::FromUTF8(::ssc_data_get_string(p_data, name));
 		str_value.Replace("\\", "/");
-		fprintf(m_fp, "	sscvb_data_set_string p_data, \"%s\", \"%s\" \n", name, (const char*)str_value.c_str());
+		fprintf(m_fp, "    sscvb_data_set_string p_data, \"%s\", \"%s\" \n", name, (const char*)str_value.c_str());
 		break;
 	case SSC_NUMBER:
 		::ssc_data_get_number(p_data, name, &value);
 		dbl_value = (double)value;
 		if (dbl_value > 1e38) dbl_value = 1e38;
-		fprintf(m_fp, "	sscvb_data_set_number p_data, \"%s\", %lg \n", name, dbl_value);
+		fprintf(m_fp, "    sscvb_data_set_number p_data, \"%s\", %lg \n", name, dbl_value);
 		break;
 	case SSC_ARRAY:
 		p = ::ssc_data_get_array(p_data, name, &len);
@@ -5808,11 +5808,11 @@ bool CodeGen_vba::Input(ssc_data_t p_data, const char *name, const wxString &fol
 				csv.Set(i, 0, wxString::Format("%lg", dbl_value));
 			}
 			csv.WriteFile(fn);
-			fprintf(m_fp, "	VBASSCDataCSVSetArray p_data, \"%s\", \"%s\"\n", name, (const char*)fn.c_str());
+			fprintf(m_fp, "    VBASSCDataCSVSetArray p_data, \"%s\", \"%s\"\n", name, (const char*)fn.c_str());
 		}
 		else
 		{
-			fprintf(m_fp, "	str_data = \"");
+			fprintf(m_fp, "    str_data = \"");
 			for (int i = 0; i < (len - 1); i++)
 			{
 				dbl_value = (double)p[i];
@@ -5822,7 +5822,7 @@ bool CodeGen_vba::Input(ssc_data_t p_data, const char *name, const wxString &fol
 			dbl_value = (double)p[len - 1];
 			if (dbl_value > 1e38) dbl_value = 1e38;
 			fprintf(m_fp, "%lg\"\n", dbl_value);
-			fprintf(m_fp, "	VBASSCDataStringSetArray p_data, \"%s\", str_data\n", name);
+			fprintf(m_fp, "    VBASSCDataStringSetArray p_data, \"%s\", str_data\n", name);
 		}
 		break;
 	case SSC_MATRIX:
@@ -5843,11 +5843,11 @@ bool CodeGen_vba::Input(ssc_data_t p_data, const char *name, const wxString &fol
 				}
 			}
 			csv.WriteFile(fn);
-			fprintf(m_fp, "	VBASSCDataCSVSetMatrix p_data, \"%s\", \"%s\"\n", name, (const char*)fn.c_str());
+			fprintf(m_fp, "    VBASSCDataCSVSetMatrix p_data, \"%s\", \"%s\"\n", name, (const char*)fn.c_str());
 		}
 		else
 		{
-			fprintf(m_fp, "	str_data = \"");
+			fprintf(m_fp, "    str_data = \"");
 			for (int k = 0; k < (len - 1); k++)
 			{
 				dbl_value = (double)p[k];
@@ -5862,7 +5862,7 @@ bool CodeGen_vba::Input(ssc_data_t p_data, const char *name, const wxString &fol
 			dbl_value = (double)p[len - 1];
 			if (dbl_value > 1e38) dbl_value = 1e38;
 			fprintf(m_fp, "%lg\"\n", dbl_value);
-			fprintf(m_fp, "	VBASSCDataStringSetMatrix p_data, \"%s\", str_data\n", name);
+			fprintf(m_fp, "    VBASSCDataStringSetMatrix p_data, \"%s\", str_data\n", name);
 		}
 		// TODO tables in future
 	}
@@ -5872,17 +5872,17 @@ bool CodeGen_vba::Input(ssc_data_t p_data, const char *name, const wxString &fol
 
 bool CodeGen_vba::RunSSCModule(wxString &name)
 {
-	fprintf(m_fp, "	res = sscvb_module_exec(p_mod, p_data)\n");
-	fprintf(m_fp, "	If (res = 0) Then\n");
-	fprintf(m_fp, "		Debug.Print \"compute module %s failed.\"\n", (const char *)name.c_str());
-	fprintf(m_fp, "		ndx = 0\n");
-	fprintf(m_fp, "		Do\n");
-	fprintf(m_fp, "			str = VBASSCModuleLog(p_mod, ndx)\n");
-	fprintf(m_fp, "			Debug.Print str\n");
-	fprintf(m_fp, "			ndx = ndx + 1\n");
-	fprintf(m_fp, "		Loop Until (str = \"\")\n");
-	fprintf(m_fp, "		Exit Sub\n");
-	fprintf(m_fp, "	End If\n");
+	fprintf(m_fp, "    res = sscvb_module_exec(p_mod, p_data)\n");
+	fprintf(m_fp, "    If (res = 0) Then\n");
+	fprintf(m_fp, "        Debug.Print \"compute module %s failed.\"\n", (const char *)name.c_str());
+	fprintf(m_fp, "        ndx = 0\n");
+	fprintf(m_fp, "        Do\n");
+	fprintf(m_fp, "            str = VBASSCModuleLog(p_mod, ndx)\n");
+	fprintf(m_fp, "            Debug.Print str\n");
+	fprintf(m_fp, "            ndx = ndx + 1\n");
+	fprintf(m_fp, "        Loop Until (str = \"\")\n");
+	fprintf(m_fp, "        Exit Sub\n");
+	fprintf(m_fp, "    End If\n");
 	return true;
 }
 
@@ -6237,6 +6237,40 @@ bool CodeGen_vba::Header()
 	fprintf(m_fp, "    End If\n");
 	fprintf(m_fp, "    VBASSCModuleLog = str\n");
 	fprintf(m_fp, "End Function\n");
+	fprintf(m_fp, "Public Function VBASSCDataRangeGetArray(pdata As LongPtr, name As String, rng As Range) As LongPtr\n");
+	fprintf(m_fp, "    Dim count As LongPtr\n");
+	fprintf(m_fp, "    Dim dummy As Double\n");
+	fprintf(m_fp, "    Dim ary() As Double\n");
+	fprintf(m_fp, "    Dim i As Long\n");
+	fprintf(m_fp, "    count = sscvb_data_get_array(pdata, name, dummy, 0)\n");
+	fprintf(m_fp, "    ReDim ary(CLng(count) - 1)\n");
+	fprintf(m_fp, "    VBASSCDataRangeGetArray = sscvb_data_get_array(pdata, name, ary(0), count)\n");
+	fprintf(m_fp, "    For i = 0 To CLng(count) - 1\n");
+	fprintf(m_fp, "        rng(i + 1, 1) = ary(i)\n");
+	fprintf(m_fp, "    Next i\n");
+	fprintf(m_fp, "End Function\n");
+	fprintf(m_fp, "Public Function VBASSCDataRangeSetArray(pdata As LongPtr, name As String, rng As Range) As Boolean\n");
+	fprintf(m_fp, "    Dim fnum As Long\n");
+	fprintf(m_fp, "    Dim wholefile As String\n");
+	fprintf(m_fp, "    Dim frows As Variant\n");
+	fprintf(m_fp, "    Dim i As Long\n");
+	fprintf(m_fp, "    Dim num_rows As Long\n");
+	fprintf(m_fp, "    Dim ary() As Double\n");
+	fprintf(m_fp, "    i = 0\n");
+	fprintf(m_fp, "    frows = rng.value\n");
+	fprintf(m_fp, "    num_rows = UBound(frows)\n");
+	fprintf(m_fp, "    If (num_rows <= 0) Then\n");
+	fprintf(m_fp, "        VBASSCDataRangeSetArray = False\n");
+	fprintf(m_fp, "    Else\n");
+	fprintf(m_fp, "        ReDim ary(num_rows - 1)\n");
+	fprintf(m_fp, "        Do While (i < num_rows)\n");
+	fprintf(m_fp, "            ary(i) = CDbl(frows(i + 1, 1))\n");
+	fprintf(m_fp, "            i = i + 1\n");
+	fprintf(m_fp, "        Loop\n");
+	fprintf(m_fp, "        i = CLng(VBASSCDataSetArray(pdata, name, ary))\n");
+	fprintf(m_fp, "        VBASSCDataRangeSetArray = (i = 1)\n");
+	fprintf(m_fp, "    End If\n");
+	fprintf(m_fp, "End Function\n");
 
 	fprintf(m_fp, "Sub RunCase()\n");
 	fprintf(m_fp, "    Dim p_data As LongPtr\n");
@@ -6269,18 +6303,18 @@ bool CodeGen_vba::CreateSSCModule(wxString &name)
 		return false;
 	else
 	{
-		fprintf(m_fp, "	p_mod = sscvb_module_create(\"%s\")\n", (const char*)name.c_str());
-		fprintf(m_fp, "	If (p_mod = 0) Then\n");
-		fprintf(m_fp, "		Debug.Print \"error: could not create '%s' module.\" \n", (const char*)name.c_str());
-		fprintf(m_fp, "		Exit Sub \n");
-		fprintf(m_fp, "	End If\n");
+		fprintf(m_fp, "    p_mod = sscvb_module_create(\"%s\")\n", (const char*)name.c_str());
+		fprintf(m_fp, "    If (p_mod = 0) Then\n");
+		fprintf(m_fp, "        Debug.Print \"error: could not create '%s' module.\" \n", (const char*)name.c_str());
+		fprintf(m_fp, "        Exit Sub \n");
+		fprintf(m_fp, "    End If\n");
 	}
 	return true;
 }
 
 bool CodeGen_vba::FreeSSCModule()
 {
-	fprintf(m_fp, "	sscvb_module_free(p_mod)\n");
+	fprintf(m_fp, "    sscvb_module_free(p_mod)\n");
 	return true;
 }
 
@@ -6292,7 +6326,7 @@ bool CodeGen_vba::SupportingFiles()
 
 bool CodeGen_vba::Footer()
 {
-	fprintf(m_fp, "	sscvb_data_free(p_data)\n");
+	fprintf(m_fp, "    sscvb_data_free(p_data)\n");
 	fprintf(m_fp, "End Sub");
 	return true;
 }
