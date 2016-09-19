@@ -827,7 +827,7 @@ bool CodeGen_c::Output(ssc_data_t p_data)
 		{
 		case SSC_STRING:
 			fprintf(m_fp, "	const char *%s = ssc_data_get_string( data, \"%s\" );\n", name, name);
-			fprintf(m_fp, "	printf(\"%%s = %%s\"), %s, %s);\n", (const char*)m_data[ii].label.c_str(), name);
+			fprintf(m_fp, "	printf(\"%%s = %%s\\n\", %s, %s);\n", (const char*)m_data[ii].label.c_str(), name);
 			break;
 		case SSC_NUMBER:
 			fprintf(m_fp, "	ssc_number_t %s;\n", name);
@@ -1057,6 +1057,10 @@ bool CodeGen_c::Header()
 	fprintf(m_fp, "{\n");
 
 	// create global data container
+	fprintf(m_fp, "	printf(\"Current folder = %s\\n\");\n", (const char*)m_folder.c_str());
+	fprintf(m_fp, "	printf(\"SSC version = %%d\\n\", ssc_version());\n");
+	fprintf(m_fp, "	printf(\"SSC build information = %%s\\n\", ssc_build_info());\n");
+	fprintf(m_fp, "	ssc_module_exec_set_print(0);\n");
 	fprintf(m_fp, "	ssc_data_t data = ssc_data_create();\n");
 	fprintf(m_fp, "	if (data == NULL)\n");
 	fprintf(m_fp, "	{\n");
@@ -1094,6 +1098,57 @@ bool CodeGen_c::FreeSSCModule()
 
 bool CodeGen_c::SupportingFiles()
 {
+	wxString fn = m_folder + "/Makefile";
+	FILE *f = fopen(fn.c_str(), "w");
+	if (!f) return false;
+	fprintf(f, "ifdef SystemRoot\n");
+	fprintf(f, "	RM = del /Q\n");
+	fprintf(f, "	EXT = .exe\n");
+	fprintf(f, " 	CIFLAGS = -I.. -L.\n");
+	fprintf(f, " 	LFLAGS = -lssc\n");
+	fprintf(f, "	ifneq (,$(findstring 64, $(value PROCESSOR_IDENTIFIER)))\n");
+	fprintf(f, "		BITS = 64\n");
+	fprintf(f, "		CCCOMP = c:/MinGW64/bin/g++.exe\n");
+	fprintf(f, "		SSCLIB = ssc.dll\n");
+	fprintf(f, "	else\n");
+	fprintf(f, "		BITS = 32\n");
+	fprintf(f, "		CCCOMP = c:/MinGW/bin/g++.exe\n");
+	fprintf(f, " 		CIFLAGS = -I..\n");
+	fprintf(f, "		SSCLIB = ssc.dll\n");
+	fprintf(f, "	endif	\n");
+	fprintf(f, "else\n");
+	// TODO TEST these
+	fprintf(f, "    PF = $(shell uname)\n");
+	fprintf(f, "    ifneq (,$(findstring Darwin, $(PF)))\n");
+	fprintf(f, "        VERS = $(shell sw_vers -productVersion)\n");
+	fprintf(f, " 		CIFLAGS = -I..\n");
+	fprintf(f, "        SSCLIB = ./ssc.dylib\n");
+	fprintf(f, "        EXT = .o\n");
+	fprintf(f, " 		CIFLAGS = -I..\n");
+	fprintf(f, "	    SSCLIB = ssc.dylib\n");
+	fprintf(f, "	    EXT = dylib\n");
+	fprintf(f, "    else \n");
+	fprintf(f, "        ifneq (,$findstring(Linux, $(PF)))\n");
+	fprintf(f, "	    CIFLAGS = -I.. \n");
+	fprintf(f, "	    SSCLIB = ./ssc.so\n");
+	fprintf(f, "	    EXT = .o\n");
+	fprintf(f, "    	endif\n");
+	fprintf(f, "    endif\n");
+	fprintf(f, "    RM = rm -f\n");
+	fprintf(f, "    CFLAGS += -D__64BIT__\n");
+	fprintf(f, "    BITS = 64l\n");
+	fprintf(f, "    CCCOMP = gcc\n");
+	fprintf(f, "endif\n");
+	fprintf(f, "PROJ_NAME =  %s\n", (const char*)m_name.c_str());
+	fprintf(f, "JFLAGS = -g\n");
+	fprintf(f, "all :\n");
+	fprintf(f, "	$(CCCOMP) $(CIFLAGS) -o$(PROJ_NAME) $(PROJ_NAME).c $(LFLAGS)\n");
+	fprintf(f, "clean :\n");
+	fprintf(f, "	$(RM) $(PROJ_NAME)$(EXT)\n");
+	fprintf(f, "help:\n");
+	fprintf(f, "	@echo \"Please check the settings for your system.Your system may not be supported.Please contact sam.support@nrel.gov\"\n");
+	fclose(f);
+
 	return true;
 }
 
@@ -1672,6 +1727,18 @@ bool CodeGen_csharp::Header()
 	fprintf(m_fp, "            return (System.IntPtr.Size == 8) ? ssc_module_exec_simple64(moduleName, cxtData) : ssc_module_exec_simple32(moduleName, cxtData);\n");
 	fprintf(m_fp, "        }\n");
 	fprintf(m_fp, "\n");
+	fprintf(m_fp, "        [DllImport(\"ssc32.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_module_exec_set_print\")]\n");
+	fprintf(m_fp, "        public static extern void ssc_module_exec_set_print32(int print); \n");
+	fprintf(m_fp, "        [DllImport(\"ssc64.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_module_exec_set_print\")]\n");
+	fprintf(m_fp, "        public static extern void ssc_module_exec_set_print64(int print); \n");
+	fprintf(m_fp, "        public static void ssc_module_exec_set_print(int print)\n");
+	fprintf(m_fp, "        {\n");
+	fprintf(m_fp, "            if (System.IntPtr.Size == 8)\n");
+	fprintf(m_fp, "			       ssc_module_exec_set_print64(print); \n");
+	fprintf(m_fp, "            else\n");
+	fprintf(m_fp, "                ssc_module_exec_set_print32(print); \n");
+	fprintf(m_fp, "        }\n");
+	fprintf(m_fp, "\n");
 	fprintf(m_fp, "        [DllImport(\"ssc32.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_module_exec_simple_nothread\")]\n");
 	fprintf(m_fp, "        public static extern IntPtr ssc_module_exec_simple_nothread32(string moduleName, HandleRef cxtData);\n");
 	fprintf(m_fp, "        [DllImport(\"ssc64.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_module_exec_simple_nothread\")]\n");
@@ -1885,6 +1952,11 @@ bool CodeGen_csharp::Header()
 	fprintf(m_fp, "    public class Module\n");
 	fprintf(m_fp, "    {\n");
 	fprintf(m_fp, "        private HandleRef m_mod;\n");
+	fprintf(m_fp, "\n");
+	fprintf(m_fp, "        public static void SetPrint(int print)\n");
+	fprintf(m_fp, "        {\n");
+	fprintf(m_fp, "            sscapi.ssc_module_exec_set_print(print);\n");
+	fprintf(m_fp, "        }\n");
 	fprintf(m_fp, "\n");
 	fprintf(m_fp, "        public Module(String name)\n");
 	fprintf(m_fp, "        {\n");
@@ -2123,6 +2195,13 @@ bool CodeGen_csharp::Header()
 	fprintf(m_fp, "	static void Main() \n");
 	fprintf(m_fp, "	{\n");
 
+	// write out build information
+	fprintf(m_fp, "		Console.WriteLine(\"Current folder %s\");\n", (const char*)m_folder.c_str());
+	fprintf(m_fp, "		Console.WriteLine(\"SSC Version number = {0}\", SSC.API.Version());\n");
+	fprintf(m_fp, "		Console.WriteLine(\"SSC Build Information = {0}\", SSC.API.BuildInfo());\n");
+
+	// disable progress percentage
+	fprintf(m_fp, "		SSC.Module.SetPrint(0);\n");
 	// create global data container
 	fprintf(m_fp, "		SSC.Data data = new SSC.Data();\n");
 	fprintf(m_fp, "		if (data == null)\n");
@@ -2160,6 +2239,14 @@ bool CodeGen_csharp::FreeSSCModule()
 
 bool CodeGen_csharp::SupportingFiles()
 {
+	// required dll to be named according to platform
+	wxString f1 = m_folder + "/ssc.dll";
+#ifdef _WIN64
+	wxString f2 = m_folder + "/ssc64.dll";
+#else
+	wxString f2 = m_folder + "/ssc32.dll";
+#endif
+	wxCopyFile(f1, f2);
 	return true;
 }
 
@@ -2591,7 +2678,6 @@ CodeGen_python::CodeGen_python(Case *cc, const wxString &folder) : CodeGen_Base(
 
 bool CodeGen_python::Output(ssc_data_t p_data)
 {
-	//		fprintf(m_fp, "outln('%s ' + var('%s'));\n", (const char*)m_data[ii].label.c_str(), (const char*)m_data[ii].var.c_str());
 	wxString str_value;
 	for (size_t ii = 0; ii < m_data.size(); ii++)
 	{
@@ -2600,7 +2686,7 @@ bool CodeGen_python::Output(ssc_data_t p_data)
 		switch (type)
 		{
 		case SSC_STRING:
-			fprintf(m_fp, "	%s = ssc.data_set_string( data, b'%s' );\n", name, name);
+			fprintf(m_fp, "	%s = ssc.data_get_string( data, b'%s' );\n", name, name);
 			fprintf(m_fp, " print ('%s = ', %s)\n", (const char*)m_data[ii].label.c_str(), name);
 			break;
 		case SSC_NUMBER:
@@ -2767,6 +2853,9 @@ bool CodeGen_python::Header()
 	fprintf(m_fp, "	def version(self):\n");
 	fprintf(m_fp, "		self.pdll.ssc_version.restype = c_int\n");
 	fprintf(m_fp, "		return self.pdll.ssc_version()\n");
+	fprintf(m_fp, "	def build_info(self):\n");
+	fprintf(m_fp, "		self.pdll.ssc_build_info.restype = c_char_p\n");
+	fprintf(m_fp, "		return self.pdll.ssc_build_info()\n");
 	fprintf(m_fp, "	def data_create(self):\n");
 	fprintf(m_fp, "		self.pdll.ssc_data_create.restype = c_void_p\n");
 	fprintf(m_fp, "		return self.pdll.ssc_data_create()\n");
@@ -2911,6 +3000,10 @@ bool CodeGen_python::Header()
 	fprintf(m_fp, "		return self.pdll.ssc_module_exec_set_print( c_int(prn) );\n");
 	fprintf(m_fp, "if __name__ == \"__main__\":\n");
 	fprintf(m_fp, "	ssc = PySSC()\n");
+	fprintf(m_fp, "	print ('Current folder = %s')\n", (const char*)m_folder.c_str());
+	fprintf(m_fp, "	print ('SSC Version = ', ssc.version())\n");
+	fprintf(m_fp, "	print ('SSC Build Information = ', ssc.build_info())\n");
+	fprintf(m_fp, "	ssc.module_exec_set_print(0)\n");
 	fprintf(m_fp, "	data = ssc.data_create()\n");
 
 	return true;
@@ -5734,7 +5827,7 @@ bool CodeGen_php7::SupportingFiles()
 }
 
 
-// c# code generation class
+// vba code generation class
 
 CodeGen_vba::CodeGen_vba(Case *cc, const wxString &folder) : CodeGen_Base(cc, folder)
 {
