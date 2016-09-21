@@ -129,14 +129,32 @@ class CodeGen_python : virtual public CodeGen_Base
 public:
 	CodeGen_python(Case *cc, const wxString &folder);
 	bool SupportingFiles();
-	bool Header();
-	bool CreateSSCModule(wxString &name);
-	bool RunSSCModule(wxString &name);
 	bool FreeSSCModule();
-	bool Input(ssc_data_t p_data, const char *name, const wxString &folder, const int &array_matrix_threshold);
-	bool Output(ssc_data_t p_data);
 	bool Footer();
 };
+
+class CodeGen_python2 : public virtual CodeGen_python
+{
+public:
+	CodeGen_python2(Case *cc, const wxString &folder);
+	bool Header();
+	bool Input(ssc_data_t p_data, const char *name, const wxString &folder, const int &array_matrix_threshold);
+	bool Output(ssc_data_t p_data);
+	bool CreateSSCModule(wxString &name);
+	bool RunSSCModule(wxString &name);
+};
+
+class CodeGen_python3 : public virtual CodeGen_python
+{
+public:
+	CodeGen_python3(Case *cc, const wxString &folder);
+	bool Header();
+	bool Input(ssc_data_t p_data, const char *name, const wxString &folder, const int &array_matrix_threshold);
+	bool Output(ssc_data_t p_data);
+	bool CreateSSCModule(wxString &name);
+	bool RunSSCModule(wxString &name);
+};
+
 
 class CodeGen_java : virtual public CodeGen_Base
 {
