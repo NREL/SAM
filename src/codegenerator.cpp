@@ -537,7 +537,8 @@ bool CodeGen_Base::ShowCodeGenDialog(CaseWindow *cw)
 	code_languages.Add("LK for SDKtool");
 	code_languages.Add("C");
 	code_languages.Add("MATLAB");
-	code_languages.Add("Python");
+	code_languages.Add("Python 2");
+	code_languages.Add("Python 3");
 	code_languages.Add("Java");
 	code_languages.Add("PHP 5");
 	code_languages.Add("PHP 7");
@@ -610,33 +611,38 @@ bool CodeGen_Base::ShowCodeGenDialog(CaseWindow *cw)
 		fn += ".m";
 		cg = new CodeGen_matlab(c, fn);
 	}
-	else if (lang == 3) // python
+	else if (lang == 3) // python2
 	{
 		fn += ".py";
-		cg = new CodeGen_python(c, fn);
+		cg = new CodeGen_python2(c, fn);
 	}
-	else if (lang == 4) // java
+	else if (lang == 4) // python3
+	{
+		fn += ".py";
+		cg = new CodeGen_python3(c, fn);
+	}
+	else if (lang == 5) // java
 	{
 		fn += ".java";
 		cg = new CodeGen_java(c, fn);
 	}
-	else if (lang == 5) // php
+	else if (lang == 6) // php
 	{
 		fn += ".php";
 		cg = new CodeGen_php5(c, fn);
 	}
-	else if (lang == 6) // php
+	else if (lang == 7) // php
 	{
 		fn += ".php";
 		cg = new CodeGen_php7(c, fn);
 	}
 #ifdef __WXMSW__
-	else if (lang == 7) // c#
+	else if (lang == 8) // c#
 	{
 		fn += ".cs";
 		cg = new CodeGen_csharp(c, fn);
 	}
-	else if (lang == 8) // vba
+	else if (lang == 9) // vba
 	{
 		fn += ".bas";
 		cg = new CodeGen_vba(c, fn);
@@ -1106,38 +1112,24 @@ bool CodeGen_c::SupportingFiles()
 	fprintf(f, "	EXT = .exe\n");
 	fprintf(f, " 	CIFLAGS = -I.. -L.\n");
 	fprintf(f, " 	LFLAGS = -lssc\n");
-	fprintf(f, "	ifneq (,$(findstring 64, $(value PROCESSOR_IDENTIFIER)))\n");
-	fprintf(f, "		BITS = 64\n");
-	fprintf(f, "		CCCOMP = c:/MinGW64/bin/g++.exe\n");
-	fprintf(f, "		SSCLIB = ssc.dll\n");
-	fprintf(f, "	else\n");
-	fprintf(f, "		BITS = 32\n");
-	fprintf(f, "		CCCOMP = c:/MinGW/bin/g++.exe\n");
-	fprintf(f, " 		CIFLAGS = -I..\n");
-	fprintf(f, "		SSCLIB = ssc.dll\n");
-	fprintf(f, "	endif	\n");
+	fprintf(f, "#x64	SET PATH=c:\\MinGW64\\bin;%%PATH%%\n");
+	fprintf(f, "#win32	SET PATH=c:\\MinGW\\bin;%%PATH%%\n");
+	fprintf(f, "	CCCOMP = g++\n");
 	fprintf(f, "else\n");
-	// TODO TEST these
 	fprintf(f, "    PF = $(shell uname)\n");
 	fprintf(f, "    ifneq (,$(findstring Darwin, $(PF)))\n");
 	fprintf(f, "        VERS = $(shell sw_vers -productVersion)\n");
 	fprintf(f, " 		CIFLAGS = -I..\n");
-	fprintf(f, "        SSCLIB = ./ssc.dylib\n");
-	fprintf(f, "        EXT = .o\n");
-	fprintf(f, " 		CIFLAGS = -I..\n");
-	fprintf(f, "	    SSCLIB = ssc.dylib\n");
-	fprintf(f, "	    EXT = dylib\n");
+	fprintf(f, "        EXT = .dylib\n");
 	fprintf(f, "    else \n");
 	fprintf(f, "        ifneq (,$findstring(Linux, $(PF)))\n");
-	fprintf(f, "	    CIFLAGS = -I.. \n");
-	fprintf(f, "	    SSCLIB = ./ssc.so\n");
+	fprintf(f, "	    CIFLAGS = -I.. ./ssc.so\n");
 	fprintf(f, "	    EXT = .o\n");
 	fprintf(f, "    	endif\n");
 	fprintf(f, "    endif\n");
 	fprintf(f, "    RM = rm -f\n");
-	fprintf(f, "    CFLAGS += -D__64BIT__\n");
-	fprintf(f, "    BITS = 64l\n");
-	fprintf(f, "    CCCOMP = gcc\n");
+	fprintf(f, "    CCCOMP = g++\n");
+	fprintf(f, " 	LFLAGS = -ldl\n");
 	fprintf(f, "endif\n");
 	fprintf(f, "PROJ_NAME =  %s\n", (const char*)m_name.c_str());
 	fprintf(f, "JFLAGS = -g\n");
@@ -2675,8 +2667,426 @@ CodeGen_python::CodeGen_python(Case *cc, const wxString &folder) : CodeGen_Base(
 {
 }
 
+bool CodeGen_python::FreeSSCModule()
+{
+	fprintf(m_fp, "	ssc.module_free(module)\n");
+	return true;
+}
 
-bool CodeGen_python::Output(ssc_data_t p_data)
+bool CodeGen_python::SupportingFiles()
+{
+	wxString fn = m_folder + "/__init__.py";
+	FILE *f = fopen(fn.c_str(), "w");
+	if (!f) return false;
+	fclose(f);
+	fn = m_folder + "/PySSC.py";
+	f = fopen(fn.c_str(), "w");
+	if (!f) return false;
+	fprintf(f, "#Created with SAM version %s\n", (const char*)SamApp::VersionStr().c_str());
+	fprintf(f, "import string, sys, struct, os\n");
+	fprintf(f, "from ctypes import *\n");
+	fprintf(f, "c_number = c_float # must be c_double or c_float depending on how defined in sscapi.h\n");
+	fprintf(f, "class PySSC:\n");
+	fprintf(f, "	def __init__(self):\n");
+	fprintf(f, "		if sys.platform == 'win32' or sys.platform == 'cygwin':\n");
+	fprintf(f, "			self.pdll = CDLL(\"%s/ssc.dll\") \n", (const char*)m_folder.c_str());
+	fprintf(f, "		elif sys.platform == 'darwin':\n");
+	fprintf(f, "			self.pdll = CDLL(\"%s/ssc.dylib\") \n", (const char*)m_folder.c_str());
+	fprintf(f, "		elif sys.platform == 'linux2':\n");
+	fprintf(f, "			self.pdll = CDLL('%s/ssc.so')   # instead of relative path, require user to have on LD_LIBRARY_PATH\n", (const char*)m_folder.c_str());
+	fprintf(f, "		else:\n");
+	fprintf(f, "			print ('Platform not supported ', sys.platform)\n");
+	fprintf(f, "	INVALID=0\n");
+	fprintf(f, "	STRING=1\n");
+	fprintf(f, "	NUMBER=2\n");
+	fprintf(f, "	ARRAY=3\n");
+	fprintf(f, "	MATRIX=4\n");
+	fprintf(f, "	INPUT=1\n");
+	fprintf(f, "	OUTPUT=2\n");
+	fprintf(f, "	INOUT=3\n");
+	fprintf(f, "	def version(self):\n");
+	fprintf(f, "		self.pdll.ssc_version.restype = c_int\n");
+	fprintf(f, "		return self.pdll.ssc_version()\n");
+	fprintf(f, "	def build_info(self):\n");
+	fprintf(f, "		self.pdll.ssc_build_info.restype = c_char_p\n");
+	fprintf(f, "		return self.pdll.ssc_build_info()\n");
+	fprintf(f, "	def data_create(self):\n");
+	fprintf(f, "		self.pdll.ssc_data_create.restype = c_void_p\n");
+	fprintf(f, "		return self.pdll.ssc_data_create()\n");
+	fprintf(f, "	def data_free(self, p_data):\n");
+	fprintf(f, "		self.pdll.ssc_data_free( c_void_p(p_data) )\n");
+	fprintf(f, "	def data_clear(self, p_data):\n");
+	fprintf(f, "		self.pdll.ssc_data_clear( c_void_p(p_data) )\n");
+	fprintf(f, "	def data_unassign(self, p_data, name):\n");
+	fprintf(f, "		self.pdll.ssc_data_unassign( c_void_p(p_data), c_char_p(name) )\n");
+	fprintf(f, "	def data_query(self, p_data, name):\n");
+	fprintf(f, "		self.pdll.ssc_data_query.restype = c_int\n");
+	fprintf(f, "		return self.pdll.ssc_data_query( c_void_p(p_data), c_char_p(name) )\n");
+	fprintf(f, "	def data_first(self, p_data):\n");
+	fprintf(f, "		self.pdll.ssc_data_first.restype = c_char_p\n");
+	fprintf(f, "		return self.pdll.ssc_data_first( c_void_p(p_data) )\n");
+	fprintf(f, "	def data_next(self, p_data):\n");
+	fprintf(f, "		self.pdll.ssc_data_next.restype = c_char_p\n");
+	fprintf(f, "		return self.pdll.ssc_data_next( c_void_p(p_data) )\n");
+	fprintf(f, "	def data_set_string(self, p_data, name, value):\n");
+	fprintf(f, "		self.pdll.ssc_data_set_string( c_void_p(p_data), c_char_p(name), c_char_p(value) )\n");
+	fprintf(f, "	def data_set_number(self, p_data, name, value):\n");
+	fprintf(f, "		self.pdll.ssc_data_set_number( c_void_p(p_data), c_char_p(name), c_number(value) )\n");
+	fprintf(f, "	def data_set_array(self,p_data,name,parr):\n");
+	fprintf(f, "		count = len(parr)\n");
+	fprintf(f, "		arr = (c_number*count)()\n");
+	fprintf(f, "		arr[:] = parr # set all at once instead of looping\n");
+	fprintf(f, "		return self.pdll.ssc_data_set_array( c_void_p(p_data), c_char_p(name),pointer(arr), c_int(count))\n");
+	fprintf(f, "	def data_set_array_from_csv(self, p_data, name, fn) :\n");
+	fprintf(f, "		f = open(fn, 'rb'); \n");
+	fprintf(f, "		data = []; \n");
+	fprintf(f, "		for line in f : \n");
+	fprintf(f, "			data.extend([n for n in map(float, line.split(b','))])\n");
+	fprintf(f, "		f.close(); \n");
+	fprintf(f, "		return self.data_set_array(p_data, name, data); \n");
+	fprintf(f, "	def data_set_matrix(self,p_data,name,mat):\n");
+	fprintf(f, "		nrows = len(mat)\n");
+	fprintf(f, "		ncols = len(mat[0])\n");
+	fprintf(f, "		size = nrows*ncols\n");
+	fprintf(f, "		arr = (c_number*size)()\n");
+	fprintf(f, "		idx=0\n");
+	fprintf(f, "		for r in range(nrows):\n");
+	fprintf(f, "			for c in range(ncols):\n");
+	fprintf(f, "				arr[idx] = c_number(mat[r][c])\n");
+	fprintf(f, "				idx=idx+1\n");
+	fprintf(f, "		return self.pdll.ssc_data_set_matrix( c_void_p(p_data), c_char_p(name),pointer(arr), c_int(nrows), c_int(ncols))\n");
+	fprintf(f, "	def data_set_matrix_from_csv(self, p_data, name, fn) :\n");
+	fprintf(f, "		f = open(fn, 'rb'); \n");
+	fprintf(f, "		data = []; \n");
+	fprintf(f, "		for line in f : \n");
+	fprintf(f, "			lst = ([n for n in map(float, line.split(b','))])\n");
+	fprintf(f, "			data.append(lst);\n");
+	fprintf(f, "		f.close(); \n");
+	fprintf(f, "		return self.data_set_matrix(p_data, name, data); \n");
+	fprintf(f, "	def data_set_table(self,p_data,name,tab):\n");
+	fprintf(f, "		return self.pdll.ssc_data_set_table( c_void_p(p_data), c_char_p(name), c_void_p(tab) );\n");
+	fprintf(f, "	def data_get_string(self, p_data, name):\n");
+	fprintf(f, "		self.pdll.ssc_data_get_string.restype = c_char_p\n");
+	fprintf(f, "		return self.pdll.ssc_data_get_string( c_void_p(p_data), c_char_p(name) )\n");
+	fprintf(f, "	def data_get_number(self, p_data, name):\n");
+	fprintf(f, "		val = c_number(0)\n");
+	fprintf(f, "		self.pdll.ssc_data_get_number( c_void_p(p_data), c_char_p(name), byref(val) )\n");
+	fprintf(f, "		return val.value\n");
+	fprintf(f, "	def data_get_array(self,p_data,name):\n");
+	fprintf(f, "		count = c_int()\n");
+	fprintf(f, "		self.pdll.ssc_data_get_array.restype = POINTER(c_number)\n");
+	fprintf(f, "		parr = self.pdll.ssc_data_get_array( c_void_p(p_data), c_char_p(name), byref(count))\n");
+	fprintf(f, "		arr = parr[0:count.value] # extract all at once			\n");
+	fprintf(f, "		return arr\n");
+	fprintf(f, "	def data_get_matrix(self,p_data,name):\n");
+	fprintf(f, "		nrows = c_int()\n");
+	fprintf(f, "		ncols = c_int()\n");
+	fprintf(f, "		self.pdll.ssc_data_get_matrix.restype = POINTER(c_number)\n");
+	fprintf(f, "		parr = self.pdll.ssc_data_get_matrix( c_void_p(p_data), c_char_p(name), byref(nrows), byref(ncols) )\n");
+	fprintf(f, "		idx = 0\n");
+	fprintf(f, "		mat = []\n");
+	fprintf(f, "		for r in range(nrows.value):\n");
+	fprintf(f, "			row = []\n");
+	fprintf(f, "			for c in range(ncols.value):\n");
+	fprintf(f, "				row.append( float(parr[idx]) )\n");
+	fprintf(f, "				idx = idx + 1\n");
+	fprintf(f, "			mat.append(row)\n");
+	fprintf(f, "		return mat\n");
+	fprintf(f, "	# don't call data_free() on the result, it's an internal\n");
+	fprintf(f, "	# pointer inside SSC\n");
+	fprintf(f, "	def data_get_table(self,p_data,name): \n");
+	fprintf(f, "		return self.pdll.ssc_data_get_table( c_void_p(p_data), name );\n");
+	fprintf(f, "	def module_entry(self,index):\n");
+	fprintf(f, "		self.pdll.ssc_module_entry.restype = c_void_p\n");
+	fprintf(f, "		return self.pdll.ssc_module_entry( c_int(index) )\n");
+	fprintf(f, "	def entry_name(self,p_entry):\n");
+	fprintf(f, "		self.pdll.ssc_entry_name.restype = c_char_p\n");
+	fprintf(f, "		return self.pdll.ssc_entry_name( c_void_p(p_entry) )\n");
+	fprintf(f, "	def entry_description(self,p_entry):\n");
+	fprintf(f, "		self.pdll.ssc_entry_description.restype = c_char_p\n");
+	fprintf(f, "		return self.pdll.ssc_entry_description( c_void_p(p_entry) )\n");
+	fprintf(f, "	def entry_version(self,p_entry):\n");
+	fprintf(f, "		self.pdll.ssc_entry_version.restype = c_int\n");
+	fprintf(f, "		return self.pdll.ssc_entry_version( c_void_p(p_entry) )\n");
+	fprintf(f, "	def module_create(self,name):\n");
+	fprintf(f, "		self.pdll.ssc_module_create.restype = c_void_p\n");
+	fprintf(f, "		return self.pdll.ssc_module_create( c_char_p(name) )\n");
+	fprintf(f, "	def module_free(self,p_mod):\n");
+	fprintf(f, "		self.pdll.ssc_module_free( c_void_p(p_mod) )\n");
+	fprintf(f, "	def module_var_info(self,p_mod,index):\n");
+	fprintf(f, "		self.pdll.ssc_module_var_info.restype = c_void_p\n");
+	fprintf(f, "		return self.pdll.ssc_module_var_info( c_void_p(p_mod), c_int(index) )\n");
+	fprintf(f, "	def info_var_type( self, p_inf ):\n");
+	fprintf(f, "		return self.pdll.ssc_info_var_type( c_void_p(p_inf) )\n");
+	fprintf(f, "	def info_data_type( self, p_inf ):\n");
+	fprintf(f, "		return self.pdll.ssc_info_data_type( c_void_p(p_inf) )\n");
+	fprintf(f, "	def info_name( self, p_inf ):\n");
+	fprintf(f, "		self.pdll.ssc_info_name.restype = c_char_p\n");
+	fprintf(f, "		return self.pdll.ssc_info_name( c_void_p(p_inf) )\n");
+	fprintf(f, "	def info_label( self, p_inf ):\n");
+	fprintf(f, "		self.pdll.ssc_info_label.restype = c_char_p\n");
+	fprintf(f, "		return self.pdll.ssc_info_label( c_void_p(p_inf) )\n");
+	fprintf(f, "	def info_units( self, p_inf ):\n");
+	fprintf(f, "		self.pdll.ssc_info_units.restype = c_char_p\n");
+	fprintf(f, "		return self.pdll.ssc_info_units( c_void_p(p_inf) )\n");
+	fprintf(f, "	def info_meta( self, p_inf ):\n");
+	fprintf(f, "		self.pdll.ssc_info_meta.restype = c_char_p\n");
+	fprintf(f, "		return self.pdll.ssc_info_meta( c_void_p(p_inf) )\n");
+	fprintf(f, "	def info_group( self, p_inf ):\n");
+	fprintf(f, "		self.pdll.ssc_info_group.restype = c_char_p\n");
+	fprintf(f, "		return self.pdll.ssc_info_group( c_void_p(p_inf) )\n");
+	fprintf(f, "	def info_uihint( self, p_inf ):\n");
+	fprintf(f, "		self.pdll.ssc_info_uihint.restype = c_char_p\n");
+	fprintf(f, "		return self.pdll.ssc_info_uihint( c_void_p(p_inf) )\n");
+	fprintf(f, "	def module_exec( self, p_mod, p_data ):\n");
+	fprintf(f, "		self.pdll.ssc_module_exec.restype = c_int\n");
+	fprintf(f, "		return self.pdll.ssc_module_exec( c_void_p(p_mod), c_void_p(p_data) )\n");
+	fprintf(f, "		ssc_module_exec_simple_nothread\n");
+	fprintf(f, "	def module_exec_simple_no_thread( self, modname, data ):\n");
+	fprintf(f, "		self.pdll.ssc_module_exec_simple_nothread.restype = c_char_p;\n");
+	fprintf(f, "		return self.pdll.ssc_module_exec_simple_nothread( c_char_p(modname), c_void_p(data) );\n");
+	fprintf(f, "	def module_log( self, p_mod, index ):\n");
+	fprintf(f, "		log_type = c_int()\n");
+	fprintf(f, "		time = c_float()\n");
+	fprintf(f, "		self.pdll.ssc_module_log.restype = c_char_p\n");
+	fprintf(f, "		return self.pdll.ssc_module_log( c_void_p(p_mod), c_int(index), byref(log_type), byref(time) )\n");
+	fprintf(f, "	def module_exec_set_print( self, prn ):\n");
+	fprintf(f, "		return self.pdll.ssc_module_exec_set_print( c_int(prn) );\n");
+	fclose(f);
+	return true;
+}
+
+bool CodeGen_python::Footer()
+{
+	fprintf(m_fp, "	ssc.data_free(data);");
+	return true;
+}
+
+
+
+// Python 2
+CodeGen_python2::CodeGen_python2(Case *cc, const wxString &folder) : CodeGen_python(cc, folder), CodeGen_Base(cc, folder)
+{
+}
+
+bool CodeGen_python2::CreateSSCModule(wxString &name)
+{
+	if (name.IsNull() || name.Length() < 1)
+		return false;
+	else
+	{
+		fprintf(m_fp, "	module = ssc.module_create('%s')	\n", (const char*)name.c_str());
+	}
+	return true;
+}
+
+bool CodeGen_python2::RunSSCModule(wxString &name)
+{
+	fprintf(m_fp, "	ssc.module_exec_set_print( 0 );\n");
+	fprintf(m_fp, "	if ssc.module_exec(module, data) == 0:\n");
+	fprintf(m_fp, "		print ('%s simulation error')\n", (const char*)name.c_str());
+	fprintf(m_fp, "		idx = 1\n");
+	fprintf(m_fp, "		msg = ssc.module_log(module, 0)\n");
+	fprintf(m_fp, "		while (msg != None):\n");
+	fprintf(m_fp, "			print ('\t: ' + msg)\n");
+	fprintf(m_fp, "			msg = ssc.module_log(module, idx)\n");
+	fprintf(m_fp, "			idx = idx + 1\n");
+	fprintf(m_fp, "		SystemExit( \"Simulation Error\" );\n");
+	return true;
+}
+
+
+
+bool CodeGen_python2::Header()
+{
+	fprintf(m_fp, "from PySSC import PySSC\n");
+	fprintf(m_fp, "if __name__ == \"__main__\":\n");
+	fprintf(m_fp, "	ssc = PySSC()\n");
+	fprintf(m_fp, "	print 'Current folder = %s'\n", (const char*)m_folder.c_str());
+	fprintf(m_fp, "	print 'SSC Version = ', ssc.version()\n");
+	fprintf(m_fp, "	print 'SSC Build Information = ', ssc.build_info()\n");
+	fprintf(m_fp, "	ssc.module_exec_set_print(0)\n");
+	fprintf(m_fp, "	data = ssc.data_create()\n");
+
+	return true;
+}
+
+bool CodeGen_python2::Output(ssc_data_t p_data)
+{
+	wxString str_value;
+	for (size_t ii = 0; ii < m_data.size(); ii++)
+	{
+		const char *name = (const char*)m_data[ii].var.c_str();
+		int type = ::ssc_data_query(p_data, name);
+		switch (type)
+		{
+		case SSC_STRING:
+			fprintf(m_fp, "	%s = ssc.data_get_string( data, '%s' );\n", name, name);
+			fprintf(m_fp, " print '%s = ', %s\n", (const char*)m_data[ii].label.c_str(), name);
+			break;
+		case SSC_NUMBER:
+			fprintf(m_fp, "	%s = ssc.data_get_number(data, '%s');\n", name, name);
+			fprintf(m_fp, "	print '%s = ', %s\n", (const char*)m_data[ii].label.c_str(), name);
+			break;
+		case SSC_ARRAY:
+			fprintf(m_fp, "	%s = ssc.data_get_array(data, '%s')", name, name);
+			fprintf(m_fp, "	for i in range(len(%s)):\n", name);
+			fprintf(m_fp, "		print '\tarray element: ' , i ,' = ' , %s[i]\n", name);
+			break;
+		case SSC_MATRIX:
+			fprintf(m_fp, "	%s = ssc.data_get_matrix(data, '%s')", name, name);
+			fprintf(m_fp, "	nrows = len(%s);\n", name);
+			fprintf(m_fp, "	ncols = len(%s[0])\n", name);
+			fprintf(m_fp, "	for i in range(nrows):\n");
+			fprintf(m_fp, "		for j in range(ncols):\n");
+			fprintf(m_fp, "			print '\treturned matrix element : (' , i , ', ' , j , ') = ' , %s[i][j]\n", name);
+			break;
+		}
+	}
+	return true;
+}
+
+bool CodeGen_python2::Input(ssc_data_t p_data, const char *name, const wxString &folder, const int &array_matrix_threshold)
+{
+	ssc_number_t value;
+	ssc_number_t *p;
+	int len, nr, nc;
+	wxString str_value;
+	double dbl_value;
+	int type = ::ssc_data_query(p_data, name);
+	switch (type)
+	{
+	case SSC_STRING:
+		str_value = wxString::FromUTF8(::ssc_data_get_string(p_data, name));
+		str_value.Replace("\\", "/");
+		fprintf(m_fp, "	ssc.data_set_string( data, '%s', '%s' );\n", name, (const char*)str_value.c_str());
+		break;
+	case SSC_NUMBER:
+		::ssc_data_get_number(p_data, name, &value);
+		dbl_value = (double)value;
+		if (dbl_value > 1e38) dbl_value = 1e38;
+		fprintf(m_fp, "	ssc.data_set_number( data, '%s', %.17g )\n", name, dbl_value);
+		break;
+	case SSC_ARRAY:
+		p = ::ssc_data_get_array(p_data, name, &len);
+		if (len > array_matrix_threshold)
+		{ // separate csv file (var_name.csv in folder) for each variable
+			wxCSVData csv;
+			wxString fn = folder + "/" + TableElementFileNames(name) + ".csv";
+			// write out as single column data for compatibility with csvread in SDKTool
+			for (int i = 0; i < len; i++)
+			{
+				dbl_value = (double)p[i];
+				if (dbl_value > 1e38) dbl_value = 1e38;
+				csv.Set(i, 0, wxString::Format("%.17g", dbl_value));
+			}
+			csv.WriteFile(fn);
+			fprintf(m_fp, "	ssc.data_set_array_from_csv( data, '%s', '%s');\n", name, (const char*)fn.c_str());
+		}
+		else
+		{
+			fprintf(m_fp, "	%s =[", name);
+			for (int i = 0; i < (len - 1); i++)
+			{
+				dbl_value = (double)p[i];
+				if (dbl_value > 1e38) dbl_value = 1e38;
+				fprintf(m_fp, " %.17g,", dbl_value);
+			}
+			dbl_value = (double)p[len - 1];
+			if (dbl_value > 1e38) dbl_value = 1e38;
+			fprintf(m_fp, " %.17g ];\n", dbl_value);
+			fprintf(m_fp, "	ssc.data_set_array( data, '%s',  %s);\n", name, name);
+		}
+		break;
+	case SSC_MATRIX:
+		p = ::ssc_data_get_matrix(p_data, name, &nr, &nc);
+		len = nr*nc;
+		if (len > array_matrix_threshold)
+		{ // separate csv file (var_name.csv in folder) for each variable
+			wxCSVData csv;
+			wxString fn = folder + "/" + TableElementFileNames(name) + ".csv";
+			for (int r = 0; r < nr; r++)
+			{
+				for (int c = 0; c < nc; c++)
+				{
+					dbl_value = (double)p[r*nc + c];
+					if (dbl_value > 1e38) dbl_value = 1e38;
+					csv.Set(r, c, wxString::Format("%.17g", dbl_value));
+				}
+			}
+			csv.WriteFile(fn);
+			fprintf(m_fp, "	ssc.data_set_matrix_from_csv( data, '%s', '%s');\n", name, (const char*)fn.c_str());
+		}
+		else
+		{
+			fprintf(m_fp, "	%s = [[", name);
+			for (int k = 0; k < (len - 1); k++)
+			{
+				dbl_value = (double)p[k];
+				if (dbl_value > 1e38) dbl_value = 1e38;
+				if (k%nc == (nc - 1))
+					fprintf(m_fp, " %.17g ], [", dbl_value);
+				else
+					fprintf(m_fp, " %.17g,  ", dbl_value);
+			}
+			dbl_value = (double)p[len - 1];
+			if (dbl_value > 1e38) dbl_value = 1e38;
+			fprintf(m_fp, " %.17g ]];\n", dbl_value);
+			fprintf(m_fp, "	ssc.data_set_matrix( data, '%s', %s );\n", name, name);
+		}
+		break;
+		// TODO tables in future
+	}
+	return true;
+}
+
+
+
+CodeGen_python3::CodeGen_python3(Case *cc, const wxString &folder) : CodeGen_python(cc, folder), CodeGen_Base(cc, folder)
+{
+}
+
+bool CodeGen_python3::Header()
+{
+	fprintf(m_fp, "from PySSC import PySSC\n");
+	fprintf(m_fp, "if __name__ == \"__main__\":\n");
+	fprintf(m_fp, "	ssc = PySSC()\n");
+	fprintf(m_fp, "	print ('Current folder = %s')\n", (const char*)m_folder.c_str());
+	fprintf(m_fp, "	print ('SSC Version = ', ssc.version())\n");
+	fprintf(m_fp, "	print ('SSC Build Information = ', ssc.build_info().decode(\"utf - 8\"))\n");
+	fprintf(m_fp, "	ssc.module_exec_set_print(0)\n");
+	fprintf(m_fp, "	data = ssc.data_create()\n");
+
+	return true;
+}
+
+bool CodeGen_python3::CreateSSCModule(wxString &name)
+{
+	if (name.IsNull() || name.Length() < 1)
+		return false;
+	else
+	{
+		fprintf(m_fp, "	module = ssc.module_create(b'%s')	\n", (const char*)name.c_str());
+	}
+	return true;
+}
+
+bool CodeGen_python3::RunSSCModule(wxString &name)
+{
+	fprintf(m_fp, "	ssc.module_exec_set_print( 0 );\n");
+	fprintf(m_fp, "	if ssc.module_exec(module, data) == 0:\n");
+	fprintf(m_fp, "		print ('%s simulation error')\n", (const char*)name.c_str());
+	fprintf(m_fp, "		idx = 1\n");
+	fprintf(m_fp, "		msg = ssc.module_log(module, 0)\n");
+	fprintf(m_fp, "		while (msg != None):\n");
+	fprintf(m_fp, "			print ('\t: ' + msg.decode(\"utf - 8\"))\n");
+	fprintf(m_fp, "			msg = ssc.module_log(module, idx)\n");
+	fprintf(m_fp, "			idx = idx + 1\n");
+	fprintf(m_fp, "		SystemExit( \"Simulation Error\" );\n");
+	return true;
+}
+
+bool CodeGen_python3::Output(ssc_data_t p_data)
 {
 	wxString str_value;
 	for (size_t ii = 0; ii < m_data.size(); ii++)
@@ -2711,7 +3121,7 @@ bool CodeGen_python::Output(ssc_data_t p_data)
 	return true;
 }
 
-bool CodeGen_python::Input(ssc_data_t p_data, const char *name, const wxString &folder, const int &array_matrix_threshold)
+bool CodeGen_python3::Input(ssc_data_t p_data, const char *name, const wxString &folder, const int &array_matrix_threshold)
 {
 	ssc_number_t value;
 	ssc_number_t *p;
@@ -2805,237 +3215,6 @@ bool CodeGen_python::Input(ssc_data_t p_data, const char *name, const wxString &
 	return true;
 }
 
-
-bool CodeGen_python::RunSSCModule(wxString &name)
-{
-	fprintf(m_fp, "	ssc.module_exec_set_print( 0 );\n");
-	fprintf(m_fp, "	if ssc.module_exec(module, data) == 0:\n");
-	fprintf(m_fp, "		print ('%s simulation error')\n", (const char*)name.c_str());
-	fprintf(m_fp, "		idx = 1\n");
-	fprintf(m_fp, "		msg = ssc.module_log(module, 0)\n");
-	fprintf(m_fp, "		while (msg != None):\n");
-	fprintf(m_fp, "			print ('\t: ' + msg)\n");
-	fprintf(m_fp, "			msg = ssc.module_log(module, idx)\n");
-	fprintf(m_fp, "			idx = idx + 1\n");
-	fprintf(m_fp, "		sys.exit( \"Simulation Error\" );\n");
-	return true;
-}
-
-
-bool CodeGen_python::Header()
-{
-	// top of file and supporting functions
-	fprintf(m_fp, "#Created with SAM version %s\n", (const char*)SamApp::VersionStr().c_str());
-	fprintf(m_fp, "import string, sys, struct, os\n");
-	fprintf(m_fp, "from ctypes import *\n");
-	fprintf(m_fp, "c_number = c_float # must be c_double or c_float depending on how defined in sscapi.h\n");
-	fprintf(m_fp, "class PySSC:\n");
-	fprintf(m_fp, "	def __init__(self):\n");
-	fprintf(m_fp, "		if sys.platform == 'win32' or sys.platform == 'cygwin':\n");
-	fprintf(m_fp, "			if 8*struct.calcsize(\"P\") == 64:\n");
-	fprintf(m_fp, "				self.pdll = CDLL(\"ssc.dll\") \n");
-	fprintf(m_fp, "			else:\n");
-	fprintf(m_fp, "				self.pdll = CDLL(\"ssc.dll\") \n");
-	fprintf(m_fp, "		elif sys.platform == 'darwin':\n");
-	fprintf(m_fp, "			self.pdll = CDLL(\"ssc.dylib\") \n");
-	fprintf(m_fp, "		elif sys.platform == 'linux2':\n");
-	fprintf(m_fp, "			self.pdll = CDLL('./ssc.so')   # instead of relative path, require user to have on LD_LIBRARY_PATH\n");
-	fprintf(m_fp, "		else:\n");
-	fprintf(m_fp, "			print ('Platform not supported ', sys.platform)\n");
-	fprintf(m_fp, "	INVALID=0\n");
-	fprintf(m_fp, "	STRING=1\n");
-	fprintf(m_fp, "	NUMBER=2\n");
-	fprintf(m_fp, "	ARRAY=3\n");
-	fprintf(m_fp, "	MATRIX=4\n");
-	fprintf(m_fp, "	INPUT=1\n");
-	fprintf(m_fp, "	OUTPUT=2\n");
-	fprintf(m_fp, "	INOUT=3\n");
-	fprintf(m_fp, "	def version(self):\n");
-	fprintf(m_fp, "		self.pdll.ssc_version.restype = c_int\n");
-	fprintf(m_fp, "		return self.pdll.ssc_version()\n");
-	fprintf(m_fp, "	def build_info(self):\n");
-	fprintf(m_fp, "		self.pdll.ssc_build_info.restype = c_char_p\n");
-	fprintf(m_fp, "		return self.pdll.ssc_build_info()\n");
-	fprintf(m_fp, "	def data_create(self):\n");
-	fprintf(m_fp, "		self.pdll.ssc_data_create.restype = c_void_p\n");
-	fprintf(m_fp, "		return self.pdll.ssc_data_create()\n");
-	fprintf(m_fp, "	def data_free(self, p_data):\n");
-	fprintf(m_fp, "		self.pdll.ssc_data_free( c_void_p(p_data) )\n");
-	fprintf(m_fp, "	def data_clear(self, p_data):\n");
-	fprintf(m_fp, "		self.pdll.ssc_data_clear( c_void_p(p_data) )\n");
-	fprintf(m_fp, "	def data_unassign(self, p_data, name):\n");
-	fprintf(m_fp, "		self.pdll.ssc_data_unassign( c_void_p(p_data), c_char_p(name) )\n");
-	fprintf(m_fp, "	def data_query(self, p_data, name):\n");
-	fprintf(m_fp, "		self.pdll.ssc_data_query.restype = c_int\n");
-	fprintf(m_fp, "		return self.pdll.ssc_data_query( c_void_p(p_data), c_char_p(name) )\n");
-	fprintf(m_fp, "	def data_first(self, p_data):\n");
-	fprintf(m_fp, "		self.pdll.ssc_data_first.restype = c_char_p\n");
-	fprintf(m_fp, "		return self.pdll.ssc_data_first( c_void_p(p_data) )\n");
-	fprintf(m_fp, "	def data_next(self, p_data):\n");
-	fprintf(m_fp, "		self.pdll.ssc_data_next.restype = c_char_p\n");
-	fprintf(m_fp, "		return self.pdll.ssc_data_next( c_void_p(p_data) )\n");
-	fprintf(m_fp, "	def data_set_string(self, p_data, name, value):\n");
-	fprintf(m_fp, "		self.pdll.ssc_data_set_string( c_void_p(p_data), c_char_p(name), c_char_p(value) )\n");
-	fprintf(m_fp, "	def data_set_number(self, p_data, name, value):\n");
-	fprintf(m_fp, "		self.pdll.ssc_data_set_number( c_void_p(p_data), c_char_p(name), c_number(value) )\n");
-	fprintf(m_fp, "	def data_set_array(self,p_data,name,parr):\n");
-	fprintf(m_fp, "		count = len(parr)\n");
-	fprintf(m_fp, "		arr = (c_number*count)()\n");
-	fprintf(m_fp, "		arr[:] = parr # set all at once instead of looping\n");
-	fprintf(m_fp, "		return self.pdll.ssc_data_set_array( c_void_p(p_data), c_char_p(name),pointer(arr), c_int(count))\n");
-	fprintf(m_fp, "	def data_set_array_from_csv(self, p_data, name, fn) :\n");
-	fprintf(m_fp, "		f = open(fn, 'rb'); \n");
-	fprintf(m_fp, "		data = []; \n");
-	fprintf(m_fp, "		for line in f : \n");
-	fprintf(m_fp, "			data.extend([n for n in map(float, line.split(b','))])\n");
-	fprintf(m_fp, "		f.close(); \n");
-	fprintf(m_fp, "		return self.data_set_array(p_data, name, data); \n");
-	fprintf(m_fp, "	def data_set_matrix(self,p_data,name,mat):\n");
-	fprintf(m_fp, "		nrows = len(mat)\n");
-	fprintf(m_fp, "		ncols = len(mat[0])\n");
-	fprintf(m_fp, "		size = nrows*ncols\n");
-	fprintf(m_fp, "		arr = (c_number*size)()\n");
-	fprintf(m_fp, "		idx=0\n");
-	fprintf(m_fp, "		for r in range(nrows):\n");
-	fprintf(m_fp, "			for c in range(ncols):\n");
-	fprintf(m_fp, "				arr[idx] = c_number(mat[r][c])\n");
-	fprintf(m_fp, "				idx=idx+1\n");
-	fprintf(m_fp, "		return self.pdll.ssc_data_set_matrix( c_void_p(p_data), c_char_p(name),pointer(arr), c_int(nrows), c_int(ncols))\n");
-	fprintf(m_fp, "	def data_set_matrix_from_csv(self, p_data, name, fn) :\n");
-	fprintf(m_fp, "		f = open(fn, 'rb'); \n");
-	fprintf(m_fp, "		data = []; \n");
-	fprintf(m_fp, "		for line in f : \n");
-	fprintf(m_fp, "			lst = ([n for n in map(float, line.split(b','))])\n");
-	fprintf(m_fp, "			data.append(lst);\n");
-	fprintf(m_fp, "		f.close(); \n");
-	fprintf(m_fp, "		return self.data_set_matrix(p_data, name, data); \n");
-	fprintf(m_fp, "	def data_set_table(self,p_data,name,tab):\n");
-	fprintf(m_fp, "		return self.pdll.ssc_data_set_table( c_void_p(p_data), c_char_p(name), c_void_p(tab) );\n");
-	fprintf(m_fp, "	def data_get_string(self, p_data, name):\n");
-	fprintf(m_fp, "		self.pdll.ssc_data_get_string.restype = c_char_p\n");
-	fprintf(m_fp, "		return self.pdll.ssc_data_get_string( c_void_p(p_data), c_char_p(name) )\n");
-	fprintf(m_fp, "	def data_get_number(self, p_data, name):\n");
-	fprintf(m_fp, "		val = c_number(0)\n");
-	fprintf(m_fp, "		self.pdll.ssc_data_get_number( c_void_p(p_data), c_char_p(name), byref(val) )\n");
-	fprintf(m_fp, "		return val.value\n");
-	fprintf(m_fp, "	def data_get_array(self,p_data,name):\n");
-	fprintf(m_fp, "		count = c_int()\n");
-	fprintf(m_fp, "		self.pdll.ssc_data_get_array.restype = POINTER(c_number)\n");
-	fprintf(m_fp, "		parr = self.pdll.ssc_data_get_array( c_void_p(p_data), c_char_p(name), byref(count))\n");
-	fprintf(m_fp, "		arr = parr[0:count.value] # extract all at once			\n");
-	fprintf(m_fp, "		return arr\n");
-	fprintf(m_fp, "	def data_get_matrix(self,p_data,name):\n");
-	fprintf(m_fp, "		nrows = c_int()\n");
-	fprintf(m_fp, "		ncols = c_int()\n");
-	fprintf(m_fp, "		self.pdll.ssc_data_get_matrix.restype = POINTER(c_number)\n");
-	fprintf(m_fp, "		parr = self.pdll.ssc_data_get_matrix( c_void_p(p_data), c_char_p(name), byref(nrows), byref(ncols) )\n");
-	fprintf(m_fp, "		idx = 0\n");
-	fprintf(m_fp, "		mat = []\n");
-	fprintf(m_fp, "		for r in range(nrows.value):\n");
-	fprintf(m_fp, "			row = []\n");
-	fprintf(m_fp, "			for c in range(ncols.value):\n");
-	fprintf(m_fp, "				row.append( float(parr[idx]) )\n");
-	fprintf(m_fp, "				idx = idx + 1\n");
-	fprintf(m_fp, "			mat.append(row)\n");
-	fprintf(m_fp, "		return mat\n");
-	fprintf(m_fp, "	# don't call data_free() on the result, it's an internal\n");
-	fprintf(m_fp, "	# pointer inside SSC\n");
-	fprintf(m_fp, "	def data_get_table(self,p_data,name): \n");
-	fprintf(m_fp, "		return self.pdll.ssc_data_get_table( c_void_p(p_data), name );\n");
-	fprintf(m_fp, "	def module_entry(self,index):\n");
-	fprintf(m_fp, "		self.pdll.ssc_module_entry.restype = c_void_p\n");
-	fprintf(m_fp, "		return self.pdll.ssc_module_entry( c_int(index) )\n");
-	fprintf(m_fp, "	def entry_name(self,p_entry):\n");
-	fprintf(m_fp, "		self.pdll.ssc_entry_name.restype = c_char_p\n");
-	fprintf(m_fp, "		return self.pdll.ssc_entry_name( c_void_p(p_entry) )\n");
-	fprintf(m_fp, "	def entry_description(self,p_entry):\n");
-	fprintf(m_fp, "		self.pdll.ssc_entry_description.restype = c_char_p\n");
-	fprintf(m_fp, "		return self.pdll.ssc_entry_description( c_void_p(p_entry) )\n");
-	fprintf(m_fp, "	def entry_version(self,p_entry):\n");
-	fprintf(m_fp, "		self.pdll.ssc_entry_version.restype = c_int\n");
-	fprintf(m_fp, "		return self.pdll.ssc_entry_version( c_void_p(p_entry) )\n");
-	fprintf(m_fp, "	def module_create(self,name):\n");
-	fprintf(m_fp, "		self.pdll.ssc_module_create.restype = c_void_p\n");
-	fprintf(m_fp, "		return self.pdll.ssc_module_create( c_char_p(name) )\n");
-	fprintf(m_fp, "	def module_free(self,p_mod):\n");
-	fprintf(m_fp, "		self.pdll.ssc_module_free( c_void_p(p_mod) )\n");
-	fprintf(m_fp, "	def module_var_info(self,p_mod,index):\n");
-	fprintf(m_fp, "		self.pdll.ssc_module_var_info.restype = c_void_p\n");
-	fprintf(m_fp, "		return self.pdll.ssc_module_var_info( c_void_p(p_mod), c_int(index) )\n");
-	fprintf(m_fp, "	def info_var_type( self, p_inf ):\n");
-	fprintf(m_fp, "		return self.pdll.ssc_info_var_type( c_void_p(p_inf) )\n");
-	fprintf(m_fp, "	def info_data_type( self, p_inf ):\n");
-	fprintf(m_fp, "		return self.pdll.ssc_info_data_type( c_void_p(p_inf) )\n");
-	fprintf(m_fp, "	def info_name( self, p_inf ):\n");
-	fprintf(m_fp, "		self.pdll.ssc_info_name.restype = c_char_p\n");
-	fprintf(m_fp, "		return self.pdll.ssc_info_name( c_void_p(p_inf) )\n");
-	fprintf(m_fp, "	def info_label( self, p_inf ):\n");
-	fprintf(m_fp, "		self.pdll.ssc_info_label.restype = c_char_p\n");
-	fprintf(m_fp, "		return self.pdll.ssc_info_label( c_void_p(p_inf) )\n");
-	fprintf(m_fp, "	def info_units( self, p_inf ):\n");
-	fprintf(m_fp, "		self.pdll.ssc_info_units.restype = c_char_p\n");
-	fprintf(m_fp, "		return self.pdll.ssc_info_units( c_void_p(p_inf) )\n");
-	fprintf(m_fp, "	def info_meta( self, p_inf ):\n");
-	fprintf(m_fp, "		self.pdll.ssc_info_meta.restype = c_char_p\n");
-	fprintf(m_fp, "		return self.pdll.ssc_info_meta( c_void_p(p_inf) )\n");
-	fprintf(m_fp, "	def info_group( self, p_inf ):\n");
-	fprintf(m_fp, "		self.pdll.ssc_info_group.restype = c_char_p\n");
-	fprintf(m_fp, "		return self.pdll.ssc_info_group( c_void_p(p_inf) )\n");
-	fprintf(m_fp, "	def info_uihint( self, p_inf ):\n");
-	fprintf(m_fp, "		self.pdll.ssc_info_uihint.restype = c_char_p\n");
-	fprintf(m_fp, "		return self.pdll.ssc_info_uihint( c_void_p(p_inf) )\n");
-	fprintf(m_fp, "	def module_exec( self, p_mod, p_data ):\n");
-	fprintf(m_fp, "		self.pdll.ssc_module_exec.restype = c_int\n");
-	fprintf(m_fp, "		return self.pdll.ssc_module_exec( c_void_p(p_mod), c_void_p(p_data) )\n");
-	fprintf(m_fp, "		ssc_module_exec_simple_nothread\n");
-	fprintf(m_fp, "	def module_exec_simple_no_thread( self, modname, data ):\n");
-	fprintf(m_fp, "		self.pdll.ssc_module_exec_simple_nothread.restype = c_char_p;\n");
-	fprintf(m_fp, "		return self.pdll.ssc_module_exec_simple_nothread( c_char_p(modname), c_void_p(data) );\n");
-	fprintf(m_fp, "	def module_log( self, p_mod, index ):\n");
-	fprintf(m_fp, "		log_type = c_int()\n");
-	fprintf(m_fp, "		time = c_float()\n");
-	fprintf(m_fp, "		self.pdll.ssc_module_log.restype = c_char_p\n");
-	fprintf(m_fp, "		return self.pdll.ssc_module_log( c_void_p(p_mod), c_int(index), byref(log_type), byref(time) )\n");
-	fprintf(m_fp, "	def module_exec_set_print( self, prn ):\n");
-	fprintf(m_fp, "		return self.pdll.ssc_module_exec_set_print( c_int(prn) );\n");
-	fprintf(m_fp, "if __name__ == \"__main__\":\n");
-	fprintf(m_fp, "	ssc = PySSC()\n");
-	fprintf(m_fp, "	print ('Current folder = %s')\n", (const char*)m_folder.c_str());
-	fprintf(m_fp, "	print ('SSC Version = ', ssc.version())\n");
-	fprintf(m_fp, "	print ('SSC Build Information = ', ssc.build_info())\n");
-	fprintf(m_fp, "	ssc.module_exec_set_print(0)\n");
-	fprintf(m_fp, "	data = ssc.data_create()\n");
-
-	return true;
-}
-
-bool CodeGen_python::CreateSSCModule(wxString &name)
-{
-	if (name.IsNull() || name.Length() < 1)
-		return false;
-	else
-	{
-		fprintf(m_fp, "	module = ssc.module_create(b'%s')	\n", (const char*)name.c_str());
-	}
-	return true;
-}
-
-bool CodeGen_python::FreeSSCModule()
-{
-	fprintf(m_fp, "	ssc.module_free(module)\n");
-	return true;
-}
-
-bool CodeGen_python::SupportingFiles()
-{
-	return true;
-}
-
-bool CodeGen_python::Footer()
-{
-	fprintf(m_fp, "	ssc.data_free(data);");
-	return true;
-}
 
 
 // java code generation class
