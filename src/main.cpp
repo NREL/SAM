@@ -1779,6 +1779,7 @@ public:
 
 bool SamApp::OnInit()
 {
+
 #ifdef __WXMSW__
 	/*wxMSWSetupExceptionHandler( 
 		wxString("SAM"),
