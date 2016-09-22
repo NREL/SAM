@@ -26,10 +26,10 @@
 	num_strings = get('strings_in_parallel'); //672
 	num_inverters = get('inverter_count');
 	inverter_size = ?(get('inverter_model')) [get('inv_snl_paco'), get('inv_ds_paco'), get('inv_pd_paco')];
-	num_combiners = 4;//48; //need to make an input!!
+	num_combiners = 12;//48; //need to make an input!!
 	num_strings_per_combiner = num_strings / num_combiners; //need to error check!!
 	num_disconnects = num_inverters; //need to make an input!!
-	num_transformers = 1; //2; //need to make an input!!
+	num_transformers = 2; //need to make an input!!
 	num_inverters_per_transformer = num_inverters / num_transformers; //need to error check!!
 	num_trackers = ceil(num_strings / 2); //need to make an input!!
 	system_lifetime_yrs = get('analysis_period');
@@ -132,7 +132,7 @@ degradation_factor = 1 - percentage the component has degraded at this time (ex.
 	module_meta.warranty.days = 20 * 365; //years converted to days
 	//failure mode 1: normal failures
 	module_meta.failure[0].distribution = 'normal';
-	module_meta.failure[0].parameters = [35 * 365, 8 * 365]; //mean, std, years converted to days
+	module_meta.failure[0].parameters = [4 * 365, 1 * 365]; //mean, std, years converted to days
 	module_meta.failure[0].times = null;
 	module_meta.failure[0].labor_time = 2; //hours
 	module_meta.failure[0].cost = 322; //$
@@ -144,11 +144,11 @@ degradation_factor = 1 - percentage the component has degraded at this time (ex.
 	module_meta.failure[1].cost = 322; //$
 	module_meta.failure[1].fraction = 20 / 100; //% converted to fraction
 	module_meta.repair.can_repair = true;
-	module_meta.repair.distribution = 'lognormal';
-	module_meta.repair.parameters =  [45, 15]; //mean, std, in days
+	module_meta.repair.distribution = 'lognormal-n';
+	module_meta.repair.parameters =  [60, 20]; //mean, std, in days
 	module_meta.repair.times = null;
 	module_meta.degradation.can_degrade = true;
-	module_meta.degradation.rate = 1; //%/year
+	module_meta.degradation.rate = 1.28; //%/year
 	
 	// Strings
 	global strings = alloc(num_strings);
@@ -162,8 +162,8 @@ degradation_factor = 1 - percentage the component has degraded at this time (ex.
 	string_meta.failure[0].labor_time = 1; //hours
 	string_meta.failure[0].cost = 20; //$
 	string_meta.repair.can_repair = true;
-	string_meta.repair.distribution = 'normal';
-	string_meta.repair.parameters = [10, 5]; //mean, std, in days
+	string_meta.repair.distribution = 'lognormal-n';
+	string_meta.repair.parameters = [7, 3]; //mean, std, years converted to days
 	string_meta.repair.times = null;
 	string_meta.degradation.can_degrade = false;
 	
@@ -173,14 +173,14 @@ degradation_factor = 1 - percentage the component has degraded at this time (ex.
 	combiner_meta.can_fail = true;
 	combiner_meta.number = num_combiners;
 	combiner_meta.warranty.has_warranty = false;
-	combiner_meta.failure[0].distribution = 'lognormal';
-	combiner_meta.failure[0].parameters = [153.3, 14.235]; //mean, std, in days
+	combiner_meta.failure[0].distribution = 'normal';
+	combiner_meta.failure[0].parameters = [2 * 365, 0.5 * 365]; //mean, std, years converted to days
 	combiner_meta.failure[0].times = null;
 	combiner_meta.failure[0].labor_time = 2; //hours
 	combiner_meta.failure[0].cost = 976; //$
 	combiner_meta.repair.can_repair = true;
 	combiner_meta.repair.distribution = 'exponential';
-	combiner_meta.repair.parameters = [5]; //mean, in days
+	combiner_meta.repair.parameters = [3]; //mean, years converted to days
 	combiner_meta.repair.times = null;
 	combiner_meta.degradation.can_degrade = false;
 	
@@ -211,13 +211,13 @@ degradation_factor = 1 - percentage the component has degraded at this time (ex.
 	inverter_meta.failure[1].cost = inverter_routine_cost;
 	//failure mode 3: catastrophic failure
 	inverter_meta.failure[2].distribution = 'normal';
-	inverter_meta.failure[2].parameters = [10 * 365, 1 * 365]; //mean, std, in years converted to days
+	inverter_meta.failure[2].parameters = [3652.5, 365.25]; //mean, std, in days
 	inverter_meta.failure[2].times = null;
 	inverter_meta.failure[2].labor_time = 0;
 	inverter_meta.failure[2].cost = 0.35 * get('inv_snl_paco'); //35 cents per watt
 	//other
 	inverter_meta.repair.can_repair = true;
-	inverter_meta.repair.distribution = 'lognormal';
+	inverter_meta.repair.distribution = 'lognormal-n';
 	inverter_meta.repair.parameters = [3, 1.5]; //mean, std, in days
 	inverter_meta.repair.times = null;
 	inverter_meta.degradation.can_degrade = false;
@@ -230,13 +230,13 @@ degradation_factor = 1 - percentage the component has degraded at this time (ex.
 	disconnect_meta.number = num_disconnects;
 	disconnect_meta.warranty.has_warranty = false;
 	disconnect_meta.failure[0].distribution = 'weibull';
-	disconnect_meta.failure[0].parameters = [0.3477, 2.82 * 365]; //slope (same as shape factor)- unitless, mean- years converted to days
+	disconnect_meta.failure[0].parameters = [0.3477, 3 * 365]; //slope (same as shape factor)- unitless, mean- years converted to days
 	disconnect_meta.failure[0].times = null;
 	disconnect_meta.failure[0].labor_time = 4; //hours
 	disconnect_meta.failure[0].cost = 500; //$
 	disconnect_meta.repair.can_repair = true;
-	disconnect_meta.repair.distribution = 'lognormal';
-	disconnect_meta.repair.parameters = [1.75, 1.62]; //mean, std, in days
+	disconnect_meta.repair.distribution = 'lognormal-n';
+	disconnect_meta.repair.parameters = [1, 0.5]; //mean, std, in years converted to days
 	disconnect_meta.repair.times = null;
 	disconnect_meta.degradation.can_degrade = false;
 	
@@ -247,13 +247,13 @@ degradation_factor = 1 - percentage the component has degraded at this time (ex.
 	transformer_meta.number = num_transformers;
 	transformer_meta.warranty.has_warranty = false;
 	transformer_meta.failure[0].distribution = 'weibull';
-	transformer_meta.failure[0].parameters = [0.3477, 0.845 * 365]; //slope (shape factor)- unitless, mean- yrs converted to days
+	transformer_meta.failure[0].parameters = [0.3477, 2 * 365]; //slope (shape factor)- unitless, mean- days
 	transformer_meta.failure[0].times = null;
 	transformer_meta.failure[0].labor_time = 10; //hours
 	transformer_meta.failure[0].cost = 32868; //$
 	transformer_meta.repair.can_repair = true;
 	transformer_meta.repair.distribution = 'lognormal-n';
-	transformer_meta.repair.parameters = [0.22, 0.25]; //mean, std, in days
+	transformer_meta.repair.parameters = [0.25, 0.5]; //mean, std, in days
 	transformer_meta.repair.times = null;
 	transformer_meta.degradation.can_degrade = false;
 	
@@ -264,13 +264,13 @@ degradation_factor = 1 - percentage the component has degraded at this time (ex.
 	grid_meta.number = 1;
 	grid_meta.warranty.has_warranty = false;
 	grid_meta.failure[0].distribution = 'weibull';
-	grid_meta.failure[0].parameters = [0.75, 0.42 * 365]; //slope (shape factor)- unitless, mean- years converted to days
+	grid_meta.failure[0].parameters = [0.75, 100]; //slope (shape factor)- unitless, mean- days
 	grid_meta.failure[0].times = null;
 	grid_meta.failure[0].labor_time = 0;
 	grid_meta.failure[0].cost = 0;
 	grid_meta.repair.can_repair = true;
 	grid_meta.repair.distribution = 'exponential';
-	grid_meta.repair.parameters = [0.155]; //mean in days
+	grid_meta.repair.parameters = [0.5]; //mean in days
 	grid_meta.repair.times = null;
 	grid_meta.degradation.can_degrade = false;
 	
@@ -283,7 +283,7 @@ degradation_factor = 1 - percentage the component has degraded at this time (ex.
 		tracker_meta.number = num_trackers;
 		tracker_meta.warranty.has_warranty = false;
 		tracker_meta.failure[0].distribution = 'exponential';
-		tracker_meta.failure[0].parameters = [0.083 / 365]; //mean per year converted to per day
+		tracker_meta.failure[0].parameters = [0.000228]; //mean per year in days
 		tracker_meta.failure[0].times = null;
 		tracker_meta.failure[0].labor_time = 0;
 		tracker_meta.failure[0].cost = 2000; //present day tracker cost, will be inflated
@@ -306,6 +306,9 @@ degradation_factor = 1 - percentage the component has degraded at this time (ex.
 	Returns an array of the calculated samples.*/
 function LHS(name, distribution_type, parameters, num_samples)
 {
+	
+	if (num_samples > 20000)
+		num_samples = 20000; //LHS can only run so many samples at a time
 	lhs = lhs_create();
 	lhs_dist(lhs, 'x', distribution_type, parameters);
 	if (!lhs_run(lhs, num_samples))
@@ -357,7 +360,8 @@ function initialize_component(component_meta, component_vector, component_idx, b
 	{
 		//check the vector of failure times for this failure mode
 		if (component_meta.failure[j].times == null || #component_meta.failure[j].times <= 0) //null on initialization of very first component, less than zero when you've used up the pre-calculated vector
-			component_meta.failure[j].times = LHS(to_string(component_meta.failure[j].times), component_meta.failure[j].distribution, component_meta.failure[j].parameters, (#component_vector * 10));
+			component_meta.failure[j].times = LHS('failure mode '+to_string(component_meta.failure[j].distribution)+to_string(component_meta.failure[j].parameters), component_meta.failure[j].distribution, 
+				component_meta.failure[j].parameters, (#component_vector * 10));
 		//check if this failure mode is a defective mode
 		if (component_meta.failure[j].fraction != null) //only defective failure modes have a fraction associated with them
 			component_vector[component_idx].defective = rand() < component_meta.failure[j].fraction; //randomly assign a given fraction of components to be defective
@@ -376,7 +380,8 @@ function initialize_component(component_meta, component_vector, component_idx, b
 
 	// Time to replacement or repair in case of failure
 	if (component_meta.repair.times == null || #component_meta.repair.times <= 0) //null on initialization of very first component, less than zero when you've used up the array
-		component_meta.repair.times = LHS(to_string(component_meta.repair.times), component_meta.repair.distribution, component_meta.repair.parameters, (#component_vector * 10));
+		component_meta.repair.times = LHS('repairs'+to_string(component_meta.repair.distribution)+to_string(component_meta.repair.parameters), component_meta.repair.distribution, 
+			component_meta.repair.parameters, (#component_vector * 10));
 	component_vector[component_idx].time_to_repair = component_meta.repair.times[0];
 	component_meta.repair.times -@ 0; //remove the repair time that was just used
 	
