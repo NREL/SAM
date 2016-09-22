@@ -375,8 +375,67 @@ void AFSchedNumeric::OnNumChanged(wxCommandEvent &evt)
 	copyevt.SetId( this->GetId() );
 	GetEventHandler()->ProcessEvent(copyevt);
 }
+BEGIN_EVENT_TABLE( AFTableDataCtrl, wxButton )
+	EVT_BUTTON( wxID_ANY, AFTableDataCtrl::OnPressed )
+END_EVENT_TABLE()
+AFTableDataCtrl::AFTableDataCtrl( wxWindow *parent, int id,
+	const wxPoint &pos, const wxSize &size)
+	: wxButton( parent, id, "Edit values...", pos, size )
+{
+	m_expandable = false;
+}
 
+void AFTableDataCtrl::SetFields( const wxArrayString &list )
+{
+	m_values.clear();
+	for( size_t i=0;i<list.size();i++ )
+		m_values[ list[i] ] = 0.0f;
+}
 
+wxArrayString AFTableDataCtrl::GetFields()
+{
+	wxArrayString list;
+	for( unordered_map<wxString,double>::iterator it = m_values.begin();
+		it != m_values.end();
+		++it )
+		list.Add( it->first );
+	return list;
+}
+
+void AFTableDataCtrl::Clear()
+{
+	m_values.clear();
+}
+	
+void AFTableDataCtrl::SetExpandable( bool b ){ m_expandable = b; }
+bool AFTableDataCtrl::GetExpandable() { return m_expandable; }
+
+void AFTableDataCtrl::Set( const wxString &var,double value )
+{
+	m_values[var]=value;
+}
+
+double AFTableDataCtrl::Get( const wxString &var )
+{
+	unordered_map<wxString,double>::iterator it = m_values.find( var );
+	if ( it == m_values.end() ) return std::numeric_limits<double>::quiet_NaN();
+	else return m_values[ var ];
+}
+	
+void AFTableDataCtrl::SetDescription(const wxString &s)
+{
+	m_description = s;
+}
+
+wxString AFTableDataCtrl::GetDescription()
+{
+	return m_description;
+}
+
+void AFTableDataCtrl::OnPressed(wxCommandEvent &evt)
+{
+	wxMessageBox("Dialog not yet constructed...");
+}
 
 
 BEGIN_EVENT_TABLE(AFMonthlyFactorCtrl, wxButton)

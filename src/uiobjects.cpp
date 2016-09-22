@@ -124,6 +124,39 @@ public:
 	}
 };
 
+class wxUITableDataObject : public wxUIObject
+{
+public:
+	wxUITableDataObject() {
+		AddProperty("Description", new wxUIProperty( wxString("Table of values") ) );
+		AddProperty("TabOrder", new wxUIProperty( (int)-1 ) );
+	}
+	virtual wxString GetTypeName() { return "TableData"; }
+	virtual wxUIObject *Duplicate() { wxUIObject *o = new wxUITableDataObject; o->Copy( this ); return o; }
+	virtual bool IsNativeObject() { return true; }
+	virtual bool DrawDottedOutline() { return false; }
+	virtual wxWindow *CreateNative( wxWindow *parent ) {
+		AFTableDataCtrl *mf = new AFTableDataCtrl( parent, wxID_ANY );
+		mf->SetDescription( Property("Description").GetString() );
+		return AssignNative( mf );
+	}
+	virtual void OnPropertyChanged( const wxString &id, wxUIProperty *p )
+	{
+		if ( AFTableDataCtrl *pt = GetNative<AFTableDataCtrl>() )
+			if ( id == "Description" ) pt->SetDescription( p->GetString() );
+	}
+	virtual void Draw( wxWindow *win, wxDC &dc, const wxRect &geom )
+	{
+		wxRendererNative::Get().DrawPushButton( win, dc, geom );
+		dc.SetFont( *wxNORMAL_FONT );
+		dc.SetTextForeground( *wxBLACK );
+		wxString label("Edit...");
+		int x, y;
+		dc.GetTextExtent( label, &x, &y );
+		dc.DrawText( label, geom.x + geom.width/2-x/2, geom.y+geom.height/2-y/2 );
+	}
+};
+
 
 class wxUIPTLayoutObject : public wxUIObject
 {
@@ -651,4 +684,5 @@ void RegisterUIObjectsForSAM()
 	wxUIObjectTypeProvider::Register( new wxUILibraryCtrl );
 	wxUIObjectTypeProvider::Register( new wxUILossAdjustmentCtrl );
 	wxUIObjectTypeProvider::Register( new wxUIScene3DObject );
+	wxUIObjectTypeProvider::Register( new wxUITableDataObject );
 }
