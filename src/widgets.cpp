@@ -375,6 +375,63 @@ void AFSchedNumeric::OnNumChanged(wxCommandEvent &evt)
 	copyevt.SetId( this->GetId() );
 	GetEventHandler()->ProcessEvent(copyevt);
 }
+
+class AFTableDataDialog : public wxDialog
+{
+	wxExtGridCtrl *m_grid;
+
+public:
+	AFTableDataDialog( wxWindow *parent, const wxString &title )
+		: wxDialog( parent, wxID_ANY, title, wxDefaultPosition, wxScaleSize(500, 300), wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER )
+	{
+		m_grid = new wxExtGridCtrl( this, wxID_ANY );
+		m_grid->CreateGrid( 10, 2 );
+		m_grid->SetRowLabelSize( 0 );
+		m_grid->SetColLabelValue( 0, "Name" );
+		m_grid->SetColLabelValue( 1, "Value" );
+
+		wxBoxSizer *sizer = new wxBoxSizer( wxVERTICAL );
+		sizer->Add( m_grid, 1, wxALL|wxEXPAND, 0 );
+		sizer->Add( CreateButtonSizer( wxOK|wxCANCEL ), 0, wxALL|wxEXPAND, 10 );
+		SetSizer( sizer );
+	}
+
+	void SetData( const KeyValueMap &map )
+	{
+		if ( map.size() == 0 ) return;
+
+		wxArrayString keys;
+		for( KeyValueMap::const_iterator it = map.begin();
+			it != map.end();
+			++it )
+			keys.Add( it->first );
+
+		keys.Sort();
+
+		m_grid->ResizeGrid( map.size(), 2 );
+		for( size_t i=0;i<keys.size();i++ )
+		{
+			m_grid->SetCellValue( i, 0, keys[i] );
+			KeyValueMap::const_iterator it = map.find( keys[i] );
+			if ( it != map.end() )
+				m_grid->SetCellValue( i, 1, wxString::Format("%lg", it->second ) );
+		}
+	}
+
+	void GetData( KeyValueMap &map )
+	{
+		map.clear();
+		for( int row=0;row<m_grid->GetNumberRows();row++ )
+			map[ m_grid->GetCellValue( row, 0 ) ] = wxAtof( m_grid->GetCellValue( row, 1 ) );
+	}
+
+	DECLARE_EVENT_TABLE();
+};
+
+BEGIN_EVENT_TABLE( AFTableDataDialog, wxDialog )
+END_EVENT_TABLE()
+
+
 BEGIN_EVENT_TABLE( AFTableDataCtrl, wxButton )
 	EVT_BUTTON( wxID_ANY, AFTableDataCtrl::OnPressed )
 END_EVENT_TABLE()
@@ -434,13 +491,20 @@ wxString AFTableDataCtrl::GetDescription()
 
 void AFTableDataCtrl::OnPressed(wxCommandEvent &evt)
 {
-	wxMessageBox("Dialog not yet constructed...");
-}
+	AFTableDataDialog dlg( this, "Edit values" );
+	dlg.SetData( m_values );
+	if ( wxID_OK == dlg.ShowModal() )
+	{
+		dlg.GetData( m_values );
+		evt.Skip();  // allow event to propagate indicating underlying value changed
+	}
 
+}
 
 BEGIN_EVENT_TABLE(AFMonthlyFactorCtrl, wxButton)
 EVT_BUTTON(wxID_ANY, AFMonthlyFactorCtrl::OnPressed)
 END_EVENT_TABLE()
+
 AFMonthlyFactorCtrl::AFMonthlyFactorCtrl( wxWindow *parent, int id, 
 	const wxPoint &pos, const wxSize &size)
 	: wxButton( parent, id, "Edit values...", pos, size )
