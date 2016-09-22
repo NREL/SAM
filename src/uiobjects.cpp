@@ -110,7 +110,9 @@ public:
 	virtual void OnPropertyChanged( const wxString &id, wxUIProperty *p )
 	{
 		if ( AFMonthlyFactorCtrl *pt = GetNative<AFMonthlyFactorCtrl>() )
+		{
 			if ( id == "Description" ) pt->SetDescription( p->GetString() );
+		}
 	}
 	virtual void Draw( wxWindow *win, wxDC &dc, const wxRect &geom )
 	{
@@ -129,6 +131,7 @@ class wxUITableDataObject : public wxUIObject
 public:
 	wxUITableDataObject() {
 		AddProperty("Description", new wxUIProperty( wxString("Table of values") ) );
+		AddProperty( "Fields",  new wxUIProperty( wxArrayString() ) );
 		AddProperty("TabOrder", new wxUIProperty( (int)-1 ) );
 	}
 	virtual wxString GetTypeName() { return "TableData"; }
@@ -138,12 +141,16 @@ public:
 	virtual wxWindow *CreateNative( wxWindow *parent ) {
 		AFTableDataCtrl *mf = new AFTableDataCtrl( parent, wxID_ANY );
 		mf->SetDescription( Property("Description").GetString() );
+		mf->SetFields( Property("Fields").GetStringList() );
 		return AssignNative( mf );
 	}
 	virtual void OnPropertyChanged( const wxString &id, wxUIProperty *p )
 	{
 		if ( AFTableDataCtrl *pt = GetNative<AFTableDataCtrl>() )
+		{
 			if ( id == "Description" ) pt->SetDescription( p->GetString() );
+			if ( id == "Fields" ) pt->SetFields( p->GetStringList() );
+		}
 	}
 	virtual void Draw( wxWindow *win, wxDC &dc, const wxRect &geom )
 	{

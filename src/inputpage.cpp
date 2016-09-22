@@ -68,6 +68,7 @@ BEGIN_EVENT_TABLE( ActiveInputPage, wxPanel )
 	EVT_SHADINGBUTTON( wxID_ANY, ActiveInputPage::OnNativeEvent )
 	EVT_VALUEMATRIXBUTTON( wxID_ANY, ActiveInputPage::OnNativeEvent )
 	EVT_LIBRARYCTRL( wxID_ANY, ActiveInputPage::OnNativeEvent )
+	EVT_TABLEDATA( wxID_ANY, ActiveInputPage::OnNativeEvent )
 
 	EVT_ERASE_BACKGROUND( ActiveInputPage::OnErase )
 	EVT_PAINT( ActiveInputPage::OnPaint )
@@ -184,6 +185,14 @@ void ActiveInputPage::Initialize()
 					rc->Clear();
 					rc->Add(vv->IndexLabels);
 				}
+			}
+
+			if ( vv->Type == VV_TABLE && vv->IndexLabels.size() > 0 
+				&& ( type == "TableData" ) )
+			{
+				objs[i]->Property( "Fields" ).Set( vv->IndexLabels );
+				if ( AFTableDataCtrl *td = objs[i]->GetNative<AFTableDataCtrl>() )
+					td->SetFields( vv->IndexLabels );
 			}
 
 
@@ -540,7 +549,6 @@ bool ActiveInputPage::DataExchange( wxUIObject *obj, VarValue &val, DdxDir dir )
 		{
 			VarTable &T = val.Table();
 			if ( dir == VAR_TO_OBJ ) {
-				td->Clear();
 				wxArrayString list = T.ListAll();
 				for( size_t i=0;i<list.size();i++ )
 					td->Set( list[i], T.Get(list[i])->Value() );
