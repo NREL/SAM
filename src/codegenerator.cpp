@@ -2262,7 +2262,6 @@ CodeGen_matlab::CodeGen_matlab(Case *cc, const wxString &folder) : CodeGen_Base(
 
 bool CodeGen_matlab::Output(ssc_data_t p_data)
 {
-	//		fprintf(m_fp, "outln('%s ' + var('%s'));\n", (const char*)m_data[ii].label.c_str(), (const char*)m_data[ii].var.c_str());
 	wxString str_value;
 	for (size_t ii = 0; ii < m_data.size(); ii++)
 	{
@@ -2272,7 +2271,7 @@ bool CodeGen_matlab::Output(ssc_data_t p_data)
 		{
 		case SSC_STRING:
 			fprintf(m_fp, "	%s = ssccall('data_get_string', data, '%s' );\n", name, name);
-			fprintf(m_fp, "	disp(sprintf('%%s = %%s), '%s', %s));\n", (const char*)m_data[ii].label.c_str(), name);
+			fprintf(m_fp, "	disp(sprintf('%%s = %%s'), '%s', %s));\n", (const char*)m_data[ii].label.c_str(), name);
 			break;
 		case SSC_NUMBER:
 			fprintf(m_fp, "	%s = ssccall('data_get_number', data, '%s' );\n", name, name);
@@ -2370,6 +2369,7 @@ bool CodeGen_matlab::Input(ssc_data_t p_data, const char *name, const wxString &
 					csv.Set(r, c, wxString::Format("%.17g", dbl_value));
 				}
 			}
+			csv.WriteFile(fn);
 			fprintf(m_fp, "	%s = csvread( '%s');\n", name, (const char*)fn.c_str());
 		}
 		else
@@ -2419,7 +2419,7 @@ bool CodeGen_matlab::Header()
 {
 	// top of file and supporting functions
 	fprintf(m_fp, "function %s\n", (const char*)m_name.c_str());
-	fprintf(m_fp, "function [result] = ssccall(action, arg0, arg1, arg2 )\n");
+	fprintf(m_fp, "	function [result] = ssccall(action, arg0, arg1, arg2 )\n");
 	fprintf(m_fp, "    [pathstr, fn, fext] = fileparts(mfilename('fullpath'));\n");
 	fprintf(m_fp, "        ssclibpath = './';\n");
 	fprintf(m_fp, "        ssclib = 'ssc';\n");
@@ -2584,6 +2584,9 @@ bool CodeGen_matlab::Header()
 	fprintf(m_fp, "        end\n");
 	fprintf(m_fp, "    elseif strcmp(action,'module_free')\n");
 	fprintf(m_fp, "        result = calllib(ssclib,'ssc_module_free',arg0);\n");
+	fprintf(m_fp, "    elseif strcmp(action,'module_exec_set_print')\n");
+	fprintf(m_fp, "        calllib(ssclib,'ssc_module_exec_set_print',arg0);\n");
+	fprintf(m_fp, "        result = 0;\n");
 	fprintf(m_fp, "    elseif strcmp(action,'module_exec')\n");
 	fprintf(m_fp, "        result = calllib(ssclib,'ssc_module_exec',arg0,arg1);\n");
 	fprintf(m_fp, "    elseif strcmp(action,'module_log')\n");
@@ -2609,8 +2612,8 @@ bool CodeGen_matlab::Header()
 	fprintf(m_fp, "        disp( sprintf('ssccall: invalid action %s', action) );        \n");
 	fprintf(m_fp, "        result = 0;\n");
 	fprintf(m_fp, "    end\n");
-	fprintf(m_fp, "end\n");
-	fprintf(m_fp, "function bb = isnullpointer(p)\n");
+	fprintf(m_fp, "	end\n");
+	fprintf(m_fp, "	function bb = isnullpointer(p)\n");
 	fprintf(m_fp, "    bb = false;\n");
 	fprintf(m_fp, "    try\n");
 	fprintf(m_fp, "        setdatatype(p, 'voidPtr', 1, 1);\n");
@@ -2621,10 +2624,14 @@ bool CodeGen_matlab::Header()
 	fprintf(m_fp, "            bb = true;\n");
 	fprintf(m_fp, "        end\n");
 	fprintf(m_fp, "    end\n");
-	fprintf(m_fp, "end\n");
-	fprintf(m_fp, "clear\n");
-	fprintf(m_fp, "ssccall('load');\n");
-	fprintf(m_fp, "data = ssccall('data_create');\n");
+	fprintf(m_fp, "	end\n");
+	fprintf(m_fp, "	clear\n");
+	fprintf(m_fp, "	ssccall('load');\n");
+	fprintf(m_fp, "	disp('Current folder = %s');\n", (const char*)m_folder.c_str());
+	fprintf(m_fp, "	disp(sprintf('SSC Version = %%d', ssccall('version')));\n");
+	fprintf(m_fp, "	disp(sprintf('SSC Build Information = %%s', ssccall('build_info')));\n");
+	fprintf(m_fp, "	ssccall('module_exec_set_print',0);\n");
+	fprintf(m_fp, "	data = ssccall('data_create');\n");
 	return true;
 }
 
@@ -3234,8 +3241,8 @@ bool CodeGen_java::Output(ssc_data_t p_data)
 		switch (type)
 		{
 		case SSC_STRING:// TODO
-			fprintf(m_fp, "	const char *%s = ssc_data_get_string( data, \"%s\" );\n", name, name);
-			fprintf(m_fp, "	printf(\"%%s = %%s\"), %s, %s);\n", (const char*)m_data[ii].label.c_str(), name);
+			fprintf(m_fp, "		String %s = ssc_data_get_string( data, \"%s\" );\n", name, name);
+			fprintf(m_fp, "		System.out.println(\"%s = \" + %s);\n", (const char*)m_data[ii].label.c_str(), name);
 			break;
 		case SSC_NUMBER:
 			fprintf(m_fp, "		float[] %s = {0.0f};\n", name);
@@ -3452,8 +3459,14 @@ bool CodeGen_java::Header()
 	fprintf(m_fp, "	{\n");
 
 	// create global data container
-	fprintf(m_fp, "		System.loadLibrary(\"SSCAPIJNI\");\n");
+	fprintf(m_fp, "//		System.loadLibrary(\"SSCAPIJNI\");\n");
+	fprintf(m_fp, "		System.load(\"%s/ssc.dll\");\n", (const char*)m_folder.c_str());
+	fprintf(m_fp, "		System.load(\"%s/SSCAPIJNI.dll\");\n", (const char*)m_folder.c_str());
 	fprintf(m_fp, "		api = new SSCAPIJNI();\n");
+	fprintf(m_fp, "		System.out.printf(\"Current folder = %s\\n\");\n", (const char*)m_folder.c_str());
+	fprintf(m_fp, "		System.out.printf(\"SSC Version = %%d\\n\", api.ssc_version());\n");
+	fprintf(m_fp, "		System.out.printf(\"SSC Build Information = %%s\\n\", api.ssc_build_info());\n");
+	fprintf(m_fp, "		api.ssc_module_exec_set_print(0);\n");
 	fprintf(m_fp, "		long data=api.ssc_data_create();\n");
 	fprintf(m_fp, "		long mod;\n");
 	fprintf(m_fp, "\n");
@@ -3537,6 +3550,7 @@ bool CodeGen_java::SupportingFiles()
 	fprintf(f, "  public final static native int SSC_EXECUTE_get();\n");
 	fprintf(f, "  public final static native int ssc_module_exec(long cxt_module, long cxt_data);\n");
 	fprintf(f, "  public final static native int ssc_module_exec_with_handler(long jarg1, long jarg2, long jarg3, long jarg4);\n");
+	fprintf(f, "  public final static native void ssc_module_exec_set_print(int print);\n");
 	fprintf(f, "  public final static native void ssc_module_extproc_output(long jarg1, String jarg2);\n");
 	fprintf(f, "  public final static native int SSC_NOTICE_get();\n");
 	fprintf(f, "  public final static native int SSC_WARNING_get();\n");
@@ -4409,6 +4423,9 @@ bool CodeGen_java::SupportingFiles()
 	fprintf(f, "  jresult = (jint)result;\n");
 	fprintf(f, "  return jresult;\n");
 	fprintf(f, "}\n");
+	fprintf(f, "SWIGEXPORT void JNICALL Java_SSCAPIJNI_ssc_1module_1exec_1set_1print(JNIEnv *jenv, jclass jcls, jint print) {\n");
+	fprintf(f, "  ssc_module_exec_set_print(print);\n");
+	fprintf(f, "}\n");
 	fprintf(f, "SWIGEXPORT jstring JNICALL Java_SSCAPIJNI_ssc_1module_1log(JNIEnv *jenv, jclass jcls, jlong cxt, jint index, jintArray type, jfloatArray time)\n");
 	fprintf(f, "{\n");
 	fprintf(f, "  ssc_data_t ssc_cxt = (ssc_data_t) 0 ;\n");
@@ -4773,6 +4790,10 @@ bool CodeGen_php::Header()
 	fprintf(m_fp, "	}\n");
 	fprintf(m_fp, "	sscphp_data_set_matrix( $dat, $name, $ary);\n");
 	fprintf(m_fp, " }\n");
+	fprintf(m_fp, " echo 'Current folder = %s' . PHP_EOL;\n", (const char*)m_folder.c_str());
+	fprintf(m_fp, "	echo 'SSC Version = ' . sscphp_version() . PHP_EOL;\n");
+	fprintf(m_fp, "	echo 'SSC Version = ' . sscphp_build_info() . PHP_EOL;\n");
+	fprintf(m_fp, "	sscphp_module_exec_set_print(0);\n");
 	fprintf(m_fp, "	$dat = sscphp_data_create();\n");
 	return true;
 }
