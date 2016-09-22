@@ -534,6 +534,26 @@ bool ActiveInputPage::DataExchange( wxUIObject *obj, VarValue &val, DdxDir dir )
 			}
 		}
 	}
+	else if ( AFTableDataCtrl *td = obj->GetNative<AFTableDataCtrl>() )
+	{
+		if ( val.Type() == VV_TABLE )
+		{
+			VarTable &T = val.Table();
+			if ( dir == VAR_TO_OBJ ) {
+				td->Clear();
+				wxArrayString list = T.ListAll();
+				for( size_t i=0;i<list.size();i++ )
+					td->Set( list[i], T.Get(list[i])->Value() );
+			}
+			else
+			{
+				T.clear();
+				wxArrayString list = td->GetFields();
+				for( size_t i=0;i<list.size();i++ )
+					T.Set( list[i], VarValue( (float)td->Get(list[i]) ) );
+			}
+		}
+	}
 	else return false; // object data exch not handled for this type
 
 	return true;  // all ok!

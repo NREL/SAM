@@ -71,6 +71,35 @@ private:
 	DECLARE_EVENT_TABLE();
 };
 
+#define EVT_TABLEDATA(i,f) EVT_BUTTON(i,f)
+class AFTableDataCtrl : public wxButton
+{
+public:
+	AFTableDataCtrl( wxWindow *parent, int id,
+		const wxPoint &pos=wxDefaultPosition, const wxSize &size=wxDefaultSize);
+
+	void SetFields( const wxArrayString &list );
+	wxArrayString GetFields();
+	
+	void SetExpandable( bool b );
+	bool GetExpandable();
+	
+	void Clear();
+	void Set( const wxString &var, double value );
+	double Get( const wxString &var );
+	
+	void SetDescription(const wxString &s);
+	wxString GetDescription();
+
+	void OnPressed(wxCommandEvent &evt);
+
+private:
+	bool m_expandable;
+	wxString m_description;
+	unordered_map<wxString, double> m_values;
+
+	DECLARE_EVENT_TABLE();
+};
 
 #define EVT_MONTHLYFACTOR(i,f) EVT_BUTTON(i,f)
 class AFMonthlyFactorCtrl : public wxButton
