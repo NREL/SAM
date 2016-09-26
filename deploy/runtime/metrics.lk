@@ -7,6 +7,7 @@ function rescom_metrics()
 	metric( 'savings_year1',{'label'='Net savings with system (year 1)', 'pre'='$', 'post'=' ', 'thousep'='true', 'mode'='f', 'deci'='0' } );
 	metric( 'npv', {'label'='Net present value', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
 	metric( 'payback', {'label'='Payback period', 'mode'='f', 'deci'='1', 'thousep'='true', 'post'=' years' } );
+	metric( 'discounted_payback', {'label'='Discounted payback period', 'mode'='f', 'deci'='1', 'thousep'='true', 'post'=' years' } );
 	metric( 'adjusted_installed_cost', {'label'='Net capital cost', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
 	metric( 'first_cost', {'label'='Equity', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
 	metric( 'loan_amount', {'label'='Debt', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );

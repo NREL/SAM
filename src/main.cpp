@@ -1,8 +1,8 @@
-//#define __BETARELEASE__ 1  // comment this line out to disable beta option
-//#define __BETAWILLEXPIRE__ 1 // comment this line out to disable expiration of beta
-//#define __BETAEXPIRE_DAY__ 31
-//#define __BETAEXPIRE_MONTH__ wxDateTime::Dec
-//#define __BETAEXPIRE_YEAR__ 2016
+#define __BETARELEASE__ 1  // comment this line out to disable beta option
+#define __BETAWILLEXPIRE__ 1 // comment this line out to disable expiration of beta
+#define __BETAEXPIRE_DAY__ 31
+#define __BETAEXPIRE_MONTH__ wxDateTime::Dec
+#define __BETAEXPIRE_YEAR__ 2016
 
 // can be used to indicate specialized releases for particular testers, i.e. 'iscc-ge'
 // by default, should be NULL
