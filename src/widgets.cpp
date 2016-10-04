@@ -452,7 +452,7 @@ void AFTableDataCtrl::SetFields( const wxArrayString &list )
 wxArrayString AFTableDataCtrl::GetFields()
 {
 	wxArrayString list;
-	for( unordered_map<wxString,double>::iterator it = m_values.begin();
+	for( KeyValueMap::iterator it = m_values.begin();
 		it != m_values.end();
 		++it )
 		list.Add( it->first );
@@ -474,7 +474,7 @@ void AFTableDataCtrl::Set( const wxString &var,double value )
 
 double AFTableDataCtrl::Get( const wxString &var )
 {
-	unordered_map<wxString,double>::iterator it = m_values.find( var );
+	KeyValueMap::iterator it = m_values.find( var );
 	if ( it == m_values.end() ) return std::numeric_limits<double>::quiet_NaN();
 	else return m_values[ var ];
 }
