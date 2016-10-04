@@ -8,8 +8,8 @@ set('detailed_obos_general', general);
 //Substructure & foundation
 substructure.monopile_cost_rate = 2250;
 substructure.monopile_transition_piece_cost_rate = 3230;
-//substructure.monopile_diameter;
-//substructure.monopile_length;
+substructure.monopile_diameter = -999; //-999 causes the model to determine this variable
+substructure.monopile_length = -999; //-999 causes the model to determine this variable
 substructure.monopile_embedment_length = 30;
 substructure.jacket_main_lattice_cost_rate = 4680;
 substructure.jacket_transition_piece_cost_rate = 4500;
@@ -25,8 +25,8 @@ substructure.semisubmersible_stiffened_column_cost_rate = 3120;
 substructure.semisubmersible_truss_cost_rate = 6250;
 substructure.semisubmersible_heave_plate_cost_rate = 6250;
 substructure.secondary_outfitting_steel_cost_rate = 7250;
-//substructure.mooring_line_diameter;
-//substructure.mooring_line_cost_rate;
+substructure.mooring_line_diameter = -999; //-999 causes the model to determine this variable
+substructure.mooring_line_cost_rate = -999; //-999 causes the model to determine this variable
 substructure.scour_protection_material_cost = 250000;
 set('detailed_obos_substructure', substructure);
 	
@@ -121,8 +121,8 @@ assembly.onshore_infrastructure_civil_work_cost = 40000;
 assembly.onshore_infrastructure_electrical_work_cost = 25000;
 set('detailed_obos_assembly', assembly);
 
-//port.number_of_600_tonne_crawler_cranes = 
-//port.number_of_1000_tonne_crawler_cranes = 
+port.number_of_600_tonne_crawler_cranes = -999; //-999 causes the model to determine this variable
+port.number_of_1000_tonne_crawler_cranes = -999; //-999 causes the model to determine this variable
 port.day_rate_600_tonne_crawler_crane = 5000;
 port.day_rate_1000_tonne_crawler_crane = 8000;
 port.port_crane_mobilization_demobilization_cost = 150000;
