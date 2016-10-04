@@ -71,7 +71,7 @@ private:
 	DECLARE_EVENT_TABLE();
 };
 
-typedef unordered_map<wxString, double> KeyValueMap;
+typedef unordered_map<wxString, double, wxStringHash, wxStringEqual> KeyValueMap;
 
 #define EVT_TABLEDATA(i,f) EVT_BUTTON(i,f)
 class AFTableDataCtrl : public wxButton
