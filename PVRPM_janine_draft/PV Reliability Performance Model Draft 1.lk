@@ -26,10 +26,10 @@
 	num_strings = get('strings_in_parallel'); //672
 	num_inverters = get('inverter_count');
 	inverter_size = ?(get('inverter_model')) [get('inv_snl_paco'), get('inv_ds_paco'), get('inv_pd_paco')];
-	num_combiners = 12;//48; //need to make an input!!
+	num_combiners = 2;//48; //need to make an input!!
 	num_strings_per_combiner = num_strings / num_combiners; //need to error check!!
 	num_disconnects = num_inverters; //need to make an input!!
-	num_transformers = 2; //need to make an input!!
+	num_transformers = 1; //need to make an input!!
 	num_inverters_per_transformer = num_inverters / num_transformers; //need to error check!!
 	num_trackers = ceil(num_strings / 2); //need to make an input!!
 	system_lifetime_yrs = get('analysis_period');
@@ -790,7 +790,7 @@ if (is_tracking_system && tracker_meta.can_fail)
 }
 
 //timestep 0
-progressbar( {title='Simulation progress', message='Initializing system',cancelbutton=true, time=true, max=system_lifetime_yrs * 365});
+pb = progressbar( {title='Simulation progress', message='Initializing system',cancelbutton=true, time=true, max=system_lifetime_yrs * 365});
 initialize();
 module_degradation_factor[0] = whats_my_degradation();
 dc_power_availability[0] = whats_my_dc_availability();
@@ -811,11 +811,11 @@ if (is_tracking_system)
 
 for (day = 1; day < system_lifetime_yrs * 365; day++)
 {	
-	was_canceled = progressbar({value=day, message='Running reliability model...'});
+	was_canceled = progressbar(pb, {value=day, message='Running reliability model...'});
 	if (was_canceled)
 	{
 		outln('Simulation canceled by user.');
-		progressbar();
+		progressbar(pb);
 		exit;
 	}
 	//increase the labor rate each year
@@ -844,7 +844,7 @@ for (day = 1; day < system_lifetime_yrs * 365; day++)
 	ac_power_availability[day] = whats_my_ac_availability();
 	//outln(day + '\t' + modules);
 }
-progressbar({message='Running SAM simulation...'});	
+progressbar(pb, {message='Running SAM simulation...'});	
 	
 //create SAM performance adjustment tables for the availability, degradation, and tracker loss factors
 time = alloc(8760 * system_lifetime_yrs);
@@ -944,7 +944,7 @@ if (is_tracking_system)
 		total_tracker_failures += trackers[tr].cumulative_failures;
 }
 
-progressbar();
+progressbar(pb);
 
 //outln(dc_power_availability);
 outln('Total module failures =' + total_module_failures);
