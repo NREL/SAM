@@ -50,8 +50,11 @@ Some more examples:
 
 //***********************************************************************************************************************************************************
 //CURRENT WORKING VERSION- CHANGE THIS VERSION NUMBER WHEN RELEASES ARE CREATED AND MAKE A NEW CURRENT WORKING VERSION FUNCTION
-version_upgrade{'2016.7.1'} = define() {
-	
+version_upgrade{'2016.7.21'} = define() {
+	const cfg = config();
+	if ((cfg.fin == 'Residential' || cfg.fin == 'Commercial'))
+		if (oldvalue('ur_metering_option') == 3) //two meters with all generation sold and all load purchased
+			value( 'ur_metering_option', 4, 'utility rate metering options have changed order' );
 	return;
 };
 
