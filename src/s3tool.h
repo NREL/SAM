@@ -178,7 +178,8 @@ public:
 	void GetTimeseries(size_t i, std::vector<float> *ts, wxString *name);
 
 	void InitializeSections( int mode, std::vector<surfshade> &shade );
-
+	
+	wxString GetGroupDisplayName(const wxString &group);
 private:
 	ShadeTool *m_shadeTool;
 	
@@ -194,14 +195,44 @@ private:
 	void OnGenerateDiurnal(wxCommandEvent &);
 	void OnGenerateDiffuse(wxCommandEvent &);
 
-	wxString GetGroupDisplayName(const wxString &group);
 	DECLARE_EVENT_TABLE();
 };
 
 #define PG_LOCATION 0
 #define PG_SCENE 1
 #define PG_ANALYSIS 2
-#define PG_HELP 3
+#define PG_SCRIPTING 3
+#define PG_HELP 4
+
+class ShadeScripting : public wxPanel
+{
+public:
+	ShadeScripting( wxWindow *parent, ShadeTool *st );
+	virtual ~ShadeScripting();
+	
+	
+	void Open();
+	bool Save();
+	bool SaveAs();
+	bool CloseDoc();
+	void Exec();
+
+	bool Load( const wxString & );
+	bool Write( const wxString & );
+
+protected:
+	void OnCommand( wxCommandEvent & );
+private:
+	ShadeTool *m_shadeTool;
+	wxString m_fileName;
+	class MyScriptCtrl;
+	MyScriptCtrl *m_script;
+	wxTextCtrl *m_output;
+	wxStaticText *m_statusLabel;
+	wxButton *m_stopButton;
+
+	DECLARE_EVENT_TABLE();
+};
 
 class ShadeTool : public wxPanel
 {
@@ -210,8 +241,10 @@ public:
 	
 	LocationSetup *GetLocationSetup();
 	View3D *GetView();
+	ShadeAnalysis *GetAnalysis() { return m_analysis; }
 	void SwitchTo( int page );
 	wxString GetFileName() { return m_fileName; }
+	ObjectEditor *GetObjectEditor() { return m_sceneParams; }
 
 	bool Load();
 	void Save();
@@ -253,7 +286,7 @@ private:
 	View3D *m_view;
 	ObjectEditor *m_sceneParams;
 	ShadeAnalysis *m_analysis;
-
+	ShadeScripting *m_scripting;
 #ifdef S3D_STANDALONE
 #if defined(__WXMSW__)||defined(__WXOSX__)
 	wxWebView *m_helpViewer;
