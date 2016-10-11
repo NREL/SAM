@@ -20,8 +20,8 @@ function read_PVSOL( name )
 function read_PVsyst( name )
 {
 	file = '../' + name +'_PVsyst.csv';
-	data = csvread( file, {skip=13,numeric=true});
-
+	data = csvread( file, {skip=13,numeric=true,delim=';'});
+	
 	sf = alloc(8760);
 	for( i=0;i<8760;i++ )
 	{
@@ -105,7 +105,7 @@ make_plots( [ 'test1', 'test2', 'test3' ], ['Denver', 'Quito', 'Perth' ] );
 
 
 models = [ 'SAM', 'PV*SOL' ];
-loadfuncs = [ read_SAM, read_PVSOL ];
+loadfuncs = [ read_SAM, read_PVsyst, read_PVSOL ];
 make_plots( [ 'ivanhoe', 'babbitt', 'halsted', 'paradise' ],
  [ 'Ivanhoe in Denver', 'Babbitt in Los Angeles', 'Halsted in Los Angeles', 'Paradise in Soquel' ] );
 
