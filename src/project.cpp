@@ -221,10 +221,14 @@ void ProjectFile::Write( wxOutputStream &output )
 	wxDataOutputStream out(output);
 
 	out.Write16( 0x3c ); // identifier code
-	out.Write16( 2 ); // data format version
+	out.Write16( 3 ); // data format version
 	out.Write16( m_verMajor );
 	out.Write16( m_verMinor );
 	out.Write16( m_verMicro );
+	out.Write16( m_verPatch );
+
+	m_properties["ssc_version"] = wxString::Format("%d", ssc_version());
+	m_properties["ssc_build_info"] = wxString(ssc_build_info());
 	
 	m_properties.Write( output );
 	m_cases.Write( output );
@@ -247,6 +251,9 @@ bool ProjectFile::Read( wxInputStream &input )
 	m_verMajor = (int)in.Read16();
 	m_verMinor = (int)in.Read16();
 	m_verMicro = (int)in.Read16();
+
+	if ( ver > 2 )
+		m_verPatch = (int)in.Read16();
 
 	if ( !m_properties.Read( input ) ) m_lastError = "could not read project properties";
 	if ( !m_cases.Read( input ) ) m_lastError = "could not read case data" ;
@@ -312,18 +319,20 @@ bool ProjectFile::ReadArchive( const wxString &file )
 	}
 }
 
-void ProjectFile::SetVersionInfo( int maj, int min, int mic )
+void ProjectFile::SetVersionInfo( int maj, int min, int mic, int patch )
 {
 	m_verMajor = maj;
 	m_verMinor = min;
 	m_verMicro = mic;
+	m_verPatch = patch;
 }
 
-size_t ProjectFile::GetVersionInfo( int *maj, int *min, int *mic )
+size_t ProjectFile::GetVersionInfo( int *maj, int *min, int *mic, int *patch )
 {
 	if( maj ) *maj = m_verMajor;
 	if( min ) *min = m_verMinor;
 	if( mic ) *mic = m_verMicro;
+	if( patch ) *patch = m_verPatch;
 	return VERSION_VALUE( m_verMajor, m_verMinor, m_verMicro );
 }
 
@@ -522,8 +531,7 @@ bool VersionUpgrade::Run( ProjectFile &pf )
 		
 	std::vector<Case*> cases = pf.GetCases();
 
-	int major, minor, micro;
-	size_t file_ver = pf.GetVersionInfo( &major, &minor, &micro );
+	size_t file_ver = pf.GetVersionInfo( &m_pfMajor, &m_pfMinor, &m_pfMicro );
 	
 	int sammajor, samminor, sammicro;
 	size_t sam_ver = SamApp::Version( &sammajor, &samminor, &sammicro );
@@ -538,7 +546,9 @@ bool VersionUpgrade::Run( ProjectFile &pf )
 		// a known previous version of sam...
 		// presumably this is an error, but could it be handled
 		// for our internal development versions?
-		wxString errtext( wxString::Format("Project file version %d.%d.%d was not created with a known SAM release version.", major, minor, micro));
+		wxString errtext( wxString::Format("Project file version %d.%d.%d was not created with a known SAM release version.", 
+			m_pfMajor, m_pfMinor, m_pfMicro));
+
 		if ( wxNO == wxMessageBox( errtext, "Version error", wxYES_NO ) )
 		{
 			GetLog().push_back( log(FAIL, errtext) );
@@ -582,7 +592,12 @@ std::vector<VersionUpgrade::log> &VersionUpgrade::GetLog( const wxString &name )
 wxString VersionUpgrade::CreateHtmlReport( const wxString &file )
 {
 	wxString html( "<html><body>\n<h3>Project Version Upgrade Report</h3>\n"
-		"<p><font color=#7a7a7a>File:" + file + "<br>Using SAM Version " + SamApp::VersionStr() + ", " + wxNow() + "</font></p><br>\n" );
+		"<p><font color=#7a7a7a>File:" + file 
+		+ "<br>You are opening the file with SAM Version " + SamApp::VersionStr(true) 
+		+ ", SSC " + wxString::Format("%d", ssc_version()) + "<br>\n"
+		+ "This file was last saved in SAM Version " + wxString::Format("%d.%d.%d", m_pfMajor, m_pfMinor, m_pfMicro ) + "<br>\n"
+		+ "The table(s) below list input variables that have changed between those SAM versions.<br>\n"
+		+ "</font></p><br>\n" );
 
 	if ( m_generalLog.size() > 0 )
 		WriteHtml( "General", m_generalLog, html );
