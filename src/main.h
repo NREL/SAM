@@ -288,11 +288,12 @@ public:
 	static wxFileHistory &FileHistory();	
 	static wxArrayString RecentFiles();
 	static void ShowHelp( const wxString &context = wxEmptyString );
-	static wxString VersionStr();
+	static wxString VersionStr( bool with_patches = false );
 	static int VersionMajor();
 	static int VersionMinor();
 	static int VersionMicro();
 	static size_t Version( int *maj=0, int *min=0, int *mic=0, int nrelease=0 );
+	static int RevisionNumber();
 	static int NumReleases();
 
 	static wxWindow *CurrentActiveWindow();	

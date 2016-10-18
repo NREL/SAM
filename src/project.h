@@ -86,8 +86,8 @@ public:
 	void SetSaveHourlyData( bool b ) { m_saveHourlyData = b; }
 	bool GetSaveHourlyData() { return m_saveHourlyData; }
 
-	void SetVersionInfo( int maj, int min, int mic );
-	size_t GetVersionInfo( int *maj=0, int *min=0, int *mic=0 );
+	void SetVersionInfo( int maj, int min, int mic, int patch );
+	size_t GetVersionInfo( int *maj=0, int *min=0, int *mic=0, int *patch=0 );
 
 private:
 	ObjectCollection m_cases;
@@ -97,7 +97,7 @@ private:
 	bool m_saveHourlyData;
 	bool m_modified;
 	std::vector<ProjectFileEventListener*> m_listeners;
-	int m_verMajor, m_verMinor, m_verMicro;
+	int m_verMajor, m_verMinor, m_verMicro, m_verPatch;
 };
 
 
@@ -138,6 +138,7 @@ private:
 	wxString m_name;
 	lk::env_t m_env;	
 	std::vector<log> m_generalLog;
+	int m_pfMajor, m_pfMinor, m_pfMicro;
 
 	void WriteHtml( const wxString &section, const std::vector<log> &log, wxString &html );
 

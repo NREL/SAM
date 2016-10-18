@@ -1011,9 +1011,11 @@ bool MainWindow::SaveProject( const wxString &file )
 
 	
 	// update version information in project to current SAM
-	int major, minor, micro;
-	SamApp::Version( &major, &minor, &micro );
-	m_project.SetVersionInfo( major, minor, micro );
+	m_project.SetVersionInfo( 
+		SamApp::VersionMajor(),
+		SamApp::VersionMinor(),
+		SamApp::VersionMicro(),
+		SamApp::RevisionNumber() );
 
 	bool ok = m_project.WriteArchive( file );
 	if ( ok ) m_project.SetModified( false );
@@ -2344,22 +2346,7 @@ public:
 		if ( proxy.IsEmpty() ) proxy = "none";
 		else proxy = "proxy: " + proxy;
 
-		
-		int patch = 0;
-#if defined(__WXMSW__)
-		wxString path = SamApp::GetRuntimePath() + "/patches/patch_msw.txt";
-#elif defined(__WXOSX__)
-		wxString path = SamApp::GetRuntimePath() + "/patches/patch_osx.txt";
-#else
-		wxString path = SamApp::GetRuntimePath() + "/patches/patch_lnx.txt";
-#endif
-		if ( FILE *fp = fopen( (const char*)path.c_str(), "r" ) )
-		{
-			char buf[32];
-			fgets( buf, 31, fp );
-			fclose(fp);
-			patch = atoi( buf );
-		}
+		int patch = SamApp::RevisionNumber();
 		wxString patchStr;
 		if ( patch > 0 )
 			patchStr.Printf( ", updated to revision %d", patch );
@@ -2551,11 +2538,39 @@ void SamApp::ShowHelp( const wxString &context )
 	//gs_helpWin->SetTitle( "System Advisor Model Help {" + context + " --> " + url + "}" );
 }
 
-wxString SamApp::VersionStr() 
+int SamApp::RevisionNumber()
+{
+	int patch = 0;
+#if defined(__WXMSW__)
+	wxString path = SamApp::GetRuntimePath() + "/patches/patch_msw.txt";
+#elif defined(__WXOSX__)
+	wxString path = SamApp::GetRuntimePath() + "/patches/patch_osx.txt";
+#else
+	wxString path = SamApp::GetRuntimePath() + "/patches/patch_lnx.txt";
+#endif
+	if ( FILE *fp = fopen( (const char*)path.c_str(), "r" ) )
+	{
+		char buf[32];
+		fgets( buf, 31, fp );
+		fclose(fp);
+		patch = atoi( buf );
+	}
+	return patch;
+}
+
+wxString SamApp::VersionStr( bool with_patches ) 
 {
 	wxString vs( wxString::Format("%d.%d.%d", VersionMajor(), VersionMinor(), VersionMicro()) );
 	if ( version_label != 0 && strlen(version_label) > 0 )
 		vs += "-" + wxString(version_label);
+
+	if ( with_patches )
+	{
+		int patch = RevisionNumber();
+		if ( patch > 0 )
+			vs += wxString::Format(", updated to revision %d", patch );
+	}
+
 	return vs;
 }
 
