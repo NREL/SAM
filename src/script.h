@@ -38,5 +38,14 @@ private:
 };
 
 
+// LK fcall functions that get/set input variables
+// and operate on the currently active case
+// Although primarily used from the script window,
+// these also give access to case variables when 
+// using the integrated 3D shading scripting
+void fcall_set( lk::invoke_t &cxt );
+void fcall_get( lk::invoke_t &cxt );
+
+
 #endif
 

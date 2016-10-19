@@ -143,7 +143,7 @@ static void fcall_selectinputs( lk::invoke_t &cxt )
 }
 
 
-static void fcall_set( lk::invoke_t &cxt )
+void fcall_set( lk::invoke_t &cxt )
 {
 	LK_DOC( "set", "Set an input variable's value. Issues a script error if the variable doesn't exist or there is data type error.", "(string:name, variant:value):none" );
 	cxt.result().assign( 0.0 );
@@ -163,7 +163,7 @@ static void fcall_set( lk::invoke_t &cxt )
 	else cxt.error("no active case");
 }
 
-static void fcall_get( lk::invoke_t &cxt )
+void fcall_get( lk::invoke_t &cxt )
 {
 	LK_DOC("get", "Get an output or input variable's value.", "(string:name):variant" );
 	if ( Case *c = CurrentCase() )

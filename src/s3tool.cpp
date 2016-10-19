@@ -1384,20 +1384,20 @@ public:
 	}
 };
 
-void fcall_load_scene( lk::invoke_t &cxt )
+static void fcall_load_scene( lk::invoke_t &cxt )
 {
 	LK_DOC( "load_scene", "Load a 3D scene from a .s3d file", "(string:filename):boolean" );	
 	cxt.result().assign( ((ShadeTool*)cxt.user_data())->LoadFromFile( cxt.arg(0).as_string() ) ? 1.0 : 0.0 );
 }
 
-void fcall_save_scene( lk::invoke_t &cxt )
+static void fcall_save_scene( lk::invoke_t &cxt )
 {
 	LK_DOC( "save_scene", "Saves the 3D scene to a .s3d file", "(string:filename):boolean" );
 	cxt.result().assign( ((ShadeTool*)cxt.user_data())->WriteToFile( cxt.arg(0).as_string() ) ? 1.0 : 0.0 );
 
 }
 
-void fcall_diffuse_shade( lk::invoke_t &cxt )
+static void fcall_diffuse_shade( lk::invoke_t &cxt )
 {
 	LK_DOC( "diffuse_shade", "Calculate the diffuse shading on the scene.  Returns the diffuse shade percent on each segment, or null on an error.", "(none):table" );
 
@@ -1413,7 +1413,7 @@ void fcall_diffuse_shade( lk::invoke_t &cxt )
 	}
 }
 
-void fcall_direct_shade( lk::invoke_t &cxt )
+static void fcall_direct_shade( lk::invoke_t &cxt )
 {
 	LK_DOC( "direct_shade", "Calculate the direct (beam) shade loss on the scene.  If a timestep (minutes) is specified, the time series shade loss is calculated.  Otherwise, a diurnal table is calculated.", "([number:time step minutes]):table" );
 
@@ -1463,13 +1463,13 @@ void fcall_direct_shade( lk::invoke_t &cxt )
 	}
 }
 
-void fcall_switch_to( lk::invoke_t &cxt )
+static void fcall_switch_to( lk::invoke_t &cxt )
 {
 	LK_DOC( "switch_to", "Switches pages in the 3D shade editor.", "(number:page num):none" );
 	((ShadeTool*)cxt.user_data())->SwitchTo( cxt.arg(0).as_integer() );
 }
 
-void fcall_location( lk::invoke_t &cxt )
+static void fcall_location( lk::invoke_t &cxt )
 {
 	LK_DOC( "location", "Set or get location information.", "(number:lat, number:lon, number:tz, [string:addr]):none  or  (none):table" );
 	
@@ -1497,7 +1497,7 @@ void fcall_location( lk::invoke_t &cxt )
 	}
 }
 
-void fcall_clear_scene( lk::invoke_t &cxt )
+static void fcall_clear_scene( lk::invoke_t &cxt )
 {
 	LK_DOC( "clear_scene", "Clear the 3D scene.", "(none):none" );
 	((ShadeTool*)cxt.user_data())->GetView()->DeleteAll();
@@ -1505,7 +1505,7 @@ void fcall_clear_scene( lk::invoke_t &cxt )
 	((ShadeTool*)cxt.user_data())->GetObjectEditor()->SetObject( NULL );
 }
 
-void fcall_create( lk::invoke_t &cxt )
+static void fcall_create( lk::invoke_t &cxt )
 {
 	LK_DOC( "create", "Create a new object in the 3d scene.", "(string:object type):name" );
 	
@@ -1517,65 +1517,73 @@ void fcall_create( lk::invoke_t &cxt )
 	}
 }
 
-void fcall_set( lk::invoke_t &cxt )
+static void fcall_objects( lk::invoke_t &cxt )
 {
-	LK_DOC( "set", 
-		"Set properties of an object.", 
-		"(string:name, table:properties=values):none" );
+	LK_DOC( "objects", "Returns a list of the names of all the objects in the scene.", "(none):array" );
+	std::vector<VObject*> list = ((ShadeTool*)cxt.user_data())->GetView()->GetObjects();
 	
-	VObject *obj = ((ShadeTool*)cxt.user_data())->GetView()->FindObjectByName( cxt.arg(0).as_string() );
-	if ( !obj || cxt.arg(1).type() != lk::vardata_t::HASH ) return;
-
-	lk::varhash_t *H = cxt.arg(1).hash();
-
-	wxColour col;
-	for( lk::varhash_t::const_iterator it = H->begin();
-		it != H->end();
-		++it )
-	{
-		wxString key( it->first );
-		lk::vardata_t *val(it->second);
-
-		VProperty &p( obj->Property(key) );
-		switch( p.GetType() )
-		{
-		case VProperty::BOOLEAN:
-			p.Set( val->as_boolean() );
-			break;
-		case VProperty::DOUBLE:
-			p.Set( val->as_number() );
-			break;
-		case VProperty::INTEGER:
-			p.Set( val->as_integer() );
-			break;
-		case VProperty::STRING:
-			p.Set( val->as_string() );
-			break;
-		case VProperty::COLOUR:
-			if ( val->type() == lk::vardata_t::STRING )
-				col.Set( val->as_string() );
-			else if ( val->type() == lk::vardata_t::VECTOR && val->length() == 3 )
-				col.Set( (unsigned char)val->index(0)->as_unsigned(),
-					(unsigned char)val->index(1)->as_unsigned(),
-					(unsigned char)val->index(2)->as_unsigned() );
-
-			p.Set( col );
-		default:
-			break;
-		}
-	}
-
-	((ShadeTool*)cxt.user_data())->GetView()->UpdateModel( obj );
-	((ShadeTool*)cxt.user_data())->GetObjectEditor()->UpdateObjectList();
-	((ShadeTool*)cxt.user_data())->GetView()->Refresh();
+	cxt.result().empty_vector();
+	for( size_t i=0;i<list.size();i++ )
+		cxt.result().vec_append( list[i]->Property("Name").GetString() );
 }
 
-void fcall_get( lk::invoke_t &cxt )
+static void fcall_property( lk::invoke_t &cxt )
 {
-	LK_DOC( "get", "Gets properties of an object", "(string:object name):table" );
+	LK_DOC( "property", 
+		"Sets or gets properties of an object.", 
+		"(string:name [, table:properties=values]):[table]" );
 	
-	ShadeTool *st = ((ShadeTool*)cxt.user_data());
-	if ( VObject *obj = st->GetView()->FindObjectByName( cxt.arg(0).as_string() ) )
+	VObject *obj = ((ShadeTool*)cxt.user_data())->GetView()->FindObjectByName( cxt.arg(0).as_string() );
+	if ( !obj ) return;
+
+	if ( cxt.arg_count() > 1 
+		&& cxt.arg(1).type() == lk::vardata_t::HASH)
+	{
+
+		lk::varhash_t *H = cxt.arg(1).hash();
+
+		wxColour col;
+		for( lk::varhash_t::const_iterator it = H->begin();
+			it != H->end();
+			++it )
+		{
+			wxString key( it->first );
+			lk::vardata_t *val(it->second);
+
+			VProperty &p( obj->Property(key) );
+			switch( p.GetType() )
+			{
+			case VProperty::BOOLEAN:
+				p.Set( val->as_boolean() );
+				break;
+			case VProperty::DOUBLE:
+				p.Set( val->as_number() );
+				break;
+			case VProperty::INTEGER:
+				p.Set( val->as_integer() );
+				break;
+			case VProperty::STRING:
+				p.Set( val->as_string() );
+				break;
+			case VProperty::COLOUR:
+				if ( val->type() == lk::vardata_t::STRING )
+					col.Set( val->as_string() );
+				else if ( val->type() == lk::vardata_t::VECTOR && val->length() == 3 )
+					col.Set( (unsigned char)val->index(0)->as_unsigned(),
+						(unsigned char)val->index(1)->as_unsigned(),
+						(unsigned char)val->index(2)->as_unsigned() );
+
+				p.Set( col );
+			default:
+				break;
+			}
+		}
+
+		((ShadeTool*)cxt.user_data())->GetView()->UpdateModel( obj );
+		((ShadeTool*)cxt.user_data())->GetObjectEditor()->UpdateObjectList();
+		((ShadeTool*)cxt.user_data())->GetView()->Refresh();
+	}
+	else
 	{
 		wxArrayString list( obj->Properties() );
 		cxt.result().empty_hash();
@@ -1611,7 +1619,7 @@ void fcall_get( lk::invoke_t &cxt )
 	}
 }
 
-void fcall_delete( lk::invoke_t &cxt )
+static void fcall_delete( lk::invoke_t &cxt )
 {
 	LK_DOC( "delete", "Delete an object from the scene.", "(string:name):none" );
 
@@ -1627,7 +1635,7 @@ void fcall_delete( lk::invoke_t &cxt )
 
 }
 
-void fcall_sunpos( lk::invoke_t &cxt )
+static void fcall_sunpos( lk::invoke_t &cxt )
 {
 	LK_DOC( "sunpos", "Return solar azimuth and altitude angles given time of day and location.", "(year, month, hour, day, minute, lat, lon, tz):table" );
 	double azi, zen;
@@ -1649,7 +1657,7 @@ void fcall_sunpos( lk::invoke_t &cxt )
 }
 
 
-void fcall_rotate( lk::invoke_t &cxt )
+static void fcall_rotate( lk::invoke_t &cxt )
 {
 	LK_DOC( "rotate", "Rotate the 3D scene to the desired sun angles", "(number:azimuth, number:altitude):none" );
 	
@@ -1658,13 +1666,16 @@ void fcall_rotate( lk::invoke_t &cxt )
 	st->GetView()->Refresh();
 }
 
-void fcall_shadef(lk::invoke_t &cxt )
+static void fcall_shadef(lk::invoke_t &cxt )
 {
 	LK_DOC( "shadef", "Return the current shaded area fraction at the 3D scene rotation", "(none):number" );
 	ShadeTool *st = ((ShadeTool*)cxt.user_data());
 	cxt.result().assign( st->GetView()->GetShadeFraction() );
 }
 
+#ifndef S3D_STANDALONE
+#include "script.h"
+#endif
 
 lk::fcall_t* shade_tool_funcs()
 {
@@ -1678,11 +1689,15 @@ lk::fcall_t* shade_tool_funcs()
 		fcall_location,
 		fcall_create,
 		fcall_delete,
-		fcall_set,
-		fcall_get,
+		fcall_objects,
+		fcall_property,
 		fcall_rotate,
 		fcall_shadef,
 		fcall_sunpos,
+#ifndef S3D_STANDALONE
+		fcall_set,
+		fcall_get,
+#endif
 		0 };
 		
 	return (lk::fcall_t*)vec;
