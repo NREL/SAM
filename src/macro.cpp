@@ -310,22 +310,6 @@ MacroPanel::MacroPanel( wxWindow *parent, Case *cc )
 	ConfigurationChanged();
 }
 
-void MacroPanel::ListScripts( const wxString &path, wxArrayString &list )
-{
-	wxDir dir( path );
-	wxString file;
-	if ( dir.IsOpened() )
-	{
-		bool ok = dir.GetFirst( &file, "*.lk", wxDIR_FILES );
-		while( ok )
-		{
-			list.Add( path + "/" + file );
-			ok = dir.GetNext( &file );
-		}
-	}
-}
-
-
 void MacroPanel::UpdateHtml()
 {
 	ClearUI();
@@ -1006,17 +990,38 @@ bool MacroPanel::WriteUIData( const wxString &file )
 		return false;
 }
 
+static void ListScripts( const wxString &path, wxArrayString &list )
+{
+	wxDir dir( path );
+	wxString file;
+	if ( dir.IsOpened() )
+	{
+		bool ok = dir.GetFirst( &file, "*.lk", wxDIR_FILES );
+		while( ok )
+		{
+			list.Add( path + "/" + file );
+			ok = dir.GetNext( &file );
+		}
+	}
+}
+
+wxArrayString MacroEngine::ListMacrosForConfiguration( const wxString &tech, const wxString &fin )
+{	
+	wxArrayString list;
+	ListScripts(  SamApp::GetRuntimePath() + "/macros/" + tech + "_" + fin, list );
+	ListScripts(  SamApp::GetRuntimePath() + "/macros/" + tech, list );
+	ListScripts(  SamApp::GetRuntimePath() + "/macros/" + fin, list );
+	ListScripts(  SamApp::GetRuntimePath() + "/macros", list );
+	return list;
+}
+
 
 void MacroPanel::ConfigurationChanged()
 {
 	wxString tech, fin;
 	m_case->GetConfiguration( &tech, &fin );
 
-	m_macroList.clear();
-	ListScripts(  SamApp::GetRuntimePath() + "/macros/" + tech + "_" + fin, m_macroList );
-	ListScripts(  SamApp::GetRuntimePath() + "/macros/" + tech, m_macroList );
-	ListScripts(  SamApp::GetRuntimePath() + "/macros/" + fin, m_macroList );
-	ListScripts(  SamApp::GetRuntimePath() + "/macros", m_macroList );
+	m_macroList = MacroEngine::ListMacrosForConfiguration( tech, fin );
 		
 	m_listbox->Clear();
 	for( size_t i=0;i<m_macroList.size();i++ )
