@@ -30,7 +30,8 @@ public:
 	virtual void Output( const wxString &text );
 	virtual void ClearOutput();
 	virtual bool IsStopFlagSet();
-
+	
+	static wxArrayString ListMacrosForConfiguration( const wxString &tech, const wxString &fin );
 private:
 	bool m_stopFlag;
 };
@@ -55,7 +56,6 @@ private:
 	void OnCommand( wxCommandEvent & );
 	void OnHtmlLink( wxHtmlLinkEvent & );
 	void UpdateHtml();
-	void ListScripts( const wxString &path, wxArrayString &list );
 	
 	Case *m_case;
 	wxMetroListBox *m_listbox;

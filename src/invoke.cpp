@@ -29,6 +29,7 @@
 #include "results.h"
 #include "windtoolkit.h"
 #include "urdb.h"
+#include "macro.h"
 #include "invoke.h"
 #include "s3tool.h"
 #include "lossdiag.h"
@@ -849,6 +850,54 @@ static void fcall_case_name(lk::invoke_t &cxt)
 	wxString case_name = SamApp::Project().GetCaseName(c);
 
 	cxt.result().assign(case_name);
+}
+
+static void fcall_macrocall( lk::invoke_t &cxt )
+{
+	LK_DOC( "macrocall", "Run a macro (or external script in the macro environment), optionally passing arguments to it.", "(string:macro name or file, [variant:args]):boolean" );
+	
+	cxt.result().assign( 0.0 );
+
+	Case *c = SamApp::Window()->GetCurrentCase();
+	if ( !c ) return;
+
+	wxString tech, fin;
+	c->GetConfiguration( &tech, &fin );
+	wxArrayString macros = MacroEngine::ListMacrosForConfiguration( tech, fin );
+	
+	wxString name = cxt.arg(0).as_string();
+	name.MakeLower();
+
+	int imacro = -1;
+	for( size_t i=0;i<macros.size();i++ )
+	{
+		if ( wxFileName(macros[i]).GetName().Lower() == name )
+		{
+			imacro = (int)i;
+			break;
+		}
+	}
+
+	if ( imacro < 0 )
+		return;
+	
+	wxString script;	
+	wxFile fp( macros[imacro] );
+	if ( fp.IsOpened() )
+		fp.ReadAll( &script );
+	else
+		return;
+
+	lk::vardata_t *args = 0;
+	if ( cxt.arg_count() > 1 )
+	{
+		args = new lk::vardata_t;
+		args->copy( cxt.arg(1) );
+	}
+
+	MacroEngine me;
+	bool ok = me.Run( script, args ); // takes ownership of args
+	cxt.result().assign( ok ? 1.0 : 0.0 );
 }
 
 static void fcall_pagenote( lk::invoke_t &cxt )
@@ -2883,6 +2932,7 @@ lk::fcall_t* invoke_general_funcs()
 		fcall_dview_solar_data_file,
 		fcall_pdfreport,
 		fcall_pagenote,
+		fcall_macrocall,
 #ifdef __WXMSW__
 		fcall_xl_create,
 		fcall_xl_free,
