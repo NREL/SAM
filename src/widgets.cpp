@@ -751,7 +751,7 @@ wxString AFSearchListBox::GetStringSelection()
 {
 	return m_list->GetStringSelection();
 }
-
+ 
 void AFSearchListBox::SetSelection( size_t i )
 {
 	if ( i < m_items.size() )

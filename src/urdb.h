@@ -28,6 +28,8 @@ public:
 		wxString DemandComments;
 		wxString RateURL;
 		wxString JSONURL;
+		wxString StartDate;
+		wxString EndDate;
 		int Version;
 	};
 
@@ -52,9 +54,6 @@ public:
 
 		RateInfo Header;
 		ApplicabilityInfo Applicability;
-
-		wxString StartDate;
-		wxString EndDate;
 
 		bool NetMetering;
 		double MinAnnualCharge;
@@ -131,11 +130,15 @@ private:
 	wxHyperlinkCtrl *hypJSONLink;
 	wxTextCtrl *txtRateDescription;
 	wxExtTextCtrl *txtRateName;
+	wxExtTextCtrl *txtRateStartDate;
+	wxExtTextCtrl *txtRateEndDate;
+	wxExtTextCtrl *txtRateGUID;
 	AFSearchListBox *lstRates;
 	AFSearchListBox *lstUtilities;
 	wxButton *btnClose;
 	wxButton *btnQueryAgain;
 	wxChoice *cboResCom;
+	wxCheckBox *chkActiveOnly;
 
 	wxButton *btnQueryZipCode;
 	wxTextCtrl *txtZipCode;
