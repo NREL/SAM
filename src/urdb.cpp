@@ -1,6 +1,10 @@
 #include <wx/tokenzr.h>
 #include <wx/log.h>
 
+// for handling unix time in IURDB
+#include <wx/datetime.h>
+#include <time.h> 
+
 #include <wex/easycurl.h>
 #include <wex/utils.h>
 
@@ -15,6 +19,17 @@ static wxString MyGet(const wxString &url)
 	curl.AddHttpHeader( "Cache-Control: no-cache" );
 	curl.Get( url );
 	return curl.GetDataAsString();
+}
+
+
+wxString GetDate(const int &_time_t)
+{
+	if (_time_t <= 0)
+		return "N/A";
+	else
+	{
+		return wxDateTime((time_t)_time_t).FormatISODate();
+	}
 }
 
 OpenEI::RateData::RateData()
@@ -274,7 +289,8 @@ bool OpenEI::QueryUtilityRates(const wxString &name, std::vector<RateInfo> &rate
 
 	// pushed to production update from Jay 10/2/15
 	wxString url = "http://api.openei.org/utility_rates?version=4&detail=minimal&format=json&ratesforutility=" + utlnm + "&api_key=" + wxString(sam_api_key);
-
+//	wxLogStatus("urdb url=" + url);
+	
 	wxString json_data = MyGet(url);
 	if (json_data.IsEmpty())
 	{
@@ -307,6 +323,10 @@ bool OpenEI::QueryUtilityRates(const wxString &name, std::vector<RateInfo> &rate
 		x.Source = json_string(item_list[i].Item("source"));
 		x.Version = json_integer(item_list[i].Item("version"));
 		x.uri = json_string(item_list[i].Item("uri"));
+		x.StartDate = GetDate(json_integer(item_list[i].Item("startdate")));
+		x.EndDate = GetDate(json_integer(item_list[i].Item("enddate")));
+		wxLogStatus("urdb startdate=" + x.StartDate);
+		wxLogStatus("urdb enddate=" + x.EndDate);
 		rates.push_back(x);
 	}
 
@@ -383,8 +403,8 @@ bool OpenEI::RetrieveUtilityRateData(const wxString &guid, RateData &rate, wxStr
 //	rate.Header.RateURL = "http://en.openei.org/apps/USURDB/rate/view/" + guid;
 	rate.Header.RateURL = "http://en.openei.org/apps/IURDB/rate/view/" + guid;
 
-	rate.StartDate = json_string(val.Item("startdate"));
-	rate.EndDate = json_string(val.Item("enddate"));
+	rate.Header.StartDate = GetDate(json_integer(val.Item("startdate")));
+	rate.Header.EndDate = GetDate(json_integer(val.Item("enddate")));
 
 	// update to handle null return values (debug assert error)
 	bool net_metering = true;
@@ -666,6 +686,7 @@ enum {
   ID_txtUtilitySearch,
   ID_btnQueryAgain,
   ID_cboResCom, 
+  ID_chkActiveOnly,
   ID_btnQueryZipCode
 };
 
@@ -675,8 +696,9 @@ BEGIN_EVENT_TABLE( OpenEIUtilityRateDialog, wxDialog )
 	EVT_BUTTON(ID_btnQueryZipCode, OpenEIUtilityRateDialog::OnEvent)
 	EVT_CHOICE(ID_cboResCom, OpenEIUtilityRateDialog::OnEvent)
 	EVT_LISTBOX( ID_lstUtilities, OpenEIUtilityRateDialog::OnEvent )
-	EVT_LISTBOX( ID_lstRates, OpenEIUtilityRateDialog::OnEvent )
-	EVT_TEXT( ID_txtUtilitySearch, OpenEIUtilityRateDialog::OnEvent )
+	EVT_LISTBOX(ID_lstRates, OpenEIUtilityRateDialog::OnEvent)
+	EVT_CHECKBOX(ID_chkActiveOnly, OpenEIUtilityRateDialog::OnEvent)
+	EVT_TEXT(ID_txtUtilitySearch, OpenEIUtilityRateDialog::OnEvent)
 	EVT_BUTTON( ID_btnApply, OpenEIUtilityRateDialog::OnCommand)
 	EVT_BUTTON( ID_btnClose, OpenEIUtilityRateDialog::OnCommand)
 	EVT_CLOSE( OpenEIUtilityRateDialog::OnClose )
@@ -702,6 +724,8 @@ OpenEIUtilityRateDialog::OpenEIUtilityRateDialog(wxWindow *parent, const wxStrin
 	}
 	cboResCom->SetSelection(cbo_ndx);
 
+	chkActiveOnly = new wxCheckBox(this, ID_chkActiveOnly, "Show Active Only");
+	chkActiveOnly->SetValue(false);
 
 	btnQueryAgain = new wxButton(this, ID_btnQueryAgain, "Show all");
 	lblUtilityCount = new wxStaticText(this, ID_lblStatus, "");
@@ -714,6 +738,24 @@ OpenEIUtilityRateDialog::OpenEIUtilityRateDialog(wxWindow *parent, const wxStrin
 	txtRateName->SetEditable( false );
 	txtRateName->SetForegroundColour( wxColour(0, 0, 0) );
 	txtRateName->SetBackgroundColour( wxColour(255, 255, 255) );
+
+
+	txtRateStartDate = new wxExtTextCtrl(this, ID_txtRateStartDate);
+	txtRateStartDate->SetEditable(false);
+	txtRateStartDate->SetForegroundColour(wxColour(0, 0, 0));
+	txtRateStartDate->SetBackgroundColour(wxColour(255, 255, 255));
+
+
+	txtRateEndDate = new wxExtTextCtrl(this, ID_txtRateEndDate);
+	txtRateEndDate->SetEditable(false);
+	txtRateEndDate->SetForegroundColour(wxColour(0, 0, 0));
+	txtRateEndDate->SetBackgroundColour(wxColour(255, 255, 255));
+
+	txtRateGUID = new wxExtTextCtrl(this, ID_txtRateEndDate);
+	txtRateGUID->SetEditable(false);
+	txtRateGUID->SetForegroundColour(wxColour(0, 0, 0));
+	txtRateGUID->SetBackgroundColour(wxColour(255, 255, 255));
+
 
 	txtRateDescription = new wxTextCtrl(this, ID_txtRateDescription, "", wxDefaultPosition, wxDefaultSize, wxTE_MULTILINE | wxTE_WORDWRAP | wxTE_PROCESS_TAB | wxTE_READONLY );
 	
@@ -756,14 +798,17 @@ OpenEIUtilityRateDialog::OpenEIUtilityRateDialog(wxWindow *parent, const wxStrin
 	sz_right_grid->Add(new wxStaticText(this, wxID_ANY, "Description"), 0, wxALL | wxALIGN_CENTER_VERTICAL, 2);
 //	sz_right_grid->Add(new wxStaticText(this, wxID_ANY, "Applicability"), 0, wxALL | wxALIGN_CENTER_VERTICAL, 2);
 	sz_right_grid->Add(txtRateDescription, 1, wxALL | wxEXPAND, 2);
-//	sz_right_grid->Add( new wxStaticText(this, wxID_ANY, "Start"), 0, wxALL|wxALIGN_CENTER_VERTICAL, 2 );
-//	sz_right_grid->Add( txtRateStartDate, 1, wxALL|wxEXPAND, 2 );	
-//	sz_right_grid->Add( new wxStaticText(this, wxID_ANY, "End"), 0, wxALL|wxALIGN_CENTER_VERTICAL, 2 );
-//	sz_right_grid->Add( txtRateEndDate, 1, wxALL|wxEXPAND, 2 );
-	
+	sz_right_grid->Add( new wxStaticText(this, wxID_ANY, "Start"), 0, wxALL|wxALIGN_CENTER_VERTICAL, 2 );
+	sz_right_grid->Add( txtRateStartDate, 1, wxALL|wxEXPAND, 2 );	
+	sz_right_grid->Add(new wxStaticText(this, wxID_ANY, "End"), 0, wxALL | wxALIGN_CENTER_VERTICAL, 2);
+	sz_right_grid->Add(txtRateEndDate, 1, wxALL | wxEXPAND, 2);
+	sz_right_grid->Add(new wxStaticText(this, wxID_ANY, "GUID"), 0, wxALL | wxALIGN_CENTER_VERTICAL, 2);
+	sz_right_grid->Add(txtRateGUID, 1, wxALL | wxEXPAND, 2);
+
 	wxBoxSizer *sz_right = new wxBoxSizer(wxVERTICAL);
-	sz_right->Add( sz_right_top, 0, wxALL|wxEXPAND );
-	sz_right->Add( lstRates, 1, wxALL|wxEXPAND );
+	sz_right->Add(sz_right_top, 0, wxALL | wxEXPAND);
+	sz_right->Add(chkActiveOnly, 0, wxALL | wxEXPAND);
+	sz_right->Add(lstRates, 1, wxALL | wxEXPAND);
 	sz_right->Add( sz_right_grid, 2, wxALL|wxEXPAND );
 	sz_right->Add(hypOpenEILink, 0, wxALL | wxEXPAND);
 	sz_right->Add(hypJSONLink, 0, wxALL | wxEXPAND);
@@ -891,20 +936,25 @@ void OpenEIUtilityRateDialog::UpdateRateList()
 	lstRates->Clear();
 
 	mGUIDList.Clear();
-	for (int i = 0; i<(int)mUtilityRates.size(); i++)
+	for (int i = 0; i < (int)mUtilityRates.size(); i++)
 	{
+		if (chkActiveOnly->GetValue() && mUtilityRates[i].EndDate != "N/A")
+			continue;
+
 		if (cboResCom->GetSelection() == 1 && mUtilityRates[i].Sector.Lower() != "residential")
 			continue;
-	
+
 		if (cboResCom->GetSelection() == 2 && mUtilityRates[i].Sector.Lower() != "commercial")
 			continue;
 
 		if (cboResCom->GetSelection() == 3 && mUtilityRates[i].Sector.Lower() != "lighting")
 			continue;
 
-		wxString rate = mUtilityRates[i].Sector + "-" + mUtilityRates[i].Name;
-		lstRates->Append( rate );
-		mGUIDList.Add( mUtilityRates[i].GUID );
+		//		wxString rate = mUtilityRates[i].Sector + "-" + mUtilityRates[i].Name;
+		wxString rate = mUtilityRates[i].Name + "  (" + mUtilityRates[i].GUID + ")";
+		lstRates->Append(rate);
+		mGUIDList.Add(mUtilityRates[i].GUID);
+		//		wxLogStatus("urdb GUID, Rate " + mGUIDList[mGUIDList.Count() - 1] + "," + lstRates->GetItem(lstRates->Count() - 1));
 	}
 
 	lstRates->Thaw();
@@ -919,6 +969,7 @@ OpenEI::RateData OpenEIUtilityRateDialog::GetCurrentRateData()
 void OpenEIUtilityRateDialog::UpdateRateData()
 {
 	int idx = lstRates->GetSelection();
+	wxLogStatus(wxString::Format("selection=%d", idx));
 	wxString guid;
 	if (idx >= 0 && idx < (int)mGUIDList.Count())
 		guid = mGUIDList[idx];
@@ -929,9 +980,10 @@ void OpenEIUtilityRateDialog::UpdateRateData()
 	{
 		txtRateName->SetValue(wxEmptyString);
 		txtRateDescription->SetValue(wxEmptyString);
-//		txtRateStartDate->SetValue(wxEmptyString);
-//		txtRateEndDate->SetValue(wxEmptyString);
-//		hypOpenEILink->SetURL("http://en.openei.org/wiki/Gateway:Utilities");
+		txtRateStartDate->SetValue(wxEmptyString);
+		txtRateEndDate->SetValue(wxEmptyString);
+		txtRateGUID->SetValue(wxEmptyString);
+		//		hypOpenEILink->SetURL("http://en.openei.org/wiki/Gateway:Utilities");
 		hypOpenEILink->SetURL("http://en.openei.org/wiki/Utility_Rate_Database");
 	}
 	else
@@ -945,8 +997,10 @@ void OpenEIUtilityRateDialog::UpdateRateData()
 		{
 			
 			txtRateName->SetValue( mRateData.Header.Utility + ": " + mRateData.Header.Name );
-			//txtRateStartDate->SetValue( mRateData.StartDate );
-			//txtRateEndDate->SetValue( mRateData.EndDate );
+
+			txtRateStartDate->SetValue( mRateData.Header.StartDate );
+			txtRateEndDate->SetValue(mRateData.Header.EndDate);
+			txtRateGUID->SetValue(mRateData.Header.GUID);
 
 			wxString desc = mRateData.Header.Description;
 
@@ -1003,6 +1057,7 @@ void OpenEIUtilityRateDialog::OnEvent(wxCommandEvent &evt)
 {
 	switch (evt.GetId())
 	{
+	case ID_chkActiveOnly:
 	case ID_cboResCom:
 		UpdateRateList();
 		break;
