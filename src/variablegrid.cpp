@@ -406,6 +406,8 @@ wxString VariableGridData::GetTypeName(int row, int col)
 				return "GridCellVarValue";
 			else if (type == "TextEntry")
 				return wxGRID_VALUE_STRING;
+			else if (type == "MultilineText")
+				return wxGRID_VALUE_STRING;
 			else if (type == "Slider")
 				return "GridCellVarValue";
 			else if (type == "CheckBox")
