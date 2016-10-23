@@ -1155,9 +1155,11 @@ void UIEditorPanel::OnCommand( wxCommandEvent &evt )
 						vi = m_ipd.Variables().Create(name, VV_STRING);
 					else if ( type == "RadioChoice" )
 						vi = m_ipd.Variables().Create(name, VV_NUMBER);
-					else if ( type == "TextEntry" )
+					else if (type == "TextEntry")
 						vi = m_ipd.Variables().Create(name, VV_STRING);
-					else if ( type == "Slider" )
+					else if (type == "MultilineText")
+						vi = m_ipd.Variables().Create(name, VV_STRING);
+					else if (type == "Slider")
 						vi = m_ipd.Variables().Create(name, VV_NUMBER);
 					else if ( type == "CheckBox" )
 						vi = m_ipd.Variables().Create(name, VV_NUMBER);
