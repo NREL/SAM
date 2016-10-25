@@ -8,7 +8,7 @@
 /*
 	NEED TO CREATE A MEGA-SCRIPT TO RUN MULTIPLE SIMULATIONS!! AND CREATE GRAPHS!!
 	DC and AC lifetime losses need to be added to loss tree
-	Add what the acceptable input ranges are for LHS when errors are encountered?
+	Add what the acceptable input ranges are for LHS when errors are encountered? It basically does this already...
 	Add component-level availability output graph vs time (using Geoff's equation)
 	WHEN AN INVERTER FAILS ROUTINELY, IT NEEDS TO NOT BE COMPLETELY RESET- which ones do reset it?
 	Basic failure rates as an output (failures per million hours)
@@ -144,7 +144,7 @@ degradation_factor = 1 - percentage the component has degraded at this time (ex.
 	module_meta.failure[1].cost = 322; //$
 	module_meta.failure[1].fraction = 20 / 100; //% converted to fraction
 	module_meta.repair.can_repair = true;
-	module_meta.repair.distribution = 'lognormal-n';
+	module_meta.repair.distribution = 'lognormal';
 	module_meta.repair.parameters =  [60, 20]; //mean, std, in days
 	module_meta.repair.times = null;
 	module_meta.degradation.can_degrade = true;
@@ -162,7 +162,7 @@ degradation_factor = 1 - percentage the component has degraded at this time (ex.
 	string_meta.failure[0].labor_time = 1; //hours
 	string_meta.failure[0].cost = 20; //$
 	string_meta.repair.can_repair = true;
-	string_meta.repair.distribution = 'lognormal-n';
+	string_meta.repair.distribution = 'lognormal';
 	string_meta.repair.parameters = [7, 3]; //mean, std, years converted to days
 	string_meta.repair.times = null;
 	string_meta.degradation.can_degrade = false;
@@ -217,7 +217,7 @@ degradation_factor = 1 - percentage the component has degraded at this time (ex.
 	inverter_meta.failure[2].cost = 0.35 * get('inv_snl_paco'); //35 cents per watt
 	//other
 	inverter_meta.repair.can_repair = true;
-	inverter_meta.repair.distribution = 'lognormal-n';
+	inverter_meta.repair.distribution = 'lognormal';
 	inverter_meta.repair.parameters = [3, 1.5]; //mean, std, in days
 	inverter_meta.repair.times = null;
 	inverter_meta.degradation.can_degrade = false;
@@ -235,7 +235,7 @@ degradation_factor = 1 - percentage the component has degraded at this time (ex.
 	disconnect_meta.failure[0].labor_time = 4; //hours
 	disconnect_meta.failure[0].cost = 500; //$
 	disconnect_meta.repair.can_repair = true;
-	disconnect_meta.repair.distribution = 'lognormal-n';
+	disconnect_meta.repair.distribution = 'lognormal';
 	disconnect_meta.repair.parameters = [1, 0.5]; //mean, std, in years converted to days
 	disconnect_meta.repair.times = null;
 	disconnect_meta.degradation.can_degrade = false;
@@ -252,7 +252,7 @@ degradation_factor = 1 - percentage the component has degraded at this time (ex.
 	transformer_meta.failure[0].labor_time = 10; //hours
 	transformer_meta.failure[0].cost = 32868; //$
 	transformer_meta.repair.can_repair = true;
-	transformer_meta.repair.distribution = 'lognormal-n';
+	transformer_meta.repair.distribution = 'lognormal';
 	transformer_meta.repair.parameters = [0.25, 0.5]; //mean, std, in days
 	transformer_meta.repair.times = null;
 	transformer_meta.degradation.can_degrade = false;
@@ -288,7 +288,7 @@ degradation_factor = 1 - percentage the component has degraded at this time (ex.
 		tracker_meta.failure[0].labor_time = 0;
 		tracker_meta.failure[0].cost = 2000; //present day tracker cost, will be inflated
 		tracker_meta.repair.can_repair = true;
-		tracker_meta.repair.distribution = 'normal'; //'lognormal-n';
+		tracker_meta.repair.distribution = 'lognormal';
 		tracker_meta.repair.parameters = [30, 10]; //mean, std, in days
 		tracker_meta.repair.times = null;
 		tracker_meta.degradation.can_degrade = false;
@@ -306,7 +306,20 @@ degradation_factor = 1 - percentage the component has degraded at this time (ex.
 	Returns an array of the calculated samples.*/
 function LHS(name, distribution_type, parameters, num_samples)
 {
-	
+	/*LHS library included in SAM requires mean and error factor inputs into lognormal function.
+	Lognormal-n function requires mean and std of the UNDERLYING normal distribution.
+	However, most users will have mean and std of actual distribution. 
+	Therefore, must translate from mean and std to mean and error factor.
+	See translation equations at https://dakota.sandia.gov/content/latest-reference-manual, Keywords>Variables>lognormal_uncertain */
+	if (distribution_type == 'lognormal')
+	{
+		mu = parameters[0]; //mean
+		sigma = parameters[1]; //std
+		zeta = sqrt(log(pow(sigma,2) / pow(mu,2) + 1)); //log is the natural log, log10 is the base-10 log function
+		e = 2.71828;
+		epsilon = pow(e,(1.645*zeta)); //error factor
+		parameters[1] = epsilon; //temporarily overwrite the second parameter
+	}
 	if (num_samples > 20000)
 		num_samples = 20000; //LHS can only run so many samples at a time
 	lhs = lhs_create();
@@ -318,6 +331,8 @@ function LHS(name, distribution_type, parameters, num_samples)
 	}
 	result = lhs_vector(lhs, 'x');
 	lhs_free(lhs);
+	if (distribution_type == 'lognormal') 
+		parameters[1] = sigma; //set second parameter back to std before exiting the function
 	return result;
 }
 
@@ -827,7 +842,12 @@ for (day = 1; day < system_lifetime_yrs * 365; day++)
 			tracker_meta.failure[0].cost *= pow((1 + inflation / 100), year);
 	}
 	//step each component through time
+	if (day == 5)
+	{
 	step_in_time(module_meta, modules, day, costs.module);
+	outln(module_meta.repair.parameters);
+	exit;
+	}
 	step_in_time(string_meta, strings, day, costs.string);
 	step_in_time(combiner_meta, combiners, day, costs.combiner);
 	step_in_time(inverter_meta, inverters, day, costs.inverter);
