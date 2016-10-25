@@ -12,7 +12,7 @@ Team Revisions
 
 - snow model (SEVERIN)
 
-- linear self shading (JANINE)
+- linear self shading (JANINE). DONE
 
 Paul Revisions
 --------------
@@ -61,11 +61,11 @@ Change units from kWh to kW. DONE
 
 Add units to variable definition tables. DONE
 
-Check inverter input power equation (11.1) and dc power output Pdc, Pdc,net, Pdc,gross to be consistent with SAM outputs. Consider rewriting chapter 10 as 1 DC String Voltage, DC losses, DC power output (remove section on gross DC power)
+Check inverter input power equation (11.1) and dc power output Pdc, Pdc,net, Pdc,gross to be consistent with SAM outputs. Consider rewriting chapter 10 as 1 DC String Voltage, DC losses, DC power output (remove section on gross DC power). DONE
 
-Backtracking correction? (does not run self-shading model)
+Backtracking correction? (does not run self-shading model). DONE
 
-Module output voltage and inverter MPPT voltage clipping and subarray mismatch, and how that affects net power output
+Module output voltage and inverter MPPT voltage clipping and subarray mismatch, and how that affects net power output. DONE
 
 Change module output voltage and power variables to Vmp and Pmp as in DC output variables table.
 
@@ -77,7 +77,7 @@ Check the performance ratio formula now that we've fixed that bug?
 
 Update help references
 
-Check that incident irradiance section describes that beam, diffuse, and global may come from weather file or be calculated depending on input option.
+Check that incident irradiance section describes that beam, diffuse, and global may come from weather file or be calculated depending on input option. DONE
 
 Describe how decomposition model works when POA input is combined with beam shading.
 

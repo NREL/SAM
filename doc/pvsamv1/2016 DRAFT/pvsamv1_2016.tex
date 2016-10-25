@@ -191,11 +191,11 @@ The simulation model performs the following calculations for each time step in o
 
   \item{For each subarray, calculate the subarray gross DC power by multiplying the module DC power by the number of modules in the subarray.} %lib_pvsamv1.cpp 1502
 
-  \item{For each subarray, calculate subarray net DC power by multiplying the gross subarray power by the DC loss.} %lib_pvsamv1.cpp 1505
+  \item{For each subarray, calculate subarray DC power by multiplying the gross subarray power by the DC loss.} %lib_pvsamv1.cpp 1505
 
   \item{For each subarray, calculate the subarray string voltage by multiplying the module voltage by the number of modules per string.} %lib_pvsamv1.cpp 1511
 
-  \item{Calculate the array net and gross DC power by adding up the subarray values.}
+  \item{Calculate the array DC power by adding up the subarray values.}
 
   \end{enumerate}
 
@@ -203,7 +203,7 @@ The simulation model performs the following calculations for each time step in o
 
 %\item{Calculate irradiance values for results} %lib_pvsamv1.cpp 1535
 
-\item{Calculate the net AC power by applying the AC loss to the gross AC power. (Section~\ref{sec-netacoutput})} %lib_pvsamv1.cpp 1570
+\item{Calculate the AC power by applying the AC loss to the gross AC power. (Section~\ref{sec-netacoutput})} %lib_pvsamv1.cpp 1570
 
 \end{enumerate}
 
@@ -238,7 +238,9 @@ The system sizing algorithm is not available in SSC.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Irradiance and Weather Data}\label{sec-irradianceweatherdata}
 
-The photovoltaic performance model requires a weather file with solar resource data for one year and information about the location of the measurement site. The data may be hourly, or subhourly with a time resolution of up to one minute.
+The photovoltaic performance model requires a weather file with solar resource data for one year and information about the location of the measurement site. The data may be hourly, or subhourly with a time resolution of up to one minute. See Table~\ref{tab-wfdata} for a list of weather data fields.
+
+In SSC, you can provide either the path to a weather file (\texttt{solar\_resource\_file}, or a table containing the weather data (\texttt{solar\_resource\_data}). 
 
 The model uses data from the weather file to calculate the following values for each time step in the year:
 
@@ -251,13 +253,18 @@ The model uses data from the weather file to calculate the following values for 
 
 Solar resource data must include solar irradiance, wind speed, and ambient temperature data, and may include optional snow depth and albedo data. Location data must include latitude, longitude, time zone and elevation, and may include optional fields for location name or number, city, state, region, and country. 
 
-****SOLAR IRRADIANCE DATA CAN BE DNI/DHI, DNI/GHI, GHI/DHI, OR POA. DNI/DHI IS DEFAULT, WHEN OTHER OPTIONS ARE USED, SAM CALCULATES MISSING COMPONENT FROM OTHER TWO. POA BYPASSES CALCULATIONS EXCEPT FOR SHADING REF BYPASSING POA SECTION****
+As explained in Section~\ref{sec-incidentirradiance}, by default, SAM calculates the irradiance incident on the subarray from the beam (DNI) and diffuse (DHI) components of the solar irradiance. For weather files that do not contain data from those components, SAM can estimate the DNI and DHI from the other irradiance components. You must choose the appropriate \textbf{Weather File Irradiance Data} option on the Location and Resource input page (\texttt{irrad\_mode} value in SSC):
+
+\begin{itemize} 
+\item DNI and DHI (\texttt{irrad\_mode}~=~0) is the default option: SAM uses the beam (direct normal) an diffuse horizontal irradiance from the weather file, and ignores the GHI (global horizontal irradiance) data if it exists.
+\item DNI and GHI (\texttt{irrad\_mode}~=~1): SAM uses the beam and global horizontal data from the weather file and calculates the DHI using Equation~\ref{eqn-diffhoriz}.
+\item GHI and DHI (\texttt{irrad\_mode}~=~2): SAM uses the global horizontal and diffuse horizontal data from the weather file and calculates the DNI using Equation~\ref{eqn-beam}.
+\item Plane of array (POA) (\texttt{irrad\_mode}~=~3 or 4): SAM uses the POA data in the weather file and bypasses the incident irradiance calculations, unless shading is enabled for the subarray as described in  Section~\ref{sec-poa}.
+\end{itemize}
 
 Each row in the weather file must have a Year, Month, Day, and Hour column indicating the time for sun position calculations. Sub-hourly data must have an additional Minute column. For hourly data, the Minute column is optional, and may be used to indicate the minute for sun position calculations (Section~\ref{sec-timeconvention}). 
 
 SAM can read files in the formats listed below. For descriptions of the formats see \citep{help-weatherfileformats}.
-
-****SSC OPTION TO INPUT DATA ARRAY INSTEAD OF WEATHER FILE****
 
 \begin{itemize}
 \item SAM CSV: Comma-separated text format developed by NREL for use with SAM. This is also the file format for files from the NREL National Solar Radiation Database.
@@ -266,7 +273,7 @@ SAM can read files in the formats listed below. For descriptions of the formats 
 \item EPW: Text format derived from the TMY2 format for the EnergyPlus building modeling software. 
 \end{itemize}
 
-SAM's photovoltaic model reads and stores the weather file data shown in Table~\ref{tab-wfdata}. It ignores any additional data elements that may be included in the different weather file formats. Some additional data elements, such as relative humidity, ****RELATIVE HUMIDITY REQUIRED FOR HEAT TRANSFER CELL TEMP MODEL**** are required for SAM's concentrating solar power performance models, but not for the photovoltaic model. SAM also ignores supporting data, such as the source and uncertainty flags in the TMY3 file format.
+SAM's photovoltaic model reads and stores the weather file data shown in Table~\ref{tab-wfdata}. It ignores any additional data elements that may be included in the different weather file formats. Some additional data elements, such as relative humidity, are required for SAM's concentrating solar power performance models, but not for the photovoltaic model. SAM also ignores supporting data, such as the source and uncertainty flags in the TMY3 file format.
 
 \begin{table}
 \begin{center}
@@ -277,7 +284,7 @@ Symbol & Field & Description\\
 \midrule
 \multicolumn{3}{c}{Metadata Location Description}\\
 - & Location ID* & numerical identifier [\textit{722780}]\\
- - & City* & location name [\textit{``Phoenix Sky Harbor Intl Ap"}]\\
+ - & City* & location name [\textit{Phoenix Sky Harbor Intl Ap}]\\
 - & State* & two-letter state abbreviation [\textit{AZ}]\\
 $\mathit{tz}$ &Time zone & hours E of GMT [\textit{-7.0}] \\
 $\mathit{lat}$ & Latitude & decimal degree N of 0 [\textit{33.450}] \\
@@ -290,18 +297,23 @@ $\mathit{mo}$ & Month & typical month (1-12) \\
 $\mathit{day}$ & Day & day of year (1-365) \\
 $\mathit{hr}$ & Hour & hour of day (0-23) in local time \\
 $\mathit{min}$ & Minute & minute of hour (0-59) \\
-$E_g$ & Global horizontal irradiance (W/m$^2$) ****NOT REQUIRED & total radiation on a horizontal surface \\
-$E_b$ & Direct normal irradiance (W/$^2$) & direct radiation on a surface normal to the sun \\
+$E_g$ & Global horizontal irradiance (W/m$^2$) & total radiation on a horizontal surface \\
+$E_b$ & Direct normal irradiance (W/m$^2$) & direct radiation on a surface normal to the sun \\
 $E_d$ & Diffuse horizontal irradiance (W/m$^2$) & radiation on a horizontal surface from the sky \\
-POA & ****POA IS OPTIONAL & ****PLANE OF ARRAY\\
+POA & Plane-of-array irradiance & radiation on the plane of the array\\
 $v_{wind}$ & Wind speed (m/s) & wind speed \\
-$T_a$ & Dry bulb temperature ($^{\circ}$C) & ambient dry-bulb temperature \\
-$D_{snow}$ & Snow depth (cm)* & depth of snow \\
-$\mathit{\rho}$ & Ground reflectance* & ground reflectance factor or albedo \\
+$T_a$ & Dry-bulb temperature ($^{\circ}$C) & ambient dry-bulb temperature \\
+$D_{snow}$ & Snow depth (cm)$\ast$ & depth of snow \\
+$\mathit{\rho}$ & Ground reflectance$\dagger$  & ground reflectance factor or albedo \\
+- & Dew-point temperature ($^{\circ}$C)$\ddagger$  & dew-point temperature \\
+- & Atmospheric pressure (mbar)$\ddagger$  & atmospheric pressure \\
 \midrule
 \multicolumn{3}{l}{\textit{Table Notes}}\\
-\multicolumn{3}{l}{Fields marked (*) are optional.}\\
-\multicolumn{3}{l}{The italicized values in brackets are examples from a TMY3 file's header.}\\
+\multicolumn{3}{l}{The italicized metadata values in brackets are sample values.}\\
+\multicolumn{3}{l}{SAM requires either any two irradiance components or POA data.}\\
+\multicolumn{3}{l}{$\ast$ Snow depth data is required to model snow losses (Section~\ref{sec-snow}).}\\
+\multicolumn{3}{l}{$\dagger$ When albedo data is missing, SAM applies a default value of 0.2 (Section~\ref{sec-groundreflected}).}\\
+\multicolumn{3}{l}{$\ddagger$ Required only for the heat transfer cell temperature model (Section~\ref{sec-tcheattransfer}).}\\
 \end{tabular}
 \label{tab-wfdata}
 \end{center}
@@ -820,7 +832,9 @@ For two-axis tracking, the surface tilt and azimuth angles follow the sun zenith
 
 \section{One-axis Tracking}
 
-One-axis tracking involves a third surface angle $\theta$ describing the surface's rotation about the tracking axis and a rotation angle limit $\theta_{lim}$. 
+One-axis tracking involves the tilt angle $\beta$, azimuth angle $\gamma$ and a third surface angle $\theta$ describing the surface's rotation about the tracking axis and a rotation angle limit $\theta_{lim}$.
+
+ 
 
 SAM offers three shade modes for the one-axis tracking option on the PV Subarrays input page:
 \begin{itemize}
@@ -877,7 +891,7 @@ For a subarray with one-axis tracking, SAM assumes that the tracker rotates abou
 
 The \textbf{tracker rotation angle} $\theta$ is the angle of the subarray surface from the horizontal about the tracking axis. For a surface tilted as shown Figure~\ref{fig-arrayorientation}, the rotation angle is the angle as viewed from the raised end of the surface, with a negative rotation angle indicating counter-clockwise rotation from the horizontal. For a surface in the northern hemisphere with a surface azimuth angle of $180^\circ$, a negative rotation angle is for a surface facing east toward the morning sun with $-90^\circ$ for a vertical, east-facing surface. A positive rotation angle is for an array facing the afternoon sun, with $90^\circ$ for a vertical, west-facing surface.  In the southern hemisphere, for a surface with an azimuth angle of $0^\circ$, a negative rotation limit indicates a west-facing surface.
 
-The \textbf{tracker rotation limit} $\theta_lim$ is the physical limit of the tracker's motion about the tracking axis in degrees with valid values between $0$ and $\pm 90^\circ$. (Note that SAM's user interface restricts the rotation limit values to $\pm 85\degree$.) For example, a tracker in the northern hemisphere with a rotation limit of 45$^\circ$ would start tracking at a rotation angle of $-45^\circ$ in the sunrise time step, and stop tracking at a rotation angle of $45^\circ$ in the sunset time step.
+The \textbf{tracker rotation limit} $\theta_{lim}$ is the physical limit of the tracker's motion about the tracking axis in degrees with valid values between $0$ and $\pm 90^\circ$. (Note that SAM's user interface restricts the rotation limit values to $\pm 85\degree$.) For example, a tracker in the northern hemisphere with a rotation limit of 45$^\circ$ would start tracking at a rotation angle of $-45^\circ$ in the sunrise time step, and stop tracking at a rotation angle of $45^\circ$ in the sunset time step.
 
 SAM adjusts the surface rotation angle as follows:
 \begin{itemize}
@@ -932,8 +946,8 @@ Backtracking is a technique used with some one-axis trackers to minimize self-sh
 SAM's backtracking for one-axis tracking algorithm was developed by NREL for SAM. It involves the following steps:
 %lib_irradproc.cpp 373, 1258
 \begin{enumerate}
-\item Run the self-shading algorithm (Section~\ref{sec-selfshad}). It determines whether a portion of the subarray is self-shaded, given the ground coverage ratio $\GCR$, sun angles (Section~\ref{sec-sunangles}), surface angles (Section~\ref{sec-surfaceangles}), and ideal surface rotation angle $\theta_0$ (Equation~\ref{eqn-rot1x}).
-\item If a portion of the subarray is self-shaded, adjust the tracker rotation angle $\theta$ toward $0^\circ$ by $1^\circ$.
+\item Determine the shaded fraction of the subarray (Section~\ref{sec_selfshad1x}) given the ground coverage ratio $\GCR$, sun angles (Section~\ref{sec-sunangles}), surface angles (Section~\ref{sec-surfaceangles}), and surface rotation angle $\theta$ (Equation~\ref{eqn-rot1x}).
+\item If the shaded fraction is greater than zero, adjust the tracker rotation angle $\theta$ toward $0^\circ$ by $1^\circ$.
 \item Repeat Steps 1-2 until $F_{\mathrm{shad1x}}=0$, or one hundred times, whichever comes first (to avoid an infinite loop).
 \end{enumerate}
 
@@ -992,7 +1006,7 @@ $D_h$ & horizon brightening component of incident diffuse irradiance (W/m$^2$)& 
 \end{center}
 \end{table}
 
-\section{Bypassing POA Calculations}
+\section{Bypassing POA Calculations}\label{sec-poa}
 
 The photovoltaic performance model allows you to use measured plane-of-array (POA) irradiance data as input. When POA data is available, you can create a weather file with a column with the heading "POA" that contains the data. When you choose one of the POA options below, SAM uses the POA data from the weather file instead of calculating it from  beam normal and horizontal diffuse irradiance data \citep{freeman2016}.
 
@@ -1216,7 +1230,7 @@ The Perez incident diffuse irradiance:
 I_d = D_i + D_c + D_h
 \end{equation}
 
-\section{Incident Ground-reflected Irradiance}
+\section{Incident Ground-reflected Irradiance}\label{sec-groundreflected}
 
 The incident ground-reflected irradiance is solar energy that reaches the array surface after reflecting from the ground. The ground reflects light diffusely, so the ground-reflected irradiance is diffuse irradiance. It is a function of the beam normal irradiance and sun zenith angle, sky diffuse irradiance, and ground reflectance (albedo) \citep{liu1963}:
 %lib_irradproc.cpp 522
@@ -1359,13 +1373,28 @@ This procedure results in an estimate of the view factor of the active surfaces 
 
 \section{Self Shading}\label{sec-selfshad}
 
-Self shading is shading of photovoltaic modules in one row by modules in a neighboring rows. SAM uses the same self-shading model for fixed subarrays (no tracking) and subarrays with one-axis tracking. SAM does not model self shading for subarrays with two-axis or azimuth-axis tracking. Because the model assumes that modules consist of photovoltaic cells with three bypass diodes, it is suitable for modules mono- or poly-crystalline silicon photovoltaic cells, but not for thin film modules.The self-shading algorithm is described in detail in Section~\ref{sec-selfshadalg}.
+SAM can model the self shading that occurs when photovoltaic modules are arranged in parallel rows, and modules in one row cause a shadow on modules in a neighboring row. SAM can model self shading for fixed subarrays (no tracking) and subarrays with one-axis tracking. SAM does not model self shading for subarrays with two-axis or azimuth-axis tracking.
 
-The self-shading algorithm calculates three factors:
+To enable the self shading model for a subarray with no tracking (fixed) or one-axis tracking in SAM, after specifying the tracking and orientation options and ground coverage ratio (GCR) on the System Design page, on the Shading and Snow page, for the subarray's \textbf{Self shading type} input, choose \textbf{Standard (Non-linear)} for a subarray with crystalline silicon photovoltaic cells, or choose \textbf{Thin film (Linear)} for a subarry with thin-film modules. SAM does not automatically choose the correct self-shading option based on the module properties. For a subarray with one-axis tracking, you may also want to enable backtracking  (Section~\ref{sec-backtrack1x}) on the System Design page.
+
+In SSC, to enable self shading, set the \texttt{pvsamv1} input variable $\texttt{subarray[\textit{n}]\_shade\_mode}=1$ for the non-linear option, and $\texttt{subarray[\textit{n}]\_shade\_mode}=2$ for the linear option. Set the value to zero to ignore self shading.
+
+The non-linear self-shading option is for modules with mono- or poly-crystalline silicon photovoltaic cells, and assumes that modules consist of photovoltaic cells with three bypass diodes so that a shaded module's output decreases in steps of one third of the module's total output. The linear option is for thin-film modules, and assumes that a shaded module's output decreases linearly with the portion of the module that is shaded. 
+
+When you use POA irradiance data in the weather file, SAM must run a POA decomposition model to estimate the POA beam irradiance. If the measured POA data already accounts for the effect of self shading, then you should not enable self shading in SAM.
+
+The self-shading algorithm is described in detail in Section~\ref{sec-selfshadalg}.
+
+The self-shading algorithm calculates three factors for the non-linear option:
 \begin{itemize}
-\item Sky diffuse shading factor $F_{dss}$ that reduces the POA incident diffuse irradiance
-\item Ground-reflected diffuse shading factor $F_{gss}$ that also reduces the POA incident diffuse irradiance
-\item Beam DC loss factor $F_{dcss}$ that applies to the DC output of the array
+\item Sky diffuse self-shading factor $S_{dss}$ that reduces the POA diffuse irradiance
+\item Ground-reflected diffuse self-shading factor $S_{gss}$ that also reduces the POA  diffuse irradiance
+\item DC self-shading factor $F_{dcss}$ that accounts for the effect of self shading on the POA beam irradiance by reducing DC electrical output of the subarray
+\end{itemize}
+
+The self-shading algorithm calculates a single factor for the linear option:
+\begin{itemize}
+\item Linear self-shading factor $S_{bss}$ that reduces the POA beam irradiance
 \end{itemize}
 
 \section{Effective Irradiance after Shading Only}
@@ -1374,10 +1403,18 @@ SAM reports the effective irradiance after shading only (and before soiling) for
 
 The beam, sky diffuse, and ground-reflected components of the effective irradiance after shading only are:
 \begin{align}
-G_{bshad} &= I_b~S_{bns}\notag\\
-G_{dshad} &= I_d~S_{dns}~S_{dss} & S_{dss}&=1 ~\text{if no self shading} \notag\\
-G_{rshad} &= I_r~S_{rss} & S_{rss}&=1 ~\text{if no self shading}
+G_{bshad} &= I_b~S_{bns}~S_{1xss}~S_{bss}\notag\\
+G_{dshad} &= I_d~S_{dns}~S_{dss} \notag\\
+G_{rshad} &= I_r~S_{rss}
 \end{align}
+
+Where the self shading loss factors apply as follows:
+\begin{align*}
+S_{1xss}&~\text{non-linear option with one-axis tracking}\\
+S_{bss}& ~\text{linear option}\\
+S_{dss}& ~\text{non-linear option with fixed subarray}\\
+S_{rss}& ~\text{non-linear option with fixed subarray}
+\end{align*}
 
 The global effective irradiance after shading only:
 \begin{equation}
@@ -1429,9 +1466,11 @@ S_{bns}~O &\text{for one-axis self shading}
 
 %cmod_pvsamv1.cpp 1039: sscalc is a class of type selfshade_t, which is defined
 %in lib_pvshade.h 81 and implemented in lib_pvshade.cpp 153.
-This section describes SAM's self-shading model \citep{deline2013a}. It supplements Section~\ref{sec-selfshad} and is presented here for clarity because of the length of the algorithm.
+This section describes SAM's self-shading model. See Section~\ref{sec-selfshad} for a general description and instructions for enabling the model. The algorithm is presented here as a separate for clarity because of the length of the algorithm.
 
-To model self shading for a subarray with no tracking (fixed) or one-axis tracking in SAM, after specifying the tracking and orientation options on the System Design page, on the Shading page, for the subarray's \textbf{Shading mode} input, choose \textbf{self-shaded}. (For a description of the backtracking algorithm for one-axis tracking, see Section~\ref{sec-backtrack1x}.) In SSC, to enable self shading, set the \texttt{pvsamv1} input variable \texttt{subarray[n]\_shade\_mode} to zero.
+The non-linear option of the self-shading model is intended for modeling systems with  crystalline silicon modules and assumes that blocking diodes cause the module's response to partial shading of the module to be non-linear. The non-linear option assumes that each module contains three blocking diodes ($d=3$) and characterizes the non-linear response with an empirically determined factor applied to the subarray's electrical output and a reduction in POA diffuse irradiance.
+
+The linear model option is intended for systems with thin-film photovoltaic modules, and assumes that the output of a partially shaded module responds linearly with a reduction in POA irradiance. The linear option characterizes effect of self shading on the module as a reduction in the POA beam irradiance equal to the fraction of the module surface that is shaded.
 
 %self shading inputs ssinputs pvsamv1 update 76.
 \begin{table}
@@ -1447,8 +1486,9 @@ $M_{string}$ & Number of modules per string & -\\
 $M_{side}$ & \textbf{Number of modules along side of row} & \texttt{subarray[\textit{n}]\_nmody}\\
 $M_{bottom}$ & \textbf{Number of modules along bottom of row} & \texttt{subarray[\textit{n}]\_nmodx}\\
 $N_{strings}$ & Number of strings in parallel & \texttt{strings\_in\_parallel}\\
+$\sigma_{\mathit{lim}}$ & \textbf{Tracker rotation limit} & \texttt{subarray\textit{n}\_rotlim} \\
 $\GCR$ & \textbf{GCR}, ground coverage ratio & \texttt{subarray[\textit{n}]\_gcr}\\
-$A_m$ & module area )(M$^2$& \texttt{[spe,cec,6par,snl]\_area}\\
+$A_m$ & module area (m$^2$)& \texttt{[spe,cec,6par,snl]\_area}\\
 $\beta_s$ & surface tilt angle (deg)& \texttt{subarray[\textit{n}]\_tilt} \\
 $\gamma_s$ & surface azimuth angle (deg)& \texttt{subarray[\textit{n}]\_azimuth} \\
 $Z$ & sun zenith angle & -\\
@@ -1458,38 +1498,41 @@ $G_b$ & POA beam irradiance (W/m$^2$)& - \\
 $G_d$ & POA diffuse irradiance (sky and ground) (W/m$^2$)& - \\
 $\rho$ & albedo*& \texttt{albedo} \\
 \midrule
-\multicolumn{3}{c}{Outputs}\\
+\multicolumn{3}{c}{Outputs: Non-linear option}\\
 $S_{dss}$ & sky diffuse factor  / \textbf{Self-shading diffuse derate}& \texttt{[...]\_ss\_diffuse\_derate}\\
 $S_{rss}$ & ground diffuse factor  / \textbf{Self-shading reflected derate}& \texttt{[...]\_ss\_reflected\_derate}\\
 $F_{dcss}$& DC loss factor / \textbf{Self-shading derate} & \texttt{[...]\_ss\_derate}\\
 \midrule
+\multicolumn{3}{c}{Outputs: Linear option}\\
+$S_{bss}$ & beam diffuse factor  / \textbf{Self-shading linear derate}& \texttt{[...]\_ss\_linear\_derate}\\
+\midrule
 \multicolumn{3}{l}{Ellipses (...) indicate \texttt{subarray[\textit{n}]}.}\\
-\multicolumn{3}{l}*Albedo may be from weather file or set to default value of 0.2 if weather file does not contain albedo data.\\
+\multicolumn{3}{l}{For the non-linear option, SAM sets the linear output to 1.}\\
+\multicolumn{3}{l}{For the linear option, SAM sets the non-linear outputs to 1.}\\
+\multicolumn{3}{l}{*Albedo may be from weather file or set to default value of 0.2 if file does not contain albedo data.}\\
 \end{tabular}
 \label{tab-selfshadinputs}
 \end{center}
 \end{table}
-@@
-The self-shading model consists of two sets of equations, one to calculate the reduction in diffuse POA irradiance, and a separate one to calculate a DC loss factor to account for the non-linear performance impact of the beam POA irradiance reduction:
+
+The self-shading model calculates different loss factors depending on the shade model option, and whether the array is fixed or uses one-axis tracking:
 
 \begin{itemize}
-\item Reduction in diffuse POA irradiance:
+\item For a subarray with the non-linear self shading option:
 \begin{enumerate}
-\item Calculate the shade mask angle $\psi$ and ground coverage ratio $\GCR$.
-\item Calculate the reduction in sky diffuse radiation.
-\item Calculate the reduction in ground-reflected diffuse radiation.
+\item Reduction in POA sky diffuse and POA ground-reflected diffuse irradiance.
+\item Reduction in the subarray's DC output to account for the effect of self shading on POA beam irradiance.
 \end{enumerate}
-\item Reduction in beam POA irradiance:
+\item For a subarray with the the linear self shading option:
 \begin{enumerate}
-\item Calculate the shadow dimensions $X$ and $S$.
-\item Calculate the fixed self-shading DC loss factor to account for the beam POA reduction's impact on the array's output.
+\item Reduction in POA beam irradiance
 \end{enumerate}
 \end{itemize}
 
-Some diffuse radiation is always blocked by neighboring rows of modules, regardless of whether the rows block beam radiation \citep{goswami1989}. The diffuse radiation consists of a sky diffuse component and a ground-reflected component, both of which are affected in this way.
-
 Table~\ref{tab-selfshadinputs} and Figure~\ref{fig-selfshaddimensions} show the variables used to calculate the fixed self-shading factors. The equations and algorithm are described in \citep{appelbaum1979} and \citep{deline2013a}.
 %lib_pvshade.cpp 153 selfshade_t::init, also see cmod_pvsamv1.cpp 250 and 1047
+
+\section{Self Shading Assumptions}\label{sec-selfshadassumptions}
 
 \begin{figure}
 \begin{center}
@@ -1499,15 +1542,12 @@ Table~\ref{tab-selfshadinputs} and Figure~\ref{fig-selfshaddimensions} show the 
 \end{center}
 \end{figure}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Self Shading Assumptions}\label{sec-selfshadgeom}
-
 The self-shading model makes a set of simplifying assumptions to minimize the number of inputs:
 
 \begin{itemize}
 \item Modules have an aspect ratio of $R_{aspect}=1.7$, so that the length of the long side is 1.7 times the length of the short side. 
 \item The module area $A$ is the product of the module's total length and width. The value may be from one of the module libraries or a user input.
-\item Each module has three bypass diodes $d=3$ so that the module is made up of three ``submodules." A submodule is a string of photovoltaic cells in the module protected by a single bypass diode. For example, a 60-cell module would consist of three submodules of 20 cells each. This assumption makes the algorithm unsuitable for modeling self shading of thin film modules.
+\item For the non-linear option, each module has three bypass diodes $d=3$ so that the module is made up of three ``submodules." A submodule is a string of photovoltaic cells in the module protected by a single bypass diode. For example, a 60-cell module would consist of three submodules of 20 cells each.
 \item A partially shaded submodule behaves in the same way as it would if the entire submodule were uniformly shaded.
 \item Modules are wired together in strings parallel to the ground (horizontal strings) so that the number of modules along the bottom of a subarray row is a multiple of the number of modules per string.
 \item Parallel strings in the subarray are uniformly shaded.
@@ -1518,12 +1558,19 @@ Based on the simplifying assumptions listed above, the number of rows $N_{rows}$
 \begin{equation}
 N_{rows} = \left\lfloor \frac{M_{total}}{M_{side} M_{bottom}} \right\rfloor
 \end{equation}
-where $M_{total}$ is the number of modules in the subarray $M_{total}=M_{string}N_{strings}$. Note that if $M_{total}$ is not an even multiple of the product $M_{string}N_{strings}$, SAM generates a simulation message indicating that the self-shading configuration does not match the subarray configuration, but still calculates the DC loss factor as described below.
+
+where the total number of modules in the array $M_{total}$ is:
+
+\begin{equation}
+M_{total}=M_{string}~N_{strings}
+\end{equation}
+
+If $M_{total}$ is not an even multiple of the product $M_{side}~N_{bottom}$, SAM generates a simulation message indicating that the self-shading configuration does not match the subarray configuration, but still calculates the DC loss factor as described below.
 
 SAM calculates the module length and width from the module area $A$ in $\text{m}^2$  and the fixed aspect ratio assumption  $R_{aspect}=1.7$:
 %pvsamv1 update 1111
 \begin{align}
-W &= \sqrt{ \frac{A_m}{R_{aspect}}}\\
+W &= \sqrt{ \frac{A_m}{R_{aspect}}}\notag\\
 L &= W \mathit{R_{aspect}}
 \end{align}
 
@@ -1532,22 +1579,23 @@ The module area is either from the module library, or an input, depending on the
 The length of the side of a row (distance from the bottom edge to the top edge of a row):
 %pvsamv1 update 1119
 %this is Deline B = Applebaum A
-\[
+\begin{equation}
 B=
   \left\{
     \begin{array}{ll}
-      M_{side} L & \mbox{portrait module orientation}\\
-      M_{side} W & \mbox{landscape module orientation}
+      M_{side}~L & \mbox{portrait module orientation}\\
+      M_{side}~W & \mbox{landscape module orientation}
     \end{array}
   \right.
-\]
+\end{equation}
 
 The distance between bottom edges of neighboring rows:
 %pvsamv1 update 1123
 \begin{equation}
 R = \frac{B}{\GCR} 
 \end{equation}
-where $\GCR$ is the ground coverage ratio.
+
+where $\GCR$ is the ground coverage ratio input.
 
 The sun altitude angle:
 \begin{equation}
@@ -1555,31 +1603,11 @@ The sun altitude angle:
 \end{equation}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Shade Mask Angle}
+\section{Non-linear Option: Diffuse POA Irradiance Reduction} \label{sec-selfshaddiffuse}
 
-The equations for the reduction in sky diffuse irradiance require values for the shade mask angle and ground coverage ratio.
+Some diffuse radiation is always blocked by neighboring rows of modules, regardless of whether the rows block beam radiation \citep{goswami1989}. The diffuse radiation consists of a sky diffuse component and a ground-reflected component, both of which are affected in this way.
 
-\begin{figure}
-\begin{center}
-\includegraphics[scale=0.66]{self-shading-mask-angle}
-\caption{Side View of Two Rows with Self-shading Mask Angle Variables}
-\label{fig-selfshadingmaskangle}
-\end{center}
-\end{figure}
-
-%mask_angle_calc_method is an input on the Array page
-The mask angle is the minimum array tilt angle at which the view of the sky at a given point along the side of the row is obstructed by a neighboring row as shown in Figure~\ref{fig-selfshadingmaskangle} from \citet{passias1984}:
-%pvsamv1 update 342
-\begin{equation}
-\psi = \arctan \frac{ (B)\sin\beta_s } { R - B\cos\beta_s }
-\end{equation}
-
-SAM uses the "worst case" approach described in \citep{deline2013b}, where the diffuse irradiance mask angle is calculated for the bottom of the array rather than averaged across the entire array.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Sky Diffuse POA Irradiance Reduction} \label{sec-selfshaddiff}
-
-For the purposes of self-shading calculations, SAM assumes isotropic sky diffuse irradiance, so that the total horizontal diffuse irradiance $G_{dh}$ is:
+For the non-linear option, for the purposes of self-shading calculations, SAM assumes isotropic sky diffuse irradiance, so that the total horizontal diffuse irradiance $G_{dh}$ is:
 %lib_pvshad update 168
 \begin{equation}\label{eqn-selfshaddiffhor}
 G_{dh} = G_d \left(\frac{2}{1+\cos\beta_s}\right)
@@ -1604,18 +1632,32 @@ The reduction in sky diffuse POA irradiance incident on the portion of the subar
 G_{sky,\text{red}} = G_d - G_{dh}\left(1 - \cos^2\frac{\psi}{2}\right)\frac{N_{rows} - 1}{N_{rows}}
 \end{equation}
 
-The sky diffuse shading factor:
+\begin{figure}
+\begin{center}
+\includegraphics[scale=0.66]{self-shading-mask-angle}
+\caption{Side View of Two Rows with Self-shading Mask Angle Variables}
+\label{fig-selfshadingmaskangle}
+\end{center}
+\end{figure}
+
+%mask_angle_calc_method is an input on the Array page
+The shade mask angle is the minimum array tilt angle at which the view of the sky at a given point along the side of the row is obstructed by a neighboring row as shown in Figure~\ref{fig-selfshadingmaskangle} from \citet{passias1984}:
+%pvsamv1 update 342
+\begin{equation}
+\psi = \arctan \frac{ (B)\sin\beta_s } { R - B\cos\beta_s }
+\end{equation}
+
+SAM uses the "worst case" approach described in \citep{deline2013b}, where the diffuse irradiance mask angle is calculated for the bottom of the array rather than averaged across the entire array.
+
+The sky diffuse shading factor for the non-linear option is then:
 %lib_pvshad update 173
 \begin{equation}
 S_{dss} = \frac{G_{sky,\text{red}}}{G_d}
 \end{equation}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Ground Diffuse POA Irradiance Reduction} \label{sec-selfshadgndred}
-
 %The equations for calculating the reduction in ground-reflected POA irradiance are from \citep{goswami1989}. The diffuse horizontal radiation $G_{dh}$ is from Equation~\ref{eqn-selfshaddiffhor}.
 
-The first row in the subarray is not affected by self shading. The length of ground in front of each shaded row that reflects beam radiation onto the row, with $Y$ constrained to a minimum value of 0.00001:
+Ground diffuse irradiance is beam irradiance reflected onto modules in the subarray from the ground. The first row in the subarray is not affected by self shading. The length of ground in front of each shaded row that reflects beam radiation onto the row, with $Y$ constrained to a minimum value of 0.00001:
 %lib_pvshad update 182
 \begin{equation}
 Y = R - B \left(\frac{\sin( 180^\circ - \alpha - \beta_s )}{\sin\alpha} \right)
@@ -1635,9 +1677,9 @@ The reduced ground-reflected diffuse POA irradiance on the entire subarray:
 G_{gnd,red}=\left(\frac{F_1+F_2(N_{rows}-1)}{N_{rows}}\right)G_{bh}+\left(\frac{F_1+F_3(N_{rows}-1)}{N_{rows}}\right)G_{dh}
 \end{equation}
 
-The ground diffuse shading factor:
+The ground  diffuse shading factor for the non-linear option is then:
 %pvsamv1 update 187-193
-\[
+\begin{equation}
 S_{rss}=
  \left\{
      \begin{array}{ll}
@@ -1647,12 +1689,14 @@ S_{rss}=
       & \mbox{if $F_1 (G_{bh} + G_{dh}) \leq 0$}
     \end{array}
   \right.
-\]
+\end{equation}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Shadow Dimensions}\label{sec-selfshaddim}
+\section{Shadow Dimensions} \label{sec-selfshaddimensions}
 
 The shadow dimensions are defined by a shadow height  $H_S$ and shadow displacement $g$ as shown in Figure~\ref{fig-selfshaddimensions}. The equations are based on \citet{appelbaum1979}.
+
+The shadow height $H_S$ is required to calculate the reduction in POA beam irradiance for both the non-linear (Equations~\ref{eqn-ssdimland} and~\ref{eqn-ssdimport}) and linear  (Equation~\ref{eqn-ssbeam}) options. 
 
 The shadow dimensions equations assume that a surface azimuth angle $\gamma_s$ of zero is for a south-facing surface in the northern hemisphere, and for a north-facing surface in the southern hemisphere. Because this differs from SAM's convention where $\gamma_s=0$ is for a north-facing surface and $\gamma_s=180^\circ$ is for a south-facing surface, the equations use the effective surface azimuth $\gamma_{s,eff}$:
 %lib_pvshad update 366
@@ -1689,9 +1733,16 @@ g=
 
 The shadow height $H_s$ in Figure~\ref{fig-selfshaddimensions} is:
 %lib_pvshad update 403
-\begin{equation} \label{eqn-shadowheight}
-H_S=B \left(1-\frac{R}{P_y}\right)
+\begin{equation}\label{eqn-ssshadowheight}
+H_S=
+	\left\{
+	\begin{array}{ll}
+	B\left(1-\frac{R}{P_y}\right)&\mbox{for fixed subarray}\\
+	B\left(S_{1xss}\right)&\mbox{for one-axis tracking (see Equation~\ref{eqn-ss1x})}
+	\end{array}
+	\right.
 \end{equation}
+
 with the following constraints: 
 \[
 H_S=
@@ -1704,15 +1755,37 @@ H_S=
   \right.
 \]
 
+
+\section{Linear Option: POA Beam Irradiance Reduction} \label{sec-selfshadlinear}
+
+For the linear self-shading option, the reduction in POA beam irradiance is proportional to the relative shaded area of the subarray:
+
+%lib_pvshade relative shaded area for linear shading
+\begin{equation}\label{eqn-ssbeam}
+S_{bss} = 
+	\left\{
+	\begin{array}{ll}
+		H_s\frac{L-g}{B L}&\mbox{for fixed subarray}\\
+		S_{1xss}&\mbox{for one-axis tracking (Equation~\ref{eqn-ss1x})}
+	\end{array}
+	\right.
+\end{equation}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Non-linear Option: DC Loss Factor} \label{sec-selfshaddc}
+
 %S and X are inputs to the selfshade_dc_derate() function
+For the non-linear shading option, the effect of the reduction in POA beam irradiance is modeled as a reduction in the subarray's electrical DC output, and depends on the number of diodes in each module, which SAM assumes to be three $d=3$.
+
 When there is self shading, some fraction $X$ of each row in the subarray is shaded. In each row, a fraction $S$ of the number of modules along the side is of the row is shaded \citep{deline2013a}. The equations for $S$ and $X$ are from \citet{deline2013b}.
+
 
 For landscape module orientation, the case where $H_S>W$ assumes complete shading even though in a given string, some modules will be completely shaded while others are only partly shaded ($\lceil...\rceil$ and $\lfloor...\rfloor$ indicate the ceiling and floor functions, respectively): 
 %lib_pvshad update 418, 455 situation 1
 \begin{equation}
-X = \left\lceil\frac{H_S}{W}\right\rceil \dfrac{R-1}{R M_{side}}
+X = \left\lceil\frac{H_S}{W}\right\rceil \dfrac{R-1}{R M_{side}}\notag
 \end{equation}
-\[
+\begin{equation}\label{eqn-ssdimland}
 S=
   \left\{
     \begin{array}{ll}
@@ -1724,14 +1797,14 @@ S=
       & \mbox{when $H_S> W$, or for one-axis tracking}
     \end{array}
   \right.
-\]
+\end{equation}
 
 For portrait module orientation, the configuration shown in Figure~\ref{fig-selfshaddimensions}: 
 %lib_pvshad update 433, 455  situation 2
 \begin{equation}
-X = \left\lceil \frac{H_S}{L} \right\rceil \dfrac{R-1}{R M_{side}}
+X = \left\lceil \frac{H_S}{L} \right\rceil \dfrac{R-1}{R M_{side}}\notag
 \end{equation}
-\[
+\begin{equation}\label{eqn-ssdimport}
 S=
  \left\{
      \begin{array}{ll}
@@ -1741,14 +1814,14 @@ S=
       & \mbox{for one-axis tracking}
     \end{array}
   \right.
-\]
+\end{equation}
 
 %DELETE AFTER REVIEW
 %\begin{align}
 %S &= 1-\left\lfloor \frac{gd}{W}\right\rfloor \left(d N_{bottom}\right)^{-1} 
 %\end{align}
 
-SAM assumes that each module has three bypass diodes so that $d=3$ (See  Section~\ref{sec-selfshadgeom}).
+SAM assumes that each module has three bypass diodes so that $d=3$ (See  Section~\ref{sec-selfshadassumptions}).
 
 %vertical strings not available as of SAM 2014.11.24
 %For vertical strings and portrait module orientation ($\mathit{sor}=0$, %$\mathit{mor}=0$), this approximation assumes complete shading for modules on the %very edge of the array that may be only partially shaded: %situation 3
@@ -1763,13 +1836,12 @@ SAM assumes that each module has three bypass diodes so that $d=3$ (See  Section
 %S &= \left\lceil \frac{H_sd}{W} \right\rceil \frac{r-1}{dmr} 
 %\end{align}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Beam Self-shading DC Loss Factor} \label{sec-selfshaddc}
+To calculate the beam self-shading DC loss factor, SAM first determines the shadow dimensions (Section~\ref{sec-selfshaddimensions}), and then determines the DC loss factor using empirically determined relationships as described below.
 
 The self-shading DC loss factor accounts for the reduction in beam POA irradiance caused by self shading. Its calculation is based on the proposed simplified analytical model from \citep{deline2013a} and requires the following variables:
 \begin{itemize}
-\item The shading fractions $S$ and $X$ described in Section~\ref{sec-selfshaddim}.
-\item Fraction of solar irradiance reaching the shaded submodule $E_e$, which is a function of the reduction in diffuse POA irradiance from the sky and ground described in Section~\ref{sec-selfshaddiff}.
+\item The shading fractions $S$ and $X$ described in Section~\ref{sec-selfshaddimensions}.
+\item Fraction of solar irradiance reaching the shaded submodule $E_e$, which is a function of the reduction in diffuse POA irradiance from the sky and ground described in Section~\ref{sec-selfshaddiffuse}.
 \item Submodule fill factor $\mathit{F}_{fill}$ determined from the module nameplate parameters.
 \end{itemize}
 
@@ -1820,6 +1892,413 @@ F_{dcss}=X\max\left(F_{dc1},F_{dc2},F_{dc3}\right)+(1-X)
 \end{equation}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{One-axis tracking: Shaded Fraction}\label{sec_selfshad1x}
+%cmod_pvsamv1.cpp 1254
+
+This section describes SAM's self-shading geometry calculations for one-axis trackers $S_{1xss}$ for subarrays with one-axis tracking. SAM uses the shaded fraction to calculate the shadow height (Equation~\ref{eqn-ssshadowheight}) and the reduction in POA beam irradiance for the linear option (Equation~\ref{eqn-ssbeam}).
+
+This model was developed by NREL specifically for SAM, so this section is the only documentation of the model. The source code for these calculations is available for download. For a link to the source code, see the \citet{source} citation in the References section of this manual.
+
+For the purpose of determining the shaded fraction for subarrays with one-axis tracking, SAM  models the subarray as three surfaces, called panels, with the same tilt, azimuth, and rotation angle as the subarray. The three rectangular surfaces have the same arbitrary dimensions. The algorithm determines the position of the four corners of each panel, and then based on the position of the sun determines whether either of the outside panels blocks beam radiation from the sun to the middle panel.
+
+This approach makes it possible to calculate the shaded fraction of the subarray using only the ground coverage ratio (GCR) in addition to the subarray surface angles (Section~\ref{sec-surfaceangles}) and sun angles (Section \ref{sec-sunangles}). The GCR describes the spacing of rows in the subarray, and is defined as the ratio of area of the subarray when its modules are horizontal to the total ground area, which is defined by the edges of modules at the outer boundary of the array.
+
+\subsection{Sun Position Unit Vectors}
+
+The sun position unit vector $\mathbf{\hat s}$ represents the direction of the sun calculated from the sun azimuth angle $\alpha$ and zenith angle $\zeta$ in degrees (Section~\ref{sec-sunangles}).
+
+The solar altitude angle in degrees is:
+%lib_irradproc 1100
+\begin{equation}
+\alpha = 90\degree - \zeta
+\end{equation}
+
+The sun position unit vector depends on the solar altitude and azimuth angles:
+%lib_irradproc.cpp 1102
+\begin{align}
+0 & \leq \alpha \leq 90\degree:
+&90^\circ&<\alpha\leq180^\circ:
+\notag\\
+\mathbf{s} &= 
+  \left [
+    \begin{array}{c}
+      \cos\alpha\sin\beta\\
+      \cos\alpha\cos\beta\\
+      \sin\alpha\\
+    \end{array}
+  \right]
+&\mathbf{s} &= 
+  \left [
+    \begin{array}{c}
+      \cos\alpha\sin(180^\circ-\beta)\\
+      -\cos\alpha\cos(180^\circ-\beta)\\
+      \sin\alpha\\
+    \end{array}
+  \right]
+\notag\\
+180^\circ&<\alpha\leq270^\circ: 
+&270^\circ&<\alpha\leq360^\circ: 
+\notag\\
+\mathbf{s} &= 
+  \left [
+    \begin{array}{c}
+      -\cos\alpha\sin(\beta-180^\circ)\\
+      -\cos\alpha\cos(\beta-180^\circ)\\
+      \sin\alpha\\
+    \end{array}
+  \right]
+&\mathbf{s} &= 
+  \left [
+    \begin{array}{c}
+      -\cos\alpha\sin(360^\circ-\beta)\\
+      \cos\alpha\cos(360^\circ-\beta)\\
+      \sin\alpha\\
+    \end{array}
+  \right]
+\end{align}
+
+The unit vector in the direction of the sun is the Euclidean norm of $\mathbf{s}$:
+\begin{equation}
+\mathbf{\hat s} = \|\mathbf{s}\|
+\end{equation}
+
+\subsection{Panel Vertices}
+
+The next step is to find the vertices (corners) of the three rectangular panels. The panels have the same same orientation as the subarray and with spacing defined by the ground coverage ratio.
+
+First, arbitrarily define the panel length and width:
+%lib_irradproc.cpp 983 985
+\begin{align}\label{eqn_paneldim}
+W&=1\notag\\
+L&=10
+\end{align}
+
+These panel dimensions make it possible to express the distance between rows $D$ in terms of the ground coverage ratio $\mathit{gcr}$, defined as the ratio between the module area $A_m$ and ground area $A_g$:
+%lib_irradproc.cpp 984
+\begin{equation}
+D=\frac{1}{\mathit{GCR}}-1
+\end{equation}
+
+%\begin{align}\label{eqn_gcr}
+%A_p &=3LW \notag\\
+%A_g &= L(3W+3D) \notag\\
+%\mathit{gcr} &= \frac{A_m}{A_g} = \frac{W}{W+D}
+%\end{align}
+
+When each of the three panels is in the horizontal position, the four vertices $(x,y,z)$ of the three panels are:
+\begin{align}
+\mathbf{P}_{0,horiz} &= 
+  \left [
+    \begin{array}{ccc}
+      W/2&0&0\\
+      W/2&L&0\\
+      -W/2&L&0\\
+      -W/2&0&0\\
+    \end{array}
+  \right] 
+    \begin{array}{ccc}
+      &&\text{Vertex 0}\\
+     &&\text{Vertex 1}\\
+     &&\text{Vertex 2}\\
+     &&\text{Vertex 3}\\
+    \end{array}&\text{Panel 0}
+\notag\\
+\mathbf{P}_{1,horiz} &= 
+  \left [
+    \begin{array}{ccc}
+      W/2+D+W&0&0\\
+      W/2+D+W&L&0\\
+      -W/2+D+W&L&0\\
+      -W/2+D+W&0&0\\
+    \end{array}
+  \right]&\text{Panel 1}
+\notag\\
+\mathbf{P}_{2,horiz} &= 
+  \left [
+    \begin{array}{ccc}
+      W/2+2(D+W)&0&0\\
+      W/2+2(D+W)&L&0\\
+      -W/2+2(D+W)&L&0\\
+      -W/2+2(D+W)&0&0\\
+    \end{array}
+  \right]&\text{Panel 2}
+\end{align}
+
+The vertices for Panel 0 rotated about the $y$-axis are given by the matrix product:
+\begin{equation}
+  \mathbf{P}_{0,rot} =
+  \mathbf{P}_{0,horiz}
+  \left[
+    \begin{array}{ccc}
+      \cos\sigma&0&\sin\sigma\\
+      0&1&0\\
+      -\sin\sigma&0&\cos\sigma\\
+    \end{array}
+  \right]
+\end{equation}
+
+The vertices for Panels 1 and 2 rotated about the $y$-axis are:
+\begin{align}
+  \mathbf{P}_{1,rot} &=
+  \mathbf{P}_{0,rot}+
+  \left [
+    \begin{array}{ccc}
+      D+W&0&0\\
+      D+W&0&0\\
+      D+W&0&0\\
+      D+W&0&0\\
+    \end{array}
+  \right]
+\notag\\
+  \mathbf{P}_{2,rot} &=
+  \mathbf{P}_{0,rot}+
+  \left [
+    \begin{array}{ccc}
+      2(D+W)&0&0\\
+      2(D+W)&0&0\\
+      2(D+W)&0&0\\
+      2(D+W)&0&0\\
+    \end{array}
+  \right]
+\end{align}
+
+The vertices for Panels 1, 2 and 3 both rotated about the $y$-axis and tilted from the horizontal at the subarray tilt angle are:
+\begin{align}
+\mathbf{P}_{0,rot,tilt} &= 
+\left(\mathbf{P}_{0,rot}-
+  \left [
+    \begin{array}{ccc}
+      0&L&0\\
+      0&L&0\\
+      0&L&0\\
+      0&L&0\\
+    \end{array}
+  \right] 
+\right)
+  \left[
+    \begin{array}{ccc}
+      1&0&0\\
+      0&\cos\beta&\sin\beta\\
+      0&-\sin\beta&\cos\beta\\
+    \end{array}
+  \right]
+  +
+  \left[
+    \begin{array}{ccc}
+      0&L&0\\
+      0&L&0\\
+      0&L&0\\
+      0&L&0\\
+    \end{array}
+  \right]
+ \notag\\
+\mathbf{P}_{1,rot,tilt} &= 
+\left(\mathbf{P}_{1,rot}-
+  \left [
+    \begin{array}{ccc}
+      0&L&0\\
+      0&L&0\\
+      0&L&0\\
+      0&L&0\\
+    \end{array}
+  \right] 
+\right)
+  \left[
+    \begin{array}{ccc}
+      1&0&0\\
+      0&\cos\beta&\sin\beta\\
+      0&-\sin\beta&\cos\beta\\
+    \end{array}
+  \right]
+  +
+  \left[
+    \begin{array}{ccc}
+      0&L&0\\
+      0&L&0\\
+      0&L&0\\
+      0&L&0\\
+    \end{array}
+  \right]
+\notag\\
+\mathbf{P}_{2,rot,tilt} &= 
+\left(\mathbf{P}_{2,rot}-
+  \left [
+    \begin{array}{ccc}
+      0&L&0\\
+      0&L&0\\
+      0&L&0\\
+      0&L&0\\
+    \end{array}
+  \right] 
+\right)
+  \left[
+    \begin{array}{ccc}
+      1&0&0\\
+      0&\cos\beta&\sin\beta\\
+      0&-\sin\beta&\cos\beta\\
+    \end{array}
+  \right]
+  +
+  \left[
+    \begin{array}{ccc}
+      0&L&0\\
+      0&L&0\\
+      0&L&0\\
+      0&L&0\\
+    \end{array}
+  \right]
+\end{align}
+
+Finally, the vertices of Panels 1, 2 and 3 rotated around the $y$-axis, tilted from the horizontal at the subarray tilt angle, and rotated about the $z$-axis at the subarray azimuth angle are:
+\begin{align}
+\mathbf{P}_{0,rot,tilt,sazm} &= 
+\mathbf{P}_{0,rot,tilt}
+  \left[
+    \begin{array}{ccc}
+      \cos\Psi&\sin\Psi&0\\
+      -\sin\Psi&\cos\Psi&0\\
+      0&0&1\\
+    \end{array}
+  \right]
+ \notag\\
+\mathbf{P}_{1,rot,tilt,sazm} &= 
+\mathbf{P}_{1,rot,tilt}
+  \left[
+    \begin{array}{ccc}
+      \cos\Psi&\sin\Psi&0\\
+      -\sin\Psi&\cos\Psi&0\\
+      0&0&1\\
+    \end{array}
+  \right]
+\notag\\
+\mathbf{P}_{2,rot,tilt,sazm} &= 
+\mathbf{P}_{2,rot,tilt}
+  \left[
+    \begin{array}{ccc}
+      \cos\Psi&\sin\Psi&0\\
+      -\sin\Psi&\cos\Psi&0\\
+      0&0&1\\
+    \end{array}
+  \right]
+\end{align}
+
+To make things easier to read, matrices $\mathbf{P}_{0}$, $\mathbf{P}_{1}$, and $\mathbf{P}_{2}$ indicate the four vertices for each of the three panels:
+\begin{align}
+\mathbf{P}_{0} &= 
+\mathbf{P}_{0,rot,tilt,sazm} 
+ \notag\\
+\mathbf{P}_{1} &= 
+\mathbf{P}_{1,rot,tilt,sazm} 
+\notag\\
+\mathbf{P}_{2} &= 
+\mathbf{P}_{2,rot,tilt,sazm} 
+\end{align}
+
+\subsection{Shading Panel}
+
+The shading panel is either Panel 0 or Panel 2, and is the panel that blocks beam solar radiation from Panel 1. Of the two panels, the shading panel $\mathit{iPanel}$ is the panel nearest the sun's direction.
+
+By definition Panel 1 is between Panel 0 and Panel 2. The following vectors are between Vertex 0 of the three panels. The vectors from Panel 1 to Panel 0 ($toPrev$), and from Panel 2 to Panel 1 ($toNext$) are:
+\begin{align}
+\mathbf{v}_{toPrev} = \mathbf{P}_{0}(x_0,y_0,z_0) - \mathbf{P}_{1}(x_0,y_0,z_0)\notag\\
+\mathbf{v}_{toNext} = \mathbf{P}_{2}(x_0,y_0,z_0) - \mathbf{P}_{1}(x_0,y_0,z_0)
+\end{align}
+
+To determine which of Panel 0 and Panel 2 is in the direction of the sun from Panel 1, compare the dot product of the sun unit vector with the vectors to and from Panel 1. The dot product with the larger positive value indicates the panel closest to the sun. The shading panel $\mathit{iPanel}$ is either Panel 0 or Panel 1:
+\begin{equation}
+P_{\mathit{iPanel}} = \left\{
+\begin{array}{ll}
+\mathbf{P}_0 & \text{if $\mathbf{v}_{toPrev} \cdot \mathbf{\hat s} \geq \mathbf{v}_{toNext} \cdot \mathbf{\hat s}$} \\
+\mathbf{P}_2 & \text{if $\mathbf{v}_{toPrev} \cdot \mathbf{\hat s} < \mathbf{v}_{toNext} \cdot \mathbf{\hat s}$}
+\end{array}
+\right.
+\end{equation}
+
+\subsection{Shaded Fraction}
+
+With the shading panel identified, and the position of the sun and panel angles for the current time step angles, the following vector equations determine whether $\mathit{iPanel}$ is shaded.
+
+The midpoint $\mathit{midP}$ is the moddle of the edge of $\mathit{iPanel}$ closest to the sun. The edge of $\mathit{iPanel}$ closest to the sun depends on whether the shading panel is Panel 0 or Panel 2. If Panel 0 is shading, then the edge of $\mathit{iPanel}$ closest to the sun is the edge connecting Vertices 2 and 3:
+%lib_irradproc.cpp 1169
+\begin{equation}
+\mathbf{v}_{midP} = \frac{\mathbf{P}_{1}(x_2,y_2,z_2) + \mathbf{P}_{1}(x_3,y_3,z_3)}{2}
+\end{equation}
+
+If Panel 2 is shading, then the edge of $\mathit{iPanel}$ closest to the sun is defined by Vertices 0 and 1:
+\begin{equation}
+\mathbf{v}_{midP} = \frac{\mathbf{P}_{1}(x_0,y_0,z_0) + \mathbf{P}_{1}(x_1,y_1,z_1)}{2}
+\end{equation}
+
+The vector normal  $\mathit{normal}$ to $\mathit{iPanel}$ is the cross product of any two vectors in the plane of the shading panel:
+%lib_irradproc.cpp 1179
+\begin{equation}
+\mathbf{v}_{normal} = \left[\mathbf{P}_{iPanel}(x_1,y_1,z_1)-\mathbf{P}_{iPanel}(x_0,y_0,z_0)\right]\times\left[\mathbf{P}_{iPanel}(x_3,y_3,z_3)-\mathbf{P}_{iPanel}(x_0,y_0,z_0)\right]
+\end{equation}
+
+The intersection $\mathit{sunDot}$ of the $\mathit{iPanel}$ normal vector $\mathit{normal}$ and an infinite vector in the direction of the sun vector $\mathit{sun}$:
+%lib_irradproc.cpp 11691189
+\begin{equation}\label{eqn_sunDot}
+\mathbf{v}_{sunDot}=\mathbf{v}_{normal}\cdot\mathbf{v}_{\hat s}
+\end{equation}
+
+%% IF \mathbf{v}_{sunDot}<0.001 THEN shade fraction = 0 because sun vector lies in the plane of the array
+
+The distance $\mathit{t}$ along the sun vector from $\mathit{midP}$ to the plane of $\mathit{iPanel}$:
+ %lib_irradproc.cpp 1196
+\begin{equation}
+t=\mathbf{v}_{normal}\cdot[\mathbf{P}_{iPanel}(x0,y0,z0)-\mathbf{v}_{midP}]
+\end{equation}
+
+The point of intersection $\mathit{intersectP}$ of the sun vector infinite plane of  $\mathit{iPanel}$:
+%lib_irradproc.cpp 1205
+\begin{equation}
+\mathbf{v}_{intersectP}=\mathbf{v}_{midP}+t\mathbf{\hat s}
+\end{equation}
+
+Determine whether the point is within the bounds of the panel. If either of the following conditions is true, the point is outside of the bounds of the panel:
+%lib_irradproc.cpp 1212
+\begin{align}\label{eqn_checkshade}
+[\mathbf{P}_{iPanel}(x3,y3,z3)-\mathbf{P}_{iPanel}(x0,y0,z0)]\cdot
+[\mathbf{v}_{intersectP}-\mathbf{P}_{iPanel}(x0,y0,z0)] <0\notag\\
+[\mathbf{P}_{iPanel}(x0,y0,z0)-\mathbf{P}_{iPanel}(x3,y3,z3)]\cdot
+[\mathbf{v}_{intersectP}-\mathbf{P}_{iPanel}(x3,y3,z3)] <0
+\end{align}
+
+Next, determine whether $\mathit{iPanel}$ is shaded. It is not shaded when either $\mathbf{v}_{intersectP}$ is outside the bounds of the panel (Equation \ref{eqn_checkshade}), or when the sun vector lies within the plane of the subarray, $\mathbf{v}_{sunDot}<0.001$ (Equation \ref{eqn_sunDot}). 
+
+If $\mathit{iPanel}$ is shaded, it is shaded by either Panel 0 or Panel 2. If it is shaded by Panel 0, the upper and lower edge midpoints on the adjacent panel are: 
+%lib_irradproc.cpp 1231, 1234
+\begin{align}
+\mathbf{v}_{mu}=\frac{\mathbf{P}_{0}(x0,y0,z0) + \mathbf{P}_{0}(x1,y1,z1)}{2}\notag\\
+\mathbf{v}_{ml} =\frac{\mathbf{P}_{0}(x2,y2,z2) + \mathbf{P}_{0}(x3,y3,z3)}{2}
+\end{align}
+
+Otherwise, if $\mathit{iPanel}$ is shaded by Panel 2: 
+%lib_irradproc.cpp 1232, 1235
+\begin{align}
+\mathbf{v}_{mu}=\frac{\mathbf{P}_{2}(x2,y2,z2) + \mathbf{P}_{2}(x3,y3,z3)}{2}\notag\\
+\mathbf{v}_{ml} =\frac{\mathbf{P}_{2}(x0,y0,z0) + \mathbf{P}_{2}(x1,y1,z1)}{2}
+\end{align}
+
+The geometric shaded fraction:
+%lib_irradproc.cpp 1241
+\begin{equation}\label{eqn_1xshadfrac}
+A_b = \frac{ (\mathbf{v}_{intersectP}-\mathbf{v}_{mu})  \cdot (\mathbf{v}_{ml}-\mathbf{v}_{mu})}{(\mathbf{v}_{ml}-\mathbf{v}_{mu})\cdot (\mathbf{v}_{ml}-\mathbf{v}_{mu})}
+\end{equation}
+
+If $\mathit{iPanel}$ is not shaded, then the geometric shading fraction is zero:
+\begin{equation}
+A_b = 0
+\end{equation}
+
+The reduction in POA beam irradiance for one-axis tracking:
+%cmod_pvsamv1.cpp 1255
+\begin{equation}\label{eqn-ss1x}
+S_{1xss} = 1 - A_b
+\end{equation}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Module DC Output}\label{sec-module}
 
@@ -1861,6 +2340,8 @@ $Z$ & sun zenith angle (deg)\\
 \midrule
 \multicolumn{2}{c}{\textit{Inputs from Weather File}}\\
 $T_{dry}$ & ambient dry bulb temperature ($^\circ$C) \\
+$T_{dew}$ & dew-point temperature ($^\circ$C)$^\ast$ \\
+$p_{atm}$ & atmospheric pressure (mbar)$^\ast$\\
 $v_w$ & wind speed (m/s)\\
 $h$ & elevation above sea level (m)\\
 $\mathit{hr}$ & hour of day local time (h)\\
@@ -1880,6 +2361,8 @@ $I_{sc}$ & operating closed circuit current (A)\\
 $\eta_m$ & module efficiency (\%)\\
 $T_c$ & cell temperature ($^\circ$C)\\
 \midrule
+\multicolumn{2}{c}{$^\ast$Only required for heat transfer cell temperature model (Section~\ref{sec-tcheattransfer}).}\\
+
 \end{tabular}
 \label{tab-modulevars}
 \end{center}
@@ -2222,7 +2705,7 @@ For the next set of equations, the cell temperature is in Kelvin, and the refere
 The light current $I_L$:
 %lib_cec6par.cpp 343
 \begin{equation}\label{eqn-lightcurrent}
-I_L = \frac{G}{1000}\left[I_{L,ref} + \mu_{I,sc} (T_c - 298.15 )\right]
+I_L = \frac{G}{1000}\left[I_{L,ref} + \mu_{isc} (T_c - 298.15 )\right]
 \end{equation}
 
 %lib_cec6par.cpp 220
@@ -2421,6 +2904,14 @@ Description / \textbf{Name in SAM} & Name in SSC \\
 \textbf{Columns of modules in array} & \texttt{cec\_array\_cols} \\ 
 \textbf{Temperature behind the module} ($^\circ$C) & \texttt{cec\_backside\_temp} \\ 
 \textbf{Gap Spacing} (m)& \texttt{cec\_gap\_spacing} (m) \\ 
+\multicolumn{2}{c}{Irradiance and Weather Inputs}\\
+wind speed (m/s)&-\\
+POA beam (W/m$^2$)&-\\
+POA sky diffuse (W/m$^2$)&-\\
+POA ground diffuse (W/m$^2$)&-\\
+atmospheric pressure (mbar)&-\\
+dry-bulb temperature ($^\circ$C)&-\\
+dew-point temperature ($^\circ$C)&-\\
 \midrule
 \multicolumn{2}{c}{Output}\\
 cell temperature & \texttt{subarray[\textit{n}]\_celltemp} \\
@@ -2689,7 +3180,7 @@ $L_{dcoptimizer,n}$ & \textbf{DC power optimizer loss} subarray \textit{n} (\%)&
 \multicolumn{3}{c}{Outputs}\\
 $V_{dc,n}$ & \textbf{Subarray [\textit{n}] DC string voltage} (V)& \texttt{subarray[\textit{n}]\_dc\_voltage} \\
 $V_{dc}$ & \textbf{Inverter DC input voltage} (V)& \texttt{inverter\_dc\_voltage} \\
-$P_{dc,net}$ & \textbf{Array power (DC)} (kW)& \texttt{dc\_net} \\
+$P_{dc}$ & \textbf{Array power (DC)} (kW)& \texttt{dc\_net} \\
 \hline
 \end{tabular}
 \label{tab-arraydcoutputvars}
@@ -2768,10 +3259,10 @@ $G_{d}$ & POA diffuse irradiance (sky and ground) & - \\
 $\mathit{sunup}$ & \textbf{Sun up over horizon (0/1)} & \texttt{sunup} \\
 \midrule
 \multicolumn{3}{c}{Outputs}\\
-$P_{snow}$ & \textbf{Power loss due to snow} (W) & \texttt{****} \\
-$C_{snow}$ & \textbf{Snow coverage} (0..1) & \texttt{****} \\
-$P_{snow,n}$ & \textbf{Subarray [\textit{n}] Power loss due to snow} (W) &  \texttt{subarray[\textit{n}]\_dc\_gross} \\
-$C_{snow,n}$ & \textbf{Subarray [\textit{n}] Snow coverage} (0..1) &  \texttt{subarray[\textit{n}]\_dc\_net} \\
+$P_{snow}$ & \textbf{Power loss due to snow} (W) & \texttt{dc\_snow\_loss} \\
+$C_{snow}$ & \textbf{Snow depth from weather file} (cm) & \texttt{snowdepth} \\
+$P_{snow,n}$ & \textbf{Subarray [\textit{n}] Power loss due to snow} (W) &  \texttt{subarray[\textit{n}]\_snow\_loss} \\
+$C_{snow,n}$ & \textbf{Subarray [\textit{n}] Snow coverage} (0..1) &  \texttt{subarray[\textit{n}]\_snow\_coverage} \\
 \hline
 \end{tabular}
 \label{tab-snowvars}
@@ -2845,21 +3336,19 @@ To calculate the DC snow loss factor,
 F_{snow} = 1-\frac{\lceil C_{snow}M_{side}\rceil}{M_{side}}
 \end{equation}
 
-\section{Net DC Power Output}
+\section{Array DC Power}
 
-The net DC power output of each subarray is each subarray's gross DC power output multiplied by the subarray's DC loss factors:
+The DC power output of each subarray is each subarray's gross DC power output multiplied by the subarray's DC loss factors:
 %cmod_pvsamv1.cpp 1505
 \begin{equation}
-P_{dc,net,n} = P_{dc,gross,n}~F_{dc,n}~F_{snow,n}
+P_{dc,n} = P_{dc,gross,n}~F_{dc,n}~F_{snow,n}
 \end{equation}
 
-The array's net DC power output is sum of the subarray net DC power output values :
+The array's DC power output is sum of the subarray DC power output values :
 %cmod_pvsamv1.cpp 1506
 \begin{equation}
-P_{dc,net} = \sum_{n=1}^{N_{sub}} P_{dc,net,n}
+P_{dc} = \sum_{n=1}^{N_{sub}} P_{dc,n}
 \end{equation}
-
-The array's net DC power output is the inverter's DC input power.
 
 \section{Maximum Power Point Tracking}
 
@@ -2895,7 +3384,7 @@ The subarray mismatch algorithm runs the cell temperature model (Section~\ref{se
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Inverter AC Output}\label{sec-inverter}
 
-SAM uses one of the inverter models listed in Section~\ref{sec-inverteroptions} to calculate the total AC power output of all of the inverters in the system. For systems with more than one inverter, SAM models the inverters as a single large inverter that operates with the array DC string voltage as the inverter's input voltage. 
+SAM uses one of the inverter models listed in Section~\ref{sec-inverteroptions} to calculate the total AC power output of all of the inverters in the system. For systems with more than one inverter, SAM models the inverters as a single large inverter that operates with the array DC string voltage as the inverter's input voltage. SAM cannot model a system with more than one type of inverter.
 
 The inverter models calculate the inverter's DC-to-AC power conversion efficiency at rated and part-load operating power. They do not explicitly account for the effect of temperature on inverter performance or for the impact on inverter performance of power factor control or grid outages. 
 
@@ -2906,35 +3395,40 @@ SAM accounts for two kinds of inverter losses, or "clipping" described in Sectio
 \caption{Inverter Model Variable Definitions}
 \begin{tabular}{lll}
 \midrule
-Symbol & Description / \textbf{Name in SAM} & Name in the SSC Module \texttt{pvsamv1}\\
+Symbol & Description / \textbf{Name in SAM} & Name in SSC\\
 \midrule
 \multicolumn{3}{c}{Inputs}\\
-$P_{dc,net}$ & net DC power output of the array (W)& \\
-$N$ & number of inverters & - \\
+$P_{dc}$ & \textbf{Array power} (DC) (kW)& \\
+$N$ & number of inverters & \texttt{inverter\_count} \\
 $V_{dc}$ & DC string voltage (V)& - \\
+$V_{dc,max}$ & \textbf{Maximum DC voltage} (V)& [...]\texttt{\_vdcmax} \\
+$I_{dc,max}$ & \textbf{Maximum DC current} (A) &  [...]\texttt{\_pdco} \\
+$V_{dc,0}$ & \textbf{Nominal DC voltage} (V)&  [...]\texttt{\_vdco} \\
+$P_{s,0}$ & \textbf{Power consumption during operation} (W)&  [...]\texttt{\_pso} \\
+$P_{nt,0}$ & \textbf{Power consumption at night} (W)&  [...]\texttt{\_pnt} \\
+$P_{ac,0}$ & \textbf{Maximum AC power} (W)&  [...]\texttt{\_paco} \\
+$P_{dc,0}$ & \textbf{Maximum DC power} (W) &  [...]\texttt{\_pdco} \\
+$V_{ac,0}$ & \textbf{Nominal AC voltage} (V) &  [...]\texttt{\_pdco} \\
+$V_{dc,mppt max}$ & \textbf{Minimum MPPT DC voltage} (V) &  \texttt{mppt\_low\_inverter} \\
+$V_{dc,mppt min}$ & \textbf{Maximum MPPT DC voltage} (V) &  \texttt{mppt\_hi\_inverter} \\
 \midrule
-\multicolumn{3}{c}{Output}\\
-$P_{ac}$ & \textbf{Gross ac output} (W) & \texttt{ac\_net} \\
+\multicolumn{3}{c}{Outputs}\\
+$P_{ac}$ & \textbf{Power generated by system} (kW) & \texttt{gen} \\
 $\eta_{inv}$ & \textbf{Inverter efficiency} (\%)& \texttt{inv\_eff}  \\
 $P_{clip}$ & \textbf{Inverter clipping loss} (kW)& \texttt{inv\_cliploss}  \\
 $P_{so}$ & \textbf{Inverter power consumption loss} (kW)& \texttt{inv\_psoloss}  \\
 $P_{nt}$ & \textbf{Inverter night time loss} (kW)& \texttt{inv\_ntloss}  \\
-$P_{par}$ & AC parasitic power consumption (W) & - \\%may not be used
-$R_{partload}$ & part load ratio & - \\
 \midrule
+\multicolumn{3}{c}{[...] indicates the inverter model name in SSC: \texttt{inv\_snl}, \texttt{inv\_ds}, or \texttt{inv\_pd} }\\
+
 \end{tabular}
 \label{tab-invertervars}
 \end{center}
 \end{table}
 
-Regardless of the inverter model, SAM calculates the inverter input power for each time step by dividing the array's total DC power output by the number of inverters in the system:
-\begin{equation}\label{eqn-invinputpower}
-P_{dc} = \frac{P_{dc,net}}{N}
-\end{equation}
-
 \section{Inverter Models}\label{sec-inverteroptions}
 
-SAM calculates the a single inverter's AC output with one of the inverter models listed below \citep{blair2013}:
+SAM calculates the a single inverter's AC output with one of three inverter models \citep{blair2013}. Table~\ref{tab-invertervars} lists the variables that are the same for the all three inverter models. Variables that apply to each specific inverter module are listed in the relevant section:
 
 \begin{itemize}
 \item \textbf{Inverter CEC Database} (Section~\ref{sec-sandiainverter}), also called the Sandia inverter model, is an empirical model that uses manufacturer specifications with four empirically derived coefficients $C_0$, $C_1$, $C_2$, $C_3$ \citep{king2007}. It uses parameters from a database maintained by the California Energy Commission \citep{gsc2014a}.
@@ -2943,6 +3437,8 @@ SAM calculates the a single inverter's AC output with one of the inverter models
 \end{itemize}
 
 In the SSC \texttt{pvsamv1} module, the input variable \texttt{inverter\_model} determines the module model as shown in Table~\ref{tab-invertersubmodels}.
+
+
 
 \begin{table}
 \begin{center}
@@ -2968,33 +3464,19 @@ SAM's Sandia Inverter model is an implementation of the empirical model describe
 
 In SSC, the implementation of the Sandia inverter model described here is part of the \texttt{pvsamv1} module. The SSC module \texttt{pvsandiainv} is a standalone implementation of the Sandia inverter model that is not used by SAM, but is available as part of the SSC software development kit.
 
+The Sandia Inverter model variables are listed in Tables~\ref{tab-invertervars} and~\ref{tab-sandiainvertervars}.
+
 \begin{table}
 \begin{center}
-\caption{Sandia Inverter Model Variable Definitions}
+\caption{Sandia Inverter Model Inputs}
 \begin{tabular}{lll}
 \midrule
 Symbol & Description / \textbf{Name in SAM} & Name in SSC \\
 \midrule
-\multicolumn{3}{c}{Inputs}\\
-$P_{dc}$ & inverter DC input power (Equation~\ref{eqn-invinputpower}) (W) & - \\
-$V_{dc}$ & inverter DC input voltage (DC string voltage) (V) & - \\
-$V_{dc,max}$ & \textbf{Maximum DC power} (W)& \texttt{inv\_snl\_vdcmax} \\
-$I_{dc,0}$ & \textbf{Nominal DC voltage} (V)& \texttt{inv\_snl\_vdco} \\
-$P_{s,0}$ & \textbf{Power consumption during operation} (W)& \texttt{inv\_snl\_pso} \\
-$P_{nt,0}$ & \textbf{Power consumption at night} (W)& \texttt{inv\_snl\_pnt} \\
-$P_{ac,0}$ & \textbf{Maximum AC power} (W)& \texttt{inv\_snl\_paco} \\
-$P_{dc,0}$ & \textbf{Maximum DC power} (W) & \texttt{inv\_snl\_pdco} \\
 $c_0$ & Curvature between AC power and DC power (1/W) & \texttt{inv\_snl\_c0} \\
 $c_1$ & Coefficient of $P_dc,0$ variation with DC input voltage (1/V) &  \texttt{inv\_snl\_c1} \\
 $c_2$ & Coefficient of $P_{so}$ variation with DC input voltage (1/V) &\texttt{inv\_snl\_c2} \\
 $c_3$ & Coefficient of $C_0$ variation with DC input voltage (1/V) & \texttt{inv\_snl\_c3} \\
-\midrule
-\multicolumn{3}{c}{Output}\\
-$P_{ac}$ & \textbf{Gross ac output} (W)& \texttt{ac\_net} \\
-$\eta_{inv}$ & \textbf{Inverter efficiency}(\%) & \texttt{inv\_eff}  \\
-$P_{clip}$ & \textbf{Inverter clipping loss} (W)& \texttt{inv\_cliploss}  \\
-$P_{s}$ & \textbf{Inverter power consumption loss} (W)& \texttt{inv\_psoloss}  \\
-$P_{nt}$ & \textbf{Inverter night time loss} (W)& \texttt{inv\_ntloss}  \\
 \hline
 \end{tabular}
 \label{tab-sandiainvertervars}
@@ -3071,33 +3553,17 @@ The inverter's DC-to-AC power conversion efficiency:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Inverter Part Load Curve Model}\label{sec-partloadinverter}
 
-NREL developed the Inverter Part Load Curve model specifically for SAM. The model's input and output variables are shown in Table~\ref{tab-partloadinvertervars}.
+NREL developed the Inverter Part Load Curve model specifically for SAM. The model's variables are listed in Tables~\ref{tab-invertervars} and \ref{tab-partloadinvertervars}.
 
 \begin{table}
 \begin{center}
-\caption{Inverter Part Load Curve Model Variable Definitions}
+\caption{Inverter Part Load Curve Model Inputs}
 \begin{tabular}{lll}
 \midrule
 Symbol & Description / \textbf{Name in SAM} & Name in SSC \\
 \midrule
-\multicolumn{3}{c}{Inputs}\\
-$P_{dc}$ & inverter DC input power (Equation~\ref{eqn-invinputpower}) (W)& - \\
-$V_{dc}$ & inverter DC input voltage (DC string voltage) (V) & - \\
-$V_{dc,max}$ & \textbf{Maximum DC power} (W)& \texttt{inv\_ds\_vdcmax} \\
-$I_{dc,0}$ & \textbf{Nominal DC voltage} (V) & \texttt{inv\_ds\_vdco} \\
-$P_{s,0}$ & \textbf{Power consumption during operation} (W)& \texttt{inv\_ds\_pso} \\
-$P_{nt,0}$ & \textbf{Power consumption at night} (W)& \texttt{inv\_ds\_pnt} \\
-$P_{ac,0}$ & \textbf{Maximum AC power} (W)& \texttt{inv\_ds\_paco} \\
-$P_{dc,0}$ & \textbf{Maximum DC power} (W)& \texttt{inv\_ds\_pdco} \\
 $\eta_{\mathrm{inv},0-N}$ & column of $N$ efficiency values (\%)& \texttt{inv\_ds\_efficiency} \\
 $P_{ac,0-N}$ & column of $N$ AC power output values (W)& \texttt{inv\_ds\_partload} \\
-\midrule
-\multicolumn{3}{c}{Output}\\
-$P_{ac}$ & \textbf{Gross ac output} (W)& \texttt{ac\_net} \\
-$\eta_{inv}$ & \textbf{Inverter efficiency} (\%)& \texttt{inv\_eff}  \\
-$P_{clip}$ & \textbf{Inverter clipping loss} (W)& \texttt{inv\_cliploss}  \\
-$P_{s}$ & \textbf{Inverter power consumption loss} (W)& \texttt{inv\_psoloss}  \\
-$P_{nt}$ & \textbf{Inverter night time loss} (W)& \texttt{inv\_ntloss}  \\
 \hline
 \end{tabular}
 \label{tab-partloadinvertervars}
@@ -3512,9 +3978,11 @@ Radiation}. New York, NY: Academic Press.
 
 \bibitem[SAM Help - Sizing the Flate Plate PV System(2014)]{help-sizing} ``SAM Help: Sizing the Flat Plate PV System." (2014). SAM 2014.1.14 Help System. National Renewable Energy Laboratory. Available on line at \url{https://www.nrel.gov/analysis/sam/help/html-php/index.html?pvfp\_sizing\_the\_pv\_system.htm} (accessed March 20, 2014).
 
+\bibitem[SAM Help - Weather File Formats(2014)]{help-weatherfileformats} ``SAM Help: Weather File Formats." (2014) SAM 2014.1.14 Help System. National Renewable Energy Laboratory. Available on line at  \url{https://www.nrel.gov/analysis/sam/help/html-php/index.html?weather_format.htm} (accessed November 13, 2013).
+
 \bibitem[SAM SDK(2014)]{sdk} ``SAM Simulation Core SDK." (2014). National Renewable Energy Laboratory. Accessed March 19, 2014: \url{https://sam.nrel.gov/content/sam-simulation-core-sdk}
 
-\bibitem[SAM Help - Weather File Formats(2014)]{help-weatherfileformats} ``SAM Help: Weather File Formats." (2014) SAM 2014.1.14 Help System. National Renewable Energy Laboratory. Available on line at  \url{https://www.nrel.gov/analysis/sam/help/html-php/index.html?weather_format.htm} (accessed November 13, 2013).
+\bibitem[SAM Source Code(2016)]{source} ``SAM Source Code: Self-shading Geometry Calculations for One-axis Trackers." (2016). National Renewable Energy Laboratory. Accessed October 20, 2016: \url{https://sam.nrel.gov/source}
 
 \bibitem[Sandia(2014)]{sandia-testeval} ``Sandia National Laboratories Photovoltaic Test and Evaluation Program." Sandia National Laboratories. Accessed March 7, 2014: \url{http://energy.sandia.gov/?page_id=279}
 
