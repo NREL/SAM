@@ -1,0 +1,64 @@
+
+
+Measured.Ivanhoe = [64,	74,	81,	80,	80,	81,	81,	82,	81,	78,	69,	64];
+Measured.Babbitt = [84,	85,	91,	93,	92,	91,	92,	93,	92,	89,	85,	83];
+Measured.Halsted = [83,	86,	91,	94,	95,	95,	96,	96,	91,	89,	84,	81];
+Measured.Paradise = [74,	69,	68,	78,	86,	86,	87,	83,	74,	70,	72,	74];
+
+
+function solar_access( unshaded_poa, shaded_poa )
+{
+	if ( #unshaded_poa != #shaded_poa || #unshaded_poa != 8760 ) return [];
+	nday = [31,28,31,30,31,30,31,31,30,31,30,31];
+	i=0;
+	Mshaded = Munshaded = [0,0,0,0,0,0,0,0,0,0,0,0];	
+	for (m=0;m<12;m++)
+	{
+		for( d=0;d<nday[m];d++)
+		{
+			for( h=0;h<24;h++ )
+			{
+				Munshaded[m] += unshaded_poa[i];
+				Mshaded[m] += shaded_poa[i];
+				i++;				
+			}
+		}		
+	}
+	
+	SA = alloc(12);
+	for( i=0;i<12;i++) SA[i] = round(100*Mshaded[i]/Munshaded[i]);
+	return SA;
+}
+
+close_project();
+open_project( '../solar_access_four_systems.sam' );
+
+cases = list_cases();
+for( i=0;i<#cases;i++ )
+{
+	active_case( cases[i] );
+	outln( 'running case ' + cases[i] );
+	simulate();
+	
+	x = get('shading');
+	
+	x.en_timestep = 0;
+	x.en_diff = 0;
+	set('shading', x);
+	simulate();	
+	poa_unshaded = get('poa');
+	
+	x.en_timestep = 1;
+	x.en_diff = 1;
+	set('shading', x);
+	simulate();
+	poa_shaded = get('poa');
+	
+	SAM{cases[i]} = solar_access( poa_unshaded, poa_shaded );	
+}
+
+
+outln( json_write( Measured ) );
+outln( json_write( SAM ) );
+
+//date;EOutInv;GlobShd;GlobInc;ShdLoss;ShdBLss;ShdDLss;ShdALss;FShdGl;FShdBm;FShdDif;FShdAlb
