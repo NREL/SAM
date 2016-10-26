@@ -1,6 +1,4 @@
 TECHNOLOGY,FINANCING,ANNUAL_OUTPUT,LCOE_NOM,LPPA_NOM,MESSAGES
-Photovoltaic,None,OVERWRITE	
-Photovoltaic,None,fail,fail,fail
 Flat Plate PV,Residential,7481.71,7.45072,NA,; 
 Flat Plate PV,Commercial,371195,5.64441,NA,; 
 Flat Plate PV,Third Party,7481.71,NA,NA,; 
@@ -25,8 +23,7 @@ High-X Concentrating PV,All Equity Partnership Flip,2.24502e+006,30.5878,34.3018
 High-X Concentrating PV,Sale Leaseback,2.24502e+006,29.2833,31.833,; 
 High-X Concentrating PV,LCOE Calculator,2.22613e+006,NA,NA,; 
 High-X Concentrating PV,None,2.24502e+006,NA,NA,; 
-Wind Power,Residential,OVERWRITE	
-Wind Power,Residential,7843.43,17.6698,NA,Defaults file is likely out of date: Wind Power_Residential  Variables: 1 loaded but not in configuration, 0 wrong type, defaults file has 427, config has 427  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later)  Loaded but don't exist in config: wacc; 
+Wind Power,Residential,7843.43,17.6698,NA,; 
 Wind Power,Commercial,236186,7.09879,NA,; 
 Wind Power,Single Owner,256785664,4.1572,4.52561,; 
 Wind Power,Leveraged Partnership Flip,256785664,4.21117,4.71155,; 
@@ -47,13 +44,11 @@ Geothermal Power,All Equity Partnership Flip,120301728,10.7432,11.9928,;
 Geothermal Power,Sale Leaseback,120301728,10.0983,10.6842,; 
 Geothermal Power,LCOE Calculator,120939192,NA,NA,; 
 Geothermal Power,None,120939192,NA,NA,; 
-Solar Water Heating,Residential,OVERWRITE	
-Solar Water Heating,Residential,2407.42,35.2027,NA,Defaults file is likely out of date: Solar Water Heating_Residential  Variables: 1 loaded but not in configuration, 0 wrong type, defaults file has 361, config has 361  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later)  Loaded but don't exist in config: wacc; 
+Solar Water Heating,Residential,2407.42,35.2027,NA,; 
 Solar Water Heating,Commercial,2926.79,30.1709,NA,; 
 Solar Water Heating,LCOE Calculator,2407.42,NA,NA,; 
 Solar Water Heating,None,2407.42,NA,NA,; 
-Generic System,Residential,OVERWRITE	
-Generic System,Residential,6266.31,25.3692,NA,Defaults file is likely out of date: Generic System_Residential  Variables: 1 loaded but not in configuration, 0 wrong type, defaults file has 250, config has 250  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later)  Loaded but don't exist in config: wacc; 
+Generic System,Residential,6266.31,25.3692,NA,; 
 Generic System,Commercial,6266.31,14.4953,NA,; 
 Generic System,Single Owner,366658560,31.5162,33.2042,; 
 Generic System,Leveraged Partnership Flip,366658560,31.6262,33.5559,; 
@@ -104,11 +99,15 @@ Dish Stirling,All Equity Partnership Flip,188473424,20.1103,21.4674,;
 Dish Stirling,Sale Leaseback,188473424,20.7857,22.1782,; 
 Dish Stirling,LCOE Calculator,188473424,NA,NA,; 
 Dish Stirling,None,188473424,NA,NA,; 
-Generic CSP System,Commercial,557343744,2.21192,NA,; Notice: time 0.00 { Generic solar model 2 }:\ The interpolation code must be 1 (interpolate) or 2 (nearest neighbor)The input value was 0, so it was reset to 1
+Generic CSP System,Commercial,557656128,2.21085,NA,; Notice: time 0.00 { Generic solar model 2 }:\ The interpolation code must be 1 (interpolate) or 2 (nearest neighbor)The input value was 0, so it was reset to 1
 Generic CSP System,Single Owner,557343744,11.5881,12.5491,; Notice: time 0.00 { Generic solar model 2 }:\ The interpolation code must be 1 (interpolate) or 2 (nearest neighbor)The input value was 0, so it was reset to 1
-Generic CSP System,Leveraged Partnership Flip,557343744,11.6114,12.6463,; Notice: time 0.00 { Generic solar model 2 }:\ The interpolation code must be 1 (interpolate) or 2 (nearest neighbor)The input value was 0, so it was reset to 1
-Generic CSP System,All Equity Partnership Flip,557374976,16.6451,20.4079,; Notice: time 0.00 { Generic solar model 2 }:\ The interpolation code must be 1 (interpolate) or 2 (nearest neighbor)The input value was 0, so it was reset to 1
+Generic CSP System,Leveraged Partnership Flip,557656128,11.6052,12.6395,; Notice: time 0.00 { Generic solar model 2 }:\ The interpolation code must be 1 (interpolate) or 2 (nearest neighbor)The input value was 0, so it was reset to 1
+Generic CSP System,All Equity Partnership Flip,557343744,16.646,20.4091,; Notice: time 0.00 { Generic solar model 2 }:\ The interpolation code must be 1 (interpolate) or 2 (nearest neighbor)The input value was 0, so it was reset to 1
 Generic CSP System,Sale Leaseback,557343744,16.3623,19.2072,; Notice: time 0.00 { Generic solar model 2 }:\ The interpolation code must be 1 (interpolate) or 2 (nearest neighbor)The input value was 0, so it was reset to 1
 Generic CSP System,LCOE Calculator,557343744,NA,NA,; Notice: time 0.00 { Generic solar model 2 }:\ The interpolation code must be 1 (interpolate) or 2 (nearest neighbor)The input value was 0, so it was reset to 1
 Generic CSP System,None,557343744,NA,NA,; Notice: time 0.00 { Generic solar model 2 }:\ The interpolation code must be 1 (interpolate) or 2 (nearest neighbor)The input value was 0, so it was reset to 1
 ISCC,Single Owner,128327400,11.7945,12.0626,; 
+Physical Trough IPH,None,NA,NA,NA,; 
+Physical Trough IPH,LCOH Calculator,1108194304,NA,NA,; 
+DSGL IPH,None,NA,NA,NA,; 
+DSGL IPH,LCOH Calculator,591934976,NA,NA,; 
