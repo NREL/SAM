@@ -1,48 +1,4 @@
-
-function read_SAM( name )
-{
-	file = '../' + name +'_SAM.csv';
-	data = csvread( file, {skip=4,table=true,numeric=true});
-	sf = data{'0.0 %'};	
-	outln( file + ': ' + @data + ': ' + #sf + ' values.' );
-	return sf;
-}
-
-function read_PVSOL( name )
-{
-	file = '../' + name + '_PVSOL.csv';
-	data = csvread( file, {skip=0,table=true,numeric=true});
-	sf = data{'Loss Percent [%]'};	
-	outln( file + ': ' + @data + ': ' + #sf + ' values.' );
-	return sf;
-}
-
-function read_PVsyst( name )
-{
-	file = '../' + name +'_PVsyst.csv';
-	data = csvread( file, {skip=13,numeric=true,delim=';'});
-	
-	sf = alloc(8760);
-	for( i=0;i<8760;i++ )
-	{
-		sf[i] = 100-100*data[i][8];
-		if ( data[i][2] == 0 )
-			sf[i] = 100;
-	}
-		
-	outln( file + ': ' + #data + ': ' + #sf + ' values.' );
-	return sf;
-}
-
-
-function extract( array, start, length )
-{
-	x = alloc(length);
-	for( i=0;i<length;i++ )
-		x[i] = array[start+i];
-	return x;
-}
-
+import 'utils.lk';
 
 jan1_idx = 0;
 apr1_idx = 2160;
@@ -104,7 +60,7 @@ function make_plots( names, labels )
 make_plots( [ 'test1', 'test2', 'test3' ], ['Denver', 'Quito', 'Perth' ] );
 
 
-models = [ 'SAM', 'PV*SOL' ];
+models = [ 'SAM', 'PVsyst', 'PV*SOL' ];
 loadfuncs = [ read_SAM, read_PVsyst, read_PVSOL ];
 make_plots( [ 'ivanhoe', 'babbitt', 'halsted', 'paradise' ],
  [ 'Ivanhoe in Denver', 'Babbitt in Los Angeles', 'Halsted in Los Angeles', 'Paradise in Soquel' ] );

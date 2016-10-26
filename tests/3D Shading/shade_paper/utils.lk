@@ -1,0 +1,45 @@
+
+function read_SAM( name )
+{
+	file = '../' + name +'_SAM.csv';
+	data = csvread( file, {skip=4,table=true,numeric=true});
+	sf = data{'0.0 %'};	
+	outln( file + ': ' + @data + ': ' + #sf + ' values.' );
+	return sf;
+}
+
+function read_PVSOL( name )
+{
+	file = '../' + name + '_PVSOL.csv';
+	data = csvread( file, {skip=0,table=true,numeric=true});
+	sf = data{'Loss Percent [%]'};	
+	outln( file + ': ' + @data + ': ' + #sf + ' values.' );
+	return sf;
+}
+
+function read_PVsyst( name )
+{
+	file = '../' + name +'_PVsyst.csv';
+	outln( 'reading: ' + file );
+	data = csvread( file, {skip=13,numeric=true,delim=';'});
+	
+	sf = alloc(8760);
+	for( i=0;i<8760;i++ )
+	{
+		sf[i] = 100-100*data[i][8];
+		if ( data[i][2] == 0 )
+			sf[i] = 100;
+	}
+		
+	outln( file + ': ' + #data + ': ' + #sf + ' values.' );
+	return sf;
+}
+
+
+function extract( array, start, length )
+{
+	x = alloc(length);
+	for( i=0;i<length;i++ )
+		x[i] = array[start+i];
+	return x;
+}
