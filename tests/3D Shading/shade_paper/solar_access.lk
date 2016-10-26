@@ -1,64 +1,160 @@
 
 
-Measured.Ivanhoe = [64,	74,	81,	80,	80,	81,	81,	82,	81,	78,	69,	64];
-Measured.Babbitt = [84,	85,	91,	93,	92,	91,	92,	93,	92,	89,	85,	83];
-Measured.Halsted = [83,	86,	91,	94,	95,	95,	96,	96,	91,	89,	84,	81];
-Measured.Paradise = [74,	69,	68,	78,	86,	86,	87,	83,	74,	70,	72,	74];
+cases = [ 'Ivanhoe', 'Babbitt', 'Halsted', 'Paradise' ];
 
-
-function solar_access( unshaded_poa, shaded_poa )
+if ( yesno('recalculate/reload solar access data?') )
 {
-	if ( #unshaded_poa != #shaded_poa || #unshaded_poa != 8760 ) return [];
-	nday = [31,28,31,30,31,30,31,31,30,31,30,31];
-	i=0;
-	Mshaded = Munshaded = [0,0,0,0,0,0,0,0,0,0,0,0];	
-	for (m=0;m<12;m++)
+	Measured.Ivanhoe = [64,	74,	81,	80,	80,	81,	81,	82,	81,	78,	69,	64];
+	Measured.Babbitt = [84,	85,	91,	93,	92,	91,	92,	93,	92,	89,	85,	83];
+	Measured.Halsted = [83,	86,	91,	94,	95,	95,	96,	96,	91,	89,	84,	81];
+	Measured.Paradise = [74,	69,	68,	78,	86,	86,	87,	83,	74,	70,	72,	74];
+
+
+	function solar_access( unshaded_poa, shaded_poa )
 	{
-		for( d=0;d<nday[m];d++)
+		if ( #unshaded_poa != #shaded_poa || #unshaded_poa != 8760 ) return [];
+		nday = [31,28,31,30,31,30,31,31,30,31,30,31];
+		i=0;
+		Mshaded = Munshaded = [0,0,0,0,0,0,0,0,0,0,0,0];	
+		for (m=0;m<12;m++)
 		{
-			for( h=0;h<24;h++ )
+			for( d=0;d<nday[m];d++)
 			{
-				Munshaded[m] += unshaded_poa[i];
-				Mshaded[m] += shaded_poa[i];
-				i++;				
-			}
-		}		
+				for( h=0;h<24;h++ )
+				{
+					Munshaded[m] += unshaded_poa[i];
+					Mshaded[m] += shaded_poa[i];
+					i++;				
+				}
+			}		
+		}
+		
+		SA = alloc(12);
+		for( i=0;i<12;i++) SA[i] = round(100*Mshaded[i]/Munshaded[i]);
+		return SA;
 	}
-	
-	SA = alloc(12);
-	for( i=0;i<12;i++) SA[i] = round(100*Mshaded[i]/Munshaded[i]);
-	return SA;
+
+	close_project();
+	open_project( '../solar_access_four_systems.sam' );
+
+	for( i=0;i<#cases;i++ )
+	{
+		active_case( cases[i] );
+		outln( 'running case ' + cases[i] );
+		simulate();
+		
+		x = get('shading');
+		
+		x.en_timestep = 0;
+		x.en_diff = 0;
+		set('shading', x);
+		simulate();	
+		poa_unshaded = get('poa');
+		
+		x.en_timestep = 1;
+		x.en_diff = 1;
+		set('shading', x);
+		simulate();
+		poa_shaded = get('poa');
+		
+		SAM{cases[i]} = solar_access( poa_unshaded, poa_shaded );	
+	}
+
+	function pvsyst_solar_access( name )
+	{
+		file = '../' + name +'_PVsyst.csv';
+		outln( 'reading: ' + file );
+		data = csvread( file, {skip=13,numeric=true,delim=';'});
+		// date;EOutInv;GlobShd;GlobInc;ShdLoss;ShdBLss;ShdDLss;ShdALss;FShdGl;FShdBm;FShdDif;FShdAlb
+
+		shaded = alloc(8760);
+		unshaded = alloc(8760);
+		
+		for( i=0;i<8760;i++ )
+		{
+			shaded[i] = data[i][2];
+			unshaded[i] = data[i][3];
+		}
+		
+		return solar_access(unshaded,shaded);
+	}
+
+
+	for (i=0;i<#cases;i++ )
+	{
+		PVsyst{cases[i]} = pvsyst_solar_access( lower(cases[i]) );
+	}
+
+	json_file( 'solar_access.json', { Measured=Measured, SAM=SAM, PVsyst=PVsyst } );
 }
 
-close_project();
-open_project( '../solar_access_four_systems.sam' );
+D = json_file( 'solar_access.json' );
+xax = [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 ];
 
-cases = list_cases();
-for( i=0;i<#cases;i++ )
+
+function vecadd( v, d )
 {
-	active_case( cases[i] );
-	outln( 'running case ' + cases[i] );
-	simulate();
+	for( i=0;i<#v;i++ )
+		x[i] = v[i]+d;
+	return x;
+}
+function errper( v1, v2 )
+{
+	for( i=0;i<#v1;i++ )
+		x[i] = 100*(v1[i]-v2[i])/(v2[i]);
+	return x;
+}
+
+barwidth = 6;
+deltas = [ -0.45, -0.15, 0.15, 0.45 ];
+months = [ 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec' ];
+for( i=1;i<=12;i++ )
+	labels[i-1] = [ i, months[i-1] ];
+
+newplot(true);
+
+for (i=0;i<#cases;i++ )
+{
+	case = cases[i];
+	newplot();
+	plot( vecadd(xax,deltas[0]), D.Measured{case}, {size=barwidth, series='Measured', type='bar', group='allbars', color='black'} );
+	plot( vecadd(xax,deltas[1]), D.SAM{case}, {size=barwidth, series='SAM', type='bar', group='allbars', color='grey'} );
+	plot( vecadd(xax,deltas[2]), D.PVsyst{case}, {size=barwidth, series='PVsyst', type='bar', group='allbars', color='light gray'} );
+
+	axis( 'x1', {min=0, max=13, type='label', labels=labels} );
+	axis( 'y1', {min=0, max=110, label='Solar access (%)'} );
+	plotopt( {title=cases[i]});
+	plotout( 'monthly_solar_access_' + lower(cases[i]) + '.pdf' );
+}
+
+Tools = @D;
+Tools -@ 'Measured';
+outln(Tools);
+
+deltas = [-0.15, 0, 0.15 ];
+colors = ['Black', 'Light Grey', 'Grey'];
+for (i=0;i<#cases;i++ )
+{
+	case = cases[i];
+	newplot();
 	
-	x = get('shading');
+	mmax = 0;
 	
-	x.en_timestep = 0;
-	x.en_diff = 0;
-	set('shading', x);
-	simulate();	
-	poa_unshaded = get('poa');
-	
-	x.en_timestep = 1;
-	x.en_diff = 1;
-	set('shading', x);
-	simulate();
-	poa_shaded = get('poa');
-	
-	SAM{cases[i]} = solar_access( poa_unshaded, poa_shaded );	
+	for( j=0;j<#Tools;j++ )
+	{
+		tool = Tools[j];
+		err = errper(D{tool}{case}, D.Measured{case});
+		avg = mean(err);
+		plot( vecadd(xax,deltas[j]), err, {size=barwidth, series=tool + ' (mean=' + sprintf('%.1f',avg) + '%)', type='bar', color=colors[j]} );
+		m = max(abs(min(err)),abs(max(err)));
+		if ( m > mmax ) mmax = m;
+	}
+		
+	axis( 'x1', {min=0, max=13, type='label', labels=labels} );
+	axis( 'y1', {min=-mmax*1.1, max=mmax*1.1, label='Percent difference relative to measured (%)'} );
+	plotopt( {title=cases[i]});
+	plotout( 'monthly_solar_access_error_' + lower(cases[i]) + '.pdf' );
 }
 
 
-outln( json_write( Measured ) );
-outln( json_write( SAM ) );
 
-//date;EOutInv;GlobShd;GlobInc;ShdLoss;ShdBLss;ShdDLss;ShdALss;FShdGl;FShdBm;FShdDif;FShdAlb
