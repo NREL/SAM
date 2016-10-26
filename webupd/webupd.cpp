@@ -31,7 +31,7 @@
 #include "pkgdlg.h"
 
 static wxString g_updateURL("https://sam.nrel.gov/sites/sam.nrel.gov/files/content/updates/");
-static wxString g_samVerIdStr("2016.7.21");
+static wxString g_samVerIdStr("2016.10.25");
 static wxString g_appPath;
 static wxString g_icmStr; // internet connection method string
 
