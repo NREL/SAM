@@ -20,12 +20,15 @@ class process_pvsol:
 
         self.read_file()
         loss = self.calculate_loss()
+        self.add_global_outputs()
         self.plot_loss(loss)
         self.write_file()
 
     def read_file(self):
         labels = ['Time',
                   'Horizon Shading [kWh/m2]',
+                  'Global Radiation at the Module [kWh/m2]',
+                  'Global PV Radiation [kWh]',
                   'Rated PV Energy [kWh]',
                   'Module Shading [kWh]']
 
@@ -41,7 +44,10 @@ class process_pvsol:
                                                       'Module Shading [kWh]',
                                                       'PV Energy [kWh]',
                                                       'Loss Percent [%]',
-                                                      'Loss Percent Diffuse [%]'])
+                                                      'Loss Percent Diffuse [%]',
+                                                      'Global Radiation at Module [kWh]',
+                                                      'Global PV Radiation [kWh]',
+                                                      'STC Conversion Fraction [0-1]'])
 
     def calculate_loss(self):
 
@@ -96,6 +102,12 @@ class process_pvsol:
 
         return loss_percent
 
+    def add_global_outputs(self):
+
+        self.df['Global Radiation at Module [kWh]'] = self.df['Global Radiation at the Module [kWh/m2]'] * self.pv_area
+        stc = pd.Series(8760 * [self.pv_efficiency])
+        self.df['STC Conversion Fraction [0-1]'] = stc.values
+
 # currently only plots module losses, not anything related to horizon shading
     def plot_loss(self, loss):
 
@@ -121,7 +133,7 @@ class process_pvsol:
 # Basic Tests
 area = 1.5
 efficiency = 0.1334
-columns_1 = [0, 11, 23, 25]
+columns_1 = [0, 11, 13, 20, 23, 25]
 
 test1 = process_pvsol('Basic Test 1.csv', 'test1_PVSOL.csv', efficiency, area, columns_1)
 test2 = process_pvsol('Basic Test 2.csv', 'test2_PVSOL.csv', efficiency, area, columns_1)
@@ -130,7 +142,7 @@ test3 = process_pvsol('Basic Test 3.csv', 'test3_PVSOL.csv', efficiency, area, c
 # Babbitt
 area = 237.9
 efficiency = 0.1178
-columns_2 = [0, 8, 14, 16]
+columns_2 = [0, 8, 10, 11, 14, 16]
 test4 = process_pvsol('9815 Babbitt.csv', 'babbitt_PVSOL.csv', efficiency, area, columns_2)
 
 # Ivanhoe
