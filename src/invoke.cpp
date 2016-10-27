@@ -2166,6 +2166,8 @@ void fcall_urdb_get(lk::invoke_t &cxt)
 		cxt.result().hash_item("schedule_name").assign(rate.Header.Name);
 		cxt.result().hash_item("source").assign(rate.Header.Source);
 		cxt.result().hash_item("description").assign(rate.Header.Description);
+		cxt.result().hash_item("start_date").assign(rate.Header.StartDate);
+		cxt.result().hash_item("end_date").assign(rate.Header.EndDate);
 		cxt.result().hash_item("basicinformationcomments").assign(rate.Header.BasicInformationComments);
 		cxt.result().hash_item("energycomments").assign(rate.Header.EnergyComments);
 		cxt.result().hash_item("demandcomments").assign(rate.Header.DemandComments);
