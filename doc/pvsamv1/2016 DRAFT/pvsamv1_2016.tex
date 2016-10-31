@@ -3436,9 +3436,7 @@ SAM calculates the a single inverter's AC output with one of three inverter mode
 \item \textbf{Inverter Part Load Curve}) (Section~\ref{sec-partloadinverter}) is a model developed by NREL for SAM that uses a table of efficiency values at different inverter load levels to represent the inverter's performance.
 \end{itemize}
 
-In the SSC \texttt{pvsamv1} module, the input variable \texttt{inverter\_model} determines the module model as shown in Table~\ref{tab-invertersubmodels}.
-
-
+In SSC \texttt{pvsamv1}, the input variable \texttt{inverter\_model} determines the module model as shown in Table~\ref{tab-invertersubmodels}.
 
 \begin{table}
 \begin{center}
@@ -3614,22 +3612,22 @@ When the DC string voltage is less than the inverter's minimum MPPT voltage rati
 
 Power clipping is handled by the inverter model as described in the sections above for each inverter model.
 
-
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Battery Storage}\label{battery}
 
-The battery storage model calculates power to and from a bank of lead-acid or lithium-ion batteries and estimates battery lifetime.
+SAM's battery storage model calculates power to and from a bank of lead-acid or lithium-ion batteries and estimates battery lifetime. The model is for a photovoltaic system with a battery bank in a behind-the-meter application.  The model is described briefly here. For a more detailed description of the model with equations, see \citet{diorio2015a}. For a description of a battery modeling application with cost and financial analysis, see \citet{diorio2015b}.
 
-The battery storage model allows users to connect lead-acid and lithium-ion battery systems to their PV system for behind-the-meter applications.  In order to enable the battery model, a "Photovoltaic (detailed)" performance model must be selected with either "Residential (distributed)", "Commercial (distributed)", or "Third party ownership" financial models.  Under the "Battery Storage" page, "Enable Battery" must then be selected from the drop down menu near the top of the page.  If batteries are being considered as part of a detailed financial analysis, it is recommended that "PV simulation over analysis period" is selected on the "Lifetime" page.  Battery costs are entered on the "System Costs" page.
+The battery model is part of SAM's Detailed Photovoltaic model, and is available with either the Residential, Commercial, or Third Party Ownership financial models. The battery model requires information about the photovoltaic system, battery parameters, and building electric load data. To enable the battery model, choose \textbf{Enable Battery} on SAM's Battery Storage input page. If you want SAM to calculate the timing of battery replacements based on the number of charge and discharge cycles, then you should also choose the \textbf{PV simulation over analysis period} option on the Lifetime input page, which will cause SAM to run a separate 8760 simulation for each year in the analysis period.
 
-SAM models the connection by assuming that the battery system is connnected on the AC bus such that incoming AC power must be internally rectificed by the battery.  DC power output by the battery is internally inverted before being sent to the grid or load.  Single-point efficiencies allow the user to specify the AC-DC conversion loss and the DC-AC conversion loss.  Internal battery losses are applied due to lifetime degradation, thermal effects, and differences in charging and discharging voltages.
+In SSC (accesible using the SAM Software Development Kit), the battery model is part of the \texttt{pvsamv1} module. To enable the battery model in SSC, set $\texttt{en\_batt}=1$. See the tables on the following pages for lists of the battery input and output variables in SSC.
 
-Customizable profiles allow specification of when the batteries can be charged from the grid and excess PV generation, and discharged to meet a custom portion of the electric load.  Users may enter detailed  inputs for voltage, capacity, lifetime, and thermal properties, or may use defaults provided by SAM.   Battery costs and replacement criteria may also be entered to consider the full lifetime costs of installing a battery system. A technical reference is available for a complete description of the battery model, including information about the validation process \citep{diorio2015a}. An economic case-study  is available as an example for how the battery model may be used to do detailed financial analysis of potential battery systems considering specific utility rate structures, battery costs, and dispatch criteria \citep{diorio2015b}.
+SAM assumes that the battery bank is connected to the system's AC bus with single-point AC-to-DC and DC-to-AC conversion efficiency inputs to represent electric conversion losses. The model calculates losses caused by degradation over time, thermal effects, and differences in charging and discharging voltages.
+
+The timing of battery charging by either excess photovoltaic power or the grid and discharges of battery power to meet the building load is determined by either the ``manual dispatch model," which is a set of dispatch profiles that you can assign to up to six periods in a hour-by-month matrices for the weekday and weekend, or by your choice of one of the automated dispatch options. 
 
 \section{Battery Model Inputs and Outputs}\label{sec-batterymodel-inputs}
-The battery model requires multiple inputs and provides multiple outputs.  Inputs are described in Table~\ref{tab-batteryinputs} and Table~\ref{tab-batteryinputs2} .  Battery outputs are described in Table~\ref{tab-batteryoutputs}.  Variable length outputs will be a single value if a lifetime simulation is not run, and will be an array of values for lifetime simulations, listed under the "Annual" data dropdown.  For simulations involving lead-acid batteries, two additional outputs are available, shown in Table~\ref{tab-batteryoutputs-lead}.  
+The battery model inputs inputs are listed in Tables~\ref{tab-batteryinputs} and ~\ref{tab-batteryinputs2}. The outputs are listed in Table~\ref{tab-batteryoutputs}. The outputs listed in Table~\ref{tab-batteryoutputs} as "variable length outputs" are either a single value for the \textbf{PV simulation over one year} option ($\texttt{pv\_lifetime\_simulation}=0$ in SSC), or an array of values for the \textbf{PV simulation over analysis period} option ($\texttt{pv\_lifetime\_simulation}=1$). Table~\ref{tab-batteryoutputs-lead} lists two additional outputs specific to lead acid batteries.  
 
 \begin{table}
 \begin{center}
@@ -3637,6 +3635,9 @@ The battery model requires multiple inputs and provides multiple outputs.  Input
 \begin{tabular}{lll}
 \midrule
 Description / \textbf{Name in SAM} & Name in SSC \\
+\midrule
+\multicolumn{2}{c}{Inputs to Enable Battery Model}\\
+\textbf{Enable Battery} & \texttt{en\_batt} \\
 \midrule
 \multicolumn{2}{c}{Battery Bank Sizing Inputs}\\
 \textbf{Desired bank capacity} (kWh) & \texttt{batt\_bank\_size} \\
@@ -3646,7 +3647,7 @@ Description / \textbf{Name in SAM} & Name in SSC \\
 Specify desired bank size or specify cells & \texttt{batt\_size\_choice} \\
 \midrule
 \multicolumn{2}{c}{Battery Chemistry Inputs}\\
-Lead-acid or lithium-ion chemistry type & \texttt{batt\_type} \\
+\textbf{Battery type} & \texttt{batt\_type} \\
 \midrule
 \multicolumn{2}{c}{Voltage Inputs}\\
 \textbf{Cell nominal voltage} (V) & \texttt{batt\_Vnom\_default} \\
@@ -3656,7 +3657,7 @@ Lead-acid or lithium-ion chemistry type & \texttt{batt\_type} \\
 \textbf{Exponential zone cell voltage} (V) & \texttt{batt\_Vexp} \\
 \textbf{Nominal zone cell voltage} (V) & \texttt{batt\_Vnom} \\
 \midrule
-\multicolumn{2}{c}{Current \& Capacity Inputs}\\
+\multicolumn{2}{c}{Current and Capacity Inputs}\\
 \textbf{Cell capacity} (Ah) & \texttt{batt\_Qfull} \\
 \textbf{Max C-rate charge} & \texttt{batt\_C\_rate\_max\_charge} \\
 \textbf{Max C-rate discharge} & \texttt{batt\_C\_rate\_max\_discharge} \\
@@ -3666,7 +3667,7 @@ Lead-acid or lithium-ion chemistry type & \texttt{batt\_type} \\
 \textbf{DC to AC conversion efficiency} (\%) & \texttt{batt\_dc\_ac\_efficiency} \\
 \midrule
 \multicolumn{2}{c}{Storage Dispatch Controller Inputs}\\
-Manual or automated dispatch selection & \texttt{batt\_dispatch\_choice} \\
+Dispatch model option & \texttt{batt\_dispatch\_choice} \\
 PV dispatch priority choice & \texttt{batt\_pv\_choice} \\
 \textbf{Minimum state of charge} (\%) & \texttt{batt\_minimum\_SOC} \\
 \textbf{Maximum state of charge} (\%) & \texttt{batt\_maximum\_SOC} \\
@@ -3792,19 +3793,21 @@ Description / \textbf{Name in SAM} & Name in SSC \\
 \end{table}
 
 \section{Battery With No PV System}\label{sec-batterymodel-nopv}
-There is often a desire to consider a standalone battery system.  To model this in SAM, begin a detailed Photovoltaic project with a Residential, Commercial, or Third-Party ownership financial model. On the losses page, within the "Curtailment and Availability" section, click on "Edit losses".  Make the "Contant loss (\%)" equal to 100\%.  This zeros out the contribution of PV production to the system analysis.  Next, it is important to zero out the PV system cost.  On the "System Costs" page, make the module "\$/Wdc"  and inverter "\$/Wdc fields equal to 0.  It is assumed that the cost of inverters required by the battery system to place power on the AC bus is included in the battery bank cost.
+Although SAM's battery model is part of the photovoltaic model, it is possible to model a battery-only system by modeling a PV-battery system and removing the photovoltaic system's output by setting the \textbf{Curtailment and Availability} constant loss on the Losses input page to 100\% the PV system's output to zero ($\texttt{adjust:constant}=100$ in SSC).
 
-\section{DC Connected Battery}\label{sec-batterymodel-dc}
-SAM currently assumes that the battery is placed on the AC bus, such that PV power has been inverted before being transferred to the battery.  Another popular configuration is to connect the battery to the DC side of the PV system such that DC/AC and AC/DC conversion losses can be avoided when charging the battery from excess PV generation.  To mimic a DC connection, the "AC to DC conversion efficiency" input can be increased, such that it is assumed no input conversion penalty is present.  Even in a DC connected system there is likely to be some loss through a charge controller.  The "DC to AC conversion efficiency" can be left alone, since power coming out of the battery will be inverted to place on the AC bus.  It is not currently possible to increase the PV system's DC-to-AC ratio and use excess DC power to charge the battery.
+\section{DC-connected Battery}\label{sec-batterymodel-dc}
+SAM's battery model assumes that the battery bank is connected to the AC bus. It is possible to approximately model a DC-connected battery bank by increasing the \textbf{AC to DC conversion efficiency} to account for charge controller losses without rectification losses, and using the \textbf{DC to AC conversion efficiency} input to represent losses associated with converting battery DC power to AC. This approach is limited because it does not allow for increasing the photovoltaic system's DC-to-AC ratio to increase the amount of power from the photovoltaic array to charge the battery.
 
-\section{Advanced Dispatch Options} \label{sec-batterymodel-dispatch}
-SAM's manual dispatch controller is described in detail in \citep{diorio2015a}.  The controller as described in that report prioritizes PV energy to meet the electric load before charging the battery.  In the latest version of SAM, the user can choose to prioritize PV energy to charge the battery before meeting the electric load or meet the load before charging the battery.  This option is available for all dispatch models.  To set the control to meet the electric load with PV first, set \textbf{batt\_pv\_choice} to 0.  To charge the battery first, set \textbf{batt\_pv\_choice} to 1.
+\section{Dispatch Modes} \label{sec-batterymodel-dispatch}
+In the version of SAM described in this manual, there are four dispatch modes: Three automated modes and one manual dispatch mode.
 
-Several additional modes have since been added to provide more capabilities to the user.  Regardless of which dispatch model is selected, the minimum and maximum states of charge, the minimum time at charge state and the PV priority must be specified.  There are currently four available dispatch models, including the manual dispatch model.
+For all of the dispatch modes, you must specify the minimum and maximum states of charge, the minimum time at charge state. For the manual dispatch model, you must also specify the photovoltaic priority: You can choose to prioritize charging the battery over meeting the building load, or vice versa. In SSC, to prioritize meeting the load over charging the battery, set $\texttt{batt\_pv\_choice} = 0$, and to prioritize battery charging, set $\texttt{batt\_pv\_choice}= 1$.
 
-Automated one-day look ahead and one-day look behind peak shaving controllers have been added to perform demand reduction. The one-day look ahead controller uses a perfect 24-hour prediction on PV production and electric load requirements to generate a dispatch strategy for the battery which reduces the grid power required as much as possible over the 24 hours within the state-charge and power limitations of the system.  The one-day look behind assumes that the last 24 hours are a good reflection of what to expect for the next 24 hours, such that yesterdays PV and electric load are used to generate a dispatch strategy for the battery.  This mode is meant as an illustration of a potentially more realistic controller that seeks to use past information to predict the future.  When either of these automated peak shaving modes are selected, the manual dispatch inputs will gray out since they are not required.  
+\textbf{Peak shaving: 1-day look ahead} ($\texttt{batt\_dispatch\_choice}=0$ in SSC)and \textbf{Peak shaving: one-day look behind} ($\texttt{batt\_dispatch\_choice}=1$) are for demand reduction scenarios. The one-day look ahead option looks at the photovoltaic system's output over the next 24-hours to generate a battery dispatch that minimizes the grid power consumption over the 24-hours period within the state-of-charge and power constraints that you specify. The one-day look behind option assumes that the previous 24 hours are a good indication of what to expect for the next 24 hours and generates a battery dispatch strategy for the next 24 hours based on minimizing grid power consumption in the previous 24-hour period. The one-day look ahead approach might represent an ideal controller that can perfectly predict the future to give results for a best case scenario. The one-day look behind approach might more realistically represent an actual controller that uses historical information to predict the future.
 
-There is also an automated grid power target model, which allows the user to input the maximum grid power limit. This limit can be input for every timestep or monthly.  To enter monthly information, \textbf{batt\_target\_choice} should be set to 0, and \textbf{batt\_target\_power\_monthly} should be passed in as a length 12 array.  The target power for each timestep within the month will be set to the monthly input.  To enter timeseries target power information, \textbf{batt\_target\_choice} should be set to 1, and \textbf{batt\_target\_power} should be passed in as an array with as many entries as that of the weather file.  The automated controller uses a 24-hour look ahead to predict the grid power required.  The battery is then dispatched to reduce all grid power events which exceed the target threshold for that timestep.  For all timesteps where the grid power is less than the threshold, the battery is allowed to charge from the grid until the power is equal to the threshold. 
+The \textbf{Automated grid power target} dispatch option ($\texttt{batt\_dispatch\_choice}=2$) allows you to set a maximum grid power target for each simulation time step of the year. It dispatches the battery in each time step to reduce grid demand when it exceeds the target threshold for that timestep. For time steps when the grid power is less than the threshold, the battery can charge from the grid at a power level up to the threshold. You can either specify a single threshold value that applies to all time steps of the year, specify a value for each of the twelve months in the year, or a value for each time step. In SSC, to specify monthly limits, set  $\texttt{batt\_target\_choice} = 0$ and set \texttt{batt\_target\_power\_monthly} equal to an array of twelve values. To specify a limit for each time step, set $\texttt{batt\_target\_choice} = 1$ and set \texttt{batt\_target\_power} equal to an array whose length is the same as the number of data rows in the weather file.
+
+The \textbf{Manual dispatch} option ($\texttt{batt\_dispatch\_choice}=3$) is described in detail in \citep{diorio2015a}. It allows you to  define up to six dispatch periods. Each dispatch period has a setting to allow the battery to be charged from photovoltaic inverter output and grid, and to allow battery discharge. The grid discharge and battery charge settings also have capacity limits to control the rate of discharge, or rate of charge from grid.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -3902,6 +3905,10 @@ For a photovoltaic project that uses one of the Utility IPP financial models, \t
 \bibitem[Deline(2013)]{deline2013a} Deline, C.; Dobos, A.; Janzou, S.; Meydbrey, J.; Donoval, M. (2013). ``A Simplified Model of Uniform Shading in Large Photovoltaic Arrays." \textit{Solar Energy} (96); pp. 274-282. \url{http://www.sciencedirect.com/science/article/pii/S0038092X13002739}
 
 \bibitem[Deline(2013a)]{deline2013b} Deline, C. (2013). ``SAM Shade Geometry V3." Unpublished. Golden, CO: National Renewable Energy Laboratory.
+
+\bibitem[DiOrio(2015a)]{diorio2015a} DiOrio, N.; Dobos, A.; Janzou, S.; Nelson, A.; Lunstrom, B. (2015). ``Technoeconomic Modeling of Battery Energy Storage in SAM."  NREL/TP-6A20-64641. Golden, CO: National Renewable Energy Laboratory. \url{http://www.nrel.gov/docs/fy15osti/64641.pdf}
+
+\bibitem[DiOrio(2015b)]{diorio2015b} DiOrio, N.; Dobos, A.; Janzou, S.; (2015). ``Economic Analysis Case Studies of Battery Energy Storage with SAM."  NREL/TP-6A20-64987. Golden, CO: National Renewable Energy Laboratory. \url{http://www.nrel.gov/docs/fy16osti/64987.pdf}
 
 \bibitem[Dobos(2012a)]{dobos2012a} Dobos, A. (2012). ``An Improved Coefficient Calculator for the California Energy Commission 6 Parameter Photovoltaic Module Model." \textit{Journal of Solar Energy Engineering} (134:2).
 
