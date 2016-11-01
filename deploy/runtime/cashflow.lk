@@ -297,10 +297,15 @@ cashflow{ 'Single Owner' } = define()
 	cfline('cf_project_return_aftertax', 0);
 
 	cfline( '' );
+	cfline("RETURN ON EQUITY", -1);
+	cfline('cf_return_on_equity_input', 0);
+	cfline('cf_return_on_equity_dollars', 0);
+	cfline('cf_return_on_equity', 0);
+
+	cfline( '' );
 	cfline("AFTER-TAX IRR AND NPV", -1);
 	cfline('cf_project_return_aftertax_irr', 2);
 	cfline('cf_project_return_aftertax_npv', 0);
-
 	cfline( '' );
 	cfline("AFTER-TAX EVELIZED COE AND PPA PRICE", -1);
 	cfline('cf_annual_costs', 0);
@@ -396,6 +401,7 @@ cashflow{ 'Single Owner' } = define()
 	cfline("RESERVE ACCOUNT FUNDING", -1);
 	cfline('cf_reserve_debtservice', 0);
 	cfline('cf_reserve_om', 0);
+	cfline('cf_reserve_receivables', 0);
 	cfline('cf_reserve_equip1', 0);
 	cfline('cf_reserve_equip2', 0);
 	cfline('cf_reserve_equip3', 0);
