@@ -1020,7 +1020,7 @@ cashflow{ 'All Equity Partnership Flip' } = define()
 	state_federal_depreciation_tables();
 };	
 
-
+/*
 cashflow{ 'Sale Leaseback' } = define()
 {
 	cfline('Partial Income Statement: Project', -1);
@@ -1059,6 +1059,187 @@ cashflow{ 'Sale Leaseback' } = define()
 	cfline('cf_sponsor_operating_margin', 0);
 	cfline( '' );
 
+
+	cfline('Cash Flow: Developer (Lessee LLC)', -1);
+	cfline('Cash Flows from Operating Activities', -1, 0);
+	cfline('cf_sponsor_operating_margin', 0);
+	cfline('cf_reserve_interest', 0);
+	cfline('cf_sponsor_operating_activities', 0);
+	cfline( '' );
+	cfline('Cash Flows from Investing Activities', -1);
+	cfline('sale_of_property', 0);
+	cfline('purchase_of_plant', 0);
+	cfline('distribution_of_development_fee', 0);
+	cfline('cf_net_salvage_value', 0);
+	cfline( '' );
+	cfline('cf_sponsor_wcra', 0);
+	cfline('cf_sponsor_me1ra', 0);
+	cfline('cf_sponsor_me2ra', 0);
+	cfline('cf_sponsor_me3ra', 0);
+	cfline('cf_sponsor_ra', 0);
+	cfline( '' );
+	cfline('cf_sponsor_me1cs', 0);
+	cfline('cf_sponsor_me2cs', 0);
+	cfline('cf_sponsor_me3cs', 0);
+	cfline('cf_sponsor_mecs', 0);
+	cfline( '' );
+	cfline('cf_sponsor_investing_activities', 0);
+	cfline( '' );
+	cfline('Cash Flows from Financing Activities', -1);
+	cfline('sponsor_equity_in_lessee_llc', 0);
+	cfline('cf_sponsor_financing_activities', 0);
+	cfline('cf_pretax_cashflow', 0);
+	cfline('cf_sponsor_adj_reserve_release', 0);
+	cfline('cf_pretax_operating_cashflow', 0);
+	cfline( '' );
+
+	cfline('Cash Flow: Tax Investor (Lessor)', -1);
+	cfline('Cash Flows from Operating Activities', -1, 0);
+	cfline('cf_pretax_operating_cashflow', 0);
+	cfline('cf_tax_investor_operating_activities', 0);
+	cfline( '' );
+	cfline('Cash Flows from Investing Activities', -1);
+	cfline('sale_of_property', 0);
+	cfline('cf_net_salvage_value', 0);
+	cfline('cf_tax_investor_investing_activities', 0);
+	cfline( '' );
+	cfline('Cash Flows from Financing Activities', -1);
+	cfline('issuance_of_equity', 0);
+	cfline('ibi_total', 0);
+	cfline('cbi_total', 0);
+	cfline('cf_tax_investor_financing_activities', 0);
+	cfline( '' );
+	cfline('cf_tax_investor_pretax_cashflow', 0);
+	cfline( '' );
+	cfline( '' );
+
+// LCOE
+	cfline("LEVELIZED COE AND PPA PRICE", -1);
+	cfline('cf_annual_costs', 0);
+	cfline('cf_energy_value', 0);
+	cfline('cf_energy_net', 0); 
+	cfline( '' );
+	cfline('npv_annual_costs',0 );
+	cfline('npv_energy_nom', 0);
+	cfline('lcoe_nom',2);
+	cfline( '' );
+	cfline('npv_ppa_revenue', 0);
+	cfline('npv_energy_nom', 0);
+	cfline('lppa_nom',2);
+	cfline( '' );
+
+	cfline('Tax Investor (Lessor) Returns', -1);
+	cfline('Pre-Tax', -1, 0);
+	cfline('sale_of_property', 0);
+	cfline('ibi_total', 0);
+	cfline('cbi_total', 0);
+	cfline('cf_net_salvage_value', 0);
+	cfline('cf_pretax_operating_cashflow', 0);
+	cfline('cf_tax_investor_pretax', 0);
+	cfline('cf_tax_investor_pretax_irr', 2);
+	cfline('cf_tax_investor_pretax_npv', 0);
+	cfline( '' );
+	cfline('After-Tax', -1, 0);
+	cfline('sale_of_property', 0);
+	cfline('ibi_total', 0);
+	cfline('cbi_total', 0);
+	cfline('cf_net_salvage_value', 0);
+	cfline('cf_pretax_operating_cashflow', 0);
+	cfline('cf_tax_investor_aftertax_cash', 0);
+	cfline('cf_tax_investor_aftertax_itc', 0);
+	cfline('cf_tax_investor_aftertax_ptc', 0);
+	cfline('cf_tax_investor_aftertax_tax', 0);
+	cfline('cf_tax_investor_aftertax', 0);
+	cfline('cf_tax_investor_aftertax_irr', 2);
+	cfline('cf_tax_investor_aftertax_npv', 0);
+	cfline('cf_tax_investor_aftertax_max_irr', 2);
+	cfline( '' );
+
+	cfline('Developer (Lessee LLC) Returns', -1);
+	cfline('Pre-Tax', -1, 0);
+	cfline('sponsor_equity_in_lessee_llc', 0);
+	cfline('distribution_of_development_fee', 0);
+	cfline('Release of major equipment replacement reserves', 0); //was cf_disbursement_merr need to verify cpg 9/10/2014
+	cfline('cf_disbursement_om', 0);
+	cfline('cf_disbursement_leasepayment', 0);
+	cfline('cf_reserve_leasepayment_interest', 0);
+	cfline('cf_sponsor_margin', 0);
+	cfline('cf_sponsor_pretax', 0);
+	cfline('cf_sponsor_pretax_irr', 2);
+	cfline('cf_sponsor_pretax_npv', 0);
+	cfline('sponsor_pretax_irr', 2);
+	cfline('sponsor_pretax_npv', 0);
+	cfline( '' );
+	cfline('After-Tax', -1, 0);
+	cfline('sponsor_equity_in_lessee_llc', 0);
+	cfline('distribution_of_development_fee', 0);
+	cfline("Release of major equipment replacement reserves", -1, 0); //was cf_disbursement_merr need to verify cpg 9/10/2014
+	cfline('cf_disbursement_om', 0);
+	cfline('cf_disbursement_leasepayment', 0);
+	cfline('cf_reserve_leasepayment_interest', 0);
+	cfline('cf_sponsor_margin', 2);
+	cfline('cf_sponsor_aftertax_cash', 0);
+	cfline('cf_sponsor_aftertax_tax', 0);
+	cfline('cf_sponsor_aftertax_devfee', 0);
+	cfline('cf_sponsor_aftertax', 0);
+	cfline('cf_sponsor_aftertax_irr', 2);
+	cfline('cf_sponsor_aftertax_npv', 0);
+	cfline('sponsor_aftertax_irr', 2);
+	cfline('sponsor_aftertax_npv', 0);
+	cfline( '' );
+
+
+	// incentives
+	cfline( 'Incentives', -1);
+	cf_cash_incentives();
+	cfline( 'cf_ptc_fed,cf_ptc_sta' );
+	cfline( '' );
+	cfline( 'itc_total_fed,itc_total_sta', 0, 1, 1); // offset to year 1
+	cfline( '' );
+
+	// reserve accounts
+	cfline( 'Reserve Accounts', -1);
+	cfline('cf_reserve_leasepayment', 0);
+	cfline('cf_reserve_om', 0);
+	cfline('cf_reserve_equip1', 0);
+	cfline('cf_reserve_equip2', 0);
+	cfline('cf_reserve_equip3', 0);
+	cfline( '' ); // spacer
+	cfline( '' ); // spacer
+
+	// state and federal depreciation/itc tables
+	state_federal_depreciation_tables();
+};*/
+
+cashflow{ 'Sale Leaseback' } = define()
+{
+
+	cfline( "PRODUCTION (AC KWH)",-1);
+	cfline( 'cf_energy_net', 0); // no decimal places with thousands separator
+
+	cfline( '' ); // spacer with no shading
+	cfline("REVENUES", -1);
+	cfline( 'cf_ppa_price' , -2 ); // generic formatting to show all significant digits
+	cfline( 'cf_energy_value', 0);
+	cfline( 'cf_net_salvage_value', 0);
+	cfline( 'cf_total_revenue', 0);
+	cfline( '' ); // spacer
+
+	cfline( 'cf_property_tax_assessed_value', 0);
+	cfline( '' ); // spacer
+
+	cfline("OPERATING EXPENSES", -1);
+	if (value('system_use_recapitalization'))cfline('cf_recapitalization', 0);
+	cfline( 'cf_om_fixed_expense,cf_om_capacity_expense,cf_om_production_expense', 0);
+	cf_fuel_expenses();
+	cfline( 'cf_property_tax_expense', 0);
+	cfline( 'cf_insurance_expense', 0);
+	cfline('cf_sponsor_margin', 0);
+	cfline( 'cf_operating_expenses', 0);
+	cfline( '' ); // spacer
+	
+	cfline('cf_sponsor_operating_margin', 0);
+	cfline( '' );
 
 	cfline('Cash Flow: Developer (Lessee LLC)', -1);
 	cfline('Cash Flows from Operating Activities', -1, 0);
