@@ -245,6 +245,7 @@ cashflow{ 'Single Owner' } = define()
 	cfline("plus:", -1, 0);
 	cfline('cf_project_dsra', 0);
 	cfline('cf_project_wcra', 0);
+	cfline('cf_project_receivablesra', 0);
 	cfline('cf_project_me1ra', 0);
 	cfline('cf_project_me2ra', 0);
 	cfline('cf_project_me3ra', 0);
