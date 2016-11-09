@@ -996,7 +996,7 @@ bool CodeGen_c::Header()
 
 	// handle csv files
 	// arrays
-	fprintf(m_fp, "bool set_array(ssc_data_t p_data, const char *name, const char* fn, int len)\n");
+	fprintf(m_fp, "int set_array(ssc_data_t p_data, const char *name, const char* fn, int len)\n");
 	fprintf(m_fp, "{\n");
 	fprintf(m_fp, "	char buffer[1024];\n");
 	fprintf(m_fp, "	char *record, *line;\n");
@@ -1006,7 +1006,7 @@ bool CodeGen_c::Header()
 	fprintf(m_fp, "	if (fp == NULL)\n");
 	fprintf(m_fp, "	{\n");
 	fprintf(m_fp, "		printf(\"file opening failed \");\n");
-	fprintf(m_fp, "		return false;\n");
+	fprintf(m_fp, "		return 0;\n");
 	fprintf(m_fp, "	}\n");
 	fprintf(m_fp, "	ary = (ssc_number_t *)malloc(len * sizeof(ssc_number_t));\n");
 	fprintf(m_fp, "	while ((line = fgets(buffer, sizeof(buffer), fp)) != NULL)\n");
@@ -1022,12 +1022,12 @@ bool CodeGen_c::Header()
 	fprintf(m_fp, "	fclose(fp);\n");
 	fprintf(m_fp, "	ssc_data_set_array(p_data, name, ary, len);\n");
 	fprintf(m_fp, "	free(ary);\n");
-	fprintf(m_fp, "	return true;\n");
+	fprintf(m_fp, "	return 1;\n");
 	fprintf(m_fp, "}\n");
 	fprintf(m_fp, "\n");
 
 	// matrices
-	fprintf(m_fp, "bool set_matrix(ssc_data_t p_data, const char *name, const char* fn, int nr, int nc)\n");
+	fprintf(m_fp, "int set_matrix(ssc_data_t p_data, const char *name, const char* fn, int nr, int nc)\n");
 	fprintf(m_fp, "{\n");
 	fprintf(m_fp, "	char buffer[1024];\n");
 	fprintf(m_fp, "	char *record, *line;\n");
@@ -1037,7 +1037,7 @@ bool CodeGen_c::Header()
 	fprintf(m_fp, "	if (fp == NULL)\n");
 	fprintf(m_fp, "	{\n");
 	fprintf(m_fp, "		printf(\"file opening failed \");\n");
-	fprintf(m_fp, "		return false;\n");
+	fprintf(m_fp, "		return 0;\n");
 	fprintf(m_fp, "	}\n");
 	fprintf(m_fp, "	ary = (ssc_number_t *)malloc(len * sizeof(ssc_number_t));\n");
 	fprintf(m_fp, "	while ((line = fgets(buffer, sizeof(buffer), fp)) != NULL)\n");
@@ -1053,7 +1053,7 @@ bool CodeGen_c::Header()
 	fprintf(m_fp, "	fclose(fp);\n");
 	fprintf(m_fp, "	ssc_data_set_matrix(p_data, name, ary, nr, nc);\n");
 	fprintf(m_fp, "	free(ary);\n");
-	fprintf(m_fp, "	return true;\n");
+	fprintf(m_fp, "	return 1;\n");
 	fprintf(m_fp, "}\n");
 
 
@@ -1114,7 +1114,7 @@ bool CodeGen_c::SupportingFiles()
 	fprintf(f, " 	LFLAGS = -lssc\n");
 	fprintf(f, "#x64	SET PATH=c:\\MinGW64\\bin;%%PATH%%\n");
 	fprintf(f, "#win32	SET PATH=c:\\MinGW\\bin;%%PATH%%\n");
-	fprintf(f, "	CCCOMP = g++\n");
+	fprintf(f, "	CCCOMP = gcc\n");
 	fprintf(f, "else\n");
 	fprintf(f, "    PF = $(shell uname)\n");
 	fprintf(f, "    ifneq (,$(findstring Darwin, $(PF)))\n");
@@ -1128,7 +1128,7 @@ bool CodeGen_c::SupportingFiles()
 	fprintf(f, "    	endif\n");
 	fprintf(f, "    endif\n");
 	fprintf(f, "    RM = rm -f\n");
-	fprintf(f, "    CCCOMP = g++\n");
+	fprintf(f, "    CCCOMP = gcc\n");
 	fprintf(f, " 	LFLAGS = -ldl\n");
 	fprintf(f, "endif\n");
 	fprintf(f, "PROJ_NAME =  %s\n", (const char*)m_name.c_str());
