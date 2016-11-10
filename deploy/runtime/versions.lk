@@ -50,6 +50,20 @@ Some more examples:
 
 //***********************************************************************************************************************************************************
 //CURRENT WORKING VERSION- CHANGE THIS VERSION NUMBER WHEN RELEASES ARE CREATED AND MAKE A NEW CURRENT WORKING VERSION FUNCTION
+version_upgrade{'2016.10.25'} = define() {
+	const cfg = config();
+	if (cfg.tech == 'Flat Plate PV')
+	{	
+		inverter_model = value('inverter_model');
+		if (inverter_model > 0)
+			inverter_model = inverter_model + 1;
+		if (inverter_model > 3)
+			inverter_model = 3;
+		value( 'inverter_model', inverter_model, 'inverter models reordered. Coefficient generator added.' );
+	}
+	return;
+};
+
 version_upgrade{'2016.7.21'} = define() {
 	const cfg = config();
 	if ((cfg.fin == 'Residential' || cfg.fin == 'Commercial'))
