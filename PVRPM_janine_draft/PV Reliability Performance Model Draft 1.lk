@@ -4,18 +4,6 @@
 //14 September 2016
 //*************************************************************************************
 
-// TO DO-----------------------------------------------------------------------------------
-/*
-	NEED TO CREATE A MEGA-SCRIPT TO RUN MULTIPLE SIMULATIONS!! AND CREATE GRAPHS!!
-	DC and AC lifetime losses need to be added to loss tree
-	Add what the acceptable input ranges are for LHS when errors are encountered? It basically does this already...
-	Add component-level availability output graph vs time (using Geoff's equation)
-	WHEN AN INVERTER FAILS ROUTINELY, IT NEEDS TO NOT BE COMPLETELY RESET- which ones do reset it?
-	Basic failure rates as an output (failures per million hours)
-	Make macro UI inputs
-*/
-
-
 //*************************************************************************************
 // INPUTS
 //*************************************************************************************
@@ -27,10 +15,20 @@
 	num_inverters = get('inverter_count');
 	inverter_size = ?(get('inverter_model')) [get('inv_snl_paco'), get('inv_ds_paco'), get('inv_pd_paco')];
 	num_combiners = 2;//48; //need to make an input!!
-	num_strings_per_combiner = num_strings / num_combiners; //need to error check!!
+	num_strings_per_combiner = floor(num_strings / num_combiners);
+	if (num_strings_per_combiner * num_combiners != num_strings) //making sure that there are an integer number of strings per combiner
+	{
+		msgbox('Error: there must be an integer number of strings per combiner.');
+		exit;
+	}
 	num_disconnects = num_inverters; //need to make an input!!
 	num_transformers = 1; //need to make an input!!
-	num_inverters_per_transformer = num_inverters / num_transformers; //need to error check!!
+	num_inverters_per_transformer = floor(num_inverters / num_transformers);
+	if (num_inverters_per_transformer * num_transformers != num_inverters) //making sure that there are an integer number of inverters per transformer
+	{
+		msgbox('Error: there must be an integer number of inverters per transformer.');
+		exit;
+	}
 	num_trackers = ceil(num_strings / 2); //need to make an input!!
 	system_lifetime_yrs = get('analysis_period');
 	has_multiple_subarrays = ( (get('subarray2_enable') == 1) || (get('subarray3_enable') == 1) || (get('subarray4_enable') == 1) );
@@ -180,7 +178,7 @@ degradation_factor = 1 - percentage the component has degraded at this time (ex.
 	combiner_meta.failure[0].cost = 976; //$
 	combiner_meta.repair.can_repair = true;
 	combiner_meta.repair.distribution = 'exponential';
-	combiner_meta.repair.parameters = [3]; //mean, years converted to days
+	combiner_meta.repair.parameters = [3]; //mean, days
 	combiner_meta.repair.times = null;
 	combiner_meta.degradation.can_degrade = false;
 	
@@ -258,7 +256,7 @@ degradation_factor = 1 - percentage the component has degraded at this time (ex.
 	transformer_meta.degradation.can_degrade = false;
 	
 	// Grid
-	global grid = 1;
+	global grid = alloc(1);
 	global grid_meta = null;
 	grid_meta.can_fail = true;
 	grid_meta.number = 1;
@@ -842,12 +840,7 @@ for (day = 1; day < system_lifetime_yrs * 365; day++)
 			tracker_meta.failure[0].cost *= pow((1 + inflation / 100), year);
 	}
 	//step each component through time
-	if (day == 5)
-	{
 	step_in_time(module_meta, modules, day, costs.module);
-	outln(module_meta.repair.parameters);
-	exit;
-	}
 	step_in_time(string_meta, strings, day, costs.string);
 	step_in_time(combiner_meta, combiners, day, costs.combiner);
 	step_in_time(inverter_meta, inverters, day, costs.inverter);
@@ -908,7 +901,7 @@ for (day = 0; day < system_lifetime_yrs * 365; day++)
 		o_m_yearly_costs[yr_idx] = 0;
 	}
 	for (c=0; c<#cost_components; c++)
-		o_m_yearly_costs[yr_idx] += costs{cost_components[c]}[day];	
+		o_m_yearly_costs[yr_idx] += costs{cost_components[c]}[day];
 }
 set('om_fixed', o_m_yearly_costs);
 
@@ -989,3 +982,14 @@ else
 hourly_dc_power = get('dc_net');
 hourly_ac_power = get('gen');
 dview(2, 1, 'Lifetime System Power', 'DC Power', 'kW', 1.0, hourly_dc_power, 'AC Power', 'kW', 1.0, hourly_ac_power);
+
+// TO DO-----------------------------------------------------------------------------------
+/*
+	NEED TO CREATE A MEGA-SCRIPT TO RUN MULTIPLE SIMULATIONS!! AND CREATE GRAPHS!!
+	DC and AC lifetime losses need to be added to loss tree
+	Add what the acceptable input ranges are for LHS when errors are encountered? It basically does this already...
+	Add component-level availability output graph vs time (using Geoff's equation)
+	WHEN AN INVERTER FAILS ROUTINELY, IT NEEDS TO NOT BE COMPLETELY RESET- which ones do reset it?
+	Basic failure rates as an output (failures per million hours)
+	Make macro UI inputs
+*/
