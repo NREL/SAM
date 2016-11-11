@@ -14,8 +14,8 @@ ArchitecturesAllowed=x86 x64 ia64
 ArchitecturesInstallIn64BitMode=x64 ia64
 
 ; UPDATE THESE TO MATCH THE VERSION
-AppVerName=SAM Shade Calculator 2016.7.19
-DefaultDirName={sd}\SAM\ShadeCalculator-2016.7.19
+AppVerName=SAM Shade Calculator 2016.10.11
+DefaultDirName={sd}\SAM\ShadeCalculator-2016.10.11
 
 AppPublisher=National Renewable Energy Laboratory
 AppPublisherURL=http://sam.nrel.gov
@@ -42,6 +42,7 @@ Source: "ivanhoe.s3d"; DestDir: "{app}"; Flags: ignoreversion
 Source: "nelson.s3d"; DestDir: "{app}"; Flags: ignoreversion
 Source: "strings.s3d"; DestDir: "{app}"; Flags: ignoreversion   
 Source: "sections.s3d"; DestDir: "{app}"; Flags: ignoreversion
+Source: "scripting_demo.lk"; DestDir: "{app}"; Flags: ignoreversion
 Source: "msvcr120.dll"; DestDir: "{app}"; Flags: ignoreversion
 Source: "msvcp120.dll"; DestDir: "{app}"; Flags: ignoreversion
 Source: "libssh2.dll"; DestDir: "{app}"; Flags: ignoreversion
