@@ -146,7 +146,7 @@ degradation_factor = 1 - percentage the component has degraded at this time (ex.
 	module_meta.repair.parameters =  [60, 20]; //mean, std, in days
 	module_meta.repair.times = null;
 	module_meta.degradation.can_degrade = true;
-	module_meta.degradation.rate = 1.28; //%/year
+	module_meta.degradation.rate = 5; //%/year
 	
 	// Strings
 	global strings = alloc(num_strings);
@@ -155,13 +155,13 @@ degradation_factor = 1 - percentage the component has degraded at this time (ex.
 	string_meta.number = num_strings;
 	string_meta.warranty.has_warranty = false;
 	string_meta.failure[0].distribution = 'exponential';
-	string_meta.failure[0].parameters = [(0.1 / 365)]; //failures per year converted to per day
+	string_meta.failure[0].parameters = [(2 / 365)]; //failures per year converted to per day
 	string_meta.failure[0].times = null;
 	string_meta.failure[0].labor_time = 1; //hours
 	string_meta.failure[0].cost = 20; //$
 	string_meta.repair.can_repair = true;
 	string_meta.repair.distribution = 'lognormal';
-	string_meta.repair.parameters = [7, 3]; //mean, std, years converted to days
+	string_meta.repair.parameters = [7, 3]; //mean, std, days
 	string_meta.repair.times = null;
 	string_meta.degradation.can_degrade = false;
 	
@@ -190,7 +190,7 @@ degradation_factor = 1 - percentage the component has degraded at this time (ex.
 	inverter_meta.warranty.has_warranty = false; 
 	//failure mode 1: component failure
 	inverter_meta.failure[0].distribution = 'exponential';
-	inverter_meta.failure[0].parameters = [0.2 / 365]; //failures per year converted to per day
+	inverter_meta.failure[0].parameters = [1 / 365]; //failures per year converted to per day
 	inverter_meta.failure[0].times = null;
 	inverter_meta.failure[0].labor_time = 0;
 	inverter_meta.failure[0].cost = 0.2 * 0.35 * inverter_size; //0.2 times catastrophic cost, which is 35 cents/Watt
@@ -209,7 +209,7 @@ degradation_factor = 1 - percentage the component has degraded at this time (ex.
 	inverter_meta.failure[1].cost = inverter_routine_cost;
 	//failure mode 3: catastrophic failure
 	inverter_meta.failure[2].distribution = 'normal';
-	inverter_meta.failure[2].parameters = [3652.5, 365.25]; //mean, std, in days
+	inverter_meta.failure[2].parameters = [500, 365.25]; //mean, std, in days
 	inverter_meta.failure[2].times = null;
 	inverter_meta.failure[2].labor_time = 0;
 	inverter_meta.failure[2].cost = 0.35 * get('inv_snl_paco'); //35 cents per watt
@@ -245,7 +245,7 @@ degradation_factor = 1 - percentage the component has degraded at this time (ex.
 	transformer_meta.number = num_transformers;
 	transformer_meta.warranty.has_warranty = false;
 	transformer_meta.failure[0].distribution = 'weibull';
-	transformer_meta.failure[0].parameters = [0.3477, 2 * 365]; //slope (shape factor)- unitless, mean- days
+	transformer_meta.failure[0].parameters = [0.3477, 1 * 365]; //slope (shape factor)- unitless, mean- days
 	transformer_meta.failure[0].times = null;
 	transformer_meta.failure[0].labor_time = 10; //hours
 	transformer_meta.failure[0].cost = 32868; //$
@@ -281,7 +281,7 @@ degradation_factor = 1 - percentage the component has degraded at this time (ex.
 		tracker_meta.number = num_trackers;
 		tracker_meta.warranty.has_warranty = false;
 		tracker_meta.failure[0].distribution = 'exponential';
-		tracker_meta.failure[0].parameters = [0.000228]; //mean per year in days
+		tracker_meta.failure[0].parameters = [0.002]; //mean per year in days
 		tracker_meta.failure[0].times = null;
 		tracker_meta.failure[0].labor_time = 0;
 		tracker_meta.failure[0].cost = 2000; //present day tracker cost, will be inflated
@@ -668,6 +668,7 @@ if (!is_lifetime_mode)
 }
 // Lifetime daily DC and AC loss structures must be empty to run.
 //NEED TO DISABLE THIS IN A SCRIPT THAT LOOPS OVER MANY RUNS!!
+/*
 if (get('en_dc_lifetime_losses') || get('en_ac_lifetime_losses'))
 {
 	proceed = yesno('This script will overwrite any user-entered lifetime daily losses, and they will be lost. Proceed?');
@@ -676,7 +677,7 @@ if (get('en_dc_lifetime_losses') || get('en_ac_lifetime_losses'))
 		msgbox('Please modify the case not to use user-entered lifetime daily losses. Exiting simulation.');
 		exit;
 	}
-}
+}*/
 // Multiple subarrays can't have tracker failures
 if (has_multiple_subarrays && is_tracking_system && tracker_meta.can_fail)
 {
