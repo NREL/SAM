@@ -1558,6 +1558,7 @@ addpage( [ [ {'name'='PV2 DC Design 1', 'caption'='Array 1' }],
 		{ 'sidebar'='DC Design', 'help'='pv_dc_design', 'exclusive_var'='dc_design_index', 'exclusive_tabs'=true} );
 		
 addpage( [ ['PV2 AC Design'] ], { 'sidebar'='AC Design', 'help'='pv_ac_design' } );
+addpage( [ [ 'PV3 Subarray 1', {'name'='PV3 Subarray 1 Spacing', 'caption' = 'Subarray Spacing (For Self-Shading and Snow Only)', 'collapsible'=true, 'collapsible_var'='pv3.sub_spacing_is_shown'} ] ], {'sidebar'='System Design J'});
 addpage( [[ {'name'='Lifetime System', 'caption'='PV simulation over one year'}],
 		[ {'name'='Lifetime PV', 'caption'='PV simulation over analysis period' }],],
 	   {  'sidebar'='Lifetime','help'='lifetime', 'exclusive_var'='pv_lifetime_simulation' } );
