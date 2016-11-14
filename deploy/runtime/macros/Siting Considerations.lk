@@ -117,7 +117,7 @@ if (json == '')
 	msgbox('Failed to download data from the NREL Wind Prospector.');
 	exit;
 }
-results = jsonparse(json);
+results = json_read(json);
 if (results == null)
 {
 	msgbox('Failed to parse data returned from the NREL Wind Prospector.');
