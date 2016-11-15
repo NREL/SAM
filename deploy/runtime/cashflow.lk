@@ -645,6 +645,7 @@ cashflow{ 'Leveraged Partnership Flip' } = define()
 	cfline("plus:", -1, 0);
 	cfline('cf_project_dsra', 0);
 	cfline( 'cf_project_wcra', 0);
+	cfline('cf_project_receivablesra', 0);
 	cfline('cf_project_me1ra', 0);
 	cfline('cf_project_me2ra', 0);
 	cfline('cf_project_me3ra', 0);
@@ -813,6 +814,7 @@ cashflow{ 'Leveraged Partnership Flip' } = define()
 	cfline( 'RESERVE ACCOUNT FUNDING', -1);
 	cfline('cf_reserve_debtservice', 0);
 	cfline('cf_reserve_om', 0);
+	cfline('cf_reserve_receivables', 0);
 	cfline('cf_reserve_equip1', 0);
 	cfline('cf_reserve_equip2', 0);
 	cfline('cf_reserve_equip3', 0);
@@ -873,6 +875,7 @@ cashflow{ 'All Equity Partnership Flip' } = define()
 	cfline("plus:", -1, 0);
 
 	cfline( 'cf_project_wcra', 0);
+	cfline('cf_project_receivablesra', 0);
 	cfline('cf_project_me1ra', 0);
 	cfline('cf_project_me2ra', 0);
 	cfline('cf_project_me3ra', 0);
@@ -1012,6 +1015,7 @@ cashflow{ 'All Equity Partnership Flip' } = define()
 	cfline( 'RESERVE ACCOUNT FUNDING', -1);
 
 	cfline('cf_reserve_om', 0);
+	cfline('cf_reserve_receivables', 0);
 	cfline('cf_reserve_equip1', 0);
 	cfline('cf_reserve_equip2', 0);
 	cfline('cf_reserve_equip3', 0);
@@ -1255,6 +1259,7 @@ cashflow{ 'Sale Leaseback' } = define()
 	cfline('cf_net_salvage_value', 0);
 	cfline( '' );
 	cfline('cf_sponsor_wcra', 0);
+	cfline('cf_project_receivablesra', 0);
 	cfline('cf_sponsor_me1ra', 0);
 	cfline('cf_sponsor_me2ra', 0);
 	cfline('cf_sponsor_me3ra', 0);
@@ -1383,6 +1388,7 @@ cashflow{ 'Sale Leaseback' } = define()
 	cfline( 'Reserve Accounts', -1);
 	cfline('cf_reserve_leasepayment', 0);
 	cfline('cf_reserve_om', 0);
+	cfline('cf_reserve_receivables', 0);
 	cfline('cf_reserve_equip1', 0);
 	cfline('cf_reserve_equip2', 0);
 	cfline('cf_reserve_equip3', 0);
