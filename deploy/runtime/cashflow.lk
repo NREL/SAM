@@ -1259,7 +1259,7 @@ cashflow{ 'Sale Leaseback' } = define()
 	cfline('cf_net_salvage_value', 0);
 	cfline( '' );
 	cfline('cf_sponsor_wcra', 0);
-	cfline('cf_project_receivablesra', 0);
+	cfline('cf_sponsor_receivablesra', 0);
 	cfline('cf_sponsor_me1ra', 0);
 	cfline('cf_sponsor_me2ra', 0);
 	cfline('cf_sponsor_me3ra', 0);
