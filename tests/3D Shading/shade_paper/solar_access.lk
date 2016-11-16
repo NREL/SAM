@@ -78,14 +78,36 @@ if ( yesno('recalculate/reload solar access data?') )
 		
 		return solar_access(unshaded,shaded);
 	}
+	
+	function pvsol_solar_access( name )
+	{
+	// Horizon (Diffuse) Shading [kWh]
+	// Module Shading [kWh]
+	// PV Energy [kWh]
+	// Loss Percent [%]
+	// Loss Percent Diffuse [%]
+	// Global Radiation at Module [kWh]
+	// Global PV Radiation [kWh]
+	// STC Conversion Fraction [0-1]
+
+		file = '../' + name + '_PVSOL.csv';
+		outln( 'reading: ' + file );
+		
+		data = csvread( file, {skip=0,table=true,numeric=true});
+		unshaded = data{'Loss Percent [%]'};	
+		shaded = data{ '' };
+		
+		return solar_access( unshaded, shaded );
+	}
 
 
 	for (i=0;i<#cases;i++ )
 	{
 		PVsyst{cases[i]} = pvsyst_solar_access( lower(cases[i]) );
+		PVSOL{cases[i]} = pvsol_solar_access( lower(cases[i]) );
 	}
 
-	json_file( 'solar_access.json', { Measured=Measured, SAM=SAM, PVsyst=PVsyst } );
+	json_file( 'solar_access.json', { Measured=Measured, SAM=SAM, PVsyst=PVsyst, PVSOL=PVSOL } );
 }
 
 D = json_file( 'solar_access.json' );
@@ -120,6 +142,7 @@ for (i=0;i<#cases;i++ )
 	plot( vecadd(xax,deltas[0]), D.Measured{case}, {size=barwidth, series='Measured', type='bar', group='allbars', color='black'} );
 	plot( vecadd(xax,deltas[1]), D.SAM{case}, {size=barwidth, series='SAM', type='bar', group='allbars', color='grey'} );
 	plot( vecadd(xax,deltas[2]), D.PVsyst{case}, {size=barwidth, series='PVsyst', type='bar', group='allbars', color='light gray'} );
+	plot( vecadd(xax,deltas[3]), D.PVSOL{case}, {size=barwidth, series='PV*SOL', type='bar', group='allbars', color='dark gray'} );
 
 	axis( 'x1', {min=0, max=13, type='label', labels=labels} );
 	axis( 'y1', {min=0, max=110, label='Solar access (%)'} );
