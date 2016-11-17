@@ -376,6 +376,8 @@ bool CodeGen_Base::GenerateCode(const int &array_matrix_threshold)
 	// go through and get outputs for determining types
 	ssc_data_t p_data_output = ssc_data_create();
 
+	std::vector<std::vector<const char *> > input_order;
+
 	for (size_t kk = 0; kk < simlist.size(); kk++)
 	{
 		ssc_module_t p_mod = ssc_module_create(simlist[kk].c_str());
@@ -385,12 +387,16 @@ bool CodeGen_Base::GenerateCode(const int &array_matrix_threshold)
 			continue;
 		}
 
+		// store all variable names that are used to run compute module in vector of variable names
+		std::vector<const char *> cm_names;
+
 		int pidx = 0;
 		while (const ssc_info_t p_inf = ssc_module_var_info(p_mod, pidx++))
 		{
 			int var_type = ssc_info_var_type(p_inf);   // SSC_INPUT, SSC_OUTPUT, SSC_INOUT
 			int ssc_data_type = ssc_info_data_type(p_inf); // SSC_STRING, SSC_NUMBER, SSC_ARRAY, SSC_MATRIX		
-			wxString name(ssc_info_name(p_inf)); // assumed to be non-null
+			const char* var_name = ssc_info_name(p_inf);
+			wxString name(var_name); // assumed to be non-null
 			wxString reqd(ssc_info_required(p_inf));
 
 			if (var_type == SSC_INPUT || var_type == SSC_INOUT)
@@ -431,14 +437,19 @@ bool CodeGen_Base::GenerateCode(const int &array_matrix_threshold)
 								{
 									if (!VarValueToSSC(vv_field, p_data, name + ":" + field))
 										m_errors.Add("Error translating table:field variable from SAM UI to SSC for '" + name + "':" + field);
+									else
+										cm_names.push_back(var_name);
 								}
 							}
 
 						}
-
-						if (!VarValueToSSC(vv, p_data, name))
-							m_errors.Add("Error translating data from SAM UI to SSC for " + name);
-
+						else // no table value
+						{
+							if (!VarValueToSSC(vv, p_data, name))
+								m_errors.Add("Error translating data from SAM UI to SSC for " + name);
+							else
+								cm_names.push_back(var_name);
+						}
 					}
 //					else if (reqd == "*")
 //						m_errors.Add("SSC requires input '" + name + "', but was not found in the SAM UI or from previous simulations");
@@ -461,8 +472,11 @@ bool CodeGen_Base::GenerateCode(const int &array_matrix_threshold)
 						m_errors.Add("Error for output " + name);
 				}
 			}
-		}
+		} // end of compute module variables
+		if (cm_names.size() > 0)
+			input_order.push_back(cm_names);
 	}
+
 	// Platform specific files
 	if (!PlatformFiles())
 		m_errors.Add("PlatformFiles failed");
@@ -475,6 +489,7 @@ bool CodeGen_Base::GenerateCode(const int &array_matrix_threshold)
 	if (!Header())
 		m_errors.Add("Header failed");
 
+	/* old single unordered grouping of inputs
 	const char *name = ssc_data_first(p_data);
 	while (name)
 	{
@@ -482,10 +497,37 @@ bool CodeGen_Base::GenerateCode(const int &array_matrix_threshold)
 			m_errors.Add(wxString::Format("Input %s write failed",name));
 		name = ssc_data_next(p_data);
 	}
+	*/
 
-	// run compute modules in sequence (INOUT variables will be updated
-	for (size_t kk = 0; kk < simlist.size(); kk++)
+	// check that input order has same count as number of compute modules
+	if (simlist.size() != input_order.size())
+		m_errors.Add("input ordering failed");
+	// can do inputs with compute module calls below
+	/*
+	for (size_t k = 0; k < simlist.size() && k < input_order.size(); k++)
 	{
+		fprintf(m_fp, "\\ **************;\n"); // TODO - if desired add comment for each language implementation
+		fprintf(m_fp, "\\ Compute module '%s' inputs;\n", simlist[k].c_str()); // TODO - if desired add comment for each language implementation
+		for (size_t jj = 0; jj < input_order[k].size(); jj++)
+		{
+			const char* name = input_order[k][jj];
+			if (!Input(p_data, name, m_folder, array_matrix_threshold))
+				m_errors.Add(wxString::Format("Input %s write failed", name));
+		}
+		fprintf(m_fp, "\\ **************;\n"); // TODO - if desired add comment for each language implementation
+	}
+	*/
+
+	// run compute modules in sequence (INOUT variables will be updated)
+//	for (size_t kk = 0; kk < simlist.size(); kk++)
+	for (size_t kk = 0; kk < simlist.size() && kk < input_order.size(); kk++)
+	{
+		for (size_t jj = 0; jj < input_order[kk].size(); jj++)
+		{
+			const char* name = input_order[kk][jj];
+			if (!Input(p_data, name, m_folder, array_matrix_threshold))
+				m_errors.Add(wxString::Format("Input %s write failed", name));
+		}
 		CreateSSCModule(simlist[kk]);
 		RunSSCModule(simlist[kk]);
 		FreeSSCModule();
