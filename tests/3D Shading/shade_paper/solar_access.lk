@@ -9,11 +9,11 @@ if ( yesno('recalculate/reload solar access data?') )
 	Measured.Halsted = [83,	86,	91,	94,	95,	95,	96,	96,	91,	89,	84,	81];
 	Measured.Paradise = [74,	69,	68,	78,	86,	86,	87,	83,	74,	70,	72,	74];
 
+	const nday = [31,28,31,30,31,30,31,31,30,31,30,31];
 
 	function solar_access( unshaded_poa, shaded_poa )
 	{
 		if ( #unshaded_poa != #shaded_poa || #unshaded_poa != 8760 ) return [];
-		nday = [31,28,31,30,31,30,31,31,30,31,30,31];
 		i=0;
 		Mshaded = Munshaded = [0,0,0,0,0,0,0,0,0,0,0,0];	
 		for (m=0;m<12;m++)
@@ -94,10 +94,30 @@ if ( yesno('recalculate/reload solar access data?') )
 		outln( 'reading: ' + file );
 		
 		data = csvread( file, {skip=0,table=true,numeric=true});
-		unshaded = data{'Loss Percent [%]'};	
-		shaded = data{ '' };
+		loss = data{'Loss Percent [%]'};
 		
-		return solar_access( unshaded, shaded );
+		i=0;
+		SAn = SA = [0,0,0,0,0,0,0,0,0,0,0,0];	
+		for (m=0;m<12;m++)
+		{
+			for( d=0;d<nday[m];d++)
+			{
+				for( h=0;h<24;h++ )
+				{
+					sf = 100-loss[i];
+					SA[m] += sf;
+					if ( sf > 0 )
+						SAn[m]++;
+						
+					i++;				
+				}
+			}		
+		}
+		
+		for( m=0;m<12;m++ )
+			SA[m] = round(SA[m]/SAn[m]);
+		
+		return SA;
 	}
 
 
@@ -106,7 +126,7 @@ if ( yesno('recalculate/reload solar access data?') )
 		PVsyst{cases[i]} = pvsyst_solar_access( lower(cases[i]) );
 		PVSOL{cases[i]} = pvsol_solar_access( lower(cases[i]) );
 	}
-
+	
 	json_file( 'solar_access.json', { Measured=Measured, SAM=SAM, PVsyst=PVsyst, PVSOL=PVSOL } );
 }
 
@@ -127,8 +147,8 @@ function errper( v1, v2 )
 	return x;
 }
 
-barwidth = 6;
-deltas = [ -0.45, -0.15, 0.15, 0.45 ];
+barwidth = 4;
+deltas = [ -0.3, -0.1, 0.1, 0.3 ];
 months = [ 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec' ];
 for( i=1;i<=12;i++ )
 	labels[i-1] = [ i, months[i-1] ];
@@ -146,7 +166,7 @@ for (i=0;i<#cases;i++ )
 
 	axis( 'x1', {min=0, max=13, type='label', labels=labels} );
 	axis( 'y1', {min=0, max=110, label='Solar access (%)'} );
-	plotopt( {title=cases[i]});
+	plotopt( {title=cases[i], legendpos='bottom'});
 	plotout( 'monthly_solar_access_' + lower(cases[i]) + '.pdf' );
 }
 
@@ -154,7 +174,7 @@ Tools = @D;
 Tools -@ 'Measured';
 outln(Tools);
 
-deltas = [-0.15, 0, 0.15 ];
+deltas = [-0.25, 0, 0.25 ];
 colors = ['Black', 'Light Grey', 'Grey'];
 for (i=0;i<#cases;i++ )
 {
@@ -175,9 +195,30 @@ for (i=0;i<#cases;i++ )
 		
 	axis( 'x1', {min=0, max=13, type='label', labels=labels} );
 	axis( 'y1', {min=-mmax*1.1, max=mmax*1.1, label='Percent difference relative to measured (%)'} );
-	plotopt( {title=cases[i]});
+	plotopt( {title=cases[i], legendpos='bottom'});
 	plotout( 'monthly_solar_access_error_' + lower(cases[i]) + '.pdf' );
 }
 
+/*
+
+\hline
+Ivanhoe*  & 36 & 26 & 19 & 20 & 20 & 19 & 19 & 18 & 19 & 22 & 31 & 36 \\
+~~SAM     & x & x & x & x & x & x & x & x & x & x & x & x \\
+~~PVsyst  & x & x & x & x & x & x & x & x & x & x & x & x \\
+~~PV*SOL  & x & x & x & x & x & x & x & x & x & x & x & x \\ 
+*/
+
+for( i=0;i<#cases;i++ )
+{
+	case = cases[i];
+	outln( '\\hline' );
+	outln( cases[i] + '* & ' + join( D.Measured{case}, ' & ' ) + ' \\\\' );
+	for( j=0;j<#Tools;j++)
+	{
+		toolname = Tools[j];
+		if ( toolname == 'PVSOL' ) toolname = 'PV*SOL';
+		outln( '~~' + toolname  + ' & ' + join( D{Tools[j]}{case}, ' & ' ) + ' \\\\' );
+	}
+}
 
 
