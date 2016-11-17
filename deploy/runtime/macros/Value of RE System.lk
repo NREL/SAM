@@ -28,7 +28,7 @@ the annual savings you can expect from the RE system, and helps you identify the
 components of the bill that most contribute to the savings. For example it might
 show that demand reduction contributes more to bill savings than shifting energy usage to a different time.</p>
 <p>The <em>Present Value of Annual Costs and Net Present Value</em> table shows
-the total lifecycle cost of the system over its life (analysis period) and the
+details of total lifecycle costs of the system over its life (analysis period) and the
 value of the electricty bill savings over that time. The "NPV of project with bill savings"
 indicates the total value of the system: A more positive NPV indicates a more
 cost-effective scenario. A negative NPV indicates that the electricity bill savings
@@ -183,7 +183,7 @@ function set_flat_rate( flat_rate, fixed_charge)
 
 }
 
-function get_eoy_net_metering_credit()
+function eoy_net_metering_credit()
 {
 	metering = get('ur_metering_option');
 	is_net_metering_kwh = ( metering == 0 );
@@ -196,6 +196,24 @@ function get_eoy_net_metering_credit()
 	else return 0;
 }
 
+function cost_w_bill( none_cf, re_cf, w_re_bill, is_comm, pv_tax )
+{
+	if ( is_comm ) // calculate tax on increase in income due to bill savings
+	{
+		tax_rate = get('effective_tax_rate')/100;
+		for (i=0;i<#w_re_bill;i++)
+		{
+			savings[i] = none_cf[i] - w_re_bill[i];
+			tax[i] = savings[i]*tax_rate;
+			after_tax_bill[i] = w_re_bill[i] + tax[i];
+		}
+		pv_tax=npv(tax,discount_rate);
+		cf_w_bill = add_cf(re_cf,after_tax_bill,'-');
+	}
+	else cf_w_bill = add_cf(re_cf,w_re_bill,'-');
+	return cf_w_bill;
+}
+
 //Check that this macro was run from within a case
 if ( typeof(macro) == 'unknown' ) {
 	msgbox('This macro must be run from within a case.');
@@ -206,7 +224,7 @@ config = configuration();
 is_commercial = ( config[1] == 'Commercial' );
 
 cases = list_cases();
-if ( #cases > 1 ) case = choose_from_list( cases, 'Choose a case', 'Choose Case', 0 );
+if ( #cases > 1 ) case = choose_from_list( cases, 'Choose a case:', 'Choose Case', 0 );
 else case = cases[0];
 active_case( case );
 
@@ -284,7 +302,7 @@ dc_tou = get('year1_monthly_dc_tou_with_system');
 dc_fixed = get('year1_monthly_dc_fixed_with_system');
 min_mon = get('year1_monthly_minimum_with_system');
 min_ann = get('year1_annual_minimum_with_system');
-pv_yrend_nm_credit = get_eoy_net_metering_credit();
+pv_yrend_nm_credit = eoy_net_metering_credit();
 total = get('year1_monthly_utility_bill_w_sys');
 // year 1 bill components for pv only
 pv_ec = sum(ec);
@@ -300,20 +318,9 @@ pv_annual_cost = get('cf_after_tax_net_equity_cost_flow');
 pv_npc = -npv(pv_annual_cost,discount_rate);
 pv_annual_bill = get('elec_cost_with_system');
 pv_bill_npc = npv(pv_annual_bill,discount_rate);
-if ( is_commercial ) // calculate tax on increase in income due to bill savings
-{
-	tax_rate = get('effective_tax_rate')/100;
-	for (i=0;i<#pv_annual_bill;i++)
-	{
-		savings[i] = none_annual_cashflow[i] - pv_annual_bill[i];
-		tax[i] = savings[i]*tax_rate;
-		pv_after_tax_bill[i] = pv_annual_bill[i] + tax[i];
-	}
-	npv_tax=npv(tax,discount_rate);
-	cost_w_bill = add_cf(pv_annual_cost,pv_after_tax_bill,'-');
-}
-else cost_w_bill = add_cf(pv_annual_cost,pv_annual_bill,'-');
-pv_npc_w_bill = -npv(cost_w_bill,discount_rate); //costs are negative
+pv_npv_tax = -1;
+cf_w_bill = cost_w_bill( none_annual_cashflow, pv_annual_cost, pv_annual_bill, is_commercial, pv_npv_tax );
+pv_npc_w_bill = -npv(cf_w_bill,discount_rate); //costs are negative
 pv_npv = get('npv');
 
 // PV+Battery
@@ -344,7 +351,7 @@ if ( batt )
 	batt_dc_tou = sum(dc_tou);
 	batt_min_mon = sum(min_mon);
 	batt_min_ann = sum(min_ann);
-	batt_yrend_nm_credit = get_eoy_net_metering_credit();
+	batt_yrend_nm_credit = eoy_net_metering_credit();
 	batt_total_bill = sum(total);
 	batt_bill_savings = none_total_bill- batt_total_bill;
 	//annual cash flows for value calculations
@@ -354,8 +361,9 @@ if ( batt )
 	batt_npc = -npv(batt_annual_cost,discount_rate) - batt_npc_replacement;
 	batt_annual_bill = get('elec_cost_with_system');
 	batt_bill_npc = npv(batt_annual_bill,discount_rate);
-	cost_w_bill = add_cf(batt_annual_cost,batt_annual_bill,'-');
-	batt_npc_w_bill = -npv(cost_w_bill,discount_rate); //costs are negative
+	batt_npv_tax = -1;
+	cf_w_bill = cost_w_bill( none_annual_cashflow, batt_annual_cost, batt_annual_bill, is_commercial, batt_npv_tax );
+	batt_npc_w_bill = -npv(cf_w_bill,discount_rate); //costs are negative
 	batt_npv = get('npv');
 }
 /*diff = none_npc-pv_npc_w_bill;
@@ -382,11 +390,11 @@ str_html = '<html><body>' +
            '<table bgcolor=#dddddd width=100%>' + 
            '<tr><th>Present Value</th><th>No System</th>'+ ? batt [ '<th>RE System</th>' , '<th>RE Only</th><th>RE+Battery</th>' ] + '</tr>' + 
            '<tr bgcolor=#ffffff><td width="50%">Electricity bill</td><td align="right">' + f_num(none_npc) + '</td><td align="right">' + f_num(pv_bill_npc) + '</td>' + ? batt [ '' , '<td align="right">' + f_num(batt_bill_npc) + '</td>' ] + '</tr>' +
-           ? is_commercial [ '' , '<tr><td width="50%">Tax on increase in income due to bill savings</td><td align="right">' + f_num(0) + '</td><td align="right">' + f_num(npv_tax) + '</td>' + ? batt [ '' , '<td align="right">' + f_num(batt_npc) + '</td>' ] + '</tr>' ] + 
-           '<tr><td width="50%">System costs after tax</td><td align="right">' + f_num(0) + '</td><td align="right">' + f_num(pv_npc) + '</td>' + ? batt [ '' , '<td align="right">' + f_num(batt_npc) + '</td>' ] + '</tr>' +
-           '<tr bgcolor=#ffffff><td width="50%">Battery replacement cost</td><td align="right">' + f_num(0) + '</td><td align="right">' + f_num(0) + '</td>' + ? batt [ '' , '<td align="right">' + f_num(batt_npc_replacement) + '</td>' ] + '</tr>' +
-           '<tr><td width="50%"><b>Total cost</b></td><td align="right"><b>' + f_num(0) + '</b></td><td align="right"><b>' + f_num(pv_npc_w_bill) + '</b></td>' + ? batt [ '' , '<td align="right"><b>' + f_num(batt_npc_w_bill) + '</b></td>' ] + '</tr>' +
-		   '<tr bgcolor=#ffffff><td>NPV of project with bill savings</td><td align="right">' + f_num(0) + '</td><td align="right">' + f_num(pv_npv) + '</td>' + ? batt [ '' , '<td align="right">' + f_num(batt_npv) + '</td>' ] + '</tr>' +
+           ? is_commercial [ '' , '<tr><td width="50%">Income tax increase due to bill savings</td><td align="right">' + f_num(0) + '</td><td align="right">' + f_num(pv_npv_tax) + '</td>' + ? batt [ '' , '<td align="right">' + f_num(batt_npv_tax) + '</td>' ] + '</tr>' ] + 
+           '<tr ' + ? is_commercial ['','bgcolor=#ffffff'] + '><td width="50%">System costs after tax</td><td align="right">' + f_num(0) + '</td><td align="right">' + f_num(pv_npc) + '</td>' + ? batt [ '' , '<td align="right">' + f_num(batt_npc) + '</td>' ] + '</tr>' +
+           '<tr ' + ? is_commercial ['bgcolor=#ffffff',''] + '><td width="50%">Battery replacement cost</td><td align="right">' + f_num(0) + '</td><td align="right">' + f_num(0) + '</td>' + ? batt [ '' , '<td align="right">' + f_num(batt_npc_replacement) + '</td>' ] + '</tr>' +
+           '<tr ' + ? is_commercial ['','bgcolor=#ffffff'] + '><td width="50%"><b>Total cost</b></td><td align="right"><b>' + f_num(0) + '</b></td><td align="right"><b>' + f_num(pv_npc_w_bill) + '</b></td>' + ? batt [ '' , '<td align="right"><b>' + f_num(batt_npc_w_bill) + '</b></td>' ] + '</tr>' +
+		   '<tr ' + ? is_commercial ['bgcolor=#ffffff',''] + '><td>NPV of project with bill savings</td><td align="right">' + f_num(0) + '</td><td align="right">' + f_num(pv_npv) + '</td>' + ? batt [ '' , '<td align="right">' + f_num(batt_npv) + '</td>' ] + '</tr>' +
 		   '</table>' +
           '</body></html>';
 
