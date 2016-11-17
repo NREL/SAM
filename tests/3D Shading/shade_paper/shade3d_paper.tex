@@ -358,41 +358,51 @@ Next, the monthly average beam shade losses for each system are compared with me
 \begin{tabular}{lcccccccccccc}
  & Jan & Feb & Mar & Apr & May & Jun & Jul & Aug & Sep & Oct & Nov & Dec \\
 \hline
-Ivanhoe*  & 36 & 26 & 19 & 20 & 20 & 19 & 19 & 18 & 19 & 22 & 31 & 36 \\
-~~SAM     & x & x & x & x & x & x & x & x & x & x & x & x \\
-~~PVsyst  & x & x & x & x & x & x & x & x & x & x & x & x \\
-~~PV*SOL  & x & x & x & x & x & x & x & x & x & x & x & x \\
+Ivanhoe* & 64 & 74 & 81 & 80 & 80 & 81 & 81 & 82 & 81 & 78 & 69 & 64 \\
+~~SAM & 67 & 76 & 80 & 83 & 85 & 86 & 87 & 86 & 80 & 77 & 69 & 65 \\
+~~PVsyst & 68 & 75 & 76 & 79 & 81 & 82 & 82 & 82 & 76 & 74 & 70 & 66 \\
+~~PV*SOL & 75 & 77 & 79 & 82 & 85 & 86 & 86 & 85 & 78 & 77 & 74 & 75 \\
 \hline
-Babbitt* & 16 & 15 & 9 & 7 & 8 & 9 & 8 & 7 & 8 & 11 & 15 & 17 \\
-~~SAM     & x & x & x & x & x & x & x & x & x & x & x & x \\
-~~PVsyst  & x & x & x & x & x & x & x & x & x & x & x & x \\
-~~PV*SOL  & x & x & x & x & x & x & x & x & x & x & x & x \\
+Babbitt* & 84 & 85 & 91 & 93 & 92 & 91 & 92 & 93 & 92 & 89 & 85 & 83 \\
+~~SAM & 80 & 85 & 93 & 95 & 95 & 96 & 95 & 95 & 95 & 91 & 80 & 74 \\
+~~PVsyst & 81 & 91 & 95 & 96 & 96 & 96 & 97 & 96 & 96 & 93 & 84 & 76 \\
+~~PV*SOL & 80 & 88 & 95 & 96 & 94 & 96 & 96 & 96 & 95 & 92 & 84 & 79 \\
 \hline
-Halsted* & 17 & 14 & 9 & 6 & 5 & 5 & 4 & 4 & 9 & 11 & 16 & 19 \\
-~~SAM     & x & x & x & x & x & x & x & x & x & x & x & x \\
-~~PVsyst  & x & x & x & x & x & x & x & x & x & x & x & x \\
-~~PV*SOL  & x & x & x & x & x & x & x & x & x & x & x & x \\
+Halsted* & 83 & 86 & 91 & 94 & 95 & 95 & 96 & 96 & 91 & 89 & 84 & 81 \\
+~~SAM & 84 & 84 & 92 & 96 & 96 & 96 & 96 & 96 & 95 & 87 & 83 & 84 \\
+~~PVsyst & 86 & 87 & 92 & 95 & 94 & 94 & 95 & 95 & 94 & 90 & 86 & 86 \\
+~~PV*SOL & 88 & 88 & 90 & 93 & 93 & 94 & 95 & 94 & 92 & 89 & 89 & 89 \\
 \hline
-Paradise* & 26 & 31 & 32 & 22 & 14 & 14 & 13 & 17 & 26 & 30 & 28 & 26 \\
-~~SAM     & x & x & x & x & x & x & x & x & x & x & x & x \\
-~~PVsyst  & x & x & x & x & x & x & x & x & x & x & x & x \\
-~~PV*SOL  & x & x & x & x & x & x & x & x & x & x & x & x \\
+Paradise* & 74 & 69 & 68 & 78 & 86 & 86 & 87 & 83 & 74 & 70 & 72 & 74 \\
+~~SAM & 73 & 82 & 87 & 89 & 91 & 92 & 91 & 90 & 87 & 81 & 74 & 68 \\
+~~PVsyst & 79 & 84 & 86 & 89 & 91 & 91 & 91 & 91 & 87 & 85 & 80 & 78 \\
+~~PV*SOL & 92 & 94 & 93 & 93 & 93 & 94 & 94 & 94 & 92 & 93 & 93 & 92 \\
 \end{tabular}
-\caption{Modeled and measured monthly average shade loss, in percent. '*' denotes measured value from a site survey using either a SunEye or SolarPathfinder device.}
+\caption{Measured and modeled monthly solar access, in percent. '*' denotes measured value from a site survey using either a SunEye or SolarPathfinder device.}
 \label{Label}
 \end{center}
 \end{table*}
 
 
+\begin{figure*}[h!]
+\begin{center}
+\scalebox{0.55}{\includegraphics{monthly_solar_access_ivanhoe.pdf}\includegraphics{monthly_solar_access_babbitt.pdf}}
+\scalebox{0.55}{\includegraphics{monthly_solar_access_halsted.pdf}\includegraphics{monthly_solar_access_paradise.pdf}}
+\end{center}
+\caption{Monthly solar access for four systems.}
+\label{fig:monthly_solar_access}
+\end{figure*}
 
 
-\section{Sensitivity to Scene Error}
+\begin{figure*}[h!]
+\begin{center}
+\scalebox{0.55}{\includegraphics{monthly_solar_access_error_ivanhoe.pdf}\includegraphics{monthly_solar_access_error_babbitt.pdf}}
+\scalebox{0.55}{\includegraphics{monthly_solar_access_error_halsted.pdf}\includegraphics{monthly_solar_access_error_paradise.pdf}}
+\end{center}
+\caption{Difference in monthly solar access for four systems relative to SunEye or SolarPathfinder measurement.}
+\label{fig:monthly_solar_access_error}
+\end{figure*}
 
-Lorem ipsum errorum.
-
-\section{Time Step Effects}
-
-Lorem ipsum timestepitum.
 
 \section{Conclusions}
 
