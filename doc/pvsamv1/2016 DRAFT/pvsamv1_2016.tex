@@ -1064,11 +1064,11 @@ The photovoltaic performance model allows you to use measured plane-of-array (PO
 To use POA data as input, choose the appropriate \textbf{PV Albedo and Radiation} option on the Location and Resource page: 
 
 \begin{itemize}
-\item \textbf{POA from reference cell} ($\texttt{irrad\_proc}=3$ in SSC) for data measured by a reference photovoltaic cell in the same plane as the array surface.
-\item \textbf{POA from pyranometer} ($\texttt{irrad\_proc}=4$ in SSC) for data measured by a pyranometer in the same plane as the array surface.
+\item \textbf{POA from reference cell} ($\texttt{irrad\_proc}=3$ in SSC) for data measured by a reference photovoltaic cell in the same plane as the array surface. With this option, SAM assumes that the reference cell experiences the same module cover effects as the modules in the system, and therefore bypasses all module cover models and spectral corrections (Section~\ref{sec-module}).
+\item \textbf{POA from pyranometer} ($\texttt{irrad\_proc}=4$ in SSC) for data measured by a pyranometer in the same plane as the array surface. With this option, SAM assumes that the pyranometer does not experience the same module cover effects as the modules, and therefore it needs to use a decomposition model to separate the POA data into its beam and diffuse components so that it can apply the module cover effects. The decomposition model is described in \cite{marion-decompositionmodel}.
 \end{itemize}
 
-If you apply beam shading losses (Section~\ref{sec-nearobjectshad}) to POA data, SAM must decompose the POA irradiance into beam and diffuse irradiance components in order to apply the shading loss to the beam component. 
+Even when using the POA from reference cell option, there are a few instances in which SAM must decompose that input data. If you apply beam or diffuse shading losses (Section~\ref{sec-nearobjectshad}) to POA data, SAM must decompose the POA irradiance into beam and diffuse irradiance components in order to apply the shading loss to the appropriate component. Likewise, if you use the \textbf{Simple Efficiency Module model} (Section~\ref{sec-simplemodule}}) with a \textbf{Diffuse utilization factor} of less than 1, SAM must decompose the POA irradiance into beam and diffuse components to apply the diffuse utilization factor. Finally, SAM must also decompose the POA irradiance if you use the \textbf{Heat transfer method} temperature correction with the CEC module model (Section~\ref{sec-celltempoptions}). 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1340,7 +1340,7 @@ $O$ & \textbf{...Soiling loss} & \texttt{...soiling\_derate}\\
 \end{center}
 \end{table}
 
-The effective irradiance is the solar energy that reaches the top of the module cover. The module model (Section~\ref{sec-module}) accounts for the effect of the module cover on the energy that reaches the photovoltaic cell including angle-of-incidence and reflection losses. Each module model uses a different approach to calculating these losses.
+The effective irradiance is the solar energy that reaches the top of the module cover. The module model (Section~\ref{sec-module}) accounts for the effect of the module cover on the energy that reaches the photovoltaic cell including angle-of-incidence and reflection losses. Each module model uses a different approach to calculating these losses. If the \textbf{POA from reference cell} option has been selected, SAM will bypass the module cover losses.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1541,7 +1541,7 @@ S_{bns}~O &\text{for one-axis self shading}
 
 %cmod_pvsamv1.cpp 1039: sscalc is a class of type selfshade_t, which is defined
 %in lib_pvshade.h 81 and implemented in lib_pvshade.cpp 153.
-This section describes SAM's self-shading model. See Section~\ref{sec-selfshad} for a general description and instructions for enabling the model. The algorithm is presented here as a separate for clarity because of the length of the algorithm.
+This section describes SAM's self-shading model. See Section~\ref{sec-selfshad} for a general description and instructions for enabling the model. The algorithm is presented here as a separate section for clarity because of the length of the algorithm.
 
 The non-linear option of the self-shading model is intended for modeling systems with  crystalline silicon modules and assumes that blocking diodes cause the module's response to partial shading of the module to be non-linear. The non-linear option assumes that each module contains three blocking diodes ($d=3$) and characterizes the non-linear response with an empirically determined factor applied to the subarray's electrical output and a reduction in POA diffuse irradiance.
 
@@ -3366,7 +3366,7 @@ $\mathit{sunup}$ & \textbf{Sun up over horizon (0/1)} & \texttt{sunup} \\
 \midrule
 \multicolumn{3}{c}{Outputs}\\
 $P_{snow}$ & \textbf{Power loss due to snow} (W) & \texttt{dc\_snow\_loss} \\
-$C_{snow}$ & \textbf{Snow depth from weather file} (cm) & \texttt{snowdepth} \\
+$D_{snow}$ & \textbf{Snow depth from weather file} (cm) & \texttt{snowdepth} \\
 $P_{snow,n}$ & \textbf{Subarray [\textit{n}] Power loss due to snow} (W) &  \texttt{subarray[\textit{n}]\_snow\_loss} \\
 $C_{snow,n}$ & \textbf{Subarray [\textit{n}] Snow coverage} (0..1) &  \texttt{subarray[\textit{n}]\_snow\_coverage} \\
 \hline
@@ -3408,7 +3408,7 @@ If any of the above conditions are not met, set $C_{snow}$ to the previous time 
 In addition, the following modification to the algorithm described in \citet{marion-snowmodel} ensures that snow does not remain on a horizontal or slightly tilted subarray when there is no snow on the ground: 
 
 \begin{itemize}
-\item If $\beta_0<10^\circ$ and $D_{snow} < 1~\text{cm}$, then set $C_{snow}=0$.
+\item If $D_{snow} < 1~\text{cm}$, then set $C_{snow}=0$.
 \end{itemize}
 
 \textbf{2. Decrease amount of snow coverage if sliding occurs}
@@ -3435,7 +3435,7 @@ Because SAM does not calculate surface angles for night-time time steps ($sunup 
 
 \textbf{3. Calculate reduction in subarray's DC output}
 
-After determining the snow coverage $C_{snow}$, the model calculates the resulting reduction in DC power for the subarray as the loss factor $F_{snow}$. SAM assumes that if a string is partially covered by snow, its output is zero. For example, Figure~\ref{fig-snowCoverage} shows three rows of an array with two modules along the side of each row. In this case, SAM considers each row to consist of two parallel strings of modules. One string in each row is partially covered by snow, so the the snow loss would be 50\%, so that array's DC output would be half of what it would be with no snow.
+After determining the snow coverage $C_{snow}$, the model calculates the resulting reduction in DC power for the subarray as the loss factor $F_{snow}$. SAM assumes that if a string is partially covered by snow, its output is zero. For example, Figure~\ref{fig-snowCoverage} shows three rows of an array with two modules along the side of each row. In this case, SAM considers each row to consist of two parallel strings of modules. One string in each row is partially covered by snow, so the snow loss would be 50\%, so that array's DC output would be half of what it would be with no snow.
 
 To calculate the DC snow loss factor,
 \begin{equation}
@@ -4148,6 +4148,9 @@ Radiation}. New York, NY: Academic Press.
 \bibitem[Van Schalwijk(1991)]{vanschalkwijk1991} Van Schalkwijk, M.; Kil, T.; Van der Weiden, J. (1991). ``Dependence of diffuse light blocking on the ground cover ratio for stationary PV arrays", Solar Energy (61:1); pp. 381-387.
 
 \bibitem[Wilcox(2008)]{tmy3manual} Wilcox, S.; Marion, W. (2008). ``Users Manual for TMY3 Datasets." TP-581-43156. Golden, CO: National Renewable Energy Laboratory. \url{http://www.nrel.gov/docs/fy08osti/43156.pdf}.
+
+\bibitem[Marion(2015)] {marion-decompositionmodel} %marion's decomposition model
+Marion, W. (2015). ``A model for deriving the direct normal and diffuse horizontal irradiance from the global tilted irradiance," \emph{Solar Energy}, vol. 122, p. 1037-1046.
 
 
 \end{thebibliography}
