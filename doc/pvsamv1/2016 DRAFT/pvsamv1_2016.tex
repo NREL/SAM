@@ -1340,7 +1340,7 @@ $O$ & \textbf{...Soiling loss} & \texttt{...soiling\_derate}\\
 \end{center}
 \end{table}
 
-The effective irradiance is the solar energy that reaches the top of the module cover. The module model (Section~\ref{sec-module}) accounts for the effect of the module cover on the energy that reaches the photovoltaic cell including angle-of-incidence and reflection losses. Each module model uses a different approach to calculating these losses. If the \textbf{POA from reference cell} option has been selected, SAM will bypass the module cover losses.
+The effective irradiance is the solar energy that reaches the top of the module cover. The module model (Section~\ref{sec-module}) accounts for the effect of the module cover on the energy that reaches the photovoltaic cell including angle-of-incidence and reflection losses. Each module model uses a different approach to calculating these losses. If you are using plane-of-array data in the weather file (Section~\ref{sec-poa}), SAM bypasses the module cover loss calculation.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -4101,6 +4101,8 @@ Radiation}. New York, NY: Academic Press.
 
 \bibitem[Go Solar California(2014)]{gsc2014a} ``New Solar Homes Partnership Calculator." (2014). Go Solar California. \url{http://www.gosolarcalifornia.ca.gov/tools/nshpcalculator/index.php}
 
+\bibitem[Marion(2015)]{marion-decompositionmodel} Marion, W. (2015). ``A model for deriving the direct normal and diffuse horizontal irradiance from the global tilted irradiance," Solar Energy Vol. 122; pp. 1037-1046.
+
 \bibitem[Marion(2013)]{marion-snowmodel} Marion, W. (2013). ``Measured and modeled photovoltaic system energy losses from snow for Colorado and Wisconsin locations." Solar Energy 97 (2013): pp. 112-121.
 
 \bibitem[NSRDB(2016)]{nsrdb} ``National Solar Radiation Database (NSRDB)." (2016). National Renewable Energy Laboratory.  \url{https://nsrdb.nrel.gov/}.
@@ -4148,10 +4150,6 @@ Radiation}. New York, NY: Academic Press.
 \bibitem[Van Schalwijk(1991)]{vanschalkwijk1991} Van Schalkwijk, M.; Kil, T.; Van der Weiden, J. (1991). ``Dependence of diffuse light blocking on the ground cover ratio for stationary PV arrays", Solar Energy (61:1); pp. 381-387.
 
 \bibitem[Wilcox(2008)]{tmy3manual} Wilcox, S.; Marion, W. (2008). ``Users Manual for TMY3 Datasets." TP-581-43156. Golden, CO: National Renewable Energy Laboratory. \url{http://www.nrel.gov/docs/fy08osti/43156.pdf}.
-
-\bibitem[Marion(2015)] {marion-decompositionmodel} %marion's decomposition model
-Marion, W. (2015). ``A model for deriving the direct normal and diffuse horizontal irradiance from the global tilted irradiance," \emph{Solar Energy}, vol. 122, p. 1037-1046.
-
 
 \end{thebibliography}
 
