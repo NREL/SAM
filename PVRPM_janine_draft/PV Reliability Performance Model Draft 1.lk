@@ -993,4 +993,11 @@ dview(2, 1, 'Lifetime System Power', 'DC Power', 'kW', 1.0, hourly_dc_power, 'AC
 	WHEN AN INVERTER FAILS ROUTINELY, IT NEEDS TO NOT BE COMPLETELY RESET- which ones do reset it?
 	Basic failure rates as an output (failures per million hours)
 	Make macro UI inputs
+	Which inputs are ones people should change, and which will the code set automatically (example tracking)
+	O&M costs- set to add to what is in the case
+	details in the documentation- what comes from SAM, what goes to SAM
+	add an O&M check if the inputs are there
+	create outputs of the RPM script- calculated O&M costs that get set 
+	LCOE calculator clarification comment- all the other models calculate LCOE as well
+	in documentation- if you want to model microinverters, here's how you would set it up
 */
