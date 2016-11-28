@@ -1,0 +1,50 @@
+
+// 1. CONVERT CSV TEXT TO ARRAYS
+
+data = csvconv( '1,2,3,5,-2.5\n4,5,1,3,abc', {'numeric'=true} ); // returns 2D array [ [1,2,3,5,-2.5], [4,5,1,3,0] ]
+outln(typeof(data));
+outln(data);
+outln('');
+
+data2 = csvconv( '1,2,5,5' ); // returns 2D array [[1,2,5,5]]
+outln(typeof(data2));
+outln( data2 );
+outln('');
+
+data3 = csvconv( 'a,b,c,d\ne,f,g' );
+outln(typeof(data3));
+outln( data3 );
+outln('');
+
+data4 = csvconv( '4.5,1.66,-.14e-3,text', { 'numeric'=true, '1darray'=true} ); // returns 1D array of numbers
+outln(typeof(data4));
+outln( data4 );
+outln('');
+
+
+// 2. CONVERT ARRAYS TO CSV TEXT
+
+str = csvconv( [ [1,2,3,5],[4,5,1,3] ] ); // returns escaped csv with newlines
+outln(typeof(str));
+outln( str );
+outln('');
+
+str2 = csvconv( [1,3,4,5] );  // str2='1,3,4,5\n'
+outln(typeof(str2));
+outln( str2 );
+outln('');
+
+
+str3 = csvconv( [55,33,22,66,77], {'trim'=true} ); // don't include last line's new line
+outln(typeof(str3));
+outln( str3 );
+outln('');
+
+
+// 3. BACK AND FORTH
+
+str3 = csvconv( csvconv( '1,2,3,4' ) );
+outln(str3);
+
+data5 = csvconv( csvconv( [ 1, 2, 3, 4] ), {'1darray'=true} );
+outln(data5);
