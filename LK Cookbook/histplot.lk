@@ -1,4 +1,4 @@
-file = 'c:/users/adobos/desktop/data.csv';
+file = cwd() + '/histdata.csv';
 data = csvread( file, {'numeric'=true, 'table'=true});
 outln(data);
 cols = @data;
