@@ -1006,6 +1006,7 @@ void ResultsViewer::Setup( Simulation *sim )
 		m_cashFlowTable->ResizeGrid(cashflow_row, nyears);
 		m_cashFlowTable->SetRowLabelSize(wxGRID_AUTOSIZE);
 		m_cashFlowTable->SetColLabelSize(wxGRID_AUTOSIZE);
+		m_cashFlowTable->AutoSize();
 		m_cashFlowTable->Thaw();
 				
 		m_depreciationTable->Show(depreciation_row > 0);
