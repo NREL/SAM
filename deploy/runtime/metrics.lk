@@ -281,7 +281,6 @@ metrics{ 'PV_battery' } = define() { pv_metrics(); };
 metrics{ 'PVWatts' } = define() {	pvwatts_metrics(); 
 	if ((financing()=="Residential") || (financing()=="Commercial") || (financing()=="Third Party") || (financing()=="Single Owner"))
 		metric( 'average_cycle_efficiency', {'label'='Battery efficiency', 'mode'='f', 'deci'='2', 'post'='%' } );};
-metrics{ 'PVWatts_battery' } = define() {	pvwatts_metrics(); };
 metrics{ 'High-X Concentrating PV' } = define() { generic_hcpv_metrics(); };
 metrics{ 'Physical Trough' } = define() { physical_trough_metrics(); };
 metrics{ 'Physical Trough IPH' } = define() { physical_trough_iph_metrics(); };
