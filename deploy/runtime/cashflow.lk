@@ -370,7 +370,7 @@ cashflow{ 'Single Owner' } = define()
 	
 	if ( value('debt_option') == 0 ) {
 	  cfline( '' );
-	  cfline( "DSCR (MORTGAGE-STYLE DEBT)", -1);
+	  cfline( "DSCR (DEBT FRACTION)", -1);
 	  cfline('cf_ebitda', 0);
 	  cfline("minus:", -1, 0);
 	  cfline('cf_reserve_equip1', 0);
@@ -783,7 +783,7 @@ cashflow{ 'Leveraged Partnership Flip' } = define()
 	cfline( '' ); // spacer
 	
 	if ( value('debt_option') == 0 ) {
-	  cfline( "DSCR (MORTGAGE-STYLE DEBT)", -1);
+	  cfline( "DSCR (DEBT FRACTION)", -1);
 	  cfline('cf_ebitda', 0);
 	  cfline("minus:", -1, 0);
 	  cfline('cf_reserve_equip1', 0);
