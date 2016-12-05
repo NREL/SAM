@@ -69,6 +69,7 @@ function current_degradation_rate(percent_per_day, t)
 // contains information about a component type in the system
 /*
 can_fail = true if component is allowed to fail
+can_repair = true if component is allowed to be repaired after failing
 number = number of that type of component in the system
 warranty
 	has_warranty = true if the component has a warranty, otherwise false
@@ -82,7 +83,6 @@ failure[i]
 	***OPTIONAL PARAMETER
 	***fraction = If fraction is defined, then failure mode i is a defective failure mode, and "fraction" represents the fraction of this type of component that are defective
 repair
-	can_repair = true if the component is allowed to be repaired
 	distribution = distribution type of repair times
 	parameters = parameters of the repair distribution
 	times = a vector of repair times
@@ -125,6 +125,7 @@ degradation_factor = 1 - percentage the component has degraded at this time (ex.
 	global modules = alloc(num_modules);
 	global module_meta = null;	
 	module_meta.can_fail = true;
+	module_meta.can_repair = true;
 	module_meta.number = num_modules;
 	module_meta.warranty.has_warranty = true;
 	module_meta.warranty.days = 20 * 365; //years converted to days
@@ -141,7 +142,6 @@ degradation_factor = 1 - percentage the component has degraded at this time (ex.
 	module_meta.failure[1].labor_time = 2; //hours
 	module_meta.failure[1].cost = 322; //$
 	module_meta.failure[1].fraction = 20 / 100; //% converted to fraction
-	module_meta.repair.can_repair = true;
 	module_meta.repair.distribution = 'lognormal';
 	module_meta.repair.parameters =  [60, 20]; //mean, std, in days
 	module_meta.repair.times = null;
@@ -152,6 +152,7 @@ degradation_factor = 1 - percentage the component has degraded at this time (ex.
 	global strings = alloc(num_strings);
 	global string_meta = null;
 	string_meta.can_fail = true;
+	string_meta.can_repair = true;
 	string_meta.number = num_strings;
 	string_meta.warranty.has_warranty = false;
 	string_meta.failure[0].distribution = 'exponential';
@@ -159,7 +160,6 @@ degradation_factor = 1 - percentage the component has degraded at this time (ex.
 	string_meta.failure[0].times = null;
 	string_meta.failure[0].labor_time = 1; //hours
 	string_meta.failure[0].cost = 20; //$
-	string_meta.repair.can_repair = true;
 	string_meta.repair.distribution = 'lognormal';
 	string_meta.repair.parameters = [7, 3]; //mean, std, days
 	string_meta.repair.times = null;
@@ -169,6 +169,7 @@ degradation_factor = 1 - percentage the component has degraded at this time (ex.
 	global combiners = alloc(num_combiners);
 	global combiner_meta = null;
 	combiner_meta.can_fail = true;
+	combiner_meta.can_repair = true;
 	combiner_meta.number = num_combiners;
 	combiner_meta.warranty.has_warranty = false;
 	combiner_meta.failure[0].distribution = 'normal';
@@ -176,7 +177,6 @@ degradation_factor = 1 - percentage the component has degraded at this time (ex.
 	combiner_meta.failure[0].times = null;
 	combiner_meta.failure[0].labor_time = 2; //hours
 	combiner_meta.failure[0].cost = 976; //$
-	combiner_meta.repair.can_repair = true;
 	combiner_meta.repair.distribution = 'exponential';
 	combiner_meta.repair.parameters = [3]; //mean, days
 	combiner_meta.repair.times = null;
@@ -186,6 +186,7 @@ degradation_factor = 1 - percentage the component has degraded at this time (ex.
 	global inverters = alloc(num_inverters);
 	global inverter_meta = null;
 	inverter_meta.can_fail = true;
+	inverter_meta.can_repair = true;
 	inverter_meta.number = num_inverters;
 	inverter_meta.warranty.has_warranty = false; 
 	//failure mode 1: component failure
@@ -214,7 +215,6 @@ degradation_factor = 1 - percentage the component has degraded at this time (ex.
 	inverter_meta.failure[2].labor_time = 0;
 	inverter_meta.failure[2].cost = 0.35 * get('inv_snl_paco'); //35 cents per watt
 	//other
-	inverter_meta.repair.can_repair = true;
 	inverter_meta.repair.distribution = 'lognormal';
 	inverter_meta.repair.parameters = [3, 1.5]; //mean, std, in days
 	inverter_meta.repair.times = null;
@@ -225,6 +225,7 @@ degradation_factor = 1 - percentage the component has degraded at this time (ex.
 	global disconnects = alloc(num_disconnects);
 	global disconnect_meta = null;
 	disconnect_meta.can_fail = true;
+	disconnect_meta.can_repair = true;
 	disconnect_meta.number = num_disconnects;
 	disconnect_meta.warranty.has_warranty = false;
 	disconnect_meta.failure[0].distribution = 'weibull';
@@ -232,7 +233,6 @@ degradation_factor = 1 - percentage the component has degraded at this time (ex.
 	disconnect_meta.failure[0].times = null;
 	disconnect_meta.failure[0].labor_time = 4; //hours
 	disconnect_meta.failure[0].cost = 500; //$
-	disconnect_meta.repair.can_repair = true;
 	disconnect_meta.repair.distribution = 'lognormal';
 	disconnect_meta.repair.parameters = [1, 0.5]; //mean, std, in years converted to days
 	disconnect_meta.repair.times = null;
@@ -242,6 +242,7 @@ degradation_factor = 1 - percentage the component has degraded at this time (ex.
 	global transformers = alloc(num_transformers);
 	global transformer_meta = null;
 	transformer_meta.can_fail = true;
+	transformer_meta.can_repair = true;
 	transformer_meta.number = num_transformers;
 	transformer_meta.warranty.has_warranty = false;
 	transformer_meta.failure[0].distribution = 'weibull';
@@ -249,7 +250,6 @@ degradation_factor = 1 - percentage the component has degraded at this time (ex.
 	transformer_meta.failure[0].times = null;
 	transformer_meta.failure[0].labor_time = 10; //hours
 	transformer_meta.failure[0].cost = 32868; //$
-	transformer_meta.repair.can_repair = true;
 	transformer_meta.repair.distribution = 'lognormal';
 	transformer_meta.repair.parameters = [0.25, 0.5]; //mean, std, in days
 	transformer_meta.repair.times = null;
@@ -259,6 +259,7 @@ degradation_factor = 1 - percentage the component has degraded at this time (ex.
 	global grid = alloc(1);
 	global grid_meta = null;
 	grid_meta.can_fail = true;
+	grid_meta.can_repair = true;
 	grid_meta.number = 1;
 	grid_meta.warranty.has_warranty = false;
 	grid_meta.failure[0].distribution = 'weibull';
@@ -266,7 +267,6 @@ degradation_factor = 1 - percentage the component has degraded at this time (ex.
 	grid_meta.failure[0].times = null;
 	grid_meta.failure[0].labor_time = 0;
 	grid_meta.failure[0].cost = 0;
-	grid_meta.repair.can_repair = true;
 	grid_meta.repair.distribution = 'exponential';
 	grid_meta.repair.parameters = [0.5]; //mean in days
 	grid_meta.repair.times = null;
@@ -278,6 +278,7 @@ degradation_factor = 1 - percentage the component has degraded at this time (ex.
 		global trackers = alloc(num_trackers);
 		global tracker_meta = null;
 		tracker_meta.can_fail = true;
+		tracker_meta.can_repair = true;
 		tracker_meta.number = num_trackers;
 		tracker_meta.warranty.has_warranty = false;
 		tracker_meta.failure[0].distribution = 'exponential';
@@ -285,7 +286,6 @@ degradation_factor = 1 - percentage the component has degraded at this time (ex.
 		tracker_meta.failure[0].times = null;
 		tracker_meta.failure[0].labor_time = 0;
 		tracker_meta.failure[0].cost = 2000; //present day tracker cost, will be inflated
-		tracker_meta.repair.can_repair = true;
 		tracker_meta.repair.distribution = 'lognormal';
 		tracker_meta.repair.parameters = [30, 10]; //mean, std, in days
 		tracker_meta.repair.times = null;
@@ -597,7 +597,7 @@ function step_in_time(component_meta, component_vector, day, component_repair_co
 		{
 			component_vector[i].time_to_repair--;
 			//component is repaired
-			if (component_vector[i].time_to_repair <= 0 && component_meta.repair.can_repair) //only repair the item if repairs are enabled
+			if (component_vector[i].time_to_repair <= 0 && component_meta.can_repair) //only repair the item if repairs are enabled
 			{
 				//add the cost to repair the component
 				failure_index = component_vector[i].failure_type; 
