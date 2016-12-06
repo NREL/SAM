@@ -5,25 +5,27 @@ Flat Plate PV,Residential,7481.71,7.45072,NA,;
 Flat Plate PV,Commercial,371195,5.28479,NA,; 
 Flat Plate PV,Third Party,7481.71,NA,NA,; 
 Flat Plate PV,Single Owner,37631744,9.82526,10.4892,; 
-Flat Plate PV,Leveraged Partnership Flip,OVERWRITE	
-Flat Plate PV,Leveraged Partnership Flip,37631744,9.96354,10.7878,Defaults file is likely out of date: Flat Plate PV_Leveraged Partnership Flip  Variables: 0 loaded but not in configuration, 0 wrong type, defaults file has 796, config has 896  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later) ; 
-Flat Plate PV,All Equity Partnership Flip,OVERWRITE	
-Flat Plate PV,All Equity Partnership Flip,37631744,13.0012,15.2302,Defaults file is likely out of date: Flat Plate PV_All Equity Partnership Flip  Variables: 0 loaded but not in configuration, 0 wrong type, defaults file has 786, config has 886  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later) ; 
-Flat Plate PV,Sale Leaseback,OVERWRITE	
-Flat Plate PV,Sale Leaseback,37631744,12.0723,12.9474,Defaults file is likely out of date: Flat Plate PV_Sale Leaseback  Variables: 0 loaded but not in configuration, 0 wrong type, defaults file has 779, config has 879  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later) ; 
+Flat Plate PV,Leveraged Partnership Flip,37631744,9.96354,10.7878,; 
+Flat Plate PV,All Equity Partnership Flip,37631744,13.0012,15.2302,; 
+Flat Plate PV,Sale Leaseback,37631744,12.0723,12.9474,; 
 Flat Plate PV,LCOE Calculator,fail,fail,fail
 Flat Plate PV,None,fail,fail,fail
-PVWatts,Residential,OVERWRITE	
-PVWatts,Residential,fail,fail,fail
-PVWatts,Commercial,OVERWRITE	
-PVWatts,Commercial,fail,fail,fail
-PVWatts,Third Party,6829.5,NA,NA,; 
-PVWatts,Single Owner,35113500,11.1059,11.8725,; 
-PVWatts,Leveraged Partnership Flip,35113500,11.2371,12.0998,; 
-PVWatts,All Equity Partnership Flip,35113500,14.6952,17.151,; 
-PVWatts,Sale Leaseback,35113500,13.6818,14.691,; 
-PVWatts,LCOE Calculator,34804908,NA,NA,; 
-PVWatts,None,6829.5,NA,NA,; 
+PVWatts,Residential,6829.5,11.8866,NA,; 
+PVWatts,Commercial,341052,5.3844,NA,; 
+PVWatts,Third Party,OVERWRITE	
+PVWatts,Third Party,6829.5,NA,NA,Defaults file is likely out of date: PVWatts_Third Party  Variables: 0 loaded but not in configuration, 0 wrong type, defaults file has 166, config has 172  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later) ; 
+PVWatts,Single Owner,OVERWRITE	
+PVWatts,Single Owner,35113500,11.1059,11.8725,Defaults file is likely out of date: PVWatts_Single Owner  Variables: 0 loaded but not in configuration, 0 wrong type, defaults file has 399, config has 405  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later) ; 
+PVWatts,Leveraged Partnership Flip,OVERWRITE	
+PVWatts,Leveraged Partnership Flip,35113500,11.2371,12.0998,Defaults file is likely out of date: PVWatts_Leveraged Partnership Flip  Variables: 0 loaded but not in configuration, 0 wrong type, defaults file has 411, config has 417  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later) ; 
+PVWatts,All Equity Partnership Flip,OVERWRITE	
+PVWatts,All Equity Partnership Flip,35113500,14.6952,17.151,Defaults file is likely out of date: PVWatts_All Equity Partnership Flip  Variables: 0 loaded but not in configuration, 0 wrong type, defaults file has 401, config has 407  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later) ; 
+PVWatts,Sale Leaseback,OVERWRITE	
+PVWatts,Sale Leaseback,35113500,13.6818,14.691,Defaults file is likely out of date: PVWatts_Sale Leaseback  Variables: 0 loaded but not in configuration, 0 wrong type, defaults file has 394, config has 400  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later) ; 
+PVWatts,LCOE Calculator,OVERWRITE	
+PVWatts,LCOE Calculator,34804908,NA,NA,Defaults file is likely out of date: PVWatts_LCOE Calculator  Variables: 0 loaded but not in configuration, 0 wrong type, defaults file has 77, config has 83  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later) ; 
+PVWatts,None,OVERWRITE	
+PVWatts,None,6829.5,NA,NA,Defaults file is likely out of date: PVWatts_None  Variables: 0 loaded but not in configuration, 0 wrong type, defaults file has 48, config has 54  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later) ; 
 High-X Concentrating PV,Single Owner,2.24502e+006,23.5317,25.5345,; 
 High-X Concentrating PV,Leveraged Partnership Flip,2.24502e+006,24.6185,27.0536,; 
 High-X Concentrating PV,All Equity Partnership Flip,2.24502e+006,30.5878,34.3018,; 
@@ -108,11 +110,11 @@ Dish Stirling,LCOE Calculator,188473424,NA,NA,;
 Dish Stirling,None,188473424,NA,NA,; 
 Generic CSP System,Commercial,557343744,2.21192,NA,; Notice: time 0.00 { Generic solar model 2 }:\ The interpolation code must be 1 (interpolate) or 2 (nearest neighbor)The input value was 0, so it was reset to 1
 Generic CSP System,Single Owner,557343744,11.5881,12.5491,; Notice: time 0.00 { Generic solar model 2 }:\ The interpolation code must be 1 (interpolate) or 2 (nearest neighbor)The input value was 0, so it was reset to 1
-Generic CSP System,Leveraged Partnership Flip,557343744,11.6114,12.6463,; Notice: time 0.00 { Generic solar model 2 }:\ The interpolation code must be 1 (interpolate) or 2 (nearest neighbor)The input value was 0, so it was reset to 1
-Generic CSP System,All Equity Partnership Flip,557656128,16.637,20.3979,; Notice: time 0.00 { Generic solar model 2 }:\ The interpolation code must be 1 (interpolate) or 2 (nearest neighbor)The input value was 0, so it was reset to 1
-Generic CSP System,Sale Leaseback,557656128,16.3534,19.1968,; Notice: time 0.00 { Generic solar model 2 }:\ The interpolation code must be 1 (interpolate) or 2 (nearest neighbor)The input value was 0, so it was reset to 1
+Generic CSP System,Leveraged Partnership Flip,557374976,11.6108,12.6456,; Notice: time 0.00 { Generic solar model 2 }:\ The interpolation code must be 1 (interpolate) or 2 (nearest neighbor)The input value was 0, so it was reset to 1
+Generic CSP System,All Equity Partnership Flip,557343744,16.646,20.4091,; Notice: time 0.00 { Generic solar model 2 }:\ The interpolation code must be 1 (interpolate) or 2 (nearest neighbor)The input value was 0, so it was reset to 1
+Generic CSP System,Sale Leaseback,557343744,16.3623,19.2072,; Notice: time 0.00 { Generic solar model 2 }:\ The interpolation code must be 1 (interpolate) or 2 (nearest neighbor)The input value was 0, so it was reset to 1
 Generic CSP System,LCOE Calculator,557343744,NA,NA,; Notice: time 0.00 { Generic solar model 2 }:\ The interpolation code must be 1 (interpolate) or 2 (nearest neighbor)The input value was 0, so it was reset to 1
-Generic CSP System,None,557656128,NA,NA,; Notice: time 0.00 { Generic solar model 2 }:\ The interpolation code must be 1 (interpolate) or 2 (nearest neighbor)The input value was 0, so it was reset to 1
+Generic CSP System,None,557343744,NA,NA,; Notice: time 0.00 { Generic solar model 2 }:\ The interpolation code must be 1 (interpolate) or 2 (nearest neighbor)The input value was 0, so it was reset to 1
 ISCC,Single Owner,fail,fail,fail
 Physical Trough IPH,None,NA,NA,NA,; 
 Physical Trough IPH,LCOH Calculator,1108194304,NA,NA,; 
