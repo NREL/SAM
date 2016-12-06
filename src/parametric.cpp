@@ -256,7 +256,7 @@ ParametricViewer::ParametricViewer(wxWindow *parent, Case *cc)
 	tool_sizer->Add(new wxMetroButton(top_panel, ID_SELECT_INPUTS, "Inputs..."), 0, wxALL | wxEXPAND, 0);
 	tool_sizer->Add(new wxMetroButton(top_panel, ID_SELECT_OUTPUTS, "Outputs..."), 0, wxALL | wxEXPAND, 0);
 	tool_sizer->Add(new wxMetroButton(top_panel, ID_RUN, "Run simulations", wxNullBitmap, wxDefaultPosition, wxDefaultSize, wxMB_RIGHTARROW), 0, wxALL | wxEXPAND, 0);
-	tool_sizer->Add(new wxMetroButton(top_panel, ID_GEN_LK, "Generate lk", wxNullBitmap, wxDefaultPosition, wxDefaultSize, wxMB_RIGHTARROW), 0, wxALL | wxEXPAND, 0);
+	tool_sizer->Add(new wxMetroButton(top_panel, ID_GEN_LK, "Generate lk for SDKtool", wxNullBitmap, wxDefaultPosition, wxDefaultSize, wxMB_RIGHTARROW), 0, wxALL | wxEXPAND, 0);
 	tool_sizer->AddStretchSpacer();
 	wxStaticText *lblruns = new wxStaticText(top_panel, wxID_ANY, "Number of runs:");
 	lblruns->SetForegroundColour( *wxWHITE );
@@ -918,8 +918,8 @@ void ParametricViewer::SelectInputs()
 		wxString name = it->first;
 		VarInfo &vi = *(it->second);
 
-		// update to select only "Parametric" variables
-		if (vi.Flags & VF_PARAMETRIC)
+		// update to select only "Parametric" variables and NOT calculated variables
+		if ((vi.Flags & VF_PARAMETRIC) 	&& !(vi.Flags & VF_INDICATOR)	&& !(vi.Flags & VF_CALCULATED))
 		{
 			wxString label = vi.Label;
 			if (label.IsEmpty())
@@ -1143,10 +1143,10 @@ bool ParametricGridData::IsEmptyCell(int row, int col)
 bool ParametricGridData::IsInput(int col)
 {
 	if ((col>-1) && (col < m_cols))
-		if (VarValue *vv = m_par.GetCase()->Values().Get(m_par.Setup[col].Name))
-			return true;
-		else
-			return false;
+	{
+		wxString var_name = m_par.Setup[col].Name;
+		return IsInput(var_name);
+	}
 	else
 		return false;
 }
@@ -1154,7 +1154,12 @@ bool ParametricGridData::IsInput(int col)
 bool ParametricGridData::IsInput(wxString &var_name)
 {
 	if (VarValue *vv = m_par.GetCase()->Values().Get(var_name))
-		return true;
+	{
+		if (m_input_names.Index(var_name) != wxNOT_FOUND)
+			return true;
+		else
+			return false;
+	}
 	else
 		return false;
 }
@@ -2576,7 +2581,7 @@ void Parametric_QS::OnAddVariable(wxCommandEvent &evt)
 		VarInfo &vi = *(it->second);
 
 		// update to select only "Parametric" variables
-		if (vi.Flags & VF_PARAMETRIC)
+		if ((vi.Flags & VF_PARAMETRIC) && !(vi.Flags & VF_INDICATOR) && !(vi.Flags & VF_CALCULATED))
 		{
 			wxString label = vi.Label;
 			if (label.IsEmpty())
