@@ -2,7 +2,18 @@
 general.project_economic_life_years = 20;
 general.inspection_clearance_meters = 2;
 general.plant_commissioning_cost_factor = 0.01;
-general.estimated_engineering_management_cost_factor = 0.04;
+general.procurement_contingency = 5;
+general.install_contingency = 30;
+general.capital_cost_year_0 = 20;
+general.capital_cost_year_1 = 60;
+general.capital_cost_year_2 = 10;
+general.capital_cost_year_3 = 10;
+general.capital_cost_year_4 = 0;
+general.capital_cost_year_5 = 0;
+general.tax_rate = 40;
+general.interest_during_construction = 8;
+//this is from the Engineering & Management inputs section
+general.estimated_engineering_management_cost_factor = 0.04; 
 set('detailed_obos_general', general);
 
 //Substructure & foundation
@@ -28,6 +39,7 @@ substructure.secondary_outfitting_steel_cost_rate = 7250;
 substructure.mooring_line_diameter = -999; //-999 causes the model to determine this variable
 substructure.mooring_line_cost_rate = -999; //-999 causes the model to determine this variable
 substructure.scour_protection_material_cost = 250000;
+substructure.number_install_seasons = 1;
 set('detailed_obos_substructure', substructure);
 	
 electrical.power_transfer_efficiency_factor = 0.95;
