@@ -15,6 +15,10 @@
 	Which inputs are ones people should change, and which will the code set automatically (example tracking)
 	details in the documentation- what comes from SAM, what goes to SAM
 	in documentation- if you want to model microinverters, here's how you would set it up
+	make a note about degradation!! confusing to have an input that's zero but then the degradation get assigned as the daily DC loss
+	can i make the reliability piece faster- skip incrementing the component if it can't fail???
+	make sure to multi-thread the stochastic piece
+	add number of failures per component per year- in a csv
 */
 
 //*************************************************************************************
