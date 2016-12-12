@@ -210,7 +210,7 @@ BEGIN_EVENT_TABLE(ParametricViewer, wxPanel)
 	EVT_BUTTON(ID_SELECT_OUTPUTS, ParametricViewer::OnCommand)
 	EVT_NUMERIC(ID_NUMRUNS, ParametricViewer::OnCommand)
 	EVT_BUTTON(ID_RUN, ParametricViewer::OnCommand)
-	EVT_BUTTON(ID_GEN_LK, ParametricViewer::OnCommand)
+//	EVT_BUTTON(ID_GEN_LK, ParametricViewer::OnCommand)
 	EVT_BUTTON(ID_QUICK_SETUP, ParametricViewer::OnCommand)
 	
 	EVT_BUTTON(ID_EXPORT_MENU, ParametricViewer::OnCommand)
@@ -218,10 +218,12 @@ BEGIN_EVENT_TABLE(ParametricViewer, wxPanel)
 	EVT_BUTTON(ID_OUTPUTMENU_CLIPBOARD, ParametricViewer::OnMenuItem)
 	EVT_BUTTON(ID_OUTPUTMENU_CSV, ParametricViewer::OnMenuItem)
 	EVT_BUTTON(ID_OUTPUTMENU_EXCEL, ParametricViewer::OnMenuItem)
+	EVT_BUTTON(ID_GEN_LK, ParametricViewer::OnMenuItem)
 	EVT_BUTTON(ID_CLEAR, ParametricViewer::OnCommand)
 	
 	EVT_MENU(ID_OUTPUTMENU_CLIPBOARD, ParametricViewer::OnMenuItem)
 	EVT_MENU(ID_OUTPUTMENU_CSV, ParametricViewer::OnMenuItem)
+	EVT_MENU(ID_GEN_LK, ParametricViewer::OnMenuItem)
 	EVT_MENU(ID_OUTPUTMENU_EXCEL, ParametricViewer::OnMenuItem)
 	EVT_MENU(ID_CLEAR, ParametricViewer::OnCommand)
 
@@ -256,7 +258,7 @@ ParametricViewer::ParametricViewer(wxWindow *parent, Case *cc)
 	tool_sizer->Add(new wxMetroButton(top_panel, ID_SELECT_INPUTS, "Inputs..."), 0, wxALL | wxEXPAND, 0);
 	tool_sizer->Add(new wxMetroButton(top_panel, ID_SELECT_OUTPUTS, "Outputs..."), 0, wxALL | wxEXPAND, 0);
 	tool_sizer->Add(new wxMetroButton(top_panel, ID_RUN, "Run simulations", wxNullBitmap, wxDefaultPosition, wxDefaultSize, wxMB_RIGHTARROW), 0, wxALL | wxEXPAND, 0);
-	tool_sizer->Add(new wxMetroButton(top_panel, ID_GEN_LK, "Generate lk for SDKtool", wxNullBitmap, wxDefaultPosition, wxDefaultSize, wxMB_RIGHTARROW), 0, wxALL | wxEXPAND, 0);
+//	tool_sizer->Add(new wxMetroButton(top_panel, ID_GEN_LK, "Generate lk for SDKtool", wxNullBitmap, wxDefaultPosition, wxDefaultSize, wxMB_RIGHTARROW), 0, wxALL | wxEXPAND, 0);
 	tool_sizer->AddStretchSpacer();
 	wxStaticText *lblruns = new wxStaticText(top_panel, wxID_ANY, "Number of runs:");
 	lblruns->SetForegroundColour( *wxWHITE );
@@ -417,7 +419,8 @@ void ParametricViewer::OnCommand(wxCommandEvent &evt)
 #ifdef __WXMSW__
 			menu.Append(ID_OUTPUTMENU_EXCEL, "Send to Excel");	
 #endif
-			
+			menu.Append(ID_GEN_LK, "Generate LK for SDKTool");
+
 			wxPoint p(wxDefaultPosition);
 			wxWindow *btn = dynamic_cast<wxWindow*>( evt.GetEventObject() );
 			if ( btn )
@@ -445,9 +448,9 @@ void ParametricViewer::OnCommand(wxCommandEvent &evt)
 		RunSimulations();
 		UpdateGrid();
 		break;
-	case ID_GEN_LK:
-		Generate_lk();
-		break;
+//	case ID_GEN_LK:
+//		Generate_lk();
+//		break;
 	case ID_CLEAR:
 		ClearResults();
 		UpdateGrid();
@@ -493,6 +496,9 @@ void ParametricViewer::OnMenuItem(wxCommandEvent &evt)
 		break;
 	case ID_OUTPUTMENU_CSV:
 		SaveToCSV();
+		break;
+	case ID_GEN_LK:
+		Generate_lk();
 		break;
 #ifdef __WXMSW__
 	case ID_OUTPUTMENU_EXCEL:
