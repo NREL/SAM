@@ -61,6 +61,16 @@ version_upgrade{'2016.10.25'} = define() {
 			inverter_model = 3;
 		value( 'inverter_model', inverter_model, 'inverter models reordered. Coefficient generator added.' );
 	}
+	if (cfg.tech == 'Wind Power')
+	{
+		if (value('wind_resource_model_choice') == 1) //Weibull distribution
+		{
+			adj = value('adjust');
+			if (adj.constant != 0 || adj.en_hourly || adj.en_periods)
+				message('This version fixes a bug with availability and curtailment losses in conjunction with the Weibull resource model. This will change your results. Please see the release notes for more detail.', 'warning');
+		}
+	}
+			
 	return;
 };
 
