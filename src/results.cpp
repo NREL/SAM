@@ -213,10 +213,11 @@ BEGIN_EVENT_TABLE( ResultsViewer, wxMetroNotebook )
 	EVT_BUTTON(ID_CF_SENDEQNEXCEL, ResultsViewer::OnCommand)
 END_EVENT_TABLE()
 
-enum { PAGE_SUMMARY,
+enum { 
+	PAGE_SUMMARY,
+	PAGE_DATA,
 	PAGE_LOSS_DIAGRAM,
 	PAGE_GRAPHS,
-	PAGE_DATA,
 	PAGE_CASH_FLOW,
 	PAGE_HOURLY,
 	PAGE_DAILY,
@@ -226,7 +227,8 @@ enum { PAGE_SUMMARY,
 	PAGE_SCATTER,
 	PAGE_PDF_CDF,
 	PAGE_DURATION_CURVE,
-	PAGE_MESSAGES };
+	PAGE_MESSAGES 
+};
 
 ResultsViewer::ResultsViewer( wxWindow *parent, int id )
 	: wxMetroNotebook( parent, id, wxDefaultPosition, wxDefaultSize, wxMT_LIGHTTHEME ),
@@ -240,6 +242,9 @@ ResultsViewer::ResultsViewer( wxWindow *parent, int id )
 	data.at(0,0) = "Metric"; data.at(0,1) = "Value";
 	m_metricsTable->SetData( data );	
 	m_summaryLayout->Add( m_metricsTable );
+	
+	m_tables = new TabularBrowser( this );
+	AddPage( m_tables, "All outputs" );
 
 	m_lossDiagramScroller = new wxScrolledWindow( this );
 	m_lossDiagramScroller->SetBackgroundColour( *wxWHITE );
@@ -248,9 +253,6 @@ ResultsViewer::ResultsViewer( wxWindow *parent, int id )
 
 	m_graphViewer = new GraphViewer( this );
 	AddPage( m_graphViewer, "Graphs" );
-
-	m_tables = new TabularBrowser( this );
-	AddPage( m_tables, "Data" );
 	
 	
 	wxPanel *cf_panel = new wxPanel( this );
