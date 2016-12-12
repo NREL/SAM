@@ -57,7 +57,11 @@ static void fcall_dview(lk::invoke_t &cxt)
 	}
 
 	wxFrame *frame = new wxFrame( SamApp::Window(), wxID_ANY, "Data Viewer: " + win_name, wxDefaultPosition, wxScaleSize(1000,700),
-		(wxCAPTION | wxCLOSE_BOX | wxCLIP_CHILDREN | wxRESIZE_BORDER | wxFRAME_TOOL_WINDOW | wxFRAME_FLOAT_ON_PARENT) );
+		(wxCAPTION | wxCLOSE_BOX | wxCLIP_CHILDREN | wxRESIZE_BORDER ) );
+#ifdef __WXMSW__
+	frame->SetIcon( wxICON( appicon ) );
+#endif
+
 	wxDVPlotCtrl *dview = new wxDVPlotCtrl(frame, wxID_ANY);
 	
 	size_t data_index = 0;
@@ -120,7 +124,11 @@ static void fcall_dview_solar_data_file( lk::invoke_t &cxt )
 	}
 
 	wxFrame *frame = new wxFrame( SamApp::Window(), wxID_ANY, "Data Viewer: " + file, wxDefaultPosition, wxScaleSize(1000,700),
-		(wxCAPTION | wxCLOSE_BOX | wxCLIP_CHILDREN | wxRESIZE_BORDER | wxFRAME_TOOL_WINDOW | wxFRAME_FLOAT_ON_PARENT) );
+		(wxCAPTION | wxCLOSE_BOX | wxCLIP_CHILDREN | wxRESIZE_BORDER ) );
+#ifdef __WXMSW__
+	frame->SetIcon( wxICON( appicon ) );
+#endif
+
 	wxDVPlotCtrl *dview = new wxDVPlotCtrl(frame, wxID_ANY);
 
 	// this information is consistent with the variable definitions in the wfreader module
