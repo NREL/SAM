@@ -176,7 +176,7 @@ function setup_pv_residential_pages( mode ) // mode determines whether or not th
   setup_elec_load_page( mode );
 }
 */
-function setup_thirdparty_pages( degradation ) // FOR NOW, THIRD PARTY OWNERSHIP MODEL IS ONLY VALID FOR PVWATTS AND PV DETAILED!!
+function setup_thirdparty_pages( load, degradation ) // FOR NOW, THIRD PARTY OWNERSHIP MODEL IS ONLY VALID FOR PVWATTS AND PV DETAILED and generic system!!
 {
   setting( { 'analysis_period_var'='cf_length' } );
   if (degradation == LIFETIME_SYSTEM )
@@ -187,7 +187,7 @@ function setup_thirdparty_pages( degradation ) // FOR NOW, THIRD PARTY OWNERSHIP
   addpage( [[ 'Financial Third Party Ownership']],
            { 'sidebar'='Financial Parameters', 'help'='fin_thirdparty'} );
   setup_utility_rate();
-  setup_elec_load_page( LOAD_BELPE ); // BELPE IS VALID FOR BOTH PVWATTS AND PV DETAILED
+  setup_elec_load_page( load ); // BELPE IS VALID FOR BOTH PVWATTS AND PV DETAILED, but not generic system
 }
 
 function setup_lcoefcr_pages() // LCOE calculator will not work with tower models because cost inputs required for solar pilot
@@ -585,7 +585,7 @@ setconfig( 'Flat Plate PV', 'Third Party' );
 setmodules( ['belpe', 'pvsamv1', 'utilityrate5', 'thirdpartyownership']);
 setup_flat_plate_pv_pages();
 setup_battery_pages_behind_the_meter();
-setup_thirdparty_pages( LIFETIME_PV ); //includes building load calculator by default in this function
+setup_thirdparty_pages( LOAD_BELPE, LIFETIME_PV ); //includes building load calculator by default in this function
 
 setconfig( 'Flat Plate PV', 'Commercial' );
 setmodules( ['pvsamv1', 'utilityrate5', 'cashloan']);
@@ -718,7 +718,7 @@ setup_residential_pages( LOAD_BELPE, LIFETIME_SYSTEM ); //includes building load
 setconfig( 'PVWatts', 'Third Party' );	
 setmodules( ['pvwattsv5', 'belpe', 'battwatts', 'utilityrate5', 'thirdpartyownership']);
 setup_pvwatts_battery_pages();
-setup_thirdparty_pages(LIFETIME_SYSTEM); //includes building load calculator by default in this function
+setup_thirdparty_pages( LOAD_BELPE , LIFETIME_SYSTEM); //includes building load calculator by default in this function
 
 setconfig( 'PVWatts', 'Commercial' );	
 setmodules( ['pvwattsv5', 'battwatts', 'utilityrate5', 'cashloan']);
@@ -940,6 +940,12 @@ setmodules( ['generic_system',  'utilityrate5', 'cashloan']);
 setup_generic_system_pages();
 addpage( [[ 'Generic System Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='generic_system_costs' } );
 setup_residential_pages( LOAD_SIMPLE, LIFETIME_SYSTEM ); //does not include building load calculator
+
+//-----------------------------------------------------
+setconfig( 'Generic System', 'Third Party' );
+setmodules( ['generic_system', 'utilityrate5', 'thirdpartyownership']);
+setup_generic_system_pages();
+setup_thirdparty_pages( LOAD_SIMPLE, LIFETIME_SYSTEM );
 
 //-----------------------------------------------------
 setconfig( 'Generic System', 'Commercial' );	
