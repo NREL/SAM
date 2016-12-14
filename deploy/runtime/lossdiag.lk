@@ -15,7 +15,9 @@ loss_diagram{'Flat Plate PV'} = define() {
 	add_loss_term( 'annual_dc_wiring_loss_percent', 'DC wiring' );	
 	add_loss_term( 'annual_dc_tracking_loss_percent', 'Tracking error' );	
 	add_loss_term( 'annual_dc_nameplate_loss_percent', 'Nameplate' );
-	add_loss_term( 'annual_dc_optimizer_loss_percent', 'DC power optimizer' );	
+	add_loss_term( 'annual_dc_optimizer_loss_percent', 'DC power optimizer' );
+	add_loss_term( 'annual_dc_perf_adj_loss_percent', 'DC availability and curtailment' );
+	add_loss_term( 'annual_dc_lifetime_loss_percent', 'DC Lifetime daily losses- year one' );	
 	
 	new_baseline( 'annual_dc_net', 'Net DC energy (kWh)' );
 	add_loss_term( 'annual_ac_inv_clip_loss_percent', 'Inverter power clipping' );	
@@ -28,6 +30,7 @@ loss_diagram{'Flat Plate PV'} = define() {
 	add_loss_term('annual_ac_transformer_loss_percent', 'Step-up transformer' );	
 
 	new_baseline( 'annual_ac_net', 'Net AC energy (kWh)' );
+	add_loss_term( 'annual_ac_lifetime_loss_percent', 'AC Lifetime daily losses- year one' );
 	add_loss_term('annual_ac_perf_adj_loss_percent', 'Availability and curtailment' );	
 	
 	new_baseline( 'annual_energy', 'Annual energy (kWh)' );
