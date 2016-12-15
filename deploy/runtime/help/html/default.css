@@ -241,7 +241,7 @@ span.f_VideoLibraryTitle /* Video Library Title */
  font-weight: bold;
 }
 /* Paragraph styles */
-p /* Normal */
+p, p.p_Normal, div.p_Normal /* Normal */
 {
  text-align: left;
  text-indent: 0px;
@@ -275,6 +275,7 @@ p /* Normal */
 .p_CodeExample /* Code Example */
 {
  font-size: 8pt;
+ line-height: 1.0;
  white-space: nowrap;
  page-break-inside: avoid;
 }
