@@ -54,12 +54,20 @@ version_upgrade{'2016.10.25'} = define() {
 	const cfg = config();
 	if (cfg.tech == 'Flat Plate PV')
 	{	
+		//inverter models reordered
 		inverter_model = value('inverter_model');
 		if (inverter_model > 0)
 			inverter_model = inverter_model + 1;
 		if (inverter_model > 3)
 			inverter_model = 3;
 		value( 'inverter_model', inverter_model, 'inverter models reordered. Coefficient generator added.' );
+		//degradation bug
+		if (value('subarray2_enable') == 1 || value('subarray3_enable') == 1 || value('subarray4_enable') == 1)
+		{
+			degradation = value('dc_degradation');
+			if (typeof(degradation) == 'array' || degradation == 0)
+				message('This version fixes a bug with module degradation when using multiple subarrays. This will change your results. Please see the release notes for more detail.', 'warning');
+		}
 	}
 	if (cfg.tech == 'Wind Power')
 	{
