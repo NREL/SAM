@@ -1,7 +1,7 @@
 //*************************************************************************************
 //PV Reliability Performance Model -- DRAFT --
 //Janine Freeman, NREL
-//14 September 2016
+//16 December 2016
 //*************************************************************************************
 
 // TO DO-----------------------------------------------------------------------------------
@@ -12,11 +12,11 @@
 	WHEN AN INVERTER FAILS ROUTINELY, IT NEEDS TO NOT BE COMPLETELY RESET- which ones do reset it?
 	Basic failure rates as an output (failures per million hours)
 	Make macro UI inputs
-	Which inputs are ones people should change, and which will the code set automatically (example tracking)
+	Which inputs are ones people should change, and which will the code set automatically (example: tracking)
 	details in the documentation- what comes from SAM, what goes to SAM
 	in documentation- if you want to model microinverters, here's how you would set it up
 	make a note about degradation!! confusing to have an input that's zero but then the degradation get assigned as the daily DC loss
-	can i make the reliability piece faster- skip incrementing the component if it can't fail???
+	are there further speed increases I can make?
 	make sure to multi-thread the stochastic piece
 	add number of failures per component per year- in a csv
 */
@@ -391,8 +391,12 @@ function initialize_component(component_meta, component_vector, component_idx, b
 	// Component state
 	component_vector[component_idx].state = 1; //component is operational
 	
-	// Component failures and repairs
+	// Number of failure modes (needed to create failures by type)
 	num_failure_modes = #component_meta.failure;
+	
+	// Degradation gets set (reset) to zero when a component is replaced
+	if (component_meta.degradation.can_degrade)
+		component_vector[component_idx].days_of_degradation = 0;
 	
 	if (bool_time_is_zero)
 	{
@@ -408,6 +412,10 @@ function initialize_component(component_meta, component_vector, component_idx, b
 		if (component_meta.warranty.has_warranty)
 			component_vector[component_idx].time_left_on_warranty = component_meta.warranty.days;
 	}
+	
+	// If the component isn't allowed to fail, then setting failure and replacement times isn't necessary
+	if (!component_meta.can_fail)
+		return;
 	
 	// Loop through all failure modes to determine failure times
 	for (j = 0; j < num_failure_modes; j++)
@@ -451,10 +459,6 @@ function initialize_component(component_meta, component_vector, component_idx, b
 	if (component_meta.warranty.has_warranty)
 		if (component_vector[component_idx].time_left_on_warranty <= 0) //new warranty on components replaced OOW
 			component_vector[component_idx].time_left_on_warranty = component_meta.warranty.days;
-	
-	// Reset degradation time when a component is replaced
-	if (component_meta.degradation.can_degrade)
-		component_vector[component_idx].days_of_degradation = 0;
 }
 
 //COMPONENT FAILURE----------------------------------------------------------------------------------------
@@ -611,13 +615,13 @@ function whats_my_tracker_power_loss_factor(day)
 	fraction_operational = num_trackers_operational / tracker_meta.number;
 	tracker_availability[day] = fraction_operational;
 	day_of_year = mod(day, 365); //0-indexed, but so are the daily_tracker_coeffs
+	adjusted_factor = 1;
 	if (tracker_meta.can_fail)
 	{
 		full_factor = daily_tracker_coeffs[day_of_year];
 		adjusted_factor = full_factor + fraction_operational* (1 - full_factor);
 	}
-	else
-		adjusted_factor = 1;
+
 	return adjusted_factor;
 }
 
@@ -629,51 +633,59 @@ function step_in_time(component_meta, component_vector, day, component_repair_co
 	//initialize repair costs
 	component_repair_costs[day] = 0;
 	
-	//loop through number of components
-	for (i=0; i < component_meta.number; i++)
+	//only loop through the component vector if the component can either fail or degrade to save computation time
+	if (component_meta.can_fail || component_meta.degradation.can_degrade)
 	{
-		//component is operational
-		if (component_vector[i].state == 1)
+		for (i=0; i < component_meta.number; i++)
 		{
-			component_vector[i].time_to_failure--;
-			//component has just failed and failure is allowed for this type of component
-			if (component_vector[i].time_to_failure <= 0 && component_meta.can_fail == true)
-				component_failure(component_vector, i, day, component_meta.warranty.has_warranty);
-		}
 		
-		//component is currently failed
-		else
-		{
-			component_vector[i].time_to_repair--;
-			//component is repaired
-			if (component_vector[i].time_to_repair <= 0 && component_meta.can_repair) //only repair the item if repairs are enabled
+			if (component_meta.can_fail)
 			{
-				//add the cost to repair the component
-				failure_index = component_vector[i].failure_type; 
-				component_repair_cost = component_meta.failure[failure_index].cost + labor_rate * component_meta.failure[failure_index].labor_time;
-				if (component_meta.warranty.has_warranty)
+				//component is operational
+				if (component_vector[i].state == 1)
 				{
-					if(component_vector[i].time_left_on_warranty <= 0) //only add repair costs if not replaced under warranty
-						component_repair_costs[day] += component_repair_cost;
+					component_vector[i].time_to_failure--;
+					//component has just failed and failure is allowed for this type of component
+					if (component_vector[i].time_to_failure <= 0 && component_meta.can_fail == true)
+						component_failure(component_vector, i, day, component_meta.warranty.has_warranty);
 				}
+				
+				//component is currently failed
 				else
-					component_repair_costs[day] += component_repair_cost;
-				//initialize a new module without resetting cumulative failures
-				initialize_component(component_meta, component_vector, i, false); 			
+				{
+					component_vector[i].time_to_repair--;
+					//component is repaired
+					if (component_vector[i].time_to_repair <= 0 && component_meta.can_repair) //only repair the item if repairs are enabled
+					{
+						//add the cost to repair the component
+						failure_index = component_vector[i].failure_type; 
+						component_repair_cost = component_meta.failure[failure_index].cost + labor_rate * component_meta.failure[failure_index].labor_time;
+						if (component_meta.warranty.has_warranty)
+						{
+							if(component_vector[i].time_left_on_warranty <= 0) //only add repair costs if not replaced under warranty
+								component_repair_costs[day] += component_repair_cost;
+						}
+						else
+							component_repair_costs[day] += component_repair_cost;
+						//initialize a new module without resetting cumulative failures
+						initialize_component(component_meta, component_vector, i, false); 			
+					}
+				}
+				
+				//warranty
+				if (component_meta.warranty.has_warranty)
+					component_vector[i].time_left_on_warranty--;
 			}
-		}
-		
-		//degradation
-		if (component_meta.degradation.can_degrade)
-		{
-			component_vector[i].degradation_factor = current_degradation_rate(component_meta.degradation.rate / 365, component_vector[i].days_of_degradation);
-			component_vector[i].days_of_degradation++;
-		}
-		
-		//warranty
-		if (component_meta.warranty.has_warranty)
-			component_vector[i].time_left_on_warranty--;
-	}
+
+			//degradation can still happen even if component can't fail
+			if (component_meta.degradation.can_degrade)
+			{
+				component_vector[i].degradation_factor = current_degradation_rate(component_meta.degradation.rate / 365, component_vector[i].days_of_degradation);
+				component_vector[i].days_of_degradation++;
+			}
+		} //end of for loop
+	} //end of if statement
+	
 }
 
 
