@@ -25,7 +25,7 @@ function lcoefcr_metrics()
 
 function iph_lcoefcr_metrics()
 {
-	metric( 'lcoe_fcr', {'label'='Levelized cost of heat', 'mode'='f', 'deci'='2', 'post'=' \u00A2/kWh' , 'scale'='100'} );
+	metric( 'lcoe_fcr', {'label'='Levelized cost of heat', 'mode'='f', 'deci'='2', 'post'=' \u00A2/kWh-t' , 'scale'='100'} );
 }
 
 /*
@@ -155,18 +155,18 @@ function physical_trough_metrics()
 
 function physical_trough_iph_metrics()
 {
-	metric( 'annual_energy_MWt', {'label'='Annual energy (year 1)', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' MWt-hr' } );
-	metric( 'annual_field_energy', {'label'='Annual field energy (year 1)', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' MWt-hr' } );
-	metric( 'annual_thermal_consumption', {'label'='Annual thermal freeze protection (year 1)', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' MWt-hr' } );
-	metric( 'annual_electricity_consumption', {'label'='Annual electricity load (year 1)', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWe-hr' } );
+	metric( 'annual_energy_MWt', {'label'='Annual energy (year 1)', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' MWh-t' } );
+	metric( 'annual_field_energy', {'label'='Annual field energy (year 1)', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' MWh-t' } );
+	metric( 'annual_thermal_consumption', {'label'='Annual thermal freeze protection (year 1)', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' MWh-t' } );
+	metric( 'annual_electricity_consumption', {'label'='Annual electricity load (year 1)', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh-e' } );
 }
 
 function dsgl_iph_metrics()
 {
-	metric( 'annual_energy_MWt', {'label'='Annual energy (year 1)', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' MWt-hr' } );
-	metric( 'annual_field_energy', {'label'='Annual field energy (year 1)', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' MWt-hr' } );
-	metric( 'annual_thermal_consumption', {'label'='Annual thermal freeze protection (year 1)', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' MWt-hr' } );
-	metric( 'annual_electricity_consumption', {'label'='Annual electricity load (year 1)', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWe-hr' } );
+	metric( 'annual_energy_MWt', {'label'='Annual energy (year 1)', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' MWh-t' } );
+	metric( 'annual_field_energy', {'label'='Annual field energy (year 1)', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' MWh-t' } );
+	metric( 'annual_thermal_consumption', {'label'='Annual thermal freeze protection (year 1)', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' MWh-t' } );
+	metric( 'annual_electricity_consumption', {'label'='Annual electricity load (year 1)', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh-e' } );
 }
 
 function empirical_trough_metrics() 
