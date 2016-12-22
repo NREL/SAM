@@ -1,0 +1,222 @@
+  PVObject_=pvShading
+    Comment=3DShading_Trieu_ocean
+    Version=6.44
+    Flags=$00300100
+    Precision=1
+    FracOmbreMod=1.000
+    FracOmbreThin=0.400
+
+    ListeObjets, list of=12 TObjetOmbrage
+
+      PVObject_1=pvShdArrayRect
+        Comment=(Multi) Rectangular field
+        Version=6.44
+        Flags=$02200005
+        NoObjCreated=11
+        NPElements=5
+        NPElemRes=5
+        NElements=1
+        NElemRes=1
+        NElemChamps=1
+        ColorTechn=$00FF0000
+        ColorSurf=$00FF9999
+        ColorBord=$00808080
+        DOrigine=6.000,3.383,7.316
+        DInclin=37.0
+        OrdreDR=1
+        LongA=6.5,
+        LargA=4,
+        XOrig=0,
+        YOrig=0,
+        TypeOrigine=1
+      End of PVObject pvShdArrayRect
+
+      PVObject_2=pvShdArrayRect
+        Comment=(Multi) Rectangular field no 2
+        Version=6.44
+        Flags=$02200005
+        NoObjCreated=14
+        NPElements=5
+        NPElemRes=5
+        NElements=1
+        NElemRes=1
+        NElemChamps=1
+        ColorTechn=$00FF0000
+        ColorSurf=$00FF9999
+        ColorBord=$00808080
+        DOrigine=-1.250,-10.750,7.460
+        DInclin=30.0
+        DAzimut=90.0
+        OrdreDR=1
+        LongA=6.5,
+        LargA=4,
+        XOrig=0,
+        YOrig=0,
+        TypeOrigine=1
+      End of PVObject pvShdArrayRect
+
+      PVObject_3=pvShdElemObject
+        Comment=Parallelepipede
+        Version=6.44
+        Flags=$02000005
+        NoObjCreated=2
+        NPElements=30
+        NPElemRes=30
+        NElements=6
+        NElemRes=6
+        NElemChamps=1
+        ColorSurf=$00FF
+        DOrigine=6.250,3.250,0.000
+        DInclin=0.0
+        DAzimut=180.0
+        OrdreDR=1
+        ObjetElemType=oeParallelepipede
+        Params=7.500,6.500,7.000,
+      End of PVObject pvShdElemObject
+
+      PVObject_4=pvShdElemObject
+        Comment=2-sided roof + gables
+        Version=6.44
+        Flags=$02200005
+        NoObjCreated=3
+        NPElements=18
+        NPElemRes=18
+        NElements=4
+        ColorSurf=$00404080
+        DOrigine=-8.750,0.150,7.100
+        DInclin=0.0
+        DAzimut=90.0
+        OrdreDR=1
+        ObjetElemType=oeTwo_Sided_Roof_Gables
+        Params=6.700,15.000,37.000,0.000,0.000,
+      End of PVObject pvShdElemObject
+
+      PVObject_5=pvShdElemObject
+        Comment=Parallelepipede no 2
+        Version=6.44
+        Flags=$02200005
+        NoObjCreated=12
+        NPElements=30
+        NPElemRes=30
+        NElements=6
+        ColorSurf=$00FF
+        DOrigine=-10.250,-13.000,0.000
+        DInclin=0.0
+        OrdreDR=1
+        ObjetElemType=oeParallelepipede
+        Params=9.000,16.250,7.000,
+      End of PVObject pvShdElemObject
+
+      PVObject_6=pvShdElemObject
+        Comment=2-sided roof + gables no 2
+        Version=6.44
+        Flags=$02200005
+        NoObjCreated=13
+        NPElements=18
+        NPElemRes=18
+        NElements=4
+        ColorSurf=$C0FF
+        DOrigine=-5.900,-13.250,7.000
+        DInclin=0.0
+        OrdreDR=1
+        ObjetElemType=oeTwo_Sided_Roof_Gables
+        Params=9.750,16.750,30.000,0.000,0.000,
+      End of PVObject pvShdElemObject
+
+      PVObject_7=pvShdElemObject
+        Comment=Tree
+        Version=6.44
+        Flags=$02200005
+        NoObjCreated=15
+        NPElements=152
+        NPElemRes=152
+        NElements=32
+        ColorSurf=$8000
+        DOrigine=-17.750,8.000,0.000
+        DInclin=0.0
+        OrdreDR=1
+        ObjetElemType=oeTree
+        Params=4.000,12.000,4.000,4.500,7.500,2.000,
+      End of PVObject pvShdElemObject
+
+      PVObject_8=pvShdElemObject
+        Comment=Tree no 2
+        Version=6.44
+        Flags=$02200005
+        NoObjCreated=16
+        NPElements=152
+        NPElemRes=152
+        NElements=32
+        ColorSurf=$8000
+        DOrigine=-17.750,0.250,0.000
+        DInclin=0.0
+        OrdreDR=1
+        ObjetElemType=oeTree
+        Params=4.000,12.000,4.000,4.500,7.500,2.000,
+      End of PVObject pvShdElemObject
+
+      PVObject_9=pvShdElemObject
+        Comment=Tree no 3
+        Version=6.44
+        Flags=$02200005
+        NoObjCreated=17
+        NPElements=152
+        NPElemRes=152
+        NElements=32
+        ColorSurf=$8000
+        DOrigine=-17.750,-7.500,0.000
+        DInclin=0.0
+        OrdreDR=1
+        ObjetElemType=oeTree
+        Params=4.000,12.000,4.000,4.500,7.500,2.000,
+      End of PVObject pvShdElemObject
+
+      PVObject_10=pvShdElemObject
+        Comment=Tree no 4
+        Version=6.44
+        Flags=$02200005
+        NoObjCreated=18
+        NPElements=152
+        NPElemRes=152
+        NElements=32
+        ColorSurf=$8000
+        DOrigine=-17.500,-15.250,0.000
+        DInclin=0.0
+        OrdreDR=1
+        ObjetElemType=oeTree
+        Params=4.000,12.000,4.000,4.500,8.500,2.000,
+      End of PVObject pvShdElemObject
+
+      PVObject_11=pvShdElemObject
+        Comment=Tree no 5
+        Version=6.44
+        Flags=$02200005
+        NoObjCreated=19
+        NPElements=152
+        NPElemRes=152
+        NElements=32
+        ColorSurf=$8000
+        DOrigine=8.750,9.750,0.000
+        DInclin=0.0
+        OrdreDR=1
+        ObjetElemType=oeTree
+        Params=2.500,7.500,2.500,3.000,9.000,2.500,
+      End of PVObject pvShdElemObject
+
+      PVObject_12=pvShdElemObject
+        Comment=Tree no 6
+        Version=6.44
+        Flags=$02200005
+        NoObjCreated=20
+        NPElements=152
+        NPElemRes=152
+        NElements=32
+        ColorSurf=$8000
+        DOrigine=8.250,-8.000,0.000
+        DInclin=0.0
+        OrdreDR=1
+        ObjetElemType=oeTree
+        Params=2.500,7.250,2.500,2.750,4.000,1.000,
+      End of PVObject pvShdElemObject
+    End of ListeObjets
+  End of PVObject pvShading

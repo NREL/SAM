@@ -1,0 +1,42 @@
+PVObject_=pvProject
+  Comment=3DShading_Ivanhoe
+  Version=6.44
+  Flags=$00080010
+  ProjectDate=19/08/16 12:51
+  MeteoFileName=3DShadeTest1.MET
+  PVObject_SitePrj=pvSite
+    Comment=3DShading_Ivanhoe;United states;North_America;
+    Flags=$0100283F
+    NomF=3DShading_Ivanhoe.SIT
+    Site=3DShading_Ivanhoe
+    Country=United states
+    Region=North_America
+    Source=Meteonorm 7.1 (1991-2005), Sat=1%
+    SourceId=3
+    Latitude=39.74
+    Longitude=-104.98
+    Altitude=1627
+    TimeZone=-7.00
+    HLeg=True
+    UnitsDisp=kWh_m2_m
+    Albedo=0.20
+    DateBeg=01/01/91 00:00
+    DateEnd=01/01/80 00:00
+    GlobalH=77.5,93.6,143.9,153.7,193,209.1,204.5,179.9,150.5,114.6,78.3,67.3,0,
+    DiffuseH=26.6,35.5,50.7,67,68.7,69.2,68.8,70,56.5,41.8,28.9,25,0,
+    TAmb=0.4,0.9,5.3,9.5,14.9,19.8,24.5,22.3,17.3,10.6,4.5,-0.3,0,
+    WindVel=4.1,4.1,4.4,4.8,4.2,4.11,3.8,3.8,3.8,3.9,3.8,4,0,
+    Extraterr=133.8,163.8,238.8,290.2,341.9,348,351.8,318.1,255,201.7,142.1,120.3,2905.5,
+  End of PVObject pvSite
+  Albedo=0.200,0.200,0.200,0.200,0.200,0.200,0.200,0.200,0.200,0.200,0.200,0.200,
+  DesignTempMin=-10
+  TempOper=50
+  TempOperMin=20
+  TempOperMax=60
+  LimOverloadLoss=3.00
+  DiscrOrientDiff=1.00
+  SpreadMaxDiff=10.00
+  MaxSystem_ShdRatio=2.50
+  RegionMeteo=1
+  CorrAlttemp=-0.0055
+End of PVObject pvProject
