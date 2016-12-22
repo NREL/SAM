@@ -369,7 +369,7 @@ void WelcomeScreen::OnCommand( wxCommandEvent &evt )
 		break;
 
 	case ID_REGISTRATION:
-		SamRegistration::ShowDialog();
+		wxOnlineRegistration::ShowDialog();
 		break;
 	}
 }

@@ -1852,10 +1852,12 @@ extern void RegisterReportObjectTypes();
 
 	wxInitAllImageHandlers();
 
+	InitRegistrationSystem();
+
 	wxEasyCurl::Initialize();
 	wxEasyCurl::SetApiKeys( GOOGLE_API_KEY, BING_API_KEY );
 	wxEasyCurl::SetUrlEscape( "<SAMAPIKEY>", wxString(sam_api_key) );
-	wxEasyCurl::SetUrlEscape( "<USEREMAIL>", SamRegistration::GetEmail() );
+	wxEasyCurl::SetUrlEscape( "<USEREMAIL>", wxOnlineRegistration::GetEmail() );
 
 	wxPLPlot::AddPdfFontDir( GetRuntimePath() + "/pdffonts" );
 	wxPLPlot::SetPdfDefaultFont( "ComputerModernSansSerif" );
@@ -1907,43 +1909,8 @@ extern void RegisterReportObjectTypes();
 	{
 		splash.SetMessage( "Verifying registration..." );
 
-		wxString email = SamRegistration::GetEmail();
-		wxString key = SamRegistration::GetKey();
-	
-		if ( email.IsEmpty() || key.IsEmpty() )
-		{
-			splash.Hide();
-			SamRegistration::ShowDialog();
-		}
-		
-		if ( !SamRegistration::IncrementUsage() )
-		{
-			splash.Hide();
-
-			if ( !SamRegistration::CanStart() )
-			{
-				SamRegistration::ShowDialog( "You have reached the limit for the number of times you can run SAM without verifying your registration key.\n\n"
-					"Please check your email address, verification code, and internet connection." );
-
-				if ( !SamRegistration::CanStart() )
-					return false;
-			}
-			else 
-			{
-				wxString text = ("SAM could not connect to NREL servers to verify your registration key.\n"
-					"This might be caused by a problem with your internet connection. Click Confirm to try again or Skip for now to continue without registering.\n\n" );
-				int nstarts = SamRegistration::AllowedStartsRemaining();
-				if ( nstarts == 1 )	text += "This is the last time you may run SAM without verifying your registration.\n\n";
-				else text += wxString::Format( "You may run SAM %d more times without your verifying your registration.\n\n", nstarts );
-
-				if ( !SamRegistration::ShowDialog( text, wxString::Format("Skip for now (%d left)", nstarts) ) )
-				{
-					// since app is not going to start, decrement usage count (it was incremented already for this start above)
-					SamRegistration::DecrementUsage();
-					return false;
-				}
-			}
-		}
+		if ( !wxOnlineRegistration::CheckRegistration() )
+			return false;
 	}
 	
 	splash.Show();
