@@ -71,6 +71,10 @@ version_upgrade{'2016.10.25'} = define() {
 	}
 	if (cfg.tech == 'Wind Power')
 	{
+		//added new variable for Weibull distribution
+		value('weibull_k_factor', oldvalue('wind_characteristics_weibullK'), "Variable renamed");
+		value('weibull_wind_speed', oldvalue('wind_characteristics_class'), "Variable renamed");
+		//Weibull distribution bug
 		if (value('wind_resource_model_choice') == 1) //Weibull distribution
 		{
 			adj = value('adjust');
