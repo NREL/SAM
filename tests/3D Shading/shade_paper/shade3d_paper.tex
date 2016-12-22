@@ -76,62 +76,22 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{abstract}
 {\it 
-This paper assesses three popular models for estimating shading losses on photovoltaic systems.  Several hypothetical and actual scenes are used to compare the loss predictions of the three dimensional (3D) shading calculators in the System Advisor Model (SAM), PVsyst, and PV*SOL tools.   Comparisons with measured shade blocking from a SunEye device are also made for five actual systems.  Results show some notable differences in hourly shade loss profiles among the studied tools, even for very simplistic geometries.  However, on a annual energy basis, the differences appear to cancel out to some degree and result in errors that are comparable to documented variations in energy predictions.   These outcomes demonstrate a need for further development and improvement of 3D shade calculators to reduce model prediction errors and variability.
+This paper assesses three popular models for estimating shading losses on photovoltaic systems.  Several hypothetical and actual scenes are used to compare the loss predictions of the three dimensional (3D) shading calculators in the System Advisor Model (SAM), PVsyst, and PV*SOL tools.   Comparisons with measured shade blocking from a SunEye device are also made for four actual systems.  Results show some  differences in hourly shade loss profiles among the studied tools, even for very simplistic geometries.  However, on a monthly solar access basis, the differences appear to cancel out to some degree and result in errors that are comparable to documented variations in energy predictions.   These outcomes suggest a need for further development and improvement of 3D shade calculators to reduce model prediction errors and inter-tool variability.
 }
 \end{abstract}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Introduction}
 
-Major reductions in the cost of photovoltaic (PV) systems in the past several years have led to a proliferation of PV deployments at all market scales.  Particularly for distributed systems, which are frequently installed on existing rooftops in an urban environment, shading from nearby obstructions (other buildings, trees, etc) can have a major impact on energy production.  However, as such losses in available irradiance may no longer banish a system from economic viability, it becomes imperative to have accurate software tools to model shading losses in a 3D environment.  
+Major reductions in the cost of photovoltaic (PV) systems in the past several years have led to a proliferation of PV deployments at all market scales.  Particularly for distributed systems, which are frequently installed on existing rooftops in an urban environment, shading from nearby obstructions (other buildings, trees, etc) can have a major impact on energy production.  However, as such losses in available irradiance may no longer banish a system from economic viability due to significant recent cost reductions, it becomes imperative to have accurate software tools to model shading losses in a 3D environment.  
 
-Several tools for shade impact assessment exist on the market.  Common hardware include the SunEye ~\cite{suneye} and SolarPathfinder ~\cite{solarpathfinder} devices that require a site visit and potentially scaling of the rooftop itself to take pictures skydome blocking pictures that are subsequently processed by special software to estimate solar access at the proposed installation site.  Reducing assessment, siting, permitting, and other so-called balance of system (BOS) costs often pushes solar vendors to minimize site visits and thus the need for accurate 3D modeling of shade loss becomes evident.  Possible methods include Light Detection and Ranging (LiDAR) analysis~\cite{jakubiec2013}, topographical assessment using geospatial information systems (GIS)~\cite{melius2013}, and of course 3D modeling in computer-aided design (CAD) software which is the subject of this present assessment.
+Several tools for shade impact assessment exist on the market.  Common hardware include the SunEye ~\cite{suneye} and SolarPathfinder ~\cite{solarpathfinder} devices that require a site visit to the rooftop itself to take skydome blocking photographs that are subsequently processed by special software to estimate solar access at the proposed installation site.  Reducing assessment, siting, permitting, and other so-called balance of system (BOS) costs often pushes solar vendors to try to minimize site visits and thus the need for accurate 3D modeling of shade loss becomes evident.  Possible methods include Light Detection and Ranging (LiDAR) analysis~\cite{jakubiec2013}, topographical assessment using geospatial information systems (GIS)~\cite{melius2013}, and of course 3D modeling in computer-aided design (CAD) software which is the subject of this present assessment.
 
-Commonly used desktop software for photovoltaic system performance estimation include PVsyst~\cite{pvsyst}, PV*SOL~\cite{pvsol}, and NREL's System Advisor Model (SAM)~\cite{sam}.  More recent additions to these offerings include Helioscope~\cite{helioscope}, PV Complete~\cite{pvcomplete}, and others.  All of these tools propose estimate shading impacts by calculating the portion of a PV panel whose view of the sun is blocked by nearby obstructions at various times of the year.  Each software includes an interactive user interface for laying out PV panels in 3D space, adding obstructions such as trees, telephone poles, angled roof segments, and other geometric features.  Once the scene is specified, standard computer graphics techniques or ray tracing methods are used to determine the PV panel shade area fractions as the entire scene is transformed by rotation to mimic the movement of the sun over the horizon.
+Commonly used desktop software for photovoltaic system performance estimation include PVsyst~\cite{pvsyst}, PV*SOL~\cite{pvsol}, and NREL's System Advisor Model (SAM)~\cite{sam}.  More recent additions to these offerings include Helioscope~\cite{helioscope}, PV Complete~\cite{pvcomplete}, and others.  All of these tools estimate shading impacts by calculating the portion of a PV panel whose view of the sun is blocked by nearby obstructions at various times of the year.  Each software includes an interactive user interface for laying out PV panels in 3D space, adding obstructions such as trees, telephone poles, angled roof segments, and other geometric features.  Once the scene is defined, standard computer graphics techniques or ray tracing methods are used to determine the PV panel shade area fractions as the entire scene is transformed by rotation to mimic the movement of the sun over the horizon.
 
 To date, published comparisons and validation of PV performance modeling tools has focused on energy production in well characterized systems without irregular obstruction shading~\cite{blair2013,freeman2013,freeman2014,haroon2012,yates2010}.  In general, the collective data in these works indicate that most PV performance models, using typical assumptions for soiling and other losses, yield predictions within roughly $\pm$~5~\% of measured system performance.  However, to date, the accuracy of 3D shading loss calculations has not been independently verified.  In addition, one would expect shading loss predictions from all software tools to match very closely if not identically, as the linear shaded area calculations stem solely from geometric considerations.  Furthermore, the sensitivity of estimated shade loss and impact on annual energy production to the accuracy of the 3D model itself remains unknown.
 
-We investigate these issues using SAM, PVsyst, and PV*SOL to assess and better understand any differences in modeled shade loss among the three tools and provide a basis for further model improvement.  First, the procedure in SAM for calculating 3D shading losses is presented as a representative example.  Next, three extremely simple geometries are considered to quantify intermodel differences in shade loss profiles, followed by four systems accompanied by SunEye site measurements are assessed.  Finally, we consider the sensitivity of modeled energy predictions to errors in defining the 3D scene before wrapping up with some brief concluding remarks.
-
-\section{Methodology -- need to rewrite: currently based on tech manual text, this a placeholder really...}
-
-The SAM 3D shade calculator calculates a set of beam and diffuse shade factors from a three-dimensional representation of the photovoltaic array and nearby shading objects.  Objects in the 3D scene are represented by a set of polygons whose coordinates are specified in 3D space (x,y,z).  Polygons associated with the photovoltaic array or modules are marked as ``active surfaces'', so that the calculator can determine for which surfaces shading and blocking should be evaluated.  The geometry system uses a right-handed coordinate system in which $+x$ points east, $+y$ points north, and $+z$ points normal out of the ground towards the sky. 
-
-\subsection{Beam Shading Loss}
-
-The calculation procedure for linear shading losses for each active surface at each time step is as follows:
-
-\begin{enumerate}
-\item Calculate the solar zenith and azimuth angles for the current time stamp (month, day, hour, minute) and location (latitude, longitude, time zone).
-\item Create a list of polygons from the scene objects in untransformed 3D space.
-\item Calculate the axis $x$, $y$, and $z$ rotation angles corresponding to a rotation of the scene associated with the current sun position.  In other words, the 3D scene is rotated so that it is shown as if it were observed from the sun.
-\item Using this 3D rotation matrix, calculate the rotated coordinates of each polygon vertex to transform the whole scene into the line of sight from the sun using a parallel projection.  This assumes the sun is infinitely far away and that the sun rays reaching the scene are essentially parallel to one another.
-\item Using a backface culling algorithm, eliminate polygons from the scene that face away from the sun and are not visible.
-\item Apply the binary space partitioning (BSP) algorithm to sort all the remaining visible polygons in back-to-front order.  Polygons at the ``front'' are closest to the sun.
-\item Discard the transformed $z$ coordinate to effectively ``flatten'' the scene into two dimensions, as if it were viewed from the infinitely far away sun.
-	\item For each active surface:
-	\begin{enumerate}
-	\item Create a list of polygons (regular and other active surfaces) that are in front of the active surface, that is, between it and the sun.
-	\item Using a 2D polygon clipping algorithm, determine the intersection between the active surface and the list of potential blocking polygons.
-	\item The resulting intersection polygon's area divided by the active surface polygon area gives the linear shading fraction for that active surface at the current time (sun position).
-	\end{enumerate}
-\item If subarrays and strings are specified, determine the appropriate shade fractions for each piece from the sum total of the intersected (shaded) areas divided by the sum total of the unshaded active surface areas associated with each string or subarray.   If no strings or subarrays are specified in the geometry, the total intersected (shaded) area divided by the total unshaded active surface area is reported as the overall average shading fraction.
-\end{enumerate}
-
-
-
-\subsection{Sky Diffuse Blocking}
-
-The 3D shading calculator also estimates the loss of available diffuse irradiance to the active photovoltaic surfaces due to blocking of the sky dome by obstructions.  The procedure is as follows:
-\begin{enumerate}
-\item Divide the hemispherical sky dome into sections of some number of azimuth and zenith angle divisions.  By default, SAM uses 1 degree increments in both directions, for a total of 360 * 90 = 32400 divisions.
-\item For each position, transform the scene to the solar azimuth and zenith angle.
-\item Calculate the intersected (shaded) areas on each active surface polygon using the same procedure as for the beam irradiance shading loss.
-\item Integrate the shade loss over all positions in the sky dome by multiplying the observed shaded fraction with the solid angle of spherical integration $\sin(\theta_z)$.  This accounts for the fact that the sky dome divisions at the top of the hemisphere are much smaller than near $\theta_z\approx 0$.
-\end{enumerate}
-
-This procedure results in an estimate of the view factor of the active surfaces in each subarray to the sky dome, and hence the effective diffuse irradiance loss.  The model assumes an isotropic diffuse sky, and does not adjust for increased circumsolar diffuse irradiance.
-
+We investigate these issues using SAM, PVsyst, and PV*SOL to quantify and improve understanding of any differences in modeled shade loss among the three tools, and provide a basis for further model improvement.  This paper is organized as follows.  First, the procedure in SAM for calculating 3D shading losses is presented as a representative example.  Next, three extremely simple geometries are considered to quantify intermodel differences in shade loss profiles.  Finally, we compare model predictions for four residential systems for which on-site shade measurements are available before wrapping up with some brief concluding remarks.
 
 \section{Assessment of Simple Geometries}
 
@@ -176,7 +136,7 @@ Perth, Australia & -31.95 & 115.85 & 8 \\
 \label{fig:scene3}
 \end{figure}
 
-After entered each scenario manually into SAM, PVsyst, and PV*SOL using each tool's interactive 3D scene editor, simulation results were exported and post processed to extract the hourly beam irradiance shading loss.  This data is readily provided by SAM's 3D shading calculator when used in the time series analysis mode.  For PVsyst, the hourly data is given as a shade fraction from 0 (completely shaded) to 1 (unshaded) in the \texttt{FShdBm} data column. 
+After entering each scenario manually into SAM, PVsyst, and PV*SOL using each tool's interactive 3D scene editor, we exported simulation results and post processed them to extract the hourly beam irradiance shading loss.  This data is readily provided by SAM's 3D shading calculator when used in the time series analysis mode.  For PVsyst, the hourly data is given as a shade fraction from 0 (completely shaded) to 1 (unshaded) in the \texttt{FShdBm} data column. 
 
 Making a comparison with PV*SOL results is somewhat more complicated.  PV*SOL does not directly provide a shaded fraction or similar output, and so the shading loss must be recovered from other data.  Horizon shading effects that reduce the diffuse irradiance are first deducted from the total irradiance available to the modules, and this amount is then converted into a ``rated'' or nominal PV DC output.  Then, the difference between nominal DC output power in kilowatt-hours and shaded DC output power in the same units can be used to recover an estimate for the beam shading fraction alone.  First, we estimate the DC power loss from horizon shading $L_h$ (kWh) at each our using the module's standard test condition (STC) efficiency:
 \begin{equation}\label{eqn:pvsol_lh}
@@ -188,9 +148,9 @@ L_s (\%) = 100 \cdot \frac{ L_m + L_h }{ M_{0} + L_h }
 \end{equation}
 where $L_{m}$ is the reported module loss (kWh) and $M_0$ is the rated PV DC output. The horizon irradiance loss is added back into the rated PV DC output because PV*SOL derates the PV DC output by this loss before reporting the quantity.  
 
-Geometric shading loss for the three prototypical scenarios are shown in Fig.~\ref{fig:simple_denver}-\ref{fig:simple_perth} for four representative days of the year.  SAM and PVsyst estimate nearly identical shading losses but for some occasional deviations that are rather minor in magnitude at sun-up and sun-down hours for Denver and Quito.  These deviations may result from small differences in the sun position calculation algorithms used by the tools, and the assumptions in each for how to handle hours in which the sun is only partially above the horizon.  Although good agreement persists for Perth, PVsyst predicts a much more pronounced shade loss around hours 18-19 in January, April, and October than SAM, but only in that single hour of the day.  One might presume that running these shade loss calculations at subhourly timesteps may recover finer detail of the actual shading profiles, which may explain some of these differences.  We note that currently only SAM offers subhourly shade loss calculations, and \textbf{so subsequent exploration of time step effects will be limited to SAM}.
+Geometric shading loss for the three prototypical scenarios are shown in Fig.~\ref{fig:simple_denver}-\ref{fig:simple_perth} for four representative days of the year.  SAM and PVsyst estimate nearly identical shading losses but for some occasional deviations that are rather minor in magnitude at sun-up and sun-down hours for Denver and Quito.  These deviations may result from small differences in the sun position calculation algorithms used by the tools, and the assumptions in each for how to handle hours in which the sun is only partially above the horizon.  Although good agreement persists for Perth, PVsyst predicts a much more pronounced shade loss around hours 18-19 in January, April, and October than SAM, but only in that single hour of the day.  One might presume that running these shade loss calculations at subhourly timesteps may recover finer detail of the actual shading profiles, which may explain some of these differences.
 
-We also observe more frequent and more varied divergences in the PV*SOL's estimates of shading loss.  Although the daily profiles agree fairly well in a qualitative sense for Denver, the Quito and Perth scenarios show significant differences.  Differences seem to be greatest at the beginning and end of the day, and in some cases, such as on April 1st in Quito, over a 50~\% absolute difference in shade loss for several hours in the day.  PV*SOL shows better agreement with SAM and PVsyst before hour 15, after which it predicts much greater shading losses.  The reasons for these differences are not immediately clear.  Even if the post-processing procedure described previously is not perfect, one would expect differences in absolute magnitude but still a consistent shape to the loss profile.   We would emphasize again, though, that in theory all three modules should predict identical geometric shading losses for these well-characterized prototypical scenarios.  \textbf{Further effort to find out cause of these differences is needed}
+We also observe more frequent and more varied divergences in the PV*SOL's estimates of shading loss.  Although the daily profiles agree fairly well in a qualitative sense for Denver, the Quito and Perth scenarios show significant differences.  Differences seem to be greatest at the beginning and end of the day, and in some cases, such as on April 1st in Quito, over a 50~\% absolute difference in shade loss for several hours in the day.  PV*SOL shows better agreement with SAM and PVsyst before hour 15, after which it predicts much greater shading losses.  The reasons for these differences are not immediately clear.  Even if the post-processing procedure described previously is not perfect, one would expect differences in absolute magnitude but still a consistent shape to the loss profile.   We would emphasize again, though, that in theory all three modules should predict identical geometric shading losses for these well-characterized prototypical scenarios. 
 
 \begin{figure*}[h!]
 \begin{center}
@@ -221,24 +181,23 @@ We also observe more frequent and more varied divergences in the PV*SOL's estima
 \end{figure*}
 
 
-In addition to beam irradiance shading losses arising from obstructions blocking the sun rays to the PV array, obstructions also reduce the effective portion of the sky dome visible to the array.  Conservatively assuming an isotropic diffuse sky, the available diffuse irradiance is reduced by the view factor of the PV array to the sky, and remains constant through the year as the sun position does not affect the available sky diffuse.  Estimated diffuse shading loss for the three scenarios are listed in Table.~\ref{tab:diffuse_loss}.
+In addition to beam irradiance shading losses arising from obstructions blocking the sun rays to the PV array, obstructions also reduce the effective portion of the sky dome visible to the array.  Conservatively assuming an isotropic diffuse sky, the available diffuse irradiance is reduced by the view factor of the PV array to the sky, and remains constant through the year as the sun position does not affect the available sky diffuse.  Estimated diffuse shading loss for the three scenarios are listed in Table.~\ref{tab:diffuse_loss} for SAM and PVsyst.  PV*SOL does not provide this value as an output.
 
 \begin{table}[h!]
 \begin{center}
 \begin{tabular}{lccc}
 Scene & SAM & PVsyst & PV*SOL \\
 \hline
-Denver & 8.8~\% & 18.5~\% & ? \\
-Quito  & 16.8~\% & 18.1~\% & ? \\
-Perth  & 8.1~\% & 8.6~\% & ? \\
+Denver & 8.8~\% & 18.5~\% & n/a \\
+Quito  & 16.8~\% & 18.1~\% & n/a \\
+Perth  & 8.1~\% & 8.6~\% & n/a \\
 \end{tabular}
-\caption{Sky diffuse loss estimates for prototypical systems.}
+\caption{Sky diffuse loss estimates for prototypical systems.  PV*SOL does not provide this value as an output.}
 \label{tab:diffuse_loss}
 \end{center}
 \end{table}
 
-SAM and PVsyst estimate similar diffuse loss in Quito and Perth, but PVsyst estimates more than twice the diffuse loss for the Denver scenario.  The reason for this behavior is not clear.  \textbf{PV*SOL needs diffuse loss breakout}
-
+SAM and PVsyst estimate similar diffuse loss in Quito and Perth, but PVsyst estimates more than twice the diffuse loss for the Denver scenario.  The reason for this behavior is not clear and will require additional investigation.
 
 
 \section{Comparison with On-site Measurements}
@@ -294,19 +253,19 @@ Paradise & Soquel & 36.99 & -121.95 & -8 \\
 \label{fig:paradise}
 \end{figure}
 
-The estimated sky diffuse losses are listed in Table~\ref{tab:diffuse_loss_systems}.  \textbf{Need sky diffuse losses for PVsyst and PV*SOL to compare!}
+The estimated sky diffuse losses are listed in Table~\ref{tab:diffuse_loss_systems}.  We observe generally good agreement between SAM and PVsyst for all four systems.
 
 \begin{table}[h!]
 \begin{center}
 \begin{tabular}{lccc}
 Scene & SAM & PVsyst & PV*SOL \\
 \hline
-Ivanhoe & 17.7~\% & ? & ? \\
-Babbitt  & 9.3~\% & ? & ? \\
-Halsted  & 9.7~\% & ? & ? \\
-Paradise & 12.4~\% & ? & ? \\
+Ivanhoe & 17.7~\% & 20.7~\% & n/a \\
+Babbitt  & 9.3~\% & 7.3~\% & n/a \\
+Halsted  & 9.7~\% & 11.1~\% & n/a \\
+Paradise & 12.4~\% & 12.1~\% & n/a \\
 \end{tabular}
-\caption{Sky diffuse loss estimates for real systems.}
+\caption{Sky diffuse loss estimates for real systems.  PV*SOL does not provide this value as an output.}
 \label{tab:diffuse_loss_systems}
 \end{center}
 \end{table}
@@ -350,8 +309,7 @@ Representative daily shading loss profiles for each system are shown in Figs.~\r
 \label{fig:paradise_soquel_profiles}
 \end{figure*}
 
-Next, the monthly average beam shade losses for each system are compared with measured estimates of monthly solar access from a SunEye or SolarPathfinder device in Table~\ref{tab:compare_measured}.
-
+Next, the calculated monthly solar access for each system is compared with measured estimates of monthly solar access from a SunEye or SolarPathfinder device in Table~\ref{tab:compare_measured}.  The values are plotted in Fig.~\ref{fig:monthly_solar_access}, and show that all three tools match the site measurements adequately well, and general capture monthly loss trends.  Fig.~\ref{fig:monthly_solar_access_error} shows the error relative to on-site measurements.  Except for the Paradise system, all three tools are roughly within $\pm$5~\% on average of the on-site measurements.  We stress however that the on-site measurements cannot necessarily be interpreted as the ``truth'' value, since there is likely not insignificant uncertainty in the sky photographing procedure as well as the subsequent image and data processing.  Thus, the on-site measurement may well be considered to be just another modeled data point with an initial basis in the physical world.  
 
 \begin{table*}[h!]
 \begin{center}
@@ -406,7 +364,7 @@ Paradise* & 74 & 69 & 68 & 78 & 86 & 86 & 87 & 83 & 74 & 70 & 72 & 74 \\
 
 \section{Conclusions}
 
-Lorum ipsum conclusionem.
+This paper presents an assessment of 3D shading loss predictions from three popular PV modeling software packages, and compares their estimations with on-site measurements of solar access.  Although there are some notable differences in predicted hourly beam irradiance shading losses, particularly at the beginning and end of the day, in general, all three models predict reasonably similar shade loss profiles.  The same can be said of the monthly solar access predictions: for three of the four actual systems considered, all models compare within roughly $\pm$5~\% of on-side shade measurements.  Thus, for annual energy yield estimation, 3D CAD modeling of obstruction shading for both beam and diffuse irradiance components can reasonably predict monthly and annual losses without direct rooftop measurement.  That being the case, the demonstrated variability among tools should be investigated further so that the prediction errors can continue to be reduced for solar photovoltaic modeling approaches.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
