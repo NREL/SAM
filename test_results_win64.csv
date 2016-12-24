@@ -1,31 +1,24 @@
 TECHNOLOGY,FINANCING,ANNUAL_OUTPUT,LCOE_NOM,LPPA_NOM,MESSAGES
 Photovoltaic,None,OVERWRITE	
 Photovoltaic,None,fail,fail,fail
-Flat Plate PV,Residential,7481.71,7.45072,NA,; 
-Flat Plate PV,Commercial,371195,5.28479,NA,; 
+Flat Plate PV,Residential,7481.71,7.12977,NA,; 
+Flat Plate PV,Commercial,371195,5.23915,NA,; 
 Flat Plate PV,Third Party,7481.71,NA,NA,; 
-Flat Plate PV,Single Owner,37631744,9.82526,10.4892,; 
-Flat Plate PV,Leveraged Partnership Flip,37631744,9.96354,10.7878,; 
-Flat Plate PV,All Equity Partnership Flip,37631744,13.0012,15.2302,; 
-Flat Plate PV,Sale Leaseback,37631744,12.0723,12.9474,; 
-Flat Plate PV,LCOE Calculator,fail,fail,fail
-Flat Plate PV,None,fail,fail,fail
-PVWatts,Residential,6829.5,11.8866,NA,; 
-PVWatts,Commercial,341052,5.3844,NA,; 
-PVWatts,Third Party,OVERWRITE	
-PVWatts,Third Party,6829.5,NA,NA,Defaults file is likely out of date: PVWatts_Third Party  Variables: 0 loaded but not in configuration, 0 wrong type, defaults file has 166, config has 172  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later) ; 
-PVWatts,Single Owner,OVERWRITE	
-PVWatts,Single Owner,35113500,11.1059,11.8725,Defaults file is likely out of date: PVWatts_Single Owner  Variables: 0 loaded but not in configuration, 0 wrong type, defaults file has 399, config has 405  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later) ; 
-PVWatts,Leveraged Partnership Flip,OVERWRITE	
-PVWatts,Leveraged Partnership Flip,35113500,11.2371,12.0998,Defaults file is likely out of date: PVWatts_Leveraged Partnership Flip  Variables: 0 loaded but not in configuration, 0 wrong type, defaults file has 411, config has 417  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later) ; 
-PVWatts,All Equity Partnership Flip,OVERWRITE	
-PVWatts,All Equity Partnership Flip,35113500,14.6952,17.151,Defaults file is likely out of date: PVWatts_All Equity Partnership Flip  Variables: 0 loaded but not in configuration, 0 wrong type, defaults file has 401, config has 407  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later) ; 
-PVWatts,Sale Leaseback,OVERWRITE	
-PVWatts,Sale Leaseback,35113500,13.6818,14.691,Defaults file is likely out of date: PVWatts_Sale Leaseback  Variables: 0 loaded but not in configuration, 0 wrong type, defaults file has 394, config has 400  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later) ; 
-PVWatts,LCOE Calculator,OVERWRITE	
-PVWatts,LCOE Calculator,34804908,NA,NA,Defaults file is likely out of date: PVWatts_LCOE Calculator  Variables: 0 loaded but not in configuration, 0 wrong type, defaults file has 77, config has 83  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later) ; 
-PVWatts,None,OVERWRITE	
-PVWatts,None,6829.5,NA,NA,Defaults file is likely out of date: PVWatts_None  Variables: 0 loaded but not in configuration, 0 wrong type, defaults file has 48, config has 54  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later) ; 
+Flat Plate PV,Single Owner,37631744,8.52134,9.06052,; 
+Flat Plate PV,Leveraged Partnership Flip,37631744,8.63915,9.29518,; 
+Flat Plate PV,All Equity Partnership Flip,37631744,11.277,13.355,; 
+Flat Plate PV,Sale Leaseback,37631744,10.3886,11.1022,; 
+Flat Plate PV,LCOE Calculator,37631744,NA,NA,; 
+Flat Plate PV,None,7481.71,NA,NA,; 
+PVWatts,Residential,6829.5,10.7573,NA,; 
+PVWatts,Commercial,341052,4.66271,NA,; 
+PVWatts,Third Party,6829.5,NA,NA,; 
+PVWatts,Single Owner,35113500,9.13374,9.71168,; 
+PVWatts,Leveraged Partnership Flip,35113500,9.26001,9.96319,; 
+PVWatts,All Equity Partnership Flip,35113500,12.0874,14.3148,; 
+PVWatts,Sale Leaseback,35113500,11.1352,11.9001,; 
+PVWatts,LCOE Calculator,34804908,NA,NA,; 
+PVWatts,None,6829.5,NA,NA,; 
 High-X Concentrating PV,Single Owner,2.24502e+006,23.5317,25.5345,; 
 High-X Concentrating PV,Leveraged Partnership Flip,2.24502e+006,24.6185,27.0536,; 
 High-X Concentrating PV,All Equity Partnership Flip,2.24502e+006,30.5878,34.3018,; 
@@ -34,12 +27,12 @@ High-X Concentrating PV,LCOE Calculator,2.22613e+006,NA,NA,;
 High-X Concentrating PV,None,2.24502e+006,NA,NA,; 
 Wind Power,Residential,7843.43,17.6698,NA,; 
 Wind Power,Commercial,236186,8.98174,NA,; 
-Wind Power,Single Owner,256785664,4.25303,4.64335,; 
-Wind Power,Leveraged Partnership Flip,256785664,4.3044,4.85598,; 
-Wind Power,All Equity Partnership Flip,256785664,3.97001,2.82082,; 
-Wind Power,Sale Leaseback,256785664,4.75055,5.03315,; 
-Wind Power,LCOE Calculator,61590336,NA,NA,; 
-Wind Power,None,256785664,NA,NA,; 
+Wind Power,Single Owner,208765568,4.36149,4.76101,; 
+Wind Power,Leveraged Partnership Flip,208765568,4.41603,4.97991,; 
+Wind Power,All Equity Partnership Flip,208765568,4.14193,3.08744,; 
+Wind Power,Sale Leaseback,208765568,4.88603,5.18119,; 
+Wind Power,LCOE Calculator,61424832,NA,NA,; 
+Wind Power,None,208765568,NA,NA,; 
 Biopower,Commercial,70450568,8.96525,NA,; 
 Biopower,Single Owner,353982400,14.7978,15.1669,; 
 Biopower,Leveraged Partnership Flip,353982400,14.433,14.8663,; 
@@ -59,6 +52,7 @@ Solar Water Heating,LCOE Calculator,2407.42,NA,NA,;
 Solar Water Heating,None,2407.42,NA,NA,; 
 Generic System,Residential,6266.31,25.3692,NA,; 
 Generic System,Commercial,6266.31,14.4953,NA,; 
+Generic System,Third Party,4730.4,NA,NA,; 
 Generic System,Single Owner,366658560,31.5162,33.2042,; 
 Generic System,Leveraged Partnership Flip,366658560,31.6262,33.5559,; 
 Generic System,All Equity Partnership Flip,366658560,43.1637,53.2777,; 
@@ -110,13 +104,13 @@ Dish Stirling,LCOE Calculator,188473424,NA,NA,;
 Dish Stirling,None,188473424,NA,NA,; 
 Generic CSP System,Commercial,557343744,2.21192,NA,; Notice: time 0.00 { Generic solar model 2 }:\ The interpolation code must be 1 (interpolate) or 2 (nearest neighbor)The input value was 0, so it was reset to 1
 Generic CSP System,Single Owner,557343744,11.5881,12.5491,; Notice: time 0.00 { Generic solar model 2 }:\ The interpolation code must be 1 (interpolate) or 2 (nearest neighbor)The input value was 0, so it was reset to 1
-Generic CSP System,Leveraged Partnership Flip,557374976,11.6108,12.6456,; Notice: time 0.00 { Generic solar model 2 }:\ The interpolation code must be 1 (interpolate) or 2 (nearest neighbor)The input value was 0, so it was reset to 1
-Generic CSP System,All Equity Partnership Flip,557343744,16.646,20.4091,; Notice: time 0.00 { Generic solar model 2 }:\ The interpolation code must be 1 (interpolate) or 2 (nearest neighbor)The input value was 0, so it was reset to 1
+Generic CSP System,Leveraged Partnership Flip,557343744,11.6114,12.6463,; Notice: time 0.00 { Generic solar model 2 }:\ The interpolation code must be 1 (interpolate) or 2 (nearest neighbor)The input value was 0, so it was reset to 1
+Generic CSP System,All Equity Partnership Flip,557656128,16.637,20.3979,; Notice: time 0.00 { Generic solar model 2 }:\ The interpolation code must be 1 (interpolate) or 2 (nearest neighbor)The input value was 0, so it was reset to 1
 Generic CSP System,Sale Leaseback,557343744,16.3623,19.2072,; Notice: time 0.00 { Generic solar model 2 }:\ The interpolation code must be 1 (interpolate) or 2 (nearest neighbor)The input value was 0, so it was reset to 1
 Generic CSP System,LCOE Calculator,557343744,NA,NA,; Notice: time 0.00 { Generic solar model 2 }:\ The interpolation code must be 1 (interpolate) or 2 (nearest neighbor)The input value was 0, so it was reset to 1
 Generic CSP System,None,557343744,NA,NA,; Notice: time 0.00 { Generic solar model 2 }:\ The interpolation code must be 1 (interpolate) or 2 (nearest neighbor)The input value was 0, so it was reset to 1
 ISCC,Single Owner,fail,fail,fail
-Physical Trough IPH,None,NA,NA,NA,; 
-Physical Trough IPH,LCOH Calculator,1108194304,NA,NA,; 
+Physical Trough IPH,None,NA,NA,NA,; Notice: Piping geometry file\ \ Maximum fluid velocity: 3.00\ Minimum fluid velocity: 2.00\ \ This field design does not include runners.\ \ Loop No. | Inner Diameter [m] | Inner Diameter [in] | Identification\ --------------------------------------------------\      1   |    0.1082    |    4.2600     |   1\      2   |    0.1082    |    4.2600     |   1\ \ ----------------------------------------------\ Plant HTF volume information:\ ----------------------------------------------\ Cold header pipe volume:   9.8116e-001 m3\ Hot header pipe volume:    9.8116e-001 m3\ Volume per loop:           2.1730e+000 m3\ Total volume in all loops: 6.5189e+000 m3\ Total solar field volume:  8.4812e+000 m3\ Pump / SGS system volume:  1.1066e+001 m3\ ---------------------------\ Total plant HTF volume:    1.9547e+001 m3\ 
+Physical Trough IPH,LCOH Calculator,11084065,NA,NA,; Notice: Piping geometry file\ \ Maximum fluid velocity: 3.00\ Minimum fluid velocity: 2.00\ \ This field design does not include runners.\ \ Loop No. | Inner Diameter [m] | Inner Diameter [in] | Identification\ --------------------------------------------------\      1   |    0.1082    |    4.2600     |   1\      2   |    0.1082    |    4.2600     |   1\ \ ----------------------------------------------\ Plant HTF volume information:\ ----------------------------------------------\ Cold header pipe volume:   9.8116e-001 m3\ Hot header pipe volume:    9.8116e-001 m3\ Volume per loop:           2.1730e+000 m3\ Total volume in all loops: 6.5189e+000 m3\ Total solar field volume:  8.4812e+000 m3\ Pump / SGS system volume:  1.1066e+001 m3\ ---------------------------\ Total plant HTF volume:    1.9547e+001 m3\ 
 DSGL IPH,None,NA,NA,NA,; 
-DSGL IPH,LCOH Calculator,592908096,NA,NA,; 
+DSGL IPH,LCOH Calculator,9029849,NA,NA,; 
