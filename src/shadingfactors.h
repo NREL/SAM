@@ -28,7 +28,8 @@ struct ShadingInputData
 	// for more than one string and PV only
 //	int string_option; // 0=shading db,1=average,2=max,3=min
 //	int string_option; // 0=shading db with Tc,1=shading db,2=average,3=max,4=min
-	int string_option; // 0=shading db,1=average,2=max,3=min
+//	int string_option; // 0=shading db,1=average,2=max,3=min
+	int string_option; // 0=shading db,1=average
 	bool en_timestep;
 	matrix_t<float> timestep;
 
@@ -125,8 +126,10 @@ public:
 	matrix_t<float> GetData() const { return m_data; }
 
 
-	void SetStringCaption(const wxString &cap);
-	wxString GetStringCaption();
+//	void SetStringCaption(const wxString &cap);
+//	wxString GetStringCaption();
+	void SetDBCaption(const wxString &cap);
+	wxString GetDBCaption();
 
 	void SetColCaption(const wxString &cap);
 	wxString GetColCaption();
@@ -145,8 +148,10 @@ public:
 	void SetDefaultValue(float &default_val) { m_default_val=default_val; }
 	float GetDefaultValue() { return m_default_val; }
 
-	void SetStringOption(int &string_option);
-	int GetStringOption();
+//	void SetStringOption(int &string_option);
+//	int GetStringOption();
+	void SetDBOption(int &db_option);
+	int GetDBOption();
 
 private:
 	void UpdateNumberColumns(size_t &new_cols);
@@ -162,11 +167,11 @@ private:
 	wxExtGridCtrl *m_grid;
 	wxShadingFactorsTable *m_grid_data;
 	wxStaticText *m_caption_col;
-	wxStaticText *m_caption_string;
+//	wxStaticText *m_caption_string;
 	wxChoice *m_choice_col;
 	wxStaticText *m_caption_timestep;
 	wxChoice *m_choice_timestep;
-	wxChoice *m_choice_string_option;
+//	wxChoice *m_choice_string_option;
 	wxButton *m_btn_copy;
 	wxButton *m_btn_paste;
 	wxButton *m_btn_import;
@@ -175,7 +180,9 @@ private:
 
 	wxArrayString m_minute_arystrvals;
 	wxArrayString m_col_arystrvals;
-	wxArrayString m_string_arystrvals;
+//	wxArrayString m_string_arystrvals;
+	wxCheckBox *m_chk_shading_db;
+	wxStaticText *m_caption_shading_db;
 
 	size_t m_num_minutes;
 
