@@ -269,7 +269,8 @@ public:
 		m_timestep->SetInitialSize(wxScaleSize(900, 300));
 		m_timestep->SetMinuteCaption("Time step in minutes:");
 		m_timestep->SetColCaption(wxString("Strings") + wxString((!descText.IsEmpty() ? " in " : "")) + descText + wxString((!descText.IsEmpty() ? ":" : "")));
-		m_timestep->SetStringCaption(wxString("Method for converting string losses to subarray:"));
+//		m_timestep->SetStringCaption(wxString("Method for converting string losses to subarray:"));
+		m_timestep->SetDBCaption(wxString("Use shading database:"));
 
 		int num_cols = 8;
 		matrix_t<float> ts_data(8760, num_cols, 0);
@@ -448,7 +449,8 @@ public:
 			m_timestep->SetNumMinutes(nminutes);
 			stat += "Updated timestep beam shading losses.\n";
 			int string_option = sh.string_option;
-			m_timestep->SetStringOption(string_option);
+			m_timestep->SetDBOption(string_option);
+//			m_timestep->SetStringOption(string_option);
 		}
 
 		if ( all || sh.en_mxh )
@@ -483,7 +485,9 @@ public:
 		sh.en_timestep = m_enableTimestep->IsChecked();
 		m_timestep->GetData(sh.timestep);
 
-		sh.string_option = m_timestep->GetStringOption();
+//		sh.string_option = m_timestep->GetStringOption();
+// keep compatibility with previous version shading db = 0
+		if (m_timestep->GetDBOption() != 0 )
 
 		sh.en_mxh = m_enableMxH->IsChecked();
 		sh.mxh.copy( m_mxh->GetData() );
@@ -1121,13 +1125,15 @@ bool ImportSolPathMonthByHour( ShadingInputData &dat, wxWindow *parent )
 
 DEFINE_EVENT_TYPE(wxEVT_wxShadingFactorsCtrl_CHANGE)
 
-enum { ISFC_CHOICECOL = wxID_HIGHEST + 857, ISFC_CHOICEMINUTE, ISFC_CHOICESTRING, ISFC_GRID, ISFC_COPY, ISFC_PASTE, ISFC_IMPORT, ISFC_EXPORT };
+//enum { ISFC_CHOICECOL = wxID_HIGHEST + 857, ISFC_CHOICEMINUTE, ISFC_CHOICESTRING, ISFC_GRID, ISFC_COPY, ISFC_PASTE, ISFC_IMPORT, ISFC_EXPORT };
+enum { ISFC_CHOICECOL = wxID_HIGHEST + 857, ISFC_CHOICEMINUTE, ISFC_CHKDB, ISFC_GRID, ISFC_COPY, ISFC_PASTE, ISFC_IMPORT, ISFC_EXPORT };
 
 BEGIN_EVENT_TABLE(wxShadingFactorsCtrl, wxPanel)
 	EVT_GRID_CMD_CELL_CHANGED(ISFC_GRID, wxShadingFactorsCtrl::OnCellChange)
 	EVT_CHOICE(ISFC_CHOICECOL, wxShadingFactorsCtrl::OnChoiceCol)
 	EVT_CHOICE(ISFC_CHOICEMINUTE, wxShadingFactorsCtrl::OnChoiceMinute)
 	EVT_BUTTON(ISFC_COPY, wxShadingFactorsCtrl::OnCommand)
+	EVT_CHECKBOX(ISFC_CHKDB, wxShadingFactorsCtrl::OnCommand)
 	EVT_BUTTON(ISFC_PASTE, wxShadingFactorsCtrl::OnCommand)
 	EVT_BUTTON(ISFC_EXPORT, wxShadingFactorsCtrl::OnCommand)
 	EVT_BUTTON(ISFC_IMPORT, wxShadingFactorsCtrl::OnCommand)
@@ -1146,7 +1152,7 @@ wxShadingFactorsCtrl::wxShadingFactorsCtrl(wxWindow *parent, int id,
 	m_show_db_options = show_db_options;
 	m_col_arystrvals.Clear();
 	m_minute_arystrvals.Clear();
-	m_string_arystrvals.Clear();
+	//m_string_arystrvals.Clear();
 
 	m_grid = new wxExtGridCtrl(this, ISFC_GRID);
 	m_grid->CreateGrid(8760, 8);
@@ -1159,19 +1165,24 @@ wxShadingFactorsCtrl::wxShadingFactorsCtrl(wxWindow *parent, int id,
 	m_grid->SetRowLabelAlignment(wxALIGN_LEFT, wxALIGN_CENTER);
 
 
-	m_string_arystrvals.push_back("Database lookup");
-	m_string_arystrvals.push_back("Average of strings");
-	m_string_arystrvals.push_back("Maximum of strings");
-	m_string_arystrvals.push_back("Minimum of strings");
-	m_choice_string_option = new wxChoice(this, ISFC_CHOICESTRING, wxDefaultPosition, wxDefaultSize, m_string_arystrvals);
-	m_choice_string_option->SetBackgroundColour(*wxWHITE);
+//	m_string_arystrvals.push_back("Database lookup");
+//	m_string_arystrvals.push_back("Average of strings");
+//	m_string_arystrvals.push_back("Maximum of strings");
+//	m_string_arystrvals.push_back("Minimum of strings");
+//	m_choice_string_option = new wxChoice(this, ISFC_CHOICESTRING, wxDefaultPosition, wxDefaultSize, m_string_arystrvals);
+//	m_choice_string_option->SetBackgroundColour(*wxWHITE);
 
 
 	m_caption_col = new wxStaticText(this, wxID_ANY, "");
 	m_caption_col->SetFont(*wxNORMAL_FONT);
 
-	m_caption_string = new wxStaticText(this, wxID_ANY, "");
-	m_caption_string->SetFont(*wxNORMAL_FONT);
+	m_caption_shading_db = new wxStaticText(this, wxID_ANY, "");
+	m_caption_shading_db->SetFont(*wxNORMAL_FONT);
+
+	m_chk_shading_db = new wxCheckBox(this, ISFC_CHKDB, "");
+
+//	m_caption_string = new wxStaticText(this, wxID_ANY, "");
+//	m_caption_string->SetFont(*wxNORMAL_FONT);
 
 	m_col_arystrvals.push_back("1");
 	m_col_arystrvals.push_back("2");
@@ -1208,8 +1219,8 @@ wxShadingFactorsCtrl::wxShadingFactorsCtrl(wxWindow *parent, int id,
 	{
 		m_caption_col->Show(false);
 		m_choice_col->Show(false);
-		m_caption_string->Show(false);
-		m_choice_string_option->Show(false);
+//		m_caption_string->Show(false);
+//		m_choice_string_option->Show(false);
 	}
 
 
@@ -1219,14 +1230,17 @@ wxShadingFactorsCtrl::wxShadingFactorsCtrl(wxWindow *parent, int id,
 		wxBoxSizer *v_tb_sizer = new wxBoxSizer(wxVERTICAL);
 		v_tb_sizer->Add(m_caption_timestep, 0, wxALL | wxEXPAND, 3);
 		v_tb_sizer->Add(m_choice_timestep, 0, wxALL | wxEXPAND, 3);
+		v_tb_sizer->AddSpacer(5);
+		v_tb_sizer->Add(m_caption_shading_db, 0, wxALL | wxEXPAND, 3);
+		v_tb_sizer->Add(m_chk_shading_db, 0, wxALL | wxEXPAND, 3);
 		if (show_db_options)
 		{
 			v_tb_sizer->AddSpacer(5);
 			v_tb_sizer->Add(m_caption_col, 0, wxALL | wxEXPAND, 3);
 			v_tb_sizer->Add(m_choice_col, 0, wxALL | wxEXPAND, 3);
-			v_tb_sizer->AddSpacer(5);
-			v_tb_sizer->Add(m_caption_string, 0, wxALL | wxEXPAND, 3);
-			v_tb_sizer->Add(m_choice_string_option, 0, wxALL | wxEXPAND, 3);
+			//			v_tb_sizer->AddSpacer(5);
+//			v_tb_sizer->Add(m_caption_string, 0, wxALL | wxEXPAND, 3);
+//			v_tb_sizer->Add(m_choice_string_option, 0, wxALL | wxEXPAND, 3);
 		}
 
 		v_tb_sizer->AddSpacer(5);
@@ -1248,14 +1262,17 @@ wxShadingFactorsCtrl::wxShadingFactorsCtrl(wxWindow *parent, int id,
 		wxBoxSizer *h_tb_sizer = new wxBoxSizer(wxHORIZONTAL);
 		h_tb_sizer->Add(m_caption_timestep, 0, wxALL | wxALIGN_CENTER_VERTICAL, 3);
 		h_tb_sizer->Add(m_choice_timestep, 0, wxALL | wxALIGN_CENTER_VERTICAL, 3);
+		h_tb_sizer->AddSpacer(5);
+		h_tb_sizer->Add(m_caption_shading_db, 0, wxALL | wxALIGN_CENTER_VERTICAL, 3);
+		h_tb_sizer->Add(m_chk_shading_db, 0, wxALL | wxALIGN_CENTER_VERTICAL, 3);
 		if (show_db_options)
 		{
 			h_tb_sizer->AddSpacer(5);
 			h_tb_sizer->Add(m_caption_col, 0, wxALL | wxALIGN_CENTER_VERTICAL, 3);
 			h_tb_sizer->Add(m_choice_col, 0, wxALL | wxALIGN_CENTER_VERTICAL, 3);
-			h_tb_sizer->AddSpacer(5);
-			h_tb_sizer->Add(m_caption_string, 0, wxALL | wxALIGN_CENTER_VERTICAL, 3);
-			h_tb_sizer->Add(m_choice_string_option, 0, wxALL | wxALIGN_CENTER_VERTICAL, 3);
+//			h_tb_sizer->AddSpacer(5);
+//			h_tb_sizer->Add(m_caption_string, 0, wxALL | wxALIGN_CENTER_VERTICAL, 3);
+//			h_tb_sizer->Add(m_choice_string_option, 0, wxALL | wxALIGN_CENTER_VERTICAL, 3);
 		}
 		/*
 		h_tb_sizer->AddSpacer(5);
@@ -1531,7 +1548,7 @@ wxString wxShadingFactorsCtrl::GetColCaption()
 {
 	return m_caption_col->GetLabel();
 }
-
+/*
 void wxShadingFactorsCtrl::SetStringCaption(const wxString &cap)
 {
 	m_caption_string->SetLabel(cap);
@@ -1542,7 +1559,7 @@ wxString wxShadingFactorsCtrl::GetStringCaption()
 {
 	return m_caption_string->GetLabel();
 }
-
+*/
 
 void wxShadingFactorsCtrl::SetMinuteCaption(const wxString &cap)
 {
@@ -1553,6 +1570,17 @@ void wxShadingFactorsCtrl::SetMinuteCaption(const wxString &cap)
 wxString wxShadingFactorsCtrl::GetMinuteCaption()
 {
 	return m_caption_timestep->GetLabel();
+}
+
+void wxShadingFactorsCtrl::SetDBCaption(const wxString &cap)
+{
+	m_caption_shading_db->SetLabel(cap);
+	this->Layout();
+}
+
+wxString wxShadingFactorsCtrl::GetDBCaption()
+{
+	return m_caption_shading_db->GetLabel();
 }
 
 
@@ -1571,6 +1599,26 @@ void wxShadingFactorsCtrl::SetNumCols(size_t &cols)
 		m_choice_col->SetSelection(ndx);
 	UpdateNumberColumns(cols);
 }
+
+void wxShadingFactorsCtrl::SetDBOption(int &db_option)
+{
+	// keep compatibility with shading database = 0 choice
+	if (db_option != 0)
+		m_chk_shading_db->SetValue(false);
+	else
+		m_chk_shading_db->SetValue(true); // default
+}
+
+int wxShadingFactorsCtrl::GetDBOption()
+{
+	// keep compatibility with shading database = 0 choice
+	if (m_chk_shading_db->GetValue())
+		return 0;
+	else
+		return 1; // average
+}
+
+/*
 void wxShadingFactorsCtrl::SetStringOption(int &string_option)
 {
 	if (string_option >= 0 && string_option < (int)m_string_arystrvals.Count())
@@ -1586,7 +1634,7 @@ int wxShadingFactorsCtrl::GetStringOption()
 	else
 		return -1; // no string options
 }
-
+*/
 
 wxShadingFactorsTable::wxShadingFactorsTable(matrix_t<float> *da, float _def_val, const wxString &_label)
 {
