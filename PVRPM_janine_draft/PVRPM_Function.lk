@@ -1,0 +1,637 @@
+//*************************************************************************************
+//PV Reliability Performance Model -- DRAFT --
+//Janine Freeman, NREL
+//27 December 2016
+//*************************************************************************************
+
+// TO DO-----------------------------------------------------------------------------------
+/*
+	NEED TO CREATE A MEGA-SCRIPT TO RUN MULTIPLE SIMULATIONS!! AND CREATE GRAPHS!!
+	DC and AC lifetime losses need to be added to loss tree
+	Add component-level availability output graph vs time (using Geoff's equation)
+	WHEN AN INVERTER FAILS ROUTINELY, IT NEEDS TO NOT BE COMPLETELY RESET- which ones do reset it?
+	Basic failure rates as an output (failures per million hours)
+	Make macro UI inputs
+	Which inputs are ones people should change, and which will the code set automatically (example: tracking)
+	details in the documentation- what comes from SAM, what goes to SAM
+	in documentation- if you want to model microinverters, here's how you would set it up
+	make a note about degradation!! confusing to have an input that's zero but then the degradation get assigned as the daily DC loss
+		-also add a check for non-zero degradation in the user interface if modules can degrade- we zero it
+	are there further speed increases I can make?
+	make sure to multi-thread the stochastic piece
+	add number of failures per component per year- in a csv
+*/
+
+
+//*************************************************************************************
+// SUPPORTING FUNCTIONS
+//*************************************************************************************
+/* 	LHS performs Latin Hypercube Sampling given a distribution type, distribution parameters,
+	and a number of samples. The name parameter allows a more helpful error message.
+	Returns an array of the calculated samples.*/
+function LHS(name, distribution_type, parameters, num_samples)
+{
+	/*LHS library included in SAM requires mean and error factor inputs into lognormal function.
+	Lognormal-n function requires mean and std of the UNDERLYING normal distribution.
+	However, most users will have mean and std of actual distribution. 
+	Therefore, must translate from mean and std to mean and error factor.
+	See translation equations at https://dakota.sandia.gov/content/latest-reference-manual, Keywords>Variables>lognormal_uncertain */
+	if (distribution_type == 'lognormal')
+	{
+		mu = parameters[0]; //mean
+		sigma = parameters[1]; //std
+		zeta = sqrt(log(pow(sigma,2) / pow(mu,2) + 1)); //log is the natural log, log10 is the base-10 log function
+		e = 2.71828;
+		epsilon = pow(e,(1.645*zeta)); //error factor
+		parameters[1] = epsilon; //temporarily overwrite the second parameter
+	}
+	if (num_samples > 20000)
+		num_samples = 20000; //LHS can only run so many samples at a time
+	lhs = lhs_create();
+	lhs_dist(lhs, 'x', distribution_type, parameters);
+	if (!lhs_run(lhs, num_samples))
+	{
+		msgbox('Latin Hypercube Sampling failed for: ' + name + ': ' + lhs_error(lhs));
+		exit;
+	}
+	result = lhs_vector(lhs, 'x');
+	lhs_free(lhs);
+	if (distribution_type == 'lognormal') 
+		parameters[1] = sigma; //set second parameter back to std before exiting the function
+	return result;
+}
+
+//*************************************************************************************
+// COMPONENT FUNCTIONS
+//*************************************************************************************
+
+//INITIALIZATION------------------------------------------------------------------------------
+// Used to set up a component for the first time or to renew the values when the component is repaired
+// Initializes a single component "component_idx" in the "component_vector"
+// "Component_meta" stores the failure and repair information for that type of component
+// If initializing a component for the first time, "bool_time_is_zero" is true
+// If initializing due to a repair, "bool_time_is_zero" is false
+
+function initialize_component(component_meta, component_vector, component_idx, bool_time_is_zero)
+{
+	// Component state
+	component_vector[component_idx].state = 1; //component is operational
+	
+	// Number of failure modes (needed to create failures by type)
+	num_failure_modes = #component_meta.failure;
+	
+	// Degradation gets set (reset) to zero when a component is replaced
+	if (component_meta.degradation.can_degrade)
+		component_vector[component_idx].days_of_degradation = 0;
+	
+	if (bool_time_is_zero)
+	{
+		// cumulative failures and OOW failures initialized to zero at time zero only
+		component_vector[component_idx].cumulative_failures = 0;
+		component_vector[component_idx].cumulative_oow_failures = 0;
+		for (i=0; i < num_failure_modes; i++)
+			component_vector[component_idx].failures_by_type[i] = 0;
+		// degradation
+		if (component_meta.degradation.can_degrade)
+			component_vector[component_idx].degradation_factor = 1;
+		// warranty
+		if (component_meta.warranty.has_warranty)
+			component_vector[component_idx].time_left_on_warranty = component_meta.warranty.days;
+	}
+	
+	// If the component isn't allowed to fail, then setting failure and replacement times isn't necessary
+	if (!component_meta.can_fail)
+		return;
+	
+	// Loop through all failure modes to determine failure times
+	for (j = 0; j < num_failure_modes; j++)
+	{
+		//check the vector of failure times for this failure mode
+		if (component_meta.failure[j].times == null || #component_meta.failure[j].times <= 0) //null on initialization of very first component, less than zero when you've used up the pre-calculated vector
+			component_meta.failure[j].times = LHS(component_meta.name + 'failure mode '+ j, component_meta.failure[j].distribution, component_meta.failure[j].parameters, (#component_vector * 10));
+		//check if this failure mode is a defective mode
+		if (component_meta.failure[j].fraction != null) //only defective failure modes have a fraction associated with them
+			component_vector[component_idx].defective = rand() < component_meta.failure[j].fraction; //randomly assign a given fraction of components to be defective
+		//assign a failure time for this failure mode unless it's a defective failure mode and the component is not defective
+		if (component_meta.failure[j].fraction == null || component_vector[component_idx].defective)
+		{
+			possible_failure_times[j] = component_meta.failure[j].times[0]; //assign a failure time
+			component_meta.failure[j].times -@ 0; //remove the failure time that was just used
+		}
+		else
+			possible_failure_times[j] = nan(); //the min function won't return a nan
+	}
+	// Because all failure modes are hard failures (no partial failures), pick whichever failure mode will occur first
+	component_vector[component_idx].time_to_failure = min(possible_failure_times);
+	component_vector[component_idx].failure_type = possible_failure_times ?@ component_vector[component_idx].time_to_failure;
+
+	// Time to replacement or repair in case of failure
+	// first, figure out which type of repair we're using for this failure
+	repair_idx = 0; //if only one repair distribution is listed, then each failure mode uses the same repair distribution with index 0
+	if(#component_meta.repair != 1) //if more than one repair mode is listed, each failure mode has its own repair distribution
+		repair_idx = component_vector[component_idx].failure_type; 
+	// check that the repair index won't be out of bounds
+	if (repair_idx + 1 > #component_meta.repair) //the model was erroneously set up with fewer repair modes than failure modes
+	{
+		msgbox('Error: ' + component_meta.name +': there are more failure types than repair modes. Please fix your inputs and try again.');
+		exit;
+	}
+	if (component_meta.repair[repair_idx].times == null || #component_meta.repair[repair_idx].times <= 0) //null on initialization of very first component, less than zero when you've used up the array
+		component_meta.repair[repair_idx].times = LHS(component_meta.name + 'repair mode '+ repair_idx, component_meta.repair[repair_idx].distribution, component_meta.repair[repair_idx].parameters, (#component_vector * 10));
+	component_vector[component_idx].time_to_repair = component_meta.repair[repair_idx].times[0];
+	component_meta.repair[repair_idx].times -@ 0; //remove the repair time that was just used
+	
+	// Time left on warranty
+	if (component_meta.warranty.has_warranty)
+		if (component_vector[component_idx].time_left_on_warranty <= 0) //new warranty on components replaced OOW
+			component_vector[component_idx].time_left_on_warranty = component_meta.warranty.days;
+}
+
+//COMPONENT FAILURE----------------------------------------------------------------------------------------
+// Used to change a component's state from operational to failed
+// Changes "component_idx" in the array "component" state to failed and increments failures
+// Checks current "day" against warranty if bool_warranty is true
+
+function component_failure(component_vector, component_idx, day, bool_warranty)
+{
+	component_vector[component_idx].state = 0;
+	component_vector[component_idx].time_to_failure = 0;
+	component_vector[component_idx].cumulative_failures++;
+	component_vector[component_idx].failures_by_type[component_vector[component_idx].failure_type]++;
+	if (bool_warranty)
+		if (component_vector[component_idx].time_left_on_warranty <= 0)
+			component_vector[component_idx].cumulative_oow_failures++;
+}
+
+//*************************************************************************************
+// SYSTEM FUNCTIONS
+//*************************************************************************************
+
+//SYSTEM INITIALIZATION---------------------------------------------------------------------------------
+function initialize()
+{
+	// Create module structures
+	for (m = 0; m < module_meta.number; m++)
+		initialize_component(module_meta, modules, m, true);
+		
+	// Create string structures
+	for (s = 0; s < string_meta.number; s++)
+		initialize_component(string_meta, strings, s, true);
+		
+	// Create combiner structures
+	for (c = 0; c < combiner_meta.number; c++)
+		initialize_component(combiner_meta, combiners, c, true);
+		
+	// Create inverter structures
+	for (i = 0; i < inverter_meta.number; i++)
+		initialize_component(inverter_meta, inverters, i, true);
+	
+	// Create AC disconnect structures
+	for (d = 0; d < disconnect_meta.number; d++)
+		initialize_component(disconnect_meta, disconnects, d, true);
+	
+	// Create transformer structures
+	for (t = 0; t < transformer_meta.number; t++)
+		initialize_component(transformer_meta, transformers, t, true);
+	
+	// Create grid structure
+	initialize_component(grid_meta, grid, 0, true);
+	
+	// Create tracker structures
+	if (is_tracking_system)
+	{
+		for (tr = 0; tr < tracker_meta.number; tr++)
+			initialize_component(tracker_meta, trackers, tr, true);
+	}
+}
+
+// DC POWER AVAILABILITY CALCULATION FUNCTION------------------------------------------------------------------------
+function whats_my_dc_availability() 
+{
+	//note that here, "operational modules" means modules whose power is REACHING the inverter, 
+	//regardless of whether the module itself is failed or not
+	operational_modules = 0;
+	
+	for (c=0; c < combiner_meta.number; c++)
+	{
+		if (combiners[c].state == 0)
+			continue; //if the combiner out, none of the modules on that combiner reach the inverter
+		for (s=0; s < num_strings_per_combiner; s++)
+		{
+			if (strings[s].state == 0)
+				continue; //if string is out, none of the modules on that combiner reach the inverter
+			for (m=0; m < num_modules_per_string; m++)
+			{
+				// what module index are we at? 
+				/* 
+				number of combiners we've already looped through * total number modules per combiner +
+				number of strings on this combiner we've already looped through * modules per string +
+				number of modules that we've passed on this string
+				*/
+				// because c, s, and m are 0-indexed, they represent how many of each component have been completed by this point
+				module_index = c * (num_strings_per_combiner * num_modules_per_string) + s * num_modules_per_string + m;
+				if (module_index > #modules - 1)
+				{
+					msgbox('Error, calculated module index > number of modules in the dc availability function');
+					exit;
+				}
+				operational_modules += modules[module_index].state; //1 if operating, 0 if failed
+			}
+		}
+	}
+		
+	return operational_modules / module_meta.number;
+}
+
+// AC POWER AVAILABILITY CALCULATION FUNCTION--------------------------------------------------------------------------
+function whats_my_ac_availability()
+{
+	//grid is down
+	if (grid[0].state == 0)
+		return 0;
+	
+	operational_inverters = 0;
+	for (t=0; t < transformer_meta.number; t++)
+	{
+		if (transformers[t].state == 0) 
+			continue; //if the transformer is down, none of those inverters can reach grid
+		for (i=0; i < num_inverters_per_transformer; i++)
+		{
+			// because t and i are 0-indexed, they represent how many of each component have been completed by this point
+			inverter_index = t * num_inverters_per_transformer + i;
+			if (inverter_index > #inverters - 1)
+			{
+				msgbox('Error, calculated inverter index > number of inverters in the ac availability function');
+				exit;
+			}
+			operational_inverters += (inverters[inverter_index].state && disconnects[inverter_index].state ); //1 if both are operating, 0 if either or both is failed
+		}
+	}
+	return operational_inverters / inverter_meta.number;
+}
+
+// FLEETWIDE DEGRADATION CALCULATION------------------------------------------------------------------------
+//Degradation is only averaged for operational modules. 
+//Otherwise, the power production hit from degradation and from the module failure would be unfairly double-counted in production estimates.
+function whats_my_degradation()
+{
+	fleet_degradation_sum = 0;
+	number_of_operational_modules = 0;
+	for (m=0; m < module_meta.number; m++)
+	{
+		if (modules[m].state == 1)
+		{ 
+			fleet_degradation_sum += modules[m].degradation_factor;
+			number_of_operational_modules++;
+		}
+	}
+	return fleet_degradation_sum / number_of_operational_modules;
+}
+
+// TRACKER LOSS FACTOR CALCULATION-------------------------------------------------------------------------------
+//Input is the day number in the system lifetime
+//Returns a factor (0-1) reflecting the percentage of power lost due to malfunctioning trackers
+function whats_my_tracker_power_loss_factor(day)
+{
+	// total number of working trackers
+	num_trackers_operational = 0;
+	for (tr=0; tr < tracker_meta.number; tr++)
+		if (trackers[tr].state == 1)
+			num_trackers_operational++;
+	fraction_operational = num_trackers_operational / tracker_meta.number;
+	tracker_availability[day] = fraction_operational;
+	day_of_year = mod(day, 365); //0-indexed, but so are the daily_tracker_coeffs
+	adjusted_factor = 1;
+	if (tracker_meta.can_fail)
+	{
+		full_factor = daily_tracker_coeffs[day_of_year];
+		adjusted_factor = full_factor + fraction_operational* (1 - full_factor);
+	}
+
+	return adjusted_factor;
+}
+
+// INCREMENT TIMESTEP FUNCTION------------------------------------------------------------------------------
+//increments all components in component_vector of type component_meta on a given day
+//returns the value of component_repair_costs, which is how much repairs for this component cost on this day
+function step_in_time(component_meta, component_vector, day, component_repair_costs)
+{
+	//initialize repair costs
+	component_repair_costs[day] = 0;
+	
+	//only loop through the component vector if the component can either fail or degrade to save computation time
+	if (component_meta.can_fail || component_meta.degradation.can_degrade)
+	{
+		for (i=0; i < component_meta.number; i++)
+		{
+		
+			if (component_meta.can_fail)
+			{
+				//component is operational
+				if (component_vector[i].state == 1)
+				{
+					component_vector[i].time_to_failure--;
+					//component has just failed and failure is allowed for this type of component
+					if (component_vector[i].time_to_failure <= 0 && component_meta.can_fail == true)
+						component_failure(component_vector, i, day, component_meta.warranty.has_warranty);
+				}
+				
+				//component is currently failed
+				else
+				{
+					component_vector[i].time_to_repair--;
+					//component is repaired
+					if (component_vector[i].time_to_repair <= 0 && component_meta.can_repair) //only repair the item if repairs are enabled
+					{
+						//add the cost to repair the component
+						failure_index = component_vector[i].failure_type; 
+						component_repair_cost = component_meta.failure[failure_index].cost + labor_rate * component_meta.failure[failure_index].labor_time;
+						if (component_meta.warranty.has_warranty)
+						{
+							if(component_vector[i].time_left_on_warranty <= 0) //only add repair costs if not replaced under warranty
+								component_repair_costs[day] += component_repair_cost;
+						}
+						else
+							component_repair_costs[day] += component_repair_cost;
+						//initialize a new module without resetting cumulative failures
+						initialize_component(component_meta, component_vector, i, false); 			
+					}
+				}
+				
+				//warranty
+				if (component_meta.warranty.has_warranty)
+					component_vector[i].time_left_on_warranty--;
+			}
+
+			//degradation can still happen even if component can't fail
+			if (component_meta.degradation.can_degrade)
+			{
+				component_vector[i].degradation_factor = current_degradation_rate(component_meta.degradation.rate / 365, component_vector[i].days_of_degradation);
+				component_vector[i].days_of_degradation++;
+			}
+		} //end of for loop
+	} //end of if statement
+	
+}
+
+
+//**********************************************************************************************************************************************************************
+// MAIN SCRIPT
+//**********************************************************************************************************************************************************************
+function run_system_realization()
+{
+
+	//*************************************************************************************
+	// DATA CONTAINERS
+	//*************************************************************************************
+
+	// INDIVIDUAL COMPONENT DATA CONTAINER-------------------------------------------------------
+	// contains current timestep data for a single component in the system
+	/*
+	state = operational (1) or failed (0)
+	defective = flag for whether or not this component has a defect.
+		If true, then the component is also eligible for the defective failure mode
+	time_to_failure = number of days left until the component fails
+	failure_type = index of the type of failure that time_to_failure represents (failure[i] in component meta)
+	time_to_repair = number of days from onset of failure until component is repaired
+	time_left_on_warranty = number of days left on warranty for that item, if applicable
+	cumulative_failures = total number of failures for that component
+	cumulative_oow_failures = total number of failures out of warranty for that component if applicable
+	failures_by_type[i] = total number of failures corresponding to failure mode i for that component
+	defective_failures = total number of failures due to a defective component
+	MODULES ONLY:
+	degradation_factor = 1 - percentage the component has degraded at this time (ex. a 2% degraded component would have a degradation factor of 0.98)
+	*/
+
+	// REPAIR COSTS DATA CONTAINER--------------------------------------------------------------------------
+	/*
+		modules
+		strings
+		dc combiners
+		inverters
+		ac disconnects
+		transformers
+	*/
+
+	//SET UP COMPONENT DATA CONTAINERS----------------------------------------------------------------------
+	global modules = alloc(num_modules);
+	global strings = alloc(num_strings);
+	global combiners = alloc(num_combiners);
+	global inverters = alloc(num_inverters);
+	global disconnects = alloc(num_disconnects);
+	global transformers = alloc(num_transformers);
+	global grid = alloc(1);
+	global costs = null;
+		
+	// Allocate outputs----------------------------------------------------------------------------------
+	//costs
+	costs.module = alloc(system_lifetime_yrs * 365);
+	costs.string = alloc(system_lifetime_yrs * 365);
+	costs.combiner = alloc(system_lifetime_yrs * 365);
+	costs.inverter = alloc(system_lifetime_yrs * 365);
+	costs.disconnect = alloc(system_lifetime_yrs * 365);
+	costs.transformer = alloc(system_lifetime_yrs * 365);
+	costs.grid = alloc(system_lifetime_yrs * 365);
+	if (is_tracking_system)
+		costs.tracker = alloc(system_lifetime_yrs * 365);
+	//time variables
+	module_degradation_factor = null;
+	if (is_tracking_system)
+	{
+		tracker_power_loss_factor = null;
+		global tracker_availability = null;
+	}
+	dc_power_availability = ac_power_availability = null;
+	labor_rate = 0;
+
+	//timestep 0
+	//pb = progressbar( {title='Simulation progress', message='Initializing system',cancelbutton=true, time=true, max=system_lifetime_yrs * 365});
+	initialize();
+	module_degradation_factor[0] = whats_my_degradation();
+	dc_power_availability[0] = whats_my_dc_availability();
+	ac_power_availability[0] = whats_my_ac_availability();
+	costs.module[0] = costs.string[0] = costs.combiner[0] = 0; //no costs are accrued at time zero because nothing has changed state
+	costs.inverter[0] = costs.disconnect[0] = costs.transformer[0] = 0;
+	costs.grid[0] = 0;
+	if (is_tracking_system)
+	{
+		costs.tracker[0] = 0;
+		tracker_power_loss_factor[0] = 1;
+		tracker_availability[0] = 1;
+	}
+
+	//rest of system lifetime
+	for (day = 1; day < system_lifetime_yrs * 365; day++)
+	{	
+		/*was_canceled = progressbar(pb, {value=day, message='Running reliability model...'});
+		if (was_canceled)
+		{
+			outln('Simulation canceled by user.');
+			progressbar(pb);
+			exit;
+		}*/
+		//increase the labor rate each year
+		if (day == 1 || mod(day, 365) == 0) //need to set the labor rate initially and then again at the beginning of every year
+		{
+			year = floor(day / 365);
+			labor_rate = present_day_labor_rate * pow((1 + inflation / 100), year);
+			if (is_tracking_system)
+				tracker_meta.failure[0].cost *= pow((1 + inflation / 100), year);
+		}
+		//step each component through time
+		step_in_time(module_meta, modules, day, costs.module);
+		step_in_time(string_meta, strings, day, costs.string);
+		step_in_time(combiner_meta, combiners, day, costs.combiner);
+		step_in_time(inverter_meta, inverters, day, costs.inverter);
+		step_in_time(disconnect_meta, disconnects, day, costs.disconnect);
+		step_in_time(transformer_meta, transformers, day, costs.transformer);
+		step_in_time(grid_meta, grid, day, costs.grid);
+		if (is_tracking_system)
+			step_in_time(tracker_meta, trackers, day, costs.tracker);
+		//count up current timestep states
+		if (is_tracking_system)
+			tracker_power_loss_factor[day] = whats_my_tracker_power_loss_factor(day);
+		module_degradation_factor[day] = whats_my_degradation();
+		dc_power_availability[day] = whats_my_dc_availability();
+		ac_power_availability[day] = whats_my_ac_availability();
+		//outln(day + '\t' + modules);
+	}
+	//progressbar(pb, {message='Running SAM simulation...'});	
+		
+	//create SAM performance adjustment tables for the availability, degradation, and tracker loss factors
+	time = alloc(8760 * system_lifetime_yrs);
+	daily_dc_loss = alloc(365 * system_lifetime_yrs);
+	daily_ac_loss = alloc(365 * system_lifetime_yrs);
+	idx = 0;
+	day_num = alloc(365 * system_lifetime_yrs);
+	for (day = 0; day < (365 * system_lifetime_yrs); day++)
+	{
+		day_num[day] = day;
+		daily_dc_loss[day] = 100 * (1 - (dc_power_availability[day] * module_degradation_factor[day] * ?(is_tracking_system)[1, tracker_power_loss_factor[day]]));
+		daily_ac_loss[day] = 100 * (1 - ac_power_availability[day]);
+		for (j = 0; j < 24; j++)
+		{
+			time[idx] = idx;
+			idx++;
+		}
+	}
+
+	//DC adjustment factors
+	set('en_dc_lifetime_losses', 1);
+	set('dc_lifetime_losses', daily_dc_loss);
+	//AC adjustment factors
+	set('en_ac_lifetime_losses', 1);
+	set('ac_lifetime_losses', daily_ac_loss);
+	//Degradation is included as part of the DC losses, so set it to zero and create a note in the UI
+	set('dc_degradation', [0]);
+	//show_page('Lifetime PV');
+	//pagenote('Degradation is included in the lifetime daily DC losses, so the degradation input has been set to zero.');
+
+
+	//Create O&M inputs based on costs
+	o_m_yearly_costs = alloc(system_lifetime_yrs);
+	yr_idx = 0;
+	cost_components = @costs;
+	for (day = 0; day < system_lifetime_yrs * 365; day++)
+	{
+		if (mod(day, 365) == 0) //we've reached the beginning of a new year
+		{
+			yr_idx = day / 365;
+			o_m_yearly_costs[yr_idx] = 0;
+		}
+		for (c=0; c<#cost_components; c++)
+			o_m_yearly_costs[yr_idx] += costs{cost_components[c]}[day];
+	}
+	outln('Calculated yearly O&M costs = ' + o_m_yearly_costs);
+	/* THIS GETS COMMENTED OUT FOR THE STOCHASTIC SCRIPT
+	if (get('om_fixed') != [0])
+	{
+		overwrite = yesno('There is a non-zero value in the fixed annual O&M costs input. Would you like to overwrite the existing costs with the calculated ones? ' + 
+				'Otherwise, the calculated costs will be added to the existing ones.');
+		if (!overwrite)
+		{
+			existing_costs = get('om_fixed');
+			for(k=0; k<system_lifetime_yrs; k++)
+				o_m_yearly_costs[k] += existing_costs[k];
+		}
+	}*/
+	set('om_fixed', o_m_yearly_costs);
+
+	//run PV performance model- for now running the currently active case
+	messages = '';
+	success = simulate(messages, true);
+	if (!success)
+	{
+		msgbox('Simulation failed.' + messages);
+		exit;
+	}
+	show_page('Results');
+
+	//OUTPUTS-------------------------------------------------------------------------------------------------------------
+
+	//failures
+	total_module_failures = total_string_failures = total_combiner_failures = 0;
+	total_inverter_failures = total_disconnect_failures = total_transformer_failures = 0;
+	total_grid_failures = 0;
+	total_tracker_failures = 0;
+	//count up cumulative failures
+	for (j=0; j<#module_meta.failure; j++)
+		module_failures_by_type[j] = 0;
+	for (m=0; m < module_meta.number; m++)
+	{
+		total_module_failures += modules[m].cumulative_failures;
+		for (j=0; j<#module_meta.failure; j++)
+			module_failures_by_type[j] += modules[m].failures_by_type[j];
+	}
+	for (s=0; s < string_meta.number; s++)
+		total_string_failures += strings[s].cumulative_failures;
+	for (c=0; c < combiner_meta.number; c++)
+		total_combiner_failures += combiners[c].cumulative_failures;
+	inverter_failures_by_type = alloc(#inverter_meta.failure);
+	for (j=0; j<#inverter_meta.failure; j++)
+		inverter_failures_by_type[j] = 0;
+	for (i=0; i < inverter_meta.number; i++)
+	{
+		total_inverter_failures += inverters[i].cumulative_failures;
+		for (j=0; j<#inverter_meta.failure; j++)
+			inverter_failures_by_type[j] += inverters[i].failures_by_type[j];
+	}
+	for (d=0; d < disconnect_meta.number; d++)
+		total_disconnect_failures += disconnects[d].cumulative_failures;
+	for (t=0; t < transformer_meta.number; t++)
+		total_transformer_failures += transformers[t].cumulative_failures;
+	total_grid_failures = grid[0].cumulative_failures;
+	if (is_tracking_system)
+	{
+		for (tr=0; tr < tracker_meta.number; tr++)
+			total_tracker_failures += trackers[tr].cumulative_failures;
+	}
+
+	//progressbar(pb);
+
+	//outln(dc_power_availability);
+	outln('Total module failures = ' + total_module_failures);
+	outln('Total module failures by type = ' + module_failures_by_type);
+	outln('Total string failures = ' + total_string_failures);
+	outln('Total combiner failures = ' + total_combiner_failures);
+	outln('Total inverter failures = ' + total_inverter_failures);
+	outln('Inverter failures by type = ' + inverter_failures_by_type);
+	outln('Total disconnect failures = ' + total_disconnect_failures);
+	outln('Total transformer failures = ' + total_transformer_failures);
+	outln('Total grid failures =' + total_grid_failures);
+	if (is_tracking_system)
+		outln('Total tracker failures = ' + total_tracker_failures);
+
+	//daily performance
+	if (is_tracking_system)
+		dview(5, 24, 'Daily factors', 'DC Power Availability', '', 1.0, dc_power_availability, 'AC Power Availability', '', 1.0, ac_power_availability, 'Module degradation factor', '', 1.0, module_degradation_factor, 'Power Availability Due to Tracker Outages', '', 1.0, tracker_power_loss_factor, 'Tracker Availability', '', 1.0, tracker_availability);
+	else
+		dview(3, 24, 'Daily factors', 'DC Power Availability', '', 1.0, dc_power_availability, 'AC Power Availability', '', 1.0, ac_power_availability, 'Module degradation factor', '', 1.0, module_degradation_factor);
+
+	//lifetime power output
+	hourly_dc_power = get('dc_net');
+	hourly_ac_power = get('gen');
+	dview(2, 1, 'Lifetime System Power', 'DC Power', 'kW', 1.0, hourly_dc_power, 'AC Power', 'kW', 1.0, hourly_ac_power);
+	
+	return get('lcoe_real');
+}
