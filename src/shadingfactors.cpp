@@ -1310,6 +1310,23 @@ void wxShadingFactorsCtrl::UpdateNumberColumns(size_t &new_cols)
 	SetData(m_data);
 }
 
+void wxShadingFactorsCtrl::AverageCols()
+{
+	size_t ncols = m_data.ncols();
+	for (size_t nr = 0; nr < m_data.nrows(); nr++)
+	{
+		float avg = 0;
+		for (size_t nc = 0; nc < ncols; nc++)
+			avg += m_data.at(nr, nc);
+		avg /= ncols;
+		m_data.at(nr, 0) = avg;
+	}
+	m_data.resize_preserve(m_data.nrows(), 1, m_default_val);
+	SetData(m_data);
+	m_choice_col->SetSelection(0);
+}
+
+
 void wxShadingFactorsCtrl::UpdateNumberRows(size_t &new_rows)
 {
 	// resize and preserve existing data and fill new data with default.
@@ -1333,6 +1350,15 @@ void wxShadingFactorsCtrl::OnCommand(wxCommandEvent &evt)
 {
 	switch (evt.GetId())
 	{
+		case ISFC_CHKDB:
+			{
+				bool bol_db = m_chk_shading_db->GetValue();
+				m_caption_col->Show(bol_db);
+				m_choice_col->Show(bol_db);
+				if (!bol_db)
+					AverageCols();
+			}
+			break;
 		case ISFC_COPY:
 			m_grid->Copy(true);
 			break;
@@ -1386,7 +1412,9 @@ void wxShadingFactorsCtrl::OnCommand(wxCommandEvent &evt)
 				int ndx = m_minute_arystrvals.Index(wxString::Format("%d", minutes));
 				if (ndx >= 0)
 					m_choice_timestep->SetSelection(ndx);
-
+				m_chk_shading_db->SetValue(true);
+				m_caption_col->Show(true);
+				m_choice_col->Show(true);
 			}
 
 		}
@@ -1395,8 +1423,16 @@ void wxShadingFactorsCtrl::OnCommand(wxCommandEvent &evt)
 		{
 			wxFileDialog dlg(this, "Select data matrix file to import");
 			if (dlg.ShowModal() == wxID_OK)
+			{
 				if (!Import(dlg.GetPath()))
 					wxMessageBox("Error import data file:\n\n" + dlg.GetPath());
+				else
+				{
+					m_chk_shading_db->SetValue(true);
+					m_caption_col->Show(true);
+					m_choice_col->Show(true);
+				}
+			}
 		}
 		break;
 		case ISFC_EXPORT:

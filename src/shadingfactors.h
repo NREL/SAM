@@ -157,6 +157,7 @@ private:
 	void UpdateNumberColumns(size_t &new_cols);
 	void UpdateNumberRows(size_t &new_rows);
 	void UpdateNumberMinutes(size_t &new_timesteps);
+	void AverageCols();
 
 	bool Export(const wxString &file);
 	bool Import(const wxString &file);
