@@ -167,14 +167,11 @@ CaseWindow::CaseWindow( wxWindow *parent, Case *c )
 	left_panel->SetSizer( szvl );
 
 	m_pageFlipper = new wxSimplebook( this, ID_PAGES, wxDefaultPosition, wxDefaultSize, wxBORDER_NONE );
-
-	m_inputPagePanel = new wxPanel( m_pageFlipper );
-	m_inputPagePanel->SetBackgroundColour( *wxWHITE );
-
-	m_inputPageScrollWin = new wxScrolledWindow( m_inputPagePanel );
+	
+	m_inputPageScrollWin = new wxScrolledWindow( m_pageFlipper );
 	m_inputPageScrollWin->SetBackgroundColour( *wxWHITE );
 	
-	m_exclPanel = new wxPanel( m_inputPagePanel );
+	m_exclPanel = new wxPanel( m_inputPageScrollWin );
 	m_exclPanel->SetBackgroundColour( *wxWHITE );
 	m_exclPageButton = new wxMetroButton( m_exclPanel, ID_EXCL_BUTTON, "Change...", wxNullBitmap, wxDefaultPosition, wxDefaultSize, wxMB_DOWNARROW );
 	m_exclPageTabList = new wxMetroTabList( m_exclPanel, ID_EXCL_TABLIST, wxDefaultPosition, wxDefaultSize, wxMT_LIGHTTHEME );
@@ -185,13 +182,8 @@ CaseWindow::CaseWindow( wxWindow *parent, Case *c )
 	m_exclPanelSizer->Add( m_exclPageTabList, 1, wxALL|wxALIGN_CENTER_VERTICAL, 2 );
 	m_exclPanelSizer->AddStretchSpacer();
 	m_exclPanel->SetSizer( m_exclPanelSizer );
-
-	wxBoxSizer *ip_sizer = new wxBoxSizer( wxVERTICAL );
-	ip_sizer->Add( m_exclPanel, 0, wxALL|wxEXPAND, 0 );
-	ip_sizer->Add( m_inputPageScrollWin, 1, wxALL|wxEXPAND, 0 );
-	m_inputPagePanel->SetSizer( ip_sizer );
-	
-	m_pageFlipper->AddPage( m_inputPagePanel, "Input Pages", true );
+		
+	m_pageFlipper->AddPage( m_inputPageScrollWin, "Input Pages", true );
 
 	
 	m_baseCaseResults = new ResultsViewer( m_pageFlipper, ID_BASECASE_PAGES );
@@ -904,7 +896,6 @@ void CaseWindow::SetupActivePage()
 				m_exclPanelSizer->AddStretchSpacer();
 			}
 
-			m_exclPanel->Layout();
 			m_exclPanel->Show( true );
 
 			active_pages = &( m_currentGroup->Pages[excl_idx] );
@@ -933,16 +924,18 @@ void CaseWindow::SetupActivePage()
 
 	LayoutPage();
 
-	m_inputPagePanel->Layout();
 }
 
 void CaseWindow::LayoutPage()
 {
 	int vsx, vsy;
 	m_inputPageScrollWin->GetViewStart( &vsx, &vsy );
+
 	
 	int y = 0;
 	int x = 0;
+	
+	size_t exclPanelPos = 0;
 
 	wxSize available_size(0,0);
 	for( size_t i=0;i<m_currentActivePages.size();i++ )
@@ -952,13 +945,28 @@ void CaseWindow::LayoutPage()
 			wxSize sz = m_currentActivePages[i]->Form->GetSize();
 			if( available_size.x < sz.x ) available_size.x = sz.x;
 			available_size.y += sz.y;
+
+			if ( m_currentActivePages[i]->HeaderPage )
+				exclPanelPos = i+1;
 		}
-	}
+	}	
 
 	// input pages are stacked upon one another
 	for( size_t i=0;i<m_currentActivePages.size();i++ )
 	{
 		PageDisplayState &pds = *m_currentActivePages[i];
+
+		
+		if ( i==exclPanelPos && m_exclPanel->IsShown() )
+		{
+			wxSize excl_size( m_exclPanel->GetBestSize() );
+			m_exclPanel->SetSize( 0, y, 
+				available_size.x > 500 ? available_size.x : 500,
+				excl_size.y );
+			m_exclPanel->Layout();
+			y += excl_size.y;
+		}
+
 
 		if( pds.CollapseCheck != 0 )
 		{
