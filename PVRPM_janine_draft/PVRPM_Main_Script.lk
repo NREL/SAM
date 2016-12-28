@@ -41,7 +41,8 @@ import 'PVRPM_Function.lk';
 	}	
 
 //----Number of stochastic realizations to be run--------------------------------------------------------------
-	num_realizations = 2;
+	num_realizations = 3;
+	//p_value = 90; //PXX is what will get calculated, DO WE ADD THIS LATER???
 
 //********************************************************************************************************************************************************************************
 // CASE-DEFINED INPUTS
@@ -456,10 +457,46 @@ if (is_tracking_system && tracker_meta.can_fail)
 //********************************************************************************************************************************************************************************
 // RUN THE SYSTEM REALIZATIONS
 //********************************************************************************************************************************************************************************
-lcoe = run_system_realization();
-outln(lcoe);
+lcoe_range = alloc(num_realizations);
+for (i=0; i<num_realizations; i++)
+{
+	lcoe_range[i] = run_system_realization(false);
+	outln('Completed realization ' + i);
+}
+outln(lcoe_range);
+outln('Min = ' + min(lcoe_range));
+outln('Max = ' + max(lcoe_range));
+outln('Avg = ' + mean(lcoe_range));
+//Calculate PXX statistics
+// message box here for the PXX versus number of realizations? 
+//Or, do we extrapolate the last data point if there are too few realizations?
+//Or, do we give a choice between assuming a normal distribution, and empirical calculation?
+//if (num_realizations >= 10) //need at least 10 realizations to calculate empirical PXX statistics
+{
+	//first, sort the LCOE results smallest to largest
+	for (i=0; i<num_realizations-1; i++)
+	{
+		//start at the current spot in the output
+		smallest = i;
+		for (j=i+1; j<num_realizations; j++) //find the index of the smallest lcoe in the remaining range
+			if (lcoe_range[j] < lcoe_range[i])
+				smallest = j; 
+		//swap the spots of the current i and the smallest lcoe
+		lcoe_temp = lcoe_range[i];
+		lcoe_range[i] = lcoe_range[smallest];
+		lcoe_range[smallest] = lcoe_temp;				
+	}
+	
+	//then, calculate the PXX
+	//P90n = mean - (1.282 * stdDev); normal P90, maybe include later?
+	first_index = floor(0.1 * #lcoe_range) - 1; //subtract 1 from the calculated index because arrays are 0-indexed
+	first_index_cdf = (first_index + 1) * #lcoe_range / 100;
+	//slope = 
+	
+	
+}
 
-
+outln(lcoe_range);
 
 
 
