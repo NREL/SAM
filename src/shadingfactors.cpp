@@ -485,9 +485,8 @@ public:
 		sh.en_timestep = m_enableTimestep->IsChecked();
 		m_timestep->GetData(sh.timestep);
 
+		sh.string_option = m_timestep->GetDBOption();
 //		sh.string_option = m_timestep->GetStringOption();
-// keep compatibility with previous version shading db = 0
-		if (m_timestep->GetDBOption() != 0 )
 
 		sh.en_mxh = m_enableMxH->IsChecked();
 		sh.mxh.copy( m_mxh->GetData() );
@@ -1639,10 +1638,10 @@ void wxShadingFactorsCtrl::SetNumCols(size_t &cols)
 void wxShadingFactorsCtrl::SetDBOption(int &db_option)
 {
 	// keep compatibility with shading database = 0 choice
-	if (db_option != 0)
-		m_chk_shading_db->SetValue(false);
-	else
-		m_chk_shading_db->SetValue(true); // default
+	bool bol_shade_db = (db_option == 0);
+	m_chk_shading_db->SetValue(bol_shade_db);
+	m_caption_col->Show(bol_shade_db);
+	m_choice_col->Show(bol_shade_db);
 }
 
 int wxShadingFactorsCtrl::GetDBOption()
