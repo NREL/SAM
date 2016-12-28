@@ -7,7 +7,6 @@
 // TO DO-----------------------------------------------------------------------------------
 /*
 	NEED TO CREATE A MEGA-SCRIPT TO RUN MULTIPLE SIMULATIONS!! AND CREATE GRAPHS!!
-	DC and AC lifetime losses need to be added to loss tree
 	Add component-level availability output graph vs time (using Geoff's equation)
 	WHEN AN INVERTER FAILS ROUTINELY, IT NEEDS TO NOT BE COMPLETELY RESET- which ones do reset it?
 	Basic failure rates as an output (failures per million hours)
@@ -20,6 +19,7 @@
 	are there further speed increases I can make?
 	make sure to multi-thread the stochastic piece
 	add number of failures per component per year- in a csv
+	add a function option to suppress outputs
 */
 
 
@@ -378,7 +378,7 @@ function step_in_time(component_meta, component_vector, day, component_repair_co
 //**********************************************************************************************************************************************************************
 // MAIN SCRIPT
 //**********************************************************************************************************************************************************************
-function run_system_realization()
+function run_system_realization(show_outputs)
 {
 
 	//*************************************************************************************
@@ -542,7 +542,8 @@ function run_system_realization()
 		for (c=0; c<#cost_components; c++)
 			o_m_yearly_costs[yr_idx] += costs{cost_components[c]}[day];
 	}
-	outln('Calculated yearly O&M costs = ' + o_m_yearly_costs);
+	if (show_outputs)
+		outln('Calculated yearly O&M costs = ' + o_m_yearly_costs);
 	/* THIS GETS COMMENTED OUT FOR THE STOCHASTIC SCRIPT
 	if (get('om_fixed') != [0])
 	{
@@ -610,28 +611,31 @@ function run_system_realization()
 	//progressbar(pb);
 
 	//outln(dc_power_availability);
-	outln('Total module failures = ' + total_module_failures);
-	outln('Total module failures by type = ' + module_failures_by_type);
-	outln('Total string failures = ' + total_string_failures);
-	outln('Total combiner failures = ' + total_combiner_failures);
-	outln('Total inverter failures = ' + total_inverter_failures);
-	outln('Inverter failures by type = ' + inverter_failures_by_type);
-	outln('Total disconnect failures = ' + total_disconnect_failures);
-	outln('Total transformer failures = ' + total_transformer_failures);
-	outln('Total grid failures =' + total_grid_failures);
-	if (is_tracking_system)
-		outln('Total tracker failures = ' + total_tracker_failures);
+	if (show_outputs)
+	{
+		outln('Total module failures = ' + total_module_failures);
+		outln('Total module failures by type = ' + module_failures_by_type);
+		outln('Total string failures = ' + total_string_failures);
+		outln('Total combiner failures = ' + total_combiner_failures);
+		outln('Total inverter failures = ' + total_inverter_failures);
+		outln('Inverter failures by type = ' + inverter_failures_by_type);
+		outln('Total disconnect failures = ' + total_disconnect_failures);
+		outln('Total transformer failures = ' + total_transformer_failures);
+		outln('Total grid failures =' + total_grid_failures);
+		if (is_tracking_system)
+			outln('Total tracker failures = ' + total_tracker_failures);
 
-	//daily performance
-	if (is_tracking_system)
-		dview(5, 24, 'Daily factors', 'DC Power Availability', '', 1.0, dc_power_availability, 'AC Power Availability', '', 1.0, ac_power_availability, 'Module degradation factor', '', 1.0, module_degradation_factor, 'Power Availability Due to Tracker Outages', '', 1.0, tracker_power_loss_factor, 'Tracker Availability', '', 1.0, tracker_availability);
-	else
-		dview(3, 24, 'Daily factors', 'DC Power Availability', '', 1.0, dc_power_availability, 'AC Power Availability', '', 1.0, ac_power_availability, 'Module degradation factor', '', 1.0, module_degradation_factor);
+		//daily performance
+		if (is_tracking_system)
+			dview(5, 24, 'Daily factors', 'DC Power Availability', '', 1.0, dc_power_availability, 'AC Power Availability', '', 1.0, ac_power_availability, 'Module degradation factor', '', 1.0, module_degradation_factor, 'Power Availability Due to Tracker Outages', '', 1.0, tracker_power_loss_factor, 'Tracker Availability', '', 1.0, tracker_availability);
+		else
+			dview(3, 24, 'Daily factors', 'DC Power Availability', '', 1.0, dc_power_availability, 'AC Power Availability', '', 1.0, ac_power_availability, 'Module degradation factor', '', 1.0, module_degradation_factor);
 
-	//lifetime power output
-	hourly_dc_power = get('dc_net');
-	hourly_ac_power = get('gen');
-	dview(2, 1, 'Lifetime System Power', 'DC Power', 'kW', 1.0, hourly_dc_power, 'AC Power', 'kW', 1.0, hourly_ac_power);
+		//lifetime power output
+		hourly_dc_power = get('dc_net');
+		hourly_ac_power = get('gen');
+		dview(2, 1, 'Lifetime System Power', 'DC Power', 'kW', 1.0, hourly_dc_power, 'AC Power', 'kW', 1.0, hourly_ac_power);
+	}
 	
 	return get('lcoe_real');
 }
