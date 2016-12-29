@@ -9,8 +9,7 @@
 #include <wx/grid.h>
 
 #include <wex/numeric.h>
-#include <unordered_map>
-using std::unordered_map;
+
 #include "object.h"
 
 class wxTextCtrl;
@@ -88,8 +87,8 @@ public:
 	bool GetExpandable();
 	
 	void Clear();
-	void Set( wxString &var, double value );
-	double Get( wxString &var );
+	void Set( const wxString &var, double value );
+	double Get( const wxString &var );
 	
 	void SetDescription(const wxString &s);
 	wxString GetDescription();

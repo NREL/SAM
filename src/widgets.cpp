@@ -455,10 +455,7 @@ wxArrayString AFTableDataCtrl::GetFields()
 	for( KeyValueMap::iterator it = m_values.begin();
 		it != m_values.end();
 		++it )
-		{
-			wxString const ss = it->first;
-			list.Add( ss );
-		}
+		list.Add( it->first );
 	return list;
 }
 
@@ -470,12 +467,12 @@ void AFTableDataCtrl::Clear()
 void AFTableDataCtrl::SetExpandable( bool b ){ m_expandable = b; }
 bool AFTableDataCtrl::GetExpandable() { return m_expandable; }
 
-void AFTableDataCtrl::Set( wxString &var,double value )
+void AFTableDataCtrl::Set( const wxString &var,double value )
 {
 	m_values[var]=value;
 }
 
-double AFTableDataCtrl::Get( wxString &var )
+double AFTableDataCtrl::Get( const wxString &var )
 {
 	KeyValueMap::iterator it = m_values.find( var );
 	if ( it == m_values.end() ) return std::numeric_limits<double>::quiet_NaN();
