@@ -299,9 +299,9 @@ cashflow{ 'Single Owner' } = define()
 
 	cfline( '' );
 	cfline("RETURN ON EQUITY", -1);
-	cfline('cf_return_on_equity_input', 0);
+	cfline('cf_return_on_equity_input', 2,100);
 	cfline('cf_return_on_equity_dollars', 0);
-	cfline('cf_return_on_equity', 0);
+	cfline('cf_return_on_equity', 2);
 
 	cfline( '' );
 	cfline("AFTER-TAX IRR AND NPV", -1);
