@@ -1559,6 +1559,9 @@ addpage( [ [ {'name'='PV2 Unified Module Model 1', 'caption'='Module 1' }],
 addpage( [ [ {'name'='PV2 Unified Inverter Model 1', 'caption'='Inverter 1' }] ], 				
 		{ 'sidebar'='Inverter', 'help'='pv_inverter' } );
 		
+addpage( [ [ {'name'='PV2 MLPE Optimizers', 'caption'='DC Optimizer' }] ], 				
+		{ 'sidebar'='DC optimizer', 'help'='dc_optimizer' } );
+		
 addpage( [ [ {'name'='PV2 DC Design 1', 'caption'='Subarray 1' }],
 			[{'name'='PV2 DC Design 2', 'caption'='Subarray 2' }],
 			[{'name'='PV2 DC Design 3', 'caption'='Subarray 3' }], 
