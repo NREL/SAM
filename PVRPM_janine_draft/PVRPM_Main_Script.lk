@@ -41,8 +41,8 @@ import 'PVRPM_Function.lk';
 	}	
 
 //----Number of stochastic realizations to be run--------------------------------------------------------------
-	num_realizations = 3;
-	//p_value = 90; //PXX is what will get calculated, DO WE ADD THIS LATER???
+	num_realizations = 10;
+	p_value = 90; //PXX is what will get calculated
 
 //********************************************************************************************************************************************************************************
 // CASE-DEFINED INPUTS
@@ -362,6 +362,15 @@ import 'PVRPM_Function.lk';
 			exit;
 		}
 	}
+	// Limitations of empirical P-value calculation
+	//Or, do we extrapolate the last data point if there are too few realizations?
+	//Or, do we give a choice between assuming a normal distribution, and empirical calculation?
+	max_p_value = (1 - 1 / num_realizations) * 100;
+	if ( p_value > max_p_value )
+	{
+		msgbox('Error: The maximum p-value that can be calculated with ' + num_realizations + 'is ' + max_p_value + '. Please either lower your desired p-value or increase the number of realizations.');
+		exit;
+	}
 	
 //********************************************************************************************************************************************************************************
 // PRE-CALCULATE THE TRACKER LOSSES FOR A TRACKING SYSTEM WHERE FAILURES ARE ENABLED, SINCE THIS WILL BE CONSTANT BETWEEN SIMULATIONS
@@ -457,46 +466,51 @@ if (is_tracking_system && tracker_meta.can_fail)
 //********************************************************************************************************************************************************************************
 // RUN THE SYSTEM REALIZATIONS
 //********************************************************************************************************************************************************************************
-lcoe_range = alloc(num_realizations);
+lcoe_array = alloc(num_realizations);
 for (i=0; i<num_realizations; i++)
 {
-	lcoe_range[i] = run_system_realization(false);
+	lcoe_array[i] = run_system_realization(false);
 	outln('Completed realization ' + i);
 }
-outln(lcoe_range);
-outln('Min = ' + min(lcoe_range));
-outln('Max = ' + max(lcoe_range));
-outln('Avg = ' + mean(lcoe_range));
+
 //Calculate PXX statistics
-// message box here for the PXX versus number of realizations? 
-//Or, do we extrapolate the last data point if there are too few realizations?
-//Or, do we give a choice between assuming a normal distribution, and empirical calculation?
-//if (num_realizations >= 10) //need at least 10 realizations to calculate empirical PXX statistics
+//first, sort the LCOE results smallest to largest
+for (i=0; i<num_realizations-1; i++)
 {
-	//first, sort the LCOE results smallest to largest
-	for (i=0; i<num_realizations-1; i++)
+	//start at the current spot in the output
+	smallest = i;
+	for (j=i+1; j<num_realizations; j++) //find the index of the smallest lcoe in the remaining range
+		if (lcoe_array[j] < lcoe_array[smallest])
+			smallest = j; 
+	//swap the spots of the current i and the smallest lcoe
+	if (smallest != i)
 	{
-		//start at the current spot in the output
-		smallest = i;
-		for (j=i+1; j<num_realizations; j++) //find the index of the smallest lcoe in the remaining range
-			if (lcoe_range[j] < lcoe_range[i])
-				smallest = j; 
-		//swap the spots of the current i and the smallest lcoe
-		lcoe_temp = lcoe_range[i];
-		lcoe_range[i] = lcoe_range[smallest];
-		lcoe_range[smallest] = lcoe_temp;				
-	}
-	
-	//then, calculate the PXX
-	//P90n = mean - (1.282 * stdDev); normal P90, maybe include later?
-	first_index = floor(0.1 * #lcoe_range) - 1; //subtract 1 from the calculated index because arrays are 0-indexed
-	first_index_cdf = (first_index + 1) * #lcoe_range / 100;
-	//slope = 
-	
-	
+		lcoe_temp = lcoe_array[i];
+		lcoe_array[i] = lcoe_array[smallest];
+		lcoe_array[smallest] = lcoe_temp;	
+	}			
 }
 
-outln(lcoe_range);
+//then, calculate the PXX by linearly interpolating between the point below and point above
+//point x0, y0 is the lower CDF value and corresponding LCOE, respectively
+//point x1, y1 is the next highest CDF value and corresponding LCOE, respectively
+//x is the desired CDF (calculated from the p-value)
+//y is the LCOE corresponding to x
+//P90n = mean - (1.282 * stdDev); normal P90, maybe include later?
+x = 1 - p_value / 100; //calculate the CDF corresponding to the given p-value: ex: a p-value of 90 would have a corresponding CDF of 0.1
+idx0 = floor(x * num_realizations + 0.001) - 1; //subtract 1 from the calculated index because arrays are 0-indexed, the +0.001 is to avoid problems with the representation of double precision numbers
+idx1 = idx0 + 1;
+x0 = (idx0 + 1) * 1 / num_realizations;
+y0 = lcoe_array[idx0];
+x1 = (idx1 + 1) * 1 / num_realizations;
+y1 = lcoe_array[idx1];
+p_lcoe = y0 + (x-x0) * (y1-y0) / (x1-x0); //see linear interpolation formula from https://en.wikipedia.org/wiki/Linear_interpolation
+
+outln('Range of calculated LCOEs= ' + lcoe_array);
+outln('Min = ' + min(lcoe_array));
+outln('Max = ' + max(lcoe_array));
+outln('Avg = ' + mean(lcoe_array));
+outln('Desired exceedance probability P' + p_value + '= ' + p_lcoe);
 
 
 
