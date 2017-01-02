@@ -1,13 +1,23 @@
 TECHNOLOGY,FINANCING,ANNUAL_OUTPUT,LCOE_NOM,LPPA_NOM,MESSAGES
+Photovoltaic,None,OVERWRITE	
+Photovoltaic,None,fail,fail,fail
 Flat Plate PV,Residential,7481.71,7.12977,NA,; 
-Flat Plate PV,Commercial,371195,5.23915,NA,; 
-Flat Plate PV,Third Party,7481.71,NA,NA,; 
-Flat Plate PV,Single Owner,37631744,8.52134,9.06052,; 
-Flat Plate PV,Leveraged Partnership Flip,37631744,8.63915,9.29518,; 
-Flat Plate PV,All Equity Partnership Flip,37631744,11.277,13.355,; 
-Flat Plate PV,Sale Leaseback,37631744,10.3886,11.1022,; 
-Flat Plate PV,LCOE Calculator,37631744,NA,NA,; 
-Flat Plate PV,None,7481.71,NA,NA,; 
+Flat Plate PV,Commercial,OVERWRITE	
+Flat Plate PV,Commercial,371195,5.23915,NA,Defaults file is likely out of date: Flat Plate PV_Commercial  Variables: 0 loaded but not in configuration, 0 wrong type, defaults file has 826, config has 829  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later) ; 
+Flat Plate PV,Third Party,OVERWRITE	
+Flat Plate PV,Third Party,7481.71,NA,NA,Defaults file is likely out of date: Flat Plate PV_Third Party  Variables: 0 loaded but not in configuration, 0 wrong type, defaults file has 656, config has 659  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later) ; 
+Flat Plate PV,Single Owner,OVERWRITE	
+Flat Plate PV,Single Owner,37631744,8.52134,9.06052,Defaults file is likely out of date: Flat Plate PV_Single Owner  Variables: 0 loaded but not in configuration, 0 wrong type, defaults file has 884, config has 887  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later) ; 
+Flat Plate PV,Leveraged Partnership Flip,OVERWRITE	
+Flat Plate PV,Leveraged Partnership Flip,37631744,8.63915,9.29518,Defaults file is likely out of date: Flat Plate PV_Leveraged Partnership Flip  Variables: 0 loaded but not in configuration, 0 wrong type, defaults file has 896, config has 899  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later) ; 
+Flat Plate PV,All Equity Partnership Flip,OVERWRITE	
+Flat Plate PV,All Equity Partnership Flip,37631744,11.277,13.355,Defaults file is likely out of date: Flat Plate PV_All Equity Partnership Flip  Variables: 0 loaded but not in configuration, 0 wrong type, defaults file has 886, config has 889  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later) ; 
+Flat Plate PV,Sale Leaseback,OVERWRITE	
+Flat Plate PV,Sale Leaseback,37631744,10.3886,11.1022,Defaults file is likely out of date: Flat Plate PV_Sale Leaseback  Variables: 0 loaded but not in configuration, 0 wrong type, defaults file has 879, config has 882  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later) ; 
+Flat Plate PV,LCOE Calculator,OVERWRITE	
+Flat Plate PV,LCOE Calculator,37631744,NA,NA,Defaults file is likely out of date: Flat Plate PV_LCOE Calculator  Variables: 0 loaded but not in configuration, 0 wrong type, defaults file has 456, config has 459  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later) ; 
+Flat Plate PV,None,OVERWRITE	
+Flat Plate PV,None,7481.71,NA,NA,Defaults file is likely out of date: Flat Plate PV_None  Variables: 0 loaded but not in configuration, 0 wrong type, defaults file has 427, config has 430  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later) ; 
 PVWatts,Residential,6829.5,10.7573,NA,; 
 PVWatts,Commercial,341052,4.66271,NA,; 
 PVWatts,Third Party,6829.5,NA,NA,; 
