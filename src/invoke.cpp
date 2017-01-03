@@ -1907,7 +1907,7 @@ void fcall_urdb_write(lk::invoke_t &cxt)
 	{
 		VarInfo &vi = *(it->second);
 //		if (vi.Flags & VF_CALCULATED || vi.Flags & VF_INDICATOR) continue;
-		if (vi.Group.Left(12).Lower() == "utility rate")
+		if (vi.Group.Left(16).Lower() == "electricity rate")
 
 		{
 			wxString var_name = it->first;
