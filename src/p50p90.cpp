@@ -211,6 +211,8 @@ void P50P90Form::OnSimulate( wxCommandEvent & )
 	output_stats.resize_fill( output_vars.size(), NSTATS, 0.0 );
 	
 	//*** Compute P50, P90, etc ***//
+	bool Puser_flag_1 = false;
+	bool Puser_flag_2 = false; //flags for error reporting for the P-XX P-user input
 	if ( nyearsok == years.size() )
 	{
 		tpd.NewStage( "Processing results...", 1 );
@@ -294,12 +296,25 @@ void P50P90Form::OnSimulate( wxCommandEvent & )
 				double interpolatedP10 = data[below90index] + (90 - darr[below90index]) * slope;
 
 				double interpolatedPuser = std::numeric_limits<double>::quiet_NaN();
-				if ( Puser > 0 && Puser < 100 )
+				if (Puser > 0 && Puser < 100)
 				{
-					int idx = floor( 0.01*Puser * data.size()) - 1;
-					slope = (data[idx + 1] - data[idx]) / (darr[idx + 1] - darr[idx]);
-					interpolatedPuser = data[idx] + (Puser - darr[idx]) * slope;
+					//there is a minimum/maximum empirical P-value that can be calculated based on the number of weather files because of the interpolation that happens.
+					//for example, if the user has 20 weather files and asks for a P97, the first weather file in the series represents the P95, and there is nothing lower to interpolate to.
+					//rather than extrapolate, report an error to the user. jmf 1/3/17
+					int n = data.size(); //n is the number of weather files
+					double limit = 100.0 / n; //this is the upper limit of the P-value that can be calculated; i.e. if there are 20 weather files, the p-limit is P-5. Need 100.0 to force computer to do division in double precision.
+					if (Puser < limit || Puser >(100 - limit))
+						Puser_flag_1 = true;
+					else
+					{
+						//you'll notice above that the below90index corresponds to the interpolated P10, so the reversal step needs to be factored in for the P-user here but was missing. Fixed 1/3/17 jmf.
+						int idx = floor(0.01*(100 - Puser) * data.size()) - 1;
+						slope = (data[idx + 1] - data[idx]) / (darr[idx + 1] - darr[idx]);
+						interpolatedPuser = data[idx] + ((100 - Puser) - darr[idx]) * slope;
+					}
 				}
+				else
+					Puser_flag_2 = true;
 							
 				output_stats.at( varIndex, P90E ) = interpolatedP90;
 				output_stats.at( varIndex, P50E ) = interpolatedP50;
@@ -307,6 +322,16 @@ void P50P90Form::OnSimulate( wxCommandEvent & )
 				output_stats.at( varIndex, PUSR ) = interpolatedPuser;
 			}
 		}
+
+		//error messages must be reported outside of the loop or you'll get a bunch of them
+		if (Puser_flag_1)
+		{
+			int n = years.size(); //n is the number of weather files
+			double limit = 100.0 / n; //this is the upper limit of the P-value that can be calculated; i.e. if there are 20 weather files, the p-limit is P-5. Need 100.0 to force computer to do division in double precision.
+			wxMessageBox(wxString::Format("Custom P-values must be between %.1f and %.1f because you have %d weather files. Please increase the number of weather files or change the custom P-value.", limit, 100 - limit, n));
+		}
+		if (Puser_flag_2)
+			wxMessageBox("Custom P-values must be greater than 0 and less than 100.");
 
 
 		// update results
