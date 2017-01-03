@@ -129,16 +129,12 @@ bool MacroEngine::Run( const wxString &script, lk::vardata_t *args )
 	
 	// compile the code into VM instructions and load it
 	macro_vm vm( this );
-	lk::code_gen cg;
-	if ( cg.emitasm( tree.get() ) )
-	{
-		std::vector<unsigned int> code;
-		std::vector<lk::vardata_t> data;
-		std::vector<lk_string> id;
-		std::vector<lk::srcpos_t> dbg;		
-
-		cg.bytecode( code, data, id, dbg );
-		vm.load( code, data, id, dbg );
+	lk::codegen cg;
+	lk::bytecode bc;
+	if ( cg.generate( tree.get() ) )
+	{	
+		cg.get( bc );
+		vm.load( &bc );
 	}
 	else
 	{
