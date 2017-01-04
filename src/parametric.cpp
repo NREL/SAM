@@ -1159,12 +1159,18 @@ bool ParametricGridData::IsInput(int col)
 
 bool ParametricGridData::IsInput(wxString &var_name)
 {
-	if (VarValue *vv = m_par.GetCase()->Values().Get(var_name))
+//	if (VarValue *vv = m_par.GetCase()->Values().Get(var_name))
+	if (VarInfo *vi = m_par.GetCase()->Variables().Lookup(var_name))
 	{
 		if (m_input_names.Index(var_name) != wxNOT_FOUND)
 			return true;
 		else
-			return false;
+		{
+			if ((vi->Flags & VF_PARAMETRIC) && !(vi->Flags & VF_INDICATOR) && !(vi->Flags & VF_CALCULATED))
+				return true;
+			else
+				return false;
+		}
 	}
 	else
 		return false;
@@ -1812,7 +1818,7 @@ bool ParametricGridData::RunSimulations_multi()
 	int total_runs = 0;
 	for (size_t i = 0; i < m_par.Runs.size(); i++)
 		if (!m_valid_run[i]) total_runs++;
-
+	if (total_runs == 0) total_runs = m_par.Runs.size();
 
 	std::vector<Simulation*> sims;
 	for (size_t i = 0; i < m_par.Runs.size(); i++)
@@ -2237,7 +2243,8 @@ m_case(c)
 	wxBoxSizer *button_sizer = new wxBoxSizer(wxHORIZONTAL);
 	button_sizer->Add(numrun_sizer);
 	button_sizer->AddStretchSpacer();
-	button_sizer->Add(CreateButtonSizer(wxOK | wxCANCEL | wxHELP), 1, wxALL | wxALIGN_CENTER_VERTICAL | wxEXPAND | wxALIGN_RIGHT, 5);
+//	button_sizer->Add(CreateButtonSizer(wxOK | wxCANCEL | wxHELP), 1, wxALL | wxALIGN_CENTER_VERTICAL | wxEXPAND | wxALIGN_RIGHT, 5);
+	button_sizer->Add(CreateButtonSizer(wxOK | wxCANCEL | wxHELP), 1, wxALL | wxEXPAND, 5);
 
 
 	wxBoxSizer *main_sizer = new wxBoxSizer(wxVERTICAL);
