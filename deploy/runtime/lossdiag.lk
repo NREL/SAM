@@ -21,7 +21,8 @@ loss_diagram{'Flat Plate PV'} = define() {
 	if (varinfo('en_batt'))
 	{
 	if (value('en_batt') == true && value('batt_ac_or_dc') == 0)
-		add_loss_term( 'annual_dc_battery_lifetime_loss_percent', 'Battery loss');
+		add_loss_term( 'annual_dc_battery_loss_percent', 'Battery loss');
+//		add_loss_term( 'annual_dc_battery_lifetime_loss_percent', 'Battery loss');
 	}
 	new_baseline( 'annual_dc_net', 'Net DC energy (kWh)' );
 	add_loss_term( 'annual_ac_inv_clip_loss_percent', 'Inverter power clipping' );	
@@ -33,7 +34,8 @@ loss_diagram{'Flat Plate PV'} = define() {
 	if (varinfo('en_batt'))
 	{
 	if (value('en_batt') == true && value('batt_ac_or_dc') == 1)
-		add_loss_term('annual_ac_battery_lifetime_loss_percent', 'Battery loss (kWh)');
+		add_loss_term('annual_ac_battery_loss_percent', 'Battery loss (kWh)');
+//		add_loss_term('annual_ac_battery_lifetime_loss_percent', 'Battery loss (kWh)');
 	}
 	add_loss_term('annual_ac_wiring_loss_percent', 'AC wiring' );	
 	add_loss_term('annual_ac_transformer_loss_percent', 'Step-up transformer' );	
