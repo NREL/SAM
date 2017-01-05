@@ -501,7 +501,7 @@ for (i=0; i<num_realizations; i++)
 	data.total_transformer_failures[i] = results[i].total_transformer_failures;
 	data.total_grid_failures[i] = results[i].total_grid_failures;
 	//outln('Inverter failures by type = ' + inverter_failures_by_type);
-	for (j=1; j<lifetime; j++) //start at 1 because the array returns year 0, where the energy production is always 0
+	for (j=1; j<=lifetime; j++) //start at 1 because the array returns year 0, where the energy production is always 0, and goes through the full lifetime (so a 5-year system would have 6 entries in the annual energy output)
 		data{'annual_energy_' + j}[i] = results[i].annual_energy[j];
 }
 
