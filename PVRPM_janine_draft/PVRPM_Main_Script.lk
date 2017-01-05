@@ -9,6 +9,7 @@
 //Import the function to simulate a single instance of a system
 import 'PVRPM_Function.lk';
 
+results_file = 'C:/users/jfreeman/desktop/pvrpm_results.csv';
 
 //*******************************************************************************************************************************************************************************
 // USER-DEFINED INPUTS
@@ -41,8 +42,8 @@ import 'PVRPM_Function.lk';
 	}	
 
 //----Number of stochastic realizations to be run--------------------------------------------------------------
-	num_realizations = 10;
-	p_value = 90; //PXX is what will get calculated
+	num_realizations = 5;
+	p_value = 75; //PXX is what will get calculated
 
 //********************************************************************************************************************************************************************************
 // CASE-DEFINED INPUTS
@@ -467,50 +468,107 @@ if (is_tracking_system && tracker_meta.can_fail)
 // RUN THE SYSTEM REALIZATIONS
 //********************************************************************************************************************************************************************************
 lcoe_array = alloc(num_realizations);
+pb = progressbar( {title='Simulation progress', message='Initializing',cancelbutton=true, time=true, max=system_lifetime_yrs * 365});
 for (i=0; i<num_realizations; i++)
 {
-	lcoe_array[i] = run_system_realization(false);
+	results[i] = run_system_realization(i, false);
 	outln('Completed realization ' + i);
 }
+progressbar(pb);
 
-//Calculate PXX statistics
-//first, sort the LCOE results smallest to largest
-for (i=0; i<num_realizations-1; i++)
+//outln(results);
+
+
+//********************************************************************************************************************************************************************************
+// CALCULATE STATISTICS AND WRITE RESULTS
+//********************************************************************************************************************************************************************************
+lifetime = get('analysis_period');
+num_module_failure_modes = #results[0].module_failures_by_type;
+num_inverter_failure_modes = #results[0].inverter_failures_by_type;
+for (i=0; i<num_realizations; i++)
 {
-	//start at the current spot in the output
-	smallest = i;
-	for (j=i+1; j<num_realizations; j++) //find the index of the smallest lcoe in the remaining range
-		if (lcoe_array[j] < lcoe_array[smallest])
-			smallest = j; 
-	//swap the spots of the current i and the smallest lcoe
-	if (smallest != i)
-	{
-		lcoe_temp = lcoe_array[i];
-		lcoe_array[i] = lcoe_array[smallest];
-		lcoe_array[smallest] = lcoe_temp;	
-	}			
+	data.realization[i] = i;
+	data.lcoe[i] = results[i].lcoe;
+	data.total_module_failures[i] = results[i].total_module_failures;
+	for (j=0; j<num_module_failure_modes; j++)
+		data{'module_failures_' + j}[i] = results[i].module_failures_by_type[j];
+	data.total_string_failures[i] = results[i].total_string_failures;
+	data.total_combiner_failures[i] = results[i].total_combiner_failures;
+	data.total_inverter_failures[i] = results[i].total_inverter_failures;
+	for (j=0; j<num_inverter_failure_modes; j++)
+		data{'inverter_failures_' + j}[i] = results[i].inverter_failures_by_type[j];
+	data.total_disconnect_failures[i] = results[i].total_disconnect_failures;
+	data.total_transformer_failures[i] = results[i].total_transformer_failures;
+	data.total_grid_failures[i] = results[i].total_grid_failures;
+	//outln('Inverter failures by type = ' + inverter_failures_by_type);
+	for (j=1; j<lifetime; j++) //start at 1 because the array returns year 0, where the energy production is always 0
+		data{'annual_energy_' + j}[i] = results[i].annual_energy[j];
 }
 
-//then, calculate the PXX by linearly interpolating between the point below and point above
-//point x0, y0 is the lower CDF value and corresponding LCOE, respectively
-//point x1, y1 is the next highest CDF value and corresponding LCOE, respectively
-//x is the desired CDF (calculated from the p-value)
-//y is the LCOE corresponding to x
-//P90n = mean - (1.282 * stdDev); normal P90, maybe include later?
-x = 1 - p_value / 100; //calculate the CDF corresponding to the given p-value: ex: a p-value of 90 would have a corresponding CDF of 0.1
-idx0 = floor(x * num_realizations + 0.001) - 1; //subtract 1 from the calculated index because arrays are 0-indexed, the +0.001 is to avoid problems with the representation of double precision numbers
-idx1 = idx0 + 1;
-x0 = (idx0 + 1) * 1 / num_realizations;
-y0 = lcoe_array[idx0];
-x1 = (idx1 + 1) * 1 / num_realizations;
-y1 = lcoe_array[idx1];
-p_lcoe = y0 + (x-x0) * (y1-y0) / (x1-x0); //see linear interpolation formula from https://en.wikipedia.org/wiki/Linear_interpolation
+//Calculate statistics
+data_columns = @data;
+for (c=0; c<#data_columns; c++)
+{
+	current_row = num_realizations; //start at the end of the individual realization results for each column
+	array = data{data_columns[c]};
+	
+	//calculate minimum
+	array_min = min(array);
+	data.realization[current_row] = 'min';
+	data{data_columns[c]}[current_row] = array_min;
+	current_row++;
+	
+	//calculate maximum
+	array_max = max(array);
+	data.realization[current_row] = 'max';
+	data{data_columns[c]}[current_row] = array_max;
+	current_row++;
+	
+	//calculate mean
+	array_mean = mean(array);
+	data.realization[current_row] = 'mean';
+	data{data_columns[c]}[current_row] = array_mean;
+	current_row++;	
+	
+	//calculate desired PXX
+	//first, sort the results smallest to largest
+	for (i=0; i<num_realizations-1; i++)
+	{
+		//start at the current spot in the output
+		smallest = i;
+		for (j=i+1; j<num_realizations; j++) //find the index of the smallest number in the remaining range
+			if (array[j] < array[smallest])
+				smallest = j; 
+		//swap the spots of the current i and the smallest number
+		if (smallest != i)
+		{
+			array_temp = array[i];
+			array[i] = array[smallest];
+			array[smallest] = array_temp;	
+		}			
+	}
+	//then, calculate the PXX by linearly interpolating between the point below and point above
+	//point x0, y0 is the lower CDF value and corresponding result, respectively
+	//point x1, y1 is the next highest CDF value and corresponding result, respectively
+	//x is the desired CDF (calculated from the p-value)
+	//y is the result corresponding to x
+	//P90n = mean - (1.282 * stdDev); normal P90, maybe include later???
+	x = 1 - p_value / 100; //calculate the CDF corresponding to the given p-value: ex: a p-value of 90 would have a corresponding CDF of 0.1
+	idx0 = floor(x * num_realizations + 0.001) - 1; //subtract 1 from the calculated index because arrays are 0-indexed, the +0.001 is to avoid problems with the representation of double precision numbers
+	idx1 = idx0 + 1;
+	x0 = (idx0 + 1) * 1 / num_realizations;
+	y0 = array[idx0];
+	x1 = (idx1 + 1) * 1 / num_realizations;
+	y1 = array[idx1];
+	array_p = y0 + (x-x0) * (y1-y0) / (x1-x0); //see linear interpolation formula from https://en.wikipedia.org/wiki/Linear_interpolation*/
+	data.realization[current_row] = 'P' + p_value;
+	data{data_columns[c]}[current_row] = array_p;
+	current_row++; //in case we add more calculated variables later
+	
+}
 
-outln('Range of calculated LCOEs= ' + lcoe_array);
-outln('Min = ' + min(lcoe_array));
-outln('Max = ' + max(lcoe_array));
-outln('Avg = ' + mean(lcoe_array));
-outln('Desired exceedance probability P' + p_value + '= ' + p_lcoe);
+//write the output file
+csvwrite(results_file, data);
 
 
 
