@@ -42,6 +42,7 @@ loss_diagram{'Flat Plate PV'} = define() {
 
 	new_baseline( 'annual_ac_net', 'Net AC energy (kWh)' );
 	add_loss_term( 'annual_ac_lifetime_loss_percent', 'AC Lifetime daily losses- year one' );
+	add_loss_term('annual_xfmr_loss_percent', 'Power transformer loss' );	
 	add_loss_term('annual_ac_perf_adj_loss_percent', 'Availability and curtailment' );	
 	
 	new_baseline( 'annual_energy', 'Annual energy (kWh)' );
