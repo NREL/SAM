@@ -19,7 +19,7 @@
 	are there further speed increases I can make?
 	make sure to multi-thread the stochastic piece
 	add number of failures per component per year- in a csv
-	add a function option to suppress outputs
+	need to make outputs independent of number failure/repair modes!
 */
 
 
@@ -378,7 +378,7 @@ function step_in_time(component_meta, component_vector, day, component_repair_co
 //**********************************************************************************************************************************************************************
 // MAIN SCRIPT
 //**********************************************************************************************************************************************************************
-function run_system_realization(show_outputs)
+function run_system_realization(realization, show_outputs)
 {
 
 	//*************************************************************************************
@@ -445,7 +445,6 @@ function run_system_realization(show_outputs)
 	labor_rate = 0;
 
 	//timestep 0
-	//pb = progressbar( {title='Simulation progress', message='Initializing system',cancelbutton=true, time=true, max=system_lifetime_yrs * 365});
 	initialize();
 	module_degradation_factor[0] = whats_my_degradation();
 	dc_power_availability[0] = whats_my_dc_availability();
@@ -463,13 +462,13 @@ function run_system_realization(show_outputs)
 	//rest of system lifetime
 	for (day = 1; day < system_lifetime_yrs * 365; day++)
 	{	
-		/*was_canceled = progressbar(pb, {value=day, message='Running reliability model...'});
+		was_canceled = progressbar(pb, {value=day, message='Running reliability model realization ' + realization + '...'});
 		if (was_canceled)
 		{
 			outln('Simulation canceled by user.');
 			progressbar(pb);
 			exit;
-		}*/
+		}
 		//increase the labor rate each year
 		if (day == 1 || mod(day, 365) == 0) //need to set the labor rate initially and then again at the beginning of every year
 		{
@@ -496,7 +495,7 @@ function run_system_realization(show_outputs)
 		ac_power_availability[day] = whats_my_ac_availability();
 		//outln(day + '\t' + modules);
 	}
-	//progressbar(pb, {message='Running SAM simulation...'});	
+	progressbar(pb, {message='Running SAM simulation ' + realization + '...'});	
 		
 	//create SAM performance adjustment tables for the availability, degradation, and tracker loss factors
 	time = alloc(8760 * system_lifetime_yrs);
@@ -571,59 +570,57 @@ function run_system_realization(show_outputs)
 	//OUTPUTS-------------------------------------------------------------------------------------------------------------
 
 	//failures
-	total_module_failures = total_string_failures = total_combiner_failures = 0;
-	total_inverter_failures = total_disconnect_failures = total_transformer_failures = 0;
-	total_grid_failures = 0;
-	total_tracker_failures = 0;
+	results.total_module_failures = results.total_string_failures = results.total_combiner_failures = 0;
+	results.total_inverter_failures = results.total_disconnect_failures = results.total_transformer_failures = 0;
+	results.total_grid_failures = 0;
+	results.total_tracker_failures = 0;
 	//count up cumulative failures
 	for (j=0; j<#module_meta.failure; j++)
-		module_failures_by_type[j] = 0;
+		results.module_failures_by_type[j] = 0;
 	for (m=0; m < module_meta.number; m++)
 	{
-		total_module_failures += modules[m].cumulative_failures;
+		results.total_module_failures += modules[m].cumulative_failures;
 		for (j=0; j<#module_meta.failure; j++)
-			module_failures_by_type[j] += modules[m].failures_by_type[j];
+			results.module_failures_by_type[j] += modules[m].failures_by_type[j];
 	}
 	for (s=0; s < string_meta.number; s++)
-		total_string_failures += strings[s].cumulative_failures;
+		results.total_string_failures += strings[s].cumulative_failures;
 	for (c=0; c < combiner_meta.number; c++)
-		total_combiner_failures += combiners[c].cumulative_failures;
+		results.total_combiner_failures += combiners[c].cumulative_failures;
 	inverter_failures_by_type = alloc(#inverter_meta.failure);
 	for (j=0; j<#inverter_meta.failure; j++)
-		inverter_failures_by_type[j] = 0;
+		results.inverter_failures_by_type[j] = 0;
 	for (i=0; i < inverter_meta.number; i++)
 	{
-		total_inverter_failures += inverters[i].cumulative_failures;
+		results.total_inverter_failures += inverters[i].cumulative_failures;
 		for (j=0; j<#inverter_meta.failure; j++)
-			inverter_failures_by_type[j] += inverters[i].failures_by_type[j];
+			results.inverter_failures_by_type[j] += inverters[i].failures_by_type[j];
 	}
 	for (d=0; d < disconnect_meta.number; d++)
-		total_disconnect_failures += disconnects[d].cumulative_failures;
+		results.total_disconnect_failures += disconnects[d].cumulative_failures;
 	for (t=0; t < transformer_meta.number; t++)
-		total_transformer_failures += transformers[t].cumulative_failures;
-	total_grid_failures = grid[0].cumulative_failures;
+		results.total_transformer_failures += transformers[t].cumulative_failures;
+	results.total_grid_failures = grid[0].cumulative_failures;
 	if (is_tracking_system)
 	{
 		for (tr=0; tr < tracker_meta.number; tr++)
-			total_tracker_failures += trackers[tr].cumulative_failures;
+			results.total_tracker_failures += trackers[tr].cumulative_failures;
 	}
-
-	//progressbar(pb);
 
 	//outln(dc_power_availability);
 	if (show_outputs)
 	{
-		outln('Total module failures = ' + total_module_failures);
-		outln('Total module failures by type = ' + module_failures_by_type);
-		outln('Total string failures = ' + total_string_failures);
-		outln('Total combiner failures = ' + total_combiner_failures);
-		outln('Total inverter failures = ' + total_inverter_failures);
-		outln('Inverter failures by type = ' + inverter_failures_by_type);
-		outln('Total disconnect failures = ' + total_disconnect_failures);
-		outln('Total transformer failures = ' + total_transformer_failures);
-		outln('Total grid failures =' + total_grid_failures);
+		outln('Total module failures = ' + results.total_module_failures);
+		outln('Total module failures by type = ' + results.module_failures_by_type);
+		outln('Total string failures = ' + results.total_string_failures);
+		outln('Total combiner failures = ' + results.total_combiner_failures);
+		outln('Total inverter failures = ' + results.total_inverter_failures);
+		outln('Inverter failures by type = ' + results.inverter_failures_by_type);
+		outln('Total disconnect failures = ' + results.total_disconnect_failures);
+		outln('Total transformer failures = ' + results.total_transformer_failures);
+		outln('Total grid failures =' + results.total_grid_failures);
 		if (is_tracking_system)
-			outln('Total tracker failures = ' + total_tracker_failures);
+			outln('Total tracker failures = ' + results.total_tracker_failures);
 
 		//daily performance
 		if (is_tracking_system)
@@ -636,6 +633,8 @@ function run_system_realization(show_outputs)
 		hourly_ac_power = get('gen');
 		dview(2, 1, 'Lifetime System Power', 'DC Power', 'kW', 1.0, hourly_dc_power, 'AC Power', 'kW', 1.0, hourly_ac_power);
 	}
+	results.lcoe = get('lcoe_real');
+	results.annual_energy = get('cf_energy_net');
 	
-	return get('lcoe_real');
+	return results;
 }
