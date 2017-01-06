@@ -1280,7 +1280,8 @@ public:
 		//dc.SetBackground( wxBrush( wxColour(15,79,34) ) ); // dark forest green	
 		// dc.SetBackground( wxBrush( wxColour(130,186,0) ) ); // pale lime green		
 
-		dc.SetBackground(wxBrush(wxColour(241, 47, 144))); // hot pink, making development more fun for everyone!
+		//dc.SetBackground(wxBrush(wxColour(241, 47, 144))); // hot pink, making development more fun for everyone!
+		dc.SetBackground(wxBrush(wxColour(23, 26, 33))); // nick's gray/black "blackish/gunbarrel gray"
 
 		dc.Clear();
 
