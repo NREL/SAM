@@ -50,6 +50,17 @@ Some more examples:
 
 //***********************************************************************************************************************************************************
 //CURRENT WORKING VERSION- CHANGE THIS VERSION NUMBER WHEN RELEASES ARE CREATED AND MAKE A NEW CURRENT WORKING VERSION FUNCTION
+version_upgrade{'2016.12.29'} = define() {
+	const cfg = config();
+	if (cfg.tech == 'Flat Plate PV')
+	{	
+		//transformer loss changed
+			xfmr_ll = oldvalue('transformer_loss');
+			value('transformer_load_loss',xfmr_ll,'transformer loss model updated');
+	}
+};
+
+
 version_upgrade{'2016.10.25'} = define() {
 	const cfg = config();
 	if (cfg.tech == 'Flat Plate PV')
