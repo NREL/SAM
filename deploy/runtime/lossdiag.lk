@@ -38,11 +38,11 @@ loss_diagram{'Flat Plate PV'} = define() {
 //		add_loss_term('annual_ac_battery_lifetime_loss_percent', 'Battery loss (kWh)');
 	}
 	add_loss_term('annual_ac_wiring_loss_percent', 'AC wiring' );	
-	add_loss_term('annual_ac_transformer_loss_percent', 'Step-up transformer' );	
+//	add_loss_term('annual_ac_transformer_loss_percent', 'Step-up transformer' );	
 
 	new_baseline( 'annual_ac_net', 'Net AC energy (kWh)' );
 	add_loss_term( 'annual_ac_lifetime_loss_percent', 'AC Lifetime daily losses- year one' );
-	add_loss_term('annual_xfmr_loss_percent', 'Power transformer loss' );	
+	add_loss_term('annual_xfmr_loss_percent', 'Transformer loss' );	
 	add_loss_term('annual_ac_perf_adj_loss_percent', 'Availability and curtailment' );	
 	
 	new_baseline( 'annual_energy', 'Annual energy (kWh)' );
