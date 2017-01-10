@@ -65,13 +65,6 @@ version_upgrade{'2016.10.25'} = define() {
 	const cfg = config();
 	if (cfg.tech == 'Flat Plate PV')
 	{	
-		//inverter models reordered
-		inverter_model = value('inverter_model');
-		if (inverter_model > 0)
-			inverter_model = inverter_model + 1;
-		if (inverter_model > 3)
-			inverter_model = 3;
-		value( 'inverter_model', inverter_model, 'inverter models reordered. Coefficient generator added.' );
 		//degradation bug
 		if (value('subarray2_enable') == 1 || value('subarray3_enable') == 1 || value('subarray4_enable') == 1)
 		{
