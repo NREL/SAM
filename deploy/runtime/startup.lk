@@ -42,8 +42,8 @@ configopt( 'Generic CSP System',          { 'long_name'='CSP generic model',    
 configopt( 'DSLF',        				  { 'long_name'='CSP linear Fresnel direct steam',        'short_name'='Fresnel (steam)',    'description'='CSP power system that uses long small mirrors to line focus sunlight on fixed receiver tubes mounted above them.' } );
 configopt( 'MSLF',        				  { 'long_name'='CSP linear Fresnel molten salt',         'short_name'='Fresnel (salt)',    'description'='CSP power system that uses long small mirrors to line focus sunlight on fixed receiver tubes mounted above them.' } );
 if ( en_iscc ) { configopt( 'ISCC',       { 'long_name'='CSP integrated solar combined cycle',    'short_name'='Tower Salt ISCC', 'description'='A triple pressure NGCC cycle connected to a molten salt power tower solar field/receiver' } ); }
-configopt( 'Physical Trough IPH',         { 'long_name'='CSP Trough Process Heat',                'short_name'='IPH Trough',      'description'='CST parabolic trough system using heat transfer and thermodynamic component models' } );
-configopt( 'DSGL IPH',                    { 'long_name'='CSP Linear Steam Process Heat',          'short_name'='IPH Linear (steam)', 'description'='CST linear system generating steam for process heat' } );
+configopt( 'Physical Trough IPH',         { 'long_name'='Process heat - trough',                  'short_name'='IPH Trough',      'description'='CST parabolic trough system using heat transfer and thermodynamic component models' } );
+configopt( 'DSGL IPH',                    { 'long_name'='Process heat direct steam - linear',     'short_name'='IPH Linear (steam)', 'description'='CST linear system generating steam for process heat' } );
 
 
 configopt( 'LCOE Calculator',             { 'long_name'='LCOE calculator (FCR method)',           'short_name'='LCOE Calculator',  'description'='Calculate LCOE using fixed charge rate method' } );
