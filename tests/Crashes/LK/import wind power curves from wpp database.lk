@@ -1,7 +1,7 @@
 //import power curves
 //file = 'C:/Users/jfreeman/Desktop/WPP DB Jul2016/HAWTs/5-50kw/Aircon/Aircon10S 7.54m 10kW (MCS certification).pow';
-database = 'C:/Users/adobos/Desktop/Janine/WPP DB Jul2016/HAWTs';
-output_file = 'C:/users/adobos/desktop/Janine/output_turbines.csv';
+database = '/home/adobos/Projects/SAMnt/tests/Crashes/LK/WPP DB Jul2016/HAWTs';
+output_file = '/home/adobos/Projects/SAMnt/tests/Crashes/LK/output_turbines.csv';
 
 turbines = null;
 idx = 0;
@@ -15,11 +15,14 @@ for (i=0; i<#level_1_dir; i++)
 	for (j=0; j<1; j++) //CHANGE THIS AFTER TESTING
 	
 	{
+		if ( right( level_2_dir[j], 4 ) == '.svn' ) continue;
+		
 		turbine_list = dir_list(database + '/' + level_1_dir[i] + '/' + level_2_dir[j], '*');
 		for (k=0; k<#turbine_list; k++)
 		{
 			file = database + '/' + level_1_dir[i] + '/' + level_2_dir[j] + '/' + turbine_list[k];
 			outln(file);
+			if (right(file, 4) == '.svn') continue;
 
 			/*
 			//first five lines are headers:
@@ -37,7 +40,8 @@ for (i=0; i<#level_1_dir; i++)
 
 			//read the turbine name
 			buffer = '';
-			read_line(f, buffer, 0); //read line 1
+			
+			read_line(f, buffer); //read line 1
 			outln(buffer);
 			//remove the (source) from the turbine name
 			turbine_name = split(buffer, '(');
