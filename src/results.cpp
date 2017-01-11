@@ -244,7 +244,7 @@ ResultsViewer::ResultsViewer( wxWindow *parent, int id )
 	m_summaryLayout->Add( m_metricsTable );
 	
 	m_tables = new TabularBrowser( this );
-	AddPage( m_tables, "All outputs" );
+	AddPage( m_tables, "Data tables" );
 
 	m_lossDiagramScroller = new wxScrolledWindow( this );
 	m_lossDiagramScroller->SetBackgroundColour( *wxWHITE );
