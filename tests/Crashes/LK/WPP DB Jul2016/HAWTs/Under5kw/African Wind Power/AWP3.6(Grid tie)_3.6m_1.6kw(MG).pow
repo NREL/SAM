@@ -1,0 +1,45 @@
+"AWP3.6(Grid tie) 3.6m 1.6kw (Manufacturer's graph)"
+"3"
+"6"
+"20"
+"3"
+"0"
+"0"
+"0"
+"0.14"
+"0.26"
+"0.43"
+"0.65"
+"0.85"
+"1.05"
+"1.23"
+"1.32"
+"1.31"
+"1.20"
+"1.05"
+"0.90"
+"0.75"
+"0.60"
+"0.45"
+"0.3"
+"0.15"
+"0"
+"0"
+"0"
+"0"
+"0"
+"0"
+"0"
+"0"
+"0"
+"0"
+"(Spet.2010 notes - check for manufacturer's updates if the notes are more than about six months old)
+http://www.africanwindpower.com/
+
+3-bladed upwind turbine with tail fin furling. Furling action seems to set in at about 12 metres/sec.
+
+Manufacturer's graph extended only to 14 metres/sec. Values up to 20 metres/sec by linear downward extrapolation on the assumption that the furling action continues to yaw the turbine away from the wind.
+
+Manufacturer's data on energy production is conservative and about 75% of the predictions from this program but no details given on how the figures were obtained.
+
+"

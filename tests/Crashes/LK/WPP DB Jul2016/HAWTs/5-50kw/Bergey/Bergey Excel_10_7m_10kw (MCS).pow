@@ -1,0 +1,47 @@
+"Bergey Excel-10 7m 10kw grid (MCS Certification Data)"
+"7"
+"0"
+"30"
+"2.5"
+"0"
+"0"
+"0.102"
+"0.399"
+"0.848"
+"1.510"
+"2.403"
+"3.602"
+"5.071"
+"6.856"
+"8.863"
+"10.885"
+"12.019"
+"12.395"
+"12.495"
+"12.546"
+"12.503"
+"12.442"
+"12.208"
+"11.989"
+"11.6"
+"11.2"
+"10.8"
+"10.4"
+"10.00"
+"9.60"
+"9.20"
+"8.80"
+"8.40"
+"8.00"
+"(March 2012 notes - check for manufacturer's updates if the notes are more than about six months old)
+http://www.bergey.com/
+
+This is an up-graded version of an earlier Bergey design and gives nearly twice as much annual energy output as the older  Excel - S model.
+
+3-bladed upwind turbine with tail fin. It is a fixed pitch design. There is no cut-out speed as the tail fin furls the turbine away from the wind at above about 16 m/s. Grid or battery connections is possible.
+
+Tower heights range from 18m to 49m.
+
+The turbine has been granted UK and US certification and the power curve shown here is taken from the certification test results. The tabular data only extends to 20 metres/sec. and so the data has been extrapolated linearly downwards beyond this.
+
+The annual energy production in kw-hrs from the present program agrees closely with the data in the MCS test certificate."
