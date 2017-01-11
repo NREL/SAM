@@ -1,0 +1,45 @@
+"Aventa AV-7 12.9m 6.5kW (Manufacturer's graph)"
+"12"
+"9"
+"14"
+"2"
+"0"
+"0"
+"0.638"
+"1.549"
+"3.117"
+"5.87"
+"6.234"
+"6.234"
+"6.253"
+"6.234"
+"6.234"
+"6.253"
+"6.234"
+"6.216"
+"0"
+"0"
+"0"
+"0"
+"0"
+"0"
+"0"
+"0"
+"0"
+"0"
+"0"
+"0"
+"0"
+"0"
+"0"
+"0"
+"(Jan 2012 notes - check for manufacturer's updates if the notes are more than about six months old)
+www.aventa.ch
+
+This 3-bladed Swiss HAWT is unusual in being designed for much lower wind speeds than most small turbines and is intended for use at mean wind speeds below 5 m/s.
+
+At 4.5m/s, the annual energy production is claimed to be about 24,000 kW-hrs and, at 4 m/s, about 20,000 kW-hrs.
+
+These claims have been checked by a low speed version of the present program where the output was calculated to be 18,875 kW-hrs at 4m/s and about 22,000 kW-hrs at 4.5m/s. The calculations were carried out for a Weibull parameter k of 1.5063 corresponding to a standard deviation of 68%. This is the figure used by Aventa and may be a reflection of the wind characteristics of Swiss winds.
+
+The power curve and the claimed annual energy production figures seem reasonable and are consistent with one another."
