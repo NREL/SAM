@@ -1,0 +1,100 @@
+//import power curves
+//file = 'C:/Users/jfreeman/Desktop/WPP DB Jul2016/HAWTs/5-50kw/Aircon/Aircon10S 7.54m 10kW (MCS certification).pow';
+database = 'C:/Users/adobos/Desktop/Janine/WPP DB Jul2016/HAWTs';
+output_file = 'C:/users/adobos/desktop/Janine/output_turbines.csv';
+
+turbines = null;
+idx = 0;
+
+//loop through the database
+level_1_dir = dir_list(database, '*');
+for (i=0; i<#level_1_dir; i++) 
+{
+
+	level_2_dir = dir_list(database + '/' + level_1_dir[i], '*');
+	for (j=0; j<1; j++) //CHANGE THIS AFTER TESTING
+	
+	{
+		turbine_list = dir_list(database + '/' + level_1_dir[i] + '/' + level_2_dir[j], '*');
+		for (k=0; k<#turbine_list; k++)
+		{
+			file = database + '/' + level_1_dir[i] + '/' + level_2_dir[j] + '/' + turbine_list[k];
+			outln(file);
+
+			/*
+			//first five lines are headers:
+			line 1- name of turbine (source)
+			line 2- rotor diameter
+			line 3- ???
+			line 4- cut out wind speed
+			line 5- cut in wind speed
+			lines 6-35- power curve, every 1 m/s wind speed, starting at 1 and ending at 30 m/s
+			lines 36 onward- notes
+			*/
+
+			//open the file
+			f = open(file, 'r');
+
+			//read the turbine name
+			buffer = '';
+			read_line(f, buffer, 0); //read line 1
+			outln(buffer);
+			//remove the (source) from the turbine name
+			turbine_name = split(buffer, '(');
+			turbine_name = turbine_name[0]; //we want the part to the left of the parentheses
+			turbine_name = right(turbine_name, #turbine_name - 1); //remove the initial "
+			outln(turbine_name);
+
+			//read the rotor diameter
+			read_line(f, buffer, 0); //read line 2
+			outln(buffer);
+			rotor_diameter = mid(buffer, 1, #buffer - 2); //remove quotation marks on either side of the number
+			outln(rotor_diameter);
+			outln(typeof(rotor_diameter));
+
+			//not sure what line 3 is, and we don't need cut in/cut out wind speeds (lines 4-5) so trash them
+			for(c=0; c<3; c++)
+				read_line(f, buffer, 0);
+
+			//read power curve
+			wind_speeds = null;
+			power_curve = null;
+			ws_string = ''; //wind speeds and power must also be stored in a string for writing to the library
+			p_string = '';
+			for (c=0; c<30; c++) //corresponding to line numbers in the file
+			{
+				read_line(f, buffer, 0);
+				wind_speeds[c] = c+1; //starts at 1, not zero
+				power_curve[c] = to_real(mid(buffer, 1, #buffer - 2)); //remove quotation marks and convert to a real number, not a string
+				ws_string += to_string(wind_speeds[c]) + '|'; //pipe delineator used in SAM library
+				p_string += to_string(power_curve[c]) + '|';	
+			}
+			//remove last pipe in wind speed and power strings
+			ws_string = left(ws_string, #ws_string - 1);
+			p_string = left(p_string, #p_string - 1);
+			outln(wind_speeds);
+			outln(power_curve);
+			outln(ws_string);
+			outln(p_string);
+
+			//find rated power
+			rated_power = max(power_curve);
+			outln(rated_power);
+
+			//assign turbine information needed for library into a table
+			turbines[idx][0] = turbine_name;
+			turbines[idx][1] = rated_power;
+			turbines[idx][2] = rotor_diameter;
+			turbines[idx][3] = 'unknown'; //last characteristic for SAM library
+			turbines[idx][4] = ws_string;
+			turbines[idx][5] = p_string;
+
+			idx++;
+		}
+	}
+}
+
+//write the information to a CSV
+csvwrite(output_file, turbines);
+
+
