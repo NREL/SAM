@@ -34,14 +34,14 @@ if [ ! -w "$INSTALLDIR" ] ; then
 		exit -1
 fi
 
-#echo "installing to: $INSTALLDIR"
+echo "installing to: $INSTALLDIR ..."
 ARCHIVE=`awk '/^__ARCHIVE_BELOW__/ {print NR+1; exit 0; }' $0`
 
 echo ""
 echo "decompressing archive..."
 CDIR=`pwd`
 TMPDIR=`mktemp -d /tmp/selfextract.XXXXXX`
-CSCRIPT="$CDIR/$0"
+CSCRIPT="$0"
 #echo "installer path: $CSCRIPT"
 #echo "tail -n+$ARCHIVE $CSCRIPT | tar xz -C \"$TMPDIR\""
 tail -n+$ARCHIVE $CSCRIPT | tar xz -C "$TMPDIR"
@@ -54,7 +54,7 @@ cd $INSTALLDIR
 rm -rf $TMPDIR
 
 
-echo "writing startup script..."
+echo "writing startup script to $INSTALLDIR/SAM..."
 text="#!/bin/sh
 cd $INSTALLDIR
 export LD_LIBRARY_PATH=\$LD_LIBRARY_PATH:$INSTALLDIR/linux_64
