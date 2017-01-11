@@ -58,6 +58,12 @@ version_upgrade{'2016.12.29'} = define() {
 			xfmr_ll = oldvalue('transformer_loss');
 			value('transformer_load_loss',xfmr_ll,'transformer loss model updated');
 	}
+	if (cfg.tech == 'Wind Power')
+	{
+		if (value('wind_resource_model_choice') == 0 && value('wind.turbine.radio_list_or_design') == 0)
+			message('This version fixes a bug with how wind speeds near the cut-in wind speed are treated for library turbines. This may increase your annual energy estimate slightly. Please see the release notes for more detail.', 'warning');
+	}
+			
 };
 
 
