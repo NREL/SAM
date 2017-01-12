@@ -210,8 +210,8 @@ bool ShadingInputData::read( VarValue *root )
 }
 
 
-static const char *hourly_text_basic = "Enter a beam shading loss percentage for each of the simulation time steps in a single year. No shading is 0%, and full shading is 100%. Choose a time step in minutes equivalent to the weather file time step.\n\nNote that the 3D Shade Calculator automatically populates this beam shading table.";
-static const char *hourly_text_strings = "Enter a beam shading loss percentage for each of the simulation time steps in a single year. No shading is 0%, and full shading is 100%. Choose a time step in minutes equivalent to the weather file time step. If you have separate shading data for each of up to 8 strings in this subarray, choose a number of strings to create a table column for each string, and then choose a method for determining the subarray losses from the string losses.\n\nNote that the 3D Shade Calculator automatically populates this beam shading table.";
+static const char *hourly_text_basic = "Enter or import a beam shading loss percentage for each of the simulation time steps in a single year. No shading is 0%, and full shading is 100%. Choose a time step in minutes equivalent to the weather file time step.\n\nNote that the 3D Shade Calculator automatically populates this beam shading table.";
+static const char *hourly_text_strings = "Enter or import a beam shading loss percentage for each of the simulation time steps in a single year. No shading is 0%, and full shading is 100%. Choose a time step in minutes equivalent to the weather file time step. For a subarray of modules with c-Si cells and up to 8 strings of modules, you can use the partial shading model to estimate the impact of partial shading on the subarray's DC output.\n\nIf you use the 3D Shade Calculator to populate this beam shading table, be sure that the active surface subarray number(s) and string number(s) match the system design.";
 static const char *mxh_text = "Enter 288 (24 hours x 12 month) beam shading loss percentages that apply to the 24 hours of the day for each month of the year. No shading is 0%, and full shading is 100%. Select a cell or group of cells and type a number to assign values to the table by hand. Click Import to import a table of values from a properly formatted text file. Click Export to export the data to a text file, or to create a template file for importing.";
 static const char *azal_text = "Use the Azimuth by Altitude option if you have a set of beam shading losses for different sun positions.\n\n"
   "1. Define the size of the table by entering values for the number of rows and columns.\n"
@@ -270,7 +270,7 @@ public:
 		m_timestep->SetMinuteCaption("Time step in minutes:");
 		m_timestep->SetColCaption(wxString("Strings") + wxString((!descText.IsEmpty() ? " in " : "")) + descText + wxString((!descText.IsEmpty() ? ":" : "")));
 //		m_timestep->SetStringCaption(wxString("Method for converting string losses to subarray:"));
-		m_timestep->SetDBCaption(wxString("Use shading database:"));
+		m_timestep->SetDBCaption(wxString("Enable partial shading model (c-Si modules only)"));
 
 		int num_cols = 8;
 		matrix_t<float> ts_data(8760, num_cols, 0);
