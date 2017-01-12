@@ -460,7 +460,7 @@ pagedata = [ ["./3dshad-3d-scene.htm","3D scene view","3D scene view The 3D scen
 ["./pv_losses.htm","Losses","Losses The losses inputs account for soiling and electrical losses that the module and inverter models do not account for. After running a simulat...",""],
 ["./pv_module.htm","Module","Module The Module page allows you to choose a model to represent the photovoltaic module&#39;s performance. For each time step of the simulation, the ...",""],
 ["./pv_results.htm","Results","Detailed Photovoltaic Model Results SAM reports the detailed photovoltaic model simulation results for the time step of the simulation. For simula...",""],
-["./pv_shading.htm","Shading and Snow","Shading and Snow The detailed photovoltaic model accounts for the following kinds of shading and snow losses: External shading, which SAM assumes ...",""],
+["./pv_shading.htm","Shading and Snow","Shading and Snow Shading and snow losses are reductions in the incident irradiance caused by shadows or snow on the photovoltaic modules in the ar...",""],
 ["./pv_system_costs.htm","PV System Costs","PV System Costs The PV System Costs page provides access to variables that define the installation and operating costs of a photovoltaic project. ...",""],
 ["./pv_system_design.htm","System Design","System Design Use the System Design variables to size the photovoltaic system and choose tracking options. If your system includes battery storage...",""],
 ["./references.htm","Bibliography","Bibliography The following documents are references used to develop SAM&#39;s performance and financial models. For more current and additional refere...",""],
