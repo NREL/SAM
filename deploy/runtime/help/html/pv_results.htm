@@ -40,6 +40,20 @@
 <table style="width:100%;border:none;border-spacing:0px"><tr style="vertical-align:top"><td style="text-align:left;padding:5px">
 <p class="p_Text"><span class="f_Text">SAM reports the detailed photovoltaic model simulation results for the time step of the simulation. For simulations that use a weather file with hourly time steps, these results appear on the <a href="results_page.htm" class="topiclink">Results</a> page in the <a href="data.htm" class="topiclink">data</a> table under the </span><span class="f_CHInterfaceElement">Hourly Data</span><span class="f_Text"> heading. For subhourly data, the results appear under a heading indicating the time step. You can also display this data in the <a href="timeseries.htm" class="topiclink">time series</a> graph and <a href="heatmap.htm" class="topiclink">heat map</a>, and display data summaries in daily <a href="profiles.htm" class="topiclink">profiles</a> by month, <a href="statistics.htm" class="topiclink">statistics</a>, and <a href="pdfcdf.htm" class="topiclink">PDF/CDF</a>.</span></p>
 <p class="p_Text"><span class="f_Text">SAM also reports monthly and annual totals of some of the time series values under the headings </span><span class="f_CHInterfaceElement">Single Values</span><span class="f_Text">, </span><span class="f_CHInterfaceElement">Monthly Data</span><span class="f_Text">, and </span><span class="f_CHInterfaceElement">Annual Data</span><span class="f_Text">.</span></p>
+<p class="p_Text"><span class="f_Text">&nbsp;</span></p>
+<h4 class="p_Heading4"><span class="f_Heading4">Self Shading Losses in Results</span></h4>
+<p class="p_Text"><span class="f_Text">Self shading of a subarray ultimately reduces the subarray's DC output. SAM reports the following hourly (or subhourly) results that you can use to see the self-shading model intermediate outputs:</span></p>
+<p class="p_Text"><span class="f_Text" style="font-weight: bold;">Standard (non-linear):</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Subarray n Self-shading DC derate</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Reduction in the subarray's electrical output caused by self shading.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Subarray n Self-shading diffuse derate </span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Reduction in the plane-of-array sky diffuse irradiance</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Subarray n Self-shading reflected derate </span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Reduction in the plane-of-array ground-reflected diffuse irradiance</span></p>
+<p class="p_Text"><span class="f_Text" style="font-weight: bold;">Thin film (linear):</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Subarray n Self-shading linear derate </span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Reduction in the plane-of-array beam irradiance.</span></p>
+<p class="p_Text"><span class="f_Text">&nbsp;</span></p>
 <div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 6px 0px;"><table id="PVFP-Hourly_srt_" class="Variable List Sortable" style="width:100%; border:none; border-spacing:0px;">
 <thead>
 <tr style="text-align:left;vertical-align:top;">
