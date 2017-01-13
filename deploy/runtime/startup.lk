@@ -2,8 +2,10 @@
 
 en_iscc = 1;
 
+en_pvsamv3 = 0;
+
 // define all the configurations
-addconfig( 'Photovoltaic', ['None'] );
+if ( en_pvsamv3 ) addconfig( 'Photovoltaic', ['None'] );
 addconfig( 'Flat Plate PV', ['Residential', 'Commercial', 'Third Party', 'Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None'] );
 addconfig( 'PVWatts', [ 'Residential', 'Commercial', 'Third Party', 'Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None' ] );
 addconfig( 'High-X Concentrating PV', ['Single Owner', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
@@ -24,7 +26,7 @@ if ( en_iscc ) { addconfig( 'ISCC', ['Single Owner']); }
 addconfig( 'Physical Trough IPH', ['None', 'LCOH Calculator']);
 addconfig( 'DSGL IPH', ['None', 'LCOH Calculator']);
 
-configopt( 'Photovoltaic',              {'long_name'='Photovoltaic (super detailed)',            'short_name'='Photovoltaic',     'description'='Photovoltaic system using detailed photovoltaic model with separate module and inverter component models' } );
+if ( en_pvsamv3 ) configopt( 'Photovoltaic',              {'long_name'='Photovoltaic (super detailed)',            'short_name'='Photovoltaic',     'description'='Photovoltaic system using detailed photovoltaic model with separate module and inverter component models' } );
 configopt( 'Flat Plate PV',               { 'long_name'='Photovoltaic (detailed)',                'short_name'='Photovoltaic',     'description'='Photovoltaic system using detailed photovoltaic model with separate module and inverter component models' } );
 configopt( 'PVWatts',                     { 'long_name'='Photovoltaic (PVWatts)',                 'short_name'='PVWatts',          'description'='Photovoltaic system using basic NREL PVWatts V5 algorithm' } );
 configopt( 'High-X Concentrating PV',     { 'long_name'='High concentration PV',             'short_name'='HCPV',             'description'='Concentrating photovoltaic system with a high concentration photovoltaic module model and separate inverter model' } );
@@ -1544,41 +1546,45 @@ setup_single_owner_pages(LIFETIME_SYSTEM);
 
 
 
-setconfig( 'Photovoltaic', 'None' );
-addpage( [[ 'Solar Resource Data', {'name'='PV Albedo and Radiation', 'caption' = 'Albedo - Sky Diffuse Model - Irradiance Data (Advanced)', 'collapsible'=true, 'collapsible_var'='pv.radmode.is_shown'} ]], { 'sidebar'='Location and Resource', 'help'='pv_location_and_resource' } );
+if ( en_pvsamv3 )
+{
+	setconfig( 'Photovoltaic', 'None' );
+	addpage( [[ 'Solar Resource Data', {'name'='PV Albedo and Radiation', 'caption' = 'Albedo - Sky Diffuse Model - Irradiance Data (Advanced)', 'collapsible'=true, 'collapsible_var'='pv.radmode.is_shown'} ]], { 'sidebar'='Location and Resource', 'help'='pv_location_and_resource' } );
 
-addpage( [ ['PV2 Environment'] ], { 'sidebar'='Environment', 'help'='pv_environ' } );
+	addpage( [ ['PV2 Environment'] ], { 'sidebar'='Environment', 'help'='pv_environ' } );
 
-addpage( [ [ {'name'='PV2 Unified Module Model 1', 'caption'='Module 1' }],
-			[{'name'='PV2 Unified Module Model 2', 'caption'='Module 2' }],
-			[{'name'='PV2 Unified Module Model 3', 'caption'='Module 3' }], 
-			[{'name'='PV2 Unified Module Model 4', 'caption'='Module 4' }] ], 				
-		{ 'sidebar'='Modules', 'help'='pv_module', 'exclusive_var'='module_type', 'exclusive_tabs'=true} );
-		
+	addpage( [ [ {'name'='PV2 Unified Module Model 1', 'caption'='Module 1' }],
+				[{'name'='PV2 Unified Module Model 2', 'caption'='Module 2' }],
+				[{'name'='PV2 Unified Module Model 3', 'caption'='Module 3' }], 
+				[{'name'='PV2 Unified Module Model 4', 'caption'='Module 4' }] ], 				
+			{ 'sidebar'='Modules', 'help'='pv_module', 'exclusive_var'='module_type', 'exclusive_tabs'=true} );
+			
 
-addpage( [ [ {'name'='PV2 Unified Inverter Model 1', 'caption'='Inverter 1' }] ], 				
-		{ 'sidebar'='Inverter', 'help'='pv_inverter' } );
-		
-addpage( [ [ {'name'='PV2 MLPE Optimizers', 'caption'='DC Optimizer' }] ], 				
-		{ 'sidebar'='DC optimizer', 'help'='dc_optimizer' } );
-		
-addpage( [ [ {'name'='PV2 DC Design 1', 'caption'='Subarray 1' }],
-			[{'name'='PV2 DC Design 2', 'caption'='Subarray 2' }],
-			[{'name'='PV2 DC Design 3', 'caption'='Subarray 3' }], 
-			[{'name'='PV2 DC Design 4', 'caption'='Subarray 4' }],
-			[{'name'='PV2 DC Design 5', 'caption'='Subarray 5' }],
-			[{'name'='PV2 DC Design 6', 'caption'='Subarray 6' }] ], 				
-		{ 'sidebar'='System Design', 'help'='system_design', 'exclusive_var'='subarray_index', 
-			'exclusive_tabs'=true, 'exclusive_header_pages'=['PV2 AC Design']} );
-		
+	addpage( [ [ {'name'='PV2 Unified Inverter Model 1', 'caption'='Inverter 1' }] ], 				
+			{ 'sidebar'='Inverter', 'help'='pv_inverter' } );
+			
+	addpage( [ [ {'name'='PV2 MLPE Optimizers', 'caption'='DC Optimizer' }] ], 				
+			{ 'sidebar'='DC optimizer', 'help'='dc_optimizer' } );
+			
+	addpage( [ [ {'name'='PV2 DC Design 1', 'caption'='Subarray 1' }],
+				[{'name'='PV2 DC Design 2', 'caption'='Subarray 2' }],
+				[{'name'='PV2 DC Design 3', 'caption'='Subarray 3' }], 
+				[{'name'='PV2 DC Design 4', 'caption'='Subarray 4' }],
+				[{'name'='PV2 DC Design 5', 'caption'='Subarray 5' }],
+				[{'name'='PV2 DC Design 6', 'caption'='Subarray 6' }] ], 				
+			{ 'sidebar'='System Design', 'help'='system_design', 'exclusive_var'='subarray_index', 
+				'exclusive_tabs'=true, 'exclusive_header_pages'=['PV2 AC Design']} );
+			
 
-addpage( [ [ {'name'='PV2 Interconnection', 'caption'='Interconnection' }] ], 				
-		{ 'sidebar'='Interconnection', 'help'='pv_interconnection' } );
-		
-//addpage( [ [ 'PV3 Subarray 1', {'name'='PV3 Subarray 1 Spacing', 'caption' = 'Subarray Spacing (For Self-Shading and Snow Only)', 'collapsible'=true, 'collapsible_var'='pv3.sub_spacing_is_shown'} ] ], {'sidebar'='System Design J'});
+	addpage( [ [ {'name'='PV2 Interconnection', 'caption'='Interconnection' }] ], 				
+			{ 'sidebar'='Interconnection', 'help'='pv_interconnection' } );
+			
+	//addpage( [ [ 'PV3 Subarray 1', {'name'='PV3 Subarray 1 Spacing', 'caption' = 'Subarray Spacing (For Self-Shading and Snow Only)', 'collapsible'=true, 'collapsible_var'='pv3.sub_spacing_is_shown'} ] ], {'sidebar'='System Design J'});
 
-addpage( [[ {'name'='Lifetime System', 'caption'='PV simulation over one year'}],
-		[ {'name'='Lifetime PV', 'caption'='PV simulation over analysis period' }],],
-	   {  'sidebar'='Lifetime','help'='lifetime', 'exclusive_var'='pv_lifetime_simulation' } );
+	addpage( [[ {'name'='Lifetime System', 'caption'='PV simulation over one year'}],
+			[ {'name'='Lifetime PV', 'caption'='PV simulation over analysis period' }],],
+		   {  'sidebar'='Lifetime','help'='lifetime', 'exclusive_var'='pv_lifetime_simulation' } );
 
-setup_battery_pages_behind_the_meter();
+	setup_battery_pages_behind_the_meter();
+}
+
