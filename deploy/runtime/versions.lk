@@ -70,6 +70,22 @@ version_upgrade{'2016.12.29'} = define() {
 		if (value('wind_resource_model_choice') == 0 && value('wind.turbine.radio_list_or_design') == 0)
 			message('This version fixes a bug with how wind speeds near the cut-in wind speed are treated for library turbines. This may increase your annual energy estimate slightly. Please see the release notes for more detail.', 'warning');
 	}
+	if (cfg.tech == "MSPT" || cfg.tech == "DSPT")
+	{
+		value( 'opt_algorithm', 1 ); // always set to 1 BOBYQA
+		value( 'opt_flux_penalty', 0 ); // flux penalty not used		
+		
+		message("This version eliminates the option to select the solar field optimization algorithm and uses BOBYQA in all cases. This algorithm does not require a flux over-design penalty. This may change your results when running the solar field optimization routine.", 'warning');	
+		
+		if( value('is_dispatch') == true )
+		{
+			message("The dispatch optimization algorithm was modified in this version to include additional parasitics, weighting functions for dispatch profile variability, and other enhancements. This may change your results when simulating with dispatch optimization enabled.", 'warning');
+		}
+	}
+	if (cfg.tech == "Generic CSP System")
+	{
+		message("The Generic CSP System model was restructured and now uses different regression equations for thermal losses, power block conversion efficiency, and parasitic consumption. This change invalidates previous model configurations and requires revised input values. For more information on generating regression coefficients, view help or visit the SAM website.",'error');
+	}
 };
 
 
