@@ -149,12 +149,13 @@ bool MacroEngine::Run( const wxString &script, lk::vardata_t *args )
 	else env.assign( "macro", new lk::vardata_t ); // assign null to macro variable
 
 	env.register_funcs( lk::stdlib_basic() );
+	env.register_funcs( lk::stdlib_sysio() );
 	env.register_funcs( lk::stdlib_string() );
 	env.register_funcs( lk::stdlib_math() );
 	env.register_funcs( lk::stdlib_wxui() );
-	env.register_funcs( lk::stdlib_basic() );
 	env.register_funcs( wxLKPlotFunctions() );
 	env.register_funcs( wxLKMiscFunctions() );
+	env.register_funcs( wxLKFileFunctions() );
 	env.register_funcs( invoke_general_funcs() );
 	env.register_funcs( invoke_ssc_funcs() );
 	env.register_funcs( sam_functions() );
