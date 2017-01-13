@@ -103,6 +103,7 @@ static const char *beta_disclaimer =
 static SamApp::ver releases[] = {
 //please clarify the reason for the new version in a comment. Examples: public release, variable changes, internal release, public beta release, etc.
 //the top version should always be the current working version
+	{ 2017, 1, 17 }, // public 'ones and sevens' release !
 		{ 2016, 12, 29 }, // Beta release that expires 2/28/17 
 		{ 2016, 10, 25 }, // Beta release that expires 12/31/16 - requested by Ty
 		{ 2016, 7, 21 }, // Beta release that expires 12/31/16 - utility rates for Mexico
