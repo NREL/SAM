@@ -42,8 +42,8 @@ configopt( 'Generic CSP System',          { 'long_name'='CSP generic model',    
 configopt( 'DSLF',        				  { 'long_name'='CSP linear Fresnel direct steam',        'short_name'='Fresnel (steam)',    'description'='CSP power system that uses long small mirrors to line focus sunlight on fixed receiver tubes mounted above them.' } );
 configopt( 'MSLF',        				  { 'long_name'='CSP linear Fresnel molten salt',         'short_name'='Fresnel (salt)',    'description'='CSP power system that uses long small mirrors to line focus sunlight on fixed receiver tubes mounted above them.' } );
 if ( en_iscc ) { configopt( 'ISCC',       { 'long_name'='CSP integrated solar combined cycle',    'short_name'='Tower Salt ISCC', 'description'='A triple pressure NGCC cycle connected to a molten salt power tower solar field/receiver' } ); }
-configopt( 'Physical Trough IPH',         { 'long_name'='Process heat - trough',                  'short_name'='IPH Trough',      'description'='CST parabolic trough system using heat transfer and thermodynamic component models' } );
-configopt( 'DSGL IPH',                    { 'long_name'='Process heat direct steam - linear',     'short_name'='IPH Linear (steam)', 'description'='CST linear system generating steam for process heat' } );
+configopt( 'Physical Trough IPH',         { 'long_name'='Process heat parabolic trough',          'short_name'='IPH Trough',      'description'='Industrial process heat parabolic trough system using heat transfer and thermodynamic component models' } );
+configopt( 'DSGL IPH',                    { 'long_name'='Process heat linear direct steam','short_name'='IPH Linear (steam)', 'description'='Industrial process heat linear collector system' } );
 
 
 configopt( 'LCOE Calculator',             { 'long_name'='LCOE calculator (FCR method)',           'short_name'='LCOE Calculator',  'description'='Calculate LCOE using fixed charge rate method' } );
@@ -439,21 +439,21 @@ function setup_csp_physical_trough_pages()
 
 function setup_cst_physical_trough_pages()
 {
-	addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource', 'help'='trough_location_and_resource' } );
-	addpage( [[ 'Phys Trough System Design' ]], { 'sidebar'='System Design', 'help'='troughphysical_solar_field' } );
-	addpage( [[ 'Phys Trough Solar Field' ]], { 'sidebar'='Solar Field', 'help'='troughphysical_solar_field' } );
+	addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource', 'help'='iph_trough-location_resource' } );
+	addpage( [[ 'Phys Trough System Design' ]], { 'sidebar'='System Design', 'help'='iph_trough-system_design' } );
+	addpage( [[ 'Phys Trough Solar Field' ]], { 'sidebar'='Solar Field', 'help'='iph_trough-solar_field' } );
 	addpage( [[ 'Physical Trough Collector Header',
 	 {'name'='Physical Trough Collector Type 1', 'caption'='Collector Type 1', 'collapsible'=false, 'collapsible_var'='sca_1_is_shown'},
 	 {'name'='Physical Trough Collector Type 2', 'caption'='Collector Type 2', 'collapsible'=true, 'collapsible_var'='sca_2_is_shown'},
 	 {'name'='Physical Trough Collector Type 3', 'caption'='Collector Type 3', 'collapsible'=true, 'collapsible_var'='sca_3_is_shown'},
 	 {'name'='Physical Trough Collector Type 4', 'caption'='Collector Type 4', 'collapsible'=true, 'collapsible_var'='sca_4_is_shown'} ]],
-	 { 'sidebar'='Collectors (SCAs)', 'help'='troughphysical_collectors_scas' } );
+	 { 'sidebar'='Collectors (SCAs)', 'help'='iph_trough-collectors' } );
 	addpage( [[ 'Physical Trough Receiver Header',
 	 {'name'='Physical Trough Receiver Type 1', 'caption'='Receiver Type 1', 'collapsible'=false, 'collapsible_var'='hce_1_is_shown'},
 	 {'name'='Physical Trough Receiver Type 2', 'caption'='Receiver Type 2', 'collapsible'=true, 'collapsible_var'='hce_2_is_shown'},
 	 {'name'='Physical Trough Receiver Type 3', 'caption'='Receiver Type 3', 'collapsible'=true, 'collapsible_var'='hce_3_is_shown'},
 	 {'name'='Physical Trough Receiver Type 4', 'caption'='Receiver Type 4', 'collapsible'=true, 'collapsible_var'='hce_4_is_shown'} ]],
-	 { 'sidebar'='Receivers (HCEs)', 'help'='troughphysical_receivers_hces' } );
+	 { 'sidebar'='Receivers (HCEs)', 'help'='iph_trough-receivers' } );
 }
 
 
@@ -1352,10 +1352,10 @@ if ( en_iscc ) {
 // Direct Steam Linear IPH ////////////
 function setup_DSGL_IPH_pages()
 {
-	addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource', 'help'='lf_location_and_resource' } );
-	addpage( [[ 'LF DSG System Design' ]], { 'sidebar'='System Design', 'help'='dslf_solar_field' } );
-	addpage( [[ 'LF DSG Solar Field' ]], { 'sidebar'='Solar Field', 'help'='dslf_solar_field' } );
-	addpage( [[ 'LF DSG Boiler Header', 'Linear Fresnel Boiler Geometry' ]], { 'sidebar'='Collector and Receiver', 'help'='dslf_collector_and_receiver' } );
+	addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource', 'help'='iph_linear_ds-location_resource' } );
+	addpage( [[ 'LF DSG System Design' ]], { 'sidebar'='System Design', 'help'='iph_linear_ds-system_design' } );
+	addpage( [[ 'LF DSG Solar Field' ]], { 'sidebar'='Solar Field', 'help'='iph_linear_ds-solar_field' } );
+	addpage( [[ 'LF DSG Boiler Header', 'Linear Fresnel Boiler Geometry' ]], { 'sidebar'='Collector and Receiver', 'help'='iph_linear_ds-collector_receiver' } );
 }
 
 //--------------------------------------------------
