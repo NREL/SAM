@@ -2021,7 +2021,7 @@ public:
 		SetEscapeId( wxID_CANCEL );
 			
 		m_editor = new wxLKScriptCtrl(this, IDT_SCRIPT, wxDefaultPosition, wxDefaultSize, 
-			wxLK_STDLIB_BASIC|wxLK_STDLIB_STRING|wxLK_STDLIB_MATH|wxLK_STDLIB_WXUI);
+			wxLK_STDLIB_BASIC|wxLK_STDLIB_SYSIO|wxLK_STDLIB_STRING|wxLK_STDLIB_MATH|wxLK_STDLIB_WXUI);
 		
 		m_editor->RegisterLibrary( report_script_funcs );
 
@@ -2179,6 +2179,7 @@ void SamReportScriptObject::Render( wxPageOutputDevice &dv )
 		lk::env_t env;			
 		env.register_funcs( report_script_funcs, this );
 		env.register_funcs( lk::stdlib_basic() );
+		env.register_funcs( lk::stdlib_sysio() );
 		env.register_funcs( lk::stdlib_string() );
 		env.register_funcs( lk::stdlib_math() );
 		env.register_funcs( lk::stdlib_wxui() );

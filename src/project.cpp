@@ -468,6 +468,7 @@ VersionUpgrade::VersionUpgrade()
 	: m_case( 0 )
 {		
 	m_env.register_funcs( lk::stdlib_basic() );
+	m_env.register_funcs( lk::stdlib_sysio() );
 	m_env.register_funcs( lk::stdlib_math() );
 	m_env.register_funcs( lk::stdlib_string() );
 	m_env.register_funcs( lk::stdlib_wxui() );

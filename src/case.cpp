@@ -58,6 +58,7 @@ bool CaseCallbackContext::Invoke( lk::node_t *root, lk::env_t *parent_env )
 	lk::env_t local_env( parent_env );
 	
 	local_env.register_funcs( lk::stdlib_basic() );
+	local_env.register_funcs( lk::stdlib_sysio() );
 	local_env.register_funcs( lk::stdlib_math() );
 	local_env.register_funcs( lk::stdlib_string() );
 	local_env.register_funcs( lk::stdlib_wxui(), this );
