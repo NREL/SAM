@@ -2644,6 +2644,7 @@ bool SamApp::LoadAndRunScriptFile( const wxString &script_file, wxArrayString *e
 	{
 		lk::env_t env;
 		env.register_funcs( lk::stdlib_basic() );
+		env.register_funcs( lk::stdlib_sysio() );
 		env.register_funcs( lk::stdlib_math() );
 		env.register_funcs( lk::stdlib_string() );
 		env.register_funcs( lk::stdlib_wxui() );		

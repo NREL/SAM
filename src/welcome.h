@@ -9,7 +9,7 @@
 
 #include <wex/easycurl.h>
 
-
+class wxStaticText;
 class MainWindow;
 class wxMetroButton;
 class wxMetroListBox;
@@ -40,6 +40,7 @@ private:
 	wxHtmlWindow *m_htmlWin;
 	int m_messageStatus;
 
+	//wxStaticText *m_versionLabel;
 	wxMetroButton *m_createCase;
 	wxMetroButton *m_openExisting;
 	wxMetroButton *m_openScript, *m_newScript, *m_btnAbout, *m_btnHelp, *m_btnGetStarted, *m_btnQuit, *m_btnRegistration;
@@ -53,6 +54,8 @@ private:
 	wxEasyCurl m_ssCurlMessage;
 	void OnMessageDownloadThread( wxEasyCurlEvent & );
 	void UpdateMessagesHtml(const wxString &html);
+
+	void RunWelcomeScript( const wxString &script );
 	
 	DECLARE_EVENT_TABLE()
 };

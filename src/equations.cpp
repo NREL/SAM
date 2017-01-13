@@ -108,6 +108,7 @@ bool EqnDatabase::Parse( lk::input_base &in, wxArrayString *errors )
 	{
 		lk::env_t local_env;
 		local_env.register_funcs( lk::stdlib_basic() );
+		local_env.register_funcs( lk::stdlib_sysio() );
 		local_env.register_funcs( lk::stdlib_math() );
 		local_env.register_funcs( lk::stdlib_string() );
 
@@ -543,6 +544,7 @@ int EqnEvaluator::Changed( const wxArrayString &vars )
 void EqnEvaluator::SetupEnvironment( lk::env_t &env )
 {
 	env.register_funcs( lk::stdlib_basic() );
+	env.register_funcs( lk::stdlib_sysio() );
 	env.register_funcs( lk::stdlib_math() );
 	env.register_funcs( lk::stdlib_string() );
 	env.register_funcs( lk::stdlib_wxui() );

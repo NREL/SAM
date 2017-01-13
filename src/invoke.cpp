@@ -191,12 +191,6 @@ static void fcall_logmsg( lk::invoke_t &cxt )
 	wxLogStatus( output );
 }
 
-static void fcall_browse( lk::invoke_t &cxt )
-{
-	LK_DOC("browse", "Open a URL, local file, or folder using the default browser.", "(string:url):none");
-	::wxLaunchDefaultBrowser( cxt.arg(0).as_string() );
-}
-
 static void fcall_webapi( lk::invoke_t &cxt )
 {
 	LK_DOC( "webapi", "Returns the URL for the SAM web API requested.  No arguments returns a list of names.", "( [string:name] ):string");
@@ -2928,11 +2922,8 @@ lk::fcall_t* invoke_general_funcs()
 {
 	static const lk::fcall_t vec[] = {
 		fcall_logmsg,
-		fcall_browse,
 		fcall_wfdownloaddir,
 		fcall_webapi,
-		//fcall_geocode,
-		//fcall_curl,
 		fcall_appdir,
 		fcall_runtimedir,
 		fcall_userlocaldatadir,

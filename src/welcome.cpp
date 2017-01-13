@@ -14,10 +14,22 @@
 #include <wx/hyperlink.h>
 #include <wx/stdpaths.h>
 #include <wx/dir.h>
+#include <wx/stattext.h>
 
 #include <wex/icons/time.cpng>
 #include <wex/metro.h>
 #include <wex/utils.h>
+#include <wex/lkscript.h>
+
+#include <lk/lex.h>
+#include <lk/absyn.h>
+#include <lk/eval.h>
+#include <lk/stdlib.h>
+#include <lk/invoke.h>
+#include <lk/vm.h>
+#include <lk/codegen.h>
+#include <lk/env.h>
+#include <lk/parse.h>
 
 #ifdef __WXMSW__
 #include <wex/mswfatal.h>
@@ -110,10 +122,19 @@ WelcomeScreen::WelcomeScreen(wxWindow *parent)
 	
 	m_recent = new wxMetroListBox(this, ID_RECENT_FILES );
 	
+	/*
+	m_versionLabel = new wxStaticText( this, wxID_ANY, "   The most recent version of SAM is 2017.1.17r0..." );
+	m_versionLabel->Hide();
+	m_versionLabel->SetBackgroundColour( wxColour(242,87,95) );
+	m_versionLabel->SetForegroundColour( *wxWHITE );
+	m_versionLabel->SetFont( wxMetroTheme::Font( wxMT_SEMIBOLD, 10 ) );
+	*/
+
+	
 
 	LayoutWidgets();
 
-	m_ssCurlMessage.Start( SamApp::WebApi("messages") );
+	m_ssCurlMessage.Start( SamApp::WebApi("welcome") );
 	
 	m_downloadTimer.Start(15000, true);
 
@@ -146,15 +167,143 @@ void WelcomeScreen::OnMessageDownloadThread(wxEasyCurlEvent &e)
 {
 	wxLogStatus("OnMessageDownloadThread: " + e.GetMessage());
 	if (e.GetStatusCode() == wxEasyCurlEvent::FINISHED)
-		UpdateMessagesHtml( m_ssCurlMessage.GetDataAsString() );
+	{
+		RunWelcomeScript( m_ssCurlMessage.GetDataAsString() );
+	//	UpdateMessagesHtml( m_ssCurlMessage.GetDataAsString() );
+	}
+}
+
+static void fcall_htmlout( lk::invoke_t &cxt )
+{
+	LK_DOC( "htmlout", "Output HTML to the welcome screen.", "(string):none" );
+	if ( wxString *s = (wxString*)cxt.user_data() )
+	{
+		for( size_t i=0;i<cxt.arg_count();i++ )
+			(*s) += cxt.arg(i).as_string();
+	}
+}
+
+static wxString SamVer()
+{
+	wxString cur = wxString::Format( "%d.%d.%d",
+				SamApp::VersionMajor(),
+				SamApp::VersionMinor(),
+				SamApp::VersionMicro() );
+
+	int r = SamApp::RevisionNumber();
+	if ( r > 0 )
+		cur += wxString::Format(" r%d", r );
+
+	return cur;
+}
+
+static void fcall_samver( lk::invoke_t &cxt )
+{
+	LK_DOC( "samver", "Returns current SAM version as string.", "(none):string" );
+	cxt.result().assign( SamVer() );
+}
+
+
+void WelcomeScreen::RunWelcomeScript( const wxString &script )
+{
+	// wxShowTextMessageDialog( script );
+
+	lk::input_string data( script );
+	lk::parser parse( data );
+	std::auto_ptr<lk::node_t> root( parse.script() );
+
+	if ( parse.error_count() != 0
+		|| parse.token() != lk::lexer::END)
+	{
+		wxString text = "parsing did not reach end of input\n";
+		for (int x=0; x < parse.error_count(); x++)
+			text += "parse: " + parse.error(x) + "\n";
+
+		text.Replace( "<", "&lt" );
+		text.Replace( ">", "&gt" );
+		text.Replace( "&", "&amp" );
+
+		UpdateMessagesHtml( "<pre>" + text + "</pre>" );
+		return;
+	}
+
+	lk::env_t env;
+	env.register_funcs( lk::stdlib_basic() );
+
+	// note: do not register SYSIO functions to improve security when running
+	// LK code downloaded directly from sam.nrel.gov in the welcome window
+
+	env.register_funcs( lk::stdlib_string() );
+	env.register_funcs( lk::stdlib_math() );
+	env.register_funcs( lk::stdlib_wxui() );
+	env.register_funcs( wxLKPlotFunctions() );
+	env.register_funcs( wxLKMiscFunctions() );
+
+	// note: don't register wxLKFileFunctions (csv i/o and decompress)
+	// to improve security too
+
+	//std::vector<lk_string> list = env.list_funcs();
+	//wxShowTextMessageDialog( "welcome functions=\n" + lk::join( list, "\n" ) );
+	
+	wxString html;
+	env.register_func( fcall_htmlout, &html );
+	env.register_func( fcall_samver );
+
+	lk::codegen cg;
+	if  ( !cg.generate( root.get() ) )
+	{
+		UpdateMessagesHtml( "<pre>lkcg: " + cg.error() + "</pre>" );
+		return;
+	}
+
+	lk::bytecode bc;
+	cg.get( bc );
+
+	lk::vm vm;
+	vm.load( &bc );
+	
+	UpdateMessagesHtml( "<html><body><font color=#a9a9a9 face=\"Segoe UI Light\" size=11>"
+		"Loading..."
+			"</font></body></html>" );
+
+	if ( !vm.initialize( &env ) || !vm.run() )
+	{
+		UpdateMessagesHtml( "<pre>lkvm: " + vm.error() + "</pre>" );
+		return;
+	}	
+
+	UpdateMessagesHtml( html );
 }
 
 void WelcomeScreen::UpdateMessagesHtml(const wxString &html)
 {
+	//wxShowTextMessageDialog( html );
 	if (!html.IsEmpty())
 	{
 		m_htmlWin->SetPage( html );
 		m_messageStatus = RETRIEVED;
+
+		/*
+		int start = html.Find( "<!--@" );
+		int end = html.Find( "@-->" );
+		if ( end > start+6 )
+		{
+			wxString ver = html.Mid( start+5, end - start - 5 );
+			
+			wxString cur = SamVer();
+			
+			m_versionLabel->SetLabel( 
+					"  The latest version of SAM is " 
+					+ ver + ".  You are using " + cur 
+					+ ".  Please visit the SAM website to upgrade." );
+
+			if ( ver != cur )
+			{
+				m_versionLabel->Show();
+				LayoutWidgets();
+			}
+		}*/
+
 	}
 	else
 	{
@@ -199,8 +348,16 @@ void WelcomeScreen::LayoutWidgets()
 
 	int ht = 2*ch/3; // top section height
 	int hb = ch-ht; // bottom section height
+	
+	int verht = 0;
+	/*if ( m_versionLabel->IsShown() )
+	{
+		wxSize vsz( m_versionLabel->GetBestSize() );
+		verht = vsz.GetHeight();
+		m_versionLabel->SetSize( BORDER+LEFTWIDTH, top, cw-BORDER-BORDER-LEFTWIDTH, verht );
+	}*/
 
-	m_htmlWin->SetSize( BORDER+LEFTWIDTH, top, cw-BORDER-BORDER-LEFTWIDTH, ht );
+	m_htmlWin->SetSize( BORDER+LEFTWIDTH, top + verht, cw-BORDER-BORDER-LEFTWIDTH, ht-verht );
 
 	m_recent->SetSize( BORDER+LEFTWIDTH, top+ht, cw-BORDER-BORDER-LEFTWIDTH, hb);
 
