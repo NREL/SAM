@@ -101,7 +101,7 @@ version_upgrade{'2016.10.25'} = define() {
 	if (cfg.tech == 'Solar Water Heating')
 	{
 		// changed output units to kW, removed output
-		message('Changed outputs for Q_transmitted, Q_useful, Q_deliv, Q_loss, Q_aux, Q_auxonly, P_pump, energy (Q_saved) from W to kW.  Removed duplicated Q_saved variable', 'notice');
+		message('Changed outputs for Q_transmitted, Q_useful, Q_deliv, Q_loss, Q_aux, Q_auxonly, P_pump, energy (Q_saved) from W to kW.  Removed duplicated Q_saved variable, which is "System power generated"', 'notice');
 	}		
 	return;
 };
