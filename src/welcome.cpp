@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include <memory>
+
 #include <wx/wx.h>
 #include <wx/mdi.h>
 #include <wx/config.h>
