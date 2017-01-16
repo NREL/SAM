@@ -14,9 +14,9 @@ if ( typeof(macro) == 'unknown' ) {
 ap = get("analysis_period");
 rl = get("loan_rate");
 // state tax rate
-ts=get('state_tax_rate')/100;
+ts=get('state_tax_rate')[0]/100;
 // federal tax rate
-tf=get('federal_tax_rate')/100;
+tf=get('federal_tax_rate')[0]/100;
 // effective tax rate	
 te=ts+(1-ts)*tf;
 // debt fraction
@@ -29,5 +29,7 @@ rd = ( ri*(1-fd) + (1-te)*rl/100*fd) / ( 1-(1+ri)*(1-fd) );
 //	rd = ( (1-te)*rl/100 - ri) / ( 1+ri) ;
 // set discount rate and run case
 set('real_discount_rate', rd*100);
+
+msgbox('Discount rate successfully set to ' + rd*100);
 
 
