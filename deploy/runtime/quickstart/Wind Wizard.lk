@@ -436,9 +436,10 @@ if (runTornado){
 	plot( xvals_up, yvals_up, {'type'='hbar', 'baseline'=baseOutput, 'color'=[240,100,100], 'series'='(++)', thick=20});
 
 	axis('x1', {'min'=minVal-range*0.05, 'max'=maxVal+range*0.05, 'label'= varinfo(outLabel){'label'} });
-
 	axis('y1', { 'type'='label', 'labels'=labels, 'min'=0, 'max'=2*#vars} );
-	plotopt({'legendpos'='bottom', 'title'='LCOE Sensitivity (+/- 10%)'});
+	plotopt({'legendpos'='bottom', 'coarse'=true, 'fine'=true, 'title'='LCOE Sensitivity (+/- 10%)'});
+	annotate( [baseOutput, 0], [baseOutput, 2*#vars], {type='line', color='black'});
+
 	
 	plotLocation = tempfile('png');
 	plotout(plotLocation);
