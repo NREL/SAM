@@ -130,6 +130,7 @@ if (!verify)
 
 //All degradation rates must be the same- different degradation of individual sub-systems is not yet possible for the out-years
 constant = true;
+degradation_last = null;
 for(i=0; i<num_cases; i++)
 {
 	active_case(cases[i]);
@@ -137,7 +138,7 @@ for(i=0; i<num_cases; i++)
 	if (config[1] == 'None' || config[1] == 'LCOE Calculator')
 		continue;
 	degradation_this = get('degradation');
-	if (i>0)
+	if (degradation_last != null)
 	{
 		if (#degradation_this != #degradation_last) //make sure the lengths of the degradation arrays are the same
 		{
