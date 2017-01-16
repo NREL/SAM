@@ -432,8 +432,8 @@ if (runTornado){
 	
 	// create the plot
 	newplot();
-	plot( xvals_dn, yvals_dn, {'type'='hbar', 'baseline'=baseOutput, 'color'=[140,140,140], 'series'='(--)'});
-	plot( xvals_up, yvals_up, {'type'='hbar', 'baseline'=baseOutput, 'color'=[240,100,100], 'series'='(++)'});
+	plot( xvals_dn, yvals_dn, {'type'='hbar', 'baseline'=baseOutput, 'color'=[140,140,140], 'series'='(--)', thick=20});
+	plot( xvals_up, yvals_up, {'type'='hbar', 'baseline'=baseOutput, 'color'=[240,100,100], 'series'='(++)', thick=20});
 
 	axis('x1', {'min'=minVal-range*0.05, 'max'=maxVal+range*0.05, 'label'= varinfo(outLabel){'label'} });
 
