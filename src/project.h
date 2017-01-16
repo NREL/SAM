@@ -9,7 +9,7 @@
 class Case;
 class ProjectFile;
 
-#define VERSION_VALUE( maj, min, mic )  ( ((size_t)(maj)) * 10000 + ((size_t)(min))*1000 + ((size_t)(mic)) )
+#define VERSION_VALUE( maj, min, mic )  ( ((size_t)(maj)) * 10000 + ((size_t)(min))*100 + ((size_t)(mic)) )
 
 class ProjectFileEvent
 {
