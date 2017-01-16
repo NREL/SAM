@@ -72,7 +72,6 @@ $(TARGET): $(OBJECTS) $(WEXLIB) $(LKLIB) $(SSCLIB)
 	mkdir -p $(TARGET).app/Contents/Resources
 	mkdir -p $(TARGET).app/Contents/runtime
 	make -f Makefile-webupd
-	#cp -R ../deploy/runtime/* $(TARGET).app/Contents/runtime
 	python copy_runtime.py
 	cp lhs.bin $(TARGET).app/Contents/runtime/bin
 	cp stepwise.bin $(TARGET).app/Contents/runtime/bin
