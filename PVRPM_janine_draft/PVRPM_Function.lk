@@ -6,7 +6,6 @@
 
 // TO DO-----------------------------------------------------------------------------------
 /*
-	NEED TO CREATE A MEGA-SCRIPT TO RUN MULTIPLE SIMULATIONS!! AND CREATE GRAPHS!!
 	Add component-level availability output graph vs time (using Geoff's equation)
 	WHEN AN INVERTER FAILS ROUTINELY, IT NEEDS TO NOT BE COMPLETELY RESET- which ones do reset it?
 	Basic failure rates as an output (failures per million hours)
@@ -20,6 +19,17 @@
 	make sure to multi-thread the stochastic piece
 	add number of failures per component per year- in a csv
 	need to make outputs independent of number failure/repair modes!
+	
+	additional outputs:
+	p90, p10, median
+	maybe add confidence intervals after we figure out if there's a good way to do it?
+	
+	can we create new SAM cases for various realizations?
+	->make an option to do it (first five realizations)
+	
+	summary paragraph or two about milestone
+	
+	
 */
 
 
