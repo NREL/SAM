@@ -220,13 +220,19 @@ if ( typeof(macro) == 'unknown' ) {
 	exit;
 }
 
-config = configuration();
-is_commercial = ( config[1] == 'Commercial' );
-
 cases = list_cases();
 if ( #cases > 1 ) case = choose_from_list( cases, 'Choose a case:', 'Choose Case', 0 );
 else case = cases[0];
 active_case( case );
+
+config = configuration();
+is_commercial = ( config[1] == 'Commercial' );
+
+if (config[1] == 'None')
+{
+	msgbox('You must have a financial model to run this macro.');
+	exit;
+}
 
 if ( get('en_batt') == 1 ) batt = true;
 else batt = false;
