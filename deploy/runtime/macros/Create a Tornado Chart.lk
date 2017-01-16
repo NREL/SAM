@@ -208,10 +208,10 @@ for( i=0;i<#vars;i++)
 
 // create the plot
 newplot();
-plot( output_dn, yvals_dn, {'type'='hbar', 'baseline'=baseoutput, 'color'=[140,140,140], 'series'='(--)'});
-plot( output_up, yvals_up, {'type'='hbar', 'baseline'=baseoutput, 'color'=[240,100,100], 'series'='(++)'});
+plot( output_dn, yvals_dn, {'type'='hbar', 'baseline'=baseoutput, 'color'=[140,140,140], 'series'='(--)', thick=20});
+plot( output_up, yvals_up, {'type'='hbar', 'baseline'=baseoutput, 'color'=[240,100,100], 'series'='(++)', thick=20});
 
-axis('x1', {'min'=xmin, 'max'=xmax, 'label'=outlabel });
+axis('x1', {'min'=xmin, 'max'=xmax, 'label'=outlabel, coarse=true });
 
 axis('y1', { 'type'='label', 'labels'=labels, 'min'=0, 'max'=2*#vars} );
 plotopt({'legendpos'='bottom', 'title'='Tornado Chart'});
