@@ -214,6 +214,7 @@ plot( output_up, yvals_up, {'type'='hbar', 'baseline'=baseoutput, 'color'=[240,1
 axis('x1', {'min'=xmin, 'max'=xmax, 'label'=outlabel, coarse=true });
 
 axis('y1', { 'type'='label', 'labels'=labels, 'min'=0, 'max'=2*#vars} );
-plotopt({'legendpos'='bottom', 'title'='Tornado Chart'});
+annotate( [baseoutput, 0], [baseoutput, 2*#vars], {type='line', color='black'});
+plotopt({'legendpos'='bottom', 'coarse'=true, 'fine'=true, 'title'='Tornado Chart'});
 
 outln('Tornado chart macro finished successfully.');
