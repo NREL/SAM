@@ -2539,7 +2539,7 @@ wxString SamApp::VersionStr( bool with_patches, bool short_style )
 	{
 		int patch = RevisionNumber();
 		if ( patch > 0 )
-			vs += short_style ? wxString::Format(" r%d", r )
+			vs += short_style ? wxString::Format(" r%d", patch )
 					: wxString::Format(", updated to revision %d", patch );
 	}
 
