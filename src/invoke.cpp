@@ -38,6 +38,11 @@
 #include "codegencallback.h"
 
 
+void fcall_samver( lk::invoke_t &cxt )
+{
+	LK_DOC( "samver", "Returns current SAM version as a string.", "(none):string" );
+	cxt.result().assign( SamApp::VersionStr( true, true ) );
+}
 
 
 static void fcall_dview(lk::invoke_t &cxt)
@@ -2921,6 +2926,7 @@ void fcall_step_result( lk::invoke_t &cxt )
 lk::fcall_t* invoke_general_funcs()
 {
 	static const lk::fcall_t vec[] = {
+		fcall_samver,
 		fcall_logmsg,
 		fcall_wfdownloaddir,
 		fcall_webapi,

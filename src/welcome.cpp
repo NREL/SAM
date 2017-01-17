@@ -40,6 +40,7 @@
 #include "../resource/nrel.cpng"
 
 #include "main.h"
+#include "invoke.h"
 #include "registration.h"
 #include "script.h"
 #include "welcome.h"
@@ -175,36 +176,15 @@ void WelcomeScreen::OnMessageDownloadThread(wxEasyCurlEvent &e)
 	}
 }
 
-static void fcall_htmlout( lk::invoke_t &cxt )
+static void fcall_out( lk::invoke_t &cxt )
 {
-	LK_DOC( "htmlout", "Output HTML to the welcome screen.", "(string):none" );
+	LK_DOC( "out", "Output textual data.", "(string):none" );
 	if ( wxString *s = (wxString*)cxt.user_data() )
 	{
 		for( size_t i=0;i<cxt.arg_count();i++ )
 			(*s) += cxt.arg(i).as_string();
 	}
 }
-
-static wxString SamVer()
-{
-	wxString cur = wxString::Format( "%d.%d.%d",
-				SamApp::VersionMajor(),
-				SamApp::VersionMinor(),
-				SamApp::VersionMicro() );
-
-	int r = SamApp::RevisionNumber();
-	if ( r > 0 )
-		cur += wxString::Format(" r%d", r );
-
-	return cur;
-}
-
-static void fcall_samver( lk::invoke_t &cxt )
-{
-	LK_DOC( "samver", "Returns current SAM version as string.", "(none):string" );
-	cxt.result().assign( SamVer() );
-}
-
 
 void WelcomeScreen::RunWelcomeScript( const wxString &script )
 {
@@ -248,7 +228,7 @@ void WelcomeScreen::RunWelcomeScript( const wxString &script )
 	//wxShowTextMessageDialog( "welcome functions=\n" + lk::join( list, "\n" ) );
 	
 	wxString html;
-	env.register_func( fcall_htmlout, &html );
+	env.register_func( fcall_out, &html );
 	env.register_func( fcall_samver );
 
 	lk::codegen cg;

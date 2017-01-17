@@ -2529,7 +2529,7 @@ int SamApp::RevisionNumber()
 	return patch;
 }
 
-wxString SamApp::VersionStr( bool with_patches ) 
+wxString SamApp::VersionStr( bool with_patches, bool short_style ) 
 {
 	wxString vs( wxString::Format("%d.%d.%d", VersionMajor(), VersionMinor(), VersionMicro()) );
 	if ( version_label != 0 && strlen(version_label) > 0 )
@@ -2539,7 +2539,8 @@ wxString SamApp::VersionStr( bool with_patches )
 	{
 		int patch = RevisionNumber();
 		if ( patch > 0 )
-			vs += wxString::Format(", updated to revision %d", patch );
+			vs += short_style ? wxString::Format(" r%d", r )
+					: wxString::Format(", updated to revision %d", patch );
 	}
 
 	return vs;

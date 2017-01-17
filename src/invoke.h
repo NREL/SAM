@@ -4,6 +4,10 @@
 #include <wx/string.h>
 #include <lk/env.h>
 
+// version function
+void fcall_samver( lk::invoke_t &cxt );
+
+
 // general functions like logging
 lk::fcall_t* invoke_general_funcs();
 
