@@ -288,7 +288,7 @@ public:
 	static wxFileHistory &FileHistory();	
 	static wxArrayString RecentFiles();
 	static void ShowHelp( const wxString &context = wxEmptyString );
-	static wxString VersionStr( bool with_patches = false );
+	static wxString VersionStr( bool with_patches = false, bool short_style = false );
 	static int VersionMajor();
 	static int VersionMinor();
 	static int VersionMicro();
