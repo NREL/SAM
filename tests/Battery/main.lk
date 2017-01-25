@@ -132,54 +132,58 @@ function current_test()
 			outln("------------------------------------------------------------------");
 			retCode = false;
 		}
-	
 	}
 	
 	return retCode;
 }
 
 // Test 5: efficiencies check
-function efficiencies_test()
+function ac_connected_test()
 {
-	ac_dc = get('batt_ac_dc_efficiency');
-	dc_ac = get('batt_dc_ac_efficiency');
-	roundtrip = get('average_cycle_efficiency');
-	if (ac_dc < 0 || ac_dc > 100 || dc_ac < 0 || dc_ac > 100 || roundtrip < 0 || roundtrip > 100)
-	{
-		outln("------- Efficiencies Test Failed!!! -----------------------------------");
-		outln("ac_dc: " + ac_dc + " dc_ac: " + dc_ac + " roundtrip: " + roundtrip);
-		outln("------------------------------------------------------------------");
-		return false;
-	}
-	batt_power = []; batt_voltage = []; batt_current = [];
-	batt_power = get('batt_power');
-	batt_voltage = get('batt_voltage');
-	batt_current = get('batt_I');
-	dt_hour = 8760/#batt_power;
+	topology = get('batt_ac_or_dc');
 	
-	for (i = 1; i < #batt_power; i++)
+	if (topology == 1)
 	{
-		multiplier = 0.5*(batt_voltage[i]+batt_voltage[i-1])*dt_hour*0.001;
-		batt_energy_compute = batt_current[i]*multiplier;
-		batt_energy = batt_power[i]*dt_hour;
-		
-		batt_reduced_energy = 0;
-		if (batt_energy_compute < 0)
-			batt_reduced_energy = batt_energy_compute*ac_dc*0.01;
-		else
-			batt_reduced_energy = batt_energy_compute*dc_ac*0.01;
-		
-		ratio = abs(batt_reduced_energy/batt_energy);
-		
-		if (batt_energy == 0)
-			ratio = 1;
-			
-		if ( ratio  > hi_tol || ratio < lo_tol || abs(batt_reduced_energy) > hi_tol*abs(batt_energy))
+		ac_dc = get('batt_ac_dc_efficiency');
+		dc_ac = get('batt_dc_ac_efficiency');
+		roundtrip = get('average_cycle_efficiency');
+		if (ac_dc < 0 || ac_dc > 100 || dc_ac < 0 || dc_ac > 100 || roundtrip < 0 || roundtrip > 100)
 		{
 			outln("------- Efficiencies Test Failed!!! -----------------------------------");
-			outln("i: " + i + " ratio: " + ratio + " e_batt: " + batt_energy + " e_batt_computed: " + batt_reduced_energy);
+			outln("ac_dc: " + ac_dc + " dc_ac: " + dc_ac + " roundtrip: " + roundtrip);
 			outln("------------------------------------------------------------------");
 			return false;
+		}
+		batt_power = []; batt_voltage = []; batt_current = [];
+		batt_power = get('batt_power');
+		batt_voltage = get('batt_voltage');
+		batt_current = get('batt_I');
+		dt_hour = 8760/#batt_power;
+		
+		for (i = 1; i < #batt_power; i++)
+		{
+			multiplier = 0.5*(batt_voltage[i]+batt_voltage[i-1])*dt_hour*0.001;
+			batt_energy_compute = batt_current[i]*multiplier;
+			batt_energy = batt_power[i]*dt_hour;
+			
+			batt_reduced_energy = 0;
+			if (batt_energy_compute < 0)
+				batt_reduced_energy = batt_energy_compute/(ac_dc*0.01);
+			else
+				batt_reduced_energy = batt_energy_compute*dc_ac*0.01;
+			
+			ratio = abs(batt_reduced_energy/batt_energy);
+			
+			if (batt_energy == 0)
+				ratio = 1;
+				
+			if ( ratio  > hi_tol || ratio < lo_tol || abs(batt_reduced_energy) > hi_tol*abs(batt_energy))
+			{
+				outln("------- Efficiencies Test Failed!!! -----------------------------------");
+				outln("i: " + i + " ratio: " + ratio + " e_batt: " + batt_energy + " e_batt_computed: " + batt_reduced_energy);
+				outln("------------------------------------------------------------------");
+				return false;
+			}
 		}
 	}
 	return true;
@@ -847,7 +851,7 @@ for (pv_choice = 0; pv_choice != n_pvchoice; pv_choice++)
 					if (lifetime_analysis == false)
 					{
 						outln("Test 4: " + test_status(current_test())+ " - Current test");
-						outln("Test 5: " + test_status(efficiencies_test())+ " - Efficiencies test");
+						outln("Test 5: " + test_status(ac_connected_test())+ " - Efficiencies test");
 						outln("Test 6: " + test_status(total_charge()) + " - Charge test" );
 					}
 					outln("Test 7: " + test_status(power_to_load()) +" - Power-to-load test");
