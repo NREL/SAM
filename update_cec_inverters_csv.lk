@@ -56,6 +56,8 @@ for( i=3;i<#db1;i++ )
 test_sample = alloc(18,3); // one test sample
 // 
 nadded = 0;
+missing_data = 0;
+paco_watts = 0;
 for( i=0;i<#db2;i++ )
 {
 	name = db2[i][0] + ": " + db2[i][1];
@@ -101,8 +103,26 @@ for( i=0;i<#db2;i++ )
 			test_sample[12+j][1] = fields[8]; // Vmax
 			test_sample[12+j][2] = fields[29+j]; // eff
 		}
-		
-		Paco = to_real(fields[2])*1000; // kW to W
+		// CEC provides Paco in kW mostly but some are incorrectly specified in W
+		Paco = to_real(fields[2]); 
+		// All SAM database power specifications in W
+		// Pin assumed correctly specified in kW 
+		// compare Paco to max power level and then adjust if necessary kW to W
+		Pmax = to_real(fields[14]);
+		if(Pmax <= 0)
+		{	
+			outln('Missing data for ' + name);
+			missing_data++;
+			continue;
+		}
+		if (Paco/Pmax > 100) 
+		{
+			Paco = Paco / 1000.0;
+			outln('Paco in W instead of kW for ' + name);
+			paco_watts++;
+		}
+		// convert to W for input to compute module and output to database
+		Paco = Paco * 1000.0;
 		//call inv_cec_cg module
 		obj = ssc_create();
 		ssc_var(obj, 'inv_cec_cg_paco', Paco);
@@ -136,7 +156,8 @@ for( i=0;i<#db2;i++ )
 		values[7] = c1;
 		values[8] = c2;
 		values[9] = c3;
-		values[10] = fields[3]; // Pnt
+		values[10] = to_real(fields[3]); // Pnt
+		if (values[10] < 0) values[10] = 0 - values[10];
 		values[11] = fields[8]; // Vdcmax = Vmax input
 		values[12] = to_real(fields[14]) / to_real(fields[8]); // Idcmax = max input power / vdcmax
 		values[13] = fields[6]; // Mppt low = Vlow
@@ -168,6 +189,8 @@ for( i=0;i<#names;i++ )
 outln( nadded + ' inverters added to the SAM database' );
 outln( 'new size is ' + #db3 );
 
+outln( ' missing data for ' + missing_data);
+outln( ' Paco in W for ' + paco_watts);
 
 file3 = path_only(file1) + '/CEC Inverters Updated.csv';
 csvwrite( file3, db3 );
