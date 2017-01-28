@@ -935,15 +935,15 @@ function ZoomShowFormStart()
 {
 	document.writeln("<form method=\"get\" action=\"" + SelfURL + "\" class=\"zoom_searchform\">");
 }
-//cpg change size from 25px to 15
+
 function ZoomShowSearchBox()
 {
-	document.writeln("<input type=\"text\" name=\"zoom_query\" size=\"15\" value=\"" + htmlspecialchars(query) + "\" id=\"zoom_searchbox\" class=\"zoom_searchbox\" />");
+	document.writeln("<input type=\"text\" name=\"zoom_query\" size=\"25\" value=\"" + htmlspecialchars(query) + "\" id=\"zoom_searchbox\" class=\"zoom_searchbox\" />");
 }
 
 function ZoomShowSearchButton()
 {
-	document.write("<input type=\"submit\" value=\"" + STR_FORM_SUBMIT_BUTTON + "\" class=\"zoom_button\" /><br />");
+	document.writeln("<input type=\"submit\" value=\"" + STR_FORM_SUBMIT_BUTTON + "\" class=\"zoom_button\" /><br />");
 }
 
 function ZoomShowResultsPerPage()
@@ -1097,7 +1097,7 @@ function ZoomShowSearchForm()
 	{
 		ZoomShowFormStart();
 		ZoomShowSearchBox();
-		ZoomShowSearchButton();
+		//ZoomShowSearchButton(); cpg do not show search button
 		if (FormFormat == 2)
 		{
 		//cpg default set to 100 results per page above	ZoomShowResultsPerPage();
@@ -1215,19 +1215,18 @@ function ZoomShowResults()
 			}
 		}
 
-		document.writeln("<div class=\"result_title\" >");
+		document.writeln("<div class=\"result_title\">");
 		if (DisplayNumber == 1)
 			//cpg do not dislpay number document.writeln("<b>" + (arrayline+1) + ".</b>&nbsp;");
 
-			//cpg add color style to a tags below to make them white 
 		if (DisplayTitle == 1)
 		{
-			document.writeln("<a href=\"" + urlLink + "\"" + target + " style=\"color:#FFFFFF;\">");
+			document.writeln("<a href=\"" + urlLink + "\"" + target + ">");
 			PrintHighlightDescription(pgtitle);
 			document.writeln("</a>");
 		}
 		else
-			document.writeln("<a href=\"" + urlLink + "\"" + target + " style=\"color:#FFFFFF;\">" + pgurl + "</a>");
+			document.writeln("<a href=\"" + urlLink + "\"" + target + ">" + pgurl + "</a>");
 
 		if (UseCats)
 		{
