@@ -8,7 +8,7 @@ curDir = userlocaldatadir();
 // Determine screen size and set default pop-up positions
 scrn = scrnres();
 
-defaultX = scrn[0] - 600;
+defaultX = scrn[0] - scrn[0]/2;
 defaultY = 60;
 
 // exit function (and removes any highlighting)
@@ -19,16 +19,16 @@ function exitIf( exitCondition ){
 	}
 }
 
-
-
+// if one is open close
+close_project();
 
 
 /*************************************/
 /**         Welcome the User        **/
 
 wS = [500,500];
-exitIf( !msgbox("Welcome to the PV Wizard!\n" +
-	         "This tutorial will provide a series of pop-ups which will guide you through the use of the pv model in India.\n\n" +
+exitIf( !msgbox("Welcome to the PV for India Wizard!\n" +
+	         "This tutorial will provide a series of pop-ups which will guide you through the use of the PV model in India.\n\n" +
 			 "Although you will interact with pop-up menus in this wizard, the relevant inputs will be highlighted in SAM so that you can find them later.\n\n" +
 			 "Also, there are a lot of options but we'll only focus on the most important ones.", 
 			 [defaultX, defaultY, 500, 200]) );
@@ -40,47 +40,19 @@ exitIf( !msgbox("Welcome to the PV Wizard!\n" +
 
 /*************************************/
 /**         Case management         **/
-
-// Check if there is an active case
-//  - if there is, ask the user if they would like to use this case, or else create a new case
-if( active_case() != "" )
-	newCase = yesno("First, would you like to create a new case?\n\n(selecting 'no' will make changes to the currently active case)",
-		[defaultX, defaultY]);
-else
-	newCase = true;
-
-
-// If user chooses to use the current case, ensure the right models are selected
-if( newCase == false){
-	cnf =  configuration();
+/* Will have separate default files to load defaults */
+/* For now, load updated file from Sara */
+/* copy to user folder and load */
+template_file = runtimedir() + "quickstart/PV_for_India.sam";
+user_file = curDir + "/PV__for_India.sam";
+copy_file(template_file, user_file, true);
+exitIf (!open_project(user_file));
 	
-	if( !(strcmp(cnf[0], "Flat Plate PV") == 0 && strcmp(cnf[1],"Single Owner") == 0) ){
-		exitIf(! msgbox("The currently active case does not use the appropriate physical and/or financial model for this wizard.\n\nPlease create a new case.",
-			"WARNING",
-			[defaultX, defaultY, 500, 500]));
-		newCase = true;
-	}
-} 
+millisleep(500);
 
-// Create a new case if required
-if( newCase == true ) {
-	tmpName = in("Give your case a name", 
-				"PV Wizard", 
-				"Create a new case",
-				[defaultX, defaultY]);
-	exitIf( tmpName == "" );
 
-	if( !create_case('Flat Plate PV', 'Single Owner', tmpName) ){
-		msgbox( 'Something went wrong' );
-		exit;
-	}
-}
 caseName = case_name();
-
-
-
-
-
+exitIf(caseName == "");
 
 
 /*************************************/
@@ -98,7 +70,8 @@ millisleep(500);
 
 // Get Location from User
 currentSRD = get('solar_resource');
-solarDataList = library('SolarResourceData');
+//solarDataList = library('SolarResourceData');
+solarDataList = ["India IND Ahmadabad (INTL)","India IND Bombay (INTL)","India IND Calcutta (INTL)","India IND Goa Panaji (INTL)","India IND Madras (INTL)","India IND Nagpur (INTL)","India IND New_Delhi (INTL)","India IND Trivandrum (INTL)"];
 initial = 0;
 for( i =0; i<#solarDataList; i++){
 	if( currentSRD == solarDataList[i] ){
@@ -114,180 +87,61 @@ srd = choose_from_list(
 		[defaultX, defaultY, 500, 500]);
 
 exitIf(srd == "");
+set('solar_resource', srd);
 
-set('solar_resource.location', srd);
-
-// Allow user to reflect on their life choices
+// Allow user to reflect on their choices
 millisleep(1000);
 transp( geom, 'yellow', 0 );
 
 
 /*************************************/
-/**     Get Turnbine Information    **/
+/**     Get System Size    **/
 
-// Show wind turbine selection page
-show_page('Wind Turbine');
+show_page('System Design');
 
-// Ensure hib height is set to 80 m
-hubHeight = 80;
-set('wind_turbine_hub_ht', hubHeight);
-
-// Highlight turbine selection window
-focusto('wind_turbine_selection');
-geom = widgetpos('wind_turbine_selection');
+// Highlight resource selection box in UI
+focusto('desired_size');
+geom = widgetpos('desired_size');
 transp( geom, 'yellow', 70 );
 millisleep(500);
 
-// Get Turbine from user
-currentTurbine = get('wind_turbine_selection');
-turbineList = library('Wind Turbines');
-initial = 0;
-for( i =0; i<#turbineList; i++){
-	if( currentTurbine == turbineList[i] ){
-		initial = i;
-		break;
-	}
-}
+sysSize = in( "What is your desired PV array size (kW)?", 
+			   get('desired_size'), 
+			   "Desired PV Array Size",
+			   [defaultX, defaultY] );
+exitIf(sysSize == "");
 
-turbine = choose_from_list( 
-			turbineList,
-			'What turbine manufacturer do you wish to use\n\nChoose a turbine from the list below?',
-			"Choose a wind turbine",
-			initial,
-			[defaultX, defaultY, 500, 500]);
-
-exitIf(turbine == "");
-
-set('wind_turbine_selection', turbine);
 
 // Review time
 millisleep(1000);
 transp( geom, 'yellow', 0 );
 
 
-
-
-
-
-
-
 /*************************************/
-/**       Get Wind Farm Layout      **/
+/**            Set Costs           **/
+/* could possibly do conversions.... skip fo now
+// Assumptions 1 INR = 0.015 USD conversion rate 1/30/2017
+convINRtoUSD = 0.015;
+convINRtoUSD = in( "SAM calculates all values in USD. This Wizard allows entries in INR assuming a INR to USD conversion rate. Enter the desired conversion rate or hit enter.", 
+                  convINRtoUSD, 
+                  'Rupess to Dollars',
+                  [defaultX, defaultY]);
+exitIf( convINRtoUSD  <= 0 );
+*/
+// Get capital cost from user - all costs in BOS bucket per file from Sara
+// capCostINR = to_real(get('bos_equip_fixed')) / convINRtoUSD;
 
-// Show wind farm page
-show_page('Wind Farm');
+show_page('System Costs');
 
-// Ensure wind farm sizing is set to 'Specify desired farm size'
-set('wind_farm_sizing_mode', 1);
-
-// Highlight desired farm size input
-focusto('desired_farm_size');
-geom = widgetpos('desired_farm_size');
-geom[0] -= 100;
-geom[2] += 130;
+// Highlight resource selection box in UI
+focusto('bos_equip_fixed');
+geom = widgetpos('bos_equip_fixed');
 transp( geom, 'yellow', 70 );
 millisleep(500);
 
-// Get a wind farm size from the user
-farmSizeGood = true;
-farmSize = in( "What is your desired farm size (kW)?", 
-			   get('desired_farm_size'), 
-			   "Desired Farm Size",
-			   [defaultX, defaultY] );
-exitIf(farmSize == "");
 
-set( 'desired_farm_size', to_real( farmSize ) );
-
-// Ensure the user's entered farm size is greater than zero and does not require more than 300 turbines
-numTurbines = get('wind_farm_num_turbines');
-if( numTurbines > 300 || to_real(farmSize) < 0) farmSizeGood = false;
-
-while( !farmSizeGood ){
-	numTurbines = get('wind_farm_num_turbines');
-	if (to_real(farmSize) < 0 ){
-		farmSize = in("Input farm must be greater than 0 kW.\nPlease enter a new farm size (kW).", 
-		              10000, 
-		              "Desired Farm Size",
-		              [defaultX, defaultY] );
-		exitIf( farmSize == "" );
-	}
-	elseif (numTurbines > 300 ){
-		farmSize = in("This farm size would require more than "+ numTurbines +" turbines.\nPlease enter a smaller farm size (kW).", 
-		              floor(get('desired_farm_size') * 300/numTurbines), 
-		              "Desired Farm Size",
-		              [defaultX, defaultY]);
-		exitIf( farmSize == "" );
-	}
-	else
-		farmSizeGood = true;
-		
-	set( 'desired_farm_size', to_real(farmSize) );
-}
-
-
-// Highlight windfarm plot and inform user of this automatic calculation
-focusto('windfarm_plot');
-geom = widgetpos('windfarm_plot');
-transp( geom, 'yellow', 70 );
-msgbox("We've calculated that you should use " + get('wind_farm_num_turbines') + " turbines for a system with a nameplate capacity of " + get('system_capacity') + " kW",
-       [defaultX, defaultY] );	
-
-transp();
-
-
-
-
-
-/*************************************/
-/**            Set Losses           **/
-
-set('wind_farm_losses_percent', 5);
-
-
-
-
-/*************************************/
-/**            Set Finances         **/
-
-// Show financial page
-show_page("Financial Parameters");
-
-// Highlight nominal interest rate input
-focusto('c_nominal_interest_rate');
-geom = widgetpos('c_nominal_interest_rate');
-geom[0] -= 150;
-geom[2] += 200;
-transp( geom, 'yellow', 70 );
-
-// Get noinal interest rate from user
-nominalInterest = in( "Almost there! Enter an after-tax nominal interest rate ( %/yr )", 
-					  get('c_nominal_interest_rate'), 
-					  "Nominal Interest Rate",
-		              [defaultX, defaultY]);
-exitIf( nominalInterest  == "" );
-
-// Ensure user input is greater than zero
-while( to_real(nominalInterest) < 0 ){
-	nominalInterest = in( "Nominal interest rate must be a value greater than zero", 
-						  get('c_nominal_interest_rate'), 
-						  "Nominal Interest Rate",
-		                  [defaultX, defaultY]);
-	exitIf( nominalInterest  == "" );
-}
-
-set('c_nominal_interest_rate', to_real(nominalInterest));
-
-// Ensure cost input is set to 'Enter cost in $/kW'
-set('ui_cost_input_option', 1);
-
-// Highligh capital cost input
-focusto('ui_capital_cost_capacity');
-geom = widgetpos('ui_capital_cost_capacity');
-transp( geom, 'yellow', 70 );
-
-// Get capital cost from user
-capitalCost = in( "Enter a total capital cost ($/kW)", 
-                  get('ui_capital_cost_capacity'), 
+capitalCost = in( "What is your system's a total capital cost?", 
+                  get('bos_equip_fixed') , 
                   'Capital Cost',
                   [defaultX, defaultY]);
 exitIf( capitalCost  == "" );
@@ -295,13 +149,152 @@ exitIf( capitalCost  == "" );
 // Ensure user input is greater than zero
 while( to_real(capitalCost) < 0 ){
 	capitalCost = in( "Capital cost must be a value greater than zero", 
-						  get('ui_capital_cost_capacity'), 
+						  get('bos_equip_fixed'), 
 						  "Capital Cost",
 		                  [defaultX, defaultY]);
 	exitIf( capitalCost  == "" );
 }
 
-set('ui_capital_cost_capacity', to_real(capitalCost));
+set('bos_equip_fixed', capitalCost );
+transp();
+
+/* Fixed Annual Maintenance Costs */
+// Highlight resource selection box in UI
+focusto('om_fixed');
+geom = widgetpos('om_fixed');
+transp( geom, 'yellow', 70 );
+millisleep(500);
+
+
+omCostAry = get('om_fixed');
+omCost = omCostAry[0];
+
+omCost = in( "What is your fixed annual maintenance cost?", 
+                  omCost, 
+                  'Fixed Annual Maintenance',
+                  [defaultX, defaultY]);
+exitIf( omCost  == "" );
+
+// Ensure user input is greater than zero
+while( to_real(omCost) < 0 ){
+	omCost = in( "Maintenance cost must be a value greater than zero", 
+						  omCost, 
+						 'Fixed Annual Maintenance',
+		                  [defaultX, defaultY]);
+	exitIf( omCost  == "" );
+}
+omCostAry[0] = omCost;
+
+set('om_fixed', omCostAry );
+transp();
+
+/* Escalation without inflation */
+// Highlight resource selection box in UI
+focusto('om_fixed_escal');
+geom = widgetpos('om_fixed_escal');
+transp( geom, 'yellow', 70 );
+millisleep(500);
+inflation = get('inflation_rate');
+nominalEsc = get('om_fixed_escal');
+omCostEsc =  to_real(nominalEsc) + to_real(inflation);
+
+omCostEsc = in( "What is your fixed annual maintenance escalation rate?", 
+                   omCostEsc, 
+                  'Fixed Annual Maintenance Escalation',
+                  [defaultX, defaultY]);
+exitIf( omCostEsc  == "" );
+
+
+nominalEsc = to_real(omCostEsc) - to_real(inflation);
+set('om_fixed_escal', nominalEsc); 
+// Review time
+// Can add message about escalation above inflation
+millisleep(1000);
+transp();
+
+
+/*************************************/
+/**            Set Finances         **/
+show_page('Financial Parameters');
+
+// Highlight resource selection box in UI
+focusto('debt_percent');
+geom = widgetpos('debt_percent');
+transp( geom, 'yellow', 70 );
+millisleep(500);
+
+
+debtPercent = in( "What is your debt percent?", 
+                  get('debt_percent') , 
+                  'Debt Percent',
+                  [defaultX, defaultY]);
+exitIf( debtPercent  == "" );
+
+// Ensure user input is greater than zero
+while( (to_real(debtPercent) < 0) ||  (to_real(debtPercent) > 100)){
+	debtPercent = in( "Debt percent must be a value between 0 and 100", 
+						  get('debt_percent'), 
+						  "Debt Percent",
+		                  [defaultX, defaultY]);
+	exitIf( debtPercent  == "" );
+}
+
+set('debt_percent', debtPercent );
+transp();
+
+
+focusto('term_int_rate');
+geom = widgetpos('term_int_rate');
+transp( geom, 'yellow', 70 );
+millisleep(500);
+
+
+interestRate = in( "What is your interest rate?", 
+                  get('term_int_rate') , 
+                  'Interest Rate',
+                  [defaultX, defaultY]);
+exitIf( interestRate  == "" );
+
+// Ensure user input is greater than zero
+while( (to_real(interestRate) < 0) ||  (to_real(interestRate) > 100) ){
+	interestRate = in( "Interest rate must be a value between 0 and 100", 
+						  get('term_int_rate'), 
+						  "Interest Rate",
+		                  [defaultX, defaultY]);
+	exitIf( interestRate  == "" );
+}
+
+set('term_int_rate', interestRate );
+transp();
+
+
+focusto('loan_moratorium');
+geom = widgetpos('loan_moratorium');
+transp( geom, 'yellow', 70 );
+millisleep(500);
+
+
+loanMoratorium = in( "What is your loan moratorium?", 
+                  get('loan_moratorium') , 
+                  'Loan Moratorium',
+                  [defaultX, defaultY]);
+exitIf( loanMoratorium  == "" );
+
+// Ensure user input is greater than zero
+while( to_real(loanMoratorium) < 0 ){
+	loanMoratorium = in( "Loan moratorium must be a value greater than zero", 
+						  get('loan_moratorium'), 
+						  "Loan Moratorium",
+		                  [defaultX, defaultY]);
+	exitIf( loanMoratorium  == "" );
+}
+
+set('loan_moratorium', loanMoratorium );
+
+
+// Review time
+// Can add message about escalation above inflation
+millisleep(1000);
 transp();
 
 
@@ -312,7 +305,7 @@ transp();
 
 // Ask user if they want to run the simulation
 //  if not, exit the wizard
-runSim = yesno("Great! You've completed the wind wizard! Do you want to run the simulation now?\n\n(selecting 'no' will exit the wizard and enter the regular SAM application)",
+runSim = yesno("All inputs complete. Do you want to run the simulation now?\n\n(selecting 'no' will exit the wizard and enter the regular SAM application)",
 				[defaultX, defaultY] );
 
 if( runSim ){
@@ -333,16 +326,15 @@ if( runSim ){
 
 // Ask user if they would like to make a tornado chart
 //  if not, skip to report generation
+// add lcoe_roe output
 runTornado = yesno("Would you like to run a few parametrics and generate a tornado chart?",
 					[defaultX, defaultY]);
 if (runTornado){
 	variation = 0.10;
-	outLabel = 'lcoe_fcr';
-	vars = ['wind_turbine_hub_ht',			
-			'wind_farm_losses_percent',			
-			'ui_capital_cost_capacity',			
-			'c_nominal_interest_rate',			
-			'ui_operating_cost_capacity'		
+	outLabel = 'lcoe_nom';
+	vars = ['debt_percent',			
+			'term_int_rate',			
+			'months_receivables_reserve'			
 		];
 	
 	baseVals = alloc( #vars );
@@ -467,14 +459,14 @@ if( yesno("Would you like to generate a report based off these results?",[defaul
 	
 	
 	// Create report
-	if( yesno("This report will be saved to:\n" + homedir()+"/windReport.pdf\n\nSelect 'Yes' to continue or 'No' to enter a different file path",[defaultX, defaultY]) ){
-		reportFile = homedir()+"/windReport.pdf";
+	if( yesno("This report will be saved to:\n" + homedir()+"/PVforIndiaReport.pdf\n\nSelect 'Yes' to continue or 'No' to enter a different file path",[defaultX, defaultY]) ){
+		reportFile = homedir()+"/PVforIndiaReport.pdf";
 	} else {
 		reportFile = choose_file( homedir(), "Output report file", 'PDF Files (*.pdf)|*.pdf');
 	}
 	
 	ok = pdfreport( reportFile, 
-					{'template'=runtimedir() + 'reports/windwizard.samreport', 'metadata'=data });
+					{'template'=runtimedir() + 'reports/pvforindiawizard.samreport', 'metadata'=data });
 	
 	// Open Report
 	browse(reportFile);
