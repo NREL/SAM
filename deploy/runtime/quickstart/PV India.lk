@@ -19,6 +19,12 @@ function exitIf( exitCondition ){
 	}
 }
 
+
+showinputs = true;
+if (showinputs)
+{
+
+
 // if one is open close
 close_project();
 
@@ -29,8 +35,7 @@ close_project();
 wS = [500,500];
 exitIf( !msgbox("Welcome to the PV for India Wizard!\n" +
 	         "This tutorial will provide a series of pop-ups which will guide you through the use of the PV model in India.\n\n" +
-			 "Although you will interact with pop-up menus in this wizard, the relevant inputs will be highlighted in SAM so that you can find them later.\n\n" +
-			 "Also, there are a lot of options but we'll only focus on the most important ones.", 
+			 "Although you will interact with pop-up menus in this wizard, the relevant inputs will be highlighted in SAM so that you can find them later.\n\n", 
 			 [defaultX, defaultY, 500, 200]) );
 			 
 
@@ -308,6 +313,12 @@ transp();
 runSim = yesno("All inputs complete. Do you want to run the simulation now?\n\n(selecting 'no' will exit the wizard and enter the regular SAM application)",
 				[defaultX, defaultY] );
 
+
+} // if show inputs
+else
+	runSim=true;
+
+	
 if( runSim ){
 	simMessages = "";
 	if( !simulate(simMessages, true) ){
@@ -315,6 +326,55 @@ if( runSim ){
 		exit;
 	}
 	show_page('Results');
+
+/* Show HTML results summary */	
+/* TODO - check to lcoe with ROE */
+//outvars = ['lcoe_nom', 'project_return_aftertax_npv','flip_actual_irr', 'flip_actual_year', 'min_dscr'];
+case = case_name();
+str_html = '<html><body>' + 
+           '<h3><font size = "4">Results Summary</font></h3>' + 
+           '<table bgcolor=#dddddd>' + 
+           '<tr><th>Metric</th><th>Value</th></tr>';
+/*	for( i=0; i<#outvars; i++) 
+	{
+          str_html += '<tr  bgcolor=#ffffff><td align="left">' +  varinfo( outvars[i] ){'label'} + '</td><td align="left">' + get(outvars[i]) + ' ' + varinfo( outvars[i] ){'units'} + '</td></tr>';
+    }
+*/            
+	str_html += '<tr  bgcolor=#ffffff><td align="left">Levelized COE (nominal)</td><td align="left">' + sprintf('%.2f',to_real(get('lcoe_nom'))) + ' &#162;/kWh</td></tr>';  // _
+	str_html += '<tr  bgcolor=#ffffff><td align="left">Net present value</td><td align="left">' + sprintf('$%,',round(to_real(get('project_return_aftertax_npv')))) + '</td></tr>';
+	str_html += '<tr  bgcolor=#ffffff><td align="left">Internal rate of return (IRR)</td><td align="left">' + sprintf('%.2f',to_real(get('flip_actual_irr'))) + ' %</td></tr>';
+	str_html += '<tr  bgcolor=#ffffff><td align="left">Year IRR is achieved</td><td align="left">' + sprintf('%.0f',to_real(get('flip_actual_year'))) + '</td></tr>';
+	str_html += '<tr  bgcolor=#ffffff><td align="left">Minimum debt service coverage ratio (DSCR)</td><td align="left">' + sprintf('%.2f',to_real(get('min_dscr'))) + '</td></tr>';
+	str_html +=  '</table><br><br><br>';
+
+// cash flow line items
+	varcf = ['cf_debt_payment_interest','cf_om_fixed_expense','cf_feddepr_total','cf_reserve_receivables','cf_return_on_equity'];
+    str_html += '<table bgcolor=#dddddd width=100%>';
+    ap = round(to_real(get('analysis_period')));
+
+    str_html += '<tr><th>year</th>';
+    for (i=0;i<=ap;i++)
+    {
+		str_html +=  '<th>' + sprintf("%d",i) + '</th>';
+	}
+    str_html += '</tr>';
+
+    for (i=0;i<#varcf;i++)
+    {
+		str_html += '<tr  bgcolor=#ffffff><td align="left">' + varinfo(varcf[i]){'label'} + ' ' + varinfo(varcf[i]){'units'} + '</td>';
+		cfline = get(varcf[i]);
+		for (j=0; j<#cfline; j++)
+		{
+			str_html += '<td align="right">' + sprintf('$%,',round(cfline[j])) + '</td>';
+		}
+		str_html += '</tr>';
+    }
+	str_html +=  '</table></body></html>';
+
+
+html_dialog ( str_html , 'System Results for "' + case + '" Case' , [300,300,2600,600]);
+
+	
 } else {
 	exit;
 }
@@ -323,7 +383,7 @@ if( runSim ){
 
 /*************************************/
 /**          Tornado Chart          **/
-
+plotLocation="";
 // Ask user if they would like to make a tornado chart
 //  if not, skip to report generation
 // add lcoe_roe output
@@ -332,13 +392,17 @@ runTornado = yesno("Would you like to run a few parametrics and generate a torna
 if (runTornado){
 	variation = 0.10;
 	outLabel = 'lcoe_nom';
-	vars = ['debt_percent',			
-			'term_int_rate',			
-			'months_receivables_reserve'			
-		];
+	vars = [ 'desired_size', 'bos_equip_fixed', 'om_fixed',
+			'debt_percent',	'term_int_rate','loan_moratorium'];
+	
+	/* TODO - make function or retrieve additional data in varinfo */
+	isarray = [ 0, 0, 1, 0, 0, 0];
 	
 	baseVals = alloc( #vars );
-	for( i=0; i<#vars; i++) baseVals[i] = get( vars[i] );
+	for( i=0; i<#vars; i++) 
+	{
+		baseVals[i] = get( vars[i] );
+	}
 	
 	baseOutput = get(outLabel);
 	outputData_up = alloc( #vars, 2 );
@@ -354,7 +418,10 @@ if (runTornado){
 		simMessages = "";
 		
 		// Run a var + variation sim
-		set( vars[i], baseVals[i] * (1+variation) );
+		if (isarray[i] == 1)
+			set( vars[i], [baseVals[i][0] * (1+variation)] );
+		else
+			set( vars[i], baseVals[i] * (1+variation) );
 		if(!simulate(simMessages, false)){
 			outln("Sim Error\n" + simMessages +"\n\nExiting");
 			exit;
@@ -368,7 +435,10 @@ if (runTornado){
 		avgChanges[i] += abs(baseOutput - tmp)/2/baseOutput;
 
 		// Run a var - variation sim
-		set( vars[i], baseVals[i] * (1-variation) );
+		if (isarray[i] == 1)
+			set( vars[i], [baseVals[i][0] * (1-variation)] );
+		else
+			set( vars[i], baseVals[i] * (1-variation) );
 		if(!simulate(simMessages, false)){
 			outln("Sim Error\n" + simMessages);
 			exit;
@@ -381,7 +451,10 @@ if (runTornado){
 		avgChanges[i] += abs(baseOutput - tmp)/2/baseOutput;
 		
 		// Reset all parameters
-		for( k=0; k<#vars; k++) set( vars[k], baseVals[k] );
+		for( k=0; k<#vars; k++) 
+		{
+			set( vars[k], baseVals[k] );
+		}
 	}
 	
 	range = maxVal - minVal;
@@ -473,4 +546,5 @@ if( yesno("Would you like to generate a report based off these results?",[defaul
 } 
 
 // Delete temporary tornado plot
-remove_file( plotLocation );
+//if (file_exists(plotLocation))
+//	remove_file( plotLocation );
