@@ -1,4 +1,4 @@
-public_versions = ['2014.11.24', '2015.1.30', '2015.6.30', '2016.3.14'];
+public_versions = ['2014.11.24', '2015.1.30', '2015.6.30', '2016.3.14', '2017.1.17'];
 
 
 file = homedir() + '/sam_users.csv';
@@ -20,8 +20,6 @@ enum { user_email,
 	sam_app_name,
 	sam_version,
 	usage_count,
-	tracker_created_at,
-	tracker_updated_at,
 	ip_address,
 	ip_city,
 	ip_region_code,
@@ -57,23 +55,36 @@ for( i=0;i<#public_versions;i++ )
 platusers = {};
 platusage = {};
 ver_usage = {};
+domain_users = {};
+domain_usages = {};
 total_usage = 0;
 N = #x;
 for( i=1;i<N;i++ )
 {
 	sver = split(x[i][ sam_version ], '-');
-	samver = sver[0];
+	sam_ver = sver[0];
 	plat = sver[1];
-	if ( !( nusers ?@ samver )) continue;	
-	if ( !( ver_usage ?@ samver )) ver_usage{samver} = 0;
+	// email to find domain
+	email = split(x[i][user_email],'.');
+	domain = "";
+	if (#email > 0)
+		domain = lower(replace(email[#email-1],'\\',''));
+	
+	
+	if ( !( nusers ?@ sam_ver )) continue;	
+	if ( !( ver_usage ?@ sam_ver )) ver_usage{sam_ver} = 0;
 	if ( !( platusers ?@ plat )) platusers{plat} = 0;
 	if ( !( platusage ?@ plat )) platusage{plat} = 0;
+	if ( !( domain_users ?@ domain )) domain_users{domain} = 0;
+	if ( !( domain_usages ?@ domain )) domain_usages{domain} = 0;
 	
-	nusers{samver}++;
+	nusers{sam_ver}++;
 	usage = to_int( x[i][ usage_count ]);
 	platusers{plat}++;
 	platusage{plat} += usage;
-	ver_usage{samver} += usage;	
+	domain_users{domain}++;
+	domain_usages{domain} += usage;
+	ver_usage{sam_ver} += usage;	
 	total_usage += usage;
 }
 
@@ -86,6 +97,9 @@ for( i=0;i<#vers;i++ )
 
 outln( 'platforms (by registrations): ' + platusers );
 outln( 'platforms (by usage): ' + platusage );
+
+outln( 'domain (by registrations): ' + domain_users );
+outln( 'domain (by usage): ' + domain_usages );
 
 
 maxper=0;
@@ -107,6 +121,50 @@ plot(xx,yy, {'type'='bar', size=20});
 axis('x1', {'type'='label', 'labels'=labels,'label'='Platform', 'min'=-1, 'max'=#keys});
 axis('y1', {'label'='Percentage (%)', 'max'=maxper*1.05, 'min'=0});
 plotopt({'legend'=false, 'title'='Usage by operating system as of ' + date_time()});
+
+
+
+maxusers=0;
+keys = @domain_users;
+for(i=0;i<#keys;i++ )
+{
+	labels[i][0] = i;
+	labels[i][1] = keys[i];
+	xx[i] = i;
+	users = domain_users{keys[i]};
+	yy[i] = users;
+	if ( users > maxusers ) maxusers = users;
+}
+outln(xx);
+outln(yy);
+	
+newplot(false);
+plot(xx,yy, {'type'='bar', size=20});
+axis('x1', {'type'='label', 'labels'=labels,'label'='Domain', 'min'=-1, 'max'=#keys});
+axis('y1', {'label'='Number users', 'max'=maxper, 'min'=0});
+plotopt({'legend'=false, 'title'='Users by domain as of ' + date_time()});
+
+
+
+maxper=0;
+keys = @domain_usages;
+for(i=0;i<#keys;i++ )
+{
+	labels[i][0] = i;
+	labels[i][1] = keys[i];
+	xx[i] = i;
+	per = 100*domain_usages{keys[i]}/total_usage;
+	yy[i] = per;
+	if ( per > maxper ) maxper = per;
+}
+outln(xx);
+outln(yy);
+	
+newplot(false);
+plot(xx,yy, {'type'='bar', size=20});
+axis('x1', {'type'='label', 'labels'=labels,'label'='Domain', 'min'=-1, 'max'=#keys});
+axis('y1', {'label'='Percentage (%)', 'max'=maxper*1.05, 'min'=0});
+plotopt({'legend'=false, 'title'='Usage by domain as of ' + date_time()});
 
 
 xx = yy = labels = [];
