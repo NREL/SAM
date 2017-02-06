@@ -1,6 +1,5 @@
 public_versions = ['2014.11.24', '2015.1.30', '2015.6.30', '2016.3.14', '2017.1.17'];
 
-
 file = homedir() + '/sam_users.csv';
 
 if ( yesno('download latest database file?') )
@@ -60,13 +59,20 @@ ver_usage = {};
 
 domain_users = {};
 domain_usages = {};
-// all domains with usage less than threshold will be grouped as "other"
 unique_domain_usage_threshold = 500;
+str_unique_domain_usage_threshold = to_string(unique_domain_usage_threshold);
+// all domains with usage less than threshold will be grouped as "other"
+str_unique_domain_usage_threshold = in("Usage threshold for determining unique domains", str_unique_domain_usage_threshold);
+unique_domain_usage_threshold = to_real(str_unique_domain_usage_threshold);
 
 country_users = {};
 country_usages = {};
 // all countries with usage less than threshold will be grouped as "no data"
 country_usage_threshold = 50;
+str_country_usage_threshold = to_string(country_usage_threshold);
+// all domains with usage less than threshold will be grouped as "other"
+str_country_usage_threshold = in("Usage threshold for determining countries", str_country_usage_threshold);
+country_usage_threshold = to_real(str_country_usage_threshold);
 
 total_usage = 0;
 N = #x;
@@ -151,141 +157,151 @@ axis('x1', {'type'='label', 'labels'=labels,'label'='Platform', 'min'=-1, 'max'=
 axis('y1', {'label'='Percentage (%)', 'max'=maxper*1.05, 'min'=0});
 plotopt({'legend'=false, 'title'='Usage by operating system as of ' + date_time()});
 
-
-xx = [];
-labels = [];
-yy=[];
-yy2=[];
-maxusers=0;
 keys = @domain_users;
-index = 0;
-for(i=0;i<#keys;i++ )
+if ( yesno('Plot ' + #keys + ' unique domains?') )
 {
-	if (keys[i] == "other") continue;
-	labels[index][0] = index;
-	labels[index][1] = keys[i];
-	xx[index] = index;
-	users = domain_users{keys[i]};
-	yy[index] = users;
-	if ( users > maxusers ) maxusers = users;
-	index++;
+
+	xx = [];
+	labels = [];
+	yy=[];
+	yy2=[];
+	maxusers=0;
+	keys = @domain_users;
+	index = 0;
+	for(i=0;i<#keys;i++ )
+	{
+		if (keys[i] == "other") continue;
+		labels[index][0] = index;
+		labels[index][1] = keys[i];
+		xx[index] = index;
+		users = domain_users{keys[i]};
+		yy[index] = users;
+		if ( users > maxusers ) maxusers = users;
+		index++;
+	}
+	outln(xx);
+	outln(yy);
+		
+	newplot(false);
+	plot(xx,yy, {'type'='bar', size=20});
+	axis('x1', {'type'='label', 'labels'=labels,'label'='Domain', 'min'=-1, 'max'=index});
+	axis('y1', {'label'='Number users', 'max'=maxusers+1, 'min'=0});
+	plotopt({'legend'=false, 'title'='Users by domain as of ' + date_time()});
+
+
+
+	xx = [];
+	labels = [];
+	yy=[];
+	yy2=[];
+	maxper=0;
+	keys = @domain_usages;
+	index = 0;
+	non_other_domains_usage = total_usage;
+	for(i=0;i<#keys;i++ )
+	{
+		if (keys[i] == "other") 
+		{
+			non_other_domains_usage -= domain_usages{keys[i]};
+			continue;
+		}
+		labels[index][0] = index;
+		labels[index][1] = keys[i];
+		xx[index] = index;
+		per = 100*domain_usages{keys[i]}/non_other_domains_usage;
+		yy[index] = per;
+		if ( per > maxper ) maxper = per;
+		index++;
+	}
+	outln(xx);
+	outln(yy);
+		
+	newplot(false);
+	plot(xx,yy, {'type'='bar', size=20});
+	axis('x1', {'type'='label', 'labels'=labels,'label'='Domain', 'min'=-1, 'max'=index});
+	axis('y1', {'label'='Percentage (%)', 'max'=maxper*1.05, 'min'=0});
+	plotopt({'legend'=false, 'title'='Usage by domain as of ' + date_time()});
+
 }
-outln(xx);
-outln(yy);
 outln("number of unique domains=" + #keys);
 outln("domains=" + keys);
 outln( 'domain (by registrations): ' + domain_users );
 outln( 'domain (by usage): ' + domain_usages );
 
-	
-newplot(false);
-plot(xx,yy, {'type'='bar', size=20});
-axis('x1', {'type'='label', 'labels'=labels,'label'='Domain', 'min'=-1, 'max'=index});
-axis('y1', {'label'='Number users', 'max'=maxusers+1, 'min'=0});
-plotopt({'legend'=false, 'title'='Users by domain as of ' + date_time()});
 
 
-
-xx = [];
-labels = [];
-yy=[];
-yy2=[];
-maxper=0;
-keys = @domain_usages;
-index = 0;
-non_other_domains_usage = total_usage;
-for(i=0;i<#keys;i++ )
-{
-	if (keys[i] == "other") 
-	{
-		non_other_domains_usage -= domain_usages{keys[i]};
-		continue;
-	}
-	labels[index][0] = index;
-	labels[index][1] = keys[i];
-	xx[index] = index;
-	per = 100*domain_usages{keys[i]}/non_other_domains_usage;
-	yy[index] = per;
-	if ( per > maxper ) maxper = per;
-	index++;
-}
-outln(xx);
-outln(yy);
-	
-newplot(false);
-plot(xx,yy, {'type'='bar', size=20});
-axis('x1', {'type'='label', 'labels'=labels,'label'='Domain', 'min'=-1, 'max'=index});
-axis('y1', {'label'='Percentage (%)', 'max'=maxper*1.05, 'min'=0});
-plotopt({'legend'=false, 'title'='Usage by domain as of ' + date_time()});
-
-
-
-xx = [];
-labels = [];
-yy=[];
-yy2=[];
-maxusers=0;
 keys = @country_users;
-index = 0;
-for(i=0;i<#keys;i++ )
+
+if ( yesno('Plot ' + #keys + ' unique countries?') )
 {
-	if (keys[i] == "no data") continue;
-	labels[index][0] = index;
-	labels[index][1] = keys[i];
-	xx[index] = index;
-	users = country_users{keys[i]};
-	yy[index] = users;
-	if ( users > maxusers ) maxusers = users;
-	index++;
+
+	xx = [];
+	labels = [];
+	yy=[];
+	yy2=[];
+	maxusers=0;
+	keys = @country_users;
+	index = 0;
+	for(i=0;i<#keys;i++ )
+	{
+		if (keys[i] == "no data") continue;
+		labels[index][0] = index;
+		labels[index][1] = keys[i];
+		xx[index] = index;
+		users = country_users{keys[i]};
+		yy[index] = users;
+		if ( users > maxusers ) maxusers = users;
+		index++;
+	}
+	outln(xx);
+	outln(yy);
+
+		
+	newplot(false);
+	plot(xx,yy, {'type'='bar', size=20});
+	axis('x1', {'type'='label', 'labels'=labels,'label'='country', 'min'=-1, 'max'=index});
+	axis('y1', {'label'='Number users', 'max'=maxusers+1, 'min'=0});
+	plotopt({'legend'=false, 'title'='Users by country as of ' + date_time()});
+
+
+
+	xx = [];
+	labels = [];
+	yy=[];
+	yy2=[];
+	maxper=0;
+	keys = @country_usages;
+	index = 0;
+	non_other_countrys_usage = total_usage;
+	for(i=0;i<#keys;i++ )
+	{
+		if (keys[i] == "no data") 
+		{
+			non_other_countrys_usage -= country_usages{keys[i]};
+			continue;
+		}
+		labels[index][0] = index;
+		labels[index][1] = keys[i];
+		xx[index] = index;
+		per = 100*country_usages{keys[i]}/non_other_countrys_usage;
+		yy[index] = per;
+		if ( per > maxper ) maxper = per;
+		index++;
+	}
+	outln(xx);
+	outln(yy);
+		
+	newplot(false);
+	plot(xx,yy, {'type'='bar', size=20});
+	axis('x1', {'type'='label', 'labels'=labels,'label'='country', 'min'=-1, 'max'=index});
+	axis('y1', {'label'='Percentage (%)', 'max'=maxper*1.05, 'min'=0});
+	plotopt({'legend'=false, 'title'='Usage by country as of ' + date_time()});
+
 }
-outln(xx);
-outln(yy);
 outln("number of unique countrys=" + #keys);
 outln("countrys=" + keys);
 outln( 'country (by registrations): ' + country_users );
 outln( 'country (by usage): ' + country_usages );
-
-	
-newplot(false);
-plot(xx,yy, {'type'='bar', size=20});
-axis('x1', {'type'='label', 'labels'=labels,'label'='country', 'min'=-1, 'max'=index});
-axis('y1', {'label'='Number users', 'max'=maxusers+1, 'min'=0});
-plotopt({'legend'=false, 'title'='Users by country as of ' + date_time()});
-
-
-
-xx = [];
-labels = [];
-yy=[];
-yy2=[];
-maxper=0;
-keys = @country_usages;
-index = 0;
-non_other_countrys_usage = total_usage;
-for(i=0;i<#keys;i++ )
-{
-	if (keys[i] == "no data") 
-	{
-		non_other_countrys_usage -= country_usages{keys[i]};
-		continue;
-	}
-	labels[index][0] = index;
-	labels[index][1] = keys[i];
-	xx[index] = index;
-	per = 100*country_usages{keys[i]}/non_other_countrys_usage;
-	yy[index] = per;
-	if ( per > maxper ) maxper = per;
-	index++;
-}
-outln(xx);
-outln(yy);
-	
-newplot(false);
-plot(xx,yy, {'type'='bar', size=20});
-axis('x1', {'type'='label', 'labels'=labels,'label'='country', 'min'=-1, 'max'=index});
-axis('y1', {'label'='Percentage (%)', 'max'=maxper*1.05, 'min'=0});
-plotopt({'legend'=false, 'title'='Usage by country as of ' + date_time()});
-
 
 
 
@@ -327,3 +343,54 @@ outln( 'usage per person: ' + (total_usage/N) );
 ndays = approx_days_since( 2014, 11, 24 );
 outln( 'days since 2014/11/24: ' + ndays );
 outln( 'average usage per day: ' + (total_usage/ndays) );
+
+fn = homedir() + '/sam_users_domain_usage.csv';
+fnum = open(fn,"w");
+
+write_line(fnum, "Raw data for SAM users as of " + date_time());
+write_line(fnum, "");
+write_line(fnum, "Domains with usages greater than " + unique_domain_usage_threshold);
+keys = @domain_users;
+line = "Domain,Users,Usages";
+write_line(fnum, line);
+for(i=0;i<#keys;i++ )
+{
+	line = keys[i] + "," + domain_users{keys[i]} + "," + domain_usages{keys[i]};
+	write_line(fnum, line);
+}
+
+write_line(fnum, "");
+write_line(fnum, "Countries with usages greater than " + country_usage_threshold);
+keys = @country_users;
+line = "Country,Users,Usages";
+write_line(fnum, line);
+for(i=0;i<#keys;i++ )
+{
+	line = keys[i] + "," + country_users{keys[i]} + "," + country_usages{keys[i]};
+	write_line(fnum, line);
+}
+
+close(fnum);
+outln("Data written to " + fn);
+
+/* optional row output
+csvwrite(homedir() + '/sam_users_domain_usage.csv', domain_users);
+csvwrite(homedir() + '/sam_users_domain_usage.csv', domain_usages);
+line1 = "";
+line2 = "";
+line3 = "";
+for(i=0;i<#keys-1;i++ )
+{
+	line1 += keys[i] + ",";
+	line2 += domain_users{keys[i]} + ",";
+	line3 += domain_usages{keys[i]} + ",";
+}
+line1 += keys[i];
+line2 += domain_users{keys[i]};
+line3 += domain_usages{keys[i]};
+
+
+write_line(fnum, line1);
+write_line(fnum, line2);
+write_line(fnum, line3);
+*/
