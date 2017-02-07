@@ -588,6 +588,9 @@ bool CodeGen_Base::ShowCodeGenDialog(CaseWindow *cw)
 	code_languages.Add("C#");
 	code_languages.Add("VBA");
 #endif
+#ifdef __WXMAC__
+	code_languages.Add("Swift (iOS)");
+#endif
 
 	// initialize properties
 	wxString foldername = SamApp::Settings().Read("CodeGeneratorFolder");
@@ -688,6 +691,13 @@ bool CodeGen_Base::ShowCodeGenDialog(CaseWindow *cw)
 	{
 		fn += ".bas";
 		cg = new CodeGen_vba(c, fn);
+	}
+#endif
+#ifdef __WXMAC__
+	else if (lang == 8) // Swift iOS
+	{
+		fn += ".swift";
+		cg = new CodeGen_swift(c, fn);
 	}
 #endif
 	else
@@ -6666,5 +6676,343 @@ bool CodeGen_vba::Footer()
 	return true;
 }
 
+
+
+// swift code generation class for iOS
+
+CodeGen_swift::CodeGen_swift(Case *cc, const wxString &folder) : CodeGen_Base(cc, folder)
+{
+}
+
+
+bool CodeGen_swift::Output(ssc_data_t p_data)
+{
+	wxString str_value;
+	for (size_t ii = 0; ii < m_data.size(); ii++)
+	{
+		const char *name = (const char*)m_data[ii].var.c_str();
+		int type = ::ssc_data_query(p_data, name);
+		switch (type)
+		{
+		case SSC_STRING:
+			fprintf(m_fp, "	var %s :String = ssc_data_get_string( data, \"%s\" )\n", name, name);
+			fprintf(m_fp, "	print(\"%s = \" + %s)\n", (const char*)m_data[ii].label.c_str(), name);
+			break;
+		case SSC_NUMBER:
+			fprintf(m_fp, "	var %s : Float = 0\n", name);
+			fprintf(m_fp, "	ssc_data_get_number(data, \"%s\", &%s)\n", name, name);
+			fprintf(m_fp, "	print(\"%s = \" + String(%s))\n", (const char*)m_data[ii].label.c_str(), name);
+			break;
+		case SSC_ARRAY:
+			// TODO finish and test
+			//p = ::ssc_data_get_array(p_data, name, &len);
+			//fprintf(m_fp, "	ssc_number_t p_%s[%d] ={", name, len);
+			//fprintf(m_fp, "	ssc_data_get_array( data, \"%s\", p_%s, %d );\n", name, name, len);
+			break;
+		case SSC_MATRIX:
+			// TODO tables in future
+			break;
+		}
+	}
+	return true;
+}
+
+bool CodeGen_swift::Input(ssc_data_t p_data, const char *name, const wxString &folder, const int &array_matrix_threshold)
+{
+	ssc_number_t value;
+	ssc_number_t *p;
+	int len, nr, nc;
+	wxString str_value;
+	double dbl_value;
+	int type = ::ssc_data_query(p_data, name);
+	switch (type)
+	{
+	case SSC_STRING:
+		str_value = wxString::FromUTF8(::ssc_data_get_string(p_data, name));
+		str_value.Replace("\\", "/");
+		fprintf(m_fp, "	ssc_data_set_string( data, \"%s\", \"%s\" );\n", name, (const char*)str_value.c_str());
+		break;
+	case SSC_NUMBER:
+		::ssc_data_get_number(p_data, name, &value);
+		dbl_value = (double)value;
+		if (dbl_value > 1e38) dbl_value = 1e38;
+		fprintf(m_fp, "	ssc_data_set_number( data, \"%s\", %.17g );\n", name, dbl_value);
+		break;
+	case SSC_ARRAY:
+		p = ::ssc_data_get_array(p_data, name, &len);
+		if (len > array_matrix_threshold)
+		{ // separate csv file (var_name.csv in folder) for each variable
+			wxCSVData csv;
+			wxString fn = folder + "/" + TableElementFileNames(name) + ".csv";
+			// write out as single column data for compatibility with csvread in SDKTool
+			for (int i = 0; i < len; i++)
+			{
+				dbl_value = (double)p[i];
+				if (dbl_value > 1e38) dbl_value = 1e38;
+				//				str_value = wxString::Format("%.17g", dbl_value);
+				csv.Set(i, 0, wxString::Format("%.17g", dbl_value));
+			}
+			csv.WriteFile(fn);
+			fprintf(m_fp, "	set_array( data, \"%s\", \"%s\", %d);\n", name, (const char*)fn.c_str(), len);
+		}
+		else
+		{
+			fprintf(m_fp, "	ssc_number_t p_%s[%d] ={", name, len);
+			for (int i = 0; i < (len - 1); i++)
+			{
+				dbl_value = (double)p[i];
+				if (dbl_value > 1e38) dbl_value = 1e38;
+				fprintf(m_fp, " %.17g,", dbl_value);
+			}
+			dbl_value = (double)p[len - 1];
+			if (dbl_value > 1e38) dbl_value = 1e38;
+			fprintf(m_fp, " %.17g };\n", dbl_value);
+			fprintf(m_fp, "	ssc_data_set_array( data, \"%s\", p_%s, %d );\n", name, name, len);
+		}
+		break;
+	case SSC_MATRIX:
+		p = ::ssc_data_get_matrix(p_data, name, &nr, &nc);
+		len = nr*nc;
+		if (len > array_matrix_threshold)
+		{ // separate csv file (var_name.csv in folder) for each variable
+			wxCSVData csv;
+			wxString fn = folder + "/" + TableElementFileNames(name) + ".csv";
+			for (int r = 0; r < nr; r++)
+			{
+				for (int c = 0; c < nc; c++)
+				{
+					dbl_value = (double)p[r*nc + c];
+					if (dbl_value > 1e38) dbl_value = 1e38;
+					csv.Set(r, c, wxString::Format("%.17g", dbl_value));
+				}
+			}
+			csv.WriteFile(fn);
+			fprintf(m_fp, "	set_matrix( data, \"%s\", \"%s\", %d, %d);\n", name, (const char*)fn.c_str(), nr, nc);
+		}
+		else
+		{
+			fprintf(m_fp, "	ssc_number_t p_%s[%d] ={", name, len);
+			for (int k = 0; k < (len - 1); k++)
+			{
+				dbl_value = (double)p[k];
+				if (dbl_value > 1e38) dbl_value = 1e38;
+				fprintf(m_fp, " %.17g,", dbl_value);
+			}
+			dbl_value = (double)p[len - 1];
+			if (dbl_value > 1e38) dbl_value = 1e38;
+			fprintf(m_fp, " %.17g };\n", dbl_value);
+			fprintf(m_fp, "	ssc_data_set_matrix( data, \"%s\", p_%s, %d, %d );\n", name, name, nr, nc);
+		}
+		// TODO tables in future
+	}
+	return true;
+}
+
+
+bool CodeGen_swift::RunSSCModule(wxString &name)
+{
+	fprintf(m_fp, "	if (ssc_module_exec(module, data) == 0)\n");
+	fprintf(m_fp, "	{\n");
+	fprintf(m_fp, "		printf(\"error during simulation.\"); \n");
+	fprintf(m_fp, "		ssc_module_free(module); \n");
+	fprintf(m_fp, "		ssc_data_free(data); \n");
+	fprintf(m_fp, "		return -1; \n");
+	fprintf(m_fp, "	}\n");
+	return true;
+}
+
+
+bool CodeGen_swift::Header()
+{
+	// top of file and supporting functions
+	fprintf(m_fp, "#include <stdio.h>\n");
+	fprintf(m_fp, "#include <string.h>\n");
+	fprintf(m_fp, "#include <stdlib.h>\n");
+	fprintf(m_fp, "#include \"sscapi.h\"\n");
+	fprintf(m_fp, "\n");
+
+	// handle message
+	fprintf(m_fp, "ssc_bool_t my_handler(ssc_module_t p_mod, ssc_handler_t p_handler, int action,\n");
+	fprintf(m_fp, "	float f0, float f1, const char *s0, const char *s1, void *user_data)\n");
+	fprintf(m_fp, "{\n");
+	fprintf(m_fp, "	if (action == SSC_LOG)\n");
+	fprintf(m_fp, "	{\n");
+	fprintf(m_fp, "		// print log message to console\n");
+	fprintf(m_fp, "		switch ((int)f0)\n");
+	fprintf(m_fp, "		{\n");
+	fprintf(m_fp, "		case SSC_NOTICE: printf(\"Notice: %%s\", s0); break;\n");
+	fprintf(m_fp, "		case SSC_WARNING: printf(\"Warning: %%s\", s0); break;\n");
+	fprintf(m_fp, "		case SSC_ERROR: printf(\"Error: %%s\", s0); break;\n");
+	fprintf(m_fp, "		}\n");
+	fprintf(m_fp, "		return 1;\n");
+	fprintf(m_fp, "	}\n");
+	fprintf(m_fp, "	else if (action == SSC_UPDATE)\n");
+	fprintf(m_fp, "	{\n");
+	fprintf(m_fp, "		// print status update to console\n");
+	fprintf(m_fp, "		printf(\"(%%.2f %%) %%s\", f0, s0);\n");
+	fprintf(m_fp, "		return 1; // return 0 to abort simulation as needed.\n");
+	fprintf(m_fp, "	}\n");
+	fprintf(m_fp, "	else\n");
+	fprintf(m_fp, "		return 0;\n");
+	fprintf(m_fp, "}\n");
+	fprintf(m_fp, "\n");
+
+	// handle csv files
+	// arrays
+	fprintf(m_fp, "int set_array(ssc_data_t p_data, const char *name, const char* fn, int len)\n");
+	fprintf(m_fp, "{\n");
+	fprintf(m_fp, "	char buffer[1024];\n");
+	fprintf(m_fp, "	char *record, *line;\n");
+	fprintf(m_fp, "	int i = 0;\n");
+	fprintf(m_fp, "	ssc_number_t *ary;\n");
+	fprintf(m_fp, "	FILE *fp = fopen(fn, \"r\");\n");
+	fprintf(m_fp, "	if (fp == NULL)\n");
+	fprintf(m_fp, "	{\n");
+	fprintf(m_fp, "		printf(\"file opening failed \");\n");
+	fprintf(m_fp, "		return 0;\n");
+	fprintf(m_fp, "	}\n");
+	fprintf(m_fp, "	ary = (ssc_number_t *)malloc(len * sizeof(ssc_number_t));\n");
+	fprintf(m_fp, "	while ((line = fgets(buffer, sizeof(buffer), fp)) != NULL)\n");
+	fprintf(m_fp, "	{\n");
+	fprintf(m_fp, "		record = strtok(line, \",\");\n");
+	fprintf(m_fp, "		while ((record != NULL) && (i < len))\n");
+	fprintf(m_fp, "		{\n");
+	fprintf(m_fp, "			ary[i] = atof(record);\n");
+	fprintf(m_fp, "			record = strtok(NULL, \",\");\n");
+	fprintf(m_fp, "			i++;\n");
+	fprintf(m_fp, "		}\n");
+	fprintf(m_fp, "	}\n");
+	fprintf(m_fp, "	fclose(fp);\n");
+	fprintf(m_fp, "	ssc_data_set_array(p_data, name, ary, len);\n");
+	fprintf(m_fp, "	free(ary);\n");
+	fprintf(m_fp, "	return 1;\n");
+	fprintf(m_fp, "}\n");
+	fprintf(m_fp, "\n");
+
+	// matrices
+	fprintf(m_fp, "int set_matrix(ssc_data_t p_data, const char *name, const char* fn, int nr, int nc)\n");
+	fprintf(m_fp, "{\n");
+	fprintf(m_fp, "	char buffer[1024];\n");
+	fprintf(m_fp, "	char *record, *line;\n");
+	fprintf(m_fp, "	ssc_number_t *ary;\n");
+	fprintf(m_fp, "	int i = 0, len = nr*nc;\n");
+	fprintf(m_fp, "	FILE *fp = fopen(fn, \"r\");\n");
+	fprintf(m_fp, "	if (fp == NULL)\n");
+	fprintf(m_fp, "	{\n");
+	fprintf(m_fp, "		printf(\"file opening failed \");\n");
+	fprintf(m_fp, "		return 0;\n");
+	fprintf(m_fp, "	}\n");
+	fprintf(m_fp, "	ary = (ssc_number_t *)malloc(len * sizeof(ssc_number_t));\n");
+	fprintf(m_fp, "	while ((line = fgets(buffer, sizeof(buffer), fp)) != NULL)\n");
+	fprintf(m_fp, "	{\n");
+	fprintf(m_fp, "		record = strtok(line, \",\");\n");
+	fprintf(m_fp, "		while ((record != NULL) && (i < len))\n");
+	fprintf(m_fp, "		{\n");
+	fprintf(m_fp, "			ary[i] = atof(record);\n");
+	fprintf(m_fp, "			record = strtok(NULL, \",\");\n");
+	fprintf(m_fp, "			i++;\n");
+	fprintf(m_fp, "		}\n");
+	fprintf(m_fp, "	}\n");
+	fprintf(m_fp, "	fclose(fp);\n");
+	fprintf(m_fp, "	ssc_data_set_matrix(p_data, name, ary, nr, nc);\n");
+	fprintf(m_fp, "	free(ary);\n");
+	fprintf(m_fp, "	return 1;\n");
+	fprintf(m_fp, "}\n");
+
+
+	fprintf(m_fp, "\n");
+
+	fprintf(m_fp, "int main(int argc, char *argv[])\n");
+	fprintf(m_fp, "{\n");
+
+	// create global data container
+	fprintf(m_fp, "	printf(\"Current folder = %s\\n\");\n", (const char*)m_folder.c_str());
+	fprintf(m_fp, "	printf(\"SSC version = %%d\\n\", ssc_version());\n");
+	fprintf(m_fp, "	printf(\"SSC build information = %%s\\n\", ssc_build_info());\n");
+	fprintf(m_fp, "	ssc_module_exec_set_print(0);\n");
+	fprintf(m_fp, "	ssc_data_t data = ssc_data_create();\n");
+	fprintf(m_fp, "	if (data == NULL)\n");
+	fprintf(m_fp, "	{\n");
+	fprintf(m_fp, "		printf(\"error: out of memory.\");\n");
+	fprintf(m_fp, "		return -1;\n");
+	fprintf(m_fp, "	}\n");
+	fprintf(m_fp, "	ssc_module_t module;\n");
+	fprintf(m_fp, "\n");
+
+	return true;
+}
+
+bool CodeGen_swift::CreateSSCModule(wxString &name)
+{
+	if (name.IsNull() || name.Length() < 1)
+		return false;
+	else
+	{
+		fprintf(m_fp, "	module = ssc_module_create(\"%s\"); \n", (const char*)name.c_str());
+		fprintf(m_fp, "	if (NULL == module)\n");
+		fprintf(m_fp, "	{\n");
+		fprintf(m_fp, "		printf(\"error: could not create '%s' module.\"); \n", (const char*)name.c_str());
+		fprintf(m_fp, "		ssc_data_free(data); \n");
+		fprintf(m_fp, "		return -1; \n");
+		fprintf(m_fp, "	}\n");
+	}
+	return true;
+}
+
+bool CodeGen_swift::FreeSSCModule()
+{
+	fprintf(m_fp, "	ssc_module_free(module);\n");
+	return true;
+}
+
+bool CodeGen_swift::SupportingFiles()
+{
+	// bridge header
+	wxString fn = m_folder + "/Makefile";
+	FILE *f = fopen(fn.c_str(), "w");
+	if (!f) return false;
+	fprintf(f, "ifdef SystemRoot\n");
+	fprintf(f, "	RM = del /Q\n");
+	fprintf(f, "	EXT = .exe\n");
+	fprintf(f, " 	CIFLAGS = -I.. -L.\n");
+	fprintf(f, " 	LFLAGS = -lssc\n");
+	fprintf(f, "#x64	SET PATH=c:\\MinGW64\\bin;%%PATH%%\n");
+	fprintf(f, "#win32	SET PATH=c:\\MinGW\\bin;%%PATH%%\n");
+	fprintf(f, "	CCCOMP = gcc\n");
+	fprintf(f, "else\n");
+	fprintf(f, "    PF = $(shell uname)\n");
+	fprintf(f, "    ifneq (,$(findstring Darwin, $(PF)))\n");
+	fprintf(f, "        VERS = $(shell sw_vers -productVersion)\n");
+	fprintf(f, " 		CIFLAGS = -I..\n");
+	fprintf(f, "        EXT = .dylib\n");
+	fprintf(f, "    else \n");
+	fprintf(f, "        ifneq (,$findstring(Linux, $(PF)))\n");
+	fprintf(f, "	    CIFLAGS = -I.. ./ssc.so\n");
+	fprintf(f, "	    EXT = .o\n");
+	fprintf(f, "    	endif\n");
+	fprintf(f, "    endif\n");
+	fprintf(f, "    RM = rm -f\n");
+	fprintf(f, "    CCCOMP = gcc\n");
+	fprintf(f, " 	LFLAGS = -ldl\n");
+	fprintf(f, "endif\n");
+	fprintf(f, "PROJ_NAME =  %s\n", (const char*)m_name.c_str());
+	fprintf(f, "JFLAGS = -g\n");
+	fprintf(f, "all :\n");
+	fprintf(f, "	$(CCCOMP) $(CIFLAGS) -o$(PROJ_NAME) $(PROJ_NAME).c $(LFLAGS)\n");
+	fprintf(f, "clean :\n");
+	fprintf(f, "	$(RM) $(PROJ_NAME)$(EXT)\n");
+	fprintf(f, "help:\n");
+	fprintf(f, "	@echo \"Please check the settings for your system.Your system may not be supported.Please contact sam.support@nrel.gov\"\n");
+	fclose(f);
+
+	return true;
+}
+
+bool CodeGen_swift::Footer()
+{
+	fprintf(m_fp, "	ssc_data_free(data)\n");
+	fprintf(m_fp, "}\n");
+	return true;
+}
 
 
