@@ -1282,7 +1282,7 @@ bool CodeGen_csharp::Input(ssc_data_t p_data, const char *name, const wxString &
 		}
 		else
 		{
-			fprintf(m_fp, "		float[] p_%s ={", name, len);
+			fprintf(m_fp, "		float[] p_%s ={", name);
 			for (int i = 0; i < (len - 1); i++)
 			{
 				dbl_value = (double)p[i];
@@ -1316,7 +1316,7 @@ bool CodeGen_csharp::Input(ssc_data_t p_data, const char *name, const wxString &
 		}
 		else
 		{
-			fprintf(m_fp, "		float[,] p_%s ={ {", name, len);
+			fprintf(m_fp, "		float[,] p_%s ={ {", name);
 			for (int k = 0; k < (len - 1); k++)
 			{
 				dbl_value = (double)p[k];
@@ -2661,7 +2661,7 @@ bool CodeGen_matlab::Header()
 	fprintf(m_fp, "            result = {text , typetext , p_time.Value};\n");
 	fprintf(m_fp, "        end\n");
 	fprintf(m_fp, "    else\n");
-	fprintf(m_fp, "        disp( sprintf('ssccall: invalid action %s', action) );        \n");
+	fprintf(m_fp, "        disp( sprintf('ssccall: invalid action %%s', action) );        \n");
 	fprintf(m_fp, "        result = 0;\n");
 	fprintf(m_fp, "    end\n");
 	fprintf(m_fp, "	end\n");
@@ -6696,12 +6696,12 @@ bool CodeGen_swift::Output(ssc_data_t p_data)
 		{
 		case SSC_STRING:
 			fprintf(m_fp, "	var %s :String = ssc_data_get_string( data, \"%s\" )\n", name, name);
-			fprintf(m_fp, "	print(\"%s = \" + %s)\n", (const char*)m_data[ii].label.c_str(), name);
+			fprintf(m_fp, "	ret_string += \"\\n%s = \" + %s\n", (const char*)m_data[ii].label.c_str(), name);
 			break;
 		case SSC_NUMBER:
 			fprintf(m_fp, "	var %s : Float = 0\n", name);
 			fprintf(m_fp, "	ssc_data_get_number(data, \"%s\", &%s)\n", name, name);
-			fprintf(m_fp, "	print(\"%s = \" + String(%s))\n", (const char*)m_data[ii].label.c_str(), name);
+			fprintf(m_fp, "	ret_string += \"\\n%s = \" + String(%s)\n", (const char*)m_data[ii].label.c_str(), name);
 			break;
 		case SSC_ARRAY:
 			// TODO finish and test
@@ -6730,7 +6730,20 @@ bool CodeGen_swift::Input(ssc_data_t p_data, const char *name, const wxString &f
 	case SSC_STRING:
 		str_value = wxString::FromUTF8(::ssc_data_get_string(p_data, name));
 		str_value.Replace("\\", "/");
-		fprintf(m_fp, "	ssc_data_set_string( data, \"%s\", \"%s\" );\n", name, (const char*)str_value.c_str());
+        // parse files to be included in bundle
+        if (wxFileExists(str_value))
+        {
+            wxString f1 = str_value;
+            wxString namefile, extfile;
+            wxFileName::SplitPath( f1, NULL, NULL, &namefile, &extfile);
+            wxString f2 = m_folder + "/" + namefile + "." + extfile;
+            wxCopyFile(f1, f2);
+            fprintf(m_fp, "	ssc_data_set_string( data, \"%s\", Bundle.main.path(forResource: \"%s\", ofType: \"%s\" ));\n", name, (const char*)namefile.c_str(), (const char*)extfile.c_str());
+        }
+        else
+        {
+            fprintf(m_fp, "	ssc_data_set_string( data, \"%s\", \"%s\" );\n", name, (const char*)str_value.c_str());
+        }
 		break;
 	case SSC_NUMBER:
 		::ssc_data_get_number(p_data, name, &value);
@@ -6753,11 +6766,11 @@ bool CodeGen_swift::Input(ssc_data_t p_data, const char *name, const wxString &f
 				csv.Set(i, 0, wxString::Format("%.17g", dbl_value));
 			}
 			csv.WriteFile(fn);
-			fprintf(m_fp, "	set_array( data, \"%s\", \"%s\", %d);\n", name, (const char*)fn.c_str(), len);
+			fprintf(m_fp, "	set_array(  p_data: data!, name: \"%s\", fn: \"%s\", len: %d);\n", name, name, len);
 		}
 		else
 		{
-			fprintf(m_fp, "	ssc_number_t p_%s[%d] ={", name, len);
+			fprintf(m_fp, "	var p_%s : [Float] = [", name);
 			for (int i = 0; i < (len - 1); i++)
 			{
 				dbl_value = (double)p[i];
@@ -6766,8 +6779,8 @@ bool CodeGen_swift::Input(ssc_data_t p_data, const char *name, const wxString &f
 			}
 			dbl_value = (double)p[len - 1];
 			if (dbl_value > 1e38) dbl_value = 1e38;
-			fprintf(m_fp, " %.17g };\n", dbl_value);
-			fprintf(m_fp, "	ssc_data_set_array( data, \"%s\", p_%s, %d );\n", name, name, len);
+			fprintf(m_fp, " %.17g ];\n", dbl_value);
+			fprintf(m_fp, "	ssc_data_set_array( data, \"%s\", &p_%s, %d );\n", name, name, len);
 		}
 		break;
 	case SSC_MATRIX:
@@ -6787,11 +6800,11 @@ bool CodeGen_swift::Input(ssc_data_t p_data, const char *name, const wxString &f
 				}
 			}
 			csv.WriteFile(fn);
-			fprintf(m_fp, "	set_matrix( data, \"%s\", \"%s\", %d, %d);\n", name, (const char*)fn.c_str(), nr, nc);
+			fprintf(m_fp, "	set_matrix(  p_data: data!, name: \"%s\", fn: \"%s\", nr: %d , nc: %d);\n", name, name, nr, nc);
 		}
 		else
 		{
-			fprintf(m_fp, "	ssc_number_t p_%s[%d] ={", name, len);
+			fprintf(m_fp, "	var p_%s : [Float] = [", name);
 			for (int k = 0; k < (len - 1); k++)
 			{
 				dbl_value = (double)p[k];
@@ -6800,8 +6813,8 @@ bool CodeGen_swift::Input(ssc_data_t p_data, const char *name, const wxString &f
 			}
 			dbl_value = (double)p[len - 1];
 			if (dbl_value > 1e38) dbl_value = 1e38;
-			fprintf(m_fp, " %.17g };\n", dbl_value);
-			fprintf(m_fp, "	ssc_data_set_matrix( data, \"%s\", p_%s, %d, %d );\n", name, name, nr, nc);
+			fprintf(m_fp, " %.17g ];\n", dbl_value);
+			fprintf(m_fp, "	ssc_data_set_matrix( data, \"%s\", &p_%s, %d, %d );\n", name, name, nr, nc);
 		}
 		// TODO tables in future
 	}
@@ -6813,10 +6826,11 @@ bool CodeGen_swift::RunSSCModule(wxString &name)
 {
 	fprintf(m_fp, "	if (ssc_module_exec(module, data) == 0)\n");
 	fprintf(m_fp, "	{\n");
-	fprintf(m_fp, "		printf(\"error during simulation.\"); \n");
+	fprintf(m_fp, "     ret_string = \"error running %s simulation.\"; \n", (const char*)name.c_str());
 	fprintf(m_fp, "		ssc_module_free(module); \n");
-	fprintf(m_fp, "		ssc_data_free(data); \n");
-	fprintf(m_fp, "		return -1; \n");
+    fprintf(m_fp, "		ssc_data_free(data); \n");
+    fprintf(m_fp, "		print(ret_string); \n");
+    fprintf(m_fp, "		return ret_string; \n");
 	fprintf(m_fp, "	}\n");
 	return true;
 }
@@ -6824,120 +6838,51 @@ bool CodeGen_swift::RunSSCModule(wxString &name)
 
 bool CodeGen_swift::Header()
 {
-	// top of file and supporting functions
-	fprintf(m_fp, "#include <stdio.h>\n");
-	fprintf(m_fp, "#include <string.h>\n");
-	fprintf(m_fp, "#include <stdlib.h>\n");
-	fprintf(m_fp, "#include \"sscapi.h\"\n");
-	fprintf(m_fp, "\n");
-
-	// handle message
-	fprintf(m_fp, "ssc_bool_t my_handler(ssc_module_t p_mod, ssc_handler_t p_handler, int action,\n");
-	fprintf(m_fp, "	float f0, float f1, const char *s0, const char *s1, void *user_data)\n");
-	fprintf(m_fp, "{\n");
-	fprintf(m_fp, "	if (action == SSC_LOG)\n");
-	fprintf(m_fp, "	{\n");
-	fprintf(m_fp, "		// print log message to console\n");
-	fprintf(m_fp, "		switch ((int)f0)\n");
-	fprintf(m_fp, "		{\n");
-	fprintf(m_fp, "		case SSC_NOTICE: printf(\"Notice: %%s\", s0); break;\n");
-	fprintf(m_fp, "		case SSC_WARNING: printf(\"Warning: %%s\", s0); break;\n");
-	fprintf(m_fp, "		case SSC_ERROR: printf(\"Error: %%s\", s0); break;\n");
-	fprintf(m_fp, "		}\n");
-	fprintf(m_fp, "		return 1;\n");
-	fprintf(m_fp, "	}\n");
-	fprintf(m_fp, "	else if (action == SSC_UPDATE)\n");
-	fprintf(m_fp, "	{\n");
-	fprintf(m_fp, "		// print status update to console\n");
-	fprintf(m_fp, "		printf(\"(%%.2f %%) %%s\", f0, s0);\n");
-	fprintf(m_fp, "		return 1; // return 0 to abort simulation as needed.\n");
-	fprintf(m_fp, "	}\n");
-	fprintf(m_fp, "	else\n");
-	fprintf(m_fp, "		return 0;\n");
-	fprintf(m_fp, "}\n");
-	fprintf(m_fp, "\n");
+    // to use Bundle for getting files
+    fprintf(m_fp, "import Foundation\n");
+	// handle message - TODO
 
 	// handle csv files
 	// arrays
-	fprintf(m_fp, "int set_array(ssc_data_t p_data, const char *name, const char* fn, int len)\n");
-	fprintf(m_fp, "{\n");
-	fprintf(m_fp, "	char buffer[1024];\n");
-	fprintf(m_fp, "	char *record, *line;\n");
-	fprintf(m_fp, "	int i = 0;\n");
-	fprintf(m_fp, "	ssc_number_t *ary;\n");
-	fprintf(m_fp, "	FILE *fp = fopen(fn, \"r\");\n");
-	fprintf(m_fp, "	if (fp == NULL)\n");
-	fprintf(m_fp, "	{\n");
-	fprintf(m_fp, "		printf(\"file opening failed \");\n");
-	fprintf(m_fp, "		return 0;\n");
-	fprintf(m_fp, "	}\n");
-	fprintf(m_fp, "	ary = (ssc_number_t *)malloc(len * sizeof(ssc_number_t));\n");
-	fprintf(m_fp, "	while ((line = fgets(buffer, sizeof(buffer), fp)) != NULL)\n");
-	fprintf(m_fp, "	{\n");
-	fprintf(m_fp, "		record = strtok(line, \",\");\n");
-	fprintf(m_fp, "		while ((record != NULL) && (i < len))\n");
-	fprintf(m_fp, "		{\n");
-	fprintf(m_fp, "			ary[i] = atof(record);\n");
-	fprintf(m_fp, "			record = strtok(NULL, \",\");\n");
-	fprintf(m_fp, "			i++;\n");
-	fprintf(m_fp, "		}\n");
-	fprintf(m_fp, "	}\n");
-	fprintf(m_fp, "	fclose(fp);\n");
-	fprintf(m_fp, "	ssc_data_set_array(p_data, name, ary, len);\n");
-	fprintf(m_fp, "	free(ary);\n");
-	fprintf(m_fp, "	return 1;\n");
-	fprintf(m_fp, "}\n");
-	fprintf(m_fp, "\n");
+    fprintf(m_fp, "func set_array(p_data: ssc_data_t, name: String, fn: String, len: Int)\n");
+    fprintf(m_fp, "{\n");
+    fprintf(m_fp, "    let csvPath = Bundle.main.path(forResource: fn, ofType: \"csv\")\n");
+    fprintf(m_fp, "    do {\n");
+    fprintf(m_fp, "        let csvData = try String(contentsOfFile: csvPath!, encoding: String.Encoding.utf8)\n");
+    fprintf(m_fp, "        let csv = csvData.components(separatedBy: .newlines)\n");
+    fprintf(m_fp, "        var ary = [Float](repeating: 0, count:Int(len));\n");
+    fprintf(m_fp, "        var i = 0\n");
+    fprintf(m_fp, "        for row in csv {\n");
+    fprintf(m_fp, "            if i < len {\n");
+    fprintf(m_fp, "            ary[i] = Float(row)!\n");
+    fprintf(m_fp, "            }\n");
+    fprintf(m_fp, "            i += 1\n");
+    fprintf(m_fp, "        }\n");
+    fprintf(m_fp, "        ssc_data_set_array(p_data, name, &ary, Int32(len))\n");
+    fprintf(m_fp, "\n");
+    fprintf(m_fp, "    } catch{\n");
+    fprintf(m_fp, "        print(error)  \n");
+    fprintf(m_fp, "    }\n");
+    fprintf(m_fp, "}\n");
+    fprintf(m_fp, "\n");
 
-	// matrices
-	fprintf(m_fp, "int set_matrix(ssc_data_t p_data, const char *name, const char* fn, int nr, int nc)\n");
-	fprintf(m_fp, "{\n");
-	fprintf(m_fp, "	char buffer[1024];\n");
-	fprintf(m_fp, "	char *record, *line;\n");
-	fprintf(m_fp, "	ssc_number_t *ary;\n");
-	fprintf(m_fp, "	int i = 0, len = nr*nc;\n");
-	fprintf(m_fp, "	FILE *fp = fopen(fn, \"r\");\n");
-	fprintf(m_fp, "	if (fp == NULL)\n");
-	fprintf(m_fp, "	{\n");
-	fprintf(m_fp, "		printf(\"file opening failed \");\n");
-	fprintf(m_fp, "		return 0;\n");
-	fprintf(m_fp, "	}\n");
-	fprintf(m_fp, "	ary = (ssc_number_t *)malloc(len * sizeof(ssc_number_t));\n");
-	fprintf(m_fp, "	while ((line = fgets(buffer, sizeof(buffer), fp)) != NULL)\n");
-	fprintf(m_fp, "	{\n");
-	fprintf(m_fp, "		record = strtok(line, \",\");\n");
-	fprintf(m_fp, "		while ((record != NULL) && (i < len))\n");
-	fprintf(m_fp, "		{\n");
-	fprintf(m_fp, "			ary[i] = atof(record);\n");
-	fprintf(m_fp, "			record = strtok(NULL, \",\");\n");
-	fprintf(m_fp, "			i++;\n");
-	fprintf(m_fp, "		}\n");
-	fprintf(m_fp, "	}\n");
-	fprintf(m_fp, "	fclose(fp);\n");
-	fprintf(m_fp, "	ssc_data_set_matrix(p_data, name, ary, nr, nc);\n");
-	fprintf(m_fp, "	free(ary);\n");
-	fprintf(m_fp, "	return 1;\n");
-	fprintf(m_fp, "}\n");
+	// matrices - todo
 
 
 	fprintf(m_fp, "\n");
 
-	fprintf(m_fp, "int main(int argc, char *argv[])\n");
+	fprintf(m_fp, "func run_%s()->String\n", (const char*)m_name.c_str());
 	fprintf(m_fp, "{\n");
 
 	// create global data container
-	fprintf(m_fp, "	printf(\"Current folder = %s\\n\");\n", (const char*)m_folder.c_str());
-	fprintf(m_fp, "	printf(\"SSC version = %%d\\n\", ssc_version());\n");
-	fprintf(m_fp, "	printf(\"SSC build information = %%s\\n\", ssc_build_info());\n");
+    fprintf(m_fp, "	var ret_string : String = \"\";\n");
+	fprintf(m_fp, "	ret_string += \"\\nCurrent folder = %s\";\n", (const char*)m_folder.c_str());
+	fprintf(m_fp, "	ret_string += \"\\nSSC version = \" + String(ssc_version());\n");
+	fprintf(m_fp, "	ret_string += \"\\nSSC build information = \" + String(cString: ssc_build_info());\n");
 	fprintf(m_fp, "	ssc_module_exec_set_print(0);\n");
-	fprintf(m_fp, "	ssc_data_t data = ssc_data_create();\n");
-	fprintf(m_fp, "	if (data == NULL)\n");
-	fprintf(m_fp, "	{\n");
-	fprintf(m_fp, "		printf(\"error: out of memory.\");\n");
-	fprintf(m_fp, "		return -1;\n");
-	fprintf(m_fp, "	}\n");
-	fprintf(m_fp, "	ssc_module_t module;\n");
-	fprintf(m_fp, "\n");
+	fprintf(m_fp, "	let data = ssc_data_create();\n");
+    fprintf(m_fp, "	var module : ssc_module_t;\n");
+    fprintf(m_fp, "\n");
 
 	return true;
 }
@@ -6949,12 +6894,6 @@ bool CodeGen_swift::CreateSSCModule(wxString &name)
 	else
 	{
 		fprintf(m_fp, "	module = ssc_module_create(\"%s\"); \n", (const char*)name.c_str());
-		fprintf(m_fp, "	if (NULL == module)\n");
-		fprintf(m_fp, "	{\n");
-		fprintf(m_fp, "		printf(\"error: could not create '%s' module.\"); \n", (const char*)name.c_str());
-		fprintf(m_fp, "		ssc_data_free(data); \n");
-		fprintf(m_fp, "		return -1; \n");
-		fprintf(m_fp, "	}\n");
 	}
 	return true;
 }
@@ -6967,51 +6906,25 @@ bool CodeGen_swift::FreeSSCModule()
 
 bool CodeGen_swift::SupportingFiles()
 {
-	// bridge header
-	wxString fn = m_folder + "/Makefile";
-	FILE *f = fopen(fn.c_str(), "w");
-	if (!f) return false;
-	fprintf(f, "ifdef SystemRoot\n");
-	fprintf(f, "	RM = del /Q\n");
-	fprintf(f, "	EXT = .exe\n");
-	fprintf(f, " 	CIFLAGS = -I.. -L.\n");
-	fprintf(f, " 	LFLAGS = -lssc\n");
-	fprintf(f, "#x64	SET PATH=c:\\MinGW64\\bin;%%PATH%%\n");
-	fprintf(f, "#win32	SET PATH=c:\\MinGW\\bin;%%PATH%%\n");
-	fprintf(f, "	CCCOMP = gcc\n");
-	fprintf(f, "else\n");
-	fprintf(f, "    PF = $(shell uname)\n");
-	fprintf(f, "    ifneq (,$(findstring Darwin, $(PF)))\n");
-	fprintf(f, "        VERS = $(shell sw_vers -productVersion)\n");
-	fprintf(f, " 		CIFLAGS = -I..\n");
-	fprintf(f, "        EXT = .dylib\n");
-	fprintf(f, "    else \n");
-	fprintf(f, "        ifneq (,$findstring(Linux, $(PF)))\n");
-	fprintf(f, "	    CIFLAGS = -I.. ./ssc.so\n");
-	fprintf(f, "	    EXT = .o\n");
-	fprintf(f, "    	endif\n");
-	fprintf(f, "    endif\n");
-	fprintf(f, "    RM = rm -f\n");
-	fprintf(f, "    CCCOMP = gcc\n");
-	fprintf(f, " 	LFLAGS = -ldl\n");
-	fprintf(f, "endif\n");
-	fprintf(f, "PROJ_NAME =  %s\n", (const char*)m_name.c_str());
-	fprintf(f, "JFLAGS = -g\n");
-	fprintf(f, "all :\n");
-	fprintf(f, "	$(CCCOMP) $(CIFLAGS) -o$(PROJ_NAME) $(PROJ_NAME).c $(LFLAGS)\n");
-	fprintf(f, "clean :\n");
-	fprintf(f, "	$(RM) $(PROJ_NAME)$(EXT)\n");
-	fprintf(f, "help:\n");
-	fprintf(f, "	@echo \"Please check the settings for your system.Your system may not be supported.Please contact sam.support@nrel.gov\"\n");
-	fclose(f);
-
+// for iOS
+#if defined(__WXOSX__)
+    wxString f1 = SamApp::GetAppPath() + "/../Frameworks/libssc.a";
+    wxString f2 = m_folder + "/libssc.a";
+    wxCopyFile(f1, f2);
+    // TODO - keep sscapi.h current
+    f1 = SamApp::GetAppPath() + "/../Frameworks/sscapi.h";
+    f2 = m_folder + "/sscapi.h";
+    wxCopyFile(f1, f2);
+#endif
 	return true;
 }
 
 bool CodeGen_swift::Footer()
 {
-	fprintf(m_fp, "	ssc_data_free(data)\n");
-	fprintf(m_fp, "}\n");
+    fprintf(m_fp, "	ssc_data_free(data)\n");
+    fprintf(m_fp, "	print(ret_string)\n");
+    fprintf(m_fp, "	return ret_string\n");
+    fprintf(m_fp, "}\n");
 	return true;
 }
 
