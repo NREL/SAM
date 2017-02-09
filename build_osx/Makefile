@@ -9,6 +9,10 @@ WEXLIB = $(WEXDIR)/wexosxwx3.a
 LKLIB = $(LKDIR)/lkosxwx3.a
 SSCLIB = $(SSCDIR)/build_osx/ssc.dylib
 
+# use make -j8 IOS=1 to copy these files.
+IOSLIB = $(SSCDIR)/build_ios/libssc.a
+SSCAPI = $(SSCDIR)/ssc/sscapi.h
+
 CC = gcc -mmacosx-version-min=10.9
 CXX = g++ -mmacosx-version-min=10.9
 CFLAGS = -g -DLK_USE_WXWIDGETS -I. -I$(SRCDIR) -I$(WEXDIR)/include -I$(LKDIR)/include -I$(SSCDIR) `wx-config-3 --cflags`  -DWX_PRECOMP -O2 -arch x86_64  -fno-common -DWX_PRECOMP -O2 -arch x86_64  -fno-common
@@ -81,6 +85,10 @@ $(TARGET): $(OBJECTS) $(WEXLIB) $(LKLIB) $(SSCLIB)
 	echo "-n APPL????" >> ./$(TARGET).app/Contents/PkgInfo
 	@mkdir -p $(TARGET).app/Contents/Frameworks
 	cp $(SSCLIB) $(TARGET).app/Contents/Frameworks/ssc.dylib
+ifeq ($(IOS),1)
+	cp $(IOSLIB) $(TARGET).app/Contents/Frameworks/libssc.a
+	cp $(SSCAPI) $(TARGET).app/Contents/Frameworks/sscapi.h
+endif
 	install_name_tool -id @executable_path/../Frameworks/ssc.dylib $(TARGET).app/Contents/Frameworks/ssc.dylib
 	install_name_tool -change ssc.dylib @executable_path/../Frameworks/ssc.dylib $(TARGET).app/Contents/MacOS/$(TARGET)
 	
