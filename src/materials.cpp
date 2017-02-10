@@ -405,7 +405,9 @@ wxString substance_flname(int flnum)
 	case 30: //   30.) -blank-
 		name = "Therminol 59";
 		break;
-	case 31: //   31.) -blank-
+	case 31: //   31.) Pressurized water at 23 bar (2.10.17 twn: added)
+		name = "Pressure water at 23 bar";
+		break;
 	case 32: //   32.) -blank-
 	case 33: //   33.) -blank-
 	case 34: //   34.) -blank-
@@ -537,7 +539,9 @@ density = Dens_fluid((T-273.15),int(Fnumd)) !Trough calcs take fluid properties 
 	case 30: //   30.) Therminol 59: Reference: Therminol Reference Disk by Solutia: www.therminol.com/pages/tools/toolscd.asp
 		density = -0.0003*Tc*Tc - 0.6963*Tc + 988.44;
 		break;
-	case 31: //   31.) -blank-
+	case 31: //   31.) Pressurized water at 23 bar (2.10.17 twn: added)
+		density = -0.0023*Tc*Tc - 0.2337*Tc + 1005.6;
+		break;
 	case 32: //   32.) -blank-
 	case 33: //   33.) -blank-
 	case 34: //   34.) -blank-
@@ -663,7 +667,9 @@ specheat = Cp_fluid((T-273.15),int(fnumd))/1000.d0
 	case 30://Therminol 59: Reference: Therminol Reference Disk by Solutia: www.therminol.com/pages/tools/toolscd.asp
 		specific_heat = 0.0033*Tc + 1.6132;
 		break;
-	case 31: //   31.) -blank-
+	case 31: //   31.) Pressurized water at 23 bar (2.10.17 twn: added)
+		specific_heat = 1.E-5*Tc*Tc - 0.0014*Tc + 4.2092;
+		break;
 	case 32: //   32.) -blank-
 	case 33: //   33.) -blank-
 	case 34: //   34.) -blank-
