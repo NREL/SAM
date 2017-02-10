@@ -2,6 +2,11 @@ public_versions = ['2014.11.24', '2015.1.30', '2015.6.30', '2016.3.14', '2017.1.
 
 file = homedir() + '/sam_users.csv';
 
+// do not include countries with "no data"
+hide_no_data = false;
+// do not include domains with "other"
+hide_other = false;
+
 if ( yesno('download latest database file?') )
 {
 	url = 'https://developer.nrel.gov/api/sam/v1/tracker/user_stats?api_key=rJzFOTOJhNHcLOnPmW2TNCLV8I4HHLgKddAycGpn';
@@ -224,7 +229,11 @@ if ( yesno('Plot ' + #keys + ' unique domains?') )
 	index = 0;
 	for(i=0;i<#keys;i++ )
 	{
-		if (keys[i] == "other") continue;
+		if ((hide_other) && (keys[i] == "other")) 
+		{
+			
+			continue;
+		}
 		labels[index][0] = index;
 		labels[index][1] = keys[i];
 		xx[index] = index;
@@ -254,7 +263,7 @@ if ( yesno('Plot ' + #keys + ' unique domains?') )
 	non_other_domains_usage = total_usage;
 	for(i=0;i<#keys;i++ )
 	{
-		if (keys[i] == "other") 
+		if ((hide_other) && (keys[i] == "other")) 
 		{
 			non_other_domains_usage -= domain_usages{keys[i]};
 			continue;
@@ -297,7 +306,10 @@ if ( yesno('Plot ' + #keys + ' unique countries?') )
 	index = 0;
 	for(i=0;i<#keys;i++ )
 	{
-		if (keys[i] == "no data") continue;
+		if ((hide_no_data) && (keys[i] == "no data")) 
+		{
+			continue;
+		}
 		labels[index][0] = index;
 		labels[index][1] = keys[i];
 		xx[index] = index;
@@ -328,7 +340,7 @@ if ( yesno('Plot ' + #keys + ' unique countries?') )
 	non_other_countrys_usage = total_usage;
 	for(i=0;i<#keys;i++ )
 	{
-		if (keys[i] == "no data") 
+		if ((hide_no_data) && (keys[i] == "no data")) 
 		{
 			non_other_countrys_usage -= country_usages{keys[i]};
 			continue;
