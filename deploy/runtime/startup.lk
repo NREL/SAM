@@ -256,7 +256,11 @@ function setup_commercial_ppa_pages(degradation)
 		       { 'name'='Financial Tax Credits','caption'='Tax Credits','collapsible'=true,'collapsible_var'='show_tax_credits', 'collapsed_by_default'=false },
                { 'name'='Financial Cash Incentives','caption'='Direct Cash Incentives','collapsible'=true,'collapsible_var'='show_cash_incentives', 'collapsed_by_default'=false } ]], 
 		   { 'sidebar'='Incentives','help'='incentives' } );
-  addpage( [[ 'Financial TOD Factors' ]], { 'sidebar'='Time of Delivery Factors', 'help'='tod_factors' });
+//  addpage( [[ 'Financial TOD Factors' ]], { 'sidebar'='Time of Delivery Factors', 'help'='tod_factors' });
+    addpage( [[ {'name'='Financial TOD Factors', 'caption'='Time of Delivery Factors'}],
+			[ {'name'='Financial TOD Factors Timestep', 'caption'='Time of Delivery Factors Timestep' }],],
+           {  'sidebar'='Time of Delivery Factors','help'='tod_factors', 'exclusive_var'='ppa_multiplier_model' } );
+
 }
 
 function setup_independent_power_producer_pages(degradation)
@@ -279,8 +283,10 @@ function setup_independent_power_producer_pages(degradation)
 		      { 'name'='Financial Tax Credits','caption'='Tax Credits','collapsible'=true,'collapsible_var'='show_tax_credits', 'collapsed_by_default'=false },
               { 'name'='Financial Cash Incentives','caption'='Direct Cash Incentives','collapsible'=true,'collapsible_var'='show_cash_incentives', 'collapsed_by_default'=false } ]], 
            { 'sidebar'='Incentives','help'='incentives' } );
-  addpage( [[ 'Financial TOD Factors' ]],
-           { 'sidebar'='Time of Delivery Factors' });
+//  addpage( [[ 'Financial TOD Factors' ]], { 'sidebar'='Time of Delivery Factors', 'help'='tod_factors' });
+    addpage( [[ {'name'='Financial TOD Factors', 'caption'='Time of Delivery Factors'}],
+			[ {'name'='Financial TOD Factors Timestep', 'caption'='Time of Delivery Factors Timestep' }],],
+           {  'sidebar'='Time of Delivery Factors','help'='tod_factors', 'exclusive_var'='ppa_multiplier_model' } );
 }
 
 function setup_single_owner_pages(degradation)
@@ -302,8 +308,10 @@ function setup_single_owner_pages(degradation)
               {'name'='Financial Reserve Accounts', 'caption'='Reserve Accounts','collapsible'=true,'collapsible_var'='show_ReserveAccounts'},
                {'name'='Financial Return on Equity', 'caption'='Return on Equity','collapsible'=true,'collapsible_var'='show_ReturnonEquity', 'collapsed_by_default'=true}  ]], 
            { 'sidebar'='Financial Parameters', 'help'='fin_single_owner' }  );
-  addpage( [[ 'Financial TOD Factors' ]], 
-           { 'sidebar'='Time of Delivery Factors', 'help'='tod_factors' });
+//  addpage( [[ 'Financial TOD Factors' ]], { 'sidebar'='Time of Delivery Factors', 'help'='tod_factors' });
+    addpage( [[ {'name'='Financial TOD Factors', 'caption'='Time of Delivery Factors'}],
+			[ {'name'='Financial TOD Factors Timestep', 'caption'='Time of Delivery Factors Timestep' }],],
+           {  'sidebar'='Time of Delivery Factors','help'='tod_factors', 'exclusive_var'='ppa_multiplier_model' } );
   addpage( [[ 'Financial Tax Credits','Financial Cash Incentives']],
            { 'sidebar'='Incentives', 'help'='incentives' } );					
   addpage( [['Financial Depreciation Detailed' ]], 
@@ -329,8 +337,10 @@ function setup_leveraged_partnership_flip_pages(degradation)
               {'name'='Financial Construction Financing','caption'='Construction Financing','collapsible'=true,'collapsible_var'='show_construction_period'},
               {'name'='Financial Reserve Accounts', 'caption'='Reserve Accounts','collapsible'=true,'collapsible_var'='show_ReserveAccounts'} ]], 
            { 'sidebar'='Financial Parameters', 'help'='fin_leveraged_partnership' }  );
-  addpage( [[ 'Financial TOD Factors' ]], 
-           { 'sidebar'='Time of Delivery Factors', 'help'='tod_factors' });
+//  addpage( [[ 'Financial TOD Factors' ]], { 'sidebar'='Time of Delivery Factors', 'help'='tod_factors' });
+    addpage( [[ {'name'='Financial TOD Factors', 'caption'='Time of Delivery Factors'}],
+			[ {'name'='Financial TOD Factors Timestep', 'caption'='Time of Delivery Factors Timestep' }],],
+           {  'sidebar'='Time of Delivery Factors','help'='tod_factors', 'exclusive_var'='ppa_multiplier_model' } );
   addpage( [[ 'Financial Tax Credits',
               'Financial Cash Incentives']],
            { 'sidebar'='Incentives', 'help'='incentives' } );					
@@ -356,8 +366,10 @@ function setup_all_equity_partnership_flip_pages(degradation)
               {'name'='Financial Construction Financing','caption'='Construction Financing','collapsible'=true,'collapsible_var'='show_construction_period'},
               {'name'='Financial Reserve Accounts', 'caption'='Reserve Accounts','collapsible'=true,'collapsible_var'='show_ReserveAccounts'} ]], 
            { 'sidebar'='Financial Parameters', 'help'='fin_all_equity_partnership' }  );
-  addpage( [[ 'Financial TOD Factors' ]], 
-           { 'sidebar'='Time of Delivery Factors', 'help'='tod_factors' });
+//  addpage( [[ 'Financial TOD Factors' ]], { 'sidebar'='Time of Delivery Factors', 'help'='tod_factors' });
+    addpage( [[ {'name'='Financial TOD Factors', 'caption'='Time of Delivery Factors'}],
+			[ {'name'='Financial TOD Factors Timestep', 'caption'='Time of Delivery Factors Timestep' }],],
+           {  'sidebar'='Time of Delivery Factors','help'='tod_factors', 'exclusive_var'='ppa_multiplier_model' } );
   addpage( [[ 'Financial Tax Credits',
               'Financial Cash Incentives']],
            { 'sidebar'='Incentives', 'help'='incentives' } );					
@@ -382,8 +394,10 @@ function setup_sale_leaseback_pages(degradation)
               {'name'='Financial Construction Financing','caption'='Construction Financing','collapsible'=true,'collapsible_var'='show_construction_period'},
               {'name'='Financial Reserve Accounts', 'caption'='Reserve Accounts','collapsible'=true,'collapsible_var'='show_ReserveAccounts'} ]], 
           { 'sidebar'='Financial Parameters', 'help'='fin_sale_leaseback' }  );
-  addpage( [[ 'Financial TOD Factors' ]], 
-           { 'sidebar'='Time of Delivery Factors', 'help'='tod_factors' });
+//  addpage( [[ 'Financial TOD Factors' ]], { 'sidebar'='Time of Delivery Factors', 'help'='tod_factors' });
+    addpage( [[ {'name'='Financial TOD Factors', 'caption'='Time of Delivery Factors'}],
+			[ {'name'='Financial TOD Factors Timestep', 'caption'='Time of Delivery Factors Timestep' }],],
+           {  'sidebar'='Time of Delivery Factors','help'='tod_factors', 'exclusive_var'='ppa_multiplier_model' } );
   addpage( [[ 'Financial Tax Credits',
               'Financial Cash Incentives']],
            { 'sidebar'='Incentives', 'help'='incentives' } );					
