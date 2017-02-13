@@ -132,10 +132,14 @@ for( i=1;i<N;i++ )
 	all_domain_usages{domain} += usage;
 	all_country_users{country}++;
 	all_country_usages{country} += usage;
+	
 	ver_usage{sam_ver} += usage;	
 	total_usage += usage;
 }
 
+
+ncountries = #all_country_users;
+ndomains = #all_domain_users;
 
 
 // reparse domains with usages greater than threshold and if not put in "other"
@@ -408,6 +412,8 @@ outln( 'usage per person: ' + (total_usage/N) );
 ndays = approx_days_since( 2014, 11, 24 );
 outln( 'days since 2014/11/24: ' + ndays );
 outln( 'average usage per day: ' + (total_usage/ndays) );
+outln( 'Total number of countries: ' + ncountries );
+outln( 'Total number of domains: ' + ndomains );
 
 fn = homedir() + '/sam_users_domain_usage.csv';
 fnum = open(fn,"w");
