@@ -139,14 +139,14 @@ exitIf( convINRtoUSD  <= 0 );
 show_page('System Costs');
 
 // Highlight resource selection box in UI
-focusto('bos_equip_fixed');
-geom = widgetpos('bos_equip_fixed');
+focusto('per_module');
+geom = widgetpos('per_module');
 transp( geom, 'yellow', 70 );
 millisleep(500);
 
 
-capitalCost = in( "What is your system's a total capital cost?", 
-                  get('bos_equip_fixed') , 
+capitalCost = in( "What is your system's a capital cost per Watt?", 
+                  get('per_module') , 
                   'Capital Cost',
                   [defaultX, defaultY]);
 exitIf( capitalCost  == "" );
@@ -154,13 +154,13 @@ exitIf( capitalCost  == "" );
 // Ensure user input is greater than zero
 while( to_real(capitalCost) < 0 ){
 	capitalCost = in( "Capital cost must be a value greater than zero", 
-						  get('bos_equip_fixed'), 
+						  get('per_module'), 
 						  "Capital Cost",
 		                  [defaultX, defaultY]);
 	exitIf( capitalCost  == "" );
 }
 
-set('bos_equip_fixed', capitalCost );
+set('per_module', capitalCost );
 transp();
 
 /* Fixed Annual Maintenance Costs */
@@ -295,6 +295,116 @@ while( to_real(loanMoratorium) < 0 ){
 }
 
 set('loan_moratorium', loanMoratorium );
+
+
+
+// inflation rate
+focusto('inflation_rate');
+geom = widgetpos('inflation_rate');
+transp( geom, 'yellow', 70 );
+millisleep(500);
+
+
+inflationRate = in( "What is your inflation rate?", 
+                  get('inflation_rate') , 
+                  'Inflation rate',
+                  [defaultX, defaultY]);
+exitIf( inflationRate  == "" );
+
+// Ensure user input is greater than zero
+while( to_real(inflationRate) < 0 ){
+	inflationRate = in( "Inflation rate must be a value greater than zero", 
+						  get('inflation_rate'), 
+						  "Inflation rate",
+		                  [defaultX, defaultY]);
+	exitIf( inflationRate  == "" );
+}
+
+set('inflation_rate', inflationRate );
+
+
+
+// federal income tax rate - array
+focusto('federal_tax_rate');
+geom = widgetpos('federal_tax_rate');
+transp( geom, 'yellow', 70 );
+millisleep(500);
+
+
+taxRateAry = get('federal_tax_rate');
+taxRate = taxRateAry[0];
+
+
+taxRate = in( "What is your tax rate?", 
+                  taxRate, 
+                  'Tax rate',
+                  [defaultX, defaultY]);
+exitIf( taxRate  == "" );
+
+// Ensure user input is greater than zero
+while( to_real(taxRate) < 0 ){
+	taxRate = in( "Tax rate must be a value greater than zero", 
+						  taxRate, 
+						  "Tax rate",
+		                  [defaultX, defaultY]);
+	exitIf( taxRate  == "" );
+}
+
+taxRateAry[0] = taxRate;
+
+set('federal_tax_rate', taxRateAry );
+
+
+// receivables reserve
+focusto('months_receivables_reserve');
+geom = widgetpos('months_receivables_reserve');
+transp( geom, 'yellow', 70 );
+millisleep(500);
+
+
+receivablesReserve = in( "What is the number of months of receivables reserve?", 
+                  get('months_receivables_reserve') , 
+                  'Receivables reserve months',
+                  [defaultX, defaultY]);
+exitIf( receivablesReserve  == "" );
+
+// Ensure user input is greater than zero
+while( to_real(receivablesReserve) < 0 ){
+	receivablesReserve = in( "Number of months must be a value greater than zero", 
+						  get('months_receivables_reserve'), 
+						  "Receivables reserve months",
+		                  [defaultX, defaultY]);
+	exitIf( receivablesReserve  == "" );
+}
+
+set('months_receivables_reserve', receivablesReserve );
+
+
+// interest on reserves
+focusto('reserves_interest');
+geom = widgetpos('reserves_interest');
+transp( geom, 'yellow', 70 );
+millisleep(500);
+
+
+reserveRate = in( "What is your reserves interest rate?", 
+                  get('reserves_interest') , 
+                  'Reserves interest rate',
+                  [defaultX, defaultY]);
+exitIf( reserveRate  == "" );
+
+// Ensure user input is greater than zero
+while( to_real(reserveRate) < 0 ){
+	reserveRate = in( "Reserves interest rate must be a value greater than zero", 
+						  get('reserves_interest'), 
+						  "Reserves interest rate",
+		                  [defaultX, defaultY]);
+	exitIf( reserveRate  == "" );
+}
+
+set('reserves_interest', reserveRate );
+
+// Possibly ROE array entry in the future
 
 
 // Review time
