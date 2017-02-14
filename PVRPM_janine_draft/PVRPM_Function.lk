@@ -459,8 +459,12 @@ function run_system_realization(realization, show_outputs)
 	module_degradation_factor[0] = whats_my_degradation();
 	dc_power_availability[0] = whats_my_dc_availability();
 	ac_power_availability[0] = whats_my_ac_availability();
-	costs.module[0] = costs.string[0] = costs.combiner[0] = 0; //no costs are accrued at time zero because nothing has changed state
-	costs.inverter[0] = costs.disconnect[0] = costs.transformer[0] = 0;
+	costs.module[0] = 0; //no costs are accrued at time zero because nothing has changed state
+	costs.string[0] = 0;
+	costs.combiner[0] = 0; 
+	costs.inverter[0] = 0;
+	costs.disconnect[0] = 0;
+	costs.transformer[0] = 0;
 	costs.grid[0] = 0;
 	if (is_tracking_system)
 	{
@@ -580,8 +584,12 @@ function run_system_realization(realization, show_outputs)
 	//OUTPUTS-------------------------------------------------------------------------------------------------------------
 
 	//failures
-	results.total_module_failures = results.total_string_failures = results.total_combiner_failures = 0;
-	results.total_inverter_failures = results.total_disconnect_failures = results.total_transformer_failures = 0;
+	results.total_module_failures = 0;
+	results.total_string_failures = 0;
+	results.total_combiner_failures = 0;
+	results.total_inverter_failures = 0;
+	results.total_disconnect_failures = 0;
+	results.total_transformer_failures = 0;
 	results.total_grid_failures = 0;
 	results.total_tracker_failures = 0;
 	//count up cumulative failures
