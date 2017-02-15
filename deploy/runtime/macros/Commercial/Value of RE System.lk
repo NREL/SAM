@@ -214,23 +214,26 @@ function cost_w_bill( none_cf, re_cf, w_re_bill, is_comm, pv_tax )
 	return cf_w_bill;
 }
 
+function get_case() {
+	cases = list_cases();
+	if ( #cases > 1 ) case = choose_from_list( cases, 'Choose a case:', 'Choose Case', 0 );
+	else case = cases[0];
+	active_case( case );
+}
+
 //Check that this macro was run from within a case
 if ( typeof(macro) == 'unknown' ) {
 	msgbox('This macro must be run from within a case.');
 	exit;
 }
 
-cases = list_cases();
-if ( #cases > 1 ) case = choose_from_list( cases, 'Choose a case:', 'Choose Case', 0 );
-else case = cases[0];
-active_case( case );
-
+get_case();
 config = configuration();
 is_commercial = ( config[1] == 'Commercial' );
-
-if (config[1] == 'None')
+ok = ( config[1] == 'Residential' || config[1] == 'Commercial' );
+if ( !ok )
 {
-	msgbox('You must have a financial model to run this macro.');
+	msgbox('This macro works only with the Residential or Commercial financial models.');
 	exit;
 }
 
