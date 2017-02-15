@@ -632,12 +632,24 @@ bool CodeGen_Base::ShowCodeGenDialog(CaseWindow *cw)
 	Case *c = cw->GetCase();
 	wxString fn = SamApp::Project().GetCaseName(c);
 	// replace spaces for SDK user friendly name
+	fn.Replace("/", "_"); // hard crash in 2017.1.17 release
 	fn.Replace(" ", "_");
 	fn.Replace("(", "_"); // matlab
 	fn.Replace(")", "_"); // matlab
 	char cfn[100];
 	strcpy(cfn, (const char*)fn.mb_str(wxConvUTF8));
 	fn = foldername + "/" + wxString::FromAscii(cfn);
+
+
+	wxString testpath, testname,testext;
+	wxFileName::SplitPath(fn,&testpath,&testname,&testext);
+
+	if (!wxFileName::DirExists(testpath))
+	{
+		wxString msg = wxString::Format("Error with file path or case name\n Please check path = %s\nand name = %s", (const char*)foldername.c_str(), cfn);
+		wxMessageBox(msg, "Code Generator Errors", wxICON_ERROR);
+		return false;
+	}
 
 	CodeGen_Base *cg;
 	wxString err_msg = "";
