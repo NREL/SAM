@@ -6878,9 +6878,31 @@ bool CodeGen_swift::Header()
     fprintf(m_fp, "}\n");
     fprintf(m_fp, "\n");
 
-	// matrices - todo
-
-
+	// matrices
+    fprintf(m_fp, "func set_matrix(p_data: ssc_data_t, name: String, fn: String, nr: Int , nc: Int)\n");
+    fprintf(m_fp, "{\n");
+    fprintf(m_fp, "    let csvPath = Bundle.main.path(forResource: fn, ofType: \"csv\")\n");
+    fprintf(m_fp, "    do {\n");
+    fprintf(m_fp, "        let csvData = try String(contentsOfFile: csvPath!, encoding: String.Encoding.utf8)\n");
+    fprintf(m_fp, "        let csv = csvData.components(separatedBy: .newlines)\n");
+    fprintf(m_fp, "        let len = nr * nc\n");
+    fprintf(m_fp, "        var ary = [Float](repeating: 0, count:Int(len));\n");
+    fprintf(m_fp, "        var i = 0\n");
+    fprintf(m_fp, "        for row in csv {\n");
+    fprintf(m_fp, "            let rowVals = row.components(separatedBy: \",\")\n");
+    fprintf(m_fp, "            for val in rowVals {\n");
+    fprintf(m_fp, "            if i < len {\n");
+    fprintf(m_fp, "            ary[i] = Float(val)!\n");
+    fprintf(m_fp, "            }\n");
+    fprintf(m_fp, "            i += 1\n");
+    fprintf(m_fp, "            }\n");
+    fprintf(m_fp, "        }\n");
+    fprintf(m_fp, "        ssc_data_set_matrix(p_data, name, &ary, Int32(nr), Int32(nc))\n");
+    fprintf(m_fp, "\n");
+    fprintf(m_fp, "    } catch{\n");
+    fprintf(m_fp, "        print(error)  \n");
+    fprintf(m_fp, "    }\n");
+    fprintf(m_fp, "}\n");
 	fprintf(m_fp, "\n");
 
 	fprintf(m_fp, "func run_%s()->String\n", (const char*)m_name.c_str());
