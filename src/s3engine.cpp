@@ -516,7 +516,8 @@ static void debug_out( char* prefix, BSPNode* node)
 
 
 
-#define MAX_DELTA		0.03491
+//#define MAX_DELTA		0.03491
+#define MAX_DELTA		0.00001
 //#define MAX_DELTA		0.00000001
 
 
@@ -801,20 +802,29 @@ ulong BSPNode::_SplitPoly( BSPNode *Plane, std::vector<point3d> &SplitPnts, bool
 		
 //				if( !( LastSideParallel && (t == 0) ) )
 //				if( !( LastSideParallel && (si == 0) ) )
-				if( !( LastSideParallel && (si < MAX_DELTA) ) )
+				if (!(LastSideParallel && (si < MAX_DELTA)))
+//				if (!LastSideParallel)
+//				if (!(LastSideParallel && (fabs(si) < 0.0001)))
 				{
 
 					
 
 
 //					if( t >= 0.0 && t < 0.999999 )		
-					if( (si >= 0) && (si < 1.0))
+					if ((si >= 0) && (si < 1.0))
+//					if ((si >= 0) && ((1.0-si)>MAX_DELTA))
 //					if( (si > 0) && (si < 1.0))
 //					if( (si >-MAX_DELTA) && (si < (1.0-MAX_DELTA)))
 //					if( (si >-MAX_DELTA) && (si < (1.0-MAX_DELTA)))
 ////					if( (si > MAX_DELTA) && (si < (1.0 - MAX_DELTA) ))
 //					if( (si > -MAX_DELTA) && (si < (1.0 + MAX_DELTA) ))
 					{
+
+#ifdef _DEBUG
+						DBOUT("_SplitPoly: numer=" << numer << ", denom=" << denom << ", t=" << si << "\n");
+#endif
+
+
 						Sides |= 1 << vertex;
 						count++;
 						if (savepoints)
