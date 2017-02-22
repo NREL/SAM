@@ -83,7 +83,7 @@ public:
 	void GetOffset( double *xoff, double *yoff, double *zoff );
 	void SetScale( double scale );
 	double GetScale();
-
+	void RebuildBSPTree();
 	void Render();
 	
 	void ScreenToWorld( int xs, int yzs, double *xw, double *yzw );

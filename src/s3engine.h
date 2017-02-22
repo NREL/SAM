@@ -147,6 +147,8 @@ public:
 	BSPNode *FrontNode, *BackNode;
 	
 	point3d Center;
+	point3d MinPoint;
+	point3d MaxPoint;
 	point3d Normal;
 	double D;
 
@@ -154,8 +156,9 @@ public:
 
 
 	unsigned long _SplitPoly( BSPNode *Plane, std::vector<point3d> &SplitPnts, bool savepoints=true );
-	void _ComputeCenter( void );
-	void _ComputeNormal( void );
+	void _ComputeCenterMinMax(void);
+	void _ComputeCenter(void);
+	void _ComputeNormal(void);
 	void _ComputeD( void );
 
 public:
@@ -181,7 +184,7 @@ public:
 	double GetMinZ();
 };
 
-
+// Derived from http://www.drdobbs.com/cpp/implementing-and-using-bsp-trees/184409588 1995
 
 class BSPTree
 {
@@ -250,7 +253,6 @@ private:
 	std::vector<polygon3d*> m_polygons;
 	std::vector<text3d*> m_labels;
 	
-	bool m_bspValid;
 	BSPTree m_bsp;
 	double m_viewNormal[3];
 	std::vector<polygon3d*> m_sortedCulled, m_rendered;
@@ -263,6 +265,10 @@ private:
 	void cull_backfaces( );
 	void sort_polys();
 public:
+
+	bool m_bspValid;
+
+
 	scene();
 	scene( const scene & rhs );
 	~scene();
