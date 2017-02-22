@@ -733,6 +733,13 @@ void View3D::UpdateAllModels()
 	Render();
 }
 
+void View3D::RebuildBSPTree()
+{
+	m_scene.m_bspValid = false;
+	Render();
+}
+
+
 void View3D::Render()
 {
 	m_scene.build( m_transform );

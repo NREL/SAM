@@ -516,8 +516,7 @@ static void debug_out( char* prefix, BSPNode* node)
 
 
 
-//#define MAX_DELTA		0.03491
-#define MAX_DELTA		0.00001
+#define MAX_DELTA		0.03491
 //#define MAX_DELTA		0.00000001
 
 
@@ -585,7 +584,7 @@ BSPNode *BSPTree::_BuildBSPTree( std::vector<BSPNode*>& List )
 {
 	point3d Delta;
 	std::vector<BSPNode*> Front, Back;
-
+	double x_tmp;
 	BSPNode *Root = _FindRoot( List );
 
 	if (Root==NULL) 
@@ -624,16 +623,21 @@ BSPNode *BSPTree::_BuildBSPTree( std::vector<BSPNode*>& List )
 		else
 		{
 			Delta = TestNode->GetCenter() - Root->GetCenter();
+			x_tmp = Delta.dot(Root->GetNormal());
 			if( Delta.dot( Root->GetNormal() ) > MAX_DELTA )
 				Front.push_back( TestNode );
-			else if( Delta.dot( Root->GetNormal() ) < MAX_DELTA )
+			else if( Delta.dot( Root->GetNormal() ) < -MAX_DELTA )
 				Back.push_back( TestNode );
 			else
 			{
-				if ( Delta.z < 0 )
-					Front.push_back( TestNode );
+				if (Delta.z < 0)
+					Back.push_back(TestNode);
 				else
-					Back.push_back( TestNode );
+					Front.push_back(TestNode);
+				//				if ( Delta.z < 0 )
+				//					Front.push_back(TestNode);
+				//				else
+				//					Back.push_back(TestNode);
 			}
 		}
 		// remove test node from list
@@ -641,9 +645,9 @@ BSPNode *BSPTree::_BuildBSPTree( std::vector<BSPNode*>& List )
 		Iter = List.begin();
 	}
 	
-	Root->SetFront( (Front.size()==0) ? NULL : _BuildBSPTree( Front ) );
-	Root->SetBack( (Back.size()==0) ? NULL : _BuildBSPTree( Back ) );
-	
+	Root->SetFront((Front.size() == 0) ? NULL : _BuildBSPTree(Front));
+	Root->SetBack((Back.size() == 0) ? NULL : _BuildBSPTree(Back));
+
 	return Root;
 }
 
@@ -802,29 +806,20 @@ ulong BSPNode::_SplitPoly( BSPNode *Plane, std::vector<point3d> &SplitPnts, bool
 		
 //				if( !( LastSideParallel && (t == 0) ) )
 //				if( !( LastSideParallel && (si == 0) ) )
-				if (!(LastSideParallel && (si < MAX_DELTA)))
-//				if (!LastSideParallel)
-//				if (!(LastSideParallel && (fabs(si) < 0.0001)))
+				if( !( LastSideParallel && (si < MAX_DELTA) ) )
 				{
 
 					
 
 
 //					if( t >= 0.0 && t < 0.999999 )		
-					if ((si >= 0) && (si < 1.0))
-//					if ((si >= 0) && ((1.0-si)>MAX_DELTA))
+					if( (si >= 0) && (si < 1.0))
 //					if( (si > 0) && (si < 1.0))
 //					if( (si >-MAX_DELTA) && (si < (1.0-MAX_DELTA)))
 //					if( (si >-MAX_DELTA) && (si < (1.0-MAX_DELTA)))
 ////					if( (si > MAX_DELTA) && (si < (1.0 - MAX_DELTA) ))
 //					if( (si > -MAX_DELTA) && (si < (1.0 + MAX_DELTA) ))
 					{
-
-#ifdef _DEBUG
-						DBOUT("_SplitPoly: numer=" << numer << ", denom=" << denom << ", t=" << si << "\n");
-#endif
-
-
 						Sides |= 1 << vertex;
 						count++;
 						if (savepoints)
@@ -881,6 +876,30 @@ ulong BSPNode::_SplitPoly( BSPNode *Plane, std::vector<point3d> &SplitPnts, bool
 	return Sides;
 }
 
+void BSPNode::_ComputeCenterMinMax(void)
+{
+	Center.x = Center.y = Center.z = 0.0;
+	MinPoint.x = MinPoint.y = MinPoint.z = DBL_MAX;
+	MaxPoint.x = MaxPoint.y = MaxPoint.z = -DBL_MAX;
+
+	for (size_t i = 0; i<points.size(); i++)
+	{
+		Center.x += points[i].x;
+		Center.y += points[i].y;
+		Center.z += points[i].z;
+		if (points[i].x < MinPoint.x) MinPoint.x = points[i].x;
+		if (points[i].x > MaxPoint.x) MaxPoint.x = points[i].x;
+		if (points[i].y < MinPoint.y) MinPoint.y = points[i].y;
+		if (points[i].y > MaxPoint.y) MaxPoint.y = points[i].y;
+		if (points[i].z < MinPoint.z) MinPoint.z = points[i].z;
+		if (points[i].z > MaxPoint.z) MaxPoint.z = points[i].z;
+	}
+
+	Center.x /= points.size();
+	Center.y /= points.size();
+	Center.z /= points.size();
+}
+
 
 void BSPNode::_ComputeCenter( void )
 {
@@ -913,6 +932,8 @@ void BSPNode::_ComputeNormal( void )
 }
 
 
+
+
 void BSPNode::_ComputeD( void )
 {
 	D = -Normal.dot( Center );
@@ -942,9 +963,17 @@ BSPNode::~BSPNode()
 
 bool BSPNode::Intersects( BSPNode *Plane )
 {
-	std::vector<point3d> points;
+	s3d::point3d plane_half_extent = Plane->MaxPoint - Plane->MinPoint;
+	s3d::point3d half_extent = MaxPoint - MinPoint;
 
-	return ( _SplitPoly( Plane, points, false ) != 0 );
+	s3d::point3d center_diff = Plane->Center - Center;
+
+	double x_overlap = fabs(center_diff.x) - (plane_half_extent.x + half_extent.x);
+	double y_overlap = fabs(center_diff.y) - (plane_half_extent.y + half_extent.y);
+
+	return (x_overlap < 0 && y_overlap < 0);
+//	std::vector<point3d> points;
+//	return ( _SplitPoly( Plane, points, false ) != 0 );
 //	return ( _SplitPoly( Plane, points ) != 0 );
 }
 
@@ -1048,7 +1077,7 @@ void BSPNode::Traverse( const point3d& CameraLoc, std::vector<s3d::polygon3d*>& 
 {
 	point3d VecToCam = CameraLoc - Center;
 	s3d::polygon3d* new_poly;
-#ifdef __DEBUG__
+#ifdef _DEBUG
 	DBOUT("\n\nTraverse\n");
 #endif
 	if( VecToCam.dot( Normal ) < 0 )
@@ -1056,7 +1085,7 @@ void BSPNode::Traverse( const point3d& CameraLoc, std::vector<s3d::polygon3d*>& 
 		if( FrontNode )
 			FrontNode->Traverse( CameraLoc, polys );
 
-#ifdef __DEBUG__
+#ifdef _DEBUG
 		DBOUT("Next Node dot < 0\n");
 #endif
 		new_poly = new s3d::polygon3d( *this );
@@ -1074,7 +1103,7 @@ void BSPNode::Traverse( const point3d& CameraLoc, std::vector<s3d::polygon3d*>& 
 		if( BackNode )
 			BackNode->Traverse( CameraLoc, polys );
 
-#ifdef __DEBUG__
+#ifdef _DEBUG
 		DBOUT("Next Node dot >= 0\n");
 #endif
 		new_poly = new s3d::polygon3d( *this );
@@ -1591,7 +1620,7 @@ static double average_z( const s3d::polygon3d *p )
 static bool polybefore( const s3d::polygon3d *p1, const s3d::polygon3d *p2 )
 {
 	// if IDs are negative, they always come first and are ordered based on smalled ID
-	// (useful for ground and axes
+	// (useful for ground and axes)
 	if (p1->id < 0 && p2->id < 0)
 		return p1->id < p2->id;
 	else if ( p1->id < 0 )
@@ -1699,7 +1728,7 @@ void scene::build( transform &tr )
 	}
 
 	// update the BSP tree if needed
-	if ( ! m_bspValid && foreground.size() > 0 )
+	if (!m_bspValid && foreground.size() > 0)
 	{
 		m_bsp.Reset();
 		m_bsp.ReadPolyList( foreground );
@@ -1926,7 +1955,7 @@ double scene::shade( std::vector<shade_result> &results,
 		}
 
 		if ( nobstruct == 0 || sr.active_area == 0.0 ) continue;
-
+		
 		ClipperLib::Paths soln;
 		cc.Execute(ClipperLib::ctIntersection, soln, ClipperLib::pftNonZero, ClipperLib::pftNonZero);
 
@@ -1943,7 +1972,8 @@ double scene::shade( std::vector<shade_result> &results,
 			polygon3d shpoly;
 			copy_poly( shpoly, soln[k] );			
 			sr.shadings.push_back( shpoly );
-		}	
+		}
+		
 	}
 
 	

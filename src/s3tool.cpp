@@ -1943,8 +1943,7 @@ END_EVENT_TABLE()
 
 
 enum { ID_SLIDER = wxID_HIGHEST+441, ID_LAST_SLIDER = ID_SLIDER+100, 
-	ID_LOCATION, ID_CREATE, ID_GRAPHICS, ID_ANALYSIS, ID_SCRIPTING, ID_VIEW_XYZ, ID_VIEW_XY, ID_VIEW_XZ, ID_FEEDBACK,
-	ID_OBJECT_ID, ID_OBJECT_IDMAX=ID_OBJECT_ID+100,
+	ID_LOCATION, ID_CREATE, ID_GRAPHICS, ID_ANALYSIS, ID_SCRIPTING, ID_BSPTREE, ID_VIEW_XYZ, ID_VIEW_XY, ID_VIEW_XZ, ID_FEEDBACK, ID_OBJECT_ID, ID_OBJECT_IDMAX=ID_OBJECT_ID+100,
 
 	// debugging
 	ID_AZIMUTH, ID_ALTITUDE, ID_SCALE, ID_TRI_TEST, 
@@ -1957,7 +1956,8 @@ BEGIN_EVENT_TABLE( ShadeTool, wxPanel )
 	EVT_VIEW3D_UPDATE_SELECTION( ID_GRAPHICS, ShadeTool::OnUpdateSelection )
 	
 #ifdef S3D_STANDALONE
-	EVT_BUTTON( wxID_NEW, ShadeTool::OnCommand )
+	EVT_BUTTON(wxID_NEW, ShadeTool::OnCommand)
+	EVT_BUTTON(ID_BSPTREE, ShadeTool::OnCommand)
 #endif
 	EVT_BUTTON( wxID_OPEN, ShadeTool::OnCommand )
 	EVT_BUTTON( wxID_SAVE, ShadeTool::OnCommand )
@@ -1995,6 +1995,7 @@ ShadeTool::ShadeTool( wxWindow *parent, int id, const wxString &data_path )
 	sizer_tool->Add( new wxMetroButton( this, wxID_NEW, "New" ), 0, wxALL|wxEXPAND, 0 );
 	sizer_tool->Add( new wxMetroButton( this, wxID_OPEN, "Open" ), 0, wxALL|wxEXPAND, 0 );
 	sizer_tool->Add( new wxMetroButton( this, wxID_SAVE, "Save" ), 0, wxALL|wxEXPAND, 0 );
+	sizer_tool->Add( new wxMetroButton( this, ID_BSPTREE, "BSP Tree"), 0, wxALL | wxEXPAND, 0);
 #endif
 	sizer_tool->Add( new wxMetroButton( this, ID_LOCATION, "Location" ), 0, wxALL|wxEXPAND, 0 );
 	sizer_tool->Add( new wxMetroButton( this, ID_CREATE, "Create", wxNullBitmap, wxDefaultPosition, wxDefaultSize, wxMB_DOWNARROW ), 0, wxALL|wxEXPAND, 0 );
@@ -2315,6 +2316,9 @@ void ShadeTool::OnCommand( wxCommandEvent &evt)
 #ifdef S3D_STANDALONE
 	case wxID_NEW:
 		m_view->DeleteAll();
+		break;
+	case ID_BSPTREE:
+		m_view->RebuildBSPTree();
 		break;
 #endif
 	case wxID_SAVE: Save(); break;
