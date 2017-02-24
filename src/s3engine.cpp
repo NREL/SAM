@@ -546,14 +546,28 @@ BSPNode *BSPTree::_FindRoot( std::vector<BSPNode*>& List )
 
 	std::vector<BSPNode*>::iterator Iter = List.begin();
 	BSPNode *TestNode = *Iter;
+
 	
-	while( Iter != List.end() )
+	double avg_z = 0;
+
+	// could be operator
+	while (Iter != List.end())
+	{
+		TestNode = *Iter;
+		avg_z += TestNode->MaxPoint.z;
+		Iter++;
+	}
+	if (List.size() > 0) avg_z /= List.size();
+
+	Iter = List.begin();
+	
+	while (Iter != List.end())
 	{
 		TestNode = *Iter;
 		std::vector<BSPNode*>::iterator Iter2 = List.begin();
 		BSPNode *CheckNode = *Iter2;
 		int Count = 0;
-		
+
 		while( Iter2 != List.end() )
 		{
 			CheckNode = *Iter2;
@@ -565,7 +579,9 @@ BSPNode *BSPTree::_FindRoot( std::vector<BSPNode*>& List )
 		
 		if( Count < BestCount )
 		{
-			if( !Count )
+			if (!Count)
+			// smallest count and z > average
+//			if (!Count && TestNode->MaxPoint.z > avg_z)
 				return TestNode;
 
 			BestCount = Count;
@@ -601,7 +617,7 @@ BSPNode *BSPTree::_BuildBSPTree( std::vector<BSPNode*>& List )
 		if( TestNode->Intersects( Root ) )
 		{
 			BSPNode *NewNode = TestNode->Split( Root );
-
+			// TODO - issue with parallel plane intersections not splitting here
 			assert(NewNode);
 
 			m_listnodes.push_back( NewNode );
@@ -813,7 +829,8 @@ ulong BSPNode::_SplitPoly( BSPNode *Plane, std::vector<point3d> &SplitPnts, bool
 
 
 //					if( t >= 0.0 && t < 0.999999 )		
-					if( (si >= 0) && (si < 1.0))
+//					if ((si >= 0) && (si < 1.0))
+					if ((si > -MAX_DELTA) && (si < 1.0))
 //					if( (si > 0) && (si < 1.0))
 //					if( (si >-MAX_DELTA) && (si < (1.0-MAX_DELTA)))
 //					if( (si >-MAX_DELTA) && (si < (1.0-MAX_DELTA)))
@@ -947,7 +964,7 @@ BSPNode::BSPNode( const polygon3d &rhs )
 	BackNode( NULL ),
 	m_rendered( false )
 {
-	_ComputeCenter();
+	_ComputeCenterMinMax();
 	_ComputeNormal();
 	_ComputeD();
 }
@@ -1062,7 +1079,7 @@ BSPNode *BSPNode::Split( BSPNode *Plane )
 		NewNode = new BSPNode( ppol );
 		points.clear();
 		points = NewPoly2;
-		_ComputeCenter();
+		_ComputeCenterMinMax();
 		_ComputeNormal();
 		_ComputeD(); //???
 
