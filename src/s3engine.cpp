@@ -554,7 +554,7 @@ BSPNode *BSPTree::_FindRoot( std::vector<BSPNode*>& List )
 	while (Iter != List.end())
 	{
 		TestNode = *Iter;
-		avg_z += TestNode->MaxPoint.z;
+		avg_z += TestNode->GetMaxPoint().z;
 		Iter++;
 	}
 	if (List.size() > 0) avg_z /= List.size();
