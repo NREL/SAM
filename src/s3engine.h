@@ -167,8 +167,9 @@ public:
 
 	bool GetRendered() { return m_rendered;}
 		
-	point3d GetCenter( void )				{ return Center; }
-	point3d GetNormal( void )				{ return Normal; }
+	point3d GetMaxPoint(void)				{ return MaxPoint; }
+	point3d GetCenter(void)				{ return Center; }
+	point3d GetNormal(void)				{ return Normal; }
 
 	bool Intersects( BSPNode *Plane );
 	BSPNode *Split( BSPNode *Plane );
