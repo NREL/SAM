@@ -19,6 +19,7 @@
 	make sure to multi-thread the stochastic piece
 	add number of failures per component per year- in a csv
 	need to make outputs independent of number failure/repair modes!
+	stepped warranties? degradation triggering warranty?
 	
 	additional outputs:
 	p90, p10, median
@@ -27,7 +28,32 @@
 	can we create new SAM cases for various realizations?
 	->make an option to do it (first five realizations)
 	
-	summary paragraph or two about milestone
+	make realization numbers start at 1 rather than 0
+	run the base case and produce "no failures" outputs- make sure to ignore the "no failures" case for the next calculations
+	change "min" and "max" to "lowest" and "highest"
+	add median and stdev
+	keep exceedance probability and CI for energy
+	CI only for failures - code vs lookup table- if lookup table, constrain the options for confidence intervals
+	
+	non-stationary poisson process (faster way than parallelizing?)-
+	add annual DC power- as an output to SAM? for now, sum it up in the script
+	labor vs equipment costs per year for each component
+	average degradation factor per year (roll up from CSV)
+	how many operable pieces of equipment at the end of
+	
+	3 csvs with each realization as a column in the csv for degradation, ac power, dc power
+	availability looking at daylight hours ONLY, grid all 24 hours- DON'T include sunrise/sunset hours (use sunup=1 flag)
+	
+	lower priority- 
+	add mean time between failures MTBF and MTTR (mean time to repair)
+	
+	take a crack at a 2-page documentation of the model (how to, etc)
+	
+	Feb- confidence intervals and output spreadsheet at least version 1
+	Mar- write something up, Geoff reviews outputs
+	Apr- Geoff writeup, Janine final tweaks
+	May- release it!
+	
 	
 	
 */
@@ -642,9 +668,9 @@ function run_system_realization(realization, show_outputs)
 
 		//daily performance
 		if (is_tracking_system)
-			dview(5, 24, 'Daily factors', 'DC Power Availability', '', 1.0, dc_power_availability, 'AC Power Availability', '', 1.0, ac_power_availability, 'Module degradation factor', '', 1.0, module_degradation_factor, 'Power Availability Due to Tracker Outages', '', 1.0, tracker_power_loss_factor, 'Tracker Availability', '', 1.0, tracker_availability);
+			dview(5, 24, 'Daily factors', 'DC Equipment Operational', '', 1.0, dc_power_availability, 'AC Equipment Operational', '', 1.0, ac_power_availability, 'Module degradation factor', '', 1.0, module_degradation_factor, 'Power Availability Due to Tracker Outages', '', 1.0, tracker_power_loss_factor, 'Tracker Availability', '', 1.0, tracker_availability);
 		else
-			dview(3, 24, 'Daily factors', 'DC Power Availability', '', 1.0, dc_power_availability, 'AC Power Availability', '', 1.0, ac_power_availability, 'Module degradation factor', '', 1.0, module_degradation_factor);
+			dview(3, 24, 'Daily factors', 'DC Equipment Operational', '', 1.0, dc_power_availability, 'AC Equipment Operational', '', 1.0, ac_power_availability, 'Module degradation factor', '', 1.0, module_degradation_factor);
 
 		//lifetime power output
 		hourly_dc_power = get('dc_net');

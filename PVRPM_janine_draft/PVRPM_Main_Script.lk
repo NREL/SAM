@@ -3,7 +3,7 @@
 //PV Reliability and Performance Model Version 2.0 
 //Inputs and Control Script -- DRAFT --
 //Janine Freeman, NREL
-//16 December 2016
+//1 March 2017
 //*************************************************************************************
 
 //Import the function to simulate a single instance of a system
@@ -136,7 +136,7 @@ results_file = 'C:/users/jfreeman/desktop/pvrpm_results.csv';
 	module_meta.repair[0].parameters =  [60, 20]; //mean, std, in days
 	module_meta.repair[0].times = null;
 	module_meta.degradation.can_degrade = true;
-	module_meta.degradation.rate = 5; //%/year
+	module_meta.degradation.rate = 20; //%/year
 	
 //----Strings--------------------------------------------------------------------------------------------------
 	global string_meta = null;
@@ -465,16 +465,53 @@ if (is_tracking_system && tracker_meta.can_fail)
 
 
 //********************************************************************************************************************************************************************************
+// RUN THE BASE CASE REALIZATION- NO SYSTEM FAILURES
+//********************************************************************************************************************************************************************************
+pb = progressbar( {title='Simulation progress', message='Running base case simulation',cancelbutton=true, time=true, max=system_lifetime_yrs * 365});
+//disable the lifetime daily losses
+set('en_dc_lifetime_losses', 0);
+set('en_ac_lifetime_losses', 0);
+//do we need to do something with user-entered O&M costs here??????????
+if (!simulate())
+{	
+	msgbox('Error: base case simulation failed.');
+	exit;
+}
+
+//output the results
+lifetime = get('analysis_period');
+num_module_failure_modes = #results[0].module_failures_by_type;
+num_inverter_failure_modes = #results[0].inverter_failures_by_type;
+data.realization[0] = 'Base';
+data.lcoe[0] = get('lcoe_real');
+data.total_module_failures[0] = 'N/A';
+for (j=0; j<num_module_failure_modes; j++)
+	data{'module_failures_' + j}[0] = 'N/A';
+data.total_string_failures[0] = 'N/A';
+data.total_combiner_failures[0] = 'N/A';
+data.total_inverter_failures[0] = 'N/A';
+for (j=0; j<num_inverter_failure_modes; j++)
+	data{'inverter_failures_' + j}[0] = 'N/A';
+data.total_disconnect_failures[0] = 'N/A';
+data.total_transformer_failures[0] = 'N/A';
+data.total_grid_failures[i] = 'N/A';
+//outln('Inverter failures by type = ' + inverter_failures_by_type);
+cf_annual_energy_net = get('cf_annual_energy_net');
+for (j=1; j<=lifetime; j++) //start at 1 because the array returns year 0, where the energy production is always 0, and goes through the full lifetime (so a 5-year system would have 6 entries in the annual energy output)
+	data{'annual_energy_' + j}[0] = cf_annual_energy_net[j];
+
+
+//********************************************************************************************************************************************************************************
 // RUN THE SYSTEM REALIZATIONS
 //********************************************************************************************************************************************************************************
-lcoe_array = alloc(num_realizations);
-pb = progressbar( {title='Simulation progress', message='Initializing',cancelbutton=true, time=true, max=system_lifetime_yrs * 365});
+
 for (i=0; i<num_realizations; i++)
 {
-	results[i] = run_system_realization(i, false);
-	outln('Completed realization ' + i);
+	results[i] = run_system_realization(i, false); //changing the second parameter will show or hide graphs from each iteration
+	outln('Completed realization ' + i+1); //number the realizations starting at 1
 }
 progressbar(pb);
+
 
 //outln(results);
 
@@ -482,10 +519,7 @@ progressbar(pb);
 //********************************************************************************************************************************************************************************
 // CALCULATE STATISTICS AND WRITE RESULTS
 //********************************************************************************************************************************************************************************
-lifetime = get('analysis_period');
-num_module_failure_modes = #results[0].module_failures_by_type;
-num_inverter_failure_modes = #results[0].inverter_failures_by_type;
-for (i=0; i<num_realizations; i++)
+for (i=1; i<=num_realizations; i++)
 {
 	data.realization[i] = i;
 	data.lcoe[i] = results[i].lcoe;
@@ -511,6 +545,7 @@ for (c=0; c<#data_columns; c++)
 {
 	current_row = num_realizations; //start at the end of the individual realization results for each column
 	array = data{data_columns[c]};
+	array -@ 0; //get rid of first item because it is the base case scenario
 	
 	//calculate minimum
 	array_min = min(array);
