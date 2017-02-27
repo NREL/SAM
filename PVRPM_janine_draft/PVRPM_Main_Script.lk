@@ -472,97 +472,102 @@ pb = progressbar( {title='Simulation progress', message='Running base case simul
 set('en_dc_lifetime_losses', 0);
 set('en_ac_lifetime_losses', 0);
 //do we need to do something with user-entered O&M costs here??????????
+//what about degradation  for the base case simulation??????????????
 if (!simulate())
 {	
 	msgbox('Error: base case simulation failed.');
 	exit;
 }
 
-//output the results
+//output the results that we care about from the base case simulation before we overwrite them, because we're not saving them like we do for the stochastic realizations
 lifetime = get('analysis_period');
-num_module_failure_modes = #results[0].module_failures_by_type;
-num_inverter_failure_modes = #results[0].inverter_failures_by_type;
-data.realization[0] = 'Base';
-data.lcoe[0] = get('lcoe_real');
-data.total_module_failures[0] = 'N/A';
-for (j=0; j<num_module_failure_modes; j++)
-	data{'module_failures_' + j}[0] = 'N/A';
-data.total_string_failures[0] = 'N/A';
-data.total_combiner_failures[0] = 'N/A';
-data.total_inverter_failures[0] = 'N/A';
-for (j=0; j<num_inverter_failure_modes; j++)
-	data{'inverter_failures_' + j}[0] = 'N/A';
-data.total_disconnect_failures[0] = 'N/A';
-data.total_transformer_failures[0] = 'N/A';
-data.total_grid_failures[i] = 'N/A';
-//outln('Inverter failures by type = ' + inverter_failures_by_type);
-cf_annual_energy_net = get('cf_annual_energy_net');
+results.realization[0] = 'Base';
+results.lcoe[0] = get('lcoe_real');
+base_annual_energy = get('cf_energy_net');
 for (j=1; j<=lifetime; j++) //start at 1 because the array returns year 0, where the energy production is always 0, and goes through the full lifetime (so a 5-year system would have 6 entries in the annual energy output)
-	data{'annual_energy_' + j}[0] = cf_annual_energy_net[j];
+	results{'annual_energy_' + j}[0] = base_annual_energy[j];
 
 
 //********************************************************************************************************************************************************************************
 // RUN THE SYSTEM REALIZATIONS
 //********************************************************************************************************************************************************************************
 
-for (i=0; i<num_realizations; i++)
+for (i=1; i<=num_realizations; i++)
 {
-	results[i] = run_system_realization(i, false); //changing the second parameter will show or hide graphs from each iteration
-	outln('Completed realization ' + i+1); //number the realizations starting at 1
+	raw_results[i] = run_system_realization(i, false); //changing the second parameter will show or hide graphs from each iteration
+	outln('Completed realization ' + i); //number the realizations starting at 1
 }
 progressbar(pb);
 
-
-//outln(results);
+//outln(raw_results);
 
 
 //********************************************************************************************************************************************************************************
 // CALCULATE STATISTICS AND WRITE RESULTS
 //********************************************************************************************************************************************************************************
+num_module_failure_modes = #raw_results[1].module_failures_by_type; //use the results from the first stochastic realization to figure out how many failure modes there are
+num_inverter_failure_modes = #raw_results[1].inverter_failures_by_type;
+
+//base case results- all failures are zero, but we need to assign them instead of having them be null
+results.total_module_failures[0] = 'N/A';
+for (j=0; j<num_module_failure_modes; j++)
+	results{'module_failures_' + j}[0] = 'N/A';
+results.total_string_failures[0] = 'N/A';
+results.total_combiner_failures[0] = 'N/A';
+results.total_inverter_failures[0] = 'N/A';
+for (j=0; j<num_inverter_failure_modes; j++)
+	results{'inverter_failures_' + j}[0] = 'N/A';
+results.total_disconnect_failures[0] = 'N/A';
+results.total_transformer_failures[0] = 'N/A';
+results.total_grid_failures[0] = 'N/A';
+
+//now for the results of the rest of the realizations
 for (i=1; i<=num_realizations; i++)
 {
-	data.realization[i] = i;
-	data.lcoe[i] = results[i].lcoe;
-	data.total_module_failures[i] = results[i].total_module_failures;
+	results.realization[i] = 'Realization ' + i;
+	results.lcoe[i] = raw_results[i].lcoe;
+	results.total_module_failures[i] = raw_results[i].total_module_failures;
 	for (j=0; j<num_module_failure_modes; j++)
-		data{'module_failures_' + j}[i] = results[i].module_failures_by_type[j];
-	data.total_string_failures[i] = results[i].total_string_failures;
-	data.total_combiner_failures[i] = results[i].total_combiner_failures;
-	data.total_inverter_failures[i] = results[i].total_inverter_failures;
+		results{'module_failures_' + j}[i] = raw_results[i].module_failures_by_type[j];
+	results.total_string_failures[i] = raw_results[i].total_string_failures;
+	results.total_combiner_failures[i] = raw_results[i].total_combiner_failures;
+	results.total_inverter_failures[i] = raw_results[i].total_inverter_failures;
 	for (j=0; j<num_inverter_failure_modes; j++)
-		data{'inverter_failures_' + j}[i] = results[i].inverter_failures_by_type[j];
-	data.total_disconnect_failures[i] = results[i].total_disconnect_failures;
-	data.total_transformer_failures[i] = results[i].total_transformer_failures;
-	data.total_grid_failures[i] = results[i].total_grid_failures;
+		results{'inverter_failures_' + j}[i] = raw_results[i].inverter_failures_by_type[j];
+	results.total_disconnect_failures[i] = raw_results[i].total_disconnect_failures;
+	results.total_transformer_failures[i] = raw_results[i].total_transformer_failures;
+	results.total_grid_failures[i] = raw_results[i].total_grid_failures;
 	//outln('Inverter failures by type = ' + inverter_failures_by_type);
 	for (j=1; j<=lifetime; j++) //start at 1 because the array returns year 0, where the energy production is always 0, and goes through the full lifetime (so a 5-year system would have 6 entries in the annual energy output)
-		data{'annual_energy_' + j}[i] = results[i].annual_energy[j];
+		results{'annual_energy_' + j}[i] = raw_results[i].annual_energy[j];
 }
 
 //Calculate statistics
-data_columns = @data;
-for (c=0; c<#data_columns; c++)
+results_columns = @results;
+for (c=0; c<#results_columns; c++)
 {
-	current_row = num_realizations; //start at the end of the individual realization results for each column
-	array = data{data_columns[c]};
+	if (results_columns[c] == 'realization')
+		continue;
+	current_row = num_realizations + 1; //start at the end of the individual realization results for each column
+	array = results{results_columns[c]};
 	array -@ 0; //get rid of first item because it is the base case scenario
 	
 	//calculate minimum
 	array_min = min(array);
-	data.realization[current_row] = 'min';
-	data{data_columns[c]}[current_row] = array_min;
+	results.realization[current_row] = 'min';
+	results{results_columns[c]}[current_row] = array_min;
 	current_row++;
 	
 	//calculate maximum
 	array_max = max(array);
-	data.realization[current_row] = 'max';
-	data{data_columns[c]}[current_row] = array_max;
+	results.realization[current_row] = 'max';
+	results{results_columns[c]}[current_row] = array_max;
 	current_row++;
 	
 	//calculate mean
 	array_mean = mean(array);
-	data.realization[current_row] = 'mean';
-	data{data_columns[c]}[current_row] = array_mean;
+	results.realization[current_row] = 'mean';
+	results{results_columns[c]}[current_row] = array_mean;
 	current_row++;	
 	
 	//calculate desired PXX
@@ -596,14 +601,28 @@ for (c=0; c<#data_columns; c++)
 	x1 = (idx1 + 1) * 1 / num_realizations;
 	y1 = array[idx1];
 	array_p = y0 + (x-x0) * (y1-y0) / (x1-x0); //see linear interpolation formula from https://en.wikipedia.org/wiki/Linear_interpolation*/
-	data.realization[current_row] = 'P' + p_value;
-	data{data_columns[c]}[current_row] = array_p;
+	results.realization[current_row] = 'P' + p_value;
+	results{results_columns[c]}[current_row] = array_p;
 	current_row++; //in case we add more calculated variables later
 	
 }
 
-//write the output file
-csvwrite(results_file, data);
+//write the output file- need to do something a little funky to make the columns show up in the right order
+/* this doesn't work
+formatted_results.realization = results.realization;
+formatted_results.lcoe = results.lcoe;
+//for (j=0; j<num_module_failure_modes; j++)
+	//formatted_results{'module_failures_' + j}. results{'module_failures_' + j};
+formatted_results.total_module_failures = results.total_module_failures;
+formatted_results.total_string_failures = results.total_string_failures;
+/*formatted_results.lcoe = results.lcoe;
+formatted_results.lcoe = results.lcoe;
+formatted_results.lcoe = results.lcoe;
+formatted_results.lcoe = results.lcoe;
+formatted_results.lcoe = results.lcoe;
+formatted_results.lcoe = results.lcoe;*/
+
+csvwrite(results_file, results);
 
 
 

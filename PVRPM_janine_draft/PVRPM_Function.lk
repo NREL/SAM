@@ -28,8 +28,6 @@
 	can we create new SAM cases for various realizations?
 	->make an option to do it (first five realizations)
 	
-	make realization numbers start at 1 rather than 0
-	run the base case and produce "no failures" outputs- make sure to ignore the "no failures" case for the next calculations
 	change "min" and "max" to "lowest" and "highest"
 	add median and stdev
 	keep exceedance probability and CI for energy
@@ -39,7 +37,7 @@
 	add annual DC power- as an output to SAM? for now, sum it up in the script
 	labor vs equipment costs per year for each component
 	average degradation factor per year (roll up from CSV)
-	how many operable pieces of equipment at the end of
+	how many operable pieces of equipment at the end of each year
 	
 	3 csvs with each realization as a column in the csv for degradation, ac power, dc power
 	availability looking at daylight hours ONLY, grid all 24 hours- DON'T include sunrise/sunset hours (use sunup=1 flag)
