@@ -1,8 +1,8 @@
-//#define __BETARELEASE__ 1  // comment this line out to disable beta option
-//#define __BETAWILLEXPIRE__ 1 // comment this line out to disable expiration of beta
-//#define __BETAEXPIRE_DAY__ 28
-//#define __BETAEXPIRE_MONTH__ wxDateTime::Feb
-//#define __BETAEXPIRE_YEAR__ 2017
+#define __BETARELEASE__ 1  // comment this line out to disable beta option
+#define __BETAWILLEXPIRE__ 1 // comment this line out to disable expiration of beta
+#define __BETAEXPIRE_DAY__ 30
+#define __BETAEXPIRE_MONTH__ wxDateTime::Apr
+#define __BETAEXPIRE_YEAR__ 2017
 
 // can be used to indicate specialized releases for particular testers, i.e. 'iscc-ge'
 // by default, should be NULL
@@ -103,6 +103,7 @@ static const char *beta_disclaimer =
 static SamApp::ver releases[] = {
 //please clarify the reason for the new version in a comment. Examples: public release, variable changes, internal release, public beta release, etc.
 //the top version should always be the current working version
+		{ 2017, 2, 28 }, // Beta release for SAM for India
 		{ 2017, 2, 14 }, // Beta release for Mark (internal)
 	{ 2017, 1, 17 }, // public 'ones and sevens' release !
 		{ 2016, 12, 29 }, // Beta release that expires 2/28/17 

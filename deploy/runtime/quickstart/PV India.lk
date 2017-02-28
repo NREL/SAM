@@ -450,7 +450,7 @@ str_html = '<html><body>' +
           str_html += '<tr  bgcolor=#ffffff><td align="left">' +  varinfo( outvars[i] ){'label'} + '</td><td align="left">' + get(outvars[i]) + ' ' + varinfo( outvars[i] ){'units'} + '</td></tr>';
     }
 */            
-	str_html += '<tr  bgcolor=#ffffff><td align="left">Levelized COE (nominal)</td><td align="left">' + sprintf('%.2f',to_real(get('lcoe_nom'))) + ' &#162;/kWh</td></tr>';  // _
+	str_html += '<tr  bgcolor=#ffffff><td align="left">Levelized COG (nominal)</td><td align="left">' + sprintf('%.2f',to_real(get('lcog'))) + ' &#162;/kWh</td></tr>';  // _
 	str_html += '<tr  bgcolor=#ffffff><td align="left">Net present value</td><td align="left">' + sprintf('$%,',round(to_real(get('project_return_aftertax_npv')))) + '</td></tr>';
 	str_html += '<tr  bgcolor=#ffffff><td align="left">Internal rate of return (IRR)</td><td align="left">' + sprintf('%.2f',to_real(get('flip_actual_irr'))) + ' %</td></tr>';
 	str_html += '<tr  bgcolor=#ffffff><td align="left">Year IRR is achieved</td><td align="left">' + sprintf('%.0f',to_real(get('flip_actual_year'))) + '</td></tr>';
@@ -458,7 +458,7 @@ str_html = '<html><body>' +
 	str_html +=  '</table><br><br><br>';
 
 // cash flow line items
-	varcf = ['cf_debt_payment_interest','cf_om_fixed_expense','cf_feddepr_total','cf_reserve_receivables','cf_return_on_equity'];
+	varcf = ['cf_om_fixed_expense','cf_feddepr_total','cf_debt_payment_interest','cf_reserve_interest','cf_return_on_equity_dollars','cf_lcog_costs'];
     str_html += '<table bgcolor=#dddddd width=100%>';
     ap = round(to_real(get('analysis_period')));
 
@@ -501,7 +501,7 @@ runTornado = yesno("Would you like to run a few parametrics and generate a torna
 					[defaultX, defaultY]);
 if (runTornado){
 	variation = 0.10;
-	outLabel = 'lcoe_nom';
+	outLabel = 'lcog';
 	vars = [ 'desired_size', 'bos_equip_fixed', 'om_fixed',
 			'debt_percent',	'term_int_rate','loan_moratorium'];
 	
@@ -612,12 +612,43 @@ if (runTornado){
 
 	axis('x1', {'min'=minVal-range*0.05, 'max'=maxVal+range*0.05, 'label'= varinfo(outLabel){'label'} });
 	axis('y1', { 'type'='label', 'labels'=labels, 'min'=0, 'max'=2*#vars} );
-	plotopt({'legendpos'='bottom', 'coarse'=true, 'fine'=true, 'title'='LCOE Sensitivity (+/- 10%)'});
+	plotopt({'legendpos'='bottom', 'coarse'=true, 'fine'=true, 'title'='LCOG Sensitivity (+/- 10%)'});
 	annotate( [baseOutput, 0], [baseOutput, 2*#vars], {type='line', color='black'});
 
 	
 	plotLocation = tempfile('png');
 	plotout(plotLocation);
+}
+
+/***************************************/
+/** LCOG plot **/
+runSector = yesno("Would you like to create a LCOG sector plot?",
+					[defaultX, defaultY]);
+if (runSector){
+	variation = 0.10;
+	outLabel = 'lcog';
+	vars = [ 'lcog_om', 'lcog_depr', 'lcog_loan_int',
+			'lcog_wc_int',	'lcog_roe'];
+	
+	sector_labels = [ 'O and M', 'Depreciation', 'Loan interest',
+			'Reserve interest',	'ROE'];
+
+	//update plot data	
+	labels = alloc( #vars,2 );
+
+	for(i=0; i<#vars; i++){
+		labels[i][0] = get(vars[i]);
+		labels[i][1] = sector_labels[i];
+//		labels[i][1] = varinfo( vars[i] ){'label'};
+	}
+	stitle = "Levelized cost of generation " + get("lcog") + "cents/kWh";
+	// create the plot
+	newplot();
+	sector( labels, {border=0, holesize=0} );
+	plotopt( { title=stitle, showaxes=false, border=0, pdffontface='ComputerModernSerif'});
+	
+	sectorLocation = tempfile('png');
+	plotout(sectorLocation);
 }
 
 
@@ -631,15 +662,28 @@ if (runTornado){
 
 if( yesno("Would you like to generate a report based off these results?",[defaultX, defaultY]) ){
 	
-	if( runTornado ){
+	if (runTornado && runSector){
+		newplot("");
+		data = {'plotTornado' = 1,
+				'plotLocation' = plotLocation,
+				'plotSector' = 1,
+				'sectorLocation' = sectorLocation};
+	}
+	elseif( runTornado ){
 		newplot("");
 		data = {'plotTornado' = 1,
 				'plotLocation' = plotLocation};
+	} 
+	elseif( runSector ){
+		newplot("");
+		data = {'plotSector' = 1,
+				'sectorLocation' = sectorLocation};
 	} else {
 		data = {'plotTornado' = 0,
-				'plotLocation' = ''};
+				'plotLocation' = '',
+				'plotSector' = 0,
+				'sectorLocation' = ''};
 	}
-	
 	
 	// Create report
 	if( yesno("This report will be saved to:\n" + homedir()+"/PVforIndiaReport.pdf\n\nSelect 'Yes' to continue or 'No' to enter a different file path",[defaultX, defaultY]) ){
