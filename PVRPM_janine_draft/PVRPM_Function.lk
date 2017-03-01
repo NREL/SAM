@@ -6,53 +6,45 @@
 
 // TO DO-----------------------------------------------------------------------------------
 /*
-	Add component-level availability output graph vs time (using Geoff's equation)
+	METHODOLOGY:
 	WHEN AN INVERTER FAILS ROUTINELY, IT NEEDS TO NOT BE COMPLETELY RESET- which ones do reset it?
+	are there further speed increases I can make?
+	make sure to multi-thread the stochastic piece
+	add a check for non-zero degradation in the user interface if modules can degrade- we zero it
+	stepped warranties? degradation triggering warranty?
+		
+	OUTPUTS:	
+	Add component-level availability output graph vs time (using Geoff's equation)
+		availability looking at daylight hours ONLY, grid all 24 hours- DON'T include sunrise/sunset hours (use sunup=1 flag)
+	need to make outputs independent of number failure/repair modes!		
 	Basic failure rates as an output (failures per million hours)
+	add number of failures per component per year- in a csv
+	median
+	confidence intervals
+	keep exceedance probability and CI for energy
+	CI only for failures - code vs lookup table- if lookup table, constrain the options for confidence intervals
+	change "min" and "max" to "lowest" and "highest"
+	add annual DC power- as an output to SAM? for now, sum it up in the script
+	labor vs equipment costs per year for each component
+	average degradation factor per year (roll up from CSV)
+	how many operable pieces of equipment at the end of each year
+	lower priority- add mean time between failures MTBF and MTTR (mean time to repair)
+	
+	USABILITY:
 	Make macro UI inputs
 	Which inputs are ones people should change, and which will the code set automatically (example: tracking)
 	details in the documentation- what comes from SAM, what goes to SAM
 	in documentation- if you want to model microinverters, here's how you would set it up
 	make a note about degradation!! confusing to have an input that's zero but then the degradation get assigned as the daily DC loss
-		-also add a check for non-zero degradation in the user interface if modules can degrade- we zero it
-	are there further speed increases I can make?
-	make sure to multi-thread the stochastic piece
-	add number of failures per component per year- in a csv
-	need to make outputs independent of number failure/repair modes!
-	stepped warranties? degradation triggering warranty?
-	
-	additional outputs:
-	p90, p10, median
-	maybe add confidence intervals after we figure out if there's a good way to do it?
-	
-	can we create new SAM cases for various realizations?
-	->make an option to do it (first five realizations)
-	
-	change "min" and "max" to "lowest" and "highest"
-	add median and stdev
-	keep exceedance probability and CI for energy
-	CI only for failures - code vs lookup table- if lookup table, constrain the options for confidence intervals
-	
+	can we create new SAM cases for various realizations? ->make an option to do it (first five realizations)
+
+	NOTES:
 	non-stationary poisson process (faster way than parallelizing?)-
-	add annual DC power- as an output to SAM? for now, sum it up in the script
-	labor vs equipment costs per year for each component
-	average degradation factor per year (roll up from CSV)
-	how many operable pieces of equipment at the end of each year
-	
-	3 csvs with each realization as a column in the csv for degradation, ac power, dc power
-	availability looking at daylight hours ONLY, grid all 24 hours- DON'T include sunrise/sunset hours (use sunup=1 flag)
-	
-	lower priority- 
-	add mean time between failures MTBF and MTTR (mean time to repair)
-	
-	take a crack at a 2-page documentation of the model (how to, etc)
-	
+
 	Feb- confidence intervals and output spreadsheet at least version 1
-	Mar- write something up, Geoff reviews outputs
+	Mar- write something up, Geoff reviews outputs	take a crack at a 2-page documentation of the model (how to, etc)
 	Apr- Geoff writeup, Janine final tweaks
 	May- release it!
-	
-	
 	
 */
 
@@ -649,6 +641,14 @@ function run_system_realization(realization, show_outputs)
 			results.total_tracker_failures += trackers[tr].cumulative_failures;
 	}
 
+
+	//write the timeseries results for this realization to the global csv files
+	hourly_dc_power = get('dc_net');
+	hourly_ac_power = get('gen');
+	csv_dc_power{'Realization_' + realization} = hourly_dc_power;
+	csv_ac_power{'Realization_' + realization} = hourly_ac_power;
+	csv_degradation{'Realization_' + realization} = module_degradation_factor;	
+	
 	//outln(dc_power_availability);
 	if (show_outputs)
 	{
@@ -671,8 +671,6 @@ function run_system_realization(realization, show_outputs)
 			dview(3, 24, 'Daily factors', 'DC Equipment Operational', '', 1.0, dc_power_availability, 'AC Equipment Operational', '', 1.0, ac_power_availability, 'Module degradation factor', '', 1.0, module_degradation_factor);
 
 		//lifetime power output
-		hourly_dc_power = get('dc_net');
-		hourly_ac_power = get('gen');
 		dview(2, 1, 'Lifetime System Power', 'DC Power', 'kW', 1.0, hourly_dc_power, 'AC Power', 'kW', 1.0, hourly_ac_power);
 	}
 	results.lcoe = get('lcoe_real');

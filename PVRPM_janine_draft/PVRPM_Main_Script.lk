@@ -9,7 +9,10 @@
 //Import the function to simulate a single instance of a system
 import 'PVRPM_Function.lk';
 
-results_file = 'C:/users/jfreeman/desktop/pvrpm_results.csv';
+//Specify results options
+//results_file = 'C:/users/jfreeman/desktop/pvrpm_results/pvrpm_results.csv';
+results_folder = 'C:/users/jfreeman/desktop/pvrpm_results';
+show_realization_graphs = true;
 
 //*******************************************************************************************************************************************************************************
 // USER-DEFINED INPUTS
@@ -19,7 +22,7 @@ results_file = 'C:/users/jfreeman/desktop/pvrpm_results.csv';
 //----System setup---------------------------------------------------------------------------------------------
 	num_combiners = 2; //total number of DC combiner boxes
 	num_transformers = 1; //total number of Transformers
-	num_trackers = 0; //
+	num_trackers = 2; //total number of trackers
 	
 //----Financial inputs-----------------------------------------------------------------------------------------
 	present_day_labor_rate = 100; //dollars per hour
@@ -272,7 +275,7 @@ results_file = 'C:/users/jfreeman/desktop/pvrpm_results.csv';
 	
 //----Trackers-------------------------------------------------------------------------------------------------
 	// Only required for tracking systems, otherwise can be deleted or commented out
-	/*
+	
 	global trackers = alloc(num_trackers);
 	global tracker_meta = null;
 	tracker_meta.name = 'tracker';
@@ -289,7 +292,7 @@ results_file = 'C:/users/jfreeman/desktop/pvrpm_results.csv';
 	tracker_meta.repair[0].parameters = [30, 10]; //mean, std, in days
 	tracker_meta.repair[0].times = null;
 	tracker_meta.degradation.can_degrade = false;
-	*/
+	
 
 
 
@@ -307,6 +310,23 @@ results_file = 'C:/users/jfreeman/desktop/pvrpm_results.csv';
 	if (num_inverters_per_transformer * num_transformers != num_inverters) 
 	{
 		msgbox('Error: there must be an integer number of inverters per transformer.');
+		exit;
+	}
+	
+	// Number of combiners, transformers, trackers must be positive
+	if (num_combiners <= 0)
+	{
+		msgbox('Error: there must be a positive number of combiners.');
+		exit;
+	}
+	if (num_transformers <= 0)
+	{
+		msgbox('Error: there must be a positive number of transformers.');
+		exit;
+	}
+	if (is_tracking_system && num_trackers <= 0)
+	{
+		msgbox('Error: there must be a positive number of trackers.');
 		exit;
 	}
 	
@@ -491,10 +511,12 @@ for (j=1; j<=lifetime; j++) //start at 1 because the array returns year 0, where
 //********************************************************************************************************************************************************************************
 // RUN THE SYSTEM REALIZATIONS
 //********************************************************************************************************************************************************************************
-
+global csv_dc_power = null;
+global csv_ac_power = null;
+global csv_degradation = null;
 for (i=1; i<=num_realizations; i++)
 {
-	raw_results[i] = run_system_realization(i, false); //changing the second parameter will show or hide graphs from each iteration
+	raw_results[i] = run_system_realization(i, show_realization_graphs); //changing the second parameter will show or hide graphs from each iteration
 	outln('Completed realization ' + i); //number the realizations starting at 1
 }
 progressbar(pb);
@@ -568,7 +590,13 @@ for (c=0; c<#results_columns; c++)
 	array_mean = mean(array);
 	results.realization[current_row] = 'mean';
 	results{results_columns[c]}[current_row] = array_mean;
-	current_row++;	
+	current_row++;
+	
+	//calculate standard deviation
+	array_std = stddev(array);
+	results.realization[current_row] = 'std';
+	results{results_columns[c]}[current_row] = array_std;
+	current_row++;
 	
 	//calculate desired PXX
 	//first, sort the results smallest to largest
@@ -622,7 +650,10 @@ formatted_results.lcoe = results.lcoe;
 formatted_results.lcoe = results.lcoe;
 formatted_results.lcoe = results.lcoe;*/
 
-csvwrite(results_file, results);
+csvwrite(results_folder + '/PVRPM_Summary_Results.csv', results);
+csvwrite(results_folder + '/Timeseries_DC_Power.csv', csv_dc_power);
+csvwrite(results_folder + '/Timeseries_AC_Power.csv', csv_ac_power);
+csvwrite(results_folder + '/Daily_Degradation.csv', csv_degradation);
 
 
 
