@@ -75,8 +75,18 @@ millisleep(500);
 
 // Get Location from User
 currentSRD = get('solar_resource');
-//solarDataList = library('SolarResourceData');
-solarDataList = ["India IND Ahmadabad (INTL)","India IND Bombay (INTL)","India IND Calcutta (INTL)","India IND Goa Panaji (INTL)","India IND Madras (INTL)","India IND Nagpur (INTL)","India IND New_Delhi (INTL)","India IND Trivandrum (INTL)"];
+// parse all solar data files in library to those that start with "India IND"
+allSolarDataList = library('SolarResourceData');
+count=0;
+for (i=0;i<#allSolarDataList;i++)
+{
+	if (left(allSolarDataList[i], 9) == "India IND")
+	{
+		solarDataList[count] = allSolarDataList[i];
+		count++;
+	}
+}
+//solarDataList = ["India IND Ahmadabad (INTL)","India IND Bombay (INTL)","India IND Calcutta (INTL)","India IND Goa Panaji (INTL)","India IND Madras (INTL)","India IND Nagpur (INTL)","India IND New_Delhi (INTL)","India IND Trivandrum (INTL)"];
 initial = 0;
 for( i =0; i<#solarDataList; i++){
 	if( currentSRD == solarDataList[i] ){
