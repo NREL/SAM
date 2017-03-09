@@ -137,84 +137,126 @@ protected:
 	
 };
 
-class BSPNode : public polygon3d
+
+
+
+
+
+// Derived from http://archive.gamedev.net/archive/reference/programming/features/bsptree/bsp.pdf 
+
+enum BSP_classification_t { BSP_UNKNOWN, BSP_COINCIDING, BSP_SPANNING, BSP_BEHIND, BSP_INFRONT };
+
+
+class BSPTreeNode : public polygon3d
 {
 #ifdef _DEBUG
 public:
 #endif
+	BSPTreeNode *Tree;
+	BSPTreeNode *RightChild;
+	BSPTreeNode *LeftChild;
+	
+
+	std::vector<polygon3d> PolygonSet;
 
 	size_t Index;
-	BSPNode *FrontNode, *BackNode;
-	
-	point3d Center;
-	point3d MinPoint;
-	point3d MaxPoint;
-	point3d Normal;
-	double D;
+
+	point3d m_center;
+	point3d m_minPoint;
+	point3d m_maxPoint;
+	point3d m_normal;
+	double m_distance;
 
 	bool m_rendered;
+	bool m_isDivider;
 
-
-	unsigned long _SplitPoly( BSPNode *Plane, std::vector<point3d> &SplitPnts, bool savepoints=true );
 	void _ComputeCenterMinMax(void);
 	void _ComputeCenter(void);
 	void _ComputeNormal(void);
-	void _ComputeD( void );
+	void _ComputeDistance( void );
 
 public:
-	BSPNode( const polygon3d &rhs );
-	~BSPNode();
+	BSPTreeNode(){};
+	BSPTreeNode(const polygon3d &rhs);
+//	~BSPTreeNode();
 
-	bool GetRendered() { return m_rendered;}
-		
-	point3d GetMaxPoint(void)				{ return MaxPoint; }
-	point3d GetCenter(void)				{ return Center; }
-	point3d GetNormal(void)				{ return Normal; }
+	BSPTreeNode *GetLeft(void)			{ return LeftChild; }
+	BSPTreeNode *GetRight(void)			{ return RightChild; }
 
-	bool Intersects( BSPNode *Plane );
-	BSPNode *Split( BSPNode *Plane );
+	void SetLeft(BSPTreeNode *Node)		{ LeftChild = Node; }
+	void SetRight(BSPTreeNode *Node)		{ RightChild = Node; }
 
-	BSPNode *GetFront( void )			{ return FrontNode; }
-	BSPNode *GetBack( void )			{ return BackNode; }
+	bool GetRendered() { return m_rendered; }
+	void SetIsDivider(bool _isDivider) { m_isDivider = _isDivider; }
+	bool GetIsDivider() { return m_isDivider; }
 
-	void SetFront( BSPNode *Node )		{ FrontNode = Node; }
-	void SetBack( BSPNode *Node)		{ BackNode = Node; }
+	point3d GetMaxPoint(void)				{ return m_maxPoint;}
+	point3d GetCenter(void)				{ return m_center; }
+	point3d GetNormal(void)				{ return m_normal; }
+	double GetDistance(void)				{ return m_distance; }
+
+//	bool Intersects( BSPNode *Plane );
+//	BSPNode *Split( BSPNode *Plane );
+
 
 	void Traverse( const point3d& CameraLoc, std::vector<s3d::polygon3d*>& polys );
 
 	double GetMinZ();
 };
 
-// Derived from http://www.drdobbs.com/cpp/implementing-and-using-bsp-trees/184409588 1995
-
-class BSPTree
+class BSP
 {
 private:
+	BSPTreeNode RootNode;
+	std::vector<BSPTreeNode*> m_nodes;
+	std::vector<BSPTreeNode*> m_listnodes; // for deletion
+
+	/*
 	unordered_map<int, float> m_id_minz;
 	std::vector<BSPNode*> m_nodes;
 	std::vector<BSPNode*> m_listnodes; // for deletion
 	BSPNode *m_root;
 
-	BSPNode *_FindRoot( std::vector<BSPNode*>& List );
-	BSPNode *_BuildBSPTree( std::vector<BSPNode*>& List );
-
+	BSPNode *_FindRoot(std::vector<BSPNode*>& List);
+	BSPNode *_BuildBSPTree(std::vector<BSPNode*>& List);
+	*/
 public:
-	BSPTree() {};
-	BSPTree( std::vector<s3d::polygon3d*>& polys, double x_viewport, double y_viewport, double z_viewport);
-	~BSPTree();
+	BSP(){};
+	BSP(std::vector<s3d::polygon3d*>& polys, double x_viewport, double y_viewport, double z_viewport);
+	~BSP();
 
-	void Traverse( point3d& CameraLoc, std::vector<s3d::polygon3d*>& polys );
 
-	size_t NNodes() { return m_nodes.size(); }
+	BSP_classification_t ClassifyPoint(BSPTreeNode &node, point3d &point);
+	bool NodeInfront(BSPTreeNode &node1, BSPTreeNode &node2);
+	bool IsConvexSet(std::vector<BSPTreeNode> &NodeSet);
+	BSP_classification_t CalculateSide(BSPTreeNode &node1, BSPTreeNode &node2);
+	BSPTreeNode *ChooseDividingNode(std::vector<BSPTreeNode> &NodeSet, double minRelation=0.8, double minRelationScale=2, int maxIts=1000);
+
+
+	void Traverse(point3d& CameraLoc, std::vector<s3d::polygon3d*>& polys);
+
+
+
+
+
+	//size_t NNodes() { return m_nodes.size(); }
 	void Reset();
-	void ReadPolyList(const std::vector<s3d::polygon3d*>& polys );
+	void ReadPolyList(const std::vector<s3d::polygon3d*>& polys);
 
-	void ReadPolyList( std::ifstream& Input );
-	void ReadTree( std::ifstream& Input );
-	void WriteTree( std::ofstream& Output );
+	void ReadPolyList(std::ifstream& Input);
+	void ReadTree(std::ifstream& Input);
+	void WriteTree(std::ofstream& Output);
 
-	void BuildTree( void );
+	void BuildTree(void);
 };
+
+
+
+// end of BSP classes and supporting functions
+
+
+
+
 
 static const unsigned int RIGHT = 0x0001;
 static const unsigned int TOP = 0x0002;
@@ -254,7 +296,7 @@ private:
 	std::vector<polygon3d*> m_polygons;
 	std::vector<text3d*> m_labels;
 	
-	BSPTree m_bsp;
+	BSP m_bsp;
 	double m_viewNormal[3];
 	std::vector<polygon3d*> m_sortedCulled, m_rendered;
 
