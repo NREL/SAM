@@ -331,7 +331,7 @@ pagedata = [ ["./3dshad-3d-scene.htm","3D scene view","The 3D scene view gives y
 ["./dish_stirling_engine.htm","Dish Stirling Engine","The Stirling engine converts heat from the receiver&#39;s absorber to mechanical power that drives an electric generator.",""],
 ["./dish_system_costs.htm","System Costs","To view the Dish System Costs page, click Dish System Costs on the main window&#39;s navigation menu. Note that for the dish input pages to be availab...",""],
 ["./download_weather_file.htm","Download Weather File","SAM&#39;s Download Weather File feature allows you to type an address, zip code, or latitude and longitude to download a weather file from either the ...",""],
-["./dslf_collector_and_receiver.htm","Collector and Receiver","Linear Fresnel Boiler Geometry / Superheater Geometry",""],
+["./dslf_collector_and_receiver.htm","Collector and Receiver","The Collector and Receiver inputs describe the geometry and optical characteristics of the boiler and superheater sections of solar field. The fie...",""],
 ["./dslf_parasitics.htm","Parasitics","The parameters on the Parasitics page describe parasitic electrical loads and other losses in the linear fresnel system.",""],
 ["./dslf_power_cycle.htm","Power Cycle","The power cycle converts thermal energy to electric energy. The power cycle is assumed to consist of a superheated two-stage turbine with multiple...",""],
 ["./dslf_solar_field.htm","Solar Field","Solar Field Parameters Option 1 and Option 2 For Option 1 (solar multiple mode), SAM calculates the total required aperture and number of loops ba...",""],
