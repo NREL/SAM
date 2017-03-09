@@ -7,7 +7,7 @@
    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
    
    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-   <meta name="description" content="Linear Fresnel Boiler Geometry / Superheater Geometry" />
+   <meta name="description" content="The Collector and Receiver inputs describe the geometry and optical characteristics of the boiler and superheater sections of solar field. The field may consist of a boiler and..." />
    <meta name="picture" content="" />
    <link type="text/css" href="default.css" rel="stylesheet" />
    <style type="text/css">
@@ -40,9 +40,11 @@
 
 <!-- Placeholder for topic body. -->
 <table style="width:100%;border:none;border-spacing:0px"><tr style="vertical-align:top"><td style="text-align:left;padding:5px">
-<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Linear Fresnel Boiler Geometry / Superheater Geometry</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription">This dropdown specifies whether the collector and receiver geometry displayed on the Collector and Receiver page corresponds to the boiler or superheater section. If the Superheater has unique geometry checkbox on the Solar Field page is not selected, the boiler geometry will apply to all modules in the collector loop. If the checkbox is selected, the boiler geometry applies only to the first Number of modules in boiler section modules, and the remaining superheater modules inherit geometry from the inputs that appear when the Linear Fresnel Superheater Geometry option is selected from the dropdown menu.</span></p>
-<h3 class="p_Heading3_atocs_" style="page-break-inside: avoid; page-break-after: avoid; border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Collector Geometry and Optical Performance</span></h3>
+<p class="p_Text"><span class="f_Text">The Collector and Receiver inputs describe the geometry and optical characteristics of the boiler and superheater sections of solar field. The field may consist of a boiler and superheater section with the same geometry and optical characteristics, or boiler and superheater sections with different geometries and optical characteristics.</span></p>
+<p class="p_Text"><span class="f_Text">If the boiler and superheater sections have different properties, check </span><span class="f_CHInterfaceElement">Superheater has unique geometry</span><span class="f_Text"> on the <a href="dslf_solar_field.htm" class="topiclink">Solar Field</a> page and specify inputs on the Collector and Receiver page under both </span><span class="f_CHInterfaceElement">Boiler Geometry</span><span class="f_Text"> and </span><span class="f_CHInterfaceElement">Superheater Geometry</span><span class="f_Text">.</span></p>
+<p class="p_Text"><span class="f_Text">If the boiler and superheater sections have the same properties, clear </span><span class="f_CHInterfaceElement">Superheater has unique geometry</span><span class="f_Text"> check box on the Solar Field page, and specify inputs on the Collector and Receiver page under </span><span class="f_CHInterfaceElement">Boiler Geometry</span><span class="f_Text"> only. SAM will ignore the superheater geometry inputs.</span></p>
+<p class="p_TableTextCenter" style="page-break-inside: avoid;"><img alt="SS_LFR-Geometries" width="341" height="128" style="margin:0px auto 0px auto;width:341px;height:128px;border:none" src="ss_lfr-geometries.png"/></p>
+<h3 class="p_Heading3_atocs_" style="page-break-inside: avoid; page-break-after: avoid; border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Boiler/Superheater Geometry and Optical Performance</span></h3>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Reflective aperture area, m²</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The total reflective aperture area for the module. This value is multiplied by the collector optical efficiency and the solar irradiance value to determine the total thermal energy incident on the module’s receiver.</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Length of collector module, m</span></p>
