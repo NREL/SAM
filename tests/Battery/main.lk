@@ -12,6 +12,8 @@ global subhourly_weather = 'C:\\Users\\ndiorio\\Documents\\Data\\One-minute weat
 global hourly_load = 'C:\\Users\\ndiorio\\Documents\\Data\\One-hour load\\SAM_default.txt';
 global subhourly_load = 'C:\\Users\\ndiorio\\Documents\\Data\\15-minute load\\El Monte.txt';
 
+global tol = 0.001;
+
 global lo_tol = 0.999;
 global hi_tol = 1.001;
 
@@ -218,25 +220,34 @@ function power_to_load()
 	pv = get('pv_to_load');
 	battery = get('batt_to_load');
 	grid = get('grid_to_load');
-	load_power = [];
+	load_energy = [];
 	
 	lifetime = get('pv_lifetime_simulation');
-
+	analysis_period = 1;
+	
 	if (lifetime)
-		load_power = get('lifetime_load');
+	{
+		load_energy = get('lifetime_load');
+		analysis_period = get('analysis_period');
+	}
+		
 	else
-		load_power = get('load');
+		load_energy = get('load');
+		
+	// load is output in Kwh for some reason
+	time_steps_per_hour = (#load_energy) / (analysis_period * 8760);
 	
 	// can't compare if using different time steps for weather and load
-	if (#load_power == #pv)
+	if (#load_energy == #pv)
 	{
 		for (i=0; i<#pv; i++)
 		{
-			check = load_power[i]/(pv[i] + battery[i] + grid[i]);
+			load_power = load_energy[i] * time_steps_per_hour;
+			check = load_power/(pv[i] + battery[i] + grid[i]);
 			if ( pv[i] < 0 || battery[i] < 0 || grid[i] < 0||  check > hi_tol  || check < lo_tol  )
 			{
 				outln("------- Power to Load Output Failed!!! -----------------------------------");
-				outln(": i: " + i + " pv: " + pv[i] + " battery: " + battery[i] + " grid: " + grid[i] + " load: " + load_power[i] + " check: " + check);
+				outln(": i: " + i + " pv: " + pv[i] + " battery: " + battery[i] + " grid: " + grid[i] + " load: " + load_power + " check: " + check);
 				outln("------------------------------------------------------------------");
 				break;
 				retCode = false;
@@ -267,8 +278,11 @@ function power_to_battery()
 			break;
 			retCode = false;
 		}
-		check = abs(battery[i]/(pv[i] + grid[i]));
-		if (battery[i] < 0 && (  check > hi_tol || check < lo_tol  ) )
+		check = 0;
+		if (pv[i] + grid[i] != 0)
+			check = abs(battery[i]/(pv[i] + grid[i]));
+			
+		if (battery[i] < -tol && (  check > hi_tol || check < lo_tol  ) )
 		{
 			outln("------- Power to Battery Output Failed!!! -----------------------------------");
 			outln(": i: " + i +  " pv_to_batt: " + pv[i] + " battery: " + battery[i] + " grid_to_batt: " + grid[i] + " check: " + check );
@@ -598,8 +612,8 @@ function manual_dispatch_test(default)
 						break;
 					}
 					
-					if ( (grid_to_batt[count] > 0 && gridcharge == false) || (grid_to_batt[count]/pmax > (grid_percent*0.01) ) )
-					{
+					if ( (grid_to_batt[count] > 0 && gridcharge == false) || (grid_to_batt[count]/pmax > (grid_percent*0.01*hi_tol_relaxed + 2 ) )
+)					{
 						outln("------- Manual Dispatch Failed!!! -----------------------------------");
 						outln("month: " + month + " day: " + day +" hour: " + hour + " step: " + step +" gridcharge: " + gridcharge + " grid_to_batt: " + grid_to_batt[count] + " pmax: " + pmax + " gridcharge_percent: " + grid_percent + " profile: " + profile+ " weekend: " + is_weekend);
 						outln("------------------------------------------------------------------");
@@ -607,7 +621,7 @@ function manual_dispatch_test(default)
 						break;
 					}
 					
-					if ( (batt_to_load[count] > 0 && discharge == false) || (batt_to_load[count]/pmax > dis_percent*0.01) )
+					if ( (batt_to_load[count] > 0 && discharge == false) || (batt_to_load[count]/pmax > (dis_percent*0.01 + 2) ) )
 					{
 						outln("------- Manual Dispatch Failed!!! -----------------------------------");
 						outln("month: " + month + " day: " + day + " hour: " + hour + " step: " + step +" discharge: " + discharge + " batt_to_load: " + batt_to_load[count] + " pmax: " + pmax + " discharge_percent: " + dis_percent + " profile: " + profile + " weekend: " + is_weekend);
@@ -833,7 +847,7 @@ outln("Performance Tests");
 
 for (pv_choice = 0; pv_choice != n_pvchoice; pv_choice++)
 {
-	for (weather = 0; weather != n_weather; weather++)
+	for (weather = 1; weather != n_weather; weather++)
 	{
 		for (load = 0; load != n_load; load++)
 		{
