@@ -358,6 +358,7 @@ show_realization_graphs = true;
 		set('pv_lifetime_simulation', 1);
 	}
 	// Lifetime daily DC and AC loss structures must be empty to run.
+	/*
 	if (get('en_dc_lifetime_losses') || get('en_ac_lifetime_losses'))
 	{
 		proceed = yesno('This script will overwrite any user-entered lifetime daily losses, and they will be lost. Proceed?');
@@ -366,7 +367,7 @@ show_realization_graphs = true;
 			msgbox('Please modify the case not to use user-entered lifetime daily losses. Exiting simulation.');
 			exit;
 		}
-	}
+	}*/
 	// Multiple subarrays can't have tracker failures
 	if (has_multiple_subarrays && is_tracking_system && tracker_meta.can_fail)
 	{
@@ -516,7 +517,11 @@ global csv_ac_power = null;
 global csv_degradation = null;
 for (i=1; i<=num_realizations; i++)
 {
-	raw_results[i] = run_system_realization(i, show_realization_graphs); //changing the second parameter will show or hide graphs from each iteration
+	if (i==1)
+		raw_results[i] = run_system_realization(i, true); //changing the second parameter will show or hide graphs from each iteration
+	else
+		raw_results[i] = run_system_realization(i, false); //changing the second parameter will show or hide graphs from each iteration
+
 	outln('Completed realization ' + i); //number the realizations starting at 1
 }
 progressbar(pb);
