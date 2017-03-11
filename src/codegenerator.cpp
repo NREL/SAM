@@ -629,12 +629,24 @@ bool CodeGen_Base::ShowCodeGenDialog(CaseWindow *cw)
 	Case *c = cw->GetCase();
 	wxString fn = SamApp::Project().GetCaseName(c);
 	// replace spaces for SDK user friendly name
+	fn.Replace("/", "_"); // hard crash in 2017.1.17 release
 	fn.Replace(" ", "_");
 	fn.Replace("(", "_"); // matlab
 	fn.Replace(")", "_"); // matlab
 	char cfn[100];
 	strcpy(cfn, (const char*)fn.mb_str(wxConvUTF8));
 	fn = foldername + "/" + wxString::FromAscii(cfn);
+
+
+	wxString testpath, testname,testext;
+	wxFileName::SplitPath(fn,&testpath,&testname,&testext);
+
+	if (!wxFileName::DirExists(testpath))
+	{
+		wxString msg = wxString::Format("Error with file path or case name\n Please check path = %s\nand name = %s", (const char*)foldername.c_str(), cfn);
+		wxMessageBox(msg, "Code Generator Errors", wxICON_ERROR);
+		return false;
+	}
 
 	CodeGen_Base *cg;
 	wxString err_msg = "";
@@ -1272,7 +1284,7 @@ bool CodeGen_csharp::Input(ssc_data_t p_data, const char *name, const wxString &
 		}
 		else
 		{
-			fprintf(m_fp, "		float[] p_%s ={", name, len);
+			fprintf(m_fp, "		float[] p_%s ={", name);
 			for (int i = 0; i < (len - 1); i++)
 			{
 				dbl_value = (double)p[i];
@@ -1306,7 +1318,7 @@ bool CodeGen_csharp::Input(ssc_data_t p_data, const char *name, const wxString &
 		}
 		else
 		{
-			fprintf(m_fp, "		float[,] p_%s ={ {", name, len);
+			fprintf(m_fp, "		float[,] p_%s ={ {", name);
 			for (int k = 0; k < (len - 1); k++)
 			{
 				dbl_value = (double)p[k];
@@ -2651,7 +2663,7 @@ bool CodeGen_matlab::Header()
 	fprintf(m_fp, "            result = {text , typetext , p_time.Value};\n");
 	fprintf(m_fp, "        end\n");
 	fprintf(m_fp, "    else\n");
-	fprintf(m_fp, "        disp( sprintf('ssccall: invalid action %s', action) );        \n");
+	fprintf(m_fp, "        disp( sprintf('ssccall: invalid action %%s', action) );        \n");
 	fprintf(m_fp, "        result = 0;\n");
 	fprintf(m_fp, "    end\n");
 	fprintf(m_fp, "	end\n");
