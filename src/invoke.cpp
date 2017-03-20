@@ -36,7 +36,7 @@
 #include "stochastic.h"
 #include "registration.h"
 #include "codegencallback.h"
-
+#include "nsrdb.h"
 
 void fcall_samver( lk::invoke_t &cxt )
 {
@@ -1643,6 +1643,29 @@ void fcall_wfdownloaddir( lk::invoke_t &cxt)
 	cxt.result().assign(wfdir);
 }
 
+
+void fcall_nsrdbquery(lk::invoke_t &cxt)
+{
+	LK_DOC("nsrdbquery", "Creates the NSRDB data download dialog box, lists all avaialble resource files, downloads multiple solar resource files, and returns local file name for weather file", "(none) : string");
+	//Create the wind data object
+	NSRDBDialog dlgNSRDB(SamApp::Window(), "Download Solar Resource File");
+	dlgNSRDB.CenterOnParent();
+	int code = dlgNSRDB.ShowModal(); //shows the dialog and makes it so you can't interact with other parts until window is closed
+
+	//Return an empty string if the window was dismissed
+	if (code == wxID_CANCEL)
+	{
+		cxt.result().assign(wxEmptyString);
+		return;
+	}
+
+	//Get selected filename
+	wxString filename = dlgNSRDB.GetWeatherFile();
+
+	//Return the downloaded filename
+	cxt.result().assign(filename);
+}
+
 void fcall_windtoolkit(lk::invoke_t &cxt)
 {
 	LK_DOC("windtoolkit", "Creates the wind data download dialog box, downloads, decompresses, converts, and returns local file name for weather file", "(none) : string");
@@ -3066,6 +3089,7 @@ lk::fcall_t* invoke_uicallback_funcs()
 		fcall_current_at_voltage_cec,
 		fcall_current_at_voltage_sandia,
 		fcall_windtoolkit,
+		fcall_nsrdbquery,
 		fcall_openeiutilityrateform,
 		fcall_group_read,
 		fcall_group_write,

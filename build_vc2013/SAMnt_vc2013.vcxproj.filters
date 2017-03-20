@@ -141,6 +141,9 @@
     <ClInclude Include="..\src\codegenerator.h">
       <Filter>Source</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\nsrdb.h">
+      <Filter>Source</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\welcome.cpp">
@@ -267,6 +270,9 @@
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="..\src\codegenerator.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\nsrdb.cpp">
       <Filter>Source</Filter>
     </ClCompile>
   </ItemGroup>
