@@ -29,6 +29,7 @@ OBJECTS = ide.o \
 	s3view.o \
 	stochastic.o \
 	urdb.o \
+	nsrdb.o \
 	windtoolkit.o \
 	registration.o \
 	gridsupport.o \
