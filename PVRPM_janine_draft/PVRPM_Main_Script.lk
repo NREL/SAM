@@ -12,7 +12,7 @@ import 'PVRPM_Function.lk';
 //Specify results options
 //results_file = 'C:/users/jfreeman/desktop/pvrpm_results/pvrpm_results.csv';
 results_folder = 'C:/users/jfreeman/desktop/pvrpm_results';
-show_realization_graphs = true;
+show_realization_graphs = false;
 
 //*******************************************************************************************************************************************************************************
 // USER-DEFINED INPUTS
@@ -45,8 +45,8 @@ show_realization_graphs = true;
 	}	
 
 //----Number of stochastic realizations to be run--------------------------------------------------------------
-	num_realizations = 2;
-	p_value = 50; //PXX is what will get calculated
+	num_realizations = 5;
+	p_value = 75; //PXX is what will get calculated
 
 //********************************************************************************************************************************************************************************
 // CASE-DEFINED INPUTS
@@ -56,6 +56,15 @@ show_realization_graphs = true;
 	if (active_case() == '')
 	{
 		msgbox('Please select a SAM case.');
+		exit;
+	}
+	
+	// Technology must be detailed PV model
+	cfg = configuration();
+	tech = cfg[0];
+	if (tech != 'Flat Plate PV')
+	{
+		msgbox('Error: This script is only applicable to the detailed photovoltaic model. Exiting simulation.');
 		exit;
 	}
 	
@@ -300,6 +309,14 @@ show_realization_graphs = true;
 // SYSTEM CONFIGURATION AND ACTIVE CASE ERROR CHECKING
 //********************************************************************************************************************************************************************************
 
+	// At least one thing must be set up to fail
+	if (!module_meta.can_fail && !string_meta.can_fail && !combiner_meta.can_fail && !inverter_meta.can_fail && !disconnect_meta.can_fail && !transformer_meta.can_fail && !grid_meta.can_fail)
+	if ((is_tracking_system && !tracker_meta.can_fail) || !is_tracking_system)
+	{
+		msgbox('Error: you must enable at least one component to fail.');
+		exit;
+	}
+	
 	// There must be an integer number of strings per combiner
 	if (num_strings_per_combiner * num_combiners != num_strings) 
 	{
@@ -330,16 +347,9 @@ show_realization_graphs = true;
 		exit;
 	}
 	
-	cfg = configuration();
-	fin = cfg[1];
-	tech = cfg[0];
-	// Technology must be detailed PV model
-	if (tech != 'Flat Plate PV')
-	{
-		msgbox('Error: This script is only applicable to the detailed photovoltaic model. Exiting simulation.');
-		exit;
-	}
+
 	// Financial models third party, LCOE calculator, and None don't have lifetime mode (note that ALL financial models calculate LCOE, not just the LCOE calculator!)
+	fin = cfg[1];
 	if (fin == 'Third Party' || fin == 'LCOE Calculator' || fin == 'None')
 	{
 		msgbox('Error: This script cannot be run from financial model: ' + fin + '. Exiting simulation.');
