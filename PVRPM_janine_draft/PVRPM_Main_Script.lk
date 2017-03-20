@@ -45,8 +45,8 @@ show_realization_graphs = true;
 	}	
 
 //----Number of stochastic realizations to be run--------------------------------------------------------------
-	num_realizations = 5;
-	p_value = 75; //PXX is what will get calculated
+	num_realizations = 2;
+	p_value = 50; //PXX is what will get calculated
 
 //********************************************************************************************************************************************************************************
 // CASE-DEFINED INPUTS
@@ -116,7 +116,7 @@ show_realization_graphs = true;
 //----Modules--------------------------------------------------------------------------------------------------
 	global module_meta = null;
 	module_meta.name = 'module';	
-	module_meta.can_fail = true;
+	module_meta.can_fail = false;
 	module_meta.can_repair = true;
 	module_meta.number = num_modules;
 	module_meta.warranty.has_warranty = true;
@@ -144,7 +144,7 @@ show_realization_graphs = true;
 //----Strings--------------------------------------------------------------------------------------------------
 	global string_meta = null;
 	string_meta.name = 'string';
-	string_meta.can_fail = true;
+	string_meta.can_fail = false;
 	string_meta.can_repair = true;
 	string_meta.number = num_strings;
 	string_meta.warranty.has_warranty = false;
@@ -161,7 +161,7 @@ show_realization_graphs = true;
 //----Combiners------------------------------------------------------------------------------------------------
 	global combiner_meta = null;
 	combiner_meta.name = 'combiner';
-	combiner_meta.can_fail = true;
+	combiner_meta.can_fail = false;
 	combiner_meta.can_repair = true;
 	combiner_meta.number = num_combiners;
 	combiner_meta.warranty.has_warranty = false;
@@ -178,7 +178,7 @@ show_realization_graphs = true;
 //----Inverters------------------------------------------------------------------------------------------------
 	global inverter_meta = null;
 	inverter_meta.name = 'inverter';
-	inverter_meta.can_fail = true;
+	inverter_meta.can_fail = false;
 	inverter_meta.can_repair = true;
 	inverter_meta.number = num_inverters;
 	inverter_meta.warranty.has_warranty = false; 
@@ -225,7 +225,7 @@ show_realization_graphs = true;
 //----AC Disconnects-------------------------------------------------------------------------------------------
 	global disconnect_meta = null;
 	disconnect_meta.name = 'disconnect';
-	disconnect_meta.can_fail = true;
+	disconnect_meta.can_fail = false;
 	disconnect_meta.can_repair = true;
 	disconnect_meta.number = num_disconnects;
 	disconnect_meta.warranty.has_warranty = false;
@@ -242,7 +242,7 @@ show_realization_graphs = true;
 //----Transformers---------------------------------------------------------------------------------------------
 	global transformer_meta = null;
 	transformer_meta.name = 'transformer';
-	transformer_meta.can_fail = true;
+	transformer_meta.can_fail = false;
 	transformer_meta.can_repair = true;
 	transformer_meta.number = num_transformers;
 	transformer_meta.warranty.has_warranty = false;
@@ -259,7 +259,7 @@ show_realization_graphs = true;
 //----Grid-----------------------------------------------------------------------------------------------------
 	global grid_meta = null;
 	grid_meta.name = 'grid';
-	grid_meta.can_fail = true;
+	grid_meta.can_fail = false;
 	grid_meta.can_repair = true;
 	grid_meta.number = 1;
 	grid_meta.warranty.has_warranty = false;
@@ -517,11 +517,7 @@ global csv_ac_power = null;
 global csv_degradation = null;
 for (i=1; i<=num_realizations; i++)
 {
-	if (i==1)
-		raw_results[i] = run_system_realization(i, true); //changing the second parameter will show or hide graphs from each iteration
-	else
-		raw_results[i] = run_system_realization(i, false); //changing the second parameter will show or hide graphs from each iteration
-
+	raw_results[i] = run_system_realization(i, show_realization_graphs); //changing the second parameter will show or hide graphs from each iteration
 	outln('Completed realization ' + i); //number the realizations starting at 1
 }
 progressbar(pb);
