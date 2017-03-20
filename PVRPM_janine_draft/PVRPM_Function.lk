@@ -487,6 +487,7 @@ function run_system_realization(realization, show_outputs)
 		costs.tracker[0] = 0;
 		tracker_power_loss_factor[0] = 1;
 		tracker_availability[0] = 1;
+		original_tracker_cost = tracker_meta.failure[0].cost;
 	}
 
 	//rest of system lifetime
@@ -648,6 +649,9 @@ function run_system_realization(realization, show_outputs)
 	csv_dc_power{'Realization_' + realization} = hourly_dc_power;
 	csv_ac_power{'Realization_' + realization} = hourly_ac_power;
 	csv_degradation{'Realization_' + realization} = module_degradation_factor;	
+	
+	if (is_tracking_system)
+		tracker_meta.failure[0].cost = original_tracker_cost;
 	
 	//outln(dc_power_availability);
 	if (show_outputs)
