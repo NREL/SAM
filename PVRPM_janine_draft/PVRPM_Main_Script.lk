@@ -560,6 +560,8 @@ for (i=1; i<=num_realizations; i++)
 	results.total_disconnect_failures[i] = raw_results[i].total_disconnect_failures;
 	results.total_transformer_failures[i] = raw_results[i].total_transformer_failures;
 	results.total_grid_failures[i] = raw_results[i].total_grid_failures;
+	if (is_tracking_system)
+		results.total_tracker_failures[i] = raw_results[i].total_tracker_failures;
 	//outln('Inverter failures by type = ' + inverter_failures_by_type);
 	for (j=1; j<=lifetime; j++) //start at 1 because the array returns year 0, where the energy production is always 0, and goes through the full lifetime (so a 5-year system would have 6 entries in the annual energy output)
 		results{'annual_energy_' + j}[i] = raw_results[i].annual_energy[j];
@@ -637,21 +639,30 @@ for (c=0; c<#results_columns; c++)
 }
 
 //write the output file- need to do something a little funky to make the columns show up in the right order
-/* this doesn't work
-formatted_results.realization = results.realization;
-formatted_results.lcoe = results.lcoe;
-//for (j=0; j<num_module_failure_modes; j++)
-	//formatted_results{'module_failures_' + j}. results{'module_failures_' + j};
-formatted_results.total_module_failures = results.total_module_failures;
-formatted_results.total_string_failures = results.total_string_failures;
-/*formatted_results.lcoe = results.lcoe;
-formatted_results.lcoe = results.lcoe;
-formatted_results.lcoe = results.lcoe;
-formatted_results.lcoe = results.lcoe;
-formatted_results.lcoe = results.lcoe;
-formatted_results.lcoe = results.lcoe;*/
+column_order = ['realization', 'lcoe', 'total_module_failures', 'total_string_failures', 'total_combiner_failures', 'total_inverter_failures', 'total_disconnect_failures', 'total_transformer_failures', 'total_grid_failures'];
+idx = 9;
+if (is_tracking_system)
+{
+	column_order[idx] = 'total_tracker_failures';
+	idx++;
+}
+for (j=1; j<=lifetime; j++)
+{
+	column_order[idx] = 'annual_energy_' + j;
+	idx++;
+}
+for (j=0; j<num_module_failure_modes; j++)
+{
+	column_order[idx] = 'module_failures_' + j;
+	idx++;
+}
+for (j=0; j<num_inverter_failure_modes; j++)
+{
+	column_order[idx] = 'inverter_failures_' + j;
+	idx++;
+}
 
-csvwrite(results_folder + '/PVRPM_Summary_Results.csv', results);
+csvwrite(results_folder + '/PVRPM_Summary_Results.csv', results, {cols=column_order});
 csvwrite(results_folder + '/Timeseries_DC_Power.csv', csv_dc_power);
 csvwrite(results_folder + '/Timeseries_AC_Power.csv', csv_ac_power);
 csvwrite(results_folder + '/Daily_Degradation.csv', csv_degradation);
