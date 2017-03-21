@@ -18,11 +18,23 @@ public:
 		return m_weatherFile;
 	};
 
+	struct LinkInfo
+	{
+		wxString name;
+		wxString displayName;
+		wxString type;
+		wxString year; // number or "tmy"
+		wxString URL;
+		int interval;
+	};
+
+
 private:
 	void OnEvt(wxCommandEvent &);
 
 	void GetResources();
 
+	std::vector<LinkInfo> m_links;
 	wxString m_weatherFile;
 	wxComboBox *m_cboFilter;
 	wxComboBox *m_cboWeatherFile;
