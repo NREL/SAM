@@ -5,6 +5,8 @@
 #include <wx/sizer.h>
 
 #include <wex/easycurl.h>
+#include <wex/jsonval.h>
+#include <wex/jsonreader.h>
 
 #include "NSRDB.h"
 #include "main.h"
@@ -45,39 +47,37 @@ NSRDBDialog::NSRDBDialog(wxWindow *parent, const wxString &title)
 
 
 	wxBoxSizer *szAddress = new wxBoxSizer(wxHORIZONTAL);
-	szAddress->Add(new wxStaticText(this, wxID_ANY, "Address"), 0, wxALL | wxALIGN_CENTER_VERTICAL, 5);
+	szAddress->Add(new wxStaticText(this, wxID_ANY, "Address"), 0, wxALL , 5);
 	szAddress->Add(m_txtAddress, 0, wxALL, 5);
 	szAddress->Add(m_btnResources, 0, wxALL, 5);
 
 	wxBoxSizer *szFolder = new wxBoxSizer(wxHORIZONTAL);
-	szFolder->Add(new wxStaticText(this, wxID_ANY, "Download Folder"), 0, wxALL | wxALIGN_CENTER_VERTICAL, 5);
+	szFolder->Add(new wxStaticText(this, wxID_ANY, "Download Folder"), 0, wxALL , 5);
 	szFolder->Add(m_txtFolder, 0, wxALL, 5);
 	szFolder->Add(m_btnFolder, 0, wxALL, 5);
 
 	wxBoxSizer *szWeatherFile = new wxBoxSizer(wxHORIZONTAL);
-	szWeatherFile->Add(new wxStaticText(this, wxID_ANY, "Weather file to use in SAM"), 0, wxALL | wxALIGN_CENTER_VERTICAL, 5);
+	szWeatherFile->Add(new wxStaticText(this, wxID_ANY, "Weather file to use in SAM"), 0, wxALL , 5);
 	szWeatherFile->Add(m_cboWeatherFile, 0, wxALL, 5);
 
 	wxBoxSizer *szFilter = new wxBoxSizer(wxHORIZONTAL);
-	szFilter->Add(new wxStaticText(this, wxID_ANY, "Filter list"), 0, wxALL | wxALIGN_CENTER_VERTICAL, 5);
+	szFilter->Add(new wxStaticText(this, wxID_ANY, "Filter list"), 0, wxALL , 5);
 	szFilter->Add(m_cboFilter, 0, wxALL, 5);
 
 
-	wxBoxSizer *szChkBtn = new wxBoxSizer(wxVERTICAL);
-	szChkBtn->Add(ID_btnChkFiltered, 0, wxALL, 0);
-	szChkBtn->Add(ID_btnChkAll, 0, wxALL, 0);
-	szChkBtn->Add(ID_btnChkNone, 0, wxALL, 0);
+	wxBoxSizer *szChkBtn = new wxBoxSizer(wxHORIZONTAL);
+	szChkBtn->Add(m_btnChkFiltered, 0, wxALL, 2);
+	szChkBtn->Add(m_btnChkAll, 0, wxALL, 2);
+	szChkBtn->Add(m_btnChkNone, 0, wxALL, 2);
 
 
-	wxFlexGridSizer *szgrid = new wxFlexGridSizer(1,2,2,2);
-	szgrid->AddGrowableRow(0);
-	szgrid->AddGrowableCol(1);
-	szgrid->Add(szChkBtn, 0, wxALL | wxALIGN_CENTER_VERTICAL, 1);
-	szgrid->Add( m_chlResources, 0, wxALL|wxEXPAND|wxALIGN_CENTER_VERTICAL, 1 );
+	wxBoxSizer *szgrid = new wxBoxSizer(wxVERTICAL);
+	szgrid->Add(szChkBtn, 0, wxALL , 1);
+	szgrid->Add( m_chlResources, 1, wxALL|wxEXPAND, 10 );
 
 
 	wxBoxSizer *szmain = new wxBoxSizer( wxVERTICAL );
-	szmain->Add(new wxStaticText(this, wxID_ANY, msg), 0, wxALL | wxALIGN_CENTER_VERTICAL, 5);
+	szmain->Add(new wxStaticText(this, wxID_ANY, msg), 0, wxALL , 5);
 	szmain->Add(szAddress, 0, wxLEFT | wxRIGHT | wxTOP, 10);
 	szmain->Add(szFilter, 0, wxLEFT | wxRIGHT | wxTOP, 10);
 	szmain->Add(szgrid, 0, wxLEFT | wxRIGHT | wxTOP, 10);
@@ -132,6 +132,8 @@ void NSRDBDialog::GetResources()
 			wxMessageBox("Failed to geocode address");
 			return;
 		}
+		else
+			locname = wxString::Format("lat%.5lf_lon%.5lf", lat, lon);
 	}
 	else
 	{
@@ -142,8 +144,8 @@ void NSRDBDialog::GetResources()
 			return ;
 		}
 
-		if (!parts[0].ToDouble(&lat) || !parts[1].ToDouble(&lon));
-		locname = wxString::Format("lat%.5lf_lon%.5lf", lat, lon);
+		if (!parts[0].ToDouble(&lat) || !parts[1].ToDouble(&lon))
+			locname = wxString::Format("lat%.5lf_lon%.5lf", lat, lon);
 	}
 
 	//Create URL for weather file download
@@ -163,7 +165,50 @@ void NSRDBDialog::GetResources()
 		return;
 	}
 
-	wxMessageBox(curl.GetDataAsString());
+//	wxMessageBox(curl.GetDataAsString());
+	wxString json_data = curl.GetDataAsString();
+	if (json_data.IsEmpty())
+	{
+		wxMessageBox("Failed to download data from web service.");
+		return;
+	}
 
+	wxJSONReader reader;
+	//	reader.SetSkipStringDoubleQuotes(true);
+	wxJSONValue root;
+	if (reader.Parse(json_data, &root) != 0)
+	{
+		wxMessageBox("Could not process returned JSON for " + locname);
+		return;
+	}
+
+
+	m_links.clear();
+	wxJSONValue output_list = root["outputs"];
+	for (int i_outputs = 0; i_outputs<output_list.Size(); i_outputs++)
+	{
+		wxJSONValue out_item = output_list[i_outputs];
+		wxJSONValue links_list = out_item["links"];
+		for (int i_links = 0; i_links < links_list.Size(); i_links++)
+		{
+			LinkInfo x;
+			x.name = json_string(output_list[i_outputs].Item("name"));
+			x.displayName = json_string(output_list[i_outputs].Item("displayName"));
+			x.type = json_string(output_list[i_outputs].Item("type"));
+
+			x.year = json_string(links_list[i_links].Item("year"));
+			x.URL = json_string(links_list[i_links].Item("link"));
+			x.interval = json_integer(links_list[i_links].Item("interval"));
+			//		wxLogStatus("urdb startdate=" + x.StartDate);
+			//		wxLogStatus("urdb enddate=" + x.EndDate);
+			wxLogStatus("link info: " + x.displayName + "," + x.name + "," + x.type + "," + x.year + "," + wxString::Format("%d",x.interval) + "," + x.URL);
+			m_links.push_back(x);
+		}
+		wxMessageBox(wxString::Format("processed %d links", links_list.Size()));
+	}
+	
+	wxMessageBox(wxString::Format("processed %d outputs", output_list.Size()));
+
+	wxMessageBox(wxString::Format("processed %d structures", (int)m_links.size()));
 
 }
