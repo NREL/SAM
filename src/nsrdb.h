@@ -25,7 +25,14 @@ public:
 		wxString type;
 		wxString year; // number or "tmy"
 		wxString URL;
-		int interval;
+		wxString interval;
+		wxString location;
+		wxString display;
+		LinkInfo(wxString &_n, wxString &_dn, wxString &_t, wxString &_y, wxString &_u, wxString &_i, wxString &_l)
+			: name(_n), displayName(_dn), type(_t), year(_y), URL(_u), interval(_i), location(_l)
+		{
+			display = location + "_" + type + "_" + interval + "_" + year;
+		}
 	};
 
 
@@ -39,7 +46,7 @@ private:
 	wxComboBox *m_cboFilter;
 	wxComboBox *m_cboWeatherFile;
 	wxCheckListBox *m_chlResources;
-	wxButton *m_btnChkAll, *m_btnChkFiltered, *m_btnChkNone, *m_btnResources, *m_btnFolder;
+	wxButton *m_btnChkAll, *m_btnChkFiltered, *m_btnChkNone, *m_btnResources, *m_btnFolder, *m_btnDownload;
 	wxTextCtrl *m_txtFolder;
 	wxTextCtrl *m_txtAddress;
 
