@@ -1660,10 +1660,16 @@ void fcall_nsrdbquery(lk::invoke_t &cxt)
 	}
 
 	//Get selected filename
+	wxString foldername = dlgNSRDB.GetWeatherFolder();
 	wxString filename = dlgNSRDB.GetWeatherFile();
+	wxString addfolder = dlgNSRDB.GetAddFolder();
 
-	//Return the downloaded filename
-	cxt.result().assign(filename);
+	cxt.result().empty_hash();
+
+	// meta data
+	cxt.result().hash_item("file").assign(filename);
+	cxt.result().hash_item("folder").assign(foldername);
+	cxt.result().hash_item("addfolder").assign(addfolder);
 }
 
 void fcall_windtoolkit(lk::invoke_t &cxt)
