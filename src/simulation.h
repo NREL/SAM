@@ -100,6 +100,7 @@ public:
 	// results and messages if it succeeded
 	bool Ok();
 	wxArrayString &GetErrors();
+	void SetErrors(wxArrayString &_errors);
 	wxArrayString &GetWarnings();
 	wxArrayString &GetNotices();
 	wxArrayString GetAllMessages();

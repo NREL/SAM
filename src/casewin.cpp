@@ -329,7 +329,14 @@ bool CaseWindow::RunBaseCase( bool silent, wxString *messages )
 		return true;
 	}
 	else
+	{
+		wxArrayString err;
+		m_case->BaseCase().Clear(); // clear notices 3/27/17
+		err.Add("Last simulation failed.");
+		bcsim.SetErrors(err);
+		UpdateResults(); // clear notices 3/27/17
 		return false;
+	}
 }
 
 void CaseWindow::UpdateResults()
