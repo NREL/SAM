@@ -256,6 +256,13 @@ wxArrayString &Simulation::GetErrors()
 {
 	return m_errors;
 }
+
+void Simulation::SetErrors(wxArrayString &_errors)
+{
+	m_errors = _errors;
+}
+
+
 wxArrayString &Simulation::GetWarnings()
 {
 	return m_warnings;

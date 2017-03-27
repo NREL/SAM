@@ -1073,7 +1073,7 @@ void ResultsViewer::Setup( Simulation *sim )
 	for( size_t i=0;i<log.size();i++ )
 		text += log[i] + "\n";
 
-
+	m_messages->Clear(); // 3/27/17 clear notices
 	m_messages->ChangeValue( text );
 }
 
