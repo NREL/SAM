@@ -358,15 +358,15 @@ p, p.p_Normal, div.p_Normal /* Normal */
 .p_List /* List */
 {
  font-size: 10pt;
- text-indent: -10px;
- margin: 0px 0px 3px 20px;
+ text-indent: -24px;
+ margin: 0px 0px 3px 48px;
 }
 .p_ListLast /* List Last */
 {
  font-size: 10pt;
- text-indent: -10px;
+ text-indent: -24px;
  page-break-inside: avoid;
- margin: 0px 0px 6px 20px;
+ margin: 0px 0px 6px 48px;
 }
 .p_ListNoNumber /* List No Number */
 {
