@@ -75,8 +75,10 @@ span.f_EquationExcel /* Equation Excel */
 }
 span.f_Heading1 /* Heading1 */
 {
- font-size: 28pt;
- font-family: Georgia,serif;
+ font-size: 24pt;
+ font-family: 'Segoe UI',Tahoma,Verdana,Arial,sans-serif;
+ color: #ffffff;
+ background-color: #0072c6;
 }
 span.f_Heading2_atoc_ /* Heading2_atoc_ */
 {
@@ -89,7 +91,6 @@ span.f_Heading3_atocs_ /* Heading3_atocs_ */
 {
  font-size: 14pt;
  font-family: Arial,Helvetica,sans-serif;
- font-weight: bold;
  color: #0072c6;
 }
 span.f_Heading4 /* Heading4 */
@@ -301,10 +302,11 @@ p, p.p_Normal, div.p_Normal /* Normal */
 {
  font-size: 100%;
  font-weight: normal;
- text-align: left;
+ text-align: center;
  text-indent: 0px;
  page-break-inside: avoid;
  page-break-after: avoid;
+ background: #0072c6;
  padding: 0px 0px 0px 0px;
  margin: 0px 0px 0px 0px;
 }
