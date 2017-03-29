@@ -13,7 +13,7 @@
 #include <wex/jsonval.h>
 #include <wex/jsonreader.h>
 
-#include "NSRDB.h"
+#include "nsrdb.h"
 #include "main.h"
 
 
