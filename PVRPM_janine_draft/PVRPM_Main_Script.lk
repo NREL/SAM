@@ -11,7 +11,7 @@ import 'PVRPM_Function.lk';
 
 //Specify results options
 //results_file = 'C:/users/jfreeman/desktop/pvrpm_results/pvrpm_results.csv';
-results_folder = 'C:/users/jfreeman/desktop/pvrpm_results';
+global results_folder = 'C:/users/jfreeman/desktop/pvrpm_results';
 show_realization_graphs = false;
 
 //*******************************************************************************************************************************************************************************
@@ -29,7 +29,7 @@ show_realization_graphs = false;
 	inflation = 3; //%
 	
 //----Tracker failure algorithm--------------------------------------------------------------------------------
-	use_worst_case_tracker = false;
+	use_worst_case_tracker = true;
 
 //----Degradation input function-------------------------------------------------------------------------------
 	/*
@@ -45,8 +45,8 @@ show_realization_graphs = false;
 	}	
 
 //----Number of stochastic realizations to be run--------------------------------------------------------------
-	num_realizations = 5;
-	p_value = 75; //PXX is what will get calculated
+	num_realizations = 3; //must be 2 or greater
+	p_value = 50; //PXX is what will get calculated
 
 //********************************************************************************************************************************************************************************
 // CASE-DEFINED INPUTS
@@ -56,6 +56,12 @@ show_realization_graphs = false;
 	if (active_case() == '')
 	{
 		msgbox('Please select a SAM case.');
+		exit;
+	}
+	
+	if (num_realizations <= 1)
+	{
+		msgbox('You must specify more than one realization.');
 		exit;
 	}
 	
@@ -125,8 +131,8 @@ show_realization_graphs = false;
 //----Modules--------------------------------------------------------------------------------------------------
 	global module_meta = null;
 	module_meta.name = 'module';	
-	module_meta.can_fail = false;
-	module_meta.can_repair = true;
+	module_meta.can_fail = true;
+	module_meta.can_repair = false;
 	module_meta.number = num_modules;
 	module_meta.warranty.has_warranty = true;
 	module_meta.warranty.days = 20 * 365; //years converted to days
@@ -147,13 +153,13 @@ show_realization_graphs = false;
 	module_meta.repair[0].distribution = 'lognormal';
 	module_meta.repair[0].parameters =  [60, 20]; //mean, std, in days
 	module_meta.repair[0].times = null;
-	module_meta.degradation.can_degrade = true;
+	module_meta.degradation.can_degrade = false;
 	module_meta.degradation.rate = 20; //%/year
 	
 //----Strings--------------------------------------------------------------------------------------------------
 	global string_meta = null;
 	string_meta.name = 'string';
-	string_meta.can_fail = false;
+	string_meta.can_fail = true;
 	string_meta.can_repair = true;
 	string_meta.number = num_strings;
 	string_meta.warranty.has_warranty = false;
@@ -170,7 +176,7 @@ show_realization_graphs = false;
 //----Combiners------------------------------------------------------------------------------------------------
 	global combiner_meta = null;
 	combiner_meta.name = 'combiner';
-	combiner_meta.can_fail = false;
+	combiner_meta.can_fail = true;
 	combiner_meta.can_repair = true;
 	combiner_meta.number = num_combiners;
 	combiner_meta.warranty.has_warranty = false;
@@ -187,7 +193,7 @@ show_realization_graphs = false;
 //----Inverters------------------------------------------------------------------------------------------------
 	global inverter_meta = null;
 	inverter_meta.name = 'inverter';
-	inverter_meta.can_fail = false;
+	inverter_meta.can_fail = true;
 	inverter_meta.can_repair = true;
 	inverter_meta.number = num_inverters;
 	inverter_meta.warranty.has_warranty = false; 
@@ -234,7 +240,7 @@ show_realization_graphs = false;
 //----AC Disconnects-------------------------------------------------------------------------------------------
 	global disconnect_meta = null;
 	disconnect_meta.name = 'disconnect';
-	disconnect_meta.can_fail = false;
+	disconnect_meta.can_fail = true;
 	disconnect_meta.can_repair = true;
 	disconnect_meta.number = num_disconnects;
 	disconnect_meta.warranty.has_warranty = false;
@@ -251,7 +257,7 @@ show_realization_graphs = false;
 //----Transformers---------------------------------------------------------------------------------------------
 	global transformer_meta = null;
 	transformer_meta.name = 'transformer';
-	transformer_meta.can_fail = false;
+	transformer_meta.can_fail = true;
 	transformer_meta.can_repair = true;
 	transformer_meta.number = num_transformers;
 	transformer_meta.warranty.has_warranty = false;
@@ -268,7 +274,7 @@ show_realization_graphs = false;
 //----Grid-----------------------------------------------------------------------------------------------------
 	global grid_meta = null;
 	grid_meta.name = 'grid';
-	grid_meta.can_fail = false;
+	grid_meta.can_fail = true;
 	grid_meta.can_repair = true;
 	grid_meta.number = 1;
 	grid_meta.warranty.has_warranty = false;
@@ -522,9 +528,9 @@ for (j=1; j<=lifetime; j++) //start at 1 because the array returns year 0, where
 //********************************************************************************************************************************************************************************
 // RUN THE SYSTEM REALIZATIONS
 //********************************************************************************************************************************************************************************
-global csv_dc_power = null;
-global csv_ac_power = null;
-global csv_degradation = null;
+//global csv_dc_power = null;
+//global csv_ac_power = null;
+//global csv_degradation = null;
 for (i=1; i<=num_realizations; i++)
 {
 	raw_results[i] = run_system_realization(i, show_realization_graphs); //changing the second parameter will show or hide graphs from each iteration
@@ -553,6 +559,18 @@ for (j=0; j<num_inverter_failure_modes; j++)
 results.total_disconnect_failures[0] = 'N/A';
 results.total_transformer_failures[0] = 'N/A';
 results.total_grid_failures[0] = 'N/A';
+if (module_meta.can_fail) results.module_mtbf[0] = 'N/A';
+if (string_meta.can_fail) results.string_mtbf[0] = 'N/A';
+if (combiner_meta.can_fail) results.combiner_mtbf[0] = 'N/A';
+if (inverter_meta.can_fail) results.inverter_mtbf[0] = 'N/A';
+if (disconnect_meta.can_fail) results.disconnect_mtbf[0] = 'N/A';
+if (transformer_meta.can_fail) results.transformer_mtbf[0] = 'N/A';
+if (grid_meta.can_fail) results.grid_mtbf[0] = 'N/A';
+if (is_tracking_system)
+{
+	results.total_tracker_failures[0] = 'N/A';
+	results.tracker_mtbf[0] = 'N/A';
+}
 
 //now for the results of the rest of the realizations
 for (i=1; i<=num_realizations; i++)
@@ -562,16 +580,26 @@ for (i=1; i<=num_realizations; i++)
 	results.total_module_failures[i] = raw_results[i].total_module_failures;
 	for (j=0; j<num_module_failure_modes; j++)
 		results{'module_failures_' + j}[i] = raw_results[i].module_failures_by_type[j];
+	if (module_meta.can_fail) results.module_mtbf[i] = raw_results[i].module_mtbf;
 	results.total_string_failures[i] = raw_results[i].total_string_failures;
+	if (string_meta.can_fail) results.string_mtbf[i] = raw_results[i].string_mtbf;
 	results.total_combiner_failures[i] = raw_results[i].total_combiner_failures;
+	if (combiner_meta.can_fail) results.combiner_mtbf[i] = raw_results[i].combiner_mtbf;
 	results.total_inverter_failures[i] = raw_results[i].total_inverter_failures;
 	for (j=0; j<num_inverter_failure_modes; j++)
 		results{'inverter_failures_' + j}[i] = raw_results[i].inverter_failures_by_type[j];
+	if (inverter_meta.can_fail) results.inverter_mtbf[i] = raw_results[i].inverter_mtbf;
 	results.total_disconnect_failures[i] = raw_results[i].total_disconnect_failures;
+	if (disconnect_meta.can_fail) results.disconnect_mtbf[i] = raw_results[i].disconnect_mtbf;
 	results.total_transformer_failures[i] = raw_results[i].total_transformer_failures;
+	if (transformer_meta.can_fail) results.transformer_mtbf[i] = raw_results[i].transformer_mtbf;
 	results.total_grid_failures[i] = raw_results[i].total_grid_failures;
+	if (grid_meta.can_fail) results.grid_mtbf[i] = raw_results[i].grid_mtbf;
 	if (is_tracking_system)
+	{
 		results.total_tracker_failures[i] = raw_results[i].total_tracker_failures;
+		if (tracker_meta.can_fail) results.tracker_mtbf[i] = raw_results[i].tracker_mtbf;
+	}
 	//outln('Inverter failures by type = ' + inverter_failures_by_type);
 	for (j=1; j<=lifetime; j++) //start at 1 because the array returns year 0, where the energy production is always 0, and goes through the full lifetime (so a 5-year system would have 6 entries in the annual energy output)
 		results{'annual_energy_' + j}[i] = raw_results[i].annual_energy[j];
@@ -603,6 +631,12 @@ for (c=0; c<#results_columns; c++)
 	array_mean = mean(array);
 	results.realization[current_row] = 'mean';
 	results{results_columns[c]}[current_row] = array_mean;
+	current_row++;
+	
+	//calculate median
+	array_median = median(array);
+	results.realization[current_row] = 'median';
+	results{results_columns[c]}[current_row] = array_median;
 	current_row++;
 	
 	//calculate standard deviation
@@ -649,11 +683,14 @@ for (c=0; c<#results_columns; c++)
 }
 
 //write the output file- need to do something a little funky to make the columns show up in the right order
-column_order = ['realization', 'lcoe', 'total_module_failures', 'total_string_failures', 'total_combiner_failures', 'total_inverter_failures', 'total_disconnect_failures', 'total_transformer_failures', 'total_grid_failures'];
+column_order = ['realization', 'lcoe', 'total_module_failures', 'module_mtbf', 'total_string_failures', 'string_mtbf', 'total_combiner_failures', 'combiner_mtbf', 
+	'total_inverter_failures', 'inverter_mtbf', 'total_disconnect_failures', 'disconnect_mtbf', 'total_transformer_failures', 'transformer_mtbf', 'total_grid_failures', 'grid_mtbf'];
 idx = 9;
 if (is_tracking_system)
 {
 	column_order[idx] = 'total_tracker_failures';
+	idx++;
+	column_order[idx] = 'tracker_mtbf';
 	idx++;
 }
 for (j=1; j<=lifetime; j++)
@@ -672,10 +709,55 @@ for (j=0; j<num_inverter_failure_modes; j++)
 	idx++;
 }
 
-csvwrite(results_folder + '/PVRPM_Summary_Results.csv', results, {cols=column_order});
-csvwrite(results_folder + '/Timeseries_DC_Power.csv', csv_dc_power);
-csvwrite(results_folder + '/Timeseries_AC_Power.csv', csv_ac_power);
-csvwrite(results_folder + '/Daily_Degradation.csv', csv_degradation);
+//Results Summary
+if (!csvwrite(results_folder + '/PVRPM_Summary_Results.csv', results, {cols=column_order}))
+{
+	msgbox('PVRPM Results Summary file is open. Please close the file and then click OK.');
+	csvwrite(results_folder + '/PVRPM_Summary_Results.csv', results, {cols=column_order});
+}
+
+//DC Timeseries
+csv_dc_power = null;
+for (i=1; i<=num_realizations; i++)
+{
+	x = csvread(results_folder + '/dc_' + i + '.csv', {table=true});
+	csv_dc_power{'realization_' + i} = x.hourly_dc_power;
+	remove_file(results_folder + '/dc_' + i + '.csv');
+}
+if (!csvwrite(results_folder + '/Timeseries_DC_Power.csv', csv_dc_power))
+{
+	msgbox('Timeseries DC Power file is open. Please close the file and then click OK.');
+	csvwrite(results_folder + '/Timeseries_DC_Power.csv', csv_dc_power);
+}
+
+//AC Timeseries
+csv_ac_power = null;
+for (i=1; i<=num_realizations; i++)
+{
+	x = csvread(results_folder + '/ac_' + i + '.csv', {table=true});
+	csv_ac_power{'realization_' + i} = x.hourly_ac_power;
+	remove_file(results_folder + '/ac_' + i + '.csv');
+	
+}
+if (!csvwrite(results_folder + '/Timeseries_AC_Power.csv', csv_ac_power))
+{
+	msgbox('Timeseries AC Power file is open. Please close the file and then click OK.');
+	csvwrite(results_folder + '/Timeseries_AC_Power.csv', csv_ac_power);
+}
+
+//Degradation Timeseries
+csv_degradation = null;
+for (i=1; i<=num_realizations; i++)
+{
+	x = csvread(results_folder + '/deg_' + i + '.csv', {table=true});
+	csv_degradation{'realization_' + i} = x.daily_degradation;
+	remove_file(results_folder + '/deg_' + i + '.csv');
+}
+if (!csvwrite(results_folder + '/Daily_Degradation.csv', csv_degradation))
+{
+	msgbox('Degradation file is open. Please close the file and then click OK.');
+	csvwrite(results_folder + '/Daily_Degradation.csv', csv_degradation);
+}
 
 
 
