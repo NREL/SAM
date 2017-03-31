@@ -19,16 +19,14 @@
 	need to make outputs independent of number failure/repair modes!		
 	Basic failure rates as an output (failures per million hours)
 	add number of failures per component per year- in a csv
-	median
 	confidence intervals
 	keep exceedance probability and CI for energy
 	CI only for failures - code vs lookup table- if lookup table, constrain the options for confidence intervals
-	change "min" and "max" to "lowest" and "highest"
 	add annual DC power- as an output to SAM? for now, sum it up in the script
 	labor vs equipment costs per year for each component
 	average degradation factor per year (roll up from CSV)
 	how many operable pieces of equipment at the end of each year
-	lower priority- add mean time between failures MTBF and MTTR (mean time to repair)
+	lower priority- add MTTR (mean time to repair)
 	
 	USABILITY:
 	Make macro UI inputs
@@ -361,7 +359,10 @@ function step_in_time(component_meta, component_vector, day, component_repair_co
 					component_vector[i].time_to_failure--;
 					//component has just failed and failure is allowed for this type of component
 					if (component_vector[i].time_to_failure <= 0 && component_meta.can_fail == true)
+					{
 						component_failure(component_vector, i, day, component_meta.warranty.has_warranty);
+						component_meta.downtime += day;
+					}
 				}
 				
 				//component is currently failed
@@ -382,7 +383,8 @@ function step_in_time(component_meta, component_vector, day, component_repair_co
 						else
 							component_repair_costs[day] += component_repair_cost;
 						//initialize a new module without resetting cumulative failures
-						initialize_component(component_meta, component_vector, i, false); 			
+						initialize_component(component_meta, component_vector, i, false); 
+						component_meta.uptime += day;			
 					}
 				}
 				
@@ -450,6 +452,27 @@ function run_system_realization(realization, show_outputs)
 	global transformers = alloc(num_transformers);
 	global grid = alloc(1);
 	global costs = null;
+	
+	// Set up failure tracking numbers
+	module_meta.uptime = 0;
+	module_meta.downtime = 0;
+	string_meta.uptime = 0;
+	string_meta.downtime = 0;
+	combiner_meta.uptime = 0;
+	combiner_meta.downtime = 0;
+	inverter_meta.uptime = 0;
+	inverter_meta.downtime = 0;
+	disconnect_meta.uptime = 0;
+	disconnect_meta.downtime = 0;
+	transformer_meta.uptime = 0;
+	transformer_meta.downtime = 0;
+	grid_meta.uptime = 0;
+	grid_meta.downtime = 0;
+	if (is_tracking_system)
+	{
+		tracker_meta.uptime = 0;
+		tracker_meta.downtime = 0;
+	}
 		
 	// Allocate outputs----------------------------------------------------------------------------------
 	//costs
@@ -648,11 +671,15 @@ function run_system_realization(realization, show_outputs)
 
 
 	//write the timeseries results for this realization to the global csv files
-	hourly_dc_power = get('dc_net');
-	hourly_ac_power = get('gen');
-	csv_dc_power{'Realization_' + realization} = hourly_dc_power;
-	csv_ac_power{'Realization_' + realization} = hourly_ac_power;
-	csv_degradation{'Realization_' + realization} = module_degradation_factor;	
+	dc.hourly_dc_power = get('dc_net');
+	ac.hourly_ac_power = get('gen');
+	deg.daily_degradation = module_degradation_factor;
+	csvwrite(results_folder + '/dc_' + realization + '.csv', dc);
+	csvwrite(results_folder + '/ac_' + realization + '.csv', ac);
+	csvwrite(results_folder + '/deg_' + realization + '.csv', deg);
+	//csv_dc_power{'Realization_' + realization} = hourly_dc_power;
+	//csv_ac_power{'Realization_' + realization} = hourly_ac_power;
+	//csv_degradation{'Realization_' + realization} = module_degradation_factor;	
 	
 	if (is_tracking_system)
 		tracker_meta.failure[0].cost = original_tracker_cost;
@@ -679,10 +706,30 @@ function run_system_realization(realization, show_outputs)
 			dview(3, 24, 'Daily factors', 'DC Equipment Operational', '', 1.0, dc_power_availability, 'AC Equipment Operational', '', 1.0, ac_power_availability, 'Module degradation factor', '', 1.0, module_degradation_factor);
 
 		//lifetime power output
-		dview(2, 1, 'Lifetime System Power', 'DC Power', 'kW', 1.0, hourly_dc_power, 'AC Power', 'kW', 1.0, hourly_ac_power);
+		dview(2, 1, 'Lifetime System Power', 'DC Power', 'kW', 1.0, dc.hourly_dc_power, 'AC Power', 'kW', 1.0, ac.hourly_ac_power);
 	}
 	results.lcoe = get('lcoe_real');
-	results.annual_energy = get('cf_energy_net');
+	results.annual_energy = get('cf_energy_net');	
+	
+	if (module_meta.can_fail) results.module_mtbf = (module_meta.downtime - module_meta.uptime) / results.total_module_failures;
+	if (string_meta.can_fail) results.string_mtbf = (string_meta.downtime - string_meta.uptime) / results.total_string_failures;
+	if (combiner_meta.can_fail) results.combiner_mtbf = (combiner_meta.downtime - combiner_meta.uptime) / results.total_combiner_failures;
+	if (inverter_meta.can_fail) results.inverter_mtbf = (inverter_meta.downtime - inverter_meta.uptime) / results.total_inverter_failures;
+	if (disconnect_meta.can_fail) results.disconnect_mtbf = (disconnect_meta.downtime - disconnect_meta.uptime) / results.total_disconnect_failures;
+	if (transformer_meta.can_fail) results.transformer_mtbf = (transformer_meta.downtime - transformer_meta.uptime) / results.total_transformer_failures;
+	if (grid_meta.can_fail) results.grid_mtbf = (grid_meta.downtime - grid_meta.uptime) / results.total_grid_failures;
+	if (is_tracking_system && tracker_meta.can_fail) results.tracker_mtbf = (tracker_meta.downtime - tracker_meta.uptime) / results.total_tracker_failures;
+	
+	//overwrite component data containers for memory management
+	modules = null;
+	strings = null;
+	combiners = null;
+	inverters = null;
+	disconnects = null;
+	transformers = null;
+	grid = null;
+	trackers = null;
+	costs = null;
 	
 	return results;
 }
