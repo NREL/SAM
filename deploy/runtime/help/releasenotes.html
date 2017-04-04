@@ -25,6 +25,54 @@
  </head>
  <body>
        <p style="font-family:Segoe UI,sans-serif;font-size:20pt;text-align:center;color:#0072C6;">System Advisor Model (SAM) Release Notes</p>
+
+<h1>Version 2017.1.17 Revision 2 SSC Version 172: March 30, 2017</h1>
+<p> This is a maintenance update that fixes the following issues in SAM 2017.1.17 Revision 1:
+</p>
+<ul>
+<li>PV battery model: Fix an issue with the grid power target automated optimization mode, and add outputs for that mode.
+<li>PV battery model: Fix minor problems with initialization of the look-behind peak-shaving automated optimization mode.
+<li>Wind balance-of-system cost model: Minor updates to cost calculations.
+<li>CSP Rankine power cycle model: Fixed an issue with startup energy calculation that caused thermal startup energy to be too high under some conditions.
+<li>CSP Power Tower Updates
+<li>CEC Inverter Database Updates
+<li>India Solar Resource Files Added
+<li>Extensive Help Updates
+<li>Additional Bug Fixes
+</ul>
+
+	   
+	   <h1>Version 2017.1.17 Revision 1 SSC Version 171: March 13, 2017</h1>
+<p> This is a maintenance update that fixes the following issues in SAM 2017.1.17:
+</p>
+<ul>
+<li>Wind: Disabled wake model input for Weibull resource option, and enabled "Specify desired farm and layout" for Weibull option when wake model is not active.
+<li>Wind: Added new turbines to wind turbine library.
+<li>PV: Added lifetime AC/DC losses to loss auto-graph, and added a few items in loss diagram and loss auto-graph to show or hide depending on if the model is enabled or not.
+<li>Weather data: Fix typo in Abingdon VA TMY3 weather file (was Abington)
+<li>Weather data: Add files for new India locations.
+<li>PV: Update CEC inverter library.
+<li>SDK Code Generator: General improvements.
+<li>Macros: Make "Value of RE" macro available only for residential and commercial models, and revise instructions.
+<li>PV module model: Improved calculations for display of I-V curve on Module input page.
+<li>Power tower: Fixed issue that prevented field optimization from running as part of a simulation and caused an error message about the check_max_flux variable.</li>
+<li>CSP power tower: Fixed issue with TOD factors and dispatch optimization.
+<li>CSP direct steam models: Added pressurized water properties
+<li>PV IEC 61853 module model: Solver improvements to minimize situations where solver would fail to calculate coefficient values.
+<li>PV battery model: Fix several bugs and added functionality, including:
+<ul>
+<li>Better warnings for DC-connected batteries, and add  battery power rating on System Design input page.
+<li>Vanadium redox voltage model.
+<li>Better predictive and iterative control for DC-connected batteries.
+<li>Fixed an issue with the PV model that caused a crash under certain conditions when battery model was disabled.
+<li>Update calculations for battery with front-of-meter connection.
+</ul>
+<li>Electricity bill calculations for residential and commercial financial models: Fix issue with units in reported power and energy values.
+<li>PVWatts with Third Party Ownership model: Fixed issue with lifetime simulations that prevented simulations from running.
+<li>CSP fossil backup: Fixed an issue with power cycle inlet temperature setting that caused fossil backup to fail.
+<li>Help
+<li>Bug
+</ul>
 	   
 <h1>Version 2017.1.17 SSC Version 170, January 2017</h1>
 
