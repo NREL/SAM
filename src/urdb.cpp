@@ -131,6 +131,9 @@ bool OpenEI::QueryUtilityCompanies(wxArrayString &names, wxString *err)
 
 // Pushed to production update from Jay 10/2/15
 	wxString url = "http://api.openei.org/utility_companies?version=3&format=json&api_key=" + wxString(sam_api_key) + "&scope=international";
+// URDB v5 update from Jay 4/7/17 - remove scope=international 3823 companies US Only above is correct according to documentation at http://dev.openei.org/services/doc/rest/util_cos/?version=3 but only returns 11 companies
+//	wxString url = "http://api.openei.org/utility_companies?version=3&format=json&api_key=" + wxString(sam_api_key);
+
 
 
 //	wxString json_data = wxWebHttpGet(url);

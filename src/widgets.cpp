@@ -685,9 +685,9 @@ AFSearchListBox::AFSearchListBox(wxWindow *parent, int id, const wxPoint &pos, c
 			wxLB_SINGLE|wxLB_HSCROLL|wxLB_ALWAYS_SB );
 	
 	wxBoxSizer *szh = new wxBoxSizer(wxHORIZONTAL);
-	szh->Add( m_label, 0, wxALL|wxEXPAND|wxALIGN_CENTER_VERTICAL, 5  );
+	szh->Add( m_label, 0, wxALL|wxEXPAND, 5  );
 	szh->Add( m_txtFilter, 0, wxALL|wxEXPAND, 2 );
-	szh->Add( m_notifyLabel, 1, wxALL|wxEXPAND|wxALIGN_CENTER_VERTICAL, 5 );
+	szh->Add( m_notifyLabel, 1, wxALL|wxEXPAND, 5 );
 
 	wxBoxSizer *szmain = new wxBoxSizer(wxVERTICAL);
 	szmain->Add( szh, 0, wxALL|wxEXPAND, 2 );
