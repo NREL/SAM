@@ -19,10 +19,10 @@ function exitIf( exitCondition ){
 	}
 }
 
-
-showinputs = true;
-if (showinputs)
+function send_excel( xl, variable)
 {
+	xl_set( xl, value(variable), variable );
+}
 
 
 // if one is open close
@@ -59,6 +59,10 @@ millisleep(500);
 caseName = case_name();
 exitIf(caseName == "");
 
+
+run_wizard_again=true;
+while (run_wizard_again)
+{
 
 /*************************************/
 /**     Get Simulation Location     **/
@@ -175,18 +179,18 @@ transp();
 
 /* Fixed Annual Maintenance Costs */
 // Highlight resource selection box in UI
-focusto('om_fixed');
-geom = widgetpos('om_fixed');
+focusto('om_capacity');
+geom = widgetpos('om_capacity');
 transp( geom, 'yellow', 70 );
 millisleep(500);
 
 
-omCostAry = get('om_fixed');
+omCostAry = get('om_capacity');
 omCost = omCostAry[0];
 
-omCost = in( "What is your fixed annual maintenance cost?", 
+omCost = in( "What is your annual maintenance cost $/kW?", 
                   omCost, 
-                  'Fixed Annual Maintenance',
+                  'Annual Maintenance',
                   [defaultX, defaultY]);
 exitIf( omCost  == "" );
 
@@ -194,34 +198,34 @@ exitIf( omCost  == "" );
 while( to_real(omCost) < 0 ){
 	omCost = in( "Maintenance cost must be a value greater than zero", 
 						  omCost, 
-						 'Fixed Annual Maintenance',
+						 'Annual Maintenance',
 		                  [defaultX, defaultY]);
 	exitIf( omCost  == "" );
 }
-omCostAry[0] = omCost;
+omCostAry[0] = to_real(omCost);
 
-set('om_fixed', omCostAry );
+set('om_capacity', omCostAry );
 transp();
 
 /* Escalation without inflation */
 // Highlight resource selection box in UI
-focusto('om_fixed_escal');
-geom = widgetpos('om_fixed_escal');
+focusto('om_capacity_escal');
+geom = widgetpos('om_capacity_escal');
 transp( geom, 'yellow', 70 );
 millisleep(500);
 inflation = get('inflation_rate');
-nominalEsc = get('om_fixed_escal');
+nominalEsc = get('om_capacity_escal');
 omCostEsc =  to_real(nominalEsc) + to_real(inflation);
 
-omCostEsc = in( "What is your fixed annual maintenance escalation rate?", 
+omCostEsc = in( "What is your maintenance acceleration rate?", 
                    omCostEsc, 
-                  'Fixed Annual Maintenance Escalation',
+                  'Maintenance acceleration',
                   [defaultX, defaultY]);
 exitIf( omCostEsc  == "" );
 
 
 nominalEsc = to_real(omCostEsc) - to_real(inflation);
-set('om_fixed_escal', nominalEsc); 
+set('om_capacity_escal', nominalEsc); 
 // Review time
 // Can add message about escalation above inflation
 millisleep(1000);
@@ -417,6 +421,69 @@ set('reserves_interest', reserveRate );
 // Possibly ROE array entry in the future
 
 
+// ROE - array
+focusto('roe_input');
+geom = widgetpos('roe_input');
+transp( geom, 'yellow', 70 );
+millisleep(500);
+
+
+roeAry = get('roe_input');
+if (#roeAry < 1)
+	roe10 = 20;
+else
+	roe10 = roeAry[0];
+if (#roeAry < 10)
+	roeon = 24;
+else
+	roeon = roeAry[10];
+
+if (#roeAry < 50)
+	roeAry = alloc(50);
+
+
+roe10 = in( "ROE for the first 10 years?", 
+                  roe10, 
+                  'ROE',
+                  [defaultX, defaultY]);
+exitIf( roe10  == "" );
+
+// Ensure user input is greater than zero
+while( to_real(roe10) < 0 ){
+	roe10 = in( "ROE must be a value greater than zero", 
+						  roe10, 
+						  "ROE",
+		                  [defaultX, defaultY]);
+	exitIf( roe10  == "" );
+}
+
+roeon = in( "ROE for the 11th year on?", 
+                  roeon, 
+                  'ROE',
+                  [defaultX, defaultY]);
+exitIf( roeon  == "" );
+
+// Ensure user input is greater than zero
+while( to_real(roeon) < 0 ){
+	roeon = in( "ROE must be a value greater than zero", 
+						  roeon, 
+						  "ROE",
+		                  [defaultX, defaultY]);
+	exitIf( roeon  == "" );
+}
+
+for (i=0;i<#roeAry;i++)
+{
+	if (i<10)
+		roeAry[i] = roe10;
+	else
+		roeAry[i] = roeon;
+}
+
+set('roe_input', roeAry );
+
+// TODO - possible add depreciation input
+
 // Review time
 // Can add message about escalation above inflation
 millisleep(1000);
@@ -433,10 +500,6 @@ transp();
 runSim = yesno("All inputs complete. Do you want to run the simulation now?\n\n(selecting 'no' will exit the wizard and enter the regular SAM application)",
 				[defaultX, defaultY] );
 
-
-} // if show inputs
-else
-	runSim=true;
 
 	
 if( runSim ){
@@ -468,7 +531,7 @@ str_html = '<html><body>' +
 	str_html +=  '</table><br><br><br>';
 
 // cash flow line items
-	varcf = ['cf_om_fixed_expense','cf_feddepr_total','cf_debt_payment_interest','cf_reserve_interest','cf_return_on_equity_dollars','cf_lcog_costs'];
+	varcf = ['cf_om_capacity_expense','cf_feddepr_total','cf_debt_payment_interest','cf_reserve_interest','cf_return_on_equity_dollars','cf_lcog_costs'];
     str_html += '<table bgcolor=#dddddd width=100%>';
     ap = round(to_real(get('analysis_period')));
 
@@ -512,7 +575,7 @@ runTornado = yesno("Would you like to run a few parametrics and generate a torna
 if (runTornado){
 	variation = 0.10;
 	outLabel = 'lcog';
-	vars = [ 'desired_size', 'bos_equip_fixed', 'om_fixed',
+	vars = [ 'desired_size', 'per_module', 'om_capacity',
 			'debt_percent',	'term_int_rate','loan_moratorium'];
 	
 	/* TODO - make function or retrieve additional data in varinfo */
@@ -709,6 +772,64 @@ if( yesno("Would you like to generate a report based off these results?",[defaul
 	browse(reportFile);
 } 
 
+
+if( yesno("Would you like to look at an Excel workbook based off these results?",[defaultX, defaultY]) ){
+
+	source = runtimedir() + 'spreadsheets/PV_for_India.xlsx';
+    destination = userlocaldatadir() + '/PV_for_India.xlsx';
+
+	destination = copy_file( source, destination );
+	
+	xl = xl_create( destination );
+	capacity_mw = to_real(get('modulearray_power')) / 1000; 
+	xl_set( xl, capacity_mw, 'capacity_mw');
+	cap_fac= to_real(get('capacity_factor'))/100;
+	xl_set( xl, cap_fac, 'capacity_factor');
+	xl_set( xl, get('analysis_period'), 'analysis_period');
+	
+	cost_per_mw =  to_real(get('installed_per_capacity')) * 10; // Rs Lakh/MW
+	xl_set( xl, cost_per_mw, 'cost_per_mw');
+	
+	xl_set( xl, get('debt_percent'), 'debt_percent');
+	xl_set( xl, get('loan_moratorium'), 'loan_moratorium');
+	xl_set( xl, get('term_tenor'), 'term_tenor');
+	xl_set( xl, get('term_int_rate'), 'term_int_rate');
+	
+	equity = to_real(get('issuance_of_equity'))/100000; // RsLac
+	reserve0 = get('cf_reserve_receivables');// RsLac
+	xl_set( xl, equity, 'equity');
+	xl_set( xl, equity - reserve0[0]/100000, 'equity_wo_receivables');
+	
+	roeAry = get('roe_input');
+	xl_set( xl, roeAry[0], 'roe_10');
+	xl_set( xl, roeAry[10], 'roe_11');
+	
+	xl_set( xl, to_real(get('nominal_discount_rate'))*100, 'nominal_discount_rate');
+	xl_set( xl, get('federal_tax_rate'), 'tax_rate');
+	
+	deprAry = get('depr_custom_schedule');
+	xl_set( xl, deprAry[0], 'depr_12');
+	xl_set( xl, deprAry[12], 'depr_13');
+	
+	xl_set( xl, get('months_receivables_reserve'), 'months_receivables_reserve');
+	xl_set( xl, get('reserves_interest'), 'reserves_interest');
+	
+	om_mw = get('om_capacity'); //Rs Lakh/MW
+	xl_set( xl, om_mw[0]/100, 'om_mw');
+	inflation_rate=get('inflation_rate');
+	esc_rate=get('om_capacity_escal');
+	xl_set( xl, to_real(inflation_rate) + to_real(esc_rate), 'om_acceleration');
+	
+	xl_set( xl, get('ppa_price_input'), 'ppa_price');
+	
+}	
+
+
 // Delete temporary tornado plot
 //if (file_exists(plotLocation))
 //	remove_file( plotLocation );
+
+run_wizard_again = yesno("Would you like to rerun the wizard?",
+					[defaultX, defaultY]);
+
+} // end running wizard
