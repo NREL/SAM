@@ -81,11 +81,14 @@ country_usage_threshold = to_real(str_country_usage_threshold);
 
 total_usage = 0;
 N = #x;
+number_good_data = 0;
 for( i=1;i<N;i++ )
 {
 	usage = to_int( x[i][ usage_count ]);
 
 	sver = split(x[i][ sam_version ], '-');
+	// see 2017.4.12_user_stats.docx - update to skip "bad" data
+	if (#sver !=2) continue;
 	sam_ver = sver[0];
 	plat = sver[1];
 
@@ -135,6 +138,7 @@ for( i=1;i<N;i++ )
 	
 	ver_usage{sam_ver} += usage;	
 	total_usage += usage;
+	number_good_data++;
 }
 
 
@@ -443,6 +447,7 @@ for(i=0;i<#keys;i++ )
 
 close(fnum);
 outln("Data written to " + fn);
+outln("processed " + number_good_data + " user records out of " + N);
 
 /* optional row output
 csvwrite(homedir() + '/sam_users_domain_usage.csv', domain_users);
