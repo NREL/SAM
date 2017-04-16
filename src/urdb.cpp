@@ -131,6 +131,9 @@ bool OpenEI::QueryUtilityCompanies(wxArrayString &names, wxString *err)
 
 // Pushed to production update from Jay 10/2/15
 	wxString url = "http://api.openei.org/utility_companies?version=3&format=json&api_key=" + wxString(sam_api_key) + "&scope=international";
+// URDB v5 update from Jay 4/7/17 - remove scope=international 3823 companies US Only above is correct according to documentation at http://dev.openei.org/services/doc/rest/util_cos/?version=3 but only returns 11 companies
+//	wxString url = "http://api.openei.org/utility_companies?version=3&format=json&api_key=" + wxString(sam_api_key);
+// 4/8/17 - updated and working in 2017.1.17 release and in trunk. International and US rates 3920 utilities
 
 
 //	wxString json_data = wxWebHttpGet(url);
@@ -218,6 +221,8 @@ bool OpenEI::QueryUtilityCompaniesbyZipcode(const wxString &zipcode, wxArrayStri
 	}
 
 	names.Clear();
+	// fails in 2017.1.17 and previous versions
+	/*
 	item_list = root.Item("items");
 	int count = item_list.Size();
 	for (int i = 0; i<count; i++)
@@ -225,6 +230,18 @@ bool OpenEI::QueryUtilityCompaniesbyZipcode(const wxString &zipcode, wxArrayStri
 		wxString buf = item_list[i].Item("label").AsString();
 		buf.Replace("&amp;", "&");
 		names.Add(buf);
+	}
+	*/
+	item_list = root["results"];
+	wxArrayString list_name = item_list.GetMemberNames();
+	// list_name[0] should be resolved name
+	if (list_name.Count() > 0)
+	{
+		wxString urdbname = list_name[0];
+		if (item_list[list_name[0] ].HasMember("fulltext"))
+			urdbname = item_list[list_name[0] ]["fulltext"].AsString();
+		urdbname.Replace("&amp;", "&");
+		names.Add(urdbname);
 	}
 
 	if (err) *err = wxEmptyString;
@@ -262,17 +279,19 @@ bool OpenEI::ResolveUtilityName(const wxString &name, wxString *urdb_name, wxStr
 	}
 
 	wxString urdbname = "";
-	wxJSONValue item_list = root.Item("items");
-	int count = item_list.Size();
-	for (int i = 0; i<count; i++)
+	wxJSONValue item_list = root["results"];
+	wxArrayString list_name = item_list.GetMemberNames();
+	// list_name[0] should be resolved name
+	if (list_name.Count() > 0)
 	{
-
-		RateInfo x;
-		//		x.GUID = json_string(item_list[i].Item("label")).Mid(5);
-		urdbname = json_string(item_list[i].Item("label"));
+		urdbname = list_name[0];
+		if (item_list[list_name[0]].HasMember("fulltext"))
+			urdbname = item_list[list_name[0]]["fulltext"].AsString();
 	}
-	if (urdb_name) *urdb_name = urdbname;
+	else
+		urdbname = name;
 
+	if (urdb_name) *urdb_name = urdbname;
 	if (err) *err = wxEmptyString;
 
 	return true;
@@ -325,8 +344,8 @@ bool OpenEI::QueryUtilityRates(const wxString &name, std::vector<RateInfo> &rate
 		x.uri = json_string(item_list[i].Item("uri"));
 		x.StartDate = GetDate(json_integer(item_list[i].Item("startdate")));
 		x.EndDate = GetDate(json_integer(item_list[i].Item("enddate")));
-		wxLogStatus("urdb startdate=" + x.StartDate);
-		wxLogStatus("urdb enddate=" + x.EndDate);
+//		wxLogStatus("urdb startdate=" + x.StartDate);
+//		wxLogStatus("urdb enddate=" + x.EndDate);
 		rates.push_back(x);
 	}
 
@@ -912,6 +931,8 @@ void OpenEIUtilityRateDialog::QueryRates(const wxString &utility_name)
 //		return;
 		urdb_utility_name = utility_name;
 	}
+	if (urdb_utility_name == "")
+		urdb_utility_name = utility_name;
 
 
 	// get any rates
