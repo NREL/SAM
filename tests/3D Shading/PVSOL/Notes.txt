@@ -1,0 +1,4 @@
+4/12/2017
+It appears that the relative humidity column in the .dat custom import does not affect the annual pv production predicted by PV*SOL
+I have emailed PV*SOL (Martin) to confirm that they do not use this column.
+For now I will assume that this column is not necessary
