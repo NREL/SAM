@@ -1,0 +1,5 @@
+lk64 : lkcmdline.cpp
+	g++ -I.. lkcmdline.cpp -o lk64 -DLK_USE_WXWIDGETS `wx-config-3 --cflags` `wx-config-3 --libs`
+
+clean:
+	rm lk64	

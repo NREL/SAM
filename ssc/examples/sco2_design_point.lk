@@ -1,0 +1,44 @@
+// Design parameters that can probably stay constant 
+var('eta_c', 0.89);			//[-]
+var('eta_t', 0.93);			//[-]
+var('P_high_limit',25);		//[MPa]
+	// Off design behavior should not be a strong function of design net output (given that the cycle design is optimized)
+var('W_dot_net_des',10);	//[MW]
+
+// Set Hot HTF temperature and Turbine inlet temperature
+var('T_htf_hot_des',720);	//[C]
+var('deltaT_PHX',20);		//[C/K]
+
+// Set ambient temperature and cycle inlet temperature
+	// CO2 Critical point = 30.98 C. Cycle model cannot operate compressor in subcritical region
+var('deltaT_ACC',15);		//[C/K]
+var('T_amb_des',30);		//[C]
+
+// Cycle efficiency
+	// If a positive value is entered, it is used as the design point efficiency
+	// If the value is negative, the code substracts its absolute value from the calculated maximum cycle efficiency to get the design point efficiency
+	// If the value is negative, 'run_off_des_study' must = 1
+var('eta_des',0.50);		//[-]
+
+// If this value = 0, only the optimized cycle design is calculated and the efficiency must be +
+// If this value = 1, then the optimized cycle design is calculated, and then off-design parameters are run using the following inputs
+var('run_off_des_study',1);
+
+// Off-design part-load fractions
+//var('part_load_fracs',[1,0.9,0.8,0.7,0.6,0.5,0.4,0.3]);		//[-]
+var('part_load_fracs',[1,0.9]);		//[-]
+// Off-design temperatures
+//var('T_amb_array',[45,40,35,30,25,20,15,10,5]);				//[C]
+var('T_amb_array',[45,40]);				//[C]
+
+
+
+run('sco2_design_point');
+
+
+
+T_amb_coefs = var('T_amb_coefs');
+outln("The 4th order polynomial coefficients for off design temperature are: ");
+outln(T_amb_coefs);
+
+

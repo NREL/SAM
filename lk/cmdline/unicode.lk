@@ -1,0 +1,7 @@
+str = "Hello, \u01dc\u03AE\u03AA\u00C7\u00D6\u018C\u01dd in wxWidgets 3.0!";
+
+outln(str);
+out("enter text >> ");
+x = in();
+for (i=0;i<3;i++)
+	outln(x);

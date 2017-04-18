@@ -1,0 +1,52 @@
+VPATH = ../nlopt ../nlopt/direct ../nlopt/cdirect ../nlopt/praxis ../nlopt/luksan ../nlopt/crs
+CC = gcc -mmacosx-version-min=10.9
+CXX = g++ -mmacosx-version-min=10.9
+CFLAGS = -Wall -g -O3 -I../  -I../nlopt/api -I../nlopt/util -I../nlopt  -DWX_PRECOMP -O2 -arch x86_64  -fno-common
+CXXFLAGS = $(CFLAGS) -std=gnu++11
+
+OBJECTS = \
+	auglag.o \
+	bobyqa.o \
+	ccsa_quadratic.o \
+	cdirect.o \
+	cobyla.o \
+	crs.o \
+	deprecated.o \
+	DIRect.o \
+	direct_wrap.o \
+	DIRserial.o \
+	DIRsubrout.o \
+	esch.o \
+	general.o \
+	hybrid.o \
+	isres.o \
+	mlsl.o \
+	mma.o \
+	mssubs.o \
+	mt19937ar.o \
+	newuoa.o \
+	nldrmd.o \
+	optimize.o \
+	options.o \
+	plip.o \
+	plis.o \
+	pnet.o \
+	praxis.o \
+	pssubs.o \
+	qsort_r.o \
+	redblack.o \
+	rescale.o \
+	sbplx.o \
+	slsqp.o \
+	sobolseq.o \
+	stop.o \
+	timer.o
+
+
+TARGET=nlopt.a
+
+$(TARGET):$(OBJECTS)
+	ar rs $(TARGET) $(OBJECTS)
+
+clean:
+	rm -rf $(TARGET) $(OBJECTS)

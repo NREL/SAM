@@ -1,0 +1,86 @@
+X-Account-Key: account1
+X-UIDL: 11e6-0013-374562bc-92bd-00144fe1ef92
+X-Mozilla-Status: 1001
+X-Mozilla-Status2: 00000000
+X-Mozilla-Keys:                                                                                 
+Status:  U
+Return-Path: <SAM.Support@nrel.gov>
+Received: from mx-pigeons.atl.sa.earthlink.net ([207.69.195.28])
+	by mdl-quaff.atl.sa.earthlink.net (EarthLink SMTP Server) with SMTP id 1APGzL3UX3Nl3420; Mon, 11 Apr 2016 14:28:41 -0400 (EDT)
+Received: from xv12edg01.nrel.gov ([192.174.58.134])
+	by mx-pigeons.atl.sa.earthlink.net (EarthLink SMTP Server) with ESMTP id 1APGzH5Ej3Nl34g0
+	for <paulgilman@earthlink.net>; Mon, 11 Apr 2016 14:28:37 -0400 (EDT)
+Received: from XP11MBX1.nrel.gov (10.20.41.66) by xv12edg01.nrel.gov
+ (192.174.58.134) with Microsoft SMTP Server (TLS) id 15.0.1130.7; Mon, 11 Apr
+ 2016 12:28:35 -0600
+Received: from XP11MBX3.nrel.gov (10.20.41.68) by xp11mbx1.nrel.gov
+ (10.20.41.66) with Microsoft SMTP Server (TLS) id 15.0.1130.7; Mon, 11 Apr
+ 2016 12:28:36 -0600
+Received: from XP11MBX3.nrel.gov ([fe80::877:e0d2:247:1c13]) by
+ xp11mbx3.nrel.gov ([fe80::877:e0d2:247:1c13%14]) with mapi id 15.00.1130.005;
+ Mon, 11 Apr 2016 12:28:36 -0600
+From: SAM Support <SAM.Support@nrel.gov>
+To: "'paulgilman@earthlink.net'" <paulgilman@earthlink.net>
+Subject: i am impressed with SAM
+Thread-Topic: i am impressed with SAM
+Thread-Index: AQHRlB/2tlHkLhTOrEC29hRssyyiXg==
+Date: Mon, 11 Apr 2016 18:28:36 +0000
+Message-ID: <1460399319094.57110@nrel.gov>
+References: <CALyCMBx2r7tOCbTs94qbKRVDQv-jCYhG0oMqqN1BUSAKeGCPQQ@mail.gmail.com>
+In-Reply-To: <CALyCMBx2r7tOCbTs94qbKRVDQv-jCYhG0oMqqN1BUSAKeGCPQQ@mail.gmail.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach:
+X-MS-TNEF-Correlator:
+x-ms-exchange-transport-fromentityheader: Hosted
+x-originating-ip: [10.20.41.6]
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+X-Authentication-Results: dkim="fail"; (2:no or failed dkim processing); dmarc="none"; (1); dwl="miss"; den="not exempt"
+X-ELNK-AV: 0
+X-ELNK-Info: sbv=0; sbrc=.0; sbf=0b; sbw=000;
+
+
+
+
+-----
+Paul Gilman
+System Advisor Model Support
+sam.support@nrel.gov<mailto:sam.support@nrel.gov>
+________________________________
+From: Joe Callahan <joe@energisimple.com>
+Sent: Saturday, April 9, 2016 8:15 PM
+To: SAM Support
+Subject: SAM parametrics
+
+Hello,
+
+When running Parametrics, can we change backtracking to on and off in order=
+ to compare the outputs when using different GCR values and when using back=
+tracking?
+
+Also, Is there a way to fix the total land area so that we can run all scen=
+arios to find the best kWh (annual) for that fixed area? i.e. change GCR (p=
+v capacity) / tracking / fixed / etc...
+OR
+LCOE for that fixed area?
+
+I am very impressed with SAM and look forward to diving in deeper.
+Thank you
+
+Joe Callahan
+
+
+energisimple
+Transforming energy availability
+
+Founder
+joe@energisimple.com<mailto:joe@energisimple.com>
+Mobile: 303 819 7518
+
+NABCEP Certified
+
+[http://www.solarsolutionsnj.com/Images/certified.jpg]
+
+

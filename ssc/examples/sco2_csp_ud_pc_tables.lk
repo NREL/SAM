@@ -1,0 +1,130 @@
+// Output file directory
+file_dir = 'c:/Users/tneises/Documents/Projects/ssc_trunk/examples/';
+
+// Set Model Input Parameters
+	// System Design
+var('htf', 17);					//[-] Integer code for HTF, 17: Salt_60_NaNO3_40_KNO3
+var('htf_props', [[0]]);		//[-] Custom HTF props (only used if htf = 50)
+var('T_htf_hot_des', 720);		//[C] HTF design hot temperature (PHX inlet)
+var('dT_PHX_hot_approach', 20);	//[C] Temp diff between hot HTF and turbine inlet
+var('T_amb_des', 30);			//[C] Ambient temperature at design
+var('dT_mc_approach', 15);		//[C] Temperature difference between main compressor CO2 inlet and ambient air
+var('site_elevation', 300);		//[m] Site elevation (used to calculate air density in air cooler design model)
+var('W_dot_net_des', 10);		//[MWe] Design cycle power output (no cooling parasitics)
+var('eta_thermal_des', 0.50);	//[-] Power cycle thermal efficiency
+	// Cycle Design
+var('eta_isen_mc', 0.89);		//[-] Main compressor isentropic efficiency
+var('eta_isen_rc', 0.89);		//[-] Re-compressor isentropic efficiency
+var('eta_isen_t', 0.93);		//[-] Turbine isentropic efficiency
+var('LT_recup_eff_max', 1.0);	//[-] Maximum allowable effectiveness in LT recuperator
+var('HT_recup_eff_max', 1.0);	//[-] Maximum allowable effectiveness in HT recuperator
+var('P_high_limit',25);			//[MPa] Cycle high pressure limit
+	// PHX design
+var('dT_PHX_cold_approach', 20);	//[C] Temperature difference between cold HTF and cold CO2 PHX inlet
+	// Air Cooler design
+var('fan_power_frac',0.01);			//[-] Fraction of net cycle power consumed by air cooler fan
+var('deltaP_cooler_frac',0.002);	//[-] Fraction of cycle high pressure that is design point cooler CO2 pressure drop
+	// User Define Power Cycle
+var('T_htf_hot_low', 670);
+var('T_htf_hot_high', 735);
+var('n_T_htf_hot', 15);
+var('T_amb_low', 0);
+var('T_amb_high', 55);
+var('n_T_amb', 15);
+var('m_dot_htf_ND_low',0.5);
+var('m_dot_htf_ND_high',1.2);
+var('n_m_dot_htf_ND', 15);
+
+// Run Model
+run('sco2_csp_ud_pc_tables');
+ 
+// Get Design Solution:
+outln("The HTF design cold temperature (PHX outlet) is: ", var("T_htf_cold_des"), " C");
+outln("The HTF temperature difference across the PHX is: ", var("T_htf_hot_des")-var("T_htf_cold_des"), " C");
+outln("The HTF mass flow rate is: ", var("m_dot_htf_des"), " kg/s");
+outln("The solved cycle thermal efficiency is: ", var("eta_thermal_calc"), " -");
+outln("The total recuperator conductance is: ", var("UA_recup_total"), " kW/K");
+outln("The low temperature recuperator conductance is: ", var("UA_LTR"), " kW/K");
+outln("The high temperature recuperator conductance is: ", var("UA_HTR"), " kW/K");
+outln("The recompression fraction is: ", var("recomp_frac"), " -");
+outln("The main compressor outlet pressure is: ", var("P_comp_in"), " MPa");
+outln("The main compressor inlet pressure is: ", var("P_comp_out"), " MPa");
+outln("The PHX conductance is: ", var("UA_PHX"), " kW/K");
+outln("The PHX effectiveness is: ", var("eff_PHX"), " -");
+outln("The PHX NTU is: ", var("NTU_PHX"), " -");
+
+// Setup T_htf output file
+file_name = file_dir + 'T_htf_ind.csv';
+file_int = open(file_name, 'w');
+headers_des = "T_htf,W_dot_low,W_dot_ref,W_dot_high,Q_dot_low,Q_dot_ref,Q_dot_high,W_cool_low,W_cool_ref,W_cool_high,m_dot_water_low,m_dot_water_ref,m_dot_water_high";
+outln(file_name, " Design headers were successful? ", write_line(file_int,headers_des));
+
+T_htf_ind = var("T_htf_ind");
+n_T_htf = #T_htf_ind;
+
+for(i=0; i<n_T_htf; i++)
+{
+	for(j=0; j<13; j++)
+	{
+		write(file_int,to_string(var("T_htf_ind")[i][j]));
+		if(j<12)
+		{
+			write(file_int,",");
+		}
+		else
+		{
+			write(file_int,"\n");
+		}
+	}
+}
+
+// Setup T_amb output file
+file_name = file_dir + 'T_amb_ind.csv';
+file_int = open(file_name, 'w');
+headers_des = "T_amb,W_dot_low,W_dot_ref,W_dot_high,Q_dot_low,Q_dot_ref,Q_dot_high,W_cool_low,W_cool_ref,W_cool_high,m_dot_water_low,m_dot_water_ref,m_dot_water_high";
+outln(file_name, " Design headers were successful? ", write_line(file_int,headers_des));
+
+T_amb_ind = var("T_amb_ind");
+n_T_amb = #T_amb_ind;
+
+for(i=0; i<n_T_amb; i++)
+{
+	for(j=0; j<13; j++)
+	{
+		write(file_int,to_string(var("T_amb_ind")[i][j]));
+		if(j<12)
+		{
+			write(file_int,",");
+		}
+		else
+		{
+			write(file_int,"\n");
+		}
+	}
+}
+
+// Setup m_dot_htf_ND_ind output file
+file_name = file_dir + 'm_dot_htf_ND_ind.csv';
+file_int = open(file_name, 'w');
+headers_des = "m_dot_htf_ND,W_dot_low,W_dot_ref,W_dot_high,Q_dot_low,Q_dot_ref,Q_dot_high,W_cool_low,W_cool_ref,W_cool_high,m_dot_water_low,m_dot_water_ref,m_dot_water_high";
+outln(file_name, " Design headers were successful? ", write_line(file_int,headers_des));
+
+m_dot_htf = var("m_dot_htf_ND_ind");
+n_m_dot = #m_dot_htf;
+
+for(i=0; i<n_m_dot; i++)
+{
+	for(j=0; j<13; j++)
+	{
+		write(file_int,to_string(var("m_dot_htf_ND_ind")[i][j]));
+		if(j<12)
+		{
+			write(file_int,",");
+		}
+		else
+		{
+			write(file_int,"\n");
+		}
+	}
+}
+

@@ -1,0 +1,65 @@
+# ARCH argument like armeabi, armeabi-v7a, arm64-v8a, x86_64
+
+VPATH = ../lpsolve
+
+# finish NDK definition and minimize foe each device - need android version and device
+# OS building
+MYARCH=darwin-x86_64
+
+# Default NDK installation location for Android Studio 2.3
+NDK = /Users/imacuser/Library/Android/sdk/ndk-bundle
+
+# based on Android-23 for Samsung Galaxy 5
+PLATFORMVER=android-23
+GCCPREFIX=arm-linux-androideabi
+GCCVER=4.9
+#ARCH=armeabi-v7a
+
+CC=${NDK}/toolchains/${GCCPREFIX}-${GCCVER}/prebuilt/${MYARCH}/bin/${GCCPREFIX}-gcc
+CXX=${NDK}/toolchains/${GCCPREFIX}-${GCCVER}/prebuilt/${MYARCH}/bin/${GCCPREFIX}-g++
+RANLIB=${NDK}/toolchains/${GCCPREFIX}-${GCCVER}/prebuilt/${MYARCH}/bin/${GCCPREFIX}-ranlib
+AR=${NDK}/toolchains/${GCCPREFIX}-${GCCVER}/prebuilt/${MYARCH}/bin/${GCCPREFIX}-ar
+
+CFLAGS = -I../  -I../lpsolve -DCHECK_SOLUTION -DYY_NEVER_INTERACTIVE -DPARSER_LP -DINVERSE_ACTIVE=INVERSE_LUSOL -DRoleIsExternalInvEngine  -DWX_PRECOMP -fpic  -DINTEGERTIME -isystem${NDK}/platforms/${PLATFORMVER}/arch-arm/usr/include -isystem${NDK}/sources/cxx-stl/gnu-libstdc++/${GCCVER}/include -isystem${NDK}/sources/cxx-stl/gnu-libstdc++/${GCCVER}/libs/${ARCH}/include
+
+CXXFLAGS = $(CFLAGS) -std=c++11 
+
+
+OBJECTS = \
+	colamd.o \
+	commonlib.o \
+	fortify.o \
+	ini.o \
+	lp_crash.o \
+	lp_Hash.o \
+	lp_lib.o \
+	lp_LUSOL.o \
+	lp_matrix.o \
+	lp_MDO.o \
+	lp_mipbb.o \
+	lp_MPS.o \
+	lp_params.o \
+	lp_presolve.o \
+	lp_price.o \
+	lp_pricePSE.o \
+	lp_report.o \
+	lp_rlp.o \
+	lp_scale.o \
+	lp_simplex.o \
+	lp_solve.o \
+	lp_SOS.o \
+	lp_utils.o \
+	lp_wlp.o \
+	lusol.o \
+	mmio.o \
+	myblas.o \
+	yacc_read.o
+
+
+TARGET=lpsolve_${ARCH}.so
+
+$(TARGET):$(OBJECTS)
+	$(AR) rs $(TARGET) $(OBJECTS)
+
+clean:
+	rm -rf $(TARGET) $(OBJECTS)

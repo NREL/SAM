@@ -1,0 +1,14 @@
+const f = define(x) { outln(x); };
+
+// enter number
+
+/* asdf
+*/
+
+// and repeat
+
+/* more comments */
+out("enter number\t>> ");
+n = to_int(in());
+for (i=0;i<n;i=i+1)
+	f("hello, world: " + i );

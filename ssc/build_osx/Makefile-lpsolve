@@ -1,0 +1,45 @@
+VPATH = ../lpsolve
+CC = gcc -mmacosx-version-min=10.9
+CXX = g++ -mmacosx-version-min=10.9
+CFLAGS = -Wall -g -O3 -I../  -I../lpsolve -DNDEBUG -DCHECK_SOLUTION -DYY_NEVER_INTERACTIVE -DPARSER_LP -DINVERSE_ACTIVE=INVERSE_LUSOL -DRoleIsExternalInvEngine  -DWX_PRECOMP -O2 -arch x86_64  -fno-common
+CXXFLAGS = $(CFLAGS) -std=gnu++11
+
+
+OBJECTS = \
+	colamd.o \
+	commonlib.o \
+	fortify.o \
+	ini.o \
+	lp_crash.o \
+	lp_Hash.o \
+	lp_lib.o \
+	lp_LUSOL.o \
+	lp_matrix.o \
+	lp_MDO.o \
+	lp_mipbb.o \
+	lp_MPS.o \
+	lp_params.o \
+	lp_presolve.o \
+	lp_price.o \
+	lp_pricePSE.o \
+	lp_report.o \
+	lp_rlp.o \
+	lp_scale.o \
+	lp_simplex.o \
+	lp_solve.o \
+	lp_SOS.o \
+	lp_utils.o \
+	lp_wlp.o \
+	lusol.o \
+	mmio.o \
+	myblas.o \
+	yacc_read.o
+
+
+TARGET=lpsolve.a
+
+$(TARGET):$(OBJECTS)
+	ar rs $(TARGET) $(OBJECTS)
+
+clean:
+	rm -rf $(TARGET) $(OBJECTS)

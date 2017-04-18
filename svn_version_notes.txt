@@ -1,0 +1,6 @@
+Versions of the SVN repos when ported to git:
+
+lk: 258
+wex: 617
+ssc: 4986
+SAMnt: 3797

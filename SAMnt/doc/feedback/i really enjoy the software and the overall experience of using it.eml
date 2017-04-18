@@ -1,0 +1,124 @@
+X-Account-Key: account1
+X-UIDL: 11e6-0d5c-423c79e8-8b5a-00144fe24596
+X-Mozilla-Status: 0001
+X-Mozilla-Status2: 00000000
+X-Mozilla-Keys:                                                                                 
+Status:  U
+Return-Path: <SAM.Support@nrel.gov>
+Received: from mx-pinchot.atl.sa.earthlink.net ([207.69.195.25])
+	by mdl-quaff.atl.sa.earthlink.net (EarthLink SMTP Server) with SMTP id 1AVOzZEM3Nl3420; Thu, 28 Apr 2016 12:14:15 -0400 (EDT)
+Received: from xv12edg02.nrel.gov ([192.174.58.133])
+	by mx-pinchot.atl.sa.earthlink.net (EarthLink SMTP Server) with ESMTP id 1AVOzU3J73Nl34d0
+	for <paulgilman@earthlink.net>; Thu, 28 Apr 2016 12:14:10 -0400 (EDT)
+Received: from XP11MBX1.nrel.gov (10.20.41.66) by xv12edg02.nrel.gov
+ (192.174.58.133) with Microsoft SMTP Server (TLS) id 15.0.1130.7; Thu, 28 Apr
+ 2016 10:14:09 -0600
+Received: from XP11MBX3.nrel.gov (10.20.41.68) by xp11mbx1.nrel.gov
+ (10.20.41.66) with Microsoft SMTP Server (TLS) id 15.0.1130.7; Thu, 28 Apr
+ 2016 10:14:05 -0600
+Received: from XP11MBX3.nrel.gov ([fe80::877:e0d2:247:1c13]) by
+ xp11mbx3.nrel.gov ([fe80::877:e0d2:247:1c13%14]) with mapi id 15.00.1130.005;
+ Thu, 28 Apr 2016 10:14:05 -0600
+From: SAM Support <SAM.Support@nrel.gov>
+To: "'paulgilman@earthlink.net'" <paulgilman@earthlink.net>
+Subject: i really enjoy the software and the overall experience of using it
+Thread-Topic: i really enjoy the software and the overall experience of using
+ it
+Thread-Index: AQHRoWj8csbUWG3IeUuKBxjz9Acxeg==
+Date: Thu, 28 Apr 2016 16:14:05 +0000
+Message-ID: <1461860045892.87455@nrel.gov>
+References: <VI1PR0201MB155235E581068C3ED995D44EAA630@VI1PR0201MB1552.eurprd02.prod.outlook.com>,<1461798890644.78933@nrel.gov>,<VI1PR0201MB1552329981FD1087543E0009AA650@VI1PR0201MB1552.eurprd02.prod.outlook.com>
+In-Reply-To: <VI1PR0201MB1552329981FD1087543E0009AA650@VI1PR0201MB1552.eurprd02.prod.outlook.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach:
+X-MS-TNEF-Correlator:
+x-ms-exchange-transport-fromentityheader: Hosted
+x-originating-ip: [10.20.41.6]
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+X-Authentication-Results: dkim="fail"; (2:no or failed dkim processing); dmarc="none"; (1); dwl="miss"; den="not exempt"
+X-ELNK-AV: 0
+X-ELNK-Info: sbv=0; sbrc=.0; sbf=0b; sbw=000;
+
+=0A=
+=0A=
+=0A=
+-----=0A=
+Paul Gilman=0A=
+System Advisor Model Support=0A=
+sam.support@nrel.gov=0A=
+=0A=
+________________________________________=0A=
+From: Michael Russo <michaelarusso@ua.pt>=0A=
+Sent: Wednesday, April 27, 2016 9:20 PM=0A=
+To: SAM Support=0A=
+Subject: Re: Files for wind shear question=0A=
+=0A=
+Dear Paul. Hello.=0A=
+=0A=
+Thank you for helping me with this issue. Now I understand how SAM deals wi=
+th the files, it will make my simulations and my thesis easier to complete.=
+ I really enjoy the software and the overall experience of using it. And yo=
+ur support and speed in responding to my questions has been optimal.=0A=
+=0A=
+Have a nice day and keep up the good work!=0A=
+Best regards,=0A=
+Michael=0A=
+________________________________________=0A=
+From: SAM Support <SAM.Support@nrel.gov>=0A=
+Sent: Thursday, April 28, 2016 12:14:51 AM=0A=
+To: Michael Russo=0A=
+Subject: Re: Files for wind shear question=0A=
+=0A=
+Dear Michael,=0A=
+=0A=
+=0A=
+Thank you for sending the files.=0A=
+=0A=
+=0A=
+The problem is that SAM looks for the measurement height in the file that i=
+s selected in the wind resource library list instead of the file shown for =
+"Use a wind resource file stored on your computer."=0A=
+=0A=
+You can just ignore the message: SAM uses the correct file for the simulati=
+on. It only uses the wrong file to display that error message on the Wind T=
+urbine input page.=0A=
+=0A=
+=0A=
+The other option is to put your weather files in the wind resource library =
+folder, which, by default in Windows is c:/SAM/2016.3.14/wind_resource. Aft=
+er you add your files to that folder, you may need to click the "Refresh Li=
+brary" button on the Wind Resource input page to see your files in the list=
+. The "Description" field in the library list is whatever is on Line 2 of t=
+he .srw file.=0A=
+=0A=
+We will try to make this work better in the next version of SAM.=0A=
+?=0A=
+Best regards,=0A=
+Paul.=0A=
+=0A=
+=0A=
+=0A=
+-----=0A=
+Paul Gilman=0A=
+System Advisor Model Support=0A=
+sam.support@nrel.gov<mailto:sam.support@nrel.gov>=0A=
+________________________________=0A=
+From: Michael Russo <michaelarusso@ua.pt>=0A=
+Sent: Tuesday, April 26, 2016 10:44 AM=0A=
+To: SAM Support=0A=
+Subject: Files for wind shear question=0A=
+=0A=
+=0A=
+I created a 1kW turbine and added the power curve. My files have only 10m h=
+igh data. But when I say that the bug height is 15m it shows the 35m too sh=
+ort error. So the only solution would be to have a 45m high turbine and a w=
+ind shear coefficient of 0? Or can I use the simulation with confidence eve=
+n if the error message appears?=0A=
+=0A=
+=0A=
+Thanks in advance for your time with this issue.=0A=
+=0A=
+
