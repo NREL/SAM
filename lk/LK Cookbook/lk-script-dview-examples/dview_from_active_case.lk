@@ -1,0 +1,19 @@
+// run simulations for active case
+if (simulate())
+{
+// get simulation hourly energy in kWh from active case
+hourly_energy = get('gen');
+// set up data viewer plot
+datasets = 1; // number of datasets
+timestep = 1; // hours
+window_title = 'dview() function with simulation results'; // window title
+// dataset 1 -  hourly energy in kWh
+dataset1_name = 'energy'; 
+dataset1_units = 'kWh';
+dataset1_show = 1;
+dataset1_data = hourly_energy;
+
+// create data viewer window 
+dview(datasets, timestep, window_title,
+	dataset1_name, dataset1_units, dataset1_show, dataset1_data);
+}

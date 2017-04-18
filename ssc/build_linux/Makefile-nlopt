@@ -1,0 +1,52 @@
+VPATH = ../nlopt ../nlopt/direct ../nlopt/cdirect ../nlopt/praxis ../nlopt/luksan ../nlopt/crs
+CC = gcc
+CXX = g++
+CFLAGS = -fPIC -Wall -g -O3 -I../ -D__64BIT__ -I../nlopt/api -I../nlopt/util -I../nlopt
+CXXFLAGS=-std=c++0x $(CFLAGS)
+
+OBJECTS = \
+	auglag.o \
+	bobyqa.o \
+	ccsa_quadratic.o \
+	cdirect.o \
+	cobyla.o \
+	crs.o \
+	deprecated.o \
+	DIRect.o \
+	direct_wrap.o \
+	DIRserial.o \
+	DIRsubrout.o \
+	esch.o \
+	general.o \
+	hybrid.o \
+	isres.o \
+	mlsl.o \
+	mma.o \
+	mssubs.o \
+	mt19937ar.o \
+	newuoa.o \
+	nldrmd.o \
+	optimize.o \
+	options.o \
+	plip.o \
+	plis.o \
+	pnet.o \
+	praxis.o \
+	pssubs.o \
+	qsort_r.o \
+	redblack.o \
+	rescale.o \
+	sbplx.o \
+	slsqp.o \
+	sobolseq.o \
+	stop.o \
+	timer.o
+
+
+TARGET=nlopt.a
+
+$(TARGET):$(OBJECTS)
+	ar rs $(TARGET) $(OBJECTS)
+
+clean:
+	rm -rf $(TARGET) $(OBJECTS)

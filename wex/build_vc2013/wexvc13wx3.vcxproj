@@ -1,0 +1,527 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\include\wex\clipper\clipper.h" />
+    <ClInclude Include="..\include\wex\codeedit.h" />
+    <ClInclude Include="..\include\wex\csv.h" />
+    <ClInclude Include="..\include\wex\dclatex.h" />
+    <ClInclude Include="..\include\wex\dview\dvautocolourassigner.h" />
+    <ClInclude Include="..\include\wex\dview\dvdcctrl.h" />
+    <ClInclude Include="..\include\wex\dview\dvdmapctrl.h" />
+    <ClInclude Include="..\include\wex\dview\dvfilereader.h" />
+    <ClInclude Include="..\include\wex\dview\dvplotctrl.h" />
+    <ClInclude Include="..\include\wex\dview\dvplotctrlsettings.h" />
+    <ClInclude Include="..\include\wex\dview\dvplothelper.h" />
+    <ClInclude Include="..\include\wex\dview\dvpncdfctrl.h" />
+    <ClInclude Include="..\include\wex\dview\dvprofilectrl.h" />
+    <ClInclude Include="..\include\wex\dview\dvscatterplotctrl.h" />
+    <ClInclude Include="..\include\wex\dview\dvselectionlist.h" />
+    <ClInclude Include="..\include\wex\dview\dvstatisticstablectrl.h" />
+    <ClInclude Include="..\include\wex\dview\dvtimeseriesctrl.h" />
+    <ClInclude Include="..\include\wex\dview\dvtimeseriesdataset.h" />
+    <ClInclude Include="..\include\wex\easycurl.h" />
+    <ClInclude Include="..\include\wex\extgrid.h" />
+    <ClInclude Include="..\include\wex\exttext.h" />
+    <ClInclude Include="..\include\wex\exttree.h" />
+    <ClInclude Include="..\include\wex\gleasy.h" />
+    <ClInclude Include="..\include\wex\jsonreader.h" />
+    <ClInclude Include="..\include\wex\jsonval.h" />
+    <ClInclude Include="..\include\wex\jsonwriter.h" />
+    <ClInclude Include="..\include\wex\label.h" />
+    <ClInclude Include="..\include\wex\lkscript.h" />
+    <ClInclude Include="..\include\wex\matrix.h" />
+    <ClInclude Include="..\include\wex\metro.h" />
+    <ClInclude Include="..\include\wex\mswfatal.h" />
+    <ClInclude Include="..\include\wex\mtrand.h" />
+    <ClInclude Include="..\include\wex\pagelayout.h" />
+    <ClInclude Include="..\include\wex\pageobjects.h" />
+    <ClInclude Include="..\include\wex\plot\plannotation.h" />
+    <ClInclude Include="..\include\wex\plot\plcontourplot.h" />
+    <ClInclude Include="..\include\wex\plot\ploutdev.h" />
+    <ClInclude Include="..\include\wex\plot\plplot.h" />
+    <ClInclude Include="..\include\wex\plot\plsectorplot.h" />
+    <ClInclude Include="..\include\wex\plot\pltext.h" />
+    <ClInclude Include="..\include\wex\plot\plwindrose.h" />
+    <ClInclude Include="..\include\wex\radiochoice.h" />
+    <ClInclude Include="..\include\wex\diurnal.h" />
+    <ClInclude Include="..\include\wex\numeric.h" />
+    <ClInclude Include="..\include\wex\ole\activex.h" />
+    <ClInclude Include="..\include\wex\ole\excelauto.h" />
+    <ClInclude Include="..\include\wex\ole\iehtmlwin.h" />
+    <ClInclude Include="..\include\wex\pdf\pdfannotation.h" />
+    <ClInclude Include="..\include\wex\pdf\pdfarraydouble.h" />
+    <ClInclude Include="..\include\wex\pdf\pdfarraytypes.h" />
+    <ClInclude Include="..\include\wex\pdf\pdfbarcode.h" />
+    <ClInclude Include="..\include\wex\pdf\pdfbookmark.h" />
+    <ClInclude Include="..\include\wex\pdf\pdfcffdecoder.h" />
+    <ClInclude Include="..\include\wex\pdf\pdfcffindex.h" />
+    <ClInclude Include="..\include\wex\pdf\pdfcjkfontdata.h" />
+    <ClInclude Include="..\include\wex\pdf\pdfcolour.h" />
+    <ClInclude Include="..\include\wex\pdf\pdfcoonspatchmesh.h" />
+    <ClInclude Include="..\include\wex\pdf\pdfcorefontdata.h" />
+    <ClInclude Include="..\include\wex\pdf\pdfdc.h" />
+    <ClInclude Include="..\include\wex\pdf\pdfdc28.h" />
+    <ClInclude Include="..\include\wex\pdf\pdfdc29.h" />
+    <ClInclude Include="..\include\wex\pdf\pdfdoc.h" />
+    <ClInclude Include="..\include\wex\pdf\pdfdocdef.h" />
+    <ClInclude Include="..\include\wex\pdf\pdfdocument.h" />
+    <ClInclude Include="..\include\wex\pdf\pdfencoding.h" />
+    <ClInclude Include="..\include\wex\pdf\pdfencrypt.h" />
+    <ClInclude Include="..\include\wex\pdf\pdffont.h" />
+    <ClInclude Include="..\include\wex\pdf\pdffontdata.h" />
+    <ClInclude Include="..\include\wex\pdf\pdffontdatacore.h" />
+    <ClInclude Include="..\include\wex\pdf\pdffontdataopentype.h" />
+    <ClInclude Include="..\include\wex\pdf\pdffontdatatruetype.h" />
+    <ClInclude Include="..\include\wex\pdf\pdffontdatatype0.h" />
+    <ClInclude Include="..\include\wex\pdf\pdffontdatatype1.h" />
+    <ClInclude Include="..\include\wex\pdf\pdffontdescription.h" />
+    <ClInclude Include="..\include\wex\pdf\pdffontdetails.h" />
+    <ClInclude Include="..\include\wex\pdf\pdffontextended.h" />
+    <ClInclude Include="..\include\wex\pdf\pdffontmacosx.h" />
+    <ClInclude Include="..\include\wex\pdf\pdffontmanager.h" />
+    <ClInclude Include="..\include\wex\pdf\pdffontparser.h" />
+    <ClInclude Include="..\include\wex\pdf\pdffontparsertruetype.h" />
+    <ClInclude Include="..\include\wex\pdf\pdffontparsertype1.h" />
+    <ClInclude Include="..\include\wex\pdf\pdffontsubsetcff.h" />
+    <ClInclude Include="..\include\wex\pdf\pdffontsubsettruetype.h" />
+    <ClInclude Include="..\include\wex\pdf\pdffontvolt.h" />
+    <ClInclude Include="..\include\wex\pdf\pdfform.h" />
+    <ClInclude Include="..\include\wex\pdf\pdfgradient.h" />
+    <ClInclude Include="..\include\wex\pdf\pdfgraphics.h" />
+    <ClInclude Include="..\include\wex\pdf\pdfimage.h" />
+    <ClInclude Include="..\include\wex\pdf\pdfinfo.h" />
+    <ClInclude Include="..\include\wex\pdf\pdflayer.h" />
+    <ClInclude Include="..\include\wex\pdf\pdflinestyle.h" />
+    <ClInclude Include="..\include\wex\pdf\pdflinks.h" />
+    <ClInclude Include="..\include\wex\pdf\pdfobjects.h" />
+    <ClInclude Include="..\include\wex\pdf\pdfparser.h" />
+    <ClInclude Include="..\include\wex\pdf\pdfpattern.h" />
+    <ClInclude Include="..\include\wex\pdf\pdfprint.h" />
+    <ClInclude Include="..\include\wex\pdf\pdfproperties.h" />
+    <ClInclude Include="..\include\wex\pdf\pdfrijndael.h" />
+    <ClInclude Include="..\include\wex\pdf\pdfshape.h" />
+    <ClInclude Include="..\include\wex\pdf\pdfspotcolour.h" />
+    <ClInclude Include="..\include\wex\pdf\pdftemplate.h" />
+    <ClInclude Include="..\include\wex\pdf\pdfutility.h" />
+    <ClInclude Include="..\include\wex\pdf\pdfxml.h" />
+    <ClInclude Include="..\include\wex\plot\plaxis.h" />
+    <ClInclude Include="..\include\wex\plot\plcolourmap.h" />
+    <ClInclude Include="..\include\wex\plot\plbarplot.h" />
+    <ClInclude Include="..\include\wex\plot\plhistplot.h" />
+    <ClInclude Include="..\include\wex\plot\pllineplot.h" />
+    <ClInclude Include="..\include\wex\plot\plplotctrl.h" />
+    <ClInclude Include="..\include\wex\plot\plscatterplot.h" />
+    <ClInclude Include="..\include\wex\registration.h" />
+    <ClInclude Include="..\include\wex\ribbonbook.h" />
+    <ClInclude Include="..\include\wex\snaplay.h" />
+    <ClInclude Include="..\include\wex\tpdlg.h" />
+    <ClInclude Include="..\include\wex\uiform.h" />
+    <ClInclude Include="..\include\wex\utils.h" />
+    <ClInclude Include="..\src\pdf\wxmemdbg.h" />
+    <ClInclude Include="..\src\plot\delaunay.h" />
+    <ClInclude Include="..\src\plot\mplcontour.h" />
+    <ClInclude Include="..\src\plot\qhull\geom.h" />
+    <ClInclude Include="..\src\plot\qhull\io.h" />
+    <ClInclude Include="..\src\plot\qhull\libqhull.h" />
+    <ClInclude Include="..\src\plot\qhull\mem.h" />
+    <ClInclude Include="..\src\plot\qhull\merge.h" />
+    <ClInclude Include="..\src\plot\qhull\poly.h" />
+    <ClInclude Include="..\src\plot\qhull\qhull_a.h" />
+    <ClInclude Include="..\src\plot\qhull\qset.h" />
+    <ClInclude Include="..\src\plot\qhull\random.h" />
+    <ClInclude Include="..\src\plot\qhull\stat.h" />
+    <ClInclude Include="..\src\plot\qhull\user.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\clipper\clipper.cpp" />
+    <ClCompile Include="..\src\codeedit.cpp" />
+    <ClCompile Include="..\src\csv.cpp" />
+    <ClCompile Include="..\src\dclatex.cpp" />
+    <ClCompile Include="..\src\dview\dvautocolourassigner.cpp" />
+    <ClCompile Include="..\src\dview\dvdcctrl.cpp" />
+    <ClCompile Include="..\src\dview\dvdmapctrl.cpp" />
+    <ClCompile Include="..\src\dview\dvfilereader.cpp" />
+    <ClCompile Include="..\src\dview\dvplotctrl.cpp" />
+    <ClCompile Include="..\src\dview\dvplotctrlsettings.cpp" />
+    <ClCompile Include="..\src\dview\dvplothelper.cpp" />
+    <ClCompile Include="..\src\dview\dvpncdfctrl.cpp" />
+    <ClCompile Include="..\src\dview\dvprofilectrl.cpp" />
+    <ClCompile Include="..\src\dview\dvscatterplotctrl.cpp" />
+    <ClCompile Include="..\src\dview\dvselectionlist.cpp" />
+    <ClCompile Include="..\src\dview\dvstatisticstablectrl.cpp" />
+    <ClCompile Include="..\src\dview\dvtimeseriesctrl.cpp" />
+    <ClCompile Include="..\src\dview\dvtimeseriesdataset.cpp" />
+    <ClCompile Include="..\src\easycurl.cpp" />
+    <ClCompile Include="..\src\extgrid.cpp" />
+    <ClCompile Include="..\src\exttext.cpp" />
+    <ClCompile Include="..\src\exttree.cpp" />
+    <ClCompile Include="..\src\freetype\src\base\ftlcdfil.c" />
+    <ClCompile Include="..\src\gleasy.cpp" />
+    <ClCompile Include="..\src\jsonreader.cpp" />
+    <ClCompile Include="..\src\jsonval.cpp" />
+    <ClCompile Include="..\src\jsonwriter.cpp" />
+    <ClCompile Include="..\src\label.cpp" />
+    <ClCompile Include="..\src\lkscript.cpp" />
+    <ClCompile Include="..\src\metro.cpp" />
+    <ClCompile Include="..\src\mswfatal.cpp" />
+    <ClCompile Include="..\src\pagelayout.cpp" />
+    <ClCompile Include="..\src\pageobjects.cpp" />
+    <ClCompile Include="..\src\plot\mplcontour.cpp" />
+    <ClCompile Include="..\src\plot\plannotation.cpp" />
+    <ClCompile Include="..\src\plot\plcontourplot.cpp" />
+    <ClCompile Include="..\src\plot\ploutdev.cpp" />
+    <ClCompile Include="..\src\plot\plplot.cpp" />
+    <ClCompile Include="..\src\plot\plsectorplot.cpp" />
+    <ClCompile Include="..\src\plot\pltext.cpp" />
+    <ClCompile Include="..\src\plot\plwindrose.cpp" />
+    <ClCompile Include="..\src\plot\qhull\geom.c" />
+    <ClCompile Include="..\src\plot\qhull\geom2.c" />
+    <ClCompile Include="..\src\plot\qhull\global.c" />
+    <ClCompile Include="..\src\plot\qhull\io.c" />
+    <ClCompile Include="..\src\plot\qhull\libqhull.c" />
+    <ClCompile Include="..\src\plot\qhull\mem.c" />
+    <ClCompile Include="..\src\plot\qhull\merge.c" />
+    <ClCompile Include="..\src\plot\qhull\poly.c" />
+    <ClCompile Include="..\src\plot\qhull\poly2.c" />
+    <ClCompile Include="..\src\plot\qhull\qset.c" />
+    <ClCompile Include="..\src\plot\qhull\random.c" />
+    <ClCompile Include="..\src\plot\qhull\rboxlib.c" />
+    <ClCompile Include="..\src\plot\qhull\stat.c" />
+    <ClCompile Include="..\src\plot\qhull\user.c" />
+    <ClCompile Include="..\src\plot\qhull\usermem.c" />
+    <ClCompile Include="..\src\plot\qhull\userprintf.c" />
+    <ClCompile Include="..\src\plot\qhull\userprintf_rbox.c" />
+    <ClCompile Include="..\src\radiochoice.cpp" />
+    <ClCompile Include="..\src\diurnal.cpp" />
+    <ClCompile Include="..\src\numeric.cpp" />
+    <ClCompile Include="..\src\ole\activex.cpp" />
+    <ClCompile Include="..\src\ole\excelauto.cpp" />
+    <ClCompile Include="..\src\ole\iehtmlwin.cpp" />
+    <ClCompile Include="..\src\pdf\pdfannotation.cpp" />
+    <ClCompile Include="..\src\pdf\pdfbarcode.cpp" />
+    <ClCompile Include="..\src\pdf\pdfcffdecoder.cpp" />
+    <ClCompile Include="..\src\pdf\pdfcffindex.cpp" />
+    <ClCompile Include="..\src\pdf\pdfcolour.cpp" />
+    <ClCompile Include="..\src\pdf\pdfdc.cpp" />
+    <ClCompile Include="..\src\pdf\pdfdecode.cpp" />
+    <ClCompile Include="..\src\pdf\pdfdocument.cpp" />
+    <ClCompile Include="..\src\pdf\pdfencoding.cpp" />
+    <ClCompile Include="..\src\pdf\pdfencrypt.cpp" />
+    <ClCompile Include="..\src\pdf\pdffont.cpp" />
+    <ClCompile Include="..\src\pdf\pdffontdata.cpp" />
+    <ClCompile Include="..\src\pdf\pdffontdatacore.cpp" />
+    <ClCompile Include="..\src\pdf\pdffontdataopentype.cpp" />
+    <ClCompile Include="..\src\pdf\pdffontdatatruetype.cpp" />
+    <ClCompile Include="..\src\pdf\pdffontdatatype0.cpp" />
+    <ClCompile Include="..\src\pdf\pdffontdatatype1.cpp" />
+    <ClCompile Include="..\src\pdf\pdffontdescription.cpp" />
+    <ClCompile Include="..\src\pdf\pdffontdetails.cpp" />
+    <ClCompile Include="..\src\pdf\pdffontextended.cpp" />
+    <ClCompile Include="..\src\pdf\pdffontmanager.cpp" />
+    <ClCompile Include="..\src\pdf\pdffontparser.cpp" />
+    <ClCompile Include="..\src\pdf\pdffontparsertruetype.cpp" />
+    <ClCompile Include="..\src\pdf\pdffontparsertype1.cpp" />
+    <ClCompile Include="..\src\pdf\pdffontsubsetcff.cpp" />
+    <ClCompile Include="..\src\pdf\pdffontsubsettruetype.cpp" />
+    <ClCompile Include="..\src\pdf\pdffontvolt.cpp" />
+    <ClCompile Include="..\src\pdf\pdfform.cpp" />
+    <ClCompile Include="..\src\pdf\pdfgradient.cpp" />
+    <ClCompile Include="..\src\pdf\pdfgraphics.cpp" />
+    <ClCompile Include="..\src\pdf\pdfimage.cpp" />
+    <ClCompile Include="..\src\pdf\pdfkernel.cpp" />
+    <ClCompile Include="..\src\pdf\pdflayer.cpp" />
+    <ClCompile Include="..\src\pdf\pdfobjects.cpp" />
+    <ClCompile Include="..\src\pdf\pdfocg.cpp" />
+    <ClCompile Include="..\src\pdf\pdfparser.cpp" />
+    <ClCompile Include="..\src\pdf\pdfpattern.cpp" />
+    <ClCompile Include="..\src\pdf\pdfprint.cpp" />
+    <ClCompile Include="..\src\pdf\pdfrijndael.cpp" />
+    <ClCompile Include="..\src\pdf\pdftemplate.cpp" />
+    <ClCompile Include="..\src\pdf\pdfutility.cpp" />
+    <ClCompile Include="..\src\pdf\pdfxml.cpp" />
+    <ClCompile Include="..\src\plot\plaxis.cpp" />
+    <ClCompile Include="..\src\plot\plcolourmap.cpp" />
+    <ClCompile Include="..\src\plot\plbarplot.cpp" />
+    <ClCompile Include="..\src\plot\plhistplot.cpp" />
+    <ClCompile Include="..\src\plot\pllineplot.cpp" />
+    <ClCompile Include="..\src\plot\plplotctrl.cpp" />
+    <ClCompile Include="..\src\plot\plscatterplot.cpp" />
+    <ClCompile Include="..\src\registration.cpp" />
+    <ClCompile Include="..\src\snaplay.cpp" />
+    <ClCompile Include="..\src\tpdlg.cpp" />
+    <ClCompile Include="..\src\uiform.cpp" />
+    <ClCompile Include="..\src\utils.cpp" />
+    <ClCompile Include="..\src\freetype\src\base\ftbase.c" />
+    <ClCompile Include="..\src\freetype\src\base\ftbbox.c" />
+    <ClCompile Include="..\src\freetype\src\base\ftbitmap.c" />
+    <ClCompile Include="..\src\freetype\src\base\ftfntfmt.c" />
+    <ClCompile Include="..\src\freetype\src\base\ftgasp.c" />
+    <ClCompile Include="..\src\freetype\src\base\ftglyph.c" />
+    <ClCompile Include="..\src\freetype\src\base\ftinit.c" />
+    <ClCompile Include="..\src\freetype\src\base\ftstroke.c" />
+    <ClCompile Include="..\src\freetype\src\base\ftsynth.c" />
+    <ClCompile Include="..\src\freetype\src\base\ftsystem.c" />
+    <ClCompile Include="..\src\freetype\src\base\fttype1.c" />
+    <ClCompile Include="..\src\freetype\src\cff\cff.c" />
+    <ClCompile Include="..\src\freetype\src\cid\type1cid.c" />
+    <ClCompile Include="..\src\freetype\src\psaux\psaux.c" />
+    <ClCompile Include="..\src\freetype\src\pshinter\pshinter.c" />
+    <ClCompile Include="..\src\freetype\src\psnames\psnames.c" />
+    <ClCompile Include="..\src\freetype\src\raster\raster.c" />
+    <ClCompile Include="..\src\freetype\src\sfnt\sfnt.c" />
+    <ClCompile Include="..\src\freetype\src\smooth\smooth.c" />
+    <ClCompile Include="..\src\freetype\src\truetype\truetype.c" />
+    <ClCompile Include="..\src\freetype\src\type1\type1.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\src\pdf\pdfcjkfontdata.inc" />
+    <None Include="..\src\pdf\pdfcmapdata.inc" />
+    <None Include="..\src\pdf\pdfcodepagedata.inc" />
+    <None Include="..\src\pdf\pdfcolourdata.inc" />
+    <None Include="..\src\pdf\pdfcorefontdata.inc" />
+    <None Include="..\src\pdf\pdfcorefontkerning.inc" />
+    <None Include="..\src\pdf\pdfglyphnames.inc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\src\plot\qhull\COPYING.txt" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectName>wexvc13wx3</ProjectName>
+    <ProjectGuid>{993A0CD4-149D-442C-A5B4-073E47FBCF52}</ProjectGuid>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v120</PlatformToolset>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v120</PlatformToolset>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v120</PlatformToolset>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v120</PlatformToolset>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>11.0.50727.1</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>$(SolutionDir)..\</OutDir>
+    <IntDir>$(ProjectDir)\$(ProjectName)\$(Platform)\$(Configuration)\</IntDir>
+    <LinkIncremental>true</LinkIncremental>
+    <GenerateManifest>true</GenerateManifest>
+    <TargetName>wexvc13wx3d</TargetName>
+    <TargetExt>.lib</TargetExt>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <GenerateManifest>true</GenerateManifest>
+    <TargetName>wexvc13wx3x64d</TargetName>
+    <TargetExt>.lib</TargetExt>
+    <OutDir>$(SolutionDir)..\</OutDir>
+    <IntDir>$(ProjectDir)\$(ProjectName)\$(Platform)\$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>$(SolutionDir)..\</OutDir>
+    <IntDir>$(ProjectDir)\$(ProjectName)\$(Platform)\$(Configuration)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+    <GenerateManifest>true</GenerateManifest>
+    <TargetName>wexvc13wx3</TargetName>
+    <TargetExt>.lib</TargetExt>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <GenerateManifest>true</GenerateManifest>
+    <TargetName>wexvc13wx3x64</TargetName>
+    <TargetExt>.lib</TargetExt>
+    <OutDir>$(SolutionDir)..\</OutDir>
+    <IntDir>$(ProjectDir)\$(ProjectName)\$(Platform)\$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Midl>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CRT_SECURE_NO_DEPRECATE=1;_CRT_NON_CONFORMING_SWPRINTFS=1;_SCL_SECURE_NO_WARNINGS=1;__WXMSW__;_UNICODE;_WINDOWS;NOPCH;FT2_BUILD_LIBRARY;OPJ_STATIC;FT_CONFIG_MODULES_H="slimftmodules.h";FT_CONFIG_OPTIONS_H="slimftoptions.h";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(WXMSW3)\lib\vc_lib\mswud;$(WXMSW3)\include;.;$(WXMSW3)\samples;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </Midl>
+    <ClCompile>
+      <AdditionalOptions>/MP %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>$(ProjectDir)\..\include;$(ProjectDir)\..\src\freetype\include;$(ProjectDir)\libcurl_ssl_win32\include;$(WXMSW3)\lib\vc_lib\mswud;$(LKDIR)\include;$(WXMSW3)\include;.;$(WXMSW3)\samples;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CRT_SECURE_NO_DEPRECATE=1;_CRT_NON_CONFORMING_SWPRINTFS=1;_SCL_SECURE_NO_WARNINGS=1;__WXMSW__;_UNICODE;_WINDOWS;NOPCH;FT2_BUILD_LIBRARY;OPJ_STATIC;FT_CONFIG_MODULES_H="slimftmodules.h";FT_CONFIG_OPTIONS_H="slimftoptions.h";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <BufferSecurityCheck>true</BufferSecurityCheck>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ProgramDataBaseFileName>$(ProjectDir)\$(TargetName).pdb</ProgramDataBaseFileName>
+      <WarningLevel>Level4</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_DEBUG;_CRT_SECURE_NO_DEPRECATE=1;_CRT_NON_CONFORMING_SWPRINTFS=1;_SCL_SECURE_NO_WARNINGS=1;__WXMSW__;_UNICODE;_WINDOWS;NOPCH;FT2_BUILD_LIBRARY;OPJ_STATIC;FT_CONFIG_MODULES_H="slimftmodules.h";FT_CONFIG_OPTIONS_H="slimftoptions.h";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0409</Culture>
+      <AdditionalIncludeDirectories>$(WXMSW3)\lib\vc_lib\mswud;$(WXMSW3)\include;.;$(WXMSW3)\samples;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Link>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <AdditionalLibraryDirectories>$(WXMSW3)\lib\vc_lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>$(ProjectDir)\$(TargetName).pdb</ProgramDatabaseFile>
+      <SubSystem>Windows</SubSystem>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Midl>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CRT_SECURE_NO_DEPRECATE=1;_CRT_NON_CONFORMING_SWPRINTFS=1;_SCL_SECURE_NO_WARNINGS=1;__WXMSW__;_UNICODE;_WINDOWS;NOPCH;FT2_BUILD_LIBRARY;OPJ_STATIC;FT_CONFIG_MODULES_H="slimftmodules.h";FT_CONFIG_OPTIONS_H="slimftoptions.h";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(WXMSW3)\lib\vc_lib\mswud;$(WXMSW3)\include;.;$(WXMSW3)\samples;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </Midl>
+    <ClCompile>
+      <AdditionalOptions>/MP %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>$(ProjectDir)\..\include;$(ProjectDir)\..\src\freetype\include;$(ProjectDir)\libcurl_ssl_x64\include;$(WXMSW3)\lib\vc_x64_lib\mswud;$(LKDIR)\include;$(WXMSW3)\include;.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CRT_SECURE_NO_DEPRECATE=1;_CRT_NON_CONFORMING_SWPRINTFS=1;_SCL_SECURE_NO_WARNINGS=1;__WXMSW__;_UNICODE;_WINDOWS;NOPCH;FT2_BUILD_LIBRARY;OPJ_STATIC;FT_CONFIG_MODULES_H="slimftmodules.h";FT_CONFIG_OPTIONS_H="slimftoptions.h";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <BufferSecurityCheck>true</BufferSecurityCheck>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ProgramDataBaseFileName>$(ProjectDir)\$(TargetName).pdb</ProgramDataBaseFileName>
+      <WarningLevel>Level4</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_DEBUG;_CRT_SECURE_NO_DEPRECATE=1;_CRT_NON_CONFORMING_SWPRINTFS=1;_SCL_SECURE_NO_WARNINGS=1;__WXMSW__;_UNICODE;_WINDOWS;NOPCH;FT2_BUILD_LIBRARY;OPJ_STATIC;FT_CONFIG_MODULES_H="slimftmodules.h";FT_CONFIG_OPTIONS_H="slimftoptions.h";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0409</Culture>
+      <AdditionalIncludeDirectories>$(WXMSW3)\lib\vc_lib\mswud;$(WXMSW3)\include;.;$(WXMSW3)\samples;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Link>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <AdditionalLibraryDirectories>$(WXMSW3)\lib\vc_lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>$(ProjectDir)\$(TargetName).pdb</ProgramDatabaseFile>
+      <SubSystem>Windows</SubSystem>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Midl>
+      <PreprocessorDefinitions>WIN32;_CRT_SECURE_NO_DEPRECATE=1;_CRT_NON_CONFORMING_SWPRINTFS=1;_SCL_SECURE_NO_WARNINGS=1;__WXMSW__;NDEBUG;_UNICODE;_WINDOWS;NOPCH;FT2_BUILD_LIBRARY;OPJ_STATIC;FT_CONFIG_MODULES_H="slimftmodules.h";FT_CONFIG_OPTIONS_H="slimftoptions.h";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(WXMSW3)\lib\vc_lib\mswu;$(WXMSW3)\include;.;$(WXMSW3)\samples;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </Midl>
+    <ClCompile>
+      <AdditionalOptions>/MP %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>MaxSpeed</Optimization>
+      <AdditionalIncludeDirectories>$(ProjectDir)\..\include;$(ProjectDir)\..\src\freetype\include;$(ProjectDir)\libcurl_ssl_win32\include;$(WXMSW3)\lib\vc_lib\mswu;$(LKDIR)\include;$(WXMSW3)\include;.;$(WXMSW3)\samples;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_CRT_SECURE_NO_DEPRECATE=1;_CRT_NON_CONFORMING_SWPRINTFS=1;_SCL_SECURE_NO_WARNINGS=1;__WXMSW__;NDEBUG;_UNICODE;_WINDOWS;NOPCH;FT2_BUILD_LIBRARY;OPJ_STATIC;FT_CONFIG_MODULES_H="slimftmodules.h";FT_CONFIG_OPTIONS_H="slimftoptions.h";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ProgramDataBaseFileName>$(ProjectDir)\$(TargetName).pdb</ProgramDataBaseFileName>
+      <WarningLevel>Level4</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE=1;_CRT_NON_CONFORMING_SWPRINTFS=1;_SCL_SECURE_NO_WARNINGS=1;__WXMSW__;NDEBUG;_UNICODE;_WINDOWS;NOPCH;FT2_BUILD_LIBRARY;OPJ_STATIC;FT_CONFIG_MODULES_H="slimftmodules.h";FT_CONFIG_OPTIONS_H="slimftoptions.h";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0409</Culture>
+      <AdditionalIncludeDirectories>$(WXMSW3)\lib\vc_lib\mswu;$(WXMSW3)\include;.;$(WXMSW3)\samples;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Link>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <AdditionalLibraryDirectories>$(WXMSW3)\lib\vc_lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>$(ProjectDir)\$(TargetName).pdb</ProgramDatabaseFile>
+      <SubSystem>Windows</SubSystem>
+      <TargetMachine>MachineX86</TargetMachine>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Midl>
+      <PreprocessorDefinitions>WIN32;_CRT_SECURE_NO_DEPRECATE=1;_CRT_NON_CONFORMING_SWPRINTFS=1;_SCL_SECURE_NO_WARNINGS=1;__WXMSW__;NDEBUG;_UNICODE;_WINDOWS;NOPCH;FT2_BUILD_LIBRARY;OPJ_STATIC;FT_CONFIG_MODULES_H="slimftmodules.h";FT_CONFIG_OPTIONS_H="slimftoptions.h";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(WXMSW3)\lib\vc_lib\mswu;$(WXMSW3)\include;.;$(WXMSW3)\samples;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </Midl>
+    <ClCompile>
+      <AdditionalOptions>/MP %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>MaxSpeed</Optimization>
+      <AdditionalIncludeDirectories>$(ProjectDir)\..\include;$(ProjectDir)\..\src\freetype\include;$(ProjectDir)\libcurl_ssl_x64\include;$(WXMSW3)\lib\vc_x64_lib\mswu;$(LKDIR)\include;$(WXMSW3)\include;.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_CRT_SECURE_NO_DEPRECATE=1;_CRT_NON_CONFORMING_SWPRINTFS=1;_SCL_SECURE_NO_WARNINGS=1;__WXMSW__;NDEBUG;_UNICODE;_WINDOWS;NOPCH;FT2_BUILD_LIBRARY;OPJ_STATIC;FT_CONFIG_MODULES_H="slimftmodules.h";FT_CONFIG_OPTIONS_H="slimftoptions.h";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ProgramDataBaseFileName>$(ProjectDir)\$(TargetName).pdb</ProgramDataBaseFileName>
+      <WarningLevel>Level4</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE=1;_CRT_NON_CONFORMING_SWPRINTFS=1;_SCL_SECURE_NO_WARNINGS=1;__WXMSW__;NDEBUG;_UNICODE;_WINDOWS;NOPCH;FT2_BUILD_LIBRARY;OPJ_STATIC;FT_CONFIG_MODULES_H="slimftmodules.h";FT_CONFIG_OPTIONS_H="slimftoptions.h";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0409</Culture>
+      <AdditionalIncludeDirectories>$(WXMSW3)\lib\vc_lib\mswu;$(WXMSW3)\include;.;$(WXMSW3)\samples;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Link>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <AdditionalLibraryDirectories>$(WXMSW3)\lib\vc_lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>$(ProjectDir)\$(TargetName).pdb</ProgramDatabaseFile>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+    </Link>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

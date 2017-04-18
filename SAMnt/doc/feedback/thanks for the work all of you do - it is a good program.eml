@@ -1,0 +1,644 @@
+X-Account-Key: account1
+X-UIDL: 11e6-df03-4edb9ef8-b272-00212811e484
+X-Mozilla-Status: 0003
+X-Mozilla-Status2: 00000000
+X-Mozilla-Keys:                                                                                 
+Status: RO
+Return-Path: <prvs=0193045b69=cjbanner@aep.com>
+Received: from mx-stork.atl.sa.earthlink.net ([207.69.195.24])
+	by mdl-increase.atl.sa.earthlink.net (EarthLink SMTP Server) with SMTP id 1Cuxl42Fg3Nl36Z0; Fri, 20 Jan 2017 06:26:38 -0500 (EST)
+Received: from mailmanage.aepsc.com ([161.235.223.107])
+	by mx-stork.atl.sa.earthlink.net (EarthLink SMTP Server) with ESMTP id 1Cuxl02Go3Nl34c0
+	for <paulgilman@earthlink.net>; Fri, 20 Jan 2017 06:26:34 -0500 (EST)
+Received: from pps.filterd (mail8.aep.com [127.0.0.1])
+	by mail8.aep.com (8.16.0.17/8.16.0.17) with SMTP id v0KBLs38007557
+	for <paulgilman@earthlink.net>; Fri, 20 Jan 2017 05:26:34 -0600
+Received: from email.aep.com ([10.127.175.12])
+	by mail8.aep.com with ESMTP id 28383v1gm0-1
+	(version=TLSv1 cipher=ECDHE-RSA-AES256-SHA bits=256 verify=NOT)
+	for <paulgilman@earthlink.net>; Fri, 20 Jan 2017 05:26:34 -0600
+Received: from VMAEPHQMS005.corp.aepsc.com ([169.254.7.103]) by
+ VMAEPHQMS003.corp.aepsc.com ([10.92.123.51]) with mapi id 14.03.0319.002;
+ Fri, 20 Jan 2017 06:26:32 -0500
+From: Claudia J Banner <cjbanner@aep.com>
+To: "paulgilman@earthlink.net" <paulgilman@earthlink.net>
+Subject: sorry about audio yesterday on NREL SAM call
+Thread-Topic: sorry about audio yesterday on NREL SAM call
+Thread-Index: AdJzEAxY7w2C/yazREqeg5uJzMTxhQ==
+Date: Fri, 20 Jan 2017 11:26:33 +0000
+Message-ID: <064F1775F13ECC4787D3C8CC6E1BEB9ACF9258B9@VMAEPHQMS005.corp.aepsc.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.92.123.1]
+Content-Type: multipart/alternative;
+	boundary="_000_064F1775F13ECC4787D3C8CC6E1BEB9ACF9258B9VMAEPHQMS005cor_"
+MIME-Version: 1.0
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10432:,, definitions=2017-01-20_08:,,
+ signatures=0
+X-Authentication-Results: dkim="fail"; (2:no or failed dkim processing); dmarc="none"; (1); dwl="miss"; den="not exempt"
+X-ELNK-AV: 0
+X-ELNK-Info: sbv=0; sbrc=.0; sbf=0b; sbw=000;
+
+--_000_064F1775F13ECC4787D3C8CC6E1BEB9ACF9258B9VMAEPHQMS005cor_
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
+
+I connected via the iphone from home and had initial problems (on my end, n=
+ot yours).  I generally don't have questions, since I'm still feeling my wa=
+y around SAM and I think most people on the call have a lot more experience=
+ with it.  I couldn't figure out the audio part on my end and whether I was=
+ unmuted or not.  Maybe just as well, since we are all passing around the c=
+rud and coughing up lungs; no one wants to hear that.
+
+I am reading through the solar and wind parts of the user's guide.  Will do=
+wnload the new version before long.  Was interesting to hear about modeling=
+ a battery without solar.  I'll give that a try sometime.
+
+Happy weekend.  Thanks for the work all of you do.  It is a good program.
+Claudia
+
+
+* If you send an e-mail and you don't hear back from me, it could be either=
+ I didn't get it because of the firewall or it could have gotten lost in th=
+e midst of other e-mail. *
+
+Claudia J. Banner, PE, CPE, MBA, PMP, CEM
+AEP (American Electric Power)
+1 Riverside Plaza
+Columbus, OH 43215
+614-716-2894 (audinet 200-2894)
+cjbanner@aep.com<mailto:cjbanner@aep.com>
+
+
+--_000_064F1775F13ECC4787D3C8CC6E1BEB9ACF9258B9VMAEPHQMS005cor_
+Content-Type: text/html; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
+
+<html xmlns:v=3D"urn:schemas-microsoft-com:vml" xmlns:o=3D"urn:schemas-micr=
+osoft-com:office:office" xmlns:w=3D"urn:schemas-microsoft-com:office:word" =
+xmlns:m=3D"http://schemas.microsoft.com/office/2004/12/omml" xmlns=3D"http:=
+//www.w3.org/TR/REC-html40">
+<head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dus-ascii"=
+>
+<meta name=3D"ProgId" content=3D"Word.Document">
+<meta name=3D"Generator" content=3D"Microsoft Word 14">
+<meta name=3D"Originator" content=3D"Microsoft Word 14">
+<link rel=3D"File-List" href=3D"cid:filelist.xml@01D272E6.2468ACD0"><!--[if=
+ gte mso 9]><xml>
+<o:OfficeDocumentSettings>
+<o:AllowPNG/>
+</o:OfficeDocumentSettings>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+<w:WordDocument>
+<w:SpellingState>Clean</w:SpellingState>
+<w:TrackMoves/>
+<w:TrackFormatting/>
+<w:EnvelopeVis/>
+<w:ValidateAgainstSchemas/>
+<w:SaveIfXMLInvalid>false</w:SaveIfXMLInvalid>
+<w:IgnoreMixedContent>false</w:IgnoreMixedContent>
+<w:AlwaysShowPlaceholderText>false</w:AlwaysShowPlaceholderText>
+<w:DoNotPromoteQF/>
+<w:LidThemeOther>EN-US</w:LidThemeOther>
+<w:LidThemeAsian>X-NONE</w:LidThemeAsian>
+<w:LidThemeComplexScript>X-NONE</w:LidThemeComplexScript>
+<w:Compatibility>
+<w:DoNotExpandShiftReturn/>
+<w:BreakWrappedTables/>
+<w:SplitPgBreakAndParaMark/>
+<w:EnableOpenTypeKerning/>
+</w:Compatibility>
+<m:mathPr>
+<m:mathFont m:val=3D"Cambria Math"/>
+<m:brkBin m:val=3D"before"/>
+<m:brkBinSub m:val=3D"&#45;-"/>
+<m:smallFrac m:val=3D"off"/>
+<m:dispDef/>
+<m:lMargin m:val=3D"0"/>
+<m:rMargin m:val=3D"0"/>
+<m:defJc m:val=3D"centerGroup"/>
+<m:wrapIndent m:val=3D"1440"/>
+<m:intLim m:val=3D"subSup"/>
+<m:naryLim m:val=3D"undOvr"/>
+</m:mathPr></w:WordDocument>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+<w:LatentStyles DefLockedState=3D"false" DefUnhideWhenUsed=3D"true" DefSemi=
+Hidden=3D"true" DefQFormat=3D"false" DefPriority=3D"99" LatentStyleCount=3D=
+"267">
+<w:LsdException Locked=3D"false" Priority=3D"0" SemiHidden=3D"false" Unhide=
+WhenUsed=3D"false" QFormat=3D"true" Name=3D"Normal"/>
+<w:LsdException Locked=3D"false" Priority=3D"9" SemiHidden=3D"false" Unhide=
+WhenUsed=3D"false" QFormat=3D"true" Name=3D"heading 1"/>
+<w:LsdException Locked=3D"false" Priority=3D"9" QFormat=3D"true" Name=3D"he=
+ading 2"/>
+<w:LsdException Locked=3D"false" Priority=3D"9" QFormat=3D"true" Name=3D"he=
+ading 3"/>
+<w:LsdException Locked=3D"false" Priority=3D"9" QFormat=3D"true" Name=3D"he=
+ading 4"/>
+<w:LsdException Locked=3D"false" Priority=3D"9" QFormat=3D"true" Name=3D"he=
+ading 5"/>
+<w:LsdException Locked=3D"false" Priority=3D"9" QFormat=3D"true" Name=3D"he=
+ading 6"/>
+<w:LsdException Locked=3D"false" Priority=3D"9" QFormat=3D"true" Name=3D"he=
+ading 7"/>
+<w:LsdException Locked=3D"false" Priority=3D"9" QFormat=3D"true" Name=3D"he=
+ading 8"/>
+<w:LsdException Locked=3D"false" Priority=3D"9" QFormat=3D"true" Name=3D"he=
+ading 9"/>
+<w:LsdException Locked=3D"false" Priority=3D"39" Name=3D"toc 1"/>
+<w:LsdException Locked=3D"false" Priority=3D"39" Name=3D"toc 2"/>
+<w:LsdException Locked=3D"false" Priority=3D"39" Name=3D"toc 3"/>
+<w:LsdException Locked=3D"false" Priority=3D"39" Name=3D"toc 4"/>
+<w:LsdException Locked=3D"false" Priority=3D"39" Name=3D"toc 5"/>
+<w:LsdException Locked=3D"false" Priority=3D"39" Name=3D"toc 6"/>
+<w:LsdException Locked=3D"false" Priority=3D"39" Name=3D"toc 7"/>
+<w:LsdException Locked=3D"false" Priority=3D"39" Name=3D"toc 8"/>
+<w:LsdException Locked=3D"false" Priority=3D"39" Name=3D"toc 9"/>
+<w:LsdException Locked=3D"false" Priority=3D"35" QFormat=3D"true" Name=3D"c=
+aption"/>
+<w:LsdException Locked=3D"false" Priority=3D"10" SemiHidden=3D"false" Unhid=
+eWhenUsed=3D"false" QFormat=3D"true" Name=3D"Title"/>
+<w:LsdException Locked=3D"false" Priority=3D"1" Name=3D"Default Paragraph F=
+ont"/>
+<w:LsdException Locked=3D"false" Priority=3D"11" SemiHidden=3D"false" Unhid=
+eWhenUsed=3D"false" QFormat=3D"true" Name=3D"Subtitle"/>
+<w:LsdException Locked=3D"false" Priority=3D"22" SemiHidden=3D"false" Unhid=
+eWhenUsed=3D"false" QFormat=3D"true" Name=3D"Strong"/>
+<w:LsdException Locked=3D"false" Priority=3D"20" SemiHidden=3D"false" Unhid=
+eWhenUsed=3D"false" QFormat=3D"true" Name=3D"Emphasis"/>
+<w:LsdException Locked=3D"false" Priority=3D"59" SemiHidden=3D"false" Unhid=
+eWhenUsed=3D"false" Name=3D"Table Grid"/>
+<w:LsdException Locked=3D"false" UnhideWhenUsed=3D"false" Name=3D"Placehold=
+er Text"/>
+<w:LsdException Locked=3D"false" Priority=3D"1" SemiHidden=3D"false" Unhide=
+WhenUsed=3D"false" QFormat=3D"true" Name=3D"No Spacing"/>
+<w:LsdException Locked=3D"false" Priority=3D"60" SemiHidden=3D"false" Unhid=
+eWhenUsed=3D"false" Name=3D"Light Shading"/>
+<w:LsdException Locked=3D"false" Priority=3D"61" SemiHidden=3D"false" Unhid=
+eWhenUsed=3D"false" Name=3D"Light List"/>
+<w:LsdException Locked=3D"false" Priority=3D"62" SemiHidden=3D"false" Unhid=
+eWhenUsed=3D"false" Name=3D"Light Grid"/>
+<w:LsdException Locked=3D"false" Priority=3D"63" SemiHidden=3D"false" Unhid=
+eWhenUsed=3D"false" Name=3D"Medium Shading 1"/>
+<w:LsdException Locked=3D"false" Priority=3D"64" SemiHidden=3D"false" Unhid=
+eWhenUsed=3D"false" Name=3D"Medium Shading 2"/>
+<w:LsdException Locked=3D"false" Priority=3D"65" SemiHidden=3D"false" Unhid=
+eWhenUsed=3D"false" Name=3D"Medium List 1"/>
+<w:LsdException Locked=3D"false" Priority=3D"66" SemiHidden=3D"false" Unhid=
+eWhenUsed=3D"false" Name=3D"Medium List 2"/>
+<w:LsdException Locked=3D"false" Priority=3D"67" SemiHidden=3D"false" Unhid=
+eWhenUsed=3D"false" Name=3D"Medium Grid 1"/>
+<w:LsdException Locked=3D"false" Priority=3D"68" SemiHidden=3D"false" Unhid=
+eWhenUsed=3D"false" Name=3D"Medium Grid 2"/>
+<w:LsdException Locked=3D"false" Priority=3D"69" SemiHidden=3D"false" Unhid=
+eWhenUsed=3D"false" Name=3D"Medium Grid 3"/>
+<w:LsdException Locked=3D"false" Priority=3D"70" SemiHidden=3D"false" Unhid=
+eWhenUsed=3D"false" Name=3D"Dark List"/>
+<w:LsdException Locked=3D"false" Priority=3D"71" SemiHidden=3D"false" Unhid=
+eWhenUsed=3D"false" Name=3D"Colorful Shading"/>
+<w:LsdException Locked=3D"false" Priority=3D"72" SemiHidden=3D"false" Unhid=
+eWhenUsed=3D"false" Name=3D"Colorful List"/>
+<w:LsdException Locked=3D"false" Priority=3D"73" SemiHidden=3D"false" Unhid=
+eWhenUsed=3D"false" Name=3D"Colorful Grid"/>
+<w:LsdException Locked=3D"false" Priority=3D"60" SemiHidden=3D"false" Unhid=
+eWhenUsed=3D"false" Name=3D"Light Shading Accent 1"/>
+<w:LsdException Locked=3D"false" Priority=3D"61" SemiHidden=3D"false" Unhid=
+eWhenUsed=3D"false" Name=3D"Light List Accent 1"/>
+<w:LsdException Locked=3D"false" Priority=3D"62" SemiHidden=3D"false" Unhid=
+eWhenUsed=3D"false" Name=3D"Light Grid Accent 1"/>
+<w:LsdException Locked=3D"false" Priority=3D"63" SemiHidden=3D"false" Unhid=
+eWhenUsed=3D"false" Name=3D"Medium Shading 1 Accent 1"/>
+<w:LsdException Locked=3D"false" Priority=3D"64" SemiHidden=3D"false" Unhid=
+eWhenUsed=3D"false" Name=3D"Medium Shading 2 Accent 1"/>
+<w:LsdException Locked=3D"false" Priority=3D"65" SemiHidden=3D"false" Unhid=
+eWhenUsed=3D"false" Name=3D"Medium List 1 Accent 1"/>
+<w:LsdException Locked=3D"false" UnhideWhenUsed=3D"false" Name=3D"Revision"=
+/>
+<w:LsdException Locked=3D"false" Priority=3D"34" SemiHidden=3D"false" Unhid=
+eWhenUsed=3D"false" QFormat=3D"true" Name=3D"List Paragraph"/>
+<w:LsdException Locked=3D"false" Priority=3D"29" SemiHidden=3D"false" Unhid=
+eWhenUsed=3D"false" QFormat=3D"true" Name=3D"Quote"/>
+<w:LsdException Locked=3D"false" Priority=3D"30" SemiHidden=3D"false" Unhid=
+eWhenUsed=3D"false" QFormat=3D"true" Name=3D"Intense Quote"/>
+<w:LsdException Locked=3D"false" Priority=3D"66" SemiHidden=3D"false" Unhid=
+eWhenUsed=3D"false" Name=3D"Medium List 2 Accent 1"/>
+<w:LsdException Locked=3D"false" Priority=3D"67" SemiHidden=3D"false" Unhid=
+eWhenUsed=3D"false" Name=3D"Medium Grid 1 Accent 1"/>
+<w:LsdException Locked=3D"false" Priority=3D"68" SemiHidden=3D"false" Unhid=
+eWhenUsed=3D"false" Name=3D"Medium Grid 2 Accent 1"/>
+<w:LsdException Locked=3D"false" Priority=3D"69" SemiHidden=3D"false" Unhid=
+eWhenUsed=3D"false" Name=3D"Medium Grid 3 Accent 1"/>
+<w:LsdException Locked=3D"false" Priority=3D"70" SemiHidden=3D"false" Unhid=
+eWhenUsed=3D"false" Name=3D"Dark List Accent 1"/>
+<w:LsdException Locked=3D"false" Priority=3D"71" SemiHidden=3D"false" Unhid=
+eWhenUsed=3D"false" Name=3D"Colorful Shading Accent 1"/>
+<w:LsdException Locked=3D"false" Priority=3D"72" SemiHidden=3D"false" Unhid=
+eWhenUsed=3D"false" Name=3D"Colorful List Accent 1"/>
+<w:LsdException Locked=3D"false" Priority=3D"73" SemiHidden=3D"false" Unhid=
+eWhenUsed=3D"false" Name=3D"Colorful Grid Accent 1"/>
+<w:LsdException Locked=3D"false" Priority=3D"60" SemiHidden=3D"false" Unhid=
+eWhenUsed=3D"false" Name=3D"Light Shading Accent 2"/>
+<w:LsdException Locked=3D"false" Priority=3D"61" SemiHidden=3D"false" Unhid=
+eWhenUsed=3D"false" Name=3D"Light List Accent 2"/>
+<w:LsdException Locked=3D"false" Priority=3D"62" SemiHidden=3D"false" Unhid=
+eWhenUsed=3D"false" Name=3D"Light Grid Accent 2"/>
+<w:LsdException Locked=3D"false" Priority=3D"63" SemiHidden=3D"false" Unhid=
+eWhenUsed=3D"false" Name=3D"Medium Shading 1 Accent 2"/>
+<w:LsdException Locked=3D"false" Priority=3D"64" SemiHidden=3D"false" Unhid=
+eWhenUsed=3D"false" Name=3D"Medium Shading 2 Accent 2"/>
+<w:LsdException Locked=3D"false" Priority=3D"65" SemiHidden=3D"false" Unhid=
+eWhenUsed=3D"false" Name=3D"Medium List 1 Accent 2"/>
+<w:LsdException Locked=3D"false" Priority=3D"66" SemiHidden=3D"false" Unhid=
+eWhenUsed=3D"false" Name=3D"Medium List 2 Accent 2"/>
+<w:LsdException Locked=3D"false" Priority=3D"67" SemiHidden=3D"false" Unhid=
+eWhenUsed=3D"false" Name=3D"Medium Grid 1 Accent 2"/>
+<w:LsdException Locked=3D"false" Priority=3D"68" SemiHidden=3D"false" Unhid=
+eWhenUsed=3D"false" Name=3D"Medium Grid 2 Accent 2"/>
+<w:LsdException Locked=3D"false" Priority=3D"69" SemiHidden=3D"false" Unhid=
+eWhenUsed=3D"false" Name=3D"Medium Grid 3 Accent 2"/>
+<w:LsdException Locked=3D"false" Priority=3D"70" SemiHidden=3D"false" Unhid=
+eWhenUsed=3D"false" Name=3D"Dark List Accent 2"/>
+<w:LsdException Locked=3D"false" Priority=3D"71" SemiHidden=3D"false" Unhid=
+eWhenUsed=3D"false" Name=3D"Colorful Shading Accent 2"/>
+<w:LsdException Locked=3D"false" Priority=3D"72" SemiHidden=3D"false" Unhid=
+eWhenUsed=3D"false" Name=3D"Colorful List Accent 2"/>
+<w:LsdException Locked=3D"false" Priority=3D"73" SemiHidden=3D"false" Unhid=
+eWhenUsed=3D"false" Name=3D"Colorful Grid Accent 2"/>
+<w:LsdException Locked=3D"false" Priority=3D"60" SemiHidden=3D"false" Unhid=
+eWhenUsed=3D"false" Name=3D"Light Shading Accent 3"/>
+<w:LsdException Locked=3D"false" Priority=3D"61" SemiHidden=3D"false" Unhid=
+eWhenUsed=3D"false" Name=3D"Light List Accent 3"/>
+<w:LsdException Locked=3D"false" Priority=3D"62" SemiHidden=3D"false" Unhid=
+eWhenUsed=3D"false" Name=3D"Light Grid Accent 3"/>
+<w:LsdException Locked=3D"false" Priority=3D"63" SemiHidden=3D"false" Unhid=
+eWhenUsed=3D"false" Name=3D"Medium Shading 1 Accent 3"/>
+<w:LsdException Locked=3D"false" Priority=3D"64" SemiHidden=3D"false" Unhid=
+eWhenUsed=3D"false" Name=3D"Medium Shading 2 Accent 3"/>
+<w:LsdException Locked=3D"false" Priority=3D"65" SemiHidden=3D"false" Unhid=
+eWhenUsed=3D"false" Name=3D"Medium List 1 Accent 3"/>
+<w:LsdException Locked=3D"false" Priority=3D"66" SemiHidden=3D"false" Unhid=
+eWhenUsed=3D"false" Name=3D"Medium List 2 Accent 3"/>
+<w:LsdException Locked=3D"false" Priority=3D"67" SemiHidden=3D"false" Unhid=
+eWhenUsed=3D"false" Name=3D"Medium Grid 1 Accent 3"/>
+<w:LsdException Locked=3D"false" Priority=3D"68" SemiHidden=3D"false" Unhid=
+eWhenUsed=3D"false" Name=3D"Medium Grid 2 Accent 3"/>
+<w:LsdException Locked=3D"false" Priority=3D"69" SemiHidden=3D"false" Unhid=
+eWhenUsed=3D"false" Name=3D"Medium Grid 3 Accent 3"/>
+<w:LsdException Locked=3D"false" Priority=3D"70" SemiHidden=3D"false" Unhid=
+eWhenUsed=3D"false" Name=3D"Dark List Accent 3"/>
+<w:LsdException Locked=3D"false" Priority=3D"71" SemiHidden=3D"false" Unhid=
+eWhenUsed=3D"false" Name=3D"Colorful Shading Accent 3"/>
+<w:LsdException Locked=3D"false" Priority=3D"72" SemiHidden=3D"false" Unhid=
+eWhenUsed=3D"false" Name=3D"Colorful List Accent 3"/>
+<w:LsdException Locked=3D"false" Priority=3D"73" SemiHidden=3D"false" Unhid=
+eWhenUsed=3D"false" Name=3D"Colorful Grid Accent 3"/>
+<w:LsdException Locked=3D"false" Priority=3D"60" SemiHidden=3D"false" Unhid=
+eWhenUsed=3D"false" Name=3D"Light Shading Accent 4"/>
+<w:LsdException Locked=3D"false" Priority=3D"61" SemiHidden=3D"false" Unhid=
+eWhenUsed=3D"false" Name=3D"Light List Accent 4"/>
+<w:LsdException Locked=3D"false" Priority=3D"62" SemiHidden=3D"false" Unhid=
+eWhenUsed=3D"false" Name=3D"Light Grid Accent 4"/>
+<w:LsdException Locked=3D"false" Priority=3D"63" SemiHidden=3D"false" Unhid=
+eWhenUsed=3D"false" Name=3D"Medium Shading 1 Accent 4"/>
+<w:LsdException Locked=3D"false" Priority=3D"64" SemiHidden=3D"false" Unhid=
+eWhenUsed=3D"false" Name=3D"Medium Shading 2 Accent 4"/>
+<w:LsdException Locked=3D"false" Priority=3D"65" SemiHidden=3D"false" Unhid=
+eWhenUsed=3D"false" Name=3D"Medium List 1 Accent 4"/>
+<w:LsdException Locked=3D"false" Priority=3D"66" SemiHidden=3D"false" Unhid=
+eWhenUsed=3D"false" Name=3D"Medium List 2 Accent 4"/>
+<w:LsdException Locked=3D"false" Priority=3D"67" SemiHidden=3D"false" Unhid=
+eWhenUsed=3D"false" Name=3D"Medium Grid 1 Accent 4"/>
+<w:LsdException Locked=3D"false" Priority=3D"68" SemiHidden=3D"false" Unhid=
+eWhenUsed=3D"false" Name=3D"Medium Grid 2 Accent 4"/>
+<w:LsdException Locked=3D"false" Priority=3D"69" SemiHidden=3D"false" Unhid=
+eWhenUsed=3D"false" Name=3D"Medium Grid 3 Accent 4"/>
+<w:LsdException Locked=3D"false" Priority=3D"70" SemiHidden=3D"false" Unhid=
+eWhenUsed=3D"false" Name=3D"Dark List Accent 4"/>
+<w:LsdException Locked=3D"false" Priority=3D"71" SemiHidden=3D"false" Unhid=
+eWhenUsed=3D"false" Name=3D"Colorful Shading Accent 4"/>
+<w:LsdException Locked=3D"false" Priority=3D"72" SemiHidden=3D"false" Unhid=
+eWhenUsed=3D"false" Name=3D"Colorful List Accent 4"/>
+<w:LsdException Locked=3D"false" Priority=3D"73" SemiHidden=3D"false" Unhid=
+eWhenUsed=3D"false" Name=3D"Colorful Grid Accent 4"/>
+<w:LsdException Locked=3D"false" Priority=3D"60" SemiHidden=3D"false" Unhid=
+eWhenUsed=3D"false" Name=3D"Light Shading Accent 5"/>
+<w:LsdException Locked=3D"false" Priority=3D"61" SemiHidden=3D"false" Unhid=
+eWhenUsed=3D"false" Name=3D"Light List Accent 5"/>
+<w:LsdException Locked=3D"false" Priority=3D"62" SemiHidden=3D"false" Unhid=
+eWhenUsed=3D"false" Name=3D"Light Grid Accent 5"/>
+<w:LsdException Locked=3D"false" Priority=3D"63" SemiHidden=3D"false" Unhid=
+eWhenUsed=3D"false" Name=3D"Medium Shading 1 Accent 5"/>
+<w:LsdException Locked=3D"false" Priority=3D"64" SemiHidden=3D"false" Unhid=
+eWhenUsed=3D"false" Name=3D"Medium Shading 2 Accent 5"/>
+<w:LsdException Locked=3D"false" Priority=3D"65" SemiHidden=3D"false" Unhid=
+eWhenUsed=3D"false" Name=3D"Medium List 1 Accent 5"/>
+<w:LsdException Locked=3D"false" Priority=3D"66" SemiHidden=3D"false" Unhid=
+eWhenUsed=3D"false" Name=3D"Medium List 2 Accent 5"/>
+<w:LsdException Locked=3D"false" Priority=3D"67" SemiHidden=3D"false" Unhid=
+eWhenUsed=3D"false" Name=3D"Medium Grid 1 Accent 5"/>
+<w:LsdException Locked=3D"false" Priority=3D"68" SemiHidden=3D"false" Unhid=
+eWhenUsed=3D"false" Name=3D"Medium Grid 2 Accent 5"/>
+<w:LsdException Locked=3D"false" Priority=3D"69" SemiHidden=3D"false" Unhid=
+eWhenUsed=3D"false" Name=3D"Medium Grid 3 Accent 5"/>
+<w:LsdException Locked=3D"false" Priority=3D"70" SemiHidden=3D"false" Unhid=
+eWhenUsed=3D"false" Name=3D"Dark List Accent 5"/>
+<w:LsdException Locked=3D"false" Priority=3D"71" SemiHidden=3D"false" Unhid=
+eWhenUsed=3D"false" Name=3D"Colorful Shading Accent 5"/>
+<w:LsdException Locked=3D"false" Priority=3D"72" SemiHidden=3D"false" Unhid=
+eWhenUsed=3D"false" Name=3D"Colorful List Accent 5"/>
+<w:LsdException Locked=3D"false" Priority=3D"73" SemiHidden=3D"false" Unhid=
+eWhenUsed=3D"false" Name=3D"Colorful Grid Accent 5"/>
+<w:LsdException Locked=3D"false" Priority=3D"60" SemiHidden=3D"false" Unhid=
+eWhenUsed=3D"false" Name=3D"Light Shading Accent 6"/>
+<w:LsdException Locked=3D"false" Priority=3D"61" SemiHidden=3D"false" Unhid=
+eWhenUsed=3D"false" Name=3D"Light List Accent 6"/>
+<w:LsdException Locked=3D"false" Priority=3D"62" SemiHidden=3D"false" Unhid=
+eWhenUsed=3D"false" Name=3D"Light Grid Accent 6"/>
+<w:LsdException Locked=3D"false" Priority=3D"63" SemiHidden=3D"false" Unhid=
+eWhenUsed=3D"false" Name=3D"Medium Shading 1 Accent 6"/>
+<w:LsdException Locked=3D"false" Priority=3D"64" SemiHidden=3D"false" Unhid=
+eWhenUsed=3D"false" Name=3D"Medium Shading 2 Accent 6"/>
+<w:LsdException Locked=3D"false" Priority=3D"65" SemiHidden=3D"false" Unhid=
+eWhenUsed=3D"false" Name=3D"Medium List 1 Accent 6"/>
+<w:LsdException Locked=3D"false" Priority=3D"66" SemiHidden=3D"false" Unhid=
+eWhenUsed=3D"false" Name=3D"Medium List 2 Accent 6"/>
+<w:LsdException Locked=3D"false" Priority=3D"67" SemiHidden=3D"false" Unhid=
+eWhenUsed=3D"false" Name=3D"Medium Grid 1 Accent 6"/>
+<w:LsdException Locked=3D"false" Priority=3D"68" SemiHidden=3D"false" Unhid=
+eWhenUsed=3D"false" Name=3D"Medium Grid 2 Accent 6"/>
+<w:LsdException Locked=3D"false" Priority=3D"69" SemiHidden=3D"false" Unhid=
+eWhenUsed=3D"false" Name=3D"Medium Grid 3 Accent 6"/>
+<w:LsdException Locked=3D"false" Priority=3D"70" SemiHidden=3D"false" Unhid=
+eWhenUsed=3D"false" Name=3D"Dark List Accent 6"/>
+<w:LsdException Locked=3D"false" Priority=3D"71" SemiHidden=3D"false" Unhid=
+eWhenUsed=3D"false" Name=3D"Colorful Shading Accent 6"/>
+<w:LsdException Locked=3D"false" Priority=3D"72" SemiHidden=3D"false" Unhid=
+eWhenUsed=3D"false" Name=3D"Colorful List Accent 6"/>
+<w:LsdException Locked=3D"false" Priority=3D"73" SemiHidden=3D"false" Unhid=
+eWhenUsed=3D"false" Name=3D"Colorful Grid Accent 6"/>
+<w:LsdException Locked=3D"false" Priority=3D"19" SemiHidden=3D"false" Unhid=
+eWhenUsed=3D"false" QFormat=3D"true" Name=3D"Subtle Emphasis"/>
+<w:LsdException Locked=3D"false" Priority=3D"21" SemiHidden=3D"false" Unhid=
+eWhenUsed=3D"false" QFormat=3D"true" Name=3D"Intense Emphasis"/>
+<w:LsdException Locked=3D"false" Priority=3D"31" SemiHidden=3D"false" Unhid=
+eWhenUsed=3D"false" QFormat=3D"true" Name=3D"Subtle Reference"/>
+<w:LsdException Locked=3D"false" Priority=3D"32" SemiHidden=3D"false" Unhid=
+eWhenUsed=3D"false" QFormat=3D"true" Name=3D"Intense Reference"/>
+<w:LsdException Locked=3D"false" Priority=3D"33" SemiHidden=3D"false" Unhid=
+eWhenUsed=3D"false" QFormat=3D"true" Name=3D"Book Title"/>
+<w:LsdException Locked=3D"false" Priority=3D"37" Name=3D"Bibliography"/>
+<w:LsdException Locked=3D"false" Priority=3D"39" QFormat=3D"true" Name=3D"T=
+OC Heading"/>
+</w:LatentStyles>
+</xml><![endif]--><style><!--
+/* Font Definitions */
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;
+	mso-font-alt:"Century Gothic";
+	mso-font-charset:0;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:-536870145 1073786111 1 0 415 0;}
+@font-face
+	{font-family:Tahoma;
+	panose-1:2 11 6 4 3 5 4 4 2 4;
+	mso-font-alt:Arial;
+	mso-font-charset:0;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:-520081665 -1073717157 41 0 66047 0;}
+@font-face
+	{font-family:Aparajita;
+	panose-1:2 11 6 4 2 2 2 2 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:32771 0 0 0 1 0;}
+/* Style Definitions */
+p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";
+	mso-fareast-font-family:Calibri;
+	mso-bidi-font-family:"Times New Roman";
+	color:black;}
+a:link, span.MsoHyperlink
+	{mso-style-noshow:yes;
+	mso-style-priority:99;
+	color:blue;
+	text-decoration:underline;
+	text-underline:single;}
+a:visited, span.MsoHyperlinkFollowed
+	{mso-style-noshow:yes;
+	mso-style-priority:99;
+	color:purple;
+	text-decoration:underline;
+	text-underline:single;}
+p
+	{mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-margin-top-alt:auto;
+	margin-right:0in;
+	mso-margin-bottom-alt:auto;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";
+	mso-fareast-font-family:Calibri;
+	mso-bidi-font-family:"Times New Roman";
+	color:black;}
+p.MsoAcetate, li.MsoAcetate, div.MsoAcetate
+	{mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-style-link:"Balloon Text Char";
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:8.0pt;
+	font-family:"Tahoma","sans-serif";
+	mso-fareast-font-family:Calibri;
+	color:black;}
+span.BalloonTextChar
+	{mso-style-name:"Balloon Text Char";
+	mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:"Balloon Text";
+	mso-ansi-font-size:8.0pt;
+	mso-bidi-font-size:8.0pt;
+	font-family:"Tahoma","sans-serif";
+	mso-ascii-font-family:Tahoma;
+	mso-hansi-font-family:Tahoma;
+	mso-bidi-font-family:Tahoma;}
+span.EmailStyle20
+	{mso-style-type:personal;
+	mso-style-noshow:yes;
+	mso-style-unhide:no;
+	mso-ansi-font-size:10.0pt;
+	mso-bidi-font-size:11.0pt;
+	font-family:"Calibri","sans-serif";
+	mso-ascii-font-family:Calibri;
+	mso-hansi-font-family:Calibri;
+	mso-bidi-font-family:"Times New Roman";
+	color:windowtext;
+	font-weight:normal;
+	font-style:normal;}
+span.EmailStyle21
+	{mso-style-type:personal-reply;
+	mso-style-noshow:yes;
+	mso-style-unhide:no;
+	mso-ansi-font-size:10.0pt;
+	mso-bidi-font-size:11.0pt;
+	font-family:"Calibri","sans-serif";
+	mso-ascii-font-family:Calibri;
+	mso-hansi-font-family:Calibri;
+	mso-bidi-font-family:"Times New Roman";
+	color:#1F497D;}
+span.SpellE
+	{mso-style-name:"";
+	mso-spl-e:yes;}
+.MsoChpDefault
+	{mso-style-type:export-only;
+	mso-default-props:yes;
+	font-size:10.0pt;
+	mso-ansi-font-size:10.0pt;
+	mso-bidi-font-size:10.0pt;}
+@page WordSection1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.0in 1.0in 1.0in;
+	mso-header-margin:.5in;
+	mso-footer-margin:.5in;
+	mso-paper-source:0;}
+div.WordSection1
+	{page:WordSection1;}
+--></style><!--[if gte mso 10]><style>/* Style Definitions */
+table.MsoNormalTable
+	{mso-style-name:"Table Normal";
+	mso-tstyle-rowband-size:0;
+	mso-tstyle-colband-size:0;
+	mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-style-parent:"";
+	mso-padding-alt:0in 5.4pt 0in 5.4pt;
+	mso-para-margin:0in;
+	mso-para-margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Times New Roman","serif";}
+</style><![endif]--><!--[if gte mso 9]><xml>
+<o:shapedefaults v:ext=3D"edit" spidmax=3D"1026" />
+</xml><![endif]--><!--[if gte mso 9]><xml>
+<o:shapelayout v:ext=3D"edit">
+<o:idmap v:ext=3D"edit" data=3D"1" />
+</o:shapelayout></xml><![endif]-->
+</head>
+<body bgcolor=3D"white" lang=3D"EN-US" link=3D"blue" vlink=3D"purple" style=
+=3D"tab-interval:.5in">
+<div class=3D"WordSection1">
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;mso-bidi-font-size:1=
+1.0pt;mso-ascii-font-family:Calibri;mso-hansi-font-family:Calibri;mso-bidi-=
+font-family:&quot;Times New Roman&quot;;color:#1F497D">I connected via the =
+iphone from home and had initial problems (on
+ my end, not yours).<span style=3D"mso-spacerun:yes">&nbsp; </span>I genera=
+lly don&#8217;t have questions, since I&#8217;m still feeling my way around=
+ SAM and I think most people on the call have a lot more experience with it=
+.<span style=3D"mso-spacerun:yes">&nbsp;
+</span>I couldn&#8217;t figure out the audio part on my end and whether I w=
+as unmuted or not.<span style=3D"mso-spacerun:yes">&nbsp;
+</span>Maybe just as well, since we are all passing around the crud and cou=
+ghing up lungs; no one wants to hear that.<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;mso-bidi-font-size:1=
+1.0pt;mso-ascii-font-family:Calibri;mso-fareast-font-family:&quot;Times New=
+ Roman&quot;;mso-hansi-font-family:Calibri;mso-bidi-font-family:&quot;Times=
+ New Roman&quot;;color:#1F497D"><o:p>&nbsp;</o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;mso-bidi-font-size:1=
+1.0pt;mso-ascii-font-family:Calibri;mso-fareast-font-family:&quot;Times New=
+ Roman&quot;;mso-hansi-font-family:Calibri;mso-bidi-font-family:&quot;Times=
+ New Roman&quot;;color:#1F497D">I am reading through the
+ solar and wind parts of the user&#8217;s guide.<span style=3D"mso-spacerun=
+:yes">&nbsp; </span>
+Will download the new version before long.<span style=3D"mso-spacerun:yes">=
+&nbsp; </span>
+Was interesting to hear about modeling a battery without solar.<span style=
+=3D"mso-spacerun:yes">&nbsp;
+</span>I&#8217;ll give that a try sometime.<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;mso-bidi-font-size:1=
+1.0pt;mso-ascii-font-family:Calibri;mso-fareast-font-family:&quot;Times New=
+ Roman&quot;;mso-hansi-font-family:Calibri;mso-bidi-font-family:&quot;Times=
+ New Roman&quot;;color:#1F497D"><o:p>&nbsp;</o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;mso-bidi-font-size:1=
+1.0pt;mso-ascii-font-family:Calibri;mso-fareast-font-family:&quot;Times New=
+ Roman&quot;;mso-hansi-font-family:Calibri;mso-bidi-font-family:&quot;Times=
+ New Roman&quot;;color:#1F497D">Happy weekend.<span style=3D"mso-spacerun:y=
+es">&nbsp;
+</span>Thanks for the work all of you do.<span style=3D"mso-spacerun:yes">&=
+nbsp; </span>
+It is a good program.<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;mso-bidi-font-size:1=
+1.0pt;mso-ascii-font-family:Calibri;mso-fareast-font-family:&quot;Times New=
+ Roman&quot;;mso-hansi-font-family:Calibri;mso-bidi-font-family:&quot;Times=
+ New Roman&quot;;color:#1F497D">Claudia<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;mso-bidi-font-size:1=
+1.0pt;mso-ascii-font-family:Calibri;mso-fareast-font-family:&quot;Times New=
+ Roman&quot;;mso-hansi-font-family:Calibri;mso-bidi-font-family:&quot;Times=
+ New Roman&quot;;color:#1F497D"><o:p>&nbsp;</o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;mso-bidi-font-size:1=
+1.0pt;mso-ascii-font-family:Calibri;mso-hansi-font-family:Calibri;mso-bidi-=
+font-family:&quot;Times New Roman&quot;;color:#1F497D"><o:p>&nbsp;</o:p></s=
+pan></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:7.0pt;font-family:&quot;Ari=
+al&quot;,&quot;sans-serif&quot;;mso-fareast-font-family:&quot;Times New Rom=
+an&quot;;color:#17365D;mso-bidi-font-weight:bold;mso-no-proof:yes">* If you=
+ send an e-mail and you don&#8217;t hear back from me, it could be either
+ I didn&#8217;t get it because of the firewall or it could have gotten lost=
+ in the midst of other e-mail. *<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:9.0pt;mso-ascii-font-family=
+:Calibri;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-hansi-font=
+-family:Calibri;mso-bidi-font-family:Aparajita;color:#632423;mso-no-proof:y=
+es"><o:p>&nbsp;</o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:9.0pt;mso-ascii-font-family=
+:Calibri;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-hansi-font=
+-family:Calibri;mso-bidi-font-family:Aparajita;color:#632423;mso-no-proof:y=
+es">Claudia J. Banner, PE, CPE, MBA, PMP, CEM<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:9.0pt;mso-ascii-font-family=
+:Calibri;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-hansi-font=
+-family:Calibri;mso-bidi-font-family:Aparajita;color:#632423;mso-no-proof:y=
+es">AEP (American Electric Power)<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:9.0pt;mso-ascii-font-family=
+:Calibri;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-hansi-font=
+-family:Calibri;mso-bidi-font-family:Aparajita;color:#632423;mso-no-proof:y=
+es">1 Riverside Plaza<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:9.0pt;mso-ascii-font-family=
+:Calibri;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-hansi-font=
+-family:Calibri;mso-bidi-font-family:Aparajita;color:#632423;mso-no-proof:y=
+es">Columbus, OH 43215<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:9.0pt;mso-ascii-font-family=
+:Calibri;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-hansi-font=
+-family:Calibri;mso-bidi-font-family:Aparajita;color:#632423;mso-no-proof:y=
+es">614-716-2894 (audinet 200-2894)<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:9.0pt;mso-ascii-font-family=
+:Calibri;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-hansi-font=
+-family:Calibri;mso-bidi-font-family:Aparajita;color:#632423;mso-no-proof:y=
+es"><a href=3D"mailto:cjbanner@aep.com"><span style=3D"color:#632423;text-d=
+ecoration:none;text-underline:none">cjbanner@aep.com</span></a><o:p></o:p><=
+/span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;mso-bidi-font-size:1=
+1.0pt;mso-ascii-font-family:Calibri;mso-fareast-font-family:&quot;Times New=
+ Roman&quot;;mso-hansi-font-family:Calibri;mso-bidi-font-family:&quot;Times=
+ New Roman&quot;;color:#1F497D"><o:p>&nbsp;</o:p></span></p>
+</div>
+</body>
+</html>
+
+--_000_064F1775F13ECC4787D3C8CC6E1BEB9ACF9258B9VMAEPHQMS005cor_--
+

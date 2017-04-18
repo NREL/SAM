@@ -1,0 +1,15 @@
+- check static data code generator in LK with no variables in table initializer keys
+- better automatic number formatting on wexplot and optional user specified formatting
+- LK plot() function shortcuts 'k-d2', 'color,style,marker,size', multiple series
+- unify scatter and line plots with common marker drawing code and data point elimination, i.e.
+- LK legend( '', '', '' ) function
+- LK reference counted LK data objects for fast copy
+- LK array/scalar +-/*^ operations 
+- LK script 'run selection' mode with preserve 
+environment and current variable view
+- Consolidate LK test programs
+- LK matrix data type with column/row referencing and assignment [:,0] etc
+- Rerun highlighted LK code without resetting environment (recompile though)
+- bar plot width calculation issues with lots of single bar barplots on one plot
+- use wxPLPlot renderer in SAM script report objects
+- PL line plot data optimization to cull # points according to device-specific 'EM'

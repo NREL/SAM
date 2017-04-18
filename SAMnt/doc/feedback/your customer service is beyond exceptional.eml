@@ -1,0 +1,315 @@
+X-Account-Key: account1
+X-UIDL: 11e6-94ae-0cbdf632-9e24-00144fe2473a
+X-Mozilla-Status: 0001
+X-Mozilla-Status2: 00000000
+X-Mozilla-Keys:                                                                                 
+Status:  U
+Return-Path: <SAM.Support@nrel.gov>
+Received: from mx-pinchot.atl.sa.earthlink.net ([207.69.195.25])
+	by mdl-ignite.atl.sa.earthlink.net (EarthLink SMTP Server) with SMTP id 1BWfap5EB3Nl3770; Mon, 17 Oct 2016 17:09:53 -0400 (EDT)
+Received: from xv12edg01.nrel.gov ([192.174.58.134])
+	by mx-pinchot.atl.sa.earthlink.net (EarthLink SMTP Server) with ESMTP id 1BWfap3v3Nl34d0
+	for <paulgilman@earthlink.net>; Mon, 17 Oct 2016 17:09:53 -0400 (EDT)
+Received: from XP11MBX3.nrel.gov (10.20.41.68) by xv12edg01.nrel.gov
+ (192.174.58.134) with Microsoft SMTP Server (TLS) id 15.0.1178.4; Mon, 17 Oct
+ 2016 15:09:50 -0600
+Received: from XP11MBX3.nrel.gov (10.20.41.68) by xp11mbx3.nrel.gov
+ (10.20.41.68) with Microsoft SMTP Server (TLS) id 15.0.1178.4; Mon, 17 Oct
+ 2016 15:09:50 -0600
+Received: from XP11MBX3.nrel.gov ([fe80::877:e0d2:247:1c13]) by
+ xp11mbx3.nrel.gov ([fe80::877:e0d2:247:1c13%14]) with mapi id 15.00.1178.000;
+ Mon, 17 Oct 2016 15:09:50 -0600
+From: SAM Support <SAM.Support@nrel.gov>
+To: "'paulgilman@earthlink.net'" <paulgilman@earthlink.net>
+Subject: your customer service is beyond exceptional
+Thread-Topic: your customer service is beyond exceptional
+Thread-Index: AQHSKLrMm1h9VYg0wUKDCfppJONISA==
+Date: Mon, 17 Oct 2016 21:09:50 +0000
+Message-ID: <1476738594542.5575@nrel.gov>
+References: <BY1PR09MB0583E8A2E24BF87D23EE5AC6E6DD0@BY1PR09MB0583.namprd09.prod.outlook.com>
+ <1476306801683.24809@nrel.gov>,<BY1PR09MB058332BE47BA9B1C6F122892E6DD0@BY1PR09MB0583.namprd09.prod.outlook.com>,<1476383743322.84594@nrel.gov>,<DM2PR09MB0590C41D6EDD52517C4B3FCFE6DC0@DM2PR09MB0590.namprd09.prod.outlook.com>,<1476486005736.50752@nrel.gov>,<BY1PR09MB0583FB8AB518170F8C2BDA47E6DF0@BY1PR09MB0583.namprd09.prod.outlook.com>
+In-Reply-To: <BY1PR09MB0583FB8AB518170F8C2BDA47E6DF0@BY1PR09MB0583.namprd09.prod.outlook.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach:
+X-MS-TNEF-Correlator:
+x-ms-exchange-transport-fromentityheader: Hosted
+x-originating-ip: [10.20.41.6]
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+X-Authentication-Results: dkim="fail"; (2:no or failed dkim processing); dmarc="none"; (1); dwl="miss"; den="not exempt"
+X-ELNK-AV: 0
+X-ELNK-Info: sbv=0; sbrc=.0; sbf=0b; sbw=000;
+
+
+Best regards,
+Paul.
+
+-----
+Paul Gilman
+System Advisor Model Support
+sam.support@nrel.gov<mailto:sam.support@nrel.gov>
+________________________________
+From: Rosemarie Ampil <RAmpil@isd.lacounty.gov>
+Sent: Friday, October 14, 2016 6:56 PM
+To: SAM Support
+Subject: Re: SAM Support Question from Help
+
+Thanks for everything, Paul.
+
+Your customer service is beyond exceptional. I appreciate you going over an=
+d beyond to find an answer for me.
+
+Have a great weekend!
+
+-Rosemarie
+________________________________
+From: SAM Support <SAM.Support@nrel.gov>
+Sent: Friday, October 14, 2016 4:00:04 PM
+To: Rosemarie Ampil
+Subject: Re: SAM Support Question from Help
+
+Hi Rosemarie,
+
+
+
+I'm sorry that I don't know what a reasonable discount rate is in your case=
+. As you know, those are very subjective assumptions.
+
+
+
+I did find this feasibility study from 2013 that was done for the City of N=
+ovato that may be helpful:
+
+
+
+http://novato.org/home/showdocument?id=3D17468
+
+
+
+I just Googled "PV carport discount rate" to find that -- I don't know anyt=
+hing about the quality of that report or the company that prepared it.
+
+
+
+Have a great weekend!
+
+
+
+Best regards,
+Paul.
+
+-----
+Paul Gilman
+System Advisor Model Support
+sam.support@nrel.gov<mailto:sam.support@nrel.gov>
+________________________________
+From: Rosemarie Ampil <RAmpil@isd.lacounty.gov>
+Sent: Thursday, October 13, 2016 1:46 PM
+To: SAM Support
+Subject: Re: SAM Support Question from Help
+
+
+Thanks, Paul.
+
+
+I do appreciate your feedback and will incorporate the discount rate and in=
+flation. I completely agree with your in regards to this being to simplisti=
+c; however, we know that there will be no energy cost savings by installing=
+ carports (without any incentives to offset the cost or sized enough to mee=
+t the energy demands) so it is expected that there will be no reasonable pa=
+yback as the solar PPA cost will be more than the local utility rate. So, t=
+he direction was to keep it simple for the bidders and public to utilize an=
+d not consider the ROI, but rather an LCOE approach.
+
+
+Question - in case you know -  what would be a factor (rate) to consider fo=
+r loss of opportunity or interest gained on the cash (if it was just sittin=
+g in the bank), if it was not utilized for purchasing the solar asset?
+
+
+Thanks again for your insight and help.  Hopefully, this spreadsheet will b=
+e the basis for the financial analyst to build from.  If you have any formu=
+las or rates that the LA County should consider from SAM, please direct me.
+
+
+Sincerely,
+
+Rosemarie
+
+________________________________
+From: SAM Support <SAM.Support@nrel.gov>
+Sent: Thursday, October 13, 2016 11:35:42 AM
+To: Rosemarie Ampil
+Subject: Re: SAM Support Question from Help
+
+Hi Rosemarie,
+
+
+
+I am not in a position to officially evaluate your method, but I can give y=
+ou some insight based on my experience with SAM that might help.
+
+
+
+The value in Column F of your spreadsheet is not really a levelized cost of=
+ energy because it does not involve a discount rate to account for the time=
+ value of money, and does not account for inflation. (I assume no debt or t=
+axes are involved in this project.). I might call it an estimated project c=
+ost. The value in Column H might be the estimated PPA cost.
+
+
+
+Do you have a person familiar with county financial practices who might be =
+able to give you some insight from the county's perspective? I think these =
+estimates are intuitively easy to understand, but someone with some financi=
+al experience might find them to be too simplistic.
+
+
+Best regards,
+Paul.
+
+-----
+Paul Gilman
+System Advisor Model Support
+sam.support@nrel.gov<mailto:sam.support@nrel.gov>
+________________________________
+From: Rosemarie Ampil <RAmpil@isd.lacounty.gov>
+Sent: Wednesday, October 12, 2016 5:00 PM
+To: SAM Support
+Subject: RE: SAM Support Question from Help
+
+
+Hi, Paul.
+
+
+
+I just spoke to Aron Dobos while you emailed.
+
+
+
+As I was going through the excel spreadsheets (below), I realized this is f=
+or the owner of the solar.  I was interested in finding out if there was a =
+template for LCOE that the County can provide to the bidders, for solar car=
+port PPA.  Because I have seen the cost ($/kWh) of solar energy via PPA is =
+higher compared to our local utility, it was best to use the LCOE approach,=
+ comparing the PPA with cash purchase (which the County does not have the c=
+apital to do so).
+
+
+
+So, based on your expertise, perhaps you can review the spreadsheet develop=
+ed and see if this is simple enough for the bidders and County Board to und=
+erstand/utilize, without missing the major elements to consider. Because Ca=
+lifornia no longer offers solar incentives, I assume it would only be the I=
+TC that would benefit the solar contractor/integrator, aside from profit.  =
+Do you think the attached spreadsheet simply depicts the essence of LCOE fo=
+r a solar carport installation?
+
+
+
+Any suggestions would be appreciated. Thanks!
+
+
+
+[cid:image001.jpg@01D22498.B9A2D150]
+
+
+
+Rosemarie Ampil, CEM, LEED AP
+Los Angeles County - ISD Energy Management Division
+1100 N. Eastern Avenue, Los Angeles, CA  90063
+C:  (213) 604-5804
+O:  (323) 881-5159
+rampil@isd.lacounty.gov<mailto:rampil@isd.lacounty.gov>
+
+
+
+
+-----Original Message-----
+
+From: SAM Support [mailto:SAM.Support@nrel.gov]
+
+Sent: Wednesday, October 12, 2016 2:13 PM
+
+To: Rosemarie Ampil <RAmpil@isd.lacounty.gov>
+
+Subject: Re: SAM Support Question from Help
+
+
+
+Dear Rosemarie,
+
+
+
+
+
+
+
+Thank you for the message.
+
+
+
+
+
+
+
+Please email me your questions about the LCOE calculations.
+
+
+
+
+
+Best regards,
+
+Paul.
+
+
+
+-----
+
+Paul Gilman
+
+System Advisor Model Support
+
+sam.support@nrel.gov<mailto:sam.support@nrel.gov>
+
+________________________________
+
+From: Rosemarie Ampil <RAmpil@isd.lacounty.gov>
+
+Sent: Wednesday, October 12, 2016 12:10 PM
+
+To: SAM Support
+
+Subject: SAM Support Question from Help
+
+
+
+Hello,
+
+
+
+Can someone please contact me? I have some questions to the LCOE Calcs in E=
+xcel and needed some assistance on how to use it for our County solar carpo=
+rt projects.
+
+
+
+Thanks,
+
+Rosemarie Ampil, CEM, LEED AP
+
+Los Angeles County - ISD Energy Management Division
+
+1100 N. Eastern Avenue, Los Angeles, CA  90063
+
+C:  (213) 604-5804
+
+O:  (323) 881-5159
+
+rampil@isd.lacounty.gov<mailto:rampil@isd.lacounty.gov>
+
+
+

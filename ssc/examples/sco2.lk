@@ -1,0 +1,261 @@
+// Output file directory
+file_dir = 'c:/Users/tneises/Documents/Brayton-Rankine/CPP_Recompression_Modeling/';
+
+// Matching SolarPACES paper
+// Values for SunShot Summit
+// Values for Mike's 5/15/14 Quarterly Report
+W_dot_net_des = 35.0;		//[MW] Design cycle power output
+T_mc_in_des = 50.0;			//[C] Main compressor inlet temp at design
+T_t_in_des = 650.0;			//[C] Turbine inlet temperature at design
+N_t_des = 3600.0;			//[rpm] Turbine shaft speed
+tol = 1.E-6;				//[-] Convergence tolerance for performance calcs
+opt_tol = 1.E-6;			//[-] Convergence tolerance for optimization calcs
+UA_total_des = 10000.0;		//[kW/K] Total UA allocatable to recuperators
+P_high_limit = 25.0;		//[MPa] High pressure limit in cycle
+eta_mc = 0.89;				//[-] Compressor Isentropic Efficiency
+eta_rc = 0.89;				//[-] Recompressor Isentropic Efficiency
+eta_t = 0.93;				//[-] Turbine Isentropic Efficiency
+
+// Matching Dyreby Figure 4.5
+/*
+W_dot_net_des = 10.0;		//[MW] Design cycle power output
+T_mc_in_des = 35.0;			//[C] Main compressor inlet temp at design
+T_t_in_des = 700.0;			//[C] Turbine inlet temperature at design
+N_t_des = 3600.0;			//[rpm] Turbine shaft speed
+tol = 1.E-6;				//[-] Convergence tolerance for performance calcs (default: 1.e-6)
+opt_tol = 1.E-6;			//[-] Convergence tolerance for optimization calcs (default: 1.e-6)
+UA_total_des = 1000.0;		//[kW/K] Total UA allocatable to recuperators
+P_high_limit = 20.0;		//[MPa] High pressure limit in cycle
+eta_c = 0.89;				//[-] Compressor isentropic efficiency
+eta_t = 0.93;				//[-] Turbine isentropic efficiency
+*/
+
+// Set up text to store output variables for design study parametrics
+T_in_des = "T_in"+to_string(T_mc_in_des);
+T_hot_des = "_T_hot"+to_string(T_t_in_des);
+P_hi_des = "_P_hi"+to_string(P_high_limit);
+W_dot_des = "_W_des"+to_string(W_dot_net_des);
+
+/*************************************************************************
+// Ty: Test plotting functions
+x = [10,100,1000];
+y = [1,1.5,2];
+
+file_int = open(file_dir, 'w');
+outln("file integer = ", file_int);
+output = "x,y";
+outln(write_line(file_int,output));
+outln(write_line(file_int,(to_string(x[1])+","+to_string(y[1]))));
+break;
+
+newplot();
+plot(x,y,{'type'='scatter','color'='blue','thick'=4});
+axis('x1',{'type'='log','label'='x axis'});
+break;
+***************************************************************************/
+
+// Define EVERY input in 'cmod_sco2_design_cycle.cpp'
+var('I_W_dot_net_des',W_dot_net_des);
+var('I_T_mc_in_des',T_mc_in_des);
+var('I_T_t_in_des',T_t_in_des);
+var('I_N_t_des',N_t_des);
+var('I_eta_mc',eta_mc);
+var('I_eta_rc',eta_rc);
+var('I_eta_t',eta_t);
+var('I_tol',tol);
+var('I_opt_tol',opt_tol);
+var('I_UA_total_des',UA_total_des);
+var('I_P_high_limit',P_high_limit);
+// **************************************************
+
+// Set run_once = true if you want to run one case that optimizes for the design point inputs and then run the off-design model at design conditions
+// Useful for making sure the models run and understanding the outputs. The code breaks after this simulation
+// The 'design' and 'off-design' models share some SSC_INPUT names - not sure if this is a good idea...
+run_once = true;
+// ******************************************************************************
+
+if(run_once)
+{
+	// Run design point optimization model
+	run('sco2_design_cycle');
+	
+	// Save as variable and print thermal efficiency @ design
+	eta_des = var('O_eta_thermal_des');
+	outln("eta_des = ",eta_des);
+	
+	// Save as variables optimized design point parameters that are required inputs for off-design model
+	LT_frac_des = var('O_LT_frac_des');
+	P_mc_out_des = var('O_P_mc_out_des');
+	PR_mc_des = var('O_PR_mc_des');
+	recomp_frac_des = var('O_recomp_frac_des');
+	temp_array = var('O_T_array_des');
+	T_PHX_in = temp_array[4];
+	T_PHX_out = temp_array[5];
+	T_diff_PHX = T_PHX_out - T_PHX_in;	
+	outln("Primary Heat Exchanger Temp Diff = ", T_diff_PHX);
+	m_dot_PHX = var('O_m_dot_PHX');
+	outln("Mass flow rate through PHX = ",m_dot_PHX);
+	
+	break;
+	
+	// Define remaining off-design inputs (remember that off-design model shares some input names with design)
+		// Inputs defined by design-point model
+	var('I_P_high_des',P_mc_out_des);
+	var('I_PR_mc_des',PR_mc_des);
+	var('I_LT_frac_des',LT_frac_des);
+	var('I_recomp_frac_des',recomp_frac_des);
+		// Inputs determined by operating conditions - set here to design point
+	var('I_T_mc_in',T_mc_in_des);
+	var('I_T_t_in',T_t_in_des);
+	var('I_W_dot_net_target',W_dot_net_des);
+	var('I_optimize_N_t',0);		// Keep a fixed turbine speed - i.e. syncing to the grid
+	
+	// Run the off-design model
+	run('sco2_offdesign');
+	
+	// Off-design model has to run the design point model once to set equipment parameters, so get both design and off-design thermal efficiencies from off-design call
+	eta_des2 = var('O_eta_thermal_des');
+	eta_off_des = var('O_eta_thermal');	
+	outln("eta_des 2 = ",eta_des2);
+	outln("eta off des = ",eta_off_des);
+	
+	// Print other useful metrics
+	outln("Thermal efficiency = ", var('O_eta_thermal'));
+	outln("Net Power Output = ", var('O_W_dot_net'));
+	outln("Comp Outlet Pressure = ", var('O_P_mc_out'));
+	outln("Comp Inlet Pressure = ", var('O_P_mc_in'));
+	outln("Recompression Fraction = ", var('O_recomp_frac'));
+	outln("Main compressor Speed = ", var('O_N_mc'));
+	outln("Turbine Speed = ", var('O_N_t'));
+	outln("Recompressor Speed = ", var('O_N_rc'));
+	
+	break;
+}
+
+// Do you want to run the design point model for various UA_des values?
+run_UA_des_parametric = false;
+
+if(run_UA_des_parametric)
+{
+	// Setup output file
+	sim_description = T_in_des + T_hot_des + P_hi_des + W_dot_des;
+	//outln(sim_description);
+
+	//file_dir = 'c:/users/tneises/desktop/'+sim_description+'.txt';
+	file_name = file_dir + sim_description+'.txt';
+	file_int = open(file_name, 'w');
+	headers = "UA,eta_thermal,P_mc_out,PR,recomp_frac,f_LT,delta_T_PHX,m_dot_PHX";
+	outln(file_name, " headers were successful? ", write_line(file_int,headers));
+	//break;
+	// ***********************************************************************
+
+	// Set up parametrics to evaluate design point performance at varying Total Recuperator Conductance (UA) [kW/K]
+	N_start = 100;					// Lowest total conductance to evaluate - multiple of 10
+	UA_exp_start = log10(N_start);	// UA is varied exponentially 
+	N_orders_of_mag = 3;		// e.g. 1: N_stop = 1,000; 2: N_stop = 10,000, etc.
+	N_per_order = 15;			// Number of evaluation points per order of magnitude: analogous to spacing on a log plot
+	N_total = N_orders_of_mag*N_per_order + 1;	// Total number of evalution points
+
+	for(i=0;i<N_total;i++)
+	{
+		//UA_exp = 2.0+i/15;
+		
+		// Calculate UA for current run
+		UA_exp = UA_exp_start+i/N_per_order;
+		UA_total_des = 10^UA_exp;
+		
+		// Set UA input variable
+		var('I_UA_total_des',UA_total_des);
+		UA[i] = UA_total_des;
+		
+		// Run design point model for current UA value
+		run('sco2_design_cycle');
+
+		// Save important output metrics
+		eta_des[i] = var('O_eta_thermal_des');
+		P_mc_out_des[i] = var('O_P_mc_out_des');
+		PR[i] = var('O_PR_mc_des');
+		recomp_frac[i] = var('O_recomp_frac_des');
+		f_LT[i] = var('O_LT_frac_des');
+		temp_array = var('O_T_array_des');		//[K] Output is SSC array
+		T_PHX_in = temp_array[4];
+		T_PHX_out = temp_array[5];
+		T_diff_PHX = T_PHX_out - T_PHX_in;
+		m_dot_PHX = var('O_m_dot_PHX');
+		
+		// Write outputs to file
+		outln(write_line(file_int,(to_string(UA[i])+","+to_string(eta_des[i])+","+to_string(P_mc_out_des[i])+","+to_string(PR[i])+","+to_string(recomp_frac[i])+","+to_string(f_LT[i])+","+to_string(T_diff_PHX)+","+to_string(m_dot_PHX))));
+		
+		// Print simulation details
+		outln("Run ",i, " completed out of ", N_total-1," at UA = ",UA_total_des," [kW/K]");
+	}
+}
+// **************************************************************************
+// **************************************************************************
+
+// Do you want to run the off-design model at varying net output power (proxy to thermal input)?
+run_od_power_par = true;
+// **********************************************************************************************
+
+if(run_od_power_par)
+{
+	// Set range of net output power values for parameterization
+	W_dot_net_low_frac = 0.3;
+	N_runs = 20;
+	delta_W_dot_net_frac = (1.0-W_dot_net_low_frac)/(N_runs-1);
+
+	// Set design conductance and re-run to get design parameters
+	// (Or could use design point parametrics to calculate the UA you want to use)
+	UA_total_des = 10000;
+	var('I_UA_total_des',UA_total_des);
+	run('sco2_design_cycle');
+
+	// Set up new output file for off-design results
+	UA_tot_des_str = "_UA_des"+to_string(UA_total_des);
+	sim_description = T_in_des + T_hot_des + P_hi_des + UA_tot_des_str;
+	file_name = file_dir+sim_description+'_W_dot_off_design'+'.txt';
+	file_int_od = open(file_name, 'w');
+	headers = "eta_thermal,W_dot_net,W_dot_net_frac,P_high,P_low,recomp_frac,delta_T_PHX,m_dot_PHX";
+	outln(file_int_od, " headers were successful? ", write_line(file_int_od,headers));
+
+	// Get performance and optimized design parameters at design case (UA_total_des)
+	run('sco2_design_cycle');
+	LT_frac_des = var('O_LT_frac_des');
+	P_mc_out_des = var('O_P_mc_out_des');
+	PR_mc_des = var('O_PR_mc_des');
+	recomp_frac_des = var('O_recomp_frac_des');
+	
+	// Then set off-design inputs that depend on design-point results
+	var('I_P_high_des',P_mc_out_des);
+	var('I_PR_mc_des',PR_mc_des);
+	var('I_LT_frac_des',LT_frac_des);
+	var('I_recomp_frac_des',recomp_frac_des);
+
+	// Set off-design conditions
+	var('I_T_mc_in',T_mc_in_des);
+	var('I_T_t_in',T_t_in_des);
+	var('I_optimize_N_t',0);
+	var('I_W_dot_net_target',W_dot_net_des);
+
+	// Then run a loop of the off-design model to calculate performance at varying net power output
+	for(i=0;i<N_runs;i++)
+	{
+		// Set current target net power output
+		W_dot_i = (1 - (1-0.3)*(i/19))*W_dot_net_des;
+		W_dot_i = (1.0-(1.0-W_dot_net_low_frac)*(i/(N_runs-1)))*W_dot_net_des;
+		// Set ssc input
+		var('I_W_dot_net_target',W_dot_i);
+		// Run off-design model
+		run('sco2_offdesign');
+		// Post-process off-design outputs as necessary
+		W_dot_net_frac = var('O_W_dot_net')/W_dot_net_des;
+		temp_array = var('O_T_array');		//[K] Output is SSC array
+		T_PHX_in = temp_array[4];
+		T_PHX_out = temp_array[5];
+		T_diff_PHX = T_PHX_out - T_PHX_in;
+		m_dot_PHX = var('O_m_dot_PHX');
+		// Save to file
+		write_line(file_int_od,var('O_eta_thermal')+","+var('O_W_dot_net')+","+W_dot_net_frac+","+var('O_P_mc_out')+","+var('O_P_mc_in')+","+var('O_recomp_frac')+","+T_diff_PHX+","+m_dot_PHX);
+		outln("Run ",i, " completed out of ", N_runs-1," at W_dot_net = ",W_dot_i," [MW] and delta_T_PHX = ", T_diff_PHX);
+	}
+}

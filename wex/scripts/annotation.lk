@@ -1,0 +1,8 @@
+newplot(true);
+plot( [ 1, 2, 3 ], [2, 6, 1 ] );
+annotate( 'This is some great_i text^2 f(\\phi)', [2,4], {'angle'=0, 'size'=4, 'color'='forest green', 'align'='center'} );
+annotate( [1.4,5.0], [2,4], {size=2, color='red', style='dot', arrow=true} );
+annotate( [1.3,1.2], [2,1.8], {size=1, color='blue', style='solid', arrow='outline'} );
+
+annotate( [1.3,4.2], [2.5,2.8], {type='brace',size=2, color='grey', style='solid', arrow='outline'} );
+plotopt( {coarse=false, fine=false} );

@@ -1,0 +1,113 @@
+\subsection{String Functions}
+\texttt{{\large\textbf{sprintf}}}\textsf{(string:format, ...):string}\\
+ Returns a formatted string using standard C printf conventions, but adding the \%m and \%, specifiers for monetary and comma separated real numbers.
+
+\hrulefill
+
+\texttt{{\large\textbf{strlen}}}\textsf{(string):integer}\\
+ Returns the length of a string.
+
+\hrulefill
+
+\texttt{{\large\textbf{strpos}}}\textsf{(string, string):integer}\\
+ Locates the first instance of a character or substring in a string.
+
+\hrulefill
+
+\texttt{{\large\textbf{strcmp}}}\textsf{(string:s1, string:s2):integer}\\
+ Case sensitive string comparison.  Returns 0 if strings are identical, negative number if s1 comes before s2, and positive number if s2 comes before s1.
+
+\hrulefill
+
+\texttt{{\large\textbf{stricmp}}}\textsf{(string:s1, string:s2):integer}\\
+ Case insensitive string comparison.  Returns 0 if strings are identical, negative number if s1 comes before s2, and positive number if s2 comes before s1.
+
+\hrulefill
+
+\texttt{{\large\textbf{first\_of}}}\textsf{(string:s1, string:s2):integer}\\
+ Searches the string s1 for any of the characters in s2, and returns the position of the first occurence
+
+\hrulefill
+
+\texttt{{\large\textbf{last\_of}}}\textsf{(string:s1, string:s2):integer}\\
+ Searches the string s1 for any of the characters in s2, and returns the position of the last occurence
+
+\hrulefill
+
+\texttt{{\large\textbf{left}}}\textsf{(string, integer:n):string}\\
+ Returns the leftmost n characters of a string.
+
+\hrulefill
+
+\texttt{{\large\textbf{right}}}\textsf{(string, integer:n):string}\\
+ Returns the rightmost n characters of a string.
+
+\hrulefill
+
+\texttt{{\large\textbf{mid}}}\textsf{(string, integer:start, \{integer:length\}):string}\\
+ Returns a subsection of a string.
+
+\hrulefill
+
+\texttt{{\large\textbf{ascii}}}\textsf{(character):integer}\\
+ Returns the ascii code of a character.
+
+\hrulefill
+
+\texttt{{\large\textbf{char}}}\textsf{(integer):string}\\
+ Returns a string (one character long) from an ascii code.
+
+\hrulefill
+
+\texttt{{\large\textbf{ch}}}\textsf{(string, integer, character):void}\\
+ Sets the character at the specified index in a string.
+
+\texttt{{\large\textbf{ch}}}\textsf{(string, integer):character}\\
+ Gets the character at the specified index in a string.
+
+\emph{Notes:} Two modes of operation: for retrieving and setting individual characters in a string.
+
+\hrulefill
+
+\texttt{{\large\textbf{isdigit}}}\textsf{(character):boolean}\\
+ Returns true if the argument is a numeric digit 0-9.
+
+\hrulefill
+
+\texttt{{\large\textbf{isalpha}}}\textsf{(character):boolean}\\
+ Returns true if the argument is an alphabetic character A-Z,a-z.
+
+\hrulefill
+
+\texttt{{\large\textbf{isalnum}}}\textsf{(character):boolean}\\
+ Returns true if the argument is an alphanumeric A-Z,a-z,0-9.
+
+\hrulefill
+
+\texttt{{\large\textbf{upper}}}\textsf{(string):string}\\
+ Returns an upper case version of the supplied string.
+
+\hrulefill
+
+\texttt{{\large\textbf{lower}}}\textsf{(string):string}\\
+ Returns a lower case version of the supplied string.
+
+\hrulefill
+
+\texttt{{\large\textbf{replace}}}\textsf{(string, string:s1, string:s2):string}\\
+ Replaces all instances of s1 with s2 in the supplied string.
+
+\hrulefill
+
+\texttt{{\large\textbf{split}}}\textsf{(string:s, string:delims, \{boolean:ret\_empty=false\}, \{boolean:ret\_delim=false\}):array}\\
+ Splits a string into parts at the specified delimiter characters.
+
+\hrulefill
+
+\texttt{{\large\textbf{join}}}\textsf{(array, string:delim):string}\\
+ Joins an array of strings into a single one using the given delimiter.
+
+\hrulefill
+
+\texttt{{\large\textbf{real\_array}}}\textsf{(string):array}\\
+ Splits a whitespace delimited string into an array of real numbers.

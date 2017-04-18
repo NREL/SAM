@@ -1,0 +1,88 @@
+X-Account-Key: account1
+X-UIDL: 11e6-6e3d-acb7b552-9619-00212811e484
+X-Mozilla-Status: 0001
+X-Mozilla-Status2: 00000000
+X-Mozilla-Keys:                                                                                 
+Status:  U
+Return-Path: <SAM.Support@nrel.gov>
+Received: from mx-pinchot.atl.sa.earthlink.net ([207.69.195.25])
+	by mdl-journey.atl.sa.earthlink.net (EarthLink SMTP Server) with SMTP id 1BEvGx2DN3Nl3700; Mon, 29 Aug 2016 19:09:45 -0400 (EDT)
+Received: from xv12edg02.nrel.gov ([192.174.58.133])
+	by mx-pinchot.atl.sa.earthlink.net (EarthLink SMTP Server) with ESMTP id 1BEvGt3g03Nl34d1
+	for <paulgilman@earthlink.net>; Mon, 29 Aug 2016 19:09:41 -0400 (EDT)
+Received: from XP11MBX1.nrel.gov (10.20.41.66) by xv12edg02.nrel.gov
+ (192.174.58.133) with Microsoft SMTP Server (TLS) id 15.0.1178.4; Mon, 29 Aug
+ 2016 17:09:39 -0600
+Received: from XP11MBX3.nrel.gov (10.20.41.68) by xp11mbx1.nrel.gov
+ (10.20.41.66) with Microsoft SMTP Server (TLS) id 15.0.1178.4; Mon, 29 Aug
+ 2016 17:09:37 -0600
+Received: from XP11MBX3.nrel.gov ([fe80::877:e0d2:247:1c13]) by
+ xp11mbx3.nrel.gov ([fe80::877:e0d2:247:1c13%14]) with mapi id 15.00.1178.000;
+ Mon, 29 Aug 2016 17:09:37 -0600
+From: SAM Support <SAM.Support@nrel.gov>
+To: "'paulgilman@earthlink.net'" <paulgilman@earthlink.net>
+Subject: thank you for creating this very wonderful model
+Thread-Topic: thank you for creating this very wonderful model
+Thread-Index: AQHSAkppVM6zpFIRw0KPHpVHTwda0Q==
+Date: Mon, 29 Aug 2016 23:09:37 +0000
+Message-ID: <1472512180060.25592@nrel.gov>
+References: <20160822160359.BE6DF202AD@1lv12drup02.localdomain>
+In-Reply-To: <20160822160359.BE6DF202AD@1lv12drup02.localdomain>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach:
+X-MS-TNEF-Correlator:
+x-ms-exchange-transport-fromentityheader: Hosted
+x-originating-ip: [10.20.41.6]
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+X-Authentication-Results: dkim="fail"; (2:no or failed dkim processing); dmarc="none"; (1); dwl="miss"; den="not exempt"
+X-ELNK-AV: 0
+X-ELNK-Info: sbv=0; sbrc=.0; sbf=0b; sbw=000;
+
+=0A=
+=0A=
+=0A=
+Best regards,=0A=
+Paul.=0A=
+=0A=
+-----=0A=
+Paul Gilman=0A=
+System Advisor Model Support=0A=
+sam.support@nrel.gov=0A=
+=0A=
+________________________________________=0A=
+From: sam.support@nrel.gov <sam.support@nrel.gov> on behalf of shaheer@sola=
+rpowernetwork.ca <shaheer@solarpowernetwork.ca>=0A=
+Sent: Monday, August 22, 2016 11:03 AM=0A=
+To: SAM Support=0A=
+Subject: [Website Feedback] MACRS Calculation=0A=
+=0A=
+Syed Shaheer Aziz (shaheer@solarpowernetwork.ca) sent a message using the=
+=0A=
+contact form at https://sam.nrel.gov/contact.=0A=
+=0A=
+Hello Team,=0A=
+=0A=
+First and foremost, thank you for creating this very wonderful model. I am=
+=0A=
+currently focused on studying the financial model behind SAM and utilizing =
+it=0A=
+for modelling some of our C&I projects in New York state. One of the very=
+=0A=
+last features that I don't understand is how the model calculates MACRS=0A=
+depreciation credits - within the excel file for the model all i see is the=
+=0A=
+calculation of the 30% ITC credit, and the MACRS credits do not appear.=0A=
+=0A=
+Is there someone I could have a quick chat with to discuss?=0A=
+=0A=
+Cheers,=0A=
+=0A=
+Shaheer=0A=
+=0A=
+Report as inappropriate:=0A=
+https://sam.nrel.gov/mollom/report/mollom_captcha/1608222d7e3a057f60=0A=
+=0A=
+

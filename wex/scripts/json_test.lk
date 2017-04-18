@@ -1,0 +1,16 @@
+var = {a=1, b=-3, c='ccc', dd=null, ff=define(){return 31.2;}, bb={a=2,c=4,d=[1,2,3]}, "acc"=[1,2,3,4], 'empty'=[ ]};
+json = json_write( var );
+outln(json);
+
+outln( '\n----------------------\n');
+var2 = json_read( json );
+outln( var2 );
+
+//outln( json_write( 2131 ) );outln( json_write( [2,[2,1],{a=2,b=3},131] ) );
+
+json_file( 'var.json', var );
+var = json_file( 'data.json' );
+outln(var);
+
+outln( var.ssc_info.version );
+outln( var.ssc_info.build );
