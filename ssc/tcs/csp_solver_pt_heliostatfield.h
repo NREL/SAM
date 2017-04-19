@@ -11,7 +11,7 @@
 
 
 class C_pt_heliostatfield
-{
+{ 
 private:
 	// Class Instances
 	GaussMarkov *field_efficiency_table;
