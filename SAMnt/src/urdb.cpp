@@ -1,9 +1,10 @@
 #include <wx/tokenzr.h>
 #include <wx/log.h>
 
+
 // for handling unix time in IURDB
 #include <wx/datetime.h>
-#include <time.h> 
+#include <time.h>
 
 #include <wex/easycurl.h>
 #include <wex/utils.h>
@@ -67,7 +68,7 @@ void OpenEI::RateData::Reset()
 	FixedMonthlyCharge=0.0;
 
 
-	HasEnergyCharge=false;	
+	HasEnergyCharge=false;
 
 	EnergyStructure.resize_fill(1, 6, 0);
 	// single default value
@@ -78,7 +79,7 @@ void OpenEI::RateData::Reset()
 	EnergyStructure.at(0, 4) = 0;
 	EnergyStructure.at(0, 5) = 0;
 
-	
+
 	for (i = 0; i < 12; i++)
 	{
 		for (int k = 0; k < 24; k++)
@@ -87,13 +88,13 @@ void OpenEI::RateData::Reset()
 			EnergyWeekendSchedule[i][k] = 1;
 		}
 	}
-	
+
 	// TODO - coincident demand charges
 
 	HasDemandCharge = false;
 	DemandRateUnit = "kW"; // TODO update to handle different values
 	DemandReactivePower = 1.0;
-	
+
 	DemandFlatStructure.resize_fill(12, 4, 0);
 
 	for (i = 0; i < 12; i++)
@@ -119,7 +120,7 @@ void OpenEI::RateData::Reset()
 			DemandWeekendSchedule[i][k] = 1;
 		}
 	}
-	
+
 }
 
 bool OpenEI::QueryUtilityCompanies(wxArrayString &names, wxString *err)
@@ -309,7 +310,7 @@ bool OpenEI::QueryUtilityRates(const wxString &name, std::vector<RateInfo> &rate
 	// pushed to production update from Jay 10/2/15
 	wxString url = "http://api.openei.org/utility_rates?version=4&detail=minimal&format=json&ratesforutility=" + utlnm + "&api_key=" + wxString(sam_api_key);
 //	wxLogStatus("urdb url=" + url);
-	
+
 	wxString json_data = MyGet(url);
 	if (json_data.IsEmpty())
 	{
@@ -369,7 +370,7 @@ int OpenEI::UtilityCompanyRateCount(const wxString &name)
 	wxJSONValue root;
 	if (reader.Parse( json_data, &root )!=0)
 		return 0;
-	
+
 	return root.Item("items").Size();
 }
 
@@ -407,7 +408,7 @@ bool OpenEI::RetrieveUtilityRateData(const wxString &guid, RateData &rate, wxStr
 	}
 
 	rate.Reset();
-	
+
 	rate.Header.GUID = guid;
 	rate.Header.Name = json_string( val.Item("name"));
 	rate.Header.Utility = json_string( val.Item("utility"));
@@ -445,7 +446,7 @@ bool OpenEI::RetrieveUtilityRateData(const wxString &guid, RateData &rate, wxStr
 
 
 	wxJSONValue v;
-	
+
 	rate.MinAnnualCharge = json_double(val.Item("annualmincharge"));
 	rate.MinMonthlyCharge = json_double(val.Item("minmonthlycharge"));
 	rate.FixedMonthlyCharge = json_double(val.Item("fixedmonthlycharge"));
@@ -521,11 +522,11 @@ bool OpenEI::RetrieveUtilityRateData(const wxString &guid, RateData &rate, wxStr
 	if (!RetrieveDiurnalData(val.Item("energyweekdayschedule"), rate.EnergyWeekdaySchedule)) return false;
 	if (!RetrieveDiurnalData(val.Item("energyweekendschedule"), rate.EnergyWeekendSchedule)) return false;
 
-	
-	
-	
-	
-	
+
+
+
+
+
 	/// DEMAND CHARGES
 	rate.HasDemandCharge = true;
 
@@ -651,7 +652,7 @@ bool OpenEI::RetrieveUtilityRateData(const wxString &guid, RateData &rate, wxStr
 			}
 		}
 	}
-	
+
 	if (!RetrieveDiurnalData(val.Item("demandweekdayschedule"), rate.DemandWeekdaySchedule)) return false;
 	if (!RetrieveDiurnalData(val.Item("demandweekendschedule"), rate.DemandWeekendSchedule)) return false;
 
@@ -704,7 +705,7 @@ enum {
   ID_btnClose,
   ID_txtUtilitySearch,
   ID_btnQueryAgain,
-  ID_cboResCom, 
+  ID_cboResCom,
   ID_chkActiveOnly,
   ID_btnQueryZipCode
 };
@@ -777,12 +778,12 @@ OpenEIUtilityRateDialog::OpenEIUtilityRateDialog(wxWindow *parent, const wxStrin
 
 
 	txtRateDescription = new wxTextCtrl(this, ID_txtRateDescription, "", wxDefaultPosition, wxDefaultSize, wxTE_MULTILINE | wxTE_WORDWRAP | wxTE_PROCESS_TAB | wxTE_READONLY );
-	
+
 	hypOpenEILink = new wxHyperlinkCtrl(this, ID_hypOpenEILink, "Go to rate page on OpenEI.org...", "http://en.openei.org/wiki/Utility_Rate_Database" );
 	hypJSONLink = new wxHyperlinkCtrl(this, ID_hypOpenEILink, "Rate JSON data page...", "http://en.openei.org/wiki/Utility_Rate_Database");
 
 	lblStatus = new wxStaticText(this, ID_lblStatus, "");
-	
+
 	btnApply = new wxButton(this, ID_btnApply, "Download and apply utility rate");
 	btnClose = new wxButton(this, ID_btnClose, "Close");
 
@@ -813,12 +814,12 @@ OpenEIUtilityRateDialog::OpenEIUtilityRateDialog(wxWindow *parent, const wxStrin
 	wxFlexGridSizer *sz_right_grid = new wxFlexGridSizer(2);
 	sz_right_grid->AddGrowableCol(1);
 	sz_right_grid->Add( new wxStaticText(this, wxID_ANY, "Name"), 0, wxALL|wxALIGN_CENTER_VERTICAL, 2 );
-	sz_right_grid->Add( txtRateName, 1, wxALL|wxEXPAND, 2 );	
+	sz_right_grid->Add( txtRateName, 1, wxALL|wxEXPAND, 2 );
 	sz_right_grid->Add(new wxStaticText(this, wxID_ANY, "Description"), 0, wxALL | wxALIGN_CENTER_VERTICAL, 2);
 //	sz_right_grid->Add(new wxStaticText(this, wxID_ANY, "Applicability"), 0, wxALL | wxALIGN_CENTER_VERTICAL, 2);
 	sz_right_grid->Add(txtRateDescription, 1, wxALL | wxEXPAND, 2);
 	sz_right_grid->Add( new wxStaticText(this, wxID_ANY, "Start"), 0, wxALL|wxALIGN_CENTER_VERTICAL, 2 );
-	sz_right_grid->Add( txtRateStartDate, 1, wxALL|wxEXPAND, 2 );	
+	sz_right_grid->Add( txtRateStartDate, 1, wxALL|wxEXPAND, 2 );
 	sz_right_grid->Add(new wxStaticText(this, wxID_ANY, "End"), 0, wxALL | wxALIGN_CENTER_VERTICAL, 2);
 	sz_right_grid->Add(txtRateEndDate, 1, wxALL | wxEXPAND, 2);
 	sz_right_grid->Add(new wxStaticText(this, wxID_ANY, "GUID"), 0, wxALL | wxALIGN_CENTER_VERTICAL, 2);
@@ -833,10 +834,10 @@ OpenEIUtilityRateDialog::OpenEIUtilityRateDialog(wxWindow *parent, const wxStrin
 	sz_right->Add(hypJSONLink, 0, wxALL | wxEXPAND);
 
 
-	wxBoxSizer *sz_main = new wxBoxSizer(wxHORIZONTAL ); 
+	wxBoxSizer *sz_main = new wxBoxSizer(wxHORIZONTAL );
 	sz_main->Add( sz_left, 2, wxALL|wxEXPAND, 4 );
 	sz_main->Add( sz_right, 3, wxALL|wxEXPAND, 4 );
-	
+
 	wxBoxSizer *sz_bottom = new wxBoxSizer(wxHORIZONTAL );
 	sz_bottom->Add( lblStatus, 1, wxALL|wxALIGN_CENTER_VERTICAL, 3 );
 	sz_bottom->Add( btnApply, 0, wxALL|wxEXPAND, 4 );
@@ -847,7 +848,7 @@ OpenEIUtilityRateDialog::OpenEIUtilityRateDialog(wxWindow *parent, const wxStrin
 	sz_top->Add( sz_bottom, 0, wxALL|wxEXPAND, 4 );
 
 	SetSizer( sz_top );
-	
+
 	//lblStatus->Hide();
 	mTimer.SetOwner( this );
 	mBusy = false;
@@ -1010,13 +1011,13 @@ void OpenEIUtilityRateDialog::UpdateRateData()
 	else
 	{
 		mRateData.Reset();
-	
+
 		lblStatus->SetLabel("Retrieving rate data for " + ssel + "...");
 		wxString json_url;
 		wxBusyInfo busy("Communicating with OpenEI.org... please wait", this);
 		if (api.RetrieveUtilityRateData(guid, mRateData, &json_url))
 		{
-			
+
 			txtRateName->SetValue( mRateData.Header.Utility + ": " + mRateData.Header.Name );
 
 			txtRateStartDate->SetValue( mRateData.Header.StartDate );
@@ -1033,7 +1034,7 @@ void OpenEIUtilityRateDialog::UpdateRateData()
 			desc += wxString::Format("\nGUID: '%s'\n", mRateData.Header.GUID.c_str() );
 			desc += wxString::Format("\nEnergy comments: '%s'\n", mRateData.Header.EnergyComments.c_str());
 			desc += wxString::Format("\nDemand comments: '%s'\n", mRateData.Header.DemandComments.c_str());
-			
+
 			wxString desc = "";
 			desc += "Deamnd\n";
 			desc += wxString::Format("\tMinimum %lg kW\n", mRateData.Applicability.peakkwcapacitymin);
@@ -1051,7 +1052,7 @@ void OpenEIUtilityRateDialog::UpdateRateData()
 			desc += wxString::Format("\tPhase Wiring %s\n", mRateData.Applicability.phasewiring.c_str());
 			*/
 			txtRateDescription->SetValue( desc );
-			
+
 //			wxString rate_url = "http://en.openei.org/apps/USURDB/rate/view/" + guid;
 			wxString rate_url = "http://en.openei.org/apps/IURDB/rate/view/" + guid;
 
