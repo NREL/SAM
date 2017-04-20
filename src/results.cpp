@@ -544,9 +544,9 @@ wxString ResultsViewer::GetCurrentContext() const
 	switch( GetSelection() )
 	{
 	case 0: return "summary";
-	case 1: return "losses";
-	case 2: return "graphs";
-	case 3: return "data";
+	case 1: return "data";
+	case 2: return "losses";
+	case 3: return "graphs";
 	case 4: return "cashflow";
 	case 5: return "timeseries";
 	case 6: return "profiles";
@@ -1073,7 +1073,7 @@ void ResultsViewer::Setup( Simulation *sim )
 	for( size_t i=0;i<log.size();i++ )
 		text += log[i] + "\n";
 
-
+	m_messages->Clear(); // 3/27/17 clear notices
 	m_messages->ChangeValue( text );
 }
 
