@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VisualStudioProject ProjectCreator="Intel Fortran" Keyword="Console Application" Version="11.0" ProjectIdGuid="{FF44AB3E-8D10-421D-A3C1-D93A3B94367B}">
+	<Platforms>
+		<Platform Name="Win32"/></Platforms>
+	<Configurations>
+		<Configuration Name="Debug|Win32" OutputDirectory="..\exe">
+				<Tool Name="VFFortranCompilerTool" SuppressStartupBanner="true" DebugInformationFormat="debugEnabled" Optimization="optimizeDisabled" Interfaces="true" LocalVariableStorage="localStorageSave" LocalSavedScalarsZero="true" Traceback="true" BoundsCheck="true" RuntimeLibrary="rtMultiThreadedDebug"/>
+				<Tool Name="VFLinkerTool" OutputFile="$(OutDir)\$(ProjectName)d.exe" LinkIncremental="linkIncrementalNo" SuppressStartupBanner="true" GenerateDebugInformation="true" SubSystem="subSystemConsole"/>
+				<Tool Name="VFResourceCompilerTool"/>
+				<Tool Name="VFMidlTool" SuppressStartupBanner="true"/>
+				<Tool Name="VFCustomBuildTool"/>
+				<Tool Name="VFPreLinkEventTool"/>
+				<Tool Name="VFPreBuildEventTool"/>
+				<Tool Name="VFPostBuildEventTool"/>
+				<Tool Name="VFManifestTool" SuppressStartupBanner="true"/></Configuration>
+		<Configuration Name="Release|Win32" OutputDirectory="..\exe">
+				<Tool Name="VFFortranCompilerTool" SuppressStartupBanner="true" LocalVariableStorage="localStorageSave" LocalSavedScalarsZero="true"/>
+				<Tool Name="VFLinkerTool" LinkIncremental="linkIncrementalNo" SuppressStartupBanner="true" SubSystem="subSystemConsole"/>
+				<Tool Name="VFResourceCompilerTool"/>
+				<Tool Name="VFMidlTool" SuppressStartupBanner="true"/>
+				<Tool Name="VFCustomBuildTool"/>
+				<Tool Name="VFPreLinkEventTool"/>
+				<Tool Name="VFPreBuildEventTool"/>
+				<Tool Name="VFPostBuildEventTool"/>
+				<Tool Name="VFManifestTool" SuppressStartupBanner="true"/></Configuration></Configurations>
+	<Files>
+		<Filter Name="Source Files" Filter="f90;for;f;fpp;ftn;def;odl;idl">
+		<File RelativePath="..\src\Banner.for"/>
+		<File RelativePath="..\src\Beta.for"/>
+		<File RelativePath="..\src\BETAFN.FOR"/>
+		<File RelativePath="..\src\BETAIC.FOR"/>
+		<File RelativePath="..\src\BETALN.FOR"/>
+		<File RelativePath="..\src\Binom.for"/>
+		<File RelativePath="..\src\CCMATR.FOR"/>
+		<File RelativePath="..\src\Chkdat.for"/>
+		<File RelativePath="..\src\Chkdim.for"/>
+		<File RelativePath="..\src\Chkemp.for"/>
+		<File RelativePath="..\src\Chkstr.for"/>
+		<File RelativePath="..\src\Chkzro.for"/>
+		<File RelativePath="..\src\CHLSKY.FOR"/>
+		<File RelativePath="..\src\Cmcrd.for"/>
+		<File RelativePath="..\src\CORCAL.FOR"/>
+		<File RelativePath="..\src\COROUT.FOR"/>
+		<File RelativePath="..\src\Cparam.for"/>
+		<File RelativePath="..\src\CRANK.FOR"/>
+		<File RelativePath="..\src\CSAMP.FOR"/>
+		<File RelativePath="..\src\Cumulc.for"/>
+		<File RelativePath="..\src\Cumuld.for"/>
+		<File RelativePath="..\src\CWORKC.FOR"/>
+		<File RelativePath="..\src\CWORKX.FOR"/>
+		<File RelativePath="..\src\DATOUT.FOR"/>
+		<File RelativePath="..\src\Datsqz.for"/>
+		<File RelativePath="..\src\DISTNM.FOR"/>
+		<File RelativePath="..\src\DMFSD.FOR"/>
+		<File RelativePath="..\src\DSINV.FOR"/>
+		<File RelativePath="..\src\ENTRPF.FOR"/>
+		<File RelativePath="..\src\Entrpy.for"/>
+		<File RelativePath="..\src\Errchk.for"/>
+		<File RelativePath="..\src\ERRGET.FOR"/>
+		<File RelativePath="..\src\ERSTGT.FOR"/>
+		<File RelativePath="..\src\ERXSET.FOR"/>
+		<File RelativePath="..\src\Expon.for"/>
+		<File RelativePath="..\src\FACTOR.FOR"/>
+		<File RelativePath="..\src\FACTR2.FOR"/>
+		<File RelativePath="..\src\FILELENG.FOR"/>
+		<File RelativePath="..\src\FILEOC.FOR"/>
+		<File RelativePath="..\src\FINDIT.FOR"/>
+		<File RelativePath="..\src\FINVNOR.FOR"/>
+		<File RelativePath="..\src\FLNAME.FOR"/>
+		<File RelativePath="..\src\Gamma.for"/>
+		<File RelativePath="..\src\GAMMAB.FOR"/>
+		<File RelativePath="..\src\Gammam.for"/>
+		<File RelativePath="..\src\Geom.for"/>
+		<File RelativePath="..\src\Hgeom.for"/>
+		<File RelativePath="..\src\HISTO.FOR"/>
+		<File RelativePath="..\src\HPSRT.FOR"/>
+		<File RelativePath="..\src\HSTOUT.FOR"/>
+		<File RelativePath="..\src\HYPGEO.FOR"/>
+		<File RelativePath="..\src\Igaus.for"/>
+		<File RelativePath="..\src\IGAUS1.FOR"/>
+		<File RelativePath="..\src\IGAUSF.FOR"/>
+		<File RelativePath="..\src\IMTQL2.FOR"/>
+		<File RelativePath="..\src\INTERP.FOR"/>
+		<File RelativePath="..\src\INTRPD.FOR"/>
+		<File RelativePath="..\src\KILLFILE.FOR"/>
+		<File RelativePath="..\src\Lhs.for"/>
+		<File RelativePath="..\src\Lhsdrv.for"/>
+		<File RelativePath="..\src\LJUST.FOR"/>
+		<File RelativePath="..\src\Lread.for"/>
+		<File RelativePath="..\src\MATINV.FOR"/>
+		<File RelativePath="..\src\MISCMOD.FOR"/>
+		<File RelativePath="..\src\MIX.FOR"/>
+		<File RelativePath="..\src\Nbinom.for"/>
+		<File RelativePath="..\src\Newcrd.for"/>
+		<File RelativePath="..\src\Normal.for"/>
+		<File RelativePath="..\src\Outcrd.for"/>
+		<File RelativePath="..\src\OUTDAT.FOR"/>
+		<File RelativePath="..\src\Pareto.for"/>
+		<File RelativePath="..\src\Parms.for"/>
+		<File RelativePath="..\src\PMTRX.FOR"/>
+		<File RelativePath="..\src\Poison.for"/>
+		<File RelativePath="..\src\Posdef.for"/>
+		<File RelativePath="..\src\RANKER.FOR"/>
+		<File RelativePath="..\src\Rdpar.for"/>
+		<File RelativePath="..\src\Rdpar2.for"/>
+		<File RelativePath="..\src\Read.for"/>
+		<File RelativePath="..\src\RIERFC1.FOR"/>
+		<File RelativePath="..\src\RMCNP.FOR"/>
+		<File RelativePath="..\src\RMCNPI.FOR"/>
+		<File RelativePath="..\src\RNUM1.FOR"/>
+		<File RelativePath="..\src\Samout.for"/>
+		<File RelativePath="..\src\SETDEF.FOR"/>
+		<File RelativePath="..\src\SIFT.FOR"/>
+		<File RelativePath="..\src\Sspev.for"/>
+		<File RelativePath="..\src\Table.for"/>
+		<File RelativePath="..\src\TQLRAT.FOR"/>
+		<File RelativePath="..\src\TRBAK3.FOR"/>
+		<File RelativePath="..\src\TRED3.FOR"/>
+		<File RelativePath="..\src\Triang.for"/>
+		<File RelativePath="..\src\UNIFRM.FOR"/>
+		<File RelativePath="..\src\VIF.FOR"/>
+		<File RelativePath="..\src\Weibul.for"/>
+		<File RelativePath="..\src\WRTCRD.FOR"/>
+		<File RelativePath="..\src\Wrtpar.for"/></Filter></Files>
+	<Globals/></VisualStudioProject>

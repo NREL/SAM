@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VisualStudioProject ProjectCreator="Intel Fortran" Keyword="Console Application" Version="11.0" ProjectIdGuid="{90F8895C-00B9-40E1-B6A3-C5816134EA3D}">
+	<Platforms>
+		<Platform Name="Win32"/></Platforms>
+	<Configurations>
+		<Configuration Name="Debug|Win32">
+				<Tool Name="VFFortranCompilerTool" SuppressStartupBanner="true" DebugInformationFormat="debugEnabled" Optimization="optimizeDisabled" Interfaces="true" WarnInterfaces="true" Traceback="true" BoundsCheck="true" RuntimeLibrary="rtMultiThreadedDebug"/>
+				<Tool Name="VFLinkerTool" OutputFile=".\deploy\stepwise_wipp_d.exe" LinkIncremental="linkIncrementalNo" SuppressStartupBanner="true" GenerateDebugInformation="true" SubSystem="subSystemConsole"/>
+				<Tool Name="VFResourceCompilerTool"/>
+				<Tool Name="VFMidlTool" SuppressStartupBanner="true"/>
+				<Tool Name="VFCustomBuildTool"/>
+				<Tool Name="VFPreLinkEventTool"/>
+				<Tool Name="VFPreBuildEventTool"/>
+				<Tool Name="VFPostBuildEventTool"/>
+				<Tool Name="VFManifestTool" SuppressStartupBanner="true"/></Configuration>
+		<Configuration Name="Release|Win32">
+				<Tool Name="VFFortranCompilerTool" SuppressStartupBanner="true"/>
+				<Tool Name="VFLinkerTool" OutputFile=".\deploy\stepwise_wipp.exe" LinkIncremental="linkIncrementalNo" SuppressStartupBanner="true" SubSystem="subSystemConsole"/>
+				<Tool Name="VFResourceCompilerTool"/>
+				<Tool Name="VFMidlTool" SuppressStartupBanner="true"/>
+				<Tool Name="VFCustomBuildTool"/>
+				<Tool Name="VFPreLinkEventTool"/>
+				<Tool Name="VFPreBuildEventTool"/>
+				<Tool Name="VFPostBuildEventTool"/>
+				<Tool Name="VFManifestTool" SuppressStartupBanner="true"/></Configuration></Configurations>
+	<Files>
+		<Filter Name="Header Files" Filter="fi;fd"/>
+		<Filter Name="Resource Files" Filter="rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe"/>
+		<Filter Name="Source Files" Filter="f90;for;f;fpp;ftn;def;odl;idl">
+		<File RelativePath="CAMLIB_FEELEM.F"/>
+		<File RelativePath="CAMLIB_FEIJK.F"/>
+		<File RelativePath="CAMLIB_FEMINMAX.F"/>
+		<File RelativePath="CAMLIB_FENENUM.F"/>
+		<File RelativePath="CAMLIB_FF0LIN.F"/>
+		<File RelativePath="CAMLIB_FF0TKN.F"/>
+		<File RelativePath="CAMLIB_FF0TKNK.F"/>
+		<File RelativePath="CAMLIB_FF9DBL.F"/>
+		<File RelativePath="CAMLIB_FFGETCMT.F"/>
+		<File RelativePath="CAMLIB_FFGETLIN.F"/>
+		<File RelativePath="CAMLIB_FFKEYPRM.F"/>
+		<File RelativePath="CAMLIB_FFPAREQN.F"/>
+		<File RelativePath="CAMLIB_FFPARSE.F"/>
+		<File RelativePath="CAMLIB_FFRDFLDS.F"/>
+		<File RelativePath="CAMLIB_FFRDKEYS.F"/>
+		<File RelativePath="CAMLIB_FFRDLINE.F"/>
+		<File RelativePath="CAMLIB_FILCMDLIN.F"/>
+		<File RelativePath="CAMLIB_FILDFNAM.F"/>
+		<File RelativePath="CAMLIB_FILECHO.F"/>
+		<File RelativePath="CAMLIB_FILECHO2.F"/>
+		<File RelativePath="CAMLIB_FILGTNAMS.F"/>
+		<File RelativePath="CAMLIB_FILOPEN.F"/>
+		<File RelativePath="CAMLIB_FILPARSE.F"/>
+		<File RelativePath="CAMLIB_FILRDNAMS.F"/>
+		<File RelativePath="CAMLIB_FILWRCMD.F"/>
+		<File RelativePath="CAMLIB_FILWRNAMS.F"/>
+		<File RelativePath="CAMLIB_IQAERRUNI.F"/>
+		<File RelativePath="CAMLIB_ISTRFIND.F"/>
+		<File RelativePath="CAMLIB_ISTRLEN.F"/>
+		<File RelativePath="CAMLIB_QA0INIT.F"/>
+		<File RelativePath="CAMLIB_QAABORT.F"/>
+		<File RelativePath="CAMLIB_QABANNER.F"/>
+		<File RelativePath="CAMLIB_QABATCH.F"/>
+		<File RelativePath="CAMLIB_QABIGLET.F"/>
+		<File RelativePath="CAMLIB_QACANCEL.F"/>
+		<File RelativePath="CAMLIB_QACPUS.F"/>
+		<File RelativePath="CAMLIB_QADOEDIS.F"/>
+		<File RelativePath="CAMLIB_QAFETCH.F"/>
+		<File RelativePath="CAMLIB_QAHELP.F"/>
+		<File RelativePath="CAMLIB_QAMAXERR.F"/>
+		<File RelativePath="CAMLIB_QAMEMERR.F"/>
+		<File RelativePath="CAMLIB_QAMESSAG.F"/>
+		<File RelativePath="CAMLIB_QAPAGE.F"/>
+		<File RelativePath="CAMLIB_QAPRTSTR.F"/>
+		<File RelativePath="CAMLIB_QASETUP.F"/>
+		<File RelativePath="CAMLIB_STRCMPRS.F"/>
+		<File RelativePath="CAMLIB_STRLIMIT.F"/>
+		<File RelativePath="CAMLIB_STRPACK.F"/>
+		<File RelativePath="CAMLIB_STRUPCASE.F"/>
+		<File RelativePath="main_stepwise.for"/>
+		<File RelativePath="stp___default_lib.for"/>
+		<File RelativePath="stp___ff_rtns.for"/>
+		<File RelativePath="stp___ffmisc_rtns.for"/>
+		<File RelativePath="stp___ffxvar.for"/>
+		<File RelativePath="stp___ranker.for"/>
+		<File RelativePath="stp___trn_lib.for"/>
+		<File RelativePath="stp_algama.for"/>
+		<File RelativePath="stp_calcconfintv.for"/>
+		<File RelativePath="stp_calcor.for"/>
+		<File RelativePath="stp_calcpress.for"/>
+		<File RelativePath="stp_calcwtvar.for"/>
+		<File RelativePath="stp_chkeqnsyn.for"/>
+		<File RelativePath="stp_chkunilab.for"/>
+		<File RelativePath="stp_ckinvsym.for"/>
+		<File RelativePath="stp_dbl2sng.for"/>
+		<File RelativePath="stp_dcdft.for"/>
+		<File RelativePath="stp_delvar.for"/>
+		<File RelativePath="stp_dumpvar.for"/>
+		<File RelativePath="stp_fsub.for"/>
+		<File RelativePath="stp_invertsym.for"/>
+		<File RelativePath="stp_listplot.for"/>
+		<File RelativePath="stp_loceqnvar.for"/>
+		<File RelativePath="stp_plot.for"/>
+		<File RelativePath="stp_postfixeqn.for"/>
+		<File RelativePath="stp_prtsymmat.for"/>
+		<File RelativePath="stp_rankalldata.for"/>
+		<File RelativePath="stp_rddatval.for"/>
+		<File RelativePath="stp_readuserinput.for"/>
+		<File RelativePath="stp_regranal.for"/>
+		<File RelativePath="stp_regrvar.for"/>
+		<File RelativePath="stp_rnksrt.for"/>
+		<File RelativePath="stp_scatter.for"/>
+		<File RelativePath="stp_sng2dbl.for"/>
+		<File RelativePath="stp_std01.for"/>
+		<File RelativePath="stp_stepadd.for"/>
+		<File RelativePath="stp_stepdel.for"/>
+		<File RelativePath="stp_stepforce.for"/>
+		<File RelativePath="stp_stepinit.for"/>
+		<File RelativePath="stp_steppick.for"/>
+		<File RelativePath="stp_stepstep.for"/>
+		<File RelativePath="stp_tinv.for"/>
+		<File RelativePath="stp_transform.for"/>
+		<File RelativePath="SUPLIB_EXABORT.F"/>
+		<File RelativePath="SUPLIB_EXCANCEL.F"/>
+		<File RelativePath="SUPLIB_EXCMDLIN.F"/>
+		<File RelativePath="SUPLIB_EXCPUS.F"/>
+		<File RelativePath="SUPLIB_EXDATE.F"/>
+		<File RelativePath="SUPLIB_EXEXEINFO.F"/>
+		<File RelativePath="SUPLIB_EXFILDAT.F"/>
+		<File RelativePath="SUPLIB_EXFILFLD.F"/>
+		<File RelativePath="SUPLIB_EXFOPEN.F"/>
+		<File RelativePath="SUPLIB_EXHELP.F"/>
+		<File RelativePath="SUPLIB_EXLOGICAL.F"/>
+		<File RelativePath="SUPLIB_EXMEMY.F"/>
+		<File RelativePath="SUPLIB_EXOVERWR.F"/>
+		<File RelativePath="SUPLIB_EXPARM.F"/>
+		<File RelativePath="SUPLIB_EXREAD.F"/>
+		<File RelativePath="SUPLIB_EXSPAWN.F"/>
+		<File RelativePath="SUPLIB_EXSYMBOL.F"/>
+		<File RelativePath="SUPLIB_EXTIME.F"/>
+		<File RelativePath="SUPLIB_IXLCHR.F"/>
+		<File RelativePath="SUPLIB_IXLNUM.F"/>
+		<File RelativePath="SUPLIB_MDINIT.F"/>
+		<File RelativePath="SUPLIB_XMCCOMP.F"/>
+		<File RelativePath="SUPLIB_XMCDEL.F"/>
+		<File RelativePath="SUPLIB_XMCFIND.F"/>
+		<File RelativePath="SUPLIB_XMCGET.F"/>
+		<File RelativePath="SUPLIB_XMCLONG.F"/>
+		<File RelativePath="SUPLIB_XMCMEMY.F"/>
+		<File RelativePath="SUPLIB_XMCNSRT.F"/>
+		<File RelativePath="SUPLIB_XMCPRNT.F"/>
+		<File RelativePath="SUPLIB_XMCRSRV.F"/>
+		<File RelativePath="SUPLIB_XMDCOMP.F"/>
+		<File RelativePath="SUPLIB_XMDDEL.F"/>
+		<File RelativePath="SUPLIB_XMDEROR.F"/>
+		<File RelativePath="SUPLIB_XMDEXEC.F"/>
+		<File RelativePath="SUPLIB_XMDFIND.F"/>
+		<File RelativePath="SUPLIB_XMDGET.F"/>
+		<File RelativePath="SUPLIB_XMDGIVE.F"/>
+		<File RelativePath="SUPLIB_XMDLIST.F"/>
+		<File RelativePath="SUPLIB_XMDLONG.F"/>
+		<File RelativePath="SUPLIB_XMDLOOK.F"/>
+		<File RelativePath="SUPLIB_XMDNSRT.F"/>
+		<File RelativePath="SUPLIB_XMDPRNT.F"/>
+		<File RelativePath="SUPLIB_XMDRSRV.F"/>
+		<File RelativePath="SUPLIB_XMSHFTC.F"/>
+		<File RelativePath="SUPLIB_XMSHFTI.F"/>
+		<File RelativePath="SUPLIB_XMSRCHC.F"/>
+		<File RelativePath="SUPLIB_XMSRCHI.F"/>
+		<File RelativePath="SUPLIB_XMVTABLE.F"/>
+		<File RelativePath="SUPLIB_XXUPPER.F"/></Filter></Files>
+	<Globals/></VisualStudioProject>
