@@ -26,14 +26,27 @@
  <body>
        <p style="font-family:Segoe UI,sans-serif;font-size:20pt;text-align:center;color:#0072C6;">System Advisor Model (SAM) Release Notes</p>
 
+<h1>Version 2017.1.17 Revision 3 SSC Version 173: April 21, 2017</h1>
+<p>This is a maintenance update that fixes the following issues in SAM 2017.1.17 Revision 2:
+</p>
+<ul>
+<li>Residential and Commercial models: Updated API call to OpenEI Utility Rate Database to match changes in the database made after last SAM release that prevented SAM from displaying electricity rates correctly.
+<li>Detailed PV battery: Fixed reporting of grid power results for DC-connected battery.
+<li>Fixed a problem displaying Help topics from the Results page.
+<li>Solar resource data: Removed trailing zeros from latitude and longitude values in two TMY3 weather files (Blanding, UT and Bryce Canyon, UT) that caused erroneous reporting of DNI exceeding maximum limits.
+</ul>
+
 <h1>Version 2017.1.17 Revision 2 SSC Version 172: March 30, 2017</h1>
 <p> This is a maintenance update that fixes the following issues in SAM 2017.1.17 Revision 1:
 </p>
 <ul>
-<li>Detailed PV: Fixed issue with loss diagram in SAM 2017.1.17 r1 that caused diagram to fail for the detailed PV model with either no financial model or the LCOE calculator financial mode.
-<li>PV battery: Fixed an issue with the grid power target automated optimization mode, and add outputs for that mode.
-<li>PV battery: Fixed minor problems with initialization of the look-behind peak-shaving automated optimization mode.
 <li>Wind: Made minor updates to cost calculations in offshore balance-of-system cost model.
+<li>Detailed PV: Fixed issue with loss diagram in SAM 2017.1.17 r1 that caused diagram to fail for the detailed PV model with either no financial model or the LCOE calculator financial mode.
+<li>Detailed PV battery: 
+<ul>
+<li>Fixed an issue with the grid power target automated optimization mode, and add outputs for that mode.
+<li>Detailed PV battery: Fixed minor problems with initialization of the look-behind peak-shaving automated optimization mode.
+</ul>
 <li>CSP Rankine power cycle: Fixed an issue with startup energy calculation that caused thermal startup energy to be too high under some conditions.
 <li>CSP power tower: Changed dispatch optimization input for maximum limit to use 1e+38 as the maximum value instead of the string "inf" that caused an error.
 <li>Help revisions.
@@ -44,30 +57,42 @@
 <p> This is a maintenance update that fixes the following issues in SAM 2017.1.17:
 </p>
 <ul>
-<li>Wind: Disabled wake model input for Weibull resource option, and enabled "Specify desired farm and layout" for Weibull option when wake model is not active.
-<li>Wind: Added new turbines to wind turbine library.
-<li>Solar resource library: Fixed a typo in Abingdon VA TMY3 weather file (was Abington)
+<li>Wind:
+<ul>
+<li>Disabled wake model input for Weibull resource option, and enabled "Specify desired farm and layout" for Weibull option when wake model is not active.
+<li>Added new turbines to wind turbine library.
+</ul>
+<li>Solar resource library:
+<ul>
+<li>Fixed a typo in Abingdon VA TMY3 weather file (was Abington)
 <li>Solar resource library: Added files for new India locations.
-<li>Detailed PV: Updated CEC inverter library.
+</ul>
+<li>Detailed PV:
+<ul>
+<li> Updated CEC inverter library.
 <li>Detailed PV: Improved calculations for display of I-V curve on Module input page.
 <li>Detailed PV: Added lifetime AC/DC losses to loss auto-graph, and added a few items in loss diagram and loss auto-graph to show or hide depending on if the model is enabled or not.
-<li>SDK code generator: Made general improvements.
-<li>Macros: Made "Value of RE" macro available only for residential and commercial models, and revise instructions.
-<li>CSP power tower: Fixed issue that prevented field optimization from running as part of a simulation and caused an error message about the check_max_flux variable.</li>
-<li>CSP power tower: Fixed issue with TOD factors and dispatch optimization.
+<li>Detailed PV: Improved solver for PV IEC 61853 module model to minimize situations where solver would fail to calculate coefficient values.
+</ul>
+<li>Detailed PV battery:
+<ul>
+<li>Improved warnings for DC-connected batteries, and add  battery power rating on System Design input page.
+<li>Fixed Vanadium redox voltage model.
+<li>Added better predictive and iterative control for DC-connected batteries.
+<li>Fixed an issue with the PV model that caused a crash under certain conditions when battery model was disabled.
+<li>Updated calculations for battery with front-of-meter connection.
+</ul>
+<li>CSP power tower: 
+<ul>
+<li>Fixed issue that prevented field optimization from running as part of a simulation and caused an error message about the check_max_flux variable.
+<li>Fixed issue with TOD factors and dispatch optimization.
+</ul>
 <li>CSP direct steam models: Added pressurized water properties
 <li>CSP fossil backup: Fixed an issue with power cycle inlet temperature setting that caused fossil backup to fail.
-<li>Detailed PV: Improved solver for PV IEC 61853 module model to minimize situations where solver would fail to calculate coefficient values.
-<li>Detailed PV battery: Fixed several bugs and added functionality, including:
-<ul>
-<li>Detailed PV battery: Improved warnings for DC-connected batteries, and add  battery power rating on System Design input page.
-<li>Detailed PV battery: Fixed Vanadium redox voltage model.
-<li>Detailed PV battery: Added better predictive and iterative control for DC-connected batteries.
-<li>Detailed PV battery: Fixed an issue with the PV model that caused a crash under certain conditions when battery model was disabled.
-<li>Detailed PV battery: Updated calculations for battery with front-of-meter connection.
-</ul>
-<li>Residential and commercial: Fixed issue with units in reported power and energy values.
 <li>PVWatts with Third Party Ownership model: Fixed issue with lifetime simulations that prevented simulations from running.
+<li>Residential and commercial: Fixed issue with units in reported power and energy values.
+<li>SDK code generator: Made general improvements.
+<li>Macros: Made "Value of RE" macro available only for residential and commercial models, and revise instructions.
 <li>Help revisions.
 </ul>
 	   
