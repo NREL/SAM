@@ -3,10 +3,10 @@
 //PV Reliability and Performance Model Version 2.0 
 //Inputs and Control Script -- DRAFT --
 //Janine Freeman, NREL
-//1 March 2017
+//21 April 2017
 //*************************************************************************************
 
-//Import the function to simulate a single instance of a system
+//Supporting functions located in a separate file
 import 'PVRPM_Function.lk';
 
 //Specify results options
@@ -52,49 +52,9 @@ show_realization_graphs = false;
 // CASE-DEFINED INPUTS
 // System inputs are taken from the active SAM case. The user SHOULD NOT modify these inputs.
 //********************************************************************************************************************************************************************************
-
-	if (active_case() == '')
-	{
-		msgbox('Please select a SAM case.');
-		exit;
-	}
 	
-	if (num_realizations <= 1)
-	{
-		msgbox('You must specify more than one realization.');
-		exit;
-	}
-	
-	// Technology must be detailed PV model
-	cfg = configuration();
-	tech = cfg[0];
-	if (tech != 'Flat Plate PV')
-	{
-		msgbox('Error: This script is only applicable to the detailed photovoltaic model. Exiting simulation.');
-		exit;
-	}
-	
-	num_modules = get('total_modules');
-	num_modules_per_string = get('modules_per_string');
-	num_strings = get('strings_in_parallel');
-	num_inverters = get('inverter_count');
-	inverter_size = ?(get('inverter_model')) [get('inv_snl_paco'), get('inv_ds_paco'), get('inv_pd_paco')];
-	num_disconnects = num_inverters; //assume 1 AC disconnect per inverter
-	num_strings_per_combiner = floor(num_strings / num_combiners);
-	num_inverters_per_transformer = floor(num_inverters / num_transformers);
-	
-	system_lifetime_yrs = get('analysis_period');
-	has_multiple_subarrays = ( (get('subarray2_enable') == 1) || (get('subarray3_enable') == 1) || (get('subarray4_enable') == 1) );
-	is_tracking_system = false;
-	if ((get('subarray1_track_mode') == 1 || get('subarray1_track_mode') == 2 || get('subarray1_track_mode') == 3))
-		is_tracking_system = true;
-	if (get('subarray2_enable') == 1 && (get('subarray2_track_mode') == 1 || get('subarray2_track_mode') == 2 || get('subarray2_track_mode') == 3))
-		is_tracking_system = true;
-	if (get('subarray3_enable') == 1 && (get('subarray3_track_mode') == 1 || get('subarray3_track_mode') == 2 || get('subarray3_track_mode') == 3))
-		is_tracking_system = true;
-	if (get('subarray4_enable') == 1 && (get('subarray4_track_mode') == 1 || get('subarray4_track_mode') == 2 || get('subarray4_track_mode') == 3))
-		is_tracking_system = true;
-		
+	//run pre-checks on the case and system configuration to make sure that it will run appropriately
+	check_case();
 		
 //********************************************************************************************************************************************************************************
 // USER-DEFINED COMPONENT META DATA
@@ -103,111 +63,120 @@ show_realization_graphs = false;
 //----Component meta information-------------------------------------------------------------------------------
 	// The structure of a component meta container is as follows
 	/*
-	name = a string containing the name of the component type, used for error reporting
-	number = number of that type of component in the system
-	can_fail = true if component is allowed to fail
-	can_repair = true if component is allowed to be repaired after failing
-	warranty
-		has_warranty = true if the component has a warranty, otherwise false
-		days = number of days that the warranty is for (e.g. a 20 year warranty would be 20 * 365 days)
-	failure[i]
-		distribution = distribution type of failure mode i
-		parameters = a table of parameters for failure mode i (e.g. [45, 15] )
-		times = a vector of failure times for failure mode i
-		labor_time = number of hours of labor it takes to repair this type of failure
-		cost = parts cost to repair this type of failure
-		***OPTIONAL PARAMETER
-		***fraction = If fraction is defined, then failure mode i is a defective failure mode, and "fraction" represents the fraction of this type of component that are defective
-	repair[i]
-		distribution = distribution type of repair times
-		parameters = parameters of the repair distribution
-		times = a vector of repair times
-		**NOTE: If there is only ONE repair distribution (repair[0]), then ALL failure modes will use that distribution! Otherwise, # repair modes must equal # failure modes.
-	degradation (MODULES ONLY)
-		can_degrade = true if the component has degradation
-		rate = degradation rate (%/year)
+	module
+	string
+	combiner
+	inverter
+	disconnect
+	transformer
+	grid
+		name = a string containing the name of the component type, used for error reporting
+		number = number of that type of component in the system
+		can_fail = true if component is allowed to fail
+		can_repair = true if component is allowed to be repaired after failing
+		warranty
+			has_warranty = true if the component has a warranty, otherwise false
+			days = number of days that the warranty is for (e.g. a 20 year warranty would be 20 * 365 days)
+		failure[i]
+			distribution = distribution type of failure mode i
+			parameters = a table of parameters for failure mode i (e.g. [45, 15] )
+			times = a vector of failure times for failure mode i
+			labor_time = number of hours of labor it takes to repair this type of failure
+			cost = parts cost to repair this type of failure
+			***OPTIONAL PARAMETER
+			***fraction = If fraction is defined, then failure mode i is a defective failure mode, and "fraction" represents the fraction of this type of component that are defective
+		repair[i]
+			distribution = distribution type of repair times
+			parameters = parameters of the repair distribution
+			times = a vector of repair times
+			**NOTE: If there is only ONE repair distribution (repair[0]), then ALL failure modes will use that distribution! Otherwise, # repair modes must equal # failure modes.
+		degradation (MODULES ONLY)
+			can_degrade = true if the component has degradation
+			rate = degradation rate (%/year)
 	*/
 
+global meta = null; 
+
 //----Modules--------------------------------------------------------------------------------------------------
-	global module_meta = null;
-	module_meta.name = 'module';	
-	module_meta.can_fail = true;
-	module_meta.can_repair = false;
-	module_meta.number = num_modules;
-	module_meta.warranty.has_warranty = true;
-	module_meta.warranty.days = 20 * 365; //years converted to days
+	//global meta.module = null;
+	meta.module.name = 'module';	
+	meta.module.can_fail = true;
+	meta.module.can_repair = false;
+	meta.module.number = num_modules;
+	meta.module.warranty.has_warranty = true;
+	meta.module.warranty.days = 20 * 365; //years converted to days
 	//failure mode 1: normal failures
-	module_meta.failure[0].distribution = 'normal';
-	module_meta.failure[0].parameters = [4 * 365, 1 * 365]; //mean, std, years converted to days
-	module_meta.failure[0].times = null;
-	module_meta.failure[0].labor_time = 2; //hours
-	module_meta.failure[0].cost = 322; //$
+	meta.module.failure[0].distribution = 'normal';
+	meta.module.failure[0].parameters = [4 * 365, 1 * 365]; //mean, std, years converted to days
+	meta.module.failure[0].times = null;
+	meta.module.failure[0].labor_time = 2; //hours
+	meta.module.failure[0].cost = 322; //$
 	//failure mode 2: defective failures
-	module_meta.failure[1].distribution = 'exponential';
-	module_meta.failure[1].parameters = [0.5 / 365]; //failures per year converted to days
-	module_meta.failure[1].times = null;
-	module_meta.failure[1].labor_time = 2; //hours
-	module_meta.failure[1].cost = 322; //$
-	module_meta.failure[1].fraction = 20 / 100; //% converted to fraction
+	meta.module.failure[1].distribution = 'exponential';
+	meta.module.failure[1].parameters = [0.5 / 365]; //failures per year converted to days
+	meta.module.failure[1].times = null;
+	meta.module.failure[1].labor_time = 2; //hours
+	meta.module.failure[1].cost = 322; //$
+	meta.module.failure[1].fraction = 20 / 100; //% converted to fraction
 	//repair mode: only one repair mode for both failure types
-	module_meta.repair[0].distribution = 'lognormal';
-	module_meta.repair[0].parameters =  [60, 20]; //mean, std, in days
-	module_meta.repair[0].times = null;
-	module_meta.degradation.can_degrade = false;
-	module_meta.degradation.rate = 20; //%/year
+	meta.module.repair[0].distribution = 'lognormal';
+	meta.module.repair[0].parameters =  [60, 20]; //mean, std, in days
+	meta.module.repair[0].times = null;
+	meta.module.degradation.can_degrade = false;
+	meta.module.degradation.rate = 20; //%/year
 	
 //----Strings--------------------------------------------------------------------------------------------------
-	global string_meta = null;
-	string_meta.name = 'string';
-	string_meta.can_fail = true;
-	string_meta.can_repair = true;
-	string_meta.number = num_strings;
-	string_meta.warranty.has_warranty = false;
-	string_meta.failure[0].distribution = 'exponential';
-	string_meta.failure[0].parameters = [(2 / 365)]; //failures per year converted to per day
-	string_meta.failure[0].times = null;
-	string_meta.failure[0].labor_time = 1; //hours
-	string_meta.failure[0].cost = 20; //$
-	string_meta.repair[0].distribution = 'lognormal';
-	string_meta.repair[0].parameters = [7, 3]; //mean, std, days
-	string_meta.repair[0].times = null;
-	string_meta.degradation.can_degrade = false;
+	//global meta.string = null;
+	meta.string.name = 'string';
+	meta.string.can_fail = true;
+	meta.string.can_repair = true;
+	meta.string.number = num_strings;
+	meta.string.warranty.has_warranty = false;
+	meta.string.failure[0].distribution = 'exponential';
+	meta.string.failure[0].parameters = [(2 / 365)]; //failures per year converted to per day
+	meta.string.failure[0].times = null;
+	meta.string.failure[0].labor_time = 1; //hours
+	meta.string.failure[0].cost = 20; //$
+	meta.string.repair[0].distribution = 'lognormal';
+	meta.string.repair[0].parameters = [7, 3]; //mean, std, days
+	meta.string.repair[0].times = null;
+	meta.string.degradation.can_degrade = false;
 	
 //----Combiners------------------------------------------------------------------------------------------------
-	global combiner_meta = null;
-	combiner_meta.name = 'combiner';
-	combiner_meta.can_fail = true;
-	combiner_meta.can_repair = true;
-	combiner_meta.number = num_combiners;
-	combiner_meta.warranty.has_warranty = false;
-	combiner_meta.failure[0].distribution = 'normal';
-	combiner_meta.failure[0].parameters = [2 * 365, 0.5 * 365]; //mean, std, years converted to days
-	combiner_meta.failure[0].times = null;
-	combiner_meta.failure[0].labor_time = 2; //hours
-	combiner_meta.failure[0].cost = 976; //$
-	combiner_meta.repair[0].distribution = 'exponential';
-	combiner_meta.repair[0].parameters = [3]; //mean, days
-	combiner_meta.repair[0].times = null;
-	combiner_meta.degradation.can_degrade = false;
+	//global meta.combiner = null;
+	meta.combiner.name = 'combiner';
+	meta.combiner.can_fail = true;
+	meta.combiner.can_repair = true;
+	meta.combiner.number = num_combiners;
+	meta.combiner.warranty.has_warranty = false;
+	meta.combiner.failure[0].distribution = 'normal';
+	meta.combiner.failure[0].parameters = [2 * 365, 0.5 * 365]; //mean, std, years converted to days
+	meta.combiner.failure[0].times = null;
+	meta.combiner.failure[0].labor_time = 2; //hours
+	meta.combiner.failure[0].cost = 976; //$
+	meta.combiner.repair[0].distribution = 'exponential';
+	meta.combiner.repair[0].parameters = [3]; //mean, days
+	meta.combiner.repair[0].times = null;
+	meta.combiner.degradation.can_degrade = false;
 	
 //----Inverters------------------------------------------------------------------------------------------------
-	global inverter_meta = null;
-	inverter_meta.name = 'inverter';
-	inverter_meta.can_fail = true;
-	inverter_meta.can_repair = true;
-	inverter_meta.number = num_inverters;
-	inverter_meta.warranty.has_warranty = false; 
+	//global meta.inverter = null;
+	meta.inverter.name = 'inverter';
+	meta.inverter.can_fail = true;
+	meta.inverter.can_repair = true;
+	meta.inverter.number = num_inverters;
+	meta.inverter.warranty.has_warranty = false; 
 	//failure mode 1: component failure
-	inverter_meta.failure[0].distribution = 'exponential';
-	inverter_meta.failure[0].parameters = [1 / 365]; //failures per year converted to per day
-	inverter_meta.failure[0].times = null;
-	inverter_meta.failure[0].labor_time = 0;
-	inverter_meta.failure[0].cost = 0.2 * 0.35 * inverter_size; //0.2 times catastrophic cost, which is 35 cents/Watt
+	meta.inverter.failure[0].distribution = 'exponential';
+	meta.inverter.failure[0].parameters = [1 / 365]; //failures per year converted to per day
+	meta.inverter.failure[0].times = null;
+	meta.inverter.failure[0].labor_time = 0;
+	meta.inverter.failure[0].cost = 0.2 * 0.35 * inverter_size; //0.2 times catastrophic cost, which is 35 cents/Watt
 	//failure mode 2: routine failures
-	inverter_meta.failure[1].distribution = 'exponential';
-	inverter_meta.failure[1].parameters = [1 / 365]; //failures per year converted to per day
-	inverter_meta.failure[1].times = null;
-	inverter_meta.failure[1].labor_time = 0;
+	meta.inverter.failure[1].distribution = 'exponential';
+	meta.inverter.failure[1].parameters = [1 / 365]; //failures per year converted to per day
+	meta.inverter.failure[1].times = null;
+	meta.inverter.failure[1].labor_time = 0;
 	inverter_routine_cost = 0;
 	if (inverter_size <= 10000)
 		inverter_routine_cost = 200;
@@ -215,98 +184,98 @@ show_realization_graphs = false;
 		inverter_routine_cost = 500;
 	else
 		inverter_routine_cost = 1000;
-	inverter_meta.failure[1].cost = inverter_routine_cost;
+	meta.inverter.failure[1].cost = inverter_routine_cost;
 	//failure mode 3: catastrophic failure
-	inverter_meta.failure[2].distribution = 'normal';
-	inverter_meta.failure[2].parameters = [500, 365.25]; //mean, std, in days
-	inverter_meta.failure[2].times = null;
-	inverter_meta.failure[2].labor_time = 0;
-	inverter_meta.failure[2].cost = 0.35 * get('inv_snl_paco'); //35 cents per watt
+	meta.inverter.failure[2].distribution = 'normal';
+	meta.inverter.failure[2].parameters = [500, 365.25]; //mean, std, in days
+	meta.inverter.failure[2].times = null;
+	meta.inverter.failure[2].labor_time = 0;
+	meta.inverter.failure[2].cost = 0.35 * get('inv_snl_paco'); //35 cents per watt
 	//repair mode 1: component failure
-	inverter_meta.repair[0].distribution = 'lognormal';
-	inverter_meta.repair[0].parameters = [3, 1.5]; //mean, std, in days
-	inverter_meta.repair[0].times = null;
+	meta.inverter.repair[0].distribution = 'lognormal';
+	meta.inverter.repair[0].parameters = [3, 1.5]; //mean, std, in days
+	meta.inverter.repair[0].times = null;
 	//repair mode 2: routine failure
-	inverter_meta.repair[1].distribution = 'exponential';
-	inverter_meta.repair[1].parameters = [0.5]; //days
-	inverter_meta.repair[1].times = null;
+	meta.inverter.repair[1].distribution = 'exponential';
+	meta.inverter.repair[1].parameters = [0.5]; //days
+	meta.inverter.repair[1].times = null;
 	//repair mode 3: catastrophic failure
-	inverter_meta.repair[2].distribution = 'lognormal';
-	inverter_meta.repair[2].parameters = [3, 1.5]; //mean, std, in days
-	inverter_meta.repair[2].times = null;
+	meta.inverter.repair[2].distribution = 'lognormal';
+	meta.inverter.repair[2].parameters = [3, 1.5]; //mean, std, in days
+	meta.inverter.repair[2].times = null;
 	//degradation
-	inverter_meta.degradation.can_degrade = false;
+	meta.inverter.degradation.can_degrade = false;
 	
 //----AC Disconnects-------------------------------------------------------------------------------------------
-	global disconnect_meta = null;
-	disconnect_meta.name = 'disconnect';
-	disconnect_meta.can_fail = true;
-	disconnect_meta.can_repair = true;
-	disconnect_meta.number = num_disconnects;
-	disconnect_meta.warranty.has_warranty = false;
-	disconnect_meta.failure[0].distribution = 'weibull';
-	disconnect_meta.failure[0].parameters = [0.3477, 3 * 365]; //slope (same as shape factor)- unitless, mean- years converted to days
-	disconnect_meta.failure[0].times = null;
-	disconnect_meta.failure[0].labor_time = 4; //hours
-	disconnect_meta.failure[0].cost = 500; //$
-	disconnect_meta.repair[0].distribution = 'lognormal';
-	disconnect_meta.repair[0].parameters = [1, 0.5]; //mean, std, in years converted to days
-	disconnect_meta.repair[0].times = null;
-	disconnect_meta.degradation.can_degrade = false;
+	//global meta.disconnect = null;
+	meta.disconnect.name = 'disconnect';
+	meta.disconnect.can_fail = true;
+	meta.disconnect.can_repair = true;
+	meta.disconnect.number = num_disconnects;
+	meta.disconnect.warranty.has_warranty = false;
+	meta.disconnect.failure[0].distribution = 'weibull';
+	meta.disconnect.failure[0].parameters = [0.3477, 3 * 365]; //slope (same as shape factor)- unitless, mean- years converted to days
+	meta.disconnect.failure[0].times = null;
+	meta.disconnect.failure[0].labor_time = 4; //hours
+	meta.disconnect.failure[0].cost = 500; //$
+	meta.disconnect.repair[0].distribution = 'lognormal';
+	meta.disconnect.repair[0].parameters = [1, 0.5]; //mean, std, in years converted to days
+	meta.disconnect.repair[0].times = null;
+	meta.disconnect.degradation.can_degrade = false;
 	
 //----Transformers---------------------------------------------------------------------------------------------
-	global transformer_meta = null;
-	transformer_meta.name = 'transformer';
-	transformer_meta.can_fail = true;
-	transformer_meta.can_repair = true;
-	transformer_meta.number = num_transformers;
-	transformer_meta.warranty.has_warranty = false;
-	transformer_meta.failure[0].distribution = 'weibull';
-	transformer_meta.failure[0].parameters = [0.3477, 1 * 365]; //slope (shape factor)- unitless, mean- days
-	transformer_meta.failure[0].times = null;
-	transformer_meta.failure[0].labor_time = 10; //hours
-	transformer_meta.failure[0].cost = 32868; //$
-	transformer_meta.repair[0].distribution = 'lognormal';
-	transformer_meta.repair[0].parameters = [0.25, 0.5]; //mean, std, in days
-	transformer_meta.repair[0].times = null;
-	transformer_meta.degradation.can_degrade = false;
+	//global meta.transformer = null;
+	meta.transformer.name = 'transformer';
+	meta.transformer.can_fail = true;
+	meta.transformer.can_repair = true;
+	meta.transformer.number = num_transformers;
+	meta.transformer.warranty.has_warranty = false;
+	meta.transformer.failure[0].distribution = 'weibull';
+	meta.transformer.failure[0].parameters = [0.3477, 1 * 365]; //slope (shape factor)- unitless, mean- days
+	meta.transformer.failure[0].times = null;
+	meta.transformer.failure[0].labor_time = 10; //hours
+	meta.transformer.failure[0].cost = 32868; //$
+	meta.transformer.repair[0].distribution = 'lognormal';
+	meta.transformer.repair[0].parameters = [0.25, 0.5]; //mean, std, in days
+	meta.transformer.repair[0].times = null;
+	meta.transformer.degradation.can_degrade = false;
 	
 //----Grid-----------------------------------------------------------------------------------------------------
-	global grid_meta = null;
-	grid_meta.name = 'grid';
-	grid_meta.can_fail = true;
-	grid_meta.can_repair = true;
-	grid_meta.number = 1;
-	grid_meta.warranty.has_warranty = false;
-	grid_meta.failure[0].distribution = 'weibull';
-	grid_meta.failure[0].parameters = [0.75, 100]; //slope (shape factor)- unitless, mean- days
-	grid_meta.failure[0].times = null;
-	grid_meta.failure[0].labor_time = 0;
-	grid_meta.failure[0].cost = 0;
-	grid_meta.repair[0].distribution = 'exponential';
-	grid_meta.repair[0].parameters = [0.5]; //mean in days
-	grid_meta.repair[0].times = null;
-	grid_meta.degradation.can_degrade = false;
+	//global meta.grid = null;
+	meta.grid.name = 'grid';
+	meta.grid.can_fail = true;
+	meta.grid.can_repair = true;
+	meta.grid.number = 1;
+	meta.grid.warranty.has_warranty = false;
+	meta.grid.failure[0].distribution = 'weibull';
+	meta.grid.failure[0].parameters = [0.75, 100]; //slope (shape factor)- unitless, mean- days
+	meta.grid.failure[0].times = null;
+	meta.grid.failure[0].labor_time = 0;
+	meta.grid.failure[0].cost = 0;
+	meta.grid.repair[0].distribution = 'exponential';
+	meta.grid.repair[0].parameters = [0.5]; //mean in days
+	meta.grid.repair[0].times = null;
+	meta.grid.degradation.can_degrade = false;
 	
 //----Trackers-------------------------------------------------------------------------------------------------
 	// Only required for tracking systems, otherwise can be deleted or commented out
-	
-	global trackers = alloc(num_trackers);
-	global tracker_meta = null;
-	tracker_meta.name = 'tracker';
-	tracker_meta.can_fail = true;
-	tracker_meta.can_repair = true;
-	tracker_meta.number = num_trackers;
-	tracker_meta.warranty.has_warranty = false;
-	tracker_meta.failure[0].distribution = 'exponential';
-	tracker_meta.failure[0].parameters = [0.002]; //mean per year in days
-	tracker_meta.failure[0].times = null;
-	tracker_meta.failure[0].labor_time = 0;
-	tracker_meta.failure[0].cost = 2000; //present day tracker cost, will be inflated
-	tracker_meta.repair[0].distribution = 'lognormal';
-	tracker_meta.repair[0].parameters = [30, 10]; //mean, std, in days
-	tracker_meta.repair[0].times = null;
-	tracker_meta.degradation.can_degrade = false;
+	/*
+	//global trackers = alloc(num_trackers);
+	global meta.tracker = null;
+	meta.tracker.name = 'tracker';
+	meta.tracker.can_fail = true;
+	meta.tracker.can_repair = true;
+	meta.tracker.number = num_trackers;
+	meta.tracker.warranty.has_warranty = false;
+	meta.tracker.failure[0].distribution = 'exponential';
+	meta.tracker.failure[0].parameters = [0.002]; //mean per year in days
+	meta.tracker.failure[0].times = null;
+	meta.tracker.failure[0].labor_time = 0;
+	meta.tracker.failure[0].cost = 2000; //present day tracker cost, will be inflated
+	meta.tracker.repair[0].distribution = 'lognormal';
+	meta.tracker.repair[0].parameters = [30, 10]; //mean, std, in days
+	meta.tracker.repair[0].times = null;
+	meta.tracker.degradation.can_degrade = false;*/
 	
 
 
@@ -316,8 +285,8 @@ show_realization_graphs = false;
 //********************************************************************************************************************************************************************************
 
 	// At least one thing must be set up to fail
-	if (!module_meta.can_fail && !string_meta.can_fail && !combiner_meta.can_fail && !inverter_meta.can_fail && !disconnect_meta.can_fail && !transformer_meta.can_fail && !grid_meta.can_fail)
-	if ((is_tracking_system && !tracker_meta.can_fail) || !is_tracking_system)
+	if (!meta.module.can_fail && !meta.string.can_fail && !meta.combiner.can_fail && !meta.inverter.can_fail && !meta.disconnect.can_fail && !meta.transformer.can_fail && !meta.grid.can_fail) //CHANGE THIS TO LOOP THROUGH META
+	if ((is_tracking_system && !meta.tracker.can_fail) || !is_tracking_system)
 	{
 		msgbox('Error: you must enable at least one component to fail.');
 		exit;
@@ -385,7 +354,7 @@ show_realization_graphs = false;
 		}
 	}*/
 	// Multiple subarrays can't have tracker failures
-	if (has_multiple_subarrays && is_tracking_system && tracker_meta.can_fail)
+	if (has_multiple_subarrays && is_tracking_system && meta.tracker.can_fail)
 	{
 		msgbox('Error: Tracker failures may only be modeled for a system consisting of a single subarray. Exiting simulation.');
 		exit;
@@ -413,91 +382,94 @@ show_realization_graphs = false;
 //********************************************************************************************************************************************************************************
 // PRE-CALCULATE THE TRACKER LOSSES FOR A TRACKING SYSTEM WHERE FAILURES ARE ENABLED, SINCE THIS WILL BE CONSTANT BETWEEN SIMULATIONS
 //********************************************************************************************************************************************************************************
-daily_tracker_coeffs = alloc(365);
-if (is_tracking_system && tracker_meta.can_fail)
+if (is_tracking_system)
 {
-	
-	if (get('subarray1_tilt') != 0)
+	daily_tracker_coeffs = alloc(365);
+	if (meta.tracker.can_fail)
 	{
-		msgbox('This script can only model tracker failures for 0 degree tilt trackers. Exiting simulation.');
-		exit;
-	}
-	
-	// calculate hourly performance with tracker for one year
-	user_analysis_period = get('analysis_period');
-	set('analysis_period', 1);
-	set('en_ac_lifetime_losses', 0);
-	set('en_dc_lifetime_losses', 0);
-	if (!simulate('', 0))
-	{
-		msgbox('Error simulating first-year tracker performance');
-		set('analysis_period', user_analysis_period);
-		exit;
-	}
-	timeseries_with_tracker = get('dc_net');
-	
-	// calculate hourly performance without trackers for one year
-	user_tracking_mode = get('subarray1_track_mode');
-	user_azimuth = get('subarray1_azimuth');
-	user_tilt = get('subarray1_tilt');
-	set('subarray1_track_mode', 0); //set to fixed tilt
-	if (user_azimuth > 360 || user_azimuth < 0)
-	{
-		msgbox('Azimuth must be between 0 and 360. Please adjust the azimuth and try again.');
-		exit;
-	}
-	//assume worst case tracker gets stuck to north. If axis is north-south, assume gets stuck to west.
-	if (use_worst_case_tracker)
-	{
-		worst_case_az = user_azimuth;
-		if (user_azimuth < 180)
-			worst_case_az -= 90;
+		
+		if (get('subarray1_tilt') != 0)
+		{
+			msgbox('This script can only model tracker failures for 0 degree tilt trackers. Exiting simulation.');
+			exit;
+		}
+		
+		// calculate hourly performance with tracker for one year
+		user_analysis_period = get('analysis_period');
+		set('analysis_period', 1);
+		set('en_ac_lifetime_losses', 0);
+		set('en_dc_lifetime_losses', 0);
+		if (!simulate('', 0))
+		{
+			msgbox('Error simulating first-year tracker performance');
+			set('analysis_period', user_analysis_period);
+			exit;
+		}
+		timeseries_with_tracker = get('dc_net');
+		
+		// calculate hourly performance without trackers for one year
+		user_tracking_mode = get('subarray1_track_mode');
+		user_azimuth = get('subarray1_azimuth');
+		user_tilt = get('subarray1_tilt');
+		set('subarray1_track_mode', 0); //set to fixed tilt
+		if (user_azimuth > 360 || user_azimuth < 0)
+		{
+			msgbox('Azimuth must be between 0 and 360. Please adjust the azimuth and try again.');
+			exit;
+		}
+		//assume worst case tracker gets stuck to north. If axis is north-south, assume gets stuck to west.
+		if (use_worst_case_tracker)
+		{
+			worst_case_az = user_azimuth;
+			if (user_azimuth < 180)
+				worst_case_az -= 90;
+			else
+				worst_case_az += 90;
+			if (worst_case_az < 0)
+				worst_case_az += 360;
+			if (worst_case_az >= 360)
+				worst_case_az -=360;
+			set('subarray1_azimuth', worst_case_az);
+			set('subarray1_tilt', get('subarray1_rotlim'));
+		}
+		//assume average case is that tracker gets stuck flat
 		else
-			worst_case_az += 90;
-		if (worst_case_az < 0)
-			worst_case_az += 360;
-		if (worst_case_az >= 360)
-			worst_case_az -=360;
-		set('subarray1_azimuth', worst_case_az);
-		set('subarray1_tilt', get('subarray1_rotlim'));
-	}
-	//assume average case is that tracker gets stuck flat
-	else
-		set('subarray1_tilt', 0); //doesn't matter what az is if it's flat
-	if (!simulate('', 0))
-	{
-		msgbox('Error simulating first-year tracker failure performance');
+			set('subarray1_tilt', 0); //doesn't matter what az is if it's flat
+		if (!simulate('', 0))
+		{
+			msgbox('Error simulating first-year tracker failure performance');
+			set('analysis_period', user_analysis_period);
+			set('subarray1_track_mode', user_tracking_mode); 
+			set('subarray1_azimuth', user_azimuth);
+			set('subarray1_tilt', user_tilt);
+			exit;
+		}
+		timeseries_without_tracker = get('dc_net');
+		
+		//calculate daily loss statistics
+		timestep = (#timeseries_with_tracker / 8760);
+		index = 0;
+		for (d=0; d<365; d++)
+		{
+			sum_without_tracker = 0;
+			sum_with_tracker = 0;
+			for (h=0; h<24; h++)
+				for (ts=0; ts<timestep; ts++)
+				{
+					sum_without_tracker += timeseries_without_tracker[index];
+					sum_with_tracker += timeseries_with_tracker[index];
+					index++;
+				}
+			//NOTE: On some cloudy days, daily_tracker_coeff might be positive!! See help for details.
+			daily_tracker_coeffs[d] = sum_without_tracker / sum_with_tracker;
+		}
+		
+		//reset the inputs to user specified values
 		set('analysis_period', user_analysis_period);
 		set('subarray1_track_mode', user_tracking_mode); 
 		set('subarray1_azimuth', user_azimuth);
 		set('subarray1_tilt', user_tilt);
-		exit;
 	}
-	timeseries_without_tracker = get('dc_net');
-	
-	//calculate daily loss statistics
-	timestep = (#timeseries_with_tracker / 8760);
-	index = 0;
-	for (d=0; d<365; d++)
-	{
-		sum_without_tracker = 0;
-		sum_with_tracker = 0;
-		for (h=0; h<24; h++)
-			for (ts=0; ts<timestep; ts++)
-			{
-				sum_without_tracker += timeseries_without_tracker[index];
-				sum_with_tracker += timeseries_with_tracker[index];
-				index++;
-			}
-		//NOTE: On some cloudy days, daily_tracker_coeff might be positive!! See help for details.
-		daily_tracker_coeffs[d] = sum_without_tracker / sum_with_tracker;
-	}
-	
-	//reset the inputs to user specified values
-	set('analysis_period', user_analysis_period);
-	set('subarray1_track_mode', user_tracking_mode); 
-	set('subarray1_azimuth', user_azimuth);
-	set('subarray1_tilt', user_tilt);
 }
 
 
@@ -517,6 +489,7 @@ if (!simulate())
 }
 
 //output the results that we care about from the base case simulation before we overwrite them, because we're not saving them like we do for the stochastic realizations
+global results = null;
 lifetime = get('analysis_period');
 results.realization[0] = 'Base';
 results.lcoe[0] = get('lcoe_real');
@@ -525,12 +498,30 @@ for (j=1; j<=lifetime; j++) //start at 1 because the array returns year 0, where
 	results{'annual_energy_' + j}[0] = base_annual_energy[j];
 
 
+//need the number of daylight hours for each day of the year in order to calculate availability. pull those from the base case.
+sunup = get('sunup');
+idx = 0;
+daylight_hours = alloc (365); //this does not need to be a global variable because it will only be used in non-mutable context (right side of equations)
+annual_daylight_hours = 0;
+for(d=0; d<365; d++)
+{
+	daylight_today = 0;
+	for(h=0; h<24; h++)
+	{
+		if (sunup[idx] == 1) //0 sun is down, 1 sun is up, 2 surnise, 3 sunset. For now we have decided NOT to include sunrise/sunset hours.
+		{
+			daylight_today++;
+			annual_daylight_hours++;
+		}
+		idx++;
+	}
+	daylight_hours[d] = daylight_today;
+}
+
+
 //********************************************************************************************************************************************************************************
 // RUN THE SYSTEM REALIZATIONS
 //********************************************************************************************************************************************************************************
-//global csv_dc_power = null;
-//global csv_ac_power = null;
-//global csv_degradation = null;
 for (i=1; i<=num_realizations; i++)
 {
 	raw_results[i] = run_system_realization(i, show_realization_graphs); //changing the second parameter will show or hide graphs from each iteration
@@ -544,66 +535,10 @@ progressbar(pb);
 //********************************************************************************************************************************************************************************
 // CALCULATE STATISTICS AND WRITE RESULTS
 //********************************************************************************************************************************************************************************
-num_module_failure_modes = #raw_results[1].module_failures_by_type; //use the results from the first stochastic realization to figure out how many failure modes there are
-num_inverter_failure_modes = #raw_results[1].inverter_failures_by_type;
+//num_module_failure_modes = #raw_results[1].module_failures_by_type; //use the results from the first stochastic realization to figure out how many failure modes there are
+//num_inverter_failure_modes = #raw_results[1].inverter_failures_by_type;
 
-//base case results- all failures are zero, but we need to assign them instead of having them be null
-results.total_module_failures[0] = 'N/A';
-for (j=0; j<num_module_failure_modes; j++)
-	results{'module_failures_' + j}[0] = 'N/A';
-results.total_string_failures[0] = 'N/A';
-results.total_combiner_failures[0] = 'N/A';
-results.total_inverter_failures[0] = 'N/A';
-for (j=0; j<num_inverter_failure_modes; j++)
-	results{'inverter_failures_' + j}[0] = 'N/A';
-results.total_disconnect_failures[0] = 'N/A';
-results.total_transformer_failures[0] = 'N/A';
-results.total_grid_failures[0] = 'N/A';
-if (module_meta.can_fail) results.module_mtbf[0] = 'N/A';
-if (string_meta.can_fail) results.string_mtbf[0] = 'N/A';
-if (combiner_meta.can_fail) results.combiner_mtbf[0] = 'N/A';
-if (inverter_meta.can_fail) results.inverter_mtbf[0] = 'N/A';
-if (disconnect_meta.can_fail) results.disconnect_mtbf[0] = 'N/A';
-if (transformer_meta.can_fail) results.transformer_mtbf[0] = 'N/A';
-if (grid_meta.can_fail) results.grid_mtbf[0] = 'N/A';
-if (is_tracking_system)
-{
-	results.total_tracker_failures[0] = 'N/A';
-	results.tracker_mtbf[0] = 'N/A';
-}
-
-//now for the results of the rest of the realizations
-for (i=1; i<=num_realizations; i++)
-{
-	results.realization[i] = 'Realization ' + i;
-	results.lcoe[i] = raw_results[i].lcoe;
-	results.total_module_failures[i] = raw_results[i].total_module_failures;
-	for (j=0; j<num_module_failure_modes; j++)
-		results{'module_failures_' + j}[i] = raw_results[i].module_failures_by_type[j];
-	if (module_meta.can_fail) results.module_mtbf[i] = raw_results[i].module_mtbf;
-	results.total_string_failures[i] = raw_results[i].total_string_failures;
-	if (string_meta.can_fail) results.string_mtbf[i] = raw_results[i].string_mtbf;
-	results.total_combiner_failures[i] = raw_results[i].total_combiner_failures;
-	if (combiner_meta.can_fail) results.combiner_mtbf[i] = raw_results[i].combiner_mtbf;
-	results.total_inverter_failures[i] = raw_results[i].total_inverter_failures;
-	for (j=0; j<num_inverter_failure_modes; j++)
-		results{'inverter_failures_' + j}[i] = raw_results[i].inverter_failures_by_type[j];
-	if (inverter_meta.can_fail) results.inverter_mtbf[i] = raw_results[i].inverter_mtbf;
-	results.total_disconnect_failures[i] = raw_results[i].total_disconnect_failures;
-	if (disconnect_meta.can_fail) results.disconnect_mtbf[i] = raw_results[i].disconnect_mtbf;
-	results.total_transformer_failures[i] = raw_results[i].total_transformer_failures;
-	if (transformer_meta.can_fail) results.transformer_mtbf[i] = raw_results[i].transformer_mtbf;
-	results.total_grid_failures[i] = raw_results[i].total_grid_failures;
-	if (grid_meta.can_fail) results.grid_mtbf[i] = raw_results[i].grid_mtbf;
-	if (is_tracking_system)
-	{
-		results.total_tracker_failures[i] = raw_results[i].total_tracker_failures;
-		if (tracker_meta.can_fail) results.tracker_mtbf[i] = raw_results[i].tracker_mtbf;
-	}
-	//outln('Inverter failures by type = ' + inverter_failures_by_type);
-	for (j=1; j<=lifetime; j++) //start at 1 because the array returns year 0, where the energy production is always 0, and goes through the full lifetime (so a 5-year system would have 6 entries in the annual energy output)
-		results{'annual_energy_' + j}[i] = raw_results[i].annual_energy[j];
-}
+//base case results- do we need to overwrite base case failure results with N/A or 0? Currently shows up as null.????????????????????????????????????????
 
 //Calculate statistics
 results_columns = @results;
@@ -683,31 +618,44 @@ for (c=0; c<#results_columns; c++)
 }
 
 //write the output file- need to do something a little funky to make the columns show up in the right order
-column_order = ['realization', 'lcoe', 'total_module_failures', 'module_mtbf', 'total_string_failures', 'string_mtbf', 'total_combiner_failures', 'combiner_mtbf', 
-	'total_inverter_failures', 'inverter_mtbf', 'total_disconnect_failures', 'disconnect_mtbf', 'total_transformer_failures', 'transformer_mtbf', 'total_grid_failures', 'grid_mtbf'];
-idx = 9;
-if (is_tracking_system)
+component_order = ['module', 'string', 'combiner', 'inverter', 'disconnect', 'transformer', 'grid'];
+if (is_tracking_system) component_order[7] = 'tracker';
+
+component_columns = ['total_failures', 'mtbf', 'availability'];
+
+column_order = ['realization', 'lcoe'];
+idx = 2;
+
+//component results
+for (c=0; c<#component_order; c++) //cth component
 {
-	column_order[idx] = 'total_tracker_failures';
-	idx++;
-	column_order[idx] = 'tracker_mtbf';
-	idx++;
+	//first list failures for each individual failure mode
+	num_failure_modes = #meta{component_order[c]}.failure;
+	if (num_failure_modes > 1)
+		for (i=0; i<num_failure_modes; i++)
+		{
+			column_order[idx] = component_order[c] + '_failures_by_type_' + i;
+			idx++;
+		}
+	
+	//then list the outputs that are present for each component
+	for (i=0; i<#component_columns; i++)
+	{
+		column_order[idx] = component_order[c] + '_' + component_columns[i];
+		idx++;
+	}
 }
+
+//annual energy results
 for (j=1; j<=lifetime; j++)
 {
 	column_order[idx] = 'annual_energy_' + j;
 	idx++;
 }
-for (j=0; j<num_module_failure_modes; j++)
-{
-	column_order[idx] = 'module_failures_' + j;
-	idx++;
-}
-for (j=0; j<num_inverter_failure_modes; j++)
-{
-	column_order[idx] = 'inverter_failures_' + j;
-	idx++;
-}
+
+if (#column_order != #results_columns)
+	msgbox('Not all results columns have been specified in the column order for the Results Summary CSV. This will result in the Results Summary columns being out of order.');
+
 
 //Results Summary
 if (!csvwrite(results_folder + '/PVRPM_Summary_Results.csv', results, {cols=column_order}))
@@ -758,10 +706,6 @@ if (!csvwrite(results_folder + '/Daily_Degradation.csv', csv_degradation))
 	msgbox('Degradation file is open. Please close the file and then click OK.');
 	csvwrite(results_folder + '/Daily_Degradation.csv', csv_degradation);
 }
-
-
-
-
 
 
 

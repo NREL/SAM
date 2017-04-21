@@ -1,11 +1,18 @@
+
+
 //*************************************************************************************
 //PV Reliability Performance Model -- DRAFT --
 //Janine Freeman, NREL
-//27 December 2016
+//21 April 2017
 //*************************************************************************************
 
 // TO DO-----------------------------------------------------------------------------------
 /*
+
+	REORDER THE FUNCTIONS SO THAT THE MAIN SCRIPT IS MUCH EASIER TO USE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	AND THEN DO A BUNCH OF TESTING!!!!!!!!!!!!!!!
+	
+	
 	METHODOLOGY:
 	WHEN AN INVERTER FAILS ROUTINELY, IT NEEDS TO NOT BE COMPLETELY RESET- which ones do reset it?
 	are there further speed increases I can make?
@@ -15,8 +22,6 @@
 		
 	OUTPUTS:	
 	Add component-level availability output graph vs time (using Geoff's equation)
-		availability looking at daylight hours ONLY, grid all 24 hours- DON'T include sunrise/sunset hours (use sunup=1 flag)
-	need to make outputs independent of number failure/repair modes!		
 	Basic failure rates as an output (failures per million hours)
 	add number of failures per component per year- in a csv
 	confidence intervals
@@ -27,6 +32,8 @@
 	average degradation factor per year (roll up from CSV)
 	how many operable pieces of equipment at the end of each year
 	lower priority- add MTTR (mean time to repair)
+	component downtime
+	component contribution to energy loss
 	
 	USABILITY:
 	Make macro UI inputs
@@ -35,6 +42,8 @@
 	in documentation- if you want to model microinverters, here's how you would set it up
 	make a note about degradation!! confusing to have an input that's zero but then the degradation get assigned as the daily DC loss
 	can we create new SAM cases for various realizations? ->make an option to do it (first five realizations)
+	
+	ADD OPEN-SOURCING DISCLAIMER LANGUAGE TO THE SCRIPT
 
 	NOTES:
 	non-stationary poisson process (faster way than parallelizing?)-
@@ -85,6 +94,52 @@ function LHS(name, distribution_type, parameters, num_samples)
 	return result;
 }
 
+/* Case Checking contains most of the pre-checks run on the inputs and system setup to make sure that the model will run successfully.*/
+function check_case()
+{
+	if (active_case() == '')
+	{
+		msgbox('Please select a SAM case.');
+		exit;
+	}
+	
+	if (num_realizations <= 1)
+	{
+		msgbox('You must specify more than one realization.');
+		exit;
+	}
+	
+	// Technology must be detailed PV model
+	global cfg = configuration();
+	tech = cfg[0];
+	if (tech != 'Flat Plate PV')
+	{
+		msgbox('Error: This script is only applicable to the detailed photovoltaic model. Exiting simulation.');
+		exit;
+	}
+	
+	global num_modules = get('total_modules');
+	global num_modules_per_string = get('modules_per_string');
+	global num_strings = get('strings_in_parallel');
+	global num_inverters = get('inverter_count');
+	global inverter_size = ?(get('inverter_model')) [get('inv_snl_paco'), get('inv_ds_paco'), get('inv_pd_paco')];
+	global num_disconnects = num_inverters; //assume 1 AC disconnect per inverter
+	global num_strings_per_combiner = floor(num_strings / num_combiners);
+	global num_inverters_per_transformer = floor(num_inverters / num_transformers);
+	
+	global system_lifetime_yrs = get('analysis_period');
+	global has_multiple_subarrays = ( (get('subarray2_enable') == 1) || (get('subarray3_enable') == 1) || (get('subarray4_enable') == 1) );
+	global is_tracking_system = false;
+	if ((get('subarray1_track_mode') == 1 || get('subarray1_track_mode') == 2 || get('subarray1_track_mode') == 3))
+		is_tracking_system = true;
+	if (get('subarray2_enable') == 1 && (get('subarray2_track_mode') == 1 || get('subarray2_track_mode') == 2 || get('subarray2_track_mode') == 3))
+		is_tracking_system = true;
+	if (get('subarray3_enable') == 1 && (get('subarray3_track_mode') == 1 || get('subarray3_track_mode') == 2 || get('subarray3_track_mode') == 3))
+		is_tracking_system = true;
+	if (get('subarray4_enable') == 1 && (get('subarray4_track_mode') == 1 || get('subarray4_track_mode') == 2 || get('subarray4_track_mode') == 3))
+		is_tracking_system = true;
+}
+
 //*************************************************************************************
 // COMPONENT FUNCTIONS
 //*************************************************************************************
@@ -121,6 +176,8 @@ function initialize_component(component_meta, component_vector, component_idx, b
 		// warranty
 		if (component_meta.warranty.has_warranty)
 			component_vector[component_idx].time_left_on_warranty = component_meta.warranty.days;
+		// availability calculations
+		component_vector[component_idx].avail_downtime = 0;		
 	}
 	
 	// If the component isn't allowed to fail, then setting failure and replacement times isn't necessary
@@ -194,39 +251,10 @@ function component_failure(component_vector, component_idx, day, bool_warranty)
 //SYSTEM INITIALIZATION---------------------------------------------------------------------------------
 function initialize()
 {
-	// Create module structures
-	for (m = 0; m < module_meta.number; m++)
-		initialize_component(module_meta, modules, m, true);
-		
-	// Create string structures
-	for (s = 0; s < string_meta.number; s++)
-		initialize_component(string_meta, strings, s, true);
-		
-	// Create combiner structures
-	for (c = 0; c < combiner_meta.number; c++)
-		initialize_component(combiner_meta, combiners, c, true);
-		
-	// Create inverter structures
-	for (i = 0; i < inverter_meta.number; i++)
-		initialize_component(inverter_meta, inverters, i, true);
-	
-	// Create AC disconnect structures
-	for (d = 0; d < disconnect_meta.number; d++)
-		initialize_component(disconnect_meta, disconnects, d, true);
-	
-	// Create transformer structures
-	for (t = 0; t < transformer_meta.number; t++)
-		initialize_component(transformer_meta, transformers, t, true);
-	
-	// Create grid structure
-	initialize_component(grid_meta, grid, 0, true);
-	
-	// Create tracker structures
-	if (is_tracking_system)
-	{
-		for (tr = 0; tr < tracker_meta.number; tr++)
-			initialize_component(tracker_meta, trackers, tr, true);
-	}
+	components = @meta;
+	for (c=0; c<#components; c++)
+		for (i = 0; i < meta{components[c]}.number; i++)
+			initialize_component(meta{components[c]}, meta{components[c]}.array, i, true);
 }
 
 // DC POWER AVAILABILITY CALCULATION FUNCTION------------------------------------------------------------------------
@@ -236,13 +264,13 @@ function whats_my_dc_availability()
 	//regardless of whether the module itself is failed or not
 	operational_modules = 0;
 	
-	for (c=0; c < combiner_meta.number; c++)
+	for (c=0; c < meta.combiner.number; c++)
 	{
-		if (combiners[c].state == 0)
+		if (meta.combiner.array[c].state == 0)
 			continue; //if the combiner out, none of the modules on that combiner reach the inverter
 		for (s=0; s < num_strings_per_combiner; s++)
 		{
-			if (strings[s].state == 0)
+			if (meta.string.array[s].state == 0)
 				continue; //if string is out, none of the modules on that combiner reach the inverter
 			for (m=0; m < num_modules_per_string; m++)
 			{
@@ -254,60 +282,60 @@ function whats_my_dc_availability()
 				*/
 				// because c, s, and m are 0-indexed, they represent how many of each component have been completed by this point
 				module_index = c * (num_strings_per_combiner * num_modules_per_string) + s * num_modules_per_string + m;
-				if (module_index > #modules - 1)
+				if (module_index > #meta.module.array - 1)
 				{
 					msgbox('Error, calculated module index > number of modules in the dc availability function');
 					exit;
 				}
-				operational_modules += modules[module_index].state; //1 if operating, 0 if failed
+				operational_modules += meta.module.array[module_index].state; //1 if operating, 0 if failed
 			}
 		}
 	}
 		
-	return operational_modules / module_meta.number;
+	return operational_modules / meta.module.number;
 }
 
 // AC POWER AVAILABILITY CALCULATION FUNCTION--------------------------------------------------------------------------
 function whats_my_ac_availability()
 {
 	//grid is down
-	if (grid[0].state == 0)
+	if (meta.grid.array[0].state == 0)
 		return 0;
 	
 	operational_inverters = 0;
-	for (t=0; t < transformer_meta.number; t++)
+	for (t=0; t < meta.transformer.number; t++)
 	{
-		if (transformers[t].state == 0) 
+		if (meta.transformer.array[t].state == 0) 
 			continue; //if the transformer is down, none of those inverters can reach grid
 		for (i=0; i < num_inverters_per_transformer; i++)
 		{
 			// because t and i are 0-indexed, they represent how many of each component have been completed by this point
 			inverter_index = t * num_inverters_per_transformer + i;
-			if (inverter_index > #inverters - 1)
+			if (inverter_index > #meta.inverter.array - 1)
 			{
 				msgbox('Error, calculated inverter index > number of inverters in the ac availability function');
 				exit;
 			}
-			operational_inverters += (inverters[inverter_index].state && disconnects[inverter_index].state ); //1 if both are operating, 0 if either or both is failed
+			operational_inverters += (meta.inverter.array[inverter_index].state && meta.disconnect.array[inverter_index].state ); //1 if both are operating, 0 if either or both is failed
 		}
 	}
-	return operational_inverters / inverter_meta.number;
+	return operational_inverters / meta.inverter.number;
 }
 
 // FLEETWIDE DEGRADATION CALCULATION------------------------------------------------------------------------
-//Degradation is only averaged for operational modules. 
+//Degradation is only averaged for operational meta.module.array 
 //Otherwise, the power production hit from degradation and from the module failure would be unfairly double-counted in production estimates.
 function whats_my_degradation()
 {
-	if (!module_meta.degradation.can_degrade)
+	if (!meta.module.degradation.can_degrade)
 		return 1;
 	fleet_degradation_sum = 0;
 	number_of_operational_modules = 0;
-	for (m=0; m < module_meta.number; m++)
+	for (m=0; m < meta.module.number; m++)
 	{
-		if (modules[m].state == 1)
+		if (meta.module.array[m].state == 1)
 		{ 
-			fleet_degradation_sum += modules[m].degradation_factor;
+			fleet_degradation_sum += meta.module.array[m].degradation_factor;
 			number_of_operational_modules++;
 		}
 	}
@@ -321,14 +349,14 @@ function whats_my_tracker_power_loss_factor(day)
 {
 	// total number of working trackers
 	num_trackers_operational = 0;
-	for (tr=0; tr < tracker_meta.number; tr++)
+	for (tr=0; tr < meta.tracker.number; tr++)
 		if (trackers[tr].state == 1)
 			num_trackers_operational++;
-	fraction_operational = num_trackers_operational / tracker_meta.number;
+	fraction_operational = num_trackers_operational / meta.tracker.number;
 	tracker_availability[day] = fraction_operational;
 	day_of_year = mod(day, 365); //0-indexed, but so are the daily_tracker_coeffs
 	adjusted_factor = 1;
-	if (tracker_meta.can_fail)
+	if (meta.tracker.can_fail)
 	{
 		full_factor = daily_tracker_coeffs[day_of_year];
 		adjusted_factor = full_factor + fraction_operational* (1 - full_factor);
@@ -391,6 +419,18 @@ function step_in_time(component_meta, component_vector, day, component_repair_co
 				//warranty
 				if (component_meta.warranty.has_warranty)
 					component_vector[i].time_left_on_warranty--;
+					
+				//availability
+				if (component_vector[i].state == 0)
+				{
+					if (component_meta.name == 'grid')
+						component_vector[i].avail_downtime += 24; //availability is calculated in hours. for the grid only, the availability is based on the full 24-hour day.
+					else
+					{
+						doy = mod(day, 365); //need to know what day of year it is to get daylight hours
+						component_vector[i].avail_downtime += daylight_hours[doy]; //for all other components, availability is calculated based on daylight hours only.
+					}
+				}
 			}
 
 			//degradation can still happen even if component can't fail
@@ -433,58 +473,24 @@ function run_system_realization(realization, show_outputs)
 	degradation_factor = 1 - percentage the component has degraded at this time (ex. a 2% degraded component would have a degradation factor of 0.98)
 	*/
 
-	// REPAIR COSTS DATA CONTAINER--------------------------------------------------------------------------
-	/*
-		modules
-		strings
-		dc combiners
-		inverters
-		ac disconnects
-		transformers
-	*/
-
 	//SET UP COMPONENT DATA CONTAINERS----------------------------------------------------------------------
-	global modules = alloc(num_modules);
-	global strings = alloc(num_strings);
-	global combiners = alloc(num_combiners);
-	global inverters = alloc(num_inverters);
-	global disconnects = alloc(num_disconnects);
-	global transformers = alloc(num_transformers);
-	global grid = alloc(1);
+
 	global costs = null;
-	
-	// Set up failure tracking numbers
-	module_meta.uptime = 0;
-	module_meta.downtime = 0;
-	string_meta.uptime = 0;
-	string_meta.downtime = 0;
-	combiner_meta.uptime = 0;
-	combiner_meta.downtime = 0;
-	inverter_meta.uptime = 0;
-	inverter_meta.downtime = 0;
-	disconnect_meta.uptime = 0;
-	disconnect_meta.downtime = 0;
-	transformer_meta.uptime = 0;
-	transformer_meta.downtime = 0;
-	grid_meta.uptime = 0;
-	grid_meta.downtime = 0;
-	if (is_tracking_system)
+		
+	components = @meta;
+	for (c=0; c<#components; c++)
 	{
-		tracker_meta.uptime = 0;
-		tracker_meta.downtime = 0;
+		meta{components[c]}.array = alloc(meta{components[c]}.number);
+		if (meta{components[c]}.can_fail)
+		{
+			costs{components[c]} = alloc(system_lifetime_yrs * 365);
+			meta{components[c]}.uptime = 0;
+			meta{components[c]}.downtime = 0;
+		}
 	}
 		
 	// Allocate outputs----------------------------------------------------------------------------------
-	//costs
-	if (module_meta.can_fail) costs.module = alloc(system_lifetime_yrs * 365);
-	if (string_meta.can_fail) costs.string = alloc(system_lifetime_yrs * 365);
-	if (combiner_meta.can_fail) costs.combiner = alloc(system_lifetime_yrs * 365);
-	if (inverter_meta.can_fail) costs.inverter = alloc(system_lifetime_yrs * 365);
-	if (disconnect_meta.can_fail) costs.disconnect = alloc(system_lifetime_yrs * 365);
-	if (transformer_meta.can_fail) costs.transformer = alloc(system_lifetime_yrs * 365);
-	if (grid_meta.can_fail) costs.grid = alloc(system_lifetime_yrs * 365);
-	if (is_tracking_system && tracker_meta.can_fail)
-		costs.tracker = alloc(system_lifetime_yrs * 365);
+	
 	//time variables
 	module_degradation_factor = null;
 	if (is_tracking_system)
@@ -508,7 +514,7 @@ function run_system_realization(realization, show_outputs)
 	{
 		tracker_power_loss_factor[0] = 1;
 		tracker_availability[0] = 1;
-		original_tracker_cost = tracker_meta.failure[0].cost;
+		original_tracker_cost = meta.tracker.failure[0].cost;
 	}
 
 	//rest of system lifetime
@@ -521,48 +527,42 @@ function run_system_realization(realization, show_outputs)
 			progressbar(pb);
 			exit;
 		}
+		
 		//increase the labor rate each year
 		if (day == 1 || mod(day, 365) == 0) //need to set the labor rate initially and then again at the beginning of every year
 		{
 			year = floor(day / 365);
 			labor_rate = present_day_labor_rate * pow((1 + inflation / 100), year);
 			if (is_tracking_system)
-				tracker_meta.failure[0].cost *= pow((1 + inflation / 100), year);
+				meta.tracker.failure[0].cost *= pow((1 + inflation / 100), year);
 		}
-		//step each component through time
-		if (module_meta.can_fail) step_in_time(module_meta, modules, day, costs.module);
-		if (string_meta.can_fail) step_in_time(string_meta, strings, day, costs.string);
-		if (combiner_meta.can_fail) step_in_time(combiner_meta, combiners, day, costs.combiner);
-		if (inverter_meta.can_fail) step_in_time(inverter_meta, inverters, day, costs.inverter);
-		if (disconnect_meta.can_fail) step_in_time(disconnect_meta, disconnects, day, costs.disconnect);
-		if (transformer_meta.can_fail) step_in_time(transformer_meta, transformers, day, costs.transformer);
-		if (grid_meta.can_fail) step_in_time(grid_meta, grid, day, costs.grid);
-		if (is_tracking_system && tracker_meta.can_fail)
-			step_in_time(tracker_meta, trackers, day, costs.tracker);
+		
+		//step each component through time		
+		components = @meta;
+		for (c=0; c<#components; c++)
+			if (meta{components[c]}.can_fail) 
+				step_in_time(meta{components[c]}, meta{components[c]}.array, day, costs{components[c]});	
+		
 		//count up current timestep states
 		if (is_tracking_system)
 			tracker_power_loss_factor[day] = whats_my_tracker_power_loss_factor(day);
 		module_degradation_factor[day] = whats_my_degradation();
 		dc_power_availability[day] = whats_my_dc_availability();
 		ac_power_availability[day] = whats_my_ac_availability();
-		//outln(day + '\t' + modules);
 	}
 	progressbar(pb, {message='Running SAM simulation ' + realization + '...'});	
+	
 		
 	//create SAM performance adjustment tables for the availability, degradation, and tracker loss factors
-	time = alloc(8760 * system_lifetime_yrs);
 	daily_dc_loss = alloc(365 * system_lifetime_yrs);
 	daily_ac_loss = alloc(365 * system_lifetime_yrs);
 	idx = 0;
-	day_num = alloc(365 * system_lifetime_yrs);
 	for (day = 0; day < (365 * system_lifetime_yrs); day++)
 	{
-		day_num[day] = day;
 		daily_dc_loss[day] = 100 * (1 - (dc_power_availability[day] * module_degradation_factor[day] * ?(is_tracking_system)[1, tracker_power_loss_factor[day]]));
 		daily_ac_loss[day] = 100 * (1 - ac_power_availability[day]);
 		for (j = 0; j < 24; j++)
 		{
-			time[idx] = idx;
 			idx++;
 		}
 	}
@@ -620,55 +620,41 @@ function run_system_realization(realization, show_outputs)
 	show_page('Results');
 
 	//OUTPUTS-------------------------------------------------------------------------------------------------------------
+	results.realization[realization] = 'Realization_' + realization;
 
-	//failures
-	results.total_module_failures = 0;
-	results.total_string_failures = 0;
-	results.total_combiner_failures = 0;
-	results.total_inverter_failures = 0;
-	results.total_disconnect_failures = 0;
-	results.total_transformer_failures = 0;
-	results.total_grid_failures = 0;
-	results.total_tracker_failures = 0;
-	//count up cumulative failures
-	for (j=0; j<#module_meta.failure; j++)
-		results.module_failures_by_type[j] = 0;
-	if (module_meta.can_fail)
-		for (m=0; m < module_meta.number; m++)
-		{
-			results.total_module_failures += modules[m].cumulative_failures;
-			for (j=0; j<#module_meta.failure; j++)
-				results.module_failures_by_type[j] += modules[m].failures_by_type[j];
-		}
-	if (string_meta.can_fail)
-		for (s=0; s < string_meta.number; s++)
-			results.total_string_failures += strings[s].cumulative_failures;
-	if (combiner_meta.can_fail)
-		for (c=0; c < combiner_meta.number; c++)
-			results.total_combiner_failures += combiners[c].cumulative_failures;
-	inverter_failures_by_type = alloc(#inverter_meta.failure);
-	for (j=0; j<#inverter_meta.failure; j++)
-		results.inverter_failures_by_type[j] = 0;
-	if (inverter_meta.can_fail)
-		for (i=0; i < inverter_meta.number; i++)
-		{
-			results.total_inverter_failures += inverters[i].cumulative_failures;
-			for (j=0; j<#inverter_meta.failure; j++)
-				results.inverter_failures_by_type[j] += inverters[i].failures_by_type[j];
-		}
-	if (disconnect_meta.can_fail)
-		for (d=0; d < disconnect_meta.number; d++)
-			results.total_disconnect_failures += disconnects[d].cumulative_failures;
-	if (transformer_meta.can_fail)
-		for (t=0; t < transformer_meta.number; t++)
-			results.total_transformer_failures += transformers[t].cumulative_failures;
-	results.total_grid_failures = grid[0].cumulative_failures;
-	if (is_tracking_system && tracker_meta.can_fail)
+	//calculate results
+	for (c=0; c<#components; c++)
 	{
-		for (tr=0; tr < tracker_meta.number; tr++)
-			results.total_tracker_failures += trackers[tr].cumulative_failures;
+		//initialize counts
+		results{components[c] + '_total_failures'}[realization] = 0;
+		num_failure_modes = #meta{components[c]}.failure;
+		if (num_failure_modes > 1)
+			for (j=0; j<num_failure_modes; j++)
+				results{components[c] + '_failures_by_type_' + j}[realization] = 0;
+		results{components[c] + '_availability'}[realization] = 0;
+		
+		//failures and availability, count up by component
+		if (meta{components[c]}.can_fail)
+			for (i=0; i<meta{components[c]}.number; i++)
+			{
+				//total failures
+				results{components[c] + '_total_failures'}[realization] += meta{components[c]}.array[i].cumulative_failures;
+				//failures by type
+				if (num_failure_modes > 1)
+					for (j=0; j<num_failure_modes; j++)
+						results{components[c] + '_failures_by_type_' + j}[realization] += meta{components[c]}.array[i].failures_by_type[j];
+				//availability
+				invdl_avail = 1 - (meta{components[c]}.array[i].avail_downtime / (lifetime * annual_daylight_hours));
+				results{components[c] + '_availability'}[realization] += invdl_avail;
+			}
+		
+		//mean time between failure
+		if (meta{components[c]}.can_fail)
+			results{components[c] + '_mtbf'}[realization] = (meta{components[c]}.downtime - meta{components[c]}.uptime) / results{components[c] + '_total_failures'}[realization];
+			
+		//availability
+		results{components[c] + '_availability'}[realization] /= meta{components[c]}.number; //we can use a straight average here because the code is constrained to regular systems
 	}
-
 
 	//write the timeseries results for this realization to the global csv files
 	dc.hourly_dc_power = get('dc_net');
@@ -676,28 +662,16 @@ function run_system_realization(realization, show_outputs)
 	deg.daily_degradation = module_degradation_factor;
 	csvwrite(results_folder + '/dc_' + realization + '.csv', dc);
 	csvwrite(results_folder + '/ac_' + realization + '.csv', ac);
-	csvwrite(results_folder + '/deg_' + realization + '.csv', deg);
-	//csv_dc_power{'Realization_' + realization} = hourly_dc_power;
-	//csv_ac_power{'Realization_' + realization} = hourly_ac_power;
-	//csv_degradation{'Realization_' + realization} = module_degradation_factor;	
+	csvwrite(results_folder + '/deg_' + realization + '.csv', deg);	
 	
 	if (is_tracking_system)
-		tracker_meta.failure[0].cost = original_tracker_cost;
+		meta.tracker.failure[0].cost = original_tracker_cost;
 	
 	//outln(dc_power_availability);
 	if (show_outputs)
 	{
-		outln('Total module failures = ' + results.total_module_failures);
-		outln('Total module failures by type = ' + results.module_failures_by_type);
-		outln('Total string failures = ' + results.total_string_failures);
-		outln('Total combiner failures = ' + results.total_combiner_failures);
-		outln('Total inverter failures = ' + results.total_inverter_failures);
-		outln('Inverter failures by type = ' + results.inverter_failures_by_type);
-		outln('Total disconnect failures = ' + results.total_disconnect_failures);
-		outln('Total transformer failures = ' + results.total_transformer_failures);
-		outln('Total grid failures =' + results.total_grid_failures);
-		if (is_tracking_system)
-			outln('Total tracker failures = ' + results.total_tracker_failures);
+		for (c=0; c<#components; c++)
+			outln('Total ' + components[c] + ' failures = ' + results{components[c]+ '_total_failures'}[realization]);
 
 		//daily performance
 		if (is_tracking_system)
@@ -708,26 +682,23 @@ function run_system_realization(realization, show_outputs)
 		//lifetime power output
 		dview(2, 1, 'Lifetime System Power', 'DC Power', 'kW', 1.0, dc.hourly_dc_power, 'AC Power', 'kW', 1.0, ac.hourly_ac_power);
 	}
-	results.lcoe = get('lcoe_real');
-	results.annual_energy = get('cf_energy_net');	
 	
-	if (module_meta.can_fail) results.module_mtbf = (module_meta.downtime - module_meta.uptime) / results.total_module_failures;
-	if (string_meta.can_fail) results.string_mtbf = (string_meta.downtime - string_meta.uptime) / results.total_string_failures;
-	if (combiner_meta.can_fail) results.combiner_mtbf = (combiner_meta.downtime - combiner_meta.uptime) / results.total_combiner_failures;
-	if (inverter_meta.can_fail) results.inverter_mtbf = (inverter_meta.downtime - inverter_meta.uptime) / results.total_inverter_failures;
-	if (disconnect_meta.can_fail) results.disconnect_mtbf = (disconnect_meta.downtime - disconnect_meta.uptime) / results.total_disconnect_failures;
-	if (transformer_meta.can_fail) results.transformer_mtbf = (transformer_meta.downtime - transformer_meta.uptime) / results.total_transformer_failures;
-	if (grid_meta.can_fail) results.grid_mtbf = (grid_meta.downtime - grid_meta.uptime) / results.total_grid_failures;
-	if (is_tracking_system && tracker_meta.can_fail) results.tracker_mtbf = (tracker_meta.downtime - tracker_meta.uptime) / results.total_tracker_failures;
+	results.lcoe[realization] = get('lcoe_real');
+	annual_energy = get('cf_energy_net');
+	for (i=1; i<#annual_energy; i++)
+	{
+		string = 'annual_energy_' + i;
+		results{string}[realization] = annual_energy[i];
+	}
 	
 	//overwrite component data containers for memory management
-	modules = null;
-	strings = null;
-	combiners = null;
-	inverters = null;
-	disconnects = null;
-	transformers = null;
-	grid = null;
+	meta.module.array = null;
+	meta.string.array = null;
+	meta.combiner.array = null;
+	meta.inverter.array = null;
+	meta.disconnect.array = null;
+	meta.transformer.array = null;
+	meta.grid.array = null;
 	trackers = null;
 	costs = null;
 	
