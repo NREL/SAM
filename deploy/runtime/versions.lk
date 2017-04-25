@@ -50,6 +50,18 @@ Some more examples:
 
 //***********************************************************************************************************************************************************
 //CURRENT WORKING VERSION- CHANGE THIS VERSION NUMBER WHEN RELEASES ARE CREATED AND MAKE A NEW CURRENT WORKING VERSION FUNCTION
+version_upgrade{'2017.4.11'} = define() {
+	const cfg = config();
+	if (cfg.tech == 'Wind Power')
+		if (value('wind_resource_model_choice') == 0)
+			message('This version significantly updates how wind turbine power curves are corrected for air density when using a wind resource file. This will increase your annual energy estimate compared to previous versions.', 'warning');	
+};
+
+// PUBLIC VERSION
+version_upgrade{'2017.1.17'} = define() {
+	message('Upgraded project to version 2017.1.17');
+};
+
 version_upgrade{'2016.12.29'} = define() {
 	const cfg = config();
 	if (cfg.tech == 'Flat Plate PV')
