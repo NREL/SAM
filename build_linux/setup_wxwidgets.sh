@@ -40,7 +40,11 @@ wget https://github.com/wxWidgets/wxWidgets/releases/download/v$WX_VERSION/$WX_W
 tar -xvjf $WX_WIDGETS_NAME.tar.bz2
 cd $WX_WIDGETS_NAME
 
-#./configure --prefix=$WORKINGDIR/$WX_VERSION --enable-shared=no --enable-stl=yes --enable-debug=no --with-gtk=2 --with-libjpeg=builtin --with-libpng=builtin --with-regex=builtin --with-libtiff=builtin --with-zlib=builtin --with-expat=builtin --without-libjbig --without-liblzma --without-gtkprint --with-libnotify=no --with-libmspack=no --with-gnomevfs=no --with-opengl=yes --with-sdl=no
+./configure --prefix=$INSTALL_DIR --enable-shared=no --enable-stl=yes --enable-debug=no --with-gtk=2 --with-libjpeg=builtin --with-libpng=builtin --with-regex=builtin --with-libtiff=builtin --with-zlib=builtin --with-expat=builtin --without-libjbig --without-liblzma --without-gtkprint --with-libnotify=no --with-libmspack=no --with-gnomevfs=no --with-opengl=yes --with-sdl=no
 
-#ln -s "$INSTALL_DIR/bin/wx-config" "$WX_BIN_DIR/wx-config-3"
+make
+make install
+
+ln -s "$INSTALL_DIR/bin/wx-config" "$WX_BIN_DIR/wx-config-3"
+export PATH=$PATH:$WX_BIN_DIR
 
