@@ -287,5 +287,13 @@ __pycache__/
 *.odx.cs
 *.xsd.cs
 
-# All .exe's
+# All .exe's, object files, libraries
 *.exe
+*.so
+*.a
+*.o
+*.lib
+*.dll
+*.d
+*.bin
+*.mod
