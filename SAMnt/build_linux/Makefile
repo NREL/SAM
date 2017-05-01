@@ -104,8 +104,8 @@ package:
 #	strip -v ./sam.deploy/linux_64/sam.bin
 #	strip -v ./sam.deploy/linux_64/webupd.bin
 #	strip -v ./sam.deploy/linux_64/ssc.so
-	strip -v ./sam.deploy/runtime/bin/lhs.bin
-	strip -v ./sam.deploy/runtime/bin/stepwise.bin
+#	strip -v ./sam.deploy/runtime/bin/lhs.bin
+#	strip -v ./sam.deploy/runtime/bin/stepwise.bin
 	echo "assembling archive..."
 	tar cvzf sam.deploy.tar.gz ./sam.deploy
 	make installer
