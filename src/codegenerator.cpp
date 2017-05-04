@@ -589,7 +589,8 @@ bool CodeGen_Base::ShowCodeGenDialog(CaseWindow *cw)
 	code_languages.Add("VBA");
 #endif
 #ifdef __WXMAC__
-	code_languages.Add("Swift (iOS)");
+    code_languages.Add("Swift (iOS)");
+    code_languages.Add("Android Studio (Android)");
 #endif
 
 	// initialize properties
@@ -706,11 +707,16 @@ bool CodeGen_Base::ShowCodeGenDialog(CaseWindow *cw)
 	}
 #endif
 #ifdef __WXMAC__
-	else if (lang == 8) // Swift iOS
-	{
-		fn += ".swift";
-		cg = new CodeGen_swift(c, fn);
-	}
+    else if (lang == 8) // Swift iOS
+    {
+        fn += ".swift";
+        cg = new CodeGen_swift(c, fn);
+    }
+    else if (lang == 9) // Android Studio Android
+    {
+        fn += ".cpp";
+        cg = new CodeGen_android(c, fn);
+    }
 #endif
 	else
 		return false;
@@ -6980,12 +6986,12 @@ bool CodeGen_android::Output(ssc_data_t p_data)
 		{
 		case SSC_STRING:
 			fprintf(m_fp, "	const char *%s = ssc_data_get_string( data, \"%s\" );\n", name, name);
-			fprintf(m_fp, "	printf(\"%%s = %%s\\n\", %s, %s);\n", (const char*)m_data[ii].label.c_str(), name);
+			fprintf(m_fp, "	s << (\"%%s = %%s\\n\", %s, %s);\n", (const char*)m_data[ii].label.c_str(), name);
 			break;
 		case SSC_NUMBER:
 			fprintf(m_fp, "	ssc_number_t %s;\n", name);
 			fprintf(m_fp, "	ssc_data_get_number(data, \"%s\", &%s);\n", name, name);
-			fprintf(m_fp, "	printf(\"%%s = %%.17g\\n\", \"%s\", (double)%s);\n", (const char*)m_data[ii].label.c_str(), name);
+			fprintf(m_fp, "	s << \"\\n%s \" << (double)%s;\n", (const char*)m_data[ii].label.c_str(),  name);
 			break;
 		case SSC_ARRAY:
 			// TODO finish and test
@@ -7007,14 +7013,17 @@ bool CodeGen_android::Input(ssc_data_t p_data, const char *name, const wxString 
 	ssc_number_t *p;
 	int len, nr, nc;
 	wxString str_value;
+    wxString fn_path, fn_name, fn_ext;
 	double dbl_value;
 	int type = ::ssc_data_query(p_data, name);
 	switch (type)
 	{
-	case SSC_STRING:
+	case SSC_STRING: // assumes filename
 		str_value = wxString::FromUTF8(::ssc_data_get_string(p_data, name));
 		str_value.Replace("\\", "/");
-		fprintf(m_fp, "	ssc_data_set_string( data, \"%s\", \"%s\" );\n", name, (const char*)str_value.c_str());
+        wxFileName::SplitPath(str_value, &fn_path, &fn_name, &fn_ext );
+            fn_path = fn_name + "." + fn_ext;
+		fprintf(m_fp, "	set_string( data, \"%s\", \"%s\" , mgr, path);\n", name, (const char*)fn_path.c_str());
 		break;
 	case SSC_NUMBER:
 		::ssc_data_get_number(p_data, name, &value);
@@ -7037,7 +7046,8 @@ bool CodeGen_android::Input(ssc_data_t p_data, const char *name, const wxString 
 				csv.Set(i, 0, wxString::Format("%.17g", dbl_value));
 			}
 			csv.WriteFile(fn);
-			fprintf(m_fp, "	set_array( data, \"%s\", \"%s\", %d);\n", name, (const char*)fn.c_str(), len);
+            fn = TableElementFileNames(name) + ".csv";
+			fprintf(m_fp, "	set_array( data, \"%s\", \"%s\", %d, mgr, path);\n", name, (const char*)fn.c_str(), len);
 		}
 		else
 		{
@@ -7071,7 +7081,8 @@ bool CodeGen_android::Input(ssc_data_t p_data, const char *name, const wxString 
 				}
 			}
 			csv.WriteFile(fn);
-			fprintf(m_fp, "	set_matrix( data, \"%s\", \"%s\", %d, %d);\n", name, (const char*)fn.c_str(), nr, nc);
+            fn = TableElementFileNames(name) + ".csv";
+			fprintf(m_fp, "	set_matrix( data, \"%s\", \"%s\", %d, %d, mgr, path);\n", name, (const char*)fn.c_str(), nr, nc);
 		}
 		else
 		{
@@ -7097,10 +7108,10 @@ bool CodeGen_android::RunSSCModule(wxString &name)
 {
 	fprintf(m_fp, "	if (ssc_module_exec(module, data) == 0)\n");
 	fprintf(m_fp, "	{\n");
-	fprintf(m_fp, "		printf(\"error during simulation.\"); \n");
 	fprintf(m_fp, "		ssc_module_free(module); \n");
 	fprintf(m_fp, "		ssc_data_free(data); \n");
-	fprintf(m_fp, "		return -1; \n");
+    fprintf(m_fp, "     s << \"\\nerror during simulation.\"; \n");
+    fprintf(m_fp, "     return env->NewStringUTF(s.str().c_str());\n");
 	fprintf(m_fp, "	}\n");
 	return true;
 }
@@ -7109,10 +7120,15 @@ bool CodeGen_android::RunSSCModule(wxString &name)
 bool CodeGen_android::Header()
 {
 	// top of file and supporting functions
-	fprintf(m_fp, "#include <stdio.h>\n");
-	fprintf(m_fp, "#include <string.h>\n");
-	fprintf(m_fp, "#include <stdlib.h>\n");
-	fprintf(m_fp, "#include \"sscapi.h\"\n");
+    fprintf(m_fp, "#include <cstring>\n");
+    fprintf(m_fp, "#include <jni.h>\n");
+    fprintf(m_fp, "#include <cinttypes>\n");
+    fprintf(m_fp, "#include <stdlib.h>\n");
+    fprintf(m_fp, "#include <string>\n");
+    fprintf(m_fp, "#include <sstream>\n");
+    fprintf(m_fp, "#include <android/asset_manager.h>\n");
+    fprintf(m_fp, "#include <android/asset_manager_jni.h>\n");
+    fprintf(m_fp, "#include \"sscapi.h\"\n");
 	fprintf(m_fp, "\n");
 
 	// handle message
@@ -7141,15 +7157,53 @@ bool CodeGen_android::Header()
 	fprintf(m_fp, "}\n");
 	fprintf(m_fp, "\n");
 
-	// handle csv files
+	// handle csv files from APK
+    fprintf(m_fp, "int file_from_APK(AAssetManager *mgr, const char *fn, std::string path)\n");
+    fprintf(m_fp, "{\n");
+    fprintf(m_fp, "    int32_t length;\n");
+    fprintf(m_fp, "    char *buff=NULL;\n");
+    fprintf(m_fp, "    AAsset* fileAsset = AAssetManager_open(mgr, fn, AASSET_MODE_BUFFER);\n");
+    fprintf(m_fp, "    if(fileAsset != NULL)\n");
+    fprintf(m_fp, "    {\n");
+    fprintf(m_fp, "        length = AAsset_getLength(fileAsset);\n");
+    fprintf(m_fp, "        buff = new char[length+1];\n");
+    fprintf(m_fp, "        int32_t numBytes = AAsset_read(fileAsset, buff, length);\n");
+    fprintf(m_fp, "        buff[length] = '\\0';\n");
+    fprintf(m_fp, "        std::string fld = path + \"/\";\n");
+    fprintf(m_fp, "        fld.append(fn);\n");
+    fprintf(m_fp, "        FILE* out = fopen(fld.c_str(), \"w\");\n");
+    fprintf(m_fp, "        fwrite(buff, numBytes, 1, out);\n");
+    fprintf(m_fp, "        fclose(out);\n");
+    fprintf(m_fp, "        AAsset_close(fileAsset);\n");
+    fprintf(m_fp, "        return 1;\n");
+    fprintf(m_fp, "    }\n");
+    fprintf(m_fp, "    return 0;\n");
+    fprintf(m_fp, "}\n");
+    fprintf(m_fp, "\n");
+    
+    fprintf(m_fp, "int set_string(ssc_data_t p_data, const char *name, const char* filename, AAssetManager *mgr, std::string path)\n");
+    fprintf(m_fp, "{\n");
+    fprintf(m_fp, "    if (file_from_APK(mgr, filename, path)==1) {\n");
+    fprintf(m_fp, "        std::string fn = path + \"/\";\n");
+    fprintf(m_fp, "        fn.append(filename);\n");
+    fprintf(m_fp, "        ssc_data_set_string(p_data, name, fn.c_str());\n");
+    fprintf(m_fp, "        return 1;\n");
+    fprintf(m_fp, "    }\n");
+    fprintf(m_fp, "    return 0;\n");
+    fprintf(m_fp, "}\n");
+    fprintf(m_fp, "\n");
+            
 	// arrays
-	fprintf(m_fp, "int set_array(ssc_data_t p_data, const char *name, const char* fn, int len)\n");
+	fprintf(m_fp, "int set_array(ssc_data_t p_data, const char *name, const char* filename, int len, AAssetManager *mgr, std::string path)\n");
 	fprintf(m_fp, "{\n");
+    fprintf(m_fp, " if (file_from_APK(mgr, filename, path)!=1) return 0;\n");
+    fprintf(m_fp, " std::string fn = path + \"/\";\n");
+    fprintf(m_fp, " fn.append(filename);\n");
 	fprintf(m_fp, "	char buffer[1024];\n");
 	fprintf(m_fp, "	char *record, *line;\n");
 	fprintf(m_fp, "	int i = 0;\n");
 	fprintf(m_fp, "	ssc_number_t *ary;\n");
-	fprintf(m_fp, "	FILE *fp = fopen(fn, \"r\");\n");
+	fprintf(m_fp, "	FILE *fp = fopen(fn.c_str(), \"r\");\n");
 	fprintf(m_fp, "	if (fp == NULL)\n");
 	fprintf(m_fp, "	{\n");
 	fprintf(m_fp, "		printf(\"file opening failed \");\n");
@@ -7174,13 +7228,16 @@ bool CodeGen_android::Header()
 	fprintf(m_fp, "\n");
 
 	// matrices
-	fprintf(m_fp, "int set_matrix(ssc_data_t p_data, const char *name, const char* fn, int nr, int nc)\n");
+	fprintf(m_fp, "int set_matrix(ssc_data_t p_data, const char *name, const char* filename, int nr, int nc, AAssetManager *mgr, std::string path)\n");
 	fprintf(m_fp, "{\n");
+    fprintf(m_fp, " if (file_from_APK(mgr, filename, path)!=1) return 0;\n");
+    fprintf(m_fp, " std::string fn = path + \"/\";\n");
+    fprintf(m_fp, " fn.append(filename);\n");
 	fprintf(m_fp, "	char buffer[1024];\n");
 	fprintf(m_fp, "	char *record, *line;\n");
 	fprintf(m_fp, "	ssc_number_t *ary;\n");
 	fprintf(m_fp, "	int i = 0, len = nr*nc;\n");
-	fprintf(m_fp, "	FILE *fp = fopen(fn, \"r\");\n");
+	fprintf(m_fp, "	FILE *fp = fopen(fn.c_str(), \"r\");\n");
 	fprintf(m_fp, "	if (fp == NULL)\n");
 	fprintf(m_fp, "	{\n");
 	fprintf(m_fp, "		printf(\"file opening failed \");\n");
@@ -7202,25 +7259,25 @@ bool CodeGen_android::Header()
 	fprintf(m_fp, "	free(ary);\n");
 	fprintf(m_fp, "	return 1;\n");
 	fprintf(m_fp, "}\n");
-
-
 	fprintf(m_fp, "\n");
 
-	fprintf(m_fp, "int main(int argc, char *argv[])\n");
-	fprintf(m_fp, "{\n");
-
-	// create global data container
-	fprintf(m_fp, "	printf(\"Current folder = %s\\n\");\n", (const char*)m_folder.c_str());
-	fprintf(m_fp, "	printf(\"SSC version = %%d\\n\", ssc_version());\n");
-	fprintf(m_fp, "	printf(\"SSC build information = %%s\\n\", ssc_build_info());\n");
-	fprintf(m_fp, "	ssc_module_exec_set_print(0);\n");
-	fprintf(m_fp, "	ssc_data_t data = ssc_data_create();\n");
-	fprintf(m_fp, "	if (data == NULL)\n");
-	fprintf(m_fp, "	{\n");
-	fprintf(m_fp, "		printf(\"error: out of memory.\");\n");
-	fprintf(m_fp, "		return -1;\n");
-	fprintf(m_fp, "	}\n");
-	fprintf(m_fp, "	ssc_module_t module;\n");
+    fprintf(m_fp, "extern \"C\" JNIEXPORT jstring JNICALL\n");
+    fprintf(m_fp, "Java_com_example_imacuser_testssc1_MainActivity_stringFromJNI(JNIEnv *env, jclass type, jobject asset_mgr, jstring cache_path) {\n");
+    fprintf(m_fp, "    std::string bi = ssc_build_info();\n");
+    fprintf(m_fp, "    std::ostringstream s;\n");
+    fprintf(m_fp, "    s << bi << \"\\n SSC Version \" << ssc_version();\n");
+    fprintf(m_fp, "    AAssetManager *mgr = AAssetManager_fromJava(env, asset_mgr);\n");
+    fprintf(m_fp, "    const char *nativePath = (env)->GetStringUTFChars( cache_path, 0);\n");
+    fprintf(m_fp, "    std::string path(nativePath);\n");
+    fprintf(m_fp, "    (env)->ReleaseStringUTFChars( cache_path, nativePath);\n");
+     fprintf(m_fp, "    ssc_module_exec_set_print(0);\n");
+    fprintf(m_fp, "    ssc_data_t data = ssc_data_create();\n");
+    fprintf(m_fp, "    if (data == NULL)\n");
+    fprintf(m_fp, "    {\n");
+    fprintf(m_fp, "        s << \"\\nerror: out of memory.\";\n");
+    fprintf(m_fp, "        return env->NewStringUTF(s.str().c_str());\n");
+    fprintf(m_fp, "    }\n");
+    fprintf(m_fp, "    ssc_module_t module;\n");
 	fprintf(m_fp, "\n");
 
 	return true;
@@ -7235,9 +7292,9 @@ bool CodeGen_android::CreateSSCModule(wxString &name)
 		fprintf(m_fp, "	module = ssc_module_create(\"%s\"); \n", (const char*)name.c_str());
 		fprintf(m_fp, "	if (NULL == module)\n");
 		fprintf(m_fp, "	{\n");
-		fprintf(m_fp, "		printf(\"error: could not create '%s' module.\"); \n", (const char*)name.c_str());
 		fprintf(m_fp, "		ssc_data_free(data); \n");
-		fprintf(m_fp, "		return -1; \n");
+        fprintf(m_fp, "     s << \"\\nerror: could not create '%s' module.\"; \n", (const char*)name.c_str());
+        fprintf(m_fp, "     return env->NewStringUTF(s.str().c_str());\n");
 		fprintf(m_fp, "	}\n");
 	}
 	return true;
@@ -7251,15 +7308,133 @@ bool CodeGen_android::FreeSSCModule()
 
 bool CodeGen_android::SupportingFiles()
 {
-// for android - can extend to Visual Studio - setup for Android Srudio on macOS initially
+// for android - can extend to Visual Studio - setup for Android Studio on macOS initially
+// TODO - add other architectures and combine with glibtool.
 #if defined(__WXOSX__)
-    wxString f1 = SamApp::GetAppPath() + "/../Frameworks/libssc.a";
-    wxString f2 = m_folder + "/libssc.a";
+    wxString f1 = SamApp::GetAppPath() + "/../Frameworks/sscapi.h";
+    wxString f2 = m_folder + "/sscapi.h";
     wxCopyFile(f1, f2);
-    // TODO - keep sscapi.h current
-    f1 = SamApp::GetAppPath() + "/../Frameworks/sscapi.h";
-    f2 = m_folder + "/sscapi.h";
+    // TODO other arch - armeabi-v7a for Android 6 and SAMSUNG Galaxy S5
+    f1 = SamApp::GetAppPath() + "/../Frameworks/shared_armeabi-v7a.a";
+    f2 = m_folder + "/shared_armeabi-v7a.a";
     wxCopyFile(f1, f2);
+    f1 = SamApp::GetAppPath() + "/../Frameworks/nlopt_armeabi-v7a.a";
+    f2 = m_folder + "/nlopt_armeabi-v7a.a";
+    wxCopyFile(f1, f2);
+    f1 = SamApp::GetAppPath() + "/../Frameworks/lpsolve_armeabi-v7a.a";
+    f2 = m_folder + "/lpsolve_armeabi-v7a.a";
+    wxCopyFile(f1, f2);
+    f1 = SamApp::GetAppPath() + "/../Frameworks/solarpilot_armeabi-v7a.a";
+    f2 = m_folder + "/solarpilot_armeabi-v7a.a";
+    wxCopyFile(f1, f2);
+    f1 = SamApp::GetAppPath() + "/../Frameworks/tcs_armeabi-v7a.a";
+    f2 = m_folder + "/tcs_armeabi-v7a.a";
+    wxCopyFile(f1, f2);
+    f1 = SamApp::GetAppPath() + "/../Frameworks/ssc_armeabi-v7a.a";
+    f2 = m_folder + "/ssc_armeabi-v7a.a";
+    wxCopyFile(f1, f2);
+    // MainActivity.java
+    wxString fn = m_folder + "/MainActivity.java";
+    FILE *f = fopen(fn.c_str(), "w");
+    if (!f) return false;
+    fprintf(f, "package com.example.imacuser.%s;\n", (const char*)m_name.c_str());
+    fprintf(f, "import android.content.res.AssetManager;\n");
+    fprintf(f, "import android.support.v7.app.AppCompatActivity;\n");
+    fprintf(f, "import android.os.Bundle;\n");
+    fprintf(f, "import android.widget.TextView;\n");
+    fprintf(f, "public class MainActivity extends AppCompatActivity {\n");
+    fprintf(f, "    static {\n");
+    fprintf(f, "        System.loadLibrary(\"%s\");\n", (const char*)m_name.c_str());
+    fprintf(f, "    }\n");
+    fprintf(f, "    @Override\n");
+    fprintf(f, "    protected void onCreate(Bundle savedInstanceState) {\n");
+    fprintf(f, "        super.onCreate(savedInstanceState);\n");
+    fprintf(f, "        setContentView(R.layout.activity_main);\n");
+    fprintf(f, "        TextView tv = (TextView) findViewById(R.id.sample_text);\n");
+    fprintf(f, "        tv.setText(stringFromJNI(getAssets(), getCacheDir().getAbsolutePath()));\n");
+    fprintf(f, "    }\n");
+    fprintf(f, "    public native String stringFromJNI(AssetManager mgr, String path);\n");
+    fprintf(f, "}\n");
+    fclose(f);
+    // build.gradle
+    fn = m_folder + "/build.gradle";
+    f = fopen(fn.c_str(), "w");
+    if (!f) return false;
+    fprintf(f, "apply plugin: 'com.android.application'\n");
+    fprintf(f, "android {\n");
+    fprintf(f, "    signingConfigs {\n");
+    fprintf(f, "        config {\n");
+    fprintf(f, "            keyAlias 'keytestssc1'\n");
+    fprintf(f, "            keyPassword 'testssc1'\n");
+    fprintf(f, "            storeFile file('/Users/imacuser/keystores/testssc1.jks')\n");
+    fprintf(f, "            storePassword 'testssc1'\n");
+    fprintf(f, "        }\n");
+    fprintf(f, "    }\n");
+    fprintf(f, "        compileSdkVersion 25\n");
+    fprintf(f, "        buildToolsVersion \"25.0.2\"\n");
+    fprintf(f, "        defaultConfig {\n");
+    fprintf(f, "            applicationId \"com.example.imacuser.testssc1\"\n");
+    fprintf(f, "            minSdkVersion 13\n");
+    fprintf(f, "            targetSdkVersion 25\n");
+    fprintf(f, "            versionCode 1\n");
+    fprintf(f, "            versionName \"1.0\"\n");
+    fprintf(f, "            testInstrumentationRunner \"android.support.test.runner.AndroidJUnitRunner\"\n");
+    fprintf(f, "            ndk {\n");
+    fprintf(f, "                //            abiFilters 'x86', 'x86_64', 'armeabi', 'armeabi-v7a', 'arm64-v8a'\n");
+    fprintf(f, "                abiFilters 'armeabi-v7a'\n");
+    fprintf(f, "            }\n");
+    fprintf(f, "            externalNativeBuild {\n");
+    fprintf(f, "                cmake {\n");
+    fprintf(f, "                    arguments '-DANDROID_PLATFORM=android-13',\n");
+    fprintf(f, "                    '-DANDROID_TOOLCHAIN=gcc', '-DANDROID_STL=gnustl_static'\n");
+    fprintf(f, "                }\n");
+    fprintf(f, "            }\n");
+    fprintf(f, "        }\n");
+    fprintf(f, "        buildTypes {\n");
+    fprintf(f, "            release {\n");
+    fprintf(f, "                minifyEnabled false\n");
+    fprintf(f, "                proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'\n");
+    fprintf(f, "                signingConfig signingConfigs.config\n");
+    fprintf(f, "            }\n");
+    fprintf(f, "        }\n");
+    fprintf(f, "        externalNativeBuild {\n");
+    fprintf(f, "            cmake {\n");
+    fprintf(f, "                path \"CMakeLists.txt\"\n");
+    fprintf(f, "            }\n");
+    fprintf(f, "        }\n");
+    fprintf(f, "    }\n");
+    fprintf(f, "    dependencies {\n");
+    fprintf(f, "        compile fileTree(include: ['*.jar'], dir: 'libs')\n");
+    fprintf(f, "        androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {\n");
+    fprintf(f, "            exclude group: 'com.android.support', module: 'support-annotations'\n");
+    fprintf(f, "        })\n");
+    fprintf(f, "        compile 'com.android.support:appcompat-v7:25.3.1'\n");
+    fprintf(f, "        compile 'com.android.support.constraint:constraint-layout:1.0.2'\n");
+    fprintf(f, "        testCompile 'junit:junit:4.12'\n");
+    fprintf(f, "    }\n");
+    fclose(f);
+    // CMakeLists.txt
+    fn = m_folder + "/CMakeLists.txt";
+    f = fopen(fn.c_str(), "w");
+    if (!f) return false;
+    fprintf(f, "cmake_minimum_required(VERSION 3.4.1)\n");
+    fprintf(f, "add_library( native-lib SHARED src/main/cpp/native-lib.cpp )\n");
+    fprintf(f, "find_library( log-lib log )\n");
+    fprintf(f, "set(CMAKE_CXX_FLAGS \"${CMAKE_CXX_FLAGS} -Wl,--allow-shlib-undefined -std=gnu++11\")\n");
+    fprintf(f, "add_library(lib_shared STATIC IMPORTED)\n");
+    fprintf(f, "set_target_properties(lib_shared PROPERTIES IMPORTED_LOCATION %s/shared_armeabi-v7a.a)\n", (const char*)m_folder.c_str());
+    fprintf(f, "add_library(lib_nlopt STATIC IMPORTED)\n");
+    fprintf(f, "set_target_properties(lib_nlopt PROPERTIES IMPORTED_LOCATION %s/nlopt_armeabi-v7a.a)\n", (const char*)m_folder.c_str());
+    fprintf(f, "add_library(lib_lpsolve STATIC IMPORTED)\n");
+    fprintf(f, "set_target_properties(lib_lpsolve PROPERTIES IMPORTED_LOCATION %s/lpsolve_armeabi-v7a.a)\n", (const char*)m_folder.c_str());
+    fprintf(f, "add_library(lib_solarpilot STATIC IMPORTED)\n");
+    fprintf(f, "set_target_properties(lib_solarpilot PROPERTIES IMPORTED_LOCATION %s/solarpilot_armeabi-v7a.a)\n", (const char*)m_folder.c_str());
+    fprintf(f, "add_library(lib_tcs STATIC IMPORTED)\n");
+    fprintf(f, "set_target_properties(lib_tcs PROPERTIES IMPORTED_LOCATION %s/tcs_armeabi-v7a.a)\n", (const char*)m_folder.c_str());
+    fprintf(f, "add_library(lib_ssc STATIC IMPORTED)\n");
+    fprintf(f, "set_target_properties(lib_ssc PROPERTIES IMPORTED_LOCATION %s/ssc_armeabi-v7a.a)\n", (const char*)m_folder.c_str());
+    fprintf(f, "target_link_libraries( native-lib android lib_ssc lib_tcs lib_solarpilot lib_lpsolve lib_nlopt lib_shared ${log-lib} )\n");
+   fclose(f);
 #endif
 	return true;
 }
@@ -7267,7 +7442,7 @@ bool CodeGen_android::SupportingFiles()
 bool CodeGen_android::Footer()
 {
 	fprintf(m_fp, "	ssc_data_free(data);\n");
-	fprintf(m_fp, "	return 0;\n");
+	fprintf(m_fp, "	return env->NewStringUTF(s.str().c_str());\n");
 	fprintf(m_fp, "}\n");
 	return true;
 }
