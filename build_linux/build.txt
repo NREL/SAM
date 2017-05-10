@@ -17,6 +17,7 @@ WX_PATH=$INSTALL_PATH/$VERSION
 WX_SYM=$INSTALL_PATH/wxbin
 
 export PATH=$WX_PATH/bin:$WX_PATH/include/wx-3.1/:$WX_SYM:$PATH
+
 b. path to wxWidgets library:
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$WX_PATH/lib
 
