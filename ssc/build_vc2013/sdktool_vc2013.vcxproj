@@ -156,7 +156,7 @@
       <AdditionalDependencies>wxbase31ud_net.lib;wxbase31ud_xml.lib;wxmsw31ud_webview.lib;wxmsw31ud_adv.lib;wxmsw31ud_html.lib;wxmsw31ud_aui.lib;wxmsw31ud_stc.lib;wxmsw31ud_core.lib;wxbase31ud.lib;wxscintillad.lib;wxtiffd.lib;wxjpegd.lib;wxpngd.lib;wxzlibd.lib;wxregexud.lib;wxexpatd.lib;kernel32.lib;user32.lib;gdi32.lib;comdlg32.lib;winspool.lib;winmm.lib;shell32.lib;comctl32.lib;ole32.lib;oleaut32.lib;uuid.lib;rpcrt4.lib;advapi32.lib;wsock32.lib;wininet.lib;winhttp.lib;libcurl.lib;wexvc13wx3d.lib;lkvc13wx3d.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(TargetPath)</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <AdditionalLibraryDirectories>$(WEXDIR)\build_vc2013\$(Platform)\$(Configuration)\;$(LKDIR)\build_vc2013\$(Platform)\$(Configuration)\;$(LKDIR);$(WEXDIR);$(WEXDIR)\build_vc2013\libcurl_ssl_win32\lib;$(WXMSW3)\lib\vc_lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)$(Platform)\$(Configuration)\;$(WEXDIR)\build_vc2013\$(Platform)\$(Configuration)\;$(LKDIR)\build_vc2013\$(Platform)\$(Configuration)\;$(LKDIR);$(WEXDIR);$(WEXDIR)\build_vc2013\libcurl_ssl_win32\lib;$(WXMSW3)\lib\vc_lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ProgramDatabaseFile>$(OutDir)\$(TargetName).pdb</ProgramDatabaseFile>
       <SubSystem>Windows</SubSystem>
@@ -202,7 +202,7 @@
       <AdditionalDependencies>wxbase31ud_net.lib;wxbase31ud_xml.lib;wxmsw31ud_webview.lib;wxmsw31ud_adv.lib;wxmsw31ud_html.lib;wxmsw31ud_aui.lib;wxmsw31ud_stc.lib;wxmsw31ud_core.lib;wxbase31ud.lib;wxscintillad.lib;wxtiffd.lib;wxjpegd.lib;wxpngd.lib;wxzlibd.lib;wxregexud.lib;wxexpatd.lib;kernel32.lib;user32.lib;gdi32.lib;comdlg32.lib;winspool.lib;winmm.lib;shell32.lib;comctl32.lib;ole32.lib;oleaut32.lib;uuid.lib;rpcrt4.lib;advapi32.lib;wsock32.lib;wininet.lib;winhttp.lib;libcurl.lib;wexvc13wx3x64d.lib;lkvc13wx3x64d.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(TargetPath)</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <AdditionalLibraryDirectories>$(WEXDIR)\build_vc2013\$(Platform)\$(Configuration)\;$(LKDIR)\build_vc2013\$(Platform)\$(Configuration)\;$(LKDIR);$(WEXDIR);$(WEXDIR)\build_vc2013\libcurl_ssl_x64\lib;$(WXMSW3)\lib\vc_x64_lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)$(Platform)\$(Configuration)\;$(WEXDIR)\build_vc2013\$(Platform)\$(Configuration)\;$(LKDIR)\build_vc2013\$(Platform)\$(Configuration)\;$(LKDIR);$(WEXDIR);$(WEXDIR)\build_vc2013\libcurl_ssl_x64\lib;$(WXMSW3)\lib\vc_x64_lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ProgramDatabaseFile>$(OutDir)\$(TargetName).pdb</ProgramDatabaseFile>
       <SubSystem>Windows</SubSystem>
@@ -243,7 +243,7 @@
       <AdditionalDependencies>wxbase31u_net.lib;wxbase31u_xml.lib;wxmsw31u_webview.lib;wxmsw31u_adv.lib;wxmsw31u_html.lib;wxmsw31u_aui.lib;wxmsw31u_stc.lib;wxmsw31u_core.lib;wxbase31u.lib;wxscintilla.lib;wxtiff.lib;wxjpeg.lib;wxpng.lib;wxzlib.lib;wxregexu.lib;wxexpat.lib;kernel32.lib;user32.lib;gdi32.lib;comdlg32.lib;winspool.lib;winmm.lib;shell32.lib;comctl32.lib;ole32.lib;oleaut32.lib;uuid.lib;rpcrt4.lib;advapi32.lib;wsock32.lib;wininet.lib;winhttp.lib;libcurl.lib;wexvc13wx3.lib;lkvc13wx3.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(TargetPath)</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <AdditionalLibraryDirectories>$(WEXDIR)\build_vc2013\$(Platform)\$(Configuration)\;$(LKDIR)\build_vc2013\$(Platform)\$(Configuration)\;$(SolutionDir)$(Platform)\$(Configuration)\;$(LKDIR);$(WEXDIR);$(WEXDIR)\build_vc2013\libcurl_ssl_win32\lib;$(WXMSW3)\lib\vc_lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)$(Platform)\$(Configuration)\;$(WEXDIR)\build_vc2013\$(Platform)\$(Configuration)\;$(LKDIR)\build_vc2013\$(Platform)\$(Configuration)\;$(SolutionDir)$(Platform)\$(Configuration)\;$(LKDIR);$(WEXDIR);$(WEXDIR)\build_vc2013\libcurl_ssl_win32\lib;$(WXMSW3)\lib\vc_lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ProgramDatabaseFile>$(OutDir)\$(TargetName).pdb</ProgramDatabaseFile>
       <SubSystem>Windows</SubSystem>
@@ -285,7 +285,7 @@
       <AdditionalDependencies>wxbase31u_net.lib;wxbase31u_xml.lib;wxmsw31u_webview.lib;wxmsw31u_adv.lib;wxmsw31u_html.lib;wxmsw31u_aui.lib;wxmsw31u_stc.lib;wxmsw31u_core.lib;wxbase31u.lib;wxscintilla.lib;wxtiff.lib;wxjpeg.lib;wxpng.lib;wxzlib.lib;wxregexu.lib;wxexpat.lib;kernel32.lib;user32.lib;gdi32.lib;comdlg32.lib;winspool.lib;winmm.lib;shell32.lib;comctl32.lib;ole32.lib;oleaut32.lib;uuid.lib;rpcrt4.lib;advapi32.lib;wsock32.lib;wininet.lib;winhttp.lib;libcurl.lib;wexvc13wx3x64.lib;lkvc13wx3x64.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(TargetPath)</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <AdditionalLibraryDirectories>$(WEXDIR)\build_vc2013\$(Platform)\$(Configuration)\;$(LKDIR)\build_vc2013\$(Platform)\$(Configuration)\;$(SolutionDir)$(Platform)\$(Configuration)\;$(WEXDIR)\build_vc2013\libcurl_ssl_x64\lib;$(WXMSW3)\lib\vc_x64_lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)$(Platform)\$(Configuration)\;$(WEXDIR)\build_vc2013\$(Platform)\$(Configuration)\;$(LKDIR)\build_vc2013\$(Platform)\$(Configuration)\;$(SolutionDir)$(Platform)\$(Configuration)\;$(WEXDIR)\build_vc2013\libcurl_ssl_x64\lib;$(WXMSW3)\lib\vc_x64_lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ProgramDatabaseFile>$(OutDir)\$(TargetName).pdb</ProgramDatabaseFile>
       <SubSystem>Windows</SubSystem>
