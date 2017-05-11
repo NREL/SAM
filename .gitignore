@@ -297,3 +297,8 @@ __pycache__/
 *.d
 *.bin
 *.mod
+
+# Specific SAM build ignores
+SDKtool
+TCSConsole
+dltest
