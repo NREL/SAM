@@ -5,7 +5,7 @@ LKLIB = lkuxwx3.a
 
 CC = gcc
 CXX = g++
-CFLAGS = -fPIC -Wall -O2 `wx-config-3 --cflags` -I../include -I../src/freetype/include -DFT2_BUILD_LIBRARY -DOPJ_STATIC -DFT_CONFIG_MODULES_H=\"slimftmodules.h\" -DFT_CONFIG_OPTIONS_H=\"slimftoptions.h\" -I$(LKDIR)/include
+CFLAGS = -fPIC -Wall -O2 `wx-config --cflags` -I../include -I../src/freetype/include -DFT2_BUILD_LIBRARY -DOPJ_STATIC -DFT_CONFIG_MODULES_H=\"slimftmodules.h\" -DFT_CONFIG_OPTIONS_H=\"slimftoptions.h\" -I$(LKDIR)/include
 CXXFLAGS = -std=c++0x $(CFLAGS)
 OBJCXXFLAGS = -std=c++0x
 

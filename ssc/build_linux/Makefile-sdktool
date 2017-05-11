@@ -7,8 +7,8 @@ LKLIB = $(LKDIR)/lkuxwx3.a
 
 CC = gcc
 CXX = g++
-CFLAGS =  -g -O2 -I. -I$(WEXDIR)/include -I$(LKDIR)/include -I../ssc -I../shared -DLK_USE_WXWIDGETS `wx-config-3 --cflags`
-LDFLAGS = -std=c++0x $(WEXLIB) $(LKLIB) `wx-config-3 --libs stc` `wx-config-3 --libs aui` `wx-config-3 --libs` -lm  -lfontconfig -ldl -lcurl 
+CFLAGS =  -g -O2 -I. -I$(WEXDIR)/include -I$(LKDIR)/include -I../ssc -I../shared -DLK_USE_WXWIDGETS `wx-config --cflags`
+LDFLAGS = -std=c++0x $(WEXLIB) $(LKLIB) `wx-config --libs stc` `wx-config --libs aui` `wx-config --libs` -lm  -lfontconfig -ldl -lcurl 
 CXXFLAGS=-std=c++0x $(CFLAGS)
 
 

@@ -28,10 +28,10 @@ Note, you'll need to either define INSTALL_PATH and VERSION in your .bashrc or t
 cd sam-private/build_linux
 make
 
-3. Run the SAM installer, which is in sam-private/SAMnt/build_linux
+Note, 'make' automatically runs the SAM installer, which is in sam-private/SAMnt/build_linux
 ./sam-linux-<version_number>.run
 
-Select the folder to install to and hit enter.
+Select the folder to install to and hit enter. 
 
 4. Run SAM
 From the installation folder, type ./SAM

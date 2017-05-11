@@ -18,9 +18,10 @@ else
 	WX_VERSION="$2"
 fi
 
-INSTALL_DIR=$WORKING_DIR/$WX_VERSION
+INSTALL_DIR=$WORKING_DIR/install
 WX_BIN_DIR=$INSTALL_DIR/bin
-WX_SYM_DIR=$WORKING_DIR/symbin
+WX_LIB_DIR=$INSTALL_DIR/lib
+WX_INC_DIR=$INSTALL_DIR/include
 WX_WIDGETS_NAME=wxWidgets-$WX_VERSION
 
 if [ ! -d "$WORKING_DIR" ]; then
@@ -50,10 +51,9 @@ if wget https://github.com/wxWidgets/wxWidgets/releases/download/v$WX_VERSION/$W
 	make
 	make install
 
-	ln -s "$WX_BIN_DIR/wx-config" "$WX_SYM_DIR/wx-config-3"
-	echo $WX_BIN_DIR
-	export PATH=$PATH:$WX_BIN_DIR:$WX_SYM_DIR
-
+	export PATH=$PATH:$WX_BIN_DIR:$WX_INC_DIR
+	export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$WX_LIB_DIR
+	cd $WORKING_DIR
 	exec /bin/bash
 fi
 
