@@ -219,6 +219,7 @@ public:
         vector<double> w_pb_target;  //optimized electricity generation
         vector<double> w_condf_expected;  //Expected condenser loss coefficient
         vector<double> wnet_lim_min; //minimum expected net power at time t before cycle gross falls before limit
+        vector<double> delta_rs;    //expected proportion of time step used for receiver start up
 
         int solve_iter;             //Number of iterations required to solve
         int solve_state;

@@ -40,8 +40,9 @@ public:
 		E_Q_DOT_HTF_OUT,		   //[MWt]
 		E_Q_DOT_FREEZE_PROT,       //[MWt]
 
-		E_M_DOT_LOOP,		//[kg/s]
-		E_M_DOT_FIELD,		//[kg/s]
+		E_M_DOT_LOOP,				//[kg/s]
+		E_M_DOT_FIELD_RECIRC,		//[kg/s]
+		E_M_DOT_FIELD_DELIVERED,	//[kg/s]
 		E_T_FIELD_COLD_IN,	//[C]
 		E_T_REC_COLD_IN,	//[C]
 		E_T_REC_HOT_OUT,	//[C]
@@ -251,6 +252,8 @@ private:
 	double m_dP_total;						//[bar] FIELD pressure drop
 	double m_W_dot_pump;					//[MWe] FIELD pumping power
 
+	bool m_is_m_dot_recirc;		//[-] True: trough is recirculationg HTF with interacting with other CSP components
+
 	bool m_ss_init_complete;	//[-] For TCS-based model in acceptance testing, has model achieved steady state at first timestep?
 
 	// Member variables that are used to store information for the EvacReceiver method
@@ -402,20 +405,17 @@ public:
 	virtual void off(const C_csp_weatherreader::S_outputs &weather,
 		const C_csp_solver_htf_1state &htf_state_in,
 		C_csp_collector_receiver::S_csp_cr_out_solver &cr_out_solver,
-		//C_csp_collector_receiver::S_csp_cr_out_report &cr_out_report,
 		const C_csp_solver_sim_info &sim_info);
 
 	virtual void startup(const C_csp_weatherreader::S_outputs &weather,
 		const C_csp_solver_htf_1state &htf_state_in,
 		C_csp_collector_receiver::S_csp_cr_out_solver &cr_out_solver,
-		//C_csp_collector_receiver::S_csp_cr_out_report &cr_out_report,
 		const C_csp_solver_sim_info &sim_info);
 
 	virtual void on(const C_csp_weatherreader::S_outputs &weather,
 		const C_csp_solver_htf_1state &htf_state_in,
 		double field_control,
 		C_csp_collector_receiver::S_csp_cr_out_solver &cr_out_solver,
-		//C_csp_collector_receiver::S_csp_cr_out_report &cr_out_report,
 		const C_csp_solver_sim_info &sim_info);
 
 	virtual void estimates(const C_csp_weatherreader::S_outputs &weather,

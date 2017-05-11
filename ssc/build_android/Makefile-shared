@@ -8,20 +8,32 @@ MYARCH=darwin-x86_64
 # Default NDK installation location for Android Studio 2.3
 NDK = /Users/imacuser/Library/Android/sdk/ndk-bundle
 
+
+
 # based on Android-23 for Samsung Galaxy 5
-PLATFORMVER=android-23
+PLATFORMVER=android-13
+TOOLCHAINPREFIX=x86_64
 GCCPREFIX=arm-linux-androideabi
+TOOLCHAINPREFIX=x86_64
+GCCPREFIX=x86_64-linux-android
 GCCVER=4.9
+ARCHPREFIX=arch-arm
+ARCHPREFIX=arch-x86
 #ARCH=armeabi-v7a
 
-CC=${NDK}/toolchains/${GCCPREFIX}-${GCCVER}/prebuilt/${MYARCH}/bin/${GCCPREFIX}-gcc
-CXX=${NDK}/toolchains/${GCCPREFIX}-${GCCVER}/prebuilt/${MYARCH}/bin/${GCCPREFIX}-g++
-RANLIB=${NDK}/toolchains/${GCCPREFIX}-${GCCVER}/prebuilt/${MYARCH}/bin/${GCCPREFIX}-ranlib
-AR=${NDK}/toolchains/${GCCPREFIX}-${GCCVER}/prebuilt/${MYARCH}/bin/${GCCPREFIX}-ar
+CC=${NDK}/toolchains/${TOOLCHAINPREFIX}-${GCCVER}/prebuilt/${MYARCH}/bin/${GCCPREFIX}-gcc
+CXX=${NDK}/toolchains/${TOOLCHAINPREFIX}-${GCCVER}/prebuilt/${MYARCH}/bin/${GCCPREFIX}-g++
+RANLIB=${NDK}/toolchains/${TOOLCHAINPREFIX}-${GCCVER}/prebuilt/${MYARCH}/bin/${GCCPREFIX}-ranlib
+AR=${NDK}/toolchains/${TOOLCHAINPREFIX}-${GCCVER}/prebuilt/${MYARCH}/bin/${GCCPREFIX}-ar
 
-CFLAGS = -fpic -isystem${NDK}/platforms/${PLATFORMVER}/arch-arm/usr/include -isystem${NDK}/sources/cxx-stl/gnu-libstdc++/${GCCVER}/include -isystem${NDK}/sources/cxx-stl/gnu-libstdc++/${GCCVER}/libs/${ARCH}/include
 
-CXXFLAGS = $(CFLAGS) -std=c++11 
+CFLAGS = --sysroot=/Users/imacuser/Library/Android/sdk/ndk-bundle/platforms/android-13/arch-arm -fPIC -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -mthumb -Wa,--noexecstack -Wformat -Werror=format-security   -std=gnu++11 -O0 -O0  -Wl,--build-id -Wl,--warn-shared-textrel -Wl,--fatal-warnings -Wl,--fix-cortex-a8 -Wl,--no-undefined -Wl,-z,noexecstack -Wl,-z,relro -Wl,-z,now -Wl,--build-id -Wl,--warn-shared-textrel -Wl,--fatal-warnings -Wl,--fix-cortex-a8 -Wl,--no-undefined -Wl,-z,noexecstack -Wl,-z,relro -Wl,-z,now -isystem${NDK}/platforms/${PLATFORMVER}/arch-arm/usr/include -isystem${NDK}/sources/cxx-stl/gnu-libstdc++/${GCCVER}/include -isystem${NDK}/sources/cxx-stl/gnu-libstdc++/${GCCVER}/libs/${ARCH}/include
+
+
+CFLAGS = --sysroot=${NDK}/platforms/${PLATFORMVER}/${ARCHPREFIX} -fPIC -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -Wa,--noexecstack -Wformat -Werror=format-security   -std=gnu++11 -O0 -O0  -Wl,--build-id -Wl,--warn-shared-textrel -Wl,--fatal-warnings -Wl,--fix-cortex-a8 -Wl,--no-undefined -Wl,-z,noexecstack -Wl,-z,relro -Wl,-z,now -Wl,--build-id -Wl,--warn-shared-textrel -Wl,--fatal-warnings -Wl,--fix-cortex-a8 -Wl,--no-undefined -Wl,-z,noexecstack -Wl,-z,relro -Wl,-z,now -isystem${NDK}/platforms/${PLATFORMVER}/${ARCHPREFIX}/usr/include -isystem${NDK}/sources/cxx-stl/gnu-libstdc++/${GCCVER}/include -isystem${NDK}/sources/cxx-stl/gnu-libstdc++/${GCCVER}/libs/${ARCH}/include
+
+
+CXXFLAGS = $(CFLAGS) -std=gnu++11 
 
 
 
@@ -52,7 +64,7 @@ OBJECTS = \
 	lib_pv_shade_loss_mpp.o
 
 
-TARGET=shared_${ARCH}.so
+TARGET=shared_${ARCH}.a
 
 $(TARGET):$(OBJECTS)
 	$(AR) rs $(TARGET) $(OBJECTS)

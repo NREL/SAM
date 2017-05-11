@@ -1,0 +1,202 @@
+/*  ********************************************************
+	This script helps merge new inverters in a CEC update
+	into the SAM library.
+	
+	Instructions:
+	
+	1.  Go to the CEC NSHP program website: 
+		http://www.gosolarcalifornia.org/tools/nshpcalculator/download_calculator.php
+		
+	2.  Download the newest Module/Inverter update for CECPV Calculator Version 5.0
+	
+		for the January 15, 2017 update, this was the file (updated 11/23/2016):
+		http://www.gosolarcalifornia.org/tools/nshpcalculator/archive5-0/Mod5-0h-Inv5-0h.zip
+		
+	3.  Unzip the file, and extract PVInverters.lkt
+	4.  Start the Engineering Equation Solver (EES) program
+	5.  From the 'Tables' menu, select 'Open Lookup Table', and open the PVInverters.lkt file
+	6.  From the 'Edit' menu, click 'Select All'
+	7.  From the 'Edit' menu, click 'Copy Table with Headers'
+	8.  Start Excel
+	9.  Paste copied data into Excel
+	9.  Save the file as cec_latest_tabbed.csv on your disk.
+		This is the file to select when prompted by the script.
+	
+	
+*/
+
+
+
+if (!yesno( 'CEC inverter database merge\n\nThis script assumes you have downloaded the CEC inverter database file from'
+ + ' the CEC website, opened the LKT file with EES, and copied the data in to Excel and '
+ + ' saved a copy on disk as .csv file.  For instructions, see the comments in the script.\n\nAre you ready to continue?' )) exit;
+
+file1 = choose_file('', 'Select current SAM CEC inverter database library file', 'CSV Files|*.csv');
+if ( file1 == '' ) exit;
+file2 = choose_file('', 'Select newest LKT-converted CEC inverter file', 'CSV Files|*.csv');
+if ( file2 == '' ) exit;
+
+outln('Loading inverter databases...');
+db1 = csvread( file1 );
+outln( 'Number of inverters in current SAM DB: ' + (#db1-3) );
+db2 = csvread( file2, {'skip'=2} );
+outln( 'Number of inverters in newest CEC DB: ' + #db2 );
+
+
+
+// catalogue current SAM database
+outln('Cataloguing SAM database into internal lookup table...');
+C = {};
+for( i=3;i<#db1;i++ )
+	C{db1[i][0]} = db1[i];
+	
+// fields needed Vac(V), Paco(W), Pdco(W), Vdco(V), Pso(W), C0(1/W), C1(1/V),
+// C2(1/V), C3(1/V), Pnt(W), Vdcmax(V), Idcmax(A), Mppt_low(V), Mppt_high(V)
+
+test_sample = alloc(18,3); // one test sample
+// 
+nadded = 0;
+missing_data = 0;
+paco_watts = 0;
+for( i=0;i<#db2;i++ )
+{
+	name = db2[i][0] + ": " + db2[i][1];
+	fields = db2[i];
+	
+	found = false;
+	
+	for (j=3;j<#db1 && !found; j++)
+	{
+		new_name = lower(name);
+		old_name = left(db1[j][0],#name);
+		if (lower(old_name) == new_name)
+			found = true;
+	}
+
+	if ( !found )
+	{
+		Vac = fields[7]; // nominal voltage
+		if (strpos(name,"208") > -1)
+			Vac = "208";
+		elseif (strpos(name,"240") > -1)
+			Vac = "240";
+		elseif (strpos(name,"277") > -1)
+			Vac = "277";
+		elseif (strpos(name,"480") > -1)
+			Vac = "480";
+		
+		
+		name = name + " " +  Vac + "V [CEC 2016]";
+		outln( 'adding ' + name);
+		for(j=0; j<6; j++)
+		{
+		// Vmin test data
+			test_sample[j][0] = fields[9+j]; //Pin
+			test_sample[j][1] = fields[6]; // Vmin
+			test_sample[j][2] = fields[15+j]; // eff
+		// Vmnom test data
+			test_sample[6+j][0] = fields[9+j]; //Pin
+			test_sample[6+j][1] = fields[7]; // Vnom
+			test_sample[6+j][2] = fields[22+j]; // eff
+		// Vmax test data
+			test_sample[12+j][0] = fields[9+j]; //Pin
+			test_sample[12+j][1] = fields[8]; // Vmax
+			test_sample[12+j][2] = fields[29+j]; // eff
+		}
+		// CEC provides Paco in kW mostly but some are incorrectly specified in W
+		Paco = to_real(fields[2]); 
+		// All SAM database power specifications in W
+		// Pin assumed correctly specified in kW 
+		// compare Paco to max power level and then adjust if necessary kW to W
+		Pmax = to_real(fields[14]);
+		if(Pmax <= 0)
+		{	
+			outln('Missing data for ' + name);
+			missing_data++;
+			continue;
+		}
+		if (Paco/Pmax > 100) 
+		{
+			Paco = Paco / 1000.0;
+			outln('Paco in W instead of kW for ' + name);
+			paco_watts++;
+		}
+		// convert to W for input to compute module and output to database
+		Paco = Paco * 1000.0;
+		//call inv_cec_cg module
+		obj = ssc_create();
+		ssc_var(obj, 'inv_cec_cg_paco', Paco);
+		ssc_var(obj, 'inv_cec_cg_sample_power_units', 1); // kW test data
+		ssc_var(obj, 'inv_cec_cg_test_samples', test_sample);
+		result= ssc_exec(obj, 'inv_cec_cg', {'show_dialog'=false, 'hold_dialog'=false} );
+		if(result != 0)
+		{	
+			msgbox('Failed to solve for inverter coefficients. Please check your inputs.');
+			return;
+		}
+		
+		Pdco = ssc_var(obj, 'Pdco');
+		Vdco = ssc_var(obj, 'Vdco');
+		Pso = ssc_var(obj, 'Pso');
+		c0 = ssc_var(obj, 'c0');
+		c1 = ssc_var(obj, 'c1');
+		c2 = ssc_var(obj, 'c2');
+		c3 = ssc_var(obj, 'c3');
+	
+		ssc_free(obj);
+
+		values = db1[3]; //first inverter in existing database
+		values[0] = name;
+		values[1] = Vac;
+		values[2] = Paco;
+		values[3] = Pdco;
+		values[4] = Vdco;
+		values[5] = Pso;
+		values[6] = c0;
+		values[7] = c1;
+		values[8] = c2;
+		values[9] = c3;
+		values[10] = to_real(fields[3]); // Pnt
+		if (values[10] < 0) values[10] = 0 - values[10];
+		values[11] = fields[8]; // Vdcmax = Vmax input
+		values[12] = to_real(fields[14]) / to_real(fields[8]); // Idcmax = max input power / vdcmax
+		values[13] = fields[6]; // Mppt low = Vlow
+ 		values[14] = fields[8]; // Mppt high = Vhigh
+		C{name} = values;
+		
+		nadded++;
+	}
+	
+}
+
+// sort
+outln('sorting new database by inverter name...');
+
+names = @C; // keys into the hash
+stable_sort(names);
+
+outln('building new inverter database...');
+// copy the top three lines of header info
+for( i=0;i<3;i++ )
+	db3[i] = db1[i];
+	
+// copy the sorted data
+for( i=0;i<#names;i++ )
+	db3[i+3] = C{names[i]};
+
+
+
+outln( nadded + ' inverters added to the SAM database' );
+outln( 'new size is ' + #db3 );
+
+outln( ' missing data for ' + missing_data);
+outln( ' Paco in W for ' + paco_watts);
+
+file3 = path_only(file1) + '/CEC Inverters Updated.csv';
+csvwrite( file3, db3 );
+msgbox('Wrote updated inverter database file:\n\n' + file3 + '\n\n'
++ 'Please verify manually by diff against the old database...');
+
+
+
+

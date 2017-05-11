@@ -602,7 +602,7 @@ public:
 		value(O_UA_RECUP_DES, m_UA_total_des);
 		value(O_UA_PHX_DES, m_UA_PHX_des);
 		value(O_T_COOLER_IN_DES, acc_des_par_cycle_dep.m_T_hot_in_des - 273.15);	//[C]
-		value(O_COOLER_VOLUME, ACC.get_hx_design_solved()->m_material_V);
+		value(O_COOLER_VOLUME, ACC.get_total_hx_volume());
 
 		m_startup_time = value(P_STARTUP_TIME);		//[hr] Time needed for power block startup
 		m_startup_frac = value(P_STARTUP_FRAC);		//[-] Fraction of design thermal power needed for startup

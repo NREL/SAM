@@ -9,7 +9,7 @@ MYARCH=darwin-x86_64
 NDK = /Users/imacuser/Library/Android/sdk/ndk-bundle
 
 # based on Android-23 for Samsung Galaxy 5
-PLATFORMVER=android-23
+PLATFORMVER=android-13
 GCCPREFIX=arm-linux-androideabi
 GCCVER=4.9
 #ARCH=armeabi-v7a
@@ -19,11 +19,12 @@ CXX=${NDK}/toolchains/${GCCPREFIX}-${GCCVER}/prebuilt/${MYARCH}/bin/${GCCPREFIX}
 RANLIB=${NDK}/toolchains/${GCCPREFIX}-${GCCVER}/prebuilt/${MYARCH}/bin/${GCCPREFIX}-ranlib
 AR=${NDK}/toolchains/${GCCPREFIX}-${GCCVER}/prebuilt/${MYARCH}/bin/${GCCPREFIX}-ar
 
-CFLAGS = -I../shared -I../nlopt -I../lpsolve -I../solarpilot -I../tcs -I../ssc -g -D__ANDROID__ -D__64BIT__  -isystem${NDK}/platforms/${PLATFORMVER}/arch-arm/usr/include -isystem${NDK}/sources/cxx-stl/gnu-libstdc++/${GCCVER}/include -isystem${NDK}/sources/cxx-stl/gnu-libstdc++/${GCCVER}/libs/${ARCH}/include
+CFLAGS = -I../shared -I../nlopt -I../lpsolve -I../solarpilot -I../tcs -I../ssc  -D__ANDROID__ -D__64BIT__  --sysroot=/Users/imacuser/Library/Android/sdk/ndk-bundle/platforms/android-13/arch-arm -fPIC -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -mthumb -Wa,--noexecstack -Wformat -Werror=format-security  -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -mthumb -Wa,--noexecstack -Wformat -Werror=format-security   -std=gnu++11 -O0 -O0  -Wl,--build-id -Wl,--warn-shared-textrel -Wl,--fatal-warnings -Wl,--fix-cortex-a8 -Wl,--no-undefined -Wl,-z,noexecstack -Wl,-z,relro -Wl,-z,now -Wl,--build-id -Wl,--warn-shared-textrel -Wl,--fatal-warnings -Wl,--fix-cortex-a8 -Wl,--no-undefined -Wl,-z,noexecstack -Wl,-z,relro -Wl,-z,now -isystem${NDK}/platforms/${PLATFORMVER}/arch-arm/usr/include -isystem${NDK}/sources/cxx-stl/gnu-libstdc++/${GCCVER}/include -isystem${NDK}/sources/cxx-stl/gnu-libstdc++/${GCCVER}/libs/${ARCH}/include
 
-CXXFLAGS = $(CFLAGS) -std=c++11 
 
-TARGET=ssc_${ARCH}.so
+CXXFLAGS = $(CFLAGS) -std=gnu++11 
+
+TARGET=ssc_${ARCH}.a
 
 
 OBJECTS = \

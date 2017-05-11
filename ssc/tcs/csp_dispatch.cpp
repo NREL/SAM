@@ -133,6 +133,7 @@ void csp_dispatch_opt::clear_output_arrays()
     outputs.w_condf_expected.clear();
 	outputs.w_pb_target.clear();
     outputs.wnet_lim_min.clear();
+    outputs.delta_rs.clear();
 }
 
 bool csp_dispatch_opt::check_setup(int nstep)
@@ -248,7 +249,7 @@ static void calculate_parameters(csp_dispatch_opt *optinst, unordered_map<std::s
     the dispatch optimization model. 
     */
 
-    //double T = nt ;
+        pars["T"] = nt ;
         pars["delta"] = optinst->params.dt;
         pars["Eu"] = optinst->params.e_tes_max ;
         pars["Er"] = optinst->params.e_rec_startup ;
@@ -260,6 +261,14 @@ static void calculate_parameters(csp_dispatch_opt *optinst, unordered_map<std::s
         pars["Qc"] = optinst->params.e_pb_startup_cold / ceil(optinst->params.dt_pb_startup_cold/pars["delta"]) / pars["delta"];
         pars["Qb"] = optinst->params.q_pb_standby ;
         pars["Lr"] = optinst->params.w_rec_pump ;
+        pars["Lc"] = optinst->params.w_cycle_pump;
+        pars["Wh"] = optinst->params.w_track;
+        pars["Wb"] = optinst->params.w_cycle_standby;
+        pars["Ehs"] = optinst->params.w_stow;
+        pars["Wrsb"] = optinst->params.w_rec_ht;
+        pars["eta_cycle"] = optinst->params.eta_cycle_ref;
+        pars["Qrsd"] = 0.;      //<< not yet modeled, passing temporarily as zero
+
 
         pars["s0"] = optinst->params.e_tes_init ;
         pars["ursu0"] = 0.;
@@ -275,9 +284,9 @@ static void calculate_parameters(csp_dispatch_opt *optinst, unordered_map<std::s
         pars["M"] = 1.e6;
         pars["W_dot_cycle"] = optinst->params.q_pb_des * optinst->params.eta_cycle_ref;
 		
-		pars["wlim_min"] = 9.e99;
+		/*pars["wlim_min"] = 9.e99;
 		for (int t = 0; t < nt; t++)
-			pars["wlim_min"] = fmin(pars["wlim_min"], optinst->w_lim.at(t));
+			pars["wlim_min"] = fmin(pars["wlim_min"], optinst->w_lim.at(t));*/
 
         //calculate Z parameters
         pars["Z_1"] = 0.;
@@ -326,6 +335,31 @@ static void calculate_parameters(csp_dispatch_opt *optinst, unordered_map<std::s
 
         pars["Wdotu"] = (pars["Qu"] - limit1) * pars["etap"];
         pars["Wdotl"] = (pars["Ql"] - limit1) * pars["etap"];
+
+        // Adjust wlim if specified value is too low to permit cycle operation
+        optinst->outputs.wnet_lim_min.resize(nt);
+        optinst->outputs.delta_rs.resize(nt);
+        for(int t=0; t<nt; t++)
+        {
+		    double wmin = (pars["Ql"] * pars["etap"]*optinst->outputs.eta_pb_expected.at(t) / optinst->params.eta_cycle_ref) + 
+                            (pars["Wdotu"] - pars["etap"]*pars["Qu"])*optinst->outputs.eta_pb_expected.at(t) / optinst->params.eta_cycle_ref; // Electricity generation at minimum pb thermal input
+		    double max_parasitic = 
+                    pars["Lr"] * optinst->outputs.q_sfavail_expected.at(t) 
+                + (optinst->params.w_rec_ht / optinst->params.dt) 
+                + (optinst->params.w_stow / optinst->params.dt) 
+                + optinst->params.w_track 
+                + optinst->params.w_cycle_standby 
+                + optinst->params.w_cycle_pump*pars["Qu"]
+                + optinst->outputs.w_condf_expected.at(t)*pars["W_dot_cycle"];  // Largest possible parasitic load at time t
+
+            //save for writing to ampl
+            optinst->outputs.wnet_lim_min.at(t) =  wmin - max_parasitic;
+            if( t < nt-1 )
+            {
+                double delta_rec_startup = min(1., max(optinst->params.e_rec_startup / max(optinst->outputs.q_sfavail_expected.at(t + 1)*pars["delta"], 1.), optinst->params.dt_rec_startup / pars["delta"]));
+                optinst->outputs.delta_rs.at(t) = delta_rec_startup;
+            }
+        }
 
         //temporary fixed constants
         pars["disp_time_weighting"] = optinst->params.disp_time_weighting;
@@ -1091,10 +1125,12 @@ bool csp_dispatch_opt::optimize()
                 add_constraintex(lp, 1, row, col, LE, P["Eu"]);
 
 				//max cycle thermal input in time periods where cycle operates and receiver is starting up
+                //outputs.delta_rs.resize(nt);
 				if (t < nt - 1)
 				{
-					double delta_rec_startup = min(1., max(params.e_rec_startup / max(outputs.q_sfavail_expected.at(t + 1)*P["delta"], 1.), params.dt_rec_startup / P["delta"]));
-					double t_rec_startup = delta_rec_startup * P["delta"];
+					/*double delta_rec_startup = min(1., max(params.e_rec_startup / max(outputs.q_sfavail_expected.at(t + 1)*P["delta"], 1.), params.dt_rec_startup / P["delta"]));
+                    outputs.delta_rs.at(t) = delta_rec_startup;*/
+					double t_rec_startup = outputs.delta_rs.at(t) * P["delta"];
 					double large = 5.0*params.q_pb_max;
 					int i = 0;
 
@@ -1132,22 +1168,23 @@ bool csp_dispatch_opt::optimize()
 
 			for (int t = 0; t<nt; t++)
 			{
-				// Adjust wlim if specified value is too low to permit cycle operation
-				double wmin = (P["Ql"] * P["etap"]*outputs.eta_pb_expected.at(t) / params.eta_cycle_ref) + (P["Wdotu"] - P["etap"]*P["Qu"])*outputs.eta_pb_expected.at(t) / params.eta_cycle_ref; // Electricity generation at minimum pb thermal input
-				double max_parasitic = 
-                      P["Lr"] * outputs.q_sfavail_expected.at(t) 
-                    + (params.w_rec_ht / params.dt) 
-                    + (params.w_stow / params.dt) 
-                    + params.w_track 
-                    + params.w_cycle_standby 
-                    + params.w_cycle_pump*P["Qu"]
-                    + outputs.w_condf_expected.at(t)*P["W_dot_cycle"];  // Largest possible parasitic load at time t
+				//// Adjust wlim if specified value is too low to permit cycle operation
+				//double wmin = (P["Ql"] * P["etap"]*outputs.eta_pb_expected.at(t) / params.eta_cycle_ref) + (P["Wdotu"] - P["etap"]*P["Qu"])*outputs.eta_pb_expected.at(t) / params.eta_cycle_ref; // Electricity generation at minimum pb thermal input
+				//double max_parasitic = 
+    //                  P["Lr"] * outputs.q_sfavail_expected.at(t) 
+    //                + (params.w_rec_ht / params.dt) 
+    //                + (params.w_stow / params.dt) 
+    //                + params.w_track 
+    //                + params.w_cycle_standby 
+    //                + params.w_cycle_pump*P["Qu"]
+    //                + outputs.w_condf_expected.at(t)*P["W_dot_cycle"];  // Largest possible parasitic load at time t
 
-                //save for writing to ampl
-                outputs.wnet_lim_min.push_back( wmin - max_parasitic );
+    //            //save for writing to ampl
+    //            outputs.wnet_lim_min.push_back( wmin - max_parasitic );
                 
                 //check if cycle should be able to operate
-				if (wmin - max_parasitic > w_lim.at(t))		// power cycle operation is impossible at t
+				//if (wmin - max_parasitic > w_lim.at(t))		// power cycle operation is impossible at t
+                if( outputs.wnet_lim_min.at(t) > w_lim.at(t) )
                 {
                     if(w_lim.at(t) > 0)
                         params.messages->add_message(C_csp_messages::NOTICE, "Power cycle operation not possible at time "+ util::to_string(t+1) + ": power limit below minimum operation");                    
@@ -1647,22 +1684,31 @@ std::string csp_dispatch_opt::write_ampl()
         fout << "param etaamb := \n";   //power block ambient adjustment
         for(int t=0; t<nt; t++)
             fout << t+1 << "\t" << outputs.eta_pb_expected.at(t) << "\n";
-        fout << ";";
+        fout << ";\n\n";
 
         //net power limit
         fout << "param Wdotnet := \n";
         for(int t=0; t<nt; t++)
             fout << t+1 << "\t" << w_lim.at(t) << "\n";
+        fout << ";\n\n";
         
         //condenser parasitic loss coefficient
         fout << "param etac := \n";
         for(int t=0; t<nt; t++)
             fout << t+1 << "\t" << outputs.w_condf_expected.at(t) << "\n";
+        fout << ";\n\n";
 
         //cycle net production lower limit
         fout << "param wnet_lim_min := \n";
         for(int t=0; t<nt; t++)
             fout << t+1 << "\t" << outputs.wnet_lim_min.at(t) << "\n";
+        fout << ";\n\n";
+
+        //cycle net production lower limit
+        fout << "param delta_rs := \n";
+        for(int t=0; t<nt; t++)
+            fout << t+1 << "\t" << outputs.delta_rs.at(t) << "\n";
+        fout << ";\n\n";
 
         fout.close();
     }

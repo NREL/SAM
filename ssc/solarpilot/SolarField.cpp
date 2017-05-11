@@ -1426,6 +1426,17 @@ bool SolarField::DoLayout( SolarField *SF, sim_results *results, WeatherData *wd
 
 	int nsim = sim_last - sim_first + 1;
     
+    //reserve memory
+    try
+    {
+        results->reserve(nsim);
+    }
+    catch(...)
+    {
+        SF->getSimInfoObject()->addSimulationNotice("Error allocating memory for layout results vector");
+    }
+
+
     DateTime DT;
 	
     SF->getSimInfoObject()->setTotalSimulationCount(nsim);
@@ -3769,9 +3780,9 @@ int SolarField::calcNumRequiredSimulations(){
 			//TODO
 			throw spexception("Subset hours: Method not currently supported");
 		}
-		else if(des_sim_detail == var_solarfield::DES_SIM_DETAIL::ANNUAL_SIMULATION){
-			nsim = _var_map->amb.weather_file.val.size();
-		}
+		//else if(des_sim_detail == var_solarfield::DES_SIM_DETAIL::ANNUAL_SIMULATION){
+			//nsim = _var_map->amb.weather_file.val.size();
+		//}
 		else{
 			nsim = _var_map->sf.sim_step_data.Val().size();	//If other type of simulation, use the data established in the design select method
 		}

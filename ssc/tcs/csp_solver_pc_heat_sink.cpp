@@ -7,7 +7,10 @@ static C_csp_reported_outputs::S_output_info S_output_info[]=
 {
 	{C_pc_heat_sink::E_Q_DOT_HEAT_SINK, C_csp_reported_outputs::TS_WEIGHTED_AVE},
 	{C_pc_heat_sink::E_W_DOT_PUMPING, C_csp_reported_outputs::TS_WEIGHTED_AVE},
-
+	{C_pc_heat_sink::E_M_DOT_HTF, C_csp_reported_outputs::TS_WEIGHTED_AVE},
+	{C_pc_heat_sink::E_T_HTF_IN, C_csp_reported_outputs::TS_WEIGHTED_AVE},
+	{C_pc_heat_sink::E_T_HTF_OUT, C_csp_reported_outputs::TS_WEIGHTED_AVE},
+	
 	csp_info_invalid
 };
 
@@ -86,7 +89,12 @@ void C_pc_heat_sink::init(C_csp_power_cycle::S_solved_params &solved_params)
 	solved_params.m_eta_des = 0.0;			//[-] Same
 	solved_params.m_q_dot_des = ms_params.m_q_dot_des;	//[MWt]
 	solved_params.m_q_startup = 0.0;		//[MWt-hr] Assuming heat sink does not require any startup energy
+	
+	
 	solved_params.m_max_frac = m_max_frac;	//[-] For now (set in constructor), make this really large so heat sink can handle any collector-receiver output
+	solved_params.m_max_frac = 1.0;			//[-]
+
+	
 	solved_params.m_cutoff_frac = 0.0;		//[-] Similarly, don't put a floor on the thermal power input
 	solved_params.m_sb_frac = 0.0;			//[-] So, don't need standby
 	solved_params.m_T_htf_hot_ref = ms_params.m_T_htf_hot_des;	//[C]
@@ -174,7 +182,6 @@ void C_pc_heat_sink::call(const C_csp_weatherreader::S_outputs &weather,
 	C_csp_solver_htf_1state &htf_state_in,
 	const C_csp_power_cycle::S_control_inputs &inputs,
 	C_csp_power_cycle::S_csp_pc_out_solver &out_solver,
-	//C_csp_power_cycle::S_csp_pc_out_report &out_report,
 	const C_csp_solver_sim_info &sim_info)
 {
 	double T_htf_hot = htf_state_in.m_temp;		//[C]
@@ -186,18 +193,9 @@ void C_pc_heat_sink::call(const C_csp_weatherreader::S_outputs &weather,
 	double q_dot_htf = m_dot_htf*cp_htf*(T_htf_hot - ms_params.m_T_htf_cold_des)/1.E3;		//[MWt]
 
 	out_solver.m_P_cycle = 0.0;		//[MWe] No electricity generation
-	//out_report.m_eta = 0.0;			//[-] No electricity generation
 	out_solver.m_T_htf_cold = ms_params.m_T_htf_cold_des;		//[C]
-	//out_report.m_m_dot_makeup = 0.0;	//[kg/hr] Assume Heat Sink does not require makeup water
-	//out_report.m_m_dot_demand = 0.0;	//[kg/hr]
 	out_solver.m_m_dot_htf = m_dot_htf*3600.0;	//[kg/hr] Return inlet mass flow rate
-	//out_report.m_m_dot_htf_ref = m_m_dot_htf_des*3600.0;	//[kg/hr] Design HTF mass flow rate
 	out_solver.m_W_cool_par = 0.0;		//[MWe] No cooling load
-	//out_report.m_P_ref = 0.0;			//[MWe] No electricity generation at design
-	//out_report.m_f_hrsys = 0.0;			//[-] No cooling load
-	//out_report.m_P_cond = 0.0;			//[Pa] No condenser
-
-	//out_report.m_q_startup = 0.0;		//[MWt] No startup energy, for now
 
 	out_solver.m_time_required_su = 0.0;	//[s] No startup requirements, for now
 	out_solver.m_q_dot_htf = q_dot_htf;		//[MWt] Thermal power form HTF
@@ -207,6 +205,9 @@ void C_pc_heat_sink::call(const C_csp_weatherreader::S_outputs &weather,
 
 	mc_reported_outputs.value(E_Q_DOT_HEAT_SINK, q_dot_htf);	//[MWt]
 	mc_reported_outputs.value(E_W_DOT_PUMPING, out_solver.m_W_dot_htf_pump);	//[MWe]
+	mc_reported_outputs.value(E_M_DOT_HTF, m_dot_htf);			//[kg/s]
+	mc_reported_outputs.value(E_T_HTF_IN, T_htf_hot);			//[C]
+	mc_reported_outputs.value(E_T_HTF_OUT, out_solver.m_T_htf_cold);	//[C]
 
 	return;
 }

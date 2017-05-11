@@ -416,7 +416,6 @@ WeatherData::WeatherData( const WeatherData &wd) :
 {
 	//Recreate the pointer array
 	initPointers();
-
 }
 
 WeatherData::WeatherData(){	
@@ -435,7 +434,7 @@ void WeatherData::initPointers(){
 	v_ptrs.at(6) = &V_wind;
 	v_ptrs.at(7) = &Step_weight;
 	//Initialize the number of items
-	_N_items = 0;
+	_N_items = Day.size();
 }
 
 void WeatherData::resizeAll(int size, double val){ 
