@@ -1,4 +1,4 @@
-//#define __BETARELEASE__ 1  // comment this line out to disable beta option
+#define __BETARELEASE__ 1  // comment this line out to disable beta option
 //#define __BETAWILLEXPIRE__ 1 // comment this line out to disable expiration of beta
 //#define __BETAEXPIRE_DAY__ 30
 //#define __BETAEXPIRE_MONTH__ wxDateTime::Jun
@@ -103,6 +103,7 @@ static const char *beta_disclaimer =
 static SamApp::ver releases[] = {
 //please clarify the reason for the new version in a comment. Examples: public release, variable changes, internal release, public beta release, etc.
 //the top version should always be the current working version
+		{ 2017, 5, 11 }, // Beta release for Ty - no expiration
 		{ 2017, 4, 11 }, // Beta release for SAM for India
 		{ 2017, 2, 28 }, // Beta release for SAM for India
 		{ 2017, 2, 14 }, // Beta release for Mark (internal)
@@ -1906,6 +1907,9 @@ extern void RegisterReportObjectTypes();
 		}
 		return false;
 	}
+#elif defined(__BETARELEASE__)
+		wxMessageBox(wxString::Format("Thank you for using SAM Beta Version %d.%d.%d.\n\n",
+			SamApp::VersionMajor(), SamApp::VersionMinor(), SamApp::VersionMicro()) + "\n" + wxString(beta_disclaimer));
 #endif
 	
 	wxString devoverride;
