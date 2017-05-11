@@ -26,7 +26,8 @@ static C_csp_reported_outputs::S_output_info S_output_info[] =
 	{C_csp_trough_collector_receiver::E_Q_DOT_FREEZE_PROT, C_csp_reported_outputs::TS_WEIGHTED_AVE},
 
 	{C_csp_trough_collector_receiver::E_M_DOT_LOOP, C_csp_reported_outputs::TS_WEIGHTED_AVE},
-	{C_csp_trough_collector_receiver::E_M_DOT_FIELD, C_csp_reported_outputs::TS_WEIGHTED_AVE},
+	{C_csp_trough_collector_receiver::E_M_DOT_FIELD_RECIRC, C_csp_reported_outputs::TS_WEIGHTED_AVE},
+	{C_csp_trough_collector_receiver::E_M_DOT_FIELD_DELIVERED, C_csp_reported_outputs::TS_WEIGHTED_AVE},
 	{C_csp_trough_collector_receiver::E_T_FIELD_COLD_IN, C_csp_reported_outputs::TS_WEIGHTED_AVE},
 	{C_csp_trough_collector_receiver::E_T_REC_COLD_IN, C_csp_reported_outputs::TS_WEIGHTED_AVE},
 	{C_csp_trough_collector_receiver::E_T_REC_HOT_OUT, C_csp_reported_outputs::TS_WEIGHTED_AVE},
@@ -161,6 +162,8 @@ C_csp_trough_collector_receiver::C_csp_trough_collector_receiver()
 
 	m_dP_total = std::numeric_limits<double>::quiet_NaN();		//[bar]
 	m_W_dot_pump = std::numeric_limits<double>::quiet_NaN();	//[MWe]
+
+	m_is_m_dot_recirc = false;
 
 	m_W_dot_sca_tracking = std::numeric_limits<double>::quiet_NaN();	//[MWe]
 
@@ -1405,8 +1408,8 @@ void C_csp_trough_collector_receiver::loop_optical_eta_off()
 	m_dni_costh = 0.0;
 	m_W_dot_sca_tracking = 0.0;		//[MWe]
 
-	m_control_defocus = 0.0;
-	m_component_defocus = 0.0;
+	m_control_defocus = 1.0;
+	m_component_defocus = 1.0;
 
 	m_q_dot_inc_sf_tot = 0.0;		//[MWt]
 
@@ -1731,7 +1734,16 @@ void C_csp_trough_collector_receiver::set_output_value()
 	mc_reported_outputs.value(E_Q_DOT_FREEZE_PROT, m_q_dot_freeze_protection);			//[MWt]
 
 	mc_reported_outputs.value(E_M_DOT_LOOP, m_m_dot_htf_tot/(double)m_nLoops);		//[kg/s]
-	mc_reported_outputs.value(E_M_DOT_FIELD, m_m_dot_htf_tot);						//[kg/s]
+	if (m_is_m_dot_recirc)
+	{
+		mc_reported_outputs.value(E_M_DOT_FIELD_RECIRC, m_m_dot_htf_tot);		//[kg/s]
+		mc_reported_outputs.value(E_M_DOT_FIELD_DELIVERED, 0.0);				//[kg/s]
+	}
+	else
+	{
+		mc_reported_outputs.value(E_M_DOT_FIELD_RECIRC, 0.0);					//[kg/s]
+		mc_reported_outputs.value(E_M_DOT_FIELD_DELIVERED, m_m_dot_htf_tot);	//[kg/s]
+	}
 
 	mc_reported_outputs.value(E_T_FIELD_COLD_IN, m_T_sys_c_t_int_fullts - 273.15);			//[C]
 	mc_reported_outputs.value(E_T_REC_COLD_IN, m_T_htf_c_rec_in_t_int_fullts - 273.15);		//[C]
@@ -1748,12 +1760,13 @@ void C_csp_trough_collector_receiver::set_output_value()
 void C_csp_trough_collector_receiver::off(const C_csp_weatherreader::S_outputs &weather,
 	const C_csp_solver_htf_1state &htf_state_in,
 	C_csp_collector_receiver::S_csp_cr_out_solver &cr_out_solver,
-	//C_csp_collector_receiver::S_csp_cr_out_report &cr_out_report,
 	const C_csp_solver_sim_info &sim_info)
 {
 	// Always reset last temps
 	reset_last_temps();
 	
+	m_is_m_dot_recirc = true;
+
 	// Get optical properties
 		// Should reflect that the collector is not tracking and probably (but not necessarily) DNI = 0
 	loop_optical_eta_off();
@@ -1867,7 +1880,12 @@ void C_csp_trough_collector_receiver::off(const C_csp_weatherreader::S_outputs &
 	// Are any of these required by the solver for system-level iteration?
 	cr_out_solver.m_q_startup = 0.0;						//[MWt-hr] Receiver thermal output used to warm up the receiver
 	cr_out_solver.m_time_required_su = sim_info.ms_ts.m_step;					//[s] Time required for receiver to startup - at least the entire timestep because it's off
-	cr_out_solver.m_m_dot_salt_tot = m_dot_htf_loop*3600.0*(double)m_nLoops;	//[kg/hr] Total HTF mass flow rate
+	
+	// 5.8.17, twn: Don't report a component *delivered* mass flow rate if trough is recirculating...
+	//              .... and not passing HTF to other components
+	//cr_out_solver.m_m_dot_salt_tot = m_dot_htf_loop*3600.0*(double)m_nLoops;	//[kg/hr] Total HTF mass flow rate
+	cr_out_solver.m_m_dot_salt_tot = 0.0;	//[kg/hr] Total HTF mass flow rate
+	
 	cr_out_solver.m_q_thermal = 0.0;						//[MWt] No available receiver thermal output
 		// 7.12.16: Return timestep-end or timestep-integrated-average?
 		// If multiple recirculation steps, then need to calculate average of timestep-integrated-average
@@ -1888,11 +1906,12 @@ void C_csp_trough_collector_receiver::off(const C_csp_weatherreader::S_outputs &
 void C_csp_trough_collector_receiver::startup(const C_csp_weatherreader::S_outputs &weather,
 	const C_csp_solver_htf_1state &htf_state_in,
 	C_csp_collector_receiver::S_csp_cr_out_solver &cr_out_solver,
-	//C_csp_collector_receiver::S_csp_cr_out_report &cr_out_report,
 	const C_csp_solver_sim_info &sim_info)
 {
 	// Always reset last temps
 	reset_last_temps();
+
+	m_is_m_dot_recirc = true;
 
 	// Get optical performance
 	loop_optical_eta(weather, sim_info);
@@ -2035,8 +2054,13 @@ void C_csp_trough_collector_receiver::startup(const C_csp_weatherreader::S_outpu
 		// Startup time is calculated here
 	cr_out_solver.m_time_required_su = time_required_su;	//[s]
 		// 	Need to be sure this value is correct..., but controller doesn't use it in CR_SU (confirmed)
-	cr_out_solver.m_m_dot_salt_tot = m_m_dot_htf_tot*3600.0;//[kg/hr] Total HTF mass flow rate
-		// Should not be available thermal output if receiver is in start up, but controller doesn't use it in CR_SU (confirmed)
+	
+	// 5.8.17, twn: Don't report a component *delivered* mass flow rate if trough is recirculating...
+	//              .... and not passing HTF to other components
+	//cr_out_solver.m_m_dot_salt_tot = m_m_dot_htf_tot*3600.0;	//[kg/hr] Total HTF mass flow rate
+	cr_out_solver.m_m_dot_salt_tot = 0.0;	//[kg/hr]
+
+	// Should not be available thermal output if receiver is in start up, but controller doesn't use it in CR_SU (confirmed)
 	cr_out_solver.m_q_thermal = 0.0;						//[MWt] No available receiver thermal output
 		// 7.12.16: Return timestep-end or timestep-integrated-average?
 		// If multiple recirculation steps, then need to calculate average of timestep-integrated-average
@@ -2122,6 +2146,8 @@ void C_csp_trough_collector_receiver::on(const C_csp_weatherreader::S_outputs &w
 	// Always reset last temps
 	reset_last_temps();
 	
+	m_is_m_dot_recirc = false;
+
 	// Get optical performance (no defocus applied in this method)
 		// This returns m_q_SCA with NO defocus
 	loop_optical_eta(weather, sim_info);

@@ -13,6 +13,15 @@ SSCLIB = $(SSCDIR)/build_osx/ssc.dylib
 IOSLIB = $(SSCDIR)/build_ios/libssc.a
 SSCAPI = $(SSCDIR)/ssc/sscapi.h
 
+# use make -j8 ANDROID=1 to copy these files.
+ANDSHARED = $(SSCDIR)/build_android/shared_armeabi-v7a.a
+ANDNLOPT = $(SSCDIR)/build_android/nlopt_armeabi-v7a.a
+ANDLSOLVE = $(SSCDIR)/build_android/lpsolve_armeabi-v7a.a
+ANDSP = $(SSCDIR)/build_android/solarpilot_armeabi-v7a.a
+ANDTCS = $(SSCDIR)/build_android/tcs_armeabi-v7a.a
+ANDSSC = $(SSCDIR)/build_android/ssc_armeabi-v7a.a
+
+
 CC = gcc -mmacosx-version-min=10.9
 CXX = g++ -mmacosx-version-min=10.9
 CFLAGS = -g -DLK_USE_WXWIDGETS -I. -I$(SRCDIR) -I$(WEXDIR)/include -I$(LKDIR)/include -I$(SSCDIR) `wx-config-3 --cflags`  -DWX_PRECOMP -O2 -arch x86_64  -fno-common -DWX_PRECOMP -O2 -arch x86_64  -fno-common
@@ -88,6 +97,15 @@ $(TARGET): $(OBJECTS) $(WEXLIB) $(LKLIB) $(SSCLIB)
 	cp $(SSCLIB) $(TARGET).app/Contents/Frameworks/ssc.dylib
 ifeq ($(IOS),1)
 	cp $(IOSLIB) $(TARGET).app/Contents/Frameworks/libssc.a
+	cp $(SSCAPI) $(TARGET).app/Contents/Frameworks/sscapi.h
+endif
+ifeq ($(ANDROID),1)
+	cp $(ANDSHARED) $(TARGET).app/Contents/Frameworks/shared_armeabi-v7a.a
+	cp $(ANDNLOPT) $(TARGET).app/Contents/Frameworks/nlopt_armeabi-v7a.a
+	cp $(ANDLSOLVE) $(TARGET).app/Contents/Frameworks/lpsolve_armeabi-v7a.a
+	cp $(ANDSP) $(TARGET).app/Contents/Frameworks/solarpilot_armeabi-v7a.a
+	cp $(ANDTCS) $(TARGET).app/Contents/Frameworks/tcs_armeabi-v7a.a
+	cp $(ANDSSC) $(TARGET).app/Contents/Frameworks/ssc_armeabi-v7a.a
 	cp $(SSCAPI) $(TARGET).app/Contents/Frameworks/sscapi.h
 endif
 	install_name_tool -id @executable_path/../Frameworks/ssc.dylib $(TARGET).app/Contents/Frameworks/ssc.dylib

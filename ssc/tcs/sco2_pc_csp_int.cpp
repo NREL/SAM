@@ -155,7 +155,7 @@ void C_sco2_recomp_csp::design_core()
 	// Set air cooler design parameters that are dependent on the cycle design solution
 	ms_air_cooler_des_par_dep.m_T_hot_in_des = ms_des_solved.ms_rc_cycle_solved.m_temp[C_RecompCycle::LTR_LP_OUT];
 	ms_air_cooler_des_par_dep.m_P_hot_in_des = ms_des_solved.ms_rc_cycle_solved.m_pres[C_RecompCycle::LTR_LP_OUT];
-	ms_air_cooler_des_par_dep.m_m_dot_total = ms_des_solved.ms_rc_cycle_solved.m_m_dot_t;
+	ms_air_cooler_des_par_dep.m_m_dot_total = ms_des_solved.ms_rc_cycle_solved.m_m_dot_mc;		//[kg/s]
 		// This pressure drop is currently uncoupled from the cycle design
 	ms_air_cooler_des_par_dep.m_delta_P_des = ms_des_par.m_deltaP_cooler_frac*ms_des_solved.ms_rc_cycle_solved.m_pres[C_RecompCycle::MC_OUT];
 	ms_air_cooler_des_par_dep.m_T_hot_out_des = ms_des_solved.ms_rc_cycle_solved.m_temp[C_RecompCycle::MC_IN];
@@ -2205,7 +2205,7 @@ int C_sco2_recomp_csp::C_sco2_csp_od::operator()(S_f_inputs inputs, S_f_outputs 
 	outputs.m_Q_dot_in_ND = mpc_sco2_rc->get_od_solved()->ms_rc_cycle_od_solved.m_Q_dot
 								/ Q_dot_in_design;
 
-	outputs.m_W_dot_cooling_ND = 1.0;
+	outputs.m_W_dot_cooling_ND = outputs.m_W_dot_gross_ND;
 
 	outputs.m_m_dot_water_ND = 1.0;	
 

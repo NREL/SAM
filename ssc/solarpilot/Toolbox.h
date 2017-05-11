@@ -668,10 +668,10 @@ public:
 class WeatherData
 {
 	std::vector<std::vector<double>*> v_ptrs;
-	void initPointers();
 public:
 	WeatherData();
 
+	void initPointers();
 	//Copy constructor
 	WeatherData( const WeatherData &wd );
 

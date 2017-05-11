@@ -285,6 +285,7 @@ void C_pc_Rankine_indirect_224::init(C_csp_power_cycle::S_solved_params &solved_
 
 		if(ms_params.m_W_dot_cooling_des != ms_params.m_W_dot_cooling_des || ms_params.m_W_dot_cooling_des < 0.0 )
 		{
+			ms_params.m_W_dot_cooling_des = 0.0;
 			m_error_msg = util::format("The cycle cooling electric parasitic at design input for the user-defined power cycle was either not defined or negative."
 									" It was reset to 0.0 for the timeseries simulation");
 			mc_csp_messages.add_message(C_csp_messages::WARNING, m_error_msg);
@@ -292,6 +293,7 @@ void C_pc_Rankine_indirect_224::init(C_csp_power_cycle::S_solved_params &solved_
 
 		if(ms_params.m_m_dot_water_des != ms_params.m_m_dot_water_des || ms_params.m_m_dot_water_des < 0.0 )
 		{
+			ms_params.m_m_dot_water_des = 0.0;
 			m_error_msg = util::format("The cycle water use at design input for the user-defined power cycle was either not defined or negative."
 				" It was reset to 0.0 for the timeseries simulation");
 			mc_csp_messages.add_message(C_csp_messages::WARNING, m_error_msg);

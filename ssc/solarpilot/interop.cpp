@@ -116,7 +116,9 @@ void interop::GenerateSimulationWeatherData(var_map &V, int design_method, Array
 	//case LAYOUT_DETAIL::FULL_ANNUAL:
     case var_solarfield::DES_SIM_DETAIL::ANNUAL_SIMULATION:
 	{	//4) Annual simulation=3;
-		*wdatvar = V.amb.wf_data.val; //vset["ambient"][0]["wf_data"].value;
+		*wdatvar = WeatherData(V.amb.wf_data.val); //vset["ambient"][0]["wf_data"].value;
+        wdatvar->initPointers();
+
 		V.amb.sim_time_step.Setval(3600.);
 		break;
 	}

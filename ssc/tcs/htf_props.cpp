@@ -355,7 +355,7 @@ double HTFProperties::dens(double T_K, double P)
 double HTFProperties::visc(double T_K)
 {
 	/*Inputs: temperature [K]
-	Outputs: viscosity [kg/m-s] or [Pa-s]
+	Outputs: dynamic viscosity [kg/m-s] or [Pa-s]
 	Converted to c++ from Fortran code Type 229 in November 2012 by Ty Neises
 	Original author: Michael J. Wagner */
 

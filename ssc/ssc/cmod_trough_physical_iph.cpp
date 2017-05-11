@@ -32,6 +32,7 @@ static var_info _cm_vtab_trough_physical_process_heat[] = {
     { SSC_INPUT,        SSC_NUMBER,      "T_loop_in_des",             "Design loop inlet temperature",                                                    "C",            "",               "solar_field",    "*",                       "",                      "" },
     { SSC_INPUT,        SSC_NUMBER,      "T_loop_out",                "Target loop outlet temperature",                                                   "C",            "",               "solar_field",    "*",                       "",                      "" },
     { SSC_INPUT,        SSC_NUMBER,      "q_pb_design",               "Design heat input to power block",                               "MWt",          "",             "controller",     "*",                       "",                      "" },
+	{ SSC_INPUT,        SSC_NUMBER,      "tshours",                   "Equivalent full-load thermal storage hours",                        "hr",           "",            "system_design",  "*",                       "",                      "" },
 
 
 
@@ -130,6 +131,18 @@ static var_info _cm_vtab_trough_physical_process_heat[] = {
 		// Heat Sink
     { SSC_INPUT,        SSC_NUMBER,      "pb_pump_coef",              "Pumping power to move 1kg of HTF through PB loop",               "kW/kg",        "",             "controller",     "*",                       "",                      "" },
 
+		// TES parameters - general
+	{ SSC_INPUT,        SSC_NUMBER,      "init_hot_htf_percent", "Initial fraction of avail. vol that is hot",                        "%",            "",            "TES",            "*",              "",            "" },
+	{ SSC_INPUT,        SSC_NUMBER,      "h_tank",               "Total height of tank (height of HTF when tank is full",             "m",            "",            "TES",            "*",              "",            "" },
+	{ SSC_INPUT,        SSC_NUMBER,      "cold_tank_max_heat",   "Rated heater capacity for cold tank heating",                       "MW",           "",            "TES",            "*",              "",            "" },    		
+    { SSC_INPUT,        SSC_NUMBER,      "u_tank",               "Loss coefficient from the tank",                                    "W/m2-K",       "",            "TES",            "*",              "",            "" },
+    { SSC_INPUT,        SSC_NUMBER,      "tank_pairs",           "Number of equivalent tank pairs",                                   "-",            "",            "TES",            "*",              "INTEGER",     "" },
+    { SSC_INPUT,        SSC_NUMBER,      "cold_tank_Thtr",       "Minimum allowable cold tank HTF temp",                              "C",            "",            "TES",            "*",              "",            "" },
+		// TES parameters - 2 tank																																										 
+	{ SSC_INPUT,        SSC_NUMBER,      "h_tank_min",           "Minimum allowable HTF height in storage tank",                      "m",            "",            "TES_2tank",      "*",              "",            "" },	
+	{ SSC_INPUT,        SSC_NUMBER,      "hot_tank_Thtr",        "Minimum allowable hot tank HTF temp",                               "C",            "",            "TES_2tank",      "*",              "",            "" },
+    { SSC_INPUT,        SSC_NUMBER,      "hot_tank_max_heat",    "Rated heater capacity for hot tank heating",                        "MW",           "",            "TES_2tank",      "*",              "",            "" },
+	
 
 	// *************************************************************************************************
 	//       OUTPUTS
@@ -168,37 +181,55 @@ static var_info _cm_vtab_trough_physical_process_heat[] = {
 	{ SSC_OUTPUT,   SSC_ARRAY,   "q_dot_htf_sf_out",  "Field thermal power leaving in HTF",        "MWt",    "",          "trough_field",        "*",        "",     "" },  
 	{ SSC_OUTPUT,   SSC_ARRAY,   "q_dot_freeze_prot", "Field freeze protection required",          "MWt",    "",          "trough_field",        "*",        "",     "" },
 
-	{ SSC_OUTPUT,   SSC_ARRAY,   "m_dot_loop",   "Receiver mass flow rate",                   "kg/s",    "",              "trough_field",        "*",        "",     "" },  
-	{ SSC_OUTPUT,   SSC_ARRAY,   "m_dot_field",  "Field total mass flow rate",                "kg/s",    "",              "trough_field",        "*",        "",     "" },  
+	{ SSC_OUTPUT,   SSC_ARRAY,   "m_dot_loop",      "Receiver mass flow rate",                    "kg/s",    "",          "trough_field",        "*",        "",     "" },  
+	{ SSC_OUTPUT,   SSC_ARRAY,   "m_dot_field_recirc",  "Field total mass flow recirculated",     "kg/s",    "",          "trough_field",        "*",        "",     "" },  
+	{ SSC_OUTPUT,   SSC_ARRAY,   "m_dot_field_delivered","Field total mass flow delivered",       "kg/s",    "",          "trough_field",        "*",        "",     "" },  
 	{ SSC_OUTPUT,   SSC_ARRAY,   "T_field_cold_in", "Field timestep-averaged inlet temperature",  "C",       "",          "trough_field",        "*",        "",     "" },
 	{ SSC_OUTPUT,   SSC_ARRAY,   "T_rec_cold_in",   "Loop timestep-averaged inlet temperature",   "C",       "",          "trough_field",        "*",        "",     "" },
 	{ SSC_OUTPUT,   SSC_ARRAY,   "T_rec_hot_out",   "Loop timestep-averaged outlet temperature",  "C",       "",          "trough_field",        "*",        "",     "" },
 	{ SSC_OUTPUT,   SSC_ARRAY,   "T_field_hot_out", "Field timestep-averaged outlet temperature", "C",       "",          "trough_field",        "*",        "",     "" },
 	{ SSC_OUTPUT,   SSC_ARRAY,   "deltaP_field",    "Field pressure drop",                    "bar",         "",          "trough_field",        "*",        "",     "" },
 
-	{ SSC_OUTPUT,   SSC_ARRAY,   "W_dot_sca_track", "Field collector tracking power",         "MWe",     "",          "trough_field",        "*",        "",     "" },
-	{ SSC_OUTPUT,   SSC_ARRAY,   "W_dot_field_pump","Field htf pumping power",                "MWe",     "",          "trough_field",        "*",        "",     "" },
+	{ SSC_OUTPUT,   SSC_ARRAY,   "W_dot_sca_track", "Field collector tracking power",         "MWe",     "",  "trough_field",        "*",        "",     "" },
+	{ SSC_OUTPUT,   SSC_ARRAY,   "W_dot_field_pump","Field htf pumping power",                "MWe",     "",  "trough_field",        "*",        "",     "" },
 	
 		// Heat Sink
-    { SSC_OUTPUT,       SSC_ARRAY,       "q_dot_to_heat_sink", "Heat sink thermal power",     "MWt",    "",          "Heat_Sink",      "*",                       "",                      "" },
-    { SSC_OUTPUT,       SSC_ARRAY,       "W_dot_pc_pump",      "Heat sink pumping power",     "MWe",    "",          "Heat_Sink",      "*",                       "",                      "" },
+    { SSC_OUTPUT,   SSC_ARRAY,   "q_dot_to_heat_sink", "Heat sink thermal power",             "MWt",     "",  "Heat_Sink",      "*",  "",  "" },
+    { SSC_OUTPUT,   SSC_ARRAY,   "W_dot_pc_pump",      "Heat sink pumping power",             "MWe",     "",  "Heat_Sink",      "*",  "",  "" },
+	{ SSC_OUTPUT,   SSC_ARRAY,   "m_dot_htf_heat_sink","Heat sink HTF mass flow",             "kg/s",    "",  "Heat_Sink",      "*",  "",  "" },
+	{ SSC_OUTPUT,   SSC_ARRAY,   "T_heat_sink_in",     "Heat sink HTF inlet temp",            "C",       "",  "Heat_Sink",      "*",  "",  "" },
+	{ SSC_OUTPUT,   SSC_ARRAY,   "T_heat_sink_out",    "Heat sink HTF outlet temp",           "C",       "",  "Heat_Sink",      "*",  "",  "" },
+
+		// Thermal energy storage outputs
+	{ SSC_OUTPUT,   SSC_ARRAY,   "tank_losses",        "TES thermal losses",                    "MWt",   "",  "TES",            "*",  "",  "" },
+	{ SSC_OUTPUT,   SSC_ARRAY,   "q_tes_heater",       "TES freeze protection power",           "MWe",   "",  "TES",            "*",  "",  "" },
+	{ SSC_OUTPUT,   SSC_ARRAY,   "T_tes_hot",          "TES hot temperature",                   "C",     "",  "TES",            "*",  "",  "" },
+	{ SSC_OUTPUT,   SSC_ARRAY,   "T_tes_cold",         "TES cold temperature",                  "C",     "",  "TES",            "*",  "",  "" },
+	{ SSC_OUTPUT,   SSC_ARRAY,   "q_dc_tes",           "TES discharge thermal power",           "MWt",   "",  "TES",            "*",  "",  "" },
+	{ SSC_OUTPUT,   SSC_ARRAY,   "q_ch_tes",           "TES charge thermal power",              "MWt",   "",  "TES",            "*",  "",  "" },
+	{ SSC_OUTPUT,   SSC_ARRAY,   "e_ch_tes",           "TES charge state",                      "MWht",  "",  "TES",            "*",  "",  "" },
+	{ SSC_OUTPUT,   SSC_ARRAY,   "m_dot_tes_dc",       "TES discharge mass flow rate",          "kg/s",  "",  "TES",            "*",  "",  "" },
+	{ SSC_OUTPUT,   SSC_ARRAY,   "m_dot_tes_ch",       "TES charge mass flow rate",             "kg/s",  "",  "TES",            "*",  "",  "" },
 	
 		// SYSTEM
     { SSC_OUTPUT,       SSC_ARRAY,       "W_dot_parasitic_tot", "System total electrical parasitic", "MWe",    "",          "Heat_Sink",      "*",                       "",                      "" },
-
 
 		// Controller
 	{ SSC_OUTPUT,       SSC_ARRAY,       "op_mode_1",            "1st operating mode",                                           "",             "",            "Solver",        "*",                       "",           "" },
 	{ SSC_OUTPUT,       SSC_ARRAY,       "op_mode_2",            "2nd op. mode, if applicable",                                  "",             "",            "Solver",        "*",                       "",           "" },
 	{ SSC_OUTPUT,       SSC_ARRAY,       "op_mode_3",            "3rd op. mode, if applicable",                                  "",             "",            "Solver",        "*",                       "",           "" },
-	
+	{ SSC_OUTPUT,       SSC_ARRAY,       "m_dot_balance",        "Relative mass flow balance error",                             "",             "",            "Controller",     "*",                       "",           "" },
+	{ SSC_OUTPUT,       SSC_ARRAY,       "q_balance",            "Relative energy balance error",                                "",             "",            "Controller",     "*",                       "",           "" },
+
 
 		// Annual Outputs
 	{ SSC_OUTPUT,       SSC_NUMBER,      "annual_energy",                   "Annual Net Thermal Energy Production w/ avail derate",       "kWt-hr",  "",  "Post-process",    "*",   "",   "" },
-	{ SSC_OUTPUT,       SSC_NUMBER,      "annual_field_energy",             "Annual Gross Thermal Energy Production w/ avail derate",     "kWt-hr",  "",  "Post-process",    "*",   "",   "" },
+	{ SSC_OUTPUT,       SSC_NUMBER,      "annual_gross_energy",             "Annual Gross Thermal Energy Production w/ avail derate",     "kWt-hr",  "",  "Post-process",    "*",   "",   "" },
 	{ SSC_OUTPUT,       SSC_NUMBER,      "annual_thermal_consumption",      "Annual thermal freeze protection required",                  "kWt-hr",  "",  "Post-process",    "*",   "",   "" },
 	{ SSC_OUTPUT,       SSC_NUMBER,      "annual_electricity_consumption",  "Annual electricity consumptoin w/ avail derate",             "kWe-hr",  "",  "Post-process",    "*",   "",   "" },
 	{ SSC_OUTPUT,       SSC_NUMBER,      "annual_total_water_use",          "Total Annual Water Usage",                                   "m^3",     "",  "Post-process",    "*",   "",   "" },
+	{ SSC_OUTPUT,       SSC_NUMBER,      "annual_field_freeze_protection",  "Annual thermal power for field freeze protection",     "kWt-hr",  "",  "Post-process",    "*",   "",   "" },
+	{ SSC_OUTPUT,       SSC_NUMBER,      "annual_tes_freeze_protection",    "Annual thermal power for TES freeze protection",     "kWt-hr",  "",  "Post-process",    "*",   "",   "" },
 
 
 	var_info_invalid };
@@ -447,7 +478,8 @@ public:
 		c_trough.mc_reported_outputs.assign(C_csp_trough_collector_receiver::E_Q_DOT_FREEZE_PROT, allocate("q_dot_freeze_prot", n_steps_fixed), n_steps_fixed);
 
 		c_trough.mc_reported_outputs.assign(C_csp_trough_collector_receiver::E_M_DOT_LOOP, allocate("m_dot_loop", n_steps_fixed), n_steps_fixed);
-		c_trough.mc_reported_outputs.assign(C_csp_trough_collector_receiver::E_M_DOT_FIELD, allocate("m_dot_field", n_steps_fixed), n_steps_fixed);
+		c_trough.mc_reported_outputs.assign(C_csp_trough_collector_receiver::E_M_DOT_FIELD_RECIRC, allocate("m_dot_field_recirc", n_steps_fixed), n_steps_fixed);
+		c_trough.mc_reported_outputs.assign(C_csp_trough_collector_receiver::E_M_DOT_FIELD_DELIVERED, allocate("m_dot_field_delivered", n_steps_fixed), n_steps_fixed);
 		c_trough.mc_reported_outputs.assign(C_csp_trough_collector_receiver::E_T_FIELD_COLD_IN, allocate("T_field_cold_in", n_steps_fixed), n_steps_fixed);
 		c_trough.mc_reported_outputs.assign(C_csp_trough_collector_receiver::E_T_REC_COLD_IN, allocate("T_rec_cold_in", n_steps_fixed), n_steps_fixed);
 		c_trough.mc_reported_outputs.assign(C_csp_trough_collector_receiver::E_T_REC_HOT_OUT, allocate("T_rec_hot_out", n_steps_fixed), n_steps_fixed);
@@ -477,6 +509,10 @@ public:
 		// Allocate heat sink outputs
 		c_heat_sink.mc_reported_outputs.assign(C_pc_heat_sink::E_Q_DOT_HEAT_SINK, allocate("q_dot_to_heat_sink", n_steps_fixed), n_steps_fixed);
 		c_heat_sink.mc_reported_outputs.assign(C_pc_heat_sink::E_W_DOT_PUMPING, allocate("W_dot_pc_pump", n_steps_fixed), n_steps_fixed);
+		c_heat_sink.mc_reported_outputs.assign(C_pc_heat_sink::E_M_DOT_HTF, allocate("m_dot_htf_heat_sink", n_steps_fixed), n_steps_fixed);
+		c_heat_sink.mc_reported_outputs.assign(C_pc_heat_sink::E_T_HTF_IN, allocate("T_heat_sink_in", n_steps_fixed), n_steps_fixed);
+		c_heat_sink.mc_reported_outputs.assign(C_pc_heat_sink::E_T_HTF_OUT, allocate("T_heat_sink_out", n_steps_fixed), n_steps_fixed);
+
 
 		// ********************************
 		// ********************************
@@ -486,8 +522,32 @@ public:
 		C_csp_two_tank_tes storage;
 		C_csp_two_tank_tes::S_params *tes = &storage.ms_params;
 			// Hardcode NO TES for now
-		tes->m_ts_hours = 0.0;		//[hr]
+		tes->m_field_fl = c_trough.m_Fluid;	//[-]
+		tes->m_tes_fl = tes->m_field_fl;	//[-]
+		tes->m_is_hx = false;		//[-]
+		tes->m_W_dot_pc_design = c_heat_sink.ms_params.m_q_dot_des;	//[MWt]
+		tes->m_eta_pc = 1.0;
+		tes->m_solarm = as_double("solar_mult");	//[-]
+
+		tes->m_ts_hours = as_double("tshours");		//[hr]
 	
+		tes->m_h_tank = as_double("h_tank");		//[m]
+		tes->m_u_tank = as_double("u_tank");		//[W/m^2-K]
+		tes->m_tank_pairs = as_integer("tank_pairs");		//[-]
+		tes->m_hot_tank_Thtr = as_double("hot_tank_Thtr");	//[C]
+		tes->m_hot_tank_max_heat = as_double("hot_tank_max_heat");		//[MWt]
+		tes->m_cold_tank_Thtr = as_double("cold_tank_Thtr");	//[C]
+		tes->m_cold_tank_max_heat = as_double("cold_tank_max_heat");		//[MWt]
+		tes->m_dt_hot = 0.0;								// MSPT assumes direct storage, so no user input here: hardcode = 0.0
+		tes->m_T_field_in_des = T_loop_in_des;		//[C]
+		tes->m_T_field_out_des = T_loop_out_des;	//[C]
+		tes->m_T_tank_hot_ini = T_loop_out_des;		//[C]
+		tes->m_T_tank_cold_ini = T_loop_in_des;		//[C]
+		tes->m_h_tank_min = as_double("h_tank_min");		//[m]
+		tes->m_f_V_hot_ini = as_double("init_hot_htf_percent");		//[-]
+		tes->m_htf_pump_coef = as_double("pb_pump_coef");		//[kWe/kg/s]
+
+
 		// ********************************
 		// ********************************
 		// Now add the TOU class
@@ -522,11 +582,23 @@ public:
 		csp_solver.mc_reported_outputs.assign(C_csp_solver::C_solver_outputs::WSPD, allocate("wspd", n_steps_fixed), n_steps_fixed);
 		csp_solver.mc_reported_outputs.assign(C_csp_solver::C_solver_outputs::PRES, allocate("pres", n_steps_fixed), n_steps_fixed);
 
+		csp_solver.mc_reported_outputs.assign(C_csp_solver::C_solver_outputs::TES_Q_DOT_LOSS, allocate("tank_losses", n_steps_fixed), n_steps_fixed);
+		csp_solver.mc_reported_outputs.assign(C_csp_solver::C_solver_outputs::TES_W_DOT_HEATER, allocate("q_tes_heater", n_steps_fixed), n_steps_fixed);
+		csp_solver.mc_reported_outputs.assign(C_csp_solver::C_solver_outputs::TES_T_HOT, allocate("T_tes_hot", n_steps_fixed), n_steps_fixed);
+		csp_solver.mc_reported_outputs.assign(C_csp_solver::C_solver_outputs::TES_T_COLD, allocate("T_tes_cold", n_steps_fixed), n_steps_fixed);
+		csp_solver.mc_reported_outputs.assign(C_csp_solver::C_solver_outputs::TES_Q_DOT_DC, allocate("q_dc_tes", n_steps_fixed), n_steps_fixed);
+		csp_solver.mc_reported_outputs.assign(C_csp_solver::C_solver_outputs::TES_Q_DOT_CH, allocate("q_ch_tes", n_steps_fixed), n_steps_fixed);
+		csp_solver.mc_reported_outputs.assign(C_csp_solver::C_solver_outputs::TES_E_CH_STATE, allocate("e_ch_tes", n_steps_fixed), n_steps_fixed);
+		csp_solver.mc_reported_outputs.assign(C_csp_solver::C_solver_outputs::TES_M_DOT_DC, allocate("m_dot_tes_dc", n_steps_fixed), n_steps_fixed);
+		csp_solver.mc_reported_outputs.assign(C_csp_solver::C_solver_outputs::TES_M_DOT_CH, allocate("m_dot_tes_ch", n_steps_fixed), n_steps_fixed);
+
 		csp_solver.mc_reported_outputs.assign(C_csp_solver::C_solver_outputs::W_DOT_NET, allocate("W_dot_parasitic_tot", n_steps_fixed), n_steps_fixed);
 		
 		csp_solver.mc_reported_outputs.assign(C_csp_solver::C_solver_outputs::OP_MODE_1, allocate("op_mode_1", n_steps_fixed), n_steps_fixed);
 		csp_solver.mc_reported_outputs.assign(C_csp_solver::C_solver_outputs::OP_MODE_2, allocate("op_mode_2", n_steps_fixed), n_steps_fixed);
 		csp_solver.mc_reported_outputs.assign(C_csp_solver::C_solver_outputs::OP_MODE_3, allocate("op_mode_3", n_steps_fixed), n_steps_fixed);
+		csp_solver.mc_reported_outputs.assign(C_csp_solver::C_solver_outputs::ERR_M_DOT, allocate("m_dot_balance", n_steps_fixed), n_steps_fixed);
+		csp_solver.mc_reported_outputs.assign(C_csp_solver::C_solver_outputs::ERR_Q_DOT, allocate("q_balance", n_steps_fixed), n_steps_fixed);
 
 
 		int out_type = -1;
@@ -592,24 +664,44 @@ public:
 
 		ssc_number_t *p_gen = allocate("gen", n_steps_fixed);
 		ssc_number_t *p_W_dot_par_tot_haf = allocate("W_dot_par_tot_haf", n_steps_fixed);
+		ssc_number_t *p_q_dot_defocus_est = allocate("q_dot_defocus_est", n_steps_fixed);
+
 		ssc_number_t *p_W_dot_parasitic_tot = as_array("W_dot_parasitic_tot", &count);
-		if( count != n_steps_fixed )
-			throw exec_error("trough_physical_iph", "The number of fixed steps does not match the length of output data arrays");
+		if (count != n_steps_fixed)
+			throw exec_error("trough_physical_iph", "The number of fixed steps does not match the length of output data arrays1");
+		
+		ssc_number_t *p_SCAs_def = as_array("SCAs_def", &count);
+		if (count != n_steps_fixed)
+			throw exec_error("trough_physical_iph", "The number of fixed steps does not match the length of output data arrays2");
+
+		ssc_number_t *p_q_dot_htf_sf_out = as_array("q_dot_htf_sf_out", &count);
+		if (count != n_steps_fixed)
+			throw exec_error("trough_physical_iph", "The number of fixed steps does not match the length of output data arrays3");
+
 		for(int i = 0; i < n_steps_fixed; i++)
 		{
 			size_t hour = ceil(p_time_final_hr[i]);
 			p_gen[i] = p_q_dot_heat_sink[i] * (ssc_number_t)haf(hour) * 1.E3;		//[kWt]
 			p_W_dot_parasitic_tot[i] *= -1.0;			//[kWe] Label is total parasitics, so change to a positive value
 			p_W_dot_par_tot_haf[i] = p_W_dot_parasitic_tot[i] * (ssc_number_t)haf(hour) * 1.E3;		//[kWe]
+			p_q_dot_defocus_est[i] = (1.0 - p_SCAs_def[i])*p_q_dot_htf_sf_out[i];	//[MWt]
 		}
 
-		accumulate_annual_for_year("gen", "annual_field_energy", sim_setup.m_report_step / 3600.0, steps_per_hour);	//[kWt-hr]
-		accumulate_annual_for_year("W_dot_par_tot_haf", "annual_electricity_consumption", sim_setup.m_report_step/3600.0, steps_per_hour);	//[kWe-hr]
-		accumulate_annual_for_year("q_dot_freeze_prot", "annual_thermal_consumption", sim_setup.m_report_step/3600.0*1.E3, steps_per_hour);	//[kWt-hr]
+		// Monthly outputs
 
-		ssc_number_t annual_field_energy = as_number("annual_field_energy");		//[kWt-hr]
-		ssc_number_t annual_thermal_consumption = as_number("annual_thermal_consumption");	//[kWt-hr]
-		assign("annual_energy", annual_field_energy - annual_thermal_consumption);	//[kWt-hr]
+
+
+		// Annual outputs
+		accumulate_annual_for_year("gen", "annual_gross_energy", sim_setup.m_report_step / 3600.0, steps_per_hour);	//[kWt-hr]
+		accumulate_annual_for_year("W_dot_par_tot_haf", "annual_electricity_consumption", sim_setup.m_report_step/3600.0, steps_per_hour);	//[kWe-hr]
+		
+		ssc_number_t annual_field_fp = accumulate_annual_for_year("q_dot_freeze_prot", "annual_field_freeze_protection", sim_setup.m_report_step / 3600.0*1.E3, steps_per_hour);	//[kWt-hr]
+		ssc_number_t annual_tes_fp = accumulate_annual_for_year("q_tes_heater", "annual_tes_freeze_protection", sim_setup.m_report_step / 3600.0*1.E3, steps_per_hour);	//[kWt-hr]
+
+		ssc_number_t annual_gross_energy = as_number("annual_gross_energy");		//[kWt-hr]
+		ssc_number_t annual_thermal_consumption = annual_field_fp + annual_tes_fp;	//[kWt-hr]
+		assign("annual_thermal_consumption", annual_thermal_consumption);
+		assign("annual_energy", annual_gross_energy - annual_thermal_consumption);	//[kWt-hr]
 
 		// Calculate water use
 		double A_aper_tot = csp_solver.get_cr_aperture_area();	//[m2]

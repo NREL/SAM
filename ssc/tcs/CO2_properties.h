@@ -119,8 +119,8 @@ int CO2_HS( double H, double S, CO2_state * state );
 int CO2_TQ( double T, double Q, CO2_state * state );
 
 // Miscellaneous functions (will return -9.0e99 if the input is not valid).
-double CO2_visc( double D, double T);
-double CO2_cond( double D, double T);
+double CO2_visc( double D, double T);	//(uPa-s)
+double CO2_cond( double D, double T);	//(W/m-K)
 
 namespace N_co2_props
 {
