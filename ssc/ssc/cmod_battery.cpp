@@ -383,14 +383,15 @@ battstor::battstor( compute_module &cm, bool setup_model, int replacement_option
 			}
 			else
 				target_power = batt_vars->target_power;
-			
+
 			if (target_power.size() != nrec)
 				throw compute_module::exec_error("battery", "invalid number of target powers, must be equal to number of records in weather file");
+
+			// update for entire analysis period per user support issue 4/25/17
+			for (size_t iy = 1; iy < nyears; iy++)
+				for (size_t ir = 0; ir < nrec; ir++)
+					target_power.push_back(target_power[ir]);
 		}
-		// update for entire analysis period per user support issue 4/25/17
-		for (size_t iy = 1; iy < nyears; iy++)
-			for (size_t ir = 0; ir < nrec; ir++)
-				target_power.push_back(target_power[ir]);
 	}
 	else if (batt_vars->batt_dispatch == dispatch_t::MANUAL)
 	{
