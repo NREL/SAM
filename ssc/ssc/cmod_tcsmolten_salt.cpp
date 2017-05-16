@@ -1357,9 +1357,9 @@ public:
 			{
 				size_t n_wlim_series = -1;
 				ssc_number_t* wlim_series = as_array("wlim_series", &n_wlim_series);
-				if (n_wlim_series != 8760)
-					throw exec_error("tcsmolten_salt", "Invalid net electricity generation limit series dimension. Matrix must have 8760 rows.");
-				for (int i = 0; i < 8760; i++)
+				if (n_wlim_series != n_steps_full)
+					throw exec_error("tcsmolten_salt", "Invalid net electricity generation limit series dimension. Matrix must have "+util::to_string(n_steps_full)+" rows.");
+				for (int i = 0; i < n_steps_full; i++)
 					tou.mc_dispatch_params.m_w_lim_full.at(i) = (double)wlim_series[i];
 			}
 
