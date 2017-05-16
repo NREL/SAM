@@ -1,9 +1,9 @@
 
 //*************************************************************************************
 //PV Reliability and Performance Model Version 2.0 
-//Inputs and Control Script -- DRAFT --
+//Inputs and Control Script -- BETA --
 //Janine Freeman, NREL
-//21 April 2017
+//16 May 2017
 //*************************************************************************************
 
 //Supporting functions located in a separate file, do not modify this line unless the function script is located in a different folder
@@ -46,7 +46,9 @@ import 'PVRPM_Function.lk';
 
 //----Number of stochastic realizations to be run--------------------------------------------------------------
 	num_realizations = 3; //must be 2 or greater
-	p_value = 50; //PXX is what will get calculated
+	p_value = 60; //PXX is what will get calculated
+	conf_interval = 60; //XX % confidence interval around the mean will be calculated
+	xl_path = 'C:/Users/jfreeman/documents/samnt/samnt/pvrpm_janine_draft/confidence_interval.xlsx'; //FULL path where the excel file included with the PVRPM script is stored
 
 
 //run pre-checks on the case and system configuration to make sure that it will run appropriately
@@ -211,7 +213,7 @@ global meta = null;
 	
 //----Trackers-------------------------------------------------------------------------------------------------
 	// Only required for tracking systems, otherwise must be deleted or commented out
-	
+	/*
 	meta.tracker.name = 'tracker';
 	meta.tracker.can_fail = true;
 	meta.tracker.can_repair = true;
@@ -222,7 +224,7 @@ global meta = null;
 	meta.tracker.failure[0].cost = 2000; //present day tracker cost, will be inflated
 	meta.tracker.repair[0].distribution = 'lognormal';
 	meta.tracker.repair[0].parameters = [30, 10]; //mean, std, in days
-
+	*/
 	
 
 //********************************************************************************************************************************************************************************
