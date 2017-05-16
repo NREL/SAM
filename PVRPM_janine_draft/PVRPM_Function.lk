@@ -1,34 +1,30 @@
 
 //*************************************************************************************
 //PV Reliability Performance Model Version 2.0
-//Supporting Functions and Model Implementation -- DRAFT -- 
+//Supporting Functions and Model Implementation -- BETA -- 
 //Janine Freeman, NREL
-//21 April 2017
+//16 May 2017
 //*************************************************************************************
 
-// TO DO-----------------------------------------------------------------------------------
+// WISHLIST-----------------------------------------------------------------------------------
 /*
 	METHODOLOGY:
-	WHEN AN INVERTER FAILS ROUTINELY, IT NEEDS TO NOT BE COMPLETELY RESET- which ones do reset it?
-	are there further speed increases I can make?
-	make sure to multi-thread the stochastic piece
-	add a check for non-zero degradation in the user interface if modules can degrade- we zero it
+	routine inverter failures should not completely reset inverters- but how to know which ones do reset it?
+	multi-thread the stochastic piece when parallel LK functions become available
 	stepped warranties? degradation triggering warranty?
-	what to do about degradation in the base case?
 		
 	OUTPUTS:	
 	Add component-level availability output graph vs time (using Geoff's equation)
 	Basic failure rates as an output (failures per million hours)
 	add number of failures per component per year- in a csv
-	confidence intervals
-		keep exceedance probability and CI for energy
-		CI only for failures - code vs lookup table- if lookup table, constrain the options for confidence intervals
 	labor vs equipment costs per year for each component
 	average degradation factor per year (roll up from CSV)
 	how many operable pieces of equipment at the end of each year
 	lower priority- add MTTR (mean time to repair)
 	component downtime
 	component contribution to energy loss
+	confidence intervals applying to cumulative energy sums and failures only??
+	fix time to failure calculations
 	
 	USABILITY:
 	Make macro UI inputs
@@ -36,11 +32,9 @@
 	in documentation- if you want to model microinverters, here's how you would set it up
 	make a note about degradation!! confusing to have an input that's zero but then the degradation get assigned as the daily DC loss
 	can we create new SAM cases for various realizations? ->make an option to do it (first five realizations)
+	get rid of flashing excel window for confidence interval calculations
 	
 	ADD OPEN-SOURCING DISCLAIMER LANGUAGE TO THE SCRIPT
-
-	NOTES:
-	non-stationary poisson process (faster way than parallelizing?)
 	
 */
 
@@ -235,7 +229,6 @@ function configuration_check()
 	}
 	
 	// Lifetime daily DC and AC loss structures must be empty to run.
-	/*
 	if (get('en_dc_lifetime_losses') || get('en_ac_lifetime_losses'))
 	{
 		proceed = yesno('This script will overwrite any user-entered lifetime daily losses, and they will be lost. Proceed?');
@@ -244,7 +237,24 @@ function configuration_check()
 			msgbox('Please modify the case not to use user-entered lifetime daily losses. Exiting simulation.');
 			exit;
 		}
-	}*/
+	}
+	
+	// Existing O&M costs must be 0
+	global existing_costs = null;
+	if (get('om_fixed') != [0])
+	{
+		overwrite = yesno('There is a non-zero value in the fixed annual O&M costs input. Would you like to overwrite the existing costs with the calculated ones? ' + 
+				'Otherwise, the calculated costs will be ADDED to the existing ones.');
+		if (!overwrite)
+			existing_costs = get('om_fixed');
+	}
+	
+	// Warn user if current degradation is non-zero, because we zero it
+	if (get('dc_degradation') != [0])
+	{
+		msgbox('Warning: Degradation is set by the PVRPM script, you have entered a non-zero degradation to the degradation input. This script will set the degradation input to zero.');
+		set('dc_degradation', [0]);
+	}
 	
 	// Multiple subarrays can't have tracker failures
 	if (has_multiple_subarrays && is_tracking_system && meta.tracker.can_fail)
@@ -781,15 +791,10 @@ function run_system_realization(realization, show_outputs)
 	//create SAM performance adjustment tables for the availability, degradation, and tracker loss factors
 	daily_dc_loss = alloc(365 * system_lifetime_yrs);
 	daily_ac_loss = alloc(365 * system_lifetime_yrs);
-	idx = 0;
 	for (day = 0; day < (365 * system_lifetime_yrs); day++)
 	{
 		daily_dc_loss[day] = 100 * (1 - (dc_power_availability[day] * module_degradation_factor[day] * ?(is_tracking_system)[1, tracker_power_loss_factor[day]]));
 		daily_ac_loss[day] = 100 * (1 - ac_power_availability[day]);
-		for (j = 0; j < 24; j++)
-		{
-			idx++;
-		}
 	}
 
 	//DC adjustment factors
@@ -798,11 +803,6 @@ function run_system_realization(realization, show_outputs)
 	//AC adjustment factors
 	set('en_ac_lifetime_losses', 1);
 	set('ac_lifetime_losses', daily_ac_loss);
-	//Degradation is included as part of the DC losses, so set it to zero and create a note in the UI
-	set('dc_degradation', [0]);
-	//show_page('Lifetime PV');
-	//pagenote('Degradation is included in the lifetime daily DC losses, so the degradation input has been set to zero.');
-
 
 	//Create O&M inputs based on costs
 	o_m_yearly_costs = alloc(system_lifetime_yrs);
@@ -818,23 +818,17 @@ function run_system_realization(realization, show_outputs)
 		for (c=0; c<#cost_components; c++)
 			o_m_yearly_costs[yr_idx] += costs{cost_components[c]}[day];
 	}
-	if (show_outputs)
-		outln('Calculated yearly O&M costs = ' + o_m_yearly_costs);
-	/* THIS GETS COMMENTED OUT FOR THE STOCHASTIC SCRIPT
-	if (get('om_fixed') != [0])
+	outln('Calculated yearly O&M costs = ' + o_m_yearly_costs);
+	//be sure to add any existing O&M costs
+	if (existing_costs != null)
 	{
-		overwrite = yesno('There is a non-zero value in the fixed annual O&M costs input. Would you like to overwrite the existing costs with the calculated ones? ' + 
-				'Otherwise, the calculated costs will be added to the existing ones.');
-		if (!overwrite)
-		{
-			existing_costs = get('om_fixed');
-			for(k=0; k<system_lifetime_yrs; k++)
-				o_m_yearly_costs[k] += existing_costs[k];
-		}
-	}*/
+		for(k=0; k<system_lifetime_yrs; k++)
+			o_m_yearly_costs[k] += existing_costs[k];
+		outln('Calculated yearly O&M costs including user-specified costs = ' + o_m_yearly_costs);
+	}
 	set('om_fixed', o_m_yearly_costs);
 
-	//run PV performance model- for now running the currently active case
+	//run PV performance model- running the currently active case
 	messages = '';
 	success = simulate(messages, true);
 	if (!success)
@@ -889,14 +883,15 @@ function run_system_realization(realization, show_outputs)
 	csvwrite(results_folder + '/ac_' + realization + '.csv', ac);
 	csvwrite(results_folder + '/deg_' + realization + '.csv', deg);	
 	
+	//reset tracking system cost to the original cost for the next realization
 	if (is_tracking_system)
 		meta.tracker.failure[0].cost = original_tracker_cost;
+		
+	for (c=0; c<#components; c++)
+	outln('Total ' + components[c] + ' failures = ' + results{components[c]+ '_total_failures'}[realization]);
 	
 	if (show_outputs)
 	{
-		for (c=0; c<#components; c++)
-			outln('Total ' + components[c] + ' failures = ' + results{components[c]+ '_total_failures'}[realization]);
-
 		//daily performance
 		if (is_tracking_system)
 			dview(5, 24, 'Daily factors', 'DC Equipment Operational', '', 1.0, dc_power_availability, 'AC Equipment Operational', '', 1.0, ac_power_availability, 'Module degradation factor', '', 1.0, module_degradation_factor, 'Power Availability Due to Tracker Outages', '', 1.0, tracker_power_loss_factor, 'Tracker Availability', '', 1.0, tracker_availability);
@@ -954,11 +949,23 @@ function pvrpm_exec()
 	// RUN THE BASE CASE REALIZATION- NO SYSTEM FAILURES
 	//********************************************************************************************************************************************************************************
 	pb = progressbar( {title='Simulation progress', message='Running base case simulation',cancelbutton=true, time=true, max=system_lifetime_yrs * 365});
+	
 	//disable the lifetime daily losses
 	set('en_dc_lifetime_losses', 0);
 	set('en_ac_lifetime_losses', 0);
-	//do we need to do something with user-entered O&M costs here??????????
-	//what about degradation  for the base case simulation??????????????
+	
+	//set zero O&M costs if they're being overwritten
+	if (existing_costs == null)
+		set('om_fixed', [0]);
+	
+	//need to set nominal degradation for the base case scenario
+	degrad = alloc(system_lifetime_yrs * 365);
+	for (day=0; day < system_lifetime_yrs * 365; day++)
+		degrad[day] = (1 - current_degradation_rate(meta.module.degradation.rate / 365, day)) * 100;
+	set('en_dc_lifetime_losses', 1);
+	set('dc_lifetime_losses', degrad);
+	
+	//simulate the base case scenario
 	if (!simulate())
 	{	
 		msgbox('Error: base case simulation failed.');
@@ -1074,6 +1081,28 @@ function pvrpm_exec()
 		array_std = stddev(array);
 		results.realization[current_row] = 'std';
 		results{results_columns[c]}[current_row] = array_std;
+		current_row++;
+		
+		//calculate the confidence interval using the included excel file
+		xl = xl_create(xl_path);
+		interval = 1 - conf_interval / 100;
+		xl_set(xl, interval, 'desired_interval');
+		xl_set(xl, #array, 'num_samples');
+		xl_set(xl, array_std, 'stddev');
+		conf_int = to_real(xl_get(xl, 'conf_int'));
+		xl_close(xl);
+		xl_free(xl);
+		results.realization[current_row] = to_string(conf_interval) + '% Conf Int of Mean';
+		if (array_std == 0)
+			results{results_columns[c]}[current_row] = 'N/A';
+		else
+			results{results_columns[c]}[current_row] = array_mean - conf_int;
+		current_row++;
+		results.realization[current_row] = to_string(100 - conf_interval) + '% Conf Int of Mean';
+		if (array_std == 0)
+			results{results_columns[c]}[current_row] = 'N/A';
+		else
+			results{results_columns[c]}[current_row] = array_mean + conf_int;
 		current_row++;
 		
 		//calculate desired PXX
