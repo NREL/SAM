@@ -191,8 +191,8 @@ int C_csp_solver::C_mono_eq_pc_target_tes_dc__m_dot::operator()(double m_dot_htf
 	// Solve power cycle model
 	mpc_csp_solver->mc_pc_htf_state_in.m_temp = T_htf_hot;		//[C]
 		// Inputs
-	mpc_csp_solver->mc_pc_inputs.m_m_dot = m_dot_htf;			//[kg/hr]
-	mpc_csp_solver->mc_pc_inputs.m_standby_control;				//[-]
+	mpc_csp_solver->mc_pc_inputs.m_m_dot = m_dot_htf;				//[kg/hr]
+	mpc_csp_solver->mc_pc_inputs.m_standby_control = m_pc_mode;		//[-]
 		// Performance
 	mpc_csp_solver->mc_power_cycle.call(mpc_csp_solver->mc_weather.ms_outputs,
 									mpc_csp_solver->mc_pc_htf_state_in,
@@ -751,7 +751,7 @@ int C_csp_solver::C_mono_eq_pc_target__m_dot_fixed_plus_tes_dc::operator()(doubl
 	mpc_csp_solver->mc_pc_htf_state_in.m_temp = T_htf_pc_hot;	//[C]
 	// Inputs
 	mpc_csp_solver->mc_pc_inputs.m_m_dot = m_dot_htf_pc;		//[kg/hr]
-	mpc_csp_solver->mc_pc_inputs.m_standby_control;				//[-]
+	mpc_csp_solver->mc_pc_inputs.m_standby_control = m_pc_mode;				//[-]
 	// Performance
 	mpc_csp_solver->mc_power_cycle.call(mpc_csp_solver->mc_weather.ms_outputs,
 		mpc_csp_solver->mc_pc_htf_state_in,

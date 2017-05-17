@@ -1183,7 +1183,7 @@ public:
 	{
 	private:
 		C_csp_solver *mpc_csp_solver;
-		double m_pc_mode;			//[-]
+		int m_pc_mode;			//[-]
 		double m_q_dot_target;		//[MWt]
 
 	public:
