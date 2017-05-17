@@ -873,7 +873,14 @@ if( yesno("Would you like to look at an Excel workbook based off these results?"
 	xl_set( xl, to_real(inflation_rate) + to_real(esc_rate), 'om_acceleration');
 	
 	xl_set( xl, get('ppa_price_input'), 'ppa_price');
-	
+
+
+	xl_set( xl, to_real(get('lcog'))/100,'lcog_summary');
+	xl_set( xl, to_real(get('project_return_aftertax_npv')),'npv_summary');
+	xl_set( xl, to_real(get('flip_actual_irr')),'irr_summary');
+	xl_set( xl, to_real(get('flip_actual_year')),'irr_year_summary');
+	xl_set( xl, to_real(get('min_dscr')),'dscr_summary');
+		
 }	
 
 
