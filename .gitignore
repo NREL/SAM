@@ -302,3 +302,5 @@ __pycache__/
 SDKtool
 TCSConsole
 dltest
+set_env_github.bat
+set_env_old_svn.bat
