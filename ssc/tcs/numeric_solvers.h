@@ -150,6 +150,10 @@ public:
 
 	int call_mono_eq(double x, double *y);
 
+	bool did_solver_find_positive_error(int solver_exit_mode);
+
+	bool did_solver_find_negative_error(int solver_exit_mode);
+
 	const std::vector<S_eq_chars> *get_solver_call_history()
 	{
 		return &ms_eq_call_tracker;

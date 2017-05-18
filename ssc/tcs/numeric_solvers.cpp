@@ -687,3 +687,28 @@ int C_monotonic_eq_solver::test_member_function(double x, double *y)
 	return mf_mono_eq(x,y);
 }
 
+bool C_monotonic_eq_solver::did_solver_find_negative_error(int solver_exit_mode)
+{
+	if (solver_exit_mode == SLOPE_POS_NO_NEG_ERR
+		|| solver_exit_mode == SLOPE_NEG_NO_NEG_ERR
+		|| solver_exit_mode == MAX_ITER_SLOPE_NEG_NO_NEG_ERR
+		|| solver_exit_mode == MAX_ITER_SLOPE_POS_NO_NEG_ERR)
+	{
+		return false;
+	}
+
+	return true;
+}
+
+bool C_monotonic_eq_solver::did_solver_find_positive_error(int solver_exit_mode)
+{
+	if (solver_exit_mode == SLOPE_POS_NO_POS_ERR
+		|| solver_exit_mode == SLOPE_NEG_NO_POS_ERR
+		|| solver_exit_mode == MAX_ITER_SLOPE_NEG_NO_POS_ERR
+		|| solver_exit_mode == MAX_ITER_SLOPE_POS_NO_POS_ERR)
+	{
+		return false;
+	}
+
+	return true;
+}

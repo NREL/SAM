@@ -1290,6 +1290,20 @@ public:
 		virtual int operator()(double T_HTR_LP_out /*K*/, double *diff_T_HTR_LP_out /*K*/);	
 	};
 
+	class C_MEQ_sco2_design_hit_eta__UA_total : public C_monotonic_equation
+	{
+	private:
+		C_RecompCycle *mpc_rc_cycle;
+
+	public:
+		C_MEQ_sco2_design_hit_eta__UA_total(C_RecompCycle *pc_rc_cycle)
+		{
+			mpc_rc_cycle = pc_rc_cycle;
+		}
+
+		virtual int operator()(double UA_recup_total /*kW/K*/, double *eta /*-*/);
+	};
+
 	// Called by 'nlopt_callback_opt_des_1', so needs to be public
 	double design_point_eta(const std::vector<double> &x);
 
