@@ -137,7 +137,7 @@ void C_sco2_recomp_csp::design_core()
 
 	if(auto_err_code != 0)
 	{
-		throw(C_csp_exception("sCO2 recompression cycle and CSP integration design method failed: ", error_msg));
+		throw(C_csp_exception(error_msg.c_str()));
 	}
 
 	if( error_msg[0] == NULL )

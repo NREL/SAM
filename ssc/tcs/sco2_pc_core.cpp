@@ -4020,120 +4020,80 @@ void C_RecompCycle::auto_opt_design_hit_eta(S_auto_opt_design_hit_eta_parameters
 		return;
 	}
 
+	// Set up monotonic equation solver to find the total recuperator UA that results in the target efficiency
+	C_MEQ_sco2_design_hit_eta__UA_total c_eq(this);
+	C_monotonic_eq_solver c_solver(c_eq);
 
-	// Initialize parameters used to find UA_recup that results in target cycle thermal efficiency
-	//double UA_net_power_ratio_max = 2.0;			//[-]
-	//double UA_net_power_ratio_min = 1.E-5;			//[-]
-	double UA_net_power_ratio_max = ms_des_limits.m_UA_net_power_ratio_max;
-	double UA_net_power_ratio_min = ms_des_limits.m_UA_net_power_ratio_min;
+	// Generate min and max values
+	double UA_recup_total_max = ms_des_limits.m_UA_net_power_ratio_max*ms_auto_opt_des_par.m_W_dot_net;		//[kW/K]
+	double UA_recup_total_min = ms_des_limits.m_UA_net_power_ratio_min*ms_auto_opt_des_par.m_W_dot_net;		//[kW/K]
+		// Set solver settings
+	c_solver.settings(ms_auto_opt_des_par.m_tol, 50, UA_recup_total_min, UA_recup_total_max, true);
+
+	// Generate guess values
 	double UA_recups_guess = 0.1*ms_auto_opt_des_par.m_W_dot_net;
 
-	// Solve the auto-optimized design point model with the guessed recuperator UA
-	ms_auto_opt_des_par.m_UA_rec_total = UA_recups_guess;
+	double UA_recup_total_solved, tol_solved;
+	UA_recup_total_solved = tol_solved = std::numeric_limits<double>::quiet_NaN();
+	int iter_solved = -1;
 
-	int auto_opt_error_code = 0;
-	auto_opt_design_core(auto_opt_error_code);
-	if(auto_opt_error_code != 0)
+	int solver_code = 0;
+	try
 	{
-		error_msg.append("Can't optimize sCO2 power cycle with current inputs");
+		solver_code = c_solver.solve(UA_recups_guess, 1.1*UA_recups_guess, auto_opt_des_hit_eta_in.m_eta_thermal,
+			UA_recup_total_solved, tol_solved, iter_solved);
+	}
+	catch (C_csp_exception)
+	{
+		throw(C_csp_exception("C_MEQ_sco2_design_hit_eta__UA_total received an exception from the solver"));
+	}
+
+	if (solver_code != C_monotonic_eq_solver::CONVERGED)
+	{
+		if (solver_code < C_monotonic_eq_solver::CONVERGED)
+		{
+			error_msg.append("Can't find a value of total recuperator conductance that achieves"
+				" the target cycle efficiency. Check design parameters.");
+		}
+		else if (!c_solver.did_solver_find_negative_error(solver_code))
+		{
+			error_msg.append("Can't find a value of total recuperator conductance that results"
+				" in an efficiency smaller than the target efficiency.");
+		}
+		else if (!c_solver.did_solver_find_positive_error(solver_code))
+		{
+			error_msg.append("Can't find a value of total recuperator conductance that results"
+				" in an efficiency larger than the target efficiency.");
+		}
+		else
+		{
+			error_msg.append("Can't find a value of total recuperator conductance that achieves"
+				" the target cycle efficiency. Check design parameters.");
+		}
+
 		error_code = -1;
 
 		return;
 	}
-	
-	double eta_calc = get_design_solved()->m_eta_thermal;
 
-	// Now need to iterate UA_total_des until eta_thermal_calc = eta_thermal_target
-	double diff_eta = (eta_calc - auto_opt_des_hit_eta_in.m_eta_thermal);
-
-	bool low_flag = false;
-	bool high_flag = false;
-	double y_upper = numeric_limits<double>::quiet_NaN();
-	double y_lower = numeric_limits<double>::quiet_NaN();
-	double x_upper = numeric_limits<double>::quiet_NaN();
-	double x_lower = numeric_limits<double>::quiet_NaN();
-	double UA_net_power_ratio = numeric_limits<double>::quiet_NaN();
-
-
-	int opt_des_calls = 1;		// We've already called the auto optimization method once...
-
-	while( fabs(diff_eta) > ms_auto_opt_des_par.m_tol )
-	{
-		opt_des_calls++;
-
-		if(diff_eta > 0.0)		// Calc > target, UA is too large, decrease UA
-		{
-			low_flag = true;
-			x_lower = UA_recups_guess;
-			y_lower = diff_eta;
-
-			if( high_flag )	// Upper and lower bounds set, use false positon interpolation method
-			{
-				UA_recups_guess = -y_upper*(x_lower - x_upper) / (y_lower - y_upper) + x_upper;
-			}
-			else			// No upper bound set, try to get there
-			{
-				if( opt_des_calls > 5 )
-					UA_recups_guess = UA_net_power_ratio_min*ms_auto_opt_des_par.m_W_dot_net;
-				else
-					UA_recups_guess *= 0.5;
-			}
-
-			if( x_lower / ms_auto_opt_des_par.m_W_dot_net <= UA_net_power_ratio_min )
-			{
-				error_msg.append(util::format("The design thermal efficiency, %lg [-], is too small to achieve with the available cycle model and inputs" 
-					"The lowest possible thermal efficiency for these inputs is roughly %lg [-]", auto_opt_des_hit_eta_in.m_eta_thermal, get_design_solved()->m_eta_thermal));
-				
-				error_code = -1;
-				return;
-			}
-		}
-		else
-		{
-			high_flag = true;
-			x_upper = UA_recups_guess;
-			y_upper = diff_eta;
-
-			if( low_flag )
-			{
-				UA_recups_guess = -y_upper*(x_lower - x_upper) / (y_lower - y_upper) + x_upper;
-			}
-			else
-			{
-				if( opt_des_calls > 5 )
-					UA_recups_guess = UA_net_power_ratio_max*ms_auto_opt_des_par.m_W_dot_net;
-				else
-					UA_recups_guess *= 2.5;
-			}
-
-			if( x_upper / ms_auto_opt_des_par.m_W_dot_net >= UA_net_power_ratio_max )
-			{
-				error_msg.append(util::format("The design thermal efficiency, %lg [-], is too large to achieve with the available cycle model and inputs"
-					"The largest possible thermal efficiency for these inputs is roughly %lg [-] ", auto_opt_des_hit_eta_in.m_eta_thermal, get_design_solved()->m_eta_thermal));
-				
-				error_code = -1;
-				return;
-			}
-		}
-	
-		// If still searching for target efficiency, solve auto optimized design point model with updated guessed recup UA
-		ms_auto_opt_des_par.m_UA_rec_total = UA_recups_guess;
-
-		auto_opt_design_core(auto_opt_error_code);
-		if( auto_opt_error_code != 0 )
-		{
-			error_msg.append("Can't optimize sCO2 power cycle with current inputs");
-			error_code = -1;
-
-			return;
-		}
-
-		eta_calc = get_design_solved()->m_eta_thermal;
-
-		// Now need to iterate UA_total_des until eta_thermal_calc = eta_thermal_target
-		diff_eta = (eta_calc - auto_opt_des_hit_eta_in.m_eta_thermal);
-	}
 }
+
+int C_RecompCycle::C_MEQ_sco2_design_hit_eta__UA_total::operator()(double UA_recup_total /*kW/K*/, double *eta /*-*/)
+{
+	mpc_rc_cycle->ms_auto_opt_des_par.m_UA_rec_total = UA_recup_total;	//[kW/K]
+
+	int error_code = 0;
+	mpc_rc_cycle->auto_opt_design_core(error_code);
+	if (error_code != 0)
+	{
+		*eta = std::numeric_limits<double>::quiet_NaN();
+		return -1;
+	}
+
+	*eta = mpc_rc_cycle->get_design_solved()->m_eta_thermal;	//[-]
+	return 0;
+}
+
 
 double C_RecompCycle::opt_eta(double P_high_opt)
 {
