@@ -3844,6 +3844,9 @@ void C_RecompCycle::auto_opt_design_hit_eta(S_auto_opt_design_hit_eta_parameters
 	ms_auto_opt_des_par.m_N_turbine = auto_opt_des_hit_eta_in.m_N_turbine;				//[rpm] Turbine shaft speed (negative values link turbine to compressor)
 	ms_auto_opt_des_par.m_is_recomp_ok = auto_opt_des_hit_eta_in.m_is_recomp_ok;		//[-] 1 = yes, 0 = no, other = invalid
 
+	ms_auto_opt_des_par.mf_callback_log = auto_opt_des_hit_eta_in.mf_callback_log;
+	ms_auto_opt_des_par.mp_mf_active = auto_opt_des_hit_eta_in.mp_mf_active;
+
 	ms_auto_opt_des_par.m_PR_mc_guess = auto_opt_des_hit_eta_in.m_PR_mc_guess;			//[-] Initial guess for ratio of P_mc_out to P_mc_in
 	ms_auto_opt_des_par.m_fixed_PR_mc = auto_opt_des_hit_eta_in.m_fixed_PR_mc;			//[-] if true, ratio of P_mc_out to P_mc_in is fixed at PR_mc_guess		
 
@@ -4020,6 +4023,19 @@ void C_RecompCycle::auto_opt_design_hit_eta(S_auto_opt_design_hit_eta_parameters
 		return;
 	}
 
+	// Send log update upstream
+	if (ms_auto_opt_des_par.mf_callback_log && ms_auto_opt_des_par.mp_mf_active)
+	{
+		std::string msg_log = "Iterate on total recuperator conductance to hit target cycle efficiency";
+		std::string msg_progress = "Designing cycle...";
+		if (!ms_auto_opt_des_par.mf_callback_log(msg_log, msg_progress, ms_auto_opt_des_par.mp_mf_active))
+		{
+			std::string error_msg = "User terminated simulation...";
+			std::string loc_msg = "C_MEQ_sco2_design_hit_eta__UA_total";
+			throw(C_csp_exception(error_msg, loc_msg, 1));
+		}
+	}
+
 	// Set up monotonic equation solver to find the total recuperator UA that results in the target efficiency
 	C_MEQ_sco2_design_hit_eta__UA_total c_eq(this);
 	C_monotonic_eq_solver c_solver(c_eq);
@@ -4043,9 +4059,16 @@ void C_RecompCycle::auto_opt_design_hit_eta(S_auto_opt_design_hit_eta_parameters
 		solver_code = c_solver.solve(UA_recups_guess, 1.1*UA_recups_guess, auto_opt_des_hit_eta_in.m_eta_thermal,
 			UA_recup_total_solved, tol_solved, iter_solved);
 	}
-	catch (C_csp_exception)
+	catch (C_csp_exception &csp_except)
 	{
-		throw(C_csp_exception("C_MEQ_sco2_design_hit_eta__UA_total received an exception from the solver"));
+		if (csp_except.m_error_code == 1)
+		{
+			throw(C_csp_exception(csp_except));
+		}
+		else
+		{
+			throw(C_csp_exception("C_MEQ_sco2_design_hit_eta__UA_total received an exception from the solver"));
+		}
 	}
 
 	if (solver_code != C_monotonic_eq_solver::CONVERGED)
@@ -4091,6 +4114,19 @@ int C_RecompCycle::C_MEQ_sco2_design_hit_eta__UA_total::operator()(double UA_rec
 	}
 
 	*eta = mpc_rc_cycle->get_design_solved()->m_eta_thermal;	//[-]
+
+	if (mpc_rc_cycle->ms_auto_opt_des_par.mf_callback_log && mpc_rc_cycle->ms_auto_opt_des_par.mp_mf_active)
+	{
+		msg_log = util::format(" Total recuperator conductance = %lg [kW/K]. Optimized cycle efficiency = %lg [-].  ",
+			UA_recup_total, *eta);
+		if (!mpc_rc_cycle->ms_auto_opt_des_par.mf_callback_log(msg_log, msg_progress, mpc_rc_cycle->ms_auto_opt_des_par.mp_mf_active))
+		{
+			std::string error_msg = "User terminated simulation...";
+			std::string loc_msg = "C_MEQ_sco2_design_hit_eta__UA_total";
+			throw(C_csp_exception(error_msg, loc_msg, 1));
+		}
+	}
+
 	return 0;
 }
 

@@ -537,6 +537,10 @@ public:
 		double m_PR_mc_guess;				//[-] Initial guess for ratio of P_mc_out to P_mc_in
 		bool m_fixed_PR_mc;					//[-] if true, ratio of P_mc_out to P_mc_in is fixed at PR_mc_guess
 
+		// Callback function only log
+		bool(*mf_callback_log)(std::string &log_msg, std::string &progress_msg, void *data);
+		void *mp_mf_active;
+
 		S_auto_opt_design_hit_eta_parameters()
 		{
 			m_W_dot_net = m_T_mc_in = m_T_t_in = m_LT_eff_max = m_HT_eff_max = 
@@ -549,6 +553,9 @@ public:
 			m_is_recomp_ok = -1;
 
 			m_fixed_PR_mc = false;		//[-] If false, then should default to optimizing this parameter
+
+			mf_callback_log = 0;
+			mp_mf_active = 0;
 
 			m_DP_LT.resize(2);
 			std::fill(m_DP_LT.begin(), m_DP_LT.end(), std::numeric_limits<double>::quiet_NaN());
@@ -586,6 +593,10 @@ public:
 		double m_PR_mc_guess;				//[-] Initial guess for ratio of P_mc_out to P_mc_in
 		bool m_fixed_PR_mc;					//[-] if true, ratio of P_mc_out to P_mc_in is fixed at PR_mc_guess
 
+		// Callback function only log
+		bool(*mf_callback_log)(std::string &log_msg, std::string &progress_msg, void *data);
+		void *mp_mf_active;
+
 		S_auto_opt_design_parameters()
 		{
 			m_W_dot_net = m_T_mc_in = m_T_t_in = m_UA_rec_total = m_LT_eff_max = m_HT_eff_max =
@@ -598,6 +609,9 @@ public:
 			m_is_recomp_ok = -1;
 
 			m_fixed_PR_mc = false;		//[-] If false, then should default to optimizing this parameter
+
+			mf_callback_log = 0;
+			mp_mf_active = 0;
 
 			m_DP_LT.resize(2);
 			std::fill(m_DP_LT.begin(), m_DP_LT.end(), std::numeric_limits<double>::quiet_NaN());
@@ -1294,11 +1308,16 @@ public:
 	{
 	private:
 		C_RecompCycle *mpc_rc_cycle;
+		std::string msg_log;
+		std::string msg_progress;
 
 	public:
 		C_MEQ_sco2_design_hit_eta__UA_total(C_RecompCycle *pc_rc_cycle)
 		{
 			mpc_rc_cycle = pc_rc_cycle;
+
+			msg_log = "Log message ";
+			msg_progress = "Progress bar message ";
 		}
 
 		virtual int operator()(double UA_recup_total /*kW/K*/, double *eta /*-*/);

@@ -38,6 +38,9 @@ C_sco2_recomp_csp::C_sco2_recomp_csp()
 	mf_callback = 0;		// NULL
 	m_cdata = 0;			// NULL
 
+	mf_callback_log = 0;
+	mp_mf_active = 0;
+
 	m_is_write_mc_out_file = false;
 	m_is_only_write_frecomp_opt_iters = false;
 
@@ -90,6 +93,9 @@ void C_sco2_recomp_csp::design_core()
 		ms_rc_cycle_des_par.m_opt_tol = ms_des_par.m_opt_tol;
 		ms_rc_cycle_des_par.m_N_turbine = ms_des_par.m_N_turbine;
 		ms_rc_cycle_des_par.m_is_recomp_ok = ms_des_par.m_is_recomp_ok;	
+
+		ms_rc_cycle_des_par.mf_callback_log = mf_callback_log;
+		ms_rc_cycle_des_par.mp_mf_active = mp_mf_active;
 
 		mc_rc_cycle.auto_opt_design_hit_eta(ms_rc_cycle_des_par, auto_err_code, error_msg);
 	}

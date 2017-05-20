@@ -4,6 +4,8 @@
 
 #include "sco2_pc_csp_int.h"
 
+static bool ssc_sco2_csp_system_log(std::string &log_msg, std::string &progress_msg, void *data);
+
 static var_info _cm_vtab_sco2_csp_system[] = {
 
 	/*   VARTYPE   DATATYPE         NAME               LABEL                                                    UNITS     META  GROUP REQUIRED_IF CONSTRAINTS     UI_HINTS*/
@@ -317,6 +319,11 @@ public:
 
 		// Construction class and design system 
 		C_sco2_recomp_csp sco2_recomp_csp;
+
+		// Pass through callback function and pointer
+		sco2_recomp_csp.mf_callback_log = ssc_sco2_csp_system_log;
+		sco2_recomp_csp.mp_mf_active = (void*)(this);
+
 		try
 		{
 			sco2_recomp_csp.design(sco2_rc_des_par);
@@ -330,9 +337,7 @@ public:
 				log("\n");
 			}
 
-			log(csp_exception.m_error_message, SSC_ERROR, -1.0);
-
-			return;
+			throw exec_error("sco2_csp_system", csp_exception.m_error_message);
 		}
 
 		// If all calls were successful, log to SSC any messages from sco2_recomp_csp
@@ -760,8 +765,7 @@ public:
 		if( n_od_cols != 5 && n_od_runs > 1 )
 		{
 			std::string err_msg = util::format("The matrix of off design cases requires 3 columns. The entered matrix has %d columns", n_od_cols);
-			log(err_msg);
-			return;
+			throw exec_error("sco2_csp_system", err_msg);
 		}
 
 		allocate_ssc_outputs(n_od_runs);
@@ -802,9 +806,9 @@ public:
 				}
 
 				log(csp_exception.m_error_message, SSC_ERROR, -1.0);
-
-				return;
+				throw exec_error("sco2_csp_system", csp_exception.m_error_message);
 			}
+
 			std::clock_t clock_end = std::clock();
 
 			double od_opt_duration = (clock_end - clock_start)/(double) CLOCKS_PER_SEC;		//[s]
@@ -938,5 +942,17 @@ public:
 	}
 
 };
+
+static bool ssc_sco2_csp_system_log(std::string &log_msg, std::string &progress_msg, void *data)
+{
+	compute_module *cm = static_cast<compute_module*> (data);
+	if (!cm)
+		return false;
+
+	cm->log(log_msg);
+	bool ret = cm->update(progress_msg, 0.0);
+
+	return ret;
+}
 
 DEFINE_MODULE_ENTRY(sco2_csp_system, "...", 0)
