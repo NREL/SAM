@@ -142,9 +142,13 @@ public:
 		}
 	};
 
-	// Callback funtion
+	// Callback function with progress bar
 	bool(*mf_callback)(void *data, double percent, std::string msg);
 	void *m_cdata;
+
+	// Callback function only log
+	bool(*mf_callback_log)(std::string &log_msg, std::string &progress_msg, void *data);
+	void *mp_mf_active;
 
 private:
 	C_RecompCycle mc_rc_cycle;
