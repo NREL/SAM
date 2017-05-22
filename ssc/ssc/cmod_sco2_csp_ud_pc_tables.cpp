@@ -2,6 +2,8 @@
 
 #include "sco2_pc_csp_int.h"
 
+static bool ssc_sco2_csp_udpc_update(std::string &log_msg, std::string &progress_msg, void *data, double progress);
+
 static var_info _cm_vtab_sco2_csp_ud_pc_tables[] = {
 
 	/*   VARTYPE   DATATYPE         NAME               LABEL                                                    UNITS     META  GROUP REQUIRED_IF CONSTRAINTS     UI_HINTS*/
@@ -19,6 +21,7 @@ static var_info _cm_vtab_sco2_csp_ud_pc_tables[] = {
 	{ SSC_INPUT,  SSC_NUMBER,  "eta_thermal_des",      "Power cycle thermal efficiency",                         "",           "",    "",      "?=-1.0","",       "" },
 	{ SSC_INPUT,  SSC_NUMBER,  "UA_recup_tot_des",     "Total recuperator conductance",                          "kW/K",       "",    "",      "?=-1.0","",       "" },
 	{ SSC_INPUT,  SSC_NUMBER,  "is_recomp_ok",         "1 = Yes, 0 = simple cycle only",                         "",           "",    "",      "?=1",   "",       "" },
+	{ SSC_INPUT,  SSC_NUMBER,  "is_PR_fixed",          "0 = No, >0 = fixed pressure ratio",                      "",           "",    "",      "?=0",   "",       "" },
 		// Cycle Design
 	{ SSC_INPUT,  SSC_NUMBER,  "eta_isen_mc",          "Design main compressor isentropic efficiency",           "-",          "",    "",      "*",     "",       "" },
 	{ SSC_INPUT,  SSC_NUMBER,  "eta_isen_rc",          "Design re-compressor isentropic efficiency",             "-",          "",    "",      "*",     "",       "" },
@@ -151,6 +154,25 @@ public:
 
 		sco2_rc_des_par.m_is_recomp_ok = as_integer("is_recomp_ok");
 
+		double mc_PR_in = as_double("is_PR_fixed");		//[-]
+		if (mc_PR_in != 0.0)
+		{
+			if (mc_PR_in < 0.0)
+			{
+				sco2_rc_des_par.m_PR_mc_guess = mc_PR_in*1.E3;		//[kPa] convert from MPa
+			}
+			else
+			{
+				sco2_rc_des_par.m_PR_mc_guess = mc_PR_in;			//[-] Pressure Ratio!
+			}
+			sco2_rc_des_par.m_fixed_PR_mc = true;
+		}
+		else
+		{
+			sco2_rc_des_par.m_PR_mc_guess = std::numeric_limits<double>::quiet_NaN();
+			sco2_rc_des_par.m_fixed_PR_mc = false;
+		}
+
 			// Cycle design parameters: hardcode pressure drops, for now
 		// Define hardcoded sco2 design point parameters
 		std::vector<double> DP_LT(2);
@@ -203,6 +225,11 @@ public:
 
 		// Construction class and design system
 		C_sco2_recomp_csp sco2_recomp_csp;
+
+		// Pass through callback function (with update percent) and pointer
+		sco2_recomp_csp.mf_callback_update = ssc_sco2_csp_udpc_update;
+		sco2_recomp_csp.mp_mf_update = (void*)(this);
+
 		try
 		{
 			sco2_recomp_csp.design(sco2_rc_des_par);
@@ -215,9 +242,7 @@ public:
 				log(out_msg);
 			}
 
-			log(csp_exception.m_error_message, SSC_ERROR, -1.0);
-
-			return;
+			throw exec_error("sco2_csp_system", csp_exception.m_error_message);
 		}
 
 		// Set SSC design outputs
@@ -312,9 +337,7 @@ public:
 				log(out_msg);
 			}
 
-			log(csp_exception.m_error_message, SSC_ERROR, -1.0);
-
-			return;
+			throw exec_error("sco2_csp_system", csp_exception.m_error_message);
 		}
 
 		int n_T_htf_hot = T_htf_parametrics.nrows();
@@ -359,5 +382,17 @@ public:
 	}
 
 };
+
+static bool ssc_sco2_csp_udpc_update(std::string &log_msg, std::string &progress_msg, void *data, double progress)
+{
+	compute_module *cm = static_cast<compute_module*> (data);
+	if (!cm)
+		return false;
+
+	cm->log(log_msg, SSC_WARNING);
+	bool ret = cm->update(progress_msg, progress);
+
+	return ret;
+}
 
 DEFINE_MODULE_ENTRY(sco2_csp_ud_pc_tables, "...", 0)

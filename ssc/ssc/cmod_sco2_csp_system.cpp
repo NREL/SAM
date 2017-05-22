@@ -4,7 +4,7 @@
 
 #include "sco2_pc_csp_int.h"
 
-static bool ssc_sco2_csp_system_log(std::string &log_msg, std::string &progress_msg, void *data);
+static bool ssc_sco2_csp_system_log(std::string &log_msg, std::string &progress_msg, void *data, double progress);
 
 static var_info _cm_vtab_sco2_csp_system[] = {
 
@@ -24,7 +24,7 @@ static var_info _cm_vtab_sco2_csp_system[] = {
 	{ SSC_INPUT,  SSC_NUMBER,  "UA_recup_tot_des",     "Total recuperator conductance",                          "kW/K",       "",    "",      "?=-1.0","",       "" },
 	{ SSC_INPUT,  SSC_NUMBER,  "is_recomp_ok",         "1 = Yes, 0 = simple cycle only",                         "",           "",    "",      "?=1",   "",       "" },
 	{ SSC_INPUT,  SSC_NUMBER,  "is_PR_fixed",          "0 = No, >0 = fixed pressure ratio",                      "",           "",    "",      "?=0",   "",       "" },
-	// Cycle Design
+		// Cycle Design
 	{ SSC_INPUT,  SSC_NUMBER,  "eta_isen_mc",          "Design main compressor isentropic efficiency",           "-",          "",    "",      "*",     "",       "" },
 	{ SSC_INPUT,  SSC_NUMBER,  "eta_isen_rc",          "Design re-compressor isentropic efficiency",             "-",          "",    "",      "*",     "",       "" },
 	{ SSC_INPUT,  SSC_NUMBER,  "eta_isen_t",           "Design turbine isentropic efficiency",                   "-",          "",    "",      "*",     "",       "" },
@@ -321,8 +321,8 @@ public:
 		C_sco2_recomp_csp sco2_recomp_csp;
 
 		// Pass through callback function and pointer
-		sco2_recomp_csp.mf_callback_log = ssc_sco2_csp_system_log;
-		sco2_recomp_csp.mp_mf_active = (void*)(this);
+		sco2_recomp_csp.mf_callback_update = ssc_sco2_csp_system_log;
+		sco2_recomp_csp.mp_mf_update = (void*)(this);
 
 		try
 		{
@@ -943,14 +943,14 @@ public:
 
 };
 
-static bool ssc_sco2_csp_system_log(std::string &log_msg, std::string &progress_msg, void *data)
+static bool ssc_sco2_csp_system_log(std::string &log_msg, std::string &progress_msg, void *data, double progress)
 {
 	compute_module *cm = static_cast<compute_module*> (data);
 	if (!cm)
 		return false;
 
 	cm->log(log_msg);
-	bool ret = cm->update(progress_msg, 0.0);
+	bool ret = cm->update(progress_msg, progress);
 
 	return ret;
 }
