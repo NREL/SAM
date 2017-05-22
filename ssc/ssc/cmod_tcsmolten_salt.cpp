@@ -22,6 +22,7 @@
 
 #include "csp_system_costs.h"
 
+static bool ssc_mspt_system_log(std::string &log_msg, std::string &progress_msg, void *data, double progress);
 
 static bool ssc_mspt_solarpilot_callback(simulation_info *siminfo, void *data);
 
@@ -1058,6 +1059,14 @@ public:
 			sco2_rc_csp_par.m_dt_mc_approach = as_double("sco2_T_approach");			//[K/C]
 			sco2_rc_csp_par.m_elevation = site_elevation;							//[m]
 			sco2_rc_csp_par.m_W_dot_net = as_double("P_ref")*1.E3;					//[kWe]
+			
+			// Hardcode for now that design method iterates on UA_recup_total to hit target etas
+			sco2_rc_csp_par.m_design_method = 1;
+			// Hardcode that recompression cycle is ok
+			sco2_rc_csp_par.m_is_recomp_ok = 1;
+			// Hardcode don't fix pressure ratio
+			sco2_rc_csp_par.m_fixed_PR_mc = false;
+			
 			sco2_rc_csp_par.m_eta_thermal = as_double("design_eff");					//[-]
 			sco2_rc_csp_par.m_is_recomp_ok = 1;
 				// Cycle Design Parameters
@@ -1114,10 +1123,15 @@ public:
 				int out_type = -1;
 				std::string out_msg = "";
 
-				update("Calculating sCO2 design point...", 0.0);
+				log("Calculating sCO2 design point...", SSC_WARNING);
 
 				// Construction class and design system
 				C_sco2_recomp_csp sco2_recomp_csp;
+
+				// Pass through callback function and pointer
+				sco2_recomp_csp.mf_callback_update = ssc_mspt_system_log;
+				sco2_recomp_csp.mp_mf_update = (void*)(this);
+
 				try
 				{
 					sco2_recomp_csp.design(sco2_rc_csp_par);
@@ -1127,15 +1141,14 @@ public:
 					// Report warning before exiting with error
 					while( sco2_recomp_csp.mc_messages.get_message(&out_type, &out_msg) )
 					{
-						log(out_msg);
+						log(out_msg + "\n");
+						log("\n");
 					}
 
-					log(csp_exception.m_error_message, SSC_ERROR, -1.0);
-
-					return;
+					throw exec_error("sco2_csp_system", csp_exception.m_error_message);
 				}
 
-				update("sCO2 design point calculations complete.", 100.0);
+				log("sCO2 design point calculations complete.", SSC_WARNING);
 
 				// Get sCO2 design outputs
 				double m_dot_htf_design = sco2_recomp_csp.get_phx_des_par()->m_m_dot_hot_des;			//[kg/s]
@@ -1159,11 +1172,6 @@ public:
 
 				util::matrix_t<double> T_htf_parametrics, T_amb_parametrics, m_dot_htf_ND_parametrics;
 
-				update("Calculating sCO2 off-design performance for lookup tables...", 0.0);
-
-				sco2_recomp_csp.mf_callback = ssc_mspt_udpc_progress;
-				sco2_recomp_csp.m_cdata = (void*)this;
-
 				try
 				{
 					sco2_recomp_csp.generate_ud_pc_tables(T_htf_hot_low, T_htf_hot_high, n_T_htf_hot_in,
@@ -1179,12 +1187,10 @@ public:
 						log(out_msg);
 					}
 
-					log(csp_exception.m_error_message, SSC_ERROR, -1.0);
-
-					return;
+					throw exec_error("sco2_csp_system", csp_exception.m_error_message);
 				}
 
-				update("sCO2 off-design performance calculations for lookup tables complete.", 100.0);
+				log("sCO2 off-design performance calculations for lookup tables complete.", SSC_WARNING);
 
 				//double T_htf_hot_test = sco2_recomp_csp.get_design_par()->m_T_htf_hot_in - 273.15;		//[C]
 				//double m_dot_htf_ND_test = 1.0;		//[-]
@@ -1681,6 +1687,18 @@ public:
 		 
 	}
 };
+
+static bool ssc_mspt_system_log(std::string &log_msg, std::string &progress_msg, void *data, double progress)
+{
+	compute_module *cm = static_cast<compute_module*> (data);
+	if (!cm)
+		return false;
+
+	cm->log(log_msg, SSC_WARNING);
+	bool ret = cm->update(progress_msg, progress);
+
+	return ret;
+}
 
 static bool ssc_mspt_solarpilot_callback( simulation_info *siminfo, void *data )
 {

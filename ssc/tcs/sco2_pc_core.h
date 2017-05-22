@@ -538,7 +538,7 @@ public:
 		bool m_fixed_PR_mc;					//[-] if true, ratio of P_mc_out to P_mc_in is fixed at PR_mc_guess
 
 		// Callback function only log
-		bool(*mf_callback_log)(std::string &log_msg, std::string &progress_msg, void *data);
+		bool(*mf_callback_log)(std::string &log_msg, std::string &progress_msg, void *data, double progress);
 		void *mp_mf_active;
 
 		S_auto_opt_design_hit_eta_parameters()
@@ -594,7 +594,7 @@ public:
 		bool m_fixed_PR_mc;					//[-] if true, ratio of P_mc_out to P_mc_in is fixed at PR_mc_guess
 
 		// Callback function only log
-		bool(*mf_callback_log)(std::string &log_msg, std::string &progress_msg, void *data);
+		bool(*mf_callback_log)(std::string &log_msg, std::string &progress_msg, void *data, double progress);
 		void *mp_mf_active;
 
 		S_auto_opt_design_parameters()
@@ -1317,7 +1317,7 @@ public:
 			mpc_rc_cycle = pc_rc_cycle;
 
 			msg_log = "Log message ";
-			msg_progress = "Progress bar message ";
+			msg_progress = "Designing cycle...";
 		}
 
 		virtual int operator()(double UA_recup_total /*kW/K*/, double *eta /*-*/);

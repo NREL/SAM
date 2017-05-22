@@ -35,11 +35,8 @@ C_sco2_recomp_csp::C_sco2_recomp_csp()
 	//m_off_design_turbo_operation = E_VFD_MC_VFD_RC_FIXED_T;
 	m_off_design_turbo_operation = E_FIXED_MC_FIXED_RC_FIXED_T;
 
-	mf_callback = 0;		// NULL
-	m_cdata = 0;			// NULL
-
-	mf_callback_log = 0;
-	mp_mf_active = 0;
+	mf_callback_update = 0;		// NULL
+	mp_mf_update = 0;			// NULL
 
 	m_is_write_mc_out_file = false;
 	m_is_only_write_frecomp_opt_iters = false;
@@ -94,8 +91,8 @@ void C_sco2_recomp_csp::design_core()
 		ms_rc_cycle_des_par.m_N_turbine = ms_des_par.m_N_turbine;
 		ms_rc_cycle_des_par.m_is_recomp_ok = ms_des_par.m_is_recomp_ok;	
 
-		ms_rc_cycle_des_par.mf_callback_log = mf_callback_log;
-		ms_rc_cycle_des_par.mp_mf_active = mp_mf_active;
+		ms_rc_cycle_des_par.mf_callback_log = mf_callback_update;
+		ms_rc_cycle_des_par.mp_mf_active = mp_mf_update;
 
 		mc_rc_cycle.auto_opt_design_hit_eta(ms_rc_cycle_des_par, auto_err_code, error_msg);
 	}
@@ -2226,8 +2223,8 @@ int C_sco2_recomp_csp::generate_ud_pc_tables(double T_htf_low /*C*/, double T_ht
 	C_sco2_csp_od c_sco2_csp(this);
 	C_ud_pc_table_generator c_sco2_ud_pc(c_sco2_csp);
 
-	c_sco2_ud_pc.mf_callback = mf_callback;
-	c_sco2_ud_pc.m_cdata = m_cdata;
+	c_sco2_ud_pc.mf_callback = mf_callback_update;
+	c_sco2_ud_pc.mp_mf_active = mp_mf_update;
 
 	double T_htf_ref = ms_des_par.m_T_htf_hot_in - 273.15;	//[C] convert from K
 	double T_amb_ref = ms_des_par.m_T_amb_des - 273.15;		//[C] convert from K
