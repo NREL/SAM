@@ -816,7 +816,7 @@ if( yesno("Would you like to generate a report based off these results?",[defaul
 	}
 	
 	ok = pdfreport( reportFile, 
-					{'template'=runtimedir() + 'reports/pvforindiawizard.samreport', 'metadata'=data });
+					{'template'=runtimedir() + 'quickstart/pvforindiawizard.samreport', 'metadata'=data });
 	
 	// Open Report
 	browse(reportFile);
@@ -878,7 +878,7 @@ if (left(ostype(),3) == "win")
 
 		xl_set( xl, to_real(get('lcog'))/100,'lcog_summary');
 		xl_set( xl, to_real(get('project_return_aftertax_npv')),'npv_summary');
-	xl_set( xl, to_real(get('flip_actual_irr')),'irr_summary');
+		xl_set( xl, to_real(get('flip_actual_irr')),'irr_summary');
 		xl_set( xl, to_real(get('flip_actual_year')),'irr_year_summary');
 		xl_set( xl, to_real(get('min_dscr')),'dscr_summary');
 			
