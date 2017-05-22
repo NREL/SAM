@@ -474,7 +474,7 @@ if( yesno("Would you like to generate a report based off these results?",[defaul
 	}
 	
 	ok = pdfreport( reportFile, 
-					{'template'=runtimedir() + 'reports/windwizard.samreport', 'metadata'=data });
+					{'template'=runtimedir() + 'quickstart/windwizard.samreport', 'metadata'=data });
 	
 	// Open Report
 	browse(reportFile);
