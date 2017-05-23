@@ -22,14 +22,6 @@
 
 #include "csp_system_costs.h"
 
-static bool ssc_mspt_system_log(std::string &log_msg, std::string &progress_msg, void *data, double progress);
-
-static bool ssc_mspt_solarpilot_callback(simulation_info *siminfo, void *data);
-
-static bool ssc_mspt_udpc_progress(void *data, double percent, std::string msg);
-
-static bool ssc_mspt_sim_progress(void *data, double percent, C_csp_messages *csp_messages, float time_sec);
-
 static var_info _cm_vtab_tcsmolten_salt[] = {
 	/*   VARTYPE           DATATYPE         NAME                           LABEL                                                     UNITS            META           GROUP            REQUIRED_IF                 CONSTRAINTS         UI_HINTS*/
 	{ SSC_INPUT,        SSC_STRING,      "solar_resource_file",  "local weather file path",                                           "",             "",            "Weather",        "*",                       "LOCAL_FILE",           "" },
@@ -882,7 +874,7 @@ public:
             heliostatfield.ms_params.m_sf_adjust.at(i) = sf_haf(i);
 
 		// Set callback information
-		heliostatfield.mf_callback = ssc_mspt_solarpilot_callback;
+		heliostatfield.mf_callback = ssc_cmod_solarpilot_callback;
 		heliostatfield.m_cdata = (void*)this;
 
 		// Try running pt heliostat init() call just for funsies
@@ -1129,7 +1121,7 @@ public:
 				C_sco2_recomp_csp sco2_recomp_csp;
 
 				// Pass through callback function and pointer
-				sco2_recomp_csp.mf_callback_update = ssc_mspt_system_log;
+				sco2_recomp_csp.mf_callback_update = ssc_cmod_update;
 				sco2_recomp_csp.mp_mf_update = (void*)(this);
 
 				try
@@ -1419,7 +1411,14 @@ public:
 		system.m_bop_par_2 = as_double("bop_par_2");
 
   		// Instantiate Solver		
-		C_csp_solver csp_solver(weather_reader, collector_receiver, *p_csp_power_cycle, storage, tou, system);
+		C_csp_solver csp_solver(weather_reader, 
+						collector_receiver, 
+						*p_csp_power_cycle, 
+						storage, 
+						tou, 
+						system,
+						ssc_cmod_update,
+						(void*)(this));
 
 
 		// Set solver reporting outputs
@@ -1515,9 +1514,13 @@ public:
 				log(out_msg, out_type);
 			}
 
-			log(csp_exception.m_error_message, SSC_ERROR, -1.0);
+			throw exec_error("tcsmolten_salt", csp_exception.m_error_message);
+		}
 
-			return;
+		// If no exception, then report messages
+		while (csp_solver.mc_csp_messages.get_message(&out_type, &out_msg))
+		{
+			log(out_msg, out_type);
 		}
 
 
@@ -1548,9 +1551,7 @@ public:
 		try
 		{
 			// Simulate !
-			csp_solver.Ssimulate(sim_setup, 
-									ssc_mspt_sim_progress, 
-									(void*)this);
+			csp_solver.Ssimulate(sim_setup);
 		}
 		catch(C_csp_exception &csp_exception)
 		{
@@ -1560,9 +1561,13 @@ public:
 				log(out_msg);
 			}
 
-			log(csp_exception.m_error_message, SSC_WARNING);
+			throw exec_error("tcsmolten_salt", csp_exception.m_error_message);
+		}
 
-			return;
+		// If no exception, then report messages
+		while (csp_solver.mc_csp_messages.get_message(&out_type, &out_msg))
+		{
+			log(out_msg, out_type);
 		}
 
 		// Do unit post-processing here
@@ -1600,14 +1605,7 @@ public:
 			p_m_dot_water_pc[i] = p_m_dot_water_pc[i] / 3600.0;	//[kg/s] convert from kg/hr
 			p_m_dot_tes_dc[i] = p_m_dot_tes_dc[i] / 3600.0;		//[kg/s] convert from kg/hr
 			p_m_dot_tes_ch[i] = p_m_dot_tes_ch[i] / 3600.0;		//[kg/s] convert from kg/hr
-		}
-
-
-		// If no exception, then report messages
-		while( csp_solver.mc_csp_messages.get_message(&out_type, &out_msg) )
-		{
-			log(out_msg, out_type);
-		}
+		}		
 
 		// Set output data from heliostat class
 		int n_rows_eta_map = heliostatfield.ms_params.m_eta_map.nrows();
@@ -1687,57 +1685,5 @@ public:
 		 
 	}
 };
-
-static bool ssc_mspt_system_log(std::string &log_msg, std::string &progress_msg, void *data, double progress)
-{
-	compute_module *cm = static_cast<compute_module*> (data);
-	if (!cm)
-		return false;
-
-	cm->log(log_msg, SSC_WARNING);
-	bool ret = cm->update(progress_msg, progress);
-
-	return ret;
-}
-
-static bool ssc_mspt_solarpilot_callback( simulation_info *siminfo, void *data )
-{
-	cm_tcsmolten_salt *cm = static_cast<cm_tcsmolten_salt*> (data);
-	if( !cm )
-		false;
-	float simprogress = (float)siminfo->getCurrentSimulation() / (float)(max(siminfo->getTotalSimulationCount(), 1));
-
-	return cm->relay_message(*siminfo->getSimulationNotices(), simprogress*100.0f);
-}
-
-static bool ssc_mspt_udpc_progress( void *data, double percent, std::string msg)
-{
-	cm_tcsmolten_salt *cm = static_cast<cm_tcsmolten_salt*> (data);
-
-	if( !cm )
-		return false;
-
-	return cm->relay_message(msg, percent);	
-}
-
-static bool ssc_mspt_sim_progress( void *data, double percent, C_csp_messages *csp_msg, float time_sec )
-{
-	cm_tcsmolten_salt *cm = static_cast<cm_tcsmolten_salt*> (data);
-	if( !cm )
-		false;
-	
-    if(csp_msg != 0)
-    {
-        int out_type;
-        string message;
-        while( csp_msg->get_message(&out_type, &message) )
-        {
-            cm->log(message, out_type == C_csp_messages::WARNING ? SSC_WARNING : SSC_NOTICE, time_sec);
-        }
-    }
-    bool ret = cm->update("Simulation progress", percent);
-
-    return ret;
-}
 
 DEFINE_MODULE_ENTRY(tcsmolten_salt, "CSP molten salt power tower with hierarchical controller and dispatch optimization", 1)

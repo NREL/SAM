@@ -34,5 +34,6 @@ public:
     bool postsim_calcs( compute_module *cm );
 };
 
+bool ssc_cmod_solarpilot_callback(simulation_info *siminfo, void *data);
 
 #endif

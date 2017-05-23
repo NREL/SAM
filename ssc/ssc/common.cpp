@@ -872,3 +872,15 @@ bool weatherdata::has_data_column( size_t id )
 {
 	return std::find( m_columns.begin(), m_columns.end(), id ) != m_columns.end();
 }
+
+bool ssc_cmod_update(std::string &log_msg, std::string &progress_msg, void *data, double progress)
+{
+	compute_module *cm = static_cast<compute_module*> (data);
+	if (!cm)
+		return false;
+
+	if (log_msg != "")
+		cm->log(log_msg, SSC_WARNING);
+	
+	return cm->update(progress_msg, progress);
+}
