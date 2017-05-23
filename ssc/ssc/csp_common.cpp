@@ -15,7 +15,7 @@
 #define mysnprintf snprintf
 #endif
 
-static bool solarpilot_callback( simulation_info *siminfo, void *data );
+//static bool solarpilot_callback( simulation_info *siminfo, void *data );
 static bool optimize_callback( simulation_info *siminfo, void *data );
 
 solarpilot_invoke::solarpilot_invoke(compute_module *cm)
@@ -203,7 +203,7 @@ bool solarpilot_invoke::run()
 		    wfdata.push_back( std::string(buf) );
 	    }
 
-	    m_sapi->SetDetailCallback( solarpilot_callback, m_cmod);
+	    m_sapi->SetDetailCallback( ssc_cmod_solarpilot_callback, m_cmod);
 	    m_sapi->SetSummaryCallbackStatus(false);
 
 	    m_sapi->GenerateDesignPointSimulations( *this, wfdata );
@@ -278,7 +278,7 @@ bool solarpilot_invoke::run()
 
 		m_sapi->SetDetailCallbackStatus(false);
 		m_sapi->SetSummaryCallbackStatus(true);
-		m_sapi->SetSummaryCallback( solarpilot_callback, m_cmod );
+		m_sapi->SetSummaryCallback( ssc_cmod_solarpilot_callback, m_cmod );
 		
 	
 		//sp_optical_table opttab;
@@ -314,7 +314,7 @@ bool solarpilot_invoke::run()
     {
         m_sapi->SetDetailCallbackStatus(false);
 		m_sapi->SetSummaryCallbackStatus(true);
-		m_sapi->SetSummaryCallback( solarpilot_callback, m_cmod );
+		m_sapi->SetSummaryCallback( ssc_cmod_solarpilot_callback, m_cmod );
 		
 	    sp_flux_table flux_temp;
 
@@ -489,7 +489,7 @@ void solarpilot_invoke::setOptimizationSimulationHistory(vector<vector<double> >
 }
 
 
-static bool solarpilot_callback( simulation_info *siminfo, void *data )
+bool ssc_cmod_solarpilot_callback( simulation_info *siminfo, void *data )
 {
 	compute_module *cm = static_cast<compute_module*>( data );
 	if ( !cm ) return false;

@@ -1,8 +1,7 @@
 #include "core.h"
+#include "common.h"
 
 #include "sco2_pc_csp_int.h"
-
-static bool ssc_sco2_csp_udpc_update(std::string &log_msg, std::string &progress_msg, void *data, double progress);
 
 static var_info _cm_vtab_sco2_csp_ud_pc_tables[] = {
 
@@ -227,7 +226,7 @@ public:
 		C_sco2_recomp_csp sco2_recomp_csp;
 
 		// Pass through callback function (with update percent) and pointer
-		sco2_recomp_csp.mf_callback_update = ssc_sco2_csp_udpc_update;
+		sco2_recomp_csp.mf_callback_update = ssc_cmod_update;
 		sco2_recomp_csp.mp_mf_update = (void*)(this);
 
 		try
@@ -382,17 +381,5 @@ public:
 	}
 
 };
-
-static bool ssc_sco2_csp_udpc_update(std::string &log_msg, std::string &progress_msg, void *data, double progress)
-{
-	compute_module *cm = static_cast<compute_module*> (data);
-	if (!cm)
-		return false;
-
-	cm->log(log_msg, SSC_WARNING);
-	bool ret = cm->update(progress_msg, progress);
-
-	return ret;
-}
 
 DEFINE_MODULE_ENTRY(sco2_csp_ud_pc_tables, "...", 0)
