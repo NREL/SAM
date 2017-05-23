@@ -138,6 +138,13 @@ class C_ud_pc_table_generator
 
 private:
 	C_od_pc_function &mf_pc_eq;
+	std::string m_log_msg;
+	std::string m_progress_msg;	
+
+	void send_callback(int run_number, int n_runs_total,
+		double T_htf_hot, double m_dot_htf_ND, double T_amb,
+		double W_dot_gross_ND, double Q_dot_in_ND,
+		double W_dot_cooling_ND, double m_dot_water_ND);
 
 public:
 
@@ -153,9 +160,8 @@ public:
 		util::matrix_t<double> & T_htf_ind, util::matrix_t<double> & T_amb_ind, util::matrix_t<double> & m_dot_htf_ind);
 
 	// Callback funtion
-	bool(*mf_callback)(void *data, double percent, std::string msg);
-	void *m_cdata;
-	std::string m_udpc_msg;
+	bool(*mf_callback)(std::string &log_msg, std::string &progress_msg, void *data, double progress);
+	void *mp_mf_active;
 
 };
 

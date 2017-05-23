@@ -194,7 +194,9 @@ C_csp_solver::C_csp_solver(C_csp_weatherreader &weather,
 	C_csp_power_cycle &power_cycle,
 	C_csp_tes &tes,
 	C_csp_tou &tou,
-	S_csp_system_params &system) : 
+	S_csp_system_params &system,
+	bool(*pf_callback)(std::string &log_msg, std::string &progress_msg, void *data, double progress),
+	void *p_cmod_active) :
 	mc_weather(weather), 
 	mc_collector_receiver(collector_receiver), 
 	mc_power_cycle(power_cycle),
@@ -229,8 +231,36 @@ C_csp_solver::C_csp_solver(C_csp_weatherreader &weather,
 
 	mv_time_local.reserve(10);
 
+	mpf_callback = pf_callback;
+	mp_cmod_active = p_cmod_active;
+
 	// Solved Controller Variables
 	m_defocus = std::numeric_limits<double>::quiet_NaN();
+}
+
+void C_csp_solver::send_callback(double percent)
+{
+	if (mpf_callback && mp_cmod_active)
+	{
+		int out_type = -1;
+		std::string out_msg = "";
+		std::string prg_msg = "Simulation Progress";
+
+		while (mc_csp_messages.get_message(&out_type, &out_msg))
+		{
+			mpf_callback(out_msg, prg_msg, mp_cmod_active, percent);
+		}
+
+		out_msg = "";
+		bool cmod_ret = mpf_callback(out_msg, prg_msg, mp_cmod_active, percent);
+
+		if (!cmod_ret)
+		{
+			std::string error_msg = "User terminated simulation...";
+			std::string loc_msg = "C_csp_solver";
+			throw(C_csp_exception(error_msg, loc_msg, 1));
+		}
+	}
 }
 
 void C_csp_solver::reset_hierarchy_logic()
@@ -428,9 +458,7 @@ int C_csp_solver::steps_per_hour()
 	return step_per_hour;
 }
 
-void C_csp_solver::Ssimulate(C_csp_solver::S_sim_setup & sim_setup, 
-								bool(*mf_callback)(void *data, double percent, C_csp_messages *csp_messages, float time_sec), 
-								void *m_cdata)
+void C_csp_solver::Ssimulate(C_csp_solver::S_sim_setup & sim_setup)
 {
 	// Get number of records in weather file
 	int n_wf_records = mc_weather.get_n_records();
@@ -594,7 +622,7 @@ void C_csp_solver::Ssimulate(C_csp_solver::S_sim_setup & sim_setup,
 	// Block dispatch saved variables
 	bool is_q_dot_pc_target_overwrite = false;
 
-	mf_callback(m_cdata, 0.0, 0, 0.0);
+	//mf_callback(m_cdata, 0.0, 0, 0.0);
 
     mc_csp_messages.add_message(C_csp_messages::WARNING, util::format("End time: %f", mc_kernel.get_sim_setup()->m_sim_time_end) );
 
@@ -604,10 +632,7 @@ void C_csp_solver::Ssimulate(C_csp_solver::S_sim_setup & sim_setup,
 		double calc_frac_current = (mc_kernel.mc_sim_info.ms_ts.m_time - mc_kernel.get_sim_setup()->m_sim_time_start) / (mc_kernel.get_sim_setup()->m_sim_time_end - mc_kernel.get_sim_setup()->m_sim_time_start);
 		if( calc_frac_current > progress_msg_frac_current )
 		{
-			if(! 
-                mf_callback(m_cdata, (float) calc_frac_current*100.f, &mc_csp_messages, mc_kernel.mc_sim_info.ms_ts.m_time)
-                )
-                return;     //user cancelled the simulation
+			send_callback( (float)calc_frac_current*100.f );
 
 			progress_msg_frac_current += progress_msg_interval_frac;
 		}
@@ -789,10 +814,8 @@ void C_csp_solver::Ssimulate(C_csp_solver::S_sim_setup & sim_setup,
 					<< (int)(mc_kernel.mc_sim_info.ms_ts.m_time / 3600.) + mc_tou.mc_dispatch_params.m_optimize_frequency;
                 
                 mc_csp_messages.add_message(C_csp_messages::NOTICE, ss.str());
-			    if(! 
-					mf_callback(m_cdata, (float)calc_frac_current*100.f, &mc_csp_messages, mc_kernel.mc_sim_info.ms_ts.m_time)
-                    ) 
-                    return;
+
+				send_callback((float)calc_frac_current*100.f);
 
                 ss.flush();
 

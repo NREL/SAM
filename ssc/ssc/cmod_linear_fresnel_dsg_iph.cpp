@@ -11,8 +11,6 @@
 #include "csp_solver_tou_block_schedules.h"
 #include "csp_solver_two_tank_tes.h"
 
-static bool ssc_linear_fresnel_dsg_iph_sim_progress(void *data, double percent, C_csp_messages *csp_msg, float time_sec);
-
 static var_info _cm_vtab_linear_fresnel_dsg_iph[] = {
 
 //    VARTYPE           DATATYPE          NAME                 LABEL                                                                                   UNITS            META            GROUP            REQUIRED_IF                 CONSTRAINTS             UI_HINTS
@@ -162,12 +160,11 @@ static var_info _cm_vtab_linear_fresnel_dsg_iph[] = {
 
 	var_info_invalid };
 
-class cm_linear_fresnel_dsg_iph : public tcKernel
+class cm_linear_fresnel_dsg_iph : public compute_module
 {
 public:
 
-	cm_linear_fresnel_dsg_iph(tcstypeprovider *prov)
-	:tcKernel(prov)
+	cm_linear_fresnel_dsg_iph()
 	{
 		add_var_info(_cm_vtab_linear_fresnel_dsg_iph);
 		add_var_info(vtab_adjustment_factors);
@@ -408,7 +405,14 @@ public:
 		C_csp_two_tank_tes::S_params *tes = &storage.ms_params;		
 
 		// Instantiate Solver
-		C_csp_solver csp_solver(weather_reader, c_lf_dsg, steam_heat_sink, storage, tou, system);
+		C_csp_solver csp_solver(weather_reader, 
+								c_lf_dsg, 
+								steam_heat_sink, 
+								storage, 
+								tou, 
+								system,
+								ssc_cmod_update,
+								(void*)(this));
 
 		// Set solver reporting outputs
 		csp_solver.mc_reported_outputs.assign(C_csp_solver::C_solver_outputs::TIME_FINAL, allocate("time_hr", n_steps_fixed), n_steps_fixed);
@@ -429,6 +433,7 @@ public:
 		csp_solver.mc_reported_outputs.assign(C_csp_solver::C_solver_outputs::OP_MODE_2, allocate("op_mode_2", n_steps_fixed), n_steps_fixed);
 		csp_solver.mc_reported_outputs.assign(C_csp_solver::C_solver_outputs::OP_MODE_3, allocate("op_mode_3", n_steps_fixed), n_steps_fixed);
 
+		update("Initialize linear direct steam process heat model...", 0.0);
 
 		int out_type = -1;
 		std::string out_msg = "";
@@ -445,17 +450,19 @@ public:
 				log(out_msg, out_type);
 			}
 
-			log(csp_exception.m_error_message, SSC_ERROR, -1.0);
+			throw exec_error("linear_fresnel_dsg_iph", csp_exception.m_error_message);
+		}
 
-			return;
+		// If no exception, then report messages
+		while (csp_solver.mc_csp_messages.get_message(&out_type, &out_msg))
+		{
+			log(out_msg, out_type);
 		}
 
 		try
 		{
 			// Simulate !
-			csp_solver.Ssimulate(sim_setup,
-				ssc_linear_fresnel_dsg_iph_sim_progress, 
-				(void*)this);
+			csp_solver.Ssimulate(sim_setup);
 		}
 		catch( C_csp_exception &csp_exception )
 		{
@@ -465,9 +472,13 @@ public:
 				log(out_msg);
 			}
 
-			log(csp_exception.m_error_message, SSC_WARNING);
+			throw exec_error("linear_fresnel_dsg_iph", csp_exception.m_error_message);
+		}
 
-			return;
+		// If no exception, then report messages
+		while (csp_solver.mc_csp_messages.get_message(&out_type, &out_msg))
+		{
+			log(out_msg, out_type);
 		}
 
 		size_t count;
@@ -513,24 +524,4 @@ public:
 
 };
 
-static bool ssc_linear_fresnel_dsg_iph_sim_progress(void *data, double percent, C_csp_messages *csp_msg, float time_sec)
-{
-	cm_linear_fresnel_dsg_iph *cm = static_cast<cm_linear_fresnel_dsg_iph*> (data);
-	if( !cm )
-		false;
-
-	if( csp_msg != 0 )
-	{
-		int out_type;
-		string message;
-		while( csp_msg->get_message(&out_type, &message) )
-		{
-			cm->log(message, out_type == C_csp_messages::WARNING ? SSC_WARNING : SSC_NOTICE, time_sec);
-		}
-	}
-	bool ret = cm->update("", percent);
-
-	return ret;
-}
-
-DEFINE_TCS_MODULE_ENTRY(linear_fresnel_dsg_iph, "CSP model using the linear fresnel TCS types.", 4)
+DEFINE_MODULE_ENTRY(linear_fresnel_dsg_iph, "CSP model using the linear fresnel TCS types.", 1)
