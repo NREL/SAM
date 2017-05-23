@@ -307,7 +307,7 @@ private:
 	double SCA_drives_elec;		//Tracking power, in Watts per SCA drive
 	int fthrok;		//Flag to allow partial defocusing of the collectors
 	int fthrctrl;		//Defocusing strategy
-	double ColAz;		//Collector azimuth angle
+	double ColAz;		//[rad] Collector azimuth angle - converted from [deg] in init()
 	double solar_mult;		//Solar multiple
 	double mc_bal_hot;		//The heat capacity of the balance of plant on the hot side
 	double mc_bal_cold;		//The heat capacity of the balance of plant on the cold side
@@ -755,7 +755,7 @@ public:
 		SCA_drives_elec = value(P_SCA_DRIVES_ELEC);		//Tracking power, in Watts per SCA drive [W/module]
 		fthrok = (int)value(P_FTHROK);		//Flag to allow partial defocusing of the collectors [none]
 		fthrctrl = (int)value(P_FTHRCTRL);		//Defocusing strategy [none]
-		ColAz = value(P_COLAZ);		//Collector azimuth angle [deg]
+		ColAz = value(P_COLAZ)*CSP::pi*180.0;	//[rad] Collector azimuth angle, convert from [deg]
 		solar_mult = value(P_SOLAR_MULT);		//Solar multiple [none]
 		mc_bal_hot = value(P_MC_BAL_HOT);		//The heat capacity of the balance of plant on the hot side [kWht/K-MWt]
 		mc_bal_cold = value(P_MC_BAL_COLD);		//The heat capacity of the balance of plant on the cold side [kWht/K-MWt]
