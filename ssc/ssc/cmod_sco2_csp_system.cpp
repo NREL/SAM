@@ -1,4 +1,5 @@
 #include "core.h"
+#include "common.h"
 
 #include <ctime>
 
@@ -22,7 +23,7 @@ static var_info _cm_vtab_sco2_csp_system[] = {
 	{ SSC_INPUT,  SSC_NUMBER,  "UA_recup_tot_des",     "Total recuperator conductance",                          "kW/K",       "",    "",      "?=-1.0","",       "" },
 	{ SSC_INPUT,  SSC_NUMBER,  "is_recomp_ok",         "1 = Yes, 0 = simple cycle only",                         "",           "",    "",      "?=1",   "",       "" },
 	{ SSC_INPUT,  SSC_NUMBER,  "is_PR_fixed",          "0 = No, >0 = fixed pressure ratio",                      "",           "",    "",      "?=0",   "",       "" },
-	// Cycle Design
+		// Cycle Design
 	{ SSC_INPUT,  SSC_NUMBER,  "eta_isen_mc",          "Design main compressor isentropic efficiency",           "-",          "",    "",      "*",     "",       "" },
 	{ SSC_INPUT,  SSC_NUMBER,  "eta_isen_rc",          "Design re-compressor isentropic efficiency",             "-",          "",    "",      "*",     "",       "" },
 	{ SSC_INPUT,  SSC_NUMBER,  "eta_isen_t",           "Design turbine isentropic efficiency",                   "-",          "",    "",      "*",     "",       "" },
@@ -317,6 +318,11 @@ public:
 
 		// Construction class and design system 
 		C_sco2_recomp_csp sco2_recomp_csp;
+
+		// Pass through callback function and pointer
+		sco2_recomp_csp.mf_callback_update = ssc_cmod_update;
+		sco2_recomp_csp.mp_mf_update = (void*)(this);
+
 		try
 		{
 			sco2_recomp_csp.design(sco2_rc_des_par);
@@ -330,9 +336,7 @@ public:
 				log("\n");
 			}
 
-			log(csp_exception.m_error_message, SSC_ERROR, -1.0);
-
-			return;
+			throw exec_error("sco2_csp_system", csp_exception.m_error_message);
 		}
 
 		// If all calls were successful, log to SSC any messages from sco2_recomp_csp
@@ -760,8 +764,7 @@ public:
 		if( n_od_cols != 5 && n_od_runs > 1 )
 		{
 			std::string err_msg = util::format("The matrix of off design cases requires 3 columns. The entered matrix has %d columns", n_od_cols);
-			log(err_msg);
-			return;
+			throw exec_error("sco2_csp_system", err_msg);
 		}
 
 		allocate_ssc_outputs(n_od_runs);
@@ -802,9 +805,9 @@ public:
 				}
 
 				log(csp_exception.m_error_message, SSC_ERROR, -1.0);
-
-				return;
+				throw exec_error("sco2_csp_system", csp_exception.m_error_message);
 			}
+
 			std::clock_t clock_end = std::clock();
 
 			double od_opt_duration = (clock_end - clock_start)/(double) CLOCKS_PER_SEC;		//[s]
