@@ -1013,14 +1013,19 @@ public:
 
 static void fcall_xl_create( lk::invoke_t &cxt )
 {
-	LK_DOC("xl_create", "Create a new Excel OLE automation object", "( [string: optional file to open] ):xl-object-ref" );
+	LK_DOC("xl_create", "Create a new Excel OLE automation object", "( [string: optional file to open], [boolean:show] ):xl-object-ref" );
 
 	lkXLObject *xl = new lkXLObject;
 	xl->Excel().StartExcel();
 	if ( cxt.arg_count() > 0 )
 		xl->Excel().OpenFile( cxt.arg(0).as_string() );
 	
-	xl->Excel().Show( true );
+	bool show = true;
+	if ( cxt.arg_count() > 1 )
+		show = cxt.arg(1).as_boolean();
+	if ( show )
+		xl->Excel().Show( true );
+
 	cxt.result().assign( cxt.env()->insert_object( xl ) );
 }
 
