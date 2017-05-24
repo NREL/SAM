@@ -1018,8 +1018,11 @@ static void fcall_xl_create( lk::invoke_t &cxt )
 	lkXLObject *xl = new lkXLObject;
 	xl->Excel().StartExcel();
 	if ( cxt.arg_count() > 0 )
-		xl->Excel().OpenFile( cxt.arg(0).as_string() );
-	
+	{
+		wxString fn = cxt.arg(0).as_string();
+		if (wxFileExists(fn))
+			xl->Excel().OpenFile( fn );
+	}
 	bool show = true;
 	if ( cxt.arg_count() > 1 )
 		show = cxt.arg(1).as_boolean();
@@ -1048,8 +1051,10 @@ static void fcall_xl_open(lk::invoke_t &cxt)
 
 	if ( lkXLObject *xl = dynamic_cast<lkXLObject*>( cxt.env()->query_object( cxt.arg(0).as_integer() ) ) )
 	{
-		xl->Excel().OpenFile( cxt.arg(1).as_string() );
-		
+		wxString fn = cxt.arg(1).as_string();
+		if (wxFileExists(fn))
+			xl->Excel().OpenFile( fn );
+	
 		bool show = true;
 		if ( cxt.arg_count() > 2 )
 			show = cxt.arg(2).as_boolean();
