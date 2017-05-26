@@ -1,4 +1,5 @@
 #include "core.h"
+#include "common.h"
 
 #include "sco2_pc_csp_int.h"
 
@@ -8,29 +9,30 @@ static var_info _cm_vtab_sco2_csp_ud_pc_tables[] = {
 	// ** Design Parameters **
 		// System Design
 	{ SSC_INPUT,  SSC_NUMBER,  "htf",                  "Integer code for HTF used in PHX",                       "",           "",    "",      "*",     "",       "" },
-    { SSC_INPUT,  SSC_MATRIX,  "htf_props",            "User defined HTF property data",                         "", "7 columns (T,Cp,dens,visc,kvisc,cond,h), at least 3 rows", "", "*", "", "" },
+    { SSC_INPUT,  SSC_MATRIX,  "htf_props",            "User defined HTF property data",                         "", "7 columns (T,Cp,dens,visc,kvisc,cond,h), at least 3 rows", "", "?=[[0]]", "", "" },
 	{ SSC_INPUT,  SSC_NUMBER,  "T_htf_hot_des",        "HTF design hot temperature (PHX inlet)",                 "C",          "",    "",      "*",     "",       "" },
 	{ SSC_INPUT,  SSC_NUMBER,  "dT_PHX_hot_approach",  "Temp diff btw hot HTF and turbine inlet",                "C",          "",    "",      "*",     "",       "" },
 	{ SSC_INPUT,  SSC_NUMBER,  "T_amb_des",            "Ambient temperature",                                    "C",          "",    "",      "*",     "",       "" },
 	{ SSC_INPUT,  SSC_NUMBER,  "dT_mc_approach",       "Temp diff btw ambient air and main compressor inlet",    "C",          "",    "",      "*",     "",       "" },
-	{ SSC_INPUT,  SSC_NUMBER,  "site_elevation",       "Site elevation",                                         "m",          "",    "",      "*",     "",       "" },
+	{ SSC_INPUT,  SSC_NUMBER,  "site_elevation",       "Site elevation",                                         "m",          "",    "",      "?=300.0","",       "" },
 	{ SSC_INPUT,  SSC_NUMBER,  "W_dot_net_des",        "Design cycle power output (no cooling parasitics)",      "MWe",        "",    "",      "*",     "",       "" },
 	{ SSC_INPUT,  SSC_NUMBER,  "design_method",        "1 = Specify efficiency, 2 = Specify total recup UA",     "",           "",    "",      "?=1",   "",       "" },
 	{ SSC_INPUT,  SSC_NUMBER,  "eta_thermal_des",      "Power cycle thermal efficiency",                         "",           "",    "",      "?=-1.0","",       "" },
 	{ SSC_INPUT,  SSC_NUMBER,  "UA_recup_tot_des",     "Total recuperator conductance",                          "kW/K",       "",    "",      "?=-1.0","",       "" },
 	{ SSC_INPUT,  SSC_NUMBER,  "is_recomp_ok",         "1 = Yes, 0 = simple cycle only",                         "",           "",    "",      "?=1",   "",       "" },
+	{ SSC_INPUT,  SSC_NUMBER,  "is_PR_fixed",          "0 = No, >0 = fixed pressure ratio",                      "",           "",    "",      "?=0",   "",       "" },
 		// Cycle Design
 	{ SSC_INPUT,  SSC_NUMBER,  "eta_isen_mc",          "Design main compressor isentropic efficiency",           "-",          "",    "",      "*",     "",       "" },
 	{ SSC_INPUT,  SSC_NUMBER,  "eta_isen_rc",          "Design re-compressor isentropic efficiency",             "-",          "",    "",      "*",     "",       "" },
 	{ SSC_INPUT,  SSC_NUMBER,  "eta_isen_t",           "Design turbine isentropic efficiency",                   "-",          "",    "",      "*",     "",       "" },
-	{ SSC_INPUT,  SSC_NUMBER,  "LT_recup_eff_max",     "Maximum allowable effectiveness in LT recuperator",      "-",          "",    "",      "*",     "",       "" },
-	{ SSC_INPUT,  SSC_NUMBER,  "HT_recup_eff_max",     "Maximum allowable effectiveness in HT recuperator",      "-",          "",    "",      "*",     "",       "" },
+	{ SSC_INPUT,  SSC_NUMBER,  "LT_recup_eff_max",     "Maximum allowable effectiveness in LT recuperator",      "-",          "",    "",      "?=1.0", "",       "" },
+	{ SSC_INPUT,  SSC_NUMBER,  "HT_recup_eff_max",     "Maximum allowable effectiveness in HT recuperator",      "-",          "",    "",      "?=1.0", "",       "" },
 	{ SSC_INPUT,  SSC_NUMBER,  "P_high_limit",         "High pressure limit in cycle",                           "MPa",        "",    "",      "*",     "",       "" },
 		// PHX Design
-	{ SSC_INPUT,  SSC_NUMBER,  "dT_PHX_cold_approach", "Temp diff btw cold HTF and cold CO2",                    "C",          "",    "",      "*",     "",       "" },
+	{ SSC_INPUT,  SSC_NUMBER,  "dT_PHX_cold_approach", "Temp diff btw cold HTF and cold CO2",                    "C",          "",    "",      "?=-1.0","",       "" },
 		// Air Cooler Design
-	{ SSC_INPUT,  SSC_NUMBER,  "fan_power_frac",       "Fraction of net cycle power consumed by air cooler fan", "",           "",    "",      "*",     "",       "" },
-	{ SSC_INPUT,  SSC_NUMBER,  "deltaP_cooler_frac",   "Fraction of cycle high pressure that is design point cooler CO2 pressure drop", "", "", "", "*","",       "" },
+	{ SSC_INPUT,  SSC_NUMBER,  "fan_power_frac",       "Fraction of net cycle power consumed by air cooler fan", "",           "",    "",      "?=0.01",       "", "" },
+	{ SSC_INPUT,  SSC_NUMBER,  "deltaP_cooler_frac",   "Fraction of cycle high pressure that is design point cooler CO2 pressure drop", "", "", "", "?=0.002", "", "" },
 		// User Defined Power Cycle Table Inputs
 	{ SSC_INPUT,  SSC_NUMBER,  "T_htf_hot_low",        "Lower level of HTF hot temperature",					  "C",         "",    "",      "*",     "",       "" },
 	{ SSC_INPUT,  SSC_NUMBER,  "T_htf_hot_high",	   "Upper level of HTF hot temperature",					  "C",		   "",    "",      "*",     "",       "" },
@@ -75,7 +77,11 @@ static var_info _cm_vtab_sco2_csp_ud_pc_tables[] = {
 		// Recuperators																				 
 	{ SSC_OUTPUT, SSC_NUMBER,  "UA_recup_total",       "Total recuperator UA",                                   "kW/K",       "",    "",      "*",     "",       "" },
 	{ SSC_OUTPUT, SSC_NUMBER,  "UA_LTR",               "Low temp recuperator UA",                                "kW/K",       "",    "",      "*",     "",       "" },
+	{ SSC_OUTPUT, SSC_NUMBER,  "eff_LTR",              "Low temp recuperator effectiveness",                     "",           "",    "",      "*",     "",       "" },
+	{ SSC_OUTPUT, SSC_NUMBER,  "NTU_LTR",              "Low temp recuperator NTU",                               "",           "",    "",      "*",     "",       "" },
 	{ SSC_OUTPUT, SSC_NUMBER,  "UA_HTR",               "High temp recuperator UA",                               "kW/K",       "",    "",      "*",     "",       "" },
+	{ SSC_OUTPUT, SSC_NUMBER,  "eff_HTR",              "High temp recuperator effectiveness",                    "",           "",    "",      "*",     "",       "" },	
+	{ SSC_OUTPUT, SSC_NUMBER,  "NTU_HTR",              "High temp recuperator NTRU",                             "",           "",    "",      "*",     "",       "" },
 		// PHX Design Solution
 	{ SSC_OUTPUT, SSC_NUMBER,  "UA_PHX",               "PHX Conductance",                                        "kW/K",       "",    "",      "*",     "",       "" },
 	{ SSC_OUTPUT, SSC_NUMBER,  "eff_PHX",              "PHX effectiveness",                                      "",           "",    "",      "*",     "",       "" },
@@ -147,6 +153,25 @@ public:
 
 		sco2_rc_des_par.m_is_recomp_ok = as_integer("is_recomp_ok");
 
+		double mc_PR_in = as_double("is_PR_fixed");		//[-]
+		if (mc_PR_in != 0.0)
+		{
+			if (mc_PR_in < 0.0)
+			{
+				sco2_rc_des_par.m_PR_mc_guess = mc_PR_in*1.E3;		//[kPa] convert from MPa
+			}
+			else
+			{
+				sco2_rc_des_par.m_PR_mc_guess = mc_PR_in;			//[-] Pressure Ratio!
+			}
+			sco2_rc_des_par.m_fixed_PR_mc = true;
+		}
+		else
+		{
+			sco2_rc_des_par.m_PR_mc_guess = std::numeric_limits<double>::quiet_NaN();
+			sco2_rc_des_par.m_fixed_PR_mc = false;
+		}
+
 			// Cycle design parameters: hardcode pressure drops, for now
 		// Define hardcoded sco2 design point parameters
 		std::vector<double> DP_LT(2);
@@ -184,6 +209,10 @@ public:
 			
 			// PHX design parameters
 		sco2_rc_des_par.m_phx_dt_cold_approach = as_double("dT_PHX_cold_approach");
+		if (sco2_rc_des_par.m_phx_dt_cold_approach < 0.0)
+		{
+			sco2_rc_des_par.m_phx_dt_cold_approach = sco2_rc_des_par.m_phx_dt_hot_approach;
+		}
 			
 			// Air cooler parameters
 		sco2_rc_des_par.m_frac_fan_power = as_double("fan_power_frac");
@@ -195,6 +224,11 @@ public:
 
 		// Construction class and design system
 		C_sco2_recomp_csp sco2_recomp_csp;
+
+		// Pass through callback function (with update percent) and pointer
+		sco2_recomp_csp.mf_callback_update = ssc_cmod_update;
+		sco2_recomp_csp.mp_mf_update = (void*)(this);
+
 		try
 		{
 			sco2_recomp_csp.design(sco2_rc_des_par);
@@ -207,9 +241,7 @@ public:
 				log(out_msg);
 			}
 
-			log(csp_exception.m_error_message, SSC_ERROR, -1.0);
-
-			return;
+			throw exec_error("sco2_csp_system", csp_exception.m_error_message);
 		}
 
 		// Set SSC design outputs
@@ -249,7 +281,11 @@ public:
 		double UA_HTR = sco2_recomp_csp.get_design_solved()->ms_rc_cycle_solved.m_UA_HT;		//[kW/K]
 		assign("UA_recup_total",UA_LTR + UA_HTR);		//[kW/K]
 		assign("UA_LTR",UA_LTR);						//[kW/K]
+		assign("eff_LTR", sco2_recomp_csp.get_design_solved()->ms_rc_cycle_solved.ms_LT_recup_des_solved.m_eff_design);		//[-]
+		assign("NTU_LTR", sco2_recomp_csp.get_design_solved()->ms_rc_cycle_solved.ms_LT_recup_des_solved.m_NTU_design);		//[-]
 		assign("UA_HTR",UA_HTR);						//[kW/K]
+		assign("eff_HTR", sco2_recomp_csp.get_design_solved()->ms_rc_cycle_solved.ms_HT_recup_des_solved.m_eff_design);		//[-]
+		assign("NTU_HTR", sco2_recomp_csp.get_design_solved()->ms_rc_cycle_solved.ms_HT_recup_des_solved.m_NTU_design);		//[-]
 			// PHX
 		assign("UA_PHX",sco2_recomp_csp.get_design_solved()->ms_phx_des_solved.m_UA_design_total);			//[kW/K]
 		assign("eff_PHX",sco2_recomp_csp.get_design_solved()->ms_phx_des_solved.m_eff_design);				//[-]
@@ -278,17 +314,10 @@ public:
 		double m_dot_htf_ND_high = as_double("m_dot_htf_ND_high");	//[-]
 		int n_m_dot_htf_ND_in = as_integer("n_m_dot_htf_ND");			//[-]
 
-
-		
-		//C_sco2_recomp_csp::S_od_par sco2_rc_od_par;
-		//double m_dot_htf_ND = 1.2;
-		//sco2_rc_od_par.m_m_dot_htf = m_dot_htf_ND*sco2_recomp_csp.get_phx_des_par()->m_m_dot_hot_des;		//[kg/s]
-		//sco2_rc_od_par.m_T_amb = 30.0 + 273.15;				//[K]
-		//sco2_rc_od_par.m_T_htf_hot = 670.0 + 273.15;		//[K]
-		//
-		//int sco2_code = sco2_recomp_csp.off_design_opt(sco2_rc_od_par, C_sco2_recomp_csp::E_MAX_ETA);
-
-
+		if (n_T_htf_hot_in < 3 || n_T_amb_in < 3 || n_m_dot_htf_ND_in < 3)
+		{
+			throw exec_error("sco2_csp_ud_pc_tables", "Need at 3 three points for each independent variable");
+		}
 
 		util::matrix_t<double> T_htf_parametrics, T_amb_parametrics, m_dot_htf_ND_parametrics;
 
@@ -307,9 +336,7 @@ public:
 				log(out_msg);
 			}
 
-			log(csp_exception.m_error_message, SSC_ERROR, -1.0);
-
-			return;
+			throw exec_error("sco2_csp_system", csp_exception.m_error_message);
 		}
 
 		int n_T_htf_hot = T_htf_parametrics.nrows();

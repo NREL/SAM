@@ -22,13 +22,6 @@
 
 #include "csp_system_costs.h"
 
-
-static bool ssc_mspt_solarpilot_callback(simulation_info *siminfo, void *data);
-
-static bool ssc_mspt_udpc_progress(void *data, double percent, std::string msg);
-
-static bool ssc_mspt_sim_progress(void *data, double percent, C_csp_messages *csp_messages, float time_sec);
-
 static var_info _cm_vtab_tcsmolten_salt[] = {
 	/*   VARTYPE           DATATYPE         NAME                           LABEL                                                     UNITS            META           GROUP            REQUIRED_IF                 CONSTRAINTS         UI_HINTS*/
 	{ SSC_INPUT,        SSC_STRING,      "solar_resource_file",  "local weather file path",                                           "",             "",            "Weather",        "*",                       "LOCAL_FILE",           "" },
@@ -881,7 +874,7 @@ public:
             heliostatfield.ms_params.m_sf_adjust.at(i) = sf_haf(i);
 
 		// Set callback information
-		heliostatfield.mf_callback = ssc_mspt_solarpilot_callback;
+		heliostatfield.mf_callback = ssc_cmod_solarpilot_callback;
 		heliostatfield.m_cdata = (void*)this;
 
 		// Try running pt heliostat init() call just for funsies
@@ -1058,6 +1051,14 @@ public:
 			sco2_rc_csp_par.m_dt_mc_approach = as_double("sco2_T_approach");			//[K/C]
 			sco2_rc_csp_par.m_elevation = site_elevation;							//[m]
 			sco2_rc_csp_par.m_W_dot_net = as_double("P_ref")*1.E3;					//[kWe]
+			
+			// Hardcode for now that design method iterates on UA_recup_total to hit target etas
+			sco2_rc_csp_par.m_design_method = 1;
+			// Hardcode that recompression cycle is ok
+			sco2_rc_csp_par.m_is_recomp_ok = 1;
+			// Hardcode don't fix pressure ratio
+			sco2_rc_csp_par.m_fixed_PR_mc = false;
+			
 			sco2_rc_csp_par.m_eta_thermal = as_double("design_eff");					//[-]
 			sco2_rc_csp_par.m_is_recomp_ok = 1;
 				// Cycle Design Parameters
@@ -1114,10 +1115,15 @@ public:
 				int out_type = -1;
 				std::string out_msg = "";
 
-				update("Calculating sCO2 design point...", 0.0);
+				log("Calculating sCO2 design point...", SSC_WARNING);
 
 				// Construction class and design system
 				C_sco2_recomp_csp sco2_recomp_csp;
+
+				// Pass through callback function and pointer
+				sco2_recomp_csp.mf_callback_update = ssc_cmod_update;
+				sco2_recomp_csp.mp_mf_update = (void*)(this);
+
 				try
 				{
 					sco2_recomp_csp.design(sco2_rc_csp_par);
@@ -1127,15 +1133,14 @@ public:
 					// Report warning before exiting with error
 					while( sco2_recomp_csp.mc_messages.get_message(&out_type, &out_msg) )
 					{
-						log(out_msg);
+						log(out_msg + "\n");
+						log("\n");
 					}
 
-					log(csp_exception.m_error_message, SSC_ERROR, -1.0);
-
-					return;
+					throw exec_error("sco2_csp_system", csp_exception.m_error_message);
 				}
 
-				update("sCO2 design point calculations complete.", 100.0);
+				log("sCO2 design point calculations complete.", SSC_WARNING);
 
 				// Get sCO2 design outputs
 				double m_dot_htf_design = sco2_recomp_csp.get_phx_des_par()->m_m_dot_hot_des;			//[kg/s]
@@ -1159,11 +1164,6 @@ public:
 
 				util::matrix_t<double> T_htf_parametrics, T_amb_parametrics, m_dot_htf_ND_parametrics;
 
-				update("Calculating sCO2 off-design performance for lookup tables...", 0.0);
-
-				sco2_recomp_csp.mf_callback = ssc_mspt_udpc_progress;
-				sco2_recomp_csp.m_cdata = (void*)this;
-
 				try
 				{
 					sco2_recomp_csp.generate_ud_pc_tables(T_htf_hot_low, T_htf_hot_high, n_T_htf_hot_in,
@@ -1179,12 +1179,10 @@ public:
 						log(out_msg);
 					}
 
-					log(csp_exception.m_error_message, SSC_ERROR, -1.0);
-
-					return;
+					throw exec_error("sco2_csp_system", csp_exception.m_error_message);
 				}
 
-				update("sCO2 off-design performance calculations for lookup tables complete.", 100.0);
+				log("sCO2 off-design performance calculations for lookup tables complete.", SSC_WARNING);
 
 				//double T_htf_hot_test = sco2_recomp_csp.get_design_par()->m_T_htf_hot_in - 273.15;		//[C]
 				//double m_dot_htf_ND_test = 1.0;		//[-]
@@ -1413,7 +1411,14 @@ public:
 		system.m_bop_par_2 = as_double("bop_par_2");
 
   		// Instantiate Solver		
-		C_csp_solver csp_solver(weather_reader, collector_receiver, *p_csp_power_cycle, storage, tou, system);
+		C_csp_solver csp_solver(weather_reader, 
+						collector_receiver, 
+						*p_csp_power_cycle, 
+						storage, 
+						tou, 
+						system,
+						ssc_cmod_update,
+						(void*)(this));
 
 
 		// Set solver reporting outputs
@@ -1509,9 +1514,13 @@ public:
 				log(out_msg, out_type);
 			}
 
-			log(csp_exception.m_error_message, SSC_ERROR, -1.0);
+			throw exec_error("tcsmolten_salt", csp_exception.m_error_message);
+		}
 
-			return;
+		// If no exception, then report messages
+		while (csp_solver.mc_csp_messages.get_message(&out_type, &out_msg))
+		{
+			log(out_msg, out_type);
 		}
 
 
@@ -1542,9 +1551,7 @@ public:
 		try
 		{
 			// Simulate !
-			csp_solver.Ssimulate(sim_setup, 
-									ssc_mspt_sim_progress, 
-									(void*)this);
+			csp_solver.Ssimulate(sim_setup);
 		}
 		catch(C_csp_exception &csp_exception)
 		{
@@ -1554,9 +1561,13 @@ public:
 				log(out_msg);
 			}
 
-			log(csp_exception.m_error_message, SSC_WARNING);
+			throw exec_error("tcsmolten_salt", csp_exception.m_error_message);
+		}
 
-			return;
+		// If no exception, then report messages
+		while (csp_solver.mc_csp_messages.get_message(&out_type, &out_msg))
+		{
+			log(out_msg, out_type);
 		}
 
 		// Do unit post-processing here
@@ -1594,14 +1605,7 @@ public:
 			p_m_dot_water_pc[i] = p_m_dot_water_pc[i] / 3600.0;	//[kg/s] convert from kg/hr
 			p_m_dot_tes_dc[i] = p_m_dot_tes_dc[i] / 3600.0;		//[kg/s] convert from kg/hr
 			p_m_dot_tes_ch[i] = p_m_dot_tes_ch[i] / 3600.0;		//[kg/s] convert from kg/hr
-		}
-
-
-		// If no exception, then report messages
-		while( csp_solver.mc_csp_messages.get_message(&out_type, &out_msg) )
-		{
-			log(out_msg, out_type);
-		}
+		}		
 
 		// Set output data from heliostat class
 		int n_rows_eta_map = heliostatfield.ms_params.m_eta_map.nrows();
@@ -1681,45 +1685,5 @@ public:
 		 
 	}
 };
-
-static bool ssc_mspt_solarpilot_callback( simulation_info *siminfo, void *data )
-{
-	cm_tcsmolten_salt *cm = static_cast<cm_tcsmolten_salt*> (data);
-	if( !cm )
-		false;
-	float simprogress = (float)siminfo->getCurrentSimulation() / (float)(max(siminfo->getTotalSimulationCount(), 1));
-
-	return cm->relay_message(*siminfo->getSimulationNotices(), simprogress*100.0f);
-}
-
-static bool ssc_mspt_udpc_progress( void *data, double percent, std::string msg)
-{
-	cm_tcsmolten_salt *cm = static_cast<cm_tcsmolten_salt*> (data);
-
-	if( !cm )
-		return false;
-
-	return cm->relay_message(msg, percent);	
-}
-
-static bool ssc_mspt_sim_progress( void *data, double percent, C_csp_messages *csp_msg, float time_sec )
-{
-	cm_tcsmolten_salt *cm = static_cast<cm_tcsmolten_salt*> (data);
-	if( !cm )
-		false;
-	
-    if(csp_msg != 0)
-    {
-        int out_type;
-        string message;
-        while( csp_msg->get_message(&out_type, &message) )
-        {
-            cm->log(message, out_type == C_csp_messages::WARNING ? SSC_WARNING : SSC_NOTICE, time_sec);
-        }
-    }
-    bool ret = cm->update("Simulation progress", percent);
-
-    return ret;
-}
 
 DEFINE_MODULE_ENTRY(tcsmolten_salt, "CSP molten salt power tower with hierarchical controller and dispatch optimization", 1)

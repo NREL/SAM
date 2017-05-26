@@ -109,6 +109,7 @@ OBJECTS = \
 	cmod_sco2_design_cycle.o \
 	cmod_sco2_csp_system.o \
 	cmod_sco2_csp_ud_pc_tables.o \
+	cmod_sco2_air_cooler.o \
 	cmod_inv_cec_cg.o \
 	cmod_pv_get_shade_loss_mpp.o \
 	tckernel.o 

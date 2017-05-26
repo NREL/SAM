@@ -937,9 +937,7 @@ public:
 		try
 		{
 			// Simulate !
-			csp_solver.Ssimulate(sim_setup,
-				ssc_trough_physical_sim_progress, 
-				(void*)this);
+			csp_solver.Ssimulate(sim_setup);
 		}
 		catch( C_csp_exception &csp_exception )
 		{

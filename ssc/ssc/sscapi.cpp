@@ -6,7 +6,7 @@
 
 SSCEXPORT int ssc_version()
 {
-	return 175;
+	return 174;
 }
 
 SSCEXPORT const char *ssc_build_info()
@@ -86,6 +86,7 @@ extern module_entry_info
 	cm_entry_sco2_design_cycle,
 	cm_entry_sco2_csp_system,
 	cm_entry_sco2_csp_ud_pc_tables,
+	cm_entry_sco2_air_cooler,
 	cm_entry_user_htf_comparison,
 	cm_entry_ui_tes_calcs,
 	cm_entry_cb_mspt_system_costs,
@@ -164,6 +165,7 @@ static module_entry_info *module_table[] = {
 	&cm_entry_sco2_design_cycle,
 	&cm_entry_sco2_csp_system,
 	&cm_entry_sco2_csp_ud_pc_tables,
+	&cm_entry_sco2_air_cooler,
 	&cm_entry_user_htf_comparison,
 	&cm_entry_ui_tes_calcs,
 	&cm_entry_cb_mspt_system_costs,

@@ -328,9 +328,35 @@ double C_ud_power_cycle::get_interpolated_ND_output(int i_ME /*M.E. table index*
 C_ud_pc_table_generator::C_ud_pc_table_generator(C_od_pc_function & f_pc_eq) : mf_pc_eq(f_pc_eq)
 {
 	mf_callback = 0;		// = NULL
-	m_cdata = 0;			// = NULL
-	std::string m_udpc_msg = "Power cycle preprocessing...";
+	mp_mf_active = 0;			// = NULL
+	m_progress_msg = "Power cycle preprocessing...";
+	m_log_msg = "Log message";
+
 	return;
+}
+
+void C_ud_pc_table_generator::send_callback(int run_number, int n_runs_total,
+	double T_htf_hot, double m_dot_htf_ND, double T_amb,
+	double W_dot_gross_ND, double Q_dot_in_ND,
+	double W_dot_cooling_ND, double m_dot_water_ND)
+{
+	if (mf_callback && mp_mf_active)
+	{
+		m_log_msg = util::format("[%d/%d] At T_htf = %lg [C],"
+			" normalized m_dot = %lg [kg/s],"
+			" and T_amb = %lg [C]. The normalized outputs are: gross power = %lg,"
+			" thermal input = %lg, cooling power = %lg, and water use = %lg",
+			run_number, n_runs_total,
+			T_htf_hot, m_dot_htf_ND, T_amb,
+			W_dot_gross_ND, Q_dot_in_ND,
+			W_dot_cooling_ND, m_dot_water_ND);
+		if (!mf_callback(m_log_msg, m_progress_msg, mp_mf_active, 100.0*run_number / n_runs_total))
+		{
+			std::string error_msg = "User terminated simulation...";
+			std::string loc_msg = "C_ud_pc_table_generator";
+			throw(C_csp_exception(error_msg, loc_msg, 1));
+		}
+	}
 }
 
 int C_ud_pc_table_generator::generate_tables(double T_htf_ref /*C*/, double T_htf_low /*C*/, double T_htf_high /*C*/, int n_T_htf /*-*/,
@@ -428,8 +454,11 @@ int C_ud_pc_table_generator::generate_tables(double T_htf_ref /*C*/, double T_ht
 
 			double run_number = i*3 + j;
 
-			if( mf_callback != 0)
-				mf_callback(m_cdata, 100.0*run_number/n_runs_total, m_udpc_msg);
+			send_callback((int)run_number + 1, (int)n_runs_total,
+				pc_inputs.m_T_htf_hot, pc_inputs.m_m_dot_htf_ND, pc_inputs.m_T_amb,
+				pc_outputs.m_W_dot_gross_ND, pc_outputs.m_Q_dot_in_ND,
+				pc_outputs.m_W_dot_cooling_ND, pc_outputs.m_m_dot_water_ND);
+
 		}
 
 	}
@@ -482,8 +511,10 @@ int C_ud_pc_table_generator::generate_tables(double T_htf_ref /*C*/, double T_ht
 
 			double run_number = 3.0*n_T_htf + i*3 + j;
 
-			if( mf_callback != 0 )
-				mf_callback(m_cdata, 100.0*run_number/n_runs_total, m_udpc_msg);
+			send_callback((int)run_number + 1, (int)n_runs_total,
+				pc_inputs.m_T_htf_hot, pc_inputs.m_m_dot_htf_ND, pc_inputs.m_T_amb,
+				pc_outputs.m_W_dot_gross_ND, pc_outputs.m_Q_dot_in_ND,
+				pc_outputs.m_W_dot_cooling_ND, pc_outputs.m_m_dot_water_ND);
 		}
 	}
 	// ******************************************
@@ -535,8 +566,10 @@ int C_ud_pc_table_generator::generate_tables(double T_htf_ref /*C*/, double T_ht
 
 			double run_number = 3.0*n_T_htf + 3.0*n_T_amb  + i*3 + j;
 
-			if( mf_callback != 0 )
-				mf_callback(m_cdata, 100.0*run_number/n_runs_total, m_udpc_msg);
+			send_callback((int)run_number + 1, (int)n_runs_total,
+				pc_inputs.m_T_htf_hot, pc_inputs.m_m_dot_htf_ND, pc_inputs.m_T_amb,
+				pc_outputs.m_W_dot_gross_ND, pc_outputs.m_Q_dot_in_ND,
+				pc_outputs.m_W_dot_cooling_ND, pc_outputs.m_m_dot_water_ND);
 		}
 	}
 	// ******************************************
