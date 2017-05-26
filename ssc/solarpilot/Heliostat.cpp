@@ -674,8 +674,8 @@ Reflector *Heliostat::getPanelById(int id){
     size_t ncantx, ncanty;
     _panels.size(ncantx, ncanty);  //is this the right order?
 
-	for (int j=0; j<ncantx; j++) {
-		for (int i=0; i<ncanty; i++) {
+	for (int j=0; j<(int)ncantx; j++) {
+		for (int i=0; i<(int)ncanty; i++) {
 			if (_panels[j,i].getId() == id){
 				return &_panels[j,i];
 			}

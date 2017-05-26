@@ -11,7 +11,7 @@
 #endif
 
 //Enumeration of data columns in the variable map file
-
+#define SP_STANDALONE
 
 //Custom module settings
 #define _CUSTOM_REC 0		//If using custom geometry functions in the CustomReceiverWindow, define 1
