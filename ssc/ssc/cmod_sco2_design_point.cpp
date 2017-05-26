@@ -58,6 +58,111 @@ public:
 
 	void exec() throw(general_error)
 	{
+		// Hot sCO2 to water heat exchanger
+
+		double W_dot_net = 10.0*1.E3;	//[KWe]
+		double eta = 0.492;				//[-]
+		double q_dot_reject = W_dot_net / eta - W_dot_net;	//[kWt]
+
+		double P_co2 = 7.661*1.E3;		//[kPa]
+		double T_co2_hot = 45.0;		//[C]
+		double T_co2_cold = 32.0;		//[C]
+		double m_dot_co2_full_q_dot = 55.8065;	//[kg/s]
+		bool is_partial_med = true;
+
+		double T_water_cold = 17.0;		//[C] Groundwater temperature
+		double T_water_hot = 39.0;		//[C] Groundwater outlet
+		double x_water = -1;			//[-]
+
+		CO2_state co2_props;
+		int prop_err_code = CO2_TP(T_co2_hot+273.15, P_co2, &co2_props);
+		if (prop_err_code != 0)
+		{
+			log("CO2 hot props failed", SSC_ERROR, -1.0);
+			return;
+		}
+		double h_co2_hot = co2_props.enth;	//[kJ/kg]
+
+		prop_err_code = CO2_TP(T_co2_cold + 273.15, P_co2, &co2_props);
+		if (prop_err_code != 0)
+		{
+			log("CO2 cold props failed", SSC_ERROR, -1.0);
+			return;
+		}
+		double h_co2_cold = co2_props.enth;	//[kJ/kg]
+		
+		double m_dot_co2 = std::numeric_limits<double>::quiet_NaN();
+		if (!is_partial_med)
+		{
+			m_dot_co2 = (q_dot_reject) / (h_co2_hot - h_co2_cold);
+		}
+		else
+		{
+			m_dot_co2 = m_dot_co2_full_q_dot;
+			q_dot_reject = m_dot_co2*(h_co2_hot - h_co2_cold);
+		}		
+
+		water_state water_props;
+		double P_water = std::numeric_limits<double>::quiet_NaN();
+		if (x_water > 0.0)
+		{			
+			prop_err_code = water_TQ(T_water_hot + 273.15, x_water, &water_props);
+			if (prop_err_code != 0)
+			{
+				log("Water hot props failed at inlet", SSC_ERROR, -1.0);
+
+				return;
+			}
+			P_water = water_props.pres;	//[kPa]
+		}
+		else
+		{
+			P_water = 101.0;			//[kPa]
+
+			prop_err_code = water_TP(T_water_hot + 273.15, P_water, &water_props);
+			if (prop_err_code != 0)
+			{
+				log("Water hot props failed at inlet", SSC_ERROR, -1.0);
+
+				return;
+			}
+		}		
+		double h_water_hot = water_props.enth;	//[kJ/kg]
+
+		prop_err_code = water_TP(T_water_cold + 273.15, P_water, &water_props);
+		if (prop_err_code != 0)
+		{
+			log("Water hot props failed at inlet", SSC_ERROR, -1.0);
+
+			return;
+		}
+		double h_water_cold = water_props.enth;	//[kJ/kg]
+
+		double m_dot_water = (q_dot_reject) / (h_water_hot - h_water_cold);
+
+		// Test C_HX_counterflow model as a sCO2-water heat exchanger
+		C_HX_counterflow mc_sco2_water_hx;
+		C_HX_counterflow::S_init_par ms_hx_init;
+		ms_hx_init.m_N_sub_hx = 20;
+		ms_hx_init.m_hot_fl = NS_HX_counterflow_eqs::CO2;
+		ms_hx_init.m_cold_fl = NS_HX_counterflow_eqs::WATER;
+		// Initialize
+		mc_sco2_water_hx.initialize(ms_hx_init);
+
+		double UA_cooler, min_DT_cooler, eff_cooler, NTU_cooler, h_co2_cold_calc, h_water_hot_calc, q_dot_reject_calc;
+		try
+		{
+		mc_sco2_water_hx.calc_req_UA_enth(q_dot_reject, m_dot_water, m_dot_co2,
+			h_water_cold, h_co2_hot, P_water, P_water, P_co2, P_co2,
+			UA_cooler, min_DT_cooler, eff_cooler, NTU_cooler, h_co2_cold_calc, h_water_hot_calc, q_dot_reject_calc);
+		}
+		catch (C_csp_exception csp_except)
+		{
+			double blah_for_now = 1.23;
+			//throw exec_error("sco2-water hx", "failed");
+		}
+
+
 		// Get user-defined parameters
 		double W_dot_net_des = as_double("W_dot_net_des")*1.E3;
 		double eta_c = as_double("eta_c");
@@ -94,13 +199,13 @@ public:
 		double opt_tol = 1.E-3;
 
 		// Test C_HX_counterflow model as a sCO2-water heat exchanger
-		C_HX_counterflow mc_sco2_water_hx;
-		C_HX_counterflow::S_init_par ms_hx_init;
-		ms_hx_init.m_N_sub_hx = 20;
-		ms_hx_init.m_hot_fl = NS_HX_counterflow_eqs::CO2;
-		ms_hx_init.m_cold_fl = NS_HX_counterflow_eqs::WATER;
-		// Initialize
-		mc_sco2_water_hx.initialize(ms_hx_init);
+		//C_HX_counterflow mc_sco2_water_hx;
+		//C_HX_counterflow::S_init_par ms_hx_init;
+		//ms_hx_init.m_N_sub_hx = 20;
+		//ms_hx_init.m_hot_fl = NS_HX_counterflow_eqs::CO2;
+		//ms_hx_init.m_cold_fl = NS_HX_counterflow_eqs::WATER;
+		//// Initialize
+		//mc_sco2_water_hx.initialize(ms_hx_init);
 
 		std::vector<double> v_P_water_in;		//[kPa]
 		std::vector<double> v_T_sco2_cold;		//[C]
@@ -126,8 +231,8 @@ public:
 				// in
 				double P_co2_in = 9.4E3;		//[kPa]
 				double T_co2_in = 128.1 + 273.15;	//[K]
-				CO2_state co2_props;
-				int prop_err_code = CO2_TP(T_co2_in, P_co2_in, &co2_props);
+				
+				prop_err_code = CO2_TP(T_co2_in, P_co2_in, &co2_props);
 				if (prop_err_code != 0)
 				{
 					log("CO2 props failed at inlet", SSC_ERROR, -1.0);
@@ -151,7 +256,7 @@ public:
 				// Water
 				// in
 				double T_water_in = T_water_amb;	//[K]
-				water_state water_props;
+				
 				prop_err_code = water_TP(T_water_in, P_water_in, &water_props);
 				if (prop_err_code != 0)
 				{
