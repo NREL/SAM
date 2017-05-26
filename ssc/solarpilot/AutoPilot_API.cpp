@@ -415,7 +415,7 @@ double constraint_auto_eval(unsigned n, const double *x, double *grad, void *dat
     AutoOptHelper *D = static_cast<AutoOptHelper*>( data );
     
     std::vector<double> vars;
-    for(int i=0; i<n; i++)
+    for(int i=0; i<(int)n; i++)
         vars.push_back( x[i] );
     double obj, flux;
     if( D->m_history_map.check_call( vars, &obj, &flux ) )
@@ -906,8 +906,8 @@ bool AutoPilot::EvaluateDesign(double &obj_metric, double &flux_max, double &tot
 	
 	//Get the maximum flux value
 	flux_max=0.;
-	for(int i=0; i<_SF->getReceivers()->size(); i++){
-		for(int j=0; j<_SF->getReceivers()->at(i)->getFluxSurfaces()->size(); j++){
+	for(int i=0; i<(int)_SF->getReceivers()->size(); i++){
+		for(int j=0; j<(int)_SF->getReceivers()->at(i)->getFluxSurfaces()->size(); j++){
 			double ff = _SF->getReceivers()->at(i)->getFluxSurfaces()->at(j).getMaxObservedFlux();
 			if( ff > flux_max )
 				flux_max = ff;
@@ -1530,15 +1530,15 @@ bool AutoPilot::OptimizeAuto(vector<double*> &optvars, vector<double> &upper_ran
 	
     //the initial normalized point is '1'
 	vector<double> start(nvars);
-    for(int i=0; i<optvars.size(); i++)
+    for(int i=0; i<(int)optvars.size(); i++)
         start.at(i) = *optvars.at(i);
 
     //Check feasibility
     int iht = std::find(names->begin(), names->end(), "receiver.0.rec_height") - names->begin();
-    if( iht < names->size() )
+    if( iht < (int)names->size() )
     {
         double *xtemp = new double[ optvars.size() ]; 
-        for(int i=0; i<optvars.size(); i++)
+        for(int i=0; i<(int)optvars.size(); i++)
             xtemp[i] = 1.;
         AO.Simulate(xtemp, optvars.size());
         delete [] xtemp;
@@ -2340,7 +2340,7 @@ bool AutoPilot_MT::CreateLayout(sp_layout &layout, bool do_post_process)
                     //Get the error messages, if any
                     string errmsgs;
                     for(int i=0; i<_n_threads; i++){
-                        for(int j=0; j<_simthread[i].GetSimMessages()->size(); j++)
+                        for(int j=0; j<(int)_simthread[i].GetSimMessages()->size(); j++)
                             errmsgs.append( _simthread[i].GetSimMessages()->at(j) + "\n");
                     }
                     //Display error messages
@@ -2548,7 +2548,7 @@ bool AutoPilot_MT::CalculateOpticalEfficiencyTable(sp_optical_table &opttab)
         //Get the error messages, if any
         string errmsgs;
         for(int i=0; i<_n_threads; i++){
-            for(int j=0; j<_simthread[i].GetSimMessages()->size(); j++)
+            for(int j=0; j<(int)_simthread[i].GetSimMessages()->size(); j++)
                 errmsgs.append( _simthread[i].GetSimMessages()->at(j) + "\n");
         }
         //Display error messages
@@ -2718,7 +2718,7 @@ bool AutoPilot_MT::CalculateFluxMaps(sp_flux_table &fluxtab, int flux_res_x, int
         //Get the error messages, if any
         string errmsgs;
         for(int i=0; i<_n_threads; i++){
-            for(int j=0; j<_simthread[i].GetSimMessages()->size(); j++)
+            for(int j=0; j<(int)_simthread[i].GetSimMessages()->size(); j++)
                 errmsgs.append( _simthread[i].GetSimMessages()->at(j) + "\n");
         }
         //Display error messages

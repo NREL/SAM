@@ -892,7 +892,7 @@ void var_map::drop_receiver(int id)
 {
     //find the receiver in the list
     int id_ind=-1;
-    for( int i=0; i<recs.size(); i++)
+    for( int i=0; i<(int)recs.size(); i++)
     {
         if( recs.at(i).id.val == id )
         {
@@ -923,7 +923,7 @@ void var_map::drop_receiver(int id)
     recs.erase( recs.begin() + id_ind );
 
     //add back all receiver pointers
-    for(int i=0; i<recs.size(); i++)
+    for(int i=0; i<(int)recs.size(); i++)
     {
         recs.at(i).addptrs(_varptrs);
     }    
@@ -933,7 +933,7 @@ void var_map::drop_heliostat(int id)
 {
     //find the heliostat in the list
     int id_ind=-1;
-    for( int i=0; i<hels.size(); i++)
+    for( int i=0; i<(int)hels.size(); i++)
     {
         if( hels.at(i).id.val == id )
         {
@@ -964,7 +964,7 @@ void var_map::drop_heliostat(int id)
     hels.erase( hels.begin() + id_ind );
 
     //add back all heliostat pointers
-    for(int i=0; i<hels.size(); i++)
+    for(int i=0; i<(int)hels.size(); i++)
     {
         hels.at(i).addptrs(_varptrs);
     }
