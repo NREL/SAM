@@ -1667,9 +1667,12 @@ cashflow_to_excel{ 'Residential' } = define()
 {
 
 	source = runtimedir() + 'spreadsheets/residential_commercial.xlsx';
-    destination = userlocaldatadir() + "/"+ case_name() + '.xlsx';
-
-	destination = copy_file( source, destination );
+    fn = case_name() + '.xlsx';
+	destination = cwd();
+	destination = choose_file(destination,"Save workbook","Excel Workbook (*.xlsx)|*.xlsx",true, false, fn);
+	destination = copy_file( source, destination, true);
+	if (!file_exists(destination)) return;
+	cwd(path_only(destination));
 	
 	xl = xl_create( destination );
 
@@ -1692,10 +1695,13 @@ cashflow_to_excel{ 'Commercial' } = define()
 {
 
 	source = runtimedir() + 'spreadsheets/residential_commercial.xlsx';
-    destination = userlocaldatadir() + "/"+ case_name() + '.xlsx';
-
-	destination = copy_file( source, destination );
-
+    fn = case_name() + '.xlsx';
+	destination = cwd();
+	destination = choose_file(destination,"Save workbook","Excel Workbook (*.xlsx)|*.xlsx",true, false, fn);
+	destination = copy_file( source, destination, true);
+	if (!file_exists(destination)) return;
+	cwd(path_only(destination));
+	
 	xl = xl_create( destination );
 	
 	//Variables specific to commercial model
@@ -1729,9 +1735,12 @@ cashflow_to_excel{ 'Single Owner' } = define()
 {
 
 	source = runtimedir() + 'spreadsheets/single_owner.xlsx';
-    destination = userlocaldatadir() + "/"+ case_name() + '.xlsx';
-
-	destination = copy_file( source, destination );
+    fn = case_name() + '.xlsx';
+	destination = cwd();
+	destination = choose_file(destination,"Save workbook","Excel Workbook (*.xlsx)|*.xlsx",true, false, fn);
+	destination = copy_file( source, destination, true);
+	if (!file_exists(destination)) return;
+	cwd(path_only(destination));
 	
 	xl = xl_create( destination );
 
