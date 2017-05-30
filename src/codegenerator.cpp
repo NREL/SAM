@@ -12,6 +12,7 @@
 #include <wx/filedlg.h>
 #include <wx/filefn.h>
 #include <wx/filename.h>
+#include <wx/dir.h>
 
 #include <wex/metro.h>
 #include <wex/utils.h>
@@ -221,99 +222,110 @@ bool CodeGen_Base::PlatformFiles()
 	return false;
 #endif
 	wxCopyFile(f1, f2);
-	// sscapi.h
-	wxString fn = m_folder + "/sscapi.h";
-	FILE* f = fopen(fn.c_str(), "w");
-	if (!f) return false;
-	fprintf(f, "#ifndef __ssc_api_h\n");
-	fprintf(f, "#define __ssc_api_h\n");
-	fprintf(f, "#if defined(__WINDOWS__)&&defined(__DLL__)\n");
-	fprintf(f, "#define SSCEXPORT __declspec(dllexport)\n");
-	fprintf(f, "#else\n");
-	fprintf(f, "#define SSCEXPORT\n");
-	fprintf(f, "#endif\n");
-	fprintf(f, "#ifndef __SSCLINKAGECPP__\n");
-	fprintf(f, "#ifdef __cplusplus\n");
-	fprintf(f, "extern \"C\" {\n");
-	fprintf(f, "#endif\n");
-	fprintf(f, "#endif\n");
-	fprintf(f, "SSCEXPORT int ssc_version();\n");
-	fprintf(f, "SSCEXPORT const char *ssc_build_info();\n");
-	fprintf(f, "typedef void* ssc_data_t;\n");
-	fprintf(f, "typedef float ssc_number_t;\n");
-	fprintf(f, "typedef int ssc_bool_t;\n");
-	fprintf(f, "#define SSC_INVALID 0\n");
-	fprintf(f, "#define SSC_STRING 1\n");
-	fprintf(f, "#define SSC_NUMBER 2\n");
-	fprintf(f, "#define SSC_ARRAY 3\n");
-	fprintf(f, "#define SSC_MATRIX 4\n");
-	fprintf(f, "#define SSC_TABLE 5\n");
-	fprintf(f, "SSCEXPORT ssc_data_t ssc_data_create();\n");
-	fprintf(f, "SSCEXPORT void ssc_data_free( ssc_data_t p_data );\n");
-	fprintf(f, "SSCEXPORT void ssc_data_clear( ssc_data_t p_data );\n");
-	fprintf(f, "SSCEXPORT void ssc_data_unassign( ssc_data_t p_data, const char *name );\n");
-	fprintf(f, "SSCEXPORT int ssc_data_query( ssc_data_t p_data, const char *name );\n");
-	fprintf(f, "SSCEXPORT const char *ssc_data_first( ssc_data_t p_data );\n");
-	fprintf(f, "SSCEXPORT const char *ssc_data_next( ssc_data_t p_data );\n");
-	fprintf(f, "SSCEXPORT void ssc_data_set_string( ssc_data_t p_data, const char *name, const char *value );\n");
-	fprintf(f, "SSCEXPORT void ssc_data_set_number( ssc_data_t p_data, const char *name, ssc_number_t value );\n");
-	fprintf(f, "SSCEXPORT void ssc_data_set_array( ssc_data_t p_data, const char *name, ssc_number_t *pvalues, int length );\n");
-	fprintf(f, "SSCEXPORT void ssc_data_set_matrix( ssc_data_t p_data, const char *name, ssc_number_t *pvalues, int nrows, int ncols );\n");
-	fprintf(f, "SSCEXPORT void ssc_data_set_table( ssc_data_t p_data, const char *name, ssc_data_t table );\n");
-	fprintf(f, "SSCEXPORT const char *ssc_data_get_string( ssc_data_t p_data, const char *name );\n");
-	fprintf(f, "SSCEXPORT ssc_bool_t ssc_data_get_number( ssc_data_t p_data, const char *name, ssc_number_t *value );\n");
-	fprintf(f, "SSCEXPORT ssc_number_t *ssc_data_get_array( ssc_data_t p_data, const char *name, int *length );\n");
-	fprintf(f, "SSCEXPORT ssc_number_t *ssc_data_get_matrix( ssc_data_t p_data, const char *name, int *nrows, int *ncols );\n");
-	fprintf(f, "SSCEXPORT ssc_data_t ssc_data_get_table( ssc_data_t p_data, const char *name );\n");
-	fprintf(f, "typedef void* ssc_entry_t;\n");
-	fprintf(f, "SSCEXPORT ssc_entry_t ssc_module_entry( int index );\n");
-	fprintf(f, "SSCEXPORT const char *ssc_entry_name( ssc_entry_t p_entry );\n");
-	fprintf(f, "SSCEXPORT const char *ssc_entry_description( ssc_entry_t p_entry );\n");
-	fprintf(f, "SSCEXPORT int ssc_entry_version( ssc_entry_t p_entry );\n");
-	fprintf(f, "typedef void* ssc_module_t;\n");
-	fprintf(f, "typedef void* ssc_info_t;\n");
-	fprintf(f, "SSCEXPORT ssc_module_t ssc_module_create( const char *name );\n");
-	fprintf(f, "SSCEXPORT void ssc_module_free( ssc_module_t p_mod );\n");
-	fprintf(f, "#define SSC_INPUT 1\n");
-	fprintf(f, "#define SSC_OUTPUT 2\n");
-	fprintf(f, "#define SSC_INOUT 3\n");
-	fprintf(f, "SSCEXPORT const ssc_info_t ssc_module_var_info( ssc_module_t p_mod, int index );\n");
-	fprintf(f, "SSCEXPORT int ssc_info_var_type( ssc_info_t p_inf );\n");
-	fprintf(f, "SSCEXPORT int ssc_info_data_type( ssc_info_t p_inf );\n");
-	fprintf(f, "SSCEXPORT const char *ssc_info_name( ssc_info_t p_inf );\n");
-	fprintf(f, "SSCEXPORT const char *ssc_info_label( ssc_info_t p_inf );\n");
-	fprintf(f, "SSCEXPORT const char *ssc_info_units( ssc_info_t p_inf );\n");
-	fprintf(f, "SSCEXPORT const char *ssc_info_meta( ssc_info_t p_inf );\n");
-	fprintf(f, "SSCEXPORT const char *ssc_info_group( ssc_info_t p_inf );\n");
-	fprintf(f, "SSCEXPORT const char *ssc_info_required( ssc_info_t p_inf );\n");
-	fprintf(f, "SSCEXPORT const char *ssc_info_constraints( ssc_info_t p_inf );\n");
-	fprintf(f, "SSCEXPORT const char *ssc_info_uihint( ssc_info_t p_inf );\n");
-	fprintf(f, "SSCEXPORT void ssc_module_exec_set_print( int print );\n");
-	fprintf(f, "SSCEXPORT ssc_bool_t ssc_module_exec_simple( const char *name, ssc_data_t p_data );\n");
-	fprintf(f, "SSCEXPORT const char *ssc_module_exec_simple_nothread( const char *name, ssc_data_t p_data );\n");
-	fprintf(f, "#define SSC_LOG 0\n");
-	fprintf(f, "#define SSC_UPDATE 1\n");
-	fprintf(f, "SSCEXPORT ssc_bool_t ssc_module_exec( ssc_module_t p_mod, ssc_data_t p_data );\n");
-	fprintf(f, "typedef void* ssc_handler_t;\n");
-	fprintf(f, "SSCEXPORT ssc_bool_t ssc_module_exec_with_handler(\n");
-	fprintf(f, "	ssc_module_t p_mod,\n");
-	fprintf(f, "	ssc_data_t p_data,\n");
-	fprintf(f, "	ssc_bool_t (*pf_handler)( ssc_module_t, ssc_handler_t, int action, float f0, float f1, const char *s0, const char *s1, void *user_data ),\n");
-	fprintf(f, "	void *pf_user_data );\n");
-	fprintf(f, "#define SSC_NOTICE 1\n");
-	fprintf(f, "#define SSC_WARNING 2\n");
-	fprintf(f, "#define SSC_ERROR 3\n");
-	fprintf(f, "SSCEXPORT const char *ssc_module_log( ssc_module_t p_mod, int index, int *item_type, float *time );\n");
-	fprintf(f, "SSCEXPORT void __ssc_segfault();\n");
-	fprintf(f, "#ifndef __SSCLINKAGECPP__\n");
-	fprintf(f, "#ifdef __cplusplus\n");
-	fprintf(f, "}\n");
-	fprintf(f, "#endif\n");
-	fprintf(f, "\n");
-	fprintf(f, "#endif // __SSCLINKAGECPP__\n");
-	fprintf(f, "\n");
-	fprintf(f, "#endif\n");
-	fclose(f);
+	// sscapi.h - switch to copy version for syching issues 5/30/17
+	// assumes in runtime folder for all builds.
+	f1 = SamApp::GetRuntimePath() + "/sscapi.h";
+	if (wxFileExists(f1))
+	{
+		f2 = m_folder + "/sscapi.h";
+		wxCopyFile(f1,f2);
+	}
+	else
+	{
+		// fallback to sscapi.h generation
+		wxString fn = m_folder + "/sscapi.h";
+		FILE* f = fopen(fn.c_str(), "w");
+		if (!f) return false;
+		fprintf(f, "#ifndef __ssc_api_h\n");
+		fprintf(f, "#define __ssc_api_h\n");
+		fprintf(f, "#if defined(__WINDOWS__)&&defined(__DLL__)\n");
+		fprintf(f, "#define SSCEXPORT __declspec(dllexport)\n");
+		fprintf(f, "#else\n");
+		fprintf(f, "#define SSCEXPORT\n");
+		fprintf(f, "#endif\n");
+		fprintf(f, "#ifndef __SSCLINKAGECPP__\n");
+		fprintf(f, "#ifdef __cplusplus\n");
+		fprintf(f, "extern \"C\" {\n");
+		fprintf(f, "#endif\n");
+		fprintf(f, "#endif\n");
+		fprintf(f, "SSCEXPORT int ssc_version();\n");
+		fprintf(f, "SSCEXPORT const char *ssc_build_info();\n");
+		fprintf(f, "typedef void* ssc_data_t;\n");
+		fprintf(f, "typedef float ssc_number_t;\n");
+		fprintf(f, "typedef int ssc_bool_t;\n");
+		fprintf(f, "#define SSC_INVALID 0\n");
+		fprintf(f, "#define SSC_STRING 1\n");
+		fprintf(f, "#define SSC_NUMBER 2\n");
+		fprintf(f, "#define SSC_ARRAY 3\n");
+		fprintf(f, "#define SSC_MATRIX 4\n");
+		fprintf(f, "#define SSC_TABLE 5\n");
+		fprintf(f, "SSCEXPORT ssc_data_t ssc_data_create();\n");
+		fprintf(f, "SSCEXPORT void ssc_data_free( ssc_data_t p_data );\n");
+		fprintf(f, "SSCEXPORT void ssc_data_clear( ssc_data_t p_data );\n");
+		fprintf(f, "SSCEXPORT void ssc_data_unassign( ssc_data_t p_data, const char *name );\n");
+		fprintf(f, "SSCEXPORT int ssc_data_query( ssc_data_t p_data, const char *name );\n");
+		fprintf(f, "SSCEXPORT const char *ssc_data_first( ssc_data_t p_data );\n");
+		fprintf(f, "SSCEXPORT const char *ssc_data_next( ssc_data_t p_data );\n");
+		fprintf(f, "SSCEXPORT void ssc_data_set_string( ssc_data_t p_data, const char *name, const char *value );\n");
+		fprintf(f, "SSCEXPORT void ssc_data_set_number( ssc_data_t p_data, const char *name, ssc_number_t value );\n");
+		fprintf(f, "SSCEXPORT void ssc_data_set_array( ssc_data_t p_data, const char *name, ssc_number_t *pvalues, int length );\n");
+		fprintf(f, "SSCEXPORT void ssc_data_set_matrix( ssc_data_t p_data, const char *name, ssc_number_t *pvalues, int nrows, int ncols );\n");
+		fprintf(f, "SSCEXPORT void ssc_data_set_table( ssc_data_t p_data, const char *name, ssc_data_t table );\n");
+		fprintf(f, "SSCEXPORT const char *ssc_data_get_string( ssc_data_t p_data, const char *name );\n");
+		fprintf(f, "SSCEXPORT ssc_bool_t ssc_data_get_number( ssc_data_t p_data, const char *name, ssc_number_t *value );\n");
+		fprintf(f, "SSCEXPORT ssc_number_t *ssc_data_get_array( ssc_data_t p_data, const char *name, int *length );\n");
+		fprintf(f, "SSCEXPORT ssc_number_t *ssc_data_get_matrix( ssc_data_t p_data, const char *name, int *nrows, int *ncols );\n");
+		fprintf(f, "SSCEXPORT ssc_data_t ssc_data_get_table( ssc_data_t p_data, const char *name );\n");
+		fprintf(f, "typedef void* ssc_entry_t;\n");
+		fprintf(f, "SSCEXPORT ssc_entry_t ssc_module_entry( int index );\n");
+		fprintf(f, "SSCEXPORT const char *ssc_entry_name( ssc_entry_t p_entry );\n");
+		fprintf(f, "SSCEXPORT const char *ssc_entry_description( ssc_entry_t p_entry );\n");
+		fprintf(f, "SSCEXPORT int ssc_entry_version( ssc_entry_t p_entry );\n");
+		fprintf(f, "typedef void* ssc_module_t;\n");
+		fprintf(f, "typedef void* ssc_info_t;\n");
+		fprintf(f, "SSCEXPORT ssc_module_t ssc_module_create( const char *name );\n");
+		fprintf(f, "SSCEXPORT void ssc_module_free( ssc_module_t p_mod );\n");
+		fprintf(f, "#define SSC_INPUT 1\n");
+		fprintf(f, "#define SSC_OUTPUT 2\n");
+		fprintf(f, "#define SSC_INOUT 3\n");
+		fprintf(f, "SSCEXPORT const ssc_info_t ssc_module_var_info( ssc_module_t p_mod, int index );\n");
+		fprintf(f, "SSCEXPORT int ssc_info_var_type( ssc_info_t p_inf );\n");
+		fprintf(f, "SSCEXPORT int ssc_info_data_type( ssc_info_t p_inf );\n");
+		fprintf(f, "SSCEXPORT const char *ssc_info_name( ssc_info_t p_inf );\n");
+		fprintf(f, "SSCEXPORT const char *ssc_info_label( ssc_info_t p_inf );\n");
+		fprintf(f, "SSCEXPORT const char *ssc_info_units( ssc_info_t p_inf );\n");
+		fprintf(f, "SSCEXPORT const char *ssc_info_meta( ssc_info_t p_inf );\n");
+		fprintf(f, "SSCEXPORT const char *ssc_info_group( ssc_info_t p_inf );\n");
+		fprintf(f, "SSCEXPORT const char *ssc_info_required( ssc_info_t p_inf );\n");
+		fprintf(f, "SSCEXPORT const char *ssc_info_constraints( ssc_info_t p_inf );\n");
+		fprintf(f, "SSCEXPORT const char *ssc_info_uihint( ssc_info_t p_inf );\n");
+		fprintf(f, "SSCEXPORT void ssc_module_exec_set_print( int print );\n");
+		fprintf(f, "SSCEXPORT ssc_bool_t ssc_module_exec_simple( const char *name, ssc_data_t p_data );\n");
+		fprintf(f, "SSCEXPORT const char *ssc_module_exec_simple_nothread( const char *name, ssc_data_t p_data );\n");
+		fprintf(f, "#define SSC_LOG 0\n");
+		fprintf(f, "#define SSC_UPDATE 1\n");
+		fprintf(f, "SSCEXPORT ssc_bool_t ssc_module_exec( ssc_module_t p_mod, ssc_data_t p_data );\n");
+		fprintf(f, "typedef void* ssc_handler_t;\n");
+		fprintf(f, "SSCEXPORT ssc_bool_t ssc_module_exec_with_handler(\n");
+		fprintf(f, "	ssc_module_t p_mod,\n");
+		fprintf(f, "	ssc_data_t p_data,\n");
+		fprintf(f, "	ssc_bool_t (*pf_handler)( ssc_module_t, ssc_handler_t, int action, float f0, float f1, const char *s0, const char *s1, void *user_data ),\n");
+		fprintf(f, "	void *pf_user_data );\n");
+		fprintf(f, "#define SSC_NOTICE 1\n");
+		fprintf(f, "#define SSC_WARNING 2\n");
+		fprintf(f, "#define SSC_ERROR 3\n");
+		fprintf(f, "SSCEXPORT const char *ssc_module_log( ssc_module_t p_mod, int index, int *item_type, float *time );\n");
+		fprintf(f, "SSCEXPORT void __ssc_segfault();\n");
+		fprintf(f, "#ifndef __SSCLINKAGECPP__\n");
+		fprintf(f, "#ifdef __cplusplus\n");
+		fprintf(f, "}\n");
+		fprintf(f, "#endif\n");
+		fprintf(f, "\n");
+		fprintf(f, "#endif // __SSCLINKAGECPP__\n");
+		fprintf(f, "\n");
+		fprintf(f, "#endif\n");
+		fclose(f);
+	}
 	return true;
 }
 
@@ -584,13 +596,13 @@ bool CodeGen_Base::ShowCodeGenDialog(CaseWindow *cw)
 	code_languages.Add("Java");
 	code_languages.Add("PHP 5");
 	code_languages.Add("PHP 7");
+    code_languages.Add("Android Studio (Android)");
 #ifdef __WXMSW__
 	code_languages.Add("C#");
 	code_languages.Add("VBA");
 #endif
 #ifdef __WXMAC__
     code_languages.Add("Swift (iOS)");
-    code_languages.Add("Android Studio (Android)");
 #endif
 
 	// initialize properties
@@ -694,28 +706,28 @@ bool CodeGen_Base::ShowCodeGenDialog(CaseWindow *cw)
 		fn += ".php";
 		cg = new CodeGen_php7(c, fn);
 	}
+    else if (lang == 8) // Android Studio Android
+    {
+        fn += ".java";
+        cg = new CodeGen_android(c, fn);
+    }
 #ifdef __WXMSW__
-	else if (lang == 8) // c#
+	else if (lang == 9) // c#
 	{
 		fn += ".cs";
 		cg = new CodeGen_csharp(c, fn);
 	}
-	else if (lang == 9) // vba
+	else if (lang == 10) // vba
 	{
 		fn += ".bas";
 		cg = new CodeGen_vba(c, fn);
 	}
 #endif
 #ifdef __WXMAC__
-    else if (lang == 8) // Swift iOS
+    else if (lang == 9) // Swift iOS
     {
         fn += ".swift";
-        cg = new CodeGen_swift(c, fn);
-    }
-    else if (lang == 9) // Android Studio Android
-    {
-        fn += ".cpp";
-        cg = new CodeGen_android(c, fn);
+        cg = new CodeGen_ios(c, fn);
     }
 #endif
 	else
@@ -6698,12 +6710,12 @@ bool CodeGen_vba::Footer()
 
 // swift code generation class for iOS
 
-CodeGen_swift::CodeGen_swift(Case *cc, const wxString &folder) : CodeGen_Base(cc, folder)
+CodeGen_ios::CodeGen_ios(Case *cc, const wxString &folder) : CodeGen_Base(cc, folder)
 {
 }
 
 
-bool CodeGen_swift::Output(ssc_data_t p_data)
+bool CodeGen_ios::Output(ssc_data_t p_data)
 {
 	wxString str_value;
 	for (size_t ii = 0; ii < m_data.size(); ii++)
@@ -6735,7 +6747,7 @@ bool CodeGen_swift::Output(ssc_data_t p_data)
 	return true;
 }
 
-bool CodeGen_swift::Input(ssc_data_t p_data, const char *name, const wxString &folder, const int &array_matrix_threshold)
+bool CodeGen_ios::Input(ssc_data_t p_data, const char *name, const wxString &folder, const int &array_matrix_threshold)
 {
 	ssc_number_t value;
 	ssc_number_t *p;
@@ -6840,7 +6852,7 @@ bool CodeGen_swift::Input(ssc_data_t p_data, const char *name, const wxString &f
 }
 
 
-bool CodeGen_swift::RunSSCModule(wxString &name)
+bool CodeGen_ios::RunSSCModule(wxString &name)
 {
 	fprintf(m_fp, "	if (ssc_module_exec(module, data) == 0)\n");
 	fprintf(m_fp, "	{\n");
@@ -6854,7 +6866,7 @@ bool CodeGen_swift::RunSSCModule(wxString &name)
 }
 
 
-bool CodeGen_swift::Header()
+bool CodeGen_ios::Header()
 {
     // to use Bundle for getting files
     fprintf(m_fp, "import Foundation\n");
@@ -6927,7 +6939,7 @@ bool CodeGen_swift::Header()
 	return true;
 }
 
-bool CodeGen_swift::CreateSSCModule(wxString &name)
+bool CodeGen_ios::CreateSSCModule(wxString &name)
 {
 	if (name.IsNull() || name.Length() < 1)
 		return false;
@@ -6938,28 +6950,40 @@ bool CodeGen_swift::CreateSSCModule(wxString &name)
 	return true;
 }
 
-bool CodeGen_swift::FreeSSCModule()
+bool CodeGen_ios::FreeSSCModule()
 {
 	fprintf(m_fp, "	ssc_module_free(module);\n");
 	return true;
 }
 
-bool CodeGen_swift::SupportingFiles()
+bool CodeGen_ios::SupportingFiles()
 {
-// for iOS
-#if defined(__WXOSX__)
-    wxString f1 = SamApp::GetAppPath() + "/../Frameworks/libssc.a";
-    wxString f2 = m_folder + "/libssc.a";
-    wxCopyFile(f1, f2);
-    // TODO - keep sscapi.h current
-    f1 = SamApp::GetAppPath() + "/../Frameworks/sscapi.h";
-    f2 = m_folder + "/sscapi.h";
-    wxCopyFile(f1, f2);
-#endif
-	return true;
+	// for iOS
+	bool ret=true;
+	wxArrayString files;
+	size_t num_files = wxDir::GetAllFiles( SamApp::GetRuntimePath() + "/mobile/ios", &files); 
+	ret = (num_files > 0);
+//	Use path to mobile/ios to set library locations.
+	if (ret)
+	{
+		wxString f1, f2, path, file, ext;
+		for (size_t i=0; i<files.Count() && ret; i++)
+		{
+			f1 = files[i];
+			wxFileName::SplitPath(f1, &path, &file, &ext );
+			f2 = m_folder + "/" + file;
+			if (ext.Length() > 0) f2 += "." + ext;
+		    ret &= wxCopyFile(f1, f2);
+		}
+	}
+	if (!ret)
+	{
+		wxMessageBox("Please download the latest iOS archive file at https://sam.nrel.gov/sites/default/files/content/mobile/ios/libssc_ios.tar.gz", "Missing archive");
+	}
+	return ret;
 }
 
-bool CodeGen_swift::Footer()
+bool CodeGen_ios::Footer()
 {
     fprintf(m_fp, "	ssc_data_free(data)\n");
     fprintf(m_fp, "	print(ret_string)\n");
@@ -7308,31 +7332,9 @@ bool CodeGen_android::FreeSSCModule()
 
 bool CodeGen_android::SupportingFiles()
 {
-// for android - can extend to Visual Studio - setup for Android Studio on macOS initially
-// TODO - add other architectures and combine with glibtool.
-#if defined(__WXOSX__)
-    wxString f1 = SamApp::GetAppPath() + "/../Frameworks/sscapi.h";
-    wxString f2 = m_folder + "/sscapi.h";
-    wxCopyFile(f1, f2);
-    // TODO other arch - armeabi-v7a for Android 6 and SAMSUNG Galaxy S5
-    f1 = SamApp::GetAppPath() + "/../Frameworks/shared_armeabi-v7a.a";
-    f2 = m_folder + "/shared_armeabi-v7a.a";
-    wxCopyFile(f1, f2);
-    f1 = SamApp::GetAppPath() + "/../Frameworks/nlopt_armeabi-v7a.a";
-    f2 = m_folder + "/nlopt_armeabi-v7a.a";
-    wxCopyFile(f1, f2);
-    f1 = SamApp::GetAppPath() + "/../Frameworks/lpsolve_armeabi-v7a.a";
-    f2 = m_folder + "/lpsolve_armeabi-v7a.a";
-    wxCopyFile(f1, f2);
-    f1 = SamApp::GetAppPath() + "/../Frameworks/solarpilot_armeabi-v7a.a";
-    f2 = m_folder + "/solarpilot_armeabi-v7a.a";
-    wxCopyFile(f1, f2);
-    f1 = SamApp::GetAppPath() + "/../Frameworks/tcs_armeabi-v7a.a";
-    f2 = m_folder + "/tcs_armeabi-v7a.a";
-    wxCopyFile(f1, f2);
-    f1 = SamApp::GetAppPath() + "/../Frameworks/ssc_armeabi-v7a.a";
-    f2 = m_folder + "/ssc_armeabi-v7a.a";
-    wxCopyFile(f1, f2);
+// for Android
+	bool ret=true;
+	wxArrayString files;
     // MainActivity.java
     wxString fn = m_folder + "/MainActivity.java";
     FILE *f = fopen(fn.c_str(), "w");
@@ -7434,9 +7436,28 @@ bool CodeGen_android::SupportingFiles()
     fprintf(f, "add_library(lib_ssc STATIC IMPORTED)\n");
     fprintf(f, "set_target_properties(lib_ssc PROPERTIES IMPORTED_LOCATION %s/ssc_armeabi-v7a.a)\n", (const char*)m_folder.c_str());
     fprintf(f, "target_link_libraries( native-lib android lib_ssc lib_tcs lib_solarpilot lib_lpsolve lib_nlopt lib_shared ${log-lib} )\n");
-   fclose(f);
-#endif
-	return true;
+	fclose(f);
+	// library files
+	size_t num_files = wxDir::GetAllFiles( SamApp::GetRuntimePath() + "/mobile/android", &files); 
+	ret = (num_files > 0);
+//	Use path to mobile/android to set library locations.
+	if (ret)
+	{
+		wxString f1, f2, path, file, ext;
+		for (size_t i=0; i<files.Count() && ret; i++)
+		{
+			f1 = files[i];
+			wxFileName::SplitPath(f1, &path, &file, &ext );
+			f2 = m_folder + "/" + file;
+			if (ext.Length() > 0) f2 += "." + ext;
+		    ret &= wxCopyFile(f1, f2);
+		}
+	}
+	if (!ret)
+	{
+		wxMessageBox("Please download the latest Android archive files at https://sam.nrel.gov/sites/default/files/content/mobile/ios/libssc_android.tar.gz", "Missing archive");
+	}
+	return ret;
 }
 
 bool CodeGen_android::Footer()
