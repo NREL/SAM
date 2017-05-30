@@ -212,10 +212,10 @@ public:
 };
 
 
-class CodeGen_swift : virtual public CodeGen_Base
+class CodeGen_ios : virtual public CodeGen_Base
 {
 public:
-	CodeGen_swift(Case *cc, const wxString &folder);
+	CodeGen_ios(Case *cc, const wxString &folder);
 	bool SupportingFiles();
 	bool Header();
 	bool CreateSSCModule(wxString &name);
