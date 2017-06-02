@@ -44,17 +44,17 @@ static void fcall_duplicate_case(lk::invoke_t &cxt)
 		cxt.result().assign(0.0);
 		return;
 	}
-	ProjectFile p = SamApp::Window()->Project();
-	wxString case_name = "case";// p.GetCaseName(current_case);
-	if (Case *dup_case = dynamic_cast<Case*>(current_case->Duplicate()))
+	wxString case_name = SamApp::Window()->Project().GetCaseName(current_case);
+	if ( Case *dup = dynamic_cast<Case*>(current_case->Duplicate()) )
 	{
-		p.AddCase(case_name, dup_case);
-		SamApp::Window()->CreateCaseWindow(dup_case);
+		SamApp::Window()->Project().AddCase( SamApp::Window()->GetUniqueCaseName( case_name ), dup );
+		SamApp::Window()->CreateCaseWindow( dup );
 		cxt.result().assign(1.0);
 		return;
 	}
 	cxt.result().assign(0.0);
 }
+
 
 static void fcall_close_project( lk::invoke_t &cxt )
 {
