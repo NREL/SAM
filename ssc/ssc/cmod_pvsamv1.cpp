@@ -45,7 +45,7 @@
 static var_info _cm_vtab_pvsamv1[] = {
 /*   VARTYPE           DATATYPE         NAME                                            LABEL                                                   UNITS      META                             GROUP                  REQUIRED_IF                 CONSTRAINTS                      UI_HINTS*/
 	{ SSC_INPUT,        SSC_STRING,      "solar_resource_file",                         "Weather file in TMY2, TMY3, EPW, or SAM CSV.",         "",         "",                              "pvsamv1",              "?",                        "",                              "" },
-	{ SSC_INPUT,        SSC_TABLE,       "solar_resource_data",                         "Weather data",                                         "",         "lat,lon,tz,elev,year,month,hour,minute,gh,dn,df,tdry,twet,tdew,rhum,pres,snow,alb,aod,wspd,wdir",    "pvsamv1",              "?",                        "",                              "" },
+	{ SSC_INPUT,        SSC_TABLE,       "solar_resource_data",                         "Weather data",                                         "",         "lat,lon,tz,elev,year,month,hour,minute,gh,dn,df,poa,tdry,twet,tdew,rhum,pres,snow,alb,aod,wspd,wdir",    "pvsamv1",              "?",                        "",                              "" },
 	
 	// transformer model percent of rated ac output
 	{ SSC_INPUT, SSC_NUMBER, "transformer_no_load_loss", "Power transformer no load loss", "%", "", "pvsamv1", "?=0", "", "" },
