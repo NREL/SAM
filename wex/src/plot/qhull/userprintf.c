@@ -19,6 +19,7 @@
 */
 
 #include "libqhull.h"
+#include "mem.h"
 
 #include <stdarg.h>
 #include <stdio.h>
@@ -35,13 +36,15 @@
      same as fprintf()
      fgets() is not trapped like fprintf()
      exit qh_fprintf via qh_errexit()
+     may be called for errors in qh_initstatistics and qh_meminit
 */
 
 void qh_fprintf(FILE *fp, int msgcode, const char *fmt, ... ) {
     va_list args;
 
     if (!fp) {
-        fprintf(stderr, "QH6232 Qhull internal error (userprintf.c): fp is 0.  Wrong qh_fprintf called.\n");
+        /* could use qhmem.ferr, but probably better to be cautious */
+        qh_fprintf_stderr(6232, "Qhull internal error (userprintf.c): fp is 0.  Wrong qh_fprintf called.\n");
         qh_errexit(6232, NULL, NULL);
     }
     va_start(args, fmt);
@@ -60,3 +63,4 @@ void qh_fprintf(FILE *fp, int msgcode, const char *fmt, ... ) {
     /* Place debugging traps here. Use with option 'Tn' */
 
 } /* qh_fprintf */
+

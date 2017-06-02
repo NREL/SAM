@@ -961,7 +961,16 @@ lk::node_t *lk::parser::primary()
 
 				lk_string key( lex.text() );
 				skip();
-				match( lk::lexer::OP_ASSIGN );
+				if ( token() == lk::lexer::OP_ASSIGN || token() == lk::lexer::SEP_COLON )
+				{
+					skip();
+				}
+				else
+				{
+					error( lk_tr( "expected = or : in table initializer syntax" ) );
+					m_haltFlag = true;
+					return 0;
+				}
 
 				head->items.push_back( new lk::expr_t( srcpos(), lk::expr_t::ASSIGN, 
 					new lk::literal_t( srcpos(), key ),

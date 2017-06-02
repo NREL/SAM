@@ -863,7 +863,7 @@ static void to_lk_matrix( wxMatrix<double> &mat, lk::vardata_t &v )
 
 void fcall_peaks( lk::invoke_t &cxt )
 {
-	LK_DOC( "peaks", "Sample data for contour plotting.", "( number:n ):table" );
+	LK_DOC( "peaks", "Sample data for contour plotting.  Returns a table with x, y, z matrices for use with contour(...).", "( number: #points ):table" );
 	
 	wxMatrix<double> x, y, z;
 	double min, max;
@@ -878,7 +878,8 @@ void fcall_peaks( lk::invoke_t &cxt )
 
 void fcall_meshgrid( lk::invoke_t &cxt )
 {
-	LK_DOC( "meshgrid", "Creates a regularly spaced grid of x,y coordinates.", "()" );
+	//	G = meshgrid( xmin, xmax, np, ymin+y_offset, ymax+y_offset, np );
+	LK_DOC( "meshgrid", "Creates a regularly spaced grid of x, y coordinates. Returns a table with two matrices, 'xq' and 'yq', for use with griddata(...).", "( number:xmin, number:xmax, number: #points, number:ymin, number:ymax, number: #points ):table" );
 	wxMatrix<double> xq, yq;
 	wxPLContourPlot::MeshGrid( 
 
@@ -899,7 +900,7 @@ void fcall_meshgrid( lk::invoke_t &cxt )
 
 void fcall_griddata( lk::invoke_t &cxt )
 {
-	LK_DOC( "griddata", "Interpolates X,Y,Z data onto a regular Xq,Yq mesh.", "( array:x, array:y, array:z, matrix:xq, matrix:yq ):matrix" );
+	LK_DOC( "griddata", "Interpolates X,Y,Z data onto a regular xq, yq mesh.  Note: use meshgrid(...) to generate the xq and yq matrices.", "( array:x, array:y, array:z, matrix:xq, matrix:yq ):matrix" );
 
 	std::vector<double> x, y, z;
 	to_stdvec( cxt.arg(0).deref(), x );
@@ -1446,7 +1447,7 @@ static void fcall_curl( lk::invoke_t &cxt )
 
 void fcall_decompress( lk::invoke_t &cxt )
 {
-	LK_DOC("decompress", "Decompress a local archive file.", "(string:archive, string:target):boolean");
+	LK_DOC("decompress", "Decompress an archive file to a local folder.  Supports .zip, .tar, .tar.gz, and .gz archives.", "(string:archive file, string:output folder):boolean");
 	cxt.result().assign( wxDecompressFile( cxt.arg(0).as_string(), cxt.arg(1).as_string() ) );
 }
 
