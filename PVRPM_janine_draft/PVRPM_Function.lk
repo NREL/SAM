@@ -14,6 +14,7 @@
 	stepped warranties? degradation triggering warranty?
 	generalize degradation to be able to apply to any component?
 	how to calculate DC and AC availability more generally (so that components can easily be added)?
+	Worst case tracker algorithm isn't realistic for east-west axis trackers (they rarely end up actually facing north). How do we account for this?
 		
 	OUTPUTS:	
 	Add component-level availability output graph vs time (using Geoff's equation)
@@ -151,8 +152,101 @@ function configuration_check()
 		exit;
 	}
 	
-	//More variable initializations	
+	// Get the components for error-checking below
 	components = @meta;
+	
+	// Check that all the input fields are available
+	for (c=0; c<#components; c++)
+	{
+		//First four meta components: name, can_fail, can_repair, and warranty.has_warranty
+		all_available = true;
+		if (meta{components[c]}.name == null || meta{components[c]}.can_fail == null || meta{components[c]}.can_repair == null || meta{components[c]}.warranty.has_warranty == null)
+			all_available = false;
+		if (!all_available)
+		{
+			msgbox('Error: ' + components[c] + ': missing meta data. Each component type requires name, can_fail, can_repair, and warranty.has_warranty.');
+			exit;
+		}
+		//If warranty is specified, you must provide the length of the warranty
+		if (meta{components[c]}.warranty.has_warranty)
+			if (meta{components[c]}.warranty.days == null)
+			{
+				msgbox('Error: ' + components[c] + ': a warranty was specified but the length of time for the warranty was not specified. Please specify meta.' + components[c] + '.warranty.days in the main script.');
+				exit;
+			}
+		//Failure parameters
+		if (meta{compnents[c]}.can_fail)
+		{
+			if (meta{components[c]}.failure == null)
+			{
+				msgbox('Error: ' + components[c] + ': failure modes must be specified for components that can fail.');
+				exit;
+			}
+			num_failure_modes = #meta{components[c]}.failure;
+			for (i=0; i<num_failure_modes; i++)
+			{
+				if (meta{components[c]}.failure[i].distribution == null || meta{components[c]}.failure[i].parameters == null || meta{components[c]}.failure[i].labor_time == null || meta{components[c]}.failure[i].cost == null)
+				{
+					msgbox('Error: ' + components[c] + ': failure mode ' + i + ' requires four inputs: distribution, parameters, labor_time, and cost.');
+					exit;
+				}
+			}
+		}
+		//Repair parameters
+		if (meta{components[c]}.can_repair)
+		{
+			if (meta{components[c]}.repair == null)
+			{
+				msgbox('Error: ' + components[c] + ': repair modes must be specified for components that can be repaired.');
+				exit;
+			}
+			num_repair_modes = #meta{components[c]}.repair;
+			for (i=0; i<num_repair_modes; i++)
+			{
+				if (meta{components[c]}.repair[i].distribution == null || meta{components[c]}.repair[i].parameters == null)
+				{
+					msgbox('Error: ' + components[c] + ': repair mode ' + i + ' requires two inputs: distribution and parameters.');
+					exit;
+				}
+			}
+		}
+		//Number of repair modes must either be 1, or equal to the number of failure modes
+		if (meta{components[c]}.can_fail && meta{components[c]}.can_repair)
+		{
+			num_repair_modes = #meta{components[c]}.repair;
+			if (num_repair_modes != 1)
+			{
+				num_failure_modes = #meta{components[c]}.failure;
+				if (num_repair_modes != num_failure_modes)
+				{
+					msgbox('Error: ' + components[c] + ': The number of repair modes must either be 1 or be equal to the number of failure modes.');
+					exit;
+				}
+			}			
+		}
+		//Degradation
+		if (meta{components[c]}.degradation.can_degrade)
+			if (meta{components[c]}.degradation.rate == null)
+			{
+				msgbox('Error: ' + components[c] + ': Degradation has been specified but a rate has not been set.');
+				exit;
+			}			
+	}
+
+	// At least one thing must be set up to fail
+	something_can_fail = false;
+	for (c=0; c<#components; c++)
+	{
+		if (meta{components[c]}.can_fail)
+			something_can_fail = true;
+	}
+	if (!something_can_fail)
+	{
+		msgbox('Error: you must enable at least one component to fail.');
+		exit;
+	}
+	
+	// More variable initializations	
 	for (c=0; c<#components; c++)
 	{
 		//Set up null failure times for components
@@ -169,14 +263,7 @@ function configuration_check()
 		if (meta{components[c]}.name == 'module')
 			continue;
 		meta{components[c]}.degradation.can_degrade = false;
-	}
 			
-	// At least one thing must be set up to fail
-	if (!meta.module.can_fail && !meta.string.can_fail && !meta.combiner.can_fail && !meta.inverter.can_fail && !meta.disconnect.can_fail && !meta.transformer.can_fail && !meta.grid.can_fail) //CHANGE THIS TO LOOP THROUGH META
-	if ((is_tracking_system && !meta.tracker.can_fail) || !is_tracking_system)
-	{
-		msgbox('Error: you must enable at least one component to fail.');
-		exit;
 	}
 	
 	//Set the numbers of components
@@ -196,6 +283,7 @@ function configuration_check()
 		msgbox('Error: there must be an integer number of strings per combiner.');
 		exit;
 	}
+	
 	// There must be an integer number of inverters per transformer
 	if (num_inverters_per_transformer * num_transformers != num_inverters) 
 	{
@@ -462,12 +550,6 @@ function initialize_component(component_meta, component_vector, component_idx, b
 	repair_idx = 0; //if only one repair distribution is listed, then each failure mode uses the same repair distribution with index 0
 	if(#component_meta.repair != 1) //if more than one repair mode is listed, each failure mode has its own repair distribution
 		repair_idx = component_vector[component_idx].failure_type; 
-	// check that the repair index won't be out of bounds
-	if (repair_idx + 1 > #component_meta.repair) //the model was erroneously set up with fewer repair modes than failure modes
-	{
-		msgbox('Error: ' + component_meta.name +': there are more failure types than repair modes. Please fix your inputs and try again.');
-		exit;
-	}
 	if (component_meta.repair[repair_idx].times == null || #component_meta.repair[repair_idx].times <= 0) //null on initialization of very first component, less than zero when you've used up the array
 		component_meta.repair[repair_idx].times = LHS(component_meta.name + 'repair mode '+ repair_idx, component_meta.repair[repair_idx].distribution, component_meta.repair[repair_idx].parameters, (#component_vector * 10));
 	component_vector[component_idx].time_to_repair = component_meta.repair[repair_idx].times[0];
