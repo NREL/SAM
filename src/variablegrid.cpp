@@ -508,8 +508,8 @@ bool VariableGridData::ShowRow(int row, int comparison_type, bool show_calculate
 	{
 		bool calculated = false;
 		int lookup_row = row;
-		if (m_sorted) lookup_row = m_sorted_index[row];
-		if (m_var_info_lookup_vec[0]->Lookup(m_var_names[lookup_row]))
+		if ((row < m_sorted_index.Count()) && (m_sorted)) lookup_row = m_sorted_index[row];
+		if ((lookup_row < m_var_names.Count()) && (m_var_info_lookup_vec[0]->Lookup(m_var_names[lookup_row])))
 		{
 			VarInfo *vi = m_var_info_lookup_vec[0]->Lookup(m_var_names[lookup_row]);
 			if (vi)
