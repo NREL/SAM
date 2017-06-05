@@ -12,6 +12,8 @@
 	routine inverter failures should not completely reset inverters- but how to know which ones do reset it?
 	multi-thread the stochastic piece when parallel LK functions become available
 	stepped warranties? degradation triggering warranty?
+	generalize degradation to be able to apply to any component?
+	how to calculate DC and AC availability more generally (so that components can easily be added)?
 		
 	OUTPUTS:	
 	Add component-level availability output graph vs time (using Geoff's equation)
@@ -25,26 +27,29 @@
 	component contribution to energy loss
 	confidence intervals applying to cumulative energy sums and failures only??
 	fix time to failure calculations
+	cumulative energy output
 	
 	USABILITY:
 	Make macro UI inputs
-	details in the documentation- what comes from SAM, what goes to SAM
 	in documentation- if you want to model microinverters, here's how you would set it up
-	make a note about degradation!! confusing to have an input that's zero but then the degradation get assigned as the daily DC loss
-	can we create new SAM cases for various realizations? ->make an option to do it (first five realizations)
-	get rid of flashing excel window for confidence interval calculations
-	
-	ADD OPEN-SOURCING DISCLAIMER LANGUAGE TO THE SCRIPT
+	can we create new SAM cases for various realizations? -> make an option to do it (first five realizations)
+		along with this, uncheck daily dc and ac lifetime loss checkboxes in the original case
+	after patch- add second parameter to excel call so that the window doesn't show up
 	
 */
 
 
-//*************************************************************************************
+
+//**********************************************************************************************************************************************************************
 // SUPPORTING FUNCTIONS
-//*************************************************************************************
+//**********************************************************************************************************************************************************************
+
+
+// --------------------------------------------------------------------------------------------------------------------------------------
 /* 	LHS performs Latin Hypercube Sampling given a distribution type, distribution parameters,
 	and a number of samples. The name parameter allows a more helpful error message.
 	Returns an array of the calculated samples.*/
+	
 function LHS(name, distribution_type, parameters, num_samples)
 {
 	/*LHS library included in SAM requires mean and error factor inputs into lognormal function.
@@ -77,7 +82,10 @@ function LHS(name, distribution_type, parameters, num_samples)
 	return result;
 }
 
-/* Case Checking contains most of the pre-checks run on the inputs and system setup to make sure that the model will run successfully.*/
+
+// --------------------------------------------------------------------------------------------------------------------------------------
+/* Case Checking contains preliminary case checking and assigns the inputs from the active SAM case.*/
+
 function check_case()
 {
 	if (active_case() == '')
@@ -122,6 +130,11 @@ function check_case()
 	if (get('subarray4_enable') == 1 && (get('subarray4_track_mode') == 1 || get('subarray4_track_mode') == 2 || get('subarray4_track_mode') == 3))
 		is_tracking_system = true;
 }
+
+
+// --------------------------------------------------------------------------------------------------------------------------------------
+/*Configuration check contains most of the error-checking to make sure that the system is set up correctly 
+to enable the PVRPM script to run successfully. */
 
 function configuration_check()
 {
@@ -285,6 +298,12 @@ function configuration_check()
 	}
 }
 
+
+// --------------------------------------------------------------------------------------------------------------------------------------
+/* Precalculate_tracker_losses calculates an array of coefficients (one for every day of the year) that account for the
+"benefit" of trackers on that particular day. This is used to determine how much power is lost if a tracker fails. See
+the PVRPM User Manual for details. */
+
 function precalculate_tracker_losses()
 {
 	global daily_tracker_coeffs = alloc(365);
@@ -375,16 +394,13 @@ function precalculate_tracker_losses()
 	}
 }
 
-//*************************************************************************************
-// COMPONENT FUNCTIONS
-//*************************************************************************************
 
-//INITIALIZATION------------------------------------------------------------------------------
-// Used to set up a component for the first time or to renew the values when the component is repaired
-// Initializes a single component "component_idx" in the "component_vector"
-// "Component_meta" stores the failure and repair information for that type of component
-// If initializing a component for the first time, "bool_time_is_zero" is true
-// If initializing due to a repair, "bool_time_is_zero" is false
+// --------------------------------------------------------------------------------------------------------------------------------------
+/* The initialize_component function is used to set up a component for the first time or to renew 
+the values when the component is repaired. It initializes a single component "component_idx" in 
+the "component_vector". "Component_meta" stores the failure and repair information for that type 
+of component. If initializing a component for the first time, "bool_time_is_zero" is true; if 
+initializing due to a repair, "bool_time_is_zero" is false */
 
 function initialize_component(component_meta, component_vector, component_idx, bool_time_is_zero)
 {
@@ -463,10 +479,11 @@ function initialize_component(component_meta, component_vector, component_idx, b
 			component_vector[component_idx].time_left_on_warranty = component_meta.warranty.days;
 }
 
-//COMPONENT FAILURE----------------------------------------------------------------------------------------
-// Used to change a component's state from operational to failed
-// Changes "component_idx" in the array "component" state to failed and increments failures
-// Checks current "day" against warranty if bool_warranty is true
+
+// --------------------------------------------------------------------------------------------------------------------------------------
+/* The component failure function is used to change a component's state from operational to failed.
+It changes "component_idx" in the array "component" state to failed and increments failures. It also
+checks current "day" against warranty if bool_warranty is true. */
 
 function component_failure(component_vector, component_idx, day, bool_warranty)
 {
@@ -479,11 +496,10 @@ function component_failure(component_vector, component_idx, day, bool_warranty)
 			component_vector[component_idx].cumulative_oow_failures++;
 }
 
-//*************************************************************************************
-// SYSTEM FUNCTIONS
-//*************************************************************************************
 
-//SYSTEM INITIALIZATION---------------------------------------------------------------------------------
+// --------------------------------------------------------------------------------------------------------------------------------------
+/* The system initialization function initializes all components in the system. */
+
 function initialize()
 {
 	components = @meta;
@@ -492,7 +508,11 @@ function initialize()
 			initialize_component(meta{components[c]}, meta{components[c]}.array, i, true);
 }
 
-// DC POWER AVAILABILITY CALCULATION FUNCTION------------------------------------------------------------------------
+
+// --------------------------------------------------------------------------------------------------------------------------------------
+/* This function calculates the "availability" of the DC power due to DC component outages,
+including modules, strings, and combiners. */
+
 function whats_my_dc_availability() 
 {
 	//note that here, "operational modules" means modules whose power is REACHING the inverter, 
@@ -530,7 +550,10 @@ function whats_my_dc_availability()
 	return operational_modules / meta.module.number;
 }
 
-// AC POWER AVAILABILITY CALCULATION FUNCTION--------------------------------------------------------------------------
+// --------------------------------------------------------------------------------------------------------------------------------------
+/* Like the DC availability function, this function calculates the "availability" of the AC power 
+due to DC component outages, including inverters, disconnects, transformers, and the grid. */
+
 function whats_my_ac_availability()
 {
 	//grid is down
@@ -557,9 +580,12 @@ function whats_my_ac_availability()
 	return operational_inverters / meta.inverter.number;
 }
 
-// FLEETWIDE DEGRADATION CALCULATION------------------------------------------------------------------------
-//Degradation is only averaged for operational meta.module.array 
-//Otherwise, the power production hit from degradation and from the module failure would be unfairly double-counted in production estimates.
+
+// --------------------------------------------------------------------------------------------------------------------------------------
+/* This function calculates the current fleetwide degradation. Degradation is only averaged 
+for operational modules; otherwise, the power production hit from degradation and from the 
+module failure would be unfairly double-counted in production estimates. */
+
 function whats_my_degradation()
 {
 	if (!meta.module.degradation.can_degrade)
@@ -577,9 +603,12 @@ function whats_my_degradation()
 	return fleet_degradation_sum / number_of_operational_modules;
 }
 
-// TRACKER LOSS FACTOR CALCULATION-------------------------------------------------------------------------------
-//Input is the day number in the system lifetime
-//Returns a factor (0-1) reflecting the percentage of power lost due to malfunctioning trackers
+
+// --------------------------------------------------------------------------------------------------------------------------------------
+/* This function calculates the current loss factor due to failed trackers. Input is the day number 
+in the system lifetime. Returns a factor (0-1) reflecting the percentage of power lost due to 
+malfunctioning trackers. */
+
 function whats_my_tracker_power_loss_factor(day)
 {
 	// total number of working trackers
@@ -600,9 +629,12 @@ function whats_my_tracker_power_loss_factor(day)
 	return adjusted_factor;
 }
 
-// INCREMENT TIMESTEP FUNCTION------------------------------------------------------------------------------
-//increments all components in component_vector of type component_meta on a given day
-//returns the value of component_repair_costs, which is how much repairs for this component cost on this day
+
+// --------------------------------------------------------------------------------------------------------------------------------------
+/* The timestep incrementing function increments all components in component_vector of 
+type component_meta on a given day and returns the value of component_repair_costs, 
+which is how much repairs for this component cost on this day. */
+
 function step_in_time(component_meta, component_vector, day, component_repair_costs)
 {
 	//initialize repair costs
@@ -680,17 +712,18 @@ function step_in_time(component_meta, component_vector, day, component_repair_co
 }
 
 
+
 //**********************************************************************************************************************************************************************
-// MAIN SCRIPT
+// SYSTEM REALIZATION FUNCTION
 //**********************************************************************************************************************************************************************
+/* This function runs a single iteration of the stochastic model. */
+
 function run_system_realization(realization, show_outputs)
 {
 
 	//*************************************************************************************
-	// DATA CONTAINERS
+	// INDIVIDUAL COMPONENT DATA CONTAINER
 	//*************************************************************************************
-
-	// INDIVIDUAL COMPONENT DATA CONTAINER-------------------------------------------------------
 	// contains current timestep data for a single component in the system
 	/*
 	state = operational (1) or failed (0)
@@ -708,7 +741,12 @@ function run_system_realization(realization, show_outputs)
 	degradation_factor = 1 - percentage the component has degraded at this time (ex. a 2% degraded component would have a degradation factor of 0.98)
 	*/
 
-	//SET UP COMPONENT DATA CONTAINERS----------------------------------------------------------------------
+	// Create a new case if the user has specified to do so
+	//if (create_realization_cases && realization <=3) *******************************
+	
+		
+
+	// Set up component data containers-------------------------------------------------------------------
 
 	global costs = null;
 		
@@ -725,7 +763,7 @@ function run_system_realization(realization, show_outputs)
 	}
 		
 	// Allocate outputs----------------------------------------------------------------------------------
-	
+
 	//time variables
 	module_degradation_factor = null;
 	if (is_tracking_system)
@@ -736,7 +774,8 @@ function run_system_realization(realization, show_outputs)
 	dc_power_availability = ac_power_availability = null;
 	labor_rate = 0;
 
-	//timestep 0
+	// Calculate timestep zero---------------------------------------------------------------------------
+	
 	initialize();
 	module_degradation_factor[0] = whats_my_degradation();
 	dc_power_availability[0] = whats_my_dc_availability();
@@ -752,7 +791,8 @@ function run_system_realization(realization, show_outputs)
 		original_tracker_cost = meta.tracker.failure[0].cost;
 	}
 
-	//rest of system lifetime
+	// Calculate the rest of the system lifetime----------------------------------------------------------
+	
 	for (day = 1; day < system_lifetime_yrs * 365; day++)
 	{	
 		was_canceled = progressbar(pb, {value=day, message='Running reliability model realization ' + realization + '...'});
@@ -787,8 +827,8 @@ function run_system_realization(realization, show_outputs)
 	}
 	progressbar(pb, {message='Running SAM simulation ' + realization + '...'});	
 	
-		
-	//create SAM performance adjustment tables for the availability, degradation, and tracker loss factors
+	// Create SAM performance adjustment tables for availability, degradation, and tracker losses--------		
+
 	daily_dc_loss = alloc(365 * system_lifetime_yrs);
 	daily_ac_loss = alloc(365 * system_lifetime_yrs);
 	for (day = 0; day < (365 * system_lifetime_yrs); day++)
@@ -804,7 +844,8 @@ function run_system_realization(realization, show_outputs)
 	set('en_ac_lifetime_losses', 1);
 	set('ac_lifetime_losses', daily_ac_loss);
 
-	//Create O&M inputs based on costs
+	// Create O&M inputs based on costs------------------------------------------------------------------
+	
 	o_m_yearly_costs = alloc(system_lifetime_yrs);
 	yr_idx = 0;
 	cost_components = @costs;
@@ -828,7 +869,8 @@ function run_system_realization(realization, show_outputs)
 	}
 	set('om_fixed', o_m_yearly_costs);
 
-	//run PV performance model- running the currently active case
+	// Run PV performance model for the currently active case---------------------------------------------
+
 	messages = '';
 	success = simulate(messages, true);
 	if (!success)
@@ -838,7 +880,8 @@ function run_system_realization(realization, show_outputs)
 	}
 	show_page('Results');
 
-	//OUTPUTS-------------------------------------------------------------------------------------------------------------
+
+	// OUTPUTS------------------------------------------------------------------------------------------------------------
 	results.realization[realization] = 'Realization_' + realization;
 
 	//calculate results
@@ -943,11 +986,14 @@ function run_system_realization(realization, show_outputs)
 	return results;
 }
 
+
+//********************************************************************************************************************************************************************************
+// MAIN FUNCTION TO EXECUTE THE PVRPM ALGORITHM
+//********************************************************************************************************************************************************************************
+
 function pvrpm_exec()
 {
-	//********************************************************************************************************************************************************************************
-	// RUN THE BASE CASE REALIZATION- NO SYSTEM FAILURES
-	//********************************************************************************************************************************************************************************
+	// Run the base case simulation- no system failures-------------------------------------------------------------------------------------------------------
 	pb = progressbar( {title='Simulation progress', message='Running base case simulation',cancelbutton=true, time=true, max=system_lifetime_yrs * 365});
 	
 	//disable the lifetime daily losses
@@ -975,7 +1021,7 @@ function pvrpm_exec()
 	//output the results that we care about from the base case simulation before we overwrite them, because we're not saving them like we do for the stochastic realizations
 	global results = null;
 	lifetime = get('analysis_period');
-	results.realization[0] = 'Base';
+	results.realization[0] = 'Base Case';
 	results.lcoe[0] = get('lcoe_real');
 	base_annual_energy = get('cf_energy_net');
 	for (j=1; j<=lifetime; j++) //start at 1 because the array returns year 0, where the energy production is always 0, and goes through the full lifetime (so a 5-year system would have 6 entries in the annual energy output)
@@ -1038,13 +1084,10 @@ function pvrpm_exec()
 	//********************************************************************************************************************************************************************************
 	// CALCULATE STATISTICS AND WRITE RESULTS
 	//********************************************************************************************************************************************************************************
-	//num_module_failure_modes = #raw_results[1].module_failures_by_type; //use the results from the first stochastic realization to figure out how many failure modes there are
-	//num_inverter_failure_modes = #raw_results[1].inverter_failures_by_type;
-
-	//base case results- do we need to overwrite base case failure results with N/A or 0? Currently shows up as null.????????????????????????????????????????
 
 	//Calculate statistics
 	results_columns = @results;
+	xl = xl_create(xl_path); //open the Excel file used for confidence interval calculations (below)- open outside of the loop for speed considerations
 	for (c=0; c<#results_columns; c++)
 	{
 		if (results_columns[c] == 'realization')
@@ -1079,26 +1122,23 @@ function pvrpm_exec()
 		
 		//calculate standard deviation
 		array_std = stddev(array);
-		results.realization[current_row] = 'std';
+		results.realization[current_row] = 'stddev';
 		results{results_columns[c]}[current_row] = array_std;
 		current_row++;
 		
 		//calculate the confidence interval using the included excel file
-		xl = xl_create(xl_path);
 		interval = 1 - conf_interval / 100;
 		xl_set(xl, interval, 'desired_interval');
 		xl_set(xl, #array, 'num_samples');
 		xl_set(xl, array_std, 'stddev');
 		conf_int = to_real(xl_get(xl, 'conf_int'));
-		xl_close(xl);
-		xl_free(xl);
-		results.realization[current_row] = to_string(conf_interval) + '% Conf Int of Mean';
+		results.realization[current_row] = to_string(conf_interval) + '% Lower Conf Int of Mean';
 		if (array_std == 0)
 			results{results_columns[c]}[current_row] = 'N/A';
 		else
 			results{results_columns[c]}[current_row] = array_mean - conf_int;
 		current_row++;
-		results.realization[current_row] = to_string(100 - conf_interval) + '% Conf Int of Mean';
+		results.realization[current_row] = to_string(conf_interval) + '% Upper Conf Int of Mean';
 		if (array_std == 0)
 			results{results_columns[c]}[current_row] = 'N/A';
 		else
@@ -1141,6 +1181,8 @@ function pvrpm_exec()
 		current_row++; //in case we add more calculated variables later
 		
 	}
+	xl_close(xl); //close the confidence interval Excel file now that we're done with it
+	xl_free(xl);
 
 	//write the output file- need to do something a little funky to make the columns show up in the right order
 	component_order = ['module', 'string', 'combiner', 'inverter', 'disconnect', 'transformer', 'grid'];
