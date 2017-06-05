@@ -358,17 +358,21 @@ Losses Base class
 class losses_t
 {
 public:
-	losses_t(lifetime_t *, thermal_t *, capacity_t*);
+	losses_t(lifetime_t *, thermal_t *, capacity_t*, double_vec batt_system_losses);
 	losses_t * clone();
 	void copy(losses_t *&);
 
 	void run_losses(double dt_hour);
 	void replace_battery();
+	double battery_system_loss(int i){ return _system_losses[i]; }
+
+	enum { MONTHLY, TIMESERIES};
 
 protected:
 	lifetime_t * _lifetime;
 	thermal_t * _thermal;
 	capacity_t * _capacity;
+	double_vec _system_losses;
 	int _nCycle;
 };
 

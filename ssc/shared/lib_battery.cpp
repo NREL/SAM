@@ -1029,11 +1029,12 @@ double thermal_t::capacity_percent()
 /*
 Define Losses
 */
-losses_t::losses_t(lifetime_t * lifetime, thermal_t * thermal, capacity_t* capacity)
+losses_t::losses_t(lifetime_t * lifetime, thermal_t * thermal, capacity_t* capacity, double_vec batt_system_losses)
 {
 	_lifetime = lifetime;
 	_thermal = thermal;
 	_capacity = capacity;
+	_system_losses = batt_system_losses;
 	_nCycle = 0;
 }
 losses_t * losses_t::clone(){ return new losses_t(*this); }
@@ -1043,6 +1044,7 @@ void losses_t::copy(losses_t *& losses)
 	losses->_thermal = _thermal;
 	losses->_capacity = _capacity;
 	losses->_nCycle = _nCycle;
+	losses->_system_losses = _system_losses;
 }
 
 void losses_t::replace_battery(){ _nCycle = 0; }

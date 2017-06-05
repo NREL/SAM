@@ -37,6 +37,8 @@ public:
 		double P_load_dc_charging,
 		double P_load_dc_discharging) = 0;
 
+	battery_t * battery_model(){ return _Battery; }
+
 	virtual void compute_grid_net();
 
 	enum MODES{ LOOK_AHEAD, LOOK_BEHIND, MAINTAIN_TARGET, MANUAL };
