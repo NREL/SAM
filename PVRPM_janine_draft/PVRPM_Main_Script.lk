@@ -6,6 +6,28 @@
 //16 May 2017
 //*************************************************************************************
 
+
+//--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+/*
+Copyright 2017 Sandia Corporation. Under the terms of Contract DE-AC04-94AL85000 with Sandia Corporation, the U.S. Government retains certain rights in this software.
+
+For five (5) years from 12/16/2016 the United States Government is granted for itself and others acting on its behalf a paid-up, nonexclusive, irrevocable worldwide 
+license in this data to reproduce, prepare derivative works, and perform publicly and display publicly, by or on behalf of the Government. There is provision for the 
+possible extension of the term of this license. Subsequent to that period or any extension granted, the United States Government is granted for itself and others 
+acting on its behalf a paid-up, nonexclusive, irrevocable worldwide license in this data to reproduce, prepare derivative works, distribute copies to the public, 
+perform publicly and display publicly, and to permit others to do so. The specific term of the license can be identified by inquiry made to Sandia Corporation or DOE.
+ 
+NEITHER THE UNITED STATES GOVERNMENT, NOR THE UNITED STATES DEPARTMENT OF ENERGY, NOR SANDIA CORPORATION, NOR ANY OF THEIR EMPLOYEES, MAKES ANY WARRANTY, EXPRESS OR 
+IMPLIED, OR ASSUMES ANY LEGAL RESPONSIBILITY FOR THE ACCURACY, COMPLETENESS, OR USEFULNESS OF ANY INFORMATION, APPARATUS, PRODUCT, OR PROCESS DISCLOSED, OR REPRESENTS 
+THAT ITS USE WOULD NOT INFRINGE PRIVATELY OWNED RIGHTS.
+ 
+Any licensee of this software has the obligation and responsibility to abide by the applicable export control laws, regulations, and general prohibitions relating to 
+the export of technical data. Failure to obtain an export control license or other authority from the Government may result in criminal liability under U.S. laws.
+*/
+//--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
 //Supporting functions located in a separate file, do not modify this line unless the function script is located in a different folder
 import 'PVRPM_Function.lk';
 
@@ -17,7 +39,8 @@ import 'PVRPM_Function.lk';
 //----Results options------------------------------------------------------------------------------------------
 //results_file = 'C:/users/jfreeman/desktop/pvrpm_results/pvrpm_results.csv';
 	global results_folder = 'C:/users/jfreeman/desktop/pvrpm_results';
-	show_realization_graphs = false;
+	show_realization_graphs = false; //show output graphs for each realization run. This should be disabled for many realizations.
+	create_realization_cases = false; //option to create new cases in the SAM file for up to three realizations of the model
 
 //----System setup---------------------------------------------------------------------------------------------
 	num_combiners = 2; //total number of DC combiner boxes
@@ -62,16 +85,16 @@ check_case(); //do not change this line!
 
 //----Component meta information-------------------------------------------------------------------------------
 	// The structure of the user-entered component meta container is as follows
+	//**NOTE: components currently include: module, string, combiner, inverter, disconnect, transformer, grid, and (optional) tracker
 	/*
 	meta.
-		component.
-		**NOTE: components currently include: module, string, combiner, inverter, disconnect, transformer, grid, and (optional) tracker
+		component.			
 			name = a string containing the name of the component type, used for error reporting
 			can_fail = true if component is allowed to fail
 			can_repair = true if component is allowed to be repaired after failing
 			warranty
 				has_warranty = true if the component has a warranty, otherwise false
-				days = number of days that the warranty is for (e.g. a 20 year warranty would be 20 * 365 days)
+				days = number of days that the warranty is for (e.g. a 20 year warranty would be 20 * 365 days) (ONLY required if has_warranty is true)
 			failure[i]
 				distribution = distribution type of failure mode i
 				parameters = a table of parameters for failure mode i (e.g. [45, 15] )
@@ -82,7 +105,6 @@ check_case(); //do not change this line!
 			repair[i]
 				distribution = distribution type of repair times
 				parameters = parameters of the repair distribution
-				times = a vector of repair times
 				**NOTE: If there is only ONE repair distribution (repair[0]), then ALL failure modes will use that distribution! Otherwise, # repair modes must equal # failure modes.
 			degradation (MODULES ONLY)
 				can_degrade = true if the component has degradation
