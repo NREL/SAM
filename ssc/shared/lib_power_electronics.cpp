@@ -39,13 +39,13 @@ charge_controller::charge_controller(dispatch_t * dispatch, battery_metrics_t * 
 
 	_battery_metrics = battery_metrics;
 	_iterate = false;
-	initialize(0,0);
+	initialize(0,0,0);
 }
 charge_controller::~charge_controller()
 {
 	_dispatch_initial->delete_clone();
 }
-void charge_controller::initialize(double P_pv, double P_load_ac)
+void charge_controller::initialize(double P_pv, double P_load_ac, size_t index)
 {
 	_P_load = P_load_ac;
 	_P_grid = 0;
@@ -59,6 +59,7 @@ void charge_controller::initialize(double P_pv, double P_load_ac)
 	_P_battery_to_grid = 0;
 	_P_battery = 0;
 	_P_inverter_draw = 0;
+	_P_system_loss = _dispatch->battery_model()->losses_model()->battery_system_loss(index);
 
 	if (P_pv < 0)
 	{
@@ -140,10 +141,10 @@ void dc_connected_battery_controller::preprocess_pv_load()
 
 }
 
-void dc_connected_battery_controller::run(size_t year, size_t hour_of_year, size_t step_of_hour, double P_pv_dc, double P_load_ac)
+void dc_connected_battery_controller::run(size_t year, size_t hour_of_year, size_t step_of_hour, size_t index, double P_pv_dc, double P_load_ac)
 {
 	
-	initialize(P_pv_dc, P_load_ac);
+	initialize(P_pv_dc, P_load_ac, index);
 
 	preprocess_pv_load();
 
@@ -167,7 +168,7 @@ void dc_connected_battery_controller::process_dispatch()
 		P_battery_dc_post_bms = P_battery_dc / _dc_dc_charge_controller->batt_dc_dc_bms_efficiency();
 	
 	// compute generation
-	double P_gen_dc = _P_pv + P_battery_dc_post_bms;
+	double P_gen_dc = _P_pv + P_battery_dc_post_bms - _P_system_loss;
 
 	// dc output quantities	
 	_P_battery = P_battery_dc_post_bms;
@@ -379,10 +380,10 @@ void ac_connected_battery_controller::preprocess_pv_load()
 		}
 	}
 }
-void ac_connected_battery_controller::run( size_t year, size_t hour_of_year, size_t step_of_hour, double P_pv_ac, double P_load_ac)
+void ac_connected_battery_controller::run( size_t year, size_t hour_of_year, size_t step_of_hour, size_t index, double P_pv_ac, double P_load_ac)
 {
 	
-	initialize(P_pv_ac, P_load_ac);
+	initialize(P_pv_ac, P_load_ac, index);
 
 	preprocess_pv_load();
 
@@ -508,7 +509,7 @@ void ac_connected_battery_controller::compute_to_batt_load_grid(double P_battery
 		P_batt_to_load_loss = P_battery_dc - P_battery_ac;
 
 	P_grid_to_load_ac = P_load_ac - P_pv_to_load_ac - P_batt_to_load_ac;
-	P_gen_ac = P_pv_ac + P_battery_ac + _P_inverter_draw;
+	P_gen_ac = P_pv_ac + P_battery_ac + _P_inverter_draw - _P_system_loss;
 
 	// Grid charging loss accounted for in P_battery_ac 
 	P_grid_ac = P_gen_ac - _P_load;
