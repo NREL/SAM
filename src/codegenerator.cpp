@@ -708,7 +708,7 @@ bool CodeGen_Base::ShowCodeGenDialog(CaseWindow *cw)
 	}
     else if (lang == 8) // Android Studio Android
     {
-        fn += ".java";
+        fn += ".cpp"; // ndk jni file
         cg = new CodeGen_android(c, fn);
     }
 #ifdef __WXMSW__
