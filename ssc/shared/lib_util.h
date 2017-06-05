@@ -62,6 +62,7 @@ namespace util
 	double percent_of_year(int month, int hours); /* returns the fraction of a year, based on months and hours */
 	int month_of(double time); /* hour: 0 = jan 1st 12am-1am, returns 1-12 */
 	int day_of_month(int month, double time); /* month: 1-12 time: hours, starting 0=jan 1st 12am, returns 1-nday*/
+	int days_in_month(int month); /*month: 0-11, return 0-30, depending on the month*/
 	void month_hour(int hour_of_year, int & out_month, int & out_hour); /*given the hour of year, return the month, and hour of day*/
 	bool weekday(int hour_of_year); /* return true if is a weekday, assuming first hour of year is Monday at 12 am*/
 

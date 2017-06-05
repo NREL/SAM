@@ -25,6 +25,7 @@ struct batt_variables
 	int batt_meter_position;
 	int batt_pv_choice;
 	int batt_target_choice;
+	int batt_loss_choice;
 
 	size_t ncharge;
 	size_t ndischarge;
@@ -47,6 +48,9 @@ struct batt_variables
 
 	std::vector<double> target_power_monthly;
 	std::vector<double> target_power;
+
+	std::vector<double> batt_losses_monthly;
+	std::vector<double> batt_losses;
 
 	int batt_computed_series;
 	int batt_computed_strings;

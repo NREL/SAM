@@ -3,6 +3,7 @@
 #include "common.h"
 #include "core.h"
 #include "lib_util.h"
+#include "lib_battery.h"
 #include "cmod_battery.h"
 
 
@@ -180,6 +181,20 @@ public:
 		batt_vars->inverter_model = as_integer("inverter_model");
 		if (batt_vars->inverter_model > 3)
 			batt_vars->inverter_efficiency = as_double("inverter_efficiency");
+
+		// losses
+		double_vec batt_losses, batt_losses_monthly;
+
+		size_t n_recs = 0;
+		ssc_number_t * p_ac = as_array("ac", &n_recs);
+		for (int i = 0; i != n_recs; i++)
+			batt_losses.push_back(0.);
+		for (int m = 0; m != 12; m++)
+			batt_losses_monthly.push_back(0.);
+
+		batt_vars->batt_loss_choice = losses_t::TIMESERIES;
+		batt_vars->batt_losses = batt_losses;
+		batt_vars->batt_losses_monthly = batt_losses_monthly;
 
 		// replacement
 		batt_vars->batt_replacement_capacity = 0.;
