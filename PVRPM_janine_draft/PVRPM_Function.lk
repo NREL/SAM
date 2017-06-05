@@ -152,6 +152,13 @@ function configuration_check()
 		exit;
 	}
 	
+	// All expected components must be present
+	if (meta.module == null || meta.string == null || meta.combiner == null || meta.inverter == null || meta.disconnect == null || meta.transformer == null || meta.grid == null)
+	{
+		msgbox('Error: All of the following components must be specified: module, string, combiner, inverter, disconnect, transformer, and grid.');
+		exit;
+	}
+	
 	// Get the components for error-checking below
 	components = @meta;
 	
@@ -160,7 +167,9 @@ function configuration_check()
 	{
 		//First four meta components: name, can_fail, can_repair, and warranty.has_warranty
 		all_available = true;
-		if (meta{components[c]}.name == null || meta{components[c]}.can_fail == null || meta{components[c]}.can_repair == null || meta{components[c]}.warranty.has_warranty == null)
+		if (meta{components[c]}.name == null || meta{components[c]}.can_fail == null || meta{components[c]}.can_repair == null || meta{components[c]}.warranty == null)
+			all_available = false;
+		elseif (meta{components[c]}.warranty.has_warranty == null)
 			all_available = false;
 		if (!all_available)
 		{
@@ -175,7 +184,7 @@ function configuration_check()
 				exit;
 			}
 		//Failure parameters
-		if (meta{compnents[c]}.can_fail)
+		if (meta{components[c]}.can_fail)
 		{
 			if (meta{components[c]}.failure == null)
 			{
@@ -185,6 +194,11 @@ function configuration_check()
 			num_failure_modes = #meta{components[c]}.failure;
 			for (i=0; i<num_failure_modes; i++)
 			{
+				if (meta{components[c]}.failure[i] == null)
+				{
+					msgbox('Error: ' + components[c] + ': failure modes must be numbered sequentially starting at 0.');
+					exit;
+				}
 				if (meta{components[c]}.failure[i].distribution == null || meta{components[c]}.failure[i].parameters == null || meta{components[c]}.failure[i].labor_time == null || meta{components[c]}.failure[i].cost == null)
 				{
 					msgbox('Error: ' + components[c] + ': failure mode ' + i + ' requires four inputs: distribution, parameters, labor_time, and cost.');
@@ -203,6 +217,11 @@ function configuration_check()
 			num_repair_modes = #meta{components[c]}.repair;
 			for (i=0; i<num_repair_modes; i++)
 			{
+				if (meta{components[c]}.repair[i] == null)
+				{
+					msgbox('Error: ' + components[c] + ': repair modes must be numbered sequentially starting at 0.');
+					exit;
+				}
 				if (meta{components[c]}.repair[i].distribution == null || meta{components[c]}.repair[i].parameters == null)
 				{
 					msgbox('Error: ' + components[c] + ': repair mode ' + i + ' requires two inputs: distribution and parameters.');
@@ -223,15 +242,22 @@ function configuration_check()
 					exit;
 				}
 			}			
-		}
-		//Degradation
-		if (meta{components[c]}.degradation.can_degrade)
-			if (meta{components[c]}.degradation.rate == null)
-			{
-				msgbox('Error: ' + components[c] + ': Degradation has been specified but a rate has not been set.');
-				exit;
-			}			
+		}		
 	}
+	
+	// Module Degradation
+	degradation_ok = false;
+	if (meta.module.degradation != null)
+	{
+		if (meta.module.degradation.can_degrade != null)
+			if (meta.module.degradation.can_degrade && meta.module.degradation.rate != null)
+				degradation_ok = true;
+	}
+	if (!degradation_ok)
+	{
+		msgbox('Error: module degradation is set up incorrectly.');
+		exit;
+	}	
 
 	// At least one thing must be set up to fail
 	something_can_fail = false;
