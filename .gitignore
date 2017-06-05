@@ -302,8 +302,7 @@ __pycache__/
 SDKtool
 TCSConsole
 dltest
-set_env_github.bat
-set_env_old_svn.bat
+set_env_*
 ssc/examples/17_04_24_sco2_csp_udpc_tables_Craig.lk
 ssc/examples/sco2.lk
 ssc/examples/sco2_csp_system.lk
