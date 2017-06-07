@@ -463,7 +463,7 @@
       <AdditionalIncludeDirectories>$(ProjectDir)\..\include;$(ProjectDir)\..\src\freetype\include;$(ProjectDir)\libcurl_ssl_win32\include;$(WXMSW3)\lib\vc_lib\mswu;$(LKDIR)\include;$(WXMSW3)\include;.;$(WXMSW3)\samples;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_CRT_SECURE_NO_DEPRECATE=1;_CRT_NON_CONFORMING_SWPRINTFS=1;_SCL_SECURE_NO_WARNINGS=1;__WXMSW__;NDEBUG;_UNICODE;_WINDOWS;NOPCH;FT2_BUILD_LIBRARY;OPJ_STATIC;FT_CONFIG_MODULES_H="slimftmodules.h";FT_CONFIG_OPTIONS_H="slimftoptions.h";%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ExceptionHandling>Sync</ExceptionHandling>
-      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <ObjectFileName>$(IntDir)</ObjectFileName>
       <ProgramDataBaseFileName>$(ProjectDir)\$(TargetName).pdb</ProgramDataBaseFileName>
@@ -498,7 +498,7 @@
       <AdditionalIncludeDirectories>$(ProjectDir)\..\include;$(ProjectDir)\..\src\freetype\include;$(ProjectDir)\libcurl_ssl_x64\include;$(WXMSW3)\lib\vc_x64_lib\mswu;$(LKDIR)\include;$(WXMSW3)\include;.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_CRT_SECURE_NO_DEPRECATE=1;_CRT_NON_CONFORMING_SWPRINTFS=1;_SCL_SECURE_NO_WARNINGS=1;__WXMSW__;NDEBUG;_UNICODE;_WINDOWS;NOPCH;FT2_BUILD_LIBRARY;OPJ_STATIC;FT_CONFIG_MODULES_H="slimftmodules.h";FT_CONFIG_OPTIONS_H="slimftoptions.h";%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ExceptionHandling>Sync</ExceptionHandling>
-      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <ObjectFileName>$(IntDir)</ObjectFileName>
       <ProgramDataBaseFileName>$(ProjectDir)\$(TargetName).pdb</ProgramDataBaseFileName>
