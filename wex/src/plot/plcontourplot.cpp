@@ -388,7 +388,6 @@ extern "C" {
 	#include "qhull/qhull_a.h"
 }
 
-static int qhull_last_error = 0;
 static const char* qhull_error_msg[6] = {
     "no error",             /* 0 = qh_ERRnone */
     "input inconsistency",  /* 1 = qh_ERRinput */
@@ -421,7 +420,8 @@ static void get_facet_neighbours(const facetT* facet, const int* tri_indices,
  * messages are discarded; if it is 0 then they are written to stderr. */
 static bool qhull_delaunay(int npoints, const double* x, const double* y,
 			  wxMatrix<int> &triangles,
-			  wxMatrix<int> &neighbors )
+			  wxMatrix<int> &neighbors,
+			  wxString *errstr )
 {
     coordT* points = NULL;
     facetT* facet;
@@ -452,10 +452,11 @@ static bool qhull_delaunay(int npoints, const double* x, const double* y,
     exitcode = qh_new_qhull(ndim, npoints, points, False,
                             "qhull d Qt Qbb Qc Qz", NULL, stderr);
     if (exitcode != qh_ERRnone) {
-		qhull_last_error = exitcode;
         fprintf( stderr,
                      "Error in qhull Delaunay triangulation calculation: %s (exitcode=%d)",
                      qhull_error_msg[exitcode], exitcode );
+
+		if ( errstr ) *errstr = wxString::Format("code %d: %s", exitcode, qhull_error_msg[exitcode]);
         goto error;
     }
 
@@ -476,6 +477,7 @@ static bool qhull_delaunay(int npoints, const double* x, const double* y,
     tri_indices = (int*)malloc((max_facet_id+1)*sizeof(int));
     if (tri_indices == NULL) {
 		fprintf( stderr,"Could not allocate triangle map in qhull.delaunay");
+		if ( errstr ) *errstr = "Could not allocate triangle map in qhull.delaunay";
         goto error;
     }
 
@@ -540,7 +542,7 @@ error:
 error_before_qhull:
     free(points);
 
-    return NULL;
+    return false;
 }
 
 static int search( const wxMatrix<int> &tri, const std::vector<double> &x, const std::vector<double> &y, double xq, double yq )
@@ -608,9 +610,19 @@ bool wxPLContourPlot::GridData(
 
 	wxMatrix<int> triangles;
 	wxMatrix<int> neighbors;
-	if ( !qhull_delaunay( len, &x[0], &y[0], triangles, neighbors ) )
+	wxString errstr;
+	if ( !qhull_delaunay( len, &x[0], &y[0], triangles, neighbors, &errstr ) )
 	{
-		wxMessageBox( "Error in qhull delaunay" + wxString(qhull_error_msg[ qhull_last_error ]) );
+		wxString dbgfile( wxGetHomeDir() + "/qhull_debug.csv" );
+		if ( FILE *fp = fopen( dbgfile.c_str(), "w" ) )
+		{
+			fprintf(fp, "x,y\n" );
+			for( size_t i=0;i<len;i++ )
+				fprintf(fp, "%lg,%lg\n", x[i], y[i]);
+			fclose(fp);
+		}
+		
+		wxMessageBox( "Error in qhull delaunay: " + errstr + "\n\n" + wxString::Format( "xyz data vector length=%d", (int)len)+ "\nwrote debug: " + dbgfile );
 		return false;
 	}
 
