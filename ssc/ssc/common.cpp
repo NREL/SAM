@@ -668,7 +668,7 @@ weatherdata::weatherdata( var_data *data_table )
 	{
 		m_error = "solar data must be an SSC table variable with fields: "
 			"(numbers): lat, lon, tz, elev, "
-			"(arrays): year, month, day, hour, minute, gh, dn, df, wspd, wdir, tdry, twet, tdew, rhum, pres, snow, alb, aod";
+			"(arrays): year, month, day, hour, minute, gh, dn, df, poa, wspd, wdir, tdry, twet, tdew, rhum, pres, snow, alb, aod";
 		return;
 	}
 
@@ -686,6 +686,7 @@ weatherdata::weatherdata( var_data *data_table )
 	vec gh = get_vector( data_table, "gh", &nrec );
 	vec dn = get_vector( data_table, "dn", &nrec );
 	vec df = get_vector( data_table, "df", &nrec );
+	vec poa = get_vector(data_table, "poa", &nrec);
 	vec wspd = get_vector( data_table, "wspd", &nrec );
 	vec wdir = get_vector( data_table, "wdir", &nrec );
 	vec tdry = get_vector( data_table, "tdry", &nrec ); 
@@ -756,6 +757,7 @@ weatherdata::weatherdata( var_data *data_table )
 			if ( i < gh.len ) r->gh = gh.p[i];
 			if ( i < dn.len ) r->dn = dn.p[i];
 			if ( i < df.len ) r->df = df.p[i];
+			if (i < poa.len ) r->poa = poa.p[i];
 
 			if ( i < wspd.len ) r->wspd = wspd.p[i];
 			if ( i < wdir.len ) r->wdir = wdir.p[i];
@@ -799,6 +801,7 @@ int weatherdata::name_to_id( const char *name )
 	if ( n == "gh" ) return GHI;
 	if ( n == "dn" ) return DNI;
 	if ( n == "df" ) return DHI;
+	if ( n == "poa" ) return POA;
 	if ( n == "wspd" ) return WSPD;
 	if ( n == "wdir" ) return WDIR;
 	if ( n == "tdry" ) return TDRY;

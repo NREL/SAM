@@ -35,6 +35,27 @@ static void fcall_create_case( lk::invoke_t &cxt )
 			cxt.arg(1).as_string() ) ? 1.0 : 0.0 );
 }
 
+static void fcall_duplicate_case(lk::invoke_t &cxt)
+{
+	LK_DOC( "duplicate_case", "Duplicates the current SAM case.", "(none):boolean" );
+	Case *current_case = SamApp::Window()->GetCurrentCase();
+	if (current_case == 0)
+	{
+		cxt.result().assign(0.0);
+		return;
+	}
+	wxString case_name = SamApp::Window()->Project().GetCaseName(current_case);
+	if ( Case *dup = dynamic_cast<Case*>(current_case->Duplicate()) )
+	{
+		SamApp::Window()->Project().AddCase( SamApp::Window()->GetUniqueCaseName( case_name ), dup );
+		SamApp::Window()->CreateCaseWindow( dup );
+		cxt.result().assign(1.0);
+		return;
+	}
+	cxt.result().assign(0.0);
+}
+
+
 static void fcall_close_project( lk::invoke_t &cxt )
 {
 	LK_DOC( "close_project", "Closes the current SAM project, if one is open.", "(none):boolean" );
@@ -518,6 +539,7 @@ lk::fcall_t *sam_functions() {
 		fcall_close_project,
 		fcall_save_project,
 		fcall_create_case,
+		fcall_duplicate_case,
 		fcall_project_file,
 		fcall_list_cases,
 		fcall_active_case,
