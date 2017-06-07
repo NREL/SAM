@@ -131,7 +131,7 @@ wxString wxOnlineRegistration::GetKey()
 	wxString key;
 	if ( !GetFileRegistration( 0, &key ) )
 		key = gs_regData->ReadSetting( "user-key-" + GetVersionAndPlatform() );
-	return key;
+	return key.Left(36); // registration error on OS X with key repeated 11 times.
 }
 
 #define MAX_ATTEMPTS 15
@@ -224,9 +224,11 @@ bool wxOnlineRegistration::CheckInWithServer( int *usage_count )
 	if ( gs_enDebug )
 	{
 		wxLogStatus("wxOnlineRegistration::CheckInWithServer");
-		wxLogStatus("\turl: " + url );
-		wxLogStatus("\tpost: " + post );
-		wxLogStatus("\tresponse: " + raw );
+    	wxLogStatus("\temail: " + email );
+    	wxLogStatus("\tkey: " + key );
+    	wxLogStatus("\tpost: " + post );
+    	wxLogStatus("\turl: " + url );
+    	wxLogStatus("\tresponse: " + raw );
 }
 
 	if ( reader.Parse( raw, &root ) == 0 )

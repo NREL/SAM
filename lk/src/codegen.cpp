@@ -392,7 +392,7 @@ bool codegen::pfgen( lk::node_t *root, unsigned int flags )
 			emit( srcpos_t::npos, J, L2 );
 			place_label( L1 );
 
-			if ( ternary ) pfgen( n->on_true, false );
+			if ( ternary ) pfgen( n->on_false, false );
 			else pfgen_stmt( n->on_false, flags );
 		}
 		place_label( L2 );

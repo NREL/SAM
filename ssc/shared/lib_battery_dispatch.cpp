@@ -859,7 +859,7 @@ void automate_dispatch_t::compute_energy(FILE *p, bool debug, double & E_max)
 void automate_dispatch_t::target_power(FILE*p, bool debug, double E_useful, int idx)
 {
 	// if target power set, use that
-	if (_P_target_input.size() > idx && _P_target_input[idx] > 0)
+	if (_P_target_input.size() > idx && _P_target_input[idx] >= 0)
 	{
 		double_vec::const_iterator first = _P_target_input.begin() + idx;
 		double_vec::const_iterator last = _P_target_input.begin() + idx + _num_steps;
@@ -1004,7 +1004,10 @@ int automate_dispatch_t::set_discharge(FILE *p, bool debug, int hour_of_year, do
 	for (int ii = 0; ii != _num_steps; ii++)
 	{
 		double discharge_percent = 0;
-		double energy_required = (grid[ii].Grid() - _P_target_use[ii])*_dt_hour;
+		size_t ind = (grid[ii].Hour() * _steps_per_hour) + grid[ii].Step();
+		double energy_required = (grid[ii].Grid() - _P_target_use[ind])*_dt_hour;
+
+		// Only discharge if current grid power is above target
 		if (energy_required > 0)
 		{
 			discharge_percent = 100 * (energy_required / E_max);
@@ -1015,21 +1018,20 @@ int automate_dispatch_t::set_discharge(FILE *p, bool debug, int hour_of_year, do
 
 			if (discharge_percent > 100 && _mode == MAINTAIN_TARGET)
 				_message.add("Unable to discharge enough to meet power target.  Increase power target.");
+		
+
+			util::month_hour(hour_of_year + grid[ii].Hour(), m, h);
+			int min = grid[ii].Step();
+			int column = (h - 1)*_steps_per_hour + min;
+
+			// have set profile 0 as charge from solar only as default, start from 1
+			_sched.set_value(profile, m - 1, column); // in hourly case, column is hour-1, sched is 1-based
+			_charge_array.push_back(false);
+			_discharge_array.push_back(true);
+			_gridcharge_array.push_back(false);
+			_percent_discharge_array[profile] = discharge_percent;
+			_percent_charge_array[profile] = 100.;
 		}
-		else
-			break;
-
-		util::month_hour(hour_of_year + grid[ii].Hour(), m, h);
-		int min = grid[ii].Step();
-		int column = (h - 1)*_steps_per_hour + min;
-
-		// have set profile 0 as charge from solar only as default, start from 1
-		_sched.set_value(profile, m - 1, column); // in hourly case, column is hour-1, sched is 1-based
-		_charge_array.push_back(false);
-		_discharge_array.push_back(true);
-		_gridcharge_array.push_back(false);
-		_percent_discharge_array[profile] = discharge_percent;
-		_percent_charge_array[profile] = 100.;
 	}
 	return profile;
 }
@@ -1050,7 +1052,7 @@ void automate_dispatch_t::set_gridcharge(FILE *p, bool debug, int hour_of_year, 
 		if (grid[ii].Grid() < 0)
 			charge_energy += (-grid[ii].Grid()) * _dt_hour;
 	}
-
+	// Only grid charge if battery can't charge all the way from PV
 	if (charge_energy < E_max)
 	{
 		if (debug)
@@ -1058,19 +1060,24 @@ void automate_dispatch_t::set_gridcharge(FILE *p, bool debug, int hour_of_year, 
 
 		for (int ii = _num_steps - 1; ii >= 0; ii--)
 		{
-			if (grid[ii].Grid() > _P_target_use[ii])
-				break;
+			size_t ind = (grid[ii].Hour() * _steps_per_hour) + grid[ii].Step();
+			double P_target = _P_target_use[ind];
+
+			// Grid power above target, don't charge battery (need to discharge)
+			if (grid[ii].Grid() > P_target)
+				continue;
 
 			int hour = grid[ii].Hour();
 			int step = grid[ii].Step();
-			charge_percent = 100 * ((_P_target_use[ii] - grid[ii].Grid())*_dt_hour) / E_max;
-			charge_energy += (_P_target_use[ii] - grid[ii].Grid())*_dt_hour;
+			charge_percent = 100 * ((P_target - grid[ii].Grid())*_dt_hour) / E_max;
+			charge_energy += (P_target - grid[ii].Grid())*_dt_hour;
 
 			if (debug)
 				fprintf(p, "%d\t %d\t %.3f\t %.3f\t %.3f\n", hour, step, grid[ii].Grid(), charge_percent, charge_energy);
 
+			// Computed that we need to discharge, not charge
 			if (charge_percent < 0)
-				break;
+				continue;
 
 			util::month_hour(hour_of_year + hour, m, h);
 			int column = (h - 1)*_steps_per_hour + step;
