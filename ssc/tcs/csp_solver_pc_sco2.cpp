@@ -31,8 +31,17 @@ C_pc_sco2::C_pc_sco2()
 
 void C_pc_sco2::init(C_csp_power_cycle::S_solved_params &solved_params)
 {
+	if (false)
+	{
+		mpc_sco2_recomp = &mc_sco2_recomp_csp_direct;
+	}
+	else
+	{
+		mpc_sco2_recomp = &mc_sco2_recomp_csp_scale;
+	}
+
 	// Call the sCO2 Recompression Cycle class to design the cycle
-	mc_sco2_recomp.design(ms_params.ms_mc_sco2_recomp_params);
+	mpc_sco2_recomp->design(ms_params.ms_mc_sco2_recomp_params);
 	
 	// Setup HTF class
 	if( ms_params.ms_mc_sco2_recomp_params.m_hot_fl_code != HTFProperties::User_defined && ms_params.ms_mc_sco2_recomp_params.m_hot_fl_code < HTFProperties::End_Library_Fluids )
@@ -67,9 +76,9 @@ void C_pc_sco2::init(C_csp_power_cycle::S_solved_params &solved_params)
 	}
 
 	// Set solved paramaters and calculate timestep dependent information
-	solved_params.m_W_dot_des = mc_sco2_recomp.get_design_solved()->ms_rc_cycle_solved.m_W_dot_net / 1.E3;	//[MWe] convert from kWe
+	solved_params.m_W_dot_des = mpc_sco2_recomp->get_design_solved()->ms_rc_cycle_solved.m_W_dot_net / 1.E3;	//[MWe] convert from kWe
 	m_W_dot_des = solved_params.m_W_dot_des;		//[MWe] Net power from cycle NOT counting cooling parasitics
-	solved_params.m_eta_des = mc_sco2_recomp.get_design_solved()->ms_rc_cycle_solved.m_eta_thermal;			//[-]
+	solved_params.m_eta_des = mpc_sco2_recomp->get_design_solved()->ms_rc_cycle_solved.m_eta_thermal;			//[-]
 	m_q_dot_design = solved_params.m_W_dot_des / solved_params.m_eta_des;			//[MWt]
 	solved_params.m_q_dot_des = m_q_dot_design;										//[MWt]
 	
@@ -80,7 +89,7 @@ void C_pc_sco2::init(C_csp_power_cycle::S_solved_params &solved_params)
 	solved_params.m_cutoff_frac = ms_params.m_cycle_cutoff_frac;			//[-]
 	solved_params.m_sb_frac = ms_params.m_q_sby_frac;						//[-]
 	solved_params.m_T_htf_hot_ref = ms_params.ms_mc_sco2_recomp_params.m_T_htf_hot_in - 273.15;	//[C]
-	solved_params.m_m_dot_design = mc_sco2_recomp.get_phx_des_par()->m_m_dot_hot_des*3600.0;	//[kg/hr]
+	solved_params.m_m_dot_design = mpc_sco2_recomp->get_phx_des_par()->m_m_dot_hot_des*3600.0;	//[kg/hr]
 	solved_params.m_m_dot_min = solved_params.m_m_dot_design*solved_params.m_cutoff_frac;	//[kg/hr]
 	solved_params.m_m_dot_max = solved_params.m_m_dot_design*solved_params.m_max_frac;		//[kg/hr]
 	m_m_dot_htf_des = solved_params.m_m_dot_design;		//[kg/hr]
@@ -91,7 +100,7 @@ void C_pc_sco2::init(C_csp_power_cycle::S_solved_params &solved_params)
 	m_q_dot_max = ms_params.m_cycle_max_frac * m_q_dot_design;		//[MWt]
 	m_q_dot_min = ms_params.m_cycle_cutoff_frac * m_q_dot_design;	//[MWt]
 	// and calculated cold HTF return temperature
-	m_T_htf_cold_des = mc_sco2_recomp.get_design_solved()->ms_phx_des_solved.m_T_h_out;		//[K]
+	m_T_htf_cold_des = mpc_sco2_recomp->get_design_solved()->ms_phx_des_solved.m_T_h_out;		//[K]
 
 	// Finally, set member model-timestep-tracking variables
 	m_standby_control_prev = OFF;			// Assume power cycle is off when simulation begins
@@ -271,17 +280,17 @@ void C_pc_sco2::call(const C_csp_weatherreader::S_outputs &weather,
 
 	case ON:
 		{
-			C_sco2_recomp_csp::S_od_par sco2_rc_od_par;
+			C_sco2_rc_csp_template::S_od_par sco2_rc_od_par;
 			sco2_rc_od_par.m_T_htf_hot = T_htf_hot;				//[K]
 			sco2_rc_od_par.m_m_dot_htf = m_dot_htf/3600.0;		//[kg/s]
 			sco2_rc_od_par.m_T_amb = weather.m_tdry+273.15;		//[K]
 
-			int od_strategy = C_sco2_recomp_csp::E_MOO_ETA_T_T_IN;
+			int od_strategy = C_sco2_rc_csp_template::E_TARGET_POWER_ETA_MAX;
 
 			int off_design_code = 0;
 			try
 			{
-				off_design_code = mc_sco2_recomp.off_design_opt(sco2_rc_od_par, od_strategy);
+				off_design_code = mpc_sco2_recomp->off_design_nested_opt(sco2_rc_od_par, od_strategy);
 			}
 			catch( C_csp_exception &csp_exception )
 			{
@@ -291,9 +300,9 @@ void C_pc_sco2::call(const C_csp_weatherreader::S_outputs &weather,
 			// Was power cycle simulations successful?
 			if(off_design_code == 0)
 			{
-				P_cycle = mc_sco2_recomp.get_od_solved()->ms_rc_cycle_od_solved.m_W_dot_net;	//[kWe]
-				eta = mc_sco2_recomp.get_od_solved()->ms_rc_cycle_od_solved.m_eta_thermal;		//[-]
-				T_htf_cold = mc_sco2_recomp.get_od_solved()->ms_phx_od_solved.m_T_h_out;		//[K]
+				P_cycle = mpc_sco2_recomp->get_od_solved()->ms_rc_cycle_od_solved.m_W_dot_net;	//[kWe]
+				eta = mpc_sco2_recomp->get_od_solved()->ms_rc_cycle_od_solved.m_eta_thermal;		//[-]
+				T_htf_cold = mpc_sco2_recomp->get_od_solved()->ms_phx_od_solved.m_T_h_out;		//[K]
 				q_dot_htf = P_cycle/eta/1.E3;		//[MWt]
 			
 				W_cool_par = 0.0;

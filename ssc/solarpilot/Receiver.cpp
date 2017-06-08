@@ -505,7 +505,7 @@ void Receiver::updateCalculatedParameters(var_receiver &V, double tht)
 
 	//Estimated heat loss
 	double tp = 0.;
-	for(int i=0; i<V.therm_loss_load.val.ncells(); i++)
+	for(int i=0; i<(int)V.therm_loss_load.val.ncells(); i++)
         tp += V.therm_loss_load.val.at(i);
 
 	double therm_loss_base = V.therm_loss_base.val;
