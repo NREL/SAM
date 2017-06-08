@@ -12,7 +12,6 @@
 
 //Enumeration of data columns in the variable map file
 
-
 //Custom module settings
 #define _CUSTOM_REC 0		//If using custom geometry functions in the CustomReceiverWindow, define 1
 //Sandbox mode

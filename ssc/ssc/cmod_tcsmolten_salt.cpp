@@ -387,7 +387,6 @@ static var_info _cm_vtab_tcsmolten_salt[] = {
 			// Eventually want to make this INOUT, but will have to add 'eta_map' to UI...
     { SSC_OUTPUT,       SSC_MATRIX,      "eta_map_out",          "Solar field optical efficiencies",                             "",             "",            "heliostat",      "*",                       "",           "COL_LABEL=OPTICAL_EFFICIENCY,ROW_LABEL=NO_ROW_LABEL" },
     { SSC_OUTPUT,       SSC_MATRIX,      "flux_maps_out",        "Flux map intensities",                                         "",             "",            "heliostat",      "*",                       "",           "COL_LABEL=FLUX_MAPS,ROW_LABEL=NO_ROW_LABEL" },
-	
 
 	{ SSC_OUTPUT,       SSC_ARRAY,       "q_sf_inc",             "Field incident thermal power",                                 "MWt",          "",            "CR",             "*",                       "",           "" },
 	{ SSC_OUTPUT,       SSC_ARRAY,       "eta_field",            "Field optical efficiency",                                     "",             "",            "CR",             "*",                       "",           "" },
@@ -485,6 +484,12 @@ static var_info _cm_vtab_tcsmolten_salt[] = {
 	
 
 	{ SSC_OUTPUT,       SSC_ARRAY,       "gen",                  "Total electric power to grid w/ avail. derate",                                 "kWe",          "",            "System",         "*",                       "",           "" },
+		
+	                                                                                                                                                                          //"?=[[0,1,2][10,11,12]]",
+	{ SSC_OUTPUT,       SSC_MATRIX,      "ud_T_htf_ind_od_out",  "T_htf_hot cycle off design",                                   "",             "",            "PC",             "?=[[0,1,2,3,4,5,6,7,8,9,10,11,12][0,1,2,3,4,5,6,7,8,9,10,11,12]]",             "",          "COL_LABEL=UDPC_T_HTF_HOT,ROW_LABEL=NO_ROW_LABEL" },
+	{ SSC_OUTPUT,       SSC_MATRIX,      "ud_T_amb_ind_od_out",  "T_amb cycle off design",		                                 "",             "",            "PC",             "?=[[0,1,2,3,4,5,6,7,8,9,10,11,12][0,1,2,3,4,5,6,7,8,9,10,11,12]]",             "",          "COL_LABEL=UDPC_T_AMB,ROW_LABEL=NO_ROW_LABEL" },
+	{ SSC_OUTPUT,       SSC_MATRIX,      "ud_m_dot_htf_ind_od_out", "m_dot_htf cycle off design",                                "",             "",            "PC",             "?=[[0,1,2,3,4,5,6,7,8,9,10,11,12][0,1,2,3,4,5,6,7,8,9,10,11,12]]",             "",          "COL_LABEL=UDPC_M_DOT_HTF,ROW_LABEL=NO_ROW_LABEL" },
+
 
 	// Annual single-value outputs
 	{ SSC_OUTPUT,       SSC_NUMBER,      "annual_energy",        "Annual total electric power to grid",                          "kWhe",       "",            "System",         "*",                       "",           "" },
@@ -522,6 +527,14 @@ public:
 
 	void exec() throw(general_error)
 	{
+		//util::matrix_t<float> &p_udpc_T_htf_hot = allocate_matrix("ud_T_htf_ind_od_out", 1, 3);
+		//for (int j = 0; j < 1; j++)
+		//{
+		//	for (int i = 0; i < 3; i++)
+		//	{
+		//		p_udpc_T_htf_hot(j,i) = i;
+		//	}
+		//}
 
 		int tes_type = as_integer("tes_type");
 		if( tes_type != 1 )
@@ -1041,7 +1054,7 @@ public:
 			// ****************************************
 			// C_sco2_recomp_csp::S_des_par  User Defined Parameters
 			// ****************************************
-			C_sco2_recomp_csp::S_des_par sco2_rc_csp_par;
+			C_sco2_rc_csp_template::S_des_par sco2_rc_csp_par;
 				// System Design Parameters
 			sco2_rc_csp_par.m_hot_fl_code = as_integer("rec_htf");					//[-]
 			sco2_rc_csp_par.mc_hot_fl_props = as_matrix("field_fl_props");			//[-]
@@ -1115,23 +1128,36 @@ public:
 				int out_type = -1;
 				std::string out_msg = "";
 
-				log("Calculating sCO2 design point...", SSC_WARNING);
+				//log("Calculating sCO2 design point...", SSC_WARNING);
+				update("Calculating sCO2 design point...", 0.0);
 
 				// Construction class and design system
-				C_sco2_recomp_csp sco2_recomp_csp;
+				C_sco2_rc_csp_template *p_sco2_recomp_csp;
+
+				C_sco2_recomp_csp sco2_recomp_csp_direct;
+				C_sco2_recomp_csp_10MWe_scale sco2_recomp_csp_scale;
+
+				if (false)
+				{
+					p_sco2_recomp_csp = &sco2_recomp_csp_direct;
+				}
+				else
+				{
+					p_sco2_recomp_csp = &sco2_recomp_csp_scale;
+				}
 
 				// Pass through callback function and pointer
-				sco2_recomp_csp.mf_callback_update = ssc_cmod_update;
-				sco2_recomp_csp.mp_mf_update = (void*)(this);
+				p_sco2_recomp_csp->mf_callback_update = ssc_cmod_update;
+				p_sco2_recomp_csp->mp_mf_update = (void*)(this);
 
 				try
 				{
-					sco2_recomp_csp.design(sco2_rc_csp_par);
+					p_sco2_recomp_csp->design(sco2_rc_csp_par);
 				}
 				catch( C_csp_exception &csp_exception )
 				{
 					// Report warning before exiting with error
-					while( sco2_recomp_csp.mc_messages.get_message(&out_type, &out_msg) )
+					while (p_sco2_recomp_csp->mc_messages.get_message(&out_type, &out_msg))
 					{
 						log(out_msg + "\n");
 						log("\n");
@@ -1141,18 +1167,19 @@ public:
 				}
 
 				log("sCO2 design point calculations complete.", SSC_WARNING);
+				update("Preprocessing cycle off-design...", 0.0);
 
 				// Get sCO2 design outputs
-				double m_dot_htf_design = sco2_recomp_csp.get_phx_des_par()->m_m_dot_hot_des;			//[kg/s]
-				double T_htf_cold_calc = sco2_recomp_csp.get_design_solved()->ms_phx_des_solved.m_T_h_out;		//[K]
-				double UA_LTR = sco2_recomp_csp.get_design_solved()->ms_rc_cycle_solved.m_UA_LT;		//[kW/K]
-				double UA_HTR = sco2_recomp_csp.get_design_solved()->ms_rc_cycle_solved.m_UA_HT;		//[kW/K]
+				double m_dot_htf_design = p_sco2_recomp_csp->get_phx_des_par()->m_m_dot_hot_des;			//[kg/s]
+				double T_htf_cold_calc = p_sco2_recomp_csp->get_design_solved()->ms_phx_des_solved.m_T_h_out;		//[K]
+				double UA_LTR = p_sco2_recomp_csp->get_design_solved()->ms_rc_cycle_solved.m_UA_LT;		//[kW/K]
+				double UA_HTR = p_sco2_recomp_csp->get_design_solved()->ms_rc_cycle_solved.m_UA_HT;		//[kW/K]
 
 				// Get user-defined power cycle parameters
-				double T_htf_hot_low = sco2_recomp_csp.get_design_par()->m_T_htf_hot_in - 273.15 - 50.0;	//[C]
-				double T_htf_hot_high = sco2_recomp_csp.get_design_par()->m_T_htf_hot_in - 273.15 + 15.0;	//[C]
+				double T_htf_hot_low = p_sco2_recomp_csp->get_design_par()->m_T_htf_hot_in - 273.15 - 50.0;	//[C]
+				double T_htf_hot_high = p_sco2_recomp_csp->get_design_par()->m_T_htf_hot_in - 273.15 + 15.0;	//[C]
 				//int n_T_htf_hot_in = floor((T_htf_hot_high - T_htf_hot_low)/2.0)+1;			//[-]
-				int n_T_htf_hot_in = 10;			//[-]
+				int n_T_htf_hot_in = 10;				//[-]
 				double T_amb_low = 0.0;				//[C]
 				double T_amb_high = 55.0;			//[C]
 				//int n_T_amb_in = floor((T_amb_high - T_amb_low)/2.5)+1;					//[-]
@@ -1166,7 +1193,7 @@ public:
 
 				try
 				{
-					sco2_recomp_csp.generate_ud_pc_tables(T_htf_hot_low, T_htf_hot_high, n_T_htf_hot_in,
+					p_sco2_recomp_csp->generate_ud_pc_tables(T_htf_hot_low, T_htf_hot_high, n_T_htf_hot_in,
 						T_amb_low, T_amb_high, n_T_amb_in,
 						m_dot_htf_ND_low, m_dot_htf_ND_high, n_m_dot_htf_ND_in,
 						T_htf_parametrics, T_amb_parametrics, m_dot_htf_ND_parametrics);
@@ -1174,7 +1201,7 @@ public:
 				catch( C_csp_exception &csp_exception )
 				{
 					// Report warning before exiting with error
-					while( sco2_recomp_csp.mc_messages.get_message(&out_type, &out_msg) )
+					while (p_sco2_recomp_csp->mc_messages.get_message(&out_type, &out_msg))
 					{
 						log(out_msg);
 					}
@@ -1182,7 +1209,37 @@ public:
 					throw exec_error("sco2_csp_system", csp_exception.m_error_message);
 				}
 
+				int ncols = T_htf_parametrics.ncols();
+
+				util::matrix_t<float> &p_udpc_T_htf_hot = allocate_matrix("ud_T_htf_ind_od_out", n_T_htf_hot_in, ncols);
+				for (int i = 0; i < n_T_htf_hot_in; i++)
+				{
+					for (int j = 0; j < ncols; j++)
+					{
+						p_udpc_T_htf_hot(i, j) = T_htf_parametrics(i, j);
+					}
+				}
+
+				util::matrix_t<float> &p_udpc_T_amb = allocate_matrix("ud_T_amb_ind_od_out", n_T_amb_in, ncols);
+				for (int i = 0; i < n_T_amb_in; i++)
+				{
+					for (int j = 0; j < ncols; j++)
+					{
+						p_udpc_T_amb(i, j) = T_amb_parametrics(i, j);
+					}
+				}
+
+				util::matrix_t<float> &p_udpc_m_dot_htf = allocate_matrix("ud_m_dot_htf_ind_od_out", n_m_dot_htf_ND_in, ncols);
+				for (int i = 0; i < n_m_dot_htf_ND_in; i++)
+				{
+					for (int j = 0; j < ncols; j++)
+					{
+						p_udpc_m_dot_htf(i, j) = m_dot_htf_ND_parametrics(i, j);
+					}
+				}
+
 				log("sCO2 off-design performance calculations for lookup tables complete.", SSC_WARNING);
+				update("sCO2 preprocess complete", 100.0);
 
 				//double T_htf_hot_test = sco2_recomp_csp.get_design_par()->m_T_htf_hot_in - 273.15;		//[C]
 				//double m_dot_htf_ND_test = 1.0;		//[-]
@@ -1227,7 +1284,7 @@ public:
 				pc->m_P_ref = as_double("P_ref");
 				pc->m_eta_ref = as_double("design_eff");
 				pc->m_T_htf_hot_ref = as_double("T_htf_hot_des");
-				pc->m_T_htf_cold_ref = sco2_recomp_csp.get_design_solved()->ms_phx_des_solved.m_T_h_out - 273.15;
+				pc->m_T_htf_cold_ref = p_sco2_recomp_csp->get_design_solved()->ms_phx_des_solved.m_T_h_out - 273.15;
 				pc->m_cycle_max_frac = as_double("cycle_max_frac");
 				pc->m_cycle_cutoff_frac = as_double("cycle_cutoff_frac");
 				pc->m_q_sby_frac = as_double("q_sby_frac");
@@ -1240,7 +1297,7 @@ public:
 				// User-Defined Cycle Parameters
 				pc->m_is_user_defined_pc = true;
 
-				pc->m_T_amb_des = sco2_recomp_csp.get_design_par()->m_T_amb_des - 273.15;	//[C]
+				pc->m_T_amb_des = p_sco2_recomp_csp->get_design_par()->m_T_amb_des - 273.15;	//[C]
 				pc->m_W_dot_cooling_des = 0.0;		//[MWe]
 				pc->m_m_dot_water_des = 0.0;		//[kg/s]
 
