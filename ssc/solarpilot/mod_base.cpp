@@ -51,6 +51,11 @@ void simulation_info::setCallbackFunction(bool (*updateFunc)(simulation_info* si
 	_is_active = true;
 }
 
+void *simulation_info::getCallbackData()
+{
+    return _callback_data;
+}
+
 bool simulation_info::setCurrentSimulation(int val)
 {
 	if(!_is_active) return true; 
