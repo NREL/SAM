@@ -1909,6 +1909,11 @@ bool AutoPilot::IsSimulationCancelled()
 	return _cancel_simulation;
 }
 
+sp_optimize *AutoPilot::GetOptimizationObject()
+{
+    return &_opt;
+}
+
 void AutoPilot::PostEvaluationUpdate(int iter, vector<double> &pos, /*vector<double> &normalizers, */double &obj, double &flux, double &cost, std::string *note)
 {
 	ostringstream os;
