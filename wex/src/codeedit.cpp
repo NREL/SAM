@@ -175,10 +175,10 @@ END_EVENT_TABLE()
 #define DEFAULT_FONT_FACE "Courier New"
 #else
 	#ifdef __WXMSW__
-		#define DEFAULT_FONT_SIZE 10
+		#define DEFAULT_FONT_SIZE 11
 		#define DEFAULT_FONT_FACE "Consolas"
 	#else
-		#define DEFAULT_FONT_SIZE 10
+		#define DEFAULT_FONT_SIZE 11
 		#define DEFAULT_FONT_FACE "Courier New"
 	#endif
 #endif

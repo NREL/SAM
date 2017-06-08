@@ -1483,3 +1483,18 @@ wxString wxGetFileMD5(const wxString &filename)
 	wxFileInputStream stream(filename); 
 	return wxGetFileMD5(stream); 
 }
+
+#ifdef __WXMSW__
+#include <wx/dynlib.h>
+#endif
+
+void wxMakeProcessDPIAware() {
+#ifdef __WXMSW__
+    typedef BOOL (WINAPI *SetProcessDPIAware_t)(void); 
+    wxDynamicLibrary dllUser32(wxT("user32.dll")); 
+    SetProcessDPIAware_t pfnSetProcessDPIAware = 
+        (SetProcessDPIAware_t)dllUser32.RawGetSymbol(wxT("SetProcessDPIAware")); 
+    if ( pfnSetProcessDPIAware ) 
+        pfnSetProcessDPIAware(); 
+#endif
+}
