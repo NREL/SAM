@@ -131,5 +131,12 @@ wxString wxGetFileMD5(const wxString &filename);
 wxString wxGetMD5(const wxString &str);
 
 
+// On windows, make sure process is DPI aware, regardless
+// of whether wxWidgets does this.  ref: http://trac.wxwidgets.org/ticket/16116
+// We don't use built-in icons or AUI, and rather have clean lines and text
+// rather than blurry look.
+// Call this from wxApp::OnInit()
+void wxMakeProcessDPIAware();
+
 #endif
 
