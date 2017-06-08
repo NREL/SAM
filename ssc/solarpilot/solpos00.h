@@ -178,77 +178,77 @@ struct posdata
 
   /***** FLOATS *****/
 
-  float amass;      /* O:  S_AMASS    Relative optical airmass */
-  float ampress;    /* O:  S_AMASS    Pressure-corrected airmass */
-  float aspect;     /* I:             Azimuth of panel surface (direction it
+  double amass;      /* O:  S_AMASS    Relative optical airmass */
+  double ampress;    /* O:  S_AMASS    Pressure-corrected airmass */
+  double aspect;     /* I:             Azimuth of panel surface (direction it
                                         faces) N=0, E=90, S=180, W=270,
                                         DEFAULT = 180 */
-  float azim;       /* O:  S_SOLAZM   Solar azimuth angle:  N=0, E=90, S=180,
+  double azim;       /* O:  S_SOLAZM   Solar azimuth angle:  N=0, E=90, S=180,
                                         W=270 */
-  float cosinc;     /* O:  S_TILT     Cosine of solar incidence angle on
+  double cosinc;     /* O:  S_TILT     Cosine of solar incidence angle on
                                         panel */
-  float coszen;     /* O:  S_REFRAC   Cosine of refraction corrected solar
+  double coszen;     /* O:  S_REFRAC   Cosine of refraction corrected solar
                                         zenith angle */
-  float dayang;     /* T:  S_GEOM     Day angle (daynum*360/year-length)
+  double dayang;     /* T:  S_GEOM     Day angle (daynum*360/year-length)
                                         degrees */
-  float declin;     /* T:  S_GEOM     Declination--zenith angle of solar noon
+  double declin;     /* T:  S_GEOM     Declination--zenith angle of solar noon
                                         at equator, degrees NORTH */
-  float eclong;     /* T:  S_GEOM     Ecliptic longitude, degrees */
-  float ecobli;     /* T:  S_GEOM     Obliquity of ecliptic */
-  float ectime;     /* T:  S_GEOM     Time of ecliptic calculations */
-  float elevetr;    /* O:  S_ZENETR   Solar elevation, no atmospheric
+  double eclong;     /* T:  S_GEOM     Ecliptic longitude, degrees */
+  double ecobli;     /* T:  S_GEOM     Obliquity of ecliptic */
+  double ectime;     /* T:  S_GEOM     Time of ecliptic calculations */
+  double elevetr;    /* O:  S_ZENETR   Solar elevation, no atmospheric
                                         correction (= ETR) */
-  float elevref;    /* O:  S_REFRAC   Solar elevation angle,
+  double elevref;    /* O:  S_REFRAC   Solar elevation angle,
                                         deg. from horizon, refracted */
-  float eqntim;     /* T:  S_TST      Equation of time (TST - LMT), minutes */
-  float erv;        /* T:  S_GEOM     Earth radius vector
+  double eqntim;     /* T:  S_TST      Equation of time (TST - LMT), minutes */
+  double erv;        /* T:  S_GEOM     Earth radius vector
                                         (multiplied to solar constant) */
-  float etr;        /* O:  S_ETR      Extraterrestrial (top-of-atmosphere)
+  double etr;        /* O:  S_ETR      Extraterrestrial (top-of-atmosphere)
                                         W/sq m global horizontal solar
                                         irradiance */
-  float etrn;       /* O:  S_ETR      Extraterrestrial (top-of-atmosphere)
+  double etrn;       /* O:  S_ETR      Extraterrestrial (top-of-atmosphere)
                                         W/sq m direct normal solar
                                         irradiance */
-  float etrtilt;    /* O:  S_TILT     Extraterrestrial (top-of-atmosphere)
+  double etrtilt;    /* O:  S_TILT     Extraterrestrial (top-of-atmosphere)
                                         W/sq m global irradiance on a tilted
                                         surface */
-  float gmst;       /* T:  S_GEOM     Greenwich mean sidereal time, hours */
-  float hrang;      /* T:  S_GEOM     Hour angle--hour of sun from solar noon,
+  double gmst;       /* T:  S_GEOM     Greenwich mean sidereal time, hours */
+  double hrang;      /* T:  S_GEOM     Hour angle--hour of sun from solar noon,
                                         degrees WEST */
-  float julday;     /* T:  S_GEOM     Julian Day of 1 JAN 2000 minus
+  double julday;     /* T:  S_GEOM     Julian Day of 1 JAN 2000 minus
                                         2,400,000 days (in order to regain
                                         single precision) */
-  float latitude;   /* I:             Latitude, degrees north (south negative) */
-  float longitude;  /* I:             Longitude, degrees east (west negative) */
-  float lmst;       /* T:  S_GEOM     Local mean sidereal time, degrees */
-  float mnanom;     /* T:  S_GEOM     Mean anomaly, degrees */
-  float mnlong;     /* T:  S_GEOM     Mean longitude, degrees */
-  float rascen;     /* T:  S_GEOM     Right ascension, degrees */
-  float press;      /* I:             Surface pressure, millibars, used for
+  double latitude;   /* I:             Latitude, degrees north (south negative) */
+  double longitude;  /* I:             Longitude, degrees east (west negative) */
+  double lmst;       /* T:  S_GEOM     Local mean sidereal time, degrees */
+  double mnanom;     /* T:  S_GEOM     Mean anomaly, degrees */
+  double mnlong;     /* T:  S_GEOM     Mean longitude, degrees */
+  double rascen;     /* T:  S_GEOM     Right ascension, degrees */
+  double press;      /* I:             Surface pressure, millibars, used for
                                         refraction correction and ampress */
-  float prime;      /* O:  S_PRIME    Factor that normalizes Kt, Kn, etc. */
-  float sbcf;       /* O:  S_SBCF     Shadow-band correction factor */
-  float sbwid;      /* I:             Shadow-band width (cm) */
-  float sbrad;      /* I:             Shadow-band radius (cm) */
-  float sbsky;      /* I:             Shadow-band sky factor */
-  float solcon;     /* I:             Solar constant (NREL uses 1367 W/sq m) */
-  float ssha;       /* T:  S_SRHA     Sunset(/rise) hour angle, degrees */
-  float sretr;      /* O:  S_SRSS     Sunrise time, minutes from midnight,
+  double prime;      /* O:  S_PRIME    Factor that normalizes Kt, Kn, etc. */
+  double sbcf;       /* O:  S_SBCF     Shadow-band correction factor */
+  double sbwid;      /* I:             Shadow-band width (cm) */
+  double sbrad;      /* I:             Shadow-band radius (cm) */
+  double sbsky;      /* I:             Shadow-band sky factor */
+  double solcon;     /* I:             Solar constant (NREL uses 1367 W/sq m) */
+  double ssha;       /* T:  S_SRHA     Sunset(/rise) hour angle, degrees */
+  double sretr;      /* O:  S_SRSS     Sunrise time, minutes from midnight,
                                         local, WITHOUT refraction */
-  float ssetr;      /* O:  S_SRSS     Sunset time, minutes from midnight,
+  double ssetr;      /* O:  S_SRSS     Sunset time, minutes from midnight,
                                         local, WITHOUT refraction */
-  float temp;       /* I:             Ambient dry-bulb temperature, degrees C,
+  double temp;       /* I:             Ambient dry-bulb temperature, degrees C,
                                         used for refraction correction */
-  float tilt;       /* I:             Degrees tilt from horizontal of panel */
-  float timezone;   /* I:             Time zone, east (west negative).
+  double tilt;       /* I:             Degrees tilt from horizontal of panel */
+  double timezone;   /* I:             Time zone, east (west negative).
                                       USA:  Mountain = -7, Central = -6, etc. */
-  float tst;        /* T:  S_TST      True solar time, minutes from midnight */
-  float tstfix;     /* T:  S_TST      True solar time - local standard time */
-  float unprime;    /* O:  S_PRIME    Factor that denormalizes Kt', Kn', etc. */
-  float utime;      /* T:  S_GEOM     Universal (Greenwich) standard time */
-  float zenetr;     /* T:  S_ZENETR   Solar zenith angle, no atmospheric
+  double tst;        /* T:  S_TST      True solar time, minutes from midnight */
+  double tstfix;     /* T:  S_TST      True solar time - local standard time */
+  double unprime;    /* O:  S_PRIME    Factor that denormalizes Kt', Kn', etc. */
+  double utime;      /* T:  S_GEOM     Universal (Greenwich) standard time */
+  double zenetr;     /* T:  S_ZENETR   Solar zenith angle, no atmospheric
                                         correction (= ETR) */
-  float zenref;     /* O:  S_REFRAC   Solar zenith angle, deg. from zenith,
+  double zenref;     /* O:  S_REFRAC   Solar zenith angle, deg. from zenith,
                                         refracted */
 };
 
