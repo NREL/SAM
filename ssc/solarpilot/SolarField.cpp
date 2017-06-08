@@ -288,7 +288,7 @@ void SolarField::Create(var_map &V){
 		//Convert the string contents to a layout_shell object
 		SolarField::parseHeliostatXYZFile( V.sf.layout_data.val, _layout );
         vector<Point> lpt;
-        for(int i=0; i<_layout.size(); i++)
+        for(int i=0; i<(int)_layout.size(); i++)
             lpt.push_back( _layout.at(i).location );
         _land.calcLandArea(V.land, lpt);    //update the land bound area value
         //update the solar field area calculation
@@ -351,7 +351,7 @@ void SolarField::updateCalculatedParameters( var_map &V )
     
     //receiver area
     double arec = 0.;
-    for(int i=0; i<V.recs.size(); i++)
+    for(int i=0; i<(int)V.recs.size(); i++)
         arec += V.recs.at(0).absorber_area.Val();
 
     //_rec_area = arec;
@@ -365,7 +365,7 @@ void SolarField::updateCalculatedParameters( var_map &V )
     {
         double atten_ave = 0.;
         //calculate for each heliostat
-        for(int i=0; i<_heliostats.size(); i++)
+        for(int i=0; i<(int)_heliostats.size(); i++)
         {
             double slant = _heliostats.at(i)->getSlantRange();
             atten_ave += Ambient::calcAttenuation(V,  slant);
@@ -391,10 +391,10 @@ void SolarField::updateAllCalculatedParameters(var_map &V)
     */
 
     //_ambient.updateCalculatedParameters(V);
-    for( int i=0; i<_helio_template_objects.size(); i++)
+    for( int i=0; i<(int)_helio_template_objects.size(); i++)
         _helio_template_objects.at(i).updateCalculatedParameters(V, i);
     _land.updateCalculatedParameters(V);
-    for( int i=0; i<_receivers.size(); i++)
+    for( int i=0; i<(int)_receivers.size(); i++)
         _receivers.at(i)->updateCalculatedParameters(V.recs.at(i), V.sf.tht.val );
     _plant.updateCalculatedParameters(V);
     _fluxsim.updateCalculatedParameters(V);
@@ -463,7 +463,7 @@ double SolarField::calcAverageAttenuation()
     if(_heliostats.size() > 0)
     {
         double att_ave=0;
-        for(int i=0; i<_heliostats.size(); i++)
+        for(int i=0; i<(int)_heliostats.size(); i++)
         {
             att_ave += _heliostats.at(i)->getEfficiencyAtten();
         }

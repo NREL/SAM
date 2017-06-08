@@ -525,7 +525,7 @@ bool ioutil::saveXMLInputFile(const string &fname, var_map &V, parametric &par_d
         quicksort(keys);
 
 
-        for(int i=0; i<keys.size(); i++)
+        for(int i=0; i<(int)keys.size(); i++)
         {
             spbase *v = V._varptrs[keys.at(i)];
 

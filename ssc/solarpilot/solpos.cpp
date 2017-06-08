@@ -97,11 +97,11 @@
 *++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 struct trigdata /* used to pass calculated values locally */
 {
-    float cd;       /* cosine of the declination */
-    float ch;       /* cosine of the hour angle */
-    float cl;       /* cosine of the latitude */
-    float sd;       /* sine of the declination */
-    float sl;       /* sine of the latitude */
+    double cd;       /* cosine of the declination */
+    double ch;       /* cosine of the hour angle */
+    double cl;       /* cosine of the latitude */
+    double sd;       /* sine of the declination */
+    double sl;       /* sine of the latitude */
 };
 
 
@@ -116,8 +116,8 @@ struct trigdata /* used to pass calculated values locally */
                                        182, 213, 244, 274, 305, 335 } };
                    /* cumulative number of days prior to beginning of month */
 
-  static float degrad = 57.295779513; /* converts from radians to degrees */
-  static float raddeg = 0.0174532925; /* converts from degrees to radians */
+  static double degrad = 57.295779513; /* converts from radians to degrees */
+  static double raddeg = 0.0174532925; /* converts from degrees to radians */
 
 /*============================================================================
 *    Local function prototypes
@@ -424,14 +424,14 @@ static void doy2dom(struct posdata *pdat)
 *----------------------------------------------------------------------------*/
 static void geometry ( struct posdata *pdat )
 {
-  float bottom;      /* denominator (bottom) of the fraction */
-  float c2;          /* cosine of d2 */
-  float cd;          /* cosine of the day angle or delination */
-  float d2;          /* pdat->dayang times two */
-  float delta;       /* difference between current year and 1949 */
-  float s2;          /* sine of d2 */
-  float sd;          /* sine of the day angle */
-  float top;         /* numerator (top) of the fraction */
+  double bottom;      /* denominator (bottom) of the fraction */
+  double c2;          /* cosine of d2 */
+  double cd;          /* cosine of the day angle or delination */
+  double d2;          /* pdat->dayang times two */
+  double delta;       /* difference between current year and 1949 */
+  double s2;          /* sine of d2 */
+  double sd;          /* sine of the day angle */
+  double top;         /* numerator (top) of the fraction */
   int   leap;        /* leap year counter */
 
   /* Day angle */
@@ -459,7 +459,7 @@ static void geometry ( struct posdata *pdat )
         pdat->hour * 3600.0 +
         pdat->minute * 60.0 +
         pdat->second -
-        (float)pdat->interval / 2.0;
+        (double)pdat->interval / 2.0;
     pdat->utime = pdat->utime / 3600.0 - pdat->timezone;
 
     /* Julian Day minus 2,400,000 days (to eliminate roundoff errors) */
@@ -589,7 +589,7 @@ static void geometry ( struct posdata *pdat )
 *----------------------------------------------------------------------------*/
 static void zen_no_ref ( struct posdata *pdat, struct trigdata *tdat )
 {
-  float cz;          /* cosine of the solar zenith angle */
+  double cz;          /* cosine of the solar zenith angle */
 
     localtrig( pdat, tdat );
     cz = tdat->sd * tdat->sl + tdat->cd * tdat->cl * tdat->ch;
@@ -621,8 +621,8 @@ static void zen_no_ref ( struct posdata *pdat, struct trigdata *tdat )
 *----------------------------------------------------------------------------*/
 static void ssha( struct posdata *pdat, struct trigdata *tdat )
 {
-  float cssha;       /* cosine of the sunset hour angle */
-  float cdcl;        /* ( cd * cl ) */
+  double cssha;       /* cosine of the sunset hour angle */
+  double cdcl;        /* ( cd * cl ) */
 
     localtrig( pdat, tdat );
     cdcl    = tdat->cd * tdat->cl;
@@ -655,7 +655,7 @@ static void ssha( struct posdata *pdat, struct trigdata *tdat )
 *----------------------------------------------------------------------------*/
 static void sbcf( struct posdata *pdat, struct trigdata *tdat )
 {
-  float p, t1, t2;   /* used to compute sbcf */
+  double p, t1, t2;   /* used to compute sbcf */
 
     localtrig( pdat, tdat );
     p       = 0.6366198 * pdat->sbwid / pdat->sbrad * pow (tdat->cd,3);
@@ -679,10 +679,10 @@ static void tst( struct posdata *pdat )
     pdat->tst    = ( 180.0 + pdat->hrang ) * 4.0;
     pdat->tstfix =
         pdat->tst -
-        (float)pdat->hour * 60.0 -
+        (double)pdat->hour * 60.0 -
         pdat->minute -
-        (float)pdat->second / 60.0 +
-        (float)pdat->interval / 120.0; /* add back half of the interval */
+        (double)pdat->second / 60.0 +
+        (double)pdat->interval / 120.0; /* add back half of the interval */
 
     /* bound tstfix to this day */
     while ( pdat->tstfix >  720.0 )
@@ -727,10 +727,10 @@ static void srss( struct posdata *pdat )
 *----------------------------------------------------------------------------*/
 static void sazm( struct posdata *pdat, struct trigdata *tdat )
 {
-  float ca;          /* cosine of the solar azimuth angle */
-  float ce;          /* cosine of the solar elevation */
-  float cecl;        /* ( ce * cl ) */
-  float se;          /* sine of the solar elevation */
+  double ca;          /* cosine of the solar azimuth angle */
+  double ce;          /* cosine of the solar elevation */
+  double cecl;        /* ( ce * cl ) */
+  double se;          /* sine of the solar elevation */
 
     localtrig( pdat, tdat );
     ce         = cos ( raddeg * pdat->elevetr );
@@ -763,9 +763,9 @@ static void sazm( struct posdata *pdat, struct trigdata *tdat )
 *----------------------------------------------------------------------------*/
 static void refrac( struct posdata *pdat )
 {
-  float prestemp;    /* temporary pressure/temperature correction */
-  float refcor;      /* temporary refraction correction */
-  float tanelev;     /* tangent of the solar elevation angle */
+  double prestemp;    /* temporary pressure/temperature correction */
+  double refcor;      /* temporary refraction correction */
+  double tanelev;     /* tangent of the solar elevation angle */
 
     /* If the sun is near zenith, the algorithm bombs; refraction near 0 */
     if ( pdat->elevetr > 85.0 )
@@ -902,13 +902,13 @@ static void localtrig( struct posdata *pdat, struct trigdata *tdat )
 *----------------------------------------------------------------------------*/
 static void tilt( struct posdata *pdat )
 {
-  float ca;          /* cosine of the solar azimuth angle */
-  float cp;          /* cosine of the panel aspect */
-  float ct;          /* cosine of the panel tilt */
-  float sa;          /* sine of the solar azimuth angle */
-  float sp;          /* sine of the panel aspect */
-  float st;          /* sine of the panel tilt */
-  float sz;          /* sine of the refraction corrected solar zenith angle */
+  double ca;          /* cosine of the solar azimuth angle */
+  double cp;          /* cosine of the panel aspect */
+  double ct;          /* cosine of the panel tilt */
+  double sa;          /* sine of the solar azimuth angle */
+  double sp;          /* sine of the panel aspect */
+  double st;          /* sine of the panel tilt */
+  double sz;          /* sine of the refraction corrected solar zenith angle */
 
 
     /* Cosine of the angle between the sun and a tipped flat surface,
