@@ -45,7 +45,7 @@
 static var_info _cm_vtab_pvsamv1[] = {
 /*   VARTYPE           DATATYPE         NAME                                            LABEL                                                   UNITS      META                             GROUP                  REQUIRED_IF                 CONSTRAINTS                      UI_HINTS*/
 	{ SSC_INPUT,        SSC_STRING,      "solar_resource_file",                         "Weather file in TMY2, TMY3, EPW, or SAM CSV.",         "",         "",                              "pvsamv1",              "?",                        "",                              "" },
-	{ SSC_INPUT,        SSC_TABLE,       "solar_resource_data",                         "Weather data",                                         "",         "lat,lon,tz,elev,year,month,hour,minute,gh,dn,df,tdry,twet,tdew,rhum,pres,snow,alb,aod,wspd,wdir",    "pvsamv1",              "?",                        "",                              "" },
+	{ SSC_INPUT,        SSC_TABLE,       "solar_resource_data",                         "Weather data",                                         "",         "lat,lon,tz,elev,year,month,hour,minute,gh,dn,df,poa,tdry,twet,tdew,rhum,pres,snow,alb,aod,wspd,wdir",    "pvsamv1",              "?",                        "",                              "" },
 	
 	// transformer model percent of rated ac output
 	{ SSC_INPUT, SSC_NUMBER, "transformer_no_load_loss", "Power transformer no load loss", "%", "", "pvsamv1", "?=0", "", "" },
@@ -2471,6 +2471,9 @@ public:
 								shad1xf = shade_fraction_1x(solazi, solzen, sa[nn].tilt, sa[nn].azimuth, sa[nn].gcr, rot);
 
 							//execute self-shading calculations
+							ssc_number_t beam_to_use; //some self-shading calculations require DNI, NOT ibeam (beam in POA). Need to know whether to use DNI from wf or calculated, depending on radmode
+							if (radmode == DN_DF || radmode == DN_GH) beam_to_use = wf.dn; 
+							else beam_to_use = p_irrad_calc[2][idx];
 
 							if (linear && trackbool) //one-axis linear
 							{
@@ -2485,8 +2488,7 @@ public:
 								}
 							}
 
-							//							else if (ss_exec(sa[nn].sscalc, stilt, sazi, solzen, solazi, p_beam[idx], ibeam, (iskydiff + ignddiff), alb, trackbool, linear, shad1xf, sa[nn].ssout)) 
-							else if (ss_exec(sa[nn].sscalc, stilt, sazi, solzen, solazi, wf.dn, ibeam, (iskydiff + ignddiff), alb, trackbool, linear, shad1xf, sa[nn].ssout))
+							else if (ss_exec(sa[nn].sscalc, stilt, sazi, solzen, solazi, beam_to_use, ibeam, (iskydiff + ignddiff), alb, trackbool, linear, shad1xf, sa[nn].ssout))
 							{
 								if (linear) //fixed tilt linear
 								{
