@@ -11,7 +11,10 @@ class C_pc_sco2 : public C_csp_power_cycle
 
 private:
 
-	C_sco2_recomp_csp mc_sco2_recomp;
+	C_sco2_rc_csp_template *mpc_sco2_recomp;
+
+	C_sco2_recomp_csp mc_sco2_recomp_csp_direct;
+	C_sco2_recomp_csp_10MWe_scale mc_sco2_recomp_csp_scale;
 
 	HTFProperties mc_pc_htfProps;
 
