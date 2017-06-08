@@ -127,9 +127,9 @@ enum SP_DATTYPE { SP_INT, SP_DOUBLE, SP_STRING, SP_BOOL, SP_MATRIX_T, SP_DVEC_PO
 class spbase
 {
 
-protected:
+public:
 
-    bool _setv(std::string &SV, void *Vp)
+    static bool _setv(std::string &SV, void *Vp)
     {
         //don't do anything with a void argument
         (void)SV;
@@ -137,17 +137,17 @@ protected:
         return true;
     }
 
-    bool _setv(std::string &SV, int &Vp)
+    static bool _setv(std::string &SV, int &Vp)
     {
         return to_integer(SV, &Vp);
     }; 
 
-    bool _setv(std::string &SV, double &Vp)
+    static bool _setv(std::string &SV, double &Vp)
     {
         return to_double(SV, &Vp);
     }; 
 
-    bool _setv(std::string &SV, std::string &Vp)
+    static bool _setv(std::string &SV, std::string &Vp)
     {
         Vp = SV;
         return true;
@@ -159,12 +159,12 @@ protected:
     //    return true;
     //};
 
-    bool _setv(std::string &SV, bool &Vp)
+    static bool _setv(std::string &SV, bool &Vp)
     {
         return to_bool(SV, Vp);
     };
 
-    bool _setv(std::string &SV, matrix_t<double> &Vp)
+    static bool _setv(std::string &SV, matrix_t<double> &Vp)
     {
         try
         {
@@ -189,7 +189,7 @@ protected:
         return true;
     };
 
-    bool _setv(std::string &SV, std::vector< Point > &Vp)
+    static bool _setv(std::string &SV, std::vector< Point > &Vp)
     {
         //splits a set of 3d points into a vector<Point>
 	    //should be [P]x1,y1,z1[P]x2,y2,z2...
@@ -216,7 +216,7 @@ protected:
         return true;
     };
 
-    bool _setv(std::string &SV, std::vector< double > &Vp )
+    static bool _setv(std::string &SV, std::vector< double > &Vp )
     {
         try{
 
@@ -234,7 +234,7 @@ protected:
         return true;
     };
 
-    bool _setv(std::string &SV, std::vector< int > &Vp)
+    static bool _setv(std::string &SV, std::vector< int > &Vp)
     {
         try
         {
@@ -252,7 +252,7 @@ protected:
         return true;
     };
 
-    bool _setv(std::string &SV, WeatherData &Vp)
+    static bool _setv(std::string &SV, WeatherData &Vp)
     {
         try
         {
@@ -281,7 +281,7 @@ protected:
         return true;
     };
 
-    bool _setv(std::string &SV, std::vector< std::vector< Point > > &Vp )
+    static bool _setv(std::string &SV, std::vector< std::vector< Point > > &Vp )
     {
         
         /* 
@@ -320,6 +320,7 @@ protected:
         return true;
     };
 
+protected:
     //----------------------------------------------------------------------------------------
     void _as_str(std::string &vout, void* v)
     {
@@ -553,7 +554,7 @@ public:
     bool combo_select_by_mapval(int mapval)
     {
         int index = (int)(find(choices._intvals.begin(), choices._intvals.end(), mapval) - choices._intvals.begin());
-        if( index < choices._intvals.size() )
+        if( index < (int)choices._intvals.size() )
             _setv(choices._choices.at(index), val);
         else
             return false;
@@ -564,7 +565,7 @@ public:
     bool combo_select(std::string choice)
     {
         int ind = (int)(find(choices._choices.begin(), choices._choices.end(), choice) - choices._choices.begin());
-        if( ind < choices._choices.size() )
+        if( ind < (int)choices._choices.size() )
             _setv(choice, val);
         else
             throw spexception("Invalid combo value specified: " + choice);
@@ -658,7 +659,7 @@ public:
         if( ctype == "combo" )
         {
             std::vector<std::string> ckeys = split(Special, ";");
-            for(int i=0; i<ckeys.size(); i++)
+            for(int i=0; i<(int)ckeys.size(); i++)
             {
                 std::vector<std::string> pair = split(ckeys.at(i), "=");
 

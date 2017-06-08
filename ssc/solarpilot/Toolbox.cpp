@@ -1482,7 +1482,7 @@ string Toolbox::getDelimiter(std::string &text){
 	int ns=0;
 	for(int i=0; i<4; i++){
 		vector<string> data = Toolbox::split(text, delims[i]);
-		if(data.size()>ns){ delim = delims[i]; ns = (int)data.size(); }	//pick the delimiter that returns the most entries
+		if((int)data.size()>ns){ delim = delims[i]; ns = (int)data.size(); }	//pick the delimiter that returns the most entries
 	}
 	return delim;
 }
