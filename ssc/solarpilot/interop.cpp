@@ -1310,7 +1310,7 @@ void multivar::addVar(spbase *var)
 		vback->data_type = "combo";
 		vback->choices.clear();
         vector<string> vchoices = var->combo_get_choices();
-        for(int i=0; i<vchoices.size(); i++)
+        for(int i=0; i<(int)vchoices.size(); i++)
             vback->choices.Add(vchoices.at(i));
 
 	}
