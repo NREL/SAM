@@ -12,9 +12,8 @@
 #include <iostream>
 #include <fstream>
 
-class C_sco2_recomp_csp
+class C_sco2_rc_csp_template
 {
-
 public:
 
 	struct S_des_par
@@ -53,7 +52,7 @@ public:
 		bool m_fixed_PR_mc;					//[-] if true, ratio of P_mc_out to P_mc_in is fixed at PR_mc_guess
 
 		// PHX design parameters
-			// This is a PHX rather than system parameter because we don't know T_CO2_in until cycle model is solved
+		// This is a PHX rather than system parameter because we don't know T_CO2_in until cycle model is solved
 		double m_phx_dt_cold_approach;	//[K/C] Temperature difference between cold HTF and PHX CO2 inlet
 
 		// Air cooler parameters
@@ -74,7 +73,7 @@ public:
 
 				m_PR_mc_guess =
 
-				m_phx_dt_cold_approach = m_frac_fan_power = m_deltaP_cooler_frac = 
+				m_phx_dt_cold_approach = m_frac_fan_power = m_deltaP_cooler_frac =
 				std::numeric_limits<double>::quiet_NaN();
 
 			m_fixed_PR_mc = false;		//[-] If false, then should default to optimizing this parameter
@@ -121,7 +120,7 @@ public:
 		S_od_operation_inputs ms_od_op_in_max;
 		double m_over_T_t_in_at_eta_max;
 		double m_over_P_high_at_eta_max;
-	
+
 		S_od_opt_eta_tracking()
 		{
 			m_is_opt_found = false;
@@ -135,20 +134,78 @@ public:
 		C_RecompCycle::S_od_solved ms_rc_cycle_od_solved;
 		C_HX_counterflow::S_od_solved ms_phx_od_solved;
 		int m_od_error_code;
-		
+
 		S_od_solved()
 		{
-			m_od_error_code = 0;	
+			m_od_error_code = 0;
 		}
 	};
+
+	enum E_off_design_strategies
+	{
+		E_MAX_ETA = 1,
+		E_MAX_ETA_FIX_PHI,
+		E_MAX_POWER,
+		E_MAX_POWER_FIX_PHI,
+		E_MOO_ETA_0p1Wnd,
+		E_MOO_ETA_0p1Wnd_FIX_PHI,
+		E_MOO_ETA_T_T_IN,
+		E_MOO_ETA_T_T_IN_FIX_PHI,
+		E_MAX_POWER_IN_ETA_MAX_BAND,
+		E_TARGET_POWER_ETA_MAX
+	};
+
+	enum E_system_op_constraints
+	{
+		E_TURBINE_INLET_OVER_TEMP = -15,
+		E_OVER_PRESSURE,
+		E_TIP_RATIO,
+		E_MC_SURGE,
+		E_RC_SURGE
+	};
+
+	enum E_off_design_turbo_operation
+	{
+		E_VFD_MC_VFD_RC_FIXED_T,
+		E_FIXED_MC_FIXED_RC_FIXED_T
+	};
+
+	C_csp_messages mc_messages;
 
 	// Callback function with progress bar
 	bool(*mf_callback_update)(std::string &log_msg, std::string &progress_msg, void *data, double progress);
 	void *mp_mf_update;
+	
+	C_sco2_rc_csp_template()
+	{
+		mf_callback_update = 0;
+		mp_mf_update = 0;
+	};
 
-	// Callback function only log
-	//bool(*mf_callback_log)(std::string &log_msg, std::string &progress_msg, void *data);
-	//void *mp_mf_active;
+	~C_sco2_rc_csp_template(){};
+
+	virtual void design(C_sco2_rc_csp_template::S_des_par des_par) = 0;	
+
+	virtual const C_HX_counterflow::S_des_calc_UA_par * get_phx_des_par() = 0;
+
+	virtual const S_des_par * get_design_par() = 0;
+
+	virtual const S_des_solved * get_design_solved() = 0;
+
+	virtual const S_od_solved * get_od_solved() = 0;
+
+	virtual int off_design_nested_opt(C_sco2_rc_csp_template::S_od_par od_par, int off_design_strategy, double od_opt_tol = 1.E-4) = 0;
+
+	virtual int generate_ud_pc_tables(double T_htf_low /*C*/, double T_htf_high /*C*/, int n_T_htf /*-*/,
+		double T_amb_low /*C*/, double T_amb_high /*C*/, int n_T_amb /*-*/,
+		double m_dot_htf_ND_low /*-*/, double m_dot_htf_ND_high /*-*/, int n_m_dot_htf_ND,
+		util::matrix_t<double> & T_htf_ind, util::matrix_t<double> & T_amb_ind, util::matrix_t<double> & m_dot_htf_ND_ind) = 0;
+
+
+};
+
+class C_sco2_recomp_csp : public C_sco2_rc_csp_template
+{
 
 private:
 	C_RecompCycle mc_rc_cycle;
@@ -193,38 +250,7 @@ private:
 
 	int od_fix_T_mc__nl_opt_shell__opt_eta();
 
-public:
-
-	C_csp_messages mc_messages;
-
-	enum E_off_design_strategies
-	{
-		E_MAX_ETA = 1,
-		E_MAX_ETA_FIX_PHI,
-		E_MAX_POWER,
-		E_MAX_POWER_FIX_PHI,
-		E_MOO_ETA_0p1Wnd,
-		E_MOO_ETA_0p1Wnd_FIX_PHI,
-		E_MOO_ETA_T_T_IN,
-		E_MOO_ETA_T_T_IN_FIX_PHI,
-		E_MAX_POWER_IN_ETA_MAX_BAND,
-		E_TARGET_POWER_ETA_MAX
-	};
-
-	enum E_system_op_constraints
-	{
-		E_TURBINE_INLET_OVER_TEMP = -15,
-		E_OVER_PRESSURE,
-		E_TIP_RATIO,
-		E_MC_SURGE,
-		E_RC_SURGE
-	};
-	
-	enum E_off_design_turbo_operation
-	{
-		E_VFD_MC_VFD_RC_FIXED_T,
-		E_FIXED_MC_FIXED_RC_FIXED_T
-	};
+public:	
 
 	C_sco2_recomp_csp();
 
@@ -258,18 +284,18 @@ public:
 		virtual int operator()(S_f_inputs inputs, S_f_outputs & outputs);
 	};
 
-	int generate_ud_pc_tables(double T_htf_low /*C*/, double T_htf_high /*C*/, int n_T_htf /*-*/,
+	virtual int generate_ud_pc_tables(double T_htf_low /*C*/, double T_htf_high /*C*/, int n_T_htf /*-*/,
 		double T_amb_low /*C*/, double T_amb_high /*C*/, int n_T_amb /*-*/,
 		double m_dot_htf_ND_low /*-*/, double m_dot_htf_ND_high /*-*/, int n_m_dot_htf_ND,
 		util::matrix_t<double> & T_htf_ind, util::matrix_t<double> & T_amb_ind, util::matrix_t<double> & m_dot_htf_ND_ind);
 
-	void design(C_sco2_recomp_csp::S_des_par des_par);
+	virtual void design(C_sco2_rc_csp_template::S_des_par des_par);
 
 	void off_design_P_mc_in_parameteric(double P_mc_in_min /*kPa*/, double P_mc_in_max /*kPa*/, double P_mc_in_inc /*kPa*/);
 
 	void off_design_fix_P_mc_in_parametric_f_recomp(double P_mc_in /*kPa*/, double f_recomp_min /*-*/, double f_recomp_max /*-*/, double f_recomp_inc /*-*/);
 
-	int off_design_nested_opt(C_sco2_recomp_csp::S_od_par od_par, int off_design_strategy, double od_opt_tol = 1.E-4);
+	virtual int off_design_nested_opt(C_sco2_recomp_csp::S_od_par od_par, int off_design_strategy, double od_opt_tol = 1.E-4);
 
 	bool opt_f_recomp_fix_P_mc_in_max_eta_core();
 
@@ -295,25 +321,13 @@ public:
 	}
 
 	// Methods to private access member data
-	const S_des_par * get_design_par()
-	{
-		return &ms_des_par;
-	}
+	virtual const S_des_par * get_design_par();
 
-	const S_des_solved * get_design_solved()
-	{
-		return &ms_des_solved;
-	}
+	virtual const S_des_solved * get_design_solved();
 
-	const C_HX_counterflow::S_des_calc_UA_par * get_phx_des_par()
-	{
-		return &ms_phx_des_par;
-	}
+	virtual const C_HX_counterflow::S_des_calc_UA_par * get_phx_des_par();
 
-	const S_od_solved * get_od_solved()
-	{
-		return &ms_od_solved;
-	}
+	virtual const S_od_solved * get_od_solved();
 
 	void sweep_turbomachinery_deltaP(double T_mc_in /*K*/, double P_mc_in /*kPa*/,
 							double T_t_in /*K*/, double phi_mc /*-*/);
@@ -340,6 +354,48 @@ double fmin_opt_P_mc_in_nest_f_recomp_max_eta(double x, void *data);
 
 // Optimization method callbacks
 double nlopt_cb_opt_od_eta__float_phx_dt(const std::vector<double> &x, std::vector<double> &grad, void *data);
+
+
+class C_sco2_recomp_csp_10MWe_scale : public C_sco2_rc_csp_template
+{
+
+private:
+
+	C_sco2_recomp_csp mc_rc_csp_10MWe;
+
+	double m_r_W_scale;
+
+	S_des_par ms_des_par;
+	C_HX_counterflow::S_des_calc_UA_par ms_phx_des_par;
+
+	S_des_solved ms_des_solved;
+	S_od_solved ms_od_solved;
+
+public:
+
+	C_sco2_recomp_csp_10MWe_scale();
+
+	~C_sco2_recomp_csp_10MWe_scale(){};
+
+	virtual void design(C_sco2_rc_csp_template::S_des_par des_par);
+
+	virtual int off_design_nested_opt(C_sco2_rc_csp_template::S_od_par od_par, int off_design_strategy, double od_opt_tol = 1.E-4);
+	
+	virtual int generate_ud_pc_tables(double T_htf_low /*C*/, double T_htf_high /*C*/, int n_T_htf /*-*/,
+		double T_amb_low /*C*/, double T_amb_high /*C*/, int n_T_amb /*-*/,
+		double m_dot_htf_ND_low /*-*/, double m_dot_htf_ND_high /*-*/, int n_m_dot_htf_ND,
+		util::matrix_t<double> & T_htf_ind, util::matrix_t<double> & T_amb_ind, util::matrix_t<double> & m_dot_htf_ND_ind);
+
+	// Methods to private access member data
+	virtual const S_des_par * get_design_par();
+
+	virtual const S_des_solved * get_design_solved();
+
+	virtual const C_HX_counterflow::S_des_calc_UA_par * get_phx_des_par();
+
+	virtual const S_od_solved * get_od_solved();
+
+};
 
 
 #endif
