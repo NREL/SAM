@@ -1626,6 +1626,9 @@ public:
 	std::vector<wxString> MakeOpticalEfficiency();
 	std::vector<wxString> MakeFluxMaps(size_t n_cols);
 	std::vector<wxString> MakeNoRowLabels(size_t n_rows);
+	std::vector<wxString> MakeTHTFHOTlabels();
+	std::vector<wxString> MakeTAMBlabels();
+	std::vector<wxString> MakeMDOTHTFlabels();
 
 	void RemoveTopRow();
 	void RemoveLeftCol();
@@ -1929,6 +1932,21 @@ public:
 							write_label = false;
 							MatrixColLabels = MakeFluxMaps(nc);
 						}
+						else if (!value.Cmp("UDPC_T_HTF_HOT"))
+						{
+							write_label = false;
+							MatrixColLabels = MakeTHTFHOTlabels();
+						}
+						else if (!value.Cmp("UDPC_T_AMB"))
+						{
+							write_label = false;
+							MatrixColLabels = MakeTAMBlabels();
+						}
+						else if (!value.Cmp("UDPC_M_DOT_HTF"))
+						{
+							write_label = false;
+							MatrixColLabels = MakeMDOTHTFlabels();
+						}
 					}
 
 					if (ui_hint.find("ROW_LABEL") != ui_hint.end())
@@ -2144,6 +2162,66 @@ std::vector<wxString> TabularBrowser::ResultsTable::MakeOpticalEfficiency()
 	v.push_back("Azimuth Angle (deg)");
 	v.push_back("Zenith Angle (deg)");
 	v.push_back("Optical Efficiency (-)");
+
+	return v;
+}
+std::vector<wxString> TabularBrowser::ResultsTable::MakeTHTFHOTlabels()
+{
+	std::vector<wxString> v;
+
+	v.push_back("HTF temperature (C)");
+	v.push_back("Cycle Power (m_dot low)");
+	v.push_back("Cycle Power (m_dot design)");
+	v.push_back("Cycle Power (m_dot high)");
+	v.push_back("Cycle Heat (m_dot low)");
+	v.push_back("Cycle Heat (m_dot design)");
+	v.push_back("Cycle Heat (m_dot high)");
+	v.push_back("Cooling Power (m_dot low)");
+	v.push_back("Cooling Power (m_dot design)");
+	v.push_back("Cooling Power (m_dot high)");
+	v.push_back("Cooling Water (m_dot low)");
+	v.push_back("Cooling Water (m_dot design)");
+	v.push_back("Cooling Water (m_dot high)");
+
+	return v;
+}	
+std::vector<wxString> TabularBrowser::ResultsTable::MakeTAMBlabels()
+{
+	std::vector<wxString> v;
+
+	v.push_back("Ambient temperature (C)");
+	v.push_back("Cycle Power (T_htf low)");
+	v.push_back("Cycle Power (T_htf design)");
+	v.push_back("Cycle Power (T_htf high)");
+	v.push_back("Cycle Heat (T_htf low)");
+	v.push_back("Cycle Heat (T_htf design)");
+	v.push_back("Cycle Heat (T_htf high)");
+	v.push_back("Cooling Power (T_htf low)");
+	v.push_back("Cooling Power (T_htf design)");
+	v.push_back("Cooling Power (T_htf high)");
+	v.push_back("Cooling Water (T_htf low)");
+	v.push_back("Cooling Water (T_htf design)");
+	v.push_back("Cooling Water (T_htf high)");
+
+	return v;
+}
+std::vector<wxString> TabularBrowser::ResultsTable::MakeMDOTHTFlabels()
+{
+	std::vector<wxString> v;
+
+	v.push_back("HTF Mass Flow Rate (-)");
+	v.push_back("Cycle Power (T_amb low)");
+	v.push_back("Cycle Power (T_amb design)");
+	v.push_back("Cycle Power (T_amb high)");
+	v.push_back("Cycle Heat (T_amb low)");
+	v.push_back("Cycle Heat (T_amb design)");
+	v.push_back("Cycle Heat (T_amb high)");
+	v.push_back("Cooling Power (T_amb low)");
+	v.push_back("Cooling Power (T_amb design)");
+	v.push_back("Cooling Power (T_amb high)");
+	v.push_back("Cooling Water (T_amb low)");
+	v.push_back("Cooling Water (T_amb design)");
+	v.push_back("Cooling Water (T_amb high)");
 
 	return v;
 }
