@@ -588,14 +588,36 @@ double voltage_vanadium_redox_t::voltage_model(double qmax, double q0, double T)
 
 	return V_stack_cell;
 }
-/*
-// The I*R term makes the voltage increase when battery is discharging?
-double voltage_vanadium_redox_t::battery_voltage()
+
+// Iron flow battery model
+voltage_iron_flow_t::voltage_iron_flow_t(int num_cells_series, int num_strings, double V_nom) :
+voltage_t(num_cells_series, num_strings, V_nom)
 {
-	double V_batt = (_num_cells_series * _cell_voltage) + (_I * _R);
-	return V_batt;
+	_A = 0.50083701331426;
+	_B = 0.624963304223525;
+	_G = 4.354856902277506;
+	_D = 0.0264861916286729;
+	_E_negative = -0.44;
+	_I = 0;
 }
-*/
+voltage_iron_flow_t * voltage_iron_flow_t::clone(){ return new voltage_iron_flow_t(*this); }
+void voltage_iron_flow_t::copy(voltage_t *& voltage){voltage_t::copy(voltage);}
+void voltage_iron_flow_t::updateVoltage(capacity_t * capacity, thermal_t * thermal, double dt)
+{
+
+	// is on a per-cell basis.
+	// I, Q, q0 are on a per-string basis since adding cells in series does not change current or charge
+	double cell_voltage = voltage_model(capacity->SOC() * 0.01);
+
+	// the cell voltage should not increase when the battery is discharging
+	if (_I <= 0 || (_I > 0 && cell_voltage <= _cell_voltage))
+		_cell_voltage = cell_voltage;
+}
+double voltage_iron_flow_t::voltage_model(double SOC)
+{
+	double E_positive = (_D * (exp((SOC - _A) * _G) - (exp(-(SOC - _A) * _G))) / 2) + _B;
+	return E_positive - _E_negative;
+}
 
 /*
 Define Lifetime Model

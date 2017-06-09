@@ -230,7 +230,6 @@ public:
 	void copy(voltage_t *&);
 
 	void updateVoltage(capacity_t * capacity, thermal_t * thermal, double dt);
-	//double battery_voltage();
 
 protected:
 	double voltage_model(double q0, double qmax, double T);
@@ -243,6 +242,31 @@ private:
 	double _F;
 	double _C0;
 };
+
+// All Iron Flow Battery Model
+class voltage_iron_flow_t : public voltage_t
+{
+public:
+	voltage_iron_flow_t(int num_cells_series, int num_strings, double V_nom);
+	voltage_iron_flow_t * clone();
+	void copy(voltage_t *&);
+
+	void updateVoltage(capacity_t * capacity, thermal_t * thermal, double dt);
+
+protected:
+	double voltage_model(double SOC);
+
+private:
+
+	double _A;
+	double _B;
+	double _G;
+	double _D; 
+	double _E_negative;
+	double _I;
+
+}; 
+
 
 /*
 Lifetime class.  Currently only one lifetime model anticipated
@@ -427,7 +451,7 @@ public:
 
 	double timestep_hour();
 
-	enum CHEMS{ LEAD_ACID, LITHIUM_ION, VANADIUM_REDOX };
+	enum CHEMS{ LEAD_ACID, LITHIUM_ION, VANADIUM_REDOX, IRON_FLOW};
 
 
 private:
