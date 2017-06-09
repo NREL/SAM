@@ -7,7 +7,7 @@
 
 
 
-
+ 
 var_info vtab_battery_inputs[] = {
 	/*   VARTYPE           DATATYPE         NAME                                            LABEL                                                   UNITS      META                   GROUP           REQUIRED_IF                 CONSTRAINTS                      UI_HINTS*/
 
@@ -503,6 +503,8 @@ battstor::battstor(compute_module &cm, bool setup_model, int replacement_option,
 		batt_vars->batt_Vnom, batt_vars->batt_Qfull, batt_vars->batt_Qexp, batt_vars->batt_Qnom, batt_vars->batt_C_rate, batt_vars->batt_resistance);
 	else if (chem == battery_t::VANADIUM_REDOX)
 		voltage_model = new voltage_vanadium_redox_t(batt_vars->batt_computed_series, batt_vars->batt_computed_strings, batt_vars->batt_Vnom_default, batt_vars->batt_resistance);
+	else if (chem == battery_t::IRON_FLOW)
+		voltage_model = new voltage_iron_flow_t(batt_vars->batt_ac_dc_efficiency, batt_vars->batt_computed_strings, batt_vars->batt_Vnom_default);
 
 	lifetime_model = new  lifetime_t(batt_lifetime_matrix, replacement_option, batt_vars->batt_replacement_capacity);
 	util::matrix_t<double> cap_vs_temp = batt_vars->cap_vs_temp;
@@ -535,7 +537,7 @@ battstor::battstor(compute_module &cm, bool setup_model, int replacement_option,
 			batt_vars->batt_maximum_SOC);
 	}
 	// for now assume Vanadium Redox responds quickly, like Lithium-ion
-	else if (chem == battery_t::LITHIUM_ION || chem == battery_t::VANADIUM_REDOX)
+	else if (chem == battery_t::LITHIUM_ION || chem == battery_t::VANADIUM_REDOX || chem == battery_t::IRON_FLOW)
 	{
 		capacity_model = new capacity_lithium_ion_t(
 			batt_vars->batt_Qfull*batt_vars->batt_computed_strings, batt_vars->batt_maximum_SOC);
@@ -545,16 +547,20 @@ battstor::battstor(compute_module &cm, bool setup_model, int replacement_option,
 	double_vec batt_system_losses;
 	if (batt_vars->batt_loss_choice == losses_t::MONTHLY)
 	{
+		double_vec monthly_loss = batt_vars->batt_losses_monthly;
+		double loss = monthly_loss[0];
 		for (size_t m = 0; m != 12; m++)
 		{
-			double_vec monthly_loss = batt_vars->batt_losses_monthly;
+
+			if (monthly_loss.size() > 1)
+				loss = monthly_loss[m];
 
 			for (size_t d = 0; d != util::days_in_month(m); d++)
 			{
 				for (size_t h = 0; h != 24; h++)
 				{
 					for (size_t s = 0; s != step_per_hour; s++)
-						batt_system_losses.push_back(monthly_loss[m]);
+						batt_system_losses.push_back(loss);
 				}
 			}
 		}
