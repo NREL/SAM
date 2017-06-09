@@ -136,7 +136,8 @@ public:
 	double power_grid_to_batt(){ return _P_grid_to_batt; }
 	double power_pv_to_grid(){ return _P_pv_to_grid; }
 	double power_battery_to_grid(){ return _P_battery_to_grid; }
-	double power_loss(){ return _P_loss; }
+	double power_conversion_loss(){ return _P_loss; }
+	double power_system_loss(){ return _P_system_loss; }
 
 	enum {DC_CONNECTED, AC_CONNECTED};
 

@@ -196,6 +196,7 @@ struct battstor
 		*outPVToGrid,
 		*outBatteryToGrid,
 		*outBatteryConversionPowerLoss,
+		*outBatterySystemLoss,
 		*outAnnualPVChargeEnergy,
 		*outAnnualGridChargeEnergy,
 		*outAnnualChargeEnergy,
