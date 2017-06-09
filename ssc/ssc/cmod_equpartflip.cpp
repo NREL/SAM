@@ -816,7 +816,8 @@ extern var_info
 	vtab_standard_financial[],
 	vtab_oandm[],
 	vtab_tax_credits[],
-	vtab_payment_incentives[];
+	vtab_payment_incentives[],
+	vtab_battery_replacement_cost[];
 
 enum {
 	CF_energy_net,
@@ -996,6 +997,9 @@ enum {
 
 	CF_Annual_Costs,
 
+	CF_battery_replacement_cost_schedule,
+	CF_battery_replacement_cost,
+
 	CF_max };
 
 
@@ -1016,6 +1020,7 @@ public:
 		add_var_info( vtab_payment_incentives );
 //		add_var_info(vtab_advanced_financing_cost);
 		add_var_info( _cm_vtab_equpartflip );
+		add_var_info(vtab_battery_replacement_cost);
 	}
 
 	void exec( ) throw( general_error )
@@ -1106,7 +1111,30 @@ public:
 
 		double om_opt_fuel_1_usage = as_double("om_opt_fuel_1_usage");
 		double om_opt_fuel_2_usage = as_double("om_opt_fuel_2_usage");
+
+		// battery cost - replacement from lifetime analysis
+		if ((as_integer("en_batt") == 1) && (as_integer("batt_replacement_option") > 0))
+		{
+			ssc_number_t *batt_rep = 0;
+			if (as_integer("batt_replacement_option")==1)
+				batt_rep = as_array("batt_bank_replacement", &count); // replacements per year calculated
+			else // user specified
+				batt_rep = as_array("batt_replacement_schedule", &count); // replacements per year user-defined
+			double batt_cap = as_double("batt_computed_bank_capacity");
+			// updated 10/17/15 per 10/14/15 meeting
+//			escal_or_annual(CF_battery_replacement_cost_schedule, nyears, "batt_replacement_cost", inflation_rate, batt_cap, false, as_double("batt_replacement_cost_escal")*0.01);
+			double batt_repl_cost = as_double("batt_replacement_cost");
+			double batt_repl_cost_escal = as_double("batt_replacement_cost_escal")*0.01;
+
+			for (int i = 0; i<nyears; i++)
+				cf.at(CF_battery_replacement_cost_schedule, i + 1) = batt_repl_cost * batt_cap * pow(1 + batt_repl_cost_escal + inflation_rate, i);
+
+			for (int i = 0; i < nyears && i<count; i++)
+				cf.at(CF_battery_replacement_cost, i + 1) = batt_rep[i] * 
+					cf.at(CF_battery_replacement_cost_schedule, i + 1);
+		}
 		
+
 
 		// initialize energy and revenue
 		// initialize energy
@@ -1320,6 +1348,7 @@ public:
 				+ cf.at(CF_om_fuel_expense,i)
 				+ cf.at(CF_om_opt_fuel_1_expense,i)
 				+ cf.at(CF_om_opt_fuel_2_expense,i)
+				+ cf.at(CF_battery_replacement_cost,i)
 				+ cf.at(CF_property_tax_expense,i)
 				+ cf.at(CF_insurance_expense,i)
 				+ cf.at(CF_Recapitalization,i);
@@ -2801,6 +2830,8 @@ public:
 		save_cf( CF_om_fuel_expense, nyears, "cf_om_fuel_expense" );
 		save_cf( CF_om_opt_fuel_1_expense, nyears, "cf_om_opt_fuel_1_expense" );
 		save_cf( CF_om_opt_fuel_2_expense, nyears, "cf_om_opt_fuel_2_expense" );
+		save_cf(CF_battery_replacement_cost, nyears, "cf_battery_replacement_cost");
+		save_cf(CF_battery_replacement_cost_schedule, nyears, "cf_battery_replacement_cost_schedule");
 		save_cf( CF_property_tax_assessed_value, nyears, "cf_property_tax_assessed_value" );
 		save_cf( CF_property_tax_expense, nyears, "cf_property_tax_expense" );
 		save_cf( CF_insurance_expense, nyears, "cf_insurance_expense" );
