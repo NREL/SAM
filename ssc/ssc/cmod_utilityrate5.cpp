@@ -1645,14 +1645,14 @@ public:
 					}
 					period = (*per_num);
 					int ndx = (int)(per_num - m_dc_tou_periods.begin());
+						// redimension dc_ field of ur_month class
 					if ((int)m_dc_tou_periods_tiers[ndx].size() > num_tiers)
 						num_tiers = (int)m_dc_tou_periods_tiers[ndx].size();
 				}
-				m_month[m].dc_tou_ub.resize_fill(num_periods, num_tiers, (ssc_number_t)1e38);
-				m_month[m].dc_tou_ch.resize_fill(num_periods, num_tiers, 0); // kWh
+						m_month[m].dc_tou_ub.resize_fill(num_periods, num_tiers, (ssc_number_t)1e38);
+						m_month[m].dc_tou_ch.resize_fill(num_periods, num_tiers, 0); // kWh
 				for (i = 0; i < m_month[m].dc_periods.size(); i++)
-				{
-					// find all periods and check that number of tiers the same for all for the month, if not through error
+					{
 					std::vector<int>::iterator per_num = std::find(m_dc_tou_periods.begin(), m_dc_tou_periods.end(), m_month[m].dc_periods[i]);
 					period = (*per_num);
 					int ndx = (int)(per_num - m_dc_tou_periods.begin());
@@ -1671,70 +1671,71 @@ public:
 								found = true;
 							}
 						}
+
 					}
 				}
 			}
-			// flat demand charge
-			// 4 columns month, tier, max usage, charge
-			ssc_number_t *dc_flat_in = as_matrix("ur_dc_flat_mat", &nrows, &ncols);
-			if (ncols != 4)
-			{
-				std::ostringstream ss;
-				ss << "The demand rate table by month must have 4 columns. Instead it has " << ncols << " columns";
-				throw exec_error("utilityrate5", ss.str());
-			}
-			util::matrix_t<float> dc_flat_mat(nrows, ncols);
-			dc_flat_mat.assign(dc_flat_in, nrows, ncols);
-
-			for (r = 0; r < m_month.size(); r++)
-			{
-				m_dc_flat_tiers.push_back(std::vector<int>());
-			}
-
-			for (r = 0; r < nrows; r++)
-			{
-				month = (int)dc_flat_mat.at(r, 0);
-				tier = (int)dc_flat_mat.at(r, 1);
-				if ((month < 0) || (month >= (int)m_month.size()))
+				// flat demand charge
+				// 4 columns month, tier, max usage, charge
+				ssc_number_t *dc_flat_in = as_matrix("ur_dc_flat_mat", &nrows, &ncols);
+				if (ncols != 4)
 				{
 					std::ostringstream ss;
-					ss << "Demand for Month " << month << " not found.";
+					ss << "The demand rate table by month must have 4 columns. Instead it has " << ncols << " columns";
 					throw exec_error("utilityrate5", ss.str());
 				}
-				m_dc_flat_tiers[month].push_back(tier);
-			}
-			// sort tier values for each period
-			for (r = 0; r < m_dc_flat_tiers.size(); r++)
-				std::sort(m_dc_flat_tiers[r].begin(), m_dc_flat_tiers[r].end());
+				util::matrix_t<float> dc_flat_mat(nrows, ncols);
+				dc_flat_mat.assign(dc_flat_in, nrows, ncols);
 
-
-			// months are rows and tiers are columns - note that columns can change based on rows
-			// Initialize each month variables that are constant over the simulation
-
-
-
-			for (m = 0; m < m_month.size(); m++)
-			{
-				m_month[m].dc_flat_ub.clear();
-				m_month[m].dc_flat_ch.clear();
-				for (j = 0; j < m_dc_flat_tiers[m].size(); j++)
+				for (r = 0; r < m_month.size(); r++)
 				{
-					tier = m_dc_flat_tiers[m][j];
-					// initialize for each period and tier
-					bool found = false;
-					for (r = 0; (r < nrows) && !found; r++)
-					{
-						if ((m == dc_flat_mat.at(r, 0))
-							&& (tier == (int)dc_flat_mat.at(r, 1)))
-						{
-							m_month[m].dc_flat_ub.push_back(dc_flat_mat.at(r, 2));
-							m_month[m].dc_flat_ch.push_back(dc_flat_mat.at(r, 3));//rate_esc;
-							found = true;
-						}
-					}
-
+					m_dc_flat_tiers.push_back(std::vector<int>());
 				}
-			}
+
+				for (r = 0; r < nrows; r++)
+				{
+					month = (int)dc_flat_mat.at(r, 0);
+					tier = (int)dc_flat_mat.at(r, 1);
+					if ((month < 0) || (month >= (int)m_month.size()))
+					{
+						std::ostringstream ss;
+						ss << "Demand for Month " << month << " not found.";
+						throw exec_error("utilityrate5", ss.str());
+					}
+					m_dc_flat_tiers[month].push_back(tier);
+				}
+				// sort tier values for each period
+				for (r = 0; r < m_dc_flat_tiers.size(); r++)
+					std::sort(m_dc_flat_tiers[r].begin(), m_dc_flat_tiers[r].end());
+
+
+				// months are rows and tiers are columns - note that columns can change based on rows
+				// Initialize each month variables that are constant over the simulation
+
+
+
+				for (m = 0; m < m_month.size(); m++)
+				{
+					m_month[m].dc_flat_ub.clear();
+					m_month[m].dc_flat_ch.clear();
+					for (j = 0; j < m_dc_flat_tiers[m].size(); j++)
+					{
+						tier = m_dc_flat_tiers[m][j];
+						// initialize for each period and tier
+						bool found = false;
+						for (r = 0; (r < nrows) && !found; r++)
+						{
+							if ((m == dc_flat_mat.at(r, 0))
+								&& (tier == (int)dc_flat_mat.at(r, 1)))
+							{
+								m_month[m].dc_flat_ub.push_back(dc_flat_mat.at(r, 2));
+								m_month[m].dc_flat_ch.push_back(dc_flat_mat.at(r, 3));//rate_esc;
+								found = true;
+							}
+						}
+
+					}
+				}
 
 		}
 
@@ -2384,7 +2385,6 @@ public:
 					{
 						monthly_cumulative_excess_dollars[m] -= monthly_ec_charges[m];
 						//						monthly_cumulative_excess_dollars[m] -= monthly_bill[m];
-						dollars_applied -= monthly_ec_charges[m];
 					}
 					//					monthly_bill[m] = 0;
 					payment[c - 1] = 0; // fixed charges applied below
@@ -2394,7 +2394,6 @@ public:
 				{
 //					monthly_bill[m] -= monthly_cumulative_excess_dollars[m];
 					monthly_ec_charges[m] -= monthly_cumulative_excess_dollars[m];
-					dollars_applied += monthly_cumulative_excess_dollars[m];
 					//					if (monthly_bill[m] < 0)
 					if (monthly_ec_charges[m] < 0)
 					{
@@ -2402,7 +2401,6 @@ public:
 						{
 //							monthly_cumulative_excess_dollars[m] = -monthly_bill[m];
 							monthly_cumulative_excess_dollars[m] = -monthly_ec_charges[m];
-							dollars_applied -= monthly_ec_charges[m];
 						}
 //						monthly_bill[m] = 0;
 						monthly_ec_charges[m] = 0;
@@ -2415,6 +2413,7 @@ public:
 					}
 				}
 			}
+			if (monthly_ec_charges_gross[m] < dollars_applied) dollars_applied = monthly_ec_charges_gross[m];
 			excess_dollars_applied[m] = dollars_applied;
 			monthly_bill[m] = monthly_ec_charges[m] + monthly_dc_fixed[m] + monthly_dc_tou[m];
 
@@ -2964,7 +2963,6 @@ public:
 				
 				if (monthly_ec_charges[m] < 0)
 				{
-					dollars_applied += monthly_ec_charges[m];
 					monthly_cumulative_excess_dollars[m] -= monthly_ec_charges[m];
 					monthly_ec_charges[m] = 0;
 					payment[c - 1] = 0; // fixed charges applied below
@@ -2987,6 +2985,7 @@ public:
 				}
 				*/
 			}
+			if (monthly_ec_charges_gross[m] < dollars_applied) dollars_applied = monthly_ec_charges_gross[m];
 			excess_dollars_applied[m] = dollars_applied;
 			monthly_bill[m] = monthly_ec_charges[m] + monthly_dc_fixed[m] + monthly_dc_tou[m];
 		} // end of month m (m loop)
