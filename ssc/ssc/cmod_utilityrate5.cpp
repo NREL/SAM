@@ -157,8 +157,8 @@ static var_info vtab_utility_rate5[] = {
 	//	{ SSC_OUTPUT,       SSC_ARRAY,      "year1_monthly_system_generation",    "monthly system generation",           "kWh", "", "",          "*",                         "LENGTH=12",                     "" },
 	{ SSC_OUTPUT,       SSC_ARRAY,      "year1_monthly_electricity_to_grid",    "Electricity to/from grid",           "kWh/mo", "", "Monthly",          "*",                         "LENGTH=12",                     "" },
 //	{ SSC_OUTPUT,       SSC_ARRAY,      "year1_monthly_electricity_needed_from_grid",    "Electricity needed from grid",           "kWh", "", "",          "*",                         "LENGTH=12",                     "" },
-	{ SSC_OUTPUT, SSC_ARRAY, "year1_monthly_cumulative_excess_generation", "Excess generation kWh credit earned", "kWh/mo", "", "Monthly", "*", "LENGTH=12", "" },
-	{ SSC_OUTPUT, SSC_ARRAY, "year1_monthly_cumulative_excess_dollars", "Excess generation $ credit earned", "$/mo", "", "Monthly", "*", "LENGTH=12", "" },
+	{ SSC_OUTPUT, SSC_ARRAY, "year1_monthly_cumulative_excess_generation", "Excess generation cumulative kWh credit earned", "kWh/mo", "", "Monthly", "*", "LENGTH=12", "" },
+	{ SSC_OUTPUT, SSC_ARRAY, "year1_monthly_cumulative_excess_dollars", "Excess generation cumulative $ credit earned", "$/mo", "", "Monthly", "*", "LENGTH=12", "" },
 //	{ SSC_OUTPUT, SSC_ARRAY, "year1_monthly_salespurchases", "Electricity sales/purchases with system", "$/mo", "", "Monthly", "*", "LENGTH=12", "" },
 //	{ SSC_OUTPUT, SSC_ARRAY, "year1_monthly_salespurchases_wo_sys", "Electricity sales/purchases without system", "$/mo", "", "Monthly", "*", "LENGTH=12", "" },
 	{ SSC_OUTPUT, SSC_ARRAY, "year1_monthly_utility_bill_w_sys", "Electricity bill with system", "$/mo", "", "Monthly", "*", "LENGTH=12", "" },
@@ -212,14 +212,11 @@ static var_info vtab_utility_rate5[] = {
 	{ SSC_OUTPUT, SSC_MATRIX, "excess_kwhs_earned_ym", "Excess generation kWh credit earned", "kWh", "", "Charges by Month", "*", "", "COL_LABEL=MONTHS,FORMAT_SPEC=CURRENCY,GROUP=UR_AM" },
 
 	// added for monthly bill balancing per 12/14/16 meeting
-	{ SSC_OUTPUT, SSC_ARRAY, "year1_monthly_ec_charge_gross_with_system", "Energy charge with system before credits", "$", "", "Monthly", "*", "LENGTH=12", "" },
-	{ SSC_OUTPUT, SSC_ARRAY, "year1_excess_dollars_applied", "Excess generation $ credit applied", "$", "", "Monthly", "*", "LENGTH=12", "" },
-	{ SSC_OUTPUT, SSC_ARRAY, "year1_excess_dollars_earned", "Excess generation $ credit earned", "$", "", "Monthly", "*", "LENGTH=12", "" },
-	{ SSC_OUTPUT, SSC_ARRAY, "year1_excess_kwhs_applied", "Excess generation kWh credit applied", "kWh", "", "Monthly", "*", "LENGTH=12", "" },
-	{ SSC_OUTPUT, SSC_ARRAY, "year1_excess_kwhs_earned", "Excess generation kWh credit earned", "kWh", "", "Monthly", "*", "LENGTH=12", "" },
-
-
-
+	{ SSC_OUTPUT, SSC_ARRAY, "year1_monthly_ec_charge_gross_with_system", "Energy charge with system before credits", "$/mo", "", "Monthly", "*", "LENGTH=12", "" },
+	{ SSC_OUTPUT, SSC_ARRAY, "year1_excess_dollars_applied", "Excess generation $ credit applied", "$/mo", "", "Monthly", "*", "LENGTH=12", "" },
+	{ SSC_OUTPUT, SSC_ARRAY, "year1_excess_dollars_earned", "Excess generation $ credit earned", "$/mo", "", "Monthly", "*", "LENGTH=12", "" },
+	{ SSC_OUTPUT, SSC_ARRAY, "year1_excess_kwhs_applied", "Excess generation kWh credit applied", "kWh/mo", "", "Monthly", "*", "LENGTH=12", "" },
+	{ SSC_OUTPUT, SSC_ARRAY, "year1_excess_kwhs_earned", "Excess generation kWh credit earned", "kWh/mo", "", "Monthly", "*", "LENGTH=12", "" },
 
 
 // for Pablo at IRENA 8/8/15
