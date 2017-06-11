@@ -826,7 +826,7 @@ void ResultsViewer::Setup( Simulation *sim )
 					else
 						offset = ( time_step==1.0 ) ? 0.5 : 0.0;
 
-					wxLogStatus("Adding time series dataset: %d len, %lg time step, %lg offset", (int)n, time_step, offset);
+//					wxLogStatus("Adding time series dataset: %d len, %lg time step, %lg offset", (int)n, time_step, offset);
 
 					TimeSeriesData *tsd = new TimeSeriesData(p, n, time_step, offset,
 						m_sim->GetLabel(vars[i]),
