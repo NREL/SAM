@@ -3,7 +3,7 @@
 //PV Reliability Performance Model Version 2.0
 //Supporting Functions and Model Implementation -- BETA -- 
 //Janine Freeman, NREL
-//16 May 2017
+//09 June 2017
 //*************************************************************************************
 
 // WISHLIST-----------------------------------------------------------------------------------
@@ -81,6 +81,39 @@ function LHS(name, distribution_type, parameters, num_samples)
 	if (distribution_type == 'lognormal') 
 		parameters[1] = sigma; //set second parameter back to std before exiting the function
 	return result;
+}
+
+
+// --------------------------------------------------------------------------------------------------------------------------------------
+/* DC Energy returns an array of annual DC energy (kWh) based on an input array of timeseries DC power (kW) for the system lifetime (likely the 'dc_net' output from SAM).*/
+function dc_energy_from_timeseries(timeseries_dc_power, system_lifetime_yrs)
+{
+	dc_energy = alloc(system_lifetime_yrs); 
+	timestep = #timeseries_dc_power / system_lifetime_yrs / 8760; //divide by number of years, then number of hours per year, then we know how many steps are in an hour
+	idx = 0;
+	for (yr=0; yr<system_lifetime_yrs; yr++)
+	{
+		dc_energy[yr] = 0; //we want this in energy, kWh
+		for (i=0;i<8760;i++)
+			for(j=0; j<timestep; j++)
+			{
+				dc_energy[yr] += timeseries_dc_power[idx] / timestep; //need to divide by timestep to convert from kW to kWh. For hourly timesteps, this is dividing by 1, but for subhourly, we need this piece.
+				idx++;
+			}
+	}
+	return dc_energy;
+}
+
+
+// --------------------------------------------------------------------------------------------------------------------------------------
+/* Cumulative energy returns an array of the cumulative energy production in kWh from an array of annual energy production in kWh*/
+function cumulative_energy(annual_energy)
+{
+	cumul_energy = alloc(#annual_energy);
+	cumul_energy[0] = annual_energy[0]; //first year energy is the same for both arrays
+	for (i=1; i<#annual_energy; i++)
+		cumul_energy[i] = annual_energy[i] + cumul_energy[i-1]; //add the current year's energy to the previous year's cumulative energy
+	return cumul_energy;
 }
 
 
@@ -251,6 +284,8 @@ function configuration_check()
 	{
 		if (meta.module.degradation.can_degrade != null)
 			if (meta.module.degradation.can_degrade && meta.module.degradation.rate != null)
+				degradation_ok = true;
+			elseif (meta.module.degradation.can_degrade == false)
 				degradation_ok = true;
 	}
 	if (!degradation_ok)
@@ -430,7 +465,7 @@ function precalculate_tracker_losses()
 			exit;
 		}
 		
-		// calculate hourly performance with tracker for one year
+		// calculate timeseries performance with tracker for one year
 		user_analysis_period = get('analysis_period');
 		set('analysis_period', 1);
 		set('en_ac_lifetime_losses', 0);
@@ -441,9 +476,9 @@ function precalculate_tracker_losses()
 			set('analysis_period', user_analysis_period);
 			exit;
 		}
-		timeseries_with_tracker = get('dc_net');
+		timeseries_with_tracker = get('dc_net'); //power, units are kW
 		
-		// calculate hourly performance without trackers for one year
+		// calculate timeseries performance without trackers for one year
 		user_tracking_mode = get('subarray1_track_mode');
 		user_azimuth = get('subarray1_azimuth');
 		user_tilt = get('subarray1_tilt');
@@ -480,20 +515,20 @@ function precalculate_tracker_losses()
 			set('subarray1_tilt', user_tilt);
 			exit;
 		}
-		timeseries_without_tracker = get('dc_net');
+		timeseries_without_tracker = get('dc_net'); //power, units are kW
 		
 		//calculate daily loss statistics
 		timestep = (#timeseries_with_tracker / 8760);
 		index = 0;
 		for (d=0; d<365; d++)
 		{
-			sum_without_tracker = 0;
-			sum_with_tracker = 0;
+			sum_without_tracker = 0; //energy, units are kWh
+			sum_with_tracker = 0; //energy, units are kWh
 			for (h=0; h<24; h++)
 				for (ts=0; ts<timestep; ts++)
 				{
-					sum_without_tracker += timeseries_without_tracker[index];
-					sum_with_tracker += timeseries_with_tracker[index];
+					sum_without_tracker += timeseries_without_tracker[index] / timestep; //need to divide by timestep to convert kW to kWh. For hourly data, dividing by 1, but it matters for subhourly data.
+					sum_with_tracker += timeseries_with_tracker[index] / timestep; //need to divide by timestep to convert kW to kWh. For hourly data, dividing by 1, but it matters for subhourly data.
 					index++;
 				}
 			//NOTE: On some cloudy days, daily_tracker_coeff might be positive!! See help for details.
@@ -756,16 +791,14 @@ function step_in_time(component_meta, component_vector, day, component_repair_co
 		
 			if (component_meta.can_fail)
 			{
+				component_meta.uptime++;
 				//component is operational
 				if (component_vector[i].state == 1)
 				{
 					component_vector[i].time_to_failure--;
 					//component has just failed and failure is allowed for this type of component
 					if (component_vector[i].time_to_failure <= 0 && component_meta.can_fail == true)
-					{
 						component_failure(component_vector, i, day, component_meta.warranty.has_warranty);
-						component_meta.downtime += day;
-					}
 				}
 				
 				//component is currently failed
@@ -786,8 +819,7 @@ function step_in_time(component_meta, component_vector, day, component_repair_co
 						else
 							component_repair_costs[day] += component_repair_cost;
 						//initialize a new module without resetting cumulative failures
-						initialize_component(component_meta, component_vector, i, false); 
-						component_meta.uptime += day;			
+						initialize_component(component_meta, component_vector, i, false); 		
 					}
 				}
 				
@@ -866,7 +898,6 @@ function run_system_realization(realization, show_outputs)
 		{
 			costs{components[c]} = alloc(system_lifetime_yrs * 365);
 			meta{components[c]}.uptime = 0;
-			meta{components[c]}.downtime = 0;
 		}
 	}
 		
@@ -963,9 +994,15 @@ function run_system_realization(realization, show_outputs)
 		{
 			yr_idx = day / 365;
 			o_m_yearly_costs[yr_idx] = 0;
+			yearly_costs.year[yr_idx] = yr_idx + 1; //need to add one for the label because the arrays are 0-indexed
+			for (c=0; c<#cost_components;c++)
+				yearly_costs{cost_components[c]}[yr_idx] = 0;
 		}
 		for (c=0; c<#cost_components; c++)
+		{
 			o_m_yearly_costs[yr_idx] += costs{cost_components[c]}[day];
+			yearly_costs{cost_components[c]}[yr_idx] += costs{cost_components[c]}[day];
+		}
 	}
 	outln('Calculated yearly O&M costs = ' + o_m_yearly_costs);
 	//be sure to add any existing O&M costs
@@ -976,6 +1013,7 @@ function run_system_realization(realization, show_outputs)
 		outln('Calculated yearly O&M costs including user-specified costs = ' + o_m_yearly_costs);
 	}
 	set('om_fixed', o_m_yearly_costs);
+	yearly_costs.total = o_m_yearly_costs;
 
 	// Run PV performance model for the currently active case---------------------------------------------
 
@@ -990,7 +1028,7 @@ function run_system_realization(realization, show_outputs)
 
 
 	// OUTPUTS------------------------------------------------------------------------------------------------------------
-	results.realization[realization] = 'Realization_' + realization;
+	results.row[realization] = 'Realization_' + realization;
 
 	//calculate results
 	for (c=0; c<#components; c++)
@@ -1020,19 +1058,26 @@ function run_system_realization(realization, show_outputs)
 		
 		//mean time between failure
 		if (meta{components[c]}.can_fail)
-			results{components[c] + '_mtbf'}[realization] = (meta{components[c]}.downtime - meta{components[c]}.uptime) / results{components[c] + '_total_failures'}[realization];
+		{
+			if (results{components[c] + '_total_failures'}[realization] != 0)
+				results{components[c] + '_mtbf'}[realization] = meta{components[c]}.uptime / results{components[c] + '_total_failures'}[realization];
+			else
+				results{components[c] + '_mtbf'}[realization] = meta{components[c]}.uptime;
+		}
 			
 		//availability
 		results{components[c] + '_availability'}[realization] /= meta{components[c]}.number; //we can use a straight average here because the code is constrained to regular systems
 	}
 
 	//write the timeseries results for this realization to the global csv files
-	dc.hourly_dc_power = get('dc_net');
-	ac.hourly_ac_power = get('gen');
+	dc.timeseries_dc_power = get('dc_net');
+	ac.timeseries_ac_power = get('gen');
 	deg.daily_degradation = module_degradation_factor;
 	csvwrite(results_folder + '/dc_' + realization + '.csv', dc);
 	csvwrite(results_folder + '/ac_' + realization + '.csv', ac);
 	csvwrite(results_folder + '/deg_' + realization + '.csv', deg);	
+	yearly_costs_order = ['year', 'module', 'string', 'combiner', 'inverter', 'disconnect', 'transformer', 'grid', 'tracker', 'total'];
+	csvwrite(results_folder + '/costs_' + realization + '.csv', yearly_costs, {cols = yearly_costs_order});
 	
 	//reset tracking system cost to the original cost for the next realization
 	if (is_tracking_system)
@@ -1050,30 +1095,21 @@ function run_system_realization(realization, show_outputs)
 			dview(3, 24, 'Daily factors', 'DC Equipment Operational', '', 1.0, dc_power_availability, 'AC Equipment Operational', '', 1.0, ac_power_availability, 'Module degradation factor', '', 1.0, module_degradation_factor);
 
 		//lifetime power output
-		dview(2, 1, 'Lifetime System Power', 'DC Power', 'kW', 1.0, dc.hourly_dc_power, 'AC Power', 'kW', 1.0, ac.hourly_ac_power);
+		dview(2, 1, 'Lifetime System Power', 'DC Power', 'kW', 1.0, dc.timeseries_dc_power, 'AC Power', 'kW', 1.0, ac.timeseries_ac_power);
 	}
 	
 	results.lcoe[realization] = get('lcoe_real');
 	annual_energy = get('cf_energy_net');
-	for (i=1; i<#annual_energy; i++)
+	annual_energy -@ 0; //remove the first element of the cf_energy_net value because it is 0, representing year 0
+	cumulative_ac_energy = cumulative_energy(annual_energy);
+	for (i=1; i<=#annual_energy; i++)
 	{
-		string = 'annual_energy_' + i;
-		results{string}[realization] = annual_energy[i];
+		results{'annual_ac_energy_' + i}[realization] = annual_energy[i-1]; //we want year names to be 1-indexed, but the arrays holding the data are 0-indexed
+		results{'cumulative_ac_energy_' + i}[realization] = cumulative_ac_energy[i-1];
+		outln(results);
 	}
 	
-	dc_energy = alloc(system_lifetime_yrs);
-	timestep = #dc.hourly_dc_power / system_lifetime_yrs / 8760; //accounts for subhourly simulation
-	idx = 0;
-	for (yr=0; yr<system_lifetime_yrs; yr++)
-	{
-		dc_energy[yr] = 0;
-		for (i=0; i<8760; i++)
-			for (j=0; j<timestep; j++)
-			{
-				dc_energy[yr] += dc.hourly_dc_power[idx];
-				idx++;
-			}
-	}
+	dc_energy = dc_energy_from_timeseries(dc.timeseries_dc_power, system_lifetime_yrs);
 	for (i=0; i<#dc_energy; i++)
 	{
 		string = 'dc_energy_' + (i+1);
@@ -1091,7 +1127,7 @@ function run_system_realization(realization, show_outputs)
 	trackers = null;
 	costs = null;
 	
-	return results;
+	//return results;
 }
 
 
@@ -1126,34 +1162,29 @@ function pvrpm_exec()
 		exit;
 	}
 
-	//output the results that we care about from the base case simulation before we overwrite them, because we're not saving them like we do for the stochastic realizations
+	//output the results that we care about from the base case simulation before we overwrite them
 	global results = null;
 	lifetime = get('analysis_period');
-	results.realization[0] = 'Base Case';
+	results.row[0] = 'Base Case';
 	results.lcoe[0] = get('lcoe_real');
+	//ac energy
 	base_annual_energy = get('cf_energy_net');
-	for (j=1; j<=lifetime; j++) //start at 1 because the array returns year 0, where the energy production is always 0, and goes through the full lifetime (so a 5-year system would have 6 entries in the annual energy output)
-		results{'annual_energy_' + j}[0] = base_annual_energy[j];
-	dc_energy = alloc(system_lifetime_yrs);
-	hourly_dc_power = get('dc_net');
-	timestep = #hourly_dc_power / system_lifetime_yrs / 8760; //accounts for subhourly simulation
-	idx = 0;
-	for (yr=0; yr<system_lifetime_yrs; yr++)
+	base_annual_energy -@ 0; //remove the first element from cf_energy_net because it is always 0, representing year 0
+	cumulative_ac_energy = cumulative_energy(base_annual_energy);
+	for (j=1; j<=lifetime; j++) //start at 1 so that we can number the years starting at 1
 	{
-		dc_energy[yr] = 0;
-		for (i=0; i<8760; i++)
-			for (j=0; j<timestep; j++)
-			{
-				dc_energy[yr] += hourly_dc_power[idx];
-				idx++;
-			}
+		results{'annual_ac_energy_' + j}[0] = base_annual_energy[j-1]; // we want the labels to be 1-indexed, but the data is 0-indexed
+		results{'cumulative_ac_energy_' + j}[0] = cumulative_ac_energy[j-1]; 
 	}
+	
+	//dc energy
+	timeseries_dc_power = get('dc_net');
+	dc_energy = dc_energy_from_timeseries(timeseries_dc_power, system_lifetime_yrs);
 	for (i=0; i<#dc_energy; i++)
 	{
 		string = 'dc_energy_' + (i+1);
 		results{string}[0] = dc_energy[i];
 	}
-
 
 	//need the number of daylight hours for each day of the year in order to calculate availability. pull those from the base case.
 	sunup = get('sunup');
@@ -1181,12 +1212,9 @@ function pvrpm_exec()
 	//********************************************************************************************************************************************************************************
 	for (i=1; i<=num_realizations; i++)
 	{
-		raw_results[i] = run_system_realization(i, show_realization_graphs); //changing the second parameter will show or hide graphs from each iteration
+		run_system_realization(i, show_realization_graphs); //changing the second parameter will show or hide graphs from each iteration
 		outln('Completed realization ' + i); //number the realizations starting at 1
 	}
-	progressbar(pb);
-
-	//outln(raw_results);
 
 
 	//********************************************************************************************************************************************************************************
@@ -1194,11 +1222,12 @@ function pvrpm_exec()
 	//********************************************************************************************************************************************************************************
 
 	//Calculate statistics
+	progressbar(pb, {message='Calculating statistics...'});	
 	results_columns = @results;
 	xl = xl_create(xl_path); //open the Excel file used for confidence interval calculations (below)- open outside of the loop for speed considerations
 	for (c=0; c<#results_columns; c++)
 	{
-		if (results_columns[c] == 'realization')
+		if (results_columns[c] == 'row')
 			continue;
 		current_row = num_realizations + 1; //start at the end of the individual realization results for each column
 		array = results{results_columns[c]};
@@ -1206,31 +1235,31 @@ function pvrpm_exec()
 		
 		//calculate minimum
 		array_min = min(array);
-		results.realization[current_row] = 'min';
+		results.row[current_row] = 'min';
 		results{results_columns[c]}[current_row] = array_min;
 		current_row++;
 		
 		//calculate maximum
 		array_max = max(array);
-		results.realization[current_row] = 'max';
+		results.row[current_row] = 'max';
 		results{results_columns[c]}[current_row] = array_max;
 		current_row++;
 		
 		//calculate mean
 		array_mean = mean(array);
-		results.realization[current_row] = 'mean';
+		results.row[current_row] = 'mean';
 		results{results_columns[c]}[current_row] = array_mean;
 		current_row++;
 		
 		//calculate median
 		array_median = median(array);
-		results.realization[current_row] = 'median';
+		results.row[current_row] = 'median';
 		results{results_columns[c]}[current_row] = array_median;
 		current_row++;
 		
 		//calculate standard deviation
 		array_std = stddev(array);
-		results.realization[current_row] = 'stddev';
+		results.row[current_row] = 'stddev';
 		results{results_columns[c]}[current_row] = array_std;
 		current_row++;
 		
@@ -1240,13 +1269,13 @@ function pvrpm_exec()
 		xl_set(xl, #array, 'num_samples');
 		xl_set(xl, array_std, 'stddev');
 		conf_int = to_real(xl_get(xl, 'conf_int'));
-		results.realization[current_row] = to_string(conf_interval) + '% Lower Conf Int of Mean';
+		results.row[current_row] = to_string(conf_interval) + '% Lower Conf Int of Mean';
 		if (array_std == 0)
 			results{results_columns[c]}[current_row] = 'N/A';
 		else
 			results{results_columns[c]}[current_row] = array_mean - conf_int;
 		current_row++;
-		results.realization[current_row] = to_string(conf_interval) + '% Upper Conf Int of Mean';
+		results.row[current_row] = to_string(conf_interval) + '% Upper Conf Int of Mean';
 		if (array_std == 0)
 			results{results_columns[c]}[current_row] = 'N/A';
 		else
@@ -1284,7 +1313,7 @@ function pvrpm_exec()
 		x1 = (idx1 + 1) * 1 / num_realizations;
 		y1 = array[idx1];
 		array_p = y0 + (x-x0) * (y1-y0) / (x1-x0); //see linear interpolation formula from https://en.wikipedia.org/wiki/Linear_interpolation*/
-		results.realization[current_row] = 'P' + p_value;
+		results.row[current_row] = 'P' + p_value;
 		results{results_columns[c]}[current_row] = array_p;
 		current_row++; //in case we add more calculated variables later
 		
@@ -1298,7 +1327,7 @@ function pvrpm_exec()
 
 	component_columns = ['total_failures', 'mtbf', 'availability'];
 
-	column_order = ['realization', 'lcoe'];
+	column_order = ['row', 'lcoe'];
 	idx = 2;
 
 	//component results
@@ -1321,10 +1350,17 @@ function pvrpm_exec()
 		}
 	}
 
-	//annual energy results
+	//annual AC energy results
 	for (j=1; j<=lifetime; j++)
 	{
-		column_order[idx] = 'annual_energy_' + j;
+		column_order[idx] = 'annual_ac_energy_' + j;
+		idx++;
+	}
+	
+	//cumulative annual AC energy results
+	for (j=1; j<=lifetime; j++)
+	{
+		column_order[idx] = 'cumulative_ac_energy_' + j;
 		idx++;
 	}
 	
@@ -1351,7 +1387,7 @@ function pvrpm_exec()
 	for (i=1; i<=num_realizations; i++)
 	{
 		x = csvread(results_folder + '/dc_' + i + '.csv', {table=true});
-		csv_dc_power{'realization_' + i} = x.hourly_dc_power;
+		csv_dc_power{'realization_' + i} = x.timeseries_dc_power;
 		remove_file(results_folder + '/dc_' + i + '.csv');
 	}
 	if (!csvwrite(results_folder + '/Timeseries_DC_Power.csv', csv_dc_power))
@@ -1365,7 +1401,7 @@ function pvrpm_exec()
 	for (i=1; i<=num_realizations; i++)
 	{
 		x = csvread(results_folder + '/ac_' + i + '.csv', {table=true});
-		csv_ac_power{'realization_' + i} = x.hourly_ac_power;
+		csv_ac_power{'realization_' + i} = x.timeseries_ac_power;
 		remove_file(results_folder + '/ac_' + i + '.csv');
 		
 	}
@@ -1388,5 +1424,22 @@ function pvrpm_exec()
 		msgbox('Degradation file is open. Please close the file and then click OK.');
 		csvwrite(results_folder + '/Daily_Degradation.csv', csv_degradation);
 	}
+	
+	//Costs CSVs
+	fOut = open(results_folder + '/Yearly_Costs_By_Component.csv', 'w');
+	for (i=1; i<=num_realizations; i++)
+	{
+		write_line(fOut, 'Realization ' + i);
+		fIn = open(results_folder + '/costs_' + i + '.csv', 'r');
+		x = '';
+		while (read_line(fIn, x))
+			write_line(fOut, x);
+		close(fIn);
+		remove_file(results_folder + '/costs_' + i + '.csv');
+		write_line(fOut, '');
+	}
+	close(fOut);
+	
+	progressbar(pb);
 
 }
