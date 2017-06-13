@@ -414,9 +414,9 @@ public:
 		{
 			ssc_number_t *batt_rep = 0;
 			if (as_integer("batt_replacement_option")==1)
-				batt_rep = as_array("batt_bank_replacement", &count);
+				batt_rep = as_array("batt_bank_replacement", &count); // replacements per year calculated
 			else // user specified
-				batt_rep = as_array("batt_replacement_schedule", &count);
+				batt_rep = as_array("batt_replacement_schedule", &count); // replacements per year user-defined
 			double batt_cap = as_double("batt_computed_bank_capacity");
 			// updated 10/17/15 per 10/14/15 meeting
 //			escal_or_annual(CF_battery_replacement_cost_schedule, nyears, "batt_replacement_cost", inflation_rate, batt_cap, false, as_double("batt_replacement_cost_escal")*0.01);
