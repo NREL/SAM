@@ -7423,17 +7423,17 @@ bool CodeGen_android::SupportingFiles()
     fprintf(f, "find_library( log-lib log )\n");
     fprintf(f, "set(CMAKE_CXX_FLAGS \"${CMAKE_CXX_FLAGS} -Wl,--allow-shlib-undefined -std=gnu++11\")\n");
     fprintf(f, "add_library(lib_shared STATIC IMPORTED)\n");
-    fprintf(f, "set_target_properties(lib_shared PROPERTIES IMPORTED_LOCATION %s/shared_armeabi-v7a.a)\n", (const char*)m_folder.c_str());
+    fprintf(f, "set_target_properties(lib_shared PROPERTIES IMPORTED_LOCATION %s/lib/${ANDROID_ABI}/shared.a)\n", (const char*)m_folder.c_str());
     fprintf(f, "add_library(lib_nlopt STATIC IMPORTED)\n");
-    fprintf(f, "set_target_properties(lib_nlopt PROPERTIES IMPORTED_LOCATION %s/nlopt_armeabi-v7a.a)\n", (const char*)m_folder.c_str());
+    fprintf(f, "set_target_properties(lib_nlopt PROPERTIES IMPORTED_LOCATION %s/lib/${ANDROID_ABI}/nlopt.a)\n", (const char*)m_folder.c_str());
     fprintf(f, "add_library(lib_lpsolve STATIC IMPORTED)\n");
-    fprintf(f, "set_target_properties(lib_lpsolve PROPERTIES IMPORTED_LOCATION %s/lpsolve_armeabi-v7a.a)\n", (const char*)m_folder.c_str());
+    fprintf(f, "set_target_properties(lib_lpsolve PROPERTIES IMPORTED_LOCATION %s/lib/${ANDROID_ABI}/lpsolve.a)\n", (const char*)m_folder.c_str());
     fprintf(f, "add_library(lib_solarpilot STATIC IMPORTED)\n");
-    fprintf(f, "set_target_properties(lib_solarpilot PROPERTIES IMPORTED_LOCATION %s/solarpilot_armeabi-v7a.a)\n", (const char*)m_folder.c_str());
+    fprintf(f, "set_target_properties(lib_solarpilot PROPERTIES IMPORTED_LOCATION %s/lib/${ANDROID_ABI}/solarpilot.a)\n", (const char*)m_folder.c_str());
     fprintf(f, "add_library(lib_tcs STATIC IMPORTED)\n");
-    fprintf(f, "set_target_properties(lib_tcs PROPERTIES IMPORTED_LOCATION %s/tcs_armeabi-v7a.a)\n", (const char*)m_folder.c_str());
+    fprintf(f, "set_target_properties(lib_tcs PROPERTIES IMPORTED_LOCATION %s/lib/${ANDROID_ABI}/tcs.a)\n", (const char*)m_folder.c_str());
     fprintf(f, "add_library(lib_ssc STATIC IMPORTED)\n");
-    fprintf(f, "set_target_properties(lib_ssc PROPERTIES IMPORTED_LOCATION %s/ssc_armeabi-v7a.a)\n", (const char*)m_folder.c_str());
+    fprintf(f, "set_target_properties(lib_ssc PROPERTIES IMPORTED_LOCATION %s/lib/${ANDROID_ABI}/ssc.a)\n", (const char*)m_folder.c_str());
     fprintf(f, "target_link_libraries( native-lib android lib_ssc lib_tcs lib_solarpilot lib_lpsolve lib_nlopt lib_shared ${log-lib} )\n");
 	fclose(f);
 	// library files
