@@ -1314,8 +1314,6 @@ void Toolbox::poly_from_svg(std::string &svg, std::vector< Point > &polygon, boo
     V = vertical lineto
     C = curveto
     S = smooth curveto
-    Q = quadratic B�zier curve
-    T = smooth quadratic B�zier curveto
     A = elliptical Arc
     Z = closepath
     Note: All of the commands above can also be expressed with lower letters. Capital letters means absolutely positioned, lower cases means relatively positioned.
