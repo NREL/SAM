@@ -1304,8 +1304,6 @@ void Toolbox::BezierC(Point &start, Point &control1, Point &control2, Point &end
 void Toolbox::poly_from_svg(std::string &svg, std::vector< Point > &polygon, bool clear_poly)     //construct a polygon from an SVG path
 {
     /* 
-    NOT WORKING YET
-
     The following commands are available for path data:
 
     M = moveto
