@@ -817,16 +817,34 @@ cashflow{ 'Leveraged Partnership Flip' } = define()
     }
 	cfline( '' );
 
-	// reserve accounts
-	cfline( 'RESERVE ACCOUNT FUNDING', -1);
+	// Reserves
+	cfline("RESERVES", -1);
+	cfline( '' );
+	cfline('cf_funding_debtservice', 0);
+	cfline('cf_disbursement_debtservice', 0);
 	cfline('cf_reserve_debtservice', 0);
+	cfline( '' );
+	cfline('cf_funding_om', 0);
+	cfline('cf_disbursement_om', 0);
 	cfline('cf_reserve_om', 0);
+	cfline( '' );
+	cfline('cf_funding_receivables', 0);
+	cfline('cf_disbursement_receivables', 0);
 	cfline('cf_reserve_receivables', 0);
+	cfline( '' );
+	cfline('cf_funding_equip1', 0);
+	cfline('cf_disbursement_equip1', 0);
 	cfline('cf_reserve_equip1', 0);
+	cfline( '' );
+	cfline('cf_funding_equip2', 0);
+	cfline('cf_disbursement_equip2', 0);
 	cfline('cf_reserve_equip2', 0);
+	cfline( '' );
+	cfline('cf_funding_equip3', 0);
+	cfline('cf_disbursement_equip3', 0);
 	cfline('cf_reserve_equip3', 0);
-	cfline( '' ); // spacer
-
+	cfline( '' );
+	cfline( '' );
 	// state and federal depreciation/itc tables
 	state_federal_depreciation_tables();
 };
