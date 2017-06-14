@@ -1970,15 +1970,19 @@ public:
 							}
 						}
 						else
+						{
 								cf.at(CF_debt_payment_principal, i) = 0;
+						}
+
+						// debt service reserve
+						cf.at(CF_reserve_debtservice, i - 1) = dscr_reserve_months / 12.0 *		(cf.at(CF_debt_payment_principal, i) + cf.at(CF_debt_payment_interest, i));
+						cf.at(CF_funding_debtservice, i - 1) = cf.at(CF_reserve_debtservice, i - 1);
+						cf.at(CF_funding_debtservice, i - 1) -= cf.at(CF_reserve_debtservice, i	 - 2);
+						if (i == term_tenor) cf.at(CF_disbursement_debtservice, i) = 0 - cf.at		(CF_reserve_debtservice, i - 1);
+
 					}
 					cf.at(CF_debt_balance, i) = cf.at(CF_debt_balance, i - 1) - cf.at(CF_debt_payment_principal, i);
 
-					// debt service reserve
-					cf.at(CF_reserve_debtservice, i - 1) = dscr_reserve_months / 12.0 *		(cf.at(CF_debt_payment_principal, i) + cf.at(CF_debt_payment_interest, i));
-					cf.at(CF_funding_debtservice, i - 1) = cf.at(CF_reserve_debtservice, i - 1);
-					cf.at(CF_funding_debtservice, i - 1) -= cf.at(CF_reserve_debtservice, i	 - 2);
-					if (i == term_tenor) cf.at(CF_disbursement_debtservice, i) = 0 - cf.at		(CF_reserve_debtservice, i - 1);
 				}
 
 				cf.at(CF_debt_payment_total, i) = cf.at(CF_debt_payment_principal, i) + cf.at(CF_debt_payment_interest, i);
