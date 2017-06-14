@@ -691,9 +691,13 @@ cashflow{ 'Leveraged Partnership Flip' } = define()
 	cfline('cf_project_return_pretax', 0);
 	cfline('itc_total_fed', 0, 1, 1 ); // offset column to year 1
 	cfline('cf_ptc_fed', 0);
+	cfline('cf_fedtax_income_with_incentives',0);
+	cfline('cf_federal_tax_frac',0);
 	cfline('cf_fedtax', 0);
 	cfline('itc_total_sta', 0);
 	cfline('cf_ptc_sta', 0);
+	cfline('cf_state_tax_frac',0);
+	cfline('cf_statax_income_with_incentives',0);
 	cfline('cf_statax', 0);
 //	cfline('cf_project_return_aftertax_cash', 0);
 	cfline('cf_project_return_aftertax', 0);
@@ -916,10 +920,13 @@ cashflow{ 'All Equity Partnership Flip' } = define()
 	cfline('cf_project_return_pretax', 0);
 	cfline('itc_total_fed', 0, 1, 1 ); // offset column to year 1
 	cfline('cf_ptc_fed', 0);
-
+	cfline('cf_federal_tax_frac',0);
+	cfline('cf_fedtax_income_with_incentives',0);
 	cfline('cf_fedtax', 0);
 	cfline('itc_total_sta', 0);
 	cfline('cf_ptc_sta', 0);
+	cfline('cf_state_tax_frac',0);
+	cfline('cf_statax_income_with_incentives',0);
 	cfline('cf_statax', 0);
 //	cfline('cf_project_return_aftertax_cash', 0);
 	cfline('cf_project_return_aftertax', 0);
