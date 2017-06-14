@@ -6,14 +6,12 @@ var_info vtab_standard_financial[] = {
 	{ SSC_INPUT,        SSC_NUMBER,      "analysis_period",                           "Analyis period",                                  "years",  "",                      "Financials",      "?=30",                   "INTEGER,MIN=0,MAX=50",          "" },
 //	{ SSC_INPUT, SSC_NUMBER, "federal_tax_rate", "Federal tax rate", "%", "", "Financials", "*", "MIN=0,MAX=100", "" },
 //	{ SSC_INPUT, SSC_NUMBER, "state_tax_rate", "State tax rate", "%", "", "Financials", "*", "MIN=0,MAX=100", "" },
-	{ SSC_INPUT, SSC_ARRAY, "federal_tax_rate", "Federal tax rate", "%", "", "Financials", "*", "", "" },
-	{ SSC_INPUT, SSC_ARRAY, "state_tax_rate", "State tax rate", "%", "", "Financials", "*", "", "" },
+	{ SSC_INPUT, SSC_ARRAY, "federal_tax_rate", "Federal income tax rate", "%", "", "Financials", "*", "", "" },
+	{ SSC_INPUT, SSC_ARRAY, "state_tax_rate", "State income tax rate", "%", "", "Financials", "*", "", "" },
 
-	{ SSC_OUTPUT, SSC_ARRAY, "cf_federal_tax_frac", "Federal tax rate", "(frac)", "", "Financials", "*", "LENGTH_EQUAL=cf_length", "" },
-	{ SSC_OUTPUT, SSC_ARRAY, "cf_state_tax_frac", "Federal tax rate", "(frac)", "", "Financials", "*", "LENGTH_EQUAL=cf_length", "" },
-	{ SSC_OUTPUT, SSC_ARRAY, "cf_effective_tax_frac", "Federal tax rate", "(frac)", "", "Financials", "*", "LENGTH_EQUAL=cf_length", "" },
-
-
+	{ SSC_OUTPUT, SSC_ARRAY, "cf_federal_tax_frac", "Federal income tax rate", "frac", "", "Financials", "*", "LENGTH_EQUAL=cf_length", "" },
+	{ SSC_OUTPUT, SSC_ARRAY, "cf_state_tax_frac", "State income tax rate", "frac", "", "Financials", "*", "LENGTH_EQUAL=cf_length", "" },
+	{ SSC_OUTPUT, SSC_ARRAY, "cf_effective_tax_frac", "Effective income tax rate", "frac", "", "Financials", "*", "LENGTH_EQUAL=cf_length", "" },
 
 
 	{ SSC_INPUT, SSC_NUMBER, "property_tax_rate", "Property tax rate", "%", "", "Financials", "?=0.0", "MIN=0,MAX=100", "" },
