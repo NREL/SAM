@@ -84,6 +84,7 @@ public:
 	bool addSimulationNotice(std::string &notice);
 	bool addSimulationNotice(std::string notice);
 	void isEnabled(bool state);
+    void* getCallbackData();
 };
 
 class simulation_error
