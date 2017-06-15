@@ -1274,6 +1274,308 @@ vector<Point> Toolbox::clipPolygon(std::vector<Point> &A, std::vector<Point> &B)
     return P.clip(A,B);
 }
 
+void Toolbox::BezierQ(Point &start, Point &control, Point &end, double t, Point &result)
+{
+    /* 
+    Locate a point 'result' along a quadratic Bezier curve.
+    */
+    double tc = 1. - t;
+
+    result.x = tc * tc * start.x + 2 * (1 - t) * t * control.x + t * t * end.x;
+    result.y = tc * tc * start.y + 2 * (1 - t) * t * control.y + t * t * end.y;
+    result.z = tc * tc * start.z + 2 * (1 - t) * t * control.z + t * t * end.z;
+
+}
+
+void Toolbox::BezierC(Point &start, Point &control1, Point &control2, Point &end, double t, Point &result)
+{
+    /* 
+    Locate a point 'result' along a cubic Bezier curve.
+    */
+
+    double tc = 1. - t;
+
+    result.x = tc*tc*tc * start.x + 3. * tc *tc * t * control1.x + 3. * tc * t * t * control2.x + t * t * t * end.x;
+    result.y = tc*tc*tc * start.y + 3. * tc *tc * t * control1.y + 3. * tc * t * t * control2.y + t * t * t * end.y;
+    result.z = tc*tc*tc * start.z + 3. * tc *tc * t * control1.z + 3. * tc * t * t * control2.z + t * t * t * end.z;
+
+}
+
+void Toolbox::poly_from_svg(std::string &svg, std::vector< Point > &polygon, bool clear_poly)     //construct a polygon from an SVG path
+{
+    /* 
+    The following commands are available for path data:
+
+    M = moveto
+    L = lineto
+    H = horizontal lineto
+    V = vertical lineto
+    C = curveto
+    Q = quadratic Bezier curve
+    Z = closepath
+    >> not yet supported
+    S = smooth curveto
+    T = smooth quadratic Bezier curveto
+    A = elliptical Arc
+    <<
+    Note: All of the commands above can also be expressed with lower letters. Capital letters means absolutely positioned, lower cases means relatively positioned.
+
+    */
+
+    int move=-1; //initialize 
+    std::string movedat;
+    bool process_now = false;
+
+    if( clear_poly )
+        polygon.clear();
+    polygon.reserve( svg.size()/5 );
+    double x0,y0;
+    x0=y0=0.; //last position for relative calcs
+
+    for(size_t i=0; i<svg.size(); i++)
+    {
+        int c = svg.at(i);
+
+        if( c > 64 && c < 123 ) //a new command
+        {
+            if( move > 0 )
+                process_now = true;
+            else
+                move = c;
+
+        }
+        else
+        {
+            movedat += svg.at(i);
+        }
+
+        if( process_now )
+        {
+            std::vector< std::string > points_s = split(movedat, " ");
+            std::vector< std::vector<double> > points;
+            for(size_t j=0; j<points_s.size(); j++)
+            {
+                std::vector< std::string > xy_s = split( points_s.at(j), "," );
+
+                points.push_back( std::vector<double>() );
+
+                for( size_t k=0; k<xy_s.size(); k++)
+                {
+                    points.back().push_back( 0 );
+                    to_double( xy_s.at(k), &points.back().at(k) );
+                }
+            }
+
+            int npt = points.size();
+
+            switch (move)
+            {
+            case 'm':
+                //pick up and move cursor (reset last position)
+                x0 += points.front().at(0);
+                y0 += points.front().at(1);
+                polygon.push_back( Point(x0, -y0, 0.) );
+
+                if( npt > 1 )  //any subsequent points are assumed to be 'l'
+                {
+                    for(size_t j=1; j<npt; j++)
+                    {
+                        x0 += points.at(j).at(0);
+                        y0 += points.at(j).at(1);
+                        polygon.push_back( Point(x0, -y0, 0.) );
+                    }
+                }
+
+                break;
+
+            case 'M':
+                //pick up and move cursor (reset last position)
+                x0 = points.front().at(0);
+                y0 = points.front().at(1);
+                polygon.push_back( Point(x0, -y0, 0.) );
+
+                if( npt > 1 )  //any subsequent points are assumed to be 'l'
+                {
+                    for(size_t j=1; j<npt; j++)
+                    {
+                        x0 += points.at(j).at(0);
+                        y0 += points.at(j).at(1);
+                        polygon.push_back( Point(x0, -y0, 0.) );
+                    }
+                }
+
+                break;
+            case 'l':
+
+                //trace all points
+                for(size_t j=0; j<npt; j++)
+                {
+                    x0 += points.at(j).at(0);
+                    y0 += points.at(j).at(1);
+                    polygon.push_back( Point(x0, -y0, 0.) );
+                }
+                break;
+
+            case 'L':
+
+                //trace all points - absolute
+                for(size_t j=0; j<npt; j++)
+                {
+                    x0 = points.at(j).at(0);
+                    y0 = points.at(j).at(1);
+                    polygon.push_back( Point(x0, -y0, 0.) );
+                }
+                break;
+
+            case 'h':
+
+                //horizontal line relative
+                for(size_t j=0; j<npt; j++)
+                {
+                    x0 += points.at(j).front();
+                    polygon.push_back( Point(x0, -y0, 0.) );
+                }
+                break;
+
+            case 'H':
+                
+                //horizontal line absolute
+                for(size_t j=0; j<npt; j++)
+                {
+                    x0 = points.at(j).front();
+                    polygon.push_back( Point(x0, -y0, 0.) );
+                }
+                break;
+
+            case 'v':
+
+                //vertical line relative
+                for(size_t j=0; j<npt; j++)
+                {
+                    y0 += points.at(j).front();
+                    polygon.push_back( Point(x0, -y0, 0.) );
+                }
+                break;
+
+            case 'V':
+
+                //vertical line absolute
+                for(size_t j=0; j<npt; j++)
+                {
+                    y0 = points.at(j).front();
+                    polygon.push_back( Point(x0, -y0, 0.) );
+                }
+                break;
+
+            case 'q':
+            case 'Q':
+            {
+                //bezier curve
+                double xcond=0.;
+                double ycond=0.;
+                
+                //check to make sure there are an even number of points
+                if( npt % 2 != 0 )
+                    return;
+
+                int nbz = 5;    //number of internal bezier points
+
+                for(size_t j=0; j<npt; j+=2)  //jump through in pairs
+                {
+                    Point start(x0, y0, 0.);
+
+                    if( move == 'q' ) //if relative, set the relative adder to the start point location
+                    {
+                        xcond = start.x;
+                        ycond = start.y;
+                    }
+
+                    Point control( points.at(j).at(0) + xcond, points.at(j).at(1) + ycond, 0. );
+                    Point end( points.at(j+1).at(0) + xcond, points.at(j+1).at(1) + ycond, 0. );
+
+                    for(int k=0; k<nbz; k++)
+                    {
+                        double t = (k+1)/(double)(nbz+1);
+                        Point result;
+                        Toolbox::BezierQ(start, control, end, t, result);
+                        result.y = -result.y;
+                        polygon.push_back( result );
+                    }
+                    
+                    //update cursor position
+                    x0 = end.x;
+                    y0 = end.y;
+
+                    //add the end point
+                    end.y = -end.y;
+                    polygon.push_back( end );
+
+                }
+                break;
+            }
+
+            case 'c':
+            case 'C':
+            {
+                //bezier curve
+                double xcond=0.;
+                double ycond=0.;
+                
+                //check to make sure there are a divisible number of points
+                if( npt % 3 != 0 )
+                    return;
+
+                int nbz = 7;    //number of internal bezier points
+
+                for(size_t j=0; j<npt; j+=3)  //jump through in pairs
+                {
+                    Point start = polygon.back();
+                    if( move == 'C' ) //if relative, set the relative adder to the start point location
+                    {
+                        xcond = start.x;
+                        ycond = start.y;
+                    }
+
+                    Point control1( points.at(j).at(0) + xcond, points.at(j).at(1) + ycond, 0. );
+                    Point control2( points.at(j+1).at(0) + xcond, points.at(j+1).at(1) + ycond, 0. );
+                    Point end( points.at(j+2).at(0) + xcond, points.at(j+2).at(1) + ycond, 0. );
+
+                    for(int k=0; k<nbz; k++)
+                    {
+                        double t = (k+1)/(double)(nbz+2);
+                        Point result;
+                        Toolbox::BezierC(start, control1, control2, end, t, result);
+
+                        polygon.push_back( result );
+                    }
+
+                    //add the end point
+                    polygon.push_back( end );
+
+                    //update cursor position
+                    x0 = end.x;
+                    y0 = end.y;
+                }
+                break;
+            }
+
+            case 'z':
+            case 'Z':
+                break;
+            default: //c, t, s, a
+                break;
+            }
+
+            movedat.clear();
+            move = c; //next move
+            process_now = false;
+        }
+    }
+
+    return;
+}
+
+
 Point Toolbox::rotation_arbitrary(double theta, Vect &axis, Point &axloc, Point &pt){
 	/* 
 	Rotation of a point 'pt' about an arbitrary axis with direction 'axis' centered at point 'axloc'. 

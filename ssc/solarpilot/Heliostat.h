@@ -147,6 +147,7 @@ public:
 	bool IsUserCant(); //Fetch
 	void IsUserCant(bool setting);	//Set
     bool IsEnabled(); //fetch
+    void IsEnabled(bool enable); //set
 
 	void setId(int id);
 	void setGroupId(int row, int col);
