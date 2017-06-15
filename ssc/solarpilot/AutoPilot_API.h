@@ -90,6 +90,8 @@ public:
 	//cancellation methods
 	void CancelSimulation();
 	bool IsSimulationCancelled();
+    //other
+    sp_optimize *GetOptimizationObject();
     
     struct API_CANT_TYPE { enum A {NONE, ON_AXIS, EQUINOX, SOLSTICE_SUMMER, SOLSTICE_WINTER }; };
 	//struct FOCUS_TYPE { enum A { FLAT, AT_SLANT, USER_DEFINED }; };

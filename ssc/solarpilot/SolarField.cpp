@@ -1066,7 +1066,22 @@ bool SolarField::PrepareFieldLayout(SolarField &SF, WeatherData &wdata, bool ref
 		hpy = HelPos.at(i).y;
 		hpz = HelPos.at(i).z;
 		//P.y = sqrt(pow(hpx, 2) + pow(hpy, 2));	//Determine the radial position. Set to y.
-		Heliostat *htemp = SF.whichTemplate(V->sf.template_rule.mapval(), HelPos.at(i));
+        Heliostat *htemp;
+        if( layout_method == 3 )
+        {
+            try
+            {
+                htemp = SF.getHeliostatTemplates()->at( layout->at(i).helio_type );
+            }
+            catch(...)
+            {
+                htemp = SF.getHeliostatTemplates()->begin()->second;
+            }
+        }
+        else
+        {
+		    htemp = SF.whichTemplate(V->sf.template_rule.mapval(), HelPos.at(i));
+        }
 		helio_objects->at(i) = *htemp;	//Copy the template to the heliostat
 		hptr = &helio_objects->at(i);	//Save a pointer for future quick reference
 		//Save a pointer to the template for future reference

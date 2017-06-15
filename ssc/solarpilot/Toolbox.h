@@ -749,6 +749,9 @@ namespace Toolbox
 	int polywind(const std::vector< Point> &vt, const Point &pt);
 	std::vector<Point> projectPolygon(std::vector<Point> &poly, PointVect &plane) ; 
     std::vector<Point> clipPolygon(std::vector<Point> &A, std::vector<Point> &B); //construct a polygon that is the intersection of two polygons A and B
+    void poly_from_svg(std::string &svg, std::vector< Point > &polygon, bool clear_poly=true);     //construct a polygon from an SVG path
+    void BezierQ(Point &start, Point &control, Point &end, double t, Point &result);
+    void BezierC(Point &start, Point &control1, Point &control2, Point &end, double t, Point &result);
 
 	//File handling functions
 	std::vector< std::string > split( const std::string &str, const std::string &delim, bool ret_empty=false, bool ret_delim=false );
