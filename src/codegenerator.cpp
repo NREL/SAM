@@ -596,13 +596,13 @@ bool CodeGen_Base::ShowCodeGenDialog(CaseWindow *cw)
 	code_languages.Add("Java");
 	code_languages.Add("PHP 5");
 	code_languages.Add("PHP 7");
-    code_languages.Add("Android Studio (Android)");
+    code_languages.Add("(Experimental) Android Studio (Android)");
 #ifdef __WXMSW__
 	code_languages.Add("C#");
 	code_languages.Add("VBA");
 #endif
 #ifdef __WXMAC__
-    code_languages.Add("Swift (iOS)");
+    code_languages.Add("(Experimental) XCode Swift (iOS)");
 #endif
 
 	// initialize properties
@@ -6959,7 +6959,8 @@ bool CodeGen_ios::FreeSSCModule()
 bool CodeGen_ios::SupportingFiles()
 {
 	// for iOS
-	bool ret=true;
+/*	bool ret=true;
+
 	wxArrayString files;
 	size_t num_files = wxDir::GetAllFiles( SamApp::GetRuntimePath() + "/mobile/ios", &files); 
 	ret = (num_files > 0);
@@ -6978,9 +6979,15 @@ bool CodeGen_ios::SupportingFiles()
 	}
 	if (!ret)
 	{
-		wxMessageBox("Please download the latest iOS archive file at https://sam.nrel.gov/sites/default/files/content/mobile/ios/libssc_ios.tar.gz", "Missing archive");
+
+		wxMessageBox("Please follow latest iOS build instructions at https://sam.nrel.gov/sites/default/files/content/mobile/ios/readme.txt", "iOS build instructions");
 	}
-	return ret;
+*/
+	wxString url = SamApp::WebApi("ios_build");
+	if (url.IsEmpty()) url = "https://sam.nrel.gov/sites/default/files/content/mobile/ios/readme.html";
+		wxLaunchDefaultBrowser( url );
+
+	return true;
 }
 
 bool CodeGen_ios::Footer()
@@ -7038,6 +7045,7 @@ bool CodeGen_android::Input(ssc_data_t p_data, const char *name, const wxString 
 	int len, nr, nc;
 	wxString str_value;
     wxString fn_path, fn_name, fn_ext;
+	wxString f1, f2;
 	double dbl_value;
 	int type = ::ssc_data_query(p_data, name);
 	switch (type)
@@ -7048,6 +7056,9 @@ bool CodeGen_android::Input(ssc_data_t p_data, const char *name, const wxString 
         wxFileName::SplitPath(str_value, &fn_path, &fn_name, &fn_ext );
             fn_path = fn_name + "." + fn_ext;
 		fprintf(m_fp, "	set_string( data, \"%s\", \"%s\" , mgr, path);\n", name, (const char*)fn_path.c_str());
+		f1 = str_value;
+		f2 = m_folder + "/" + fn_path;
+		wxCopyFile(f1, f2);
 		break;
 	case SSC_NUMBER:
 		::ssc_data_get_number(p_data, name, &value);
@@ -7286,7 +7297,7 @@ bool CodeGen_android::Header()
 	fprintf(m_fp, "\n");
 
     fprintf(m_fp, "extern \"C\" JNIEXPORT jstring JNICALL\n");
-    fprintf(m_fp, "Java_<COMPANY_ID>_%s_MainActivity_stringFromJNI(JNIEnv *env, jclass type, jobject asset_mgr, jstring cache_path) {\n", (const char*)m_name.c_str());
+    fprintf(m_fp, "Java_<YOUR INFORMATION HERE>_MainActivity_stringFromJNI(JNIEnv *env, jclass type, jobject asset_mgr, jstring cache_path) {\n");
     fprintf(m_fp, "    std::string bi = ssc_build_info();\n");
     fprintf(m_fp, "    std::ostringstream s;\n");
     fprintf(m_fp, "    s << bi << \"\\n SSC Version \" << ssc_version();\n");
@@ -7336,19 +7347,10 @@ bool CodeGen_android::SupportingFiles()
 	bool ret=true;
 	wxArrayString files;
     // MainActivity.java
-    wxString fn = m_folder + "/MainActivity.java";
+    wxString fn = m_folder + "/MainActivity.java.updates";
     FILE *f = fopen(fn.c_str(), "w");
     if (!f) return false;
-    fprintf(f, "package com.example.imacuser.%s;\n", (const char*)m_name.c_str());
     fprintf(f, "import android.content.res.AssetManager;\n");
-    fprintf(f, "import android.support.v7.app.AppCompatActivity;\n");
-    fprintf(f, "import android.os.Bundle;\n");
-    fprintf(f, "import android.widget.TextView;\n");
-    fprintf(f, "public class MainActivity extends AppCompatActivity {\n");
-    fprintf(f, "    static {\n");
-    fprintf(f, "        System.loadLibrary(\"%s\");\n", (const char*)m_name.c_str());
-    fprintf(f, "    }\n");
-    fprintf(f, "    @Override\n");
     fprintf(f, "    protected void onCreate(Bundle savedInstanceState) {\n");
     fprintf(f, "        super.onCreate(savedInstanceState);\n");
     fprintf(f, "        setContentView(R.layout.activity_main);\n");
@@ -7356,31 +7358,11 @@ bool CodeGen_android::SupportingFiles()
     fprintf(f, "        tv.setText(stringFromJNI(getAssets(), getCacheDir().getAbsolutePath()));\n");
     fprintf(f, "    }\n");
     fprintf(f, "    public native String stringFromJNI(AssetManager mgr, String path);\n");
-    fprintf(f, "}\n");
     fclose(f);
     // build.gradle
-    fn = m_folder + "/build.gradle";
+    fn = m_folder + "/build.gradle.updates";
     f = fopen(fn.c_str(), "w");
     if (!f) return false;
-    fprintf(f, "apply plugin: 'com.android.application'\n");
-    fprintf(f, "android {\n");
-    fprintf(f, "//    signingConfigs {\n");
-    fprintf(f, "//        config {\n");
-    fprintf(f, "//            keyAlias '<SSC_KEY>'\n");
-    fprintf(f, "//            keyPassword '<SSC_KEY_PASSWORD>'\n");
-    fprintf(f, "//            storeFile file('<KEY_STORE_.jks_LOCATION>')\n");
-    fprintf(f, "//            storePassword '<KEY_STORE_PASSWORD>'\n");
-    fprintf(f, "//        }\n");
-    fprintf(f, "//    }\n");
-    fprintf(f, "        compileSdkVersion 25\n");
-    fprintf(f, "        buildToolsVersion \"25.0.2\"\n");
-    fprintf(f, "        defaultConfig {\n");
-    fprintf(f, "            applicationId \"<COMPANY_ID>.%s\"\n", (const char*)m_name.c_str());
-    fprintf(f, "            minSdkVersion 13\n");
-    fprintf(f, "            targetSdkVersion 25\n");
-    fprintf(f, "            versionCode 1\n");
-    fprintf(f, "            versionName \"1.0\"\n");
-    fprintf(f, "            testInstrumentationRunner \"android.support.test.runner.AndroidJUnitRunner\"\n");
     fprintf(f, "            ndk {\n");
     fprintf(f, "                abiFilters 'x86', 'armeabi', 'armeabi-v7a'\n");
     fprintf(f, "            }\n");
@@ -7390,29 +7372,6 @@ bool CodeGen_android::SupportingFiles()
     fprintf(f, "                    '-DANDROID_TOOLCHAIN=gcc', '-DANDROID_STL=gnustl_static'\n");
     fprintf(f, "                }\n");
     fprintf(f, "            }\n");
-    fprintf(f, "        }\n");
-    fprintf(f, "//        buildTypes {\n");
-    fprintf(f, "//            release {\n");
-    fprintf(f, "//                minifyEnabled false\n");
-    fprintf(f, "//                proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'\n");
-    fprintf(f, "//                signingConfig signingConfigs.config\n");
-    fprintf(f, "//            }\n");
-    fprintf(f, "//        }\n");
-    fprintf(f, "        externalNativeBuild {\n");
-    fprintf(f, "            cmake {\n");
-    fprintf(f, "                path \"CMakeLists.txt\"\n");
-    fprintf(f, "            }\n");
-    fprintf(f, "        }\n");
-    fprintf(f, "    }\n");
-    fprintf(f, "    dependencies {\n");
-    fprintf(f, "        compile fileTree(include: ['*.jar'], dir: 'libs')\n");
-    fprintf(f, "        androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {\n");
-    fprintf(f, "            exclude group: 'com.android.support', module: 'support-annotations'\n");
-    fprintf(f, "        })\n");
-    fprintf(f, "        compile 'com.android.support:appcompat-v7:25.3.1'\n");
-    fprintf(f, "        compile 'com.android.support.constraint:constraint-layout:1.0.2'\n");
-    fprintf(f, "        testCompile 'junit:junit:4.12'\n");
-    fprintf(f, "    }\n");
     fclose(f);
     // CMakeLists.txt
     fn = m_folder + "/CMakeLists.txt";
@@ -7436,8 +7395,8 @@ bool CodeGen_android::SupportingFiles()
     fprintf(f, "set_target_properties(lib_ssc PROPERTIES IMPORTED_LOCATION %s/lib/${ANDROID_ABI}/ssc.a)\n", (const char*)m_folder.c_str());
     fprintf(f, "target_link_libraries( native-lib android lib_ssc lib_tcs lib_solarpilot lib_lpsolve lib_nlopt lib_shared ${log-lib} )\n");
 	fclose(f);
-	// library files
-	size_t num_files = wxDir::GetAllFiles( SamApp::GetRuntimePath() + "/mobile/android", &files); 
+	// library files - in readme
+/*	size_t num_files = wxDir::GetAllFiles( SamApp::GetRuntimePath() + "/mobile/android", &files); 
 	ret = (num_files > 0);
 //	Use path to mobile/android to set library locations.
 	if (ret)
@@ -7454,9 +7413,15 @@ bool CodeGen_android::SupportingFiles()
 	}
 	if (!ret)
 	{
-		wxMessageBox("Please download the latest Android archive files at https://sam.nrel.gov/sites/default/files/content/mobile/ios/libssc_android.tar.gz", "Missing archive");
+		wxMessageBox("Please follow latest Android build instructions at https://sam.nrel.gov/sites/default/files/content/mobile/android/readme.txt", "Android build instructions");
+
+
 	}
-	return ret;
+*/
+	wxString url = SamApp::WebApi("android_build");
+	if (url.IsEmpty()) url = "https://sam.nrel.gov/sites/default/files/content/mobile/android/readme.html";
+	wxLaunchDefaultBrowser( url );
+	return true;
 }
 
 bool CodeGen_android::Footer()
