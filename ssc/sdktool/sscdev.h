@@ -79,6 +79,9 @@ public:
 	void OnRun( wxCommandEvent & );
 	void OnCMListSelect(wxCommandEvent &evt);
 	void OnCopyToClipboard(wxCommandEvent &);
+
+	bool UpdateIsStopFlagSet();
+
 private:	
 	void WriteVarTable( wxDataOutputStream &o, var_table &vt );
 	bool ReadVarTable( wxDataInputStream &o, var_table &vt, bool clear_first );
