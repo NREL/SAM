@@ -135,7 +135,7 @@ struct battstor
 
 	// member data
 	voltage_t *voltage_model;
-	lifetime_t *lifetime_model;
+	lifetime_cycle_t *lifetime_cycle_model;
 	thermal_t *thermal_model;
 	capacity_t *capacity_model;
 	battery_t *battery_model;
