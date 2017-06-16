@@ -2402,6 +2402,20 @@ void Flux::simpleAimPoint(Point *Aim, Point *AimF, Heliostat &H, SolarField &SF)
 
 }
 
+void Flux::zenithAimPoint(Heliostat &H, Vect &Sun)
+{
+    Point *Aim = H.getAimPoint();
+    Point *AimF = H.getAimPointFluxPlane();
+
+    //the aimpoint bisects the sun and zenith
+    Aim->x = Sun.i / 2. * 1000.;
+    Aim->y = Sun.j / 2. * 1000.;
+    Aim->z = Sun.k / 2. * 1000.;
+
+    AimF->Set(0., 0., 9.e9);
+
+}
+
 void Flux::sigmaAimPoint(Heliostat &H, SolarField &SF, double args[]){
 	/* 
 	This method calculates aim points based on the standard deviation of the image error in the plane of the 
