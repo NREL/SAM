@@ -428,30 +428,107 @@ double capacity_lithium_ion_t::q10(){return _qmax;}
 /*
 Define Voltage Model
 */
-voltage_t::voltage_t(int num_cells_series, int num_strings, double voltage)
+voltage_t::voltage_t(int mode, int num_cells_series, int num_strings, double voltage, util::matrix_t<double> & voltage_matrix)
 {
+	_mode = mode;
 	_num_cells_series = num_cells_series;
 	_num_strings = num_strings;
 	_cell_voltage = voltage;
 	_cell_voltage_nominal = voltage;
 	_R = 0.004; // just a default, will get recalculated upon construction
+	_batt_voltage_matrix = voltage_matrix;
 }
 void voltage_t::copy(voltage_t *& voltage)
 {
+	voltage->_mode = _mode;
 	voltage->_num_cells_series = _num_cells_series;
 	voltage->_num_strings = _num_strings;
 	voltage->_cell_voltage = _cell_voltage;
 	voltage->_R = _R;
+	voltage->_batt_voltage_matrix = _batt_voltage_matrix;
 }
 double voltage_t::battery_voltage(){ return _num_cells_series*_cell_voltage; }
 double voltage_t::battery_voltage_nominal(){ return _num_cells_series * _cell_voltage_nominal; }
 double voltage_t::cell_voltage(){ return _cell_voltage; }
 double voltage_t::R(){ return _R; }
 
+// Voltage Table 
+voltage_table_t::voltage_table_t(int num_cells_series, int num_strings, double voltage, util::matrix_t<double> &voltage_table) :
+voltage_t(voltage_t::VOLTAGE_TABLE, num_cells_series, num_strings, voltage, voltage_table)
+{
+	for (int r = 0; r != _batt_voltage_matrix.nrows(); r++)
+		_voltage_table.push_back(table_point(_batt_voltage_matrix.at(r, 0), _batt_voltage_matrix.at(r, 1)));
+	
+	std::sort(_voltage_table.begin(), _voltage_table.end(), byDOD());
+}
+
+voltage_table_t * voltage_table_t::clone(){ return new voltage_table_t(*this); }
+
+void voltage_table_t::updateVoltage(capacity_t * capacity, thermal_t * thermal, double dt)
+{
+	double cell_voltage = _cell_voltage;
+	double DOD = capacity->DOD();
+	double I = capacity->I();
+	double DOD_lo, DOD_hi, V_lo, V_hi;
+	bool voltage_found = exactVoltageFound(DOD, cell_voltage);
+	if (!voltage_found)
+	{
+		prepareInterpolation(DOD_lo, V_lo, DOD_hi, V_hi, DOD);
+		cell_voltage = util::interpolate(DOD_lo, V_lo, DOD_hi, V_hi, DOD);
+	}
+
+	// the cell voltage should not increase when the battery is discharging
+	if (I <= 0 || (I > 0 && cell_voltage <= _cell_voltage))
+		_cell_voltage = cell_voltage;
+	
+}
+
+bool voltage_table_t::exactVoltageFound(double DOD, double & V)
+{
+	bool contained = false;
+	for (size_t r = 0; r != _voltage_table.size(); r++)
+	{
+		if (_voltage_table[r].DOD() == DOD)
+		{
+			V = _voltage_table[r].V();
+			contained = true;
+			break;
+		}
+	}
+	return contained;
+}
+
+void voltage_table_t::prepareInterpolation(double & DOD_lo, double & V_lo, double & DOD_hi, double & V_hi, double DOD)
+{
+	int nrows = _voltage_table.size();
+	DOD_lo = _voltage_table[0].DOD();
+	DOD_hi = _voltage_table[nrows - 1].DOD();
+	V_lo = _voltage_table[0].V();
+	V_hi = _voltage_table[nrows - 1].V();
+
+	for (size_t r = 0; r != nrows; r++)
+	{
+		double DOD_r = _voltage_table[r].DOD();
+		double V_r = _voltage_table[r].V();
+
+		if (DOD_r <= DOD)
+		{
+			DOD_lo = DOD_r;
+			V_lo = V_r;
+		}
+
+		if (DOD_r >= DOD)
+		{
+			DOD_hi = DOD_r;
+			V_hi = V_r;
+			break;
+		}
+	}
+}
 
 // Dynamic voltage model
 voltage_dynamic_t::voltage_dynamic_t(int num_cells_series, int num_strings, double voltage, double Vfull, double Vexp, double Vnom, double Qfull, double Qexp, double Qnom, double C_rate, double R):
-voltage_t(num_cells_series, num_strings, voltage)
+voltage_t(voltage_t::VOLTAGE_MODEL, num_cells_series, num_strings, voltage, util::matrix_t<double>())
 {
 	_Vfull = Vfull;
 	_Vexp = Vexp;
@@ -535,7 +612,7 @@ double voltage_dynamic_t::voltage_model_tremblay_hybrid(double Q, double I, doub
 
 // Vanadium redox flow model
 voltage_vanadium_redox_t::voltage_vanadium_redox_t(int num_cells_series, int num_strings, double V_ref_50,  double R):
-voltage_t(num_cells_series, num_strings, V_ref_50)
+voltage_t(voltage_t::VOLTAGE_MODEL, num_cells_series, num_strings, V_ref_50, util::matrix_t<double>())
 {
 	_I = 0;
 	_V_ref_50 = V_ref_50;
@@ -587,36 +664,6 @@ double voltage_vanadium_redox_t::voltage_model(double qmax, double q0, double T)
 		V_stack_cell = _V_ref_50 + (_R_molar * T / _F) * A *_C0;
 
 	return V_stack_cell;
-}
-
-// Iron flow battery model
-voltage_iron_flow_t::voltage_iron_flow_t(int num_cells_series, int num_strings, double V_nom) :
-voltage_t(num_cells_series, num_strings, V_nom)
-{
-	_A = 0.50083701331426;
-	_B = 0.624963304223525;
-	_G = 4.354856902277506;
-	_D = 0.0264861916286729;
-	_E_negative = -0.44;
-	_I = 0;
-}
-voltage_iron_flow_t * voltage_iron_flow_t::clone(){ return new voltage_iron_flow_t(*this); }
-void voltage_iron_flow_t::copy(voltage_t *& voltage){voltage_t::copy(voltage);}
-void voltage_iron_flow_t::updateVoltage(capacity_t * capacity, thermal_t * thermal, double dt)
-{
-
-	// is on a per-cell basis.
-	// I, Q, q0 are on a per-string basis since adding cells in series does not change current or charge
-	double cell_voltage = voltage_model(capacity->SOC() * 0.01);
-
-	// the cell voltage should not increase when the battery is discharging
-	if (_I <= 0 || (_I > 0 && cell_voltage <= _cell_voltage))
-		_cell_voltage = cell_voltage;
-}
-double voltage_iron_flow_t::voltage_model(double SOC)
-{
-	double E_positive = (_D * (exp((SOC - _A) * _G) - (exp(-(SOC - _A) * _G))) / 2) + _B;
-	return E_positive - _E_negative;
 }
 
 /*
