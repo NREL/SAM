@@ -171,9 +171,9 @@ class thermal_t;
 class voltage_t
 {
 public:
-	voltage_t(int num_cells_series, int num_strings, double voltage);
+	voltage_t(int mode, int num_cells_series, int num_strings, double voltage, util::matrix_t<double> &voltage_table);
 	virtual voltage_t * clone()=0;
-	void copy(voltage_t *&);
+	virtual void copy(voltage_t *&);
 	virtual ~voltage_t(){};
 
 	virtual void updateVoltage(capacity_t * capacity, thermal_t * thermal, double dt)=0;
@@ -183,13 +183,54 @@ public:
 	double cell_voltage(); // voltage of one cell
 	double R(); // computed resistance
 
-protected:
-	int _num_cells_series;    // number of cells in series
-	int _num_strings;  // addition number in parallel
-	double _cell_voltage; // closed circuit voltage per cell [V]
-	double _cell_voltage_nominal; // nominal cell voltage [V]
-	double _R;
+	enum VOLTAGE_CHOICE{VOLTAGE_MODEL, VOLTAGE_TABLE};
 
+protected:
+	int _mode;					  // voltage model (0), voltage table (1)
+	int _num_cells_series;        // number of cells in series
+	int _num_strings;             // addition number in parallel
+	double _cell_voltage;         // closed circuit voltage per cell [V]
+	double _cell_voltage_nominal; // nominal cell voltage [V]
+	double _R;                    // internal resistance (Ohm)
+	util::matrix_t<double> _batt_voltage_matrix;  // voltage vs depth-of-discharge
+};
+
+// A row in the table
+class table_point
+{
+public:
+	table_point(double DOD = 0., double V = 0.) :
+		_DOD(DOD), _V(V){}
+	double DOD() const{ return _DOD; }
+	double V() const{ return _V; }
+
+private:
+	double _DOD;
+	double _V;
+};
+
+struct byDOD
+{
+	bool operator()(table_point const &a, table_point const &b){ return a.DOD() < b.DOD(); }
+};
+
+
+class voltage_table_t : public voltage_t
+{
+public:
+	voltage_table_t(int num_cells_series, int num_strings, double voltage, util::matrix_t<double> &voltage_table);
+
+	voltage_table_t * clone();
+
+	void updateVoltage(capacity_t * capacity, thermal_t * thermal, double dt);
+
+protected:
+
+	bool exactVoltageFound(double DOD, double &V);
+	void prepareInterpolation(double & DOD_lo, double & V_lo, double & DOD_hi, double & V_hi, double DOD);
+
+private:
+	std::vector<table_point> _voltage_table;
 };
 
 // Shepard + Tremblay Model
@@ -242,31 +283,6 @@ private:
 	double _F;
 	double _C0;
 };
-
-// All Iron Flow Battery Model
-class voltage_iron_flow_t : public voltage_t
-{
-public:
-	voltage_iron_flow_t(int num_cells_series, int num_strings, double V_nom);
-	voltage_iron_flow_t * clone();
-	void copy(voltage_t *&);
-
-	void updateVoltage(capacity_t * capacity, thermal_t * thermal, double dt);
-
-protected:
-	double voltage_model(double SOC);
-
-private:
-
-	double _A;
-	double _B;
-	double _G;
-	double _D; 
-	double _E_negative;
-	double _I;
-
-}; 
-
 
 /*
 Lifetime class.  Currently only one lifetime model anticipated

@@ -45,6 +45,7 @@ var_info vtab_battery_inputs[] = {
 	{ SSC_INPUT,        SSC_NUMBER,      "batt_minimum_modetime",                      "Minimum time at charge state",                            "min",     "",                     "Battery",       "",                           "",                              "" },
 
 	// Voltage discharge curve
+	{ SSC_INPUT,        SSC_NUMBER,      "batt_voltage_choice",                        "Battery voltage input option",                            "0/1",      "",                    "Battery",       "?=0",                        "",                             "" },
 	{ SSC_INPUT,        SSC_NUMBER,      "batt_Vfull",                                 "Fully charged cell voltage",                              "V",       "",                     "Battery",       "",                           "",                              "" },
 	{ SSC_INPUT,        SSC_NUMBER,      "batt_Vexp",                                  "Cell voltage at end of exponential zone",                 "V",       "",                     "Battery",       "",                           "",                              "" },
 	{ SSC_INPUT,        SSC_NUMBER,      "batt_Vnom",                                  "Cell voltage at end of nominal zone",                     "V",       "",                     "Battery",       "",                           "",                              "" },
@@ -54,6 +55,7 @@ var_info vtab_battery_inputs[] = {
 	{ SSC_INPUT,        SSC_NUMBER,      "batt_Qnom",                                  "Cell capacity at end of nominal zone",                    "Ah",      "",                     "Battery",       "",                           "",                              "" },
 	{ SSC_INPUT,        SSC_NUMBER,      "batt_C_rate",                                "Rate at which voltage vs. capacity curve input",          "",        "",                     "Battery",       "",                           "",                              "" },
 	{ SSC_INPUT,        SSC_NUMBER,      "batt_resistance",                            "Internal resistance",                                     "Ohm",     "",                     "Battery",       "",                           "",                              "" },
+	{ SSC_INPUT,		SSC_MATRIX,      "batt_voltage_matrix",                        "Battery voltage vs. depth-of-discharge",                 "",         "",                     "Battery",       "",                           "",                             "" },
 
 	// lead-acid inputs
 	{ SSC_INPUT,		SSC_NUMBER,		"LeadAcid_q20_computed",	                   "Capacity at 20-hour discharge rate",                     "Ah",       "",                     "Battery",       "",                           "",                             "" },
@@ -172,6 +174,7 @@ battstor::battstor(compute_module &cm, bool setup_model, int replacement_option,
 			batt_vars->system_use_lifetime_output = cm.as_boolean("system_use_lifetime_output");
 			batt_vars->analysis_period = cm.as_integer("analysis_period");
 			batt_vars->batt_chem = cm.as_integer("batt_chem");
+			batt_vars->batt_voltage_choice = cm.as_integer("batt_voltage_choice");
 			batt_vars->batt_dispatch = cm.as_integer("batt_dispatch_choice");
 			batt_vars->batt_meter_position = cm.as_integer("batt_meter_position");
 			batt_vars->batt_pv_choice = cm.as_integer("batt_pv_choice");
@@ -199,6 +202,7 @@ battstor::battstor(compute_module &cm, bool setup_model, int replacement_option,
 				batt_vars->target_power = cm.as_doublevec("batt_target_power");
 			}
 			batt_vars->batt_lifetime_matrix = cm.as_matrix("batt_lifetime_matrix");
+			batt_vars->batt_voltage_matrix = cm.as_matrix("batt_voltage_matrix");
 
 			batt_vars->batt_computed_series = cm.as_integer("batt_computed_series");
 			batt_vars->batt_computed_strings = cm.as_integer("batt_computed_strings");
@@ -422,6 +426,12 @@ battstor::battstor(compute_module &cm, bool setup_model, int replacement_option,
 			}
 	}
 
+	util::matrix_t<double>  batt_voltage_matrix = batt_vars->batt_voltage_matrix;
+	if (batt_vars->batt_voltage_choice == voltage_t::VOLTAGE_TABLE)
+	{
+		if (batt_voltage_matrix.nrows() < 2 || batt_voltage_matrix.ncols() != 2)
+			throw compute_module::exec_error("battery", "Battery lifetime matrix must have 2 columns and at least 2 rows");
+	}
 	util::matrix_t<double>  batt_lifetime_matrix = batt_vars->batt_lifetime_matrix;
 	if (batt_lifetime_matrix.nrows() < 3 || batt_lifetime_matrix.ncols() != 3)
 		throw compute_module::exec_error("battery", "Battery lifetime matrix must have three columns and at least three rows");
@@ -498,13 +508,13 @@ battstor::battstor(compute_module &cm, bool setup_model, int replacement_option,
 	outAnnualEnergyLoss[0] = 0;
 
 	// model initialization
-	if (chem == battery_t::LEAD_ACID || chem == battery_t::LITHIUM_ION)
+	if ((chem == battery_t::LEAD_ACID || chem == battery_t::LITHIUM_ION) &&  batt_vars->batt_voltage_choice == voltage_t::VOLTAGE_MODEL)
 		voltage_model = new voltage_dynamic_t(batt_vars->batt_computed_series, batt_vars->batt_computed_strings, batt_vars->batt_Vnom_default, batt_vars->batt_Vfull, batt_vars->batt_Vexp,
 		batt_vars->batt_Vnom, batt_vars->batt_Qfull, batt_vars->batt_Qexp, batt_vars->batt_Qnom, batt_vars->batt_C_rate, batt_vars->batt_resistance);
-	else if (chem == battery_t::VANADIUM_REDOX)
+	else if ((chem == battery_t::VANADIUM_REDOX) && batt_vars->batt_voltage_choice == voltage_t::VOLTAGE_MODEL)
 		voltage_model = new voltage_vanadium_redox_t(batt_vars->batt_computed_series, batt_vars->batt_computed_strings, batt_vars->batt_Vnom_default, batt_vars->batt_resistance);
-	else if (chem == battery_t::IRON_FLOW)
-		voltage_model = new voltage_iron_flow_t(batt_vars->batt_ac_dc_efficiency, batt_vars->batt_computed_strings, batt_vars->batt_Vnom_default);
+	else
+		voltage_model = new voltage_table_t(batt_vars->batt_computed_series, batt_vars->batt_computed_strings, batt_vars->batt_Vnom_default, batt_vars->batt_voltage_matrix);
 
 	lifetime_model = new  lifetime_t(batt_lifetime_matrix, replacement_option, batt_vars->batt_replacement_capacity);
 	util::matrix_t<double> cap_vs_temp = batt_vars->cap_vs_temp;

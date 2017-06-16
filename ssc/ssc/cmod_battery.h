@@ -22,6 +22,7 @@ struct batt_variables
 	int analysis_period;
 	int batt_chem;
 	int batt_dispatch;
+	int batt_voltage_choice;
 	int batt_meter_position;
 	int batt_pv_choice;
 	int batt_target_choice;
@@ -45,6 +46,7 @@ struct batt_variables
 
 	util::matrix_t<float> schedule;
 	util::matrix_t<double>  batt_lifetime_matrix;
+	util::matrix_t<double> batt_voltage_matrix;
 
 	std::vector<double> target_power_monthly;
 	std::vector<double> target_power;
