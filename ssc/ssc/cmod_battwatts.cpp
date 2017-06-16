@@ -44,6 +44,8 @@ public:
 		batt_vars->system_use_lifetime_output = false;
 		batt_vars->analysis_period = 25;
 		batt_vars->batt_chem = as_integer("batt_simple_chemistry");
+		batt_vars->batt_voltage_choice = voltage_t::VOLTAGE_MODEL;
+		batt_vars->batt_voltage_matrix = util::matrix_t<double>();
 
 		int dispatch = as_integer("batt_simple_dispatch");
 		batt_vars->batt_dispatch = (dispatch == 0 ? dispatch_t::LOOK_AHEAD : dispatch_t::LOOK_BEHIND);
@@ -183,7 +185,8 @@ public:
 			batt_vars->inverter_efficiency = as_double("inverter_efficiency");
 
 		// losses
-		double_vec batt_losses, batt_losses_monthly;
+		double_vec batt_losses;
+		double_vec batt_losses_monthly = { 0 };
 
 		size_t n_recs = 0;
 		ssc_number_t * p_ac = as_array("ac", &n_recs);
@@ -192,7 +195,7 @@ public:
 		for (int m = 0; m != 12; m++)
 			batt_losses_monthly.push_back(0.);
 
-		batt_vars->batt_loss_choice = losses_t::TIMESERIES;
+		batt_vars->batt_loss_choice = losses_t::MONTHLY;
 		batt_vars->batt_losses = batt_losses;
 		batt_vars->batt_losses_monthly = batt_losses_monthly;
 
