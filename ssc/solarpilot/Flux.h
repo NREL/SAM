@@ -142,6 +142,8 @@ class Flux
     void frozenAimPoint(Heliostat &H, double tht, double args[]);
 
     void keepExistingAimPoint(Heliostat &H, SolarField &SF, double args[]);
+
+    void zenithAimPoint(Heliostat &H, Vect &Sun);
  } ;
 
 #endif
