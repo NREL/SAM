@@ -219,9 +219,8 @@ class voltage_table_t : public voltage_t
 {
 public:
 	voltage_table_t(int num_cells_series, int num_strings, double voltage, util::matrix_t<double> &voltage_table);
-
 	voltage_table_t * clone();
-
+	void copy(voltage_t *&);
 	void updateVoltage(capacity_t * capacity, thermal_t * thermal, double dt);
 
 protected:
@@ -285,17 +284,17 @@ private:
 };
 
 /*
-Lifetime class.  Currently only one lifetime model anticipated
+Lifetime class.  Currently only one lifetime cycling model anticipated
 */
 
-class lifetime_t
+class lifetime_cycle_t
 {
 
 public:
-	lifetime_t(const util::matrix_t<double> &cyles_vs_DOD, const int replacement_option, const double replacement_capacity  );
-	~lifetime_t();
-	lifetime_t * clone();
-	void copy(lifetime_t *&);
+	lifetime_cycle_t(const util::matrix_t<double> &cyles_vs_DOD, const int replacement_option, const double replacement_capacity);
+	~lifetime_cycle_t();
+	lifetime_cycle_t * clone();
+	void copy(lifetime_cycle_t *&);
 
 	void rainflow(double DOD);
 	bool check_replaced();
@@ -347,7 +346,15 @@ protected:
 		LT_RERANGE
 	};
 };
-
+/*
+Lifetime calendar model
+*/
+class lifetime_calendar_t
+{
+public:
+	lifetime_calendar_t();
+	virtual ~lifetime_calendar_t();
+};
 /*
 Thermal classes
 */
@@ -398,7 +405,7 @@ Losses Base class
 class losses_t
 {
 public:
-	losses_t(lifetime_t *, thermal_t *, capacity_t*, double_vec batt_system_losses);
+	losses_t(lifetime_cycle_t *, thermal_t *, capacity_t*, double_vec batt_system_losses);
 	losses_t * clone();
 	void copy(losses_t *&);
 
@@ -409,7 +416,7 @@ public:
 	enum { MONTHLY, TIMESERIES};
 
 protected:
-	lifetime_t * _lifetime;
+	lifetime_cycle_t * _lifetime_cycle;
 	thermal_t * _thermal;
 	capacity_t * _capacity;
 	double_vec _system_losses;
@@ -434,7 +441,7 @@ public:
 	~battery_t(){};
 	void delete_clone();
 
-	void initialize(capacity_t *, voltage_t *, lifetime_t *, thermal_t *, losses_t *);
+	void initialize(capacity_t *, voltage_t *, lifetime_cycle_t *, thermal_t *, losses_t *);
 
 	// Run all
 	void run(double P);
@@ -448,7 +455,7 @@ public:
 
 	capacity_t * capacity_model() const;
 	voltage_t * voltage_model() const;
-	lifetime_t * lifetime_model() const;
+	lifetime_cycle_t * lifetime_cycle_model() const;
 	thermal_t * thermal_model() const;
 	losses_t * losses_model() const;
 
@@ -472,7 +479,7 @@ public:
 
 private:
 	capacity_t * _capacity;
-	lifetime_t * _lifetime;
+	lifetime_cycle_t * _lifetime_cycle;
 	voltage_t * _voltage;
 	thermal_t * _thermal;
 	losses_t * _losses;
