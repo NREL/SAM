@@ -7297,7 +7297,7 @@ bool CodeGen_android::Header()
 	fprintf(m_fp, "\n");
 
     fprintf(m_fp, "extern \"C\" JNIEXPORT jstring JNICALL\n");
-    fprintf(m_fp, "Java_<YOUR INFORMATION HERE>_MainActivity_stringFromJNI(JNIEnv *env, jclass type, jobject asset_mgr, jstring cache_path) {\n");
+    fprintf(m_fp, "Java_com_example_%s_MainActivity_stringFromJNI(JNIEnv *env, jclass type, jobject asset_mgr, jstring cache_path) {\n", (const char *)m_name.c_str());
     fprintf(m_fp, "    std::string bi = ssc_build_info();\n");
     fprintf(m_fp, "    std::ostringstream s;\n");
     fprintf(m_fp, "    s << bi << \"\\n SSC Version \" << ssc_version();\n");
@@ -7347,10 +7347,19 @@ bool CodeGen_android::SupportingFiles()
 	bool ret=true;
 	wxArrayString files;
     // MainActivity.java
-    wxString fn = m_folder + "/MainActivity.java.updates";
+    wxString fn = m_folder + "/MainActivity.java";
     FILE *f = fopen(fn.c_str(), "w");
     if (!f) return false;
+    fprintf(f, "package com.example.%s;\n", (const char*)m_name.c_str());
     fprintf(f, "import android.content.res.AssetManager;\n");
+    fprintf(f, "import android.support.v7.app.AppCompatActivity;\n");
+    fprintf(f, "import android.os.Bundle;\n");
+    fprintf(f, "import android.widget.TextView;\n");
+    fprintf(f, "public class MainActivity extends AppCompatActivity {\n");
+    fprintf(f, "    static {\n");
+    fprintf(f, "        System.loadLibrary(\"%s\");\n", (const char*)m_name.c_str());
+    fprintf(f, "    }\n");
+    fprintf(f, "    @Override\n");
     fprintf(f, "    protected void onCreate(Bundle savedInstanceState) {\n");
     fprintf(f, "        super.onCreate(savedInstanceState);\n");
     fprintf(f, "        setContentView(R.layout.activity_main);\n");
@@ -7358,11 +7367,23 @@ bool CodeGen_android::SupportingFiles()
     fprintf(f, "        tv.setText(stringFromJNI(getAssets(), getCacheDir().getAbsolutePath()));\n");
     fprintf(f, "    }\n");
     fprintf(f, "    public native String stringFromJNI(AssetManager mgr, String path);\n");
+    fprintf(f, "}\n");
     fclose(f);
     // build.gradle
-    fn = m_folder + "/build.gradle.updates";
+    fn = m_folder + "/build.gradle";
     f = fopen(fn.c_str(), "w");
     if (!f) return false;
+    fprintf(f, "apply plugin: 'com.android.application'\n");
+    fprintf(f, "android {\n");
+    fprintf(f, "        compileSdkVersion 25\n");
+    fprintf(f, "        buildToolsVersion \"25.0.2\"\n");
+    fprintf(f, "        defaultConfig {\n");
+    fprintf(f, "            applicationId \"com.example.%s\"\n", (const char*)m_name.c_str());
+    fprintf(f, "            minSdkVersion 13\n");
+    fprintf(f, "            targetSdkVersion 25\n");
+    fprintf(f, "            versionCode 1\n");
+    fprintf(f, "            versionName \"1.0\"\n");
+    fprintf(f, "            testInstrumentationRunner \"android.support.test.runner.AndroidJUnitRunner\"\n");
     fprintf(f, "            ndk {\n");
     fprintf(f, "                abiFilters 'x86', 'armeabi', 'armeabi-v7a'\n");
     fprintf(f, "            }\n");
@@ -7372,13 +7393,29 @@ bool CodeGen_android::SupportingFiles()
     fprintf(f, "                    '-DANDROID_TOOLCHAIN=gcc', '-DANDROID_STL=gnustl_static'\n");
     fprintf(f, "                }\n");
     fprintf(f, "            }\n");
+    fprintf(f, "        }\n");
+    fprintf(f, "        externalNativeBuild {\n");
+    fprintf(f, "            cmake {\n");
+    fprintf(f, "                path \"CMakeLists.txt\"\n");
+    fprintf(f, "            }\n");
+    fprintf(f, "        }\n");
+    fprintf(f, "    }\n");
+    fprintf(f, "    dependencies {\n");
+    fprintf(f, "        compile fileTree(include: ['*.jar'], dir: 'libs')\n");
+    fprintf(f, "        androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {\n");
+    fprintf(f, "            exclude group: 'com.android.support', module: 'support-annotations'\n");
+    fprintf(f, "        })\n");
+    fprintf(f, "        compile 'com.android.support:appcompat-v7:25.3.1'\n");
+    fprintf(f, "        compile 'com.android.support.constraint:constraint-layout:1.0.1'\n");
+    fprintf(f, "        testCompile 'junit:junit:4.12'\n");
+    fprintf(f, "    }\n");
     fclose(f);
     // CMakeLists.txt
     fn = m_folder + "/CMakeLists.txt";
     f = fopen(fn.c_str(), "w");
     if (!f) return false;
     fprintf(f, "cmake_minimum_required(VERSION 3.4.1)\n");
-    fprintf(f, "add_library( native-lib SHARED src/main/cpp/native-lib.cpp )\n");
+    fprintf(f, "add_library( %s SHARED src/main/cpp/%s.cpp )\n", (const char*)m_name.c_str(), (const char*)m_name.c_str());
     fprintf(f, "find_library( log-lib log )\n");
     fprintf(f, "set(CMAKE_CXX_FLAGS \"${CMAKE_CXX_FLAGS} -Wl,--allow-shlib-undefined -std=gnu++11\")\n");
     fprintf(f, "add_library(lib_shared STATIC IMPORTED)\n");
@@ -7393,7 +7430,7 @@ bool CodeGen_android::SupportingFiles()
     fprintf(f, "set_target_properties(lib_tcs PROPERTIES IMPORTED_LOCATION %s/lib/${ANDROID_ABI}/tcs.a)\n", (const char*)m_folder.c_str());
     fprintf(f, "add_library(lib_ssc STATIC IMPORTED)\n");
     fprintf(f, "set_target_properties(lib_ssc PROPERTIES IMPORTED_LOCATION %s/lib/${ANDROID_ABI}/ssc.a)\n", (const char*)m_folder.c_str());
-    fprintf(f, "target_link_libraries( native-lib android lib_ssc lib_tcs lib_solarpilot lib_lpsolve lib_nlopt lib_shared ${log-lib} )\n");
+    fprintf(f, "target_link_libraries( %s android lib_ssc lib_tcs lib_solarpilot lib_lpsolve lib_nlopt lib_shared ${log-lib} )\n", (const char*)m_name.c_str());
 	fclose(f);
 	// library files - in readme
 /*	size_t num_files = wxDir::GetAllFiles( SamApp::GetRuntimePath() + "/mobile/android", &files); 
