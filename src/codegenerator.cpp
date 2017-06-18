@@ -6959,35 +6959,21 @@ bool CodeGen_ios::FreeSSCModule()
 bool CodeGen_ios::SupportingFiles()
 {
 	// for iOS
-/*	bool ret=true;
-
-	wxArrayString files;
-	size_t num_files = wxDir::GetAllFiles( SamApp::GetRuntimePath() + "/mobile/ios", &files); 
-	ret = (num_files > 0);
-//	Use path to mobile/ios to set library locations.
-	if (ret)
-	{
-		wxString f1, f2, path, file, ext;
-		for (size_t i=0; i<files.Count() && ret; i++)
-		{
-			f1 = files[i];
-			wxFileName::SplitPath(f1, &path, &file, &ext );
-			f2 = m_folder + "/" + file;
-			if (ext.Length() > 0) f2 += "." + ext;
-		    ret &= wxCopyFile(f1, f2);
-		}
-	}
-	if (!ret)
-	{
-
-		wxMessageBox("Please follow latest iOS build instructions at https://sam.nrel.gov/sites/default/files/content/mobile/ios/readme.txt", "iOS build instructions");
-	}
-*/
 	wxString url = SamApp::WebApi("ios_build");
 	if (url.IsEmpty()) url = "https://sam.nrel.gov/sites/default/files/content/mobile/ios/readme.html";
 		wxLaunchDefaultBrowser( url );
 
-	return true;
+#if defined(__WXMSW__)
+    wxString f2 = m_folder + "/ssc.dll";
+#elif defined(__WXOSX__)
+    wxString f2 = m_folder + "/ssc.dylib";
+#elif defined(__WXGTK__)
+    wxString f2 = m_folder + "/ssc.so";
+#else
+    return false;
+#endif
+    return wxRemoveFile(f2);
+   
 }
 
 bool CodeGen_ios::Footer()
@@ -7433,32 +7419,21 @@ bool CodeGen_android::SupportingFiles()
     fprintf(f, "target_link_libraries( %s android lib_ssc lib_tcs lib_solarpilot lib_lpsolve lib_nlopt lib_shared ${log-lib} )\n", (const char*)m_name.c_str());
 	fclose(f);
 	// library files - in readme
-/*	size_t num_files = wxDir::GetAllFiles( SamApp::GetRuntimePath() + "/mobile/android", &files); 
-	ret = (num_files > 0);
-//	Use path to mobile/android to set library locations.
-	if (ret)
-	{
-		wxString f1, f2, path, file, ext;
-		for (size_t i=0; i<files.Count() && ret; i++)
-		{
-			f1 = files[i];
-			wxFileName::SplitPath(f1, &path, &file, &ext );
-			f2 = m_folder + "/" + file;
-			if (ext.Length() > 0) f2 += "." + ext;
-		    ret &= wxCopyFile(f1, f2);
-		}
-	}
-	if (!ret)
-	{
-		wxMessageBox("Please follow latest Android build instructions at https://sam.nrel.gov/sites/default/files/content/mobile/android/readme.txt", "Android build instructions");
-
-
-	}
-*/
 	wxString url = SamApp::WebApi("android_build");
 	if (url.IsEmpty()) url = "https://sam.nrel.gov/sites/default/files/content/mobile/android/readme.html";
 	wxLaunchDefaultBrowser( url );
-	return true;
+
+#if defined(__WXMSW__)
+    wxString f2 = m_folder + "/ssc.dll";
+#elif defined(__WXOSX__)
+    wxString f2 = m_folder + "/ssc.dylib";
+#elif defined(__WXGTK__)
+    wxString f2 = m_folder + "/ssc.so";
+#else
+    return false;
+#endif
+    return wxRemoveFile(f2);
+    
 }
 
 bool CodeGen_android::Footer()
