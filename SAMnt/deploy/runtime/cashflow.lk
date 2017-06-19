@@ -413,6 +413,10 @@ cashflow{ 'Single Owner' } = define()
 	cfline('cf_reserve_equip3', 0);
 	cfline( '' );
 	cfline( '' );
+	cfline('cf_reserve_total', 0);
+	cfline('reserves_interest');
+	cfline( 'cf_reserve_interest', 0);
+
 
 	state_federal_depreciation_tables();
 
@@ -1839,6 +1843,11 @@ cashflow_to_excel{ 'Single Owner' } = define()
 		xl_set( xl, "N/A", "MortgageSizeOfDebt");
 		xl_set( xl, "0", "loan_moratorium" ); //ensure that loan moratorium is zero so Excel cash flow formulas work correctly
 	}
+	
+	//send debt service reserve cash flow items because of iteration with debt fraction input option
+	xl_set( xl, output('cf_reserve_debtservice'), 'cf_reserve_debtservice');
+	xl_set( xl, output('cf_funding_debtservice'), 'cf_funding_debtservice');
+	xl_set( xl, output('cf_disbursement_debtservice'), 'cf_disbursement_debtservice');
 	
 	//send payment option flag
 	if ( value('payment_option') == 0 ) // equal payments
