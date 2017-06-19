@@ -13,17 +13,13 @@ using namespace std;
 Point::Point(){};
 
 Point::Point( const Point &P )
+    : x(P.x), y(P.y), z(P.z)
 {
-    x = P.x;
-    y = P.y; 
-    z = P.z;
 }
 
 Point::Point(double X, double Y, double Z)
+    : x(X), y(Y), z(Z)
 {
-    x = X;
-    y = Y; 
-    z = Z;
 }
 
 void Point::Set(double _x, double _y, double _z)
