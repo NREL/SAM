@@ -653,7 +653,6 @@ bool CodeGen_Base::ShowCodeGenDialog(CaseWindow *cw)
 	strcpy(cfn, (const char*)fn.mb_str(wxConvUTF8));
 	fn = foldername + "/" + wxString::FromAscii(cfn);
 
-
 	wxString testpath, testname,testext;
 	wxFileName::SplitPath(fn,&testpath,&testname,&testext);
 
@@ -739,7 +738,15 @@ bool CodeGen_Base::ShowCodeGenDialog(CaseWindow *cw)
 		if (!cg->Ok())
 			wxMessageBox(cg->GetErrors(), "Code Generator Errors", wxICON_ERROR);
 		else
+		{
+			// Android post processing
+			if (lang ==8)
+			{
+		        wxString fn2 = foldername + "/native-lib.cpp"; // ndk cpp file for project with c++ support
+				if (wxCopyFile(fn,fn2))	wxRemoveFile(fn);
+			}
 			wxLaunchDefaultApplication(foldername);
+		}
 		return cg->Ok();
 	}
 	else
@@ -7043,7 +7050,7 @@ bool CodeGen_android::Input(ssc_data_t p_data, const char *name, const wxString 
             fn_path = fn_name + "." + fn_ext;
 		fprintf(m_fp, "	set_string( data, \"%s\", \"%s\" , mgr, path);\n", name, (const char*)fn_path.c_str());
 		f1 = str_value;
-		f2 = m_folder + "/" + fn_path;
+		f2 = m_folder + "/assets/" + fn_path;
 		wxCopyFile(f1, f2);
 		break;
 	case SSC_NUMBER:
@@ -7057,7 +7064,7 @@ bool CodeGen_android::Input(ssc_data_t p_data, const char *name, const wxString 
 		if (len > array_matrix_threshold)
 		{ // separate csv file (var_name.csv in folder) for each variable
 			wxCSVData csv;
-			wxString fn = folder + "/" + TableElementFileNames(name) + ".csv";
+			wxString fn = folder + "/assets/" + TableElementFileNames(name) + ".csv";
 			// write out as single column data for compatibility with csvread in SDKTool
 			for (int i = 0; i < len; i++)
 			{
@@ -7091,7 +7098,7 @@ bool CodeGen_android::Input(ssc_data_t p_data, const char *name, const wxString 
 		if (len > array_matrix_threshold)
 		{ // separate csv file (var_name.csv in folder) for each variable
 			wxCSVData csv;
-			wxString fn = folder + "/" + TableElementFileNames(name) + ".csv";
+			wxString fn = folder + "/assets/" + TableElementFileNames(name) + ".csv";
 			for (int r = 0; r < nr; r++)
 			{
 				for (int c = 0; c < nc; c++)
@@ -7170,7 +7177,7 @@ bool CodeGen_android::Header()
 	fprintf(m_fp, "	else if (action == SSC_UPDATE)\n");
 	fprintf(m_fp, "	{\n");
 	fprintf(m_fp, "		// print status update to console\n");
-	fprintf(m_fp, "		printf(\"(%%.2f %%) %%s\", f0, s0);\n");
+	fprintf(m_fp, "		printf(\"(%%.2f ) %%s\", f0, s0);\n");
 	fprintf(m_fp, "		return 1; // return 0 to abort simulation as needed.\n");
 	fprintf(m_fp, "	}\n");
 	fprintf(m_fp, "	else\n");
@@ -7301,6 +7308,10 @@ bool CodeGen_android::Header()
     fprintf(m_fp, "    ssc_module_t module;\n");
 	fprintf(m_fp, "\n");
 
+	// for assets folder
+	wxString assets_folder = m_folder + "/assets";
+	if (!wxDirExists(assets_folder))
+		wxFileName::Mkdir(assets_folder);
 	return true;
 }
 
@@ -7343,7 +7354,8 @@ bool CodeGen_android::SupportingFiles()
     fprintf(f, "import android.widget.TextView;\n");
     fprintf(f, "public class MainActivity extends AppCompatActivity {\n");
     fprintf(f, "    static {\n");
-    fprintf(f, "        System.loadLibrary(\"%s\");\n", (const char*)m_name.c_str());
+//    fprintf(f, "        System.loadLibrary(\"%s\");\n", (const char*)m_name.c_str());
+    fprintf(f, "        System.loadLibrary(\"native-lib\");\n");
     fprintf(f, "    }\n");
     fprintf(f, "    @Override\n");
     fprintf(f, "    protected void onCreate(Bundle savedInstanceState) {\n");
@@ -7401,7 +7413,8 @@ bool CodeGen_android::SupportingFiles()
     f = fopen(fn.c_str(), "w");
     if (!f) return false;
     fprintf(f, "cmake_minimum_required(VERSION 3.4.1)\n");
-    fprintf(f, "add_library( %s SHARED src/main/cpp/%s.cpp )\n", (const char*)m_name.c_str(), (const char*)m_name.c_str());
+//    fprintf(f, "add_library( %s SHARED src/main/cpp/%s.cpp )\n", (const char*)m_name.c_str(), (const char*)m_name.c_str());
+    fprintf(f, "add_library( native-lib SHARED src/main/cpp/native-lib.cpp )\n");
     fprintf(f, "find_library( log-lib log )\n");
     fprintf(f, "set(CMAKE_CXX_FLAGS \"${CMAKE_CXX_FLAGS} -Wl,--allow-shlib-undefined -std=gnu++11\")\n");
     fprintf(f, "add_library(lib_shared STATIC IMPORTED)\n");
@@ -7416,7 +7429,8 @@ bool CodeGen_android::SupportingFiles()
     fprintf(f, "set_target_properties(lib_tcs PROPERTIES IMPORTED_LOCATION %s/lib/${ANDROID_ABI}/tcs.a)\n", (const char*)m_folder.c_str());
     fprintf(f, "add_library(lib_ssc STATIC IMPORTED)\n");
     fprintf(f, "set_target_properties(lib_ssc PROPERTIES IMPORTED_LOCATION %s/lib/${ANDROID_ABI}/ssc.a)\n", (const char*)m_folder.c_str());
-    fprintf(f, "target_link_libraries( %s android lib_ssc lib_tcs lib_solarpilot lib_lpsolve lib_nlopt lib_shared ${log-lib} )\n", (const char*)m_name.c_str());
+//    fprintf(f, "target_link_libraries( %s android lib_ssc lib_tcs lib_solarpilot lib_lpsolve lib_nlopt lib_shared ${log-lib} )\n", (const char*)m_name.c_str());
+    fprintf(f, "target_link_libraries( native-lib android lib_ssc lib_tcs lib_solarpilot lib_lpsolve lib_nlopt lib_shared ${log-lib} )\n");
 	fclose(f);
 	// library files - in readme
 	wxString url = SamApp::WebApi("android_build");
