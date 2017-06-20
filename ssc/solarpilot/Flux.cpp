@@ -2173,6 +2173,8 @@ void Flux::fluxDensity(simulation_info *siminfo, FluxSurface &flux_surface, Hvec
 		if(show_progress && i % update_every == 0)
 			siminfo->setCurrentSimulation(i+1);
 		
+        if(! helios.at(i)->IsEnabled() )
+            continue;
 
 		//Get the heliostat normal vector
 		Vect* hv = helios.at(i)->getTowerVector();
