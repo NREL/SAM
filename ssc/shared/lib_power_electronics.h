@@ -107,12 +107,12 @@ public:
 	charge_controller(dispatch_t * dispatch, battery_metrics_t * battery_metrics, double efficiency_1, double efficiency_2);
 	virtual ~charge_controller();
 
-	void initialize(double P_pv, double P_load);
+	void initialize(double P_pv, double P_load, size_t index);
 
 	// function to determine appropriate pv and load to send to battery
 	virtual void preprocess_pv_load() = 0;
 
-	virtual void run(size_t year, size_t hour_of_year, size_t step_of_hour, double P_pv, double P_load) = 0;
+	virtual void run(size_t year, size_t hour_of_year, size_t step_of_hour, size_t index, double P_pv, double P_load) = 0;
 	virtual void compute_to_batt_load_grid(double P_battery_ac_or_dc, double P_pv_ac_or_dc, double P_load_ac, double inverter_efficiency) = 0;
 
 	// return power loss [kW]
@@ -136,7 +136,8 @@ public:
 	double power_grid_to_batt(){ return _P_grid_to_batt; }
 	double power_pv_to_grid(){ return _P_pv_to_grid; }
 	double power_battery_to_grid(){ return _P_battery_to_grid; }
-	double power_loss(){ return _P_loss; }
+	double power_conversion_loss(){ return _P_loss; }
+	double power_system_loss(){ return _P_system_loss; }
 
 	enum {DC_CONNECTED, AC_CONNECTED};
 
@@ -159,6 +160,7 @@ protected:
 	double _P_pv_to_grid;
 	double _P_battery_to_grid;
 	double _P_battery;
+	double _P_system_loss;
 	double _P_loss;
 	double _P_inverter_draw;
 
@@ -187,7 +189,7 @@ public:
 	~dc_connected_battery_controller();
 
 	void preprocess_pv_load();
-	void run(size_t year, size_t hour_of_year, size_t step_of_hour, double P_pv, double P_load);
+	void run(size_t year, size_t hour_of_year, size_t step_of_hour, size_t index, double P_pv, double P_load);
 	void process_dispatch();
 	void compute_to_batt_load_grid(double P_battery_ac, double P_pv_dc, double P_load_ac, double inverter_efficiency);
 	double gen_ac(){ return 0.; };
@@ -206,7 +208,7 @@ public:
 	~ac_connected_battery_controller();
 
 	void preprocess_pv_load();
-	void run(size_t year, size_t hour_of_year, size_t step_of_hour, double P_pv, double P_load);
+	void run(size_t year, size_t hour_of_year, size_t step_of_hour, size_t index, double P_pv, double P_load);
 	void process_dispatch();
 	void compute_to_batt_load_grid( double P_battery_ac, double P_pv_ac, double P_load_ac, double inverter_efficiency = 0.);
 

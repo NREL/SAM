@@ -22,9 +22,11 @@ struct batt_variables
 	int analysis_period;
 	int batt_chem;
 	int batt_dispatch;
+	int batt_voltage_choice;
 	int batt_meter_position;
 	int batt_pv_choice;
 	int batt_target_choice;
+	int batt_loss_choice;
 
 	size_t ncharge;
 	size_t ndischarge;
@@ -44,9 +46,13 @@ struct batt_variables
 
 	util::matrix_t<float> schedule;
 	util::matrix_t<double>  batt_lifetime_matrix;
+	util::matrix_t<double> batt_voltage_matrix;
 
 	std::vector<double> target_power_monthly;
 	std::vector<double> target_power;
+
+	std::vector<double> batt_losses_monthly;
+	std::vector<double> batt_losses;
 
 	int batt_computed_series;
 	int batt_computed_strings;
@@ -129,7 +135,7 @@ struct battstor
 
 	// member data
 	voltage_t *voltage_model;
-	lifetime_t *lifetime_model;
+	lifetime_cycle_t *lifetime_cycle_model;
 	thermal_t *thermal_model;
 	capacity_t *capacity_model;
 	battery_t *battery_model;
@@ -192,6 +198,7 @@ struct battstor
 		*outPVToGrid,
 		*outBatteryToGrid,
 		*outBatteryConversionPowerLoss,
+		*outBatterySystemLoss,
 		*outAnnualPVChargeEnergy,
 		*outAnnualGridChargeEnergy,
 		*outAnnualChargeEnergy,

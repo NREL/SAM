@@ -784,6 +784,12 @@ int util::month_of(double time)
 	return 0;
 }
 
+int util::days_in_month(int month)
+{
+	std::vector<int> days_in_months = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+	return days_in_months[month];
+}
+
 int util::day_of_month(int month, double time)
 {
 	int daynum = ( ((int)(time/24.0)) + 1 );   // day goes 1-365
