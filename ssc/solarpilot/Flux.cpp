@@ -2173,6 +2173,8 @@ void Flux::fluxDensity(simulation_info *siminfo, FluxSurface &flux_surface, Hvec
 		if(show_progress && i % update_every == 0)
 			siminfo->setCurrentSimulation(i+1);
 		
+        if(! helios.at(i)->IsEnabled() )
+            continue;
 
 		//Get the heliostat normal vector
 		Vect* hv = helios.at(i)->getTowerVector();
@@ -2399,6 +2401,20 @@ void Flux::simpleAimPoint(Point *Aim, Point *AimF, Heliostat &H, SolarField &SF)
 	
 
 	return;
+
+}
+
+void Flux::zenithAimPoint(Heliostat &H, Vect &Sun)
+{
+    Point *Aim = H.getAimPoint();
+    Point *AimF = H.getAimPointFluxPlane();
+
+    //the aimpoint bisects the sun and zenith
+    Aim->x = Sun.i / 2. * 1000.;
+    Aim->y = Sun.j / 2. * 1000.;
+    Aim->z = Sun.k / 2. * 1000.;
+
+    AimF->Set(0., 0., 9.e9);
 
 }
 
