@@ -2165,7 +2165,7 @@ void SolarField::radialStaggerPositions(vector<Point> &HelPos)
 		    if(r_coll_temp < r_coll_min) r_coll_min = r_coll_temp; //minimum collision radius in any combination
 	    }
 	    int nr_max = int((radmaxt - radmint)/(r_coll_min*2.)); 
-	    int naz_max = int((radmaxt + radmint)/2.*(_var_map->sf.accept_max.val - _var_map->sf.accept_min.val)/(r_coll_min*2.));
+	    int naz_max = int((radmaxt + radmint)/2.*(_var_map->sf.accept_max.val - _var_map->sf.accept_min.val)*D2R/(r_coll_min*2.));
 	    N_max = nr_max * naz_max;  //Estimate the array size
     }
 
@@ -3159,6 +3159,21 @@ void SolarField::SimulateHeliostatEfficiency(SolarField *SF, Vect &Sun, Heliosta
 	Simulate the heliostats in the specified range
 	*/
 	
+    //if a heliostat has been disabled, handle here and return
+    if( ! helios->IsEnabled() )
+    {
+        helios->setEfficiencyCosine( 0. );
+        helios->setEfficiencyAtmAtten( 0. );
+        helios->setEfficiencyIntercept( 0. );
+        helios->setEfficiencyShading( 0. );
+        helios->setEfficiencyBlocking( 0. );
+        helios->setPowerToReceiver( 0. );
+        helios->setPowerValue( 0. );
+	    
+        helios->calcTotalEfficiency();
+        return;
+    }
+
 	int hid = helios->getId();
 
 	//Cosine loss
@@ -3595,6 +3610,7 @@ void SolarField::calcAllAimPoints(Vect &Sun, sim_params &P) //bool force_simple,
 	//for methods that require sorted heliostats, create the sorted data
 	Hvector hsort;
 	vector<double> ysize;
+    int imsize_last_enabled=0;
 	if(method == var_fluxsim::AIM_METHOD::IMAGE_SIZE_PRIORITY)
     {
         //update images
@@ -3611,6 +3627,16 @@ void SolarField::calcAllAimPoints(Vect &Sun, sim_params &P) //bool force_simple,
 			ysize.push_back(_heliostats.at(i)->getImageSize()[1]);
 		}
 		quicksort(ysize,hsort,0,nh-1);	//Sorts in ascending order
+
+        //find the first enabled heliostat. This will be the last one called.
+        for(size_t i=0; i<hsort.size(); i++)
+        {
+            if( hsort.at(i)->IsEnabled() )
+            {
+                imsize_last_enabled=nh-1-i;
+                break;
+            }
+        }
 	}
 	//--
     if(! P.is_layout)
@@ -3621,47 +3647,69 @@ void SolarField::calcAllAimPoints(Vect &Sun, sim_params &P) //bool force_simple,
 	int update_every = method == var_fluxsim::AIM_METHOD::IMAGE_SIZE_PRIORITY ? max(nh/20,1) : nh+1;
 	for(int i=0; i<nh; i++){
 		
-		switch(method)
-		{
-		//case FluxSimData::AIM_STRATEGY::SIMPLE:	//Simple aim points
-        case var_fluxsim::AIM_METHOD::SIMPLE_AIM_POINTS:
-			//Determine the simple aim point - doesn't account for flux limitations
-			_flux->simpleAimPoint(*_heliostats.at(i), *this);
-			break;
-		//case FluxSimData::AIM_STRATEGY::SIGMA:
-        case var_fluxsim::AIM_METHOD::SIGMA_AIMING:
-			args[1] = -args[1];
-			_flux->sigmaAimPoint(*_heliostats.at(i), *this, args);
-			break;
-		//case FluxSimData::AIM_STRATEGY::PROBABILITY:
-        case var_fluxsim::AIM_METHOD::PROBABILITY_SHIFT:
-			_flux->probabilityShiftAimPoint(*_heliostats.at(i), *this, args);
-			break;
-		//case FluxSimData::AIM_STRATEGY::IMAGE_SIZE:
-        case var_fluxsim::AIM_METHOD::IMAGE_SIZE_PRIORITY:
+        int usemethod = method;
+
+        //hande image size priority separately from the main switch structure
+        if( method == var_fluxsim::AIM_METHOD::IMAGE_SIZE_PRIORITY )
+        {
 			try{
-				args[2] = i == 0 ? 1. : 0.;
-				_flux->imageSizeAimPoint(*hsort.at(nh-i-1), *this, args, i==nh-1);	//Send in descending order
+                if( hsort.at(nh-i-1)->IsEnabled() )     //is it enabled?
+                {
+				    args[2] = i == 0 ? 1. : 0.;
+				    _flux->imageSizeAimPoint(*hsort.at(nh-i-1), *this, args, i==imsize_last_enabled);	//Send in descending order
+                }
+                else
+                {
+                    _flux->zenithAimPoint(*hsort.at(nh-i-1), Sun);
+                    usemethod = -1;
+                }
+
 			}
 			catch(...){
 				return;
 			}
+        }
+        else
+        {
+            //handle all other methods' disabled status here
+            if( ! _heliostats.at(i)->IsEnabled() ) 
+            {
+                //this heliostat is disabled. The aimpoint should point the heliostat to zenith
+                _flux->zenithAimPoint(*_heliostats.at(i), Sun);
+                usemethod = -1;
+            }
+        }
+
+
+		switch(usemethod)
+		{
+        case var_fluxsim::AIM_METHOD::SIMPLE_AIM_POINTS:
+			//Determine the simple aim point - doesn't account for flux limitations
+			_flux->simpleAimPoint(*_heliostats.at(i), *this);
 			break;
-		//case FluxSimData::AIM_STRATEGY::EXISTING:
+        case var_fluxsim::AIM_METHOD::SIGMA_AIMING:
+			args[1] = -args[1];
+			_flux->sigmaAimPoint(*_heliostats.at(i), *this, args);
+			break;
+        case var_fluxsim::AIM_METHOD::PROBABILITY_SHIFT:
+			_flux->probabilityShiftAimPoint(*_heliostats.at(i), *this, args);
+			break;
         case var_fluxsim::AIM_METHOD::KEEP_EXISTING:
 			//Keep existing aim point, but we still need to update the image plane flux point (geometry may have changed)
         {
             _flux->keepExistingAimPoint(*_heliostats.at(i), *this, 0);
 			break;
         }
-        //case FluxSimData::AIM_STRATEGY::FREEZE:
         case var_fluxsim::AIM_METHOD::FREEZE_TRACKING:
             //update the aim point based on the movement of the sun and the resulting shift in the reflected image
             _flux->frozenAimPoint(*_heliostats.at(i), _var_map->sf.tht.val, args);
             break;
+        case -1:
         default:
-			return; 
-		}		
+            //nothing
+            break;
+		}
+
 
 		//Update the progress bar
         if(! P.is_layout )
@@ -3830,8 +3878,9 @@ double SolarField::getReceiverPipingHeatLoss()
 }
 
 
-void SolarField::HermiteFluxSimulation(Hvector &helios, bool keep_existing_profile){
-	if( ! keep_existing_profile )
+void SolarField::HermiteFluxSimulation(Hvector &helios, bool keep_existing_profile)
+{
+	if( ! keep_existing_profile ) 
 		AnalyticalFluxSimulation(helios);
 	CalcDimensionalFluxProfiles(helios);
 }

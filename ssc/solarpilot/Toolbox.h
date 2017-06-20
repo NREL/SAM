@@ -573,6 +573,11 @@ inline bool operator==(const Point& lhs, const Point& rhs)
 
 struct Vect {
 	double i, j, k;
+
+    Vect(double i, double j, double k);
+    Vect();
+    Vect(const Vect &V);
+
 	void Set(double _i, double _j, double _k);
 	void Set( Vect &V );
 	void Add( Vect &V );

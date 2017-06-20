@@ -13,17 +13,13 @@ using namespace std;
 Point::Point(){};
 
 Point::Point( const Point &P )
+    : x(P.x), y(P.y), z(P.z)
 {
-    x = P.x;
-    y = P.y; 
-    z = P.z;
 }
 
 Point::Point(double X, double Y, double Z)
+    : x(X), y(Y), z(Z)
 {
-    x = X;
-    y = Y; 
-    z = Z;
 }
 
 void Point::Set(double _x, double _y, double _z)
@@ -83,6 +79,17 @@ double& Point::operator [](const int &index){
 bool Point::operator <(const Point &p) const {
 	return this->x < p.x || (this->x == p.x && this->y < p.y);
 };
+
+Vect::Vect(){};
+
+Vect::Vect( const Vect &V )
+    : i(V.i), j(V.j), k(V.k)
+{}
+
+Vect::Vect(double i, double j, double k )
+    : i(i), j(j), k(k)
+{
+}
 
 void Vect::Set(double _i, double _j, double _k)
 {
