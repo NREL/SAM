@@ -171,9 +171,9 @@ class thermal_t;
 class voltage_t
 {
 public:
-	voltage_t(int num_cells_series, int num_strings, double voltage);
+	voltage_t(int mode, int num_cells_series, int num_strings, double voltage, util::matrix_t<double> &voltage_table);
 	virtual voltage_t * clone()=0;
-	void copy(voltage_t *&);
+	virtual void copy(voltage_t *&);
 	virtual ~voltage_t(){};
 
 	virtual void updateVoltage(capacity_t * capacity, thermal_t * thermal, double dt)=0;
@@ -183,13 +183,53 @@ public:
 	double cell_voltage(); // voltage of one cell
 	double R(); // computed resistance
 
-protected:
-	int _num_cells_series;    // number of cells in series
-	int _num_strings;  // addition number in parallel
-	double _cell_voltage; // closed circuit voltage per cell [V]
-	double _cell_voltage_nominal; // nominal cell voltage [V]
-	double _R;
+	enum VOLTAGE_CHOICE{VOLTAGE_MODEL, VOLTAGE_TABLE};
 
+protected:
+	int _mode;					  // voltage model (0), voltage table (1)
+	int _num_cells_series;        // number of cells in series
+	int _num_strings;             // addition number in parallel
+	double _cell_voltage;         // closed circuit voltage per cell [V]
+	double _cell_voltage_nominal; // nominal cell voltage [V]
+	double _R;                    // internal resistance (Ohm)
+	util::matrix_t<double> _batt_voltage_matrix;  // voltage vs depth-of-discharge
+};
+
+// A row in the table
+class table_point
+{
+public:
+	table_point(double DOD = 0., double V = 0.) :
+		_DOD(DOD), _V(V){}
+	double DOD() const{ return _DOD; }
+	double V() const{ return _V; }
+
+private:
+	double _DOD;
+	double _V;
+};
+
+struct byDOD
+{
+	bool operator()(table_point const &a, table_point const &b){ return a.DOD() < b.DOD(); }
+};
+
+
+class voltage_table_t : public voltage_t
+{
+public:
+	voltage_table_t(int num_cells_series, int num_strings, double voltage, util::matrix_t<double> &voltage_table);
+	voltage_table_t * clone();
+	void copy(voltage_t *&);
+	void updateVoltage(capacity_t * capacity, thermal_t * thermal, double dt);
+
+protected:
+
+	bool exactVoltageFound(double DOD, double &V);
+	void prepareInterpolation(double & DOD_lo, double & V_lo, double & DOD_hi, double & V_hi, double DOD);
+
+private:
+	std::vector<table_point> _voltage_table;
 };
 
 // Shepard + Tremblay Model
@@ -230,7 +270,6 @@ public:
 	void copy(voltage_t *&);
 
 	void updateVoltage(capacity_t * capacity, thermal_t * thermal, double dt);
-	//double battery_voltage();
 
 protected:
 	double voltage_model(double q0, double qmax, double T);
@@ -245,17 +284,17 @@ private:
 };
 
 /*
-Lifetime class.  Currently only one lifetime model anticipated
+Lifetime class.  Currently only one lifetime cycling model anticipated
 */
 
-class lifetime_t
+class lifetime_cycle_t
 {
 
 public:
-	lifetime_t(const util::matrix_t<double> &cyles_vs_DOD, const int replacement_option, const double replacement_capacity  );
-	~lifetime_t();
-	lifetime_t * clone();
-	void copy(lifetime_t *&);
+	lifetime_cycle_t(const util::matrix_t<double> &cyles_vs_DOD, const int replacement_option, const double replacement_capacity);
+	~lifetime_cycle_t();
+	lifetime_cycle_t * clone();
+	void copy(lifetime_cycle_t *&);
 
 	void rainflow(double DOD);
 	bool check_replaced();
@@ -307,7 +346,15 @@ protected:
 		LT_RERANGE
 	};
 };
-
+/*
+Lifetime calendar model
+*/
+class lifetime_calendar_t
+{
+public:
+	lifetime_calendar_t();
+	virtual ~lifetime_calendar_t();
+};
 /*
 Thermal classes
 */
@@ -358,17 +405,21 @@ Losses Base class
 class losses_t
 {
 public:
-	losses_t(lifetime_t *, thermal_t *, capacity_t*);
+	losses_t(lifetime_cycle_t *, thermal_t *, capacity_t*, double_vec batt_system_losses);
 	losses_t * clone();
 	void copy(losses_t *&);
 
 	void run_losses(double dt_hour);
 	void replace_battery();
+	double battery_system_loss(int i){ return _system_losses[i]; }
+
+	enum { MONTHLY, TIMESERIES};
 
 protected:
-	lifetime_t * _lifetime;
+	lifetime_cycle_t * _lifetime_cycle;
 	thermal_t * _thermal;
 	capacity_t * _capacity;
+	double_vec _system_losses;
 	int _nCycle;
 };
 
@@ -390,7 +441,7 @@ public:
 	~battery_t(){};
 	void delete_clone();
 
-	void initialize(capacity_t *, voltage_t *, lifetime_t *, thermal_t *, losses_t *);
+	void initialize(capacity_t *, voltage_t *, lifetime_cycle_t *, thermal_t *, losses_t *);
 
 	// Run all
 	void run(double P);
@@ -404,7 +455,7 @@ public:
 
 	capacity_t * capacity_model() const;
 	voltage_t * voltage_model() const;
-	lifetime_t * lifetime_model() const;
+	lifetime_cycle_t * lifetime_cycle_model() const;
 	thermal_t * thermal_model() const;
 	losses_t * losses_model() const;
 
@@ -423,12 +474,12 @@ public:
 
 	double timestep_hour();
 
-	enum CHEMS{ LEAD_ACID, LITHIUM_ION, VANADIUM_REDOX };
+	enum CHEMS{ LEAD_ACID, LITHIUM_ION, VANADIUM_REDOX, IRON_FLOW};
 
 
 private:
 	capacity_t * _capacity;
-	lifetime_t * _lifetime;
+	lifetime_cycle_t * _lifetime_cycle;
 	voltage_t * _voltage;
 	thermal_t * _thermal;
 	losses_t * _losses;
