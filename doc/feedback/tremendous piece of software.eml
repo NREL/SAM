@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 X-Account-Key: account1
 X-UIDL: 11e7-1b10-7980824c-a8ba-00144fe1eda8
 X-Mozilla-Status: 0001
@@ -92,3 +93,99 @@ ice, the recipient should ensure they are actually virus free.
 
 
 
+=======
+X-Account-Key: account1
+X-UIDL: 11e7-1b10-7980824c-a8ba-00144fe1eda8
+X-Mozilla-Status: 0001
+X-Mozilla-Status2: 00000000
+X-Mozilla-Keys:                                                                                 
+Status:  U
+Return-Path: <SAM.Support@nrel.gov>
+Received: from mx-ailes.atl.sa.earthlink.net ([207.69.195.163])
+	by mdl-increase.atl.sa.earthlink.net (EarthLink SMTP Server) with SMTP id 1CWf0C6dV3Nl36Z0; Thu, 6 Apr 2017 17:32:02 -0400 (EDT)
+Received: from xv12edg02.nrel.gov ([192.174.58.133])
+	by mx-ailes.atl.sa.earthlink.net (EarthLink SMTP Server) with ESMTP id 1CWf0B5OQ3Nl36r1
+	for <paulgilman@earthlink.net>; Thu, 6 Apr 2017 17:32:01 -0400 (EDT)
+Content-Language: en-US
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+DKIM-Signature: v=1; a=rsa-sha1; d=nrel.gov; s=s1024; c=relaxed/relaxed;
+	t=1491514319; h=from:subject:to:date:message-id;
+	bh=yhgX3Kcwh1JDcnFEzto+QHFRvmE=;
+	b=P5QtYOFd1obK61bur6yWvp8etqgXjuheLC7htt0dWFrMfZYeTCQLIbgKIx5nqxRhZfr/CicXQ8Y
+	AB99n+N39JiS2EWnyXtL+EWAw0Xmw9gkI7VKy0KfM7PlSXLeZkPKEzdhnlvcoq5oTRCy+I97uZcVr
+	zXoQ8xgQAyD4vbK0DeE=
+Received: from XP11MBX2.nrel.gov (10.20.41.67) by xv12edg02.nrel.gov
+ (192.174.58.133) with Microsoft SMTP Server (TLS) id 15.0.1210.3; Thu, 6 Apr
+ 2017 15:31:59 -0600
+Received: from XP11MBX3.nrel.gov (10.20.41.68) by xp11mbx2.nrel.gov
+ (10.20.41.67) with Microsoft SMTP Server (TLS) id 15.0.1178.4; Thu, 6 Apr
+ 2017 15:31:56 -0600
+Received: from XP11MBX3.nrel.gov ([fe80::877:e0d2:247:1c13]) by
+ xp11mbx3.nrel.gov ([fe80::877:e0d2:247:1c13%14]) with mapi id 15.00.1178.000;
+ Thu, 6 Apr 2017 15:31:56 -0600
+From: SAM Support <SAM.Support@nrel.gov>
+To: "'paulgilman@earthlink.net'" <paulgilman@earthlink.net>
+Subject: tremendous piece of software
+Thread-Topic: tremendous piece of software
+Thread-Index: AQHSrx031FeUtDryQU2LhMdd319OwA==
+Date: Thu, 6 Apr 2017 21:31:55 +0000
+Message-ID: <1491514322582.78594@nrel.gov>
+References: <b7b7b56c042a4397a01e3d6455c14c67@CCEXCHMAIL-3.cns.cranfield.ac.uk>
+In-Reply-To: <b7b7b56c042a4397a01e3d6455c14c67@CCEXCHMAIL-3.cns.cranfield.ac.uk>
+Accept-Language: en-US
+X-MS-Has-Attach:
+X-MS-TNEF-Correlator:
+x-ms-exchange-transport-fromentityheader: Hosted
+x-originating-ip: [10.20.41.6]
+MIME-Version: 1.0
+X-ELNK-TLSInbound: 1
+X-Authentication-Results: dkim="pass"; (0:no or failed dkim processing); dmarc="quarantine"; (2); dwl="miss"; den="not exempt"
+X-ELNK-AV: 0
+X-ELNK-Info: sbv=0; sbrc=.0; sbf=0b; sbw=000;
+
+________________________________
+From: Hussaini, Zaharaddeen ali <Zaharaddeen-ali.Hussaini@cranfield.ac.uk>
+Sent: Thursday, April 6, 2017 12:43 PM
+To: SAM Support
+Subject: Heliostat Field Layout in Power Tower
+
+Hello,
+
+Thank you very much for this tremendous piece of software. Although I have =
+not modelled anything on yet, as I am still reading and trying to tie down =
+all the details, before doing so.
+
+I wish to know if it is possible to actually develop a custom field layout,=
+ more specifically, introduce multiple towers on the field. Can that be don=
+e with the software or perhaps if you could be so kind to shed some light o=
+n how it could be done with the code.
+
+Thank you,
+
+Zaharaddeen ali Hussaini
+Researcher
+School of Aerospace, Transport and Manufacturing
+Cranfield University, Cranfield, Bedfordshire MK43 0AL
+E: Zaharaddeen-ali.Hussaini@cranfield.ac.uk
+W: www.cranfield.ac.uk
+
+
+This email and any attachments to it may be confidential and are intended o=
+nly for the named addressee. If you are not the named addressee, please acc=
+ept our apology, notify the sender immediately and then delete the email. W=
+e request that you do not disclose, use, copy or distribute any information=
+ within it.
+
+Any opinions expressed are not necessarily the corporate view of Cranfield =
+University. This email is not intended to be contractually binding unless s=
+pecifically stated and the sender is an authorised University signatory.
+
+Whilst we have taken steps to ensure that this email and all attachments ar=
+e free from any virus, we advise that, in keeping with good computing pract=
+ice, the recipient should ensure they are actually virus free.
+
+
+
+
+>>>>>>> 2c85b0ce6a18646fb532eb72a604d646517b67ae

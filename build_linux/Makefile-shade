@@ -9,8 +9,13 @@ LKLIB = $(LKDIR)/lkuxwx3.a
 
 CC = gcc
 CXX = g++
+<<<<<<< HEAD
 CFLAGS = -g -DLK_USE_WXWIDGETS -DS3D_STANDALONE -I. -I$(SRCDIR) -I$(WEXDIR)/include -I$(LKDIR)/include `wx-config-3 --cflags`
 LDFLAGS = `wx-config-3 --libs propgrid` `wx-config-3 --libs aui` `wx-config-3 --libs stc` `wx-config-3 --libs richtext` `wx-config-3 --libs` -lm $(LKLIB) $(WEXLIB) -lstdc++ -lcurl
+=======
+CFLAGS = -g -DLK_USE_WXWIDGETS -DS3D_STANDALONE -I. -I$(SRCDIR) -I$(WEXDIR)/include -I$(LKDIR)/include `wx-config --cflags`
+LDFLAGS = `wx-config --libs propgrid` `wx-config --libs aui` `wx-config --libs stc` `wx-config --libs richtext` `wx-config --libs` -lm $(LKLIB) $(WEXLIB) -lstdc++ -lcurl
+>>>>>>> 2c85b0ce6a18646fb532eb72a604d646517b67ae
 
 CXXFLAGS=-std=c++11 $(CFLAGS)
 OBJCXXFLAGS=-stdlib=libc++ -std=c++11

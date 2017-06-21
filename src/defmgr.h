@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #ifndef __defmgr_h
 #define __defmgr_h
 
@@ -55,10 +56,70 @@ private:
 	wxCheckBox *m_changeType;
 	wxCheckBox *m_enableAdd;
 
+=======
+#ifndef __defmgr_h
+#define __defmgr_h
+
+#include <wx/panel.h>
+#include <wx/arrstr.h>
+
+class wxTextCtrl;
+class wxCheckListBox;
+class wxCheckBox;
+class wxButton;
+class wxStaticTextCtrl;
+class wxChoice;
+class AFDataMatrixCtrl;
+
+class ValueEditor : public wxPanel
+{
+public:
+	ValueEditor( wxWindow *parent );
+
+	int GetType();
+	void Set( const VarValue &vv );
+	VarValue Get();
+
+private:
+	wxChoice *m_type;
+	wxTextCtrl *m_text;
+	AFDataMatrixCtrl *m_matrix;
+	wxListBox *m_fields;
+	wxButton *m_addField, *m_removeField, *m_editField, *m_clearTable;
+	wxStaticText *m_valLabel, *m_tabLabel;
+	
+	void ValueToForm();
+	void UpdateFormUI();
+	void OnCommand( wxCommandEvent & );
+	void OnEditField( wxCommandEvent & );
+
+	VarValue m_val;
+
+	DECLARE_EVENT_TABLE();
+};
+
+
+class DefaultsManager : public wxPanel
+{
+public:
+	DefaultsManager( wxWindow *parent );
+
+private:
+	wxTextCtrl *m_varName;
+	ValueEditor *m_value;
+	
+	wxTextCtrl *m_output;
+	wxCheckListBox *m_configList;
+	wxArrayString m_techList, m_finList;
+	wxCheckBox *m_changeType;
+	wxCheckBox *m_enableAdd;
+
+>>>>>>> 2c85b0ce6a18646fb532eb72a604d646517b67ae
 	
 	void ClearLog();
 	void Log(const wxString &s);
 
+<<<<<<< HEAD
 	void OnQuery(wxCommandEvent &evt);
 	void OnModify(wxCommandEvent &evt);
 	void OnLoad(wxCommandEvent &evt);
@@ -73,3 +134,19 @@ private:
 };
 
 #endif
+=======
+	void OnQuery(wxCommandEvent &evt);
+	void OnModify(wxCommandEvent &evt);
+	void OnLoad(wxCommandEvent &evt);
+	void OnLookupVar( wxCommandEvent &evt );
+	void OnDeleteVar( wxCommandEvent &evt );
+	void OnPopupMenu( wxCommandEvent &evt );
+	void OnListRightClick( wxMouseEvent &evt );
+
+	wxString LookupVariable();
+
+	DECLARE_EVENT_TABLE();
+};
+
+#endif
+>>>>>>> 2c85b0ce6a18646fb532eb72a604d646517b67ae
