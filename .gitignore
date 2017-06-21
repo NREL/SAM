@@ -297,7 +297,6 @@ __pycache__/
 *.d
 *.bin
 *.mod
-*.run
 
 # Specific SAM build ignores
 SDKtool
