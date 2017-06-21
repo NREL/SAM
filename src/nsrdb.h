@@ -42,11 +42,7 @@ public:
 		{
 			display = location + "_" + name + "_" + type + "_" + interval + "_" + year;
 		}
-<<<<<<< HEAD
 	};
-=======
-	};
->>>>>>> 2c85b0ce6a18646fb532eb72a604d646517b67ae
 
 
 private:
