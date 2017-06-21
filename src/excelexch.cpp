@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 #include <wx/dialog.h>
 #include <wx/datstrm.h>
 #include <wx/grid.h>
@@ -119,128 +118,6 @@ bool ExcelExchange::Read( wxInputStream &_I )
 
 	return in.Read8() == code;
 }
-=======
-#include <wx/dialog.h>
-#include <wx/datstrm.h>
-#include <wx/grid.h>
-#include <wx/statline.h>
-#include <wx/busyinfo.h>
-
-#include <wex/extgrid.h>
-#include <wex/exttext.h>
-#include <wex/radiochoice.h>
-#include <wex/utils.h>
-#ifdef __WXMSW__
-#include <wex/ole/excelauto.h>
-#endif
-
-#include "simulation.h"
-#include "casewin.h"
-#include "case.h"
-#include "main.h"
-#include "excelexch.h"
-
-
-ExcelExchange::ExcelExchange()
-{
-	Enabled = false;
-}
-
-
-void ExcelExchange::Copy(ExcelExchange &rhs)
-{
-	Enabled = rhs.Enabled;
-	ExcelFile = rhs.ExcelFile;
-
-	Vars.clear();
-	for (size_t i = 0; i < rhs.Vars.size(); i++)
-	{
-		ExchVar ev;
-		ev.Name = rhs.Vars[i].Name;
-		ev.Range = rhs.Vars[i].Range;
-		ev.Type = rhs.Vars[i].Type;
-		Vars.push_back(ev);
-	}
-
-	Summary.clear();
-	for (size_t i = 0; i < rhs.Summary.size(); i++)
-	{
-		Captured c;
-		c.Name = rhs.Summary[i].Name;
-		c.Range = rhs.Summary[i].Range;
-		c.Value = rhs.Summary[i].Value;
-		Summary.push_back(c);
-	}
-}
-
-
-void ExcelExchange::Write( wxOutputStream &_O )
-{
-	wxDataOutputStream out(_O);
-
-	out.Write8( 0x4c );
-	out.Write8( 2 );
-
-	out.Write8( Enabled ? 1 : 0 );
-	out.WriteString( ExcelFile );
-
-	out.Write32( Vars.size() );
-	for( size_t i=0;i<Vars.size();i++ )
-	{
-		out.WriteString( Vars[i].Name );
-		out.WriteString( Vars[i].Range );
-		out.Write8( Vars[i].Type );
-	}
-	
-	out.Write32( Summary.size() );
-	for( size_t i=0;i<Summary.size();i++ )
-	{
-		out.WriteString( Summary[i].Name );
-		out.WriteString( Summary[i].Range );
-		out.WriteString( Summary[i].Value );
-	}
-
-	out.Write8( 0x4c );
-}
-
-bool ExcelExchange::Read( wxInputStream &_I )
-{
-	wxDataInputStream in(_I);
-
-	wxUint8 code = in.Read8();
-	wxUint8 ver = in.Read8();
-	
-	Enabled = (in.Read8() != 0);
-	ExcelFile = in.ReadString();
-
-	Vars.clear();
-	size_t n = in.Read32();
-	for( size_t i=0;i<n;i++ )
-	{
-		ExchVar ev;
-		ev.Name = in.ReadString();
-		ev.Range = in.ReadString();
-		ev.Type = in.Read8();
-		Vars.push_back( ev );
-	}
-	
-	if ( ver >= 2 )
-	{
-		n = in.Read32();
-		Summary.clear();
-		for( size_t i=0;i<n;i++ )
-		{
-			Captured c;
-			c.Name = in.ReadString();
-			c.Range = in.ReadString();
-			c.Value = in.ReadString();
-			Summary.push_back( c );
-		}
-	}
-
-	return in.Read8() == code;
-}
->>>>>>> 2c85b0ce6a18646fb532eb72a604d646517b67ae
 
 enum {
   ID_btnSelectExcelFile=wxID_HIGHEST+492,
@@ -251,11 +128,7 @@ enum {
   ID_lstVariables,
   ID_btnRemoveAll,
   ID_btnRemoveVar,
-<<<<<<< HEAD
   ID_btnAddVar };
-=======
-  ID_btnAddVar };
->>>>>>> 2c85b0ce6a18646fb532eb72a604d646517b67ae
 
 class ExcelExchDialog : public wxDialog
 {
@@ -264,19 +137,11 @@ class ExcelExchDialog : public wxDialog
 	wxRadioChoice *rbgToFrom;
 	wxCheckBox *chkEnableExch;
 	wxListBox *lstVariables;
-<<<<<<< HEAD
 
 	Case *m_case;
 	ConfigInfo *m_ci;
 	CaseWindow *m_caseWin;
 	ExcelExchange m_exch;
-=======
-
-	Case *m_case;
-	ConfigInfo *m_ci;
-	CaseWindow *m_caseWin;
-	ExcelExchange m_exch;
->>>>>>> 2c85b0ce6a18646fb532eb72a604d646517b67ae
 
 public:
 
@@ -475,7 +340,6 @@ public:
 	}
 
 	bool ChooseVarsDialog( wxArrayString &list )
-<<<<<<< HEAD
 	{
 		wxArrayString names;
 		wxArrayString labels;
@@ -507,39 +371,6 @@ public:
 		}
 
 		wxSortByLabels(names, labels);
-=======
-	{
-		wxArrayString names;
-		wxArrayString labels;
-
-		for( VarInfoLookup::iterator it = m_ci->Variables.begin();
-			it != m_ci->Variables.end();
-			++it )
-		{
-			VarInfo &vi = *(it->second);
-
-			if ( !vi.Label.IsEmpty()
-				&& !(vi.Flags & VF_INDICATOR) )
-			{
-				if ( vi.Type == VV_NUMBER && vi.IndexLabels.size() > 0 )
-					continue;
-
-				wxString label;
-				if ( !vi.Group.IsEmpty() )
-					label = vi.Group + "/" + vi.Label;
-				else
-					label = vi.Label;
-
-				if ( vi.Flags & VF_CALCULATED || vi.Flags & VF_LIBRARY )
-					label += " (Send only)";
-				
-				names.Add( it->first );
-				labels.Add( label );
-			}
-		}
-
-		wxSortByLabels(names, labels);
->>>>>>> 2c85b0ce6a18646fb532eb72a604d646517b67ae
 		return SelectVariableDialog::Run("Choose Excel Exchange Variables", names, labels, list);
 	}
 
@@ -651,7 +482,6 @@ BEGIN_EVENT_TABLE( ExcelExchDialog, wxDialog )
 	EVT_RADIOBUTTON( ID_rbgToFrom, ExcelExchDialog::OnDataChange)
 	EVT_CHECKBOX( ID_chkEnableExch, ExcelExchDialog::OnDataChange )
 	EVT_BUTTON( wxID_HELP, ExcelExchDialog::OnHelp )
-<<<<<<< HEAD
 END_EVENT_TABLE()
 
 bool ExcelExchange::ShowExcelExchangeDialog( ExcelExchange &exch, CaseWindow *cw )
@@ -922,275 +752,3 @@ int ExcelExchange::RunExcelExchange( ExcelExchange &ex, VarTable &inputs, Simula
 	return 0;
 #endif
 }
-=======
-END_EVENT_TABLE()
-
-bool ExcelExchange::ShowExcelExchangeDialog( ExcelExchange &exch, CaseWindow *cw )
-{
-	ExcelExchDialog dialog(  SamApp::Window(), wxID_ANY );
-	dialog.CenterOnParent();
-	dialog.Set( cw, exch );
-	if ( wxID_OK == dialog.ShowModal() )
-	{
-		dialog.Get( exch );
-		return true;
-	}
-	else
-		return false;
-}
-
-
-#define ALPHA_MIN 'a'
-#define ALPHA_MAX 'z'
-#define LASTCHAR(x) tolower(x[x.Len()-1])
-
-static wxString ConvertToBase26(unsigned int val)
-{
-	wxString result;
-	do
-	{
-		result.Prepend((char)( (val-1) % 26 + 'A'));
-		val = (val-1)/26;
-	}while(val>0);
-	return result;
-}
-
-static unsigned int ConvertFromBase26(const wxString &val)
-{
-	unsigned int result = 0;
-	const char *cval = val.c_str();
-	
-	while (cval && *cval)
-		result = result*26 + toupper(*cval++)-'A'+1;
-
-	return result;
-}
-
-static wxArrayString EnumerateAlphaIndex(const wxString &_start, const wxString &_end)
-{
-	unsigned int istart = ConvertFromBase26(_start);
-	unsigned int iend = ConvertFromBase26(_end);
-	
-	wxArrayString values;
-	while (istart <= iend)
-	{
-		values.Add( ConvertToBase26(istart) );
-		istart++;
-	}
-	return values;
-}
-
-
-#ifdef __WXMSW__
-
-bool ExcelExchange::ParseAndCaptureRange( const wxString &range, wxString &val, wxExcelAutomation &xl )
-{
-	val.Empty();
-
-	int i;
-	int colonpos = range.Find(':');
-	if (colonpos > 0 && colonpos < (int)range.Len()-1)
-	{
-		wxArrayString ranges;
-		wxArrayString values;
-
-		if (isdigit(range[colonpos+1]))
-		{
-			// numerical range,i.e A1:3
-
-			wxString s_colname; // collect the column name
-			for (i=0;i<(int)range.Len() && isalpha(range[i]);i++)
-				s_colname += range[i];
-
-			wxString s_startrow,s_endrow; // collect the start/end rows
-			for (i;i<(int)range.Len() && isdigit(range[i]);i++)
-				s_startrow += range[i];
-
-			i++; // skip colon
-
-			for (i;i<(int)range.Len() && isdigit(range[i]);i++)
-				s_endrow += range[i];
-
-			int startrow = atoi(s_startrow.c_str());
-			int endrow = atoi(s_endrow.c_str());
-
-			if (startrow < 1) startrow = 1;
-			if (endrow < startrow) endrow = startrow;
-
-			bool ok = true;
-			for (i=startrow;i<=endrow && ok;i++)
-			{
-				wxString cur_range = s_colname + wxString::Format("%d",i);
-				wxString data;
-				ok = xl.GetRangeValue(cur_range, data);
-				if (ok)	values.Add( data );
-			}
-
-			if (ok) val = wxJoin(values, ',');
-
-			return ok;
-		}
-		else
-		{
-			// alphabetical range, i.e. A:EE3
-			wxString s_startcol, s_endcol, s_row;
-			for (i=0;i<(int)range.Len() && isalpha(range[i]);i++)
-				s_startcol += range[i];
-
-			i++; // skip colon;
-			for (i;i<(int)range.Len() && isalpha(range[i]);i++)
-				s_endcol += range[i];
-
-			for (i;i<(int)range.Len() && isdigit(range[i]);i++)
-				s_row += range[i];
-
-			wxArrayString colnames = EnumerateAlphaIndex(s_startcol, s_endcol);
-
-			bool ok = true;
-			for (i=0;i<(int)colnames.Count();i++)
-			{
-				wxString cur_range = colnames[i] + s_row;
-				wxString data;
-				ok = xl.GetRangeValue( cur_range, data );
-				if (ok)	values.Add( data );
-			}
-
-			if (ok) val = wxJoin(values, ',');
-			return ok;
-		}
-	}
-	else
-		return xl.GetRangeValue(range, val);
-}
-
-#endif
-
-
-
-int ExcelExchange::RunExcelExchange( ExcelExchange &ex, VarTable &inputs, Simulation *sim )
-{
-	ex.Summary.clear();
-
-#ifdef __WXMSW__
-	if ( !ex.Enabled || ex.Vars.size() == 0 ) return 0;
-
-
-	wxExcelAutomation xl;
-	wxArrayString msgs;
-	
-	wxBusyInfo busy("Exchanging data with Excel...");
-
-	// open the referenced excel file
-	wxString fn = ex.ExcelFile;
-	wxString sam_file_path = wxPathOnly( SamApp::Window()->GetProjectFileName() );
-	if (wxPathOnly(fn) == "" && sam_file_path != "")
-		fn = sam_file_path + "/" + fn;
-
-	fn.Replace("\\", "/");
-	fn.Replace("//", "/");
-	fn.Replace("${SAMPLES}", SamApp::GetRuntimePath() + "/samples");
-
-	if (!wxFileExists(fn))
-	{
-		wxMessageBox("The referenced Excel file does not exist:\n\n" + fn);
-		return -1;
-	}
-
-	if (!xl.StartExcel() || !xl.OpenFile( fn ))
-	{
-		wxMessageBox("Excel Exchange Error:\n\n" + xl.GetLastError());
-		return -1;
-	}
-
-	xl.Show(true); // for now show the spread sheets
-
-	// handle all 'sent items'
-	for (size_t i=0;i<ex.Vars.size();i++)
-	{
-		if ( ex.Vars[i].Type != SEND_TO )
-			continue; // skip capture from items
-
-		VarValue *vv = inputs.Get( ex.Vars[i].Name );
-		if ( !vv )
-		{
-			msgs.Add("Could not find variable " + ex.Vars[i].Name + " so skipping");
-			continue;
-		}
-
-		if ( !xl.SetRangeValue( ex.Vars[i].Range,  vv->AsString() ) )
-		{
-			msgs.Add("Could not set range " + ex.Vars[i].Range + " to value " + vv->AsString() );
-			continue;
-		}
-	}
-
-	int ncaptured = 0;
-
-	// handle all 'capture items'
-	for (size_t i=0;i<ex.Vars.size();i++)
-	{
-		if ( ex.Vars[i].Type != CAPTURE_FROM )
-			continue; // skip sent to items
-		
-		VarValue *v = inputs.Get( ex.Vars[i].Name );
-		if (!v)
-		{
-			msgs.Add("Could not find TARGET variable " + ex.Vars[i].Name + " so skipping");
-			continue;
-		}
-
-		wxString sval;
-		if (!ParseAndCaptureRange( ex.Vars[i].Range, sval, xl ))
-		{
-			msgs.Add("Could not GET range " + ex.Vars[i].Range);
-			continue;
-		}
-
-		VarValue vval;
-		if ( !VarValue::Parse( v->Type(), sval, vval ) )
-		{
-			msgs.Add("Invalid value '" + sval + "' at range '" + ex.Vars[i].Range + "' for variable '" + ex.Vars[i].Name);
-			continue;
-		}
-		else
-		{
-			// override the variable value in the simulation object
-			sim->Override( ex.Vars[i].Name, vval );
-
-			// update ui input value per Paul 3/6/15
-			Case *c = sim->GetCase();
-			if (VarValue *vv = c->Values().Get(ex.Vars[i].Name))
-			{
-				vv->Copy(vval);
-				c->VariableChanged(ex.Vars[i].Name);
-			}
-
-			// log successful exchange transaction
-			// will be shown in results summary window
-
-			Captured cc;
-			cc.Name = ex.Vars[i].Name;
-			cc.Value = sval;
-			cc.Range = ex.Vars[i].Range;
-			ex.Summary.push_back(cc);
-		}
-
-		ncaptured++;
-	}
-
-	xl.CloseAllNoSave();
-	xl.QuitExcel();
-		
-	// notify errors
-	if (msgs.Count() > 0)
-	{
-		wxMessageBox("Excel Exchange did not finish successfully:\n\n" + wxJoin(msgs, '\n'));
-		return ncaptured;
-	}
-
-	return ncaptured;
-#else
-	return 0;
-#endif
-}
->>>>>>> 2c85b0ce6a18646fb532eb72a604d646517b67ae
