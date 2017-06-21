@@ -1,0 +1,603 @@
+\hypertarget{sscapi_8h}{\subsection{sscapi.\-h File Reference}
+\label{sscapi_8h}\index{sscapi.\-h@{sscapi.\-h}}
+}
+
+
+S\-S\-C\-: S\-A\-M Simulation Core.  
+
+
+\subsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{sscapi_8h_a41d524158813079fff1118377604a80b}{\#define {\bfseries S\-S\-C\-E\-X\-P\-O\-R\-T}}\label{sscapi_8h_a41d524158813079fff1118377604a80b}
+
+\end{DoxyCompactItemize}
+\begin{Indent}{\bf Data types\-:}\par
+{\em Possible data types for variables in an ssc\-\_\-data\-\_\-t\-: }\begin{DoxyCompactItemize}
+\item 
+\hypertarget{sscapi_8h_abcf40c59544491ea45523ad3ce71e0ca}{\#define {\bfseries S\-S\-C\-\_\-\-I\-N\-V\-A\-L\-I\-D}~0}\label{sscapi_8h_abcf40c59544491ea45523ad3ce71e0ca}
+
+\item 
+\hypertarget{sscapi_8h_a7bdd11c9271bd1fa6177982a63df48fe}{\#define {\bfseries S\-S\-C\-\_\-\-S\-T\-R\-I\-N\-G}~1}\label{sscapi_8h_a7bdd11c9271bd1fa6177982a63df48fe}
+
+\item 
+\hypertarget{sscapi_8h_a78eee76ae837c41241907330a98c5288}{\#define {\bfseries S\-S\-C\-\_\-\-N\-U\-M\-B\-E\-R}~2}\label{sscapi_8h_a78eee76ae837c41241907330a98c5288}
+
+\item 
+\hypertarget{sscapi_8h_a39f84e7c07eb2d6f9cfededa992fdf1a}{\#define {\bfseries S\-S\-C\-\_\-\-A\-R\-R\-A\-Y}~3}\label{sscapi_8h_a39f84e7c07eb2d6f9cfededa992fdf1a}
+
+\item 
+\hypertarget{sscapi_8h_af2e80030586871134577f9ea5a941701}{\#define {\bfseries S\-S\-C\-\_\-\-M\-A\-T\-R\-I\-X}~4}\label{sscapi_8h_af2e80030586871134577f9ea5a941701}
+
+\item 
+\hypertarget{sscapi_8h_a2c360d77ec8cca52f1848ec230700530}{\#define {\bfseries S\-S\-C\-\_\-\-T\-A\-B\-L\-E}~5}\label{sscapi_8h_a2c360d77ec8cca52f1848ec230700530}
+
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Variable types\-:}\par
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{sscapi_8h_a37c2de15c5bfe5e9fe89a2c41b8c23f2}{\#define {\bfseries S\-S\-C\-\_\-\-I\-N\-P\-U\-T}~1}\label{sscapi_8h_a37c2de15c5bfe5e9fe89a2c41b8c23f2}
+
+\item 
+\hypertarget{sscapi_8h_ac1567d5f42c5f5be4b5990679f810544}{\#define {\bfseries S\-S\-C\-\_\-\-O\-U\-T\-P\-U\-T}~2}\label{sscapi_8h_ac1567d5f42c5f5be4b5990679f810544}
+
+\item 
+\hypertarget{sscapi_8h_af2652950d87e4717878e75dc58de8a07}{\#define {\bfseries S\-S\-C\-\_\-\-I\-N\-O\-U\-T}~3}\label{sscapi_8h_af2652950d87e4717878e75dc58de8a07}
+
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Action/notification types that can be sent to a handler function\-:}\par
+{\em S\-S\-C\-\_\-\-L\-O\-G\-: Log a message in the handler. f0\-: (int)message type, f1\-: time, s0\-: message text, s1\-: unused. S\-S\-C\-\_\-\-U\-P\-D\-A\-T\-E\-: Notify simulation progress update. f0\-: percent done, f1\-: time, s0\-: current action text, s1\-: unused. }\begin{DoxyCompactItemize}
+\item 
+\hypertarget{sscapi_8h_add30e629a1f45f721fe51e0f6be08752}{\#define {\bfseries S\-S\-C\-\_\-\-L\-O\-G}~0}\label{sscapi_8h_add30e629a1f45f721fe51e0f6be08752}
+
+\item 
+\hypertarget{sscapi_8h_a0a1242ee7a03bba4b635f0a5064b76b0}{\#define {\bfseries S\-S\-C\-\_\-\-U\-P\-D\-A\-T\-E}~1}\label{sscapi_8h_a0a1242ee7a03bba4b635f0a5064b76b0}
+
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Message types\-:}\par
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{sscapi_8h_a34adbabba29846c604dbef083b3c541c}{\#define {\bfseries S\-S\-C\-\_\-\-N\-O\-T\-I\-C\-E}~1}\label{sscapi_8h_a34adbabba29846c604dbef083b3c541c}
+
+\item 
+\hypertarget{sscapi_8h_a872c257a664d5cc7f52e4c3b4a59783e}{\#define {\bfseries S\-S\-C\-\_\-\-W\-A\-R\-N\-I\-N\-G}~2}\label{sscapi_8h_a872c257a664d5cc7f52e4c3b4a59783e}
+
+\item 
+\hypertarget{sscapi_8h_adf6646aa7c56ee16dd8b283e88005324}{\#define {\bfseries S\-S\-C\-\_\-\-E\-R\-R\-O\-R}~3}\label{sscapi_8h_adf6646aa7c56ee16dd8b283e88005324}
+
+\end{DoxyCompactItemize}
+\end{Indent}
+\subsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef void $\ast$ \hyperlink{sscapi_8h_a082e17260ab55ccb945bcabd4509f439}{ssc\-\_\-data\-\_\-t}
+\item 
+typedef float \hyperlink{sscapi_8h_aed2c6c08a4d87fc653895a27065b5c8d}{ssc\-\_\-number\-\_\-t}
+\item 
+typedef int \hyperlink{sscapi_8h_a8416be1f3d7e7d4457bf37e657277575}{ssc\-\_\-bool\-\_\-t}
+\item 
+typedef void $\ast$ \hyperlink{sscapi_8h_a0f778c7e3611dfc2ba01e5bd89979f80}{ssc\-\_\-entry\-\_\-t}
+\item 
+typedef void $\ast$ \hyperlink{sscapi_8h_adf8d62c898e485fc7440d3ed2fb0d87c}{ssc\-\_\-module\-\_\-t}
+\item 
+typedef void $\ast$ \hyperlink{sscapi_8h_aff18f3d1ec484009b88a779dcb69d456}{ssc\-\_\-info\-\_\-t}
+\item 
+typedef void $\ast$ \hyperlink{sscapi_8h_a64a6b436524349ccf0a77b56b2cf4e9d}{ssc\-\_\-handler\-\_\-t}
+\end{DoxyCompactItemize}
+\subsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+S\-S\-C\-E\-X\-P\-O\-R\-T int \hyperlink{sscapi_8h_a4460dd3f2316afa8a766769445e9fcd6}{ssc\-\_\-version} ()
+\item 
+S\-S\-C\-E\-X\-P\-O\-R\-T const char $\ast$ \hyperlink{sscapi_8h_ab34ddddf0832ff80d36c08af415fcf61}{ssc\-\_\-build\-\_\-info} ()
+\item 
+S\-S\-C\-E\-X\-P\-O\-R\-T \hyperlink{sscapi_8h_a082e17260ab55ccb945bcabd4509f439}{ssc\-\_\-data\-\_\-t} \hyperlink{sscapi_8h_ac9f368730a0da3c79169cd6d3eef8f0b}{ssc\-\_\-data\-\_\-create} ()
+\item 
+S\-S\-C\-E\-X\-P\-O\-R\-T void \hyperlink{sscapi_8h_acc9123254cfd9b1483a34a840ba66f3f}{ssc\-\_\-data\-\_\-free} (\hyperlink{sscapi_8h_a082e17260ab55ccb945bcabd4509f439}{ssc\-\_\-data\-\_\-t} p\-\_\-data)
+\item 
+S\-S\-C\-E\-X\-P\-O\-R\-T void \hyperlink{sscapi_8h_adc28c6035c08ce6f88d5e228b3d3cd25}{ssc\-\_\-data\-\_\-clear} (\hyperlink{sscapi_8h_a082e17260ab55ccb945bcabd4509f439}{ssc\-\_\-data\-\_\-t} p\-\_\-data)
+\item 
+S\-S\-C\-E\-X\-P\-O\-R\-T void \hyperlink{sscapi_8h_a5044cd17abb621f4549c6fd0aab77277}{ssc\-\_\-data\-\_\-unassign} (\hyperlink{sscapi_8h_a082e17260ab55ccb945bcabd4509f439}{ssc\-\_\-data\-\_\-t} p\-\_\-data, const char $\ast$name)
+\item 
+S\-S\-C\-E\-X\-P\-O\-R\-T int \hyperlink{sscapi_8h_ab6598d213b423fe7c3b85071119f4cb0}{ssc\-\_\-data\-\_\-query} (\hyperlink{sscapi_8h_a082e17260ab55ccb945bcabd4509f439}{ssc\-\_\-data\-\_\-t} p\-\_\-data, const char $\ast$name)
+\item 
+S\-S\-C\-E\-X\-P\-O\-R\-T const char $\ast$ \hyperlink{sscapi_8h_ad499cfe8696e1f704d968b50d3ab36b1}{ssc\-\_\-data\-\_\-first} (\hyperlink{sscapi_8h_a082e17260ab55ccb945bcabd4509f439}{ssc\-\_\-data\-\_\-t} p\-\_\-data)
+\item 
+S\-S\-C\-E\-X\-P\-O\-R\-T const char $\ast$ \hyperlink{sscapi_8h_a56b8a556bfe81c4f65fa2f3c41b5db31}{ssc\-\_\-data\-\_\-next} (\hyperlink{sscapi_8h_a082e17260ab55ccb945bcabd4509f439}{ssc\-\_\-data\-\_\-t} p\-\_\-data)
+\item 
+S\-S\-C\-E\-X\-P\-O\-R\-T \hyperlink{sscapi_8h_a0f778c7e3611dfc2ba01e5bd89979f80}{ssc\-\_\-entry\-\_\-t} \hyperlink{sscapi_8h_acb6e7a1f9ac26d3160fc849754a38627}{ssc\-\_\-module\-\_\-entry} (int index)
+\item 
+S\-S\-C\-E\-X\-P\-O\-R\-T const char $\ast$ \hyperlink{sscapi_8h_a785b1e08e248478ee792ac945bd1eb31}{ssc\-\_\-entry\-\_\-name} (\hyperlink{sscapi_8h_a0f778c7e3611dfc2ba01e5bd89979f80}{ssc\-\_\-entry\-\_\-t} p\-\_\-entry)
+\item 
+S\-S\-C\-E\-X\-P\-O\-R\-T const char $\ast$ \hyperlink{sscapi_8h_a86977139c320479baf3b4762513a8f6d}{ssc\-\_\-entry\-\_\-description} (\hyperlink{sscapi_8h_a0f778c7e3611dfc2ba01e5bd89979f80}{ssc\-\_\-entry\-\_\-t} p\-\_\-entry)
+\item 
+S\-S\-C\-E\-X\-P\-O\-R\-T int \hyperlink{sscapi_8h_a449e4d53d00830b7b85a1e88a99f078f}{ssc\-\_\-entry\-\_\-version} (\hyperlink{sscapi_8h_a0f778c7e3611dfc2ba01e5bd89979f80}{ssc\-\_\-entry\-\_\-t} p\-\_\-entry)
+\item 
+S\-S\-C\-E\-X\-P\-O\-R\-T \hyperlink{sscapi_8h_adf8d62c898e485fc7440d3ed2fb0d87c}{ssc\-\_\-module\-\_\-t} \hyperlink{sscapi_8h_a128141ac47daba53202b86a009e1cea7}{ssc\-\_\-module\-\_\-create} (const char $\ast$name)
+\item 
+S\-S\-C\-E\-X\-P\-O\-R\-T void \hyperlink{sscapi_8h_a55fb17057398f14de0f7a3fcba9d328e}{ssc\-\_\-module\-\_\-free} (\hyperlink{sscapi_8h_adf8d62c898e485fc7440d3ed2fb0d87c}{ssc\-\_\-module\-\_\-t} p\-\_\-mod)
+\item 
+S\-S\-C\-E\-X\-P\-O\-R\-T const \hyperlink{sscapi_8h_aff18f3d1ec484009b88a779dcb69d456}{ssc\-\_\-info\-\_\-t} \hyperlink{sscapi_8h_acfb10163d7b9bea42b2e444c2a5544ac}{ssc\-\_\-module\-\_\-var\-\_\-info} (\hyperlink{sscapi_8h_adf8d62c898e485fc7440d3ed2fb0d87c}{ssc\-\_\-module\-\_\-t} p\-\_\-mod, int index)
+\item 
+S\-S\-C\-E\-X\-P\-O\-R\-T int \hyperlink{sscapi_8h_a25c204af7a2c81d11d134a62702426b5}{ssc\-\_\-info\-\_\-var\-\_\-type} (\hyperlink{sscapi_8h_aff18f3d1ec484009b88a779dcb69d456}{ssc\-\_\-info\-\_\-t} p\-\_\-inf)
+\item 
+S\-S\-C\-E\-X\-P\-O\-R\-T int \hyperlink{sscapi_8h_ab2fde3d3031880da882aee086afc76b3}{ssc\-\_\-info\-\_\-data\-\_\-type} (\hyperlink{sscapi_8h_aff18f3d1ec484009b88a779dcb69d456}{ssc\-\_\-info\-\_\-t} p\-\_\-inf)
+\item 
+S\-S\-C\-E\-X\-P\-O\-R\-T const char $\ast$ \hyperlink{sscapi_8h_a92f71d2241b912330d2734ba63d6b85f}{ssc\-\_\-info\-\_\-name} (\hyperlink{sscapi_8h_aff18f3d1ec484009b88a779dcb69d456}{ssc\-\_\-info\-\_\-t} p\-\_\-inf)
+\item 
+S\-S\-C\-E\-X\-P\-O\-R\-T const char $\ast$ \hyperlink{sscapi_8h_a04113d80460294539d935c04ca8d8f36}{ssc\-\_\-info\-\_\-label} (\hyperlink{sscapi_8h_aff18f3d1ec484009b88a779dcb69d456}{ssc\-\_\-info\-\_\-t} p\-\_\-inf)
+\item 
+S\-S\-C\-E\-X\-P\-O\-R\-T const char $\ast$ \hyperlink{sscapi_8h_aafe4ecee010642fabc99b1591c0680f8}{ssc\-\_\-info\-\_\-units} (\hyperlink{sscapi_8h_aff18f3d1ec484009b88a779dcb69d456}{ssc\-\_\-info\-\_\-t} p\-\_\-inf)
+\item 
+S\-S\-C\-E\-X\-P\-O\-R\-T const char $\ast$ \hyperlink{sscapi_8h_a6e13987c293cb1044d893dee334daa5b}{ssc\-\_\-info\-\_\-meta} (\hyperlink{sscapi_8h_aff18f3d1ec484009b88a779dcb69d456}{ssc\-\_\-info\-\_\-t} p\-\_\-inf)
+\item 
+S\-S\-C\-E\-X\-P\-O\-R\-T const char $\ast$ \hyperlink{sscapi_8h_a988bfd5148b165f3f3fc9f9f0f021262}{ssc\-\_\-info\-\_\-group} (\hyperlink{sscapi_8h_aff18f3d1ec484009b88a779dcb69d456}{ssc\-\_\-info\-\_\-t} p\-\_\-inf)
+\item 
+S\-S\-C\-E\-X\-P\-O\-R\-T const char $\ast$ \hyperlink{sscapi_8h_a9ef2812e6f2c9b4a650c5e729f5c5ef5}{ssc\-\_\-info\-\_\-required} (\hyperlink{sscapi_8h_aff18f3d1ec484009b88a779dcb69d456}{ssc\-\_\-info\-\_\-t} p\-\_\-inf)
+\item 
+S\-S\-C\-E\-X\-P\-O\-R\-T const char $\ast$ \hyperlink{sscapi_8h_a1a5af0286399b099684fa0f09ec149cf}{ssc\-\_\-info\-\_\-constraints} (\hyperlink{sscapi_8h_aff18f3d1ec484009b88a779dcb69d456}{ssc\-\_\-info\-\_\-t} p\-\_\-inf)
+\item 
+S\-S\-C\-E\-X\-P\-O\-R\-T const char $\ast$ \hyperlink{sscapi_8h_ab895b6deba0be468250fc84ff027ed73}{ssc\-\_\-info\-\_\-uihint} (\hyperlink{sscapi_8h_aff18f3d1ec484009b88a779dcb69d456}{ssc\-\_\-info\-\_\-t} p\-\_\-inf)
+\item 
+S\-S\-C\-E\-X\-P\-O\-R\-T void \hyperlink{sscapi_8h_ad4c7c528bb268bd95e87c363c224a659}{ssc\-\_\-module\-\_\-exec\-\_\-set\-\_\-print} (int print)
+\item 
+S\-S\-C\-E\-X\-P\-O\-R\-T \hyperlink{sscapi_8h_a8416be1f3d7e7d4457bf37e657277575}{ssc\-\_\-bool\-\_\-t} \hyperlink{sscapi_8h_a360e90bdd0738c494c7992f15467268d}{ssc\-\_\-module\-\_\-exec\-\_\-simple} (const char $\ast$name, \hyperlink{sscapi_8h_a082e17260ab55ccb945bcabd4509f439}{ssc\-\_\-data\-\_\-t} p\-\_\-data)
+\item 
+S\-S\-C\-E\-X\-P\-O\-R\-T const char $\ast$ \hyperlink{sscapi_8h_ae13b12f038c0c491cda6dfda90152abb}{ssc\-\_\-module\-\_\-exec\-\_\-simple\-\_\-nothread} (const char $\ast$name, \hyperlink{sscapi_8h_a082e17260ab55ccb945bcabd4509f439}{ssc\-\_\-data\-\_\-t} p\-\_\-data)
+\item 
+S\-S\-C\-E\-X\-P\-O\-R\-T \hyperlink{sscapi_8h_a8416be1f3d7e7d4457bf37e657277575}{ssc\-\_\-bool\-\_\-t} \hyperlink{sscapi_8h_a76d8a523407f3c071a9cf22ad2935a41}{ssc\-\_\-module\-\_\-exec} (\hyperlink{sscapi_8h_adf8d62c898e485fc7440d3ed2fb0d87c}{ssc\-\_\-module\-\_\-t} p\-\_\-mod, \hyperlink{sscapi_8h_a082e17260ab55ccb945bcabd4509f439}{ssc\-\_\-data\-\_\-t} p\-\_\-data)
+\item 
+S\-S\-C\-E\-X\-P\-O\-R\-T \hyperlink{sscapi_8h_a8416be1f3d7e7d4457bf37e657277575}{ssc\-\_\-bool\-\_\-t} \hyperlink{sscapi_8h_a58968776ff9ba65e9ac1886a0bdcb8df}{ssc\-\_\-module\-\_\-exec\-\_\-with\-\_\-handler} (\hyperlink{sscapi_8h_adf8d62c898e485fc7440d3ed2fb0d87c}{ssc\-\_\-module\-\_\-t} p\-\_\-mod, \hyperlink{sscapi_8h_a082e17260ab55ccb945bcabd4509f439}{ssc\-\_\-data\-\_\-t} p\-\_\-data, \hyperlink{sscapi_8h_a8416be1f3d7e7d4457bf37e657277575}{ssc\-\_\-bool\-\_\-t}($\ast$pf\-\_\-handler)(\hyperlink{sscapi_8h_adf8d62c898e485fc7440d3ed2fb0d87c}{ssc\-\_\-module\-\_\-t}, \hyperlink{sscapi_8h_a64a6b436524349ccf0a77b56b2cf4e9d}{ssc\-\_\-handler\-\_\-t}, int action, float f0, float f1, const char $\ast$s0, const char $\ast$s1, void $\ast$user\-\_\-data), void $\ast$pf\-\_\-user\-\_\-data)
+\item 
+S\-S\-C\-E\-X\-P\-O\-R\-T const char $\ast$ \hyperlink{sscapi_8h_a595854e4dc9d1e10e7a36eb1715b55dc}{ssc\-\_\-module\-\_\-log} (\hyperlink{sscapi_8h_adf8d62c898e485fc7440d3ed2fb0d87c}{ssc\-\_\-module\-\_\-t} p\-\_\-mod, int index, int $\ast$item\-\_\-type, float $\ast$time)
+\item 
+S\-S\-C\-E\-X\-P\-O\-R\-T void \hyperlink{sscapi_8h_ad5d381c3a156fce3bd92f6810129d2b7}{\-\_\-\-\_\-ssc\-\_\-segfault} ()
+\end{DoxyCompactItemize}
+\begin{Indent}{\bf Assigning variable values.}\par
+{\em The following functions do not take ownership of the data pointeres for arrays, matrices, and tables. A deep copy is made into the internal S\-S\-C engine. You must remember to free the table that you create to pass into \hyperlink{sscapi_8h_a8f86dcefe1ddcf1b4190a4ee415d14f2}{ssc\-\_\-data\-\_\-set\-\_\-table( )} for example. }\begin{DoxyCompactItemize}
+\item 
+S\-S\-C\-E\-X\-P\-O\-R\-T void \hyperlink{sscapi_8h_aa660663a8343fb2ddb7f7aa1d6a93205}{ssc\-\_\-data\-\_\-set\-\_\-string} (\hyperlink{sscapi_8h_a082e17260ab55ccb945bcabd4509f439}{ssc\-\_\-data\-\_\-t} p\-\_\-data, const char $\ast$name, const char $\ast$value)
+\item 
+S\-S\-C\-E\-X\-P\-O\-R\-T void \hyperlink{sscapi_8h_a42e160996afdef0ab4b3c085c253e364}{ssc\-\_\-data\-\_\-set\-\_\-number} (\hyperlink{sscapi_8h_a082e17260ab55ccb945bcabd4509f439}{ssc\-\_\-data\-\_\-t} p\-\_\-data, const char $\ast$name, \hyperlink{sscapi_8h_aed2c6c08a4d87fc653895a27065b5c8d}{ssc\-\_\-number\-\_\-t} value)
+\item 
+S\-S\-C\-E\-X\-P\-O\-R\-T void \hyperlink{sscapi_8h_a2a65f966686e481fc4f63803a968f3d4}{ssc\-\_\-data\-\_\-set\-\_\-array} (\hyperlink{sscapi_8h_a082e17260ab55ccb945bcabd4509f439}{ssc\-\_\-data\-\_\-t} p\-\_\-data, const char $\ast$name, \hyperlink{sscapi_8h_aed2c6c08a4d87fc653895a27065b5c8d}{ssc\-\_\-number\-\_\-t} $\ast$pvalues, int length)
+\item 
+S\-S\-C\-E\-X\-P\-O\-R\-T void \hyperlink{sscapi_8h_ae823313deeeb06e37ddf6dfaab17190f}{ssc\-\_\-data\-\_\-set\-\_\-matrix} (\hyperlink{sscapi_8h_a082e17260ab55ccb945bcabd4509f439}{ssc\-\_\-data\-\_\-t} p\-\_\-data, const char $\ast$name, \hyperlink{sscapi_8h_aed2c6c08a4d87fc653895a27065b5c8d}{ssc\-\_\-number\-\_\-t} $\ast$pvalues, int nrows, int ncols)
+\item 
+S\-S\-C\-E\-X\-P\-O\-R\-T void \hyperlink{sscapi_8h_a8f86dcefe1ddcf1b4190a4ee415d14f2}{ssc\-\_\-data\-\_\-set\-\_\-table} (\hyperlink{sscapi_8h_a082e17260ab55ccb945bcabd4509f439}{ssc\-\_\-data\-\_\-t} p\-\_\-data, const char $\ast$name, \hyperlink{sscapi_8h_a082e17260ab55ccb945bcabd4509f439}{ssc\-\_\-data\-\_\-t} table)
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Retrieving variable values.}\par
+{\em The following functions return internal references to memory, and the returned string, array, matrix, and tables should not be freed by the user. }\begin{DoxyCompactItemize}
+\item 
+S\-S\-C\-E\-X\-P\-O\-R\-T const char $\ast$ \hyperlink{sscapi_8h_a118454db6d4080a623bc176db005c7b1}{ssc\-\_\-data\-\_\-get\-\_\-string} (\hyperlink{sscapi_8h_a082e17260ab55ccb945bcabd4509f439}{ssc\-\_\-data\-\_\-t} p\-\_\-data, const char $\ast$name)
+\item 
+S\-S\-C\-E\-X\-P\-O\-R\-T \hyperlink{sscapi_8h_a8416be1f3d7e7d4457bf37e657277575}{ssc\-\_\-bool\-\_\-t} \hyperlink{sscapi_8h_a2a815f31617dee3c96587fe2df6938ff}{ssc\-\_\-data\-\_\-get\-\_\-number} (\hyperlink{sscapi_8h_a082e17260ab55ccb945bcabd4509f439}{ssc\-\_\-data\-\_\-t} p\-\_\-data, const char $\ast$name, \hyperlink{sscapi_8h_aed2c6c08a4d87fc653895a27065b5c8d}{ssc\-\_\-number\-\_\-t} $\ast$value)
+\item 
+S\-S\-C\-E\-X\-P\-O\-R\-T \hyperlink{sscapi_8h_aed2c6c08a4d87fc653895a27065b5c8d}{ssc\-\_\-number\-\_\-t} $\ast$ \hyperlink{sscapi_8h_a4fea1289c16bcd422f343cecfd9808de}{ssc\-\_\-data\-\_\-get\-\_\-array} (\hyperlink{sscapi_8h_a082e17260ab55ccb945bcabd4509f439}{ssc\-\_\-data\-\_\-t} p\-\_\-data, const char $\ast$name, int $\ast$length)
+\item 
+S\-S\-C\-E\-X\-P\-O\-R\-T \hyperlink{sscapi_8h_aed2c6c08a4d87fc653895a27065b5c8d}{ssc\-\_\-number\-\_\-t} $\ast$ \hyperlink{sscapi_8h_a5910932a763203c9c0f6d43776453f5e}{ssc\-\_\-data\-\_\-get\-\_\-matrix} (\hyperlink{sscapi_8h_a082e17260ab55ccb945bcabd4509f439}{ssc\-\_\-data\-\_\-t} p\-\_\-data, const char $\ast$name, int $\ast$nrows, int $\ast$ncols)
+\item 
+S\-S\-C\-E\-X\-P\-O\-R\-T \hyperlink{sscapi_8h_a082e17260ab55ccb945bcabd4509f439}{ssc\-\_\-data\-\_\-t} \hyperlink{sscapi_8h_a9589098332e14ce8b9823e4ac8afdf22}{ssc\-\_\-data\-\_\-get\-\_\-table} (\hyperlink{sscapi_8h_a082e17260ab55ccb945bcabd4509f439}{ssc\-\_\-data\-\_\-t} p\-\_\-data, const char $\ast$name)
+\end{DoxyCompactItemize}
+\end{Indent}
+
+
+\subsubsection{Detailed Description}
+S\-S\-C\-: S\-A\-M Simulation Core. A general purpose simulation input/output framework. Cross-\/platform (Windows/\-Mac\-O\-S\-X/\-Unix) and is 32 and 64-\/bit compatible.
+
+Be sure to use the correct library for your operating platform\-: ssc32 or ssc64. Opaque pointer types will be 4-\/byte pointer on 32-\/bit architectures, and 8-\/byte pointer on 64-\/bit architectures.
+
+Shared libraries have the .dll file extension on Windows, .dylib on Mac\-O\-S\-X, and .so on Linux/\-Unix.
+
+\begin{DoxyCopyright}{Copyright}
+2012 National Renewable Energy Laboratory 
+\end{DoxyCopyright}
+\begin{DoxyAuthor}{Authors}
+Aron Dobos, Steven Janzou 
+\end{DoxyAuthor}
+
+
+\subsubsection{Typedef Documentation}
+\hypertarget{sscapi_8h_a082e17260ab55ccb945bcabd4509f439}{\index{sscapi.\-h@{sscapi.\-h}!ssc\-\_\-data\-\_\-t@{ssc\-\_\-data\-\_\-t}}
+\index{ssc\-\_\-data\-\_\-t@{ssc\-\_\-data\-\_\-t}!sscapi.h@{sscapi.\-h}}
+\paragraph[{ssc\-\_\-data\-\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}typedef void$\ast$ {\bf ssc\-\_\-data\-\_\-t}}}\label{sscapi_8h_a082e17260ab55ccb945bcabd4509f439}
+An opaque reference to a structure that holds a collection of variables. This structure can contain any number of variables referenced by name, and can hold strings, numbers, arrays, and matrices. Matrices are stored in row-\/major order, where the array size is nrows$\ast$ncols, and the array index is calculated by r$\ast$ncols+c. An ssc\-\_\-data\-\_\-t object holds all input and output variables for a simulation. It does not distinguish between input, output, and input variables -\/ that is handled at the model context level. \hypertarget{sscapi_8h_aed2c6c08a4d87fc653895a27065b5c8d}{\index{sscapi.\-h@{sscapi.\-h}!ssc\-\_\-number\-\_\-t@{ssc\-\_\-number\-\_\-t}}
+\index{ssc\-\_\-number\-\_\-t@{ssc\-\_\-number\-\_\-t}!sscapi.h@{sscapi.\-h}}
+\paragraph[{ssc\-\_\-number\-\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}typedef float {\bf ssc\-\_\-number\-\_\-t}}}\label{sscapi_8h_aed2c6c08a4d87fc653895a27065b5c8d}
+The numeric type used in the S\-S\-C A\-P\-I. All numeric values are stored in this format. S\-S\-C uses 32-\/bit floating point numbers at the library interface to minimize memory usage. Calculations inside compute modules generally are performed with double-\/precision 64-\/bit floating point internally. \hypertarget{sscapi_8h_a8416be1f3d7e7d4457bf37e657277575}{\index{sscapi.\-h@{sscapi.\-h}!ssc\-\_\-bool\-\_\-t@{ssc\-\_\-bool\-\_\-t}}
+\index{ssc\-\_\-bool\-\_\-t@{ssc\-\_\-bool\-\_\-t}!sscapi.h@{sscapi.\-h}}
+\paragraph[{ssc\-\_\-bool\-\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}typedef int {\bf ssc\-\_\-bool\-\_\-t}}}\label{sscapi_8h_a8416be1f3d7e7d4457bf37e657277575}
+The boolean type used internally in S\-S\-C. Zero values represent false; non-\/zero represents true. \hypertarget{sscapi_8h_a0f778c7e3611dfc2ba01e5bd89979f80}{\index{sscapi.\-h@{sscapi.\-h}!ssc\-\_\-entry\-\_\-t@{ssc\-\_\-entry\-\_\-t}}
+\index{ssc\-\_\-entry\-\_\-t@{ssc\-\_\-entry\-\_\-t}!sscapi.h@{sscapi.\-h}}
+\paragraph[{ssc\-\_\-entry\-\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}typedef void$\ast$ {\bf ssc\-\_\-entry\-\_\-t}}}\label{sscapi_8h_a0f778c7e3611dfc2ba01e5bd89979f80}
+The opaque data structure that stores information about a compute module. \hypertarget{sscapi_8h_adf8d62c898e485fc7440d3ed2fb0d87c}{\index{sscapi.\-h@{sscapi.\-h}!ssc\-\_\-module\-\_\-t@{ssc\-\_\-module\-\_\-t}}
+\index{ssc\-\_\-module\-\_\-t@{ssc\-\_\-module\-\_\-t}!sscapi.h@{sscapi.\-h}}
+\paragraph[{ssc\-\_\-module\-\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}typedef void$\ast$ {\bf ssc\-\_\-module\-\_\-t}}}\label{sscapi_8h_adf8d62c898e485fc7440d3ed2fb0d87c}
+An opaque reference to a computation module. A computation module performs a transformation on a ssc\-\_\-data\-\_\-t. It usually is used to calculate output variables given a set of input variables, but it can also be used to change the values of variables defined as I\-N\-O\-U\-T. Modules types have unique names, and store information about what input variables are required, what outputs can be expected, along with specific data type, unit, label, and meta information about each variable. \hypertarget{sscapi_8h_aff18f3d1ec484009b88a779dcb69d456}{\index{sscapi.\-h@{sscapi.\-h}!ssc\-\_\-info\-\_\-t@{ssc\-\_\-info\-\_\-t}}
+\index{ssc\-\_\-info\-\_\-t@{ssc\-\_\-info\-\_\-t}!sscapi.h@{sscapi.\-h}}
+\paragraph[{ssc\-\_\-info\-\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}typedef void$\ast$ {\bf ssc\-\_\-info\-\_\-t}}}\label{sscapi_8h_aff18f3d1ec484009b88a779dcb69d456}
+An opaque reference to variable information. A compute module defines its input/output variables. \hypertarget{sscapi_8h_a64a6b436524349ccf0a77b56b2cf4e9d}{\index{sscapi.\-h@{sscapi.\-h}!ssc\-\_\-handler\-\_\-t@{ssc\-\_\-handler\-\_\-t}}
+\index{ssc\-\_\-handler\-\_\-t@{ssc\-\_\-handler\-\_\-t}!sscapi.h@{sscapi.\-h}}
+\paragraph[{ssc\-\_\-handler\-\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}typedef void$\ast$ {\bf ssc\-\_\-handler\-\_\-t}}}\label{sscapi_8h_a64a6b436524349ccf0a77b56b2cf4e9d}
+An opaque pointer for transferring external executable output back to S\-S\-C 
+
+\subsubsection{Function Documentation}
+\hypertarget{sscapi_8h_a4460dd3f2316afa8a766769445e9fcd6}{\index{sscapi.\-h@{sscapi.\-h}!ssc\-\_\-version@{ssc\-\_\-version}}
+\index{ssc\-\_\-version@{ssc\-\_\-version}!sscapi.h@{sscapi.\-h}}
+\paragraph[{ssc\-\_\-version}]{\setlength{\rightskip}{0pt plus 5cm}S\-S\-C\-E\-X\-P\-O\-R\-T int ssc\-\_\-version (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{sscapi_8h_a4460dd3f2316afa8a766769445e9fcd6}
+Returns the library version number as an integer. Version numbers start at 1. \hypertarget{sscapi_8h_ab34ddddf0832ff80d36c08af415fcf61}{\index{sscapi.\-h@{sscapi.\-h}!ssc\-\_\-build\-\_\-info@{ssc\-\_\-build\-\_\-info}}
+\index{ssc\-\_\-build\-\_\-info@{ssc\-\_\-build\-\_\-info}!sscapi.h@{sscapi.\-h}}
+\paragraph[{ssc\-\_\-build\-\_\-info}]{\setlength{\rightskip}{0pt plus 5cm}S\-S\-C\-E\-X\-P\-O\-R\-T const char$\ast$ ssc\-\_\-build\-\_\-info (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{sscapi_8h_ab34ddddf0832ff80d36c08af415fcf61}
+Returns information about the build configuration of this particular S\-S\-C library binary as a text string that lists the compiler, platform, build date/time and other information. \hypertarget{sscapi_8h_ac9f368730a0da3c79169cd6d3eef8f0b}{\index{sscapi.\-h@{sscapi.\-h}!ssc\-\_\-data\-\_\-create@{ssc\-\_\-data\-\_\-create}}
+\index{ssc\-\_\-data\-\_\-create@{ssc\-\_\-data\-\_\-create}!sscapi.h@{sscapi.\-h}}
+\paragraph[{ssc\-\_\-data\-\_\-create}]{\setlength{\rightskip}{0pt plus 5cm}S\-S\-C\-E\-X\-P\-O\-R\-T {\bf ssc\-\_\-data\-\_\-t} ssc\-\_\-data\-\_\-create (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{sscapi_8h_ac9f368730a0da3c79169cd6d3eef8f0b}
+Creates a new data object in memory. A data object stores a table of named values, where each value can be of any S\-S\-C datatype. \hypertarget{sscapi_8h_acc9123254cfd9b1483a34a840ba66f3f}{\index{sscapi.\-h@{sscapi.\-h}!ssc\-\_\-data\-\_\-free@{ssc\-\_\-data\-\_\-free}}
+\index{ssc\-\_\-data\-\_\-free@{ssc\-\_\-data\-\_\-free}!sscapi.h@{sscapi.\-h}}
+\paragraph[{ssc\-\_\-data\-\_\-free}]{\setlength{\rightskip}{0pt plus 5cm}S\-S\-C\-E\-X\-P\-O\-R\-T void ssc\-\_\-data\-\_\-free (
+\begin{DoxyParamCaption}
+\item[{{\bf ssc\-\_\-data\-\_\-t}}]{p\-\_\-data}
+\end{DoxyParamCaption}
+)}}\label{sscapi_8h_acc9123254cfd9b1483a34a840ba66f3f}
+Frees the memory associated with a data object, where p\-\_\-data is the data container to free. \hypertarget{sscapi_8h_adc28c6035c08ce6f88d5e228b3d3cd25}{\index{sscapi.\-h@{sscapi.\-h}!ssc\-\_\-data\-\_\-clear@{ssc\-\_\-data\-\_\-clear}}
+\index{ssc\-\_\-data\-\_\-clear@{ssc\-\_\-data\-\_\-clear}!sscapi.h@{sscapi.\-h}}
+\paragraph[{ssc\-\_\-data\-\_\-clear}]{\setlength{\rightskip}{0pt plus 5cm}S\-S\-C\-E\-X\-P\-O\-R\-T void ssc\-\_\-data\-\_\-clear (
+\begin{DoxyParamCaption}
+\item[{{\bf ssc\-\_\-data\-\_\-t}}]{p\-\_\-data}
+\end{DoxyParamCaption}
+)}}\label{sscapi_8h_adc28c6035c08ce6f88d5e228b3d3cd25}
+Clears all of the variables in a data object. \hypertarget{sscapi_8h_a5044cd17abb621f4549c6fd0aab77277}{\index{sscapi.\-h@{sscapi.\-h}!ssc\-\_\-data\-\_\-unassign@{ssc\-\_\-data\-\_\-unassign}}
+\index{ssc\-\_\-data\-\_\-unassign@{ssc\-\_\-data\-\_\-unassign}!sscapi.h@{sscapi.\-h}}
+\paragraph[{ssc\-\_\-data\-\_\-unassign}]{\setlength{\rightskip}{0pt plus 5cm}S\-S\-C\-E\-X\-P\-O\-R\-T void ssc\-\_\-data\-\_\-unassign (
+\begin{DoxyParamCaption}
+\item[{{\bf ssc\-\_\-data\-\_\-t}}]{p\-\_\-data, }
+\item[{const char $\ast$}]{name}
+\end{DoxyParamCaption}
+)}}\label{sscapi_8h_a5044cd17abb621f4549c6fd0aab77277}
+Unassigns the variable with the specified name. \hypertarget{sscapi_8h_ab6598d213b423fe7c3b85071119f4cb0}{\index{sscapi.\-h@{sscapi.\-h}!ssc\-\_\-data\-\_\-query@{ssc\-\_\-data\-\_\-query}}
+\index{ssc\-\_\-data\-\_\-query@{ssc\-\_\-data\-\_\-query}!sscapi.h@{sscapi.\-h}}
+\paragraph[{ssc\-\_\-data\-\_\-query}]{\setlength{\rightskip}{0pt plus 5cm}S\-S\-C\-E\-X\-P\-O\-R\-T int ssc\-\_\-data\-\_\-query (
+\begin{DoxyParamCaption}
+\item[{{\bf ssc\-\_\-data\-\_\-t}}]{p\-\_\-data, }
+\item[{const char $\ast$}]{name}
+\end{DoxyParamCaption}
+)}}\label{sscapi_8h_ab6598d213b423fe7c3b85071119f4cb0}
+Querys the data object for the data type of the variable with the specified name. Returns the data object's data type, or S\-S\-C\-\_\-\-I\-N\-V\-A\-L\-I\-D if that variable was not found. \hypertarget{sscapi_8h_ad499cfe8696e1f704d968b50d3ab36b1}{\index{sscapi.\-h@{sscapi.\-h}!ssc\-\_\-data\-\_\-first@{ssc\-\_\-data\-\_\-first}}
+\index{ssc\-\_\-data\-\_\-first@{ssc\-\_\-data\-\_\-first}!sscapi.h@{sscapi.\-h}}
+\paragraph[{ssc\-\_\-data\-\_\-first}]{\setlength{\rightskip}{0pt plus 5cm}S\-S\-C\-E\-X\-P\-O\-R\-T const char$\ast$ ssc\-\_\-data\-\_\-first (
+\begin{DoxyParamCaption}
+\item[{{\bf ssc\-\_\-data\-\_\-t}}]{p\-\_\-data}
+\end{DoxyParamCaption}
+)}}\label{sscapi_8h_ad499cfe8696e1f704d968b50d3ab36b1}
+Returns the name of the first variable in the table, or 0 (N\-U\-L\-L) if the data object is empty. \hypertarget{sscapi_8h_a56b8a556bfe81c4f65fa2f3c41b5db31}{\index{sscapi.\-h@{sscapi.\-h}!ssc\-\_\-data\-\_\-next@{ssc\-\_\-data\-\_\-next}}
+\index{ssc\-\_\-data\-\_\-next@{ssc\-\_\-data\-\_\-next}!sscapi.h@{sscapi.\-h}}
+\paragraph[{ssc\-\_\-data\-\_\-next}]{\setlength{\rightskip}{0pt plus 5cm}S\-S\-C\-E\-X\-P\-O\-R\-T const char$\ast$ ssc\-\_\-data\-\_\-next (
+\begin{DoxyParamCaption}
+\item[{{\bf ssc\-\_\-data\-\_\-t}}]{p\-\_\-data}
+\end{DoxyParamCaption}
+)}}\label{sscapi_8h_a56b8a556bfe81c4f65fa2f3c41b5db31}
+Returns the name of the next variable in the table, or 0 (N\-U\-L\-L) if there are no more variables in the table. ssc\-\_\-data\-\_\-first must be called first. Example that iterates over all variables in a data object\-:
+
+\begin{DoxyVerb} const char *key = ssc_data_first( my_data );
+ while (key != 0)
+ {
+    int type = ssc_data_query( my_data, key );
+    key = ssc_data_next( my_data );
+ }\end{DoxyVerb}
+ \hypertarget{sscapi_8h_aa660663a8343fb2ddb7f7aa1d6a93205}{\index{sscapi.\-h@{sscapi.\-h}!ssc\-\_\-data\-\_\-set\-\_\-string@{ssc\-\_\-data\-\_\-set\-\_\-string}}
+\index{ssc\-\_\-data\-\_\-set\-\_\-string@{ssc\-\_\-data\-\_\-set\-\_\-string}!sscapi.h@{sscapi.\-h}}
+\paragraph[{ssc\-\_\-data\-\_\-set\-\_\-string}]{\setlength{\rightskip}{0pt plus 5cm}S\-S\-C\-E\-X\-P\-O\-R\-T void ssc\-\_\-data\-\_\-set\-\_\-string (
+\begin{DoxyParamCaption}
+\item[{{\bf ssc\-\_\-data\-\_\-t}}]{p\-\_\-data, }
+\item[{const char $\ast$}]{name, }
+\item[{const char $\ast$}]{value}
+\end{DoxyParamCaption}
+)}}\label{sscapi_8h_aa660663a8343fb2ddb7f7aa1d6a93205}
+Assigns value of type {\itshape S\-S\-C\-\_\-\-S\-T\-R\-I\-N\-G} \hypertarget{sscapi_8h_a42e160996afdef0ab4b3c085c253e364}{\index{sscapi.\-h@{sscapi.\-h}!ssc\-\_\-data\-\_\-set\-\_\-number@{ssc\-\_\-data\-\_\-set\-\_\-number}}
+\index{ssc\-\_\-data\-\_\-set\-\_\-number@{ssc\-\_\-data\-\_\-set\-\_\-number}!sscapi.h@{sscapi.\-h}}
+\paragraph[{ssc\-\_\-data\-\_\-set\-\_\-number}]{\setlength{\rightskip}{0pt plus 5cm}S\-S\-C\-E\-X\-P\-O\-R\-T void ssc\-\_\-data\-\_\-set\-\_\-number (
+\begin{DoxyParamCaption}
+\item[{{\bf ssc\-\_\-data\-\_\-t}}]{p\-\_\-data, }
+\item[{const char $\ast$}]{name, }
+\item[{{\bf ssc\-\_\-number\-\_\-t}}]{value}
+\end{DoxyParamCaption}
+)}}\label{sscapi_8h_a42e160996afdef0ab4b3c085c253e364}
+Assigns value of type {\itshape S\-S\-C\-\_\-\-N\-U\-M\-B\-E\-R} \hypertarget{sscapi_8h_a2a65f966686e481fc4f63803a968f3d4}{\index{sscapi.\-h@{sscapi.\-h}!ssc\-\_\-data\-\_\-set\-\_\-array@{ssc\-\_\-data\-\_\-set\-\_\-array}}
+\index{ssc\-\_\-data\-\_\-set\-\_\-array@{ssc\-\_\-data\-\_\-set\-\_\-array}!sscapi.h@{sscapi.\-h}}
+\paragraph[{ssc\-\_\-data\-\_\-set\-\_\-array}]{\setlength{\rightskip}{0pt plus 5cm}S\-S\-C\-E\-X\-P\-O\-R\-T void ssc\-\_\-data\-\_\-set\-\_\-array (
+\begin{DoxyParamCaption}
+\item[{{\bf ssc\-\_\-data\-\_\-t}}]{p\-\_\-data, }
+\item[{const char $\ast$}]{name, }
+\item[{{\bf ssc\-\_\-number\-\_\-t} $\ast$}]{pvalues, }
+\item[{int}]{length}
+\end{DoxyParamCaption}
+)}}\label{sscapi_8h_a2a65f966686e481fc4f63803a968f3d4}
+Assigns value of type {\itshape S\-S\-C\-\_\-\-A\-R\-R\-A\-Y} \hypertarget{sscapi_8h_ae823313deeeb06e37ddf6dfaab17190f}{\index{sscapi.\-h@{sscapi.\-h}!ssc\-\_\-data\-\_\-set\-\_\-matrix@{ssc\-\_\-data\-\_\-set\-\_\-matrix}}
+\index{ssc\-\_\-data\-\_\-set\-\_\-matrix@{ssc\-\_\-data\-\_\-set\-\_\-matrix}!sscapi.h@{sscapi.\-h}}
+\paragraph[{ssc\-\_\-data\-\_\-set\-\_\-matrix}]{\setlength{\rightskip}{0pt plus 5cm}S\-S\-C\-E\-X\-P\-O\-R\-T void ssc\-\_\-data\-\_\-set\-\_\-matrix (
+\begin{DoxyParamCaption}
+\item[{{\bf ssc\-\_\-data\-\_\-t}}]{p\-\_\-data, }
+\item[{const char $\ast$}]{name, }
+\item[{{\bf ssc\-\_\-number\-\_\-t} $\ast$}]{pvalues, }
+\item[{int}]{nrows, }
+\item[{int}]{ncols}
+\end{DoxyParamCaption}
+)}}\label{sscapi_8h_ae823313deeeb06e37ddf6dfaab17190f}
+Assigns value of type {\itshape S\-S\-C\-\_\-\-M\-A\-T\-R\-I\-X} . Matrices are specified as a continuous array, in row-\/major order. Example\-: the matrix \mbox{[}\mbox{[}5,2,3\mbox{]},\mbox{[}9,1,4\mbox{]}\mbox{]} is stored as \mbox{[}5,2,3,9,1,4\mbox{]}. \hypertarget{sscapi_8h_a8f86dcefe1ddcf1b4190a4ee415d14f2}{\index{sscapi.\-h@{sscapi.\-h}!ssc\-\_\-data\-\_\-set\-\_\-table@{ssc\-\_\-data\-\_\-set\-\_\-table}}
+\index{ssc\-\_\-data\-\_\-set\-\_\-table@{ssc\-\_\-data\-\_\-set\-\_\-table}!sscapi.h@{sscapi.\-h}}
+\paragraph[{ssc\-\_\-data\-\_\-set\-\_\-table}]{\setlength{\rightskip}{0pt plus 5cm}S\-S\-C\-E\-X\-P\-O\-R\-T void ssc\-\_\-data\-\_\-set\-\_\-table (
+\begin{DoxyParamCaption}
+\item[{{\bf ssc\-\_\-data\-\_\-t}}]{p\-\_\-data, }
+\item[{const char $\ast$}]{name, }
+\item[{{\bf ssc\-\_\-data\-\_\-t}}]{table}
+\end{DoxyParamCaption}
+)}}\label{sscapi_8h_a8f86dcefe1ddcf1b4190a4ee415d14f2}
+Assigns value of type {\itshape S\-S\-C\-\_\-\-T\-A\-B\-L\-E}. \hypertarget{sscapi_8h_a118454db6d4080a623bc176db005c7b1}{\index{sscapi.\-h@{sscapi.\-h}!ssc\-\_\-data\-\_\-get\-\_\-string@{ssc\-\_\-data\-\_\-get\-\_\-string}}
+\index{ssc\-\_\-data\-\_\-get\-\_\-string@{ssc\-\_\-data\-\_\-get\-\_\-string}!sscapi.h@{sscapi.\-h}}
+\paragraph[{ssc\-\_\-data\-\_\-get\-\_\-string}]{\setlength{\rightskip}{0pt plus 5cm}S\-S\-C\-E\-X\-P\-O\-R\-T const char$\ast$ ssc\-\_\-data\-\_\-get\-\_\-string (
+\begin{DoxyParamCaption}
+\item[{{\bf ssc\-\_\-data\-\_\-t}}]{p\-\_\-data, }
+\item[{const char $\ast$}]{name}
+\end{DoxyParamCaption}
+)}}\label{sscapi_8h_a118454db6d4080a623bc176db005c7b1}
+Returns the value of a {\itshape S\-S\-C\-\_\-\-S\-T\-R\-I\-N\-G} variable with the given name. \hypertarget{sscapi_8h_a2a815f31617dee3c96587fe2df6938ff}{\index{sscapi.\-h@{sscapi.\-h}!ssc\-\_\-data\-\_\-get\-\_\-number@{ssc\-\_\-data\-\_\-get\-\_\-number}}
+\index{ssc\-\_\-data\-\_\-get\-\_\-number@{ssc\-\_\-data\-\_\-get\-\_\-number}!sscapi.h@{sscapi.\-h}}
+\paragraph[{ssc\-\_\-data\-\_\-get\-\_\-number}]{\setlength{\rightskip}{0pt plus 5cm}S\-S\-C\-E\-X\-P\-O\-R\-T {\bf ssc\-\_\-bool\-\_\-t} ssc\-\_\-data\-\_\-get\-\_\-number (
+\begin{DoxyParamCaption}
+\item[{{\bf ssc\-\_\-data\-\_\-t}}]{p\-\_\-data, }
+\item[{const char $\ast$}]{name, }
+\item[{{\bf ssc\-\_\-number\-\_\-t} $\ast$}]{value}
+\end{DoxyParamCaption}
+)}}\label{sscapi_8h_a2a815f31617dee3c96587fe2df6938ff}
+Returns the value of a {\itshape S\-S\-C\-\_\-\-N\-U\-M\-B\-E\-R} variable with the given name. \hypertarget{sscapi_8h_a4fea1289c16bcd422f343cecfd9808de}{\index{sscapi.\-h@{sscapi.\-h}!ssc\-\_\-data\-\_\-get\-\_\-array@{ssc\-\_\-data\-\_\-get\-\_\-array}}
+\index{ssc\-\_\-data\-\_\-get\-\_\-array@{ssc\-\_\-data\-\_\-get\-\_\-array}!sscapi.h@{sscapi.\-h}}
+\paragraph[{ssc\-\_\-data\-\_\-get\-\_\-array}]{\setlength{\rightskip}{0pt plus 5cm}S\-S\-C\-E\-X\-P\-O\-R\-T {\bf ssc\-\_\-number\-\_\-t}$\ast$ ssc\-\_\-data\-\_\-get\-\_\-array (
+\begin{DoxyParamCaption}
+\item[{{\bf ssc\-\_\-data\-\_\-t}}]{p\-\_\-data, }
+\item[{const char $\ast$}]{name, }
+\item[{int $\ast$}]{length}
+\end{DoxyParamCaption}
+)}}\label{sscapi_8h_a4fea1289c16bcd422f343cecfd9808de}
+Returns the value of a {\itshape S\-S\-C\-\_\-\-A\-R\-R\-A\-Y} variable with the given name. \hypertarget{sscapi_8h_a5910932a763203c9c0f6d43776453f5e}{\index{sscapi.\-h@{sscapi.\-h}!ssc\-\_\-data\-\_\-get\-\_\-matrix@{ssc\-\_\-data\-\_\-get\-\_\-matrix}}
+\index{ssc\-\_\-data\-\_\-get\-\_\-matrix@{ssc\-\_\-data\-\_\-get\-\_\-matrix}!sscapi.h@{sscapi.\-h}}
+\paragraph[{ssc\-\_\-data\-\_\-get\-\_\-matrix}]{\setlength{\rightskip}{0pt plus 5cm}S\-S\-C\-E\-X\-P\-O\-R\-T {\bf ssc\-\_\-number\-\_\-t}$\ast$ ssc\-\_\-data\-\_\-get\-\_\-matrix (
+\begin{DoxyParamCaption}
+\item[{{\bf ssc\-\_\-data\-\_\-t}}]{p\-\_\-data, }
+\item[{const char $\ast$}]{name, }
+\item[{int $\ast$}]{nrows, }
+\item[{int $\ast$}]{ncols}
+\end{DoxyParamCaption}
+)}}\label{sscapi_8h_a5910932a763203c9c0f6d43776453f5e}
+Returns the value of a {\itshape S\-S\-C\-\_\-\-M\-A\-T\-R\-I\-X} variable with the given name. Matrices are specified as a continuous array, in row-\/major order. Example\-: the matrix \mbox{[}\mbox{[}5,2,3\mbox{]},\mbox{[}9,1,4\mbox{]}\mbox{]} is stored as \mbox{[}5,2,3,9,1,4\mbox{]}. \hypertarget{sscapi_8h_a9589098332e14ce8b9823e4ac8afdf22}{\index{sscapi.\-h@{sscapi.\-h}!ssc\-\_\-data\-\_\-get\-\_\-table@{ssc\-\_\-data\-\_\-get\-\_\-table}}
+\index{ssc\-\_\-data\-\_\-get\-\_\-table@{ssc\-\_\-data\-\_\-get\-\_\-table}!sscapi.h@{sscapi.\-h}}
+\paragraph[{ssc\-\_\-data\-\_\-get\-\_\-table}]{\setlength{\rightskip}{0pt plus 5cm}S\-S\-C\-E\-X\-P\-O\-R\-T {\bf ssc\-\_\-data\-\_\-t} ssc\-\_\-data\-\_\-get\-\_\-table (
+\begin{DoxyParamCaption}
+\item[{{\bf ssc\-\_\-data\-\_\-t}}]{p\-\_\-data, }
+\item[{const char $\ast$}]{name}
+\end{DoxyParamCaption}
+)}}\label{sscapi_8h_a9589098332e14ce8b9823e4ac8afdf22}
+Returns the value of a {\itshape S\-S\-C\-\_\-\-T\-A\-B\-L\-E} variable with the given name. \hypertarget{sscapi_8h_acb6e7a1f9ac26d3160fc849754a38627}{\index{sscapi.\-h@{sscapi.\-h}!ssc\-\_\-module\-\_\-entry@{ssc\-\_\-module\-\_\-entry}}
+\index{ssc\-\_\-module\-\_\-entry@{ssc\-\_\-module\-\_\-entry}!sscapi.h@{sscapi.\-h}}
+\paragraph[{ssc\-\_\-module\-\_\-entry}]{\setlength{\rightskip}{0pt plus 5cm}S\-S\-C\-E\-X\-P\-O\-R\-T {\bf ssc\-\_\-entry\-\_\-t} ssc\-\_\-module\-\_\-entry (
+\begin{DoxyParamCaption}
+\item[{int}]{index}
+\end{DoxyParamCaption}
+)}}\label{sscapi_8h_acb6e7a1f9ac26d3160fc849754a38627}
+Returns compute module information for the i-\/th module in the S\-S\-C library. Returns 0 (N\-U\-L\-L) for an invalid index. Example\-:
+
+\begin{DoxyVerb}int i=0;
+ssc_entry_t p_entry;
+while( p_entry = ssc_module_entry(i++) )
+{
+    printf("Compute Module '%s': \n", 
+            ssc_entry_name(p_entry), 
+            ssc_entry_description(p_entry) );
+}
+\end{DoxyVerb}
+ \hypertarget{sscapi_8h_a785b1e08e248478ee792ac945bd1eb31}{\index{sscapi.\-h@{sscapi.\-h}!ssc\-\_\-entry\-\_\-name@{ssc\-\_\-entry\-\_\-name}}
+\index{ssc\-\_\-entry\-\_\-name@{ssc\-\_\-entry\-\_\-name}!sscapi.h@{sscapi.\-h}}
+\paragraph[{ssc\-\_\-entry\-\_\-name}]{\setlength{\rightskip}{0pt plus 5cm}S\-S\-C\-E\-X\-P\-O\-R\-T const char$\ast$ ssc\-\_\-entry\-\_\-name (
+\begin{DoxyParamCaption}
+\item[{{\bf ssc\-\_\-entry\-\_\-t}}]{p\-\_\-entry}
+\end{DoxyParamCaption}
+)}}\label{sscapi_8h_a785b1e08e248478ee792ac945bd1eb31}
+Returns the name of a compute module. This is the name that is used to create a new compute module. \hypertarget{sscapi_8h_a86977139c320479baf3b4762513a8f6d}{\index{sscapi.\-h@{sscapi.\-h}!ssc\-\_\-entry\-\_\-description@{ssc\-\_\-entry\-\_\-description}}
+\index{ssc\-\_\-entry\-\_\-description@{ssc\-\_\-entry\-\_\-description}!sscapi.h@{sscapi.\-h}}
+\paragraph[{ssc\-\_\-entry\-\_\-description}]{\setlength{\rightskip}{0pt plus 5cm}S\-S\-C\-E\-X\-P\-O\-R\-T const char$\ast$ ssc\-\_\-entry\-\_\-description (
+\begin{DoxyParamCaption}
+\item[{{\bf ssc\-\_\-entry\-\_\-t}}]{p\-\_\-entry}
+\end{DoxyParamCaption}
+)}}\label{sscapi_8h_a86977139c320479baf3b4762513a8f6d}
+Returns a short text description of a compute module. \hypertarget{sscapi_8h_a449e4d53d00830b7b85a1e88a99f078f}{\index{sscapi.\-h@{sscapi.\-h}!ssc\-\_\-entry\-\_\-version@{ssc\-\_\-entry\-\_\-version}}
+\index{ssc\-\_\-entry\-\_\-version@{ssc\-\_\-entry\-\_\-version}!sscapi.h@{sscapi.\-h}}
+\paragraph[{ssc\-\_\-entry\-\_\-version}]{\setlength{\rightskip}{0pt plus 5cm}S\-S\-C\-E\-X\-P\-O\-R\-T int ssc\-\_\-entry\-\_\-version (
+\begin{DoxyParamCaption}
+\item[{{\bf ssc\-\_\-entry\-\_\-t}}]{p\-\_\-entry}
+\end{DoxyParamCaption}
+)}}\label{sscapi_8h_a449e4d53d00830b7b85a1e88a99f078f}
+Returns version information about a compute module. \hypertarget{sscapi_8h_a128141ac47daba53202b86a009e1cea7}{\index{sscapi.\-h@{sscapi.\-h}!ssc\-\_\-module\-\_\-create@{ssc\-\_\-module\-\_\-create}}
+\index{ssc\-\_\-module\-\_\-create@{ssc\-\_\-module\-\_\-create}!sscapi.h@{sscapi.\-h}}
+\paragraph[{ssc\-\_\-module\-\_\-create}]{\setlength{\rightskip}{0pt plus 5cm}S\-S\-C\-E\-X\-P\-O\-R\-T {\bf ssc\-\_\-module\-\_\-t} ssc\-\_\-module\-\_\-create (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{name}
+\end{DoxyParamCaption}
+)}}\label{sscapi_8h_a128141ac47daba53202b86a009e1cea7}
+Creates an instance of a compute module with the given name. Returns 0 (N\-U\-L\-L) if invalid name given and the module could not be created \hypertarget{sscapi_8h_a55fb17057398f14de0f7a3fcba9d328e}{\index{sscapi.\-h@{sscapi.\-h}!ssc\-\_\-module\-\_\-free@{ssc\-\_\-module\-\_\-free}}
+\index{ssc\-\_\-module\-\_\-free@{ssc\-\_\-module\-\_\-free}!sscapi.h@{sscapi.\-h}}
+\paragraph[{ssc\-\_\-module\-\_\-free}]{\setlength{\rightskip}{0pt plus 5cm}S\-S\-C\-E\-X\-P\-O\-R\-T void ssc\-\_\-module\-\_\-free (
+\begin{DoxyParamCaption}
+\item[{{\bf ssc\-\_\-module\-\_\-t}}]{p\-\_\-mod}
+\end{DoxyParamCaption}
+)}}\label{sscapi_8h_a55fb17057398f14de0f7a3fcba9d328e}
+Releases an instance of a compute module created with ssc\-\_\-module\-\_\-create \hypertarget{sscapi_8h_acfb10163d7b9bea42b2e444c2a5544ac}{\index{sscapi.\-h@{sscapi.\-h}!ssc\-\_\-module\-\_\-var\-\_\-info@{ssc\-\_\-module\-\_\-var\-\_\-info}}
+\index{ssc\-\_\-module\-\_\-var\-\_\-info@{ssc\-\_\-module\-\_\-var\-\_\-info}!sscapi.h@{sscapi.\-h}}
+\paragraph[{ssc\-\_\-module\-\_\-var\-\_\-info}]{\setlength{\rightskip}{0pt plus 5cm}S\-S\-C\-E\-X\-P\-O\-R\-T const {\bf ssc\-\_\-info\-\_\-t} ssc\-\_\-module\-\_\-var\-\_\-info (
+\begin{DoxyParamCaption}
+\item[{{\bf ssc\-\_\-module\-\_\-t}}]{p\-\_\-mod, }
+\item[{int}]{index}
+\end{DoxyParamCaption}
+)}}\label{sscapi_8h_acfb10163d7b9bea42b2e444c2a5544ac}
+Returns references to variable info objects. Returns N\-U\-L\-L for invalid index. Note that the ssc\-\_\-info\-\_\-$\ast$ functions that return strings may return N\-U\-L\-L if the computation module has not specified a value, i.\-e. no units or no grouping name. Example for a previously created 'p\-\_\-mod' object\-:
+
+\begin{DoxyVerb}int i=0;
+const ssc_info_t p_inf = NULL;
+while ( p_inf = ssc_module_var_info( p_mod, i++ ) )
+{
+    int var_type = ssc_info_var_type( p_inf );   // SSC_INPUT, SSC_OUTPUT, SSC_INOUT
+    int data_type = ssc_info_data_type( p_inf ); // SSC_STRING, SSC_NUMBER, SSC_ARRAY, SSC_MATRIX
+    
+    const char *name = ssc_info_name( p_inf );
+    const char *label = ssc_info_label( p_inf );
+    const char *units = ssc_info_units( p_inf );
+    const char *meta = ssc_info_meta( p_inf );
+    const char *group = ssc_info_group( p_inf );
+}
+\end{DoxyVerb}
+ \hypertarget{sscapi_8h_a25c204af7a2c81d11d134a62702426b5}{\index{sscapi.\-h@{sscapi.\-h}!ssc\-\_\-info\-\_\-var\-\_\-type@{ssc\-\_\-info\-\_\-var\-\_\-type}}
+\index{ssc\-\_\-info\-\_\-var\-\_\-type@{ssc\-\_\-info\-\_\-var\-\_\-type}!sscapi.h@{sscapi.\-h}}
+\paragraph[{ssc\-\_\-info\-\_\-var\-\_\-type}]{\setlength{\rightskip}{0pt plus 5cm}S\-S\-C\-E\-X\-P\-O\-R\-T int ssc\-\_\-info\-\_\-var\-\_\-type (
+\begin{DoxyParamCaption}
+\item[{{\bf ssc\-\_\-info\-\_\-t}}]{p\-\_\-inf}
+\end{DoxyParamCaption}
+)}}\label{sscapi_8h_a25c204af7a2c81d11d134a62702426b5}
+Returns variable type information\-: S\-S\-C\-\_\-\-I\-N\-P\-U\-T, S\-S\-C\-\_\-\-O\-U\-T\-P\-U\-T, or S\-S\-C\-\_\-\-I\-N\-O\-U\-T \hypertarget{sscapi_8h_ab2fde3d3031880da882aee086afc76b3}{\index{sscapi.\-h@{sscapi.\-h}!ssc\-\_\-info\-\_\-data\-\_\-type@{ssc\-\_\-info\-\_\-data\-\_\-type}}
+\index{ssc\-\_\-info\-\_\-data\-\_\-type@{ssc\-\_\-info\-\_\-data\-\_\-type}!sscapi.h@{sscapi.\-h}}
+\paragraph[{ssc\-\_\-info\-\_\-data\-\_\-type}]{\setlength{\rightskip}{0pt plus 5cm}S\-S\-C\-E\-X\-P\-O\-R\-T int ssc\-\_\-info\-\_\-data\-\_\-type (
+\begin{DoxyParamCaption}
+\item[{{\bf ssc\-\_\-info\-\_\-t}}]{p\-\_\-inf}
+\end{DoxyParamCaption}
+)}}\label{sscapi_8h_ab2fde3d3031880da882aee086afc76b3}
+Returns the data type of a variable\-: S\-S\-C\-\_\-\-S\-T\-R\-I\-N\-G, S\-S\-C\-\_\-\-N\-U\-M\-B\-E\-R, S\-S\-C\-\_\-\-A\-R\-R\-A\-Y, S\-S\-C\-\_\-\-M\-A\-T\-R\-I\-X, S\-S\-C\-\_\-\-T\-A\-B\-L\-E \hypertarget{sscapi_8h_a92f71d2241b912330d2734ba63d6b85f}{\index{sscapi.\-h@{sscapi.\-h}!ssc\-\_\-info\-\_\-name@{ssc\-\_\-info\-\_\-name}}
+\index{ssc\-\_\-info\-\_\-name@{ssc\-\_\-info\-\_\-name}!sscapi.h@{sscapi.\-h}}
+\paragraph[{ssc\-\_\-info\-\_\-name}]{\setlength{\rightskip}{0pt plus 5cm}S\-S\-C\-E\-X\-P\-O\-R\-T const char$\ast$ ssc\-\_\-info\-\_\-name (
+\begin{DoxyParamCaption}
+\item[{{\bf ssc\-\_\-info\-\_\-t}}]{p\-\_\-inf}
+\end{DoxyParamCaption}
+)}}\label{sscapi_8h_a92f71d2241b912330d2734ba63d6b85f}
+Returns the name of a variable \hypertarget{sscapi_8h_a04113d80460294539d935c04ca8d8f36}{\index{sscapi.\-h@{sscapi.\-h}!ssc\-\_\-info\-\_\-label@{ssc\-\_\-info\-\_\-label}}
+\index{ssc\-\_\-info\-\_\-label@{ssc\-\_\-info\-\_\-label}!sscapi.h@{sscapi.\-h}}
+\paragraph[{ssc\-\_\-info\-\_\-label}]{\setlength{\rightskip}{0pt plus 5cm}S\-S\-C\-E\-X\-P\-O\-R\-T const char$\ast$ ssc\-\_\-info\-\_\-label (
+\begin{DoxyParamCaption}
+\item[{{\bf ssc\-\_\-info\-\_\-t}}]{p\-\_\-inf}
+\end{DoxyParamCaption}
+)}}\label{sscapi_8h_a04113d80460294539d935c04ca8d8f36}
+Returns the short label description of the variable \hypertarget{sscapi_8h_aafe4ecee010642fabc99b1591c0680f8}{\index{sscapi.\-h@{sscapi.\-h}!ssc\-\_\-info\-\_\-units@{ssc\-\_\-info\-\_\-units}}
+\index{ssc\-\_\-info\-\_\-units@{ssc\-\_\-info\-\_\-units}!sscapi.h@{sscapi.\-h}}
+\paragraph[{ssc\-\_\-info\-\_\-units}]{\setlength{\rightskip}{0pt plus 5cm}S\-S\-C\-E\-X\-P\-O\-R\-T const char$\ast$ ssc\-\_\-info\-\_\-units (
+\begin{DoxyParamCaption}
+\item[{{\bf ssc\-\_\-info\-\_\-t}}]{p\-\_\-inf}
+\end{DoxyParamCaption}
+)}}\label{sscapi_8h_aafe4ecee010642fabc99b1591c0680f8}
+Returns the units of the values for the variable \hypertarget{sscapi_8h_a6e13987c293cb1044d893dee334daa5b}{\index{sscapi.\-h@{sscapi.\-h}!ssc\-\_\-info\-\_\-meta@{ssc\-\_\-info\-\_\-meta}}
+\index{ssc\-\_\-info\-\_\-meta@{ssc\-\_\-info\-\_\-meta}!sscapi.h@{sscapi.\-h}}
+\paragraph[{ssc\-\_\-info\-\_\-meta}]{\setlength{\rightskip}{0pt plus 5cm}S\-S\-C\-E\-X\-P\-O\-R\-T const char$\ast$ ssc\-\_\-info\-\_\-meta (
+\begin{DoxyParamCaption}
+\item[{{\bf ssc\-\_\-info\-\_\-t}}]{p\-\_\-inf}
+\end{DoxyParamCaption}
+)}}\label{sscapi_8h_a6e13987c293cb1044d893dee334daa5b}
+Returns any extra information about a variable \hypertarget{sscapi_8h_a988bfd5148b165f3f3fc9f9f0f021262}{\index{sscapi.\-h@{sscapi.\-h}!ssc\-\_\-info\-\_\-group@{ssc\-\_\-info\-\_\-group}}
+\index{ssc\-\_\-info\-\_\-group@{ssc\-\_\-info\-\_\-group}!sscapi.h@{sscapi.\-h}}
+\paragraph[{ssc\-\_\-info\-\_\-group}]{\setlength{\rightskip}{0pt plus 5cm}S\-S\-C\-E\-X\-P\-O\-R\-T const char$\ast$ ssc\-\_\-info\-\_\-group (
+\begin{DoxyParamCaption}
+\item[{{\bf ssc\-\_\-info\-\_\-t}}]{p\-\_\-inf}
+\end{DoxyParamCaption}
+)}}\label{sscapi_8h_a988bfd5148b165f3f3fc9f9f0f021262}
+Returns any grouping information. Variables can be assigned to groups for presentation to the user, for example \hypertarget{sscapi_8h_a9ef2812e6f2c9b4a650c5e729f5c5ef5}{\index{sscapi.\-h@{sscapi.\-h}!ssc\-\_\-info\-\_\-required@{ssc\-\_\-info\-\_\-required}}
+\index{ssc\-\_\-info\-\_\-required@{ssc\-\_\-info\-\_\-required}!sscapi.h@{sscapi.\-h}}
+\paragraph[{ssc\-\_\-info\-\_\-required}]{\setlength{\rightskip}{0pt plus 5cm}S\-S\-C\-E\-X\-P\-O\-R\-T const char$\ast$ ssc\-\_\-info\-\_\-required (
+\begin{DoxyParamCaption}
+\item[{{\bf ssc\-\_\-info\-\_\-t}}]{p\-\_\-inf}
+\end{DoxyParamCaption}
+)}}\label{sscapi_8h_a9ef2812e6f2c9b4a650c5e729f5c5ef5}
+\begin{DoxyVerb}Returns information about whether a variable is required to be assigned for 
+\end{DoxyVerb}
+ a compute module to run. It may alternatively be given a default value, specified as '?=
+
+'. \hypertarget{sscapi_8h_a1a5af0286399b099684fa0f09ec149cf}{\index{sscapi.\-h@{sscapi.\-h}!ssc\-\_\-info\-\_\-constraints@{ssc\-\_\-info\-\_\-constraints}}
+\index{ssc\-\_\-info\-\_\-constraints@{ssc\-\_\-info\-\_\-constraints}!sscapi.h@{sscapi.\-h}}
+\paragraph[{ssc\-\_\-info\-\_\-constraints}]{\setlength{\rightskip}{0pt plus 5cm}S\-S\-C\-E\-X\-P\-O\-R\-T const char$\ast$ ssc\-\_\-info\-\_\-constraints (
+\begin{DoxyParamCaption}
+\item[{{\bf ssc\-\_\-info\-\_\-t}}]{p\-\_\-inf}
+\end{DoxyParamCaption}
+)}}\label{sscapi_8h_a1a5af0286399b099684fa0f09ec149cf}
+Returns constraints on the values accepted. For example, M\-I\-N, M\-A\-X, B\-O\-O\-L\-E\-A\-N, I\-N\-T\-E\-G\-E\-R, P\-O\-S\-I\-T\-I\-V\-E are possible constraints. \hypertarget{sscapi_8h_ab895b6deba0be468250fc84ff027ed73}{\index{sscapi.\-h@{sscapi.\-h}!ssc\-\_\-info\-\_\-uihint@{ssc\-\_\-info\-\_\-uihint}}
+\index{ssc\-\_\-info\-\_\-uihint@{ssc\-\_\-info\-\_\-uihint}!sscapi.h@{sscapi.\-h}}
+\paragraph[{ssc\-\_\-info\-\_\-uihint}]{\setlength{\rightskip}{0pt plus 5cm}S\-S\-C\-E\-X\-P\-O\-R\-T const char$\ast$ ssc\-\_\-info\-\_\-uihint (
+\begin{DoxyParamCaption}
+\item[{{\bf ssc\-\_\-info\-\_\-t}}]{p\-\_\-inf}
+\end{DoxyParamCaption}
+)}}\label{sscapi_8h_ab895b6deba0be468250fc84ff027ed73}
+Returns additional information for use in a target application about how to show the variable to the user. Not used currently. \hypertarget{sscapi_8h_ad4c7c528bb268bd95e87c363c224a659}{\index{sscapi.\-h@{sscapi.\-h}!ssc\-\_\-module\-\_\-exec\-\_\-set\-\_\-print@{ssc\-\_\-module\-\_\-exec\-\_\-set\-\_\-print}}
+\index{ssc\-\_\-module\-\_\-exec\-\_\-set\-\_\-print@{ssc\-\_\-module\-\_\-exec\-\_\-set\-\_\-print}!sscapi.h@{sscapi.\-h}}
+\paragraph[{ssc\-\_\-module\-\_\-exec\-\_\-set\-\_\-print}]{\setlength{\rightskip}{0pt plus 5cm}S\-S\-C\-E\-X\-P\-O\-R\-T void ssc\-\_\-module\-\_\-exec\-\_\-set\-\_\-print (
+\begin{DoxyParamCaption}
+\item[{int}]{print}
+\end{DoxyParamCaption}
+)}}\label{sscapi_8h_ad4c7c528bb268bd95e87c363c224a659}
+Specify whether the built-\/in execution handler prints messages and progress updates to the command line console. \hypertarget{sscapi_8h_a360e90bdd0738c494c7992f15467268d}{\index{sscapi.\-h@{sscapi.\-h}!ssc\-\_\-module\-\_\-exec\-\_\-simple@{ssc\-\_\-module\-\_\-exec\-\_\-simple}}
+\index{ssc\-\_\-module\-\_\-exec\-\_\-simple@{ssc\-\_\-module\-\_\-exec\-\_\-simple}!sscapi.h@{sscapi.\-h}}
+\paragraph[{ssc\-\_\-module\-\_\-exec\-\_\-simple}]{\setlength{\rightskip}{0pt plus 5cm}S\-S\-C\-E\-X\-P\-O\-R\-T {\bf ssc\-\_\-bool\-\_\-t} ssc\-\_\-module\-\_\-exec\-\_\-simple (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{name, }
+\item[{{\bf ssc\-\_\-data\-\_\-t}}]{p\-\_\-data}
+\end{DoxyParamCaption}
+)}}\label{sscapi_8h_a360e90bdd0738c494c7992f15467268d}
+The simplest way to run a computation module over a data set. Simply specify the name of the module, and a data set. If the whole process succeeded, the function returns 1, otherwise 0. No error messages are available. This function can be thread-\/safe, depending on the computation module used. If the computation module requires the execution of external binary executables, it is not thread-\/safe. However, simpler implementations that do all calculations internally are probably thread-\/safe. Unfortunately there is no standard way to report the thread-\/safety of a particular computation module. \hypertarget{sscapi_8h_ae13b12f038c0c491cda6dfda90152abb}{\index{sscapi.\-h@{sscapi.\-h}!ssc\-\_\-module\-\_\-exec\-\_\-simple\-\_\-nothread@{ssc\-\_\-module\-\_\-exec\-\_\-simple\-\_\-nothread}}
+\index{ssc\-\_\-module\-\_\-exec\-\_\-simple\-\_\-nothread@{ssc\-\_\-module\-\_\-exec\-\_\-simple\-\_\-nothread}!sscapi.h@{sscapi.\-h}}
+\paragraph[{ssc\-\_\-module\-\_\-exec\-\_\-simple\-\_\-nothread}]{\setlength{\rightskip}{0pt plus 5cm}S\-S\-C\-E\-X\-P\-O\-R\-T const char$\ast$ ssc\-\_\-module\-\_\-exec\-\_\-simple\-\_\-nothread (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{name, }
+\item[{{\bf ssc\-\_\-data\-\_\-t}}]{p\-\_\-data}
+\end{DoxyParamCaption}
+)}}\label{sscapi_8h_ae13b12f038c0c491cda6dfda90152abb}
+Another very simple way to run a computation module over a data set. The function returns N\-U\-L\-L on success. If something went wrong, the first error message is returned. Because the returned string references a common internal data container, this function is never thread-\/safe. \hypertarget{sscapi_8h_a76d8a523407f3c071a9cf22ad2935a41}{\index{sscapi.\-h@{sscapi.\-h}!ssc\-\_\-module\-\_\-exec@{ssc\-\_\-module\-\_\-exec}}
+\index{ssc\-\_\-module\-\_\-exec@{ssc\-\_\-module\-\_\-exec}!sscapi.h@{sscapi.\-h}}
+\paragraph[{ssc\-\_\-module\-\_\-exec}]{\setlength{\rightskip}{0pt plus 5cm}S\-S\-C\-E\-X\-P\-O\-R\-T {\bf ssc\-\_\-bool\-\_\-t} ssc\-\_\-module\-\_\-exec (
+\begin{DoxyParamCaption}
+\item[{{\bf ssc\-\_\-module\-\_\-t}}]{p\-\_\-mod, }
+\item[{{\bf ssc\-\_\-data\-\_\-t}}]{p\-\_\-data}
+\end{DoxyParamCaption}
+)}}\label{sscapi_8h_a76d8a523407f3c071a9cf22ad2935a41}
+Runs an instantiated computation module over the specified data set. Returns Boolean\-: 1 or 0. Detailed notices, warnings, and errors can be retrieved using the ssc\-\_\-module\-\_\-log function. \hypertarget{sscapi_8h_a58968776ff9ba65e9ac1886a0bdcb8df}{\index{sscapi.\-h@{sscapi.\-h}!ssc\-\_\-module\-\_\-exec\-\_\-with\-\_\-handler@{ssc\-\_\-module\-\_\-exec\-\_\-with\-\_\-handler}}
+\index{ssc\-\_\-module\-\_\-exec\-\_\-with\-\_\-handler@{ssc\-\_\-module\-\_\-exec\-\_\-with\-\_\-handler}!sscapi.h@{sscapi.\-h}}
+\paragraph[{ssc\-\_\-module\-\_\-exec\-\_\-with\-\_\-handler}]{\setlength{\rightskip}{0pt plus 5cm}S\-S\-C\-E\-X\-P\-O\-R\-T {\bf ssc\-\_\-bool\-\_\-t} ssc\-\_\-module\-\_\-exec\-\_\-with\-\_\-handler (
+\begin{DoxyParamCaption}
+\item[{{\bf ssc\-\_\-module\-\_\-t}}]{p\-\_\-mod, }
+\item[{{\bf ssc\-\_\-data\-\_\-t}}]{p\-\_\-data, }
+\item[{{\bf ssc\-\_\-bool\-\_\-t}($\ast$)({\bf ssc\-\_\-module\-\_\-t}, {\bf ssc\-\_\-handler\-\_\-t}, int action, float f0, float f1, const char $\ast$s0, const char $\ast$s1, void $\ast$user\-\_\-data)}]{pf\-\_\-handler, }
+\item[{void $\ast$}]{pf\-\_\-user\-\_\-data}
+\end{DoxyParamCaption}
+)}}\label{sscapi_8h_a58968776ff9ba65e9ac1886a0bdcb8df}
+A full-\/featured way to run a compute module with a callback function to handle custom logging, progress updates, and cancelation requests. Returns Boolean\-: 1 or 0 indicating success or failure. \hypertarget{sscapi_8h_a595854e4dc9d1e10e7a36eb1715b55dc}{\index{sscapi.\-h@{sscapi.\-h}!ssc\-\_\-module\-\_\-log@{ssc\-\_\-module\-\_\-log}}
+\index{ssc\-\_\-module\-\_\-log@{ssc\-\_\-module\-\_\-log}!sscapi.h@{sscapi.\-h}}
+\paragraph[{ssc\-\_\-module\-\_\-log}]{\setlength{\rightskip}{0pt plus 5cm}S\-S\-C\-E\-X\-P\-O\-R\-T const char$\ast$ ssc\-\_\-module\-\_\-log (
+\begin{DoxyParamCaption}
+\item[{{\bf ssc\-\_\-module\-\_\-t}}]{p\-\_\-mod, }
+\item[{int}]{index, }
+\item[{int $\ast$}]{item\-\_\-type, }
+\item[{float $\ast$}]{time}
+\end{DoxyParamCaption}
+)}}\label{sscapi_8h_a595854e4dc9d1e10e7a36eb1715b55dc}
+Retrive notices, warnings, and error messages from the simulation. Returns a N\-U\-L\-L-\/terminated A\-S\-C\-I\-I C string with the message text, or N\-U\-L\-L if the index passed in was invalid. \hypertarget{sscapi_8h_ad5d381c3a156fce3bd92f6810129d2b7}{\index{sscapi.\-h@{sscapi.\-h}!\-\_\-\-\_\-ssc\-\_\-segfault@{\-\_\-\-\_\-ssc\-\_\-segfault}}
+\index{\-\_\-\-\_\-ssc\-\_\-segfault@{\-\_\-\-\_\-ssc\-\_\-segfault}!sscapi.h@{sscapi.\-h}}
+\paragraph[{\-\_\-\-\_\-ssc\-\_\-segfault}]{\setlength{\rightskip}{0pt plus 5cm}S\-S\-C\-E\-X\-P\-O\-R\-T void \-\_\-\-\_\-ssc\-\_\-segfault (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{sscapi_8h_ad5d381c3a156fce3bd92f6810129d2b7}
+D\-O N\-O\-T C\-A\-L\-L T\-H\-I\-S F\-U\-N\-C\-T\-I\-O\-N\-: immediately causes a segmentation fault within the library. This is only useful for testing crash handling from an external application that is dynamically linked to the S\-S\-C library 

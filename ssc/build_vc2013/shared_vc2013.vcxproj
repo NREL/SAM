@@ -1,0 +1,193 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\shared\6par_gamma.h" />
+    <ClInclude Include="..\shared\6par_jacobian.h" />
+    <ClInclude Include="..\shared\6par_lu.h" />
+    <ClInclude Include="..\shared\6par_newton.h" />
+    <ClInclude Include="..\shared\6par_search.h" />
+    <ClInclude Include="..\shared\6par_solve.h" />
+    <ClInclude Include="..\shared\lib_battery.h" />
+    <ClInclude Include="..\shared\lib_battery_dispatch.h" />
+    <ClInclude Include="..\shared\lib_cec6par.h" />
+    <ClInclude Include="..\shared\lib_financial.h" />
+    <ClInclude Include="..\shared\lib_geothermal.h" />
+    <ClInclude Include="..\shared\lib_iec61853.h" />
+    <ClInclude Include="..\shared\lib_irradproc.h" />
+    <ClInclude Include="..\shared\lib_miniz.h" />
+    <ClInclude Include="..\shared\lib_physics.h" />
+    <ClInclude Include="..\shared\lib_powerblock.h" />
+    <ClInclude Include="..\shared\lib_power_electronics.h" />
+    <ClInclude Include="..\shared\lib_pvinv.h" />
+    <ClInclude Include="..\shared\lib_pvmodel.h" />
+    <ClInclude Include="..\shared\lib_pvshade.h" />
+    <ClInclude Include="..\shared\lib_pvwatts.h" />
+    <ClInclude Include="..\shared\lib_pv_shade_loss_mpp.h" />
+    <ClInclude Include="..\shared\lib_sandia.h" />
+    <ClInclude Include="..\shared\lib_snowmodel.h" />
+    <ClInclude Include="..\shared\lib_util.h" />
+    <ClInclude Include="..\shared\lib_weatherfile.h" />
+    <ClInclude Include="..\shared\lib_windfile.h" />
+    <ClInclude Include="..\shared\lib_windwatts.h" />
+    <ClInclude Include="..\shared\lib_wind_obos.h" />
+    <ClInclude Include="..\shared\lsqfit.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\shared\lib_battery.cpp" />
+    <ClCompile Include="..\shared\lib_battery_dispatch.cpp" />
+    <ClCompile Include="..\shared\lib_cec6par.cpp" />
+    <ClCompile Include="..\shared\lib_financial.cpp" />
+    <ClCompile Include="..\shared\lib_geothermal.cpp" />
+    <ClCompile Include="..\shared\lib_iec61853.cpp" />
+    <ClCompile Include="..\shared\lib_irradproc.cpp" />
+    <ClCompile Include="..\shared\lib_miniz.cpp" />
+    <ClCompile Include="..\shared\lib_physics.cpp" />
+    <ClCompile Include="..\shared\lib_powerblock.cpp" />
+    <ClCompile Include="..\shared\lib_power_electronics.cpp" />
+    <ClCompile Include="..\shared\lib_pvinv.cpp" />
+    <ClCompile Include="..\shared\lib_pvmodel.cpp" />
+    <ClCompile Include="..\shared\lib_pvshade.cpp" />
+    <ClCompile Include="..\shared\lib_pvwatts.cpp" />
+    <ClCompile Include="..\shared\lib_pv_shade_loss_mpp.cpp" />
+    <ClCompile Include="..\shared\lib_sandia.cpp" />
+    <ClCompile Include="..\shared\lib_snowmodel.cpp" />
+    <ClCompile Include="..\shared\lib_util.cpp" />
+    <ClCompile Include="..\shared\lib_weatherfile.cpp" />
+    <ClCompile Include="..\shared\lib_windfile.cpp" />
+    <ClCompile Include="..\shared\lib_windwatts.cpp" />
+    <ClCompile Include="..\shared\lib_wind_obos.cpp" />
+    <ClCompile Include="..\shared\lsqfit.cpp" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{794A2685-B70E-4504-9402-AC376D4EB459}</ProjectGuid>
+    <RootNamespace>relib</RootNamespace>
+    <ProjectName>shared</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>false</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>false</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <TargetName>shared</TargetName>
+    <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <TargetName>shared</TargetName>
+    <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <TargetName>shared</TargetName>
+    <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <TargetName>shared</TargetName>
+    <IntDir>$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

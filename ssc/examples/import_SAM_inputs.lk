@@ -1,0 +1,70 @@
+/*-----------------------------------------------------------------------------
+
+Definition - A function to read in the input variables from
+			 C:\Users\<username>\.SAM\ssc, which are the inputs that were 
+			 assigned in the SAM user interface.  This function reads and loads
+			 the variables and their values into the SSCDev workspace
+			 
+Input      - path2input: the absolute pathname of the input file, eg:
+			 path2input = 'U:/CraigFiles/sscdbg_swh.txt';
+			 
+Outputs    - none, loads variables into workspace
+
+Notes      - Does not handle 'table' variables, e.g. PV model shading inputs.
+
+Modified   - Nick DiOrio: 6-28-2013
+------------------------------------------------------------------------------*/
+
+function import_SAM_inputs( path2input )
+{
+	f = open(path2input, 'r');
+
+	// Open Input and Initialize Variables
+	if (!f) { outln("error opening input file: " + path2input); return false; }
+	
+	buf = '';	
+	// Read each line separately
+	while( read_line(f, buf) )
+	{
+		// split the line into tab delimited parts
+		parts = split(buf, '\t');	
+		len = #parts;
+		
+		// if the line is not blank and there is more than one part
+		if (len > 1)
+		{
+			// extract the variable type and name
+			type = parts[0]; 
+			varName = parts[1];
+		
+			outln( 'Reading: ' + varName );
+			
+			if (type == "string") // assign string variables
+			{
+				var(varName,parts[2]);
+			}
+			elseif (type == "number") // assign number variables
+			{
+				var(varName,to_real(parts[2])); // assign array variables
+			}
+			elseif (type == "array")
+			{
+				arrayLength = to_real(parts[2]);
+				arrayData = alloc(arrayLength);
+				for (i = 0; i < arrayLength; i++)
+					arrayData[i]= (parts[i+3]);
+					
+				var(varName,arrayData);
+			}
+			else
+			{
+				outln('unsupported variable type: ' + type + ' ' + name );
+			}
+		}
+	
+	}
+	close(f);
+	
+	return true;
+}
+

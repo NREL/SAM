@@ -1,0 +1,269 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\tcs\atmospheric_aod.cpp" />
+    <ClCompile Include="..\tcs\cavity_calcs.cpp" />
+    <ClCompile Include="..\tcs\co2_compressor_library.cpp" />
+    <ClCompile Include="..\tcs\csp_dispatch.cpp" />
+    <ClCompile Include="..\tcs\csp_solver_core.cpp" />
+    <ClCompile Include="..\tcs\csp_solver_gen_collector_receiver.cpp" />
+    <ClCompile Include="..\tcs\csp_solver_lf_dsg_collector_receiver.cpp" />
+    <ClCompile Include="..\tcs\csp_solver_mono_eq_methods.cpp" />
+    <ClCompile Include="..\tcs\csp_solver_mspt_collector_receiver.cpp" />
+    <ClCompile Include="..\tcs\csp_solver_mspt_receiver_222.cpp" />
+    <ClCompile Include="..\tcs\csp_solver_pc_gen.cpp" />
+    <ClCompile Include="..\tcs\csp_solver_pc_heat_sink.cpp" />
+    <ClCompile Include="..\tcs\csp_solver_pc_Rankine_indirect_224.cpp" />
+    <ClCompile Include="..\tcs\csp_solver_pc_sco2.cpp" />
+    <ClCompile Include="..\tcs\csp_solver_pc_steam_heat_sink.cpp" />
+    <ClCompile Include="..\tcs\csp_solver_pt_heliostatfield.cpp" />
+    <ClCompile Include="..\tcs\csp_solver_tou_block_schedules.cpp" />
+    <ClCompile Include="..\tcs\csp_solver_trough_collector_receiver.cpp" />
+    <ClCompile Include="..\tcs\csp_solver_two_tank_tes.cpp" />
+    <ClCompile Include="..\tcs\csp_solver_util.cpp" />
+    <ClCompile Include="..\tcs\csp_solver_weatherreader.cpp" />
+    <ClCompile Include="..\tcs\csp_system_costs.cpp" />
+    <ClCompile Include="..\tcs\datatest.cpp" />
+    <ClCompile Include="..\tcs\direct_steam_receivers.cpp" />
+    <ClCompile Include="..\tcs\CO2_properties.cpp" />
+    <ClCompile Include="..\tcs\heat_exchangers.cpp" />
+    <ClCompile Include="..\tcs\numeric_solvers.cpp" />
+    <ClCompile Include="..\tcs\sam_mw_gen_Type260_csp_solver.cpp" />
+    <ClCompile Include="..\tcs\sam_mw_pt_heliostatfield_csp_solver.cpp" />
+    <ClCompile Include="..\tcs\sam_mw_pt_type222_csp_solver.cpp" />
+    <ClCompile Include="..\tcs\sam_mw_pt_type224_csp_solver.cpp" />
+    <ClCompile Include="..\tcs\sam_mw_trough_type250.cpp" />
+    <ClCompile Include="..\tcs\sam_type250_input_generator.cpp" />
+    <ClCompile Include="..\tcs\sco2_pc_core.cpp" />
+    <ClCompile Include="..\tcs\sco2_pc_csp_int.cpp" />
+    <ClCompile Include="..\tcs\tou_translator_csp_solver.cpp" />
+    <ClCompile Include="..\tcs\ud_power_cycle.cpp" />
+    <ClCompile Include="..\tcs\water_properties.cpp" />
+    <ClCompile Include="..\tcs\fmin.cpp" />
+    <ClCompile Include="..\tcs\Heliostat_AzElAod.cpp" />
+    <ClCompile Include="..\tcs\htf_props.cpp" />
+    <ClCompile Include="..\tcs\interpolation_routines.cpp" />
+    <ClCompile Include="..\tcs\ngcc_powerblock.cpp" />
+    <ClCompile Include="..\tcs\powerblock.cpp" />
+    <ClCompile Include="..\tcs\pump.cpp" />
+    <ClCompile Include="..\tcs\sam_csp_util.cpp" />
+    <ClCompile Include="..\tcs\sam_dsg_controller_type265.cpp" />
+    <ClCompile Include="..\tcs\sam_iscc_parasitics.cpp" />
+    <ClCompile Include="..\tcs\sam_iscc_powerblock.cpp" />
+    <ClCompile Include="..\tcs\sam_lf_st_pt_type232.cpp" />
+    <ClCompile Include="..\tcs\sam_mw_csp_SumCalcs.cpp" />
+    <ClCompile Include="..\tcs\sam_mw_lf_type261_steam.cpp" />
+    <ClCompile Include="..\tcs\sam_mw_lf_type261_Wnet.cpp" />
+    <ClCompile Include="..\tcs\sam_mw_lf_type262_salt.cpp" />
+    <ClCompile Include="..\tcs\sam_mw_pt_type221.cpp" />
+    <ClCompile Include="..\tcs\sam_mw_pt_type228.cpp" />
+    <ClCompile Include="..\tcs\sam_mw_trough_type251.cpp" />
+    <ClCompile Include="..\tcs\sam_mw_type234.cpp" />
+    <ClCompile Include="..\tcs\sam_pf_dish_collector_type295.cpp" />
+    <ClCompile Include="..\tcs\sam_pf_dish_engine_type297.cpp" />
+    <ClCompile Include="..\tcs\sam_pf_dish_parasitic_type298.cpp" />
+    <ClCompile Include="..\tcs\sam_pf_dish_receiver_type296.cpp" />
+    <ClCompile Include="..\tcs\sam_sco2_recomp_type424.cpp" />
+    <ClCompile Include="..\tcs\sam_trough_model_type805.cpp" />
+    <ClCompile Include="..\tcs\sam_trough_plant_type807.cpp" />
+    <ClCompile Include="..\tcs\sam_trough_storage_type806.cpp" />
+    <ClCompile Include="..\tcs\sco2_rec_util.cpp" />
+    <ClCompile Include="..\tcs\sco2_test_type401.cpp" />
+    <ClCompile Include="..\tcs\solarcollector.cpp" />
+    <ClCompile Include="..\tcs\storage_hx.cpp" />
+    <ClCompile Include="..\tcs\sumprod.cpp" />
+    <ClCompile Include="..\tcs\tcskernel.cpp" />
+    <ClCompile Include="..\tcs\tc_test_type402.cpp" />
+    <ClCompile Include="..\tcs\thermocline_tes.cpp" />
+    <ClCompile Include="..\tcs\trnsys_weatherreader.cpp" />
+    <ClCompile Include="..\tcs\typelib.cpp" />
+    <ClCompile Include="..\tcs\weatherreader_csp_solver.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\tcs\atmospheric_aod.h" />
+    <ClInclude Include="..\tcs\cavity_calcs.h" />
+    <ClInclude Include="..\tcs\co2_compressor_library.h" />
+    <ClInclude Include="..\tcs\csp_dispatch.h" />
+    <ClInclude Include="..\tcs\csp_solver_core.h" />
+    <ClInclude Include="..\tcs\csp_solver_gen_collector_receiver.h" />
+    <ClInclude Include="..\tcs\csp_solver_lf_dsg_collector_receiver.h" />
+    <ClInclude Include="..\tcs\csp_solver_mspt_collector_receiver.h" />
+    <ClInclude Include="..\tcs\csp_solver_mspt_receiver_222.h" />
+    <ClInclude Include="..\tcs\csp_solver_pc_gen.h" />
+    <ClInclude Include="..\tcs\csp_solver_pc_heat_sink.h" />
+    <ClInclude Include="..\tcs\csp_solver_pc_Rankine_indirect_224.h" />
+    <ClInclude Include="..\tcs\csp_solver_pc_sco2.h" />
+    <ClInclude Include="..\tcs\csp_solver_pc_steam_heat_sink.h" />
+    <ClInclude Include="..\tcs\csp_solver_pt_heliostatfield.h" />
+    <ClInclude Include="..\tcs\csp_solver_tou_block_schedules.h" />
+    <ClInclude Include="..\tcs\csp_solver_trough_collector_receiver.h" />
+    <ClInclude Include="..\tcs\csp_solver_two_tank_tes.h" />
+    <ClInclude Include="..\tcs\csp_solver_util.h" />
+    <ClInclude Include="..\tcs\csp_system_costs.h" />
+    <ClInclude Include="..\tcs\direct_steam_receivers.h" />
+    <ClInclude Include="..\tcs\CO2_properties.h" />
+    <ClInclude Include="..\tcs\heat_exchangers.h" />
+    <ClInclude Include="..\tcs\numeric_solvers.h" />
+    <ClInclude Include="..\tcs\sco2_pc_core.h" />
+    <ClInclude Include="..\tcs\sco2_pc_csp_int.h" />
+    <ClInclude Include="..\tcs\ud_power_cycle.h" />
+    <ClInclude Include="..\tcs\water_properties.h" />
+    <ClInclude Include="..\tcs\fmin.h" />
+    <ClInclude Include="..\tcs\htf_props.h" />
+    <ClInclude Include="..\tcs\interpolation_routines.h" />
+    <ClInclude Include="..\tcs\ngcc_powerblock.h" />
+    <ClInclude Include="..\tcs\powerblock.h" />
+    <ClInclude Include="..\tcs\sam_csp_util.h" />
+    <ClInclude Include="..\tcs\sco2_rec_util.h" />
+    <ClInclude Include="..\tcs\storage_hx.h" />
+    <ClInclude Include="..\tcs\tcskernel.h" />
+    <ClInclude Include="..\tcs\tcstype.h" />
+    <ClInclude Include="..\tcs\tcs_debug.h" />
+    <ClInclude Include="..\tcs\thermocline_tes.h" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{3058C490-552E-4428-A409-F29EB2C50D3F}</ProjectGuid>
+    <ProjectName>tcs</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>false</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>false</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <TargetName>tcs</TargetName>
+    <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <TargetName>tcs</TargetName>
+    <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <TargetName>tcs</TargetName>
+    <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <TargetName>tcs</TargetName>
+    <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>$(SolutionDir)\..\ssc;$(SolutionDir)\..\ssc\nlopt;$(SolutionDir)\..\ssc\lpsolve;$(SolutionDir)\..\ssc\shared;$(SolutionDir)\..\ssc\solarpilot;$(SolutionDir)\..;%(AdditionalIncludeDirectories);$(SolutionDir)\..\tcs\FIT_props;$(SolutionDir)\..\nlopt;$(SolutionDir)\..\shared;$(SolutionDir)\..\solarpilot;$(SolutionDir)\..\lpsolve</AdditionalIncludeDirectories>
+      <AdditionalOptions>/bigobj %(AdditionalOptions)</AdditionalOptions>
+      <PreprocessorDefinitions>LPWINAPP;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>$(SolutionDir)\..\ssc;$(SolutionDir)\..\ssc\nlopt;$(SolutionDir)\..\ssc\lpsolve;$(SolutionDir)\..\ssc\shared;$(SolutionDir)\..\ssc\solarpilot;$(SolutionDir)\..;%(AdditionalIncludeDirectories);$(SolutionDir)\..\tcs\FIT_props;$(SolutionDir)\..\nlopt;$(SolutionDir)\..\shared;$(SolutionDir)\..\solarpilot;$(SolutionDir)\..\lpsolve</AdditionalIncludeDirectories>
+      <AdditionalOptions>/bigobj %(AdditionalOptions)</AdditionalOptions>
+      <PreprocessorDefinitions>LPWINAPP;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <AdditionalIncludeDirectories>$(SolutionDir)\..\ssc;$(SolutionDir)\..\ssc\nlopt;$(SolutionDir)\..\ssc\lpsolve;$(SolutionDir)\..\ssc\shared;$(SolutionDir)\..\ssc\solarpilot;$(SolutionDir)\..;%(AdditionalIncludeDirectories);$(SolutionDir)\..\tcs\FIT_props;$(SolutionDir)\..\nlopt;$(SolutionDir)\..\shared;$(SolutionDir)\..\solarpilot;$(SolutionDir)\..\lpsolve</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>LPWINAPP;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <AdditionalIncludeDirectories>$(SolutionDir)\..\ssc;$(SolutionDir)\..\ssc\nlopt;$(SolutionDir)\..\ssc\lpsolve;$(SolutionDir)\..\ssc\shared;$(SolutionDir)\..\ssc\solarpilot;$(SolutionDir)\..;%(AdditionalIncludeDirectories);$(SolutionDir)\..\tcs\FIT_props;$(SolutionDir)\..\nlopt;$(SolutionDir)\..\shared;$(SolutionDir)\..\solarpilot;$(SolutionDir)\..\lpsolve</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>LPWINAPP;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

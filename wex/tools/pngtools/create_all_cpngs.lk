@@ -1,0 +1,15 @@
+folder = 'C:/Users/adobos/Projects/wex/include/wex/icons';
+tools = 'C:/Users/adobos/Projects/wex/tools/pngtools';
+
+pngs = dir_list( folder, 'png' );
+
+cwd( folder );
+for( i=0;i<#pngs;i++ )
+{
+	//outln( pngs[i] );
+	cpng = left( pngs[i], strlen(pngs[i])-4 ) + '.cpng';
+	command = tools + '/png2c.py ' + pngs[i] + ' > ' + cpng;
+	outln( command );
+	system( command );
+}
+	

@@ -1,0 +1,402 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-12-07 11:22-0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: eval.cpp:551
+msgid "'this' parameter did not evaluate to a reference, rather:"
+msgstr ""
+
+#: vm.cpp:573
+msgid "-@ requires a hash or vector"
+msgstr ""
+
+#: vm.cpp:603
+msgid "?@ requires a hash, vector, or string"
+msgstr ""
+
+#: env.cpp:696
+msgid "access violation: expected array for indexing, but found"
+msgstr ""
+
+#: env.cpp:569
+msgid "access violation: expected array, but found "
+msgstr ""
+
+#: env.cpp:604
+msgid "access violation: expected code expression pointer, but found"
+msgstr ""
+
+#: env.cpp:610
+msgid "access violation: expected external function pointer, but found"
+msgstr ""
+
+#: env.cpp:622 env.cpp:705
+msgid "access violation: expected hash table, but found"
+msgstr ""
+
+#: env.cpp:616
+msgid "access violation: expected internal function pointer, but found"
+msgstr ""
+
+#: env.cpp:549
+msgid "access violation: expected numeric, but found"
+msgstr ""
+
+#: env.cpp:555
+msgid "access violation: expected string, but found"
+msgstr ""
+
+#: eval.cpp:669
+msgid "argument to typeof(...) must be an identifier"
+msgstr ""
+
+#: env.cpp:698
+#, c-format
+msgid "array index out of bounds at %d (length: %d)"
+msgstr ""
+
+#: parse.cpp:56 parse.cpp:76
+msgid "but found"
+msgstr ""
+
+#: codegen.cpp:728
+msgid "cannot break from outside a loop"
+msgstr ""
+
+#: codegen.cpp:735
+msgid "cannot continue from outside a loop"
+msgstr ""
+
+#: eval.cpp:391
+msgid "cannot index non array data in non mutable context"
+msgstr ""
+
+#: env.cpp:51
+msgid "cannot modify a constant value"
+msgstr ""
+
+#: parse.cpp:306
+#, c-format
+msgid "circular import of %s impossible"
+msgstr ""
+
+#: env.cpp:987
+msgid "could not locate function name in environment: "
+msgstr ""
+
+#: env.cpp:1045 env.cpp:1059
+msgid "could not locate symbol"
+msgstr ""
+
+#: parse.cpp:360
+msgid "empty program statement encountered"
+msgstr ""
+
+#: parse.cpp:412
+msgid "enumerate statements can only contain numeric assignments"
+msgstr ""
+
+#: parse.cpp:429
+msgid "enumeration must have one or more identifiers"
+msgstr ""
+
+#: eval.cpp:739 eval.cpp:773
+msgid "error"
+msgstr ""
+
+#: eval.cpp:492
+msgid "error in call to"
+msgstr ""
+
+#: eval.cpp:505
+msgid "error in function call: malformed 'define'"
+msgstr ""
+
+#: eval.cpp:590
+msgid "error inside function call"
+msgstr ""
+
+#: env.cpp:1022
+msgid "error inside function call invoked from env::call"
+msgstr ""
+
+#: eval.cpp:120
+msgid "eval error in statement list"
+msgstr ""
+
+#: parse.cpp:56 parse.cpp:74
+msgid "expected"
+msgstr ""
+
+#: lex.cpp:253
+msgid "expected '{' to follow $ when starting a special identifier"
+msgstr ""
+
+#: lex.cpp:245
+msgid "expected '}' to close special identifier"
+msgstr ""
+
+#: parse.cpp:797
+msgid "expected identifier in typeof(...) expression"
+msgstr ""
+
+#: parse.cpp:877
+msgid "expected method-function name after dereference operator ->"
+msgstr ""
+
+#: eval.cpp:544
+msgid "failed to evaluate 'this' parameter 0 for THISCALL -> method"
+msgstr ""
+
+#: eval.cpp:475
+#, c-format
+msgid "failed to evaluate function call argument %d to"
+msgstr ""
+
+#: eval.cpp:574
+msgid "failed to initialize function call argument"
+msgstr ""
+
+#: vm.cpp:612
+msgid "failed to read external value"
+msgstr ""
+
+#: vm.cpp:619
+msgid "failed to write external value"
+msgstr ""
+
+#: env.cpp:1025
+msgid "function call fail: could not locate internal pointer to "
+msgstr ""
+
+#: parse.cpp:200
+msgid "function name missing"
+msgstr ""
+
+#: vm.cpp:215
+#, c-format
+msgid "halted by user after %d ops"
+msgstr ""
+
+#: parse.cpp:347
+#, c-format
+msgid "import '%s' could not be located"
+msgstr ""
+
+#: env.cpp:508
+msgid "internal error: assigning self-referential reference"
+msgstr ""
+
+#: env.cpp:223
+msgid "internal error: copying self-referential reference"
+msgstr ""
+
+#: codegen.cpp:587
+msgid "invalid 'typeof' expression, identifier required"
+msgstr ""
+
+#: vm.cpp:163
+#, c-format
+msgid "invalid constant value address: %d\n"
+msgstr ""
+
+#: lex.cpp:403
+msgid "invalid escape sequence"
+msgstr ""
+
+#: parse.cpp:1038
+msgid "invalid expression beginning with"
+msgstr ""
+
+#: env.cpp:1052
+#, c-format
+msgid "invalid extension version: %d (engine api: %d)\n"
+msgstr ""
+
+#: vm.cpp:354
+msgid "invalid function access"
+msgstr ""
+
+#: vm.cpp:164
+#, c-format
+msgid "invalid identifier address: %d\n"
+msgstr ""
+
+#: vm.cpp:772
+msgid "invalid instruction"
+msgstr ""
+
+#: vm.cpp:300
+msgid "invalid internal reference to function"
+msgstr ""
+
+#: eval.cpp:484
+msgid "invalid internal reference to function callback"
+msgstr ""
+
+#: parse.cpp:953
+msgid "invalid key syntax in table initializer"
+msgstr ""
+
+#: parse.cpp:528
+msgid "invalid looping construct"
+msgstr ""
+
+#: parse.cpp:682
+#, c-format
+msgid "invalid relational operator: %s"
+msgstr ""
+
+#: parse.cpp:97
+msgid "invalid sequence in input:"
+msgstr ""
+
+#: eval.cpp:727
+#, c-format
+msgid "invalid switch statement index of %d"
+msgstr ""
+
+#: eval.cpp:377
+msgid "left hand side to find operator ?@ must be a hash, vector, or string"
+msgstr ""
+
+#: vm.cpp:785
+msgid "line"
+msgstr ""
+
+#: parse.cpp:266
+msgid "literal required after import statement"
+msgstr ""
+
+#: lex.cpp:411
+msgid "newline found within string literal"
+msgstr ""
+
+#: eval.cpp:62 vm.cpp:134
+msgid "no defined mechanism to get special variable"
+msgstr ""
+
+#: eval.cpp:57 vm.cpp:129
+msgid "no defined mechanism to set special variable"
+msgstr ""
+
+#: eval.cpp:634
+msgid "operand to # ('sizeof') must be a array, string, or table type"
+msgstr ""
+
+#: eval.cpp:656 vm.cpp:665
+msgid "operand to @ (keysof) must be a table"
+msgstr ""
+
+#: vm.cpp:643
+msgid "operand to sizeof must be a array, string, or table type"
+msgstr ""
+
+#: eval.cpp:247
+msgid "operator requires a hash or vector left hand side"
+msgstr ""
+
+#: eval.cpp:789
+msgid "overriding previous non-const identifier with const-ness not allowed:"
+msgstr ""
+
+#: eval.cpp:797
+msgid "overriding previous non-global identifier with global-ness not allowed:"
+msgstr ""
+
+#: parse.cpp:330
+#, c-format
+msgid "parse errors in import '%s':"
+msgstr ""
+
+#: parse.cpp:50
+msgid "reached end of input, but expected"
+msgstr ""
+
+#: parse.cpp:68
+msgid "reached end of input, but expected token"
+msgstr ""
+
+#: eval.cpp:838
+msgid "reference to unassigned variable:"
+msgstr ""
+
+#: vm.cpp:278
+msgid "referencing unassigned variable:"
+msgstr ""
+
+#: vm.cpp:784
+msgid "runtime exception at"
+msgstr ""
+
+#: vm.cpp:161
+#, c-format
+msgid "stack [sp=%d] error, %d arguments required"
+msgstr ""
+
+#: vm.cpp:219
+msgid "stack corruption"
+msgstr ""
+
+#: vm.cpp:700
+msgid "stack corruption upon function return"
+msgstr ""
+
+#: vm.cpp:162
+#, c-format
+msgid "stack overflow [sp=%d]"
+msgstr ""
+
+#: vm.cpp:382
+#, c-format
+msgid "switch statement index %d out of bounds: only %d options"
+msgstr ""
+
+#: lex.cpp:425
+msgid "token beginning with"
+msgstr ""
+
+#: vm.cpp:363
+msgid "too few arguments passed to function"
+msgstr ""
+
+#: env.cpp:1001
+msgid "too few arguments provided in env::call internal method to function: "
+msgstr ""
+
+#: eval.cpp:528
+#, c-format
+msgid "too few arguments provided to function call: %d expected, %d given"
+msgstr ""
+
+#: lex.cpp:395
+msgid ""
+"unicode character constant encountered while parsing with an ansi string "
+"build of LK."
+msgstr ""
+
+#: absyn.cpp:280
+msgid "unknown node type"
+msgstr ""
+
+#: parse.cpp:407
+msgid "values in enumeration must increase"
+msgstr ""
+
+#: vm.cpp:168
+msgid "vm not initialized"
+msgstr ""

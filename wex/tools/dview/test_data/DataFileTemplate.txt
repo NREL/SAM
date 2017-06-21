@@ -1,0 +1,33 @@
+wxDVFileHeaderVer.1
+Data Series Title
+0.0
+1.0
+W/m^2
+1.5
+2.7
+2.9
+...
+...
+...
+EOF
+
+The top portion of this txt file is a template for data that is read by wxDView.
+Line 1 is a header that ensures we know which lines contain units, title, tStep, etc.
+  If the header is missing, we guess that the first line is titles and next is units (unless they are numbers).
+Line 2 is the Name of the series, and will be read as it appears.
+Line 3 is the time elapsed between Midnight Jan 1 and the first data point, read as a double.
+  If the first data point is instantaneous at Midnight, Jan1, set this to 0.0  
+  If the first data point is an average over the first hour, set this to 0.5
+  If the first data point is at 1AM on Jan1, set this to 1.0
+Line 4 is the time step in hours, read as a double.
+Line 5 is the data units, read as it appears as a string.
+All of the lines after line 4 are data points.  A typical hourly data set for a year would have 8765 lines.
+
+ALL UNITS ARE HOURS.  Decimal hours are accepted.  0.25 is 15 minutes.
+Ending with EOF is suggested but not mandatory.
+  (Without EOF, trailing returns may be mistakenly read as 0s).
+  
+***CSV Files***
+We also now support CSV files.  CSV files should contain columns of data in the format above, with columns
+separated by commas.  Each colum will be loaded into its own channel.
+

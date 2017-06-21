@@ -1,0 +1,22 @@
+0. Environment setup
+Modify the set_env.bat script to point the environmental variables to where you've downloaded the git repository
+Run set_env.bat
+
+1. Visual studio setup
+Download and isntall Microsoft Visual Studio Express 2013
+https://www.microsoft.com/en-us/download/details.aspx?id=44914
+
+2. Optional MinGW setup (only if you will be modifying and building the lhs or stepwise source code)
+Download and install MinGW
+http://www.mingw.org/
+
+When you've installed MinGW, the installation manager should appear.  Mark the follow packages for installation:
+- mingw-developer-toolkit
+- mingw32-base
+- mingw32-gcc-fortran
+- mingw32-gcc-g++
+- msys-base
+
+Then under the installation menu, click "Apply Changes"
+
+3. In Visual Studio Express, open the "SAM.sln" file.  Build the project.

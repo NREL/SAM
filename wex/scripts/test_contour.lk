@@ -1,0 +1,25 @@
+p = peaks( 49 );
+newplot(true);
+contour( p.x, p.y, p.z, {'filled'=true, 'colormap'='grayscale', 'levels'=8} );
+plotout( 'contour.pdf' );
+
+newplot(true);
+X = csvread( 'spray.csv', {'numeric'=true, 'table'=true} );
+plot( X.sx, X.sz, {'type'='scatter'} );
+newplot();
+outln( @X );
+xmin = min( X.sx );
+xmax = max( X.sx );
+ymin = min( X.sz );
+ymax = max( X.sz );
+
+outln( ymin );
+outln( ymax );
+
+ngrid = 30;
+G = meshgrid( xmin, xmax, ngrid, ymin, ymax, ngrid );
+Z = griddata( X.sx, X.sz, X.phi, G.xq, G.yq );
+
+contour( G.xq, G.yq, Z, {'filled'=true, 'levels'=20} );
+
+//outln(Z);

@@ -1,0 +1,40 @@
+VPATH = ../shared
+CC = gcc -mmacosx-version-min=10.9
+CXX = g++ -mmacosx-version-min=10.9
+CFLAGS = -Wall -g -O3  -DWX_PRECOMP -O2 -arch x86_64  -fno-common
+CXXFLAGS = $(CFLAGS) -std=gnu++11
+
+OBJECTS = \
+	lsqfit.o \
+	lib_snowmodel.o \
+	lib_iec61853.o \
+	lib_cec6par.o \
+	lib_financial.o \
+	lib_geothermal.o \
+	lib_irradproc.o \
+	lib_physics.o \
+	lib_powerblock.o \
+	lib_power_electronics.o \
+	lib_pvinv.o \
+	lib_pvmodel.o \
+	lib_pvshade.o \
+	lib_pvwatts.o \
+	lib_sandia.o \
+	lib_util.o \
+	lib_weatherfile.o \
+	lib_windfile.o \
+	lib_wind_obos.o \
+	lib_windwatts.o \
+	lib_battery.o \
+	lib_battery_dispatch.o \
+	lib_miniz.o \
+	lib_pv_shade_loss_mpp.o
+
+
+TARGET=shared.a
+
+$(TARGET):$(OBJECTS)
+	ar rs $(TARGET) $(OBJECTS)
+
+clean:
+	rm -rf $(TARGET) $(OBJECTS)
