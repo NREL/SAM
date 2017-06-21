@@ -1,5 +1,13 @@
+<<<<<<< HEAD
 "NREL's SAM is directly related to our ability to grow [as a company]"
 
 Tim Johnson, TenKSolar, 2/25/2016, at in person meeting at NREL with Aron, Janine, Nick, Steve, and Paul (phone)
 
 Used directly for generating quotes for customers, roughly 5 a day
+=======
+"NREL's SAM is directly related to our ability to grow [as a company]"
+
+Tim Johnson, TenKSolar, 2/25/2016, at in person meeting at NREL with Aron, Janine, Nick, Steve, and Paul (phone)
+
+Used directly for generating quotes for customers, roughly 5 a day
+>>>>>>> 2c85b0ce6a18646fb532eb72a604d646517b67ae
