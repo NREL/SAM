@@ -1,0 +1,218 @@
+/*@
+
+This macro allows you to append hourly or sub-hourly snow depth data to a weather file for simulations in SAM.<br><br>
+
+The algorithm is capable of detecting whether input snow data is daily, hourly, or subhourly based on the length of the dataset. 
+If daily snow depth data is to be appended to an hourly weather file, then snow depth values for each day will be repeated for each daytime hour in the final weather file.
+Likewise, if subhourly snow depth data is to be appended to an hourly weather file then the appened snow depth data for each hour will be the average of the snow depth data values within that hour.
+
+<br/><br>
+<b>Instructions:</b><br>
+<ol>
+  <li>Click 'Run macro' above to initate macro</li>
+  <li>Select a weather file to append snow depth data to</li>
+  <ul>
+    <li>Weather files must be in one of SAM's accepted formats (TMY2, TMY3, EPW, SolarAnywhere, or SAM csv)</li>
+    <li>Weather files must be a multiple of 8760 in length (can be hourly or subhourly, excluding leap days)</li>
+    <li>The weather file will be converted to SAM csv format if not already in that format</li>
+  </ul>
+  <li>Select a file containing snow depth data</li>
+  <ul>
+    <li>Snow depth data files must be comma-seperated files with at least one header line labeling each data column</li>
+    <li>Snow depth data must be a multiple of 365 values in length</li>
+  </ul>
+  <li>Submit the number of header lines in the snow depth data file</li>
+  <ul>
+    <li><i>Example: A SAM csv weather file will have 3 header lines</i></li>
+  </ul>
+  <li>Submit the label of the snow depth data column</li>
+  <ul>
+    <li><i>Example: If a SAM csv weather file contains snow depth data, this column will be labeled 'Snow'</i></li>
+  </ul>
+  <li>Submit the units used in the snow depth data</li>
+  <ul>
+    <li>These values will be converted to <i>cm</i> before being appended</li>
+  </ul>
+  <li>A new weather file will be created with the appended data</li>
+  <ul>
+    <li>Will be located in the same directory as the original weather file</li>
+    <li>A '(snow)' tag will be addended to the end of the file name (but before the '.csv' extension)</li>
+    <li><b>If</b> the weather file was not originally in SAM csv format, the name of the final weather file will correspond to:<br>
+	    <i>&lt;country> &lt;location> (&lt;original format>)(snow).csv</i></li>
+  </ul>
+    
+</ol> 
+<br><br>
+
+@*/
+
+//////////////////////////////////////////////////////////////
+// Collect file data from user
+
+wf = choose_file( '', 'Select weather file to append to', 'Weather Files (*.csv;*.tm2;*.tm3;*.epw)|*.csv;*.tm2;*.tm3;*.epw' );
+if ( wf == '' ) return;
+
+sf = choose_file( '', 'Select snow depth data file', 'Snow Data Files (*.csv;*.txt)|*.csv;*.txt');
+if ( sf == '' ) return;
+
+sf_headerLines = to_int(in('Number of header lines in Snow Depth Data File ( >=1 )','1','Snow Depth Header Lines'));
+if( sf_headerLines < 1 ){
+  outln('Snow depth data file must have at least 1 header line');
+  return;
+}
+
+sf_snowColumnName = in('Title of snow data column','Snow','Snow Column Title');
+if( sf_headerLines < 1 ){
+  outln('Snow depth data column must have a label');
+  return;
+}
+
+sf_unit = choose_from_list(['cm','in','mm','feet','meters'], 'Please select unit used for the snow depth data', 'Snow Depth Unit', 0);
+
+
+///////////////////////////////////////////////////////////////
+// Convert Input WF to SAM CSV if not already in CSV format
+
+if( ext_only(wf)!='csv' ){
+
+	obj = ssc_create();
+	ssc_var( obj, 'input_file', wf );
+	result = ssc_exec( obj, 'wfcsvconv', true );
+	if ( result == 0 )
+	{
+		output = ssc_var( obj, 'output_file');
+		if ( file_exists(output) )
+		{
+			copy_file( output, path_only(output)+'\\temp.csv', true);
+		}	
+		else
+		{
+			msgbox('An error occurred and the file could not be converted.');
+		}
+	}
+	else
+		msgbox( 'Error:\n\n' + result );
+	ssc_free( obj );
+	
+} else {
+	copy_file(wf, path_only(wf)+'\\temp.csv', true);
+	output = wf;
+}
+
+///////////////////////////////////////////////////
+// Load weather file
+
+wfIn = open( path_only(wf)+'\\temp.csv', 'r');
+wfOut = open( left(output, #output-4)+"(snow).csv" , 'w');
+weatherData = csvread(path_only(wf)+'\\temp.csv',{"skip"=2, 'table'=true});
+
+//read in parameters from original weather file
+params = @weatherData;
+
+// Check for pre-existing snow data
+for(i=0; i<#params; i++){
+	if(params[i]=='Snow'){
+		outln('  Warning: Overwriting previous snow data');
+	}
+}
+
+//Check length of weather data
+
+weatherLength = #weatherData{params[0]};
+if( mod(weatherLength, 8760) != 0){
+	outln("Error: Weather data length must be a multiple of 8760");
+	exit;
+}
+
+////////////////////////////////////////////////////
+// Load snow data
+
+if( sf_unit == 'cm' ) conversion = 1.0;
+if( sf_unit == 'inch' ) conversion = 2.54;
+if( sf_unit == 'mm' ) conversion = 0.1;
+if( sf_unit == 'feet' ) conversion = 30.48;
+if( sf_unit == 'meters' ) conversion = 100.0;
+
+rawSnowData = csvread(sf, {'skip'=sf_headerLines-1, 'table'=true});
+
+if( rawSnowData{sf_snowColumnName} == null ){
+	outln('Error: Could not find snow data');
+	exit;
+}
+
+for(i=0; i<#rawSnowData{sf_snowColumnName}; i++){
+	snowData[i] = to_string( conversion*to_real(rawSnowData{sf_snowColumnName}[i]) );
+}
+
+// Check snow data length 
+if( mod(#snowData, 365) != 0){
+	outln("Error: Snow data length must be a multiple of 365");
+	exit;
+}
+
+// add snow data to weather data depending on lengths of each
+
+if( #snowData == weatherLength) weatherData{'Snow'} = snowData;
+
+elseif( #snowData > #weatherData{params[0]}){
+	ratio = #snowData/weatherLength;
+	tmpSnowData = alloc(weatherLength);
+	for(i=0; i<weatherLength; i++){
+		tmpSum = 0;
+		tmpSnowData[i] = 0;
+		for( j=0; j<ratio; j++){
+			tmpSnowData[i] += snowData[i*ratio + j];
+		}
+		tmpSnowData[i] /= ratio;
+	}
+	
+	weatherData{'Snow'} = tmpSnowData;
+}
+elseif( #snowData < #weatherData{params[0]}){
+	ratio = weatherLength/#snowData;
+	tmpSnowData = alloc(weatherLength);
+	for(i=0; i<#snowData; i++){
+		for( j=0; j<ratio; j++){
+			tmpSnowData[i*ratio + j] = snowData[i];
+		}
+	}
+	
+	weatherData{'Snow'} = tmpSnowData;
+}
+////////////////////////////////////////////////////
+// Write new weather file
+params[#params] = 'Snow'; //there's one more parameter, Snow, now that snow has been added
+tmpLine = "";
+
+read_line(wfIn, tmpLine);
+write_line(wfOut, tmpLine);
+read_line(wfIn, tmpLine);
+write_line(wfOut, tmpLine);
+
+tmpLine = "";
+for(i=0; i<#params; i++){
+	if(i!=0) tmpLine+=',';
+	tmpLine += params[i];
+}
+write_line(wfOut, tmpLine);
+
+for(i=0; i<#weatherData{params[0]}; i++){
+	tmpLine = "";
+	
+	for(j=0; j<#params; j++){
+		if(j!=0) tmpLine+=',';
+		tmpLine += weatherData{params[j]}[i];
+	}
+	write_line(wfOut, tmpLine);
+}
+
+
+
+////////////////////////////////////////////////////////
+// Clean up
+
+close(wfIn);
+close(wfOut);
+remove_file(path_only(wf)+'\\temp.csv');
+outln('New weather file created successfully!');
+msgbox('New weather file created successfully!');
