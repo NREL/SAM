@@ -1,0 +1,21 @@
+var('Vmp', 30);
+var('Imp', 6);
+var('Voc', 36);
+var('Isc', 7);
+var('alpha_isc', 0.004);
+var('beta_voc', -0.11 );
+var('gamma_pmp', -0.44 );
+var('celltype', 'multiSi');
+var('Nser', 60);
+var('Tref', 20);
+
+run('6parsolve');
+
+result = [ var('a'),
+		var('Il'),
+		var('Io'),
+		var('Rs'),
+		var('Rsh'),
+		var('Adj') ];
+		
+outln(result);

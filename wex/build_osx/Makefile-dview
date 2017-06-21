@@ -1,0 +1,29 @@
+DVDIR = ../tools/dview
+VPATH = $(DVDIR)
+WEXLIB = ../wexosxwx3.a
+
+CC = gcc
+CXX = g++
+CFLAGS = -g -I. -I../include `wx-config-3 --cflags`
+CXXFLAGS = $(CFLAGS) 
+
+LDFLAGS = `wx-config-3 --libs` `wx-config-3 --libs aui` `wx-config-3 --libs stc` -lm 
+OBJECTS = dview.o
+TARGET = DView
+
+
+$(TARGET): $(OBJECTS) $(WEXLIB) 
+	$(CXX) -g -o $@ $^ $(LDFLAGS)
+	SetFile -a t $@
+	mkdir -p DView.app
+	mkdir -p DView.app/Contents
+	mkdir -p DView.app/Contents/MacOS
+	mkdir -p DView.app/Contents/Resources
+	cp $(TARGET) ./DView.app/Contents/MacOS
+	cp DView.icns ./DView.app/Contents/Resources
+	cp Info-dview.plist ./DView.app/Contents/Info.plist
+	echo "-n APPL????" >> ./DView.app/Contents/PkgInfo
+	
+clean:
+	rm -f $(TARGET) $(OBJECTS)
+	rm -rf DView.app

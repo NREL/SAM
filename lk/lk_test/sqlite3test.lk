@@ -1,0 +1,247 @@
+function exec_print( db, cmd )
+{
+	outln( '--------------------------------------' );
+	data = sql_exec( db, cmd );
+	if ( typeof(data)=='array')
+	{
+		for( i=0;i<#data;i++ )
+		{
+			outln( data[i] );
+		}
+	}
+	else
+		outln( typeof(data) + ": " + sql_error(db) );
+}
+
+// Example SQLITE3 commands from:
+// http://www.thegeekstuff.com/2012/09/sqlite-command-examples/?utm_source=feedburner
+
+/*
+SQLite3 is very lightweight SQL database which focuses on simplicity more than anything else. This is a 
+self-contained serverless database engine, which is very simple to install and use.
+
+While most of the commands in the SQLite are similar to SQL commands of other datbases like MySQL and ORACLE, 
+there are some SQLite SQL commands that are different.
+
+This article explains all the basic SQL commands that you need to know to use the SQLite database effectively.
+*/
+
+
+/* 1. Create a SQLite Database and Tables
+
+ The following example creates a database called company.db. This also creates an employee 
+table with 3 columns (id, name and title), and a department table in the company.db database. 
+We_ve purposefully missed the deptid column in the employee table. We_ll see how to add that later. */
+
+db = sql_open( 'company.sq3' );
+
+sql_exec( db, 'drop table employee' );
+sql_exec( db, 'drop table department' );
+sql_exec( db, 'create table employee(empid integer,name varchar(20),title varchar(10))' );
+sql_exec( db, 'create table department(deptid integer,name varchar(20),location varchar(10))' );
+
+
+/* 2. Insert Records
+
+The following example populates both employee and department table with some sample records.
+You can execute all the insert statements from the sqlite command line, or you can add those 
+commands into a file and execute the file as shown below.
+*/
+
+sql_exec( db, "insert into employee values(101,'John Smith','CEO')");
+sql_exec( db, "insert into employee values(102,'Raj Reddy','Sysadmin')");
+sql_exec( db, "insert into employee values(103,'Jason Bourne','Developer')");
+sql_exec( db, "insert into employee values(104,'Jane Smith','Sale Manager')");
+sql_exec( db, "insert into employee values(105,'Rita Patel','DBA')");
+
+sql_exec( db, "insert into department values(1,'Sales','Los Angeles')");
+sql_exec( db, "insert into department values(2,'Technology','San Jose')");
+sql_exec( db, "insert into department values(3,'Marketing','Los Angeles')");
+
+
+/* 3. View Records
+
+Once you_ve inserted the records, view it using select command as shown below. */
+exec_print( db, "select * from employee" ) ;
+
+
+/* 4. Rename a Table
+
+The following example renames department table to dept using the alter table command. */
+
+sql_exec(db, "alter table department rename to dept" );
+
+/* 5. Add a Column to an Existing Table
+
+The following examples adds deptid column to the existing employee table; */
+sql_exec(db, "alter table employee add column deptid integer" );
+
+sql_exec(db, "update employee set deptid=3 where empid=101" );
+sql_exec(db, "update employee set deptid=2 where empid=102" );
+sql_exec(db, "update employee set deptid=2 where empid=103" );
+sql_exec(db, "update employee set deptid=1 where empid=104" );
+sql_exec(db, "update employee set deptid=2 where empid=105" );
+
+exec_print(db, "select * from employee" );
+
+/* 7. Create an Index
+
+The following example creates an unique index called empidx on the empid field of employee table.
+Once an unique index is created, if you try to add another record with an empid that already 
+exists, you_ll get an error as shown below.
+*/
+
+sql_exec(db, "create unique index empidx on employee(empid)" );
+sql_exec(db, "insert into employee values (101,'James Bond','Secret Agent',1)"); // should give string result Error: constraint failed
+outln( sql_error(db) );
+
+
+/* 8. Create a Trigger
+
+For this example, first add a date column called _updatedon_ on employee table. 
+Next, create a file that has the trigger definition. The following trigger will
+update the _updatedon_ date column with the current timestamp whenever you 
+perform an update on this table.
+Now anytime you update any record in the employee table, the _updatedon_ date 
+column will be updated with the current timestamp as shown below. The following 
+example updates the _updatedon_ timestamp for empid 104 through trigger. */
+
+sql_exec(db, "alter table employee add column updatedon date" );
+sql_exec(db, "create trigger employee_update_trg after update on employee "
+"begin "
+" update employee set updatedon = datetime('NOW') where rowid = new.rowid; "
+"end; " );
+sql_exec(db, "update employee set title='Sales Manager' where empid=104" );
+
+exec_print(db, "select * from employee" ) ;
+
+
+/* 9. Create a View
+
+The following example creates a view called _empdept_, which combines fields 
+from both employee and dept table. Now you can execute select command on this 
+view just like a regular table. After creating a view, if you execute .tables, 
+you_ll also see the view name along with the tables. */
+
+sql_exec(db, "create view empdept as select empid, e.name, title, d.name, location from employee e, dept d where e.deptid = d.deptid" );
+
+exec_print( db, "select * from empdept" );
+
+/*10. SQLite Savepoint, Rollback, Commit
+
+Currently dept table has the following 3 records. Now, create a savepoint 
+called _major_, and perform some transactions on the dept table. As you see 
+below, we_ve added two records, deleted one record, after creating a savepoint 
+called _major_. Now for some reason, if we don_t want the above transactions, 
+we can rollback the changes to a particular savepoint. In this example, 
+we are rolling back all the changes we_ve made after the _major_ savepoint.
+If you don_t want your savepoints anymore, you can erase it using release
+command. */
+
+sql_exec(db, "savepoint major" );
+sql_exec(db, "insert into dept values(4,'HR','Los Angeles')");
+sql_exec(db, "insert into dept values(5,'Finance','San Jose')");
+sql_exec(db, "delete from dept where deptid=1");
+exec_print(db, "select * from dept" ) ;
+
+sql_exec(db, "rollback to savepoint major" );
+exec_print(db, "select * from dept" );
+
+sql_exec(db, "release savepoint major" );
+
+
+/* 11. Additional Date Functions
+
+By default, the date columns values displayed in UTC time. To display in the 
+local time, use the datetime command on the date column as shown below. 
+You can also use strftime to display the date column in various output.
+The following are the possible modifers you can use in the strftime function.
+
+%d day of month: 00
+%f fractional seconds: SS.SSS
+%H hour: 00-24
+%j day of year: 001-366
+%J Julian day number
+%m month: 01-12
+%M minute: 00-59
+%s seconds since 1970-01-01
+%S seconds: 00-59
+%w day of week 0-6 with Sunday==0
+%W week of year: 00-53
+%Y year: 0000-9999
+%% %
+
+*/
+
+exec_print(db, "select empid,datetime(updatedon,'localtime') from employee" ) ;
+exec_print(db, "select empid,strftime('%d-%m-%Y %w %W',updatedon) from employee" ) ;
+
+/* 13. Operators
+
+The following are the possible operators you can use in SQL statements. 
+||
+* / %
++ _
+<< >> & |
+< >=
+= == != <> IS IS NOT IN LIKE GLOB MATCH REGEXP
+AND OR
+
+*/
+exec_print( db, "select * from employee where empid >= 102 and empid in (select empid from dept where location like 'Los%')" ) ;
+
+/* 14. Explain Query Plan
+
+Execute _explain query plan_, to get information about the table that is 
+getting used in a query or view. This is very helpful when you are debugging 
+a complex query with multiple joins on several tables.
+For a detailed trace, just execute _explain_ followed by the query to get more 
+performance data on the query. This is helpful for debugging purpose 
+when the query is slow.*/
+exec_print(db, "explain query plan select * from empdept" );
+
+
+
+/* 12. Dropping Objects
+
+You can drop all the above created objects using the appropriate drop command as shown below.*/
+
+sql_exec( db, "drop index empidx");
+sql_exec( db, "drop trigger employee_update_trg");
+sql_exec( db, "drop view empdept");
+sql_exec( db, "drop table employee");
+sql_exec( db, "drop table dept");
+
+/*15. Attach and Detach Database
+
+When you have multiple database, you can use attach command to execute 
+queries across database. For example, if you have two database that 
+has the same table name with different data, you can create a union 
+query across the database to view the combined records as explained 
+below.
+
+In this example, we have two company database (company1.db and company2.db). 
+From the sqlite prompt, attach both these database by giving alias as 
+c1 and c2 as shown below.
+After attaching a database, from the current sqlite session, if you want to 
+detach it, use detach command as shown below.
+
+*/
+
+if ( file_exists( 'company1.db' ) && file_exists( 'company2.db' ) )
+{
+	sql_exec( db, "attach database 'company1.db' as c1");
+	sql_exec( db, "attach database 'company2.db' as c2");
+	
+	exec_print(db, "select empid, name, title from c1.employee union select empid, name, title from c2.employee" );
+	
+	sql_exec( db, "detach c1" );
+}
+else
+{
+	outln("note: create copies of company.db as company1.db and company2.db to demo multiple database unions" );
+}
+
+
+// close the database connection
+sql_close(db);

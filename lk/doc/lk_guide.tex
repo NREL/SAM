@@ -1,0 +1,1444 @@
+\documentclass{article}
+\usepackage{geometry} 
+\geometry{letterpaper} 
+%%%% Uncomment below to begin paragraphs with an empty line %%%%
+\usepackage[parfill]{parskip} 
+\usepackage{graphicx}
+\usepackage{amssymb}
+%\usepackage[section]{placeins}
+%\usepackage[below]{placeins}
+\usepackage{epstopdf}
+%\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
+\newcommand\bslash{\char`\\}
+\newcommand\lt{\char`\<}
+\newcommand\gt{\char`\>}
+\newcommand{\supers}[1]{\ensuremath{^\textrm{{\scriptsize #1}}}}
+\newcommand{\subs}[1]{\ensuremath{_\textrm{{\scriptsize #1}}}}
+
+\title{LK Scripting Language Reference}
+\author{Aron P. Dobos}
+
+\begin{document}
+
+\maketitle
+\vspace{3in}
+\begin{abstract}
+The LK language is a simple but powerful scripting language that is designed to be small, fast, and easily embedded in other applications.  It allows users to extend the built-in functionality of programs, and provides a cross-platform standard library of function calls.  The core LK engine, including lexical analyzer, parser, compiler, and virtual machine comprises roughly 7000 lines of ISO-standard C++ code, and is only dependent on the Standard C++ Library (STL), making it extremely tight and portable to various platforms.  LK also provides a C language API for writing extensions that can be dynamically loaded at runtime.
+
+\textbf{Note:} LK can utilize standard 8-bit ASCII strings via the built-in \texttt{std::string} class, or can be configured to utilize an \texttt{std::string}-compliant string class from an external library.  In this way, Unicode text can be supported natively.  For example, direct integration and linkage with the wxWidgets C++ GUI library string class is provided as an option.
+\end{abstract} 
+
+\newpage
+\tableofcontents
+%%\listoffigures
+%%\listoftables
+\newpage
+\section{Introduction}
+\subsection{Hello world!}
+
+As with any new language, the traditional first program is to print the words "Hello, world!" on the screen, and the LK version is listed below.
+
+\begin{verbatim}
+out( "Hello, world!\n" );
+\end{verbatim}
+
+Notable features:
+\begin{enumerate}
+\item The \texttt{out} command generates text output from the script
+\item The text to be printed is enclosed in double-quotes
+\item To move to a new line in the output window, the symbol \texttt{\bslash n} is used
+\item The program statement is terminated by a semicolon \texttt{;}
+\end{enumerate}
+
+
+To run Hello world, type it into a new text file with the .lk extension, and load the script into the appropriate the LK script input form in your application.  
+
+\subsection{Why yet another scripting language?}
+
+There are many scripting languages available that have all of LK's features, and many more.  However, LK is unique in its code footprint (less than 4000 lines of C++), portability, and simplicity of integration into other programs.  It is also very straightforward to write libraries of functions called extensions that can be dynamically loaded into the script engine at run-time.
+
+Some notable aspects of LK include:
+\begin{enumerate}
+\item Functions are first-class values, so that they can be passed to procedures and defined implicitly
+\item No distinction between functions and procedures, and they can be nested and mutually recursive
+\item Built-in support for string indexed tables (hashes)
+\item Initializer lists for arrays and tables
+\item Fully automatic memory management and highly optimized internal data representation
+\item Simple syntactic sugar to represent structures
+\item '\texttt{elseif}' statement formatting is similar to PHP
+\item '\texttt{for}' loop syntax follows the C / Perl convention
+\end{enumerate}
+
+\section{Data Variables}
+
+\subsection{General Syntax}
+In LK, a program statement is generally placed on a line by itself, and a semicolon \texttt{;} marks the end of the statement.  A very long program statement can be split across multiple lines to improve readability, provided that the line breaks do not occur in the middle of a word or number.
+
+Blank lines may be inserted between statements.  While they have no meaning, they can help make a script easier to read.  Spaces can also be added or removed nearly anywhere, except of course in the middle of a word.  The following statements all have the same meaning.
+
+\begin{verbatim}
+out("Hello 1\n");
+  out  (
+    "Hello 1\n");
+out (    "Hello 1\n"  );
+\end{verbatim}
+
+Comments are lines in the program code that are ignored by LK.  They serve as a form of documentation, and can help other people (and you!) more easily understand what the script does.  There a two types of comments.  The first type begins with two forward slashes \texttt{//} , and continues to the end of the line.
+
+\begin{verbatim}
+// this program creates a greeting
+out( "Hello, world!\n" ) // display the greeting to the user
+\end{verbatim}
+
+The second type of comment is usually used when a large section of code needs to be ignored, or a paragraph of documentation is included with the program text.  In this case, the comment begins with \texttt{ /* } and ends with \texttt{ */ }, as in the example below.
+
+\begin{verbatim}
+/* this program creates a greeting
+   there are many interesting things to note:
+    - uses the 'out' command
+    - hello has five characters
+    - a new line is inserted with an escape sequence
+  */
+out( "Hello, world!\n" ); // display the greeting to the user
+\end{verbatim}
+
+\subsection{Variables}
+
+Variables store information while your script is running.  LK variables share many characteristics with other computer languages.
+\begin{enumerate}
+\item Variables do not need to be "declared" in advance of being used
+\item There is no distinction between variables that store text and variables that store numbers
+\item In LK, a variable can also be an array, table, or function
+\end{enumerate}
+
+Variable names may contain letters, digit, and the underscore symbol.  A limitation is that variables cannot start with a digit.  Like some languages like C and Perl, LK does distinguish between upper and lower case letters in a variable (or subroutine) name. As a result, the name \texttt{myData} is different from \texttt{MYdata}.
+
+Values are assigned to variables using the equal sign \texttt{=}.  Some examples are below.
+\begin{verbatim}
+Num_Modules = 10;
+ArrayPowerWatts = 4k;
+Tilt = 18.2;
+system_name = "Super PV System";
+Cost = "unknown";
+COST = 1e6;
+cost = 1M;
+\end{verbatim}
+
+Assigning to a variable overwrites its previous value.  As shown above, decimal numbers can be written using scientific notation or engineering suffixes.  The last two assignments to \texttt{Cost} are the same value.  Recognized suffixes are listed in the table below.  Suffixes are case-sensitive, so that LK can distinguish between \texttt{m} (milli) and \texttt{M} (Mega).
+
+\begin{table}[ht]
+\begin{center}
+\begin{tabular}{lll}
+Name & Suffix & Multiplier\\
+\hline
+Tera & T & 1e12\\
+Giga & G & 1e9\\
+Mega & M & 1e6\\
+Kilo & k & 1e3\\
+Milli & m & 1e-3\\
+Micro & u & 1e-6\\
+Nano & n & 1e-9\\
+Pico & p & 1e-12\\
+Femto & f & 1e-15\\
+Atto & a & 1e-18\\
+\end{tabular}
+\caption{Recognized Numerical Suffixes}
+\label{tab_engsuffixes}
+\end{center}
+\end{table}
+
+\subsection{Arithmetic}
+
+LK supports the five basic operations \texttt{+}, \texttt{-}, \texttt{*}, \texttt{/}, and \texttt{\^}.  The usual algebraic precendence rules are followed, so that multiplications and divisions are performed before additions and subtractions.  The exponentiation operator \texttt{\^} is performed before multiplications and divisions.  Parentheses are also understood and can be used to change the default order of operations.  Operators are left-associative, meaning that the expression \texttt{ 3-10-8 } is understood as \texttt{ (3-10)-8 }.
+
+More complicated operations like modulus arithmetic are possible using built-in function calls in the standard LK library.
+
+Examples of arithmetic operations:
+\begin{verbatim}
+battery_cost = cost_per_kwh * battery_capacity;
+
+// multiplication takes precedence
+degraded_output = degraded_output - degraded_output * 0.1;
+
+// use parentheses to subtract before multiplication
+cash_amount = total_cost * ( 1 - debt_fraction/100.0 );
+
+\end{verbatim}
+
+\subsection{Simple Input and Output}
+
+You can use the built-in \texttt{out} and \texttt{outln} functions to write textual data to the console window. The difference is that \texttt{outln} automatically appends a newline character to the output. To output multiple text strings or variables, use the \texttt{+} operator, or separate them with a comma.  Note that text strings may be enclosed by either single or double quotes - both have the exact same meaning.
+
+\begin{verbatim}
+array_power = 4.3k;
+array_eff = 0.11;
+outln("Array power is " + array_power + ' Watts.');
+outln("It is " + (array_eff*100) + " percent efficient.");
+outln('It is ', array_eff*100, ' percent efficient.'); // same as above
+\end{verbatim}
+
+The console output generated is:
+\begin{verbatim}
+Array power is 4300 Watts.
+It is 11 percent efficient.
+\end{verbatim}
+
+Use the \texttt{in} function to read input from the user.  You can optionally pass a message to \texttt{in} to display to the user when the input popup appears. The \texttt{in} function always returns a string, and you may need to convert to a different type to perform mathematical operations on the result.
+
+\begin{verbatim}
+cost_per_watt = to_real(in("Enter cost per watt:"));  // Show a message.  in() also is fine.
+notice( "Total cost is: " + cost_per_watt * 4k + " dollars"); // 4kW system
+\end{verbatim}
+
+The \texttt{notice} function works like \texttt{out}, except that it displays a pop up message box on the computer screen.
+
+\subsection{Data Types and Conversion}
+
+LK supports two basic types of data: numbers and text.  Numbers can be integers or real numbers.  Text strings are stored as a sequence of individual characters, and there is no specific limit on the length of a string.  LK does not try to automatically convert between data types in most cases, and will issue an error if you try to multiply a number by a string, even if the string contains the textual representation of a valid number.   To convert between data types, LK has several functions in the standard library for this purpose.
+
+Boolean (true/false) data is also stored as a number - there is no separate boolean data type.  All non-zero numbers are interpreted as true, while zero is false.  This convention follows the C programming language.
+
+There is also a special data value used in LK to indicate the absence of any value, known as the \texttt{null} value.  It useful when working with arrays and tables of variables, which will be discussed later in this document.  When a variable's value is \texttt{null}, it cannot be multiplied, added, or otherwise used in a calculation.
+
+
+\begin{table}[ht]
+\begin{center}
+\begin{tabular}{lll}
+Data Type & Conversion Function & Valid Values \\
+\hline
+Integer Number & \texttt{ to\_int() } & approx. +/- 1e-308 to 1e308 \\
+Real Number & \texttt{ to\_real() } & +/- 1e-308 to 1e308, not an number (NaN) \\
+Boolean & \texttt{ to\_bool() } & \texttt{"true"} or \texttt{"false"} (\texttt{1} or \texttt{0}) \\
+Text Strings & \texttt{ to\_string() } & Any length text string \\
+\end{tabular}
+\caption{Intrinsic Data Types}
+\label{tab_datatypes}
+\end{center}
+\end{table}
+
+Sometimes you have two numbers in text strings that you would like to multiply.  This can happen if you read data in from a text file, for example.  Since it does not make sense to try to multiply text strings, you need to first convert the strings to numbers.  To convert a variable to a double-precision decimal number, use the \texttt{to\_real} function, as below.
+
+\begin{verbatim}
+a = "3.5";
+b = "-2";
+c1 = a*b; // this will cause an error when you click 'Run'
+c2 = to_real(a) * to_real(b); // this will assign c2 the number value of -7
+\end{verbatim}
+
+The assignment to \texttt{c1} above will cause the error \emph{error: access violation to non-numeric data}, while the assignment to \texttt{c2} makes sense and executes correctly.
+
+You can also use \texttt{to\_int} to convert a string to an integer or truncate a decimal number, or the \texttt{to\_string} function to explicitly convert a number to a string variable.  
+
+If you need to find out what type a variable currently has, use the \texttt{typeof} function to get a text description.
+
+\begin{verbatim}
+a = 3.5;
+b = -2;
+c1 = a+b; // this will set c1 to -1.5
+c2 = to_string( to_int(a) ) + to_int( b ); // c2 set to text "3-2"
+
+outln( typeof(a) ); // will display "number"
+outln( typeof(c2) ); // will display "string"
+\end{verbatim}
+
+To change the value of an existing variable by a certain amount, you can use the combined arithmetic and assignment operators \texttt{+=}, \texttt{-=}, \texttt{*=}, \texttt{/=}.  The \texttt{+=} is unique in that it can add a numeric value, concatenate strings, and append values to an array (discussed later).  The other ones only work on numbers.  Examples:
+
+\begin{verbatim}
+a  = 1;
+a += 2;    // same as writing a=a+2
+a *= 2.5;  // same as writing a=a*2.5
+a -= 1;    // same as writing a=a-1
+a /= 3;    // after this line, a = 2.16667
+
+s = 'abc';
+s += 'def';
+s += 'ghi';
+outln(s); // prints abcdefghi
+\end{verbatim}
+
+\subsection{Special Characters}
+
+Text data can contain special characters to denote tabs, line endings, and other useful elements that are not part of the normal alphabet.  These are inserted into quoted text strings with \emph{escape sequences}, which begin with the \texttt{\bslash} character.
+
+\begin{table}[ht]
+\begin{center}
+\begin{tabular}{ll}
+Escape Sequence & Meaning\\
+\hline
+\texttt{\bslash n} & New line\\
+\texttt{\bslash t} & Tab character\\
+\texttt{\bslash r} & Carriage return\\
+\texttt{\bslash "} & Double quote\\
+\texttt{\bslash\bslash} & Backslash character\\
+\end{tabular}
+\caption{Text String Escape Sequences}
+\label{tab_escseq}
+\end{center}
+\end{table}
+
+So, to print the text \texttt{"Hi,   tabbed world!"}, or assign \texttt{c:\bslash Windows\bslash notepad.exe}, you would have to write:
+
+\begin{verbatim}
+outln("\"Hi,\ttabbed world!\"")
+program = "c:\\Windows\\notepad.exe"
+\end{verbatim}
+
+Note that for file names on a Windows computer, it is important to convert back slashes (\texttt{'\bslash'}) to forward slashes (\texttt{/}).  Otherwise, the file name may be translated incorrectly and the file won't be found.
+
+\subsection{Constants and Enumerations}
+
+LK allows constants to be specified using the \texttt{const} keyword.  Any type of variable can be declared constant, including numbers, strings, and functions (described later).  Attempting to assign a new value to a \texttt{const} variable will result in a run-time error when the script is executed.  Also, once a variable has been declared, it cannot be re-declared as \texttt{const} in a subsequent part of the program.  Arrays and tables behave slightly differently from numbers:  while the variable name referring to the array or table cannot be changed to another data type, the actual array or table contents are not protected by the \texttt{const} specifier.  Examples:
+
+\begin{verbatim}
+
+const pi = 3.1415926;
+pi = 3.11;       // will cause an error
+
+value = 43;
+const value = 51;     // will cause an error (value already exists)
+
+const names = [ "Linus", "David", "Aron" ];
+names[2] = "Ari";    // allowed because it changes the contents of array 'names'
+                     // but not the data type or size of 'names'
+
+names[3] = "Nora";   // not allowed because it changes the size of the 'names' array
+names = "Patrick";    // will cause an error
+
+const sqr = define(x) { return x*x; };  // function sqr can't being changed
+
+\end{verbatim}
+
+
+Sometimes it is desirable to specify many constants, perhaps to define various states in a program.  For this purpose, an \texttt{enum}, or \emph{enumerate} statement exists. The state of a motor could be indicated with the constants below, instead of with numbers, which makes a program much more readable.
+\begin{verbatim}
+enum { STARTING, RUNNING, STOPPED, ERROR  };
+
+motor_state = STOPPED;  
+\end{verbatim}
+
+Enumerations start assigning integer values to the names in the list, increasing by one.  It is possible to assign a custom values to names in the following ways:
+
+\begin{verbatim}
+enum { STARTING, RUNNING, STOPPED, EFF=+20, EFF1, EFF2,  ERROR1 = 100, ERROR2 };
+\end{verbatim}
+
+In this case, everything is the same as before until the EFF variable, for which the \texttt{+20} specifies that it should have a value 20 greater than the previous name in the enumeration: 22.  EFF1 and EFF2 have values 23 and 24.  It is also possible to jump to a known value, as with ERROR1.
+
+The \texttt{enum} statement is simply a more convenient syntax to make to multiple \texttt{const} assignments.  The enumeration above is semantically equivalent to:
+
+\begin{verbatim}
+const local STARTING = 0;
+const local RUNNING = STARTING + 1;
+const local STOPPED = RUNNING + 1;
+const local EFF = STOPPED + 20;
+const local EFF1 = EFF + 1;
+const local EFF2 = EFF1 + 1;
+const local ERROR1 = 100;
+const local ERROR2 = ERROR1 + 1;
+\end{verbatim}
+
+The meaning of the \texttt{local} specifier will be explained in later sections.
+
+\section{Flow Control}
+
+\subsection{Comparison Operators}
+
+LK supports many ways of comparing data.  These types of tests can control the program flow with branching and looping constructs that we will discuss later.
+
+There are six standard comparison operators that can be used on most types of data.  For text strings, ``less than'' and ``greater than'' are with respect to alphabetical order.
+
+\begin{table}[ht]
+\begin{center}
+\begin{tabular}{lc}
+Comparison & Operator\\
+\hline
+Equal & \texttt{ == } \\
+Not Equal & \texttt{ != }  \\
+Less Than & \texttt{ \lt }  \\
+Less Than or Equal & \texttt{ \lt= } \\
+Greater Than & \texttt{ \gt } \\
+Greater Than or Equal & \texttt{ \gt= } \\
+\end{tabular}
+\caption{Comparison Operators}
+\label{tab_compop}
+\end{center}
+\end{table}
+
+Examples of comparisons:
+
+\begin{verbatim}
+divisor != 0
+state == "oregon"
+error <= -0.003
+"pv" > "csp"
+\end{verbatim}
+
+Single comparisons can be combined by \emph{boolean} operators into more complicated tests.
+
+\begin{enumerate}
+\item The \texttt{!} operator yields true when the test is false.  It is placed before the test whose result is to be notted.\\Example: \texttt{!(divisor == 0)}
+\item The \texttt{\&\&} operator yields true only if both tests are true.\\Example: \texttt{divisor != 0 \&\& dividend > 1}
+\item The \texttt{||} operator yields true if either test is true.\\Example: \texttt{state == "oregon" || state == "colorado"}
+\end{enumerate}
+
+The boolean operators can be combined to make even more complex tests.  The operators are listed above in order of highest precedence to lowest.  If you are unsure of which test will be evaluated first, use parentheses to group tests.  Note that the following statements have very different meanings.
+
+\begin{verbatim}
+state_count > 0 && state_abbrev == "CA" || state_abbrev == "OR"
+state_count > 0 && (state_abbrev == "CA" || state_abbrev == "OR")
+\end{verbatim}
+
+\subsection{Branching}
+Using the comparison and boolean operators to define tests, you can control whether a section of code in your script will be executed or not.  Therefore, the script can make decisions depending on different circumstances and user inputs.
+
+\subsubsection{\texttt{if} Statements}
+
+The simplest branching construct is the \texttt{if} statement.  For example:
+
+\begin{verbatim}
+if ( tilt < 0.0 )
+{
+    outln("Error: tilt angle must be 0 or greater")
+}
+\end{verbatim}
+
+Note the following characteristics of the \texttt{if} statement:
+
+\begin{enumerate}
+\item The test is placed in parentheses after the \texttt{if} keyword.
+\item A curly brace \texttt{\{}indicates a new block of code statements.
+\item The following program lines include the statements to execute when the \texttt{if} test succeeds.
+\item To help program readability, the statements inside the \texttt{if} are usually indented.
+\item The construct concludes with the \texttt{\}} curly brace to indicate the end of the block..
+\item When the \texttt{if} test fails, the program statements inside the block are skipped.
+\end{enumerate}
+
+\subsubsection{\texttt{else} Construct}
+
+When you also have commands you wish to execute when the \texttt{if} test fails, use the \texttt{else} clause. For example:
+
+\begin{verbatim}
+if ( power > 0 )
+{
+    energy = power * time;
+    operating_cost = energy * energy_cost;
+}
+else
+{
+    outln("Error, no power was generated.");
+    energy = -1;
+    operating_cost = -1;
+}
+\end{verbatim}
+
+\subsubsection{Multiple \texttt{if} Tests}
+
+Sometimes you wish to test many conditions in a sequence, and take appropriate action depending on which test is successful.  In this situation, use the \texttt{elseif} clause.  Be careful to spell it as a single word, as both \texttt{else if} and \texttt{elseif} can be syntactically correct, but have different meanings.
+
+\begin{verbatim}
+if ( angle >= 0 && angle < 90)
+{
+    text = "first quadrant";
+}
+elseif ( angle >= 90 && angle < 180 )
+{
+    text = "second quadrant";
+}
+elseif ( angle >= 180 && angle < 270 )
+{
+    text = "third quadrant";
+}
+else
+{
+    text = "fourth quadrant";
+}
+\end{verbatim}
+
+You do not need to end a sequence of \texttt{elseif} statements with the \texttt{else} clause, although in most cases it is appropriate so that every situation can be handled.  You can also nest \texttt{if} constructs if needed.  Again, we recommend indenting each "level" of nesting to improve your script's readability.  For example:
+
+\begin{verbatim}
+if (   angle >= 0 
+    && angle < 90 ) {
+    
+    if ( print_value == true ) {
+        outln( "first quadrant: " + angle );
+    }  else  {
+        outln( "first quadrant" );
+    }
+}
+\end{verbatim}
+
+Also note that because LK does not care about spaces and tabs when reading the program text, it is possible to use multiple lines for a long if statement test to make it more readable.  The curly braces denoting the code block can also follow on the same line as the \texttt{if} or on the next line.
+
+\subsubsection{Single statement \texttt{if}s}
+Sometimes you only want to take a single action when an \texttt{if} statement succeeds.  To reduce the amount of code you must type, LK accepts single line \texttt{if} statements that do not include the \texttt{\{} and \texttt{\}} block delimiters, as shown below.
+
+\begin{verbatim}
+if ( azimuth < 0 ) outln( "Warning: azimuth < 0, continuing..." );
+
+if ( tilt > 90 ) tilt = 90;   // set maximum tilt value
+\end{verbatim}
+
+You can also use a \texttt{elseif} and/or \texttt{else} statement on single line \texttt{if}.  Like the \texttt{if}, it only accepts one program statement, and must be typed on the same program line.  Example:
+
+\begin{verbatim}
+if ( value > average ) outln("Above average");
+  else outln("Not above average");
+\end{verbatim}
+
+\subsubsection{Inline Switch Statement}
+
+Sometimes you need to select between multiple values based on a number.  A quick way to do this in LK is to use an inline switch statement.  A value out of a list of expressions is returned based on the numeric value of the test expression.  Examples:
+
+\begin{verbatim}
+choice = 2;
+value = ? choice [ 'aron', 'peter', 'rodger' ]; // returns rodger
+
+a = 2.4;
+b = 5.6;
+operator = 1;
+value = ? operator [ a+b, a-b, a*b, a/b ]; // returns -3.2
+\end{verbatim}
+
+Note that the inline switch statement is simply shorthand for writing a full \texttt{if-then-else} statement.  Using the inline switch can make your code more compact when used appropriately.
+
+\subsection{Looping}
+
+A loop is a way of repeating the same commands over and over.  You may need to process each line of a file in the same way, or sort a list of names.  To achieve such tasks, LK provides two types of loop constructs, the \texttt{while} and \texttt{for} loops.  
+
+Like \texttt{if} statements, loops contain a "body" of program statements followed by a closing curly bracke \texttt{\}} to denote where the loop construct ends.
+
+\subsubsection{\texttt{while} Loops}
+
+The \texttt{while} loop is the simplest loop.  It repeats one or more program statements as long as a logical test holds true.  When the test fails, the loop ends, and the program continues execution of the statements following the loop construct.  For example:
+
+\begin{verbatim}
+while ( done == false )
+{
+    // process some data
+    // check if we are finished and update the 'done' variable
+}
+\end{verbatim}
+
+The test in a \texttt{while} loop is checked before the body of the loop is entered for the first time.  In the example above, we must set the variable \texttt{done} to \texttt{false} before the loop, because otherwise no data processing would occur.  After each iteration ends, the test is checked again to determine whether to continue the loop or not.
+
+\subsubsection{Counter-driven Loops}
+
+Counter-driven loops are useful when you want to run a sequence of commands for a certain number of times.  As an example, you may wish to display only the first 10 lines in a text file.
+
+There are four basic parts of implementing a counter-driven loop:
+
+\begin{enumerate}
+\item Initialize a counter variable before the loop begins.
+\item Test to see if the counter variable has reached a set maximum value.
+\item Execute the program statements in the loop, if the counter has not reached the maximum value.
+\item Increment the counter by some value.
+\end{enumerate}
+
+For example, we can implement a counter-driven loop using the \texttt{while} construct:
+
+\begin{verbatim}
+i = 0;      // use i as counter variable
+while (i < 10) {
+    outln( "value of i is " + i );
+    i = i + 1;
+}
+\end{verbatim}
+
+\subsubsection{\texttt{for} Loops}
+
+The \texttt{for} loop provides a streamlined way to write a counter-driven loop.  It combines the counter initialization, test, and increment statements into a single line.  The script below produces exactly the same effect as the \texttt{while} loop example above.
+
+\begin{verbatim}
+for ( i = 0; i < 10; i++ ) {
+    outln( "value of i is " + i );
+}
+\end{verbatim}
+
+The three loop control statements are separated by semicolons in the \texttt{for} loop statement.  The initialization statement (first) is run only once before the loop starts.  The test statement (second) is run before entering an iteration of the loop body.  Finally, the increment statement is run after each completed iteration, and before the test is rechecked.  Note that you can use any assignment or calculation in the increment statement.
+
+Note that the increment operator \texttt{++} is used to modify the counter variable i.  It is equally valid to write \texttt{i=i+1} for the counter advancement expression.  The \texttt{++} is simply shorthand for adding 1 to a number.  The \texttt{--} operator similarly decrement a number by 1.
+
+Just like the \texttt{if} statement, LK allows \texttt{for} loops that contain only one program statement in the body to be written on one line without curly braces.  For example:
+
+\begin{verbatim}
+for ( val=57; val > 1; val = val / 2 ) outln("Value is " + val );
+\end{verbatim}
+
+\subsubsection{Loop Control Statements}
+
+In some cases you may want to end a loop prematurely.  Suppose under normal conditions, you would iterate 10 times, but because of some rare circumstance, you must break the loop's normal path of execution after the third iteration.  To do this, use the \texttt{break} statement.
+
+\begin{verbatim}
+value = to_real( in("Enter a starting value") );
+for ( i=0; i<10; i=i+1 )
+{
+    if (value < 0.01)
+    {
+    	    break;
+	}
+    outln("Value is " + value );
+    value = value / 3.0;
+}
+\end{verbatim}
+
+In another situation, you may not want to altogether break the loop, but skip the rest of program statements left in the current iteration.  For example, you may be processing a list of files, but each one is only processed if it starts with a specific line.  The \texttt{continue} keyword provides this functionality.
+
+\begin{verbatim}
+for ( i=0; i<file_count; i++ )
+{
+    file_header_ok = false;
+    
+    // check if whether current file has the correct header
+    
+    if (!file_header_ok) continue;
+    
+    // process this file
+}
+\end{verbatim}
+
+The \texttt{break} and \texttt{continue} statements can be used with both \texttt{for} and \texttt{while} loops.  If you have nested loops, the statements will act in relation to the nearest loop structure.  In other words, a \texttt{break} statement in the body of the inner-most loop will only break the execution of the inner-most loop.
+
+\subsection{Quitting}
+
+LK script execution normally ends when there are no more statements to run at the end of the script.  However, sometimes you may need to halt early, if the user chooses not to continue an operation.
+
+The \texttt{exit} statement will end the script immediately.  For example:
+
+\begin{verbatim}
+if ( yesno("Do you want to quit?") ) {
+    outln("Aborted.");
+    exit;
+}
+\end{verbatim}
+
+The \texttt{yesno} function call displays a message box on the user's screen with yes and no buttons, showing the given message.  It returns \texttt{true} if the user clicked yes, or \texttt{false} otherwise.
+
+\section{Arrays}
+
+Often you need to store a list of related values.  For example, you may need to refer to the price of energy in different years.  Or you might have a list of state names and capital cities.  In LK, you can use arrays to store these types of collections of data.
+
+\subsection{Initializing and Indexing}
+
+An \emph{array} is simply a variable that has many values, and each value is indexed by a number.  Each variable in the array is called an \emph{element} of the array, and the position of the element within the array is called the element's \emph{index}.  The index of the first element in an array is always 0.
+
+To access array elements, enclose the index number in square brackets immediately following the variable name.  You do not need to declare or allocate space for the array data in advance.  However, if you refer to an element at a high index number first, all of the elements up to that index are reserved and given the \texttt{null} value.
+
+\begin{verbatim}
+names[0] = "Sean";
+names[1] = "Walter";
+names[2] = "Pam";
+names[3] = "Claire";
+names[4] = "Patrick";
+
+outln( names[3] ); //  output is "Claire"
+my_index = 2;
+outln( names[my_index] ); // output is "Pam"
+\end{verbatim}
+
+You can also define an array using the \texttt{[ ]} initializer syntax. Simply separate each element with a comma.  There is no limit to the number of elements you can list in an array initializer list.
+
+\begin{verbatim}
+names = ["Sean", "Walter", "Pam", "Claire", "Patrick"];
+outln( "First: " + names[0] );
+outln( "All: " + names );
+\end{verbatim}
+
+Note that calling the \texttt{typeof} function on an array variable will return "array" as the type description, not the type of the elements.  This is because LK is not strict about the types of variables stored in an array, and does not require all elements to be of the same type.
+
+\subsection{Array Length}
+
+Sometimes you do not know in advance how many elements are in an array.  This can happen if you are reading a list of numbers from a text file, storing each as an element in an array.  After the all the data has been read, you can use the \texttt{\#} operator to determine how many elements the array contains.
+
+\begin{verbatim}
+count = #names;
+\end{verbatim}
+
+\subsection{Processing Arrays}
+
+Arrays and loops naturally go together, since frequently you may want to perform the same operation on each element of an array.  For example, you may want to find the total sum of an array of numbers.
+
+\begin{verbatim}
+numbers = [ 1, -3, 2.4, 9, 7, 22, -2.1, 5.8 ];
+
+sum = 0;
+for (i=0; i < #numbers; i++)
+    sum = sum + numbers[i];
+\end{verbatim}
+
+The important feature of this code is that it will work regardless of how many elements are in the array \texttt{numbers}.
+
+To append a value to the end of an array, you can simply index a location past the end of the array.  However, sometimes you don't have the index of the last element handy.  In this case, you can just use the \texttt{+=} operator to append an item.  Example:
+
+\begin{verbatim}
+alphabet = [ 'a' ];
+alphabet += 'b';
+alphabet += 'c';
+for( i=0;i<3;i++ )
+    alphabet += 'd'; // append three d's
+    
+outln( alphabet ); // prints a,b,c,d,d,d
+\end{verbatim}
+
+To search for an item in an array, you can use the ``where at'' operator \texttt{?@}.  This returns the index of the item if it is found.  If the item doesn't exist in the array, a value of -1 is returned.
+
+To remove an item from an array, use the \texttt{-@} operator along with the index of the item you want to remove.  Examples:
+
+\begin{verbatim}
+names = [ 'aron', 'patrick', 'rodger', 'peter', 'hillary' ];
+pos1 = names ?@ 'peter'; // returns 3
+
+names -@ 1; // remove the item at index 1
+pos2 = names ?@ 'patrick'; // return -1
+\end{verbatim}
+
+\subsection{Multidimensional Arrays}
+
+As previously noted, LK is not strict with the types of elements stored in an array.  Therefore, a single array element can even be another array.  This allows you to define matrices with both row and column indexes, and also three (or greater) dimensional arrays.
+
+To create a multi-dimensional array, simply separate the indices with commas between the square brackets.  For example:
+
+\begin{verbatim}
+data[0][0] = 3
+data[0][1] = -2
+data[1][0] = 5
+data[2][0] = 1
+
+nrows = #data; // result is 4
+ncols = #data[0] // result is 2
+
+row1 = data[0]; // extract the first row
+
+x = row1[0]; // value is 3
+y = row1[1]; // value is -2
+\end{verbatim}
+
+The array initializer syntax \texttt{ [ ] } can also be used to declare arrays in multiple dimensions.  This is often useful when declaring a matrix of numbers, or a list of states and associated capitals, for example.
+
+\begin{verbatim}
+matrix = [ [2,3,4],
+           [4,5,6],
+           [4,2,1] ];
+
+vector = [ 2, 4, 5 ];
+
+outln( matrix[0] ); // prints the first row [2,3,4]
+
+list = [ ["oregon", "salem"],
+         ["colorado", "denver"],
+         ["new york", "albany"] ];
+         
+\end{verbatim}
+
+\subsection{Managing Array Storage}
+
+When you define an array, LK automatically allocates sufficient computer memory to store the elements.  If you know in advance that your array will contain 100 elements, for example, it can be much faster to allocate the computer memory before filling the array with data.  Use the \texttt{alloc} command to make space for 1 or 2 dimensional arrays.  The array elements are filled in with the \texttt{null} value.
+
+\begin{verbatim}
+data = alloc(3,2);  // a matrix with 3 rows and 2 columns
+data[2][1] = 3;
+
+prices = alloc( 5 ); // a simple 5 element array
+\end{verbatim}
+
+As before, you can extend the array simply by using higher indexes.
+
+%\subsection{Multiple Advance Declarations}
+%You can also declare many variables and arrays in advance using the \texttt{declare} statement.  For example:
+%\begin{verbatim}
+%declare radiation[8760],temp[8760],matrix[3,3],i=0
+%\end{verbatim}
+%This statement will create the array variables \texttt{radiation} and \texttt{temp}, each with 8760 values.  It will also set aside memory for the 3x3 \texttt{matrix} variable, and 'create' the variable \texttt{i} and assign it the value of zero.  The \texttt{declare} statement can be a useful shortcut to creating arrays and initializing many variables in a single line.  The only limitation is that you cannot define arrays of greater than two dimensions using the \texttt{declare} command.
+
+\section{Tables}
+
+In addition to arrays, LK provides another built-in data storage structure called a table.  A table is useful when storing data associated with a specific key.  Similar to how arrays are indexed by numbers, tables are indexed by text strings.  The value stored with a key can be a number, text string, array, or even another table.  A good example when it would be appropriate to use a table is to store a dictionary in memory, where each word is a key that has associated with it the definition of the word.  In other languages, tables are sometimes called dictionaries, or hashes or hash tables. 
+
+\subsection{Initializing and Indexing}
+
+To refer to data elements in a table, enclose the text key string in curly braces immediately following the variable name.  You do not need to declare or allocate space for the table.  
+
+\begin{verbatim}
+wordlen{"name"} = 4;
+wordlen{"dog"} = 3;
+wordlen{"simple"} = 5;
+wordlen{"lk"} = 2;
+
+outln(wordlen); // prints '{ name=4 dog=3 simple=5 lk=2 }'
+outln( wordlen{"simple"} ); // prints 5
+outln( typeof( wordlen{"can"} ) ); // prints 'null' (the key is not in the table)
+
+key = "dog";
+num_letters = wordlen{key}; // num_letters is 3
+\end{verbatim}
+
+Calling the \texttt{typeof} function on a table variable will return "table" as the type description.  LK is not strict about the types of variables stored in a table, and does not require all of the elements to be of the same type.
+
+You can also define a table with key=value pairs using the \texttt{ \{ \} } initializer syntax.  The pairs are separated by commas, as shown below.
+
+\begin{verbatim}
+wordlen = { "antelope"=4, "dog"=3, "cat"=5, "frog"=2 };
+outln( wordlen ); // prints { dog=3 frog=2 cat=5 antelope=4 }
+\end{verbatim}
+
+Note the order of the printout of the key-value pairs in the example above.  Unlike an array whose elements are stored sequentially in memory, tables store data in an unordered set.  As a result, once a key=value pair is added to a table, there is no specification of order of the pair relative to the other key=value pairs already in the table.
+
+A ``lazy'' declaration syntax is also allowed, in which the keys are not put in quotes.  This syntax is generally quicker to type into the computer.  Example:
+
+\begin{verbatim}
+wordlen = { antelope=4, dog=3, cat=5, frog=2 };
+\end{verbatim}
+
+
+
+
+\subsection{Processing Tables}
+
+It is often necessary to know how many key=value pairs are in a table, and to know what all the keys are.  In many situations, you may have to perform an operation on every key=value pair in a table, but you do not know in advance what the keys are or how many there are.  LK provides two operators \# and @ for this purpose.
+
+To determine if a specific key has a value in a table, you can use the ``where at'' operator \texttt{?@}.  This returns a true or false value depending on whether the table has that key in it.
+
+To remove a key=value pair from a table, use the \texttt{-@} operator.  Examples:
+
+\begin{verbatim}
+
+wordlen = { "antelope"=4, "dog"=3, "cat"=5, "frog"=2 };
+outln("number of key,value pairs =" + #wordlen);
+
+keys = @wordlen;
+outln(keys);
+
+wordlen -@ "frog"; // remove the frog entry
+
+keys = @wordlen;
+outln(keys);
+for (i=0;i<#keys;i++)
+   outln("key '" + keys[i] + "'=" + wordlen{keys[i]});
+   
+has_frog = wordlen ?@ "frog"; // false
+has_dog = wordlen ?@ "dog"; // true
+
+\end{verbatim}
+
+\subsection{Record Structures}
+
+Many languages provide the ability to create user-defined data types that are built from the intrinsic types.  For example, an address book application might have a record for each person, and each record would have fields for the person's name, email address, and phone number.  
+
+For programming simplicity, LK has a syntax shortcut for accessing fields of a structure, which in actuality are the values of keyed entries in a table.  The dot operator '\texttt{.}' transforms the text following the dot into a key index, as shown below.
+
+\begin{verbatim}
+
+person.name = "Jane Ruth";
+person.email = "jane@lk.org";
+person.phone = "0009997777";
+
+outln(person.name); // prints "Jane Ruth"
+outln(person); // prints { name=Jane Ruth email=jane@lk.org phone=0009997777 }
+
+outln(person{"email"}); // prints "jane@lk.org"
+outln(@person); // prints "name,email,phone"
+
+\end{verbatim}
+
+You can build arrays and tables of structures.  For example, a table of people indexed by their last names would make an efficient database for an address book.
+
+\begin{verbatim}
+db{"ruth"} = { "name"="Jane Ruth", "email"="jane@lk.org", "phone"="0009997777" };
+db{"doe"} = { "name"="Joe Doe", "email"="joe@lk.org", "phone"="0008886666" };
+
+// change joe's email address
+db{"doe"}.email = "joe123@gmail.com";
+outln( db{"ruth"}.phone );
+
+// delete ruth from the address book
+db{"ruth"} = null;
+
+\end{verbatim}
+
+\section{Functions}
+
+It is usually good programming practice to split a larger program up into smaller sections, often called procedures, functions, or subroutines.  A program may be easier to read and debug if it is not all thrown together, and you may have common blocks of functionality that are reused several times in the program.
+
+A function is simply a named chunk of code that may be called from other parts of the script.  It usually performs a well-defined operation on a set of variables, and it may return a computed value to the caller.
+
+Functions can be written anywhere in a script, including inside other functions.  If a function is never called by the program, it has no effect.
+
+\subsection{Definition}
+
+A function is defined by assigning a block of code to a variable.  The variable is the name of the function, and the \texttt{define} keyword is used to create a new function.
+
+Consider the very simple function listed below.
+
+\begin{verbatim}
+show_welcome = define()
+{
+   outln("Thank you for choosing LK.");
+   outln("This text will be displayed at the start of the script.");
+};
+\end{verbatim}
+
+Notable features:
+\begin{enumerate}
+\item A function is created using the \texttt{define} keyword, and the result is assigned to a variable.
+\item The variable references the function and can be used to call it later in the code.
+\item The empty parentheses after the \texttt{define} keyword indicate that this function takes no parameters.
+\item A code block enclosed by \texttt{ \{ \} } follows and contains the statements that execute when the function is called.
+\item A semicolon finishes the assignment statement of the function to the variable \texttt{show\_welcome}.
+\end{enumerate}
+
+To call the function from elsewhere in the code, simply write the function variable's name, followed by the parentheses.  
+
+\begin{verbatim}
+// show a message to the user
+show_welcome();
+\end{verbatim}
+
+\subsection{Returning a Value}
+
+A function is generally more useful if it can return information back to the program that called it.  In this example, the function will not return unless the user enters "yes" or "no" into the input dialog.
+
+\begin{verbatim}
+require_yes_or_no = define()
+{
+   while( true )
+   {
+      answer = in("Destroy everything? Enter yes or no:");
+      if (answer == "yes")
+          return true;
+      if (answer == "no")
+          return false;
+      outln("That was not an acceptable response.");
+   }
+};
+
+// call the input function
+result = require_yes_or_no(); // returns true or false
+if ( !result ) {
+   outln("user said no, phew!");
+   exit;
+}  else  {
+   outln("destroying everything...");
+}
+\end{verbatim}
+
+The important lesson here is that the main script does not worry about the details of how the user is questioned, and only knows that it will receive a \texttt{true} or \texttt{false} response.  Also, the function can be reused in different parts of the program, and each time the user will be treated in a familiar way.
+
+\subsection{Parameters}
+
+In most cases, a function will accept parameters when it is called.  That way, the function can change its behavior, or take different inputs in calculating a result.  Analogous to mathematical functions, LK functions can take arguments to compute a result that can be returned.  Arguments to a function are given names and are listed between the parentheses following the \texttt{define} keyword.  
+
+For example, consider a function to determine the minimum of two numbers:
+
+\begin{verbatim}
+minimum = define(a, b) {
+   if (a < b) return a;
+   else return b;
+};
+
+// call the function
+count = 129;
+outln("Minimum: " + minimum( count, 77) );
+\end{verbatim}
+
+In LK, changing the value of a function's named arguments will modify the variable in the calling program.  Instead of passing the actual value of a parameter \texttt{a}, a \emph{reference} to the variable in the original program is used.  The reference is hidden from the user, so the variable acts just like any other variable inside the function.  
+
+Because arguments are passed by reference (as in Fortran, for example), a function can "return" more than one value.  For example:
+
+\begin{verbatim}
+sumdiffmult = define(s, d, a, b) {
+   s = a+b;
+   d = a-b;
+   return a*b;
+};
+
+sum = -1;
+diff = -1;
+mult = sumdiffmult(sum, diff, 20, 7);
+
+// will output 27, 13, and 140
+outln("Sum: " + sum + " Diff: " + diff + " Mult: " + mult);
+\end{verbatim}
+
+Functions can accept an unspecified number of arguments.  Every named argument must be provided by the caller, but additional arguments can be sent to a function also.  A special variable is created when a function runs called \texttt{\_\_args} that is an array containing all of the provided arguments.
+
+\begin{verbatim}
+sum = define(init)
+{
+   for( i=1;i<#__args;i++ )
+      init = init + __args[i];
+   return init;
+};
+
+outln( sum(1,2,3,4,5) );  // prints 15
+outln( sum("a","b","c","d") );  // prints abcd
+\end{verbatim}
+
+
+\subsection{Alternate Declaration Syntax}
+
+Functions can also be defined using the \texttt{function} keyword, as below.  The syntax is simplified, and there is no semicolon required at the end because the definition does not comprise a statement in the usual sense.  Functions declared in this way can be defined with parameters and can return values, as before.
+
+\begin{verbatim}
+function show_welcome(name)
+{
+   outln("Thank you " + name + " for choosing LK.");
+   outln("This text will be displayed at the start of the script.");
+}
+\end{verbatim}
+
+In fact, this alternate syntax has an exact translation to the \texttt{define} syntax used elsewhere in this manual.  For example:
+
+\begin{verbatim}
+function show_welcome( <args> )  {  <statements>  }
+\end{verbatim}
+is exactly equivalent to
+\begin{verbatim}
+const show_welcome = define( <args> )  {  <statements>  };
+\end{verbatim}
+
+The alternate syntax described here can help clarify programs and is generally easier for people familiar with other languages, at least initially.  It automatically enforces \emph{const-ness}, so that the function isn't inadvertently replaced later in the code by an assignment statement.
+
+
+
+\subsection{First-class Functions}
+
+Functions in LK are \emph{first-class} values, meaning that they are referenced just as any other variable, and can be passed to other functions, replaced with new bodies, or defined implicitly.  Functions can also be declared within other functions, stored in arrays, or referenced by keys in a table.  The \texttt{define} keyword simply returns an internal LK representation of a function, and the assignment statement assigns that 'value' to the variable name.  This ties the variable name to the function, implying that when the variable name is typed as a function call, LK knows to evaluate the function to which it refers.
+
+\begin{verbatim}
+triple              // variable name
+   =                // assignment statement
+     define( x )    // definition of a function with argument x
+     {              
+       return 3*x;  // statements comprising function body
+     }        
+     ;              // semicolon terminates the assignment statement
+     
+neg = define( y ) { return 0-y; }; // another function
+\end{verbatim}
+
+In the example below, the \texttt{meta} function is unique that it returns another function.  Which function it returns depends on the argument \texttt{mode}.
+
+\begin{verbatim}
+meta = define( mode ) {     // a function that returns another function
+   if (mode == "double")
+      return define(x) { return 2*x; };
+   else
+      return define(x) { return 3*x; };
+};
+
+
+outln( meta("triple")(12) );  // prints 36
+outln( meta("double")(-23) ); // prints -46
+
+\end{verbatim}
+
+It is important to note that the function returned by \texttt{meta} does not retain the context in which it was created.  For example, if the body of the implicit function returned by \texttt{meta} referenced the \texttt{mode} argument in its calculations, running the returned function would result in an error because the \texttt{mode} argument would no longer be present in the current \emph{environment}.
+
+\subsection{Built-in Functions}
+
+Throughout this guide, we have made use of built-in functions like \texttt{in}, \texttt{outln}, and others.  These functions are included from the LK standard library automatically, and called in exactly the same way as user functions.  Like user functions, they can return values, and sometimes they modify the arguments sent to them.  Refer to the ``Standard Library Reference'' at the end of this guide for documentation on each function's capabilities, parameters, and return values.  When LK is embedded in other programs, additional functions may become available that are specific to the program, and are usually documented by the program separately.
+
+
+\section{Environments}
+
+This section describes how LK stores information about data and functions.  The rules for variable access are simple but important to understand for writing script code that works as expected in all situations.
+
+During the execution of a script, all variables (and thus functions) are stored in a special lookup table called the \emph{environment}.  The environment stores a reference from the variable name to the actual data or function represented by the variable, and allows new variables to be created and queried.  When a script starts executing, the environment is empty, and as variables are assigned values, they are added to the environment.  When an assignment statement changes the value of an existing variable, the old value is discarded and replaced with the new value.
+
+\subsection{Variable Lookup Mechanism}
+When a function is called, a new environment is created to store variables \emph{local} to the function.  The new environment retains a reference to its \emph{parent environment}, which provides the mechanism by which variables and functions assigned outside a function can be accessed within it.  LK follows these lookup rules:
+
+\begin{enumerate}
+\item The current environment is checked for the existence of the requested variable.
+\item If it exists, the query is over and the variable has been found.
+\item If the variable is not found, and the variable is referenced in a read-only or non-mutable context (i.e. right-hand side of an assignment statement), LK checks all of the \emph{parent environments} of the current environment to see if the variable exists in the environment hierarchy.  If so, the variable has been found and the query is over. Otherwise, an error is thrown indicating an invalid access to an undefined variable.
+\item If the variable is referenced in a mutable context (i.e. left-hand side of an assignment statement), first the global (top level) environment is searched for the variable name.  If it exists already, and has been marked as a global variable upon its creation, the query is over and the global variable is used.  Otherwise, a new variable is created.  If the \texttt{global} keyword is used, the variable entry is created in the global environment and marked as global, and if not, it is created in the current function's local environment.
+\end{enumerate}
+
+In the script below, the variable \texttt{y} is not defined in any environment when it is first referenced in the body of the \texttt{triple} function.  As a result, a new environment entry is created in the \texttt{triple} environment to hold its value, according to the lookup rules listed above.
+
+\begin{verbatim}
+triple = define (x) { y=3*x; return y; };
+triple( 4 );
+outln( y ); // this will fail because y is local to the triple function
+\end{verbatim}
+
+In script below, the behavior is the same.  The query for variable in \texttt{y} in the call to \texttt{triple( 4 )} will look in the environment created for the function call to \texttt{triple}, and, not finding \texttt{y}, will create a new entry named \texttt{y} because it is accessed in a mutable context.  Since \texttt{y} is now local to the function call, the instance in the caller's context value will not be overwritten with the expression \texttt{3*x}, which in this context has value of 12.
+
+\begin{verbatim}
+y = 24;
+// ... other code ...
+triple = define (x) { y=3*x; return y; };
+triple( 4 );
+outln( y ); // this will print 24
+\end{verbatim}
+
+
+\subsection{Global Values}
+As we have seen, we can write useful functions using arguments and return values to pass data into and out of functions.  However, sometimes there are some many inputs to a function that it becomes very cumbersome to list them all as arguments.  Alternatively, you might have some variables that are used throughout your program, or are considered reference values or constants.  Because of the hierarchical environment query rules, variables declared in the \emph{main} body of the script can be treated as global values.  To make a global variable that can be changed from inside a function, use the \texttt{global} keyword when first assigning it in the main script. Example:
+
+\begin{verbatim}
+global counter1 = 0;
+counter2 = 0;
+
+function increment( step ) {
+   counter1 += step;
+   counter2 += step;	
+}
+
+increment( 1 );
+increment( 2 );
+
+// counter1 now has value 3, counter2 is still zero
+\end{verbatim}
+
+Common programming advice is to minimize the number of globally writable variables used in a program.  Sometimes they are certainly necessary, but too many can lead to mistakes that are harder to debug and correct, and can reduce the readability and maintainability of your script.
+
+
+
+
+\section{Organizing Programs}
+
+When you write a long program, it can become difficult to organize it in a single file.  This section describes some ways in which LK scripts can be organized into manageable chunks of code.
+
+\subsection{Importing Scripts}
+
+LK lets you split a large program into manageable chunks so that you may call functions contained in other scripts.  Another script can be imported using the \texttt{import} command.
+
+\begin{verbatim}
+<--- file: c:\scripts\functions.lk --->
+
+const boltzmann = define() { return 1.3806488e-23; };
+
+<--- file: c:\scripts\main.lk --->
+
+import "c:/scripts/functions.lk";
+outln( boltzmann() + ' J/K' );
+
+\end{verbatim}
+
+In this example, the main program imports another script file that contains one or more functions that can be called directly.
+
+\subsection{Object-oriented Programming}
+
+Using functions and tables, it is possible to create objects in LK that encapsulate functionality in a reusable unit.  LK does not explicitly support classes and inheritance like true object-oriented languages like C++ and Java, but clever use of the facilities described thus far in this manual can go a long way in providing the user with powerful capabilities.
+
+An object can be defined in LK by writing a function that acts like a \emph{constructor} to create a table with various fields.  Some of the fields may be data, but others may actually be functions that operate on the data fields of the table.  This is possible because functions are \emph{first-class} values.
+
+Note the use of a special variable called \texttt{this} in functions defined as fields in the table (\texttt{area}, \texttt{perim}, and \texttt{scale\_side}).  \texttt{this} is created and assigned automatically if the function is invoked using the \texttt{-\gt} operator, discussed below.
+
+\begin{verbatim}
+
+make_square = define(side)
+{
+   local obj.label = "Square";
+   obj.side = side;
+
+   obj.area = define() { return this.side*this.side; };  
+   obj.perim = define() { return 4*this.side; };
+   obj.scale_side = define(factor)
+   {
+      this.side = this.side * factor;
+      return this.side;
+   };
+   
+   return obj;
+};
+
+
+sq[0] = make_square(2);
+sq[1] = make_square(4);
+sq[2] = make_square(5);
+
+outln( sq[0].label ); // prints "Square"
+outln( sq[1].perim ); // prints <function>
+outln( sq[1].side );  // prints 4
+for (i=0;i<#sq;i++)
+  outln("sq " + i + " area: " + sq[i]->area() + " perim: " + sq[i]->perim());
+
+
+outln("new side: " + sq[0]->scale_side(3));
+outln("area: " + sq[0]->area());
+outln("new side: " + sq[0]->scale_side(1/3));
+outln("area: " + sq[0]->area());
+\end{verbatim}
+
+In this example, the \texttt{make\_square} function works like a \emph{constructor} to create a new object of type square, implemented internally as a table.  The \texttt{area} and \texttt{perim} functions defined within the constructor both take a parameter called \texttt{this}, which is a reference to an object created with \texttt{make\_square}.  Once all of the fields and methods of the square object are defined, the object is returned.  When we say object, in fact we are simply referring internally to a table, whose fields are the members.
+
+We then create two instances of a square as two elements in the array \emph{sq}.  In the \texttt{for} loop that prints information about each square in the array, the member functions are called using the \texttt{-\gt} operator.  The \texttt{-\gt} is the \emph{thiscall} operator.  It implicitly passes the left hand side of the operator to the function, in a special local variable called \texttt{this}.  For example, in the \texttt{scale\_side} method, the variable \texttt{this} variable is used to access the data members of the object.
+
+
+\section{Input, Output, and System Access}
+
+LK provides a variety of standard library functions to work with files, directories, and interact with other programs.  So far, we have used the \texttt{in} and \texttt{outln} functions to accept user input and display program output in the runtime console window.  Now we will learn about accessing files and other programs.  This section describes only a small part of the large standard library of functions included in LK.  Refer to the ``Standard Library Reference'' at the end of this guide for documentation on each function's capabilities, parameters, and return values.  
+
+\subsection{Working with Text Files}
+
+To write data to a text file, use the \texttt{write\_text\_file} function.  \texttt{write\_text\_file} accepts any type of variable, but most frequently you will write text stored in a string variable.  For example:
+
+\begin{verbatim}
+data = "";
+for (i=0;i<10;i=i+1) data = data + "Text Data Line " + to_string(i) + "\n";
+ok = write_text_file( "C:/test.txt", data );
+if (!ok) outln("Error writing text file.");
+\end{verbatim}
+
+Reading a text file is just as simple with the \texttt{readtextfile} function.  If the file is empty or cannot be read, an empty text string is returned.
+
+\begin{verbatim}
+mytext = read_text_file("C:/test.txt");
+out(mytext);
+\end{verbatim}
+
+While these functions offer an easy way to read an entire text file, often it is useful to be able to access it line by line.  The \texttt{open}, \texttt{close}, and \texttt{readln} functions are for this purpose. 
+
+\begin{verbatim}
+file = open("c:/test.txt", "r");
+if (!file) {
+   outln("could not open file");
+   exit;
+}
+
+line="";
+while ( read_line( file, line ) ) {
+   outln( "My Text Line='" + line + "'" );
+}
+
+close(file)
+\end{verbatim}
+
+In the example above, \texttt{file} is a number that represents the file on the disk.  The \texttt{open} function opens the specified file for reading when the \texttt{"r"} parameter is given.  The \texttt{read\_line} function will return \texttt{true} as long as there are more lines to be read from the file, and the text of each line is placed in the \texttt{line} variable.
+
+Another way to access individual lines of a text file uses the \texttt{split} function to return an array of text lines.  For example:
+
+\begin{verbatim}
+lines = split( read_text_file( "C:/test.txt" ), "\n" );
+outln("There are " + #lines + " lines of text in the file.");
+if (#lines > 5) outln("Line 5: '", lines[5], "'");
+\end{verbatim}
+
+\subsection{File System Functions}
+
+Suppose you need to process many different files, and consequently need a list of all the files in a folder that have a specific extension.  LK provides the \texttt{dir\_list} function to help out in this situation.  If you want to filter for multiple file extensions, separate them with commas.
+
+\begin{verbatim}
+list = dir_list( "C:/Windows", "dll" ); // could also use "txt,dll"
+outln("Found " + #list + " files that match.");
+outln(join(list, "\n"));
+\end{verbatim}
+
+To list all the files in the given folder, leave the extension string empty or pass \texttt{"*"}.
+
+Sometimes you need to be able to quickly extract the file name from the full path, or vice versa.  The functions \texttt{path\_only}, \texttt{file\_only}, \texttt{ext\_only} extract the respective sections of a file name, returning the result.
+
+To test whether a file or directory exist, use the \texttt{dir\_exists} or \texttt{file\_exists} functions.  Examples:
+
+\begin{verbatim}
+path = "C:/SAM/2010.11.9/samsim.dll";
+dir = path_only( path );
+name = file_only( path );
+outln( "Path: " + path );
+outln( "Extension: " + ext_only(path));
+outln( "Name: " + name + " Exists? " + file_exists(path) );
+outln( "Dir: " + dir + " Exists? " + dir_exists(dir));
+\end{verbatim}
+
+%\subsection{Standard Dialogs}
+
+%To facilitate writing more interactive scripts, LK includes various dialog functions.  We have already used the \texttt{notice} and \texttt{yesno} functions in previous examples.
+
+%The \texttt{choose\_file} function pops up a file selection dialog to the user, prompting them to select a file.  \texttt{choose\_file} will accept three optional parameters: the path of the initial directory to show in the dialog, a wildcard filter like \texttt{"Text Files (*.txt)"} to limit the types of files shown in the list, and a dialog caption to display on the window.  Example:
+
+%\begin{verbatim}
+%file = choose_file("c:/SAM", "Choose a DLL file", "Dynamic Link Libraries (*.dll)" );
+%if (file == "") {
+%   notice("You did not choose a file, quitting.");
+%   exit;
+%} else {
+%   if ( ! yesno("Do you want to load:\n\n" + file)) exit;
+%   
+%   // proceed to load .dll file
+%   outln("Loading " + file);
+%}
+%\end{verbatim}
+
+\subsection{Calling Other Programs}
+
+Suppose you have a program on your computer that reads an input file, makes some complicated calculations, and writes an output file.  The \texttt{system} function executes an external program, and returns the integer result code, after waiting for the called program to finish.  Examples:
+
+\begin{verbatim}
+system("notepad.exe"); // run notepad and wait
+\end{verbatim}
+
+Each program runs in a folder that the program refers to as the \emph{working directory}.  Sometimes you may need to switch the working directory to conveniently access other files, or to allow an external program to run correctly.  The \texttt{cwd} function either gets or sets the current working directory.
+
+\begin{verbatim}
+working_dir = cwd();    // get the current working directory
+cwd( "/usr/local/bin" );    // change the working directory
+outln("cwd=" + cwd() );
+cwd(working_dir);       // change it back to the original one
+outln("cwd=" + cwd() );
+\end{verbatim}
+
+
+\section{Writing Extensions}
+
+LK provides an application programming interface (API) for writing libraries of functions that can be loaded at runtime into the scripting engine.  Dynamically loaded libraries can be used to provide very high performance computations, ability to create linkages to other software packages, and to integrate existing codes written in other languages.  The C language extension API is fully defined in the header file \texttt{lk\_invoke.h}, and does not require the extension to be linked to any other LK library or otherwise.  As a result, programming, compiling, and linking a standalone LK extension is very straightforward.  
+
+\emph{Note:} Currently, the LK extension API does not support passing Unicode text back and forth between an extension and the core LK engine, even if the core engine is compiled utilizing a Unicode string class.
+
+\subsection{Basic Organization}
+
+The examples in this manual show how to construct an LK extension in C or C++.  First, the \texttt{lk\_invoke.h} header file must be included in the C source file.  This defines several functions and macros to assist writing functions that can be dynamically loaded by LK.  In the very simple example extension below, a single function is defined that returns a constant value, the speed of light.  
+
+\begin{verbatim}
+#include <lk_invoke.h>
+
+LK_FUNCTION( speed_of_light )
+{
+   LK_DOCUMENT( "speed_of_light", "Returns the speed of light in (m/s).", "(none):number" );
+
+   lk_return_number( 299792458 );
+}
+
+LK_BEGIN_EXTENSION()
+  speed_of_light
+LK_END_EXTENSION()
+\end{verbatim}
+
+To define a new function, use the \texttt{LK\_FUNCTION( name )} macro, called with the name of the function.  This macro expands to the C code \texttt{void name( struct \_\_lk\_invoke\_t *lk )}.
+
+The first line of any extension function must be the documentation specifier, defined by the macro \texttt{LK\_DOCUMENT( name, description, signature )}.  This macro takes three arguments: the name of the function by which LK will refer to it, a text description of what it does, and a \emph{signature} that shows the proper parameters and return value.  For functions that may take multiple forms (i.e. different behavior and signatures), the \texttt{LK\_DOCUMENT2(...)} and \texttt{LK\_DOCUMENT3(...)} macros exist.  These macros take multiple descriptions and signatures, and are fully explained in the \texttt{lk\_invoke.h} header file.
+
+To make the functions visible to the LK engine, they must be listed between the \texttt{LK\_BEGIN\_EXTENSION()} and \texttt{LK\_END\_EXTENSION()} macros.  Otherwise, the functions will not be properly exported from the dynamic library.  These macros may only appear once within the source code of an extension library.
+
+
+\subsection{Working with Variables}
+
+The extension API defines several macros for easily working with function arguments and return values.  A variable is referenced by the opaque pointer type \texttt{lk\_var\_t}, and is passed as an argument to the various functions to retrieve and set values.  The \texttt{sum} example below shows how to work with function arguments and return values explicitly, as well as how to signal an error if necessary.
+
+\begin{verbatim}
+LK_FUNCTION( sum )
+{
+   LK_DOCUMENT( "sum", "Sums up all the parameters passed.", "(...):number" );
+
+   double val = 0;
+   int i;
+   int count = lk_arg_count();
+   if (count < 1)
+   {
+      lk_error("sum() must be provided more than zero arguments");
+      return;
+   }
+
+   for (i=0;i<count;i++)
+   {
+      lk_var_t x = lk_arg( i );
+      val = val + lk_as_number( x );
+   }
+
+   lk_var_t ret = lk_result();
+   lk_set_number( ret, val );
+}
+\end{verbatim}
+
+The extension API also provides facilities for working with arrays and tables.  In the example below, the array passed in is converted to a table with named indices.
+
+\begin{verbatim}
+LK_FUNCTION( tabulate )
+{
+   LK_DOCUMENT( "tabulate", "Converts an array to a table.", "(array):table");
+	
+   lk_var_t arr, ret;
+   int len, i;
+   char key[64];
+	
+   if (lk_arg_count() != 1
+      || lk_type( lk_arg(0) ) != LK_ARRAY)
+   {
+      lk_error("tabulate() requires one array parameter");
+      return;
+   }
+	
+   ret = lk_result();
+   lk_make_table(ret);
+	
+   arr = lk_arg(0);
+   len = lk_length( arr );
+
+   for (i=0;i<len;i++)
+   {
+      sprintf(key, "item%d", i);
+		
+      lk_var_t item = lk_index(arr, i);
+      int ty = lk_type(item);
+      switch(ty)
+      {
+      case LK_NUMBER:
+         lk_table_set_number( ret, key, lk_as_number( item ) );
+         break;
+      case LK_STRING:
+         lk_table_set_string( ret, key, lk_as_string( item ) );
+         break;
+			
+      case LK_ARRAY:
+      case LK_TABLE:
+         lk_error("arrays and tables not currently copied. exercise for the user!");
+         return;
+      }
+   }		
+}
+\end{verbatim}
+
+Running the following LK script code after loading a compiled extension with the \texttt{tabulate()} function above shows that the array has been converted to a table with items \texttt{item0}, \texttt{item1}, and so on.
+
+\begin{verbatim}
+arr = [ 1, 5, 'h3llo', '213', 451.4, -1 ];
+x = tabulate(arr);
+outln(x);
+\end{verbatim}
+
+Output:
+\begin{verbatim}
+{ item2=h3llo item3=213 item0=1 item1=5 item4=451.4 item5=-1 }
+\end{verbatim}
+
+
+For additional variable manipulation macros, refer to the \texttt{lk\_invoke.h} header file.  Additional advanced facilities not documented in this manual are also available for implementing callback-type functions and object referencing.
+
+\subsection{Compiling and Loading}
+
+Using the MinGW compiler toolchain on Windows, it is very straightforward to create an LK extension library.  Simply issue the command below at the Windows command prompt (\texttt{cmd.exe} from Start/Run).  These instructions assume that you are using a 32-bit version of \texttt{gcc} and the LK engine that you are loading the module from is also 32-bit.
+
+\begin{verbatim}
+c:\> gcc -shared -o testextension.dll testextension.c
+\end{verbatim}
+
+To load this extension at runtime into a LK script, use the standard library function \texttt{load\_extension()}, per below.  If the extension loads successfully, any of the functions defined and exported in the extension can be invoked just like any other built-in or user-defined LK function.
+
+\begin{verbatim}
+ok = load_extension( "c:/testextension.dll" );
+if (!ok) {
+   // failed to load extension
+   exit;
+}
+c = speed_of_light();
+\end{verbatim}
+
+The dynamic extension library will be unloaded when the script finishes.
+
+
+
+\section{Standard Library Reference}
+
+The standard library documented here outlines built-in functions that are likely to be available in any implementation of the LK scripting language.  The input/output functions referenced in this manual (\texttt{in(), out(), outln()}) are not part of the standard library because the LK host environment defines how these functions are manifested.  It is assumed, however, that most host environments will include these ``standard'' I/O functions as well.
+
+\input{lk_basic.tex}
+
+\input{lk_sysio.tex}
+
+\input{lk_str.tex}
+
+\input{lk_math.tex}
+
+\end{document}

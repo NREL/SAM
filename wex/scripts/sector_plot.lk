@@ -1,0 +1,42 @@
+
+
+sectors = [ 
+	[ 17, "Rotor" ],
+	[ 41, "Nacelle" ],
+	[ 13, "Tower" ],
+	[  2, "Development" ],
+	[  1, "Engineering management" ],
+	[  3, "Foundation" ],
+	[  3, "Site access and staging" ],
+	[  2, "Assembly and installation" ],
+	[  9, "Electric infrastracture" ],
+	[  6, "Contingency" ],
+	[  3, "Construction finance" ] ];
+	
+inner = [
+	[ 71, 'Turbine\n71 %' ],
+	[ 20, 'Balance\nof System\n20 %' ],
+	[  9, 'Financial\n9 %' ] ];
+	
+	
+colors = [ 
+	[ 80, 98, 40 ],
+	[ 137, 169, 70 ],
+	[ 199, 216, 163 ],
+	[ 130, 201, 253 ],
+	[ 110, 165, 226 ],
+	[ 85, 111, 208 ],
+	[ 38, 115, 207 ],
+	[ 27, 68, 113 ],
+	[ 14, 42, 77 ],
+	[112, 48, 160 ],
+	[  71, 36, 105 ] ];
+sector( sectors ,  inner, {suffix=' %', colors=colors, border=0});
+plotopt( {showaxes=false, border=0, pdffontface='ComputerModernSerif'});
+plotout( 'sectordemo.pdf' );
+
+/*
+	sec->AddInnerSector( 71, "Turbine\n71 %" );
+	sec->AddInnerSector( 20, "Balance\nof System\n20 %" );
+	sec->AddInnerSector(  9, "Financial\n9 %" );
+	*/

@@ -1,0 +1,401 @@
+
+// ----------- gaussn test
+function size( A )
+{
+	nr = #A;
+	nc = 0;
+	for( i=0;i<nr;i++ )
+	{
+		nc0 = #A[i];
+		if ( nc0 > nc )
+			nc = nc0;
+	}
+	
+	return [ nr, nc ];
+}
+
+function gaussn( A, B )
+{
+	Asz = size(A);
+	Bsz = size(B);
+	
+	if ( Asz[0] != Asz[1] )
+		return 3;
+	if ( Asz[0] != Bsz[0]  )
+		return 4;
+	
+	NN = to_int(Asz[0]);
+	NB = to_int(Bsz[1]);
+	
+	for( K=0;K<NN-1;K++)
+	{
+		KP1=K+1;
+		BIG = abs( A[K][K] ); 
+		if ( BIG < 1.0e-05)
+		{
+			IBIG=K;                                                                  
+
+			for( I=KP1; I < NN; I++ )
+			{
+				if( abs( A[I][K] ) <= BIG )
+					continue;
+					
+				BIG = fabs( A[I][K] );
+				IBIG = I;
+			}
+
+			if( BIG <= 0. )
+				return 2;
+
+			if( IBIG != K )
+			{
+				for(J=K;J<NN;J++)
+				{
+					TERM = A[K][J];
+					A[K][J] = A[IBIG][J];
+					A[IBIG][J] = TERM;
+				}
+				
+				for( N=0;N<NB;N++)
+				{
+					TERM = B[K][N];
+					B[K][N] = B[IBIG][N];
+					B[IBIG][N] = TERM;
+				}
+			}
+			
+		}
+
+		for( I=KP1;I<NN;I++ )                                                            
+		{
+			TERM = A[I][K]/A[K][K];
+
+			for (J=KP1;J<NN;J++)                                           
+				A[I][J] = A[I][J]-A[K][J]*TERM;                                 
+
+			for( N=0;N<NB;N++)
+				B[I][N] = B[I][N]-B[K][N]*TERM;
+		}
+	}
+
+	if( A[NN-1][NN-1] != 0.0 )       
+	{
+		for( N=0;N<NB;N++ )
+		{
+			for ( I=NN-1; I>=0; I-- )
+			{
+				FSum = B[I][N];
+				
+				for (J=I+1;J<NN;J++)
+					FSum -= A[I][J]*B[J][N];
+				
+				B[I][N] = FSum/A[I][I];
+			}		
+		}
+		return 0;
+	}
+	else
+		return 1;
+}
+
+function new_matrix( nr, nc )
+{
+	M[nr-1] = null;
+	for( i=0;i<nr;i++ )
+	{
+		M[i][nc-1] = null;
+		for( j=0;j<nc;j++ )
+			M[i][j] = rand();
+	}
+			
+	return M;
+}
+
+function gaussn_test1()
+{
+	A = new_matrix(5,5);
+	B = new_matrix(5,1);	
+	
+	A[0][0] = 17;
+	A[0][1] = 24;
+	A[0][2] = 1;
+	A[0][3] = 8;
+	A[0][4] = 15;
+	
+	A[1][0] = 23;
+	A[1][1] = 5;
+	A[1][2] = 7;
+	A[1][3] = 14;
+    A[1][4] = 16;
+	
+	A[2][0] = 4;
+	A[2][1] = 6;
+	A[2][2] = 13;
+	A[2][3] = 20;
+	A[2][4] = 22;
+	
+	A[3][0] = 10;
+	A[3][1] = 12;
+	A[3][2] = 19;
+	A[3][3] = 21;
+	A[3][4] = 3;
+	
+	A[4][0] = 11;
+	A[4][1] = 18;
+	A[4][2] = 25;
+	A[4][3] = 2;
+	A[4][4] = 9;
+	
+	B[0][0] = 1;
+	B[1][0] = 4;
+	B[2][0] = 5;
+	B[3][0] = 12;
+	B[4][0] = 5;
+	
+	outln("A=\n");
+	for( i=0;i<5;i++ )
+	{
+		s = '';
+		for( j=0;j<5;j++ )
+			s += A[i][j] + ' ';
+			
+		outln(s);
+	}
+	
+	
+	outln("\nB=");
+	for( i=0;i<5;i++ )
+		outln( B[i][0] );
+		
+		
+	outln("\nsolving Ax=B");
+	ierr = gaussn( A, B );
+	outln("solve code=" + ierr + "\n\nx=");
+	
+	for( i=0;i<5;i++ )
+		outln( B[i][0] );
+	
+	return 0;
+}
+
+
+function gaussn_test2()
+{
+
+	A = [	[     1,     4,     2,     5 ],
+			[     4,    59,     5,     1 ],
+			[    49,     5,     2,    96 ],
+			[    49,     3,     2,     4 ] ];
+			
+			
+	B = [	[ 1 ],
+			[ 2 ],
+			[ 3 ],
+			[ 4 ] ];
+		
+	ierr = gaussn( A, B );
+	
+	outln( "result should be:\n"
+		+ "   0.061976445504382\n"
+		+ "  -0.014577962807240\n"
+		+ "   0.524549335318418\n"
+		+ "  -0.010552652982451\n" );
+
+
+	for( i=0;i<4;i++ )
+		outln( B[i][0] );
+}
+
+function gaussn_test3()
+{
+	const sz = 10;
+	outln('creating random matrices size ' + sz );
+	A = new_matrix(sz,sz);
+	B = new_matrix(sz,1);
+	
+	outln("solving " + sz + " x " + sz + "...");
+	ierr = gaussn(A,B);
+	outln("solve code=" + ierr );
+}
+
+
+gaussn_test1();
+gaussn_test2();
+gaussn_test3();
+
+// ----------- fibonacci test
+function fibR(n)
+{
+    if (n < 2) return n;
+    return (fibR(n-2) + fibR(n-1));
+}
+
+function fibI(_n)
+{
+    n = _n;
+    last = 0;
+    cur = 1;
+    n = n - 1;
+    while(n)
+    {
+        n--;
+        tmp = cur;
+        cur = last + cur;
+        last = tmp;
+    }
+    return cur;
+}
+
+const N = 15;
+outln("fib: " + fibR(N)+ " = " + fibI(N));
+
+
+
+// classes test
+make_square = define(side)
+{
+   obj.side = side;
+   obj.area = define() { return this.side*this.side; };  
+   obj.perim = define() { return 4*this.side; };
+   obj.scale_side = define(factor)
+   {
+      this.side = this.side * factor;
+      return this.side;
+   };
+  
+   return obj;
+};
+len = 100;
+a[len-1]={};
+for( i=0;i<len;i++)
+	a[i] = make_square(i+1);
+
+outln( #a );
+Sum = 0;
+for( i=0;i<#a;i++ )
+	Sum += a[i]->area();
+
+outln( Sum );
+
+
+// random tests
+
+swi = 3;
+//outln( ? swi [ 1, 2, 3, 4, 5, 6, 7 ] );
+if ( swi == 0 ) x = 1;
+elseif ( swi == 1 ) x = 2;
+elseif ( swi == 2 ) x = 3;
+elseif ( swi == 3 ) x = 4;
+elseif ( swi == 4 ) x = 5;
+elseif ( swi == 5 ) x = 6;
+elseif ( swi == 6 ) x = 7;
+outln(x);
+
+
+function foo(a,b,c) {
+if ( a < b ) return [a,b,c];
+else return {'a'=a, 'b'=b, 'c'=c };
+}
+
+X = foo(1,2,3);
+Y = foo(3,2,1);
+outln( X );
+outln( Y );
+
+a = null;
+a = 1;
+a++++;
+a----;
+
+mkarray = define(n) { a[n-1] = null; return a; };
+c = a = b = mkarray(9);
+outln(123 + 'hello', a, b, c);
+
+
+a = 10;
+if ( a < 11 ) {
+	c =2;
+	outln( 4 );
+}
+
+for( i=0;i<2;i++ )
+{
+	outln("hello LK " + i );
+}
+
+a = 1;
+a++++;
+a----;
+a=b=c=10.54;
+
+
+sq[0] = make_square(2);
+outln( sq[0]->area(10) );
+outln('hello, lkvm!');
+
+const PI = 3.1415926;
+
+foo1 = define(a, b ) { return PI*a/b;  };
+
+a = 10;
+foo1( a, 481.4 );
+
+sq[1] = make_square(4);
+sq[2] = make_square(5);
+sq[3] = make_square(6);
+
+outln( sq[0].label ); // prints "Square"
+outln( sq[1].perim ); // prints <function>
+outln( sq[1].side );  // prints 4
+for (i=0;i<#sq;i++)
+  outln("sq " + i + " area: " + sq[i]->area() + " perim: " + sq[i]->perim());
+
+
+outln("new side: " + sq[0]->scale_side(3));
+outln("area: " + sq[0]->area());
+outln("new side: " + sq[0]->scale_side(1/3));
+outln("area: " + sq[0]->area());
+outln("exitint program");
+
+
+//sq[0] = 2;
+make_square(6.43);
+A = sq[0]->area(958);
+
+foo(4.824,4,5);
+foo2 = define(a, b, d ) { return a/b+d; };
+dzy = foo2(2, 4+1, 5);
+fookls = define(a, b, c) {
+
+	x = {};
+	x.make_square = define( x, y ) {
+		return this.bb + x * y;
+	};
+	x.bb = __args[1];
+	x.z = 2;
+	return x;
+};
+
+//result = gammaln( pi );
+
+d = {};
+x = [ 1, 2, [3, 4] , { 'b'=2, 'b'=3 }];
+y = { 'a'=2, 'b'=3 };
+z = { 'a'=2, 'b'=3 };
+z[1] = [5];
+function meta() {
+return define(c,d) { return -1/(c*d); };
+}
+swi = z[1][0]-3;
+a  = ? swi[ 1,6,4,3 ];
+outln('switch stmt z[1][0] = ' + a );
+c=3;
+i=0;
+while( i < 10 )
+{
+	c=c+3;
+	i++;
+}
+
+for(i=0;i<10;i++)
+	c = c + 3;

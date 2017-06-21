@@ -1,0 +1,402 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\ssc\cmod_6parsolve.cpp" />
+    <ClCompile Include="..\ssc\cmod_annualoutput.cpp" />
+    <ClCompile Include="..\ssc\cmod_battery.cpp" />
+    <ClCompile Include="..\ssc\cmod_battwatts.cpp" />
+    <ClCompile Include="..\ssc\cmod_belpe.cpp" />
+    <ClCompile Include="..\ssc\cmod_biomass.cpp" />
+    <ClCompile Include="..\ssc\cmod_cashloan.cpp" />
+    <ClCompile Include="..\ssc\cmod_cb_construction_financing.cpp" />
+    <ClCompile Include="..\ssc\cmod_cb_empirical_hce_heat_loss.cpp" />
+    <ClCompile Include="..\ssc\cmod_cb_mspt_system_costs.cpp" />
+    <ClCompile Include="..\ssc\cmod_inv_cec_cg.cpp" />
+    <ClCompile Include="..\ssc\cmod_dsg_flux_preprocess.cpp" />
+    <ClCompile Include="..\ssc\cmod_equpartflip.cpp" />
+    <ClCompile Include="..\ssc\cmod_fossilgen.cpp" />
+    <ClCompile Include="..\ssc\cmod_generic_system.cpp" />
+    <ClCompile Include="..\ssc\cmod_geothermal.cpp" />
+    <ClCompile Include="..\ssc\cmod_hcpv.cpp" />
+    <ClCompile Include="..\ssc\cmod_iec61853par.cpp" />
+    <ClCompile Include="..\ssc\cmod_iph_to_lcoefcr.cpp" />
+    <ClCompile Include="..\ssc\cmod_ippppa.cpp" />
+    <ClCompile Include="..\ssc\cmod_irradproc.cpp" />
+    <ClCompile Include="..\ssc\cmod_iscc_design_point.cpp" />
+    <ClCompile Include="..\ssc\cmod_layoutarea.cpp" />
+    <ClCompile Include="..\ssc\cmod_levpartflip.cpp" />
+    <ClCompile Include="..\ssc\cmod_linear_fresnel_dsg_iph.cpp" />
+    <ClCompile Include="..\ssc\cmod_poacalib.cpp" />
+    <ClCompile Include="..\ssc\cmod_pv6parmod.cpp" />
+    <ClCompile Include="..\ssc\cmod_pvsamv1.cpp" />
+    <ClCompile Include="..\ssc\cmod_pvsandiainv.cpp" />
+    <ClCompile Include="..\ssc\cmod_pvwattsv1_poa.cpp" />
+    <ClCompile Include="..\ssc\cmod_pvwattsv1_1ts.cpp" />
+    <ClCompile Include="..\ssc\cmod_pvwattsv0.cpp" />
+    <ClCompile Include="..\ssc\cmod_pvwattsv1.cpp" />
+    <ClCompile Include="..\ssc\cmod_pvwattsv5.cpp" />
+    <ClCompile Include="..\ssc\cmod_pv_get_shade_loss_mpp.cpp" />
+    <ClCompile Include="..\ssc\cmod_saleleaseback.cpp" />
+    <ClCompile Include="..\ssc\cmod_sco2_air_cooler.cpp" />
+    <ClCompile Include="..\ssc\cmod_sco2_csp_system.cpp" />
+    <ClCompile Include="..\ssc\cmod_sco2_csp_ud_pc_tables.cpp" />
+    <ClCompile Include="..\ssc\cmod_sco2_design_cycle.cpp" />
+    <ClCompile Include="..\ssc\cmod_sco2_design_point.cpp" />
+    <ClCompile Include="..\ssc\cmod_singlediode.cpp" />
+    <ClCompile Include="..\ssc\cmod_singleowner.cpp" />
+    <ClCompile Include="..\ssc\cmod_snowmodel.cpp" />
+    <ClCompile Include="..\ssc\cmod_solarpilot.cpp" />
+    <ClCompile Include="..\ssc\cmod_swh.cpp" />
+    <ClCompile Include="..\ssc\cmod_tcsdirect_steam.cpp" />
+    <ClCompile Include="..\ssc\cmod_tcsdish.cpp" />
+    <ClCompile Include="..\ssc\cmod_tcsgeneric_solar.cpp" />
+    <ClCompile Include="..\ssc\cmod_tcsiscc.cpp" />
+    <ClCompile Include="..\ssc\cmod_tcslinear_fresnel.cpp" />
+    <ClCompile Include="..\ssc\cmod_tcsmolten_salt.cpp" />
+    <ClCompile Include="..\ssc\cmod_tcsmslf.cpp" />
+    <ClCompile Include="..\ssc\cmod_tcstrough_empirical.cpp" />
+    <ClCompile Include="..\ssc\cmod_tcstrough_physical.cpp" />
+    <ClCompile Include="..\ssc\cmod_tcstrough_physical_csp_solver.cpp" />
+    <ClCompile Include="..\ssc\cmod_thirdpartyownership.cpp" />
+    <ClCompile Include="..\ssc\cmod_timeseq.cpp" />
+    <ClCompile Include="..\ssc\cmod_trough_physical_iph.cpp" />
+    <ClCompile Include="..\ssc\cmod_ui_tes_calcs.cpp" />
+    <ClCompile Include="..\ssc\cmod_user_htf_comparison.cpp" />
+    <ClCompile Include="..\ssc\cmod_utilityrate.cpp" />
+    <ClCompile Include="..\ssc\cmod_utilityrate2.cpp" />
+    <ClCompile Include="..\ssc\cmod_utilityrate3.cpp" />
+    <ClCompile Include="..\ssc\cmod_utilityrate4.cpp" />
+    <ClCompile Include="..\ssc\cmod_utilityrate5.cpp" />
+    <ClCompile Include="..\ssc\cmod_wfcheck.cpp" />
+    <ClCompile Include="..\ssc\cmod_wfcsv.cpp" />
+    <ClCompile Include="..\ssc\cmod_wfreader.cpp" />
+    <ClCompile Include="..\ssc\cmod_windbos.cpp" />
+    <ClCompile Include="..\ssc\cmod_windfile.cpp" />
+    <ClCompile Include="..\ssc\cmod_windpower.cpp" />
+    <ClCompile Include="..\ssc\cmod_lcoefcr.cpp" />
+    <ClCompile Include="..\ssc\cmod_wind_obos.cpp" />
+    <ClCompile Include="..\ssc\common_financial.cpp" />
+    <ClCompile Include="..\ssc\core.cpp" />
+    <ClCompile Include="..\ssc\csp_common.cpp" />
+    <ClCompile Include="..\ssc\sscapi.cpp" />
+    <ClCompile Include="..\ssc\tckernel.cpp" />
+    <ClCompile Include="..\ssc\vartab.cpp" />
+    <ClCompile Include="..\ssc\common.cpp" />
+    <ClCompile Include="..\ssc\vbapi.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\ssc\cmod_battery.h" />
+    <ClInclude Include="..\ssc\common_financial.h" />
+    <ClInclude Include="..\ssc\core.h" />
+    <ClInclude Include="..\ssc\common.h" />
+    <ClInclude Include="..\ssc\csp_common.h" />
+    <ClInclude Include="..\ssc\sscapi.h" />
+    <ClInclude Include="..\ssc\tckernel.h" />
+    <ClInclude Include="..\ssc\vartab.h" />
+    <ClInclude Include="..\ssc\vbapi.h" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{46D1EE84-840B-4325-910A-BC205A0D4C08}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>ssc</RootNamespace>
+    <ProjectName>ssc</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>NotSet</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>NotSet</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>false</WholeProgramOptimization>
+    <CharacterSet>NotSet</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>false</WholeProgramOptimization>
+    <CharacterSet>NotSet</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>target\</OutDir>
+    <IntDir>$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <TargetName>ssc32d</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>target\</OutDir>
+    <IntDir>$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <TargetName>ssc32d</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <TargetName>ssc</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <TargetName>ssc</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <IntDir>$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <IntDir>$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <TargetName>ssc</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <TargetName>ssc</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug32|Win32'">
+    <OutDir>target\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug32|Win32'">
+    <IntDir>$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug32|Win32'">
+    <TargetName>ssc32d</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release32|Win32'">
+    <OutDir>target\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release32|Win32'">
+    <IntDir>$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release32|Win32'">
+    <TargetName>ssc32</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release32|x64'">
+    <OutDir>target\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release32|x64'">
+    <IntDir>$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release32|x64'">
+    <TargetName>ssc64</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug32|x64'">
+    <OutDir>target\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug32|x64'">
+    <IntDir>$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug32|x64'">
+    <TargetName>ssc64d</TargetName>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>__32BIT__;__WIN__;WIN32;_DEBUG;_CONSOLE</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>__32BIT__;__WIN__;WIN32;_DEBUG;_CONSOLE</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level4</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>__DLL__;__32BIT__;__WINDOWS__;__VISUALC__;_CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
+      <WholeProgramOptimization>false</WholeProgramOptimization>
+      <AdditionalIncludeDirectories>$(SolutionDir)\..\shared;$(SolutionDir)\..\tcs;$(SolutionDir)\..\solarpilot;$(SolutionDir)\..\ssc\shared;$(SolutionDir)\..\ssc\tcs;$(SolutionDir)\..\ssc\solarpilot;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <LinkTimeCodeGeneration>Default</LinkTimeCodeGeneration>
+      <AdditionalLibraryDirectories>$(SolutionDir)\..\tcs\$(Platform)\$(Configuration);$(SolutionDir)\$(Platform)\$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>lpsolve.lib;solarpilot.lib;nlopt.lib;tcs.lib;shared.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <ProgramDatabaseFile>$(OutDir)\$(TargetName).pdb</ProgramDatabaseFile>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy $(SSCDIR)\build_vc2013\$(Platform)\$(Configuration)\ssc.dll $(SAMNTDIR)\deploy\$(Platform)
+copy $(SSCDIR)\build_vc2013\$(Platform)\$(Configuration)\ssc.pdb $(SAMNTDIR)\deploy\$(Platform)\
+
+robocopy $(WEXDIR)\build_vc2013\libcurl_ssl_$(Platform)\bin $(SSCDIR)\build_vc2013\$(Platform)\$(Configuration)\ /E /XC /XN /XO /XX /NP /NS /NJS /NJH /NC  
+
+if %ERRORLEVEL% GEQ 8 (
+exit) else (
+exit 0    
+)</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>__DLL__;__64BIT__;__WINDOWS__;__VISUALC__;_CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(SolutionDir)\..\shared;$(SolutionDir)\..\tcs;$(SolutionDir)\..\solarpilot;$(SolutionDir)\..\ssc\shared;$(SolutionDir)\..\ssc\tcs;$(SolutionDir)\..\ssc\solarpilot;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>lpsolve.lib;solarpilot.lib;nlopt.lib;tcs.lib;shared.lib;shared.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)\$(Platform)\$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <ProgramDatabaseFile>$(OutDir)\$(TargetName).pdb</ProgramDatabaseFile>
+      <StackReserveSize>
+      </StackReserveSize>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy $(SSCDIR)\build_vc2013\$(Platform)\$(Configuration)\ssc.dll $(SAMNTDIR)\deploy\$(Platform)
+copy $(SSCDIR)\build_vc2013\$(Platform)\$(Configuration)\ssc.pdb $(SAMNTDIR)\deploy\$(Platform)\
+
+robocopy $(WEXDIR)\build_vc2013\libcurl_ssl_$(Platform)\bin $(SSCDIR)\build_vc2013\$(Platform)\$(Configuration)\ /E /XC /XN /XO /XX /NP /NS /NJS /NJH /NC  
+
+if %ERRORLEVEL% GEQ 8 (
+exit) else (
+exit 0    
+)</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>__DLL__;__32BIT__;__WINDOWS__;_DEBUG;__VISUALC__;_CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(SolutionDir)\..\shared;$(SolutionDir)\..\tcs;$(SolutionDir)\..\solarpilot;$(SolutionDir)\..\ssc\shared;$(SolutionDir)\..\ssc\tcs;$(SolutionDir)\..\ssc\solarpilot;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>$(SolutionDir)\..\tcs\$(Platform)\$(Configuration);$(SolutionDir)\$(Platform)\$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>lpsolve.lib;solarpilot.lib;nlopt.lib;tcs.lib;shared.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <ProgramDatabaseFile>$(OutDir)\$(TargetName).pdb</ProgramDatabaseFile>
+    </Link>
+    <PostBuildEvent>
+      <Command>robocopy $(WEXDIR)\build_vc2013\libcurl_ssl_$(Platform)\bin $(SSCDIR)\build_vc2013\$(Platform)\$(Configuration)\ /E /XC /XN /XO /XX /NP /NS /NJS /NJH /NC  
+
+if %ERRORLEVEL% GEQ 8 (
+exit) else (
+exit 0    
+)</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>__DLL__;__64BIT__;__WINDOWS__;_DEBUG;__VISUALC__;_CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(SolutionDir)\..\shared;$(SolutionDir)\..\tcs;$(SolutionDir)\..\solarpilot;$(SolutionDir)\..\ssc\shared;$(SolutionDir)\..\ssc\tcs;$(SolutionDir)\..\ssc\solarpilot;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>$(SolutionDir)\$(Platform)\$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>lpsolve.lib;solarpilot.lib;nlopt.lib;tcs.lib;shared.lib;shared.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <ProgramDatabaseFile>$(OutDir)\$(TargetName).pdb</ProgramDatabaseFile>
+      <StackReserveSize>
+      </StackReserveSize>
+    </Link>
+    <PostBuildEvent>
+      <Command>robocopy $(WEXDIR)\build_vc2013\libcurl_ssl_$(Platform)\bin $(SSCDIR)\build_vc2013\$(Platform)\$(Configuration)\ /E /XC /XN /XO /XX /NP /NS /NJS /NJH /NC  
+
+if %ERRORLEVEL% GEQ 8 (
+exit) else (
+exit 0    
+)</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug32|Win32'">
+    <ClCompile>
+      <PreprocessorDefinitions>__32BIT__;__WINDOWS__;__DEBUG__;_DEBUG</PreprocessorDefinitions>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release32|Win32'">
+    <ClCompile>
+      <PreprocessorDefinitions>__32BIT__;__WINDOWS__</PreprocessorDefinitions>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug32|x64'">
+    <ClCompile>
+      <PreprocessorDefinitions>__64BIT__;__WINDOWS__;__DEBUG__;_DEBUG</PreprocessorDefinitions>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release32|x64'">
+    <ClCompile>
+      <PreprocessorDefinitions>__64BIT__;__WINDOWS__</PreprocessorDefinitions>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

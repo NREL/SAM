@@ -1,16 +1,45 @@
-# download wxWidgets 3.1,0 to ~
-bunzip2 -d wxWidgets-3.1.0.tar.bz2
-tar xvzf wxWidgets-3.1.0.tar
-cd wxWidgets-3.1.0
-# edit wxconfigure.osx64 script below to use your home directory rather than
-# ‘stevenjanzou’
-# use the location of your edited wxconfigure.osx64
-cat ~/Public/Projects/wxconfigure.osx64 | bash
-make -j6
-make install
-mkdir ~/local/bin
-ln -s ~/local/wx-3.1.0/bin/wx-config ~/local/bin/wx-config-3
-# note, symbolic link requires absolute path, eg, if ~ is /home/projects
-# ln -s /home/projects/local/wx-3.0.2/bin/wx-config
-# /home/projects/local/bin/wx-config-3
-export PATH=$PATH:~/local/bin/
+To build:
+
+
+TODO - update wxWidgets installation on macOS
+1.Install wxWidgets.  
+SAM requires a certain configuration of wxWidgets, and certain symbolic links to be defined.  You can easily setup wxWidgets by running the "setup_wxWidgets.sh" script as:
+
+INSTALL_PATH=/path/to/install
+VERSION = 3.1.0
+./setup_wxWidgets.sh $INSTALL_PATH $VERSION
+
+If you don't pass in the install path or version, wxWidgets will be installed to your current working directory using version 3.1.0. The version shouldn't change often and will be updated by the core SAM team.:
+
+Note, the setup script should work if there are not conflicted versions of wxWidgets installed.  If there are multiple wxWidgets installed to your machine, you will need to add additional directories to your path and to your LD_LIBRARY_PATH.  Specifically, you will need to add to your $HOME/.bashrc:
+
+a. path to the wxWidgets binary and symbolic links: 
+
+WX_PATH=$INSTALL_PATH/$VERSION
+WX_SYM=$INSTALL_PATH/wxbin
+
+export PATH=$WX_PATH/bin:$WX_PATH/include/wx-3.1/:$WX_SYM:$PATH
+b. path to wxWidgets library:
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$WX_PATH/lib
+
+Note, you'll need to either define INSTALL_PATH and VERSION in your .bashrc or type out the full directories.
+
+Additional dependancies - https://gcc.gnu.org/wiki/GFortranBinariesMacOS
+
+
+2. Build SAM.
+
+cd SAM-private/build_osx
+make
+
+3. Run SAM
+Go to the SAMnt/build_osx folder 
+	cd ../SAMnt/build_osx
+
+Open the SAM application 
+	open SAM.app
+
+4. Optionally build dmg for deployment 
+	bash ./makedmg.sh 
+
+Last build and tested on macOS 10.12.4 on 5/3/2017
