@@ -1,4 +1,11 @@
+<<<<<<< HEAD
 appicon ICON "webupd.ico"
 #define wxUSE_NO_MANIFEST 0
 #include "wx/msw/wx.rc"
 
+=======
+appicon ICON "webupd.ico"
+#define wxUSE_NO_MANIFEST 0
+#include "wx/msw/wx.rc"
+
+>>>>>>> 2c85b0ce6a18646fb532eb72a604d646517b67ae

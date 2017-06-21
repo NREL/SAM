@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 SAMVER=2017.5.15
+=======
+SAMVER=2017.1.17
+>>>>>>> 2c85b0ce6a18646fb532eb72a604d646517b67ae
 SAMVERDASH=$(subst .,-,$(SAMVER))
 SRCDIR = ../src
 VPATH = $(SRCDIR)
@@ -15,8 +19,13 @@ SSCLIB = ssc.so
 
 CC = gcc
 CXX = g++
+<<<<<<< HEAD
 CFLAGS = -g -DLK_USE_WXWIDGETS -I. -I$(SRCDIR) -I$(WEXDIR)/include -I$(LKDIR)/include -I$(SSCDIR) `wx-config-3 --cflags`
 LDFLAGS = -std=c++0x $(SSCLIB) $(LKLIB) $(WEXLIB) `wx-config-3 --libs propgrid` `wx-config-3 --libs aui` `wx-config-3 --libs stc` `wx-config-3 --libs richtext` `wx-config-3 --libs` -lm -lstdc++ -lcurl
+=======
+CFLAGS = -g -DLK_USE_WXWIDGETS -I. -I$(SRCDIR) -I$(WEXDIR)/include -I$(LKDIR)/include -I$(SSCDIR) `wx-config --cflags`
+LDFLAGS = -std=c++0x $(SSCLIB) $(LKLIB) $(WEXLIB) `wx-config --libs propgrid` `wx-config --libs aui` `wx-config --libs stc` `wx-config --libs richtext` `wx-config --libs` -lm -lstdc++ -lcurl
+>>>>>>> 2c85b0ce6a18646fb532eb72a604d646517b67ae
 CXXFLAGS=-std=c++0x $(CFLAGS)
 
 
@@ -104,8 +113,13 @@ package:
 #	strip -v ./sam.deploy/linux_64/sam.bin
 #	strip -v ./sam.deploy/linux_64/webupd.bin
 #	strip -v ./sam.deploy/linux_64/ssc.so
+<<<<<<< HEAD
 	strip -v ./sam.deploy/runtime/bin/lhs.bin
 	strip -v ./sam.deploy/runtime/bin/stepwise.bin
+=======
+#	strip -v ./sam.deploy/runtime/bin/lhs.bin
+#	strip -v ./sam.deploy/runtime/bin/stepwise.bin
+>>>>>>> 2c85b0ce6a18646fb532eb72a604d646517b67ae
 	echo "assembling archive..."
 	tar cvzf sam.deploy.tar.gz ./sam.deploy
 	make installer
@@ -115,6 +129,10 @@ installer:
 	echo "SAMVER=$(SAMVER)" >> install0
 	cat install0 install.sh sam.deploy.tar.gz > $(PKGFILE) 
 	chmod a+x $(PKGFILE)
+<<<<<<< HEAD
+=======
+	./$(PKGFILE)
+>>>>>>> 2c85b0ce6a18646fb532eb72a604d646517b67ae
 	
 DEPENDS = $(OBJECTS:.o=.d)
 

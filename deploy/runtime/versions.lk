@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /*
 
 PLEASE READ THIS FIRST!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -542,4 +543,550 @@ version_upgrade{'2015.1.30'} = define() {
 	message('Upgraded project to version 2015.1.30');
 };
 
+=======
+/*
+
+PLEASE READ THIS FIRST!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+This script controls upgrading files that were created with previous versions of SAM. This only works with .sam files, not .zsam files.
+PLEASE NOTE THAT EACH FUNCTION UPDATES A FILE ***TO*** THE VERSION NUMBER IN THE TITLE OF THE FUNCTION, FROM THE PREVIOUS VERSION.
+
+For example, if you create a file in version 2015.1.30 and open it with version 2015.4.10, ONLY THE 2015.4.10 FUNCTION WILL RUN.
+Any variables that changed between 2015.1.30 and 2015.4.10 should be changed IN THE 2015.4.10 FUNCTION.
+
+Please test your changes before you commit them! Thank you!
+
+Some more notes on how to use this:
+
+When an old project file is loaded, only variables that have the same name and data type as in the current version's configuration for
+that case are read in and can be accessed by the value() function.  For variables that no longer exist in the current version, or whose
+data types have changed, the values can be accessed using the oldvalue() function.
+
+The value() function cannot change the data type of a variable, as that is set by the current version's configuration.  
+
+To upgrade an old variable that no longer exists:
+
+	x = oldvalue('derate1');
+	value( 'loss1', 100*(1-x) );
+
+To upgrade an old variable that has a new datatype:
+
+	x = oldvalue('derate1');
+	value( 'derate1', [ x ] ); // derate is now an array to support schedules
+	
+To upgrade just the value of an old variable (same name and datatype), such as when the units have changed:
+
+	x = value('loss1');
+	value( 'loss1', 100*x ); // units changed from fraction to percent
+	
+You don't need to delete any variables.  Old variables are discarded when a project is saved, and only the currently valid values
+are saved in the project file.
+
+Some more examples:
+
+	value( 'new_variable', 23.49, "This is a new variable that will help you define special things about your system." );
+	
+	message('Dont use this financial model anymore - beware!', 'error');
+	
+	message('Overwrote your old DC/AC ratio!', 'warning');
+	
+	value( 'loss_derate', 1-value('dc_ac_ratio')*0.01, 'A necessary change to the internal units used in SAM' );
+*/
+
+
+//***********************************************************************************************************************************************************
+//CURRENT WORKING VERSION- CHANGE THIS VERSION NUMBER WHEN RELEASES ARE CREATED AND MAKE A NEW CURRENT WORKING VERSION FUNCTION
+version_upgrade{'2017.4.11'} = define() {
+	const cfg = config();
+	if (cfg.tech == 'Wind Power')
+		if (value('wind_resource_model_choice') == 0)
+			message('This version significantly updates how wind turbine power curves are corrected for air density when using a wind resource file. This will increase your annual energy estimate compared to previous versions.', 'warning');	
+};
+
+// PUBLIC VERSION
+version_upgrade{'2017.1.17'} = define() {
+	message('Upgraded project to version 2017.1.17');
+};
+
+version_upgrade{'2016.12.29'} = define() {
+	const cfg = config();
+	if (cfg.tech == 'Flat Plate PV')
+	{	
+		//transformer loss changed
+			xfmr_ll = oldvalue('transformer_loss');
+			value('transformer_load_loss',xfmr_ll,'transformer loss model updated');
+		
+		// warning about battery losses
+		if (varinfo('en_batt'))
+		{
+			if (value('en_batt') == true)
+				message('This version significantly reworks the power electronic conversion efficiencies of the battery, resulting in changes to battery losses', 'warning');
+		}
+	}
+	if (cfg.tech == 'Wind Power')
+	{
+		if (value('wind_resource_model_choice') == 0 && value('wind.turbine.radio_list_or_design') == 0)
+			message('This version fixes a bug with how wind speeds near the cut-in wind speed are treated for library turbines. This may increase your annual energy estimate slightly. Please see the release notes for more detail.', 'warning');
+	}
+	if (cfg.tech == "MSPT" || cfg.tech == "DSPT")
+	{
+		value( 'opt_algorithm', 1 ); // always set to 1 BOBYQA
+		value( 'opt_flux_penalty', 0 ); // flux penalty not used		
+		
+		message("This version eliminates the option to select the solar field optimization algorithm and uses BOBYQA in all cases. This algorithm does not require a flux over-design penalty. This may change your results when running the solar field optimization routine.", 'warning');	
+		
+		if( value('is_dispatch') == true )
+		{
+			message("The dispatch optimization algorithm was modified in this version to include additional parasitics, weighting functions for dispatch profile variability, and other enhancements. This may change your results when simulating with dispatch optimization enabled.", 'warning');
+		}
+	}
+	if (cfg.tech == "Generic CSP System")
+	{
+		message("The Generic CSP System model was restructured and now uses different regression equations for thermal losses, power block conversion efficiency, and parasitic consumption. This change invalidates previous model configurations and requires revised input values. For more information on generating regression coefficients, view help or visit the SAM website.",'error');
+	}
+};
+
+
+version_upgrade{'2016.10.25'} = define() {
+	const cfg = config();
+	if (cfg.tech == 'Flat Plate PV')
+	{	
+		//degradation bug
+		if (value('subarray2_enable') == 1 || value('subarray3_enable') == 1 || value('subarray4_enable') == 1)
+		{
+			degradation = value('dc_degradation');
+			if (typeof(degradation) == 'array' || degradation == 0)
+				message('This version fixes a bug with module degradation when using multiple subarrays. This will change your results. Please see the release notes for more detail.', 'warning');
+		}
+	}
+	if (cfg.tech == 'Wind Power')
+	{
+		//added new variable for Weibull distribution
+		value('weibull_k_factor', oldvalue('wind_characteristics_weibullK'), "Variable renamed");
+		value('weibull_wind_speed', oldvalue('wind_characteristics_class'), "Variable renamed");
+		//Weibull distribution bug
+		if (value('wind_resource_model_choice') == 1) //Weibull distribution
+		{
+			adj = value('adjust');
+			if (adj.constant != 0 || adj.en_hourly || adj.en_periods)
+				message('This version fixes a bug with availability and curtailment losses in conjunction with the Weibull resource model. This will change your results. Please see the release notes for more detail.', 'warning');
+		}
+	}
+	if (cfg.tech == 'Solar Water Heating')
+	{
+		// changed output units to kW, removed output
+		message('Changed outputs for Q_transmitted, Q_useful, Q_deliv, Q_loss, Q_aux, Q_auxonly, P_pump, energy (Q_saved) from W to kW.  Removed duplicated Q_saved variable, which is "System power generated"', 'notice');
+	}		
+	return;
+};
+
+version_upgrade{'2016.7.21'} = define() {
+	const cfg = config();
+	if ((cfg.fin == 'Residential' || cfg.fin == 'Commercial'))
+		if (oldvalue('ur_metering_option') == 3) //two meters with all generation sold and all load purchased
+			value( 'ur_metering_option', 4, 'utility rate metering options have changed order' );
+	return;
+};
+
+
+//****************************************************************************************************************************************************************
+
+// PUBLIC VERSION
+version_upgrade{'2016.3.14'} = define() {
+	message('Upgraded project to version 2016.3.14');
+};
+
+//****************************************************************************************************************************************************************
+
+version_upgrade{'2016.3.2'} = define() {
+
+	//TELL USERS IF THE ANSWERS ARE GOING TO CHANGE
+	const cfg = config();
+	if (cfg.tech == 'Flat Plate PV')
+	{	
+		message('This version fixes a bug in how AC wiring and transformer losses are applied. This may change your results slightly. Please see the release notes for more detail.', 'warning');
+		if (value('subarray1_shade_mode') == 1 || value('subarray2_shade_mode') == 1 || value('subarray3_shade_mode') == 1 || value('subarray4_shade_mode') == 1)
+			message('This version fixes a bug in the self-shading algorithm. This may change your results slightly. Please see the release notes for more detail.','warning');
+	}
+	if (cfg.tech == 'Physical Trough')
+		message('This version fixes a bug that resulted in unreasonable freeze protection parasitics. This may change your results slightly. Please see the release notes for more detail.','warning');
+	if (cfg.tech == 'Empirical Trough')
+		message('This version fixes a bug with cooling tower temperature corrections. This may change your results. Please see the release notes for more detail.','warning');
+	if (cfg.tech == 'DSPT')
+		message('This version fixes a bug with the calculation of heliostat tracking parasitics. This may change your results slightly. Please see the release notes for more detail.','warning');
+
+};
+
+//****************************************************************************************************************************************************************
+
+version_upgrade{'2016.2.26'} = define() {
+	const cfg = config();
+	if ((cfg.fin == 'Residential' || cfg.fin == 'Commercial'))
+	{
+		a = oldvalue('ur_metering_option');
+		if (a==2) // switch old hourly and monthly non net metering options.
+			a=3;
+		else if (a==3)
+			a=2;
+		value( 'ur_metering_option', a, 'utility rate metering options have changed' );
+		// update old flat rates to TOU periods- replace energy charges if energy TOU rates not enabled
+		buy = oldvalue('ur_flat_buy_rate');
+		sell = oldvalue('ur_flat_sell_rate');
+		ec_enable = oldvalue('ur_ec_enable');
+		if (buy > 0 || sell > 0)
+		{
+			if (ec_enable > 0)
+			{
+				message('Your project file had both flat and TOU energy rates. The TOU energy rates have been updated and the flat rates ignored. Please review the "Electricity Rates" page.', 'warning');
+			}
+			else // replace weekend and weekday schedules and ec_tou_mat
+			{
+				nm = oldvalue('ur_enable_net_metering');
+				if (nm>0)
+					sell=buy;
+				ec_tou_mat[0][0] = 1; // period
+				ec_tou_mat[0][1] = 1; // tier
+				ec_tou_mat[0][2] = 1e+38; // max
+				ec_tou_mat[0][3] = 0; // units (kWh)
+				ec_tou_mat[0][4] = buy; // buy
+				ec_tou_mat[0][5] = sell; // sell
+				value("ur_ec_tou_mat", ec_tou_mat, 'Utility rate input for energy charge updated');
+				for (m=0;m<12;m++)
+				{
+					for (h=0;h<24;h++)
+					{
+						sched[m][h] = 1;
+					}
+				}
+				value("ur_ec_sched_weekday", sched, 'Utility rate weekday schedule for energy charge updated');
+				value("ur_ec_sched_weekend", sched, 'Utility rate weekend schedule for energy charge updated');
+			}
+		}
+		
+	}
+};
+
+//**********************************************************************************************************************************************************
+
+version_upgrade{'2016.2.22'} = define() {
+	const cfg = config();
+	if (cfg.tech == 'Flat Plate PV')
+	{
+		for (i=1; i<5; i++)
+		{
+			pre = sprintf('subarray%d_', i);
+			x = value (pre +'shade_mode');
+			new = 1 - x; //old SAM: 0 was self-shaded, 1 was none, now: 0 is none, 1 is self-shaded (non-linear), 2 is self-shaded (linear)
+			value(pre + 'shade_mode', new, 'Self-shading options have changed order');
+		}
+	}
+};
+
+//***********************************************************************************************************************************************************
+
+version_upgrade{'2016.1.21'} = define() {
+	const cfg = config();
+	if (cfg.tech == 'Wind Power')
+	{
+		if (value('wind.turbine.radio_list_or_design') == 1)
+			if (value('wind.turbine.blade_design') == 0 || value('wind.turbine.tower_design') == 0)
+				message('The default recommendation for user-entered turbines has been updated to "Advanced" blade and tower design. Please check your Wind Turbine design page if you would like to update your inputs.', 'notice');
+	}
+	if (cfg.tech == 'Flat Plate PV')
+	{		
+		if ((cfg.fin == 'Residential' || cfg.fin == 'Commercial') && value('en_batt') == 1)
+		{
+			// battery updates
+			old_dispatch = value("batt_dispatch_choice");
+			// Added new dispatch mode, if they had manual, it's now index 3, others are the same
+			if (old_dispatch == 2)
+				value("batt_dispatch_choice",3,"Keep as manual dispatch");	
+		}	
+	}
+	
+};
+
+//***********************************************************************************************************************************************************
+
+version_upgrade{'2015.11.16'} = define() {
+	
+	const cfg = config();
+	if ( cfg.fin == 'Residential' || cfg.fin == 'Commercial' )
+	{	
+		ec_tou_row=0;
+		dc_tou_row=0;
+		dc_flat_row=0;
+		months = ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec" ];
+		// energy charge matrix inputs
+		nm = oldvalue('ur_enable_net_metering');
+		for (per=1;per<13;per++)
+		{
+			for (tier=1;tier<7;tier++)
+			{	
+				// ec tou
+				per_tier = sprintf("ur_ec_p%d_t%d_", per, tier);
+				br = oldvalue(per_tier + 'br');
+				sr = oldvalue(per_tier + 'sr');
+				ub = oldvalue(per_tier + 'ub');
+				if (nm>0)
+					sr=br;
+				
+				if (sr > 0 || br > 0 || ec_tou_row == 0) // must have one row
+				{
+					ec_tou_mat[ec_tou_row][0]=per;
+					ec_tou_mat[ec_tou_row][1]=tier;
+					ec_tou_mat[ec_tou_row][2]=ub;
+					ec_tou_mat[ec_tou_row][3]=0; // units 
+					ec_tou_mat[ec_tou_row][4]=br;
+					ec_tou_mat[ec_tou_row][5]=sr;
+					ec_tou_row++;
+				}
+				// demand tou
+				per_tier = sprintf("ur_dc_p%d_t%d_", per, tier);
+				dc = oldvalue(per_tier + 'dc');
+				ub = oldvalue(per_tier + 'ub');
+				if (dc > 0 || dc_tou_row == 0) // must have one row
+				{
+					dc_tou_mat[dc_tou_row][0]=per;
+					dc_tou_mat[dc_tou_row][1]=tier;
+					dc_tou_mat[dc_tou_row][2]=ub;
+					dc_tou_mat[dc_tou_row][3]=dc;
+					dc_tou_row++;
+				}
+				// flat demand
+				per_tier = sprintf("ur_dc_%s_t%d_", months[per-1], tier);
+				dc = oldvalue(per_tier + 'dc');
+				ub = oldvalue(per_tier + 'ub');
+				if (dc > 0 || dc_flat_row < 12) // must have one value for each month
+				{
+					dc_flat_mat[dc_flat_row][0]=per-1; // month index
+					dc_flat_mat[dc_flat_row][1]=tier;
+					dc_flat_mat[dc_flat_row][2]=ub;
+					dc_flat_mat[dc_flat_row][3]=dc;
+					dc_flat_row++;
+				}
+			}
+		}
+		value("ur_ec_tou_mat", ec_tou_mat, 'Utility rate input for electricity charge TOU rates has changed');
+		value("ur_dc_tou_mat", dc_tou_mat, 'Utility rate input for demand charge TOU rates has changed');
+		value("ur_dc_flat_mat", dc_flat_mat, 'Utility rate input for demand charge flat rates has changed');
+		message( 'Utility rate inputs have been updated to tabular values rather than individual values.  See help for more information.', 'notice' );
+	}
+};
+
+//***********************************************************************************************************************************************************
+
+version_upgrade{'2015.10.29'} = define() {
+	const cfg = config();
+	if( cfg.tech == 'Flat Plate PV' && (cfg.fin == 'Residential' || cfg.fin == 'Commercial' ) && value('en_batt') == 1)
+	{
+		x = oldvalue('batt_replacement_cost');
+		value( 'batt_replacement_cost', x[0] ); // batt_replacement_cost is now single value
+	}
+};
+
+//***********************************************************************************************************************************************************
+
+version_upgrade{'2015.9.9'} = define() {
+	
+	const cfg = config();
+	if ( cfg.fin == 'Residential' || cfg.fin == 'Commercial' )
+	{		
+		// net metering check box removed
+		nm = oldvalue('ur_enable_net_metering');
+		if (nm==1)
+			value('ur_metering_option',oldvalue('ur_excess_monthly_energy_or_dollars'), 'Utility rate metering options have changed');
+		else // non-net metering with monthly reconciliation
+			value('ur_metering_option',2, 'Utility rate metering options have changed');
+	}
+	
+	if( cfg.tech == 'MSPT' )
+	{	
+		value('piping_loss', oldvalue('Piping_loss'),"Variable Renamed");
+		value('piping_length_const', oldvalue('csp.pt.par.piping_length_const'),"Variable Renamed");
+		value('piping_length_mult', oldvalue('csp.pt.par.piping_length_mult'),"Variable Renamed");
+		value('gross_net_conversion_factor', oldvalue('csp.pt.pwrb.gross_net_conversion_factor'),"Variable Renamed");
+		value('hybrid_tou1', oldvalue('csp.pt.pwrb.hc_ctl1'),"Variable Renamed");
+		value('hybrid_tou2', oldvalue('csp.pt.pwrb.hc_ctl2'),"Variable Renamed");
+		value('hybrid_tou3', oldvalue('csp.pt.pwrb.hc_ctl3'),"Variable Renamed");
+		value('hybrid_tou4', oldvalue('csp.pt.pwrb.hc_ctl4'),"Variable Renamed");
+		value('hybrid_tou5', oldvalue('csp.pt.pwrb.hc_ctl5'),"Variable Renamed");
+		value('hybrid_tou6', oldvalue('csp.pt.pwrb.hc_ctl6'),"Variable Renamed");
+		value('hybrid_tou7', oldvalue('csp.pt.pwrb.hc_ctl7'),"Variable Renamed");
+		value('hybrid_tou8', oldvalue('csp.pt.pwrb.hc_ctl8'),"Variable Renamed");
+		value('hybrid_tou9', oldvalue('csp.pt.pwrb.hc_ctl9'),"Variable Renamed");
+	}
+	
+	//changes to the Physical Trough model
+	if( cfg.tech == 'Physical Trough' )
+	{
+		value('eta_lhv', oldvalue('csp.dtr.pwrb.boiler_lhv_eff'),"Variable Renamed");
+		value('eta_tes_htr', oldvalue('csp.dtr.tes.tank_heater_eff'),"Variable Renamed");
+		value('n_pl_inc', oldvalue('csp.dtr.pwrb.hr_pl_nlev'),"Variable Renamed");
+		value('P_ref', oldvalue('pb_rated_cap'),"Variable Renamed");
+		value('hybrid_tou1', oldvalue('csp.dtr.pwrb.hc_ctl1'),"Variable Renamed");
+		value('hybrid_tou2', oldvalue('csp.dtr.pwrb.hc_ctl2'),"Variable Renamed");
+		value('hybrid_tou3', oldvalue('csp.dtr.pwrb.hc_ctl3'),"Variable Renamed");
+		value('hybrid_tou4', oldvalue('csp.dtr.pwrb.hc_ctl4'),"Variable Renamed");
+		value('hybrid_tou5', oldvalue('csp.dtr.pwrb.hc_ctl5'),"Variable Renamed");
+		value('hybrid_tou6', oldvalue('csp.dtr.pwrb.hc_ctl6'),"Variable Renamed");
+		value('hybrid_tou7', oldvalue('csp.dtr.pwrb.hc_ctl7'),"Variable Renamed");
+		value('hybrid_tou8', oldvalue('csp.dtr.pwrb.hc_ctl8'),"Variable Renamed");
+		value('hybrid_tou9', oldvalue('csp.dtr.pwrb.hc_ctl9'),"Variable Renamed");
+		value('pressure_mode', oldvalue('csp.dtr.pwrb.pressure_mode'),"Variable Renamed");
+	}
+	
+	//changes to the molten salt linear fresnel model
+	if( cfg.tech == 'MSLF' )
+	{
+		value('hybrid_tou1', oldvalue('csp.mslf.cycle.F_wc1'),"Variable Renamed");
+		value('hybrid_tou2', oldvalue('csp.mslf.cycle.F_wc2'),"Variable Renamed");
+		value('hybrid_tou3', oldvalue('csp.mslf.cycle.F_wc3'),"Variable Renamed");
+		value('hybrid_tou4', oldvalue('csp.mslf.cycle.F_wc4'),"Variable Renamed");
+		value('hybrid_tou5', oldvalue('csp.mslf.cycle.F_wc5'),"Variable Renamed");
+		value('hybrid_tou6', oldvalue('csp.mslf.cycle.F_wc6'),"Variable Renamed");
+		value('hybrid_tou7', oldvalue('csp.mslf.cycle.F_wc7'),"Variable Renamed");
+		value('hybrid_tou8', oldvalue('csp.mslf.cycle.F_wc8'),"Variable Renamed");
+		value('hybrid_tou9', oldvalue('csp.mslf.cycle.F_wc9'),"Variable Renamed");
+		value('pressure_mode', oldvalue('csp.mslf.cycle.sliding_pres'),"Variable Renamed");
+		value('combo_condenser_type', oldvalue('csp.mslf.cycle.CT'),"Variable Renamed");
+	}	
+};
+
+//***********************************************************************************************************************************************************
+
+version_upgrade{'2015.8.17'} = define() {
+	
+	const cfg = config();
+
+	if( cfg.tech == 'DSPT' )
+	{	
+		// Tower piping length multiplier and constant addition need to be remapped
+		value('piping_length_mult',oldvalue('csp.pt.par.piping_length_const'),"Variable names for piping length constant and piping length multiplier were switched");
+		value('piping_length_add',oldvalue('csp.pt.par.piping_length_mult'),"Variable names for piping length constant and piping length multiplier were switched");
+		
+		// Emissivity used for all three receivers, not just boiler...
+		value('rec_emis',oldvalue('emis_boiler'),"The same coating emissivity is applied to the boiler, superheater, and reheater"); 
+	}
+	
+	// Add two new dispatch modes, pushed manual to index 2002
+	if( cfg.tech == 'Flat Plate PV' && (cfg.fin == 'Residential' || cfg.fin == 'Commercial' ) && value('en_batt') == 1)
+		value("batt_dispatch_choice",2, "Keep as manual dispatch");
+
+};
+
+//***********************************************************************************************************************************************************
+
+//PUBLIC VERSION
+version_upgrade{'2015.6.30'} = define() {
+	
+	// have to update adjust:factor to adjust:constant
+	adj = value('adjust');
+	adj.constant = adj.factor;
+	value('adjust', adj, 'Variable name changed from adjust:factor to adjust:constant');
+	
+	// other updates since 2015.5.27 - everyone please check.	
+	const cfg = config();
+	if ( cfg.fin == 'Residential' || cfg.fin == 'Commercial' )
+		message( 'Utility bill calculations have been updated to use monthly reconciliation for energy and demand charges.  See help for more information.', 'warning' );
+		
+	message('Upgraded project to version 2015.6.30');
+		
+};
+
+//***********************************************************************************************************************************************************
+
+version_upgrade{'2015.5.27'} = define() {
+		
+	//get the configuration
+	const cfg = config();
+	
+	// changes to the Molten Salt Power Tower model
+	if( cfg.tech == 'MSPT' )
+	{		
+		// Changed names of hot and cold tank max heat variables
+		value('hot_tank_max_heat',oldvalue('tank_max_heat'));
+		value('cold_tank_max_heat',oldvalue('csp.pt.tes.cold_heater_max_load'));
+	}
+};
+
+//***********************************************************************************************************************************************************
+
+version_upgrade{'2015.4.10'} = define() {	
+	//get the configuration
+	const cfg = config();
+		
+	//changes to the Physical Trough model
+	if( cfg.tech == 'Physical Trough' )
+	{
+		// 2015.1.30 version stored IAM coefficients as single values. 2015.4.10 version stores IAM coefficients as arrays (for each collector)
+		IAMs_1[0] = oldvalue('csp_dtr_sca_iam0_1');
+		IAMs_1[1] = oldvalue('csp_dtr_sca_iam1_1');
+		IAMs_1[2] = oldvalue('csp_dtr_sca_iam2_1');
+		
+		IAMs_2[0] = oldvalue('csp_dtr_sca_iam0_2');
+		IAMs_2[1] = oldvalue('csp_dtr_sca_iam1_2');
+		IAMs_2[2] = oldvalue('csp_dtr_sca_iam2_2');
+		
+		IAMs_3[0] = oldvalue('csp_dtr_sca_iam0_3');
+		IAMs_3[1] = oldvalue('csp_dtr_sca_iam1_3');
+		IAMs_3[2] = oldvalue('csp_dtr_sca_iam2_3');
+		
+		IAMs_4[0] = oldvalue('csp_dtr_sca_iam0_4');
+		IAMs_4[1] = oldvalue('csp_dtr_sca_iam1_4');
+		IAMs_4[2] = oldvalue('csp_dtr_sca_iam2_4');
+		
+		value('IAMs_1', IAMs_1, 'Represent IAM coefficients for Collector 1 in variable size array.');
+		value('IAMs_2', IAMs_2, 'Represent IAM coefficients for Collector 2 in variable size array.');
+		value('IAMs_3', IAMs_3, 'Represent IAM coefficients for Collector 3 in variable size array.');
+		value('IAMs_4', IAMs_4, 'Represent IAM coefficients for Collector 4 in variable size array.');
+		
+		// User defined field and storage HTF properties variable (matrix) name changed between versions
+		value('field_fl_props',oldvalue('user_defined_htf_array'));
+		value('store_fl_props',oldvalue('csp.dtr.tes.user_htf'));
+	}
+	
+	// changes to the Molten Salt Linear Fresnel model
+	if( cfg.tech == 'MSLF' )
+	{
+		value('store_fl_props',oldvalue('user_fluid'));
+	}
+
+};
+
+//***********************************************************************************************************************************************************
+
+//PUBLIC VERSION
+version_upgrade{'2015.1.30'} = define() {
+	
+	//get the configuration
+	const cfg = config();
+		
+	//Availability and Curtailment (all three components) changed from factor to loss for ALL configurations	
+	adj = value('adjust');
+	adj.factor = (1 - adj.factor) * 100.0;
+	if (adj.en_hourly)
+		for(i=0; i<8760; i++)
+			adj.hourly[i] = (1 - adj.hourly[i]) * 100;
+	if(adj.en_periods)
+		for (i=0; i<#adj.periods; i++)
+			adj.periods[i][2] = (1 - adj.periods[i][2]) * 100;
+	value('adjust', adj, 'Availability and curtailment numbers were changed from factors to losses.');
+	
+	//Address fixed bug in the CEC User Entered Module page
+	if (cfg.tech == 'Flat Plate PV')
+	{
+		if (value('module_model') == 2)
+		{
+			if (value('6par_aisc_units') == 1)
+				message('Version 2014.11.24 of SAM had a bug with the units of the ISC Temperature Coefficient. Please double check this input.', 'warning');
+			if (value('6par_bvoc_units') == 1)
+				message('Version 2104.11.24 of SAM had a bug with the units of the VOC Temperature Coefficient. Please double check this input.', 'warning');
+		}
+	}
+	
+	message('Upgraded project to version 2015.1.30');
+};
+
+>>>>>>> 2c85b0ce6a18646fb532eb72a604d646517b67ae
 //***********************************************************************************************************************************************************
