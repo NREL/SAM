@@ -1,0 +1,42 @@
+VPATH = ../solarpilot
+CC = gcc -mmacosx-version-min=10.9
+CXX = g++ -mmacosx-version-min=10.9
+CFLAGS = -fPIC -Wall -g -O3 -I../ -I../nlopt  -DWX_PRECOMP -O2 -arch x86_64  -fno-common
+CXXFLAGS = $(CFLAGS) -std=gnu++11
+
+
+OBJECTS = \
+	fluxsim.o \
+	API_structures.o \
+	Ambient.o \
+	AutoPilot_API.o \
+	Financial.o \
+	Flux.o \
+	Heliostat.o \
+	IOUtil.o \
+	Land.o \
+	LayoutSimulateThread.o \
+	OpticalMesh.o \
+	Plant.o \
+	Receiver.o \
+	STObject.o \
+	STSimulateThread.o \
+	SolarField.o \
+	Toolbox.o \
+	definitions.o \
+	heliodata.o \
+	interop.o \
+	mod_base.o \
+	optimize.o \
+	solpos.o \
+	string_util.o
+
+
+
+TARGET=solarpilot.a
+
+$(TARGET):$(OBJECTS)
+	ar rs $(TARGET) $(OBJECTS)
+
+clean:
+	rm -rf $(TARGET) $(OBJECTS)

@@ -1,0 +1,22 @@
+DVDIR = ../tools/lkscript
+VPATH = $(DVDIR)
+WEXLIB = ../wexuxwx3.a
+LKDIR = ../../lk
+LKLIB = $(LKDIR)/lkuxwx3.a
+
+CC = gcc
+CXX = g++
+CFLAGS = -g -I. -I../include -I$(LKDIR)/include `wx-config-3 --cflags`
+CXXFLAGS = -std=c++0x $(CFLAGS)
+OBJECTS  = lkscript.o
+LDFLAGS= -lcurl -lfontconfig $(WEXLIB) $(LKLIB) `wx-config-3 --libs aui` `wx-config-3 --libs stc` `wx-config-3 --libs` -lm -std=c++0x
+
+TARGET = LKScript
+
+
+$(TARGET): $(OBJECTS) $(WEXLIB) 
+	$(CXX) -g $(CXXFLAGS) -o $@ $^ $(LDFLAGS)
+	
+clean:
+	rm -f $(TARGET) $(OBJECTS)
+	rm -rf LKScript.app

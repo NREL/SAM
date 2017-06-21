@@ -1,0 +1,1 @@
+plot ( [1, 2, 3, 4, 5], [5, 2, 1, 6, 2 ], {style='dash', thick=2, color='grey',marker='diamond'});

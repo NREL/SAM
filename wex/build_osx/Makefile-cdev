@@ -1,0 +1,28 @@
+DVDIR = ../tools/cdev
+VPATH = $(DVDIR)
+WEXLIB = ../wexosxwx3.a
+
+CC = gcc
+CXX = g++
+CFLAGS = -g -I. -I../include `wx-config-3 --cflags`
+CXXFLAGS = $(CFLAGS)
+LDFLAGS = `wx-config-3 --libs` `wx-config-3 --libs aui` `wx-config-3 --libs stc` -lm 
+OBJECTS  = cdev.o
+TARGET = Cdev
+
+
+$(TARGET): $(OBJECTS) $(WEXLIB) 
+	$(CXX) -g -o $@ $^ $(LDFLAGS)
+	SetFile -a t $@
+	mkdir -p $(TARGET).app
+	mkdir -p $(TARGET).app/Contents
+	mkdir -p $(TARGET).app/Contents/MacOS
+	mkdir -p $(TARGET).app/Contents/Resources
+	cp $(TARGET) ./$(TARGET).app/Contents/MacOS
+	cp $(TARGET).icns ./$(TARGET).app/Contents/Resources
+	cp Info-$(TARGET).plist ./$(TARGET).app/Contents/Info.plist
+	echo "-n APPL????" >> ./$(TARGET).app/Contents/PkgInfo
+	
+clean:
+	rm -f $(TARGET) $(OBJECTS)
+	rm -rf $(TARGET).app

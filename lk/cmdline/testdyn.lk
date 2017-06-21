@@ -1,0 +1,19 @@
+
+
+extok = load_extension( "/Users/adobos/Projects/trunk/lk/extern/externtest.dylib" );
+
+outln("extload=? " ,  extok);
+result = externtest("hello str 1", "12345");
+outln("externtest: " + result + "\n");
+
+outln( extensions());
+
+for (T=20;T<60;T=T+10)
+	outln("psat(" + T + ")=" + steam_psat(T));
+	
+arr = [ 1, 5, 'h3llo', '213', 451.4, -1 ];
+x = tabulate(arr);
+outln(x);
+
+arr2 = [ 1, 5, 'h3llo', '213', 451.4, -1, [2, 'middle', 1] ];
+//x2 = tabulate(arr2); // throws an error :)
