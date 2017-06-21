@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Express 2013 for Windows Desktop
-VisualStudioVersion = 12.0.40629.0
+VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "shade", "..\SAMnt\build_vc2013\shade.vcxproj", "{7A33D78E-17B7-43B0-B406-88F3B60AC312}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "shade", "shade.vcxproj", "{7A33D78E-17B7-43B0-B406-88F3B60AC312}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
