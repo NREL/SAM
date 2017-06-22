@@ -8,7 +8,6 @@
 #include <wx/stattext.h>
 #include <wx/file.h>
 #include <wx/ffile.h>
-
 #include <wx/filedlg.h>
 #include <wx/filefn.h>
 #include <wx/filename.h>
