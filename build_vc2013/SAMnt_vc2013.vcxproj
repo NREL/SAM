@@ -306,7 +306,7 @@
       <AdditionalDependencies>wxbase31u_net.lib;wxbase31u_xml.lib;wxmsw31u_propgrid.lib;wxmsw31u_webview.lib;wxmsw31u_adv.lib;wxmsw31u_html.lib;wxmsw31u_aui.lib;wxmsw31u_stc.lib;wxmsw31u_richtext.lib;wxmsw31u_core.lib;wxbase31u.lib;wxscintilla.lib;wxtiff.lib;wxjpeg.lib;wxpng.lib;wxzlib.lib;wxregexu.lib;wxexpat.lib;kernel32.lib;user32.lib;gdi32.lib;comdlg32.lib;winspool.lib;winmm.lib;shell32.lib;comctl32.lib;ole32.lib;oleaut32.lib;uuid.lib;rpcrt4.lib;advapi32.lib;wsock32.lib;psapi.lib;wininet.lib;winhttp.lib;wexvc13wx3.lib;lkvc13wx3.lib;libcurl.lib;ssc.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(TargetPath)</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <AdditionalLibraryDirectories>$(LKDIR)\;$(WEXDIR)\;$(SolutionDir)$(Platform)\$(Configuration)\;$(WEXDIR)\build_vc2013\$(Platform)\$(Configuration)\;$(LKDIR)\build_vc2013\$(Platform)\$(Configuration)\;$(SolutionDir)$(Platform)\$(Configuration)\;$(WEXDIR)\build_vc2013\libcurl_ssl_win32\lib;$(WXMSW3)\lib\vc_lib;$(SSCDIR)\build_vc2013\$(Platform)\$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(LKDIR)\;$(WEXDIR)\;$(SolutionDir)$(Platform)\$(Configuration)\;$(WEXDIR)\$(Platform)\$(Configuration)\;$(WEXDIR)\build_vc2013\$(Platform)\$(Configuration)\;$(LKDIR)\$(Platform)\$(Configuration)\;$(LKDIR)\build_vc2013\$(Platform)\$(Configuration)\;$(WEXDIR)\build_vc2013\libcurl_ssl_win32\lib;$(WXMSW3)\lib\vc_lib;$(SSCDIR)\build_vc2013\$(Platform)\$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ProgramDatabaseFile>$(TargetDir)\$(TargetName).pdb</ProgramDatabaseFile>
       <SubSystem>Windows</SubSystem>
@@ -319,10 +319,11 @@
       <SuppressStartupBanner>true</SuppressStartupBanner>
     </Bscmake>
     <PostBuildEvent>
-      <Command>copy $(SSCDIR)\build_vc2013\$(Platform)\$(Configuration)\ssc.dll $(SAMNTDIR)\deploy\$(Platform)
+      <Command>robocopy $(WEXDIR)\build_vc2013\libcurl_ssl_$(Platform)\bin $(SAMNTDIR)\deploy\$(Platform)\ /E /XC /XN /XO /XX /NP /NS /NJS /NJH /NC 
+
+copy $(SSCDIR)\build_vc2013\$(Platform)\$(Configuration)\ssc.dll $(SAMNTDIR)\deploy\$(Platform)\
 copy $(SSCDIR)\build_vc2013\$(Platform)\$(Configuration)\ssc.pdb $(SAMNTDIR)\deploy\$(Platform)\
 
-robocopy $(WEXDIR)\build_vc2013\libcurl_ssl_$(Platform)\bin $(SAMNTDIR)\deploy\$(Platform)\ /E /XC /XN /XO /XX /NP /NS /NJS /NJH /NC 
 
 if %ERRORLEVEL% GEQ 8 (
 exit) else (
@@ -375,10 +376,10 @@ exit 0
       <SuppressStartupBanner>true</SuppressStartupBanner>
     </Bscmake>
     <PostBuildEvent>
-      <Command>copy $(SSCDIR)\build_vc2013\$(Platform)\$(Configuration)\ssc.dll $(SAMNTDIR)\deploy\$(Platform)
-copy $(SSCDIR)\build_vc2013\$(Platform)\$(Configuration)\ssc.pdb $(SAMNTDIR)\deploy\$(Platform)\
+      <Command>robocopy $(WEXDIR)\build_vc2013\libcurl_ssl_$(Platform)\bin $(SAMNTDIR)\deploy\$(Platform)\ /E /XC /XN /XO /XX /NP /NS /NJS /NJH /NC 
 
-robocopy $(WEXDIR)\build_vc2013\libcurl_ssl_$(Platform)\bin $(SAMNTDIR)\deploy\$(Platform)\ /E /XC /XN /XO /XX /NP /NS /NJS /NJH /NC 
+copy $(SSCDIR)\build_vc2013\$(Platform)\$(Configuration)\ssc.dll $(SAMNTDIR)\deploy\$(Platform)
+copy $(SSCDIR)\build_vc2013\$(Platform)\$(Configuration)\ssc.pdb $(SAMNTDIR)\deploy\$(Platform)\
 
 if %ERRORLEVEL% GEQ 8 (
 exit) else (
