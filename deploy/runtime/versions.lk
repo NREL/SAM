@@ -58,6 +58,23 @@ version_upgrade{'2017.4.11'} = define() {
 };
 
 // PUBLIC VERSION
+version_upgrade{'2017.5.11'} = define() {
+	message('Upgraded project to version 2017.5.11');
+	const cfg = config();
+			
+	//updated the naming of flux_max
+	if( cfg.tech == "MSPT" )
+	{
+		value('flux_max', oldvalue("flux_max_mspt"), "Variable renamed" );
+	}
+	if( cfg.tech == "DSG" )
+	{
+		value('flux_max', oldvalue("flux_max_dsg"), "Variable renamed" );
+	}
+};
+
+
+
 version_upgrade{'2017.1.17'} = define() {
 	message('Upgraded project to version 2017.1.17');
 };
