@@ -79,6 +79,7 @@
     <ClInclude Include="..\src\nsrdb.h" />
     <ClInclude Include="..\src\p50p90.h" />
     <ClInclude Include="..\src\parametric.h" />
+    <ClInclude Include="..\src\private.h" />
     <ClInclude Include="..\src\registration.h" />
     <ClInclude Include="..\src\reports.h" />
     <ClInclude Include="..\src\results.h" />
