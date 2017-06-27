@@ -1,3 +1,4 @@
+// DO NOT make key public
 url = 'https://developer.nrel.gov/api/sam/v1/tracker/usage_totals.csv?api_key=rJzFOTOJhNHcLOnPmW2TNCLV8I4HHLgKddAycGpn';
 file = homedir() + '/sam_tracking.csv';
 outln( 'downloading... >> ' + file );
