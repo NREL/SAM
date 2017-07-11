@@ -81,6 +81,9 @@ function setup_battery_pages_behind_the_meter()
 {
 	addpage([ [{'name'='Battery None','caption'='No Battery'}],
 			  [{'name'='Battery Model', 'caption'='Enable Battery'},
+			   'Battery Bank Sizing Conventional',
+			   'Battery Voltage',
+			   'Battery Current and Capacity Conventional',
 			   'Battery Configuration',
 			   'Battery Dispatch Behind the Meter',
 			   'Battery Dispatch Common',
