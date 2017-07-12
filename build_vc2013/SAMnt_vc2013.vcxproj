@@ -79,6 +79,7 @@
     <ClInclude Include="..\src\nsrdb.h" />
     <ClInclude Include="..\src\p50p90.h" />
     <ClInclude Include="..\src\parametric.h" />
+    <ClInclude Include="..\src\private.h" />
     <ClInclude Include="..\src\registration.h" />
     <ClInclude Include="..\src\reports.h" />
     <ClInclude Include="..\src\results.h" />
@@ -223,14 +224,22 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ProgramDatabaseFile>$(TargetDir)\$(TargetName).pdb</ProgramDatabaseFile>
       <SubSystem>Windows</SubSystem>
-      <TargetMachine>MachineX86</TargetMachine>
     </Link>
     <Bscmake>
       <OutputFile>vc_mswud\SAMnt_vc9.bsc</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
     </Bscmake>
     <PostBuildEvent>
-      <Command>robocopy $(SSCDIR)/build_vc2013/$(PlatformTarget)/$(ConfigurationName)/ $(SAMNTDIR)/deploy/$(PlatformTarget)/$(ConfigurationName)/ ssc.dll</Command>
+      <Command>robocopy $(WEXDIR)\build_vc2013\libcurl_ssl_$(Platform)\bin $(SAMNTDIR)\deploy\$(Platform)\ /E /XC /XN /XO /XX /NP /NS /NJS /NJH /NC 
+
+copy $(SSCDIR)\build_vc2013\$(Platform)\$(Configuration)\ssc.dll $(SAMNTDIR)\deploy\$(Platform)\
+copy $(SSCDIR)\build_vc2013\$(Platform)\$(Configuration)\ssc.pdb $(SAMNTDIR)\deploy\$(Platform)\
+
+
+if %ERRORLEVEL% GEQ 8 (
+exit) else (
+exit 0    
+)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -274,7 +283,15 @@
       <SuppressStartupBanner>true</SuppressStartupBanner>
     </Bscmake>
     <PostBuildEvent>
-      <Command>robocopy $(SSCDIR)/build_vc2013/$(PlatformTarget)/$(ConfigurationName)/ $(SAMNTDIR)/deploy/$(PlatformTarget)/$(ConfigurationName)/ ssc.dll</Command>
+      <Command>robocopy $(WEXDIR)\build_vc2013\libcurl_ssl_$(Platform)\bin $(SAMNTDIR)\deploy\$(Platform)\ /E /XC /XN /XO /XX /NP /NS /NJS /NJH /NC 
+
+copy $(SSCDIR)\build_vc2013\$(Platform)\$(Configuration)\ssc.dll $(SAMNTDIR)\deploy\$(Platform)
+copy $(SSCDIR)\build_vc2013\$(Platform)\$(Configuration)\ssc.pdb $(SAMNTDIR)\deploy\$(Platform)\
+
+if %ERRORLEVEL% GEQ 8 (
+exit) else (
+exit 0    
+)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -310,7 +327,6 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ProgramDatabaseFile>$(TargetDir)\$(TargetName).pdb</ProgramDatabaseFile>
       <SubSystem>Windows</SubSystem>
-      <TargetMachine>MachineX86</TargetMachine>
       <OptimizeReferences>true</OptimizeReferences>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
     </Link>
