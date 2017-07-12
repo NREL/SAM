@@ -144,6 +144,9 @@
     <ClInclude Include="..\src\nsrdb.h">
       <Filter>Source</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\private.h">
+      <Filter>Source</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\welcome.cpp">
