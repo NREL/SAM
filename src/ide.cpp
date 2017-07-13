@@ -755,9 +755,9 @@ UIEditorPanel::UIEditorPanel( wxWindow *parent )
 	m_formList = new wxListBox( this, ID_FORM_LIST, wxDefaultPosition, wxScaleSize(300, 300), 0, 0, wxLB_SINGLE|wxBORDER_NONE );
 	
 	wxBoxSizer *sz_form_left = new wxBoxSizer( wxVERTICAL );
-	sz_form_left->Add( new wxStaticText( this, wxID_ANY, "UI Forms" ), 0, wxALL|wxALIGN_CENTER_VERTICAL, 4 );
+	sz_form_left->Add( new wxStaticText( this, wxID_ANY, "UI Forms" ), 0, wxALL, 4 );
 	sz_form_left->Add( m_formList, 1, wxALL|wxEXPAND, 2 );
-	sz_form_left->Add( new wxStaticText( this, wxID_ANY, "Object Properties" ), 0, wxALL|wxALIGN_CENTER_VERTICAL, 4 );
+	sz_form_left->Add( new wxStaticText( this, wxID_ANY, "Object Properties" ), 0, wxALL, 4 );
 	sz_form_left->Add( m_uiPropEditor, 1, wxALL|wxEXPAND, 2 );
 
 	
@@ -819,7 +819,7 @@ UIEditorPanel::UIEditorPanel( wxWindow *parent )
 	sz_var_fields->AddGrowableCol( 1 );
 
 	wxBoxSizer *sz_var_main = new wxBoxSizer( wxVERTICAL );
-	sz_var_main->Add( new wxStaticText( this, wxID_ANY, "Variables" ), 0, wxALL|wxALIGN_CENTER_VERTICAL, 4 );
+	sz_var_main->Add( new wxStaticText( this, wxID_ANY, "Variables" ), 0, wxALL, 4 );
 	sz_var_main->Add( m_varList, 1, wxALL|wxEXPAND, 2 );
 	sz_var_main->Add( sz_var_fields,1, wxALL|wxEXPAND, 0 );
 
