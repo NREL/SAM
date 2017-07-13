@@ -160,7 +160,7 @@ CaseWindow::CaseWindow( wxWindow *parent, Case *c )
 	szsims->Add( new wxMetroButton( left_panel, ID_MACRO, "Macros" ), 0, wxALL|wxEXPAND, 0 );
 
 	wxBoxSizer *szvl = new wxBoxSizer( wxVERTICAL );
-	szvl->Add( m_configLabel, 0, wxALIGN_CENTER_VERTICAL|wxALIGN_CENTER|wxTOP|wxBOTTOM, 3 );
+	szvl->Add( m_configLabel, 0, wxALIGN_CENTER|wxTOP|wxBOTTOM, 3 );
 	szvl->Add( m_inputPageList, 1, wxALL|wxEXPAND, 0 );
 	szvl->Add( szhl, 0, wxALL|wxEXPAND, 0 );
 	szvl->Add( szsims, 0, wxALL|wxEXPAND, 0 );
@@ -460,7 +460,7 @@ bool CaseWindow::GenerateReport( wxString pdffile, wxString templfile, VarValue 
 	{
 		if (templ.RenderPdf( pdffile, m_case, meta ))
 		{
-			if ( pdffile.IsEmpty() )
+			if ( !pdffile.IsEmpty() )
 			{
 				wxString new_file = wxFileSystem::FileNameToURL(pdffile);
 				::wxLaunchDefaultBrowser(new_file, wxBROWSER_NEW_WINDOW);
@@ -1587,17 +1587,17 @@ NumericRangeDialog::NumericRangeDialog( wxWindow *parent, const wxString &title 
 	wxStaticBoxSizer *range_sizer_box = new wxStaticBoxSizer( wxVERTICAL, this, "Define range" );
 
 	wxFlexGridSizer *range_sizer = new wxFlexGridSizer( 2 );
-	range_sizer->Add( new wxStaticText( range_sizer_box->GetStaticBox(), wxID_ANY, "Start value:" ), 0, wxALL|wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL, 4 );
+	range_sizer->Add( new wxStaticText( range_sizer_box->GetStaticBox(), wxID_ANY, "Start value:" ), 0, wxALL|wxALIGN_RIGHT, 4 );
 	range_sizer->Add( m_numStart = new wxNumericCtrl( range_sizer_box->GetStaticBox(), ID_numStart, 0, wxNUMERIC_REAL ), 0, wxALL, 4 );
-	range_sizer->Add( new wxStaticText( range_sizer_box->GetStaticBox(), wxID_ANY, "End value:" ), 0, wxALL|wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL, 4 );
+	range_sizer->Add( new wxStaticText( range_sizer_box->GetStaticBox(), wxID_ANY, "End value:" ), 0, wxALL|wxALIGN_RIGHT, 4 );
 	range_sizer->Add( m_numEnd = new wxNumericCtrl( range_sizer_box->GetStaticBox(), ID_numEnd, 0, wxNUMERIC_REAL ), 0, wxALL, 4 );
-	range_sizer->Add( new wxStaticText( range_sizer_box->GetStaticBox(), wxID_ANY, "Increment:" ), 0, wxALL|wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL, 4 );
+	range_sizer->Add( new wxStaticText( range_sizer_box->GetStaticBox(), wxID_ANY, "Increment:" ), 0, wxALL|wxALIGN_RIGHT, 4 );
 	range_sizer->Add( m_numIncr = new wxNumericCtrl( range_sizer_box->GetStaticBox(), ID_numIncr, 0, wxNUMERIC_REAL ), 0, wxALL, 4 );
 	range_sizer->AddStretchSpacer(); 
 	range_sizer->Add( new wxButton(range_sizer_box->GetStaticBox(), ID_cmdUpdateValues, "Update", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL, 4 );
 	
 	range_sizer_box->Add( range_sizer, 1, wxALL|wxEXPAND, 4 );
-	range_sizer_box->Add( m_notification = new wxStaticText( range_sizer_box->GetStaticBox(), wxID_ANY, wxEmptyString ), 0, wxALL|wxALIGN_CENTER|wxALIGN_CENTER_VERTICAL, 4 );
+	range_sizer_box->Add( m_notification = new wxStaticText( range_sizer_box->GetStaticBox(), wxID_ANY, wxEmptyString ), 0, wxALL|wxALIGN_CENTER, 4 );
 	
 	wxBoxSizer *hor_sizer = new wxBoxSizer( wxHORIZONTAL );
 	hor_sizer->Add( values_sizer, 1, wxALL|wxEXPAND, 4 );
