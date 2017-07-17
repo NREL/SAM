@@ -80,24 +80,27 @@ function setup_elec_load_page( mode ) //i is 1 for technologies that HAVE the bu
 function setup_battery_pages_behind_the_meter()
 {
 	addpage([ [{'name'='Battery None','caption'='No Battery'}],
-			  [{'name'='Battery Model', 'caption'='Enable Conventional Battery'},
-			   'Battery Bank Sizing Conventional',
+			  [{'name'='Battery Model', 'caption'='Enable Battery'},
+			   'Battery Bank Sizing',
 			   'Battery Voltage',
-			   'Battery Current and Capacity Conventional',
+			   'Battery Current and Capacity',
 			   'Battery Configuration',
 			   'Battery Dispatch Behind the Meter',
 			   'Battery Dispatch Common',
 			   'Battery Dispatch Manual', 
 			   'Battery Lifetime',
 			   'Battery Replacements',
-			   'Battery Thermal']
-			    ],
+			   'Battery Thermal',
+			    ]],
 			  { 'sidebar'='Battery Storage', 'help'='battery_model', 'exclusive_var'='en_batt'} );
 }
 function setup_battery_pages_front_of_meter()
 {
 	addpage([ [{'name'='Battery None','caption'='No Battery'}],
 			  [{'name'='Battery Model', 'caption'='Enable Battery'},
+			   'Battery Bank Sizing',
+			   'Battery Voltage',
+			   'Battery Current and Capacity',
 			   'Battery Configuration',
 			   'Battery Dispatch Common',
 			   'Battery Dispatch Manual', 
