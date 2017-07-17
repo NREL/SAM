@@ -703,6 +703,13 @@ bool Simulation::InvokeWithHandler(ISimulationHandler *ih, wxString folder)
 				{
 					if (VarValue *vv = GetInput(name) )
 					{
+						if (false)
+						{
+							VarInfo *vi = m_case->Variables().Lookup(name);
+							if (vi->Flags & VF_CALCULATED)
+								ih->Error("SSC variable is a SAM UI calculated value: " + name);
+						}
+
 						if ( !field.IsEmpty() )
 						{
 							if ( vv->Type() != VV_TABLE )
