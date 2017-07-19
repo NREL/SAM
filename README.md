@@ -30,4 +30,4 @@ After you have set up your development environment:
 
 # License
 
-SAM is licensed uder a mixed MIT/GPL V3 [license](/license).
+SAM is licensed uder a mixed MIT/GPL V3 [license](LICENSE.md).
