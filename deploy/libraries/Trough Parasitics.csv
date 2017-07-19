@@ -1,9 +1,0 @@
-Name,SF Const,SF Partload,HTFPump Const,HTFPump Partload,HTFPump F0,HTFPump F1,HTFPump F2,TES Const,TES Partload,TES F0,TES F1,TES F2,Antifreeze Const,Fixedblock Const,BOP Const,BOP Partload,BOP F0,BOP F1,BOP F2,HB Const,HB Partload,HB F0,HB F1,HB F2,CT0 Const,CT0 Partload,CT0 F0,CT0 F1,CT0 F2,OP Mode
-Units
-[0],lib_ui_par_sf_const,lib_SfParPF,lib_ui_par_htfpump_const,lib_ChtfParPF,lib_CHTFParF0,lib_CHTFParF1,lib_CHTFParF2,lib_ui_par_tes_const,lib_HhtfParPF,lib_HhtfParF0,lib_HhtfParF1,lib_HhtfParF2,lib_ui_par_antifreeze_const,lib_ui_par_fixedblock_const,lib_ui_par_bop_const,lib_BOPParPF,lib_BOPParF0,lib_BOPParF1,lib_BOPParF2,lib_ui_par_hb_const,lib_HtrParPF,lib_HtrParF0,lib_HtrParF1,lib_HtrParF2,lib_ui_par_ct0_const,lib_CtParPF,lib_CtParF0,lib_CtParF1,lib_CtParF2,lib_CtOpF
-SEGS VI Reference,2.66E-07,1,1.052E-05,1.35,-0.036,0.242,0.794,0.02,1,-0.036,0.242,0.794,0.1,0.0055,0.02467,1.5,0.483,0.517,0,0.02273,1,0.483,0.517,0,0.017045,1,-0.036,0.242,0.794,1
-APS 1MW ORC Wet,2.66E-07,0.47,1.052E-05,0.152,-0.036,0.242,0.794,0.02,0.35,-0.036,0.242,0.794,0.1,0.009,0.02467,3.15,1,0,0,0.02273,1,0.483,0.517,0,0.017045,5.46,1,0,0,1
-500C Molten Salt HTF,2.66E-07,0.5,1.052E-05,0.35,-0.036,0.242,0.794,0.02,0.35,-0.036,0.242,0.794,0.1,0.0055,0.02467,1,0.483,0.517,0,0.02273,1,0.483,0.517,0,0.017045,1,-0.036,0.242,0.794,1
-450C Molten Salt HTF,2.66E-07,0.5,1.052E-05,0.5,-0.036,0.242,0.794,0.02,0.5,-0.036,0.242,0.794,0.1,0.0055,0.02467,1,0.483,0.517,0,0.02273,1,0.483,0.517,0,0.017045,1,-0.036,0.242,0.794,1
-550C Molten Salt HTF,2.66E-07,0.5,1.052E-05,0.3,-0.036,0.242,0.794,0.02,0.3,-0.036,0.242,0.794,0.1,0.0055,0.02467,1,0.483,0.517,0,0.02273,1,0.483,0.517,0,0.017045,1,-0.036,0.242,0.794,1
-SEGS VIII Reference,2.66E-07,1,1.052E-05,1,-0.036,0.242,0.794,0.02,1,-0.036,0.242,0.794,0.1,0.0055,0.02467,1,0.483,0.517,0,0.02273,1,0.483,0.517,0,0.017045,1,-0.036,0.242,0.794,1
