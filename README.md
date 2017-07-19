@@ -27,14 +27,7 @@ After you have set up your development environment:
 	* SSC: https://github.com/NREL/ssc, SSCDIR
 	* SAMnt: https://github.com/NREL/SAM-private, SAMNTDIR
 
-# Detailed Instructions for Building SAM
 
-* [Windows](/wiki)
+# License
 
-* [Linux](/wiki)
-
-* [Mac](/wiki)
-	
-# [License](/wiki)
-
-See [license](/license)
+SAM is licensed uder a mixed MIT/GPL V3 [license](/license).
