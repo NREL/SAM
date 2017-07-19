@@ -1,10 +1,22 @@
 # System Advisor Model(SAM)
 
-The SAM Open Source Project repository contains the source code and tools required to build a desktop version of the National Renewable Energy Laboratory's System Advisor Model (SAM). SAM is a simulation program for electricity generation projects. It has models for different kinds of renewable energy systems and financial models for residential, commercial, and utility-scale projects. For more details about SAM's capabilities, see the SAM website at [https://sam.nrel.gov/](https://sam.nrel.gov/).
+The SAM Open Source Project repository contains the source code, tools, and instructions to build a desktop version of the National Renewable Energy Laboratory's System Advisor Model (SAM). SAM is a simulation program for electricity generation projects. It has models for different kinds of renewable energy systems and financial models for residential, commercial, and utility-scale projects. For more details about SAM's capabilities, see the SAM website at [https://sam.nrel.gov/](https://sam.nrel.gov/).
+
+The desktop version of SAM for Windows, Mac, or Linux builds from the following open source projects:
+
+* [SSC](https://github.com/nrel/ssc) is a set of "compute modules" that simulate different kinds of power systems and financial structures. It can be run directly using the [SAM Sofware Develoment Kit](https://sam.nrel.gov/sdk).
+
+* [LK](https://github.com/nrel/lk) is a scripting language that is integrated into SAM and allows users to add functionality to the program.
+
+* [wxWidgets](https://www.wxwidgets.org/) is a cross-platform graphical user interface platform used for SAM's user interface, and for the development tools included with SSC (SDKtool) and LK (LKscript).
+
+* [WEX](https://github.com/nrel/wex) is a set of exensions to wxWidgets for custom user-interface elements used by SAM, and by LKscript and DView, which are integrated into SAM.
+
+* *SAM* provides the user interface to assign values to inputs of the SSC compute modules, run the modules in the correct order, and display simulation results. It also includes tools for editing LK scripts, viewing time series results, and generating shade data from a 3-dimenional representation of a photovoltaic array or solar hot water collector and nearby shading objects.
 
 # Quick Steps for Building SAM
 
-These are quick steps to set up your computer for developing SAM. For more detailed instructions for Windows, Mac, and Linux see https://github.com/NREL/SAM-private/wiki.
+These are the general quick steps you need to follow to set up your computer for developing SAM. For more detailed instructions specific to Windows, Mac, and Linux see https://github.com/NREL/SAM-private/wiki.
 
 The build instructions are based on the following integrated development environments:
 
