@@ -1,6 +1,0 @@
-Versions of the SVN repos when ported to git:
-
-lk: 258
-wex: 617 (not including recent Dview updates)
-ssc: 5041
-SAMnt: 3821 (repo doesn't include test dir, PVRPM, videos)
