@@ -83,7 +83,6 @@
 #include "s3tool.h"
 #include "lossdiag.h"
 #include "stochastic.h"
-#include "registration.h"
 #include "codegencallback.h"
 #include "nsrdb.h"
 

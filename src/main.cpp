@@ -87,7 +87,7 @@
 
 #include <ssc/sscapi.h>
 
-#include "../resource/nrel_small.cpng"
+//#include "../resource/nrel_small.cpng"
 //#include "../resource/main_menu.cpng"
 #include "../resource/menu.cpng"
 #include "../resource/notes_white.cpng"
@@ -98,7 +98,6 @@
 #include <lk/stdlib.h>
 
 #include "main.h"
-#include "registration.h"
 #include "welcome.h"
 #include "project.h"
 #include "variables.h"
@@ -112,37 +111,6 @@
 
 // application globals
 static SamApp::ver releases[] = {
-//please clarify the reason for the new version in a comment. Examples: public release, variable changes, internal release, public beta release, etc.
-//the top version should always be the current working version
-		{ 2017, 5, 15 }, // Beta release for SAM for India - expires 7/31/17
-		{ 2017, 5, 11 }, // Beta release for Ty - no expiration
-		{ 2017, 4, 11 }, // Beta release for SAM for India
-		{ 2017, 2, 28 }, // Beta release for SAM for India
-		{ 2017, 2, 14 }, // Beta release for Mark (internal)
-	{ 2017, 1, 17 }, // public 'ones and sevens' release !
-		{ 2016, 12, 29 }, // Beta release that expires 2/28/17 
-		{ 2016, 10, 25 }, // Beta release that expires 12/31/16 - requested by Ty
-		{ 2016, 7, 21 }, // Beta release that expires 12/31/16 - utility rates for Mexico
-		{ 2016, 5, 4 }, //dc adjustment factor added, internal release, current working version
-	{ 2016, 3, 14 }, // public pi-day release!
-		{ 2016, 3, 2 }, // Beta release that expires 4/15/16
-		{ 2016, 2, 29 }, // internal release
-		{ 2016, 2, 26 }, // utility rate changes
-		{ 2016, 2, 22 }, // self-shading update
-		{ 2016, 2, 19 }, // PV variable changes 
-		{ 2016, 2, 16 }, // new versioning scheme
-		{ 2016, 1, 21 }, // internal release
-		{ 2015, 11, 16 }, // utility rate variable changes
-		{ 2015, 10, 29 }, // battery model variable changes
-		{ 2015, 10, 16 }, // internal release
-		{ 2015, 9, 30 }, // internal release
-		{ 2015, 9, 9 }, // CSP and net metering changes
-		{ 2015, 8, 17 }, // CSP variable changes
-	{ 2015, 6, 30 }, // public release
-		{ 2015, 5, 27 }, // CSP variable changes
-		{ 2015, 4, 10 }, // CSP variable changes
-	{ 2015, 1, 30 }, // public release
-	{ 2014, 11, 24 }, // public release
 	{    0,  0,  0 } };
 
 static wxArrayString g_appArgs;
@@ -232,7 +200,7 @@ BEGIN_EVENT_TABLE( MainWindow, wxFrame )
 END_EVENT_TABLE()
 
 MainWindow::MainWindow()
-	: wxFrame( 0, wxID_ANY, wxT("SAM") + wxString(" ") + SamApp::VersionStr(), 
+	: wxFrame( 0, wxID_ANY, wxT("SAM") + wxString(" (Open Source) "), 
 		wxDefaultPosition, wxScaleSize( 1100, 700 ) )
 {
 #ifdef __WXMSW__
@@ -1254,14 +1222,13 @@ void MainWindow::OnClose( wxCloseEvent &evt )
 
 void MainWindow::UpdateFrameTitle()
 {
-	wxString title = wxT("SAM") + wxString(" ") + SamApp::VersionStr();
+	wxString title = wxT("SAM") + wxString(" (Open Source) ");
 	if ( !m_projectFileName.IsEmpty() )	title += ": " + m_projectFileName;
 	SetTitle( title );
 }
 
 class SplashScreen : public wxDialog
 {
-	wxBitmap m_nrelLogo;
 	wxString m_message;
 public:
 
@@ -1270,7 +1237,6 @@ public:
 		wxScaleSize( 515, 385 ), wxBORDER_NONE ),
 		m_message( "Starting up...please wait" )
 	{
-		m_nrelLogo = wxBITMAP_PNG_FROM_DATA( nrel_small );
 	}
 
 	void SetMessage( const wxString &msg )
@@ -1313,15 +1279,9 @@ public:
 		dc.DrawText( "System Advisor Model", wxScalePoint( wxPoint(35, 65), scaleX, scaleY ) );
 		
 		dc.SetFont( wxMetroTheme::Font( wxMT_LIGHT, 18 ) );
-		dc.DrawText( "Version " + SamApp::VersionStr(), wxScalePoint(wxPoint(35, 135),scaleX,scaleY));
+		dc.DrawText( "(Open Source)", wxScalePoint(wxPoint(35, 135),scaleX,scaleY));
 		dc.DrawText( m_message, wxScalePoint( wxPoint(35, 275), scaleX, scaleY) );
 
-		dc.SetTextForeground( wxMetroTheme::Colour( wxMT_TEXT ) );
-		dc.SetFont( wxMetroTheme::Font( wxMT_LIGHT, 10 ) );
-		dc.DrawText( wxString::Format("Copyright %d National Renewable Energy Laboratory", SamApp::VersionMajor()),
-			wxPoint( (int)(35*scaleX), height-((int)25*scaleY)-dc.GetCharHeight()/2) );
-
-		dc.DrawBitmap( m_nrelLogo, width-m_nrelLogo.GetWidth()-10, height-((int)25*scaleY)-m_nrelLogo.GetHeight()/2 );
 	}
 
 	void OnSize( wxSizeEvent & )
@@ -1336,6 +1296,7 @@ BEGIN_EVENT_TABLE( SplashScreen, wxDialog )
 	EVT_PAINT( SplashScreen::OnPaint )
 	EVT_SIZE( SplashScreen::OnSize )
 END_EVENT_TABLE()
+
 
 ScriptDatabase::ScriptDatabase()
 {
@@ -1828,9 +1789,9 @@ bool SamApp::OnInit()
 	// arguments.
 
 //	wxMetroTheme::SetTheme( new SAMThemeProvider );
-
-	SetAppName( "SAM" );
-	SetVendorName( "NREL" );
+	// set app and vendow
+	SetAppName( "" );
+	SetVendorName( "" );
 	
 #ifdef _DEBUG
 	SamLogWindow::Setup();
@@ -1866,16 +1827,14 @@ extern void RegisterReportObjectTypes();
 		return false;
 	}
 	
-	g_config = new wxConfig( "SAMnt", "NREL" );
+	g_config = new wxConfig( "", "" );
 
 	wxInitAllImageHandlers();
 
-	InitRegistrationSystem();
 
 	wxEasyCurl::Initialize();
 	wxEasyCurl::SetApiKeys( GOOGLE_API_KEY, BING_API_KEY );
 	wxEasyCurl::SetUrlEscape( "<SAMAPIKEY>", wxString(sam_api_key) );
-	wxEasyCurl::SetUrlEscape( "<USEREMAIL>", wxOnlineRegistration::GetEmail() );
 
 	wxPLPlot::AddPdfFontDir( GetRuntimePath() + "/pdffonts" );
 	wxPLPlot::SetPdfDefaultFont( "ComputerModernSansSerif" );
@@ -1884,61 +1843,13 @@ extern void RegisterReportObjectTypes();
 	if ( ! proxy.IsEmpty() )
 		wxEasyCurl::SetProxyAddress( proxy );
 	
-	
 	SplashScreen splash;
 	splash.CenterOnScreen();
 	splash.Show();
 	splash.Update();
 	Yield(true);
-
-
-	
-#if defined(__BETAWILLEXPIRE__)&&defined(__BETARELEASE__)
-	wxDateTime now = wxDateTime::Now();
-	wxDateTime BetaEndDate( __BETAEXPIRE_DAY__, __BETAEXPIRE_MONTH__, __BETAEXPIRE_YEAR__ );
-	if (now.IsEarlierThan(BetaEndDate))
-	{
-		int ndays = BetaEndDate.Subtract(now).GetDays()+1;
-		wxString datestr = BetaEndDate.Format("%A, %d %B %Y");
-
-		wxString expire_text = wxString::Format( "This beta software will expire %d days from now, on ",ndays) +  datestr + ".";
-		if ( ndays == 1 )
-			expire_text = "This beta software will expire tomorrow!";
-
-		wxMessageBox(wxString::Format("Thank you for using SAM Beta Version %d.%d.%d.\n\n",
-			SamApp::VersionMajor(), SamApp::VersionMinor(), SamApp::VersionMicro()) + expire_text + "\n\n" + wxString(beta_disclaimer));
-	}
-	else if (!wxFileExists( SamApp::GetRuntimePath() + "/expireoverride.txt" ))
-	{
-		if (wxYES==wxMessageBox("The SAM beta software has expired.  Please download the latest release from the SAM website.\n\nWould you like to visit the SAM website now?", "Notice", wxYES_NO))
-		{
-			wxString url = SamApp::WebApi("samwebsite");
-			if (url.IsEmpty()) url = "http://sam.nrel.gov";
-			wxLaunchDefaultBrowser( url );
-		}
-		return false;
-	}
-#elif defined(__BETARELEASE__)
-		wxMessageBox(wxString::Format("Thank you for using SAM Beta Version %d.%d.%d.\n\n",
-			SamApp::VersionMajor(), SamApp::VersionMinor(), SamApp::VersionMicro()) + "\n" + wxString(beta_disclaimer));
-#endif
-	
-	wxString devoverride;
-	SamApp::Settings().Read( "developer-registration", &devoverride );
-
-	if ( devoverride != "09332s" )
-	{
-		splash.SetMessage( "Verifying registration..." );
-
-		if ( !wxOnlineRegistration::CheckRegistration() )
-			return false;
-	}
-	
 	splash.Show();
 	splash.SetMessage( "Starting up...please wait" );
-
-	//wxMessageBox( wxString::Format("sizeof(VarValue)=%d, sizeof(wxMemoryBuffer)=%d, sizeof(matrix_t<float>)=%d, sizeof(VarTable)=%d, sizeof(wxString)=%d", 
-	//	sizeof(VarValue), sizeof(wxMemoryBuffer), sizeof(matrix_t<float>), sizeof(VarTable), sizeof(wxString) ) );
 
 	FileHistory().Load( Settings() );
 
@@ -1951,24 +1862,6 @@ extern void RegisterReportObjectTypes();
 	// so that script windows are specialized to SAM, not the base generic one
 	SamScriptWindow::SetFactory( new SamScriptWindowFactory );
 	
-	bool first_load = true;
-	wxString fl_key = wxString::Format("first_load_%d", VersionMajor()*10000+VersionMinor()*100+VersionMicro() );
-	Settings().Read(fl_key, &first_load, true);
-		
-	if ( first_load )
-	{
-		// register the first load
-		Settings().Write(fl_key, false);
-
-		// enable web update app 
-		wxConfig cfg("SamUpdate3", "NREL");
-		cfg.Write("allow_web_updates", true);
-				
-		// after installing a new version, always show the reminders again until the user turns them off
-		Settings().Write( "show_reminder", true );
-	}
-	else
-	{
 		// restore window position
 		bool b_maximize = false;
 		int f_x,f_y,f_width,f_height;
@@ -1993,22 +1886,12 @@ extern void RegisterReportObjectTypes();
 			else // place default here...
 				g_mainWindow->Maximize();
 		}
-	}
 
 	if ( argc > 1 )
 		g_mainWindow->LoadProject( argv[1] );
 
 	
 	
-	bool allow = true;
-	if (wxConfig *cfg = new wxConfig("SamUpdate3", "NREL")) 
-	{
-		cfg->Read("allow_web_updates", &allow);
-		delete cfg;
-	}
-
-	if (allow)
-		CheckForUpdates( true );
 
 	return true;
 }
@@ -2228,42 +2111,6 @@ wxArrayString SamApp::RecentFiles()
 	return files;
 }
 
-void SamApp::CheckForUpdates( bool quiet )
-{
-#if defined(__WXMSW__)
-	wxString webupd( "webupd.exe" );
-#elif defined(__WXOSX__)
-	wxString webupd( "webupd" );
-#elif defined(__WXGTK__)
-	wxString webupd( "webupd.bin" );
-#else
-	#error "invalid platform"
-#endif
-	
-	wxFileName norm( SamApp::GetAppPath() + "/" + webupd );
-	norm.Normalize();
-	webupd = norm.GetFullPath();
-
-	if ( !wxFileExists( webupd ) )
-	{
-		if ( !quiet ) 
-			wxMessageBox("The SAM Web Update application could not be located.  Please try reinstalling SAM.\n\n" + webupd);
-		
-		return;
-	}
-
-	if ( webupd.Find( '"' ) != wxNOT_FOUND )
-		webupd = '"' + webupd + '"';
-		
-	if ( quiet )
-		webupd += " -quiet";
-
-	long pid = wxExecute( webupd, wxEXEC_ASYNC );
-	if( 0 == pid && !quiet )
-		wxMessageBox("Failed to launch SAM Web Update process.\n\n" + webupd );
-}
-
-
 
 class HelpWin;
 static HelpWin *gs_helpWin = 0;
@@ -2282,7 +2129,7 @@ class HelpWin : public wxFrame
 	wxString m_aboutHtml;
 public:
 	HelpWin( wxWindow *parent )
-		: wxFrame( parent, wxID_ANY, "System Advisor Model Help", wxDefaultPosition, wxScaleSize(1000,600) )
+		: wxFrame( parent, wxID_ANY, "System Advisor Model (Open Source) Help", wxDefaultPosition, wxScaleSize(1000,600) )
 	{
 		CreateAboutHtml();
 
@@ -2326,10 +2173,6 @@ public:
 
 	void CreateAboutHtml()
 	{
-		static char *s_samDisclaimerHtml = "DISCLAIMER<br><br>"
-				"The System Advisor Model (\"Model\") is provided by the National Renewable Energy Laboratory (\"NREL\"), which is operated by the Alliance for Sustainable Energy, LLC (\"Alliance\") for the U.S. Department Of Energy (\"DOE\") and may be used for any purpose whatsoever.<br><br>"
-				"The names DOE/NREL/ALLIANCE shall not be used in any representation, advertising, publicity or other manner whatsoever to endorse or promote any entity that adopts or uses the Model.  DOE/NREL/ALLIANCE shall not provide any support, consulting, training or assistance of any kind with regard to the use of the Model or any updates, revisions or new versions of the Model.<br><br>"
-				"YOU AGREE TO INDEMNIFY DOE/NREL/ALLIANCE, AND ITS AFFILIATES, OFFICERS, AGENTS, AND EMPLOYEES AGAINST ANY CLAIM OR DEMAND, INCLUDING REASONABLE ATTORNEYS' FEES, RELATED TO YOUR USE, RELIANCE, OR ADOPTION OF THE MODEL FOR ANY PURPOSE WHATSOEVER.  THE MODEL IS PROVIDED BY DOE/NREL/ALLIANCE \"AS IS\" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE EXPRESSLY DISCLAIMED.  IN NO EVENT SHALL DOE/NREL/ALLIANCE BE LIABLE FOR ANY SPECIAL, INDIRECT OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER, INCLUDING BUT NOT LIMITED TO CLAIMS ASSOCIATED WITH THE LOSS OF DATA OR PROFITS, WHICH MAY RESULT FROM ANY ACTION IN CONTRACT, NEGLIGENCE OR OTHER TORTIOUS CLAIM THAT ARISES OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THE MODEL.<br><br>";
 		
 		wxString proxy( wxEasyCurl::GetProxyForURL( "https://sam.nrel.gov" ) );
 		if ( proxy.IsEmpty() ) proxy = "default";
@@ -2342,14 +2185,25 @@ public:
 
 		int nbit = (sizeof(void*) == 8) ? 64 : 32;
 		m_aboutHtml = "<html><body bgcolor=#ffffff>"
-			"<font color=#a9a9a9 face=\"Segoe UI Light\" size=10>System Advisor Model</font><br>"
-				"<font color=#a9a9a9 face=\"Segoe UI Light\" size=5>Version " + SamApp::VersionStr() + wxString::Format(", %d bit%s</font><br><br>", nbit, (const char*)patchStr.c_str() )
-				+ "<font color=#999999 face=\"Segoe UI Light\" size=3>" 
-				+ wxString::Format("SSC Version %d:  %s", ssc_version(), ssc_build_info() ) + "<br>"
-				+ wxString::Format("wxWidgets %d.%d.%d", wxMAJOR_VERSION, wxMINOR_VERSION, wxRELEASE_NUMBER )  + " on " + wxGetOsDescription() + "<br>Internet connection method: " + proxy + "<br>"				
-				+ wxString::Format("Display: %d x %d, magnification %lgx<br><br>", wxGetDisplaySize().x, wxGetDisplaySize().y, wxGetScreenHDScale() )
-				+ wxString(s_samDisclaimerHtml) + "</font>"
-				"</body></html>";
+			"<font color=#a9a9a9 face=\"Segoe UI Light\" size=10>System Advisor Model (Open Source)</font><br><p>"
+				"Copyright 2017 Alliance for Sustainable Energy, LLC<br>"
+
+"NOTICE: This software was developed at least in part by Alliance for Sustainable Energy, LLC (“Alliance”) under Contract No. DE-AC36-08GO28308 with the U.S. Department of Energy and the U.S. The Government retains for itself and others acting on its behalf a nonexclusive, paid-up, irrevocable worldwide license in the software to reproduce, prepare derivative works, distribute copies to the public, perform publicly and display publicly, and to permit others to do so.<br><br>"
+
+"Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:<br><br>"
+
+"1. Redistributions of source code must retain the above copyright notice, the above government rights notice, this list of conditions and the following disclaimer.<br><br>"
+
+"2. Redistributions in binary form must reproduce the above copyright notice, the above government rights notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.<br><br>"
+
+"3. The entire corresponding source code of any redistribution, with or without modification, by a research entity, including but not limited to any contracting manager/operator of a United States National Laboratory, any institution of higher learning, and any non-profit organization, must be made publicly available under this license for as long as the redistribution is made available by the research entity.<br><br>"
+
+"4. Redistribution of this software, without modification, must refer to the software by the same designation. Redistribution of a modified version of this software (i) may not refer to the modified version by the same designation, or by any confusingly similar designation, and (ii) must refer to the underlying software originally provided by Alliance as “System Advisor Model” or “SAM”. Except to comply with the foregoing, the terms “System Advisor Model”, “SAM”, or any confusingly similar designation may not be used to refer to any modified version of this software or any modified version of the underlying software originally provided by Alliance without the prior written consent of Alliance.<br><br>"
+
+"5. The name of the copyright holder, contributors, the United States Government, the United States Department of Energy, or any of their employees may not be used to endorse or promote products derived from this software without specific prior written permission.<br><br>"
+
+"THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS ""AS IS"" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER, CONTRIBUTORS, UNITED STATES GOVERNMENT OR UNITED STATES DEPARTMENT OF ENERGY, NOR ANY OF THEIR EMPLOYEES, BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE."  
+				"</p></font></body></html>";
 	}
 	void LoadPage( wxString url )
 	{
@@ -2524,7 +2378,6 @@ void SamApp::ShowHelp( const wxString &context )
 	gs_helpWin->Show( );
 	gs_helpWin->LoadPage( url );
 	gs_helpWin->Raise();
-	//gs_helpWin->SetTitle( "System Advisor Model Help {" + context + " --> " + url + "}" );
 }
 
 int SamApp::RevisionNumber()
