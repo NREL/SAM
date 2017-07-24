@@ -1,52 +1,3 @@
-/*******************************************************************************************************
-*  Copyright 2017 Alliance for Sustainable Energy, LLC
-*
-*  NOTICE: This software was developed at least in part by Alliance for Sustainable Energy, LLC
-*  (“Alliance”) under Contract No. DE-AC36-08GO28308 with the U.S. Department of Energy and the U.S.
-*  The Government retains for itself and others acting on its behalf a nonexclusive, paid-up,
-*  irrevocable worldwide license in the software to reproduce, prepare derivative works, distribute
-*  copies to the public, perform publicly and display publicly, and to permit others to do so.
-*
-*  Redistribution and use in source and binary forms, with or without modification, are permitted
-*  provided that the following conditions are met:
-*
-*  1. Redistributions of source code must retain the above copyright notice, the above government
-*  rights notice, this list of conditions and the following disclaimer.
-*
-*  2. Redistributions in binary form must reproduce the above copyright notice, the above government
-*  rights notice, this list of conditions and the following disclaimer in the documentation and/or
-*  other materials provided with the distribution.
-*
-*  3. The entire corresponding source code of any redistribution, with or without modification, by a
-*  research entity, including but not limited to any contracting manager/operator of a United States
-*  National Laboratory, any institution of higher learning, and any non-profit organization, must be
-*  made publicly available under this license for as long as the redistribution is made available by
-*  the research entity.
-*
-*  4. Redistribution of this software, without modification, must refer to the software by the same
-*  designation. Redistribution of a modified version of this software (i) may not refer to the modified
-*  version by the same designation, or by any confusingly similar designation, and (ii) must refer to
-*  the underlying software originally provided by Alliance as “System Advisor Model” or “SAM”. Except
-*  to comply with the foregoing, the terms “System Advisor Model”, “SAM”, or any confusingly similar
-*  designation may not be used to refer to any modified version of this software or any modified
-*  version of the underlying software originally provided by Alliance without the prior written consent
-*  of Alliance.
-*
-*  5. The name of the copyright holder, contributors, the United States Government, the United States
-*  Department of Energy, or any of their employees may not be used to endorse or promote products
-*  derived from this software without specific prior written permission.
-*
-*  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR
-*  IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
-*  FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER,
-*  CONTRIBUTORS, UNITED STATES GOVERNMENT OR UNITED STATES DEPARTMENT OF ENERGY, NOR ANY OF THEIR
-*  EMPLOYEES, BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
-*  DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
-*  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER
-*  IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF
-*  THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-*******************************************************************************************************/
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -86,11 +37,10 @@
 #include <wex/mswfatal.h>
 #endif
 
-#include "../resource/nrel.cpng"
+//#include "../resource/nrel.cpng"
 
 #include "main.h"
 #include "invoke.h"
-#include "registration.h"
 #include "script.h"
 #include "welcome.h"
 #include "macro.h"
@@ -100,7 +50,7 @@
 
 enum { ID_CREATE_PROJECT=wxID_HIGHEST+556, ID_OPEN_EXISTING, ID_RECENT_FILES,
 	ID_MESSAGES_HTML, ID_MESSAGE_THREAD, ID_DOWNLOAD_TIMER, ID_GET_STARTED,
-ID_NEW_SCRIPT, ID_OPEN_SCRIPT, ID_REGISTRATION, ID_TEST_SEGFAULT, ID_CHECK_FOR_UPDATES, 
+ID_NEW_SCRIPT, ID_OPEN_SCRIPT, ID_TEST_SEGFAULT, 
 ID_QUICK_START, ID_QSTART_SCRIPTS, ID_QSTART_SCRIPTS_MAX=ID_QSTART_SCRIPTS+MAX_SCRIPTS };
 
 BEGIN_EVENT_TABLE(WelcomeScreen, wxPanel)
@@ -114,8 +64,6 @@ BEGIN_EVENT_TABLE(WelcomeScreen, wxPanel)
 	EVT_BUTTON( wxID_ABOUT, WelcomeScreen::OnCommand )
 	EVT_BUTTON( wxID_HELP, WelcomeScreen::OnCommand )
 	EVT_BUTTON( wxID_EXIT, WelcomeScreen::OnCommand )
-	EVT_BUTTON( ID_REGISTRATION, WelcomeScreen::OnCommand )
-	EVT_BUTTON( ID_CHECK_FOR_UPDATES, WelcomeScreen::OnCommand )
 	EVT_BUTTON( ID_TEST_SEGFAULT, WelcomeScreen::OnCommand )
 
 	
@@ -147,8 +95,6 @@ WelcomeScreen::WelcomeScreen(wxWindow *parent)
 
 	m_messageStatus = DOWNLOADING;
 
-	m_nrelLogo = wxBITMAP_PNG_FROM_DATA( nrel );
-	
 	m_htmlWin = new wxHtmlWindow(this, ID_MESSAGES_HTML, wxDefaultPosition, wxDefaultSize, wxBORDER_NONE);
 	m_htmlWin->SetFont( *wxNORMAL_FONT );
 	m_htmlWin->SetFonts( wxNORMAL_FONT->GetFaceName(), "courier" );
@@ -165,25 +111,13 @@ WelcomeScreen::WelcomeScreen(wxWindow *parent)
 	m_openScript = new wxMetroButton( this, ID_OPEN_SCRIPT, "Open script" );
 	m_newScript = new wxMetroButton( this, ID_NEW_SCRIPT, "New script" );
 	
-	m_btnRegistration = new wxMetroButton( this, ID_REGISTRATION, "Registration" );
 	m_btnGetStarted = new wxMetroButton( this, ID_QUICK_START, "Quick start for new users", wxNullBitmap, wxDefaultPosition, wxDefaultSize, wxMB_RIGHTARROW);
-	m_btnCheckForUpdates = new wxMetroButton( this, ID_CHECK_FOR_UPDATES, "Check for updates...");
 	m_btnHelp = new wxMetroButton( this, wxID_HELP, "Help contents" );
 	m_btnAbout = new wxMetroButton( this, wxID_ABOUT, "About" );
 	m_btnQuit = new wxMetroButton( this, wxID_EXIT, "Quit" );
 	
 	m_recent = new wxMetroListBox(this, ID_RECENT_FILES );
 	
-	/*
-	m_versionLabel = new wxStaticText( this, wxID_ANY, "   The most recent version of SAM is 2017.1.17r0..." );
-	m_versionLabel->Hide();
-	m_versionLabel->SetBackgroundColour( wxColour(242,87,95) );
-	m_versionLabel->SetForegroundColour( *wxWHITE );
-	m_versionLabel->SetFont( wxMetroTheme::Font( wxMT_SEMIBOLD, 10 ) );
-	*/
-
-	
-
 	LayoutWidgets();
 
 	m_ssCurlMessage.Start( SamApp::WebApi("welcome") );
@@ -299,7 +233,15 @@ void WelcomeScreen::RunWelcomeScript( const wxString &script )
 
 	if ( !vm.initialize( &env ) || !vm.run() )
 	{
-		UpdateMessagesHtml( "<pre>lkvm: " + vm.error() + "</pre>" );
+		if (vm.error().Lower() == "[0] no bytecode loaded")
+		{
+			if (sam_api_key == "")
+				UpdateMessagesHtml( "<html><body><font color=#a9a9a9 face=\"Segoe UI Light\" size=10>Please setup API keys, see private.h for details...</font></body></html>" );
+			else
+				UpdateMessagesHtml( "<pre></pre>" );
+		}
+		else
+			UpdateMessagesHtml( "<pre>lkvm: " + vm.error() + "</pre>" );
 		return;
 	}	
 
@@ -313,27 +255,6 @@ void WelcomeScreen::UpdateMessagesHtml(const wxString &html)
 	{
 		m_htmlWin->SetPage( html );
 		m_messageStatus = RETRIEVED;
-
-		/*
-		int start = html.Find( "<!--@" );
-		int end = html.Find( "@-->" );
-		if ( end > start+6 )
-		{
-			wxString ver = html.Mid( start+5, end - start - 5 );
-			
-			wxString cur = SamVer();
-			
-			m_versionLabel->SetLabel( 
-					"  The latest version of SAM is " 
-					+ ver + ".  You are using " + cur 
-					+ ".  Please visit the SAM website to upgrade." );
-
-			if ( ver != cur )
-			{
-				m_versionLabel->Show();
-				LayoutWidgets();
-			}
-		}*/
 
 	}
 	else
@@ -404,12 +325,10 @@ void WelcomeScreen::LayoutWidgets()
 	m_newScript->SetSize( BORDER, y, LEFTWIDTH/2, size3.GetHeight() );
 	m_openScript->SetSize( BORDER + LEFTWIDTH/2, y, LEFTWIDTH/2, size3.GetHeight() );
 	
-	m_btnGetStarted->SetSize( BORDER, top+ch-4*size3.y, LEFTWIDTH, size3.GetHeight() );
-	m_btnHelp->SetSize( BORDER, top+ch-3*size3.y, LEFTWIDTH, size3.GetHeight() );
-	m_btnCheckForUpdates->SetSize( BORDER, top+ch-2*size3.y, LEFTWIDTH, size3.GetHeight() );
-	m_btnRegistration->SetSize( BORDER, top+ch-size3.y, LEFTWIDTH/3, size3.y );
-	m_btnAbout->SetSize( BORDER+ LEFTWIDTH/3, top+ch-size3.y, LEFTWIDTH/3, size3.y );
-	m_btnQuit->SetSize( BORDER+LEFTWIDTH/3+LEFTWIDTH/3,top+ch-size3.y, LEFTWIDTH/3, size3.y );
+	m_btnGetStarted->SetSize( BORDER, top+ch-3*size3.y, LEFTWIDTH, size3.GetHeight() );
+	m_btnHelp->SetSize( BORDER, top+ch-2*size3.y, LEFTWIDTH, size3.GetHeight() );
+	m_btnAbout->SetSize( BORDER, top+ch-size3.y, LEFTWIDTH/2, size3.y );
+	m_btnQuit->SetSize( BORDER+LEFTWIDTH/2,top+ch-size3.y, LEFTWIDTH/2, size3.y );
 }
 
 void WelcomeScreen::OnPaint(wxPaintEvent &)
@@ -431,19 +350,13 @@ void WelcomeScreen::OnPaint(wxPaintEvent &)
 	
 	dc.SetFont( wxMetroTheme::Font( wxMT_LIGHT, 28 ) );	
 	dc.SetTextForeground( grey );
-	wxString title(wxString::Format("System Advisor %d", SamApp::VersionMajor() ));
+	wxString title("System Advisor (Open Source)");
 	wxSize tsz( dc.GetTextExtent( title ) );
 	dc.DrawText( title, BORDER, y/2-tsz.y/2 );
 
-	dc.DrawBitmap( m_nrelLogo, sz.GetWidth()-m_nrelLogo.GetWidth()-BORDER, y/2-m_nrelLogo.GetHeight()/2 );
-
-		
 	dc.SetPen( *wxTRANSPARENT_PEN );
 	dc.SetBrush( wxBrush( grey ) );
 	dc.DrawRectangle( BORDER, y, ((int)LEFTWIDTH0*xScale), sz.GetHeight() - y+1 );
-
-	//dc.SetPen( wxPen(wxMetroTheme::Colour( wxMT_ACCENT ), 1) );
-	//dc.DrawLine( BORDER, y, sz.GetWidth()-BORDER, y );
 
 	y += 20;	
 	dc.SetFont( wxMetroTheme::Font() );	
@@ -468,9 +381,6 @@ void WelcomeScreen::OnCommand( wxCommandEvent &evt )
 {
 	switch( evt.GetId() )
 	{
-	case ID_CHECK_FOR_UPDATES:
-		SamApp::CheckForUpdates( false );
-		break;
 	case ID_TEST_SEGFAULT:
 #ifdef __WXMSW__
 		wxMSWSegmentationFault();
@@ -556,9 +466,6 @@ void WelcomeScreen::OnCommand( wxCommandEvent &evt )
 		SamApp::Window()->Close();
 		break;
 
-	case ID_REGISTRATION:
-		wxOnlineRegistration::ShowDialog();
-		break;
 	}
 }
 

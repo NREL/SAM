@@ -6,6 +6,7 @@ curDir = userlocaldatadir();
 //outln( curDir );
 
 // Determine screen size and set default pop-up positions
+
 scrn = scrnres();
 
 defaultX = scrn[0] - scrn[0]/2;
@@ -32,11 +33,15 @@ close_project();
 /*************************************/
 /**         Welcome the User        **/
 
-wS = [500,500];
+wS = [500,500]; 
+//sdt - added description of SAM currency discrepancies
 exitIf( !msgbox("Welcome to the PV for India Wizard!\n" +
 	         "This tutorial will provide a series of pop-ups which will guide you through the use of the PV model in India.\n\n" +
-			 "Although you will interact with pop-up menus in this wizard, the relevant inputs will be highlighted in SAM so that you can find them later.\n\n", 
-			 [defaultX, defaultY, 500, 200]) );
+			 "Although you will interact with pop-up menus in this wizard, the relevant inputs will be highlighted in SAM so that you can find them later.\n\n"+
+				"Users should note that because of potential future work to create a fully internationalized version of SAM, the decision was made not to fully transfer financial inputs into rupees for this iteration of the tool.\n\n" +
+				"SAM accepts rupee denominated inputs within the wizard and will provide rupee denominated output values, but this is done through the LK scripting language rather than as a core functionality of SAM. \n\n" +
+				"Where necessary, the correct interpretation of input and output currency values has been provided throughout the tool. \n\n", 
+			 [defaultX, defaultY, 500, 500]) );
 			 
 
 
@@ -130,10 +135,16 @@ sysSize = in( "What is your desired PV array size (kW)?",
 			   [defaultX, defaultY] );
 exitIf(sysSize == "");
 
+sysSize = to_real(sysSize);//sdt
+
+set('desired_size', sysSize );
 
 // Review time
 millisleep(1000);
 transp( geom, 'yellow', 0 );
+
+
+
 
 
 /*************************************/
@@ -158,8 +169,8 @@ geom = widgetpos('per_module');
 transp( geom, 'yellow', 70 );
 millisleep(500);
 
-
-capitalCost = in( "What is your system's a capital cost per Watt?", 
+//sdt -added rupee in text
+capitalCost = in( "What is your system's capital cost per Watt in rupees?", 
                   get('per_module') , 
                   'Capital Cost',
                   [defaultX, defaultY]);
@@ -173,6 +184,7 @@ while( to_real(capitalCost) < 0 ){
 		                  [defaultX, defaultY]);
 	exitIf( capitalCost  == "" );
 }
+capitalCost= to_real(capitalCost);//sdt
 
 set('per_module', capitalCost );
 transp();
@@ -187,8 +199,8 @@ millisleep(500);
 
 omCostAry = get('om_capacity');
 omCost = omCostAry[0];
-
-omCost = in( "What is your annual maintenance cost $/kW?", 
+//sdt - added O&M rupees to O&M cost description
+omCost = in( "What is your annual maintenance cost in Rupees/kW?", 
                   omCost, 
                   'Annual Maintenance',
                   [defaultX, defaultY]);
@@ -226,6 +238,7 @@ exitIf( omCostEsc  == "" );
 
 nominalEsc = to_real(omCostEsc) - to_real(inflation);
 set('om_capacity_escal', nominalEsc); 
+
 // Review time
 // Can add message about escalation above inflation
 millisleep(1000);
@@ -257,6 +270,7 @@ while( (to_real(debtPercent) < 0) ||  (to_real(debtPercent) > 100)){
 		                  [defaultX, defaultY]);
 	exitIf( debtPercent  == "" );
 }
+debtPercent = to_real(debtPercent);
 
 set('debt_percent', debtPercent );
 transp();
@@ -283,6 +297,7 @@ while( (to_real(interestRate) < 0) ||  (to_real(interestRate) > 100) ){
 	exitIf( interestRate  == "" );
 }
 
+interestRate = to_real(interestRate);
 set('term_int_rate', interestRate );
 transp();
 
@@ -308,6 +323,7 @@ while( to_real(loanMoratorium) < 0 ){
 	exitIf( loanMoratorium  == "" );
 }
 
+loanMoratorium = to_real(loanMoratorium);
 set('loan_moratorium', loanMoratorium );
 
 
@@ -323,6 +339,7 @@ inflationRate = in( "What is your inflation rate?",
                   get('inflation_rate') , 
                   'Inflation rate',
                   [defaultX, defaultY]);
+
 exitIf( inflationRate  == "" );
 
 // Ensure user input is greater than zero
@@ -334,6 +351,7 @@ while( to_real(inflationRate) < 0 ){
 	exitIf( inflationRate  == "" );
 }
 
+inflationRate = to_real(inflationRate);
 set('inflation_rate', inflationRate );
 
 
@@ -368,6 +386,32 @@ taxRateAry[0] = taxRate;
 
 set('federal_tax_rate', taxRateAry );
 
+// o&m reserve -sdt - added O&M reserve input
+focusto('months_working_reserve');
+geom = widgetpos('months_working_reserve');
+transp( geom, 'yellow', 70 );
+millisleep(500);
+
+
+workingReserve = in( "What is the number of months of working capital (O&M) reserve?", 
+                  get('months_working_reserve') , 
+                  'Working capital reserve months',
+                  [defaultX, defaultY]);
+exitIf( workingReserve  == "" );
+
+// Ensure user input is greater than zero
+while( to_real(workingReserve) < 0 ){
+	workingReserve = in( "Number of months must be a value greater than zero", 
+						  get('months_working_reserve'), 
+						  "Working capital reserve months",
+		                  [defaultX, defaultY]);
+	exitIf( workingReserve  == "" );
+}
+
+workingReserve = to_real(workingReserve);
+
+set('months_working_reserve', workingReserve );
+
 
 // receivables reserve
 focusto('months_receivables_reserve');
@@ -391,6 +435,7 @@ while( to_real(receivablesReserve) < 0 ){
 	exitIf( receivablesReserve  == "" );
 }
 
+receivablesReserve= to_real(receivablesReserve);
 set('months_receivables_reserve', receivablesReserve );
 
 
@@ -415,8 +460,10 @@ while( to_real(reserveRate) < 0 ){
 		                  [defaultX, defaultY]);
 	exitIf( reserveRate  == "" );
 }
-
+reserveRate = to_real(reserveRate);
 set('reserves_interest', reserveRate );
+
+// Possibly ROE array entry in the future
 
 // Possibly ROE array entry in the future
 
@@ -512,6 +559,7 @@ if( runSim ){
 
 /* Show HTML results summary */	
 /* TODO - check to lcoe with ROE */
+
 //outvars = ['lcoe_nom', 'project_return_aftertax_npv','flip_actual_irr', 'flip_actual_year', 'min_dscr'];
 case = case_name();
 str_html = '<html><body>' + 
@@ -522,15 +570,17 @@ str_html = '<html><body>' +
 	{
           str_html += '<tr  bgcolor=#ffffff><td align="left">' +  varinfo( outvars[i] ){'label'} + '</td><td align="left">' + get(outvars[i]) + ' ' + varinfo( outvars[i] ){'units'} + '</td></tr>';
     }
-*/            
-	str_html += '<tr  bgcolor=#ffffff><td align="left">Levelized COG (nominal)</td><td align="left">' + sprintf('%.2f',to_real(get('lcog'))) + ' &#162;/kWh</td></tr>';  // _
-	str_html += '<tr  bgcolor=#ffffff><td align="left">Net present value</td><td align="left">' + sprintf('$%,',round(to_real(get('project_return_aftertax_npv')))) + '</td></tr>';
+*/    
+//sdt - adjusted output formats to denote rupees       
+	str_html += '<tr  bgcolor=#ffffff><td align="left">Levelized COG (nominal)</td><td align="left">' + sprintf('%.2f',to_real(get('lcog'))/100) + ' Rs/kWh</td></tr>';  // _
+	str_html += '<tr  bgcolor=#ffffff><td align="left">Net present value</td><td align="left">' + 'Rs ' + sprintf('%,',round(to_real(get('project_return_aftertax_npv')))) + '</td></tr>';
 	str_html += '<tr  bgcolor=#ffffff><td align="left">Internal rate of return (IRR)</td><td align="left">' + sprintf('%.2f',to_real(get('flip_actual_irr'))) + ' %</td></tr>';
 	str_html += '<tr  bgcolor=#ffffff><td align="left">Year IRR is achieved</td><td align="left">' + sprintf('%.0f',to_real(get('flip_actual_year'))) + '</td></tr>';
 	str_html += '<tr  bgcolor=#ffffff><td align="left">Minimum debt service coverage ratio (DSCR)</td><td align="left">' + sprintf('%.2f',to_real(get('min_dscr'))) + '</td></tr>';
 	str_html +=  '</table><br><br><br>';
 
 // cash flow line items
+
 	varcf = ['cf_om_capacity_expense','cf_feddepr_total','cf_debt_payment_interest','cf_reserve_interest','cf_return_on_equity_dollars','cf_lcog_costs'];
     str_html += '<table bgcolor=#dddddd width=100%>';
     ap = round(to_real(get('analysis_period')));
@@ -548,7 +598,7 @@ str_html = '<html><body>' +
 		cfline = get(varcf[i]);
 		for (j=0; j<#cfline; j++)
 		{
-			str_html += '<td align="right">' + sprintf('$%,',round(cfline[j])) + '</td>';
+			str_html += '<td align="right">' + 'Rs ' + sprintf('%,',round(cfline[j])) + '</td>';
 		}
 		str_html += '</tr>';
     }
@@ -714,7 +764,7 @@ if (runSector){
 		labels[i][1] = sector_labels[i];
 //		labels[i][1] = varinfo( vars[i] ){'label'};
 	}
-	stitle = "Levelized cost of generation " + get("lcog") + "cents/kWh";
+	stitle = "Levelized cost of generation " + get("lcog")/100 + "Rs/kWh"; //sdt
 	// create the plot
 	newplot();
 	sector( labels, {border=0, holesize=0} );
@@ -766,64 +816,74 @@ if( yesno("Would you like to generate a report based off these results?",[defaul
 	}
 	
 	ok = pdfreport( reportFile, 
-					{'template'=runtimedir() + 'reports/pvforindiawizard.samreport', 'metadata'=data });
+					{'template'=runtimedir() + 'quickstart/pvforindiawizard.samreport', 'metadata'=data });
 	
 	// Open Report
 	browse(reportFile);
 } 
 
+if (left(ostype(),3) == "win")
+{
+	if( yesno("Would you like to look at an Excel workbook based off these results?",[defaultX, defaultY]) ){
 
-if( yesno("Would you like to look at an Excel workbook based off these results?",[defaultX, defaultY]) ){
+		source = runtimedir() + 'spreadsheets/PV_for_India.xlsx';
+		destination = userlocaldatadir() + '/PV_for_India.xlsx';
 
-	source = runtimedir() + 'spreadsheets/PV_for_India.xlsx';
-    destination = userlocaldatadir() + '/PV_for_India.xlsx';
+		destination = copy_file( source, destination );
+		
+		xl = xl_create( destination );
+		capacity_mw = to_real(get('modulearray_power')) / 1000; 
+		xl_set( xl, capacity_mw, 'capacity_mw');
+		cap_fac= to_real(get('capacity_factor'))/100;
+		xl_set( xl, cap_fac, 'capacity_factor');
+		xl_set( xl, get('analysis_period'), 'analysis_period');
+		xl_set( xl, get('annual_energy'), 'generation'); //sdt - added output excel for annual generation
 
-	destination = copy_file( source, destination );
-	
-	xl = xl_create( destination );
-	capacity_mw = to_real(get('modulearray_power')) / 1000; 
-	xl_set( xl, capacity_mw, 'capacity_mw');
-	cap_fac= to_real(get('capacity_factor'))/100;
-	xl_set( xl, cap_fac, 'capacity_factor');
-	xl_set( xl, get('analysis_period'), 'analysis_period');
-	
-	cost_per_mw =  to_real(get('installed_per_capacity')) * 10; // Rs Lakh/MW
-	xl_set( xl, cost_per_mw, 'cost_per_mw');
-	
-	xl_set( xl, get('debt_percent'), 'debt_percent');
-	xl_set( xl, get('loan_moratorium'), 'loan_moratorium');
-	xl_set( xl, get('term_tenor'), 'term_tenor');
-	xl_set( xl, get('term_int_rate'), 'term_int_rate');
-	
-	equity = to_real(get('issuance_of_equity'))/100000; // RsLac
-	reserve0 = get('cf_reserve_receivables');// RsLac
-	xl_set( xl, equity, 'equity');
-	xl_set( xl, equity - reserve0[0]/100000, 'equity_wo_receivables');
-	
-	roeAry = get('roe_input');
-	xl_set( xl, roeAry[0], 'roe_10');
-	xl_set( xl, roeAry[10], 'roe_11');
-	
-	xl_set( xl, to_real(get('nominal_discount_rate'))*100, 'nominal_discount_rate');
-	xl_set( xl, get('federal_tax_rate'), 'tax_rate');
-	
-	deprAry = get('depr_custom_schedule');
-	xl_set( xl, deprAry[0], 'depr_12');
-	xl_set( xl, deprAry[12], 'depr_13');
-	
-	xl_set( xl, get('months_receivables_reserve'), 'months_receivables_reserve');
-	xl_set( xl, get('reserves_interest'), 'reserves_interest');
-	
-	om_mw = get('om_capacity'); //Rs Lakh/MW
-	xl_set( xl, om_mw[0]/100, 'om_mw');
-	inflation_rate=get('inflation_rate');
-	esc_rate=get('om_capacity_escal');
-	xl_set( xl, to_real(inflation_rate) + to_real(esc_rate), 'om_acceleration');
-	
-	xl_set( xl, get('ppa_price_input'), 'ppa_price');
-	
-}	
 
+		cost_per_mw =  to_real(get('installed_per_capacity')) * 10; // Rs Lakh/MW
+		xl_set( xl, cost_per_mw, 'cost_per_mw');
+		
+		xl_set( xl, get('debt_percent'), 'debt_percent');
+		xl_set( xl, get('loan_moratorium'), 'loan_moratorium');
+		xl_set( xl, get('term_tenor'), 'term_tenor');
+		xl_set( xl, get('term_int_rate'), 'term_int_rate');
+		
+		equity = to_real(get('issuance_of_equity'))/100000; // RsLac
+		reserve0 = get('cf_reserve_receivables');// RsLac
+		xl_set( xl, equity, 'equity');
+		xl_set( xl, equity - reserve0[0]/100000, 'equity_wo_receivables');
+		
+		roeAry = get('roe_input');
+		xl_set( xl, roeAry[0], 'roe_10');
+		xl_set( xl, roeAry[10], 'roe_11');
+		
+		xl_set( xl, to_real(get('nominal_discount_rate'))*100, 'nominal_discount_rate');
+		xl_set( xl, get('federal_tax_rate'), 'tax_rate');
+		
+		deprAry = get('depr_custom_schedule');
+		xl_set( xl, deprAry[0], 'depr_12');
+		xl_set( xl, deprAry[12], 'depr_13');
+		
+		xl_set( xl, get('months_receivables_reserve'), 'months_receivables_reserve');
+		xl_set( xl, get('reserves_interest'), 'reserves_interest');
+		
+		om_mw = get('om_capacity'); //Rs Lakh/MW
+		xl_set( xl, om_mw[0]/100, 'om_mw');
+		inflation_rate=get('inflation_rate');
+		esc_rate=get('om_capacity_escal');
+		xl_set( xl, to_real(inflation_rate) + to_real(esc_rate), 'om_acceleration');
+		
+		xl_set( xl, get('ppa_price_input'), 'ppa_price');
+
+
+		xl_set( xl, to_real(get('lcog'))/100,'lcog_summary');
+		xl_set( xl, to_real(get('project_return_aftertax_npv')),'npv_summary');
+		xl_set( xl, to_real(get('flip_actual_irr')),'irr_summary');
+		xl_set( xl, to_real(get('flip_actual_year')),'irr_year_summary');
+		xl_set( xl, to_real(get('min_dscr')),'dscr_summary');
+			
+	}	
+}
 
 // Delete temporary tornado plot
 //if (file_exists(plotLocation))
