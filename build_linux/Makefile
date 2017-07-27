@@ -1,4 +1,4 @@
-SAMVER=2017.1.17
+SAMVER=Open.Source
 SAMVERDASH=$(subst .,-,$(SAMVER))
 SRCDIR = ../src
 VPATH = $(SRCDIR)
@@ -6,8 +6,6 @@ VPATH = $(SRCDIR)
 WEXDIR = ../../wex
 LKDIR = ../../lk
 SSCDIR = ../../ssc
-LHSDIR = ../../lhs/src
-STEPWISEDIR = ../../stepwise
 
 WEXLIB = $(WEXDIR)/wexuxwx3.a
 LKLIB = $(LKDIR)/lkuxwx3.a
@@ -15,8 +13,8 @@ SSCLIB = ssc.so
 
 CC = gcc
 CXX = g++
-CFLAGS = -g -DLK_USE_WXWIDGETS -I. -I$(SRCDIR) -I$(WEXDIR)/include -I$(LKDIR)/include -I$(SSCDIR) `wx-config --cflags`
-LDFLAGS = -std=c++0x $(SSCLIB) $(LKLIB) $(WEXLIB) `wx-config --libs propgrid` `wx-config --libs aui` `wx-config --libs stc` `wx-config --libs richtext` `wx-config --libs` -lm -lstdc++ -lcurl
+CFLAGS = -g -DLK_USE_WXWIDGETS -I. -I$(SRCDIR) -I$(WEXDIR)/include -I$(LKDIR)/include -I$(SSCDIR) `wx-config-3 --cflags`
+LDFLAGS = -std=c++0x $(SSCLIB) $(LKLIB) $(WEXLIB) `wx-config-3 --libs propgrid` `wx-config-3 --libs aui` `wx-config-3 --libs stc` `wx-config-3 --libs richtext` `wx-config-3 --libs` -lm -lstdc++ -lcurl
 CXXFLAGS=-std=c++0x $(CFLAGS)
 
 
@@ -31,7 +29,6 @@ OBJECTS = ide.o \
 	urdb.o \
 	nsrdb.o \
 	windtoolkit.o \
-	registration.o \
 	gridsupport.o \
 	macro.o \
 	p50p90.o \
@@ -73,10 +70,8 @@ $(TARGET): $(OBJECTS) $(WEXLIB) $(LKLIB) $(SSCDIR)/build_linux/$(SSCLIB)
 	mkdir -p ../deploy/linux_64
 	cp $(TARGET) ../deploy/linux_64
 	cp $(SSCDIR)/build_linux/$(SSCLIB) ../deploy/linux_64
-	cp $(LHSDIR)/lhs.bin ../deploy/runtime/bin
-	cp $(STEPWISEDIR)/stepwise.bin ../deploy/runtime/bin
-	make -f Makefile-webupd
-	cp webupd.bin ../deploy/linux_64
+	cp ../Sandia/linux/lhs.bin ../deploy/runtime/bin
+	cp ../Sandia/linux/stepwise.bin ../deploy/runtime/bin
 	rm -rf ../deploy/linux_64/GtkTheme
 	cp -R ./GtkTheme ../deploy/linux_64
 
@@ -130,3 +125,6 @@ DEPENDS = $(OBJECTS:.o=.d)
 
 clean:
 	rm -rf $(OBJECTS) $(TARGET) *.d
+	rm -rf ./sam.deploy sam.deploy.tar.gz
+	rm -rf ../deploy/linux_64/GtkTheme
+	rm install0
