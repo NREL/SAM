@@ -300,17 +300,14 @@ __pycache__/
 *.run
 
 # Specific SAM build ignores
-SDKtool
-TCSConsole
-dltest
 set_env_*
-ssc/examples/17_04_24_sco2_csp_udpc_tables_Craig.lk
-ssc/examples/sco2.lk
-ssc/examples/sco2_csp_system.lk
-ssc/examples/sco2_csp_system_SunShot.lk
-ssc/examples/sco2_csp_system_SunShot_Gen3.lk
-ssc/examples/sco2_csp_ud_pc_tables.lk
-ssc/examples/sco2_csp_ud_pc_tables_SAM_test.lk
-ssc/examples/sco2_design_point.lk
-ssc/examples/solar_pilot_example.lk
-set_env_sj.bat
+webup/*
+deploy/runtime/patches/*
+deploy/webapis.conf
+src/registration*
+resource/nrel*
+resource/sam*
+resource/splash*
+
+
+
