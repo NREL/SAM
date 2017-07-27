@@ -28,7 +28,6 @@ OBJECTS = ide.o \
 	urdb.o \
 	nsrdb.o \
 	windtoolkit.o \
-	registration.o \
 	gridsupport.o \
 	macro.o \
 	p50p90.o \
@@ -72,10 +71,9 @@ $(TARGET): $(OBJECTS) $(WEXLIB) $(LKLIB) $(SSCLIB)
 	mkdir -p $(TARGET).app/Contents/MacOS
 	mkdir -p $(TARGET).app/Contents/Resources
 	mkdir -p $(TARGET).app/Contents/runtime
-	make -f Makefile-webupd
 	python copy_runtime.py
-	cp lhs.bin $(TARGET).app/Contents/runtime/bin
-	cp stepwise.bin $(TARGET).app/Contents/runtime/bin
+	cp ../Sandia/osx/lhs.bin $(TARGET).app/Contents/runtime/bin
+	cp ../Sandia/osx/stepwise.bin $(TARGET).app/Contents/runtime/bin
 	cp $(TARGET) ./$(TARGET).app/Contents/MacOS
 	cp $(TARGET).icns ./$(TARGET).app/Contents/Resources
 	cp Info-$(TARGET).plist ./$(TARGET).app/Contents/Info.plist
