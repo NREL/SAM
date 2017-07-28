@@ -85,7 +85,7 @@ public:
 		m_counter = 0;
 	}
 
-	virtual bool on_run( int line )
+	virtual bool on_run( int  )
 	{
 		// expression & (constant-1) is equivalent to expression % constant where 
 		// constant is a power of two: so use bitwise operator for better performance
@@ -104,7 +104,7 @@ class my_vm : public lk::vm
 	size_t m_counter;
 public:
 	my_vm( MacroEngine *me ) : m_me(me) { }
-	virtual bool on_run( const lk::srcpos_t &sp )
+	virtual bool on_run( const lk::srcpos_t & )
 	{
 		wxGetApp().Yield( true );
 		return !m_me->IsStopFlagSet();

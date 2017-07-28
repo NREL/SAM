@@ -386,7 +386,6 @@ void P50P90Form::OnSimulate( wxCommandEvent & )
 		// update results
 		m_grid->Freeze();
 		m_grid->ResizeGrid( save_list.size(), output_stats.ncols() );
-		int row = 0;
 		for( size_t i=0;i<save_list.size();i++ )
 		{
 			int index = save_list[i];

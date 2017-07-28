@@ -222,7 +222,7 @@ EVT_GRID_CELL_LEFT_CLICK(ParametricGrid::OnLeftClick)
 END_EVENT_TABLE()
 
 
-ParametricGrid::ParametricGrid(wxWindow *parent, wxWindowID id, const wxPoint &pos, const wxSize &size, long style, const wxString &name)
+ParametricGrid::ParametricGrid(wxWindow *parent, wxWindowID id, const wxPoint &pos, const wxSize &size, long , const wxString &)
 : wxExtGridCtrl(parent, id, pos, size)
 {
 }
@@ -805,7 +805,6 @@ bool ParametricViewer::Plot(int col, Graph &g)
 				case VV_ARRAY:
 				{
 					size_t n;
-					float *y = m_grid_data->GetArray(0, col, &n); // checked above for rows>0
 
 					if (n == 12) // asume monthly
 					{
@@ -1269,7 +1268,7 @@ wxString ParametricGridData::GetColLabelValue(int col)
 }
 
 
-VarInfo* ParametricGridData::GetVarInfo(int row, int col)
+VarInfo* ParametricGridData::GetVarInfo(int , int col)
 {
 	VarInfo* vi = NULL;
 	if ((col>-1) && (col < m_cols))
@@ -1280,7 +1279,7 @@ VarInfo* ParametricGridData::GetVarInfo(int row, int col)
 	return vi;
 }
 
-void ParametricGridData::SetVarInfo(int row, int col, VarInfo *vi)
+void ParametricGridData::SetVarInfo(int , int col, VarInfo *vi)
 {
 	if ((col>-1) && (col < m_cols))
 	{
@@ -1905,8 +1904,6 @@ bool ParametricGridData::RunSimulations_multi()
 		sims.push_back(m_par.Runs[i]);
 	}
 
-
-	int time_prep = sw.Time();
 	sw.Start();
 
 	if ( nthread > sims.size() ) nthread = sims.size();
@@ -1915,7 +1912,6 @@ bool ParametricGridData::RunSimulations_multi()
 	size_t nok = 0;
 	nok = Simulation::DispatchThreads(tpd, sims, nthread);
 
-	int time_sim = sw.Time();
 	sw.Start();
 
 	for (size_t i = 0; i < m_par.Runs.size(); i++)
@@ -1952,8 +1948,6 @@ bool ParametricGridData::RunSimulations_multi()
 		}
 	}
 	sims.clear();
-
-	int time_outputs = sw.Time();
 
 	return true;
 };
@@ -2431,7 +2425,7 @@ void Parametric_QS::UpdateFromParametricData()
 }
 
 
-void Parametric_QS::OnEditValues(wxCommandEvent &evt)
+void Parametric_QS::OnEditValues(wxCommandEvent &)
 {
 	if (!m_case)
 		return;
@@ -2590,7 +2584,7 @@ void Parametric_QS::OnValueDblClick(wxCommandEvent &evt)
 }
 
 
-void Parametric_QS::OnRemoveVariable(wxCommandEvent &evt)
+void Parametric_QS::OnRemoveVariable(wxCommandEvent &)
 {
 	if (!m_case)
 		return;
@@ -2626,7 +2620,7 @@ void Parametric_QS::OnRemoveVariable(wxCommandEvent &evt)
 
 }
 
-void Parametric_QS::OnAddVariable(wxCommandEvent &evt)
+void Parametric_QS::OnAddVariable(wxCommandEvent &)
 {
 	if (!m_case)
 		return;
@@ -2676,7 +2670,7 @@ void Parametric_QS::OnAddVariable(wxCommandEvent &evt)
 
 
 
-void Parametric_QS::OnVariableSelect(wxCommandEvent &evt)
+void Parametric_QS::OnVariableSelect(wxCommandEvent &)
 {
 	RefreshValuesList();
 }

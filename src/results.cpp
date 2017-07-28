@@ -86,6 +86,8 @@
 #include "invoke.h"
 #include "lossdiag.h"
 
+#pragma warning(disable: 4996) // deprecated code warnings from wxWidgets
+
 static wxString UnsplitCells(const matrix_t<wxString> &table, char colsep, char rowsep, bool quote_colsep)
 {
 	wxString result = "";
@@ -1563,14 +1565,14 @@ wxSize MetricsTable::DoGetBestSize() const
 }
 
 
-void MetricsTable::OnPaint(wxPaintEvent &evt)
+void MetricsTable::OnPaint(wxPaintEvent &)
 {
 	wxAutoBufferedPaintDC dc(this);
 	int cwidth, cheight;
 	GetClientSize(&cwidth, &cheight);
 	
 	dc.SetPen( wxPen( wxColour(50,50,50), 1) );
-	dc.SetBrush( wxBrush( wxColour(50,50,50), wxSOLID ) );
+	dc.SetBrush( wxBrush( wxColour(50,50,50), wxSOLID ) ); 
 	dc.DrawRectangle(0,0,cwidth,cheight);
 
 	dc.SetFont( GetFont() );
@@ -1633,7 +1635,7 @@ void MetricsTable::OnPaint(wxPaintEvent &evt)
 	dc.DestroyClippingRegion();
 }
 
-void MetricsTable::OnResize(wxSizeEvent &evt)
+void MetricsTable::OnResize(wxSizeEvent &)
 {
 	Refresh();
 }
@@ -1768,7 +1770,7 @@ public:
 		return wxEmptyString;
 	}
 
-    virtual void SetValue( int row, int col, const wxString &)
+    virtual void SetValue( int , int , const wxString &)
 	{
 		// nothing to do
 	}
@@ -1840,7 +1842,7 @@ public:
 			return wxString::Format("%d", row + 1);
 	}
 
-    virtual wxString GetTypeName( int row, int col )
+    virtual wxString GetTypeName( int , int  )
 	{
 		return wxGRID_VALUE_STRING;
 	}
@@ -2380,7 +2382,7 @@ void TabularBrowser::UpdateNotebook(ArraySizeKey grid_size, wxString var_name)
 		wxString group = group_by_name[var_name];
 		if (grid_size.n_cols == 1)
 		{
-			m_notebook->AddPage(m_gridMap[grid_size], group, wxID_ANY);
+			m_notebook->AddPage(m_gridMap[grid_size], group, (bool)wxID_ANY);
 			m_tabLabelsMap[grid_size] = group;
 		}
 		else
@@ -2389,7 +2391,7 @@ void TabularBrowser::UpdateNotebook(ArraySizeKey grid_size, wxString var_name)
 			wxString units = m_sim->GetUnits(var_name);
 			if (!units.IsEmpty())
 				label = label + " (" + units + ")";
-			m_notebook->AddPage(m_gridMap[grid_size], label , wxID_ANY);
+			m_notebook->AddPage(m_gridMap[grid_size], label , (bool)wxID_ANY);
 			m_tabLabelsMap[grid_size] = label;
 		}
 		m_numberOfTabs++;
@@ -2977,8 +2979,6 @@ void TabularBrowser::OnVarSel( wxCommandEvent & )
 	{
 		wxString name = m_names[ row ];
 
-		VarValue *var_value = m_sim->GetOutput(name);
-
 		if (checked && m_selectedVars.Index(name) == wxNOT_FOUND)
 			ProcessAdded(name);
 		
@@ -2988,7 +2988,7 @@ void TabularBrowser::OnVarSel( wxCommandEvent & )
 		SetLastSelection();
 	}
 }
-void TabularBrowser::OnPageChanged(wxAuiNotebookEvent& event)
+void TabularBrowser::OnPageChanged(wxAuiNotebookEvent& )
 {
 	ArraySizeKey current_size = GetVariableSizeByPage();
 	if (m_gridMap.find(current_size) != m_gridMap.end())
@@ -3000,7 +3000,7 @@ void TabularBrowser::OnPageChanged(wxAuiNotebookEvent& event)
 	// wxMessageBox("Changed");
 }
 
-void TabularBrowser::OnPageClosed(wxAuiNotebookEvent& event)
+void TabularBrowser::OnPageClosed(wxAuiNotebookEvent& )
 {
 	int page_count = m_notebook->GetPageCount();
 	for (GridIterator it = m_gridMap.begin(); it != m_gridMap.end(); it++)
