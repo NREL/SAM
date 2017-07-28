@@ -387,7 +387,7 @@ void DefaultsManager::OnPopupMenu( wxCommandEvent &evt )
 	}
 }
 
-void DefaultsManager::OnListRightClick( wxMouseEvent &evt )
+void DefaultsManager::OnListRightClick( wxMouseEvent & )
 {
 	wxMenu menu;
 	menu.Append( ID_CHECK_SELECTED, "Check selected" );
@@ -408,7 +408,7 @@ void DefaultsManager::Log(const wxString &s)
 	m_output->AppendText( s + "\n" );
 }
 
-void DefaultsManager::OnQuery(wxCommandEvent &evt)
+void DefaultsManager::OnQuery(wxCommandEvent &)
 {
 	ClearLog();
 
@@ -434,7 +434,7 @@ void DefaultsManager::OnQuery(wxCommandEvent &evt)
 void DefaultsManager::OnLoad( wxCommandEvent & )
 {
 	ClearLog();
-	int i=0;
+	size_t i=0;
 	for (i=0;i<(int)m_configList->GetCount();i++)
 		if (m_configList->IsChecked(i)) break;
 
@@ -580,7 +580,7 @@ void DefaultsManager::OnDeleteVar(wxCommandEvent &)
 }
 
 
-void DefaultsManager::OnLookupVar( wxCommandEvent &evt )
+void DefaultsManager::OnLookupVar( wxCommandEvent & )
 {
 	VarSelectDialog dlg( this, "Select Input Variable" );
 	if ( wxID_OK == dlg.ShowModal() )

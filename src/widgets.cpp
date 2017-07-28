@@ -185,7 +185,7 @@ void AFSchedNumeric::SetSchedLen(int len)
 #define SCHEDNUM_FONT wxFont( 5, wxFONTFAMILY_SWISS, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD, false, "arial" )
 
 
-void AFSchedNumeric::OnResize(wxSizeEvent &evt)
+void AFSchedNumeric::OnResize(wxSizeEvent &)
 {
 	int cw, ch;
 	GetClientSize(&cw,&ch);
@@ -209,7 +209,7 @@ void AFSchedNumeric::UpdateSwitchWidth()
 	m_switchWidth = 2 + ( sz1.x > sz2.x ? sz1.x : sz2.x );
 }
 
-void AFSchedNumeric::OnPaint(wxPaintEvent &evt)
+void AFSchedNumeric::OnPaint(wxPaintEvent &)
 {
 	wxAutoBufferedPaintDC pdc(this);
 	if (!bScheduleOnly)
@@ -312,7 +312,7 @@ public:
 		SetSizer( sizer );
 	}
 
-	void OnCopyData(wxCommandEvent &evt)
+	void OnCopyData(wxCommandEvent &)
 	{
 		if (wxTheClipboard->Open())
 		{
@@ -328,7 +328,7 @@ public:
 		}
 	}
 
-	void OnPasteData(wxCommandEvent &evt)
+	void OnPasteData(wxCommandEvent &)
 	{
 		if (wxTheClipboard->Open())
 		{
@@ -345,7 +345,7 @@ public:
 		}
 	}
 
-	void OnValueCount(wxCommandEvent &evt)
+	void OnValueCount(wxCommandEvent &)
 	{
 		int nrows = m_numVals->AsInteger();
 
@@ -387,7 +387,7 @@ BEGIN_EVENT_TABLE( SchedNumericDialog, wxDialog )
 	EVT_BUTTON( wxID_HELP, SchedNumericDialog::OnHelp )
 END_EVENT_TABLE()
 
-void AFSchedNumeric::OnEditSchedule(wxCommandEvent &evt)
+void AFSchedNumeric::OnEditSchedule(wxCommandEvent &)
 {
 	SchedNumericDialog dlg(this, "Edit Schedule", GetLabel(), GetDescription(), m_fixedLen < 1 );
 	wxExtGridCtrl *grid = dlg.GetGrid();
@@ -881,7 +881,7 @@ void AFSearchListBox::OnFilter( wxCommandEvent & )
 	m_list->SetStringSelection( sel );
 }
 
-void AFSearchListBox::OnSelect( wxCommandEvent &e )
+void AFSearchListBox::OnSelect( wxCommandEvent & )
 {
 	wxCommandEvent edup( wxEVT_COMMAND_LISTBOX_SELECTED, this->GetId() );
 	edup.SetEventObject( this );
@@ -935,12 +935,12 @@ public:
 		return 1;
 	}
 
-	virtual bool IsEmptyCell( int row, int col )
+	virtual bool IsEmptyCell( int , int )
 	{
 		return false;
 	}
 
-	virtual wxString GetValue( int row, int col )
+	virtual wxString GetValue( int row, int  )
 	{
 		if (d_arr && row >= 0 && row < d_arr->size())
 			return wxString::Format("%g", d_arr->at(row));
@@ -974,22 +974,22 @@ public:
 		return wxString::Format("%d",row+1);
 	}
 
-	virtual wxString GetColLabelValue( int col )
+	virtual wxString GetColLabelValue( int  )
 	{
 		return label.IsEmpty()?"Value":label;
 	}
 
-	virtual wxString GetTypeName( int row, int col )
+	virtual wxString GetTypeName( int , int  )
 	{
 		return wxGRID_VALUE_STRING;
 	}
 
-	virtual bool CanGetValueAs( int row, int col, const wxString& typeName )
+	virtual bool CanGetValueAs( int , int , const wxString& typeName )
 	{
 		return typeName==wxGRID_VALUE_STRING;
 	}
 
-	virtual bool CanSetValueAs( int row, int col, const wxString& typeName )
+	virtual bool CanSetValueAs( int , int , const wxString& typeName )
 	{
 		return typeName==wxGRID_VALUE_STRING;
 	}
@@ -1123,7 +1123,7 @@ public:
 		return (int)d_mat->ncols();
 	}
 
-	bool IsEmptyCell(int row, int col)
+	bool IsEmptyCell(int , int )
 	{ 
 		return false;
 	}
@@ -1166,7 +1166,7 @@ public:
 		return wxString::Format("%d", col + 1);
 	}
 
-	wxString GetTypeName(int row, int col)
+	wxString GetTypeName(int , int col)
 	{
 		if (col == choice_col)
 			return "GridCellChoice";
@@ -1175,12 +1175,12 @@ public:
 		
 	}
 
-	bool CanGetValueAs(int row, int col, const wxString& typeName)
+	bool CanGetValueAs(int , int , const wxString& typeName)
 	{
 		return typeName == wxGRID_VALUE_STRING;
 	}
 
-	bool CanSetValueAs(int row, int col, const wxString& typeName)
+	bool CanSetValueAs(int , int , const wxString& typeName)
 	{
 		return typeName == wxGRID_VALUE_STRING;
 	}
@@ -2117,7 +2117,7 @@ void AFDataMatrixCtrl::OnCellChange(wxGridEvent &evt)
 	GetEventHandler()->ProcessEvent(dmcevt);
 }
 
-void AFDataMatrixCtrl::OnRowsColsChange(wxCommandEvent &evt)
+void AFDataMatrixCtrl::OnRowsColsChange(wxCommandEvent &)
 {
 	size_t rows = (size_t)m_numRows->AsInteger();
 	size_t cols = (size_t)m_numCols->AsInteger();
@@ -2535,7 +2535,7 @@ void AFValueMatrixButton::SetColLabels(const wxArrayString &labels)
 		mColLabels[i].Replace("\\n", "\n");
 }
 
-void AFValueMatrixButton::OnResize(wxSizeEvent &evt)
+void AFValueMatrixButton::OnResize(wxSizeEvent &)
 {
 	int cw, ch;
 	GetClientSize(&cw,&ch);
@@ -2543,7 +2543,7 @@ void AFValueMatrixButton::OnResize(wxSizeEvent &evt)
 	mBtnEditTable->SetSize(m_switchWidth,0,cw-m_switchWidth,ch);
 }
 
-void AFValueMatrixButton::OnPaint(wxPaintEvent &evt)
+void AFValueMatrixButton::OnPaint(wxPaintEvent &)
 {
 	wxAutoBufferedPaintDC pdc(this);
 
@@ -2575,7 +2575,7 @@ void AFValueMatrixButton::OnClick(wxMouseEvent &evt)
 	DispatchEvent();
 }
 
-void AFValueMatrixButton::OnEditTable(wxCommandEvent &evt)
+void AFValueMatrixButton::OnEditTable(wxCommandEvent &)
 {
 	DataGridDialog dlg(this, "Edit Tabular Data");
 	dlg.SetData( mTable, &mColLabels );
@@ -2586,7 +2586,7 @@ void AFValueMatrixButton::OnEditTable(wxCommandEvent &evt)
 	}
 }
 
-void AFValueMatrixButton::OnValChanged(wxCommandEvent &evt)
+void AFValueMatrixButton::OnValChanged(wxCommandEvent &)
 {
 	DispatchEvent();
 }
@@ -2900,12 +2900,12 @@ void AFMonthByHourFactorCtrl::OnGridRangeSelect(wxGridRangeSelectEvent &evt)
 	evt.Skip();
 }
 
-void AFMonthByHourFactorCtrl::OnGridEditorShown(wxGridEvent &evt)
+void AFMonthByHourFactorCtrl::OnGridEditorShown(wxGridEvent &)
 {
 	bSkipSelect = true;
 }
 
-void AFMonthByHourFactorCtrl::OnGridEditorHidden(wxGridEvent &evt)
+void AFMonthByHourFactorCtrl::OnGridEditorHidden(wxGridEvent &)
 {
 	bSkipSelect = false;
 }
@@ -2928,7 +2928,7 @@ void AFMonthByHourFactorCtrl::OnGridCellSelect(wxGridEvent &evt)
 	evt.Skip();
 }
 
-void AFMonthByHourFactorCtrl::OnApply(wxCommandEvent &evt)
+void AFMonthByHourFactorCtrl::OnApply(wxCommandEvent &)
 {
 	double sf = mShadingVal->Value();
 	if (sf <= -1)
@@ -2950,7 +2950,7 @@ void AFMonthByHourFactorCtrl::OnApply(wxCommandEvent &evt)
 	ApplyVal(-1,-1,sf);
 }
 
-void AFMonthByHourFactorCtrl::OnImport(wxCommandEvent &evt)
+void AFMonthByHourFactorCtrl::OnImport(wxCommandEvent &)
 {
 	wxFileDialog fdlg(this, "Import Shading Factors", "", "",
 		"CSV Files (*.csv)|*.csv|All Files (*.*)|*.*", wxFD_OPEN );
@@ -2982,7 +2982,7 @@ void AFMonthByHourFactorCtrl::OnImport(wxCommandEvent &evt)
 	}
 }
 
-void AFMonthByHourFactorCtrl::OnCopy(wxCommandEvent &evt)
+void AFMonthByHourFactorCtrl::OnCopy(wxCommandEvent &)
 {
 	wxBusyCursor busycurs;
 	wxString sdata;
@@ -3003,7 +3003,7 @@ void AFMonthByHourFactorCtrl::OnCopy(wxCommandEvent &evt)
 	}
 }
 
-void AFMonthByHourFactorCtrl::OnPaste(wxCommandEvent &evt)
+void AFMonthByHourFactorCtrl::OnPaste(wxCommandEvent &)
 {
 	wxBusyCursor busycurs;
 	// resize rows per data pasted
@@ -3051,7 +3051,7 @@ void AFMonthByHourFactorCtrl::OnPaste(wxCommandEvent &evt)
 
 
 
-void AFMonthByHourFactorCtrl::OnExport(wxCommandEvent &evt)
+void AFMonthByHourFactorCtrl::OnExport(wxCommandEvent &)
 {
 	wxFileDialog fdlg(this, "Export Shading Factors", "", "shading_factors.csv",
 		"CSV Files (*.csv)|*.csv|All Files (*.*)|*.*", wxFD_SAVE | wxFD_OVERWRITE_PROMPT );
