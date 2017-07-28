@@ -526,7 +526,6 @@ wxString GridCellArrayRenderer::GetString(const wxGrid& grid, int row, int col)
 			if (vv->Type() == VV_ARRAY)
 			{
 				size_t n;
-				float *v = vv->Array(&n);
 				if (n == 12)
 					text = "monthly...";
 				else if (n == 8760)
@@ -736,7 +735,7 @@ wxString GridCellArrayEditor::GetString(int row, int col, const wxGrid *grid)
 
 
 
-bool GridCellArrayEditor::EndEdit(int row, int col, const wxGrid *grid, const wxString& WXUNUSED(oldval), wxString *newval)
+bool GridCellArrayEditor::EndEdit(int , int , const wxGrid *, const wxString& WXUNUSED(oldval), wxString *newval)
 {
 	wxString new_cell_value = m_new_cell_value;
 	if (new_cell_value == m_cell_value)
@@ -753,7 +752,7 @@ bool GridCellArrayEditor::EndEdit(int row, int col, const wxGrid *grid, const wx
 	return true;
 }
 
-void GridCellArrayEditor::ApplyEdit(int row, int col, wxGrid *grid)
+void GridCellArrayEditor::ApplyEdit(int , int , wxGrid *)
 {
 // read only display
 	m_cell_value.clear();
@@ -921,7 +920,7 @@ bool GridCellCalculatedEditor::IsAcceptedKey(wxKeyEvent& event)
 }
 
 
-bool GridCellCalculatedEditor::DisplayEditor(wxString &title, wxString &label, wxGrid *grid, VarValue *vv)
+bool GridCellCalculatedEditor::DisplayEditor(wxString &, wxString &, wxGrid *, VarValue *)
 {
 //	Text()->SetFocus();
 
@@ -954,7 +953,7 @@ wxString GridCellCalculatedEditor::GetString(int row, int col, const wxGrid *gri
 
 
 
-bool GridCellCalculatedEditor::EndEdit(int row, int col, const wxGrid *grid, const wxString& WXUNUSED(oldval), wxString *newval)
+bool GridCellCalculatedEditor::EndEdit(int , int , const wxGrid *, const wxString& WXUNUSED(oldval), wxString *newval)
 {
 	wxString new_cell_value = m_new_cell_value;
 	if (new_cell_value == m_cell_value)
@@ -970,7 +969,7 @@ bool GridCellCalculatedEditor::EndEdit(int row, int col, const wxGrid *grid, con
 	return true;
 }
 
-void GridCellCalculatedEditor::ApplyEdit(int row, int col, wxGrid *grid)
+void GridCellCalculatedEditor::ApplyEdit(int , int , wxGrid *)
 {
 	// read only display
 	m_cell_value.clear();
@@ -1643,9 +1642,9 @@ void GridCellChoiceEditor::SetSize(const wxRect& rect)
 }
 
 
-void GridCellChoiceEditor::PaintBackground(wxDC& dc,
-	const wxRect& rectCell,
-	const wxGridCellAttr& attr)
+void GridCellChoiceEditor::PaintBackground(wxDC& ,
+	const wxRect& ,
+	const wxGridCellAttr& )
 {
 	// as we fill the entire client area, don't do anything here to minimize
 	// flicker
@@ -1757,7 +1756,6 @@ void GridCellChoiceEditor::SetParameters(const wxString& params)
 	m_choices.Empty();
 
 	wxStringTokenizer tk(params, wxT(','));
-	unsigned int i = 0;
 	while (tk.HasMoreTokens())
 	{
 		wxString choice = tk.GetNextToken();

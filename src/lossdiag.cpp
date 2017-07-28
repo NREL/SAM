@@ -94,7 +94,7 @@ bool LossDiagramObject::Copy( wxPageObject *obj )
 		return false;
 }
 
-bool LossDiagramObject::EditObject( wxPageLayoutCtrl *layout_window )
+bool LossDiagramObject::EditObject( wxPageLayoutCtrl * )
 {
 	wxBusyInfo info("Updating loss diagram from current case." );
 	wxMilliSleep(200);
@@ -180,7 +180,7 @@ void LossDiagramObject::Render( wxPageOutputDevice &dv )
 	
 	float sec_height = th*3; 
 	dv.Color( *wxBLACK );
-	float linewidth = 0.015;
+	float linewidth = (float)0.015;
 	dv.LineStyle( linewidth, wxPageOutputDevice::SOLID );
 	for( size_t i=0;i<m_list.size();i++ )
 	{
@@ -246,12 +246,12 @@ void LossDiagramObject::Render( wxPageOutputDevice &dv )
 	dv.Line( x+cursize/2, y+th, x+cursize, y );
 }
 
-bool LossDiagramObject::ReadData( wxInputStream &is )
+bool LossDiagramObject::ReadData( wxInputStream & )
 {
 	return true;
 }
 
-bool LossDiagramObject::WriteData( wxOutputStream &os )
+bool LossDiagramObject::WriteData( wxOutputStream & )
 {
 	return true;
 }

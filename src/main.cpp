@@ -128,7 +128,7 @@ public:
 		GetFrame()->SetPosition( wxPoint( 5, 5 ) );
 		GetFrame()->SetClientSize( wxScaleSize(1000,200) );
 	}
-	virtual bool OnFrameClose( wxFrame *frame ) {
+	virtual bool OnFrameClose( wxFrame *) {
 		g_logWindow = 0; // clear the global pointer, then delete the frame
 		return true;
 	}
@@ -689,7 +689,6 @@ void MainWindow::CaseVarGrid(std::vector<Case*> &cases)
 		}
 
 		grid->CreateGrid(num_rows, num_cols);
-		size_t idx = 0;
 		grid->Freeze();
 		// wxGrid only support 6500 characters per cell (empirically determined) - use 1024 for display
 		size_t col = 0, row=0;
@@ -1059,7 +1058,7 @@ void MainWindow::OnCaseTabChange( wxCommandEvent &evt )
 	//wxMessageBox( wxString::Format("Case tab changed: %d", evt.GetSelection() ) );
 }
 
-void MainWindow::OnCaseTabButton( wxCommandEvent &evt )
+void MainWindow::OnCaseTabButton( wxCommandEvent & )
 {
 	wxMetroPopupMenu menu;
 	menu.Append( ID_CASE_SIMULATE, "Simulate\tF5" );
@@ -1253,16 +1252,16 @@ public:
 
 		int width, height;
 		GetClientSize( &width, &height );
-
+		 
 		
 		// dc.SetBackground( wxBrush( wxMetroTheme::Colour( wxMT_ACCENT ) ) ); // metro blue
 		// dc.SetBackground( wxBrush( wxColour(219, 192, 4) ) ); // bright yellow/orange
 		// dc.SetBackground( wxBrush( wxColour(2, 152, 152) ) ); // bright teal <- obviously not the best color ever.
 		// dc.SetBackground( wxBrush( wxColour(120, 67, 163) ) ); // violet
 		// dc.SetBackground( wxBrush( wxColour(191, 38, 96) ) ); // reddish pink
-		//dc.SetBackground( wxBrush( wxColour(15,79,34) ) ); // dark forest green	
+		dc.SetBackground( wxBrush( wxColour(15,79,34) ) ); // dark forest green	
 		// dc.SetBackground( wxBrush( wxColour(130,186,0) ) ); // pale lime green		
-		dc.SetBackground(wxBrush(wxColour(241, 47, 144))); // hot pink, making development more fun for everyone!
+		//dc.SetBackground(wxBrush(wxColour(241, 47, 144))); // hot pink, making development more fun for everyone!
 		//dc.SetBackground(wxBrush(wxColour(23, 26, 33))); // nick's gray/black "blackish/gunbarrel gray"
 
 		dc.Clear();
@@ -1437,7 +1436,7 @@ bool InputPageData::Read( wxInputStream &is )
 {
 	wxDataInputStream in(is);
 	wxUint8 code = in.Read8();
-	wxUint8 ver = in.Read8();
+	in.Read8(); // wxUint8 ver
 
 	bool ok = true; 
 	ok = ok && m_form.Read( is );
@@ -2183,7 +2182,7 @@ public:
 		if ( patch > 0 )
 			patchStr.Printf( ", updated to revision %d", patch );
 
-		int nbit = (sizeof(void*) == 8) ? 64 : 32;
+		// int nbit = (sizeof(void*) == 8) ? 64 : 32;
 		m_aboutHtml = "<html><body bgcolor=#ffffff>"
 			"<font color=#a9a9a9 face=\"Segoe UI Light\" size=10>System Advisor Model (Open Source)</font><br><p>"
 				"Copyright 2017 Alliance for Sustainable Energy, LLC<br>"
@@ -2635,7 +2634,7 @@ void ConfigDialog::GetConfiguration(wxString &t, wxString &f)
 }
 
 
-void ConfigDialog::OnDoubleClick(wxCommandEvent &evt)
+void ConfigDialog::OnDoubleClick(wxCommandEvent &)
 {
 	EndModal( wxID_OK );
 }
@@ -2671,13 +2670,13 @@ void ConfigDialog::UpdateFinTree()
 	m_pFin->Invalidate();
 }
 
-void ConfigDialog::OnTechTree( wxCommandEvent &evt )
+void ConfigDialog::OnTechTree( wxCommandEvent & )
 {
-	UpdateFinTree();
+	UpdateFinTree(); 
 }
 
 
-void ConfigDialog::OnHelp(wxCommandEvent &evt)
+void ConfigDialog::OnHelp(wxCommandEvent &)
 {
 	SamApp::ShowHelp( "choose_models" );
 }

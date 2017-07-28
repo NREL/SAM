@@ -314,7 +314,7 @@ public:
 		chkEnableExch->SetValue( m_exch.Enabled );
 	}
 
-	void OnSelVar(wxCommandEvent &evt)
+	void OnSelVar(wxCommandEvent &)
 	{
 		DoSelectVar();
 	}
@@ -423,7 +423,7 @@ public:
 		return SelectVariableDialog::Run("Choose Excel Exchange Variables", names, labels, list);
 	}
 
-	void OnAddVar(wxCommandEvent &evt)
+	void OnAddVar(wxCommandEvent &)
 	{
 		wxArrayString varlist;
 		for (size_t i=0;i<m_exch.Vars.size();i++)
@@ -475,7 +475,7 @@ public:
 		UpdateFromInfo( sel_idx );
 	}
 
-	void OnRemoveVar(wxCommandEvent &evt)
+	void OnRemoveVar(wxCommandEvent &)
 	{
 		int idx = lstVariables->GetSelection();
 		if (idx < 0 || idx >= m_exch.Vars.size())
@@ -485,7 +485,7 @@ public:
 		UpdateFromInfo(idx);
 	}
 
-	void OnRemoveAll(wxCommandEvent &evt)
+	void OnRemoveAll(wxCommandEvent &)
 	{
 		if (!m_case) return;
 
@@ -496,7 +496,7 @@ public:
 		}
 	}
 
-	void OnExcelFile(wxCommandEvent &evt)
+	void OnExcelFile(wxCommandEvent &)
 	{
 		if (!m_case) return;
 
