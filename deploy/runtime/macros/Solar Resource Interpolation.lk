@@ -7,17 +7,20 @@ If the file is TMY2, TMY3, EPW, or SolarAnywhere format, it can be converted
 using the Solar Resource File Converter macro.
 <br><br>
 Options:<br><ul>
-<li>Interval Length: 30, 15, 10, or 5 minutes.
+<li>Interval Length: "Same as Load" depends on timestep in Electric Load page. 30, 15, 10, or 5 minutes.
 <li>File selected from: Interpolates the solar resource file that is selected in the Location 
-and Resource page, prints it into the same directory as the original, and
-automatically selects the interpolated file in the "Use a specific weather file
-on disk" section. Or, solar resource file and interval is requested from user.</ul>
+and Resource page. Or, solar resource file is requested from user. </ul>
 <br><br>
 Input:<br><ul>
 <li>SAM CSV format
 <li>Irradiance Measurement: Averaged hourly data or instantaneous data measured at hour or
-half-hour intervals. Must NOT be already interpolated.<br></ul>
+half-hour intervals.
+<li>For previously interpolated files, macro will look for original in SAM's downloaded weather
+files and solar_resource folders.<br></ul>
+
 Output:<br><ul>
+<li>Automatically selected in the "Use a specific weather file on disk" section
+<li>Saved in "SAM Downloaded Weather Files" folder
 <li>For averaged data, measured irradiance values are shifted to middle of interval,
 but meteorological data, which were "observed at or near the designated time", were not shifted.
 <a href = "http://www.nrel.gov/docs/fy07osti/41364.pdf"> NSRD 1991-2005 Update: User's Manual</a>
@@ -25,8 +28,9 @@ but meteorological data, which were "observed at or near the designated time", w
 <li>Irradiance is not interpolated across sunrise and sunset boundaries</ul>
 
 
+
 <br><br>
-<i> Click "Run macro" above to interpolate selected weather file. </i>
+<i> Click "Run macro" above to interpolate and load weather file. </i>
 
 @*/
 
@@ -608,12 +612,24 @@ function interpolate_file(input_file, intervals_per_hour){
 	if (intd == true){
 		org_name = left(input_name, strlen(input_name)-16) + ".csv";
 		org_file = file_exists(input_path + "/" + org_name);
+		// try to find in solar resource file in downloaded folder or in solar_resource folder
+		dir = cwd();
+		dir = left(dir, strlen(dir)-3);
+		if (org_file == 0){
+			org_file = dir + "solar_resource/" + org_name;
+			org_file = file_exists(org_file);
+		}
 		if (org_file == 0){
 			org_name = left(input_name, strlen(input_name)-15) + ".csv";
 			org_file = file_exists(input_path + "/" + org_name);
 		}
+		if (org_file == 0){
+			org_file = dir + "solar_resource/" + org_name;
+			org_file = file_exists(org_file);
+		}
+		// found original file
 		if (org_file == 1){
-			use = yesno( input_name + " is already interpolated. Found " + org_name +" in same directory. Use as original? Click no find find original.");
+			use = yesno( input_name + " is already interpolated. Found " + org_name +". Use as original? Click no to find original.");
 			if (use) input_file = input_path + "/" + org_name;
 			else{
 				input_file = choose_file( homedir(), 'Choose solar resource file', '*.csv', false, false);
@@ -657,62 +673,51 @@ function interpolate_file(input_file, intervals_per_hour){
 	case = identify_case(input_data, lat, long, tz);
 	output = solar_resource_interpolate(input_data, intervals_per_hour, case);
 	output_data = check_sunup(output, lat, long, tz);
-	output_path = input_path+'\\'+input_name+ '_'+(60/intervals_per_hour)+'mInterpolated.csv';
+	
+	output_dir = wfdownloaddir();
+	output_path = output_dir+'\\'+input_name+ '_'+(60/intervals_per_hour)+'mInterpolated.csv';
 	csvwrite(output_path, output_data);
 	return output_path;
 }
 
 function main(){
-	if (typeof(macro) == 'unknown'){
+	// get input_file from pop-up window
+	if (typeof(macro) == 'unknown' || to_string(macro.file_loc)=='User input'){
 		input_file = choose_file( homedir(), 'Choose solar resource file', '*.csv', false, false);
 		if (strlen(input_file) < 1){
 			outln("No file selected; exiting.");
 			exit;
 		}
-		ts = to_real(choose_from_list([30, 15, 10, 5], "Choose Interval Length in Minutes", "", 1));
-		intervals_per_hour = 60/ts;
-		output_path = interpolate_file(input_file, intervals_per_hour);
-		outln("Created " + output_path + ".");
-		exit;
-	}
-	else if ( to_string(macro.file_loc)=='User input'){
-		input_file = choose_file( homedir(), 'Choose solar resource file', '*.csv', false, false);
-		if (strlen(input_file) < 1){
-			outln("No file selected; exiting.");
-			exit;
-		}
-		if (to_string(macro.timesteps) == 'Same as Load'){
-			load = get('load');
-			intervals_per_hour = 60/#load/8760;
-			if (intervals_per_hour == 1) msgbox("Electric Load time interval must be subhourly");
-		}
-		else{
-			ts = to_real(macro.timesteps);
+		// standalone script, interpolate now
+		if (typeof(macro) == 'unknown') {
+			ts = to_real(choose_from_list([30, 15, 10, 5], "Choose Interval Length in Minutes", "", 1));
 			intervals_per_hour = 60/ts;
+			output_path = interpolate_file(input_file, intervals_per_hour);
+			outln("Created " + output_path + ".");
+			exit;
 		}
-		output_path = interpolate_file(input_file, intervals_per_hour);
-		outln("Created " + output_path + ".");
-		exit;
 	}
 	else{
-		if (to_string(macro.timesteps) == 'Same as Load'){
-			load = get('load_user_data');
-			intervals_per_hour = #load/8760;
-			if (intervals_per_hour >= 1) msgbox("Electric Load time interval must be subhourly");
-		}
-		else{
-			ts = to_real(macro.timesteps);
-			intervals_per_hour = 60/ts;
-		}
 		input_file = get('solar_resource_file');
-		output_path = interpolate_file(input_file, intervals_per_hour);
-		set('solar_resource_file', output_path);
-		file = open(output_path,'r');
-		set( 'use_specific_weather_file', 1);
-		set( 'user_specified_weather_file', output_path);
-		set('solar_data_source', output_path);
-		outln("Set " + output_path + " as solar resource file.");
 	}
+	// input_file comes from location and resource page
+	if (to_string(macro.timesteps) == 'Same as Load'){
+		load = get('load_user_data');
+		intervals_per_hour = #load/8760;
+		if (intervals_per_hour == 1) msgbox("Electric Load time interval must be subhourly");
+	}
+	else{
+		ts = to_real(macro.timesteps);
+		intervals_per_hour = 60/ts;
+	}
+		
+	output_path = interpolate_file(input_file, intervals_per_hour);
+	set('solar_resource_file', output_path);
+	file = open(output_path,'r');
+	set( 'use_specific_weather_file', 1);
+	set( 'user_specified_weather_file', output_path);
+	set('solar_data_source', output_path);
+	msgbox("Successfully set " + output_path + " as solar resource file. Refresh library to show in solar resource library.");
 }
 
 main();
