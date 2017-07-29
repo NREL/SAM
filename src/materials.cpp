@@ -83,7 +83,7 @@ matrix_t<float> MatPropCtrl::GetData()
 	return m_data;
 }
 
-void MatPropCtrl::OnButton(wxCommandEvent &evt)
+void MatPropCtrl::OnButton(wxCommandEvent &)
 {
 	MatPropDialog dlg(this);
 	dlg.SetData( m_data );
