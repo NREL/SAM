@@ -434,7 +434,7 @@ void DefaultsManager::OnQuery(wxCommandEvent &)
 void DefaultsManager::OnLoad( wxCommandEvent & )
 {
 	ClearLog();
-	int i=0;
+	size_t i=0;
 	for (i=0;i<(int)m_configList->GetCount();i++)
 		if (m_configList->IsChecked(i)) break;
 

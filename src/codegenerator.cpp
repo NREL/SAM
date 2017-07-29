@@ -817,7 +817,7 @@ CodeGen_lk::CodeGen_lk(Case *cc, const wxString &folder) : CodeGen_Base(cc, fold
 }
 
 
-bool CodeGen_lk::Output(ssc_data_t p_data)
+bool CodeGen_lk::Output(ssc_data_t)
 {
 	for (size_t ii = 0; ii < m_data.size(); ii++)
 		fprintf(m_fp, "outln('%s ' + var('%s'));\n", (const char*)m_data[ii].label.c_str(), (const char*)m_data[ii].var.c_str());
@@ -932,7 +932,7 @@ bool CodeGen_lk::Header()
 	return true;
 }
 
-bool CodeGen_lk::CreateSSCModule(wxString &name)
+bool CodeGen_lk::CreateSSCModule(wxString &)
 {
 	return true;
 }
@@ -1084,7 +1084,7 @@ bool CodeGen_c::Input(ssc_data_t p_data, const char *name, const wxString &folde
 }
 
 
-bool CodeGen_c::RunSSCModule(wxString &name)
+bool CodeGen_c::RunSSCModule(wxString &)
 {
 	fprintf(m_fp, "	if (ssc_module_exec(module, data) == 0)\n");
 	fprintf(m_fp, "	{\n");
@@ -1425,7 +1425,7 @@ bool CodeGen_csharp::Input(ssc_data_t p_data, const char *name, const wxString &
 }
 
 
-bool CodeGen_csharp::RunSSCModule(wxString &name)
+bool CodeGen_csharp::RunSSCModule(wxString &)
 {
 	fprintf(m_fp, "		if (!module.Exec(data))\n");
 	fprintf(m_fp, "		{\n");
@@ -3493,7 +3493,7 @@ bool CodeGen_java::Input(ssc_data_t p_data, const char *name, const wxString &fo
 }
 
 
-bool CodeGen_java::RunSSCModule(wxString &name)
+bool CodeGen_java::RunSSCModule(wxString &)
 {// TODO
 	fprintf(m_fp, "		if (api.ssc_module_exec(mod,data)==0)\n");
 	fprintf(m_fp, "		{\n");
@@ -4859,7 +4859,7 @@ bool CodeGen_php::Input(ssc_data_t p_data, const char *name, const wxString &fol
 }
 
 
-bool CodeGen_php::RunSSCModule(wxString &name)
+bool CodeGen_php::RunSSCModule(wxString &)
 {
 	fprintf(m_fp, "	if ( !sscphp_module_exec( $mod, $dat ) )\n");
 	fprintf(m_fp, "	{\n");
@@ -7181,7 +7181,7 @@ bool CodeGen_android::Input(ssc_data_t p_data, const char *name, const wxString 
 }
 
 
-bool CodeGen_android::RunSSCModule(wxString &name)
+bool CodeGen_android::RunSSCModule(wxString &)
 {
 	fprintf(m_fp, "	if (ssc_module_exec(module, data) == 0)\n");
 	fprintf(m_fp, "	{\n");
@@ -7390,7 +7390,6 @@ bool CodeGen_android::FreeSSCModule()
 bool CodeGen_android::SupportingFiles()
 {
 // for Android
-	bool ret=true;
 	wxArrayString files;
     // MainActivity.java
     wxString fn = m_folder + "/MainActivity.java";

@@ -1403,9 +1403,9 @@ void fcall_ssc_dump( lk::invoke_t &cxt )
 }
 
 
-static ssc_bool_t ssc_exec_handler( ssc_module_t p_mod, ssc_handler_t p_handler,
-	int action_type, float f0, float f1, 
-	const char *s0, const char *s1,
+static ssc_bool_t ssc_exec_handler( ssc_module_t, ssc_handler_t,
+	int action_type, float f0, float, 
+	const char *s0, const char *,
 	void *user_data )
 {
 	wxThreadProgressDialog *tpd = (wxThreadProgressDialog*) user_data;
@@ -2397,7 +2397,7 @@ void fcall_openeiutilityrateform(lk::invoke_t &cxt)
 	// interact with data returned and apply to current case
 	cxt.result().assign(openei.GetCurrentRateData().Header.GUID);
 }
-
+/*
 static void copy_mxh( lk::vardata_t &val, matrix_t<float> &mxh )
 {
 	if ( mxh.nrows() == 12 && mxh.ncols() == 24 )
@@ -2414,7 +2414,7 @@ static void copy_mxh( lk::vardata_t &val, matrix_t<float> &mxh )
 		}
 	}
 }
-
+*/
 static void copy_matts(lk::vardata_t &val, matrix_t<float> &mts)
 {
 	if (((mts.nrows() % 8760) == 0) && (mts.ncols() >0))

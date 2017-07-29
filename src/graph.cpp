@@ -871,13 +871,13 @@ void GraphProperties::SendChangeEvent()
 	GetEventHandler()->ProcessEvent( e );
 }
 
-void GraphProperties::OnEdit(wxCommandEvent &evt)
+void GraphProperties::OnEdit(wxCommandEvent &)
 {
 	SendChangeEvent();
 	m_legendPos->Enable(m_showLegend->GetValue());
 }
 
-void GraphProperties::OnSearch(wxCommandEvent &evt)
+void GraphProperties::OnSearch(wxCommandEvent &)
 {
 	m_Y->Filter( m_srch->GetValue() );
 	m_Y->ExpandAll();
