@@ -146,7 +146,7 @@ bool EqnDatabase::Parse( lk::input_base &in, wxArrayString *errors )
 	{
 		if ( errors )
 		{
-			for( size_t i=0;i<parse.error_count();i++ )
+			for( int i=0;i<parse.error_count();i++ )
 				errors->Add( parse.error(i) );
 			errors->Add( "parsing did not reach end of input" );
 		}
@@ -171,9 +171,9 @@ bool EqnDatabase::Parse( lk::input_base &in, wxArrayString *errors )
 		size_t neqns_found = 0;
 		lk::vardata_t *eqnhash_var = 0;
 		lk::varhash_t *hash = 0;
-		if ( (eqnhash_var = local_env.lookup( "equations", false ))
+		if ( ((eqnhash_var = local_env.lookup( "equations", false ))!=0)
 			&& (eqnhash_var->type() == lk::vardata_t::HASH)
-			&& (hash = eqnhash_var->hash()) )
+			&& ((hash = eqnhash_var->hash()) !=0) )
 		{
 			for( lk::varhash_t::iterator it = hash->begin();
 				it != hash->end();
@@ -455,7 +455,7 @@ int EqnEvaluator::Calculate( )
 			for( size_t j=0;j<inputs.Count();j++ )
 			{
 				int idx = m_efl.GetEquationIndex( inputs[j] );
-				if ( idx >= 0 && idx < m_status.size() 
+				if ( idx >= 0 && idx < (int)m_status.size() 
 					&& m_status[idx] == INVALID )
 				{
 					// if an equation was found for an input and it has not yet evaluated,
@@ -513,7 +513,7 @@ int EqnEvaluator::Calculate( )
 						m_updated.Add( out[j] );
 						
 						int idx = m_efl.GetEquationIndex( out[j] );
-						if ( idx >= 0 && idx < m_status.size() )
+						if ( idx >= 0 && idx < (int)m_status.size() )
 						{
 							// mark equation as evaluated
 							m_status[idx] = OK;
