@@ -223,7 +223,7 @@ void ValueEditor::OnCommand( wxCommandEvent &evt )
 			if ( arrlen > 0 )
 			{
 				float *arr = new float[arrlen];
-				for( size_t i=0;i<arrlen;i++ )
+				for( int i=0;i<arrlen;i++ )
 					arr[i] = mat(i,0);
 
 				m_val.Set( arr, arrlen );
@@ -438,7 +438,7 @@ void DefaultsManager::OnLoad( wxCommandEvent & )
 	for (i=0;i<(int)m_configList->GetCount();i++)
 		if (m_configList->IsChecked(i)) break;
 
-	if ( i == m_configList->GetCount() ) return;
+	if ( i == (int)m_configList->GetCount() ) return;
 
 	wxString file(GetDefaultsFile(m_techList[i], m_finList[i]));
 	VarTable tab;

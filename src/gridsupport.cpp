@@ -526,6 +526,7 @@ wxString GridCellArrayRenderer::GetString(const wxGrid& grid, int row, int col)
 			if (vv->Type() == VV_ARRAY)
 			{
 				size_t n;
+				vv->Array(&n);
 				if (n == 12)
 					text = "monthly...";
 				else if (n == 8760)
@@ -1034,7 +1035,7 @@ ArrayPopupDialog::ArrayPopupDialog(wxWindow *parent, const wxString &title, cons
 	m_grid->SetColLabelValue(1, label);
 
 
-	for (size_t i = 0; i < vec_size; i++)
+	for (int i = 0; i < vec_size; i++)
 	{
 		if (vec_size != 12) m_grid->SetCellValue(i, 0, wxString::Format("%d", i));
 		m_grid->SetCellValue(i, 1, wxString::Format("%lg", vec[i]));
@@ -1108,9 +1109,9 @@ ArrayPopupDialog::ArrayPopupDialog(wxWindow *parent, const wxString &title, cons
 
 	bool all_same_size = true;
 
-	for (size_t i = 1; i < values_vec_size; i++)
+	for (int i = 1; i < values_vec_size; i++)
 	{
-		all_same_size &= (vec_size == values_vec[i].size());
+		all_same_size &= (vec_size == (int)values_vec[i].size());
 		if (!all_same_size) break;
 	}
 
@@ -1138,11 +1139,11 @@ ArrayPopupDialog::ArrayPopupDialog(wxWindow *parent, const wxString &title, cons
 	m_grid->SetColLabelValue(0, index_label);
 
 
-	for (size_t col = 0; col < values_vec_size; col++)
+	for (int col = 0; col < values_vec_size; col++)
 	{
-		if (labels.Count()>col)
+		if ((int)labels.Count()>col)
 			m_grid->SetColLabelValue(col+1, labels[col]);
-		for (size_t row = 0; row < vec_size; row++)
+		for (int row = 0; row < vec_size; row++)
 			m_grid->SetCellValue(row, col+1, wxString::Format("%lg", values_vec[col][row]));
 	}
 
@@ -1163,7 +1164,7 @@ ArrayPopupDialog::ArrayPopupDialog(wxWindow *parent, const wxString &title, cons
 	}
 	else
 	{
-		for (size_t row = 0; row < vec_size; row++)
+		for (int row = 0; row < vec_size; row++)
 			m_grid->SetCellValue(row, 0, wxString::Format("%d", row));
 	}
 
@@ -1185,7 +1186,7 @@ ArrayPopupDialog::ArrayPopupDialog(wxWindow *parent, const wxString &title, cons
 
 	int tot_width = 0;
 	col_width = (int)(width / values_vec_size);
-	for (size_t i = 1; i < cols; i++)
+	for (int i = 1; i < cols; i++)
 	{
 		m_grid->SetColSize(i, col_width);
 		tot_width += col_width;
@@ -1240,7 +1241,7 @@ void ArrayPopupDialog::GetTextData(wxString &dat, char sep)
 	size_t approxbytes = m_grid_data->GetNumberRows() * 15 * m_grid_data->GetNumberCols();
 	dat.Alloc(approxbytes);
 
-	size_t c;
+	int c;
 
 	for (c = 0; c<m_grid_data->GetNumberCols(); c++)
 	{
@@ -1258,7 +1259,7 @@ void ArrayPopupDialog::GetTextData(wxString &dat, char sep)
 			dat += '\n';
 	}
 
-	for (size_t r = 0; r<m_grid_data->GetNumberRows(); r++)
+	for (int r = 0; r<m_grid_data->GetNumberRows(); r++)
 	{
 		for (c = 0; c<m_grid_data->GetNumberCols(); c++)
 		{

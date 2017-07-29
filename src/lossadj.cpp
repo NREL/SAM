@@ -76,7 +76,7 @@ class HourOfYearPickerCtrl : public wxPanel
 	//wxTextCtrl *m_text;
 public:
 	HourOfYearPickerCtrl( wxWindow *win, int id, const wxPoint &pos = wxDefaultPosition, const wxSize &size = wxDefaultSize )
-		: wxPanel( win, id )
+		: wxPanel( win, id, pos, size )
 	{
 		wxString months[] = { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" };
 		m_month = new wxChoice( this, ID_MONTH_SEL, wxDefaultPosition, wxDefaultSize, 12, months );
