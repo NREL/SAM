@@ -235,7 +235,7 @@ bool SamReportTemplate::Read( const wxString &file )
 	Clear();
 	wxDataInputStream ds( fin );
 	unsigned short start_code = ds.Read16();
-	unsigned char ver = ds.Read8();
+	ds.Read8(); // unsigned char ver;
 	m_description = ds.ReadString();
 	m_author = ds.ReadString();
 	m_meta1 = ds.ReadString();
@@ -1505,7 +1505,7 @@ bool SamReportTableObject::ReadData( wxInputStream &is )
 {
 	wxDataInputStream in(is);
 	unsigned short code = in.Read16();
-	unsigned char ver = in.Read8();
+	in.Read8(); // unsigned char ver 
 	size_t nrows = in.Read32();
 	size_t ncols = in.Read32();
 	m_table.resize_fill( nrows, ncols, wxEmptyString );
@@ -2122,10 +2122,10 @@ public:
 			m_editor->InsertText( m_editor->GetCurrentPos(), text );
 	}
 
-	void OnSpin( wxSpinEvent &e ) { InvalidateObject(); }
-	void OnColour( wxColourPickerEvent &e ) { InvalidateObject(); }
+	void OnSpin( wxSpinEvent & ) { InvalidateObject(); }
+	void OnColour( wxColourPickerEvent & ) { InvalidateObject(); }
 	
-	void OnScriptChanged( wxStyledTextEvent &e )
+	void OnScriptChanged( wxStyledTextEvent & )
 	{
 		m_timer.Start( 700, true );
 	}
@@ -2832,7 +2832,7 @@ bool SamReportScriptObject::ReadData( wxInputStream &is )
 {
 	wxDataInputStream in( is );
 	unsigned short id_code = in.Read16(); // ID CODE.
-	unsigned char ver = in.Read8();// version
+	in.Read8();// unsigned char version
 	m_script = in.ReadString();
 	return id_code == in.Read16();
 }
