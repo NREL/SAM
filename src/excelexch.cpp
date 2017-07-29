@@ -314,7 +314,7 @@ public:
 		chkEnableExch->SetValue( m_exch.Enabled );
 	}
 
-	void OnSelVar(wxCommandEvent &evt)
+	void OnSelVar(wxCommandEvent &)
 	{
 		DoSelectVar();
 	}
@@ -333,14 +333,14 @@ public:
 			break;
 		case ID_txtExcelRange:
 			{
-				if (idx < 0 || idx >= m_exch.Vars.size())
+				if (idx < 0 || idx >= (int)m_exch.Vars.size())
 					return;
 				m_exch.Vars[idx].Range = txtExcelRange->GetValue();
 			}
 		break;
 		case ID_rbgToFrom:
 			{
-				if (idx < 0 || idx >= m_exch.Vars.size())
+				if (idx < 0 || idx >= (int)m_exch.Vars.size())
 					return;
 				unsigned long vf = m_ci->Variables.Flags(m_exch.Vars[idx].Name);
 				if ( vf & VF_CALCULATED || vf & VF_LIBRARY )
@@ -423,7 +423,7 @@ public:
 		return SelectVariableDialog::Run("Choose Excel Exchange Variables", names, labels, list);
 	}
 
-	void OnAddVar(wxCommandEvent &evt)
+	void OnAddVar(wxCommandEvent &)
 	{
 		wxArrayString varlist;
 		for (size_t i=0;i<m_exch.Vars.size();i++)
@@ -475,17 +475,17 @@ public:
 		UpdateFromInfo( sel_idx );
 	}
 
-	void OnRemoveVar(wxCommandEvent &evt)
+	void OnRemoveVar(wxCommandEvent &)
 	{
 		int idx = lstVariables->GetSelection();
-		if (idx < 0 || idx >= m_exch.Vars.size())
+		if (idx < 0 || idx >= (int)m_exch.Vars.size())
 			return;
 
 		m_exch.Vars.erase( m_exch.Vars.begin() + idx );
 		UpdateFromInfo(idx);
 	}
 
-	void OnRemoveAll(wxCommandEvent &evt)
+	void OnRemoveAll(wxCommandEvent &)
 	{
 		if (!m_case) return;
 
@@ -496,7 +496,7 @@ public:
 		}
 	}
 
-	void OnExcelFile(wxCommandEvent &evt)
+	void OnExcelFile(wxCommandEvent &)
 	{
 		if (!m_case) return;
 

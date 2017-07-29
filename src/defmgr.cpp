@@ -223,7 +223,7 @@ void ValueEditor::OnCommand( wxCommandEvent &evt )
 			if ( arrlen > 0 )
 			{
 				float *arr = new float[arrlen];
-				for( size_t i=0;i<arrlen;i++ )
+				for( int i=0;i<arrlen;i++ )
 					arr[i] = mat(i,0);
 
 				m_val.Set( arr, arrlen );
@@ -387,7 +387,7 @@ void DefaultsManager::OnPopupMenu( wxCommandEvent &evt )
 	}
 }
 
-void DefaultsManager::OnListRightClick( wxMouseEvent &evt )
+void DefaultsManager::OnListRightClick( wxMouseEvent & )
 {
 	wxMenu menu;
 	menu.Append( ID_CHECK_SELECTED, "Check selected" );
@@ -408,7 +408,7 @@ void DefaultsManager::Log(const wxString &s)
 	m_output->AppendText( s + "\n" );
 }
 
-void DefaultsManager::OnQuery(wxCommandEvent &evt)
+void DefaultsManager::OnQuery(wxCommandEvent &)
 {
 	ClearLog();
 
@@ -438,7 +438,7 @@ void DefaultsManager::OnLoad( wxCommandEvent & )
 	for (i=0;i<(int)m_configList->GetCount();i++)
 		if (m_configList->IsChecked(i)) break;
 
-	if ( i == m_configList->GetCount() ) return;
+	if ( i == (int)m_configList->GetCount() ) return;
 
 	wxString file(GetDefaultsFile(m_techList[i], m_finList[i]));
 	VarTable tab;
@@ -580,7 +580,7 @@ void DefaultsManager::OnDeleteVar(wxCommandEvent &)
 }
 
 
-void DefaultsManager::OnLookupVar( wxCommandEvent &evt )
+void DefaultsManager::OnLookupVar( wxCommandEvent & )
 {
 	VarSelectDialog dlg( this, "Select Input Variable" );
 	if ( wxID_OK == dlg.ShowModal() )
