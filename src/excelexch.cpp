@@ -333,14 +333,14 @@ public:
 			break;
 		case ID_txtExcelRange:
 			{
-				if (idx < 0 || idx >= m_exch.Vars.size())
+				if (idx < 0 || idx >= (int)m_exch.Vars.size())
 					return;
 				m_exch.Vars[idx].Range = txtExcelRange->GetValue();
 			}
 		break;
 		case ID_rbgToFrom:
 			{
-				if (idx < 0 || idx >= m_exch.Vars.size())
+				if (idx < 0 || idx >= (int)m_exch.Vars.size())
 					return;
 				unsigned long vf = m_ci->Variables.Flags(m_exch.Vars[idx].Name);
 				if ( vf & VF_CALCULATED || vf & VF_LIBRARY )
@@ -478,7 +478,7 @@ public:
 	void OnRemoveVar(wxCommandEvent &)
 	{
 		int idx = lstVariables->GetSelection();
-		if (idx < 0 || idx >= m_exch.Vars.size())
+		if (idx < 0 || idx >= (int)m_exch.Vars.size())
 			return;
 
 		m_exch.Vars.erase( m_exch.Vars.begin() + idx );
