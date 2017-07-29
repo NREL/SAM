@@ -328,7 +328,7 @@ public:
 	virtual double GetOffset() const { return 0.0; }
 	virtual wxString GetSeriesTitle() const { return m_label; }
 	virtual wxString GetUnits() const { return m_units; }
-	virtual void SetDataValue(size_t i, double newYValue) { /* nothing to do */ }
+	virtual void SetDataValue(size_t , double ) { /* nothing to do */ }
 };
 
 #endif
