@@ -174,7 +174,7 @@ void MatPropDialog::SetData(const matrix_t<float> &data)
 		for (int c=0;c<MPC_NCOLS;c++)
 		{
 			wxString val = "0";
-			if (c<data.ncols()) val.Printf("%lg", data.at(r,c));
+			if (c<(int)data.ncols()) val.Printf("%lg", data.at(r,c));
 			m_grid->SetCellValue(r,c,val);
 		}
 	}
