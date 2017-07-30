@@ -235,7 +235,7 @@ void WelcomeScreen::RunWelcomeScript( const wxString &script )
 	{
 		if (vm.error().Lower() == "[0] no bytecode loaded")
 		{
-			if (sam_api_key == "")
+			if (sam_api_key == NULL)
 				UpdateMessagesHtml( "<html><body><font color=#a9a9a9 face=\"Segoe UI Light\" size=10>Please setup API keys, see private.h for details...</font></body></html>" );
 			else
 				UpdateMessagesHtml( "<pre></pre>" );
@@ -472,7 +472,7 @@ void WelcomeScreen::OnCommand( wxCommandEvent &evt )
 void WelcomeScreen::OnQStartScript( wxCommandEvent &evt )
 {
 	int iscript = evt.GetId() - ID_QSTART_SCRIPTS;
-	if ( iscript < 0 || iscript >= m_qstartScripts.size() )
+	if ( iscript < 0 || iscript >= (int)m_qstartScripts.size() )
 		return;
 
 	wxString file( m_qstartScripts[iscript] );

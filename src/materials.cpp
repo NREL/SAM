@@ -174,7 +174,7 @@ void MatPropDialog::SetData(const matrix_t<float> &data)
 		for (int c=0;c<MPC_NCOLS;c++)
 		{
 			wxString val = "0";
-			if (c<data.ncols()) val.Printf("%lg", data.at(r,c));
+			if (c<(int)data.ncols()) val.Printf("%lg", data.at(r,c));
 			m_grid->SetCellValue(r,c,val);
 		}
 	}
@@ -208,7 +208,7 @@ matrix_t<float> MatPropDialog::GetData()
 	return dat;
 }
 
-void MatPropDialog::OnCloseWindow(wxCloseEvent &evt)
+void MatPropDialog::OnCloseWindow(wxCloseEvent &)
 {
 	EndModal(wxID_CANCEL);
 }
@@ -222,7 +222,7 @@ void MatPropDialog::OnCommand(wxCommandEvent &evt)
 	}
 }
 
-void MatPropDialog::OnNumPointsChange(wxCommandEvent &evt)
+void MatPropDialog::OnNumPointsChange(wxCommandEvent &)
 {
 	ChangeNumRows( m_numPoints->AsInteger() );
 }
@@ -620,7 +620,7 @@ This function accepts as inputs temperature [K] and pressure [Pa]
 This function outputs specific heat (Cp) in units of [kJ/kg-K]
 */
 	double T = Tc + 273.15; // C to K
-	double P=1.0; // default pressure used 1Pa
+//	double P=1.0; // default pressure used 1Pa
 	double specific_heat=1.0; // default - Type 229=0, Type 805=1
 
 	switch(flnum)
