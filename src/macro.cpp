@@ -652,7 +652,7 @@ public:
 		if ( sld.ShowModal() == wxID_OK )
 		{
 			int isel = sld.GetSelection();
-			if ( isel >= 0 && isel < m_names.size() )
+			if ( isel >= 0 && isel < (int)m_names.size() )
 			{
 				m_curName = m_names[isel];
 				m_text->ChangeValue( m_labels[isel] );
@@ -1147,7 +1147,7 @@ void MacroPanel::OnCommand( wxCommandEvent &evt )
 			{
 				wxMessageBox("Error loading macro data file:\n\n" + dlg.GetPath() );
 			}
-			else if ( ivals < m_ui.size() )
+			else if ( ivals < (int)m_ui.size() )
 			{
 				wxMessageBox("Only some of the loaded macro data was applicable to the currently selected macro.");
 			}
