@@ -127,7 +127,7 @@ void TRLoopCtrl::LoopData(const std::vector<int> &dat)
 {
 	if (dat.size() < 2) return;
 	int nsca = dat[0];
-	if ((int)dat.size() != nsca*3+1) return;
+	if (dat.size() != nsca*3+1) return;
 
 	mLoop.resize(nsca);
 	for (size_t i=0;i<mLoop.size();i++)
@@ -174,7 +174,7 @@ void TRLoopCtrl::ResetDefocus()
 		mLoop[i].Defocus = mLoop.size()-i;
 }
 
-void TRLoopCtrl::OnResetDefocus(wxCommandEvent &)
+void TRLoopCtrl::OnResetDefocus(wxCommandEvent &evt)
 {
 	ResetDefocus();
 	mRenderer->Refresh();
@@ -187,7 +187,7 @@ void TRLoopCtrl::DispatchEvent()
 	GetEventHandler()->ProcessEvent(change);
 }
 
-void TRLoopCtrl::OnNSCAChange(wxCommandEvent &)
+void TRLoopCtrl::OnNSCAChange(wxCommandEvent &evt)
 {
 	int nsca = CLAMP(mNumSCAs->AsInteger(),1,32);
 	if (nsca != mNumSCAs->AsInteger()) mNumSCAs->SetValue(nsca);
@@ -281,7 +281,7 @@ void TRLoopRenderer::RepositionAll()
 	Refresh();
 }
 
-void TRLoopRenderer::OnPaint(wxPaintEvent &)
+void TRLoopRenderer::OnPaint(wxPaintEvent &evt)
 {
 	wxAutoBufferedPaintDC pdc(this);
 
@@ -428,7 +428,7 @@ void TRLoopRenderer::OnPaint(wxPaintEvent &)
 	pdc.DrawRectangle(0, 0, cw, ch);
 }
 
-void TRLoopRenderer::OnResize(wxSizeEvent &)
+void TRLoopRenderer::OnResize(wxSizeEvent &evt)
 {
 	RepositionAll();
 }
@@ -532,7 +532,7 @@ void TRLoopRenderer::OnMouseDown(wxMouseEvent &evt)
 					"Defocus Order", wxString::Format("%d", lpn.Defocus), this);
 
 				if (result.IsEmpty()) return;
-				lpn.Defocus = CLAMP( wxAtoi(result), 1, (int)mTRCtrl->mLoop.size() );
+				lpn.Defocus = CLAMP( wxAtoi(result), 1, mTRCtrl->mLoop.size() );
 				mTRCtrl->DispatchEvent();
 				Refresh();
 			}
@@ -547,7 +547,7 @@ void TRLoopRenderer::OnMouseDown(wxMouseEvent &evt)
 	}
 }
 
-void TRLoopRenderer::OnMouseUp(wxMouseEvent &)
+void TRLoopRenderer::OnMouseUp(wxMouseEvent &evt)
 {
 	if (bMultiSelMode)
 	{
@@ -595,7 +595,7 @@ void TRLoopRenderer::OnMouseMove(wxMouseEvent &evt)
 	}
 }
 
-void TRLoopRenderer::OnLeave(wxMouseEvent &)
+void TRLoopRenderer::OnLeave(wxMouseEvent &evt)
 {
 }
 
@@ -607,7 +607,7 @@ void TRLoopRenderer::DrawMultiSelBox()
 #ifdef __WXOSX__
 	wxBrush brush( wxColour(240,240,240,130) );
 #else
-	wxBrush brush( *wxWHITE, wxBRUSHSTYLE_TRANSPARENT );
+	wxBrush brush( *wxWHITE, wxTRANSPARENT );
 #endif
 	wxPen pen( wxColour(90,90,90) );
 	pen.SetCap(wxCAP_BUTT);

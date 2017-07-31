@@ -88,7 +88,7 @@ OpenEI::RateData::RateData()
 
 void OpenEI::RateData::Reset()
 {
-	int i;
+	int i,j;
 
 	Header.GUID.Empty();
 	Header.Name.Empty();
@@ -1116,7 +1116,7 @@ void OpenEIUtilityRateDialog::UpdateRateData()
 	}
 }
 
-void OpenEIUtilityRateDialog::OnTimer(wxTimerEvent &)
+void OpenEIUtilityRateDialog::OnTimer(wxTimerEvent &evt)
 {
 	mBusy = true;
 	QueryUtilities();
@@ -1178,7 +1178,7 @@ void OpenEIUtilityRateDialog::OnCommand( wxCommandEvent &evt )
 	}
 }
 
-void OpenEIUtilityRateDialog::OnClose(wxCloseEvent &)
+void OpenEIUtilityRateDialog::OnClose(wxCloseEvent &evt)
 {
 	if (IsBusy())
 	{

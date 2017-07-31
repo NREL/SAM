@@ -311,7 +311,7 @@ void NSRDBDialog::GetResources()
 
 	bool is_addr = false;
 	const wxChar* locChars = loc.c_str();
-	for (int i = 0; i < (int)loc.Len(); i++) 
+	for (int i = 0; i < loc.Len(); i++) 
 	{
 		if (isalpha(locChars[i]))
 			is_addr = true;
