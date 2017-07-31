@@ -615,8 +615,7 @@ void MainWindow::OnInternalCommand( wxCommandEvent &evt )
 		if (Case *cc = GetCurrentCase())
 		{
 			//CaseVarGrid(cases);
-			//VariableGridFrame *var_frame = new VariableGridFrame(this, &m_project, cc);
-			new VariableGridFrame(this, &m_project, cc);
+			VariableGridFrame *var_frame = new VariableGridFrame(this, &m_project, cc);
 		}
 		break;
 	case ID_SAVE_CASE_DEFAULTS:
@@ -2507,7 +2506,7 @@ bool SamApp::LoadAndRunScriptFile( const wxString &script_file, wxArrayString *e
 	{
 		if ( errors )
 		{
-			for( int i=0;i<parse.error_count();i++ )
+			for( size_t i=0;i<parse.error_count();i++ )
 				errors->Add( parse.error(i) );
 			errors->Add( "parsing did not reach end of input" );
 		}
