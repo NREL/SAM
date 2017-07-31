@@ -355,7 +355,7 @@ static const char *s_monthNames[12] = { "Jan", "Feb", "Mar", "Apr", "May", "Jun"
 		}
 
 
-		if ( ++cidx >= (int)s_colours.size() ) cidx = 0; // incr and wrap around colour index
+		if ( ++cidx >= s_colours.size() ) cidx = 0; // incr and wrap around colour index
 		
 		if ( plot != 0 )
 			AddPlot( plot, wxPLPlotCtrl::X_BOTTOM, wxPLPlotCtrl::Y_LEFT, wxPLPlotCtrl::PLOT_TOP, false );
@@ -576,7 +576,7 @@ void GraphCtrl::Display(std::vector<Simulation *>sims, Graph &gi)
 		}
 
 
-		if (++cidx >= (int)s_colours.size()) cidx = 0; // incr and wrap around colour index
+		if (++cidx >= s_colours.size()) cidx = 0; // incr and wrap around colour index
 
 		if (plot != 0)
 			AddPlot(plot, wxPLPlotCtrl::X_BOTTOM, wxPLPlotCtrl::Y_LEFT, wxPLPlotCtrl::PLOT_TOP, false);
