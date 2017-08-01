@@ -2081,15 +2081,15 @@ void fcall_urdb_read(lk::invoke_t &cxt)
 			bool overwrite = true;
 			ndx = upgrade_list.Index("ur_enable_net_metering");
 			int nm = 1; // default to net metering
-			if (ndx > -1 && ndx < (int)upgrade_value.Count())
+			if (ndx > -1 && ndx < upgrade_value.Count())
 				nm = (int)atof(upgrade_value[ndx].c_str());
 			double flat_buy_rate = 0;
 			double flat_sell_rate = 0;
 			ndx = upgrade_list.Index("ur_flat_buy_rate");
-			if (ndx > -1 && ndx < (int)upgrade_value.Count())
+			if (ndx > -1 && ndx < upgrade_value.Count())
 				flat_buy_rate = atof(upgrade_value[ndx].c_str());
 			ndx = upgrade_list.Index("ur_flat_sell_rate");
-			if (ndx > -1 && ndx < (int)upgrade_value.Count())
+			if (ndx > -1 && ndx < upgrade_value.Count())
 				flat_sell_rate = atof(upgrade_value[ndx].c_str());
 			if (nm > 0) flat_sell_rate = flat_buy_rate;
 			// energy charge matrix inputs
@@ -2103,18 +2103,18 @@ void fcall_urdb_read(lk::invoke_t &cxt)
 					ub = -1;
 					per_tier = wxString::Format("ur_ec_p%d_t%d_", per, tier);
 					ndx = upgrade_list.Index(per_tier + "br");
-					if (ndx > -1 && ndx < (int)upgrade_value.Count())
+					if (ndx > -1 && ndx < upgrade_value.Count())
 						br = atof(upgrade_value[ndx].c_str());
 					else
 						overwrite = false;
 					ndx = upgrade_list.Index(per_tier + "sr");
-					if (ndx > -1 && ndx < (int)upgrade_value.Count())
+					if (ndx > -1 && ndx < upgrade_value.Count())
 						sr = atof(upgrade_value[ndx].c_str());
 					else
 						overwrite = false;
 					if (nm > 0) sr = br;
 					ndx = upgrade_list.Index(per_tier + "ub");
-					if (ndx > -1 && ndx < (int)upgrade_value.Count())
+					if (ndx > -1 && ndx < upgrade_value.Count())
 						ub = atof(upgrade_value[ndx].c_str());
 					else
 						overwrite = false;
@@ -2140,12 +2140,12 @@ void fcall_urdb_read(lk::invoke_t &cxt)
 					ub = -1;
 					per_tier = wxString::Format("ur_dc_p%d_t%d_", per, tier);
 					ndx = upgrade_list.Index(per_tier + "dc");
-					if (ndx > -1 && ndx < (int)upgrade_value.Count())
+					if (ndx > -1 && ndx < upgrade_value.Count())
 						dc = atof(upgrade_value[ndx].c_str());
 					else
 						overwrite = false;
 					ndx = upgrade_list.Index(per_tier + "ub");
-					if (ndx > -1 && ndx < (int)upgrade_value.Count())
+					if (ndx > -1 && ndx < upgrade_value.Count())
 						ub = atof(upgrade_value[ndx].c_str());
 					else
 						overwrite = false;
@@ -2163,12 +2163,12 @@ void fcall_urdb_read(lk::invoke_t &cxt)
 					ub = -1;
 					per_tier = wxString::Format("ur_dc_%s_t%d_", months[per - 1], tier);
 					ndx = upgrade_list.Index(per_tier + "dc");
-					if (ndx > -1 && ndx < (int)upgrade_value.Count())
+					if (ndx > -1 && ndx < upgrade_value.Count())
 						dc = atof(upgrade_value[ndx].c_str());
 					else
 						overwrite = false;
 					ndx = upgrade_list.Index(per_tier + "ub");
-					if (ndx > -1 && ndx < (int)upgrade_value.Count())
+					if (ndx > -1 && ndx < upgrade_value.Count())
 						ub = atof(upgrade_value[ndx].c_str());
 					else
 						overwrite = false;
