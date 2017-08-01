@@ -271,6 +271,7 @@ bool StringHash::Read( wxInputStream &input )
 {
 	wxDataInputStream in(input);
 	wxUint8 code = in.Read8();
+	in.Read8(); // ver
 	size_t n = in.Read32();
 	for (size_t i=0;i<n;i++)
 	{
