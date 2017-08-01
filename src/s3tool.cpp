@@ -461,7 +461,7 @@ bool LocationSetup::Read( wxInputStream &is )
 	wxDataInputStream in( is );
 
 	wxUint8 code = in.Read8();
-//	wxUint8 ver = in.Read8();
+	in.Read8(); //ver
 
 	m_address->ChangeValue( in.ReadString() );
 	m_lat->SetValue( in.ReadDouble() );
