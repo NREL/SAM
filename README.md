@@ -16,7 +16,7 @@ The desktop version of SAM for Windows, Mac, or Linux builds from the following 
 
 # Quick Steps for Building SAM
 
-These are the general quick steps you need to follow to set up your computer for developing SAM. For more detailed instructions specific to Windows, Mac, and Linux see https://github.com/NREL/SAM/wiki/Windows-Build-Instructions.
+These are the general quick steps you need to follow to set up your computer for developing SAM. For more detailed instructions specific to Windows, Mac, and Linux see https://github.com/NREL/SAM/wiki.
 
 The build instructions are based on the following integrated development environments:
 
