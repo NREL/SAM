@@ -278,7 +278,7 @@ bool VarTable::Read( wxInputStream &_I )
 	
 	wxDataInputStream in(_I);
 	wxUint8 code = in.Read8();
-//	wxUint8 ver = in.Read8();
+	in.Read8(); //ver
 
 	bool ok = true;
 	size_t n = in.Read32();
@@ -508,7 +508,7 @@ bool VarValue::Read( wxInputStream &_I )
 	wxDataInputStream in( _I );
 
 	wxUint8 code = in.Read8();
-//	wxUint8 ver = in.Read8();
+	in.Read8(); // ver
 
 	m_type = in.Read8();
 
