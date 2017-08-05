@@ -494,7 +494,7 @@ public:
 			if ( dlg.ShowModal() != wxID_OK ) return;
 
 			wxCSVData csv;
-			for( size_t i=0;i<m_grid->GetNumberRows();i++ )
+			for( int i=0;i<m_grid->GetNumberRows();i++ )
 			{
 				csv(i,0) = m_grid->GetCellValue( i, 0 );
 				csv(i,1) = m_grid->GetCellValue( i, 1 );
@@ -975,7 +975,7 @@ void UIEditorPanel::LoadFormList( const wxString &sel )
 void UIEditorPanel::OnCallbackGoto( wxCommandEvent &evt )
 {
 	int idx = evt.GetId() - ID_CALLBACK_GOTO_1;
-	if ( idx >= 0 && idx < m_callbackGotoList.Count() )
+	if ( idx >= 0 && idx < (int)m_callbackGotoList.Count() )
 	{
 		int pos = m_callbackScript->FindText( 0, m_callbackScript->GetLength(), m_callbackGotoList[idx], 0 );
 		if ( pos >= 0 )
@@ -1373,7 +1373,7 @@ void UIEditorPanel::OnCommand( wxCommandEvent &evt )
 			else
 			{
 				wxString text;
-				for( size_t i=0;i<parse.error_count();i++ )
+				for( int i=0;i<parse.error_count();i++ )
 					text += parse.error( i ) + "\n";
 				::wxShowTextMessageDialog( text, "errors", this );
 			}
@@ -1551,11 +1551,11 @@ void UIEditorPanel::VarInfoToForm( const wxString &name )
 		m_varUnits->ChangeValue( vv->Units );
 		m_varGroup->ChangeValue( vv->Group );
 		m_varIndexLabels->ChangeValue( wxJoin( vv->IndexLabels, ',' ) );
-		m_varFlagHideLabels->SetValue( vv->Flags & VF_HIDE_LABELS );
-		m_varFlagParametric->SetValue( vv->Flags & VF_PARAMETRIC );
-		m_varFlagIndicator->SetValue( vv->Flags & VF_INDICATOR );
-		m_varFlagCalculated->SetValue( vv->Flags & VF_CALCULATED );
-		m_varFlagLibrary->SetValue( vv->Flags & VF_LIBRARY );
+		m_varFlagHideLabels->SetValue(( vv->Flags & VF_HIDE_LABELS ) > 0);
+		m_varFlagParametric->SetValue(( vv->Flags & VF_PARAMETRIC ) > 0);
+		m_varFlagIndicator->SetValue(( vv->Flags & VF_INDICATOR ) > 0);
+		m_varFlagCalculated->SetValue(( vv->Flags & VF_CALCULATED ) > 0);
+		m_varFlagLibrary->SetValue(( vv->Flags & VF_LIBRARY ) > 0 );
 		
 		m_varDefaultValue->SetValue(vv->DefaultValue.AsString(';') );
 	}
