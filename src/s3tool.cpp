@@ -153,7 +153,7 @@ LocationSetup::LocationSetup( wxWindow *parent, ShadeTool *st )
 	m_zoomLevel = 19;
 	m_mpp = 0.01;
 	
-	wxMetroButton *btn;
+//	wxMetroButton *btn;
 	
 	m_lat = new wxNumericCtrl( this, ID_LATITUDE, 39.7375670 );
 	m_lat->SetFormat( 7 );
@@ -205,12 +205,12 @@ LocationSetup::LocationSetup( wxWindow *parent, ShadeTool *st )
 
 
 
-void LocationSetup::OnCurl( wxEasyCurlEvent &evt )
+void LocationSetup::OnCurl( wxEasyCurlEvent & )
 {
 	// could do a progress thing...?
 }
 
-void LocationSetup::OnAddressChange( wxCommandEvent &e )
+void LocationSetup::OnAddressChange( wxCommandEvent & )
 {
 	m_lat->SetValue( std::numeric_limits<double>::quiet_NaN() );
 	m_lon->SetValue( std::numeric_limits<double>::quiet_NaN() );
@@ -708,7 +708,7 @@ void ObjectEditor::OnPropertyGridChange(wxPropertyGridEvent &evt)
 			PropGridToValue( m_curProps[i] );
 }
 
-void ObjectEditor::OnPropertyGridChanging(wxPropertyGridEvent &evt)
+void ObjectEditor::OnPropertyGridChanging(wxPropertyGridEvent &)
 {
 }
 
@@ -728,7 +728,7 @@ void ObjectEditor::OnCommand( wxCommandEvent &evt )
 	}
 }
 
-void ObjectEditor::OnObjectList( wxCommandEvent &evt )
+void ObjectEditor::OnObjectList( wxCommandEvent & )
 {
 	if ( !m_view ) return;
 
@@ -807,8 +807,6 @@ bool ShadeAnalysis::SimulateDiffuse(std::vector<surfshade> &shade, bool save)
 	double lat, lon, tz;
 	m_shadeTool->GetLocationSetup()->GetLocation(&lat, &lon, &tz);
 
-	const int *ndays = ::wxNDay;
-
 	s3d::transform tr;
 	tr.set_scale(SF_ANALYSIS_SCALE);
 
@@ -883,7 +881,7 @@ bool ShadeAnalysis::SimulateDiffuse(std::vector<surfshade> &shade, bool save)
 				shade[n].sfac[c] = 0;
 				if ( shade[n].nsurf[c] > 0 && shade[n].active[c] > 0.0 )
 				{
-					double aoi = shade[n].aoisum[c] / shade[n].nsurf[c]; // average AOI for surfaces in this group
+//					double aoi = shade[n].aoisum[c] / shade[n].nsurf[c]; // average AOI for surfaces in this group
 
 					shade[n].sfac[c] = 100.0 * shade[n].shaded[c] / shade[n].active[c] 
 						* sin( (90-alt)*M_PI/180 ) ; // differential when integrating over a sphere
@@ -897,7 +895,6 @@ bool ShadeAnalysis::SimulateDiffuse(std::vector<surfshade> &shade, bool save)
 	
 	num_scenes = c;
 	
-	int y = 0;
 	// average shading factor over skydome
 	m_diffuseShadeCount.clear();
 	m_diffuseShadeFactor.clear();
@@ -1012,7 +1009,7 @@ bool ShadeAnalysis::SimulateTimeseries( int minute_step, std::vector<surfshade> 
 
 	double azi, zen, alt;
 	const int *ndays = ::wxNDay;
-	size_t m, d, h, jj, c = 0;
+	int m, d, h, jj, c = 0;
 
 	int step_per_hour = 60/minute_step;
 	int npoints = surfshade::nvalues( minute_step );
@@ -1182,7 +1179,7 @@ void ShadeAnalysis::OnGenerateTimeSeries( wxCommandEvent & )
 		std::vector<double> data(nstep);
 		for( size_t j=0;j<shade.size();j++ )
 		{
-			for( size_t i=0;i<nstep;i++ )
+			for( int i=0;i<nstep;i++ )
 				data[i] = shade[j].sfac[i];
 
 			wxDVArrayDataSet *dset = new wxDVArrayDataSet(GetGroupDisplayName( shade[j].group), "% Shaded", min / 60.0, data);
@@ -1235,7 +1232,7 @@ void ShadeAnalysis::InitializeSections( int mode, std::vector<surfshade> &shade 
 			if ( !grp.IsEmpty() )
 			{			
 				int index = -1;
-				for( int k=0;k<shade.size();k++ )
+				for( int k=0;k<(int)shade.size();k++ )
 					if ( shade[k].group == grp ) 
 						index = k;
 
@@ -1310,7 +1307,7 @@ bool ShadeAnalysis::SimulateDiurnal()
 			// for nighttime full shading (fraction=1 and factor=0)
 			// consistent with SAM shading factor of zero for night time
 			//	double sf = 0;
-			double scene_sf = 1; 
+//			double scene_sf = 1; 
 			if (alt > 0)
 			{
 				tr.rotate_azal( azi, alt );
@@ -1426,7 +1423,7 @@ public:
 	{
 		m_output->AppendText( tt );
 	}
-	virtual void OnSyntaxCheck( int line, const wxString &err )
+	virtual void OnSyntaxCheck( int , const wxString &err )
 	{
 		m_output->Clear();
 		m_output->AppendText( err );
@@ -2246,7 +2243,7 @@ bool ShadeTool::SimulateTimeseries(int &minute_timestep, std::vector<shadets> &r
 				shadets &d = result[result.size() - 1];
 				d.name = shade[j].group;
 				std::vector<float> data(nstep);
-				for (size_t i = 0; i < nstep; i++)
+				for (int i = 0; i < nstep; i++)
 					data[i] = shade[j].sfac[i];
 				d.ts = data;
 			}
@@ -2257,7 +2254,7 @@ bool ShadeTool::SimulateTimeseries(int &minute_timestep, std::vector<shadets> &r
 			shadets &d = result[result.size() - 1];
 			d.name = "all active surfaces";
 			std::vector<float> data(nstep);
-			for (size_t i = 0; i < nstep; i++)
+			for (int i = 0; i < nstep; i++)
 			{
 				double sf = 1;
 				double shaded = 0;
