@@ -674,7 +674,7 @@ void VersionUpgrade::WriteHtml( const wxString &section, const std::vector<log> 
 {
 	html += "<table bgcolor=#545454 width=100% cellspacing=1 cellpadding=3><tr width=100%><td><font size=+1 color=#ffffff><b>" + section + "</b></font></td></tr>\n";
 
-	for( int i=0;i<LL.size();i++ )
+	for( int i=0;i<(int)LL.size();i++ )
 	{
 		wxString bgcolor("#EFEFEF");
 		switch( LL[i].type )

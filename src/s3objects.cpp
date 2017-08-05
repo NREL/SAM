@@ -289,22 +289,22 @@ void VObject::DeleteProperties()
 	m_properties.clear();
 }
 
-void VObject::SetupHandles( VPlaneType plane )
+void VObject::SetupHandles( VPlaneType  )
 {
 	// nothing to do
 }
 
-bool VObject::OnHandleMoved( VHandle *, VPlaneType plane )
+bool VObject::OnHandleMoved( VHandle *, VPlaneType  )
 {
 	return false;
 }
 
-bool VObject::IsWithin( double x, double y, VPlaneType plane )
+bool VObject::IsWithin( double , double , VPlaneType  )
 {
 	return false;
 }
 
-void VObject::DrawOnPlane( VRenderer2D &dc, VPlaneType plane )
+void VObject::DrawOnPlane( VRenderer2D &, VPlaneType  )
 {
 	// nothing to do 
 }
@@ -633,7 +633,7 @@ size_t VTreeObject::GetXZPoints( double x[10], double z[10] )
 {
 	int shape = Property("Shape").GetInteger();
 	double X = Property("X").GetDouble();
-	double Y = Property("Y").GetDouble();
+//	double Y = Property("Y").GetDouble();
 	double D = Property("Diameter").GetDouble();
 	double H = Property("Height").GetDouble();
 	double TD = Property("Top Diameter").GetDouble();
@@ -1331,9 +1331,9 @@ bool VActiveSurfaceObject::OnHandleMoved( VHandle *h, VPlaneType plane )
 	{
 		double X = Property("X").GetDouble();
 		double Y = Property("Y").GetDouble();
-		double Z = Property("Z").GetDouble();
+//		double Z = Property("Z").GetDouble();
 		double W = Property("Width").GetDouble();
-		double L = Property("Length").GetDouble();
+//		double L = Property("Length").GetDouble();
 		double A = Property("Azimuth").GetDouble();
 		double T = Property("Tilt").GetDouble();
 
