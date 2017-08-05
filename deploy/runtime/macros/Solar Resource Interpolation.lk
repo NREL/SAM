@@ -351,6 +351,7 @@ function shift_forward(input, ts, case){
 			}
 			minute = t0[cols[4]] - dt;
 			if (minute < 0) minute+=60;
+			if (minute >= 60) minute-=60;
 			output[3+(ts-1-i)][cols[4]] = minute;
 		}
 		output[3+(ts-1-i)][cols[5]] = extrapolate([t1[cols[5]], t0[cols[5]]], 'wind');
@@ -579,23 +580,26 @@ function solar_resource_interpolate(input_data, intervals_per_hour, case){
 		outln('Data measurement regime not identified, exiting.');
 		exit;
 	}
-	else if (case[1] == 0 || case[1] == 1){
+	// original data is hourly
+	if (case[1] == 0 || case[1] == 1){
 		ts_to_add = intervals_per_hour - 1;
 	}
+	// original data is half-hourly
 	else{
 		ts_to_add = intervals_per_hour/2 - 1;
 	}
 	
 	output = intrp_data(input_data, ts_to_add);
-	// instantaneous data, measured at top of hour
+	// instantaneous data, measured at bottom of hour needs to be shifted forward
+	// since data currently starts with the 30 min point 
 	if (case == [0, 1]){
 		output = shift_forward(output, shift_by_ts, case);
 	}
-	// average data, measured hourly
+	// average data, measured hourly, shifted forward in assuming the average value
+	// occurs in the middle of the hour, at the 30 min point
 	else if (case == [1, 1]){
 		output = shift_forward(output, shift_by_ts, case);
 	}
-	
 	return output;
 }
 
@@ -611,26 +615,26 @@ function interpolate_file(input_file, intervals_per_hour){
 	}
 	if (intd == true){
 		org_name = left(input_name, strlen(input_name)-16) + ".csv";
-		org_file = file_exists(input_path + "/" + org_name);
+		org_found = file_exists(input_path + "/" + org_name);
 		// try to find in solar resource file in downloaded folder or in solar_resource folder
 		dir = cwd();
 		dir = left(dir, strlen(dir)-3);
-		if (org_file == 0){
+		if (org_found == 0){
 			org_file = dir + "solar_resource/" + org_name;
-			org_file = file_exists(org_file);
+			org_found = file_exists(org_file);
 		}
-		if (org_file == 0){
-			org_name = left(input_name, strlen(input_name)-15) + ".csv";
-			org_file = file_exists(input_path + "/" + org_name);
+		if (org_found == 0){
+			org_file = input_path + "/" + left(input_name, strlen(input_name)-15) + ".csv";
+			org_found = file_exists(org_file);
 		}
-		if (org_file == 0){
+		if (org_found == 0){
 			org_file = dir + "solar_resource/" + org_name;
-			org_file = file_exists(org_file);
+			org_found = file_exists(org_file);
 		}
 		// found original file
-		if (org_file == 1){
-			use = yesno( input_name + " is already interpolated. Found " + org_name +". Use as original? Click no to find original.");
-			if (use) input_file = input_path + "/" + org_name;
+		if (org_found == 1){
+			use = yesno( input_name + " is already interpolated. Found " + org_file +". Use as original? Click no to find original.");
+			if (use) input_file = org_file;
 			else{
 				input_file = choose_file( homedir(), 'Choose solar resource file', '*.csv', false, false);
 				if (strlen(input_file) < 1){
@@ -652,17 +656,17 @@ function interpolate_file(input_file, intervals_per_hour){
 		}
 		input_name = split(file_only(input_file),'.')[0];
 	}
-	
+
 	input_data = csvread(input_file);
 	
 	//check file type
 	ask_convert = false;
 	ext = ext_only(input_file);
 	if (ext != "csv") ask_convert = true;
-	if (#input_data[1] > 26) ask_convert = true;
-	
+	if (#input_data[2] >= 68) ask_convert = true;
 	if (ask_convert){
 		msgbox('Weather file must be in SAM format. Please use Solar Resource File Converter Macro.');
+		exit;
 	}
 	
 	//interpolate

@@ -311,3 +311,9 @@ resource/splash*
 
 
 
+
+build_osx/SAM\.app/Contents/Frameworks/
+
+build_osx/SAM\.app/Contents/
+
+build_osx/SAM
