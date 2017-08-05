@@ -494,7 +494,7 @@ static void fcall_parsim( lk::invoke_t &cxt )
 			return;
 	}	
 
-	if ( nthreads > sg_parSims.size() ) nthreads = sg_parSims.size();
+	if ( nthreads > (int)sg_parSims.size() ) nthreads = sg_parSims.size();
 	tpd.NewStage("Calculating...", nthreads);
 
 	int nok = Simulation::DispatchThreads( tpd, sg_parSims, nthreads );
