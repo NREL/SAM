@@ -213,7 +213,7 @@ wxString VariableGridData::GetColLabelValue(int col)
 wxString VariableGridData::GetVarName(int row, int col)
 {
 	wxString  ret_val = wxEmptyString;
-	if ((col > 0) && (col < m_var_names.Count()) && (row > -1) && (row < m_rows))
+	if ((col > 0) && (col < (int)m_var_names.Count()) && (row > -1) && (row < m_rows))
 	{
 		int lookup_row = row;
 		if (m_sorted) lookup_row = m_sorted_index[row];
@@ -296,7 +296,7 @@ wxString VariableGridData::GetChoice(int row, int col)
 			int ndx = -1;
 			double val;
 			if (GetValue(row, col).ToDouble(&val)) ndx = int(val);
-			if ((as.Count() > 0) && (ndx >= 0) && (ndx < as.Count()))
+			if ((as.Count() > 0) && (ndx >= 0) && (ndx < (int)as.Count()))
 				ret_str = as[ndx];
 		}
 	}
@@ -442,7 +442,7 @@ wxString VariableGridData::GetTypeName(int row, int col)
 		if (VarInfo *var_info = m_var_info_lookup_vec[col - 2]->Lookup(m_var_names[lookup_row]))
 		{ // TODO - better control list maintenance here and in UIEditorPanel
 			wxString type = var_info->UIObject;
-			bool calculated = var_info->Flags   & VF_CALCULATED;
+			bool calculated = (var_info->Flags   & VF_CALCULATED) > 0;
 			if (calculated)
 				return "GridCellCalculated";
 			else if (type == "Numeric")
@@ -557,12 +557,12 @@ bool VariableGridData::ShowRow(int row, int comparison_type, bool show_calculate
 	{
 		bool calculated = false;
 		int lookup_row = row;
-		if ((row < m_sorted_index.Count()) && (m_sorted)) lookup_row = m_sorted_index[row];
-		if ((lookup_row < m_var_names.Count()) && (m_var_info_lookup_vec[0]->Lookup(m_var_names[lookup_row])))
+		if ((row < (int)m_sorted_index.Count()) && (m_sorted)) lookup_row = m_sorted_index[row];
+		if ((lookup_row < (int)m_var_names.Count()) && (m_var_info_lookup_vec[0]->Lookup(m_var_names[lookup_row])))
 		{
 			VarInfo *vi = m_var_info_lookup_vec[0]->Lookup(m_var_names[lookup_row]);
 			if (vi)
-				calculated = vi->Flags & VF_CALCULATED;
+				calculated = (vi->Flags & VF_CALCULATED) > 0 ;
 			if (calculated) show = show && show_calculated;
 		}
 	}
@@ -656,7 +656,7 @@ BEGIN_EVENT_TABLE(VariableGrid, wxExtGridCtrl)
 EVT_GRID_CELL_LEFT_CLICK(VariableGrid::OnLeftClick)
 END_EVENT_TABLE()
 
-VariableGrid::VariableGrid(wxWindow *parent, wxWindowID id, const wxPoint &pos, const wxSize &size, long style, const wxString &name) : wxExtGridCtrl(parent, id, pos, size)
+VariableGrid::VariableGrid(wxWindow *parent, wxWindowID id, const wxPoint &pos, const wxSize &size, long , const wxString &) : wxExtGridCtrl(parent, id, pos, size)
 {
 }
 
@@ -749,7 +749,7 @@ VariableGridFrame::VariableGridFrame(wxWindow *parent, ProjectFile *pf, Case *c,
 
 
 		
-		wxBoxSizer *comparetools = new wxBoxSizer(wxHORIZONTAL);
+//		wxBoxSizer *comparetools = new wxBoxSizer(wxHORIZONTAL);
 
 		wxBoxSizer *tools = new wxBoxSizer(wxHORIZONTAL);
 		m_btn_export = new wxMetroButton(this, ID_EXP_BTN, "Export", wxNullBitmap, wxDefaultPosition, wxDefaultSize, wxMB_DOWNARROW);
@@ -788,7 +788,7 @@ VariableGridFrame::VariableGridFrame(wxWindow *parent, ProjectFile *pf, Case *c,
 
 }
 
-void VariableGridFrame::OnShow(wxShowEvent& evt)
+void VariableGridFrame::OnShow(wxShowEvent& )
 {
 	m_griddata->Sort(0, !(m_grid->IsSortingBy(0) &&
 		m_grid->IsSortOrderAscending()));
@@ -824,7 +824,7 @@ void VariableGridFrame::GetTextData(wxString &dat, char sep)
 	size_t approxbytes = m_griddata->GetNumberRows() * 15 * m_griddata->GetNumberCols();
 	dat.Alloc(approxbytes);
 
-	size_t c;
+	int c;
 
 	for (c = 0; c<m_griddata->GetNumberCols(); c++)
 	{
@@ -842,7 +842,7 @@ void VariableGridFrame::GetTextData(wxString &dat, char sep)
 			dat += '\n';
 	}
 
-	for (size_t r = 0; r<m_griddata->GetNumberRows(); r++)
+	for (int r = 0; r<m_griddata->GetNumberRows(); r++)
 	{
 		if (m_grid->IsRowShown(r))
 		{

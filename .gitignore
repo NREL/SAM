@@ -317,3 +317,25 @@ build_osx/SAM\.app/Contents/Frameworks/
 build_osx/SAM\.app/Contents/
 
 build_osx/SAM
+
+build_linux/install0
+
+build_linux/sam\.deploy\.tar\.gz
+
+build_linux/sam\.deploy/libraries/
+
+build_linux/sam\.deploy/solar_resource/
+
+build_linux/sam\.deploy/wind_resource/
+
+build_linux/sam\.deploy/runtime/ui/
+
+deploy/linux_64/GtkTheme/gtk-2\.0/images/
+
+build_linux/sam\.deploy/runtime/
+
+deploy/linux_64/GtkTheme/gtk-2\.0/
+
+build_linux/sam\.deploy/linux_64/GtkTheme/gtk-2\.0/images/
+
+build_linux/sam\.deploy/linux_64/GtkTheme/gtk-2\.0/

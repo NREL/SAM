@@ -1003,7 +1003,7 @@ void View3D::OnPaint( wxPaintEvent & )
 		
 		wxColour cshade( 70, 70, 70 );
 		dc.SetPen( wxPen(cshade,1) );
-		dc.SetBrush( wxBrush( cshade, wxSOLID ) );
+		dc.SetBrush( wxBrush( cshade, wxBRUSHSTYLE_SOLID ) );
 		for( size_t k=0;k<m_shade.size();k++ )
 		{
 			for ( size_t i=0;i<m_shade[k].shadings.size();i++ )
@@ -1015,7 +1015,7 @@ void View3D::OnPaint( wxPaintEvent & )
 
 		std::vector<VObject*> sel = GetSelectedObjects();
 		dc.SetPen( *wxTRANSPARENT_PEN );
-		dc.SetBrush( wxBrush( wxColour(255,0,255, 200), wxSOLID ) );
+		dc.SetBrush( wxBrush( wxColour(255,0,255, 200), wxBRUSHSTYLE_SOLID ) );
 		std::vector<int> sel_ids;
 		for (size_t i=0; i<sel.size(); i++)
 			sel_ids.push_back(sel[i]->GetId());
@@ -1141,7 +1141,7 @@ std::vector<VObject*> View3D::FindObjects( int mx, int my )
 void View3D::OnMotion( wxMouseEvent &evt )
 {
 	double xw, yzw;
-	int xs, yzs;
+//	int xs, yzs;
 	ScreenToWorld( evt.GetX(), evt.GetY(), &xw, &yzw );
 		
 			
@@ -1247,7 +1247,7 @@ void View3D::OnLeftDown( wxMouseEvent &evt )
 	if ( m_mode == TOP_VIEW || m_mode == Z_VIEW )
 	{
 		VObject *sel_obj = GetFirstSelectedObject();
-		if ( m_movingHandle = FindHandle( evt.GetX(), evt.GetY(), sel_obj ) )
+		if ( (m_movingHandle = FindHandle( evt.GetX(), evt.GetY(), sel_obj ) )  != 0)
 		{
 			wxClientDC cdc( this );
 #ifdef VIEW_USE_OVERLAY
