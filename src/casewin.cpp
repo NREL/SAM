@@ -588,7 +588,7 @@ void CaseWindow::OnCommand( wxCommandEvent &evt )
 			menu.SetFont( m_exclPageButton->GetFont() );
 			for( size_t i=0;i<m_currentGroup->Pages.size();i++)
 				if ( m_currentGroup->Pages[i].size() > 0 )
-					menu.AppendCheckItem( ID_EXCL_OPTION+i, m_currentGroup->Pages[i][0].Caption, i == (int)sel );
+					menu.AppendCheckItem( ID_EXCL_OPTION+i, m_currentGroup->Pages[i][0].Caption, (int)i == sel );
 
 			wxPoint pos( 0, m_exclPageButton->GetClientSize().GetHeight() );
 			pos = m_exclPageButton->ClientToScreen( pos );

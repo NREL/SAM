@@ -96,8 +96,8 @@ void ShadingInputData::save( std::vector<float> &data )
 	
 	data.push_back( azal.nrows() );
 	data.push_back( azal.ncols() );
-	for (int r=0;r<azal.nrows();r++)
-		for (int c=0;c<azal.ncols();c++)
+	for (size_t r=0;r<azal.nrows();r++)
+		for (size_t c=0;c<azal.ncols();c++)
 			data.push_back( azal.at(r,c) );
 	
 	data.push_back( diff );
@@ -140,7 +140,7 @@ bool ShadingInputData::load( const std::vector<float> &data )
 	clear();
 
 	if (data.size() < 3) return false;
-	if (data.size() != (int)data[ data.size() - 1 ]) return false; // verification check
+	if (data.size() != (size_t)data[ data.size() - 1 ]) return false; // verification check
 	
 	int idx = 0; // indexer to step through data
 
@@ -214,9 +214,6 @@ bool ShadingInputData::load( const std::vector<float> &data )
 
 		return idx == verify;
 	}
-
-
-	return false;
 }
 
 void ShadingInputData::write( VarValue *vv )
@@ -934,8 +931,7 @@ bool ImportSunEyeObstructions( ShadingInputData &dat, wxWindow *parent )
 	int imageCount = 0;
 	int columnCount = 0;
 	int elevationStartCol = -1;
-	float obstructionStep;
-	double tmpVal;
+	float obstructionStep = 0.0;
 		
 	matrix_t<float> azaltvals, obstructions;
 	azaltvals.resize_fill(91,362, 0.0);
@@ -960,7 +956,7 @@ bool ImportSunEyeObstructions( ShadingInputData &dat, wxWindow *parent )
 		else if (readdata == true && j == -1)
 		{ // get image count here
 			columnCount = lnp.Count();
-			for (size_t i = 0; i < columnCount; i++)
+			for (int i = 0; i < columnCount; i++)
 			{
 				int ndx = lnp[i].Lower().Find("elevation");
 				if (ndx != wxNOT_FOUND && (ndx < 2)) // Not Average or Maximum 
@@ -987,7 +983,7 @@ bool ImportSunEyeObstructions( ShadingInputData &dat, wxWindow *parent )
 
 			if (j <= 360)
 			{
-				if (lnp.Count() < elevationStartCol + imageCount)
+				if ((int)lnp.Count() < elevationStartCol + imageCount)
 				{
 					wxMessageBox(wxString::Format("Error: Not enough data found at data row=%d.", j ));
 					return false;
@@ -995,7 +991,7 @@ bool ImportSunEyeObstructions( ShadingInputData &dat, wxWindow *parent )
 				else
 				{
 					azi[j] = wxAtof(lnp[0]); //first column contains compass heading azimuth values (0=north, 90=east)
-					for (int ii=0; ii<imageCount && (ii+elevationStartCol) < lnp.Count(); ii++)
+					for (int ii=0; ii<imageCount && (ii+elevationStartCol) < (int)lnp.Count(); ii++)
 						obstructions.at(j,ii) = wxAtof(lnp[ii+elevationStartCol]); 
 				}
 				j++;
@@ -1435,7 +1431,7 @@ void wxShadingFactorsCtrl::OnCommand(wxCommandEvent &evt)
 				{
 					wxArrayString col_vals1 = wxStringTokenize(lines[0], "\t", ::wxTOKEN_RET_EMPTY_ALL);
 					ncols = col_vals1.Count();
-					if (ncols > m_col_arystrvals.Count())
+					if (ncols > (int)m_col_arystrvals.Count())
 						ncols = m_col_arystrvals.Count();
 					int ndx = m_col_arystrvals.Index(wxString::Format("%d", ncols));
 					if (ndx >= 0)
@@ -1453,8 +1449,8 @@ void wxShadingFactorsCtrl::OnCommand(wxCommandEvent &evt)
 
 				m_grid->Paste( wxExtGridCtrl::PASTE_ALL );
 
-				for (int r = 0; r < m_data.nrows(); r++)
-					for (int c = 0; c < m_data.ncols(); c++)
+				for (size_t r = 0; r < m_data.nrows(); r++)
+					for (size_t c = 0; c < m_data.ncols(); c++)
 						m_data.at(r, c) = atof(m_grid->GetCellValue(r, c).c_str());
 				SetData(m_data);
 				int ndx = m_minute_arystrvals.Index(wxString::Format("%d", minutes));
@@ -1498,8 +1494,8 @@ void wxShadingFactorsCtrl::OnCommand(wxCommandEvent &evt)
 bool wxShadingFactorsCtrl::Export(const wxString &file)
 {
 	wxCSVData csv;
-	for (int r = 0; r<m_data.nrows(); r++)
-		for (int c = 0; c<m_data.ncols(); c++)
+	for (size_t r = 0; r<m_data.nrows(); r++)
+		for (size_t c = 0; c<m_data.ncols(); c++)
 			csv(r, c) = wxString::Format("%g", m_data(r, c));
 
 	return csv.WriteFile(file);
@@ -1526,7 +1522,7 @@ bool wxShadingFactorsCtrl::Import(const wxString &file)
 	if (m_show_db_options && (csv.NumCols() > 0))
 	{
 		ncols = csv.NumCols();
-		if (ncols > m_col_arystrvals.Count())
+		if (ncols > (int)m_col_arystrvals.Count())
 			ncols = m_col_arystrvals.Count();
 		int ndx = m_col_arystrvals.Index(wxString::Format("%d", ncols));
 		if (ndx >= 0)
@@ -1550,18 +1546,18 @@ bool wxShadingFactorsCtrl::Import(const wxString &file)
 }
 
 
-void wxShadingFactorsCtrl::OnChoiceCol(wxCommandEvent  &evt)
+void wxShadingFactorsCtrl::OnChoiceCol(wxCommandEvent  &)
 {
-	if ((m_choice_col->GetSelection() != wxNOT_FOUND) && (wxAtoi(m_choice_col->GetString(m_choice_col->GetSelection())) != m_data.ncols()))
+	if ((m_choice_col->GetSelection() != wxNOT_FOUND) && (wxAtoi(m_choice_col->GetString(m_choice_col->GetSelection())) != (int)m_data.ncols()))
 	{ 
 		size_t new_cols = wxAtoi(m_choice_col->GetString(m_choice_col->GetSelection()));
 		UpdateNumberColumns(new_cols);
 	}
 }
 
-void wxShadingFactorsCtrl::OnChoiceMinute(wxCommandEvent  &evt)
+void wxShadingFactorsCtrl::OnChoiceMinute(wxCommandEvent  &)
 {
-	if ((m_choice_timestep->GetSelection() != wxNOT_FOUND) && (wxAtoi(m_choice_timestep->GetString(m_choice_timestep->GetSelection())) != m_num_minutes))
+	if ((m_choice_timestep->GetSelection() != wxNOT_FOUND) && (wxAtoi(m_choice_timestep->GetString(m_choice_timestep->GetSelection())) != (int)m_num_minutes))
 	{
 		m_num_minutes = wxAtoi(m_choice_timestep->GetString(m_choice_timestep->GetSelection()));
 		UpdateNumberMinutes(m_num_minutes);
@@ -1610,7 +1606,7 @@ void wxShadingFactorsCtrl::OnCellChange(wxGridEvent &evt)
 	{
 		float val = (float)wxAtof(m_grid->GetCellValue(irow, icol).c_str());
 
-		if (irow < m_data.nrows() && icol < m_data.ncols()
+		if (irow < (int)m_data.nrows() && icol < (int)m_data.ncols()
 			&& irow >= 0 && icol >= 0)
 			m_data.at(irow, icol) = val;
 
@@ -1746,14 +1742,14 @@ int wxShadingFactorsTable::GetNumberCols()
 	return (int)d_mat->ncols();
 }
 
-bool wxShadingFactorsTable::IsEmptyCell(int row, int col)
+bool wxShadingFactorsTable::IsEmptyCell(int , int )
 {
 	return false;
 }
 
 wxString wxShadingFactorsTable::GetValue(int row, int col)
 {
-	if (d_mat && row >= 0 && row < d_mat->nrows() && col >= 0 && col < d_mat->ncols())
+	if (d_mat && row >= 0 && row < (int)d_mat->nrows() && col >= 0 && col < (int)d_mat->ncols())
 		return wxString::Format("%g", d_mat->at(row, col));
 	else
 		return "-0.0";
@@ -1761,7 +1757,7 @@ wxString wxShadingFactorsTable::GetValue(int row, int col)
 
 void wxShadingFactorsTable::SetValue(int row, int col, const wxString& value)
 {
-	if (d_mat && row >= 0 && row < d_mat->nrows() && col >= 0 && col < d_mat->ncols())
+	if (d_mat && row >= 0 && row < (int)d_mat->nrows() && col >= 0 && col < (int)d_mat->ncols())
 		d_mat->at(row, col) = wxAtof(value);
 }
 
@@ -1793,17 +1789,17 @@ wxString wxShadingFactorsTable::GetColLabelValue(int col)
 	return col_label;
 }
 
-wxString wxShadingFactorsTable::GetTypeName(int row, int col)
+wxString wxShadingFactorsTable::GetTypeName(int , int )
 {
 	return wxGRID_VALUE_STRING;
 }
 
-bool wxShadingFactorsTable::CanGetValueAs(int row, int col, const wxString& typeName)
+bool wxShadingFactorsTable::CanGetValueAs(int , int , const wxString& typeName)
 {
 	return typeName == wxGRID_VALUE_STRING;
 }
 
-bool wxShadingFactorsTable::CanSetValueAs(int row, int col, const wxString& typeName)
+bool wxShadingFactorsTable::CanSetValueAs(int , int , const wxString& typeName)
 {
 	return typeName == wxGRID_VALUE_STRING;
 }

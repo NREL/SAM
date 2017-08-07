@@ -365,9 +365,9 @@ public:
 
 };
 
-static ssc_bool_t ssc_invoke_handler( ssc_module_t p_mod, ssc_handler_t p_handler,
-	int action_type, float f0, float f1, 
-	const char *s0, const char *s1,
+static ssc_bool_t ssc_invoke_handler( ssc_module_t , ssc_handler_t ,
+	int action_type, float f0, float , 
+	const char *s0, const char *,
 	void *user_data )
 {
 	ISimulationHandler *hh = (ISimulationHandler*) user_data;
@@ -473,7 +473,6 @@ static void dump_variable( FILE *fp, ssc_data_t p_data, const char *name )
 	ssc_number_t value;
 	ssc_number_t *p;
 	int len, nr, nc;
-	int pidx = 0;
 	wxString str_value;
 	double dbl_value;
 	int type = ::ssc_data_query( p_data, name );
@@ -893,7 +892,7 @@ void Simulation::GetVariableLengths( std::vector<ArraySize> &sizes )
 		if (it->second->Type() == VV_ARRAY)
 		{
 			size_t n = 0;
-			float *f = it->second->Array(&n);
+			it->second->Array(&n);
 			tmp.n_rows = n; tmp.n_cols = 1;
 			if (n > 1 && std::find(sizes.begin(), sizes.end(), tmp) == sizes.end())
 				sizes.push_back(tmp);	
@@ -902,7 +901,7 @@ void Simulation::GetVariableLengths( std::vector<ArraySize> &sizes )
 			has_single_value = true;
 		else if (it->second->Type() == VV_MATRIX)
 		{
-			float *f = it->second->Matrix(&tmp.n_rows, &tmp.n_cols);
+			it->second->Matrix(&tmp.n_rows, &tmp.n_cols);
 			if (tmp.n_rows > 1 && tmp.n_cols > 1 && std::find(sizes.begin(), sizes.end(), tmp) == sizes.end())
 				sizes.push_back(tmp);
 		}
@@ -1102,7 +1101,7 @@ int Simulation::DispatchThreads( wxThreadProgressDialog &tpd,
 	wxStopWatch sw;
 
 	// no need to create extra unnecessary threads 
-	if (nthread > sims.size()) nthread = sims.size();
+	if (nthread > (int)sims.size()) nthread = sims.size();
 
 	std::vector<SimulationThread*> threads;
 	for( int i=0;i<nthread;i++)
@@ -1210,7 +1209,7 @@ SimulationDialog::~SimulationDialog()
 	m_transp->Destroy();
 }
 
-void SimulationDialog::Finalize( const wxString &title )
+void SimulationDialog::Finalize( const wxString & )
 {			
 	wxYield(); // allow status bars to show full update
 	m_tpd->Finalize();
