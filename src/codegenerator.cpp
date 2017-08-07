@@ -660,7 +660,7 @@ bool CodeGen_Base::ShowCodeGenDialog(CaseWindow *cw)
 
 	int lang = (int)SamApp::Settings().ReadLong("CodeGeneratorLanguage", 0);
 	if (lang < 0) lang = 0;
-	if (lang >(code_languages.Count() - 1)) lang = code_languages.Count() - 1;
+	if (lang >((int)code_languages.Count() - 1)) lang = code_languages.Count() - 1;
 
 	// get language
 	wxSingleChoiceDialog *scd_language = new wxSingleChoiceDialog(SamApp::Window(), "Choose a language:", "Code Language", code_languages);
