@@ -196,9 +196,9 @@ function identify_case(input_data, lat, long, tz){
 	while(line < #input_data && ok == false){
 		if (line==0){
 			arr = input_data[line];
-			long = find_col(arr, "Longitude");
-			lat = find_col(arr, "Latitude");
-			tz = find_col(arr, "Time Zone");
+			long = find_col(arr, ["longitude", "long", "lon", "lng"]);
+			lat = find_col(arr, ["latitude", "lat"]);
+			tz = find_col(arr, ["time zone", "tz", "timezone"]);
 			if (long == -1){
 				outln("Error reading longitude.");
 				exit;
