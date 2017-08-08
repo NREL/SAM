@@ -1,4 +1,4 @@
-# System Advisor Model(SAM)
+# System Advisor Model (SAM)
 
 The SAM Open Source Project repository contains the source code, tools, and instructions to build a desktop version of the National Renewable Energy Laboratory's System Advisor Model (SAM). SAM is a simulation program for electricity generation projects. It has models for different kinds of renewable energy systems and financial models for residential, commercial, and utility-scale projects. For more details about SAM's capabilities, see the SAM website at [https://sam.nrel.gov/](https://sam.nrel.gov/).
 
@@ -12,33 +12,35 @@ The desktop version of SAM for Windows, Mac, or Linux builds from the following 
 
 * [WEX](https://github.com/nrel/wex) is a set of exensions to wxWidgets for custom user-interface elements used by SAM, and by LKscript and DView, which are integrated into SAM.
 
-* *SAM* provides the user interface to assign values to inputs of the SSC compute modules, run the modules in the correct order, and display simulation results. It also includes tools for editing LK scripts, viewing time series results, and generating shade data from a 3-dimenional representation of a photovoltaic array or solar hot water collector and nearby shading objects.
+* **SAM** provides the user interface to assign values to inputs of the SSC compute modules, run the modules in the correct order, and display simulation results. It also includes tools for editing LK scripts, viewing time series results, and generating shade data from a 3-dimenional representation of a photovoltaic array or solar hot water collector and nearby shading objects.
 
 # Quick Steps for Building SAM
 
-These are the general quick steps you need to follow to set up your computer for developing SAM. For more detailed instructions specific to Windows, Mac, and Linux see https://github.com/NREL/SAM/wiki.
+These are the general quick steps you need to follow to set up your computer for developing SAM. For more detailed instructions specific to Windows, Mac, and Linux see https://github.com/NREL/SAM-private/wiki.
 
-The build instructions are based on the following integrated development environments:
+The detailed build instructions are based on the following development tools for each operating system. Follow the links to go to the detailed instructions in the [wiki](https://github.com/NREL/SAM/wiki):
 
-* Windows: Visual Studio 2013 (professional or express edition). Download from list of older versions at https://www.visualstudio.com/vs/older-downloads/].
-* Linux: 
-* Mac: Xcode 9, available at https://developer.apple.com/xcode/.
+* [Windows](https://github.com/NREL/SAM/wiki/Windows-Build-Instructions): Visual Studio 2013 Professional or Express edition. Download from list of older versions at [[https://www.visualstudio.com/vs/older-downloads]] (requires Microsoft ID and password).
+* [Linux](https://github.com/NREL/SAM/wiki/Linux-Build-Instructions): 
+* [Mac](https://github.com/NREL/SAM/wiki/Mac-Build-Instructions): Apple Command Line Tools, available at [[https://developer.apple.com/download/more/]] (requires Apple ID and password).
 
 After you have set up your development environment:
 
-1. Download the wxWidgets 3.1.0 source code for your operating system from https://www.wxwidgets.org/downloads/
+1. Download the wxWidgets 3.1.0 source code for your operating system from [[https://www.wxwidgets.org/downloads/]].
 
 3. Build wxWidgets.
 
-3. Create the WXMSW3 environment variable on your computer to point to the wxWidgets installation folder.
+3. Create the WXMSW3 environment variable on your computer (Windows) ore create a dynamic link (Mac and Linux) to point to the wxWidgets installation folder .
 
-2. As you did for wxWidgets, for each of the following projects, clone (download) the repository, build the project, and then create an environment variable pointing to the project folder. Build the projects in the following order, and assign the environment variable for each project before you build the next one:
+2. As you did for wxWidgets, for each of the following projects, clone (download) the repository, build the project, and then create an environment variable pointing to the project folder (Windows only). Build the projects in the following order, and assign the environment variable for each project before you build the next one:
 
-	* LK: [[https://github.com/NREL/lk]], LKDIR
-	* WEX: [[https://github.com/NREL/wex]], WEXDIR
-	* SSC: [[https://github.com/NREL/ssc]], SSCDIR
-	* SAM: [[https://github.com/NREL/SAM-private]], SAMNTDIR
-
+<table>
+<tr><th>Project</th><th>Repository URL</th><th>Windows Environment Variable</th></tr>
+<tr><td>LK</td><td>[[https://github.com/NREL/lk]]</td><td>LKDIR</td></tr>
+<tr><td>WEX</td><td>[[https://github.com/NREL/wex]]</td><td>WEXDIR</td></tr>
+<tr><td>SSC</td><td>[[https://github.com/NREL/ssc]]</td><td>SSCDIR</td></tr>
+<tr><td>SAM</td><td>[[https://github.com/NREL/SAM-private]]</td><td>SAMNTDIR</td></tr>
+</table>
 # Contributing
 
 If you would like to report an issue with SAM or make a feature request, please let us know by adding a new issue on the [issues page](https://github.com/NREL/SAM/issues).
