@@ -4,9 +4,9 @@ The SAM Open Source Project repository contains the source code, tools, and inst
 
 The desktop version of SAM for Windows, Mac, or Linux builds from the following open source projects:
 
-* [SSC](https://github.com/nrel/ssc) is a set of "compute modules" that simulate different kinds of power systems and financial structures. It can be run directly using the [SAM Sofware Develoment Kit](https://sam.nrel.gov/sdk).
+* [SSC](https://github.com/nrel/ssc) is a set of "compute modules" that simulate different kinds of power systems and financial structures (you could think of it as the home for most of the actual algorithms in SAM). It can be run directly using the [SAM Sofware Develoment Kit](https://sam.nrel.gov/sdk).
 
-* [LK](https://github.com/nrel/lk) is a scripting language that is integrated into SAM and allows users to add functionality to the program.
+* [LK](https://github.com/nrel/lk) is a scripting language that is integrated into SAM and allows users to add functionality to the program. It is also the language used to control some of the functionality in the user interface.
 
 * [wxWidgets](https://www.wxwidgets.org/) is a cross-platform graphical user interface platform used for SAM's user interface, and for the development tools included with SSC (SDKtool) and LK (LKscript). The current version of SAM uses wxWidgets 3.1.0.
 
@@ -51,7 +51,7 @@ We have not yet set up a test framework for the open-source project. We eventual
 
 2. Making sure your code does not generate additional compiler warning messages.
 
-SAM currently generates so many warnings during compilation that it is nearly impossible to use them to help debug your code. across it's multiple projects that they are borderline useless for debugging problems. One useful contribution to the project would be to clean up the source code to eliminate those warnings.
+SAM currently generates so many warnings during compilation that it is nearly impossible to use them to help debug your code. Although we are in the process of cleaning up these warnings, one useful contribution to the project would be to clean up the source code to eliminate those warnings.
 
 # License
 
