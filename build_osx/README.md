@@ -14,5 +14,5 @@ See the [wiki](https://github.com/sam/wiki) for Mac build instructions using the
 
 - ```webupd.icns```: Old icon image
 
-- ```wxconfigure.osx64```: Contains a configuration command that you run during the Mac build process.
+- ```wxconfigure.macos64```: Contains a configuration command that you run during the Mac build process.
 
