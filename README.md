@@ -34,24 +34,35 @@ After you have set up your development environment:
 
 2. As you did for wxWidgets, for each of the following projects, clone (download) the repository, build the project, and then create an environment variable pointing to the project folder. Build the projects in the following order, and assign the environment variable for each project before you build the next one:
 
-	* LK: https://github.com/NREL/lk, LKDIR
-	* WEX: https://github.com/NREL/wex, WEXDIR
-	* SSC: https://github.com/NREL/ssc, SSCDIR
-	* SAMnt: https://github.com/NREL/SAM-private, SAMNTDIR
+	* LK: [[https://github.com/NREL/lk]], LKDIR
+	* WEX: [[https://github.com/NREL/wex]], WEXDIR
+	* SSC: [[https://github.com/NREL/ssc]], SSCDIR
+	* SAM: [[https://github.com/NREL/SAM-private]], SAMNTDIR
 
 # Contributing
 
-If you have found an issue with SAM or would like to make a feature request, please let us know by adding a new issue on the issues page.
+If you would like to report an issue with SAM or make a feature request, please let us know by adding a new issue on the [issues page](https://github.com/NREL/SAM/issues).
 
-If you would like to submit code to fix an issue or add a feature, you can use GitHub to do so. The overall steps are to create a fork on GitHub.com using the link above, and then install GitHub on your computer and use it to clone your fork, create a branch for your changes, and then once you have made your changes, commit and push the changes to your fork. You can then create a pull request that we will review and merge into the repository if approved.
+If you would like to submit code to fix an issue or add a feature, you can use GitHub to do so. The overall steps are:
+
+1. Install GitHub on your computer.
+2. Create a fork on GitHub.com using the link above.
+3. Clone your fork to create a local copy on your computer.
+4. Create a branch for your changes.
+5. Make your changes to the code.
+6. Build SAM and test it to make sure your code works as expected (see below).
+7. Commit and push the changes to your fork.
+8. Create a pull request that we will review and merge into the repository if approved.
 
 We have not yet set up a test framework for the open-source project. We eventually hope to create a framework that will automatically test your commits to ensure that your contribution does not cause any problems with the software. For now, you can help to ensure that your code works with the rest of SAM by:
 
-1. Compiling SAM with your contribution for Windows, Mac, and Linux and running simulations in compiled program with several configurations. For example, if you made changes to how weather file processor works with solar resource data, you might want to run simulations with the different photovoltaic, concentrating solar power, and solar hot water heating model to make sure those models all work with your new code.
+1. Compile SAM with your contribution for Windows, Mac, and Linux.
 
-2. Making sure your code does not generate additional compiler warning messages.
+3. Fix any compiler warning messages.
 
-SAM currently generates so many warnings during compilation that it is nearly impossible to use them to help debug your code. across it's multiple projects that they are borderline useless for debugging problems. One useful contribution to the project would be to clean up the source code to eliminate those warnings.
+3. Run simulations in the compiled program with several configurations.
+
+	For example, if you made changes to how the weather file processor works with solar resource data, you might want to run simulations with the different photovoltaic, concentrating solar power, and solar hot water heating model to make sure those models all work with your new code.
 
 # License
 
