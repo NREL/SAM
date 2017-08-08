@@ -20,11 +20,11 @@ These are the general quick steps you need to follow to set up your computer for
 
 1. Set up your development tools:
 
-* Windows: Visual Studio 2013 Professional or Express edition. Download from list of older versions at [[https://www.visualstudio.com/vs/older-downloads]] (requires Microsoft ID and password).
-* Mac: Apple Command Line Tools, available at [[https://developer.apple.com/download/more/]] (requires Apple ID and password).
+* Windows: Visual Studio 2013 Professional or Express edition. Download from list of older versions at https://www.visualstudio.com/vs/older-downloads (requires Microsoft ID and password).
+* Mac: Apple Command Line Tools, available at https://developer.apple.com/download/more/ (requires Apple ID and password).
 * Linux
 
-2. Download the wxWidgets 3.1.0 source code for your operating system from [[https://www.wxwidgets.org/downloads/]].
+2. Download the wxWidgets 3.1.0 source code for your operating system from https://www.wxwidgets.org/downloads/.
 
 3. Build wxWidgets.
 
@@ -34,10 +34,10 @@ These are the general quick steps you need to follow to set up your computer for
 
 <table>
 <tr><th>Project</th><th>Repository URL</th><th>Windows Environment Variable</th></tr>
-<tr><td>LK</td><td>[[https://github.com/NREL/lk]]</td><td>LKDIR</td></tr>
-<tr><td>WEX</td><td>[[https://github.com/NREL/wex]]</td><td>WEXDIR</td></tr>
-<tr><td>SSC</td><td>[[https://github.com/NREL/ssc]]</td><td>SSCDIR</td></tr>
-<tr><td>SAM</td><td>[[https://github.com/NREL/SAM-private]]</td><td>SAMNTDIR</td></tr>
+<tr><td>LK</td><td>https://github.com/NREL/lk</td><td>LKDIR</td></tr>
+<tr><td>WEX</td><td>https://github.com/NREL/wex</td><td>WEXDIR</td></tr>
+<tr><td>SSC</td><td>https://github.com/NREL/ssc</td><td>SSCDIR</td></tr>
+<tr><td>SAM</td><td>https://github.com/NREL/SAM-private</td><td>SAMNTDIR</td></tr>
 </table>
 
 # Contributing
